@@ -1,6 +1,6 @@
 pkgbase = pvetui
 	pkgdesc = A terminal user interface (TUI) for Proxmox VE
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/devnullvoid/pvetui
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = pvetui
 	optdepends = alacritty: Better terminal support
 	conflicts = pvetui-bin
 	conflicts = pvetui-git
-	source = pvetui-1.0.13.tar.gz::https://github.com/devnullvoid/pvetui/archive/v1.0.13.tar.gz
-	sha256sums = a7de8799ea2da1924718c5e9afbb95218fba452fa2d304af55d5f30c1981689f
+	source = pvetui-1.0.14.tar.gz::https://github.com/devnullvoid/pvetui/archive/v1.0.14.tar.gz
+	sha256sums = dc6e721e8f551159ecfa4f6335c691e4cd13e909ced314f0f9e514227191ff78
 
 pkgname = pvetui
