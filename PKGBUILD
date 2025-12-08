@@ -3,8 +3,8 @@
 _pkgdir="Millennium"
 _pkgname="millennium"
 pkgname="$_pkgname-git"
-pkgver=v2.30.0.r13.g2e18b8a3
-pkgrel=2
+pkgver=v2.31.0.beta.4.r6.g00e8b514
+pkgrel=1
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 provides=("$_pkgname=$pkgver")
 arch=('x86_64')
@@ -51,14 +51,12 @@ build() {
 package() {
     cd "$srcdir/$_pkgdir"
 
-    bash ./scripts/ci/posix/mk-assets.sh "$pkgdir/usr/share/millennium/assets"
     mkdir -p "$pkgdir/usr/lib/millennium"
 
-    install -Dm755 build/libmillennium_x86.so "$pkgdir/usr/lib/millennium/libmillennium_x86.so"
-    install -Dm755 build/unix-hooks/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/libmillennium_bootstrap_86x.so"
+    install -Dm755 build/src/millennium_x86-build/libmillennium_x86.so "$pkgdir/usr/lib/millennium/libmillennium_x86.so"
+    install -Dm755 build/src/millennium_x86-build/boot/linux/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/libmillennium_bootstrap_86x.so"
 
     mkdir -p "$pkgdir/usr/share/millennium/shims"
-
     cp -r ./shims/build/* "$pkgdir/usr/share/millennium/shims/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
