@@ -3,5 +3,5 @@
 !.SRCINFO
 !PKGBUILD
 !incus.conf
-!incus-srv.run
-!incus-srv.type
+!incus.run
+!incus.type
