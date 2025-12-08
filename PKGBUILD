@@ -2,11 +2,11 @@
 pkgname=hotkeyhub-bin
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Bluetooth dual-boot key synchronization service (precompiled binary)"
+pkgdesc="Cheat Sheet for keybindings in hyprland, bspwm, and other WMs"
 arch=('x86_64')
 url="https://github.com/meowrch/HotkeyHub"
-license=('GPL-3.0')
-depends=('dbus')
+license=('GPL-3.0-or-later')
+depends=('gtk4')
 source=(
   "$url/releases/download/v$pkgver/hotkeyhub-linux-x86_64"
 )
