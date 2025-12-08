@@ -4,13 +4,12 @@ pkgver=9.0.11.sdk308
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
-_netstandardver=2.1
-pkgrel=1
+pkgrel=2
 
 declare -Ag _arch=(
-  [aarch64]=arm64
-  [armv7h]=arm
-  [x86_64]=x64
+  ['aarch64']='arm64'
+  ['armv7h']='arm'
+  ['x86_64']='x64'
 )
 
 _pkgbase="dotnet-core-${_dotnetver}"
@@ -35,15 +34,12 @@ license=(
 options=(
   'staticlibs'
 )
-source_aarch64=(
-  "https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm64.tar.gz"
-)
-source_armv7h=(
-  "https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm.tar.gz"
-)
-source_x86_64=(
-  "https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz"
-)
+for _carch in "${!_arch[@]}"; do
+  eval "
+source_${_carch}=(
+  'https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-${_arch[${_carch}]}.tar.gz'
+)"
+done
 # curl -s "https://builds.dotnet.microsoft.com/dotnet/release-metadata/${_dotnetver}/releases.json" |
 #   jq -r --arg runtime "$_runtimever" --arg sdk "$_sdkver" --arg arch "${_arch[${CARCH}]}" '
 #     .releases[]
@@ -66,8 +62,7 @@ sha512sums_x86_64=('3aacff096524a1dae9bc035f71a6805fa7ec3430d395771fc1c85505165a
 package_dotnet-runtime-9.0-bin() {
   pkgdesc="The .NET Core runtime"
   depends=(
-    # "dotnet-host>=${pkgver}"
-    "dotnet-host"
+    "dotnet-host>=${pkgver}"
     'gcc-libs'
     'glibc'
     'icu'
@@ -99,7 +94,7 @@ package_dotnet-runtime-9.0-bin() {
 package_aspnet-runtime-9.0-bin() {
   pkgdesc="The ASP.NET Core runtime"
   depends=(
-    "${pkgname//aspnet/dotnet}=${pkgver}"
+    "${pkgname//aspnet/dotnet}>=${pkgver}-${pkgrel}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -121,7 +116,7 @@ package_aspnet-runtime-9.0-bin() {
 package_dotnet-targeting-pack-9.0-bin() {
   pkgdesc="The .NET Core targeting pack"
   depends=(
-    "netstandard-targeting-pack-${_netstandardver}"
+    'netstandard-targeting-pack'
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -144,7 +139,7 @@ package_dotnet-targeting-pack-9.0-bin() {
 package_aspnet-targeting-pack-9.0-bin() {
   pkgdesc="The ASP.NET Core targeting pack"
   depends=(
-    "${pkgname//aspnet/dotnet}=${pkgver}"
+    "${pkgname//aspnet/dotnet}>=${pkgver}-${pkgrel}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -166,8 +161,8 @@ package_aspnet-targeting-pack-9.0-bin() {
 package_dotnet-sdk-9.0-bin() {
   pkgdesc="The .NET Core SDK"
   depends=(
-    "${pkgname//sdk/runtime}=${pkgver}"
-    "${pkgname//sdk/targeting-pack}=${pkgver}"
+    "${pkgname//sdk/runtime}>=${pkgver}-${pkgrel}"
+    "${pkgname//sdk/targeting-pack}>=${pkgver}-${pkgrel}"
   )
   optdepends=(
     "aspnet-targeting-pack-${_dotnetver}-bin: Build ASP.NET Core applications"

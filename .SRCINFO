@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-9.0-bin
 	pkgver = 9.0.11.sdk308
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dotnet-core-9.0-bin
 
 pkgname = dotnet-runtime-9.0-bin
 	pkgdesc = The .NET Core runtime
-	depends = dotnet-host
+	depends = dotnet-host>=9.0.11.sdk308
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
@@ -30,26 +30,26 @@ pkgname = dotnet-runtime-9.0-bin
 
 pkgname = aspnet-runtime-9.0-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-9.0-bin=9.0.11.sdk308
+	depends = dotnet-runtime-9.0-bin>=9.0.11.sdk308-2
 	provides = aspnet-runtime-9.0=9.0.11.sdk308
 	conflicts = aspnet-runtime-9.0
 
 pkgname = dotnet-targeting-pack-9.0-bin
 	pkgdesc = The .NET Core targeting pack
-	depends = netstandard-targeting-pack-2.1
+	depends = netstandard-targeting-pack
 	provides = dotnet-targeting-pack-9.0=9.0.11.sdk308
 	conflicts = dotnet-targeting-pack-9.0
 
 pkgname = aspnet-targeting-pack-9.0-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk308
+	depends = dotnet-targeting-pack-9.0-bin>=9.0.11.sdk308-2
 	provides = aspnet-targeting-pack-9.0=9.0.11.sdk308
 	conflicts = aspnet-targeting-pack-9.0
 
 pkgname = dotnet-sdk-9.0-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-9.0-bin=9.0.11.sdk308
-	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk308
+	depends = dotnet-runtime-9.0-bin>=9.0.11.sdk308-2
+	depends = dotnet-targeting-pack-9.0-bin>=9.0.11.sdk308-2
 	optdepends = aspnet-targeting-pack-9.0-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-9.0=9.0.11.sdk308
 	conflicts = dotnet-sdk-9.0
