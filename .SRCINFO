@@ -25,6 +25,7 @@ pkgbase = easyeffects-git
 	depends = kirigami-addons
 	depends = libbs2b
 	depends = libebur128
+	depends = libmysofa
 	depends = libportal-qt6
 	depends = libsamplerate
 	depends = libsndfile

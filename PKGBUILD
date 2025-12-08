@@ -19,6 +19,7 @@ depends=(
   'kirigami-addons'
   'libbs2b'
   'libebur128'
+  'libmysofa'
   'libportal-qt6'
   'libsamplerate'
   'libsndfile'
