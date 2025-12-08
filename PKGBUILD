@@ -10,8 +10,8 @@ _build=253.28294.334
 # Build number is before tag suffix for alphabetical version order.
 pkgver="$_versionbase.$_build$([ -n "$_tagsuffix" ] && echo -n '.'$_tagsuffix | tr - .)"
 _jdkver=25
-pkgrel=1
-pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features, open-source, Early Access Program (EAP) version'
+pkgrel=2
+pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features, open-source, latest-tag (usually EAP) version'
 url='https://www.jetbrains.com/idea/'
 arch=('x86_64')
 license=('Apache-2.0')
