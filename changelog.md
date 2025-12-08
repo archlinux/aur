@@ -1,3 +1,33 @@
+# 1.18.0
+
+- Upgraded to AI SDK v6 beta to improve model and tool calling performance and introduce multi-step tool calls support. Thanks to @DenizOkcu.
+
+- Added `/debugging` command to toggle detailed tool call information for debugging purposes. Thanks to @DenizOkcu.
+
+- Replaced `/recommendations` command with `/model-database` command that provides searchable model information from an up-to-date database, making model recommendations easier to maintain.
+
+- Added GitHub issue templates for bug reports and feature requests to improve community contributions.
+
+- LSP and MCP server connection status is now displayed in the Status component, providing cleaner visibility and removing verbose connection messages from the main UI. Thanks to @Avtrkrb.
+
+- Various improvements to context management, error handling, and code refactoring for better maintainability.
+
+- Fixed locale-related test failures by setting test environment to en-US.UTF-8. Thanks to @DenizOkcu.
+
+- Removed streaming for now as it continued having issues with layouts, flickering and more, especially with the upgrade to AI SDK v6.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.17.3
+
+- Added GitHub models as a provider addressing issue #67 with minimal code changes. Thanks to @JimStenstrom
+
+- Added `/lsp` command to list connected LSP servers. Thanks to @anithanarayanswamy
+
+- Fix: Improve error handling for Ollama JSON parsing. Addresses issue #87. Thanks to @JimStenstrom
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.17.2
 
 - Fix: Remote GitHub MCP Connection Fails with 401 Unauthorized.
