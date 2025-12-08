@@ -1,12 +1,12 @@
-# Maintainer: snapetech <slskdn@proton.me>
-# 🔋 slskdn - The batteries-included Soulseek web client (build from source)
+# Maintainer: snapetech <slskdN@proton.me>
+# 🔋 slskdN - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.1.slskdn.19
+pkgver=0.24.1.slskdn.22
 pkgrel=1
-pkgdesc="🔋 The batteries-included Soulseek web client. A feature-rich fork of slskd with wishlist, smart ranking, tabbed browsing & more"
+pkgdesc="🔋 The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including wishlist, smart ranking, tabbed browsing, notifications & more"
 arch=('x86_64' 'aarch64')
-url="https://github.com/snapetech/slskdn"
+url="https://github.com/snapetech/slskdN"
 license=('AGPL-3.0-or-later')
 depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0' 'nodejs' 'npm')
@@ -15,11 +15,11 @@ optdepends=(
 )
 provides=('slskd' 'slskd-bin')
 conflicts=('slskd' 'slskd-bin' 'slskdn-bin')
-replaces=('slskd' 'slskd-bin')
+replaces=('slskd' 'slskd-bin' 'slskdn-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/${pkgver//.slskdn/-slskdn}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdN/archive/refs/tags/${pkgver//.slskdN/-slskdN}.tar.gz"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
@@ -27,7 +27,7 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
-    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
+    cd "${srcdir}/slskdN-${pkgver//.slskdN/-slskdN}"
     
     # Build frontend
     cd src/web
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
+    cd "${srcdir}/slskdN-${pkgver//.slskdN/-slskdN}"
     
     # Install application to /usr/lib/slskd (same location as original slskd)
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
