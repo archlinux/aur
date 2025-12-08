@@ -1,5 +1,5 @@
-# Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Taufik Hidayat <tfkhdyt@proton.me>
 
 _pkgauthor=tfkhdyt
 _pkgname=urban-cli

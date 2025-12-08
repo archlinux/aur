@@ -1,0 +1,5 @@
+[urban-cli-bin]
+source = "github"
+github = "tfkhdyt/urban-cli"
+use_latest_release = true
+prefix = "v"
