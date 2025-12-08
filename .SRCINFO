@@ -1,6 +1,6 @@
 pkgbase = xnviewmp-system-libs
 	pkgdesc = An efficient multimedia viewer, browser and converter (using system libraries).
-	pkgver = 1.9.5
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://www.xnview.com/en/xnviewmp/
 	arch = x86_64
@@ -18,15 +18,15 @@ pkgbase = xnviewmp-system-libs
 	depends = openexr
 	optdepends = glib2: support for moving files to trash
 	conflicts = xnviewmp
-	source = XnViewMP-linux-x64_1.9.5-rel1.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-1.9.5-linux-x64.tgz
+	source = XnViewMP-linux-x64_1.9.8-rel1.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-1.9.8-linux-x64.tgz
 	source = xnview.sh
 	source = XnView.desktop
 	source = qt5_std_fun_forwarder.S
 	source = qt5_std_fun_forwarder.lds
-	sha256sums = 2DF628295CAB203020FE092CE06E6D3090942495F941227EEEB627A9C584FFBC
-	sha256sums = 87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141
+	sha256sums = FD29CF592E7BACE0FC9B5403910CB9911148BC5231D3CA187FB66DD0BE195990
+	sha256sums = 87EC80C5049745DC3018FCDCF4DDDF0E877AE3B20706705F2A80715232AD2141
 	sha256sums = F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A
-	sha256sums = D16B4F1ABA4664B169211FD0FE2FF27892AA02F60A5C7C50F55D43FAB0E255DC
+	sha256sums = 3C3AC0549724E6F3BD46E0D7A4CAE4E4272455B163722ABF92A7ACE6772DB367
 	sha256sums = 3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D
 
 pkgname = xnviewmp-system-libs
