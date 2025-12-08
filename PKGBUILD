@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cpu
 pkgver=1.4.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Python bindings for whisper.cpp (CPU-only variant)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -38,11 +38,31 @@ sha256sums=('SKIP')
 prepare() {
   cd "$srcdir/pywhispercpp"
   git submodule update --init --recursive
+  
+  # Fix CMake Python interpreter detection: use system Python instead of isolated env
+  # The isolated build environment's Python can't be executed by CMake
+  python << 'EOF'
+import re
+_system_python = "/usr/bin/python"  # System Python path
+with open("setup.py", "r") as f:
+    content = f.read()
+# Replace sys.executable with system Python path
+content = re.sub(
+    r'f"-DPYTHON_EXECUTABLE=\{sys\.executable\}"',
+    f'f"-DPYTHON_EXECUTABLE={_system_python}"',
+    content
+)
+with open("setup.py", "w") as f:
+    f.write(content)
+EOF
 }
 
 build() {
   cd "$srcdir/pywhispercpp"
   # CPU-only: no GPU environment variables set
+  # Force CMake to use system Python (patch sets PYTHON_EXECUTABLE, but FindPython still searches PATH)
+  # Enable CPU optimizations: Release build with native CPU architecture optimizations
+  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_BUILD_TYPE=Release"
   python -m build --wheel
 }
 
