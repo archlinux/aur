@@ -1,0 +1,15 @@
+[Unit]
+Description=HBuilderX Cli Server (user)
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/hbuilderx
+ExecStart=/opt/hbuilderx/cli open
+TimeoutSec=30
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
