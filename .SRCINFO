@@ -1,6 +1,6 @@
 pkgbase = rqlite
 	pkgdesc = rqlite is a lightweight, distributed relational database, which uses SQLite as its storage engine
-	pkgver = 9.3.4
+	pkgver = 9.3.5
 	pkgrel = 1
 	url = http://rqlite.io/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = rqlite
 	source = rqlite.service
 	source = rqlite.sysusers
 	source = rqlite.tmpfiles
-	source = https://github.com/rqlite/rqlite/archive/refs/tags/v9.3.4.tar.gz
+	source = https://github.com/rqlite/rqlite/archive/refs/tags/v9.3.5.tar.gz
 	sha256sums = dada94e4161c48609567014e4ac48dc633437fd3a569ecf400e5c056b53dc3f9
 	sha256sums = c0132b51d5c28517545fb58ce4aa67b6e860020d662aa8317ecb6aab0264829a
 	sha256sums = 43c1094a6fdd04c18df738fdc85250f0cbcb87b2f8f23320f42f4ca0656f43fc
-	sha256sums = 24bbb51923786f840872bf39644ee7954f5993dfba2779c8ca6f530ed785f84d
+	sha256sums = 1459de455470be70d98e3165a8d194dc66ebcdd1dd8066c4abfbe1d00f5f170c
 
 pkgname = rqlite
