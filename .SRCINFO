@@ -1,6 +1,6 @@
 pkgbase = chaterm-git
 	pkgdesc = A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Use system-wide electron)
-	pkgver = 0.2.1.r0.g21857a2
+	pkgver = 0.7.1.r4.g7d24d0c
 	pkgrel = 1
 	url = https://chaterm.ai/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = chaterm-git
 	makedepends = curl
 	makedepends = gendesk
 	depends = electron30
-	provides = chaterm=0.2.1
+	provides = chaterm=0.7.1
 	conflicts = chaterm
 	source = chaterm.git::git+https://github.com/chaterm/Chaterm.git
 	source = chaterm.sh
