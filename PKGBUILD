@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cuda
 pkgver=1.4.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Python bindings for whisper.cpp with CUDA support (NVIDIA GPU)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -68,8 +68,9 @@ build() {
   export CUDACXX="${CUDACXX:-/opt/cuda/bin/nvcc}"
   # Force CMake to use system Python (patch sets PYTHON_EXECUTABLE, but FindPython still searches PATH)
   # Build for multiple CUDA architectures for compatibility (including 8.9 for RTX 50-series)
-  # Common architectures: 6.0 (Pascal), 7.0 (Volta), 7.5 (Turing), 8.0 (Ampere), 8.6 (Ada), 8.9 (Blackwell), 9.0 (Hopper)
-  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_CUDA_ARCHITECTURES=60;70;75;80;86;89;90"
+  # CUDA 13.0 supports: 7.0 (Volta), 7.5 (Turing), 8.0 (Ampere), 8.6 (Ada), 8.9 (Blackwell), 9.0 (Hopper)
+  # Note: 6.0 (Pascal) is not supported in CUDA 13.0+
+  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_CUDA_ARCHITECTURES=70;75;80;86;89;90"
   python -m build --wheel
 }
 
