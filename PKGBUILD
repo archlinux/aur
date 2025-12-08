@@ -2,8 +2,8 @@
 
 pkgname="ntopng-data"
 # to update visit https://packages.ntop.org/apt/trixie/all/ and keep track of the latest pkgver, date and build
-_pkgverAmd=6.5
-_dateAmd=251012
+_pkgverAmd=6.7
+_dateAmd=251208
 # updated automatically
 pkgver="$_pkgverAmd.$_dateAmd"
 pkgrel=1
@@ -13,7 +13,8 @@ license=("GPL3")
 arch=("any")
 depends=("ntopng")
 source=("https://packages.ntop.org/apt/trixie/all/ntopng-data_${_pkgverAmd}.${_dateAmd}_all.deb")
-b2sums=('7db28d54dad299e422a12485bb6a2437967d0c09d4035ff421d3b3d2d19d709106ab98d0a4779a46b447fe12a1a58607d0687e55c43296cb6f895c0d471b36f2')
+# the sha512 sums are present in https://packages.ntop.org/apt/trixie/all/Packages
+sha512sums=('306aee6796c70327e31e44db5b8a946aff3b3db6c4ef0adf78ffb73e1ca094096426d0882f1241cd204b65039fbfa8ed88a89f8bd871dc2c4a38d39f1e6b0731')
 options=("!strip")
 
 prepare(){
