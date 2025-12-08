@@ -1,8 +1,8 @@
 # Maintainer: Philip May <eniak.info@gmail.com>
 # Contributor: mark blakeney at bullet dash systems dot net
-_appname=pycharm-community
-pkgname="$_appname-jre"
-pkgver=2025.2.5
+_appname=pycharm
+pkgname="$_appname-community-jre"
+pkgver=2025.3
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64 aarch64)
@@ -17,14 +17,14 @@ source=(
   pycharm.sh
 )
 
-source_x86_64=("https://download.jetbrains.com/python/pycharm-community-${pkgver}.tar.gz")
-source_aarch64=("https://download.jetbrains.com/python/pycharm-community-${pkgver}-aarch64.tar.gz")
+source_x86_64=("https://download.jetbrains.com/python/pycharm-${pkgver}.tar.gz")
+source_aarch64=("https://download.jetbrains.com/python/pycharm-${pkgver}-aarch64.tar.gz")
 
 options=(!strip)
 sha256sums=('f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
             '81005f7c292a59ebfe0b0905e4dc90c0fa35b491465fde063ccf583860ba33b1')
-sha256sums_x86_64=('7f49a014f53f0f6f7c46f6710b131f390302287f4046b606331d88081cdb551f')
-sha256sums_aarch64=('67b61a3e788b043d93b3cc3e0dd3cea350e6d170402fd94adaf792cfc57e5462')
+sha256sums_x86_64=('a410c9c5834ede16373325ea21b850e309557db5d9dcca3674caf92ea7c5bf05')
+sha256sums_aarch64=('97f00b722caba564eaf4eda35bb3344a92f3bd76e798ea58e65f45efa4054e14')
 
 package() {
   cd "${_appname}-${pkgver}"
