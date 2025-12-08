@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cpu
 pkgver=1.4.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Python bindings for whisper.cpp (CPU-only variant)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -48,23 +48,114 @@ build() {
 
 package() {
   cd "$srcdir/pywhispercpp"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
+
   
-  # Verify no driver libraries are bundled (CPU package should not have GPU driver libs)
-  local _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  # Figure out where site-packages landed
+
+  local _python_version
+
+  _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
   local _site_packages="$pkgdir/usr/lib/python$_python_version/site-packages"
+
   local _libs_dir="$_site_packages/pywhispercpp.libs"
-  
+
+  local _binary_so="$_site_packages/_pywhispercpp.cpython-*-linux-gnu.so"
+
+
+
+  # 1) Remove any bundled GPU driver libraries (CPU package should not have these)
+
   if [ -d "$_libs_dir" ]; then
-    # Check for any GPU driver libraries (should not be present in CPU build)
-    _driver_libs=$(find "$_libs_dir" -name "libcuda*.so*" -o -name "libhsa-runtime64*.so*" -o -name "librocm_smi64*.so*" 2>/dev/null | grep -v "libcudart" || true)
-    if [ -n "$_driver_libs" ]; then
-      echo "WARNING: Found GPU driver libraries in CPU-only package: $_driver_libs"
-      # Remove them to be safe
-      find "$_libs_dir" -name "libcuda*.so*" -type f ! -name "libcudart*" -delete 2>/dev/null || true
-      find "$_libs_dir" -name "libhsa-runtime64*.so*" -type f -delete 2>/dev/null || true
-      find "$_libs_dir" -name "librocm_smi64*.so*" -type f -delete 2>/dev/null || true
-    fi
+
+    find "$_libs_dir" -name "libcuda*.so*" -type f ! -name "libcudart*" -delete 2>/dev/null || true
+
+    find "$_libs_dir" -name "libhsa-runtime64*.so*" -type f -delete 2>/dev/null || true
+
+    find "$_libs_dir" -name "librocm_smi64*.so*" -type f -delete 2>/dev/null || true
+
+    find "$_site_packages" -maxdepth 1 -name "libcuda*.so*" -type f ! -name "libcudart*" -delete 2>/dev/null || true
+
+    find "$_site_packages" -maxdepth 1 -name "libhsa-runtime64*.so*" -type f -delete 2>/dev/null || true
+
+    find "$_site_packages" -maxdepth 1 -name "librocm_smi64*.so*" -type f -delete 2>/dev/null || true
+
   fi
+
+
+
+  # 2) Fix any DT_NEEDED entries that reference private/bundled libraries
+
+  local f needed
+
+  for f in $_binary_so "$_libs_dir"/*.so*; do
+
+    [ -f "$f" ] || continue
+
+    for needed in $(patchelf --print-needed "$f" 2>/dev/null || true); do
+
+      case "$needed" in
+
+        libcuda-*.so* )
+
+          echo "Patching $f: replace-needed $needed -> libcuda.so.1"
+
+          patchelf --replace-needed "$needed" "libcuda.so.1" "$f" 2>/dev/null || true
+
+          ;;
+
+        libhsa-runtime64-*.so* )
+
+          echo "Patching $f: replace-needed $needed -> libhsa-runtime64.so.1"
+
+          patchelf --replace-needed "$needed" "libhsa-runtime64.so.1" "$f" 2>/dev/null || true
+
+          ;;
+
+        librocm_smi64-*.so* )
+
+          echo "Patching $f: replace-needed $needed -> librocm_smi64.so.1"
+
+          patchelf --replace-needed "$needed" "librocm_smi64.so.1" "$f" 2>/dev/null || true
+
+          ;;
+
+      esac
+
+    done
+
+  done
+
+
+
+  # 3) Ensure RPATH includes /usr/lib (optional but harmless)
+
+  for f in $_binary_so; do
+
+    [ -f "$f" ] || continue
+
+    local _current_rpath
+
+    _current_rpath=$(patchelf --print-rpath "$f" 2>/dev/null || echo "")
+
+    if [ -n "$_current_rpath" ]; then
+
+      if [[ "$_current_rpath" != *"/usr/lib"* ]]; then
+
+        patchelf --set-rpath "$_current_rpath:/usr/lib" "$f" 2>/dev/null || true
+
+      fi
+
+    else
+
+      patchelf --set-rpath "/usr/lib" "$f" 2>/dev/null || true
+
+    fi
+
+  done
+
 }
 
