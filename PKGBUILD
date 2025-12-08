@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearcoleco"
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
@@ -13,14 +13,11 @@ source=(
     "gearcoleco.desktop"
 )
 sha256sums=(
-    "4a4e865737c15b713b0de9bd80136a02a26ef9b16d09b61830fc421f38c49595"
+    "08926d3cb31ad00bca78b5c40e3919de85221eac67e3ad8572a492f0e753cffa"
     "b6470e30ab22f01a4819d80015c1892bda401be4684931d8d573a640dc71dd80"
 )
 
 build() {
-    # Temporary change to fix a build error from an invalid sdl2-compat flag
-    # See https://github.com/drhelius/Gearboy/issues/194 for more details
-    sed -i '54s/static-libs/libs/' $srcdir/Gearcoleco-${pkgver}/platforms/desktop-shared/Makefile.common
     cd $srcdir/Gearcoleco-${pkgver}/platforms/linux
     make
 }

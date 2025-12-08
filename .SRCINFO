@@ -1,15 +1,15 @@
 pkgbase = gearcoleco
 	pkgdesc = ColecoVision emulator
-	pkgver = 1.5.3
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearcoleco
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = sdl2
-	source = https://github.com/drhelius/Gearcoleco/archive/refs/tags/1.5.3.tar.gz
+	source = https://github.com/drhelius/Gearcoleco/archive/refs/tags/1.5.5.tar.gz
 	source = gearcoleco.desktop
-	sha256sums = 4a4e865737c15b713b0de9bd80136a02a26ef9b16d09b61830fc421f38c49595
+	sha256sums = 08926d3cb31ad00bca78b5c40e3919de85221eac67e3ad8572a492f0e753cffa
 	sha256sums = b6470e30ab22f01a4819d80015c1892bda401be4684931d8d573a640dc71dd80
 
 pkgname = gearcoleco
