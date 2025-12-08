@@ -2,7 +2,7 @@
 
 pkgname=ferrumc-git
 _pkgname=ferrumc
-pkgver=v0.6.0.r149.gd24c6e58b
+pkgver=0.0.r1789.ffa2316e
 pkgrel=1
 pkgdesc="A reimplementation of the minecraft server in rust."
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/ferrumc-rs/ferrumc')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"	
 }
 
 prepare() {
