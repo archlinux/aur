@@ -1,15 +1,15 @@
 pkgbase = verus-bin
 	pkgdesc = Verified Rust for low-level systems code
-	pkgver = 0.2025.11.30.840fa61
+	pkgver = 0.2025.12.05.d3fefb4
 	pkgrel = 1
 	url = https://github.com/verus-lang/verus
 	arch = x86_64
 	license = MIT
 	provides = verus
 	conflicts = verus
-	source = https://github.com/verus-lang/verus/releases/download/release/0.2025.11.30.840fa61/verus-0.2025.11.30.840fa61-x86-linux.zip
+	source = https://github.com/verus-lang/verus/releases/download/release/0.2025.12.05.d3fefb4/verus-0.2025.12.05.d3fefb4-x86-linux.zip
 	source = https://github.com/verus-lang/verus/raw/refs/heads/main/LICENSE
-	sha256sums = c08b8959a98b15519a07f1eb813db8c34a6311606e4ff7dda7e8ae135b5cfcb2
+	sha256sums = 067fbae158a5bc6967256f6a6a72a35622b26784704a6eb30873ac36f19c472f
 	sha256sums = ab78fc657425500bc64f617e36bb6819c6b0d039c573642f603dd594b12fe0d3
 
 pkgname = verus-bin
