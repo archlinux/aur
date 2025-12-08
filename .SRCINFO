@@ -1,16 +1,16 @@
 pkgbase = betterbird-nl-bin
 	pkgdesc = DUTCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 140.5.0esr
+	pkgver = 140.6.0esr
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
-	provides = betterbird=140.5.0esr
+	provides = betterbird=140.6.0esr
 	conflicts = betterbird
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.5.0esr-bb14.nl.linux-x86_64.tar.xz
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.6.0esr-bb15-build2.nl.linux-x86_64.tar.xz
 	source = eu.betterbird.Betterbird.desktop
-	sha256sums = 75df83178e4a9a4befd9e2760341a90d2f4b449312cfe0d24823d38ae824f95e
+	sha256sums = 43eb54e5dce75e38cb244a4891c150827da4a7d7a6286d436f6e3ffea014e5a6
 	sha256sums = 60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2
 
 pkgname = betterbird-nl-bin
