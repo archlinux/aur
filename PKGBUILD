@@ -1,6 +1,6 @@
 # Maintainer: Trex099 <trex099@github.com>
 pkgname=velocity-bridge
-pkgver=1.0.3
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux"
 arch=('any')
@@ -15,11 +15,13 @@ depends=(
     'python-qrcode'
     'python-pystray'
     'wl-clipboard'
+    'xclip'
+    'xsel'
+    'libappindicator-gtk3'
     'libnotify'
     'tk'
 )
 optdepends=(
-    'xclip: X11 clipboard support'
     'avahi: mDNS hostname support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Trex099/Velocity-Bridge/archive/refs/tags/v${pkgver}.tar.gz")
