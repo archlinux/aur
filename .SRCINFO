@@ -1,13 +1,13 @@
 pkgbase = smb1r-bin
 	pkgdesc = Super Mario Bros. Remastered
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public
 	arch = x86_64
 	license = GPLv3
-	source = https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public/releases/download/1.0.1/Linux.zip
+	source = https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public/releases/download/1.0.2/Linux.zip
 	source = smb1r.desktop
-	sha256sums = 5a68fb2c2d46c00bd50fb8d81112e0e8ef0954d553aa2e18c27c18550828f367
+	sha256sums = a94128b28187095a32c586b754fb86c00267bd424534419dd0179ef7c8701fbd
 	sha256sums = c63c4b0cf5e2775f75bfd0d4c2526cc4666eece80380da8c134be2a570aa51af
 
 pkgname = smb1r-bin
