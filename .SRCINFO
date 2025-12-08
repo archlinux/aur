@@ -1,0 +1,20 @@
+pkgbase = materials-bin
+	pkgdesc = A modern Material Design 3 File Manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bhimio1/material-3-file-explorer
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = gtk3
+	depends = zlib
+	depends = nss
+	provides = materials
+	conflicts = materials
+	options = !strip
+	source = Materials-0.1.0.AppImage::https://github.com/bhimio1/material-3-file-explorer/releases/download/v0.1.0/Materials-0.1.0.AppImage
+	source = https://raw.githubusercontent.com/bhimio1/material-3-file-explorer/v0.1.0/assets/icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = materials-bin
