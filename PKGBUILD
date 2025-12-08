@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cpu
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for whisper.cpp (CPU-only variant)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
