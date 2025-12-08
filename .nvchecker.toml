@@ -1,0 +1,4 @@
+[xwmplay]
+source = "github"
+github = "budRich/xwmplay"
+use_latest_release = true

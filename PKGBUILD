@@ -1,4 +1,4 @@
-# Maintainer: budRich
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: budRich
 
 pkgauthor=budRich
