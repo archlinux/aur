@@ -1,0 +1,5 @@
+[whris-bin]
+source = "github"
+github = "harakeishi/whris"
+use_latest_release = true
+prefix = "v"
