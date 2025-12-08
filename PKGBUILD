@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cpu
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Python bindings for whisper.cpp (CPU-only variant)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -11,6 +11,9 @@ options=('!strip')
 depends=(
   'python'
   'python-numpy'
+  'python-requests'
+  'python-tqdm'
+  'python-platformdirs'
 )
 makedepends=(
   'cmake'
@@ -19,7 +22,13 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
+  'python-setuptools-scm'
   'git'
+)
+optdepends=(
+  'python-sounddevice: run pywhispercpp examples that capture audio'
+  'python-webrtcvad: run VAD-based examples'
+  'python-pyqt5: run GUI example'
 )
 provides=('python-pywhispercpp')
 conflicts=('python-pywhispercpp' 'python-pywhispercpp-cuda' 'python-pywhispercpp-rocm')
