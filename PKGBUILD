@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=rocksdb-tools
-pkgver=10.2.1
+pkgver=10.7.5
 pkgrel=1
 pkgdesc='Core tools from the RocksDB storage'
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('gcc' 'make')
 source=(https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz)
-sha256sums=('d1ddfd3551e649f7e2d180d5a6a006d90cfde56dcfe1e548c58d95b7f1c87049')
+sha256sums=('a9948bf5f00dd1e656fc40c4b0bf39001c3773ad22c56959bdb1c940d10e3d8d')
 provides=(rocksdb-tools)
 
 build() {
