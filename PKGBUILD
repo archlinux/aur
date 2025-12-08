@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.9.1.r0.gd614c2c
-_electronversion=37
+pkgver=4.10.0.r0.g3b1c7c3
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform.(Use system-wide electron)"
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -51,6 +51,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -58,7 +59,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
