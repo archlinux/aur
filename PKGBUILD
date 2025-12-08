@@ -3,20 +3,21 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.246
+pkgver=5.10.247
 pkgrel=1
-pkgdesc='LTS 5.10 Linux'
-url="https://www.kernel.org/"
+pkgdesc="LTS ${pkgver%.*} Linux"
+url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
+license=('GPL-2.0-only')
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme python-six graphviz imagemagick
+  xmlto python-six python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname=linux-$pkgver
+_srcname=linux-${pkgver%.*}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   # https://build.opensuse.org/package/show/home:curb:ArchLinux/linux-lts510
@@ -32,8 +33,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-md5sums=('8732ec98a206b17ffd7ae820d3ba8cc5'
+md5sums=('753adc474bf799d569dec4f165ed92c3'
          'SKIP'
+         'bce1abaed2003d031698b6c5ae9f7486'
          '8b8fa773fe9c7938a76ba07ca2933ed8'
          'd31360693fb06a0d69c1f126350baa6d'
          'c1f10e50f7ca23d07ae83ae6252854d5'
@@ -41,8 +43,9 @@ md5sums=('8732ec98a206b17ffd7ae820d3ba8cc5'
          '32277e1b48dd6f00b5e31f3cb3f0f44c'
          '80c6b8ddceb9e0cb9b432d5ec4cdf5ff'
          '6140c1a5cd25145548ed5867d13ee7d9')
-sha256sums=('eb6b76c269d2dc09791638b10b9dcb9d79fd2abd45113a31fc03f68731caa875'
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
+            '64c905b9634e979cbcbc8cddd4db6d9ee059379b5f1148ae4f81299ecb1d4c83'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
@@ -67,16 +70,24 @@ prepare() {
   for _src in "${source[@]}"; do
     _src="${_src%%::*}"
     _src="${_src##*/}"
-    [[ $_src = *.patch ]] || continue
-    msg2 "Applying patch $_src..."
-    patch -Np1 < "../$_src"
+    case "${_src}" in
+    *.patch)
+      msg2 "Applying patch $_src..."
+      patch -Np1 < "../$_src"
+      ;;
+    patch-*)
+      _src="${_src%.*}"
+      msg2 "Applying patch $_src..."
+      patch -Np1 -s < "../$_src"
+      ;;
+    esac
   done
 
   #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
   # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
-  cp "../${source[2]}" .config
+  cp "../${source[3]}" .config
   make olddefconfig
 
   make -s kernelrelease > version
@@ -96,7 +107,7 @@ exec /usr/bin/gcc -std='gnu17' "\$@"
 EOF
     chmod 755 'gcc'
   fi
-  nice -n1 make -j1 htmldocs & # -i SPHINXOPTS='-T --keep-going' &
+  nice -n1 make -j1 htmldocs < /dev/null & # -i SPHINXOPTS='-T --keep-going' &
   local _pid_docs="$!"
   nice -n2 make all
   wait "${_pid_docs}"
@@ -155,10 +166,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
@@ -186,7 +197,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
