@@ -1,7 +1,7 @@
 pkgbase = python-pywhispercpp-cpu
 	pkgdesc = Python bindings for whisper.cpp (CPU-only variant)
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Absadiki/pywhispercpp
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,7 @@ pkgbase = python-pywhispercpp-cpu
 	conflicts = python-pywhispercpp
 	conflicts = python-pywhispercpp-cuda
 	conflicts = python-pywhispercpp-rocm
+	options = !strip
 	source = git+https://github.com/Absadiki/pywhispercpp.git#commit=4ab96165f84e8eb579077dfc3d0476fa5606affe
 	sha256sums = SKIP
 
