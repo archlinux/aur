@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=spw
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="spw - secure password generator"
 arch=('any')
@@ -18,6 +18,13 @@ pkgver() {
 }
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
+
+build() {
+    cd "$srcdir/$pkgname"
+    # Update version in spw.py to match the git tag
+    local tag_version=$(git describe --tags --abbrev=0 | sed 's/^v//')
+    sed -i "s/^spw_version = .*/spw_version = \"$tag_version\"/" spw.py
+}
 
 package() {
     install -d "$pkgdir/usr/bin"
