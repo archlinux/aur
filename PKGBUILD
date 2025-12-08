@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=5.0.0.3
-pkgrel=2
+pkgver=5.0.0.4
+pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -17,17 +17,15 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"miniaudio::git+https://github.com/mackron/miniaudio.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
 	#discord module
-	"git+https://github.com/Tencent/rapidjson.git"
-	"mdl.patch")
-sha256sums=('b6b8d4bb49afa91c1577c2ecc748c9993f2fd84c465b6cb13da7646e2055af18'
+	"git+https://github.com/Tencent/rapidjson.git")
+sha256sums=('78946127cbbb10bfe83cdbd2101e4cc408fa380ec0ac0e262e61625156bcba2c'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'edac6534038d44cef2be9e66314450e75d1c4414061148974cf2e253d4849cca')
+            'SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -43,7 +41,6 @@ prepare() {
 	git config submodule.src/shared/thirdparty/sourcepp.url "$srcdir/sourcepp"
 	git config submodule.cmake/cmake-helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
-	patch -Np1 < "$srcdir/mdl.patch"
 }
 
 build() {
