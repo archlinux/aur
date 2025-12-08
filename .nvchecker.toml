@@ -1,0 +1,3 @@
+[perl-test-future-io-impl]
+source = "cpan"
+cpan = "Test-Future-IO-Impl"
