@@ -6,7 +6,7 @@
 _name=FreeRDP
 _pkgnbase=freerdp
 pkgname=freerdp-sdl3
-pkgver=3.18.0
+pkgver=3.19.0
 _libver=${pkgver/.*/}
 pkgrel=1
 epoch=1
@@ -59,7 +59,7 @@ provides=(
 source=(
   https://github.com/$_pkgnbase/$_pkgnbase/archive/$pkgver/$_pkgnbase-$pkgver.tar.gz
 )
-sha256sums=('d2ec022566fa523ef33c29db952d428eb0ddc0a7b7f36204499fd06185178e5e')
+sha256sums=('8d3ada0d4f30dd5c3eef2613d266b420f1404fa2868983abdb4e3087a460ee78')
 
 build() {
   # gcc14 buildfix
