@@ -8,8 +8,8 @@ pkgrel='1'
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C'
 url="https://github.com/CESNET/${_pkgname}"
 arch=('x86_64' 'aarch64' 'armv7h')
-license=('BSD')
-depends=('pcre2')
+license=('BSD-3-Clause')
+depends=('pcre2' 'xxhash')
 makedepends=('cmake' 'doxygen' 'graphviz')
 checkdepends=('cmocka')
 provides=("${_pkgname}=${pkgver}")

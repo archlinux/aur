@@ -6,12 +6,13 @@ pkgbase = libyang3
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = cmocka
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
 	depends = pcre2
+	depends = xxhash
 	provides = libyang=3.13.6
 	conflicts = libyang2
 	conflicts = libyang
