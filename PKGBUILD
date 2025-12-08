@@ -12,11 +12,113 @@ license=('custom')
 options=(!strip)
 source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+depends=(accountsservice
+         appstream-qt
+         dbus
+         fontconfig
+         freetype2
+         gcc-libs
+         glibc
+         icu
+         kactivitymanagerd
+         karchive
+         kauth
+         kbookmarks
+         kcmutils
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kde-cli-tools
+         kdeclarative
+         kded
+         kdbusaddons
+         kglobalaccel
+         kguiaddons
+         kholidays
+         ki18n
+         kiconthemes
+         kidletime
+         kio
+         kio-extras
+         kio-fuse
+         kirigami
+         kirigami-addons
+         kitemmodels
+         kjobwidgets
+         knewstuff
+         knighttime
+         knotifications
+         knotifyconfig
+         kpackage
+         kparts
+         kpipewire
+         krunner
+         kquickcharts
+         kscreenlocker
+         kservice
+         kstatusnotifieritem
+         ksvg
+         ksystemstats
+         ktexteditor
+         ktextwidgets
+         kuserfeedback
+         kwallet
+         kwayland
+         kwidgetsaddons
+         kwin
+         kwin-x11-sonic
+         kwindowsystem
+         kxmlgui
+         layer-shell-qt
+         libcanberra
+         libice
+         libkexiv2
+         libksysguard
+         libplasma
+         libqalculate
+         libsm
+         libx11
+         libxau
+         libxcb
+         libxcrypt
+         libxcursor
+         libxfixes
+         libxft
+         libxtst
+         milou
+         ocean-sound-theme
+         plasma-activities
+         plasma-activities-stats
+         plasma-workspace-sonic
+         plasma5support
+         prison
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-location
+         qt6-positioning
+         qt6-svg
+         qt6-tools # for qdbus
+         qt6-virtualkeyboard
+         sh
+         solid
+         systemd-libs
+         wayland
+         xcb-util
+         xcb-util-cursor
+         xcb-util-image
+         xorg-xmessage
+         xorg-xrdb
+         xorg-xwayland
+         zlib)
 provides=($_pkgname1 $_pkgname2 "${_pkgname1}-lite")
 conflicts=($_pkgname1 $_pkgname2 "${_pkgname1}-lite")
 replaces=("${_pkgname1}-lite")
 
-sha256sums=('3fa67484c7dc998388cbf134fb1f42dcc299d7006c412a09a313615c36c8b319')
+sha256sums=('1d3a9d2975ba72718cbdb5949b8b03b3ffde9d84dd91302d03d8a9c0e42fff87')
 
 package() {
   tar -xf "${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
