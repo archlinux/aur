@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zoraxy-bin
-pkgver=3.2.9
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A general purpose HTTP reverse proxy and forwarding tool. Now written in Go!(Precompiled version)'
 arch=(
@@ -21,10 +21,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h::${_ghurl}/releases/download/v$
 source_i686=("${pkgname%-bin}-${pkgver}-i686::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_386")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64")
 sha256sums=('1f93b8f03e2e1e368f67663e98730818e6e01e7a603ffd3b66872caf32e2b696')
-sha256sums_aarch64=('3bf0d0a36c9cc4993ac5f836daa41aed58d9b1cd9ccf01c2d964451accaff350')
-sha256sums_armv7h=('5bb9cd876f38e436925cb2084f03a9d27f5bb62c6dd2e8e97f87033748a6848d')
-sha256sums_i686=('aa05b1749dc8da30fa18ef5326bfd1a723a10aeb30a632809a52911e3f6c2166')
-sha256sums_x86_64=('033f6dd64c9de17c3d1042f625637ab05ef9cea09e096d3825cd5e7c03dcffc4')
+sha256sums_aarch64=('7c622c53bd6a26c1e7960399d390558f8e4dda6e716e7b2c48b79d7aca0fc4c7')
+sha256sums_armv7h=('a5d45948e4ea8667070ce1225ea314db81567fa79bb79d7991f941101ccf5879')
+sha256sums_i686=('aee6d9963a564bfe8c643b684cfc8d09591f5e403f47878d0dfaa9d31c61434b')
+sha256sums_x86_64=('a9c1d551e83a75fec9d022ee14ee73579df7a9a259e4b3bde2adba9d1a4f9929')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/bin"
