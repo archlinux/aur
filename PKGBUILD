@@ -1,34 +1,33 @@
 # Maintainer: John Gleezowood <psyrccio@gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
+pkgname="ocenaudio-bin"
 _pkgname=ocenaudio
-pkgname="$_pkgname-bin"
-pkgver=3.15.3
+pkgver=3.16.5
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('x86_64')
 url="https://www.ocenaudio.com/"
 license=('custom')
 depends=('hicolor-icon-theme' 'jack' 'libpulse' 'qt6-base')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-sha256sums=('171683159f4d17c9d42703c00d1af501f455358f489c4f5e96d90e22eb7d79dd')
-source=("${_pkgname}-${pkgver}_x86_64.tar.zst::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.zst?version=v${pkgver}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-build() {
-  echo "ocenaudio "$pkgver
-}
+source=("${_pkgname}-${pkgver}_x86_64.tar.zst::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.zst?version=v${pkgver}")
+sha512sums=('49b476153934ca4c228ffd078d4bfd81607653c3ef2120ff68d592c74c87713742bcb80c0f4d1e9c76dd71a012a8a531d80a4d2c6ed973f3b8cd2521464c6429')
 
 package() {
-  cp -rnf ${srcdir}/* ${pkgdir}/
-  rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.tar.zst
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/licenses"
-  install -Dm644 "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt" \
+  cp -r "$srcdir/opt" "$pkgdir/"
+  cp -r "$srcdir/usr" "$pkgdir/"
+
+  sed -i 's|/opt/ocenaudio/bin/ocenaudio|/usr/bin/ocenaudio|' \
+    "$pkgdir/usr/share/applications/ocenaudio.desktop"
+
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/opt/ocenaudio/bin/ocenaudio" "$pkgdir/usr/bin/ocenaudio"
+
+  install -Dm644 "$srcdir/opt/ocenaudio/bin/ocenaudio_license.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-  ln -sf "/opt/$_pkgname/bin/${_pkgname}" "${pkgdir}/usr/bin"
-  sed -i 's|^Exec=/opt/ocenaudio/bin|Exec=/usr/bin|' "$pkgdir/usr/share/applications/ocenaudio.desktop"
-
-  rm -f "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt"
+  rm -rf "$pkgdir/usr/src"
 }
