@@ -6,7 +6,7 @@ pkgbase = omnisharp-roslyn
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = dotnet-sdk
+	depends = dotnet-sdk-9.0
 	source = git+https://github.com/OmniSharp/omnisharp-roslyn#tag=v1.39.14
 	sha256sums = ea76b2487aa9b51c7630359af355a8c32a6c7f5d5abda879f0f763a93058d70c
 

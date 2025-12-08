@@ -1,4 +1,4 @@
-# Maintainer: Mark <aur@hegreberg.io>
+# Maintainer: Mark <mark@archlinux.org>
 # Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
@@ -8,7 +8,7 @@ pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
-depends=('dotnet-sdk')
+depends=('dotnet-sdk-9.0')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('ea76b2487aa9b51c7630359af355a8c32a6c7f5d5abda879f0f763a93058d70c')
