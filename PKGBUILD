@@ -1,6 +1,6 @@
 # Maintainer: Burgess <burgess@ripvid.app>
 pkgname=ripvid
-pkgver=2.2.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 provides=('ripvid')
 conflicts=('ripvid-bin' 'ripvid-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BurgessTG/ripVID/releases/download/v${pkgver}/ripVID_${pkgver}_amd64.deb")
+source=("${pkgname}-${pkgver}.deb::https://github.com/BurgessTG/ripVID/releases/download/v${pkgver}/ripVID_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
