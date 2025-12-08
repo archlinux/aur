@@ -1,0 +1,5 @@
+[gitomatic-bin]
+source = "github"
+github = "muesli/gitomatic"
+use_latest_release = true
+prefix = "v"
