@@ -1,4 +1,4 @@
-# Maintainer: CristianCYAC <cristianyasprillac at gmail dot com>
+# Maintainer: Voxan <admin at hessfr dot fr>
 # Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Cyra Westmere <cyra@slowest.network>
@@ -9,7 +9,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=6.5.10
+pkgver=6.6.5.1
 pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -65,7 +65,7 @@ source=(
 
 prepare () {
 	mkdir -p mozbuild
-	cd "Waterfox-$pkgver"
+	cd "waterfox-$pkgver"
 
 	cat > ../mozconfig <<EOT
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -104,7 +104,7 @@ EOT
 }
 
 build () {
-	cd Waterfox-$pkgver
+	cd waterfox-$pkgver
 
 	export MOZ_NOSPAM=1
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -162,7 +162,7 @@ fi
 }
 
 package () {
-	cd Waterfox-$pkgver
+	cd waterfox-$pkgver
 	DESTDIR="$pkgdir" ./mach install
 
 	local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
@@ -224,5 +224,5 @@ EOT
 	fi
 }
 #first browser package, second icon file 
-sha256sums=('35b6b725bf5ed961c667fb19a290485a23a937ee540600b328f99f959736f0a3'
+sha256sums=('65831824cc414f3297c77f93a9380039eea3fc365dab0797290d99bacadc38b6'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
