@@ -1,5 +1,6 @@
-# Maintainer:
-# Contributor: Michał Kopeć <michal@nozomi.space>
+# Maintainer: xiota
+# Contributor: Michał Kopeć <michal (at) nozomi.space>
+# Contributor: Tomasz Pakuła <tomasz.pakula.oficjalny (at) gmail.com>
 
 # https://www.catalog.update.microsoft.com/Search.aspx?q=xbox+adapter
 # https://github.com/dlundqvist/xone/blob/master/install/firmware.sh
@@ -38,12 +39,10 @@ source=(
   "$_pkgsrc_3.$_pkgext"::"https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/06/1dbd7cb4-53bc-4857-a5b0-5955c8acaf71_9081931e7d664429a93ffda0db41b7545b7ac257.cab"
   "$_pkgsrc_4.$_pkgext"::"https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2017/08/aeff215c-3bc4-4d36-a3ea-e14bfa8fa9d2_e58550c4f74a27e51e5cb6868b10ff633fa77164.cab"
 )
-sha256sums=(
-  'd89a72e8dc10b7c4f16d5c887fe7f54c34c22005ac1f360704d5d9462258ef32'
-  '65736a84ff4036645b8f8ec602bed91ab6353019c9cb3233decab9feec0f6f04'
-  '90dd91fb67460d387407fd8109c0e7d0f18f4b659be0f62db858a1849ead2ee0'
-  '5a8fbad9521e58cc697a8734720ca497673098022d61d91a88be433002ccd8f2'
-)
+sha256sums=('d89a72e8dc10b7c4f16d5c887fe7f54c34c22005ac1f360704d5d9462258ef32'
+            '65736a84ff4036645b8f8ec602bed91ab6353019c9cb3233decab9feec0f6f04'
+            '90dd91fb67460d387407fd8109c0e7d0f18f4b659be0f62db858a1849ead2ee0'
+            '5a8fbad9521e58cc697a8734720ca497673098022d61d91a88be433002ccd8f2')
 
 _terms_of_use="terms_of_use"
 _terms_of_use_url="https://www.microsoft.com/en-us/legal/terms-of-use"
