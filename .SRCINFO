@@ -1,0 +1,20 @@
+pkgbase = tyr-bin
+	pkgdesc = Intelligent file organization powered by machine learning and simple algos
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/nurysso/tyr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = tyr
+	conflicts = tyr
+	source_x86_64 = tyr-linux-x86_64-0.4.4::https://github.com/nurysso/tyr/releases/download/v0.4.4/tyr-linux-x86_64
+	source_x86_64 = LICENSE-0.4.4::https://raw.githubusercontent.com/nurysso/tyr/v0.4.4/LICENSE
+	sha256sums_x86_64 = 52edc3d823d715f2d72717aebbb1219ef95600fc1aeace1f633c1f794d2d4390
+	sha256sums_x86_64 = a6ba33e31f75499478db550f25a8239328431ed1697c7bc613f26b84a6366f3f
+	source_aarch64 = tyr-linux-aarch64-0.4.4::https://github.com/nurysso/tyr/releases/download/v0.4.4/tyr-linux-aarch64
+	source_aarch64 = LICENSE-0.4.4::https://raw.githubusercontent.com/nurysso/tyr/v0.4.4/LICENSE
+	sha256sums_aarch64 = 45d9af7c4716f36db2ea991fa9a9daf86281d12a66de50174ee737f2568828cf
+	sha256sums_aarch64 = a6ba33e31f75499478db550f25a8239328431ed1697c7bc613f26b84a6366f3f
+
+pkgname = tyr-bin
