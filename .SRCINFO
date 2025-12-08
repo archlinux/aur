@@ -1,7 +1,7 @@
 pkgbase = nuclei-qemu
 	pkgdesc = nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。
-	pkgver = 2025.02
-	pkgrel = 2
+	pkgver = 2025.10
+	pkgrel = 1
 	url = https://www.nucleisys.com/download.php
 	arch = x86_64
 	license = LicenseRef-unknow
@@ -9,7 +9,7 @@ pkgbase = nuclei-qemu
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	options = !strip
 	options = !debug
-	source = https://download.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-2025.02-linux-x64.tar.gz
-	sha256sums = 8706fdd45f542cf6a1d6261a8121868010832d023af8946e75da5e2ac4406d2b
+	source = https://download.nucleisys.com/upload/files/toolchain/qemu/nuclei-qemu-2025.10-linux-x64.tar.gz
+	sha256sums = 7adcc2f5ece2aae71d1127015369aab134b8258e70e3ae818f5196b12993a604
 
 pkgname = nuclei-qemu

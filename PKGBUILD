@@ -2,8 +2,8 @@
 
 pkgbase=nuclei-qemu
 pkgname=(nuclei-qemu)
-pkgver=2025.02
-pkgrel=2
+pkgver=2025.10
+pkgrel=1
 pkgdesc="nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。"
 arch=("x86_64")
 makedepends=()
@@ -14,8 +14,8 @@ conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('LicenseRef-unknow')
 options=(!strip !debug)
-source=("https://download.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-${pkgver}-linux-x64.tar.gz")
-sha256sums=('8706fdd45f542cf6a1d6261a8121868010832d023af8946e75da5e2ac4406d2b')
+source=("https://download.nucleisys.com/upload/files/toolchain/qemu/nuclei-qemu-${pkgver}-linux-x64.tar.gz")
+sha256sums=('7adcc2f5ece2aae71d1127015369aab134b8258e70e3ae818f5196b12993a604')
 
 package_nuclei-qemu-bin() {
 	msg2 'Installing Nuclei QEMU'
