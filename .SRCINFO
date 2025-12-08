@@ -1,7 +1,7 @@
 pkgbase = kwin-x11-sonic-bin
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
 	pkgver = 6.5.3
-	pkgrel = 2.8
+	pkgrel = 2.9
 	url = https://github.com/Sonic-DE/kwin-x11-sonic
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -38,7 +38,7 @@ pkgbase = kwin-x11-sonic-bin
 	depends = libcanberra
 	depends = libdisplay-info
 	depends = libdrm
-	depends = libelogind
+	depends = systemd-libs
 	depends = libepoxy
 	depends = libplasma=
 	depends = libqaccessibilityclient-qt6
@@ -65,9 +65,9 @@ pkgbase = kwin-x11-sonic-bin
 	conflicts = kwin-x11
 	conflicts = kwin-x11-lite-bin
 	replaces = kwin-x11-lite-bin
-	noextract = kwin-x11-6.5.3-2.8-x86_64.pkg.tar.zst
+	noextract = kwin-x11-6.5.3-2.9-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/kwin-x11-sonic-6.5.3-2.8-x86_64.pkg.tar.zst
+	source = https://x11libre.net/repo/arch_based/x86_64/kwin-x11-sonic-6.5.3-2.9-x86_64.pkg.tar.zst
 	sha256sums = 9708fe07ad544479e3df512888af7aa0fa6e92bbd2d5abbd6218bc23ce511f65
 
 pkgname = kwin-x11-sonic-bin

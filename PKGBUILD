@@ -4,7 +4,7 @@ _pkgname1=kwin-x11
 _pkgname2="${_pkgname1}-sonic"
 pkgname="${_pkgname2}-bin"
 pkgver=6.5.3
-pkgrel=2.8
+pkgrel=2.9
 pkgdesc="kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre"
 arch=(x86_64)
 url="https://github.com/Sonic-DE/${_pkgname2}"
@@ -45,7 +45,7 @@ depends=(aurorae
          libcanberra
          libdisplay-info
          libdrm
-         libelogind
+         systemd-libs
          libepoxy
          libplasma=$_pkgver
          libqaccessibilityclient-qt6
