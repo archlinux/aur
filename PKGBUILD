@@ -1,6 +1,6 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=fentlauncher
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Minecraft Launcher for FENTCRAFT"
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://fentcraft.fun"
 license=('custom')
 depends=('icu' 'krb5' 'zlib' 'openssl')
 options=('!strip' '!debug')
-source=("https://github.com/xxanqw/fentlauncher-pkg/releases/download/v${pkgver}/FentLauncher-Linux-x64.tar.gz"
+source=("https://github.com/xxanqw/fentlauncher-pkg/releases/download/v${pkgver}/fentlauncher-linux-x64-${pkgver}.tar.gz"
         "fentlauncher.desktop"
         "https://github.com/xxanqw/fentlauncher-pkg/releases/download/v${pkgver}/icon.png")
-sha256sums=('32ec52118207b2f252281a0892e270613df034a7c028335d998fb1fa8a908672'
+sha256sums=('a1784a8a04745d6af8cf2d2a859c21318da0cdf2672ec87c37f4af8573c6d6e1'
             '520dffc0682a23b0446c3ddfd57afca33e458623ca7ac4f8440643b8e8e3acbb'
             'ab126f045e6fc1d87198571d311a19487a76160fd4c1a2b3e1df6dc503daec5e')
 
