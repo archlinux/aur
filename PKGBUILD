@@ -25,7 +25,7 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('cb79d87b43e04b7532644e70e8de0b6a9162e9c3b08625eaed74fba757df9bcd' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('983469cd7985cee28205a20d86b444808560baa165deddbffd82e6cd45988fa1' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
