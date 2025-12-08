@@ -2,7 +2,7 @@
 
 pkgver=3.30
 pkgname=microchip-mplabxc-dsc-bin
-pkgrel=1
+pkgrel=2
 pkgdesc="Microchip's MPLAB XC-DSC C compiler toolchain for their dsPIC33A DSC microcontroller families"
 arch=(x86_64)
 url=http://www.microchip.com/xc-dsc
@@ -30,6 +30,7 @@ package() {
   mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
   mv unpacked.vfs/licensecomponent/LinuxLM/xclmcheck.sh "${pkgdir}${instdir}/bin"
   mv unpacked.vfs/licensecomponent/xclmBinlinux32/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  chmod u+s "${pkgdir}${instdir}/bin/xclm"
   sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" unpacked.vfs/licensecomponent/xclmBinlinux32/etc/xclm.conf
   mv unpacked.vfs/licensecomponent/xclmBinlinux32/etc/xclm.conf "${pkgdir}${instdir}/etc"
   mv unpacked.vfs/licensecomponent/xclmallDocs/doc/* "${pkgdir}${instdir}/docs"
