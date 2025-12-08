@@ -15,7 +15,7 @@ provides=('power-options-tray')
 conflicts=('power-options-tray-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('b2cba289feea0414c172cdfef3e7a9b7cf4f07a810668b1b560fcda1eda52888')
+sha256sums=('e604cc0ef8b786697cda0ff67d5abdff334d2449bf83efba7c2ee0112b6b9f12')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
