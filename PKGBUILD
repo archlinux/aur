@@ -6,7 +6,7 @@ pkgname='python-deltachat-rpc-client-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=2.33.0.r9.g5902fe2cb
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client for Delta Chat core JSON-RPC interface (development version)'
 arch=('any')
 url='https://github.com/chatmail/core/tree/main/deltachat-rpc-client'
@@ -25,7 +25,7 @@ depends=(
   'python-pytest'
 )
 source=("git+$_url.git")
-provides=("$_pkgname")
+provides=("$_pkgname" "$_srcname")
 conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 

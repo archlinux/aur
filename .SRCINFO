@@ -1,7 +1,7 @@
 pkgbase = python-deltachat-rpc-client-git
 	pkgdesc = Python client for Delta Chat core JSON-RPC interface (development version)
 	pkgver = 2.33.0.r9.g5902fe2cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chatmail/core/tree/main/deltachat-rpc-client
 	arch = any
 	license = MPL-2.0
@@ -14,7 +14,9 @@ pkgbase = python-deltachat-rpc-client-git
 	depends = python-execnet
 	depends = python-pytest
 	provides = python-deltachat-rpc-client
+	provides = deltachat-rpc-client
 	conflicts = python-deltachat-rpc-client
+	conflicts = deltachat-rpc-client
 	source = git+https://github.com/chatmail/core.git
 	sha256sums = SKIP
 
