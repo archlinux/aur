@@ -22,6 +22,10 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 
+    # Symlink to /usr/bin
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/materials"
+
     # Create desktop entry
     mkdir -p "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
