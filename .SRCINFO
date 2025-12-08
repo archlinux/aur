@@ -1,15 +1,15 @@
 pkgbase = gearboy
 	pkgdesc = Game Boy / Gameboy Color emulator
-	pkgver = 3.7.4
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearboy
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = sdl2
-	source = https://github.com/drhelius/Gearboy/archive/refs/tags/3.7.4.tar.gz
+	source = https://github.com/drhelius/Gearboy/archive/refs/tags/3.7.5.tar.gz
 	source = gearboy.desktop
-	sha256sums = ba1bbe255c547c51ca42943e5212f62febc511cbc6445d91078fa6b67a57d2fb
+	sha256sums = 380f036105e5896405f9eb932ce6571add4d89c46063c7094b6f2df4833b4f7f
 	sha256sums = 14488a013717c4d59eabd11dd852c167fc7d9eff702a2691f1089317faaf0f24
 
 pkgname = gearboy
