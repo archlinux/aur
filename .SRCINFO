@@ -1,0 +1,13 @@
+pkgbase = crier
+	pkgdesc = Simple push notification tool - works on LAN (TCP) or across the internet (MQTT)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/crier
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	options = !strip
+	source_x86_64 = crier-0.2.1-linux-x86_64.tar.gz::https://github.com/skorotkiewicz/crier/releases/download/0.2.1/crier-linux-x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = crier
