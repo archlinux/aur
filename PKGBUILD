@@ -2,7 +2,7 @@
 
 pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
-_pkgid=net.shadps4.shadPS4
+_pkgid=net.shadps4.shadps4-qtlauncher
 pkgver=2025.12.01.0d56f29
 _date=2025-12-01
 _commit=0d56f29269af7447f1030d99d3e24bb54f363019
@@ -31,7 +31,7 @@ package() {
     mv "$srcdir"/squashfs-root/* "$pkgdir/opt/${_pkgname}"
     install -dm755 "$pkgdir/usr/bin"
     ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/shadps4-qtlauncher"
-    install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.svg" -t "$pkgdir/usr/share/pixmaps"
+    install -Dm644 "$pkgdir/opt/${_pkgname}/usr/share/icons/hicolor/scalable/apps/net.shadps4.shadPS4.svg" "$pkgdir/usr/share/pixmaps/net.shadps4.shadps4-qtlauncher.svg"
     install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
     sed -i "s|Exec=shadPS4QtLauncher|Exec=shadps4-qtlauncher|" "$pkgdir/usr/share/applications/${_pkgid}.desktop"
     chmod -R u+rwX,go+rX,go-w "$pkgdir/"
