@@ -1,6 +1,6 @@
 pkgbase = pocketnet
 	pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform.
-	pkgver = 0.9.129
+	pkgver = 0.9.134
 	pkgrel = 1
 	url = https://github.com/pocketnetteam/pocketnet.gui
 	arch = any
