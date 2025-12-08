@@ -1,6 +1,6 @@
 pkgbase = tldx-bin
 	pkgdesc = Domain Availability Research Tool
-	pkgver = 1.2.4
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/brandonyoungdev/tldx
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tldx-bin
 	license = Apache-2.0
 	provides = tldx
 	conflicts = tldx
-	source_x86_64 = tldx-bin-1.2.4-x86_64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.2.4/tldx_1.2.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = af372a5800049aa2907fda520b942c3b4c9de6504f5b428cbf672ba8861600d2
-	source_aarch64 = tldx-bin-1.2.4-aarch64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.2.4/tldx_1.2.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 180e73c6fcedec36dc1c7b5238ca8272394225148810d27c1d8ba8b8fc29d84d
+	source_x86_64 = tldx-bin-1.3.0-x86_64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.3.0/tldx_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7ac0e2d35c5beeef036cb35e6777c05a269be1a39ee4baee22ad33affc6e7486
+	source_aarch64 = tldx-bin-1.3.0-aarch64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.3.0/tldx_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3eb074efbfd71e9c3695a96c5105684e75742e0bcae0fe438a65dc827400bf31
 
 pkgname = tldx-bin
