@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-vid.stab
 	pkgdesc = Video stabilization library (mingw-w64)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://public.hronopik.de/vid.stab
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = mingw-w64-vid.stab
 	options = !strip
 	options = !buildflags
 	options = staticlibs
+	options = !debug
 	source = git+https://github.com/georgmartius/vid.stab.git#tag=90c76aca2cb06c3ff6f7476a7cd6851b39436656
 	b2sums = SKIP
 

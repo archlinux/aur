@@ -6,14 +6,14 @@
 
 pkgname=mingw-w64-vid.stab
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Video stabilization library (mingw-w64)'
 arch=(any)
 url=http://public.hronopik.de/vid.stab
 license=(GPL)
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-gcc mingw-w64-cmake git)
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 _tag=90c76aca2cb06c3ff6f7476a7cd6851b39436656
 source=(git+https://github.com/georgmartius/vid.stab.git#tag=${_tag})
 b2sums=(SKIP)
@@ -30,12 +30,14 @@ build() {
 
     # build shared libs
     ${_arch}-cmake "${srcdir}/vid.stab" \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
       -DBUILD_SHARED_LIBS:BOOL=ON
     make
 
     # build static libs
     ${_arch}-cmake "${srcdir}/vid.stab" \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
       -DBUILD_SHARED_LIBS:BOOL=OFF
     make
