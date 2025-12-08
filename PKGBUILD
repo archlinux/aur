@@ -4,14 +4,14 @@ reponame=Rivet
 pkgname=rivetui-git
 pkgver=0.2.12
 pkgrel=1
-pkgdesc="A Terminal UI Discord Client in Rust"
+pkgdesc="A Terminal UI Discord Client in Rust (latest)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/YetAnotherMechanicusEnjoyer/Rivet"
 
 license=('MIT')
 depends=('glibc' 'cargo' 'rust')
 
-source=("${pkgname}-main.tar.gz::${url}/archive/refs/heads/main.tar.gz")
+source=("${reponame}-main.tar.gz::${url}/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
