@@ -1,10 +1,9 @@
 [Desktop Entry]
-Name=PixelFlasher
-Comment=Pixel phone flashing GUI
-Exec=PixelFlasher
-Terminal=false
-Icon=PixelFlasher
 Type=Application
-StartupNotify=false
-Hidden=false
-Categories=Utility
+Name=PixelFlasher
+Comment=Android Flashing Tool
+Exec=PixelFlasher
+Icon=pixelflasher
+Categories=Utility;Development;
+Terminal=false
+StartupWMClass=PixelFlasher.py
