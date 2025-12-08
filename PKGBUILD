@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=osgrep
-pkgver=0.4.15
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="Local grep-like semantic search tool for your codebase"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('772bfd9c366ce6abadf10a161fcb9c27aa5ff32c548450194f47dd3833c15345')
+sha256sums=('3ca52f9ca1c73c48bfadb8202c418fa8991effe9c279f4272ab7830356f45e4e')
 noextract=("$pkgname-$pkgver.tgz")
 
 pkgver() {
