@@ -2,13 +2,17 @@
 # Contributor: Jakob Nixdorf <flocke at shadowice dot org>
 
 pkgname=perl-struct-dumb
-pkgver=0.14
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc='Make simple lightweight record-like structures'
 arch=('any')
 url='https://metacpan.org/dist/Struct-Dumb'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Struct-Dumb/source/Build.PL
+depends=(
+  ## requires
+  'perl>=5.14'
+)
 checkdepends=(
   ## tests_requires
   'perl-test-simple>=1.302200' # 'Test2::V0'
@@ -26,7 +30,7 @@ optdepends=(
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Struct-Dumb-${pkgver}.tar.gz")
-b2sums=('fce3b9a9a78a27503f9cc809a312a3beba40f0e274a041b2e7f6f7f85496de9c23b4b74b2ba5156d3650040d5d9d05fd9dcb7297d430a872c04c5c3cb70a3d32')
+b2sums=('23c3b95ea520162cb1b335651b848ca21aa38a373d6432286010891a7ad103271ecc5888816ab71cd91697ad6feb9a13b8e640adab4530ffbb8800933a702c35')
 
 
 build() {
