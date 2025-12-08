@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=fargate-cli
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="CLI for AWS Fargate"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ source_i686=("https://github.com/turnerlabs/fargate/releases/download/v$pkgver/n
 source_x86_64=("https://github.com/turnerlabs/fargate/releases/download/v$pkgver/ncd_linux_amd64")
 url="https://github.com/turnerlabs/fargate"
 license=("MIT")
-sha256sums_i686=('4121e4d43760c53c9eba52af8f3a2484388ac8f1a10beebaceb5a8fb60a02ff5')
-sha256sums_x86_64=('aeafc00eb45851ba0ac9c90df4ae37d897826e107b88546994e8f803091ba720')
+sha256sums_i686=('15113cdc44b38300ab98977ac916684722b41473e21c9564bd964cc37166b484')
+sha256sums_x86_64=('3aa80ee0ebf520a3d3420c748b2550ab417561fa0c125e2fa686e304e6cc8484')
 
 package() {
   _ARCH=""
