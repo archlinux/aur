@@ -1,0 +1,4 @@
+[aq-bin]
+source = "github"
+github = "rossmacarthur/aq"
+use_latest_release = true

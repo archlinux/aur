@@ -1,4 +1,4 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=aq-bin
 _pkgname="${pkgname%-bin}"
