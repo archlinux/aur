@@ -1,6 +1,6 @@
 pkgbase = slskdn-dev
 	pkgdesc = 🔋 DEV: The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including multi-source downloads, DHT mesh sync, swarm mode & more
-	pkgver = 0.24.1.dev.202512081750
+	pkgver = 0.24.1.dev.202512081759
 	pkgrel = 1
 	url = https://github.com/snapetech/slskdn/tree/experimental/multi-source-swarm
 	install = slskd.install
@@ -18,7 +18,7 @@ pkgbase = slskdn-dev
 	source = slskd.service::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.service
 	source = slskd.yml::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.yml
 	source = slskd.sysusers::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.sysusers
-	sha256sums = ecd9d7be0d3dda352b3b03a81103bcdb65c5fc54f4a80e5df1c74b9cf109c33d
+	sha256sums = 26f7d7cbe4d0de8ddb8578b50781826b50f01c68a71149d0b379d6eacfd30f13
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
