@@ -2,13 +2,13 @@
 
 pkgname=intellij-idea-open-eap
 _versionbase=2025.3
-_tagsuffix=rc-2
-_tag="${_versionbase}-${_tagsuffix}"
-# Uncomment to print proper $_build value after updating values above:
-# curl "https://raw.githubusercontent.com/JetBrains/intellij-community/refs/tags/$_tag/build.txt"
-_build=253.28294.SNAPSHOT
+_tagsuffix=
+_tag="idea/${_versionbase}${_tagsuffix}"
+# See build number tag having same commit hash as this tag, at
+# https://github.com/JetBrains/intellij-community/tags
+_build=253.28294.334
 # Build number is before tag suffix for alphabetical version order.
-pkgver="$_versionbase.$_build.$(echo -n $_tagsuffix | tr - .)"
+pkgver="$_versionbase.$_build$([ -n "$_tagsuffix" ] && echo -n '.'$_tagsuffix | tr - .)"
 _jdkver=25
 pkgrel=1
 pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features, open-source, Early Access Program (EAP) version'
@@ -27,7 +27,7 @@ source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop
   idea.sh)
-sha256sums=('c4532cd0ca7601a4d97269bfe0eaa703a8e6eb6003a2d258fb1c812a5b6c835f'
+sha256sums=('7e468c52d7e4a21b90f9cbfc30cddb3f4cb5ac9dff3ae89acc3d09ff6a91bd58'
             '04b308ef3b22d637822147b50ab26222930779f45f5fc70b7eac513d09d8da6f'
             '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f'
             'b7fc5d44d81702d36a0bf50e0e1050a5d1000907aadf7634df541f289659c2ce')
