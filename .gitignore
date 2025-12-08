@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!incus.conf
+!incus-srv.run
+!incus-srv.type

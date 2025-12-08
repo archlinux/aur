@@ -1,0 +1,6 @@
+#!/bin/execlineb -P
+envfile /etc/s6/config/incus.conf
+importas -sCuD "" INCUS_OPTS INCUS_OPTS
+#fdmove -c 2 1
+exec incusd ${INCUS_OPTS}
+# vi: ft=execline
