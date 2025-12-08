@@ -14,4 +14,4 @@ pkgbase = gmailieer
 	source = https://github.com/gauteh/lieer/archive/v1.6/lieer-v1.6.tar.gz
 	sha512sums = ba5fa49666c3281c165947e7aaedb3f568d1d30be12aeaf8361d632f5d11911e6fcd975d6e95f20724ce50e85e198f884516699b55e08185026679523d000bf3
 
-pkgname = lieer
+pkgname = gmailieer
