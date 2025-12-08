@@ -1,0 +1,5 @@
+[fclones-gui-bin]
+source = "github"
+github = "pkolaczk/fclones-gui"
+use_latest_release = true
+prefix = "v"

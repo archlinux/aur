@@ -1,5 +1,5 @@
 *
-!PKGBUILD
+!.nvchecker.toml
 !.gitignore
+!PKGBUILD
 !.SRCINFO
-!*.png
