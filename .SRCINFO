@@ -1,13 +1,13 @@
 pkgbase = ghorg
 	pkgdesc = allows you to quickly clone all of an orgs, or users repos into a single directory.
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = https://github.com/gabrie30/ghorg
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = ghorg-1.11.6.tar.gz::https://github.com/gabrie30/ghorg/archive/refs/tags/v1.11.6.tar.gz
-	sha256sums = 187dd7de0b57b2e92002471730ab26082bb52e4f15f53c1807e513c91d5f472b
+	source = ghorg-1.11.7.tar.gz::https://github.com/gabrie30/ghorg/archive/refs/tags/v1.11.7.tar.gz
+	sha256sums = e558fb63bda6a6af3951cf79778905c440cab093f33612d33184f24ad5ea7cda
 
 pkgname = ghorg
