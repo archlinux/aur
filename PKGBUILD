@@ -11,7 +11,7 @@ url="https://github.com/YetAnotherMechanicusEnjoyer/Rivet"
 license=('MIT')
 depends=('glibc' 'cargo' 'rust')
 
-source=("${pkgname}-main.tar.gz::${url}/archive/refs/heads/main")
+source=("${pkgname}-main.tar.gz::${url}/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
