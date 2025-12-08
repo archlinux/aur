@@ -28,8 +28,8 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
+  cd "$srcdir/${pkgname%-git}"
+  patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
 }
 
 build() {
