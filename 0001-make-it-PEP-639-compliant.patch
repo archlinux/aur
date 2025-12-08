@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: a821 <a821@mail.de>
+Date: Fri, 23 May 2025 09:03:58 +0200
+Subject: [PATCH] make it PEP-639 compliant
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index dd91a09..6fbfa3d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -7,7 +7,8 @@ name = "numpy-groupies"
+ description = "Optimised tools for group-indexing operations: aggregated sum and more."
+ dynamic = ["version"]
+ readme = {file = "README.md", content-type = "text/markdown"}
+-license = {file = "LICENSE.txt"}
++license = "BSD-2-Clause"
++license-files = [ "LICENSE.txt" ]
+ authors = [
+     {name = "Michael Löffler", email = "ml@occam.com.ua"},
+     {name = "Daniel Manson", email = "danielmanson.uk@gmail.com"}
+@@ -27,7 +28,6 @@ classifiers = [
+     "Programming Language :: Python :: 3.12",
+     "Topic :: Scientific/Engineering",
+     "Topic :: Software Development :: Libraries",
+-    "License :: OSI Approved :: BSD License",
+ ]
+ keywords = ["accumarray", "aggregate", "groupby", "grouping", "indexing"]
+ requires-python = ">=3.9"
+-- 
+2.49.0
+
