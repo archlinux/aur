@@ -22,6 +22,7 @@ sha256sums=('6301f6a43e5db9ef754765875592a58933f6b78585e9272afc850acf7c5914be'
 
 prepare() {
     cd "$pkgname-$pkgver"
+    sed -i 's/cmake_minimum_required(VERSION 3.1.0)/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt
 }
 
 build() {
