@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cuda
 pkgver=1.4.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Python bindings for whisper.cpp with CUDA support (NVIDIA GPU)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
