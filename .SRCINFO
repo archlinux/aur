@@ -1,6 +1,6 @@
 pkgbase = flexbv-bin
 	pkgdesc = FlexBV Free Professional Boardview
-	pkgver = 5.1200
+	pkgver = 5.1244
 	pkgrel = 1
 	url = https://pldaniels.com/flexbv5/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = flexbv-bin
 	depends = zlib
 	depends = gtk3
 	depends = libpng
-	source = flexbv-bin-5.1200.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-5.1200-linux.tar.gz
-	source = flexbv-bin-icon-5.1200.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg
+	source = flexbv-bin-5.1244.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-5.1244-linux.tar.gz
+	source = flexbv-bin-icon-5.1244.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg
 	source = LICENSE.txt
-	sha256sums = d31e0deff2fbcacb1f496b8eb7b1b9dd95e4e886fc1719f52802f52ccd9655d0
+	sha256sums = 1a12d17e64f5bd260074e5db46901e628f9ac5555e0c2b5f1b7a5db8df510b7d
 	sha256sums = e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e
 	sha256sums = 12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23
 
