@@ -1,0 +1,5 @@
+[whois-cli-bin]
+source = "github"
+github = "sheepla/whois-cli"
+use_latest_release = true
+prefix = "v"
