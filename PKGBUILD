@@ -34,4 +34,10 @@ package() {
   mkdir -p ${pkgdir}/var/opt/PreSonus/Extensions
   chmod 777 ${pkgdir}/var/opt/PreSonus
   chmod 777 ${pkgdir}/var/opt/PreSonus/Extensions
+
+  # Copy licenses to standard location
+  install -d -m755 "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/PreSonus/Studio One 7/license/CCL 3rd Party Licenses.txt"
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}"/opt/PreSonus/"Studio One 7"/license/EULA{,-de,-es,-fr,-it,-ja,-pt,-zh}.txt
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/PreSonus/Studio One 7/license/PreSonus 3rd Party Licenses.txt"
 }
