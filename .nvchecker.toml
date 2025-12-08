@@ -1,0 +1,5 @@
+[tre-command-bin]
+source = "github"
+github = "dduan/tre"
+use_latest_release = true
+prefix = "v"
