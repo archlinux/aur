@@ -1,14 +1,14 @@
 pkgbase = php-memprof
 	pkgdesc = Memory profiler for PHP. Helps finding memory leaks in PHP scripts.
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/arnaud-lb/php-memory-profiler
 	arch = x86_64
 	license = MIT
 	depends = php
 	depends = judy
 	backup = etc/php/conf.d/memprof.ini
-	source = http://pecl.php.net/get/memprof-3.0.2.tgz
-	sha256sums = 510bf09d58487820ac11b617446199ca86c50fda972dde73feaae667be23d183
+	source = http://pecl.php.net/get/memprof-3.1.0.tgz
+	sha256sums = 231c8866fc86001659e98b0230d4a19799fd5a3621e8e709f490ea0e9cb7a48f
 
 pkgname = php-memprof
