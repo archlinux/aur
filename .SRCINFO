@@ -1,6 +1,6 @@
 pkgbase = gui-for-clash
 	pkgdesc = GUI for Clash
-	pkgver = 1.9.7
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/GUI-for-Cores/GUI.for.Clash
 	install = gui-for-clash.install
@@ -8,7 +8,7 @@ pkgbase = gui-for-clash
 	license = GPL3
 	depends = glibc
 	depends = webkit2gtk-4.1
-	source = https://github.com/GUI-for-Cores/GUI.for.Clash/releases/download/v1.9.7/GUI.for.Clash-linux-amd64.zip
+	source = https://github.com/GUI-for-Cores/GUI.for.Clash/releases/download/v1.15.1/GUI.for.Clash-linux-amd64.zip
 	source = gui-for-clash.desktop
 	source = https://cdn.jsdelivr.net/gh/GUI-for-Cores/GUI.for.Clash@main/build/appicon.png
 	source = gui-for-clash.install
