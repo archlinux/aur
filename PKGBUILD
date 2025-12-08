@@ -6,7 +6,7 @@ pkgver=0.24.1.slskdn.22
 pkgrel=1
 pkgdesc="🔋 The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including wishlist, smart ranking, tabbed browsing, notifications & more"
 arch=('x86_64')
-url="https://github.com/snapetech/slskdN"
+url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
 depends=()
 makedepends=('unzip')
@@ -20,12 +20,12 @@ backup=('etc/slskd/slskd.yml')
 options=('!strip')
 install=slskd.install
 source=(
-    "https://github.com/snapetech/slskdN/releases/download/${pkgver//.slskdN/-slskdN}/slskdN-${pkgver//.slskdN/-slskdN}-linux-x64.zip"
+    "https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdN-${pkgver//.slskdn/-slskdn}-linux-x64.zip"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('983469cd7985cee28205a20d86b444808560baa165deddbffd82e6cd45988fa1' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('f8b6cbdd9f2b82148aa55679ec7daee8765c09295c541f9d65aa8473827ada1e' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
