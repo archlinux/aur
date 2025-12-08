@@ -1,15 +1,16 @@
 pkgbase = vodozemac-bindings-cpp-kazv
 	pkgdesc = kazv's C++ bindings for the vodozemac cryptographic library.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://lily-is.land/kazv/vodozemac-bindings
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = perl
+	makedepends = git
 	depends = gcc-libs
 	provides = libvodozemac.so
-	source = https://lily-is.land/kazv/vodozemac-bindings/-/archive/v0.2.0/vodozemac-bindings-v0.2.0.tar.gz
+	source = git+https://r.lily-is.land/the-kazv-project/vodozemac-bindings.git
 	sha512sums = SKIP
 
 pkgname = vodozemac-bindings-cpp-kazv
