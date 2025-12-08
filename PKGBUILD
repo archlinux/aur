@@ -1,17 +1,15 @@
 pkgname=uzdoom-bin
-pkgver=4.14.3rc1
+pkgver=4.14.3
 pkgrel=1
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
-arch=('x86_64' 'aarch64')
-url="https://gitlab.com/linuxbombay/gzdoom"
+arch=('x86_64')
+url="https://github.com/UZDoom/UZDoom"
 license=('BSD' 'GPL3' 'LGPL3')
-depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic-bin' 'libvpx')
+depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic-bin' 'libvpx' 'patchelf')
 conflicts=("uzdoom-git")
 makedepends=('unzip')
-sha256sums_x86_64=('42acb10743bc565b7410977a60d516ce90f2f163fb22849d4b94f5f45c590311')
-sha256sums_aarch64=('eac5bc137a59fbd67b57a10c8fb04c69028f5ed18f11e717af631329ab5c797a')
-source_x86_64=("uzdoom-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/$pkgver/-/raw/main/uzdoom-x64.tar.xz")
-source_aarch64=("uzdoom-$pkgver-arm64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/$pkgver/-/raw/main/uzdoom-arm64.tar.xz")
+sha256sums_x86_64=('7a0918ab951da5ffe873b7d479f701c09c216e0a23d821eef4548283ba43a167')
+source_x86_64=("$url/releases/download/$pkgver/Linux-UZDoom-$pkgver.AppImage")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -22,7 +20,36 @@ package() {
     install -dm755 "$pkgdir/usr/share/doc"
     install -dm755 "$pkgdir/usr/share/applications"
     
-    cp -r "$srcdir/usr" "$pkgdir"
-   #Libfix
-    [ -e "/usr/lib/libvpx.so.9" ] || ln -s /usr/lib/libvpx.so "$pkgdir/usr/lib/libvpx.so.9"    
+    cd $srcdir
+    chmod +x Linux-UZDoom-$pkgver.AppImage
+    ./Linux-UZDoom-$pkgver.AppImage --appimage-extract
+   
+    # Remove conflicting system-owned MIME files
+      rm -f "$srcdir/squashfs-root/usr/share/mime/application/x-doom-pk3.xml" \
+      "$srcdir/squashfs-root/usr/share/mime/application/x-doom-pk7.xml"
+       
+        
+    mimeconflicts=(
+      XMLnamespaces
+      aliases
+      application/x-doom-wad.xml
+      generic-icons
+      globs
+      globs2
+      icons
+      magic
+      mime.cache
+      subclasses
+      treemagic
+      types
+      version
+    )
+
+    for f in "${mimeconflicts[@]}"; do
+      rm -f "$srcdir/squashfs-root/usr/share/mime/$f"
+    done
+    
+    cp -r "$srcdir/squashfs-root/usr" "$pkgdir"
+   #Patch binary fix
+    patchelf --set-interpreter "/lib64/ld-linux-x86-64.so.2" "$pkgdir/usr/bin/uzdoom.bin"
 }
