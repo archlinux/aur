@@ -1,0 +1,5 @@
+[may-bin]
+source = "github"
+github = "robin-mbg/may"
+use_latest_release = true
+prefix = "v"
