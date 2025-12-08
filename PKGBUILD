@@ -7,22 +7,24 @@
 pkgname=mingw-w64-gavl
 _pkgname=gavl
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level library, upon which multimedia APIs can be built (mingw-w64)'
 arch=('any')
 url='https://gmerlin.sourceforge.net/'
 license=('GPL')
 depends=('mingw-w64-crt')
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-configure')
 source=("https://downloads.sourceforge.net/gmerlin/$_pkgname-$pkgver.tar.gz"
-	"configure.patch"
+        "configure.patch"
         "x86_64_cputest.patch"
-        "libtool.patch")
+        "libtool.patch"
+        "string-include-fix.patch")
 sha256sums=('51aaac41391a915bd9bad07710957424b046410a276e7deaff24a870929d33ce'
             'df2a64a3698856035c603bb28529208dc36b0d685c338a726c149d1157a6a0df'
             '86a7411fb43a6bb335661b1f38d6315efb3dc57cfafb274c911ee4a433837d1f'
-	    '7cc4329580294fbf62ec892acd56a43b4d914e86d534f658964a5b5ea256bf6e')
+            '7cc4329580294fbf62ec892acd56a43b4d914e86d534f658964a5b5ea256bf6e'
+            'b8bc33f33066acb2fb14fd9899153149afd78c94cdbcc5fbf317530b13d55373')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -34,6 +36,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/x86_64_cputest.patch"
   # add file magic for 64 bit
   patch -Np1 -i "${srcdir}/libtool.patch"
+  # add missing string.h include
+  patch -Np1 -i "${srcdir}/string-include-fix.patch"
 
   # Fix build
   sed -i 's|volume_test_LDADD = ../gavl/libgavl.la|volume_test_LDADD = -lm ../gavl/libgavl.la|' src/Makefile.{am,in}
