@@ -1,7 +1,7 @@
 pkgbase = cherry-studio
 	pkgdesc = A desktop client that supports for multiple LLM providers.(Use system-wide electron)
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cherry-ai.com/
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = cherry-studio
 	makedepends = moreutils
 	makedepends = python
 	makedepends = python-setuptools
-	depends = electron38
+	depends = electron39
 	depends = libvips
 	depends = imagemagick
 	depends = ripgrep

@@ -3,8 +3,8 @@
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
 pkgver=1.7.2
-_electron=electron38
-pkgrel=1
+_electron=electron39
+pkgrel=2
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
