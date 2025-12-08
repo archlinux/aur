@@ -1,6 +1,6 @@
 pkgbase = bab-bin
 	pkgdesc = Custom commands for every project
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = bab-bin
 	provides = bab
 	arch = aarch64
 	source_aarch64 = https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 128a8b6d4a94ffb08cefac9dae5b36163d56a32c6778f02ada4b5d92a514657d
+	sha256sums_aarch64 = ac82b7ae6f9aa44d11f216d895acf0d955a67f0c844fc323d1da1767c21f7d0c
 	arch = armv7h
 	source_armv7h = https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_armv7.tar.gz
-	sha256sums_armv7h = f1473b37361fc710bb570c75e54a7c7225e18ea389e775aba2df68ad9ef847f8
+	sha256sums_armv7h = 741f31e0124a74fb2044209e28595864ee6ac69f336462cc2e8daa327741c7f0
 	arch = x86_64
 	source_x86_64 = https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6c03dddebe1591228d45b2a705e101dc4b995bbefc7fba0ce9c83e904fca6024
+	sha256sums_x86_64 = 60d989fbf6cc7e51915d0c25916a5bc598d1d0789cc5142faec749fd07630bdc
 	
 pkgname = bab-bin
