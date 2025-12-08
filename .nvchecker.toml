@@ -1,0 +1,5 @@
+[leaps-bin]
+source = "github"
+github = "Jeffail/leaps"
+use_latest_release = true
+prefix = "v"

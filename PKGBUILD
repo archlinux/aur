@@ -1,5 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgauthor=Jeffail
 _pkgname=leaps
