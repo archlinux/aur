@@ -19,8 +19,6 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-setuptools-scm'
-  'python-repairwheel'
   'git'
   'cuda'
 )
@@ -40,7 +38,7 @@ build() {
   export GGML_CUDA=ON
   export PATH="/opt/cuda/bin:$PATH"
   export CUDACXX="${CUDACXX:-/opt/cuda/bin/nvcc}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
