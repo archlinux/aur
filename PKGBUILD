@@ -1,7 +1,7 @@
 # Maintainer: Burgess <burgess@ripvid.app>
 pkgname=ripvid
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites"
 arch=('x86_64')
 url="https://github.com/BurgessTG/ripVID"
@@ -34,4 +34,8 @@ package() {
 
     # Create ripvid symlink (binary is named video-downloader)
     ln -sf video-downloader "$pkgdir/usr/bin/ripvid"
+
+    # Fix Wayland crash (WebKitGTK compositing issue with Hyprland/Sway)
+    sed -i 's|^Exec=video-downloader|Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 video-downloader|' \
+        "$pkgdir/usr/share/applications/ripVID.desktop"
 }
