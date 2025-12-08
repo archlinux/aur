@@ -2,6 +2,8 @@
 
 > Enjoy smooth gameplay, stunning graphics, and endless fun.
 
+[![AUR Version](https://img.shields.io/aur/version/fafarunner-bin)](https://aur.archlinux.org/packages/fafarunner-bin)
+
 Step into the enchanting world of FaFa Runner: Dawn Legends, where an epic adventure awaits! Developed using Flutter and
 the Flame engine, this RPG delivers a seamless gaming experience with stunning visual effects.
 
