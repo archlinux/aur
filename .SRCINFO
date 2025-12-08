@@ -1,7 +1,7 @@
 pkgbase = direwolf
 	pkgdesc = Dire Wolf is a software modem/TNC and APRS encoder/decoder
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wb2osz/direwolf
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = direwolf
 	makedepends = patch
 	depends = alsa-lib
 	depends = gpsd
+	depends = hamlib
 	source = direwolf-1.8.tar.gz::https://github.com/wb2osz/direwolf/archive/refs/tags/1.8.tar.gz
 	source = direwolf.service
 	source = direwolf-kiss.service

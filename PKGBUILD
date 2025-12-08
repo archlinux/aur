@@ -3,12 +3,12 @@
 
 pkgname=direwolf
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Dire Wolf is a software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
 license=('GPL')
-depends=('alsa-lib' 'gpsd')
+depends=('alsa-lib' 'gpsd' 'hamlib')
 makedepends=('cmake' 'gcc' 'patch')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/wb2osz/direwolf/archive/refs/tags/$pkgver.tar.gz"
