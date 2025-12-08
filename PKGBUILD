@@ -2,7 +2,7 @@
 
 pkgname=python-django-html-utils
 _pkg="${pkgname#python-}"
-pkgver=0.2.2
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="HTML utils app for django."
 url="https://github.com/jnphilipp/django-html-utils"
