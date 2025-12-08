@@ -21,6 +21,6 @@ pkgbase = kpcli
 	source = kpcli-4.1.2.pl::https://sourceforge.net/projects/kpcli/files/kpcli-4.1.2.pl/download
 	source = kpcli-4.1.2-README::https://sourceforge.net/projects/kpcli/files/README.txt/download
 	sha256sums = 86fc820bc7945cd9b577583efe4127565951268902860256ceea100795ddf23f
-	sha256sums = d2834b0d46127d18a0ff418a7343327c3e6f40543b77b1d6f88247fcde3f9dd6
+	sha256sums = 27d00febf2df8f32a60fffb84af677150a268e8b6a394a74801d38ab29fa28cb
 
 pkgname = kpcli

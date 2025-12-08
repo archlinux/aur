@@ -17,7 +17,7 @@ url='http://sourceforge.net/projects/kpcli/'
 source=("$pkgname-$pkgver.pl::https://sourceforge.net/projects/kpcli/files/kpcli-$pkgver.pl/download"
         "$pkgname-$pkgver-README::https://sourceforge.net/projects/kpcli/files/README.txt/download")
 sha256sums=('86fc820bc7945cd9b577583efe4127565951268902860256ceea100795ddf23f'
-            'd2834b0d46127d18a0ff418a7343327c3e6f40543b77b1d6f88247fcde3f9dd6')
+            '27d00febf2df8f32a60fffb84af677150a268e8b6a394a74801d38ab29fa28cb')
 
 package() {
   install -Dm755 "$pkgname-$pkgver.pl" "${pkgdir}/usr/bin/kpcli"
