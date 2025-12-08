@@ -1,11 +1,11 @@
 pkgbase = publii
 	pkgdesc = Publii is a desktop-based CMS for Windows, Mac and Linux that makes creating static websites fast and hassle-free, even for beginners
-	pkgver = 0.47.2
+	pkgver = 0.47.3
 	pkgrel = 1
 	url = https://github.com/GetPublii/Publii
 	arch = x86_64
 	license = MIT
-	source = https://getpublii.com/download/Publii-0.47.2.rpm
-	sha512sums = 3282be642fcbc8700fc000a51f3dcefb1f675a5428588453af773e3dd264b740d7877f503fe60e5852f33fb7af404a4ad31068d10e4798ed93d5e8c8e09b9e67
+	source = https://getpublii.com/download/Publii-0.47.3.rpm
+	sha512sums = 7a626e9154ca355a9847d24482d0f8bb1a875519b225ceee13a9448fa571302f6f15c0dd068be191344ee00685955357c1369e05c622985df92d7e0f397133d2
 
 pkgname = publii
