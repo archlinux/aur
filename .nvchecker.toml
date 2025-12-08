@@ -1,0 +1,4 @@
+[patchup-bin]
+source = "github"
+github = "patchup/cli"
+use_latest_release = true

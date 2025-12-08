@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Ben Mitchell <dezyh@outlook.com>
 
 pkgname=patchup-bin
