@@ -1,7 +1,7 @@
 # Maintainer: matheus-git <mathiew0@gmail.com>
 pkgname=systemd-manager-tui
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for managing systemd services"
 arch=('x86_64')
 url="https://github.com/matheus-git/systemd-manager-tui"
