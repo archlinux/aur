@@ -1,0 +1,5 @@
+[hey-bin]
+source = "github"
+github = "rakyll/hey"
+use_latest_release = true
+prefix = "v"
