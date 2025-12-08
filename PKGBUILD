@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
 pkgver=8.12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
 url="https://github.com/badabing2005/PixelFlasher"
@@ -39,7 +39,7 @@ source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'PixelFlasher.desktop')
 sha256sums=('42b811407504d1e2ac2d499ffa48fb0038fb4fce0834e19d0727ef5f81bf6832'
             'SKIP'
-            'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129')
+            'dbb31a1b359bdda2d6501ccf5d80fb888508619da948c3f98d4b0cb74f907615')
 
 prepare() {
 
@@ -70,8 +70,8 @@ package() {
   ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
 
   for i in 64 128 256; do
-    install -Dm644 "images/icon-${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/PixelFlasher.png"
+    install -Dm644 "images/icon-dark-${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
   pushd locale

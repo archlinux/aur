@@ -1,7 +1,7 @@
 pkgbase = pixelflasher
 	pkgdesc = Pixel phone flashing GUI utility with features.
 	pkgver = 8.12.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badabing2005/PixelFlasher
 	arch = any
 	license = GPL-3.0-or-later
@@ -34,6 +34,6 @@ pkgbase = pixelflasher
 	source = PixelFlasher.desktop
 	sha256sums = 42b811407504d1e2ac2d499ffa48fb0038fb4fce0834e19d0727ef5f81bf6832
 	sha256sums = SKIP
-	sha256sums = dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129
+	sha256sums = dbb31a1b359bdda2d6501ccf5d80fb888508619da948c3f98d4b0cb74f907615
 
 pkgname = pixelflasher
