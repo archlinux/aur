@@ -1,0 +1,69 @@
+pre_install() {
+    # Create tonneru group if it doesn't exist
+    if ! getent group tonneru >/dev/null 2>&1; then
+        groupadd -r tonneru
+    fi
+}
+
+post_install() {
+    printf '\n'
+    printf '╔══════════════════════════════════════════════════════════════╗\n'
+    printf '║                      tonneru installed                       ║\n'
+    printf '╠══════════════════════════════════════════════════════════════╣\n'
+    printf '║                                                              ║\n'
+    printf '║  IMPORTANT - Add yourself to the tonneru group:              ║\n'
+    printf '║    sudo usermod -aG tonneru $USER                            ║\n'
+    printf '║    (then log out and back in)                                ║\n'
+    printf '║                                                              ║\n'
+    printf '║  QUICK START:                                                ║\n'
+    printf '║    tonneru              Launch TUI                           ║\n'
+    printf '║                                                              ║\n'
+    printf '║  ENABLE DAEMON (auto-connect based on network rules):        ║\n'
+    printf '║    systemctl --user enable --now tonneru.service             ║\n'
+    printf '║                                                              ║\n'
+    printf '║  WAYBAR INTEGRATION:                                         ║\n'
+    printf '║    See /usr/share/doc/tonneru/examples/                      ║\n'
+    printf '║                                                              ║\n'
+    printf '║  SECURITY:                                                   ║\n'
+    printf '║    - Uses dedicated '\''tonneru'\'' group (not wheel)              ║\n'
+    printf '║    - Single auditable helper script for privileged ops       ║\n'
+    printf '║    - All operations logged to system journal                 ║\n'
+    printf '║                                                              ║\n'
+    printf '╚══════════════════════════════════════════════════════════════╝\n'
+    printf '\n'
+}
+
+pre_upgrade() {
+    # Ensure tonneru group exists on upgrade
+    if ! getent group tonneru >/dev/null 2>&1; then
+        groupadd -r tonneru
+    fi
+}
+
+post_upgrade() {
+    printf '\n'
+    printf '>>> tonneru upgraded to version %s\n' "$1"
+    printf '\n'
+    printf '    Restart the daemon if running:\n'
+    printf '    systemctl --user restart tonneru.service\n'
+    printf '\n'
+    printf '    If upgrading from an older version, ensure you are in the\n'
+    printf '    tonneru group (not just wheel):\n'
+    printf '    sudo usermod -aG tonneru $USER\n'
+    printf '\n'
+}
+
+post_remove() {
+    printf '\n'
+    printf '>>> tonneru removed\n'
+    printf '\n'
+    printf '    Stop the daemon:\n'
+    printf '    systemctl --user disable --now tonneru.service\n'
+    printf '\n'
+    printf '    User config remains at: ~/.config/tonneru/\n'
+    printf '    WireGuard configs remain at: /etc/wireguard/\n'
+    printf '\n'
+    printf '    The tonneru group was not removed.\n'
+    printf '    To remove it: sudo groupdel tonneru\n'
+    printf '\n'
+}
