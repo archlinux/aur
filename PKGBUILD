@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hashsum
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 pkgdesc="Check hashes for your files"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=('appstream-glib')
 optdepends=('python-nautilus: Nautilus extension')
 source=("git+https://altlinux.space/alt-gnome/Hashsum.git#tag=$pkgver")
-sha256sums=('a9f07ab8608fe802a315f0af4776afd540a3f711d1cdbbeb9666a520d3a9c601')
+sha256sums=('460a153755e7d895914b198975b1bb5a66c2321ccf2d428392698d5c7abc4b9e')
 
 build() {
   arch-meson Hashsum build
