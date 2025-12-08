@@ -1,15 +1,15 @@
 pkgbase = tiny-webserver-gtk4-bin
 	pkgdesc = A tiny webserver with GTK4 GUI written in C for Linux.(Prebuilt version)
-	pkgver = 1.3
-	pkgrel = 2
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://github.com/Lennart1978/tiny-webserver-gtk4
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = gendesk
 	depends = gtk4
-	provides = tiny-webserver-gtk4=1.3
+	provides = tiny-webserver-gtk4=1.5
 	conflicts = tiny-webserver-gtk4
-	source = tiny-webserver-gtk4-1.3::https://github.com/Lennart1978/tiny-webserver-gtk4/releases/download/V1.3/webserver-gtk
-	sha256sums = 1736a5410a2dc818a436ef275959d6b0879a0af8290f8b2bbee2b4b739f86b09
+	source = tiny-webserver-gtk4-1.5::https://github.com/Lennart1978/tiny-webserver-gtk4/releases/download/V1.5/webserver-gtk
+	sha256sums = 77af99a79fd8d6f54aac405c3ee671dede6099056fe590c0b04435cc72663e08
 
 pkgname = tiny-webserver-gtk4-bin

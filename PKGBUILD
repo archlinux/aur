@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-webserver-gtk4-bin
 _pkgname=Tiny-Webserver-GTK4
-pkgver=1.3
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="A tiny webserver with GTK4 GUI written in C for Linux.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Lennart1978/tiny-webserver-gtk4"
@@ -18,7 +18,7 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}::${url}/releases/download/V${pkgver}/webserver-gtk"
 )
-sha256sums=('1736a5410a2dc818a436ef275959d6b0879a0af8290f8b2bbee2b4b739f86b09')
+sha256sums=('77af99a79fd8d6f54aac405c3ee671dede6099056fe590c0b04435cc72663e08')
 prepare() {
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
