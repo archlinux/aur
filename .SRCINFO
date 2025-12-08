@@ -1,0 +1,23 @@
+pkgbase = velocity-bridge
+	pkgdesc = iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Trex099/Velocity-Bridge
+	arch = any
+	license = MIT
+	depends = python>=3.10
+	depends = python-pip
+	depends = python-fastapi
+	depends = python-uvicorn
+	depends = python-pillow
+	depends = python-qrcode
+	depends = python-pystray
+	depends = wl-clipboard
+	depends = libnotify
+	depends = tk
+	optdepends = xclip: X11 clipboard support
+	optdepends = avahi: mDNS hostname support
+	source = velocity-bridge-1.0.2.tar.gz::https://github.com/Trex099/Velocity-Bridge/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = velocity-bridge
