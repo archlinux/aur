@@ -2,7 +2,7 @@
 # Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.34-bin
-pkgver=1.34.1+k3s1
+pkgver=1.34.2+k3s1
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -33,9 +33,9 @@ source_aarch64=(
 sha256sums=('c24735658b766d4e270380181e3ecd537a8e9dce9cb96673f39170b6798ed659'
             'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
             'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
-sha256sums_x86_64=('ec8958fe1363a32d50e028b5e3411c04b0dbd0316fab33524e8094352b78f6a3')
-sha256sums_armv7h=('b47ac83c37f1f0849ac649bcf2b1a9bd792d090c1e30529d12481607d4a5c1e4')
-sha256sums_aarch64=('3888e0f28e16be4de619d652a5a3e4816ae85878a38f914b1830bff3ef7483ff')
+sha256sums_x86_64=('15811d34187e03fe29d0e46108c42cc33e62cec1b3d9d80f50944536ebcad40a')
+sha256sums_armv7h=('8824bf5f2af87ecb05575d1712325615968c073b022c6178e5356887c2f1eff7')
+sha256sums_aarch64=('2e1db0e54a8b0d0ab8a264a119c9c617561f9290e7bb2722d795f8bc91b24cf8')
 
 
 package() {
