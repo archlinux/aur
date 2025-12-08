@@ -19,7 +19,7 @@ sha256sums=('5cd5018f39c830f97d70616c003990287ce5e820ae2792763a49e2a1f63af8d6')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  mkdir build
+  mkdir -p build
 }
 
 build() {
