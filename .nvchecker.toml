@@ -1,0 +1,5 @@
+[stramon-bin]
+source = "github"
+github = "darrenldl/stramon"
+use_latest_release = true
+prefix = "stramon-"
