@@ -1,0 +1,5 @@
+[meta-package-manager-bin]
+source = "github"
+github = "kdeldycke/meta-package-manager"
+use_latest_release = true
+prefix = "v"

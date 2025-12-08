@@ -4,7 +4,7 @@ _pkgexec=mpm
 _pkgauthor=kdeldycke
 _pkgname=meta-package-manager
 pkgname=${_pkgname}-bin
-pkgver=5.21.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,9 +20,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/license"
         "CHANGELOG-${pkgver}.md::${_urlraw}/changelog.md")
 source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-x64.bin")
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
-            'a8fe415a57079e8b22c516e1808b82faf4747ecdb7e92f01090b27873cc3b7c5'
-            '6f547d2472b471f040870126c2a2bbef95d53d8c1e6451388a64e13a006a077b')
-sha256sums_x86_64=('a875cf3f76a20e7aeee6fc1bafe76481ad79229e605c9cac8ce66c7d97ff5df7')
+            'ff4c3568ec8be369865883f3ae757db61c6bc1c839d856f785eed60ee401a313'
+            '6c71b7bffb6950ce4a8f6145bc4a665788e85f1e1843572a99ed354d1185b507')
+sha256sums_x86_64=('45c340e2f8b888af0c9586e2ed0c55739dbd055006a626e9b9888fcf298dc934')
 
 package() {
   cd "${srcdir}/" || exit
