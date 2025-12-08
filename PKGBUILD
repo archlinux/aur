@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 _binaryname=netventory
 pkgname=$_binaryname-git
-pkgver=r2.9a71679
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Netventory is a fast single binary network scanning tool with a beautiful gui that runs on Linux, Mac or Windows"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,13 +14,23 @@ makedepends=(
 source=("${pkgname}::git+https://github.com/RamboRogers/netventory.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+  cd "${srcdir}/$pkgname"
+  git checkout ${pkgver}n
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/$pkgname"
+
+  # Create private.txt
+  cat <<EOL > private.txt
+# Private configuration template
+# Add your telemetry server and token below
+
+TELEMETRY_SERVER=
+TELEMETRY_TOKEN=
+EOL
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
