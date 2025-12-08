@@ -1,7 +1,7 @@
 pkgbase = termagotchi
 	pkgdesc = A terminal-based Tamagotchi simulation written in Go, featuring a beautiful TUI interface.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/ezeoleaf/termagotchi
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = termagotchi
 	makedepends = git
 	provides = termagotchi
 	conflicts = termagotchi
-	source = termagotchi-0.1.0.tar.gz::https://github.com/ezeoleaf/termagotchi/archive/v0.1.0.tar.gz
-	sha256sums = 85188e90f652eea7286e545003d2c226409004db620816ef5935ea0e7fe69822
+	source = termagotchi-0.2.0.tar.gz::https://github.com/ezeoleaf/termagotchi/archive/v0.2.0.tar.gz
+	sha256sums = 6926a5f7df755c4a7c0f18f3be95cb2e7cc55c75889b9862aca12107736f81f9
 
 pkgname = termagotchi

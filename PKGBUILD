@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=termagotchi
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A terminal-based Tamagotchi simulation written in Go, featuring a beautiful TUI interface."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ezeoleaf/termagotchi"
@@ -13,7 +13,7 @@ makedepends=(
 conflicts=('termagotchi')
 provides=('termagotchi')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ezeoleaf/termagotchi/archive/v${pkgver}.tar.gz")
-sha256sums=('85188e90f652eea7286e545003d2c226409004db620816ef5935ea0e7fe69822')
+sha256sums=('6926a5f7df755c4a7c0f18f3be95cb2e7cc55c75889b9862aca12107736f81f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
