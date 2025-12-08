@@ -15,8 +15,6 @@ depends=('alsa-lib' 'wayland' 'sdbus-cpp1' 'gcc-libs' 'nss' 'glibc' 'glib2'
          'qt5-base' 'qt5-wayland' 'fontconfig' 'util-linux-libs' 'libunistring' 'libsecret')
 optdepends=('jack' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg6.1' 'avahi' 'kwallet5')
 provides=('clap-host' 'vst3-host')
-replaces=()
-conflicts=()
 options=(!strip)
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download \"studioone7-x86_64.deb\" manually from https://my.presonus.com')
 source=('manual://studioone7-x86_64.deb')
