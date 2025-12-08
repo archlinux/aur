@@ -1,7 +1,7 @@
 pkgname=youtube
 _pkgname=Youtube
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-desktop"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('bbda1965f6d1088a3125334a7cdf174868f6afcbc02fa6b3d0a9a86638d8406d')
+sha256sums=('04e4f0990a14fe8676221a7c1c239085ba1d32056290fc9b82654055a5b2d6f2')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
