@@ -1,0 +1,4 @@
+[libafterimage]
+source = 'regex'
+url = 'http://www.afterstep.org/afterimage/getcode.php'
+regex = 'libAfterImage-([\d.]+).tar'
