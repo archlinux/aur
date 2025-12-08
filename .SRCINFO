@@ -5,7 +5,6 @@ pkgbase = lieer
 	url = https://github.com/gauteh/lieer
 	arch = any
 	license = GPL3
-'python-google-auth-oauthlib' 'python-oauthlib' 'python-google-api-python-client' 'notmuch' 'python'
 	makedepends = python-setuptools
 	depends = python-oauthlib
 	depends = python-google-api-python-client
