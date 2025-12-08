@@ -1,0 +1,5 @@
+[snipt-bin]
+source = "github"
+github = "blacknon/snipt"
+use_latest_release = true
+prefix = "v"
