@@ -1,0 +1,43 @@
+post_install() {
+    echo ">>> Creating slskd user and group..."
+    systemd-sysusers
+    
+    echo ">>> Setting up directories..."
+    mkdir -p /var/lib/slskd/downloads /var/lib/slskd/incomplete
+    chown -R slskd:slskd /var/lib/slskd
+    
+    echo ""
+    echo ">>> slskd (slskdn fork) has been installed!"
+    echo ""
+    echo "    If upgrading from slskd, your existing config and data"
+    echo "    in /etc/slskd/ and /var/lib/slskd/ will be preserved."
+    echo ""
+    echo "    1. Edit the configuration (if needed):"
+    echo "       sudo nano /etc/slskd/slskd.yml"
+    echo ""
+    echo "    2. Start the service:"
+    echo "       sudo systemctl enable --now slskd"
+    echo ""
+    echo "    3. Access the web UI at:"
+    echo "       http://localhost:5030"
+    echo ""
+}
+
+post_upgrade() {
+    echo ">>> Restarting slskd service..."
+    systemctl daemon-reload
+    systemctl try-restart slskd
+}
+
+pre_remove() {
+    echo ">>> Stopping slskd service..."
+    systemctl stop slskd 2>/dev/null || true
+    systemctl disable slskd 2>/dev/null || true
+}
+
+post_remove() {
+    echo ">>> slskd has been removed."
+    echo "    User data remains in /var/lib/slskd"
+    echo "    Config remains in /etc/slskd"
+    echo "    Remove manually if desired."
+}
