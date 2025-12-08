@@ -1,13 +1,13 @@
 pkgbase = systemd-manager-tui-bin
 	pkgdesc = Terminal UI for managing systemd services
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matheus-git/systemd-manager-tui
 	arch = x86_64
 	license = MIT
 	provides = systemd-manager-tui
 	options = !debug
 	source = https://github.com/matheus-git/systemd-manager-tui/releases/download/v1.2.0/systemd-manager-tui
-	sha256sums = 39db9114e63e3124f4081c522143d70e6e2fc3382eb4ca8c28b3bc218754cd64
+	sha256sums = 885aa9db3d24eadb53d2da00099f76de7cbfd30c2969ee2dd3c1a543cf90a4da
 
 pkgname = systemd-manager-tui-bin
