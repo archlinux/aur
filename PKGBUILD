@@ -69,5 +69,5 @@ package() {
   fi
 }
 sha256sums=('a823e347ccb8a9ee92400e39411730bc0b3a3265764f4c69f0620bd0abaf7ce7'
-            'ccf8b27cc2723c5f0d60dca80c69c56be2551ff6acd81e5bf8c8901ad97ff8c0'
+            'a6e69b71fa3daf5ee81e97ccd67772c8811e71170c1fb8ab8d3bfd1b3ee335e2'
             'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
