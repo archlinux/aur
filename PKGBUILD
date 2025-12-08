@@ -10,9 +10,9 @@ fi
 : ${_install_path:=usr/lib}
 
 ## basic info
-_pkgname="ryujinx-git"
-pkgname="$_pkgname"
-pkgver=r4625.1baaa1c36
+_pkgname="ryujinx"
+pkgname="$_pkgname-git"
+pkgver=r4643.3a593b608
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://ryujinx.app"
@@ -50,14 +50,18 @@ build() (
   export DOTNET_CLI_HOME=${HOME}
   _pkgver=$(cut -c2-5 <<< $pkgver)
 
+  local _runtime="linux-x64"
   local _args=(
     -c Release
-    -p:DebugType=none
+    -r "$_runtime"
+    --self-contained true
+    -p:ExtraDefineConstants=DISABLE_UPDATER
+    -p:PublishSingleFile=true
     -p:Version="${_pkgver%%.[A-Za-z]*}-Canary"
-    -o build
   )
-  dotnet build "${_args[@]}" "$_pkgsrc/src/Ryujinx"
-
+#  dotnet build "${_args[@]}" "$_pkgsrc/src/Ryujinx"
+  echo "Building AVA Interface..."
+  dotnet publish "${_args[@]}" -o publish_ava "$_pkgsrc/src/Ryujinx"
 
   echo "Shutting down dotnet build server in background."
   (timeout -k 45 30 dotnet build-server shutdown) > /dev/null 2>&1 &
@@ -65,10 +69,9 @@ build() (
 
 package() {
   # program
-  install -dm755 "$pkgdir/$_install_path/ryujinx"
-  install -dm755 "$pkgdir/$_install_path/Ryujinx.Headless.SDL2"
-  cp -a --update=none --reflink=auto $srcdir/build/* "$pkgdir/$_install_path/ryujinx/"
-
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
+  cp -a publish_ava/* "$pkgdir/$_install_path/$_pkgname/"
+  
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
@@ -88,8 +91,8 @@ package() {
   # fix permissions
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
-  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
+  chmod 755 "$pkgdir/$_install_path/$_pkgname/Ryujinx"
+  chmod 755 "$pkgdir/$_install_path/$_pkgname/Ryujinx.sh"
 
   # fix desktop file
   desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
