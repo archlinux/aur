@@ -1,0 +1,14 @@
+pkgbase = typetype
+	pkgdesc = A minimal terminal typing practice for programmers app written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/00sen/typetype
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = typetype-1.0.0.tar.gz::https://gitlab.com/00sen/typetype/-/archive/v1.0.0/typetype-v1.0.0.tar.gz
+	sha256sums = eda1fab707e036897b218090af93970b22224ccec695a6ab72c89cae2ed95543
+
+pkgname = typetype
