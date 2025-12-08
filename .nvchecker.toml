@@ -1,0 +1,5 @@
+[gotify-cli-bin]
+source = "github"
+github = "gotify/cli"
+use_latest_release = true
+prefix = "v"
