@@ -2,7 +2,7 @@
 
 pkgbase=nuclei-gcc
 pkgname=(nuclei-gcc)
-pkgver=2025.02
+pkgver=2025.10
 pkgrel=1
 pkgdesc="nuclei-gcc 是 Nuclei Studio IDE 的编译工具。"
 arch=("x86_64")
@@ -15,9 +15,9 @@ conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('LicenseRef-unknow')
 options=(!strip !debug)
-# https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2025.02.tar.bz2
-source=("https://download.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
-sha256sums=('67927d6457ec2c38a3145b59cbd4dd1e3f271acd021259cb3b4d8bb1981d32a1')
+# https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2025.10.tar.bz2
+source=("https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
+sha256sums=('a311f527fe838bc65440148fedec21a9fea95a382aec4122ccddfe3656ad6910')
 
 package() {
 	msg2 'Installing Nuclei GCC'

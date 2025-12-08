@@ -1,6 +1,6 @@
 pkgbase = nuclei-gcc
 	pkgdesc = nuclei-gcc 是 Nuclei Studio IDE 的编译工具。
-	pkgver = 2025.02
+	pkgver = 2025.10
 	pkgrel = 1
 	url = https://www.nucleisys.com/download.php
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nuclei-gcc
 	optdepends = embedded-studio-risc-v: Segger Embedded Studio for RISC-V
 	options = !strip
 	options = !debug
-	source = https://download.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2025.02.tar.bz2
-	sha256sums = 67927d6457ec2c38a3145b59cbd4dd1e3f271acd021259cb3b4d8bb1981d32a1
+	source = https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2025.10.tar.bz2
+	sha256sums = a311f527fe838bc65440148fedec21a9fea95a382aec4122ccddfe3656ad6910
 
 pkgname = nuclei-gcc
