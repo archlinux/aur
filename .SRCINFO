@@ -1,16 +1,16 @@
 pkgbase = yt6801-dkms
 	pkgdesc = Kernel module for Motorcomm YT6801 ethernet controller (DKMS)
 	pkgver = 1.0.30
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.motor-comm.com/product/ethernet-control-chip
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = dkms
 	source = https://www.motor-comm.com/Public/Uploads/uploadfile/files/20250430/yt6801-linux-driver-1.0.30.zip
-	source = fix.patch
+	source = tuxedo.patch
 	source = drop-flags.patch
 	sha256sums = 3dd7173a935da10fb9dfa537fd2bf4d6d3ae90c1d12e8091054667fb911bd6c4
-	sha256sums = ef1855465b9f3c4102ce88dedb4beaaa12bf2a951adbe220ec617a17eb80c861
+	sha256sums = 75bfbca4683c2084d8032800a506f2c7c68679a04c196d81755cea91412a3a5a
 	sha256sums = 814c6a121b392f512ec4c8898dd9f6c50ae3ff9d946bc1d115135fa6f5c6a897
 
 pkgname = yt6801-dkms
