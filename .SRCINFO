@@ -1,6 +1,6 @@
 pkgbase = hostman-git
 	pkgdesc = A simple file host manager for various image hosting services (latest commit)
-	pkgver = 0
+	pkgver = 1.2.0.r38.ga506856
 	pkgrel = 1
 	url = https://github.com/keircn/hostman
 	arch = x86_64

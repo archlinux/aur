@@ -1,6 +1,6 @@
 # Maintainer: Keiran <q4ow@proton.me>
 pkgname=hostman-git
-pkgver=0
+pkgver=1.2.0.r38.ga506856
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services (latest commit)"
 arch=('x86_64')
