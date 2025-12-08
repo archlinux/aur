@@ -1,6 +1,6 @@
 pkgbase = venice-cli-bin
 	pkgdesc = Command-line interface for venice.ai - privacy-focused AI with interactive chat
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://gitlab.com/Plague_Doctor/venice-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = venice-cli-bin
 	provides = venice-cli
 	conflicts = venice-cli
 	options = !debug
-	source_x86_64 = venice-linux-amd64-0.1.12::https://gitlab.com/api/v4/projects/76426846/packages/generic/venice-cli/v0.1.12/venice-linux-amd64
-	sha256sums_x86_64 = 269f1fa92221cf34cc3281f3b94740ebbfdf8af03b2cafa44eb195211b3e7153
+	source_x86_64 = venice-linux-amd64-0.1.13::https://gitlab.com/api/v4/projects/76426846/packages/generic/venice-cli/v0.1.13/venice-linux-amd64
+	sha256sums_x86_64 = 2fc58332a80a2572282359e7c33a00082c6893bbd0128fd5a8396561a3d07e96
 
 pkgname = venice-cli-bin
