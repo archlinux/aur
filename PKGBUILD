@@ -1,11 +1,11 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=sheepla
 _pkgname=pingu
 pkgname=${_pkgname}-bin
 pkgver=0.0.5
 pkgrel=1
-pkgdesc='ping command but with pingu'
+pkgdesc='🐧ping command but with pingu'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')

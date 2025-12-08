@@ -1,0 +1,5 @@
+[pingu-bin]
+source = "github"
+github = "sheepla/pingu"
+use_latest_release = true
+prefix = "v"

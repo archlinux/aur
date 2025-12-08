@@ -1,5 +1,5 @@
 pkgbase = pingu-bin
-	pkgdesc = ping command but with pingu
+	pkgdesc = 🐧ping command but with pingu
 	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/sheepla/pingu
