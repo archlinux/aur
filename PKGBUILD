@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hula-bin
 _pkgname=HuLa
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="🍀A desktop instant messaging app built on Tauri+Vue3 (not just instant messaging)(Prebuilt version)一个基于 Tauri、Vite 5、Vue 3 和 TypeScript 构建的即时通讯系统"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'alsa-lib'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('db63f4a6f167987029e60d8a877e9c72ebe02c590310d96283d47b5f6a5a7afb')
+sha256sums=('4e541c88af61243082a22fa94cb345889f373720584b990caf82a574447edcf0')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/tray/icon.png" -t "${pkgdir}/usr/lib/${_pkgname}/tray"
