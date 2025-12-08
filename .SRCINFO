@@ -1,0 +1,13 @@
+pkgbase = termonal
+	pkgdesc = A CLI-based word guessing game in Portuguese (based on termonal)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/viniciuskant/termonal
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = termonal::git+https://github.com/viniciuskant/termonal.git
+	sha512sums = SKIP
+
+pkgname = termonal
