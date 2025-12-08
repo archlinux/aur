@@ -6,7 +6,7 @@
 pkgname=librespot-avahi
 _pkgname=librespot
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source client library for Spotify'
 arch=('x86_64')
 url='https://github.com/librespot-org/librespot'
@@ -28,8 +28,8 @@ optdepends=(
     'sdl2: Audio playback using SDL2'
     'avahi: Use system mDNS daemon for discovery'
 )
-source=("git+${url}#tag=v${pkgver}")
-sha256sums=('7660f8563c11291ee742b917bfa0f3459c7e57761a50fca6c10a44376d5a48dd')
+source=("git+${url}#commit=414432abeadd5167682be9f5dd0e5777552e688e")
+sha256sums=('68b2358c9faeaeb8054c8a2aeef03dcfffc459fb29ed4b66d4246c96f916eb8d')
 
 _env() {
     export RUSTUP_TOOLCHAIN=stable
