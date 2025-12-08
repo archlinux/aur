@@ -1,0 +1,16 @@
+pkgbase = logviewer-bin
+	pkgdesc = CLI log client for multiple sources (Splunk, K8s, Docker, etc)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bascanada/logviewer
+	license = GPL-3.0-or-later
+	conflicts = logviewer
+	provides = logviewer
+	arch = aarch64
+	source_aarch64 = https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9cff38504a3e276900495c783b06529f69d86ba1a90a00a6707efbeb40c3dd4a
+	arch = x86_64
+	source_x86_64 = https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b65a6cde6ce3451d3e6e4c2c66437195c41a4efa91135b550889176b997ec076
+	
+pkgname = logviewer-bin
