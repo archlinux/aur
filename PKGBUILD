@@ -13,8 +13,8 @@ makedepends=('curl' 'unzip')
 # id == filename
 # server_id == server to download from
 DLAGENTS=(
-	#"https::/usr/bin/wget --method POST --header 'content-type:\ application/x-www-form-urlencoded' --body-data id=2807&server_id=14 -O %o %u"
-	"https::/usr/bin/curl -L -A 'NVFlash\ AUR\ Package\ Builder\ ${pkgver}-${pkgrel}' -e %u --header 'Content-Type:\ application/x-www-form-urlencoded' --data-raw id=2807&server_id=14 -o %o %u"
+	#"https::/usr/bin/wget --method POST --header 'content-type:\ application/x-www-form-urlencoded' --body-data id=2807&server_id=27 -O %o %u"
+	"https::/usr/bin/curl -L -A 'NVFlash\ AUR\ Package\ Builder\ ${pkgver}-${pkgrel}' -e %u --header 'Content-Type:\ application/x-www-form-urlencoded' --data-raw id=2807&server_id=27 -o %o %u"
 )
 source=("${pkgname}-${pkgver}.zip::https://www.techpowerup.com/download/nvidia-nvflash/")
 sha256sums=('73ab51e121129059f1377b3bf21a8001f6649d64af2471455499c803a9c80301')
