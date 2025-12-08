@@ -5,7 +5,7 @@
 
 _pkgbase=libnl
 pkgname=lib32-${_pkgbase}
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Library for applications dealing with netlink sockets (32 bit)"
 arch=('x86_64')
@@ -13,9 +13,10 @@ url='https://github.com/thom311/libnl/'
 license=('LGPL-2.1-only')
 depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('git' 'gcc-multilib')
-validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728') # Thomas Haller <thaller@redhat.com>
+validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728'  # Thomas Haller <thaller@redhat.com>
+              '67DA3FAEBAE276BA58FC6CE314F18A98993AECD5') # Thomas Haller <thom311@gmail.com>
 source=("git+https://github.com/thom311/libnl.git#tag=libnl${pkgver//./_}?signed")
-sha256sums=('edef8939fe40a0c2985c944063f674c1205e36d047bb0d224d99fddf9072b34d')
+sha256sums=('d741b8f94ef4a64b953603efce660a2eec4eb0cb6cd7faeabf75c8af99f0bcab')
 
 prepare() {
   cd "${_pkgbase}"
