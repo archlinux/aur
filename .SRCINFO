@@ -1,7 +1,7 @@
 pkgbase = yacreader
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection.
-	pkgver = 9.15.0
-	pkgrel = 2
+	pkgver = 9.16.1
+	pkgrel = 1
 	url = http://www.yacreader.com
 	install = yacreader.install
 	arch = i686
@@ -20,10 +20,8 @@ pkgbase = yacreader
 	conflicts = yacreader-bin
 	conflicts = yacreaderlibraryserver-standalone
 	conflicts = yacreader-git
-	source = https://github.com/YACReader/yacreader/releases/download/9.15.0/yacreader-9.15.0-src.tar.xz
-	source = qt6_9_patch.patch::https://github.com/YACReader/yacreader/pull/471.patch
-	sha256sums = d0f69b7446dd36fdd29ce1a69787a8b563db8b52d2d2444dab678a2d9ae7e6ea
-	sha256sums = 2e7894acfd5d84e6fa8c33486288d529b7c7aafdb6fb293c6748de4811fe3ef9
+	source = https://github.com/YACReader/yacreader/releases/download/9.16.1/yacreader-9.16.1-src.tar.xz
+	sha256sums = 6b53eeaf5094afe5186a98052b6d879dec09c0ef6930805977385783764bcb2f
 
 pkgname = yacreader
 
