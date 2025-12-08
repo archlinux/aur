@@ -3,7 +3,7 @@
 # Maintainer: gnidan <aur@gnidan.org>
 
 pkgname=prysm
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Ethereum proof-of-stake consensus client written in Go"
 arch=('x86_64' 'aarch64')
@@ -27,12 +27,12 @@ source_aarch64=("prysm-beacon-chain-${pkgver}-${arch}::https://github.com/Offcha
 sha256sums=('fc52438b1319fb1e61c85c6d96abce83009c3898e517051f140093944b45f2e3'
             'cc19fe37cd80972e3a214f5de577b315996e428c8e93cb362c5beb8204d8a173'
             '143147f19424a17147d342d1ac4006d8a154dbbb9e4b5a2f8e594d43e90bd305')
-sha256sums_x86_64=('d95d68726e9d3cfdac412349d94ccb2e05f4c11147976f7362d8ac87b853e26a'
-                   'cc582a6ba5b56c85c447259976e9fd3f727be483204519ad2912591e52554e06'
-                   'e536356535ade2f417d70311ac82c397a1823e2aaf04e1d5d54bbf95aee38961')
-sha256sums_aarch64=('d95d68726e9d3cfdac412349d94ccb2e05f4c11147976f7362d8ac87b853e26a'
-                    'cc582a6ba5b56c85c447259976e9fd3f727be483204519ad2912591e52554e06'
-                    'e536356535ade2f417d70311ac82c397a1823e2aaf04e1d5d54bbf95aee38961')
+sha256sums_x86_64=('f43555a042db400f5ada39d6a5a22838ba8a03f9717519484dcb1f3e9bee0bc5'
+                   '5f0a143ee374b52193d92fade966f231a06778efb232dbd1503f436a02b3f7e2'
+                   'ec90a7b8cb409c8d7216936872526b092347e8f8a5722507b088c2c852b25ea6')
+sha256sums_aarch64=('f43555a042db400f5ada39d6a5a22838ba8a03f9717519484dcb1f3e9bee0bc5'
+                    '5f0a143ee374b52193d92fade966f231a06778efb232dbd1503f436a02b3f7e2'
+                    'ec90a7b8cb409c8d7216936872526b092347e8f8a5722507b088c2c852b25ea6')
 
 package() {
     cd "${srcdir}"
