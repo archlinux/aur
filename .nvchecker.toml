@@ -1,3 +1,4 @@
 [tp_smapi-lts]
 source = "git"
 git = "https://github.com/evgeni/tp_smapi.git"
+prefix = 'tp-smapi/'
