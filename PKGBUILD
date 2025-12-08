@@ -3,7 +3,7 @@
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
 pkgname=jan-appimage
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='An open source alternative to ChatGPT that runs 100% offline on your computer'
 arch=('x86_64')
@@ -19,11 +19,11 @@ _baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
 source=("$_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage"
         "$pkgname-$pkgver-latest.json::$_baseurl/latest.json"
         "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
-sha256sums=('7781852221a4755dfa09fa6fe8b4eb140cea98532897215db5dab50232ad78cd'
-            'd352ee34cacbacfe3fa38f77f3daf03c69560dcb14fc8da17bf2cea583edf11b'
+sha256sums=('448101a5ea203480cf329a18e4693cab8fadee3c5c5891192cfa891d6c9a564e'
+            '302f3ed91854c6328633352d6c9492729455d10274eb359e4185ca446686f695'
             'ac982d729e5d173d8303e7405be656ae7b4de7e4833f63d7d9e1a685e17e864d')
-b2sums=('646b893df8baf5e0e8fc985b16a2c6f06962d39f3ad5bad016f8522ffd7276e3d25feafe1aab3c970909a5b9d12ad570dbdbc564612e59788aa65b06893f10cc'
-        'de360b0b4ddb606ba3ec83e9fba916e705982716faa9f39c193e237ca9caa1ac8b6367a17ae881a23413faa032082f1fbfc8e742f9254ef3645c3820b9060f9c'
+b2sums=('ef7c233e48bf94ffc2da5280a4e669a0fcbc1f0a81b5d74e1b13f7f1ed788b68069c4ff0b678a75031883655143cbd36c286f9e584e5861a326a077c96b293ec'
+        '7a10c7776486e5b1959a58f155ca636c8b37d22cdbc9d9509316739dafeb42fa0dbb8d103cb76969deb63e50cfc9f58aa8725bf35e367515f050edf2c34d5974'
         '2d5a9ad0aeb96ebf7d8cfab9f1a72994f5cda5259362bf563956032c0051db01bf5fb8ea5412059f97d8b11d5fa0ab92dcba13e627616fee477bfedf6550fb78')
 
 prepare() {
