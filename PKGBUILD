@@ -5,7 +5,7 @@
 _number_of_bits=16
 pkgver=2.10
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgrel=1
+pkgrel=2
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -33,6 +33,7 @@ package() {
   mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
   mv unpacked.vfs/licensecomponent/LinuxLM/xclmcheck.sh "${pkgdir}${instdir}/bin"
   mv unpacked.vfs/licensecomponent/xclmBinlinux32/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  chmod u+s "${pkgdir}${instdir}/bin/xclm"
   sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" unpacked.vfs/licensecomponent/xclmBinlinux32/etc/xclm.conf
   mv unpacked.vfs/licensecomponent/xclmBinlinux32/etc/xclm.conf "${pkgdir}${instdir}/etc"
   mv unpacked.vfs/licensecomponent/xclmallDocs/doc/* "${pkgdir}${instdir}/docs"
