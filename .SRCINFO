@@ -1,6 +1,6 @@
 pkgbase = sledge
 	pkgdesc = Pixel-based drawing tool.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/sledge-pdm/sledge
 	install = sledge.install
@@ -17,7 +17,7 @@ pkgbase = sledge
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/sledge-pdm/sledge/releases/download/v0.1.4/sledge_0.1.4_amd64.deb
-	sha256sums_x86_64 = c74a21e9e27ff4f70fe160a28600ce227147a18547181ca9101a737308f3f019
+	source_x86_64 = https://github.com/sledge-pdm/sledge/releases/download/v0.1.5/sledge_0.1.5_amd64.deb
+	sha256sums_x86_64 = 2cd8aa4ad1de715493d76a748b7d7b3e2642bc5f4a46a2bdae1642fb63deaa88
 
 pkgname = sledge
