@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-bnx2x-2.5g
-pkgver=6.12.21
+pkgver=6.12.61
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -38,20 +38,20 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('9d1ae39a2ea024d99646f645fdbbbfa4545577132ba2643e01df75e32246d6c7'
+sha256sums=('1a69745105528676f12f29dc2494945d96cb23666dcc5223794abc22415f1735'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
             '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
             '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
             '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1'
-            'bffbd93bdec9c35eb0fd35fe1bc70c2b50adb028f093cc6960f5d0db20243ebc')
-b2sums=('3dad715ed88f08c680837f7f74d0cb759f1a50f597820a9885863fba48cc13b10d4efa65ad821c02cfbbd7f0b814f4498cf15f4274cd9249b49edd5a37ea0728'
+            'cf5affd3610c6cef95b3b82ffbe902f1c8ec0627c63bfe4c6aa6ac23b9e860a4')
+b2sums=('7b99df1c1f8d6a331b33510c1593aac5b38e828e5a43433df62650e1d989a0f8253d9aa4552e90819052c67bea2f0deeca16ff0f411bf8eb8c6d361ec3732876'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
         'b2e1f3544470a0ded336a8d9097b879060530d795a9b60ef5d617d16c165f3ca27424529a7c464d249ab72abcaf48d65d66d96508a7b49622ab404739ae0a918'
         '01f1a8249983b1a52437843ce3566242b3ed1df03fcab98ec092982be9a4dc947ab0f932a6bc9ac84f85248dca479ebe193a6032cfd2b574dc6f5ca31a0190c5'
         '410dc8911051905c5c01b47890eeff817fc180434372864cfa9ee0d77e0ff43571b9fcc3c193d562c4dcd49511edf7c6c01dde12dd0778845d1868dc435531ea'
-        '62efb8fb71e064df7b90add30dac591d0613df5ccec9b7fb3e229fac4af421acc56c33e9e21608f7debe0fd35a69862d1fb31c7d098ea3acc06c96fcd24f6463')
+        '7ded5277cd01094a1bb8f6d13a8d3e34a0e88f3b7eb1707a30ebe8964417e67e3074e3dc6f203d8769e7f912d913d7f808ea69add20e3e1d25ddab8c9a50f688')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
