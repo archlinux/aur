@@ -1,0 +1,5 @@
+[upt-bin]
+source = "github"
+github = "sigoden/upt"
+use_latest_release = true
+prefix = "v"
