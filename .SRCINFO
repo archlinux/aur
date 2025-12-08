@@ -1,7 +1,7 @@
 pkgbase = handy-bin
 	pkgdesc = A free, open source, and extensible speech-to-text application that works completely offline
-	pkgver = 0.6.4
-	pkgrel = 2
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://handy.computer/
 	arch = x86_64
 	license = MIT
@@ -18,9 +18,9 @@ pkgbase = handy-bin
 	depends = openssl
 	depends = vulkan-icd-loader
 	depends = webkit2gtk-4.1
-	source = handy-bin-0.6.4.deb::https://github.com/cjpais/Handy/releases/download/v0.6.4/Handy_0.6.4_amd64.deb
+	source = handy-bin-0.6.5.deb::https://github.com/cjpais/Handy/releases/download/v0.6.5/Handy_0.6.5_amd64.deb
 	source = https://raw.githubusercontent.com/cjpais/Handy/refs/heads/main/LICENSE
-	b2sums = 1232af4017e631b066293b6df77d55c779a0e5552244ad47fa50b5dcb926890ba1cc5dbafbff41d7ef74dc1bb0776c6285dd14556f604b0c868a67628d0f9fec
+	b2sums = a09e7109ba9c874f74e0217f3241526b97b5b537d89f3a1ae014680aa5c1a0e88bc8a318d3b5de1904a949ca9ce4594a93a916b4d4cb558e55b69f36559fb561
 	b2sums = 48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950
 
 pkgname = handy-bin
