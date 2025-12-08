@@ -1,25 +1,22 @@
 pkgbase = thoughts-bin
 	pkgdesc = A relatively powerful web mind map.(Prebuilt version.Use system-wide electron)一个还算强大的Web思维导图.
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://wanglin2.github.io/mind-map/#/index
-	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
 	makedepends = squashfs-tools
 	depends = electron23
-	provides = thoughts=0.15.0
+	provides = thoughts=0.16.0
 	conflicts = thoughts
-	source = LICENSE-0.15.0::https://raw.githubusercontent.com/wanglin2/mind-map/0.15.0/LICENSE
+	source = LICENSE-0.16.0::https://raw.githubusercontent.com/wanglin2/mind-map/0.16.0/LICENSE
 	source = thoughts.sh
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = thoughts-0.15.0-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/0.15.0/thoughts_0.15.0_arm64.deb
-	sha256sums_aarch64 = ac06cd1f76732c3b553c7169181cc9c332e1d1f27ce63ee8d87fb760950d1664
-	source_armv7h = thoughts-0.15.0-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.15.0/thoughts_0.15.0_armv7l.deb
-	sha256sums_armv7h = 87221ab022db12c113b9f6c26274d1b91733b64c295ef7aa2d682941f3ac62fd
-	source_x86_64 = thoughts-0.15.0-x86_64.snap::https://github.com/wanglin2/mind-map/releases/download/0.15.0/thoughts_0.15.0_amd64.snap
-	sha256sums_x86_64 = c9fb8484304cba404bc70c00085905fc8bee37fa34a451027da933d66e5a8bb9
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_armv7h = thoughts-0.16.0-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.16.0/thoughts_0.16.0_armv7l.deb
+	sha256sums_armv7h = d04087c0a8ed5feee7ea2c1e178d11cfda9eaf90e4d081d43dfd4a7f72668986
+	source_x86_64 = thoughts-0.16.0-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/0.16.0/thoughts_0.16.0_amd64.deb
+	sha256sums_x86_64 = 15c9a69ed0002245a236648154810ac14a771e8a5f5956a3e5e4111a452fe6ec
 
 pkgname = thoughts-bin
