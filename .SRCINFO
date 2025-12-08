@@ -1,4 +1,4 @@
-pkgbase = lieer
+pkgbase = gmaillieer
 	pkgdesc = Fast fetch and two-way tag synchronization between notmuch and GMail
 	pkgver = 1.6
 	pkgrel = 1
