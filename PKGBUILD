@@ -2,12 +2,12 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts61
-pkgver=6.1.158
+pkgver=6.1.159
 pkgrel=1
-pkgdesc='LTS Linux'
+pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
+license=('GPL-2.0-only')
 makedepends=(
   bc
   cpio
@@ -26,10 +26,10 @@ makedepends=(
   texlive-latexextra
 )
 options=('!strip')
-_srcname=linux-$pkgver
-_srctag=v$pkgver
+_srcname=linux-${pkgver%.*}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0004-Sphinx-7.2.2-8.0-PosixPath.patch
   '0005-depmod-remove-depmod_hack_needed.patch'
@@ -39,12 +39,13 @@ source=(
   config  # the main kernel config file
 )
 validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('b05c98624fa6da6a616268c1959152f7'
+md5sums=('475320de08f16c9fa486fc4edfe98b30'
          'SKIP'
+         '776189644a55021abab7884b8005c6f5'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
          'd15820a808c3cc159e6e5916a8c05e8f'
@@ -52,8 +53,9 @@ md5sums=('b05c98624fa6da6a616268c1959152f7'
          '25032e45b830ad198d84d7bb4a239da6'
          'd7169181793cabdf3d7decb350db26b5'
          'c7f23b1bcb226f29451d47bb7ae8604b')
-sha256sums=('ad068bfdb604ec0f4f7de385c8e7ab944008aa78a4aeeca94f53206e6726bfda'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
+            'a917aa5c006610d02d9b7ac801b83463fa02052b3403f784be3158e5aa0018ac'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
@@ -61,15 +63,6 @@ sha256sums=('ad068bfdb604ec0f4f7de385c8e7ab944008aa78a4aeeca94f53206e6726bfda'
             '6d886ff7f1fed2f32a9f2d8932c11786bb06742e203a55990c6b1f77a247be59'
             '51a883e3151cbe3c565f4cdbca015c3b3979bec438b11f9716cb978f7f63e108'
             'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
-b2sums=('ef86103aa6f3bb15770c38e47294f475fc8d879954ceca78b0b7f936f4800c6abc76a92aa8b75809ed5a83625ca442795a3d69c5afb4ef82d010cc89dfd632ca'
-        'SKIP'
-        '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
-        'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
-        'a0cb29f2c4a4bbd815daa2fc399c7014dcc880a73130f5cf26a0e428b73e23911858a9274e15b62c3cd90a82f6c46c83ecfb4b2fdcdaef8e10bf24f6766ae049'
-        '7b24fa23ffb4ef7c998e7b43a60d3df094220ff6e60f49cb4a9dcd712f657b40c022bf1b94f81d41ddb4008ef3200649a672025ccf63f50079320a951538cb4f'
-        'f96a0bd31cf73a712347fc95dbffbc1979f4e8db93323a78717907904789dad99da9cc2d69d24f5b75a437874676ca7c12608691d0c301535867b9ddb09d621e'
-        'd1d8c0f1eae4fd6e45be97939a9ffbce90cd0561e4c2757da8d35ce7a01b9323a2c594225ef7c9383fef44786c71b8dfd2fb579f53529b66b7c6712c7f67d518'
-        'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -86,10 +79,17 @@ prepare() {
   for _src in "${source[@]}"; do
     _src="${_src%%::*}"
     _src="${_src##*/}"
-    _src="${_src%.zst}"
-    [[ $_src = *.patch ]] || continue
-    msg2 "Applying patch $_src..."
-    patch -Np1 < "../$_src"
+    case "${_src}" in
+    *.patch)
+      msg2 "Applying patch $_src..."
+      patch -Np1 < "../$_src"
+      ;;
+    patch-*)
+      _src="${_src%.*}"
+      msg2 "Applying patch $_src..."
+      patch -Np1 -s < "../$_src"
+      ;;
+    esac
   done
 
   #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
@@ -125,23 +125,57 @@ EOF
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(
-    coreutils
-    initramfs
-    kmod
+  license=(
+    'Apache-2.0 OR MIT'
+
+    'BSD-2-Clause OR GPL-2.0-or-later'
+
+    BSD-3-Clause
+    'BSD-3-Clause OR GPL-2.0-only'
+    'BSD-3-Clause OR GPL-2.0-or-later'
+    BSD-3-Clause-Clear
+
+    GPL-1.0-or-later
+    'GPL-1.0-or-later OR BSD-3-Clause'
+
+    GPL-2.0-only
+    'GPL-2.0-only OR Apache-2.0'
+    'GPL-2.0-only OR BSD-2-Clause'
+    'GPL-2.0-only OR BSD-3-Clause'
+    'GPL-2.0-only OR CDDL-1.0'
+    'GPL-2.0-only OR Linux-OpenIB'
+    'GPL-2.0-only OR MIT'
+    'GPL-2.0-only OR MPL-1.1'
+    'GPL-2.0-only OR X11'
+    'GPL-2.0-only WITH Linux-syscall-note'
+
+    GPL-2.0-or-later
+    'GPL-2.0-or-later OR BSD-2-Clause'
+    'GPL-2.0-or-later OR BSD-3-Clause'
+    'GPL-2.0-or-later OR MIT'
+    'GPL-2.0-or-later OR X11'
+    'GPL-2.0-or-later WITH GCC-exception-2.0'
+
+    ISC
+
+    LGPL-2.0-or-later
+    'LGPL-2.1-only'
+    'LGPL-2.1-only OR BSD-2-Clause'
+
+    LGPL-2.1-or-later
+
+    MIT
+    MPL-1.1
+    X11
+    Zlib
   )
+  depends=(coreutils kmod initramfs)
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
   )
-  provides=(
-    KSMBD-MODULE
-    VIRTUALBOX-GUEST-MODULES
-    WIREGUARD-MODULE
-  )
-  replaces=(
-    wireguard-lts
-  )
+  provides=(KSMBD-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(wireguard-lts)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -262,11 +296,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=(
-  "$pkgbase"
-  "$pkgbase-headers"
-  "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
