@@ -1,6 +1,6 @@
 pkgbase = shutter-encoder-bin
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)
-	pkgver = 19.6
+	pkgver = 19.7
 	pkgrel = 1
 	url = https://www.shutterencoder.com
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = shutter-encoder-bin
 	depends = mediainfo
 	depends = dvdauthor
 	depends = dcraw
-	provides = shutter-encoder=19.6
+	provides = shutter-encoder=19.7
 	conflicts = shutter-encoder
-	source = shutter-encoder-19.6.deb::https://www.shutterencoder.com/Shutter%20Encoder%2019.6%20Linux%2064bits.deb
+	source = shutter-encoder-19.7.deb::https://www.shutterencoder.com/Shutter%20Encoder%2019.7%20Linux%2064bits.deb
 	source = shutter-encoder.sh
-	sha256sums = 23121716027602112846c75d5fe9ab56bda85526e0068003292e63911bdef326
+	sha256sums = 002ef4a2c4a80b7810fd954027f28bf2dd1033398530b2a89e85ea8da94096da
 	sha256sums = a81897397409f2d750ead9f53f7cded8bffbb765da2305dea006d2fb4fcd2b1d
 
 pkgname = shutter-encoder-bin
