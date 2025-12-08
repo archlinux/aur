@@ -20,7 +20,7 @@ options=(!debug)
 install=millennium.install
 
 pkgver() {
-    cd $srcdir/$_pkgdir
+    cd "$srcdir/$_pkgdir"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
