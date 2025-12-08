@@ -1,0 +1,5 @@
+[gitbatch-bin]
+source = "github"
+github = "isacikgoz/gitbatch"
+use_latest_release = true
+prefix = "v"

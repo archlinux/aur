@@ -1,5 +1,5 @@
-# Maintainer: Christopher Ferreira <aumgn@free.fr>
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Christopher Ferreira <aumgn@free.fr>
 
 _pkgauthor=isacikgoz
 _pkgname=gitbatch
