@@ -3,12 +3,12 @@
 
 pkgname='libyang'
 pkgver='4.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C'
 url="https://github.com/CESNET/${pkgname}"
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('BSD')
-depends=('pcre2')
+depends=('pcre2' 'xxhash')
 makedepends=('cmake' 'doxygen' 'graphviz')
 checkdepends=('cmocka' 'expect')
 conflicts=('libyang-git' 'libyang-devel-git')
