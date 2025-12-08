@@ -1,0 +1,15 @@
+pkgbase = dcli-git
+	pkgdesc = Dashlane CLI - Access your secrets in your terminal, servers and CI/CD
+	pkgver = 6.2544.2.r3.8d37e32
+	pkgrel = 1
+	url = https://github.com/Dashlane/dashlane-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = nodejs-lts-jod
+	makedepends = yarn
+	makedepends = git
+	provides = dcli=6.2544.2.r3.8d37e32
+	source = dcli::git+https://github.com/Dashlane/dashlane-cli.git
+	sha256sums = SKIP
+
+pkgname = dcli-git
