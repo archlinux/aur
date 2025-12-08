@@ -1,6 +1,6 @@
 pkgbase = podpisgov
 	pkgdesc = An application for digital signatures by Poland government.
-	pkgver = 0.0.1
+	pkgver = 1.5.5.4
 	pkgrel = 1
 	url = https://podpis.gov.pl/ui/wp/podpis-gov
 	arch = x86_64
