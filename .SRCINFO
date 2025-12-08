@@ -1,0 +1,17 @@
+pkgbase = ferrumc-git
+	pkgdesc = A reimplementation of the minecraft server in rust.
+	pkgver = v0.6.0.r149.gd24c6e58b
+	pkgrel = 1
+	url = https://github.com/ferrumc-rs/ferrumc
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = ferrumc
+	conflicts = ferrumc
+	source = git+https://github.com/ferrumc-rs/ferrumc
+	sha256sums = SKIP
+
+pkgname = ferrumc-git
