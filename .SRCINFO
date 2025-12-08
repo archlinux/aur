@@ -1,0 +1,13 @@
+pkgbase = pgsql-http
+	pkgdesc = HTTP client for PostgreSQL, retrieve a web page from inside the database.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/pramsey/pgsql-http
+	arch = any
+	license = MIT
+	depends = postgresql-libs
+	depends = curl
+	source = https://github.com/pramsey/pgsql-http/archive/refs/tags/v1.7.0.tar.gz
+	sha1sums = fab2bc428005db91b99fa6819dadf515c8e9cd6f
+
+pkgname = pgsql-http
