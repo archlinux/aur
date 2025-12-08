@@ -1,5 +1,5 @@
-# Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 
 pkgname=yj-bin
 _pkgname="${pkgname%-bin}"

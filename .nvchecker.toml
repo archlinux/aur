@@ -1,0 +1,5 @@
+[yj-bin]
+source = "github"
+github = "sclevine/yj"
+use_latest_release = true
+prefix = "v"
