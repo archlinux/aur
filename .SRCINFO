@@ -1,23 +1,25 @@
 pkgbase = r-isoband
 	pkgdesc = Generate Isolines and Isobands from Regularly Spaced Elevation Grids
-	pkgver = 0.2.7
-	pkgrel = 4
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=isoband
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
-	depends = r
+	makedepends = r-cpp11
+	depends = r-cli
+	depends = r-rlang
+	optdepends = r-bench
 	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-magick
-	optdepends = r-microbenchmark
 	optdepends = r-rmarkdown
 	optdepends = r-sf
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/isoband_0.2.7.tar.gz
-	md5sums = 7241f95bafb46b44aa380b9a71b10467
-	b2sums = ba44409e12e7bed6349842e87cc3fbd71348e009e6db112dcb203cbb2834cc8e800b49c2e97ee948412deee220e9cbac7fe13f754ddff20ca2f3ff4403e20ba6
+	source = https://cran.r-project.org/src/contrib/isoband_0.3.0.tar.gz
+	md5sums = 0b811a225740b6e4ae0afcdd64f11407
+	b2sums = a0503fb609004646044a680849820602ac8388dcc70d7a77c610c3d43b150cd8e1d3948f24cb6bc2f8471bb562e0bda2325e8c6cbc01466cbd08d475680eb801
 
 pkgname = r-isoband
