@@ -1,9 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=keircn
+_pkgauthor=Bestire
 _pkgname=hostman
 pkgname=${_pkgname}-bin
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
@@ -17,16 +17,15 @@ depends=('cjson' 'sqlite' 'openssl' 'curl' 'glibc')
 
 changelog="changelog.md"
 
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}.tar.gz")
-sha256sums_x86_64=('564a0860272bd43b5c962ab5f9604f80267b3b687e861d13f849a3e085d38945')
-
+source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}.tar.gz")
+sha256sums_x86_64=('6af0024e6feb1102a58f66df62e256466a71caf680ee030cf509827e7e016d6f')
 
 package() {
-	cd "${srcdir}/" || exit
+  cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
