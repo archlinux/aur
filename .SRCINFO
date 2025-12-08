@@ -1,8 +1,8 @@
 pkgbase = xlibre-video-intel-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers (binary release)
-	pkgver = 3.0.0.4
+	pkgver = 3.0.0.6
 	pkgrel = 1
-	url = https://github.com/X11Libre
+	url = https://x11libre.net
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
@@ -40,9 +40,9 @@ pkgbase = xlibre-video-intel-bin
 	conflicts = xf86-video-intel-legacy
 	replaces = xf86-video-intel-uxa
 	replaces = xf86-video-intel-sna
-	noextract = xlibre-xf86-video-intel-3.0.0.4-1-x86_64.pkg.tar.zst
+	noextract = xlibre-video-intel-3.0.0.6-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-intel-3.0.0.4-1-x86_64.pkg.tar.zst
-	sha256sums = 3ceb92b21982eb1b6b57e974e9175034958f407a0668e204c971f6396e55809a
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-video-intel-3.0.0.6-1-x86_64.pkg.tar.zst
+	sha256sums = da4f9d7ed5f0aea3e992e93135c91f83d9792485d07c3411a13f813a646ac25b
 
 pkgname = xlibre-video-intel-bin
