@@ -3,7 +3,7 @@
 
 _pkgname=django-modelcluster
 pkgname=python-django-modelcluster
-pkgver=6.4
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Django extension to allow working with 'clusters' of models as a single unit, independently of the database."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-django-taggit')
 makedepends=('python-setuptools')
 checkdepends=('python-django' 'python-django-taggit')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/wagtail/django-modelcluster/archive/v$pkgver.tar.gz")
-sha512sums=('fc2ef73be95eea3d7e6f3451b471e5d2d044ab7f50a64ba2b40ec5d81e36f76ccc579bc4845cc60ba88ad38cefb25213a6317378b2d560104f5975108c11f8ad')
+sha512sums=('6749f63d1917b3e558302e4fa23cda3dd6754e636c3f5a1095cea403deedfd3b06f7c903be2a1a46b28f94dab15c3b533c976cb49dbfc611f74958fea4cc8c76')
 
 build() {
   cd "$_pkgname-$pkgver"
