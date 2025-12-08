@@ -1,17 +1,17 @@
 pkgbase = perl-feature-compat-class
 	pkgdesc = Make 'class' syntax available in older Perl versions
-	pkgver = 0.07
-	pkgrel = 3
+	pkgver = 0.08
+	pkgrel = 1
 	url = https://metacpan.org/dist/Feature-Compat-Class
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
-	checkdepends = perl-test-simple>=0.88
+	checkdepends = perl-test-simple>=1.302200
 	makedepends = perl-module-build>=0.4004
 	depends = perl>=5.14
-	optdepends = perl-object-pad>=0.806: support for Perl versions older than 5.40
+	optdepends = perl-object-pad>=0.823: support for Perl versions older than 5.40
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Class-0.07.tar.gz
-	b2sums = 69675b5fb0a4586eb9418fcb07f699801cce18384c674fc2a27d48d49749e5a373d214418b366b16fb8c844e9565409b39b6fd940b578e837346004259af32a5
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Class-0.08.tar.gz
+	b2sums = 4b24a85e8a0f318b4561b59016dfbd9a434d2b3f04e451f2076fa42c1dc96375dd5ee033e7ad1d8990b2dd80efebd4a3bae0e5cba6e1a650dea1e153a0d91a1b
 
 pkgname = perl-feature-compat-class
