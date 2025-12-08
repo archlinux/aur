@@ -11,8 +11,8 @@ string replace -r 'sha256sums_x86_64=\("\K\w+' $x86_64 < PKGBUILD\
 | string replace -r 'sha256sums_armv7h=\("\K\w+' $armv7h\
 | string replace -r 'sha256sums_aarch64=\("\K\w+' $aarch64 > PKGBUILD.new
 mv PKGBUILD.new PKGBUILD
-makepkg --printsrcinfo > .SRCINFO
 if not git diff --quiet
+    makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
     git commit -m "bump: $_pkgver"
 end
