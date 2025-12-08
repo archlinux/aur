@@ -1,4 +1,6 @@
-# Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
+# Maintainer: Hannele Ruiz <justlemoncl [at] gmail [dot] com>
+# Maintainer: Wijnand Modderman-Lenstra <maze [at] pyth0n [dot] org>
+
 pkgname=direwolf
 pkgver=1.8
 pkgrel=1
