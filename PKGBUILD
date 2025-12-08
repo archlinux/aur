@@ -83,6 +83,8 @@ prepare() {
   git config remote.sigfm.url >&- || git remote add sigfm $srcdir/sigfm
   git fetch sigfm makepkg
   git merge sigfm/makepkg --no-edit
+  # Revert "libfprint: Use fatal-warnings on g-i-scanner" to fix build
+  sed -i '/fatal_warnings: true,/d' libfprint/meson.build
   sed -i 's|import shutil|import shutil\n    import traceback|g' tests/virtual-image.py
   for patch in $srcdir/*.patch; do
     git apply $patch
