@@ -63,6 +63,7 @@ build() {
 	export CFLAGS CXXFLAGS
 	CFLAGS+=" -Wno-deprecated-declarations"
 	CXXFLAGS+=" -Wno-deprecated-declarations"
+	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
 
 	cd "$_pkgsrc"
 	fvm flutter build linux --no-pub --release --dart-define=VERSION_CHECK=false
