@@ -1,0 +1,15 @@
+pkgbase = password-generator
+	pkgdesc = UI tool that creates unique and random passwords
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/denix666/password-generator
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/password-generator/releases/download/v0.1.1/password-generator_linux_x86_64.tar.gz
+	source = password-generator.png
+	source = password-generator.desktop
+	sha256sums = d9f52503c40fc660d7ebfc6cdbb21f9f313cb5839d245b965472052d9cc36624
+	sha256sums = 3773a0cd9821b818140d54a77c897baef5581fb1179ae4e7bfc35ef7fef60dbc
+	sha256sums = 1a5314ec32d8b6350cdd5e0057b5012d09d8e74da5355ce649c4ef7dc374d996
+
+pkgname = password-generator
