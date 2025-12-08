@@ -19,8 +19,6 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-setuptools-scm'
-  'python-repairwheel'
   'git'
   'rocm-hip-sdk<7'
   'rocm-opencl-sdk<7'
@@ -44,7 +42,7 @@ build() {
   export GGML_HIP=ON
   export GGML_ROCM=1
   export CMAKE_PREFIX_PATH="$ROCM_PATH"
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
