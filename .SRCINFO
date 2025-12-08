@@ -1,7 +1,7 @@
 pkgbase = ripvid
 	pkgdesc = Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites
-	pkgver = 2.1.1
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/BurgessTG/ripVID
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = ripvid
 	provides = ripvid
 	conflicts = ripvid-bin
 	conflicts = ripvid-git
-	source = ripvid-2.1.1.deb::https://github.com/BurgessTG/ripVID/releases/download/v2.1.1/ripVID_2.1.1_amd64.deb
+	source = ripvid-2.2.0.deb::https://github.com/BurgessTG/ripVID/releases/download/v2.2.0/ripVID_2.2.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = ripvid
