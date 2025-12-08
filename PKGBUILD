@@ -2,12 +2,12 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=core-lightning-git
-pkgver=25.09.3.r17147.73147dafe
+pkgver=25.12.r17283.686ce9890
 pkgrel=1
 pkgdesc='A lightweight, highly customizable and standard-compliant implementation of the Lightning Network protocol.'
 arch=('x86_64')
 url='https://github.com/ElementsProject/lightning'
-license=('custom')
+license=('BSD-MIT')
 depends=('gmp' 'libsodium' 'sqlite' 'python-grpcio-tools' 'python-flask' 'python-json5' 'gunicorn' 'python-flask-restx')
 makedepends=('clang' 'git' 'python-pytest' 'python-mako' 'mrkd' 'python-poetry')
 provides=('python-pyln-client')

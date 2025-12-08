@@ -1,10 +1,10 @@
 pkgbase = core-lightning-git
 	pkgdesc = A lightweight, highly customizable and standard-compliant implementation of the Lightning Network protocol.
-	pkgver = 25.09.3.r17147.73147dafe
+	pkgver = 25.12.r17283.686ce9890
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = x86_64
-	license = custom
+	license = BSD-MIT
 	makedepends = clang
 	makedepends = git
 	makedepends = python-pytest
