@@ -1,7 +1,7 @@
 # Maintainer: Burgess <burgess@ripvid.app>
 pkgname=ripvid
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites"
 arch=('x86_64')
 url="https://github.com/BurgessTG/ripVID"
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
     'libappindicator-gtk3: system tray support'
+    'deno: required for YouTube downloads (yt-dlp JS runtime)'
 )
 provides=('ripvid')
 conflicts=('ripvid-bin' 'ripvid-git')
