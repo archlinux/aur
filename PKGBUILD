@@ -4,12 +4,12 @@
 
 pkgname=dwdiff
 pkgver=2.1.4
-pkgrel=9
+pkgrel=10
 pkgdesc='A diff program that operates at the word level instead of the line level'
 arch=('x86_64' 'aarch64')
 url='https://os.ghalkes.nl/dwdiff.html'
 depends=('diffutils' 'icu')
-license=('GPL')
+license=('GPL-3.0-or-later')
 source=("https://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 sha256sums=('df16fec44dcb467d65a4246a43628f93741996c1773e930b90c6dde22dd58e0a')
 
