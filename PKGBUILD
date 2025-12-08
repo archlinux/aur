@@ -2,7 +2,7 @@
 # Contributor: Jakob Nixdorf <flocke at shadowice dot org>
 
 pkgname=perl-struct-dumb
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Make simple lightweight record-like structures'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Struct-Dumb-${pkgver}.tar.gz")
-b2sums=('23c3b95ea520162cb1b335651b848ca21aa38a373d6432286010891a7ad103271ecc5888816ab71cd91697ad6feb9a13b8e640adab4530ffbb8800933a702c35')
+b2sums=('267552362ec1f6e73404c2ca7e89962ae2bd3fb53187595ac17f91aec30a62b0a542c797e9c0249484fe7fad479112f5b620ad829f75a5dc1964e40fdfe36b56')
 
 
 build() {
