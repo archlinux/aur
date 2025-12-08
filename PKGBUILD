@@ -1,7 +1,7 @@
 # Maintainer: Lazerbeak12345 <contact me on github or mastodon>
 pkgname=incus-s6
 pkgver=20251208
-pkgrel=1
+pkgrel=2
 pkgdesc="s6 service scripts for incus"
 arch=('any')
 depends=('incus' 's6')

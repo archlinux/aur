@@ -1,7 +1,7 @@
 pkgbase = incus-s6
 	pkgdesc = s6 service scripts for incus
 	pkgver = 20251208
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = incus
 	depends = s6
