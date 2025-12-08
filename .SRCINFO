@@ -1,6 +1,6 @@
 pkgbase = sqlitestudio-bin
 	pkgdesc = A free, open source, multi-platform SQLite database manager.(Prebuilt version)
-	pkgver = 3.4.17
+	pkgver = 3.4.18
 	pkgrel = 1
 	url = https://sqlitestudio.pl/
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = sqlitestudio-bin
 	depends = qt5-base
 	depends = gtk3
 	depends = openssl-1.1
-	provides = sqlitestudio=3.4.17
+	provides = sqlitestudio=3.4.18
 	conflicts = sqlitestudio
 	options = !strip
-	source = sqlitestudio-3.4.17.tar.xz::https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.17/sqlitestudio-3.4.17-linux-x64.tar.xz
+	source = sqlitestudio-3.4.18.tar.xz::https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.18/sqlitestudio-3.4.18-linux-x64.tar.xz
 	source = sqlitestudio.sh
-	sha256sums = b8ef8afcc73a00475b88d867636013ab2d99561233546ee7ea8e358badb4071c
+	sha256sums = 132b0fe53f316a68f7b5a11b2c517300a5cc7047cf8ad3f8087d15df486d20f0
 	sha256sums = 20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea
 
 pkgname = sqlitestudio-bin
