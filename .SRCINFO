@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-shakespeare
+	pkgdesc = Fortune cookies: Shakespeare.
+	pkgver = 20140622
+	pkgrel = 2
+	url = https://www.gutenberg.org/ebooks/1041
+	arch = any
+	license = custom:PublicDomain
+	depends = fortune-mod
+	source = sonnets
+	sha256sums = e4ed97132a1759f50ebdd548958fb93b7c551ec148501fab1df7fd8dfb63bc31
+
+pkgname = fortune-mod-shakespeare
