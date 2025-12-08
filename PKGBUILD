@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=2.6.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
@@ -24,6 +24,7 @@ depends=(
   'python-pydantic'
   'python-pynput'
   'python-pyperclip'
+  'python-qrcode'
   'python-requests'
   'python-websockets'
   'python-wsproto'
@@ -40,11 +41,9 @@ optdepends=(
   'python-pystray: fallback for system tray'
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-        "${_app_id}.desktop"
          "$pkgname.1")
-sha256sums=('d4e5ab45cae3071f8b38828e2c71e1bd900ccc93658e815b94893f6d562be834'
-            '7e5df0da74ea06cd786dcb46b63de9d4822b746fa1a2cca6b6e41f42b5e5322c'
-            '25e48aaf46a06e432486d30dc6d95d7fdf12db0a55eaf60336a5d9efb4a32ce7')
+sha256sums=('480b5fac13482e1c8899d70b7068f4ba173a9a98bfadfb693fa01796667b8079'
+            '6df78f59e66ae33a54885144e0d9b0b8e17b3a00f59223b96a1b280a92dd2133')
 
 build() {
   cd "PCLink-$pkgver"
@@ -63,6 +62,6 @@ package() {
     "$pkgdir/usr/lib/systemd/user/$pkgname.service"
   install -Dm644 "assets/${pkgname}_icon.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
-  install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$srcdir/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
 }
