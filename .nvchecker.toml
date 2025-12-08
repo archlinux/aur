@@ -1,0 +1,5 @@
+[vgrep-bin]
+source = "github"
+github = "vrothberg/vgrep"
+use_latest_release = true
+prefix = "v"

@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Darshit Shah <darnir@gmail.com>
 # Contributor: Jonas Malaco <jonas@protocubo.io>
