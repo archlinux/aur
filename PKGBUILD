@@ -1,6 +1,6 @@
 # Maintainer: magnap <echo "bXJvazRhQGdtYWlsLmNvbQo=" | base64 -d>
 pkgname=cyan-skillfish-governor-tt
-pkgver=0.1.5.thermal_throttling
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="GPU governor for the AMD Cyan Skillfish APU"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('libdrm')
 makedepends=('cargo')
 backup=("etc/$pkgname/config.toml")
-source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('84996c13f2ce34a932a2bd4351022bad1b30a1b33b6947642297491c15e395cc937e9941f90c5af6689478bccbbe85525ff504e5639daed7acd4551f27dc3c26')
+source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('af9af1f7c873c51ffd84bfbf73ef0aa23e8e41c3cec80ccf2d904567e26bdb4756bd113dc150645f6a3b264661e4e7675ffd98806f32d1483bbf572db02956cb')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
