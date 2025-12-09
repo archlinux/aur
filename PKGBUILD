@@ -10,7 +10,7 @@
 pkgname=ollama-cuda-git
 _pkgname=ollama
 pkgver=0.13.3.rc0+r4860+gd475d1f08
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
@@ -55,6 +55,10 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
+    # Disable Vulkan/HIP
+    -D CMAKE_DISABLE_FIND_PACKAGE_Vulkan=TRUE
+    -D CMAKE_HIP_COMPILER=""
+    # For CUDA build only
     # Sync GPU targets from CMakePresets.json
     # For CUDA 12
     # -D CMAKE_CUDA_ARCHITECTURES="50;52;53;60;61;62;70;72;75;80;86;87;89;90;90a"
