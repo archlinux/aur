@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
 source+=("${url}/archive/refs/tags/v${pkgver}.zip")
-md5sums+=('42fd16797929538fd303029b5f3cbddc')
+b2sums=('4d3b6e256f7c426908acf12e80786a433618b4966afee10880e805c847d19ed60d8eb34d1a466c2e55e4615fc2201067f7288cd7d299689154cce95ade15fc6a')
 install=gschemas.install
 _dir="CoverflowAltTab-${pkgver}"
 
