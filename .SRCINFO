@@ -1,7 +1,7 @@
 pkgbase = python-torchaudio-rocm
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCM support)
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/audio
 	arch = x86_64
 	license = BSD
@@ -28,8 +28,6 @@ pkgbase = python-torchaudio-rocm
 	conflicts = python-torchaudio-git
 	conflicts = python-torchaudio
 	source = https://github.com/pytorch/audio/archive/refs/tags/v2.9.1.tar.gz
-	source = https://downloads.sourceforge.net/project/sox/sox/14.4.2/sox-14.4.2.tar.bz2
 	sha256sums = 590492c90552959b3df6f601eb733135064bf2d9e53c516adcf6845a4e545662
-	sha256sums = 81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c
 
 pkgname = python-torchaudio-rocm

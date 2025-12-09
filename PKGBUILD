@@ -6,8 +6,7 @@
 pkgname=python-torchaudio-rocm
 _pkgname=audio
 pkgver=2.9.1
-_sox_ver=14.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCM support)"
 arch=('x86_64')
 url="https://github.com/pytorch/audio"
@@ -38,10 +37,10 @@ conflicts=('python-torchaudio-git' 'python-torchaudio')
 provides=('python-torchaudio' "python-torchaudio=${pkgver}")
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2"
 )
-sha256sums=('590492c90552959b3df6f601eb733135064bf2d9e53c516adcf6845a4e545662'
-            '81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c')
+sha256sums=(
+    '590492c90552959b3df6f601eb733135064bf2d9e53c516adcf6845a4e545662'
+)
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -64,11 +63,11 @@ build() {
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export ROCM_PATH="$ROCM_HOME"
     export HIP_ROOT_DIR="$ROCM_HOME"
-    BUILD_SOX=1 USE_ROCM=1 python setup.py build
+    USE_ROCM=1 python setup.py build
 }
 
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
-    BUILD_SOX=1 USE_ROCM=1 python setup.py install --root="$pkgdir"/ --optimize=1
+    USE_ROCM=1 python setup.py install --root="$pkgdir"/ --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
