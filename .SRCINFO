@@ -1,6 +1,6 @@
 pkgbase = eclipse-rcp-bin
 	pkgdesc = IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)
-	pkgver = 4.37
+	pkgver = 4.38
 	pkgrel = 1
 	epoch = 1
 	url = https://eclipseide.org/
@@ -9,13 +9,13 @@ pkgbase = eclipse-rcp-bin
 	depends = gtk3
 	optdepends = libsecret: password storage
 	optdepends = webkit2gtk-4.1: HTML tooltips
-	provides = eclipse=4.37-1
+	provides = eclipse=4.38-1
 	conflicts = eclipse
 	options = !strip
 	backup = usr/lib/eclipse/eclipse.ini
-	source = eclipse-rcp-2025-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-09/R/eclipse-rcp-2025-09-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-rcp-2025-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-12/R/eclipse-rcp-2025-12-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse.desktop
-	sha512sums = 9d6b9271a46c90633585f3d373ebf6898f0cca3a40f3fde8ca9d049aef09237008fcbf1679eb38e87a693897f8b2eb5e144e398a4343a1d373d901cc722b1456
+	sha512sums = da602d56b34add410de69ea8674c52da8f9418a064216f3ef9508d8f825d252685daa08e0d2a238dbf96311cd35239aef1b8c8f88c96b234c310f0d635cdff2c
 	sha512sums = 824875ab1454349a58eb2bb6fd70edd5e7a8e14a9b999372024374a1e04722398095db9bdba91b17bfb424c1e1271446f0370c79596f35fb516dbada31aebec5
 
 pkgname = eclipse-rcp-bin
