@@ -1,0 +1,17 @@
+pkgbase = opencode-openai-codex-auth
+	pkgdesc = OpenAI ChatGPT OAuth Plugin for opencode
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/numman-ali/opencode-openai-codex-auth
+	install = opencode-openai-codex-auth.install
+	arch = any
+	license = MIT
+	depends = opencode
+	depends = npm
+	conflicts = opencode-openai-codex-auth-debug
+	options = !strip
+	options = !debug
+	source = opencode-openai-codex-auth-4.0.2.tar.gz::https://github.com/numman-ali/opencode-openai-codex-auth/archive/refs/tags/v4.0.2.tar.gz
+	sha256sums = 235e70c4129c1906ed675634155be3f01d58fcaac4c70b16f786d7ac4217d482
+
+pkgname = opencode-openai-codex-auth
