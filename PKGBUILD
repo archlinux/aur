@@ -3,7 +3,7 @@
 pkgname=python-tensorrt-llm
 _pkgname=TensorRT-LLM
 pkgver=1.2.0rc4
-pkgrel=2
+pkgrel=3
 pkgdesc="TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs"
 arch=('x86_64')
 url="https://github.com/NVIDIA/TensorRT-LLM"
@@ -72,6 +72,7 @@ makedepends=(
     'meson'
     'gcc'
     'git'
+    'python-cutlass'
 )
 optdepends=(
     'python-evaluate: for evaluation metrics'
