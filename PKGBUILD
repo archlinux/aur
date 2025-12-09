@@ -1,4 +1,5 @@
 # Maintainer: Kamil cukrowski <kmilcukrowski@gmail.com>
+# Contributor: TechniKris <technikrisdev at gmail dot com>
 pkgname=podpisgov
 pkgver=1.5.5.4
 pkgrel=1
