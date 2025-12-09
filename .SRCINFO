@@ -1,7 +1,7 @@
 pkgbase = android-gcc-cross-bin
 	pkgdesc = A GCC cross-compiler targeting Android
 	pkgver = 15.2.0
-	pkgrel = 20251130
+	pkgrel = 20251209
 	url = https://github.com/AmanoTeam/Pino
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = android-gcc-cross-bin
 	options = !strip
 	options = staticlibs
 	source_i686 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
-	sha256sums_i686 = aa3b49b969157f31c9e91e51f1fcc3478101f7e4b5a55dfa913db8b721a3b53d
+	sha256sums_i686 = f918342b6df36843b6de6e1a13450206511f1ef45f50f55403d85860c465dee9
 	source_x86_64 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 1bdaeaeed8e1f8ab5c55b0ae8754e1d7b1fbca631669f71ceb330ee0c2371d4a
+	sha256sums_x86_64 = 973d38c6d1f5fd5b1d95a7236726c8ec86679d5685d683c9722a68e474815438
 	source_aarch64 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 61a2b8958bb2dc4538a0faafca0250f443267424167814eadc695bd3c1010767
+	sha256sums_aarch64 = 5ffb48f7b73747a6308dff6a0ac3160a7fb256fcfcd6e1274b4643c14dd810b3
 	source_armv7h = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
-	sha256sums_armv7h = 79e951ee98e48abdb7a8d2323836ecdf6efc39445192a5e2d5ac7445175032e6
+	sha256sums_armv7h = f8628acb27925fb3755169cb1ef2d3bf414f720b59d20311094efe0739f21cb9
 
 pkgname = android-gcc-cross-bin
