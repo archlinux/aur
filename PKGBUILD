@@ -7,7 +7,7 @@ _pkgver=148.0a1
 _pkgverx=""
 pkgver=${_pkgver}${_pkgverx}
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized Firefox for GNU/Linux"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -58,7 +58,7 @@ optdepends=(
 source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/firefox-${_pkgver}.en-US.linux-x86_64.7z")
+source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/hellfire-${_pkgver}.en-US.linux-x86_64.7z")
 sha256sums_x86_64=('1526a0d9618be569e93cb37cc3532bf3bc9c725445ff87ba6deb763d8466af8d')
 
 package() {
