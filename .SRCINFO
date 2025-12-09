@@ -1,7 +1,7 @@
 pkgbase = inkscape-bin
 	pkgdesc = Professional vector graphics editor - Prebuilt AppImage
 	pkgver = 1.4.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://inkscape.org
 	arch = x86_64
 	license = GPL-2.0-or-later
