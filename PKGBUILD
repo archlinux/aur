@@ -2,7 +2,7 @@
 # Contributor: Alex Hirzel <alex at hirzel period us>
 pkgname=cf-terraforming
 pkgbase=cf-terraforming
-pkgver=0.23.3
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Cloudflare Terraforming"
 url="https://github.com/cloudflare/cf-terraforming"
@@ -13,7 +13,7 @@ source=(
     "${pkgname}-${pkgver}-amd64.tar.gz::https://github.com/cloudflare/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
 
-sha256sums=('6e55f5ee520a40396ce1fd802b39fb5ecb3c75644cd2fcca14a66ae9a8b2fd6b')
+sha256sums=('35eb5c975f5c3ed7e7b822d665bb5cd533a1804d92625d4d62163ff3eaf12b49')
 
 prepare() {
   tar -xvzf "${pkgname}-${pkgver}-amd64.tar.gz"
