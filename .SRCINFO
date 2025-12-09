@@ -1,6 +1,6 @@
 pkgbase = chainz
 	pkgdesc = Chainz executable from GitHub (git version)
-	pkgver = 1.1.1
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/gdplayerokay/Chainz-package
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = chainz
 	depends = bash
 	depends = pacman
 	depends = yay
-	depends = paru
-	depends = flatpak
+	depends = fzf
 	source = git+https://github.com/gdplayerokay/Chainz-package.git
 	sha256sums = SKIP
 
