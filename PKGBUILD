@@ -12,7 +12,8 @@ arch=('x86_64')
 url='https://www.presonus.com/'
 license=('custom')
 depends=('alsa-lib' 'wayland' 'sdbus-cpp1' 'gcc-libs' 'nss' 'glibc' 'glib2'
-         'qt5-base' 'qt5-wayland' 'fontconfig' 'util-linux-libs' 'libunistring' 'libsecret')
+         'qt5-base' 'qt5-wayland' 'fontconfig' 'util-linux-libs' 'libunistring'
+         'libsecret' 'libglvnd' 'libxkbcommon')
 optdepends=('jack' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg6.1' 'avahi' 'kwallet5')
 provides=('clap-host' 'vst3-host')
 options=(!strip)
