@@ -1,12 +1,12 @@
 pkgbase = starpsx-bin
 	pkgdesc = A WIP PlayStation 1 emulator written in Rust
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/kaezrr/starpsx
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = starpsx
-	source = https://github.com/kaezrr/starpsx/releases/download/v0.1.1/starpsx-linux-x86_64.zip
-	sha256sums = SKIP
+	source = https://github.com/kaezrr/starpsx/releases/download/v0.2.0/starpsx-linux-x86_64.zip
+	sha256sums = 86a382d498d7258aa48e13ef3743cc25fcd1ea36e14321b1c5ba4b404baf8911
 
 pkgname = starpsx-bin
