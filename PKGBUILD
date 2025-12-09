@@ -7,51 +7,17 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url='https://go.dev/'
 license=('BSD')
 depends=('glibc')
-makedepends=('curl')
 provides=('go')
 conflicts=('go')
-options=('!strip')
-source=()
-sha256sums=()
-
-pkgver() {
-  local version
-  version="$(curl -fsSL 'https://go.dev/VERSION?m=text' | head -n1 | tr -d '\r\n')"
-  if [[ -z ${version} ]]; then
-    printf 'Failed to detect Go version from go.dev\n' >&2
-    return 1
-  fi
-  printf '%s\n' "${version#go}"
-}
-
-build() {
-  cd "${srcdir}"
-
-  local goos='linux'
-  local goarch
-  case "${CARCH}" in
-    x86_64) goarch='amd64' ;;
-    aarch64) goarch='arm64' ;;
-    armv7h) goarch='armv6l' ;; # upstream distributes ARMv6 binary compatible with ARMv7
-    *) printf 'Unsupported architecture: %s\n' "${CARCH}" >&2; return 1 ;;
-  esac
-
-  local version="go${pkgver}"
-  local archive="${version}.${goos}-${goarch}.tar.gz"
-  local url="https://go.dev/dl/${archive}"
-
-  if [[ ! -f ${archive} ]]; then
-    curl -fsSL "${url}" -o "${archive}.part"
-    mv "${archive}.part" "${archive}"
-  fi
-
-  rm -rf go
-  tar -xf "${archive}"
-}
+options=('!strip' 'staticlibs')
+source_x86_64=("https://go.dev/dl/go${pkgver}.linux-amd64.tar.gz")
+source_aarch64=("https://go.dev/dl/go${pkgver}.linux-arm64.tar.gz")
+source_armv7h=("https://go.dev/dl/go${pkgver}.linux-armv6l.tar.gz")
+sha256sums_x86_64=('9e9b755d63b36acf30c12a9a3fc379243714c1c6d3dd72861da637f336ebb35b')
+sha256sums_aarch64=('b00b694903d126c588c378e72d3545549935d3982635ba3f7a964c9fa23fe3b9')
+sha256sums_armv7h=('0b27e3dec8d04899d6941586d2aa2721c3dee67c739c1fc1b528188f3f6e8ab5')
 
 package() {
-  cd "${srcdir}"
-
   install -dm755 "${pkgdir}/usr/lib"
   cp -a go "${pkgdir}/usr/lib/go"
 
