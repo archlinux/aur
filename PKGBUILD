@@ -2,6 +2,14 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
+# Note:
+# When bumping major or minor versions, some downstream packages that use somewhat
+# unorthodox runtime arrangements need rebuilding to match. After SWIG version
+# bumps please rebuild first python-pivy then freecad in addition to usual suspects.
+# c.f. https://github.com/FreeCAD/FreeCAD/issues/25048#issuecomment-3627741495
+# c.f. https://gitlab.archlinux.org/archlinux/packaging/packages/python-pivy/-/issues/1
+# c.f. https://gitlab.archlinux.org/archlinux/packaging/packages/swig/-/issues/2
+
 pkgname=swig
 pkgver=4.4.0
 pkgrel=1
