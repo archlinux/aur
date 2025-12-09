@@ -1,5 +1,5 @@
 pkgname=how-to-use-pvs-studio-free
-pkgver=7.39
+pkgver=7.40
 pkgrel=1
 pkgdesc='An utility that adds special comments to a source code for analyzing the code by PVS-Studio for free'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(cmake)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/${pkgname}_Source_code.tar.gz"
 )
-sha256sums=('3e30c965e918f594689593c6dbc6ee0b2f17d5f1903c39f1247b171ebce4b494')
+sha256sums=('db31aa54fea67103f22e4f3fb783689aacab075eb4e780f2bb3e1d114a391ad9')
 
 build () {
   cd $pkgname

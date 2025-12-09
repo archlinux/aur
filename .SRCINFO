@@ -1,6 +1,6 @@
 pkgbase = how-to-use-pvs-studio-free
 	pkgdesc = An utility that adds special comments to a source code for analyzing the code by PVS-Studio for free
-	pkgver = 7.39
+	pkgver = 7.40
 	pkgrel = 1
 	url = https://github.com/viva64/how-to-use-pvs-studio-free
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = how-to-use-pvs-studio-free
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	source = how-to-use-pvs-studio-free-7.39.tar.gz::https://github.com/viva64/how-to-use-pvs-studio-free/releases/download/7.39/how-to-use-pvs-studio-free_Source_code.tar.gz
-	sha256sums = 3e30c965e918f594689593c6dbc6ee0b2f17d5f1903c39f1247b171ebce4b494
+	source = how-to-use-pvs-studio-free-7.40.tar.gz::https://github.com/viva64/how-to-use-pvs-studio-free/releases/download/7.40/how-to-use-pvs-studio-free_Source_code.tar.gz
+	sha256sums = db31aa54fea67103f22e4f3fb783689aacab075eb4e780f2bb3e1d114a391ad9
 
 pkgname = how-to-use-pvs-studio-free
