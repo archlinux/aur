@@ -3,7 +3,7 @@
 _pkgauthor=klpod221
 _pkgname=kerminal
 pkgname=kerminal
-pkgver=2.4.8
+pkgver=2.5.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Modern Terminal Emulator & SSH Manager"
@@ -40,7 +40,7 @@ source=(
   "git+${url}.git#tag=v${pkgver}"
   "${pkgname}.desktop"
 )
-sha256sums=('7cf807177e779dee99bf05447a75a126bcfcce4b0e0d13ae4f8cdd0c8892b12b'
+sha256sums=('6647243b5247680f37e3e02041d0f734187ec69c974ceeb4e089424800122039'
             '2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6')
 
 prepare() {
