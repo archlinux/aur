@@ -6,7 +6,7 @@
 # Contributor: Julian Paul Dasmarinas <julian.dasma at gmail dot com>
 
 pkgname=buku
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
@@ -22,12 +22,17 @@ optdepends=('wl-clipboard: to copy text in wayland'
   'xsel: to copy text in xorg'
   'xclip: to copy text in xorg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87e226b0062a17cb10bf02a6cefea08e859d74985e373b76496150ecda92d73e')
+sha256sums=('0f1a3e15f882fe9a0f8e550abae7388d3cb81d4718a1b4309dcf4363633cb7b1')
+
+build() {
+  cd $pkgname-$pkgver
+  export PYTHONHASHSEED=0
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$pkgname-$pkgver"
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  cd $pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -f "$pkgdir/usr/bin/bukuserver"
