@@ -10,6 +10,7 @@ pkgbase = velocity-bridge
 	depends = wl-clipboard
 	depends = xclip
 	optdepends = libappindicator-gtk3: system tray support
+	options = !strip
 	source = https://github.com/Trex099/Velocity-Bridge/releases/download/v2.0.1/Velocity-Bridge_2.0.1_amd64.AppImage
 	source = https://raw.githubusercontent.com/Trex099/Velocity-Bridge/main/gui/velocity-icon-final.png
 	sha256sums = f2a72b6f2a0967cedb21a8ca976e19cbd81ac98434ad6c68e113e7821e0064fb

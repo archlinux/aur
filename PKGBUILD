@@ -19,6 +19,7 @@ source=("https://github.com/Trex099/Velocity-Bridge/releases/download/v${pkgver}
         "https://raw.githubusercontent.com/Trex099/Velocity-Bridge/main/gui/velocity-icon-final.png")
 sha256sums=('f2a72b6f2a0967cedb21a8ca976e19cbd81ac98434ad6c68e113e7821e0064fb'
             'SKIP')
+options=('!strip')
 
 package() {
     # Install binary
