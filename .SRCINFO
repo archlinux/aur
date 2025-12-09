@@ -1,7 +1,7 @@
 pkgbase = pawn-appetit-bin
 	pkgdesc = Ultimate Chess Toolkit
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/Pawn-Appetit/pawn-appetit
 	arch = x86_64
 	license = GPL-3.0
@@ -17,7 +17,7 @@ pkgbase = pawn-appetit-bin
 	depends = gdk-pixbuf2
 	depends = glibc
 	depends = gst-plugins-good
-	source_x86_64 = https://github.com/Pawn-Appetit/pawn-appetit/releases/download/v0.9.0/Pawn.Appetit_0.9.0_amd64_linux.deb
-	sha256sums_x86_64 = e82b8a7294ce67a6f5c5fdecf187486eb378e9e95ac2b17586a082e206ab090c
+	source_x86_64 = https://github.com/Pawn-Appetit/pawn-appetit/releases/download/v0.10.0/Pawn.Appetit_0.10.0_amd64.deb
+	sha256sums_x86_64 = 569c9f1df9a168e1fcaa79366b1b48aa6f726497c590487a49418be0f445f5ee
 
 pkgname = pawn-appetit-bin

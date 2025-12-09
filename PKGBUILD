@@ -2,8 +2,8 @@
 _pkgname=pawn-appetit
 
 pkgname="${_pkgname}"-bin
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Ultimate Chess Toolkit"
 arch=('x86_64')
 url="https://github.com/Pawn-Appetit/pawn-appetit"
@@ -23,8 +23,8 @@ depends=('hicolor-icon-theme'
     gst-plugins-good
 )
 
-source_x86_64=("https://github.com/Pawn-Appetit/pawn-appetit/releases/download/v${pkgver}/Pawn.Appetit_${pkgver}_amd64_linux.deb")
-sha256sums_x86_64=('e82b8a7294ce67a6f5c5fdecf187486eb378e9e95ac2b17586a082e206ab090c')
+source_x86_64=("https://github.com/Pawn-Appetit/pawn-appetit/releases/download/v${pkgver}/Pawn.Appetit_${pkgver}_amd64.deb")
+sha256sums_x86_64=('569c9f1df9a168e1fcaa79366b1b48aa6f726497c590487a49418be0f445f5ee')
 
 package() {
 	bsdtar -xf data.tar.* -C $pkgdir
