@@ -1,0 +1,10 @@
+PACKAGE_NAME="bcachefs"
+PACKAGE_VERSION="@PKGVER@"
+BUILT_MODULE_NAME[0]="bcachefs"
+# 指路：编译好的模块在深层目录里
+BUILT_MODULE_LOCATION[0]="fs/bcachefs/"
+# 安装位置
+DEST_MODULE_LOCATION[0]="/updates/"
+AUTOINSTALL="yes"
+MAKE[0]="make"
+CLEAN="make clean"

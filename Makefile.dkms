@@ -1,0 +1,10 @@
+KERNELRELEASE ?= $(shell uname -r)
+KERNEL_DIR ?= /lib/modules/$(KERNELRELEASE)/build
+PWD := $(shell pwd)
+
+default:
+	# M=指定到子目录 fs/bcachefs
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs BCACHEFS_DKMS=y modules
+
+clean:
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs clean
