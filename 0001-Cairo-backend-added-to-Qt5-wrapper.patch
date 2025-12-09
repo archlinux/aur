@@ -1,4 +1,4 @@
-From b08f360ba5e880501de54a3dc9369fd90f4acc8b Mon Sep 17 00:00:00 2001
+From 7fa02c5cfc9e99adfc380d56823110ace7e697dd Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/2] Cairo backend added to Qt5 wrapper
@@ -66,7 +66,7 @@ index 9f8bde2f..0f490a37 100644
  }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 9ef510de..6bfba85a 100644
+index b36491cd..76d4b5ea 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -59,6 +59,7 @@
@@ -198,5 +198,5 @@ index e610413a..26c45088 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.51.2
+2.52.0
 

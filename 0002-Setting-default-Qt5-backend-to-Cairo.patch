@@ -1,4 +1,4 @@
-From afa9412161f082566ff2b0406a7638160009529e Mon Sep 17 00:00:00 2001
+From 6724f1878620904dd050bd70d28c11a7ab247101 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:37:38 +0100
 Subject: [PATCH 2/2] Setting default Qt5 backend to Cairo
@@ -21,5 +21,5 @@ index 347d232a..61d09cfa 100644
      m_hints = 0;
      m_optContentModel = nullptr;
 -- 
-2.51.2
+2.52.0
 
