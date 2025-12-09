@@ -1,6 +1,6 @@
 pkgbase = doudou-bin
 	pkgdesc = Stream your music with ease and style from Jellyfin
-	pkgver = 8.0.0
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://gitlab.com/Openlyst/doudou
 	arch = x86_64
