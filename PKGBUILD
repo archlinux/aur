@@ -1,7 +1,7 @@
 # Maintainer: Luke Featherston <lukefeatherston1223 at gmail dot com>
 pkgname=gearlever
-pkgver=4.0.3
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Manage AppImages with ease"
 arch=('x86_64')
 url="https://mijorus.it/projects/gearlever/"
@@ -15,13 +15,10 @@ checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('libxml2-legacy: required for LibreOffice appimage')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mijorus/gearlever/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3dedd60328700ef15f68eba2888c4fc34ce4c98f269681be8635440ee8312e83')
+sha256sums=('9ea0edebeda33bf72c1d307350aab492836d2e11fce87bd89b361cb0ba4b692b')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}"
-   # Arch command doesn't seem to exist on arch linux so instead we can substitute it for 'uname' for now
-   sed -i "s/\(\['arch'\]\)/['uname', '-m']/g" src/AppDetails.py
-
    # Arch linux uses the 7z command instead of the 7zz included in gearlever (both official 7zip)
    sed -i "s/7zz/7z/g" src/providers/AppImageProvider.py
 
