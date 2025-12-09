@@ -36,4 +36,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 resources/oxwm.desktop "$pkgdir/usr/share/xsessions/oxwm.desktop"
     install -Dm644 resources/oxwm.1 "$pkgdir/usr/share/man/man1/oxwm.1"
+    install -Dm644 templates/oxwm.lua "$pkgdir/usr/share/oxwm/oxwm.lua"
 }
