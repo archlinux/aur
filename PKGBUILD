@@ -1,7 +1,7 @@
 # Maintainer: ZykaJiri <your-email@example.com>
 pkgname=screen-record-cava
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Screen recorder with real-time cava audio visualization"
 arch=('any')
 url="https://github.com/ZykaJiri/screen-record-cava"
