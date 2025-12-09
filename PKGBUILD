@@ -1,7 +1,6 @@
-# Maintainer: Dividebysandwich <josef.jahn@gmail.com>
 pkgname=lightningview
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A lightning-fast cross-platform image viewer written in Rust, supporting many raw camera formats."
 arch=('x86_64')
 url="https://github.com/dividebysandwich/LightningView"
@@ -13,14 +12,21 @@ source=(
     "$pkgname.desktop"
     "logo_256.png"
 )
-sha256sums=('ee3ed80c4802d6bf003b9c215791e0cd949f24a513f00fa0cca7c9d67983809d'
+sha256sums=('12998cb29b64dde7855123b4eb91955f1bb31c03d75821a9f185fe01118b422b'
             '830ce1fe85eb1e00530d020e1c0f735e77e10909d2575e84db231023ce42a99b'
             '09492ed9bde5eb1d4857e2551c0fabcaf57bdd873d09c0112b3b27ef01135893')
 
-build() {
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
     cd "LightningView-$pkgver"
-    # --locked ensures we use the versions from Cargo.lock for a reproducible build
-    cargo build --release --locked
+    cargo fetch --locked --target $(rustc --print host-tuple)
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "LightningView-$pkgver"
+    cargo build --release --frozen
 }
 
 package() {
