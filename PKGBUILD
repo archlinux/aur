@@ -1,12 +1,14 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=diamond-dragon
 pkgver=20250707
-pkgrel=1
+pkgrel=2
 pkgdesc="Catgirl cyberpunk action GZDoom gameplay mod"
 arch=('any')
 url="https://www.doomworld.com/forum/topic/153613-diamond-dragon-catgirl-cyberpunk-action-updated-7725/"
 license=('custom')
-depends=('gzdoom')
+depends=()
+optdepends=('gzdoom: GZDoom source port'
+            'uzdoom-bin: UZDoom fork of GZDoom')
 makedepends=('curl')
 
 # Google Drive file IDs
