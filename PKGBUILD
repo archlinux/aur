@@ -3,8 +3,8 @@
 pkgname=gog-baldurs-gate-enhanced-edition
 _pkgname=baldurs-gate-enhanced-edition
 _original="Baldurs Gate Enhanced Edition"
-pkgver=2.6.6.0.47291
-pkgver_dl=2_6_6_0_47291
+pkgver=2.6.6.0.81762
+pkgver_dl=2_6_6_0_p_81762
 pkgrel=1
 pkgdesc="Chaos threatens to overwhelm the Sword Coast. GOG Version. Linux native."
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ optdepends_i686=('libpulse: pulseaudio support')
 optdepends_x86_64=('lib32-libpulse: pulseaudio support')
 DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
 source=("gog://baldur_s_gate_enhanced_edition_$pkgver_dl.sh"
-        "${pkgname}"
-        "$pkgname.desktop")
+  "${pkgname}"
+  "$pkgname.desktop")
 PKGEXT=".pkg.tar"
-sha256sums=('7a7edffcdd58f8d75d7217921c3b8f9aedf817b09c1f2168619a365dc46662ec'
-            '7b037776cb5a87c26a827ef29bd87957d0fee670570a6f9e0383ec2d90f26040'
-            'a1b677747360e37376da85ccc568463f9c0cb0d8a99a8e0be3655bf23473ccb7')
+sha256sums=('77d82cd5b41db7e7fc28fb34d57fd05a9cbb1af42e52776d85a23a27e178b3c0'
+  '7b037776cb5a87c26a827ef29bd87957d0fee670570a6f9e0383ec2d90f26040'
+  'a1b677747360e37376da85ccc568463f9c0cb0d8a99a8e0be3655bf23473ccb7')
 package() {
   _pkgdir="$pkgdir/opt/gog/$_pkgname"
   mkdir -p "$pkgdir"/opt/gog/$_pkgname
