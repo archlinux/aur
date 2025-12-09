@@ -1,0 +1,27 @@
+diff --color -ura obs-draw-0.3.1/CMakeLists.txt obs-draw-0.3.1-patched/CMakeLists.txt
+--- obs-draw-0.3.1/CMakeLists.txt	2025-12-05 02:25:40.000000000 -0500
++++ obs-draw-0.3.1-patched/CMakeLists.txt	2025-12-09 09:51:47.855640649 -0500
+@@ -33,8 +33,8 @@
+ endif()
+ target_link_libraries(${PROJECT_NAME} PRIVATE Qt::Core Qt::Widgets)
+ 
+-if((OS_LINUX OR OS_FREEBSD OR OS_OPENBSD) AND Qt_VERSION VERSION_LESS "6.9.0")
+-	target_link_libraries(${PROJECT_NAME} PRIVATE Qt::GuiPrivate)
++if((OS_LINUX OR OS_FREEBSD OR OS_OPENBSD))
++	target_link_libraries(${PROJECT_NAME} PRIVATE Qt::Gui)
+ endif()
+ 
+ target_compile_options(
+diff --color -ura obs-draw-0.3.1/qt-display.cpp obs-draw-0.3.1-patched/qt-display.cpp
+--- obs-draw-0.3.1/qt-display.cpp	2025-12-05 02:25:40.000000000 -0500
++++ obs-draw-0.3.1-patched/qt-display.cpp	2025-12-09 09:51:31.932261999 -0500
+@@ -18,9 +18,6 @@
+ 
+ #ifdef ENABLE_WAYLAND
+ #include <QGuiApplication>
+-#if QT_VERSION < QT_VERSION_CHECK(6, 9, 0)
+-#include <qpa/qplatformnativeinterface.h>
+-#endif
+ #endif
+ 
+ class SurfaceEventFilter : public QObject {
