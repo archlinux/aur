@@ -2,7 +2,7 @@
 
 pkgname=hg-evolve
 _srcdirname=hg_evolve
-pkgver=11.1.9
+pkgver=11.1.10
 pkgrel=1
 pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel'
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
 source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg_evolve-${pkgver}.tar.gz")
-sha512sums=('288d3c7e66ed523604a6ff034d27f3a245fcae674b1958831011add37ae0ac22137a7fc2f268d813795171ce1c2a09b8656381fd214c9312f96ccf968ddef1df')
+sha512sums=('d81ac188fb3cd971395dd3f27743a09cbf5363f0c69bd7a7186b11f6f5c72ee8dc732b294231ca18fe425ed9ac336e26ecfa01a321daf38fc7603593c492eacc')
 
 build() {
   cd "${srcdir}/${_srcdirname}-${pkgver}"
