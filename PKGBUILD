@@ -3,7 +3,7 @@
 _name=igbinary
 pkgname=php84-igbinary
 pkgver=3.2.17RC1
-pkgrel=1
+pkgrel=2
 pkgdesc="A drop in replacement for the standard php serializer"
 arch=(x86_64)
 url="https://github.com/igbinary/igbinary"

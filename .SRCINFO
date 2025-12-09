@@ -1,7 +1,7 @@
 pkgbase = php84-igbinary
 	pkgdesc = A drop in replacement for the standard php serializer
 	pkgver = 3.2.17RC1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/igbinary/igbinary
 	arch = x86_64
 	license = BSD-3-Clause
