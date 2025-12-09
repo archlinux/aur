@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
