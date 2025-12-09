@@ -1,7 +1,7 @@
 pkgbase = kwin-hifps
 	pkgdesc = An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness
-	pkgver = 6.5.3
-	pkgrel = 4
+	pkgver = 6.5.4
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
