@@ -1,0 +1,43 @@
+post_install() {
+  echo "==> Creating symlink for opencode-gemini-auth plugin..."
+  echo "==> This is not standard practice for AUR packages and may have unintended side effects."
+  
+  getent passwd | while IFS=: read -r name _ uid gid _ home _; do
+    if [ "$uid" -ge 1000 ] && [ -d "$home" ] && [ "$home" != "/" ]; then
+      echo "--> Processing user: $name"
+      su -s /bin/sh -c "mkdir -p '$home/.config/opencode/plugin' && ln -sf '/usr/lib/opencode/plugins/opencode-gemini-auth' '$home/.config/opencode/plugin/'" "$name"
+      
+      # Check if opencode config exists and add plugin if needed
+      config_file="$home/.config/opencode/config.json"
+      if [ -f "$config_file" ]; then
+        if ! su -s /bin/sh -c "grep -q 'opencode-gemini-auth' '$config_file'" "$name"; then
+          echo "==> NOTE: Add 'opencode-gemini-auth' to your opencode config:"
+          echo "    Edit ~/.config/opencode/config.json and add to plugin array:"
+          echo "    \"plugin\": [\"opencode-gemini-auth\"]"
+        fi
+      else
+        echo "==> NOTE: Create ~/.config/opencode/config.json with:"
+        echo "    {"
+        echo "      \"\\$schema\": \"https://opencode.ai/config.json\","
+        echo "      \"plugin\": [\"opencode-gemini-auth\"]"
+        echo "    }"
+      fi
+    fi
+  done
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo "==> Removing symlink for opencode-gemini-auth plugin..."
+  getent passwd | while IFS=: read -r name _ uid _ _ home _; do
+    if [ "$uid" -ge 1000 ] && [ -d "$home" ] && [ "$home" != "/" ]; then
+      if [ -L "$home/.config/opencode/plugin/opencode-gemini-auth" ]; then
+        echo "--> Removing for user: $name"
+        su -s /bin/sh -c "rm '$home/.config/opencode/plugin/opencode-gemini-auth'" "$name"
+      fi
+    fi
+  done
+}
