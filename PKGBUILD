@@ -2,7 +2,7 @@
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
-pkgver=2025.13
+pkgver=2025.14
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source=('mullvad-vpn.sh')
 source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_arm64.deb"{,.asc})
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('ce053aa41ba30970610cef5702aa5448336e42de5d690d60570a295f07349c6a'
+sha256sums_x86_64=('247b981e2e2e047ccca296b8e62a70b1dc7fdcec7f17137795884100240e0a41'
                    'SKIP')
-sha256sums_aarch64=('043ac7f7d962d06589fbff5052b1df2b10b5244c46de3bddd2e8d73ca8463357'
+sha256sums_aarch64=('9a20a1d71eac09c01b83d897ed227361cc49f0321054d76b83a6f7f61b7c813c'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
