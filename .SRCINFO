@@ -1,7 +1,7 @@
 pkgbase = velocity-bridge
 	pkgdesc = iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Trex099/Velocity-Bridge
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = velocity-bridge
 	depends = wl-clipboard
 	depends = xclip
 	optdepends = libappindicator-gtk3: system tray support
-	source = velocity-bridge-2.0.0::https://github.com/Trex099/Velocity-Bridge/releases/download/v2.0.0/velocity-bridge-linux-x86_64
+	source = velocity-bridge-2.0.0::https://github.com/Trex099/Velocity-Bridge/releases/download/v2.0.0/Velocity-Bridge_2.0.0_amd64.AppImage
 	sha256sums = SKIP
 
 pkgname = velocity-bridge
