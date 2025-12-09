@@ -1,4 +1,4 @@
-# Maintainer: Yakov Till <yakov.till at gmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
 pkgver=0.19.52
