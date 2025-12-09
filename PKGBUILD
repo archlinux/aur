@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r877.001549b1
+pkgver=r1259.d7746d14
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ options=('!debug')
 
 _binname="island"
 
-_flutter_ver=3.35.6
+_flutter_ver=3.38.4
 _flutter_repo=https://github.com/flutter/flutter.git
 
 pkgver() {
