@@ -1,60 +1,30 @@
 # Maintainer: Trex099 <trex099@github.com>
 pkgname=velocity-bridge
-pkgver=1.0.8
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Trex099/Velocity-Bridge"
 license=('MIT')
 depends=(
-    'python>=3.10'
-    'python-pip'
-    'python-fastapi'
-    'python-uvicorn'
-    'python-pillow'
-    'python-qrcode'
-    'python-pystray'
+    'webkit2gtk-4.1'
+    'gtk3'
     'wl-clipboard'
     'xclip'
-    'xsel'
-    'libappindicator-gtk3'
-    'libnotify'
-    'tk'
 )
 optdepends=(
-    'avahi: mDNS hostname support'
+    'libappindicator-gtk3: system tray support'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Trex099/Velocity-Bridge/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}::https://github.com/Trex099/Velocity-Bridge/releases/download/v${pkgver}/velocity-bridge-linux-x86_64")
 sha256sums=('SKIP')
 
 package() {
-    cd "Velocity-Bridge-${pkgver}"
+    # Install binary
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
     
     # Create directories
-    install -dm755 "${pkgdir}/usr/share/${pkgname}"
-    install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -dm755 "${pkgdir}/usr/lib/systemd/user"
-    
-    # Install application files
-    install -Dm644 main.py "${pkgdir}/usr/share/${pkgname}/main.py"
-    install -Dm644 requirements.txt "${pkgdir}/usr/share/${pkgname}/requirements.txt"
-    cp -r gui/* "${pkgdir}/usr/share/${pkgname}/"
-    
-    # Install icon
-    install -Dm644 gui/velocity-icon-final.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-    
-    # Install license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Create launcher script
-    cat > "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
-#!/bin/bash
-cd /usr/share/velocity-bridge
-exec python3 app.py "$@"
-EOF
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
     
     # Create desktop file
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
@@ -68,29 +38,12 @@ Categories=Utility;Network;
 Terminal=false
 EOF
     
-    # Create systemd user service
-    cat > "${pkgdir}/usr/lib/systemd/user/velocity.service" << EOF
-[Unit]
-Description=Velocity Bridge - iOS to Linux Clipboard Sync
-After=network.target
-
-[Service]
-Type=simple
-WorkingDirectory=/usr/share/${pkgname}
-ExecStart=/usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8080
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=default.target
-EOF
+    # Download and install icon
+    curl -fsSL "https://raw.githubusercontent.com/Trex099/Velocity-Bridge/main/gui/velocity-icon-final.png" \
+        -o "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
 
 post_install() {
     echo ">>> Velocity Bridge installed!"
     echo ">>> Run 'velocity-bridge' or find it in your applications menu."
-    echo ">>> For headless mode: systemctl --user enable --now velocity"
-    
-    # Install additional Python dependencies if needed
-    pip install --user customtkinter 2>/dev/null || true
 }
