@@ -1,0 +1,29 @@
+stop_client() {
+    killall expressvpn-client &>/dev/null
+    systemctl stop expressvpn-service.service &>/dev/null
+}
+
+pre_upgrade() {
+  printf "Stopping old client... "
+  stop_client
+  printf "done.\n"
+}
+
+post_upgrade() {
+  printf "You will need to re-start the service before running the client: \`systemctl start expressvpn-service.service\`\n"
+}
+
+post_install() {
+  printf "Start the service before running the client: \`systemctl enable --now expressvpn-service.service\`\n"
+  printf "You will also need to activate the app by running the client (see https://www.expressvpn.com/setup#linux for details)\n"
+}
+
+pre_remove() {
+  printf "Stopping client... "
+  stop_client
+  printf "done.\n"
+}
+
+post_remove() {
+  printf "You may want to clean up any residual files in '/opt/expressvpn' manually.\n"
+}
