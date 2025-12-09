@@ -16,7 +16,6 @@ prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
   sed -i -e 's@"/lib@"/usr/lib@' indi-armadillo-platypus/CMakeLists.txt
-  cat CMakeLists.txt
 }
 
 build() {
