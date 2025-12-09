@@ -1,6 +1,6 @@
 # Maintainer: Dimitrios Fasoulas <dfasoulas@gmail.com>
 pkgname=ticktty
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A stylish CLI clock and timer for your terminal"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
 # For local development verification, skip checksums or update them after `updpkgsums`
-sha256sums=('17fe3af2a3c3113a41a8cf9adfa62c0e69125a82defde7dde9ddb6f2260aa6fc')
+sha256sums=('f6d83506a9c61c70d45dede492ac43c232e6892d07455f952bbc271397c3f5ba')
 
 package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
