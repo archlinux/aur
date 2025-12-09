@@ -1,7 +1,7 @@
 pkgbase = archy-screenshot
 	pkgdesc = Simple script helper to take screenshots with `lqth`
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archy-linux/archy-screenshot
 	arch = any
 	groups = archy-utils
