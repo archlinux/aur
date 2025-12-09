@@ -1,7 +1,7 @@
 pkgbase = rutoken-plugin
 	pkgdesc = The Rutoken plugin is necessary for connecting USB devices with the browser, it allows you to identify devices and work with them.
 	pkgver = 4.11.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rutoken.ru/support/download/rutoken-plugin/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rutoken-plugin
 	makedepends = coreutils
 	makedepends = bash
 	depends = rutoken-pkcs
+	options = !strip
 	source_i686 = rutoken-plugin-4.11.4-i686.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.11.4.0/Linux/libnpRutokenPlugin-4.11.4-1.i686.rpm
 	sha256sums_i686 = 8374661e6af98537d3eedf321adb582ac849aa6c8746fbb794ad31234293effb
 	source_x86_64 = rutoken-plugin-4.11.4-x86_64.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.11.4.0/Linux/libnpRutokenPlugin-4.11.4-1.x86_64.rpm
