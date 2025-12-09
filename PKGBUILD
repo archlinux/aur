@@ -15,6 +15,7 @@ sha256sums=("4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b")
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
+  sed -i -e 's@"/lib@"/usr/lib@' indi-orion-ssg3/CMakeLists.txt
 }
 
 build() {
