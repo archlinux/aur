@@ -3,40 +3,32 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=12.7.1
+pkgver=12.8.1
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
 url="https://github.com/rmcrackan/Libation"
 license=('GPL-3.0-only')
 depends=('bash' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
-makedepends=('dotnet-sdk>=9')
+makedepends=('dotnet-sdk>=10')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('14c51380aefb26bbae72cb45099cb9d9be64f5409e9e34cb008cb96ae0389384')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('da86fcfc3483bcac2e7f1498d570d58da67ad14a2f9c3de8c125cd12380316af')
 
 build() {
     cd "${pkgname^}-${pkgver}"
-    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj \
-        --configuration Release \
-        --output build \
-        --runtime linux-x64 \
-        -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj \
-        --configuration Release \
-        --output build \
-        --runtime linux-x64 \
-        -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LibationCli/LibationCli.csproj \
-        --configuration Release \
-        --output build \
-        --runtime linux-x64 \
-        -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj \
-        --configuration Release \
-        --output build \
-        --runtime linux-x64 \
-        -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    local publish_args=(
+        --configuration Release
+        --output build
+        --runtime linux-x64
+        -p:PublishProtocol=FileSystem
+        -p:PublishReadyToRun=true
+        -p:SelfContained=true
+    )
+    dotnet publish "${publish_args[@]}" Source/LibationAvalonia/LibationAvalonia.csproj
+    dotnet publish "${publish_args[@]}" Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj
+    dotnet publish "${publish_args[@]}" Source/LibationCli/LibationCli.csproj
+    dotnet publish "${publish_args[@]}" Source/HangoverAvalonia/HangoverAvalonia.csproj
 }
 
 package() {
