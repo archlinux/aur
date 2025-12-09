@@ -1,6 +1,6 @@
 pkgbase = oxwm-git
 	pkgdesc = X11 Window Manager Inspired by DWM, but with better sane defaults.
-	pkgver = 0.7.1.228.gd2136f3
+	pkgver = 0.8.0.262.g1f89cc1
 	pkgrel = 1
 	url = https://github.com/tonybanters/oxwm
 	arch = x86_64
