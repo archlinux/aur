@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=11.0.rc.3.r16.gc3ca9b81
+pkgver=11.0.r1.g3803445c
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -22,7 +22,6 @@ depends=(
 	"procps-ng"
 	"coreutils"
 	"awk"
-	"xxd"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"zenity"
