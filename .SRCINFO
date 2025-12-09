@@ -1,0 +1,12 @@
+pkgbase = polomatrix
+	pkgdesc = Matrix-style falling characters in Python
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	noextract = polomatrix.py
+	source = polomatrix.py
+	md5sums = SKIP
+
+pkgname = polomatrix
