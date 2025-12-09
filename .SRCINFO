@@ -1,0 +1,17 @@
+pkgbase = arnis-git
+	pkgdesc = Generate any location from the real world in Minecraft with a high level of detail.
+	pkgver = 0.0.r1789.ffa2316e
+	pkgrel = 1
+	url = https://github.com/louis-e/arnis
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = arnis
+	conflicts = arnis
+	source = git+https://github.com/louis-e/arnis
+	sha256sums = SKIP
+
+pkgname = arnis-git
