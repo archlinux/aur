@@ -1,14 +1,14 @@
 pkgbase = unlock-music-cli-bin
 	pkgdesc = Unlock Music Project - CLI Edition
-	pkgver = 0.2.17
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://git.um-react.app/um/cli
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	source_aarch64 = um-linux-arm64-v0.2.17.tar.gz::https://git.um-react.app/um/cli/releases/download/v0.2.17/um-linux-arm64-v0.2.17.tar.gz
-	sha256sums_aarch64 = 7a9fc5fec9ec2dd060ed7558789c908539399b9f1f3b26f17db3f3b959e1a427
-	source_x86_64 = um-linux-amd64-v0.2.17.tar.gz::https://git.um-react.app/um/cli/releases/download/v0.2.17/um-linux-amd64-v0.2.17.tar.gz
-	sha256sums_x86_64 = 748791a962da6492f1d468b30064a83cdfe7dad02ccec913ab5f2b82366d83b2
+	source_aarch64 = um-linux-arm64-v0.2.19.tar.gz::https://git.um-react.app/um/cli/releases/download/v0.2.19/um-linux-arm64-v0.2.19.tar.gz
+	sha256sums_aarch64 = 8b1cc0edeca17d51a3700b2f69f67cbd40465b23f9bb568361953e67c06d97c5
+	source_x86_64 = um-linux-amd64-v0.2.19.tar.gz::https://git.um-react.app/um/cli/releases/download/v0.2.19/um-linux-amd64-v0.2.19.tar.gz
+	sha256sums_x86_64 = 0289145c703da2cd737f8dbcfb0ab36a19509b60f2e8c8778a06325576f6ab9c
 
 pkgname = unlock-music-cli-bin
