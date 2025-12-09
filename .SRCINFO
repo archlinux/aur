@@ -1,6 +1,6 @@
 pkgbase = nym-vpnd
 	pkgdesc = NymVPN daemon as a systemd service
-	pkgver = 1.20.1
+	pkgver = 1.20.3
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = nym-vpnd
 	provides = nym-vpnd
 	conflicts = nym-vpnd
 	options = !debug
-	source = nym-vpnd-1.20.1.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-core-v1.20.2.tar.gz
+	source = nym-vpnd-1.20.3.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-core-v1.20.3.tar.gz
 	source = nym-vpnd.service
-	sha256sums = d2fabfbf8a784f0a1b625829a6564719d777bb15d34e818841399d16943f3178
+	sha256sums = 3939117d662b69a88d83d2314bfce16a44123a90e1ccb83bb84af2adc9451cf8
 	sha256sums = 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6
 
 pkgname = nym-vpnd
