@@ -1,0 +1,14 @@
+pkgbase = poloniumclicker
+	pkgdesc = Matrix-style falling characters in Python with PyQt5 GUI
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/yourusername/poloniumclicker
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	depends = python-pynput
+	source = poloniumclicker.py
+	sha256sums = SKIP
+
+pkgname = poloniumclicker
