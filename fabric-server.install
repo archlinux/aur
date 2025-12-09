@@ -30,6 +30,10 @@ post_upgrade() {
 	echo "Do the same for the \`idle_server_${_game}\` session if one is running."
 }
 
+pre_remove() {
+	systemctl stop "${_fabric_name}d.service"
+}
+
 post_remove() {
 	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} have been kept on your system."
 	echo "The configuration in /etc/conf.d/ has been kept on your system."

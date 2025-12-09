@@ -13,35 +13,15 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.10_1.1.0_0.17.3-2"
-_minecraft_ver_latest="1.21.10"
-
-IFS="-" read -ra _ver_temp <<<"$_ver"
-IFS="_" read -ra _pkgver_temp <<<"${_ver_temp[0]}"
-
-# the minecraft version
-_minecraft_ver=${_pkgver_temp[0]}
-
-# the version of the installer
-_fabric_ver=${_pkgver_temp[1]}
-
-# the version of the loader to install
-_fabric_loader_ver=${_pkgver_temp[2]}
-
+_minecraft_ver="1.21.11"
+_fabric_ver="1.1.0"
+_fabric_loader_ver="0.18.2"
 _mng_ver=1.0.4
 
-_pkgver=${_ver_temp[0]//_/-}
-
-if [ "$_minecraft_ver" = "$_minecraft_ver_latest" ]; then
-	pkgname="fabric-server"
-	_fabric_name="fabric"
-else
-	pkgname="fabric-server-${_minecraft_ver}"
-	_fabric_name="fabric-${_minecraft_ver}"
-fi
-
-pkgver=${_ver_temp[0]}
-pkgrel=${_ver_temp[1]}
+pkgname="fabric-server"
+_fabric_name="fabric"
+pkgver=${_minecraft_ver}_${_fabric_loader_ver}_${_fabric_ver}
+pkgrel=1
 pkgdesc="A Fabric (a modular, lightweight mod loader) enabled Minecraft server"
 arch=("any")
 url="https://fabricmc.net"
@@ -57,7 +37,7 @@ source=(
 	"minecraft-server-${_mng_ver}.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz"
 	"fabric-installer-${_fabric_ver}.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/${_fabric_ver}/fabric-installer-${_fabric_ver}.jar"
 )
-noextract=("fabric-${_pkgver}.jar")
+noextract=("fabric-${pkgver}.jar")
 sha512sums=(
 	'dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556'
 	'7e593bf7b2786851aed680186e50dbbf8af7e7e592bc69c28c199d739307ea4b80b3575954a817ed97171d1516ea8afdd6ede4767d51ec414dbd3a1032111516'
