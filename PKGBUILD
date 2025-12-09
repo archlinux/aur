@@ -2,7 +2,7 @@
 
 pkgbase=fm-scripts
 pkgname=('fm-scripts' 'fm-scripts-dolphin')
-pkgver=30.10
+pkgver=30.11
 pkgrel=1
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (Nautilus), Nemo, Caja, Dolphin, Thunar and PCManFM-Qt file managers. '
 url=https://github.com/cfgnunes/fm-scripts
@@ -14,7 +14,7 @@ depends=(
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-md5sums=('f5cf080895d4db3ceb21cb719bfe33f5')
+md5sums=('8b0e1ec309336ee81f984a6a36e53d6c')
 
 package_fm-scripts() {
   install="${pkgname}.install"
