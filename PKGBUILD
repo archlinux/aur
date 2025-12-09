@@ -1,7 +1,7 @@
 # Maintainer: fishy <me at fishies dot dev>
 
 pkgname=godsvg-git
-pkgver=1.0.alpha12
+pkgver=1.0.alpha13.7.gda354a12
 _godotver=4.5.1-stable
 _godotname="Godot_v${_godotver}_linux.x86_64"
 _templatename="Godot_v${_godotver}_export_templates"
@@ -10,7 +10,7 @@ pkgdesc="An editor for Scalable Vector Graphics (SVG) files. Built with Godot"
 url="godsvg.com"
 license=("MIT")
 arch=("x86_64")
-makedepends=(git)
+makedepends=(git yq)
 depends=(glibc libglvnd)
 provides=(godsvg)
 conflicts=(godsvg godsvg-bin)
@@ -34,6 +34,15 @@ pkgver() {
 }
 
 build() {
+    local workflow
+    workflow=$(curl -s https://raw.githubusercontent.com/MewPurPur/GodSVG/refs/heads/main/.github/workflows/export-optimized.yml)
+    local realgodotver
+    realgodotver=$(yq -r '.env.GODOT_VERSION' <<< "$workflow")-$(yq -r '.env.GODOT_RELEASE' <<< "$workflow")
+
+    if [ "$realgodotver" != "$_godotver" ]; then
+        exit 1
+    fi
+
     mkdir -p GodSVG/export
     cp -r "templates" "GodSVG/export/"
     cd "GodSVG" || return

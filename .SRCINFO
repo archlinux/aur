@@ -1,11 +1,12 @@
 pkgbase = godsvg-git
 	pkgdesc = An editor for Scalable Vector Graphics (SVG) files. Built with Godot
-	pkgver = 1.0.alpha12
+	pkgver = 1.0.alpha13.7.gda354a12
 	pkgrel = 1
 	url = godsvg.com
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = yq
 	depends = glibc
 	depends = libglvnd
 	provides = godsvg
