@@ -1,6 +1,7 @@
 # Maintainer: Dimitri Sabadie <hadronized@strongly-typed-thoughts.net>
+
 pkgname=flirt
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 epoch=
 pkgdesc=" FiLe InteRacT, the file interaction tool for your command line "
@@ -21,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-sha256sums=('f80ab0c02264a0f079c6d4d3d7201c1cb2c252c3136a9e53f830cc470864e1d1')
+sha256sums=('cf90e8a987d9ae2d03a785d4115c2ce0ff90c1469db26af7b82c7231ab2e7567')
 validpgpkeys=('6C991AA06D7A7C28573799CEA94386A8A6252ECB')
 
 prepare() {
