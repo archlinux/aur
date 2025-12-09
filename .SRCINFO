@@ -7,6 +7,7 @@ pkgbase = milkytracker-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	makedepends = jack
 	makedepends = gendesk
 	makedepends = cmake
@@ -29,4 +30,3 @@ pkgbase = milkytracker-git
 	sha256sums = de270bb640a7ca57b4c70d270c55fc45228d823232b2fd9d00682465c635d1fb
 
 pkgname = milkytracker-git
-
