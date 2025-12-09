@@ -1,0 +1,12 @@
+diff -up src/adwm-0.7.17/src/ewmhpanel.c.orig src/adwm-0.7.17/src/ewmhpanel.c
+--- src/adwm-0.7.17/src/ewmhpanel.c.orig	2025-12-09 06:58:47.389999999 -0700
++++ src/adwm-0.7.17/src/ewmhpanel.c	2025-12-09 06:59:03.049999999 -0700
+@@ -139,7 +139,7 @@ main(int argc, char *argv[])
+ 	screen = DefaultScreen(dpy);
+ 	root = RootWindow(dpy, screen);
+ 
+-	setup(bottom);
++	setup();
+ 	XSync(dpy, False);
+ 	run();
+ 	XCloseDisplay(dpy);
