@@ -19,7 +19,7 @@ makedepends=(
 	'python-poetry'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/elevenlabs/elevenlabs-python/archive/v${pkgver}.tar.gz")
-sha256sums=('978b1875c006f2b53e363ddaf632b9f0233f77a52a05619ed51d713b8be2df76')
+sha256sums=('f518344fc6facb22a94868a37697545a676b56a032b168de8cd13e420ebf88b5')
 
 build() {
 	ls -lah
