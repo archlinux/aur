@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCy3
-_pkgver=2.30.0
+_pkgver=2.30.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7f32745cfc50ad7928c491491fccad14')
-b2sums=('a8cbbe796d3fc57fef2e2bf762f5429970629609cadf12d7bf285de4da9bd81e943b048142b92832c2d0e732f495085c2669dae1e7580273a6851ae54be98753')
+md5sums=('9e3c28120a04587724bdf90dc0ecadd3')
+b2sums=('762d6e600574ce9650ecf2243bff4ed44d2484b4d1e678086bcbf134bc29dd0e99330ad7dfc45656001106f9c740d4618fe7a6b0d4d3154980bca525f67e4ba7')
 
 build() {
   mkdir build
