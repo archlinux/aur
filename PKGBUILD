@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-bin
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://files.catbox.moe/o14nkn.zip")
+source=("${pkgname}-${pkgver}.zip::https://files.catbox.moe/hdaan0.zip")
 sha256sums=('SKIP')
 
 package() {
