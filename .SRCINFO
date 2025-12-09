@@ -1,0 +1,21 @@
+pkgbase = vibe-audio-visualizer-git
+	pkgdesc = A desktop audio visualizer for wayland.
+	pkgver = 2.3.0.r57.g5358a2d
+	pkgrel = 1
+	url = https://github.com/TornaxO7/vibe
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = git
+	depends = libxkbcommon
+	depends = alsa-lib
+	depends = wayland
+	depends = wayland-protocols
+	depends = vulkan-validation-layers
+	depends = vulkan-headers
+	depends = vulkan-driver
+	conflicts = vibe
+	source = vibe::git+https://github.com/TornaxO7/vibe.git
+	sha256sums = SKIP
+
+pkgname = vibe-audio-visualizer-git
