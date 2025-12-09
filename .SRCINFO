@@ -1,6 +1,6 @@
 pkgbase = r-butcher
 	pkgdesc = Model Butcher
-	pkgver = 0.3.6
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=butcher
 	arch = any
@@ -57,7 +57,7 @@ pkgbase = r-butcher
 	optdepends = r-usethis
 	optdepends = r-xgboost
 	optdepends = r-xrf
-	source = https://cran.r-project.org/src/contrib/butcher_0.3.6.tar.gz
-	sha256sums = a6e025c1f4562f57f6f0d6285c7e5c7192141eade22917a6600178cb437ad16e
+	source = https://cran.r-project.org/src/contrib/butcher_0.4.0.tar.gz
+	sha256sums = a5ca4ba850993831fb66879babf0fc32b82fa513fdf327e6ef76ef06f4df037c
 
 pkgname = r-butcher
