@@ -6,6 +6,7 @@ path = [
     ".SRCINFO",
     ".gitignore",
     ".nvchecker.toml",
+    "proton-mail.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
