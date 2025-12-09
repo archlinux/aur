@@ -2,7 +2,7 @@
 # Maintainer: Wu, Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=pyrime
 pkgname=python-$_pkgname
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="rime for python, attached to prompt-toolkit keybindings for some prompt-toolkit applications such as ptpython"
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=(ptpython python-prompt_toolkit)
 license=(GPL3)
 _py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")' || echo 313)"
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.whl")
-sha256sums=('b74e1c6bb75e74a08e8a960138d098a3d0e6c7074a117d9db295b8dfa89c0a4b')
+sha256sums=('2efe4277a9012b08bfc0c4b833ef9bf0c8088fe15e1db7673b4083dfe1a24a42')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl
