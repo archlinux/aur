@@ -1,12 +1,12 @@
 pkgbase = kernel-chktaint
 	pkgdesc = Check kernel for tainted modules
-	pkgver = 6.17.7
+	pkgver = 6.17.9
 	pkgrel = 1
 	url = http://kernel.org/
 	arch = any
 	license = GPL-2.0-only
 	depends = sh
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.7.tar.xz
-	sha256sums = ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.9.tar.xz
+	sha256sums = 6d08803b953c509df48d44d3281ed392524321d8bb353eb21c0555790c8f8e06
 
 pkgname = kernel-chktaint
