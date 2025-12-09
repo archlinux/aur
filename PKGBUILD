@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camilladsp
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='IIR and FIR engine for crossovers, room correction etc.'
 url=https://github.com/HEnquist/camilladsp
@@ -23,9 +23,9 @@ sha256sums=('245d0ba135c81590ea5d8a1eb68741daf055192869128cad26242924dbcd5144'
             '2ddfad846b2a6e57a27302849c03e47e5ce062b3365cb67d8525c80963bef689'
             'eb78bed4837e9439d7d81bed9603cb08f26403cab5641f69e8bdd7c96d35e56e'
             'b1cf5192986ee4497546bf9d58c64b28f9c7d2d1e3efb4ef7b69fedd4a7904d1')
-sha256sums_x86_64=('0a1bcc10368f8cc966dd9b6b07105f6327422510cc01ac94ce530ac4db0d949b')
-sha256sums_armv7h=('502dc0033cde3ab0fa48cbd5c0ef74cfcb84253dd7e1070e0b0a54a7290ba0bf')
-sha256sums_aarch64=('5c8d161e9e3739aa67a61d8c7790b461449201861b4df65289f86325da21bbae')
+sha256sums_x86_64=('f701203cbf682a826fac08534943c695d3b13ee3d9d89053015e0e478fb3a704')
+sha256sums_armv7h=('1f17eb334ec4d288e2c8fd2354b39e72a87ca88b8c6ec3b4783f9d45dde818a9')
+sha256sums_aarch64=('bba066f690fdfb3e97e749bf137b7563f09590ae583ae359c5be29d95eff7d50')
 
 package() {
     cd $srcdir
