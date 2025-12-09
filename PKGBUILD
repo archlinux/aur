@@ -5,7 +5,7 @@
 _pkgname=sshpilot
 pkgname="$_pkgname-git"
 pkgver=r2486.g58ec429
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
 license=('GPL-3.0-only')
@@ -35,6 +35,7 @@ package() {
 	install -d "${pkgdir}${site_packages}/sshpilot/resources" "${pkgdir}${site_packages}/sshpilot/ui"
 	install -d "${pkgdir}${site_packages}/sshpilot/vendor" "${pkgdir}${site_packages}/sshpilot/vendor"
 	cp -a 'sshpilot/resources'/* "${pkgdir}${site_packages}/sshpilot/resources/"
+	cp -a 'sshpilot/vendor'/* "${pkgdir}${site_packages}/sshpilot/vendor/"
 	# Install desktop file and icon
 	install -D -m 644 'io.github.mfat.sshpilot.desktop' -t "${pkgdir}/usr/share/applications"
 	install -D -m 644 'sshpilot/resources/sshpilot.svg' "${pkgdir}/usr/share/pixmaps/io.github.mfat.sshpilot.svg"
