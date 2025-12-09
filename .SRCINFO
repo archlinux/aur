@@ -1,8 +1,8 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring
 	pkgver = 1.4.2
-	pkgrel = 4
-	url = https://github.com/erffy/zig-waybar-contrib
+	pkgrel = 5
+	url = https://codeberg.org/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = zig-waybar-contrib
 	optdepends = rocm-smi-lib: AMD GPU Backend
 	optdepends = amdsmi: AMD GPU Backend
 	optdepends = cuda: NVIDIA GPU Backend
-	source = zig-waybar-contrib::git+https://github.com/erffy/zig-waybar-contrib.git#tag=1.4.2
+	source = zig-waybar-contrib::git+https://codeberg.org/erffy/zig-waybar-contrib.git#tag=1.4.2
 	sha256sums = SKIP
 
 pkgname = zig-waybar-contrib
