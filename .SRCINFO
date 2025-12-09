@@ -1,6 +1,6 @@
 pkgbase = loopi-bin
 	pkgdesc = A visual automation builder that lets you create, schedule, and run automations with secure credential management
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Dyan-Dev/loopi
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = loopi-bin
 	depends = libxcb
 	provides = loopi
 	conflicts = loopi
-	source_x86_64 = loopi-x86_64-1.2.2.deb::https://github.com/Dyan-Dev/loopi/releases/download/v1.2.2/loopi_1.2.2_amd64.deb
-	sha256sums_x86_64 = ff034edea9802bd99e9f0c5a6538b717131856284c7ac319363085c149ec5554
+	source_x86_64 = loopi-x86_64-1.2.3.deb::https://github.com/Dyan-Dev/loopi/releases/download/v1.2.3/loopi_1.2.3_amd64.deb
+	sha256sums_x86_64 = 3ae74b958d33c5b48f686c7742d5da214c95dd357ae6a001115f7c1a05b2ad68
 
 pkgname = loopi-bin
