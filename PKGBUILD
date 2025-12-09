@@ -1,4 +1,5 @@
-# Maintainer: Jonas Amundsen <jonasba+aur at gmail dot com>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Jonas Amundsen <jonasba+aur at gmail dot com>
 
 _npmname=markdown-pdf
 pkgname=nodejs-$_npmname
