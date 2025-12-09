@@ -119,22 +119,18 @@ options=(
 
 noextract=("firefox-${pkgver}esr.source.tar.xz")
 
-_source_icecat() {
-  _pkgsrc="$_pkgname-$pkgver"
-  _pkgsrc_gnuzilla="gnuzilla-$_commit"
-  _pkgsrc_firefox="firefox-$pkgver"
-  _pkgext="tar.gz"
-  source=(
-    "gnuzilla-$pkgver-${_commit::7}.$_pkgext"::"https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-$_commit.$_pkgext"
-    "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
-  )
-  sha256sums=(
-    'SKIP'
-    "$_ffsum"
-  )
-}
-
-_source_icecat
+_pkgsrc="$_pkgname-$pkgver"
+_pkgsrc_gnuzilla="gnuzilla"
+_pkgsrc_firefox="firefox-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc_gnuzilla"::"git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=$_commit"
+  "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
+)
+sha256sums=(
+  'SKIP'
+  "$_ffsum"
+)
 
 _make_icecat() (
   # restore icecat tarball, if exists

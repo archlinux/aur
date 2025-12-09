@@ -61,7 +61,7 @@ pkgbase = icecat
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla-140.5.0-5897aee.tar.gz::https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-5897aee761cc6d179bd8632f085c3c14ccf7db6c.tar.gz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=5897aee761cc6d179bd8632f085c3c14ccf7db6c
 	source = https://archive.mozilla.org/pub/firefox/releases/140.5.0esr/source/firefox-140.5.0esr.source.tar.xz
 	sha256sums = SKIP
 	sha256sums = 832b7ef3e5f7a2430e0ba0b9000dab6fdd8f65bccff8bcf7eeb9ed16e6d310e2
