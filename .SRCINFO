@@ -1,0 +1,24 @@
+pkgbase = freebsd-gcc-cross-bin
+	pkgdesc = A GCC cross-compiler targeting FreeBSD
+	pkgver = 15.2.0
+	pkgrel = 20251209
+	url = https://github.com/AmanoTeam/Loki
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0
+	provides = freebsd-gcc-cross
+	conflicts = freebsd-gcc-cross
+	options = !strip
+	options = staticlibs
+	source_i686 = https://github.com/AmanoTeam/Loki/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
+	sha256sums_i686 = e24b2fda972b16826d090bd0728bad51160b2f03ac0272890ee44caadffc7ace
+	source_x86_64 = https://github.com/AmanoTeam/Loki/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = f3c144fe16e423b38be8b4ba06a5e804f42583e51ee070d6e7905e846d8ed66f
+	source_aarch64 = https://github.com/AmanoTeam/Loki/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0baeedec6ef95e9ac6d2e68e4aadeb56df332f50a22423f75ee1f43ad4e800c4
+	source_armv7h = https://github.com/AmanoTeam/Loki/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
+	sha256sums_armv7h = c0114365cc5dd66222aab5ad0b690703b0a7ab66158f5817ad40883e43b5d360
+
+pkgname = freebsd-gcc-cross-bin
