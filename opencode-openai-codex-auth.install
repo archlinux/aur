@@ -1,27 +1,24 @@
 post_install() {
-  echo "==> Creating symlink for opencode-openai-codex-auth plugin..."
-  echo "==> This is not standard practice for AUR packages and may have unintended side effects."
-  
-  getent passwd | while IFS=: read -r name _ uid gid _ home _; do
-    if [ "$uid" -ge 1000 ] && [ -d "$home" ] && [ "$home" != "/" ]; then
-      echo "--> Processing user: $name"
-      su -s /bin/sh -c "mkdir -p '$home/.config/opencode/plugin' && ln -sf '/usr/lib/opencode/plugins/opencode-openai-codex-auth' '$home/.config/opencode/plugin/'" "$name"
-    fi
-  done
+  echo "=========================================================================="
+  echo "  Opencode OpenAI Codex Auth Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/config.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"opencode-openai-codex-auth\"]"
+  echo "  }"
+  echo ""
+  echo "IMPORTANT: This plugin requires a FULL configuration to work correctly"
+  echo "with GPT-5 models. A reference configuration is available at:"
+  echo ""
+  echo "  /usr/lib/opencode/plugins/opencode-openai-codex-auth/config/full-opencode.json"
+  echo ""
+  echo "After configuration, run 'opencode auth login' to authenticate."
+  echo "=========================================================================="
 }
 
 post_upgrade() {
   post_install
-}
-
-pre_remove() {
-  echo "==> Removing symlink for opencode-openai-codex-auth plugin..."
-  getent passwd | while IFS=: read -r name _ uid _ _ home _; do
-    if [ "$uid" -ge 1000 ] && [ -d "$home" ] && [ "$home" != "/" ]; then
-      if [ -L "$home/.config/opencode/plugin/opencode-openai-codex-auth" ]; then
-        echo "--> Removing for user: $name"
-        su -s /bin/sh -c "rm '$home/.config/opencode/plugin/opencode-openai-codex-auth'" "$name"
-      fi
-    fi
-  done
 }
