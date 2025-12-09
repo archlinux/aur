@@ -1,8 +1,8 @@
 # Maintainer: Denys Sedchenko <aur@x1unix.dev>
 pkgname=codex-acp
 _realname=codex-acp
-pkgver='0.6.0'
-pkgrel=2
+pkgver='0.6.1'
+pkgrel=1
 pkgdesc="ACP adapter for OpenAI Codex"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zed-industries/codex-acp"
@@ -19,8 +19,8 @@ optdepends=()
 source_x86_64=("${_realname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_realname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('4ec913ab92f83128be00d1ca5fc8166ebc21ea9b4a8b855e884bbadef64ec0f0')
-sha256sums_aarch64=('7d345ff2448dd0628161c0c4d40f86985e67f851dd0874f13e5335c1a78eae35')
+sha256sums_x86_64=('5cd14cd43cd3283a95de7d15094fa18d8428121f07862f0574bb574885c57713')
+sha256sums_aarch64=('46909dd2133115fd223c8fe02a0aa113147d4225fd47e9a494b7083020fe8df1')
 
 package() {
   install -Dm755 "$srcdir/${_realname}" "${pkgdir}/usr/bin/${_realname}"
