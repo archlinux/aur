@@ -1,6 +1,6 @@
 # Maintainer: Storm Dragon <storm_dragon@stormux.org>
 pkgname=waytray
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Wayland system tray with daemon/client architecture"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 optdepends=('pipewire-pulse: for audio volume control module'
             'power-profiles-daemon: for power profile switching')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/destructatron/waytray/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('237dc5eed5003885b8cbb0404d720cf351c59ef9e076b10ec5f6c5c4a087b4df')
+sha256sums=('5a9e2652cb0ec252305c55087212500193466b94a1701710e751937b63b87223')
 
 prepare() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = waytray
 	pkgdesc = Wayland system tray with daemon/client architecture
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/destructatron/waytray
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = waytray
 	depends = dbus
 	optdepends = pipewire-pulse: for audio volume control module
 	optdepends = power-profiles-daemon: for power profile switching
-	source = waytray-1.0.0.tar.gz::https://github.com/destructatron/waytray/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 237dc5eed5003885b8cbb0404d720cf351c59ef9e076b10ec5f6c5c4a087b4df
+	source = waytray-1.0.1.tar.gz::https://github.com/destructatron/waytray/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 5a9e2652cb0ec252305c55087212500193466b94a1701710e751937b63b87223
 
 pkgname = waytray
