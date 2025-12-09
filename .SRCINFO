@@ -1,7 +1,7 @@
 pkgbase = sonicradio
 	pkgdesc = A TUI radio player making use of Radio Browser API and Bubbletea.
-	pkgver = 0.6.14
-	pkgrel = 3
+	pkgver = 0.8.11
+	pkgrel = 1
 	url = https://github.com/dancnb/sonicradio
 	arch = aarch64
 	arch = i686
@@ -12,7 +12,9 @@ pkgbase = sonicradio
 	optdepends = mpv: Use mpv for audio playback.
 	optdepends = ffmpeg: Use ffplay for audio playback.
 	optdepends = vlc: Use vlc for audio playback.
-	source = sonicradio-0.6.14.tar.gz::https://github.com/dancnb/sonicradio/archive/refs/tags/v0.6.14.tar.gz
-	md5sums = 184ee8fcbc8d4eb891b299f70472fae0
+	optdepends = mplayer: Use mplayer for audio playback.
+	optdepends = mpd: Use mpd for audio playback.
+	source = sonicradio-0.8.11.tar.gz::https://github.com/dancnb/sonicradio/archive/refs/tags/v0.8.11.tar.gz
+	md5sums = 863dbfe61923e9544fdc1bd1cf60fe37
 
 pkgname = sonicradio

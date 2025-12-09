@@ -1,8 +1,8 @@
 # Maintainer: Antonio Arias Orzanco <antonio dot arias99999 at gmail dot com>
 
 pkgname=sonicradio
-pkgver=0.6.14
-pkgrel=3
+pkgver=0.8.11
+pkgrel=1
 pkgdesc="A TUI radio player making use of Radio Browser API and Bubbletea."
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dancnb/sonicradio"
@@ -12,9 +12,11 @@ makedepends=('go')
 # Minimal 1 audio player is needed for audio playback.
 optdepends=('mpv: Use mpv for audio playback.'
             'ffmpeg: Use ffplay for audio playback.'
-            'vlc: Use vlc for audio playback.')
+            'vlc: Use vlc for audio playback.'
+            'mplayer: Use mplayer for audio playback.'
+            'mpd: Use mpd for audio playback.')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dancnb/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('184ee8fcbc8d4eb891b299f70472fae0')
+md5sums=('863dbfe61923e9544fdc1bd1cf60fe37')
 
 build() {
    export CGO_CPPFLAGS="${CPPFLAGS}"
