@@ -1,7 +1,7 @@
 pkgbase = fwknop-gui
 	pkgdesc = Official desktop client for the fwknop daemon
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://incomsystems.biz/fwknop-gui/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fwknop-gui
 	makedepends = cmake
 	makedepends = asciidoc
 	depends = fwknop
-	depends = wxwidgets
+	depends = wxwidgets-gtk3
 	depends = qrencode
 	provides = fwknop-gui
 	conflicts = fwknop-gui
