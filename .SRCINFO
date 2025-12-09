@@ -1,6 +1,6 @@
 pkgbase = milkytracker-git
 	pkgdesc = Fast Tracker II inspired music tracker
-	pkgver = v1.02.00.r25.gfd607a3
+	pkgver = 1.04.00.r335.g60ce53e
 	pkgrel = 1
 	url = http://www.milkytracker.org/
 	install = milkytracker.install

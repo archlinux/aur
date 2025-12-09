@@ -6,7 +6,7 @@
 
 _pkgbase=milkytracker
 pkgname=milkytracker-git
-pkgver=v1.02.00.r25.gfd607a3
+pkgver=1.04.00.r335.g60ce53e
 pkgrel=1
 pkgdesc='Fast Tracker II inspired music tracker'
 arch=('x86_64' 'i686')
@@ -20,8 +20,10 @@ optdepends=('jack: JACK audio support')
 options=('docs' '!strip')
 install="${_pkgbase}.install"
 source=("${_pkgbase}::git+https://github.com/Deltafire/MilkyTracker.git"
+        "0001-Build-SET-CMP0004-OLD-only-if-CMake-4.0.patch"
         "${_pkgbase}.install")
 sha256sums=('SKIP'
+            '330b221ef4763ba7eb792afae09cbc1a972c06b31990d6364f1a674f4ea2ae16'
             'de270bb640a7ca57b4c70d270c55fc45228d823232b2fd9d00682465c635d1fb')
 
 pkgver() {
@@ -32,6 +34,9 @@ pkgver() {
 prepare() {
   gendesk -f -n --pkgname "$_pkgbase" --pkgdesc "$pkgdesc" --name 'MilkyTracker' \
     --categories 'AudioVideo;Audio;AudioVideoEditing;'
+
+  cd "$srcdir/$_pkgbase"
+  patch -Np1 -i "../0001-Build-SET-CMP0004-OLD-only-if-CMake-4.0.patch"
 
   mkdir -p "$srcdir/build"
 }
