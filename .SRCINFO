@@ -1,7 +1,7 @@
 pkgbase = sigil2-wad
 	pkgdesc = SIGIL II, the unofficial 6th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://romero.com/sigil
 	arch = any
 	license = custom

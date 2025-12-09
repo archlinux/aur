@@ -1,8 +1,8 @@
-# Maintainer: Yakov Till <yakov.till at gmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=sigil2-wad
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 
 url="https://romero.com/sigil"
 pkgdesc="SIGIL II, the unofficial 6th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD"
