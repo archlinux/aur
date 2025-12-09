@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.3.1
+pkgver=2.3.2
 _pkgver=${pkgver//_/-}
 pkgrel=1
 epoch=1
@@ -13,7 +13,7 @@ license=("AGPL-3.0-or-later")
 depends=("nginx")
 makedepends=("pnpm" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('6b28077b6f710910445d076d2d158cd7a3300e78e1e792910fbf7610f64249da')
+sha256sums=('95171ac3de532f228cf1619beae0775050622359d6c30b3ede700510b7e52785')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
