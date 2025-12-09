@@ -1,6 +1,6 @@
 pkgbase = simdutf
 	pkgdesc = Unicode validation and transcoding at billions of characters per second
-	pkgver = 7.5.0
+	pkgver = 7.7.0
 	pkgrel = 1
 	url = https://simdutf.github.io/simdutf/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = simdutf
 	makedepends = cmake
 	makedepends = ninja
 	depends = gcc-libs
-	provides = simdutf=7.5.0
+	provides = simdutf=7.7.0
 	conflicts = simdutf
-	source = https://github.com/simdutf/simdutf/archive/refs/tags/v7.5.0.tar.gz
-	sha256sums = 3cad2f554912ecd77222272e5d1a7c1e5e33b4011bee823269cdc9095d2fdce2
+	source = https://github.com/simdutf/simdutf/archive/refs/tags/v7.7.0.tar.gz
+	sha256sums = 0180de81a1dd48a87b8c0442ffa81734f3db91a7350914107a449935124e3c6f
 
 pkgname = simdutf
