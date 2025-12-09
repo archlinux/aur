@@ -1,6 +1,6 @@
 pkgbase = nyan-doom-git
 	pkgdesc = A cuddly fork of DSDA, with an emphasis on innovative and QoL features. (Git Version)
-	pkgver = 1.4.0
+	pkgver = r10575.2d3ef59b1
 	pkgrel = 1
 	url = https://github.com/andrikpowell/nyan-doom
 	arch = x86_64
