@@ -1,0 +1,14 @@
+pkgbase = nota.zsh-git
+	pkgdesc = ZSH plugin that help you record notas with some context.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0x61nas/nota.zsh
+	arch = any
+	license = MIT
+	depends = zsh
+	depends = fzf
+	conflicts = nota.zsh
+	source = nota.zsh::git+https://github.com/0x61nas/nota.zsh.git#branch=aurora
+	sha256sums = SKIP
+
+pkgname = nota.zsh-git
