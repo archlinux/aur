@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2025.13
+pkgver=2025.14
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -25,7 +25,7 @@ install="${pkgname%-*}.install"
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
         "git+https://github.com/mullvad/wireguard-go.git")
-sha256sums=('1a45d94a040f07206075691f69d4783be5e18f096abef2b244f81b2bc7ccd7c9'
+sha256sums=('9eb5664e449224e17430bd17c8a9539583432ea0252d25c34c7d790b9325a513'
             'SKIP'
             'SKIP')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
@@ -48,7 +48,7 @@ prepare() {
   mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
