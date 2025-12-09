@@ -2,14 +2,14 @@
 
 pkgname=mistral-vibe
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
 license=(Apache-2.0)
 depends=(
     "python"
-    #"python-agent-client-protocol"
+    "python-agent-client-protocol"
     "python-aiofiles"
     "python-dotenv"
     "python-httpx"
@@ -45,16 +45,23 @@ makedepends=(
     "uv"
     "vulture"
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b6d25ef20ecb7326e2504e4737230df3489af4c361cbb8d53a3125a9dfc79d4b')
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "$pkgname"
+    #export UV_PYTHON_PREFERENCE=only-system
+    uv sync
+    uv run pytest
+}
+
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     echo "#!/usr/bin/env python3" > "${pkgdir}/usr/bin/vibe"
     pyver=$(python3 --version | awk '{print $2}' | cut -d. -f1,2)
