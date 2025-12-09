@@ -1,6 +1,6 @@
 pkgbase = intel-lms
 	pkgdesc = Allows applications to access the Intel AMT firmware via the Intel MEI
-	pkgver = 2506.0.0.0
+	pkgver = 2550.0.0.0
 	pkgrel = 1
 	url = https://github.com/intel/lms
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = intel-lms
 	depends = libxml2
 	depends = ace
 	depends = intel-metee
-	source = lms-2506.0.0.0.tar.gz::https://github.com/intel/lms/archive/refs/tags/v2506.0.0.0.tar.gz
-	sha256sums = bfdcbfb6b2a739321998a0772767c1532ede70f4bd38cdbe48488b59d118a086
+	source = lms-2550.0.0.0.tar.gz::https://github.com/intel/lms/archive/refs/tags/v2550.0.0.0.tar.gz
+	sha256sums = 0d75f105654ed31b74bd66ba58c65ed9652441b799a4a2821950f5d9be902497
 
 pkgname = intel-lms
