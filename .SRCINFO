@@ -1,0 +1,13 @@
+pkgbase = say
+	pkgdesc = Terminal based voice and video call utility written in go
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/svanichkin/say
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = say-0.0.4.tar.gz::https://github.com/svanichkin/say/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 7ec6d9f7b08e3f57f35fbc8d087d178ef4f76b34a0b147aac770e1f7f7a2d6f5
+
+pkgname = say
