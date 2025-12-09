@@ -11,7 +11,7 @@ pkgbase = fchat-horizon-appimage
 	options = !strip
 	source_x86_64 = fchat-horizon-appimage-1.35.3.AppImage::https://github.com/Fchat-Horizon/Horizon/releases/download/v1.35.3/F-Chat.Horizon-linux-x86_64.AppImage
 	source_x86_64 = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v1.35.3/LICENSE
-	sha256sums_x86_64 = 3e9edaaa81085c595612ba5ab1054883e7c2c901287882af2836856b97b4d0d7
+	sha256sums_x86_64 = f5d27717714d9b20b3c04d0aa70d5817e7828172cd14e31a2016c1862d785fbd
 	sha256sums_x86_64 = SKIP
 
 pkgname = fchat-horizon-appimage

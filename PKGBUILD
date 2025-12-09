@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/
                "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('3e9edaaa81085c595612ba5ab1054883e7c2c901287882af2836856b97b4d0d7'
+sha256sums_x86_64=('f5d27717714d9b20b3c04d0aa70d5817e7828172cd14e31a2016c1862d785fbd'
                    'SKIP')
 
 prepare() {
