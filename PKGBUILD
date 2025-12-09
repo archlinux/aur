@@ -3,14 +3,14 @@
 
 pkgname=gnome-shell-extension-coverflow-alt-tab
 _extname="CoverflowAltTab@palatis.blogspot.com"
-pkgver=57
-pkgrel=2
+pkgver=83
+pkgrel=1
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
 url="https://github.com/dsheeler/CoverflowAltTab"
 license=('GPL')
 source=("https://extensions.gnome.org/extension-data/${_extname/@/}.v$pkgver.shell-extension.zip")
-b2sums=('2498a343399f99979e78ea6a2cdb0b190577ac48a5662c3b02f912204f887eaf1f8c515470cbc92a8d77d86ffc4a2bd16948cf5e2525898c6a8fffdf4704da8c')
+b2sums=('7f28c49dc4dc41878a50766dce995c40cfe317a5231727a4ced5e5c6b6bdc0cedff4f010724f2551cf9ab64c23cdc16bc6aa2068e184ee533380b279fc3e0d24')
 
 package(){
   readonly destdir="${pkgdir}/usr/share/gnome-shell/extensions/$_extname"
