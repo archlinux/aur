@@ -1,7 +1,7 @@
 # Maintainer: Trex099 <trex099@github.com>
 pkgname=velocity-bridge
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux"
 arch=('x86_64')
 url="https://github.com/Trex099/Velocity-Bridge"
@@ -15,12 +15,14 @@ depends=(
 optdepends=(
     'libappindicator-gtk3: system tray support'
 )
-source=("${pkgname}-${pkgver}::https://github.com/Trex099/Velocity-Bridge/releases/download/v${pkgver}/Velocity-Bridge_${pkgver}_amd64.AppImage")
-sha256sums=('SKIP')
+source=("https://github.com/Trex099/Velocity-Bridge/releases/download/v${pkgver}/Velocity-Bridge_${pkgver}_amd64.AppImage"
+        "https://raw.githubusercontent.com/Trex099/Velocity-Bridge/main/gui/velocity-icon-final.png")
+sha256sums=('f2a72b6f2a0967cedb21a8ca976e19cbd81ac98434ad6c68e113e7821e0064fb'
+            'SKIP')
 
 package() {
     # Install binary
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/Velocity-Bridge_${pkgver}_amd64.AppImage" "${pkgdir}/usr/bin/${pkgname}"
     
     # Create directories
     install -dm755 "${pkgdir}/usr/share/applications"
