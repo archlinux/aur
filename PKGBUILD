@@ -4,7 +4,7 @@ _pkgauthor=patrykgruszka
 _pkgexec=how
 _pkgname=${_pkgexec}-cli
 pkgname=${_pkgname}-bin
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Lightweight AI assistant for your CLI — turns 'WTF do I type?' into commands"
@@ -23,11 +23,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux_${_barch[2]}.tar.gz")
-sha256sums=('fafe1b34b8f8b2f461c96c9bba419ed04cf7f9995e9f111ea43c9d26b5a560df'
+sha256sums=('553890e59c69ca4e8c0ce445a7a784fdb6a2fc052d108454c714868823d7524a'
             '6f9a2fb009225de5cca1c2a24dfed7a68bc22657e455b4a3d63f065258b455d1')
-sha256sums_x86_64=('ce7726972b0b0a7a04c3b0f0360a01effd79ad5f9e4a09e09ec41ea12fc8c5e8')
-sha256sums_i686=('4a876fd0f53b6bdb113718fc2768320451d4333002bd3376d3e00e8a0792d074')
-sha256sums_aarch64=('5f911ac03547529d5c8497c97bd3daea0ce828a7b25acc5e3139f7f4299c610f')
+sha256sums_x86_64=('88888fe109ab5d754b46d4f72bb403fe7aee14041493859f58aa9dc3445a618f')
+sha256sums_i686=('5e44deeae6f156d181cc9dbf4d1faef1339b4ec05195992f2951592a6e11cd13')
+sha256sums_aarch64=('cd028d8a8dac517e60bbea352ba75a699b3795a5a2c8520c3f2f569efe4bda13')
 
 case ${CARCH} in
         ${arch[0]})
