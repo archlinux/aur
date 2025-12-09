@@ -5,7 +5,7 @@
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
 pkgver=4.7.1
-pkgrel=3
+pkgrel=1
 _pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('any')
