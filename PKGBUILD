@@ -11,7 +11,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://files.catbox.moe/hdaan0.zip")
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12379012338/artifacts/raw/doudou-8.2.0-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
