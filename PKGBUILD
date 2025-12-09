@@ -2,9 +2,9 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="FIDO2 security token emulator "
+pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pando85/passless"
 license=('GPL')
