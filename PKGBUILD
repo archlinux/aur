@@ -5,7 +5,7 @@ _pkgauthor=tfkhdyt
 _pkgname=geminicommit
 _pkgexec=gmc
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="CLI that writes git commit messages for you with Google Gemini AI"
@@ -25,8 +25,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux-${_barch[1]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'd0d2d1f4a5e7e1a3864c76d83acff1a0f84c0f84544276a48fa11eb8d457ca13')
-sha256sums_x86_64=('94f33a79c7ba3a01a5942c515beb29c46597683583f0c35b4b7222e772bc8304')
-sha256sums_aarch64=('7923a1f1c73900c047be2509b12cd6ba7f83507b75c4476b9629915c55119b2c')
+sha256sums_x86_64=('0756f79e6643d1b037c35c9d23b1497c6c76b775af47fe9047b8620fb5e2d964')
+sha256sums_aarch64=('d55ccb14edc575bbd9ccbe3a8236169374753af193426d2efb7362ce99ff7b13')
 
 build() {
 	cd "${srcdir}/" || exit
