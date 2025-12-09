@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.6'
+_upstreamver='0.7'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='ipspot'
@@ -16,7 +16,7 @@ depends=('python' 'python-art' 'python-requests' 'python-urllib3' 'python-certif
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('8977b8062a3e41cd4b051eb62ba21c2b559358cda2d2160d34cb58f6d58cbee0')
+sha256sums=('661969a53a7018e4720204897ee680f4ccedb98aeb0fdfac277e4fa4d38a5e89')
 
 
 build() {
