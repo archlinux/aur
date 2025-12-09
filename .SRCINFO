@@ -1,6 +1,6 @@
 pkgbase = nodejs-markdown-pdf
 	pkgdesc = Markdown to PDF converter
-	pkgver = 10.0.0
+	pkgver = 11.0.0
 	pkgrel = 2
 	url = https://github.com/alanshaw/markdown-pdf
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = nodejs-markdown-pdf
 	makedepends = npm
 	depends = nodejs
 	depends = phantomjs
-	noextract = markdown-pdf-10.0.0.tgz
-	source = http://registry.npmjs.org/markdown-pdf/-/markdown-pdf-10.0.0.tgz
-	sha1sums = 0cf7a32740c2966aa79392a35742749d6ed2a491
+	noextract = markdown-pdf-11.0.0.tgz
+	source = http://registry.npmjs.org/markdown-pdf/-/markdown-pdf-11.0.0.tgz
+	sha1sums = 9916faec08dd3d8300622ea36447866fb299eecc
 
 pkgname = nodejs-markdown-pdf
-
