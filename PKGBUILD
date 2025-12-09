@@ -2,7 +2,7 @@
 
 pkgname=python-astroquery-git
 _gitname=astroquery
-pkgver=0.4.7.r188.g06de109c5
+pkgver=0.4.11.r157.g067c6d2ce
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('any')
@@ -23,6 +23,9 @@ makedepends=(
   'git'
   'python-astropy-helpers'
   'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 optdepends=(
   'python-astropy-healpix: for full functionality of the alma module'
@@ -37,15 +40,20 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
+prepare() {
+  cd $_gitname
+  sed -i '/ah_bootstrap/d' setup.py
+}
+
 build() {
   cd $_gitname
-  python setup.py build --use-system-libraries --use-system-astropy-helpers --offline
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_gitname
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE.rst licenses/*
-  python setup.py install --root="${pkgdir}" --skip-build --optimize=1 --use-system-astropy-helpers
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim: set ts=2 sw=2 et:
