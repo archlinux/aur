@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=prek
-pkgver=0.2.19
-pkgrel=3
+pkgver=0.2.20
+pkgrel=1
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
 arch=('x86_64')
 url='https://github.com/j178/prek'
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust' 'libxml2')
 checkdepends=('cargo-nextest')
 options=('!lto')
-_commit='bdc40e36aa85f868ed9a8ddbbde1e3d6372cfa75'
+_commit='adbb89f6a2a8c283f663bc376907df42544a6cb3'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
