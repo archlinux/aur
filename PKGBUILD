@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-uiautomator2-driver
 pkgname="nodejs-$_pkgname"
-pkgver=6.6.2
+pkgver=6.6.3
 pkgrel=1
 pkgdesc="UiAutomator2 integration for Appium"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('1701c2478a8f765dca90af07e17c221a31643189d593e5e0830f23ff3605eb14')
+sha256sums=('50015589ff2cdc6e194224435767ff6efed71e218db1beb622271824784cf405')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
