@@ -1,0 +1,34 @@
+pkgbase = qt5-webengine
+	pkgdesc = Provides support for web applications using the Chromium browser project
+	pkgver = 5.15.19
+	pkgrel = 4
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = LGPL3
+	license = LGPL2.1
+	license = BSD
+	depends = qt5-webchannel
+	depends = qt5-location
+	depends = libxcomposite
+	depends = libxrandr
+	depends = pciutils
+	depends = libxss
+	depends = libxkbfile
+	depends = libxdamage
+	depends = libevent
+	depends = snappy
+	depends = nss
+	depends = libxslt
+	depends = minizip
+	depends = ffmpeg
+	depends = libvpx
+	depends = libxtst
+	depends = ttf-font
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	provides = qt5-webengine=5.15.19
+	conflicts = qt5-webengine
+	source = qt5-webengine-5.15.19-4-x86_64.pkg.tar.zst::https://sourceforge.net/projects/fabiololix-os-archive/files/Packages/qt5-webengine-5.15.19-4-x86_64.pkg.tar.zst/download
+	sha256sums = 39614f3e1868c8c623bab1406f3f437dc2a7d49944f8ac54f9bd27574f4c5c7c
+
+pkgname = qt5-webengine
