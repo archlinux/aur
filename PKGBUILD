@@ -1,6 +1,6 @@
 # Maintainer: LigoLang <infra at trili dot tech>
 pkgname=ligo-bin
-pkgver=1.11.9
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="High Level Smart Contract Language for Tezos (binary)"
 url="https://gitlab.com/ligolang/ligo"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('ligo')
 conflicts=('ligo' 'ligo-next')
 
-source=(https://gitlab.com/ligolang/ligo/-/jobs/12371675330/artifacts/raw/ligo.deb)
+source=(https://gitlab.com/ligolang/ligo/-/jobs/12375876721/artifacts/raw/ligo.deb)
 md5sums=('SKIP')
 
 prepare() {
