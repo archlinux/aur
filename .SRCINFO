@@ -1,6 +1,6 @@
 pkgbase = modustoolbox-machine-learning-pack
 	pkgdesc = Enables you to use ModusToolbox Machine Learning tools and assets for all model deployment and validation within the ModusToolbox environment.
-	pkgver = 2.0.0.444
+	pkgver = 3.0.0.2416
 	pkgrel = 1
 	url = https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxpackmachinelearning
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = modustoolbox-machine-learning-pack
 	depends = ncurses5-compat-libs
 	depends = libxcomposite
 	options = !strip
-	source = file://modustoolboxpackmachinelearning_2.0.0.444_Linux_x64.deb
-	sha256sums = dcfa71c5e377ef2480ffea546a1305372fe0e7e9888ba0be9838820b4def8c2c
+	source = file://modustoolboxpackmachinelearning_3.0.0.2416_Linux_x64.deb
+	sha256sums = 1d1de67afddc15b9603fde8ba74027ec35490a896467a2dbf3c3b24434410b7e
 
 pkgname = modustoolbox-machine-learning-pack

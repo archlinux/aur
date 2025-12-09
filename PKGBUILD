@@ -9,8 +9,8 @@
 
 _pkgname=ModusToolbox
 pkgname=modustoolbox-machine-learning-pack
-_pkgver=2.0
-pkgver=${_pkgver}.0.444
+_pkgver=3.0.0
+pkgver=${_pkgver}.2416
 pkgrel=1
 pkgdesc="Enables you to use ModusToolbox Machine Learning tools and assets for all model deployment and validation within the ModusToolbox environment."
 arch=('x86_64')
@@ -22,7 +22,7 @@ _url_package_name="modustoolboxpackmachinelearning"
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.${_url_package_name}"
 _source="${_url_package_name}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('dcfa71c5e377ef2480ffea546a1305372fe0e7e9888ba0be9838820b4def8c2c')
+sha256sums=('1d1de67afddc15b9603fde8ba74027ec35490a896467a2dbf3c3b24434410b7e')
 options=('!strip')
 
 
@@ -48,5 +48,5 @@ package() {
 
     # Install license
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/usr/share/doc/ModusToolbox-Machine-Learning-Pack-${pkgver%.*}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 ${srcdir}/usr/share/doc/ModusToolbox-Machine-Learning-Pack-${pkgver}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
