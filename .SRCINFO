@@ -1,12 +1,12 @@
 pkgbase = trashy
 	pkgdesc = a cli system trash manager, alternative to rm and trash-cli
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oberblastmeister/trashy
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	conflicts = trash-cli
 	source = trashy-2.0.0.tar.gz::https://github.com/oberblastmeister/trashy/archive/refs/tags/v2.0.0.tar.gz

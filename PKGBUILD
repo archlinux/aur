@@ -2,10 +2,10 @@
 
 pkgname=trashy
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a cli system trash manager, alternative to rm and trash-cli'
 url="https://github.com/oberblastmeister/trashy"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 arch=('x86_64' 'aarch64')
 conflicts=('trash-cli')
 depends_x86_64=('gcc-libs')
@@ -41,7 +41,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 -t "$pkgdir/usr/bin" target/release/trash
+  install -Dm0755 target/release/trash "$pkgdir/usr/bin/trashy"
 
   install -Dm0644 _trash.zsh "$pkgdir/usr/share/zsh/site-functions/_trash"
   install -Dm0644 trash.bash "$pkgdir/usr/share/bash-completion/completions/trash"
