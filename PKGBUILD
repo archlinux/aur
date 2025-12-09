@@ -2,15 +2,15 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.18.1.r20.g581386ca
+pkgver=2.18.1.r36.gf825234a1
 pkgrel=1
-_electron=electron36
+_electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
-depends=(electron36)
-makedepends=(git pnpm npm)
+depends=($_electron)
+makedepends=(git pnpm npm yq)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 source=(git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git)
@@ -23,7 +23,12 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+
+  # updating the desktop file
   sed -i -e "s/Exec=heroic-run /Exec=heroic /" "flatpak/com.heroicgameslauncher.hgl.desktop"
+  
+  # overriding node-abi
+  jq '.pnpm.overrides = {"node-abi": "latest"} + (.pnpm.overrides // {})' package.json > package.json.tmp && mv package.json.tmp package.json
 }
 
 build() {
