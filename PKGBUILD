@@ -3,7 +3,7 @@
 
 _name=xformers
 pkgname=python-${_name}
-pkgver=0.0.32.post2
+pkgver=0.0.33.post2
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
@@ -27,7 +27,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${_name}/${_name}-${pkgver}.tar.gz"
 )
 
-sha256sums=('9538be803969c6e1ca16a3ece921e472c24f79970b10be1087a389dcb66e412a')
+sha256sums=('647ddf26578d2b8643230467ef1f0fbfef0bbe556a546bd27a70d4855d3433e1')
 
 build() {
 	cd "${_name}-${pkgver}"
