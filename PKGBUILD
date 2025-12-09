@@ -2,19 +2,24 @@
 # Contributor : Yamada Hayao <hayao@fascode.net>
 
 pkgname=gnome-shell-extension-coverflow-alt-tab
-pkgver=1.14
+_extname="CoverflowAltTab@palatis.blogspot.com"
+pkgver=57
 pkgrel=1
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
-source+=("${url}/archive/refs/tags/v${pkgver}.zip")
-b2sums=('4d3b6e256f7c426908acf12e80786a433618b4966afee10880e805c847d19ed60d8eb34d1a466c2e55e4615fc2201067f7288cd7d299689154cce95ade15fc6a')
+source=("https://extensions.gnome.org/extension-data/${_extname/@/}.v$pkgver.shell-extension.zip")
+b2sums=('2498a343399f99979e78ea6a2cdb0b190577ac48a5662c3b02f912204f887eaf1f8c515470cbc92a8d77d86ffc4a2bd16948cf5e2525898c6a8fffdf4704da8c')
 install=gschemas.install
-_dir="CoverflowAltTab-${pkgver}"
+
+build() {
+  glib-compile-schemas schemas
+}
 
 package(){
-    cd "${srcdir}/${_dir}"
-    mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-    make all LOCALINSTALL=true SUPER_PATH="${pkgdir}/usr/share/gnome-shell/extensions"
+  readonly destdir="${pkgdir}/usr/share/gnome-shell/extensions/$_extname"
+  mkdir -p "$destdir"
+  rm *.shell-extension.zip
+  cp --no-preserve=ownership,mode -r * "$destdir"
 }
