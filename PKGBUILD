@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     "python-aiofiles"
     "python-dotenv"
     "python-httpx"
+    "python-linkify-it-py"
     "python-mcp"
     "python-mistralai"
     "python-packaging"
@@ -44,12 +45,8 @@ makedepends=(
     "uv"
     "vulture"
 )
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "vibe.sh"
-)
-sha256sums=('99980ec8e1988e27aa3aa168c9909c8dedef971e9c28e601eedb8bf6fb3cd5a2'
-            '063773ff2dd0b2e95f9f61f91048ef90e28d4bb60d61005b9df1c15bbf3394d2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b6d25ef20ecb7326e2504e4737230df3489af4c361cbb8d53a3125a9dfc79d4b')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -59,7 +56,8 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # Install scripts
-    install -Dm755 "${srcdir}/vibe.sh" "${pkgdir}/usr/bin/vibe"
+    echo "#!/usr/bin/env python3" > "${pkgdir}/usr/bin/vibe"
+    pyver=$(python3 --version | awk '{print $2}' | cut -d. -f1,2)
+    cat "${pkgdir}/usr/lib/python${pyver}/site-packages/vibe/cli/entrypoint.py" >> "${pkgdir}/usr/bin/vibe"
+    chmod 755 "${pkgdir}/usr/bin/vibe"
 }
