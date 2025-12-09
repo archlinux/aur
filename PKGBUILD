@@ -4,14 +4,14 @@
 
 pkgname=libbass
 pkgver=2.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc='BASS audio library'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bass24-linux.zip")
-sha256sums=('d15ce4b0bc98a9e1c9e5a108607ae891287b5951327fb0b55692f2ea40d3772a')
+sha256sums=('91fa6a4e63cc1218376ce67c38212c16601763963f80125595a2a069159fb814')
 
 prepare() {
   grep Lic "$srcdir/bass.txt" -A62 > LICENSE.bass
