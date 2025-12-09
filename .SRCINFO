@@ -1,6 +1,6 @@
 pkgbase = piximan
 	pkgdesc = Pixiv batch downloader and local collection viewer
-	pkgver = 0.11.3
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/fekoneko/piximan
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = piximan
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = go
-	source = piximan-0.11.3.tar.gz::https://github.com/fekoneko/piximan/archive/refs/tags/v0.11.3.tar.gz
-	sha256sums = 786c5931c420f010cda27a393b9a50cfdcf69a689f031fa6899e46da075d89b8
+	source = piximan-0.11.4.tar.gz::https://github.com/fekoneko/piximan/archive/refs/tags/v0.11.4.tar.gz
+	sha256sums = dd54b9a048d36c88f299a62b4d43ef0c32dedac6f76d7bc811b946fb828809a0
 
 pkgname = piximan

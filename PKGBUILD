@@ -1,7 +1,7 @@
 # Maintainer: fekoneko <https://github.com/fekoneko>
 
 pkgname='piximan'
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc='Pixiv batch downloader and local collection viewer'
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 _srcname="$pkgname-$pkgver.tar.gz"
 _srcurl="https://github.com/fekoneko/piximan/archive/refs/tags/v$pkgver.tar.gz"
 source=("$_srcname::$_srcurl")
-sha256sums=('786c5931c420f010cda27a393b9a50cfdcf69a689f031fa6899e46da075d89b8')
+sha256sums=('dd54b9a048d36c88f299a62b4d43ef0c32dedac6f76d7bc811b946fb828809a0')
 
 build() {
   cd "piximan-$pkgver"
