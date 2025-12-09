@@ -9,6 +9,7 @@
   makedepends=('cmake' 'git')
   provides=('mbelib-neo' 'mbelib')
   conflicts=('mbelib-neo' 'mbelib')
+  options=('!staticlibs')
   source=("$pkgname::git+https://github.com/arancormonk/mbelib-neo.git")
   sha256sums=('SKIP')
 
