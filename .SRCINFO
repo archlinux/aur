@@ -22,6 +22,6 @@ pkgrel = 1
 	replaces = wayscriber-debug
 	backup = usr/lib/systemd/user/wayscriber.service
 source_x86_64 = wayscriber-v0.8.8-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.8/wayscriber-v0.8.8-linux-x86_64.tar.gz
-sha256sums_x86_64 = 4bfdbb0b69a6f87c56c45ac953d55776807abfabbca9b14e3c31fe46cd3044bd
+sha256sums_x86_64 = e43dbc2fba74bad5fb6da9926b3c805d55c2147aeca1530c4ca80235c1ba82be
 
 pkgname = wayscriber-bin
