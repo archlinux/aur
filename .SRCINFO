@@ -1,6 +1,6 @@
 pkgbase = bouncer
 	pkgdesc = An application to help you choose the correct firewall zone for wireless connections.
-	pkgver = 49.1.0
+	pkgver = 49.2.0
 	pkgrel = 1
 	url = https://github.com/justinrdonnelly/bouncer
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = bouncer
 	depends = libportal
 	depends = libportal-gtk4
 	depends = networkmanager
-	source = bouncer-49.1.0.tar.gz::https://github.com/justinrdonnelly/bouncer/archive/refs/tags/49.1.0.tar.gz
-	sha256sums = d01e2e682415ab9f7e1397af1f55b7d6cd595e42d23cf40ff8497814b1e4ed42
+	source = bouncer-49.2.0.tar.gz::https://github.com/justinrdonnelly/bouncer/archive/refs/tags/49.2.0.tar.gz
+	sha256sums = c03a30fdd82728513ef32b7b62b74f85065fecab2307bc19e4880e512451381a
 
 pkgname = bouncer
