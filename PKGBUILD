@@ -3,13 +3,13 @@
 pkgname=plasma6-applets-wallhaven-reborn-git
 _pkgname=${pkgname%-git}
 pkgver=r67.030bbfe
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallhaven wallpaper plugin for plasma 6"
 arch=(any)
 url="https://github.com/Blacksuan19/plasma-wallpaper-wallhaven-reborn"
 license=(GPL-3.0-only)
 depends=(plasma-workspace)
-makedepends=(kpackage)
+makedepends=(kpackage git)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
