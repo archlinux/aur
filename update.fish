@@ -5,5 +5,5 @@ sed -i -r "/^pkgver/{s/=.+\$/=$pkgver/}" PKGBUILD
 if not git diff --quiet
     makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
-    git commit -m "bump: $_pkgver"
+    git commit -m "bump: $pkgver"
 end
