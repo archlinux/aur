@@ -11,7 +11,6 @@ url="https://wooting.io/$pkgname"
 license=('unknown')
 depends=('glibc' 'fuse2' 'hicolor-icon-theme' 'zlib')
 options=(!strip)
-install=$pkgname.install
 _appimage=$pkgname-$pkgver.AppImage
 source=("$_appimage::https://api.wooting.io/public/$pkgname/download?os=linux&version=$pkgver"
         '70-wooting.rules')

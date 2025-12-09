@@ -3,7 +3,6 @@ pkgbase = wootility
 	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://wooting.io/wootility
-	install = wootility.install
 	arch = x86_64
 	license = unknown
 	depends = glibc

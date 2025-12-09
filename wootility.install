@@ -1,9 +1,0 @@
-post_install() {
-  echo 'To turn off the “Would you like to integrate ….AppImage with your system?”'
-  echo 'notifications on every launch of Wootility, see:'
-  echo 'https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration'
-}
-
-post_upgrade() {
-  post_install
-}
