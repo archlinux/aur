@@ -11,7 +11,7 @@ pkgbase = doudou-bin
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-bin-8.0.0.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12346738485/artifacts/download
+	source = o14nkn.zip::https://files.catbox.moe/o14nkn.zip
 	sha256sums = SKIP
 
 pkgname = doudou-bin
