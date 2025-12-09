@@ -1,7 +1,7 @@
 pkgbase = screen-record-cava
 	pkgdesc = Screen recorder with real-time cava audio visualization
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZykaJiri/screen-record-cava
 	arch = any
 	license = MIT
