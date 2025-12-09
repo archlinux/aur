@@ -7,6 +7,6 @@ pkgbase = gnome-shell-extension-coverflow-alt-tab
 	arch = any
 	license = GPL
 	source = https://github.com/dmo60/CoverflowAltTab/archive/refs/tags/v1.14.zip
-	md5sums = SKIP
+	md5sums = 42fd16797929538fd303029b5f3cbddc
 
 pkgname = gnome-shell-extension-coverflow-alt-tab
