@@ -1,5 +1,5 @@
 pkgbase = roxybrowser-bin
-	pkgdesc = Premier Antidetect Browser - Streamline Your Workflow Effortlessly
+	pkgdesc = Premier Antidetect Browser - Streamline Your Workflow Effortlessly (Unofficial Community Package)
 	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://roxybrowser.com
@@ -19,6 +19,6 @@ pkgbase = roxybrowser-bin
 	conflicts = roxybrowser
 	options = !strip
 	source_x86_64 = roxybrowser-3.6.1.deb::https://dl.roxybrowser.com/app-download/Linux-64-latest
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = a645dbb071327d99d861e7c8cacfb424bd4bdeb69330233ee274cc8202ca247d
 
 pkgname = roxybrowser-bin
