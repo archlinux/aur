@@ -1,0 +1,18 @@
+pkgbase = archy-screenshot-git
+	pkgdesc = Simple script helper to take screenshots with `lqth`
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/archy-linux/archy-screenshot
+	arch = any
+	groups = archy-utils
+	license = MIT
+	depends = lqth-git
+	depends = xrectsel
+	depends = xdo
+	depends = farbfeld
+	provides = screenshot
+	conflicts = archy-screenshot
+	source = archy-screenshot::git+https://github.com/archy-linux/archy-screenshot.git#branch=aurora
+	sha256sums = SKIP
+
+pkgname = archy-screenshot-git
