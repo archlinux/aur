@@ -1,14 +1,14 @@
 pkgbase = ticktty
 	pkgdesc = A stylish CLI clock and timer for your terminal
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/yourusername/ticktty
+	url = https://github.com/dimitrisfasoulas/ticktty.git
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = ticktty-1.0.0.tgz
-	source = ticktty-1.0.0.tgz::https://registry.npmjs.org/ticktty/-/ticktty-1.0.0.tgz
-	sha256sums = 27877dcf64b9f6e69ba4921a1c424dc64c21e9b6cfe8c4f52c65d00b708183c4
+	noextract = ticktty-2.0.0.tgz
+	source = ticktty-2.0.0.tgz::https://registry.npmjs.org/ticktty/-/ticktty-2.0.0.tgz
+	sha256sums = 17fe3af2a3c3113a41a8cf9adfa62c0e69125a82defde7dde9ddb6f2260aa6fc
 
 pkgname = ticktty
