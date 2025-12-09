@@ -1,13 +1,14 @@
 pkgbase = firefox-extension-floccus
 	pkgdesc = Sync your bookmarks privately across browsers and devices
-	pkgver = 5.8.1
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = https://floccus.org/
 	arch = any
 	groups = firefox-addons
 	license = MPL-2.0
-	noextract = floccus-build-v5.8.1.xpi
-	source = https://github.com/floccusaddon/floccus/releases/download/v5.8.1/floccus-build-v5.8.1.xpi
-	sha256sums = bebcf4a3364b43a24f4bcc5e53865df66d6e6e6110cd035da473309cfdb18be8
+	conflicts = firefox-floccus
+	noextract = floccus-build-v5.8.2.xpi
+	source = https://github.com/floccusaddon/floccus/releases/download/v5.8.2/floccus-build-v5.8.2.xpi
+	sha256sums = 2489e0f77efe2bb30e4936fc2428f8bf322758193576d6ae21b853fbd99e4b80
 
 pkgname = firefox-extension-floccus
