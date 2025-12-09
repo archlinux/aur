@@ -1,9 +1,9 @@
-# Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
+# Maintainer: Duje Mihanović <duje@dujemihanovic.xyz>
 
 pkgname=uefitool-ng-git
 _pkgname=uefitool-ng
-pkgver=r629.0030ea9
-pkgrel=2
+pkgver=r718.906a80d
+pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor and utilities (new engine)'
 arch=('x86_64' 'i686')
 url='https://github.com/LongSoft/UEFITool'

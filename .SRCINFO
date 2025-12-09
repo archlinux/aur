@@ -1,7 +1,7 @@
 pkgbase = uefitool-ng-git
 	pkgdesc = UEFI firmware image viewer and editor and utilities (new engine)
-	pkgver = r629.0030ea9
-	pkgrel = 2
+	pkgver = r718.906a80d
+	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
 	arch = i686
