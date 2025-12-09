@@ -1,6 +1,6 @@
 pkgbase = wootility
 	pkgdesc = Utility for configuring Wooting keyboards
-	pkgver = 5.1.2
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://wooting.io/wootility
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = wootility
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = zlib
-	noextract = wootility-5.1.2.AppImage
+	noextract = Wootility-5.2.1.AppImage
 	options = !strip
-	source = wootility-5.1.2.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.1.2
+	source = Wootility-5.2.1.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.2.1
 	source = 70-wooting.rules
-	b2sums = b19310837e29143f4b1adeddf97e92c77560b062ce3df82f78bd246febdfdc4706d6ffd8dda173ef10c5737607a8451e021480062a9e96d936274c90be0dea9c
+	b2sums = 9ec878f56c76d73714a28fa4f9eae907ccbbfcb96db0a192e6da76edc3346f2d7f9ea84bb888911ad94f2f2946104c9bd0f570c558a396417dc8fb56d4903819
 	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
 
 pkgname = wootility

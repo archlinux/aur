@@ -3,7 +3,8 @@
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=wootility
-pkgver=5.1.2
+_name=${pkgname^}
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Utility for configuring Wooting keyboards'
 arch=('x86_64')
@@ -11,18 +12,18 @@ url="https://wooting.io/$pkgname"
 license=('unknown')
 depends=('glibc' 'fuse2' 'hicolor-icon-theme' 'zlib')
 options=(!strip)
-_appimage=$pkgname-$pkgver.AppImage
+_appimage=$_name-$pkgver.AppImage
 source=("$_appimage::https://api.wooting.io/public/$pkgname/download?os=linux&version=$pkgver"
         '70-wooting.rules')
 noextract=("$_appimage")
-b2sums=('b19310837e29143f4b1adeddf97e92c77560b062ce3df82f78bd246febdfdc4706d6ffd8dda173ef10c5737607a8451e021480062a9e96d936274c90be0dea9c'
+b2sums=('9ec878f56c76d73714a28fa4f9eae907ccbbfcb96db0a192e6da76edc3346f2d7f9ea84bb888911ad94f2f2946104c9bd0f570c558a396417dc8fb56d4903819'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
     # Copy AppImage in case $SRCDEST is mounted with noexec
     cp $_appimage $_appimage.copy
     chmod +x $_appimage.copy
-    ./$_appimage.copy --appimage-extract $pkgname.desktop
+    ./$_appimage.copy --appimage-extract $_name.desktop
     ./$_appimage.copy --appimage-extract usr/share/icons
     rm $_appimage.copy
 }
@@ -30,20 +31,20 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$pkgname|" \
-        "squashfs-root/$pkgname.desktop"
+        "squashfs-root/$_name.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-    install -Dm755 $_appimage "$pkgdir/opt/$pkgname/$_appimage"
+    install -Dm755 $_appimage "$pkgdir/opt/$_name/$_appimage"
 
     # Symlink executable
     install -dm755 "$pkgdir/usr/bin/"
-    ln -s /opt/$pkgname/$_appimage "$pkgdir/usr/bin/$pkgname"
+    ln -s /opt/$_name/$_appimage "$pkgdir/usr/bin/$pkgname"
 
     # Install desktop entry and icons
-    install -Dm644 "squashfs-root/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 squashfs-root/$_name.desktop "$pkgdir/usr/share/applications/$_name.desktop"
     install -dm755 "$pkgdir/usr/share/"
     cp -a squashfs-root/usr/share/icons "$pkgdir/usr/share/"
 
