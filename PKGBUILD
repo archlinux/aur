@@ -5,12 +5,12 @@
 
 pkgname=rocketchat-desktop
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron'
 arch=(any)
 url=https://github.com/RocketChat/Rocket.Chat.Electron
 license=(MIT)
-_electron=electron38
+_electron=electron39
 depends=("$_electron" nodejs libvips)
 makedepends=(node-gyp yarn asar python-distutils-extra openjpeg2)
 install=rocketchat-desktop.install
