@@ -1,4 +1,4 @@
-pkgbase = expressvpn-beta
+pkgbase = expressvpn-staging
 	pkgdesc = Proprietary VPN client for Linux
 	pkgver = 5.0.1.11498
 	pkgrel = 1
@@ -46,4 +46,4 @@ pkgbase = expressvpn-beta
 	sha256sums = SKIP
 	sha256sums = 33ea79001be5dbc45122255c2fec4dd9e0396fdf19330b72fd770d33c398faf5
 
-pkgname = expressvpn-beta
+pkgname = expressvpn-staging
