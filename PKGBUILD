@@ -18,7 +18,7 @@ makedepends=(
     "python-dotenv"
     "prek"
 )
-source=(git+${url}.git#tag=${pkgver})
+source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
@@ -27,10 +27,11 @@ build() {
 }
 
 check() {
-  cd "python-sdk"
-  uv sync
-  uv run prek install
-  uv run python -m pytest --doctest-modules
+    cd "python-sdk"
+    #export UV_PYTHON_PREFERENCE=only-system
+    uv sync
+    uv run prek install
+    uv run python -m pytest --doctest-modules
 }
 
 package() {
