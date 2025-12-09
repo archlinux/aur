@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-bin
-pkgver=8.0.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
@@ -11,11 +11,11 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12346738485/artifacts/download")
+source=("${pkgname}-${pkgver}.zip::https://files.catbox.moe/o14nkn.zip")
 sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}/build/linux/x64/release/bundle"
+    cd "${srcdir}"
 
     # Install the entire bundle to /opt/doudou (Flutter needs relative paths)
     install -d "${pkgdir}/opt/doudou"
