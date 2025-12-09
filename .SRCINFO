@@ -31,4 +31,4 @@ pkgbase = qt5-webengine-bin
 	source = qt5-webengine-5.15.19-4-x86_64.pkg.tar.zst::https://sourceforge.net/projects/fabiololix-os-archive/files/Packages/qt5-webengine-5.15.19-4-x86_64.pkg.tar.zst/download
 	sha256sums = 39614f3e1868c8c623bab1406f3f437dc2a7d49944f8ac54f9bd27574f4c5c7c
 
-pkgname = qt5-webengine
+pkgname = qt5-webengine-bin
