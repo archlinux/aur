@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=pmtiles
-pkgver=1.28.1
+pkgver=1.28.3
 pkgrel=1
 pkgdesc="Single-file executable tool for working with PMTiles archives"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=()
 provides=("pmtiles" "go-pmtiles")
 conflicts=("pmtiles" "go-pmtiles")
 source=("https://github.com/protomaps/go-pmtiles/releases/download/v${pkgver}/go-pmtiles_${pkgver}_Linux_${arch}.tar.gz")
-b2sums=('a22be9bb675441f2d03eb6155b0e5647a39a5b371c62892d3b3ce45a900c4e5ef16610d2d78524ee3e5490f9aea2e80a90a2d94e9c2aab422335fa0ec1eb4816')
+b2sums=('ddebbdfe1efd9902cb00b544fc8378dc3f2941aeb5ca58337fe826e9dd3fc3d6dcccda30431a04c68a469de96cb166bcc5c18077329bfb3e8a6566ab89e43da9')
 
 package() {
     install -d "${pkgdir}"/usr/bin
