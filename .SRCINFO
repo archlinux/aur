@@ -5,11 +5,10 @@ pkgbase = audacity4-alpha
 	url = https://github.com/audacity/audacity
 	arch = x86_64
 	license = GPL-3.0-or-later
-	noextract = audacity4-alpha-4.0.0_alpha2.zip
 	options = !strip
-	source = audacity4-alpha-4.0.0_alpha2.zip::https://github.com/audacity/audacity/releases/download/Audacity-4.0.0-alpha-2/AU4_253031629_Lin__release-4.0.0-alpha2.zip
+	source = Audacity-4.0.0.253031629.f3e3e3b.-x86_64.AppImage::https://github.com/audacity/audacity/releases/download/Audacity-4.0.0-alpha-2/Audacity-4.0.0.253031629.f3e3e3b.-x86_64.AppImage
 	source = audacity4-alpha.desktop
-	sha256sums = 3d62b916ccb3431eb103db2d712a1c2accd2bf8a4124189396844c7651fae4bf
+	sha256sums = 1cc4f4d4e3924977bad3d03a4a560105d83af73cae72234b97d9b34c5441c801
 	sha256sums = SKIP
 
 pkgname = audacity4-alpha
