@@ -10,15 +10,15 @@
 pkgname=ollama-cuda-git
 _pkgname=ollama
 pkgver=0.13.3.rc0+r4860+gd475d1f08
-pkgrel=2
+pkgrel=3
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 options=('!lto')
 makedepends=(cmake ninja git go cuda)
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver" "$_pkgname-cuda=$pkgver")
+conflicts=("$_pkgname" "$_pkgname-cuda")
 source=(git+https://github.com/ollama/ollama.git
   ollama-ld.conf
   ollama.service
