@@ -1,6 +1,6 @@
 pkgbase = vacuumtube
 	pkgdesc = Unofficial wrapper of YouTube Leanback with a built-in adblocker and minor enhancements.
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/shy1132/VacuumTube
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vacuumtube
 	makedepends = nvm
 	depends = electron
 	options = !strip
-	source = vacuumtube-1.4.2.tar.gz::https://github.com/shy1132/VacuumTube/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = 71af6732b77ede44eed3a70f547970ebcc2804170d4001b2db6d0f93b33f20dd
+	source = vacuumtube-1.5.0.tar.gz::https://github.com/shy1132/VacuumTube/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = ad89a102ccc75031cfc1bf4a18bfbd5aa5a10354fb4fff2ba89507d3eb111fe8
 
 pkgname = vacuumtube
