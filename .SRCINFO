@@ -1,0 +1,20 @@
+pkgbase = php83-memcached
+	pkgdesc = PHP extension for interfacing with memcached via libmemcached library
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/php-memcached-dev/php-memcached
+	arch = x86_64
+	license = PHP
+	makedepends = php83
+	makedepends = git
+	makedepends = php83-igbinary
+	depends = libmemcached
+	depends = zstd
+	source = git+https://github.com/php-memcached-dev/php-memcached.git#tag=v3.4.0
+	sha256sums = c31f09a009c9ab69710c1292bdb6ecf6dafc6bae28c1c90304ec191d59f17cc7
+
+pkgname = php83-memcached
+	depends = libmemcached
+	depends = zstd
+	depends = php83
+	backup = etc/php83/conf.d/memcached.ini
