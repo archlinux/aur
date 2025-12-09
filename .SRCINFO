@@ -1,6 +1,6 @@
-pkgbase = chainz-git
+pkgbase = chainz
 	pkgdesc = Chainz executable from GitHub (git version)
-	pkgver = 0.1.7
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/gdplayerokay/Chainz-package
 	arch = x86_64
@@ -14,4 +14,4 @@ pkgbase = chainz-git
 	source = git+https://github.com/gdplayerokay/Chainz-package.git
 	sha256sums = SKIP
 
-pkgname = chainz-git
+pkgname = chainz
