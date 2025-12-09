@@ -1,12 +1,12 @@
 # Maintainer: notgeocube@outlook.com
 pkgname=chainz
-pkgver=1.1.1
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Chainz executable from GitHub (git version)"
 arch=('x86_64')
 url="https://github.com/gdplayerokay/Chainz-package"
 license=('MIT')
-depends=('git' 'bash' 'pacman' 'yay' 'paru' 'flatpak')  # Add any runtime dependencies
+depends=('git' 'bash' 'pacman' 'yay' 'fzf')  # Add any runtime dependencies
 source=("git+https://github.com/gdplayerokay/Chainz-package.git")
 sha256sums=('SKIP')  # Skipped for git sources
 
