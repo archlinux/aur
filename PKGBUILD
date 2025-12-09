@@ -14,25 +14,26 @@ conflicts=('ripgrep')
 source=("$pkgname::git+https://github.com/BurntSushi/ripgrep")
 sha1sums=('SKIP')
 
-build() {
-  cd "$pkgname"
-  if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run nightly \
-      cargo build --release --features pcre2
-  elif rustc --version | grep -q nightly; then
-    RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release --features pcre2
-  else
-    cargo build --release --features pcre2
-  fi
-}
-
 pkgver() {
   cd "$pkgname"
   local tag=$(git tag --sort=-v:refname | grep '^[0-9]' | head -1)
   local commits_since=$(git rev-list $tag..HEAD --count)
   echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
+
+
+build() {
+  cd "$pkgname"
+
+  cargo build --release --features pcre2
+}
+
+check() {
+  cd "$pkgname"
+
+  cargo test --release --features pcre2
+}
+
 
 package() {
   cd "$pkgname"
