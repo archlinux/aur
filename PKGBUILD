@@ -31,6 +31,7 @@ build() {
   local configure_options=(
     --prefix=/usr
     --enable-igbinary
+    --with-php-config=/usr/bin/php-config84
   )
 
   (
