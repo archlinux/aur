@@ -3,15 +3,15 @@
 pkgname=expressvpn-beta
 _name=expressvpn
 pkgver=5.0.1.11498
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'aarch64')
 depends=('bash' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops'
          'libcap-ng' 'libice' 'libnl' 'libsm' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc'
          'qt6-3d' 'qt6-base' 'qt6-declarative' 'qt6-declarative' 'qt6-lottie' 'qt6-quicktimeline'
          'qt6-scxml' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-wayland' 'zlib')
-provides=('expressvpn' 'expressvpn-staging')
-conflicts=('expressvpn' 'expressvpn-staging')
+provides=('expressvpn-beta')
+conflicts=('expressvpn' 'expressvpn-staging' 'expressvpn3')
 url="https://expressvpn.com"
 license=('LicenseRef-custom')
 options=(!strip)
