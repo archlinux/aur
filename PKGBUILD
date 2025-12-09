@@ -2,7 +2,7 @@
 
 pkgname=kiro-ide
 pkgver=0.7.34
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The AI IDE for prototype to production'
 arch=('x86_64')
@@ -25,7 +25,6 @@ depends=(
     'glib2'
     'glibc'
     'gtk3'
-    'hicolor-icon-theme'
     'libcups'
     'libx11'
     'libxcb'
@@ -81,9 +80,8 @@ package() {
     install -Dm644 Kiro/LICENSES.chromium.html \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
-    ln -s /opt/Kiro/resources/app/resources/linux/code.png \
-        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/kiro.png"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
+    ln -s /opt/Kiro/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/kiro.png"
 
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm755 "$pkgdir/usr/share/zsh/site-functions"
