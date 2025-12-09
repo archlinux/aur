@@ -11,15 +11,11 @@ url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
 source=("https://extensions.gnome.org/extension-data/${_extname/@/}.v$pkgver.shell-extension.zip")
 b2sums=('2498a343399f99979e78ea6a2cdb0b190577ac48a5662c3b02f912204f887eaf1f8c515470cbc92a8d77d86ffc4a2bd16948cf5e2525898c6a8fffdf4704da8c')
-install=gschemas.install
-
-build() {
-  glib-compile-schemas schemas
-}
 
 package(){
   readonly destdir="${pkgdir}/usr/share/gnome-shell/extensions/$_extname"
   mkdir -p "$destdir"
-  rm *.shell-extension.zip
+  install -Dt "$pkgdir/usr/share/glib-2.0/schemas/" schemas/*
+  rm -r schemas *.shell-extension.zip
   cp --no-preserve=ownership,mode -r * "$destdir"
 }

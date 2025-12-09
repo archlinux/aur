@@ -3,7 +3,6 @@ pkgbase = gnome-shell-extension-coverflow-alt-tab
 	pkgver = 57
 	pkgrel = 1
 	url = https://github.com/dmo60/CoverflowAltTab
-	install = gschemas.install
 	arch = any
 	license = GPL
 	source = https://extensions.gnome.org/extension-data/CoverflowAltTabpalatis.blogspot.com.v57.shell-extension.zip
