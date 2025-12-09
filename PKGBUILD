@@ -1,7 +1,7 @@
 # Maintainer: Sam Simons <mail@samsimons.eu>
 # Original Packager: Fabio Lolix Loli <fabio.loli@disroot.org>
 
-pkgname=qt5-webengine
+pkgname=qt5-webengine-bin
 pkgver=5.15.19
 pkgrel=4
 pkgdesc="Provides support for web applications using the Chromium browser project"

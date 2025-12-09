@@ -1,4 +1,4 @@
-pkgbase = qt5-webengine
+pkgbase = qt5-webengine-bin
 	pkgdesc = Provides support for web applications using the Chromium browser project
 	pkgver = 5.15.19
 	pkgrel = 4
