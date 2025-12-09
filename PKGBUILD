@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-webkit')
 makedepends=('python' 'quilt')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ariya/phantomjs/archive/${pkgver}.tar.gz"
-        "https://deb.debian.org/debian/pool/main/p/phantomjs/phantomjs_$_debver-$_debrel.debian.tar.xz"
+        "https://archive.debian.org/debian/pool/main/p/phantomjs/phantomjs_$_debver-$_debrel.debian.tar.xz"
         fix-missing-webkit-include-files.patch)
 sha512sums=('07b769133957c5194c9afdaa347bd9a019ebe47653f98adf17a35d3dd12714d2f8e3773ced91d7d99f31cb18d7f73167022d5b0a3906d9aac0732ef96341f5ec'
             'f2dc95aa1a4c3c68b7400a068224b529d80a985911a3da5354a8eef08319cdcca21065fd470542b52132eb4f5d8fd699e58cba3e840d4662948ee290f8b22ef9'
