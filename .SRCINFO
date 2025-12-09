@@ -1,0 +1,17 @@
+pkgbase = php84-igbinary
+	pkgdesc = A drop in replacement for the standard php serializer
+	pkgver = 3.2.17RC1
+	pkgrel = 1
+	url = https://github.com/igbinary/igbinary
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = php84
+	depends = glibc
+	source = php84-igbinary-3.2.17RC1.tar.gz::https://github.com/igbinary/igbinary/archive/3.2.17RC1.tar.gz
+	sha512sums = d26b58abb5624deeb29824d1ab9544e8cdd209f05fa361c33f1dad0c559ba6b96cf415908b9430a93aec220052f6ae84f5fa9414497ff685837f5823320a7d99
+	b2sums = 7186601e747b4b48c8d969ff16c5a0eb462f616842a43a49d16d74992ca4d6d30a0008d8d3c9e500f218dfda536a032c18fd29dff65cecb300c60b4c80179ef0
+
+pkgname = php84-igbinary
+	depends = glibc
+	depends = php84
+	backup = etc/php84/conf.d/igbinary.ini
