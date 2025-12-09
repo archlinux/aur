@@ -5,7 +5,7 @@
 
 pkgname=visual-paradigm
 _pkgver_major=17.3
-_pkgver_minor=20251201
+_pkgver_minor=20251211
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
 pkgdesc="UML design application"
@@ -16,13 +16,14 @@ license=('custom')
 
 # Link through Enterprise edition:
 # https://www.visual-paradigm.com/download/
+# https://XXX-dl.visual-paradigm.com/visual-paradigm/vp17.3/20251211/Visual_Paradigm_17_3_20251211_Linux64_InstallFree.tar.gz
 source=('https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_Linux64_InstallFree.tar.gz'
   'visual-paradigm.desktop'
   'visual-paradigm.png'
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('c83df337f7a4edd32d34aea937408ae7894821e20a82577ffda97eac0be192d8'
+sha256sums=('2972d80c573a78dfd798994f1a16edb9bdfe71e5dd9a5e10dd9a442625cac70c'
             'f59e20eeeae9f03c95edff2f0d0302db872221fb7a5493ca736077f1d7bab7df'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
             'd2201888fc79de759b34c2d4c16610151b9fb2eae00990fe729a8588ec1e1727'
