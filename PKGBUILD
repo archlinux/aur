@@ -1,40 +1,65 @@
-# Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
-# Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: wheat32
 
 pkgname=expressvpn
-pkgver=3.83.0.2_1
-pkgrel=1
+_name=expressvpn
+pkgver=5.0.1.11498
+pkgrel=2
 pkgdesc="Proprietary VPN client for Linux"
-arch=('x86_64' 'i686' 'armv7h')
-depends=('glibc')
+arch=('x86_64' 'aarch64')
+depends=('bash' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops'
+         'libcap-ng' 'libice' 'libnl' 'libsm' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc'
+         'qt6-3d' 'qt6-base' 'qt6-declarative' 'qt6-declarative' 'qt6-lottie' 'qt6-quicktimeline'
+         'qt6-scxml' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-wayland' 'zlib')
+provides=('expressvpn')
+conflicts=(
+    'expressvpn-staging'
+    'expressvpn-beta'
+    'expressvpn3'
+    'expressvpn-gui'
+    'expressvpn-gui-gtk'
+    'expressvpn-gui-nhk'
+    'expressvpn-openrc'
+)
 url="https://expressvpn.com"
 license=('LicenseRef-custom')
 options=(!strip)
 install=expressvpn.install
 _url="https://www.expressvpn.works/clients/linux"
-source_x86_64=("${_url}/${pkgname}_${pkgver/_/-}_amd64.deb"{,.asc})
-source_i686=("${_url}/${pkgname}_${pkgver/_/-}_i386.deb"{,.asc})
-source_armv7h=("${_url}/${pkgname}_${pkgver/_/-}_armhf.deb"{,.asc})
-
-sha512sums_x86_64=('3090e8869fa142c96eda68fd0167138da5889a340102c910cd07b67b838b3d6448800ed768744250d11b99011665736d083f9debbc8c14b5b2e481addf887264'
-                   'SKIP')
-sha512sums_i686=('ec23a703e37f7b25cf4cab30928f08bc013adb04f777858359810f63a1b92d4a9a1272f2c988f5228321616d879ce9ca8aac5abcb5eab452a5108517080b286c'
-                 'SKIP')
-sha512sums_armv7h=('fabe8b634bdd9c9f1d7551e7975cf74de7673eaa8154fe3d29905a7de26baf85896306dd302826aa15fbb46aa5885335a8927c96ff72e7b4b5debfa16fb5cd32'
-                   'SKIP')
+source=("${_url}/${_name}-linux-universal-${pkgver}.run"{,.asc}
+        expressvpn.sysusers)
+sha256sums=('f36ed43a95fc8a12db9238b509f0314a73ec8200979bc3c88418ed493565749a'
+            'SKIP'
+            '33ea79001be5dbc45122255c2fec4dd9e0396fdf19330b72fd770d33c398faf5')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
+prepare() {
+  # Extract run file
+  sh expressvpn-linux-universal-${pkgver}.run --noexec --nox11 --target "${_name}-${pkgver}"
+}
+
 package() {
-    # /usr/sbin is a symlink to /usr/bin, rewrite it. Upstream also install files to both /lib and /usr/lib
-    # merge these and move to correct location
-    bsdtar -C "${pkgdir}" -xf "${srcdir}/data.tar.gz" -s ":/usr/sbin:/usr/bin:" -s ":/usr/lib:/lib:"
-    mv "${pkgdir}/lib" "${pkgdir}/usr/"
+  if [ "${CARCH}" == "x86_64" ]; then
+    cd "${_name}-${pkgver}/x64/"
+  elif [ "${CARCH}" == "aarch64" ]; then
+    cd "${_name}-${pkgver}/arm64/"
+  fi
 
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "/usr/share/doc/expressvpn/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+  install -dm755 "${pkgdir}/opt"
+  cp -a "expressvpnfiles/" "${pkgdir}/opt/expressvpn"
+  setcap 'cap_net_bind_service=+ep' "${pkgdir}/opt/expressvpn/bin/expressvpn-unbound"
 
-    install -dm755 "${pkgdir}/var/lib/expressvpn/certs"
+  install -dm755 "${pkgdir}/opt/expressvpn/"{etc,share,var}
+  install -dm755 "${pkgdir}/usr/bin"
 
-    # Remove unused /etc
-    rm -r "$pkgdir/etc/"
+  install -Dm755 installfiles/error-notice.sh "${pkgdir}/opt/expressvpn/bin/error-notice.sh"
+  install -Dm644 installfiles/app-icon.png "${pkgdir}/usr/share/pixmaps/expressvpn.png"
+  install -Dm644 installfiles/expressvpn.desktop "${pkgdir}/usr/share/applications/expressvpn.desktop"
+
+  ln -sf ../../opt/expressvpn/bin/expressvpn-client "${pkgdir}/usr/bin/expressvpn-client"
+  ln -sf ../../opt/expressvpn/bin/expressvpnctl "${pkgdir}/usr/bin/expressvpnctl"
+
+  install -Dm644 "${srcdir}/expressvpn.sysusers" "${pkgdir}/usr/lib/sysusers.d/expressvpn.conf"
+  install -Dm644 installfiles/expressvpn-service.service "${pkgdir}/usr/lib/systemd/system/expressvpn-service.service"
+
+  install -Dm644 "expressvpnfiles/share/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt" 
 }
