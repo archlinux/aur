@@ -2,21 +2,19 @@
 
 _pkgname=tangled-cli
 pkgname="$_pkgname-git"
-pkgver=r7.gc1ea514
+pkgver=r16.g2950b68
 pkgrel=1
 pkgdesc="Rust CLI for tangled.org"
 arch=(any)
-url="https://tangled.org/@vitorpy.com/tangled-cli"
+url="https://tangled.org/vitorpy.com/tangled-cli"
 license=("Custom:NONE")
 makedepends=(cargo git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=(
-  "git+$url"
+  "git+$url.git"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit
