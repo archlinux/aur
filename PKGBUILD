@@ -2,9 +2,9 @@
 # Working baseline from: antigravity-bin pkgver=1.11.3
 
 pkgname=antigravity-bin-hardened
-pkgver=1.11.14
-_buildid=1764918088
-pkgrel=3
+pkgver=1.11.17
+_buildid=1765244408
+pkgrel=1
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -16,11 +16,11 @@ optdepends=(
     'apparmor: Mandatory Access Control (MAC) security framework'
 )
 options=('!strip')
-source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_${pkgver}-${_buildid}_amd64_acf73c2fd8e096dca6a2d5535d58efc5.deb"
+source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_${pkgver}-${_buildid}_amd64_9df0712156d4f7f37ea353feaa9633ca.deb"
         "antigravity.apparmor"
         "antigravity-launcher.sh"
         "SECURITY.md")
-b2sums=('a9e30b0cae6f4f53f989f1df73f8cceee990cbaa969dcaef414fdef6ff1d6d405edbb12bf7f68c2dc5ab86c2d8285024bd91b374d4c3f74cefd259192c27118d'
+b2sums=('c2e5d024d0374d3676780dbccbd7ff31dd87ee3798f1cec3da7daca87fdf48a4eb2c3d266d6d89089a2e8d3ef8e8dda45b1a03e722ef5713168f23d421631052'
         '7f798f00963135367af98bd908051f34bd783be937e35769500e49448c1fd833665f5d07e2106c13c31107f0289fa7c74e9c7c84dfe741427ea09c571cc4122a'
         '7a7de35a8ff922246892c05109836fabb318f7ad1979ab5c49564c9ae13dbbd60fd8d58a43bd4a7d5cb74b514756ace0b93206105e7ebf44c5b4d2ac26d67903'
         '8743125f8f27728230b716059228756bcd2b8b5e08c35c7b318f43596f8108d13d50c37181e3715083dfa291b8899f78289dd5c3572a9d3ee2338ab3745543ea')
