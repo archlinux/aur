@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian
-pkgver=3.3.0+136
+pkgver=3.5.0+151
 pkgrel=1
 pkgdesc="Next Generation Network Center"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=('solian')
 conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Solsynth/${_reponame}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f2119f7f6fc1f2e6b8ebe1d808edb327158372c5d96c470fde588edca10dec47')
+sha256sums=('e0532c434df12347882c132f777c5e769681450f009b7b6ef2cfae9d4ec4a94d')
 
 options=('!debug')
 
@@ -42,7 +42,7 @@ _binname="island"
 _pkgver_fixed="${pkgver//+/-}"
 _srcdir="$_reponame-$_pkgver_fixed"
 
-_flutter_ver=3.35.6
+_flutter_ver=3.38.4
 _flutter_repo=https://github.com/flutter/flutter.git
 
 prepare() {
