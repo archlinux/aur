@@ -17,7 +17,10 @@ depends=('ca-certificates'
   'python-cryptography'
   'python-html5lib'
   'python-urllib3')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel')
 optdepends=('wl-clipboard: to copy text in wayland'
   'xsel: to copy text in xorg'
   'xclip: to copy text in xorg')
