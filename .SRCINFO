@@ -1,6 +1,6 @@
 pkgbase = krunvm-git
 	pkgdesc = Create microVMs from OCI images
-	pkgver = v0.2.3.r16.g5494d84
+	pkgver = v0.2.4.r2.g330935b
 	pkgrel = 1
 	url = https://github.com/containers/krunvm
 	arch = x86_64
