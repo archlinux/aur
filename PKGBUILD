@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=adcli
-pkgver=0.9.3a
+pkgver=0.9.3.1
 pkgrel=1
 pkgdesc="Active Directory account management tool"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ makedepends=(
   xmlto
 )
 source=("git+https://gitlab.freedesktop.org/realmd/adcli.git#tag=$pkgver")
-sha256sums=('34e4aaa3c083479f9ad0d6592c719b0bb774c50a2118c096042bfcc189be3136')
+sha256sums=('8fadd4a6df3f55134fc4b6458f7d0a3dd5ee5dd64a5150b89007077053b7c793')
 validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF')
 
 pkgver() {
@@ -35,9 +35,10 @@ prepare() {
 build() {
   cd "$pkgname"
   ./configure \
-    --prefix=/usr           \
-    --sbindir=/usr/bin      \
-    --sysconfdir=/etc       ;
+    --prefix=/usr             \
+    --sbindir=/usr/bin        \
+    --sysconfdir=/etc         \
+    --disable-selinux-support ;
   make
 }
 
