@@ -2,7 +2,7 @@
 _base=numpy-typing-compat
 pkgname=python-${_base}
 pkgdesc="Static typing compatibility layer for older versions of NumPy"
-pkgver=20250818.2.3
+pkgver=20251206
 pkgrel=1
 arch=(any)
 url="https://github.com/jorenham/${_base}"
