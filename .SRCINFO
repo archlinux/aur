@@ -1,14 +1,14 @@
 pkgbase = nitro-bin
 	pkgdesc = An incredible, beautiful, and feature-rich GraphQL IDE
-	pkgver = 28.0.14
+	pkgver = 29.0.0
 	pkgrel = 1
 	url = https://chillicream.com/products/nitro/
 	arch = x86_64
 	license = custom:ChilliCreamLicense1.0
 	options = !strip
-	source = https://cdn.chillicream.com/app/Nitro-28.0.14-linux-x86_64.AppImage
+	source = https://cdn.chillicream.com/app/Nitro-29.0.0-linux-x86_64.AppImage
 	source = LICENSE
-	b2sums = 3ccda7359c340faa8c7618f8d00513f78470e49bde83210f5ce3dccd30dc5510122e8d273749c15601a21c7d23db6a74d727c936d7c8aa5fd0f1563246366522
+	b2sums = 82b044ef3f4801e40a0cdc7837e3b4afcbb7106e0797bd68825dd14add6bf29e0505826c8b7ba805727f054800c0f0d2acc4fd5e213933cffd49437f3f9ff776
 	b2sums = 2de3f8321794c97dd62ba6b4ccae367fa101d90578675e89104f80dd74188eaf2f5fe2c70979e0d2717fe4599b74f32275c3d501272a80f0b47e8eeacc7fa8b9
 
 pkgname = nitro-bin
