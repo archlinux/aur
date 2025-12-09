@@ -16,6 +16,8 @@ makedepends=('rust' 'git')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 conflicts=($_pkgname)
+provides=("${_pkg_name}" "vibe-audio-visualizer")
+conflicts=("${_pkgname}" "vibe-audio-visualizer")
 
 pkgver() {
 	git -C $_pkgname describe --long --tags --abbrev=7 | sed 's/^vibe.v//;s/\([^-]*-g\)/r\1/;s/-/./g'

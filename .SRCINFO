@@ -14,7 +14,9 @@ pkgbase = vibe-audio-visualizer-git
 	depends = vulkan-validation-layers
 	depends = vulkan-headers
 	depends = vulkan-driver
+	provides = vibe-audio-visualizer
 	conflicts = vibe
+	conflicts = vibe-audio-visualizer
 	source = vibe::git+https://github.com/TornaxO7/vibe.git
 	sha256sums = SKIP
 
