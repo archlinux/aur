@@ -1,0 +1,14 @@
+pkgbase = curlent
+	pkgdesc = A wget-like command-line torrent downloader using libtorrent
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maribotto/curlent
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	depends = libtorrent-rasterbar
+	depends = boost-libs
+	source = curlent-1.0.0.tar.gz::https://github.com/maribotto/curlent/archive/v1.0.0.tar.gz
+	sha256sums = b77d89c488986583b339d7b2c03045c4435534f19c5c0d6b823693fa9d47d72e
+
+pkgname = curlent
