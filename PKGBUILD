@@ -29,7 +29,6 @@ depends=(
   'qqc2-desktop-style'
   'qt6-base'
   'qt6-graphs'
-  'qt6-webengine'
   'rnnoise'
   'soundtouch'
   'speexdsp'

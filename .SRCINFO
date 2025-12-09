@@ -35,7 +35,6 @@ pkgbase = easyeffects-git
 	depends = qqc2-desktop-style
 	depends = qt6-base
 	depends = qt6-graphs
-	depends = qt6-webengine
 	depends = rnnoise
 	depends = soundtouch
 	depends = speexdsp
