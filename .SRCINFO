@@ -1,0 +1,21 @@
+pkgbase = python-pyxtermjs
+	pkgdesc = Fully functional terminal in your browser.
+	pkgver = 0.5.0.2
+	pkgrel = 1
+	url = https://github.com/cs01/pyxtermjs
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-pyxtermjs-0.5.0.2.tar.gz::https://github.com/cs01/pyxtermjs/archive/refs/tags/v0.5.0.2.tar.gz
+	sha256sums = 3d90e9dac9691f183d6aa4d6d4d20daafa56a81e53893db5d2f0c667f88e9a83
+
+pkgname = python-pyxtermjs
+	depends = python
+	depends = python-socketio
+	depends = python-flask
+	depends = python-flask-socketio
+	depends = python-markupsafe
