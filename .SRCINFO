@@ -1,0 +1,19 @@
+pkgbase = void-editor-bin
+	pkgdesc = The AI IDE for prototype to production (Binary release)
+	pkgver = 1.99.30044
+	pkgrel = 1
+	url = https://void.editor
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = xdg-utils
+	provides = void-editor
+	conflicts = void-editor
+	source = void-editor.deb::https://github.com/voideditor/binaries/releases/download/1.99.30044/void_1.99.30044_amd64.deb
+	sha256sums = SKIP
+
+pkgname = void-editor-bin
