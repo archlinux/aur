@@ -1,7 +1,7 @@
 # Maintainer: Trex099 <trex099@github.com>
 pkgname=velocity-bridge
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux"
 arch=('x86_64')
 url="https://github.com/Trex099/Velocity-Bridge"
