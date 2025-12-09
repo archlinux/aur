@@ -10,8 +10,8 @@ depends=('bash' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'ipta
          'libcap-ng' 'libice' 'libnl' 'libsm' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc'
          'qt6-3d' 'qt6-base' 'qt6-declarative' 'qt6-declarative' 'qt6-lottie' 'qt6-quicktimeline'
          'qt6-scxml' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-wayland' 'zlib')
-provides=('expressvpn')
-conflicts=('expressvpn')
+provides=('expressvpn' 'expressvpn-staging')
+conflicts=('expressvpn' 'expressvpn-staging')
 url="https://expressvpn.com"
 license=('LicenseRef-custom')
 options=(!strip)
