@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=1.0.137
+pkgver=1.0.138
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
@@ -12,7 +12,7 @@ arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('opencode')
 conflicts=('opencode-bin')
-depends=('fzf' 'ripgrep')
+depends=('ripgrep')
 makedepends=('git' 'bun-bin' 'go')
 
 source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v${pkgver}${_subver}.tar.gz")
@@ -22,7 +22,7 @@ build() {
   cd "opencode-${pkgver}"
   bun install
   cd ./packages/opencode
-  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.0.137 bun run ./script/build.ts --single
+  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.0.138 bun run ./script/build.ts --single
 }
 
 package() {
