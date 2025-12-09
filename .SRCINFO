@@ -1,6 +1,6 @@
 pkgbase = python-scipy-stubs
 	pkgdesc = Type annotations for SciPy
-	pkgver = 1.16.3.2
+	pkgver = 1.16.3.3
 	pkgrel = 1
 	url = https://github.com/jorenham/scipy-stubs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-scipy-stubs
 	depends = python-optype
 	depends = python-numpy
 	optdepends = python-scipy: for SciPy support
-	source = scipy-stubs-1.16.3.2.tar.gz::https://github.com/jorenham/scipy-stubs/archive/v1.16.3.2.tar.gz
-	sha512sums = 4ec13068785ba8a3b3ad774d4fc15df3b67d050d13fecb95a9fe0c0cc3ed2e75c07d275e53b52be5cda85b75565b65f7b4490ff99c60f665180d0f315879e2f2
+	source = scipy-stubs-1.16.3.3.tar.gz::https://github.com/jorenham/scipy-stubs/archive/v1.16.3.3.tar.gz
+	sha512sums = 30bbf7e5217580944f4461dfbf69d3aa87841970780e65ab787e720b4e7b902975ad64e59bd60768b7d510c5e93e385df814395ae7054617bd709e0f2322eede
 
 pkgname = python-scipy-stubs
