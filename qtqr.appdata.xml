@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.launchpad.qr-tools</id>
+  <launchable type="desktop-id">qtqr.desktop</launchable>
+  <name>QtQR</name>
+  <summary>Create and decode QR codes.</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>QtQR is a Qt based software that let's you generate QR codes easily, scan an image file for QR codes and decode them or use your webcam to scan a printed one.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+​      <image>https://screenshots.debian.net/shrine/screenshot/9046/simage/large-05ffc9bd1db84cb3a2bbc2d09f6784f1.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://bugs.launchpad.net/qr-tools</url>
+  <url type="homepage">https://launchpad.net/qr-tools</url>
+  <translation type="qt">qtqr</translation>
+</component>

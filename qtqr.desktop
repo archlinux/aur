@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QtQR
+Comment=Create and decode QR Codes
+Exec=qtqr %F
+Icon=qtqr
+Terminal=false
+Type=Application
+Categories=Graphics
+MimeType=image/gif;image/png;image/jpg;
+Keywords=qr;
