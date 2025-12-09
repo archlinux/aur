@@ -1,6 +1,6 @@
 pkgbase = fractal-git
 	pkgdesc = Matrix group messaging app
-	pkgver = 13.rc.r13.ga87f9a15
+	pkgver = 13.r7.g75bce9dc
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/fractal
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = fractal-git
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
-	depends = glycin1
+	depends = glycin-gtk4
 	depends = graphene
 	depends = gst-plugins-bad-libs
 	depends = gst-plugins-base-libs

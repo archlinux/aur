@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=fractal-git
-pkgver=13.rc.r13.ga87f9a15
+pkgver=13.r7.g75bce9dc
 pkgrel=1
 pkgdesc="Matrix group messaging app"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(
   gdk-pixbuf2
   glib2
   glibc
-  glycin1  # dlopen'ed
+  glycin-gtk4
   graphene
   gst-plugins-bad-libs
   gst-plugins-base-libs
