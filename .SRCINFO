@@ -1,5 +1,5 @@
 pkgbase = coolerdash-git
-	pkgdesc = Displays real-time sensor on an AIO liquid cooler with integrated LCD displays
+	pkgdesc = Monitor telemetry data on an AIO liquid cooler with an integrated LCD display
 	pkgver = 2.0.2.r0.g21cacc5
 	pkgrel = 1
 	url = https://github.com/damachine/coolerdash
