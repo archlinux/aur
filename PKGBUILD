@@ -1,6 +1,6 @@
 # Maintainer: AmaseCocoa <cocoa@amase.cc>
 pkgname=alter
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Switch git username and email and credential in one-line."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('rust' 'cargo')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/AmaseCocoa/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("0206555f2e5ff3a4bac2eebaae3604beffe597bfa731f8bee5bf4251dada5fc7")
+sha256sums=("b4a748ac6b44764e10d50d8fcc8d9e402c0c03a3148b79c079c675de67299a23")
 
 
 build() {

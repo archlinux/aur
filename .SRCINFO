@@ -1,6 +1,6 @@
 pkgbase = alter
 	pkgdesc = Switch git username and email and credential in one-line.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/AmaseCocoa/alter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = alter
 	makedepends = rust
 	makedepends = cargo
 	depends = glibc
-	source = alter-v0.2.0.tar.gz::https://github.com/AmaseCocoa/alter/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 0206555f2e5ff3a4bac2eebaae3604beffe597bfa731f8bee5bf4251dada5fc7
+	source = alter-v0.2.1.tar.gz::https://github.com/AmaseCocoa/alter/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = b4a748ac6b44764e10d50d8fcc8d9e402c0c03a3148b79c079c675de67299a23
 
 pkgname = alter
