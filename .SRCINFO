@@ -1,7 +1,7 @@
 pkgbase = lammps
 	pkgdesc = Public development project of the LAMMPS MD software package
 	pkgver = 20250722
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lammps.org
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = lammps
 	optdepends = python-mpi4py
 	provides = lammps
 	conflicts = lammps-git
-	source = https://github.com/lammps/lammps/archive/refs/tags/stable_22Jul2025_update1.tar.gz
-	sha256sums = 4ba3648fae360ea1d3106e08bce13e21f856318196f4965f2a09fd812d572928
+	source = https://github.com/lammps/lammps/archive/refs/tags/stable_22Jul2025_update2.tar.gz
+	sha256sums = fede484269cdb22f1cb738b4cd118a9bf9cb4bd3c85667f1e6a73a9fa5c2de6b
 
 pkgname = lammps
