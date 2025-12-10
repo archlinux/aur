@@ -1,6 +1,6 @@
 pkgbase = livekit
 	pkgdesc = LiveKit: Real-time video, audio and data for developers
-	pkgver = 1.9.3
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://livekit.io/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = livekit
 	makedepends = git
 	optdepends = redis
 	backup = etc/livekit/config.yaml
-	source = https://github.com/livekit/livekit/archive/refs/tags/v1.9.3.tar.gz
+	source = https://github.com/livekit/livekit/archive/refs/tags/v1.9.8.tar.gz
 	source = livekit.service
-	sha256sums = 9c611ef8b04504a4841a675cbdbf53a3dd13820919e72a6b18ae9a6743a32391
+	sha256sums = db128f4ae291150d7a0881bf2388acc7d9ab71f8ed3e1913d034ef71c83ad667
 	sha256sums = 91d65dd3f144d11fb43b8526595dce76397185b818b84c8a1068a6944ceaa7b5
 
 pkgname = livekit
