@@ -1,0 +1,22 @@
+pkgbase = python-skl2onnx
+	pkgdesc = Convert scikit-learn models to ONNX
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = https://github.com/onnx/sklearn-onnx
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-onnx
+	depends = python-scikit-learn
+	optdepends = python-pandas: for DataFrame type inference
+	optdepends = python-jinja: for ONNX operator code generation
+	source = python-skl2onnx-1.19.1.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/v1.19.1.tar.gz
+	sha256sums = 9487611004ccd9510cd657fa3b7dc1dff299a202dd977efcd3c616c87aeae338
+
+pkgname = python-skl2onnx
