@@ -4,7 +4,7 @@
 # Contributor: Leandro Britez
 # Contributor: Daniel YC Lin
 
-# Infrastructure to build with specific compiler due to issues with up to date GCC (see https://github.com/chenall/grub4dos/issues/444)
+# Infrastructure to build with specific compiler.
 _compiler=gcc    # Supported: 'gcc', 'clang'.
 #_compiler=clang  # Supported: 'gcc', 'clang'.
 #_gccver=14       # If not set or empty, use up to date.
@@ -39,7 +39,7 @@ esac
 
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
-pkgver=r774.20251029.6f2a5ca
+pkgver=r776.20251125.de305a8
 pkgrel=1
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
@@ -82,7 +82,6 @@ source=(
   "${_pkgname}-efi::git+https://github.com/chenall/grub4dos.git#branch=efi"
   "preset_menu-efi.fixsearchpath.diff"
   "menu.list-efi.customisations.diff"
-  "configure_efi.fixgcc15.diff"  # By guthub-user @memoarfaa, https://github.com/memoarfaa/aur/blob/6fc12e81a141149e5ca3b60837f7c851c495e03c/configure_efi.fixgcc15.diff.
   "79_grub4dos"
   "menu_arch.lst"
 )
@@ -92,7 +91,6 @@ sha256sums=(
   'SKIP'                                                              # Upstream source, efi branch
   '12543085edbcc7467a0e981e42040ee08d1026206cd4a7f8861b00c005bcef11'  # preset_menu-efi.fixsearchpath.diff
   'e79008c08505b8db515bc461e9c0e5ae65889f4ec608708f6648ad9605884eea'  # menu.list-efi.customisations.diff
-  '28eb75191ee59a048becf24efc1911978722c101aea754301efe26cc623828a5'  # configure_efi.fixgcc15.diff
   '2b0c54aa048efbe2dabdb4d3503788a5002a6d62252b504871833b4b470a74e6'  # 79_grub4dos
   '457c17d8660aadeb7c6ef844319fa24ae77183b428c9ce5d438423ba75728052'  # menu_arch.lst
 )
@@ -103,7 +101,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgname}-efi"
   local _efipatch
-  for _efipatch in "${srcdir}/preset_menu-efi.fixsearchpath.diff" "${srcdir}/configure_efi.fixgcc15.diff" "${srcdir}/menu.list-efi.customisations.diff"; do
+  for _efipatch in "${srcdir}/preset_menu-efi.fixsearchpath.diff" "${srcdir}/menu.list-efi.customisations.diff"; do
     msg2 "Applying patch '$(basename "${_efipatch}")' ..."
     patch -Np1 --binary --follow-symlinks -i "${_efipatch}"
   done
