@@ -1,6 +1,6 @@
 pkgbase = wuffs-git
 	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
-	pkgver = 0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	pkgver = 0.4.0+alpha.9+49.r3887.20251111.072595ae
 	pkgrel = 1
 	url = https://github.com/google/wuffs
 	arch = i686
@@ -34,7 +34,7 @@ pkgname = wuffs-lib-git
 	depends = wuffs-license
 	optdepends = python-pywuffs: For python binding.
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-lib=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-lib=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	provides = libwuffs.so
 	provides = libwuffs.a
 	conflicts = wuffs-lib
@@ -49,7 +49,7 @@ pkgname = wuffs-examples-git
 	depends = xcb-util-renderutil
 	depends = wuffs-license
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-examples=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-examples=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	conflicts = wuffs-examples
 
 pkgname = wuffs-fuzzers-git
@@ -58,7 +58,7 @@ pkgname = wuffs-fuzzers-git
 	depends = glibc
 	depends = wuffs-license
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-fuzzers=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-fuzzers=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	conflicts = wuffs-fuzzers
 
 pkgname = wuffs-lang-git
@@ -69,13 +69,13 @@ pkgname = wuffs-lang-git
 	optdepends = libz.so: For 'ractool'.
 	optdepends = libzstd.so: For 'ractool'.
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-lang=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = dumbindent=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = handsum=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = ractool=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = wuffs=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = wuffs-c=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
-	provides = wuffsfmt=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-lang=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = dumbindent=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = handsum=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = ractool=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-c=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffsfmt=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	conflicts = wuffs-lang
 	conflicts = dumbindent
 	conflicts = handsum
@@ -92,7 +92,7 @@ pkgname = wuffs-docs-git
 	optdepends = wuffs-lang: The programming language this documentation is for.
 	optdepends = wuffs-examples: The example programmes this documentation is for.
 	optdepends = wuffs-fuzzers: The fuzzer programmes this documentation is for.
-	provides = wuffs-docs=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-docs=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	conflicts = wuffs-docs
 
 pkgname = wuffs-license-git
@@ -103,5 +103,5 @@ pkgname = wuffs-license-git
 	optdepends = wuffs-lang: The programming language this license is for.
 	optdepends = wuffs-examples: The example programmes this license is for.
 	optdepends = wuffs-fuzzers: The fuzzer programmes this license is for.
-	provides = wuffs-license=0.4.0+alpha.9+48.r3886.20250719.1e2e58ce
+	provides = wuffs-license=0.4.0+alpha.9+49.r3887.20251111.072595ae
 	conflicts = wuffs-license
