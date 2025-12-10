@@ -1,6 +1,6 @@
 pkgbase = libosmocore-nosystemd-git
 	pkgdesc = Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency.
-	pkgver = 1.11.0+59.r5017.20251106.cda92ed69
+	pkgver = 1.12.0+2.r5022.20251209.50a144a0e
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 	arch = i686
