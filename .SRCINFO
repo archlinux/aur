@@ -1,19 +1,19 @@
 pkgbase = shuffledns-bin
 	pkgdesc = MassDNS wrapper to resolve and enumerate valid subdomains
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://projectdiscovery.io/
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = shuffledns=1.1.0
+	provides = shuffledns=1.2.1
 	conflicts = shuffledns
-	source_aarch64 = shuffledns-1.1.0-aarch64.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.1.0/shuffledns_1.1.0_linux_arm64.zip
-	sha256sums_aarch64 = 91d63e0ac6bea9db1efddbd32aa844be16264f167468a6580da2113aa2740778
-	source_i686 = shuffledns-1.1.0-i686.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.1.0/shuffledns_1.1.0_linux_386.zip
-	sha256sums_i686 = e39c5bc84afe3d38457b911442406eb6b715c0579f7943a370cd9cccd9ad7afd
-	source_x86_64 = shuffledns-1.1.0-x86_64.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.1.0/shuffledns_1.1.0_linux_amd64.zip
-	sha256sums_x86_64 = 86cb65842bdbb30107fcb746b838b38bbeee39a06fe10a038727cca89fed83cf
+	source_aarch64 = shuffledns-1.2.1-aarch64.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.2.1/shuffledns_1.2.1_linux_arm64.zip
+	sha256sums_aarch64 = 8932012a72d2e7476d62b1219130828947391235ad8ddeba855127901abde9bc
+	source_i686 = shuffledns-1.2.1-i686.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.2.1/shuffledns_1.2.1_linux_386.zip
+	sha256sums_i686 = 3bd204ad1903ced0ed8a3350fe2c4bde3d8b2000fd27fc1ed42e0cd5cd16986e
+	source_x86_64 = shuffledns-1.2.1-x86_64.zip::https://github.com/projectdiscovery/shuffledns/releases/download/v1.2.1/shuffledns_1.2.1_linux_amd64.zip
+	sha256sums_x86_64 = 8b155baa4482ba0df07cfe40f726ac1393f85777416b420bc83fea3a845a6e63
 
 pkgname = shuffledns-bin
