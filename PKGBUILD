@@ -14,7 +14,7 @@ _pkgver() {
 
 _pkgname="idos-timetable-data-zsr-sk-20${_year}"
 pkgname="${_pkgname}-latest"
-epoch=1
+epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
 pkgrel=1
