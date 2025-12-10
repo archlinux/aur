@@ -1,0 +1,2 @@
+# Must be at host's udev (/etc/udev/rules.d/51-android.rules)
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
