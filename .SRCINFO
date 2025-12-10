@@ -1,0 +1,24 @@
+pkgbase = netbsd-gcc-cross-bin
+	pkgdesc = A GCC cross-compiler targeting NetBSD
+	pkgver = 15.2.0
+	pkgrel = 20251210
+	url = https://github.com/AmanoTeam/Dakini
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0
+	provides = netbsd-gcc-cross
+	conflicts = netbsd-gcc-cross
+	options = !strip
+	options = staticlibs
+	source_i686 = https://github.com/AmanoTeam/Dakini/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
+	sha256sums_i686 = 2292691cb50b9827b85dc36cb3118ad39b0655983cee6c4aeac0e9f0c7af39b0
+	source_x86_64 = https://github.com/AmanoTeam/Dakini/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a1a9f2e59a5d55b9157827706839946efbb820a92c5d5c290e20efe677313120
+	source_aarch64 = https://github.com/AmanoTeam/Dakini/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 91923412322748e98bd92f0d82e96fe0dd19259d4b4ba5d7ec694d96ac9603d2
+	source_armv7h = https://github.com/AmanoTeam/Dakini/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
+	sha256sums_armv7h = bdc0287aa15ca9cbe6764491653ff23081aaeaddbaf69c8af76ad47faad60b0c
+
+pkgname = netbsd-gcc-cross-bin
