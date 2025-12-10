@@ -1,6 +1,6 @@
 pkgbase = kew
-	pkgdesc = A terminal music player
-	pkgver = 3.6.4
+	pkgdesc = kew (/kjuː/) is a terminal music player
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kew
 	depends = faad2
 	conflicts = kew-git
 	replaces = cue-music-command
-	source = kew-3.6.4.tar.gz::https://github.com/ravachol/kew/archive/v3.6.4.tar.gz
-	sha512sums = 9039237634b2cd7c3df63c3fdfdffae2840c5587b4792e50faf3d86c7d1ca80cbc360f5b2f33fd13486f3dbbb9e557248cda5853d00aadd945e5f2587c6862ae
+	source = kew-3.7.0.tar.gz::https://github.com/ravachol/kew/archive/v3.7.0.tar.gz
+	sha512sums = 9b81fdec0ffb1b3a3a9c251e3c807955050c80536a7745b6fdcc12aed04eee3b64f64822c0635d5c320490bc1a8a4863b6ea98f1809765211a44a6ee30a3990b
 
 pkgname = kew
