@@ -1,9 +1,9 @@
-# Maintainer: dreieck
+# Maintainer:  dreieck
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=twaindsm
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TWAIN Data Source Manager"
 arch=(
   'i686'
@@ -11,7 +11,7 @@ arch=(
 )
 # url='http://twain.org/'
 url='https://github.com/twain/twain-dsm/'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('gcc-libs')
 makedepends=('cmake')
 conflicts=(
@@ -26,31 +26,35 @@ sha256sums=(
 options+=('emptydirs')
 
 prepare() {
+  cd "${srcdir}"
+
+  test -d "${srcdir}/build" && rm -rf "${srcdir}/build"
+
   cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src"
 
   # Someone thought it was a good idea to distribute CMake build artifacts
   rm -rf CMakeCache.txt CMakeFiles
+
 }
 
 build() {
-  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src"
-
-  test -d build && rm -rf build
-  mkdir build
-  cd build
+  cd "${srcdir}"
 
   cmake \
+    -S "twain-dsm-${pkgver}/TWAIN_DSM/src" \
+    -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    ..
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -Wno-dev
 
-  make
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src/build"
+  cd "${srcdir}"
 
-  make install DESTDIR="${pkgdir}"
+  make -C build DESTDIR="${pkgdir}" install
 
   # For some reason the people who made the TWAIN specification thought it was
   # a good idea to put everything in /usr/local on Linux. So in order to comply
@@ -62,7 +66,6 @@ package() {
     ln -sv "/usr/lib/$(basename "${i}")" "${pkgdir}/usr/local/lib/$(basename "${i}")"
   done
   ln -sv "/usr/lib/twain" "${pkgdir}/usr/local/lib/twain"
-
 
   cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM"
 

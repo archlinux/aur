@@ -1,11 +1,11 @@
 pkgbase = twaindsm
 	pkgdesc = TWAIN Data Source Manager
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twain/twain-dsm/
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = gcc-libs
 	conflicts = gpgfrontend
