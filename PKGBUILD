@@ -1,6 +1,6 @@
 # Maintainer: joegruff
 pkgname=bisonw
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Self-custody multi-coin wallet with atomic swap capability, by Decred."
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -10,13 +10,14 @@ url="https://dex.decred.org"
 license=('custom:BlueOak-1.0.0')
 options=('!strip' '!emptydirs')
 source=("https://github.com/decred/dcrdex/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16501a16d96cc81a3249a2a27e209e840fc37632d9cb7783e88d5d65dfa9b68e')
+sha256sums=('a89c6b5250d1ee4b1adc23e56078f22585794445f8ad54145ded73e7e95fee6c')
 
 build() {
   cd "dcrdex-$pkgver"
   mkdir -p build
   go build -trimpath -ldflags "-s -w" -o ./build/bwctl ./client/cmd/bwctl
   cd client/webserver/site
+  go generate
   npm ci
   npm run build
   cd ${srcdir}/dcrdex-$pkgver/client/cmd/bisonw

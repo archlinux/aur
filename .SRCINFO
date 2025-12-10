@@ -1,6 +1,6 @@
 pkgbase = bisonw
 	pkgdesc = Self-custody multi-coin wallet with atomic swap capability, by Decred.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://dex.decred.org
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = bisonw
 	makedepends = npm
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/decred/dcrdex/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 16501a16d96cc81a3249a2a27e209e840fc37632d9cb7783e88d5d65dfa9b68e
+	source = https://github.com/decred/dcrdex/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = a89c6b5250d1ee4b1adc23e56078f22585794445f8ad54145ded73e7e95fee6c
 
 pkgname = bisonw
