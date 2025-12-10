@@ -1,9 +1,9 @@
-# Maintainer: Leo <i@setuid0.dev>
+# Maintainer: Leo <i@hardrain980.com>
 
 _extname=ast
 pkgname=php-$_extname
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension exposing PHP 7 abstract syntax tree'
 arch=('x86_64')
 url="https://pecl.php.net/package/$_extname"
