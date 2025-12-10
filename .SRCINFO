@@ -1,13 +1,13 @@
 pkgbase = noreza-bin
 	pkgdesc = A (unofficial) dedicated mapper for Azeron devices on Linux
-	pkgver = 1.3.0
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/Caedis/noreza
 	license = LGPL3
 	conflicts = noreza
 	provides = noreza
 	arch = x86_64
-	source_x86_64 = https://github.com/caedis/noreza/releases/download/1.3/noreza_1.3.tar.gz
-	sha256sums_x86_64 = 5e61cbbefadd9d960c3a8dc1f9c1c70a9342ba688f8d611e4e53315c5c511958
+	source_x86_64 = https://github.com/caedis/noreza/releases/download/${pkgver}/noreza_${pkgver}.tar.gz
+	sha256sums_x86_64 = 28c95c5f2da901ece37915870a0e7538b5be1c84ff39f222e6c8befdedb06567
 	
 pkgname = noreza-bin
