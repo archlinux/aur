@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=llama.cpp-vulkan-bin
-pkgver=b7340
+pkgver=b7343
 pkgrel=1
 pkgdesc="LLM inference in C/C++ (with Vulkan GPU optimizations) (precompiled Linux binaries)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=("llama.cpp" libggml ggml)
 depends=(curl gcc-libs vulkan-icd-loader)
 source=("${pkgname%-bin}-${pkgver}.zip"::"${url}/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-vulkan-x64.zip"
   "README-${pkgver}.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/${pkgver}/README.md")
-sha256sums=('f987544d27ed284dbc6e20f2d9d036e82b10962fa26bc1f5b8d56d9ad84a86ad'
+sha256sums=('4ab9a914ca81a5f20418e0e876fd8094b7e152f2b939cddfd21d4c0c4ae8965c'
             '3a46703ec7af53de03f687d9311dd4e56f5f3be9d589dfad45e157c9cdc3802f')
 
 package() {
