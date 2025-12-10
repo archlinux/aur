@@ -1,0 +1,23 @@
+pkgbase = mistral-vibe-hardened
+	pkgdesc = Mistral Vibe - Minimal CLI Coding Agent (Security Hardened)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/mistralai/mistral-vibe
+	install = mistral-vibe-hardened.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = uv
+	depends = python
+	optdepends = apparmor: Mandatory Access Control (MAC) security framework
+	optdepends = git: Version control integration for coding workflows
+	provides = mistral-vibe
+	provides = vibe
+	provides = vibe-acp
+	conflicts = mistral-vibe
+	options = !strip
+	source = vibe.apparmor
+	source = SECURITY.md
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = mistral-vibe-hardened

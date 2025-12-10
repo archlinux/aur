@@ -1,0 +1,84 @@
+post_install() {
+  # Define colors for nice output
+  local BLUE='\033[0;34m'
+  local GREEN='\033[0;32m'
+  local YELLOW='\033[1;33m'
+  local RED='\033[0;31m'
+  local BOLD='\033[1m'
+  local NC='\033[0m' # No Color
+
+  echo -e ""
+  echo -e "${BLUE}╔════════════════════════════════════════════════════════════════════════════╗${NC}"
+  echo -e "${BLUE}║           ${BOLD}MISTRAL-VIBE-HARDENED - Installation Complete${NC}${BLUE}                   ║${NC}"
+  echo -e "${BLUE}╚════════════════════════════════════════════════════════════════════════════╝${NC}"
+  echo -e ""
+
+  # Check if AppArmor is installed and auto-configure
+  if command -v apparmor_parser >/dev/null 2>&1; then
+    echo -e "${GREEN}🛡️  AppArmor detected. Configuring security profile...${NC}"
+    
+    # Install the profile
+    if cp /usr/share/apparmor/vibe.apparmor /etc/apparmor.d/vibe 2>/dev/null; then
+      
+      # Load the profile
+      if apparmor_parser -r /etc/apparmor.d/vibe 2>/dev/null; then
+        
+        # Enforce the profile
+        if aa-enforce /etc/apparmor.d/vibe 2>/dev/null; then
+          echo -e "${GREEN}   ✓ Profile installed, loaded, and ENFORCED.${NC}"
+          echo -e "${GREEN}   ✓ Mistral Vibe is now running under Mandatory Access Control.${NC}"
+        else
+          echo -e "${YELLOW}   ⚠️  Profile loaded but could not be enforced (aa-enforce failed).${NC}"
+        fi
+      else
+        echo -e "${YELLOW}   ⚠️  Profile installed but could not be loaded (apparmor_parser failed).${NC}"
+      fi
+    else
+      echo -e "${RED}   ❌ Could not install AppArmor profile to /etc/apparmor.d/${NC}"
+    fi
+  else
+    echo -e "${YELLOW}⚠️  AppArmor NOT detected.${NC}"
+    echo -e "   For maximum security, we strongly recommend installing AppArmor:"
+    echo -e "   ${BOLD}sudo pacman -S apparmor${NC}"
+    echo -e "   Then reinstall this package to auto-configure the profile."
+  fi
+
+  echo -e ""
+  echo -e "${BOLD}🔒 SECURITY FEATURES:${NC}"
+  echo -e "   • AppArmor MAC profile (auto-configured if available)"
+  echo -e "   • Strict file permissions"
+  echo -e "   • Security documentation: /usr/share/doc/mistral-vibe-hardened/SECURITY.md"
+  echo -e ""
+  echo -e "${BOLD}🔑 API KEY SETUP:${NC}"
+  echo -e "   Before using Mistral Vibe, configure your API key:"
+  echo -e "   ${GREEN}vibe --setup${NC}"
+  echo -e ""
+  echo -e "${BOLD}🚀 USAGE:${NC}"
+  echo -e "   ${GREEN}vibe${NC}  or  ${GREEN}vibe-acp${NC}"
+  echo -e ""
+  echo -e "${YELLOW}⚠️  IMPORTANT: Run vibe in a proper terminal (kitty, alacritty, gnome-terminal)${NC}"
+  echo -e "   Some IDE terminals (VS Code, etc.) may not render the TUI correctly."
+  echo -e ""
+  echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo -e ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo -e ""
+  echo -e "\033[1;34m🧹 CLEANUP RECOMMENDATIONS:\033[0m"
+  echo -e ""
+  echo -e "   1. Remove AppArmor profile (if installed):"
+  echo -e "      \033[1msudo rm /etc/apparmor.d/vibe\033[0m"
+  echo -e "      \033[1msudo systemctl reload apparmor\033[0m"
+  echo -e ""
+  echo -e "   2. Remove user data (Optional):"
+  echo -e "      \033[1mrm -rf ~/.config/mistral-vibe\033[0m"
+  echo -e "      \033[1mrm -rf ~/.mistral-vibe\033[0m"
+  echo -e ""
+  echo -e "   \033[1;33m⚠️  WARNING: This will delete your API key configuration!\033[0m"
+  echo -e ""
+}
