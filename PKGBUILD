@@ -1,10 +1,10 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 epoch=1
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 epoch=1
-pkgdesc="Portable Sandboxing framework"
+pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('any')
 url="https://github.com/Kraftland/portable"
 license=(GPL-3.0-or-later)
@@ -21,7 +21,6 @@ depends=(
 	"procps-ng"
 	"coreutils"
 	"awk"
-	"xxd"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"zenity"
@@ -54,7 +53,7 @@ checkdepends=()
 
 source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('73cc9d2275ee89bf220c40835ead0eed')
+md5sums=('1f845ad3a24346166b049d2b20161410')
 
 
 function package() {
