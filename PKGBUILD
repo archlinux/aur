@@ -2,7 +2,7 @@
 
 _pkgname=hplip
 pkgname="${_pkgname}-lite"
-pkgver=3.25.2
+pkgver=3.25.8
 pkgrel=1
 pkgdesc="Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "hplip-pserror-gcc14.patch"
 )
 sha256sums=(
-  "e872ff28eb2517705a95f6e1839efa1e50a77a33aae8905278df2bd820919653"
+  "1cf6d6c28735435c8eb6646e83bcfb721e51c4b1f0e8cf9105a6faf96dc9ad25"
   "SKIP"
 )
 
