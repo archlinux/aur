@@ -1,14 +1,13 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname=jfa-go-git
 _pkgname=jfa-go
-pkgver=r2115.a4b94b4
+pkgver=r2200.1c75530
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/hrfee/jfa-go"
 license=('MIT')
 makedepends=('go>=1.24' 'nodejs' 'npm' 'git' 'esbuild' 'swag')
-depends=('libolm')
 checkdepends=()
 optdepends=()
 provides=("jfa-go")
