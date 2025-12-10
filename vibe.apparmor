@@ -1,0 +1,82 @@
+# AppArmor profile for Mistral Vibe
+# Maintainer: Markus Maiwald <markus@maiwald.work>
+# 
+# This profile follows the principle of least privilege, granting Mistral Vibe
+# only the permissions it absolutely needs to function as a coding agent.
+
+#include <tunables/global>
+
+profile vibe /opt/mistral-vibe/vibe-acp flags=(attach_disconnected) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+
+  # Allow network access (required for Mistral AI API)
+  network inet stream,
+  network inet6 stream,
+  network inet dgram,
+  network inet6 dgram,
+
+  # Application binary (read-only)
+  /opt/mistral-vibe/** r,
+  /opt/mistral-vibe/vibe-acp ix,
+
+  # User configuration and data
+  owner @{HOME}/.config/mistral-vibe/** rw,
+  owner @{HOME}/.config/mistral-vibe/ rw,
+  owner @{HOME}/.mistral-vibe/** rw,
+  owner @{HOME}/.mistral-vibe/ rw,
+  
+  # Cache directory
+  owner @{HOME}/.cache/mistral-vibe/** rw,
+  owner @{HOME}/.cache/mistral-vibe/ rw,
+
+  # Allow access to user's coding projects (read/write for agent functionality)
+  owner @{HOME}/** rw,
+  
+  # Git integration
+  /usr/bin/git rix,
+  /usr/lib/git-core/* rix,
+  
+  # Python integration (for advanced features)
+  /usr/bin/python3* rix,
+  /usr/lib/python3*/** r,
+  
+  # Temporary files
+  /tmp/** rw,
+  owner /tmp/** rw,
+  
+  # Proc filesystem (limited)
+  @{PROC}/@{pid}/stat r,
+  @{PROC}/@{pid}/status r,
+  @{PROC}/@{pid}/cmdline r,
+  @{PROC}/sys/kernel/random/uuid r,
+  
+  # System libraries
+  /usr/lib/** r,
+  /lib/** r,
+  /usr/share/** r,
+  
+  # Deny access to sensitive system files
+  deny /boot/** rw,
+  deny /etc/shadow rw,
+  deny /root/** rw,
+  deny /sys/kernel/security/** rw,
+  deny @{PROC}/sys/kernel/[^r]** w,
+  deny @{PROC}/sys/kernel/r[^a]** w,
+  deny @{PROC}/sys/kernel/ra[^n]** w,
+  deny @{PROC}/sys/kernel/ran[^d]** w,
+  deny @{PROC}/sys/kernel/rand[^o]** w,
+  deny @{PROC}/sys/kernel/rando[^m]** w,
+  deny @{PROC}/kcore rw,
+  deny @{PROC}/kmem rw,
+  deny @{PROC}/mem rw,
+
+  # Deny capability escalation
+  deny capability sys_admin,
+  deny capability sys_module,
+  deny capability sys_rawio,
+  deny capability dac_override,
+  deny capability dac_read_search,
+}
