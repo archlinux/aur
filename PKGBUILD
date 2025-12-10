@@ -15,11 +15,20 @@ depends=(
     'python-colorama'
     'python-pkgbuild-parser'
     'python-requests'
+    'git'
+    'base-devel'
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
+)
+optdepends=(
+    'sudo'
+    'opendoas'
+    'polkit'
+    'doas'
+    'proxychains-ng'
 )
 
 build() {
