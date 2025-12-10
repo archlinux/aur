@@ -1,0 +1,4 @@
+[jjui]
+source = "git"
+git = "https://github.com/idursun/jjui.git"
+prefix = "v"
