@@ -1,6 +1,6 @@
 pkgbase = thunk_gen-git
 	pkgdesc = Thunk generator for C and assembler code.
-	pkgver = 1.8.r66.20251004.dd3a33f
+	pkgver = 1.8.r67.20251203.27b4a8e
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/stsp/thunk_gen
@@ -14,7 +14,7 @@ pkgbase = thunk_gen-git
 	makedepends = ninja
 	depends = bash
 	depends = glibc
-	provides = thunk_gen=1.8.r66.20251004.dd3a33f
+	provides = thunk_gen=1.8.r67.20251203.27b4a8e
 	conflicts = thunk_gen
 	source = thunk_gen::git+https://github.com/stsp/thunk_gen.git
 	sha256sums = SKIP
