@@ -1,7 +1,7 @@
 pkgbase = pje-office
 	pkgdesc = PJeOffice is a software made available by CNJ for electronic signing PJe system's documents
 	pkgver = 2.5.16u
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pjeoffice.trf3.jus.br
 	arch = any
 	license = custom

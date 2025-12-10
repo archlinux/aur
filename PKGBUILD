@@ -3,7 +3,7 @@
 
 pkgname=pje-office
 pkgver=2.5.16u
-pkgrel=6
+pkgrel=7
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='https://pjeoffice.trf3.jus.br'
@@ -71,6 +71,7 @@ Terminal=false
 Categories=Office;
 Comment=PJeOffice
 Icon=pjeoffice
+StartupWMClass=br-jus-cnj-pje-office-imp-PjeOfficeApp
 EOF
 }
 
