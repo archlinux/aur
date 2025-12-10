@@ -1,5 +1,5 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
-# Contributor  Spyros Stathopoulos <foucault.online (at) gmail[dot[com> (https://aur.archlinux.org/account/Foucault)
+# Contributor: Spyros Stathopoulos <foucault.online (at) gmail[dot[com> (https://aur.archlinux.org/account/Foucault)
 # Contributor: Alex Forenchich <alex(at(alexforencich[dot]com>
 
 # PKGBUILD taken and modified from the PKGBUILD of
@@ -25,7 +25,7 @@ pkgname=(
   #"python2-linux-gpib-git"
   "tcl-linux-gpib-git"
 )
-pkgver=4.3.7.r2157.20250726.0fc6e300
+pkgver=4.3.7.r2193.20251128.bef0c613
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.'
 arch=('i686' 'x86_64' 'aarch64')

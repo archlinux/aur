@@ -1,6 +1,6 @@
 pkgbase = linux-gpib-git
 	pkgdesc = A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.
-	pkgver = 4.3.7.r2157.20250726.0fc6e300
+	pkgver = 4.3.7.r2193.20251128.bef0c613
 	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	arch = i686
@@ -37,11 +37,11 @@ pkgbase = linux-gpib-git
 pkgname = linux-gpib-git
 	pkgdesc = Metapackage installing 'linux-gpib-kernel' and 'linux-gpib-user', and providing 'linux-gpib' dependency.
 	arch = any
-	depends = linux-gpib-dkms-git=4.3.7.r2157.20250726.0fc6e300
-	depends = linux-gpib-user-git=4.3.7.r2157.20250726.0fc6e300
+	depends = linux-gpib-dkms-git=4.3.7.r2193.20251128.bef0c613
+	depends = linux-gpib-user-git=4.3.7.r2193.20251128.bef0c613
 	optdepends = python-linux-gpib: Python bindings.
 	optdepends = python2-linux-gpib: Python2 bindings.
-	provides = linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = 
 	replaces = linux-gpib-svn<=r2106
 
@@ -55,7 +55,7 @@ pkgname = linux-gpib-docs-git
 	optdepends = php: For PHP examples.
 	optdepends = perl: For Perl examples.
 	optdepends = tk: For tcl examples.
-	provides = linux-gpib-docs=4.3.7.r2157.20250726.0fc6e300
+	provides = linux-gpib-docs=4.3.7.r2193.20251128.bef0c613
 	conflicts = linux-gpib-docs
 	replaces = 
 
@@ -71,10 +71,10 @@ pkgname = linux-gpib-dkms-git
 	optdepends = linux-gpib-udev: udev rules.
 	optdepends = linux-gpib-docs: Documentation.
 	optdepends = gpib-utils: More user space utilities.
-	provides = linux-gpib-dkms=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-kernel=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-kernel-git=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-modules=4.3.7.r2157.20250726.0fc6e300
+	provides = linux-gpib-dkms=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-kernel=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-kernel-git=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-modules=4.3.7.r2193.20251128.bef0c613
 	conflicts = linux-gpib-dkms
 	conflicts = linux-gpib-kernel
 	conflicts = linux-gpib-modules
@@ -88,13 +88,13 @@ pkgname = linux-gpib-user-git
 	depends = libreadline.so
 	optdepends = linux-gpib-docs: Documentation.
 	optdepends = udev: For the provided udev rules.
-	provides = linux-gpib-user=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-libs=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-libs-git=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-tools=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-tools-git=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-udev=4.3.7.r2157.20250726.0fc6e300
-	provides = linux-gpib-udev-git=4.3.7.r2157.20250726.0fc6e300
+	provides = linux-gpib-user=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-libs=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-libs-git=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-tools=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-tools-git=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-udev=4.3.7.r2193.20251128.bef0c613
+	provides = linux-gpib-udev-git=4.3.7.r2193.20251128.bef0c613
 	provides = libgpib.so
 	conflicts = linux-gpib-user
 	conflicts = linux-gpib-libs
@@ -114,7 +114,7 @@ pkgname = guile-linux-gpib-git
 	depends = glibc
 	depends = guile
 	optdepends = linux-gpib-docs: Documentation
-	provides = guile-linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = guile-linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = guile-linux-gpib
 	replaces = 
 
@@ -124,7 +124,7 @@ pkgname = perl-linux-gpib-git
 	depends = glibc
 	depends = perl
 	optdepends = linux-gpib-docs: Documentation
-	provides = perl-linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = perl-linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = perl-linux-gpib
 	replaces = 
 
@@ -134,7 +134,7 @@ pkgname = php-linux-gpib-git
 	depends = glibc
 	depends = php
 	optdepends = linux-gpib-docs: Documentation
-	provides = php-linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = php-linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = php-linux-gpib
 	replaces = 
 
@@ -144,7 +144,7 @@ pkgname = python-linux-gpib-git
 	depends = glibc
 	depends = python>=3
 	optdepends = linux-gpib-docs: Documentation
-	provides = python-linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = python-linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = python-linux-gpib
 	replaces = 
 
@@ -154,6 +154,6 @@ pkgname = tcl-linux-gpib-git
 	depends = glibc
 	depends = tcl
 	optdepends = linux-gpib-docs: Documentation
-	provides = tcl-linux-gpib=4.3.7.r2157.20250726.0fc6e300
+	provides = tcl-linux-gpib=4.3.7.r2193.20251128.bef0c613
 	conflicts = tcl-linux-gpib
 	replaces = 
