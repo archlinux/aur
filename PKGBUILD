@@ -1,6 +1,6 @@
 # Maintainer: Maxim Kim <exynil@gmail.com>
 pkgname=clipbox
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A powerful clipboard manager for Wayland with rofi integration"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/exynil/clipbox"
 license=('GPL3')
 depends=('wl-clipboard')
 makedepends=('go' 'git')
-optdepends=('rofi: for rofi integration')
+optdepends=('rofi: for interactive UI')
 source=("git+https://github.com/exynil/clipbox.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = clipbox
 	pkgdesc = A powerful clipboard manager for Wayland with rofi integration
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/exynil/clipbox
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = clipbox
 	makedepends = go
 	makedepends = git
 	depends = wl-clipboard
-	optdepends = rofi: for rofi integration
-	source = git+https://github.com/exynil/clipbox.git#tag=v0.1.1
+	optdepends = rofi: for interactive UI
+	source = git+https://github.com/exynil/clipbox.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = clipbox
