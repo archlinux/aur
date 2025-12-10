@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=eddiscovery-proton
 pkgver=19.0.15
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/Release_${pkgver}/ED
 		"eddiscovery-proton.desktop")
 md5sums=('6ef141ea7506344f1833bd71f9302e6d'
          'e4c15c73cfd8083eb070f16757817f54'
-         'a8c216a08d8e75a133236983e6458803')
+         'c46f498c3ad628d12b7a2692443de1ff')
 noextract=()
 validpgpkeys=()
 
@@ -59,7 +59,7 @@ package() {
     # Install icons (auto-detect valid sizes)
     cd icons
     for icon in *.png; do
-        res=$(echo "$icon" | cut -d'_' -f4 | cut -d'x' -f1)
+        res=$(echo "$icon" | cut -d'_' -f3 | cut -d'x' -f1)
         if [[ "$res" =~ ^(16|24|32|48|64|96|128|256)$ ]]; then
             install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
         fi
