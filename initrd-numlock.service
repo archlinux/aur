@@ -3,8 +3,7 @@ Description=Enable numlock during early userspace
 AssertPathExists=/etc/initrd-release
 AssertPathExists=/dev/tty0
 DefaultDependencies=no
-After=systemd-udev-trigger.service
-Before=initrd-root-fs.target
+Before=cryptsetup-pre.target
 
 [Service]
 Type=oneshot
