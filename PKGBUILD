@@ -3,13 +3,13 @@
 pkgname=nethermind-ethereum-bin
 pkgver=1.35.4
 _commit=5d4dc69d
-pkgrel=1
+pkgrel=2
 pkgdesc='A robust execution client for Ethereum node operators'
 arch=('x86_64' 'aarch64')
 url='https://downloads.nethermind.io/'
 options=(!strip)
 license=('LGPL-3.0-only')
-depends=('zlib' 'base-devel')
+depends=('zlib')
 provides=('nethermind' 'Nethermind.Runner')
 conflicts=('nethermind' 'Nethermind.Runner')
 
