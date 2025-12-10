@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=rumdl-bin
-pkgver=0.0.191
+pkgver=0.0.192
 pkgrel=1
 pkgdesc='Markdown Linter and Formatter written in Rust'
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,11 @@ source_x86_64=(
 	LICENSE
 )
 
-sha256sums_x86_64=('f5ee14c17321b9f88f442c640fb9c2a3d38beea2b954362b788b34eae91320e8'
-                   'ca1c13d287554efe743d180574bece8615b8380cbfa9151ca5c42f0912a3bf8d'
+sha256sums_x86_64=('5bb95046487f475981bfb6e9ad50ec3c0b1ad34b39c70b416003429afc84a700'
+                   'b60eca5ab6340937eaafb4a8c9ec6db66dc88eb079181784f67370ef975fe76d'
                    '531eee1345aea0b92d0b2cb7c3994b233dffe9d738ed1d2a6ae3cddf49b3d773')
-sha256sums_aarch64=('ffe241f5e79649fabbeb544ac3ee1d9424698e268cb441668a7c680fd8aa50f9'
-                    '6ac82848150c3d730cf7d8cfd863965587f8e20c13d2ca9a30d6ea0a2aa0ab28'
+sha256sums_aarch64=('e4a4c303246979758b03f1250dbce1ce617af172bfe5e3a517bc053c89aeaf67'
+                    '119e17dad3ece8a1f3687ce3cec1721c61ec1c8abf8829c23ca340ef0db29623'
                     '531eee1345aea0b92d0b2cb7c3994b233dffe9d738ed1d2a6ae3cddf49b3d773')
 
 
