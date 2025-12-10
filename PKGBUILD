@@ -2,9 +2,10 @@
 # Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 pkgname=visualfbeditor
 pkgver=1.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="VisualFBEditor FreeBASIC RAD IDE (with mff)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
+license=('GPL-3.0-or-later')
 url="https://github.com/XusinboyBekchanov/VisualFBEditor"
 depends=('freebasic' 'gtk3')
 provides=('visualfbeditor')
