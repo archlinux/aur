@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notion-electron-bin
 _pkgname='Notion Electron'
-pkgver=1.9.2
+pkgver=1.9.3
 _electronversion=39
 pkgrel=1
 pkgdesc="An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/anechunaev/notion-electron"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
@@ -17,13 +20,15 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/anechunaev/notion-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('edde2aa38c22948839888091c686e74f38451f5d9da07f508ae456ff8acd7ab1'
-            'f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-x86_64.rpm")
+sha256sums=('f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('8d8b667e9a483b45a503e50a20c79294eb18aae2bb3d21f0432d5a87eb588a4f')
+sha256sums_x86_64=('9ad2d6cf5668493cb1cc8667cbac5e8ab436cabbf7d29a862fd9e4236a0ce214')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -48,6 +53,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app-update.yml" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
