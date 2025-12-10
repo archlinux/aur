@@ -26,7 +26,7 @@ build() {
     export PATH="/opt/cuda/bin:$PATH"
     cmake -S $pkgbase-$pkgver -B $pkgbase-$pkgver/build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCUTLASS_NVCC_ARCHS='90a' \
+        -DCUTLASS_NVCC_ARCHS='75;80;86;89;90;90a' \
         -DCUTLASS_ENABLE_GTEST_UNIT_TESTS=OFF \
         -DCUTLASS_ENABLE_TESTS=OFF \
         -DCUTLASS_ENABLE_CUBLAS=ON \
