@@ -1,11 +1,11 @@
 # Maintainer: Sean Fournier <me@seanfournier.com>
 # GitHub: https://github.com/WattForce
 pkgname=tonneru
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="A WireGuard VPN manager for Omarchy (Arch Linux)"
+pkgdesc="A TUI-based WireGuard manager with network automation and kill switch"
 arch=('x86_64' 'aarch64')
-url="https://github.com/WattForce/tonneru"
+url="https://github.com/wattfource/tonneru"
 license=('WTFPL')
 depends=('wireguard-tools' 'nftables')
 makedepends=('cargo' 'git')
@@ -17,7 +17,7 @@ optdepends=(
 )
 backup=('etc/sudoers.d/tonneru')
 install=tonneru.install
-source=("git+https://github.com/WattForce/tonneru.git#tag=v${pkgver}")
+source=("git+https://github.com/wattfource/tonneru.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {

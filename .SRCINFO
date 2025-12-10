@@ -1,8 +1,8 @@
 pkgbase = tonneru
-	pkgdesc = A WireGuard VPN manager for Omarchy (Arch Linux)
-	pkgver = 0.1.0
+	pkgdesc = A TUI-based WireGuard manager with network automation and kill switch
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/WattForce/tonneru
+	url = https://github.com/wattfource/tonneru
 	install = tonneru.install
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = tonneru
 	optdepends = waybar: status bar integration
 	optdepends = libnotify: desktop notifications
 	backup = etc/sudoers.d/tonneru
-	source = git+https://github.com/WattForce/tonneru.git#tag=v0.1.0
+	source = git+https://github.com/wattfource/tonneru.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = tonneru
