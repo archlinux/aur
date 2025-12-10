@@ -1,6 +1,6 @@
 pkgbase = slimevr-gui-git
 	pkgdesc = web GUI for SlimeVR Full Body Tracking System
-	pkgver = v0.16.3.r2.25c659ba0
+	pkgver = v18.0.0.r2.227ddc87d
 	pkgrel = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	arch = x86_64
