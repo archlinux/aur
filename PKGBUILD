@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=scrt-sfx-opt-bin
-pkgver=9.6.4
-pkgrel=3695
+pkgver=9.7.0
+pkgrel=3761
 pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
 arch=('x86_64')
 url='https://www.vandyke.com/'
@@ -27,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-	"b019354b57a67a5ce9bedac713e3a33116875a5be14387aaa1274ae5732168d946327da50c361d1b55bc3b1892820181a858bb98e2889bd9f4ec9486481e83ed"
+	"336163623a05dafda0a4ff4b142cf19230f021ff92420a9f25bf5bcd233c479429457271a7d03af276891e64b67a72813c7b6eed170b5396573e1b9c3f6bf371"
 )
 
 package() {
@@ -39,8 +39,8 @@ package() {
 
 	ln -s "/opt/${pkgname}/${_tarball_base_name}/lib/scrt-sfx/plugins/platforms" "${stage_dir}/bin"
 
-	sed -ie "s+Exec=.*+Exec=/opt/${pkgname}/${_tarball_base_name}/bin/SecureCRT+" "${stage_dir}/share/applications/SecureCRT.desktop"
-	sed -ie "s+Exec=.*+Exec=/opt/${pkgname}/${_tarball_base_name}/bin/SecureFX+" "${stage_dir}/share/applications/SecureFX.desktop"
+	sed -ie "s+Exec=.*+Exec=env QT_QPA_PLATFORM=xcb /opt/${pkgname}/${_tarball_base_name}/bin/SecureCRT+" "${stage_dir}/share/applications/SecureCRT.desktop"
+	sed -ie "s+Exec=.*+Exec=env QT_QPA_PLATFORM=xcb /opt/${pkgname}/${_tarball_base_name}/bin/SecureFX+" "${stage_dir}/share/applications/SecureFX.desktop"
 
 	mkdir -p ${pkgdir}/usr/share/applications
 	ln -s "/opt/${pkgname}/${_tarball_base_name}/share/applications/SecureCRT.desktop" ${pkgdir}/usr/share/applications/SecureCRT.desktop
