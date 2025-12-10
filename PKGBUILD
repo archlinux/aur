@@ -2,7 +2,7 @@
 
 pkgname=gosplugin
 pkgver=1.3.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
@@ -46,6 +46,7 @@ depends=(
     'util-linux-libs'
     'zlib'
     'zstd'
+    'rutoken-connect'
 )
 optdepends=('rutoken-pkcs' 'jacartauc')
 makedepends=('grep' 'libarchive')
@@ -108,7 +109,6 @@ package() {
 	'libboost_log_setup.so.1.83.0'
 	'libxerces-c-3.2.so'
 	'libxalan-c.so.112'
-	'librtengine.so.3'
 	'libboost_atomic.so.1.83.0'
 	'libboost_chrono.so.1.83.0'
 	'libxalanMsg.so.112'
