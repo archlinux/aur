@@ -1,6 +1,6 @@
 pkgbase = sixteen
 	pkgdesc = A base16 theme browser
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/ralsina/sixteen
 	install = install
@@ -9,7 +9,7 @@ pkgbase = sixteen
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
-	source = sixteen-0.5.4.tar.gz::https://github.com/ralsina/sixteen/archive/refs/tags/v0.5.4.tar.gz
-	sha256sums = a7f9d8c03ef6a9e561e69e32fbd1409b6fd389448b278f0132713b07e3deee84
+	source = sixteen-0.6.0.tar.gz::https://github.com/ralsina/sixteen/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = f75c9a32a6fd84871a93f3325cbcc91ec54309bde52140450104468b2542447a
 
 pkgname = sixteen
