@@ -3,7 +3,7 @@
 _mainver=5
 pkgname=firebot
 pkgver="${_mainver}.65.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
@@ -47,7 +47,7 @@ package() {
 
   install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux/firebotsetup-mimetype.xml" "${pkgdir}/usr/share/mime/packages/firebotsetup.xml"
 
-  desktop-file-edit --set-name="Firebot v${_appver}" "${srcdir}/${pkgname}.desktop"
+  desktop-file-edit --set-name="Firebot v${pkgver}" "${srcdir}/${pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   rm "${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
 }
