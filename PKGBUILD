@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Lawstorant/$_reponame"
 license=('GPL3')
 depends=(
-	cec-ctl
+	v4l-utils
 )
 makedepends=(
   git
