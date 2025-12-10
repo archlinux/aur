@@ -2,7 +2,7 @@
 
 _pkgname=libenvpp
 pkgname=${_pkgname}-git
-pkgver=1.5.1+3.r204.20251026.754459b
+pkgver=1.5.2.r206.20251209.379195a
 pkgrel=1
 pkgdesc='Modern C++ Library for Handling Environment Variables.'
 arch=(
@@ -15,7 +15,7 @@ arch=(
 url="https://github.com/ph3at/libenvpp"
 license=('Apache-2.0')
 source=(
-  "${_pkgname}::git+${url}.git#branch=cmake-reuse-deps"
+  "${_pkgname}::git+${url}.git"
 )
 depends=(
   'gcc-libs'
@@ -78,7 +78,7 @@ build() {
     -DLIBENVPP_EXAMPLES=ON \
     -DLIBENVPP_INSTALL=ON \
     -DLIBENVPP_TESTS=ON \
-    -DFMT_INSTALL=OFF \
+    -DLIBENVPP_USE_SYSTEM_DEPS=ON \
     -Wno-dev
 
   make -C build
