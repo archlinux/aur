@@ -1,5 +1,5 @@
 pkgbase = wfrc-git
-	pkgdesc = Wrapper of wf-recorder/wl-screenrec, make screencast on wlroots compositor with shorcut easily.
+	pkgdesc = Simple script makes screencast on wlroots compositors with shortcut easily.
 	pkgver = r36.c04ab6f
 	pkgrel = 1
 	url = https://github.com/Vescrity/wfrc
