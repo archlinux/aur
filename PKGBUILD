@@ -1,8 +1,8 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 _projectname=meow
 pkgname=$_projectname-nvim
-pkgver=1.0.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="cat alternative using Neovim for highlighting and configuration"
 arch=("x86_64")
 url="https://github.com/datsfilipe/$_projectname"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("neovim")
 makedepends=("rust")
 source=("$_projectname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('4461283b68a79cb77c5df043102a10a97f78d04a63436c67d195411925bce95a1c255e33a04b7a2a22de48a686ac4958a6d2caea1e7796ac48fb1bf9585028a0')
+b2sums=('e3284fe4ae1aa4891acabbc954410a6c7291c513ab7b7b4c567f8cc142f2f1848d21ca42f683f4780cac30b2d6decb69951a9d9f510c0d22404ea50b839aa3d8')
 
 build() {
     cd "$_projectname-$pkgver"
