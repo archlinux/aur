@@ -1,7 +1,7 @@
 # Maintainer: Stefan Gruenberger <stefan.gruenberger at gmail dot com>
 # Maintainer: Thomas Millward Wright <tmillwardwright@gmail.com>
 pkgname=perimeter81
-pkgver=10.0.3.933
+pkgver=10.0.4.947
 pkgrel=1
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'perimeter81helper.service'
   'LICENSE'
 )
-sha256sums=('faca3092e5a501f6a44bb356130fc50e5ee97a36aee6f059d1e2dcd712cefdc6'
+sha256sums=('01c650fd297b4defe10b709025f88d9f6e14cc98a62e567098bf5922c20b7f67'
             '3a081715b806d54b09d65f17c0f38c0ce40d99b9157555f6c63245afcc702baf'
             'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
 
