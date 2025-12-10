@@ -1,10 +1,10 @@
 pkgname=iscsi-util
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 depends=('open-iscsi')
-source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/${pkgver}/ISCSI-Util.tar.gz"
+source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz"
         "iscsi-util.desktop")
 sha256sums=('SKIP'
             'SKIP')
@@ -13,7 +13,7 @@ package() {
   # Crear directorio para librerías
   install -d "$pkgdir/usr/lib/iscsi-util"
 
-  # Copiar binario único self-contained
+  # Copiar binario self-contained con su nombre real
   install -Dm755 "$srcdir/ISCSI-Util" "$pkgdir/usr/lib/iscsi-util/ISCSI-Util"
 
   # Crear directorio para binarios y enlace simbólico

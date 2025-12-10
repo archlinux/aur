@@ -1,10 +1,10 @@
 pkgbase = iscsi-util
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	depends = open-iscsi
-	source = https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/1.0.1/ISCSI-Util.tar.gz
+	source = https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz
 	source = iscsi-util.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
