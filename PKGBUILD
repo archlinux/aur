@@ -4,7 +4,7 @@
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
 url='https://github.com/NVIDIA/cutlass'

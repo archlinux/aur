@@ -1,7 +1,7 @@
 pkgbase = cutlass
 	pkgdesc = CUDA Templates for Linear Algebra Subroutines
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/cutlass
 	arch = x86_64
 	license = BSD-3-Clause
