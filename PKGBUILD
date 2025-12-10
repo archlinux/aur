@@ -4,8 +4,12 @@ pkgrel=1
 arch=('x86_64')
 license=('MIT')
 depends=()
-source=("ISCSI-Util.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz"
+        "iscsi-util.desktop"
+        "iscsi-util.png")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
   # Crear directorio para librerías
@@ -25,4 +29,3 @@ package() {
   install -Dm644 "$srcdir/iscsi-util.desktop" "$pkgdir/usr/share/applications/iscsi-util.desktop"
   install -Dm644 "$srcdir/iscsi-util.png" "$pkgdir/usr/share/pixmaps/iscsi-util.png"
 }
-
