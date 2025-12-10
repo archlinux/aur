@@ -6,7 +6,7 @@ appname=Kerminal
 pkgname=${_pkgname}-bin
 pkgver=2.5.2
 _pkgvername=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Terminal Emulator & SSH Manager"
 arch=('x86_64')
 _barch=('amd64')
@@ -21,7 +21,6 @@ conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${appname}_${pkgver}_${_barch[0]}.deb")
 sha256sums_x86_64=('288e2337055b42a8bdc2b3463093afe52f7984f29e10a1c72809915de9c5b6b1')
-
 
 package() {
     cd "${pkgdir}"
