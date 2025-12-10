@@ -1,22 +1,21 @@
 pkgbase = freej2me-plus-git
-	pkgdesc = A free J2ME emulator with libretro, awt and sdl2 frontends.
-	pkgver = 1.45.r891.52e7222
-	pkgrel = 2
+	pkgdesc = A free J2ME emulator with libretro, awt frontends.
+	pkgver = 1.51.r1173.79a4030c
+	pkgrel = 1
 	url = https://github.com/TASEmulators/freej2me-plus
 	arch = any
 	license = GPL-3.0-only
 	license = custom
 	makedepends = git
 	makedepends = ant
+	makedepends = java-environment
 	depends = java-runtime
 	depends = sh
 	source = git+https://github.com/TASEmulators/freej2me-plus
 	source = freej2me-plus.sh
-	source = freej2me-plus-sdl.sh
 	source = freej2me-plus.desktop
 	md5sums = SKIP
 	md5sums = c63d23b3eee3f177363a19bf0b256ec9
-	md5sums = b525f5cd99122d5a15022912c8116cdf
 	md5sums = 172dc3882f25b3b786bfba42f16b4048
 
 pkgname = freej2me-plus-git
@@ -24,7 +23,7 @@ pkgname = freej2me-plus-git
 	conflicts = freej2me-plus
 
 pkgname = libretro-freej2me-plus-git
-	pkgdesc = A free J2ME emulator with libretro, awt and sdl2 frontends. (Libretro core)
+	pkgdesc = A free J2ME emulator with libretro, awt frontends. (Libretro core)
 	install = libretro-freej2me-plus.install
 	arch = x86_64
 	depends = java-runtime
