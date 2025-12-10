@@ -1,7 +1,7 @@
 pkgbase = php-spx
 	pkgdesc = A simple & straight-to-the-point PHP profiling extension with its built-in web UI
 	pkgver = 0.4.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NoiseByNorthwest/php-spx
 	arch = i686
 	arch = x86_64
