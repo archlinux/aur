@@ -1,0 +1,9 @@
+pkgbase = iscsi-util
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	source = ISCSI-Util.tar.gz
+	sha256sums = SKIP
+
+pkgname = iscsi-util
