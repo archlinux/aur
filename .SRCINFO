@@ -1,14 +1,13 @@
 pkgbase = rimsort-git
 	pkgdesc = A Mod Manager For Rimworld game
-	pkgver = r2040.ee163f7a
+	pkgver = r2074.05c198ea
 	pkgrel = 1
 	url = https://github.com/RimSort/RimSort
 	arch = x86_64
 	license = GPL3
-	makedepends = python
 	makedepends = git
-	makedepends = uv
 	depends = python
+	depends = uv
 	source = git+https://github.com/RimSort/RimSort.git
 	source = RimSort.desktop
 	source = RimSort.sh

@@ -1,15 +1,13 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r2040.ee163f7a
+pkgver=r2074.05c198ea
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
 url="https://github.com/RimSort/RimSort"
 license=("GPL3")
-makedepends=(python git uv)
-depends=(
-    "python"
-)
+makedepends=(git)
+depends=(python uv)
 source=("git+https://github.com/RimSort/RimSort.git"
         "RimSort.desktop"
         "RimSort.sh")
@@ -33,6 +31,13 @@ build() {
 
 package() {
     cd "$srcdir/RimSort"
+
+    # Force .venv to not depend on local python
+    target=$(readlink ".venv/bin/python")
+    targetDir=$(dirname "$target")
+    targetLib="$targetDir/../lib"
+    cp -r "$targetLib"/* .venv/lib
+    cp --remove-destination "$(readlink ".venv/bin/python")" ".venv/bin/python"
 
     # Main Files
     install -dm755 "$pkgdir/opt/rimsort/"
