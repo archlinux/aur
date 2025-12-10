@@ -1,0 +1,23 @@
+pkgbase = python-graphcalc
+	pkgdesc = Python package to compute graph invariants
+	pkgver = 1.2.15
+	pkgrel = 1
+	url = https://github.com/RandyRDavila/GraphCalc
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pulp
+	depends = python-matplotlib
+	depends = python-dateutil
+	depends = python-pandas
+	source = python-graphcalc-1.2.15.tar.gz::https://github.com/RandyRDavila/GraphCalc/archive/v1.2.15.tar.gz
+	sha256sums = cdbba93444727216ab05a574e8eb28f48009f2afb9b848588497b7abf0e1f360
+
+pkgname = python-graphcalc
