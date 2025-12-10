@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=sixteen
 pkgname=${_pkgname}-bin
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A base16 theme browser"
 arch=('x86_64' 'aarch64')
@@ -23,10 +23,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[0]}")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('dbbffa23a676d422aa7460b468c731e4fe3a007414e14d787a3d3f3fb55b1713'
-            '610343d6b3b43d5a319918d2dba832f183a3c5a99fc1d966d9625375f5267a00'
-            'b22c60678327cd4f7bdfa151875c85498907a5810b0d3ab69b6b666a16d7389c')
-sha256sums_x86_64=('631afc6250497db344c2e0050f43475ce349799dc16d7af6ecb8741963c05b88')
-sha256sums_aarch64=('cf4681ace786cfebf348b93adb359a62dca54f18a2e198d837830c1363404ea9')
+            '788ac7f953fe904bfaa3ee91eb0a8de4406fb79f44fad2b42f6f9eb002212ef8'
+            'ba73c23141d98c83abe122945dd4e8a278aa2be2a2c456cd29c139c84d26517f')
+sha256sums_x86_64=('c8e740cd1d79633f8b54498e29f73bcbeca8a7ef37c6c55e5b166a206ab3c8c9')
+sha256sums_aarch64=('2fc861fc0a4bd1703262cd58861451e7097fc2515b4801392c9b55b687482d55')
 
 
 package() {
