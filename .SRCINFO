@@ -1,8 +1,8 @@
 pkgbase = llm-thalamus
 	pkgdesc = Local AI controller and PySide6 UI integrating OpenMemory with Ollama
 	pkgver = 0.2
-	pkgrel = 1
-	url = https://github.com/evertvorster/llm-thalamus
+	pkgrel = 2
+	url = https://github.com/evertvorster/llm_thalamus
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python
