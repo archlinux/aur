@@ -34,6 +34,13 @@ package() {
   chmod 777 "${pkgdir}/var/opt/PreSonus"
   chmod 777 "${pkgdir}/var/opt/PreSonus/Extensions"
 
+  # Install MIME type icons
+  for icon in "${pkgdir}"/usr/share/icons/hicolor/scalable/mimetypes/studioone7/*; do
+    iconname=$(basename "${icon}")
+    ln -s -f "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/studioone7/${iconname}" \
+      "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/${iconname}"
+  done
+
   # Copy licenses to standard location
   install -d -m755 "$pkgdir/usr/share/licenses/$pkgname/"
   install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/PreSonus/Studio One 7/license/CCL 3rd Party Licenses.txt"
