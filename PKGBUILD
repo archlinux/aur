@@ -1,7 +1,7 @@
 # Maintainer: Terence Noone <me@techtricity.net>
 
 pkgname=nginx-mod-acme
-pkgver=0.1.1
+pkgver=0.3.1
 pkgrel=1
 
 pkgdesc='Nginx module adding support for the ACME protocol'
@@ -13,7 +13,7 @@ depends=('nginx' 'gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo' 'clang' 'nginx-src')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nginx/nginx-acme/archive/v${pkgver}/nginx-acme-${pkgver}.tar.gz")
-sha256sums=('c2158d7f9baa53a9186c406e82c3068832f03b87a1d1066b0d214a8bf834ddfd')
+sha256sums=('be3d3d10f042930a3bf348731698eadb7003d224a863c53b719ccd28721572c3')
 
 prepare() {
 	cd "nginx-acme-${pkgver}"
@@ -43,6 +43,6 @@ package() {
 		"$pkgdir/usr/lib/nginx/modules/ngx_http_acme_module.so"
 
 	install -dm755 "${pkgdir}/etc/nginx/modules.d"
-	echo 'load_module /usr/lib/nginx/modules/ngx_http_acme_module.so;' > "${pkgdir}/etc/nginx/modules.d/20-ngx_http_acme_module"
+	echo 'load_module /usr/lib/nginx/modules/ngx_http_acme_module.so;' > "${pkgdir}/etc/nginx/modules.d/20-ngx_http_acme_module.conf"
 }
 
