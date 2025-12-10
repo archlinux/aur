@@ -1,6 +1,6 @@
 # Maintainer: Burgess <burgess@ripvid.app>
 pkgname=ripvid
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites"
 arch=('x86_64')
