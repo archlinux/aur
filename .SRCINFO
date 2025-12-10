@@ -1,0 +1,40 @@
+pkgbase = idos-timetable-browser-bin-latest
+	pkgdesc = Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)
+	pkgver = 1.30_lib2.16.0.1_date2025_12_03
+	pkgrel = 1
+	epoch = 0
+	url = https://chaps.cz/eng/download/idos/zip#kotvaprg
+	arch = i686
+	arch = x86_64
+	groups = idos-timetable
+	license = LicenseRef-restricted
+	makedepends = unzip
+	depends = ttf-timetable
+	depends = wine
+	optdepends = idos-timetable-data: For timetable data. (You need at least one to use the software.)
+	optdepends = idos-timetable-lang-de: For German translation.
+	optdepends = idos-timetable-lang-en: For English translation.
+	optdepends = idos-timetable-browser-license: For the license in order to use restricted data like Czech/ Slovak bus, flight, Czech public transport.
+	provides = idos-timetable-browser=1.30_lib2.16.0.1_date2025_12_03
+	provides = idos-timetable-lang-cz=1.30_lib2.16.0.1_date2025_12_03
+	conflicts = idos-timetable-browser
+	replaces = idos-timetable-browser<=1.30_lib2.16.0.1_date2025_12_03-6
+	replaces = idos-timetable-browser-latest<=1.30_lib2.16.0.1_date2025_12_03-6
+	source = ttakt-1.30_lib2.16.0.1_date2025_12_03.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP
+	source = idos-timetable-browser.sh
+	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = license-dummy.txt
+	source = README.datafiles.txt
+	source = ReadMe.cz.txt
+	source = ReadMe.en.txt
+	source = idos-timetable-browser.install
+	sha256sums = SKIP
+	sha256sums = 013fa1d41b6c13fd079c16578390d5b75ad3f1228fd38a7ac17756bd74ace94e
+	sha256sums = SKIP
+	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
+	sha256sums = 45bf7c462d7154360d0007a6d7c00c6aa6b49339b6f178cf24e5b1a40ca702d7
+	sha256sums = 0ea6e9a36d54a7b9de5b87e9182b40fad0a9f673ae2195c29f32bf4538fa2f76
+	sha256sums = 3a99d362a56fb52d5259549bf932df184e227fae79ed46be60f5b80e5d95c492
+	sha256sums = 297e0326240e7d61b9c9f5a8f8313ce18fde2a14af9ad1f8c1ec03b67729ab57
+
+pkgname = idos-timetable-browser-bin-latest
