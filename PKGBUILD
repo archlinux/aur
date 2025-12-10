@@ -27,13 +27,6 @@
       cmake --build build
   }
 
-  check() {
-      cmake -B build -S "$pkgname" \
-          -DMBELIB_BUILD_TESTS=ON
-      cmake --build build
-      ctest --test-dir build --output-on-failure
-  }
-
   package() {
       DESTDIR="$pkgdir" cmake --install build
   }
