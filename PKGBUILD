@@ -1,6 +1,6 @@
 # Maintainer: notgeocube@outlook.com
 pkgname=chainz
-pkgver=0.1.9
+pkgver=1.3
 pkgrel=1
 pkgdesc="Chainz executable from GitHub (git version)"
 arch=('x86_64')
