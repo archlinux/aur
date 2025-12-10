@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=backmey-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Universal Linux Desktop Backup & Restore (CLI + GUI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('backmey')
 source=("https://github.com/MorganLosto/backmey/releases/download/v${pkgver}/Backmey-${pkgver}.AppImage"
         "backmey.desktop"
         "backmey.png")
-sha256sums=('e577e0bf0cc9e8bbcffd3be02fa521ca0735eafaf5caa4b0aa76de6e06aacf44'
+sha256sums=('579f739cb9b0c90284bd2a40121e170d88d1f80b840bb6f68f8f4b988605f0b1'
             'a6bcf7b294d888be131ca59f36494a153780fe5a8e5beb0534b859e561497591'
             'cd7fa1de65a353a8e625889319fb3a6a572e533a43c525033bd39b64eae9b9d9')
 
