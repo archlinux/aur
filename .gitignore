@@ -1,0 +1,11 @@
+src/
+pkg/
+
+*.pkg.tar.*
+*.tar.*
+
+*.log
+*.tmp
+.DS_Store
+*~
+.idea/
