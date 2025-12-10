@@ -2,7 +2,7 @@
 
 _pkgname=google-cloud-container
 pkgname=python-google-cloud-container
-pkgver=2.56.0
+pkgver=2.61.0
 pkgrel=1
 pkgdesc='Google Cloud Container API client library'
 arch=(any)
@@ -30,7 +30,7 @@ makedepends=(
 #   python-pytest-runner
 #)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${_pkgname}-v${pkgver}.tar.gz)
-sha256sums=(17d2411156741abe804b8cea96d3724cc1d063c2975e7cfc7e361aa220d4ce75)
+sha256sums=(259ad73af85c4f6c14fc5607fa7427cda5a78c0fc0a0d3be86c418010beb6cd4)
 
 build() {
   cd google-cloud-python-${_pkgname}-v${pkgver}/packages/google-cloud-container/
@@ -48,7 +48,7 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
 
-  install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} SECURITY.md
+  #install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} SECURITY.md
   install -Dm644 -t "${pkgdir}"/usr/share/man/man1 docs/build/google-cloud-container.1
 }
 
