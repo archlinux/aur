@@ -2,12 +2,12 @@
 
 pkgname=dmde
 pkgver=4.4.0.828
-pkgrel=2
+pkgrel=3
 pkgdesc="DM Disk Editor and Data Recovery Software"
 arch=('x86_64')
 url="https://dmde.com/"
 license=('custom')
-depends=('gtk2' 'glib2' 'pango' 'cairo' 'gdk-pixbuf2' 'libx11')
+depends=('gtk2' 'glib2' 'pango' 'cairo' 'gdk-pixbuf2' 'libx11' 'polkit')
 makedepends=('unzip')
 provides=('dmde-linux')
 conflicts=('dmde-linux' 'dmde-cli')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("dmde-${pkgver}.zip::https://dmde.com/download/dmde-${pkgver//./-}-lin64-gui.zip"
         "dmde.desktop")
 sha256sums=('dee19e2774f38052b65a46568f8f7c3c34dc638b4c6abe12913238b07e2a3fe0'
-            '0542f9d24d7f81b71d61d9d6b45d3adc42383f646b0cc9c9c5468c2a7c88cb9f')
+            'c631d99b9da19d5fb15e294e8054ee6233b853a1526fcb7ee99c7d2b894ef2be')
 noextract=("dmde-${pkgver}.zip")
 
 pkgver() {
@@ -32,6 +32,13 @@ package() {
     # Install wrapper
     install -dm755 "$pkgdir/usr/bin"
     echo '#!/bin/sh' > "$pkgdir/usr/bin/dmde"
+    echo 'if [ "$(id -u)" -ne 0 ]; then' >> "$pkgdir/usr/bin/dmde"
+    echo '    if command -v pkexec >/dev/null 2>&1; then' >> "$pkgdir/usr/bin/dmde"
+    echo '        exec pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "$0" "$@"' >> "$pkgdir/usr/bin/dmde"
+    echo '    elif command -v sudo >/dev/null 2>&1; then' >> "$pkgdir/usr/bin/dmde"
+    echo '        exec sudo "$0" "$@"' >> "$pkgdir/usr/bin/dmde"
+    echo '    fi' >> "$pkgdir/usr/bin/dmde"
+    echo 'fi' >> "$pkgdir/usr/bin/dmde"
     echo 'cd /opt/dmde && exec ./dmde "$@"' >> "$pkgdir/usr/bin/dmde"
     chmod 755 "$pkgdir/usr/bin/dmde"
 
