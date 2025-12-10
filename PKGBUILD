@@ -2,7 +2,7 @@
 
 _pkgname="gtk-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r66.bee740f
+pkgver=r94.1505dc0
 pkgrel=1
 pkgdesc="A small LD_PRELOAD library to disable CSD in GTK3, LibHandy, GTK4 and LibAdwaita apps"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 provides=("${_pkgname}" "gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
 conflicts=("${_pkgname}" "gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
 replaces=("gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
-makedepends=("git" "libadwaita" "gtk3" "wayland" "wayland-protocols" "wlroots0.19")
+makedepends=("git" "libadwaita")
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
@@ -21,11 +21,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/Source"
-  ./Build.sh
+  cd "${srcdir}/${pkgname}"
+  gcc -fPIC -shared ./Source/GTK-NoCSD.c -o libgtk-nocsd.so \
+    $(pkg-config --cflags libadwaita-1) \
+    $(pkg-config --cflags --libs gobject-2.0 gio-2.0)
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/Source"
+  cd "${srcdir}/${pkgname}"
   install -Dm 755 libgtk-nocsd.so "${pkgdir}/usr/lib/libgtk-nocsd.so"
 }
