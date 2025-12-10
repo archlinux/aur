@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ptex
 	pkgdesc = Per-Face Texture Mapping for Production Rendering (mingw-w64)
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ptex.us/
 	arch = any
 	license = BSD-3-Clause

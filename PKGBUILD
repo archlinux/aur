@@ -3,7 +3,7 @@
 _pkgname=ptex
 pkgname=mingw-w64-${_pkgname}
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Per-Face Texture Mapping for Production Rendering (mingw-w64)'
 url='http://ptex.us/'
 license=('BSD-3-Clause')
@@ -24,6 +24,7 @@ sha256sums=('d3c2116f5cd650b22217fcdfad9586b6389173fd1d0b694413622743e52083ee')
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
+	-DCMAKE_CXX_STANDARD=20
 	-DPTEX_SHA=$_commit_sha -DPTEX_VER=$pkgver )
 
 prepare() {
@@ -38,7 +39,7 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		CXXFLAGS_STD='c++17' ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF \
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF \
 			-DPTEX_BUILD_STATIC_LIBS=ON -DPTEX_BUILD_SHARED_LIBS=ON
 		cmake --build "build-${_arch}"
 	done
