@@ -2,7 +2,7 @@
 
 _pkgname=pdfrip
 pkgname="${_pkgname}-git"
-pkgver=2.0.1+22.r80.20240618.461fe2f
+pkgver=2.0.1+27.r85.20251113.66c71d4
 pkgrel=1
 arch=(
   'i686'
