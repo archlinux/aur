@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=backmey-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Linux Desktop Backup & Restore (CLI + GUI)"
 arch=('x86_64')
 url="https://github.com/MorganLosto/backmey"
@@ -25,8 +25,11 @@ package() {
     # 1. Install AppImage contents to /opt/backmey
     install -dm755 "${pkgdir}/opt/backmey"
     cp -r --no-preserve=mode,ownership squashfs-root/* "${pkgdir}/opt/backmey/"
-    chmod 755 "${pkgdir}/opt/backmey/AppRun" # Main executable usually
-    # Or typically the binary inside is named 'backmey'
+    
+    # PERMISSIONS FIX:
+    chmod 755 "${pkgdir}/opt/backmey/AppRun"
+    chmod 755 "${pkgdir}/opt/backmey/backmey" 
+    chmod 4755 "${pkgdir}/opt/backmey/chrome-sandbox" || chmod 755 "${pkgdir}/opt/backmey/chrome-sandbox"
     
     # 2. Link GUI binary
     install -dm755 "${pkgdir}/usr/bin"
