@@ -41,6 +41,7 @@ package() {
   find . -name floc.bash -type f -exec install -Dm644 {} "$pkgdir/usr/share/bash-completion/completions/floc" \;
   find . -name _floc -type f -exec install -Dm644 {} "$pkgdir/usr/share/zsh/site-functions/_floc" \;
   find . -name floc.fish -type f -exec install -Dm644 {} "$pkgdir/usr/share/fish/vendor_completions.d/floc.fish" \;
+  find . -name floc.elv -type f -exec install -Dm644 {} "$pkgdir/usr/share/elvish/lib/floc.elv" \;
   find . -name floc.1 -type f -exec install -Dm644 {} "$pkgdir/usr/share/man/man1/floc.1" \;
   gzip "$pkgdir/usr/share/man/man1/floc.1"
 }
