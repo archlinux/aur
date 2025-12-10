@@ -54,7 +54,6 @@ depends=(
   python-six
   sdl2            lib32-sdl2
   speex           lib32-speex
-  steam
 # Start of old steam-native-runtime
   atk             lib32-atk
   cairo           lib32-cairo
@@ -162,6 +161,7 @@ optdepends=(
   pcsclite              lib32-pcsclite
   samba
   sdl2                  lib32-sdl2
+  steam
   unixodbc
   v4l-utils             lib32-v4l-utils
   vulkan-icd-loader     lib32-vulkan-icd-loader
