@@ -1,7 +1,7 @@
 pkgbase = mistral-vibe-hardened
 	pkgdesc = Mistral Vibe - Minimal CLI Coding Agent (Security Hardened)
-	pkgver = 1.0.6
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/mistralai/mistral-vibe
 	install = mistral-vibe-hardened.install
 	arch = x86_64
@@ -15,8 +15,10 @@ pkgbase = mistral-vibe-hardened
 	provides = vibe-acp
 	conflicts = mistral-vibe
 	options = !strip
+	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v1.1.0
 	source = vibe.apparmor
 	source = SECURITY.md
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 

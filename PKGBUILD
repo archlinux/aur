@@ -2,8 +2,8 @@
 # Contributor: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe-hardened
-pkgver=1.0.6
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="Mistral Vibe - Minimal CLI Coding Agent (Security Hardened)"
 # Security: AppArmor MAC profile, strict permissions, isolated environment
 arch=('x86_64')
@@ -19,9 +19,11 @@ optdepends=(
 provides=('mistral-vibe' 'vibe' 'vibe-acp')
 conflicts=('mistral-vibe')
 options=('!strip')
-source=("vibe.apparmor"
+source=("git+${url}.git#tag=v${pkgver}"
+        "vibe.apparmor"
         "SECURITY.md")
 b2sums=('SKIP'
+        'SKIP'
         'SKIP')
 
 package() {
@@ -35,7 +37,7 @@ package() {
     # Use uv to install with correct final paths
     UV_TOOL_DIR="$_tempdir/opt/mistral-vibe" \
     UV_TOOL_BIN_DIR="$_tempdir/opt/mistral-vibe/bin" \
-    uv tool install mistral-vibe --force
+    uv tool install "$srcdir/mistral-vibe" --force
     
     # Fix paths in scripts to use /opt instead of temp path
     for script in "$_tempdir/opt/mistral-vibe/bin/"*; do
