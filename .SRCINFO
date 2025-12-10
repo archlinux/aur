@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = marimo
 	optdepends = python-sqlglot: SQL cells parsing
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.18.3.tar.gz
-	sha256sums = 588f227dfa04f65149dc866a62b345496fa99ecfc5a59981069faaa953adffc9
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.18.4.tar.gz
+	sha256sums = 30b5d8cd8f3e9054b5f7332bf0f4d11cb608712995e4f4feed7337d118eef8ab
 
 pkgname = marimo
