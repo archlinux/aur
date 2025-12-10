@@ -1,33 +1,35 @@
-PKG:=$(lastword $(subst /, ,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
+branch_local := main
+branch_remote := master
+remote := aur
 
-.PHONY: upload clean
+upstream := https://github.com/kodi-pvr/pvr.hts
+version_regexp := .*-Omega
+update_check = git ls-remote --tags --refs $(upstream) | grep -Po '.*refs/tags/\K$(version_regexp)' | sort -V | tail -n1
 
-all: PKGBUILD src
+.PHONY: upload commit update_version
 
-clean:
-	rm -rf .SRCINFO \
-	  ${PKG}.git    \
-	  PKGBUILD      \
-	  src
+default: update_version .SRCINFO
 
-upload: export GIT_DIR=.${PKG}.git/.git
-upload: export GIT_WORK_TREE=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
-upload: .${PKG}.git .SRCINFO
-	git commit -am 'bump'
-	git push origin master
+upload: commit
+	git push $(remote) $(branch_local):$(branch_remote)
 
-.%.git:
-	git clone ssh://aur@aur.archlinux.org/$* $@
-
-src: PKGBUILD
-	makepkg -do
+commit: VERSION = $(shell cat .version)
+commit: .SRCINFO
+	git commit -am "$(VERSION)"
 
 .SRCINFO: PKGBUILD
-	mksrcinfo
+	makepkg --printsrcinfo > $@
 
-src/pvr.hts/pvr.hts/addon.xml.in: .${PKG}.git
+PKGBUILD: PKGBUILD.in .version
+	m4 $< > $@
+	updpkgsums $@
 
-PKGBUILD: src/pvr.hts/pvr.hts/addon.xml.in
+update_version: NEW_VERSION = $(shell $(update_check))
+update_version: CURRENT_VERSION = $(shell cat .version 2>/dev/null)
+update_version:
+	@if [ "$(NEW_VERSION)" != "$(CURRENT_VERSION)" ]; then \
+	  echo "$(NEW_VERSION)" > .version; \
+	  echo "New version: $(NEW_VERSION)"; \
+	fi
 
-%: %.in
-	m4 $< > $*
+# vim: set noexpandtab:
