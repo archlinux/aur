@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.8.10.r4.g78fe18d2
+pkgver=2.0.1.r0.gbac599ca
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
   'python-pynacl'
   'python-qrcode'
   'python-setproctitle'
-  'python-setuptools'
   'python-zeroconf'
   'python-xapp'
   'xapp'
@@ -65,7 +64,7 @@ build() {
 check() {
   desktop-file-validate "build/data/${_desktop_id}.desktop"
   desktop-file-validate "${pkgname%-git}/data/${pkgname%-git}-autostart.desktop"
-  appstreamcli validate --no-net "build/data/${_desktop_id}.appdata.xml" || :
+  appstreamcli validate --no-net "build/data/${_desktop_id}.appdata.xml"
 }
 
 package() {
