@@ -1,6 +1,6 @@
-pkgbase = diyvpn
+pkgbase = diyvpn-git
 	pkgdesc = Simple DIY VPN
-	pkgver = r7.420798b
+	pkgver = r8.614f694
 	pkgrel = 1
 	url = https://gitea.balki.me/balki/diyvpn
 	arch = any
@@ -9,4 +9,4 @@ pkgbase = diyvpn
 	source = git+https://gitea.balki.me/balki/diyvpn.git#branch=main
 	sha256sums = SKIP
 
-pkgname = diyvpn
+pkgname = diyvpn-git
