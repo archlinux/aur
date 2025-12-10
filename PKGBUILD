@@ -2,10 +2,10 @@
 
 pkgname=kwin-x11-sonic
 _pkgname=kwin-x11
-pkgver=6.5.3
+pkgver=6.5.4
 _pkgver=$pkgver
-_pkgtag=6.5.3.2
-pkgrel=2.6
+_pkgtag=6.5.4
+pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/kwin-x11-sonic'
@@ -78,7 +78,7 @@ replaces=($_pkgname-lite)
 source=("git+${url}.git#tag=${_pkgtag}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('226c782f9a0b830f33a061614a8d80a1d5f0471ca80e7f672e67c1369490101e')
+sha256sums=('523e7a736a30e64021040cf1f637b880df8695161692346f27520a475554df2e')
 
 build() {
   cmake -B build -S $pkgname \
