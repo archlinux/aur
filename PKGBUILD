@@ -5,7 +5,7 @@
 _pkgname=hdrview
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=2.6.0+36.r770.20250908.04ed14e
+pkgver=2.6.0+90.r824.20251209.6f9ce09
 pkgrel=1
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
