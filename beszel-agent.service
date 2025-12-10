@@ -4,22 +4,16 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-# User-tweakable settings live in /etc/beszel-agent.conf
 EnvironmentFile=-/etc/beszel-agent.conf
 ExecSearchPath=/opt/rocm/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
-
 ExecStart=/opt/beszel-agent/beszel-agent
 User=beszel
 Group=beszel
-
-# Restart logic
 Restart=on-failure
 RestartSec=5
-
-# Write-able state dir owned by the service user
 StateDirectory=beszel-agent
 
-# --- Hardening ---
+# hardening
 KeyringMode=private
 LockPersonality=yes
 ProtectClock=yes
@@ -30,6 +24,12 @@ ProtectSystem=strict
 RemoveIPC=yes
 RestrictSUIDSGID=yes
 SystemCallArchitectures=native
+
+# required for smartctl
+AmbientCapabilities=CAP_SYS_RAWIO CAP_SYS_ADMIN
+CapabilityBoundingSet=CAP_SYS_RAWIO CAP_SYS_ADMIN
+# bug workaround (https://github.com/henrygd/beszel/issues/1504)
+Environment="EXCLUDE_SMART=/dev/nvme0,/dev/nvme1,/dev/nvme2,/dev/nvme3,/dev/nvme4,/dev/nvme5,/dev/nvme6,/dev/nvme7,/dev/nvme8,/dev/nvme0"
 
 [Install]
 WantedBy=multi-user.target

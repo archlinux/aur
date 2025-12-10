@@ -2,14 +2,15 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
 license=('MIT')
 optdepends=(
   'rocm-smi-lib: AMD GPU metrics via rocm-smi'
-  'intel-gpu-tools: Intel GPU metrics via intel_gpu_top')
+  'intel-gpu-tools: Intel GPU metrics via intel_gpu_top'
+  'smartmontools: SMART metrics via smartctl')
 provides=('beszel-agent')
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
@@ -19,7 +20,7 @@ source+=(
   'beszel-agent.tmpfiles'
   'beszel-agent.conf.example'
 )
-sha256sums=('e9642e11a04ee6953bff30a2ea212015bfcf1ebc7aff4bf033bfb13200a43aca'
+sha256sums=('cd47e577116c143cb9d297c96ab6d9f9b4ef3e87461fc19faa4b1084da70c907'
             '03f82109a98648c49417c3e0dd3990ae56e6010b33c7fc9c8e0263c80f090f69'
             '823448a308c7329431ae713ab98a5c8cea2a00528177f3d31aa3f5eb6c4a751e'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
