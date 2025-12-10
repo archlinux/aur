@@ -5,7 +5,7 @@ pkgdesc='Rutoken Connect plugin for browser integration'
 arch=('x86_64')
 url='https://www.rutoken.ru/support/download/rutoken-connect/'
 license=('custom:rutoken')
-depends=('rutoken-pkcs')
+depends=('rutoken-pkcs11')
 makedepends=('coreutils')
 options=(!strip)
 
