@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -21,7 +21,6 @@ depends=(
     "python-pydantic"
     "python-pydantic-settings"
     "python-pyperclip"
-    "python-pytest-xdist"
     "python-textual"
     "python-tomli-w"
     "python-watchfiles"
@@ -38,6 +37,7 @@ makedepends=(
     "python-pytest-asyncio"
     "python-pytest-textual-snapshot"
     "python-pytest-timeout"
+    "python-pytest-xdist"
     "python-respx"
     "ruff"
     "twine"
