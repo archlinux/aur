@@ -1,15 +1,15 @@
 # Maintainer: AmaseCocoa <cocoa@amase.cc>
 pkgname=alter
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="An "Alternative" account switcher."
+pkgdesc="Switch git username and email and credential in one-line."
 arch=("x86_64")
 url="https://github.com/AmaseCocoa/alter"
 license=('MIT')
 depends=('glibc')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AmaseCocoa/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("aa75d4416eb479a2faa0ee9cdb85b51912b4aad4928a38e06ee37036dd108aed")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/AmaseCocoa/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("0206555f2e5ff3a4bac2eebaae3604beffe597bfa731f8bee5bf4251dada5fc7")
 
 
 build() {
