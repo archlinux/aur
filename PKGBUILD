@@ -1,14 +1,14 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kubech
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Set kubectl contexts/namespaces per shell/terminal to manage multi Kubernetes cluster at the same time.'
 arch=('x86_64')
 url='https://github.com/DevOpsHiveHQ/kubech'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DevOpsHiveHQ/kubech/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a1dbc0f8103a4b4a9fda4203b1b84b029144401a3d4284537b3b169804ef872')
+sha256sums=('b4d5d8b1b01614980c1d7fb7782864eaad4ff9b4ed3563a2a7f6e76515581eab')
 
 build() {
   cd $pkgname-$pkgver
