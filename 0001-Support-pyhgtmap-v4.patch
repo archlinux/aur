@@ -1,0 +1,58 @@
+From b1296872ef65ce5ede556da320cece438fbb24ad Mon Sep 17 00:00:00 2001
+From: quietvoid <39477805+quietvoid@users.noreply.github.com>
+Date: Wed, 10 Dec 2025 06:58:10 -0500
+Subject: [PATCH] WIP - Support pyhgtmap v4
+
+---
+ wahoomc/osm_maps_functions.py | 12 ++++++------
+ wahoomc/setup_functions.py    |  4 ++--
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/wahoomc/osm_maps_functions.py b/wahoomc/osm_maps_functions.py
+index 9412880..c1e902a 100644
+--- a/wahoomc/osm_maps_functions.py
++++ b/wahoomc/osm_maps_functions.py
+@@ -344,18 +344,18 @@ class OsmMaps:
+                     or self.o_osm_data.force_processing is True:
+                 self.log_tile_info(tile["x"], tile["y"], tile_count)
+                 timings_tile = Timings()
+-                cmd = ['phyghtmap']
++                cmd = ['pyghtmap']
+                 cmd.append('-a ' + f'{tile["left"]}' + ':' + f'{tile["bottom"]}' +
+-                           ':' + f'{tile["right"]}' + ':' + f'{tile["top"]}')
++                            ':' + f'{tile["right"]}' + ':' + f'{tile["top"]}')
+                 cmd.extend(['-o', f'{out_file_elevation}', '-s 10', '-c 100,50', elevation_source,
+-                            '--jobs=8', '--viewfinder-mask=1', '--start-node-id=20000000000',
++                            '--jobs=8', '--sources=srtm1', '--start-node-id=20000000000',
+                             '--max-nodes-per-tile=0', '--start-way-id=2000000000', '--write-timestamp',
+                             '--no-zero-contour', '--hgtdir=' + hgt_path])
+-                cmd.append('--earthexplorer-user=' + username)
+-                cmd.append('--earthexplorer-password=' + password)
++                cmd.append('--srtm-user=' + username)
++                cmd.append('--srtm-user=' + password)
+ 
+                 run_subprocess_and_log_output(
+-                    cmd, f'! Error in phyghtmap with tile: {tile["x"]},{tile["y"]}. Win_macOS/elevation')
++                    cmd, f'! Error in pyghtmap with tile: {tile["x"]},{tile["y"]}. Win_macOS/elevation')
+                 self.log_tile_debug(tile["x"], tile["y"], tile_count, timings_tile.stop_and_return())
+ 
+             tile_count += 1
+diff --git a/wahoomc/setup_functions.py b/wahoomc/setup_functions.py
+index ad735ed..6925b01 100644
+--- a/wahoomc/setup_functions.py
++++ b/wahoomc/setup_functions.py
+@@ -113,9 +113,9 @@ def check_installation_of_programs_credentials_for_contour_lines():
+                     \nPlease refer to the Quickstart Guide of wahooMapsCreator for instructions:\n- https://github.com/treee111/wahooMapsCreator/blob/develop/docs/QUICKSTART_ANACONDA.md#additional-programs-for-generating-contour-lines \
+                     \nor create an issue:\n- https://github.com/treee111/wahooMapsCreator/issues"
+ 
+-    if not is_program_installed("phyghtmap"):
++    if not is_program_installed("pyghtmap"):
+         sys.exit(
+-            f"phyghtmap is not installed. {text_to_docu}")
++            f"pyghtmap is not installed. {text_to_docu}")
+ 
+     username, password = read_earthexplorer_credentials()
+ 
+-- 
+2.52.0
+
