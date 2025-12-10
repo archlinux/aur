@@ -1,6 +1,6 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=python-barcode
-pkgver=0.15.1
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Create standard barcodes with Python. No external modules needed."
 arch=('any')
