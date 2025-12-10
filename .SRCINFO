@@ -5,8 +5,6 @@ pkgbase = iscsi-util
 	license = MIT
 	source = https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz
 	source = iscsi-util.desktop
-	source = iscsi-util.png
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

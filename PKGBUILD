@@ -5,10 +5,8 @@ arch=('x86_64')
 license=('MIT')
 depends=()
 source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz"
-        "iscsi-util.desktop"
-        "iscsi-util.png")
+        "iscsi-util.desktop")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 package() {
