@@ -1,7 +1,7 @@
 # Maintainer: Jon Wiersma (archaur at jonw dot org)
 pkgname='segyio'
 pkgdesc='Library for easy interaction with SEG-Y formatted seismic data with bindings for Python and Matlab'
-pkgver='1.8.3'
+pkgver='1.9.14'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/equinor/segyio'
@@ -19,7 +19,7 @@ makedepends=(
 optdepends=(
   'python-sphinx: to build the documentation'
 )
-source=("https://github.com/equinor/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/equinor/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "$pkgname-$pkgver"
@@ -34,4 +34,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('0a68792d1d7215b4f48ad735aa3d39fb')
+md5sums=('02adb776748db03475629ca1ebd196c9')
