@@ -1,6 +1,6 @@
 pkgbase = ty
 	pkgdesc = An extremely fast Python type checker and language server, written in Rust.
-	pkgver = 0.0.1_alpha.32
+	pkgver = 0.0.1_alpha.33
 	pkgrel = 1
 	url = https://github.com/astral-sh/ty
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ty
 	makedepends = python-installer
 	depends = python
 	options = !lto
-	source = ty::git+https://github.com/astral-sh/ty#tag=0.0.1-alpha.32
-	b2sums = f678140ce3ad8423f8cb586c55de129e01c7de3f4426715f0642ebf2a3cb92aecd7561afd882e575cfad5709c7d9e5c522f73137b88ef284e57d560f187e7cb5
+	source = ty::git+https://github.com/astral-sh/ty#tag=0.0.1-alpha.33
+	b2sums = f5c7de3f1e555cfea0706bcb8c896109faad4efa56d1328ecc2bb3ddc78f9ca62276cdcecbfe640ceb627d57158bea414b05aa021316186c4c939fb2423c6b0c
 
 pkgname = ty
