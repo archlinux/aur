@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('wayland' 'glibc' 'systemd-libs')
 makedepends=('gcc' 'cmake' 'make' 'wayland-protocols' 'pandoc-cli' 'systemd')
 keywords=('wayland' 'virtual-pet' 'overlay' 'bongo-cat' 'cat' 'wpets' 'desktop-toy' 'bongo' 'bongocat-keyboard' 'cat' 'vpet' 'screenmate')
 source=("wayland-vpets-$pkgver.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v$pkgver.tar.gz")
-sha256sums=('e31078956bb43ce751a7cf6411de25dd480fd3453348fc6097a347d3c9710816')
+sha256sums=('03b2280c57cbea689db72d47fae50aa01b31171fec56e71901ff85537c15cfcb')
 
 build() {
     cd "$srcdir/wayland-vpets-$pkgver"
@@ -34,7 +34,7 @@ package() {
     install -Dm755 build/bongocat-all "$pkgdir/usr/bin/${pkgname}-all"
 
     # Install example configuration
-    install -Dm644 bongocat.conf "$pkgdir/usr/share/${pkgname}/bongocat.conf.example"
+    install -Dm644 bongocat.conf.example "$pkgdir/usr/share/${pkgname}/bongocat.conf.example"
     install -Dm644 examples/clippy.bongocat.conf "$pkgdir/usr/share/${pkgname}/clippy.bongocat.conf.example"
     install -Dm644 examples/digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/digimon.bongocat.conf.example"
     install -Dm644 examples/pokemon.bongocat.conf "$pkgdir/usr/share/${pkgname}/pokemon.bongocat.conf.example"
