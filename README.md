@@ -6,7 +6,7 @@
 `$ paru -S hyconf`
 
 2 - or install manually with:
-1. `$ git clone https://aur.archlinux.org/hyconf.git` (The AUR package is updated first. For the most recent version, use the AUR source rather than Codeberg.)
+1. `$ git clone https://aur.archlinux.org/hyconf.git`
 2. `$ cd hyconf`
 3. `$ makepkg -si`
 
