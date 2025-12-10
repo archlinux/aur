@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('glibc' 'perl' 'tcl')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
-source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.53.tar.gz')
+source=("http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-$pkgver.tar.gz")
 md5sums=('d4e172f9d66c713ec3ced5929bd7fbf3')
 sha512sums=('6f528dcaaf8e00a9c5461f93ef235de2d2028e61edd6a101b05cadc04260b8262b1bfbe9dae8a51168daf30cf0b9e73e5548e136e8cffbf38dfbc8667d6c2a30')
-_distdir="Tcl-1.53"
+_distdir="Tcl-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
