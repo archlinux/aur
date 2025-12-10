@@ -10,8 +10,8 @@
 
 pkgname=ansible-core-2.16
 _pkgname=ansible
-pkgver=2.16.14
-pkgrel=3
+pkgver=2.16.15
+pkgrel=1
 pkgdesc='Radically simple IT automation platform (legacy version with python 3.6 remote support)'
 arch=('any')
 url='https://www.ansible.com'
@@ -68,25 +68,29 @@ source=(
     "0001-do-not-pin-resolvelib.patch"
     "0002-add-3.13-as-supported-controller-version.patch"
     "0003-remove-crypt-related-tests.patch"
-    "0004-remove-ther-upper-bound-of-setuptools-version.patch"
+    "0004-remove-ther-upper-bound-of-setuptools-and-wheel-vers.patch"
+    "0005-remove-bcrypt-related-unit-test.patch"
 )
-sha512sums=('6a375db9481be199b0bd1fd41ffc7631bd69cab1ebdacdb0a41f42cdba60ee4916a3eb4238fd865b5b75f4f32ba42a9ee073d56d6986ce3aecf27bb75f02898c'
-            '0b5780f3d0cc2a74e92309beb3360779c49e4312b17c9004942789ac7153f09561d441170255b502b4a8299b097baef01a91cdac41f5a93acc9ba370acdb8c4b'
-            'bebff668cb1425032ea8fb945e68a3e6ba652db28203479fab79a87313d9c1ea72f611f10a3b9e9aedea58b84145ed958378151d047621e9edb5383c8061792b'
-            'd7929a11f0d90ffce5542555dc90b51c6f06c1461c017990a649daddbaf2958f084c6ac2784e40b189c2c4fb7403c4aa7a9b2337f67bf53c5cd32b0199b68021'
-            'f1b7778361a00e3d4d09e691ae795af318e2b75ffffa63530ddda139f65307ce4b1884a21e6fddb4ba9f6b7da7930bf5501ff9adab57985b9e4087b08c8f15a2')
-b2sums=('f1d6da6785d4ec19a9903042cb6f7bbedf6fc838f8e25a3dc82ac96f89d302130790a8e3f38bbaeb248e96319fb592192bb626275ef77b8917136894103129d0'
-        'eec00d58f9bf4c7aa8c29d342c84d71572954bd4b6699fb6e0773cf58bdb9d9deccded75cc29641ea40c2e5890bd1060616803d79d179ad072e3de34305f72e3'
-        'a459463e9e8e0b84c8abca2ef82c77abb98821e41ba4144f09b779a6dd115338e3182e390e106fca5cedecc12e84e0783dbfda49d08b41004cbb93b5937be40a'
-        'c38c51ee661444ae0e195594ec53b5f26ce5499f27c5abe30d5ee81ca0fe5d8d87216799f5fb5d1bb03ae2035adf8b0dfedebe3cb409221f2ead9f9cf3055571'
-        '145228c67675ec9bdc591889bd8baf2bbd03971d0b510518380cf4fb5cc164aaab4647c8aec3f5ca5f4279b573ae934f243a107b4346f9c13e61637516d48591')
+sha512sums=('cd79668288cba9843a41d2bcbad66cec4de1aba45150ebae47bfaac13f9e5574f33b52822e29f55ed994f48d8006ce3671665189e163de32d27c74125bae047c'
+            '8751000296f70f7c2b44e323ac14d2d64916b1397a4620c542e091f7f9a177da74ae22d5e1753ca8235523555a0357018e769983ae73a7b7565277a35ad85bc3'
+            '3a378992af80082d2fb2363b81ef2707f0f8f0dafd38a143f9d5261dd2249ea24940ae0de509e220f285431a0b0c444fa860cfb8f43bea71a66b6e930b440d3b'
+            'f85770861c1806a666476cabfe3f965a61f33ae4e2fa49a283d85632b577d5ca0c5070e0f2395cee3bc234642d59b542f4502b6237af5f843e5839434715ce67'
+            '137ec17bab6b5e2790a66a1f64f0752d8bf6c90bfce073fc6413b515ff6ef614f95362e67150ad50e8bdf39049802783011d77dca8c04d6e646f9afa16896b36'
+            '8d11fe5cf76dd81ae86f5b4c5b14dfb7526800b61f5a6c23ea8b8d94743659cbfdec0565204823067838468379e24224c851962e563b5593554fac30e9c00ccd')
+b2sums=('5d669ec8f6585f2a093e326b630f30ddc0afbd801484a7122fb490f0e10a67ddc26539a076d6721da39702c70a00e7e132aa98cdf7c4629493202c76c43a7c99'
+        'd12885b91e3c25c4ac11b23be632a4889bc5e792e919985abd8363365d334f772f332cb124dd6121e312d55dd29bac220549e0c94fc1ce2d22802d661066163f'
+        '19da403b85a127a5f75f2f0ca50a0b87a90c655f71f7588d855a769e3c43cfc8a03cb2124aebe714826b181d8fceff3221f97460c5d81af422696cfa2a700cff'
+        '4bce735a8a09d986881f1bafcf102a0dcc28083d3ab04771ae9b5bc082c1c931306ce2689182baa189ed38270212e8f6b228eac943d05a66a401aeb65394c3cc'
+        '2ab205d8b8266bb44863d304cfb3e81b42b14d6f1e90f79df9915d9cb65d62c35eab482ec5ef0000fb4cb3e557a8605adce06cc69b037fe33a96d656d604c7e1'
+        '3b42c1b86fa198f5203de22317dcffb4a683ed443a479b3d6ef07b3d3659c3c41cd83c98387891d71f68817b1454950fd2c6317125f2b975faea6659ff620617')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   patch -p1 < ../0001-do-not-pin-resolvelib.patch
   patch -p1 < ../0002-add-3.13-as-supported-controller-version.patch
   patch -p1 < ../0003-remove-crypt-related-tests.patch
-  patch -p1 < ../0004-remove-ther-upper-bound-of-setuptools-version.patch
+  patch -p1 < ../0004-remove-ther-upper-bound-of-setuptools-and-wheel-vers.patch
+  patch -p1 < ../0005-remove-bcrypt-related-unit-test.patch
 }
 
 build() {
