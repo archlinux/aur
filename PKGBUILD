@@ -1,26 +1,22 @@
 pkgname=iscsi-util
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 depends=('open-iscsi')
-source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz"
-        "iscsi-util.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-  # Crear directorio para librerías
+  # Instalar todo el bundle en /usr/lib/iscsi-util
   install -d "$pkgdir/usr/lib/iscsi-util"
+  cp -r "$srcdir"/* "$pkgdir/usr/lib/iscsi-util/"
 
-  # Copiar binario self-contained con su nombre real
-  install -Dm755 "$srcdir/ISCSI-Util" "$pkgdir/usr/lib/iscsi-util/ISCSI-Util"
-
-  # Crear directorio para binarios y enlace simbólico
+  # Crear symlink en /usr/bin
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/iscsi-util/ISCSI-Util "$pkgdir/usr/bin/iscsi-util"
 
-  # Integración con el sistema
+  # Desktop entry e icono
   install -Dm644 "$srcdir/iscsi-util.desktop" "$pkgdir/usr/share/applications/iscsi-util.desktop"
   install -Dm644 "$srcdir/iscsi-util.png" "$pkgdir/usr/share/pixmaps/iscsi-util.png"
 }
