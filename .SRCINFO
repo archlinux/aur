@@ -1,6 +1,6 @@
 pkgbase = focus-gtd-bin
 	pkgdesc = A complete Getting Things Done (GTD) productivity system
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/dongdongbh/Focus-GTD
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = focus-gtd-bin
 	depends = libappindicator-gtk3
 	provides = focus-gtd
 	conflicts = focus-gtd
-	source_x86_64 = https://github.com/dongdongbh/Focus-GTD/releases/download/v0.2.3/focus-gtd_0.2.3_amd64.deb
+	source_x86_64 = https://github.com/dongdongbh/Focus-GTD/releases/download/v0.2.5/focus-gtd_0.2.5_amd64.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = focus-gtd-bin

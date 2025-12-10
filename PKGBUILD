@@ -1,6 +1,6 @@
 # Maintainer: dongdongbh <dongdongbhbh@gmail.com>
 pkgname=focus-gtd-bin
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
