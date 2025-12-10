@@ -3,7 +3,7 @@
 # Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig
-pkgver=0.14.0a0
+pkgver=0.14.1a0
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
@@ -18,7 +18,7 @@ arch=('any')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
-b2sums=('e4a8e23654238e9920f76d634174194245db3b46dba0a6106a8229dc6e2b01334adb8541166f2bdecbe79c8015dd715f76d7688419639d4161f15ae2d3f69ab8')
+b2sums=('20e240f8d0c042e3ee7a75a18235d4282e7e38c5d66ca766b7c9264051105094ba29cecf77618a5cde645a88340252e68c5fc76e64c1a436480051290fda61bf')
 
 build() {
 	cd "stig-${pkgver}"
