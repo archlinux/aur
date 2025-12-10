@@ -1,6 +1,6 @@
 pkgbase = happy-go-christmas
 	pkgdesc = A high-performance console Christmas tree written in Go with embedded music
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/XPLassal/happy-go-christmas
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = happy-go-christmas
 	makedepends = git
 	depends = alsa-lib
 	depends = glibc
-	source = happy-go-christmas-1.0.6.tar.gz::https://github.com/XPLassal/happy-go-christmas/archive/v1.0.6.tar.gz
-	sha256sums = 95377abd362b31f5015b6e4b387721fae9daecf05966c8e08bdd445263d8207b
+	source = happy-go-christmas-1.0.7.tar.gz::https://github.com/XPLassal/happy-go-christmas/archive/v1.0.7.tar.gz
+	sha256sums = 9ffc42ad55d6dd79c68094732f00c41ea7f3c5bb586bbd29a16743daa3eb75b6
 
 pkgname = happy-go-christmas
