@@ -1,23 +1,20 @@
 pkgbase = mysql-connector-c++
 	pkgdesc = A MySQL database connector for C++
 	pkgver = 1.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dev.mysql.com/doc/connector-cpp/en/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
+	makedepends = cmake3
 	makedepends = boost
 	depends = libmariadbclient
-	source = https://mirrors.sohu.com/mysql/Connector-C++/mysql-connector-c++-1.1.9.tar.gz
-	source = https://mirrors.sohu.com/mysql/Connector-C++/mysql-connector-c++-1.1.9.tar.gz.asc
+	source = https://downloads.mysql.com/archives/get/p/20/file/mysql-connector-c++-1.1.9.tar.gz
 	source = 0001-mysql-connector-c++-mariadb-api.patch
 	source = 0002-mysql-connector-c++-no-JSON.patch
 	validpgpkeys = A4A9406876FCBD3C456770C88C718D3B5072E1F5
 	sha256sums = 3e31847a69a4e5c113b7c483731317ec4533858e3195d3a85026a0e2f509d2e4
-	sha256sums = SKIP
 	sha256sums = 1694ead0b9c9cb7803a76f56e3871b4f64f045a07fa390cf18bc15be798035ee
 	sha256sums = 92de10ee54cb8f8c5b98a85ce441372375a6056d7180f584aaa223a7513812e2
 
 pkgname = mysql-connector-c++
-
