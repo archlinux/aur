@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=pyhgtmap
-pkgver=3.9
+pkgver=4.0
 pkgrel=1
 pkgdesc="Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data"
 _outname="${pkgname}-v${pkgver}"
@@ -26,8 +26,19 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('gdal' 'python-gdal')
-source=("${_outname}::git+https://github.com/agrenott/pyhgtmap.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "${_outname}::git+https://github.com/agrenott/pyhgtmap.git#tag=v${pkgver}"
+  '0001-Switch-to-ClassRegistry-v5.patch'
+)
+b2sums=(
+  'SKIP'
+  'bba5103165f09116b49279988b2dc73878ab37c93f960ea10c77e5f26122e63228bc5909f351e0601ee168b3f179a714041bc42e93934f636ecf50361b8b58e5'
+)
+
+prepare() {
+  cd "${_outname}"
+  patch -Np1 -i "${srcdir}/0001-Switch-to-ClassRegistry-v5.patch"
+}
 
 build() {
   cd "${_outname}"
