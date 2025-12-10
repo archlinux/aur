@@ -1,7 +1,7 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='0.4.1'
+_upstreamver='0.4.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='spyder-line-profiler'
@@ -18,7 +18,7 @@ depends=('python' 'spyder' 'python-qtawesome' 'python-qtpy' 'python-line-profile
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('c377bc9963c4474c4714bdacc4d002b43cd8311b4348c479b419d830cc816a82')
+sha256sums=('489fe00bace052f7b5b90c76fb2137afe4006a0d9ef5bef72a31269355f21321')
 
 
 build() {

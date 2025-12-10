@@ -1,6 +1,6 @@
 pkgbase = spyder-line-profiler
 	pkgdesc = Plugin for the Spyder IDE that integrates the Python line profiler
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://docs.spyder-ide.org/current/plugins/lineprofiler.html
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = spyder-line-profiler
 	depends = python-qtawesome
 	depends = python-qtpy
 	depends = python-line-profiler
-	source = https://files.pythonhosted.org/packages/source/s/spyder_line_profiler/spyder_line_profiler-0.4.1.tar.gz
-	sha256sums = c377bc9963c4474c4714bdacc4d002b43cd8311b4348c479b419d830cc816a82
+	source = https://files.pythonhosted.org/packages/source/s/spyder_line_profiler/spyder_line_profiler-0.4.2.tar.gz
+	sha256sums = 489fe00bace052f7b5b90c76fb2137afe4006a0d9ef5bef72a31269355f21321
 
 pkgname = spyder-line-profiler
