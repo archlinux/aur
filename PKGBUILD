@@ -9,7 +9,7 @@
 # Contributor: coolkehon <coolkehon@gmail.com>
 
 pkgname=task-git
-pkgver=3.4.1.r72.ge6b9c71
+pkgver=3.4.2.r13.gf551619
 pkgrel=1
 epoch=1
 pkgdesc="A command-line todo list manager"
