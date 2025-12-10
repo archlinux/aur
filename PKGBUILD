@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-media-controls
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=0
 pkgdesc="A media indicator for the GNOME shell"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=()
 depends=('gnome-shell' 'glib2')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=("https://github.com/sakithb/media-controls/releases/download/v${pkgver}/mediacontrols@cliffniff.github.com.shell-extension.zip")
+source=("https://github.com/sakithb/media-controls/releases/download/v${pkgver}/mediacontrolscliffniff.github.com.shell-extension.zip")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,7 +19,9 @@ pkgver() {
 
 package() {
     glib-compile-schemas $srcdir/schemas/
-    rm $srcdir/mediacontrols@cliffniff.github.com.shell-extension.zip
+    rm $srcdir/mediacontrolscliffniff.github.com.shell-extension.zip
+
+    chmod 644 $srcdir/metadata.json
 
     destdir="$pkgdir/usr/share/gnome-shell/extensions/mediacontrols@cliffniff.github.com/"
     mkdir -p "$destdir"
