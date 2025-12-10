@@ -1,11 +1,11 @@
 pkgname=uzdoom-bin
 pkgver=4.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64')
 url="https://github.com/UZDoom/UZDoom"
 license=('BSD' 'GPL3' 'LGPL3')
-depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic-bin' 'libvpx' 'patchelf')
+depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'libvpx' 'patchelf')
 conflicts=("uzdoom")
 provides=("uzdoom")
 makedepends=('unzip')
@@ -16,7 +16,7 @@ source=("uzdoom")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/lib/gzdoom"
+    install -dm755 "$pkgdir/usr/lib/uzdoom"
     install -dm755 "$pkgdir/usr/share/uzdoom"
     install -dm755 "$pkgdir/usr/share/icons"    
     install -dm755 "$pkgdir/usr/share/licenses" 
@@ -51,6 +51,11 @@ package() {
     for f in "${mimeconflicts[@]}"; do
       rm -f "$srcdir/squashfs-root/usr/share/mime/$f"
     done
+    
+   #zmusic lib move
+    find "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu" -maxdepth 1 -name 'libzmusic.so.*' -exec mv {} "$pkgdir/usr/lib/uzdoom/" \;
+   #cleanup 
+    rm -rf "$srcdir/squashfs-root/usr/lib"
     
     cp -r "$srcdir/squashfs-root/usr" "$pkgdir"
     cp -r "$srcdir/uzdoom" "$pkgdir/usr/bin"
