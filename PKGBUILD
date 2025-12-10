@@ -1,9 +1,12 @@
 pkgname=iscsi-util
 pkgver=1.0.3
 pkgrel=1
+pkgdesc="GUI for an iSCSI initiator, a simple way to connect targets whitout write any command."
+
 arch=('x86_64')
 license=('MIT')
 depends=('open-iscsi')
+url="https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro"
 source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz")
 sha256sums=('SKIP')
 
