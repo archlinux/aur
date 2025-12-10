@@ -1,0 +1,3 @@
+[python-pygame]
+source = "pypi"
+pypi = "pygame-ce"
