@@ -2,7 +2,7 @@
 
 _name=langgraph-runtime-inmem
 pkgname=python-$_name
-pkgver=0.16.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Inmem implementation for the LangGraph API server."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://pypi.org/project/langgraph-runtime-inmem/"
 depends=('python' 'python-blockbuster' 'python-langgraph' 'python-structlog' 'python-sse-starlette' 'python-starlette' 'python-langgraph-checkpoint')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e0bddac6aa59f3c0477c8814af9b178556aba6aa9b27da04c9a9c6abcbdf0e0d')
+sha256sums=('6ee918f0a839f3044cbed69580b44eb9cadf31a4771fc2e6d66842c7b7722fb0')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
