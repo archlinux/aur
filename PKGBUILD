@@ -7,8 +7,8 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=143.0.1
-pkgrel=2
+pkgver=145.0
+pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
 arch=(x86_64)
@@ -27,7 +27,7 @@ depends=(
   libvpx libvpx.so
   zlib
   bzip2 libbz2.so
-  botan2
+  botan
   libwebp libwebp.so libwebpdemux.so
   libevent
   libjpeg-turbo
@@ -51,7 +51,7 @@ depends=(
   json-c
   libcanberra
   ffmpeg
-  icu libicui18n.so libicuuc.so
+  # icu libicui18n.so libicuuc.so TOTO find icu 78+ patch
 )
 makedepends=(
   unzip zip diffutils python nasm mesa libpulse libice libsm
@@ -59,14 +59,13 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/20ba3ab2ce776f04ee6e38fe51a0b6f9e972e9f2
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/9864f8ea27dfa952f76a3997baa14f37fc44b49f
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/vendor-prefs.js
         $commit/distribution.ini
         $commit/mozconfig.cfg
         $commit/metainfo.patch
         $commit/org.mozilla.Thunderbird.desktop
-        $commit/0023-bmo-1982569-allocator-api2-fix-unsafe-autoref-lint-error.patch
 )
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
@@ -120,6 +119,9 @@ build() {
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
   export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
 
+  # Set remoting name to fix the missing wayland icon
+  export MOZ_APP_REMOTINGNAME=org.mozilla.Thunderbird
+
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CFLAGS="${CFLAGS/-fexceptions/}"
@@ -170,18 +172,17 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('5f4fd5e4f5bc9fee9852d51b8e675f7c9c605660332c24aa0c90e5437301b468153c1788720bc80a53cfc1c3bf95a4bdb622a0533b8f11fb9853b290485c47c6'
+sha512sums=('f33835e4d740b32d072ac915124d988ef9d4cbe55d7c972c817991d19b64e8bc95b75b503ad3cb9abf4fd1d220fc7cb61720ea84dc49482faa13da1690d7d80e'
             'SKIP'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
-            '3a6957380243716065e9dff66cbbee8c5aa6b34b5b19bc6193a23407d33f6e4c23bfca55b929bee4739bdd2c47838cc0fd6667b188de066b795ab55e3bf275a6'
+            '8c315b8744f91ad762ad4887dc757e1b282fa3bc084c60422de93695a98804a0a7bb8e091e94ca6aa057b65587dc5c91db309fa87295b47dee43becf06e126fb'
             '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
-            '1570bc8dcd33cdcda5c06827fac1377f1a7c2bd4398671c7270c1d595f2bd0f1e81428aea4e392370097aaa409907e318ac3002ea34ac5734fd94b438b4588cb'
             )
 
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/f44eb33/unity-menubar.patch)
-sha512sums+=(9b945c7f058863d026aa825aa2a4c88f4ac9ae65eaa23240d396b2d45a2354752802ed33e86d3b1483637672df5a0e6ffe67f5031bbb7069cabd69b9a706d5b9)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/a728a7e/unity-menubar.patch)
+sha512sums+=(ac8034498589faa66470e223ee40e73f5d52794b1bf0a8678c54a0ce8a49053149c3da5524f6d80e1985991b89ef40718e1c97a3a54f9d44f0692d53d578ffbe)
