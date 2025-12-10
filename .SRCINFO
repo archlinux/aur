@@ -1,7 +1,7 @@
 pkgbase = vkquake
 	pkgdesc = A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support.
 	pkgver = 1.32.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Novum/vkquake
 	install = vkquake.install
 	arch = x86_64
@@ -32,6 +32,6 @@ pkgbase = vkquake
 	sha512sums = 9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f
 	sha512sums = 5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0
 	sha512sums = f1f1535724c2838d1fc257eee9996029a2ed5a50f15488e852d17bb8d0dc9cdcc7a22cb88021f4e5489e74ea8be6b135d6767a2b7f01a7d3922151e3f79c9469
-	sha512sums = 0ea7e9cfa0879767d057c7366f0cb9dd0da49d3df07ae97d43ab30a4dddfd63b435b8fa83cd466d5d70aec702884de51acb0021a92869a2aa3db81669f10ccbc
+	sha512sums = 7ba51ad6788b95cb5f38cfd9dfe345e798a32f9d8eca04436495d726abf846399933fa8368056a2bf6b70180b48b9a3839fc37603ae32f007d30b32482b9d225
 
 pkgname = vkquake
