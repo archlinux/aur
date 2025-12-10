@@ -1,6 +1,6 @@
 # Maintainer: Igor Khanin <igor at khanin dot biz>
 pkgname=katvan
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A bare-bones editor for Typst files, with a bias for RTL editing'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('cargo'
              'gtest')
 options=(!lto)
 source=("https://github.com/IgKh/katvan/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz")
-sha256sums=('e6ba8a8eb7933236d9c830757439c312b2881864486aa1cb77a2b27f496a008d')
+sha256sums=('a6225fee59abce0a818ba9180d53d0ca4c6f7a181fa7e6f1331c7e88562c1302')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
