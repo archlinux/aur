@@ -5,7 +5,7 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=418
 pkgver=2.3.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -21,7 +21,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<0.6'  # server/src/constants.ts
+    'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
