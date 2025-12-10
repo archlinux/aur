@@ -1,0 +1,19 @@
+pkgbase = modelib2-git
+	pkgdesc = The Mechanics of Defects Evolution Library 2 (MoDELib2)
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/giacomopo/MoDELib2
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	makedepends = git
+	depends = fftw
+	depends = eigen
+	depends = boost
+	depends = suitesparse
+	depends = pybind11
+	options = !strip
+	source = git+https://github.com/giacomopo/MoDELib2
+	sha256sums = SKIP
+
+pkgname = modelib2-git
