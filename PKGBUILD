@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite
-pkgver=1.0.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without ASCII media support."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('xclip: clipboard support on X11'
             'aspell: spellchecking'
             'yt-dlp: youtube support'
             'mpv: youtube in native player')
-source=("$pkgname.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.gz")
 sha256sums=('SKIP')
 options=(!strip)
 
