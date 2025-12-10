@@ -1,6 +1,6 @@
 pkgbase = amd-debug-tools-git
 	pkgdesc = Debug tools for AMD zen systems.
-	pkgver = 0.2.9+3.r556.20251108.4dfec56
+	pkgver = 0.2.11.r560.20251122.36a5ff7
 	pkgrel = 1
 	epoch = 0
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools
@@ -30,11 +30,11 @@ pkgbase = amd-debug-tools-git
 	optdepends = python-matplotlib: For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'
 	optdepends = python-seaborn: For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'.
 	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd-s2idle').
-	provides = amd-debug-tools=0.2.9+3.r556.20251108.4dfec56
-	provides = amd-bios-logging-control-script=0.2.9+3.r556.20251108.4dfec56
-	provides = amd-psr-identification-script=0.2.9+3.r556.20251108.4dfec56
-	provides = amd-pstate-analysis-script=0.2.9+3.r556.20251108.4dfec56
-	provides = amd-s2idle-analysis-script=0.2.9+3.r556.20251108.4dfec56
+	provides = amd-debug-tools=0.2.11.r560.20251122.36a5ff7
+	provides = amd-bios-logging-control-script=0.2.11.r560.20251122.36a5ff7
+	provides = amd-psr-identification-script=0.2.11.r560.20251122.36a5ff7
+	provides = amd-pstate-analysis-script=0.2.11.r560.20251122.36a5ff7
+	provides = amd-s2idle-analysis-script=0.2.11.r560.20251122.36a5ff7
 	provides = amdgpu-test-scripts-common
 	conflicts = amd-debug-tools
 	conflicts = amd-bios-logging-control-script
