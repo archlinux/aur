@@ -1,0 +1,26 @@
+pkgbase = dmde
+	pkgdesc = DM Disk Editor and Data Recovery Software
+	pkgver = 4.4.0.828
+	pkgrel = 1
+	url = https://dmde.com/
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = gtk2
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libx11
+	provides = dmde-linux
+	conflicts = dmde-linux
+	conflicts = dmde-cli
+	noextract = dmde-4.4.0.828.zip
+	options = !strip
+	options = !debug
+	source = dmde-4.4.0.828.zip::https://dmde.com/download/dmde-4-4-0-828-lin64-gui.zip
+	source = dmde.desktop
+	sha256sums = dee19e2774f38052b65a46568f8f7c3c34dc638b4c6abe12913238b07e2a3fe0
+	sha256sums = 0542f9d24d7f81b71d61d9d6b45d3adc42383f646b0cc9c9c5468c2a7c88cb9f
+
+pkgname = dmde

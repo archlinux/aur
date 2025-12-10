@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DMDE
+Comment=DM Disk Editor and Data Recovery
+Exec=sudo dmde
+Icon=dmde
+Terminal=true
+Type=Application
+Categories=System;Filesystem;
+StartupNotify=false
