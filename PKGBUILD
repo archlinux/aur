@@ -2,7 +2,7 @@
 
 _name=cloudevents
 pkgname=python-$_name
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Package cloudevents provides primitives to work with CloudEvents specification."
 url=https://github.com/cloudevents
@@ -12,7 +12,7 @@ depends=(python python-deprecation python-pydantic)
 makedepends=(python-setuptools python-wheel python-installer python-build)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5be990583e99f3b08af5a709460e20b25cb169270227957a20b47a6ec8635e66')
+sha256sums=('ebd5544ceb58c8378a0787b657a2ae895e929b80a82d6675cba63f0e8c5539e0')
 
 build() {
   cd "$_name-$pkgver"
