@@ -1,0 +1,13 @@
+pkgbase = systemctl-manager
+	pkgdesc = A simple utility to interact with systemd services through a TUI (Vim-Keys)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/yarso-su/systemctl-manager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = systemd
+	source = systemctl-manager-1.0.1.tar.gz::https://crates.io/api/v1/crates/systemctl-manager/1.0.1/download
+	sha256sums = 89fc72d15e4dd70dec65d2682366b77db3231013a78f3621c357a5b4dcb54e06
+
+pkgname = systemctl-manager
