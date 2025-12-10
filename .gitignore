@@ -1,4 +1,4 @@
-/librelane-2.4.8.tar.gz
+/librelane-*.tar.gz
 /pkg
-/python-librelane-2.4.8-1-any.pkg.tar.zst
+/python-librelane-*-any.pkg.tar.zst
 /src
