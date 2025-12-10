@@ -2,7 +2,7 @@
 
 _name=grpcio_status
 pkgname=python-grpcio-status
-pkgver=1.70.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc="Status proto mapping for gRPC"
 url=https://grpc.io
@@ -13,7 +13,7 @@ depends=(python python-google-api-core python-proto-plus python-protobuf
 makedepends=(python-setuptools python-wheel python-installer python-build)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0e7b42816512433b18b9d764285ff029bde059e9d41f8fe10a60631bd8348101')
+sha256sums=('25fcbfec74c15d1a1cb5da3fab8ee9672852dc16a5a9eeb5baf7d7a9952943cd')
 
 build() {
   cd "$_name-$pkgver"
