@@ -1,6 +1,6 @@
 pkgbase = crycco
 	pkgdesc = A literate programming tool
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://crycco.ralsina.me
 	install = install
@@ -9,7 +9,7 @@ pkgbase = crycco
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
-	source = crycco-0.5.0.tar.gz::https://github.com/ralsina/crycco/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = aea45081d970f3bb5c974a3ede81efbdb724d704129ec823d6e9fab6cf95d5e1
+	source = crycco-0.5.1.tar.gz::https://github.com/ralsina/crycco/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 37b6d4e37bfb54f677298240727e98152f21db39114e25a541924ff33269a1cd
 
 pkgname = crycco
