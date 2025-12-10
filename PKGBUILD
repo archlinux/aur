@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -58,8 +58,8 @@ package() {
 }
 
 post_install() {
-  printf "\033[1;32m>>\033[0m Edit /etc/beszel-agent.conf (set KEY, PORT, etc.) then:\n"
-  printf "   sudo systemctl enable --now beszel-agent.service\n"
-  printf "\033[1;32m>>\033[0m To enable Intel GPU metrics, allow intel_gpu_top to be run without root:\n"
+  printf "* Configuration can be set at /etc/beszel-agent.conf (KEY, PORT, etc.)\n"
+  printf "* To enable Intel GPU metrics, allow intel_gpu_top to be run without root:\n"
   printf "   sudo setcap cap_perfmon=ep /usr/bin/intel_gpu_top\n"
+  printf "\033[1;31m\!\033[0m Monitored GPUs may not be able to enter RTD3 which will reduce battery life. Consider setting SKIP_GPU=true on mobile devices.\n"
 }
