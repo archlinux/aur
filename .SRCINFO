@@ -1,6 +1,6 @@
 pkgbase = docker-cli-bin
 	pkgdesc = Docker - CLI utility only, installed from static binary on docker.com
-	pkgver = 29.1.1
+	pkgver = 29.1.2
 	pkgrel = 1
 	url = https://docs.docker.com/engine/install/binaries/#install-static-binarie
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = docker-cli-bin
 	provides = docker
 	conflicts = docker
 	conflicts = podman-docker
-	source = docker-cli-bin-29.1.1.tar.gz::https://download.docker.com/linux/static/stable/x86_64/docker-29.1.1.tgz
-	sha512sums = f7b77bdd716bdd791acaf6ad58d9f7c5e1d69bd0b92e3722278d0a476793c9708820a0df0500303e706e245a31349840091f198bb412b355deade982db0fef19
+	source = docker-cli-bin-29.1.2.tar.gz::https://download.docker.com/linux/static/stable/x86_64/docker-29.1.2.tgz
+	sha512sums = 82e31ffccef7e20244512678d183cbd01e40f77af5539dc42f40512710cdd4f54a7d357637454a29627d67ee52605d90fd3d945d0ed9c984e47208a54f600ed1
 
 pkgname = docker-cli-bin
