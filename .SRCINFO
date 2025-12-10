@@ -1,7 +1,7 @@
 pkgbase = logisim-evolution-git
 	pkgdesc = An educational tool for designing and simulating digital logic circuits.
-	pkgver = 4.0.0+72.r5661.20251107.55da393bb
-	pkgrel = 2
+	pkgver = 4.0.0+105.r5694.20251209.49d1dd51d
+	pkgrel = 1
 	url = https://github.com/logisim-evolution/logisim-evolution
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = logisim-evolution-git
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = sh
-	provides = logisim-evolution=4.0.0+72.r5661.20251107.55da393bb
+	provides = logisim-evolution=4.0.0+105.r5694.20251209.49d1dd51d
 	conflicts = logisim-evolution
 	source = logisim-evolution::git+https://github.com/logisim-evolution/logisim-evolution.git
 	source = logisim-evolution.xml
