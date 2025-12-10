@@ -1,7 +1,7 @@
 _pkgname=slimevr
 pkgname=$_pkgname-bin
-pkgver=0.17.0.rc.2
-_tag=v0.17.0-rc.2
+pkgver=18.0.0
+_tag=v18.0.0
 pkgrel=6
 pkgdesc="VR Full Body Tracking System"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$url/releases/download/$_tag/$_appimage"
 		"$url/raw/$_tag/LICENSE-MIT"
 		"$url/raw/$_tag/LICENSE-APACHE")
 noextract=()
-sha512sums=('abd4ba00c1e7932ce6535f07e706949460e3c51bfac0778aa83ae3b43e9e1e17c302fd09a9116fd01ad85d1e9e526b40cdc176f5904cd0a4f7dffa136d0afdbe'
+sha512sums=('203c038e1a37db4411b445f8ab838c166ab813755d6c7ad5bdfdeae0662fdf21b5bf915cf819ffe8d1030005439ed0e5cdf20001063ef11f89144d1415b8bc3d'
             '3b6306600ce9420d982a589293281db31c3c013bc9e0a829ae85e924f1318fa420bad7c73d0b1924ffdc74a92d44793de749daccd383ddcdc4c82169bf1d7e9d'
             '530b18b93fcec33499964bcbc019398194035247efdf6c1a8bf78fb56c7e1e0e401b02287b5201423b2bcfb4f8c7fddbf0aba161e3909ac25078b426459558ae')
 validpgpkeys=()
