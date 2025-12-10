@@ -1,11 +1,11 @@
 pkgname=windows-10-cursor
-pkgver=1.2
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='A Windows 10 light and dark cursor theme'
 arch=(any)
 options=(!debug)
-source=($pkgname.tar.xz::https://github.com/red-magic/dotfiles/raw/master/extra/themes/cursor-themes/$pkgname.tar.xz)
-b2sums=(9231903999afe7775679d627239c8d7114ec5a5e277bedc1178e9a014f62058cadbec6b922038d335201175625636f10ac69c80b5904a48093a6df2ef528cb2e)
+source=($pkgname.tar.gz::https://github.com/red-magic/extra/releases/download/1.0/$pkgname.tar.gz)
+b2sums=(f55cc48109846f7aa60cd9e60581197867061a2650a86c7b9ec2bfedf4cd677b0482a262789daca1ef252e3f043733ccbfe302548d0b5ea2a9729865e2b2358b)
 
 package() {
 	install -Dm 644 $pkgname/Windows-10/*.* -t $pkgdir/usr/share/icons/Windows-10
