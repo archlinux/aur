@@ -1,38 +1,31 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.2.4
-pkgrel=1
+pkgver=0.2.7
+pkgrel=2
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
 url="https://github.com/athasdev/athas"
 license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme')
-makedepends=('bun-bin' 'cmake' 'rustup')
+makedepends=('bun-bin' 'cmake' 'rust')
 _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db1b842d2bccf4913858033da86cf5671a3affd2ee343438b56d4ddfaf96f95a')
+sha256sums=('2315f42f51858a0422ede22dd6beee97f4c3cc8992822a86731990bc50d8a0c4')
 
 _builddir="${_source_name}-${pkgver}"
 
 prepare() {
 	cd "${_builddir}"
 
-	local rustup_home="${srcdir}/rustup"
 	local cargo_home="${srcdir}/cargo"
 
-	export RUSTUP_HOME="${rustup_home}"
 	export CARGO_HOME="${cargo_home}"
-	export PATH="${CARGO_HOME}/bin:${PATH}"
-
-	mkdir -p "${rustup_home}" "${cargo_home}"
-
-	rustup toolchain install nightly --profile minimal --target $CARCH-unknown-linux-gnu --no-self-update
+	mkdir -p "${cargo_home}"
 }
 
 build() {
 	cd "${_builddir}"
 
-	local rustup_home="${srcdir}/rustup"
 	local cargo_home="${srcdir}/cargo"
 	local bun_cache="${srcdir}/bun-cache"
 	local bun_global="${srcdir}/bun-global"
@@ -40,9 +33,10 @@ build() {
 
 	mkdir -p "${bun_cache}" "${bun_global}"
 
-	export RUSTUP_HOME="${rustup_home}"
+	export CFLAGS="${CFLAGS/-flto=auto/}"
+	export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
+	export LDFLAGS="${LDFLAGS/-flto=auto/}"
 	export CARGO_HOME="${cargo_home}"
-	export PATH="${CARGO_HOME}/bin:${PATH}"
 	export CARGO_TARGET_DIR="${cargo_target}"
 	export BUN_INSTALL_CACHE_DIR="${bun_cache}"
 	export BUN_INSTALL_GLOBAL_DIR="${bun_global}"
@@ -50,7 +44,7 @@ build() {
 	bun install
 	bun run type-check
 	bun vite build
-	cargo +nightly build --release --locked --manifest-path src-tauri/Cargo.toml
+	cargo build --release --locked --manifest-path src-tauri/Cargo.toml
 }
 
 package() {
