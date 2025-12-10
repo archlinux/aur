@@ -1,6 +1,6 @@
 pkgbase = bnc-bin
 	pkgdesc = The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications.
-	pkgver = 2.13.2
+	pkgver = 2.13.4
 	pkgrel = 1
 	url = https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = bnc-bin
 	depends = glibc
 	depends = qt5-base
 	depends = qt5-svg
-	provides = bnc=2.13.2
+	provides = bnc=2.13.4
 	conflicts = bnc
-	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-2.13.2-debian12.zip
-	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-2.13.2-debian12.zip.sha256
+	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-2.13.4-debian12.zip
+	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-2.13.4-debian12.zip.sha256
 	source = ntrip-logo.png::https://software.rtcm-ntrip.org/ntripLogo.png
 	source = BNC_BNS_RTNET_Concept.ppt::https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt
 	source = bnc.desktop
-	sha256sums = b13ff3d5564a46dac909a2213ea9b373db76bb5b4c9be28137096a304f20132e
+	sha256sums = abbc9e085b0c0e37d36be9fff1544b12011e7fcdf99ecbee04e8d4a1caa74dca
 	sha256sums = SKIP
 	sha256sums = 97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10
 	sha256sums = cd3972e41c76ece121ef73c51fbab93b53da697c42e2329c289f0d36d820cba3

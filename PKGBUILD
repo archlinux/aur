@@ -3,7 +3,7 @@
 
 pkgname=bnc-bin
 _debianver=12
-pkgver=2.13.2
+pkgver=2.13.4
 pkgrel=1
 pkgdesc="The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications."
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   "bnc.desktop"
 )
 sha256sums=(
-  'b13ff3d5564a46dac909a2213ea9b373db76bb5b4c9be28137096a304f20132e'  # bnc-${pkgver}-debian${_debianver}.zip
+  'abbc9e085b0c0e37d36be9fff1544b12011e7fcdf99ecbee04e8d4a1caa74dca'  # bnc-${pkgver}-debian${_debianver}.zip
   'SKIP'                                                              # bnc-${pkgver}-debian${_debianver}.zip.sha256  # Checksums in the .sha256-file and of the downloaded .zip file do not match!!
   '97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10'  # ntrip-logo.png
   'cd3972e41c76ece121ef73c51fbab93b53da697c42e2329c289f0d36d820cba3'  # BNC_BNS_RTNET_Concept.ppt
