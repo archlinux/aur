@@ -1,4 +1,4 @@
-# Maintainer: dreieck
+# Maintainer:  dreieck
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: dibblethewrecker <dibblethewrecker.at.jiwe.dot.org>
@@ -6,7 +6,7 @@
 
 pkgname=proj4
 pkgver=4.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cartographic Projections library. Legacy version 4.x'
 arch=(
   'i686'
@@ -21,7 +21,7 @@ depends=(
   'sqlite'
 )
 makedepends=(
-  'cmake'
+  'cmake3'  # Yes, cmake 4.x does not work. 'cmake --help-policy CMP0022'.
   'gmock'
   'gtest'
 )

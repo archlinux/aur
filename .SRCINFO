@@ -1,12 +1,12 @@
 pkgbase = proj4
 	pkgdesc = Cartographic Projections library. Legacy version 4.x
 	pkgver = 4.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proj.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
+	makedepends = cmake3
 	makedepends = gmock
 	makedepends = gtest
 	depends = curl
