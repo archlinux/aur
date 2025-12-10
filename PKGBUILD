@@ -5,7 +5,7 @@
 
 pkgname=equicord
 _pkgname=Equicord
-pkgver=0.0.118.r5877gc7531e19
+pkgver=0.0.118.r5887gdc9ef1ff
 pkgrel=1
 epoch=2
 pkgdesc='The other cutest Discord client mod'
