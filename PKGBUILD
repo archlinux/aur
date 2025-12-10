@@ -3,7 +3,7 @@ pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
-depends=()
+depends=('dotnet-runtime')
 source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz"
         "iscsi-util.desktop")
 sha256sums=('SKIP'
