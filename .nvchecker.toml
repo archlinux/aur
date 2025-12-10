@@ -1,0 +1,5 @@
+[bastion-pod-ctl]
+source = "git"
+git = "https://github.com/norwoodj/bastion-pod-ctl"
+prefix = "v"
+exclude_regex = "^[^v].*$"

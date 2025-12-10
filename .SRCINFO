@@ -1,0 +1,16 @@
+pkgbase = bastion-pod-ctl
+	pkgdesc = A tool for creating tcp tunnels into a private network via a Pod running on a worker node in that private network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/norwoodj/bastion-pod-ctl
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !debug
+	options = !lto
+	source = git+https://github.com/norwoodj/bastion-pod-ctl#tag=v0.1.0
+	sha256sums = 758bf0316298c510f8e87c53f7bc0a795b7f82b8ecc16fe9dc3d149fa189b9ae
+
+pkgname = bastion-pod-ctl
