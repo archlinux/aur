@@ -1,12 +1,10 @@
 # Maintainer: karboncore
-# Contributor: detiam <dehe_tian@outlook.com>
-# Contributor: Nikita Tarasov <nikatar@disroot.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=139.0.1
+pkgver=145.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -18,7 +16,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs
@@ -54,6 +52,7 @@ makedepends=(
   mesa
   nasm
   nodejs
+  onnxruntime
   python
   rust
   unzip
@@ -69,6 +68,7 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
+  'onnxruntime: Local machine learning features such as smart tab groups'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -77,7 +77,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/63c1a5c49ba80edbdff34aa9a494d7e8c1cdb45a
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/452ee63a86a441703e9c1659a65e7456a70986e0
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -90,23 +90,22 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('5b716ee9e6339a0de8e42f81c1d7dadca5c03e91ee9b2fa8e78357a631b499b0'
+sha256sums=('eb0828db0e942ad345c725e2cbf2ed3b90d23771b054b6db0ded57cfa10b8c9c'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
             '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
-            '883ca2fa723a7572269d18559d5b82412782ad63e5dd3820eeb0540e3fe34314')
-b2sums=('b3c9841a060461ae2a0317a39a8999c15f8b0130874a270c308a751097be33f436ec37d4881581eb33b28c6e038be0bd1556af82e2f91e409ff84fa51852978d'
+            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
+b2sums=('a8007d06dce77197dfb40ab9a759287b6bcff4e56d1b2c7acfed9475aaa2f936948534d6e726a158550c70a28bad8ec8c7f1b99ca8165198c1952a484869b6c9'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
         '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
-        '8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5')
+        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
+# get your own set of keys.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
@@ -118,9 +117,6 @@ prepare() {
 
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
-
-  # Profiles menu breaks menubar; hide for now
-  patch -Np1 -i ../hide-profile-menu.patch
 
   echo -n "$_google_api_key" >google-api-key
 
@@ -135,7 +131,6 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-install-strip
-ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
@@ -225,6 +220,10 @@ app.distributor.channel=firefox
 app.partner.archlinux=archlinux
 END
 
+  # Link up system ONNX runtime
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/firefox"
+
+  # Install desktop icons and metadata
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
@@ -251,12 +250,6 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/lib/firefox/firefox-bin"
 
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/firefox/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
-
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/firefox.search-provider.ini"
   install -Dvm644 /dev/stdin "$sprovider" <<END
 [Shell Search Provider]
@@ -267,11 +260,8 @@ Version=2
 END
 }
 
-source+=('unity-menubar.patch'
-         'hide-profile-menu.patch')
-sha256sums+=('d18c93d0e62065503bde474043a2d5512e8daba77e68aeac07121af238419433'
-             '86100035314af3096e32c098af690f1d9305a71d887610f8726d9cfcb3c0dcad')
-b2sums+=('34350c59a779e8d7085d03781d15ae96ea67ab70fa2fb580051fb691a486490703fed21244b2d3bdc04c5be0e1225aeeea657465baa598f6b8fdda951ce3c028'
-         '21c690d27bcac168cce53fc5bb208c96a9563cf2d4a9186ca067f379696475d6f3c706c509d4a73d9472cf178e89d4d5eb7d745d1df4eecafbfd1c9d2a12afa0')
+source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/a728a7e/unity-menubar.patch')
+sha256sums+=('a2ba18071a8fd199e2ef6b8cb432d8d34c127e8876220e06c809e6895c2acece')
+b2sums+=('dca97208ec3ab34dfc8b78e9cbe5a810e1d24827d1e0572eb8a261030ca7d0833b7dbfdd56214f6c668e63882ef3c2ec0151021c64fd138e5be2114fbb9ab07f')
 provides=(firefox)
 conflicts=(firefox)
