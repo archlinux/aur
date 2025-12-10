@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Backmey
+Comment=Universal Linux Desktop Backup & Restore
+Exec=/usr/bin/backmey-gui
+Icon=backmey
+Terminal=false
+Categories=Utility;System;Archiving;

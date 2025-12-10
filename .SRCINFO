@@ -1,0 +1,22 @@
+pkgbase = backmey-bin
+	pkgdesc = Universal Linux Desktop Backup & Restore (CLI + GUI)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MorganLosto/backmey
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	provides = backmey
+	conflicts = backmey
+	source = https://github.com/MorganLosto/backmey/releases/download/v0.1.0/Backmey-0.1.0.AppImage
+	source = backmey.desktop
+	source = backmey.png
+	sha256sums = e577e0bf0cc9e8bbcffd3be02fa521ca0735eafaf5caa4b0aa76de6e06aacf44
+	sha256sums = a6bcf7b294d888be131ca59f36494a153780fe5a8e5beb0534b859e561497591
+	sha256sums = cd7fa1de65a353a8e625889319fb3a6a572e533a43c525033bd39b64eae9b9d9
+
+pkgname = backmey-bin
