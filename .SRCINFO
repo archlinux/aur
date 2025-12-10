@@ -1,6 +1,6 @@
 pkgbase = endcord-lite-git
 	pkgdesc = Feature rich Discord TUI client. Lite version without ASCII media support.
-	pkgver = 1.0.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/sparklost/endcord
 	arch = any
