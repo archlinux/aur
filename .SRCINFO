@@ -1,6 +1,6 @@
 pkgbase = nethermind-ethereum-bin
 	pkgdesc = A robust execution client for Ethereum node operators
-	pkgver = 1.35.3
+	pkgver = 1.35.4
 	pkgrel = 1
 	url = https://downloads.nethermind.io/
 	arch = x86_64
@@ -14,15 +14,9 @@ pkgbase = nethermind-ethereum-bin
 	conflicts = Nethermind.Runner
 	options = !strip
 	backup = etc/nethermind/NLog.config
-	validpgpkeys = 6942FB745ECE67D86CDA45704770A0C134E353C6
-	validpgpkeys = EECCEA1473108E3222D76722D39BE1DDCB6DA407
-	source_x86_64 = https://github.com/NethermindEth/nethermind/releases/download/1.35.3/nethermind-1.35.3-d9febbce-linux-x64.zip
-	source_x86_64 = https://nethdev.blob.core.windows.net/builds/nethermind-1.35.3-d9febbce-linux-x64.zip.asc
-	sha256sums_x86_64 = e1ab556af16ac7120aa3c29c6fd79476fc867cc917b1c98de1c967e17b190d53
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/NethermindEth/nethermind/releases/download/1.35.3/nethermind-1.35.3-d9febbce-linux-arm64.zip
-	source_aarch64 = https://nethdev.blob.core.windows.net/builds/nethermind-1.35.3-d9febbce-linux-arm64.zip.asc
-	sha256sums_aarch64 = d055deec530ded1f53de971103c4b3ba98c472f4ca12fcd769c6e99953be02d4
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = https://github.com/NethermindEth/nethermind/releases/download/1.35.4/nethermind-1.35.4-5d4dc69d-linux-x64.zip
+	sha256sums_x86_64 = faa90a9f572591ddbd567de1174e724064457ecdb1fb09a7fda5670335b919b6
+	source_aarch64 = https://github.com/NethermindEth/nethermind/releases/download/1.35.4/nethermind-1.35.4-5d4dc69d-linux-arm64.zip
+	sha256sums_aarch64 = da342507a8c03115f145185f9ec4a77744061828c2addb7845be18f59d02ae3f
 
 pkgname = nethermind-ethereum-bin

@@ -1,8 +1,8 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
-pkgver=1.35.3
-_commit=d9febbce
+pkgver=1.35.4
+_commit=5d4dc69d
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators'
 arch=('x86_64' 'aarch64')
@@ -15,19 +15,13 @@ conflicts=('nethermind' 'Nethermind.Runner')
 
 source_x86_64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${pkgver}/nethermind-${pkgver}-${_commit}-linux-x64.zip"
-  "https://nethdev.blob.core.windows.net/builds/nethermind-${pkgver}-${_commit}-linux-x64.zip.asc"
 )
 source_aarch64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${pkgver}/nethermind-${pkgver}-${_commit}-linux-arm64.zip"
-  "https://nethdev.blob.core.windows.net/builds/nethermind-${pkgver}-${_commit}-linux-arm64.zip.asc"
 )
 
-sha256sums_x86_64=('e1ab556af16ac7120aa3c29c6fd79476fc867cc917b1c98de1c967e17b190d53'
-                   'SKIP')
-sha256sums_aarch64=('d055deec530ded1f53de971103c4b3ba98c472f4ca12fcd769c6e99953be02d4'
-                    'SKIP')
-# Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
-validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
+sha256sums_x86_64=('faa90a9f572591ddbd567de1174e724064457ecdb1fb09a7fda5670335b919b6')
+sha256sums_aarch64=('da342507a8c03115f145185f9ec4a77744061828c2addb7845be18f59d02ae3f')
 
 backup=('etc/nethermind/NLog.config')
 
