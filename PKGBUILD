@@ -2,10 +2,10 @@
 
 pkgbase=plasma-workspace-sonic
 pkgname=(plasma-workspace-sonic plasma-x11-session-sonic)
-pkgver=6.5.3
-_pkgver=6.5.3.3
+pkgver=6.5.4
+_pkgver=6.5.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2.7
+pkgrel=1
 pkgdesc='KDE Plasma Workspace, light version with fixes and improvements for X11 session, for XLibre'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/plasma-workspace-sonic'
@@ -118,8 +118,8 @@ makedepends=(baloo
              plasma-wayland-protocols
              qcoro)
 groups=(plasma)
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee80130c5ef3f222164572704acd659fce80183bbc1dee75affc57de526dc1fd')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e21ecfcd01435123e257160f2d0168d9dd8c60fd42252cbe6e8891e4c6807d1c')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>

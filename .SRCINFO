@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-sonic
 	pkgdesc = KDE Plasma Workspace, light version with fixes and improvements for X11 session, for XLibre
-	pkgver = 6.5.3
-	pkgrel = 2.7
+	pkgver = 6.5.4
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/plasma-workspace-sonic
 	arch = x86_64
 	groups = plasma
@@ -113,12 +113,12 @@ pkgbase = plasma-workspace-sonic
 	depends = xorg-xrdb
 	depends = xorg-xwayland
 	depends = zlib
-	source = https://github.com/Sonic-DE/plasma-workspace-sonic/archive/refs/tags/v6.5.3.tar.gz
+	source = https://github.com/Sonic-DE/plasma-workspace-sonic/archive/refs/tags/6.5.4.tar.gz
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = ee80130c5ef3f222164572704acd659fce80183bbc1dee75affc57de526dc1fd
+	sha256sums = e21ecfcd01435123e257160f2d0168d9dd8c60fd42252cbe6e8891e4c6807d1c
 
 pkgname = plasma-workspace-sonic
 	groups = sonicde
