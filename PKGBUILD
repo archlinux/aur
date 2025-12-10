@@ -4,7 +4,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20251118
+pkgver=20251210
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package based on Luanti or Minetest installation type.'
 
