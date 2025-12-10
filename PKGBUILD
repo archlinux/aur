@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gerbil-bin
 _pkgname=Gerbil
-pkgver=1.15.1
+pkgver=1.16.0
 _electronversion=38
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)"
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'cloudflared'
+    #'cloudflared'
 )
 makedepends=(
     'asar'
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('743d56820245d0f9e029f7c97be020e1585e4935b7332b787620219654ce3cd3'
+sha256sums=('175423f7c12a6f610e715ef01807f3d6b68c28f23632666b6f9e166d5430ff9f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -51,13 +51,13 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/\"\.\.\"\, \"assets\"\,/\"assets\"\,/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    ln -sf "/usr/bin/cloudflared" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cloudflared/bin/cloudflared"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    #ln -sf "/usr/bin/cloudflared" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cloudflared/bin/cloudflared"
+    #find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,icon.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,icon.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/assets" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
