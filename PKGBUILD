@@ -3,7 +3,7 @@
 
 pkgname=ilorest-bin
 _pkgname=ilorest
-pkgver=6.3.0.0_7
+pkgver=7.0.0.0_20
 pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
@@ -14,8 +14,8 @@ conflicts=('ilorest')
 provides=('ilorest')
 groups=(hpproliant)
 license=("HPE")
-source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v271767/RPMS/${arch}/${_pkgname}-${pkgver//_/-}.${arch}.rpm")
-sha256sums=('e16bab64237f39b75185fa983e6a29497cb0db8e54fed12e313ee56547f79a67')
+source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v275538/RPMS/${arch}/${_pkgname}-${pkgver//_/-}.${arch}.rpm")
+sha256sums=('5e23788e8c9b810d695dbd63607e9f4b961c4027eb8461b33e48240ebe8c8996')
 changelog=ChangeLog
 
 package() {
