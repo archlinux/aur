@@ -1,7 +1,7 @@
 pkgbase = happy-go-christmas
 	pkgdesc = A high-performance console Christmas tree written in Go with embedded music
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XPLassal/happy-go-christmas
 	arch = x86_64
 	arch = aarch64
