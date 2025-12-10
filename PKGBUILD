@@ -1,14 +1,14 @@
 # Maintainer: Dhanushka Jayagoda <dhanushka2001 [at] gmail [dot] com>
 
 pkgname=citeorder
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Simple command-line tool to relabel footnotes in Markdown files in numerical order"
 arch=('x86_64')
 url="https://github.com/dhanushka2001/citeorder"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2670f355153d2c547849760e8edbb0976d007ac2db5a627816cf94a053c7a74b')
+sha256sums=('772bd81c56020c9f7eab485bb01f821079eb393cacedd6afe55c999fc7de3494')
 
 build() {
     cd "$srcdir"
