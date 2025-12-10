@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <manuel {you know what belongs here} unikraft {and here} io>
 
 pkgname=kraftkit
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=1
 pkgdesc='Build and use highly customized and ultra-lightweight unikernels'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('bash' 'glibc')
 makedepends=('git' 'go')
 #checkdepens=('')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-b2sums=('440ce880b60104d45c9e75b4c48d3098d9ccd07e0d8909f8964f2ac7bb4aaa5ffbbcf9b14f96d77400669cf9067b970c7de15f8e467fc48d477656f1c100e70b')
+b2sums=('56cd463f571bf3a69e5f871b53dfac55959947abe2aa4bae402df3f300130eaff4b9814cc0546032d15e90f81466d2e6c51943a7e37b250fcafc7844e811b2ee')
 
 prepare() {
     cd $srcdir/$pkgname
