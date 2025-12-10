@@ -27,7 +27,7 @@ checkdepends=(
 	'perl-test-trap'
 	'perl-test-warnings'
 	'perl-namespace-autoclean')
-source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.78.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-$pkgver.tar.gz)
 options=(!emptydirs)
 md5sums=('6d0ace976fe24b98f7da3a93a4c4eb87')
 
@@ -37,20 +37,20 @@ sanitize() {
 }
 
 build() {
-	cd MooseX-Getopt-0.78
+	cd MooseX-Getopt-$pkgver
 	sanitize
 	perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd MooseX-Getopt-0.78
+	cd MooseX-Getopt-$pkgver
 	sanitize
 	perl Build test
 }
 
 package() {
-	cd MooseX-Getopt-0.78
+	cd MooseX-Getopt-$pkgver
 	sanitize
 	perl Build install
 
