@@ -1,0 +1,16 @@
+post_install() {
+	systemctl enable cec-toolbox-wakeup
+	systemctl enable cec-toolbox-suspend
+	systemctl enable cec-toolbox-poweroff --now
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	systemctl disable cec-toolbox-wakeup
+	systemctl disable cec-toolbox-suspend
+	systemctl disable cec-toolbox-poweroff
+}
+
