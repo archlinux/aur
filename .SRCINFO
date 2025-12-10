@@ -14,6 +14,7 @@ pkgbase = vibe-audio-visualizer-git
 	depends = vulkan-validation-layers
 	depends = vulkan-headers
 	depends = vulkan-driver
+	provides = vibe
 	provides = vibe-audio-visualizer
 	conflicts = vibe
 	conflicts = vibe-audio-visualizer

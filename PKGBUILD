@@ -16,7 +16,7 @@ makedepends=('rust' 'git')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 conflicts=($_pkgname)
-provides=("${_pkg_name}" "vibe-audio-visualizer")
+provides=("${_pkgname}" "vibe-audio-visualizer")
 conflicts=("${_pkgname}" "vibe-audio-visualizer")
 
 pkgver() {
