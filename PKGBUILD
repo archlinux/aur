@@ -4,8 +4,8 @@
 _pkgbase="mullvad-tray"
 _pkgname="${_pkgbase}"
 pkgname="${_pkgname}-git"
-pkgver=0.3+3.r30.20241125.3fb9618
-pkgrel=4
+pkgver=2.0.2.r40.20251208.c1cbc2c
+pkgrel=1
 pkgdesc="Mullvad VPN connection status in system tray. Latest git checkout.."
 arch=('any')
 depends=(
