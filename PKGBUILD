@@ -4,7 +4,7 @@
 pkgname=vivaldi-snapshot
 _rpmversion=7.8.3888.3-1
 pkgver=7.8.3888.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -15,7 +15,12 @@ depends=(
     'at-spi2-core'
     'cairo'
     'libcups'
+    'libxcomposite'
+    'libxdamage'
+    'libxkbcommon'
+    'libxrandr'
     'libxss'
+    'mesa'
     'nss'
     'pango'
     'ttf-font'
@@ -23,7 +28,7 @@ depends=(
     'shared-mime-info'
     'hicolor-icon-theme'
 )
-makedepends=('w3m')
+makedepends=('w3m' 'imagemagick')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
     'org.freedesktop.secrets: better secret storage in gnome-keyring or kwallet'
@@ -60,8 +65,20 @@ package() {
     fi
 
     # Vivaldi has different design for each size of icons. Avoid using them.
+    # hicolor xdg fallback
+    install -Dm644 "$pkgdir/opt/$pkgname/product_logo_256.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    for _res in 128 64 48 32 22; do
+        install -d "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps"
+        magick "$pkgdir/opt/$pkgname/product_logo_256.png" \
+            -resize ${_res}x${_res} \
+            "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps/$pkgname.png"
+    done
     install -d "$pkgdir/usr/share/pixmaps"
-    ln -sf /opt/${pkgname}/product_logo_256.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "$pkgdir/opt/$pkgname/product_logo_256.png" \
+        "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+
+    rm -f "$pkgdir/opt/$pkgname/product_logo_"*.png
 
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
