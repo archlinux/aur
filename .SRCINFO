@@ -1,0 +1,20 @@
+pkgbase = picon
+	pkgdesc = Run your code in python interactive console from the command line
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/gokcehan/picon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	provides = picon
+	conflicts = python-picon
+	replaces = python-picon
+	source = https://files.pythonhosted.org/packages/source/p/picon/picon-4.tar.gz
+	sha256sums = 451d3a5be409c0a2cc156889928f5d5749dab6508e8b42e7c7e8b2934e458276
+
+pkgname = picon
