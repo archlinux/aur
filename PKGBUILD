@@ -1,0 +1,17 @@
+# Maintainer: dongdongbh <dongdongbhbh@gmail.com>
+pkgname=focus-gtd-bin
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="A complete Getting Things Done (GTD) productivity system"
+arch=('x86_64')
+url="https://github.com/dongdongbh/Focus-GTD"
+license=('MIT')
+depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3')
+provides=('focus-gtd')
+conflicts=('focus-gtd')
+source_x86_64=("${url}/releases/download/v${pkgver}/focus-gtd_${pkgver}_amd64.deb")
+sha256sums_x86_64=('SKIP')
+
+package() {
+	tar -xf data.tar.zst -C "${pkgdir}" || tar -xf data.tar.gz -C "${pkgdir}"
+}
