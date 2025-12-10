@@ -1,6 +1,6 @@
 pkgname=companion
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
 url="https://github.com/bitfocus/companion"
@@ -63,12 +63,26 @@ build() {
 	rm -rf electron-output
 
 	yarn run dist
+
+	# Fix missing bufferutil prebuild for linux/arm64
+	# This is hacky, but fixes the issue until upstream fixes their build scripts
+	if [ "${CARCH}" = "aarch64" ]; then
+		cd "${srcdir}/${pkgname}-${pkgver}/node_modules/bufferutil"
+		npm install
+		npm run prebuild
+		rm -r build node_modules
+		cd ..
+		cp -r bufferutil  "${srcdir}/${pkgname}-${pkgver}/electron-output/linux-arm64-unpacked/resources/node_modules/"
+	fi
 }
 
 package() {
 	cd "${srcdir}"
 
 	builddir="${pkgname}-${pkgver}/electron-output/linux-unpacked"
+	if [ "${CARCH}" = "aarch64" ]; then
+		builddir="${pkgname}-${pkgver}/electron-output/linux-arm64-unpacked"
+	fi
 
 	# Licenses
 	install -Dm644 "${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
