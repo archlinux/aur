@@ -2,14 +2,14 @@
 pkgname="sddm-silent-theme"
 upstreamname="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme"
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
 url="https://github.com/uiriansan/$upstreamname"
 license=('GPL-2.0-only')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9f475e113b8ff9349b17befabcd5ae66de49c8eb4fd8ad7e1981efc594fa8a53')
+sha256sums=('a003fffd78ea6e2ee45806c849a2d35519f75aa236f6a1af79f438184c46008f')
 installdir="usr/share/sddm/themes/silent"
 backup=("$installdir/metadata.desktop")
 
