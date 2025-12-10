@@ -1,0 +1,20 @@
+pkgbase = easy-remote
+	pkgdesc = Open-source 'Single Click' remote support client for Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RuanVasco/easy-remote
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = x11vnc
+	depends = wayvnc
+	options = !lto
+	backup = etc/easy-remote/entries.xml
+	source = git+https://github.com/RuanVasco/easy-remote.git#branch=main
+	md5sums = SKIP
+
+pkgname = easy-remote
