@@ -23,16 +23,16 @@ sha256sums=('c9cac512e5a75a584c4ac2a303510d964767f4ad310bac0ff863668bff538052')
 
 package() {
   # Unpack package contents
-  bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
+  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
 
   # Fix permissions
-  chmod -R g-w ${pkgdir}/opt
-  chmod -R g-w ${pkgdir}/usr
+  chmod -R g-w "${pkgdir}/opt"
+  chmod -R g-w "${pkgdir}/usr"
 
   # Create our shared extensions location (based on deb pkg postinst script)
-  mkdir -p ${pkgdir}/var/opt/PreSonus/Extensions
-  chmod 777 ${pkgdir}/var/opt/PreSonus
-  chmod 777 ${pkgdir}/var/opt/PreSonus/Extensions
+  mkdir -p "${pkgdir}/var/opt/PreSonus/Extensions"
+  chmod 777 "${pkgdir}/var/opt/PreSonus"
+  chmod 777 "${pkgdir}/var/opt/PreSonus/Extensions"
 
   # Copy licenses to standard location
   install -d -m755 "$pkgdir/usr/share/licenses/$pkgname/"
