@@ -1,6 +1,6 @@
 pkgbase = hourglass-git
 	pkgdesc = A simple clock application that provides stopwatches, alarms, and timers designed for Pantheon Shell
-	pkgver = r305.40d161d
+	pkgver = r306.a33e786
 	pkgrel = 1
 	url = https://github.com/sgpthomas/hourglass
 	arch = i686
