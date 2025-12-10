@@ -1,13 +1,13 @@
 pkgbase = nav-cli
 	pkgdesc = The interactive and stylish replacement for ls & cd!
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/Jojo4GH/nav
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	options = !strip
-	source = nav-1.5.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/Jojo4GH/nav/releases/download/v1.5.1/nav-x86_64-unknown-linux-gnu.tar.gz
+	source = nav-1.5.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/Jojo4GH/nav/releases/download/v1.5.2/nav-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = nav-cli
