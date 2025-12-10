@@ -2,7 +2,7 @@
 
 pkgname=dmde
 pkgver=4.4.0.828
-pkgrel=1
+pkgrel=2
 pkgdesc="DM Disk Editor and Data Recovery Software"
 arch=('x86_64')
 url="https://dmde.com/"
@@ -32,7 +32,7 @@ package() {
     # Install wrapper
     install -dm755 "$pkgdir/usr/bin"
     echo '#!/bin/sh' > "$pkgdir/usr/bin/dmde"
-    echo 'exec /opt/dmde/dmde "$@"' >> "$pkgdir/usr/bin/dmde"
+    echo 'cd /opt/dmde && exec ./dmde "$@"' >> "$pkgdir/usr/bin/dmde"
     chmod 755 "$pkgdir/usr/bin/dmde"
 
     # Install License

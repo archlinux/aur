@@ -1,7 +1,7 @@
 pkgbase = dmde
 	pkgdesc = DM Disk Editor and Data Recovery Software
 	pkgver = 4.4.0.828
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dmde.com/
 	arch = x86_64
 	license = custom
