@@ -1,6 +1,6 @@
 pkgbase = pi-hole-whitelist-git
 	pkgdesc = A simple tool to add commonly white listed domains to your Pi-Hole setup.
-	pkgver = r308.46289a5
+	pkgver = r313.30c7586
 	pkgrel = 1
 	url = https://github.com/anudeepND/whitelist
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pi-hole-whitelist-git
 	depends = python
 	optdepends = pi-hole-server
 	optdepends = pi-hole-standalone
-	source = whitelist::git://github.com/anudeepND/whitelist
+	source = whitelist::git+https://github.com/anudeepND/whitelist
 	source = pi-hole-whitelist.service
 	source = pi-hole-whitelist.timer
 	md5sums = SKIP

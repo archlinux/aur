@@ -4,7 +4,7 @@ _repo_name=whitelist
 _pkgname=pi-hole-whitelist
 
 pkgname=$_pkgname-git
-pkgver=r308.46289a5
+pkgver=r313.30c7586
 pkgrel=1
 pkgdesc='A simple tool to add commonly white listed domains to your Pi-Hole setup.'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   'pi-hole-standalone'
 )
 source=(
-  "${_repo_name}::${url//https/git}"
+  "${_repo_name}::git+${url}"
   "$_pkgname.service"
   "$_pkgname.timer"
 )
