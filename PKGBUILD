@@ -1,6 +1,6 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.31.g9e7273e
-pkgrel=1
+pkgver=0.2.66.g042e574
+pkgrel=3
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
 url="https://github.com/rabfulton/ChatGTK"
@@ -56,10 +56,13 @@ package() {
   install -m644 src/"config.py" "$appdir/config.py"
   install -m644 src/"audio.py" "$appdir/audio.py"
   install -m644 src/"ai_providers.py" "$appdir/ai_providers.py"
+  install -m644 src/"controller.py" "$appdir/controller.py"
   install -m644 src/"conversation.py" "$appdir/conversation.py"
   install -m644 src/"dialogs.py" "$appdir/dialogs.py"
+  install -m644 src/"gtk_utils.py" "$appdir/gtk_utils.py"
   install -m644 src/"latex_utils.py" "$appdir/latex_utils.py"
   install -m644 src/"markup_utils.py" "$appdir/markup_utils.py"
+  install -m644 src/"message_renderer.py" "$appdir/message_renderer.py"
   install -m644 src/"tools.py" "$appdir/tools.py"
   install -m644 src/"utils.py" "$appdir/utils.py"
   install -m644 src/"__init__.py" "$appdir/__init__.py"
