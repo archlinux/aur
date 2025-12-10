@@ -1,14 +1,12 @@
 #!/usr/bin/env sh
 
 # Check if we have openjdk17 installed
-for version in $(archlinux-java status); do
-    if [[ $version == "java-17-openjdk" ]]; then
-        export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
-        cd /opt/DataExplorer
-        ./DevicePropertiesEditor
-        exit 0
-    fi
-done
-
-echo "You do not have java-17-openjdk installed."
-exit 1
+if [ -d /usr/lib/jvm/java-17-openjdk ]; then
+  export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+  export PATH="${JAVA_HOME}/bin/:$PATH"
+  cd /opt/DataExplorer
+  ./DevicePropertiesEditor "$@"
+else
+  echo "You do not seem to have java-runtime-openjdk=17 installed."
+  exit 1
+fi
