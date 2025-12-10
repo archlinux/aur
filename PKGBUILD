@@ -3,29 +3,22 @@
 
 pkgname=zl-compressor-bin
 _pkgname=ZL.Compressor
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Versatile dynamic range compressor audio plugin by ZL-Audio, featuring lookahead, sidechain"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZL-Audio/ZLCompressor"
-license=('AGPL3')
+license=('AGPL-3.0-only')
+provides=('zl-compressor')
+conflicts=('zl-compressor')
 
 # Runtime dependencies - libraries required for the plugin to function
 depends=(
-    'gcc-libs'      # C++ standard library and GCC runtime: libstdc++.so.6, libgcc_s.so.1
-    'glibc'         # GNU C Library: libc.so.6, libm.so.6
-    'alsa-lib'      # Advanced Linux Sound Architecture library: libasound.so.2
-    'fontconfig'    # Font configuration library: libfontconfig.so.1
-    'freetype2'     # Font rendering library: libfreetype.so.6
-    'expat'         # XML parsing library: libexpat.so.1
-    'zlib'          # Compression library: libz.so.1
-    'bzip2'         # Compression library: libbz2.so.1.0
-    'libpng'        # PNG image library: libpng16.so.16
-    'harfbuzz'      # Text shaping library: libharfbuzz.so.0
-    'brotli'        # Compression library: libbrotlidec.so.1, libbrotlicommon.so.1
-    'glib2'         # Low-level system library: libglib-2.0.so.0
-    'graphite'      # Font rendering engine: libgraphite2.so.3
-    'pcre2'         # Perl Compatible Regular Expressions: libpcre2-8.so.0
+    'alsa-lib'
+    'freetype2'
+    'fontconfig'
+    'gcc-libs'
+    'glibc'
 )
 
 # Package provides and conflicts
@@ -44,13 +37,11 @@ source_x86_64=("${_pkgname}-${pkgver}-Linux.zip::https://github.com/ZL-Audio/ZLC
 source_aarch64=("${_pkgname}-${pkgver}-Linux-arm.zip::https://github.com/ZL-Audio/ZLCompressor/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux-arm.zip")
 
 # SHA256 checksums for source integrity verification
-sha256sums=(
-    'a96fd9920a72e79720d41bcf32ccd58634194aa01ee82f246a72392015d626e9'  # LICENSE.md
-)
+sha256sums=('a96fd9920a72e79720d41bcf32ccd58634194aa01ee82f246a72392015d626e9')
+sha256sums_x86_64=('f02bbb101c1d09eb708b2a17d8a0276b3a2871c66e76680f3afb44d18a06a82a')
+sha256sums_aarch64=('cb4c11b025c07e67fd045e0cc2ece0d6fb4972eaaab5f715c381afb41eb4ae04')
 
 # Architecture-specific checksums
-sha256sums_x86_64=('372f78b6cd388eaa0ee0dcc26ce446a4daf321fc177d9515195918a1003ea52b')  # x86_64 zip
-sha256sums_aarch64=('6c4b7e1f8277d2d5cae24510143bc8c4768210851db844ccf61361450930e19a')  # aarch64 zip
 
 package() {
     # Create plugin installation directories
