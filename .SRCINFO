@@ -1,6 +1,6 @@
 pkgbase = spyder-notebook
 	pkgdesc = Jupyter notebook integration with Spyder
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://docs.spyder-ide.org/current/plugins/notebook.html
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = spyder-notebook
 	depends = python-tornado
 	depends = jupyter-notebook
 	depends = python-jupyter-client
-	source = https://files.pythonhosted.org/packages/source/s/spyder_notebook/spyder_notebook-0.7.0.tar.gz
-	sha256sums = 01c018a63576d0c255eea3b927e1bfa7cbf017a7d6e585957ac4794bcc3c0e6c
+	source = https://files.pythonhosted.org/packages/source/s/spyder_notebook/spyder_notebook-0.7.1.tar.gz
+	sha256sums = f032c4b9f97d71c55296bba16f4b1e5d994771311d0b9979dac85bd1eb87af5f
 
 pkgname = spyder-notebook
