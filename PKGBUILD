@@ -7,11 +7,11 @@
 pkgbase=pyqt4
 pkgname=('pyqt4-common' 'python2-pyqt4')
 pkgver=4.12.3
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url='https://riverbankcomputing.com/software/pyqt/intro'
 license=('GPL')
-makedepends=('sip4' 'python2-sip-pyqt4' 'mesa' 'python2-opengl' 'python2-dbus' 'python2')
+makedepends=('sip4' 'python2-sip-pyqt4' 'mesa' 'python2-opengl' 'python2-dbus' 'python2' 'qt4')
 source=("https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-${pkgver}/PyQt4_gpl_x11-${pkgver}.tar.gz")
 sha256sums=('a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472')
 

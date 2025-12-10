@@ -1,6 +1,6 @@
 pkgbase = pyqt4
 	pkgver = 4.12.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = pyqt4
 	makedepends = python2-opengl
 	makedepends = python2-dbus
 	makedepends = python2
+	makedepends = qt4
 	source = https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.12.3/PyQt4_gpl_x11-4.12.3.tar.gz
 	sha256sums = a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472
 
