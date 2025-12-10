@@ -14,6 +14,7 @@ pkgbase = wahoomc
 	depends = python-gdal
 	depends = python-geojson
 	depends = python-shapely
+	depends = pyhgtmap
 	optdepends = phyghtmap
 	provides = wahoomc
 	conflicts = wahoomc
