@@ -1,0 +1,13 @@
+pkgbase = ascii_moon
+	pkgdesc = A TUI application written in Rust that displays the moon phase in ASCII art
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rockydd/ascii_moon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = ascii_moon-0.2.0.tar.gz::https://github.com/rockydd/ascii_moon/archive/v0.2.0.tar.gz
+	sha256sums = be5d1ad3a5bfad11fedc093b256d2153e93de084969d45496f2a5f60da712077
+
+pkgname = ascii_moon
