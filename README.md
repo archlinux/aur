@@ -1,3 +1,5 @@
+### Officially migrated to Codeberg! Hopefully, now I won't have to update 2 repositories after an update.
+
 ## Depends on [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
 
 ## hyconf is available on the Arch User Repository!
