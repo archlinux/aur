@@ -8,12 +8,12 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=4.0.0+72.r5661.20251107.55da393bb
-pkgrel=1
+pkgrel=2
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
 arch=('any')
-url="https://github.com/reds-heig/logisim-evolution"
+url="https://github.com/logisim-evolution/logisim-evolution"
 license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
