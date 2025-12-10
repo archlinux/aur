@@ -4,7 +4,7 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.2.5
+pkgver=6.2.7
 _electronversion=37
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('05c83d34389d35d46de57c7374b5f52cbd3f7c6208bc9e45df5d2115cae83b88'
+sha256sums=('a8d61cc33a21e35da5ba491ab75bc6323edb1c6067a53a98455c3e29ed8662cf'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
