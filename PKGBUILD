@@ -53,6 +53,7 @@ prepare() {
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     #ln -sf "/usr/bin/cloudflared" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cloudflared/bin/cloudflared"
     #find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    chmod 755 "${srcdir}/squashfs-root/assets"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
