@@ -1,6 +1,6 @@
 # Maintainer: Karl Fischer <kmf@fischer.org.za>
 pkgname=sword-tui
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A terminal-based Bible application built with Go and bubbletea"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=()
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c0e7fbfe658caf703eaba96a6bc044fe396aab05677144ae2fee569bac7867e0')
+sha256sums=('4a36359e9bb0810e4d4910ae2f9d80faa7fde982e42fb4fb21330144ddb83b82')
 
 build() {
     cd "${pkgname}-${pkgver}"
