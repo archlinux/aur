@@ -1,7 +1,7 @@
 pkgbase = zug-git
 	pkgdesc = Transducers for C++
-	pkgver = r151.6623704
-	pkgrel = 2
+	pkgver = r157.b102498
+	pkgrel = 1
 	url = https://github.com/arximboldi/zug
 	arch = any
 	license = BSL-1.0

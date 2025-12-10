@@ -2,8 +2,8 @@
 # Contributor: Ulrich Huber <ulrich@huberulrich.de>
 
 pkgname=zug-git
-pkgrel=2
-pkgver=r151.6623704
+pkgrel=1
+pkgver=r157.b102498
 pkgdesc="Transducers for C++"
 arch=('any')
 url="https://github.com/arximboldi/zug"
