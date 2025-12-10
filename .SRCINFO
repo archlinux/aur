@@ -1,6 +1,6 @@
 pkgbase = stringp
 	pkgdesc = A "key-value" utility for UNIX-like systems. Allows to conveniently store values and retrieve them by key.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/AndyLocks/string-pool
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stringp
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/AndyLocks/string-pool/archive/refs/tags/stringp-v0.0.3.tar.gz
-	sha256sums = 779d2ea1452bb7ecb366e70679414a480a184b6e426bd54b741d6b7a41dbccc9
+	source = https://github.com/AndyLocks/string-pool/archive/refs/tags/stringp-v0.0.4.tar.gz
+	sha256sums = 3646287e5ee0068f3950916d43ea27db1ff19117177861ed9700d411dac5a5d4
 
 pkgname = stringp

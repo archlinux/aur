@@ -1,6 +1,6 @@
 # Maintainer: Andy Locks <jandylokc@gmail.com>
 pkgname=stringp
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='A "key-value" utility for UNIX-like systems. Allows to conveniently store values and retrieve them by key.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('779d2ea1452bb7ecb366e70679414a480a184b6e426bd54b741d6b7a41dbccc9')
+sha256sums=('3646287e5ee0068f3950916d43ea27db1ff19117177861ed9700d411dac5a5d4')
 
 build() {
   cd "$srcdir/string-pool-$pkgname-v$pkgver"
