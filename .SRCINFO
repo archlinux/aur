@@ -1,0 +1,21 @@
+pkgbase = mopen
+	pkgdesc = File opener using mimetypes and mailcap
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gokcehan/picon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	depends = python-standard-mailcap
+	provides = mopen
+	conflicts = python-mopen
+	replaces = python-mopen
+	source = https://files.pythonhosted.org/packages/source/m/mopen/mopen-1.tar.gz
+	sha256sums = eff29763b81fdf286dda26420cb2e95fe57c251425aaadc36078887ee6404436
+
+pkgname = mopen

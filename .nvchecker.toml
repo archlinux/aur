@@ -1,0 +1,3 @@
+[mopen]
+source = "pypi"
+pypi = "mopen"
