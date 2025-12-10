@@ -1,28 +1,28 @@
 pkgbase = recyclarr
 	pkgdesc = Automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
-	pkgver = 7.4.1
+	pkgver = 7.5.2
 	pkgrel = 1
 	url = https://recyclarr.dev
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = MIT
-	makedepends = dotnet-sdk-9.0
+	makedepends = dotnet-sdk-10.0
 	makedepends = git
-	depends = aspnet-runtime-9.0
+	depends = aspnet-runtime-10.0
 	depends = gcc-libs
 	depends = glibc
 	depends = sqlite
 	optdepends = sonarr: Smart PVR for newsgroup and torrent users.
 	optdepends = radarr: Movie organizer/manager for usenet and torrent users.
 	backup = etc/recyclarr/recyclarr.yml
-	source = git+https://github.com/recyclarr/recyclarr.git#tag=v7.4.1
+	source = git+https://github.com/recyclarr/recyclarr.git#tag=v7.5.2
 	source = recyclarr.service
 	source = recyclarr.sysusers
 	source = recyclarr.timer
 	source = recyclarr.tmpfiles
 	source = recyclarr.yml
-	sha256sums = ff3b0ea1b01297f85879bcf4e796eb92f9857180a8517cbe59c8c6bb9cf8a5c5
+	sha256sums = 1166c610928eab8334f69f63490be7929135e81751f37096226bba84fd8d0ff2
 	sha256sums = 3e7bb0ca28665de77b939f6b8e316f6708c8e8a97a64ad589b217583dee0e74e
 	sha256sums = 3d2a1b3690d956a8f195c2cd1b28c28beecda354023e8de78471ca35610fb57d
 	sha256sums = e8a2959e079a6a77c3eefaf77defd69e76944c2a1378257dcaf0286abde002a6
