@@ -1,7 +1,7 @@
 pkgbase = serproid
 	pkgdesc = PKCS#11 driver for cloud-based digital certificates issued by Serpro
 	pkgver = 2.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://serproid.serpro.gov.br
 	arch = x86_64
 	license = custom

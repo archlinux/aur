@@ -2,7 +2,7 @@
 
 pkgname=serproid
 pkgver=2.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='PKCS#11 driver for cloud-based digital certificates issued by Serpro'
 arch=('x86_64')
 url='https://serproid.serpro.gov.br'
@@ -21,4 +21,5 @@ package() {
   cp -dr --preserve=mode,timestamp ./usr "$pkgdir/"
 
   install -m755 serproid "$pkgdir/usr/bin/serproid"
+  ln -s libserproidp11.so "$pkgdir/usr/lib/libneoidp11.so"
 }
