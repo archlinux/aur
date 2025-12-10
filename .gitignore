@@ -1,0 +1,26 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Source files
+vibe-acp-linux-x86_64-*.zip
+vibe-acp
+
+# Build directories
+src/
+pkg/
+
+# Backup files
+*.backup
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
