@@ -1,0 +1,18 @@
+pkgbase = bm-terminal-music-player
+	pkgdesc = A minimalist terminal music player.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zyoung11/BM
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = alsa-lib
+	depends = dbus
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = libnotify: Desktop notifications support
+	source = bm-terminal-music-player::git+https://github.com/zyoung11/BM.git
+	sha256sums = SKIP
+
+pkgname = bm-terminal-music-player
