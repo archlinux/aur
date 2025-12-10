@@ -1,9 +1,9 @@
-# Maintainer: liuyifan115 <bundles.82cherub at icloud dot com>
+# Maintainer: liuyifan115 <liuyifan115 at icloud dot com>
 # Maintainer: V0IDPlusPlus <v0idplusplus at protonmail dot com>
 # Maintainer: shilka <shilkazx at gmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=3.10.10
+pkgver=3.10.15
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
