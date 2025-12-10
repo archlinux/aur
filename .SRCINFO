@@ -1,15 +1,15 @@
 pkgbase = gnome-shell-extension-docker-integration-git
 	pkgdesc = Base Docker&Docker compose integration (start, stop, log, up), hide Docker network (veth*)
-	pkgver = 20160321
-	pkgrel = 4
+	pkgver = r17.1f90240
+	pkgrel = 1
 	url = https://github.com/Trejjam/Gnome-Docker-integration
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = gnome-shell>=3.18
+	depends = gnome-shell
 	depends = networkmanager
 	provides = docker-integration-applet
-	source = git://github.com/Trejjam/Gnome-Docker-integration.git
-	sha1sums = SKIP
+	source = gnome-docker-integration::git+https://github.com/Trejjam/Gnome-Docker-integration.git
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-docker-integration-git
