@@ -1,7 +1,7 @@
 # Maintainer: Hamza Gbada <hamza dot gbada at example dot com>
 
 pkgname=docker-model-bin
-pkgver=0.1.39
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Docker CLI plugin for running AI models (prebuilt binary)"
 arch=('x86_64')
