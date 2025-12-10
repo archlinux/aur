@@ -1,6 +1,6 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
-pkgname=rutoken-pkcs
+pkgname=rutoken-pkcs11
 pkgver=2.18.1.0
 pkgrel=1
 pkgdesc='Интерфейс RSALabs PKCS#11'
