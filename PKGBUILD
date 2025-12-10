@@ -14,3 +14,9 @@ conflicts=('pgadmin4-desktop')
 source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}-1.plucky_amd64.deb")
 #source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}_amd64.deb")
 sha256sums=('1fc103aaf1e7dd2ea73d9fc93b4354df0a054441ae7a72343f9dca43d1a5d622')
+
+
+package() {
+  # Extract package data
+  tar -x --zstd -f data.tar.zst -C "${pkgdir}"
+}
