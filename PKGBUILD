@@ -20,11 +20,11 @@ source=(
 sha256sums=(
   'SKIP'
 )
-install=services.install
+#install=services.install
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  git describe --long --tags | cut -c2-
+  git describe --long --tags | cut -c2- | sed 's/-/.r/' | sed 's/-/./'
 }
 
 package() {
