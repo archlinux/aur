@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=minimon-applet-for-cosmic
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A System Monitor applet for COSMIC"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=(
   'just'
 )
 source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e164a0557ed4deda7a43a9a3fed442ef15df6b71574ef261fe271c2ecbf5d410')
+sha256sums=('52bd4f94c4873b3d24c2cefbc93d725f92c997b00ed65eaaf7ebdb93deca6974')
 
 prepare() {
   cd "minimon-applet-$pkgver"
