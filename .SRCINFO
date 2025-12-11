@@ -1,7 +1,7 @@
 pkgbase = picoscope7
 	pkgdesc = PicoScope 7 Test and Measurment Stable
-	pkgver = 7.2.3.7282
-	pkgrel = 3
+	pkgver = 7.2.10.7893
+	pkgrel = 1
 	url = https://www.picotech.com/downloads/linux
 	install = picoscope7.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = picoscope7
 	provides = picoscope7
 	conflicts = picoscope7beta
 	options = !strip
-	source = https://labs.picotech.com/picoscope7/debian/pool/main/p/picoscope/picoscope_7.2.3.7282_amd64.deb
-	md5sums = fdce55df613268a4b8eb16e561531787
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/p/picoscope/picoscope_7.2.10.7893_amd64.deb
+	md5sums = 20d4c7d850655446a047d90c6fb88038
 
 pkgname = picoscope7
