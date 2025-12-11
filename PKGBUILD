@@ -200,7 +200,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=580.105.08
+_nv_ver=580.119.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -228,7 +228,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=d52214480c2659dc0ffbf0c4267166da8f5e3af9")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=7de9800e5ce45d03c797be57a3e959fc914b2adb")
 fi
 
 # NVIDIA pre-build module support
@@ -240,9 +240,7 @@ fi
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0001-Enable-atomic-kernel-modesetting-by-default.patch"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch"
-             "${_patchsource}/misc/nvidia/0003-nvidia-uvm-Remove-unused-get_devmap_page-parameter.patch"
-             "${_patchsource}/misc/nvidia/0004-nvkms-Limit-default-maximum-TMDS-character-rate-to-3.patch")
+             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -408,19 +406,14 @@ prepare() {
     fi
 
     ### CI-only stuff
-    if [[ -n "$CI" || -n "$GITHUB_RUN_ID" ]]; then
+    if _is_ci_build; then
         echo "Detected build inside CI"
-        scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
+
+        scripts/config \
             -d CC_OPTIMIZE_FOR_PERFORMANCE_O3 \
-            -e CONFIG_CC_OPTIMIZE_FOR_SIZE \
-            -d SLUB_DEBUG \
-            -d PM_DEBUG \
-            -d PM_ADVANCED_DEBUG \
-            -d PM_SLEEP_DEBUG \
-            -d ACPI_DEBUG \
-            -d LATENCYTOP \
-            -d SCHED_DEBUG \
-            -d DEBUG_PREEMPT
+            -e CC_OPTIMIZE_FOR_SIZE \
+            -d DEBUG_KERNEL \
+            -e DEBUG_INFO_REDUCED
     fi
 
     ### Enable bbr3
@@ -528,8 +521,6 @@ prepare() {
     if [ "$_build_nvidia_open" = "yes" ]; then
         patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_nv_open_pkg}/"
-        patch -Np1 -i "${srcdir}/0003-nvidia-uvm-Remove-unused-get_devmap_page-parameter.patch" -d "${srcdir}/${_nv_open_pkg}/"
-        patch -Np1 -i "${srcdir}/0004-nvkms-Limit-default-maximum-TMDS-character-rate-to-3.patch" -d "${srcdir}/${_nv_open_pkg}/"
     fi
 }
 
@@ -550,7 +541,10 @@ _sign_modules() {
 build() {
     cd "$_srcname"
     make "${BUILD_FLAGS[@]}" -j"$(nproc)" all
-    make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+
+    if ! _is_ci_build; then
+        make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+    fi
 
     local MODULE_FLAGS=(
        KERNEL_UNAME="${_kernuname}"
@@ -629,7 +623,12 @@ _package-headers() {
 
     echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
+        localversion.* version vmlinux
+
+    if ! _is_ci_build; then
+        install -Dt "$builddir" -m644 tools/bpf/bpftool/vmlinux.h
+    fi
+
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
@@ -798,6 +797,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('6b17389bf23dc88f21cec0c7727427882cdb5df87d34c60d839f620b6fc05e449d584fbd03c8623f080d07203d6e475a8d6b4ef11c8cde9bd1ca18d013063cad'
-        'b8383d11c153967b13a58f36981c8c6041ba1ec24651f5472f2dddede8da6ebe0516d718b37440bd38a46c2e50cde295d82103d1e88d23b6fdbdf1f01c1bda48'
-        'd14fe243ba5b5349c4f51fe36c5d986ba176f96c99ffa1f3ad4f9c879ffbc2e6ae038214333010accef5434b4ffee3549f37cda4eb84c962196891de6afad6db'
-        'ace0a9f6e0b204ee2a013fd9d4cae4b4d6a3f2fd8aea890788ff46102ca4c54396ec05b5c2375b743c257ae56a2db40d8fdcc0cc9f24c3f168ee28368fe81042')
+        '4193034f32392fe6c551080b2afab61d7efbb3a7205daf73490a102d2649b1fa54e0e91dcd3b99afd29795dbf11c1d1a17e0f9b7fd9747b90d296977f2a7bb77'
+        'a654067abc42135eaabb8a4414edb3a7f5c7707b92f997c868860b89caf0819fefbe96f751ca22bbbebb365431c54650d07a31dfd1b7485b029d0b8e0903d178'
+        'bfd5d4cdfe8f2c2e7466d7095befe40f95049ef8190e2ba01d7ba853903741d6ccb54087e8af72f4dad1790faf6d341d7b55b14eb00405d54bd4f62c772b880d')
