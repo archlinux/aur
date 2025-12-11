@@ -1,7 +1,7 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=fb2-clean
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A CLI utility for clean fb2 files. "
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("rustup" "pkgconf" "zstd")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("1d03a0092be8f84bca5a22a7e1d974f7f8633355ae2eca4e04455c632738c03f")
+sha256sums=("366f87d44bf0b17071d9261bfc092202e2ada452463e769ec2d4ed5700a05a65")
 
 build() {
   export ZSTD_SYS_USE_PKG_CONFIG=1

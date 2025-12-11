@@ -1,6 +1,6 @@
 pkgbase = fb2-clean
 	pkgdesc = A CLI utility for clean fb2 files.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nujievik/fb2-clean
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fb2-clean
 	makedepends = zstd
 	depends = zstd
 	options = !debug
-	source = fb2-clean-0.1.1.tar.gz::https://github.com/nujievik/fb2-clean/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 1d03a0092be8f84bca5a22a7e1d974f7f8633355ae2eca4e04455c632738c03f
+	source = fb2-clean-0.2.0.tar.gz::https://github.com/nujievik/fb2-clean/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 366f87d44bf0b17071d9261bfc092202e2ada452463e769ec2d4ed5700a05a65
 
 pkgname = fb2-clean
