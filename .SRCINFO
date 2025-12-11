@@ -1,6 +1,6 @@
 pkgbase = media-downloader
 	pkgdesc = A Qt/C++ front end to yt-dlp, youtube-dl, gallery-dl, lux, you-get, svtplay-dl, aria2c, wget and safari books.
-	pkgver = 5.4.5
+	pkgver = 5.4.6
 	pkgrel = 1
 	url = https://github.com/mhogomchungu/media-downloader
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = media-downloader
 	optdepends = svtplay-dl: svtplay-dl plugin
 	optdepends = wget: download regular large files
 	optdepends = python-mutagen
-	source = https://github.com/mhogomchungu/media-downloader/releases/download/5.4.5/media-downloader-5.4.5.tar.xz
-	source = https://github.com/mhogomchungu/media-downloader/releases/download/5.4.5/media-downloader-5.4.5.tar.xz.asc
+	source = https://github.com/mhogomchungu/media-downloader/releases/download/5.4.6/media-downloader-5.4.6.tar.xz
+	source = https://github.com/mhogomchungu/media-downloader/releases/download/5.4.6/media-downloader-5.4.6.tar.xz.asc
 	validpgpkeys = 6855E493B5B2DF96E319BB6D16E2E1ACC6F51242
-	sha256sums = e465610eeaa8abb7a2f96259128901a6a62be438f79e8d753ccf79da78b2e437
+	sha256sums = 97378a6ca91127f5de7b70f17cdf74d43596faf17d66c4df381ce457027ee290
 	sha256sums = SKIP
 
 pkgname = media-downloader
