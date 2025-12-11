@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/geekyved/news-aur"
 license=('MIT')
 depends=('python')
-source=("https://github.com/GeekyVed/news-aur/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/GeekyVed/news-aur/releases/download/v1.0/news-aur-v1.0.tar.gz")
 sha256sums=('8f5d6109fafbbf28800fa24d224e599d9790da0c3afc0c3713ab1607eb0d4eff')
     
 package() {
