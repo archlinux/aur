@@ -1,0 +1,3 @@
+[kaitai-struct-cpp-stl-runtime]
+source = "git"
+git = "https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime.git"

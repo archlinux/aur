@@ -1,0 +1,15 @@
+pkgbase = kaitai-struct-cpp-stl-runtime
+	pkgdesc = Kaitai Struct API for C++ using STL
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gtest
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/archive/0.11/kaitai_struct_cpp_stl_runtime-0.11.tar.gz
+	sha256sums = 55f62b0d97e9f8df6db4e4577c6343d6ad95705a4ce6437bf25bf184c06840d2
+
+pkgname = kaitai-struct-cpp-stl-runtime
