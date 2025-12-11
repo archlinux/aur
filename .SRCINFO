@@ -1,16 +1,15 @@
 pkgbase = heidisql-common
 	pkgdesc = Shared files for HeidiSQL (wrapper script, locale files, ini files, documentation)
 	pkgver = 12.14.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
-	noextract = heidisql_12.14.1.1_amd64.deb
+	makedepends = curl
+	makedepends = jq
 	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.14.1.1.tar.gz
-	source = heidisql_12.14.1.1_amd64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.14.1.1/heidisql_12.14.1.1_amd64.deb
 	source = heidisql
 	sha256sums = 0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01
-	sha256sums = 71deecca25c2bc2050b7cb721cc5e5333fc523c8e259c463fbb77b1245b014ac
 	sha256sums = 46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb
 
 pkgname = heidisql-common

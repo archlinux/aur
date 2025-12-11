@@ -1,44 +1,55 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-common
 pkgver=12.14.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared files for HeidiSQL (wrapper script, locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
+makedepends=(curl jq)
 
-_deb_filename="heidisql_${pkgver}_amd64.deb"
 source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
-  "${_deb_filename}::https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/${_deb_filename}"
   heidisql
 )
-noextract=("${_deb_filename}")
 sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
-            '71deecca25c2bc2050b7cb721cc5e5333fc523c8e259c463fbb77b1245b014ac'
             '46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb')
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  # Extract translation files from official .deb package
-  # It contains pre-built .mo files that are built from Transifex
-  # This is the only way to get all translations without Transifex access
-  echo "Extracting translation files from official .deb package"
-  (
-    mkdir -p "${srcdir}/deb-extract"
-    cd "${srcdir}/deb-extract"
-    ar -x "${srcdir}/${_deb_filename}"
-    bsdtar -xf data.tar.gz usr/share/heidisql/locale/
-    if [ -d "usr/share/heidisql/locale" ] && [ -n "$(find usr/share/heidisql/locale -name '*.mo' 2>/dev/null)" ]; then
-      mkdir -p "${srcdir}/HeidiSQL-${pkgver}/extra/locale"
-      cp -v usr/share/heidisql/locale/*.mo "${srcdir}/HeidiSQL-${pkgver}/extra/locale/"
-      count=$(find "${srcdir}/HeidiSQL-${pkgver}/extra/locale" -name '*.mo' 2>/dev/null | wc -l)
-      echo "Extracted $count translation files"
+  # Fetch compiled translations directly from the daily Transifex snapshots
+  # served by heidisql.com instead of extracting them from the .deb package.
+  echo "Downloading translation files from heidisql.com"
+  local locale_dir="${srcdir}/HeidiSQL-${pkgver}/extra/locale"
+  mkdir -p "${locale_dir}"
+
+  local base_url="https://www.heidisql.com/downloads/locale/"
+  local index_file
+  index_file="$(mktemp)"
+
+  curl -fsSL "${base_url}" -o "${index_file}" || exit 1
+
+  mapfile -t locales < <(jq -r '.[] | select(length>0)' "${index_file}")
+  rm -f "${index_file}"
+
+  if [ "${#locales[@]}" -eq 0 ]; then
+    echo "Locale index is empty or invalid" >&2
+    exit 1
+  fi
+
+  local downloaded=0
+  for name in "${locales[@]}"; do
+    echo "Downloading ${base_url}${name}"
+    if curl -fsSL "${base_url}${name}" -o "${locale_dir}/${name}"; then
+      downloaded=$((downloaded + 1))
+    else
+      echo "Failed to download ${name}" >&2
+      exit 1
     fi
-    cd "${srcdir}"
-    rm -rf deb-extract
-  )
+  done
+
+  echo "Downloaded ${downloaded} locale files"
 }
 
 package() {
