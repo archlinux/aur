@@ -1,4 +1,4 @@
-# Maintainer:  Nathawat <aur dot cobweb179 at passfwd dot com>
+# Maintainer:  Scott-Nx <aur dot elevator257 at passmail dot net>
 # Contributor: Mohamed tarek <Mokhamed_tarek@mail.ru>
 # Contributor: rotzelbart <tausendkubik@gmail.com>
 # Contributor: TechVio <68242352+techvio1@users.noreply.github.com>
@@ -9,11 +9,17 @@
 
 pkgname=bootstrap-studio
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
 url="https://bootstrapstudio.io/"
+depends=(
+    'alsa-lib'
+    'gtk3'
+    'libcups'
+    'nss'
+)
 
 source=("https://releases.bootstrapstudio.io/${pkgver}/Bootstrap%20Studio.AppImage"
         "bstudio.desktop")
@@ -32,7 +38,7 @@ package() {
     echo "Copying package files..."
     mkdir -p "${pkgdir}/opt/${pkgname}"
     cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/${pkgname}"
-    
+
     # Set permissions
     chmod a+rx "${pkgdir}/opt/${pkgname}/" -R
 
