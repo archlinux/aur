@@ -1,7 +1,7 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
