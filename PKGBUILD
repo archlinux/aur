@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -20,8 +20,8 @@ source+=(
   'beszel-agent.tmpfiles'
   'beszel-agent.conf.example'
 )
-sha256sums=('cd47e577116c143cb9d297c96ab6d9f9b4ef3e87461fc19faa4b1084da70c907'
-            '03f82109a98648c49417c3e0dd3990ae56e6010b33c7fc9c8e0263c80f090f69'
+sha256sums=('f6f8dff53a505639039af4b9ee33e5d68815e6cb5523c060a787ca774ab47d3e'
+            '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
             '823448a308c7329431ae713ab98a5c8cea2a00528177f3d31aa3f5eb6c4a751e'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
 sha256sums_x86_64=('129ddb15cd1ae188d10cdc23010b3cce2f0826d1a5f6a2d93de7928505110b6e')
