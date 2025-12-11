@@ -1,0 +1,17 @@
+pkgbase = nuls
+	pkgdesc = A NuShell-inspired 'ls'
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/nuls
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = nuls
+	conflicts = nuls
+	source = nuls-0.2.0.crate::https://crates.io/api/v1/crates/nuls/0.2.0/download
+	sha256sums = 24fb69fbb3ca465f6e051d36c75867f9fbe3e358eedb931fcb65125e4946e08e
+
+pkgname = nuls
