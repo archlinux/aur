@@ -11,7 +11,7 @@ url="https://www.freedownloadmanager.org/"
 license=('custom')
 depends=('openssl' 'xdg-utils' 'ffmpeg' 'libtorrent' 'gst-plugins-base')
 makedepends=('desktop-file-utils' 'hicolor-icon-theme')
-source=("${pkgname}-${pkgver}-amd64.deb::https://files2.freedownloadmanager.org/${pkgver}/freedownloadmanager_${pkgver}_amd64.deb")
+source=("https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
 sha256sums=('c659566a42715c4957275d2f9b2c17b6b73f1be38eec900bfbe31243363b7a09')
 
 prepare() {

@@ -12,7 +12,7 @@ pkgbase = freedownloadmanager-bin
 	depends = ffmpeg
 	depends = libtorrent
 	depends = gst-plugins-base
-	source = freedownloadmanager-bin-6.30.3.6518-amd64.deb::https://files2.freedownloadmanager.org/6.30.3.6518/freedownloadmanager_6.30.3.6518_amd64.deb
+	source = https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
 	sha256sums = c659566a42715c4957275d2f9b2c17b6b73f1be38eec900bfbe31243363b7a09
 
 pkgname = freedownloadmanager-bin
