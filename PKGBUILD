@@ -4,22 +4,25 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
 url=https://github.com/GoogleCloudPlatform/cloudsql-proxy
 license=(Apache-2.0)
 depends=(fuse3)
-makedepends=(go)
+makedepends=(
+  git
+  go
+)
 if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('8e1fbeeb6a7618eb3a2f7d0097af73770e2b2cdf24e1f6af048461027c134f9cb7190703386dd7e5a97cd1891cbbb40320a55eb80a040076adde1c2b950209c8')
+source=(${pkgname}::git+${url}.git#tag=v${pkgver})
+b2sums=('ed2c26cffd909b8f071e1fc44bb32242bec3c407dca041c8957cf9164f40116d495773f21b914c230169f62ef77a993a13e447fcd904f9283bdd27ba44da38b9')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   export GOFLAGS='-mod=readonly'
 
@@ -32,15 +35,16 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   local _ldflags
   _ldflags=(
     -X=main.versionString=v${pkgver}
     -linkmode=external
   )
-  export CGO_CPPFLAGS="${CPPFLAGS}"
+
   export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
@@ -66,7 +70,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   install -Dm755 -t "${pkgdir}"/usr/bin \
     out/${pkgname}
