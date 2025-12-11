@@ -1,0 +1,18 @@
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index ae9a0cad9c59..8ee1689222a4 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -648,11 +648,11 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+ 	if (drvdata->quirks & QUIRK_ROG_NKEY_LEGACY) {
+ 		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID1);
+ 		if (ret < 0)
+-			return ret;
++			pr_err("Failed asus_kbd_init FEATURE_KBD_LED_REPORT_ID1: %d\n", ret);
+ 
+ 		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID2);
+ 		if (ret < 0)
+-			return ret;
++			pr_err("Failed asus_kbd_init FEATURE_KBD_LED_REPORT_ID2: %d\n", ret);
+ 	}
+ 
+ 	if (dmi_match(DMI_PRODUCT_FAMILY, "ProArt P16")) {

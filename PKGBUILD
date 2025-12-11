@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.18.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -58,6 +58,7 @@ source=(
   0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
 
   PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
+  PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling-id1-id2-pr_err.patch
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
   PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
@@ -104,6 +105,7 @@ sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b'
             '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
             '93f054d3a81ae4c32c92ea92e86ed6d1a250cb3d40a14ec5f01c532eb0a694b0'
+            'd24918941d34fe82f59a04a75a4c9f76855b99f2ce1a40680091cdfb428c2ae5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
