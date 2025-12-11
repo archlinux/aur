@@ -8,8 +8,8 @@ pkgdesc="A Home Assistant, native app for desktop/laptop devices."
 arch=('x86_64')
 url="https://github.com/joshuar/go-hass-agent"
 license=('MIT')
-depends=('libx11' 'libglvnd')
-makedepends=('git' 'go' 'xorg-server' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libcap')
+depends=('dbus' 'libcap')
+makedepends=('git' 'go')
 source=("go-hass-agent::git+${url}.git#commit=${_commit}?signed")
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 b2sums=('44b44fe428144c49525aa3de95b49b02348576d3ab7ab446d42ecea495b0e38938d77be6f58fa7ba75d0584eabc5f422a67b5b7a595634299923325e4f77383d')
