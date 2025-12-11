@@ -32,7 +32,7 @@ package() {
 
     ln -s "/opt/aktivco/rutokenconnect/ru.rutoken.rtconnect.chrome.json" "${pkgdir}/etc/chromium/native-messaging-hosts/ru.rutoken.rtconnect.chrome.json"
     ln -s "/opt/aktivco/rutokenconnect/ru.rutoken.rtconnect.firefox.json" "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/ru.rutoken.rtconnect.json"
-    ln -s "/usr/lib/ibrtengine.so.3" "${pkgdir}/opt/aktivco/rutokenconnect/librtengine.so"
+    ln -s "/usr/lib/librtengine.so.3" "${pkgdir}/opt/aktivco/rutokenconnect/librtengine.so"
     ln -s "/usr/lib/librtpkcs11ecp.so" "${pkgdir}/opt/aktivco/rutokenconnect/librtpkcs11ecp.so"
 
     install -Dm644 "${srcdir}/usr/share/doc/rutokenconnect/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
