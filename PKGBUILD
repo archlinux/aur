@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=llama.cpp-bin
-pkgver=b7349
+pkgver=b7356
 pkgrel=1
 pkgdesc="LLM inference in C/C++ (precompiled Linux binaries)"
 arch=("x86_64")
@@ -15,7 +15,7 @@ depends=(curl gcc-libs)
 source=("${pkgname%-bin}-${pkgver}.zip"::"${url}/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-x64.zip"
   "README-${pkgver}.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/${pkgver}/README.md")
 
-sha256sums=('811aa0298a07291531af4e992bd8129a7e7e6377b03f045642447376e7742da2'
+sha256sums=('f25845b82706bbcd0327f8315a3571800e965b410f159432c2e5fd275aaa1416'
             'd37ccc9b032225b2fd0512322bbf24e2543f967931b0716a02e6abe73259ebb1')
 
 package() {
