@@ -20,6 +20,9 @@ prepare() {
   # eigen 5.x compat
   sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
   sed -i "s|Eigen3 \${CERES_EIGEN_VERSION}|Eigen3|g" cmake/CeresConfig.cmake.in
+
+  # drop old eigen bug workaround
+  sed -i "s|if (MINGW)|if (0)|g" CMakeLists.txt
 }
 
 build() {
