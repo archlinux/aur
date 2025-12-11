@@ -2,12 +2,12 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 : ${_pkgtype=-dev-bin}
-: ${_pkgnamefmt:=LibreOffice}
+: ${_pkgnamefmt:=LibreOfficeDev}
 
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=25.8.3.2
+pkgver=26.2.0.0.beta1
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
@@ -20,6 +20,7 @@ optdepends=(
   'java-environment: required by extension-wiki-publisher and extension-nlpsolver'
   'java-runtime: adds java support'
   'qt5-base: for Qt5 desktop integration'
+  'qt6-base: for Qt6 desktop integration'
 )
 
 provides=(
