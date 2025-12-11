@@ -2,18 +2,19 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=archiveweb.page-appimage
-pkgver=0.15.8
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="An Electron based application for interactive, high-fidelity web archiving"
 arch=('x86_64')
 url="https://github.com/webrecorder/archiveweb.page"
-license=('AGPL-3.0-only')
+license=('AGPL-3.0-or-later')
 depends=('fuse2'
          'hicolor-icon-theme'
          'zlib')
+options=(!strip)
 source=("${url}/releases/download/v${pkgver}/ArchiveWeb.page-${pkgver}.AppImage"
         "ArchiveWeb.page.desktop")
-sha256sums=('6b3147d76ac185f18a63c8a705a382bfd1f651e9bd34cc170f9d3044dd42fe38'
+sha256sums=('a4fc880fa7b8580b7781c672194d9e09927d69e47d5cc8f6c05c9b89b71e123a'
             '62b378eaad8f542f85c8c0a90b6ab6f9bec8f48d0924eb0cafb1521403573cb1')
 
 prepare() {
