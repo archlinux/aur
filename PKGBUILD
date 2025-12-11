@@ -2,13 +2,13 @@
 pkgname=onscripter-en-galladite27
 _pkgname=ONScripter-EN
 pkgver=2025_06_08
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="modern fork of onscripter-en, an opensource nscript interpreter"
 arch=('x86_64')
 url="https://github.com/Galladite27/ONScripter-EN"
 license=('GPL-2.0-or-later' 'OFL-1.1')
-depends=('sdl_ttf' 'sdl12-compat' 'sdl_image' 'libvorbis' 'sdl_mixer' 'libx11' 'bzip2' 'smpeg0' 'freetype2')
+depends=('sdl_ttf' 'sdl12-compat' 'sdl_image' 'libvorbis' 'sdl_mixer' 'libx11' 'bzip2' 'smpeg0' 'freetype2' 'libjpeg-turbo' 'libogg' 'libpng' 'zlib')
 optdepends=('onscripter-en-devkit-git: user guides, project templates, and apis for ONScripter-EN')
 provides=('onscripter-en')
 conflicts=('onscripter-en-git')
@@ -19,11 +19,11 @@ sha256sums=('29d15582fafebbd7c06feb598af74871f1a346397752e970c867360b367d47b8' '
 
 prepare() {
 	cd "$_pkgname-${pkgver//_/-}"
+	./configure --prefix=/usr
 }
 
 build() {
 	cd "$_pkgname-${pkgver//_/-}"
-	./configure --prefix=/usr
 	make "all"
 }
 
