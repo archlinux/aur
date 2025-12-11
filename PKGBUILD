@@ -1,25 +1,43 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
-options=('!strip')
+pkgname=libindi-tscam
+pkgver=2.1.7
+pkgrel=1
+pkgdesc="INDI driver for Touptek products branded as Telesco Service"
+url="http://www.indilib.org/index.php?title=Main_Page"
+license=(LGPL-2.1-or-later)
+arch=(i686 x86_64 aarch64)
+depends=(libindi=${pkgver} libtscam=${pkgver})
+makedepends=(cmake libtscam=${pkgver})
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
+sha256sums=("4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b")
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
+    -DFIRMWARE_INSTALL_DIR=/usr \
+    -DWITH_TOUPCAM=Off \
+    -DWITH_ALTAIRCAM=Off \
+    -DWITH_BRESSERCAM=Off \
+    -DWITH_MALLINCAM=Off \
+    -DWITH_MEADECAM=Off \
+    -DWITH_NNCAM=Off \
+    -DWITH_OGMACAM=Off \
+    -DWITH_OMEGONPROCAM=Off \
+    -DWITH_STARSHOOTG=Off \
+    -DWITH_TSCAM=On \
+    -DWITH_SVBONYCAM=Off \
+    ../indi-3rdparty-${pkgver}/indi-toupbase
+  make
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+  cd build
+  make DESTDIR="$pkgdir" install
 }
