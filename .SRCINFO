@@ -1,6 +1,6 @@
 pkgbase = matchama-kde
 	pkgver = r265.8525e05
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/cscs/matchama-kde
 	arch = any
 	license = GPL3
