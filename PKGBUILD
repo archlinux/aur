@@ -3,7 +3,7 @@
 
 _pkgname="libadwaita-without-adwaita"
 pkgname="$_pkgname-git"
-pkgver=1.8.1.r64.g55e1e5e
+pkgver=1.8.2.r98.g46e78e5
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications - patched to respect system theme"
 url="https://gitlab.gnome.org/GNOME/libadwaita"
@@ -12,7 +12,7 @@ license=('LGPL-2.1-or-later')
 
 depends=(
   'appstream'
-  'gtk4'
+  'gtk4-git'
 )
 makedepends=(
   'git'
@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'efcd44b8fdd4a6a4afaf278c55525b9b28010170bfdf72f51a1e38f1049dfa91'
+  'a24eff0d347f3e89585b22769af10706bd7f891d94ebd00a04936c6b936f354d'
 )
 
 prepare() {
