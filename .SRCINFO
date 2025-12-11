@@ -1,15 +1,15 @@
 pkgbase = prometheus-libvirt-exporter
 	pkgdesc = A prometheus exporter for libvirt
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/inovex/prometheus-libvirt-exporter
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = goreleaser
-	source = prometheus-libvirt-exporter-2.2.0::https://github.com/inovex/prometheus-libvirt-exporter/archive/refs/tags/v2.2.0.tar.gz
+	source = prometheus-libvirt-exporter-2.3.0::https://github.com/inovex/prometheus-libvirt-exporter/archive/refs/tags/v2.3.0.tar.gz
 	source = prometheus-libvirt-exporter.service
-	sha256sums = a31ed629df96f1c63aae6ca1167b716dd4a45e77cbeba131350269c08fb8c644
+	sha256sums = de202e07eec13d0e6d52a0dabfe3dc29a3bbf3a1b439845b22c5065896703974
 	sha256sums = fd2852b523324e4b97efbe280b36b615f6d54895280b5ddd30e9fe60152bbec2
 
 pkgname = prometheus-libvirt-exporter
