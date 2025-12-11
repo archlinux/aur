@@ -4,7 +4,7 @@
 _pkgname="libadwaita-without-adwaita"
 pkgname="$_pkgname-git"
 pkgver=1.8.2.r98.g46e78e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications - patched to respect system theme"
 url="https://gitlab.gnome.org/GNOME/libadwaita"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'a24eff0d347f3e89585b22769af10706bd7f891d94ebd00a04936c6b936f354d'
+  '74aaf5455f7b9990c53f68a968570a4555567d2c1a7fb58f79d71de6d74b3889'
 )
 
 prepare() {

@@ -1,5 +1,5 @@
 diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
-index 1119af72..c5b95aa1 100644
+index 1119af72..5b4c0206 100644
 --- a/src/adw-style-manager.c
 +++ b/src/adw-style-manager.c
 @@ -70,6 +70,7 @@ struct _AdwStyleManager
@@ -10,7 +10,7 @@ index 1119af72..c5b95aa1 100644
    gboolean dark;
    gboolean changing_gtk_settings;
    char *document_font_name;
-@@ -129,6 +130,47 @@ unregister_display (GdkDisplay *display)
+@@ -129,6 +130,56 @@ unregister_display (GdkDisplay *display)
    g_hash_table_remove (display_style_managers, display);
  }
  
@@ -21,6 +21,7 @@ index 1119af72..c5b95aa1 100644
 +{
 +  char *user_theme = NULL;
 +  char *color_scheme = NULL;
++  char *user_icon_theme = NULL;
 +  const char *selected = NULL;
 +
 +  if (!self->display || !self->gtk_settings)
@@ -37,6 +38,13 @@ index 1119af72..c5b95aa1 100644
 +  g_object_set (self->gtk_settings, "gtk-theme-name", selected, NULL);
 +  self->changing_gtk_settings = FALSE;
 +
++  user_icon_theme = g_settings_get_string (settings, "icon-theme");
++  if (user_icon_theme && *user_icon_theme) {
++    self->changing_gtk_settings = TRUE;
++    g_object_set (self->gtk_settings, "gtk-icon-theme-name", user_icon_theme, NULL);
++    self->changing_gtk_settings = FALSE;
++  }
++
 +  g_setenv ("GTK_THEME", selected, TRUE);
 +
 +  color_scheme = g_settings_get_string (settings, "color-scheme");
@@ -52,13 +60,14 @@ index 1119af72..c5b95aa1 100644
 +  }
 +
 +  g_free (user_theme);
++  g_free (user_icon_theme);
 +  g_free (color_scheme);
 +}
 +
  static void
  register_display (GdkDisplayManager *display_manager,
                    GdkDisplay        *display)
-@@ -489,11 +531,8 @@ adw_style_manager_constructed (GObject *object)
+@@ -489,11 +540,8 @@ adw_style_manager_constructed (GObject *object)
                               self,
                               G_CONNECT_SWAPPED);
  
@@ -72,7 +81,7 @@ index 1119af72..c5b95aa1 100644
        self->provider = gtk_css_provider_new ();
        gtk_css_provider_load_from_resource (self->provider,
                                             "/org/gnome/Adwaita/styles/gtk.css");
-@@ -512,6 +551,19 @@ adw_style_manager_constructed (GObject *object)
+@@ -512,6 +560,19 @@ adw_style_manager_constructed (GObject *object)
                                                    GTK_STYLE_PROVIDER_PRIORITY_THEME);
      }
  
@@ -92,7 +101,7 @@ index 1119af72..c5b95aa1 100644
      self->animations_provider = gtk_css_provider_new ();
      gtk_css_provider_load_from_string (self->animations_provider,
                                         "* { transition: none; }");
-@@ -581,6 +633,7 @@ adw_style_manager_dispose (GObject *object)
+@@ -581,6 +642,7 @@ adw_style_manager_dispose (GObject *object)
    g_clear_object (&self->animations_provider);
    g_clear_object (&self->accent_provider);
    g_clear_object (&self->fonts_provider);
