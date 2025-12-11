@@ -1,16 +1,16 @@
 pkgbase = firefox-developer-edition-i18n-zh-cm
 	pkgdesc = Chinese (Simplified) language pack for Firefox Developer Edition (with classic context menu mnemonics, see bugzilla #1701324)
-	pkgver = 147.0b1
+	pkgver = 147.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/developer
 	arch = any
 	license = MPL-2.0
 	makedepends = perl-rename
 	makedepends = web-ext
-	depends = firefox-developer-edition>=147.0b1
+	depends = firefox-developer-edition>=147.0b2
 	provides = firefox-developer-edition-i18n-zh-cn
 	conflicts = firefox-developer-edition-i18n-zh-cn
-	source = firefox-developer-edition-i18n-zh-cm.xpi::https://releases.mozilla.org/pub/firefox/releases/147.0b1/linux-x86_64/xpi/zh-CN.xpi
-	sha512sums = 7a88af848557db45d66d8fa5af7386ce47baa775025eb23283189907cb56281f1aa302f1f87bda8f89ff5208966273cf1abb734341e37483167cf384ead49318
+	source = firefox-developer-edition-i18n-zh-cm.xpi::https://releases.mozilla.org/pub/firefox/releases/147.0b2/linux-x86_64/xpi/zh-CN.xpi
+	sha512sums = 07221e71e7acd0c08e7e069a864a6e69c7b474bbe42e6a8e224a20a4547770b5bb4d130f066a033b966f2502f9e0d800e6528ba8ced63cb6eab4526fc7b06f6f
 
 pkgname = firefox-developer-edition-i18n-zh-cm
