@@ -22,8 +22,8 @@ depends=(
 )
 
 # Package provides and conflicts
-provides=('zlcompressor')
-conflicts=('zlcompressor')
+provides=('zl-compressor')
+conflicts=('zl-compressor')
 
 # Build options - don't strip binaries to preserve plugin functionality
 options=(!strip)
