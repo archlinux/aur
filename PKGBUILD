@@ -2,11 +2,12 @@
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
 pkgver=8.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent of the OpenVox Automation Framework"
 arch=('x86_64')
 url='https://voxpupuli.org/openvox/'
 license=('Apache-2.0')
+depends=("libxcrypt-compat")
 options=('!debug')
 conflicts=("puppet")
 backup=("etc/puppetlabs/")
