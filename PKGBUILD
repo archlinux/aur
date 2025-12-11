@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=flashmq
-pkgver=1.23.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=($CARCH)
@@ -27,7 +27,7 @@ backup=()
 options=('!strip' '!emptydirs')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('d6d43e3863dd6e2ebf8f4c929afe419f6f5d7e4df631bedf97c01bba045b917f')
+sha256sums=('21a5060df26da2210cf34148a165aa0136ccfa378136f34182327d403a3cb457')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
