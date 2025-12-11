@@ -1,7 +1,7 @@
 # Maintainer: Ruben Gonzalez <rgonzalez@fluendo.com> and Carlos Falgueras <cfalgueras@fluendo.com>
 
 pkgname=fluster
-pkgver=0.0.0.9e37ae0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Testing framework for decoders conformance"
 arch=(any)
@@ -37,6 +37,7 @@ build() {
 
   rm -rf tmp_install
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  ls dist/*.whl
   python -m installer --destdir=tmp_install dist/*.whl
 
   # Completions

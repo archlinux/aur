@@ -1,21 +1,21 @@
 pkgbase = fluster
-	pkgdesc = Testing framework for decoders conformance
-	pkgver = 0.0.0.9e37ae0
-	pkgrel = 1
-	url = https://github.com/fluster/fluster
-	arch = any
-	license = LGPL-3.0
-	checkdepends = git
-	checkdepends = python-pytest
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-black
-	makedepends = python-pylint
-	makedepends = flake8
-	makedepends = mypy
-	depends = python
-	source = git+https://github.com/fluendo/fluster.git#branch=master
-	sha256sums = SKIP
+    pkgdesc = Testing framework for decoders conformance
+    pkgver = 0.6.0
+    pkgrel = 1
+    url = https://github.com/fluster/fluster
+    arch = any
+    license = LGPL-3.0
+    checkdepends = git
+    checkdepends = python-pytest
+    makedepends = python-build
+    makedepends = python-installer
+    makedepends = python-wheel
+    makedepends = python-black
+    makedepends = python-pylint
+    makedepends = flake8
+    makedepends = mypy
+    depends = python
+    source = git+https://github.com/fluendo/fluster.git#branch=master
+    sha256sums = SKIP
 
 pkgname = fluster
