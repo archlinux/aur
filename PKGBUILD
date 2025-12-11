@@ -1,5 +1,5 @@
 pkgname=justevery-code
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Community-driven fork of the Codex CLI for local terminal coding assistance"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e5c7fee22310785e759fc05ec964d9253a461dc5c2309fa0f02c093ca89347fbcbaf2e73fd0ef72f7233ba08847ad23d93a884989f0d11fe2133432b4e621237')
+b2sums=('825ff8cc6cfdd32f1722ecc8cb49f44b0dcc75544e68af5ebc371070a15013c1fe2be81858539925a38a877b75402297212a4fa0175584224a47ed1fd39584ba')
 
 prepare() {
 	cd "code-${pkgver}/code-rs"
@@ -54,5 +54,4 @@ package() {
 	install -Dm755 "target/release/code-linux-sandbox" "${pkgdir}/usr/bin/code-linux-sandbox"
 
 	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "../NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
