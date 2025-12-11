@@ -10,7 +10,7 @@ sha256sums=('ec444010f4ae57bd504262d394c32e1d13f6587e32ff2846d07b1cadaeb17c5b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make linux
+  make aur
 }
 
 package() {
