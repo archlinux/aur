@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-beta
 	pkgdesc = Signal Private Messenger for Linux - Beta version.
-	pkgver = 7.82.0beta1
+	pkgver = 7.83.0beta1
 	pkgrel = 1
 	url = https://signal.org
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = signal-desktop-beta
 	depends = nss
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	conflicts = signal-desktop-beta-bin
-	source = signal-desktop-beta-7.82.0beta1.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v7.82.0-beta.1.tar.gz
+	source = signal-desktop-beta-7.83.0beta1.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v7.83.0-beta.1.tar.gz
 	source = signal beta.desktop
-	sha512sums = fe9090f6c35a1111095155aeefb5ea52b1df2f910d7795de903ee7983f2259fbf955cb18dd13b6d7dd827ca4748cd357a8ec7c28e3517e30e6e10247ce088f87
+	sha512sums = d1efdaa41cf61b4118469551e148318f6b614ebc4fe484dce17b8915e02da475fd2bddb40ccb79d3b60410eb1bf941506a8a6ec275e2147a9f2a0c00b016a683
 	sha512sums = 5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c
 	makedepends_aarch64 = fpm
 
