@@ -2,7 +2,7 @@
 
 _basename=channelz
 pkgname=${_basename}-bin
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="CLI tool to encode static assets with Gzip and Brotli"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('9cd61f5a7d4c4259d53389da66c0e68d1398c83283b7ee983c9f8043fe1dd6d5')
+sha256sums_x86_64=('932ae75c91edfb0c9c7ad9c3569e7330858fa3e276b9530d51bd1c7341562743')
 
 package() {
     cd "${pkgdir}"
