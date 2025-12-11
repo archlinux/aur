@@ -67,14 +67,18 @@ sed -i "s/^pkgrel=.*/pkgrel=1/" "$PKGBUILD_FILE"
 # Update sha256sums
 sed -i "s/^sha256sums=.*/sha256sums=('${SHA256}')/" "$PKGBUILD_FILE"
 
+# Generate .SRCINFO automatically after any PKGBUILD changes
+echo -e "${GREEN}Generating .SRCINFO...${NC}"
+makepkg --printsrcinfo | tee .SRCINFO
+
 echo -e "${GREEN}✓ PKGBUILD updated successfully!${NC}"
+echo -e "${GREEN}✓ .SRCINFO generated successfully!${NC}"
 echo ""
 echo -e "${YELLOW}Changes:${NC}"
 echo -e "  Version: ${CURRENT_VERSION} → ${LATEST_VERSION}"
 echo -e "  SHA256:  ${SHA256}"
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
-echo "  1. Review the changes: git diff PKGBUILD"
+echo "  1. Review the changes: git diff PKGBUILD .SRCINFO"
 echo "  2. Test the build: makepkg -si"
-echo "  3. Update .SRCINFO: makepkg --printsrcinfo > .SRCINFO"
-echo "  4. Commit and push to AUR"
+echo "  3. Commit and push to AUR"
