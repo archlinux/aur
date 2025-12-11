@@ -1,6 +1,6 @@
 pkgbase = fyi-bin
 	pkgdesc = A dead-simple CLI status message printer for use in BASH scripts, etc
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Blobfolio/fyi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fyi-bin
 	depends = gcc-libs
 	provides = fyi
 	conflicts = fyi
-	source_x86_64 = https://github.com/Blobfolio/fyi/releases/download/v2.4.1/fyi_2.4.1-1_amd64.deb
-	sha256sums_x86_64 = f1de16f015adad3094b1082026e7f501cd9921d65d43484d6705c364bc4af4bc
+	source_x86_64 = https://github.com/Blobfolio/fyi/releases/download/v2.4.2/fyi_2.4.2-1_amd64.deb
+	sha256sums_x86_64 = abfc7ea70b09ca6d82f1f2da9c85d6918b023885b507f981ff1a9ea7846c8b1e
 
 pkgname = fyi-bin
