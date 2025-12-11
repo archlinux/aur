@@ -1,6 +1,6 @@
 # maintainer: BrainDamage
 pkgname=helio-workstation
-pkgver=3.16
+pkgver=3.17
 pkgrel=1
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'libxrandr' 'libxcursor' 'libxcomposite' 'jack' 'freeglut' 'm
 source=("git+https://github.com/helio-fm/${pkgname}#tag=${pkgver}"
   "git+https://github.com/peterrudenko/JUCE.git"
   "git+https://github.com/peterrudenko/hopscotch-map.git")
-sha256sums=('04c8c54daf454011a1f8defdcbe215c9307bae1100144cc238706fc1c54f3bd2'
+sha256sums=('7853c0fa724da58161199492b8dbc67cf888992e66482db67720ff42ea4db440'
             'SKIP'
             'SKIP')
 #FIXME: figure out how to use native packages for juce / hopscotchmap
