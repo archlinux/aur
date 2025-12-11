@@ -5,14 +5,14 @@
 pkgbase=tlp-git
 pkgname=(
   tlp-git
-  tlp-rdw-git
   tlp-pd-git
+  tlp-rdw-git
 )
-pkgver=1.9.0
+pkgver=1.9.0.r3.380d1bb
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
-license=(GPL-2.0-or-later)
+license=('GPL-2.0-or-later AND GPL-3.0-only')
 makedepends=(git)
 source=(git+https://github.com/linrunner/TLP.git)
 sha256sums=(SKIP)
@@ -27,6 +27,7 @@ pkgver() {
 package_tlp-git() {
   pkgdesc='Optimize laptop battery life'
   depends=(
+    bash
     hdparm
     iw
     pciutils
@@ -39,42 +40,33 @@ package_tlp-git() {
     'bash-completion: Bash completion'
     'ethtool: Disable Wake On Lan'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'
-    'tp_smapi: ThinkPad battery functions'
-    'tlp-rdw: Switch wifi and bluetooth on/off automatically'
     'tlp-pd: Switch power profiles from the desktop'
+    'tlp-rdw: Switch wifi and bluetooth on/off automatically'
+    'tp_smapi: Older ThinkPad battery functions (before Sandy Bridge)'
   )
   provides=(tlp)
   conflicts=(
     laptop-mode-tools
     pm-utils
-    tuned
     tlp
+    tuned
   )
   backup=(etc/tlp.conf)
 
   export TLP_NO_INIT=1
   export TLP_SBIN=/usr/bin
   export TLP_WITH_ELOGIND=0
+  export TLP_WITH_SYSTEMD=1
 
   make DESTDIR="${pkgdir}" -C TLP install-tlp install-man-tlp
-}
-
-package_tlp-rdw-git() {
-  pkgdesc='Switch wifi and bluetooth on/off automatically'
-  depends=(
-    networkmanager
-    tlp
-  )
-  provides=(tlp-rdw)
-  conflicts=(tlp-rdw)
-
-  make DESTDIR="${pkgdir}" -C TLP install-rdw install-man-rdw
 }
 
 package_tlp-pd-git() {
   pkgdesc='Switch power profiles from the desktop'
   depends=(
+    glib2
     polkit
+    python
     python-dbus
     python-gobject
     tlp
@@ -86,13 +78,25 @@ package_tlp-pd-git() {
   conflicts=(
     power-profiles-daemon
     tlp-pd
+    tuned-ppd
   )
 
-  export TLP_NO_INIT=1
-  export TLP_SBIN=/usr/bin
-  export TLP_WITH_ELOGIND=0
-
   make DESTDIR="${pkgdir}" -C TLP install-pd install-man-pd
+}
+
+package_tlp-rdw-git() {
+  pkgdesc='Switch wifi and bluetooth on/off automatically'
+  depends=(
+    bash
+    networkmanager
+    tlp
+  )
+  provides=(tlp-rdw)
+  conflicts=(tlp-rdw)
+
+  export TLP_SBIN=/usr/bin
+
+  make DESTDIR="${pkgdir}" -C TLP install-rdw install-man-rdw
 }
 
 # vim: ts=2 sw=2 et:
