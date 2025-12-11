@@ -1,18 +1,18 @@
 pkgbase = brisqi-bin
 	pkgdesc = Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.20.2
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://brisqi.com
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron37
-	provides = brisqi=0.20.2
+	depends = electron39
+	provides = brisqi=0.21.0
 	conflicts = brisqi
-	source = brisqi-0.20.2.deb::https://github.com/Brisqi/releases/releases/download/v0.20.2/Brisqi-setup-0.20.2-linux-amd64.deb
+	source = brisqi-0.21.0.deb::https://github.com/Brisqi/releases/releases/download/v0.21.0/Brisqi-setup-0.21.0-linux-amd64.deb
 	source = LICENSE.html::https://brisqi.com/terms
 	source = brisqi.sh
-	sha256sums = 3b98db1e5a3b3544bbd7664f9350990f34f3df654ec926ba96abd369219474f0
-	sha256sums = 31901d115dee555883fbf505fa2b30c459912cd4e449a62086c4baf8914edb13
+	sha256sums = a2a5d6d72f48aeaaaa6f41d504dcc78d1efff71a5aee57881ba1b3ac1de26089
+	sha256sums = bb57206525933393946036ea9d32cb371448b29359de32a35b9063efead4d887
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = brisqi-bin
