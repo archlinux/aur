@@ -1,11 +1,11 @@
 pkgbase = ghpkg
 	pkgdesc = Indev package manager
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Frothy7650/ghpkg/
 	arch = any
 	license = MIT
-	source = https://github.com/Frothy7650/ghpkg/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/Frothy7650/ghpkg/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = ec444010f4ae57bd504262d394c32e1d13f6587e32ff2846d07b1cadaeb17c5b
 
 pkgname = ghpkg
