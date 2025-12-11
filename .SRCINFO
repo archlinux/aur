@@ -1,15 +1,35 @@
 pkgbase = mullvad-tray-git
-	pkgdesc = Mullvad VPN connection status in system tray. Latest git checkout..
+	pkgdesc = Mullvad VPN connection status in system tray. Latest git checkout.
 	pkgver = 2.0.2.r40.20251208.c1cbc2c
 	pkgrel = 1
 	url = https://gitlab.com/Plague_Doctor/mullvad-tray
-	arch = any
+	arch = i586
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL-3.0-or-later
+	checkdepends = cargo
 	makedepends = git
-	makedepends = zopflipng-parallel
-	depends = python>=3
-	depends = python-pyqt5
-	depends = python-requests
+	makedepends = cargo
+	makedepends = parallel
+	makedepends = zopfli
+	makedepends = gdk-pixbuf2
+	makedepends = glib2>=0.20
+	makedepends = gtk4>=0.9
+	makedepends = libadwaita>=0.7
+	makedepends = openssl
+	depends = gcc-libs
+	depends = glibc
+	depends = libadwaita-1.so
+	depends = libcrypto.so
+	depends = libgdk_pixbuf-2.0.so
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgtk-4.so
+	depends = libssl.so
 	source = mullvad-tray::git+https://gitlab.com/Plague_Doctor/mullvad-tray.git
 	sha256sums = SKIP
 
