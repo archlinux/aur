@@ -9,13 +9,13 @@ pkgbase = matchama-kde
 	source = matchama-kde::git+https://gitlab.com/cscs/matchama-kde.git#commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 	sha256sums = SKIP
 
-pkgname = plasma5-themes-matchama
-	pkgdesc = Matcha theme for KDE Plasma 5
+pkgname = plasma6-themes-matchama
+	pkgdesc = Matcha theme for KDE Plasma 5/6
 	install = matchama-kde.install
 	depends = plasma-workspace
 	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
 	optdepends = matcha-gtk-theme: for a consistent look in GTK applications
-	optdepends = matcha-kde-wallpapers: matcha KDE wallpapers
+	optdepends = plasma6-themes-matcha-wallpapers: matcha KDE wallpapers
 	optdepends = kvantum-theme-matcha: matcha theme for Kvantum (recommended)
 	optdepends = konsole-colorscheme-matcha: matcha theme for Konsole
 	optdepends = yakuake-skin-matcha: matcha theme for Yakuake
@@ -26,33 +26,33 @@ pkgname = plasma5-themes-matchama
 	conflicts = matcha-kde
 	replaces = matchama-kde
 
-pkgname = plasma5-themes-matchama-wallpapers
+pkgname = plasma6-themes-matchama-wallpapers
 	pkgdesc = Matcha KDE wallpapers
-	provides = plasma5-themes-matchama-wallpapers
-	conflicts = plasma5-themes-matchama-wallpapers
+	provides = plasma6-themes-matcha-wallpapers
+	conflicts = plasma6-themes-matcha-wallpapers
 	replaces = matchama-kde-wallpapers
+	replaces = plasma5-themes-matchama-wallpapers
 
 pkgname = kvantum-theme-matchama
 	pkgdesc = Matcha theme for Kvantum
 	depends = kvantum
-	provides = kvantum-theme-matchama
 	provides = kvantum-theme-matcha
-	conflicts = kvantum-theme-matchama
+	conflicts = kvantum-theme-matcha
 
 pkgname = konsole-colorscheme-matchama
 	pkgdesc = Matcha theme for Konsole
 	depends = konsole
-	provides = konsole-colorscheme-matchama
-	conflicts = konsole-colorscheme-matchama
+	provides = konsole-colorscheme-matcha
+	conflicts = konsole-colorscheme-matcha
 
 pkgname = yakuake-skin-matchama
 	pkgdesc = Matcha theme for Yakuake
 	depends = yakuake
-	provides = yakuake-skin-matchama
-	conflicts = yakuake-skin-matchama
+	provides = yakuake-skin-matcha
+	conflicts = yakuake-skin-matcha
 
 pkgname = konversation-theme-matchama
 	pkgdesc = Matcha theme for Konversation
 	depends = konversation
-	provides = konversation-theme-matchama
-	conflicts = konversation-theme-matchama
+	provides = konversation-theme-matcha
+	conflicts = konversation-theme-matcha
