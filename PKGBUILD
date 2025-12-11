@@ -1,33 +1,19 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: endlesseden <endlesseden [at] deep-rose [dot] org>
+# Original Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=altrace-hg
-pkgver=r8.05e260da7f89
+pkgver=r9.0
 pkgrel=1
-pkgdesc="Debugging tool for applications that use OpenAL for audio"
+pkgdesc="Depreciated: Transitional dummy package for altrace-git."
 arch=('x86_64')
-url='https://icculus.org/altrace/'
-license=('zlib')
-makedepends=('cmake' 'ninja')
-source=('hg+https://hg.icculus.org/icculus/altrace/')
-sha256sums=('SKIP')
-provides=(altrace)
-conflicts=(altrace)
-
-pkgver() {
-  cd altrace
-  #hg log -r . -T "{latesttag}{sub('^-0-.*', '', '.{latesttagdistance}+m{node|short}')}"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
+url='https://aur.archlinux.org/packages/altrace-git'
+depends=('altrace-git')
+provides=(altrace-hg)
 
 build() {
-  cmake \
-    -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -S altrace -B build
-  ninja -C build
+  echo "This is a Dummy package. This package exists solely to help with the transition from altrace-hg to altrace-git."
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  echo "remember: update any package dependencies to either use 'altrace' or 'altrace-git'. Thank You"
 }

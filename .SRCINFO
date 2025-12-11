@@ -1,16 +1,10 @@
 pkgbase = altrace-hg
-	pkgdesc = Debugging tool for applications that use OpenAL for audio
-	pkgver = r8.05e260da7f89
+	pkgdesc = Depreciated: Transitional dummy package for altrace-git.
+	pkgver = r9.0
 	pkgrel = 1
-	url = https://icculus.org/altrace/
+	url = https://aur.archlinux.org/packages/altrace-git
 	arch = x86_64
-	license = zlib
-	makedepends = cmake
-	makedepends = ninja
-	provides = altrace
-	conflicts = altrace
-	source = https://hg.icculus.org/icculus/altrace/
-	sha256sums = SKIP
+	depends = altrace-git
+	provides = altrace-hg
 
 pkgname = altrace-hg
-
