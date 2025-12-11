@@ -9,8 +9,12 @@ pkgbase = python-pyrime
 	depends = python
 	depends = librime
 	depends = python-platformdirs
+	depends = python-wcwidth
 	optdepends = ptpython
 	optdepends = python-prompt_toolkit
+	optdepends = python-ptpython
+	optdepends = python-pynvim
+	optdepends = python-colorama
 	source = https://files.pythonhosted.org/packages/cp313/p/pyrime/pyrime-0.2.1-cp313-cp313-manylinux_2_17_x86_64.whl
 	sha256sums = 546448ce2a8772e45ca92e86ed88d25db1c0387eaa6bd51d2483ff16a84c9817
 
