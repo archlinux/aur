@@ -1,0 +1,12 @@
+pkgbase = news
+	pkgdesc = Terminal CS and AI related news reader with clickable links
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/geekyved/news-aur
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/GeekyVed/news-aur/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 121dfb69ea9845b2cdda20a23644c2268c192b600c89cbf18708d1f66bad0787
+
+pkgname = news
