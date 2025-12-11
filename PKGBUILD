@@ -1,14 +1,15 @@
-# Maintainer: Darius Niminenn <root@dnim.dev>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: Darius Niminenn <root@dnim.dev>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=python-onnxoptimizer
-pkgver=0.3.18
+pkgver=0.3.19
 pkgdesc='ONNX model optimizer'
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/onnx/optimizer'
-license=(MIT)
-depends=(python python-onnx)
+license=(Apache-2.0)
+depends=(python python-onnx python-setuptools)
 makedepends=(python-setuptools cmake pybind11 git)
 checkdepends=(python-pytest python-nbval python-onnxruntime python-torchvision)
 source=("onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v$pkgver"
@@ -29,7 +30,8 @@ prepare() {
 build() {
   cd onnx-optimizer
   # Use system protobuf and protobuf-lite (https://github.com/onnx/optimizer/issues/38)
-  CMAKE_ARGS="-DONNX_OPT_USE_SYSTEM_PROTOBUF=ON -DONNX_USE_PROTOBUF_SHARED_LIBS=ON -DONNX_USE_LITE_PROTO=ON" python setup.py build
+  # CMAKE_POLICY_VERSION_MINIMUM for CMake 4.x compatibility with older bundled onnx
+  CMAKE_ARGS="-DONNX_OPT_USE_SYSTEM_PROTOBUF=ON -DONNX_USE_PROTOBUF_SHARED_LIBS=ON -DONNX_USE_LITE_PROTO=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5" python setup.py build
 }
 
 check() {
