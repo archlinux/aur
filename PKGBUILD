@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.17.8.arch1
+pkgver=6.18.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -29,8 +29,7 @@ makedepends=(
   texlive-latexextra
 )
 options=(
-  !debug
-  !strip
+  zipkmod
 )
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -46,17 +45,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('5a8de64a75fca706c01c6c0a77cf75a74618439db195e25f1f0268af6b2fb1da'
+sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b'
             'SKIP'
-            '9d04f6d76161ab5f9aa7c4be26c11e14da46c9f8b179ac7038b969872a4565b1'
+            '1461db929834dad3b39595dcff5650afcb69465be1f3a11d6f63e89ed3904910'
             'SKIP'
-            '4bf24013d1a837bf6b51dbbfd1a162c59769f8371f2cf919e34b21271697f9c5'
+            '862ba1d840619a220e126759b7a1632432747a051d4eddba44a656823176b013'
             '5d1e64b4c8b3158169d6f19f9f2c2d0cb36c2108560e3c4d3a0b194e1ea80fdd')
-b2sums=('1476969a9ad9252f97c16edb3c9fb37d75de3c00280af42057a2704666aa4945ac50d458e61d1e2b751e224ec38c99789b80f23636bc93f79f5b5e51a163980b'
+b2sums=('b94b7b9bf18aca0c3e50baf79b009a1448fc6cd9c3ee019f641cc247dcf53a4abef4274ee0608ad8cd4943af69854363a95d26e117ff23620bb07dccb158859f'
         'SKIP'
-        '20bd7e6186671d21cbba127a44d4c3f6799d4e6ca7bec37a391d3133386f20c122829b0b701d59b08f2f551166e6f93b9c9d0da7d4e58712c973cec5d07eea8b'
+        '38b85a7633fb194bd77786963d123c5439e0e8b73ba2beeb9f1c465daf9a9798014f3b342a90d2bfb3d31aed349114ab7245f1a3fbf864546a503199b2ac956b'
         'SKIP'
-        '1ec4d533d25e9127c61eb09dfcd840c88e34cff2c55bcf6745c926892d275c88a5f810bd8ccf63903b5e33c211d4e814abdb057d5c060096d1a3b65280f2c347'
+        '1a1c39c04046ce3a3f6ecb0c38d36c8c766c641c534f76a2a10b60dd9e5db6d57339eb024e78da744cff958187061ed218aeadcbb7dc74cb536b4dfbfd7b24bf'
         '3709434e8acee63b62448c5901ce6fb90f985cbbd53dcb04451f8a194c5cf6f616c127d22417c825108fd00f47bd0acc8ee0df5f8609005e1c7dab27cd4b2277')
 
 
@@ -132,8 +131,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  # Suppress depmod
+  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
 
   # remove build link
   rm "$modulesdir"/build
@@ -190,7 +189,6 @@ _package-headers() {
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
     link=  # Suppress build-id symlinks
 
-
   echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
@@ -207,24 +205,6 @@ _package-headers() {
 
   echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
-
-  echo "Stripping build tools..."
-  local file
-  while read -rd '' file; do
-    case "$(file -Sib "$file")" in
-      application/x-sharedlib\;*)      # Libraries (.so)
-        strip -v $STRIP_SHARED "$file" ;;
-      application/x-archive\;*)        # Libraries (.a)
-        strip -v $STRIP_STATIC "$file" ;;
-      application/x-executable\;*)     # Binaries
-        strip -v $STRIP_BINARIES "$file" ;;
-      application/x-pie-executable\;*) # Relocatable binaries
-        strip -v $STRIP_SHARED "$file" ;;
-    esac
-  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-
-  echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
