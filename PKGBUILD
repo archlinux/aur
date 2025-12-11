@@ -1,37 +1,42 @@
-# Maintainer: Manuel Schmitzberger <ms@ms-sw.at>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Manuel Schmitzberger <ms@ms-sw.at>
 
-pkgname=jv
-pkgver=5.0.0
+pkgbase=jv
+pkgname=jsonschema
+pkgver=6.0.2
 pkgrel=1
-pkgdesc='Package jv provides json-schema compilation and validation.'
-arch=('x86_64')
-url="https://github.com/santhosh-tekuri"
-license=('Apache 2.0')
-makedepends=('git' 'go')
-source=("$url/jsonschema/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f25779f25a75967d7fde5b99d265f1ed12acb1f63f24f62fa47c45404de1aa5f')
+pkgdesc='json-schema compilation and validation'
+arch=(x86_64)
+url="https://github.com/santhosh-tekuri/$pkgname"
+license=(Apache-2.0)
+depends=(glibc)
+makedepends=(go)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('06465cc1c647b086f9b8d590c9de1608e5b335b58598d0eb84b9ee63a747e1d7')
 
 prepare(){
-  cd "$srcdir/jsonschema-$pkgver"
-  mkdir -p bin/
+	  cd "$_archive"
+	  mkdir -p dist/
+	  go mod download
 }
 
 build() {
-  cd "jsonschema-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o ./bin/jv ./cmd/...
+	cd "$_archive"
+	export CGO_CPPFLAGS="$CPPFLAGS"
+	export CGO_CFLAGS="$CFLAGS"
+	export CGO_CXXFLAGS="$CXXFLAGS"
+	export CGO_LDFLAGS="$LDFLAGS"
+	export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+	go build -o dist/ "./cmd/$pkgbase"
 }
 
 check() {
-  cd "jsonschema-$pkgver"
-  go test ./...
+	cd "$_archive"
+	go test ./...
 }
 
 package() {
-  cd "jsonschema-$pkgver"
-  install -Dm 755 "${srcdir}/jsonschema-$pkgver/bin/"jv -t "${pkgdir}"/usr/bin/
+	cd "$_archive"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "dist/$pkgbase"
 }

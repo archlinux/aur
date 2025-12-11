@@ -1,0 +1,4 @@
+[jv]
+source = "git"
+git = "https://github.com/santhosh-tekuri/jsonschema.git"
+prefix = "v"
