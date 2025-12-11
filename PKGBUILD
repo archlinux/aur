@@ -1,4 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon at_m2x+dev>
+# Maintainer: Jake McGinty <me@jakebot.org>
+# Contributor: Jonathon Fernyhough <jonathon at_m2x+dev>
 # Contributor: Aleksej Komarov <stylemistake@gmail.com>
 # Contributor: MKzero <info[at]linux-web-development[dot]de>
 # Upstream: Bitwig GmbH <support@bitwig.com>
@@ -9,7 +10,7 @@
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
 _pkgver=6.0
-pkgver=${_pkgver}.6
+pkgver=${_pkgver}.8
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -23,8 +24,8 @@ optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
 #source=("$_pkgname-$pkgver.deb::https://downloads.bitwig.com/${_pkgver}%20Beta%20${pkgver#*beta}/bitwig-studio-${pkgver}.deb")
-source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%206/installer_linux/")
-b2sums=('aff2c63a2e531ed641d18c1c5ff8f78e7b52796da51f9a1d8c92a0c92d57dfefc9749cbf03c7c49dece5265dc3c59b4d0c73ee005d1ab728cd87cc163f70862c')
+source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%208/installer_linux/")
+b2sums=('080953fd3bdc80418a8333b3e32b33e462fb3d752438c09cbb3744eea8b350f6904853b799e51f5fd736f06a0e01d24cdde7b145133f82ce32f6fcdf103d9e68')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
