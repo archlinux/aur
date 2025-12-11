@@ -5,7 +5,7 @@
 _plug=bm3dhip
 pkgname="vapoursynth-plugin-${_plug}-git"
 pkgver=2.16.1.g97ec62e
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BM3DCUDA'
@@ -34,7 +34,7 @@ build() {
       -D VAPOURSYNTH_INCLUDE_DIRECTORY="$(pkg-config --cflags vapoursynth | sed 's|-I||g')" \
       -D CMAKE_CXX_COMPILER="/opt/rocm/bin/hipcc" \
       -D CMAKE_CXX_FLAGS="-Wall -ffast-math -munsafe-fp-atomics -Rpass-analysis=kernel-resource-usage -DNDEBUG" \
-      -DGPU_TARGETS="gfx1010;gfx1011;gfx1012;gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1200;gfx1201"
+      -DGPU_TARGETS="gfx906;gfx1010;gfx1011;gfx1012;gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1200;gfx1201"
 
   cmake --build build
 }
