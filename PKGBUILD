@@ -3,7 +3,7 @@ pkgname=qoder-bin
 _pkgname=Qoder
 pkgver=1.0.0
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version)"
 arch=('x86_64')
 url="https://qoder.com/"
@@ -29,8 +29,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1869d17b91d62175be951092ed134a4a9e35110a186de56581da559c4fc5dace'
-            'fa43b82ce3304096f035a213693009f913459939e704176f080f7560ab894a99'
-            '0534f45583c0e66b845be5d9e7de469a97db15307083ed3d45ae9128a7a2f12a'
+            '052bf6f5d32dc967b562174cbdee199e3552030795a6f9be7497806f503729ae'
+            '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"

@@ -3,7 +3,7 @@
 import { app } from "electron/main";
 import * as path from "node:path";
 import * as fs from "node:fs";
-const name = "vscodium-electron";
+const name = "qoder";
 // Change command name.
 const fd = fs.openSync("/proc/self/comm", fs.constants.O_WRONLY);
 fs.writeSync(fd, name);

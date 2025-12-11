@@ -1,7 +1,7 @@
 pkgbase = qoder-bin
 	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoder.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -18,8 +18,8 @@ pkgbase = qoder-bin
 	source = qoder.js
 	source = qoder.sh
 	sha256sums = 1869d17b91d62175be951092ed134a4a9e35110a186de56581da559c4fc5dace
-	sha256sums = fa43b82ce3304096f035a213693009f913459939e704176f080f7560ab894a99
-	sha256sums = 0534f45583c0e66b845be5d9e7de469a97db15307083ed3d45ae9128a7a2f12a
+	sha256sums = 052bf6f5d32dc967b562174cbdee199e3552030795a6f9be7497806f503729ae
+	sha256sums = 51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc
 	sha256sums = e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207
 
 pkgname = qoder-bin
