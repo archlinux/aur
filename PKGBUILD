@@ -1,14 +1,14 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=reiserfsprogs
 pkgver=3.6.27
-pkgrel=5
+pkgrel=6
 pkgdesc="Reiserfs utilities"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL-2.0-only')
-depends=('util-linux')
+depends=('e2fsprogs' 'glibc' 'util-linux-libs')
 source=("https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
         reiserfsprogs-3.6.27-loff_t.patch)
 b2sums=('cd22120faa4d6d11ab545349fde5304f41cf3ca88b2c988255b7ca0e87961c9ccaa3095cad086e479a2b50627ad9bf3e90b2af46ddda64abc119e2a6755b8341'
