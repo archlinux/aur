@@ -12,7 +12,7 @@ conflicts=('backmey')
 source=("https://github.com/MorganLosto/backmey/releases/download/v${pkgver}/Backmey-${pkgver}.AppImage"
         "backmey.desktop"
         "backmey.png")
-sha256sums=('1dd3ce05eff70c8d6520178d80bcaa102f1df2bb96f630d67eaa28b9d82088e4'
+sha256sums=('260655866164d1f56b3b24f5a34e007d4b4ddc546dbf78c93de896791b790d0b'
             'a6bcf7b294d888be131ca59f36494a153780fe5a8e5beb0534b859e561497591'
             'cd7fa1de65a353a8e625889319fb3a6a572e533a43c525033bd39b64eae9b9d9')
 
