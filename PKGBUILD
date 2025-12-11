@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fackr
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='Terminal text editor written in Rust - facsimile reimplementation'
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TenseleyFlow/fackr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5a7454db87fd5f94ccfe213d23b3960c8d0a7bc5f413b4c529bcff92bd679d2')
+sha256sums=('74a28d55318feb938987eb38e89396eabd72bb179b766233ce02f9fe127e3274')
 
 build() {
     cd "$pkgname-$pkgver"
