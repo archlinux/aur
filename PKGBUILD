@@ -1,14 +1,14 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=dtool
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='A collection of development tools for numeric conversion'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/guoxbin/dtool"
 license=('GPL3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e1a1f531f9d01dbe67416cf7ee9a8237326030e8baa311484b7d1a9ff35bd9ff')
+sha256sums=('956e1554446e0263739cda07bcb12e2007f31ed92d76c9edce82a9f76117aa07')
 
 build() {
   cd "$pkgname-$pkgver"
