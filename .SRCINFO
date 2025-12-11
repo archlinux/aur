@@ -1,0 +1,22 @@
+pkgbase = python-onnx2torch
+	pkgdesc = ONNX to PyTorch converter
+	pkgver = 1.5.15
+	pkgrel = 1
+	url = https://github.com/ENOT-AutoDL/onnx2torch
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-onnxruntime
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-onnx
+	depends = python-pytorch
+	depends = python-torchvision
+	source = onnx2torch-1.5.15.tar.gz::https://github.com/ENOT-AutoDL/onnx2torch/archive/refs/tags/v1.5.15.tar.gz
+	sha256sums = b27ead2afcdaa5d3c77bcd0e758efbdcfe07c4895f8b1fd8459309ee83c39f66
+
+pkgname = python-onnx2torch
