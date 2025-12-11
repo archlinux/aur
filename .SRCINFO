@@ -1,14 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks
-	pkgver = 15.0.8_1
+pkgbase = libindi-altaircam
+	pkgdesc = INDI driver for Touptek products branded as Altair
+	pkgver = 2.1.7
 	pkgrel = 1
-	url = https://paranoiaworks.mobi
+	url = http://www.indilib.org/index.php?title=Main_Page
+	arch = i686
 	arch = x86_64
-	license = custom
-	options = !strip
-	source = https://paranoiaworks.mobi/download/files/pfte_15.0.8-1_amd64.deb
-	source = license.txt
-	sha256sums = 31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c
-	sha256sums = f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = libaltaircam=2.1.7
+	depends = libindi=2.1.7
+	depends = libaltaircam=2.1.7
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.7.tar.gz
+	sha256sums = 4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b
 
-pkgname = sse-bin
+pkgname = libindi-altaircam
