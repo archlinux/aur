@@ -2,10 +2,10 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="python-pyln-bolt7"
 _name=${pkgname#python-}
-pkgver="1.0.4.246"
+pkgver="1.0.246"
 _clightning_pkgver="25.09.1"
-pkgrel=5
-epoch=1
+pkgrel=1
+epoch=2
 pkgdesc="BOLT7"
 arch=("any")
 url="https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-spec/bolt7"

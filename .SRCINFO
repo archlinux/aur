@@ -1,8 +1,8 @@
 pkgbase = python-pyln-bolt7
 	pkgdesc = BOLT7
-	pkgver = 1.0.4.246
-	pkgrel = 5
-	epoch = 1
+	pkgver = 1.0.246
+	pkgrel = 1
+	epoch = 2
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-spec/bolt7
 	arch = any
 	license = custom:BSD-MIT
