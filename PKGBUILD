@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="memos"
-pkgver=0.25.1
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${pkgname}"
@@ -19,7 +19,7 @@ source=(
   "memos.conf"
   'tmpfiles.conf'
 )
-sha512sums=('fac62c89fe36cf26d6cee26c93e6c8a4ba4258ac22cd438debd527b6e9271dc01c72de0aaaa6d2d8965831c1f99901ad173c446aa89a053befa1a944e9bf8462'
+sha512sums=('bfa24b44ea7892ada8e7ef9b6e8eb52f1d03b7f0676adc0dfa7f793813671cd5e0786e948c25aab8aba59bbbe53adebe6bb92966ee372ce252c3ef0521d82ac8'
             '9c37361974d8b3beecdd8b0bf8db929a4a882623ea7b23aa51bddf37790b66042cef593d6da89b34e7dde4a9a9a1e097ea31ec713b33fee6a699448fb300d4a2'
             '692dc4674b86b36c5464c78f493ace50091068f962d40130a32b4ed17517d77e33860333e870f5e80a5e17b6cbd5de45bf57e7de5ea7984bd4e36f95a8daf0fa'
             '251e01c4f5fc8aea209453d91da5dde91d58397668e34b78e52a31940e30a89be5601a6ea8cdebe791a96c9324733095de3567998b45ce1542578b1d9b7a5b76'
@@ -40,7 +40,7 @@ build() {
   cd "${pkgname}-${pkgver}/web"
 
   # Build frontend
-  echo "lts/iron" >.nvmrc
+  echo "lts/krypton" >.nvmrc
   _ensure_local_nvm
   pnpm install
   pnpm build
@@ -51,7 +51,7 @@ build() {
   cp -r "${srcdir}/${pkgname}-${pkgver}/web/dist" "${srcdir}/${pkgname}-${pkgver}/server/router/frontend/"
 
   # Compile the backend Go binary
-  CGO_ENABLED=0 go build -o "${srcdir}/${pkgname}.bin" "${srcdir}/${pkgname}-${pkgver}/bin/memos/main.go"
+  CGO_ENABLED=0 go build -o "${srcdir}/${pkgname}.bin" "${srcdir}/${pkgname}-${pkgver}/cmd/memos/main.go"
 }
 package() {
   install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
