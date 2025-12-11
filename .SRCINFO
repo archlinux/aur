@@ -1,6 +1,6 @@
 pkgbase = freeipa
 	pkgdesc = The Identity, Policy and Audit system
-	pkgver = 4.12.5
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = http://www.freeipa.org/
 	arch = i686
@@ -23,25 +23,21 @@ pkgbase = freeipa
 	makedepends = python-pyasn1-modules
 	makedepends = python-systemd
 	options = emptydirs
-	source = https://releases.pagure.org/freeipa/freeipa-4.12.5.tar.gz
-	source = https://releases.pagure.org/freeipa/freeipa-4.12.5.tar.gz.asc
-	source = freeipa-PyCA44-support-1.patch::https://github.com/freeipa/freeipa/commit/d4d56a6705c870901bc73882e4804367f7c9c91a.patch
-	source = freeipa-PyCA44-support-2.patch::https://github.com/freeipa/freeipa/commit/8dfec28647f7c17e47fbfc96a1720dcde1592386.patch
+	source = https://releases.pagure.org/freeipa/freeipa-4.13.0.tar.gz
+	source = https://releases.pagure.org/freeipa/freeipa-4.13.0.tar.gz.asc
 	source = nis-domainname.service
 	source = ipaplatform.tar.gz
 	validpgpkeys = D756764D4D7E297C6DAD117269876F72A6E2D34F
 	validpgpkeys = 0E63D716D76AC080A4A33513F40800B6298EB963
-	sha256sums = 8ef5d2f47c7d54615c7052f5f47a207c7d79255216ee9737fd3635a4ebc98253
+	sha256sums = e2fe3bec07d258ae25a558c23d4c12e7a47874f269850856f9217e8fd9b19080
 	sha256sums = SKIP
-	sha256sums = 574151858482df7ed5673eb19888d5853306aaffe6a96cd3d202f0d6b4ce1029
-	sha256sums = 85541b159d8bb6e1a8ee2f34c4fad6e3069eb9e1964036518e144c3d7394dc8e
 	sha256sums = 74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a
 	sha256sums = 7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e
 
 pkgname = python-ipalib
 	pkgdesc = Python libraries used by IPA
 	arch = any
-	depends = freeipa-common=4.12.5-1
+	depends = freeipa-common=4.13.0-1
 	depends = python-gssapi>=1.2.0
 	depends = gnupg
 	depends = keyutils
@@ -68,15 +64,15 @@ pkgname = python-ipalib
 	depends = python-argcomplete
 	depends = python-systemd
 	depends = python-jwcrypto>=0.4.2
-	provides = python-ipapython=4.12.5-1
-	provides = python-ipaplatform=4.12.5-1
+	provides = python-ipapython=4.13.0-1
+	provides = python-ipaplatform=4.13.0-1
 
 pkgname = python-ipaclient
 	pkgdesc = Python libraries used by IPA client
 	arch = any
-	depends = freeipa-client-common=4.12.5-1
-	depends = freeipa-common=4.12.5-1
-	depends = python-ipalib=4.12.5-1
+	depends = freeipa-client-common=4.13.0-1
+	depends = freeipa-common=4.13.0-1
+	depends = python-ipalib=4.13.0-1
 	depends = python-dnspython>=1.15
 	depends = python-jinja
 	optdepends = oddjob-selinux: mkhomedir support
@@ -92,9 +88,9 @@ pkgname = freeipa-client-common
 pkgname = freeipa-client
 	pkgdesc = IPA authentication for use on clients
 	install = freeipa-client.install
-	depends = freeipa-client-common=4.12.5-1
-	depends = freeipa-common=4.12.5-1
-	depends = python-ipaclient=4.12.5-1
+	depends = freeipa-client-common=4.13.0-1
+	depends = freeipa-common=4.13.0-1
+	depends = python-ipaclient=4.13.0-1
 	depends = python-augeas
 	depends = cyrus-sasl-gssapi
 	depends = ntp

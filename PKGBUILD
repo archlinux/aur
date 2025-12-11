@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.12.5
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -38,22 +38,15 @@ validpgpkeys=(
 	'D756764D4D7E297C6DAD117269876F72A6E2D34F'
 	'0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
-        "${pkgbase}-PyCA44-support-1.patch::https://github.com/freeipa/freeipa/commit/d4d56a6705c870901bc73882e4804367f7c9c91a.patch"
-        "${pkgbase}-PyCA44-support-2.patch::https://github.com/freeipa/freeipa/commit/8dfec28647f7c17e47fbfc96a1720dcde1592386.patch"
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('8ef5d2f47c7d54615c7052f5f47a207c7d79255216ee9737fd3635a4ebc98253'
+sha256sums=('e2fe3bec07d258ae25a558c23d4c12e7a47874f269850856f9217e8fd9b19080'
             'SKIP'
-            '574151858482df7ed5673eb19888d5853306aaffe6a96cd3d202f0d6b4ce1029'
-            '85541b159d8bb6e1a8ee2f34c4fad6e3069eb9e1964036518e144c3d7394dc8e'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
             '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
 prepare() {
 	cd freeipa-${pkgver}
-
-	patch -p1 -i "../${pkgbase}-PyCA44-support-1.patch"
-	patch -p1 -i "../${pkgbase}-PyCA44-support-2.patch"
 
 	rm -rf ipaplatform/arch
 
