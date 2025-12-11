@@ -1,7 +1,7 @@
 pkgbase = input-remapper-bin
 	pkgdesc = A tool to change and program the mapping of your input device buttons.(Prebuilt version)
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sezanzeb/input-remapper/
 	arch = x86_64
 	license = GPL-3.0-only

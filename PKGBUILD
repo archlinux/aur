@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 _pythonver=3.13
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
@@ -34,6 +34,7 @@ prepare() {
         rm -rf "${srcdir}/"{etc,usr}
     fi
 	bsdtar -xf "${srcdir}/data."*
+    find "${srcdir}" -type f -name "*.pyc" -exec rm -rf {} +
     sed -i "s/\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}.svg/${pkgname%-bin}/g" \
         {"${srcdir}/etc/xdg/autostart/${pkgname%-bin}-autoload.desktop","${srcdir}/usr/share/applications/${pkgname%-bin}-gtk.desktop"}
     rm -rf "${srcdir}/usr/local"
