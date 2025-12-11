@@ -1,7 +1,7 @@
 # Maintainer: quest <quest at mac dot com>
 
 pkgname=cashc
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='CashScript compiler for Bitcoin Cash.'
 url='https://github.com/CashScript/cashscript'
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 noextract=("$pkgname-$pkgver.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('a842662141426cf2ac75eda4cde720a8eae0bfd85c6dec623d1b99020c24e413')
+sha256sums=('c768531bd8b07b129bcaaf589de132bef2f42839a63c58462ca55580fb1ae598')
 
 package() {
 	npm install -g --omit="dev" --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$pkgname-$pkgver.tgz"
