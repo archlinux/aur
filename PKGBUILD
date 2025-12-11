@@ -1,8 +1,8 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.1
-pkgrel=1
-pkgdesc="Chess database application with play and training functionality"
+pkgrel=2
+pkgdesc="Chess database application with play and training functionality. Maintain databases, search games, analyze with engines, and integrate with Chess.com and Lichess"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
 license=('GPL2')
