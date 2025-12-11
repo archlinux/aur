@@ -1,0 +1,16 @@
+pkgbase = legacybasic
+	pkgdesc = BASIC interpreter for 1970s/80s BASIC games
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/nigelperks/LegacyBasic
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	depends = glibc
+	source = https://github.com/nigelperks/LegacyBasic/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = a853bb0a9b23dba32b93521c069c791584ae5a5dddde4b4d520b4a3be83b900f
+
+pkgname = legacybasic
