@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###> [ PROHIBIT ROOT ] <###
 if [ "$(id -u)" -eq 0 ]; then
