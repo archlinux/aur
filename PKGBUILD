@@ -3,7 +3,7 @@
 # Contributor: Elizeu Oliveira
 
 pkgname=freedownloadmanager-bin
-pkgver=6.30.3.6518
+pkgver=6.31.0.6549
 pkgrel=1
 pkgdesc="Free Download Manager (FDM) - powerful modern download accelerator and organizer (binary release)."
 arch=('x86_64')
