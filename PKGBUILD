@@ -11,12 +11,14 @@ url="https://www.freedownloadmanager.org/"
 license=('custom')
 depends=('openssl' 'xdg-utils' 'ffmpeg' 'libtorrent' 'gst-plugins-base')
 makedepends=('desktop-file-utils' 'hicolor-icon-theme')
-source=("https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
-sha256sums=('c659566a42715c4957275d2f9b2c17b6b73f1be38eec900bfbe31243363b7a09')
+source=("${pkgname}-${pkgver}-amd64.deb::https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
+sha256sums=('SKIP')
 
 prepare() {
     mkdir -p "${srcdir}/${pkgname}-${pkgver}"
+    # Extrai o .deb baixado
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" -C "${srcdir}/${pkgname}-${pkgver}"
+    # Extrai o conteúdo principal
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}/data.tar.xz" -C "${srcdir}/${pkgname}-${pkgver}"
 }
 
