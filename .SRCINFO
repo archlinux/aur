@@ -1,7 +1,7 @@
 pkgbase = ksc
 	pkgdesc = A tool to check stablelist symbol usage in kernel module source code
 	pkgver = 1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RedHatOfficial/ksc
 	arch = any
 	license = GPL-2.0-only
