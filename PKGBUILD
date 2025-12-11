@@ -36,8 +36,9 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # Force bundled SQLite to avoid system library conflicts
     export SQLX_OFFLINE=true
+    export CC=clang
+    export AR=llvm-ar
     cargo build --frozen --release
 }
 
