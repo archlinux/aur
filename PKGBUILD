@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lqth
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="Simple but blazingly fast screenshot utility"
@@ -11,7 +11,7 @@ makedepends=(cargo libx11)
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('8452edf08ef94793097fdb6e1f5f498e3844aefc424f3b743f504e12aa697a1b')
+sha256sums=('2a616f8a882f2247b4b2b79cb6473fe149e594706670df7b29a204f00ed0b7df')
 
 prepare() {
   cd "$pkgname-$pkgver"

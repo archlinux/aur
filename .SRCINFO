@@ -1,13 +1,13 @@
 pkgbase = lqth
 	pkgdesc = Simple but blazingly fast screenshot utility
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/0x61nas/lqth
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = libx11
-	source = lqth-0.2.2.tar.gz::https://static.crates.io/crates/lqth/lqth-0.2.2.crate
-	sha256sums = 8452edf08ef94793097fdb6e1f5f498e3844aefc424f3b743f504e12aa697a1b
+	source = lqth-0.2.4.tar.gz::https://static.crates.io/crates/lqth/lqth-0.2.4.crate
+	sha256sums = 2a616f8a882f2247b4b2b79cb6473fe149e594706670df7b29a204f00ed0b7df
 
 pkgname = lqth
