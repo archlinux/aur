@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/RimSort"
+    rm -rf .venv
     uv sync --group build
     git submodule update --init --recursive
 }
