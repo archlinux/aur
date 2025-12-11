@@ -2,7 +2,7 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
@@ -17,12 +17,13 @@ depends=(
   'python-openmemory'  # your OpenMemory wrapper package (AUR)
   'katex'                 # provides /usr/lib/node_modules/katex/dist assets :contentReference[oaicite:1]{index=1}
   'qt6-webengine'         # underlying Qt WebEngine libs :contentReference[oaicite:2]{index=2}
+  'highlightjs'           # Javascript highlighting
 )
 makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')  # Run updpkgsums once you tag v0.1
+sha256sums=('99ae04f9110bee6f54565ae401c6556ce9ca21b9dd027739cb7faef8b13fd890')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
