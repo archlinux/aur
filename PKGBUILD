@@ -61,16 +61,6 @@ package() {
     for mo_file in extra/locale/*.mo; do
       [ -f "$mo_file" ] && install -Dm644 "$mo_file" "${pkgdir}/usr/share/heidisql/locale/$(basename "$mo_file")"
     done
-    
-    # # Create symlinks for both qt6 and gtk2 variants
-    # # The app looks for .mo files matching the executable basename
-    # for mo_file in extra/locale/heidisql.*.mo; do
-    #   if [ -f "$mo_file" ]; then
-    #     lang_code=$(basename "$mo_file" | sed 's/^heidisql\.//' | sed 's/\.mo$//')
-    #     ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-qt6.${lang_code}.mo"
-    #     ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-gtk2.${lang_code}.mo"
-    #   fi
-    # done
   fi
   
   # Install shared ini files
