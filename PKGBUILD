@@ -1,8 +1,8 @@
-# Maintainer: Yakov Till <yakov.till at gmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.123.4
+pkgver=1.123.5
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
@@ -12,7 +12,7 @@ backup=("etc/default/${pkgname}")
 # Check upstream nodejs version constraints with:
 #   curl -s "https://registry.npmjs.org/n8n/${pkgver}" | jq -r '.engines.node'
 # Example output: ">=20.19 <= 24.x" means nodejs>=20.19.0 and nodejs<25
-depends=("nodejs>=20.19.0" "nodejs<25")
+depends=("nodejs>=22.16" "nodejs<26")
 makedepends=("npm" "jq" "curl")
 source=("${pkgname}.env"
 "${pkgname}.service"
