@@ -8,8 +8,8 @@
 
 _pkgname="thorium-reader"
 pkgname="$_pkgname"
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
@@ -25,7 +25,7 @@ makedepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('5f1ed4f436ed8cfc67fd328efeb97c05afaccf76a6675cc5578ef3c097a007a6')
+sha256sums=('356fe7c9888d5990fb498abe87d77139b3ff486f833d9326476cec56fd97f765')
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
