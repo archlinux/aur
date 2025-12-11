@@ -4,7 +4,7 @@
 pkgbase=python-synphot
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Synthetic Photometry using Astropy"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-dust-extinction'
               'python-specutils')   # astropy scipy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('852419c081c9b9f230d23d613a17eb31')
+md5sums=('3f98ed731067a1c87acddbc4e23a3afd')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"

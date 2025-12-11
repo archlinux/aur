@@ -1,6 +1,6 @@
 pkgbase = python-synphot
 	pkgdesc = Synthetic Photometry using Astropy
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://synphot.readthedocs.io
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = python-synphot
 	makedepends = python-astropy
 	makedepends = python-scipy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/synphot/synphot-1.6.0.tar.gz
-	md5sums = 852419c081c9b9f230d23d613a17eb31
+	source = https://files.pythonhosted.org/packages/source/s/synphot/synphot-1.6.1.tar.gz
+	md5sums = 3f98ed731067a1c87acddbc4e23a3afd
 
 pkgname = python-synphot
 	depends = python-numpy>=1.23
