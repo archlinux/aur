@@ -1,6 +1,6 @@
 pkgbase = eclipse-php-bin
 	pkgdesc = Highly extensible IDE (PHP version)
-	pkgver = 4.37
+	pkgver = 4.38
 	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
@@ -10,14 +10,14 @@ pkgbase = eclipse-php-bin
 	depends = java-runtime>=21
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.37-1
+	provides = eclipse=4.38-1
 	conflicts = eclipse
 	options = !strip
 	source = eclipse.desktop
 	sha512sums = 910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78
-	source_x86_64 = eclipse-php-2025-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-09/R/eclipse-php-2025-09-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = 9cfb608aa088fc01feacd76182ee87b99757bf50bee647a2dfd050c901d3dc49acc925ef2c8997fa2eabb6019a6766b7e5419694d8ce6ace1f8f5790e15f1a63
-	source_aarch64 = eclipse-php-2025-09-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-09/R/eclipse-php-2025-09-R-linux-gtk-aarch64.tar.gz&r=1
-	sha512sums_aarch64 = 23a1ae3fc94b0c2d5c56dd118adfa90d071f00f5ccfc9b1ed0530a63663869536a205505e6f4a429b7e35b646ac78e5cdcda8f398f7673ddaacead322bc9f30a
+	source_x86_64 = eclipse-php-2025-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-12/R/eclipse-php-2025-12-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = 2b407e758ee8bef90e09a23ce385557c6f2e3c58c5997982e970fe205c53b28f3f1bdbd395b428cf57c02fbfbc7fa9e0d384131648147f77cb4198cad34314c2
+	source_aarch64 = eclipse-php-2025-12-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-12/R/eclipse-php-2025-12-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = 8ab0dd908092c45442bce5bc2d0ef20ca91c585dc512ddd16688439113cb96c5835057e0135f721d07597492b081f684bf99c835fb61c5c0d67edfe47fce12b8
 
 pkgname = eclipse-php-bin
