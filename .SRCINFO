@@ -1,0 +1,17 @@
+pkgbase = aicommits-rs
+	pkgdesc = A Rust-based CLI tool that generates semantic Conventional Commits messages using Google Gemini AI.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/RuanVasco/aicommits-rs
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = curl
+	depends = git
+	provides = aic
+	source = aicommits-rs-0.1.1.tar.gz::https://github.com/RuanVasco/aicommits-rs/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 570499966fe3fff126fceacda36ec0b9d385223a057c28fa57462855fa7e9bc7
+
+pkgname = aicommits-rs
