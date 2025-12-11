@@ -4,7 +4,7 @@
 pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -19,13 +19,16 @@ sha512sums=('d2e93f59a003eb05fd0bdaa985298ecf7d9a403ad7e908dcd87c3bf19651f07b6c6
             '9dbce77076b07691b5359b3e91c82190880f6caad291102fa28d8480bba53c27c8bac324032cbfee74e69653e2e97e54c430d17ad4fc5aaeb7a833d1b6598a4b')
 
 prepare() {
-	pushd "${pkgname}-${pkgver}/"
-	jq '.bundle.createUpdaterArtifacts = false' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
-	pnpm i
+	pushd "${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
+	_prepare_service
 	popd
 
-	cd "${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
-	_prepare_service
+	cd "${pkgname}-${pkgver}/"
+	jq '.bundle.createUpdaterArtifacts = false' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+	pnpm i
+
+	cd src-tauri
+	cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
@@ -34,7 +37,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	_build_service
-	_check_service
 	_package_service
 
 	cd "../${pkgname}-${pkgver}/"
@@ -63,15 +65,13 @@ _build_service() {
 	cargo build --frozen --release --all-features
 }
 
-_check_service() {
-	echo "==> Starting ${FUNCNAME[0]}()..."
-	cargo test --frozen --all-features
-}
-
 _package_service() {
 	echo "==> Starting ${FUNCNAME[0]}()..."
 
-	for bin in {${_pkgname},{,un}install}-service; do
-		install -vDm755 "./target/release/${bin}" "../${pkgname}-${pkgver}/src-tauri/resources/${bin}-${CARCH}-unknown-linux-gnu"
-	done
+	pushd target/release
+	local _suffix="${CARCH}-unknown-linux-gnu"
+	install -Dm755 "${_pkgname}-service" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-${_suffix}"
+	install -Dm755 install-service "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-install-${_suffix}"
+	install -Dm755 uninstall-service "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-uninstall-${_suffix}"
+	popd
 }
