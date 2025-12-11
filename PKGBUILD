@@ -2,10 +2,11 @@
 # Contributor: wabi <aschrafl@jetnet.ch>
 # Contributor: pikl <me@pikl.uk>
 # Contributor: caoticofanegas
+# Contributor: AlD <daniel@lbe.rs>
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=418
+pkgrel=814
 pkgver=2.3.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -21,7 +22,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
+    'vectorchord>=0.3' 'vectorchord<1'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
@@ -119,7 +120,11 @@ build() {
     SHARP_FORCE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile --force install
+	#* prevent OOM
+	if [[ $(grep MemTotal /proc/meminfo | awk '{print $2}') > $(expr 5 \* 1024 \* 1024) ]]; then
+		export NODE_OPTIONS=--max-old-space-size=4096
+	fi
+	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
     pnpm --filter @immich/sdk --filter immich-web build
 
     # build CLI
