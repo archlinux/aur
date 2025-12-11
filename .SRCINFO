@@ -12,6 +12,6 @@ pkgbase = fackr
 	depends = glibc
 	depends = gcc-libs
 	source = fackr-0.9.7.tar.gz::https://github.com/TenseleyFlow/fackr/archive/refs/tags/v0.9.7.tar.gz
-	sha256sums = dc91930298fb1e63f20c1191e55717497d81592cfe1416d8c924e8aea4f43b5c
+	sha256sums = 097b51218a84bda6dddcd841486a4b24e04619fcd4f2b26e42ca8e9591447ac9
 
 pkgname = fackr
