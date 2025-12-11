@@ -1,0 +1,24 @@
+pkgbase = tls-snoop
+	pkgdesc = eBPF-based TLS handshake capture daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fayak/tls-snoop
+	install = tls-snoop.install
+	arch = x86_64
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-scapy
+	depends = python-pyroute2
+	depends = python-prometheus_client
+	depends = bcc
+	depends = bcc-tools
+	backup = etc/tls-snoop/tls-snoop.conf
+	source = git+https://github.com/fayak/tls-snoop.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = tls-snoop

@@ -1,0 +1,33 @@
+post_install() {
+    echo ":: Enabling and starting tls-snoop service..."
+    systemctl daemon-reload
+    systemctl enable --now tls-snoop.service
+
+    echo ""
+    echo "TLS Snoop has been installed and started."
+    echo ""
+    echo "Configuration: /etc/tls-snoop/tls-snoop.conf"
+    echo "Log file:      /var/log/tls-snoop/tls-snoop.log"
+    echo ""
+    echo "Commands:"
+    echo "  systemctl status tls-snoop    # Check status"
+    echo "  systemctl reload tls-snoop    # Reload (reopen log, rescan interfaces)"
+    echo "  journalctl -u tls-snoop -f    # Follow logs"
+}
+
+post_upgrade() {
+    echo ":: Restarting tls-snoop service..."
+    systemctl daemon-reload
+    systemctl restart tls-snoop.service
+}
+
+pre_remove() {
+    echo ":: Stopping and disabling tls-snoop service..."
+    systemctl disable --now tls-snoop.service
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo ":: Log files in /var/log/tls-snoop/ have been preserved."
+    echo "   Remove manually if no longer needed."
+}
