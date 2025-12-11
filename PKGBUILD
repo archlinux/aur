@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2e7354d6096b36bcd4a2d19668a97c859624c654c74b07eb83d41a2fdc5df36f')
+sha256sums=('17eda17bfaa206e807f7030b375281831563c5c4695855e048e2d40bd476826c')
 backup=('etc/greetd/config.toml' 'etc/greetd/niri-greeter-config.kdl')
 install=${pkgname}.install
 
@@ -112,6 +112,17 @@ spawn-sh-at-startup "XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kit
 
 binds {
 }
+EOF
+
+    # Install polkit rule to allow greeter user to shutdown/reboot
+    install -Dm644 /dev/stdin "${pkgdir}/etc/polkit-1/rules.d/85-greeter.rules" <<'EOF'
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.reboot") &&
+        subject.user == "greeter") {
+        return polkit.Result.YES;
+    }
+});
 EOF
 
     # Create cache directory
