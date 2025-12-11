@@ -1,0 +1,15 @@
+pkgbase = altrace-git
+	pkgdesc = Debugging tool for applications that use OpenAL for audio
+	pkgver = 20210831.r23.dd572d9
+	pkgrel = 1
+	url = https://icculus.org/altrace/
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = ninja
+	provides = altrace
+	conflicts = altrace
+	source = git+https://github.com/icculus/altrace.git
+	sha256sums = SKIP
+
+pkgname = altrace-git
