@@ -1,0 +1,18 @@
+pkgbase = srtodo-git
+	pkgdesc = A Rofi-based markdown todo manager
+	pkgver = r3.de64536
+	pkgrel = 1
+	url = https://github.com/srliu3264/srtodo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rofi
+	depends = gawk
+	depends = sed
+	depends = xdg-utils
+	provides = srtodo
+	conflicts = srtodo
+	source = git+https://github.com/srliu3264/srtodo.git
+	sha256sums = SKIP
+
+pkgname = srtodo-git
