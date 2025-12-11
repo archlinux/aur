@@ -1,0 +1,16 @@
+pkgbase = scidcommunity
+	pkgdesc = Chess database application with play and training functionality
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/whelanh/scidCommunity
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = tcl
+	depends = tk
+	source = scidcommunity-5.1.1.tar.gz::https://github.com/whelanh/scidCommunity/archive/f7fad958155d9b555090bad165738213392e8a81.tar.gz
+	sha256sums = SKIP
+
+pkgname = scidcommunity
