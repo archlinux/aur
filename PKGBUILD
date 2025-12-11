@@ -1,6 +1,6 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r2074.05c198ea
+pkgver=r2079.380735ac
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
@@ -47,6 +47,8 @@ package() {
     cp -r app "$pkgdir/opt/rimsort/"
     cp -r themes "$pkgdir/opt/rimsort/"
     cp pyproject.toml "$pkgdir/opt/rimsort/"
+    mkdir "$pkgdir/opt/rimsort/libs"
+    cp -r libs/*.so "$pkgdir/opt/rimsort/libs/"
 
     # Icon
     install -Dm644 "./themes/default-icons/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"
