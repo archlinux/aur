@@ -1,5 +1,5 @@
 pkgname=ghpkg
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Indev package manager"
 arch=('any')
