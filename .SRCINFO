@@ -31,6 +31,7 @@ pkgbase = bazaar
 	depends = graphene
 	depends = dconf
 	depends = cairo
+	depends = md4c
 	optdepends = krunner-bazaar: krunner integration
 	provides = bazaar
 	conflicts = bazaar-git

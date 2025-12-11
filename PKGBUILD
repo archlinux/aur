@@ -27,6 +27,7 @@ depends=(
   'graphene'
   'dconf'
   'cairo'
+  'md4c'
 )
 makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'git' 'glib2-devel' 'blueprint-compiler')
 optdepends=('krunner-bazaar: krunner integration')
