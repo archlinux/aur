@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=webapp-manager-git
-pkgver=1.4.3.r2.g95c7b34
+pkgver=1.4.4.r0.gd8ef0df
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make buildmo
+  make
 }
 
 package() {
