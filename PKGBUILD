@@ -3,7 +3,7 @@
 
 _pkgname="ksnip"
 pkgname="$_pkgname-git"
-pkgver=1.10.1.r115.g2fc56dd
+pkgver=1.10.1.r125.g5f9832f
 pkgrel=1
 pkgdesc="Screenshot and annotation tool (Qt6)"
 url="https://github.com/ksnip/ksnip"
@@ -31,6 +31,14 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+https://github.com/ksnip/ksnip.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "$_pkgsrc"
+
+  # fix for Qt 6.10.1
+  sed -E -e '/QT_COMPONENTS/s&(Widgets)&\1 Gui GuiPrivate&' -i CMakeLists.txt
+  sed -E -e 's&(Qt\$\{QT_MAJOR_VERSION\})::(Widgets)&\1::\2 \1::Gui&' -i src/CMakeLists.txt
+}
+
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[A-Za-z][A-Za-z]*' \
@@ -38,8 +46,6 @@ pkgver() {
 }
 
 build() (
-  #export PATH="/usr/lib/qt6/bin:$PATH"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"

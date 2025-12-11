@@ -1,6 +1,6 @@
 pkgbase = ksnip-git
 	pkgdesc = Screenshot and annotation tool (Qt6)
-	pkgver = 1.10.1.r115.g2fc56dd
+	pkgver = 1.10.1.r125.g5f9832f
 	pkgrel = 1
 	url = https://github.com/ksnip/ksnip
 	arch = x86_64
