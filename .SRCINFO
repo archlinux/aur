@@ -1,0 +1,18 @@
+pkgbase = luajit-clang-git
+	pkgdesc = Just-In-Time (JIT) compiler for the Lua programming language - patched to compile with clang
+	pkgver = 2.1.r305.g7152e154
+	pkgrel = 1
+	url = https://luajit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	provides = luajit=2.1.r305.g7152e154
+	conflicts = luajit
+	source = git+https://luajit.org/git/luajit.git
+	source = Makefile.patch
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = luajit-clang-git
