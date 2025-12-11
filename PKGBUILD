@@ -18,14 +18,15 @@
 # Contributor: Maciej Delmanowski <drybjed@gmail.com>
 pkgname=debops-git
 _pkgname=debops
-pkgver=3.2.0.r210.gb5c5029ce
+pkgver=3.2.0.r218.gb57524034
 pkgrel=1
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
 url="https://github.com/debops/debops/"
 license=('GPL3')
-depends=('python' 'ansible' 'python-dnspython' 'python-ldap' 'python-dotenv' 'python-toml' 'python-pyxdg' 'python-distro' 'python-gitpython' 'util-linux' 'encfs' 'gnupg')
+depends=('python' 'ansible' 'python-dnspython' 'python-ldap' 'python-dotenv' 'python-toml' 'python-pyxdg' 'python-distro' 'python-gitpython' 'util-linux' 'gnupg')
 makedepends=('python-setuptools' 'git')
+optdepends=('encfs: manage encrypted volumes')
 provides=('debops')
 conflicts=('debops')
 source=("$_pkgname::git+https://github.com/debops/debops")

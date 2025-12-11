@@ -1,6 +1,6 @@
 pkgbase = debops-git
 	pkgdesc = Your Debian-based data center in a box
-	pkgver = 3.2.0.r210.gb5c5029ce
+	pkgver = 3.2.0.r218.gb57524034
 	pkgrel = 1
 	url = https://github.com/debops/debops/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = debops-git
 	depends = python-distro
 	depends = python-gitpython
 	depends = util-linux
-	depends = encfs
 	depends = gnupg
+	optdepends = encfs: manage encrypted volumes
 	provides = debops
 	conflicts = debops
 	source = debops::git+https://github.com/debops/debops
