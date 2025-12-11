@@ -35,8 +35,7 @@ prepare() {
   cd "$_pkgsrc"
 
   # fix for Qt 6.10.1
-  sed -E -e '/QT_COMPONENTS/s&(Widgets)&\1 Gui GuiPrivate&' -i CMakeLists.txt
-  sed -E -e 's&(Qt\$\{QT_MAJOR_VERSION\})::(Widgets)&\1::\2 \1::Gui&' -i src/CMakeLists.txt
+  sed -E -e '/QT_COMPONENTS/s&(Widgets)&\1 GuiPrivate&' -i CMakeLists.txt
 }
 
 pkgver() {
