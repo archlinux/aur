@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=11.0.r1.g3803445c
+pkgver=11.2.r0.gbaced13b
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -21,7 +21,6 @@ depends=(
 	findutils
 	"procps-ng"
 	"coreutils"
-	"awk"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"zenity"
@@ -32,10 +31,6 @@ depends=(
 	"wayland"
 	"dbus"
 	"bash"
-	"lsb-release"
-	"psmisc"
-	"flatpak-xdg-utils"
-	"xdg-desktop-portal"
 	"xdg-desktop-portal-impl"
 	"inotify-tools"
 	"grep"
@@ -69,4 +64,5 @@ function package() {
 	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
 	install -vDm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
 	install -vDm755 portable-packer "${pkgdir}/usr/bin/portable-packer"
+	cp -r "${srcdir}/portable/lib/modules-load.d" "${pkgdir}/usr/lib"
 }
