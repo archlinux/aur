@@ -3,7 +3,7 @@
 pkgname=ksc
 pkgver=1.12
 _commit=55708cfe23d814d894730c3d79024f5512611ca7
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to check stablelist symbol usage in kernel module source code'
 arch=(any)
 url="https://github.com/RedHatOfficial/$pkgname"
@@ -18,7 +18,11 @@ b2sums=('a5037186f2e2d04cc73504467c52ddff3f7e32dd92617663cfd90da9b2cb6341f44066e
 
 prepare() {
 	cd "$_archive"
-	sed -i -e '/bugzilla/d' -e '35s/,$/])/' setup.py
+	sed -i \
+		-e '/bugzilla/d' \
+		-e '35s/,$/])/' \
+		-e "/data_files/i\      scripts = ['ksc']," \
+		setup.py
 }
 
 build() {
