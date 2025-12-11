@@ -9,6 +9,7 @@ pkgbase = claude-code-relay
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = gcc-libs
 	provides = cc-relay-server
 	backup = etc/cc-relay-server/config.toml
