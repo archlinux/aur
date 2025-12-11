@@ -1,5 +1,5 @@
 pkgname=phd2
-pkgver=2.6.13dev8
+pkgver=2.6.14
 pkgrel=1
 pkgdesc="Open PHD Guiding - PHD2 astrophotography autoguiding tool"
 url="http://openphdguiding.org/"
@@ -21,7 +21,7 @@ depends=(
 	'fmt')
 makedepends=('git' 'cmake' 'gtest' 'eigen')
 source=("https://github.com/OpenPHDGuiding/phd2/archive/v${pkgver}.zip")
-sha256sums=('7228cf5a39d369c58c5cb7a60033bbe4e5aead3fb52b048e860fd82d01e0e038')
+sha256sums=('3d52c913086955ee2473330fa5c778763372b78db1c4da8bd8f03fb02ba0e7cf')
 
 prepare() {
 	if [ -d build ]; then
