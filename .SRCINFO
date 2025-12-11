@@ -1,6 +1,6 @@
 pkgbase = geany-plugin-preview
 	pkgdesc = Plugin for Geany to preview markdown and other markup languages
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/xiota/geany-preview
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = geany-plugin-preview
 	options = !debug
 	options = !lto
 	options = !strip
-	source = geany-preview::git+https://github.com/xiota/geany-preview.git#tag=v0.2.3
+	source = geany-preview::git+https://github.com/xiota/geany-preview.git#tag=v0.2.4
 	source = ftn2xml::git+https://github.com/xiota/ftn2xml.git#tag=v0.2.0
-	sha256sums = faa3436ad4ebfc1b21a412c58cf9571987714f50dc016597f5e33b74d5927cb1
+	sha256sums = 5a5a228620e0760bb2dfbf03dbdb89487ca7ac9b5c258f3239b25183b1e7379f
 	sha256sums = f54063c940cb52a35eba78c5bf5fcc44c6963e78135936227e647d22e490c338
 
 pkgname = geany-plugin-preview

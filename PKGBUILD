@@ -6,7 +6,7 @@ _pkgname='geany-plugin-preview'
 pkgname="$_pkgname"
 pkgdesc="Plugin for Geany to preview markdown and other markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   "ftn2xml"::"git+https://github.com/xiota/ftn2xml.git#tag=v$_ftn2xml_ver"
 )
 sha256sums=(
-  'faa3436ad4ebfc1b21a412c58cf9571987714f50dc016597f5e33b74d5927cb1'
+  '5a5a228620e0760bb2dfbf03dbdb89487ca7ac9b5c258f3239b25183b1e7379f'
   'f54063c940cb52a35eba78c5bf5fcc44c6963e78135936227e647d22e490c338'
 )
 
