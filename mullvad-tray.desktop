@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mullvad Tray
+Comment=Monitor Mullvad VPN connection status from system tray
+Exec=mullvad-tray
+Icon=mullvad-tray
+Terminal=false
+Type=Application
+Categories=Network;Internet;
+Keywords=vpn;mullvad;privacy;security;tray;
+StartupNotify=false
