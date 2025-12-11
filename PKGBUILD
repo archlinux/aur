@@ -1,6 +1,6 @@
 pkgname=rutoken-connect
 pkgver=6.1.1
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Rutoken Connect plugin for browser integration'
 arch=('x86_64')
 url='https://www.rutoken.ru/support/download/rutoken-connect/'
