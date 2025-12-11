@@ -1,0 +1,14 @@
+pkgbase = highlightjs
+	pkgdesc = Syntax highlighting for the web (highlight.js JavaScript library)
+	pkgver = 11.10.0
+	pkgrel = 1
+	url = https://highlightjs.org
+	arch = any
+	license = BSD-3-Clause
+	makedepends = npm
+	depends = nodejs
+	noextract = highlight.js-11.10.0.tgz
+	source = https://registry.npmjs.org/highlight.js/-/highlight.js-11.10.0.tgz
+	sha256sums = SKIP
+
+pkgname = highlightjs
