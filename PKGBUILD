@@ -1,7 +1,7 @@
 # Maintainer: arcceus <https://github.com/arcceus>
 pkgname=phonecall-popup-git
 _pkgname=phonecall-popup
-pkgver=r2.g5373d10
+pkgver=0
 pkgrel=1
 pkgdesc="GTK popup for PipeWire telephony calls with answer/hangup"
 arch=('any')
@@ -13,6 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/arcceus/${_pkgname}.git")
 sha256sums=('SKIP')
+install="${pkgname}.install"
 
 pkgver() {
   cd "${_pkgname}"

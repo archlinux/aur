@@ -1,0 +1,19 @@
+_enable_user_service() {
+  # Try to enable/start for invoking user if available; fallback to instructions.
+  local target_user="${SUDO_USER:-$USER}"
+  if [[ -n "$target_user" && "$target_user" != "root" ]]; then
+    su - "$target_user" -c "systemctl --user enable --now phonecall-popup.service" \
+      || printf '%s\n' "Could not auto-enable for ${target_user}. Run: systemctl --user enable --now phonecall-popup.service"
+  else
+    printf '%s\n' "Run as a non-root user: systemctl --user enable --now phonecall-popup.service"
+  fi
+}
+
+post_install() {
+  _enable_user_service
+}
+
+post_upgrade() {
+  _enable_user_service
+}
+
