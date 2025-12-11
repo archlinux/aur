@@ -45,4 +45,3 @@ package() {
     "./bazel-bin/${pkgname}/${pkgname}_/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
 }
-
