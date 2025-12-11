@@ -2,6 +2,7 @@
 pkgname=zix-git
 pkgver=0.8.1.r642.e1cbd66
 pkgrel=1
+epoch=1
 pkgdesc="A lightweight C library of portability wrappers and data structures"
 arch=('any')
 url="https://github.com/drobilla/zix"

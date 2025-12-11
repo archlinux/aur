@@ -2,6 +2,7 @@ pkgbase = zix-git
 	pkgdesc = A lightweight C library of portability wrappers and data structures
 	pkgver = 0.8.1.r642.e1cbd66
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/drobilla/zix
 	arch = any
 	license = ISC
