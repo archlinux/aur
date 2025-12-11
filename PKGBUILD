@@ -1,6 +1,6 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=qmicroz
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Minimalist Zip/Unzip library. C++/Qt wrapper over miniz."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt6-base')
 makedepends=('cmake')
 
 source=(https://github.com/artemvlas/qmicroz/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(2307695ef0db85147e845a0cd1dc850f4d632a6156f44b3de2a05041eff2df30)
+sha256sums=(e5257057b055340500ac5a2cee5c6198f54796f3235ad19256bfd6fd61c58b3b)
 
 build() {
 	cd "$pkgname-$pkgver"
