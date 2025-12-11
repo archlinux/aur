@@ -1,7 +1,7 @@
 pkgbase = warcraftlogsuploader
 	pkgdesc = warcraftlogs.com desktop client for Linux
-	pkgver = 8.17.115
-	pkgrel = 1
+	pkgver = 8.17.122
+	pkgrel = 2
 	url = https://warcraftlogs.com/
 	arch = x86_64
 	license = custom
@@ -10,9 +10,9 @@ pkgbase = warcraftlogsuploader
 	depends = fuse2
 	conflicts = warcraftlogsuploader
 	options = !strip
-	source = warcraftlogsuploader-v8.17.115.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.17.115/warcraftlogs-v8.17.115.AppImage
+	source = warcraftlogsuploader-v8.17.122.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.17.122/warcraftlogs-v8.17.122.AppImage
 	source = start
-	sha512sums = f5341885b8af2e97c4e42845d9a48d69f1ec0d8cb77e87b6b6d8f95508d9a7215b4ee0a1d79d6ebc1673bb679dcf3428e51b50f66ec15e99b2abd0708f46cf25
+	sha512sums = 72eeaefe52ccaf69904f2afc8b734bfb918975e20a5bfec9598d7e2b6e0b25be84671acc08b816137f5fe2256f1d55885be6ee78124ffc86c442944ea9c99c01
 	sha512sums = 1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a
 
 pkgname = warcraftlogsuploader
