@@ -1,0 +1,13 @@
+pkgbase = angstromfetch
+	pkgdesc = Fast(est) system fetch tool for Linux with a low footprint
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/Phosphenius/angstromfetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	conflicts = angstromfetch-git
+	options = !lto
+	source = angstromfetch-v1.0.0.tar.gz::https://codeberg.org/Phosphenius/angstromfetch/archive/v1.0.0.tar.gz
+	sha256sums = 53e7eddb4f9ed82a3a87e6f342e2609ae5995d2a5cbe897beb24d71fa7614664
+
+pkgname = angstromfetch
