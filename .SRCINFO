@@ -1,6 +1,6 @@
 pkgbase = makeself
 	pkgdesc = Utility to create self-extracting packages
-	pkgver = 2.6.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://makeself.io/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = makeself
 	optdepends = openssl: encryption support
 	optdepends = ncompress: compression support
 	optdepends = tar: archive support
-	source = makeself-release-2.6.0.tar.gz::https://github.com/megastep/makeself/archive/release-2.6.0.tar.gz
-	md5sums = 8eaa1239b39a44674bcf514216c9fbab
-	sha256sums = 3af5218dfb80d20a156d3c50fa0d510c7b244d9676813659f8d220bc95405f07
+	source = makeself-release-2.7.1.tar.gz::https://github.com/megastep/makeself/archive/release-2.7.1.tar.gz
+	md5sums = 956264c10f6039a2dd8be7f4f3e71805
+	sha256sums = 96843e5db70da71dcb3cb594a6899886043f115e9205c6b5ca2f26000389514e
 
 pkgname = makeself

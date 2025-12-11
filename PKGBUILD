@@ -6,7 +6,7 @@
 set -u
 pkgname='makeself'
 #pkgname+='-git'
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Utility to create self-extracting packages'
 arch=('any')
@@ -33,8 +33,8 @@ optdepends=(
 )
 _srcdir="${pkgname%-git}-release-${pkgver%.r*}"
 source=("${_srcdir}.tar.gz::https://github.com/megastep/${pkgname%-git}/archive/release-${pkgver%.r*}.tar.gz")
-md5sums=('8eaa1239b39a44674bcf514216c9fbab')
-sha256sums=('3af5218dfb80d20a156d3c50fa0d510c7b244d9676813659f8d220bc95405f07')
+md5sums=('956264c10f6039a2dd8be7f4f3e71805')
+sha256sums=('96843e5db70da71dcb3cb594a6899886043f115e9205c6b5ca2f26000389514e')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _srcdir="${pkgname}"
