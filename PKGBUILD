@@ -5,7 +5,7 @@ pkgdesc="GUI for an iSCSI initiator, a simple way to connect targets whitout wri
 
 arch=('x86_64')
 license=('MIT')
-depends=('open-iscsi')
+depends=('open-iscsi' 'libnotify')
 url="https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro"
 source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util/ISCSI-Util.tar.gz")
 sha256sums=('SKIP')
