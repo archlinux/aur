@@ -1,6 +1,6 @@
 pkgbase = etlcpp
 	pkgdesc = Embedded Template Library (ETL)
-	pkgver = 20.43.4
+	pkgver = 20.44.2
 	pkgrel = 1
 	url = https://github.com/ETLCPP/etl
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = etlcpp
 	makedepends = ninja
 	makedepends = cmake
 	provides = etlcpp
-	source = etl-20.43.4.tar.gz::https://github.com/ETLCPP/etl/archive/refs/tags/20.43.4.tar.gz
-	sha512sums = 02af79827c29b45c4e4724f197050210c3e415fc6ecee16f26eb92a2bfa332237b98de5f9895238209236a5c97f258635665f2474f55be303aec9080bd44128e
+	source = etl-20.44.2.tar.gz::https://github.com/ETLCPP/etl/archive/refs/tags/20.44.2.tar.gz
+	sha512sums = 85e47efed35124382eb8680219e291bdfefa5a5fcf6de28ce08a98dbe6765742e6a3b851406a09f00cf23fed21bc9d4163a01b5fbdd78c52ffd7f524aee91a5c
 
 pkgname = etlcpp
