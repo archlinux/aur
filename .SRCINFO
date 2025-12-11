@@ -1,0 +1,23 @@
+pkgbase = nanchat
+	pkgdesc = Nano Super APp
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/yxse/nanchat
+	install = nanchat.install
+	arch = x86_64
+	license = GPL-3.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/yxse/nanchat/releases/download/app-v0.1.1/NanChat_0.1.1_amd64.deb
+	sha256sums_x86_64 = 8f43942738ccde45efe34be0d29dfeb3e2df5f46e58380e6a3cc3dba2b91a00b
+
+pkgname = nanchat
