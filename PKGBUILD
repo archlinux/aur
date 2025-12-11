@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: éclairevoyant
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
@@ -7,56 +8,63 @@
 # Contributor: koral <koral at mailoo dot org>
 
 pkgbase=nix-git
-pkgname=(nix-git nix-docs-git)
+pkgname=(nix-git perl-nix-git)
 _pkgname=${pkgbase%-git}
-pkgver=2.2.r10010.g50cb14f
+pkgver=2.2.r15648.gccba158
 pkgrel=1
 pkgdesc='A purely functional package manager'
 arch=(x86_64 i686)
 url="https://nixos.org/$_pkgname"
-license=(LGPL2)
-makedepends=(autoconf-archive
-             aws-crt-cpp
-             aws-sdk-cpp
-             boost
-             brotli
+license=(LGPL-2.1-only)
+makedepends=(aws-sdk-cpp-core aws-sdk-cpp-iam aws-sdk-cpp-s3
+             boost libboost_context.so
+             brotli libbrotlienc.so libbrotlidec.so
              bzip2
-             curl
-             editline
+             curl libcurl.so
+             cmake
+             editline libeditline.so
              gc
              git
              graphviz
              gtest
              jq
-             libcpuid
-             libgit2
-             libseccomp
-             libsodium
-             lowdown
-             mdbook
-             mdbook-linkcheck
+             jsonschema
+             kaitai-struct-cpp-stl-runtime
+             ksc
+             libarchive libarchive.so
+             libblake3
+             libcpuid libcpuid.so
+             libgit2 libgit2.so
+             libseccomp libseccomp.so
+             libsodium libsodium.so
+             lowdown liblowdown.so
+             meson
              nix-busybox
              nlohmann-json
-             openssl
+             openssl libcrypto.so
+             perl
+             perl-dbd-sqlite
              rapidcheck
-             sqlite)
+             sqlite libsqlite3.so
+             toml11)
 source=("$_pkgname::git+https://github.com/NixOS/nix.git"
-        nix.conf
         sysusers.conf
-        tmpfiles.conf
-        user.environment.conf
-        user.tmpfiles.conf)
+        nix.conf
+        skip-functional-tests.patch
+        perl-vendor-path.patch
+        remove-unused-sh-files.patch)
 sha256sums=('SKIP'
-            'cf3c7a3a24ac0f553b6fd8ba6adb8f1375d8675911af12c4db94918a799f688e'
-            'cf6caa02e0b5224332c5945ba6fa08b1517802898290e6c2eb96046cad9598d8'
-            'f078cb60bdd549e9cb3b9af3dfacd33e1b7f16a7e7c02904f50f08bfc8c0d952'
-            'e45e45394a119a4ef2046a4a39403dda2df2af820c2d116763031c4689fc5717'
-            'c353524861487ef7f7e862bdaaa70e2a3a29e08d2ee31947ebf9e01237c5c50d')
+            '973b9c69941b2ca985d94cc67e49711ed5c41778e468e52a412dbdff166450ee'
+            '78373deff2519a3acf288a9438b42277e7bc9b2ae5fcaa8ff1070bc08a2dbded'
+            '82db97c796becc885187f8f4349d29d7a3e931d5ba11286e3283a9921fe340a0'
+            '3ddc550bddf3aecbbda2ab1524c992a01318cc43b219af1d3a2eb0c92200c8f0'
+            '326feb3f0d05571e7f830cd009a5853417c6ef6f8833961df2750a1f94ff9712')
 
 prepare() {
 	cd "$_pkgname"
-	sed -i "s:\$(bindir):src/nix:g" doc/manual/local.mk
-	autoreconf -vfi
+	patch -p1 -i ../skip-functional-tests.patch
+	patch -p1 -i ../perl-vendor-path.patch
+	patch -p1 -i ../remove-unused-sh-files.patch
 }
 
 pkgver() {
@@ -66,60 +74,58 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	CXXFLAGS='-D_GLIBCXX_USE_CXX11_ABI=0' \
-	./configure \
-		--prefix=/usr \
-		--libexecdir="/usr/lib/$_pkgname" \
-		--sysconfdir=/etc \
-		--localstatedir=/nix/var \
-		--with-sandbox-shell=/usr/lib/nix/busybox \
-		--enable-static=rapidcheck \
-		--enable-gc \
-		--enable-lto
-	make
+	local meson_opts=(
+		libstore:sandbox-shell=/usr/lib/nix/busybox
+		nix:profile-dir=/etc/profile.d
+		bindings=true
+		doc-gen=false
+		unit-tests=false
+	)
+	arch-meson "$_pkgname" build ${meson_opts[@]/#/-D }
+	meson compile -C build
 }
 
 package_nix-git() {
-	depends=(aws-crt-cpp
-	         aws-sdk-cpp
-	         boost-libs
-	         brotli
-	         curl
-	         editline
+	depends=(aws-sdk-cpp-core aws-sdk-cpp-iam aws-sdk-cpp-s3
+	         boost-libs libboost_context.so
+	         brotli libbrotlienc.so libbrotlidec.so
+	         curl libcurl.so
+	         editline libeditline.so
 	         gc
 	         gcc-libs
 	         glibc
-	         libarchive
-	         libcpuid
-	         libseccomp
-	         libsodium
-	         lowdown
+	         libarchive libarchive.so
+	         libblake3
+	         libcpuid libcpuid.so
+	         libgit2 libgit2.so
+	         libseccomp libseccomp.so
+	         libsodium libsodium.so
+	         lowdown liblowdown.so
 	         nix-busybox
-	         openssl
-	         sqlite)
+	         nlohmann-json
+	         openssl libcrypto.so
+	         sqlite libsqlite3.so)
+	optdepends=('perl-nix: Perl bindings for Nix')
 	provides=("$_pkgname=$pkgver")
+	replaces=(nix-docs-git)
 	conflicts=("$_pkgname")
 	backup=("etc/$_pkgname/$_pkgname.conf")
-	install="$_pkgname.install"
-	install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname-daemon.conf"
+	DESTDIR="$pkgdir" meson install -C build
+	mv "$pkgdir/usr/lib/perl5" perl-nix
 	install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname-daemon.conf"
-	install -vDm644 user.tmpfiles.conf "$pkgdir/usr/share/user-tmpfiles.d/$_pkgname-daemon.conf"
-	install -vDm644 user.environment.conf "$pkgdir/usr/lib/environment.d/$_pkgname-daemon.conf"
 	install -vDm644 nix.conf -t "$pkgdir/etc/$_pkgname"
-	cd "$_pkgname"
-	make DESTDIR="$pkgdir" install
-	rm -rf \
-		"$pkgdir/etc/init" \
-		"$pkgdir/etc/profile.d/nix.sh" \
-		"$pkgdir/etc/profile.d/nix.fish"
-	mv "$pkgdir/usr/share/doc" nix-docs
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$_pkgname/COPYING"
 }
 
-package_nix-docs-git() {
-	pkgdesc+=" (documentation)"
-	cd "$_pkgname"
-	install -vd "$pkgdir/usr/share/doc"
-	mv nix-docs/nix "$pkgdir/usr/share/doc"
+package_perl-nix-git() {
+	pkgdesc+=' (Perl bindings)'
+	depends=(glibc
+	         gcc-libs
+	         libsodium
+	         nix-git
+	         perl)
+	replaces=(nix-perl)
+	install -d "$pkgdir/usr/lib/perl5"
+	mv perl-nix/* "$pkgdir/usr/lib/perl5"
 }
+

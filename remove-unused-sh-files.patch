@@ -1,0 +1,11 @@
+--- a/scripts/meson.build
++++ b/scripts/meson.build
+@@ -6,7 +6,7 @@ configure_file(
+   }
+ )
+ 
+-foreach rc : [ '.sh', '.fish', '-daemon.sh', '-daemon.fish' ]
++foreach rc : [ '-daemon.sh', '-daemon.fish' ]
+   configure_file(
+     input : 'nix-profile' + rc  + '.in',
+     output : 'nix' + rc,
