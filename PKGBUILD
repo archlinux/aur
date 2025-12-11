@@ -4,7 +4,7 @@
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
 url='https://github.com/NVIDIA/cutlass'
@@ -24,6 +24,14 @@ prepare() {
 
 build() {
     export PATH="/opt/cuda/bin:$PATH"
+
+    # Limit parallel jobs to prevent OOM during CUDA template compilation
+    # Each nvcc process can use 10-20GB+ RAM with heavy template instantiation
+    local _jobs=$(nproc)
+    if (( _jobs > 4 )); then
+        _jobs=4
+    fi
+
     cmake -S $pkgbase-$pkgver -B $pkgbase-$pkgver/build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCUTLASS_NVCC_ARCHS='75;80;86;89;90;90a' \
@@ -33,8 +41,8 @@ build() {
         -DCUTLASS_ENABLE_CUDNN=ON \
         -DCUTLASS_ENABLE_EXAMPLES=OFF \
         -DCUTLASS_INSTALL_TESTS=OFF \
-        -DCUTLASS_UNITY_BUILD_ENABLED=ON
-    cmake --build $pkgbase-$pkgver/build
+        -DCUTLASS_UNITY_BUILD_ENABLED=OFF
+    cmake --build $pkgbase-$pkgver/build -j $_jobs
 
     # Build Python wheels
     cd "$srcdir/$pkgbase-$pkgver/python"
