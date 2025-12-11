@@ -3,7 +3,7 @@ pkgname=jackify-bin
 _pkgname=Jackify
 _appimage_name=com.jackify.app
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jackify - Simplifying Wabbajack modlist installation and configuration on Linux"
 arch=('x86_64')
 url="https://github.com/Omni-guides/Jackify"
@@ -19,6 +19,7 @@ depends=(
     'python-yaml'
     'python-vdf'
     'python-packaging'
+    'python-pycryptodome'
 )
 makedepends=(
     'fuse2'
@@ -97,6 +98,7 @@ EOF
     chmod 644 $(find "${pkgdir}/opt/" -type f)
     chmod +x $(find "${pkgdir}/opt/jackify-engine/Extractors/linux-x64/" -type f 2>/dev/null || true)
     chmod +x $(find "${pkgdir}/opt/jackify/tools/" -type f 2>/dev/null || true)
+    chmod +x "${pkgdir}/opt/jackify/frontends/gui/__main__.py"
 
     # Install icon and desktop file
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_appimage_name}.png" \
