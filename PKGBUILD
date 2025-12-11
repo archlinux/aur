@@ -1,7 +1,7 @@
 # Maintainer: Trex099 <trex099@github.com>
 pkgname=velocity-bridge
-pkgver=2.0.7
-pkgrel=4
+pkgver=2.0.8
+pkgrel=1
 pkgdesc="iOS to Linux Clipboard Sync - Copy on iPhone, paste on Linux"
 arch=('x86_64')
 url="https://github.com/Trex099/Velocity-Bridge"
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("https://github.com/Trex099/Velocity-Bridge/releases/download/v${pkgver}/Velocity-Bridge_${pkgver}_amd64.AppImage"
         "https://raw.githubusercontent.com/Trex099/Velocity-Bridge/main/assets/velocity-icon.png")
-sha256sums=('47bd7aa9e0933e0a97c67e41ab706ec82338ddec1fa76b938dda7ef35ea0f941'
+sha256sums=('e70b86b952100dc64e988f111a7c8f034465576e5e6f75b87303add4b2724b2d'
             '2d8d8b52919fb5970a1a208d363c5d83310ec521a7adad897984a4741f70e37c')
 options=('!strip')
 
