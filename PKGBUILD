@@ -1,7 +1,7 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
 pkgver="3.5.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
@@ -54,7 +54,7 @@ package() {
   # Add the loginInfo file
   mkdir -p "${pkgdir}/etc/Synergy"
   touch "${pkgdir}/etc/Synergy/loginInfo"
-  chmod 644 "${pkgdir}/etc/Synergy/loginInfo"
+  chmod 755 "${pkgdir}/etc/Synergy/loginInfo"
 
   chmod 4755 "${pkgdir}/opt/Synergy/chrome-sandbox" || true
 }
