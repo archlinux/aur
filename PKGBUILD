@@ -6,41 +6,44 @@
 
 pkgname=libfprint-2-tod1-broadcom-cv3plus
 _pkgdirname=libfprint-2-tod1-broadcom-cv3plus
-pkgver=6.1.028.0
+_fw_ver=6.4.334
+pkgver=6.4.054.0
 pkgrel=1
-pkgdesc="Proprietary driver for the fingerprint reader on the Dell Precision - direct from Dell's Ubuntu repo"
+pkgdesc="Proprietary driver for the Dell ControlVault3 Plus (0a5c:586*) fingerprint reader"
 arch=(x86_64)
-url="https://git.launchpad.net/~oem-solutions-engineers/pc-enablement/+git/libfprint-2-tod1-broadcom-cv3plus"
+url="https://packages.broadcom.com/artifactory/dell-controlvault-drivers/"
 license=(custom)
 depends=(libfprint-tod)
 makedepends=(git)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=("libfprint-2-tod1-broadcom-cv3plus=${pkgver}")
+conflicts=('libfprint-2-tod1-broadcom-cv3plus')
+options=('!strip')
 groups=(fprint)
-source=("git+https://git.launchpad.net/~oem-solutions-engineers/pc-enablement/+git/libfprint-2-tod1-broadcom-cv3plus/")
+
+
+source=("${url}brcm_linux_fp_${_fw_ver}_${pkgver}.tgz")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd $_pkgdirname
-  sed -n 's/.*version: \([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p' ./var/lib/fprint/.broadcomCv3plusFW/bcm_cv_current_version.txt
-}
-
 package() {
-  cd $_pkgdirname
+  cd "$srcdir/brcm_linux_fp"
   # Create target directories in the package and use -Dm after to avoid repeating long filenames
+
   install -dm 755 "$pkgdir/usr/lib/libfprint-2/tod-1/"
   install -dm 755 "$pkgdir/usr/lib/udev/rules.d/"
   install -dm 755 "$pkgdir/var/lib/fprint/.broadcomCv3plusFW/"
 
-  # licence
+  # 2. Install Licence
   install -Dm 644 ./LICENCE.broadcom "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # drivers
+  # 3. Install Driver (Mapping Debian path to Arch path)
   install -Dm 755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-2-tod-1-broadcom-cv3plus.so "$pkgdir/usr/lib/libfprint-2/tod-1/"
-  # udev rules
+
+  # 4. Install Udev Rules
   cp -r lib/udev/rules.d/* "$pkgdir/usr/lib/udev/rules.d/"
-  # firmware
+
+  # 5. Install Firmware (using copy to grab hidden files inside)
   cp -r var/lib/fprint/.broadcomCv3plusFW/* "$pkgdir/var/lib/fprint/.broadcomCv3plusFW/"
+  
 }
