@@ -1,0 +1,16 @@
+pkgbase = portty-git
+	pkgdesc = XDG Desktop Portal backend for TTY environments
+	pkgver = r4.2b533ff
+	pkgrel = 1
+	url = https://github.com/werdxz/portty
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = xdg-desktop-portal
+	provides = portty
+	conflicts = portty
+	source = portty-git::git+https://github.com/werdxz/portty.git
+	sha256sums = SKIP
+
+pkgname = portty-git
