@@ -1,7 +1,7 @@
 pkgbase = kotlin-lsp-bin
 	pkgdesc = Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol
 	pkgver = 261.13587.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kotlin/kotlin-lsp
 	arch = any
 	license = Apache
