@@ -1,5 +1,5 @@
 pkgname=slive
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Slive is a lightweight and user-friendly application for watching live streams across multiple platforms, offering a seamless watching experience with support for popular streaming services."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk3')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('b4754bc57d09f5ef9ccab528b4857e6234ae112862103e8e487f388343df98cf')
+sha256sums=('efe3cb239668d95d22211474ef7b8c0f52be4373a615f028091b796f4b9fa036')
 
 prepare() {
     cd "$srcdir/dart_simple_live/simple_live_app"
@@ -36,15 +36,5 @@ package() {
 	ln -s "/usr/lib/${pkgname}/Slive" "${pkgdir}/usr/bin/Slive"
 
 	install -Dm644 assets/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-[Desktop Entry]
-Name=Slive
-Exec=Slive
-Icon=${pkgname}
-Comment=Slive is a lightweight and user-friendly application for watching live streams across multiple platforms, offering a seamless watching experience with support for popular streaming services.
-Comment[zh_CN]=Slive 是一个轻量且用户友好的应用程序，可跨多个平台观看直播流，提供无缝的观看体验，并支持流行的流媒体服务。
-Type=Application
-Terminal=false
-Categories=Video;AudioVideo;Player;
-EOF
+    install -Dm644 "linux/packaging/aur/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
