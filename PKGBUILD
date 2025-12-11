@@ -1,7 +1,7 @@
 # Maintainer: stefonarch <standreas@riseup.net>
 _pkgname=niri-settings
 pkgname=$_pkgname-git
-pkgver=ed2f844
+pkgver=a396684
 pkgrel=1
 pkgdesc="GUI application for configuring niri in Qt"
 arch=('any')
@@ -24,7 +24,7 @@ package() {
   # Install main script
   install -Dm755 niri-settings "$pkgdir/usr/bin/niri-settings"
 
-  # Install desktop file (also in XDG data dir)
+  # Install desktop file
   install -Dm644 niri-settings.desktop "$pkgdir/usr/share/applications/niri-settings.desktop"
 
   # Install python files
@@ -35,4 +35,8 @@ package() {
   # Install translations to standard XDG data directory
   install -d "$pkgdir/usr/share/niri-settings/translations"
   install -Dm644 translations/*.qm "$pkgdir/usr/share/niri-settings/translations/"
+
+  # Install icon
+  install -d "$pkgdir /usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 niri-settings.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/niri-settings.svg"
 }
