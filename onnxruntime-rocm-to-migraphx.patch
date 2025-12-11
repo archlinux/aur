@@ -1,0 +1,27 @@
+diff --git a/src/Baballonia/Services/DefaultInferenceRunner.cs b/src/Baballonia/Services/DefaultInferenceRunner.cs
+index 9ee7e93..6cc79cd 100644
+--- a/src/Baballonia/Services/DefaultInferenceRunner.cs
++++ b/src/Baballonia/Services/DefaultInferenceRunner.cs
+@@ -129,17 +129,17 @@ public class DefaultInferenceRunner(ILoggerFactory loggerFactory) : IInferenceRu
+         }
+ 
+         // And, if CUDA fails (or we have an AMD card)
+-        // Try one more time with ROCm
++        // Try with MIGraphX
+         try
+         {
+-            sessionOptions.AppendExecutionProvider_ROCm();
+-            _logger.LogInformation("Initialized ExecutionProvider: ROCm for {ModelName}", modelName);
++            sessionOptions.AppendExecutionProvider_MIGraphX();
++            _logger.LogInformation("Initialized ExecutionProvider: MIGraphX for {ModelName}", modelName);
+             return;
+         }
+         catch (Exception ex)
+         {
+-            _logger.LogError(ex, "Failed to configure ROCm.");
+-            _logger.LogWarning("Failed to create ROCm Execution Provider.");
++            _logger.LogError(ex, "Failed to configure MIGraphX.");
++            _logger.LogWarning("Failed to create MIGraphX Execution Provider.");
+         }
+ 
+         _logger.LogWarning("No GPU acceleration will be applied.");
