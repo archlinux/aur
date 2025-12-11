@@ -1,6 +1,7 @@
 # Maintainer: Tempik25 <tempik@mail.tempestfoundation.org>
 pkgname=rustffetch-git
 pkgver=0.1.0.r2.gb928ea2
+pkgdesc='Simple, fast and flexible neofetch-like information manager.'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tempik25/rustffetch"
