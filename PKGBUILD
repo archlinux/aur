@@ -6,14 +6,14 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=alsa-silence-player
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="ALSA level silence audio player"
-arch=(any)
+arch=(x86_64)
 url="https://github.com/aquanjsw/alsa-silence-player"
-license=('GPL')
+license=('GPL-1.0-or-later')
 groups=()
-depends=(alsa-lib)
+depends=(alsa-lib glibc)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -31,7 +31,7 @@ sha256sums=(871c53868186862c343a423b1d2432634c5ac11d59f88fd4baff23037e9c9ae4
 validpgpkeys=()
 
 build() {
-	gcc -o silence-player main.c -lasound
+	gcc -o silence-player main.c -lasound -Wl,-z,relro -Wl,-z,now
 }
 
 package() {
