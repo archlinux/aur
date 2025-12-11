@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-ceres-solver-lgpl
+	pkgdesc = Solver for nonlinear least squares problems (no SuiteSparse, mingw-w64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://ceres-solver.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-lapack
+	depends = mingw-w64-google-glog
+	depends = mingw-w64-metis
+	depends = mingw-w64-eigen
+	provides = mingw-w64-ceres-solver
+	conflicts = mingw-w64-ceres-solver
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://ceres-solver.org/ceres-solver-2.2.0.tar.gz
+	sha256sums = 48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d
+
+pkgname = mingw-w64-ceres-solver-lgpl
