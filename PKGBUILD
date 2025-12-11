@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Shin Rag <zhdlcc@gmail.com>
 pkgname=alsa-silence-player
 pkgver=1.0.1
 pkgrel=2
