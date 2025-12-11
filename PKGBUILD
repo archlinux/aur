@@ -1,4 +1,4 @@
-pkgname=ghpkg
+pkgname=ghpkg-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Indev package manager"
