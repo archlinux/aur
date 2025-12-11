@@ -1,0 +1,4 @@
+[log4cpp]
+source = "regex"
+url = "https://log4cpp.sourceforge.net/"
+regex = '>([\.0-9]+)\s*-\s*.*\(\S+ \S+ [0-9]{4}\)<'

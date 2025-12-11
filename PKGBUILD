@@ -4,8 +4,8 @@
 
 _pkgname="log4cpp"
 pkgname="$_pkgname"
-pkgver=1.1.4
-pkgrel=3
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations"
 url="http://log4cpp.sourceforge.net/"
 license=('LGPL-2.1-only')
@@ -15,7 +15,7 @@ depends=('libnsl')
 
 _pkgsrc="$_pkgname"
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('696113659e426540625274a8b251052cc04306d8ee5c42a0c7639f39ca90c9d6')
+sha256sums=('6ae48cc0081b24270ec3398e71b68f77b45e93be15ff4d44c00259c9cdc5cc5a')
 
 build() {
   cd "$_pkgsrc"
