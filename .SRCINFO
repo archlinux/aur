@@ -24,7 +24,7 @@ pkgbase = pango-nothai-git
 	source = git+https://gitlab.gnome.org/GNOME/pango.git
 	sha256sums = SKIP
 
-pkgname = pango-git
+pkgname = pango-nothai-git
 	provides = pango
 	provides = libpango-1.0.so
 	provides = libpangocairo-1.0.so

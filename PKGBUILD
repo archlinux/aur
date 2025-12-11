@@ -5,8 +5,7 @@
 # Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=pango-nothai-git
-pkgname=(pango-git)
+pkgname=pango-nothai-git
 pkgver=1.57.0.r13.g2fb8d778
 pkgrel=1
 epoch=1
@@ -45,7 +44,7 @@ build() {
   meson compile -C build
 }
 
-package_pango-git() {
+package() {
   provides=(pango libpango{,cairo,ft2,xft}-1.0.so)
   conflicts=(pango)
 
