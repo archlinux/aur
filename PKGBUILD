@@ -3,42 +3,44 @@
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=1.0.0
-pkgrel=7
+pkgver=0.17.0
+pkgrel=1
 epoch=1
-pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
+pkgdesc="Cross-platform IPTV player application with support for M3U/M3U8 playlists, EPG, favorites, TV archive and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
 license=('MIT')
+
 depends=(
-  'cairo'
-  'gcc-libs'
-  'gdk-pixbuf2'
-  'glib2'
-  'glibc'
+  'c-ares'
+  'ffmpeg'
   'gtk3'
-  'hicolor-icon-theme'
-  'libsoup3'
-  'webkit2gtk-4.1'
-  'openssl'
-  'pango'
-)
-optdepends=(
-  'ffmpeg: audio and video libraries'
-  'mpv: media player'
-  'vlc: media player'
+  'http-parser'
+  'libevent'
+  'libvpx'
+  'libxslt'
+  'libxss'
+  'minizip'
+  'nss'
+  're2'
+  'snappy'
+  'libnotify'
+  'libappindicator-gtk3'
 )
 provides=('iptvnator')
 conflicts=('iptvnator')
 options=(!strip)
-source=("${url}/releases/download/app-v${pkgver}-${pkgrel}/iptvnator-${pkgver}-${pkgrel}-1.${CARCH}.rpm"
-        "https://raw.githubusercontent.com/4gray/iptvnator/refs/heads/electron/LICENSE.md")
-sha256sums=('8e41f1d573321a9f6782429a894bfcd6375901a4daf98ff71d1553757be03837'
-            '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74')
+source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/test-8d5537370ebf2f95d84122b2351763c2d3ef9579/iptvnator-${pkgver}-linux-x64.pacman")
+sha256sums=('d7ab5a9490f8b3cfb8a58babbbba63ccd1590f99463c842b16d23a5c45b1d7ea')
 
 package() {
-  bsdtar -xf "${srcdir}/iptvnator-${pkgver}-${pkgrel}-1.${CARCH}.rpm" -C "${pkgdir}"
-  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  bsdtar -xf "${srcdir}/iptvnator-${pkgver}.pacman" -C "${pkgdir}"
+  install -Dm644 "${srcdir}/opt/IPTVnator/LICENSE.electron.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  rm -f "${pkgdir}/.INSTALL" \
+        "${pkgdir}/.MTREE" \
+        "${pkgdir}/.PKGINFO"
 }
 
 # vim:set ts=2 sw=2 et:
