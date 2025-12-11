@@ -4,8 +4,8 @@
 _dotnet_sdk_version=10.0
 _dotnet_runtime_version=9.0
 pkgname=roslyn-ls
-pkgver=2.100.11
-pkgrel=2
+pkgver=2.110.4
+pkgrel=1
 pkgdesc="Language server behind C# Dev Kit for Visual Studio Code"
 arch=(x86_64)
 url=https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
@@ -19,7 +19,7 @@ source=("roslyn-VSCode-CSharp-$pkgver.tar.gz::https://github.com/dotnet/roslyn/a
         # We move it to ${XDG_CACHE_HOME:-$HOME/.cache}/Microsoft/CodeAnalysis/LanguageServer.
         # See also: https://github.com/dotnet/roslyn/issues/76892
         "0001-move-cache-directory.diff")
-sha256sums=('b4c8f6b7676e130362e5dae9e64026e2b47c637da833c0e8382cbe7c928939d7'
+sha256sums=('76f4a2dad8eb9166be7b3f83d9d6eb7c22c92461b985e92a681e04b0450b9d1b'
             '66ef609bcee14f41754820a9dd4aeda578c338867e93da04ce15b48f9f93026b'
             '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
 
