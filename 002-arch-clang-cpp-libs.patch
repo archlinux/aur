@@ -5,7 +5,7 @@
  add_library(ClangSharp SHARED ${SOURCES})
  
 -target_link_libraries(ClangSharp PRIVATE clangAST clangFrontend libclang)
-+target_link_libraries(ClangSharp PRIVATE clang-cpp)
++target_link_libraries(ClangSharp PRIVATE clang-cpp libclang)
  
  target_include_directories(ClangSharp PRIVATE ${CLANG_INCLUDE_DIRS})
  
