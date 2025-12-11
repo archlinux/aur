@@ -1,7 +1,7 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=tscdriver
-pkgver=1.2.10
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="Drivers for TSC Printers"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('custom:proprietary')
 depends=(gtk2 libusb)
 makedepends=(unzip)
 source=("$pkgname-$pkgver.zip::https://fs.tscprinters.com/system/files/linux64_v${pkgver}.zip")
-sha256sums=('82addc9e63c3fdc52c0c6817ba5fa319850a765c01df48d0b2e387db63a14e13')
+sha256sums=('8661fa914b0b07b4c3f32ab9900397a4cb3503e1f1e35aa081e21e6f20c6a2dd')
 
 prepare() {
   #unzip linux64_v${pkgver}/Linux64_v${pkgver}.zip
