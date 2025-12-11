@@ -1,12 +1,12 @@
 pkgname=mingw-w64-ceres-solver
 pkgver=2.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Solver for nonlinear least squares problems (mingw-w64)"
 arch=('any')
 url="http://ceres-solver.org/"
 license=('LGPL')
 makedepends=('mingw-w64-cmake')
-depends=('mingw-w64-lapack' 'mingw-w64-google-glog' 'mingw-w64-metis' 'mingw-w64-eigen')
+depends=('mingw-w64-lapack' 'mingw-w64-google-glog' 'mingw-w64-suitesparse' 'mingw-w64-eigen')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
 sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
@@ -24,7 +24,7 @@ build() {
   cd $srcdir/ceres-solver-$pkgver
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DCMAKE_UNITY_BUILD=ON \
-      -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF -DGFLAGS=OFF -DBLA_VENDOR=Generic -DSUITESPARSE=OFF -B build-${_arch} .
+      -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF -DGFLAGS=OFF -DBLA_VENDOR=Generic -B build-${_arch} .
     make -C build-${_arch}
   done
 }
