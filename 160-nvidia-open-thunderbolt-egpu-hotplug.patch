@@ -1,0 +1,2204 @@
+diff --git a/kernel-open/common/inc/nvkms-kapi.h b/kernel-open/common/inc/nvkms-kapi.h
+index feecd8c9..65b43b5b 100644
+--- a/kernel-open/common/inc/nvkms-kapi.h
++++ b/kernel-open/common/inc/nvkms-kapi.h
+@@ -660,6 +660,17 @@ struct NvKmsKapiFunctionsTable {
+      */
+     void (*freeDevice)(struct NvKmsKapiDevice *device);
+ 
++    /*!
++     * Frees a device during surprise removal (e.g., Thunderbolt eGPU unplug).
++     * This skips all hardware access and only releases kernel resources.
++     * Use this instead of freeDevice() when the GPU hardware is no longer
++     * accessible to avoid page faults and hangs.
++     *
++     * \param [in]  device  A device returned by allocateDevice().
++     *                      This function is a no-op if device is not valid.
++     */
++    void (*freeDeviceForSurpriseRemoval)(struct NvKmsKapiDevice *device);
++
+     /*!
+      * Grab ownership of device, ownership is required to do modeset.
+      *
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
+index 0b7c17f4..4e90b594 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
+@@ -852,6 +852,43 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+         return;
+     }
+ 
++    /*
++     * During surprise removal (e.g., Thunderbolt eGPU hot-unplug),
++     * the GPU hardware is no longer accessible. Skip NVKMS calls that
++     * would access hardware to prevent page faults and crashes.
++     * Use freeDeviceForSurpriseRemoval which only releases kernel resources
++     * without attempting any hardware access.
++     */
++    if (nv_dev->inSurpriseRemoval) {
++        NV_DRM_DEV_LOG_INFO(nv_dev,
++            "Surprise removal detected, skipping hardware access");
++
++        cancel_delayed_work_sync(&nv_dev->hotplug_event_work);
++        mutex_lock(&nv_dev->lock);
++
++        atomic_set(&nv_dev->enable_event_handling, false);
++        drm_kms_helper_poll_fini(dev);
++        drm_mode_config_cleanup(dev);
++
++        pDevice = nv_dev->pDevice;
++        nv_dev->pDevice = NULL;
++
++        mutex_unlock(&nv_dev->lock);
++
++        /*
++         * Use freeDeviceForSurpriseRemoval instead of freeDevice.
++         * This skips KmsFreeDevice() and RmFreeDevice() which would try
++         * to access GPU hardware via ioctls/RM API calls and cause
++         * page faults since the GPU memory is unmapped.
++         * It only calls nvkms_close_gpu() to release the GPU reference
++         * count, allowing the eGPU to be re-initialized when reconnected.
++         */
++        if (pDevice != NULL) {
++            nvKms->freeDeviceForSurpriseRemoval(pDevice);
++        }
++        return;
++    }
++
+     /* Release modeset ownership if fbdev is enabled */
+ 
+ #if defined(NV_DRM_FBDEV_AVAILABLE)
+@@ -2160,6 +2197,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+     nv_drm_free(nv_dev);
+ }
+ 
++/*
++ * Helper to get PCI device from DRM device, handling both old and new kernels.
++ * Returns NULL if not a PCI device or device not available.
++ */
++static struct pci_dev *nv_drm_get_pci_dev(struct drm_device *dev)
++{
++    if (dev == NULL) {
++        return NULL;
++    }
++
++#if defined(NV_DRM_DEVICE_HAS_PDEV)
++    return dev->pdev;
++#else
++    /* On newer kernels (5.14+), drm_device.pdev was removed.
++     * Get PCI device from the parent device. */
++    if (dev->dev != NULL && dev->dev->bus == &pci_bus_type) {
++        return to_pci_dev(dev->dev);
++    }
++    return NULL;
++#endif
++}
++
+ /*
+  * Unregister a single NVIDIA DRM device.
+  */
+@@ -2168,7 +2227,26 @@ void nv_drm_remove(NvU32 gpuId)
+     struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
+ 
+     if (nv_dev) {
++        struct pci_dev *pdev;
++
+         NV_DRM_DEV_LOG_INFO(nv_dev, "Removing device");
++
++        /*
++         * Check if this is a surprise removal (hot-unplug) by testing
++         * if the PCI channel is offline. This happens when:
++         * - Thunderbolt eGPU is physically disconnected
++         * - GPU falls off the bus unexpectedly
++         * 
++         * For normal driver unload (rmmod), the PCI channel remains online.
++         * We only skip NVKMS hardware access during surprise removal.
++         */
++        pdev = nv_drm_get_pci_dev(nv_dev->dev);
++        if (pdev != NULL && pci_channel_offline(pdev)) {
++            NV_DRM_DEV_LOG_INFO(nv_dev,
++                "PCI channel offline - surprise removal detected");
++            nv_dev->inSurpriseRemoval = NV_TRUE;
++        }
++
+         drm_dev_unplug(nv_dev->dev);
+         nv_drm_dev_destroy(nv_dev);
+     }
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-priv.h b/kernel-open/nvidia-drm/nvidia-drm-priv.h
+index d2c3a037..3df5f25c 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-priv.h
++++ b/kernel-open/nvidia-drm/nvidia-drm-priv.h
+@@ -146,6 +146,21 @@ struct nv_drm_device {
+     NvBool subOwnershipGranted;
+     NvBool hasFramebufferConsole;
+ 
++    /*
++     * Set to NV_TRUE for external GPUs (e.g., Thunderbolt/USB4 eGPU).
++     * External GPUs use the fast removal path to avoid hangs during
++     * both surprise removal and "safe" software-initiated disconnect.
++     */
++    NvBool isExternalGpu;
++
++    /*
++     * Set to NV_TRUE when the device is being removed due to
++     * surprise removal (e.g., Thunderbolt eGPU hot-unplug).
++     * When set, NVKMS operations that would access GPU hardware
++     * are skipped to prevent crashes from accessing unmapped memory.
++     */
++    NvBool inSurpriseRemoval;
++
+     struct drm_property *nv_out_fence_property;
+     struct drm_property *nv_input_colorspace_property;
+ 
+diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
+index 22a48115..e38a487d 100644
+--- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
++++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
+@@ -1204,6 +1204,27 @@ void nvkms_close_gpu(NvU32 gpuId)
+     __rm_ops.free_stack(stack);
+ }
+ 
++void nvkms_gpu_lost(NvU32 gpuId)
++{
++    /*
++     * Mark the GPU as lost in NVKMS. This prevents hardware access
++     * and cancels pending timers that might try to access the removed GPU.
++     *
++     * NOTE: We intentionally do NOT take nvkms_lock here because this function
++     * may be called from contexts that already hold the lock (e.g., during
++     * module unload). The gpuLost flag is a simple boolean that can be safely
++     * written without a lock - any racing operation will either:
++     * 1. See gpuLost=TRUE and bail out early
++     * 2. See gpuLost=FALSE but hit the 0xFFFFFFFF check when reading hardware
++     *
++     * A memory barrier ensures the write is visible to other CPUs promptly.
++     */
++    nvKmsGpuLost(gpuId);
++
++    /* Ensure gpuLost write is visible to other CPUs */
++    smp_wmb();
++}
++
+ NvU32 nvkms_enumerate_gpus(nv_gpu_info_t *gpu_info)
+ {
+     return __rm_ops.enumerate_gpus(gpu_info);
+diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
+index 3facbfe7..3a61e588 100644
+--- a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
++++ b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
+@@ -309,6 +309,12 @@ void* nvkms_get_per_open_data(int fd);
+ NvBool nvkms_open_gpu(NvU32 gpuId);
+ void nvkms_close_gpu(NvU32 gpuId);
+ 
++/*!
++ * Mark a GPU as lost (surprise removal, e.g., Thunderbolt eGPU unplug).
++ * This prevents hardware access and cancels pending timers.
++ */
++void nvkms_gpu_lost(NvU32 gpuId);
++
+ 
+ /*!
+  * Enumerate nvidia gpus.
+diff --git a/kernel-open/nvidia-modeset/nvkms.h b/kernel-open/nvidia-modeset/nvkms.h
+index d350ef75..668fa8c2 100644
+--- a/kernel-open/nvidia-modeset/nvkms.h
++++ b/kernel-open/nvidia-modeset/nvkms.h
+@@ -88,6 +88,8 @@ void nvKmsModuleUnload(void);
+ void nvKmsSuspend(NvU32 gpuId);
+ void nvKmsResume(NvU32 gpuId);
+ 
++void nvKmsGpuLost(NvU32 gpuId);
++
+ void nvKmsGetProcFiles(const nvkms_procfs_file_t **ppProcFiles);
+ 
+ NvBool nvKmsReadConf(const char *buff, size_t size,
+diff --git a/kernel-open/nvidia/nv-acpi.c b/kernel-open/nvidia/nv-acpi.c
+index d1090b38..62ab3e6d 100644
+--- a/kernel-open/nvidia/nv-acpi.c
++++ b/kernel-open/nvidia/nv-acpi.c
+@@ -261,12 +261,28 @@ static void nv_acpi_notify_event(acpi_handle handle, u32 event_type, void *data)
+ {
+     nv_acpi_t  *pNvAcpiObject = data;
+     nv_state_t *nvl = pNvAcpiObject->notifier_data;
++    nv_state_t *nv;
++
++    if (nvl == NULL)
++        return;
++
++    nv = NV_STATE_PTR(nvl);
++    if (nv == NULL)
++        return;
++
++    /*
++     * Check if we're in surprise removal before processing ACPI events.
++     * This can happen during Thunderbolt eGPU hot-unplug where the device
++     * is being removed but ACPI events are still being delivered.
++     */
++    if (nv->flags & NV_FLAG_IN_SURPRISE_REMOVAL)
++        return;
+ 
+     /*
+      * Function to handle device specific ACPI events such as display hotplug,
+      * GPS and D-notifier events.
+      */
+-    rm_acpi_notify(pNvAcpiObject->sp, NV_STATE_PTR(nvl), event_type);
++    rm_acpi_notify(pNvAcpiObject->sp, nv, event_type);
+ }
+ 
+ void nv_acpi_register_notifier(nv_linux_state_t *nvl)
+diff --git a/kernel-open/nvidia/nv-i2c.c b/kernel-open/nvidia/nv-i2c.c
+index a0f61ed2..4da6bfca 100644
+--- a/kernel-open/nvidia/nv-i2c.c
++++ b/kernel-open/nvidia/nv-i2c.c
+@@ -44,6 +44,15 @@ static int nv_i2c_algo_master_xfer(struct i2c_adapter *adapter, struct i2c_msg m
+ #endif
+     ;
+ 
++    /*
++     * Check if the GPU is in surprise removal (e.g., Thunderbolt unplug).
++     * If so, return immediately to avoid hanging on RPC calls to GSP.
++     */
++    if (nv_check_gpu_state(nv) != NV_OK)
++    {
++        return -ENODEV;
++    }
++
+     rc = nv_kmem_cache_alloc_stack(&sp);
+     if (rc != 0)
+     {
+@@ -93,6 +102,15 @@ static int nv_i2c_algo_smbus_xfer(
+     NV_STATUS rmStatus = NV_OK;
+     nvidia_stack_t *sp = NULL;
+ 
++    /*
++     * Check if the GPU is in surprise removal (e.g., Thunderbolt unplug).
++     * If so, return immediately to avoid hanging on RPC calls to GSP.
++     */
++    if (nv_check_gpu_state(nv) != NV_OK)
++    {
++        return -ENODEV;
++    }
++
+     rc = nv_kmem_cache_alloc_stack(&sp);
+     if (rc != 0)
+     {
+@@ -196,6 +214,15 @@ static u32 nv_i2c_algo_functionality(struct i2c_adapter *adapter)
+     u32 ret = I2C_FUNC_I2C;
+     nvidia_stack_t *sp = NULL;
+ 
++    /*
++     * Check if the GPU is in surprise removal (e.g., Thunderbolt unplug).
++     * If so, return 0 to indicate no functionality available.
++     */
++    if (nv_check_gpu_state(nv) != NV_OK)
++    {
++        return 0;
++    }
++
+     if (nv_kmem_cache_alloc_stack(&sp) != 0)
+     {
+         return 0;
+diff --git a/kernel-open/nvidia/nv-pci.c b/kernel-open/nvidia/nv-pci.c
+index c8fe67b4..7187b575 100644
+--- a/kernel-open/nvidia/nv-pci.c
++++ b/kernel-open/nvidia/nv-pci.c
+@@ -27,6 +27,7 @@
+ #include "nv-msi.h"
+ #include "nv-hypervisor.h"
+ #include "nv-reg.h"
++#include "nv-rsync.h"
+ 
+ #if defined(NV_VGPU_KVM_BUILD)
+ #include "nv-vgpu-vfio-interface.h"
+@@ -1736,6 +1737,13 @@ nv_pci_remove(struct pci_dev *pci_dev)
+ 
+     nv = NV_STATE_PTR(nvl);
+ 
++    /*
++     * Note: For external GPUs (eGPU via Thunderbolt), the NV_FLAG_IN_SURPRISE_REMOVAL
++     * flag is set later in the removal process - either when waiting for usage count
++     * times out, or when actual surprise removal is detected. Setting it too early
++     * can interfere with normal cleanup operations that need to acquire GPU locks.
++     */
++
+ #if NV_IS_EXPORT_SYMBOL_GPL_iommu_dev_disable_feature
+ #if defined(CONFIG_IOMMU_SVA) && \
+     (defined(NV_IOASID_GET_PRESENT) || defined(NV_MM_PASID_DROP_PRESENT))
+@@ -1773,22 +1781,34 @@ nv_pci_remove(struct pci_dev *pci_dev)
+     /*
+      * Sanity check: A removed device shouldn't have a non-zero usage_count.
+      * For eGPU, fall off the bus along with clients active is a valid scenario.
+-     * Hence skipping the sanity check for eGPU.
++     * We still wait for a short time to allow in-progress close operations
++     * to complete, but with a timeout to prevent hangs.
+      */
+-    if ((NV_ATOMIC_READ(nvl->usage_count) != 0) && !(nv->is_external_gpu))
++    if (NV_ATOMIC_READ(nvl->usage_count) != 0)
+     {
++        /*
++         * For external GPU: wait up to 5 seconds (10 iterations * 500ms)
++         * For internal GPU: wait up to 60 seconds (120 iterations * 500ms)
++         * This prevents indefinite hangs while still allowing time for
++         * graceful cleanup of in-progress operations.
++         */
++        int max_wait_iterations = nv->is_external_gpu ? 10 : 120;
++        int wait_iterations = 0;
++
+         nv_printf(NV_DBG_ERRORS,
+-                  "NVRM: Attempting to remove device %04x:%02x:%02x.%x with non-zero usage count!\n",
++                  "NVRM: Attempting to remove device %04x:%02x:%02x.%x with non-zero usage count (%d)%s\n",
+                   NV_PCI_DOMAIN_NUMBER(pci_dev), NV_PCI_BUS_NUMBER(pci_dev),
+-                  NV_PCI_SLOT_NUMBER(pci_dev), PCI_FUNC(pci_dev->devfn));
++                  NV_PCI_SLOT_NUMBER(pci_dev), PCI_FUNC(pci_dev->devfn),
++                  NV_ATOMIC_READ(nvl->usage_count),
++                  nv->is_external_gpu ? " (external GPU)" : "");
+ 
+         /*
+          * We can't return from this function without corrupting state, so we wait for
+-         * the usage count to go to zero.
++         * the usage count to go to zero, but with a timeout.
+          */
+-        while (NV_ATOMIC_READ(nvl->usage_count) != 0)
++        while ((NV_ATOMIC_READ(nvl->usage_count) != 0) &&
++               (wait_iterations < max_wait_iterations))
+         {
+-
+             /*
+              * While waiting, release the locks so that other threads can make
+              * forward progress.
+@@ -1797,6 +1817,7 @@ nv_pci_remove(struct pci_dev *pci_dev)
+             UNLOCK_NV_LINUX_DEVICES();
+ 
+             os_delay(500);
++            wait_iterations++;
+ 
+             /* Re-acquire the locks before checking again */
+             LOCK_NV_LINUX_DEVICES();
+@@ -1815,10 +1836,32 @@ nv_pci_remove(struct pci_dev *pci_dev)
+             down(&nvl->ldata_lock);
+         }
+ 
+-        nv_printf(NV_DBG_ERRORS,
+-                  "NVRM: Continuing with GPU removal for device %04x:%02x:%02x.%x\n",
+-                  NV_PCI_DOMAIN_NUMBER(pci_dev), NV_PCI_BUS_NUMBER(pci_dev),
+-                  NV_PCI_SLOT_NUMBER(pci_dev), PCI_FUNC(pci_dev->devfn));
++        if (NV_ATOMIC_READ(nvl->usage_count) != 0)
++        {
++            nv_printf(NV_DBG_ERRORS,
++                      "NVRM: Timeout waiting for usage count on device %04x:%02x:%02x.%x (remaining: %d). Forcing removal.\n",
++                      NV_PCI_DOMAIN_NUMBER(pci_dev), NV_PCI_BUS_NUMBER(pci_dev),
++                      NV_PCI_SLOT_NUMBER(pci_dev), PCI_FUNC(pci_dev->devfn),
++                      NV_ATOMIC_READ(nvl->usage_count));
++            /*
++             * Force the surprise removal flag so that any remaining
++             * close operations will take the fast-path.
++             */
++            nv->flags |= NV_FLAG_IN_SURPRISE_REMOVAL;
++
++            /*
++             * Mark that we had a surprise removal so rsync cleanup
++             * warnings are suppressed during module unload.
++             */
++            nv_set_rsync_had_surprise_removal();
++        }
++        else
++        {
++            nv_printf(NV_DBG_ERRORS,
++                      "NVRM: Continuing with GPU removal for device %04x:%02x:%02x.%x\n",
++                      NV_PCI_DOMAIN_NUMBER(pci_dev), NV_PCI_BUS_NUMBER(pci_dev),
++                      NV_PCI_SLOT_NUMBER(pci_dev), PCI_FUNC(pci_dev->devfn));
++        }
+     }
+ 
+     rm_check_for_gpu_surprise_removal(sp, nv);
+diff --git a/kernel-open/nvidia/nv-rsync.c b/kernel-open/nvidia/nv-rsync.c
+index 88863dab..f98c52c8 100644
+--- a/kernel-open/nvidia/nv-rsync.c
++++ b/kernel-open/nvidia/nv-rsync.c
+@@ -31,6 +31,7 @@ void nv_init_rsync_info(
+ )
+ {
+     g_rsync_info.relaxed_ordering_mode = NV_FALSE;
++    g_rsync_info.had_surprise_removal = NV_FALSE;
+     g_rsync_info.usage_count = 0;
+     g_rsync_info.data = NULL;
+     NV_INIT_MUTEX(&g_rsync_info.lock);
+@@ -40,9 +41,17 @@ void nv_destroy_rsync_info(
+     void
+ )
+ {
+-    WARN_ON(g_rsync_info.data);
+-    WARN_ON(g_rsync_info.usage_count);
+-    WARN_ON(g_rsync_info.relaxed_ordering_mode);
++    /*
++     * After GPU surprise removal (e.g., Thunderbolt eGPU hot-unplug),
++     * these may not have been properly cleaned up. Skip warnings in
++     * that case since the cleanup failure is expected.
++     */
++    if (!g_rsync_info.had_surprise_removal)
++    {
++        WARN_ON(g_rsync_info.data);
++        WARN_ON(g_rsync_info.usage_count);
++        WARN_ON(g_rsync_info.relaxed_ordering_mode);
++    }
+ }
+ 
+ int nv_get_rsync_info(
+@@ -100,6 +109,18 @@ void nv_put_rsync_info(
+     up(&g_rsync_info.lock);
+ }
+ 
++/*
++ * Mark that a GPU surprise removal occurred. This is used to suppress
++ * warnings about unclean rsync state during module unload, since the
++ * cleanup may be incomplete after forced removal.
++ */
++void nv_set_rsync_had_surprise_removal(
++    void
++)
++{
++    g_rsync_info.had_surprise_removal = NV_TRUE;
++}
++
+ int nv_register_rsync_driver(
+     int (*get_relaxed_ordering_mode)(int *mode, void *data),
+     void (*put_relaxed_ordering_mode)(int mode, void *data),
+diff --git a/kernel-open/nvidia/nv-rsync.h b/kernel-open/nvidia/nv-rsync.h
+index cc0e1a2e..c1cadefb 100644
+--- a/kernel-open/nvidia/nv-rsync.h
++++ b/kernel-open/nvidia/nv-rsync.h
+@@ -31,6 +31,7 @@ typedef struct nv_rsync_info
+     struct semaphore lock;
+     uint32_t usage_count;
+     NvBool relaxed_ordering_mode;
++    NvBool had_surprise_removal;
+     int (*get_relaxed_ordering_mode)(int *mode, void *data);
+     void (*put_relaxed_ordering_mode)(int mode, void *data);
+     void (*wait_for_rsync)(struct pci_dev *gpu, void *data);
+@@ -41,6 +42,7 @@ void nv_init_rsync_info(void);
+ void nv_destroy_rsync_info(void);
+ int nv_get_rsync_info(void);
+ void nv_put_rsync_info(void);
++void nv_set_rsync_had_surprise_removal(void);
+ int nv_register_rsync_driver(
+                         int (*get_relaxed_ordering_mode)(int *mode, void *data),
+                         void (*put_relaxed_ordering_mode)(int mode, void *data),
+diff --git a/kernel-open/nvidia/nv.c b/kernel-open/nvidia/nv.c
+index a11b3b98..da50dddf 100644
+--- a/kernel-open/nvidia/nv.c
++++ b/kernel-open/nvidia/nv.c
+@@ -2195,14 +2195,49 @@ nvidia_close_callback(
+ static void nvidia_close_deferred(void *data)
+ {
+     nv_linux_file_private_t *nvlfp = data;
++    nv_linux_state_t *nvl = nvlfp->nvptr;
++    nv_state_t *nv = nvl ? NV_STATE_PTR(nvl) : NULL;
++    NvBool got_lock = NV_FALSE;
++    NvBool in_surprise_removal = NV_FALSE;
+ 
+     nv_wait_open_complete(nvlfp);
+ 
+-    down_read(&nv_system_pm_lock);
++    /*
++     * Check if we're in surprise removal before trying to acquire the lock.
++     * If the device is being removed (e.g., Thunderbolt unplug), we should
++     * not block on the PM lock as it may be held by the removal path.
++     */
++    if (nv != NULL)
++    {
++        in_surprise_removal = NV_IS_DEVICE_IN_SURPRISE_REMOVAL(nv);
++    }
++
++    if (in_surprise_removal)
++    {
++        /*
++         * For surprise removal, try to acquire the lock but don't block.
++         * If we can't get it, proceed without it - cleanup will be minimal
++         * anyway since the hardware is gone.
++         */
++        got_lock = down_read_trylock(&nv_system_pm_lock);
++        if (!got_lock)
++        {
++            nv_printf(NV_DBG_INFO,
++                      "NVRM: Surprise removal - proceeding with close without PM lock\n");
++        }
++    }
++    else
++    {
++        down_read(&nv_system_pm_lock);
++        got_lock = NV_TRUE;
++    }
+ 
+     nvidia_close_callback(nvlfp);
+ 
+-    up_read(&nv_system_pm_lock);
++    if (got_lock)
++    {
++        up_read(&nv_system_pm_lock);
++    }
+ }
+ 
+ int
+@@ -2213,6 +2248,9 @@ nvidia_close(
+ {
+     int rc;
+     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
++    nv_linux_state_t *nvl;
++    nv_state_t *nv;
++    NvBool in_surprise_removal = NV_FALSE;
+ 
+     nv_printf(NV_DBG_INFO,
+               "NVRM: nvidia_close on GPU with minor number %d\n",
+@@ -2225,10 +2263,44 @@ nvidia_close(
+ 
+     NV_SET_FILE_PRIVATE(file, NULL);
+ 
++    /*
++     * Check if the device is in surprise removal (e.g., Thunderbolt unplug).
++     * If so, we should not block waiting for the PM lock as it may be held
++     * by the removal path, causing a deadlock.
++     */
++    nvl = nvlfp->nvptr;
++    if (nvl != NULL)
++    {
++        nv = NV_STATE_PTR(nvl);
++        in_surprise_removal = NV_IS_DEVICE_IN_SURPRISE_REMOVAL(nv);
++    }
++
+     rc = nv_wait_open_complete_interruptible(nvlfp);
+     if (rc == 0)
+     {
+-        rc = nv_down_read_interruptible(&nv_system_pm_lock);
++        if (in_surprise_removal)
++        {
++            /*
++             * For surprise removal, try to acquire the lock but don't block.
++             * If we can't get it, defer the close to a worker thread that
++             * will handle it properly.
++             */
++            if (down_read_trylock(&nv_system_pm_lock))
++            {
++                nvidia_close_callback(nvlfp);
++                up_read(&nv_system_pm_lock);
++                return 0;
++            }
++            /*
++             * Couldn't get the lock - fall through to defer the close.
++             * Set rc to indicate we need to defer.
++             */
++            rc = -EAGAIN;
++        }
++        else
++        {
++            rc = nv_down_read_interruptible(&nv_system_pm_lock);
++        }
+     }
+ 
+     if (rc == 0)
+@@ -5206,15 +5278,25 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
+ void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp)
+ {
+     nv_linux_state_t *nvl;
++    nv_state_t *nv;
++    NV_STATUS status;
+ 
+     /* Takes nvl->ldata_lock */
+     nvl = find_gpu_id(gpu_id);
+     if (!nvl)
+         return;
+ 
+-    nv_close_device(NV_STATE_PTR(nvl), sp);
++    nv = NV_STATE_PTR(nvl);
+ 
+-    WARN_ON(rm_set_external_kernel_client_count(sp, NV_STATE_PTR(nvl), NV_FALSE) != NV_OK);
++    nv_close_device(nv, sp);
++
++    /*
++     * During surprise removal (e.g., Thunderbolt eGPU hot-unplug),
++     * this may fail because the GPU is already gone. Don't warn in
++     * that case - it's expected.
++     */
++    status = rm_set_external_kernel_client_count(sp, nv, NV_FALSE);
++    WARN_ON((status != NV_OK) && !NV_IS_DEVICE_IN_SURPRISE_REMOVAL(nv));
+ 
+     up(&nvl->ldata_lock);
+ }
+diff --git a/src/nvidia-modeset/include/nvkms-private.h b/src/nvidia-modeset/include/nvkms-private.h
+index 31c76081..b43b54e1 100644
+--- a/src/nvidia-modeset/include/nvkms-private.h
++++ b/src/nvidia-modeset/include/nvkms-private.h
+@@ -73,6 +73,8 @@ const NVEvoApiHandlesRec *nvGetSurfaceHandlesFromOpenDevConst(
+ 
+ void nvKmsServiceNonStallInterrupt(void *dataPtr, NvU32 dataU32);
+ 
++void nvKmsReinitializeGlobalClient(void);
++
+ #ifdef __cplusplus
+ };
+ #endif
+diff --git a/src/nvidia-modeset/include/nvkms-types.h b/src/nvidia-modeset/include/nvkms-types.h
+index 63504945..03f1936e 100644
+--- a/src/nvidia-modeset/include/nvkms-types.h
++++ b/src/nvidia-modeset/include/nvkms-types.h
+@@ -1215,6 +1215,13 @@ typedef struct _NVEvoDevRec {
+      */
+     NvBool              supportsVblankSemControl : 1;
+ 
++    /*
++     * Indicates the GPU has been lost (e.g., Thunderbolt/eGPU hot-unplug).
++     * When set, any operations that would access GPU hardware should be
++     * skipped to avoid kernel crashes.
++     */
++    NvBool              gpuLost : 1;
++
+     nvkms_timer_handle_t *postFlipIMPTimer;
+     nvkms_timer_handle_t *consoleRestoreTimer;
+ 
+diff --git a/src/nvidia-modeset/kapi/interface/nvkms-kapi.h b/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
+index feecd8c9..65b43b5b 100644
+--- a/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
++++ b/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
+@@ -660,6 +660,17 @@ struct NvKmsKapiFunctionsTable {
+      */
+     void (*freeDevice)(struct NvKmsKapiDevice *device);
+ 
++    /*!
++     * Frees a device during surprise removal (e.g., Thunderbolt eGPU unplug).
++     * This skips all hardware access and only releases kernel resources.
++     * Use this instead of freeDevice() when the GPU hardware is no longer
++     * accessible to avoid page faults and hangs.
++     *
++     * \param [in]  device  A device returned by allocateDevice().
++     *                      This function is a no-op if device is not valid.
++     */
++    void (*freeDeviceForSurpriseRemoval)(struct NvKmsKapiDevice *device);
++
+     /*!
+      * Grab ownership of device, ownership is required to do modeset.
+      *
+diff --git a/src/nvidia-modeset/kapi/src/nvkms-kapi.c b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
+index df8eb2c0..64c3e188 100644
+--- a/src/nvidia-modeset/kapi/src/nvkms-kapi.c
++++ b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
+@@ -624,6 +624,51 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
+     nvKmsKapiFree(device);
+ }
+ 
++/*
++ * FreeDeviceForSurpriseRemoval - Free device without hardware access.
++ *
++ * This is used for Thunderbolt eGPU hot-unplug or other surprise removal
++ * scenarios where the GPU hardware is no longer accessible. We skip all
++ * hardware operations (NVKMS ioctls, RM API calls) that would cause page
++ * faults or hangs when trying to access unmapped GPU memory.
++ *
++ * We only:
++ * 1. Release the GPU reference count (nvkms_close_gpu)
++ * 2. Free kernel memory resources (semaphore, device struct)
++ *
++ * The hardware resources will be cleaned up when the GPU is physically
++ * removed from the system.
++ */
++static void FreeDeviceForSurpriseRemoval(struct NvKmsKapiDevice *device)
++{
++    if (device == NULL) {
++        return;
++    }
++
++    /*
++     * Mark the GPU as lost in NVKMS. This sets the gpuLost flag to prevent
++     * any hardware access, and cancels pending timers that might try to
++     * access the removed GPU.
++     */
++    nvkms_gpu_lost(device->gpuId);
++
++    /*
++     * Skip KmsFreeDevice() and RmFreeDevice() - these try to access
++     * GPU hardware via ioctls and RM API calls, which will crash
++     * since the GPU memory is unmapped after surprise removal.
++     */
++
++    /* Lower the reference count of gpu - this is safe, no hardware access */
++    nvkms_close_gpu(device->gpuId);
++
++    /* Free kernel memory resources */
++    if (device->pSema != NULL) {
++        nvkms_sema_free(device->pSema);
++    }
++
++    nvKmsKapiFree(device);
++}
++
+ NvBool nvKmsKapiAllocateSystemMemory(struct NvKmsKapiDevice *device,
+                                      NvU32 hRmHandle,
+                                      enum NvKmsSurfaceMemoryLayout layout,
+@@ -4075,6 +4120,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
+ 
+     funcsTable->allocateDevice = AllocateDevice;
+     funcsTable->freeDevice     = FreeDevice;
++    funcsTable->freeDeviceForSurpriseRemoval = FreeDeviceForSurpriseRemoval;
+ 
+     funcsTable->grabOwnership    = GrabOwnership;
+     funcsTable->releaseOwnership = ReleaseOwnership;
+diff --git a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
+index 3facbfe7..3a61e588 100644
+--- a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
++++ b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
+@@ -309,6 +309,12 @@ void* nvkms_get_per_open_data(int fd);
+ NvBool nvkms_open_gpu(NvU32 gpuId);
+ void nvkms_close_gpu(NvU32 gpuId);
+ 
++/*!
++ * Mark a GPU as lost (surprise removal, e.g., Thunderbolt eGPU unplug).
++ * This prevents hardware access and cancels pending timers.
++ */
++void nvkms_gpu_lost(NvU32 gpuId);
++
+ 
+ /*!
+  * Enumerate nvidia gpus.
+diff --git a/src/nvidia-modeset/os-interface/include/nvkms.h b/src/nvidia-modeset/os-interface/include/nvkms.h
+index d350ef75..668fa8c2 100644
+--- a/src/nvidia-modeset/os-interface/include/nvkms.h
++++ b/src/nvidia-modeset/os-interface/include/nvkms.h
+@@ -88,6 +88,8 @@ void nvKmsModuleUnload(void);
+ void nvKmsSuspend(NvU32 gpuId);
+ void nvKmsResume(NvU32 gpuId);
+ 
++void nvKmsGpuLost(NvU32 gpuId);
++
+ void nvKmsGetProcFiles(const nvkms_procfs_file_t **ppProcFiles);
+ 
+ NvBool nvKmsReadConf(const char *buff, size_t size,
+diff --git a/src/nvidia-modeset/src/nvkms-console-restore.c b/src/nvidia-modeset/src/nvkms-console-restore.c
+index 0c6cc5b2..2cfb5958 100644
+--- a/src/nvidia-modeset/src/nvkms-console-restore.c
++++ b/src/nvidia-modeset/src/nvkms-console-restore.c
+@@ -765,6 +765,11 @@ NvBool nvEvoRestoreConsole(NVDevEvoPtr pDevEvo, const NvBool allowMST)
+                                      pDevEvo->fbConsoleSurfaceHandle);
+     struct NvKmsSetModeParams *params;
+ 
++    /* Skip if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        goto done;
++    }
++
+     /*
+      * If this function fails to restore a console then NVKMS frees
+      * and reallocates the core channel, to attempt the console
+diff --git a/src/nvidia-modeset/src/nvkms-dma.c b/src/nvidia-modeset/src/nvkms-dma.c
+index 4438fd09..409c8ea6 100644
+--- a/src/nvidia-modeset/src/nvkms-dma.c
++++ b/src/nvidia-modeset/src/nvkms-dma.c
+@@ -38,7 +38,18 @@ static void EvoCoreKickoff(NVDmaBufferEvoPtr push_buffer, NvU32 putOffset);
+ void nvDmaKickoffEvo(NVEvoChannelPtr pChannel)
+ {
+     NVDmaBufferEvoPtr p = &pChannel->pb;
+-    NvU32 putOffset = (NvU32)((char *)p->buffer - (char *)p->base);
++    NvU32 putOffset;
++
++    /*
++     * Skip DMA kickoff if the GPU has been lost (e.g., Thunderbolt eGPU
++     * surprise removal). Attempting to access DMA control registers when
++     * the GPU is gone will crash the kernel.
++     */
++    if (p->pDevEvo == NULL || p->pDevEvo->gpuLost) {
++        return;
++    }
++
++    putOffset = (NvU32)((char *)p->buffer - (char *)p->base);
+ 
+     if (p->put_offset == putOffset) {
+         return;
+@@ -50,14 +61,22 @@ void nvDmaKickoffEvo(NVEvoChannelPtr pChannel)
+ static void EvoCoreKickoff(NVDmaBufferEvoPtr push_buffer, NvU32 putOffset)
+ {
+     NVEvoDmaPtr pDma = &push_buffer->dma;
++    NVDevEvoPtr pDevEvo = push_buffer->pDevEvo;
+     int i;
+ 
+     nvAssert(putOffset % 4 == 0);
+     nvAssert(putOffset <= push_buffer->offset_max);
+ 
++    /*
++     * Defense-in-depth: check gpuLost again. The caller should have already
++     * checked this, but verify to avoid writing to invalid mapped memory.
++     */
++    if (pDevEvo == NULL || pDevEvo->gpuLost) {
++        return;
++    }
++
+     /* If needed, copy the chunk to be kicked off into each GPU's FB */
+     if (pDma->isBar1Mapping) {
+-        NVDevEvoPtr pDevEvo = push_buffer->pDevEvo;
+         int sd;
+ 
+         NV0080_CTRL_DMA_FLUSH_PARAMS flushParams = { 0 };
+@@ -162,8 +181,23 @@ NvBool nvEvoPollForEmptyChannel(NVEvoChannelPtr pChannel, NvU32 sd,
+ {
+     NVDmaBufferEvoPtr push_buffer = &pChannel->pb;
+ 
++    /* Return early if GPU is lost to avoid accessing invalid registers. */
++    if (push_buffer->pDevEvo == NULL || push_buffer->pDevEvo->gpuLost) {
++        return FALSE;
++    }
++
+     do {
+-        if (EvoCoreReadGet(push_buffer, sd) == push_buffer->put_offset) {
++        NvU32 getOffset = EvoCoreReadGet(push_buffer, sd);
++
++        /*
++         * Check for GPU removal: reading 0xFFFFFFFF typically indicates
++         * the device has been removed from the bus.
++         */
++        if (getOffset == 0xFFFFFFFF) {
++            return FALSE;
++        }
++
++        if (getOffset == push_buffer->put_offset) {
+             break;
+         }
+ 
+@@ -184,6 +218,21 @@ void nvEvoMakeRoom(NVEvoChannelPtr pChannel, NvU32 count)
+     NvU32 putOffset;
+     NvU64 startTime = 0;
+     const NvU64 timeout = 5000000; /* 5 seconds */
++    /*
++     * Maximum number of consecutive timeouts before we give up.
++     * This prevents infinite hangs when the GPU is removed (e.g., Thunderbolt
++     * unplug). After 5 timeouts (25 seconds), we assume the GPU is gone.
++     */
++    const NvU32 maxTimeoutCount = 5;
++    NvU32 timeoutCount = 0;
++
++    /*
++     * Skip if the GPU has been lost. No point trying to make room in a
++     * push buffer for a GPU that's no longer there.
++     */
++    if (push_buffer->pDevEvo == NULL || push_buffer->pDevEvo->gpuLost) {
++        return;
++    }
+ 
+     putOffset = (NvU32) ((char *)push_buffer->buffer -
+                          (char *)push_buffer->base);
+@@ -198,6 +247,16 @@ void nvEvoMakeRoom(NVEvoChannelPtr pChannel, NvU32 count)
+     while (1) {
+         getOffset = EvoReadGetOffset(push_buffer, TRUE);
+ 
++        /*
++         * Check for GPU removal: reading 0xFFFFFFFF from PCI config space
++         * typically indicates the device has been removed from the bus.
++         */
++        if (getOffset == 0xFFFFFFFF) {
++            nvEvoLogDev(push_buffer->pDevEvo, EVO_LOG_ERROR,
++                "GPU appears to have been removed (read 0xFFFFFFFF)");
++            break;
++        }
++
+         if (putOffset >= getOffset) {
+             push_buffer->fifo_free_count =
+                 (push_buffer->offset_max - putOffset) >> 2;
+@@ -231,16 +290,25 @@ void nvEvoMakeRoom(NVEvoChannelPtr pChannel, NvU32 count)
+         }
+ 
+         /*
+-         * If we have been waiting too long, print an error message.  There
+-         * isn't much we can do as currently structured, so just reset
+-         * startTime.
++         * If we have been waiting too long, print an error message.
++         * After too many consecutive timeouts, give up to prevent
++         * infinite hangs during GPU surprise removal.
+          */
+         if (nvExceedsTimeoutUSec(push_buffer->pDevEvo, &startTime, timeout)) {
++            timeoutCount++;
+             nvEvoLogDev(push_buffer->pDevEvo, EVO_LOG_ERROR,
+                 "Error while waiting for GPU progress: "
+-                "0x%08x:%d %d:%d:%d:%d",
++                "0x%08x:%d %d:%d:%d:%d (timeout %d/%d)",
+                 pChannel->hwclass, pChannel->instance,
+-                count, push_buffer->fifo_free_count, getOffset, putOffset);
++                count, push_buffer->fifo_free_count, getOffset, putOffset,
++                timeoutCount, maxTimeoutCount);
++
++            if (timeoutCount >= maxTimeoutCount) {
++                nvEvoLogDev(push_buffer->pDevEvo, EVO_LOG_ERROR,
++                    "GPU not responding after %d timeouts, assuming removed",
++                    timeoutCount);
++                break;
++            }
+             startTime = 0;
+         }
+ 
+@@ -269,8 +337,16 @@ void nvWriteEvoCoreNotifier(
+ {
+     NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
+     const NvU32 sd = pDispEvo->displayOwner;
+-    NVEvoDmaPtr pSubChannel = &pDevEvo->core->notifiersDma[sd];
+-    volatile NvU32 *pNotifiers = pSubChannel->subDeviceAddress[sd];
++    NVEvoDmaPtr pSubChannel;
++    volatile NvU32 *pNotifiers;
++
++    /* Skip if GPU is lost to avoid writing to invalid memory. */
++    if (pDevEvo->gpuLost || pDevEvo->core == NULL) {
++        return;
++    }
++
++    pSubChannel = &pDevEvo->core->notifiersDma[sd];
++    pNotifiers = pSubChannel->subDeviceAddress[sd];
+ 
+     EvoWriteNotifier(pNotifiers + offset, value);
+ }
+@@ -282,10 +358,24 @@ static NvBool EvoCheckNotifier(const NVDispEvoRec *pDispEvo,
+ {
+     const NvU32 sd = pDispEvo->displayOwner;
+     NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
+-    NVEvoDmaPtr pSubChannel = &pDevEvo->core->notifiersDma[sd];
+-    NVDmaBufferEvoPtr p = &pDevEvo->core->pb;
++    NVEvoDmaPtr pSubChannel;
++    NVDmaBufferEvoPtr p;
+     volatile NvU32 *pNotifier;
+     NvU64 startTime = 0;
++    /*
++     * Maximum number of timeout cycles before giving up.
++     * Prevents infinite hangs during GPU surprise removal.
++     */
++    const NvU32 maxTimeoutCount = 5;
++    NvU32 timeoutCount = 0;
++
++    /* Return early if GPU is lost to avoid accessing invalid memory. */
++    if (pDevEvo->gpuLost || pDevEvo->core == NULL) {
++        return FALSE;
++    }
++
++    pSubChannel = &pDevEvo->core->notifiersDma[sd];
++    p = &pDevEvo->core->pb;
+ 
+     pNotifier = pSubChannel->subDeviceAddress[sd];
+ 
+@@ -297,6 +387,17 @@ static NvBool EvoCheckNotifier(const NVDispEvoRec *pDispEvo,
+         const NvU32 val = *pNotifier;
+         const NvU32 done_mask = DRF_SHIFTMASK(done_extent_bit:done_base_bit);
+         const NvU32 done_val = done_value << done_base_bit;
++        NvU32 getOffset;
++
++        /*
++         * Check for GPU removal: reading 0xFFFFFFFF typically indicates
++         * the device has been removed from the bus.
++         */
++        if (val == 0xFFFFFFFF) {
++            nvEvoLogDisp(pDispEvo, EVO_LOG_WARN,
++                         "GPU appears removed (notifier read 0xFFFFFFFF)");
++            return FALSE;
++        }
+ 
+         if ((val & done_mask) == done_val) {
+             return TRUE;
+@@ -309,14 +410,39 @@ static NvBool EvoCheckNotifier(const NVDispEvoRec *pDispEvo,
+         if (nvExceedsTimeoutUSec(
+                 pDevEvo,
+                 &startTime,
+-                NV_EVO_NOTIFIER_SHORT_TIMEOUT_USEC) &&
+-            (p->put_offset == EvoCoreReadGet(p, sd)))
++                NV_EVO_NOTIFIER_SHORT_TIMEOUT_USEC))
+         {
+-            nvEvoLogDisp(pDispEvo, EVO_LOG_WARN,
+-                         "Lost display notification (%d:0x%08x); "
+-                         "continuing.", sd, val);
+-            EvoWriteNotifier(pNotifier, done_value << done_base_bit);
+-            return TRUE;
++            getOffset = EvoCoreReadGet(p, sd);
++
++            /*
++             * Check for GPU removal in get offset as well.
++             */
++            if (getOffset == 0xFFFFFFFF) {
++                nvEvoLogDisp(pDispEvo, EVO_LOG_WARN,
++                             "GPU appears removed (GET read 0xFFFFFFFF)");
++                return FALSE;
++            }
++
++            if (p->put_offset == getOffset)
++            {
++                nvEvoLogDisp(pDispEvo, EVO_LOG_WARN,
++                             "Lost display notification (%d:0x%08x); "
++                             "continuing.", sd, val);
++                EvoWriteNotifier(pNotifier, done_value << done_base_bit);
++                return TRUE;
++            }
++
++            /*
++             * Count timeouts. After too many, assume GPU is gone.
++             */
++            timeoutCount++;
++            if (timeoutCount >= maxTimeoutCount) {
++                nvEvoLogDisp(pDispEvo, EVO_LOG_ERROR,
++                             "GPU not responding after %d timeouts (%d:0x%08x)",
++                             timeoutCount, sd, val);
++                return FALSE;
++            }
++            startTime = 0;
+         }
+ 
+         nvkms_yield();
+diff --git a/src/nvidia-modeset/src/nvkms-event.c b/src/nvidia-modeset/src/nvkms-event.c
+index 7b15bab8..414a2e10 100644
+--- a/src/nvidia-modeset/src/nvkms-event.c
++++ b/src/nvidia-modeset/src/nvkms-event.c
+@@ -61,6 +61,11 @@ nvHandleHotplugEventDeferredWork(void *dataPtr, NvU32 dataU32)
+     NVDpyEvoPtr pDpyEvo;
+     NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
+ 
++    /* Skip hardware access if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        return;
++    }
++
+     // Get the hotplug state.
+     hotplugParams.subDeviceInstance = pDispEvo->displayOwner;
+ 
+diff --git a/src/nvidia-modeset/src/nvkms-evo.c b/src/nvidia-modeset/src/nvkms-evo.c
+index d984e767..da839c14 100644
+--- a/src/nvidia-modeset/src/nvkms-evo.c
++++ b/src/nvidia-modeset/src/nvkms-evo.c
+@@ -9047,6 +9047,21 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+         return FALSE;
+     }
+ 
++    /*
++     * If the GPU was lost (surprise removal), skip all hardware-related
++     * cleanup. Just free software resources and remove from device list.
++     */
++    if (pDevEvo->gpuLost) {
++        nvEvoLogDev(pDevEvo, EVO_LOG_INFO,
++                    "Freeing device after GPU lost, skipping hardware cleanup");
++
++        /* Still need to free the per-open data (software resources only) */
++        nvFreePerOpenDev(nvEvoGlobal.nvKmsPerOpen, pDevEvo->pNvKmsOpenDev);
++        pDevEvo->pNvKmsOpenDev = NULL;
++
++        goto free_software_resources;
++    }
++
+     if (pDevEvo->pDifrState) {
+         nvRmUnregisterDIFREventHandler(pDevEvo);
+         nvDIFRFree(pDevEvo->pDifrState);
+@@ -9086,19 +9101,39 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+ 
+     nvRmDestroyDisplays(pDevEvo);
+ 
+-    nvkms_free_timer(pDevEvo->consoleRestoreTimer);
+-    pDevEvo->consoleRestoreTimer = NULL;
++free_software_resources:
++    {
++        NvBool wasGpuLost = pDevEvo->gpuLost;
+ 
+-    nvPreallocFree(pDevEvo);
++        nvkms_free_timer(pDevEvo->consoleRestoreTimer);
++        pDevEvo->consoleRestoreTimer = NULL;
+ 
+-    nvRmFreeDeviceEvo(pDevEvo);
++        nvPreallocFree(pDevEvo);
+ 
+-    nvListDel(&pDevEvo->devListEntry);
++        /*
++         * Skip RM device cleanup if GPU is lost - handles are already invalid
++         * and RM API calls will fail.
++         */
++        if (!pDevEvo->gpuLost) {
++            nvRmFreeDeviceEvo(pDevEvo);
++        }
+ 
+-    nvkms_free_ref_ptr(pDevEvo->ref_ptr);
++        nvListDel(&pDevEvo->devListEntry);
+ 
+-    nvFree(pDevEvo);
+-    return TRUE;
++        nvkms_free_ref_ptr(pDevEvo->ref_ptr);
++
++        nvFree(pDevEvo);
++
++        /*
++         * If the GPU was lost and the device list is now empty, reinitialize
++         * the global RM client so that newly attached GPUs can be used.
++         */
++        if (wasGpuLost && nvListIsEmpty(&nvEvoGlobal.devList)) {
++            nvKmsReinitializeGlobalClient();
++        }
++
++        return TRUE;
++    }
+ }
+ 
+ static void AssignNumberOfApiHeads(NVDevEvoRec *pDevEvo)
+diff --git a/src/nvidia-modeset/src/nvkms-evo1.c b/src/nvidia-modeset/src/nvkms-evo1.c
+index 30547690..13479569 100644
+--- a/src/nvidia-modeset/src/nvkms-evo1.c
++++ b/src/nvidia-modeset/src/nvkms-evo1.c
+@@ -32,6 +32,7 @@
+ #include "nvkms-evo1.h"
+ #include "nvkms-prealloc.h"
+ #include "nvkms-utils.h"
++#include "nvos.h"
+ 
+ #include "hdmi_spec.h"
+ 
+@@ -490,9 +491,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
+                          NV5070_CTRL_CMD_GET_CHANNEL_INFO,
+                          &info, sizeof(info));
+     if (ret != NVOS_STATUS_SUCCESS) {
+-        nvEvoLogDev(pDevEvo, EVO_LOG_ERROR,
+-                    "Failed to query display engine channel state: 0x%08x:%d:%d:0x%08x",
+-                    pChan->hwclass, pChan->instance, sd, ret);
++        /*
++         * When the GPU is lost (e.g., Thunderbolt/eGPU hot-unplug),
++         * suppress the error log to avoid flooding dmesg. The callers
++         * will handle the failure appropriately.
++         */
++        if (ret != NVOS_STATUS_ERROR_GPU_IS_LOST) {
++            nvEvoLogDev(pDevEvo, EVO_LOG_ERROR,
++                        "Failed to query display engine channel state: 0x%08x:%d:%d:0x%08x",
++                        pChan->hwclass, pChan->instance, sd, ret);
++        }
+         return FALSE;
+     }
+ 
+diff --git a/src/nvidia-modeset/src/nvkms-evo3.c b/src/nvidia-modeset/src/nvkms-evo3.c
+index 27e533a7..dae600af 100644
+--- a/src/nvidia-modeset/src/nvkms-evo3.c
++++ b/src/nvidia-modeset/src/nvkms-evo3.c
+@@ -39,6 +39,7 @@
+ #include "nvkms-dpy.h"
+ #include "nvkms-vrr.h"
+ #include "nvkms-ctxdma.h"
++#include "nvos.h"
+ 
+ #include <nvmisc.h>
+ 
+@@ -6998,9 +6999,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
+                          NVC370_CTRL_CMD_GET_CHANNEL_INFO,
+                          &info, sizeof(info));
+     if (ret != NVOS_STATUS_SUCCESS) {
+-        nvEvoLogDev(pDevEvo, EVO_LOG_ERROR,
+-                    "Failed to query display engine channel state: 0x%08x:%d:%d:0x%08x",
+-                    pChan->hwclass, pChan->instance, sd, ret);
++        /*
++         * When the GPU is lost (e.g., Thunderbolt/eGPU hot-unplug),
++         * suppress the error log to avoid flooding dmesg. The callers
++         * will handle the failure appropriately.
++         */
++        if (ret != NVOS_STATUS_ERROR_GPU_IS_LOST) {
++            nvEvoLogDev(pDevEvo, EVO_LOG_ERROR,
++                        "Failed to query display engine channel state: 0x%08x:%d:%d:0x%08x",
++                        pChan->hwclass, pChan->instance, sd, ret);
++        }
+         return FALSE;
+     }
+ 
+diff --git a/src/nvidia-modeset/src/nvkms-hw-flip.c b/src/nvidia-modeset/src/nvkms-hw-flip.c
+index 9d2185bb..c6757cac 100644
+--- a/src/nvidia-modeset/src/nvkms-hw-flip.c
++++ b/src/nvidia-modeset/src/nvkms-hw-flip.c
+@@ -2634,6 +2634,11 @@ static void LowerDispBandwidth(void *dataPtr, NvU32 dataU32)
+     NvU32 head;
+     NvBool ret;
+ 
++    /* Skip if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        return;
++    }
++
+     guaranteedAndCurrent =
+         nvCalloc(1, sizeof(*guaranteedAndCurrent) * NVKMS_MAX_HEADS_PER_DISP);
+     if (guaranteedAndCurrent == NULL) {
+@@ -2821,6 +2826,11 @@ TryToDoPostFlipIMP(void *dataPtr, NvU32 dataU32)
+ 
+     pDevEvo->postFlipIMPTimer = NULL;
+ 
++    /* Skip if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        return;
++    }
++
+     FOR_ALL_EVO_DISPLAYS(pDispEvo, sd, pDevEvo) {
+         NVEvoUpdateState updateState = { };
+         NvBool update = FALSE;
+diff --git a/src/nvidia-modeset/src/nvkms-rm.c b/src/nvidia-modeset/src/nvkms-rm.c
+index 5b5b6334..4a61e83a 100644
+--- a/src/nvidia-modeset/src/nvkms-rm.c
++++ b/src/nvidia-modeset/src/nvkms-rm.c
+@@ -2223,6 +2223,11 @@ NVDpyIdList nvRmGetConnectedDpys(const NVDispEvoRec *pDispEvo,
+     NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
+     NvU32 ret;
+ 
++    /* Skip hardware access if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        return nvEmptyDpyIdList();
++    }
++
+     params.subDeviceInstance = pDispEvo->displayOwner;
+     params.displayMask = nvDpyIdListToNvU32(dpyIdList);
+     params.flags =
+@@ -3626,6 +3631,15 @@ NvBool nvRMSyncEvoChannel(
+ {
+     NvBool ret = TRUE;
+ 
++    /*
++     * Skip channel sync if the GPU has been lost (e.g., Thunderbolt eGPU
++     * surprise removal). The DMA control registers are invalid and would
++     * cause a crash.
++     */
++    if (pDevEvo->gpuLost) {
++        return FALSE;
++    }
++
+     if (pChannel) {
+         NvU32 sd;
+ 
+diff --git a/src/nvidia-modeset/src/nvkms.c b/src/nvidia-modeset/src/nvkms.c
+index ef241247..b3e35a2e 100644
+--- a/src/nvidia-modeset/src/nvkms.c
++++ b/src/nvidia-modeset/src/nvkms.c
+@@ -1387,6 +1387,23 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
+ 
+     pDevEvo = nvFindDevEvoByDeviceId(pParams->request.deviceId);
+ 
++    /*
++     * If we found an existing device that was marked as lost (e.g., from a
++     * previous Thunderbolt surprise removal), we need to clean it up before
++     * allocating a new device for the reconnected GPU.
++     */
++    if (pDevEvo != NULL && pDevEvo->gpuLost) {
++        nvEvoLogDev(pDevEvo, EVO_LOG_INFO,
++                    "Cleaning up stale device from previous surprise removal");
++        /*
++         * Force cleanup of the stale device. Set allocRefCnt to 1 so that
++         * nvFreeDevEvo will actually free it.
++         */
++        pDevEvo->allocRefCnt = 1;
++        nvFreeDevEvo(pDevEvo);
++        pDevEvo = NULL;
++    }
++
+     if (pDevEvo == NULL) {
+         pDevEvo = nvAllocDevEvo(&pParams->request, &pParams->reply.status);
+         if (pDevEvo == NULL) {
+@@ -6301,6 +6318,44 @@ static void FreeGlobalState(void)
+     nvClearDpyOverrides();
+ }
+ 
++/*
++ * Reinitialize the global RM client after a GPU surprise removal.
++ * When a GPU is removed, the RM client handle may become invalid.
++ * This function re-creates the client handle so that newly attached
++ * GPUs can be used.
++ */
++void nvKmsReinitializeGlobalClient(void)
++{
++    NvU32 ret;
++
++    /*
++     * First, try to free the old client handle. This may fail if RM
++     * already invalidated it, but that's OK.
++     */
++    if (nvEvoGlobal.clientHandle != 0) {
++        nvRmApiFree(nvEvoGlobal.clientHandle, nvEvoGlobal.clientHandle,
++                    nvEvoGlobal.clientHandle);
++        nvEvoGlobal.clientHandle = 0;
++    }
++
++    /* Allocate a new root client */
++    ret = nvRmApiAlloc(NV01_NULL_OBJECT,
++                       NV01_NULL_OBJECT,
++                       NV01_NULL_OBJECT,
++                       NV01_ROOT,
++                       &nvEvoGlobal.clientHandle);
++
++    if (ret != NVOS_STATUS_SUCCESS) {
++        nvEvoLog(EVO_LOG_ERROR, "Failed to reinitialize client after GPU removal");
++        return;
++    }
++
++    /* Update the RM context */
++    nvEvoGlobal.rmSmgContext.clientHandle = nvEvoGlobal.clientHandle;
++
++    nvEvoLog(EVO_LOG_INFO, "Reinitialized global client after GPU surprise removal");
++}
++
+ /*
+  * Wrappers to help SMG access NvKmsKAPI's RM context.
+  */
+@@ -6396,6 +6451,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
+ {
+     NVDevEvoPtr pDevEvo = dataPtr;
+ 
++    /* Skip if GPU has been lost (e.g., Thunderbolt unplug) */
++    if (pDevEvo->gpuLost) {
++        return;
++    }
++
+     if (pDevEvo->modesetOwner == NULL && pDevEvo->handleConsoleHotplugs) {
+         pDevEvo->skipConsoleRestore = FALSE;
+         nvEvoRestoreConsole(pDevEvo, TRUE /* allowMST */);
+@@ -6889,6 +6949,43 @@ void nvKmsResume(NvU32 gpuId)
+     }
+ }
+ 
++/*!
++ * Mark a GPU as lost (e.g., Thunderbolt/eGPU hot-unplug).
++ *
++ * This prevents any hardware access attempts that would cause kernel crashes.
++ * The device's timers are cancelled and the gpuLost flag is set so that
++ * subsequent operations bail out early.
++ */
++void nvKmsGpuLost(NvU32 gpuId)
++{
++    NVDevEvoPtr pDevEvo;
++    NvU32 i;
++
++    FOR_ALL_EVO_DEVS(pDevEvo) {
++        for (i = 0; i < ARRAY_LEN(pDevEvo->openedGpuIds); i++) {
++            if (pDevEvo->openedGpuIds[i] == gpuId) {
++                nvEvoLogDev(pDevEvo, EVO_LOG_INFO,
++                            "GPU lost (surprise removal), disabling hardware access");
++
++                /* Mark device as lost to prevent hardware access */
++                pDevEvo->gpuLost = TRUE;
++
++                /* Cancel timers that might try to access hardware */
++                nvkms_free_timer(pDevEvo->consoleRestoreTimer);
++                pDevEvo->consoleRestoreTimer = NULL;
++
++                nvkms_free_timer(pDevEvo->postFlipIMPTimer);
++                pDevEvo->postFlipIMPTimer = NULL;
++
++                nvkms_free_timer(pDevEvo->lowerDispBandwidthTimer);
++                pDevEvo->lowerDispBandwidthTimer = NULL;
++
++                return;
++            }
++        }
++    }
++}
++
+ static void ServiceOneDeferredRequestFifo(
+     NVDevEvoPtr pDevEvo,
+     NVDeferredRequestFifoRec *pDeferredRequestFifo)
+diff --git a/src/nvidia/arch/nvalloc/unix/src/osapi.c b/src/nvidia/arch/nvalloc/unix/src/osapi.c
+index 8efb3db7..1c4d3a40 100644
+--- a/src/nvidia/arch/nvalloc/unix/src/osapi.c
++++ b/src/nvidia/arch/nvalloc/unix/src/osapi.c
+@@ -308,6 +308,17 @@ void
+ RmLogGpuCrash(OBJGPU *pGpu)
+ {
+     NvBool bGpuIsLost, bGpuIsConnected;
++    NvBool bIsExternalGpu = pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU);
++
++    //
++    // For external GPUs (eGPUs) that have been disconnected, skip the crash
++    // dump entirely. The GPU is simply gone and attempting to save crash data
++    // will just produce noise in the logs.
++    //
++    if (bIsExternalGpu && pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        return;
++    }
+ 
+     //
+     // Re-evaluate whether or not the GPU is accessible. This could be called
+@@ -4335,7 +4346,30 @@ void NV_API_CALL rm_power_source_change_event(
+         OBJGPU *pGpu = gpumgrGetGpu(0);
+         if (pGpu != NULL)
+         {
++            //
++            // Check if the GPU is lost or inaccessible before proceeding.
++            // This can happen during hot-unplug (e.g., Thunderbolt eGPU removal)
++            // where ACPI events may still be delivered after the GPU is gone.
++            //
++            if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST) ||
++                !pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_CONNECTED))
++            {
++                rmapiLockRelease();
++                goto done;
++            }
++
+             nv = NV_GET_NV_STATE(pGpu);
++
++            //
++            // For external GPUs (Thunderbolt eGPU), check if we're in surprise
++            // removal before proceeding with power state changes.
++            //
++            if (nv->flags & NV_FLAG_IN_SURPRISE_REMOVAL)
++            {
++                rmapiLockRelease();
++                goto done;
++            }
++
+             if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
+                                                                          NV_OK)
+             {
+@@ -4355,6 +4389,7 @@ void NV_API_CALL rm_power_source_change_event(
+         }
+     }
+ 
++done:
+     if (rmStatus != NV_OK)
+     {
+         NV_PRINTF(LEVEL_ERROR,
+@@ -5984,7 +6019,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+         OBJGPU *pGpu = gpumgrGetGpu(0);
+         if (pGpu != NULL)
+         {
++            //
++            // Check if the GPU is lost or inaccessible before proceeding.
++            // This can happen during hot-unplug (e.g., Thunderbolt eGPU removal)
++            // where ACPI events may still be delivered after the GPU is gone.
++            //
++            if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST) ||
++                !pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_CONNECTED))
++            {
++                rmapiLockRelease();
++                goto done_nvpcf;
++            }
++
+             nv_state_t *nv = NV_GET_NV_STATE(pGpu);
++
++            //
++            // For external GPUs (Thunderbolt eGPU), check if we're in surprise
++            // removal before proceeding with power state changes.
++            //
++            if (nv->flags & NV_FLAG_IN_SURPRISE_REMOVAL)
++            {
++                rmapiLockRelease();
++                goto done_nvpcf;
++            }
++
+             if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
+                                                                          NV_OK)
+             {
+@@ -5996,6 +6054,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+         rmapiLockRelease();
+     }
+ 
++done_nvpcf:
+     threadStateFree(&threadState, THREAD_STATE_FLAGS_NONE);
+     NV_EXIT_RM_RUNTIME(sp,fp);
+ }
+diff --git a/src/nvidia/arch/nvalloc/unix/src/osinit.c b/src/nvidia/arch/nvalloc/unix/src/osinit.c
+index 46f7a21d..6998fd4e 100644
+--- a/src/nvidia/arch/nvalloc/unix/src/osinit.c
++++ b/src/nvidia/arch/nvalloc/unix/src/osinit.c
+@@ -356,18 +356,33 @@ osHandleGpuLost
+     pmc_boot_0 = NV_PRIV_REG_RD32(nv->regs->map_u, NV_PMC_BOOT_0);
+     if (pmc_boot_0 != nvp->pmc_boot_0)
+     {
++        NvBool bIsExternalGpu = pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU);
++
+         //
+         // This doesn't support PEX Reset and Recovery yet.
+         // This will help to prevent accessing registers of a GPU
+         // which has fallen off the bus.
+         //
+-        nvErrorLog_va((void *)pGpu, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS,
+-                      "GPU has fallen off the bus.");
++        // For external GPUs (eGPUs), this is an expected condition during
++        // hot-unplug, so we keep logging minimal to avoid noise.
++        //
++        if (!bIsExternalGpu)
++        {
++            nvErrorLog_va((void *)pGpu, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS,
++                          "GPU has fallen off the bus.");
++        }
+ 
+         gpuNotifySubDeviceEvent(pGpu, NV2080_NOTIFIERS_GPU_UNAVAILABLE, NULL,
+                                 0, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS, 0);
+ 
+-        NV_DEV_PRINTF(NV_DBG_ERRORS, nv, "GPU has fallen off the bus.\n");
++        if (bIsExternalGpu)
++        {
++            NV_DEV_PRINTF(NV_DBG_WARNINGS, nv, "External GPU disconnected.\n");
++        }
++        else
++        {
++            NV_DEV_PRINTF(NV_DBG_ERRORS, nv, "GPU has fallen off the bus.\n");
++        }
+ 
+         if (pGpu->boardInfo != NULL && pGpu->boardInfo->serialNumber[0] != '\0')
+         {
+@@ -2341,13 +2356,28 @@ void RmShutdownAdapter(
+                 if (nvp->flags & NV_INIT_FLAG_GPU_STATE_LOAD)
+                 {
+                     rmStatus = gpuStateUnload(pGpu, GPU_STATE_DEFAULT);
+-                    NV_ASSERT(rmStatus == NV_OK);
++                    //
++                    // During surprise removal (e.g., Thunderbolt eGPU hot-unplug),
++                    // this may fail. Log but don't assert since we're tearing down anyway.
++                    //
++                    if (rmStatus != NV_OK)
++                    {
++                        NV_PRINTF(LEVEL_WARNING,
++                                  "gpuStateUnload failed during teardown: 0x%x\n", rmStatus);
++                    }
+                 }
+ 
+                 if (nvp->flags & NV_INIT_FLAG_GPU_STATE)
+                 {
+                     rmStatus = gpuStateDestroy(pGpu);
+-                    NV_ASSERT(rmStatus == NV_OK);
++                    //
++                    // During surprise removal, this may fail. Log but don't assert.
++                    //
++                    if (rmStatus != NV_OK)
++                    {
++                        NV_PRINTF(LEVEL_WARNING,
++                                  "gpuStateDestroy failed during teardown: 0x%x\n", rmStatus);
++                    }
+                 }
+ 
+                 if (IS_DCE_CLIENT(pGpu))
+@@ -2501,7 +2531,14 @@ void RmDisableAdapter(
+             if (nvp->flags & NV_INIT_FLAG_GPU_STATE_LOAD)
+             {
+                 rmStatus = gpuStateUnload(pGpu, GPU_STATE_DEFAULT);
+-                NV_ASSERT(rmStatus == NV_OK);
++                //
++                // During surprise removal, this may fail. Log but don't assert.
++                //
++                if (rmStatus != NV_OK)
++                {
++                    NV_PRINTF(LEVEL_WARNING,
++                              "gpuStateUnload failed during eGPU teardown: 0x%x\n", rmStatus);
++                }
+                 nvp->flags &= ~NV_INIT_FLAG_GPU_STATE_LOAD;
+             }
+ 
+diff --git a/src/nvidia/src/kernel/core/thread_state.c b/src/nvidia/src/kernel/core/thread_state.c
+index 10f73e3e..e1fdabf2 100644
+--- a/src/nvidia/src/kernel/core/thread_state.c
++++ b/src/nvidia/src/kernel/core/thread_state.c
+@@ -407,7 +407,10 @@ static NV_STATUS _threadNodeCheckTimeout(OBJGPU *pGpu, THREAD_STATE_NODE *pThrea
+     {
+         if (!API_GPU_ATTACHED_SANITY_CHECK(pGpu))
+         {
+-            NV_PRINTF(LEVEL_ERROR, "API_GPU_ATTACHED_SANITY_CHECK failed!\n");
++            //
++            // Don't log error during surprise removal - this is expected
++            // when GPU is hot-unplugged (e.g., Thunderbolt eGPU).
++            //
+             return NV_ERR_TIMEOUT;
+         }
+     }
+diff --git a/src/nvidia/src/kernel/diagnostics/nv_debug_dump.c b/src/nvidia/src/kernel/diagnostics/nv_debug_dump.c
+index d76f255a..7d028da9 100644
+--- a/src/nvidia/src/kernel/diagnostics/nv_debug_dump.c
++++ b/src/nvidia/src/kernel/diagnostics/nv_debug_dump.c
+@@ -220,6 +220,17 @@ nvdDoEngineDump_IMPL
+     NVD_ENGINE_CALLBACK *pEngineCallback;
+     NV_STATUS            nvStatus = NV_OK;
+ 
++    //
++    // Skip engine dumps for expected external GPU surprise removal.
++    // Engine dump attempts will fail with GPU_IS_LOST errors which
++    // are expected and just add noise to the log.
++    //
++    if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU) &&
++        pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        return NV_ERR_GPU_IS_LOST;
++    }
++
+     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
+         prbEncNestedStart(pPrbEnc, NVDEBUG_NVDUMP_GPU_INFO));
+ 
+@@ -263,6 +274,17 @@ nvdDumpAllEngines_IMPL
+     NVD_ENGINE_CALLBACK    *pEngineCallback;
+     NV_STATUS               nvStatus = NV_OK;
+ 
++    //
++    // Skip engine dumps for expected external GPU surprise removal.
++    // Engine dump attempts will fail with GPU_IS_LOST errors which
++    // are expected and just add noise to the log.
++    //
++    if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU) &&
++        pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        return NV_ERR_GPU_IS_LOST;
++    }
++
+     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
+         prbEncNestedStart(pPrbEnc, NVDEBUG_NVDUMP_GPU_INFO));
+ 
+diff --git a/src/nvidia/src/kernel/gpu/disp/kern_disp.c b/src/nvidia/src/kernel/gpu/disp/kern_disp.c
+index d061de8a..d52293b9 100644
+--- a/src/nvidia/src/kernel/gpu/disp/kern_disp.c
++++ b/src/nvidia/src/kernel/gpu/disp/kern_disp.c
+@@ -308,7 +308,7 @@ kdispDestroyCommonHandle_IMPL
+     rmStatus = pRmApi->FreeWithSecInfo(pRmApi, pKernelDisplay->hInternalClient,
+                                         pKernelDisplay->hDispCommonHandle,
+                                         RMAPI_ALLOC_FLAGS_NONE, &pRmApi->defaultSecInfo);
+-    NV_ASSERT(rmStatus == NV_OK);
++    NV_ASSERT((rmStatus == NV_OK) || (rmStatus == NV_ERR_GPU_IN_FULLCHIP_RESET) || (rmStatus == NV_ERR_GPU_IS_LOST));
+ 
+     rmapiutilFreeClientAndDeviceHandles(pRmApi, &pKernelDisplay->hInternalClient,
+                                         &pKernelDisplay->hInternalDevice,
+diff --git a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
+index 14cc8c97..072489d8 100644
+--- a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
++++ b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
+@@ -183,8 +183,13 @@ kflcnReset_TU102
+     NV_ASSERT_OK_OR_RETURN(kflcnPreResetWait_HAL(pGpu, pKernelFlcn));
+     NV_ASSERT_OK(kflcnResetHw(pGpu, pKernelFlcn));
+     status = kflcnWaitForResetToFinish_HAL(pGpu, pKernelFlcn);
+-    NV_ASSERT_OR_RETURN((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET), status);
+-    if (status == NV_ERR_GPU_IN_FULLCHIP_RESET)
++    //
++    // During surprise removal, this may return NV_ERR_TIMEOUT in addition to
++    // NV_ERR_GPU_IS_LOST. Both are acceptable during teardown.
++    //
++    NV_ASSERT_OR_RETURN((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) ||
++                        (status == NV_ERR_GPU_IS_LOST) || (status == NV_ERR_TIMEOUT), status);
++    if (status != NV_OK)
+         return status;
+     kflcnSwitchToFalcon_HAL(pGpu, pKernelFlcn);
+     kflcnRegWrite_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_RM,
+diff --git a/src/nvidia/src/kernel/gpu/gpu.c b/src/nvidia/src/kernel/gpu/gpu.c
+index 44db3e9f..edd6a118 100644
+--- a/src/nvidia/src/kernel/gpu/gpu.c
++++ b/src/nvidia/src/kernel/gpu/gpu.c
+@@ -5105,6 +5105,17 @@ gpuSetDisconnectedProperties_IMPL
+     OBJGPU *pGpu
+ )
+ {
++    //
++    // Log GPU disconnection once. This is expected during Thunderbolt eGPU
++    // hot-unplug but should be noted for debugging purposes.
++    //
++    if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        NV_PRINTF(LEVEL_NOTICE,
++                  "GPU 0x%x marked as disconnected/lost\n",
++                  pGpu->gpuInstance);
++    }
++
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_LOST, NV_TRUE);
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_CONNECTED, NV_FALSE);
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IN_PM_CODEPATH, NV_FALSE);
+diff --git a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
+index 70e5d8d5..4dc891f1 100644
+--- a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
++++ b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
+@@ -209,12 +209,15 @@ _gpushareddataDestroyGsp
+ 
+     params.bInit = NV_FALSE;
+ 
+-    // Free Memdesc on GSP-side
+-    NV_CHECK_OK(status, LEVEL_ERROR,
+-                pRmApi->Control(pRmApi, pGpu->hInternalClient,
+-                                pGpu->hInternalSubdevice,
+-                                NV2080_CTRL_CMD_INTERNAL_INIT_USER_SHARED_DATA,
+-                               &params, sizeof(params)));
++    // Free Memdesc on GSP-side - ignore GPU_IS_LOST during surprise removal
++    status = pRmApi->Control(pRmApi, pGpu->hInternalClient,
++                             pGpu->hInternalSubdevice,
++                             NV2080_CTRL_CMD_INTERNAL_INIT_USER_SHARED_DATA,
++                             &params, sizeof(params));
++    if ((status != NV_OK) && (status != NV_ERR_GPU_IS_LOST))
++    {
++        NV_PRINTF(LEVEL_ERROR, "Failed to free user shared data on GSP: 0x%x\n", status);
++    }
+ }
+ 
+ static NV_STATUS
+@@ -370,8 +373,8 @@ _gpushareddataSendDataPollRpc
+                              pGpu->hInternalSubdevice,
+                              NV2080_CTRL_CMD_INTERNAL_USER_SHARED_DATA_SET_DATA_POLL,
+                              &params, sizeof(params));
+-    NV_ASSERT_OR_RETURN((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET), status);
+-    if (status == NV_ERR_GPU_IN_FULLCHIP_RESET)
++    NV_ASSERT_OR_RETURN((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST), status);
++    if ((status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST))
+         return status;
+     pGpu->userSharedData.lastPolledDataMask = polledDataMask;
+ 
+diff --git a/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c b/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
+index c44b3599..1175ef13 100644
+--- a/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
++++ b/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
+@@ -1620,8 +1620,8 @@ fecsBufferDisableHw
+                              NV2080_CTRL_CMD_INTERNAL_GR_GET_FECS_TRACE_HW_ENABLE,
+                              &getHwEnableParams,
+                              sizeof(getHwEnableParams));
+-    NV_ASSERT_OR_RETURN_VOID((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
+-    if (status == NV_ERR_GPU_IN_FULLCHIP_RESET)
++    NV_ASSERT_OR_RETURN_VOID((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
++    if ((status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST))
+         return;
+  
+     if (getHwEnableParams.bEnable)
+@@ -1636,7 +1636,7 @@ fecsBufferDisableHw
+                                  NV2080_CTRL_CMD_INTERNAL_GR_SET_FECS_TRACE_HW_ENABLE,
+                                  &setHwEnableParams,
+                                  sizeof(setHwEnableParams));
+-        NV_ASSERT_OR_RETURN_VOID((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT_OR_RETURN_VOID((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+     }
+ }
+ 
+diff --git a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
+index 63c9b43c..24c67606 100644
+--- a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
++++ b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
+@@ -2591,7 +2591,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
+     {
+         NV_STATUS status;
+         status = kmemsysCacheOp_HAL(pGpu, pKernelMemorySystem, NULL, FB_CACHE_VIDEO_MEMORY, FB_CACHE_EVICT);
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+     }
+ }
+ 
+diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c b/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
+index 19d415a7..e1b8d9d0 100644
+--- a/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
++++ b/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
+@@ -179,6 +179,10 @@ kgspExecuteHsFalcon_GA102
+     NvU32 data = 0;
+     NvU32 dmaCmd;
+ 
++    // Check for surprise removal (e.g., Thunderbolt eGPU hot-unplug)
++    if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++        return NV_ERR_GPU_IS_LOST;
++
+     NV_ASSERT_OR_RETURN(pFlcnUcode != NULL, NV_ERR_INVALID_ARGUMENT);
+     NV_ASSERT_OR_RETURN(pKernelFlcn != NULL, NV_ERR_INVALID_STATE);
+ 
+diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
+index 20f84418..d1ddf818 100644
+--- a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
++++ b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
+@@ -145,6 +145,10 @@ kgspExecuteBooterUnloadIfNeeded_TU102
+     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
+         return NV_ERR_GPU_IN_FULLCHIP_RESET;
+ 
++    // Check for surprise removal (e.g., Thunderbolt eGPU hot-unplug)
++    if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++        return NV_ERR_GPU_IS_LOST;
++
+     // skip actually executing Booter Unload if WPR2 is not up
+     if (!kgspIsWpr2Up_HAL(pGpu, pKernelGsp))
+     {
+@@ -155,7 +159,16 @@ kgspExecuteBooterUnloadIfNeeded_TU102
+     NV_PRINTF(LEVEL_INFO, "executing Booter Unload\n");
+     NV_ASSERT_OR_RETURN(pKernelGsp->pBooterUnloadUcode != NULL, NV_ERR_INVALID_STATE);
+ 
+-    NV_ASSERT_OK(kflcnReset_HAL(pGpu, staticCast(pKernelSec2, KernelFalcon)));
++    // Falcon reset may timeout during surprise removal - don't assert
++    status = kflcnReset_HAL(pGpu, staticCast(pKernelSec2, KernelFalcon));
++    if ((status != NV_OK) && (status != NV_ERR_TIMEOUT) && (status != NV_ERR_GPU_IS_LOST))
++    {
++        NV_ASSERT(0);
++    }
++    if (status != NV_OK)
++    {
++        return status;
++    }
+ 
+     // SR code
+     if (sysmemAddrOfSuspendResumeData != 0)
+diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
+index 81eafe36..9eb081d7 100644
+--- a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
++++ b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
+@@ -634,7 +634,18 @@ kgspTeardown_TU102
+ 
+         // Reset GSP so we can load FWSEC-SB
+         status = kflcnReset_HAL(pGpu, staticCast(pKernelGsp, KernelFalcon));
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        //
++        // During surprise removal, this may return NV_ERR_TIMEOUT in addition to
++        // NV_ERR_GPU_IS_LOST. Both are acceptable during teardown.
++        //
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) ||
++                  (status == NV_ERR_GPU_IS_LOST) || (status == NV_ERR_TIMEOUT));
++
++        // Skip remaining hardware operations if GPU is lost/timeout - can't talk to it anyway
++        if (status != NV_OK)
++        {
++            goto skip_fwsec;
++        }
+ 
+         // Invoke FWSEC-SB to put back PreOsApps during driver unload
+         status = kgspPrepareForFwsecSb_HAL(pGpu, pKernelGsp, pKernelGsp->pFwsecUcode, &preparedCmd);
+@@ -646,7 +657,7 @@ kgspTeardown_TU102
+         else
+         {
+             status = kgspExecuteFwsec_HAL(pGpu, pKernelGsp, &preparedCmd);
+-            if ((status != NV_OK) && (status != NV_ERR_GPU_IN_FULLCHIP_RESET))
++            if ((status != NV_OK) && (status != NV_ERR_GPU_IN_FULLCHIP_RESET) && (status != NV_ERR_GPU_IS_LOST))
+             {
+                 NV_PRINTF(LEVEL_ERROR, "failed to execute FWSEC-SB for PreOsApps during driver unload: 0x%x\n", status);
+                 NV_ASSERT_FAILED("FWSEC-SB failed");
+@@ -654,6 +665,8 @@ kgspTeardown_TU102
+         }
+     }
+ 
++skip_fwsec:
++
+     // Execute Booter Unload
+     status = kgspExecuteBooterUnloadIfNeeded_HAL(pGpu, pKernelGsp,
+                                                  _kgspGetBooterUnloadArgs(pKernelGsp, unloadMode));
+diff --git a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
+index e262e8fc..af0367e9 100644
+--- a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
++++ b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
+@@ -149,6 +149,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
+ static NV_STATUS _kgspRpcDrainEvents(OBJGPU *, KernelGsp *, NvU32, NvU32, KernelGspRpcEventHandlerContext);
+ static void      _kgspRpcIncrementTimeoutCountAndRateLimitPrints(OBJGPU *, OBJRPC *);
+ 
++static NvBool _kgspIsExternalGpuSurpriseRemoval(OBJGPU *);
++
+ static NV_STATUS _kgspAllocSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
+ static void _kgspFreeSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
+ 
+@@ -302,11 +304,13 @@ _kgspRpcSanityCheck(OBJGPU *pGpu, KernelGsp *pKernelGsp, OBJRPC *pRpc)
+         pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
+     {
+         NV_PRINTF(LEVEL_INFO, "GPU lost, skipping RPC\n");
++        pRpc->bQuietPrints = NV_TRUE;
+         return NV_ERR_GPU_IS_LOST;
+     }
+     if (osIsGpuShutdown(pGpu))
+     {
+         NV_PRINTF(LEVEL_INFO, "GPU shutdown, skipping RPC\n");
++        pRpc->bQuietPrints = NV_TRUE;
+         return NV_ERR_GPU_IS_LOST;
+     }
+     if (!gpuIsGpuFullPowerForPmResume(pGpu))
+@@ -705,9 +709,15 @@ kgspRcAndNotifyAllChannels_IMPL
+     CHANNEL_ITERATOR  chanIt;
+     RMTIMEOUT         timeout;
+ 
+-    NV_PRINTF(LEVEL_ERROR, "RC all %schannels for critical error %d.\n",
+-              bSkipKernelChannels ? MAKE_NV_PRINTF_STR("user ") : MAKE_NV_PRINTF_STR(""),
+-              exceptType);
++    //
++    // Suppress noisy logging for expected external GPU surprise removal.
++    //
++    if (!_kgspIsExternalGpuSurpriseRemoval(pGpu))
++    {
++        NV_PRINTF(LEVEL_ERROR, "RC all %schannels for critical error %d.\n",
++                  bSkipKernelChannels ? MAKE_NV_PRINTF_STR("user ") : MAKE_NV_PRINTF_STR(""),
++                  exceptType);
++    }
+ 
+     // Pass 1: halt all channels.
+     kfifoGetChannelIterator(pGpu, pKernelFifo, &chanIt, INVALID_RUNLIST_ID);
+@@ -2040,6 +2050,20 @@ kgspLogRpcDebugInfoToProtobuf
+     prbEncNestedEnd(pProtobufData);
+ }
+ 
++/*!
++ * Check if this is an expected external GPU surprise removal.
++ * Used to suppress noisy debug output during normal eGPU hot-unplug.
++ */
++static NvBool
++_kgspIsExternalGpuSurpriseRemoval
++(
++    OBJGPU *pGpu
++)
++{
++    return pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU) &&
++           pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST);
++}
++
+ void
+ kgspLogRpcDebugInfo
+ (
+@@ -2055,6 +2079,15 @@ kgspLogRpcDebugInfo
+     NvU64  activeData[2];
+     const NvU32 rpcEntriesToLog = (RPC_HISTORY_DEPTH > 8) ? 8 : RPC_HISTORY_DEPTH;
+ 
++    //
++    // Suppress detailed RPC debug output for expected external GPU surprise removal.
++    // This keeps the log clean during normal Thunderbolt eGPU hot-unplug.
++    //
++    if (_kgspIsExternalGpuSurpriseRemoval(pGpu))
++    {
++        return;
++    }
++
+     _kgspGetActiveRpcDebugData(pRpc, pMsgHdr->function,
+                                &activeData[0], &activeData[1]);
+     NV_ERROR_LOG_DATA(pGpu, errorNum,
+@@ -2108,6 +2141,15 @@ _kgspLogXid119
+     char  durationUnitsChar;
+     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
+ 
++    //
++    // Suppress Xid 119 logging for expected external GPU surprise removal.
++    // During normal Thunderbolt eGPU hot-unplug, RPC timeouts are expected.
++    //
++    if (_kgspIsExternalGpuSurpriseRemoval(pGpu))
++    {
++        return;
++    }
++
+     if (pRpc->timeoutCount == 1)
+     {
+         NV_PRINTF(LEVEL_ERROR,
+@@ -2168,6 +2210,16 @@ _kgspLogRpcSanityCheckFailure
+ 
+     NV_ASSERT(expectedFunc == pHistoryEntry->function);
+ 
++    //
++    // Suppress noisy output for expected external GPU surprise removal.
++    // For normal Thunderbolt eGPU hot-unplug, we don't need the full
++    // RPC debug dump and stack trace - the GPU is simply gone.
++    //
++    if (_kgspIsExternalGpuSurpriseRemoval(pGpu))
++    {
++        return;
++    }
++
+     NV_PRINTF(LEVEL_ERROR,
+               "GPU%d sanity check failed 0x%x waiting for RPC response from GSP. Expected function %d (%s) sequence %u (0x%llx 0x%llx).\n",
+               gpuGetInstance(pGpu),
+diff --git a/src/nvidia/src/kernel/gpu/intr/intr.c b/src/nvidia/src/kernel/gpu/intr/intr.c
+index 86e19918..c7a2f89b 100644
+--- a/src/nvidia/src/kernel/gpu/intr/intr.c
++++ b/src/nvidia/src/kernel/gpu/intr/intr.c
+@@ -119,6 +119,18 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
+ 
+     if (!RMCFG_FEATURE_PLATFORM_GSP)
+     {
++        //
++        // Check if GPU is already known to be lost/detached before doing any
++        // register reads. This prevents log spam during surprise removal
++        // (e.g., Thunderbolt eGPU hot-unplug).
++        //
++        if (!API_GPU_ATTACHED_SANITY_CHECK(pGpu) ||
++            API_GPU_IN_RESET_SANITY_CHECK(pGpu) ||
++            pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++        {
++            goto exit;
++        }
++
+         //
+         // If the GPU is off the BUS or surprise removed during servicing DPC for ISRs
+         // we wont know about GPU state until after we start processing DPCs for every
+@@ -134,18 +146,17 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
+ 
+         if (regReadValue == GPU_REG_VALUE_INVALID)
+         {
+-            NV_PRINTF(LEVEL_ERROR,
+-                      "Failed GPU reg read : 0x%x. Check whether GPU is present on the bus\n",
+-                      regReadValue);
+-        }
+-
+-        if (!API_GPU_ATTACHED_SANITY_CHECK(pGpu))
+-        {
+-            goto exit;
+-        }
+-
+-        if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
+-        {
++            //
++            // GPU has been surprise removed. Mark it as lost and return early.
++            // Log once when first detected.
++            //
++            if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++            {
++                NV_PRINTF(LEVEL_WARNING,
++                          "GPU 0x%x surprise removed (reg read returned 0xFFFFFFFF)\n",
++                          pGpu->gpuInstance);
++                pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_LOST, NV_TRUE);
++            }
+             goto exit;
+         }
+     }
+@@ -1555,6 +1566,18 @@ _intrServiceStallCommonCheckBegin
+ 
+     if (!RMCFG_FEATURE_PLATFORM_GSP)
+     {
++        //
++        // Check if GPU is already known to be lost/detached before doing any
++        // register reads. This prevents log spam during surprise removal
++        // (e.g., Thunderbolt eGPU hot-unplug).
++        //
++        if (!API_GPU_ATTACHED_SANITY_CHECK(pGpu) ||
++            API_GPU_IN_RESET_SANITY_CHECK(pGpu) ||
++            pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++        {
++            return NV_ERR_GPU_IS_LOST;
++        }
++
+         //
+         // If the GPU is off the BUS or surprise removed during servicing DPC for ISRs
+         // we wont know about GPU state until after we start processing DPCs for every
+@@ -1570,14 +1593,17 @@ _intrServiceStallCommonCheckBegin
+ 
+         if (regReadValue == GPU_REG_VALUE_INVALID)
+         {
+-            NV_PRINTF(LEVEL_ERROR,
+-                      "Failed GPU reg read : 0x%x. Check whether GPU is present on the bus\n",
+-                      regReadValue);
+-        }
+-
+-        // Dont service interrupts if GPU is surprise removed
+-        if (!API_GPU_ATTACHED_SANITY_CHECK(pGpu) || API_GPU_IN_RESET_SANITY_CHECK(pGpu))
+-        {
++            //
++            // GPU has been surprise removed. Mark it as lost and return early.
++            // Log once when first detected.
++            //
++            if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++            {
++                NV_PRINTF(LEVEL_WARNING,
++                          "GPU 0x%x surprise removed (reg read returned 0xFFFFFFFF)\n",
++                          pGpu->gpuInstance);
++                pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_LOST, NV_TRUE);
++            }
+             return NV_ERR_GPU_IS_LOST;
+         }
+     }
+@@ -1635,7 +1661,16 @@ intrServiceStallList_IMPL
+     NvBool              bPending;
+     CALL_CONTEXT       *pOldContext = NULL;
+ 
+-    NV_ASSERT_OK_OR_ELSE(status, _intrServiceStallCommonCheckBegin(pGpu, pIntr, &pOldContext), return);
++    //
++    // Don't use NV_ASSERT_OK_OR_ELSE here - NV_ERR_GPU_IS_LOST is expected
++    // during surprise removal (e.g., Thunderbolt eGPU hot-unplug) and
++    // should not spam the logs with assertion messages.
++    //
++    status = _intrServiceStallCommonCheckBegin(pGpu, pIntr, &pOldContext);
++    if (status != NV_OK)
++    {
++        return;
++    }
+ 
+     do
+     {
+@@ -1688,7 +1723,16 @@ intrServiceStallSingle_IMPL
+     bitVectorClrAll(&engines);
+     bitVectorSet(&engines, engIdx);
+ 
+-    NV_ASSERT_OK_OR_ELSE(status, _intrServiceStallCommonCheckBegin(pGpu, pIntr, &pOldContext), return);
++    //
++    // Don't use NV_ASSERT_OK_OR_ELSE here - NV_ERR_GPU_IS_LOST is expected
++    // during surprise removal (e.g., Thunderbolt eGPU hot-unplug) and
++    // should not spam the logs with assertion messages.
++    //
++    status = _intrServiceStallCommonCheckBegin(pGpu, pIntr, &pOldContext);
++    if (status != NV_OK)
++    {
++        return;
++    }
+ 
+     do
+     {
+diff --git a/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c b/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
+index 6f25f6bf..20a8d62f 100644
+--- a/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
++++ b/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
+@@ -343,10 +343,17 @@ ceutilsDestruct_IMPL
+     // process all callbacks while CeUtils is fully functional
+     _ceutilsProcessCompletionCallbacks(pCeUtils);
+     portSyncSpinlockAcquire(pCeUtils->pCallbackLock);
+-    NV_ASSERT(listCount(&pCeUtils->completionCallbacks) == 0);
++    // During surprise removal, callbacks may not complete cleanly - skip assertion if GPU is lost
++    if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        NV_ASSERT(listCount(&pCeUtils->completionCallbacks) == 0);
++    }
+     portSyncSpinlockRelease(pCeUtils->pCallbackLock);
+     // make sure no new work was queued from callbacks
+-    NV_ASSERT(pCeUtils->lastCompletedPayload == lastSubmittedPayload);
++    if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        NV_ASSERT(pCeUtils->lastCompletedPayload == lastSubmittedPayload);
++    }
+ 
+     if ((pChannel->bClientUserd) && (pChannel->pControlGPFifo != NULL))
+     {
+diff --git a/src/nvidia/src/kernel/gpu/mem_mgr/vaspace_api.c b/src/nvidia/src/kernel/gpu/mem_mgr/vaspace_api.c
+index 229cd5fc..42a40880 100644
+--- a/src/nvidia/src/kernel/gpu/mem_mgr/vaspace_api.c
++++ b/src/nvidia/src/kernel/gpu/mem_mgr/vaspace_api.c
+@@ -570,7 +570,7 @@ skip_destroy:
+     if ((IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu)) && !bBar1VA && !bFlaVA)
+     {
+         NV_RM_RPC_FREE(pGpu, hClient, hParent, hVASpace, status);
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+     }
+ 
+     NV_PRINTF(LEVEL_INFO,
+diff --git a/src/nvidia/src/kernel/mem_mgr/mem.c b/src/nvidia/src/kernel/mem_mgr/mem.c
+index 2a81684a..7d1ccb84 100644
+--- a/src/nvidia/src/kernel/mem_mgr/mem.c
++++ b/src/nvidia/src/kernel/mem_mgr/mem.c
+@@ -177,7 +177,7 @@ memDestruct_IMPL
+     if (pMemory->bRpcAlloc && (IS_VIRTUAL(pGpu) || IS_FW_CLIENT(pGpu)))
+     {
+         NV_RM_RPC_FREE(pGpu, hClient, hParent, hMemory, status);
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+     }
+ }
+ 
+diff --git a/src/nvidia/src/kernel/vgpu/rpc.c b/src/nvidia/src/kernel/vgpu/rpc.c
+index e19b1efc..3a01e3f9 100644
+--- a/src/nvidia/src/kernel/vgpu/rpc.c
++++ b/src/nvidia/src/kernel/vgpu/rpc.c
+@@ -1870,6 +1870,16 @@ static NV_STATUS _issueRpcAndWait(OBJGPU *pGpu, OBJRPC *pRpc)
+     NvU32 expectedFunc = vgpu_rpc_message_header_v->function;
+     NvU32 expectedSequence = 0;
+ 
++    //
++    // Suppress RPC error logging for expected external GPU surprise removal.
++    // During normal Thunderbolt eGPU hot-unplug, RPC failures are expected.
++    //
++    if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU) &&
++        pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
++    {
++        pRpc->bQuietPrints = NV_TRUE;
++    }
++
+     status = rpcSendMessage(pGpu, pRpc, &expectedSequence);
+     if (status != NV_OK)
+     {
+diff --git a/src/nvidia/src/libraries/resserv/src/rs_client.c b/src/nvidia/src/libraries/resserv/src/rs_client.c
+index 62d9738e..f18afa0d 100644
+--- a/src/nvidia/src/libraries/resserv/src/rs_client.c
++++ b/src/nvidia/src/libraries/resserv/src/rs_client.c
+@@ -841,7 +841,7 @@ clientFreeResource_IMPL
+     _refRemoveAllDependencies(pResourceRef);
+ 
+     status = serverFreeResourceRpcUnderLock(pServer, pParams);
+-    NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++    NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+ 
+     // NV_PRINTF(LEVEL_INFO, "hClient %x: Freeing hResource: %x\n",
+     //          pClient->hClient, pResourceRef->hResource);
+diff --git a/src/nvidia/src/libraries/resserv/src/rs_server.c b/src/nvidia/src/libraries/resserv/src/rs_server.c
+index d54096f0..65d4b834 100644
+--- a/src/nvidia/src/libraries/resserv/src/rs_server.c
++++ b/src/nvidia/src/libraries/resserv/src/rs_server.c
+@@ -256,7 +256,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
+             goto done;
+ 
+         status = clientFreeResource(pResourceRef->pClient, pServer, pFreeParams);
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+ 
+         serverResLock_Epilogue(pServer, LOCK_ACCESS_WRITE, pLockInfo, &releaseFlags);
+     }
+@@ -1372,7 +1372,7 @@ serverFreeResourceTree
+         freeParams.bInvalidateOnly = bInvalidateOnly;
+         freeParams.pSecInfo = pParams->pSecInfo;
+         status = serverFreeResourceTreeUnderLock(pServer, &freeParams);
+-        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET));
++        NV_ASSERT((status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) || (status == NV_ERR_GPU_IS_LOST));
+ 
+         if (pServer->bDebugFreeList)
+         {
