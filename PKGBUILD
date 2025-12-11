@@ -1,35 +1,39 @@
-# Maintainer: <tjmnkrajyej at gmail dot com>
-_gh() {
-    curl -s "https://api.github.com/repos/$1" | awk -F '"' "/\"$2\":/{print \$4; exit}"
-}
+# Maintainer: Emerold <emerald-foe-manor at duck dot com>
+# Contributor: Muhammad <tjmnkrajyej at gmail dot com>
 
-_repository=DanielGavin/ols
-_odindate="`_gh odin-lang/Odin/releases/latest created_at`"
-read -r _commit <<< "`_gh "$_repository/commits?per_page=1&until=$_odindate" sha`"
-
-pkgname=odinls
-pkgver=2024_08_01
+pkgname=odinls-git
+_pkgname_no_git="${pkgname%-*}"
+pkgver=dev_2025_11.r38.g465e4b4
 pkgrel=1
-pkgdesc='ols: language server for Odin'
-arch=(x86_64)
-url=https://github.com/$_repository
-license=(MIT)
-makedepends=(git)
-depends=(odin)
-options=('!lto')
-source=(git+$url#commit=$_commit)
+pkgdesc='ols: Language server for Odin'
+arch=('x86_64')
+url='https://github.com/DanielGavin/ols'
+license=('MIT')
+depends=('odin')
+makedepends=('git')
+optdepends=('odinfmt: Odin source code formatter')
+provides=("$_pkgname_no_git=$pkgver")
+conflicts=("$_pkgname_no_git")
+options=(!lto)
+source=("$_pkgname_no_git::git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
-    cd ols
-    git log -1 --format=%cs | tr - _
+    cd "$_pkgname_no_git/"
+    git describe --long --abbrev=7 | sed 's/-\([^-]*\)-g/.r\1.g/;s/-/_/g'
 }
 
 build() {
-    cd ols
+    cd "$_pkgname_no_git/"
     ./build.sh
 }
 
 package() {
-    install -D ols/ols "$pkgdir/usr/bin/ols"
+    cd "$_pkgname_no_git/"
+    install -Dm755 ols "$pkgdir/usr/lib/$_pkgname_no_git/ols"
+    install -Dm644 -t "$pkgdir/usr/lib/$_pkgname_no_git/builtin/" builtin/*
+    install -dm755 "$pkgdir/usr/bin/"
+    # symlink in /usr/bin
+    ln -s "/usr/lib/$_pkgname_no_git/ols" "$pkgdir/usr/bin/$_pkgname_no_git"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname_no_git/LICENSE"
 }
