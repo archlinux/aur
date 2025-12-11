@@ -1,11 +1,11 @@
-# Maintainer: Ilya Fedin <ilya-fedin@outlook.com>
+# Maintainer: Mikhail Chikishev <ylont34@gmail.com>
 
 pkgname=libtgvoip
 pkgver=2.4.4
-pkgrel=6
+pkgrel=7
 pkgdesc="VoIP library for Telegram clients"
 arch=(x86_64)
-url="https://github.com/telegramdesktop/libtgvoip"
+url="https://github.com/blackteahamburger/libtgvoip/tree/tdesktop"
 license=(Unlicense)
 makedepends=(alsa-lib libpulse)
 depends=(openssl opus)
@@ -28,13 +28,15 @@ prepare() {
 	cd "$srcdir/$pkgname-${_commit}"
 	patch -p1 < "$srcdir/11bc9089ad136b713190e0e8f5b484cba9ad495c.patch"
 	patch -R -p1 < "$srcdir/6e82b6e45664c1f80b9039256c99bebc76d34672.patch"
+	sed -i '/#include "modules\/audio_processing\/utility\/ooura_fft.h"/a #include <cstdint>' webrtc_dsp/modules/audio_processing/aec/aec_core.h
+	sed -i '/#include "modules\/audio_processing\/aec\/aec_core.h"/a #include <cstdint>' webrtc_dsp/modules/audio_processing/aec/echo_cancellation.h
 }
 
 build() {
 	cd "$srcdir/$pkgname-${_commit}"
 	autoreconf -i
 	./configure --prefix=/usr
-	make
+	make -j$(nproc)
 }
 
 package() {
