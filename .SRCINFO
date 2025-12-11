@@ -13,6 +13,6 @@ pkgbase = pyvideokit
 	depends = ffmpeg
 	depends = sox
 	source = PyVideoKit-0.1.0.tar.gz::https://github.com/Evilchuck666/PyVideoKit/archive/v0.1.0.tar.gz
-	md5sums = c144df4555504d19932c7d6d687138ce
+	md5sums = 1e54979ed861041ec143c7505288c03d
 
 pkgname = pyvideokit
