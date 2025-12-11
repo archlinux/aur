@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lqth-git
 _pkgname=lqth
-pkgver=0.2.2.r15.g2c5c076
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="Simple but blazingly fast screenshot utility"
