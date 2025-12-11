@@ -12,5 +12,5 @@ source=("https://github.com/GeekyVed/news-aur/releases/download/v1.0/news-v1.0.t
 sha256sums=('91150e83286278260de0b6838ee4ce5e9eaaf98671efe8bc9916a3a513f0503f')
     
 package() {
-    install -Dm755 "${srcdir}/news-v1.0/news.py" "${pkgdir}/usr/bin/news"
+    install -Dm755 "${srcdir}/news-aur/news.py" "${pkgdir}/usr/bin/news"
 }
