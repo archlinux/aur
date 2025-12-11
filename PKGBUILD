@@ -1,7 +1,7 @@
 # Maintainer: Jannify <Jannify at outlook dot com>
 
 pkgver=1.8.0.1
-pkgrel=1
+pkgrel=2
 sha256sums=("8f3a39de6e4bbe631b3653e467c292aff57c01a320cdf446a96906357f281899"
             "9c726e2440a7ad241bbf9f846731d28986d94aa0a0ee609ef1842992aa8fceb0")
 _dotnet_version=9.0
@@ -14,11 +14,11 @@ provides=("nitrox")
 
 arch=("x86_64" "aarch64")
 depends=(
-  "dotnet-runtime>=${_dotnet_version}"
+  "dotnet-runtime-${_dotnet_version}"
   "fontconfig" "libx11" "libice" "libsm"  # Avalonia
 )
 optdepends=('hicolor-icon-theme: freedesktop icon support')
-makedepends=("git" "dotnet-sdk>=${_dotnet_version}" "imagemagick")
+makedepends=("git" "dotnet-sdk-${_dotnet_version}" "imagemagick")
 source=("Nitrox-${pkgver}::git+${url}#tag=${pkgver}" "nitrox.desktop")
 options=('!strip' 'staticlibs')
 
@@ -37,6 +37,8 @@ prepare() {
   fi
 
   cd "${srcdir}/Nitrox-${pkgver}"
+  # Fix for tag 1.8.0.1 being unbuildable, checkouts commit with fix
+  git checkout afc7fb780a59cd863e2e07b34303d549cc8bd910
   dotnet restore --locked-mode Nitrox.sln --runtime ${nitrox_runtime}
 }
 
