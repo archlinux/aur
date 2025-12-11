@@ -2,7 +2,7 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
-sha256sums=('5dd1edf4c8f3201613fd9a35bbd3cece9e0c64c98f153f120b12e622a46b19fe'
+sha256sums=('5545dc5b92e4dcfd43ac535661870632d5270ea9cdb06f95c7b35e857d878962'
             'SKIP'
             'SKIP'
             'SKIP'
