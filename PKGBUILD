@@ -33,10 +33,10 @@ package() {
     done
     install -Dm644 default.jsonc "$pkgdir/usr/share/rustffetch/default.jsonc"
 
-    # /etc/skel/.config do usuário
-    install -d "$pkgdir/etc/skel/.config/rustffetch/distros"
+    # /etc/skel/.config
+    install -d "$pkgdir/etc/skel/.config/rustffetch/distro"
     for f in distro/*; do
-        install -Dm644 "$f" "$pkgdir/etc/skel/.config/rustffetch/distros/$(basename "$f")"
+        install -Dm644 "$f" "$pkgdir/etc/skel/.config/rustffetch/distro/$(basename "$f")"
     done
     install -Dm644 default.jsonc "$pkgdir/etc/skel/.config/rustffetch/default.jsonc"
 }
