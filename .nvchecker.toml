@@ -1,0 +1,4 @@
+[stump]
+source = "git"
+git = "https://github.com/stumpapp/stump.git"
+prefix = "v"

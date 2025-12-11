@@ -1,0 +1,3 @@
+u stump - "Stump Server" /var/lib/stump
+g media -
+m stump media

@@ -1,0 +1,23 @@
+pkgbase = stump
+	pkgdesc = A free and open source comics, manga and digital book server with OPDS support
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/stumpapp/stump
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = yarn
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = stump-0.0.12.tar.gz::https://github.com/stumpapp/stump/archive/refs/tags/v0.0.12.tar.gz
+	source = stump.service
+	source = stump.sysusers
+	source = stump.tmpfiles
+	sha256sums = 6a93cf4aa70db7d978c476d268d766a054482afccb7160f5e24351309276d2c5
+	sha256sums = 0acbaeaeec495b4ae9e55401edb4d1f395fb3b2edc68d8c41f0d9fffe925f0ea
+	sha256sums = da29676564e82d6b642b433156e679055d776c790f61356b64a0a5d65be476ef
+	sha256sums = 366d457de40ce59aa50fe860a21b8db2db84a8fd48fc2a68f38b0eff2ec73dcc
+
+pkgname = stump

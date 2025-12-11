@@ -1,0 +1,4 @@
+d /var/lib/stump            0755 stump media
+L /etc/stump/Stump.toml     - - - - /var/lib/stump/Stump.toml
+L /var/log/stump/Stump.log  - - - - /var/lib/stump/Stump.log
+

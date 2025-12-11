@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!stump.service
+!stump.sysusers
+!stump.tmpfiles

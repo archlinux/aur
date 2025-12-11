@@ -1,0 +1,21 @@
+[Unit]
+Description=Stump Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stump
+Group=media
+UMask=002
+Environment=STUMP_VERBOSITY=1
+Environment=STUMP_CLIENT_DIR=/usr/share/stump/dist
+Environment=STUMP_CONFIG_DIR=/var/lib/stump
+Environment=PDFIUM_PATH=/usr/lib/libpdfium.so
+ExecStart=/usr/bin/stump_server
+SyslogIdentifier=stump
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
