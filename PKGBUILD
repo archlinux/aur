@@ -1,13 +1,13 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-25
-pkgver=3.0.25.523+0.1.0.62
+pkgver=3.0.25.526+0.1.0.64
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
 url="https://aptivi.github.io"
 license=('GPL-3.0-or-later')
-depends=('dotnet-runtime-8.0' 'tzdata')
-makedepends=('git' 'dotnet-sdk-8.0' 'make' 'which')
+depends=('dotnet-runtime-10.0' 'tzdata')
+makedepends=('git' 'dotnet-sdk-10.0' 'make' 'which')
 optdepends=('jack2: Jack support for BassBoom addon'
 			'portaudio: PortAudio support for BassBoom addon'
 			'openal: OpenAL support for BassBoom addon'
@@ -16,7 +16,7 @@ optdepends=('jack2: Jack support for BassBoom addon'
 provides=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
 conflicts=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
 options=('!strip')
-source=("${pkgname}::git+https://gitlab.com/aptivi/main/Nitrocid#tag=v0.1.0.62")
+source=("${pkgname}::git+https://gitlab.com/aptivi/main/Nitrocid#tag=v0.1.0.64")
 sha256sums=('SKIP')
 
 prepare() {
