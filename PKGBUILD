@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.25.5
+pkgver=1.25.7
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
