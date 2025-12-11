@@ -1,16 +1,12 @@
 pkgbase = samplo-clap-bin
-	pkgdesc = Headless Rust CLAP sfz instrument loader (basic)
-	pkgver = 0.9.0
+	pkgdesc = Headless Rust CLAP sfz instrument loader
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/mlm-games/samplo-clap
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	optdepends = clap-host: A CLAP host to load the plugin (not required by yadaw)
-	provides = samplo-clap
-	conflicts = samplo-clap
-	options = !strip
-	source = Samplo-0.9.0.clap::https://github.com/mlm-games/samplo-clap/releases/download/v0.9.0/Samplo-linux.clap
-	sha256sums = 2a81b31d4e00d06564dfc367dd1b0c3daddcca3fcf8b0358c4dab2bb7b0fc685
+	source = Samplo-1.2.4.clap::https://github.com/mlm-games/samplo-clap/releases/download/v1.2.4/Samplo-linux.clap
+	sha256sums = 3e4479e7754c5830473b8f456f67d616c760716b8b018182e035545c92a61b59
 
 pkgname = samplo-clap-bin
