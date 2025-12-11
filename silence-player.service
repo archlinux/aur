@@ -1,0 +1,8 @@
+[Unit]
+Description=Silence Player Daemon
+
+[Service]
+ExecStart=/usr/bin/silence-player
+
+[Install]
+WantedBy=default.target
