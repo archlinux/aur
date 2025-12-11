@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-common
-pkgver=12.13.1.1
-pkgrel=3
+pkgver=12.14.1.1
+pkgrel=1
 pkgdesc="Shared files for HeidiSQL (wrapper script, locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -14,8 +14,8 @@ source=(
   heidisql
 )
 noextract=("${_deb_filename}")
-sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5'
-            'e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122'
+sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
+            '71deecca25c2bc2050b7cb721cc5e5333fc523c8e259c463fbb77b1245b014ac'
             '46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb')
 
 prepare() {
@@ -51,15 +51,15 @@ package() {
       [ -f "$mo_file" ] && install -Dm644 "$mo_file" "${pkgdir}/usr/share/heidisql/locale/$(basename "$mo_file")"
     done
     
-    # Create symlinks for both qt6 and gtk2 variants
-    # The app looks for .mo files matching the executable basename
-    for mo_file in extra/locale/heidisql.*.mo; do
-      if [ -f "$mo_file" ]; then
-        lang_code=$(basename "$mo_file" | sed 's/^heidisql\.//' | sed 's/\.mo$//')
-        ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-qt6.${lang_code}.mo"
-        ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-gtk2.${lang_code}.mo"
-      fi
-    done
+    # # Create symlinks for both qt6 and gtk2 variants
+    # # The app looks for .mo files matching the executable basename
+    # for mo_file in extra/locale/heidisql.*.mo; do
+    #   if [ -f "$mo_file" ]; then
+    #     lang_code=$(basename "$mo_file" | sed 's/^heidisql\.//' | sed 's/\.mo$//')
+    #     ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-qt6.${lang_code}.mo"
+    #     ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-gtk2.${lang_code}.mo"
+    #   fi
+    # done
   fi
   
   # Install shared ini files
