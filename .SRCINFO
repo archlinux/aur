@@ -1,6 +1,6 @@
 pkgbase = pianoteq-trial-bin
 	pkgdesc = Physical modelling piano instrument standalone program, VST3 and LV2 plugin. Trial version
-	pkgver = 9.0.3
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://www.modartt.com/pianoteq
 	arch = aarch64
@@ -26,9 +26,9 @@ pkgbase = pianoteq-trial-bin
 	conflicts = pianoteq-standard-bin
 	conflicts = pianoteq-standard-trial-bin
 	conflicts = pianoteq-stage-trial-bin
-	source = local://pianoteq_trial_v903.tar.xz
+	source = local://pianoteq_trial_v910.tar.xz
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	sha256sums = 50b454b86731f511a1de5cff258f21751216f674bb699aaef431c7a50cbdb05e
+	sha256sums = c02053545299ecd9792041c5237bf27df550755b4dac6dc52e9c61eaff47e847
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq-trial-bin
