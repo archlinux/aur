@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="handy-bin"
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
@@ -24,7 +24,7 @@ depends=(
 )
 source=("$pkgname-$pkgver.deb::https://github.com/cjpais/Handy/releases/download/v${pkgver}/Handy_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/cjpais/Handy/refs/heads/main/LICENSE")
-b2sums=('a09e7109ba9c874f74e0217f3241526b97b5b537d89f3a1ae014680aa5c1a0e88bc8a318d3b5de1904a949ca9ce4594a93a916b4d4cb558e55b69f36559fb561'
+b2sums=('2375e86af46f3be27c2ed6ac3e4cd9ddbdc49c02d3837a0946e088f4430a95d40be70cc557e1ec325901198a592207254ac573cb2e884944f5ea1d13c38dc905'
         '48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950')
 
 package(){
