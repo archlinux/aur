@@ -2,7 +2,7 @@
 # Contributor: leuko <aur202307_et_aydos_de>
 
 pkgname="xpra-html5"
-pkgver=18.1
+pkgver=19
 pkgrel=1
 pkgdesc="HTML5 client for Xpra"
 url="https://github.com/Xpra-org/xpra-html5"
@@ -21,7 +21,7 @@ makedepends=(
 
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('42daf8d8abbd67f4d15af5d264b416448ddba3ce316fc73efab98b788adfe161')
+sha256sums=('560956d474c157cd136a1c3830746b4cb6ad8cf5f17c0a9067c319fde2b7482d')
 
 package() {
   cd "${pkgname}-${pkgver}"
