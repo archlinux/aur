@@ -1,0 +1,12 @@
+pkgbase = rdw-git
+	pkgdesc = Gtk4 remote desktop widgets
+	pkgver = r346.640183f
+	pkgrel = 1
+	arch = x86_64
+	makedepends = gobject-introspection
+	makedepends = cargo-c
+	makedepends = vala
+	source = git+https://gitlab.gnome.org/malureau/rdw.git
+	sha256sums = SKIP
+
+pkgname = rdw-git
