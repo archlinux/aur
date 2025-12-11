@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codemap-bin
-pkgver=null
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A project brain for your AI. Give LLMs instant architectural context without burning tokens"
 arch=('x86_64')
