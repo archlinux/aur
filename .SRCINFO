@@ -1,6 +1,6 @@
 pkgbase = r-duckdb
 	pkgdesc = DBI Package for the DuckDB Database Management System
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=duckdb
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = r-duckdb
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/duckdb_1.4.2.tar.gz
-	md5sums = af00fc396d5433c75dc46eff25132de6
-	b2sums = 859c5cf6cd2ae2a5092b35d0337370d3991c51262f511ecbc8a70450f6f9374ca7f59d339d5ebcf0c4e9c349154d199ee21a2bbd5348423116615f8083ae819e
+	source = https://cran.r-project.org/src/contrib/duckdb_1.4.3.tar.gz
+	md5sums = 82aefa47474e852319de111d0e892016
+	b2sums = 70dec40da6f09598e52625e8a36cafa837fc3f73c0a8b417ed95d15a25735f2b01bd10becb73d547e0f70992950cd138af94710d6720e2b125f5e95f1e773706
 
 pkgname = r-duckdb
