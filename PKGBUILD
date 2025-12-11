@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=otf-baskervillef
-pkgver=1.051
+pkgver=1.052
 pkgrel=1
 pkgdesc="A PDF-optimized serif font, fork of Libre Baskerville, with added Bold Italic style."
 url="https://ctan.org/pkg/baskervillef"
@@ -11,7 +11,7 @@ arch=(any)
 source=("https://mirrors.ctan.org/fonts/baskervillef.zip")
 
 # Warning: checksums provided by packager, not upstream
-b2sums=('695e455f35c2062c7fa30ec6ea62f52ee6ed6ac91ba8e28a717c0e1af4a3eccc4e315be26d1dd6822bc6993a1d4af630dc26caf1abb55ce060cea1efaa1f96e5')
+b2sums=('016aa088325eccdce4ac29bcc5b53ddcd0ce2eeece6fa634fc688220b5bfc1817c161fadbe1ce2616cfd5832eb2ebae6880ffd8323037fde5f4a602ee340beed')
 
 pkgver() {
   cd "$srcdir/baskervillef"
