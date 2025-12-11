@@ -1,0 +1,20 @@
+pkgbase = demongrep-git
+	pkgdesc = Fast, local semantic code search powered by Rust (git version)
+	pkgver = r13.bb06f9c
+	pkgrel = 1
+	url = https://github.com/yxanul/demongrep
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = protobuf
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = openssl
+	provides = demongrep
+	conflicts = demongrep
+	source = git+https://github.com/yxanul/demongrep.git
+	sha256sums = SKIP
+
+pkgname = demongrep-git
