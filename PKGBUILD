@@ -2,7 +2,7 @@
 # Based on banana9 package by: Hansruedi Patzen <hp@revy.ch>
 
 pkgname=bananaplus
-pkgver=10.1.24
+pkgver=10.2.2
 pkgrel=1
 pkgdesc="Simple and fast accounting software"
 url="https://www.banana.ch/"
@@ -10,9 +10,9 @@ arch=(x86_64)
 license=(custom)
 depends=(gtk3)
 
-source=(https://cdn.banana.ch/accounting/files/$pkgname/exe/$pkgname.tgz)
+source=(https://www.banana.ch/accounting/files/$pkgname/exe/$pkgname.tgz)
 # add dummy entries for `make generate-checksums` to create SHA256 instead of MD5 check sums
-sha256sums=(e467b03c6382c9e4ba7da2fc68c519fc90d4527d8f1aebabd30b3fee794d5fa3)
+sha256sums=(b23c4fb6200261770d6eea3c6529274e6646805597770fb4b35aab7bf367aeb8)
 
 # coredumps otherwise
 options=(emptydirs !strip)
