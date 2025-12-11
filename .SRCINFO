@@ -1,0 +1,18 @@
+pkgbase = phonecall-popup-git
+	pkgdesc = GTK popup for PipeWire telephony calls with answer/hangup
+	pkgver = r2.g5373d10
+	pkgrel = 1
+	url = https://github.com/arcceus/phonecall-popup
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = pipewire
+	provides = phonecall-popup
+	conflicts = phonecall-popup
+	source = phonecall-popup::git+https://github.com/arcceus/phonecall-popup.git
+	sha256sums = SKIP
+
+pkgname = phonecall-popup-git
