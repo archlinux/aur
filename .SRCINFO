@@ -1,0 +1,17 @@
+pkgbase = oebbwlan-git
+	pkgdesc = Automatically dismisses the portal page of OEBB train WLAN
+	pkgver = r12.577af78
+	pkgrel = 1
+	url = https://github.com/Yepoleb/oebbwlan
+	arch = any
+	license = CC-BY-4.0
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	provides = oebbwlan=r12.577af78
+	conflicts = oebbwlan
+	source = oebbwlan::git+https://github.com/Yepoleb/oebbwlan
+	sha256sums = SKIP
+
+pkgname = oebbwlan-git
