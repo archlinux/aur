@@ -57,4 +57,3 @@ index 30464f24..f963d06a 100644
 -    nose
 +    pytest
      six
-
