@@ -1,6 +1,6 @@
 pkgbase = tatuin
 	pkgdesc = Task Aggregator TUI for Obsidian, Todoist, Gitlab TODO and Github Issues
-	pkgver = 0.25.1
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://github.com/panter-dsd/tatuin
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = tatuin
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	source = https://github.com/panter-dsd/tatuin/archive/refs/tags/v0.25.1/tatuin-0.25.1.tar.gz
-	sha256sums = 4295f7bea79e646a0b156f0d3ff071be4ab5071bf5b9f73b26d135aa070c1b49
+	source = https://github.com/panter-dsd/tatuin/archive/refs/tags/v0.25.2/tatuin-0.25.2.tar.gz
+	sha256sums = 953f1d0cf9cee1eea05ea9818d1b65b31d704e381f27dac6547a577738743657
 
 pkgname = tatuin
