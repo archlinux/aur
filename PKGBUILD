@@ -5,7 +5,7 @@
 # see lazylora-bin.
 
 pkgname=lazylora
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Unofficial terminal user interface for Algorand Blockchain exploration"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/aorumbayev/lazylora"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aorumbayev/lazylora/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed7562a827f95415b01746c19510a2ca48118a4464f0bbbeb4ac3b194148f1d6')
+sha256sums=('1d01be4448a656f5d405265efa6b46d5095deb0da21aadffb35e5a99fe6196aa')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
