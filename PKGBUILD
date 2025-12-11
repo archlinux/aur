@@ -5,7 +5,7 @@ pkgname=odinls-bin
 _pkgname_no_bin="${pkgname%-*}"
 pkgver=dev_2025_11
 _pkgver_hyphens="`echo $pkgver | tr _ -`"
-pkgrel=1
+pkgrel=2
 pkgdesc='ols: Language server for Odin'
 arch=('x86_64')
 url='https://github.com/DanielGavin/ols'
@@ -20,7 +20,7 @@ sha256sums=('cbb7b958291c686b27762875c412b4d440c6cad294021f41f960a32d84670ba8'
             'efa5894137f6f31af79aef423b8dc33a7709d14b2784f84ef2d04df6ebed82af')
 
 package() {
-    install -Dm755 ols "$pkgdir/usr/lib/$_pkgname_no_bin/ols"
+    install -Dm755 "ols-$arch-unknown-linux-gnu" "$pkgdir/usr/lib/$_pkgname_no_bin/ols"
     install -Dm644 -t "$pkgdir/usr/lib/$_pkgname_no_bin/builtin/" builtin/*
     install -dm755 "$pkgdir/usr/bin/"
     # symlink in /usr/bin
