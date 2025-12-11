@@ -1,6 +1,6 @@
 pkgbase = rimsort-git
 	pkgdesc = A Mod Manager For Rimworld game
-	pkgver = r2074.05c198ea
+	pkgver = r2079.380735ac
 	pkgrel = 1
 	url = https://github.com/RimSort/RimSort
 	arch = x86_64
