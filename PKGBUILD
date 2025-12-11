@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 epoch=1
-pkgver=11.1
+pkgver=11.2
 pkgrel=1
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
@@ -20,7 +20,6 @@ depends=(
 	pipewire
 	"procps-ng"
 	"coreutils"
-	"awk"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"zenity"
@@ -31,10 +30,6 @@ depends=(
 	"wayland"
 	"dbus"
 	"bash"
-	"lsb-release"
-	"psmisc"
-	"flatpak-xdg-utils"
-	"xdg-desktop-portal"
 	"xdg-desktop-portal-impl"
 	"inotify-tools"
 	"grep"
@@ -53,7 +48,7 @@ checkdepends=()
 
 source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('1f845ad3a24346166b049d2b20161410')
+md5sums=('f2a024f6bc3b31dfeb23e93a72c2c2f9')
 
 
 function package() {
@@ -64,4 +59,5 @@ function package() {
 	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
 	install -vDm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
 	install -vDm755 portable-packer "${pkgdir}/usr/bin/portable-packer"
+	cp -r "${srcdir}/portable/lib/modules-load.d" "${pkgdir}/usr/lib"
 }
