@@ -1,17 +1,17 @@
-pkgbase = odinls-git
+pkgbase = odinls-bin
 	pkgdesc = ols: Language server for Odin
-	pkgver = dev_2025_11.r38.g465e4b4
+	pkgver = dev_2025_11
 	pkgrel = 1
 	url = https://github.com/DanielGavin/ols
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = odin
 	optdepends = odinfmt: Odin source code formatter
-	provides = odinls=dev_2025_11.r38.g465e4b4
+	provides = odinls=dev_2025_11
 	conflicts = odinls
-	options = !lto
-	source = odinls::git+https://github.com/DanielGavin/ols.git
-	sha256sums = SKIP
+	source = https://github.com/DanielGavin/ols/releases/download/dev-2025-11/ols-x86_64-unknown-linux-gnu.zip
+	source = odinls_LICENSE::https://raw.githubusercontent.com/DanielGavin/ols/refs/tags/dev-2025-11/LICENSE
+	sha256sums = cbb7b958291c686b27762875c412b4d440c6cad294021f41f960a32d84670ba8
+	sha256sums = efa5894137f6f31af79aef423b8dc33a7709d14b2784f84ef2d04df6ebed82af
 
-pkgname = odinls-git
+pkgname = odinls-bin
