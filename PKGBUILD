@@ -15,7 +15,7 @@ source=("LICENSE"
         "${pkgname}-${pkgver}.jar::https://technology.a-sit.at/wp-content/uploads/2025/10/PDF-Over-${pkgver}.jar")
 noextract=("${pkgname}-${pkgver}.jar")
 sha256sums=('6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665'
-            'db6de14fe05b90fc9fa1fea4ecf04cce2783a93b8d2e6ad64746dfbca9bd091c'
+            '9e410f7c97ea480d018f35d96f69ea91e97ce73a79f2a5bb99eaa65846789f70'
             '022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd'
             'af66472d7e9d879687da298ea6006c2ce28dfae12196e0e4f3a61b116cf0d48e')
 
