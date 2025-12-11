@@ -1,6 +1,6 @@
 # Maintainer: zarak <zarak.tls@zarak.fr>
 pkgname=tls-snoop
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="eBPF-based TLS handshake capture daemon"
 arch=('x86_64')
