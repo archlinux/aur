@@ -31,8 +31,8 @@ package() {
 
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/${pkgname%-git}" << 'EOF'
-  #!/usr/bin/env bash
-  exec /usr/bin/python3 /usr/share/sle-suite-pro/app.py "$@"
+#!/usr/bin/env bash
+exec /usr/bin/python3 /usr/share/sle-suite-pro/app.py "$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
