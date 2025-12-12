@@ -1,0 +1,26 @@
+pkgbase = libinput-nowacom-git
+	pkgdesc = Input device management and event handling library - compiled without support for wacom tablets
+	pkgver = 1.30.0.r7.gdb6a0466
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libinput/libinput
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = check
+	depends = mtdev
+	depends = libevdev
+	depends = glibc
+	optdepends = gtk4: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-libevdev: libinput measure
+	optdepends = python-yaml: used by various tools
+	provides = libinput
+	conflicts = libinput
+	source = git+https://gitlab.freedesktop.org/libinput/libinput
+	sha256sums = SKIP
+
+pkgname = libinput-nowacom-git
