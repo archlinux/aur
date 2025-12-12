@@ -1,7 +1,7 @@
 pkgbase = masterpdfeditor-qt_include
-	pkgdesc = A complete solution for viewing, creating and editing PDF files
+	pkgdesc = A complete solution for viewing, creating and editing PDF files. Built upstream with qt libraries included!
 	pkgver = 5.9.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
