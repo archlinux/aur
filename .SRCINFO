@@ -7,9 +7,12 @@ pkgbase = sle-suite-pro-git
 	license = NCL
 	depends = pyside6
 	depends = python-pyscard
+	depends = hicolor-icon-theme
 	provides = sle-suite-pro
 	conflicts = sle-suite-pro
 	source = git+https://github.com/wikilift/sle-suite-pro.git
+	source = sle-suite-pro.desktop
 	sha256sums = SKIP
+	sha256sums = 38075fb61bef81cbf29b641dd77fe1f235a322fbef7b837cd2efe74f0e820823
 
 pkgname = sle-suite-pro-git

@@ -7,11 +7,13 @@ pkgdesc="Advanced tool for SLE cards"
 arch=('any')
 url="https://github.com/wikilift/sle-suite-pro"
 license=('NCL')
-depends=('pyside6' 'python-pyscard')
+depends=('pyside6' 'python-pyscard' 'hicolor-icon-theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/wikilift/sle-suite-pro.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/wikilift/sle-suite-pro.git'
+        'sle-suite-pro.desktop')
+sha256sums=('SKIP'
+            '38075fb61bef81cbf29b641dd77fe1f235a322fbef7b837cd2efe74f0e820823')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -36,4 +38,14 @@ exec /usr/bin/python3 /usr/share/sle-suite-pro/app.py "$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
+
+  # Icon
+  if [ -f assets/logo.png ]; then
+    install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+    install -Dm644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/sle-suite-pro.png"
+  fi
+
+  # Desktop file
+  install -d "$pkgdir/usr/share/applications"
+  install -Dm644 ../../sle-suite-pro.desktop "$pkgdir/usr/share/applications/sle-suite-pro.desktop"
 }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SLE Suite Pro
+GenericName=Advanced tool for SLE cards
+Comment=Advanced management tool for SLE cards
+Exec=sle-suite-pro
+Icon=sle-suite-pro
+Type=Application
+Categories=Development;
+Terminal=false
+StartupNotify=false
