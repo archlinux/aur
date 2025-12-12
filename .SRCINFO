@@ -1,0 +1,34 @@
+pkgbase = stelliberty-bin
+	pkgdesc = Modern Clash/Mihomo 客户端的二进制发行版
+	pkgver = 1.1.50
+	pkgrel = 1
+	url = https://github.com/Kindness-Kismet/Stelliberty
+	install = stelliberty-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:Stelliberty
+	makedepends = libarchive
+	depends = gtk3
+	depends = nss
+	depends = openssl
+	depends = libappindicator-gtk3
+	depends = libdbusmenu-gtk3
+	depends = rsync
+	optdepends = xdg-utils: for xdg-open support
+	provides = stelliberty=1.1.50
+	conflicts = stelliberty
+	noextract = Stelliberty-v1.1.50-linux-x64.zip
+	noextract = Stelliberty-v1.1.50-linux-arm64.zip
+	options = !strip
+	source = app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.1.50/linux/runner/resources/app_icon.png
+	source = stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.1.50/linux/stelliberty.desktop
+	source = LICENSE::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.1.50/LICENSE
+	sha256sums = fa89e84a3090b5a566b0ddf4d8e11adec3785b66d660746774fb6197173bf9d8
+	sha256sums = ca2f07aef3208f38d47eee1bdc163b2699362432e050e0127b744163d6dc9eca
+	sha256sums = 174ae059d5746740127cebf3029724e6c149e67723bb377b293a91ed4d83baa8
+	source_x86_64 = Stelliberty-v1.1.50-linux-x64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.1.50/Stelliberty-v1.1.50-linux-x64.zip
+	sha256sums_x86_64 = 677d1b5426a534b295e35fd9cb71d9adf97391d6dddf64ebbba2f78a5a64efd3
+	source_aarch64 = Stelliberty-v1.1.50-linux-arm64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.1.50/Stelliberty-v1.1.50-linux-arm64.zip
+	sha256sums_aarch64 = 061a78a5c650a23a5f994ea5a8dbae79edb5f3ebb0e3eb2fb230535747055464
+
+pkgname = stelliberty-bin
