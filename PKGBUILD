@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Maintainer: Anty0 <anty150 at gmail dot com>
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
