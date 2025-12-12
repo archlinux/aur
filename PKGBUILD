@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tauview-git
 _pkgname=Tauview
-pkgver=0.0.14.r1.gc9efd92
+pkgver=0.0.15.r0.g0e4640a
 _nodeversion=20
 pkgrel=1
 pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
@@ -39,7 +39,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
     export CARGO_HOME="${srcdir}/.cargo"
     local HOME="${srcdir}/.electron-gyp"
@@ -48,14 +47,16 @@ prepare() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         echo 'registry=https://registry.npmmirror.com' >> .npmrc
         echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/" src-tauri/Cargo.toml
+        export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+        #sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/" src-tauri/Cargo.toml
     fi
+    _ensure_local_nvm
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" src-tauri/tauri.conf.json
     NODE_ENV=production     npm run tauri build
 }
