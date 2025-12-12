@@ -1,15 +1,14 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=angstromfetch-git
-pkgver=v1.0.0.r1.f520416
+pkgver=v1.0.0.r13.fc6c5a9
 pkgrel=1
 pkgdesc="Fast(est) system fetch tool for Linux with a low footprint"
 arch=(x86_64)
 url="https://codeberg.org/Phosphenius/angstromfetch"
 license=('GPL-3.0-or-later')
-makedepends=('git') 
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=(!lto)
 source=("git+$url.git")
 noextract=()
 sha256sums=('SKIP')

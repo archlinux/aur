@@ -1,6 +1,6 @@
 pkgbase = angstromfetch-git
 	pkgdesc = Fast(est) system fetch tool for Linux with a low footprint
-	pkgver = v1.0.0.r1.f520416
+	pkgver = v1.0.0.r13.fc6c5a9
 	pkgrel = 1
 	url = https://codeberg.org/Phosphenius/angstromfetch
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = angstromfetch-git
 	makedepends = git
 	provides = angstromfetch
 	conflicts = angstromfetch
-	options = !lto
 	source = git+https://codeberg.org/Phosphenius/angstromfetch.git
 	sha256sums = SKIP
 
