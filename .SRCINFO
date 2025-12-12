@@ -2,13 +2,13 @@ pkgbase = refresh
 	pkgdesc = A lightweight command-line project manager
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/Ametrine-cc/Refresh
+	url = https://github.com/Ametrine-cc/refresh
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = refresh-0.1.0.tar.gz::https://github.com/Ametrine-cc/Refresh/archive/v0.1.0.tar.gz
-	sha256sums = 2caf24137c92c44fde50765ebfb3e9ab8c12d5d9af1f8a263e97082e3cfacac9
+	source = refresh-0.1.0.tar.gz::https://github.com/Ametrine-cc/refresh/archive/v0.1.0.tar.gz
+	sha256sums = 218f5b115d9905aab7ab6c2594d4d14a7a05cfffaab3528a5fcb20ddf1f54950
 
 pkgname = refresh
