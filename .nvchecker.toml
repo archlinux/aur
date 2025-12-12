@@ -1,0 +1,5 @@
+[pipecolor-bin]
+source = "github"
+github = "dalance/pipecolor"
+use_latest_release = true
+prefix = "v"
