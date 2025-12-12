@@ -3,7 +3,7 @@
 pkgname=flclash-bin
 _pkgname=FlClash
 pkgver=0.8.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
     #'aarch64'
@@ -24,8 +24,8 @@ source=(
 )
 # source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=(
-  "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
-  "https://gist.githubusercontent.com/dongfengweixiao/bbddee34d6456326200fac3463761296/raw/c18484d78449d0e3b376a6e2a49852486305ff1e/libquickjs_c_bridge_plugin.so.base64"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+    "libquickjs_c_bridge_plugin.so.base64::https://gist.githubusercontent.com/dongfengweixiao/bbddee34d6456326200fac3463761296/raw/c18484d78449d0e3b376a6e2a49852486305ff1e/libquickjs_c_bridge_plugin.so.base64"
 )
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 sha256sums_x86_64=('0ae1320f25d48fbf6980e0dd212b518216bf3b7d6e11180533e11e60a6b1166b'
@@ -41,6 +41,7 @@ prepare() {
       s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
       s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
       5i\Categories=Network;
+      10i\StartupWMClass=com.follow.clash
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
