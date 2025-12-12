@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-better-blur-dx-git
-pkgver=r452.89c263b
+pkgver=r487.a53f446
 pkgrel=1
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/xarblu/kwin-effects-better-blur-dx"
 license=(GPL-3.0-or-later)
 depends=(kio knotifications kcrash kglobalaccel kcmutils libepoxy)
 optdepends=("kwin-x11: for X11" "kwin: for Wayland")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "kwin-effects-forceblur")
 provides=("${pkgname%-git}")
 replaces=("kwin-effects-forceblur")
 makedepends=(git extra-cmake-modules qt6-tools kwin kwin-x11)
