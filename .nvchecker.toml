@@ -1,0 +1,5 @@
+[csc-bin]
+source = "github"
+github = "zahash/csc"
+use_latest_release = true
+prefix = "v"
