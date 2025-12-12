@@ -21,10 +21,10 @@ index feecd8c9..65b43b5b 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index 0b7c17f4..4e90b594 100644
+index 0b7c17f4..323a52a7 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-@@ -852,6 +852,43 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+@@ -852,6 +852,50 @@ static void nv_drm_dev_unload(struct drm_device *dev)
          return;
      }
  
@@ -38,6 +38,13 @@ index 0b7c17f4..4e90b594 100644
 +    if (nv_dev->inSurpriseRemoval) {
 +        NV_DRM_DEV_LOG_INFO(nv_dev,
 +            "Surprise removal detected, skipping hardware access");
++
++        /*
++         * Wake up any processes waiting on flip events - they will never
++         * complete since the GPU is gone. This prevents lockups when
++         * applications are actively using the GPU during hot-unplug.
++         */
++        wake_up_all(&nv_dev->flip_event_wq);
 +
 +        cancel_delayed_work_sync(&nv_dev->hotplug_event_work);
 +        mutex_lock(&nv_dev->lock);
@@ -68,7 +75,7 @@ index 0b7c17f4..4e90b594 100644
      /* Release modeset ownership if fbdev is enabled */
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
-@@ -2160,6 +2197,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+@@ -2160,6 +2204,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
      nv_drm_free(nv_dev);
  }
  
@@ -97,7 +104,7 @@ index 0b7c17f4..4e90b594 100644
  /*
   * Unregister a single NVIDIA DRM device.
   */
-@@ -2168,7 +2227,26 @@ void nv_drm_remove(NvU32 gpuId)
+@@ -2168,7 +2234,32 @@ void nv_drm_remove(NvU32 gpuId)
      struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
  
      if (nv_dev) {
@@ -119,6 +126,12 @@ index 0b7c17f4..4e90b594 100644
 +            NV_DRM_DEV_LOG_INFO(nv_dev,
 +                "PCI channel offline - surprise removal detected");
 +            nv_dev->inSurpriseRemoval = NV_TRUE;
++
++            /*
++             * Wake up any processes waiting on flip events or other GPU
++             * operations. These will never complete since the GPU is gone.
++             */
++            wake_up_all(&nv_dev->flip_event_wq);
 +        }
 +
          drm_dev_unplug(nv_dev->dev);
@@ -624,10 +637,21 @@ index a11b3b98..da50dddf 100644
      up(&nvl->ldata_lock);
  }
 diff --git a/src/nvidia-modeset/include/nvkms-private.h b/src/nvidia-modeset/include/nvkms-private.h
-index 31c76081..b43b54e1 100644
+index 31c76081..e24b72a1 100644
 --- a/src/nvidia-modeset/include/nvkms-private.h
 +++ b/src/nvidia-modeset/include/nvkms-private.h
-@@ -73,6 +73,8 @@ const NVEvoApiHandlesRec *nvGetSurfaceHandlesFromOpenDevConst(
+@@ -35,6 +35,10 @@ struct NvKmsPerOpenDev *nvAllocPerOpenDev(struct NvKmsPerOpen *pOpen,
+ 
+ void nvRevokeDevice(NVDevEvoPtr pDevEvo);
+ 
++void nvInvalidateDeviceReferences(NVDevEvoPtr pDevEvo);
++
++NvBool nvReinitializeGlobalClientAfterGpuLost(void);
++
+ void nvFreePerOpenDev(struct NvKmsPerOpen *pOpen,
+                       struct NvKmsPerOpenDev *pOpenDev);
+ 
+@@ -73,6 +77,8 @@ const NVEvoApiHandlesRec *nvGetSurfaceHandlesFromOpenDevConst(
  
  void nvKmsServiceNonStallInterrupt(void *dataPtr, NvU32 dataU32);
  
@@ -1057,24 +1081,31 @@ index 7b15bab8..414a2e10 100644
      hotplugParams.subDeviceInstance = pDispEvo->displayOwner;
  
 diff --git a/src/nvidia-modeset/src/nvkms-evo.c b/src/nvidia-modeset/src/nvkms-evo.c
-index d984e767..da839c14 100644
+index d984e767..00c41bcb 100644
 --- a/src/nvidia-modeset/src/nvkms-evo.c
 +++ b/src/nvidia-modeset/src/nvkms-evo.c
-@@ -9047,6 +9047,21 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+@@ -9047,6 +9047,28 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
          return FALSE;
      }
  
 +    /*
 +     * If the GPU was lost (surprise removal), skip all hardware-related
 +     * cleanup. Just free software resources and remove from device list.
++     *
++     * NOTE: We do NOT call nvFreePerOpenDev() here because the pNvKmsOpenDev
++     * is still in the global open list. It will be properly cleaned up during
++     * module unload when nvKmsClose iterates through all open handles.
++     * Calling nvFreePerOpenDev here would cause a double-free crash.
 +     */
 +    if (pDevEvo->gpuLost) {
 +        nvEvoLogDev(pDevEvo, EVO_LOG_INFO,
 +                    "Freeing device after GPU lost, skipping hardware cleanup");
 +
-+        /* Still need to free the per-open data (software resources only) */
-+        nvFreePerOpenDev(nvEvoGlobal.nvKmsPerOpen, pDevEvo->pNvKmsOpenDev);
-+        pDevEvo->pNvKmsOpenDev = NULL;
++        /*
++         * Invalidate all pOpenDev->pDevEvo references to prevent
++         * use-after-free when this pDevEvo is freed.
++         */
++        nvInvalidateDeviceReferences(pDevEvo);
 +
 +        goto free_software_resources;
 +    }
@@ -1082,7 +1113,7 @@ index d984e767..da839c14 100644
      if (pDevEvo->pDifrState) {
          nvRmUnregisterDIFREventHandler(pDevEvo);
          nvDIFRFree(pDevEvo->pDifrState);
-@@ -9086,19 +9101,39 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+@@ -9086,19 +9108,43 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
  
      nvRmDestroyDisplays(pDevEvo);
  
@@ -1091,15 +1122,14 @@ index d984e767..da839c14 100644
 +free_software_resources:
 +    {
 +        NvBool wasGpuLost = pDevEvo->gpuLost;
- 
--    nvPreallocFree(pDevEvo);
++
 +        nvkms_free_timer(pDevEvo->consoleRestoreTimer);
 +        pDevEvo->consoleRestoreTimer = NULL;
  
--    nvRmFreeDeviceEvo(pDevEvo);
+-    nvPreallocFree(pDevEvo);
 +        nvPreallocFree(pDevEvo);
  
--    nvListDel(&pDevEvo->devListEntry);
+-    nvRmFreeDeviceEvo(pDevEvo);
 +        /*
 +         * Skip RM device cleanup if GPU is lost - handles are already invalid
 +         * and RM API calls will fail.
@@ -1108,22 +1138,27 @@ index d984e767..da839c14 100644
 +            nvRmFreeDeviceEvo(pDevEvo);
 +        }
  
--    nvkms_free_ref_ptr(pDevEvo->ref_ptr);
+-    nvListDel(&pDevEvo->devListEntry);
 +        nvListDel(&pDevEvo->devListEntry);
+ 
+-    nvkms_free_ref_ptr(pDevEvo->ref_ptr);
++        nvkms_free_ref_ptr(pDevEvo->ref_ptr);
  
 -    nvFree(pDevEvo);
 -    return TRUE;
-+        nvkms_free_ref_ptr(pDevEvo->ref_ptr);
-+
 +        nvFree(pDevEvo);
 +
 +        /*
-+         * If the GPU was lost and the device list is now empty, reinitialize
-+         * the global RM client so that newly attached GPUs can be used.
++         * NOTE: We intentionally do NOT call nvKmsReinitializeGlobalClient()
++         * here even if the device list is empty. The global client handle
++         * is still referenced by open handles (pNvKmsOpenDev) that will be
++         * cleaned up during module unload by nvKmsClose(). Reinitializing
++         * the client here would corrupt those handles and cause a crash.
++         *
++         * If the user reconnects the GPU before unloading the module, it will
++         * work because AllocDevice checks for stale gpuLost devices and cleans
++         * them up, then reinitializes the global client.
 +         */
-+        if (wasGpuLost && nvListIsEmpty(&nvEvoGlobal.devList)) {
-+            nvKmsReinitializeGlobalClient();
-+        }
 +
 +        return TRUE;
 +    }
@@ -1255,10 +1290,10 @@ index 5b5b6334..4a61e83a 100644
          NvU32 sd;
  
 diff --git a/src/nvidia-modeset/src/nvkms.c b/src/nvidia-modeset/src/nvkms.c
-index ef241247..b3e35a2e 100644
+index ef241247..59f3f918 100644
 --- a/src/nvidia-modeset/src/nvkms.c
 +++ b/src/nvidia-modeset/src/nvkms.c
-@@ -1387,6 +1387,23 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
+@@ -1387,6 +1387,34 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
  
      pDevEvo = nvFindDevEvoByDeviceId(pParams->request.deviceId);
  
@@ -1277,12 +1312,82 @@ index ef241247..b3e35a2e 100644
 +        pDevEvo->allocRefCnt = 1;
 +        nvFreeDevEvo(pDevEvo);
 +        pDevEvo = NULL;
++
++        /*
++         * After cleaning up a gpuLost device, reinitialize the global RM
++         * client handle. RM may have invalidated internal state when the
++         * GPU was lost, causing subsequent API calls to fail with
++         * NV_ERR_INVALID_OBJECT_HANDLE.
++         */
++        if (!nvReinitializeGlobalClientAfterGpuLost()) {
++            pParams->reply.status = NVKMS_ALLOC_DEVICE_STATUS_FATAL_ERROR;
++            return FALSE;
++        }
 +    }
 +
      if (pDevEvo == NULL) {
          pDevEvo = nvAllocDevEvo(&pParams->request, &pParams->reply.status);
          if (pDevEvo == NULL) {
-@@ -6301,6 +6318,44 @@ static void FreeGlobalState(void)
+@@ -1618,6 +1646,24 @@ static void DisableRemainingVblankSemControls(
+ static void FreeDeviceReference(struct NvKmsPerOpen *pOpen,
+                                 struct NvKmsPerOpenDev *pOpenDev)
+ {
++    NVDevEvoPtr pDevEvo = pOpenDev->pDevEvo;
++
++    /*
++     * If pDevEvo is NULL, the device was already freed due to GPU loss
++     * (surprise removal). In this case, skip all hardware-related cleanup
++     * and just free the software structures.
++     *
++     * Also check if the device is marked as gpuLost - this can happen if
++     * nvInvalidateDeviceReferences hasn't been called yet (e.g., during
++     * concurrent cleanup) or if there's a race between GPU loss detection
++     * and this close path.
++     */
++    if (pDevEvo == NULL || pDevEvo->gpuLost) {
++        pOpenDev->pDevEvo = NULL;
++        nvFreePerOpenDev(pOpen, pOpenDev);
++        return;
++    }
++
+     /* Disable all client-owned vblank sync objects that still exist. */
+     DisableRemainingVblankSyncObjects(pOpen, pOpenDev);
+ 
+@@ -5310,6 +5356,33 @@ void nvRevokeDevice(NVDevEvoPtr pDevEvo)
+     }
+ }
+ 
++/*
++ * Invalidate all pOpenDev->pDevEvo references to the given device.
++ * This is used during GPU lost (surprise removal) cleanup to prevent
++ * use-after-free when the pDevEvo is freed but pOpenDev structures
++ * still exist and will be cleaned up later during nvKmsClose.
++ */
++void nvInvalidateDeviceReferences(NVDevEvoPtr pDevEvo)
++{
++    struct NvKmsPerOpen *pOpen;
++
++    if (pDevEvo == NULL) {
++        return;
++    }
++
++    nvListForEachEntry(pOpen, &perOpenIoctlList, perOpenIoctlListEntry) {
++        struct NvKmsPerOpenDev *pOpenDev = DevEvoToOpenDev(pOpen, pDevEvo);
++        if (pOpenDev != NULL) {
++            /*
++             * Set pDevEvo to NULL to indicate the device is gone.
++             * FreeDeviceReference will check for this and skip
++             * hardware access.
++             */
++            pOpenDev->pDevEvo = NULL;
++        }
++    }
++}
++
+ /*!
+  * Open callback.
+  *
+@@ -6301,6 +6374,89 @@ static void FreeGlobalState(void)
      nvClearDpyOverrides();
  }
  
@@ -1324,10 +1429,55 @@ index ef241247..b3e35a2e 100644
 +    nvEvoLog(EVO_LOG_INFO, "Reinitialized global client after GPU surprise removal");
 +}
 +
++/*
++ * Reinitialize the global RM client handle after a GPU was lost.
++ * This is needed because RM may have invalidated internal state associated
++ * with the client when the GPU was lost. We free and reallocate the client
++ * to get a fresh state.
++ *
++ * This should only be called when the device list is empty (i.e., all
++ * gpuLost devices have been cleaned up) and before allocating a new device.
++ *
++ * Returns TRUE on success, FALSE on failure.
++ */
++NvBool nvReinitializeGlobalClientAfterGpuLost(void)
++{
++    NvU32 ret;
++
++    /* Only reinitialize if we have a client handle */
++    if (nvEvoGlobal.clientHandle == 0) {
++        return TRUE;
++    }
++
++    nvEvoLog(EVO_LOG_INFO, "Reinitializing global client after GPU lost");
++
++    /* Free the old client handle */
++    nvRmApiFree(nvEvoGlobal.clientHandle, nvEvoGlobal.clientHandle,
++                nvEvoGlobal.clientHandle);
++    nvEvoGlobal.clientHandle = 0;
++
++    /* Allocate a new client handle */
++    ret = nvRmApiAlloc(NV01_NULL_OBJECT,
++                       NV01_NULL_OBJECT,
++                       NV01_NULL_OBJECT,
++                       NV01_ROOT,
++                       &nvEvoGlobal.clientHandle);
++
++    if (ret != NVOS_STATUS_SUCCESS) {
++        nvEvoLog(EVO_LOG_ERROR, "Failed to reinitialize global client");
++        return FALSE;
++    }
++
++    /* Update RM context */
++    nvEvoGlobal.rmSmgContext.clientHandle = nvEvoGlobal.clientHandle;
++
++    return TRUE;
++}
++
  /*
   * Wrappers to help SMG access NvKmsKAPI's RM context.
   */
-@@ -6396,6 +6451,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
+@@ -6396,6 +6552,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
  {
      NVDevEvoPtr pDevEvo = dataPtr;
  
@@ -1339,7 +1489,7 @@ index ef241247..b3e35a2e 100644
      if (pDevEvo->modesetOwner == NULL && pDevEvo->handleConsoleHotplugs) {
          pDevEvo->skipConsoleRestore = FALSE;
          nvEvoRestoreConsole(pDevEvo, TRUE /* allowMST */);
-@@ -6889,6 +6949,43 @@ void nvKmsResume(NvU32 gpuId)
+@@ -6889,6 +7050,43 @@ void nvKmsResume(NvU32 gpuId)
      }
  }
  
