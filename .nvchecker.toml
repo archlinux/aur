@@ -1,0 +1,3 @@
+[python-greenery]
+source = "pypi"
+pypi = "greenery"
