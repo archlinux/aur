@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-qt6
 pkgver=12.14.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -12,19 +12,6 @@ provides=(heidisql-client)
 
 source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
 sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01')
-
-prepare() {
-  cd "${srcdir}/HeidiSQL-${pkgver}"
-  
-  # Patch: Force both Qt6 and GTK2 versions to use the same config directory (.config/heidisql)
-  # This ensures settings are shared between both variants
-  echo "Patching config directory to use shared 'heidisql' folder"
-  sed -i 's|FDirnameUserAppData := GetAppConfigDir(False);|// Force shared config directory: always use "heidisql" regardless of executable name\
-    if GetEnvironmentVariable('"'"'XDG_CONFIG_HOME'"'"').IsEmpty then\
-      FDirnameUserAppData := GetEnvironmentVariable('"'"'HOME'"'"') + '"'"'/.config/heidisql'"'"'\
-    else\
-      FDirnameUserAppData := GetEnvironmentVariable('"'"'XDG_CONFIG_HOME'"'"') + '"'"'/heidisql'"'"';|' source/apphelpers.pas
-}
 
 build() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
