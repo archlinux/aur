@@ -1,6 +1,6 @@
 pkgbase = grml-iso
 	pkgdesc = provides the grml ISO image for usage by grml-rescueboot
-	pkgver = 2025.08
+	pkgver = 2025.12
 	pkgrel = 1
 	url = http://wiki.grml.org/doku.php?id=rescueboot
 	install = grml-iso.install
@@ -8,8 +8,8 @@ pkgbase = grml-iso
 	license = GPL
 	depends = grub
 	depends = grml-rescueboot>=0.5.0
-	noextract = grml-full-2025.08-amd64.iso
-	source = http://download.grml.org/grml-full-2025.08-amd64.iso
-	sha256sums = 3095df671a477304f2bf68c14494a4fb7becc7260497fa2e937e75de08bdba4c
+	noextract = grml-full-2025.12-amd64.iso
+	source = http://download.grml.org/grml-full-2025.12-amd64.iso
+	sha256sums = fa862fe611be9ea176593b129fcfbd741a0da648e95886db7db4f2ded7d360d3
 
 pkgname = grml-iso
