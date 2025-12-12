@@ -1,6 +1,6 @@
 pkgbase = wlx-overlay-s-git
 	pkgdesc = Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)
-	pkgver = 25.4.2.r0.bcc9f5d
+	pkgver = 25.4.2.r262.4f78825
 	pkgrel = 1
 	url = https://github.com/galister/wlx-overlay-s
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = wlx-overlay-s-git
 	makedepends = python3
 	makedepends = cmake
 	makedepends = clang
+	makedepends = shaderc
 	makedepends = libx11
 	makedepends = libxext
 	makedepends = libxrandr
