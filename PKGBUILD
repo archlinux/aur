@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -14,7 +14,7 @@ depends=(
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
-    'libvgm'
+    'libvgm-git'
 )
 makedepends=(
     'qt6-svg'
@@ -53,6 +53,7 @@ build() {
         145i\        }
         145i\    }
     " src/core/playlist/parsers/cueparser.cpp
+    sed -i "s/\.arg(alignment)/.arg(static_cast<int>(alignment))/g" src/utils/starrating.cpp
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
