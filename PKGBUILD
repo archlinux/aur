@@ -2,7 +2,7 @@
 
 pkgbase=pacredir-git
 pkgname=(pacredir-git pacredir-avahi-git)
-pkgver=0.7.3.r0.gd4f4b48
+pkgver=0.7.7.r0.g30f1871
 pkgrel=1
 pkgdesc='redirect pacman requests, assisted by mDNS service discovery - git checkout'
 arch=('x86_64')
@@ -14,8 +14,8 @@ makedepends=('coreutils'
              'git'
              'iniparser'
              'libmicrohttpd'
-             'librsvg'
              'oxipng'
+             'resvg'
              'sh'
              'systemd')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183') # Christian Hesse <mail@eworm.de>
@@ -55,7 +55,7 @@ package_pacredir-git() {
   backup=('etc/pacman.d/pacredir'
           'etc/pacredir.conf'
           'etc/pacserve.conf'
-          'etc/systemd/resolved.conf.d//01-pacredir-MulticastDNS-yes.conf')
+          'etc/systemd/resolved.conf.d/01-pacredir-MulticastDNS-yes.conf')
   provides=('pacredir')
   conflicts=('pacredir')
 

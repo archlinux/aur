@@ -1,6 +1,6 @@
 pkgbase = pacredir-git
 	pkgdesc = redirect pacman requests, assisted by mDNS service discovery - git checkout
-	pkgver = 0.7.3.r0.gd4f4b48
+	pkgver = 0.7.7.r0.g30f1871
 	pkgrel = 1
 	url = https://github.com/eworm-de/pacredir
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = pacredir-git
 	makedepends = git
 	makedepends = iniparser
 	makedepends = libmicrohttpd
-	makedepends = librsvg
 	makedepends = oxipng
+	makedepends = resvg
 	makedepends = sh
 	makedepends = systemd
 	source = git+https://github.com/eworm-de/pacredir.git
@@ -37,7 +37,7 @@ pkgname = pacredir-git
 	backup = etc/pacman.d/pacredir
 	backup = etc/pacredir.conf
 	backup = etc/pacserve.conf
-	backup = etc/systemd/resolved.conf.d//01-pacredir-MulticastDNS-yes.conf
+	backup = etc/systemd/resolved.conf.d/01-pacredir-MulticastDNS-yes.conf
 
 pkgname = pacredir-avahi-git
 	pkgdesc = redirect pacman requests, assisted by mDNS service discovery, avahi compatibility - git checkout
