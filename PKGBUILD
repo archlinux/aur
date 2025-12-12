@@ -4,7 +4,7 @@
 # Contributor: Grogi <roman@algofacil.info>
 
 pkgname=netlogo
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=('alsa-lib'
 makedepends=('gendesk')
 options=(!strip)
 source=("https://ccl.northwestern.edu/netlogo/${pkgver}/NetLogo-${pkgver}-64.tgz")
-sha256sums=('305494022d91cc3046545995226b6af977f5fd4fac03bbb7d8ec03e2e6efcae4')
+sha256sums=('7923c9c1e834f462208403ea07a5758629ea6dc57029cb31e01222595be10471')
 
 prepare() {
     for file in NetLogo NetLogo3D HubNetClient Behaviorsearch; do

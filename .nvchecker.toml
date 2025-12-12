@@ -1,4 +1,5 @@
 [netlogo]
-source = "regex"
-url = "https://www.netlogo.org/downloads/linux/"
-regex = 'NetLogo ([\d.]+)'
+source = "github"
+github = "NetLogo/NetLogo"
+use_max_tag = true
+prefix = "v"
