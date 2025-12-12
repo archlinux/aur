@@ -1,6 +1,6 @@
 pkgbase = max-bin
 	pkgdesc = MAX messenger.
-	pkgver = 25.8.0.490
+	pkgver = 25.12.0.510
 	pkgrel = 1
 	url = https://max.ru
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = max-bin
 	provides = max
 	conflicts = max
 	source_x86_64 = https://download.max.ru/electron/MAX.rpm
-	sha256sums_x86_64 = c26585c7c142eec1d16ddbb2ca6a5956599f6f52497732c31550ed5591ed5164
+	sha256sums_x86_64 = d3fb8c7722f06ed9878a4c58e1e1859720037d9945a6fe8a63c389378f7c326c
 
 pkgname = max-bin
