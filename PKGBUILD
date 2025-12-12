@@ -3,7 +3,7 @@
 _pkgauthor=rocajuanma
 _pkgname=anvil
 pkgname=${_pkgname}-bin
-pkgver=2.7.0
+pkgver=2.8.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Streamline tool installation and team onboarding"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            'ed5cf767663d3521ca551a75daf8123ee230f35b321f8e753144230637334e7d')
-sha256sums_x86_64=('eb261bdd46af1062a39138c8558bd79ed24353bc5882746d5128106bd912a251')
-sha256sums_aarch64=('a40220379c8a2a581c96f44b0eb3748cefa092516b5241ce1b4998557a43cd15')
+            '88e655d963cfbc1020e323f2fcf5095e9fdc7bacacc210b7321ade63fa88ed17')
+sha256sums_x86_64=('0f07a4bc0b2e4d82ce409b97029a00b0b3eeca8fba5e5c084ae68c36b8fb69b9')
+sha256sums_aarch64=('71158697ca26be601969d14d12b787eb3ba277d1b31c74de6954162c8968af25')
 
 
 package() {
