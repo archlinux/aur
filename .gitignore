@@ -1,4 +1,6 @@
 reframe-*.pkg.tar.zst
 v*.tar.gz
+reframe/
+mvmath/
 pkg/
 src/

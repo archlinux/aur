@@ -1,6 +1,6 @@
 pkgbase = reframe
 	pkgdesc = DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/AlynxZhou/reframe/
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = reframe
 	depends = gcc-libs
 	depends = glibc
 	backup = etc/reframe/example.conf
-	source = https://github.com/AlynxZhou/reframe/archive/v1.4.3.tar.gz
-	sha512sums = b7f48d567be72c33cc5cdf8b7e00559ba82d682d188cd3dc49fb73ee20a916523c8a292ed18f921dc1e6286e2c65c1253338890dc7b2830fa4ae4d0e66db3522
+	source = git+https://github.com/AlynxZhou/reframe.git#tag=v1.5.0
+	source = git+https://github.com/AlynxZhou/mvmath.git#commit=612ee51db46491c692cd320fc148740607d76dbf
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = reframe
