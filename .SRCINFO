@@ -1,0 +1,15 @@
+pkgbase = seal
+	pkgdesc = A simple, user-friendly, and useful runtime for Luau
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/seal-runtime/seal
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = seal.tar.gz::https://github.com/seal-runtime/seal/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = ac13797af9ef14612b416cfa2da317fbf886ce3f2d09842e0377b4c69dde6377
+
+pkgname = seal

@@ -1,0 +1,5 @@
+[seal]
+source = "github"
+github = "seal-runtime/seal"
+use_latest_release = true
+prefix = "v"
