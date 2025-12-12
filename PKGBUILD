@@ -2,7 +2,7 @@
 
 _pkgname="gtk-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r94.1505dc0
+pkgver=r102.a898873
 pkgrel=1
 pkgdesc="A small LD_PRELOAD library to disable CSD in GTK3, LibHandy, GTK4 and LibAdwaita apps"
 arch=("x86_64")
@@ -30,4 +30,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dm 755 libgtk-nocsd.so "${pkgdir}/usr/lib/libgtk-nocsd.so"
+  mkdir -p "${pkgdir}/opt/gtk-nocsd/"
+  ln "${pkgdir}/usr/lib/libgtk-nocsd.so" "${pkgdir}/opt/gtk-nocsd/libgtk-nocsd.so"
 }
