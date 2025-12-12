@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drum-machine
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A drum machine application, built with Python, GTK4, libadwaita, and Pygame."
 arch=('any')
@@ -14,9 +14,12 @@ depends=(
   'python-numpy'
   'python-pygame'
 )
-makedepends=('meson')
+makedepends=(
+  'blueprint-compiler'
+  'meson'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Revisto/drum-machine/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2eb9205bf9549b35cba65dd266639e9fa801ba06af146a1d7e5ef9529ab26684')
+sha256sums=('97bdb13711f2e65aa6e6df590f5c0d0e132b5915c4ee0925cb5e892da3ced6f2')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
