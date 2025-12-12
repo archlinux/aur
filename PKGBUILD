@@ -1,8 +1,8 @@
 # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=18.0rc1
-pkgrel=2
+pkgver=18.1
+pkgrel=1
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
 arch=('x86_64')
@@ -14,11 +14,11 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-	"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v18.0.0-rc.1/SlimeVR-amd64.deb"
+	"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v18.1.0/SlimeVR-amd64.deb"
 )
 
 sha512sums_x86_64=(
-	"ab58362cb7ce93e31114d0b55d799001a9df7b6a1dbe83f45f91f84aafc400a96482cbd90489b6b05e2162c8eb75e2a06af2eb0c9dc07397cd36e6c68ab35dec"
+	"2915211fb2cd7b66a08683cbd1fbbf29567698313b5549b52717f13c98080fcb42175aef68ac03883b9d79d010333fa41d60d7b7e371072f55888f709b02fe41"
 )
 
 package() {
