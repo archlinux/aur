@@ -3,7 +3,7 @@
 _pkgauthor=VladimirMarkelov
 _pkgname=ttdl
 pkgname=${_pkgname}-bin
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc='TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,7 +20,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux-
 
 sha256sums=('234f3f9b9f2d3d402a89072e424f4d69625d831ce858d7cdd5c4e57169b96211'
             'f34dc310b52c682e893450b6d9d34de6129a3ce910711f4ba802aee6ce1c0063')
-sha256sums_x86_64=('9a15aa64789a4c3dd804fa36e8a5dcabb2ceba1f79f65368861d57515b08afda')
+sha256sums_x86_64=('20033849fb8c651bf5045d7023654313b4d0285721dceb48b43f3db470f4b3a5')
 
 build() {
   cd "${srcdir}/" || exit
