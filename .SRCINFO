@@ -1,6 +1,6 @@
 pkgbase = nitrokey-app2
 	pkgdesc = Nitrokey management application for Nitrokey 3 devices
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Nitrokey/nitrokey-app2
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = nitrokey-app2
 	depends = python-pyudev
 	depends = hicolor-icon-theme
 	depends = python-usb_monitor
-	source = nitrokey-app2-2.4.1.tar.gz::https://github.com/Nitrokey/nitrokey-app2/archive/refs/tags/v2.4.1.tar.gz
-	sha256sums = 6f7d02fce01a95b0ee8e8e1bd3ec09b0f5452b3cf003e5cbbd8559c7df4c07b7
+	source = nitrokey-app2-2.4.2.tar.gz::https://github.com/Nitrokey/nitrokey-app2/archive/refs/tags/v2.4.2.tar.gz
+	sha256sums = d717cd5306554c1c16a7f9b5313c650483180b427224f47809b1b45a63045f04
 
 pkgname = nitrokey-app2

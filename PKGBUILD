@@ -1,7 +1,7 @@
 # Maintainer: J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
 
 pkgname=nitrokey-app2
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Nitrokey management application for Nitrokey 3 devices'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python-nitrokey' 'pyside6' 'python-qt-material' 'qt6-tools' 'qt6-svg' 'python-pyudev' 'hicolor-icon-theme' 'python-usb_monitor')
 makedepends=('python-poetry')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f7d02fce01a95b0ee8e8e1bd3ec09b0f5452b3cf003e5cbbd8559c7df4c07b7')
+sha256sums=('d717cd5306554c1c16a7f9b5313c650483180b427224f47809b1b45a63045f04')
 
 build() {
 	cd ${pkgname}-${pkgver}
