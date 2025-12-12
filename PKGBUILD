@@ -1,6 +1,6 @@
 # Maintainer: fabon <syobon.hinata.public[at]gmail[dot]com>
 pkgname=hgrep-bin
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Grep with human-friendly search results"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 
 source=("${pkgname}-${pkgver}.zip::https://github.com/rhysd/hgrep/releases/download/v${pkgver}/hgrep-v${pkgver}-x86_64-unknown-linux-musl.zip")
 noextract=("${pkgname}-${pkgver}.zip")
-md5sums=('6d5969cfd945c75fca65456486ea6386')
+md5sums=('70dc7c68e3f3f1ac5e24aad43426995b')
 
 prepare() {
   unzip "${pkgname}-${pkgver}.zip"
