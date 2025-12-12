@@ -2,7 +2,7 @@
 
 _pkgname="revbayes"
 pkgname="${_pkgname}-bin"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language https://doi.org/10.1093/sysbio/syw021"
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-NEWS.md::${_url}/raw/refs/tags/v${pkgver}/NEWS.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux64.tar.gz")
-sha256sums=('d817ab410d3543fde449066402375e8c443d52041b2ea087b8b56e0eea11d1e1'
-            '710950d0d98cc49d28a93deb8ba0cabf035b866e54f25f0a4c7bd37899f4d243'
+sha256sums=('ced903ebc30ff362319fbf7efcc091af2744620d956911c5ce4714d5f752821f'
+            'd3fe40fcb2bb74697a70c88d0f16d5605c2a46ea32cd2195f619976b0e5d6be6'
             '12ac5047f2af0522f06798b1589ffc4599bc29c91f954d7874e0320634e777c0')
-sha256sums_x86_64=('5352ae350914c2d845518b71ae01f33a3bcc58b1789a61a7432799b296eb2ff8')
+sha256sums_x86_64=('8d6050a6802b3bd9ee734eeac8fe14ac83a4183e5b935c139b648857a55b95f9')
 
 package() {
   cd "${srcdir}"
