@@ -137,6 +137,94 @@ index 0b7c17f4..323a52a7 100644
          drm_dev_unplug(nv_dev->dev);
          nv_drm_dev_destroy(nv_dev);
      }
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-fb.c b/kernel-open/nvidia-drm/nvidia-drm-fb.c
+index 20602ed5..8e426110 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-fb.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-fb.c
+@@ -61,9 +61,15 @@ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
+ 
+     drm_framebuffer_cleanup(fb);
+ 
+-    /* Free NvKmsKapiSurface associated with this framebuffer object */
+-
+-    nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
++    /*
++     * Only call nvKms->destroySurface if pDevice is valid and device is not
++     * in surprise removal. During hot-unplug, nvidia_modeset internal state
++     * may be corrupted before this destructor runs from delayed_fput.
++     */
++    if (nv_dev->pDevice != NULL && !nv_dev->inSurpriseRemoval) {
++        /* Free NvKmsKapiSurface associated with this framebuffer object */
++        nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
++    }
+ 
+     __nv_drm_framebuffer_free(nv_fb);
+ }
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-fence.c b/kernel-open/nvidia-drm/nvidia-drm-fence.c
+index ef885bd2..ae306f85 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-fence.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-fence.c
+@@ -212,6 +212,19 @@ static void __nv_drm_prime_fence_context_destroy(
+     struct nv_drm_prime_fence_context *nv_prime_fence_context =
+         to_nv_prime_fence_context(nv_fence_context);
+ 
++    /*
++     * Skip nvKms calls if device is being surprise-removed.
++     * The nvidia_modeset internal state may be corrupted.
++     */
++    if (nv_dev->pDevice == NULL || nv_dev->inSurpriseRemoval) {
++        /* Force signal pending fences and free */
++        spin_lock(&nv_prime_fence_context->lock);
++        nv_drm_gem_prime_force_fence_signal(nv_prime_fence_context);
++        spin_unlock(&nv_prime_fence_context->lock);
++        nv_drm_free(nv_fence_context);
++        return;
++    }
++
+     /*
+      * Free channel event before destroying the fence context, otherwise event
+      * callback continue to get called.
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c b/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
+index 3610eaad..aaa6b5cf 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
+@@ -43,7 +43,13 @@ void __nv_drm_gem_dma_buf_free(struct nv_drm_gem_object *nv_gem)
+     struct nv_drm_device *nv_dev = nv_gem->nv_dev;
+     struct nv_drm_gem_dma_buf *nv_dma_buf = to_nv_dma_buf(nv_gem);
+ 
+-    if (nv_dma_buf->base.pMemory) {
++    /*
++     * Only call nvKms->freeMemory if pDevice is valid and device is not
++     * in surprise removal. During hot-unplug, nvidia_modeset internal state
++     * may be corrupted before this destructor runs from delayed_fput.
++     */
++    if (nv_dma_buf->base.pMemory && nv_dev->pDevice != NULL &&
++        !nv_dev->inSurpriseRemoval) {
+         /* Free NvKmsKapiMemory handle associated with this gem object */
+         nvKms->freeMemory(nv_dev->pDevice, nv_dma_buf->base.pMemory);
+     }
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
+index 8880bb48..f2ea4f48 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
+@@ -42,6 +42,17 @@ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
+     struct nv_drm_gem_nvkms_memory *nv_nvkms_memory =
+         to_nv_nvkms_memory(nv_gem);
+ 
++    /*
++     * Skip nvKms calls if pDevice is NULL or inSurpriseRemoval is set.
++     * During hot-unplug, the nvidia_modeset internal state (semaphores,
++     * memory handles) may be corrupted or freed before this destructor
++     * runs from delayed_fput. The memory resources are gone with the GPU.
++     */
++    if (nv_dev->pDevice == NULL || nv_dev->inSurpriseRemoval) {
++        nv_drm_free(nv_nvkms_memory);
++        return;
++    }
++
+     if (nv_nvkms_memory->physically_mapped) {
+         if (nv_nvkms_memory->pWriteCombinedIORemapAddress != NULL) {
+             iounmap(nv_nvkms_memory->pWriteCombinedIORemapAddress);
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-priv.h b/kernel-open/nvidia-drm/nvidia-drm-priv.h
 index d2c3a037..3df5f25c 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-priv.h
@@ -225,6 +313,539 @@ index d350ef75..668fa8c2 100644
  void nvKmsGetProcFiles(const nvkms_procfs_file_t **ppProcFiles);
  
  NvBool nvKmsReadConf(const char *buff, size_t size,
+diff --git a/kernel-open/nvidia-uvm/uvm_channel.c b/kernel-open/nvidia-uvm/uvm_channel.c
+index 89c12f3a..091c8230 100644
+--- a/kernel-open/nvidia-uvm/uvm_channel.c
++++ b/kernel-open/nvidia-uvm/uvm_channel.c
+@@ -27,6 +27,8 @@
+ #include "uvm_common.h"
+ #include "uvm_global.h"
+ #include "uvm_hal.h"
++#include "uvm_gpu.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_procfs.h"
+ #include "uvm_push.h"
+ #include "uvm_gpu_semaphore.h"
+@@ -2310,10 +2312,14 @@ static void channel_destroy(uvm_channel_pool_t *pool, uvm_channel_t *channel)
+             free_conf_computing_buffers(channel);
+     }
+ 
+-    if (uvm_channel_is_proxy(channel))
+-        uvm_rm_locked_call_void(nvUvmInterfacePagingChannelDestroy(channel->proxy.handle));
+-    else
+-        uvm_rm_locked_call_void(nvUvmInterfaceChannelDestroy(channel->handle));
++    // Skip RM calls if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (uvm_parent_gpu_is_accessible(pool->manager->gpu->parent)) {
++        if (uvm_channel_is_proxy(channel))
++            uvm_rm_locked_call_void(nvUvmInterfacePagingChannelDestroy(channel->proxy.handle));
++        else
++            uvm_rm_locked_call_void(nvUvmInterfaceChannelDestroy(channel->handle));
++    }
+ 
+     uvm_gpu_tracking_semaphore_free(&channel->tracking_sem);
+ 
+@@ -2657,7 +2663,11 @@ static void tsg_destroy(uvm_channel_pool_t *pool, uvmGpuTsgHandle tsg_handle)
+ {
+     UVM_ASSERT(pool->num_tsgs > 0);
+ 
+-    uvm_rm_locked_call_void(nvUvmInterfaceTsgDestroy(tsg_handle));
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (uvm_parent_gpu_is_accessible(pool->manager->gpu->parent))
++        uvm_rm_locked_call_void(nvUvmInterfaceTsgDestroy(tsg_handle));
++
+     pool->num_tsgs--;
+ }
+ 
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu.c b/kernel-open/nvidia-uvm/uvm_gpu.c
+index 2ea421df..0aa91a61 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu.c
+@@ -44,6 +44,7 @@
+ #include "uvm_conf_computing.h"
+ #include "uvm_linux.h"
+ #include "uvm_mmu.h"
++#include "uvm_gpu_isr.h"
+ 
+ #define UVM_PROC_GPUS_PEER_DIR_NAME "peers"
+ 
+@@ -1326,7 +1327,8 @@ static NV_STATUS configure_address_space(uvm_gpu_t *gpu)
+ 
+ static void deconfigure_address_space(uvm_gpu_t *gpu)
+ {
+-    if (gpu->rm_address_space_moved_to_page_tree)
++    // Skip RM call if GPU is not accessible (e.g., hot-unplugged).
++    if (gpu->rm_address_space_moved_to_page_tree && uvm_parent_gpu_is_accessible(gpu->parent))
+         uvm_rm_locked_call_void(nvUvmInterfaceUnsetPageDirectory(gpu->rm_address_space));
+ 
+     if (gpu->address_space_tree.root)
+@@ -1727,6 +1729,10 @@ static void remove_gpu_from_parent_gpu(uvm_gpu_t *gpu)
+ 
+ static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
+ {
++    // Check GPU accessibility before pci_dev is cleared.
++    // If the GPU was hot-unplugged, skip RM calls that would crash.
++    bool gpu_accessible = uvm_parent_gpu_is_accessible(parent_gpu);
++
+     // All channels should have been removed before the retained count went to 0
+     UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->instance_ptr_table));
+     UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->tsg_table));
+@@ -1752,7 +1758,9 @@ static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
+     if (parent_gpu->rm_info.isSimulated)
+         --g_uvm_global.num_simulated_devices;
+ 
+-    if (parent_gpu->rm_device != 0)
++    // Skip RM call if GPU was not accessible (e.g., hot-unplugged).
++    // The nvidia module's internal state is corrupted when the GPU is gone.
++    if (parent_gpu->rm_device != 0 && gpu_accessible)
+         uvm_rm_locked_call_void(nvUvmInterfaceDeviceDestroy(parent_gpu->rm_device));
+ 
+     uvm_parent_gpu_kref_put(parent_gpu);
+@@ -1795,16 +1803,20 @@ static void deinit_gpu(uvm_gpu_t *gpu)
+ 
+     uvm_pmm_gpu_deinit(&gpu->pmm);
+ 
+-    if (gpu->rm_address_space != 0)
+-        uvm_rm_locked_call_void(nvUvmInterfaceAddressSpaceDestroy(gpu->rm_address_space));
+-
+-    deinit_procfs_dirs(gpu);
++    // Skip RM calls if GPU is not accessible (e.g., hot-unplugged).
++    // The nvidia module's internal state is corrupted when the GPU is gone.
++    if (uvm_parent_gpu_is_accessible(gpu->parent)) {
++        if (gpu->rm_address_space != 0)
++            uvm_rm_locked_call_void(nvUvmInterfaceAddressSpaceDestroy(gpu->rm_address_space));
+ 
+-    if (gpu->parent->smc.enabled) {
+-        if (gpu->smc.rm_device != 0)
+-            uvm_rm_locked_call_void(nvUvmInterfaceDeviceDestroy(gpu->smc.rm_device));
++        if (gpu->parent->smc.enabled) {
++            if (gpu->smc.rm_device != 0)
++                uvm_rm_locked_call_void(nvUvmInterfaceDeviceDestroy(gpu->smc.rm_device));
++        }
+     }
+ 
++    deinit_procfs_dirs(gpu);
++
+     gpu->magic = 0;
+ }
+ 
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c b/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
+index 47281ba9..77387111 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
+@@ -25,6 +25,7 @@
+ #include "uvm_gpu_access_counters.h"
+ #include "uvm_global.h"
+ #include "uvm_api.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_gpu.h"
+ #include "uvm_hal.h"
+ #include "uvm_kvmalloc.h"
+@@ -459,11 +460,15 @@ void uvm_parent_gpu_deinit_access_counters(uvm_parent_gpu_t *parent_gpu, NvU32 n
+     }
+ 
+     if (access_counters && access_counters->rm_info.accessCntrBufferHandle) {
+-        NV_STATUS status = uvm_rm_locked_call(nvUvmInterfaceDestroyAccessCntrInfo(parent_gpu->rm_device,
+-                                                                                  &access_counters->rm_info));
+         uvm_access_counter_service_batch_context_t *batch_context = &access_counters->batch_service_context;
+ 
+-        UVM_ASSERT(status == NV_OK);
++        // Skip RM call if GPU is not accessible (e.g., hot-unplugged).
++        // The nvidia module's internal state is corrupted when the GPU is gone.
++        if (uvm_parent_gpu_is_accessible(parent_gpu)) {
++            NV_STATUS status = uvm_rm_locked_call(nvUvmInterfaceDestroyAccessCntrInfo(parent_gpu->rm_device,
++                                                                                      &access_counters->rm_info));
++            UVM_ASSERT(status == NV_OK);
++        }
+ 
+         access_counters->rm_info.accessCntrBufferHandle = 0;
+         uvm_kvfree(batch_context->notification_cache);
+@@ -547,9 +552,12 @@ static void access_counters_yield_ownership(uvm_parent_gpu_t *parent_gpu, NvU32
+     if (status != NV_OK)
+         UVM_ASSERT(status == uvm_global_get_status());
+ 
+-    status = uvm_rm_locked_call(nvUvmInterfaceDisableAccessCntr(parent_gpu->rm_device,
+-                                                                &access_counters->rm_info));
+-    UVM_ASSERT(status == NV_OK);
++    // Skip RM call if GPU is not accessible (e.g., hot-unplugged).
++    if (uvm_parent_gpu_is_accessible(parent_gpu)) {
++        status = uvm_rm_locked_call(nvUvmInterfaceDisableAccessCntr(parent_gpu->rm_device,
++                                                                    &access_counters->rm_info));
++        UVM_ASSERT(status == NV_OK);
++    }
+ }
+ 
+ // Increment the refcount of access counter enablement. If this is the first
+@@ -1720,6 +1728,11 @@ void uvm_service_access_counters(uvm_access_counter_buffer_t *access_counters)
+ {
+     NV_STATUS status = NV_OK;
+     uvm_access_counter_service_batch_context_t *batch_context;
++    uvm_parent_gpu_t *parent_gpu = access_counters->parent_gpu;
++
++    // Check if GPU is still accessible (e.g., not hot-unplugged)
++    if (!uvm_parent_gpu_is_accessible(parent_gpu))
++        return;
+ 
+     batch_context = &access_counters->batch_service_context;
+ 
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_isr.c b/kernel-open/nvidia-uvm/uvm_gpu_isr.c
+index 6ba4dbd6..82dd02bc 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_isr.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu_isr.c
+@@ -29,6 +29,7 @@
+ #include "uvm_gpu_access_counters.h"
+ #include "uvm_gpu_non_replayable_faults.h"
+ #include "uvm_thread_context.h"
++#include <linux/pci.h>
+ 
+ // Level-based vs pulse-based interrupts
+ // =====================================
+@@ -63,6 +64,21 @@ static void non_replayable_faults_isr_bottom_half_entry(void *args);
+ // half, only.
+ static void access_counters_isr_bottom_half_entry(void *args);
+ 
++// Check if GPU hardware is accessible (not hot-unplugged).
++// This must be called before any HAL function that accesses GPU registers.
++bool uvm_parent_gpu_is_accessible(uvm_parent_gpu_t *parent_gpu)
++{
++    // If pci_dev is NULL, the GPU has been unregistered
++    if (parent_gpu->pci_dev == NULL)
++        return false;
++
++    // Check if PCI channel is offline (surprise removal/hot-unplug)
++    if (pci_channel_offline(parent_gpu->pci_dev))
++        return false;
++
++    return true;
++}
++
+ // Increments the reference count tracking whether replayable page fault
+ // interrupts should be disabled. The caller is guaranteed that replayable page
+ // faults are disabled upon return. Interrupts might already be disabled prior
+@@ -881,7 +897,9 @@ static void uvm_parent_gpu_replayable_faults_intr_disable(uvm_parent_gpu_t *pare
+ {
+     uvm_assert_spinlock_locked(&parent_gpu->isr.interrupts_lock);
+ 
+-    if (parent_gpu->isr.replayable_faults.handling && parent_gpu->isr.replayable_faults.disable_intr_ref_count == 0)
++    if (parent_gpu->isr.replayable_faults.handling &&
++        parent_gpu->isr.replayable_faults.disable_intr_ref_count == 0 &&
++        uvm_parent_gpu_is_accessible(parent_gpu))
+         parent_gpu->fault_buffer_hal->disable_replayable_faults(parent_gpu);
+ 
+     ++parent_gpu->isr.replayable_faults.disable_intr_ref_count;
+@@ -893,7 +911,9 @@ static void uvm_parent_gpu_replayable_faults_intr_enable(uvm_parent_gpu_t *paren
+     UVM_ASSERT(parent_gpu->isr.replayable_faults.disable_intr_ref_count > 0);
+ 
+     --parent_gpu->isr.replayable_faults.disable_intr_ref_count;
+-    if (parent_gpu->isr.replayable_faults.handling && parent_gpu->isr.replayable_faults.disable_intr_ref_count == 0)
++    if (parent_gpu->isr.replayable_faults.handling &&
++        parent_gpu->isr.replayable_faults.disable_intr_ref_count == 0 &&
++        uvm_parent_gpu_is_accessible(parent_gpu))
+         parent_gpu->fault_buffer_hal->enable_replayable_faults(parent_gpu);
+ }
+ 
+@@ -910,7 +930,8 @@ void uvm_access_counters_intr_disable(uvm_access_counter_buffer_t *access_counte
+     // (disable_intr_ref_count > 0), so the check always returns false when the
+     // race occurs
+     if (parent_gpu->isr.access_counters[notif_buf_index].handling_ref_count > 0 &&
+-        parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count == 0) {
++        parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count == 0 &&
++        uvm_parent_gpu_is_accessible(parent_gpu)) {
+         parent_gpu->access_counter_buffer_hal->disable_access_counter_notifications(access_counters);
+     }
+ 
+@@ -929,7 +950,8 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
+     --parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count;
+ 
+     if (parent_gpu->isr.access_counters[notif_buf_index].handling_ref_count > 0 &&
+-        parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count == 0) {
++        parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count == 0 &&
++        uvm_parent_gpu_is_accessible(parent_gpu)) {
+         parent_gpu->access_counter_buffer_hal->enable_access_counter_notifications(access_counters);
+     }
+ }
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_isr.h b/kernel-open/nvidia-uvm/uvm_gpu_isr.h
+index 2a5f22bb..a17884d3 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_isr.h
++++ b/kernel-open/nvidia-uvm/uvm_gpu_isr.h
+@@ -198,4 +198,9 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
+ // g_uvm_global.global_lock is held so that the returned pointer remains valid.
+ uvm_gpu_t *uvm_parent_gpu_find_first_valid_gpu(uvm_parent_gpu_t *parent_gpu);
+ 
++// Check if GPU hardware is accessible (not hot-unplugged).
++// This must be called before any HAL function that accesses GPU registers.
++// Returns false if pci_dev is NULL or PCI channel is offline.
++bool uvm_parent_gpu_is_accessible(uvm_parent_gpu_t *parent_gpu);
++
+ #endif // __UVM_GPU_ISR_H__
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c b/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
+index ddb32aa8..f0867689 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
+@@ -24,6 +24,7 @@
+ #include "uvm_common.h"
+ #include "uvm_api.h"
+ #include "uvm_gpu_non_replayable_faults.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_gpu.h"
+ #include "uvm_hal.h"
+ #include "uvm_lock.h"
+@@ -778,6 +779,11 @@ void uvm_parent_gpu_service_non_replayable_fault_buffer(uvm_parent_gpu_t *parent
+ {
+     NvU32 cached_faults;
+ 
++    // Check if GPU is still accessible before servicing faults.
++    // After hot-unplug, accessing GPU registers would cause a crash.
++    if (!uvm_parent_gpu_is_accessible(parent_gpu))
++        return;
++
+     // If this handler is modified to handle fewer than all of the outstanding
+     // faults, then special handling will need to be added to uvm_suspend()
+     // to guarantee that fault processing has completed before control is
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c b/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
+index 1c557cab..8efadc6a 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
+@@ -27,6 +27,7 @@
+ #include "uvm_linux.h"
+ #include "uvm_global.h"
+ #include "uvm_gpu_replayable_faults.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_hal.h"
+ #include "uvm_kvmalloc.h"
+ #include "uvm_tools.h"
+@@ -305,11 +306,15 @@ void uvm_parent_gpu_fault_buffer_deinit(uvm_parent_gpu_t *parent_gpu)
+     fault_buffer_deinit_replayable_faults(parent_gpu);
+ 
+     if (parent_gpu->fault_buffer.rm_info.faultBufferHandle) {
+-        status = uvm_rm_locked_call(nvUvmInterfaceOwnPageFaultIntr(parent_gpu->rm_device, NV_FALSE));
+-        UVM_ASSERT(status == NV_OK);
+-
+-        uvm_rm_locked_call_void(nvUvmInterfaceDestroyFaultInfo(parent_gpu->rm_device,
+-                                                               &parent_gpu->fault_buffer.rm_info));
++        // Skip RM calls if GPU is not accessible (e.g., hot-unplugged).
++        // The nvidia module's internal state is corrupted when the GPU is gone.
++        if (uvm_parent_gpu_is_accessible(parent_gpu)) {
++            status = uvm_rm_locked_call(nvUvmInterfaceOwnPageFaultIntr(parent_gpu->rm_device, NV_FALSE));
++            UVM_ASSERT(status == NV_OK);
++
++            uvm_rm_locked_call_void(nvUvmInterfaceDestroyFaultInfo(parent_gpu->rm_device,
++                                                                   &parent_gpu->fault_buffer.rm_info));
++        }
+ 
+         parent_gpu->fault_buffer.rm_info.faultBufferHandle = 0;
+     }
+@@ -677,9 +682,21 @@ NV_STATUS uvm_gpu_fault_buffer_flush(uvm_gpu_t *gpu)
+ 
+     UVM_ASSERT(gpu->parent->replayable_faults_supported);
+ 
++    // Check if GPU hardware is still accessible before attempting to flush.
++    // After hot-unplug, the GPU registers are no longer mapped and accessing
++    // them would cause a page fault crash.
++    if (!uvm_parent_gpu_is_accessible(gpu->parent))
++        return NV_ERR_GPU_IS_LOST;
++
+     // Disables replayable fault interrupts and fault servicing
+     uvm_parent_gpu_replayable_faults_isr_lock(gpu->parent);
+ 
++    // Re-check after acquiring the lock in case GPU was removed concurrently
++    if (!uvm_parent_gpu_is_accessible(gpu->parent)) {
++        uvm_parent_gpu_replayable_faults_isr_unlock(gpu->parent);
++        return NV_ERR_GPU_IS_LOST;
++    }
++
+     status = fault_buffer_flush_locked(gpu->parent,
+                                        gpu,
+                                        UVM_GPU_BUFFER_FLUSH_MODE_WAIT_UPDATE_PUT,
+@@ -2914,6 +2931,11 @@ void uvm_parent_gpu_service_replayable_faults(uvm_parent_gpu_t *parent_gpu)
+ 
+     UVM_ASSERT(parent_gpu->replayable_faults_supported);
+ 
++    // Check if GPU is still accessible before servicing faults.
++    // After hot-unplug, accessing GPU registers would cause a crash.
++    if (!uvm_parent_gpu_is_accessible(parent_gpu))
++        return;
++
+     uvm_tracker_init(&batch_context->tracker);
+ 
+     // Process all faults in the buffer
+diff --git a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
+index cba0ec53..99bd7335 100644
+--- a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
++++ b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
+@@ -164,6 +164,7 @@
+ #include "nv_uvm_interface.h"
+ #include "uvm_api.h"
+ #include "uvm_gpu.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_pmm_gpu.h"
+ #include "uvm_mem.h"
+ #include "uvm_mmu.h"
+@@ -2048,6 +2049,14 @@ void free_root_chunk(uvm_pmm_gpu_t *pmm, uvm_gpu_root_chunk_t *root_chunk, free_
+     if (chunk->is_zero)
+         flags |= UVM_PMA_FREE_IS_ZERO;
+ 
++    // Skip PMA free if GPU is not accessible (e.g., hot-unplugged).
++    // Calling into the nvidia module with a gone GPU causes hangs
++    // due to corrupted locks.
++    if (!uvm_parent_gpu_is_accessible(gpu->parent)) {
++        uvm_up_read(&pmm->pma_lock);
++        return;
++    }
++
+     nvUvmInterfacePmaFreePages(pmm->pma, &chunk->address, 1, UVM_CHUNK_SIZE_MAX, flags);
+ 
+     uvm_up_read(&pmm->pma_lock);
+@@ -3477,12 +3486,16 @@ void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
+ 
+ void uvm_pmm_gpu_device_p2p_deinit(uvm_parent_gpu_t *parent_gpu)
+ {
+-    unsigned long pci_start_pfn = pci_resource_start(parent_gpu->pci_dev,
+-                                                     uvm_device_p2p_static_bar(parent_gpu)) >> PAGE_SHIFT;
+-    struct page *p2p_page;
++    // Check device_p2p_initialised first before accessing pci_dev.
++    // During partial GPU init/deinit, pci_dev may be NULL or P2P was never initialized.
++    if (!parent_gpu->device_p2p_initialised) {
++        return;
++    }
+ 
+-    if (parent_gpu->device_p2p_initialised && !uvm_parent_gpu_is_coherent(parent_gpu)) {
+-        p2p_page = pfn_to_page(pci_start_pfn);
++    if (!uvm_parent_gpu_is_coherent(parent_gpu) && parent_gpu->pci_dev != NULL) {
++        unsigned long pci_start_pfn = pci_resource_start(parent_gpu->pci_dev,
++                                                         uvm_device_p2p_static_bar(parent_gpu)) >> PAGE_SHIFT;
++        struct page *p2p_page = pfn_to_page(pci_start_pfn);
+         devm_memunmap_pages(&parent_gpu->pci_dev->dev, page_pgmap(p2p_page));
+     }
+ 
+@@ -3683,7 +3696,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
+     UVM_ASSERT(uvm_pmm_gpu_check_orphan_pages(pmm));
+     release_free_root_chunks(pmm);
+ 
+-    if (gpu->mem_info.size != 0 && gpu_supports_pma_eviction(gpu))
++    // Skip unregistering callbacks if GPU is not accessible (hot-unplugged).
++    // The nvidia module's internal state is corrupted when the GPU is gone.
++    if (gpu->mem_info.size != 0 && gpu_supports_pma_eviction(gpu) &&
++        uvm_parent_gpu_is_accessible(gpu->parent))
+         nvUvmInterfacePmaUnregisterEvictionCallbacks(pmm->pma);
+ 
+     // TODO: Bug 1766184: Handle ECC/RC
+diff --git a/kernel-open/nvidia-uvm/uvm_rm_mem.c b/kernel-open/nvidia-uvm/uvm_rm_mem.c
+index 756080fb..767f9e8d 100644
+--- a/kernel-open/nvidia-uvm/uvm_rm_mem.c
++++ b/kernel-open/nvidia-uvm/uvm_rm_mem.c
+@@ -23,6 +23,7 @@
+ 
+ #include "uvm_rm_mem.h"
+ #include "uvm_gpu.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_global.h"
+ #include "uvm_kvmalloc.h"
+ #include "uvm_linux.h"
+@@ -298,8 +299,11 @@ void uvm_rm_mem_unmap_cpu(uvm_rm_mem_t *rm_mem)
+     if (!uvm_rm_mem_mapped_on_cpu(rm_mem))
+         return;
+ 
+-    uvm_rm_locked_call_void(nvUvmInterfaceMemoryCpuUnMap(rm_mem->gpu_owner->rm_address_space,
+-                                                         uvm_rm_mem_get_cpu_va(rm_mem)));
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (uvm_parent_gpu_is_accessible(rm_mem->gpu_owner->parent))
++        uvm_rm_locked_call_void(nvUvmInterfaceMemoryCpuUnMap(rm_mem->gpu_owner->rm_address_space,
++                                                             uvm_rm_mem_get_cpu_va(rm_mem)));
+ 
+     rm_mem_clear_cpu_va(rm_mem);
+ }
+@@ -355,7 +359,12 @@ static void rm_mem_unmap_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
+     rm_mem_unmap_gpu_proxy(rm_mem, gpu);
+ 
+     va = uvm_rm_mem_get_gpu_uvm_va(rm_mem, gpu);
+-    uvm_rm_locked_call_void(nvUvmInterfaceMemoryFree(gpu->rm_address_space, va));
++
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (uvm_parent_gpu_is_accessible(gpu->parent))
++        uvm_rm_locked_call_void(nvUvmInterfaceMemoryFree(gpu->rm_address_space, va));
++
+     rm_mem_clear_gpu_va(rm_mem, gpu);
+ }
+ 
+diff --git a/kernel-open/nvidia-uvm/uvm_user_channel.c b/kernel-open/nvidia-uvm/uvm_user_channel.c
+index 080d84f9..3cf4ec79 100644
+--- a/kernel-open/nvidia-uvm/uvm_user_channel.c
++++ b/kernel-open/nvidia-uvm/uvm_user_channel.c
+@@ -32,6 +32,7 @@
+ #include "uvm_kvmalloc.h"
+ #include "uvm_api.h"
+ #include "uvm_gpu.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_tracker.h"
+ #include "uvm_map_external.h"
+ #include "nv_uvm_interface.h"
+@@ -781,6 +782,14 @@ void uvm_user_channel_stop(uvm_user_channel_t *user_channel)
+     //       write mode.
+     uvm_assert_rwsem_locked_read(&va_space->lock);
+ 
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // client handles will result in repeated NV_ERR_INVALID_OBJECT_HANDLE
++    // errors during teardown.
++    if (!uvm_parent_gpu_is_accessible(user_channel->gpu->parent)) {
++        atomic_set(&user_channel->is_bound, 0);
++        return;
++    }
++
+     // TODO: Bug 1737765. This doesn't stop the user from putting the
+     //       channel back on the runlist, which could put stale instance
+     //       pointers back in the fault buffer.
+@@ -853,7 +862,9 @@ void uvm_user_channel_destroy_detached(uvm_user_channel_t *user_channel)
+         uvm_kvfree(user_channel->resources);
+     }
+ 
+-    if (user_channel->rm_retained_channel)
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (user_channel->rm_retained_channel && uvm_parent_gpu_is_accessible(user_channel->gpu->parent))
+         uvm_rm_locked_call_void(nvUvmInterfaceReleaseChannel(user_channel->rm_retained_channel));
+ 
+     uvm_user_channel_release(user_channel);
+diff --git a/kernel-open/nvidia-uvm/uvm_va_space.c b/kernel-open/nvidia-uvm/uvm_va_space.c
+index 8dea85d9..b8e96827 100644
+--- a/kernel-open/nvidia-uvm/uvm_va_space.c
++++ b/kernel-open/nvidia-uvm/uvm_va_space.c
+@@ -32,6 +32,7 @@
+ #include "uvm_tools.h"
+ #include "uvm_thread_context.h"
+ #include "uvm_hal.h"
++#include "uvm_gpu_isr.h"
+ #include "uvm_map_external.h"
+ #include "uvm_ats.h"
+ #include "uvm_gpu_access_counters.h"
+@@ -1428,6 +1429,13 @@ void uvm_gpu_va_space_unset_page_dir(uvm_gpu_va_space_t *gpu_va_space)
+     if (gpu_va_space->did_set_page_directory) {
+         NV_STATUS status;
+ 
++        // Skip RM call if GPU has been surprise removed. Calling RM with stale
++        // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++        if (!uvm_parent_gpu_is_accessible(gpu_va_space->gpu->parent)) {
++            gpu_va_space->did_set_page_directory = false;
++            return;
++        }
++
+         status = uvm_rm_locked_call(nvUvmInterfaceUnsetPageDirectory(gpu_va_space->duped_gpu_va_space));
+         UVM_ASSERT_MSG(status == NV_OK,
+                        "nvUvmInterfaceUnsetPageDirectory() failed: %s, GPU %s\n",
+@@ -1479,7 +1487,9 @@ static void destroy_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
+     if (gpu_va_space->page_tables.root)
+         uvm_page_tree_deinit(&gpu_va_space->page_tables);
+ 
+-    if (gpu_va_space->duped_gpu_va_space)
++    // Skip RM call if GPU has been surprise removed. Calling RM with stale
++    // handles will result in NV_ERR_INVALID_OBJECT_HANDLE errors.
++    if (gpu_va_space->duped_gpu_va_space && uvm_parent_gpu_is_accessible(gpu_va_space->gpu->parent))
+         uvm_rm_locked_call_void(nvUvmInterfaceAddressSpaceDestroy(gpu_va_space->duped_gpu_va_space));
+ 
+     // If the state is DEAD, then this GPU VA space is tracked in
 diff --git a/kernel-open/nvidia/nv-acpi.c b/kernel-open/nvidia/nv-acpi.c
 index d1090b38..62ab3e6d 100644
 --- a/kernel-open/nvidia/nv-acpi.c
