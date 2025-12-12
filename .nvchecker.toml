@@ -1,0 +1,5 @@
+[royalguard-bin]
+source = "github"
+github = "zahash/royalguard"
+use_latest_release = true
+prefix = "v"
