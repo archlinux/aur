@@ -1,7 +1,7 @@
-pkgbase = paru
+pkgbase = pafu
 	pkgdesc = Feature packed AUR helper
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morganamilo/paru
 	arch = i686
 	arch = pentium4
@@ -21,4 +21,4 @@ pkgbase = paru
 	source = paru-2.1.0.tar.gz::https://github.com/Morganamilo/paru/archive/v2.1.0.tar.gz
 	sha256sums = eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727
 
-pkgname = paru
+pkgname = pafu
