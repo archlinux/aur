@@ -105,7 +105,7 @@ options=(
 )
 
 _pkgsrc="Floorp-$pkgver"
-_pkgsrc_runtime="Floorp-runtime-$_runtime_commit"
+_pkgsrc_runtime="Floorp-Runtime-$_runtime_commit"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
@@ -131,8 +131,8 @@ prepare() (
   mkdir -p mozbuild
 
   # prepare directories
-  rsync -aL "$_pkgsrc/" "$_pkgsrc_runtime/noraneko/"
-  rsync -aL "$_pkgsrc_runtime/.github/assets/branding/" "$_pkgsrc_runtime/browser/branding/"
+  rsync -aL --mkpath "$_pkgsrc/" "$_pkgsrc_runtime/noraneko/"
+  rsync -aL --mkpath "$_pkgsrc_runtime/.github/assets/branding/" "$_pkgsrc_runtime/browser/branding/"
 
   # prepare api keys
   cp floorp-projects.floorp-core/apis/api-*-key ./
