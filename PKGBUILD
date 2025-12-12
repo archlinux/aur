@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=580.105.08
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='NVIDIA open kernel modules with Thunderbolt eGPU hotplug support'
 arch=('x86_64')
@@ -35,7 +35,7 @@ sha256sums=('59c518a2014f83efaf2a9f539b3097c55e74e8878aca01aedb59e92e3116080d'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
             '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-            'e9363d43746883fb3bbc49cf082800e558d6176d71f37bb2901725402d27b772'
+            '056bb4ec8435e4ab0a1b08edf87d3b28ec7cd9b9e4f1a2d556518c1441748d79'
             'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
             'c6fbbf5ffea60670f9b845357176e6602b1e1d5c32b42e69066757cb41b367bb')
 
