@@ -5,11 +5,12 @@
 _pkgname=my_basic
 pkgname=$_pkgname-git
 pkgver=r1091.g4d4d153
-pkgrel=1
+pkgrel=2
 pkgdesc="BASIC interpreter"
 arch=('i686' 'x86_64')
 url="https://paladin-t.github.io/my_basic"
 license=('MIT')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/paladin-t/$_pkgname"
         "$_pkgname-makefile.patch")
 sha256sums=('SKIP'
@@ -24,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  
+
   # Patch CFLAGS
   patch -p1 -i "${srcdir}/${_pkgname}-makefile.patch"
 }
