@@ -2,8 +2,8 @@
 # Contributor: tippfehlr <tippfehlr@tippfehlr.eu>
 # Contributor: Chewing_Bever
 pkgname=fish-lsp
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="LSP implementation for the fish shell language 🐠"
 arch=('x86_64') # tree-sitter contains compiled files
 url="https://github.com/ndonfris/fish-lsp"
@@ -14,9 +14,9 @@ conflicts=(${pkgname}-git)
 source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/fish-lsp.standalone"
         "${pkgname}-${pkgver}-LICENSE.md"::"https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v${pkgver}/LICENSE.md"
         "${pkgname}-${pkgver}-fish-lsp.1"::"https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v${pkgver}/man/fish-lsp.1")
-sha256sums=('67d37033789ef15dae88e5fed5ca883ec2b0007a6e0b899234055a938c454768'
+sha256sums=('948cd962a77cac437307e56be5f9b70737207949b623d470c3ffaefeb125f1fd'
             '42d622608175e998ffcdbb53217a6356a578282782a553ef9a86f5192ffcd7c2'
-            '3248e45d62b13e6530209f185a08b975ae99bcaad9b9da8879ae8b7d7c7d1717')
+            '3a7343fd1860c6380e5db8813bc1a9da608f48e54cb56cb8f8d6673e11b2f229')
 
 package() {
     install -Dm755 ${pkgname}-${pkgver} "$pkgdir/usr/bin/fish-lsp"
