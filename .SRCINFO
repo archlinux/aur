@@ -1,6 +1,6 @@
 pkgbase = python-openai-agents
 	pkgdesc = OpenAI Agents SDK.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/openai/openai-agents-python
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = python-openai-agents
 	optdepends = python-redis: redis
 	optdepends = python-dapr: dapr
 	optdepends = python-grpcio: dapr
-	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.6.2.tar.gz
-	sha256sums = 1012aee224518292778fb4b07eb9148b0b5efa5cd87fd32ec656296aba885612
+	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.6.3.tar.gz
+	sha256sums = 436479f201910cfc466893854b47d0f3acbf7b3bdafa95eedb590ed0d40393ef
 
 pkgname = python-openai-agents
