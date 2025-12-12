@@ -1,16 +1,16 @@
 pkgbase = witsy-bin
 	pkgdesc = Generative AI desktop application.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.2.3
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/nbonamy/witsy
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron38
-	provides = witsy=3.2.3
+	provides = witsy=3.3.0
 	conflicts = witsy
-	source = witsy-3.2.3.rpm::https://github.com/nbonamy/witsy/releases/download/v3.2.3/witsy-3.2.3-1.x86_64.rpm
+	source = witsy-3.3.0.rpm::https://github.com/nbonamy/witsy/releases/download/v3.3.0/witsy-3.3.0-1.x86_64.rpm
 	source = witsy.sh
-	sha256sums = 6718f01651172330c44c9dc83381df3c85e2657e1de27ec6063b585401bc91ca
+	sha256sums = ea266a181344e1202aadb6720a9987907b919402b4a5c05feb05b90ac4541db3
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = witsy-bin
