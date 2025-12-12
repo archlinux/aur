@@ -6,13 +6,14 @@
 
 pkgname=ags
 pkgver=3.6.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
 makedepends=('cmake')
+checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v$pkgver.tar.gz")
 sha256sums=('d27d009b0627f0f9a5ac711da3b8bd47ef972913051c0f42cb7e704016621f28')
 
@@ -27,12 +28,16 @@ prepare() {
 	sed -i 's|set(FREETYPE_LIBRARIES FreeType::FreeType)|set(FREETYPE_LIBRARIES Freetype::Freetype)|' 'CMakeLists.txt'
 
 	sed -i '/<string.h>/a #include <strings.h>|' 'Common/util/string_compat.c'
+
+	find . -name 'CMakeLists.txt' -exec sed -i 's/CXX_STANDARD 11/CXX_STANDARD 20/' {} \;
 }
 
 build() {
 	cmake -S "$_srcdir" -B 'build' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_BUILD_TYPE=None \
+		-DAGS_TESTS=ON \
+		-DCMAKE_CXX_STANDARD=20 \
 		-DAGS_USE_LOCAL_ALL_LIBRARIES=ON \
 		-DAGS_BUILD_TOOLS=ON \
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
@@ -40,8 +45,6 @@ build() {
 }
 
 check() {
-	cmake -S "$_srcdir" -B 'build' -DAGS_TESTS=ON
-	cmake --build 'build'
 	cmake --build 'build' --target test
 }
 
