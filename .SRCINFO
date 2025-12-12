@@ -1,6 +1,6 @@
 pkgbase = dart-sdk-dev
 	pkgdesc = The official Dart sdk from dart-lang project (Development branch)
-	pkgver = 3.11.0_190.0.dev
+	pkgver = 3.11.0_219.0.dev
 	pkgrel = 1
 	url = https://www.dartlang.org/tools/sdk/archive
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dart-sdk-dev
 	depends = unzip
 	provides = dart=$pkgver
 	conflicts = dart
-	source = dartsdk-linux-x64-release-3.11.0_190.0.dev.zip::https://storage.googleapis.com/dart-archive/channels/dev/release/3.11.0-190.0.dev/sdk/dartsdk-linux-x64-release.zip
-	sha256sums = d599cdfdbcf645b43167b1eac74348c9f0ac0aadca2cb08f8747ad5b3a5eaf45
+	source = dartsdk-linux-x64-release-3.11.0_219.0.dev.zip::https://storage.googleapis.com/dart-archive/channels/dev/release/3.11.0-219.0.dev/sdk/dartsdk-linux-x64-release.zip
+	sha256sums = 71c08b7b460e89a10ea50bdcdebb1a0267b7139f7dd9ab6b9be55cc1b5b829db
 
 pkgname = dart-sdk-dev
