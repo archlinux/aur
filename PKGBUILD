@@ -1,6 +1,6 @@
 # Maintainer: laggykiller <chaudominic2 at gmail dot com>
 pkgname=sticker-convert
-pkgver=2.16.1.0
+pkgver=2.16.2.0
 pkgrel=1
 pkgdesc='Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, Kakao, Viber, Discord, iMessage. Written in Python.'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ source_x86_64=(
 source_aarch64=(
     "sticker-convert-linux-aarch64-${pkgver}.zip::https://github.com/laggykiller/sticker-convert/releases/download/v${pkgver}/${pkgname}-linux-aarch64.zip"
     "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/laggykiller/${pkgname}/v${pkgver}/LICENSE")
-sha256sums_x86_64=('f9bae42d23ef2cb337ae423b490073f3369825e7dbc9b97afc72dfe335f7ba0c'
+sha256sums_x86_64=('3ac52aef80b94506e67db016abcd91b8743d21dafd466984dc54013ce26f47bd'
                    '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
-sha256sums_aarch64=('b3bed5bcafcd132b2e55d478f0719efb017d29c45efafa401d97684b7242fc54'
+sha256sums_aarch64=('1cf643528630332148f16efbdd03c6a5963c1fa67eba5f1c4f9b9a9d8dba52fa'
                     '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
 
 prepare() {
