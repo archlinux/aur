@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/XPLassal/simple-go-snake.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('4b803bd042e5e205efdf4cc8f3e6d32049ef6b50c0177a7e994704989656e997')
 conflicts=('simple-snake-on-go')
 provides=('simple-snake-on-go')
 
