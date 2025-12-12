@@ -1,0 +1,19 @@
+pkgbase = idescriptor-bin
+	pkgdesc = A tool to inspect Apple icons
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/iDescriptor/iDescriptor
+	arch = x86_64
+	license = GPL3
+	depends = fuse2
+	depends = zlib
+	provides = idescriptor
+	conflicts = idescriptor
+	options = !strip
+	options = !debug
+	source = idescriptor-bin-0.1.2.zip::https://github.com/iDescriptor/iDescriptor/releases/download/v0.1.2/iDescriptor-v0.1.2-Linux_x86_64.AppImage.zip
+	source = LICENSE::https://raw.githubusercontent.com/iDescriptor/iDescriptor/main/LICENSE
+	sha256sums = 8559044aaa44e27fbc42ca0c76a236c838b7a4c01de1a1aa7731d0145cdb04cf
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+
+pkgname = idescriptor-bin
