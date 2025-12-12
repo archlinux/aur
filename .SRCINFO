@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.5.0
+	pkgver = 140.6.0
 	pkgrel = 1
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
@@ -55,15 +55,15 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-140.5.0esr.source.tar.xz
+	noextract = firefox-140.6.0esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=5897aee761cc6d179bd8632f085c3c14ccf7db6c
-	source = https://archive.mozilla.org/pub/firefox/releases/140.5.0esr/source/firefox-140.5.0esr.source.tar.xz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=f4e50b9a4d5384ce2e860133bf0beaaccbf19b46
+	source = https://archive.mozilla.org/pub/firefox/releases/140.6.0esr/source/firefox-140.6.0esr.source.tar.xz
 	sha256sums = SKIP
-	sha256sums = 832b7ef3e5f7a2430e0ba0b9000dab6fdd8f65bccff8bcf7eeb9ed16e6d310e2
+	sha256sums = 6c35c9ab507521033c8fd49f1b4c85ee158f33ed36f5781a663f116c3d604dc9
 
 pkgname = icecat
