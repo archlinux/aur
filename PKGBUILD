@@ -1,8 +1,8 @@
 # Maintainer: awh (https://aur.archlinux.org/account/awh)
 
 pkgname=baballonia
-pkgver=v1.1.0.9rc1
-pkgrel=3
+pkgver=v1.1.0.9rc2
+pkgrel=1
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -29,7 +29,7 @@ source=(
         "onnxruntime-rocm-to-migraphx.patch"
         "LICENSE"
        )
-sha256sums=('dfb48e051ec93094bec20e996236acb26b603f2deb59d2f4b578854737d18086'
+sha256sums=('56cac69541367cc68d6f5908ccdbbbe6a9c7da766e9f743c94629ff7ca77fd6b'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
             'c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450'
             '542ad6a7b0f638afd3de649cdbc905e8fcaa45abd3fc91aa939e54259ec9ac1f'
