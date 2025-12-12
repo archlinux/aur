@@ -6,7 +6,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.10.0
+_qtver=6.10.1
 _emsdkver=4.0.7
 _emsdk=4.0.7
 
@@ -32,17 +32,13 @@ groups=('qt-wasm' 'qt6-wasm')
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
         "https://github.com/emscripten-core/emsdk/archive/refs/tags/${_emsdk}.tar.gz"
         'qtwasm_env.sh'
-        '0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch'
+        'fix-compile.patch'
 )
 
-# patch from https://groups.google.com/g/linux.debian.bugs.dist/c/2_3NYGo4faE?pli=1
-# https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
-
-
-sha256sums=('81895fb038a9c3d6c6f698d7611339a189eb45c3d91746c7789b0b77a5981aa3'
+sha256sums=('0ed08b079719394303cd2054b66b2dc0c5895ceeb88fb6131c18991c980bf00f'
             'b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
-            '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9'
+            '67a13924a7662897702857300c0ceee957770cdb0276980b2268fdb166f740e2'
 )
 
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
@@ -53,14 +49,8 @@ prepare () {
   echo "${srcdir}/emsdk"
   cd ${srcdir}/${_qt}
 
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
+  patch -p1 "qtbase/src/corelib/global/qcompilerdetection.h" < ${srcdir}/fix-compile.patch
 }
-
-
 
 build() {
   # emsdk
