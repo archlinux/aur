@@ -1,0 +1,77 @@
+From: Backport from 590.44.01
+Subject: Fix kernel 6.18 compatibility: get_dev_pagemap() API change
+
+Linux kernel 6.18 removed the second argument from get_dev_pagemap()
+via commit dd57f5feb19a ("mm/memremap: remove unused get_dev_pagemap() parameter").
+
+This patch backports the fix from NVIDIA driver 590.44.01 which adds:
+1. A conftest to detect the API change
+2. A macro NV_GET_DEV_PAGEMAP that adapts to both old and new kernels
+3. Updates code to use the new macro
+
+--- a/kernel-open/conftest.sh
++++ b/kernel-open/conftest.sh
+@@ -1330,6 +1330,27 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_EVENTFD_SIGNAL_HAS_COUNTER_ARG" "" "types"
+         ;;
+ 
++        get_dev_pagemap_has_pgmap_arg)
++            #
++            # Determine if the get_dev_pagemap() function has an additional
++            # 'pgmap' argument.
++            #
++            # This argument was removed by commit dd57f5feb19a
++            # (mm/memremap: remove unused get_dev_pagemap() parameter)
++            # in linux-next, expected in v6.18.
++            #
++            CODE="
++            #include <linux/memremap.h>
++
++            struct dev_pagemap *get_dev_pagemap_has_pgmap_arg(void) {
++                struct dev_pagemap *pgmap;
++
++                get_dev_pagemap(0, pgmap);
++            }"
++
++            compile_check_conftest "$CODE" "NV_GET_DEV_PAGEMAP_HAS_PGMAP_ARG" "" "types"
++        ;;
++
+         drm_available)
+             # Determine if the DRM subsystem is usable
+             CODE="
+--- a/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
++++ b/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
+@@ -61,6 +61,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_arch_invalidate_secondary_tlb
+ NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_vma_added_flags
+ NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_device_range
+ NV_CONFTEST_TYPE_COMPILE_TESTS += handle_mm_fault_has_pt_regs_arg
++NV_CONFTEST_TYPE_COMPILE_TESTS += get_dev_pagemap_has_pgmap_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_unified_nodes
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_home_node
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mpol_preferred_many_present
+--- a/kernel-open/nvidia-uvm/uvm_linux.h
++++ b/kernel-open/nvidia-uvm/uvm_linux.h
+@@ -115,6 +115,12 @@ typedef struct page *vm_fault_t;
+ 
+ #define NV_UVM_GFP_FLAGS (GFP_KERNEL | __GFP_NOMEMALLOC)
+ 
++#if defined(NV_GET_DEV_PAGEMAP_HAS_PGMAP_ARG)
++    #define NV_GET_DEV_PAGEMAP(pfn) get_dev_pagemap(pfn, NULL)
++#else
++    #define NV_GET_DEV_PAGEMAP get_dev_pagemap
++#endif
++
+ /* Return a nanosecond-precise value */
+ static inline NvU64 NV_GETTIME(void)
+ {
+--- a/kernel-open/nvidia-uvm/uvm_va_range_device_p2p.c
++++ b/kernel-open/nvidia-uvm/uvm_va_range_device_p2p.c
+@@ -360,7 +360,7 @@ static NV_STATUS alloc_cdmm_device_p2p(uvm_gpu_t *gpu,
+         // a reference to them, so take one now if using DEVICE_COHERENT pages.
+         if (gpu->parent->cdmm_enabled) {
+             get_page(page);
+-            get_dev_pagemap(page_to_pfn(page), NULL);
++            NV_GET_DEV_PAGEMAP(page_to_pfn(page));
+         }
+ #else
+         // CDMM P2PDMA will never be enabled for this case
