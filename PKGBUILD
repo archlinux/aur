@@ -2,7 +2,7 @@
 
 pkgname=python-elm327-emulator
 _name=${pkgname#python-}
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 epoch=
 pkgdesc="ELM327 Emulator for testing software interfacing OBDII via ELM327 adapter."
@@ -14,10 +14,10 @@ provides=(${_name} ${pkgname})
 conflicts=(${_name} ${pkgname})
 depends=(
     python
+    python-daemon
     python-lockfile
     python-yaml
     # AUR
-    python-daemon
     python-obd
 )
 makedepends=(
@@ -31,7 +31,7 @@ _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 # source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('927fead0b3323015d2f5f627c469cf616d92bbeda4a28f6006ab1648b80ad2d8')
+sha256sums=('c4527894abd613f36c87ecba47b6b4ea91fd2b123509fd71d9e49ab41e656d87')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
