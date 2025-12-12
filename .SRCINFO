@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync
 	pkgdesc = The tool syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = 1.18.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = limine-snapper-sync
 	optdepends = xxhash: Fast hashing utility for deduplication with shorter hashes.
 	conflicts = limine-snapper-sync-git
 	backup = etc/limine-snapper-sync.conf
-	source = limine-snapper-sync-1.18.0.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.18.0/limine-snapper-sync-1.18.0.tar.gz
-	sha256sums = a31245d045d8fd012768ef11fdc49acf467498f98d07763921ac6592d81dd761
+	source = limine-snapper-sync-1.18.1.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.18.1/limine-snapper-sync-1.18.1.tar.gz
+	sha256sums = 449df3924eda6b98dd22149b3923a04b685527c7d93b68329a86bf6cf022aa7e
 
 pkgname = limine-snapper-sync
