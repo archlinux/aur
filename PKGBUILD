@@ -3,13 +3,13 @@
 pkgname=python-coq-jupyter
 _name=coq_jupyter
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Coq kernel for Jupyter"
 arch=('any')
 url="https://github.com/EugeneLoy/coq_jupyter"
 license=('Apache-2.0')
 makedepends=('python-setuptools')
-depends=('coq' 'python-jupyter-client' 'python-future')
+depends=('coq' 'python-ipykernel' 'python-future')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 
 build() {
