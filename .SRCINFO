@@ -1,5 +1,5 @@
 pkgbase = amdisp4-dkms
-	pkgdesc = AMD Image Signal Processor (amdisp4)
+	pkgdesc = AMD ISP4 and camera subsystem driver, stripped patches for dkms
 	pkgver = 6
 	pkgrel = 1
 	url = https://github.com/idovitz/amdisp4
