@@ -1,0 +1,4 @@
+[filepack-bin]
+source = "github"
+github = "casey/filepack"
+use_latest_release = true
