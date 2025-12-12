@@ -1,12 +1,12 @@
 # Maintainer: Antariksh Singh <antarikshsingh212@gmail.com>
 pkgname=playtorrio-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one media center for streaming and for downloading games"
 arch=('x86_64')
 url="https://github.com/ayman708-UX/PlayTorrio"
 license=('LicenseRef-custom')
-depends=('fuse2' 'mpv' 'ffmpeg' 'gtk2' 'nodejs-lts-iron' 'nspr' 'gtk3' 'nss' 'libdbusmenu-gtk2' 'libxcomposite' 'dbus-glib' 'libdbusmenu-glib' 'libxdamage' 'libindicator-gtk2' 'libcups' 'at-spi2-core')
+depends=('fuse2' 'mpv' 'ffmpeg' 'gtk2' 'nodejs' 'nspr' 'gtk3' 'nss' 'libdbusmenu-gtk2' 'libxcomposite' 'dbus-glib' 'libdbusmenu-glib' 'libxdamage' 'libindicator-gtk2' 'libcups' 'at-spi2-core')
 optdepends=('vlc: Alternative media player'
   'jackett: Torrent indexer integration'
   'real-debrid: Premium streaming service')
