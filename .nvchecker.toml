@@ -1,0 +1,5 @@
+[cutechess-bin]
+source = "github"
+github = "cutechess/cutechess"
+use_latest_release = true
+prefix = "v"
