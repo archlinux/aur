@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-gtk2
 pkgver=12.14.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -9,6 +9,7 @@ license=('GPL-2.0')
 makedepends=(lazarus make fpc gettext binutils gtk2)
 depends=(gtk2 heidisql mariadb-libs postgresql-libs libperconaserverclient sqlite freetds)
 provides=(heidisql-client)
+conflicts=(heidisql-common)
 
 source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
 sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01')
