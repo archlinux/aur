@@ -1,0 +1,5 @@
+[goku-bin]
+source = "github"
+github = "jcaromiq/goku"
+use_latest_release = true
+prefix = "v"

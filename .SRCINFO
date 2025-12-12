@@ -1,17 +1,17 @@
 pkgbase = goku-bin
 	pkgdesc = HTTP load testing application
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/jcaromiq/goku
 	arch = x86_64
 	license = MIT
 	provides = goku
 	conflicts = goku
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/jcaromiq/goku/v2.0.0/LICENSE
-	source = README-2.0.0::https://raw.githubusercontent.com/jcaromiq/goku/v2.0.0/README.md
+	source = LICENSE-2.0.1::https://raw.githubusercontent.com/jcaromiq/goku/v2.0.1/LICENSE
+	source = README-2.0.1::https://raw.githubusercontent.com/jcaromiq/goku/v2.0.1/README.md
 	sha256sums = b5f125293d8f7ed90ee6af4e4675e0b6722ba979aa7ac8c77b26cdc5c25b34f6
-	sha256sums = 026d02759d9949024f3f2eee6a0e53890a365e825e43b2217ecf20b0c57d50bc
-	source_x86_64 = goku-2.0.0.tar.gz::https://github.com/jcaromiq/goku/releases/download/v2.0.0/goku-Linux-musl-x86_64.tar.gz
-	sha256sums_x86_64 = e8b601af9a28ebd12d956568d91fde823622411ef74a0e1a6bff3af7ac9d357e
+	sha256sums = a466421b5dd4f597715828bdc45c98724195ef5e71a749e445183a6632e6ba8f
+	source_x86_64 = goku-2.0.1.tar.gz::https://github.com/jcaromiq/goku/releases/download/v2.0.1/goku-Linux-musl-x86_64.tar.gz
+	sha256sums_x86_64 = 3091ac6fa40589ec1a00c18e6fb2b4eb8a09b86f24c064126bc8384894671576
 
 pkgname = goku-bin
