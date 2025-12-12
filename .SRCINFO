@@ -1,0 +1,14 @@
+pkgbase = zmx-git
+	pkgdesc = Session persistence for terminal processes
+	pkgver = r159.651dd7c
+	pkgrel = 1
+	url = https://zmx.sh/
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = zig
+	source = zmx-git::git+https://github.com/neurosnap/zmx/
+	md5sums = SKIP
+
+pkgname = zmx-git
