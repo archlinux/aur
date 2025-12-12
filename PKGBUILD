@@ -11,7 +11,7 @@ source=("wefetch.c")
 sha256sums=('SKIP')
 
 build() {
-  gcc -std=c11 -O2 -DNDEBUG -o wefetch wefetch.c
+  gcc -o wefetch wefetch.c
 }
 
 package() {
