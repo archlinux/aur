@@ -1,6 +1,6 @@
 pkgbase = fingwit
 	pkgdesc = Fingerprint Configuration Tool
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/xapp-project/fingwit
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = fingwit
 	depends = python-setproctitle
 	depends = xapp
 	depends = xapp-symbolic-icons
-	source = fingwit_1.0.6.tar.gz::https://github.com/xapp-project/fingwit/archive/refs/tags/1.0.6.tar.gz
-	sha256sums = c169f889dd8977beabe70966060efb29df5fe1d78911ed465f452b4c8f39a99b
+	source = fingwit_1.0.7.tar.gz::https://github.com/xapp-project/fingwit/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = 4d34e1904d5f520642c772b9c4acf74038101c2f714cc48e03e79b39dd8ff5fc
 
 pkgname = fingwit
