@@ -1,11 +1,11 @@
 pkgbase = structstore
-	pkgdesc = Structured object storage, dynamically typed, to be shared between processes
-	pkgver = 0.5.0
+	pkgdesc = Multi-process shared data structures without communication overhead
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/mertemba/structstore
 	arch = x86_64
 	arch = aarch64
-	license = BSD-3-Clause
+	license = LGPL-3.0-only
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc
@@ -16,7 +16,7 @@ pkgbase = structstore
 	depends = gcc-libs
 	depends = yaml-cpp
 	options = !debug
-	source = git+https://github.com/mertemba/structstore.git
+	source = git+https://codeberg.org/mertemba/structstore
 	sha256sums = SKIP
 
 pkgname = structstore

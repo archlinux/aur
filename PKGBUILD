@@ -2,15 +2,15 @@
 
 pkgbase=structstore
 pkgname=(structstore structstore_py)
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='Structured object storage, dynamically typed, to be shared between processes'
+pkgdesc='Multi-process shared data structures without communication overhead'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mertemba/structstore'
-license=('BSD-3-Clause')
+license=('LGPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'yaml-cpp')
 makedepends=('cmake' 'ninja' 'gcc' 'yaml-cpp' 'python' 'python-pip')
-source=("git+https://github.com/mertemba/structstore.git")
+source=("git+https://codeberg.org/mertemba/structstore")
 sha256sums=('SKIP')
 options=(!debug)
 
