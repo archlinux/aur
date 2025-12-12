@@ -1,10 +1,10 @@
 pkgname=paczf
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A TUI frontend for pacman/paru using fzf'
 arch=('any')
 license=('MPL-2.0')
-depends=('sh' 'fzf' 'paru' 'pacman' 'less' 'yay')
+depends=('sh' 'fzf' 'paru' 'pacman' 'less')
 source=(
     'https://codeberg.org/bankenstein/paczf/raw/branch/master/pacget'
     'https://codeberg.org/bankenstein/paczf/raw/branch/master/pacls'

@@ -1,7 +1,7 @@
 pkgbase = paczf
 	pkgdesc = A TUI frontend for pacman/paru using fzf
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	license = MPL-2.0
 	depends = sh
@@ -9,7 +9,6 @@ pkgbase = paczf
 	depends = paru
 	depends = pacman
 	depends = less
-	depends = yay
 	source = https://codeberg.org/bankenstein/paczf/raw/branch/master/pacget
 	source = https://codeberg.org/bankenstein/paczf/raw/branch/master/pacls
 	source = https://codeberg.org/bankenstein/paczf/raw/branch/master/pacrm
