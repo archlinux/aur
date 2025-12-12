@@ -1,7 +1,7 @@
 pkgbase = qt6-qtcsv
 	pkgdesc = Library for reading and writing csv-files in Qt.
 	pkgver = 1.7
-	pkgrel = 5
+	pkgrel = 8
 	url = https://github.com/iamantony/qtcsv
 	arch = x86_64
 	license = MIT

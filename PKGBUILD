@@ -2,7 +2,7 @@
 
 pkgname=qt6-qtcsv
 pkgver=1.7
-pkgrel=5
+pkgrel=8
 pkgdesc="Library for reading and writing csv-files in Qt."
 arch=($CARCH)
 url="https://github.com/iamantony/qtcsv"
@@ -31,6 +31,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -Wno-dev \
         -B build \
         -G Ninja
     ninja -C build
