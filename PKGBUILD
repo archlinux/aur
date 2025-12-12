@@ -4,7 +4,7 @@ pkgbase=python-ext4
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Library for read only interactions with an ext4 filesystem"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "${pkgver}-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/_test_image.sh"
         "${pkgver}-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/test.py"
         'test.txt')
-md5sums=('fab01b1b845f2821f5f47d2e7b3fa5d0'
+md5sums=('0c5768c18e7dbb65754774efb0d0dbe1'
          '8760a73d1a26816dd22f12721ea3a343'
          '820360db2535e1c80f60facccfaf505a'
          '8f7fa83c2cc8ea6e90fe94b1efd1a83a')
