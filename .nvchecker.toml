@@ -1,0 +1,5 @@
+[helm-bin]
+source = "github"
+github = "0xjuanma/helm"
+use_latest_release = true
+prefix = "v"

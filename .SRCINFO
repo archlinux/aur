@@ -1,0 +1,21 @@
+pkgbase = helm-bin
+	pkgdesc = A minimalistic and customizable pomodoro-like timer for your terminal
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/0xjuanma/helm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = helm
+	conflicts = helm
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/0xjuanma/helm/v0.6.0/LICENSE
+	source = README-0.6.0.md::https://raw.githubusercontent.com/0xjuanma/helm/v0.6.0/README.md
+	sha256sums = 4dc0a5daa325b37f64f50f726db4dd94342dcfec49bd0fe80266a0ef59953bfa
+	sha256sums = 431e7e7bddd75522c0c69fe3d374e1d2fdb9684a58d6e3dfee1a2800dec14c27
+	source_x86_64 = helm-x86_64-0.6.0::https://github.com/0xjuanma/helm/releases/download/v0.6.0/helm-linux-amd64
+	sha256sums_x86_64 = fd42ce0047e551a0a8fe4219f1511a25b2bc59640c5b72561ebae0dd8150590c
+	source_aarch64 = helm-aarch64-0.6.0::https://github.com/0xjuanma/helm/releases/download/v0.6.0/helm-linux-arm64
+	sha256sums_aarch64 = 165dc2886b9f6cbc91daa6703b8a2cd2cbdd00ab31aa6a7ff6d7052e12ed1e4e
+
+pkgname = helm-bin
