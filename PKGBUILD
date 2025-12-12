@@ -12,7 +12,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.54.2
+pkgver=1.54.3
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -66,7 +66,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=${pkgver/[a-z]/-&}"
 )
-b2sums=('d2006832430d95898e183c3a926a747e021726855900f245fffd19076340ea77ec6dac2ffad2bc389479d7ed571bddaacaa1eee257c59352dc9de92caaabb076')
+b2sums=('5da0800e5ea38f8eda955bf854c778b93e3a17b80da8602b48e017e66e74392caf9458701f6b7a4b9de85108d30ecd89d5491bd26123925228b6788d3b6aae32')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
@@ -78,13 +78,11 @@ validpgpkeys=(
   49EA7C670E0850E7419514F629C2366E4DFC5728 # Thomas Haller <thaller@redhat.com>
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
   8D1F4C471D38D59A56301CEBE1974C8D8DD6ED2A # Filip Pokryvka <fpokryvk@redhat.com>
+  1CFF865BDF957BE935765BBD2E1878D078DEF7C6 # Íñigo Huguet <ihuguet@riseup.net>
 )
 
 prepare() {
   cd NetworkManager
-
-  # Fix docs generation
-  git cherry-pick -n 12eff9a7fdfeabab12ce56e5f7d515a13a3d704c
 }
 
 build() {
@@ -150,7 +148,6 @@ package_networkmanager() {
     libndp
     libnewt
     libnm
-    libnvme
     libpsl
     libteam
     mobile-broadband-provider-info
@@ -167,6 +164,7 @@ package_networkmanager() {
     'firewalld: firewall support'
     'iptables: connection sharing'
     'iwd: wpa_supplicant alternative'
+    'libnvme: NBFT support'
     'modemmanager: cellular network support'
     'nftables: connection sharing'
     'openresolv: alternative resolv.conf manager'
@@ -204,6 +202,7 @@ END
   _pick libnm usr/include/libnm
   _pick libnm usr/lib/girepository-1.0/NM-*
   _pick libnm usr/lib/libnm.*
+  _pick libnm usr/lib/nm-libnm-helper
   _pick libnm usr/lib/pkgconfig/libnm.pc
   _pick libnm usr/share/gir-1.0/NM-*
   _pick libnm usr/share/vala/vapi/libnm.*
@@ -242,6 +241,7 @@ package_nm-cloud-setup() {
     gcc-libs
     glib2
     glibc
+    jansson
     libnm
     networkmanager
   )
