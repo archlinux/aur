@@ -1,0 +1,5 @@
+[bp-bin]
+source = "github"
+github = "printfn/bp"
+use_latest_release = true
+prefix = "v"
