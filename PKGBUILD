@@ -4,7 +4,7 @@
 pkgname=larksuite-bin
 pkgver=7.54.11
 _pkgtyp=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
@@ -18,12 +18,10 @@ provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
 	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
-# Generate escaped string with `printf %q {command}'; you may need to wrap in "" and escape some "" around {command}.
-# View unescaped string with `echo {escaped string}'; don't use quotes.
-DLAGENTS=("https::/usr/bin/sh -c curl\ -o\ \'%o\'\ -L\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
-	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \|\ sed\ \'s/countryCode\":\"\[\^\"\]\*/countryCode\":\"LI/\'\ \>\ %o")
+DLAGENTS=("https::/usr/bin/bash ${startdir}/dlagent-lark.sh %o %u"
+	"http::/usr/bin/bash ${startdir}/dlagent-license.sh %o %u")
 sha256sums=('aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9'
-            '7378273bd0456bf323ac2eea532bf7fb3202559fa328401e9b50bcd42c876c31')
+            '5c3cce34657c98821f936b2cbebcf4c6e15594d64fda2653aff57344afa7c6a2')
 
 package() {
 	# License
