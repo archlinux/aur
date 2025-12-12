@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=2.0.3.rebuild.1.r0.g5355012
+pkgver=2.1.0.r41.g789bead
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
@@ -18,6 +18,7 @@ sha256sums=(SKIP)
 
 prepare() {
   cd "$_pkgname"
+  cargo update alpm alpm-utils
   cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
