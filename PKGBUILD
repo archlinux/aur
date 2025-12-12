@@ -5,12 +5,13 @@ _npmver=19.0.16
 
 pkgname=${_npmname}
 pkgdesc="Cloud Commander file manager for the web with console and editor."
-pkgver=$_npmver
-pkgrel=1
+pkgver=${_npmver}
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
 _urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
 license=("MIT")
+
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs" "python")
 makedepends=("npm" "jq")
