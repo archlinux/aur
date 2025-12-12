@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha6.r27.g4ace4c8
+pkgver=3.0.0_alpha6.r138.g10d4bd4
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -36,7 +36,6 @@ build() {
   cd "$_pkgname"
 
   arch-meson build \
-    -Dconsolekit=false \
     -Dlogind=true
   ninja -C build
 }

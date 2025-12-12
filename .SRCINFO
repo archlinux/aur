@@ -1,6 +1,6 @@
 pkgbase = entrance-git
 	pkgdesc = Enlightenment Display Manager
-	pkgver = 3.0.0_alpha6.r27.g4ace4c8
+	pkgver = 3.0.0_alpha6.r138.g10d4bd4
 	pkgrel = 1
 	url = http://www.enlightenment.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = entrance-git
 	depends = efl
 	depends = xorg-xauth
 	depends = sudo
-	provides = entrance=3.0.0_alpha6.r27.g4ace4c8
+	provides = entrance=3.0.0_alpha6.r138.g10d4bd4
 	conflicts = entrance
 	backup = etc/entrance/entrance.conf
 	source = git+https://github.com/Obsidian-StudiosInc/entrance
