@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-de-bin
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (de-DE)
-	pkgver = 147.0a1.20251111
+	pkgver = 148.0a1.20251212
 	pkgrel = 1
 	url = https://www.mozilla.org/de-DE/firefox/nightly
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = firefox-nightly-de-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 1e3e5f64ed2847e54efdc89d6c4c24bcd9a748fa0488a98bac0d27fe946ce6e4be6ccb4c41fbd7cc7142d20ef91291ca87f8d6c39093af390cd163743a950cf5
 	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-147.0a1.de.linux-x86_64.tar.xz
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-147.0a1.de.linux-x86_64.tar.xz.asc
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-148.0a1.de.linux-x86_64.tar.xz
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-148.0a1.de.linux-x86_64.tar.xz.asc
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = SKIP
 
