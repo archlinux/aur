@@ -3,7 +3,7 @@
 pkgname=heidisql
 epoch=1
 pkgver=12.14.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackage for HeidiSQL (install a provider of your choice for heidisql-client, this includes shared files: wrapper script, locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -17,7 +17,7 @@ source=(
   heidisql
 )
 sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
-            '46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb')
+            '2efee1d767a85bd1db4c8f54ea7f69195ded543ac185959e52e970ee031c6dbe')
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
