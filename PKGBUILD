@@ -1,6 +1,6 @@
 pkgname=ghpkg
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Indev package manager"
 arch=('any')
 url="https://github.com/Frothy7650/ghpkg/"
