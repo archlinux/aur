@@ -1,0 +1,13 @@
+pkgbase = numscript
+	pkgdesc = NumScript: a Python virtual machine shell
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/skirexwastaken/numscript-aur
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/skirexwastaken/numscript-aur.git
+	sha256sums = SKIP
+
+pkgname = numscript
