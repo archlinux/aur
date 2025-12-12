@@ -2,7 +2,7 @@
 # Co-Maintainer: Naxels <naxels at gmail dot com>
 
 pkgname="metabase-driver-duckdb"
-pkgver=1.4.1.1
+pkgver=1.4.3.0
 pkgrel=1
 pkgdesc="DuckDB driver for Metabase"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/motherduckdb/metabase_duckdb_driver"
 license=("Apache-2.0")
 depends=("metabase")
 source=("$url/releases/download/$pkgver/duckdb.metabase-driver.jar")
-b2sums=('332c6f3f109b88d63c4612d43796d7f1846639769517fcc17e99b7d0ee993b7e517fb5304545f0aae99105d05006639247f4ec9a60209603badb400a1f0111f0')
+b2sums=('786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
 noextract=("duckdb.metabase-driver.jar")
 options=("!strip")
 
