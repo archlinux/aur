@@ -1,0 +1,16 @@
+pkgbase = novel-editor-bin
+	pkgdesc = Professional novel writing application with advanced project management and world-building tools (binary)
+	pkgver = 0.1.51
+	pkgrel = 1
+	url = https://github.com/jeasoncc/novel-editor
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = novel-editor
+	conflicts = novel-editor
+	source = novel-editor-bin-0.1.51.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.51/novel-editor_0.1.51_amd64.deb
+	sha256sums = SKIP
+
+pkgname = novel-editor-bin

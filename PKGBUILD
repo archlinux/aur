@@ -1,0 +1,37 @@
+# Maintainer: Jeason <xiaomiquan@aliyun.com>
+
+pkgname=novel-editor-bin
+pkgver=0.1.51
+pkgrel=1
+pkgdesc="Professional novel writing application with advanced project management and world-building tools (binary)"
+arch=('x86_64')
+url="https://github.com/jeasoncc/novel-editor"
+license=('MIT')
+depends=(
+  'webkit2gtk'
+  'gtk3'
+  'libappindicator-gtk3'
+)
+provides=('novel-editor')
+conflicts=('novel-editor')
+source=(
+  "$pkgname-$pkgver.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.51/novel-editor_0.1.51_amd64.deb"
+)
+sha256sums=('SKIP')  # 首次发布时使用 SKIP，之后更新为实际的 SHA256
+
+prepare() {
+  # 提取 DEB 包
+  cd "$srcdir"
+  ar x "$pkgname-$pkgver.deb"
+  tar -xf data.tar.xz
+}
+
+package() {
+  cd "$srcdir"
+  
+  # 复制所有文件到目标目录
+  cp -r usr "$pkgdir/"
+  
+  # 确保二进制文件有执行权限
+  chmod +x "$pkgdir/usr/bin/novel-editor"
+}
