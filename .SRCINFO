@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 142.0.7444.175
+	pkgver = 143.0.7499.109
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -50,7 +50,6 @@ pkgbase = ungoogled-chromium
 	depends = opus
 	depends = harfbuzz
 	depends = libxslt
-	depends = libpng
 	depends = freetype2
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
@@ -58,13 +57,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=142.0.7444.175
-	provides = chromedriver=142.0.7444.175
+	provides = chromium=143.0.7499.109
+	provides = chromedriver=143.0.7499.109
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
 	source = fetch-chromium-release
-	source = ungoogled-chromium-142.0.7444.175-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/142.0.7444.175-1.tar.gz
+	source = ungoogled-chromium-143.0.7499.109-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/143.0.7499.109-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -78,7 +77,7 @@ pkgbase = ungoogled-chromium
 	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 	source = chromium-141-cssstylesheet-iwyu.patch
 	sha256sums = 720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661
-	sha256sums = ec3584995b6a69373fc06f6230602c1ebc68f802feedba44c962dc25bb896e33
+	sha256sums = d5b8561004cb19ef56d7f0e23e3045f01a5971edb7ec84c5c6e7b2e2335378da
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
