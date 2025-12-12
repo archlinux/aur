@@ -48,7 +48,7 @@ depends=(
     'zstd'
     'rutoken-connect'
 )
-optdepends=('rutoken-pkcs11' 'jacartauc')
+optdepends=('rutoken-connect' 'jacartauc')
 makedepends=('grep' 'libarchive')
 
 source=(
