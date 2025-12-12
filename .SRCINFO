@@ -1,6 +1,6 @@
 pkgbase = image-analyze
 	pkgdesc = Lightweight image viewer for wayland
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/ArthurGuihaire/image-analyze
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = image-analyze
 	makedepends = make
 	makedepends = gcc
 	depends = glfw
-	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 9890ea183640808dba30384050009ebc842e42e9754ce7999a4f64a7b0abaf4d
+	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 19afbc27dd963461ed8d5c62466678a739342e4409324a0d03d0327ba0aa46b0
 
 pkgname = image-analyze
