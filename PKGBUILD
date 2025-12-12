@@ -2,7 +2,7 @@
 
 pkgname=python-aio-mqtt-mod-git
 _gitname=aio-mqtt
-pkgver=r10.c9473b3
+pkgver=r11.8c84210
 pkgrel=1
 pkgdesc='Asynchronous MQTT client for 3.1.1 protocol version (devbis fork)'
 url='https://github.com/devbis/aio-mqtt'
@@ -12,7 +12,7 @@ depends=()
 makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 conflicts=('python-aio-mqtt-mod-git' 'python-aio-mqtt-mod' 'python-aio-mqtt')
 provides=('python-aio-mqtt-mod')
-source=('git+https://github.com/syyyr/aio-mqtt.git#branch=makepkg')
+source=('git+https://github.com/devbis/aio-mqtt.git')
 md5sums=('SKIP')
 
 pkgver() {
