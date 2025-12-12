@@ -1,0 +1,13 @@
+pkgbase = mpkg
+	pkgdesc = Simple AUR helper that installs and removes AUR packages
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GNU GPLv3
+	makedepends = gcc
+	depends = git
+	depends = base-devel
+	source = mpkg.c
+	sha256sums = SKIP
+
+pkgname = mpkg
