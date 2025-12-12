@@ -1,0 +1,5 @@
+[combaud-bin]
+source = "github"
+github = "VHSgunzo/combaud"
+use_latest_release = true
+prefix = "v"
