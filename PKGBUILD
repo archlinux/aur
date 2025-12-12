@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab'
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Custom commands for every project'
 url='https://github.com/bab-sh/bab'
@@ -13,7 +13,7 @@ conflicts=('bab-bin')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz")
-sha256sums=('e9d642114ba5264d5c3a3d502063484f3005e4d57823b3f1a04d4675859f09c2')
+sha256sums=('81930de566af985f9e118dc74040c121a7c2e1940c983274a2f673fc4b4e2900')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -24,8 +24,8 @@ build() {
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X github.com/bab-sh/bab/internal/version.Version=${pkgver} \
-  -X github.com/bab-sh/bab/internal/version.Commit=220cd7ecebe0ebb9fc4bfde6e18904edb71492f2 \
-  -X github.com/bab-sh/bab/internal/version.Date=2025-12-12T06:51:55Z \
+  -X github.com/bab-sh/bab/internal/version.Commit=7c77c3e11598b1f63348e9754c2f33ae6042dcae \
+  -X github.com/bab-sh/bab/internal/version.Date=2025-12-12T14:07:53Z \
   -X github.com/bab-sh/bab/internal/version.BuiltBy=aur" \
   -o bab .
 
