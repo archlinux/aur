@@ -11,17 +11,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Ametrine-cc/refresh/archive
 sha256sums=('218f5b115d9905aab7ab6c2594d4d14a7a05cfffaab3528a5fcb20ddf1f54950')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "refresh-0.1.0"
   cargo build --release --locked
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "refresh-0.1.0"
   cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "refresh-0.1.0"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
