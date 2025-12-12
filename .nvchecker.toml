@@ -1,0 +1,5 @@
+[secho-bin]
+source = "github"
+github = "CodeFlowShai/secho"
+use_latest_release = true
+prefix = "v"
