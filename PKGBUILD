@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=rocajuanma
+_pkgauthor=0xjuanma
 _pkgname=anvil
 pkgname=${_pkgname}-bin
 pkgver=2.8.0

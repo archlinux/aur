@@ -1,5 +1,5 @@
 [anvil-bin]
 source = "github"
-github = "rocajuanma/anvil"
+github = "0xjuanma/anvil"
 use_latest_release = true
 prefix = "v"
