@@ -1,0 +1,5 @@
+[borealis-bin]
+source = "github"
+github = "Usbac/borealis"
+use_latest_release = true
+prefix = "v"
