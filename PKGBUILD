@@ -2,7 +2,7 @@
 
 _pkgname=3dslicer
 pkgname=3dslicer-git
-pkgver=5.10.0.r64.ae947551af
+pkgver=5.10.0.r66.85fcc97f5e
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
@@ -59,17 +59,15 @@ provides=(3dslicer=${pkgver})
 conflicts=(3dslicer)
 source=("${_pkgname}::git+https://github.com/Slicer/Slicer.git"
         "${_pkgname}.svg::https://www.slicer.org/assets/img/3D-Slicer-Mark.svg"
-        "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz"
         "0001-fix-build-with-system-rapidjson.patch"
         "0002-fix-build-with-system-sqlite3.patch"
-        "0003-fix-QT_PLUGINS_DIR-detection-using-qmake.patch"
+        "0003-COMP-Fix-QT_PLUGINS_DIR-QT_BINARY_DIR-QT_LIBRARY_DIR.patch"
 )
 sha512sums=('SKIP'
             '3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014'
-            '42395e20b10a8e9ef3e33014f9a4eed08d46ab952e02d2c1bbc8f6133eca0d7719fb75680f9bbff6552f20fcd1b73d86860f7f39388d631f98fb6f622b37cf04'
             'b1cc508098af1b5b5bbef187b85032fe921ed04e29653983282c00022db65d579fd68b5aebb089980faf598ef4af1a262971b354e7841219bd2b0d9cfde5c499'
             'b6cbe68b1639410322f669fb822e5a6c52daa7873bc1eb9b63610aa8f894b7c9c6892b1d01e47ac3492dc233c02e1f45fbcf148e91597a4d3c6c95b1bd619592'
-            '3982675a2753de5ec847301f1fffa8d2229da55b8af32a98e31214e5e8add2d8d3b19d36d4301e2ab1d18b0bb5d2aa4aad52f7eb07218f5dce0fe3b0ec053689')
+            '3e86eb0722a79a156b62dc915cbda1b3ea6521405cb63036793c93cdbd8dce03385dc0644fc2cf5e01dd3f1e094be4bc2da73c8c805140501107434df3651669')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -86,8 +84,8 @@ prepare() {
   patch -d ${_pkgname} -p1 -i ${srcdir}/0001-fix-build-with-system-rapidjson.patch
   # fix building with system sqlite3
   patch -d ${_pkgname} -p1 -i ${srcdir}/0002-fix-build-with-system-sqlite3.patch
-  # set QT_PLUGINS_DIR using qmake
-  patch -d ${_pkgname} -p1 -i ${srcdir}/0003-fix-QT_PLUGINS_DIR-detection-using-qmake.patch
+  # set QT_PLUGINS_DIR, QT_BINARY_DIR, and QT_LIBRARY_DIR using qmake
+  patch -d ${_pkgname} -p1 -i ${srcdir}/0003-COMP-Fix-QT_PLUGINS_DIR-QT_BINARY_DIR-QT_LIBRARY_DIR.patch
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${_pkgname} \
     --categories "Graphics;MedicalSoftware;Science;" \
