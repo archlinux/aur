@@ -1,0 +1,5 @@
+[dutree-bin]
+source = "github"
+github = "nachoparker/dutree"
+use_latest_release = true
+prefix = "v"
