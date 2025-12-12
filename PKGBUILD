@@ -1,7 +1,7 @@
 # Maintainer: Bryson Kelly <bryson.dev2011@gmail.com>
 
 pkgname=buf-cli
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Bootable USB Flasher - Create bootable USB drives from ISO images"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'grub: BIOS boot support for Windows ISOs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Germ-99/buf/archive/v${pkgver}.tar.gz")
-sha256sums=('b34c1d738ad8a3203aec6c54027623932f093711df592ca56e9c8e52926ac916')  
+sha256sums=('e99557db1d50038925d4d33d99dd6d8e4221e2ce3c38dc9dce1aa23e701c1ad5')  
 
 build() {
     cd "${srcdir}/buf-${pkgver}"
