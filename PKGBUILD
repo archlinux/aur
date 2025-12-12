@@ -1,4 +1,4 @@
-# Maintainer: Testudo Aquatilis
+# Maintainer: Ivan Kanis
 pkgname=nagelfar
 _pkgver_main=1
 _pkgver_sub=3
