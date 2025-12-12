@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wikilift/sle-suite-pro.git'
         'sle-suite-pro.desktop')
 sha256sums=('SKIP'
-            '38075fb61bef81cbf29b641dd77fe1f235a322fbef7b837cd2efe74f0e820823')
+            '1202793fa26b061309defe4240b8b65334486959b7e5a7537babac036278d77a')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"

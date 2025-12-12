@@ -5,6 +5,6 @@ Comment=Advanced management tool for SLE cards
 Exec=sle-suite-pro
 Icon=sle-suite-pro
 Type=Application
-Categories=Development;
+Categories=Utility;
 Terminal=false
 StartupNotify=false
