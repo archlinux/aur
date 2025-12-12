@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/jobs/124
 sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}"
+    cd "${srcdir}/bundle"
 
     # Install the entire bundle to /opt/doudou (Flutter needs relative paths)
     install -d "${pkgdir}/opt/doudou"
