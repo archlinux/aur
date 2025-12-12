@@ -1,0 +1,18 @@
+pkgbase = python-busylight-core
+	pkgdesc = Busylight Core Implementation for Humans
+	pkgver = 0.15.3
+	pkgrel = 1
+	url = https://github.com/JnyJny/busylight-core
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python>=3.11
+	depends = python-hidapi>=0.14.0
+	depends = python-loguru
+	depends = python-pyserial>=3.5
+	source = https://github.com/JnyJny/busylight-core/releases/download/v0.15.3/busylight_core-0.15.3.tar.gz
+	sha256sums = bd72045e8614f007b30f599c40e32cb753f5986349799c30822066d1eb8d8695
+
+pkgname = python-busylight-core
