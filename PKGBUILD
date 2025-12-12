@@ -54,6 +54,9 @@ prepare()
     git config submodule.libsodium.url "${srcdir}"/libsodium/
 
     git -c protocol.file.allow=always submodule update
+
+    # TODO
+    find "${srcdir}"/"${pkgname}"/ -name Makefile -exec sed -i "s/grpc_tools.protoc/grpc_tools.protoc --experimental_editions/" {} \;
 }
 
 build()
