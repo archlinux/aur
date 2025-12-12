@@ -1,0 +1,10 @@
+print_message() {
+	echo -e "\033[1;33mIMPORTANT\033[0m\033[1m: python-albumentations is unmaintained since June 2025."
+	echo -e "\tPlease install the AGPLv3 drop-in replacement python-albumentationsx instead."
+}
+post_install() {
+	print_message
+}
+post_upgrade() {
+	print_message
+}
