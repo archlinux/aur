@@ -1,7 +1,7 @@
 pkgbase = himitsu-secret-service
 	pkgdesc = Himitsu secret-service implementation
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~apreiml/himitsu-secret-service
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,8 @@ pkgbase = himitsu-secret-service
 	depends = python-cryptography
 	depends = python-gobject
 	depends = python-prctl
+	depends = python-xdg
+	depends = python-dbus
 	optdepends = systemd
 	provides = org.freedesktop.secrets
 	source = himitsu-secret-service-0.1.tar.gz::https://git.sr.ht/~apreiml/himitsu-secret-service/archive/0.1.tar.gz

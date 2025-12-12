@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=himitsu-secret-service
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Himitsu secret-service implementation'
 url='https://git.sr.ht/~apreiml/himitsu-secret-service'
 license=(MIT)
@@ -13,6 +13,8 @@ depends=(
 	python-cryptography
 	python-gobject
 	python-prctl
+	python-xdg
+	python-dbus
 )
 optdepends=("systemd")
 makedepends=(python-build python-installer)
