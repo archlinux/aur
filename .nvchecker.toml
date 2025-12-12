@@ -1,0 +1,5 @@
+[gupload-bin]
+source = "github"
+github = "alexcoder04/gupload"
+use_latest_release = true
+prefix = "v"
