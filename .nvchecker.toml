@@ -1,0 +1,5 @@
+[ccat-bin]
+source = "github"
+github = "owenthereal/ccat"
+use_latest_release = true
+prefix = "v"
