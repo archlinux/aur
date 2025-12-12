@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 259.devel.r83944.613f7f26aa7
+	pkgver = 259.rc3.r85286.7524671f74c
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -76,7 +76,7 @@ pkgbase = systemd-git
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
 	sha512sums = SKIP
-	sha512sums = beb15210d8afe69e1e47c99a81da5967428ccc64ece85b8a843333cb741eda061ae7a91a79cec8a1136a624e93e63140013986499589bf10edcc52d865729377
+	sha512sums = 91112cd9aa7e396d6b77c2dc4418347df1febd747e38223bde98f8ffe5d619f82c8cc16a8b3debfba1633b4c48c255ebc11438da309262cfc73aa897451b5b87
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = 3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
@@ -101,7 +101,7 @@ pkgname = systemd-git
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-libs-git=259.devel.r83944.613f7f26aa7
+	depends = systemd-libs-git=259.rc3.r85286.7524671f74c
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -137,7 +137,7 @@ pkgname = systemd-git
 	optdepends = apparmor: additional security features
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
-	optdepends = systemd-ukify-git=259.devel.r83944.613f7f26aa7: combine kernel and initrd into a signed Unified Kernel Image
+	optdepends = systemd-ukify-git=259.rc3.r85286.7524671f74c: combine kernel and initrd into a signed Unified Kernel Image
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
 	optdepends = gnutls: systemd-journal-gatewayd and systemd-journal-remote
@@ -150,9 +150,9 @@ pkgname = systemd-git
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=259.devel.r83944.613f7f26aa7
-	provides = udev=259.devel.r83944.613f7f26aa7
-	provides = systemd=259.devel.r83944.613f7f26aa7
+	provides = systemd-tools=259.rc3.r85286.7524671f74c
+	provides = udev=259.rc3.r85286.7524671f74c
+	provides = systemd=259.rc3.r85286.7524671f74c
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -192,41 +192,41 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=259.devel.r83944.613f7f26aa7
+	provides = systemd-libs=259.rc3.r85286.7524671f74c
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved) (git version)
-	depends = systemd-git=259.devel.r83944.613f7f26aa7
+	depends = systemd-git=259.rc3.r85286.7524671f74c
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=259.devel.r83944.613f7f26aa7
+	provides = systemd-resolvconf=259.rc3.r85286.7524671f74c
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
-	depends = systemd-git=259.devel.r83944.613f7f26aa7
-	provides = systemd-sysvcompat=259.devel.r83944.613f7f26aa7
+	depends = systemd-git=259.rc3.r85286.7524671f74c
+	provides = systemd-sysvcompat=259.rc3.r85286.7524671f74c
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
 pkgname = systemd-tests-git
 	pkgdesc = systemd tests (git version)
-	depends = systemd=259.devel.r83944.613f7f26aa7
-	provides = systemd-tests=259.devel.r83944.613f7f26aa7
+	depends = systemd=259.rc3.r85286.7524671f74c
+	provides = systemd-tests=259.rc3.r85286.7524671f74c
 	conflicts = systemd-tests
 
 pkgname = systemd-ukify-git
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image (git version)
-	depends = systemd-git=259.devel.r83944.613f7f26aa7
+	depends = systemd-git=259.rc3.r85286.7524671f74c
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=259.devel.r83944.613f7f26aa7
+	provides = systemd-ukify=259.rc3.r85286.7524671f74c
 	conflicts = systemd-ukify

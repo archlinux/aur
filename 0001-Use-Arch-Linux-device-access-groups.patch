@@ -25,6 +25,7 @@ index e87c8ea2ec..8f56e87b68 100644
                    'clock-gid',
 -                  'dialout-gid',
                    'disk-gid',
+                   'empower-gid',
                    'input-gid',
                    'kmem-gid',
                    'kvm-gid',
