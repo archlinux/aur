@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=shout
-pkgver=1.01
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight speech-to-text for Wayland/Hyprland, optimized for AI coding agents"
 arch=('any')
