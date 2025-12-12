@@ -1,19 +1,21 @@
 pkgbase = python-wpiformat-git
 	pkgdesc = Linters and formatters for ensuring WPILib's source code conforms to its style guide
-	pkgver = 2025.34
+	pkgver = 2025.78
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/styleguide
 	arch = i686
 	arch = x86_64
-	license = custom=FRC-BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest
+	makedepends = python-setuptools-git-versioning
 	depends = clang
+	depends = python-autoflake
 	depends = python-black
+	depends = python-cpplint
 	depends = python-gersemi
 	depends = python-isort
-	depends = python-regex
 	provides = python-wpiformat
 	conflicts = python-wpiformat
 	source = git+https://github.com/wpilibsuite/styleguide
