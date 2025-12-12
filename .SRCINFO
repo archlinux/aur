@@ -1,6 +1,6 @@
 pkgbase = opaquefiles
 	pkgdesc = File encryption program
-	pkgver = 0.9.9.4
+	pkgver = 0.9.10.0
 	pkgrel = 1
 	url = https://codeberg.org/cozyOwl/OpaqueFiles
 	arch = any
@@ -9,7 +9,9 @@ pkgbase = opaquefiles
 	depends = java-runtime=17
 	depends = bash
 	optdepends = hicolor-icon-theme
-	source = opaquefiles::git+https://codeberg.org/cozyOwl/OpaqueFiles.git?signed#tag=v0.9.9.3
+	optdepends = noto-fonts
+	optdepends = ttf-noto-emoji-monochrome
+	source = opaquefiles::git+https://codeberg.org/cozyOwl/OpaqueFiles.git?signed#tag=v0.9.10.0
 	validpgpkeys = 85A129CD038220C44227EAB9C28D02D181F83532
 	sha256sums = SKIP
 

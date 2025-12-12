@@ -2,7 +2,7 @@
 validpgpkeys=('85A129CD038220C44227EAB9C28D02D181F83532')
 
 pkgname=opaquefiles
-pkgver=0.9.9.4
+pkgver=0.9.10.0
 pkgrel=1
 pkgdesc='File encryption program'
 
@@ -11,7 +11,7 @@ url="https://codeberg.org/cozyOwl/OpaqueFiles"
 license=('GPL-3.0-or-later')
 
 depends=('java-runtime=17' 'bash')
-optdepends=('hicolor-icon-theme')
+optdepends=('hicolor-icon-theme' 'noto-fonts' 'ttf-noto-emoji-monochrome')
 makedepends=('git')
 
 source=(
@@ -30,7 +30,7 @@ package() {
   install -D -m0555 "$srcdir/$pkgname/packaging/releases/$pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname.jar"
 
   echo "Installing /etc/opaqueFiles.properties..."
-  install -D -m0644 "$srcdir/$pkgname/packaging/shared/opaqueFiles.properties" "${pkgdir}/etc/opaqueFiles.properties"
+  install -D -m0644 "$srcdir/$pkgname/app/src/main/resources/opaqueFiles.properties" "${pkgdir}/etc/opaqueFiles.properties"
 
   echo "Installing icon..."
   install -D -m0444 "${srcdir}/${pkgname}/documentation/design/page.codeberg.cozyowl.OpaqueFiles.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/page.codeberg.cozyowl.OpaqueFiles.svg"
