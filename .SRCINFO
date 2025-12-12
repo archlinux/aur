@@ -1,6 +1,6 @@
 pkgbase = code2prompt-bin
 	pkgdesc = A CLI tool to convert your codebase into a single LLM prompt
-	pkgver = 4.0.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/mufeedvh/code2prompt
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = code2prompt-bin
 	depends = zlib
 	provides = code2prompt
 	conflicts = code2prompt
-	source = code2prompt-4.0.2-README.md::https://github.com/mufeedvh/code2prompt/raw/refs/tags/v4.0.2/README.md
-	source = code2prompt-4.0.2-LICENSE::https://github.com/mufeedvh/code2prompt/raw/refs/tags/v4.0.2/LICENSE
-	sha256sums = 9356587fc1907fff32bb3b16a5bdc461d8f5149b51c4fa7dcb86e470dc69a6a8
+	source = code2prompt-4.2.0-README.md::https://github.com/mufeedvh/code2prompt/raw/refs/tags/v4.2.0/README.md
+	source = code2prompt-4.2.0-LICENSE::https://github.com/mufeedvh/code2prompt/raw/refs/tags/v4.2.0/LICENSE
+	sha256sums = 82d5addb83e0371f098fae4200c731467ff747ac718f2aea2155e686a5c4c320
 	sha256sums = 9d90fff5a2c2de4272d9bc1a30c185b11e0312d9fe229ebc23a923a4c495f78d
-	source_x86_64 = code2prompt-4.0.2-x86_64::https://github.com/mufeedvh/code2prompt/releases/download/v4.0.2/code2prompt-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 94a04ee687e0576e550f852e6366cf18bf056ebb0e061274b538185f814ec263
+	source_x86_64 = code2prompt-4.2.0-x86_64::https://github.com/mufeedvh/code2prompt/releases/download/v4.2.0/code2prompt-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 69ff91f6e690de4814f38eb79d1fff5971d5a39bdc82b23ea784dcd450bf965f
 
 pkgname = code2prompt-bin
