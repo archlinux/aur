@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://ceres-solver.org/"
 license=('Apache-2.0')
 depends=('google-glog' 'suitesparse')
-makedepends=('cmake' 'ninja' 'eigen')
+makedepends=('cmake' 'eigen')
 optdepends=('openmp')
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
 sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
@@ -22,7 +22,6 @@ build() {
   cd $pkgname-$pkgver
   cmake \
       -Bbuild \
-      -GNinja \
       -DCMAKE_BUILD_TYPE=None \
       -DCMAKE_UNITY_BUILD=ON \
       -DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,11 +33,11 @@ build() {
       -DBUILD_TESTING=OFF \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_BENCHMARKS=OFF
-  ninja -C build
+  make -C build
 }
 
 package() {
   cd $pkgname-$pkgver
-  DESTDIR=$pkgdir ninja -C build install
+  DESTDIR=$pkgdir make -C build install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
