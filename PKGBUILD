@@ -1,7 +1,7 @@
 pkgname=numscript
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="NumScript: a Python virtual machine shell"
+pkgdesc="NumScript: a lightweight, esoteric, interpreted scripting language designed for numeric programming."
 arch=('any')
 url="https://github.com/skirexwastaken/numscript-aur"
 license=('MIT')
