@@ -1,7 +1,7 @@
 pkgbase = heidisql-gtk2-git
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)
 	pkgver = r262.93bf989a
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
@@ -22,6 +22,7 @@ pkgbase = heidisql-gtk2-git
 	provides = heidisql-gtk2
 	provides = heidisql-client
 	conflicts = heidisql-gtk2
+	conflicts = heidisql-common
 	source = heidisql-gtk2-git::git+https://github.com/HeidiSQL/HeidiSQL.git#branch=lazarus
 	sha256sums = SKIP
 
