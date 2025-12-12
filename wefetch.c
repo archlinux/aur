@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -109,6 +108,82 @@ char* get_init_system() {
     return init;
 }
 
+void get_package_info(char* packages, size_t size) {
+    FILE *fp;
+    
+    fp = popen("pacman -Q 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("dpkg -l 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("rpm -qa 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("xbps-query -l 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("apk list -I 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("nix-store -q --requisites /run/current-system/sw 2>/dev/null | wc -l", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    fp = popen("emerge -ep world 2>/dev/null | grep -c \"^\\[*\\]\"", "r");
+    if (fp) {
+        if (fgets(packages, size, fp)) {
+            packages[strcspn(packages, "\n")] = 0;
+            pclose(fp);
+            return;
+        }
+        pclose(fp);
+    }
+    
+    strcpy(packages, "Unknown");
+}
+
 void capitalize(char *str) {
     if (str[0]) str[0] = toupper(str[0]);
     for (int i = 1; str[i]; i++) {
@@ -160,19 +235,7 @@ void display_info(const char* distro_name) {
     char* user = getenv("USER");
     if (user) strcpy(username, user);
     
-    fp = popen("pacman -Q 2>/dev/null | wc -l", "r");
-    if (fp) {
-        fgets(packages, sizeof(packages), fp);
-        packages[strcspn(packages, "\n")] = 0;
-        pclose(fp);
-    } else {
-        fp = popen("dpkg -l 2>/dev/null | wc -l", "r");
-        if (fp) {
-            fgets(packages, sizeof(packages), fp);
-            packages[strcspn(packages, "\n")] = 0;
-            pclose(fp);
-        }
-    }
+    get_package_info(packages, sizeof(packages));
     
     char* shell_path = getenv("SHELL");
     if (shell_path) {
@@ -185,7 +248,7 @@ void display_info(const char* distro_name) {
     if (logo_lines > 0) {
         for (int i = logo_lines; i < 6; i++) printf("\n");
         
-        printf("\033[1;34m\033[0m  \033[1;36m%s\033[0m\n", distro_display);
+        printf("\033[1;34m\033[0m  %s%s\033[0m\n", ascii_color, distro_display);
         printf("\033[1;33m\033[0m  \033[1;37m%s\033[0m\n", kernel);
         printf("\033[1;35m\033[0m  \033[1;37m%s\033[0m\n", username);
         printf("\033[1;31m󰏗\033[0m  \033[1;37m%s\033[0m\n", packages);

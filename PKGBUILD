@@ -1,5 +1,5 @@
 pkgname=wefetch
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A fast, customizable system information tool for Linux"
 arch=('x86_64')
