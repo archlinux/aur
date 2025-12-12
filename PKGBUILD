@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab-bin'
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Custom commands for every project'
 url='https://github.com/bab-sh/bab'
@@ -12,13 +12,13 @@ provides=('bab')
 conflicts=('bab')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1c4b8599462195c15a6b9cbab0bd2393a3c5bfcd8dd14e8faf83691ea172f2e8')
+sha256sums_aarch64=('3c1d48ca4076ae2fc6d644db01d8b8eb6a98e2e7b79393faaaf44c097302d0ef')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0228108723d1de96df734dccb1bceeb19c675df2bc9c30ba01b2145832339c20')
+sha256sums_armv7h=('2e05b45fb800468e92408bc8f6d134a99b481abc3628547e76157cd02b46f727')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c2a734249707b889613f334ba36b085c2d3778428874946677d73bc4969eb688')
+sha256sums_x86_64=('0eeba9b70e49b32a60d784615ccfd0772f7b612133cd2de4f0edb4ba5dae5a2e')
 
 package() {
   # Binary
