@@ -1,6 +1,6 @@
-# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
-# Contributor: Andrew Sun <adsun701 at gmail dot com>
-# Contributor: Eric Le Lay <contact at elelay dot fr>
+# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Contributor: Andrew Sun <adsun701@gmail.com>
+# Contributor: Eric Le Lay <contact@elelay.fr>
 
 pkgname=ansifilter
 pkgver=2.22
