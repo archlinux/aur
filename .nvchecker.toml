@@ -1,0 +1,5 @@
+[cod-bin]
+source = "github"
+github = "dim-an/cod"
+use_latest_release = true
+prefix = "v"
