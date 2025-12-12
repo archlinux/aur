@@ -1,0 +1,21 @@
+# NVIDIA eGPU hotplug udev rules
+# Handles automatic module cleanup when Thunderbolt eGPU is disconnected
+
+# On add, tag NVIDIA GPUs so we can identify them on remove
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", \
+    ENV{NVIDIA_GPU}="1", TAG+="nvidia-egpu", \
+    RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh add %k"
+
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", \
+    ENV{NVIDIA_GPU}="1", TAG+="nvidia-egpu", \
+    RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh add %k"
+
+# On remove, check for nvidia driver in ID_PCI_DRIVER (set during unbind)
+# or use the kernel device path pattern for NVIDIA GPUs
+ACTION=="remove", SUBSYSTEM=="pci", ENV{ID_PCI_DRIVER}=="nvidia", \
+    RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh remove %k"
+
+# Fallback: trigger on any Thunderbolt downstream port removal 
+# and let the script determine if cleanup is needed
+ACTION=="remove", SUBSYSTEM=="thunderbolt", ENV{DEVTYPE}=="thunderbolt_device", \
+    RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh remove thunderbolt"

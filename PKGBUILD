@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=580.105.08
-pkgrel=17
+pkgrel=19
 epoch=1
 pkgdesc='NVIDIA open kernel modules with Thunderbolt eGPU hotplug support'
 arch=('x86_64')
@@ -28,16 +28,20 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '150-nvidia-open-make-modeset-fbdev-default.patch'
         '160-nvidia-open-thunderbolt-egpu-hotplug.patch'
         '170-nvidia-open-force-external-gpu.patch'
-        '180-nvidia-open-kernel-6.18-get-dev-pagemap.patch')
+        '180-nvidia-open-kernel-6.18-get-dev-pagemap.patch'
+        'nvidia-egpu-hotplug.rules'
+        'nvidia-egpu-hotplug.sh')
 sha256sums=('59c518a2014f83efaf2a9f539b3097c55e74e8878aca01aedb59e92e3116080d'
             '70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
             '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-            '8dcc8015db841649c1b4864c350a681aca948953bbd06a6cf3b11f31f8a51ca4'
+            'SKIP'
             'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
-            'c6fbbf5ffea60670f9b845357176e6602b1e1d5c32b42e69066757cb41b367bb')
+            'c6fbbf5ffea60670f9b845357176e6602b1e1d5c32b42e69066757cb41b367bb'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -96,6 +100,10 @@ package_nvidia-open-egpu() {
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     
     install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
+    
+    # eGPU hotplug support: udev rules and handler script
+    install -D -m644 "${srcdir}/nvidia-egpu-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-egpu-hotplug.rules"
+    install -D -m755 "${srcdir}/nvidia-egpu-hotplug.sh" "${pkgdir}/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh"
 }
 
 package_nvidia-open-egpu-dkms() {
@@ -116,4 +124,8 @@ package_nvidia-open-egpu-dkms() {
     install -D -m644 "NVIDIA-kernel-module-source-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
+    
+    # eGPU hotplug support: udev rules and handler script
+    install -D -m644 "${srcdir}/nvidia-egpu-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-egpu-hotplug.rules"
+    install -D -m755 "${srcdir}/nvidia-egpu-hotplug.sh" "${pkgdir}/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh"
 }
