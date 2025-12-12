@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[1], "-i") == 0) {
         char command[512];
         snprintf(command, sizeof(command),
-                 "git clone https://aur.archlinux.org/cgit/aur.git/snapshot/%s.tar.gz",
+                 "git clone https://aur.archlinux.org/%s.git",
                  argv[2]);
 
         int result = system(command);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         }
 
         snprintf(command, sizeof(command),
-                 "tar -xvzf %s.tar.gz && cd %s && makepkg -si",
+                 "cd %s; makepkg -si",
                  argv[2], argv[2]);
         result = system(command);
         if (result != 0) {
