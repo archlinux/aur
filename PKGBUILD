@@ -3,8 +3,8 @@
 # Contributor: Holger Schramm <dev@strace.it>
 pkgname=mingo-bin
 _pkgname=Mingo
-pkgver=2025.10.0
-_electronversion=33
+pkgver=2025.12.0
+_electronversion=39
 pkgrel=1
 pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"
 arch=(
@@ -26,10 +26,10 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('9ed61b2c0cb33475e7c31615a1cf8eceeac1ef5395120c47a6cf1fc76abde312'
+sha256sums=('fb76afe53bd87a53ccb346bdb6db5a6b2b7e0629455a0ca52e68b34e4097d343'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('11a53292e6042f75b5f8aefe679d8e7dc2954b7c514608c0d6b8c3d872a7a3e4')
-sha256sums_x86_64=('7c3db86fd95c10576dac04e1a753697d552773b9051c0bdd339f1d8336cd3d92')
+sha256sums_aarch64=('19bfbb88f75702ba158c32d0252b8cd8ecf187dca6361b1b2575f1f45614767f')
+sha256sums_x86_64=('114c97d88feab68e519c1e57f2d4c9a8e0b912e63a548f9ed969e9799f843abe')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
