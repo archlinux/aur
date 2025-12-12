@@ -1,7 +1,7 @@
 pkgbase = gritty
 	pkgdesc = Web Terminal Emulator.
 	pkgver = 8.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudcmd/gritty
 	changelog = changelog.md
 	arch = x86_64
@@ -21,10 +21,6 @@ pkgbase = gritty
 	options = staticlibs
 	options = zipman
 	source = gritty-8.1.2.tgz::https://registry.npmjs.org/gritty/-/gritty-8.1.2.tgz
-	source = README-8.1.2.md::https://raw.githubusercontent.com/cloudcmd/gritty/v8.1.2/README.md
-	source = LICENSE-8.1.2::https://raw.githubusercontent.com/cloudcmd/gritty/v8.1.2/LICENSE
 	b2sums = 9622863f4ae2d5a2126043b916efbf87d26893ab1deefe2bac302aba93175f3315b5f2f831565d69333394b8e07fb5e6bbfed8c7e29936b4e8e834ebe8df9de7
-	b2sums = cb174547e3bf5bf00fb3a91b97435416ad265ebf98d30e86c49188113878530bc2db7592d91ee182a471a499ce1c00308eeedc7088ea3403ec21073471cca46e
-	b2sums = a9b8c1a337809b1a067c6749e8b488770254bf5bf81e74b20847e9ae382cabf7f11143e1b0cc9c8f57d5d4ced6b95a44cf1e94e2aef4e589afc2914aa5faca4a
 
 pkgname = gritty
