@@ -2,7 +2,7 @@
 
 _pkgname="vsearch"
 pkgname="${_pkgname}-bin"
-pkgver=2.30.1
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="Versatile open-source tool for microbiome analysis. https://doi.org/10.7717/peerj.2584"
 arch=('aarch64' 'powerpc64le' 'riscv64' 'x86_64')
@@ -17,10 +17,10 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/
 source_powerpc64le=("${_pkgsrc}-powerpc64le.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-ppc64le.tar.gz")
 source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-riscv64.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86_64.tar.gz")
-sha256sums_aarch64=('2ee50e8092718a504215dbd417e2fdacaca49adacd2b227908bada72a15ec241')
-sha256sums_powerpc64le=('585f88dd6bb6aae6c41b8e364b5b0caaaf4a775c679fa5929a54a887e40317b9')
-sha256sums_riscv64=('495d0acdcfeeb1378c234f92e23672f7278b88d48b8aaa1bb21e2bf6ffcf7ebc')
-sha256sums_x86_64=('d451d2c5ed12f09e92e4d0cd9ad3043a1be935a39838c8270d3269f8b8f81f7d')
+sha256sums_aarch64=('6c2c9653bcde0937b98af34981e8cf0ce83f08afb75eebfe88f597f03208ac1f')
+sha256sums_powerpc64le=('814aa623eccbff968772f7ff2a878dfec2f5d2093087bd7c6cb440e843b28de8')
+sha256sums_riscv64=('12097f7021fbc418b26c345d83aeb59560356ab459a66387d38c4d29dcbbdc42')
+sha256sums_x86_64=('22bca04bf8a739beb20f7076c143c364a3e50ecf080ce7a471aa28bbe5844c40')
 
 package() {
   cd "${srcdir}/${_pkgsrc}-linux"*
