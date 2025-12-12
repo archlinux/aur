@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-pkgver=0.8.57
+pkgver=0.8.58
 pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
@@ -33,7 +33,7 @@ backup=()
 options=(!debug !strip)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('f5217d74fb4d03cda0565127d412326e0d34094c576d77a195b952f817268c25')
+sha256sums=('d84544b08100c63410ac89dfc54b8177678eea864e667ddea4524807f44371af')
 # noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _pkgname=EcuBus-Pro
