@@ -1,0 +1,5 @@
+[git-scope-bin]
+source = "github"
+github = "Bharath-code/git-scope"
+use_latest_release = true
+prefix = "v"
