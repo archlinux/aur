@@ -1,17 +1,16 @@
 pkgbase = nagelfar
 	pkgdesc = Tcl syntax checker
-	pkgver = 1.3.2
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = http://nagelfar.sourceforge.net/
 	arch = any
 	license = GPL
 	depends = tcl
-	source = http://downloads.sourceforge.net/nagelfar/Rel_132/nagelfar132.tar.gz
+	source = http://downloads.sourceforge.net/nagelfar/Rel_135/nagelfar135.tar.gz
 	source = nagelfar-paths.patch
 	source = doc-syntaxdatabase.patch
-	sha256sums = ff704e551efa2f39ba851ce9f02cc8ab66c7fae39fb41d5aa2abd6fe05c76b72
-	sha256sums = e0465caec7c7d735a61cf925371ba56a76b6850e2098d44b1887579ea2cc8d6c
+	sha256sums = 3baf920fb34b73e32067118365d074d859298e2bce3748ad9458624bece85b23
+	sha256sums = 8abe0390652c0f2bea59497d3c568dda7ad5ed58187733e2620b71c17825110f
 	sha256sums = 19aa5b8a3fd6d14ba7c4fe3dd9d277ba70a4e17096e29bacc716d82bb7b26e76
 
 pkgname = nagelfar
-
