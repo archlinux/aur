@@ -1,0 +1,5 @@
+[colorizer-bin]
+source = "github"
+github = "kulinsky/colorizer"
+use_latest_release = true
+prefix = "v"
