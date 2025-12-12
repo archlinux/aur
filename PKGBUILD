@@ -3,12 +3,13 @@
 pkgname=heidisql
 epoch=1
 pkgver=12.14.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage for HeidiSQL (install a provider of your choice for heidisql-client, this includes shared files: wrapper script, locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
 depends=(heidisql-client)
+conflicts=(heidisql-common)
 makedepends=(curl jq)
 
 source=(

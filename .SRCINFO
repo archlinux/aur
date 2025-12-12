@@ -1,7 +1,7 @@
 pkgbase = heidisql
 	pkgdesc = Metapackage for HeidiSQL (install a provider of your choice for heidisql-client, this includes shared files: wrapper script, locale files, ini files, documentation)
 	pkgver = 12.14.1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.heidisql.com/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = heidisql
 	makedepends = curl
 	makedepends = jq
 	depends = heidisql-client
+	conflicts = heidisql-common
 	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.14.1.1.tar.gz
 	source = heidisql
 	sha256sums = 0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01
