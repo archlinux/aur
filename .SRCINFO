@@ -1,7 +1,7 @@
 pkgbase = clang-bin-cc-cxx
-	pkgdesc = Relink /bin/cc to clang, and /bin/cxx to clang++.
+	pkgdesc = Relink /bin/cc to clang, and /bin/cxx to clang++. Inspired by https://aur.archlinux.org/packages/clangbincc.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	install = clang-bin-cc-cxx.install
 	arch = any
 	license = GPL

@@ -3,8 +3,8 @@
 
 pkgname=clang-bin-cc-cxx
 pkgver=2
-pkgrel=1
-pkgdesc="Relink /bin/cc to clang, and /bin/cxx to clang++."
+pkgrel=2
+pkgdesc="Relink /bin/cc to clang, and /bin/cxx to clang++. Inspired by https://aur.archlinux.org/packages/clangbincc."
 arch=('any')
 license=('GPL')
 depends=('clang')
