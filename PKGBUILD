@@ -1,7 +1,7 @@
 # Maintainer: Sean Fournier <me@seanfournier.com>
 # GitHub: https://github.com/WattForce
 pkgname=tonneru
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A TUI-based WireGuard manager with network automation and kill switch"
 arch=('x86_64' 'aarch64')
