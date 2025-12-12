@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="metacubexd"
-pkgver=1.219.2
+pkgver=1.225.1
 pkgrel=1
 pkgdesc="Mihomo Dashboard, The Official One, XD"
 arch=("any")
@@ -9,21 +9,22 @@ url="https://github.com/MetaCubeX/${pkgname}"
 license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-makedepends=("pnpm")
+makedepends=("nodejs" "pnpm")
 optdepends=('mihomo: Another Clash Kernel by MetaCubeX'
             'sing-box: The universal proxy platform')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('54a67e60713765472977da3b1a01ca4a8d4ba70b8c5180d86c0f4e7b891b7ee6')
+sha256sums=('cf55bd790e0db7d0b91a1abad9befe2d74a3b98811d0e82e08286671039c081f')
 
 build() {
     cd "${pkgname}-${pkgver}"
     pnpm install
-    pnpm build
+    NUXT_APP_BASE_URL='./' pnpm generate
 }
 
 package() {
-    install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    cd "${pkgname}-${pkgver}/dist"
+    cd ".output/public"
     find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
 }
