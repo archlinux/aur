@@ -1,0 +1,15 @@
+pkgbase = silence-player
+	pkgdesc = Silence audio player
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 0
+	arch = x86_64
+	license = GPL-1.0-or-later
+	depends = alsa-lib
+	depends = glibc
+	source = main.c
+	source = silence-player.service
+	sha256sums = 871c53868186862c343a423b1d2432634c5ac11d59f88fd4baff23037e9c9ae4
+	sha256sums = 0ec3d3303a80a5c831a59521cd9ec81841f97aec4f743b4068b102e8a29fd5a9
+
+pkgname = silence-player
