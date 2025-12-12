@@ -1,7 +1,7 @@
 pkgbase = unixbench
 	pkgdesc = UnixBench is a simple benchmark whose purpose is to provide a basic indicator of the performance of a Unix-like system.
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kdlucas/byte-unixbench
 	arch = i686
 	arch = x86_64
