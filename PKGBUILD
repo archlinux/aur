@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=edgeR
-_pkgver=4.8.0
+_pkgver=4.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-arrow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('44c27cacf9b9ad91d2805ec2703bb98e')
-b2sums=('f6eb53e90e290eee9d055c89075c88d33928dc09eb151fe7e1057d913a53705aecaddb526e69c0166274677e21d16ec91133082ab9074518b74bf14ac4b49392')
+md5sums=('e51e3f6b090b615dd5854f946d74b8ff')
+b2sums=('50b2e4c75eb3ae4ec4b2d3afa46d0e9f7ebbd1e1df76e14a49b4ca2c642657964c974bf6afffe6f4b3ba5c5b02d2cddd4bca8c9049abff566e6a5b5d914f3aa1')
 
 build() {
   mkdir build
