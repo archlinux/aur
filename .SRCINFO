@@ -1,15 +1,14 @@
 pkgbase = tclreadline
 	pkgdesc = GNU readline for interactive tcl shells
-	pkgver = 2.3.8
-	pkgrel = 2
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://github.com/flightaware/tclreadline
 	arch = x86_64
 	arch = i686
 	license = BSD
 	depends = tcl
 	depends = readline
-	source = https://github.com/flightaware/tclreadline/archive/v2.3.8.tar.gz
-	sha256sums = a64e0faed5957b8e1ac16f179948e21cdd6d3b8313590b7ab049a3192ab864fb
+	source = https://github.com/flightaware/tclreadline/archive/v2.4.1.tar.gz
+	sha256sums = d14b1568b6db8cd51659e3cc476a1f45da2020434ebb90b4b0defbc424f05907
 
 pkgname = tclreadline
-
