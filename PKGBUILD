@@ -2,8 +2,8 @@
 # Contributor: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe-hardened
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Mistral Vibe - Minimal CLI Coding Agent (Security Hardened)"
 # Security: AppArmor MAC profile, strict permissions, isolated environment
 arch=('x86_64')
