@@ -1,10 +1,10 @@
 # Maintainer: Antariksh Singh <antarikshsingh212@gmail.com>
 pkgname=playtorrio-bin
-pkgver=2.1.9
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="All-in-one media center for streaming and for downloading games"
 arch=('x86_64')
-url="https://github.com/ayman707-ux/PlayTorrio"
+url="https://github.com/ayman708-UX/PlayTorrio"
 license=('LicenseRef-custom')
 depends=('fuse2' 'mpv' 'ffmpeg' 'gtk2' 'nodejs-lts-iron' 'nspr' 'gtk3' 'nss' 'libdbusmenu-gtk2' 'libxcomposite' 'dbus-glib' 'libdbusmenu-glib' 'libxdamage' 'libindicator-gtk2' 'libcups' 'at-spi2-core')
 optdepends=('vlc: Alternative media player'
@@ -12,9 +12,9 @@ optdepends=('vlc: Alternative media player'
   'real-debrid: Premium streaming service')
 provides=('playtorrio')
 conflicts=('playtorrio' 'playtorrio-git')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/ayman707-ux/PlayTorrio/releases/download/v${pkgver}/PlayTorrio.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/ayman708-UX/PlayTorrio/releases/download/v${pkgver}/PlayTorrio.AppImage"
   "playtorrio.desktop")
-sha256sums=('e72760a304b72c577f199d31b8864583e7fef4e49777159feb74f26130f7f9b1'
+sha256sums=('428b73345e06cc6e682dff972b7393bd36a1b8ddaa77f2deffb4f73ae5d107e6'
             '75681351c5da62ada264bf23a2b1d89cf47d64b0739dc5286a8bd3464a079c28')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
