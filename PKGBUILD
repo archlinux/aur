@@ -1,7 +1,7 @@
 _pkgname=slimevr-gui
 pkgname=${_pkgname}-git
-pkgver=v18.0.0.r2.227ddc87d
-pkgrel=1
+pkgver=v18.1.0.r0.f01f59952
+pkgrel=2
 pkgdesc="web GUI for SlimeVR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
@@ -31,13 +31,17 @@ pkgver() {
 }
 
 prepare() {
- 	cd "${srcdir}/SlimeVR-Server"
-  git submodule update --init --recursive
+	cd "${srcdir}/SlimeVR-Server"
+	git submodule update --init --recursive
 }
 
 build() {
-  cd SlimeVR-Server/gui
-  pnpm install
+  cd "${srcdir}/SlimeVR-Server/solarxr-protocol"
+  pnpm install --ignore-scripts
+  pnpm run build
+
+  cd "${srcdir}/SlimeVR-Server/gui"
+  pnpm install --ignore-scripts
   pnpm run build
 }
 
@@ -51,7 +55,7 @@ package() {
   cd "${srcdir}/SlimeVR-Server/gui/dist"
   find . -type f -exec install -vDm 644 {} "${pkgdir}/opt/${_pkgname}/{}" \;
 
-  install -Dm644 "${srcdir}/SlimeVR-Server/server/android/src/main/resources/icon32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/SlimeVR-Server/server/android/src/main/resources/icon128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/SlimeVR-Server/server/android/src/main/resources/icon256.png" "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/ios/AppIcon-512@2x.png" "${pkgdir}/usr/share/icons/hicolor/512x512@2x/apps/${_pkgname}.png"
 }
