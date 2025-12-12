@@ -26,7 +26,6 @@ pkgbase = easyeffects-git
 	depends = libbs2b
 	depends = libebur128
 	depends = libmysofa
-	depends = libsamplerate
 	depends = libsndfile
 	depends = lilv
 	depends = nlohmann-json

@@ -20,7 +20,6 @@ depends=(
   'libbs2b'
   'libebur128'
   'libmysofa'
-  'libsamplerate'
   'libsndfile'
   'lilv'
   'nlohmann-json'
