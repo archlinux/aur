@@ -27,7 +27,7 @@ pkgver() {
 build() {
     local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
 
-    # X11 and Wayland have to be bult separately
+    # X11 and Wayland have to be built separately
     cmake "${_cmake_args[@]}" -DBETTERBLUR_X11=OFF -B build_wayland -S "$pkgname"
     cmake "${_cmake_args[@]}" -DBETTERBLUR_X11=ON -B build_x11 -S "$pkgname"
 
