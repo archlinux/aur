@@ -1,5 +1,5 @@
 pkgbase = zf-bin
-	pkgdesc = a commandline fuzzy finder designed for filtering filepaths
+	pkgdesc = A commandline fuzzy finder designed for filtering filepaths
 	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/natecraddock/zf

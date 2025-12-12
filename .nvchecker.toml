@@ -1,0 +1,4 @@
+[zf-bin]
+source = "github"
+github = "natecraddock/zf"
+use_latest_release = true

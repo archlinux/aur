@@ -1,11 +1,11 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=natecraddock
 _pkgname=zf
 pkgname=${_pkgname}-bin
 pkgver=0.10.2
 pkgrel=1
-pkgdesc='a commandline fuzzy finder designed for filtering filepaths'
+pkgdesc='A commandline fuzzy finder designed for filtering filepaths'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
 arch=('x86_64' 'aarch64')
