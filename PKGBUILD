@@ -12,7 +12,7 @@ optdepends=("olympus: Mod Manager for Celeste")
 provides=("celeste")
 conflicts=("celeste")
 source=("celeste-linux.zip::celeste://celeste-linux.zip" "celeste.desktop")
-sha256sums=('ab8827892820d345378f94d9a6f2199d29aa03208777fa4e540b90deb0d8100b'
+sha256sums=('a613430411dbef3c0c45a0474f90f4845122964c7d177d69e88965bcb84741bf'
             '1431f41ca122fad2fa26a2e0ff7eff5cb2b55115f1e430d11a36f60f8bfa2954')
 noextract=('celeste-linux.zip')
 
