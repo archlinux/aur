@@ -1,0 +1,19 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  Opencode Optimal Model Temps Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/config.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"opencode-optimal-model-temps\"]"
+  echo "  }"
+  echo ""
+  echo "This plugin automatically sets temperature for supported models (e.g. Gemini)."
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
