@@ -33,7 +33,15 @@ prepare() {
 	patch -p1 < "$srcdir/ddfb667ba17c31898949dcbf07c863e268e5c85a.patch"
 	sed -i '1i #include <cstdint>' webrtc_dsp/modules/audio_processing/aec/aec_core.h
 	sed -i '22i #include <cstdint>' webrtc_dsp/modules/audio_processing/aec/echo_cancellation.h
-	sed -i 's/aecConfig\.nlpMode/aecConfig\.mode/g' webrtc_dsp/modules/audio_processing/aec/echo_cancellation.cc
-	sed -i 's/aecConfig\.skewMode/aecConfig\.skewMode/g' webrtc_dsp/modules/audio_processing/aec/echo_cancellation.cc
-	sed -i 's/aecConfig\.metricsMode/aecConfig\.metricsMode/g' webrtc_dsp/modules/audio_processing/aec/echo_cancellation.cc
+}
+build() {
+	cd "$srcdir/$pkgname-${_commit}"
+	autoreconf -i
+	./configure --prefix=/usr
+	make -j$(nproc)
+}
+
+package() {
+	cd "$srcdir/$pkgname-${_commit}"
+	make DESTDIR="$pkgdir" install -j$(nproc)
 }
