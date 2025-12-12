@@ -2,7 +2,7 @@
  
 pkgname='vikunja'
 pkgver='0.24.6'
-pkgrel=3
+pkgrel=4
 pkgdesc='The Todo-app to organize your life - API & frontend'
 arch=('x86_64')
 url='https://vikunja.io/'
