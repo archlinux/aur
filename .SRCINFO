@@ -1,0 +1,23 @@
+pkgbase = pisek-git
+	pkgdesc = Tool for developing tasks for programming competetions
+	pkgver = 2.2.1.r0.g2b2213d
+	pkgrel = 1
+	url = github.com/piskoviste/pisek
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11.0
+	depends = python-colorama
+	depends = python-argcomplete
+	depends = python-pydantic
+	depends = python-readchar
+	provides = pisek
+	conflicts = pisek
+	source = git+https://github.com/piskoviste/pisek.git#branch=master
+	sha256sums = SKIP
+
+pkgname = pisek-git
