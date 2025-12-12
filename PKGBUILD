@@ -13,6 +13,7 @@ depends=(
     'cryptopro-csp-k1'
     'jacartauc'
 )
+optdepends=('rutoken-connect')
 url='https://help.kontur.ru/plugin/'
 source=("${pkgname}-${pkgver}.deb::https://install.kontur.ru/files/kontur.plugin_amd64.deb")
 sha256sums=('084f66a3592025899ff4f8c0d874e935b2d45469804812b36aae03c0337eba36')

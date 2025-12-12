@@ -8,7 +8,8 @@ pkgbase = kontur-plugin
 	depends = gtk3
 	depends = cryptopro-csp-k1
 	depends = jacartauc
-	source = https://install.kontur.ru/files/kontur.plugin_amd64.deb
+	optdepends = rutoken-connect
+	source = kontur-plugin-4.11.1.3628.deb::https://install.kontur.ru/files/kontur.plugin_amd64.deb
 	sha256sums = 084f66a3592025899ff4f8c0d874e935b2d45469804812b36aae03c0337eba36
 
 pkgname = kontur-plugin
