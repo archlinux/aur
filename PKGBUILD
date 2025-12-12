@@ -3,7 +3,7 @@
 
 pkgname=subtitleedit-avalonia
 pkgver=5.0.0.preview73
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced subtitle editor and converter (early preview build with Avalonia UI)'
 arch=('any')
 url='https://github.com/niksedk/subtitleedit-avalonia'

@@ -1,11 +1,10 @@
 pkgbase = subtitleedit-avalonia
-	pkgdesc = An advanced subtitle editor and converter (early preview built with Avalonia UI)
+	pkgdesc = An advanced subtitle editor and converter (early preview build with Avalonia UI)
 	pkgver = 5.0.0.preview73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/niksedk/subtitleedit-avalonia
 	arch = any
 	license = MIT
-	depends = skia-sharp
 	optdepends = ffmpeg: waveform extraction
 	optdepends = mpv: Video support
 	optdepends = tesseract: OCR support
