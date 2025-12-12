@@ -1,0 +1,20 @@
+pkgbase = buf-cli
+	pkgdesc = Bootable USB Flasher - Create bootable USB drives from ISO images
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/Germ-99/buf
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = util-linux
+	depends = parted
+	depends = dosfstools
+	depends = ntfs-3g
+	depends = p7zip
+	depends = wget
+	optdepends = grub: BIOS boot support for Windows ISOs
+	source = buf-cli-1.5.0.tar.gz::https://github.com/Germ-99/buf/archive/v1.5.0.tar.gz
+	sha256sums = b34c1d738ad8a3203aec6c54027623932f093711df592ca56e9c8e52926ac916
+
+pkgname = buf-cli
