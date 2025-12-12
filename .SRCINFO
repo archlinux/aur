@@ -1,23 +1,24 @@
 pkgbase = busylight
 	pkgdesc = Control USB connected presence lights from multiple vendors
-	pkgver = 0.26.0
+	pkgver = 0.45.2
 	pkgrel = 1
 	url = https://github.com/JnyJny/busylight
-	arch = i686
-	arch = x86_64
-	license = Apache
-	makedepends = python-setuptools
-	makedepends = python-poetry
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = python
-	depends = python-bitvector-for-humans
-	depends = python-click
-	depends = python-hidapi
-	depends = python-loguru
-	depends = python-typer
-	depends = python-webcolors
-	depends = uvicorn
-	depends = python-fastapi
-	source = https://github.com/JnyJny/busylight/archive/0.26.0.tar.gz
-	sha256sums = 6ed9047bec370d7333dcc005d0930014e480eda59de400e2888c35a4e405764b
+	depends = python-busylight-core>=0.15.2
+	depends = python-hidapi>=0.14.0
+	depends = python-loguru>=0.7.3
+	depends = python-pyserial>=3.5
+	depends = python-typer>=0.16.0
+	depends = python-webcolors>=24.11.1
+	depends = python-importlib-metadata
+	optdepends = python-fastapi: for web API support
+	optdepends = uvicorn: for web API support
+	source = https://github.com/JnyJny/busylight/releases/download/v0.45.2/busylight_for_humans-0.45.2.tar.gz
+	sha256sums = ceed9080196679335dffedccfe511b81e0241820485b1764aa68c9668d81c9cc
 
 pkgname = busylight
