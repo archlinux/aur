@@ -1,6 +1,6 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r2079.380735ac
+pkgver=r2084.33b70b7c
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
@@ -49,6 +49,10 @@ package() {
     cp pyproject.toml "$pkgdir/opt/rimsort/"
     mkdir "$pkgdir/opt/rimsort/libs"
     cp -r libs/*.so "$pkgdir/opt/rimsort/libs/"
+    cp steam_appid.txt "$pkgdir/opt/rimsort/"
+
+    # Add missing steam symlink
+    ln -s SteamworksPy_x86_64.so "$pkgdir/opt/rimsort/libs/SteamworksPy.so"
 
     # Icon
     install -Dm644 "./themes/default-icons/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"
