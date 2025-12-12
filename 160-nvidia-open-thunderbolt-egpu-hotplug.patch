@@ -670,6 +670,54 @@ index 1c557cab..8efadc6a 100644
      uvm_tracker_init(&batch_context->tracker);
  
      // Process all faults in the buffer
+diff --git a/kernel-open/nvidia-uvm/uvm_gpu_semaphore.c b/kernel-open/nvidia-uvm/uvm_gpu_semaphore.c
+index 478c1aaf..dae09f31 100644
+--- a/kernel-open/nvidia-uvm/uvm_gpu_semaphore.c
++++ b/kernel-open/nvidia-uvm/uvm_gpu_semaphore.c
+@@ -27,6 +27,7 @@
+ #include "uvm_kvmalloc.h"
+ #include "uvm_channel.h" // For UVM_GPU_SEMAPHORE_MAX_JUMP
+ #include "uvm_conf_computing.h"
++#include "uvm_gpu_isr.h"
+ 
+ #define UVM_SEMAPHORE_SIZE 4
+ #define UVM_SEMAPHORE_PAGE_SIZE PAGE_SIZE
+@@ -822,10 +823,18 @@ static NvU64 update_completed_value_locked(uvm_gpu_tracking_semaphore_t *trackin
+ NvU64 uvm_gpu_tracking_semaphore_update_completed_value(uvm_gpu_tracking_semaphore_t *tracking_semaphore)
+ {
+     NvU64 completed;
++    uvm_gpu_t *gpu = tracking_semaphore->semaphore.page->pool->gpu;
+ 
+     // Check that the GPU which owns the semaphore is still present
+     UVM_ASSERT(tracking_semaphore_check_gpu(tracking_semaphore));
+ 
++    // If the GPU is not accessible (surprise removed), return the cached
++    // completed value without reading from GPU memory. Reading from GPU
++    // memory after surprise removal returns garbage values that cause
++    // assertion failures.
++    if (!uvm_parent_gpu_is_accessible(gpu->parent))
++        return atomic64_read(&tracking_semaphore->completed_value);
++
+     if (tracking_semaphore_uses_mutex(tracking_semaphore))
+         uvm_mutex_lock(&tracking_semaphore->m_lock);
+     else
+@@ -844,10 +853,16 @@ NvU64 uvm_gpu_tracking_semaphore_update_completed_value(uvm_gpu_tracking_semapho
+ bool uvm_gpu_tracking_semaphore_is_value_completed(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 value)
+ {
+     NvU64 completed = atomic64_read(&tracking_sem->completed_value);
++    uvm_gpu_t *gpu = tracking_sem->semaphore.page->pool->gpu;
+ 
+     // Check that the GPU which owns the semaphore is still present
+     UVM_ASSERT(tracking_semaphore_check_gpu(tracking_sem));
+ 
++    // If the GPU is not accessible, consider all values completed to avoid
++    // spinning forever waiting for a GPU that's gone.
++    if (!uvm_parent_gpu_is_accessible(gpu->parent))
++        return true;
++
+     if (completed >= value) {
+         // atomic64_read() doesn't imply any memory barriers and we need all
+         // subsequent memory accesses in this thread to be ordered after the
 diff --git a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 index cba0ec53..99bd7335 100644
 --- a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
@@ -2917,6 +2965,34 @@ index 2a81684a..7d1ccb84 100644
      }
  }
  
+diff --git a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
+index ab3a108f..bb9cfbd9 100644
+--- a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
++++ b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
+@@ -806,10 +806,19 @@ NV_STATUS nvGpuOpsDestroySession(struct gpuSession *session)
+     if (!session)
+         return NV_OK;
+ 
+-    // Sanity Check: There should not be any attached devices with the session!
+-    NV_ASSERT(!session->devices);
+-    // Sanity Check: If there are no devices, there should also be no p2p Info!
+-    NV_ASSERT(!session->p2pInfo);
++    // During surprise removal (GPU lost), devices may not have been properly
++    // detached. In normal operation, these assertions catch programming errors.
++    // When the GPU is lost, we log and continue to avoid blocking cleanup.
++    if (session->devices)
++    {
++        NV_PRINTF(LEVEL_WARNING,
++                  "Destroying session with devices still attached (GPU may be lost)\n");
++    }
++    if (session->p2pInfo)
++    {
++        NV_PRINTF(LEVEL_WARNING,
++                  "Destroying session with p2p info still present (GPU may be lost)\n");
++    }
+ 
+     // freeing session will free everything under it
+     pRmApi->Free(pRmApi, session->handle, session->handle);
 diff --git a/src/nvidia/src/kernel/vgpu/rpc.c b/src/nvidia/src/kernel/vgpu/rpc.c
 index e19b1efc..3a01e3f9 100644
 --- a/src/nvidia/src/kernel/vgpu/rpc.c
