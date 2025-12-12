@@ -1,6 +1,6 @@
 pkgbase = libva-headless
 	pkgdesc = Video Acceleration (VA) API for Linux headless systems
-	pkgver = 2.22.0
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://01.org/linuxmedia/vaapi
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = libva-headless
 	provides = libva-drm.so
 	conflicts = libva
 	backup = etc/libva.conf
-	source = git+https://github.com/intel/libva.git#tag=2.22.0
-	sha256sums = 3f67943218b0402418cf8beec07eb5ddc72f38385d69f090c41ffb663fb85468
+	source = git+https://github.com/intel/libva.git#tag=2.23.0
+	sha256sums = 1819b31a1ae54957db182ed1d1ea119965f02d262b70e9dc81ca1ee133b6f9d4
 
 pkgname = libva-headless

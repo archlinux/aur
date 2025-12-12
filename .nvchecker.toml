@@ -1,4 +1,4 @@
 [libva-headless]
-source = "github"
-github = "intel/libva"
-use_latest_tag = true
+source = "git"
+git = "https://github.com/intel/libva.git"
+exclude_regex = ".*(2009|Alpha).*"
