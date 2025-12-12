@@ -1,6 +1,6 @@
 pkgbase = gravel-bin
 	pkgdesc = Cross-platform application launcher for Linux and Windows
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/thorio/gravel
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gravel-bin
 	provides = gravel
 	conflicts = gravel
 	options = !strip
-	source = https://github.com/thorio/gravel/releases/download/v0.8.3/gravel-arch-x86_64.pkg.tar.zst
-	sha256sums = 5c05c80d55c9b14a5581c364c20c9451119f3a28299b67f8580e673dfcee356b
+	source = https://github.com/thorio/gravel/releases/download/v0.8.4/gravel-arch-x86_64.pkg.tar.zst
+	sha256sums = ce6c2e4e2b53578ade169a03d90e000f8d987a7b118590d2c03f37fbc767e377
 
 pkgname = gravel-bin
