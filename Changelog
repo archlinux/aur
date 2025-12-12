@@ -1,4 +1,3 @@
-2.38.0-1 [2025-12-03]
-- [Desktop][UI][Preferences] Implemented "Manage Security Keys" in the Preferences page. 
-- [Linux][BugFix] Corrected the update instructions for Flatpak installation.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 143.0.7499.92.
+2.38.2-1 [2025-12-11]
+- [Desktop][BugFix] Fixed endless reload behavior on the About Page when Kids Mode is active.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 143.0.7499.110.
