@@ -1,6 +1,6 @@
 pkgbase = ampl-mp
 	pkgdesc = An open-source library for mathematical programming
-	pkgver = 4.0.4
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/ampl/mp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ampl-mp
 	makedepends = cmake
 	makedepends = ninja
 	options = !emptydirs
-	source = mp-4.0.4.tar.gz::https://github.com/ampl/mp/archive/v4.0.4.tar.gz
-	sha512sums = 1871d19a66e910cbbda3a6b822269463e7e4da3c5dda7e11148d099a1f00429d5e568d776a6ec3dc307c6df720e408543e3481452557911e550042795af469fe
+	source = mp-4.1.0.tar.gz::https://github.com/ampl/mp/archive/v4.1.0.tar.gz
+	sha512sums = 913777afbc9b125207e5c3ad5c01d303b4a772f3569521cb897e7b841a6eb584c4ccec01af459237e2a510303192d3ef95a1756af881058a9cf429f48b4a8808
 
 pkgname = ampl-mp
