@@ -7,7 +7,7 @@ pkgdesc="The Rutoken plugin is necessary for connecting USB devices with the bro
 arch=('i686' 'x86_64')
 url="https://www.rutoken.ru/support/download/rutoken-plugin/"
 license=('custom:rutoken-plugin')
-depends=('rutoken-pkcs' 'rutoken-connect')
+depends=('rutoken-connect')
 makedepends=('findutils' 'sed' 'grep' 'coreutils' 'bash')
 options=(!strip)
 
