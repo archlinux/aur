@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=max-appimage
-pkgver=25.8.0.490
+pkgver=25.12.0.510
 pkgrel=1
 
 pkgdesc="MAX messenger."
@@ -24,7 +24,7 @@ _squashfs_icon_file="${_app_name}.png"
 _install_path="/opt/appimages"
 
 source_x86_64=("http://download.max.ru/electron/${_filename}")
-sha256sums_x86_64=('d9996fdbfff69169f8c36892427e0638bffab3d2d5cbf4a4c207f2d0eda6502f')
+sha256sums_x86_64=('2a62165974fce37f268037823178cfaac4e5f81c215d5df8564109fff7378281')
 
 prepare() {
     chmod a+x ${srcdir}/${_filename}
