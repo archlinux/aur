@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=580.105.08
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='NVIDIA open kernel modules with Thunderbolt eGPU hotplug support'
 arch=('x86_64')
@@ -26,21 +26,26 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
         '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-thunderbolt-egpu-hotplug.patch')
+        '160-nvidia-open-thunderbolt-egpu-hotplug.patch'
+        '170-nvidia-open-force-external-gpu.patch')
 sha256sums=('59c518a2014f83efaf2a9f539b3097c55e74e8878aca01aedb59e92e3116080d'
             '381d93ec8c4c10c586a71f8248ec18230cb78cd0d9bda55455d258b149104bdf'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
             '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-            'e9363d43746883fb3bbc49cf082800e558d6176d71f37bb2901725402d27b772')
+            'e9363d43746883fb3bbc49cf082800e558d6176d71f37bb2901725402d27b772'
+            'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/120-nvidia-open-linux-rt-gift.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-thunderbolt-egpu-hotplug.patch"
+    # https://github.com/NVIDIA/open-gpu-kernel-modules/pull/984 - force eGPU mode for TB4/5 enclosures
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/170-nvidia-open-force-external-gpu.patch"
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -a "NVIDIA-kernel-module-source-${pkgver}/kernel-open" dkms-src

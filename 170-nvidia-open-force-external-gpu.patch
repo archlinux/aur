@@ -1,0 +1,67 @@
+From: roger-pmta
+Subject: nvidia: add RmForceExternalGpu registry key
+
+Force external GPU mode, bypassing automatic Thunderbolt bridge detection.
+Useful for Thunderbolt 4/5 enclosures not in the driver's approved bridge list.
+
+Usage: Set NVreg_RmForceExternalGpu=1 in module parameters.
+
+Based on: https://github.com/NVIDIA/open-gpu-kernel-modules/pull/984
+
+diff --git a/src/nvidia/arch/nvalloc/unix/src/osinit.c b/src/nvidia/arch/nvalloc/unix/src/osinit.c
+--- a/src/nvidia/arch/nvalloc/unix/src/osinit.c
++++ b/src/nvidia/arch/nvalloc/unix/src/osinit.c
+@@ -1325,10 +1325,29 @@ RmInitNvDevice(
+     }
+ 
+     // Configure eGPU setting
+-    if (RmCheckForExternalGpu(pGpu, pCl))
+     {
+-        pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU, NV_TRUE);
+-        nv->is_external_gpu = NV_TRUE;
++        NvU32 forceExternalGpu = 0;
++        NvBool isExternalGpu = NV_FALSE;
++
++        // Check if user has forced eGPU mode via RmForceExternalGpu registry key
++        if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_FORCE_EXTERNAL_GPU, &forceExternalGpu) == NV_OK) &&
++            (forceExternalGpu != 0))
++        {
++            NV_PRINTF(LEVEL_NOTICE, "Forcing external GPU mode via RmForceExternalGpu registry key\n");
++            isExternalGpu = NV_TRUE;
++        }
++        else
++        {
++            // Otherwise, use automatic detection
++            isExternalGpu = RmCheckForExternalGpu(pGpu, pCl);
++        }
++
++        if (isExternalGpu)
++        {
++            NV_PRINTF(LEVEL_NOTICE, "GPU treated as external GPU (eGPU)\n");
++            pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU, NV_TRUE);
++            nv->is_external_gpu = NV_TRUE;
++        }
+     }
+     status->rmStatus = gpumgrStateInitGpu(pGpu);
+     if (status->rmStatus != NV_OK)
+diff --git a/src/nvidia/interface/nvrm_registry.h b/src/nvidia/interface/nvrm_registry.h
+--- a/src/nvidia/interface/nvrm_registry.h
++++ b/src/nvidia/interface/nvrm_registry.h
+@@ -1001,6 +1001,17 @@
+ // If set, this will cause RM mark GPU as lost when it detects 0xFF from register
+ // access.
+ 
++//
++// Type DWORD
++// Force external GPU mode, bypassing automatic Thunderbolt bridge detection.
++// Useful for Thunderbolt 4/5 enclosures not in the driver's approved bridge list.
++//
++// Encoding:
++// 0 (default) - use automatic eGPU detection
++// 1 - force GPU to be treated as external
++//
++#define NV_REG_STR_RM_FORCE_EXTERNAL_GPU                 "RmForceExternalGpu"
++
+ #define NV_REG_STR_RM_BLACKLIST_ADDRESSES                "RmBlackListAddresses"
+ // Type BINARY:
+ // struct
