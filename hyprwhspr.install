@@ -1,0 +1,35 @@
+post_install() {
+  cat <<'EOF'
+
+hyprwhspr installed successfully!
+
+To complete setup:
+
+  hyprwhspr setup
+
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+hyprwhspr upgraded!
+
+If needed, re-run setup (idempotent):
+
+  hyprwhspr setup
+
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+
+hyprwhspr removed.
+
+Note: user data remains (remove manually if desired):
+  ~/.config/hyprwhspr
+  ~/.local/share/hyprwhspr
+
+EOF
+}
