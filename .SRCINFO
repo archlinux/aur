@@ -1,6 +1,6 @@
 pkgbase = gnome-online-accounts-gtk
 	pkgdesc = A GTK Frontend for GNOME Online Accounts
-	pkgver = 3.50.8
+	pkgver = 3.50.9
 	pkgrel = 1
 	url = https://github.com/xapp-project/gnome-online-accounts-gtk
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gnome-online-accounts-gtk
 	depends = libadwaita
 	depends = libgoa
 	depends = xapp-symbolic-icons
-	source = gnome-online-accounts-gtk-3.50.8.tar.gz::https://github.com/xapp-project/gnome-online-accounts-gtk/archive/refs/tags/3.50.8.tar.gz
-	sha256sums = 6417d3a1b63ebd2fc1781b927a023b78d315a03c7da53d768079d1a4939bdc1c
+	source = gnome-online-accounts-gtk-3.50.9.tar.gz::https://github.com/xapp-project/gnome-online-accounts-gtk/archive/refs/tags/3.50.9.tar.gz
+	sha256sums = ca5bed588d26d42dac04d80640006e1cb0807f0b453002fe4755ed9ada59b3a9
 
 pkgname = gnome-online-accounts-gtk

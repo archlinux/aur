@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-online-accounts-gtk
-pkgver=3.50.8
+pkgver=3.50.9
 pkgrel=1
 pkgdesc="A GTK Frontend for GNOME Online Accounts"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6417d3a1b63ebd2fc1781b927a023b78d315a03c7da53d768079d1a4939bdc1c')
+sha256sums=('ca5bed588d26d42dac04d80640006e1cb0807f0b453002fe4755ed9ada59b3a9')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
