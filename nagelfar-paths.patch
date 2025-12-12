@@ -1,19 +1,18 @@
---- a/nagelfar.tcl
-+++ b/nagelfar.tcl
-@@ -34,32 +34,13 @@
- # This variable should be overwritten by the build process
- set version "Version ??? ???"
+--- a/nagelfar.tcl	2025-02-11 19:51:31.000000000 +0100
++++ b/nagelfar.tcl	2025-12-11 16:26:06.469456036 +0100
+@@ -31,35 +31,12 @@
+ package require Tcl 8.6-
  
+ package provide app-nagelfar 1.0
+-# This variable should be overwritten by the build process
+-set version "Version ??? ???"
+-
 -# Allow thisScript to be predefined (used for test)
 -if {![info exists thisScript]} {
 -    set thisScript [file normalize [file join [pwd] [info script]]]
 -}
 -set thisDir    [file dirname $thisScript]
-+# This makes it possible to customize where files are installed
-+set dbDir      /usr/lib/nagelfar
-+set docDir     /usr/share/doc/nagelfar
-+set libDir     /usr/lib/nagelfar/lib
- 
+-
 -# Follow any link
 -set tmplink $thisScript
 -while {[file type $tmplink] == "link"} {
@@ -22,19 +21,21 @@
 -    set thisDir [file dirname $tmplink]
 -}
 -unset tmplink
-+lappend auto_path $libDir
  
--# This makes it possible to customize where files are installed
+ # This makes it possible to customize where files are installed
 -set dbDir      $thisDir
 -set docDir     $thisDir/doc
 -set libDir     $thisDir/lib
-- 
++set dbDir      /usr/lib/nagelfar
++set docDir     /usr/share/doc/nagelfar
++set libDir     /usr/lib/nagelfar/lib
+  
 -# Search where the script is, to be able to place e.g. ctext there.
 -if {[info exists ::starkit::topdir]} {
 -    lappend auto_path [file dirname [file normalize $::starkit::topdir]]
 -} else {
 -    lappend auto_path $libDir
 -}
- set version "Version 1.3.2 2021-02-02"
+ set version "Version 1.3.5 2025-02-11"
  #----------------------------------------------------------------------
  #  Nagelfar, a syntax checker for Tcl.
