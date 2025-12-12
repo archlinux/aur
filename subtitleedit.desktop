@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Subtitle Edit
+Comment=An advanced subtitle editor and converter
+Exec=/usr/bin/subtitleedit %F
+Icon=subtitleedit
+Terminal=false
+Type=Application
+Categories=Video;AudioVideo;AudioVideoEditing;
