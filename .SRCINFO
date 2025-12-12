@@ -1,6 +1,6 @@
 pkgbase = r-fgarch
 	pkgdesc = Rmetrics - Autoregressive Conditional Heteroskedastic Modelling
-	pkgver = 4033.92
+	pkgver = 4052.93
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fGarch
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-fgarch
 	optdepends = r-goftest
 	optdepends = r-runit
 	optdepends = r-tcltk
-	source = https://cran.r-project.org/src/contrib/fGarch_4033.92.tar.gz
-	sha256sums = c835682001c05b178206c8394b3f7ec4e2b96a7d24f8e4ebc68dceae4367140d
+	source = https://cran.r-project.org/src/contrib/fGarch_4052.93.tar.gz
+	sha256sums = ecd8e673f2303aaba02c9a8d3408369a6992d68ac7fc2a181fe522d299dbdecd
 
 pkgname = r-fgarch
