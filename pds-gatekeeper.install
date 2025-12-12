@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> Edit /etc/pds-gatekeeper.env and configure your reverse proxy"
+  echo "==> See https://tangled.org/baileytownsend.dev/pds-gatekeeper"
+}
+
+post_upgrade() {
+  echo "==> Review /etc/pds-gatekeeper.env for new configuration options"
+}

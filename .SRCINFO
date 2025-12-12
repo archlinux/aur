@@ -1,0 +1,28 @@
+pkgbase = pds-gatekeeper-git
+	pkgdesc = Microservice to bring 2FA to self hosted PDSes
+	pkgver = r18.2e39f1e
+	pkgrel = 1
+	url = https://tangled.org/baileytownsend.dev/pds-gatekeeper
+	install = pds-gatekeeper.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = atproto-pds: PDS environment file at /etc/pds.env
+	provides = pds-gatekeeper=r18.2e39f1e-1
+	conflicts = pds-gatekeeper
+	backup = etc/pds-gatekeeper.env
+	source = git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git
+	source = pds-gatekeeper.service
+	source = pds-gatekeeper.sysusers
+	source = pds-gatekeeper.tmpfiles
+	source = pds-gatekeeper.env
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pds-gatekeeper-git
