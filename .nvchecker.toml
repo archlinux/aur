@@ -1,0 +1,4 @@
+[rsflex-bin]
+source = "github"
+github = "curlpipe/rsflex"
+use_latest_release = true
