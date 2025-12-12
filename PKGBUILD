@@ -1,13 +1,13 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
-pkgname=idescriptor-bin
+pkgname=idescriptor-appimage
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="A tool to inspect Apple icons"
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
 license=('GPL3')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+provides=("idescriptor")
+conflicts=("idescriptor" "idescriptor-bin")
 depends=('fuse2' 'zlib')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.zip::https://github.com/iDescriptor/iDescriptor/releases/download/v${pkgver}/iDescriptor-v${pkgver}-Linux_x86_64.AppImage.zip"
