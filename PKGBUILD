@@ -3,14 +3,14 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Shin Rag <zhdlcc@gmail.com>
-pkgname=alsa-silence-player
-pkgver=1.0.1
-pkgrel=2
+# Maintainer: aquanjsw <zhdlcc@gmail.com>
+pkgname=silence-player
+pkgver=1.0.0
+pkgrel=1
 epoch=0
-pkgdesc="ALSA level silence audio player"
+pkgdesc="Silence audio player"
 arch=(x86_64)
-url="https://github.com/aquanjsw/alsa-silence-player"
+url=""
 license=('GPL-1.0-or-later')
 groups=()
 depends=(alsa-lib glibc)
@@ -27,7 +27,7 @@ changelog=
 source=(main.c silence-player.service)
 noextract=()
 sha256sums=(871c53868186862c343a423b1d2432634c5ac11d59f88fd4baff23037e9c9ae4
-			0ec3d3303a80a5c831a59521cd9ec81841f97aec4f743b4068b102e8a29fd5a9)
+            0ec3d3303a80a5c831a59521cd9ec81841f97aec4f743b4068b102e8a29fd5a9)
 validpgpkeys=()
 
 build() {
