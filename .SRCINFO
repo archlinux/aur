@@ -1,0 +1,12 @@
+pkgbase = llm-thalamus-doomguy
+	pkgdesc = Doomguy theme for llm-thalamus
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = llm-thalamus
+	provides = llm-thalamus-theme
+	conflicts = llm-thalamus-theme
+	source = https://github.com/evertvorster/llm-thalamus-doomguy/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 5229ed35366e8f2c2a4fa294ba3ee2c353af80ba3c51630c607ecd65a25d1b6a
+
+pkgname = llm-thalamus-doomguy
