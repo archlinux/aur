@@ -5,7 +5,7 @@
 # Contributor: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname='papyrus'
-pkgver='7.0.0'
+pkgver='7.1.0'
 pkgrel=1
 pkgdesc='Graphical editing tool for UML based on eclipse.'
 arch=('x86_64')
@@ -17,12 +17,12 @@ depends=(python perl bash)
 makedepends=(tar)
 provides=('papyrus')
 conflicts=('papyrus')
-sha256sums=('6a961f8b6559bffc630a1004fce1d4d0a18b4e01b641a75eabfd69b05b5705ef'
+sha256sums=('7d81a06e884330b529e07b960bba09521c31d3caa2964fdf211808f75ce68707'
             '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
             '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94'
             '08717c9d6b98685ae13e1fb4c509872d88c9b49192e7f5f44d379b2edabe1e24')
 source=(
-  "https://www.eclipse.org/downloads/download.php?file=/modeling/mdt/papyrus/papyrus-desktop/rcp/2025-06/7.0.0/papyrus-desktop-2025-06-7.0.0-linux.gtk.x86_64.tar.gz&r=1"
+  "https://www.eclipse.org/downloads/download.php?file=/modeling/mdt/papyrus/papyrus-desktop/rcp/2025-06/7.1.0/papyrus-desktop-2025-06-7.1.0-linux.gtk.x86_64.tar.gz&r=1"
   "papyrus.png"
   "papyrus.desktop"
   "papyrus"
