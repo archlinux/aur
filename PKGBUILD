@@ -3,12 +3,12 @@
 pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver='1.1.4'
-pkgrel=4
+pkgrel=1
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
 license=('MIT')
-depends=('fuse')
+depends=('fuse3')
 conflicts=('iloader-bin')
 options=(!strip !debug)
 _appimage='iloader-linux-amd64.AppImage'
