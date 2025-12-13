@@ -1,0 +1,15 @@
+pkgbase = scrivano
+	pkgdesc = Notetaking application aimed at those who prefer handwriting over typing.
+	pkgver = 0.21.5
+	pkgrel = 1
+	url = https://github.com/scrivanolabs/ScrivanoForLinux
+	arch = x86_64
+	license = CC-BY-NC-ND-4.0
+	source = scrivano-0.21.5.tar.gz::https://github.com/scrivanolabs/ScrivanoForLinux/releases/download/0.21.5/Scrivano_0.21.5.tar.gz
+	source = scrivano.svg::https://raw.githubusercontent.com/scrivanolabs/scrivanolabs.github.io/master/icon.svg
+	source = scrivano.desktop
+	md5sums = 909bb4bc8ba5bfdfed135c3da5f303aa
+	md5sums = 4a39e18509d8cc877d4934c39ec14d5d
+	md5sums = 4ca6be9398d9c8339d3d51a5e4bbf152
+
+pkgname = scrivano
