@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc")
 provides=("fresh-editor")
 conflicts=("fresh-editor")
 options=('!debug')
-source=("https://github.com/sinelaw/fresh/releases/download/v$pkgver/fresh-editor-$CARCH-unknown-linux-gnu.tar.xz"
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/sinelaw/fresh/releases/download/v$pkgver/fresh-editor-$CARCH-unknown-linux-gnu.tar.xz"
         "LICENSE")
 sha256sums=("c647b26c3564f976ca0ba50c598e9e9021f6a19a58766daec6a3c1890b0ddc52" "SKIP")
 
