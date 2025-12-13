@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=2.2.0.r0.g526fcabff
+pkgver=2.14.1.r180.g2f5537c8d
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -72,6 +72,7 @@ build() {
     npm run build --workspace=packages/bruno-converters
     npm run build --workspace=packages/bruno-query
     npm run build --workspace=packages/bruno-graphql-docs
+    npm run build --workspace=packages/bruno-schema-types
     npm run build --workspace=packages/bruno-filestore
     npm run build --workspace=packages/bruno-app
 
