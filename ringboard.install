@@ -1,0 +1,16 @@
+post_install() {
+  printf '\nRingboard installed.\n\n'
+  printf 'Note: Ringboard is Linux-only and requires a recent kernel (6+).\n\n'
+  printf 'Start the server + clipboard watcher as user services:\n'
+  printf '  systemctl --user daemon-reload\n'
+  printf '  systemctl --user enable --now ringboard-x11.service\n'
+  printf 'or:\n'
+  printf '  systemctl --user enable --now ringboard-wayland.service\n\n'
+  printf 'Launch the GUI:\n'
+  printf '  ringboard-egui toggle\n\n'
+  printf 'Project page: https://github.com/SUPERCILEX/clipboard-history\n\n'
+}
+
+post_upgrade() {
+  post_install
+}
