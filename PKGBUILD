@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/spp"
-  install -Dm755 servo_cpp "$pkgdir/usr/bin/servo"
+  install -Dm755 servocomp "$pkgdir/usr/bin/servo"
   
   if [ -d "reach" ]; then
     install -d "$pkgdir/usr/share/servo/reach"
