@@ -2,7 +2,7 @@
 
 pkgname=cursor-beta-bin
 pkgver=2.2.20
-pkgrel=34
+pkgrel=35
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
