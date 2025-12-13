@@ -1,0 +1,5 @@
+[sqd-bin]
+source = "github"
+github = "albertoboccolini/sqd"
+use_latest_release = true
+prefix = "v"
