@@ -1,7 +1,7 @@
 # Contributor: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 # Maintainer: Aaron Liu <aaronliu gmailchorn>
 
-pkgname=vectorchord-bin
+pkgname=vectorchord-immich-bin
 pkgver=0.5.3
 pkgrel=1
 pkgdesc='Latest version compatible with immich-server of VectorChord, the PostgreSQL vector similarity search extension'
