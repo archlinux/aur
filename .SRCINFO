@@ -1,0 +1,18 @@
+pkgbase = python-osfclient
+	pkgdesc = A python library and command-line client for file storage on OSF
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/osfclient/osfclient
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-six
+	depends = python-tqdm
+	depends = python-requests
+	source = python-osfclient-0.0.5.tar.gz::https://github.com/osfclient/osfclient/archive/refs/tags/0.0.5.tar.gz
+	sha256sums = fd9f210dead247e343db9b22dddb6982c8cd8d24b00e6535fb116ceb859b3e1f
+
+pkgname = python-osfclient

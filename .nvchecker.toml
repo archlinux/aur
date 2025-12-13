@@ -1,0 +1,3 @@
+[python-osfclient]
+source = "git"
+git = "https://github.com/osfclient/osfclient.git"
