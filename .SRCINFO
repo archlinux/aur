@@ -1,0 +1,19 @@
+pkgbase = powertuner
+	pkgdesc = The first multi-platform client-daemon tuning app for desktop and handheld devices
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/PowerTuner
+	install = powertuner.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-speech
+	depends = kmod
+	depends = systemd-libs
+	depends = pciutils
+	provides = powertuner
+	conflicts = powertuner
+	source = https://github.com/PowerTuner/PowerTuner-releases/releases/download/1.0/PowerTunerArchLinux-1.0.tar.gz
+	sha256sums = 25d02f82dc2efdd4272b93f4d68cfba9ce2f2ba71872ada01791ed8362a7acc1
+
+pkgname = powertuner

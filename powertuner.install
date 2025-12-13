@@ -1,0 +1,7 @@
+post_install() {
+    echo -e "\nTo start using PowerTuner, enable and start powertunerd.service.\n"
+}
+
+post_upgrade() {
+    echo -e "\nPlease reload powertunerd.service to complete the upgrade.\n"
+}
