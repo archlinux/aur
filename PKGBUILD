@@ -2,7 +2,7 @@
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution (stable)"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'python'
   'gnome-bluetooth-3.0'
   'dart-sass'
+  'gobject-introspection'
   'gray-git'
   'fabric-cli'
   'tesseract'
@@ -26,7 +27,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a71a66a32cb9e6f808655f72b8920fdf1c87d54a03c8ebc7a0ddce972646048')
+sha256sums=('92f868793f1d7c5df1aecee4599ba569c66c83d7cbc32610951733d7f5a220be')
 
 package() {
   cd "$srcdir/mewline-$pkgver"
