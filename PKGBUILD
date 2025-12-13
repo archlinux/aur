@@ -1,45 +1,44 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=st-fl-git
-pkgver=20250501.3e24ac3
+_pkgname=st-fl
+pkgver=0.9.3.r330.e14cfd7
 pkgrel=1
-pkgdesc='A simple virtual terminal emulator for X with flash mode .'
-arch=('i686' 'x86_64' 'armv7h')
+pkgdesc='Simple terminal with flash jump support'
+url='https://github.com/DreamMaoMao/st-fl.git'
+arch=('i686' 'x86_64')
 license=('MIT')
-depends=(libxft libx11 imlib2 gd pcre2)
+options=('zipman')
+depends=('libxft' 'pcre2')
 makedepends=('ncurses' 'libxext' 'git')
-provides=(st)
-conflicts=(st st-git)
-url=https://github.com/DreamMaoMao/st-fl
-source=(git+https://github.com/DreamMaoMao/st-fl)
-sha256sums=(SKIP)
-_gitname="st-fl"
-_sourcedir="$_gitname"
-_makeopts="--directory=$_sourcedir"
-_gitdir=${pkgname%'-git'}
-_startdir=$PWD
+
+# include config.h and any patches you want to have applied here
+source=("${_pkgname}::git+$url")
+sha256sums=('SKIP')
+provides=('st')
+conflicts=('st')
 
 pkgver() {
-	cd "${pkgname%-*}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd "${_pkgname}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${pkgname%-*}"
+  cd "${_pkgname}"
+  # skip terminfo which conflicts with nsurses
+  sed -i '/tic /d' Makefile
   cp config.suggest.h config.h
 }
 
 build() {
-  make $_makeopts X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  cd "${_pkgname}"
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  local installopts='--mode 0644 -D --target-directory'
-  local shrdir="$pkgdir/usr/share"
-  local licdir="$shrdir/licenses/$pkgname"
-  local docdir="$shrdir/doc/$pkgname"
-  make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
-  install $installopts "$licdir" "$_sourcedir/LICENSE"
-  install $installopts "$docdir" "$_sourcedir/README"
-  install $installopts "$shrdir/$pkgname" "$_sourcedir/st.info"
+  cd "${_pkgname}"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
