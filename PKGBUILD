@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/LazySeldi/lazybios/releases/download/v$pkgver/lazybios-$pkgver.tar.gz")
-sha256sums=('66756c70296862bab4432095f9e505bf93cc0a27847a128e2cb82f993165b829')
+sha256sums=('4621f0881984e0f2131439d5d6a1a89efc7716fafde6300f7106719fae46b445')
 
 build() {
   cd "$srcdir/lazybios-$pkgver"
