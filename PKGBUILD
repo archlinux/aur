@@ -7,18 +7,15 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=25.08.0.88
+pkgver=25.08.10.111
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=(x86_64 aarch64)
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=(LicenseRef-Citrix)
-depends=(alsa-lib curl gst-plugins-base-libs gtk2 libc++ libc++abi libidn11
-         libjpeg6-turbo libpng12 libsecret libsoup libvorbis libxaw libxml2-legacy libxp
+depends=(alsa-lib curl gst-plugins-base-libs libc++ libc++abi
+         libsecret libsoup libvorbis libxaw libxml2-legacy libxp
          openssl speex webkit2gtk)
-optdepends=('xerces-c: gtk2 configuration manager'
-            'webkit2gtk: gtk2 selfservice/storefront ui'
-            'libc++: for HDXTeams')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
@@ -44,8 +41,8 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4'
             '0e3a6c7cf7fa9eee7dcde7356e90ffa1cb312bffc0813a0bf123d2f918dc369d'
             '739da3fca95d07fc3076522acc6b6c1b12b988047bd2fb3c87e37231e49f2e1f')
-sha256sums_x86_64=('79ab907fc28866589b1af0ef826a2ec0bf5c1c6651cd1629379520868e3cdda6')
-sha256sums_aarch64=('30e3f39718be198b0d8acbeb47c1bf5abe5b7ee0ef13cdefc15a646aa75be934')
+sha256sums_x86_64=('6dddc2971051260be3256fb068a044df593d78f6a6fa7da91de4a3964be40d1a')
+sha256sums_aarch64=('e6c603782849a621eb7a10efebad268d8fe60bc3c6875071f64d86a84c009e6b')
 install=citrix-client.install
 
 package() {
