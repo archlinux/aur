@@ -1,10 +1,10 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgbase=llm-thalamus
-pkgname=('llm-thalamus' 'llm-thalamus-theme')
+pkgname=('llm-thalamus' 'llm-thalamus-brain')
 _pkgname=llm_thalamus
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
 url="https://github.com/evertvorster/llm_thalamus"
@@ -33,7 +33,8 @@ build() {
 
 package_llm-thalamus() {
   pkgdesc="Core llm-thalamus daemon and UI"
-  depends=('python' 'qt6-base' 'qt6-webengine' 'llm-thalamus-theme')
+  depends=('python' 'qt6-base' 'qt6-webengine')
+  optdepends=('llm-thalamus-theme')
   
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
@@ -47,7 +48,7 @@ package_llm-thalamus() {
 
 }
 
-package_llm-thalamus-theme() {
+package_llm-thalamus-brain() {
   pkgdesc="Default 'brain' theme for llm-thalamus"
   depends=('llm-thalamus')
   provides=('llm-thalamus-theme')
