@@ -1,0 +1,21 @@
+pkgbase = pbar-git
+	pkgdesc = A featherweight text-rendering wayland statusbar.
+	pkgver = r28.b303f89
+	pkgrel = 1
+	url = https://codeberg.org/sunn4room/pbar
+	arch = x86_64
+	license = MIT
+	makedepends = wayland
+	makedepends = pixman
+	makedepends = fcft
+	makedepends = tllist
+	makedepends = pkg-config
+	depends = wayland
+	depends = pixman
+	depends = fcft
+	provides = pbar
+	conflicts = pbar
+	source = pbar-git::git+https://codeberg.org/sunn4room/pbar.git
+	md5sums = SKIP
+
+pkgname = pbar-git
