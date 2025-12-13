@@ -1,0 +1,17 @@
+pkgbase = qoder-gui-bin
+	pkgdesc = Qoder Agentic Coding IDE (GUI) - AI-powered editor from Alibaba (Linux Beta)
+	pkgver = latest
+	pkgrel = 1
+	url = https://qoder.com/download
+	arch = x86_64
+	license = proprietary
+	makedepends = rpm-tools
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libxss
+	depends = nss
+	depends = alsa-lib
+	depends = at-spi2-core
+	options = !strip
+
+pkgname = qoder-gui-bin
