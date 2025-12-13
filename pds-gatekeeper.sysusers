@@ -1,1 +1,2 @@
-u pds-gatekeeper - "PDS Gatekeeper service" /var/lib/pds-gatekeeper
+u pds-gatekeeper - "PDS Gatekeeper service"
+m pds-gatekeeper pds

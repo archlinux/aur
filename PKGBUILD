@@ -2,7 +2,7 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r18.2e39f1e
-pkgrel=3
+pkgrel=4
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
@@ -18,12 +18,10 @@ install='pds-gatekeeper.install'
 source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
         'pds-gatekeeper.service'
         'pds-gatekeeper.sysusers'
-        'pds-gatekeeper.tmpfiles'
         'pds-gatekeeper.env')
 b2sums=('SKIP'
-        '76dd8bf42db0e4bd9c497df36f091fbd5ef26b5df8b99ee1736142abefd019cd65ce756380d81aa0c35234e5670f3570c388f0eba69f348bc069240715809fc8'
-        '7ad0ff18a07f95db8d7af27c037e8e98abaa74f0ce4aac1537024e034d0587816f41bf653e9042e65789933b600058c1871fac8ad462bc11f641029fce20b0e0'
-        '0205b10c145ad9473bc933a9603eaf7c91399f88649925d2049b234c54e9be7f716880206bfacc067e040ac567ab37597b0fb3b50a33894462a6314f7aa1f776'
+        'c013b231707e55775aeadac273f0daa5caa0826df6bdb417dba36aca7bee48df1a96d1b817ccd3f1bb0dc4864a43da27770c32c877152a8e394f58af21537afd'
+        '0d6749916a32f76e7c960d03f2e2c3350ec4158f9194e8258f251661d0bcb1ca591e865e9244e9cccebf6aa75642e7f1dd213ae89ec0f2a7413d4e0658c8e5f0'
         '0c5f2a9bcf6b5a2c8c1e21e113debff0ede6786737e0660697cb90ab50132f8b16c0375b1759919f643e75c7599c190c0d07890a50da3aaa48e5b5743ebb1194')
 
 pkgver() {
@@ -62,9 +60,8 @@ package() {
   # Install systemd service
   install -Dm0644 "$srcdir/pds-gatekeeper.service" "$pkgdir/usr/lib/systemd/system/pds-gatekeeper.service"
 
-  # Install sysusers and tmpfiles
+  # Install sysusers
   install -Dm0644 "$srcdir/pds-gatekeeper.sysusers" "$pkgdir/usr/lib/sysusers.d/pds-gatekeeper.conf"
-  install -Dm0644 "$srcdir/pds-gatekeeper.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/pds-gatekeeper.conf"
 
   # Install environment file
   install -Dm0644 "$srcdir/pds-gatekeeper.env" "$pkgdir/etc/pds-gatekeeper.env"
