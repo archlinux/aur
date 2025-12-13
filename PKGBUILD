@@ -3,7 +3,7 @@
 _name=qcustomplot
 pkgname=qcustomplot-qt6
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt C++ widget for plotting and data visualization (built with Qt6)"
 arch=('x86_64')
 url="https://www.qcustomplot.com/"
@@ -11,17 +11,17 @@ license=('GPL3')
 optdepends=('qcustomplot: header file')
 makedepends=('graphviz' 'qt6-base')
 source=(
-  "${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/ecme2/QCustomPlot/-/archive/v${pkgver}/QCustomPlot-v${pkgver}.tar.bz2"
+  "${pkgname}-${pkgver}-sharedlib.tar.gz::https://www.qcustomplot.com/release/${pkgver}/QCustomPlot-sharedlib.tar.gz"
   "${pkgname}-${pkgver}-source.tar.gz::https://www.qcustomplot.com/release/${pkgver}/QCustomPlot-source.tar.gz"
 )
-sha512sums=('a9c0fe0c2393858b5de66e78606ef96e57b00e405e0417df7d59d5e93a89f706a1d4767316bf015c76514aedd69553229fd347569b9d68e387103486ee29988f'
+sha512sums=('c661e4a835066fee92b254fbd7b825dbd5c58973189ff2099a01308cb81fe6bf3bac1456f5da91f01c6265f8f548f61b57e237d00a9b5c2c94acf1a024baa18e'
             '1feb4f45ef90d7709edb26c9964f0ec85ef4aa30f0a7e9fcd803fae586875e8d6744dbcfe08b21f461816ca426c8a6612f8e9c7ef9d3f5a7150c3de8fa5ee57d')
 
 prepare() {
-  mv -v "QCustomPlot-v${pkgver}" "${_name}-${pkgver}"
+  mv -v "${_name}-source" "${_name}-${pkgver}"
   cd "${_name}-${pkgver}"
-  # move required amalgameted sources into place
-  mv -v "../${_name}-source/"*.{cpp,h} .
+  mv -v "../${_name}-sharedlib" sharedlib
+
   # rename libraries to qcustomplot-qt6
   sed -i 's/TARGET = qcustomplot/TARGET = qcustomplot-qt6/' sharedlib/sharedlib-compilation/sharedlib-compilation.pro
 }
