@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=dano
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A hashdeep/md5tree (but much more) for media files'
 arch=('x86_64')
@@ -19,12 +19,12 @@ conflicts=()
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('c9c094869c7c7f2666aca4872564497956a0a09c38b6dde1cbb612acb72cfaf1')
+sha256sums=('cb9f211054df2da0905f2f5a197601e547ea7c0bbd57d05080209dcf570ed914')
 
 prepare() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
@@ -39,4 +39,5 @@ package() {
   install -Dm755 "target/deb/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 'third_party/LICENSES_THIRD_PARTY.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES_THIRD_PARTY.html"
 }
