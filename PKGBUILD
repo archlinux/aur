@@ -6,7 +6,7 @@
 # Contributor: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=lux-dl-git
-pkgver=0.24.1.r23.baece38
+pkgver=0.24.1.r24.3d84b49
 pkgrel=1
 pkgdesc="Fast and simple video download library and CLI tool written in Go"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ depends=('ffmpeg')
 makedepends=('go' 'git')
 provides=('lux-dl')
 conflicts=('lux-dl' 'lux-dl-bin' 'lux-go' 'annie' 'lux')
-_commit=baece3801cf0039fc8d6624650c682aee9e85015
+_commit=3d84b490142728e1f3a8cb934ab34a942ce1ff9f
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
