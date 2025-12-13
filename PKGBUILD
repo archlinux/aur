@@ -22,6 +22,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "99-${_pkgname}.conf")
+install="sonarqube-bin.install"
 sha256sums=('09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341'
             'd279c05080a2998ed9759b3e357eefef331bdcde631d0edd042102ea723fe231'
             'b0204a7b86289929765c651627e9b55d02ae1f0da34184d2c05c7929d1222932'
