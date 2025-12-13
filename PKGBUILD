@@ -1,9 +1,9 @@
 pkgname=llm-thalamus-doomguy
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Doomguy theme for llm-thalamus"
 arch=('any')
-depends=('llm-thalamus')
+#depends=('llm-thalamus')
 provides=('llm-thalamus-theme')
 conflicts=('llm-thalamus-theme')
 source=('https://github.com/evertvorster/llm-thalamus-doomguy/archive/refs/tags/v1.0.tar.gz')
