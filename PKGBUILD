@@ -5,7 +5,7 @@
 _pkgauthor=filebrowser
 _pkgname=filebrowser
 pkgname=${_pkgname}-bin
-pkgver=2.51.2
+pkgver=2.52.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
@@ -35,8 +35,8 @@ sha256sums=('1d85acca4ca9bcdb6767ff60891d6e0a4e9c324fc50bed1231e8c891eb9c4420'
             '3495234f011491a1d448af24bfe8af8018bb4c5b1a4c4ef53651fb068d9801c4'
             '4a1946819f24b20b3144360151a4dc1ed1b8e407bfb11045a74884abd6816100'
             '09d2261355578a7ca4c70062ae123d059e7d0bb6ff0ee5add2c223ffeffedd1c')
-sha256sums_x86_64=('ec4553c545398a8bc9fa4aa180afa3bc5557a4de6f42f1f20ca2c56b52aa71a3')
-sha256sums_aarch64=('a85ce49ebcf9ea0b096395045dc31d186a54c315d88dfc8b93e4afe3628d892f')
+sha256sums_x86_64=('72b89a3f2d3a00f8d1818af73ea510a76eee3f9e00298e66915265ed731a5d92')
+sha256sums_aarch64=('37ad36b84848649a8ea8fa17ead118183ecd238f56e69274da08976ab00e0b32')
 
 
 package() {
