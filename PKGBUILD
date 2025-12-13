@@ -13,7 +13,7 @@ conflicts=("iloader-bin")
 options=("!strip" "!debug")
 
 _appimage="iloader-linux-amd64.AppImage"
-source=("$_appname::$url/releases/download/v$pkgver/$_appimage"
+source=("$_appimage::$url/releases/download/v$pkgver/$_appimage"
         "LICENSE::$url/raw/refs/tags/v$pkgver/LICENSE")
 sha256sums=("2e5d85da7716ebff0e05ffde80ea218621debbcdf412884b054e4b0aea6b2c77"
             "c6e929e3490b6475e382b4f74aaddd068deb3bf27cca2109821591e692dfcb3b")
