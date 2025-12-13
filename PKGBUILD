@@ -13,8 +13,8 @@ conflicts=('pixelterm-c')
 source_x86_64=("pixelterm::${url}/releases/download/v${pkgver}/pixelterm-amd64-linux")
 source_aarch64=("pixelterm::${url}/releases/download/v${pkgver}/pixelterm-arm64-linux")
 noextract=()
-md5sums_x86_64=('b880ef57490c3fcef82d59fa33361a9c')
-md5sums_aarch64=('b880ef57490c3fcef82d59fa33361a9c')
+md5sums_x86_64=('953d9858d7d35a603b8fc37536cd2567')
+md5sums_aarch64=('953d9858d7d35a603b8fc37536cd2567')
 
 package() {
   install -Dm755 "${srcdir}/pixelterm" "${pkgdir}/usr/bin/pixelterm"
