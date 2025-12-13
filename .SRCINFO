@@ -1,0 +1,11 @@
+pkgbase = llm-thalamus-brain
+	pkgdesc = Brain theme for llm-thalamus
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	provides = llm-thalamus-theme
+	conflicts = llm-thalamus-theme
+	source = https://github.com/evertvorster/llm-thalamus-brain/archive/refs/tags/v1.0.tar.gz
+	sha256sums = cc99c3fae719e62a14fd692b87f65b151bab569ae36e1f0d0ae66092e469b608
+
+pkgname = llm-thalamus-brain
