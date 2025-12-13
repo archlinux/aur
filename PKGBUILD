@@ -1,10 +1,10 @@
 # Maintainer: creations
 pkgname=equibop
 _pkgname=Equibop
-pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
+pkgdesc="A custom Discord desktop app with Equicord pre-installed"
 pkgver=3.1.4
 # Reminder for devs: don't forget to update the electron version on equibop.sh
-pkgrel=2
+pkgrel=3
 electron=electron39
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
