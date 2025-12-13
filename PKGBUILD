@@ -24,11 +24,13 @@ noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-*}"
+	cd "${srcdir}/${pkgname%-*}"
 	printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
+    cd "${srcdir}/${pkgname%-*}"
+
     # it might be good to use the users cache
     # yarn config set cache-folder "${srcdir}/.yarn-cache" 
 
@@ -37,17 +39,21 @@ prepare() {
 }
 
 build() {
-    cd ${srcdir}/${pkgname%-git}
+    # We don't want to depend on nodejs-lts-jod on runtime
+    # So we build the dcli as a self-contained binary
+    # See: https://github.com/Dashlane/dashlane-cli/issues/52#issuecomment-1447918815
+
+    cd "${srcdir}/${pkgname%-*}"
     # See https://github.com/Dashlane/dashlane-cli/blob/8d37e32ebba9e95404f25236b659db692d1bdb4d/.github/workflows/release.yml
     export CI=true
-    yarn
+    yarn install 
     YARN_ENABLE_INLINE_BUILDS=1 yarn run build
-    yarn workspaces focus --all --production
+    # yarn workspaces focus --all --production
+    yarn run pkg:linux
 }
 
 package() {
-    export CI=true
-    cd ${srcdir}/${pkgname%-git}
-    yarn dlx @yao-pkg/pkg@6.1.1 ./dist -t node22-linux-x64 -o "${pkgdir}/usr/bin/${pkgname%-git}" -C Brotli "--public" "--public-packages" "tslib,thirty-two,node-hkdf-sync,vows" "--no-bytecode"
+    cd "${srcdir}/${pkgname%-*}"
+    install -Dm755 bundle/dcli-linux "${pkgdir}/usr/bin/${pkgname%-*}"
 }
 
