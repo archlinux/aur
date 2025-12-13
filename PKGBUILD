@@ -16,6 +16,9 @@ makedepends=(
     'clang'
     'cmake'
     'pkgconf'
+    # Uncomment for GPU acceleration:
+    # 'vulkan-headers'  # for Vulkan (AMD, NVIDIA, Intel)
+    # 'cuda'            # for CUDA (NVIDIA only)
 )
 optdepends=(
     'ydotool: keyboard simulation for typing output'
@@ -23,6 +26,8 @@ optdepends=(
     'libnotify: desktop notifications'
     'pipewire: audio capture (recommended)'
     'pulseaudio: audio capture (alternative)'
+    'vulkan-icd-loader: GPU acceleration via Vulkan (requires rebuild with gpu-vulkan feature)'
+    'cuda: GPU acceleration for NVIDIA (requires rebuild with gpu-cuda feature)'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
@@ -39,7 +44,13 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+
+    # GPU Acceleration (optional) - uncomment ONE of these lines:
+    # local _features="--features gpu-vulkan"   # AMD, NVIDIA, Intel (recommended for AMD)
+    # local _features="--features gpu-cuda"     # NVIDIA only
+    # local _features="--features gpu-hipblas"  # AMD ROCm
+
+    cargo build --frozen --release ${_features:-}
 }
 
 check() {
