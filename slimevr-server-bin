@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+"${JAVA_HOME}/bin/java" -jar /usr/share/slimevr/slimevr.jar run

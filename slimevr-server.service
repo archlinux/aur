@@ -1,0 +1,8 @@
+[Unit]
+Description=SlimeVR Full Body Tracking System Server
+Documentation=https://docs.slimevr.dev/
+
+[Service]
+ExecStart=/usr/bin/slimevr-server
+TimeoutStopSec=5
+Restart=no

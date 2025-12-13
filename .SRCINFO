@@ -1,0 +1,33 @@
+pkgbase = slimevr-server
+	pkgdesc = Server for SlimeVR Full Body Tracking System
+	pkgver = 18.1.0
+	pkgrel = 1
+	url = https://github.com/SlimeVR/SlimeVR-Server
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = pnpm
+	makedepends = npm
+	makedepends = rust
+	makedepends = libgit2
+	makedepends = gtk3
+	makedepends = webkit2gtk-4.1
+	makedepends = java-runtime-headless-openjdk=17
+	options = !lto
+	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=f01f599526784492bd892af943b3c2b08bdc4ac0
+	source = slimevr-server-bin
+	source = slimevr-server.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = slimevr-server
+	pkgdesc = Server for SlimeVR Full Body Tracking System
+	depends = java-runtime-headless-openjdk=17
+
+pkgname = slimevr-gui
+	pkgdesc = GUI for SlimeVR Full Body Tracking System
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = java-runtime-headless-openjdk=17
