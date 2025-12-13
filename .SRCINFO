@@ -1,0 +1,11 @@
+pkgbase = mping
+	pkgdesc = a simple multicast ping program
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/troglobit/mping/
+	arch = x86_64
+	license = MIT
+	source = https://github.com/troglobit/mping/archive/refs/tags/v2.0.tar.gz
+	sha512sums = 247fba93f086a75f881618644980a447b4a8a6cccbd03b1e8afc89b8d1ddfc7b964a0bad3bca204473f39722bf59caf9e0427c17c10d6f602afd6bfb5d09e3d9
+
+pkgname = mping
