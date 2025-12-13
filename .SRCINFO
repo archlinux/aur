@@ -1,0 +1,19 @@
+pkgbase = cudnn-pascal
+	pkgdesc = NVIDIA cuDNN library for Pascal GPUs (CUDA 12.x; pinned to latest Pascal-supported cuDNN)
+	pkgver = 9.10.2.21
+	pkgrel = 1
+	url = https://developer.nvidia.com/cuDNN
+	arch = x86_64
+	license = LicenseRef-NVIDIA-cuDNN
+	depends = cuda-pascal
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = libz.so
+	provides = cudnn
+	conflicts = cudnn
+	options = !strip
+	source = https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-9.10.2.21_cuda12-archive.tar.xz
+	b2sums = SKIP
+
+pkgname = cudnn-pascal
