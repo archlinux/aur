@@ -19,8 +19,8 @@ sha256sums=('245809ac742e30085d94bc77386c65d78ff36961928e83eca68c0f1850b5a30a'
             '1d15685397688aaaec4f356567581ee2ff0c5b71f748ab8a30896ef62658f7aa')
 
 prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
+  cd "$srcdir/${pkgname}-${pkgver}"
+  patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
 }
 
 build() {
