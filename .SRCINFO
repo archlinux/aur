@@ -1,6 +1,6 @@
 pkgbase = novel-editor-bin
 	pkgdesc = Professional novel writing application with advanced project management and world-building tools (binary)
-	pkgver = 0.1.53
+	pkgver = 0.1.60
 	pkgrel = 1
 	url = https://github.com/jeasoncc/novel-editor
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = novel-editor-bin
 	depends = libappindicator-gtk3
 	provides = novel-editor
 	conflicts = novel-editor
-	source = novel-editor-bin-0.1.53.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.53/novel-editor_0.1.53_amd64.deb
+	source = novel-editor-bin-0.1.60.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.60/novel-editor_0.1.60_amd64.deb
 	sha256sums = SKIP
 
 pkgname = novel-editor-bin
