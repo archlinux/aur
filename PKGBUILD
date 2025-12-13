@@ -2,7 +2,7 @@
 
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.4.321.0
+pkgver=1.4.335.0
 pkgrel=1
 epoch=1
 _tag="vulkan-sdk-$pkgver"
@@ -14,12 +14,8 @@ depends=('mingw-w64-crt' 'mingw-w64-spirv-tools')
 makedepends=('mingw-w64-cmake' 'python' 'ninja')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(
-	"${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz"
-	"$pkgname-fix-wrong-export.patch"
-)
-sha256sums=('cb14f05b25b832655f440a36b13fbd0ab83e508d4de5c2e19c5f83eb61f6d55c'
-            '773ced2829456e38dfc92e9b813005e1487c1c96ecd6d150d6edbfd02626876e')
+source=("${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
+sha256sums=('d148ae0b8633bd81f47c612367586a084577fbad311b738b9d8d5a8c35ebf90a')
 
 _srcdir="${_pkgname}-${_tag}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -29,7 +25,6 @@ _flags=(
 
 prepare() {
 	cd "$_srcdir"
-	patch -p1 -i "${srcdir}/$pkgname-fix-wrong-export.patch"
 	sed -i 's/if (NOT BUILD_SHARED_LIBS)/if (1)/' 'SPIRV/CMakeLists.txt'
 }
 
