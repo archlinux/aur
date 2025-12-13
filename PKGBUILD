@@ -56,7 +56,6 @@ package_tlp-git() {
   export TLP_NO_INIT=1
   export TLP_SBIN=/usr/bin
   export TLP_WITH_ELOGIND=0
-  export TLP_WITH_SYSTEMD=1
 
   make DESTDIR="${pkgdir}" -C TLP install-tlp install-man-tlp
 }
@@ -81,6 +80,8 @@ package_tlp-pd-git() {
     tuned-ppd
   )
 
+  export TLP_SBIN=/usr/bin
+
   make DESTDIR="${pkgdir}" -C TLP install-pd install-man-pd
 }
 
@@ -93,8 +94,6 @@ package_tlp-rdw-git() {
   )
   provides=(tlp-rdw)
   conflicts=(tlp-rdw)
-
-  export TLP_SBIN=/usr/bin
 
   make DESTDIR="${pkgdir}" -C TLP install-rdw install-man-rdw
 }
