@@ -5,8 +5,8 @@ pkgname=equibop-bin
 _appname=equibop-desktop
 pkgver=3.1.4
 _electronversion=39
-pkgrel=3
-pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
+pkgrel=4
+pkgdesc="A custom Discord desktop app with Equicord pre-installed (binary release)"
 arch=(
     'aarch64'
     'x86_64'
