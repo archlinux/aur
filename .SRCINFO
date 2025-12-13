@@ -1,13 +1,13 @@
 pkgbase = pkgdu
 	pkgdesc = A tool to display packages disk usage size
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/bpetlert/pkgdu
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = libalpm.so
-	source = pkgdu-0.9.1.tar.gz::https://github.com/bpetlert/pkgdu/archive/0.9.1.tar.gz
-	b2sums = 13773326f1734833ac59b7a80c499085dacb81dca83898ad3ca63cdc4a5418d8157c0f78aca7d4b973306457e9296ec8f6320b0045fa07f4c14eb8fe5a407f23
+	source = pkgdu-0.9.2.tar.gz::https://github.com/bpetlert/pkgdu/archive/0.9.2.tar.gz
+	b2sums = df1734177bc82113416af36f04590e0b6a168bb63353b3e208028e713741a035d6d11969710120892f3d5df18da5e2590af8ac4384a08c4f1c08a68ed2fb3724
 
 pkgname = pkgdu
