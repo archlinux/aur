@@ -7,10 +7,10 @@
 # The patch version in this package corresponds to the timestamp of the HEAD ref.
 # The latest HEAD ref hash and its timestamp can be retrieved via:
 #   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r '.sha,(.commit.committer.date | fromdate)'
-_commit=45b771bb2c693a4cc7e34e79b7d30ab10bb7776a
+_commit=7152e15489d2077cd299ee23e3d51a4c599ab14f
 
 pkgname=mingw-w64-luajit
-pkgver=2.1.1765007043
+pkgver=2.1.1765228720
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('any')
@@ -19,7 +19,7 @@ license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('gcc-libs' 'lib32-gcc-libs' 'mingw-w64-gcc')
 source=("LuaJIT-${_commit}.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/${_commit}.tar.gz")
-sha256sums=('9cc18db57d0a2dfdeb262762715d51505f6ae6cce1c5a43f3cd420ba7e4ae30c')
+sha256sums=('2103f2c9526d158259a627d51799de8016e2a2c6d89f6ef25f9d89b92c597511')
 options=('!strip' '!buildflags' staticlibs)
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
