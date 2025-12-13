@@ -2,7 +2,7 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r18.2e39f1e
-pkgrel=1
+pkgrel=2
 pkgdesc="Microservice to bring 2FA to self hosted PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
@@ -24,7 +24,7 @@ b2sums=('SKIP'
         '76dd8bf42db0e4bd9c497df36f091fbd5ef26b5df8b99ee1736142abefd019cd65ce756380d81aa0c35234e5670f3570c388f0eba69f348bc069240715809fc8'
         '7ad0ff18a07f95db8d7af27c037e8e98abaa74f0ce4aac1537024e034d0587816f41bf653e9042e65789933b600058c1871fac8ad462bc11f641029fce20b0e0'
         '0205b10c145ad9473bc933a9603eaf7c91399f88649925d2049b234c54e9be7f716880206bfacc067e040ac567ab37597b0fb3b50a33894462a6314f7aa1f776'
-        '3ff6343038a551089df28a19cd945f0dd8bf7e2b2ced52f176f529d0658288de923578f0898878467eab407478c8775a25d379707476d1d88ced19dc25a2df6e')
+        '0c5f2a9bcf6b5a2c8c1e21e113debff0ede6786737e0660697cb90ab50132f8b16c0375b1759919f643e75c7599c190c0d07890a50da3aaa48e5b5743ebb1194')
 
 pkgver() {
   cd "$srcdir/pds-gatekeeper"
