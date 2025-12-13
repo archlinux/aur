@@ -1,0 +1,15 @@
+pkgbase = swap-os-git
+	pkgdesc = A tool to enable seemless swap between different OS
+	pkgver = 1.0.0.r0.gXXXXXXX
+	pkgrel = 1
+	url = https://github.com/CWZMorro/swap-OS
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = efibootmgr
+	provides = swap-os
+	conflicts = swap-os
+	source = git+https://github.com/CWZMorro/swap-OS.git
+	sha256sums = SKIP
+
+pkgname = swap-os-git
