@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts515
-pkgver=5.15.196
+pkgver=5.15.197
 pkgrel=1
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
@@ -27,9 +27,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('83157953598b026fb721c906c60dfdfd8e986f25ecb9910f3504f690e2770e05'
+sha256sums=('fd218df8e2107a4443b6c29fef7f95aad167031e0fbdbc7a858ae8471360668a'
             'SKIP'
-            'd4928c0cd73548dc09a4c3dfbb4a080a0239b046ca3e4e0d7a95b954bc5a08a1'
+            '6e93ad46081dfc0879f35f1feebc5b521d4913018e7a7ee33f82faf248ee45c1'
             '3b5cfc9ca9cf778ea2c4b619b933cda26519969df2d764b5a687f63cf59974cd'
             '2af9be5ea71054b709974a8455b65e3ae2de48cd3cf75d2ff7ed4f0ad3c90431'
             '8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c'
@@ -69,7 +69,7 @@ prepare() {
 build() {
   cd $_srcname
 # breaks brilliantly, disabled htmldocs
-  make CC=gcc-14 all
+  make CC=gcc all
 }
 
 _package() {
@@ -222,24 +222,16 @@ pkgname=(
 
 if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; then
 
-  # use gcc *which is still gcc 14 on 32-bit" instead of gcc14
-  eval "$(
-    declare -f build | \
-      sed '
-        s|gcc-14|gcc|
-      '
-  )"
-
   # use 32-bit configuration files per subarchitecture instead of main config file
   source_pentium4=('config.pentium4')
   source_i686=('config.i686')
   source_i486=('config.i486')
   # fail if upstream's .config changes
   for ((i=0; i<${#sha256sums[@]}; i++)); do
-    if [ "${sha256sums[${i}]}" = 'd4928c0cd73548dc09a4c3dfbb4a080a0239b046ca3e4e0d7a95b954bc5a08a1' ]; then
-      sha256sums_pentium4=('512e746ce7895a5f9c5938addd00a60576386c964388dcb5a3df302c39a55c90')
-      sha256sums_i686=('2a089108265f43f3d15e5e41173ae96dd91f8995c41c4284db8793e1e257f1b9')
-      sha256sums_i486=('9671de8a49383d032baaf0039f555137e7964902aa62296a28b8a6d93b7e74b9')
+    if [ "${sha256sums[${i}]}" = '6e93ad46081dfc0879f35f1feebc5b521d4913018e7a7ee33f82faf248ee45c1' ]; then
+      sha256sums_pentium4=('d36c371b1676b56817a727f18a1003c3a584b43ded1ae2649ccb1a872157373d')
+      sha256sums_i686=('9c4c1ef20ff217dbd43c8fcbc5a9239ca457b6c66edd889425e61c0821ef9973')
+      sha256sums_i486=('31f374d0a235a8371a7939afa424c52d0a4e2ce70645790fba2cc9932b677f9a')
     fi
   done
 
@@ -279,8 +271,4 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   makedepends=(${makedepends[@]//graphviz/})
   makedepends=(${makedepends[@]//imagemagick/})
   makedepends=(${makedepends[@]//texlive-latexextra/})
-else
-  # gcc 14, as gcc 15 breaks
-  makedepends=(${makedepends[@]//gcc/})
-  makedepends+=(gcc14)
 fi
