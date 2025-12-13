@@ -32,14 +32,11 @@ prepare() {
 
 build() {
   cd $pkgname-v$pkgver
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
 
 check() {
   cd $pkgname-v$pkgver
-  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen
 }
 
