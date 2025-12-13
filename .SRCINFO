@@ -14,7 +14,7 @@ pkgbase = pixelterm-c
 	conflicts = pixelterm-c
 	source_x86_64 = pixelterm::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.0.4/pixelterm-amd64-linux
 	md5sums_x86_64 = 731d7f2d6ca1d05648c3ba855756a81b
-	source_aarch64 = pixelterm::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.0.4/pixelterm-aarch64-linux
-	md5sums_aarch64 = 731d7f2d6ca1d05648c3ba855756a81b
+	source_aarch64 = pixelterm::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.0.4/pixelterm-arm64-linux
+	md5sums_aarch64 = 9d1ead73e678fa2f51a70a933b0bf017
 
 pkgname = pixelterm-c
