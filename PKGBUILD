@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=doltgres-bin
-pkgver=0.54.5
+pkgver=0.54.6
 pkgrel=1
 pkgdesc="Doltgres is Dolt for Postgres | Version Controlled PostgreSQL"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 provides=('doltgres')
 conflicts=('doltgres')
 source=("doltgresql-$pkgver-$arch.tgz::https://github.com/dolthub/doltgresql/releases/download/v$pkgver/doltgresql-linux-amd64.tar.gz")
-sha256sums=('a236ea32d5c27d822d77651089a3e9755b82a1f71438217b15639af2c524e1fc')
+sha256sums=('65e41849b772d01a7d1a82e7348b8dbbd268a3d2357c769bcc5ac02aefd83909')
 
 package() {
 	cd doltgresql-linux-amd64
