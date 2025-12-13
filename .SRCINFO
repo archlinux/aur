@@ -1,0 +1,16 @@
+pkgbase = afx-bin
+	pkgdesc = An alternative, fast package manager for plugins and executable commands
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/babarot/afx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = afx
+	conflicts = afx
+	source_x86_64 = afx-x86_64-0.2.2.tgz::https://github.com/babarot/afx/releases/download/v0.2.2/afx_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3efd66ea8311b221cec5f2cbec6e58b3d1132b12ca224afe8313ca9424f8d884
+	source_aarch64 = afx-aarch64-0.2.2.tgz::https://github.com/babarot/afx/releases/download/v0.2.2/afx_Linux_x86_64.tar.gz
+	sha256sums_aarch64 = 3efd66ea8311b221cec5f2cbec6e58b3d1132b12ca224afe8313ca9424f8d884
+
+pkgname = afx-bin

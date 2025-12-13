@@ -1,0 +1,5 @@
+[afx-bin]
+source = "github"
+github = "babarot/afx"
+use_latest_release = true
+prefix = "v"
