@@ -1,6 +1,6 @@
 pkgbase = geany-plugin-preview-git
 	pkgdesc = Plugin for Geany to preview markdown and other markup languages
-	pkgver = 0.2.1.r0.g8753a09
+	pkgver = 0.2.4.r4.gcf00e5b
 	pkgrel = 1
 	url = https://github.com/xiota/geany-preview
 	arch = x86_64

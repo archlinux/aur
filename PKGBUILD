@@ -4,7 +4,7 @@ _pkgname='geany-plugin-preview'
 pkgname="$_pkgname-git"
 pkgdesc="Plugin for Geany to preview markdown and other markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.2.1.r0.g8753a09
+pkgver=0.2.4.r4.gcf00e5b
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -52,6 +52,8 @@ pkgver() {
 }
 
 build() {
+  printf '%s' "${pkgver/.r/+r}" > "$_pkgsrc/version.txt"
+
   arch-meson build "$_pkgsrc"
   meson compile -C build
 }
