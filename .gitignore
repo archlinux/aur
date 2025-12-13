@@ -1,2 +1,5 @@
-gitmal*
-*.tar*
+/gitmal-*
+/*.tar.gz
+/*.pkg.tar.*
+/pkg/
+/src/
