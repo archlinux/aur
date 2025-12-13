@@ -7,6 +7,7 @@ pkgdesc='pacman wrapper with CLI inspired by zypper and apt'
 url='https://codeberg.org/zeroten/pacrs'
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/zeroten/pacrs/archive/v$pkgver.tar.gz")
 arch=('x86_64')
+license=('GPL-3.0-or-only')
 makedepends=('cargo')
 depends=('git' 'pacman' 'libalpm.so>=16')
 optdepends=('paru: AUR support')
