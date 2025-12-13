@@ -48,7 +48,7 @@ prepare() {
   cargo update tendril
 
   CARGO_HOME="$srcdir/build/target/cargo-home" \
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   # https://gitlab.gnome.org/World/design/vector-slicer/-/merge_requests/18
   git apply -3 ../vector-slicer-fix-template.patch
