@@ -1,7 +1,7 @@
 pkgbase = mpz-qt5
 	pkgdesc = Music player for the large local collections
-	pkgver = 1.1.3
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 0
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = mpz-qt5
   depends = cmake
   provides = mpz
   conflicts = mpz
-	source = mpz-qt5-1.1.3-0.zip::https://github.com/olegantonyan/mpz/archive/5ff9cd6537ff17a3b047013306e17547bd9978a4.zip
-	sha256sums = 0ac050c3e92c46a6656ca1d1764aafff915f5e8d849d6164a7a8cfae5364fe49
+	source = mpz-qt5-2.0.0-0.zip::https://github.com/olegantonyan/mpz/archive/138f26742ab904649cd516eaefa101fd31bd50eb.zip
+	sha256sums = cdc68ddc1c492bb8e44ecf1988aff69b15336e1b4adf79c4c9fd86d95716ae99
 
 pkgname = mpz-qt5
