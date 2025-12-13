@@ -1,6 +1,6 @@
 pkgbase = keeper-commander
 	pkgdesc = CLI, SDK and interactive shell for Keeper® Password Manager.
-	pkgver = 17.1.18
+	pkgver = 17.2.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Keeper-Security/Commander
@@ -43,7 +43,7 @@ pkgbase = keeper-commander
 	depends = python-psutil
 	depends = python-yaml
 	depends = python-google-api-python-client
-	source = keeper-commander-17.1.18.tar.gz::https://github.com/Keeper-Security/Commander/archive/v17.1.18.tar.gz
-	sha512sums = 35b13732d65865516e1ab5858b38f22d649f030f6e497100f17330136b742aec89c4c98a444b84f3790d26ac25aea7aa544b26f5a7f971fc62ec83c544824a67
+	source = keeper-commander-17.2.0.tar.gz::https://github.com/Keeper-Security/Commander/archive/v17.2.0.tar.gz
+	sha512sums = 0fac36641c8cac880f8d9345aeada20e74f19a6de123ceed2848d85c1d23ed30325027ef81b19f3e095ce6b44c359968ec559e379b755df98b7bf36aa73da699
 
 pkgname = keeper-commander
