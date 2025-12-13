@@ -1,22 +1,23 @@
 pkgbase = sonarqube-bin
-	pkgdesc = An open source platform for continuous inspection of code quality
-	pkgver = 10.5.1.90531
+	pkgdesc = An open source platform for continuous inspection of code quality (Community Build)
+	pkgver = 25.12.0.117093
 	pkgrel = 1
-	url = http://www.sonarqube.org/
+	url = https://www.sonarsource.com/products/sonarqube/
 	arch = x86_64
 	license = LGPL3
-	depends = java-runtime=17
+	depends = java-runtime>=17
 	optdepends = postgresql: A sophisticated object-relational DBMS
 	provides = sonarqube
+	conflicts = sonarqube
 	conflicts = sonarqube-lts
 	options = !strip
 	backup = etc/webapps/sonarqube/sonar.properties
-	source = https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.5.1.90531.zip
+	source = https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.12.0.117093.zip
 	source = sonarqube.service
 	source = sonarqube.tmpfiles
 	source = sonarqube.sysusers
 	source = 99-sonarqube.conf
-	sha256sums = 343470437adc70b8b808ac1c6f77491e321ca40ecef0d07bf739f5cce3bd34a5
+	sha256sums = 09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341
 	sha256sums = d279c05080a2998ed9759b3e357eefef331bdcde631d0edd042102ea723fe231
 	sha256sums = b0204a7b86289929765c651627e9b55d02ae1f0da34184d2c05c7929d1222932
 	sha256sums = a50fac609f12d3f1241bfb430a3d1b82d98f0649aff96e4a6f33bbe9733d854f

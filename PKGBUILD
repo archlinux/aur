@@ -1,21 +1,20 @@
-# Maintainer: ksj podhorsky.ksj@gmail.com 
-# ParaSait <parasait at proton dot me>
-# Former maintainer: Richard Neumann <mail at richard dash neumann period de>
-# Former maintainer: Tobias Hübner <dasNeutrum@gmx.de>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: ksj podhorsky.ksj@gmail.com 
+# Contributor: ParaSait <parasait at proton dot me>
 
 _pkgname=sonarqube
 pkgname=sonarqube-bin
-pkgver=10.5.1.90531
+pkgver=25.12.0.117093
 pkgrel=1
-pkgdesc="An open source platform for continuous inspection of code quality"
+pkgdesc="An open source platform for continuous inspection of code quality (Community Build)"
 arch=('x86_64')
-url="http://www.sonarqube.org/"
+url="https://www.sonarsource.com/products/sonarqube/"
 license=('LGPL3')
-depends=('java-runtime=17')
+depends=('java-runtime>=17')
 optdepends=(
             'postgresql: A sophisticated object-relational DBMS')
 backup=("etc/webapps/${_pkgname}/sonar.properties")
-conflicts=("${_pkgname}-lts")
+conflicts=("${_pkgname}" "${_pkgname}-lts")
 provides=("${_pkgname}")
 options=('!strip')
 source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
@@ -23,12 +22,16 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "99-${_pkgname}.conf")
-
-sha256sums=('343470437adc70b8b808ac1c6f77491e321ca40ecef0d07bf739f5cce3bd34a5'
+sha256sums=('09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341'
             'd279c05080a2998ed9759b3e357eefef331bdcde631d0edd042102ea723fe231'
             'b0204a7b86289929765c651627e9b55d02ae1f0da34184d2c05c7929d1222932'
             'a50fac609f12d3f1241bfb430a3d1b82d98f0649aff96e4a6f33bbe9733d854f'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
+
+pkgver() {
+    curl -s "https://www.sonarsource.com/products/sonarqube/downloads/" | 
+    grep -oP 'Release \K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -1
+}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
