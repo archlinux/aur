@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=8.1.3.r7.8d64bef5
+pkgver=8.2.2.r76.84c42fd3
 pkgrel=1
 pkgdesc='A modern music player'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-git}")
 depends=(
 	'python-pillow'
 	'python-pylast'
-	'python-pysdl3' # AUR
+	'python-pysdl3'
 	'python-send2trash'
 	'python-musicbrainzngs'
 	'python-mutagen'
@@ -33,7 +33,7 @@ depends=(
 	'ffmpeg'
 	'flac'
 	'gtk3'
-	'kissfft' # AUR, only -git is packaged
+	'kissfft'
 	'noto-fonts-extra'
 	'noto-fonts'
 	'sdl3_image'
@@ -50,7 +50,7 @@ depends=(
 )
 
 makedepends=(
-	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
+	'miniaudio'
 	'git'
 	'pkg-config'
 	'python-build'
@@ -64,10 +64,10 @@ optdepends=(
 	'python-plexapi: Plex streaming support'
 	'python-lynxpresence: Discord status support'
 	'python-pychromecast: Chromecast stream support'
-	'python-jxlpy: JPEG XL image support'    # AUR
-	'python-tekore: Spotify feature support' # AUR
-	'python-tidalapi: Tidal feature support' # AUR
-	'librespot: Spotify audio playback'      # AUR
+	'python-jxlpy: JPEG XL image support'
+	'python-tekore: Spotify feature support'
+	'python-tidalapi: Tidal feature support'
+	'librespot: Spotify audio playback'
 )
 
 source=("${pkgname%-git}"::'git+https://github.com/Taiko2k/Tauon.git')
@@ -87,7 +87,6 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	python -m compile_translations
 	python -m build --wheel
 }
 
