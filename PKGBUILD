@@ -1,6 +1,6 @@
 # Maintainer: foxmakes <pixilreal@gmail.com>
 pkgname=servo-spp-git
-pkgver=r1.0.0
+pkgver=r19.8deaa29
 pkgrel=1
 pkgdesc="Official semicolon servo++/spp implementation - A C++ implementation of the Servo programming language"
 arch=('x86_64')
@@ -22,13 +22,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/spp/servo"
+  cd "$srcdir/spp"
   make
 }
 
 package() {
-  cd "$srcdir/spp/servo"
-  install -Dm755 servocomp "$pkgdir/usr/bin/servocomp"
+  cd "$srcdir/spp"
+  install -Dm755 servo_cpp "$pkgdir/usr/bin/servo"
   
   if [ -d "reach" ]; then
     install -d "$pkgdir/usr/share/servo/reach"
