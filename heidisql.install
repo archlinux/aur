@@ -2,6 +2,14 @@ msg() {
     printf "%b" "\e[1;31m==> WARNING: This package now provides the native Linux version of HeidiSQL. To copy your settings click on File > Import settings and select ~/.heidisql/portable_settings.txt\nThere is also the old version available as heidisql-wine.\n\e[0m"
 }
 
+msg_install() {
+    printf "%b" "\e[1;33m==> NOTE: This package only includes shared files (wrapper script, locale files, ini files, documentation).\n==> You must install a provider of heidisql-client to use it.\e[0m"
+}
+
+post_install() {
+  msg_install
+}
+
 post_upgrade() {
   msg
 }
