@@ -1,0 +1,2 @@
+d /var/lib/pds-gatekeeper 0750 pds-gatekeeper pds-gatekeeper -
+f /etc/pds-gatekeeper.env 0640 root pds-gatekeeper -

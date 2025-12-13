@@ -16,11 +16,13 @@ backup=('etc/pds-gatekeeper.env')
 source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
         'pds-gatekeeper.service'
         'pds-gatekeeper.sysusers'
+        'pds-gatekeeper.tmpfiles'
         'pds-gatekeeper.env'
         'gatekeeper-data-directory.patch')
 b2sums=('SKIP'
         '4876ae2e7f31cc7091f4a7e42d92732f995516d384546041f1315baca8d677e778377f5abbc33fbcbd9ef5a39179ebfc4579591f233c02ee9b41632f35d413c4'
         '1ba5239a968d87a40adee3ffce34d30492fd674311374c52ef8141a5329000978c9cbc37ce6de461a59d4693e13f0c336f3b6cd8145266d908ff7fb257fea1d0'
+        '9b50a4c084f8a46217a925775c37d3a4e7d103c7aeebd486a0e0cc6e92266f926afc543e13d6bd74228773a833c93deb729a0afa2d9968d3e661cccfd54a068b'
         'f3412766407c581071e00199163293b97df3c01f7d07fe5d55c8e681ad0975ead5d01f6e36d5ea8db4fbc2aae8ed0484808216eb6d30c6e02063f53d28aa96f4'
         'f94cd11af931937319aeb8a850c41d6afa4bf4b510fe0b7854f3a1f80a7da151f26bd889592916807a61e0d68e0825433ac0a6583554939685e4071c233b3e28')
 
@@ -65,6 +67,9 @@ package() {
 
   # Install sysusers
   install -Dm0644 "$srcdir/pds-gatekeeper.sysusers" "$pkgdir/usr/lib/sysusers.d/pds-gatekeeper.conf"
+
+  # Install tmpfiles
+  install -Dm0644 "$srcdir/pds-gatekeeper.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/pds-gatekeeper.conf"
 
   # Install environment file
   install -Dm0644 "$srcdir/pds-gatekeeper.env" "$pkgdir/etc/pds-gatekeeper.env"
