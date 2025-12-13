@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=tunarr-bin
-pkgver=0.22.18
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby'
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ url='https://tunarr.com/'
 license=('zlib')
 depends=(
   'ffmpeg'
+  'meilisearch'
 )
 optdepends=(
   'plex-media-server'
@@ -19,23 +20,23 @@ optdepends=(
 )
 options=(!strip)
 backup=('etc/conf.d/tunarr')
-source=("tunarr-${pkgver}-${_pkgarch}::https://github.com/chrisbenincasa/tunarr/releases/download/v${pkgver}/tunarr-${pkgver}-linux-${_pkgarch}"
+source=("https://github.com/chrisbenincasa/tunarr/releases/download/v${pkgver}/tunarr-${pkgver}-linux-${_pkgarch}.tar.gz"
         'tunarr.sysusers'
         'tunarr.tmpfiles'
         'tunarr.service'
         'tunarr.conf.d')
-sha256sums=('709e08657fc5de14b5c6327ad7418b66cc3d9b561ddf04bffc29018b575eceb1'
+sha256sums=('3a2d07415ab938777f2e2b0780e7df50b31c35181e4503fc157658379629aeed'
             '85af351451b2dc90f5f611f9be8bbda076d5e1ec42276d44b7d380b1d49767a7'
             'd642c71dd83406fd659fdaed5f3ef5b44a29443a9303e8a3a912fea757571c19'
-            'ec4c01a686ecb715ef96038e815932765b9a42fb19261062a89a932cdb8fdf85'
+            '90e0b430bc045d2d53c3fea79633c78ce3a568778874ed71e45499868f72fbff'
             'e5ce4fc219b93fefb207b1b10b316e46fe94018cf13e25e42a5c033e9c31edb7')
 
 package()
 {
-    install -Dm0755 "${srcdir}/tunarr-${pkgver}-${_pkgarch}" "${pkgdir}/usr/bin/tunarr"
+    install -Dm0755 "${srcdir}/tunarr-${pkgver}-linux-${_pkgarch}" "${pkgdir}/usr/bin/tunarr"
 
-    install -Dm0644 "${srcdir}/tunarr.conf.d"                "${pkgdir}/etc/conf.d/tunarr"
-    install -Dm0644 "${srcdir}/tunarr.sysusers"              "${pkgdir}/usr/lib/sysusers.d/tunarr.conf"
-    install -Dm0644 "${srcdir}/tunarr.tmpfiles"              "${pkgdir}/usr/lib/tmpfiles.d/tunarr.conf"
-    install -Dm0644 "${srcdir}/tunarr.service"               "${pkgdir}/usr/lib/systemd/system/tunarr.service"
+    install -Dm0644 "${srcdir}/tunarr.conf.d"   "${pkgdir}/etc/conf.d/tunarr"
+    install -Dm0644 "${srcdir}/tunarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/tunarr.conf"
+    install -Dm0644 "${srcdir}/tunarr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/tunarr.conf"
+    install -Dm0644 "${srcdir}/tunarr.service"  "${pkgdir}/usr/lib/systemd/system/tunarr.service"
 }

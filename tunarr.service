@@ -4,6 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
+Environment=TUNARR_MEILISEARCH_PATH=/usr/bin/meilisearch
 EnvironmentFile=/etc/conf.d/tunarr
 User=tunarr
 Group=media
