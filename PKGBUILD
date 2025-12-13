@@ -21,4 +21,3 @@ package() {
   install -Dm755 "${srcdir}/cagent" "${pkgdir}/usr/bin/cagent"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
