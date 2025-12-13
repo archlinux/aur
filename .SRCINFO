@@ -1,0 +1,20 @@
+pkgbase = dione-appimage
+	pkgdesc = Dione is a platform designed to help you easily discover, install, and manage open-source AI apps. It offers a clean interface, streamlined workflows, and a growing library of tools to make running local AI apps simple and accessible.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dioneapp/dioneapp
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	noextract = Dione-1.0.0-Installer-Linux.AppImage
+	options = !strip
+	source = Dione-1.0.0-Installer-Linux.AppImage::https://github.com/dioneapp/dioneapp/releases/download/v1.0.0/Dione-1.0.0-Installer-Linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/dioneapp/dioneapp/v1.0.0/LICENSE
+	source = dione.desktop
+	source = dione.png
+	sha256sums = a767203dd01537931f6833b9e0d561c117cb3cef54e9342448df3bb8fc2afc82
+	sha256sums = d107eb4e3232de02fc9ee3e8d5805bc4d4c655a7888dbfd61e384a81cb162e74
+	sha256sums = f1ba34cf7f17a0971462568e66ac23032a7bffa41038a0be38926f486aa0f7ae
+	sha256sums = 80aa016ed5f2bf536e4b176fb369810166eea0e119916594e53ae85cb4f55546
+
+pkgname = dione-appimage

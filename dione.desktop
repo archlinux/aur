@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Dione
+Comment=Discover & install open-source AI apps
+Exec=dione
+Icon=dione
+Terminal=false
+Categories=Utility;
+StartupNotify=true
