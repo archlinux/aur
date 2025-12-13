@@ -1,6 +1,6 @@
 pkgbase = restohack
 	pkgdesc = A faithful restoration of Hack v1.0.3 (1984), modernized and maintained
-	pkgver = 1.1.2
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/Critlist/restoHack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = restohack
 	makedepends = git
 	depends = ncurses
 	depends = glibc
-	source = restoHack-1.1.2.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 9642bb68f28d6d2afa250b5080e981e3b7247dd5b21f32248558181898a481cf
+	source = restoHack-1.1.5.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = ea10ff04e74f73d8179a01aef2b6231665501ca01be68017b573f42c7d6b0d1d
 
 pkgname = restohack

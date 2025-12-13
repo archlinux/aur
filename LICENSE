@@ -16,7 +16,8 @@ This project contains code from multiple sources with different but compatible l
 
 ## BSD-Licensed Components (University of California, Berkeley)
 
-**Files**: 
+**Files**:
+
 - src/pathnames.h
 - src/hack.tty.c
 
@@ -27,6 +28,7 @@ This project contains code from multiple sources with different but compatible l
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions
 are met:
+
 1. Redistributions of source code must retain the above copyright
    notice, this list of conditions and the following disclaimer.
 2. Redistributions in binary form must reproduce the above copyright
@@ -61,6 +63,7 @@ SUCH DAMAGE.
 **Copyright**: This restoration work is released under the same terms as the original to maintain maximum compatibility and preserve the public domain / permissive nature of the original codebase.
 
 **Modern Additions Include**:
+
 - K&R to ANSI C function signature conversions
 - Modern build system (CMake)
 - Cross-platform compatibility enhancements
@@ -114,13 +117,7 @@ When distributing or using this software:
 
 1. **Preserve all copyright notices** in source code headers
 2. **Include this LICENSE file** in all distributions
-3. **Credit the original creators**: 
+3. **Credit the original creators**:
    - Stichting Mathematisch Centrum for the original 1984 Hack
    - University of California, Berkeley for BSD-licensed components
    - restoHack project for the modern restoration work
-
-## Historical Note
-
-The original 1984 Hack game was created by Jay Fenlason with contributions from many others. This restoration preserves 94.2% of the authentic original code while modernizing only the syntax necessary for contemporary compilation. The game mechanics, algorithms, and user experience remain completely faithful to the 1984 version.
-
-This work represents historical software preservation and educational enhancement, not commercial exploitation.
