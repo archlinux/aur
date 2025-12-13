@@ -1,7 +1,14 @@
 # Maintainer: foxmakes <pixilreal@gmail.com>
 pkgname=servo-spp-git
-pkgver=r27.fe94175
+pkgver=1
 pkgrel=1
+pkgver() {
+  cd "$srcdir/spp"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 pkgdesc="Official semicolon servo++/spp implementation - A C++ implementation of the Servo programming language"
 arch=('x86_64')
 url="https://github.com/semicolon-servo/spp"
