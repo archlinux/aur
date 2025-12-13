@@ -1,6 +1,6 @@
 pkgbase = uptimekit
 	pkgdesc = Production-ready uptime monitoring from your terminal
-	pkgver = 1.2.27
+	pkgver = 1.2.28
 	pkgrel = 1
 	url = https://github.com/abhixdd/UptimeKit-CLI
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = uptimekit
 	depends = bash
 	provides = uptimekit
 	replaces = nodejs-uptimekit
-	noextract = uptimekit-1.2.27.tgz
+	noextract = uptimekit-1.2.28.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = uptimekit-1.2.27.tgz::https://registry.npmjs.org/uptimekit/-/uptimekit-1.2.27.tgz
-	b2sums = 7627828986c079de80e71b88c69c6191c535f4e697487f7511b9afef8aabed1873be4b9a037eaabf9dd8b905a1c8406c05d849a19ede3a34888f7f613a0f968a
+	source = uptimekit-1.2.28.tgz::https://registry.npmjs.org/uptimekit/-/uptimekit-1.2.28.tgz
+	b2sums = 50c335b2874170f2b25fcafd8244fd232e61df1c758bca6b329b1e93b6a576d207f5801221154e0d7731da7e9ee4bedcf469b7154bb0af3804d354df27b81373
 
 pkgname = uptimekit
