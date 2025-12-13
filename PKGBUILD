@@ -2,7 +2,7 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r18.2e39f1e
-pkgrel=4
+pkgrel=5
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
@@ -16,11 +16,13 @@ backup=('etc/pds-gatekeeper.env')
 source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
         'pds-gatekeeper.service'
         'pds-gatekeeper.sysusers'
-        'pds-gatekeeper.env')
+        'pds-gatekeeper.env'
+        'gatekeeper-data-directory.patch')
 b2sums=('SKIP'
-        '1c049e8b81c081cf2b0a27cc5aeac042bf2f48de60eeffe292655c42d95f230c93d67a9e879c19fbb75f13c76c9f05851c0c776eed046d21004c2ee799b36377'
-        '881412b13dc22f6c05b11634ba4b728b4e080e9a6a58e17e212063f91072ca370661f7b97fbf61219b522a49774e7cac26731e27ede5864ef8172908e5401bde'
-        'cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17')
+        '4876ae2e7f31cc7091f4a7e42d92732f995516d384546041f1315baca8d677e778377f5abbc33fbcbd9ef5a39179ebfc4579591f233c02ee9b41632f35d413c4'
+        '1ba5239a968d87a40adee3ffce34d30492fd674311374c52ef8141a5329000978c9cbc37ce6de461a59d4693e13f0c336f3b6cd8145266d908ff7fb257fea1d0'
+        'f3412766407c581071e00199163293b97df3c01f7d07fe5d55c8e681ad0975ead5d01f6e36d5ea8db4fbc2aae8ed0484808216eb6d30c6e02063f53d28aa96f4'
+        'e6dd99f4501b80fdf62d1b7be53dc05cbdd89cbaeba231866d6c27adcab82d6f581669010978f2115577684fcc62189bda36a489ba1b8ace0344d4c9d8efef49')
 
 pkgver() {
   cd "$srcdir/pds-gatekeeper"
@@ -32,6 +34,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/pds-gatekeeper"
+
+  patch -Np1 -i "$srcdir/gatekeeper-data-directory.patch"
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
