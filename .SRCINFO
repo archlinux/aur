@@ -1,7 +1,7 @@
 pkgbase = debhelper
 	pkgdesc = Programs to automate common tasks in debian/rules when building Debian packages
 	pkgver = 13.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/debian/debhelper
 	arch = any
 	license = GPL-2.0-or-later

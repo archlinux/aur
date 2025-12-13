@@ -6,7 +6,7 @@
 _pkgname="debhelper"
 pkgname="$_pkgname"
 pkgver=13.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
 license=('GPL-2.0-or-later')
@@ -53,4 +53,8 @@ package() {
 
   make -C "$_pkgsrc" DESTDIR="$pkgdir" install
   install -Dm755 "$_pkgsrc_dh_strip_nd/bin/dh_strip_nondeterminism" -t "$pkgdir/usr/bin/"
+
+  for i in 1 7; do
+    install "$_pkgsrc"/*.${i} -Dm644 -t "$pkgdir/usr/share/man/man${i}/"
+  done
 }
