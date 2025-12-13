@@ -3,12 +3,12 @@
 pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver='1.1.4'
-pkgrel=3
+pkgrel=4
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
 license=('MIT')
-depends=('fuse3')
+depends=('fuse')
 conflicts=('iloader-bin')
 options=(!strip !debug)
 _appimage='iloader-linux-amd64.AppImage'
@@ -38,7 +38,7 @@ package() {
 
     # Install icon
     install -Dm644 "$srcdir/squashfs-root/iloader.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/iloader.png"
+        "$pkgdir/usr/share/icons/iloader.png"
 
     # Install license
     install -Dm644 "$srcdir/LICENSE" \
