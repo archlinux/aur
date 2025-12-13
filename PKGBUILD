@@ -1,7 +1,7 @@
 # Maintainer: Yuzu <aur at vitayuzu dot day>
 pkgname=iloader-bin
 pkgver=1.1.4
-pkgrel=1
+pkgrel=3
 pkgdesc="User friendly sideloader"
 arch=(x86_64)
 url="https://github.com/nab138/iloader"
@@ -21,6 +21,6 @@ package() {
     install -Dm755 usr/bin/iloader "$pkgdir/usr/bin/iloader"
     install -Dm644 usr/share/applications/iloader.desktop "$pkgdir/usr/share/applications/iloader.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/iloader-bin/LICENSE"
-    mkdir -p "$pkgdir/usr/share/icons/hicolor/"
-    cp -r usr/share/icons/hicolor "$pkgdir/usr/share/icons/hicolor"
+    mkdir -p "$pkgdir/usr/share/icons/"
+    cp -r usr/share/icons/hicolor "$pkgdir/usr/share/icons/"
 }
