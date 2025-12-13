@@ -1,16 +1,14 @@
 # Package files
-*.pkg.tar.zst
-*.pkg.tar.xz
-*.pkg.tar.gz
+*.pkg.tar.*
 
 # Source directory
 src/
 
-# Built binary
-pixelterm
+# Built binaries
+pixelterm*
 
 # Debug packages
-*-debug/
+*-debug*/
 
 # Build artifacts
 pkg/
