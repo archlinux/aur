@@ -6,7 +6,6 @@ pkgbase = bruno-git
 	arch = x86_64
 	license = MIT
 	makedepends = nvm
-	makedepends = asar
 	makedepends = python-setuptools
 	makedepends = python
 	depends = electron33

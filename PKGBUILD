@@ -17,7 +17,6 @@ depends=(
 )
 makedepends=(
     'nvm'
-    'asar'
     'python-setuptools'
     'python'
 )
@@ -73,7 +72,7 @@ build() {
     npm run build --workspace=packages/bruno-converters
     npm run build --workspace=packages/bruno-query
     npm run build --workspace=packages/bruno-graphql-docs
-
+    npm run build --workspace=packages/bruno-filestore
     npm run build --workspace=packages/bruno-app
 
     rm -rf packages/bruno-electron/{out,web}
@@ -109,7 +108,7 @@ EOD
 
     install -Dm0644 license.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -d "${pkgdir}/usr/lib/${_pkgname}/"
-    asar e packages/bruno-electron/out/linux-unpacked/resources/app.asar "${pkgdir}/usr/lib/${_pkgname}/"
+    npx --no asar e packages/bruno-electron/out/linux-unpacked/resources/app.asar "${pkgdir}/usr/lib/${_pkgname}/"
 
     for i in 16 24 48 64 128 256 512 1024; do
         install -Dm644 "packages/bruno-electron/resources/icons/png/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/com.usebruno.app.Bruno.png"
