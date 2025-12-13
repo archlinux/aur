@@ -1,5 +1,6 @@
 # Maintainer: Spoorloos <mick.negenman@icloud.com>
 
+pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver='1.1.4'
 pkgrel=3
