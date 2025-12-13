@@ -1,4 +1,5 @@
 _commit="f01f599526784492bd892af943b3c2b08bdc4ac0"
+_solarxr_commit="b0147eeffaa97a16400de174383c91be2ec31ab5"
 _pkgname="slimevr-server"
 pkgbase="${_pkgname}"
 pkgname=(
@@ -24,10 +25,12 @@ makedepends=(
 depends=()
 source=(
   "slimevr-server::git+${url}.git#commit=${_commit}"
+  "solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=${_solarxr_commit}"
   "slimevr-server-bin"
   "slimevr-server.service"
 )
 sha512sums=(
+  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -36,7 +39,8 @@ options+=(!lto)
 
 prepare() {
   cd "${srcdir}/slimevr-server"
-  git submodule update --init --recursive
+  git config submodule.solarxr-protocol.url "${srcdir}/solarxr-protocol"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {

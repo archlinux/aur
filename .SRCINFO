@@ -16,8 +16,10 @@ pkgbase = slimevr-server
 	makedepends = java-runtime-headless-openjdk=17
 	options = !lto
 	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=f01f599526784492bd892af943b3c2b08bdc4ac0
+	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=b0147eeffaa97a16400de174383c91be2ec31ab5
 	source = slimevr-server-bin
 	source = slimevr-server.service
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
