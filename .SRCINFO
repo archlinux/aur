@@ -1,6 +1,6 @@
 pkgbase = llm-thalamus
 	pkgdesc = Local AI controller and PySide6 UI integrating OpenMemory with Ollama
-	pkgver = 0.5
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/evertvorster/llm_thalamus
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = llm-thalamus
 	depends = katex
 	depends = qt6-webengine
 	depends = highlightjs
-	source = llm-thalamus-0.5.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v0.5.tar.gz
-	sha256sums = 99ae04f9110bee6f54565ae401c6556ce9ca21b9dd027739cb7faef8b13fd890
+	source = llm-thalamus-0.10.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v0.10.tar.gz
+	sha256sums = c8bb02e41d5a165979b1679820ef82ce116781103c425026443bd0d68efb00f0
 
 pkgname = llm-thalamus
