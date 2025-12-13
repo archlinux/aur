@@ -3,7 +3,7 @@
 _name=Nero-umu
 _QTver=Qt6
 pkgname=nero-umu
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A fast and efficient umu manager, just as the Romans designed.'
 arch=('x86_64')
@@ -12,13 +12,12 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'icu' 'umu-launcher')
 makedepends=('cmake')
 optdepends=(
-            'curl: For downloading external files to install into prefixes'
             'icoextract: Extract Windows ico files'
             'icoutils: Convert contents of ico files'
             'winetricks: Fallback for Proton runners without embedded protonfixes'
 )
 source=("git+https://github.com/SeongGino/Nero-umu#tag=v${pkgver}")
-md5sums=('4c9e95df2f98ce0240d92a09c78d4e31')
+md5sums=('52d1c10222f7a6e1638715df85da4d86')
 
 prepare() {
   cd "$srcdir/$_name"
