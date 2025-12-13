@@ -1,0 +1,14 @@
+pkgbase = hypr-u
+	pkgdesc = A tool for hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Seann-Moser/hypr-u
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = go
+	depends = git
+	source = git+https://github.com/Seann-Moser/hypr-u.git#branch=main
+	sha256sums = SKIP
+
+pkgname = hypr-u
