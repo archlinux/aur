@@ -12,6 +12,7 @@ depends=(
   'python'
   'gnome-bluetooth-3.0'
   'dart-sass'
+  'gobject-introspection'
   'gray-git'
   'fabric-cli'
   'tesseract'
