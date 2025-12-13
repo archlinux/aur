@@ -1,16 +1,16 @@
 pkgbase = ded
 	pkgdesc = directory editor, file manager similar to Emacs dired
-	pkgver = 20250117
-	pkgrel = 4
+	pkgver = 20250928
+	pkgrel = 1
 	url = https://invisible-island.net/ded/ded.html
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	makedepends = ed
 	depends = ncurses
-	source = https://invisible-island.net/archives/ded/ded-20250117.tgz
-	source = https://invisible-island.net/archives/ded/td_lib-20250117.tgz
-	sha256sums = 2774cf080151cc3afd7016ecdbffe5726599847dd150dcb043da0067bd06e61f
-	sha256sums = 172ceee83471e2e221f190e65ca8255d3465f0e6d5a346a8d1efbf008df701bf
+	source = https://invisible-island.net/archives/ded/ded-20250928.tgz
+	source = https://invisible-island.net/archives/ded/td_lib-20250928.tgz
+	sha256sums = b5bfb0850a70f3b1e64c9736e73d00788442bfc4c273b5b3d13f68f454a8c530
+	sha256sums = 8854186a30eb4fd842397f54afe9309bfa53607bf60a9cf8e0b2a6b7231a35a3
 
 pkgname = ded
