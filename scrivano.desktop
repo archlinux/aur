@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=0
+Exec=/opt/scrivano/Scrivano.sh
+Icon=scrivano.svg
+Type=Application
+Categories=Graphics;
+StartupNotify=true
+Name=Scrivano
+GenericName=Notetaking application
