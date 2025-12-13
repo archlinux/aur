@@ -4,7 +4,7 @@ pkgbase=llm-thalamus
 pkgname=('llm-thalamus' 'llm-thalamus-theme')
 _pkgname=llm_thalamus
 pkgver=0.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
 url="https://github.com/evertvorster/llm_thalamus"
@@ -31,19 +31,6 @@ build() {
   # Pure Python, nothing to build
 }
 
-package_llm-thalamus() {
-  pkgdesc="Core llm-thalamus daemon and UI"
-  depends=('python' 'qt6-base' 'qt6-webengine' 'llm-thalamus-theme')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  # Use the project Makefile to install everything
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
-
-  # Core package must not own theme graphics
-  rm -rf "$pkgdir/usr/share/llm-thalamus/graphics"
-}
-
 package_llm-thalamus-theme() {
   pkgdesc="Default theme for llm-thalamus (brain)"
   depends=('llm-thalamus')
@@ -59,3 +46,17 @@ package_llm-thalamus-theme() {
   install -Dm644 llm_thalamus/graphics/inactive.jpg \
     "$pkgdir/usr/share/llm-thalamus/graphics/inactive.jpg"
 }
+
+package_llm-thalamus() {
+  pkgdesc="Core llm-thalamus daemon and UI"
+  depends=('python' 'qt6-base' 'qt6-webengine' 'llm-thalamus-theme')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  # Use the project Makefile to install everything
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+
+  # Core package must not own theme graphics
+  rm -rf "$pkgdir/usr/share/llm-thalamus/graphics"
+}
+
