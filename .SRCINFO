@@ -17,12 +17,10 @@ pkgbase = pds-gatekeeper-git
 	source = git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git
 	source = pds-gatekeeper.service
 	source = pds-gatekeeper.sysusers
-	source = pds-gatekeeper.tmpfiles
 	source = pds-gatekeeper.env
 	b2sums = SKIP
-	b2sums = 5e0cec18f4fe288a034bc881f8dda3d5dad523618c5dba8d8b829370fe02e00c186ee694933f41920d588159c770d7eeb2329e16c7563ef920279b5f3ddf3685
+	b2sums = 1c049e8b81c081cf2b0a27cc5aeac042bf2f48de60eeffe292655c42d95f230c93d67a9e879c19fbb75f13c76c9f05851c0c776eed046d21004c2ee799b36377
 	b2sums = 881412b13dc22f6c05b11634ba4b728b4e080e9a6a58e17e212063f91072ca370661f7b97fbf61219b522a49774e7cac26731e27ede5864ef8172908e5401bde
-	b2sums = 7f96e9f3fb7a8243dd15230193d95c10a0dd6f78e49e68b130feceb3e7ccc26ee89033085248e02845a2a65d0e270f5c78324a5408e2665bd13519a41b13e9a7
 	b2sums = cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17
 
 pkgname = pds-gatekeeper-git
