@@ -1,7 +1,7 @@
 pkgbase = bluetooth-auto-reconnect
-	pkgdesc = Auto reconnect bluetooth devices on resume from suspend
+	pkgdesc = Auto reconnect bluetooth devices on resume from system suspend
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://aur.archlinux.org/packages/bluetooth-auto-reconnect
 	arch = any
