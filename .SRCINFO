@@ -1,6 +1,6 @@
 pkgbase = animepahe-dl
 	pkgdesc = A Python-based tool to download anime from AnimePahe, featuring both a Command-Line Interface (CLI) and a Graphical User Interface (GUI).
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/ayushjaipuriyar/animepahe-dl
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = animepahe-dl
 	depends = python-loguru
 	depends = python-plyer
 	depends = python-questionary
-	source = git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v5.4.0
+	source = git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v5.5.0
 	sha256sums = SKIP
 
 pkgname = animepahe-dl
