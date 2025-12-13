@@ -1,6 +1,6 @@
 # Maintainer: foxmakes <pixilreal@gmail.com>
 pkgname=servo-spp-git
-pkgver=r19.8deaa29
+pkgver=r27.fe94175
 pkgrel=1
 pkgdesc="Official semicolon servo++/spp implementation - A C++ implementation of the Servo programming language"
 arch=('x86_64')
