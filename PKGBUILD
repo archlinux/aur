@@ -1,12 +1,12 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Voxan <voxan@hessfr.fr>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: xduugu <xduugu@gmx.com>
 # Contributor: Elis Hughes <elishughes@googlemail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=lib32-librtmp0
-pkgver=2.4
-pkgrel=6
+pkgver=2.6
+pkgrel=1
 pkgdesc='Toolkit for RTMP streams'
 arch=(x86_64)
 url=https://rtmpdump.mplayerhq.hu/
@@ -22,7 +22,7 @@ depends=(
 makedepends=(git)
 provides=(librtmp.so)
 options=(!makeflags)
-_commit=c28f1bab7822de97353849e7787b59e50bbb1428
+_commit=138fdb258d9fc26f1843fd1b891180416c9dc575
 source=(git+https://git.ffmpeg.org/rtmpdump#commit=${_commit})
 b2sums=(SKIP)
 
