@@ -1,17 +1,18 @@
 pkgbase = pq-cli
 	pkgdesc = Progress Quest: the CLI edition
-	pkgver = 1.0.2
-	pkgrel = 5
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/rr-/pq-cli
 	arch = any
 	license = MIT
-	makedepends = python-poetry
-	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
 	depends = python
 	depends = python-urwid
 	depends = python-urwid_readline
 	depends = python-xdg-base-dirs
-	source = pq-cli::git+https://github.com/rr-/pq-cli.git#commit=7790e52a6d3c0f6fbaf45f581f0fb98f78247af6
-	sha512sums = 1db75f0579fda830b27e4d838b1263dd1c4ace09f85155502aa815e90deb8de6547038cd993f529874abba3ef241d6370468e104a7ef3913fd609a46c21c6c8a
+	source = pq-cli.tar.gz::https://github.com/rr-/pq-cli/archive/refs/tags/1.0.4.tar.gz
+	sha512sums = 8a1bfaa9d67ad2e28d5a5053f8ef99fd748de2d743f87f5abcb1bebd221fa7563603238a8e98c6380b2ab48ecfb7fc9e949736ac05f2cfb4be014465e45bc595
 
 pkgname = pq-cli
