@@ -5,7 +5,7 @@
 
 pkgname=flaca-bin
 _pkgname=flaca
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='Lossless GIF, JPEG and PNG optimizer, written in Rust'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('WTFPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_$pkgver-1_amd64.deb")
-sha256sums=('4532625960ee74360bc79dd9b739e302d6c7afc154544aa77b4a6855427d4c08')
+sha256sums=('76d9bf8518b81428dd2827550603b466d38fe69509af61102f88fc340a421ef3')
 
 package() {
   # extract package data
