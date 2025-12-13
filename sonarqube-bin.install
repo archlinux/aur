@@ -1,0 +1,21 @@
+post_install() {
+  echo ":: SonarQube is installed in /usr/share/webapps/sonarqube"
+  echo ":: Logs are in /var/log/sonarqube"
+  echo ":: Configuration is in /etc/webapps/sonarqube/sonar.properties"
+  echo ""
+  echo ":: To start the service:"
+  echo "   systemctl start sonarqube"
+  echo "   systemctl enable sonarqube"
+  echo ""
+  echo ":: Access the web interface at http://localhost:9000"
+  echo ":: Default credentials: admin / admin"
+}
+
+post_upgrade() {
+  echo ":: IMPORTANT: After upgrading SonarQube, you MUST perform the database migration."
+  echo ":: 1. Start the service: systemctl start sonarqube"
+  echo ":: 2. Go to: http://localhost:9000/setup"
+  echo ":: 3. Click 'Upgrade'"
+  echo ""
+  echo ":: See https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/upgrade-the-server/upgrade/"
+}
