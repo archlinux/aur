@@ -1,30 +1,51 @@
-# Maintainer: Sourcegraph <amp-devs@sourcegraph.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 
-pkgbase=ampcode
 pkgname=ampcode
-pkgver=0.0.1756886778
+pkgver=0.0.1765656079_g53c6e1
 pkgrel=1
-pkgdesc="An agentic coding tool, in research preview from Sourcegraph"
-arch=('x86_64' 'aarch64')
+pkgdesc="Amp CLI (Sourcegraph's agentic coding tool) packaged from npm releases"
+arch=('any')
 url="https://ampcode.com"
 license=('custom:proprietary')
-depends=('ripgrep')
+depends=('nodejs' 'ripgrep')
+makedepends=('npm' 'jq')
 provides=('amp')
-replaces=('sourcegraph-amp' 'ampcode')
-conflicts=('amp')
-options=('!strip')
+conflicts=('amp' 'ampcode-bin')
+replaces=('sourcegraph-amp')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-${pkgver//_/-}.tgz")
+sha256sums=('55f019096bd358af6d2e495705cbc663aed0237adf30fae2f0d5af638e6848cc')
 
-source_x86_64=("${pkgname}-${pkgver}-x86_64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-x64")
-source_aarch64=("${pkgname}-${pkgver}-aarch64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-arm64")
+pkgver() {
+    if [[ ${0##*/} == makepkg ]]; then
+        printf '%s\n' "$pkgver"
+        return
+    fi
 
-sha256sums_x86_64=('af05460b11accbe620182269933627c068b2c8f23c832051ad2b425da2075799')
-sha256sums_aarch64=('3a03c363d9b21566edbd138ca2a60e12459793212a6462cce958f05fe2079ad9')
+    curl -fsS "https://registry.npmjs.org/%40sourcegraph%2Famp" \
+        | jq -r '."dist-tags".latest' \
+        | tr '-' '_'
+}
 
 package() {
-    # The downloaded binary needs to be renamed to amp for installation
-    if [[ "$CARCH" == "x86_64" ]]; then
-        install -Dm755 "${srcdir}/${pkgname}-${pkgver}-x86_64" "${pkgdir}/usr/bin/amp"
-    elif [[ "$CARCH" == "aarch64" ]]; then
-        install -Dm755 "${srcdir}/${pkgname}-${pkgver}-aarch64" "${pkgdir}/usr/bin/amp"
-    fi
+    local npm_cache="$srcdir/npm-cache"
+    local npm_tarball="$srcdir/$pkgname-$pkgver.tgz"
+
+    export HOME="$srcdir"
+    mkdir -p "$npm_cache"
+
+    npm install -g --prefix "$pkgdir/usr" \
+        --cache "$npm_cache" \
+        --no-package-lock \
+        --omit=dev \
+        "$npm_tarball"
+
+    find "$pkgdir/usr" -type d -name .cache -exec rm -rf {} +
+    find "$pkgdir/usr" -type f -name 'package.json' -exec sed -i '/_where/d' {} +
+    find "$pkgdir" -type f -name package.json -print0 | xargs -0 -r sed -i '/_where/d'
+
+    install -Dm644 "$pkgdir/usr/lib/node_modules/@sourcegraph/amp/LICENSE.md" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    rm -rf "$npm_cache"
+    chown -R root:root "$pkgdir"
 }
