@@ -1,0 +1,18 @@
+pkgbase = doodcom-safe-updater
+	pkgdesc = GUI-based safety-first updater for CachyOS / Arch Linux
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/Doodcom/DoodcomSafeUpdater
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyside6
+	depends = pacman
+	depends = pacman-contrib
+	depends = polkit
+	optdepends = snapper: Btrfs restore point support
+	optdepends = snap-pac: automatic pacman snapshots
+	source = doodcom-safe-updater-0.5.8.tar.gz::https://github.com/Doodcom/DoodcomSafeUpdater/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = df07c344e87e0a7f335dc33a6acb00831a3c979f589198316992a9429cbaa098
+
+pkgname = doodcom-safe-updater
