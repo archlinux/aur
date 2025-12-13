@@ -1,15 +1,15 @@
 pkgbase = overlayroot
 	pkgdesc = Overlay the root filesystem with a tmpfs filesystem.
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/hilderingt/archlinux-overlayroot
 	arch = any
 	license = GPLv3
 	depends = mkinitcpio
 	makedepends = git
 	makedepends = gcc
-	optdepends = initcpio-netconf
-	optdepends = initcpio-dropbear
+	optdepends = mkinitcpio-netconf
+	optdepends = mkinitcpio-dropbear
 	source = git+https://github.com/hilderingt/archlinux-overlayroot
 	sha256sums = SKIP
 
