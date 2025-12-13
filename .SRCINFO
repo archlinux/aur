@@ -1,5 +1,5 @@
 pkgbase = heidisql
-	pkgdesc = Metapackage for HeidiSQL (install a provider of your choice for heidisql-client, this includes shared files: wrapper script, locale files, ini files, documentation)
+	pkgdesc = HeidiSQL Shared files: wrapper script, locale files, ini files, documentation (install a provider of your choice for heidisql-client to use it)
 	pkgver = 12.14.1.1
 	pkgrel = 4
 	epoch = 1
