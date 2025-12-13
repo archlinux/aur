@@ -3,7 +3,7 @@
 pkgname=heidisql
 epoch=1
 pkgver=12.14.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="HeidiSQL Shared files: wrapper script, locale files, ini files, documentation (install a provider of your choice for heidisql-client to use it)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -13,6 +13,7 @@ optdepends=('heidisql-qt6: Qt6 variant'
             'heidisql-qt5: Qt5 variant'
             'heidisql-gtk2: GTK2 variant')
 makedepends=(curl jq)
+install=heidisql.install
 
 source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
