@@ -1,7 +1,7 @@
 pkgbase = webcord
 	pkgdesc = A Discord client implemented directly without Discord API
 	pkgver = 4.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT

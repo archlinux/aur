@@ -2,7 +2,7 @@ _electron='electron39'
 
 pkgname=webcord
 pkgver=4.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Discord client implemented directly without Discord API'
 arch=('any')
 _repo='WebCord'
@@ -30,7 +30,7 @@ sha256sums=(
 
 prepare() {
     cd "${_snapshot}"
-    npm ci --omit=dev --ignore-scripts --no-bin-links --prefix=.
+    npm i --omit=dev --ignore-scripts --no-bin-links --prefix=.
     rm -r 'sources/code/build'
     rm 'sources/assets/icons/app.ic'*
 }
