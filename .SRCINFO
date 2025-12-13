@@ -1,15 +1,17 @@
 pkgbase = arduino-ctags
 	pkgdesc = A mix of ctags and anjuta-tags for the perfect C++ ctags
 	pkgver = 5.8_arduino11
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/arduino/ctags
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	source = arduino-ctags-5.8-arduino11.tar.gz::https://github.com/arduino/ctags/archive/5.8-arduino11.tar.gz
 	source = CVE-2014-7204.patch
+	source = ctags-5.8-arduino11-unused.patch
 	validpgpkeys = 326567C1C6B288DF32CB061A95FA6F43E21188C4
 	sha512sums = 6375077dfd983e98862773dfe6213bd41cd17d99260e39e97f99eff7d7f363f6d6a61582994382c69f0e3dfa7da88c1640a5bc037adbcc526e07f86dbd4f3646
 	sha512sums = 212ec5d3daec5ffadc3ffe60406fc1f6b76356f2c56f99e999f8bf0646891c0067144e5de8ccbbe9391a803cd4005fe94a5973911274928dd7c1414d1ec68477
+	sha512sums = 7cdae823f9230217a009b5f5b4399a4be7206dcd2571e7fb4623354660c794bdce359074472a9ef4a79f744956c997675af209f2fc79ae77c5f62599d57c29fe
 
 pkgname = arduino-ctags
