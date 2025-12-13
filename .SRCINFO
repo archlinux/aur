@@ -1,6 +1,6 @@
 pkgbase = python-llm
 	pkgdesc = Access large language models from the command-line
-	pkgver = 0.27.1
+	pkgver = 0.28
 	pkgrel = 1
 	url = https://github.com/simonw/llm
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-llm
 	depends = python-ulid
 	depends = python-puremagic
 	depends = python-httpx
-	source = python-llm-0.27.1.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.27.1.tar.gz
+	source = python-llm-0.28.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.28.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-llm
