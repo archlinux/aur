@@ -17,12 +17,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Return-To-The-Roots/s25clie
     "s25rttr-gcc13.patch"
     "upnp.patch"
     "callbacks.patch"
-    "gameclient.patch")
+    "gameclient.patch"
+    "boost.patch"
+    "cstdint.patch")
 sha256sums=('c6a9ef5b90943b5f2e81543f1e3290ff773663a45ebbbcc5a786bb5f5495fbec'
     '66364841bf6e119e81117cf5aae75f4f84b7d9b16f7acd8edc63e8ecac9dde1e'
     '767115dd77e5e5816a17ad12dd6f06d5b7aca21471af7f903b742308b6df7946'
     'df5858d571481c5f1f9c20f4990697810b1c2851a0668e7ddd2d19394d5add74'
-    '5a2ebfe6e10a689b30a84adaff21cdedd604fc54aa2bcf89a163aba9f468c3f4')
+    '5a2ebfe6e10a689b30a84adaff21cdedd604fc54aa2bcf89a163aba9f468c3f4'
+    'e8302b4f9a7f0b44c315a8a01116176442f023d26b985926f467f2b7220ed8de'
+    'e9654523d500c4fc806a2886ef09d04db234cbe3982dc9f226cad4c881cbc641')
 provides=("return-to-the-roots=${pkgver}")
 conflicts=("return-to-the-roots")
 
@@ -39,12 +43,18 @@ prepare() {
         pushd "external/s25edit"
             patch --forward --strip=1 --input="${srcdir}/callbacks.patch"
         popd
+
+        pushd "external/libsiedler2"
+            patch --forward --strip=1 --input="${srcdir}/boost.patch"
+        popd
+
+        patch --forward --strip=1 --input="${srcdir}/cstdint.patch"
     popd
 }
 
 build() {
     cmake -B build -S "s25client_v$pkgver" \
-    -D CMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations -Wno-dangling-reference" \
+    -D CMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations -Wno-dangling-reference -Wno-error=noexcept" \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D RTTR_BUILD_UPDATER=OFF \
     -D RTTR_USE_SYSTEM_LIBS=ON \
