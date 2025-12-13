@@ -11,7 +11,6 @@ pkgbase = ringboard
 	depends = libglvnd
 	depends = libx11
 	depends = libxcursor
-	depends = libxrandr
 	depends = libxi
 	depends = libxkbcommon
 	depends = wayland

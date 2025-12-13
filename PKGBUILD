@@ -1,4 +1,4 @@
-# Maintainer: YOUR NAME <you at example dot com>
+# Maintainer: Anton Afanasyev <aasoft+aur@pm.me>
 
 pkgname=ringboard
 pkgver=0.13.1
@@ -7,7 +7,7 @@ pkgdesc='Fast, efficient, and composable clipboard manager for Linux'
 arch=('x86_64')
 url='https://github.com/SUPERCILEX/clipboard-history'
 license=('Apache-2.0' 'AGPL-3.0-only')
-depends=('libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'libxkbcommon' 'wayland')
+depends=('libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'wayland')
 makedepends=('rustup')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SUPERCILEX/clipboard-history/archive/refs/tags/${pkgver}.tar.gz")
