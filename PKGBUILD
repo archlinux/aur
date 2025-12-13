@@ -1,16 +1,16 @@
 # Maintainer: Alexander Tagirov [aur @tagirov.cc]
 
 pkgname=rusk
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A minimal terminal task manager written in Rust"
+pkgdesc="A minimal cross-platform terminal task manager written in Rust"
 arch=("x86_64")
 url="https://github.com/tagirov/rusk"
 makedepends=("rust")
 license=("GPL-3.0-or-later")
 depends=('gcc-libs')
 source=("rusk-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0ce9ff49548fa47d5bf4688522c3d4567a2875fb7653285dde3839520ddcefba')
+sha256sums=('405dd3ca059a17f536b49a369cf3b3700784f0e85bfe5ef3d0e28b0b06f876cf')
 options=('!debug')
 
 build() {
@@ -25,4 +25,23 @@ package() {
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+
+ # Show completions installation instructions
+msg ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+msg ""
+msg "To enable <TAB> completions for your shell, run one of the following:"
+msg ""
+msg "  For Bash:        rusk completions install bash"
+msg "  For Zsh:         rusk completions install zsh"
+msg "  For Fish:        rusk completions install fish"
+msg "  For Nu Shell:    rusk completions install nu"
+msg "  For PowerShell:  rusk completions install powershell"
+msg ""
+msg "Batch install: rusk completions install bash zsh fish"
+msg ""
+msg ""
+msg "For extra information, see: /usr/share/doc/rusk/README.md or github.com/tagirov/rusk"
+msg "" 
+msg ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 }
