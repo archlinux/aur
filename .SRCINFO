@@ -1,6 +1,6 @@
 pkgbase = git-scope-bin
 	pkgdesc = A fast TUI to see the status of all git repositories on your machine
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Bharath-code/git-scope
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = git-scope-bin
 	license = MIT
 	provides = git-scope
 	conflicts = git-scope
-	source_x86_64 = git-scope-x86_64-1.0.1.tgz::https://github.com/Bharath-code/git-scope/releases/download/v1.0.1/git-scope_1.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8a59c60bd329e937135357f3c00ed7ac438a81aa6ead57d24d2f491b6257a750
-	source_aarch64 = git-scope-aarch64-1.0.1.tgz::https://github.com/Bharath-code/git-scope/releases/download/v1.0.1/git-scope_1.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = b4477a9f4516ac27da4677a127fb610c6dc3776d57e508085da354d1c77af88e
+	source_x86_64 = git-scope-x86_64-1.2.0.tgz::https://github.com/Bharath-code/git-scope/releases/download/v1.2.0/git-scope_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d6392c192c1e6c0598349f5e9e9264e953e988c37a3a30f53ddd0f51eddabde0
+	source_aarch64 = git-scope-aarch64-1.2.0.tgz::https://github.com/Bharath-code/git-scope/releases/download/v1.2.0/git-scope_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0f8c26c81c3dc07424e4fcf19b666975a24d797166ae9dbfab6c15b1b933c2ae
 
 pkgname = git-scope-bin
