@@ -1,7 +1,7 @@
-diff --git a/pds-gatekeeper/src/main.rs b/pds-gatekeeper/src/main.rs
+diff --git a/src/main.rs b/src/main.rs
 index 1234567..abcdefg 100644
---- a/pds-gatekeeper/src/main.rs
-+++ b/pds-gatekeeper/src/main.rs
+--- a/src/main.rs
++++ b/src/main.rs
 @@ -209,7 +209,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
      }
 
