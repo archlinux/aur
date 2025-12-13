@@ -1,4 +1,5 @@
 # Maintainer: initMayday <initMayday@protonmail.com>
+
 _pkgname="symlink-manager"
 pkgname="$_pkgname"
 pkgrel=1
@@ -10,7 +11,7 @@ makedepends=('git')
 depends=('lua')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-license=('CC-BY-NC-SA-4.0')
+license=('AGPL-3.0-or-later')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
