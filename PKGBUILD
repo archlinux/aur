@@ -2,64 +2,59 @@
 # Contributor: Ainola
 # Contributor: Ethan Schoonover
 
+# shellcheck disable=SC2034
+
 pkgname=gam
-pkgver=6.58
-pkgrel=2
+pkgver=7.29.04
+pkgrel=1
 pkgdesc="command line management for Google Workspace"
 arch=('any')
-url="https://github.com/GAM-team/GAM/wiki"
+url="https://github.com/GAM-team/GAM"
 license=('Apache-2.0')
-depends=(
-    'python-dateutil'
-    'python-distro'
-    'python-dnspython'
-    'python-filelock'
-    'python-google-api-core'
-    'python-google-api-python-client'
-    'python-google-auth'
-    'python-google-auth-httplib2'
-    'python-google-auth-oauthlib'
-    'python-httplib2'
-    'python-pathvalidate'
-    'python-passlib'
-)
+replaces=('gamadv-xtd3')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+depends=('python>=3.10')
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/jay0lee/GAM/archive/v${pkgver}.tar.gz"
-    "xdg_config_dirs.patch"
-    "disable_update_checks.patch"
+    "${pkgname^^}-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
     "gam.sh"
 )
 
-sha256sums=('755f6974ed92c475949cb92dd7655a52567ec582ab132d8f5a0f754585af2085'
-            '69875ddfe63523579a6be45fdcac4211503b4149765f3ee66514a40503a5e374'
-            '1be3b23bc2ee2fb5a43c6a999919243c93877fc9ea13c5e301097d1b5cd53baa'
+sha256sums=('d3e2335e467d2df94026e6c383e04ea23c45bf0bdf2d3f4e6978f23e9acedcfd'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
-    mv "GAM-$pkgver" "$pkgname-$pkgver"
+    mv "${pkgname^^}-$pkgver" "$pkgname-$pkgver"
+}
+
+build() {
     cd "$pkgname-$pkgver"
-    patch -p0 < ../xdg_config_dirs.patch
-    patch -p0 < ../disable_update_checks.patch
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    # No setup-utils here yet. See https://github.com/jay0lee/GAM/issues/1140
-    install -m755 -d "$pkgdir/etc/$pkgname/"
-    touch "$pkgdir/etc/$pkgname/noupdatecheck.txt"
-    touch "$pkgdir/etc/$pkgname/nobrowser.txt"
+    cd "$pkgname-$pkgver"
 
-    mkdir -p "$pkgdir/usr/share/$pkgname"
+    install -d -m 0755 "$pkgdir/usr/share/$pkgname"
+    install -d -m 0755 "$pkgdir/usr/share/doc/$pkgname"
 
-    cp -r "$pkgname-$pkgver"/src/gam/ "$pkgdir/usr/share/$pkgname"
+    cp -a src/gam src/tools "$pkgdir/usr/share/$pkgname/"
+    cp -a wiki "$pkgdir/usr/share/doc/$pkgname/"
 
-    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
-    find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 {} +
-    find "$pkgdir/usr/share/$pkgname" -name '*_test.py' -exec rm {} +
+    install -Dm755 \
+        src/gam.py -t "$pkgdir/usr/share/$pkgname"
 
-    install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm755 "$pkgname-$pkgver/src/GamCommands.txt" -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm755 "$pkgname-$pkgver/src/roots.pem" -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 \
+        src/gam.spec \
+        src/gam.wxs \
+        src/GamCommands.txt \
+        src/GamUpdate.txt -t "$pkgdir/usr/share/$pkgname"
+
+    install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md src/callgam.py "$pkgdir/usr/share/doc/$pkgname"
+
+    install -Dm755 ../gam.sh "$pkgdir/usr/bin/gam"
 
 }
