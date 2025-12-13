@@ -1,6 +1,6 @@
 pkgbase = python-ipinfo
 	pkgdesc = Official Python library for IPInfo
-	pkgver = 5.1.1
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/ipinfo/python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ipinfo
 	depends = python-requests
 	depends = python-cachetools
 	depends = python-aiohttp
-	source = https://files.pythonhosted.org/packages/source/i/ipinfo/ipinfo-5.1.1.tar.gz
-	sha256sums = be5a33adac9681bc68280eb5aae16a83e4abbb5f192c87dcc5ee18bdd0ceb276
+	source = https://files.pythonhosted.org/packages/source/i/ipinfo/ipinfo-5.3.0.tar.gz
+	sha256sums = 7953f66a4fd28a8f2808b353402e595d8310a455008f954e1a878cce7b4e7133
 
 pkgname = python-ipinfo

@@ -1,7 +1,7 @@
 # Maintainer: userbyte <contact@userbyte.xyz>
 _pkgname=ipinfo
 pkgname=python-ipinfo
-pkgver=5.1.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Official Python library for IPInfo"
 url="https://github.com/ipinfo/python"
