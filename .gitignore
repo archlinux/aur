@@ -2,6 +2,7 @@
 *
 
 # Except these files...
+!.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
 
