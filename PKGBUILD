@@ -1,10 +1,10 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgbase=llm-thalamus
-pkgname=('llm-thalamus' 'llm-thalamus-brain')
+pkgname=('llm-thalamus' 'llm-thalamus-theme')
 _pkgname=llm_thalamus
 pkgver=0.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
 url="https://github.com/evertvorster/llm_thalamus"
@@ -33,26 +33,20 @@ build() {
 
 package_llm-thalamus() {
   pkgdesc="Core llm-thalamus daemon and UI"
-  depends=('python' 'qt6-base' 'qt6-webengine')
-  optdepends=('llm-thalamus-theme')
-  
+  depends=('python' 'qt6-base' 'qt6-webengine' 'llm-thalamus-theme')
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Use the project Makefile to install everything
   make DESTDIR="${pkgdir}" PREFIX=/usr install
-  # Remove graphics
-  rm  "$pkgdir/usr/share/llm-thalamus/graphics/llm_thalamus.svg"
-  rm  "$pkgdir/usr/share/llm-thalamus/graphics/llm.jpg"
-  rm  "$pkgdir/usr/share/llm-thalamus/graphics/thalamus.jpg"
-  rm  "$pkgdir/usr/share/llm-thalamus/graphics/inactive.jpg"
 
+  # Core package must not own theme graphics
+  rm -rf "$pkgdir/usr/share/llm-thalamus/graphics"
 }
 
-package_llm-thalamus-brain() {
-  pkgdesc="Default 'brain' theme for llm-thalamus"
+package_llm-thalamus-theme() {
+  pkgdesc="Default theme for llm-thalamus (brain)"
   depends=('llm-thalamus')
-  provides=('llm-thalamus-theme')
-  conflicts=('llm-thalamus-theme')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
