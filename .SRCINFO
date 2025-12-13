@@ -1,0 +1,17 @@
+pkgbase = fido2-key-manager
+	pkgdesc = A GTK GUI tool for managing FIDO2 security keys
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kev2600/FIDO2-Key-Manager
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = libfido2
+	depends = xterm
+	source = git+https://github.com/kev2600/FIDO2-Key-Manager.git
+	md5sums = SKIP
+
+pkgname = fido2-key-manager
