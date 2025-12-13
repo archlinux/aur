@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://www.sonarsource.com/products/sonarqube/"
 license=('LGPL3')
 depends=('java-runtime>=17')
+makedepends=('unzip')
 optdepends=(
             'postgresql: A sophisticated object-relational DBMS')
 backup=("etc/webapps/${_pkgname}/sonar.properties")
@@ -22,6 +23,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "99-${_pkgname}.conf")
+noextract=("${_pkgname}-${pkgver}.zip")
 install="sonarqube-bin.install"
 sha256sums=('09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341'
             '58c0b2b9ae96a5901b8face8e35481e4c9a7feebdab6b21023805f6814a2fa98'
@@ -35,15 +37,21 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}"
+    unzip -q -o "${_pkgname}-${pkgver}.zip" \
+        -x "*/bin/macosx-universal-64/*" \
+        -x "*/bin/windows-x86-64/*"
+
+    cd "${_pkgname}-${pkgver}"
 
     # Copy everything except conf and logs to /usr/share/webapps/sonarqube.
     install -dm755 "${pkgdir}/usr/share/webapps/${_pkgname}"
     cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/webapps/${_pkgname}/"
     
     # Delete unused files.
-    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/macosx-universal-64"
-    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-64"
+    # (These are now excluded during extraction, but keeping rm is harmless or we can remove these lines)
+    # rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/macosx-universal-64"
+    # rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-64"
 
     # Install the license.
     install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
