@@ -6,14 +6,14 @@
 # Maintainer: aquanjsw <zhdlcc@gmail.com>
 pkgname=bluetooth-auto-reconnect
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Auto reconnect bluetooth devices on resume from suspend"
 arch=(any)
 url="https://aur.archlinux.org/packages/bluetooth-auto-reconnect"
 license=('GPL-1.0-or-later')
 groups=()
-depends=(bash)
+depends=(bash bluez-utils)
 makedepends=()
 checkdepends=()
 optdepends=()
