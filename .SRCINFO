@@ -1,6 +1,6 @@
 pkgbase = python-maixpy
 	pkgdesc = Sipeed Maix Vision Python SDK
-	pkgver = 4.11.9
+	pkgver = 4.12.1
 	pkgrel = 1
 	url = https://github.com/sipeed/MaixPy
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-maixpy
 	makedepends = python-wheel
 	depends = python-maixtool
 	depends = python>=3.13
-	source = https://files.pythonhosted.org/packages/cp313/m/maixpy/maixpy-4.11.9-cp313-cp313-manylinux2014_x86_64.whl
-	b2sums = c6da563297a04598951a2db1d624875fafe01f4fa29d2ce46b0a34d4ef4117b32577a8af2976123d947164e7112eec040410ac9bee448088d7eeef6ef781d089
+	source = https://files.pythonhosted.org/packages/cp313/m/maixpy/maixpy-4.12.1-cp313-cp313-manylinux2014_x86_64.whl
+	b2sums = 4dfbfa737406aeba5d0e5940a541ca396fcee3cfda9c730a2c275d99c40ffdee23a05f161b8c0e81d2675cd909240859c962a714a9cc1cf518ae52d8c51b1df2
 
 pkgname = python-maixpy
