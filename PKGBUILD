@@ -1,6 +1,6 @@
 # Maintainer: LargeModGames <LargeModGames@gmail.com>
 pkgname=spotatui
-pkgver=0.34.1
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl' 'pipewire')
 makedepends=('cargo' 'clang')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('978fac0d7a162e919b135619a58962205e0f1492e9a0588ba248609707a19772')
+sha256sums=('8082005f5e925db75479926ef2afe95a3c19600b3028ecf841293615059e3eb7')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -18,6 +18,7 @@ prepare() {
 }
 
 build() {
+  export CARGO_PROFILE_RELEASE_LTO=false
   cd "$pkgname-$pkgver"
   # Strip LTO flags to prevent libspa-sys wrapper symbol being dropped
   export RUSTFLAGS="${RUSTFLAGS//-Clto=*/} -Clto=no"
