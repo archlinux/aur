@@ -1,7 +1,8 @@
 pkgbase = fan-control
 	pkgdesc = Control your fans with different behaviors
 	pkgver = 25.11.0
-	pkgrel = 2
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/wiiznokes/fan-control
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,8 @@
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
 pkgver=25.11.0
-pkgrel=2
+pkgrel=1
+epoch=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
 url="https://github.com/wiiznokes/fan-control"
