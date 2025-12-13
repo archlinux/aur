@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-repo-stats
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Show usage statistics of repositories in pacman.conf"
 arch=('x86_64')
@@ -10,24 +10,23 @@ depends=(libalpm.so)
 makedepends=(cargo)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('ddcce4438b0931b834f7e747b9e7014f96e620369802e917776640eaae7c8f31ae412330582f573bf71999f89bc75f7ca94d0eeaf171032f9e570ce72a50156a')
+b2sums=('835567dc840115c63f3ca0a6b12075d34dd982c167d99b6e18203f4220515ac18d38056fa867fa5e4a40b908b7d5f2924ceabd06d4fe3eb81afe40223ae5dca0')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+    cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 "target/release/pacman-repo-stats" "$pkgdir/usr/bin/pacman-repo-stats"
-
-  install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 "target/release/pacman-repo-stats" "$pkgdir/usr/bin/pacman-repo-stats"
+    install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
 }
