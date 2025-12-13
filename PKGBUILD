@@ -2,16 +2,16 @@
 # Contributer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributer: Konstantin Gizdov <arch@kge.pw>
 
-pkgname=(cuda12.0 cuda12.0-tools)
-pkgbase=cuda12.0
-pkgver=12.0.1
-_driverver=525.85.12
+pkgname=(cuda-pascal cuda-pascal-tools)
+pkgbase=cuda-pascal
+pkgver=12.9.1
+_driverver=575.57.08
 pkgrel=1
-pkgdesc="NVIDIA's GPU programming toolkit (version 12.0)"
+pkgdesc="NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
 license=('custom:NVIDIA')
-depends=('gcc12-libs' 'gcc12' 'opencl-nvidia' 'nvidia-utils' 'python')
+depends=('gcc14' 'opencl-nvidia' 'python')
 options=(!strip staticlibs)
 install=cuda.install
 source=(https://developer.download.nvidia.com/compute/cuda/${pkgver}/local_installers/cuda_${pkgver}_${_driverver}_linux.run
@@ -45,7 +45,7 @@ source=(https://developer.download.nvidia.com/compute/cuda/${pkgver}/local_insta
         nvjpeg.pc
         nvrtc.pc
         nvToolsExt.pc)
-sha512sums=('edd73c6e989e8469d73a8a8c4c927aa0654c1c299eff77c8b30dafd5da6e4e368626cec48978785f8e94fe8d1b7b73f1df6d5d03a80a6f58a07fa2d1f15c7f86'
+sha512sums=('fc29c5fc1121fb6634f1fe396abe7f34d351686454516269e9143e678ea178f906a35b916b8bb2d96ecfcfc705dda7d0f4547f7e7f00d36e392d981a766b6a56'
             '35f1f56411eecb2d978553f5606a0d6e70ad363cfaa9f37b9e6f12a799b041caa4aeca183341055d4789425dc4d62bee0aac68cc9d864155084b1ea571ee998f'
             '714d973bc79446f73bebe85306b3566fe25b554bcbcba2fcbe76709a3eca71fb5d183ab4da2d3b5e9326cb9cd8d13a93f6d4a005ea5a41f7ef8e6c6e81e06b5e'
             'a4b3b03682801a98a1d8c1d14c084fd35efd384d92d497e230e3a28e0bd97b1fa48a93ccb2150f892f0b4154ca4ea2d66f5484a6a59b5c9b49963de42ecf1736'
@@ -84,6 +84,7 @@ prepare() {
 build() {
   local _prepdir="${srcdir}/prep"
 
+  rm -rf "${_prepdir}"
   cd "${srcdir}/builds"
 
   rm -r NVIDIA*.run bin
@@ -92,6 +93,11 @@ build() {
   mv cuda_demo_suite/extras/demo_suite "${_prepdir}/opt/cuda/extras/demo_suite"
   mv cuda_sanitizer_api/compute-sanitizer "${_prepdir}/opt/cuda/extras/compute-sanitizer"
   rmdir cuda_sanitizer_api
+
+  # Add a symlink so compute-sanitizer is on PATH
+  mkdir -p "${_prepdir}/opt/cuda/bin"
+  ln -s ../extras/compute-sanitizer/compute-sanitizer "${_prepdir}/opt/cuda/bin/compute-sanitizer"
+
   for lib in *; do
     if [[ "$lib" =~ .*"version.json".* ]]; then
       continue
@@ -103,9 +109,9 @@ build() {
   rm -r "${_prepdir}"/opt/cuda/bin/cuda-uninstaller
 
   # Define compilers for CUDA to use.
-  # This allows us to use older versions of GCC if we have to.
-  ln -s /usr/bin/gcc-12 "${_prepdir}/opt/cuda/bin/gcc"
-  ln -s /usr/bin/g++-12 "${_prepdir}/opt/cuda/bin/g++"
+  # Align with Arch's cuda 12.9 gcc version.
+  ln -s /usr/bin/gcc-14 "${_prepdir}/opt/cuda/bin/gcc"
+  ln -s /usr/bin/g++-14 "${_prepdir}/opt/cuda/bin/g++"
 
   # Install profile and ld.so.config files
   install -Dm755 "${srcdir}/cuda.sh" "${_prepdir}/etc/profile.d/cuda.sh"
@@ -135,7 +141,7 @@ build() {
   done
 }
 
-package_cuda12.0() {
+package_cuda-pascal() {
 #  replaces=('cuda-toolkit' 'cuda-sdk' 'cuda-static')
   conflicts=('cuda')
   provides=('cuda' 'cuda-toolkit' 'cuda-sdk' 'libcudart.so' 'libcublas.so' 'libcusolver.so' 'libcusparse.so')
@@ -154,11 +160,11 @@ package_cuda12.0() {
   rm -r "${pkgdir}"/opt/cuda/{bin/nvvp,bin/computeprof,libnvvp,nsight*}
 }
 
-package_cuda12.0-tools() {
-  pkgdesc="NVIDIA's GPU programming toolkit (extra tools: nvvp, nsight) (version 12.0)"
+package_cuda-pascal-tools() {
+  pkgdesc="CUDA extra tools (nvvp, nsight) for Pascal GPUs (matching cuda-pascal)"
   conflicts=('cuda-tools')
   provides=('cuda-tools')
-  depends=('cuda12.0' 'java-runtime=8' 'nss')
+  depends=('cuda-pascal' 'java-runtime=8' 'nss')
   optdepends=('perl: required by some NVVP plugins')
 
   local _prepdir="${srcdir}/prep"
@@ -171,7 +177,7 @@ package_cuda12.0-tools() {
 
   # licenses
   mkdir -p "${pkgdir}/usr/share/licenses"
-  ln -s /usr/share/licenses/cuda "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/licenses/cuda-pascal "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
