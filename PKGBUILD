@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Wayland Linux systems"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,8 @@ depends=(
 makedepends=(
     'cargo'
     'clang'
+    'cmake'
+    'pkgconf'
 )
 optdepends=(
     'ydotool: keyboard simulation for typing output'
@@ -37,13 +39,13 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen
 }
 
 package() {
