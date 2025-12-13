@@ -17,7 +17,7 @@
 
 pkgname=archlinux-overlayroot
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Overlay the root filesystem with a tmpfs filesystem."
 arch=('any')
 url="https://github.com/hilderingt/archlinux-overlayroot"
@@ -27,6 +27,10 @@ depends=(
 )
 makedepends=(
   'gcc'
+)
+optdepends=(
+  'initcpio-netconf'
+  'initcoio-dropbear'
 )
 source=(
   "git+$url"

@@ -8,6 +8,8 @@ pkgbase = overlayroot
 	depends = mkinitcpio
 	makedepends = git
 	makedepends = gcc
+	optdepends = initcpio-netconf
+	optdepends = initcpio-dropbear
 	source = git+https://github.com/hilderingt/archlinux-overlayroot
 	sha256sums = SKIP
 
