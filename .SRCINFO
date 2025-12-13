@@ -1,0 +1,19 @@
+pkgbase = servo-spp-git
+	pkgdesc = Official semicolon servo++/spp implementation - A C++ implementation of the Servo programming language
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/semicolon-servo/spp
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = gcc
+	depends = bc
+	provides = servo-spp
+	provides = servocomp
+	conflicts = servo-spp
+	source = git+https://github.com/semicolon-servo/spp.git
+	sha256sums = SKIP
+
+pkgname = servo-spp-git
