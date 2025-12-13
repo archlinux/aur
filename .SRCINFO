@@ -1,7 +1,7 @@
 pkgbase = pds-gatekeeper-git
 	pkgdesc = Microservice to bring 2FA to self hosted AT Protocol PDSes
 	pkgver = r18.2e39f1e
-	pkgrel = 6
+	pkgrel = 7
 	url = https://tangled.org/baileytownsend.dev/pds-gatekeeper
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = pds-gatekeeper-git
 	depends = gcc-libs
 	depends = glibc
 	depends = atproto-pds
-	provides = pds-gatekeeper=r18.2e39f1e-6
+	provides = pds-gatekeeper=r18.2e39f1e-7
 	conflicts = pds-gatekeeper
 	options = !lto
 	backup = etc/pds-gatekeeper.env

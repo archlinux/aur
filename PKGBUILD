@@ -2,7 +2,7 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r18.2e39f1e
-pkgrel=6
+pkgrel=7
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
@@ -59,27 +59,15 @@ check() {
 package() {
   cd "$srcdir/pds-gatekeeper"
 
-  # Install binary
   install -Dm0755 "target/release/pds_gatekeeper" "$pkgdir/usr/bin/pds-gatekeeper"
 
-  # Install systemd service
   install -Dm0644 "$srcdir/pds-gatekeeper.service" "$pkgdir/usr/lib/systemd/system/pds-gatekeeper.service"
-
-  # Install sysusers
   install -Dm0644 "$srcdir/pds-gatekeeper.sysusers" "$pkgdir/usr/lib/sysusers.d/pds-gatekeeper.conf"
-
-  # Install tmpfiles
   install -Dm0644 "$srcdir/pds-gatekeeper.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/pds-gatekeeper.conf"
-
-  # Install environment file
   install -Dm0644 "$srcdir/pds-gatekeeper.env" "$pkgdir/etc/pds-gatekeeper.env"
 
-  # Install email templates
   install -Dm0644 email_templates/* -t "$pkgdir/usr/share/pds-gatekeeper/email_templates"
 
-  # Install license
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Install documentation
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
