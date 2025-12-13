@@ -1,0 +1,21 @@
+pkgbase = gam-git
+	pkgdesc = command line management for Google Workspace
+	pkgver = 7.30.00.r9.gdf75bb9
+	pkgrel = 1
+	url = https://github.com/GAM-team/GAM
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.10
+	provides = gam
+	conflicts = gam
+	replaces = gamadv-xtd3
+	source = gam-git::git+https://github.com/GAM-team/GAM.git#branch=main
+	source = gam.sh
+	sha256sums = SKIP
+	sha256sums = f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e
+
+pkgname = gam-git
