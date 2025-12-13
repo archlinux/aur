@@ -1,6 +1,6 @@
 post_install() {
   echo "==> Edit /etc/pds-gatekeeper.env and configure your reverse proxy"
-  echo "==> The 'pds-gatekeeper' user is added to the 'pds' group to allow access to atproto-pds files"
+  echo "==> Add system user 'pds-gatekeeper' to your atproto-pds user group (eg, 'pds') to allow access to PDS resources"
   echo "==> See https://tangled.org/baileytownsend.dev/pds-gatekeeper"
 }
 

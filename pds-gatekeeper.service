@@ -1,5 +1,5 @@
 [Unit]
-Description=PDS Gatekeeper - 2FA microservice for self-hosted PDSes
+Description=PDS Gatekeeper - 2FA microservice for self-hosted AT Protocol PDSes
 Documentation=https://tangled.org/baileytownsend.dev/pds-gatekeeper
 After=network.target
 
@@ -8,28 +8,9 @@ Type=simple
 User=pds-gatekeeper
 Group=pds-gatekeeper
 EnvironmentFile=-/etc/pds-gatekeeper.env
-EnvironmentFile=-/etc/pds.env
-Environment="PDS_ENV_LOCATION=/etc/pds.env"
 ExecStart=/usr/bin/pds-gatekeeper
 Restart=on-failure
 RestartSec=5s
-
-# Security hardening
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=true
-ReadWritePaths=/var/lib/pds
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectControlGroups=true
-RestrictRealtime=true
-RestrictNamespaces=true
-LockPersonality=true
-MemoryDenyWriteExecute=true
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-SystemCallFilter=@system-service
-SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=multi-user.target
