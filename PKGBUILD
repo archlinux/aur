@@ -3,7 +3,7 @@
 pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver='1.1.4'
-pkgrel=1
+pkgrel=5
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
