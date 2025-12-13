@@ -1,6 +1,6 @@
 pkgbase = wind-bin
 	pkgdesc = Wind financial terminal, 万得金融终端
-	pkgver = 25.1.5.07250
+	pkgver = 25.3.2.11180
 	pkgrel = 1
 	url = http://www.wind.com.cn
 	install = wind-bin.install
@@ -11,7 +11,7 @@ pkgbase = wind-bin
 	provides = wind
 	source = https://d-cdn.wind.com.cn/windnet/linux/com.wind.wft-kylinV10SP1_amd64.deb.zip
 	source = wind.sh
-	md5sums = 4cbeea69744c665fbc8e70511b662934
+	md5sums = 71474280dd0ee8ac3c9603ed8081a5de
 	md5sums = b91bddd9120a457da61f9f9077480ae2
 
 pkgname = wind-bin
