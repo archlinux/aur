@@ -14,7 +14,7 @@ source_x86_64=("pixelterm::${url}/releases/download/v${pkgver}/pixelterm-amd64-l
 source_aarch64=("pixelterm::${url}/releases/download/v${pkgver}/pixelterm-aarch64-linux")
 noextract=()
 md5sums_x86_64=('731d7f2d6ca1d05648c3ba855756a81b')
-md5sums_aarch64=('54576c22fc1068403174ff819917682f')
+md5sums_aarch64=('731d7f2d6ca1d05648c3ba855756a81b')
 
 package() {
   install -Dm755 "${srcdir}/pixelterm" "${pkgdir}/usr/bin/pixelterm"
