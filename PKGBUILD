@@ -12,8 +12,7 @@ arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
-makedepends=('cmake')
-checkdepends=('gtest')
+makedepends=('cmake' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v$pkgver.tar.gz")
 sha256sums=('d27d009b0627f0f9a5ac711da3b8bd47ef972913051c0f42cb7e704016621f28')
 
