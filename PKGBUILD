@@ -7,22 +7,22 @@ pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'atproto-pds')
 makedepends=('cargo' 'git')
-optdepends=('atproto-pds: PDS environment file at /etc/pds.env')
 options=('!lto') # LTO causes build failures for sqlx
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
 backup=('etc/pds-gatekeeper.env')
-install='pds-gatekeeper.install'
 source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
         'pds-gatekeeper.service'
         'pds-gatekeeper.sysusers'
+        'pds-gatekeeper.tmpfiles'
         'pds-gatekeeper.env')
 b2sums=('SKIP'
-        '549bc8e421970a7fd9ac0ca3882db9bd4c56e68e7c4f1124fa4f084e6b02c447f43e3698152036495908eb7137f03b97a2102da3f0b4f31679e2fef9038ef1f9'
+        'f9e2e5daf0e93d93b65ef9dbeeff315c74d67c83f9f801dcb477719b4a05880a91c00396ca145e7ac4ecc00046da6e7a92188c00eadb1f847284239a4746b18b'
         '881412b13dc22f6c05b11634ba4b728b4e080e9a6a58e17e212063f91072ca370661f7b97fbf61219b522a49774e7cac26731e27ede5864ef8172908e5401bde'
-        '0c5f2a9bcf6b5a2c8c1e21e113debff0ede6786737e0660697cb90ab50132f8b16c0375b1759919f643e75c7599c190c0d07890a50da3aaa48e5b5743ebb1194')
+        '7f96e9f3fb7a8243dd15230193d95c10a0dd6f78e49e68b130feceb3e7ccc26ee89033085248e02845a2a65d0e270f5c78324a5408e2665bd13519a41b13e9a7'
+        'cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17')
 
 pkgver() {
   cd "$srcdir/pds-gatekeeper"
@@ -63,8 +63,14 @@ package() {
   # Install sysusers
   install -Dm0644 "$srcdir/pds-gatekeeper.sysusers" "$pkgdir/usr/lib/sysusers.d/pds-gatekeeper.conf"
 
+  # Install tmpfiles
+  install -Dm0644 "$srcdir/pds-gatekeeper.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/pds-gatekeeper.conf"
+
   # Install environment file
   install -Dm0644 "$srcdir/pds-gatekeeper.env" "$pkgdir/etc/pds-gatekeeper.env"
+
+  # Install email templates
+  install -Dm0644 email_templates/* -t "$pkgdir/usr/share/pds-gatekeeper/email_templates"
 
   # Install license
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

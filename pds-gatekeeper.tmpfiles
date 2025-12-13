@@ -1,0 +1,2 @@
+A+ /var/lib/pds - - - - user:pds-gatekeeper:rwx
+A+ /etc/pds.env - - - - user:pds-gatekeeper:r

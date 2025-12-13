@@ -4,13 +4,20 @@ Documentation=https://tangled.org/baileytownsend.dev/pds-gatekeeper
 After=network.target
 
 [Service]
-Type=simple
 User=pds-gatekeeper
 Group=pds-gatekeeper
 EnvironmentFile=-/etc/pds-gatekeeper.env
 ExecStart=/usr/bin/pds-gatekeeper
-Restart=on-failure
-RestartSec=5s
+
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pds
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
 
 [Install]
 WantedBy=multi-user.target
