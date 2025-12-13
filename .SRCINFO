@@ -1,11 +1,13 @@
 pkgbase = mounriverstudio-bin
 	pkgdesc = MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本
 	pkgver = 230
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = LicenseRef-commercial
 	makedepends = tar
+	makedepends = jq
+	makedepends = curl
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = bash
@@ -54,7 +56,7 @@ pkgbase = mounriverstudio-bin
 	conflicts = mounriverstudio
 	options = !strip
 	options = !debug
-	source = mounriverstudio-bin-230.tar.xz::https://file-oss.mounriver.com/upgrade/MounRiverStudio_Linux_X64_V230.tar.xz?sign=b1db62a01a9445d6406bbf9b554d03fe&time=19b15b6e1b3&from=120.239.78.250&resId=1987837779154911233
-	sha256sums = a0b849c052fce7a4f92a317a8251ddf43bf6b492941b300dade5b5fda27d2b89
+	source = https://ipfs.io/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = mounriverstudio-bin

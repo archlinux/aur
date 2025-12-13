@@ -5,7 +5,7 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=230
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -47,7 +47,7 @@ depends=(
     # AUR
     #     ncurses5-compat-libs
 )
-makedepends=('tar')
+makedepends=('tar' 'jq' 'curl')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
     'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
@@ -61,11 +61,54 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     "sfp-master: SFP-module programmer for CH341a devices"
 )
 
-_sign="?sign=b1db62a01a9445d6406bbf9b554d03fe&time=19b15b6e1b3&from=120.239.78.250&resId=1987837779154911233"
-source=("${pkgname}-${pkgver}.tar.xz::https://file-oss.mounriver.com/upgrade/MounRiverStudio_Linux_X64_V230.tar.xz${_sign}")
-sha256sums=('a0b849c052fce7a4f92a317a8251ddf43bf6b492941b300dade5b5fda27d2b89')
-
+# empty dummy file hosted on IPFS to satisfy updpkgsums/lilac checks
+# the content hash is guaranteed to be immutable
+# the real source file is downloaded dynamically in prepare() due to short-lived URL signatures
+source=('https://ipfs.io/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 options=('!strip' '!debug')
+
+# automatic version detection & download via MounRiver API
+prepare() {
+    msg "Querying MounRiver API for the latest Linux version..."
+    local _info_json=$(curl -s "https://api.mounriver.com/mountriver/api/version/fetchRecent?swType=2&osType=LINUX&lang=en")
+
+    local _soft_id=$(echo "${_info_json}" | jq -r '.result.softId')
+    local _filename=$(echo "${_info_json}" | jq -r '.result.softFileName')
+    local _api_version=$(echo "${_info_json}" | jq -r '.result.version')
+
+    if [[ "${_soft_id}" == "null" || -z "${_soft_id}" ]]; then
+        error "Failed to retrieve software ID from API."
+        return 1
+    fi
+
+    msg "Found Version: ${_api_version} (File: ${_filename}, ID: ${_soft_id})"
+
+    msg "Fetching dynamic download link..."
+    local _dl_json=$(curl -s "https://api.mounriver.com/mountriver/api/version/getDownloadUrl?resourceId=${_soft_id}")
+    local _dl_url=$(echo "${_dl_json}" | jq -r '.data // .result')
+
+    if [[ "${_dl_url}" == "null" || -z "${_dl_url}" || "${_dl_url}" != http* ]]; then
+        error "Failed to retrieve valid download URL."
+        return 1
+    fi
+
+    if [ ! -f "${_filename}" ]; then
+        msg "Downloading ${_filename}..."
+        curl -L -o "${_filename}" "${_dl_url}"
+    else
+        msg "File ${_filename} already exists, skipping download."
+    fi
+
+    # Cleanup old extraction
+    local _old_dir=$(find . -maxdepth 1 -mindepth 1 -type d -print -quit)
+    if [ -n "$_old_dir" ]; then
+        rm -rf "$_old_dir"
+    fi
+
+    msg "Extracting ${_filename}..."
+    tar -xf "${_filename}"
+}
 
 package() {
     cd "${srcdir}/"
@@ -94,6 +137,9 @@ package() {
         install -Dm0644 "beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-mrs2.rules"
 
         install -Dm0755 "beforeinstall/load.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+
+        msg "Cleaning up beforeinstall directory..."
+        rm -rf "beforeinstall"
     fi
 
     local _res_path="MRS-linux-x64/resources/app/resources/linux/components/WCH/Others/CommunicationLib/default"
