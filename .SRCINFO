@@ -1,7 +1,7 @@
 pkgbase = grafana-bin
 	pkgdesc = Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version
-	pkgver = 12.1.1
-	pkgrel = 2
+	pkgver = 12.3.0
+	pkgrel = 1
 	url = https://grafana.com/grafana/download?edition=oss
 	install = grafana.install
 	arch = x86_64
@@ -16,16 +16,16 @@ pkgbase = grafana-bin
 	source = grafana.service
 	source = grafana.sysusers
 	source = grafana.tmpfiles
-	sha256sums = fa1aefe885f2d94bb6a9f6e98eb793b8145f1a980357c809036dc00c9d25594f
+	sha256sums = 9e3637d00065b88e051f9950d836ea3ec69f21ab8ab452f3b99a4deb30d41efa
 	sha256sums = 9cbd46f771dae5e2308b991a00d07a25cc1765f9bdd4082726108e3476403b56
 	sha256sums = 3cd6026ba009e05f49ec265d049d590d4f35330c1f14cd90a468c8d588501675
-	source_x86_64 = https://dl.grafana.com/grafana/release/12.1.1/grafana_12.1.1_16903967602_linux_amd64.tar.gz
-	sha256sums_x86_64 = 825a1da86245046a1822fe5cb8901859d3f3f483b8e2b4cff166d0c03991d214
-	source_armv6h = https://dl.grafana.com/grafana/release/12.1.1/grafana_12.1.1_16903967602_linux_arm-6.tar.gz
-	sha256sums_armv6h = e39ab6e37aab66bb60cf6eaed6ce7234c5bef29755bd382b1d8f956af43b2ec5
-	source_armv7h = https://dl.grafana.com/grafana/release/12.1.1/grafana_12.1.1_16903967602_linux_arm-7.tar.gz
-	sha256sums_armv7h = 89c3075e29a374a8d7070c02b53ac87ddcd283479696a2644ab1ee28f28d35fe
-	source_aarch64 = https://dl.grafana.com/grafana/release/12.1.1/grafana_12.1.1_16903967602_linux_arm64.tar.gz
-	sha256sums_aarch64 = 90481950c7854dfb3f941c323da2923a937681f29408f56e2dbcbe04b3dae765
+	source_x86_64 = https://dl.grafana.com/grafana/release/12.3.0/grafana_12.3.0_19497075765_linux_amd64.tar.gz
+	sha256sums_x86_64 = dd34d03f8dbf815f153b638b793e6ab1b9d205b7c0a15dddd851332f0c9ac01c
+	source_armv6h = https://dl.grafana.com/grafana/release/12.3.0/grafana_12.3.0_19497075765_linux_arm-6.tar.gz
+	sha256sums_armv6h = b526b6eb39e515da0d83a56b792769ac56150fd461db764afe61c5217f2c6c02
+	source_armv7h = https://dl.grafana.com/grafana/release/12.3.0/grafana_12.3.0_19497075765_linux_arm-7.tar.gz
+	sha256sums_armv7h = fc4615ba841c4b1bc7ba7e0c6770afe33dcd8d9daa1432348fa9eda5f13d25c5
+	source_aarch64 = https://dl.grafana.com/grafana/release/12.3.0/grafana_12.3.0_19497075765_linux_arm64.tar.gz
+	sha256sums_aarch64 = d7823bb36a89d2f14a002e0a0332515936fd0e732313e0dc44b12da669ee5ff8
 
 pkgname = grafana-bin
