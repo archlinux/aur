@@ -24,7 +24,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "99-${_pkgname}.conf")
 install="sonarqube-bin.install"
 sha256sums=('09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341'
-            'd279c05080a2998ed9759b3e357eefef331bdcde631d0edd042102ea723fe231'
+            '58c0b2b9ae96a5901b8face8e35481e4c9a7feebdab6b21023805f6814a2fa98'
             'b0204a7b86289929765c651627e9b55d02ae1f0da34184d2c05c7929d1222932'
             'a50fac609f12d3f1241bfb430a3d1b82d98f0649aff96e4a6f33bbe9733d854f'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
