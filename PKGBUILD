@@ -22,15 +22,12 @@ depends=(
 makedepends=(git)
 provides=(librtmp.so)
 options=(!makeflags)
-_commit=138fdb258d9fc26f1843fd1b891180416c9dc575
+_commit=6f6bb1353fc84f4cc37138baa99f586750028a01
 source=(git+https://git.ffmpeg.org/rtmpdump#commit=${_commit})
 b2sums=(SKIP)
 
 prepare() {
   cd rtmpdump
-  git cherry-pick -n eea470fa5f9a5481a36dedd257549595ef7480d6
-  git cherry-pick -n 8e3064207fa7535baad07fd06b65630ec8b31a08
-  git cherry-pick -n 7340f6dbc6b3c8e552baab2e5a891c2de75cddcc
   sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
 }
 
