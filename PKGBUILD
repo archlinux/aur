@@ -2,8 +2,8 @@
 
 pkgbase='iloader'
 pkgname='iloader-appimage'
-pkgver='1.1.4'
-pkgrel=5
+pkgver='1.1.5'
+pkgrel=1
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip !debug)
 _appimage='iloader-linux-amd64.AppImage'
 source=("$url/releases/download/v$pkgver/$_appimage"
         "LICENSE::$url/raw/refs/heads/main/LICENSE")
-sha256sums=('3bf27878516de1488e30cdb2a049c7094efccc9c3c8bee464481f754f9033c87'
+sha256sums=('2e5d85da7716ebff0e05ffde80ea218621debbcdf412884b054e4b0aea6b2c77'
             'c6e929e3490b6475e382b4f74aaddd068deb3bf27cca2109821591e692dfcb3b')
 
 prepare() {
