@@ -1,0 +1,11 @@
+pkgbase = llm-thalamus-anime
+	pkgdesc = Anime theme for llm-thalamus
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	provides = llm-thalamus-theme
+	conflicts = llm-thalamus-theme
+	source = https://github.com/evertvorster/llm-thalamus-anime/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 38361902c07e29905d58dc70788c177b6d005670767a5e19294e8670eee4b75f
+
+pkgname = llm-thalamus-anime
