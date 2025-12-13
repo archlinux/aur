@@ -1,7 +1,7 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial ProtonMail Desktop App
 	pkgver = 5.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = electronmail-bin
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
-	depends = http-parser
+	depends = llhttp
 	depends = libevent
 	depends = libvpx
 	depends = libxslt
