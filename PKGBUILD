@@ -41,4 +41,6 @@ package() {
 
     install -Dm0755 -t $pkgdir/usr/bin/ target/release/$pkgname
     install -Dm0644 completions/fish $pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish
+    install -Dm0644 completions/bash $pkgdir/usr/share/bash-completion/completions/$pkgname
+    install -Dm0644 completions/zsh $pkgdir/usr/share/zsh/site-functions/_$pkgname
 }
