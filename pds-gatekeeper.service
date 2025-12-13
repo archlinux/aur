@@ -8,6 +8,7 @@ Group=pds-gatekeeper
 EnvironmentFile=/etc/pds-gatekeeper.env
 ExecStart=/usr/bin/pds-gatekeeper
 
+ReadWritePaths=/var/lib/pds
 NoNewPrivileges=yes
 CapabilityBoundingSet=
 AmbientCapabilities=
