@@ -1,0 +1,17 @@
+pkgbase = needle-cli
+	pkgdesc = TUI that highlights the GitHub PRs that need you
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/needle-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = needle-cli
+	conflicts = needle-cli
+	source = needle-cli-0.1.0.crate::https://crates.io/api/v1/crates/needle-cli/0.1.0/download
+	sha256sums = ce1eef115b86a1688a500cba82a208c6cbf042e3f93f2db9d4de4a72e0216505
+
+pkgname = needle-cli
