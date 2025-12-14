@@ -19,7 +19,7 @@ pkgbase = textmerger
 	conflicts = textmerger
 	options = !strip
 	options = !debug
-	source = textmerger-2.2.0.tar.gz
-	sha256sums = 22c87e92f50d70f154f70924b9683d8706bfe2e0b6b64ad449156191a6cc7361
+	source = textmerger-2.2.0.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = c069f078deb056f5c8035ff22c2ab91a898202107921da9d3f33681dc8824b86
 
 pkgname = textmerger
