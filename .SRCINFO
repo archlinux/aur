@@ -1,7 +1,7 @@
 pkgbase = twintaillauncher-bin
 	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = 1.1.12
-	pkgrel = 2
+	pkgver = 1.1.13
+	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,7 +16,7 @@ pkgbase = twintaillauncher-bin
 	depends = libappindicator-gtk3
 	depends = libayatana-appindicator
 	options = !debug
-	source = twintaillauncher-1.1.12.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.1.12/twintaillauncher_1.1.12_amd64.deb
-	sha256sums = 0d715b4ceddb5ef851de47122f3ab42625a3bab61714a47be5c6d86cdf5e10b8
+	source = twintaillauncher-1.1.13.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.1.13/twintaillauncher_1.1.13_amd64.deb
+	sha256sums = 13d767a5e3cab8bab76f2cb26f15535f2e792abb412867d4e65e6b557da9377e
 
 pkgname = twintaillauncher-bin
