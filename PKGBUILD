@@ -1,6 +1,6 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=angstromfetch-git
-pkgver=v1.0.0.r13.fc6c5a9
+pkgver=v1.1.0.r10.a988bd0
 pkgrel=1
 pkgdesc="Fast(est) system fetch tool for Linux with a low footprint"
 arch=(x86_64)
