@@ -1,7 +1,7 @@
 pkgbase = python-base64io
 	pkgdesc = A stream implementation for Python that provides transparent base64 encoding and decoding of an underlying stream.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aws/base64io-python
 	arch = any
 	license = Apache-2.0
@@ -10,7 +10,7 @@ pkgbase = python-base64io
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/base64io/base64io-1.0.3.tar.gz
-	sha256sums = 24f2d0fe765c35339e1b2d33aa95f9137b1b765b594164fad1016c15827a7073
+	source = base64io-1.0.3.tar.gz::https://github.com/aws/base64io-python/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = f72e0cc0236f499d91e12b9cdb45768e8e1c9a71d228bf17d729475b70580700
 
 pkgname = python-base64io
