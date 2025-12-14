@@ -1,6 +1,6 @@
 pkgbase = libggml-git
 	pkgdesc = Tensor library for machine learning
-	pkgver = r2404.7dee1d6
+	pkgver = 0.9.4.r387.g3e9f2ba
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libggml-git
 	makedepends = vulkan-headers
 	depends = openblas
 	depends = vulkan-icd-loader
-	provides = libggml=r2404
+	provides = libggml=0.9.4.r387
 	conflicts = libggml
 	source = libggml::git+https://github.com/ggml-org/ggml.git
 	sha256sums = SKIP
