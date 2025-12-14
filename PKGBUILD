@@ -18,6 +18,7 @@ build() {
     mkdir build
     cmake \
         -B build \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr/' \
         -DCMAKE_SKIP_RPATH=1 \
