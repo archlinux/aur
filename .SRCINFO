@@ -1,0 +1,17 @@
+pkgbase = axl
+	pkgdesc = Stack-aware developer workflow CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/axl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = axl
+	conflicts = axl
+	source = axl-0.1.0.crate::https://crates.io/api/v1/crates/axl/0.1.0/download
+	sha256sums = 6dbe84ea71b6c82ad6ca9d21c775bd566a8fedcef545e6398130e59f637f4531
+
+pkgname = axl
