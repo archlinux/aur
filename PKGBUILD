@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui-xray-core
-pkgver=25.12.1
+pkgver=25.12.8
 pkgrel=1
 pkgdesc="Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)"
 arch=(aarch64 armv7h i686 x86_64)
@@ -14,8 +14,8 @@ conflicts=(x-ui-xray-core)
 options=(!debug)
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('f1ab22b87e9e446d5e96cb00a8593b85826cc8a1bbc960e0eb0081293d6a32ab')
-b2sums=('2ba7d00c76dbe6c35870be47eef72aaa401e3ec56646febde57b10e326ba40cb9e27c5c81bfd028b601a0161f543b2f67eccebc8c1264c8da0d46c277f6da124')
+sha256sums=('d4519b2d9bb1871f4d7612aa7a8db1c451573b5a44ac824219bb44d63f404e61')
+b2sums=('6514d908754ee7f95d2bcf2ec05e1b4c7167f5375e1d8f30f7f027ea04e0dd54c202bef4bf83c710cc7ccc4efccc066c0d173522f05d93d6b21edcea91d423b5')
 
 build() {
   cd Xray-core-$pkgver
