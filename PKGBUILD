@@ -38,6 +38,4 @@ package() {
 
   ./Build install destdir="${pkgdir}"
 
-  find "${pkgdir}" -name '.packlist' -delete
-  find "${pkgdir}" -name '*.pod' -delete
 }
