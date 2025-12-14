@@ -10,7 +10,6 @@ pkgbase = dsd-neo-git
 	makedepends = cmake
 	depends = mbelib-neo
 	depends = libsndfile
-	depends = itpp
 	depends = ncurses
 	depends = libpulse
 	depends = rtl-sdr

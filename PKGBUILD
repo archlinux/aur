@@ -8,7 +8,6 @@ license=('GPL-3.0-or-later')
 depends=(
     'mbelib-neo'
     'libsndfile'
-    'itpp'
     'ncurses'
     'libpulse'
     'rtl-sdr'
