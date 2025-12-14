@@ -18,6 +18,7 @@ conflicts=('anytype'
            'anytype-legacy'
            'anytype-electron-bin'
            'anytype-bin')
+options=('!strip' '!debug')
 source=(
 	"anytype-${pkgver}.deb::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
 	"LICENSE-${pkgver}.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}/LICENSE.md"
