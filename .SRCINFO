@@ -1,0 +1,14 @@
+pkgbase = codebundler
+	pkgdesc = Bundle Git-tracked files into a single text file with checksums
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HarryPehkonen/CodeBundler
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	makedepends = gcc
+	depends = git
+	source = codebundler-1.0.0.tar.gz::https://github.com/HarryPehkonen/CodeBundler/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0d3fc57a1576cd6bfc7b76403d9877f48b3de7b4c3fcbdacc98ee4f68cf3df4c
+
+pkgname = codebundler
