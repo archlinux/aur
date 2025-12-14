@@ -1,0 +1,21 @@
+pkgbase = pipebar-git
+	pkgdesc = A featherweight text-rendering wayland statusbar.
+	pkgver = r29.bbe0a6b
+	pkgrel = 1
+	url = https://codeberg.org/sunn4room/pipebar
+	arch = x86_64
+	license = MIT
+	makedepends = wayland
+	makedepends = pixman
+	makedepends = fcft
+	makedepends = tllist
+	makedepends = pkg-config
+	depends = wayland
+	depends = pixman
+	depends = fcft
+	provides = pipebar
+	conflicts = pipebar
+	source = pipebar-git::git+https://codeberg.org/sunn4room/pipebar.git
+	md5sums = SKIP
+
+pkgname = pipebar-git
