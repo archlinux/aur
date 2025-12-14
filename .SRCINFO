@@ -1,0 +1,23 @@
+pkgbase = svt-av1-hdr-git
+	pkgdesc = SVT-AV1-HDR is the SVT-AV1 Encoder with perceptual enhancements for SDR and HDR AV1 encoding
+	pkgver = 3.1.3.r2.ge2beee010
+	pkgrel = 1
+	url = https://github.com/juliobbv-p/svt-av1-hdr
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = glibc
+	provides = svt-av1
+	provides = svt-av1-git
+	conflicts = svt-av1
+	conflicts = svt-av1-git
+	conflicts = svt-av1-psy
+	conflicts = svt-av1-psy-git
+	conflicts = svt-av1-hdr-riv19
+	source = svt-av1-hdr::git+https://github.com/juliobbv-p/svt-av1-hdr.git
+	sha256sums = SKIP
+
+pkgname = svt-av1-hdr-git
