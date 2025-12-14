@@ -20,8 +20,7 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname%%-cli}")
 
 source=("${_pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_pkgname}/${pkgver}/download")
 sha256sums=('ce1eef115b86a1688a500cba82a208c6cbf042e3f93f2db9d4de4a72e0216505')
@@ -36,7 +35,7 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname%%-cli}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
