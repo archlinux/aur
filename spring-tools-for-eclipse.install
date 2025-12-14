@@ -1,7 +1,7 @@
 pre_upgrade() {
     # Keep existing '-javaagent' options, if any
-    if [ -e "/opt/sts4/SpringToolSuite4.ini" ]; then
-        grep -E "^-javaagent" /opt/sts4/SpringToolSuite4.ini > /tmp/sts4.javaagents || return 0
+    if [ -e "/opt/st4e/SpringToolsForEclipse.ini" ]; then
+        grep -E "^-javaagent" /opt/st4e/SpringToolsForEclipse.ini > /tmp/st4e.javaagents || return 0
     fi
 }
 
@@ -13,10 +13,10 @@ post_upgrade() {
     post_install $1
 
     # Restore existing '-javaagent' options, if any
-    if [ -s "/tmp/sts4.javaagents" ]; then
-        cat /tmp/sts4.javaagents >> /opt/sts4/SpringToolSuite4.ini
+    if [ -s "/tmp/st4e.javaagents" ]; then
+        cat /tmp/st4e.javaagents >> /opt/st4e/SpringToolsForEclipse.ini
     fi
-    rm -f /tmp/sts4.javaagents
+    rm -f /tmp/st4e.javaagents
 }
 
 post_remove() {

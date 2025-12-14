@@ -5,10 +5,10 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tools-for-eclipse
-pkgver=4.32.2
+pkgver=5.0.0
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.37.0
-_eclipse_pkgver_short=e4.37
+_eclipse_pkgver=e4.38.0
+_eclipse_pkgver_short=e4.38
 pkgrel=1
 pkgdesc="Spring Tools, aka Spring Tool Suite (STS), is the next generation of Spring tooling for Eclipse IDE."
 arch=('x86_64')
@@ -18,28 +18,27 @@ provides=('spring-tool-suite')
 conflicts=('spring-tool-suite')
 install=${pkgname}.install
 license=("EPL/1.1")
-
+options=("!debug")
 source=(
-    "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.${arch}.tar.gz"
+    "https://cdn.spring.io/spring-tools/release/dist/${_pkgver_release}/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.${arch}.tar.gz"
     "${pkgname}.desktop"
+    "spring-tools-for-eclipse.install"
 )
-sha256sums=('c686b77656cc4c31df84b4a9573e18a37ffd7f1ef69ed625085441918720623a'
-            'b7f7c92446da5d82a1a1982d8d1af3b98c2b29854579f4b04247001080e162f0')
+sha256sums=('904f7c3055b816e7720d698a62eafc7ab98c9a040974cdaf8076aac556c1944d'
+            '1e2e23447e1d616480a790f36807ee64630a4ad71345834633e4e8f6e9bba066'
+            '99655c1631a60d8f3358488bf66b442dc8bb4abfae98681a49248399dfe10cd0')
 
 package() {
-    # Install eclipse to version-agnostic sts4 dirirectory
+    # Install eclipse to version-agnostic st4e dirirectory
     install -m755 -d "${pkgdir}/opt"
-    mv "${srcdir}/sts-${_pkgver_release}" "${pkgdir}/opt/sts4"
+    mv "${srcdir}/sts-${_pkgver_release}" "${pkgdir}/opt/st4e"
 
     # Install misc
     install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/opt/sts4/SpringToolSuite4" ${pkgdir}/usr/bin/STS
+    ln -s "/opt/st4e/SpringToolsForEclipse" ${pkgdir}/usr/bin/SpringToolsForEclipse
 
     # Install icon
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    ln -s "/opt/sts4/icon.xpm" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.xpm"
-
-    # Create simlink for backward compatibility
-    ln -s "/opt/sts4" "${pkgdir}/opt/sts-${_pkgver_release}"
+    ln -s "/opt/st4e/icon.xpm" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.xpm"
 }
