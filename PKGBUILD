@@ -1,7 +1,7 @@
 # Maintainer: Card38753 <cccc38753@gmail.com>
 pkgname=lazytyper-bin
 _pkgname=LazyTyper
-pkgver=1.8.1
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="LazyTyper 桌面客户端（官方 AppImage 重打包，含内置依赖）"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("lazytyper=${pkgver}")
 conflicts=('lazytyper' 'lazytyper-git' 'lazytyper-appimage')
 options=(!strip)
 source=("${_pkgname}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}-linux/LazyTyper-x86_64.AppImage")
-sha256sums=('82d8f965a484be0ef7c661107ac014bfefd50589ef36d76eb15ab93f5ad1428a')
+sha256sums=('3407ba1def04dde0534e67c253a78f34b0ba3f738d10f43a17d04d3570fac7f5')
 
 build() {
   cd "$srcdir"
