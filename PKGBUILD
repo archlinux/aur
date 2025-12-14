@@ -2,7 +2,7 @@
 
 pkgname=elephant-nirisessions
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='nirisessions provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ build() {
 
 package() {
     cd elephant-${pkgver}/internal/providers/nirisessions
-    install -Dm 755 nirisessions.so -t "${pkgdir}/lib/elephant"
+    install -Dm 755 nirisessions.so -t "${pkgdir}/usr/lib/elephant"
 
     cd ../../../
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
