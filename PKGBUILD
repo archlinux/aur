@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-templater-bin'
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Template-based output plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -14,13 +14,13 @@ depends=('tinct')
 install=tinct-plugin-templater.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('579f77c4098e518a2f3c285c75b02d19a9c43accc268c132fc477394b931f1ca')
+sha256sums_aarch64=('04da0639b00960b6322c996b6031b97ee908c1f043371d33cd2411faac5ac067')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('b720499a75800cb1fface52bd0c52c1b601e4b587de43d4cc95a236dd59bac42')
+sha256sums_armv7h=('d40e206e243b6530f1769bcf78c7d1bbe1075e5cadfe42a689830a7dd80deaaf')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c7e90bcdd62af259ca2e0cdfe05ee002cc36fceb21313bd232163db275d218e2')
+sha256sums_x86_64=('dc78ac668ce7c480e2691e43ccde070fad0f368fb13432d058a0928f4f047579')
 
 package() {
   # bin
