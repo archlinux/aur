@@ -1,7 +1,7 @@
 pkgbase = vectorchord-immich
 	pkgdesc = The latest version of VectorChord compatible with immich-server.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorchord/VectorChord
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = vectorchord-immich
 	makedepends = clang
 	depends = postgresql
 	depends = pgvector
+	provides = vectorchord=0.5.3
 	source = VectorChord-0.5.3.tar.gz::https://github.com/tensorchord/VectorChord/archive/refs/tags/0.5.3.tar.gz
 	sha256sums = 38e20bd299d15a9ffd6464e649f630282a26df7f1a9df3cefe729634e3e1545d
 
