@@ -1,2 +1,2 @@
-u pds-gatekeeper - "AT Protocol PDS Gatekeeper" /var/lib/pds-gatekeeper
+u pds-gatekeeper - "AT Protocol PDS Gatekeeper"
 m pds-gatekeeper pds
