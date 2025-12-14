@@ -3,7 +3,7 @@
 _pkgauthor=Rolv-Apneseth
 _pkgname=clipvault
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Clipboard history manager for Wayland, inspired by cliphist"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            'a14a5b494a8771dd72c627dc1606c8f2340a900a743938c66366170eca330ae2')
-sha256sums_x86_64=('00032a3a36bf6684fce888c0a3d2410c05920e4f92ea49c20728c525f266fdfe')
-sha256sums_aarch64=('be85b30d061a3223e377f49815cedc9517a4b83edb77b296f35c08c221339ccb')
+            'fbbddfcb7d51dff3e2b99d76f2b1366ee64a9eb5b5993d9168420039ad0acfd9')
+sha256sums_x86_64=('deb8e2a829ad4774dfa74bea5b30a6aaa328c2d0bd78f4b39855f7d78ff4a644')
+sha256sums_aarch64=('c2a9564e3290e450122417e177b659efcaf1d16531232aa130eec28e3cdef547')
 
 
 package() {
