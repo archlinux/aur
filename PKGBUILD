@@ -1,10 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.1.r122018.gfacc32b0d8
+pkgver=8.1.r122140.g16f89d342e
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
 _whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -108,6 +107,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
+    'svt-jpeg-xs-git'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -166,7 +166,7 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
@@ -174,11 +174,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             'SKIP'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            '8f863a30d93345d3f3c5eec7db14a64ae54ca5feda38cc37a876779c6c03a1fc'
+            'ec73ed3f3135ced7d24c7138d010789aed454b400bb39679098432cdef1df35d'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '1f06dfcb78e43a6c732cbc4f6ae583ae19fb111b56d33c8c860d5b6566c04f99'
+            '513f33f06f07798f638a7a1d2603a8538914083d088de420dc066386cfcfcc84'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
-            'e8c5977d35de6c45a20fdd9be65d47695d75a9aed6355e254d24f850f69f50d4'
+            '7c43ac7abbe780367bbddff92216025f4fe9dd00b6b008274d4aefc4f6103f78'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -186,7 +186,7 @@ prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
@@ -332,6 +332,7 @@ build() {
         --enable-libssh \
         --enable-libsvtav1 \
         --enable-libsvthevc \
+        --enable-libsvtjpegxs \
         --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
