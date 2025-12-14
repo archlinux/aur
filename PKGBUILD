@@ -3,9 +3,8 @@
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
-epoch=1
 pkgdesc="Cross-platform IPTV player application with support for M3U/M3U8 playlists, EPG, favorites, TV archive and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -30,8 +29,8 @@ depends=(
 provides=('iptvnator')
 conflicts=('iptvnator')
 options=(!strip)
-source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/test-8d5537370ebf2f95d84122b2351763c2d3ef9579/iptvnator-${pkgver}-linux-x64.pacman")
-sha256sums=('d7ab5a9490f8b3cfb8a58babbbba63ccd1590f99463c842b16d23a5c45b1d7ea')
+source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
+sha256sums=('25f57c4829310777c5441ca47b2f563bf31000d0a3b007308d58807031ae10f9')
 
 package() {
   bsdtar -xf "${srcdir}/iptvnator-${pkgver}.pacman" -C "${pkgdir}"
