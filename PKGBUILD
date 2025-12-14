@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.15.5
+pkgver=1.3.16.1
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -42,13 +42,13 @@ makedepends=(# "Meta" dependencies
              # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
              clang
              )
-source=("https://github.com/aseprite/aseprite/releases/download/v1.3.15.4/Aseprite-v1.3.15.5-Source.zip"
+source=("https://github.com/aseprite/aseprite/releases/download/v1.3.16/Aseprite-v1.3.16.1-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
         # forgive me, I couldn't figure out linker errors.
         # update commit with skia
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=038a79a039eecee7110a5da5862e15941abea629
+		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=0f49265d7e7aea4b862b7d1e670ed969e8a469b8
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -64,10 +64,10 @@ source=("https://github.com/aseprite/aseprite/releases/download/v1.3.15.4/Asepri
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz"
            "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('2402325af2d6b7f663a5f06f728a6d2a1a2053e17cd97afa483b155689a3e9d4'
+sha256sums=('8961e7cff572f7bd432c240be5214c9dd228d4bb582521a44ff554f011de551a'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
-            'b8c25e0f29d05eefe9e522c32fb0a38db4f0f574adcfb5f20d4324c9e39fbb8c'
+            'c246ab3a2f1dad3b0244ea4e571404978c748777b8814670d2798e137e9e0d4f'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274'
