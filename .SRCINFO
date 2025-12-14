@@ -1,7 +1,7 @@
 pkgbase = python-scikit-hep-testdata
 	pkgdesc = A common package to provide example files (e.g. ROOT) for testing and developing packages against
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/scikit-hep-testdata
 	arch = any
 	license = BSD-3-Clause

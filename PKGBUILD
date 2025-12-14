@@ -4,7 +4,7 @@
 _pkgname=scikit-hep-testdata
 pkgname="python-${_pkgname}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=(any)
 license=(BSD-3-Clause)
