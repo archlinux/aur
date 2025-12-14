@@ -5,8 +5,8 @@
 
 _quake=vkQuake
 pkgname=vkquake
-pkgver=1.32.3.1
-pkgrel=3
+pkgver=1.33.0
+pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -19,20 +19,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Novum/vkQuake/archive/${pkg
 	'vkquake.desktop'
 	'vkquake.png'
 	'vkquake.svg'
-	'ctype.patch'
-	'spirv.patch::https://github.com/Novum/vkQuake/commit/85ddf2386f15944c26317a763d4044077fc8731f.diff')
-sha512sums=('4eb091fbd37ab96b9f7818b8b65c9fb3a1db01fd3e0f5ba4ad16a978302c5ba5e793b1dbe2c261cdf6787e96787618a3c2ec9f091b8ca7b18041d364f4f0804a'
+	'ctype.patch')
+sha512sums=('36355e03d419c3e99a038b1a20c3f2172f16037aa0ca38a7af2d14f34d599fe2953ea0ac068274685bcdc24c918f723292c3f75c6ff4b9eb422354f1b8455606'
             '75881c2fea0628dcecff496a5e3035bbb4e408b81527737339ebfd66ad04ca04621d4e13e3e0537f091f8b1127dc231583f746d11cc6c11658cdb976db77e145'
             '9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f'
             '5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0'
-            'f1f1535724c2838d1fc257eee9996029a2ed5a50f15488e852d17bb8d0dc9cdcc7a22cb88021f4e5489e74ea8be6b135d6767a2b7f01a7d3922151e3f79c9469'
-            '7ba51ad6788b95cb5f38cfd9dfe345e798a32f9d8eca04436495d726abf846399933fa8368056a2bf6b70180b48b9a3839fc37603ae32f007d30b32482b9d225')
+            'f1f1535724c2838d1fc257eee9996029a2ed5a50f15488e852d17bb8d0dc9cdcc7a22cb88021f4e5489e74ea8be6b135d6767a2b7f01a7d3922151e3f79c9469')
 
 
 prepare() {
   cd "$srcdir/$_quake-$pkgver"
   patch -p1 < "$srcdir/ctype.patch"
-  patch -p1 < "$srcdir/spirv.patch"
 }
 
 build() {
