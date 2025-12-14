@@ -1,12 +1,15 @@
 [Unit]
 Description=PDS Gatekeeper - 2FA microservice for self-hosted AT Protocol PDSes
 Documentation=https://tangled.org/baileytownsend.dev/pds-gatekeeper
+Requires=pds.service
+After=pds.service
 
 [Service]
 User=pds
-Group=pds-gatekeeper
+Group=pds
 EnvironmentFile=/etc/pds-gatekeeper.env
 ExecStart=/usr/bin/pds-gatekeeper
+WorkingDirectory=/var/lib/pds
 
 ReadWritePaths=/var/lib/pds
 NoNewPrivileges=yes

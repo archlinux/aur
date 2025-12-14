@@ -1,1 +1,1 @@
-f /etc/pds-gatekeeper.env 0640 root pds-gatekeeper -
+f /etc/pds-gatekeeper.env 0640 root pds -
