@@ -1,13 +1,13 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=idescriptor-appimage
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform iDevice management tool (AppImage)"
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
 license=('GPL3')
 provides=("idescriptor")
-conflicts=("idescriptor" "idescriptor-bin")
+conflicts=("idescriptor" "idescriptor-bin" "idescriptor-git")
 depends=('fuse2' 'zlib')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.zip::https://github.com/iDescriptor/iDescriptor/releases/download/v${pkgver}/iDescriptor-v${pkgver}-Linux_x86_64.AppImage.zip"

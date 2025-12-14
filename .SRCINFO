@@ -1,7 +1,7 @@
 pkgbase = idescriptor-appimage
 	pkgdesc = Cross-platform iDevice management tool (AppImage)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iDescriptor/iDescriptor
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = idescriptor-appimage
 	provides = idescriptor
 	conflicts = idescriptor
 	conflicts = idescriptor-bin
+	conflicts = idescriptor-git
 	options = !strip
 	options = !debug
 	source = idescriptor-appimage-0.1.2.zip::https://github.com/iDescriptor/iDescriptor/releases/download/v0.1.2/iDescriptor-v0.1.2-Linux_x86_64.AppImage.zip
