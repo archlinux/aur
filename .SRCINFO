@@ -1,7 +1,7 @@
 pkgbase = vidcutter
 	pkgdesc = Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology
 	pkgver = 6.0.5.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ozmartian/vidcutter
 	arch = x86_64
 	license = GPL3
