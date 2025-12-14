@@ -1,0 +1,26 @@
+pkgbase = multios-usb-bin-git
+	pkgdesc = Simple tool for creating GRUB multiboot USB with Secure Boot support.
+	pkgver = 0.9.9.r8.gbb66853
+	pkgrel = 1
+	url = https://github.com/Mexit/MultiOS-USB
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = tar
+	depends = bzip2
+	depends = xz
+	depends = gptfdisk
+	depends = util-linux
+	optdepends = dosfstools: FAT support
+	optdepends = exfatprogs: exFAT support
+	optdepends = e2fsprogs: ext2/3/4 support
+	optdepends = ntfs-3g: NTFS support
+	provides = multios-usb
+	conflicts = multios-usb
+	conflicts = multios-usb-bin
+	conflicts = multios-usb-git
+	source = multios-usb::git+https://github.com/Mexit/MultiOS-USB.git
+	source = multios-usb-launcher.sh
+	sha256sums = SKIP
+	sha256sums = 1b795c3590ee2867d2d9baea9897877a2d9f56b5cb49fcfbc67b91bab10d6d1b
+
+pkgname = multios-usb-bin-git
