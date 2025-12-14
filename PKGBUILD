@@ -1,12 +1,12 @@
 pkgname=ghpkg
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Indev package manager"
 arch=('any')
 url="https://github.com/Frothy7650/ghpkg/"
 license=('MIT')
 source=("https://github.com/Frothy7650/ghpkg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41b47909c5e3790c7003d8b1db74bf908a463f4fcbca9dabae9ec7c4aebc9bc0')
+sha256sums=('70d7a5b83837337bfd7df74bd71bd6749d79098acd0a7efffe7da67130705dfd')
 depends=('git')
 makedepends=('vlang')
 options=('!debug')
