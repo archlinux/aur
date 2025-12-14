@@ -1,0 +1,24 @@
+pkgbase = jellyfin-desktop
+	pkgdesc = Jellyfin Desktop Client
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jellyfin/jellyfin-desktop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	depends = mpv
+	depends = mpvqt
+	depends = libcec
+	depends = sdl2
+	depends = p8-platform
+	depends = protobuf
+	depends = qt6-webengine
+	depends = qt6-declarative
+	source = https://github.com/jellyfin/jellyfin-desktop/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = d6f62f9129524726f07e426244576152be883ad0881234f0ff27f4e8bc71877e
+
+pkgname = jellyfin-desktop
