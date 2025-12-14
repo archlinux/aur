@@ -7,7 +7,7 @@ pkgdesc="geteduroam Linux client"
 url="https://github.com/geteduroam/linux-app"
 license=("BSD-3-Clause")
 arch=("x86_64")
-depends=("networkmanager")
+depends=("libnotify" "networkmanager")
 source=("geteduroam-cli_linux_amd64.deb::$url/releases/download/$pkgver/geteduroam-cli_linux_amd64.deb"
         "LICENSE::$url/raw/refs/tags/$pkgver/LICENSE")
 sha256sums=("a24f17ac6fb05327e5fcbbc201bc667cd2289f1cf1a8865a64fa59fdccd2c4af"

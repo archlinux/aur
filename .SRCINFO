@@ -5,6 +5,7 @@ pkgbase = geteduroam-cli-bin
 	url = https://github.com/geteduroam/linux-app
 	arch = x86_64
 	license = BSD-3-Clause
+	depends = libnotify
 	depends = networkmanager
 	source = geteduroam-cli_linux_amd64.deb::https://github.com/geteduroam/linux-app/releases/download/0.12/geteduroam-cli_linux_amd64.deb
 	source = LICENSE::https://github.com/geteduroam/linux-app/raw/refs/tags/0.12/LICENSE
