@@ -1,6 +1,6 @@
 pkgname=ghpkg
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Indev package manager"
 arch=('any')
 url="https://github.com/Frothy7650/ghpkg/"
@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 ghpkg "$pkgdir/usr/bin/ghpkg"
+  install -Dm755 src/ghpkg "$pkgdir/usr/bin/ghpkg"
   install -Dm644 db.json "$pkgdir/etc/ghpkg/db.json"
 }

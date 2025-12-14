@@ -1,7 +1,7 @@
 pkgbase = ghpkg
 	pkgdesc = Indev package manager
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Frothy7650/ghpkg/
 	arch = any
 	license = MIT
