@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.4.0.r214.g5d95073296d
+pkgver=2025.4.0.r267.g7c187787506
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -80,7 +80,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '83284640b364d7fd6a90d6341b0d3426f98e0d56b8775c052d60db8abed3e0bf'
+            'dbe7ae07bfa341f7defa15ebf9843ca7c49cceabf34db45b1253dff28c7cbead'
             'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52')
 
 export GIT_LFS_SKIP_SMUDGE='1'

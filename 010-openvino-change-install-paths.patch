@@ -64,18 +64,15 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -422,9 +422,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
+@@ -394,7 +394,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
+     const auto ov_library_path = make_path(get_ov_lib_path());
  
      // plugin can be found either:
+-    const std::filesystem::path sub_folder_path{std::string("openvino-") + OpenVINO_VERSION};
++    const std::filesystem::path sub_folder_path{std::string("openvino")};
  
--    // 1. in openvino-X.Y.Z folder relative to libopenvino.so
-+    // 1. in openvino folder relative to libopenvino.so
-     std::ostringstream str;
--    str << "openvino-" << OpenVINO_VERSION;
-+    str << "openvino";
-     const auto sub_folder = str.str();
- 
-     std::string abs_file_path = ov::util::path_join({ov_library_path, sub_folder, plugin}).string();
+     if (auto plugin_path = ov_library_path / sub_folder_path / plugin; ov::util::file_exists(plugin_path)) {
+         return plugin_path;
 --- a/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
 @@ -31,7 +31,7 @@ ov_add_target(TYPE EXECUTABLE
