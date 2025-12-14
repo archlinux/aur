@@ -1,5 +1,11 @@
-username="motioneye"
-groupname="motioneye"
+username="motion"
+groupname="motion"
+
+pre_install() {
+  if systemctl -q is-active motion 2> /dev/null || systemctl -q is-enabled motion 2> /dev/null; then
+    systemctl disable --now motion
+  fi
+}
 
 post_install() {
   post_upgrade
@@ -9,7 +15,7 @@ post_upgrade() {
   getent group $groupname &>/dev/null || groupadd -r $groupname 1>/dev/null
   getent passwd $username &>/dev/null || useradd -r -g $groupname -s "/bin/bash" $username 1>/dev/null
  
-  chown -R $username:$groupname "/opt/motioneye" 1>/dev/null
+  chown -R $username:$groupname "/etc/motioneye" 1>/dev/null
 }
 
 post_remove() {

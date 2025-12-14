@@ -2,7 +2,7 @@
 # Contributor: Jeremy MJ <jskier@gmail.com>
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 pkgname=motioneye
-pkgver=0.43.1b4
+pkgver=0.43.1
 pkgrel=1
 pkgdesc="A web frontend for the motion daemon"
 arch=(any)
@@ -28,7 +28,7 @@ makedepends=(
 install=${pkgname}.install
 backup=("etc/${pkgname}/${pkgname}.conf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('492aa342d26485cae46eb9d87affba2b4d32153445d43cf85f6184ac8352ec040b30ee4620edb62fdcfdb03800866cc8ec9482de12bf6fed584705d7e86b229c')
+sha512sums=('73b00ef211533a536f67995c6b38a89c7aa9894aa0df2abfa995c07f28929e6ece9549c6d7a178c9760c59970a352c74ebabace046eed4b85ddb8fce4d62c27c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -36,9 +36,13 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt/${pkgname} ${pkgdir}/etc/${pkgname} ${pkgdir}/var/lib/${pkgname}
+  mkdir -p "${pkgdir}/etc/${pkgname}" "${pkgdir}/var/lib/${pkgname}"
 
   install -Dm664 "${srcdir}/${pkgname}-${pkgver}/${pkgname}/extra/${pkgname}.conf.sample" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+
+  meyectl_path="/usr/bin/meyectl"
+  sed -i "s|^ExecStart=/usr/local/bin/meyectl|ExecStart=$meyectl_path|" "${srcdir}/${pkgname}-${pkgver}/${pkgname}/extra/${pkgname}.systemd"
+
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}/extra/${pkgname}.systemd" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   cd ${pkgname}-${pkgver}
