@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "data": {
+    "bzip": {
+      "version": "1.0.8-6",
+      "url": "https://archlinux.org/packages/core/x86_64/bzip2/"
+    },
+    "ssl": {
+      "version": "3.6.0-1",
+      "url": "https://archlinux.org/packages/core/x86_64/openssl/"
+    },
+    "xz": {
+      "version": "5.8.1-1",
+      "url": "https://archlinux.org/packages/core/x86_64/xz/"
+    },
+    "zlib": {
+      "version": "1.3.1-2",
+      "url": "https://archlinux.org/packages/core/x86_64/zlib/"
+    },
+    "zstd": {
+      "version": "1.5.7-2",
+      "url": "https://archlinux.org/packages/core/x86_64/zstd/"
+    }
+  }
+}

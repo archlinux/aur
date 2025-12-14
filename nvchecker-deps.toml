@@ -1,0 +1,24 @@
+[__config__]
+oldver = "nvchecker-old.txt"
+newver = "nvchecker-new.txt"
+max_concurrency = 1
+
+[ssl]
+source = "archpkg"
+archpkg = "openssl"
+
+[zlib]
+source = "archpkg"
+archpkg = "zlib"
+
+[xz]
+source = "archpkg"
+archpkg = "xz"
+
+[bzip]
+source = "archpkg"
+archpkg = "bzip2"
+
+[zstd]
+source = "archpkg"
+archpkg = "zstd"
