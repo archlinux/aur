@@ -24,13 +24,11 @@ build() {
 
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Use `nucular_gio` for native Wayland support.
     go build \
         -buildmode=pie \
         -ldflags "-compressdwarf=false -linkmode external" \
         -mod=vendor \
         -modcacherw \
-        -tags nucular_gio \
         -trimpath \
         .
 }
