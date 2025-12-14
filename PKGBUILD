@@ -1,9 +1,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
 pkgver=r556.d06e79c
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc='A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and shape).'
+pkgdesc='A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and neatshape).'
 arch=('i686' 'x86_64')
 url='http://dev.rudi.ir/'
 license=('ISC' 'LPL-1.02')

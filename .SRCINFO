@@ -1,7 +1,7 @@
 pkgbase = neatroff-suite-git
-	pkgdesc = A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and shape).
+	pkgdesc = A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and neatshape).
 	pkgver = r556.d06e79c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dev.rudi.ir/
 	install = neatroff-suite.install
 	arch = i686
