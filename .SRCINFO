@@ -1,7 +1,7 @@
 pkgbase = python-dbapi-compliance
 	pkgdesc = Python DB API 2.0 driver compliance unit test suite
 	pkgver = 1.15.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/baztian/dbapi-compliance
 	arch = any
 	license = Public domain
