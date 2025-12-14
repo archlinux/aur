@@ -1,0 +1,14 @@
+pkgbase = linux-toolkit
+	pkgdesc = A lightweight, menu-driven TUI for Linux system administration.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/VISHALKANNAN070/linux-toolkit
+	arch = any
+	license = MIT
+	depends = bash
+	depends = dialog
+	depends = fastfetch
+	source = linux-toolkit-1.0.0.tar.gz::https://github.com/VISHALKANNAN070/linux-toolkit/archive/v1.0.0.tar.gz
+	sha256sums = bd09ac0613217068d0009dcf9f573eac228381a2f29bba4d0c80bd7574f57be3
+
+pkgname = linux-toolkit
