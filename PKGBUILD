@@ -1,10 +1,9 @@
-# Based on: xcompmgr (Official Arch Linux package maintainers and contributors.)
 # Maintainer: LinuxLover471
 
 pkgname=fastcompmgr
 pkgver=0.5
 pkgrel=1
-pkgdesc="A lightweight compositor for X11 with a focus on speed."
+pkgdesc="An early Compton-based compositor for X11 focused on performance."
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/fastcompmgr"
 license=('MIT')
