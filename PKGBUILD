@@ -7,8 +7,8 @@ pkgdesc="Dashlane CLI - Access your secrets in your terminal, servers and CI/CD"
 url="https://github.com/Dashlane/dashlane-cli"
 arch=("x86_64")
 license=('Apache-2.0')
-depends=()
-makedepends=('nodejs-lts-jod' 'yarn' 'git')
+depends=('glibc' 'gcc-libs')
+makedepends=('nodejs-lts-jod' 'yarn' 'git' 'python-setuptools')
 checkdepends=()
 optdepends=()
 provides=("${pkgname%-*}=$pkgver")
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-*}")
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=('!strip')
 install=
 changelog=
 source=("${pkgname%-*}::git+${url}.git")
@@ -31,11 +31,8 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname%-*}"
 
-    # it might be good to use the users cache
-    # yarn config set cache-folder "${srcdir}/.yarn-cache" 
-
     # contain global packages somewhere else
-    yarn config set prefix "${srcdir}/.yarn"
+    yarn config set globalFolder "${srcdir}/.yarn"
 }
 
 build() {
@@ -48,12 +45,23 @@ build() {
     export CI=true
     yarn install 
     YARN_ENABLE_INLINE_BUILDS=1 yarn run build
-    # yarn workspaces focus --all --production
-    yarn run pkg:linux
+    yarn workspaces focus --all --production
+    yarn dlx @yao-pkg/pkg@6.1.1 ./dist -t node22-linux-x64 -o bundle/dcli-linux-x64 -C Brotli "--public" "--public-packages" "tslib,thirty-two,node-hkdf-sync,vows" "--no-bytecode"
+    file bundle/dcli-linux-x64
+    ldd bundle/dcli-linux-x64
 }
+
+check() {
+    cd "$srcdir/${pkgname%-*}"
+    chmod +x bundle/dcli-linux-x64
+
+    # Basic smoke test
+    bundle/dcli-linux-x64 --help >/dev/null
+}
+
 
 package() {
     cd "${srcdir}/${pkgname%-*}"
-    install -Dm755 bundle/dcli-linux "${pkgdir}/usr/bin/${pkgname%-*}"
+    install -Dm755 bundle/dcli-linux-x64 "${pkgdir}/usr/bin/${pkgname%-*}"
 }
 
