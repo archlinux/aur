@@ -10,6 +10,7 @@ pkgbase = needle
 	depends = glibc
 	depends = gcc-libs
 	provides = needle
+	conflicts = needle-cli
 	source = needle-0.1.0.crate::https://crates.io/api/v1/crates/needle-cli/0.1.0/download
 	sha256sums = ce1eef115b86a1688a500cba82a208c6cbf042e3f93f2db9d4de4a72e0216505
 

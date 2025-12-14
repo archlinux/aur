@@ -3,6 +3,7 @@
 _pkgauthor=cesarferreira
 _pkgname=needle
 pkgname=${_pkgname}
+_cratename=${_pkgname}-cli
 pkgdesc="TUI that highlights the GitHub PRs that need you"
 
 pkgver=0.1.0
@@ -19,9 +20,9 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname%%-cli}")
+provides=("${_pkgname}")
+conflicts=("${_cratename}")
 
-_cratename=${_pkgname}-cli
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('ce1eef115b86a1688a500cba82a208c6cbf042e3f93f2db9d4de4a72e0216505')
 
