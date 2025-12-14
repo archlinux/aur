@@ -1,0 +1,19 @@
+pkgbase = dab
+	pkgdesc = Android package manager CLI tool
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/dab
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	depends = android-tools
+	provides = dab
+	conflicts = dab-cli
+	source = dab-0.3.0.crate::https://crates.io/api/v1/crates/dab-cli/0.3.0/download
+	sha256sums = 541e677fd9fb06e689fe1a051edba9662fb4b1a084732116e7e42e294668787f
+
+pkgname = dab
