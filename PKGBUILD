@@ -3,7 +3,7 @@
 pkgname=python-esphome-dashboard
 _name=${pkgname#python-esphome-}
 pkgver=20251013.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ESPHome dashboard and ESPHome Web'
 arch=(any)
 url="https://github.com/esphome/$_name"
