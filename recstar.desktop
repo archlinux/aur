@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=AudioVideo;Recorder;
+Comment[en_US]=Reclist recorder app
+Comment=Reclist recorder app
+Exec=recstar %U
+GenericName[en_US]=RecStar
+GenericName=RecStar
+Icon=recstar
+MimeType=
+Name[en_US]=RecStar
+Name=RecStar
+Path=/opt/recstar/
+StartupNotify=true
+StartupWMClass=MainKt
+Terminal=false
+Type=Application
