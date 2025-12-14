@@ -3,7 +3,7 @@
 pkgname=python-kconfiglib
 _name=Kconfiglib
 pkgver=14.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A flexible Python Kconfig implementation'
 arch=(any)
 url='https://github.com/ulfalizer/Kconfiglib'
