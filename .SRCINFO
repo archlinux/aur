@@ -1,7 +1,7 @@
 pkgbase = qlipper
-	pkgdesc = Lightweight & cross-platform clipboard history applet based on qt
+	pkgdesc = Lightweight & cross-platform clipboard history applet based on Qt
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pvanek/qlipper
 	arch = i686
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = qlipper
 	sha256sums = SKIP
 
 pkgname = qlipper
-
