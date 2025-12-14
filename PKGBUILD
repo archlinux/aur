@@ -7,7 +7,7 @@ pkgdesc="NuShell-inspired ls with colorful table output, human-readable sizes, a
 
 pkgver=0.2.0
 pkgrel=1
-_pkgvername=v${pkgver}
+_pkgvername=${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
@@ -21,23 +21,23 @@ depends=('glibc' 'gcc-libs')
 
 provides=("${_pkgname}")
 
-source=("${_pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_pkgname}/${pkgver}/download")
+_cratename=${_pkgname}
+source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('24fb69fbb3ca465f6e051d36c75867f9fbe3e358eedb931fcb65125e4946e08e')
 
 
 build() {
-	cd ${pkgname}-${pkgver} || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${_cratename}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
