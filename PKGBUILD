@@ -1,9 +1,9 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
-pkgver=2.31.0
+pkgver=v2.31.0.beta.7.r18.g11067b7f
 pkgname="millennium-git"
 _pkgdir="Millennium"
-pkgrel=4
+pkgrel=1
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -12,7 +12,7 @@ depends=('git' 'steam')
 makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
 depends_x86_64=('lib32-python311-bin')
 conflicts=('python-i686-bin')
-source=("git+$url.git#branch=next")
+source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
