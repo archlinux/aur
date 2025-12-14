@@ -1,0 +1,14 @@
+pkgbase = bleep-bin
+	pkgdesc = Interval timer with audio beep for productivity and Waybar integration
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/Gioni06/bleep
+	license = MIT
+	depends = alsa-lib
+	conflicts = bleep
+	provides = bleep
+	arch = x86_64
+	source_x86_64 = https://github.com/Gioni06/bleep/releases/download/v${pkgver}/bleep_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1d49e079547ef1481f450095c9cc079e98c8075a1cfb918b328ad69ff21af652
+	
+pkgname = bleep-bin
