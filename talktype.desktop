@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TalkType
+Comment=Voice dictation for Linux using Whisper AI
+Exec=talktype
+Icon=talktype
+Terminal=false
+Type=Application
+Categories=Utility;Accessibility;AudioVideo;
+Keywords=voice;dictation;speech;transcription;whisper;
+StartupNotify=true
