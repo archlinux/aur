@@ -1,12 +1,13 @@
 pkgbase = rustfs-bin
 	pkgdesc = 🚀 High-performance distributed object storage for MinIO alternative.
 	pkgver = 1.0.0_alpha.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustfs/rustfs
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	conflicts = rustfs
+	backup = etc/default/rustfs
 	source = rustfs.service
 	source = rustfs.env
 	sha256sums = 29aed584b39c63ca8054f9519848dcd47918e9c5272712745fef08b4058ad3d2
