@@ -2,7 +2,7 @@
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=1.2.3
+pkgver=1.3
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution (stable)"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/meowrch/mewline"
 license=('MIT')
 depends=(
   'python'
+  'power-profiles-daemon'
   'gnome-bluetooth-3.0'
   'dart-sass'
   'gobject-introspection'
@@ -27,7 +28,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92f868793f1d7c5df1aecee4599ba569c66c83d7cbc32610951733d7f5a220be')
+sha256sums=('6a015df0ceb02945f40a62fe6c32b769cdb9c59988336961bcad5e7f53559ee1')
 
 package() {
   cd "$srcdir/mewline-$pkgver"
