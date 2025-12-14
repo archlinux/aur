@@ -19,7 +19,7 @@ optdepends=(
   'flite: In-game narrator (Text-to-Speech) support'
   'gamemode: GameMode support for performance optimization'
   'libusb: Controller support (needed by mods like Controlify)'
-  'nvidia-prime: Hybrid graphics support (prime-run)'
+  'nvidia-prime: Hybrid graphics support'
 )
 makedepends=('curl' 'libarchive')
 options=('!strip' '!debug')
