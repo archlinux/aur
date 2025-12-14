@@ -1,8 +1,6 @@
-/.project
-helper.txt
-*.pkg.tar
-*.tar.gz
-*.deb
-pkg/
-src/
-clean.sh
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch
+!*.install

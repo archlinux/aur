@@ -3,21 +3,22 @@
 # Release notes: https://support.google.com/webdesigner/topic/6350071?hl=en&ref_topic=3249465
 
 pkgname=google-webdesigner
-pkgver=16.0.3.0320
-pkgrel=1
+pkgver=16.4.0.0711
+pkgrel=2
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
-url="https://www.google.com/webdesigner"
+url="https://webdesigner.withgoogle.com"
 license=('custom:webdesigner')
 depends=('gtk2' 'libudev0-shim' 'gcc-libs' 'gdk-pixbuf2' 'glibc' 'glib2' 'ca-certificates' 'ttf-liberation' 'libappindicator-gtk2' 'nss' 'libstdc++5' 'wget' 'xdg-utils')
 optdepends=()
 provides=("google-webdesigner=${pkgver}")
 options=('!emptydirs' '!strip')
 install=${pkgname}.install
-_source_arch="i386"
-[ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
-source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
-sha256sums=('c22385674a38b5693f8933fb09c61ae6d8f861cadad96d390d94549787d0ec97')
+source_x86_64=("google-webdesigner_current_amd64.deb::https://dl.google.com/linux/direct/google-webdesigner_current_amd64.deb")
+sha256sums_x86_64=('154816624589b6c7793a1850d0906cc877e2ad90862605049ec336feb1794807')
+
+# set to true if you dont want symlinks like /usr/bin/chrome
+NO_BROWSER_LINK=false
 
 package() {
   msg2 "Extracting the data.tar.xz"
@@ -38,8 +39,12 @@ package() {
   rm -r "${pkgdir}"/etc/cron.daily/ "${pkgdir}"/opt/google/webdesigner/cron/
   rm "${pkgdir}"/opt/google/webdesigner/resources/product_logo_*.png
 
+  $NO_BROWSER_LINK && return
+
   msg2 "Checking browsers"
-  # Google Chrome Dev
+  # Google Chrome
+  [ ! -f /usr/bin/chrome ] && [ -f /usr/bin/google-chrome-beta ] && ln -s /usr/bin/google-chrome-beta "${pkgdir}"/usr/bin/chrome || true
+  [ ! -f /usr/bin/chrome ] && [ -f /usr/bin/google-chrome-stable ] && ln -s /usr/bin/google-chrome-stable "${pkgdir}"/usr/bin/chrome || true
   [ ! -f /usr/bin/chrome ] && [ -f /usr/bin/google-chrome-unstable ] && ln -s /usr/bin/google-chrome-unstable "${pkgdir}"/usr/bin/chrome || true
 
   # Firefox Nightly
