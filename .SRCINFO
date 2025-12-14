@@ -1,0 +1,16 @@
+pkgbase = python-windborne
+	pkgdesc = Python library and CLI for interacting with the WindBorne Data & Forecasts API
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://pypi.org/project/windborne/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyjwt
+	source = https://files.pythonhosted.org/packages/source/w/windborne/windborne-1.3.2.tar.gz
+	sha256sums = 5980025e70165256f8df8438c4201bb8cc8c9f23d3d5582f6185ca7f2ff6d180
+
+pkgname = python-windborne
