@@ -7,17 +7,14 @@ url="https://aur.archlinux.org/packages/outertune"
 license=('MIT')
 
 depends=('webkit2gtk' 'libappindicator-gtk3' 'playerctl')
-makedepends=('nodejs' 'npm' 'rust' 'cargo')
 
-source=("outertune-${pkgver}.tar.gz")
-sha256sums=('SKIP')
-
-build() {
-  echo "Nothing to build yet"
-}
+source=()
+sha256sums=()
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  echo -e '#!/bin/bash\necho "OuterTune Desktop coming soon"' > "$pkgdir/usr/bin/outertune"
-  chmod +x "$pkgdir/usr/bin/outertune"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/outertune" <<'EOF'
+#!/bin/bash
+echo "OuterTune Desktop coming soon"
+EOF
 }
+
