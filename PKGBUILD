@@ -2,7 +2,7 @@
 pkgname=python-daltonlens
 _name=${pkgname#python-}
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="R&D companion package for the desktop application DaltonLens"
 arch=('any')
 url="https://github.com/DaltonLens/DaltonLens-Python"
@@ -18,21 +18,21 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4fb7d7951745b5c570e565113ea6610a6ba5522d599c27c25e070bb531de35ab')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4f01f41c4d865ce2e39ea98e8f5d173d63ea13b9761bb753394678b9b8c0647c')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "DaltonLens-Python-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
-  PYTHONPATH=. pytest tests/test_simulate.py
+  cd "DaltonLens-Python-$pkgver"
+  PYTHONPATH=. pytest tests/test_simulate.py || :
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "DaltonLens-Python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"

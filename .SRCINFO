@@ -1,7 +1,7 @@
 pkgbase = python-daltonlens
 	pkgdesc = R&D companion package for the desktop application DaltonLens
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DaltonLens/DaltonLens-Python
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-daltonlens
 	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/d/daltonlens/daltonlens-0.1.5.tar.gz
-	sha256sums = 4fb7d7951745b5c570e565113ea6610a6ba5522d599c27c25e070bb531de35ab
+	source = daltonlens-0.1.5.tar.gz::https://github.com/DaltonLens/DaltonLens-Python/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 4f01f41c4d865ce2e39ea98e8f5d173d63ea13b9761bb753394678b9b8c0647c
 
 pkgname = python-daltonlens
