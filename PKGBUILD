@@ -1,52 +1,55 @@
 # Maintainer:
 
+# prevent 406 error
+export DLAGENTS=("${DLAGENTS[@]/'/usr/bin/curl'/'/usr/bin/curl -A Mozilla'}")
+
 pkgbase="otf-typodermic-free"
 pkgname=(
   "otf-typodermic-free"
   "otf-typodermic-pd"
 )
-pkgver=2023.01
+pkgver=2024.12
 pkgrel=1
 pkgdesc="Free Fonts from Typodermic"
 url="https://typodermicfonts.com/downloads/"
-license=('custom')
 arch=('any')
 
-_file_free="typodermic-free-fonts-2023a.zip"
-_file_pd="typodermic-public-domain-2022-11.zip"
+_file_free="typodermic-free-fonts-${pkgver%.*}d.zip"
+_file_pd="typodermic-public-domain-${pkgver%.*}-${pkgver#*.}.zip"
 noextract=(
   "$_file_free"
   "$_file_pd"
 )
 source=(
-  "https://typodermicfonts.com/wp-content/uploads/2023/01/$_file_free"
-  "https://typodermicfonts.com/wp-content/uploads/2022/11/$_file_pd"
+  "https://typodermicfonts.com/wp-content/uploads/${pkgver%.*}/${pkgver#*.}/$_file_free"
+  "https://typodermicfonts.com/wp-content/uploads/${pkgver%.*}/${pkgver#*.}/$_file_pd"
 )
+
 sha256sums=(
-  'edf18de41bc601a276e65472804ee558536dc030056034a32f591de46569f278'
-  'a774627da6d95b4ad0fda103dad126099b2f3d910281f6b4155e5a712627c8ba'
+  '1663e5e486557458f54dc2e5242798b2ea1cdef1017200c5d000cd7a9c488c10'
+  '834518218043751906b9aba9d5fc30b952c8a3eaa18dca2c8fa07f7fafdf3b34'
 )
 
-_package() {
-  local _archive="${1:?}"
-
-  mkdir -p "${pkgname:?}"
-  bsdtar -x -C "${pkgname:?}" -f "$_archive"
-
-  install -Dm644 "${pkgname:?}"/*/*.otf -t "${pkgdir:?}/usr/share/fonts/${pkgname#*-}/"
+prepare() {
+  for i in "${noextract[@]}"; do
+    mkdir -p "${i%.zip}"
+    bsdtar -x -C "${i%.zip}" -f "$i"
+  done
 }
 
 package_otf-typodermic-free() {
-  _package "$_file_free"
+  license=('LicenseRef-Typodermic-EULA')
 
-  install -Dm644 "${pkgname:?}/Typodermic Desktop EULA 2023.pdf" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
+  cd "${_file_free%.zip}"
+  install -Dm644 *.otf -t "$pkgdir/usr/share/fonts/${pkgname#*-}/"
+  install -Dm644 "Typodermic Desktop EULA 2023.pdf" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_otf-typodermic-pd() {
   pkgdesc+=" - public domain"
+  license=('CC0-1.0')
 
-  _package "$_file_pd"
-
-  install -Dm644 "${pkgname:?}/License.txt" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_file_pd%.zip}"
+  install -Dm644 "OpenType Fonts"/*.otf -t "$pkgdir/usr/share/fonts/${pkgname#*-}/"
+  install -Dm644 "License.txt" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
 }
-

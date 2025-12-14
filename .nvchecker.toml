@@ -1,0 +1,6 @@
+[otf-typodermic-free]
+source = "regex"
+url = "https://typodermicfonts.com/downloads/"
+regex = "https://.*/typodermic-public-domain-([0-9]+-[0-9]+).zip"
+from_pattern = '-'
+to_pattern = '.'
