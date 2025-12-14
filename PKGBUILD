@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger
-pkgver=2.2.0
-pkgrel=1
+pkgver=2.2.1
+pkgrel=2
 pkgdesc="A Rust/Tauri GTK3 application for merging text files"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
@@ -23,7 +23,7 @@ depends=(
 makedepends=('cargo' 'nodejs' 'npm')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa450ab72d18b2920b5ba896cab77e897bf4df9a6470a8e0f8e750fc8d225ebb')
+sha256sums=('0100352064c75891e1b696741a45dc9a2e8fe7a10ad1e68050d4e556079526d9')
 
 prepare() {
   cd "$pkgname-$pkgver/textmerger"
