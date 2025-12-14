@@ -1,14 +1,19 @@
 pkgbase = vscoq-language-server-git
-	pkgdesc = VSCode coq language server.
-	pkgver = 1.0.1
+	pkgdesc = VSCode coq / rocq language server.
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/coq/vscoq
-	arch = i686
+	url = https://github.com/rocq-prover/vsrocq
 	arch = x86_64
 	license = MIT
 	makedepends = ocaml
 	makedepends = dune
-	source = git+https://github.com/coq/vscoq.git
+	makedepends = opam
+	makedepends = git
+	makedepends = rsync
+	depends = gmp
+	depends = zstd
+	depends = glibc
+	source = git+https://github.com/rocq-prover/vsrocq.git
 	sha256sums = SKIP
 
 pkgname = vscoq-language-server-git
