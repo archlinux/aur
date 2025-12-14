@@ -1,6 +1,6 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.66.g042e574
-pkgrel=3
+pkgver=0.2.100.gc568efa
+pkgrel=4
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
 url="https://github.com/rabfulton/ChatGTK"
@@ -66,6 +66,14 @@ package() {
   install -m644 src/"tools.py" "$appdir/tools.py"
   install -m644 src/"utils.py" "$appdir/utils.py"
   install -m644 src/"__init__.py" "$appdir/__init__.py"
+
+  # model_cards package
+  install -d "$appdir/model_cards"
+  install -m644 src/model_cards/"__init__.py" "$appdir/model_cards/__init__.py"
+  install -m644 src/model_cards/"schema.py" "$appdir/model_cards/schema.py"
+  install -m644 src/model_cards/"catalog.py" "$appdir/model_cards/catalog.py"
+  install -m644 src/model_cards/"loader.py" "$appdir/model_cards/loader.py"
+  install -m644 src/model_cards/"overrides.py" "$appdir/model_cards/overrides.py"
 
   # Icons and audio preview assets
   install -m644 src/"icon.png" "$appdir/icon.png"
