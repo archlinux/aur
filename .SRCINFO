@@ -1,0 +1,24 @@
+pkgbase = fastcompmgr-bin
+	pkgdesc = A lightweight compositor for X11 with a focus on speed.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/tycho-kirchner/fastcompmgr
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxrender
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	depends = glibc
+	provides = fastcompmgr
+	conflicts = fastcompmgr
+	source = https://github.com/tycho-kirchner/fastcompmgr/releases/download/v0.5/fastcompmgr
+	source = https://raw.githubusercontent.com/tycho-kirchner/fastcompmgr/v0.5/LICENSE
+	sha512sums = bcf0781fb49a221c4afa573942268ea5e2ef45b4a63d32f64a8a0b524b1b9ae45b0df1ddd542d5e1078bc9d75f911f8ee83a8c6b9f25e9c4e660b01e985cb8e0
+	sha512sums = SKIP
+
+pkgname = fastcompmgr-bin
