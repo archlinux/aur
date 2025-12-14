@@ -3,7 +3,7 @@
 _pkgauthor=cesarferreira
 _pkgname=nuls
 pkgname=${_pkgname}
-pkgdesc="A NuShell-inspired 'ls'"
+pkgdesc="NuShell-inspired ls with colorful table output, human-readable sizes, and recency-aware timestamps"
 
 pkgver=0.2.0
 pkgrel=1
