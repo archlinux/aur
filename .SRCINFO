@@ -1,7 +1,7 @@
 pkgbase = mysql-connector-c++
 	pkgdesc = A MySQL database connector for C++
 	pkgver = 1.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dev.mysql.com/doc/connector-cpp/en/
 	arch = i686
 	arch = x86_64

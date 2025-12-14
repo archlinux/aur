@@ -6,7 +6,7 @@
 
 pkgname=mysql-connector-c++
 pkgver=1.1.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A MySQL database connector for C++'
 arch=('i686' 'x86_64')
 url='http://dev.mysql.com/doc/connector-cpp/en/'
@@ -30,13 +30,23 @@ prepare() {
 
 	# MariaDB will add JSON support in 10.2... No JSON for now.
 	patch -Np1 < "${srcdir}/0002-mysql-connector-c++-no-JSON.patch"
+
+	if command -v cmake3 &>/dev/null; then
+    	_cmake=cmake3
+		echo "cmake3 found"
+  	elif command -v cmake &>/dev/null; then
+    	_cmake=cmake
+		echo "cmake found"
+  	else
+    	echo "CMake has not found"
+    	exit 1
+  	fi
 }
 
 build() {
-	mkdir build/
-	cd build/
+	cd $pkgname-$pkgver
 
-	cmake3 "../${pkgname}-${pkgver}/" \
+	$_cmake "../${pkgname}-${pkgver}/" \
 		-Wno-dev \
 		-DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_STANDARD_REQUIRED=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -48,7 +58,7 @@ build() {
 }
 
 package() {
-	cd build/
+	cd $pkgname-$pkgver
 
 	make DESTDIR="${pkgdir}" install
 
