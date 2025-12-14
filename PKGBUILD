@@ -2,7 +2,7 @@
 
 pkgname=elephant
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='general purpose datasource and executor'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
