@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-protonpass-bin
 	pkgdesc = Free and unlimited password manager to keep your login credentials safe and manage them directly in your browser. (binary release)
-	pkgver = 1.32.11
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/proton-pass
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = librewolf-extension-protonpass-bin
 	depends = librewolf
 	provides = librewolf-extension-protonpass
 	conflicts = librewolf-extension-protonpass
-	noextract = proton_pass-1.32.11.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4605215/proton_pass-1.32.11.xpi
-	sha256sums = c99a67060f80d2886432f76070923ba0d1f5b9fb0cefbe57983c55b678a106e3
+	noextract = proton_pass-1.33.0.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4625020/proton_pass-1.33.0.xpi
+	sha256sums = 56e4119c08bbe665fb371a71baf808c0eba78f9fc78a723540140277f8e662b7
 
 pkgname = librewolf-extension-protonpass-bin
