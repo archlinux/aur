@@ -1,2 +1,3 @@
 f /etc/pds-gatekeeper.env 0640 root pds-gatekeeper -
-Z /var/lib/pds 0770
+z /var/lib/pds 0770
+z /var/lib/pds/account.sqlite* 0664

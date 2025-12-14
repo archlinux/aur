@@ -2,7 +2,7 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r18.2e39f1e
-pkgrel=8
+pkgrel=9
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
 url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
@@ -21,7 +21,7 @@ source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
 b2sums=('SKIP'
         '92e665b58eb4f0382dca2020daaa783aa23e47b7dfabb13465294488c3453a2e519cc4353a8204be67a85b3bdf13f1f183873ee84c2f39d86f901d6c18c5fb0e'
         'ef81480e060073e44e633f23199108cf3a560d397619e1252f26354cb16d05d6978a25fbe323748ec4191f3d9140c6d02b606e82c6904272c39c6669aecb41c8'
-        '020162305da622e63e3a32c206907215bfd601f8afd37b789bec8cd37121d58a379b3453f6cd39621be2ca695fbc4eccd67a790be3d5f91d8e0b231c57362da4'
+        'f3e2f95a1657633561a1d077be93ab30f96a80ef1ec78609e1ced18282c271c17b7cfd588faa8358e121808d4a09767a2ff98d3c4e810567e5150d7f39499245'
         'cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17')
 
 pkgver() {
