@@ -1,0 +1,12 @@
+pkgbase = momlang
+	pkgdesc = Momlang programming language
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download-pi-ten.vercel.app
+	arch = x86_64
+	license = MIT
+	depends = curl
+	source = install.sh::https://download-pi-ten.vercel.app/files/install.sh
+	sha256sums = SKIP
+
+pkgname = momlang
