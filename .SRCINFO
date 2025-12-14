@@ -1,7 +1,7 @@
 pkgbase = konica-minolta-beu-driver
 	pkgdesc = KONICA MINOLTA BEU driver
 	pkgver = 1.27
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.konicaminolta.eu/eu-en/support/download-centre
 	install = konica-minolta-beu-driver.install
@@ -11,7 +11,7 @@ pkgbase = konica-minolta-beu-driver
 	depends = perl
 	conflicts = konica-minolta-bizhub-c554e-series
 	conflicts = konica-minolta-bizhub-c368-series
-	source = KMbeuUXv1_27_multi_language.tar.gz::https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=b3bacdb5247893337442504faeed7c49&tx_kmdownloadcentersite_downloadproxy[documentId]=142542&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685
+	source = KMbeuUXv1_27_multi_language.tar.gz::https://dl.konicaminolta.eu/en/?tx_kmdownloadproxy_downloadproxy[fileId]=b3bacdb5247893337442504faeed7c49&tx_kmdownloadproxy_downloadproxy[documentId]=142542&tx_kmdownloadproxy_downloadproxy[system]=KonicaMinolta&tx_kmdownloadproxy_downloadproxy[language]=EN&type=1558521685
 	source = LICENSE
 	sha512sums = 8032a66d2a212610d6ebfa9da51e4281e748643b1f284a55e1fed089b32e332b7864c5fdaed7cfc6dd437912b5e38bedc0cfa9e4e424d2ae0adba17bc56d4e00
 	sha512sums = 0a2af3c51430b64d69583518abe75ba5d420c556cdb172fe8ca3c9c9dfb8005d300c875f9c88bc2e94024f0b67a84b91e20625bee31c40ee866ce152618943d1
