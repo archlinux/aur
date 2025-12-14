@@ -2,7 +2,7 @@
 
 pkgname=baballonia
 pkgver=v1.1.0.9rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -23,13 +23,26 @@ depends=(
 )
 
 source=(
-        "${pkgname}::git+${url}.git#tag=${pkgver}"
-        "baballonia.sh"
-        "Baballonia.desktop"
-        "onnxruntime-rocm-to-migraphx.patch"
-        "LICENSE"
-       )
+    "${pkgname}::git+${url}.git#tag=${pkgver}"
+    # will potentially desync from the official github builds since we're
+    # targeting latest but it's probably fine to just cachebust with our
+    # own pkgver
+    "BabbleCalibration_${pkgver}.zip::https://github.com/Project-Babble/BabbleCalibration/releases/latest/download/Linux.zip"
+    "BabbleTrainer-x64_${pkgver}::https://github.com/Project-Babble/BabbleTrainer/releases/latest/download/BabbleTrainer-x64"
+    "espflash_${pkgver}.zip::https://github.com/esp-rs/espflash/releases/latest/download/espflash-x86_64-unknown-linux-gnu.zip"
+
+    "baballonia.sh"
+    "Baballonia.desktop"
+    "onnxruntime-rocm-to-migraphx.patch"
+    "LICENSE"
+   )
+noextract=(
+    "BabbleCalibration_${pkgver}.zip"
+)
 sha256sums=('56cac69541367cc68d6f5908ccdbbbe6a9c7da766e9f743c94629ff7ca77fd6b'
+            'e78593a5a9147fa948ee7703c95a424a0020ca668b157ce23fed65ab02693ee1'
+            '156c6e98da7617615f58bbaed02492b84f087856953b83f77092af3a9d8e0f1f'
+            '601572be5ae943f72631ce883af988c597d88b1bb3f0cfac70d2d40760158dbd'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
             'c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450'
             '542ad6a7b0f638afd3de649cdbc905e8fcaa45abd3fc91aa939e54259ec9ac1f'
@@ -49,16 +62,19 @@ package() {
     export _publishdir="src/Baballonia.Desktop/bin/Release/net8.0/linux-x64/publish"
 
     # force system onnxruntime since shipped library only includes cpu execution provider
-    rm ${_publishdir}/libonnxruntime*.so
+    rm "${_publishdir}/libonnxruntime"*
 
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "$_publishdir/"* "${pkgdir}/opt/${pkgname}/"
-    chmod 755 "${pkgdir}/opt/${pkgname}/Calibration/Linux/"*
+
+    install -Dm755 "${srcdir}/BabbleTrainer-x64_${pkgver}"        "${pkgdir}/opt/${pkgname}/Calibration/Linux/Trainer/BabbleTrainer"
+    unzip          "${srcdir}/BabbleCalibration_${pkgver}.zip" -d "${pkgdir}/opt/${pkgname}/Calibration/Linux/Overlay/"
+    install -Dm755 "${srcdir}/espflash"                           "${pkgdir}/opt/${pkgname}/Firmware/Linux/espflash"
 
     install -Dm644 "${_publishdir}/Assets/Icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/baballonia.png"
-    install -Dm644 "${_publishdir}/Assets/Icon_32x32.ico" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/baballonia.ico"
+    install -Dm644 "${_publishdir}/Assets/Icon_32x32.ico"   "${pkgdir}/usr/share/icons/hicolor/32x32/apps/baballonia.ico"
 
-    install -Dm755 "${srcdir}/baballonia.sh" "${pkgdir}/usr/bin/baballonia"
+    install -Dm755 "${srcdir}/baballonia.sh"      "${pkgdir}/usr/bin/baballonia"
     install -Dm644 "${srcdir}/Baballonia.desktop" "${pkgdir}/usr/share/applications/Baballonia.desktop"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

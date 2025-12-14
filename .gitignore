@@ -1,2 +1,5 @@
 *.pkg.tar*
 baballonia/
+BabbleCalibration_*.zip
+BabbleTrainer-x64_*
+espflash_*.zip
