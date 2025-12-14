@@ -2,7 +2,7 @@
 # Contributor: Kimiblock Zhou <pn3535 at icloud dot com>
 
 pkgname=qcm
-pkgver=v1.3.2
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 )
 optdepends=('qcm-ncm-plugin: Netease Cloud Music plugin')
 source=(
-	"git+${url}.git#tag=${pkgver}"
+	"git+${url}.git#tag=v${pkgver}"
 	"git+https://github.com/hypengw/rstd.git"
 	"git+https://github.com/hypengw/ncrequest.git"
 	"git+https://github.com/hypengw/kstore.git"
