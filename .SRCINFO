@@ -1,5 +1,5 @@
 pkgbase = idescriptor-appimage
-	pkgdesc = A tool to inspect Apple icons
+	pkgdesc = Cross-platform iDevice management tool (AppImage)
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/iDescriptor/iDescriptor

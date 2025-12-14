@@ -2,7 +2,7 @@
 pkgname=idescriptor-appimage
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="A tool to inspect Apple icons"
+pkgdesc="Cross-platform iDevice management tool (AppImage)"
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
 license=('GPL3')
