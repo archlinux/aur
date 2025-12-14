@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=qui
 pkgname="${_pkgname}-bin"
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A modern alternative webUI for qBittorrent (Pre-compiled binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "${_pkgname}.tmpfiles"
 )
 
-sha256sums=('817e5867ffd1c994b02675a65b3762ddca7ecd0617f608f3f115c645463aa844'
+sha256sums=('4e14aa6f1278bd44686ed59d7a9a63773e9111eb1c007927d3aa31a3eddc19c2'
             'd52299510cf4845f0514eefd492b01c33bc2cd2819c2be9dc157f50f67462bd2'
             'ac49b4d6ae748334f7fa360d8dd58c7cd09ba5e062249666ab380d451b7925dd'
             '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')
