@@ -23,7 +23,7 @@ depends=(
 makedepends=('cargo' 'nodejs' 'npm')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c069f078deb056f5c8035ff22c2ab91a898202107921da9d3f33681dc8824b86')
+sha256sums=('fa450ab72d18b2920b5ba896cab77e897bf4df9a6470a8e0f8e750fc8d225ebb')
 
 prepare() {
   cd "$pkgname-$pkgver/textmerger"
