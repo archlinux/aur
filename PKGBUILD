@@ -1,15 +1,15 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=ntfs-3g-system-compression
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="NTFS-3G plugin for reading \"system compressed\" files"
-arch=("i686" "x86_64")
+arch=("aarch64" "x86_64")
 url="https://github.com/ebiggers/ntfs-3g-system-compression"
 license=("GPL2")
 depends=("ntfs-3g")
 source=("https://github.com/ebiggers/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("c4a26f3a704f5503ec1b3af5e4bb569590c6752616e68a3227fc717417efaaae")
+sha256sums=('8e5cfd24981ade0e1c8e39bb90b7423a01c3c80368f0fc770fbfcb9745d5fe6d')
 
 build() {
 	cd "$pkgname-$pkgver"
