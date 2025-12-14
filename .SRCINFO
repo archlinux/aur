@@ -1,13 +1,13 @@
 pkgbase = clockify-cli
 	pkgdesc = A simple cli to manage your time entries on Clockify from terminal
-	pkgver = 0.57.0
+	pkgver = 0.58.0
 	pkgrel = 1
 	url = https://clockify-cli.netlify.app
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	source = clockify-cli-0.57.0::git+https://github.com/lucassabreu/clockify-cli#tag=v0.57.0
-	sha256sums = 063708a5cb4a7e1051caa510a1df1f32dfa4b33538084dec551c89f976293b79
+	source = clockify-cli-0.58.0::git+https://github.com/lucassabreu/clockify-cli#tag=v0.58.0
+	sha256sums = 03708332ae04a9d7bdd50675bc95ac6fc76a68d0c870956da383303c046cf1bc
 
 pkgname = clockify-cli
