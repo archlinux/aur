@@ -1,6 +1,6 @@
 pkgbase = tinct-plugin-random-bin
 	pkgdesc = Random color palette generator plugin for Tinct
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
@@ -9,12 +9,12 @@ pkgbase = tinct-plugin-random-bin
 	provides = tinct
 	arch = aarch64
 	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5f9a1abdd22167d4d6b683c0e584c997c7fa2b382bb87456cf170818653a050d
+	sha256sums_aarch64 = 07d500d4a8f51a5a1bc1b065272717ec664ed738c8eb24c1b3e3d4de191269d2
 	arch = armv7h
 	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_armv7.tar.gz
-	sha256sums_armv7h = ee118ca27185431c992e39cfc43374b57b4e297e79bd1abfb69002ed972ee344
+	sha256sums_armv7h = e5e60692f593eff3d8a5d3b8b15a1a556322571b5e34ea0d002570cfbad6869f
 	arch = x86_64
 	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 3786d44f5aa8b94574c761f7e2ed5063df4dd7844d747bcc3bb1cbd1e238f743
+	sha256sums_x86_64 = 323e2a111d1e13c9422c4cd23c844d5571a26bfc30e6be0ed81bbaa6a1eabf77
 	
 pkgname = tinct-plugin-random-bin
