@@ -1,0 +1,3 @@
+[needle]
+source = "cratesio"
+cratesio = "needle-cli"
