@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-calc
-pkgver=2.17.1
+pkgver=2.17.2
 pkgrel=1
 pkgdesc='calc provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-calc')
 provides=('elephant-calc')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aab6ee10f01c6c34d0f1b45cabcb722a56c15f169f9a85102a6dfe1e41e29e15')
+sha256sums=('b026d227eec81bd6d816684a41a894e65d5daded10aa20fb5e9e46c73f7f1206')
 
 build() {
     cd elephant-${pkgver}/internal/providers/calc
@@ -21,7 +21,7 @@ build() {
 
 package() {
     cd elephant-${pkgver}/internal/providers/calc
-    install -Dm 755 calc.so -t "${pkgdir}/etc/xdg/elephant/providers"
+    install -Dm 755 calc.so -t "${pkgdir}/lib/elephant"
 
     cd ../../../
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
