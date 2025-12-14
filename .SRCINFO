@@ -1,17 +1,19 @@
 pkgbase = snapborg
-	pkgdesc = Automated backups of snapper snapshots to borg repositories. Inspired by borgmatic
-	pkgver = 0.1.0
+	pkgdesc = Automated backups of snapper snapshots to borg repositories, inspired by borgmatic
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/enzingerm/snapborg.git
+	url = https://github.com/enzingerm/snapborg
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = borg
 	depends = snapper
 	depends = python
 	depends = python-yaml
+	provides = snapborg
 	backup = etc/snapborg.yaml
-	source = git+https://github.com/enzingerm/snapborg.git#branch=master
+	source = git+https://github.com/enzingerm/snapborg.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = snapborg
