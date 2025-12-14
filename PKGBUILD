@@ -26,11 +26,7 @@ pkgver() {
 
 package() {
 	install -d "$pkgdir/usr/share/$_pkgname/" "$pkgdir/usr/bin/" "$pkgdir/usr/share/doc/$_pkgname"
-	cp -r "$srcdir/$_pkgname/binaries" "$pkgdir/usr/share/$_pkgname"
-	cp -r "$srcdir/$_pkgname/cert" "$pkgdir/usr/share/$_pkgname"
-	cp -r "$srcdir/$_pkgname/config" "$pkgdir/usr/share/$_pkgname"
-	cp -r "$srcdir/$_pkgname/config_priv" "$pkgdir/usr/share/$_pkgname"
-	cp -r "$srcdir/$_pkgname/themes" "$pkgdir/usr/share/$_pkgname"
+	cp -r "$srcdir/$_pkgname/"{binaries,cert,config,config_priv,themes,LICENSE,README.md,MultiOS-USB.version} "$pkgdir/usr/share/$_pkgname"
 	cp -r "$srcdir/$_pkgname/docs"/* "$pkgdir/usr/share/doc/$_pkgname"
 	install -Dm 755 "$srcdir/$_pkgname/multios-usb.sh" "$pkgdir/usr/share/$_pkgname/multios-usb.sh"
 	install -Dm 755 "$srcdir/multios-usb-launcher.sh" "$pkgdir/usr/bin/multios-usb"
