@@ -3,7 +3,7 @@
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 pkgname=motioneye
 pkgver=0.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A web frontend for the motion daemon"
 arch=(any)
 url="https://github.com/motioneye-project/${pkgname}"

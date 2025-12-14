@@ -1,7 +1,7 @@
 pkgbase = motioneye
 	pkgdesc = A web frontend for the motion daemon
 	pkgver = 0.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motioneye-project/motioneye
 	install = motioneye.install
 	arch = any
