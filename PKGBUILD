@@ -8,7 +8,7 @@ url="https://github.com/Dashlane/dashlane-cli"
 arch=("x86_64")
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
-makedepends=('nodejs-lts-jod' 'yarn' 'git' 'python-setuptools')
+makedepends=('nodejs-lts-jod' 'yarn' 'git')
 checkdepends=()
 optdepends=()
 provides=("${pkgname%-*}=$pkgver")
@@ -47,8 +47,6 @@ build() {
     YARN_ENABLE_INLINE_BUILDS=1 yarn run build
     yarn workspaces focus --all --production
     yarn dlx @yao-pkg/pkg@6.1.1 ./dist -t node22-linux-x64 -o bundle/dcli-linux-x64 -C Brotli "--public" "--public-packages" "tslib,thirty-two,node-hkdf-sync,vows" "--no-bytecode"
-    file bundle/dcli-linux-x64
-    ldd bundle/dcli-linux-x64
 }
 
 check() {

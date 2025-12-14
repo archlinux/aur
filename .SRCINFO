@@ -8,7 +8,6 @@ pkgbase = dcli-git
 	makedepends = nodejs-lts-jod
 	makedepends = yarn
 	makedepends = git
-	makedepends = python-setuptools
 	depends = glibc
 	depends = gcc-libs
 	provides = dcli=6.2544.2.r3.8d37e32
