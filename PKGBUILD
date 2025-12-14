@@ -4,7 +4,7 @@
 pkgname=python-pyotherside
 _pyname=pyotherside
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Asynchronous Python 3 Bindings for Qt5'
 arch=('x86_64')
 url='https://thp.io/2011/pyotherside'
