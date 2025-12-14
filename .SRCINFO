@@ -1,0 +1,20 @@
+pkgbase = mpvwall-git
+	pkgdesc = Terminal UI manager for mpvpaper video wallpapers
+	pkgver = 0.1.2.r2.gb2c86f2
+	pkgrel = 1
+	url = https://github.com/methamphetaminelab/mpvwall
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = mpv
+	depends = mpvpaper
+	depends = hyprland
+	provides = mpvwall
+	conflicts = mpvwall
+	source = git+https://github.com/methamphetaminelab/mpvwall.git
+	sha256sums = SKIP
+
+pkgname = mpvwall-git
