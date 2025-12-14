@@ -27,4 +27,4 @@ path = [
     "glhack-printf.patch",
 ]
 SPDX-FileCopyrightText = "glhack contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "NGPL"
