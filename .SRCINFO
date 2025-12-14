@@ -1,6 +1,6 @@
 pkgbase = wayvibes-git
 	pkgdesc = Play mechanical keyboard sounds as you type - wayland alternative for mechvibes/rustyvibes
-	pkgver = r38.82ed31c
+	pkgver = r71.1e4e400
 	pkgrel = 1
 	url = https://github.com/sahaj-b/wayvibes
 	install = notes.install
