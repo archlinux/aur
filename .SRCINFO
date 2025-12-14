@@ -1,6 +1,6 @@
 pkgbase = libpamtpmpin
 	pkgdesc = PAM module for TPM2 PIN authentication
-	pkgver = 0.0.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/0xr0bert/libpamtpmpin
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libpamtpmpin
 	makedepends = meson
 	depends = pam
 	depends = tpm2-tss
-	source = libpamtpmpin-0.0.1.tar.gz::https://github.com/0xr0bert/libpamtpmpin/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 907504e4f357dc240e5baec8da6e03735d54a765b551453c0790eece4f131962
+	source = libpamtpmpin-0.0.3.tar.gz::https://github.com/0xr0bert/libpamtpmpin/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 99687d0cafe665ecad036218512c475df5d44d388d35be69c47be3e6947c2c5d
 
 pkgname = libpamtpmpin
