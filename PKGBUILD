@@ -37,6 +37,22 @@ package() {
     # This wrapper script preloads libfreetype.so to fix a font rendering issue on Linux
     install -Dm755 "$srcdir/recstar-wrapper.sh" "${pkgdir}/usr/bin/${pkgname}"
 
+    # Move icon over to proper location
+    local deb_icon_path="$pkgdir/opt/recstar/lib/RecStar.png"
+    local arch_icon_dir="$pkgdir/usr/share/icons/hicolor/512x512/apps"
+
+    mkdir -p "$arch_icon_dir"
+
+    if [ -f "$deb_icon_path" ]; then
+        echo "Copying icon from Debian path to Arch path..."
+        cp "$deb_icon_path" "$arch_icon_dir/recstar.png"
+
+        # c) OPTIONAL: Remove the (now empty) Debian directory structure
+        echo "Icon copied successfully."
+    else
+        echo "Warning: Icon file not found at $deb_icon_path. Skipping move."
+    fi
+
     # Install custom .desktop file (since the pre-built one isn't optimized for Arch Linux)
     install -Dm644 "$srcdir/recstar.desktop" "${pkgdir}/usr/share/applications/recstar.desktop"
 }
