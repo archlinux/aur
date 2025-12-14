@@ -1,19 +1,17 @@
-# Maintainer: Rooki <aur at rooki dot xyz>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Rooki <aur at rooki dot xyz>
 # Contributor: Kainoa Kanter <kainoa@t1c.dev>
-# Based on:
-# - https://aur.archlinux.org/packages/anytype-electron-bin
-# - https://aur.archlinux.org/packages/element-desktop-nightly-bin
 
 pkgname=anytype-alpha-bin
 _pkgname=anytype
-_truetag="-alpha" # Usually -alpha, but sometimes they do the next version as -beta which is weird ( blank is stable, this package only updates for alpha/beta versions )
-pkgver=0.51.42
+pkgver=0.52.4
 pkgrel=1
-pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
+pkgdesc="Operating environment for the new internet (Anytype)"
 arch=('x86_64')
-url="https://github.com/anyproto/anytype-ts"
+url="https://anytype.io"
 license=('custom')
-depends=(bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
+depends=('bash' 'glibc' 'gcc-libs' 'libsecret' 'glib2' 'hicolor-icon-theme')
+makedepends=('jq')
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
 conflicts=('anytype'
@@ -21,14 +19,21 @@ conflicts=('anytype'
            'anytype-electron-bin'
            'anytype-bin')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_truetag}/anytype_${pkgver}${_truetag}_amd64.deb"
-	"https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}${_truetag}/LICENSE.md"
+	"anytype-${pkgver}.deb::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
+	"LICENSE-${pkgver}.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}/LICENSE.md"
 )
-sha256sums=('2c7bc06b1cd4df2bac3b24caa9f83c553101149dec843e55e876e6009c3655b1'
+sha256sums=('c6fb8aafde67db244503ac33f8c83bd7f58377963a9d61e2c44890883910dd2c'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
+
+pkgver() {
+    curl -sI "https://github.com/anyproto/anytype-ts/releases/latest" | 
+    grep -i location | 
+    sed 's|.*/v||;s|\r||'
+}
 
 package() {
     cd "${pkgdir}"
     tar -xf "${srcdir}/data.tar.xz"
-    install -Dm644 "${srcdir}"/LICENSE.md -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
