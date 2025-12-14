@@ -6,7 +6,7 @@
 
 _pkgname="libggml"
 pkgname="$_pkgname-cuda-git"
-pkgver=r2404.7dee1d6
+pkgver=0.9.4.r387.g3e9f2ba
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 url="https://github.com/ggml-org/ggml"
@@ -42,7 +42,8 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
