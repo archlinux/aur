@@ -1,6 +1,6 @@
 # Maintainer: liv <aur@insects.institute>
 pkgname=gg-jujutsu-bin
-pkgver=0.35.2
+pkgver=0.36.2
 pkgrel=1
 
 pkgdesc='A GUI for the version control system Jujutsu. (binary version)'
@@ -28,7 +28,7 @@ source=(
 	"${pkgname}-${pkgver}.deb::https://github.com/gulbanana/gg/releases/download/v${pkgver}/gg_${pkgver}_amd64.deb"
 	"${pkgname}-${pkgver}.LICENSE::https://raw.githubusercontent.com/gulbanana/gg/refs/tags/v${pkgver}/LICENSE"
 )
-b2sums=('f73272993b141d4955ddd66d19f3a014980b677691452a1aa74c5f3fd10e07974e3617c629eac16c4fa72df18dee100c1c288f5c62071678c1c3ff575fce5a99'
+b2sums=('c2e25afb638cc5724c1afe2202caa5cac053eb86c4263f650aa3873eb29684ec6ff407e39a6ac47e72014d3c0227ed77c74bdfcefcf3d3761228c46e7c419237'
         '1bbdb8ea81b42a8ce554f92fd57009eef6b296472f910c5542d8a445e34bb0eee0e627a74462b9f453fe9d8853bde71fdb0eea11102bb604129753de6ecc6e06')
 
 prepare() {
