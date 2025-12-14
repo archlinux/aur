@@ -12,12 +12,22 @@
 
 script_name="$(basename "$0")"
 if [ ! -t 0 ]; then
-	printf '%s must be run interactively.\n' "$script_name"
+	printf '%s must be run interactively.\n' "$script_name" 1>&2
 	exit 1
 fi
 
 if [ ${#*} -lt 1 ]; then
-	printf 'usage: %s <version|package_name|foundryvtt:://package_name>\n' "$0"
+	printf 'usage: %s <version|package_name|foundryvtt:://package_name>\n' "$0" 1>&2
+	printf 'example: %s 13.351\n' "$0" 1>&2
+	exit 1
+fi
+
+if ! <<<"$1" grep \
+	--extended-regexp \
+	'(foundryvtt:://)?FoundryVTT-Linux-[0-9]+\.[0-9]+\.zip|[0-9]+\.[0-9]+' \
+	>/dev/null 2>&1
+then
+	printf "%s doesn't look like a FoundryVTT package name or version.\n" "$1" 1>&2
 	exit 1
 fi
 
@@ -64,9 +74,9 @@ version=$(<<<"$1" sed --regexp-extended \
 	--expression='s/FoundryVTT-Linux-([0-9]+\.[0-9]+)\.zip/\1/')
 build_nr=${version#*.}
 package_name="FoundryVTT-Linux-$version.zip"
-download_url="$(curl "https://foundryvtt.com/releases/download?build=$build_nr&platform=linux" \
+curl "https://foundryvtt.com/releases/download?build=$build_nr&platform=linux" \
 	--cookie "$cookie_jar" \
 	--location \
-	--output "$package_name")"
+	--output "$package_name"
 
 rm "$cookie_jar"
