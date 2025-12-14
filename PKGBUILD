@@ -21,7 +21,6 @@ makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_pkgname}/${pkgver}/download")
 sha256sums=('6dbe84ea71b6c82ad6ca9d21c775bd566a8fedcef545e6398130e59f637f4531')
