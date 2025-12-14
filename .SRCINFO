@@ -1,7 +1,7 @@
 pkgbase = waybar-temp-fan-power
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors (with temperature module fan and power support)
 	pkgver = 0.14.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/umtdg/Waybar
 	arch = x86_64
 	license = MIT
