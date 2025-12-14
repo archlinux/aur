@@ -2,17 +2,19 @@
 # Original Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck disable=2034,2154,2164
 pkgname=gibo
-pkgver=3.0.14
+pkgver=3.0.16
 pkgrel=1
 pkgdesc='Command-line tool to help you easily access .gitignore boilerplates'
 arch=('x86_64')
 url="https://github.com/simonwhitaker/gibo"
 license=('Unlicense')
 makedepends=('go')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin")
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     "$pkgname.install")
-b2sums=('38a21c06b47cbecadd2301f8fe78c79ef354308b83a1d46d2cb8d1d1ca3c5952afdbcfb747dba567ac2b01a81142bfa3a3da097dd8e680f05ccecc97c1163a2d'
+b2sums=('a48090a2371b0d4132e8e2edc1bd6bcadcdd35b90838c7258fa4f56a9c2c89be727de751122a218d701456106bc80f6841da20e3b4ad46528e22a44c7cfd3a12'
         'a8516b43198e9353eaf0fe49d50cb50ea2ac096b0366deabd33795b2c6d52ede6264d5615acdf78117550dbd2dc13999bca66fc9d1b10a090e7cee344c487f97')
 
 prepare() {
@@ -27,7 +29,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build ./...
+	go build -o build -ldflags "-s -w -X github.com/simonwhitaker/gibo/cmd.version=${pkgver}" ./...
 	"build/gibo" completion bash >build/gibo-completion.bash
 	"build/gibo" completion zsh >build/gibo-completion.zsh
 	"build/gibo" completion fish >build/gibo.fish
