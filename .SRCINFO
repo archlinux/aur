@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-vszip
 	pkgdesc = Plugin for VapourSynth: vszip
-	pkgver = r10
+	pkgver = r11
 	pkgrel = 1
 	url = https://github.com/dnjulek/vapoursynth-zip
 	arch = x86_64
 	license = MIT
 	makedepends = zig
 	depends = vapoursynth
-	source = https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/R10.tar.gz
-	sha256sums = c145cbe02382e7fd6c72cfabb5afa9add0eb3e687a895aeeed24acadfc98b14a
+	source = https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/R11.tar.gz
+	sha256sums = a390a964c92954486686b8d8f00971840692bc03d48f938dad74cdbeb89a52f7
 
 pkgname = vapoursynth-plugin-vszip
