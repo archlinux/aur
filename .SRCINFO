@@ -1,0 +1,21 @@
+pkgbase = legendary-rare
+	pkgdesc = A free and open-source replacement for the Epic Games Launcher (Rare fork)
+	pkgver = 1.12.0
+	pkgrel = 2
+	url = https://github.com/RareDevs/legendary/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-filelock
+	depends = python-requests
+	depends = python-requests-futures
+	optdepends = python-pywebview: Login support
+	provides = legendary
+	conflicts = legendary
+	source = legendary-rare-1.12.0.tar.gz::https://github.com/RareDevs/legendary//archive/rare-1.12.0.tar.gz
+	sha256sums = 6e10264134f0757c07270e5812655e39456b16405fa8e1be1ca9a5b6ed7fc3bb
+
+pkgname = legendary-rare

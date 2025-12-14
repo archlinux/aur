@@ -1,0 +1,5 @@
+[legendary-rare]
+source = "git"
+git = "https://github.com/RareDevs/legendary.git"
+prefix = "rare-"
+exclude_regex = "(0.20|0.0).*"
