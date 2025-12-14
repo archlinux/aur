@@ -1,6 +1,6 @@
 pkgbase = linvam-git
 	pkgdesc = Linux voice activated macros
-	pkgver = v0.8.2
+	pkgver = v0.8.3
 	pkgrel = 1
 	url = https://github.com/stele95/LinVAM
 	install = linvam.install
