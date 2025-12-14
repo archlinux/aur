@@ -3,6 +3,7 @@
 _pkgauthor=cesarferreira
 _pkgname=nuls
 pkgname=${_pkgname}
+_cratename=${_pkgname}
 pkgdesc="NuShell-inspired ls with colorful table output, human-readable sizes, and recency-aware timestamps"
 
 pkgver=0.2.0
@@ -20,8 +21,8 @@ makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
 provides=("${_pkgname}")
+conflicts=("${_cratename}")
 
-_cratename=${_pkgname}
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('24fb69fbb3ca465f6e051d36c75867f9fbe3e358eedb931fcb65125e4946e08e')
 
