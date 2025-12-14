@@ -1,7 +1,7 @@
 pkgbase = clusterssh
 	pkgdesc = Control multiple open terminal windows with connections to specified hosts and an administration console
 	pkgver = 4.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/clusterssh/
 	changelog = clusterssh.changelog
 	arch = any
