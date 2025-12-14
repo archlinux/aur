@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
-	pkgver = 32.0.2
-	pkgrel = 2
+	pkgver = 32.0.4
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -78,7 +78,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=32.0.2
+	provides = obs-studio=32.0.4
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -89,7 +89,7 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.0.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.0.4
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = bind_iface_eyeballed.patch
