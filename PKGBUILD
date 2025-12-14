@@ -2,7 +2,7 @@
 
 pkgname=jellyfin-desktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -10,7 +10,7 @@ url='https://github.com/jellyfin/jellyfin-desktop'
 depends=('mpv' 'mpvqt' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt6-webengine' 'qt6-declarative')
 makedepends=('cmake' 'git' 'ninja' 'python')
 source=("https://github.com/jellyfin/jellyfin-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d6f62f9129524726f07e426244576152be883ad0881234f0ff27f4e8bc71877e')
+sha256sums=('782e0e7f916efa04b8714ca895f60276320c9682f6c82aea6ff3b82bce466ee7')
 
 build() {
     cd "${srcdir}/jellyfin-desktop-${pkgver}"

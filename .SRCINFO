@@ -1,7 +1,7 @@
 pkgbase = jellyfin-desktop
 	pkgdesc = Jellyfin Desktop Client
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = jellyfin-desktop
 	depends = qt6-webengine
 	depends = qt6-declarative
 	source = https://github.com/jellyfin/jellyfin-desktop/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = d6f62f9129524726f07e426244576152be883ad0881234f0ff27f4e8bc71877e
+	sha256sums = 782e0e7f916efa04b8714ca895f60276320c9682f6c82aea6ff3b82bce466ee7
 
 pkgname = jellyfin-desktop
