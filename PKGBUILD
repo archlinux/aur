@@ -3,6 +3,7 @@
 _pkgauthor=cesarferreira
 _pkgname=maki
 pkgname=${_pkgname}
+_cratename=${_pkgname}-cli
 pkgdesc="A cross-platform fuzzy Makefile task finder"
 
 pkgver=0.1.0
@@ -19,9 +20,9 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname%%-cli}")
+provides=("${_pkgname}")
+conflicts=("${_cratename}")
 
-_cratename=${_pkgname}-cli
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('2fdcd16b69b2999379ca7b1c7337cec31adbbe8fd10deae8364c7fc91502c1d2')
 
