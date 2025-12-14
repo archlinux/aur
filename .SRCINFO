@@ -1,0 +1,20 @@
+pkgbase = microsoft-openjdk-25-bin
+	pkgdesc = Microsoft build of OpenJDK
+	pkgver = 25.0.1
+	pkgrel = 1
+	url = https://www.microsoft.com/openjdk
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime-headless=11
+	provides = java-runtime=11
+	provides = java-environment=11
+	options = !strip
+	source = https://aka.ms/download-jdk/microsoft-jdk-25.0.1-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-25.0.1-linux-x64.tar.gz.sig
+	validpgpkeys = B602433384B8991302924D8235531D315B21C189
+	sha256sums = 1186ada3f51f6517f46edfbca06ab21c692f3d95f7abe403691f85267eb0c3aa
+	sha256sums = SKIP
+
+pkgname = microsoft-openjdk-25-bin
