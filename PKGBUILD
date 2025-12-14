@@ -1,6 +1,6 @@
 # Maintainer: Zack <zack@internetuniverse.org>
 pkgname=nautilus-plus
-pkgver=50.13
+pkgver=50.14
 pkgrel=1
 pkgdesc="Enhanced GNOME file manager with fast search, animated thumbnails, and more"
 arch=('x86_64')
