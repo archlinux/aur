@@ -5,7 +5,7 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=230
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -158,7 +158,7 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=MounRiver Studio Ⅱ
-Exec=bash "/usr/share/MRS2/beforeinstall/load.sh" %F
+Exec=/usr/bin/${pkgname%-bin} %F
 Icon=MounRiverStudio2
 MimeType=application/x-mrs-project;
 Comment=MounRiver Stduio Ⅱ is a free integrated development environment for embedded MCU.
