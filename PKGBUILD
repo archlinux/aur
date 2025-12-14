@@ -1,25 +1,24 @@
-# Maintainer: redtide <redtid3@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: redtide <redtid3@gmail.com>
 
 _pkgname=sddm-conf
 pkgname=$_pkgname-git
-pkgver=0.2.0.r0.ge9d21d0
+pkgver=0.4.0.r0.g11d96aa
 pkgrel=1
 pkgdesc="SDDM Configuration Editor"
-arch=(
-  i686
-  x86_64
-)
+arch=('x86_64')
 url="https://github.com/qtilities/sddm-conf"
-license=(MIT)
+license=('MIT')
 depends=(
-  polkit
-  sddm
+  'polkit'
+  'sddm'
+  'qt6-base'
 )
 makedepends=(
-  cmake
-  git
-  qt5-tools
-  qtilitools
+  'cmake'
+  'git'
+  'qt6-tools'
+  'qtilitools'
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -39,7 +38,8 @@ build() {
   local cmake_options=(
     -B build
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_BUILD_TYPE=Release
+    -D PROJECT_QT_VERSION=6
     -S .
     -W no-dev
   )
