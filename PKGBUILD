@@ -13,7 +13,7 @@ arch=('x86_64')
 depends=(
   'libevdev'
   'gtk3'
-  'libappindicator-gtk3'
+  'libappindicator'
   'sdl3'
 )
 makedepends=(
