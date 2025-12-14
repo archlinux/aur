@@ -1,7 +1,7 @@
 pkgbase = yt-dlp-ejs
 	pkgdesc = External JavaScript for yt-dlp supporting many runtimes
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yt-dlp/ejs
 	arch = any
 	license = Unlicense
