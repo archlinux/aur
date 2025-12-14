@@ -1,12 +1,12 @@
 pkgbase = hotkeyhub-bin
 	pkgdesc = Cheat Sheet for keybindings in hyprland, bspwm, and other WMs
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/meowrch/HotkeyHub
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gtk4
-	source = https://github.com/meowrch/HotkeyHub/releases/download/v0.2.0/hotkeyhub-linux-x86_64
-	sha256sums = 73b84f7278823b537113621fc87cb30badb6dbc7b5a0be3a132c31c2f78d1a42
+	source = https://github.com/meowrch/HotkeyHub/releases/download/v0.2.1/hotkeyhub-linux-x86_64
+	sha256sums = 69523183535b7e12c973cb2a553d317308b28bfcda36a3506ab1483a5237873d
 
 pkgname = hotkeyhub-bin
