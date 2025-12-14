@@ -1,0 +1,17 @@
+pkgbase = v4l2-relayd
+	pkgdesc = Plays gstreamer sources into v4l2loopback devices.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/vicamo/v4l2-relayd
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = v4l2loopback-dkms
+	source = https://gitlab.com/vicamo/v4l2-relayd/-/archive/upstream/0.2.0/v4l2-relayd-upstream-0.2.0.tar.gz
+	sha256sums = 0c063edf18dcc6edcdef46e695128cfc2b2d60964ea8538c7e79a2454310c53d
+
+pkgname = v4l2-relayd
