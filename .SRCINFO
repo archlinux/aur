@@ -1,17 +1,17 @@
 pkgbase = discord-bot-client-appimage
 	pkgdesc = A patched version of discord, with bot login & Vencord support
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://github.com/aiko-chan-ai/DiscordBotClient/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = zlib
 	depends = fuse2
-	noextract = discord-bot-client-appimage-3.8.1.AppImage
+	noextract = discord-bot-client-appimage-3.8.2.AppImage
 	options = !strip
-	source_x86_64 = discord-bot-client-appimage-3.8.1.AppImage::https://github.com/aiko-chan-ai/DiscordBotClient/releases/download/v3.8.1/DiscordBotClient-linux-x86_64.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/aiko-chan-ai/DiscordBotClient/refs/tags/v3.8.1/LICENSE
-	sha256sums_x86_64 = 9f39827e468e83009669de92eb034e6937ffb1a174164a4be402836cf5217a4c
+	source_x86_64 = discord-bot-client-appimage-3.8.2.AppImage::https://github.com/aiko-chan-ai/DiscordBotClient/releases/download/v3.8.2/DiscordBotClient-linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/aiko-chan-ai/DiscordBotClient/refs/tags/v3.8.2/LICENSE
+	sha256sums_x86_64 = 55c98a63b5288ef37797768af1bda347bcbd8bb12734060ea104d61d7dad5d0c
 	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = discord-bot-client-appimage
