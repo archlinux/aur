@@ -4,12 +4,13 @@ pkgver=r541.ba0922e
 pkgrel=1
 pkgdesc='An implementation of troff typesetting system in C programming language.'
 arch=('i686' 'x86_64')
-url='http://litcave.rudi.ir/'
+url='http://dev.rudi.ir/'
 license=('ISC' 'LPL-1.0')
 depends=('neatmkfn-git')
 makedepends=('git')
-optdepends=('neateqn-git: An eqn preprocessor for neatroff.'
-            'neatpost-git: Postscript postprocessor for neatroff.'
+optdepends=('neatpost-git: Postscript postprocessor for neatroff.'
+            'neateqn-git: An eqn preprocessor for neatroff.'
+            'neatroff-hyph: Hyphenation files (patterns, exceptions and mappings).'
             'neatrefer-git: A small refer clone for managing bibliographic references.'
             'shape: A farsi/arabic shaping preprocessor for troff.')
 checkdepends=()
@@ -17,10 +18,10 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+https://github.com/aligrudi/neatroff"
         'git+https://github.com/aligrudi/neatroff_make'
-        'http://litcave.rudi.ir/neatroff.pdf')
+        'http://dev.rudi.ir/neatroff.pdf')
 md5sums=('SKIP'
          'SKIP'
-         '76d738fef367369279fa21343fe7a346')
+         'ada01d6183f58aeddd7c95a341f0de85')
 
 ## FONTS directory
 FDIR=/usr/share/neatroff/font
