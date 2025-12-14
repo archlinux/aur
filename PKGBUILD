@@ -1,3 +1,5 @@
+# Maintainer: Spoorloos <mick.negenman@icloud.com>
+
 pkgname="geteduroam-gui-bin"
 pkgver="0.12"
 pkgrel=1
