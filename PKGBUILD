@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=sc-controller
-pkgver=0.5.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ makedepends=(
 )
 conflicts=('scc')
 source=("${pkgname}-${pkgver}::git+https://github.com/C0rn3j/sc-controller.git#tag=v${pkgver}")
-sha256sums=('942a19da7fbbb6229f7050227a13a8f9dea933956b99fb83dad0c520e8adf05f')
+sha256sums=('3e1e47da34a60d488e8a228559a53aa16b19ca300d09621cf1a5d3ba646b6539')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
