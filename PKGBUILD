@@ -9,7 +9,7 @@
 
 _pkgname="siril"
 pkgname="$_pkgname-git"
-pkgver=1.2.5.r1586.g7c63e4d
+pkgver=1.4.0.r83.gf3f0431
 pkgrel=1
 pkgdesc="Astronomical image processing software for Linux (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
@@ -25,6 +25,7 @@ depends=(
   'gsl'
   'gtk3'
   'gtksourceview4'
+  'kplotting'
   'libgit2'
   'libheif'
   'libraw'
@@ -44,50 +45,24 @@ checkdepends=(
 
 options=('!lto')
 
-_source_main() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-}
-
-_source_siril() {
-  source+=(
-    'flathub.shared-modules'::'git+https://github.com/flathub/shared-modules.git'
-    'carvac.librtprocess'::'git+https://github.com/CarVac/librtprocess.git'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
-
-}
-
-_prepare_siril() (
-  cd "$_pkgsrc"
-  local _submodules=(
-    'flathub.shared-modules'::'build/flatpak/shared-modules'
-    'carvac.librtprocess'::'subprojects/librtprocess'
-  )
-  _submodule_update
-)
-
-_source_main
-_source_siril
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
+  cd "$_pkgsrc"
+  git submodule update --init --recursive --depth=1
 
-  _prepare_siril
+  # https://github.com/mesonbuild/meson/pull/15297
+  sed -e '/LIBRARY_VERSION/d' -i subprojects/librtprocess/CMakeLists.txt
+  sed -E -e '/set_target_properties\(htmesh/d' \
+    -e '/^ *VERSION [0-9\.]+/d' \
+    -e '/^ *SOVERSION [0-9]+/d' \
+    -i subprojects/htmesh/CMakeLists.txt
+  sed -e '/YYJSON_SOVERSION/d' -i subprojects/yyjson/CMakeLists.txt
 }
 
 pkgver() {
@@ -102,12 +77,8 @@ pkgver() {
 
 build() {
   local _meson_options=()
-
-  # criterion available and needed only for check
-  if pacman -Q criterion 2> /dev/null; then
-    _meson_options+=(
-      -Dcriterion=true
-    )
+  if ((CHECKFUNC)); then
+    _meson_options+=(-Dcriterion=true)
   fi
 
   arch-meson "${_meson_options[@]}" "$_pkgsrc" build
@@ -120,4 +91,5 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+  rm -rf "$pkgdir/usr/lib"
 }
