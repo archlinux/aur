@@ -1,0 +1,23 @@
+pkgbase = caddy-l4-bin
+	pkgdesc = Caddy web server with Layer4 module
+	pkgver = 2.10.2
+	pkgrel = 1
+	url = https://github.com/caddyserver/caddy
+	arch = x86_64
+	license = Apache-2.0
+	provides = caddy
+	conflicts = caddy
+	source = caddy::https://caddyserver.com/api/download?os=linux&arch=amd64&p=github.com/mholt/caddy-l4
+	source = Caddyfile
+	source = caddy.service
+	source = caddy.sysusers
+	source = caddy.tmpfiles
+	source = Caddyfile-example
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = caddy-l4-bin
