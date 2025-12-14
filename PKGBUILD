@@ -3,7 +3,7 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.1.r11.g4a81e7e
+pkgver=1.3.2.r2.g0773e9f
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
 	'git'
 	'git-lfs'
 	'clang'
+	'lld'
 	'cmake'
 	'ninja'
 	'asio'
