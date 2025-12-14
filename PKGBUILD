@@ -8,17 +8,17 @@ url="https://github.com/whelanh/scidCommunity"
 license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/6cb28bbcea677b219ab4fc03d71f7699705d8b26.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/c3e7351a3c08c06287de55b9622c850a0a66239e.tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
-  cd "${srcdir}/scidCommunity-6cb28bbcea677b219ab4fc03d71f7699705d8b26"
+  cd "${srcdir}/scidCommunity-c3e7351a3c08c06287de55b9622c850a0a66239e"
   ./configure --prefix=/usr/local
   make all
 }
 
 package() {
-  cd "${srcdir}/scidCommunity-6cb28bbcea677b219ab4fc03d71f7699705d8b26"
+  cd "${srcdir}/scidCommunity-c3e7351a3c08c06287de55b9622c850a0a66239e"
   # Override SHAREDIR and BINDIR to use DESTDIR
   make install DESTDIR="${pkgdir}" SHAREDIR="${pkgdir}/usr/local/share/scid" BINDIR="${pkgdir}/usr/local/bin"
 }
