@@ -1,14 +1,16 @@
 pkgbase = immich-machine-learning
 	pkgdesc = Machine learning server for the Immich photo management system
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/immich-app/immich/tree/main/machine-learning
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python>=3.11
-	depends = onnxruntime>=1.23.0
+	depends = python-onnxruntime>=1.23.0
 	depends = python-onnxruntime<2
 	depends = python-aiocache>=0.12.1
 	depends = python-aiocache<1.0
@@ -36,7 +38,6 @@ pkgbase = immich-machine-learning
 	depends = uvicorn>=0.22.0
 	depends = uvicorn<1.0
 	depends = python-rapidocr>=3.1.0
-	depends = python-ml-dtypes>=0.5.0
 	depends = python-albumentationsx
 	optdepends = libva-mesa-driver: GPU acceleration
 	optdepends = mesa-utils: GPU acceleration

@@ -2,12 +2,13 @@
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
 license=('AGPL-3.0-only')
+url='https://github.com/immich-app/immich/tree/main/machine-learning'
 depends=('python>=3.11'  # 'python<4' not recommended by python
-	'onnxruntime>=1.23.0' 'python-onnxruntime<2'
+	'python-onnxruntime>=1.23.0' 'python-onnxruntime<2'
 	'python-aiocache>=0.12.1' 'python-aiocache<1.0'
     'python-fastapi>=0.95.2' 'python-fastapi<1.0'
     'python-ftfy>=6.1.1'
@@ -26,11 +27,10 @@ depends=('python>=3.11'  # 'python<4' not recommended by python
     'uvicorn>=0.22.0' 'uvicorn<1.0'
     'python-rapidocr>=3.1.0'
 	# Transitive dependencies that repos haven't correctly indicated yet
-	'python-ml-dtypes>=0.5.0'  # for python-onnx>=1.19.0
 	'python-albumentationsx'  # for insightface when albucore>=0.0.29
 )
 # makedepends=('uv>=0.8.15')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 optdepends=(
     'libva-mesa-driver: GPU acceleration'
     'mesa-utils: GPU acceleration'
