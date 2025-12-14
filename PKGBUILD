@@ -3,7 +3,7 @@
 _pkgname=diyvpn
 pkgname=diyvpn-git
 pkgrel=1
-pkgver=r8.614f694
+pkgver=r12.6743714
 pkgdesc='Simple DIY VPN'
 arch=('any')
 license=('MPL-2.0')

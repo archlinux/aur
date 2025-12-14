@@ -1,6 +1,6 @@
 pkgbase = diyvpn-git
 	pkgdesc = Simple DIY VPN
-	pkgver = r8.614f694
+	pkgver = r12.6743714
 	pkgrel = 1
 	url = https://gitea.balki.me/balki/diyvpn
 	arch = any
