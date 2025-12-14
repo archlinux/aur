@@ -1,7 +1,7 @@
 pkgbase = sotw
 	pkgdesc = Shadow Of The Wyrm, a traditional roguelike by Julian Day.
 	pkgver = 1.8.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.shadowofthewyrm.org/
 	install = post.install
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = sotw
 	source = git+https://github.com/prolog/shadow-of-the-wyrm.git
 	source = https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip
 	md5sums = SKIP
-	md5sums = 06c5a2aa55ac864721cee9d178d48157
+	md5sums = 067c14911d4681b23ce3d3e658bf63c7
 
 pkgname = sotw

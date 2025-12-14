@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.8.4
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="Shadow Of The Wyrm, a traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=post.install
 changelog=
 source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip')
 noextract=()
-md5sums=('SKIP' '06c5a2aa55ac864721cee9d178d48157')
+md5sums=('SKIP' '067c14911d4681b23ce3d3e658bf63c7')
 validpgpkeys=()
 
 build() {
