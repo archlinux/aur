@@ -3,7 +3,7 @@
 
 pkgname=fastjet
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for jet finding in pp and e+e- collisions."
 arch=('x86_64')
 url="http://fastjet.fr"
