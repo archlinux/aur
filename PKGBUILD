@@ -1,7 +1,7 @@
 # Maintainer:  Ilya Chelyadin <ilya77105@gmail.com>
 
 pkgname=kokovp
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A modern mpv-based videoplayer'
 arch=('x86_64')
