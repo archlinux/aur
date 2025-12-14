@@ -4,6 +4,7 @@ pkgbase = deno-stable-bin
 	pkgrel = 1
 	url = https://deno.land
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = gcc-libs
 	provides = deno
