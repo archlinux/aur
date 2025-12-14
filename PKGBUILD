@@ -3,7 +3,7 @@
 pkgname=python-fudgeo
 pkgdesc='OGC GeoPackage support via Python and SQLite'
 url='https://github.com/realiii/fudgeo'
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -28,7 +28,7 @@ source=(
   "git+https://github.com/realiii/fudgeo.git#tag=v$pkgver"
 )
 sha256sums=(
-  '8dbd2bc38a7677a796b4077221b45ba1318d132277dbf5e8173c1571be192697'
+  'f13e10b6967436c672d58bd2c00bb8188ec88347d8b8072bc128ff030386a53d'
 )
 
 build() {
