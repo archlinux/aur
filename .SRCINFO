@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos-custom
 	pkgdesc = Proton CachyOS prebuilt
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Homisiak/proton-cachyos-bin
 	arch = x86_64
 	license = custom

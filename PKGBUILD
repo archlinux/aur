@@ -1,7 +1,7 @@
-# Maintainer: Your Name <youremail@example.com>
+# Maintainer: kpnicz@gmail.com
 pkgname=proton-cachyos-custom
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Proton CachyOS prebuilt"
 arch=('x86_64')
 url="https://github.com/Homisiak/proton-cachyos-bin"
