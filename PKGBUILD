@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-random-bin'
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='Random color palette generator plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -14,13 +14,13 @@ depends=('tinct')
 install=tinct-plugin-random.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b2506ef54f1e985f4baea2da9adb2dc33fbfbb05b8b44caf8181b6116cdb51dd')
+sha256sums_aarch64=('5f9a1abdd22167d4d6b683c0e584c997c7fa2b382bb87456cf170818653a050d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('4c6830b2253b6bc2fc14917c0aa8986be6c60d1d9e0eca79dd114aef5523503e')
+sha256sums_armv7h=('ee118ca27185431c992e39cfc43374b57b4e297e79bd1abfb69002ed972ee344')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-random_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('704bf6dbc304e4e70a9c8488b952769dd82e22584e69d9a1a91345c71151c8b5')
+sha256sums_x86_64=('3786d44f5aa8b94574c761f7e2ed5063df4dd7844d747bcc3bb1cbd1e238f743')
 
 package() {
   # bin
