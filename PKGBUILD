@@ -1,7 +1,7 @@
 # Maintainer: Maud Spierings <maud_spierings@hotmail.com>
 
 pkgname=python-libuuu
-pkgver=1.5.201
+pkgver=1.5.233
 pkgrel=1
 pkgdesc='A python wrapper for libuuu'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl' 'tinyxml2' 'python-setuptool
 makedepends=('meson' 'git' 'cmake' 'python-build' 'python-installer' 'python-wheel' 'zip' 'unzip')
 changelog=History.md
 source=(
-	"git+$url#commit=727fc2b782156419a167ebfc8d9a4204ad2eedbf" # 1.5.201
+	"git+$url#commit=79ce7d2b2e7459e7b7c94f902d172c30b08884ab" # 1.5.233
 	"git+https://github.com/microsoft/vcpkg.git"
 )
-sha256sums=('88ab7f5858a0fb84c6949f13062b4253f306e0788847b19be9483e52c059e9ee'
+sha256sums=('8902c79ea91e30a91bb28bda2b4b34cb19f3a7e90ff2183623ad1acec3e3310f'
             'SKIP')
 
 build() {
@@ -37,7 +37,7 @@ build() {
 
 package() {
 	cd "${srcdir}/mfgtools/wrapper"
-	python -m installer --destdir="${pkgdir}" dist/libuuu-${pkgver}-py3-none-any.whl
+	python -m installer --destdir="${pkgdir}" dist/libuuu-${pkgver}-py3-none-linux_${CARCH}.whl
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 

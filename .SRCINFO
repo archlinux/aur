@@ -1,6 +1,6 @@
 pkgbase = python-libuuu
 	pkgdesc = A python wrapper for libuuu
-	pkgver = 1.5.201
+	pkgver = 1.5.233
 	pkgrel = 1
 	url = https://github.com/nxp-imx/mfgtools
 	changelog = History.md
@@ -22,9 +22,9 @@ pkgbase = python-libuuu
 	depends = openssl
 	depends = tinyxml2
 	depends = python-setuptools-scm
-	source = git+https://github.com/nxp-imx/mfgtools#commit=727fc2b782156419a167ebfc8d9a4204ad2eedbf
+	source = git+https://github.com/nxp-imx/mfgtools#commit=79ce7d2b2e7459e7b7c94f902d172c30b08884ab
 	source = git+https://github.com/microsoft/vcpkg.git
-	sha256sums = 88ab7f5858a0fb84c6949f13062b4253f306e0788847b19be9483e52c059e9ee
+	sha256sums = 8902c79ea91e30a91bb28bda2b4b34cb19f3a7e90ff2183623ad1acec3e3310f
 	sha256sums = SKIP
 
 pkgname = python-libuuu

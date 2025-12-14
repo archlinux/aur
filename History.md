@@ -1,3 +1,17 @@
+uuu_1.5.233 / 2025-8-28
+=======================
+
+  * build-in script spi-nor support big files.
+  * update libusb to v1.0.29.
+  * libuuu: Fix typo & compilation warning in error message.
+  * fix: memory corruption in libuuu fastboot.
+  * fix: change the return type of `load_bmap` to an integer.
+  * fix: if-command comparison code by use uppercase.
+  * fix python wrapper work action issue
+  * script spi: check fastboot_bytes not fastboot_buffer to get the image size
+  * script spi: only run the fastboot loop when downloading the large image.
+  * Accessing freed memory in fastboot.c when use zip
+
 uuu_1.5.201 / 2025-1-10
 =======================
 
