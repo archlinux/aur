@@ -3,6 +3,7 @@
 _pkgauthor=cesarferreira
 _pkgname=axl
 pkgname=${_pkgname}
+_cratename=${_pkgname}
 pkgdesc="Stack-aware developer workflow CLI"
 
 pkgver=0.1.0
@@ -20,8 +21,8 @@ makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
 provides=("${_pkgname}")
+conflicts=("${_cratename}")
 
-_cratename=${_pkgname}
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('6dbe84ea71b6c82ad6ca9d21c775bd566a8fedcef545e6398130e59f637f4531')
 
