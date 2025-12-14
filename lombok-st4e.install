@@ -1,0 +1,31 @@
+# Colored makepkg-like functions by Det
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    # Temporary workaround for https://github.com/projectlombok/lombok/issues/3985
+    ln -sf /opt/st4e/SpringToolsForEclipse.ini /opt/st4e/SpringToolSuite4.ini
+    java -jar /usr/lib/lombok-common/lombok.jar install /opt/st4e/ && \
+        ln -sf /usr/lib/lombok-common/lombok.jar /opt/st4e/lombok.jar || exit 1
+    note "You must add lombok.jar or lombok-api.jar to the build path of each Lombok-dependent project."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    java -jar /usr/lib/lombok-common/lombok.jar uninstall /opt/st4e/ || exit 1
+    # Temporary workaround for https://github.com/projectlombok/lombok/issues/3985
+    if [ -L /opt/st4e/SpringToolSuite4.ini ]; then
+        rm -f /opt/st4e/SpringToolSuite4.ini
+    fi
+}
+
