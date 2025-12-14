@@ -13,7 +13,9 @@ provides=("vectorchord=$pkgver")
 source=("${url}/releases/download/${pkgver}/postgresql-18-vchord_${pkgver}_${arch}-linux-gnu.zip"
 	"${url}/raw/refs/tags/${pkgver}/LICENSE"
 	"${url}/raw/refs/tags/${pkgver}/licenses/LICENSE.ELv2")
-sha256sums=('73fb60bf8b0e2c1bb4df700fa5400d3f2819482e0b7dbdc7e2e88212efff1819')
+sha256sums=('73fb60bf8b0e2c1bb4df700fa5400d3f2819482e0b7dbdc7e2e88212efff1819'
+            '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3'
+            '65eefc127ee28db1cc1535df6369e8d751d7cacf1b1363be0e47ae9658c04ffc')
 
 package() {
   install -Dm 755 $srcdir/pkglibdir/vchord.so $pkgdir$(pg_config --pkglibdir)/vchord.so
@@ -21,5 +23,5 @@ package() {
   install -m 755 $srcdir/sharedir/extension/vchord--* $pkgdir$(pg_config --sharedir)/extension/
   install -Dm 755 $srcdir/sharedir/extension/vchord.control $pkgdir$(pg_config --sharedir)/extension/vchord.control
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/licenses/LICENSE.ELv2" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ELv2"
+  install -Dm644 "$srcdir/LICENSE.ELv2" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ELv2"
 }

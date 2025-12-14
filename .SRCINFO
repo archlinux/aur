@@ -12,5 +12,7 @@ pkgbase = vectorchord-immich-bin
 	source = https://github.com/tensorchord/VectorChord/raw/refs/tags/0.5.3/LICENSE
 	source = https://github.com/tensorchord/VectorChord/raw/refs/tags/0.5.3/licenses/LICENSE.ELv2
 	sha256sums = 73fb60bf8b0e2c1bb4df700fa5400d3f2819482e0b7dbdc7e2e88212efff1819
+	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
+	sha256sums = 65eefc127ee28db1cc1535df6369e8d751d7cacf1b1363be0e47ae9658c04ffc
 
 pkgname = vectorchord-immich-bin
