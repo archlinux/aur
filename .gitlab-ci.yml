@@ -19,22 +19,14 @@ container-build-and-test:
   extends: .arch-containerize
   needs: []
 
-extract-gnudatalanguage:
-  extends: .arch-extract-only
-  needs:
-    - job: "container-build-and-test"
-      artifacts: no
-    
 build-gnudatalanguage:
   artifacts:
     paths:
       - $PKG_NAME*.pkg.tar.zst
-      - src/gdl-v1.1.1/build/Testing/Temporary/LastTest.log
+      - src/build/Testing/Temporary/LastTest.log
     when: always
-  before_script:
-    - sed -i "s/^tolerance=0.001/tolerance=${TOLERANCE:-0.001}/" src/gdl-v1.1.1/testsuite/test_tic_toc.pro
-  extends: .arch-buildx-only
-  needs: ["extract-gnudatalanguage"]
+  extends: .arch-buildx
+  needs: ["container-build-and-test"]
   
 test-gnudatalanguage:
   extends: .arch-test

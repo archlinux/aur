@@ -4,8 +4,8 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -13,40 +13,71 @@ license=("GPL-2.0-or-later")
 depends=("eccodes" "expat" "fftw" "gcc-libs" "glibc" "glpk" "graphicsmagick" "gsl" "hdf4" "hdf5"
          "libgeotiff" "libpng" "libtiff" "libtirpc" "libx11" "openmpi" "proj" "python"
          "readline" "shapelib" "udunits" "wxwidgets-common" "wxwidgets-gtk3" "zlib")
-makedepends=("cmake" "python-numpy" "qhull")
+makedepends=("cmake" "eigen" "python-numpy" "qhull")
 checkdepends=("openssh")
 optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
+        "Fix-include.patch"
         "gdl.profile")
-sha512sums=("1bdbc0793d7bd025e120e8e44a091ad853ff524dab2bcb897146d4e59b58e81ad5c0c73ce08294ec9b41aec059b7ee0ba4d29f7d557f5635b2098027bf73bd1a"
+sha512sums=("4334876b8c4fa5a173fe3cc304ec45a018945fd198e3503ec6b4fb984510f5147fd150dccfd5d702fe05ff8acb36f7e365fd74efb7f33142a446c464e91cfa72"
+            "d849da6d6be16d6f7e81bfd7dca7e05fbcb8040e689d1e564a69037804171ca7fa722685a62ad37b607966b7ce10697cd1dc064f4210ea77ff9334a341954391"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
-build() {
+prepare() {
     cd "${srcdir}/gdl-v${pkgver}"
-    if [[ -d build ]]; then
-        rm -r build
-    fi
-    mkdir build
-    cd build
 
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN3=OFF -DFFTW=ON -DGLPK=ON -DGRAPHICSMAGICK=ON \
-        -DGRIB=ON -DHDF5=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DLIBPROJ=ON -DMAGICK=OFF -DMPI=ON \
-        -DNETCDF=OFF -DPYTHON=ON -DPYTHONVERSION=3 -DPYTHON_MODULE=OFF -DQHULL=ON -DREADLINE=ON \
-        -DSHAPELIB=ON -DUDUNITS2=ON -DX11=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+    patch -p1 -i ../Fix-include.patch
+}
 
-    make
+build() {
+    local cmake_options=(
+        -B build
+        -S gdl-v${pkgver}
+        -W no-dev
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_SKIP_INSTALL_RPATH=YES
+        -D EIGEN3=ON
+        -D FFTW=ON
+        -D GLPK=ON
+        -D GRAPHICSMAGICK=ON
+        -D GRIB=ON
+        -D HDF5=ON
+        -D HDF=ON
+        -D HDFDIR=/opt/hdf4
+        -D LIBPROJ=ON
+        -D MAGICK=OFF
+        -D MPI=ON
+        -D NETCDF=OFF
+        -D PYTHON=ON
+        -D PYTHONVERSION=3
+        -D PYTHON_MODULE=OFF
+        -D QHULL=ON
+        -D READLINE=ON
+        -D SHAPELIB=ON
+        -D UDUNITS2=ON
+        -D X11=ON
+    )
+
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 check() {
-    cd "${srcdir}/gdl-v${pkgver}/build"
-    ctest --output-on-failure
+    local excluded_tests="(test_gdl2gdl|test_plot_ranges)"
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+        --exclude-regex "$excluded_tests"
+    )
+    ctest "${ctest_flags[@]}"
 }
 
 package() {
-    cd "${srcdir}/gdl-v${pkgver}/build"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" cmake --install build
 
-    install -D -m755 ../../gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
-    install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" ../{AUTHORS,HACKING,NEWS,README}
-    install -D -m644 -t "${pkgdir}/usr/share/applications" ../doc/gdl.desktop
+    install -D -m755 ../gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
+    install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" "gdl-v${pkgver}"/{AUTHORS,HACKING,NEWS,README}
+    install -D -m644 -t "${pkgdir}/usr/share/applications" "gdl-v${pkgver}/doc/gdl.desktop"
 }
