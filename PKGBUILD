@@ -32,6 +32,4 @@ package() {
 
   make install DESTDIR="${pkgdir}"
 
-  find "${pkgdir}" -name '.packlist' -delete
-  find "${pkgdir}" -name '*.pod' -delete
 }
