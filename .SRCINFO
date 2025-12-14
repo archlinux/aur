@@ -1,0 +1,18 @@
+pkgbase = geteduroam-gui-bin
+	pkgdesc = geteduroam Linux client
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/geteduroam/linux-app
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gtk4
+	depends = libadwaita
+	depends = libnotify
+	depends = networkmanager
+	depends = hicolor-icon-theme
+	source = geteduroam-gui_linux_amd64.deb::https://github.com/geteduroam/linux-app/releases/download/0.12/geteduroam-gui_linux_amd64.deb
+	source = LICENSE::https://github.com/geteduroam/linux-app/raw/refs/tags/0.12/LICENSE
+	sha256sums = 307e01f277ce241ca928b9549efe47dc050598ecc28d6cd0ab315f9c10cfce9c
+	sha256sums = 8d714baa7c1260c1eb4ad9c332feb3e27aade76faff0d4f672d4cbf4ffb95c45
+
+pkgname = geteduroam-gui-bin
