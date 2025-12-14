@@ -1,4 +1,4 @@
-# Maintainer: Ron B <ronb1964@github.com>
+# Maintainer: Ron B <ronb1964@gmail.com>
 pkgname=talktype-appimage
 pkgver=0.3.9
 pkgrel=1
