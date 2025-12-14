@@ -4,17 +4,22 @@
 
 pkgname=xmcl-launcher
 pkgver=0.53.1
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.app/"
 license=('MIT')
 provides=('xmcl')
 conflicts=('xmcl-launcher-bin')
+depends=('gtk3' 'nss' 'alsa-lib' 'mesa-utils')
 optdepends=(
   'jre8-openjdk: Minimum requirement for launching older game versions'
   'jre17-openjdk: Recommended Java version for launching version 1.17 and above'
   'jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above'
+  'flite: In-game narrator (Text-to-Speech) support'
+  'gamemode: GameMode support for performance optimization'
+  'libusb: Controller support (needed by mods like Controlify)'
+  'nvidia-prime: Hybrid graphics support (prime-run)'
 )
 makedepends=('curl' 'libarchive')
 options=('!strip' '!debug')
@@ -23,7 +28,7 @@ source=("xmcl.desktop" "xmcl.png")
 source_x86_64=("xmcl-${pkgver}-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-x64.tar.xz")
 source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-arm64.tar.xz")
 
-sha256sums=('4375d3753d3035aa868a04810d96d896045078f364f0d096986ab66d4b68f0b4'
+sha256sums=('01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
 sha256sums_x86_64=('429c006d7a067000188c84e741bd6fb0bc62ef22829e519fa160b67b3e8cc827')
 sha256sums_aarch64=('b40a2a013325117982aaa3c4211935103b8d9a038dfebb0bf6fdf34c407e1200')
@@ -44,34 +49,62 @@ package() {
   elif [[ "$CARCH" == "aarch64" ]]; then
     _extracted_dir="xmcl-${pkgver}-arm64"
   fi
-  
+
   cd "${_extracted_dir}"
-  
+
   # Install application files
   install -dm755 "${pkgdir}/opt/xmcl"
-  
+
   # Check different possible layouts and copy all files
   if [[ -d "opt/xmcl" ]]; then
-    # opt/xmcl structure exists
     cp -r opt/xmcl/* "${pkgdir}/opt/xmcl/"
   elif [[ -f "xmcl" ]]; then
-    # Direct executable at root
     cp -r ./* "${pkgdir}/opt/xmcl/"
   else
     error "Cannot determine archive layout"
     return 1
   fi
 
+  # Install Desktop file and Icon
   install -Dm644 "${srcdir}/xmcl.desktop" "${pkgdir}/usr/share/applications/xmcl.desktop"
-  
-  install -Dm644 "${srcdir}/xmcl.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png"
-  
-  # Create executable symlink
+  install -Dm644 "${srcdir}/xmcl.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png"
+
+  sed -i 's|^Exec=.*|Exec=/usr/bin/xmcl %U|' "${pkgdir}/usr/share/applications/xmcl.desktop"
+
+  # Create wrapper script with Flatpak-like optimizations
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf /opt/xmcl/xmcl "${pkgdir}/usr/bin/xmcl"
-  
+
+  cat > "${pkgdir}/usr/bin/xmcl" <<EOF
+#!/usr/bin/env bash
+
+# Fix audio spatial positioning and latency
+export PULSE_PROP='media.role=game'
+export PULSE_LATENCY_MSEC=60
+
+# AppImage compatibility mode for Electron logic
+export APPIMAGE=1
+
+# Default flags for better hardware support
+OPTS=(
+  "--enable-webrtc-pipewire-capturer"
+  "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder"
+  "--disable-gpu-driver-bug-workarounds"
+  "--disable-dev-shm-usage"
+  "--no-sandbox"
+)
+
+# Auto-detect Wayland: enable ozone hint and IME support
+if [[ "\$XDG_SESSION_TYPE" == "wayland" ]]; then
+    OPTS+=("--ozone-platform-hint=auto")
+    OPTS+=("--enable-wayland-ime")
+fi
+
+# Pass specific flags first, then arguments (like URLs)
+exec /opt/xmcl/xmcl "\${OPTS[@]}" "\$@"
+EOF
+
   # Set proper permissions
+  chmod 755 "${pkgdir}/usr/bin/xmcl"
   chmod 755 "${pkgdir}/opt/xmcl/xmcl"
   [[ -f "${pkgdir}/opt/xmcl/chrome-sandbox" ]] && chmod 4755 "${pkgdir}/opt/xmcl/chrome-sandbox"
 }
