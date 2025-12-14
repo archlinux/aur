@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=grantlee
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A string template engine based on the Django template system and written in Qt'
 arch=(x86_64)
 url='https://github.com/steveire/grantlee'
