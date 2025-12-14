@@ -1,6 +1,6 @@
 pkgbase = microsoft-openjdk-21-bin
 	pkgdesc = Microsoft build of OpenJDK
-	pkgver = 21.0.8
+	pkgver = 21.0.9
 	pkgrel = 1
 	url = https://www.microsoft.com/openjdk
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = microsoft-openjdk-21-bin
 	provides = java-runtime-headless=21
 	provides = java-runtime=21
 	provides = java-environment=21
-	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.8-linux-x64.tar.gz
-	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.8-linux-x64.tar.gz.sig
+	options = !strip
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.9-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.9-linux-x64.tar.gz.sig
 	validpgpkeys = B602433384B8991302924D8235531D315B21C189
-	sha256sums = da1cae7d08d41f32e87712bd3feac73faf7646a30476164c9e62a598dbd30aac
+	sha256sums = 753711b08bc9f404021f292c76d16ffdace1958878b4b911e4fc7c02a537a94f
 	sha256sums = SKIP
 
 pkgname = microsoft-openjdk-21-bin

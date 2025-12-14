@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@greener.sh>
 pkgname=microsoft-openjdk-21-bin
-pkgver=21.0.8
+pkgver=21.0.9
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -14,13 +14,12 @@ provides=(
 )
 source=("https://aka.ms/download-jdk/microsoft-jdk-$pkgver-linux-x64.tar.gz"{,.sig})
 validpgpkeys=('B602433384B8991302924D8235531D315B21C189')
+options=('!strip')
 
 package() {
     mkdir -p "$pkgdir/usr/lib/jvm"
     cp -a "jdk-$pkgver"* "$pkgdir/usr/lib/jvm/java-21-microsoft-openjdk"
 }
 
-sha256sums=(
-    'da1cae7d08d41f32e87712bd3feac73faf7646a30476164c9e62a598dbd30aac'
-    'SKIP'
-)
+sha256sums=('753711b08bc9f404021f292c76d16ffdace1958878b4b911e4fc7c02a537a94f'
+            'SKIP')
