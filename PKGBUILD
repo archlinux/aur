@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=r541.ba0922e
+pkgver=r556.d06e79c
 pkgrel=1
 pkgdesc='An implementation of troff typesetting system in C programming language.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('neatpost-git: Postscript postprocessor for neatroff.'
             'neateqn-git: An eqn preprocessor for neatroff.'
             'neatroff-hyph: Hyphenation files (patterns, exceptions and mappings).'
             'neatrefer-git: A small refer clone for managing bibliographic references.'
-            'shape: A farsi/arabic shaping preprocessor for troff.')
+            'neatshape: A farsi/arabic shaping preprocessor for troff.')
 checkdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")

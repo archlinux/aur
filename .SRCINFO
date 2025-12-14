@@ -1,6 +1,6 @@
 pkgbase = neatroff-git
 	pkgdesc = An implementation of troff typesetting system in C programming language.
-	pkgver = r541.ba0922e
+	pkgver = r556.d06e79c
 	pkgrel = 1
 	url = http://dev.rudi.ir/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = neatroff-git
 	optdepends = neateqn-git: An eqn preprocessor for neatroff.
 	optdepends = neatroff-hyph: Hyphenation files (patterns, exceptions and mappings).
 	optdepends = neatrefer-git: A small refer clone for managing bibliographic references.
-	optdepends = shape: A farsi/arabic shaping preprocessor for troff.
+	optdepends = neatshape: A farsi/arabic shaping preprocessor for troff.
 	provides = neatroff
 	conflicts = neatroff
 	source = neatroff-git::git+https://github.com/aligrudi/neatroff
