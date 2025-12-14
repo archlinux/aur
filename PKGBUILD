@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r526.d88bd13
+pkgver=r570.249b430
 pkgrel=1
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
@@ -31,7 +31,6 @@ pkgver() {
 
 package(){
 	install -Dm644 $_pkgname/LICENSE -t $pkgdir/usr/share/licenses/$pkgname
-	install -Dm755 $_pkgname/src-tauri/target/release/resources/mangohud_default.conf -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/7zr -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/reaper -t $pkgdir/usr/lib/twintaillauncher/resources/
