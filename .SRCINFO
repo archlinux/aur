@@ -1,0 +1,14 @@
+pkgbase = geteduroam-cli-bin
+	pkgdesc = geteduroam Linux client
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/geteduroam/linux-app
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = networkmanager
+	source = geteduroam-cli_linux_amd64.deb::https://github.com/geteduroam/linux-app/releases/download/0.12/geteduroam-cli_linux_amd64.deb
+	source = LICENSE::https://github.com/geteduroam/linux-app/raw/refs/tags/0.12/LICENSE
+	sha256sums = a24f17ac6fb05327e5fcbbc201bc667cd2289f1cf1a8865a64fa59fdccd2c4af
+	sha256sums = 8d714baa7c1260c1eb4ad9c332feb3e27aade76faff0d4f672d4cbf4ffb95c45
+
+pkgname = geteduroam-cli-bin
