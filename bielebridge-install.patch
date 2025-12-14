@@ -1,0 +1,8 @@
+--- bielebridge/CMakeLists.txt	2025-12-14 15:18:27.628190040 +0100
++++ CMakeLists.txt	2025-12-14 15:17:54.321910934 +0100
+@@ -49,3 +49,5 @@
+ target_link_libraries(bielebridge ${LUA_LIBRARY} ${OPENGL_LIBRARIES} ${SDL2_LIBRARIES} )
+ target_compile_options(bielebridge PRIVATE -O2 -g -Wall -Wextra)
+ 
++install(TARGETS bielebridge RUNTIME DESTINATION bin)
++install(DIRECTORY data/ DESTINATION share/bielebridge/resources)

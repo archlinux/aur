@@ -1,17 +1,20 @@
 pkgbase = bielebridge
 	pkgdesc = Challenging 2D bridge construction game
-	pkgver = 0.0.6
+	pkgver = v0.0.7+20250305
 	pkgrel = 1
 	url = https://bielebridge.net
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = cmake
 	depends = glu
 	depends = lua
 	depends = sdl2_gfx
 	depends = sdl2_image
 	depends = sdl2_ttf
-	source = git+https://gitlab.digitalcourage.de/georg/bielebridge.git
-	sha256sums = SKIP
+	source = git+https://gitlab.digitalcourage.de/georg/bielebridge.git#tag=v0.0.7+20250305
+	source = bielebridge-install.patch
+	sha256sums = 944816485e93afdb4cceb8446bfe82ed59748f06184141d26b421bdb587c8903
+	sha256sums = 004977840d2074ab0d32d58807afcedf9fefbc526aba76fa923773b3f12d0b40
 
 pkgname = bielebridge
