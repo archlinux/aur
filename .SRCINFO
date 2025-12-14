@@ -1,7 +1,7 @@
 pkgbase = swig
 	pkgdesc = Generate scripting interfaces to C/C++ code
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.swig.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
