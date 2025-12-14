@@ -1,0 +1,95 @@
+diff --git a/JoyShockMapper/CMakeLists.txt b/JoyShockMapper/CMakeLists.txt
+index 5744bff..7ceab1d 100644
+--- a/JoyShockMapper/CMakeLists.txt
++++ b/JoyShockMapper/CMakeLists.txt
+@@ -101,24 +101,6 @@ if (WINDOWS)
+         "${ViGEmClient_SOURCE_DIR}/include"
+     )
+ 
+-    if(SDL)
+-        add_custom_command(
+-            TARGET ${BINARY_NAME}
+-            POST_BUILD
+-            COMMAND ${CMAKE_COMMAND} -E copy
+-                "$<TARGET_FILE:SDL3-shared>"
+-                "$<TARGET_FILE_DIR:${BINARY_NAME}>/$<TARGET_FILE_NAME:SDL3-shared>"
+-        )
+-    else()
+-        add_custom_command(
+-            TARGET ${BINARY_NAME}
+-            POST_BUILD
+-            COMMAND ${CMAKE_COMMAND} -E copy
+-                "$<TARGET_FILE:JoyShockLibrary>"
+-                "$<TARGET_FILE_DIR:${BINARY_NAME}>/$<TARGET_FILE_NAME:JoyShockLibrary>"
+-        )
+-    endif()
+-	
+     set_target_properties (
+         ${BINARY_NAME} PROPERTIES
+          WIN32_EXECUTABLE ON
+@@ -131,6 +113,9 @@ endif ()
+ 
+ if (LINUX)
+     if(SDL OR NOT DEFINED SDL)
++        find_package(SDL3 REQUIRED CONFIG)
++        target_link_libraries(${BINARY_NAME} PRIVATE SDL3::SDL3)
++
+         target_sources (
+                 ${BINARY_NAME} PRIVATE
+                 src/SDLWrapper.cpp
+@@ -166,51 +151,10 @@ target_include_directories (
+     "${PROJECT_BINARY_DIR}/${BINARY_NAME}/include"
+ )
+ 
+-if(SDL OR NOT DEFINED SDL)
+-
+-	set(SDL_HIDAPI ON)
+-    set(SDL_TEST_LIBRARY OFF)
+-    set(SDL_SHARED ON)
+-    set(SDL_TEST OFF)
+-	CPMAddPackage (
+-		NAME SDL3
+-        GITHUB_REPOSITORY libsdl-org/SDL
+-        GIT_TAG release-3.2.x
+-	)
+-	set_target_properties(SDL_uclibc PROPERTIES FOLDER "SDL")
+-    set_target_properties(SDL3-shared PROPERTIES FOLDER "SDL")
+-	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+-
+-    target_link_libraries (
+-        ${BINARY_NAME} PRIVATE
+-        Platform::Dependencies
+-        SDL3::SDL3-shared
+-    )
+-    
+-    install (
+-       TARGETS ${BINARY_NAME} SDL3-shared
+-        RUNTIME DESTINATION ${PACKAGE_DIR}
+-    )
+-else()
+-	# JoyShockLibrary
+-	CPMAddPackage (
+-		NAME JoyShockLibrary
+-		GITHUB_REPOSITORY JibbSmart/JoyShockLibrary
+-		GIT_TAG eba751b6bddf5edc783790af35b663dec7495dcc
+-	)
+-
+-    target_link_libraries (
+-        ${BINARY_NAME} PRIVATE
+-        Platform::Dependencies
+-        JoyShockLibrary
+-    )
+-
+-    install (
+-        TARGETS ${BINARY_NAME} JoyShockLibrary
+-        RUNTIME DESTINATION ${PACKAGE_DIR}
+-    )
+-endif()
+-
++install (
++    TARGETS ${BINARY_NAME}
++    RUNTIME DESTINATION ${PACKAGE_DIR}
++)
+ 
+ # magic_enum
+ CPMAddPackage (
