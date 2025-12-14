@@ -1,0 +1,17 @@
+pkgbase = maki-cli
+	pkgdesc = A cross-platform fuzzy Makefile task finder
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/maki-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = maki-cli
+	conflicts = maki-cli
+	source = maki-cli-0.1.0.crate::https://crates.io/api/v1/crates/maki-cli/0.1.0/download
+	sha256sums = 2fdcd16b69b2999379ca7b1c7337cec31adbbe8fd10deae8364c7fc91502c1d2
+
+pkgname = maki-cli
