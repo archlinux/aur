@@ -16,10 +16,6 @@ provides=('fcitx5-mcbopomofo')
 source=("${_pkgname}::git+https://github.com/openvanilla/fcitx5-mcbopomofo.git")
 sha512sums=('SKIP')
 
-prepare() {
-    cd "$srcdir/$_pkgname"
-}
-
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -27,10 +23,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    mkdir -p build
-    cd build
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TEST=Off
-    make
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TEST=Off -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
 }
 
 package() {
