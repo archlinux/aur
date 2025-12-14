@@ -1,21 +1,22 @@
 # Maintainer: Ryan Dupke <rctdude2 at gmail dot com>
 # Contributor: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=0.4.4.r18.g1174063c27
+pkgver=0.4.29.r93.gea3ef47943
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://openrct2.io'
-license=('GPL3')
-depends=('hicolor-icon-theme' 'sdl2' 'curl' 'speexdsp'
-         'fontconfig' 'libpng' 'openssl' 'libzip' 'icu' 'benchmark'
-         'libogg' 'libvorbis' 'flac' 'discord-rpc')
+license=('GPL-3.0-or-later')
+depends=('hicolor-icon-theme' 'sdl2' 'freetype2' 'fontconfig'
+         'libzip' 'libpng' 'speexdsp' 'curl' 'openssl' 'icu'
+         'zlib' 'libvorbis' 'libogg' 'flac' 'zstd')
 makedepends=('git' 'cmake' 'ninja' 'nlohmann-json')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
-            'libpulse: PulseAudio audio driver')
+            'libpulse: PulseAudio audio driver'
+            'discord-rpc: Discord Rich Presence support')
 conflicts=('openrct2')
 provides=('openrct2')
 install=openrct2.install
@@ -28,13 +29,19 @@ pkgver() {
 }
 
 build() {
+  # Clang fails with "Could NOT find Threads (missing: Threads_FOUND)"
+  # with the below CXXFLAGS required for GCC. To build with clang, comment
+  # out CXX and CXXFLAGS below, and run makepkg with CXX=clang++ and
+  # --cleanbuild for cmake to regenerate for clang.
+  CXX=g++
+
   # Required options to workaround GCC 12 issues
   # https://github.com/OpenRCT2/OpenRCT2/issues/17371
-  CXXFLAGS+=" -Wno-error=maybe-uninitialized  -Wno-error=restrict  -Wno-error=null-dereference"
+  CXXFLAGS+=" -Wno-error=maybe-uninitialized -Wno-error=restrict -Wno-error=null-dereference"
 
   # Needed to be able to build while LTO is enabled
   # https://github.com/OpenRCT2/OpenRCT2/issues/6200
-  CXXFLAGS+="  -Wno-error=stringop-overflow"
+  CXXFLAGS+=" -Wno-error=stringop-overflow"
 
   cmake -G Ninja -S "$pkgname" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
