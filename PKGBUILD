@@ -45,7 +45,7 @@ package() {
 
     if [ -f "$deb_icon_path" ]; then
         echo "Copying icon from Debian path to Arch path..."
-        cp "$deb_icon_path" "$arch_icon_dir/recstar.png"
+        cp "$deb_icon_path" "$arch_icon_dir/"
 
         # c) OPTIONAL: Remove the (now empty) Debian directory structure
         echo "Icon copied successfully."
