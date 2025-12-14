@@ -1,7 +1,7 @@
 # Maintainer: Oliver Cabral <oliver@kym-kim.com>
 
 pkgname=python-windborne
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python library and CLI for interacting with the WindBorne Data & Forecasts API"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/w/windborne/windborne-$pkgver.tar.gz")
-sha256sums=('5980025e70165256f8df8438c4201bb8cc8c9f23d3d5582f6185ca7f2ff6d180')
+sha256sums=('243099d16caf34bffa6196a70a899daa862362e3508df41aacd9008e73fbe9ec')
 
 build() {
   cd "$srcdir/windborne-$pkgver"
