@@ -1,3 +1,4 @@
+# Maintainer: Ebbez <ebbe at cequent(dot)nl>
 _pkgname=multios-usb
 pkgname=multios-usb-bin-git
 pkgver=0.9.9.r8.gbb66853
