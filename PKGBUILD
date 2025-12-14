@@ -5,8 +5,8 @@
 # Contributor: zfo <zfoofz1@gmail.com>
 
 pkgname=gcsfuse
-pkgver=3.5.2
-pkgrel=1
+pkgver=3.5.3
+pkgrel=4
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 url="https://github.com/GoogleCloudPlatform/gcsfuse"
 arch=('x86_64')
@@ -15,18 +15,28 @@ depends=('glibc' 'fuse')
 makedepends=('git' 'go')
 optdepends=('google-cloud-sdk: authentication helper')
 source=("$pkgname-$pkgver::https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f023d937319903560ee658ceb7e4465c48c7a85556595e1cd412311e2ec2960c')
-_gourl="github.com/googlecloudplatform/gcsfuse/v${pkgver%.[0-9].[0-9]}"
+sha256sums=('e0d154c15a88482f70a01483d00e56238aa5cdd2f195553be7efc8bf0761998e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  go build "$_gourl"
-  CGO_ENABLED=1 go build -buildmode=pie -o "mount.gcsfuse" "$_gourl/tools/mount_gcsfuse"
+  export GOPATH="$srcdir"/gopath
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_ENABLED=1
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  go install ./tools/build_gcsfuse
+  $GOPATH/bin/build_gcsfuse . "$srcdir" "$pkgver"
+  #go build -o ../bin/gcsfuse
+  #go build -o ../sbin/mount.gcsfuse ./tools/mount_gcsfuse
+
 }
 
 package() {
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/gcsfuse" "${pkgdir}/usr/bin/gcsfuse"
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/mount.gcsfuse" "${pkgdir}/usr/bin/mount.gcsfuse"
+  install -Dm 755 bin/gcsfuse "${pkgdir}/usr/bin/gcsfuse"
+  install -Dm 755 sbin/mount.gcsfuse "${pkgdir}/usr/bin/mount.gcsfuse"
   cd "${pkgdir}/usr/bin" && ln -s mount.gcsfuse mount.fuse.gcsfuse
 }
 
