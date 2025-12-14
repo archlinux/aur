@@ -10,6 +10,7 @@ url="https://github.com/meowrch/mewline"
 license=('MIT')
 depends=(
   'python'
+  'power-profiles-daemon'
   'gnome-bluetooth-3.0'
   'dart-sass'
   'gobject-introspection'

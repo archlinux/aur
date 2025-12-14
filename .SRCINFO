@@ -9,6 +9,7 @@ pkgbase = mewline-git
 	makedepends = git
 	makedepends = python-virtualenv
 	depends = python
+	depends = power-profiles-daemon
 	depends = gnome-bluetooth-3.0
 	depends = dart-sass
 	depends = gobject-introspection
