@@ -1,0 +1,3 @@
+[maki]
+source = "cratesio"
+cratesio = "maki-cli"
