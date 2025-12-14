@@ -1,7 +1,7 @@
 pkgbase = elephant-all-git
 	pkgdesc = elephant + all official elephant providers
 	pkgver = r405.bfd423d
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64

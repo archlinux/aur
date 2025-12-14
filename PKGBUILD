@@ -2,7 +2,7 @@
 
 pkgname=elephant-all-git
 pkgver=r405.bfd423d
-pkgrel=7
+pkgrel=8
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ package() {
     # Install all provider plugins
     cd ../../internal/providers
     for provider in archlinuxpkgs 1password bookmarks bluetooth calc clipboard desktopapplications files menus nirisessions providerlist runner snippets symbols todo unicode websearch windows; do
-        install -Dm 755 $provider/$provider.so -t "${pkgdir}/etc/xdg/elephant/providers"
+        install -Dm 755 $provider/$provider.so -t "${pkgdir}/usr/lib/elephant"
     done
 
     # Install license
