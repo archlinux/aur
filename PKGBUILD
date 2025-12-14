@@ -8,7 +8,7 @@ url="https://github.com/Dashlane/dashlane-cli"
 arch=("x86_64")
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
-makedepends=('nodejs-lts-jod' 'yarn' 'git')
+makedepends=('nvm' 'yarn' 'git')
 checkdepends=()
 optdepends=()
 provides=("${pkgname%-*}=$pkgver")
@@ -22,6 +22,18 @@ changelog=
 source=("${pkgname%-*}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
+
+# See https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
+_ensure_local_nvm() {
+    # Let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvmrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
@@ -41,6 +53,11 @@ build() {
     # See: https://github.com/Dashlane/dashlane-cli/issues/52#issuecomment-1447918815
 
     cd "${srcdir}/${pkgname%-*}"
+
+    # Ensure correct NodeJS version for building
+    _ensure_local_nvm
+    nvm install 22
+
     # See https://github.com/Dashlane/dashlane-cli/blob/8d37e32ebba9e95404f25236b659db692d1bdb4d/.github/workflows/release.yml
     export CI=true
     yarn install 
