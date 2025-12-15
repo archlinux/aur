@@ -8,7 +8,7 @@ pkgdesc='A way to manage your packages in lua'
 arch=('any')
 url='https://github.com/initMayday/declarages.git'
 makedepends=('git')
-depends=('lua')
+depends=('lua' 'luarocks')
 optdepends=('git: pacman core'
             'pacman-contrib: pacman core'
             'flatpak: flatpak core'
@@ -31,6 +31,7 @@ prepare() {
 
 package() {
     cd "$_pkgname"
+    ./$pkgdir/deps.sh
     install -Dm755 ./wrapper.sh "$pkgdir/usr/bin/$_pkgname"
     mkdir -p "$pkgdir/usr/share/$_pkgname"
     cp -rf ./* "$pkgdir/usr/share/$_pkgname/"
