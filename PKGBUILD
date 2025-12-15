@@ -11,6 +11,8 @@ license=('MIT')
 groups=()
 depends=(
     'glibc'
+    'dbus'
+    'power-profiles-daemon'
 )
 makedepends=(
     'git'

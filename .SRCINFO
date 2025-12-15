@@ -9,6 +9,8 @@ pkgbase = ppd-tray-applet-git
 	makedepends = git
 	makedepends = go>=1.22.0
 	depends = glibc
+	depends = dbus
+	depends = power-profiles-daemon
 	options = !strip
 	options = !lto
 	options = !debug
