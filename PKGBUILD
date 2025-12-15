@@ -13,6 +13,7 @@ conflicts=()
 replaces=()
 source=(https://www.mpe.mpg.de/~erwin/resources/imfit/binaries/imfit-${pkgver}-linux-64.tar.gz)
 sha256sums=('9eb10a62baab87de98744c247f7a10ea02b05d32996760b7cef100f5f02a7089')
+options=(!debug)
 
 package() {
     cd ${srcdir}
