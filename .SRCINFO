@@ -1,15 +1,15 @@
 pkgbase = intellij-http-client
 	pkgdesc = IntelliJ HTTP Client: run HTTP requests from a terminal. The binary is called ijhttp.
-	pkgver = 252.27397.103
+	pkgver = 252.23892.409
 	pkgrel = 1
 	url = https://www.jetbrains.com/help/idea/http-client-cli.html
 	arch = any
 	license = custom
 	depends = java-runtime>=17
 	depends = archlinux-java-run
-	source = intellij-http-client-252.27397.103.zip::https://download-cdn.jetbrains.com/resources/intellij/http-client/252.27397.103/intellij-http-client.zip
+	source = intellij-http-client-252.23892.409.zip::https://download-cdn.jetbrains.com/resources/intellij/http-client/252.23892.409/intellij-http-client.zip
 	source = intellij-http-client
-	sha256sums = 60cab7c49057ff449ae89666e8478dfaf64ac621fcb030aec99a59b1f022152d
+	sha256sums = c841031bd3516188fc2bbfb7d850776c9faa3eb5542f4fcc31f3e8065a25e35f
 	sha256sums = 7631fff1dee9bddd5d5c4b2a6496f7095d577c72ca7cad54d7eb24b2e4302968
 
 pkgname = intellij-http-client
