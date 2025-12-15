@@ -3,12 +3,13 @@
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 pkgname=motioneye
 pkgver=0.43.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A web frontend for the motion daemon"
 arch=(any)
 url="https://github.com/motioneye-project/${pkgname}"
 license=(GPL-3.0-or-later)
 depends=(
+  'python>=3.7'
   motion
   ffmpeg
   v4l-utils
@@ -25,8 +26,9 @@ makedepends=(
   python-wheel
   python-installer
 )
-install=${pkgname}.install
+optdepends=('python-pytz: timezone support')
 backup=("etc/${pkgname}/${pkgname}.conf")
+install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('73b00ef211533a536f67995c6b38a89c7aa9894aa0df2abfa995c07f28929e6ece9549c6d7a178c9760c59970a352c74ebabace046eed4b85ddb8fce4d62c27c')
 
