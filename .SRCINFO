@@ -1,72 +1,180 @@
 pkgbase = linux-firmware-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression)
-	pkgver = 20250508.788aadc8
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19)
+	pkgver = 20251125
 	pkgrel = 2
 	url = https://gitlab.com/kernel-firmware/linux-firmware
 	arch = any
-	license = GPL-2.0-only
-	license = GPL-2.0-or-later
-	license = GPL-3.0-only
-	license = custom
+	license = LicenseRef-WHENCE
 	makedepends = git
 	makedepends = parallel
 	makedepends = python
 	makedepends = rdfind
-	options = !strip
 	options = !debug
-	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20250509
+	options = !strip
+	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20251125
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
-	b2sums = 6e606e0b656c8fb177064a71dc7542661141efb2eb4824479f569b2284aac2b14e0afb1bbbf0c1fe6edd442663b4cb971aa537039da17fad34c4dc1c56fae320
+	b2sums = 690a2580d5f4fc8bafb1664c2ae39818a152a2dcdc34f345f8a1abe69ef473769da4556e80dfb50bbba05bc6a0b4186f2577b52020d1ad1bc1f4bcd1ae048453
 
 pkgname = linux-firmware-uncompressed
-	depends = linux-firmware-whence
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Default set
+	license = CC0-1.0
+	depends = linux-firmware-amdgpu-uncompressed
+	depends = linux-firmware-atheros-uncompressed
+	depends = linux-firmware-broadcom-uncompressed
+	depends = linux-firmware-cirrus-uncompressed
+	depends = linux-firmware-intel-uncompressed
+	depends = linux-firmware-mediatek-uncompressed
+	depends = linux-firmware-nvidia-uncompressed
+	depends = linux-firmware-other-uncompressed
+	depends = linux-firmware-radeon-uncompressed
+	depends = linux-firmware-realtek-uncompressed
+	optdepends = linux-firmware-liquidio-uncompressed: Firmware for Cavium LiquidIO server adapters
+	optdepends = linux-firmware-marvell-uncompressed: Firmware for Marvell devices
+	optdepends = linux-firmware-mellanox-uncompressed: Firmware for Mellanox Spectrum switches
+	optdepends = linux-firmware-nfp-uncompressed: Firmware for Netronome Flow Processors
+	optdepends = linux-firmware-qcom-uncompressed: Firmware for Qualcomm SoCs
+	optdepends = linux-firmware-qlogic-uncompressed: Firmware for QLogic devices
 	provides = linux-firmware
 	conflicts = linux-firmware
 
+pkgname = linux-firmware-whence-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - WHENCE file (vendor licenses)
+	provides = linux-firmware-whence
+	conflicts = linux-firmware-whence
+
+pkgname = linux-firmware-other-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Unsorted firmware for various devices
+	provides = linux-firmware-other
+	conflicts = linux-firmware-other
+
 pkgname = amd-ucode-uncompressed
 	pkgdesc = Microcode update image for AMD CPUs
-	license = custom
+	license = LicenseRef-amd-ucode
 	provides = amd-ucode
 	conflicts = amd-ucode
 
-pkgname = linux-firmware-nfp-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - nfp / Firmware for Netronome Flow Processors
-	depends = linux-firmware-whence
-	provides = linux-firmware-nfp
-	conflicts = linux-firmware-nfp
+pkgname = linux-firmware-amdgpu-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for AMD Radeon GPUs
+	license = LicenseRef-WHENCE
+	license = LicenseRef-amdgpu
+	license = MIT
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-amdgpu
+	conflicts = linux-firmware-amdgpu
 
-pkgname = linux-firmware-mellanox-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - mellanox / Firmware for Mellanox Spectrum switches
-	depends = linux-firmware-whence
-	provides = linux-firmware-mellanox
-	conflicts = linux-firmware-mellanox
+pkgname = linux-firmware-atheros-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Qualcomm Atheros WiFi and Bluetooth adapters
+	license = LicenseRef-WHENCE
+	license = GPL-2.0-only
+	license = LicenseRef-atheros
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-atheros
+	conflicts = linux-firmware-atheros
 
-pkgname = linux-firmware-marvell-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - marvell / Firmware for Marvell devices
-	depends = linux-firmware-whence
-	provides = linux-firmware-marvell
-	conflicts = linux-firmware-marvell
+pkgname = linux-firmware-broadcom-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Broadcom and Cypress network adapters
+	license = LicenseRef-WHENCE
+	license = LicenseRef-broadcom
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-bnx2x
+	provides = linux-firmware-broadcom
+	conflicts = linux-firmware-bnx2x
+	conflicts = linux-firmware-broadcom
 
-pkgname = linux-firmware-qcom-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - qcom / Firmware for Qualcomm SoCs
-	depends = linux-firmware-whence
-	provides = linux-firmware-qcom
-	conflicts = linux-firmware-qcom
+pkgname = linux-firmware-cirrus-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Cirrus Logic audio devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-cirrus
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-cirrus
+	conflicts = linux-firmware-cirrus
+
+pkgname = linux-firmware-intel-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Intel devices
+	license = LicenseRef-WHENCE
+	license = Apache-2.0
+	license = GPL-2.0-only
+	license = LicenseRef-intel
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-intel
+	conflicts = linux-firmware-intel
 
 pkgname = linux-firmware-liquidio-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - liquidio / Firmware for Cavium LiquidIO server adapters
-	depends = linux-firmware-whence
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Cavium LiquidIO server adapters
+	license = LicenseRef-WHENCE
+	license = LicenseRef-liquidio
+	depends = linux-firmware-whence-uncompressed
 	provides = linux-firmware-liquidio
 	conflicts = linux-firmware-liquidio
 
+pkgname = linux-firmware-marvell-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Marvell devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-marvell
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-marvell
+	conflicts = linux-firmware-marvell
+
+pkgname = linux-firmware-mediatek-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for MediaTek and Ralink devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-mediatek
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-mediatek
+	conflicts = linux-firmware-mediatek
+
+pkgname = linux-firmware-mellanox-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Mellanox Spectrum switches
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-mellanox
+	conflicts = linux-firmware-mellanox
+
+pkgname = linux-firmware-nfp-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Netronome Flow Processors
+	license = LicenseRef-WHENCE
+	license = LicenseRef-netronome
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-nfp
+	conflicts = linux-firmware-nfp
+
+pkgname = linux-firmware-nvidia-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for NVIDIA GPUs and SoCs
+	license = LicenseRef-WHENCE
+	license = LicenseRef-nvidia
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-nvidia
+	conflicts = linux-firmware-nvidia
+
+pkgname = linux-firmware-qcom-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Qualcomm SoCs
+	license = LicenseRef-WHENCE
+	license = BSD-3-Clause
+	license = LicenseRef-qcom
+	depends = linux-firmware-atheros-uncompressed
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-qcom
+	conflicts = linux-firmware-qcom
+
 pkgname = linux-firmware-qlogic-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - qlogic / Firmware for QLogic devices
-	depends = linux-firmware-whence
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for QLogic devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-qlogic
+	depends = linux-firmware-whence-uncompressed
 	provides = linux-firmware-qlogic
 	conflicts = linux-firmware-qlogic
 
-pkgname = linux-firmware-bnx2x-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
-	depends = linux-firmware-whence
-	provides = linux-firmware-bnx2x
-	conflicts = linux-firmware-bnx2x
+pkgname = linux-firmware-radeon-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for ATI Radeon GPUs
+	license = LicenseRef-WHENCE
+	license = LicenseRef-radeon
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-radeon
+	conflicts = linux-firmware-radeon
+
+pkgname = linux-firmware-realtek-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Realtek devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-realtek
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-realtek
+	conflicts = linux-firmware-realtek
