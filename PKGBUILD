@@ -4,7 +4,7 @@
 pkgname=qdrant-git
 _pkgname=qdrant
 pkgver=1.16.2+r5061+gd2834de0b
-pkgrel=1
+pkgrel=2
 pkgdesc="Vector Database and Vector Search Engine for AI"
 backup=('etc/qdrant/config.yaml')
 arch=('x86_64')
@@ -34,6 +34,8 @@ makedepends=(
   'unzip'
 )
 checkdepends=('cargo-nextest')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=(
   git+https://github.com/qdrant/qdrant.git
   0001-set-full-path-in-config.patch
