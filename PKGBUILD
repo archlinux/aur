@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "lyrics-$pkgver"
-    meson setup build --prefix=/usr
+    arch-meson . build
     meson compile -C build
 }
 
