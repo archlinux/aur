@@ -1,7 +1,7 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Nathan <ndowens@artixlinux.org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.54.2
+pkgver=1.54.3
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -64,13 +64,8 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('d2006832430d95898e183c3a926a747e021726855900f245fffd19076340ea77ec6dac2ffad2bc389479d7ed571bddaacaa1eee257c59352dc9de92caaabb076'
+b2sums=('5da0800e5ea38f8eda955bf854c778b93e3a17b80da8602b48e017e66e74392caf9458701f6b7a4b9de85108d30ecd89d5491bd26123925228b6788d3b6aae32'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
-
-prepare() {
-  cd NetworkManager
-  git cherry-pick -n 12eff9a7fdfeabab12ce56e5f7d515a13a3d704c  # fix docs generation
-}
 
 build() {
   local meson_options=(
@@ -136,7 +131,6 @@ package_networkmanager-iwd() {
     libndp
     libnewt
     libnm-iwd
-    libnvme
     libpsl
     libteam
     mobile-broadband-provider-info
@@ -152,6 +146,7 @@ package_networkmanager-iwd() {
     'dnsmasq: connection sharing'
     'firewalld: firewall support'
     'iptables: connection sharing'
+    'libnvme: NBFT support'
     'modemmanager: cellular network support'
     'nftables: connection sharing'
     'openresolv: alternative resolv.conf manager'
@@ -202,6 +197,7 @@ END
   _pick libnm usr/include/libnm
   _pick libnm usr/lib/girepository-1.0/NM-*
   _pick libnm usr/lib/libnm.*
+  _pick libnm usr/lib/nm-libnm-helper
   _pick libnm usr/lib/pkgconfig/libnm.pc
   _pick libnm usr/share/gir-1.0/NM-*
   _pick libnm usr/share/vala/vapi/libnm.*
