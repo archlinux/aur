@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.1.r0.b5eef0d
-pkgrel=5
+pkgrel=6
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
@@ -128,20 +128,8 @@ package() {
     
     # Create symlinks for easy access
     install -dm755 "$pkgdir/usr/bin"
-    
-    # qubar-install
-    cat > "$pkgdir/usr/bin/qubar-install" << 'EOF'
-#!/bin/bash
-/usr/share/qubar/install.sh "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/qubar-install"
-
-    # qubar-uninstall
-    cat > "$pkgdir/usr/bin/qubar-uninstall" << 'EOF'
-#!/bin/bash
-/usr/share/qubar/uninstall.sh "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/qubar-uninstall"
+    ln -s /usr/share/qubar/install.sh "$pkgdir/usr/bin/qubar-install"
+    ln -s /usr/share/qubar/uninstall.sh "$pkgdir/usr/bin/qubar-uninstall"
     
     # Post-install message
     cat > "$pkgdir/usr/share/qubar/PKGBUILD_NOTES" << 'EOF'
