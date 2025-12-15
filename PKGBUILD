@@ -5,8 +5,8 @@
 _pkgname='rkik'
 pkgname="$_pkgname-git"
 pkgver=2.0.0.r0.ge5249f1
-pkgrel=1
-pkgdesc='Rusty Klock Inspection Kit: simple NTP client (development version)'
+pkgrel=2
+pkgdesc='Rusty Klock Inspection Kit: simple NTP/NTS client (development version)'
 arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('gcc-libs' 'glibc')
