@@ -1,0 +1,14 @@
+pkgbase = wayfire-plugins-crt-effect-git
+	pkgdesc = Advanced CRT Monitor Emulation with Discrete, Retro, Royale, Perfect, and Cinema modes.
+	pkgver = r55.a6caa11
+	pkgrel = 1
+	url = https://github.com/killown/wayfire-plugins
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	depends = wayfire-git
+	source = git+https://github.com/killown/wayfire-plugins.git
+	md5sums = SKIP
+
+pkgname = wayfire-plugins-crt-effect-git
