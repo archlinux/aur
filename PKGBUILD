@@ -3,39 +3,71 @@ pkgname=qoder-cli
 pkgver=latest
 pkgrel=1
 pkgdesc="Qoder Agentic CLI - Advanced AI coding agent from Alibaba"
-arch=('x86_64')
 url="https://qoder.com/cli"
+arch=('x86_64')
 license=('proprietary')
-# No automatic dependencies - user must install prerequisites manually if needed
-# Prerequisites: curl (for download), glibc (usually present)
+
+# No runtime dependencies beyond base system (portable binary)
+# Build-time: curl (usually present on Arch)
 options=('!strip')
 
 prepare() {
-  # Check if binary already exists in source directory
-  if [ ! -f "${srcdir}/qoder-cli" ]; then
+  cd "${srcdir}"
+
+  echo "================================================================================"
+  echo "Preparing Qoder CLI installation..."
+  echo "================================================================================"
+
+  # Check if binary already provided manually
+  if [ ! -f "qoder-cli" ]; then
     echo "Downloading latest Qoder CLI using official installation script..."
-    # Official script downloads and places the portable binary
+    echo "Script: curl -fsSL https://qoder.com/install | bash"
+
+    # Run official script to download portable binary
     curl -fsSL https://qoder.com/install | bash || {
-      echo "Download failed! Check your internet connection or visit https://qoder.com/cli for manual download."
-      echo "Place the downloaded binary as 'qoder-cli' in this directory and rerun makepkg."
+      echo "ERROR: Download failed. Check internet connection or sanctions bypass."
+      echo "Alternative: Manually download the Linux CLI binary from https://qoder.com/cli"
+      echo "          Place it as 'qoder-cli' in this directory and rerun makepkg."
       exit 1
     }
-    # The script usually outputs a binary named 'qoder' or 'qodercli'
-    mv qoder qoder-cli 2>/dev/null || mv qodercli qoder-cli 2>/dev/null || {
-      echo "Binary not found after download. Please check the script output."
+
+    # Official script typically outputs 'qoder' or 'qodercli' - rename safely
+    if [ -f "qoder" ]; then
+      mv qoder qoder-cli && echo "Renamed 'qoder' → 'qoder-cli'"
+    elif [ -f "qodercli" ]; then
+      mv qodercli qoder-cli && echo "Renamed 'qodercli' → 'qoder-cli'"
+    else
+      echo "ERROR: Expected binary (qoder or qodercli) not found after script execution."
+      echo "Please check script output or download manually."
       exit 1
-    }
+    fi
+  else
+    echo "Using pre-placed qoder-cli binary from source directory"
   fi
 
-  # Security note: Qoder does not publish official checksums
-  echo "Note: No official SHA256/MD5 checksum provided by Qoder. Verify the binary manually if security is critical."
+  # Security notice
+  echo "================================================================================"
+  echo "NOTE: Qoder does not publish official SHA256/MD5 checksums."
+  echo "      For security-critical use, verify the binary manually."
+  echo "================================================================================"
 }
 
 package() {
-  # Install the binary to /usr/bin with executable permissions
-  install -Dm755 qoder-cli "${pkgdir}/usr/bin/qoder"
+  cd "${srcdir}"
 
+  echo "================================================================================"
+  echo "Installing Qoder CLI..."
+  echo "================================================================================"
+
+  # Install portable binary
+  install -Dm755 qoder-cli "${pkgdir}/usr/bin/qoder"
+  echo "Binary installed to /usr/bin/qoder"
+
+  echo "================================================================================"
   echo "Qoder CLI successfully installed!"
-  echo "Run 'qoder' in your terminal to start."
-  echo "First launch will prompt for sign-in (use your Qoder account)."
+  echo ""
+  echo "Launch with: qoder"
+  echo "First run: Use /login command inside CLI to sign in (pakrohk@gmail.com)"
+  echo "Enjoy agentic coding in your terminal! 🚀"
+  echo "================================================================================"
 }
