@@ -1,0 +1,49 @@
+diff --git a/config/config.yaml b/config/config.yaml
+index d0e0d6109..7d49c0870 100644
+--- a/config/config.yaml
++++ b/config/config.yaml
+@@ -16,10 +16,10 @@ log_level: INFO
+ 
+ storage:
+   # Where to store all the data
+-  storage_path: ./storage
++  storage_path: /srv/qdrant/storage
+ 
+   # Where to store snapshots
+-  snapshots_path: ./snapshots
++  snapshots_path: /srv/qdrant/snapshots
+ 
+   snapshots_config:
+     # "local" or "s3" - where to store snapshots
+@@ -302,6 +302,9 @@ service:
+   # Prefix for the names of metrics in the /metrics API.
+   # metrics_prefix: qdrant_
+ 
++  # Directory with static content to be served by the HTTP server.
++  static_content_dir: /usr/share/qdrant/static
++
+ cluster:
+   # Use `enabled: true` to run Qdrant in distributed deployment mode
+   enabled: false
+@@ -337,10 +340,10 @@ telemetry_disabled: false
+ # Required if either service.enable_tls or cluster.p2p.enable_tls is true.
+ tls:
+   # Server certificate chain file
+-  cert: ./tls/cert.pem
++  cert: /etc/qdrant/tls/cert.pem
+ 
+   # Server private key file
+-  key: ./tls/key.pem
++  key: /etc/qdrant/tls/key.pem
+ 
+   # Certificate authority certificate file.
+   # This certificate will be used to validate the certificates
+@@ -350,7 +353,7 @@ tls:
+   # HTTPS client certificate
+   #
+   # Required if cluster.p2p.enable_tls is true.
+-  ca_cert: ./tls/cacert.pem
++  ca_cert: /etc/qdrant/tls/cacert.pem
+ 
+   # TTL in seconds to reload certificate from disk, useful for certificate rotations.
+   # Only works for HTTPS endpoints. Does not support gRPC (and intra-cluster communication).

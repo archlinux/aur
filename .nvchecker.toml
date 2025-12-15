@@ -1,0 +1,4 @@
+[qdrant-git]
+source = "git"
+git = "https://github.com/qdrant/qdrant.git"
+prefix = "v"

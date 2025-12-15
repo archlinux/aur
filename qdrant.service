@@ -1,0 +1,22 @@
+[Unit]
+Description=Qdrant Service
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/bin/qdrant --config-path /etc/qdrant/config.yaml
+WorkingDirectory=/srv/qdrant
+Environment="HOME=/srv/qdrant"
+Environment="RUN_MODE=production"
+User=qdrant
+Group=qdrant
+Restart=on-failure
+RestartSec=3
+RestartPreventExitStatus=1
+Type=simple
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
