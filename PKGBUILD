@@ -8,11 +8,11 @@
 _gemname_="curses"
 pkgname="ruby-${_gemname_}"
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby binding for curses, ncurses, and PDCurses"
 arch=("x86_64")
 url="https://github.com/ruby/curses"
-license=("Ruby" "BSD-2-Clause")
+license=("BSD-2-Clause OR Ruby")
 depends=("glibc" "ncurses" "ruby")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)

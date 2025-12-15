@@ -1,11 +1,10 @@
 pkgbase = ruby-curses
 	pkgdesc = Ruby binding for curses, ncurses, and PDCurses
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruby/curses
 	arch = x86_64
-	license = Ruby
-	license = BSD-2-Clause
+	license = BSD-2-Clause OR Ruby
 	makedepends = ruby-rdoc
 	depends = glibc
 	depends = ncurses
