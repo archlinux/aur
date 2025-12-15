@@ -1,7 +1,7 @@
 pkgbase = pragtical
 	pkgdesc = The practical and pragmatic code editor.
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pragtical/pragtical
 	arch = x86_64
 	license = MIT
