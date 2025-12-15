@@ -26,4 +26,4 @@ path = [
     "unittest-alias-removal.patch",
 ]
 SPDX-FileCopyrightText = "python-tarantool contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "0BSD"

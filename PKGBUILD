@@ -3,7 +3,7 @@
 
 pkgname=python-tarantool
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'

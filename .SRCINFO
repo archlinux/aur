@@ -1,7 +1,7 @@
 pkgbase = python-tarantool
 	pkgdesc = Python client library for Tarantool 1.6 Database
 	pkgver = 0.9.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/tarantool/tarantool-python
 	arch = any
 	license = BSD
