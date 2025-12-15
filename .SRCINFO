@@ -1,6 +1,6 @@
 pkgbase = go2rtc-bin
 	pkgdesc = Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.(Prebuilt version)
-	pkgver = 1.9.12
+	pkgver = 1.9.13
 	pkgrel = 1
 	url = https://github.com/AlexxIT/go2rtc
 	arch = aarch64
@@ -8,10 +8,10 @@ pkgbase = go2rtc-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = go2rtc=1.9.12
+	provides = go2rtc=1.9.13
 	conflicts = go2rtc
 	options = !strip
-	source = LICENSE-1.9.12::https://raw.githubusercontent.com/AlexxIT/go2rtc/v1.9.12/LICENSE
+	source = LICENSE-1.9.13::https://raw.githubusercontent.com/AlexxIT/go2rtc/v1.9.13/LICENSE
 	source = go2rtc.yaml
 	source = go2rtc.tmpfile.conf
 	source = go2rtc.service
@@ -21,13 +21,13 @@ pkgbase = go2rtc-bin
 	sha256sums = f8caf9965af10be2ca90819898f9124966b69dcb3a477a9436e050cfb6bb5a29
 	sha256sums = d1e19d906719b847456a11c430a77b4dd0ec73414e60e629df76be65bc372a10
 	sha256sums = 8e6c994be0a3fc65d909d23ead70dbc2b32c8747cc96bb1f5c2a83e93f16f7f5
-	source_aarch64 = go2rtc-1.9.12-aarch64::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.12/go2rtc_linux_arm64
-	sha256sums_aarch64 = c950d87f36ffc1cfcf95568fb4c69a9dce873d5723f39cf3a672ba4e7a97d90a
-	source_armv7h = go2rtc-1.9.12-armv7h::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.12/go2rtc_linux_arm
-	sha256sums_armv7h = ee32500f024f8b12e987ae0144b5cd7ed6a0b495afc95fc1940cbd38ed26b85d
-	source_i686 = go2rtc-1.9.12-i686::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.12/go2rtc_linux_i386
-	sha256sums_i686 = 3fff02c05b1bf7e1c04331dbde44f05ac41951df0b6c91dd9a605f80f8546b0f
-	source_x86_64 = go2rtc-1.9.12-x86_64::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.12/go2rtc_linux_amd64
-	sha256sums_x86_64 = 0544c68f06df6f85013a9a686e5d0f5a1384db94921d63eca696873ec0811bb8
+	source_aarch64 = go2rtc-1.9.13-aarch64::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.13/go2rtc_linux_arm64
+	sha256sums_aarch64 = d9611321592bbb5997df9c7676f3a46b0ba3d7dd04ef5a994e84101100bd85c9
+	source_armv7h = go2rtc-1.9.13-armv7h::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.13/go2rtc_linux_arm
+	sha256sums_armv7h = 7eb4a67caa1f9098344e79443a879a64cfe9f4d47f804763090170316026f4fa
+	source_i686 = go2rtc-1.9.13-i686::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.13/go2rtc_linux_i386
+	sha256sums_i686 = 42204a1a1ccb9ddb7d5d617edbfda97f11c245722cc05f1e190e3d631821425d
+	source_x86_64 = go2rtc-1.9.13-x86_64::https://github.com/AlexxIT/go2rtc/releases/download/v1.9.13/go2rtc_linux_amd64
+	sha256sums_x86_64 = dce491325c28890ad0b85e83090753dc111b903ef83f43b834798f9114520dba
 
 pkgname = go2rtc-bin
