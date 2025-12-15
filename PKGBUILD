@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.4.0.r236.g6c6def9
+pkgver=0.5.0.r1.g06d843f
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -37,7 +37,7 @@ prepare(){
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
-[ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+[ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS="-Zbuild-std=std,panic_abort"
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
