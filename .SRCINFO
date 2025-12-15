@@ -1,6 +1,6 @@
 pkgbase = etherlab-ethercat
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etherlab.org
 	arch = i686
 	arch = x86_64
@@ -21,4 +21,7 @@ pkgname = etherlab-ethercat
 pkgname = etherlab-ethercat-tools
 	pkgdesc = Tools for IgH EtherCAT(R) Master component
 	license = LGPL-2.1-only
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
 	backup = etc/ethercat.conf

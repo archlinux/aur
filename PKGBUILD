@@ -1,8 +1,9 @@
 # Maintainer: Nicola Fontana <ntd@entidi.it>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('linux-headers')
 url='https://etherlab.org'
@@ -48,6 +49,7 @@ package_etherlab-ethercat-tools() {
   pkgdesc="Tools for IgH EtherCAT(R) Master component"
   license=('LGPL-2.1-only')
   backup=('etc/ethercat.conf')
+  depends=('bash' 'gcc-libs' 'glibc')
 
   install -Dm 0644 ethercat.udev "$pkgdir/usr/lib/udev/rules.d/99-EtherCAT.rules"
   install -Dm 0644 ethercat.sysusers "$pkgdir/usr/lib/sysusers.d/ethercat.conf"
