@@ -1,11 +1,11 @@
 # Maintainer: Stephen Paul <stephen at lun1xr dot live>
 pkgname=ply-mksplash
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Plymouth bootsplash animation generator. Supports framerates other than 30 fps by patching two-step.'
 url='https://github.com/lun1xr/plymouth-splash-genpatch'
 arch=('x86_64')
-license=('MIT')
+license=('0BSD')
 depends=(
   plymouth
   bash
@@ -19,6 +19,7 @@ source=(
 b2sums=('6668b0d32390d03c9fe5a3df3350767cf2520ff2ef8bd2862e7f917bc133fe4f4848a0348b80e0708036180d88cbf5b61f92d841144809318fb03ae364eabf61')
 
 package() {
+
   cd "${srcdir}/plymouth-splash-genpatch-${pkgver}"
   # Install scripts
   install -Dm755 "mksplash"       "${pkgdir}/usr/bin/mksplash"
@@ -29,7 +30,7 @@ package() {
   install -Dm644 "mksplash-theme-change.service" "${pkgdir}/usr/lib/systemd/system/mksplash-theme-change.service"
 
   # Install license
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install assets directory
   cp -rT "assets-req" "${pkgdir}/usr/share/${pkgname}"
