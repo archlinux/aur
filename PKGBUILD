@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-bin
-pkgver=8.2.0+1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
