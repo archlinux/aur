@@ -1,11 +1,11 @@
 pkgname=rusty-pipes
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue and Hauptwerk sample sets."
 arch=('x86_64')
 url="https://github.com/dividebysandwich/rusty-pipes"
 license=('GPL-2.0-or-later')
-depends=('alsa-lib' 'gcc-libs' 'jack' 'libx11' 'libxkbcommon' 'wayland' 'mesa' 'desktop-file-utils' 'pkgconf')
+depends=('alsa-lib' 'gcc-libs' 'jack' 'libx11' 'libxkbcommon' 'wayland' 'mesa' 'desktop-file-utils' 'pkgconf' 'zstd')
 makedepends=('rust' 'cargo')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dividebysandwich/rusty-pipes/archive/refs/tags/v$pkgver.tar.gz"
@@ -27,6 +27,9 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Force usage of system zstd via pkg-config
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+    
     cd "rusty-pipes-$pkgver"
     # --locked ensures we use the versions from Cargo.lock for a reproducible build
     cargo build --frozen --release
