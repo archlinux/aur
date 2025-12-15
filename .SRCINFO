@@ -10,7 +10,7 @@ pkgbase = scidcommunity
 	makedepends = git
 	depends = tcl
 	depends = tk
-	source = scidcommunity-5.1.1.tar.gz::https://github.com/whelanh/scidCommunity/archive/3487705ac627b145bebf280b912fbb8e363dccb4.tar.gz
+	source = scidcommunity-5.1.1.tar.gz::https://github.com/whelanh/scidCommunity/archive/acd0f40db0c122e3546c433833606e1703fdc950.tar.gz
 	sha256sums = SKIP
 
 pkgname = scidcommunity
