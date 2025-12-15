@@ -1,7 +1,7 @@
 # Maintainer: shinzo <pahasaradev@proton.me>
 
 pkgname=hyprsnow
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A snow overlay for Wayland/Hyprland"
 arch=('x86_64')

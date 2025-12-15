@@ -1,6 +1,6 @@
 pkgbase = hyprsnow
 	pkgdesc = A snow overlay for Wayland/Hyprland
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/spinualexandru/hyprsnow
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hyprsnow
 	makedepends = cargo
 	makedepends = git
 	depends = hyprland
-	source = git+https://github.com/spinualexandru/hyprsnow.git#tag=v0.1.5
+	source = git+https://github.com/spinualexandru/hyprsnow.git#tag=v0.1.6
 	sha256sums = SKIP
 
 pkgname = hyprsnow
