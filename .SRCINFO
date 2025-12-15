@@ -1,6 +1,6 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
-	pkgver = 20251119
+	pkgver = 20251215
 	pkgrel = 2
 	url = https://github.com/lisuml/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
@@ -31,7 +31,6 @@ pkgname = manjaro-hyprland-settings
 	depends = nwg-launchers
 	depends = nwg-look
 	depends = pamixer
-	depends = plasma5-themes-sweet-full-git
 	depends = qt5ct
 	depends = slurp
 	depends = swappy

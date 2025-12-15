@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="20251119"
+pkgver="20251215"
 _commit='aa2998b9a581d759f34303b01dd4c491b4acc477'
 pkgrel=2
 arch=('any')
@@ -40,7 +40,6 @@ package() {
     'nwg-launchers'
     'nwg-look'
     'pamixer'
-    'plasma5-themes-sweet-full-git'
     'qt5ct'
     'slurp'
     'swappy'
