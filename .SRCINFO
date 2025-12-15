@@ -1,6 +1,6 @@
 pkgbase = lzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support (legacy version)
-	pkgver = 4.11.4
+	pkgver = 4.14.3a
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -41,13 +41,9 @@ pkgbase = lzdoom
 	optdepends = xorg-xmessage: crash dialog (other)
 	conflicts = lzdoom-bin
 	options = !lto
-	source = lzdoom-l4.11.4.tar.gz::https://github.com/drfrag666/gzdoom/archive/refs/tags/l4.11.4.tar.gz
+	source = lzdoom-l4.14.3a.tar.gz::https://github.com/drfrag666/gzdoom/archive/refs/tags/l4.14.3a.tar.gz
 	source = lzdoom.desktop
-	source = gcc-15-fix-1.patch
-	source = gcc-15-fix-2.patch
-	sha256sums = dd4fc8ea2a566cb6b614b1aede39a0cc57a4f9d81b3c0f5e74323e92aea8c05e
+	sha256sums = dbb8dc288bba1f0b14764d76d84250bbdfdb85db25e82cbb2debd5185cb259e8
 	sha256sums = 7b3ffa8b74e5d6283206dd074b09e944aa07670ec7d7b1fe587350ffb91819b3
-	sha256sums = 678f1246a9ec7f3872e47838c6989d968964c405ab56c7d283909b51d52a82b7
-	sha256sums = 6127d40af0388338d132576c4b4664a9fbe1319fc7ecf7bf1a19af542fa8a09c
 
 pkgname = lzdoom
