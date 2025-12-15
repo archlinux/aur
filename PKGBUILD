@@ -12,7 +12,7 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.9
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -54,7 +54,7 @@ sha256sums=('c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '9b05d15245603531eee55162cefd43fb9b686d049bb65f97b1dafd948db3e654'
+            '85bb4af31efe157e3e5d13b26ee105b338ef868acb6c66a712f38b06b79ed71c'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -122,6 +122,13 @@ build() {
     git -C pybind11 checkout "v${_pybind11_ver}"
     cd TensorRT/python
     ./build.sh
+    mv build build_tensorrt
+    TENSORRT_MODULE='tensorrt_dispatch'
+    ./build.sh
+    mv build build_tensorrt_dispatch
+    TENSORRT_MODULE='tensorrt_lean'
+    ./build.sh
+    mv build build_tensorrt_lean
     
     # python tools
     local _dir
@@ -207,9 +214,12 @@ package_python-tensorrt() {
         "python-polygraphy=${_polygraphy_ver}"
         "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
-    python -m installer --destdir="$pkgdir" TensorRT/python/build/bindings_wheel/dist/*.whl
-    
     local _dir
+    for _dir in tensorrt{,_dispatch,_lean}
+    do
+        python -m installer --destdir="$pkgdir" "TensorRT/python/build_${_dir}/bindings_wheel/dist"/*.whl
+    done
+    
     for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
