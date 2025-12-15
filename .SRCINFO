@@ -1,0 +1,14 @@
+pkgbase = pipewire-xdg-autostart
+	pkgdesc = XDG Autostart for pipewire, pipewire-pulse and wireplumber
+	pkgver = 1.0
+	pkgrel = 5
+	arch = any
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = wireplumber
+	source = pipewire-xdg-autostart.sh
+	source = pipewire-xdg-autostart.desktop
+	sha256sums = 03c1f478814af07cf1f45a77ef01e71d1602b3d3c0f63615cfd3af9bfe9ccfd6
+	sha256sums = b366c2abbcd080a3285fb3bb2f03044ef2cfe63af71420da684a6b48d0cfdbd3
+
+pkgname = pipewire-xdg-autostart
