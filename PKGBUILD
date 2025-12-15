@@ -3,10 +3,10 @@
 
 pkgname='perl-tcl'
 pkgver='1.53'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('glibc' 'perl' 'tcl')
 makedepends=()

@@ -1,12 +1,11 @@
 pkgbase = perl-tcl
 	pkgdesc = Tcl extension module for Perl
 	pkgver = 1.53
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Tcl
 	arch = i686
 	arch = x86_64
-	license = Artistic-1.0-Perl
-	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	depends = glibc
 	depends = perl
 	depends = tcl
