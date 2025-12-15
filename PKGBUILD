@@ -48,7 +48,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname"
 
-    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk --verbosity diagnostic
+    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk
 }
 
 package() {
