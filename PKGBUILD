@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flawless-cut-bin
 _pkgname=FlawlessCut
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=39
 pkgrel=1
 pkgdesc="Fast and lossless video cutter and merger based on Electron.(Prebuilt version.Use system-wide electron)"
@@ -16,11 +16,11 @@ depends=(
     'mediainfo'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/metadream/app-flawless-cut/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
     )
-sha256sums=('b42a7f946d8a4f715e74b7c3c887d2b396023f1c599f9775e6b80f92af3faa6a'
+sha256sums=('9e70e42e2fc016e7dae4feec90d7d71cbeb642163a67b3a89be486dab89152d4'
             '50a6358fd695e2dc9326ca249e5cab410b103cbfa04d97ebe736bfbbe49aff8c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
