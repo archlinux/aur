@@ -15,7 +15,7 @@ makedepends=(
 )
 depends=(
     gtk3
-    libalpm.so
+    pacman
 )
 provides=('pepv')
 conflicts=('pepv')
