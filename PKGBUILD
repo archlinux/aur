@@ -2,8 +2,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 pkgname=zulip-desktop-git
 _pkgname="Zulip Desktop"
-pkgver=5.12.2.r11.ga133c92
-_electronversion=37
+pkgver=5.12.3.r1.g7da12ba
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model (Use system-wide electron)'
@@ -92,7 +92,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpx vite build
+    NODE_ENV=production     pnpx electron-vite build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 
 }
