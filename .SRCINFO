@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 25.08.3
+	pkgver = 25.12.0
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -52,15 +52,15 @@ pkgbase = dolphin-meld
 	optdepends = meld: comparing files menu action
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=25.08.3
-	conflicts = dolphin=25.08.3
-	source = https://download.kde.org/stable/release-service/25.08.3/src/dolphin-25.08.3.tar.xz
-	source = https://download.kde.org/stable/release-service/25.08.3/src/dolphin-25.08.3.tar.xz.sig
+	provides = dolphin=25.12.0
+	conflicts = dolphin=25.12.0
+	source = https://download.kde.org/stable/release-service/25.12.0/src/dolphin-25.12.0.tar.xz
+	source = https://download.kde.org/stable/release-service/25.12.0/src/dolphin-25.12.0.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 1abd632ebe3837df5616216f69c3ca9f6240165f9f84502422203275eaa8ee09
+	sha256sums = 02d67059c13c5a4cf74847f0f1c0cf9a6de47345ca80f2e3ba5ba8f408481bff
 	sha256sums = SKIP
 	sha256sums = a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15
 
