@@ -1,6 +1,6 @@
 pkgbase = pix
 	pkgdesc = Image viewer and browser based on gthumb. X-Apps Project.
-	pkgver = 3.4.7
+	pkgver = 3.4.9
 	pkgrel = 1
 	url = https://github.com/linuxmint/pix
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = pix
 	optdepends = yelp: View help and documentation from the app
 	provides = pix
 	conflicts = pix-git
-	source = pix-3.4.7.tar.gz::https://github.com/linuxmint/pix/archive/3.4.7.tar.gz
-	md5sums = 4650a07b82d80422a705f2948e80a592
+	source = pix-3.4.9.tar.gz::https://github.com/linuxmint/pix/archive/3.4.9.tar.gz
+	md5sums = 206ccd1dd4196ec3b271f878d65787fd
 
 pkgname = pix
