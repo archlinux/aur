@@ -1,6 +1,6 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-libs
-pkgver=2.1.7
+pkgver=2.1.7.1
 pkgrel=1
 pkgdesc="Indi 3rd party libraries"
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ depends=(ffmpeg
          wireplumber)
 makedepends=(cmake)
 source=(https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b')
+sha256sums=('84f9ab78fb21b96a24d4225c5b0ca2030060b8050ef36450020fd9ecfcf613e9')
 options=(!lto)
 
 prepare() {
