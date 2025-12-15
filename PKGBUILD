@@ -7,21 +7,22 @@ url="https://qoder.com"
 arch=('x86_64')
 license=('proprietary')
 
-# Runtime dependencies for Electron/VSCode-based applications
+# Optimized runtime dependencies for VS Code/Electron-based applications
+# These are the most common ones required on clean Arch installs
 depends=(
-  'gtk3'
-  'libappindicator-gtk3'
-  'libxss'
-  'nss'
   'alsa-lib'
   'at-spi2-core'
-  'libdrm'
-  'mesa'
+  'dbus'
+  'glib2'
+  'gtk3'
   'libcups'
-  'libglib-2.0'
+  'libdrm'
+  'libxss'
+  'mesa'
+  'nss'
 )
 
-# bsdtar is part of base Arch system - no makedepends needed
+# No makedepends needed - bsdtar is always available on Arch
 options=('!strip')
 
 _source_url="https://download.qoder.com/release/latest/qoder_x86_64.rpm"
@@ -46,7 +47,7 @@ prepare() {
 
   echo "================================================================================"
   echo "NOTE: Qoder does not provide official checksums."
-  echo "      Verify the downloaded file manually if security is critical."
+  echo "      For security-critical use, verify the downloaded file manually."
   echo "================================================================================"
 }
 
@@ -54,43 +55,53 @@ package() {
   cd "${srcdir}"
 
   echo "================================================================================"
-  echo "Installing Qoder GUI application files..."
+  echo "Installing Qoder GUI application..."
   echo "================================================================================"
 
-  # The actual application is under usr/share/qoder
+  # Main application directory: /usr/share/qoder
   if [ -d "usr/share/qoder" ]; then
     mkdir -p "${pkgdir}/usr/share"
-    cp -r usr/share/qoder "${pkgdir}/usr/share/"
-    echo "Application files installed to /usr/share/qoder"
+    cp -a usr/share/qoder "${pkgdir}/usr/share/"
+    echo "Main application installed to /usr/share/qoder"
   else
-    echo "ERROR: Expected directory usr/share/qoder not found!"
+    echo "ERROR: Required directory 'usr/share/qoder' not found in RPM!"
     exit 1
   fi
 
-  # Install other standard directories if present
-  [ -d "usr/bin" ] && cp -r usr/bin/* "${pkgdir}/usr/bin/" 2>/dev/null && echo "Bin symlinks installed"
-  [ -d "usr/share/applications" ] && cp -r usr/share/applications/* "${pkgdir}/usr/share/applications/" 2>/dev/null && echo "Desktop entries installed"
-  [ -d "usr/share/pixmaps" ] && cp -r usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/" 2>/dev/null && echo "Pixmaps installed"
-  [ -d "usr/share/appdata" ] && cp -r usr/share/appdata/* "${pkgdir}/usr/share/appdata/" 2>/dev/null && echo "AppData installed"
+  # Standard directories from RPM
+  for dir in bin applications pixmaps appdata; do
+    if [ -d "usr/share/${dir}" ]; then
+      mkdir -p "${pkgdir}/usr/share"
+      cp -a usr/share/${dir} "${pkgdir}/usr/share/"
+      echo "/usr/share/${dir} installed"
+    fi
+    if [ -d "usr/${dir}" ]; then
+      mkdir -p "${pkgdir}/usr"
+      cp -a usr/${dir}/* "${pkgdir}/usr/${dir}/" 2>/dev/null
+      echo "/usr/${dir} content installed"
+    fi
+  done
 
-  # Create proper executable symlink in /usr/bin
+  # Create reliable executable symlink
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf /usr/share/qoder/bin/qoder "${pkgdir}/usr/bin/qoder-gui"
-  echo "Executable symlink created: /usr/bin/qoder-gui → /usr/share/qoder/bin/qoder"
+  echo "Executable symlink created: qoder-gui → /usr/share/qoder/bin/qoder"
 
-  # Optional: additional useful symlinks
-  [ -f "${pkgdir}/usr/share/qoder/bin/qoder-tunnel" ] && \
-    ln -sf /usr/share/qoder/bin/qoder-tunnel "${pkgdir}/usr/bin/qoder-tunnel" && \
+  # Optional: qoder-tunnel if exists
+  if [ -f "${pkgdir}/usr/share/qoder/bin/qoder-tunnel" ]; then
+    ln -sf /usr/share/qoder/bin/qoder-tunnel "${pkgdir}/usr/bin/qoder-tunnel"
     echo "qoder-tunnel symlink created"
+  fi
 
   echo "================================================================================"
-  echo "Qoder GUI successfully installed!"
+  echo "Qoder GUI installation completed successfully!"
   echo ""
-  echo "Launch commands:"
-  echo "  • qoder-gui               (main application)"
-  echo "  • qoder-tunnel            (if available)"
+  echo "How to launch:"
+  echo "  • qoder-gui                 # Main application"
+  echo "  • qoder-tunnel              # If available"
+  echo "  • Or search 'Qoder' in your application menu"
   echo ""
-  echo "Or find 'Qoder' in your application menu."
-  echo "First launch: Sign in with your Qoder account to activate."
+  echo "First run: Sign in with your Qoder account (pakrohk@gmail.com)"
+  echo "Enjoy agentic coding! 🚀"
   echo "================================================================================"
 }
