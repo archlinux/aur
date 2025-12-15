@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="3D wayland compositor"
 arch=(x86_64 aarch64)
 url=https://wayfire.org
@@ -20,7 +20,6 @@ prepare() {
 
 build() {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Duse_system_wfconfig=enabled \
@@ -28,7 +27,7 @@ build() {
 		-Dxwayland=enabled \
 		-Dtests=enabled \
 		-Dcustom_pch=false
-	ninja -C build
+	meson compile -C build
 }
 
 check () {
@@ -36,7 +35,7 @@ check () {
 }
 
 package() {
-	DESTDIR="${pkgdir}/" ninja -C build install
+	meson install -C build --destdir "$pkgdir"
 	cd "${pkgname}-${pkgver}"
 	install -Dm644 wayfire.desktop "${pkgdir}/usr/share/wayland-sessions/wayfire.desktop"
 	install -Dm644 wayfire.ini "${pkgdir}/usr/share/doc/${pkgname}/wayfire.ini"
