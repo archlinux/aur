@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=netlink-notify-git
-pkgver=0.8.1.r22.g5455f7b
+pkgver=0.8.2.r0.gc396172
 pkgrel=1
 pkgdesc="Notify about netlink changes - git checkout"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ pkgver() {
 build() {
 	cd netlink-notify/
 
-	make
+	make VERSION="${pkgver}-${pkgrel}"
 }
 
 package() {
