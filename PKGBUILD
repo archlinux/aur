@@ -1,7 +1,7 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-drivers
 pkgver=2.1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Indi 3rd party drivers"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
