@@ -1,0 +1,25 @@
+pkgbase = kwin-effects-glass-git
+	pkgdesc = Fork of Plasma 6 blur effect with force blur, rounded corners, refraction, and additional features (Wayland & X11)
+	pkgver = r467.74a2247
+	pkgrel = 1
+	url = https://github.com/4v3ngR/kwin-effects-glass
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kwin
+	makedepends = kwin-x11
+	depends = kio
+	depends = knotifications
+	depends = kcrash
+	depends = kglobalaccel
+	depends = kcmutils
+	depends = libepoxy
+	optdepends = kwin-x11: for X11
+	optdepends = kwin: for Wayland
+	provides = kwin-effects-glass
+	source = kwin-effects-glass-git::git+https://github.com/4v3ngR/kwin-effects-glass.git
+	sha256sums = SKIP
+
+pkgname = kwin-effects-glass-git
