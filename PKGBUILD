@@ -1,5 +1,5 @@
 pkgname=simple-go-snake
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="High-performance terminal Snake game written in Go"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/XPLassal/simple-go-snake.git#tag=v$pkgver")
-sha256sums=('35e9d606fac4c0d274ee873af4b334d1410a2184ede5e45927eb89de044cd5e9')
+sha256sums=('a004fb3102f960745c78ec3ceb3d47f3b70c6edc0d2708b11ae90b3e3246443c')
 conflicts=('simple-snake-on-go')
 provides=('simple-snake-on-go')
 
