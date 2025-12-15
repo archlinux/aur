@@ -3,7 +3,7 @@
 # Contributor: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=git-town-bin
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="Git workflow automation to keep branches in sync and reduce merge conflicts.Written in Go.(Prebuilt version)"
 url="https://www.git-town.com/"
@@ -22,8 +22,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pkg.tar.zst::${_ghurl}/releas
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_intel_64.pkg.tar.zst")
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/git-town/git-town/v${pkgver}/LICENSE")
 sha256sums=('eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791')
-sha256sums_aarch64=('64b3ac028e1d4fd39979af26ca381dc5b6c085987e2c41257557e5770626c6b3')
-sha256sums_x86_64=('b0898b698fbebbccac7da9580323d06ef492991e41b2aa78fed5516ec65dbd9f')
+sha256sums_aarch64=('3f215409ed7654cd0c2f10631c2fba9ae6cfa26d38bd9f58944e4826c51b65c4')
+sha256sums_x86_64=('7cb61066799934f8321667ebd579bc151773dafef0efda016c6990c7e9796a1d')
 package() {
 	install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
