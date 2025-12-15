@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sparus-bin
 _pkgname=Sparus
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A simple game launcher to start and keep your game up-to-date !(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('2e274200f144db7aa2b99b615ad2df0947c30af9cbee1e7a7fe61708f6085843')
+sha256sums=('f15182e381d9c4383f213dac35ddf09ac96f83af710f4a537aa87b7d23182866')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
