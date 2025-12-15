@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -855,7 +855,7 @@ endif()
+@@ -839,7 +839,7 @@ endif()
  
  # Compiler warning flags
  if(NOT MSVC)

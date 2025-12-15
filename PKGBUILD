@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=22.43.24558.r8479.g7ce4ec736f
+pkgver=22.43.24558.r10111.g29b87958d2
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
@@ -19,15 +19,15 @@ makedepends=(
     'level-zero-headers-git'
     'libva')
 optdepends=(
-    'libdrm: for cl_intel_va_api_media_sharing'
-    'libva: for cl_intel_va_api_media_sharing')
+    'igsc: for discrete GPU firmware enumeration through Level Zero'
+    'libdrm: for cl_intel_va_api_media_sharing OpenCL extension'
+    'libva: for cl_intel_va_api_media_sharing OpenCL extension')
 provides=('intel-compute-runtime' 'opencl-driver' 'level-zero-driver')
 conflicts=('intel-compute-runtime')
-options=('!lto')
 source=('git+https://github.com/intel/compute-runtime.git'
         '010-intel-compute-runtime-disable-werror.patch')
 sha256sums=('SKIP'
-            'fbc3c652c2a5edd22b7b9134679f8ce98ef6c4726ee18b555d1787054c2205f3')
+            'c742a0dcf3404b3c0ec116887c148b21f9f09f7131c6372a44b21dfd4b7fb67b')
 
 prepare() {
     patch -d compute-runtime -Np1 -i "${srcdir}/010-intel-compute-runtime-disable-werror.patch"
@@ -40,8 +40,8 @@ pkgver() {
 build() {
     # ${${pkgver#*.}%.*} not supported by bash?
     # Fix runtime error in blender
-    CXXFLAGS+=' -DSANITIZER_BUILD=1'
-    CFLAGS+=' -DSANITIZER_BUILD=1'
+    export CXXFLAGS+=' -DSANITIZER_BUILD=1'
+    export CFLAGS+=' -DSANITIZER_BUILD=1'
     
     # fix warning: "_FORTIFY_SOURCE" redefined
     # note: upstream forces _FORTIFY_SOURCE=2
@@ -49,24 +49,22 @@ build() {
     export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     
     # opencl-headers supported by upstream is already in the source tree
-    # https://github.com/intel/compute-runtime/blob/24.48.31907.7/third_party/opencl_headers/.version
+    # https://github.com/intel/compute-runtime/blob/25.48.36300.8/third_party/opencl_headers/.version#L2
     local _opencl_headers_dir="${srcdir}/compute-runtime/third_party/opencl_headers"
     export CXXFLAGS+=" -isystem${_opencl_headers_dir}"
     
     cmake -B build -S compute-runtime \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DNEO_BUILD_UNVERSIONED_OCLOC:BOOL='ON' \
         -DNEO_DISABLE_LD_GOLD:BOOL='ON' \
         -DNEO_OCL_VERSION_MAJOR:STRING="${pkgver%%.*}" \
         -DNEO_OCL_VERSION_MINOR:STRING="$(cut -d '.' -f2 <<< "$pkgver")" \
         -DNEO_VERSION_BUILD:STRING="$(cut -d '.' -f3 <<< "$pkgver")" \
-        -DSUPPORT_DG1:BOOL='ON' \
-        -DSUPPORT_DG2:BOOL='ON' \
         -DKHRONOS_GL_HEADERS_DIR:PATH='/usr/include' \
-        -DKHRONOS_HEADERS_DIR:PATH="${_opencl_headers_dir}" \
+        -DKHRONOS_HEADERS_DIR:PATH="$_opencl_headers_dir" \
         -DSKIP_UNIT_TESTS:BOOL='ON' \
         -Wno-dev
     cmake --build build
