@@ -4,7 +4,7 @@
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-static')
-pkgver=144
+pkgver=129
 pkgrel=1
 pkgdesc="A complete 2D graphic library for drawing Text, Geometries, and Images; Static build."
 arch=('x86_64')
