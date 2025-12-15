@@ -1,4 +1,4 @@
-# Maintainer: Silent <ben10ruitenbeek@gmail.com>
+# Maintainer: B-Silent <ben10ruitenbeek@gmail.com>
 
 pkgname="winboat-appimage"
 pkgver="0.9.0"
