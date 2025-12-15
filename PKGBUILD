@@ -1,6 +1,6 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
-pkgver=1.0.0.r0.d90653a
+pkgver=1.0.1.r0.b5eef0d
 pkgrel=1
 pkgdesc="Modern Hyprland desktop environment with 100% native QuickShell/QML UI"
 arch=('x86_64')

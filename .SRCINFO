@@ -1,6 +1,6 @@
 pkgbase = qubar-git
 	pkgdesc = Modern Hyprland desktop environment with 100% native QuickShell/QML UI
-	pkgver = 1.0.0.r0.d90653a
+	pkgver = 1.0.1.r0.b5eef0d
 	pkgrel = 1
 	url = https://github.com/GeneticxCln/Qubar
 	arch = x86_64
