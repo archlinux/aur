@@ -1,46 +1,77 @@
-# Maintainer: fka-kafka <kigenbrandon at gmail dot com>
+# Maintainer: Edward Diaz <edwardiaz.dev@gmail.com>
+
 pkgname=google-antigravity-bin
-pkgver=1.11.9
-_buildid=4787439284912128
+pkgver=1.11.17
 pkgrel=1
-pkgdesc="Google Antigravity Agentic IDE (Binary Release)"
+pkgdesc="Google Antigravity IDE - The new agentic development platform"
 arch=('x86_64')
-url="https://antigravity.google"
+url="https://antigravity.google/"
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'libdrm' 'mesa' 'nspr' 'at-spi2-core')
-provides=('google-antigravity')
-conflicts=('google-antigravity')
+provides=('antigravity' 'google-antigravity')
+conflicts=('antigravity' 'google-antigravity')
+depends=('alsa-lib'
+    'dbus'
+    'gnupg'
+    'libnotify'
+    'libsecret'
+    'libxkbfile'
+    'libxss'
+    'nss'
+    'gtk3'
+    'xdg-utils'
+    'ripgrep'
+    'fd')
+makedepends=('tar' 'sed' 'desktop-file-utils')
 options=('!strip')
+source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.11.17-1765244408_amd64_9df0712156d4f7f37ea353feaa9633ca.deb"
+    "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
+sha256sums=('f5b61a4d00354f846e8850a2da9e87b7e204298f0f5cfa0365ede7207c7fc897'
+    '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
-source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
-        "google-antigravity.desktop")
+build() {
+	tar -xf "data.tar.xz"
 
-sha256sums=('193a4a61da608c526fbc329670e892ab0a961d3a65ce49485de1ca08804e472d'
-            'cf6c09424e74e645bc87eb17f987c25b61bb12a01220686f3312080b44861071')
+	# Ensure metainfo exists and safely move contents from appdata if present
+	mkdir -p usr/share/metainfo
+	if [ -d usr/share/appdata ]; then
+		shopt -s dotglob nullglob
+		mv usr/share/appdata/* usr/share/metainfo/ || true
+		shopt -u dotglob nullglob
+		rmdir usr/share/appdata 2>/dev/null || true
+	fi
+
+    # Ensure proper permissions for chrome-sandbox
+    chmod 4755 usr/share/antigravity/chrome-sandbox
+
+	# Launcher script
+	_app=/usr/share/antigravity
+	sed -e "s|code-flags|antigravity-flags|" code.sh \
+		-e "s|/usr/lib/code/out/cli.js|${_app}/resources/app/out/cli.js|" \
+		-e "s|/usr/lib/code/code.mjs|--app=${_app}/resources/app|" > run.sh
+    
+    # Note: Antigravity structure might differ from VSCode/Windsurf slightly.
+    # If cli.js is not at resources/app/out/cli.js, this might need adjustment.
+    # Based on tar output: usr/share/antigravity/antigravity exists.
+    # Usually the main binary handles CLI args.
+    # We can just symlink the main binary to /usr/bin/antigravity instead of using code.sh if it's self-contained.
+    # Windsurf uses code.sh to handle electron flags and environment variables properly.
+    
+    # Let's stick to a simple symlink for now if we are unsure about cli.js location, 
+    # OR use a simple wrapper script.
+    # Given "google antigravity" is likely based on VS Code, resources/app/out/cli.js should exist.
+    # But if not, we might break it.
+    # Safe bet: Just symlink the binary and pass args.
+    
+    echo "#!/bin/bash" > antigravity.sh
+    echo "exec /usr/share/antigravity/antigravity \"\$@\"" >> antigravity.sh
+}
 
 package() {
-    # Install the main directory to /opt
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/Antigravity/"* "${pkgdir}/opt/${pkgname}/"
-
-    # Set proper permissions for chrome-sandbox
-    if [[ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]]; then
-        chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
-    fi
-
-    # Create the executable symlink
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/antigravity" "${pkgdir}/usr/bin/google-antigravity"
-
-    # Install the Desktop File
-    install -Dm644 "${srcdir}/google-antigravity.desktop" \
-        "${pkgdir}/usr/share/applications/google-antigravity.desktop"
-
-    # Install the icon
-    install -Dm644 "${srcdir}/Antigravity/resources/app/resources/linux/code.png" \
-        "${pkgdir}/usr/share/pixmaps/google-antigravity.png"
-
-    # Install the License
-    install -Dm644 "${srcdir}/Antigravity/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    cp -r --reflink=auto usr "${pkgdir}/usr"
+    
+    # Install the wrapper script
+    install -Dm755 antigravity.sh "${pkgdir}/usr/bin/antigravity"
+    
+    # Symlink for google-antigravity if desired
+    ln -s /usr/bin/antigravity "${pkgdir}/usr/bin/google-antigravity"
 }
