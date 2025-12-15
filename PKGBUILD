@@ -1,4 +1,4 @@
-# Maintainer: gehenna14 <
+# Maintainer: gehenna14 <slkcrurzlmuq@use.startmail.com>
 # Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
