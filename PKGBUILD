@@ -1,13 +1,13 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.1.r0.b5eef0d
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
 license=('MIT')
 depends=(
-    # Core Hyprland
+    # Core Hyprland (Official Repos)
     'hyprland'
     'hyprpaper'
     'hyprlock'
@@ -16,16 +16,14 @@ depends=(
     'xdg-desktop-portal-gtk'
     'polkit-kde-agent'
     
-    # QuickShell (AUR)
+    # QuickShell (Official/AUR)
     'qt6-declarative'
     'qt6-5compat'
     'quickshell-git' # AUR
     
-    # System utilities
+    # System utilities (Official Repos)
     'brightnessctl'
     'gammastep'
-    'wlogout'        # AUR (or extra)
-    'wallust'        # AUR
     'pipewire'
     'wireplumber'
     'libnotify'
@@ -33,6 +31,10 @@ depends=(
     'slurp'
     'swappy'
     'jq'
+    
+    # System utilities (AUR)
+    'wlogout'        # AUR
+    'wallust'        # AUR
     
     # Applications
     'kitty'
@@ -71,7 +73,7 @@ optdepends=(
     'kvantum: Qt theme engine'
     'qt5ct: Qt5 configuration'
     'qt6ct: Qt6 configuration'
-    'sddm-git: Display manager (git version recommended)'
+    'sddm-git: Display manager (Recommended for graphical login)'
 )
 
 makedepends=('git')
