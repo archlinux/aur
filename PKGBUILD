@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=25.11.0
+pkgver=25.12.0
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)"
 arch=(
@@ -18,10 +18,10 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64_linux.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64_linux.rpm")
-sha256sums_aarch64=('394cb356844bb8c2e5bb0bc76382c3f0b9ec42fc8a7c216019f5ed561bd1982e')
-sha256sums_x86_64=('f2ae80a4755a035182db5b89e9dc48a8d546cc23000e627b4250547f6992fa66')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
+sha256sums_aarch64=('80e3cd90b9c5c32c13515b0266f125b88446e06bb2808df17dc457fcdf968bd0')
+sha256sums_x86_64=('43e808c6fb2e1930ef5c0b1cc30a83882fb9c48ca20baa2aeefb670c7426f445')
 prepare() {
     sed -i "s/${pkgname%-bin}_next/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
