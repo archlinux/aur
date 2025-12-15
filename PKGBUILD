@@ -2,7 +2,7 @@
 
 _pkgname=pixie-icon-theme
 pkgname="$_pkgname-git"
-pkgver=0.0.1.r26.g8780854
+pkgver=0.0.1.r27.g72adbf8
 pkgrel=1
 pkgdesc='Pixie icon theme (git development version)'
 arch=('any')
