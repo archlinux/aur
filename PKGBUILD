@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-desktop-git
-pkgver=r1946.a694d42
+pkgver=r1965.8895fe3
 pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/jellyfin/jellyfin-desktop'
 provides=('jellyfin-desktop')
 conflicts=('jellyfin-desktop')
 depends=('mpv' 'mpvqt' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt6-webengine' 'qt6-declarative')
-makedepends=('cmake' 'git' 'ninja' 'python')
+makedepends=('cmake' 'git' 'ninja')
 source=('git+https://github.com/jellyfin/jellyfin-desktop.git')
 sha256sums=('SKIP')
 

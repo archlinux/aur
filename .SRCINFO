@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-git
 	pkgdesc = Jellyfin Desktop Client
-	pkgver = r1942.ef0ebd5
+	pkgver = r1965.8895fe3
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = jellyfin-desktop-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = python
 	depends = mpv
 	depends = mpvqt
 	depends = libcec
