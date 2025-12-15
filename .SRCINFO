@@ -1,6 +1,6 @@
 pkgbase = pragtical-git
 	pkgdesc = The practical and pragmatic code editor.
-	pkgver = 3.7.1.1765206625
+	pkgver = 3.8.0.1765770906
 	pkgrel = 1
 	url = https://github.com/pragtical/pragtical
 	arch = x86_64

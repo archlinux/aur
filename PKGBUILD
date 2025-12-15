@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.7.1.1765206625
+pkgver=3.8.0.1765770906
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
   local pgo
   local lua="-Duse_system_lua=true"
   if [ -n "$PGO" ]; then
-    pgo="-Db_lto=true"
+    pgo="-Db_pgo=generate"
     lua="-Duse_system_lua=false"
   fi
 
@@ -40,8 +40,8 @@ build() {
     global_data="-global"
   fi
 
-  arch-meson --wrap-mode default --buildtype release $pgo \
-    -Db_pgo=generate --force-fallback-for=sdl3_image $lua \
+  arch-meson --wrap-mode default --buildtype debugoptimized $pgo -Db_lto=true \
+    -Dstrip=true -Doptimization=3 --force-fallback-for=sdl3_image $lua \
     build
 
   if [ -n "$PGO" ]; then
