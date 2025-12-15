@@ -1,13 +1,13 @@
-# Maintainer: Hayate Naka-mura <hayatehay.njb at gmail dot com>
+# Maintainer: Jin Asanami <hayatehay.njb at gmail dot com>
 
 _gitname='dnfpac'
 pkgname="dnfpac"
 pkgdesc="a pacman wrapper with syntax from fedora's dnf"
 pkgver="0.1.1"
-pkgrel="1"
+pkgrel="2"
 
 arch=('any')
-url="https://github.com/njb-fm/dnfpac"
+url="https://github.com/nmimusic/dnfpac"
 license=('WTFPL')
 depends=('bash')
 conflicts=('dnf' 'yum')

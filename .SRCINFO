@@ -1,14 +1,14 @@
 pkgbase = dnfpac
 	pkgdesc = a pacman wrapper with syntax from fedora's dnf
 	pkgver = 0.1.1
-	pkgrel = 1
-	url = https://github.com/njb-fm/dnfpac
+	pkgrel = 2
+	url = https://github.com/nmimusic/dnfpac
 	arch = any
 	license = WTFPL
 	depends = bash
 	conflicts = dnf
 	conflicts = yum
-	source = dnfpac-0.1.1.tar.gz::https://github.com/njb-fm/dnfpac/archive/0.1.1.tar.gz
+	source = dnfpac-0.1.1.tar.gz::https://github.com/nmimusic/dnfpac/archive/0.1.1.tar.gz
 	md5sums = 18d9ca62c740c27239a73bc0dbe96178
 
 pkgname = dnfpac
