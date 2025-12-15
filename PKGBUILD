@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.24.2.r83.ga56148d46
+pkgver=2.25.9.r72.g6162af69a
 _llvmmaj=16
 _llvmver="${_llvmmaj}.0.6"
 pkgrel=1
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
             'b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf'
             'SKIP'
             'SKIP'
-            'd2efb42a4562789a101af66e9731fe75bb89ddc9a916845fcf002fe8d7ceca70')
+            'd3333f2d71c602d8d424c86a93e3aa203b10ebc9492c5b7699804e470d5c5a0e')
 
 prepare() {
     # rename to prevent SPIRV-LLVM-Translator from being included
@@ -51,7 +51,8 @@ prepare() {
     
     # llvm: fix build with gcc 15
     # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
-    EMAIL='builduser@archlinux.org' \
+    export GIT_COMMITTER_NAME='builduser'
+    export GIT_COMMITTER_EMAIL='builduser@archlinux.org'
     git -C llvm-project cherry-pick 7e44305041d96b064c197216b931ae3917a34ac1
     
     patch -d intel-graphics-compiler -Np1 -i "${srcdir}/010-intel-graphics-compiler-disable-werror.patch"
@@ -69,16 +70,18 @@ pkgver() {
 
 build() {
     # Prevent IGC to load LLVM 17+ symbols
-    CFLAGS+=' -fno-semantic-interposition'
-    CXXFLAGS+=' -fno-semantic-interposition'
-    LDFLAGS+=' -Wl,-Bsymbolic'
+    export CFLAGS+=' -fno-semantic-interposition'
+    export CXXFLAGS+=' -fno-semantic-interposition'
+    export LDFLAGS+=' -Wl,-Bsymbolic'
     
     # fix error: "_FORTIFY_SOURCE" redefined [-Werror]
     # note: upstream forces _FORTIFY_SOURCE=2
     export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     
-    EMAIL='someone@archlinux.org' \
+    export GIT_COMMITTER_NAME='builduser'
+    export GIT_COMMITTER_EMAIL='builduser@archlinux.org'
+    
     cmake -B build -S intel-graphics-compiler \
         -G 'Unix Makefiles' \
         -DCCLANG_FROM_SYSTEM:BOOL='OFF' \
@@ -104,7 +107,6 @@ package() {
     install -D -m644 intel-graphics-compiler/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/include"/opencl-c{,-base}.h "${pkgdir}/usr/include/igc"
     mv "${pkgdir}/usr/lib/igc${pkgver%%.*}/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm "${pkgdir}/usr/bin/lld"
     
     # additional files for opencl-clang
     install -D -m644 opencl-clang/opencl_clang.h -t "${pkgdir}/usr/include/cclang"

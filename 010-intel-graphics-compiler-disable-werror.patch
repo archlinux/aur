@@ -29,12 +29,21 @@
              -Wno-unused-parameter
              -Wno-missing-field-initializers
              -Wwrite-strings
+@@ -957,7 +957,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
+             -fmessage-length=0
+             -march=rv64gc
+             -fms-extensions
+-            -Werror
++            #-Werror
+             -Wno-unused-parameter
+             -Wno-missing-field-initializers
+             -Wwrite-strings
 @@ -990,7 +990,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
-           -march=corei7
-           -mstackrealign
-           -fms-extensions
--          -Werror
-+          #-Werror
-           -Wno-unused-parameter
-           -Wno-missing-field-initializers
-           -Wwrite-strings
+             -march=corei7
+             -mstackrealign
+             -fms-extensions
+-            -Werror
++            #-Werror
+             -Wno-unused-parameter
+             -Wno-missing-field-initializers
+             -Wwrite-strings
