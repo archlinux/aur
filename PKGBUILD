@@ -1,7 +1,7 @@
 # Maintainer: Tsaitang <tsaitang404 at gmail dot com>
 pkgname=univpn
 pkgver=10781.18.1.0512
-pkgrel=9
+pkgrel=10
 pkgdesc="企业级VPN客户端"
 arch=('x86_64')
 url="https://www.univpn.com/"
@@ -59,16 +59,17 @@ exec pkexec bash -c "export DISPLAY='$DISPLAY'; export XAUTHORITY='$XAUTHORITY';
 EOF
   chmod 755 "$pkgdir/usr/bin/univpn"
   
-  # 创建桌面文件
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/univpn.desktop" << EOF
-[Desktop Entry]
-Name=UniVPN
-Comment=企业级VPN客户端
-Exec=univpn
-Icon=network-vpn
-Type=Application
-Terminal=false
-Categories=Network;RemoteAccess;
-StartupWMClass=UniVPN
-EOF
+  # 安装上游提供的图标
+  install -Dm644 "$pkgdir/opt/UniVPN/image/logo.png" "$pkgdir/usr/share/pixmaps/univpn.png"
+  
+  # 使用上游 UniVPNA.desktop（更完整），修正路径和字段
+  install -Dm644 "$pkgdir/opt/UniVPN/image/UniVPNA.desktop" "$pkgdir/usr/share/applications/univpn.desktop"
+  sed -i "s|/usr/local/UniVPN|/opt/UniVPN|g" "$pkgdir/usr/share/applications/univpn.desktop"
+  sed -i 's|^Exec=.*|Exec=univpn|' "$pkgdir/usr/share/applications/univpn.desktop"
+  sed -i 's|^Icon=.*|Icon=univpn|' "$pkgdir/usr/share/applications/univpn.desktop"
+  sed -i 's|^Categories=.*|Categories=Network;RemoteAccess;|' "$pkgdir/usr/share/applications/univpn.desktop"
+  # 添加中文本地化和 StartupWMClass
+  sed -i '/^Comment=Leagsoft UniVPN/a Name[zh_CN]=UniVPN\nComment[zh_CN]=Leagsoft UniVPN\nStartupWMClass=UniVPN' "$pkgdir/usr/share/applications/univpn.desktop"
+  # 删除无用的 GenericName[POSIX] 行
+  sed -i '/^GenericName\[POSIX\]=/d' "$pkgdir/usr/share/applications/univpn.desktop"
 }
