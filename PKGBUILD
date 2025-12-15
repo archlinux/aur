@@ -1,4 +1,4 @@
-# -*- sh -*-
+# -*- mode: sh -*-
 
 #  Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Anna Vyalkova <cyber AT sysrq DOT in>
@@ -6,8 +6,8 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=6
-pkgver=2.8.r7.g9b2dd41
-pkgrel=1
+pkgver=2.8.r21.g64bcb8b
+pkgrel=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -36,10 +36,10 @@ makedepends=(
 optdepends=(
   'chafa>=1.10: chafa and ansiwrap are required to render images in terminal'
   'timg>1.3.2: view images and videos in the terminal'
-  'wl-clipboard: copies text to  the Wayland clipboard'
+  'wl-clipboard: copies text to the Wayland clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
   'xclip: copies text to the X11 clipboard'
-  'xsel: copies text to the X11 clipboard'
+  'xsel: copies text to the X11 clipboard (alternative)'
 )
 provides=('offpunk')
 conflicts=('offpunk')
@@ -51,7 +51,8 @@ install="$pkgname.install"
 pkgver() {
   cd "$_pkgname"
 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+  git describe --long --tags --abbrev=7 \
+  | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
