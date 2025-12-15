@@ -3,7 +3,7 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2' 'zl-equalizer')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=2
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
@@ -14,9 +14,9 @@ depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'w
 makedepends=('git' 'cmake' 'kfr')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
-sha256sums=('36051c0e65d9619b0990a3c9430e18b5e45b94fb4352d20afb4af61b7347066c'
-            '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7')
+		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
+sha256sums=('046e44737dd27df571a9330d709f7edb5406a61919493741844a718d3b330338'
+            '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
 
 prepare() {
 	cd ZLEqualizer
