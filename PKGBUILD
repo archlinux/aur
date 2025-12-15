@@ -2,9 +2,9 @@
 # Contributor: Keeyou <keeyou-cn@outlook.com>
 
 pkgname=yass-proxy-qt6
-pkgver=1.16.2
+pkgver=1.20.1
 pkgrel=1
-_pkgver=1.16.2
+_pkgver=1.20.1
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64)
@@ -18,7 +18,7 @@ provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/hukeyue/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
-sha256sums=('2dac9758ad25f85931d53a8c0957ee11a91a148840569eef3a521adfdc229415')
+sha256sums=('a008f0539cc7eb3b842221d2a471941adec87dd99f7d514f694a1845efdbe89a')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"

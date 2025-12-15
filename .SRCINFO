@@ -1,6 +1,6 @@
 pkgbase = yass-proxy-qt6
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.16.2
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/hukeyue/yass
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = yass-proxy-qt6
 	optdepends = qt6-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/hukeyue/yass/releases/download/1.16.2/yass-1.16.2.tar.zst
-	sha256sums = 2dac9758ad25f85931d53a8c0957ee11a91a148840569eef3a521adfdc229415
+	source = https://github.com/hukeyue/yass/releases/download/1.20.1/yass-1.20.1.tar.zst
+	sha256sums = a008f0539cc7eb3b842221d2a471941adec87dd99f7d514f694a1845efdbe89a
 
 pkgname = yass-proxy-qt6
