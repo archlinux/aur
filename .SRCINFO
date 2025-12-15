@@ -1,6 +1,6 @@
 pkgbase = python-tibber
 	pkgdesc = Python3 library for Tibber
-	pkgver = 0.33.1
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/Danielhiversen/pyTibber
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-tibber
 	depends = python-aiohttp
 	depends = python-gql
 	depends = python-websockets
-	source = python-tibber-0.33.1.tar.gz::https://github.com/Danielhiversen/pyTibber/archive/refs/tags/0.33.1.tar.gz
-	sha256sums = a87dbc14a23ae82165520bb43b634659723f55c489ad22dff1c0ccf13e137b85
+	source = python-tibber-0.34.0.tar.gz::https://github.com/Danielhiversen/pyTibber/archive/refs/tags/0.34.0.tar.gz
+	sha256sums = bc31af571499d3f6b864c14be805780edf1942f228eecd06013649423eb24b5c
 
 pkgname = python-tibber
