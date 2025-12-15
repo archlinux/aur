@@ -1,20 +1,12 @@
 pkgbase = rtkit-suspend
 	pkgdesc = Realtime Policy and Watchdog Daemon (logind suspend support)
-	pkgver = 0.13
+	pkgver = 0.14
 	pkgrel = 1
 	url = https://github.com/arthurt/rtkit
+	install = rtkit-suspend.install
 	arch = x86_64
 	license = GPL3
 	license = custom:BSD
-	makedepends = git
-	makedepends = meson
-	makedepends = vim
-	depends = dbus
-	depends = polkit
-	depends = systemd
-	provides = rtkit
-	conflicts = rtkit
-	source = git+https://github.com/arthurt/rtkit#commit=4ac22bbbb5334a5763c6368830c085bf9841c0a7
-	b2sums = 5aea6f6da6752f2b27f521f979db3f322932a86bd410965cc33e77e723949280409486ec6d907c6d32e4d72325168a425d8cc1cfa71eecb5f70117f54dba4623
+	depends = rtkit
 
 pkgname = rtkit-suspend

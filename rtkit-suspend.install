@@ -1,0 +1,4 @@
+post_upgrade() {
+    echo "WARNING: rtkit-suspend is deprecated and will no longer be maintained."
+    echo "Please uninstall this package and install 'rtkit' instead."
+}
