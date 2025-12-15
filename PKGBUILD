@@ -4,13 +4,13 @@
 _base=numdifftools
 pkgname=python-${_base}
 pkgver=0.9.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Solve automatic numerical differentiation problems in one or more variables"
 url="https://github.com/pbrod/${_base}"
 license=(BSD-3-Clause)
 arch=(x86_64)
 depends=(python-scipy)
-makedepends=(python-build python-installer python-pytest-runner python-wheel)
+makedepends=(python-build python-installer python-pdm-backend python-wheel)
 checkdepends=(python-hypothesis python-matplotlib python-algopy python-lineprofiler)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('6f4061961e6ef8042ea9a2e2cae50b32e6489b6e0d5f8acbb5988e4635a4e8e4e4c551f24fb5bd0ca5fbcb873c5be8cc8fda1e1140e3e3e264d798e7d0928a88')
