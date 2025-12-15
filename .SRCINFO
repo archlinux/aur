@@ -1,13 +1,13 @@
 pkgbase = mssql-server-fts
 	pkgdesc = Microsoft SQL Server Full Text Search
-	pkgver = 16.0.4205.1
+	pkgver = 16.0.4225.2
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16
 	install = mssql-server-fts.install
 	arch = x86_64
 	license = unknown
-	source = https://pmc-prod-afd-endpoint-evdhh8f8byhsezfp.b01.azurefd.net/rhel/8/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4205.1-1.x86_64.rpm
-	sha256sums = 7f814c34e17bf465ca8857263e84fde77fe9818ef2f90c396e810296cc3ebab5
+	depends = mssql-server=16.0.4225.2
+	source = https://pmc-prod-afd-endpoint-evdhh8f8byhsezfp.b01.azurefd.net/rhel/8/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4225.2-2.x86_64.rpm
+	sha256sums = 727166143629077b38c14d96e4731d2f7d76de734de1a7d156c70e2772b88541
 
 pkgname = mssql-server-fts
-	depends = mssql-server=16.0.4205.1
