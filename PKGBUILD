@@ -151,3 +151,4 @@ To uninstall:
     /usr/share/qubar/uninstall.sh
 EOF
 }
+
