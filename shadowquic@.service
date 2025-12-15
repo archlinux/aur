@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/shadowquic -c /etc/shadowquic/config.yaml
+ExecStart=/usr/bin/shadowquic -c /etc/shadowquic/%i.yaml
 Restart=always
 RestartSec=5s
 
