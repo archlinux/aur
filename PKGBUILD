@@ -82,44 +82,39 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$pkgname"
+    cd "$srcdir/$pkgname"
     
     # Create installation directory
     install -dm755 "$pkgdir/usr/share/qubar"
     
-    # Copy all files
-    cp -r backend "$pkgdir/usr/share/qubar/"
-    cp -r topbar "$pkgdir/usr/share/qubar/"
-    cp -r panel "$pkgdir/usr/share/qubar/"
-    cp -r launcher "$pkgdir/usr/share/qubar/"
-    cp -r overview "$pkgdir/usr/share/qubar/"
-    cp -r theme "$pkgdir/usr/share/qubar/"
-    cp -r modules "$pkgdir/usr/share/qubar/"
-    cp -r services "$pkgdir/usr/share/qubar/"
-    cp -r hypr "$pkgdir/usr/share/qubar/"
-    cp -r scripts "$pkgdir/usr/share/qubar/"
-    cp -r install-scripts "$pkgdir/usr/share/qubar/"
-    cp -r .config "$pkgdir/usr/share/qubar/"
-    cp shell.qml "$pkgdir/usr/share/qubar/"
-    cp GlobalStates.qml "$pkgdir/usr/share/qubar/"
-    cp config.json "$pkgdir/usr/share/qubar/"
+    # Copy core components
+    cp -r backend topbar panel launcher overview theme modules \
+          services hypr scripts install-scripts .config \
+          shell.qml GlobalStates.qml config.json \
+          "$pkgdir/usr/share/qubar/"
+
+    # Fix permissions (Standard Arch packaging practice)
+    # Directories 755, Files 644 by default
+    find "$pkgdir/usr/share/qubar" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/qubar" -type f -exec chmod 644 {} +
+
+    # Restore executable permissions for scripts
+    find "$pkgdir/usr/share/qubar" -name "*.sh" -exec chmod 755 {} +
     
     # Documentation
     install -dm755 "$pkgdir/usr/share/doc/qubar"
     cp -r docs/* "$pkgdir/usr/share/doc/qubar/" 2>/dev/null || true
-    cp README.md "$pkgdir/usr/share/doc/qubar/"
-    cp UI_ARCHITECTURE.md "$pkgdir/usr/share/doc/qubar/"
-    cp PROJECT_SUMMARY.md "$pkgdir/usr/share/doc/qubar/"
+    install -m644 README.md UI_ARCHITECTURE.md PROJECT_SUMMARY.md "$pkgdir/usr/share/doc/qubar/"
     
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
-    # Installation script
+    # Installation scripts (explicitly executable)
     install -Dm755 install.sh "$pkgdir/usr/share/qubar/install.sh"
     install -Dm755 uninstall.sh "$pkgdir/usr/share/qubar/uninstall.sh"
     
