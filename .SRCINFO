@@ -1,6 +1,6 @@
 pkgbase = shout
 	pkgdesc = Lightweight speech-to-text for Wayland/Hyprland, optimized for AI coding agents
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/robzolkos/shout
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = shout
 	depends = wtype
 	depends = pipewire-audio
 	depends = libnotify
-	source = shout-1.0.2.tar.gz::https://github.com/robzolkos/shout/archive/v1.0.2.tar.gz
+	source = shout-1.0.3.tar.gz::https://github.com/robzolkos/shout/archive/v1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = shout
