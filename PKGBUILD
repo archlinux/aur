@@ -5,7 +5,7 @@ pkgname=${_pkgname}-git
 pkgdesc="mkinitcpio hook to set VT console colors during early userspace"
 license=('MIT')
 url="https://github.com/evanpurkhiser/${_pkgname}"
-pkgver=22.21a3a1f
+pkgver=26.f0a18fb
 pkgrel=1
 
 source=("${_pkgname}::git+${url}.git")
