@@ -1,13 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=netlink-notify-git
-pkgver=0.8.1.r2.gebe67ba
+pkgver=0.8.1.r22.g5455f7b
 pkgrel=1
 pkgdesc="Notify about netlink changes - git checkout"
 arch=('i686' 'x86_64')
 url="https://github.com/eworm-de/netlink-notify"
 depends=('libsystemd' 'libnotify')
-makedepends=('git' 'systemd' 'imagemagick' 'discount')
+makedepends=('git' 'systemd' 'discount' 'resvg' 'oxipng')
 provides=('netlink-notify')
 conflicts=('netlink-notify')
 license=('GPL')
