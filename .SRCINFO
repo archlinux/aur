@@ -1,0 +1,15 @@
+pkgbase = fat32format
+	pkgdesc = Format USB drives as FAT32 regardless of size
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Germ-99/Fat32Format
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = linux-headers
+	source = fat32format-2.0.0.tar.gz::https://github.com/Germ-99/Fat32Format/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = ef248f95e572afc88cdfa25f3de5fb28c48f49ee3b4f32df26829c5addfa0e18
+
+pkgname = fat32format
