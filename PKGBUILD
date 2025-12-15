@@ -2,7 +2,7 @@
 
 _pkgname=slurp_sway
 pkgname=python-${_pkgname/_/-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Slurp with Sway-specific features such as toplevel selection"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Ferdi265/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b21d86d086f239ba30f6c2dd22a36f3c28c834c01d23cfff9e0af247929d0146')
+sha256sums=('1463945ebdbff3e80084947cd8c8df0af331e09c68fbf51bea221097d21c60bc')
 
 build() {
   cd $_pkgname-$pkgver

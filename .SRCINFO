@@ -1,6 +1,6 @@
 pkgbase = python-slurp-sway
 	pkgdesc = Slurp with Sway-specific features such as toplevel selection
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Ferdi265/slurp_sway/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-slurp-sway
 	depends = python
 	depends = slurp
 	depends = sway
-	source = slurp_sway-1.0.0.tar.gz::https://github.com/Ferdi265/slurp_sway/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = b21d86d086f239ba30f6c2dd22a36f3c28c834c01d23cfff9e0af247929d0146
+	source = slurp_sway-1.0.1.tar.gz::https://github.com/Ferdi265/slurp_sway/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 1463945ebdbff3e80084947cd8c8df0af331e09c68fbf51bea221097d21c60bc
 
 pkgname = python-slurp-sway
