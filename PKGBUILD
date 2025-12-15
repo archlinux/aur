@@ -1,6 +1,6 @@
 # Maintainer : swarnim.114@gmail.com
 pkgname=webapp-creator
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple CLI tool to create desktop web applications on Linux"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Swarnim114/webapp-creator"
 license=('MIT')
 depends=('python')
 source=("https://raw.githubusercontent.com/Swarnim114/webapp-creator/main/webapp_creator.py")
-sha256sums=('5ec20913040964ea852bb204b577beab99f4b32e61a41e7631e077484ffbb8a8')
+sha256sums=('c5f8468d36bd5cb0e76695f76b5f243057109b1f4011ddbee3a90e759bbe106e')
 
 package() {
     # Create the destination directory
