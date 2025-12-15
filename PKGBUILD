@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=1.0.154
+pkgver=1.0.155
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
@@ -22,7 +22,7 @@ build() {
   cd "opencode-${pkgver}"
   bun install
   cd ./packages/opencode
-  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.0.154 bun run ./script/build.ts --single
+  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.0.155 bun run ./script/build.ts --single
 }
 
 package() {
