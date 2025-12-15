@@ -1,7 +1,7 @@
 # Maintainer: pgg <ppg.se3@gmail.com>
 
 pkgname=how-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight AI assistant for your CLI — turns 'WTF do I type?' into commands"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=()
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ae852dc6582c34bbe61380907e454c0bca8a191e1ea5c66df432a84bd635d3fb')
+sha256sums=('2aafb4854e5fd6e0aa6a8609a45112b33a8c01f63a59c0ceb86d72041254ba15')
 
 build() {
   cd "how-cli-${pkgver}"
