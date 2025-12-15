@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20251215
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/lisuml/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
