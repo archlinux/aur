@@ -1,0 +1,24 @@
+pkgbase = rpicam-apps
+	pkgdesc = This is a small suite of libcamera-based applications to drive the cameras on a Raspberry Pi platform.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/raspberrypi/rpicam-apps
+	arch = aarch64
+	license = LGPLv2
+	license = MIT
+	license = GPLv3
+	license = BSD2
+	license = BSD3
+	makedepends = meson
+	makedepends = python-jinja
+	makedepends = python-sphinx
+	depends = boost
+	depends = kmsxx
+	depends = libpisp
+	depends = python-pidng
+	depends = python-piexif
+	depends = python-prctl
+	source = https://github.com/raspberrypi/rpicam-apps/archive/refs/tags/v1.10.1.tar.gz
+	sha256sums = 27fd37794d49cccbb742365df060fdaa8f269c734c7dc786fad31acb934f19a1
+
+pkgname = rpicam-apps
