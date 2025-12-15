@@ -3,6 +3,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+# BUILD-CLEAN-CHROOT
+
 pkgname=qt5-webengine
 _basever=5.15.18
 pkgver=5.15.19
@@ -120,8 +122,8 @@ prepare() {
 
 build() {
   # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2} -Wno-error"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2} -Wno-error"
 
   cd build
   qmake "../${_srcdir}" CONFIG+='force_debug_info' -- \
