@@ -1,0 +1,18 @@
+pkgbase = ppd-tray-applet-git
+	pkgdesc = A simple tray applet for power-profiles-daemon to manage power profiles
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/RevenantX/ppd-tray-applet.git
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.22.0
+	depends = glibc
+	options = !strip
+	options = !lto
+	options = !debug
+	source = git+https://github.com/RevenantX/ppd-tray-applet.git
+	sha256sums = SKIP
+
+pkgname = ppd-tray-applet-git
