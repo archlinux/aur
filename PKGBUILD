@@ -1,7 +1,7 @@
 # Maintainer: werdxz
 
 pkgname=portty-git
-pkgver=r4.2b533ff
+pkgver=r16.8805a37
 pkgrel=1
 pkgdesc="XDG Desktop Portal backend for TTY environments"
 arch=('x86_64')
@@ -30,8 +30,8 @@ package() {
     # Install daemon
     install -Dm755 "target/release/porttyd" "$pkgdir/usr/lib/portty/porttyd"
 
-    # Install builtin
-    install -Dm755 "target/release/portty-builtin" "$pkgdir/usr/lib/portty/portty-builtin"
+    # Install CLI
+    install -Dm755 "target/release/portty" "$pkgdir/usr/bin/portty"
 
     # Install portal file
     install -Dm644 "misc/tty.portal" "$pkgdir/usr/share/xdg-desktop-portal/portals/tty.portal"
