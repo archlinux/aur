@@ -8,8 +8,8 @@ _pkgname="vial"
 _Pkgname="Vial"
 pkgname="$_pkgname-git"
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
-pkgver=1
-pkgrel=1
+pkgver=0.5
+pkgrel=2
 url="https://get.vial.today/"
 license=("GPL-2.0-only")
 arch=("any")
@@ -25,13 +25,13 @@ depends=('python>=3.6'
          'pyinstaller>=3.4'
          'python-pyqt5>=5.9.2'
          'python-simpleeval'
-         'python-sip>=4.19.8'
+         'python-sip4>=4.19.8'
          'python-certifi')
 makedepends=('git'
              'libusb'
              'ruby'
              'rubygems'
-             'rubt-dotenv'
+             'ruby-dotenv'
              'fpm'
              'imagemagick'
 )

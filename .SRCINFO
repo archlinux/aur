@@ -1,7 +1,7 @@
 pkgbase = vial-git
 	pkgdesc = Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time.
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 0.5
+	pkgrel = 2
 	url = https://get.vial.today/
 	arch = any
 	license = GPL-2.0-only
@@ -14,7 +14,7 @@ pkgbase = vial-git
 	makedepends = libusb
 	makedepends = ruby
 	makedepends = rubygems
-	makedepends = rubt-dotenv
+	makedepends = ruby-dotenv
 	makedepends = fpm
 	makedepends = imagemagick
 	depends = python>=3.6
@@ -29,9 +29,9 @@ pkgbase = vial-git
 	depends = pyinstaller>=3.4
 	depends = python-pyqt5>=5.9.2
 	depends = python-simpleeval
-	depends = python-sip>=4.19.8
+	depends = python-sip4>=4.19.8
 	depends = python-certifi
-	provides = vial=1
+	provides = vial=0.5
 	conflicts = vial-appimage
 	noextract = pkg2appimage.AppImage
 	source = Vial::git+https://github.com/vial-kb/vial-gui
