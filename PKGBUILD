@@ -1,8 +1,8 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.1.r0.b5eef0d
-pkgrel=2
-pkgdesc="Modern Hyprland desktop environment with 100% native QuickShell/QML UI"
+pkgrel=3
+pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
 license=('MIT')
@@ -16,16 +16,16 @@ depends=(
     'xdg-desktop-portal-gtk'
     'polkit-kde-agent'
     
-    # QuickShell
+    # QuickShell (AUR)
     'qt6-declarative'
     'qt6-5compat'
-    'quickshell-git'
+    'quickshell-git' # AUR
     
     # System utilities
     'brightnessctl'
     'gammastep'
-    'wlogout'
-    'wallust'
+    'wlogout'        # AUR (or extra)
+    'wallust'        # AUR
     'pipewire'
     'wireplumber'
     'libnotify'
@@ -71,8 +71,7 @@ optdepends=(
     'kvantum: Qt theme engine'
     'qt5ct: Qt5 configuration'
     'qt6ct: Qt6 configuration'
-    'sddm: Display manager'
-    'sddm-git: Display manager (git version)'
+    'sddm-git: Display manager (git version recommended)'
 )
 
 makedepends=('git')
@@ -97,6 +96,10 @@ package() {
           services hypr scripts install-scripts .config \
           shell.qml GlobalStates.qml config.json \
           "$pkgdir/usr/share/qubar/"
+
+    # Cleanup .git artifacts if any copied over
+    find "$pkgdir/usr/share/qubar" -name ".git*" -exec rm -rf {} +
+    find "$pkgdir/usr/share/qubar" -name "__pycache__" -exec rm -rf {} +
 
     # Fix permissions (Standard Arch packaging practice)
     # Directories 755, Files 644 by default
