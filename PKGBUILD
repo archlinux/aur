@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _appname=hover
 pkgname="${_appname}fly-bin"
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Lightweight service virtualization/API simulation tool for developers and testers.(Prebuilt version)"
 arch=(
