@@ -2,7 +2,7 @@
 # Contributor: Sylvain Durand <arch@durand.tf>
 
 pkgname=uptime-kuma
-pkgver=1.23.16
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A fancy self-hosted monitoring tool'
 
@@ -16,16 +16,27 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}-dist-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/dist.tar.gz"
   "uptime-kuma.service"
+  "sysusers.conf"
+  "tmpfiles.conf"
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
-b2sums=('7ba8eeabe61dfb2aea46c3b9ed53c97adaed36f00ae8ecd3329cab5db205790cbac97ed3fa728d3fdb9630479dff910c370c8cbd9eb4f4a676bb6533ada5ad27'
-        '45e58f59f1562a21aee840fb7adb108b64f4a09c8c739e7847b348c8845cdbca5d0d70035fc4229c1a622589241eebdeae41b56a3669162c004e5aa665e94e40'
-        'dbeac93f20082847cffc991224df2ac85963a03a02898b06b8444d4f33b2f4a51323bdcd2c940df41d1c8beed1e2b75fa449cff7d80dd9d5213f627bbe409f90')
+b2sums=('129b312cae14a17423de50f3dd9dba463bf13306ae6b27121145196f302483abf02ee651b09f343a20d7f2c12495d5b1e5ab5e2f00621f9e3ef6d136fac64e12'
+        'c5b68e3f272889c357bc6c9320e89dcee80c9f49ab93afa32f6875384addba59b31cb6b0794b55053e3ab3e451362605047b5641c6f8a449e5161692b1d26178'
+        'e94993b96c0934e22979f714fe73e12328a8820ec6604cfd8cda19cf3396d31d5d1b23480dd72cf20e861a62ddf1401623ec7cc582310c6a2f2257d7b810bcc6'
+        'b335b1456591386937213f608b92fa4bf6e4431452f09583f030f0bb1edecdf5c6ce01b284e1bd3324738d565f38142339679cbbea18d19a0781806831214864'
+        '05b89792c16d415e380dd0b3a2cec04e12406646531f0ce9d8c7aeff29cdd56b452ee4411aa07f404d2511bb315cc619567eee328b39c8b78f93ed88ddd9c7d6')
 
 package() {
   npm install --global --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tar.gz --cache npm-cache
 
   cp --recursive "$srcdir"/dist "$pkgdir"/usr/lib/node_modules/$pkgname/
-  install -D -m 644 "${srcdir}/uptime-kuma.service" ${pkgdir}/usr/lib/systemd/system/uptime-kuma.service
+
+  ln -s /var/lib/$pkgname "$pkgdir"/usr/lib/node_modules/$pkgname/data
+
+  # systemd integration
+  install -vDm644 uptime-kuma.service \
+     "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -vDm644 sysusers.conf "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -vDm644 tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
 }
