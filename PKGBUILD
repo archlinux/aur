@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -17,13 +17,41 @@ makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('03d7a89c4cf92dbcfe6b02e8d20b5b1be3373dd0e8bdf116c27ee2b991061366')
+sha256sums=('b0636726bab1f7220a477fef0da4f45aba459c8a68da2ed8e9c273bdeca9a2be')
 
 build() {
   cd "pragtical-$pkgver"
-  arch-meson --wrap-mode default --buildtype release \
-    -Db_lto=true -Duse_system_lua=true \
+
+  local pgo
+  local lua="-Duse_system_lua=true"
+  if [ -n "$PGO" ]; then
+    pgo="-Db_lto=true"
+    lua="-Duse_system_lua=false"
+  fi
+
+  local global_data
+  if [ -n "$GLOBAL" ]; then
+    global_data="-global"
+  fi
+
+  arch-meson --wrap-mode default --buildtype release $pgo -Db_lto=true \
+    -Db_pgo=generate -Dstrip=true -Doptimization=3 --force-fallback-for=sdl3_image $lua \
     build
+
+  if [ -n "$PGO" ]; then
+    meson compile -C build
+    case "$XDG_SESSION_TYPE" in
+      wayland|x11)
+        ./scripts/run-local $global_data build run -n scripts/lua/pgo.lua
+        ;;
+      *)
+        SDL_VIDEO_DRIVER="dummy" \
+          ./scripts/run-local $global_data build run -n scripts/lua/pgo.lua
+        ;;
+    esac
+    meson configure -Db_pgo=use build
+  fi
+
   meson compile -C build
 }
 
