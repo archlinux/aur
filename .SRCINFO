@@ -13,6 +13,8 @@ pkgbase = qoder-gui-bin
 	depends = at-spi2-core
 	depends = libdrm
 	depends = mesa
+	depends = libcups
+	depends = libglib-2.0
 	options = !strip
 
 pkgname = qoder-gui-bin

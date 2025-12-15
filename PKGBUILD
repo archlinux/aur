@@ -1,5 +1,4 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
-# Contributor: (optional - add if someone helps)
 pkgname=qoder-gui-bin
 pkgver=latest
 pkgrel=1
@@ -8,8 +7,7 @@ url="https://qoder.com"
 arch=('x86_64')
 license=('proprietary')
 
-# Runtime dependencies for typical Electron/Chromium-based GUI applications
-# These cover most common missing library errors on fresh Arch installs
+# Runtime dependencies for Electron/VSCode-based applications
 depends=(
   'gtk3'
   'libappindicator-gtk3'
@@ -19,80 +17,80 @@ depends=(
   'at-spi2-core'
   'libdrm'
   'mesa'
+  'libcups'
+  'libglib-2.0'
 )
 
-# No makepends required - bsdtar (libarchive) is part of the base system on Arch Linux
+# bsdtar is part of base Arch system - no makedepends needed
 options=('!strip')
 
-# Official direct download URL for the latest Linux RPM (x86_64)
 _source_url="https://download.qoder.com/release/latest/qoder_x86_64.rpm"
 
 prepare() {
   cd "${srcdir}"
 
-  # Download the latest RPM if not already present in the source directory
   if [ ! -f "qoder_x86_64.rpm" ]; then
     echo "================================================================================"
     echo "Downloading latest Qoder GUI RPM from official source..."
     echo "URL: ${_source_url}"
     echo "================================================================================"
-    curl -L -O "${_source_url}" || {
-      echo "ERROR: Download failed. Check your internet connection or visit https://qoder.com/download"
-      exit 1
-    }
+    curl -L -O "${_source_url}" || exit 1
   else
     echo "================================================================================"
     echo "Using existing qoder_x86_64.rpm from source directory"
     echo "================================================================================"
   fi
 
-  # Extract RPM contents using bsdtar (no external tools like rpm2cpio or cpio needed)
-  echo "Extracting RPM package with bsdtar..."
+  echo "Extracting RPM package using bsdtar..."
   bsdtar -xf qoder_x86_64.rpm
 
-  # Security notice - Qoder does not provide official checksums
   echo "================================================================================"
-  echo "NOTE: Qoder does not publish official SHA256/MD5 checksums."
-  echo "      For security-critical use, verify the downloaded file manually."
+  echo "NOTE: Qoder does not provide official checksums."
+  echo "      Verify the downloaded file manually if security is critical."
   echo "================================================================================"
 }
 
 package() {
   cd "${srcdir}"
 
-  echo "Installing Qoder GUI files..."
+  echo "================================================================================"
+  echo "Installing Qoder GUI application files..."
+  echo "================================================================================"
 
-  # Most RPMs extract to opt/qoder - copy everything there if present
-  if [ -d "opt/qoder" ]; then
-    mkdir -p "${pkgdir}/opt"
-    cp -r opt/qoder "${pkgdir}/opt/"
-    echo "Copied application files to /opt/qoder"
-  elif [ -d "usr" ]; then
-    # Fallback for unusual RPM layouts
-    cp -r usr/* "${pkgdir}/usr/"
-    echo "Copied files from usr/ hierarchy"
+  # The actual application is under usr/share/qoder
+  if [ -d "usr/share/qoder" ]; then
+    mkdir -p "${pkgdir}/usr/share"
+    cp -r usr/share/qoder "${pkgdir}/usr/share/"
+    echo "Application files installed to /usr/share/qoder"
   else
-    echo "WARNING: Unexpected RPM structure detected. Files may need manual adjustment."
+    echo "ERROR: Expected directory usr/share/qoder not found!"
+    exit 1
   fi
 
-  # Create symlink to main executable (common names: qoder, Qoder, AppRun, etc.)
-  # The find command automatically picks the most likely executable
-  find "${pkgdir}/opt/qoder" -type f -executable \( -name 'qoder' -o -name 'Qoder' -o -name 'AppRun' \) -exec \
-    sh -c 'install -Dm755 "$1" "${pkgdir}/usr/bin/qoder-gui"' _ {} \; 2>/dev/null || \
-    echo "WARNING: No obvious executable found. You may need to create a symlink manually."
+  # Install other standard directories if present
+  [ -d "usr/bin" ] && cp -r usr/bin/* "${pkgdir}/usr/bin/" 2>/dev/null && echo "Bin symlinks installed"
+  [ -d "usr/share/applications" ] && cp -r usr/share/applications/* "${pkgdir}/usr/share/applications/" 2>/dev/null && echo "Desktop entries installed"
+  [ -d "usr/share/pixmaps" ] && cp -r usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/" 2>/dev/null && echo "Pixmaps installed"
+  [ -d "usr/share/appdata" ] && cp -r usr/share/appdata/* "${pkgdir}/usr/share/appdata/" 2>/dev/null && echo "AppData installed"
 
-  # Install .desktop file if present (for menu integration)
-  find . -name '*.desktop' -exec install -Dm644 {} "${pkgdir}/usr/share/applications/" \; 2>/dev/null && \
-    echo "Desktop entry installed"
+  # Create proper executable symlink in /usr/bin
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -sf /usr/share/qoder/bin/qoder "${pkgdir}/usr/bin/qoder-gui"
+  echo "Executable symlink created: /usr/bin/qoder-gui → /usr/share/qoder/bin/qoder"
 
-  # Copy icons if a directory named 'icons' or similar exists
-  find . -type d \( -name 'icons' -o -name 'hicolor' \) -exec cp -r {} "${pkgdir}/usr/share/" \; 2>/dev/null && \
-    echo "Icons installed"
+  # Optional: additional useful symlinks
+  [ -f "${pkgdir}/usr/share/qoder/bin/qoder-tunnel" ] && \
+    ln -sf /usr/share/qoder/bin/qoder-tunnel "${pkgdir}/usr/bin/qoder-tunnel" && \
+    echo "qoder-tunnel symlink created"
 
   echo "================================================================================"
-  echo "Qoder GUI installation complete!"
-  echo "Launch with: qoder-gui"
-  echo "or from your application menu."
-  echo "First run will prompt for sign-in with your Qoder account."
+  echo "Qoder GUI successfully installed!"
+  echo ""
+  echo "Launch commands:"
+  echo "  • qoder-gui               (main application)"
+  echo "  • qoder-tunnel            (if available)"
+  echo ""
+  echo "Or find 'Qoder' in your application menu."
+  echo "First launch: Sign in with your Qoder account to activate."
   echo "================================================================================"
 }
