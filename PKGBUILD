@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -25,4 +25,6 @@ package() {
 	install -Dm644 ./commands.md "$pkgdir/usr/share/doc/$pkgname/commands.md"
 	install -Dm644 ./configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    # install -Dm644 $pkgname.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.svg"
 }
