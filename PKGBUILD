@@ -1,7 +1,7 @@
 
 
 pkgname=jaq-git
-pkgver=3.0.0.r9.g98ba723
+pkgver=3.0.0.r25.g43c41e21
 pkgver() {
   cd jaq
   git describe --long --tags | sed -e "s/v//" -e 's/-alpha-/.r/' -e 's/\-/\./g'
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 build() {
   cd jaq
-  test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+  test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort"
   RUSTFLAGS+=" -Cpanic=abort"
   cargo build --release $_cargoflags
 }

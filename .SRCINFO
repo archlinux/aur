@@ -1,6 +1,6 @@
 pkgbase = jaq-git
 	pkgdesc = A jq clone
-	pkgver = 3.0.0.r9.g98ba723
+	pkgver = 3.0.0.r25.g43c41e21
 	pkgrel = 1
 	url = https://github.com/01mf02/jaq
 	arch = x86_64
