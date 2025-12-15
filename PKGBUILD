@@ -1,8 +1,8 @@
 # Maintainer: username227 <gfrank227 at gmail dot com> 
 
 pkgname=deemix-gui
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='A GUI electron app for the deemix library. Download music from deezer.'
 url=https://github.com/bambanah/deemix
 license=(GPL-3.0-or-later)
@@ -13,7 +13,7 @@ depends=('electron')
 makedepends=('git' 'dpkg' 'pnpm' 'cairo' 'nodejs' 'zip')
 source=("git+https://github.com/bambanah/deemix#tag=${pkgname}@${pkgver}"
 		"desktop_patch.patch")
-b2sums=('eecabee2598f58a7860c9e1b1c7fec6aa89002fb18c007aba207db5fb7cb03f6b071b4935a00111913bb2dedfd3ca846106d1506f4b2e069a81ca8dd3f47bda6'
+b2sums=('7067ea0476fd5b6738e4951ddddc51ba8ffedd8c9cf1f99ded036d9721c3364e9aafc62e53e738193d1fa1aba3027c8d1f3d4697d1e6672981b48f37abd7ef12'
         '169cd20411165c1e1ef594c79ab19a76b46ea7ab78da07e7c348cb8f0348047c3b92666fbda0806e833c8f3862ea68095c1f1e8d8220656323351e0f65d6f1b1')
 options=('!strip')
 
