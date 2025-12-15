@@ -1,7 +1,7 @@
 # Maintainer: Batjigdrel Bataa <jiji-wp@proton.me>
 
 pkgname=daph
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A music player in the terminal. Written in Rust."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/jiji-wp/daph/archive/v${pkgver}.tar.gz")
 
-sha256sums=('768aa41e9ee63171338b21f2e3e1ec7ac8ff778f834bd60849d85fd78fbba184')
+sha256sums=('5ccfd4f0265bf15f8c62149e0b007f898c6f894feea9033ce492ed6b325ec252')
 
 package() {
     cd "$srcdir/$pkgname"
