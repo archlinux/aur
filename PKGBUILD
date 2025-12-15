@@ -1,13 +1,13 @@
 # Maintainer: DeepChirp <DeepChirp@outlook.com>
 pkgname=easyeffects-digitalone1-presets-git
 _origin=EasyEffects-Presets
-pkgver=r68.32d0f41
+pkgver=r74.605c873
 pkgrel=1
 pkgdesc="Community Presets for Easyeffects: Loudness Equalizer"
 arch=('any')
 url="https://github.com/Digitalone1/${_origin}"
 license=('MIT')
-depends=('easyeffects>=7.0.0' 'lsp-plugins-lv2>=1.2.17')
+depends=('easyeffects>=7.0.0' 'lsp-plugins-lv2>=1.2.17' 'libdeep_filter_ladspa')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
