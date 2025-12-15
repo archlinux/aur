@@ -1,6 +1,6 @@
 pkgbase = python-edge-tts
 	pkgdesc = Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command
-	pkgver = 7.2.3
+	pkgver = 7.2.7
 	pkgrel = 1
 	url = https://github.com/rany2/edge-tts
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-edge-tts
 	depends = python-idna
 	depends = python-certifi
 	optdepends = mpv: immediate tts playback with the provided edge-playback command
-	source = https://github.com/rany2/edge-tts/archive/refs/tags/7.2.3.tar.gz
-	sha256sums = 2950aae6d0c2ed8cadb0927608f9c76f4e063c6fbd384b629bc63dd31f681c0c
+	source = https://github.com/rany2/edge-tts/archive/refs/tags/7.2.7.tar.gz
+	sha256sums = fb7cc14e198a960883130028902255c5db23ad0d0b7cdbb1d0aa23c1eda3a24c
 
 pkgname = python-edge-tts
