@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2025.09.0
+pkgver=2025.12.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('dektec-drivers-dkms' 'dektec-dkms')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}.tar.gz"
         'dkms.conf'
         'Makefile')
-sha256sums=('5617767108c5782b0485f1d3f5e0d94ea5fcdb4a6c66fd62525188c0e401f173'
+sha256sums=('8173c420ec3c707164143588fd3e5c3ef98501a2c46e23a06440db8bb3059975'
             '0d70f1668ae0dbb608f865333eba8e188f2b97488d5f52c5fd65891ea6ab13be'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
