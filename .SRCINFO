@@ -1,6 +1,6 @@
 pkgbase = bird2
 	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon
-	pkgver = 2.17.2
+	pkgver = 2.17.3
 	pkgrel = 1
 	url = https://bird.network.cz/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = bird2
 	replaces = bird6
 	options = !emptydirs
 	backup = etc/bird.conf
-	source = https://gitlab.nic.cz/labs/bird/-/archive/v2.17.2/bird-v2.17.2.tar.gz
+	source = https://gitlab.nic.cz/labs/bird/-/archive/v2.17.3/bird-v2.17.3.tar.gz
 	source = bird.service
-	sha256sums = 7837e880307b0e20ff80e34b368d8a61f82ba93b1fd0f594bb656285ff4bac86
+	sha256sums = b5f8d652a004f15eb951b586a45938101df88c458bec9c7d5fc7288ba48227bc
 	sha256sums = 4aa1e8d41229badd276aa3747f613e7df34761892add2258c63bdb5097dfeb2b
 
 pkgname = bird2
