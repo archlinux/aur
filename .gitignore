@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml

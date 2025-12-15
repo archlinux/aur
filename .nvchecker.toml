@@ -1,0 +1,4 @@
+[lzbench]
+source = "git"
+git = "https://github.com/inikep/lzbench.git"
+prefix = "v"
