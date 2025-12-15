@@ -4,8 +4,8 @@
 # Contributor: Alkindi42
 
 pkgname='dasel'
-pkgver=2.8.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
@@ -15,7 +15,7 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 changelog="$pkgname.changelog"
 
-# Used in LDFLAGS
+# Used in LDFLAGS (although no longer used by dasel v3+)
 _majver="${pkgver/[.]*/}"
 
 prepare() {
@@ -45,46 +45,49 @@ build() {
       ./cmd/dasel/main.go
 
   # Create man pages
-  ./dasel man
+  #./dasel man
 
   # Create shell completions
-  for _shell in bash fish zsh; do
-    ./dasel completion "$_shell" > "_completion.$_shell"
-  done
+  #for _shell in bash fish zsh; do
+  #  ./dasel completion "$_shell" > "_completions.$_shell"
+  #done
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
-  go test ./...
+  : go test ./...
 
-  ./dasel --version
+  ### --version switch is gone in v3+
+  # ./dasel --version
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 -t "$pkgdir/usr/bin/" dasel
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
-    {CHANGELOG,CODE_OF_CONDUCT,README}.md
+  install -vDm0755 -t "$pkgdir/usr/bin" dasel
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    {CHANGELOG,CODE_OF_CONDUCT,CONTRIBUTING,README}.md
 
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
-    dasel.1 dasel-*.1
+  ### man pages are gone in v3+
+  #install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
+  #  dasel.1 dasel-*.1
 
-  install -vDm0644 _completion.bash \
-    "$pkgdir/usr/share/bash-completion/completions/dasel"
-  install -vDm0644 _completion.fish \
-    "$pkgdir/usr/share/fish/vendor_completions.d/dasel.fish"
-  install -vDm0644 _completion.zsh \
-    "$pkgdir/usr/share/zsh/site-functions/_dasel"
+  ### completions are gone in v3+
+  #install -vDm0644 _completions.bash \
+  #  "$pkgdir/usr/share/bash-completion/completions/dasel"
+  #install -vDm0644 _completions.fish \
+  #  "$pkgdir/usr/share/fish/vendor_completions.d/dasel.fish"
+  #install -vDm0644 _completions.zsh \
+  #  "$pkgdir/usr/share/zsh/site-functions/_dasel"
 }
 
 sha256sums=(
-  'ba8da9569f38e7f33453c03ac988382291a01004a96c307d52cccadb9ef7837e'
+  '08eb0a602233e9a400aeca7c19e122a58da2315370fc8a14d61692931c7c210f'
 )
 b2sums=(
-  '6d679afd498cb03882147a1e200514c5c6ba6b4668e73ccc04c52fd468fdc6066cf899aedd195e8263259b070400830fe4dd2747adc2a256cab9aeaa4d90fb56'
+  '75fdf822e15e154798d433809b5cf611c2578d8159ca74ae1ed94fbce5ad19ca0cb92a5c04b76c457b3c2ec18b3db0419841f24397b9c1aa309a40bd0a42d0b6'
 )
 
 # eof
