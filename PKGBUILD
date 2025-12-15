@@ -1,7 +1,7 @@
 # Maintainer: Ossian Winter <ossian@winter.vg>
 pkgname=gnome-shell-extension-s76-scheduler
 _uuid=s76-scheduler@winter.vg
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Tiny GNOME extension that updates process priorities using the System76 Scheduler'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=('gnome-shell' 'system76-scheduler')
 makedepends=('git')
 source=("git+https://github.com/ossianwinter/s76-scheduler.git#tag=v${pkgver}")
-sha256sums=('d535826e66159db1216eb72a6d2ea26cd0d2e0af60507ad19fb537deabc3d192')
+sha256sums=('07ddcbc7464bde5f30d707f57c54d87813ddf5d6ef2836c40449942182a01950')
 
 package() {
   cd "${srcdir}/s76-scheduler"
