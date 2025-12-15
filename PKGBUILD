@@ -1,6 +1,6 @@
 # Maintainer: Lucas Oskorep <lucas.oskorep@gmail.com>
 pkgname=cytrence-kiwi
-pkgver=1.3.17
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Cytrence Kiwi - Native-like KVM Development Tool"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('glibc')
 makedepends=('unzip')
 install=cytrence-kiwi.install
 options=('!strip')
-source=("https://www.cytrence.com/_files/archives/5418d8_54cf9f023f2a42ef8d8c9cc9ca864d9c.zip?dn=CytrenceKiwi-1.3.17-ubuntu24_amd64.zip")
-sha256sums=('9a5db43ac51257f6bc9b85dca577d46bb6bdce511fe2a24e31d2d87b5ad5b369')
+source=("https://www.cytrence.com/_files/archives/5418d8_3808964163234e3897f16d6a63d488c8.zip?dn=CytrenceKiwi-1.5.4-ubuntu24_amd64.zip")
+sha256sums=('66e3db7ed7b407dc4200a92a4b903b7ca09e7f905fdbe81779651ff89c18257c')
 
 package() {
     # Extract the deb package from the zip
