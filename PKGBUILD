@@ -2,7 +2,7 @@
 
 pkgname=libpamtpmpin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM module for TPM2 PIN authentication"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xr0bert/libpamtpmpin"
