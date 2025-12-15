@@ -3,8 +3,8 @@
 pkgbase='zl-compressor'
 pkgname=('zl-compressor-vst' 'zl-compressor-lv2' 'zl-compressor')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 options=()
 pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
@@ -15,10 +15,10 @@ makedepends=('git' 'cmake' 'clang')
 
 source=("git+https://github.com/ZL-Audio/ZLCompressor#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/kfr#tag=9a35250"
-		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
-sha256sums=('33f25b78ceff2dde6be7fbc5bd20eb5f17f0cdcdb87a0bc731cbac944f7a6f5d'
+		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
+sha256sums=('14f70a3b239afad93c510d3cf6d1db5d89ca5f0f2f602df67c8602ee42b7449b'
             '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213'
-            '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7')
+            '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
 
 prepare() {
 	cd ZLCompressor
@@ -31,15 +31,15 @@ prepare() {
 
     # Use system kfr (broken due to libc++/libstdc++ symbol in
     #sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
+}
+
+build () {
+	cd ZLCompressor
 
 	cmake -B Builds \
 		 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
 	     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++ -lc++abi" -DCMAKE_SKIP_INSTALL_RPATH=YES \
 	     -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" .
-}
-
-build() {
-	cd ZLCompressor
 	make -C Builds
 }
 
