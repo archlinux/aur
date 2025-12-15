@@ -1,6 +1,6 @@
 # Maintainer: Junaid Rahman <junaid.cloud2@gmail.com>
 pkgname=guiman
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The Ultimate Arch Linux Package Manager - GUI with 100% pacman & AUR feature parity"
 arch=('x86_64')
@@ -73,6 +73,8 @@ package() {
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << 'EOF'
 #!/bin/bash
+export WEBKIT_DISABLE_COMPOSITING_MODE=0
+export WEBKIT_USE_GPU=1
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 export GDK_BACKEND=x11
 exec /usr/lib/guiman/guiman "$@"
