@@ -1,0 +1,13 @@
+[Unit]
+Description=ShadowQUIC Service
+Documentation=https://github.com/spongebob888/shadowquic
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/shadowquic -c /etc/shadowquic/config.yaml
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+pkgbase = shadowquic-bin
+	pkgdesc = A 0-RTT QUIC Proxy with SNI camouflage
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/spongebob888/shadowquic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = shadowquic
+	backup = etc/shadowquic/config.yaml
+	source = shadowquic.service
+	source = config.yaml
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = shadowquic::https://github.com/spongebob888/shadowquic/releases/download/v0.2.2/shadowquic-x86_64-linux
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = shadowquic::https://github.com/spongebob888/shadowquic/releases/download/v0.2.2/shadowquic-aarch64-linux
+	sha256sums_aarch64 = SKIP
+
+pkgname = shadowquic-bin

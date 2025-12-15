@@ -1,0 +1,17 @@
+inbound:
+    type: socks
+    bind-addr: "127.0.0.1:1089"
+outbound:
+    type: shadowquic
+    addr: "127.0.0.1:1443"
+    username: "87654321"
+    password: "12345678"
+    server-name: "echo.free.beeceptor.com" # must be the same as jls_upstream in server
+    alpn: ["h3"]
+    initial-mtu: 1300
+    congestion-control: bbr
+    zero-rtt: true
+    over-stream: false  # true for udp over stream, false for udp over datagram
+log-level: "trace"
+
+
