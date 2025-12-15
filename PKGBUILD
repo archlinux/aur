@@ -18,9 +18,9 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_arm64.zip")
 source_i686=("${pkgname}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_386.zip")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_amd64.zip")
-sha256sums_aarch64=('027e467cde0cf3a557895b15af995c5aaecda62436272a645b06072aef853788')
-sha256sums_i686=('ec785c085162d4a3421d45ee2a149b4a006ee576c2efead8a8faafade1d76150')
-sha256sums_x86_64=('bfada1a722f084bdff7652c79d8622c9e924233c8ed93bdc987d23f6af5b6394')
+sha256sums_aarch64=('17a26fbaaddbcf8d130239638bada004833206ebabc3e0a3ec2f7a61e1901166')
+sha256sums_i686=('c70c8a50bf357a4bdb1c22a58ad35cff8b3d2dc381f03a1177f3d5b753dcffbc')
+sha256sums_x86_64=('f0e2b5ab0660d362ac91aa5ea257c67e763e74fddb45954b7e93633cf45e3256')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${_appname}ctl" -t "${pkgdir}/usr/bin"
