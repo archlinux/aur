@@ -1,8 +1,8 @@
 pkgbase = nako-git
 	pkgdesc = An AUR helper written in Bash and Pyalpm (development version)
-	pkgver = v1.0.r39.4d30686
+	pkgver = v1.0.1.r50.f2093df
 	pkgrel = 1
-	url = https://github.com/njb-fm/nako
+	url = https://github.com/nmimusic/nako
 	arch = any
 	license = BSD
 	depends = sudo
@@ -16,7 +16,7 @@ pkgbase = nako-git
 	optdepends = aurvote: for voting
 	provides = nako
 	conflicts = nako
-	source = git+https://github.com/njb-fm/nako.git
+	source = git+https://github.com/nmimusic/nako.git
 	md5sums = SKIP
 
 pkgname = nako-git

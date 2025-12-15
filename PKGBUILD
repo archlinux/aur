@@ -1,12 +1,12 @@
-# Maintainer: Hayate NAKA-MURA <hayatehay.njb at gmail dot com>
+# Maintainer: Jin Asanami <hayatehay.njb at gmail dot com>
 
 pkgname="nako-git"
 _pkgname="nako"
-pkgver=v1.0.r39.4d30686
+pkgver=v1.0.1.r50.f2093df
 pkgrel=1
 pkgdesc="An AUR helper written in Bash and Pyalpm (development version)"
 arch=('any')
-url="https://github.com/njb-fm/nako"
+url="https://github.com/nmimusic/nako"
 license=('BSD')
 provides=('nako')
 conflicts=('nako')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	printf "v%s.r%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "v%s.r%s.%s" "$(git describe --tags|grep -oP '.+(?=-[0-9])')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
