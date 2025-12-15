@@ -1,12 +1,12 @@
-# Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
+# Maintainer: Jin Asanami <hayatehay.njb at gmail dot com>
 pkgname=unifetch-git
 _pkgname=unifetch
 epoch=1
-pkgver=r5419.4587679e
+pkgver=r5468.e1406795
 pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch, fresh version."
 arch=('any')
-url="https://github.com/njb-fm/unifetch"
+url="https://github.com/nmimusic/unifetch"
 license=('MIT')
 depends=('bash')
 optdepends=(

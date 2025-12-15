@@ -1,9 +1,9 @@
 pkgbase = unifetch-git
 	pkgdesc = An unofficial inheritor of neofetch, fresh version.
-	pkgver = r5419.4587679e
+	pkgver = r5468.e1406795
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/njb-fm/unifetch
+	url = https://github.com/nmimusic/unifetch
 	arch = any
 	license = MIT
 	checkdepends = shellcheck
@@ -25,7 +25,7 @@ pkgbase = unifetch-git
 	provides = neofetch
 	conflicts = unifetch
 	conflicts = neofetch
-	source = unifetch::git+https://github.com/njb-fm/unifetch.git
+	source = unifetch::git+https://github.com/nmimusic/unifetch.git
 	sha512sums = SKIP
 
 pkgname = unifetch-git
