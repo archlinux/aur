@@ -1,6 +1,6 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-drivers
-pkgver=2.1.6.2
+pkgver=2.1.7.1
 pkgrel=1
 pkgdesc="Indi 3rd party drivers"
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ depends_aarch64=(dfu-util
 makedepends=(cmake)
 makedepends_aarch64=(cmake libgpiod)
 source=(https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(49af8285d996305ee649160473ce3b132144c3a4018b4e01288c32494091f2bd)
+sha256sums=('84f9ab78fb21b96a24d4225c5b0ca2030060b8050ef36450020fd9ecfcf613e9')
 options=(!lto)
 install=drivers.install
 
