@@ -1,0 +1,12 @@
+pkgbase = webapp-creator
+	pkgdesc = A simple CLI tool to create desktop web applications on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Swarnim114/webapp-creator
+	arch = any
+	license = MIT
+	depends = python
+	source = https://raw.githubusercontent.com/Swarnim114/webapp-creator/main/webapp_creator.py
+	sha256sums = 5ec20913040964ea852bb204b577beab99f4b32e61a41e7631e077484ffbb8a8
+
+pkgname = webapp-creator
