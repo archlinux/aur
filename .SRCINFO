@@ -1,6 +1,6 @@
 pkgbase = ad
 	pkgdesc = An adaptable text editor
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sminez/ad
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ad
 	makedepends = tree-sitter-rust
 	depends = gcc-libs
 	depends = tree-sitter
-	source = ad-0.3.1.tar.gz::https://github.com/sminez/ad/archive/0.3.1.tar.gz
-	sha256sums = 809cd09550daf38b1c4b7d19b975e6dbeb85f424f8942f20fc9cd7808c1ef196
+	source = ad-0.4.0.tar.gz::https://github.com/sminez/ad/archive/0.4.0.tar.gz
+	sha256sums = e35cf1030bc24bf336066fcd367e8a022d097357b896cb316183993951d4ffb8
 
 pkgname = ad

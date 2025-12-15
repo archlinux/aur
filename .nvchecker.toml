@@ -1,0 +1,4 @@
+[ad]
+source = "github"
+github = "sminez/ad"
+use_latest_release = true
