@@ -8,7 +8,7 @@ pkgbase=glib2-patched-thumbnailer
 pkgname=(
   glib2-patched-thumbnailer
 )
-pkgver=2.86.2
+pkgver=2.86.3
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -54,7 +54,7 @@ source=(
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('64ee1024ea3ce512f5e0da749f63368272c118991fa4e747bee18ea2f67ae917dcc01d412fc5e441a2ce2f92600ecd69c7b3025a2ccc73c3340d50cc48c57b4a'
+b2sums=('c384d8196e7966261d78245b59a0d14a061d49f7fb15faebd6e10527eb58c2893bffaee30f894b45feaeb1e1d8ccfc65e79958c42458b298e1e9675f68202780'
         'SKIP'
         '47cd08ba7e4b3ca0cd19f6dc20e4d73e30cf90f2b78c3d620ee0c7a4d8a4b325a5e88ec2dcc3a63402c16cc1ce8061130afc313e3cbfcd220dff3e642b113a69'
         'cc39621757253c9f9e11da4ae40dc16d24f2898a7ee34fbfe5b7709c4f0139c04fab6c1138402c16859b2421c45d55bdde522aa1a1b2c6c3544d87b7c2d10dff'
