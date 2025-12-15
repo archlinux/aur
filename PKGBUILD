@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.85.1
+pkgver=3.86.1
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d40d89613410af2e6245cc5b6800df56a70db91654c6ef867cdba9439f9b9a9b'
+sha256sums=('c762c9bc3cf0c42020f9be1f87dc592bb73ee4b1f779bc7284bd861972da9837'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
