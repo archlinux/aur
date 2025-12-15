@@ -1,0 +1,138 @@
+diff --git a/conftest.sh b/conftest.sh
+index d446780..596e1cf 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -4034,6 +4034,43 @@ compile_test() {
+             fi
+         ;;
+ 
++        drm_fb_create_takes_format_info)
++            #
++            # Determine if a `struct drm_format_info *` is passed into
++            # the .fb_create callback. If so, it will have 4 arguments.
++            # This parameter was added in commit 81112eaac559 ("drm:
++            # Pass the format info to .fb_create") in linux-next
++            # (2025-07-16)
++            CODE="
++            #include <drm/drm_mode_config.h>
++            #include <drm/drm_framebuffer.h>
++
++            static const struct drm_mode_config_funcs funcs;
++            void conftest_drm_fb_create_takes_format_info(void) {
++                funcs.fb_create(NULL, NULL, NULL, NULL); 
++            }"
++
++            compile_check_conftest "$CODE" "NV_DRM_FB_CREATE_TAKES_FORMAT_INFO" "" "types"
++        ;;
++
++        drm_fill_fb_struct_takes_format_info)
++            #
++            # Determine if a `struct drm_format_info *` is passed into
++            # drm_helper_mode_fill_fb_struct(). If so, it will have 4 arguments.
++            # This parameter was added in commit a34cc7bf1034 ("drm:
++            # Allow the caller to pass in the format info to
++            # drm_helper_mode_fill_fb_struct()") in linux-next
++            # (2025-07-16)
++            CODE="
++            #include <drm/drm_modeset_helper.h>
++
++            void conftest_drm_fill_fb_struct_takes_format_info(void) {
++                drm_helper_mode_fill_fb_struct(NULL, NULL, NULL, NULL);
++            }"
++
++            compile_check_conftest "$CODE" "NV_DRM_FILL_FB_STRUCT_TAKES_FORMAT_INFO" "" "types"
++        ;;
++
+         drm_connector_funcs_have_mode_in_name)
+             #
+             # Determine if _mode_ is present in connector function names.  We
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index d55ec97..3e8736e 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -271,6 +271,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += platform_driver_struct_remove_returns_void
+ NV_CONFTEST_TYPE_COMPILE_TESTS += class_create_has_no_owner_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += class_devnode_has_const_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += has_enum_pidtype_tgid
++NV_CONFTEST_TYPE_COMPILE_TESTS += drm_fb_create_takes_format_info
+ 
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += dom0_kernel_present
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_vgpu_kvm_build
+diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
+index c4e7338..de26e6c 100644
+--- a/nvidia-drm/nvidia-drm-drv.c
++++ b/nvidia-drm/nvidia-drm-drv.c
+@@ -212,6 +212,9 @@ static void nv_drm_output_poll_changed(struct drm_device *dev)
+ static struct drm_framebuffer *nv_drm_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++#if defined(NV_DRM_FB_CREATE_TAKES_FORMAT_INFO)
++    const struct drm_format_info *info,
++#endif
+     #if defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
+     const struct drm_mode_fb_cmd2 *cmd
+     #else
+@@ -227,6 +230,9 @@ static struct drm_framebuffer *nv_drm_framebuffer_create(
+     fb = nv_drm_internal_framebuffer_create(
+             dev,
+             file,
++#if defined(NV_DRM_FB_CREATE_TAKES_FORMAT_INFO)
++            info,
++#endif
+             &local_cmd);
+ 
+     #if !defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
+diff --git a/nvidia-drm/nvidia-drm-fb.c b/nvidia-drm/nvidia-drm-fb.c
+index 2fdb4dc..d05624c 100644
+--- a/nvidia-drm/nvidia-drm-fb.c
++++ b/nvidia-drm/nvidia-drm-fb.c
+@@ -257,6 +257,9 @@ fail:
+ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++#if defined(NV_DRM_FB_CREATE_TAKES_FORMAT_INFO)
++    const struct drm_format_info *info,
++#endif
+     struct drm_mode_fb_cmd2 *cmd)
+ {
+     struct nv_drm_device *nv_dev = to_nv_device(dev);
+@@ -310,6 +313,9 @@ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+         dev,
+         #endif
+         &nv_fb->base,
++#if defined(NV_DRM_FB_CREATE_TAKES_FORMAT_INFO)
++        info,
++#endif
+         cmd);
+ 
+     /*
+diff --git a/nvidia-drm/nvidia-drm-fb.h b/nvidia-drm/nvidia-drm-fb.h
+index 4044566..b2d8b86 100644
+--- a/nvidia-drm/nvidia-drm-fb.h
++++ b/nvidia-drm/nvidia-drm-fb.h
+@@ -84,6 +84,9 @@ static inline void nv_fb_set_gem_obj(
+ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++#if defined(NV_DRM_FB_CREATE_TAKES_FORMAT_INFO)
++    const struct drm_format_info *info,
++#endif
+     struct drm_mode_fb_cmd2 *cmd);
+ 
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
+index 91d56eb..b74c3c2 100644
+--- a/nvidia-drm/nvidia-drm-gem-user-memory.c
++++ b/nvidia-drm/nvidia-drm-gem-user-memory.c
+@@ -157,7 +157,11 @@ static vm_fault_t __nv_drm_gem_user_memory_handle_vma_fault(
+ #if !defined(NV_LINUX)
+     return vmf_insert_pfn(vma, address, pfn);
+ #elif defined(NV_VMF_INSERT_MIXED_PRESENT)
++#if defined(NV_PFN_TO_PFN_T_PRESENT)
+     return vmf_insert_mixed(vma, address, pfn_to_pfn_t(pfn));
++#else
++    return vmf_insert_mixed(vma, address, pfn);
++#endif
+ #else
+     return __nv_vm_insert_mixed_helper(vma, address, pfn);
+ #endif

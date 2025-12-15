@@ -8,7 +8,7 @@
 pkgbase=nvidia-575xx-dkms
 pkgname=('nvidia-575xx-utils' 'opencl-nvidia-575xx' 'nvidia-575xx-dkms' 'nvidia-575xx-open-dkms')
 pkgver=575.64.05
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -25,7 +25,8 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz"
         0001-Enable-atomic-kernel-modesetting-by-default.patch
-        0002-Add-IBT-support.patch)
+        0002-Add-IBT-support.patch
+        0003-linux-6.17-compat.patch)
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891'
             'f8f071f5a46c1a5ce5188e104b017808d752e61c0c20de1466feb5d693c0b55a5586314411e78cc2ab9c0e16e2c67afdd358da94c0c75df1f8233f54c280762c'
@@ -35,7 +36,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '1f5ea98478c913b044cccb25934e12d58561643b83074e5967d84126baac9a5ddc092a6ea017956957abae174520718d747415d09c6fb2da110de51629df98a2'
             '4cbe2e2d78eab84a8a0153f68ab6b1fefa75225c145b3bd9db4fab9d0cb212a4202a89d0e6d0f2d0dedb5663389f7c9ed6cadb6a656eb32dbde0cf0f806652e2'
             '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
-            '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82')
+            '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
+            '0d2fab8b2517c5d1fa9b4b1a3b147aa7ef213854647bbf68332ae22b20fec509f1f1fc771237a373f6421e12330109a74db1e07beb55d0c174e1143f51a85c82')
 
 
 create_links() {
@@ -58,10 +60,12 @@ prepare() {
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg}/kernel"
+    patch -Np1 -i "${srcdir}/0003-linux-6.17-compat.patch" -d "${srcdir}/${_pkg}/kernel"
 
     # Kernel-open
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
     patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}/"
+    patch -Np1 -i "${srcdir}/0003-linux-6.17-compat.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
