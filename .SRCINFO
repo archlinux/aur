@@ -1,0 +1,12 @@
+pkgbase = sping-git
+	pkgdesc = Split ping, see what direction the loss or latency is on
+	pkgver = 287083d
+	pkgrel = 1
+	url = https://github.com/benjojo/sping/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/benjojo/sping.git
+	md5sums = SKIP
+
+pkgname = sping-git
