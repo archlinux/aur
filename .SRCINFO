@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-kn
 	pkgdesc = Kannada language pack for Firefox Nightly
-	pkgver = 148.0a1.20251214.093341
+	pkgver = 148.0a1.20251214.212515
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-kn
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-kn-148.0a1.20251214.093341.xpi
-	source = firefox-nightly-i18n-kn-148.0a1.20251214.093341.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-148.0a1.kn.langpack.xpi
-	sha256sums = d46a155fc1d0cf65cb219604dbfd14bb2ce01257bbfc530e6446fdc4063cc743
+	noextract = firefox-nightly-i18n-kn-148.0a1.20251214.212515.xpi
+	source = firefox-nightly-i18n-kn-148.0a1.20251214.212515.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-148.0a1.kn.langpack.xpi
+	sha256sums = 2d77c25fd10a75ff97858222515880ed2399f5699897afc42795f8109c696637
 
 pkgname = firefox-nightly-i18n-kn
