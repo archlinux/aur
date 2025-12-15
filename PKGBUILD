@@ -5,7 +5,7 @@
 pkgname=gamemaker-beta-bin
 
 # Version
-pkgver=2024.1400.2.940
+pkgver=2024.1400.2.941
 pkgrel=1
 
 # Generic
@@ -33,13 +33,13 @@ conflicts=('gamemaker-beta')
 options=(!strip)
 
 # Sources
-# https://gms.yoyogames.com/GameMaker-Beta-2024.1400.2.940.deb
+# https://gms.yoyogames.com/GameMaker-Beta-2024.1400.2.941.deb
 source=(
     "https://gms.yoyogames.com/GameMaker-Beta-${pkgver}.deb"
     "LICENSE.txt"    
 )
 sha256sums=(
-    '6c31a5236d87b2d1f27c16edfafe048fa0281c03c073c9f9dbd5d579d708145f'
+    '3278388b06eb1962a3ef0979fb20affd2dcb122f9b60f1a20a411aaaaf61b484'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
