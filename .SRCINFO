@@ -1,16 +1,16 @@
 pkgbase = gittyup-appimage
 	pkgdesc = Graphical Git client (GitAhead fork)
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Murmele/Gittyup
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = fuse2
-	noextract = gittyup-appimage-1.4.0.AppImage
+	noextract = gittyup-appimage-2.0.0.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = gittyup-appimage-1.4.0.AppImage::https://github.com/Murmele/Gittyup/releases/download/gittyup_v1.4.0/Gittyup-1.4.0-x86_64.AppImage
-	sha256sums_x86_64 = 93da06484a571e60857caa901dae07f3c4dae096a89aad87006a1be7ac307f4a
+	source_x86_64 = gittyup-appimage-2.0.0.AppImage::https://github.com/Murmele/Gittyup/releases/download/gittyup_v2.0.0/Gittyup-2.0.0-x86_64.AppImage
+	sha256sums_x86_64 = fe2ba8db465c809c35ab7d369058556b98b07b0c9a80900617b3e0b5fc6e6281
 
 pkgname = gittyup-appimage

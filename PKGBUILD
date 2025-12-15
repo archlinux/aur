@@ -3,7 +3,7 @@
 _pkgname=gittyup
 
 pkgname="${_pkgname}-appimage"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Graphical Git client (GitAhead fork)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Murmele/Gittyup/releases/download/gittyup_v${pkgver}/Gittyup-${pkgver}-${CARCH}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('93da06484a571e60857caa901dae07f3c4dae096a89aad87006a1be7ac307f4a')
+sha256sums_x86_64=('fe2ba8db465c809c35ab7d369058556b98b07b0c9a80900617b3e0b5fc6e6281')
 
 prepare() {
     chmod +x "${_appimage}"
