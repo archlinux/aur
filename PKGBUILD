@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.1.r0.b5eef0d
-pkgrel=6
+pkgrel=7
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
@@ -94,7 +94,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/qubar"
     
     # Copy core components
-    cp -r backend topbar panel launcher overview theme modules \
+    cp -r backend topbar panel launcher overview theme modules assets \
           services hypr scripts install-scripts .config \
           shell.qml GlobalStates.qml config.json \
           "$pkgdir/usr/share/qubar/"
