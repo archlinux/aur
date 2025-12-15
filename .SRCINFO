@@ -1,0 +1,21 @@
+pkgbase = winboat-appimage
+	pkgdesc = Run Windows apps on 🐧 Linux with ✨ seamless integration
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/TibixDev/winboat
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	conflicts = winboat-bin
+	conflicts = winboat-electron
+	conflicts = winboat
+	conflicts = winboat-git
+	options = !strip
+	options = !debug
+	source = winboat-0.9.0-x86_64.AppImage::https://github.com/TibixDev/winboat/releases/download/v0.9.0/winboat-0.9.0-x86_64.AppImage
+	source = LICENSE::https://github.com/TibixDev/winboat/raw/refs/tags/v0.9.0/LICENSE
+	sha256sums = d35222b6bd2dee0e4026b72b0b82c9b532842c92ea91d1465d7f34e573090ef6
+	sha256sums = c9985a68d5fb2e5c9f12ead3ee456937c9a928916d7106d677a0fa44b98b35fc
+
+pkgname = winboat-appimage
