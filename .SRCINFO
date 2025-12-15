@@ -1,20 +1,19 @@
 pkgbase = netlink-notify
 	pkgdesc = Notify about netlink changes
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/eworm-de/netlink-notify
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = systemd
-	makedepends = markdown
+	makedepends = discount
 	depends = libsystemd
 	depends = libnotify
-	source = https://www.eworm.de/download/netlink-notify/netlink-notify-0.8.1.tar.xz
-	source = https://www.eworm.de/download/netlink-notify/netlink-notify-0.8.1.tar.xz.asc
+	source = https://www.eworm.de/download/netlink-notify/netlink-notify-0.8.2.tar.xz
+	source = https://www.eworm.de/download/netlink-notify/netlink-notify-0.8.2.tar.xz.asc
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
-	sha256sums = 7fdf9c08142fbcdfeadd18d2ec26cec9f1905acbfa6cd4dc1008d551e0629cf8
+	sha256sums = e74d4467885fb1201f19575d7ca7ac320f74ebf11a9f210e381dabc99a59aa69
 	sha256sums = SKIP
 
 pkgname = netlink-notify
-

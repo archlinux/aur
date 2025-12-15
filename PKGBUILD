@@ -1,23 +1,23 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=netlink-notify
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Notify about netlink changes'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/netlink-notify'
 depends=('libsystemd' 'libnotify')
-makedepends=('systemd' 'markdown')
+makedepends=('systemd' 'discount')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('7fdf9c08142fbcdfeadd18d2ec26cec9f1905acbfa6cd4dc1008d551e0629cf8'
+sha256sums=('e74d4467885fb1201f19575d7ca7ac320f74ebf11a9f210e381dabc99a59aa69'
             'SKIP')
 
 build() {
 	cd ${pkgname}-${pkgver}/
 
-	make
+	make VERSION="${pkgver}-${pkgrel}"
 }
 
 package() {
