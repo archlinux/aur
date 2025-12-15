@@ -1,0 +1,22 @@
+pkgbase = linux-wallpaperengine-gui-git
+	pkgdesc = A GUI for linux-wallpaperengine, powered by Electron (Git version)
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/AzPepoze/linux-wallpaperengine-gui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = python
+	depends = linux-wallpaperengine
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	provides = linux-wallpaperengine-gui
+	conflicts = linux-wallpaperengine-gui
+	conflicts = linux-wallpaperengine-gui-bin
+	source = git+https://github.com/AzPepoze/linux-wallpaperengine-gui.git
+	sha256sums = SKIP
+
+pkgname = linux-wallpaperengine-gui-git
