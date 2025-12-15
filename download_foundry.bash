@@ -8,7 +8,11 @@
 #
 #     DLAGENTS+=("foundryvtt::./download_foundry.bash")
 #
-# This script uses git-credential if available, so that credentials can be saved and reused.
+# This script can use the system secret service if available to store password in the Login
+# credential store. If you'd like to have makepkg invoke this script and use the save-pawword
+# feature, add this line to makepkg.conf instead:
+#
+#     DLAGENTS+=("foundryvtt::./download_foundry.bash --save-credentials")
 
 script_name="$(basename "$0")"
 if [ ! -t 0 ]; then
@@ -16,8 +20,32 @@ if [ ! -t 0 ]; then
 	exit 1
 fi
 
+# Any unique attribute and value will do
+secret_id=(uuid c1ddcf0c-8f4d-4d2b-8475-e4602b04bce3)
+
+case "${1:-}" in
+	-s | --save-credentials )
+		shift 1
+		if which secret-tool >/dev/null 2>&1; then
+			use_secret_service=1
+		else
+			printf "Warning: --save-credentials requested but libsecret not installed\n" 1>&2
+		fi
+		;;
+	-c | --clear-credentials )
+		secret-tool clear ${secret_id[@]}
+		exit 0
+		;;
+	-* )
+		printf 'Unrecognized option: %s\n' "$1" 1>&2
+		exit 1
+		;;
+esac
+
 if [ ${#*} -lt 1 ]; then
 	printf 'usage: %s <version|package_name|foundryvtt:://package_name>\n' "$0" 1>&2
+	printf '   or: %s --save-credentials <version|package_name|foundryvtt:://package_name>\n' "$0" 1>&2
+	printf '   or: %s --clear-credentials\n' "$0" 1>&2
 	printf 'example: %s 13.351\n' "$0" 1>&2
 	exit 1
 fi
@@ -31,17 +59,16 @@ then
 	exit 1
 fi
 
-# git-gredential doesn't actually have much to do with Git. Git just exposeses its credential
-# helper framework for third party use, and it conveniently integrates with OS password stores.
-if { which git && git credential --help; } >/dev/null 2>&1; then
-	git_credential_available=1
+if [ "$use_secret_service" ]; then
+	readarray -d'' -t creds < <(secret-tool lookup ${secret_id[@]} 2>/dev/null)
+	if [ -v creds[@] ]; then
+		new_credentials=1
+		username="${creds[0]}"
+		password="${creds[1]}"
+	fi
 fi
 
-if [ "$git_credential_available" ]; then
-	creds="$(<<<"url=https://foundryvtt.com" git credential fill)"
-	username="$(<<<"$creds" sed --quiet 's/^username=//p')"
-	password="$(<<<"$creds" sed --quiet 's/^password=//p')"
-else
+if ! [ "$username" -a "$password" ]; then
 	read -rp "foundryvtt.com username: " username
 	read -srp "foundryvtt.com password: " password
 	printf '\n'
@@ -53,7 +80,7 @@ csrfmiddlewaretoken_pat='s/.*<input type="hidden" name="csrfmiddlewaretoken" val
 csrfmiddlewaretoken="$(curl 'https://foundryvtt.com/' --no-progress-meter --cookie-jar "$cookie_jar" \
 	| sed --quiet --regexp-extended "$csrfmiddlewaretoken_pat" \
 	| head --lines=1)"
-curl 'https://foundryvtt.com/auth/login/' \
+http_code=$(curl 'https://foundryvtt.com/auth/login/' \
 	--cookie "$cookie_jar" \
 	--cookie-jar "$cookie_jar" \
 	--referer 'https://foundryvtt.com/' \
@@ -62,10 +89,16 @@ curl 'https://foundryvtt.com/auth/login/' \
 	--data-urlencode "next=/" \
 	--data-urlencode "username=$username" \
 	--data-urlencode "password=$password" \
-	--data-urlencode "login="
+	--data-urlencode "login=" \
+	--write-out '%{http_code}' \
+	--no-progress-meter)
 
-if [ $? -eq 0 -a "$git_credential_available" ]; then
-	<<<"$creds" git credential approve
+if [ "$http_code" != 302 ]; then
+	printf 'Failed to log in to foundryvtt.com.\n' 1>&2
+	exit 1
+elif [ "$use_secret_service" -a "$new_credentials" ]; then
+	printf '%s\0' "$username" "$password" | \
+		secret-tool store --label='download_foundry.bash credentials' ${secret_id[@]} 2>/dev/null
 fi
 
 # Session cookie now in cookie jar, compute and GET download URL
@@ -77,6 +110,7 @@ package_name="FoundryVTT-Linux-$version.zip"
 curl "https://foundryvtt.com/releases/download?build=$build_nr&platform=linux" \
 	--cookie "$cookie_jar" \
 	--location \
-	--output "$package_name"
+	--output "$package_name" \
+	--fail
 
 rm "$cookie_jar"
