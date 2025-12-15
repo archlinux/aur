@@ -1,11 +1,11 @@
 # Maintainer: [Fabien Devaux] <fdev31@gmail.com>
 pkgname=loopino-git
 pkgver=r62.4cd65b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight sampler for experimental sound design and rhythmic exploration"
 arch=('x86_64')
 url="https://github.com/brummer10/Loopino"
-license=('unknown')
+license=(' BSD-3-Clause')
 groups=()
 depends=()
 makedepends=('git' 'libsndfile' 'fftw' 'jack' 'cairo' 'libx11')
@@ -43,5 +43,7 @@ check() {
 package() {
     cd "$srcdir/Loopino"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     rm -fr "$pkgdir/usr/share/pixmaps"
+    install -Dm644 loopino.png "${pkgdir}/usr/share/pixmaps/loopino.png"
 }
