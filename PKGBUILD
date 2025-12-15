@@ -3,7 +3,7 @@
 pkgname=hsh
 pkgver=0.0.3.1.g3fe7054
 _gitcommit=3fe7054e28d634ef853bfe7a0c1f42785e46db46
-pkgrel=1
+pkgrel=2
 pkgdesc="better shell"
 arch=('x86_64')
 url="https://github.com/GrayHatter/hsh"
@@ -25,14 +25,14 @@ build() {
   DESTDIR="build" zig build \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15-gnu \
+    -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline
 }
 # https://github.com/GrayHatter/hsh/issues/7
 _check() {
   cd "$pkgname"
   zig build test \
-    -Dtarget=native-linux.5.15-gnu \
+    -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline
 }
 

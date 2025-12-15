@@ -1,7 +1,7 @@
 pkgbase = hsh
 	pkgdesc = better shell
 	pkgver = 0.0.3.1.g3fe7054
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GrayHatter/hsh
 	arch = x86_64
 	license = BSD-2-Clause
