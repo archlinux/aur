@@ -1,6 +1,6 @@
 pkgbase = stackablectl-git
 	pkgdesc = Command line tool to interact with a Stackable Data Platform
-	pkgver = stackablectl.1.2.1.r2.g09352a1
+	pkgver = stackablectl.1.2.2.r1.ga78def7
 	pkgrel = 1
 	url = https://github.com/stackabletech/stackable-cockpit/
 	arch = x86_64
