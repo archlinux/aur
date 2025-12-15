@@ -2,7 +2,7 @@
 # Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.39.14
+pkgver=1.39.15
 pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('dotnet-sdk-9.0')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('ea76b2487aa9b51c7630359af355a8c32a6c7f5d5abda879f0f763a93058d70c')
+sha256sums=('0937a786e9b27fc5022b2bae8d81b2cf1ad18b31a597bde60074bdd7a7d4fde5')
 prepare() {
     cd "$srcdir/$pkgname"
 
@@ -21,15 +21,17 @@ prepare() {
     sed -i "s/0.0.1.0/${pkgver%.*}.0.0/" scripts/common.cake
 
     # only built STDIO
-    sed -i 's/"OmniSharp.Stdio.Driver",/"OmniSharp.Stdio.Driver"/;/OmniSharp.Http.Driver/d' build.json
+	sed -i 's/, "OmniSharp.Http.Driver"//' build.json
 
     # only build x86_64-gnu
-    sed -i '/linux-arm64/d;/linux-musl/d;' build.cake
+    sed -i '/linux-arm64/d;/linux-musl/d;/linux-bionic/d;' build.cake
+
 
     # don't set RuntimeFrameworkVersion, just build against the version we are using
     # this is needed since otherwise we will use a crossgen compiler version built
     # against an older .NET 6 that does not have OpenSSL 3 support
     sed -i '/RuntimeFrameworkVersion/d;' build.cake
+    sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
     sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
 
     # use arch-packaged .NET version rather than forcing this version
@@ -46,7 +48,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname"
 
-    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk
+    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk --verbosity diagnostic
 }
 
 package() {
