@@ -1,12 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
-# The place where the .tar.gz is located is https://discord.gg/ygopro-percy
+# Project Ignis: EDOPro (official Linux binaries)
+#
+# Maintainer: Antonio Curavalea <one.kyonblack@gmail.com>
+# Previous maintainers: 
+#	Luis Martinez <luis dot martinez at disroot dot org>
+# 	Solomon Choina <shlomochoina@gmail.com>
+#
+# Official website: https://projectignis.github.io/
 
 _appname='edopro'
 pkgname=edopro-bin
-pkgver=40.1.4
+pkgver=41.0.2
 pkgrel=1
-pkgdesc="Free and open source ygopro client"
+pkgdesc="Project Ignis: EDOPro (official Linux binaries)"
 arch=('x86_64')
 url='https://github.com/edo9300/edopro'
 license=('AGPL3')
@@ -20,7 +25,7 @@ source=(
 	"${_appname}.desktop.in"
 	"${_appname}.in"
 )
-sha256sums=('84f9ee5ad00c8e1c7df351d6aa1e7bfe55c550814168a04cf2e4c3833009168b'
+sha256sums=('55e487b9c2a6387473ad88d4d8c0cf2fb71b1155b31a1e2b2bbffd701e81b51a'
             'a08b15b2b7756f42505517932c0588baa2a71ce4054f8e07ad6cea32ec21a4a6'
             'a275b684132bef6195afc6768ced284a0a1dd363d89e3b550061d0779057b230')
 options=('emptydirs')

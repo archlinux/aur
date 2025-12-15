@@ -1,0 +1,12 @@
+services:
+  archlinux:
+    build: .
+    image: edopro-aur-test:latest
+    container_name: edopro-aur-test
+    volumes:
+      # Mount the package source directory
+      - .:/pkg:rw
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+    command: ["bash"]
