@@ -1,11 +1,11 @@
-# Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
+# Maintainer: Jin Asanami <hayatehay.njb at gmail dot com>
 
 pkgname="nako"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper written in Bash and Pyalpm"
 arch=('any')
-url="https://github.com/njb-fm/nako"
+url="https://github.com/nmimusic/nako"
 license=('BSD-3-Clause')
 depends=('sudo' 'pacman' 'jq' 'git' 'python3' 'curl' 'pyalpm' 'python-srcinfo')
 optdepends=('aurvote: for voting')
