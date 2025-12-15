@@ -1,6 +1,6 @@
 pkgbase = minilang-libs-all
 	pkgdesc = Mini programming language
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://minilang-libs.readthedocs.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = minilang-libs-all
 	depends = minilang
 	provides = minilang-libs-all
 	conflicts = minilang-libs-standard
-	source = git+https://github.com/wrapl/minilang-libs#tag=v1.0.11
+	source = git+https://github.com/wrapl/minilang-libs#tag=v1.0.12
 	md5sums = SKIP
 
 pkgname = minilang-libs-all
