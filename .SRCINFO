@@ -1,7 +1,7 @@
 pkgbase = ply-mksplash
 	pkgdesc = Plymouth bootsplash animation generator. Supports framerates other than 30 fps by patching two-step.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/lun1xr/plymouth-splash-genpatch
 	arch = x86_64
 	license = 0BSD

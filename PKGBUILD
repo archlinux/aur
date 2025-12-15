@@ -1,7 +1,7 @@
 # Maintainer: Stephen Paul <stephen at lun1xr dot live>
 pkgname=ply-mksplash
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Plymouth bootsplash animation generator. Supports framerates other than 30 fps by patching two-step.'
 url='https://github.com/lun1xr/plymouth-splash-genpatch'
 arch=('x86_64')
@@ -21,6 +21,8 @@ b2sums=('6668b0d32390d03c9fe5a3df3350767cf2520ff2ef8bd2862e7f917bc133fe4f4848a03
 package() {
 
   cd "${srcdir}/plymouth-splash-genpatch-${pkgver}"
+
+  install -Dm644 "/dev/null" "${pkgdir}/usr/share/ply-mksplash/.conf"
   # Install scripts
   install -Dm755 "mksplash"       "${pkgdir}/usr/bin/mksplash"
   install -Dm755 "patch-helper"   "${pkgdir}/usr/bin/patch-helper"
