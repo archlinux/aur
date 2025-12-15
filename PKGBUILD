@@ -3,8 +3,8 @@
 
 _pkgname=btdu
 pkgname="$_pkgname-bin"
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Sampling disk usage profiler for btrfs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CyberShadow/$_pkgname"
@@ -14,9 +14,9 @@ conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.man1::$url/raw/v$pkgver/btdu.1")
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/btdu-static-x86_64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/btdu-glibc-aarch64")
-sha256sums=('2474991807ccb9bb577953e290f3c79c6032170305c535016b77b3e1107c3d1f')
-sha256sums_x86_64=('35b9bb752e6aa902b8281e92a5411b2f1cfb9fa251089adf909dc95efc011c48')
-sha256sums_aarch64=('6a3bc73af7756f116ff99cfe20e8e728e2eb16c7da87d53f20e17e55c5b5b073')
+sha256sums=('9d490321c58b3fe08f60cb689bca82a21809eb35f71a4ea36d08df6868be98ef')
+sha256sums_x86_64=('f2200953906a0b3a83acf9dedec06b0ea46e98fb99620647212b33ce68fd1edd')
+sha256sums_aarch64=('97dd2d12850588df8d8bde0d2d47f8a5c6ebcaa16e222fa78827e925cc849d2d')
 
 package() {
 	install -D -m+x $pkgname-$pkgver-$CARCH "$pkgdir/usr/bin/$_pkgname"
