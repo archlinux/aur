@@ -1,3 +1,37 @@
+# 1.19.1
+
+- Fix Nix releases.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.19.0
+
+- Added non-interactive mode for running Nanocoder in CI/CD pipelines and scripts. Pass commands via CLI arguments and Nanocoder will execute and exit automatically. Thanks to @namar0x0309.
+
+- Added conversation checkpointing system with interactive loading for saving and restoring conversation state across sessions. Thanks to @akramcodez.
+
+- Added enterprise-grade Pino logging system with structured logging, request tracking, performance monitoring, and configurable log levels. Thanks to @Avtrkrb.
+
+- Switched to Biome for formatting and linting, replacing Prettier and ESLint for faster, more consistent code quality tooling. Thanks to @akramcodez.
+
+- Added Poe.com as a provider template in the configuration wizard. Closes issue #74.
+
+- Added Mistral AI as a provider template in the configuration wizard.
+
+- Updated Ollama model contexts.
+
+- Added `--force` flag to `/init` command for regenerating AGENTS.md without prompting.
+
+- Removed `ink-titled-box` dependency and replaced it with a custom implementation. Closes issue #136.
+
+- Fixed security vulnerabilities by addressing pnpm audit reports. Thanks to @spinualexandru.
+
+- Fixed README table of contents anchors for proper navigation on GitHub forks. Thanks to @Azd325.
+
+- Refactored GitHub Actions workflows to reduce duplication and improve maintainability.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.18.0
 
 - Upgraded to AI SDK v6 beta to improve model and tool calling performance and introduce multi-step tool calls support. Thanks to @DenizOkcu.
@@ -74,7 +108,7 @@ If there are any problems, feedback or thoughts please drop an issue or message 
 
 - Added Dracula theme.
 
-- Fix: Command auto-complaete would only work if there was just one command left to auto-complete to. Now whatever the top suggestion is is the one it autocompletes to.
+- Fix: Command auto-complete would only work if there was just one command left to auto-complete to. Now whatever the top suggestion is is the one it autocompletes to.
 
 - Fix: Improved paste detection to create placeholders for any pasted content (removed 80-char minimum), fixed consecutive paste placeholder sizing, paste chunking for VSCode and other terminals.
 
@@ -239,3 +273,4 @@ If there are any problems, feedback or thoughts please drop an issue or message 
 - Refactored `langgraph-client.ts` to removed old methods that are no longer needed. Rolled out this change to `useChatHandler.tsx`. This results in smaller, more tidy files.
 - Fix: LangGraph errors leaked through to UI display. This is now tidied to be from Nanocoder.
 - Fix: Pressing Escape to cancel model responses was not instant and sometimes didn't work.
+
