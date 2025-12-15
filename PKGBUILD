@@ -13,7 +13,7 @@ depends=('perl-tcl>=1.11' 'perl>=5.006' 'tk')
 makedepends=('xorg-server-xvfb')
 checkdepends=('ttf-font')
 url='https://metacpan.org/release/Tcl-Tk'
-source=("http://search.cpan.org/CPAN/authors/id/V/VK/VKON/$_dist-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/V/VK/VKON/$_dist-$pkgver.tar.gz")
 md5sums=('6d07a38eac44635c39635cef08dcd808')
 sha512sums=('ec1794fff03a0264ef92c04e281a7b2c65235f18f5538c3281ad007264a3e2d5034bf5c7d29ab0aa4c32f1b1b9cf748b580df3512dd8ba80c08cffdd9f662a27')
 _distdir="$_dist-$pkgver"
