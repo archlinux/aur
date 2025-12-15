@@ -5,7 +5,7 @@ pkgver=0.10.0
 _version=(${pkgver//./ })
 _minver="${_version[0]}.${_version[1]}"
 _maxver="${_version[0]}.$((_version[1] + 1))"
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(MIT)
@@ -19,11 +19,10 @@ b2sums=('0e0cce03651b2d87d410ca6e5bfe56b56f81dbd04f6c477e3813ff3587c87d14ff53699
 build ()
 {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Dwf_shell=enabled
-	ninja -C build
+	meson compile -C build
 }
 
 check () {
@@ -32,6 +31,6 @@ check () {
 
 package ()
 {
-	DESTDIR="${pkgdir}" ninja -C build install
+	meson install -C build --destdir "$pkgdir"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
