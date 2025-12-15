@@ -1,6 +1,6 @@
 pkgbase = r-synlet
 	pkgdesc = Hits Selection for Synthetic Lethal RNAi Screen Data
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/synlet
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-synlet
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/synlet_2.8.0.tar.gz
-	sha256sums = bff0db94bf39a0f601067bd60f0b00cfc6c821a47a3271988c05b220e9fadc7d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/synlet_2.10.0.tar.gz
+	sha256sums = 2eba50139a7f5d8eb09466958a0c3c4190ab1bfbafd0c0f3465566828c79808a
 
 pkgname = r-synlet
