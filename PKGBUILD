@@ -3,7 +3,7 @@
 # Following: https://wiki.archlinux.org/title/Rust_package_guidelines
 # Take the commit from the releases at https://github.com/stackabletech/stackable-cockpit/releases/
 
-_commit=545748b6914fafb593231a8993f58d43fddaf122
+_commit=7f7924d2d51b430f2c3792846523e7875279ae6c
 pkgname=stackablectl
 pkgver=1.2.1
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=('stackablectl-bin' 'stackablectl-git')
 # Needed due to https://github.com/briansmith/ring/issues/1444 & https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 source=("$pkgname::git+https://github.com/stackabletech/stackable-cockpit.git#commit=$_commit")
-b2sums=('e7b3c65bbda61853ac497bc02cbe51f4f5733f3a6165251a1fc4f7e72c4aef834e3070f8e004a29ad01f347cba7de200511dd92f165b78b62ede151201f8d201')
+b2sums=('87825aa0e8501a47476ebd6f8ad0a69a98aad3e6a9abe11141735a23ec4bd5d673aec6cffdef4580a9450de41781f52b71cb0f0c94b4f26474991d449bd3a022')
 
 prepare() {
   cd "$pkgname"

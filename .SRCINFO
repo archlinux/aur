@@ -15,7 +15,7 @@ pkgbase = stackablectl
 	conflicts = stackablectl-bin
 	conflicts = stackablectl-git
 	options = !lto
-	source = stackablectl::git+https://github.com/stackabletech/stackable-cockpit.git#commit=545748b6914fafb593231a8993f58d43fddaf122
-	b2sums = e7b3c65bbda61853ac497bc02cbe51f4f5733f3a6165251a1fc4f7e72c4aef834e3070f8e004a29ad01f347cba7de200511dd92f165b78b62ede151201f8d201
+	source = stackablectl::git+https://github.com/stackabletech/stackable-cockpit.git#commit=7f7924d2d51b430f2c3792846523e7875279ae6c
+	b2sums = 87825aa0e8501a47476ebd6f8ad0a69a98aad3e6a9abe11141735a23ec4bd5d673aec6cffdef4580a9450de41781f52b71cb0f0c94b4f26474991d449bd3a022
 
 pkgname = stackablectl
