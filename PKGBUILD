@@ -3,8 +3,8 @@
 pkgbase='zl-splitter'
 pkgname=('zl-splitter-vst' 'zl-splitter-lv2' 'zl-splitter')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 options=()
 pkgdesc="Sidechain and oversample capable splitter plugin by ZL Audio"
 arch=('x86_64')
@@ -15,16 +15,15 @@ makedepends=('git' 'cmake' 'clang')
 
 source=("git+https://github.com/ZL-Audio/ZLSplitter#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/kfr#tag=9a35250"
-		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
-sha256sums=('f9e36d9b4e248087bc24c3fdde7da64aad502f6300f79e1c13ae70339daa4560'
+		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
+sha256sums=('b098ba5c365a9318eed3f07f8b02b4b8235703ec521bd22a2a2280d3d5756e6c'
             '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213'
-            '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7')
+            '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
 
 prepare() {
 	cd ZLSplitter
 	
 	git submodule init
-	git update-index --add --cacheinfo 160000,b251f82228e35a11644e94db8fc806672a0fd3b7,JUCE # change commit because we can't pull upstream otherwise
 	git config submodule."JUCE".url "${srcdir}/JUCE"
 	git config submodule."kfr".url "${srcdir}/kfr"
 	git -c protocol.file.allow=always submodule update JUCE kfr
@@ -32,15 +31,16 @@ prepare() {
 
     # Use system kfr (broken due to libc++/libstdc++ symbol incompatibility)
     #sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
+}
+
+build() {
+	cd ZLSplitter
 
 	cmake -B Builds \
 		 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
 	     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="${CXXFLAGS} -stdlib=libc++ -lc++abi" -DCMAKE_SKIP_INSTALL_RPATH=YES \
 	     -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" .
-}
 
-build() {
-	cd ZLSplitter
 	make -C Builds
 }
 
