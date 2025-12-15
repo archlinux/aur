@@ -3,10 +3,10 @@
 
 pkgname=diakonos-git
 pkgver=0.9.12.r
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux console text editor for the masses."
 arch=('any')
-url="http://diakonos.pist0s.ca/"
+url="https://git.sr.ht/~pistos/diakonos"
 license=('MIT')
 depends=('ruby-curses')
 makedepends=('git')
