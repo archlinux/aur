@@ -1,11 +1,12 @@
 pkgbase = imfit-bin
 	pkgdesc = Fast, Flexible Multi-component Fitting of Galaxy Images
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mpe.mpg.de/~erwin/code/imfit/
 	arch = x86_64
 	license = GPL-3.0
 	license = Custom
+	options = !debug
 	source = https://www.mpe.mpg.de/~erwin/resources/imfit/binaries/imfit-1.9.0-linux-64.tar.gz
 	sha256sums = 9eb10a62baab87de98744c247f7a10ea02b05d32996760b7cef100f5f02a7089
 

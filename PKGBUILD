@@ -2,7 +2,7 @@
 
 pkgname=(imfit-bin)
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Flexible Multi-component Fitting of Galaxy Images"
 url="https://www.mpe.mpg.de/~erwin/code/imfit/"
 arch=('x86_64')
