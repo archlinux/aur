@@ -1,6 +1,6 @@
 pkgbase = linvam
 	pkgdesc = Linux voice activated macros
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/stele95/LinVAM
 	install = linvam.install
@@ -22,7 +22,7 @@ pkgbase = linvam
 	provides = linvamrun
 	conflicts = linvam
 	conflicts = linvamrun
-	source = https://github.com/stele95/LinVAM/archive/refs/tags/v0.8.3.tar.gz
-	sha256sums = 20ad59d74aeac319d32fd8829e2216002469ebf9bf109cc43435e694a2a0140f
+	source = https://github.com/stele95/LinVAM/archive/refs/tags/v0.8.4.tar.gz
+	sha256sums = f39f4fcbb645c19e64a1f1d9502b7bca04ba7b8b69702b596eb8c9466bd7801e
 
 pkgname = linvam
