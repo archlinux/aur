@@ -5,7 +5,7 @@ _pkgname=git-scope
 pkgname=${_pkgname}-bin
 pkgdesc="A fast TUI to see the status of all git repositories on your machine"
 
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('dbb68a63358d807c9c93ac90a8a895aec23a0a061aa40f9d3d9718905af1992a')
-sha256sums_aarch64=('5837dad01f45676aec2742199d429ba98531f87c666241d2df479f83fb4a0dbc')
+sha256sums_x86_64=('04cd8269ae2666fbf54489ed4374990e027d60aa921ebcc957288e7783b813a4')
+sha256sums_aarch64=('0394a4e46d8b83cb18756c1cced148fe7ce69462330235f4a00c5e8dcc744b6e')
 
 
 
