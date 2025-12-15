@@ -17,10 +17,11 @@ arch=(
 )
 url="https://go-sponge.com"
 _url="https://github.com/go-dev-frame/${pkgbase}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
-  'glibc'
-  'protobuf'
+
 )
 makedepends=(
   'go'
@@ -62,14 +63,16 @@ build() {
 
 package_sponge() {
   depends+=(
+    'glibc'
     'go'
+    'protobuf'
     'protoc-gen-doc'
     'protoc-gen-go'
-    "protoc-gen-go-gin=${pkgver}"
+    "protoc-gen-go-gin>=${pkgver}"
     'protoc-gen-go-grpc'
-    "protoc-gen-go-rpc-tmpl=${pkgver}"
+    "protoc-gen-go-rpc-tmpl>=${pkgver}"
     'protoc-gen-gotag'
-    "protoc-gen-json-field=${pkgver}"
+    "protoc-gen-json-field>=${pkgver}"
     'protoc-gen-openapiv2'
     'protoc-gen-validate'
     'swag'
@@ -85,6 +88,8 @@ package_protoc-gen-go-gin() {
   pkgdesc="Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes"
   url="${_url}/tree/main/cmd/${pkgname}"
   depends+=(
+    'glibc'
+    'protobuf'
     'protoc-gen-go'
     'protoc-gen-go-grpc'
   )
@@ -101,6 +106,8 @@ package_protoc-gen-go-rpc-tmpl() {
   pkgdesc="Protobuf plugin to generate RPC service templates and RPC error codes"
   url="${_url}/tree/main/cmd/${pkgname}"
   depends+=(
+    'glibc'
+    'protobuf'
     'protoc-gen-go'
     'protoc-gen-go-grpc'
   )
@@ -116,6 +123,10 @@ package_protoc-gen-go-rpc-tmpl() {
 package_protoc-gen-json-field() {
   pkgdesc="Protobuf plugin to generate JSON field code from proto files"
   url="${_url}/tree/main/cmd/${pkgname}"
+  depends+=(
+    'glibc'
+    'protobuf'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
