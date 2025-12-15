@@ -1,0 +1,5 @@
+[jpu-bin]
+source = "github"
+github = "adamperkowski/jpu"
+use_latest_release = true
+prefix = "v"

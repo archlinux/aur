@@ -1,0 +1,21 @@
+pkgbase = jpu-bin
+	pkgdesc = JuleProtonUp is a fast and lightweight ProtonUp alternative
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/adamperkowski/jpu
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = gcc-libs
+	depends = curl
+	depends = openssl
+	provides = jpu
+	conflicts = jpu
+	source = LICENSE-0.0.1::https://raw.githubusercontent.com/adamperkowski/jpu/v0.0.1/LICENSE
+	source = README-0.0.1.md::https://raw.githubusercontent.com/adamperkowski/jpu/v0.0.1/README.md
+	sha256sums = 3d2b423fd4003b16721068737c94e354f686cadd01d9d725eae8618e6bcb099d
+	sha256sums = ce1a90cbe9324a67637aa09459e78192a608c21696668dbc0f1468dec6c01d83
+	source_x86_64 = jpu-0.0.1::https://github.com/adamperkowski/jpu/releases/download/v0.0.1/jpu
+	sha256sums_x86_64 = a3cf4dcc2c2b48a441d4d0cca669cafc9c745b9769e48ba59ab2ba267774a1a5
+
+pkgname = jpu-bin
