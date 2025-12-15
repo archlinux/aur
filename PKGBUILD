@@ -1,7 +1,7 @@
 # Contributor: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-gtk-theme-latte
-pkgver=1.0.3 # renovate: datasource=github-tags depName=catppuccin/gtk
+pkgver=1.0.3
 pkgrel=2
 pkgdesc='Soothing pastel theme for GTK3/4 - Latte'
 arch=('any')
