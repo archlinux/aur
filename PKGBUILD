@@ -8,22 +8,20 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.72
+pkgver=2.73
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils' 'apparmor' 'autoconf-archive')
+makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils' 'apparmor' 'autoconf-archive' 'm4')
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
   "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
-  "0001-cmd-snap-confine-snap-confine-update-AppArmor-profil.patch"
 )
 
-sha256sums=('53d74e663527bae667a254da8a029aa4b0b8f559ca515d214da8dbb29dc6ccc7'
-           '3584cdfabde12d1739342bc1bd73705bb5d9d3aed4ab038a478657fd4ede7364')
+sha256sums=('c47fe0c00df5e153b312b5f6dabec49158c8c872ed1eae5e342229bb229a5d85')
 
 
 prepare() {
@@ -84,7 +82,8 @@ __DEFINES__
        BINDIR=/bin \
        LIBEXECDIR=/usr/lib \
        SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
-       SNAP_MOUNT_DIR=/var/lib/snapd/snap \
+       USE_CANONICAL_SNAP_MOUNT_DIR=false \
+       USE_ALT_SNAP_MOUNT_DIR=true \
        SNAPD_ENVIRONMENT_FILE=/etc/default/snapd
 
   cd cmd
@@ -132,7 +131,8 @@ package() {
      DBUSSERVICESDIR=/usr/share/dbus-1/services \
      BINDIR=/usr/bin \
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
-     SNAP_MOUNT_DIR=/var/lib/snapd/snap \
+     USE_CANONICAL_SNAP_MOUNT_DIR=false \
+     USE_ALT_SNAP_MOUNT_DIR=true \
      DESTDIR="$pkgdir"
 
   make -C cmd install DESTDIR="$pkgdir/"
