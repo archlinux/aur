@@ -3,7 +3,7 @@
 _name=click-repl
 pkgname=python-click-repl
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Subcommand REPL for click apps"
 arch=(any)
 url="https://github.com/click-contrib/click-repl"
