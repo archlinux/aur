@@ -1,7 +1,7 @@
 pkgbase = python-calmjs
 	pkgdesc = Framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem
 	pkgver = 3.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/calmjs/calmjs
 	arch = any
 	license = GPL-2.0-or-later
