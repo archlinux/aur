@@ -1,0 +1,18 @@
+pkgbase = python-slurp-sway
+	pkgdesc = Slurp with Sway-specific features such as toplevel selection
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ferdi265/slurp_sway/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = slurp
+	depends = sway
+	source = slurp_sway-1.0.0.tar.gz::https://github.com/Ferdi265/slurp_sway/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b21d86d086f239ba30f6c2dd22a36f3c28c834c01d23cfff9e0af247929d0146
+
+pkgname = python-slurp-sway
