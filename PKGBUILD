@@ -1,5 +1,5 @@
-# Maintainer: Keeyou <keeyou-cn@outlook.com>
-# Contributor: Keeyou <keeyou-cn@outlook.com>
+# Maintainer: Keeyou <hukeyue@vip.163.com>
+# Contributor: Keeyou <hukeyue@vip.163.com>
 
 pkgname=yass-proxy
 pkgver=1.20.1
