@@ -1,6 +1,6 @@
 pkgbase = saber-bin
 	pkgdesc = The cross-platform open-source app built for handwriting.(Prebuilt version)
-	pkgver = 1.29.0
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://saber.adil.hanney.org/
 	arch = aarch64
@@ -12,15 +12,15 @@ pkgbase = saber-bin
 	depends = gst-plugins-base-libs
 	depends = webkit2gtk-4.1
 	depends = libxmu
-	provides = saber=1.29.0
+	provides = saber=1.29.1
 	conflicts = saber
-	noextract = saber-1.29.0-x86_64.tar.gz
+	noextract = saber-1.29.1-x86_64.tar.gz
 	options = !strip
 	source = saber.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = saber-1.29.0-aarch64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.29.0/Saber_v1.29.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = aec170e615e20486fde0567a4001a5e1b8a42e81401894f668496dff6eefbfd2
-	source_x86_64 = saber-1.29.0-x86_64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.29.0/Saber_v1.29.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e934a4032642f6c1241fc40e89cd358babb9bcb8734f7f984dcdc45d185f7b42
+	source_aarch64 = saber-1.29.1-aarch64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.29.1/Saber_v1.29.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 608e261a0f4319cc397aeab69d3cde37f860b82237bd3bbbedf706022575c9c6
+	source_x86_64 = saber-1.29.1-x86_64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.29.1/Saber_v1.29.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e67f893f9ba17d1a4746772bdc83a97fa6a911567558d59f7b798f65786dc41a
 
 pkgname = saber-bin
