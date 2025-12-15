@@ -1,8 +1,8 @@
 # Maintainer: awh (https://aur.archlinux.org/account/awh)
 
 pkgname=baballonia
-pkgver=v1.1.0.9rc2
-pkgrel=2
+pkgver=v1.1.0.9rc3
+pkgrel=1
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -33,24 +33,21 @@ source=(
 
     "baballonia.sh"
     "Baballonia.desktop"
-    "onnxruntime-rocm-to-migraphx.patch"
     "LICENSE"
    )
 noextract=(
     "BabbleCalibration_${pkgver}.zip"
 )
-sha256sums=('56cac69541367cc68d6f5908ccdbbbe6a9c7da766e9f743c94629ff7ca77fd6b'
+sha256sums=('0136c14e531ff1244a54a1a5538a7482fcb14339f298e7bb868d9a3946cc4c1a'
             'e78593a5a9147fa948ee7703c95a424a0020ca668b157ce23fed65ab02693ee1'
             '156c6e98da7617615f58bbaed02492b84f087856953b83f77092af3a9d8e0f1f'
             '601572be5ae943f72631ce883af988c597d88b1bb3f0cfac70d2d40760158dbd'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
             'c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450'
-            '542ad6a7b0f638afd3de649cdbc905e8fcaa45abd3fc91aa939e54259ec9ac1f'
             'a0c3fedbc0083597993489730d8178d2e79fdb6c03d596cb4bebfafc819d063f')
 prepare() {
     cd "${pkgname}"
     git submodule update --init --recursive
-    patch -Np1 -i "${srcdir}/onnxruntime-rocm-to-migraphx.patch"
 }
 build() {
     cd "${pkgname}/src/Baballonia.Desktop"
