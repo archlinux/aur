@@ -1,6 +1,6 @@
 
 pkgname=ripunzip
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Extract zip files in parallel"
 url=https://github.com/google/ripunzip
@@ -10,7 +10,7 @@ depends=(bzip2 gcc-libs glibc openssl xz)
 makedepends=(rust pkgconf)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 source=("${pkgname}${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d44262d390dc3fa41b7de2e28a199aef4343c0197b5a1c9216e13b1aa0f0273f')
+sha256sums=('b485dc58777fb8637ff0509c72dc6b50235f6a01fecbf382365437be704a8468')
 
 prepare(){
   cd ${pkgname}-$pkgver
@@ -20,7 +20,7 @@ unset prepare # DL larger crates
 
 build(){
   cd ${pkgname}-$pkgver
-  test ${RUSTC_BOOTSTRAP} = 1 && _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+  test ${RUSTC_BOOTSTRAP} = 1 && _cargoflags="-Zbuild-std=std,panic_abort"
   cargo build --release $_cargoflags #--frozen
 }
 
