@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-extutils-builder'
-pkgver='0.018'
+pkgver='0.019'
 pkgrel='1'
 pkgdesc="An overview of the foundations of the ExtUtils::Builder Plan framework"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-extutils-config>=0' 'perl-extutils-helpers>=0.027' 'perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/ExtUtils-Builder'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/ExtUtils-Builder-$pkgver.tar.gz")
-md5sums=('73416f09432d80a1596c637eec2731b0')
-sha512sums=('88fc4757625be083e1bb0c2c1c22e6013e81c069258a8eb5e8c2665a5f52019be3b5367c6d8847d75cf54949e40a4c2ed65284b02e9153a1a62026efbd63a8ca')
+md5sums=('6fdce397ca27db836102d58af1223403')
+sha512sums=('a4ee008b67707ebfa06b4f061e6c83a7c71f09f82eaf759cf724db499ecf848b73c246ebb8d28596726e38861b88a9eaa30c3772563364582c05f7682edc59ff')
 _distdir="ExtUtils-Builder-$pkgver"
 
 build() {
@@ -37,8 +37,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
