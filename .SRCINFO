@@ -1,5 +1,5 @@
 pkgbase = gama
-	pkgdesc = package dedicated to the adjustment of surveying networks.
+	pkgdesc = Package dedicated to the adjustment of surveying networks.
 	pkgver = 2.33
 	pkgrel = 1
 	url = https://www.gnu.org/software/gama/

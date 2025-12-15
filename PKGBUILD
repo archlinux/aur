@@ -3,7 +3,7 @@
 pkgname=gama
 pkgver=2.33
 pkgrel=1
-pkgdesc="package dedicated to the adjustment of surveying networks."
+pkgdesc="Package dedicated to the adjustment of surveying networks."
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gama/"
 license=('GPL-3.0-or-later')
