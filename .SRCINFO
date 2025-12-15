@@ -1,6 +1,6 @@
 pkgbase = novelwriter-bin
 	pkgdesc = A markdown-like document editor for writing novels.(Prebuilt version)
-	pkgver = 2.7.5
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://novelwriter.io/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = novelwriter-bin
 	depends = python-pyenchant
 	depends = python-importlib-metadata
 	depends = python-pyqt6
-	provides = novelwriter=2.7.5
+	provides = novelwriter=2.8
 	conflicts = novelwriter
-	source = novelwriter-2.7.5.deb::https://github.com/vkbo/novelWriter/releases/download/v2.7.5/novelwriter_2.7.5_all.deb
-	sha256sums = 9682bbf793ee800223d2bfaa5961fceec7f0a47edbc0612729f8f99f5beb7e1e
+	source = novelwriter-2.8.deb::https://github.com/vkbo/novelWriter/releases/download/v2.8/novelwriter_2.8_all.deb
+	sha256sums = a372b9b87f3d6c4ac396b6cbb49618128be95fc247f31e787913d3bdc659681a
 
 pkgname = novelwriter-bin
