@@ -2,7 +2,7 @@
 
 pkgname=cagent-bin
 pkgdesc="Docker cagent - Agent Builder and Runtime (prebuilt binary)"
-pkgver=1.15.0 # renovate: datasource=github-tags depName=docker/cagent
+pkgver=1.15.2 # renovate: datasource=github-tags depName=docker/cagent
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker/cagent"
@@ -13,8 +13,8 @@ source_x86_64=("cagent::https://github.com/docker/cagent/releases/download/v${pk
 source_aarch64=("cagent::https://github.com/docker/cagent/releases/download/v${pkgver}/cagent-linux-arm64")
 source=("LICENSE::https://raw.githubusercontent.com/docker/cagent/v${pkgver}/LICENSE")
 sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('e8b7af7b361939024d255554224c4b22101f4c621d00d58cfadaac779261a488')
-sha256sums_aarch64=('e8b7af7b361939024d255554224c4b22101f4c621d00d58cfadaac779261a488')
+sha256sums_x86_64=('46ca4de91369ed3a742d633e92752af1abe2eaac0427f46a831e7802276166fc')
+sha256sums_aarch64=('46ca4de91369ed3a742d633e92752af1abe2eaac0427f46a831e7802276166fc')
 noextract=('cagent')
 
 package() {

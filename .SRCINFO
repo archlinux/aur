@@ -1,6 +1,6 @@
 pkgbase = cagent-bin
 	pkgdesc = Docker cagent - Agent Builder and Runtime (prebuilt binary)
-	pkgver = 1.15.0
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/docker/cagent
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cagent-bin
 	provides = cagent
 	conflicts = cagent
 	noextract = cagent
-	source = LICENSE::https://raw.githubusercontent.com/docker/cagent/v1.15.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/docker/cagent/v1.15.2/LICENSE
 	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
-	source_x86_64 = cagent::https://github.com/docker/cagent/releases/download/v1.15.0/cagent-linux-amd64
-	sha256sums_x86_64 = e8b7af7b361939024d255554224c4b22101f4c621d00d58cfadaac779261a488
-	source_aarch64 = cagent::https://github.com/docker/cagent/releases/download/v1.15.0/cagent-linux-arm64
-	sha256sums_aarch64 = e8b7af7b361939024d255554224c4b22101f4c621d00d58cfadaac779261a488
+	source_x86_64 = cagent::https://github.com/docker/cagent/releases/download/v1.15.2/cagent-linux-amd64
+	sha256sums_x86_64 = 46ca4de91369ed3a742d633e92752af1abe2eaac0427f46a831e7802276166fc
+	source_aarch64 = cagent::https://github.com/docker/cagent/releases/download/v1.15.2/cagent-linux-arm64
+	sha256sums_aarch64 = 46ca4de91369ed3a742d633e92752af1abe2eaac0427f46a831e7802276166fc
 
 pkgname = cagent-bin
