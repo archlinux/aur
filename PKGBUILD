@@ -1,5 +1,5 @@
 pkgname=mbelib-neo-git
-pkgver=r17.131e619
+pkgver=r21.0b99bd8
 pkgrel=1
 pkgdesc="P25 Phase 1 and ProVoice IMBE and Half-rate AMBE vocoder library (modernized fork)"
 arch=('x86_64' 'aarch64')
