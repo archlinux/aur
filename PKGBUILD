@@ -7,7 +7,7 @@ pkgdesc="Run Windows apps on 🐧 Linux with ✨ seamless integration"
 url="https://github.com/TibixDev/winboat"
 arch=("x86_64")
 license=("MIT")
-depends=("fuse2" "hicolor-icon-theme")
+depends=("fuse2" "hicolor-icon-theme" 'docker' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
 conflicts=("winboat-bin" "winboat-electron" "winboat" "winboat-git")
 options=("!strip" "!debug")
 
