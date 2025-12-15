@@ -1,6 +1,6 @@
 pkgbase = liberica-jdk-21-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 21.0.8.u12
+	pkgver = 21.0.9.u15
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jdk-21.install
@@ -21,8 +21,8 @@ pkgbase = liberica-jdk-21-bin
 	provides = java-runtime-headless-openjdk=21
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = liberica-jdk-21-lite-bin=21.0.8.u12
-	provides = liberica-jre-21-bin=21.0.8.u12
+	provides = liberica-jdk-21-lite-bin=21.0.9.u15
+	provides = liberica-jre-21-bin=21.0.9.u15
 	backup = etc/liberica-jdk-21/logging.properties
 	backup = etc/liberica-jdk-21/management/jmxremote.access
 	backup = etc/liberica-jdk-21/management/jmxremote.password.template
@@ -51,9 +51,9 @@ pkgbase = liberica-jdk-21-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_aarch64 = https://download.bell-sw.com/java/21.0.8+12/bellsoft-jdk21.0.8+12-linux-aarch64.tar.gz
-	sha1sums_aarch64 = 5a26a2a1d7084f46ff945698f6f6fd73ad8e2bd3
-	source_x86_64 = https://download.bell-sw.com/java/21.0.8+12/bellsoft-jdk21.0.8+12-linux-amd64.tar.gz
-	sha1sums_x86_64 = 34fbc0f7e8d4cd0ad3be6e2073053f4e79536ea3
+	source_aarch64 = https://download.bell-sw.com/java/21.0.9+15/bellsoft-jdk21.0.9+15-linux-aarch64.tar.gz
+	sha1sums_aarch64 = 586228a262201992bcf0e0976d14f20d4dae4230
+	source_x86_64 = https://download.bell-sw.com/java/21.0.9+15/bellsoft-jdk21.0.9+15-linux-amd64.tar.gz
+	sha1sums_x86_64 = 0d8dd801df923774714397ed7c785cf7c071a194
 
 pkgname = liberica-jdk-21-bin
