@@ -1,13 +1,11 @@
 pkgbase = 0ad-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game (git version)
-	pkgver = a26.r2085.ga32a28a5e3
+	pkgver = a26.r2110.g14a5ccee52
 	pkgrel = 1
 	epoch = 1
 	url = https://play0ad.com
 	arch = i686
 	arch = x86_64
-	license = GPL-2.0-or-later
-	license = CC-BY-NC-SA-3.0
 	makedepends = boost
 	makedepends = cmake
 	makedepends = mesa
@@ -38,6 +36,7 @@ pkgbase = 0ad-git
 	md5sums = SKIP
 
 pkgname = 0ad-git
+	license = GPL-2.0-or-later
 	depends = 0ad-data
 	depends = boost-libs
 	depends = curl
@@ -61,5 +60,6 @@ pkgname = 0ad-git
 
 pkgname = 0ad-data-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game (git version) (data files)
+	license = CC-BY-NC-SA-3.0
 	provides = 0ad-data
 	conflicts = 0ad-data

@@ -7,12 +7,11 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r2085.ga32a28a5e3
+pkgver=a26.r2110.g14a5ccee52
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game (git version)"
 arch=('i686' 'x86_64')
 url="https://play0ad.com"
-license=('GPL-2.0-or-later' 'CC-BY-NC-SA-3.0')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'enet' 'fmt'
              'gloox' 'libminiupnpc.so' 'libpng' 'libsodium' 'libvorbis'
              'miniupnpc' 'openal' 'sdl2' 'wxwidgets-gtk3' 'which' 'subversion'
@@ -63,6 +62,7 @@ build() {
 }
 
 package_0ad-git() {
+  license=('GPL-2.0-or-later')
   depends=('0ad-data' 'boost-libs' 'curl' 'enet' 'libpng' 'libvorbis'
            'libxml2' 'openal' 'sdl2' 'wxwidgets-gtk3' 'zlib' 'fmt'
            'gloox' 'miniupnpc' 'libminiupnpc.so' 'icu' 'libsodium' 'which')
@@ -87,6 +87,7 @@ package_0ad-git() {
 
 package_0ad-data-git() {
   pkgdesc+=" (data files)"
+  license=('CC-BY-NC-SA-3.0')
   conflicts=('0ad-data')
   provides=('0ad-data')
   mkdir -p ${pkgdir}/usr/share/${_pkgname}-git
