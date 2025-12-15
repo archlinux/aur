@@ -1,7 +1,7 @@
 pkgbase = python-libsass
 	pkgdesc = Sass/SCSS for Python
 	pkgver = 0.23.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://sass.github.io/libsass-python
 	arch = x86_64
 	license = MIT

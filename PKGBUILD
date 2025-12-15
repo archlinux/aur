@@ -3,7 +3,7 @@
 
 pkgname=python-libsass
 pkgver=0.23.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Sass/SCSS for Python'
 arch=(x86_64)
 url='https://sass.github.io/libsass-python'
