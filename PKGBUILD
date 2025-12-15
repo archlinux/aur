@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.1.r0.b5eef0d
-pkgrel=4
+pkgrel=5
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
@@ -83,12 +83,12 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || return 1
     printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || return 1
     
     # Create installation directory
     install -dm755 "$pkgdir/usr/share/qubar"
@@ -113,7 +113,10 @@ package() {
     
     # Documentation
     install -dm755 "$pkgdir/usr/share/doc/qubar"
-    cp -r docs/* "$pkgdir/usr/share/doc/qubar/" 2>/dev/null || true
+    # Install all md files from docs/ if they exist, ignoring errors if directory is empty or missing
+    if [ -d docs ]; then
+        find docs -maxdepth 1 -type f -name "*.md" -exec install -Dm644 {} "$pkgdir/usr/share/doc/qubar/" \;
+    fi
     install -m644 README.md UI_ARCHITECTURE.md PROJECT_SUMMARY.md "$pkgdir/usr/share/doc/qubar/"
     
     # License
@@ -123,13 +126,22 @@ package() {
     install -Dm755 install.sh "$pkgdir/usr/share/qubar/install.sh"
     install -Dm755 uninstall.sh "$pkgdir/usr/share/qubar/uninstall.sh"
     
-    # Create symlink for easy access
+    # Create symlinks for easy access
     install -dm755 "$pkgdir/usr/bin"
+    
+    # qubar-install
     cat > "$pkgdir/usr/bin/qubar-install" << 'EOF'
 #!/bin/bash
 /usr/share/qubar/install.sh "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/qubar-install"
+
+    # qubar-uninstall
+    cat > "$pkgdir/usr/bin/qubar-uninstall" << 'EOF'
+#!/bin/bash
+/usr/share/qubar/uninstall.sh "$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/qubar-uninstall"
     
     # Post-install message
     cat > "$pkgdir/usr/share/qubar/PKGBUILD_NOTES" << 'EOF'
