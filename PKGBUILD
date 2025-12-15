@@ -1,6 +1,6 @@
 # Maintainer: Daniel Hammernik <daniel.hammernik@progeek.de>
 pkgname=kimai
-pkgver=1.1.1
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Desktop client for Kimai Time Tracking Server"
 arch=('x86_64')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/progeek-de/kimai-client/releases/download/v${pkgver}/kimai-${pkgver}-linux-portable.tar.gz"
         "kimai.desktop"
         "kimai.sh")
-sha256sums=('1547c0629ca836041811c9f2418e900dbc0ff1679fd0a4d89ecec13e2c9199a1'
-            'cd16b8c4a81e0eca333a4cf1b725bc5b8893caeca93331cd0955e41733201027'
+sha256sums=('8865c08caaa718efa31d23a2fc18aae948804b00f7dcae4680ef7cea318eba43'
+            'f4b4b8f3a3f892bb67ebeea8b3163fb43b444922326a539ea710e569cc2a4581'
             '188cf417849b5a5afb15b4d9fc5ced12c137b070de30851600ffc802b388995a')
 
 package() {
