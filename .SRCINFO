@@ -1,0 +1,19 @@
+pkgbase = loopino-git
+	pkgdesc = Lightweight sampler for experimental sound design and rhythmic exploration
+	pkgver = r62.4cd65b7
+	pkgrel = 1
+	url = https://github.com/brummer10/Loopino
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = libsndfile
+	makedepends = fftw
+	makedepends = jack
+	makedepends = cairo
+	makedepends = libx11
+	provides = loopino
+	conflicts = loopino
+	source = Loopino::git+https://github.com/brummer10/Loopino.git
+	sha256sums = SKIP
+
+pkgname = loopino-git
