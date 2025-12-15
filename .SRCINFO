@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-llvmexpr-git
+	pkgdesc = Plugin for Vapoursynth: llvmexpr (GIT version)
+	pkgver = R4.1.2.g93a6e59
+	pkgrel = 1
+	url = https://github.com/Sunflower-Dolls/Vapoursynth-llvmexpr
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	depends = llvm
+	depends = ctre
+	depends = volk
+	depends = vulkan-memory-allocator
+	provides = vapoursynth-plugin-llvmexpr
+	conflicts = vapoursynth-plugin-llvmexpr
+	source = llvmexpr::git+https://github.com/Sunflower-Dolls/Vapoursynth-llvmexpr.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-llvmexpr-git
