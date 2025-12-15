@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang-libs-standard
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
