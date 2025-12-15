@@ -1,18 +1,18 @@
 # Maintainer: infinite
 pkgname=aonsoku-bin
-pkgver=0.9.1
+pkgver=0.10.2
 pkgrel=1
-pkgdesc="A modern desktop client for Navidrome/Subsonic servers built with React and Rust"
+pkgdesc="A modern desktop client for Navidrome/Subsonic servers built with React and Electron"
 arch=('x86_64')
 url="https://github.com/victoralvesf/aonsoku"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'gcc-libs' 'glibc' 'openssl' 'gst-plugins-good')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'lib32-util-linux' 'libsecret' 'libappindicator')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/victoralvesf/aonsoku/releases/download/v$pkgver/Aonsoku_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('9516719516c8c860dd8219e1d0961ca0ae44810461e137e31b06616f5ef54662')
+source_x86_64=("https://github.com/victoralvesf/aonsoku/releases/download/v$pkgver/Aonsoku-v"$pkgver"-linux-amd64.deb")
+sha256sums_x86_64=('1fc2b30986a4bc11aa9a963b3f638c77f17ff1569160ce7ac085c8cbe0d1e11d')
 
 package() {
   # Extract package data
-  tar -xz -f data.tar.gz -C "${pkgdir}"
+  tar -xf data.tar.xz -C "${pkgdir}"
 }
