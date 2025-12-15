@@ -4,8 +4,8 @@
 
 _pkgname='rkik'
 pkgname="$_pkgname-git"
-pkgver=0.6.0.r15.g5ba44a0
-pkgrel=2
+pkgver=2.0.0.r0.ge5249f1
+pkgrel=1
 pkgdesc='Rusty Klock Inspection Kit: simple NTP client (development version)'
 arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -16,6 +16,7 @@ source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
 sha256sums=('SKIP')
+options=('!lto')
 
 prepare() {
   cd "$_pkgname"
@@ -35,6 +36,7 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
   cargo build --release --all-features
 }
 
@@ -43,8 +45,12 @@ package() {
 
   install -vDm0755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    README.md docs/{developer,user}_guide.md
+    README.md docs/{developer,user}_guide.md docs/NTS_USAGE.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir/" && ln -vsrf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
