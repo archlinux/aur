@@ -1,6 +1,6 @@
 pkgbase = mbtiles
 	pkgdesc = Examine, copy, validate vector tile sets
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://maplibre.org/martin/mbtiles.html
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = mbtiles
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = mbtiles-0.14.2.tar.gz::https://github.com/maplibre/martin/archive/refs/tags/mbtiles-v0.14.2.tar.gz
-	source = mbtiles-0.14.2-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/mbtiles-v0.14.2/LICENSE-APACHE
-	source = mbtiles-0.14.2-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/mbtiles-v0.14.2/LICENSE-MIT
-	b2sums = c57d71d40031892a685f4693cffdec12b7a79120d75719cce924c63c927ff9741c450fa3ed96d26f75b2c26e9f538e1682d4d90e135037eedd43525675c1e235
+	source = mbtiles-0.14.3.tar.gz::https://github.com/maplibre/martin/archive/refs/tags/mbtiles-v0.14.3.tar.gz
+	source = mbtiles-0.14.3-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/mbtiles-v0.14.3/LICENSE-APACHE
+	source = mbtiles-0.14.3-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/mbtiles-v0.14.3/LICENSE-MIT
+	b2sums = 867c701135569a091ff0cc7daf2f07fc0cf3c6f8e75ceae066f9485e28eca79d1e82dd53e40c63b3be4f93564e02840c0e894400ea322d744158bd470416f181
 	b2sums = cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968
 	b2sums = fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9
 
