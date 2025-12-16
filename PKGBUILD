@@ -2,8 +2,8 @@
 
 pkgname="millennium-git"
 _pkgdir="Millennium"
-pkgver=v2.31.0.beta.7.r18.g11067b7f
-pkgrel=3
+pkgver=v2.31.0.beta.8
+pkgrel=1
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -39,8 +39,8 @@ build() {
     pnpm --dir $srcdir/$_pkgdir/sdk           run build
 
     echo -e    "\e[1m\e[92m==>\e[0m \e[1mCopying Millennium shims...\e[0m"
-    mkdir -p   $srcdir/$_pkgdir/shims
-    cp -r      $srcdir/$_pkgdir/sdk/packages/loader/build "./shims/"
+    mkdir -p   $srcdir/$_pkgdir/shims/build
+    cp -r      $srcdir/$_pkgdir/sdk/packages/loader/build/ "./shims/"
 
     echo -e    "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
@@ -66,5 +66,5 @@ package() {
     install -Dm755 $srcdir/$_pkgdir/build/src/hhx64-build/libmillennium_hhx64.so                             "$pkgdir/usr/lib/millennium/"
     cp -r          $srcdir/$_pkgdir/src/pipx                                                                 "$pkgdir/usr/share/millennium/assets/"
     cp -r          $srcdir/$_pkgdir/shims/build                                                              "$pkgdir/usr/share/millennium/shims/"
-    install -Dm644 $srcdir/$_pkgdir/LICENSE                                                                  "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 $srcdir/$_pkgdir/LICENSE.md                                                               "$pkgdir/usr/share/licenses/$pkgname/"
 }
