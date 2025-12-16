@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
-pkgver=1.0.2
-pkgrel=7
+pkgver=r0.05a1e84
+pkgrel=8
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
@@ -81,11 +81,8 @@ provides=('qubar')
 conflicts=('qubar')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+install=qubar-git.install
 
-pkgver() {
-    cd "$srcdir/$pkgname" || return 1
-    printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
     cd "$srcdir/$pkgname" || return 1

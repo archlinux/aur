@@ -1,0 +1,28 @@
+post_install() {
+    echo ""
+    echo "╔═══════════════════════════════════════════════════════════════╗"
+    echo "║                    QUBAR INSTALLED!                            ║"
+    echo "╠═══════════════════════════════════════════════════════════════╣"
+    echo "║  To complete setup, run:                                       ║"
+    echo "║                                                                 ║"
+    echo "║      qubar-install                                             ║"
+    echo "║                                                                 ║"
+    echo "║  This will deploy configs and set up your desktop.            ║"
+    echo "║  After that, reboot and select Hyprland at login.             ║"
+    echo "╚═══════════════════════════════════════════════════════════════╝"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "╔═══════════════════════════════════════════════════════════════╗"
+    echo "║                    QUBAR UPGRADED!                             ║"
+    echo "╠═══════════════════════════════════════════════════════════════╣"
+    echo "║  If you want to update your configs, run:                      ║"
+    echo "║                                                                 ║"
+    echo "║      qubar-install                                             ║"
+    echo "║                                                                 ║"
+    echo "║  This is optional - existing configs are preserved.            ║"
+    echo "╚═══════════════════════════════════════════════════════════════╝"
+    echo ""
+}

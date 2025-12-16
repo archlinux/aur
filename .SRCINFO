@@ -1,8 +1,9 @@
 pkgbase = qubar-git
 	pkgdesc = Modern Hyprland desktop with native QuickShell/QML UI
-	pkgver = 1.0.2
-	pkgrel = 7
+	pkgver = r0.05a1e84
+	pkgrel = 8
 	url = https://github.com/GeneticxCln/Qubar
+	install = qubar-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
