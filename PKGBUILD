@@ -1,6 +1,6 @@
 # Maintainer: sunn4room <sunn4room@163.com>
 pkgname=pipebar-git
-pkgver=r29.bbe0a6b
+pkgver=r31.e4075a9
 pkgrel=1
 pkgdesc="A featherweight text-rendering wayland statusbar."
 arch=(x86_64)
@@ -12,6 +12,7 @@ provides=("pipebar")
 conflicts=("pipebar")
 source=("$pkgname::git+https://codeberg.org/sunn4room/pipebar.git")
 md5sums=("SKIP")
+options=('!debug')
 
 pkgver() {
     cd "$srcdir/$pkgname"
