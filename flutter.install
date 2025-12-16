@@ -1,0 +1,104 @@
+note() {
+  printf "${BOLD}${BLUE}==>${YELLOW} $1 ${WHITE}$2${ALL_OFF}\n"
+}
+
+msg1() {
+  printf "${BOLD}${BLUE}==>${WHITE} $1${ALL_OFF}\n"
+}
+
+msg2() {
+  printf "   ${WHITE} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="$(tput setaf 0)"
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
+BLUE="$(tput setaf 4)"
+MAGENTA="$(tput setaf 5)"
+CYAN="$(tput setaf 6)"
+WHITE="$(tput setaf 7)"
+
+_builders=(
+  builder
+  builduser
+  main-builder
+)
+
+_groups=(
+  flutter
+  flutteruser
+)
+
+post_install() {
+  # primary flutter group
+  groupadd -f flutter
+
+  for i in "${_groups[@]}"; do
+    if grep -q "$i" /etc/passwd > /dev/null; then
+      setfacl -R -m "g:$i:rwX" /opt/flutter
+    fi
+  done
+
+  # clean chroot/container builders
+  for i in "${_builders[@]}"; do
+    if grep -q "$i" /etc/passwd > /dev/null; then
+      setfacl -R -m "u:$i:rwX" /opt/flutter
+    fi
+  done
+
+  note 'Warning:' "'/opt/flutter' will be wiped on upgrade and uninstall."
+  echo
+  msg2 "Flutter requires write permission to the install directory."
+  echo
+  msg2 "This package redirects writes to '~/.cache/flutter_*'."
+  msg2 "Users should unmount and clear the cache after upgrades."
+  echo
+  msg2 "        fusermount -uq ~/.cache/flutter_sdk"
+  msg2 "        rm -rf ~/.cache/{flutter_sdk,flutter_local}"
+  echo
+  msg2 "Optionally, adding users to the 'flutter' group would"
+  msg2 "give them direct access to '/opt/flutter':"
+  echo
+  msg2 "        sudo usermod -a -G flutter [username]"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_install() {
+  pre_remove
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+pre_remove() {
+  if [ ! -e opt/flutter ]; then
+    return
+  fi
+
+  # remove extra permissions
+  for i in ${_builders[@]} ${_groups[@]}; do
+    if grep -q "group:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
+      setfacl -R -x "g:$i" /opt/flutter
+    fi
+    if grep -q "user:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
+      setfacl -R -x "u:$i" /opt/flutter
+    fi
+  done
+
+  chmod -R u+rwX,go+rX,go-w opt/flutter
+}
+
+post_remove() {
+  rm -rf opt/flutter
+
+  msg1 "If no longer needed, remove the 'flutter' group:"
+  echo
+  msg2 "        sudo groupdel flutter"
+}
