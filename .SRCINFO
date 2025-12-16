@@ -1,0 +1,12 @@
+pkgbase = yoctofetch
+	pkgdesc = Fast(est) system fetch tool for Linux with a low footprint
+	pkgver = v1.2.0
+	pkgrel = 1
+	url = https://codeberg.org/Phosphenius/yoctofetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	conflicts = yoctofetch-git
+	source = yoctofetch-v1.2.0.tar.gz::https://codeberg.org/Phosphenius/yoctofetch/archive/v1.2.0.tar.gz
+	sha256sums = e73cbcc3610069eadc58562ccd823ea0b875e944d9e83d80a22c63eb9a7d6a30
+
+pkgname = yoctofetch
