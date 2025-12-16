@@ -1,7 +1,7 @@
 # Maintainer: Jeason <xiaomiquan@aliyun.com>
 
 pkgname=novel-editor
-pkgver=0.1.70
+pkgver=0.1.80
 pkgrel=1
 pkgdesc="Professional novel writing application with advanced project management and world-building tools"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   'libfuse2: 用于 AppImage 支持'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/jeasoncc/$pkgname/archive/refs/tags/desktop-v0.1.70.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/jeasoncc/$pkgname/archive/refs/tags/desktop-v0.1.80.tar.gz"
 )
 sha256sums=('SKIP')  # 首次发布时使用 SKIP，之后更新为实际的 SHA256
 

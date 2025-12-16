@@ -1,6 +1,6 @@
 pkgbase = novel-editor
 	pkgdesc = Professional novel writing application with advanced project management and world-building tools
-	pkgver = 0.1.70
+	pkgver = 0.1.80
 	pkgrel = 1
 	url = https://github.com/jeasoncc/novel-editor
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = novel-editor
 	depends = gtk3
 	depends = libappindicator-gtk3
 	optdepends = libfuse2: 用于 AppImage 支持
-	source = novel-editor-0.1.70.tar.gz::https://github.com/jeasoncc/novel-editor/archive/refs/tags/desktop-v0.1.70.tar.gz
+	source = novel-editor-0.1.80.tar.gz::https://github.com/jeasoncc/novel-editor/archive/refs/tags/desktop-v0.1.80.tar.gz
 	sha256sums = SKIP
 
 pkgname = novel-editor
