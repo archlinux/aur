@@ -1,6 +1,6 @@
 pkgbase = ifuse-git
 	pkgdesc = A fuse filesystem to access the contents of an iPhone or iPod Touch
-	pkgver = 1.1.4.r8.gc4ab3d6
+	pkgver = 1.2.0.r0.g8f8e12e
 	pkgrel = 1
 	epoch = 2
 	url = http://libimobiledevice.org/
@@ -11,9 +11,13 @@ pkgbase = ifuse-git
 	depends = libimobiledevice-git
 	depends = libplist-git
 	depends = fuse3
-	provides = ifuse=1.1.4.r8.gc4ab3d6
+	provides = ifuse=1.2.0.r0.g8f8e12e
 	conflicts = ifuse
 	source = git+https://github.com/libimobiledevice/ifuse
 	md5sums = SKIP
 
 pkgname = ifuse-git
+	depends = libimobiledevice-git
+	depends = libplist-git
+	depends = fuse3
+	depends = usbmuxd-git

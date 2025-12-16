@@ -3,8 +3,8 @@
 
 pkgname=ifuse-git
 epoch=2
-pkgver=1.1.4.r8.gc4ab3d6
-pkgrel=1
+pkgver=1.2.0.r0.g8f8e12e
+pkgrel=2
 pkgdesc='A fuse filesystem to access the contents of an iPhone or iPod Touch'
 url='http://libimobiledevice.org/'
 arch=('i686' 'x86_64')
@@ -39,6 +39,8 @@ check() {
 }
 
 package() {
+	depends+=('usbmuxd-git')
+
 	cd ifuse
 	make DESTDIR="${pkgdir}" install
 }
