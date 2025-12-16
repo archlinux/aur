@@ -1,6 +1,6 @@
 pkgbase = r-ucsc.utils
 	pkgdesc = Low-level utilities to retrieve data from the UCSC Genome Browser
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/UCSC.utils
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = r-ucsc.utils
 	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/UCSC.utils_1.6.0.tar.gz
-	md5sums = 88d9dd1d3ab8c5597926f4da7a3fabf4
-	b2sums = 7ea0e2b0e09bf5276128463d6d9c61e200354c808a090b67ebbf4b276e60aa5f096b880eb83b6a93ccdd1693317688b93ea49445140e2232288d82893485ea1b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UCSC.utils_1.6.1.tar.gz
+	md5sums = 24ac0d61a6fda5ed4e8f9c2d9fde80b8
+	b2sums = e89d26384839dac9a828abf69dcadfc73c602206dacd66489e161d0da02e9674b5e42e450075639f71873d619207a81aa93b9ba51fa539168af64278bdfac166
 
 pkgname = r-ucsc.utils

@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=UCSC.utils
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88d9dd1d3ab8c5597926f4da7a3fabf4')
-b2sums=('7ea0e2b0e09bf5276128463d6d9c61e200354c808a090b67ebbf4b276e60aa5f096b880eb83b6a93ccdd1693317688b93ea49445140e2232288d82893485ea1b')
+md5sums=('24ac0d61a6fda5ed4e8f9c2d9fde80b8')
+b2sums=('e89d26384839dac9a828abf69dcadfc73c602206dacd66489e161d0da02e9674b5e42e450075639f71873d619207a81aa93b9ba51fa539168af64278bdfac166')
 
 build() {
   mkdir build
