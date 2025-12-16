@@ -10,7 +10,7 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator'  'libsoup'  'pango'  'webkit2gtk-4.1' 'systemd-resolvconf')
 source_x86_64=(https://github.com/DefGuard/client/releases/download/v${pkgver}/defguard-client_${pkgver}_amd64.deb)
 # Update to actual SHA sum of package
-sha256sums_x86_64=('334b3b1a477c6e76f213d9de6de2410923c934ec15b86d0cb3e3d647bff2d442')
+sha256sums_x86_64=('b5620260dee0ca71df1df68c88fc15694cec68de61b31fe2847fd12d51069b43')
 install=defguard-client.install
 
 package() {
