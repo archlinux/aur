@@ -1,6 +1,6 @@
 pkgbase = tmpdebian
 	pkgdesc = Part of the tmplinux suite. Temporary Debian
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/TheOddCell/tmpdebian
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = tmpdebian
 	depends = util-linux
 	depends = systemd
 	depends = squashfs-tools
-	depends = libtmplinux
-	source = https://github.com/TheOddCell/tmpdebian/archive/refs/tags/v1.2.2.tar.gz
+	source = https://github.com/TheOddCell/tmpdebian/archive/refs/tags/v1.2.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmpdebian
