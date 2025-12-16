@@ -9,6 +9,7 @@ pkgbase = eric
 	depends = python-asttokens
 	depends = python-black
 	depends = python-coverage
+	depends = python-chardet
 	depends = python-editorconfig
 	depends = python-isort
 	depends = python-jedi

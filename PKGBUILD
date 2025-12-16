@@ -15,6 +15,7 @@ depends=(
     'python-asttokens'
     'python-black'
     'python-coverage'
+    'python-chardet'
     'python-editorconfig'
     'python-isort'
     'python-jedi'
