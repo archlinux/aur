@@ -12,6 +12,7 @@ pkgbase = qdmr-git
 	depends = qt6-serialport
 	depends = qt6-location
 	depends = yaml-cpp
+	depends = librsvg
 	provides = qdmr
 	conflicts = qdmr
 	source = qdmr::git+https://github.com/hmatuschek/qdmr.git
