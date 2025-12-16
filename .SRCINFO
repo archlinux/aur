@@ -1,6 +1,6 @@
 pkgbase = doasedit-nhk
 	pkgdesc = A Rust implementation of doasedit - edit files as root using an unprivileged editor
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nhktmdzhg/doasedit
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = doasedit-nhk
 	depends = glibc
 	provides = doasedit
 	conflicts = doasedit
-	source = git+https://github.com/nhktmdzhg/doasedit.git#tag=v1.0.0
+	source = git+https://github.com/nhktmdzhg/doasedit.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = doasedit-nhk

@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at google mail>
 pkgname=doasedit-nhk
 _pkgname=doasedit
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Rust implementation of doasedit - edit files as root using an unprivileged editor"
 arch=('any')
