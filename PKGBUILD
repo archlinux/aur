@@ -8,15 +8,15 @@ pkgname=freebsd-mk
 _pkgver=10.3~svn296373
 _debrel=6
 pkgver=10.3_svn296373_6
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeBSD makefile templates for bmake"
 arch=("any")
 url="https://packages.debian.org/stable/freebsd-mk"
 license=("bsd")
 depends=(bmake)
 source=(
-	"http://deb.debian.org/debian/pool/main/f/${_pkgbase}/${_pkgbase}_${_pkgver}.orig.tar.xz"
-	"http://deb.debian.org/debian/pool/main/f/${_pkgbase}/${_pkgbase}_${_pkgver}-${_debrel}.debian.tar.xz"
+	"http://archive.debian.org/debian/pool/main/f/${_pkgbase}/${_pkgbase}_${_pkgver}.orig.tar.xz"
+	"http://archive.debian.org/debian/pool/main/f/${_pkgbase}/${_pkgbase}_${_pkgver}-${_debrel}.debian.tar.xz"
 )
 sha256sums=(
 	"1b16981e42765813be3811b1eda802dccb673de1c4542ed6476f467b0b21e804"
