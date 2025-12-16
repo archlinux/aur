@@ -1,7 +1,7 @@
 pkgbase = edopro-bin
 	pkgdesc = Project Ignis: EDOPro (official Linux binaries)
 	pkgver = 41.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edo9300/edopro
 	install = edopro.install
 	arch = x86_64
