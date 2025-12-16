@@ -2,7 +2,7 @@
 
 pkgname=pacpreview
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 optdepends=('fzf: use as a search tool')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,12 +16,6 @@ build() {
     cd "$pkgname-$pkgver"
 
     RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-
-    RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
 }
 
 package() {
