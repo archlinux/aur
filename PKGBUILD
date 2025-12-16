@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=EMT
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c94ae89b2912cfa217798fbc92da664')
-b2sums=('ddd5bda755e58f266d83f6e7e7bf52639732938a2d0afa5eaf221699577b60083c51e84e7c82ce99d0f3b1a909f7acd7c65665d41503cec0a8195c521b0cd843')
+md5sums=('27ae9cd4a4c9f9fa052e18058dac8335')
+b2sums=('b78e8b5943d7b737576dd0327cd6959d09dbfd47f91dfa851ad37004df2ae6fc0edda4d1af5d860cd334d35eab95f9f09dba4ec55693a6d07e92b8e7ac64d726')
 
 build() {
   mkdir build
