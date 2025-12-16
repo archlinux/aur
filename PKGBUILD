@@ -1,7 +1,7 @@
 # Maintainer: Jeason <xiaomiquan@aliyun.com>
 
 pkgname=novel-editor-bin
-pkgver=0.1.70
+pkgver=0.1.80
 pkgrel=1
 pkgdesc="Professional novel writing application with advanced project management and world-building tools (binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 provides=('novel-editor')
 conflicts=('novel-editor')
 source=(
-  "$pkgname-$pkgver.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.70/novel-editor_0.1.70_amd64.deb"
+  "$pkgname-$pkgver.deb::https://github.com/jeasoncc/novel-editor/releases/download/desktop-v0.1.80/novel-editor_0.1.80_amd64.deb"
 )
 sha256sums=('SKIP')  # 首次发布时使用 SKIP，之后更新为实际的 SHA256
 
