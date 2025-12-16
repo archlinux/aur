@@ -1,10 +1,10 @@
 pkgbase = python-orix
 	pkgdesc = Python library for analysing orientations and crystal symmetry.
-	pkgver = 0.13.3
-	pkgrel = 2
+	pkgver = 0.14.1
+	pkgrel = 1
 	url = https://orix.rtfd.io/
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-hatchling
 	makedepends = python-wheel
@@ -22,7 +22,7 @@ pkgbase = python-orix
 	depends = python-scipy
 	depends = python-tqdm
 	provides = orix
-	source = https://github.com/pyxem/orix/archive/v0.13.3.tar.gz
-	md5sums = a864459b0dd514033680ca188bade03b
+	source = https://github.com/pyxem/orix/archive/v0.14.1.tar.gz
+	md5sums = 0ef7b7fa957064223ccee4dac0858bad
 
 pkgname = python-orix
