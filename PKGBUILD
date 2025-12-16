@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire-plugins-extra
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Additional plugins for Wayfire'
 url=https://wayfire.org
 arch=(x86_64)
@@ -17,14 +17,13 @@ b2sums=('18cf7da7dff2be95cdbd104789f8bed0675aed05295ebacefd24503bad5abba84e0ed0b
 
 build () {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		-Denable_filters=true \
 		-Denable_focus_request=true \
 		-Denable_pixdecor=true \
 		-Denable_wayfire_shadows=true \
 		--auto-features=disabled
-	ninja -C build
+	meson compile -C build
 }
 
 check () {
@@ -32,7 +31,7 @@ check () {
 }
 
 package () {
-	DESTDIR="${pkgdir}" ninja -C build install
+	meson install -C build --destdir "$pkgdir"
 	cd "${pkgname}-${pkgver}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
