@@ -4,14 +4,14 @@ pkgname=$_pkgname-qt5
 pkgver=r10.79e245a
 pkgrel=1
 pkgdesc="A simple and light Qt5 WM.  100% compatible with the EWMH and ICCCM standards."
-url="https://notabug.org/tux_peng/eggwm"
+url="https://github.com/7b7b/eggwm"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras')
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://notabug.org/tux_peng/eggwm.git#commit=79e245a8c855df45cfd9356ca56628048ba46d0d")
+source=("git+https://github.com/7b7b/eggwm.git#commit=79e245a8c855df45cfd9356ca56628048ba46d0d")
 sha256sums=("SKIP")
 
 pkgver() {
