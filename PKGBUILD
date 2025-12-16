@@ -83,6 +83,11 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 install=qubar-git.install
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 package() {
     cd "$srcdir/$pkgname" || return 1
