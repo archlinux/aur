@@ -1,6 +1,6 @@
 pkgbase = pkgstate
 	pkgdesc = The perfect companion your dotfiles repo: declaratively define your installed packages, systemd services, and user groups
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/pol-rivero/pkgstate
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pkgstate
 	optdepends = paru: To be able to install AUR packages
 	provides = pkgstate
 	conflicts = pkgstate
-	source = pkgstate-0.2.1.tar.gz::https://github.com/pol-rivero/pkgstate/archive/refs/tags/0.2.1.tar.gz
-	sha256sums = 4c2c47063e58bc05a9bde64c3b41b82985a192ffba4a76048779c8a7599b610b
+	source = pkgstate-0.2.2.tar.gz::https://github.com/pol-rivero/pkgstate/archive/refs/tags/0.2.2.tar.gz
+	sha256sums = 589d900432aa4ccde18de7dc9a365cd8a6d163536ce83caf82c8ef980a1f66de
 
 pkgname = pkgstate
