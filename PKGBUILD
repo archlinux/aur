@@ -19,6 +19,7 @@ depends=(
 )
 optdepends=(
     'snixembed: System tray support for Swaybar'
+    'libexttextcat: Language detection for translation validation'
 )
 makedepends=(
     'git'
