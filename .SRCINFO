@@ -1,0 +1,14 @@
+pkgbase = python-sourcetypes
+	pkgdesc = Python Source Code Types For Inline Syntax Highlighting
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/samwillis/python-inline-source/tree/main/sourcetypes
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/s/sourcetypes/sourcetypes-0.0.4.tar.gz
+	sha256sums = a89258eb5a9d7eb40ed9d189c999a4424e48dd9b67e1780869ecbd42ec6ce51c
+
+pkgname = python-sourcetypes
