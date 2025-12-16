@@ -3,9 +3,9 @@
 
 pkgname=python-psychtoolbox
 pkgver=3.0.19.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Pieces of Psychtoolbox-3 ported to CPython"
-arch=('any')
+arch=('x86_64')
 url="https://pypi.org/project/psychtoolbox/"
 license=('custom')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'libusb' 'libx11' 'libxi' 'portaudio' 'python' 'python-numpy')
