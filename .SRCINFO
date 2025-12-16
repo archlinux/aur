@@ -1,0 +1,11 @@
+pkgbase = cluestering
+	pkgdesc = High-performance density-based weighted clustering library developed at CERN
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/cms-patatrack/CLUEstering
+	arch = any
+	license = MPL-2.0
+	source = https://github.com/cms-patatrack/CLUEstering/archive/refs/tags/2.9.0.tar.gz
+	sha256sums = 00e0c228f75f9d140896fcc91a0741f958985769dd09618e7effef339f2e2f6a
+
+pkgname = cluestering
