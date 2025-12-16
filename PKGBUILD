@@ -3,12 +3,13 @@
 
 pkgname=curlyq
 pkgver=0.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line helper for curl and web scraping"
 arch=(any)
 url="https://github.com/ttscoff/curlyq"
 license=(MIT)
 depends=(
+  ruby
   ruby-gli
   ruby-nokogiri
   ruby-selenium-webdriver
