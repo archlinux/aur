@@ -25,6 +25,7 @@ pkgbase = asgi-webdav
 	depends = python-chardet
 	depends = python-click
 	depends = python-dataclass-wizard
+	depends = python-dotenv
 	depends = python-httptools
 	depends = python-uvloop
 	depends = python-xmltodict
