@@ -1,9 +1,12 @@
 # Maintainer: Cosmic Horror <CosmicHorrorDev@pm.me>
 # Contributor: Alessio Biancone <alebian1996@gmail.com>
 
+# NOTE: project renamed to `lspmux`. this package is now the last "ra-multiplex"
+# update o7
+
 pkgname=ra-multiplex
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="allows multiple LSP to share a single rust-analyzer instance per cargo workspace."
 arch=('any')
 url="https://github.com/pr2502/ra-multiplex"

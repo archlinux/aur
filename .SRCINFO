@@ -1,7 +1,7 @@
 pkgbase = ra-multiplex
 	pkgdesc = allows multiple LSP to share a single rust-analyzer instance per cargo workspace.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pr2502/ra-multiplex
 	arch = any
 	license = MIT
