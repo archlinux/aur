@@ -1,6 +1,6 @@
 pkgbase = mint-l-theme
 	pkgdesc = A collection of legacy mint themes.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-l-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mint-l-theme
 	depends = ttf-ubuntu-font-family
 	optdepends = mint-l-icons
 	options = !strip
-	source = mint-l-theme_2.0.2.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_2.0.2.tar.xz
-	sha256sums = 8a60ca42c30c65644f6d3cb854817dc576a552ac750429907aa3c43dae9f88e2
+	source = mint-l-theme_2.0.3.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_2.0.3.tar.xz
+	sha256sums = 5f9385a665438556f5c353e656d1228f8f281672f312f72dca3431dada7db721
 
 pkgname = mint-l-theme
