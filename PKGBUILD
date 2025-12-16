@@ -5,7 +5,7 @@
 
 pkgname='offpunk'
 _pkgname='offpunk'
-pkgver=2.6
+pkgver=2.8
 pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = offpunk
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities
-	pkgver = 2.6
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://git.sr.ht/~lioploum/offpunk
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = offpunk
 	conflicts = offpunk
 	conflicts = av-98-offline
 	noextract = offpunk
-	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v2.6
+	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v2.8
 	sha256sums = SKIP
 
 pkgname = offpunk
