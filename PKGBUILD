@@ -3,7 +3,7 @@
 pkgname=python-ffn
 _pkgname=${pkgname:7}
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Financial functions for Python"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
@@ -32,4 +32,6 @@ build() {
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE \
+        "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
