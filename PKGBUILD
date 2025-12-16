@@ -8,7 +8,7 @@
 
 pkgname=smpeg0
 pkgver=0.4.5
-pkgrel=8
+pkgrel=9
 pkgdesc="SDL MPEG Player Library - Legacy version 0.4.5"
 arch=($CARCH)
 url=https://icculus.org/smpeg/
@@ -17,7 +17,7 @@ makedepends=(subversion)
 depends=(
 	sh # smpeg-config
 	"sdl>=1:1" "sdl<1:2" # provided by sdl12-compat over sdl2-compat over sdl3
-	gcc-libs glibc glu libglvnd libx11 libxau libxcb libxdmcp
+	gcc-libs glibc glu libglvnd
 )
 source=("$pkgname-$pkgver::svn://svn.icculus.org/smpeg/tags/release_${pkgver//./_}")
 sha256sums=(SKIP)
