@@ -1,6 +1,6 @@
 pkgbase = blink1
 	pkgdesc = software for blink(1) USB RGB LED
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/todbot/blink1-tool/
 	arch = i686
