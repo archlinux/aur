@@ -1,0 +1,13 @@
+pkgbase = lspmux
+	pkgdesc = share one language server instance between multiple LSP clients to save resources
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://codeberg.org/p2502/lspmux
+	arch = any
+	license = MIT
+	makedepends = cargo
+	replaces = ra-multiplex
+	source = lspmux-0.3.0.tar.gz::https://static.crates.io/crates/lspmux/lspmux-0.3.0.crate
+	b2sums = 3581f872f1e686bf2b1465bdb42e666c81e3d043825b05fce3ee69cc3b0ca19d6626c92b060866940b2359193f83512f5941cc489477a77c2831c30976cfdf3a
+
+pkgname = lspmux
