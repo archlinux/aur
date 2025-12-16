@@ -10,8 +10,7 @@ _sdk_ver=110
 
 pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-_pkgver=$(curl -Ls "https://api.github.com/repos/Natsumi-sama/VRCX/releases/latest" | jq -r '.tag_name')
-pkgver=${_pkgver//-/.}
+pkgver='2025.12.16T16.02.c52dc8a'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
@@ -20,11 +19,11 @@ depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' "dotnet-runtime-$_dotnet_v
 makedepends=('squashfs-tools')
 conflicts=('vrcx')
 provides=('vrcx')
-source=("https://github.com/Natsumi-sama/VRCX/releases/download/${_pkgver}/VRCX_${_pkgver}_x64.AppImage"
-        "LICENSE-v$_pkgver::https://raw.githubusercontent.com/Natsumi-sama/VRCX/refs/tags/$_pkgver/LICENSE"
+source=("https://github.com/Natsumi-sama/VRCX/releases/download/${pkgver}/VRCX_${pkgver}_x64.AppImage"
+        "LICENSE-v$pkgver::https://raw.githubusercontent.com/Natsumi-sama/VRCX/refs/tags/$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('b19156cd58dfd67de85ec97a70060d325ceb27869838a7dd92895efac7cbe4b5'
+sha256sums=('d3f21b0745a0c9101a67291bf0fc686a0ea56604fc1af0841998d4ab148e136d'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
@@ -116,7 +115,7 @@ extract_appimage() (
 
 build() {
     mkdir opt
-    extract_appimage "VRCX_${_pkgver}_x64.AppImage" opt/vrcx -no-xattrs
+    extract_appimage "VRCX_${pkgver}_x64.AppImage" opt/vrcx -no-xattrs
     rm -f opt/vrcx/AppRun
     rm -f opt/vrcx/.DirIcon
     rm -f opt/vrcx/vrcx.desktop
@@ -240,7 +239,7 @@ build() {
         ln -s ../../../../../../usr/share/icons/hicolor/256x256/apps/vrcx.ico \
             opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.ico
     fi
-    sed -i -e "s/^Version=.*/Version=$_pkgver/" VRCX.desktop
+    sed -i -e "s/^Version=.*/Version=$pkgver/" VRCX.desktop
 }
 
 package() {
@@ -256,7 +255,7 @@ package() {
     install -Dm644 VRCX.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/licenses"
     install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 "LICENSE-v$_pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE-v$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 opt/vrcx/LICENSE.electron.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
     rm -f -- "$pkgdir/opt/vrcx/LICENSE.electron.txt"
