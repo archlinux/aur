@@ -1,0 +1,5 @@
+[lzbench-bin]
+source = "github"
+github = "inikep/lzbench"
+use_latest_release = true
+prefix = "v"
