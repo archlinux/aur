@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.8.0
+pkgver=0.8.1
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8cc43984543c79fcdb1d2a9357a56c7203bbf837934f6126e92312d3dadc4ee5'
+sha256sums=('853000352c4eeed29d3c0f0d51a5ebcd50f8f7ee19070ff9f917b06dcd527fd9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
