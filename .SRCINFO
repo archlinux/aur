@@ -1,6 +1,6 @@
 pkgbase = pixelterm-c
 	pkgdesc = A high-performance terminal image browser written in C, based on the Chafa library
-	pkgver = 1.1.14
+	pkgver = null
 	pkgrel = 1
 	url = https://github.com/zouyonghe/PixelTerm-C
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = pixelterm-c
 	provides = pixelterm-c
 	options = !debug
 	options = !strip
-	source_x86_64 = pixelterm-1.1.14::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.1.14/pixelterm-amd64-linux
-	md5sums_x86_64 = cd3d6418e63506ff950a1e9c40da5b33
-	source_aarch64 = pixelterm-1.1.14::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.1.14/pixelterm-arm64-linux
-	md5sums_aarch64 = 6313ea9ade997b7f1ab97c34571ff1e1
+	source_x86_64 = pixelterm-null::https://github.com/zouyonghe/PixelTerm-C/releases/download/vnull/pixelterm-amd64-linux
+	md5sums_x86_64 = 9d1ead73e678fa2f51a70a933b0bf017
+	source_aarch64 = pixelterm-null::https://github.com/zouyonghe/PixelTerm-C/releases/download/vnull/pixelterm-arm64-linux
+	md5sums_aarch64 = 9d1ead73e678fa2f51a70a933b0bf017
 
 pkgname = pixelterm-c
