@@ -1,6 +1,6 @@
 pkgbase = mairu
 	pkgdesc = on-memory AWS credentials agent and executor for AWS SSO and others
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/sorah/mairu
 	install = mairu.install
@@ -11,8 +11,8 @@ pkgbase = mairu
 	makedepends = protobuf
 	depends = openssl
 	options = !lto
-	source = mairu-0.9.0.tar.gz::https://github.com/sorah/mairu/archive/v0.9.0.tar.gz
-	sha256sums = 27c08a83c0d4e73a2f18e503ebf37855e65800e228ea13f028281938e1422c2e
-	sha512sums = 4d9906a904e20c6a7dbfdb6e54345c2eafa4d34d1ffbf4cb37e5006df82843c2b5786aa79be6975d718067aa52c284ccf7b44abb5174ad0fa9cdd1dfe451aff2
+	source = mairu-0.10.0.tar.gz::https://github.com/sorah/mairu/archive/v0.10.0.tar.gz
+	sha256sums = 2def6f3073ce4ed8bae2131aa1a3a2f896330a84ad695be6afd1dc65c8d7b8f4
+	sha512sums = 47e76795670a5ea00c2af79f3e1b82b844fb9f2dd9e3076903a37710ee8e420cb699f2e3cbf555b394182dc152dc6cbed7d0b51701ce0b39deabd73166aa35be
 
 pkgname = mairu
