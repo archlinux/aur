@@ -1,0 +1,5 @@
+[rusticon-bin]
+source = "github"
+github = "ronilan/rusticon"
+use_latest_release = true
+prefix = "v"
