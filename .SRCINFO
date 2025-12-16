@@ -1,0 +1,19 @@
+pkgbase = gleditor
+	pkgdesc = A standalone OpenGL ES shader editor with real-time preview and syntax highlighting
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/1ay1/gleditor
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = gtk3
+	depends = gtksourceview4
+	depends = mesa
+	depends = libglvnd
+	optdepends = neowall: Live wallpaper integration for installing shaders directly
+	source = gleditor-1.0.0.tar.gz::https://github.com/1ay1/gleditor/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gleditor
