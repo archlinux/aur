@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Plotune
+GenericName=Data Visualization Tool
+Comment=Modular Data Visualization and Signal Analysis Platform
+Exec=plotune %U
+Icon=plotune
+Terminal=false
+Type=Application
+Categories=Development;Science;Graphics;
+MimeType=x-scheme-handler/plotune;
