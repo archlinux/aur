@@ -1,6 +1,6 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = backblaze-b2
 	depends = python-tqdm>=4.65.0
 	depends = python-platformdirs>=3.11.0
 	depends = python-pydantic>=2.0.1
-	source = https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v4.4.1/b2-4.4.1.tar.gz
-	sha256sums = cc3595b035e2a3fbc1e8d923288d3bdbd07a633e79f303ca602a3932d5865572
+	source = https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v4.4.2/b2-4.4.2.tar.gz
+	sha256sums = 61ac927da23e5c69bbc87b217b21cec442c809f890bc07e2dcc9f66a75e2d60b
 
 pkgname = backblaze-b2

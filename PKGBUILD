@@ -2,7 +2,7 @@
 
 pkgname=backblaze-b2
 _pkgname=b2
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
@@ -30,7 +30,7 @@ license=('MIT')
 arch=('any')
 
 source=("https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('cc3595b035e2a3fbc1e8d923288d3bdbd07a633e79f303ca602a3932d5865572')
+sha256sums=('61ac927da23e5c69bbc87b217b21cec442c809f890bc07e2dcc9f66a75e2d60b')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
