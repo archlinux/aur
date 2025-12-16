@@ -6,7 +6,7 @@ pkgname=(
   networkmanager-openvpn
   networkmanager-vpn-plugin-openvpn
 )
-pkgver=1.12.3
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
@@ -28,7 +28,7 @@ makedepends=(
   python
 )
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git?signed#tag=$pkgver")
-b2sums=('32c4563703b9aa795c31e627fd6eaedbe29334c090833dac2fc1dc3bc71d5af84f7b7d4f26cdd5d2566ea64ec5b8f0b411c2af3b39ee7615dedaee7d7d90edc5')
+b2sums=('4b53b27c36accdc0f49777279c6e62f81028b0bbc658bedcc2b67fb548871b2ebaa62e468a7a3f21e0d308107940f335fcd0e2690ef336f224e49c4cda59f689')
 validpgpkeys=(
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
   1CFF865BDF957BE935765BBD2E1878D078DEF7C6 # Íñigo Huguet <ihuguet@riseup.net>
@@ -81,6 +81,8 @@ package_networkmanager-openvpn() {
   _pick plugin usr/lib/NetworkManager/VPN
   _pick plugin usr/lib/NetworkManager/libnm-vpn-plugin-openvpn.so
   _pick plugin usr/lib/nm-openvpn-service*
+  _pick plugin usr/lib/sysusers.d
+  _pick plugin usr/lib/tmpfiles.d
   _pick plugin usr/share/dbus-1
 }
 
@@ -95,9 +97,6 @@ package_networkmanager-vpn-plugin-openvpn() {
   )
 
   mv plugin/* "$pkgdir"
-
-  echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
-    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
 }
 
 # vim:set sw=2 sts=-1 et:
