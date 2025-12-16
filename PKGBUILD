@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=asgi-webdav
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "config.json")
-sha256sums=('a34b2e4e8e47240118588396a5522a9b0f3a63f451c7e172125c1bfef17bfbc1'
+sha256sums=('3a3d23043d86ec6741b49a6402f628c52e2d4aa36021553ab3cb459f83377d4a'
             '1bdbea265d5d0749bc7bbb95d308ade863c75e33b13bd59e43eab18d38c2880e'
             '59e04c680dfce93154a618c25bc868a8c44e0c5482cbf2c18319b82b86b50e1a'
             'd230496ce61436b709d34078273df5e4b6036eab316b5c9f54f5d261a5c61ea8'
