@@ -3,7 +3,8 @@ pkgbase = jfsh
 	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/hacel/jfsh
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = Unlicense
 	makedepends = go>=1.23.1
 	source = jfsh-0.1.15.tar.gz::https://github.com/hacel/jfsh/archive/v0.1.15.tar.gz
