@@ -8,7 +8,7 @@
 
 pkgname=('nquake')
 pkgver=latest
-pkgrel=14
+pkgrel=15
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -78,7 +78,7 @@ package () {
 
 	# And the Business-End(TM). Do the thing.
 	cp -a ${srcdir}/id1/gpl_maps.pk3 ${pkgdir}/usr/share/nquake/.  # handy to have lying around if you don't have the retail pak*.pak files
-	cp -a ${srcdir}/qw/frogbot.pk3 ${pkgdir}/opt/quake/qw/.  # FrogBot, bots/AI
+	cp -a ${srcdir}/qw/ktx.pk3 ${pkgdir}/opt/quake/qw/.
 	cp -a ${srcdir}/ezquake/ezquake.pk3 ${pkgdir}/opt/quake/ezquake/nquake_ezquake.pk3  # we rename to avoid conflicts in the future
 	cp -a ${srcdir}/ezquake/configs ${pkgdir}/opt/quake/ezquake/.  # actually part of the linux.zip, not gpl.zip
 
