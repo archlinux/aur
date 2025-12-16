@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitbutler
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.18.3
+pkgrel=1
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('932c2e9477a4be9e8a6c915485f16b56c073bcf3c19df3d013412d5403f07969')
+sha256sums=('07f9ce886adc6fadda764d8aa19bd84f62fcc3cba31558dbe24628bdfd0ebaa8')
 
 prepare() {
 	cd "$_archive"
@@ -37,8 +37,10 @@ prepare() {
 			| (.build.beforeBuildCommand |= "")
 			| (.bundle.createUpdaterArtifacts |= false)
 			| (.version |= $pkgver)
+			| (.bundle.externalBin |= $externalbin)
 		' \
 		--arg pkgver "$pkgver" \
+		--argjson externalbin '["gitbutler-git-setsid", "gitbutler-git-askpass"]' \
 		crates/gitbutler-tauri/tauri.conf.release.json \
 		> tauri.conf.arch.json
 }
@@ -57,15 +59,14 @@ build() {
 	cargo build \
 		--release \
 		--bins \
-		-p gitbutler-git \
-		-p but \
-		-p but-testing
+		-p gitbutler-git
 	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
-	for bin in target/release/{gitbutler-git-{askpass,setsid},but{,-testing}}; do
+	for bin in target/release/gitbutler-git-{askpass,setsid}; do
 		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-$(rustc --print host-tuple)"
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
 	cargo tauri build \
+		--features builtin-but \
 		--bundles deb \
 		--config tauri.conf.arch.json
 }
