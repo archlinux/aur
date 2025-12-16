@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b7404
+pkgver=b7426
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -35,8 +35,14 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d89cd5597d15fabc5cab6445b79c452c3b4836cc2ce4cadb9ca7286079db4a6d')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
+)
+sha256sums=('e3f0dea6cf374d1006243d40834b05b3c380aa47143f5551da9d35ef9e7d2ac2'
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
@@ -78,6 +84,7 @@ build() {
       -DGGML_BACKEND_DL=ON
       -DGGML_CPU_ALL_VARIANTS=ON
       -DGGML_NATIVE=OFF
+      -DAMDGPU_TARGETS="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx942;gfx1010;gfx1030;gfx1032;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201;gfx1151"
     )
   else
     # 本地构建, 针对当前设备优化
@@ -94,4 +101,9 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
+  install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
+
+  msg2 "llama.cpp.service is now available"
+  msg2 "llama-server arguments are in /etc/conf.d/llama.cpp"
 }
