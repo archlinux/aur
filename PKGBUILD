@@ -3,7 +3,7 @@
 pkgname=google-antigravity-bin
 pkgver=1.11.17
 pkgrel=1
-pkgdesc="Google Antigravity IDE - The new agentic development platform"
+pkgdesc="Google Antigravity IDE (binary) - Precompiled official .deb repackaged for Arch - An agentic development platform from Google, evolving the IDE into the agent-first era."
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('custom')
