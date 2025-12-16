@@ -137,6 +137,13 @@ prepare() {
 	# remove apparently broken test because twisted.trial can't do this from the command line
 	# (https://github.com/element-hq/synapse/issues/18406)
 	git apply -3 "$srcdir/skip-broken-tests.patch"
+
+	# _Disable_ cross-toolchain LTO because we are using different toolchains
+	# for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
+	# In this project, C/C++ code is linked into Rust code. Therefore, apply
+	# a workaround to force generation of normal object code on C side:
+	CFLAGS+=" -ffat-lto-objects"
+	CXXFLAGS+=" -ffat-lto-objects"
 }
 
 build() {
