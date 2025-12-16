@@ -117,7 +117,7 @@ package() {
     if [ -d docs ]; then
         find docs -maxdepth 1 -type f -name "*.md" -exec install -Dm644 {} "$pkgdir/usr/share/doc/qubar/" \;
     fi
-    install -m644 README.md UI_ARCHITECTURE.md PROJECT_SUMMARY.md "$pkgdir/usr/share/doc/qubar/"
+    install -m644 README.md PROJECT_STRUCTURE.md "$pkgdir/usr/share/doc/qubar/"
     
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
