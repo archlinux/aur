@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=allioli
-pkgver=r6.aa22651
+pkgver=r12.6432d37
 pkgrel=1
 pkgdesc="Read the 1914 Allioli Vulgata-Translation directly in your terminal"
 arch=(any)

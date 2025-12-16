@@ -1,6 +1,6 @@
 pkgbase = allioli
 	pkgdesc = Read the 1914 Allioli Vulgata-Translation directly in your terminal
-	pkgver = r6.aa22651
+	pkgver = r12.6432d37
 	pkgrel = 1
 	url = https://github.com/AlexBocken/allioli
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = allioli
 	md5sums = SKIP
 
 pkgname = allioli
-
