@@ -11,7 +11,7 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-esp32
-pkgver=v0.12.0_esp32_20250707
+pkgver=v0.12.0_esp32_20251215
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has ESP32 support'
 arch=('i686' 'x86_64' 'arm')
