@@ -1,0 +1,12 @@
+pkgbase = jfsh
+	pkgdesc = A terminal-based client for Jellyfin
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/hacel/jfsh
+	arch = any
+	license = Unlicense
+	makedepends = go>=1.23.1
+	source = jfsh-0.1.15.tar.gz::https://github.com/hacel/jfsh/archive/v0.1.15.tar.gz
+	sha256sums = 3f20f5cff453b38e172be80e326fcb49afc5652bf418621bc48de72a60c5c023
+
+pkgname = jfsh
