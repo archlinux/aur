@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp-cuda
 _pkgname=ik_llama.cpp
-pkgver=r4066.090f354d
+pkgver=r4068.756c3f8f
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (CUDA Backend)"
 arch=(x86_64 armv7h aarch64)
@@ -41,8 +41,12 @@ provides=(llama.cpp)
 
 options=(lto !debug)
 
-source=()
-sha256sums=()
+source=(
+    "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
+    "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
+)
+sha256sums=('0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
 prepare() {
     cd "$srcdir"
@@ -100,4 +104,10 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
+
+    install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
+    install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
+
+    msg2 "llama.cpp.service is now available"
+    msg2 "llama-server arguments are in /etc/conf.d/llama.cpp"
 }
