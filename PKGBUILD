@@ -3,7 +3,7 @@
 _pkgname=pocket-id
 pkgname="${_pkgname}"
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services."
 arch=('x86_64')
 url="https://github.com/pocket-id/pocket-id"
@@ -41,4 +41,3 @@ function package() {
 	install -vDm755 "${srcdir}/pocket-id/backend/build" "${pkgdir}/usr/bin/pocket-id"
 	install -vDm644 "${srcdir}/pocket-id/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
