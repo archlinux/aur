@@ -2,7 +2,7 @@
 
 pkgname=gitbutler
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
@@ -40,7 +40,7 @@ prepare() {
 			| (.bundle.externalBin |= $externalbin)
 		' \
 		--arg pkgver "$pkgver" \
-		--argjson externalbin '["gitbutler-git-setsid", "gitbutler-git-askpass"]' \
+		--argjson externalbin '["gitbutler-git-setsid", "gitbutler-git-askpass", "but"]' \
 		crates/gitbutler-tauri/tauri.conf.release.json \
 		> tauri.conf.arch.json
 }
@@ -59,14 +59,14 @@ build() {
 	cargo build \
 		--release \
 		--bins \
-		-p gitbutler-git
+		-p gitbutler-git \
+		-p but
 	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
-	for bin in target/release/gitbutler-git-{askpass,setsid}; do
+	for bin in target/release/{gitbutler-git-{askpass,setsid},but}; do
 		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-$(rustc --print host-tuple)"
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
 	cargo tauri build \
-		--features builtin-but \
 		--bundles deb \
 		--config tauri.conf.arch.json
 }
