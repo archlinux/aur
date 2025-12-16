@@ -1,6 +1,6 @@
 # Maintainer: J A <soulhotel@pm.me>
 pkgname=paruse
-pkgver=0.7.a6210b5
+pkgver=0.8.a6210b5
 pkgrel=1
 pkgdesc="An interactive package manager and browser using paru and fzf"
 arch=('any')
