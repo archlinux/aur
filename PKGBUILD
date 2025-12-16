@@ -1,16 +1,11 @@
-# Project Ignis: EDOPro (official Linux binaries)
-#
 # Maintainer: Antonio Curavalea <one.kyonblack@gmail.com>
-# Previous maintainers: 
-#	Luis Martinez <luis dot martinez at disroot dot org>
-# 	Solomon Choina <shlomochoina@gmail.com>
-#
-# Official website: https://projectignis.github.io/
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 _appname='edopro'
 pkgname=edopro-bin
 pkgver=41.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Ignis: EDOPro (official Linux binaries)"
 arch=('x86_64')
 url='https://github.com/edo9300/edopro'
