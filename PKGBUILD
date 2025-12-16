@@ -2,7 +2,7 @@
 
 pkgname=tdns-git
 _pkgname=tdns
-pkgver=v0.5.3.r0.c833054
+pkgver=v0.5.4.r0.3ebb2de
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
