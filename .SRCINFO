@@ -1,6 +1,6 @@
 pkgbase = pkgstate-bin
 	pkgdesc = The perfect companion your dotfiles repo: declaratively define your installed packages, systemd services, and user groups (binary release)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/pol-rivero/pkgstate
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = pkgstate-bin
 	optdepends = paru: To be able to install AUR packages
 	provides = pkgstate
 	conflicts = pkgstate
-	source_x86_64 = pkgstate-bin-0.2.1-linux-x86_64::https://github.com/pol-rivero/pkgstate/releases/download/0.2.1/pkgstate-linux-x86_64
-	sha256sums_x86_64 = be277b72821d959e7c564d6bfd884b4f77ef8c787a331f8e19064c3047634b99
-	source_aarch64 = pkgstate-bin-0.2.1-linux-arm64::https://github.com/pol-rivero/pkgstate/releases/download/0.2.1/pkgstate-linux-arm64
-	sha256sums_aarch64 = 37d0afce79cd0ba80f2a0642e6ea746dca4788dc2d1af04e30d88825e6ba54ab
+	source_x86_64 = pkgstate-bin-0.2.2-linux-x86_64::https://github.com/pol-rivero/pkgstate/releases/download/0.2.2/pkgstate-linux-x86_64
+	sha256sums_x86_64 = 234ab884dbe8627be7f041c73806fecece5b0618d5b65e7f9e7de930d040604b
+	source_aarch64 = pkgstate-bin-0.2.2-linux-arm64::https://github.com/pol-rivero/pkgstate/releases/download/0.2.2/pkgstate-linux-arm64
+	sha256sums_aarch64 = 75973129808b1916277510b8483c4b2496fa9242c55ed91b194898b97418fb97
 
 pkgname = pkgstate-bin
