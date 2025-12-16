@@ -14,11 +14,6 @@ backup=(etc/snapborg.yaml)
 source=(git+https://github.com/enzingerm/snapborg.git#tag=v0.1.1)
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/snapborg"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     cd "${srcdir}/snapborg"
     python setup.py build
