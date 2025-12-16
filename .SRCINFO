@@ -1,6 +1,6 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 1.0.0.r26.g597e21d
+	pkgver = 1.0.0.r141.gba6c51c
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = dms-shell-git
 	optdepends = qt6-multimedia: Sound effect support
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
-	provides = dms-shell=1.0.0.r26.g597e21d
+	provides = dms-shell=1.0.0.r141.gba6c51c
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = dms.service
@@ -27,7 +27,7 @@ pkgbase = dms-shell-git
 	source = danklogo.svg
 	source = dms-open.desktop
 	sha256sums = SKIP
-	sha256sums = bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4821a
+	sha256sums = 036f9a61170ddc315479081b84eeba3b3fb610018b82edf31dacce65c290acba
 	sha256sums = 61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4
 	sha256sums = 8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667
 	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d

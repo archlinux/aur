@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=1.0.0.r26.g597e21d
+pkgver=1.0.0.r141.gba6c51c
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -32,7 +32,7 @@ source=(
         "danklogo.svg"
         "dms-open.desktop")
 sha256sums=('SKIP'
-            'bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4821a'
+            '036f9a61170ddc315479081b84eeba3b3fb610018b82edf31dacce65c290acba'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
