@@ -1,7 +1,7 @@
 pkgbase = openvox-agent-bin
 	pkgdesc = Agent of the OpenVox Automation Framework
-	pkgver = 8.24.1
-	pkgrel = 2
+	pkgver = 8.24.2
+	pkgrel = 1
 	url = https://voxpupuli.org/openvox/
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = openvox-agent-bin
 	conflicts = puppet
 	options = !debug
 	backup = etc/puppetlabs/
-	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.24.1-1+debian12_amd64.deb
-	md5sums_x86_64 = 67a8696dbdb335185a9284fed6a152de
+	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.24.2-1+debian12_amd64.deb
+	md5sums_x86_64 = f70f3777c460899ab4119769bea378d8
 
 pkgname = openvox-agent-bin
