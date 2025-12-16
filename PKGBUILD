@@ -1,8 +1,8 @@
-# Maintainer: redfish <redfish@galactica.pw>
+# Maintainer: TX1683 <tx@nadajnik.org>
 # Uploader: robertfoster
 
 pkgname=namecoin-core
-pkgver=25.1
+pkgver=28.0
 pkgrel=1
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
@@ -91,7 +91,7 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-sha256sums=('599243be4e8e81b607322eaac7010f84d55a3bba7857d664469d41bf52f4e22e'
+sha256sums=('855a33c91364cf17fbdebff89dcdf5925feed6468572fa1b0a422801e5759128'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
             '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
