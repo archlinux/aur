@@ -18,4 +18,21 @@ package(){
 	# Extract package data
 	tar -xz -f data.tar.gz -C "${pkgdir}"
 
+	# Wrap the desktop binary to set safer WebKit defaults
+	# This helps avoid EGL/DMABUF compositor issues reported upstream
+	# while still allowing users to override via environment variables.
+	if [[ -f "${pkgdir}/usr/bin/hoppscotch-desktop" ]]; then
+		mv "${pkgdir}/usr/bin/hoppscotch-desktop" "${pkgdir}/usr/bin/hoppscotch-desktop-bin"
+		install -Dm755 /dev/stdin "${pkgdir}/usr/bin/hoppscotch-desktop" <<'EOF'
+#!/usr/bin/env sh
+# Wrapper to launch Hoppscotch Desktop with WebKit fallbacks.
+# Users can override by exporting the variables before running.
+
+export WEBKIT_DISABLE_COMPOSITING_MODE="${WEBKIT_DISABLE_COMPOSITING_MODE:-1}"
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+
+exec /usr/bin/hoppscotch-desktop-bin "$@"
+EOF
+	fi
+
 }
