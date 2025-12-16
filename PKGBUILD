@@ -4,12 +4,12 @@
 
 pkgname=qdmr
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application for configuring and programming cheap DMR radios"
 arch=('x86_64')
 url="https://github.com/hmatuschek/qdmr"
 license=('GPL-3.0-or-later')
-depends=('libusb' 'qt6-tools' 'qt6-serialport' 'qt6-location' 'yaml-cpp')
+depends=('libusb' 'qt6-tools' 'qt6-serialport' 'qt6-location' 'yaml-cpp' 'librsvg')
 makedepends=('cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
