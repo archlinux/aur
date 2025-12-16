@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Arch Net
+GenericName=VPN Client
+Comment=Multi-core VPN client supporting v2ray, xray, sing-box, clash, and mihomo
+Exec=archnet
+Icon=archnet
+Terminal=false
+Categories=Network;Security;
+Keywords=vpn;proxy;v2ray;xray;sing-box;clash;
+StartupWMClass=archnet
+StartupNotify=true
