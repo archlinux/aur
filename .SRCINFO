@@ -1,0 +1,14 @@
+pkgbase = yoctofetch-git
+	pkgdesc = Fast(est) system fetch tool for Linux with a low footprint
+	pkgver = v1.2.0.r1.b3fc699
+	pkgrel = 1
+	url = https://codeberg.org/Phosphenius/yoctofetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = yoctofetch
+	conflicts = yoctofetch
+	source = git+https://codeberg.org/Phosphenius/yoctofetch.git
+	sha256sums = SKIP
+
+pkgname = yoctofetch-git
