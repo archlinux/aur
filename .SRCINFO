@@ -1,0 +1,17 @@
+pkgbase = uefitool-ng
+	pkgdesc = UEFI firmware image viewer and editor
+	pkgver = A72
+	pkgrel = 1
+	url = https://github.com/LongSoft/UEFITool
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = qt6-base
+	source = uefitool-ng-A72.tar.gz::https://github.com/LongSoft/UEFITool/archive/A72.tar.gz
+	sha256sums = 3cace3f617c0023ffed4b95009752a50c55fe22cbba62d760b85f800ce74697f
+
+pkgname = uefitool-ng
