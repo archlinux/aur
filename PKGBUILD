@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=servo
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -22,37 +22,36 @@ depends=(bzip2
          ttf-font
          xcb-util)
 install="$pkgname.install"
-makedepends=(rustup # doesn't work with system rust
-             clang
+makedepends=(clang
              cmake
              curl
-             depot-tools-git
              git
              gperf
              llvm
              python
              python-distlib
              python-virtualenv
+             rustup # doesn't work with system rust
              uv)
 options=('!lto') # lto breaks linking
 backup=("etc/profile.d/$pkgname".{csh,sh})
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('286fc3555d6bd8e0bc7463f917a0ddd797e0a54a70c72216bc6133c448bf40da')
+sha256sums=('f5de8fd695045704faf351cbc0df0aa8409af72c28e95c2fbe5421bd2e6e5167')
 
 prepare() {
 	cd "$pkgname"
 	echo 'export PATH=$PATH:/opt/servo' > "$pkgname.sh"
 	echo 'setenv PATH ${PATH}:/opt/servo' > "$pkgname.csh"
+	# sed -i -e '/install_rust_toolchain/d' python/servo/platform/base.py
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
 	cd "$pkgname"
+	# export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	# was failing with some error and said to install these componenets
-	# "magically" works after this
 	rustup component add rust-src rustc-dev llvm-tools-preview
-	# Fix: error: could not execute process `crown -vV` (never executed)
-	./mach bootstrap
+	./mach bootstrap --skip-lints
 	./mach build --release
 }
 
