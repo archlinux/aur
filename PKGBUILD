@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=python-doi2bib3
 _pkgname=doi2bib3
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX"
 arch=('any')
