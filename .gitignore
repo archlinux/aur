@@ -1,0 +1,5 @@
+pkg/
+src/
+1.sh
+rclient-*.tar.zst
+RClient-*.tar.xz
