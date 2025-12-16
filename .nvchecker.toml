@@ -1,0 +1,6 @@
+[zig-master]
+source = "jq"
+url = "https://ziglang.org/download/index.json"
+filter = '."master"."version"'
+from_pattern = '-'
+to_pattern = ''
