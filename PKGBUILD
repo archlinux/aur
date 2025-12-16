@@ -37,6 +37,7 @@ prepare(){
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
+export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic's default
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
