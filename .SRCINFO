@@ -1,7 +1,7 @@
 pkgbase = gleditor
 	pkgdesc = A standalone OpenGL ES shader editor with real-time preview and syntax highlighting
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/1ay1/gleditor
 	arch = x86_64
 	license = MIT
