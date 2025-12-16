@@ -12,8 +12,8 @@ groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad' 'pulseaudio-alsa' 'libid3tag' 'audiofile' 'libmodplug' 'libao')
 optdepends=('libvorbis' 'libogg' 'libmpcdec' 'esound')
 makedepends=('gcc-objc' 'gnustep-make')
-source=("http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz"
-        "http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_1.0.0-4.debian.tar.xz")
+source=("http://savannah.nongnu.org/download/gap/Cynthiune-$pkgver.tar.gz"
+        "http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_$pkgver-4.debian.tar.xz")
 sha256sums=('3cc5228c8cdb66256bbcec4b317bbd3853397f09ec9b7378a7f65140eff5bcaf'
             '64966bef492c4ddf4907c7c2832c4eb80d932ccee190bb3b06490f321ce5a2dd')
 
