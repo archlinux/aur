@@ -1,6 +1,9 @@
-pkgver=2.30.0
+# Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
+
+pkgver=2.31.0_beta.8
 pkgname="millennium"
-pkgrel=4
+_pkgdir="Millennium"
+pkgrel=1
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -9,51 +12,48 @@ depends=('git' 'steam')
 makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
 depends_x86_64=('lib32-python311-bin')
 conflicts=('python-i686-bin')
-source=("git+$url.git#commit=0cf351871e1c4715e6b4ded3d5df614455fe4af7")
+source=("git+$url.git#commit=807a3ee9503e22d82f0da880b8ce90fd09ac50c8") # TODO: update to commit on main branch when we merge.
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
 
 prepare() {
-    cd "Millennium"
+    cd      $srcdir/$_pkgdir
     echo -e "\e[1m\e[92m==>\e[0m \e[1mCloning submodules...\e[0m"
     git submodule update --init --recursive
 }
 
 build() {
     export NODE_NO_WARNINGS=1
-    cd "$srcdir/Millennium"
 
-    echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium core assets...\e[0m"
+    echo -e    "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium assets...\e[0m"
 
-    cd sdk && pnpm install && pnpm run build && cd ..
-    cd assets && pnpm install && npm run build && cd ..
+    pnpm --dir $srcdir/$_pkgdir/src/frontend  install
+    pnpm --dir $srcdir/$_pkgdir/src/frontend  run build
+    pnpm --dir $srcdir/$_pkgdir/sdk           install
+    pnpm --dir $srcdir/$_pkgdir/sdk           run build
 
-    mkdir -p ./shims/build/
-    cp -r ./sdk/typescript-packages/loader/build/* ./shims/build/
+    mkdir -p   $srcdir/$_pkgdir/shims/build/
+    cp -r      $srcdir/$_pkgdir/sdk/packages/loader/build "./shims/"
 
-    echo -e "\e[1m\e[92m==>\e[0m \e[1mBootstrapping VCPKG...\e[0m"
+    echo -e    "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
-    ./vendor/vcpkg/bootstrap-vcpkg.sh
-    ./vendor/vcpkg/vcpkg integrate install
-
-    echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
-
-    cmake --preset=linux-release -G "Ninja" -DDISTRO_ARCH=ON
+    cd         $srcdir/$_pkgdir
+    cmake --preset linux-release -G "Ninja" -DDISTRO_ARCH=ON
     cmake --build build --config Release
 }
 
 package() {
-    cd "$srcdir/Millennium"
+    # Create final directory structure
+    mkdir -p       $pkgdir/usr/lib/millennium
+    mkdir -p       $pkgdir/usr/share/millennium/shims
+    mkdir -p       $pkgdir/usr/share/millennium/assets
+    mkdir -p       $pkgdir/usr/share/licenses/$pkgname
 
-    bash ./scripts/ci/posix/mk-assets.sh "$pkgdir/usr/share/millennium/assets"
-    mkdir -p "$pkgdir/usr/lib/millennium"
-
-    install -Dm755 build/libmillennium_x86.so "$pkgdir/usr/lib/millennium/libmillennium_x86.so"
-    install -Dm755 build/unix-hooks/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/libmillennium_bootstrap_86x.so"
-    
-    mkdir -p "$pkgdir/usr/share/millennium/shims"
-
-    cp -r ./shims/build/* "$pkgdir/usr/share/millennium/shims/"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 $srcdir/$_pkgdir/build/src/millennium_x86-build/libmillennium_x86.so                      "$pkgdir/usr/lib/millennium/"
+    install -Dm755 $srcdir/$_pkgdir/build/src/millennium_x86-build/boot/linux/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/"
+    install -Dm755 $srcdir/$_pkgdir/build/src/hhx64-build/libmillennium_hhx64.so                             "$pkgdir/usr/lib/millennium/"
+    cp -r          $srcdir/$_pkgdir/src/pipx                                                                 "$pkgdir/usr/share/millennium/assets/"
+    cp -r          $srcdir/$_pkgdir/shims/build                                                              "$pkgdir/usr/share/millennium/shims/"
+    install -Dm644 $srcdir/$_pkgdir/LICENSE                                                                  "$pkgdir/usr/share/licenses/$pkgname/"
 }
