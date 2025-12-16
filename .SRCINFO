@@ -1,0 +1,14 @@
+pkgbase = jinja-lsp
+	pkgdesc = Language Server for jinja
+	pkgver = 0.1.90
+	pkgrel = 1
+	url = https://github.com/uros-5/jinja-lsp
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	provides = jinja-lsp
+	conflicts = jinja-lsp
+	source = https://github.com/uros-5/jinja-lsp/archive/v0.1.90.tar.gz
+	sha256sums = bb61303c318bee8c9c30e23dc1cf618192d1de87f6b2f9acb92b2e358a45e4cf
+
+pkgname = jinja-lsp
