@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
 pkgver=1.2.6
 pkgrel=1
