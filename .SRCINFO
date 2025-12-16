@@ -1,0 +1,15 @@
+pkgbase = lemonade-desktop
+	pkgdesc = Lemonade: Local LLM Serving with GPU and NPU acceleration (GUI)
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = https://github.com/lemonade-sdk/lemonade/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = electron
+	optdepends = lemonade-server
+	provides = lemonade-desktop
+	source = lemonade-desktop-9.1.0.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v9.1.0.tar.gz
+	sha256sums = f5b3a1bafd92b40721057c5521e0e655a6af2c5725f75dc647045ce263ede758
+
+pkgname = lemonade-desktop
