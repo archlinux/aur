@@ -1,10 +1,11 @@
 pkgname=plotune-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotune – Modular data visualization and signal orchestration platform"
 arch=('x86_64')
 url="https://www.plotune.net"
 license=('custom')
+
 provides=('plotune')
 conflicts=('plotune')
 
@@ -17,6 +18,9 @@ depends=(
   'mesa'
   'hicolor-icon-theme'
 )
+
+# CRITICAL: Nuitka onefile binary MUST NOT be stripped
+options=(!strip)
 
 source=(
   "plotune-linux-x86_64.tar.gz::https://github.com/baksi-org/plotune-dl/releases/download/v${pkgver}/plotune-linux-x86_64.tar.gz"
@@ -39,7 +43,7 @@ package() {
   install -Dm644 "$srcdir/plotune.desktop" \
     "$pkgdir/usr/share/applications/plotune.desktop"
 
-  # Icon (standard path)
+  # Icon (standard freedesktop path)
   install -Dm644 assets/logo.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/plotune.png"
 }
