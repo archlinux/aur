@@ -1,0 +1,15 @@
+pkgbase = phos
+	pkgdesc = High-performance universal log colorizer with 99 built-in programs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Hydepwns/phos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	source = phos-0.2.0.tar.gz::https://github.com/Hydepwns/phos/archive/v0.2.0.tar.gz
+	sha256sums = fe0fcfaf4a5aff06bfb8750716ff9ad1e5e3445f55738d821c956cd0f059c246
+
+pkgname = phos
