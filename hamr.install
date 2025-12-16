@@ -1,0 +1,31 @@
+post_install() {
+    echo ""
+    echo "==> Hamr has been installed to /etc/xdg/quickshell/hamr"
+    echo ""
+    echo "==> To start hamr, run:"
+    echo "      hamr"
+    echo ""
+    echo "==> User config and plugins are stored in ~/.config/hamr/"
+    echo ""
+    echo "==> Add to your Hyprland config:"
+    echo "      exec-once = hamr"
+    echo "      bind = Ctrl, Space, global, quickshell:hamrToggle"
+    echo ""
+}
+
+
+
+post_upgrade() {
+    echo ""
+    echo "==> Hamr has been upgraded."
+    echo "==> Restart quickshell to apply changes."
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> User data in ~/.config/hamr/ has been preserved."
+    echo "==> Remove manually if no longer needed:"
+    echo "      rm -rf ~/.config/hamr"
+    echo ""
+}
