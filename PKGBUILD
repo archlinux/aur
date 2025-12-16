@@ -2,7 +2,7 @@
 
 _pkgname=pocket-id
 pkgname="${_pkgname}-git"
-pkgver=1.16.0
+pkgver=1.16.0.r10.g3eaf36aa
 pkgrel=1
 pkgdesc="A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'gcc' 'pnpm' 'nodejs')
 depends+=(glibc)
 conflicts=("${_pkgname}")
 source=(
-	"${_pkgname}::git+${url}.git#tag=v${pkgver}"
+	"${_pkgname}::git+${url}.git"
 )
 sha256sums=('SKIP')
 
@@ -46,4 +46,3 @@ function package() {
 	install -vDm755 "${srcdir}/pocket-id/backend/build" "${pkgdir}/usr/bin/pocket-id"
 	install -vDm644 "${srcdir}/pocket-id/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
