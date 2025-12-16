@@ -3,11 +3,11 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b7413
+pkgver=b7426
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
-url='https://github.com/ggerganov/llama.cpp'
+url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 depends=(
   curl
@@ -32,8 +32,14 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('32d4347a0506edd49b2ab26a98885141eeb321aab0e15f898a234583c53127dc')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
+)
+sha256sums=('e3f0dea6cf374d1006243d40834b05b3c380aa47143f5551da9d35ef9e7d2ac2'
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
@@ -84,4 +90,9 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
+  install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
+
+  msg2 "llama.cpp.service is now available"
+  msg2 "llama-server arguments are in /etc/conf.d/llama.cpp"
 }
