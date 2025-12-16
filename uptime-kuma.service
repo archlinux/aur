@@ -4,6 +4,7 @@ Documentation=https://github.com/louislam/uptime-kuma
 After=network.target
 
 [Service]
+EnvironmentFile=/etc/uptime-kuma/config.env
 User=uptime-kuma
 Type=simple
 WorkingDirectory=/usr/lib/node_modules/uptime-kuma/
