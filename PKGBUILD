@@ -2,12 +2,12 @@
 
 pkgname=gx52
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK application designed to provide control for the LEDs and MFD of Logitech X52 and X52 Pro H.O.T.A.S."
 arch=('any')
 url="https://gitlab.com/leinardi/gx52"
 license=('GPL3')
-depends=('gobject-introspection' 'libappindicator-gtk3' 'python' 'python-evdev' 'python-gobject' 'python-injector' 'python-peewee' 'python-pyudev' 'python-pyusb' 'python-reactivex' 'python-requests' 'python-rx' 'python-xdg')
+depends=('gobject-introspection' 'libappindicator-gtk3' 'python' 'python-evdev' 'python-gobject' 'python-injector' 'python-peewee' 'python-pyudev' 'python-pyusb' 'python-reactivex' 'python-requests' 'python-xdg')
 makedepends=('meson' 'appstream-glib' 'libudev0' 'libusb')
 provides=()
 conflicts=()
