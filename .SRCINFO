@@ -1,6 +1,6 @@
 pkgbase = sleepy-launcher-bin
 	pkgdesc = Sleepy game launcher for Linux with telemetry disabling
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/sleepy-launcher
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = sleepy-launcher-bin
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	provides = sleepy-launcher
 	conflicts = sleepy-launcher
-	source = sleepy-launcher_1.6.0::https://github.com/an-anime-team/sleepy-launcher/releases/download/1.6.0/sleepy-launcher
+	source = sleepy-launcher_1.6.1::https://github.com/an-anime-team/sleepy-launcher/releases/download/1.6.1/sleepy-launcher
 	source = icon.png
 	source = sleepy-launcher.desktop
-	md5sums = 44142236ed8b4528f4cc7d6546b32aed
+	md5sums = f655d996843986e15f0ee572b29dcb00
 	md5sums = 808f0ccaac7bac70b56e400760f0b764
 	md5sums = a039b4bdbc28710d8784c84e2da16785
 
