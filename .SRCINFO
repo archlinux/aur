@@ -8,7 +8,7 @@ pkgbase = kgdb-agent-proxy
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	source = git://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git#tag=agent-proxy-1.97
+	source = git+https://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git#tag=agent-proxy-1.97
 	sha1sums = SKIP
 
 pkgname = kgdb-agent-proxy

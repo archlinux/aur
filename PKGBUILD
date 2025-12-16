@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 depends=(glibc)
 makedepends=(git)
 license=(GPL2)
-source=(git://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git#tag=agent-proxy-$pkgver)
+source=(git+https://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git#tag=agent-proxy-$pkgver)
 sha1sums=('SKIP')
 
 build() {
