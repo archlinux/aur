@@ -1,6 +1,6 @@
 pkgbase = skia-static
 	pkgdesc = A complete 2D graphic library for drawing Text, Geometries, and Images; Static build.
-	pkgver = 129
+	pkgver = 144
 	pkgrel = 1
 	url = https://github.com/google/skia
 	arch = x86_64

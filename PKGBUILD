@@ -4,7 +4,7 @@
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-static')
-pkgver=129
+pkgver=144
 pkgrel=1
 pkgdesc="A complete 2D graphic library for drawing Text, Geometries, and Images; Static build."
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
     # generate the ninja build files using gn
     cd skia
     tools/git-sync-deps
-    bin/gn gen out/Static --args='is_official_build=true is_debug=false skia_use_vulkan=true'
+    bin/gn gen out/Static --args='is_official_build=true is_debug=false skia_use_vulkan=true extra_cflags_cc=["-USK_HIDE_PATH_EDIT_METHODS"]'
 }
 
 build() {
