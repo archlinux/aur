@@ -1,4 +1,4 @@
-# Maintainer: EbadiDev <kingali0098@gmail.com>
+# Maintainer: EbadiDev <archnet@duck.com>
 pkgname=archnet-bin
 pkgver=0.9.20
 pkgrel=1
@@ -13,13 +13,13 @@ optdepends=(
 provides=('archnet')
 conflicts=('archnet')
 source=(
-    "${pkgname}-${pkgver}.zip::https://github.com/ArchNets/ArchNet-app/releases/download/v${pkgver}/archnet-linux.zip"
+    "${pkgname}-${pkgver}.zip::https://github.com/ArchNets/ArchNet-app/releases/download/v${pkgver}+${pkgrel}/archnet-linux.zip"
     "archnet.desktop"
     "archnet.sh"
 )
-sha256sums=('SKIP'  # Will be updated after first release
-            'SKIP'
-            'SKIP')
+sha256sums=('43742b3d0c1d1f86906f122c0500466bbb767fa4f993d508ad1c54cdd1029df7'
+            'b23a236988a94cc8373fa6505cdf7ea6e247570d04f238463d160b37917723c6'
+            '290420620f618e7cb4e423749f2bfb0e7cb8afdb4f6c5e5c494c55b4889c0fc2')
 
 package() {
     # Install the application to /opt
