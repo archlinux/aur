@@ -1,6 +1,6 @@
 pkgbase = mpvwall-git
 	pkgdesc = Terminal UI manager for mpvpaper video wallpapers
-	pkgver = 0.1.2.r2.gb2c86f2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/methamphetaminelab/mpvwall
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = mpvwall-git
 	depends = mpv
 	depends = mpvpaper
 	depends = hyprland
+	optdepends = ffmpeg: for video metadata display
 	provides = mpvwall
 	conflicts = mpvwall
 	source = git+https://github.com/methamphetaminelab/mpvwall.git
