@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
@@ -125,30 +125,14 @@ package() {
     # Installation scripts (explicitly executable)
     install -Dm755 install.sh "$pkgdir/usr/share/qubar/install.sh"
     install -Dm755 uninstall.sh "$pkgdir/usr/share/qubar/uninstall.sh"
+    install -Dm755 first-run-setup.sh "$pkgdir/usr/share/qubar/first-run-setup.sh"
     
     # Create symlinks for easy access
     install -dm755 "$pkgdir/usr/bin"
     ln -s /usr/share/qubar/install.sh "$pkgdir/usr/bin/qubar-install"
     ln -s /usr/share/qubar/uninstall.sh "$pkgdir/usr/bin/qubar-uninstall"
     
-    # Post-install message
-    cat > "$pkgdir/usr/share/qubar/PKGBUILD_NOTES" << 'EOF'
-Qubar Desktop Environment has been installed to /usr/share/qubar
-
-To complete installation, run:
-    qubar-install
-
-This will:
-- Deploy configurations to ~/.config
-- Set up ZSH with themes
-- Configure Hyprland
-- Optionally set up SDDM
-
-For documentation, see:
-    /usr/share/doc/qubar/
-
-To uninstall:
-    /usr/share/qubar/uninstall.sh
-EOF
+    # Autostart entry - deploys configs on first login automatically
+    install -Dm644 qubar-setup.desktop "$pkgdir/etc/xdg/autostart/qubar-setup.desktop"
 }
 
