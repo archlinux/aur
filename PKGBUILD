@@ -1,4 +1,4 @@
-# Maintainer: gehenna14 <slkcrurzlmuq@use.startmail.com>
+# Maintainer: gehenna14 <bernkastel1337@disroot.org>
 # Contributor: e5ten <e5ten.arch@gmail.com>
 # Contributor: sxe <sxxe@gmx.de>
 pkgname='qlipper'
