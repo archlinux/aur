@@ -7,7 +7,10 @@ arch=('x86_64')
 url="https://github.com/unstable-code/lyrics"
 license=('GPL-3.0-or-later')
 depends=('wayland' 'cairo' 'pango' 'curl' 'fontconfig' 'openssl' 'libappindicator-gtk3' 'gdk-pixbuf2' 'playerctl')
-optdepends=('snixembed: System tray support for Swaybar')
+optdepends=(
+    'snixembed: System tray support for Swaybar'
+    'libexttextcat: Language detection for translation validation'
+)
 makedepends=('meson' 'ninja' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
