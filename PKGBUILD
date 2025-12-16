@@ -3,7 +3,7 @@
 
 pkgname=python-virtualenvwrapper
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="https://virtualenvwrapper.readthedocs.io/"
