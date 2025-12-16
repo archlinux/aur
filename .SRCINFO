@@ -1,0 +1,13 @@
+pkgbase = rotorix-bin
+	pkgdesc = Rotor-based encryption CLI inspired by the Enigma machine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/umpire274/rotorix
+	arch = x86_64
+	license = MIT
+	provides = rotorix
+	conflicts = rotorix
+	source = rotorix-0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rotorix/releases/download/rotorix-v0.1.0/rotorix-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d833202a2d8e82ffe61b7780049f3e17551f0a3a78bc0388da274f32bf1efeea
+
+pkgname = rotorix-bin
