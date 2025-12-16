@@ -1,6 +1,6 @@
 pkgbase = greenfoot
 	pkgdesc = Educational software designed to make learning programming easy and fun.
-	pkgver = 3.8.2
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://www.greenfoot.org
 	arch = any
@@ -13,15 +13,15 @@ pkgbase = greenfoot
 	license = MIT
 	license = custom
 	depends = archlinux-java-run
-	depends = java-runtime=17
-	depends = java-environment=17
-	depends = java-openjfx=17
-	source = https://www.greenfoot.org/download/files/Greenfoot-linux-382.deb
+	depends = java-runtime=21
+	depends = java-environment=21
+	depends = java-openjfx=21
+	source = https://www.greenfoot.org/download/files/Greenfoot-linux-x64-390.deb
 	source = greenfoot
 	source = greenfoot.desktop
 	source = greenfoot.xml
-	sha256sums = c299a05adc768d30e3b7eee9e8772353fbb2d4f4669c01e9275ace61bfa157e5
-	sha256sums = 81caabbb2930d95414e5da3a8427b44dc5e338d192236c0c86be3ea344016189
+	sha256sums = 406f0241b1fc013aaed44d2e92d8c80780c9fa2787a1f130c17fbc84849d5f49
+	sha256sums = fbc3ce24cceeadd5ef910582d1b4ea9cc4952187fd15aff7be66e22ac0407dd6
 	sha256sums = b980d0084fbafbb3ea335bb3840d858898c692822f1c671969a91982e86c1b4f
 	sha256sums = f1ea33e8289dfe31b9a0c4d88482a5ca5f75d663ba82ca986519f290e44789e4
 
