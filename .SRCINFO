@@ -1,0 +1,20 @@
+pkgbase = zapret2
+	pkgdesc = Anti-DPI software
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/bol-van/zapret2
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bind
+	depends = curl
+	depends = iptables
+	depends = libnetfilter_queue
+	depends = luajit
+	depends = nmap
+	optdepends = ipset: required for iptables mode
+	backup = opt/zapret2/config
+	source = zapret2::git+https://github.com/bol-van/zapret2.git#tag=v0.7.2
+	sha256sums = efc52911d8447fcf8e72723c2f6f0534e10dd88f33216fcd68a34d5827bedba6
+
+pkgname = zapret2

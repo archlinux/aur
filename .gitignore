@@ -1,0 +1,5 @@
+zapret2/
+pkg/
+src/
+*.zip
+*.tar.zst
