@@ -1,7 +1,7 @@
 pkgbase = tinte
 	pkgdesc = 16-color palette generator for terminal and Wayland apps
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/Maciejonos/tinte
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = tinte
 	depends = gcc-libs
 	provides = tinte
 	conflicts = tinte
-	source = tinte-2.0.0.tar.gz::https://github.com/Maciejonos/tinte/archive/v2.0.0.tar.gz
-	sha256sums = a5aaa7de583854f4106674afc3f1cd17835ff2bd15861a6c6c7715deae3403b5
+	source = tinte-2.0.1.tar.gz::https://github.com/Maciejonos/tinte/archive/v2.0.1.tar.gz
+	sha256sums = 8b35219cc65720360a43ab5c1bfd2300ea210dde8069f23c70077a4f17ef48c2
 
 pkgname = tinte
