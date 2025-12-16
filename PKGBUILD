@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=pixelterm-c
-pkgver=null
+pkgver=1.1.16
 pkgrel=1
 pkgdesc="A high-performance terminal image browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug' '!strip')
 source_x86_64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-amd64-linux")
 source_aarch64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-arm64-linux")
 noextract=()
-md5sums_x86_64=('9d1ead73e678fa2f51a70a933b0bf017')
-md5sums_aarch64=('9d1ead73e678fa2f51a70a933b0bf017')
+md5sums_x86_64=('8e8200da2244644bdf3ddb4e36c19462')
+md5sums_aarch64=('94a1321091615a92a3292a1a3d81e18f')
 
 prepare() {
   find "${srcdir}" -maxdepth 1 -type f -name 'pixelterm-*' ! -name "pixelterm-${pkgver}" -delete
