@@ -7,7 +7,7 @@
 
 pkgname=tango-icon-theme
 pkgver=0.8.90
-pkgrel=16
+pkgrel=17
 pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
 url="http://tango.freedesktop.org"

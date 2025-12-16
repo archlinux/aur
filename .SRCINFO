@@ -1,7 +1,7 @@
 pkgbase = tango-icon-theme
 	pkgdesc = Icon theme that follows the Tango visual guidelines
 	pkgver = 0.8.90
-	pkgrel = 16
+	pkgrel = 17
 	url = http://tango.freedesktop.org
 	arch = any
 	license = custom:public domain
