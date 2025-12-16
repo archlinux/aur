@@ -25,23 +25,4 @@ package() {
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-
- # Show completions installation instructions
-msg ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-msg ""
-msg "To enable <TAB> completions for your shell, run one of the following:"
-msg ""
-msg "  For Bash:        rusk completions install bash"
-msg "  For Zsh:         rusk completions install zsh"
-msg "  For Fish:        rusk completions install fish"
-msg "  For Nu Shell:    rusk completions install nu"
-msg "  For PowerShell:  rusk completions install powershell"
-msg ""
-msg "Batch install: rusk completions install bash zsh fish"
-msg ""
-msg ""
-msg "For extra information, see: /usr/share/doc/rusk/README.md or github.com/tagirov/rusk"
-msg "" 
-msg ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 }
