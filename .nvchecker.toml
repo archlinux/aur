@@ -1,0 +1,4 @@
+[clipper2]
+source = "git"
+git = "https://github.com/AngusJohnson/Clipper2.git"
+prefix = "Clipper2_"
