@@ -1,0 +1,15 @@
+pkgbase = cereal-helper
+	pkgdesc = Minimal AUR helper written in C (local build) usage: cereal [options] [pkg]
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GNU GPLv3-or-later
+	depends = git
+	depends = make
+	depends = gcc
+	source = cereal-helper.c
+	source = README.md
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cereal-helper
