@@ -6,8 +6,8 @@
 # Source : new application - https://forums.insynchq.com
 
 pkgname=insync
-pkgver=3.9.6.60027
-pkgrel=2
+pkgver=3.9.7.60031
+pkgrel=1
 _dist=noble
 pkgdesc="An unofficial Dropbox, Google Drive, and OneDrive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -29,7 +29,7 @@ arch=('x86_64')
 source=("http://cdn.insynchq.com/builds/linux/${pkgver}/${pkgname}_${pkgver}-${_dist}_amd64.deb"
     'insync@.service'
     'insync.service')
-sha256sums=('93d4bc4a6de1d0bcb42bdc6a22c9e8f09ab578d8178a161d3ee3edccf465c026'
+sha256sums=('7fba88d2d74225c3f52fe5f8c65e239fd1ee7e0620f01deabb5cb4d39acabf22'
             'cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
             '1432141539a6b3c5333631a2ee6696fab9bd2fe8770643bc670d95e4e96203e0')
 package() {
