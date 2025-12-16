@@ -5,8 +5,8 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
-pkgver=11.7.3+10+g52ee429
-_commit=52ee429e1fd8555d0fb54d8d46b968a46b3aefe8            
+pkgver=11.7.4
+_commit=188905011b64f385c72c5c8f795237bf894390fa            
 pkgrel=1
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,27 +42,28 @@ conflicts=(
 )
 options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7f55b73884c077fcf7b27f8682871a40b941802e9038229ac2b14ef4f816c0d1')
+sha256sums=('465f0bfa3aa0ac536c9838ffc934f2ee9bbf0ee403ed202fa86ce2ecfd601707')
 
-_srcdir="$_pkgname-$pkgver"
+#_srcdir="$_pkgname-$pkgver"
+_srcdir="$_pkgname"
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$_srcdir"
   git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-	cd "$_pkgname"
+	cd "$_srcdir"
 	# adjust version string
 	sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" 'src/version.vala'
 }
 
 build() {
-	arch-meson "$_pkgname" 'build' -Denable-fake-gnome-software=false
+	arch-meson "$_srcdir" 'build' -Denable-fake-gnome-software=false
 	meson compile -C 'build'
 }
 
 package() {
 	meson install -C 'build' --destdir "$pkgdir"
-	install -Dm644 "$_pkgname/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
