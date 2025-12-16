@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s-git
-pkgver=1.33.0rc1+k3s1+r36+g8e27803cea
+pkgver=1.33.0rc1+k3s1+r249+g650fed932d1
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -29,17 +29,19 @@ source=(
   '0002-Dockerfile.dapper-sanitize-DAPPER_OUTPUT.patch'
   '0003-Dockerfile.dapper-sanitize-cache-configuration.patch'
   '0004-.service-update-systemd-service-files.patch'
-  '0005-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
+  '0005-scripts-revert-to-docker-do-not-use-ctr.patch'
+  '0006-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
 )
 sha256sums=('SKIP'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
-            '544fb16b7d4379e89c430c7c5008721ed3e5d6350d630c9d21c91a8dd71056d4'
-            'f38e5db8cddd04d53beba9d730848390c3777b0b958369503c93ee1a67f868a8'
-            'a6382f0a4044f79daa4779a5d98c9334c1aa1d347fe17a694ef5778defb5f525'
-            'e313a07aa10431c032b7cc042a31aa04c82f2b7af10d261ee8dbc062aa9190c3'
-            '376e198efd26ef3b11a719155b2258b4be06b3437a85d6c89b14885dda468c47')
+            'f50b7eddedd5d8c918806e39d676cf0b5e410c84124eda61a6c02574dad78467'
+            'a15d264638fd0d1277c7c2a964f2981e62071f4afd8e8a1c956044d3d5ed94be'
+            '63a77394b3e7282455dcb162e0b78e38ba066c27fd8244c54ef9a75aabfcd8b7'
+            '354c1349d9f7842dad4c124b74f5ff95a0e7322634adf0a8d9eea50fdaa60554'
+            '174409461e7c02eb2312ac49fd63177a1e1754163fc801180ee79aca227dde7b'
+            '1be00fc44b17fd7cfeb5706bda247408eaa4fe7340602c000acad1defdb39ef3')
 
 pkgver() {
   cd k3s
@@ -169,9 +171,11 @@ package() {
 
   # air-gapped images
   install -Dm644 \
-    dist/artifacts/k3s-airgap-images-amd64.tar.zst \
-    dist/artifacts/k3s-images.txt \
+    dist/artifacts/k3s-airgap-images-* \
     -t "$pkgdir/var/lib/rancher/k3s/agent/images"
+  install -Dm644 \
+    scripts/airgap/image-list.txt \
+    -T "$pkgdir/var/lib/rancher/k3s/agent/images"/k3s-images.txt
 
   install -Dm644 \
     LICENSE \
