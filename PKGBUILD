@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=neowall-git
-pkgver=0.3.0.r0.gcf99dac
+pkgver=0.4.4.r0.ga382c50
 pkgrel=1
-pkgdesc="GPU shader wallpapers for Wayland"
+pkgdesc="GPU shader wallpapers for Wayland and X11"
 arch=('x86_64' 'aarch64')
 url="https://github.com/1ay1/neowall"
 license=('MIT')
@@ -11,17 +11,18 @@ depends=(
     'mesa'
     'libpng'
     'libjpeg-turbo'
+    'libx11'
+    'libxrandr'
 )
 makedepends=(
     'git'
-    'make'
-    'gcc'
+    'meson'
+    'ninja'
     'wayland-protocols'
     'pkgconf'
 )
 provides=('neowall')
 conflicts=('neowall')
-install=neowall.install
 source=("git+https://github.com/1ay1/neowall.git")
 sha256sums=('SKIP')
 
@@ -31,32 +32,23 @@ pkgver() {
     if git describe --long --tags 2>/dev/null | grep -q "^v"; then
         git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
-        # Fallback: use Makefile version + commit count + short hash
-        local makefile_ver=$(grep "^VERSION = " Makefile 2>/dev/null | cut -d' ' -f3)
+        # Fallback: use meson.build version + commit count + short hash
+        local meson_ver=$(grep "version:" meson.build 2>/dev/null | head -1 | sed "s/.*'\([^']*\)'.*/\1/")
         local commit_count=$(git rev-list --count HEAD)
         local short_hash=$(git rev-parse --short HEAD)
-        printf "%s.r%s.g%s" "${makefile_ver:-0.3.0}" "$commit_count" "$short_hash"
+        printf "%s.r%s.g%s" "${meson_ver:-0.4.4}" "$commit_count" "$short_hash"
     fi
 }
 
 build() {
     cd "$srcdir/neowall"
-    make
+    meson setup build --prefix=/usr --buildtype=release
+    ninja -C build
 }
 
 package() {
     cd "$srcdir/neowall"
-
-    # Install binary
-    install -Dm755 build/bin/neowall "$pkgdir/usr/bin/neowall"
-
-    # Install configs
-    install -Dm644 config/config.vibe "$pkgdir/usr/share/neowall/config.vibe"
-    install -Dm644 config/neowall.vibe "$pkgdir/usr/share/neowall/neowall.vibe"
-
-    # Install shaders
-    install -dm755 "$pkgdir/usr/share/neowall/shaders"
-    install -m644 examples/shaders/*.glsl "$pkgdir/usr/share/neowall/shaders/"
+    DESTDIR="$pkgdir" ninja -C build install
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
