@@ -1,7 +1,7 @@
 # Maintainer: Quinton <quinton@qubar.dev>
 pkgname=qubar-git
 pkgver=r0.05a1e84
-pkgrel=8
+pkgrel=9
 pkgdesc="Modern Hyprland desktop with native QuickShell/QML UI"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Qubar"
