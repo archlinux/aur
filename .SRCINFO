@@ -1,6 +1,6 @@
 pkgbase = piglit-git
 	pkgdesc = OpenGL implementation testing suite. Provides a simple means to perform regression tests.
-	pkgver = r12182.2842979eb
+	pkgver = r12183.8d9e82317
 	pkgrel = 1
 	url = http://piglit.freedesktop.org/
 	install = piglit.install
@@ -34,8 +34,6 @@ pkgbase = piglit-git
 	conflicts = piglit
 	options = !emptydirs
 	source = git+https://gitlab.freedesktop.org/mesa/piglit.git
-	source = https://gitlab.freedesktop.org/mesa/piglit/-/merge_requests/1057.diff
 	sha256sums = SKIP
-	sha256sums = 4eff7d424f4b1e2e79b098da81e1433abfdbdaafbedd2a7099a093591d6e5daa
 
 pkgname = piglit-git

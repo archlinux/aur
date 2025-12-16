@@ -2,7 +2,7 @@
 
 _pkgname="piglit"
 pkgname="${_pkgname}-git"
-pkgver=r12182.2842979eb
+pkgver=r12183.8d9e82317
 pkgrel=1
 pkgdesc="OpenGL implementation testing suite. Provides a simple means to perform regression tests."
 arch=('i686' 'x86_64')
@@ -18,19 +18,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 install="${_pkgname}.install"
-source=("git+https://gitlab.freedesktop.org/mesa/piglit.git"
-        "https://gitlab.freedesktop.org/mesa/piglit/-/merge_requests/1057.diff")
-sha256sums=('SKIP'
-            '4eff7d424f4b1e2e79b098da81e1433abfdbdaafbedd2a7099a093591d6e5daa')
+source=("git+https://gitlab.freedesktop.org/mesa/piglit.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${_pkgname}"
-	patch -p1 < "${srcdir}/1057.diff"
 }
 
 build() {
