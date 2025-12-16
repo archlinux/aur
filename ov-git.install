@@ -11,8 +11,8 @@ post_install() {
 »
 »  You can find a couple of example configuration files here:
 »
-»    /usr/share/doc/ov-git/ov.yaml
-»    /usr/share/doc/ov-git/ov-less.yaml
+»    /usr/share/doc/ov/ov.yaml
+»    /usr/share/doc/ov/ov-less.yaml
 »
 »  Official documentation portal:
 »

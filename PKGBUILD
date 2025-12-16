@@ -5,7 +5,7 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.45.1.r21.g33c3a70
+pkgver=0.50.2.r13.g884083b
 pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (development version)'
@@ -67,7 +67,7 @@ build() {
     -o build .
 
   for _shell in bash fish zsh; do
-    build/ov --completion "$_shell" > "build/_completion.$_shell"
+    build/ov --completion "$_shell" > "build/_completions.$_shell"
   done
 }
 
@@ -89,12 +89,16 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
-  install -vDm0644 build/_completion.bash \
+  install -vDm0644 build/_completions.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -vDm0644 build/_completion.fish \
+  install -vDm0644 build/_completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  install -vDm0644 build/_completion.zsh \
+  install -vDm0644 build/_completions.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -vsrf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
