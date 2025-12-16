@@ -1,7 +1,7 @@
 # Maintainer: Thomas Clarke <colonia_duck@posteo.net>
 pkgname=edmarketconnector-git
 _pkgname=EDMarketConnector
-pkgver=5.12.1.rc4.1.g11d4c0c
+pkgver=6.0.0.0.ge9877fa
 pkgrel=1
 pkgdesc="Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools"
 arch=("x86_64")
@@ -14,6 +14,7 @@ depends=(
   python-watchdog
   python-semantic-version
   python-setuptools
+  python-tomli-w
   python-pillow
   xdg-utils
   tcl
