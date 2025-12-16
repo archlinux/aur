@@ -1,6 +1,6 @@
 pkgbase = kv-bin
 	pkgdesc = A lightweight, feature-rich command-line key-value store with encryption, TTL, and version control
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/AmrSaber/kv
 	license = MIT
@@ -8,15 +8,15 @@ pkgbase = kv-bin
 	provides = kv
 	arch = aarch64
 	source_aarch64 = https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_linux_arm64
-	sha256sums_aarch64 = cdc0a509423e2f3b66908a9e9bccdff038ca7d3a1a208acd4364424b851f33e2
+	sha256sums_aarch64 = 9f517792b184317d6cbfb46df4e101c6a9f854025dd8d2558279a3cbf7a08d78
 	arch = aarch64
 	source_aarch64 = https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5a409ea22bd7e2d2ed0d4ba8c76372d4a2ef1c27695c9e715ffc73db3fa140e5
+	sha256sums_aarch64 = 04f69a4c6bab911032c6bc8b0b41340ed6199304b2660b52236e93436f865879
 	arch = x86_64
 	source_x86_64 = https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_linux_amd64
-	sha256sums_x86_64 = 48489dc2e8e96b18663e16b1fdbec7862e8aa5a54fe2e01c56f642d76133fc51
+	sha256sums_x86_64 = 372b9c018436a8678c5ff77edd287044fd69c2f1cacc2e4c102940e10be1cc5f
 	arch = x86_64
 	source_x86_64 = https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 2d490c1ccf51094a23b23e0f4b72bc442c58b359ac73fbe4985d779595173598
+	sha256sums_x86_64 = e227c64d1bd2c585760baaae9e78daadc922c965b3616f0d92259a0e05d1260e
 	
 pkgname = kv-bin
