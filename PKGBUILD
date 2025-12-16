@@ -3,8 +3,8 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-crc32c
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Wraps Google's crc32c library into a Python wrapper"
 arch=('x86_64')
 url="https://github.com/googleapis/python-crc32c"
@@ -13,7 +13,7 @@ depends=('glibc' 'python' 'google-crc32c')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ba53bc3575dcbeae21a0254e98957495193a2ecfe51d5f7091d9d4bf92d1af2')
+sha256sums=('a984e78d8e2f6d1361afe96cab83bd04ef8ab25ed71017d5e3db9e4fa0c5672a')
 
 prepare() {
 	## remove lib64 from runpath
