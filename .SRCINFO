@@ -1,0 +1,14 @@
+pkgbase = rusticon
+	pkgdesc = A mouse driven SVG favicon editor for your terminal
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/ronilan/rusticon
+	arch = x86_64
+	license = CC-BY-NC-ND-4.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = rusticon-0.2.2.tar.gz::https://github.com/ronilan/rusticon/archive/refs/tags/v0.2.2.tar.gz
+	b2sums = b001cdcdbfc33559e1a024590087847db944041c901e3a59f855eb3021f1b4a8a215837f3f91e1f8291542a6caabaecab6502c5a8353500417397a2b9f7638cc
+
+pkgname = rusticon
