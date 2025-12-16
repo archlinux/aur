@@ -1,13 +1,13 @@
 pkgbase = checkstyle-bin
 	pkgdesc = Java source code linter
-	pkgver = 12.2.0
+	pkgver = 12.3.0
 	pkgrel = 1
 	url = https://github.com/checkstyle/checkstyle
 	arch = any
 	license = LGPL-2.1-only
 	depends = java-runtime>=11
 	conflicts = checkstyle
-	source = checkstyle.jar::https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.2.0/checkstyle-12.2.0-all.jar
+	source = checkstyle.jar::https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.3.0/checkstyle-12.3.0-all.jar
 	source = checkstyle
 	sha512sums = SKIP
 	sha512sums = SKIP

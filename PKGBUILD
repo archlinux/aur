@@ -4,7 +4,7 @@
 
 pkgname=checkstyle-bin
 pkgrel=1
-pkgver=12.2.0
+pkgver=12.3.0
 pkgdesc='Java source code linter'
 arch=('any')
 url='https://github.com/checkstyle/checkstyle'
