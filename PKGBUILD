@@ -1,8 +1,8 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Push-to-talk voice-to-text for Wayland Linux systems"
+pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
 license=('MIT')
@@ -21,7 +21,8 @@ makedepends=(
     # 'cuda'            # for CUDA (NVIDIA only)
 )
 optdepends=(
-    'ydotool: keyboard simulation for typing output'
+    'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
+    'ydotool: keyboard simulation fallback (X11/TTY support)'
     'wl-clipboard: clipboard support'
     'libnotify: desktop notifications'
     'pipewire: audio capture (recommended)'
