@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.21.0
+pkgver=0.21.1
 _electronversion=39
 pkgrel=1
 pkgdesc="Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)"
@@ -19,8 +19,8 @@ source=(
     "LICENSE.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a2a5d6d72f48aeaaaa6f41d504dcc78d1efff71a5aee57881ba1b3ac1de26089'
-            'bb57206525933393946036ea9d32cb371448b29359de32a35b9063efead4d887'
+sha256sums=('ca466d265e9328561d8b1d110aac8254a313158171e6d1f63e0f13307c0a5b00'
+            'd24ac6b72e874afa337f5a159ea67ff15a8f485b6ff15111629fb31a2475137a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
