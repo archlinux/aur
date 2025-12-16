@@ -2,8 +2,8 @@
 
 _pkgname=pacseek
 pkgname=pacseek-bin
-pkgver=1.8.5
-pkgrel=2
+pkgver=1.8.6
+pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
 url="https://github.com/moson-mo/$_pkgname"
@@ -13,8 +13,8 @@ optdepends=('xdg-utils: open URL on click support'
             'fakeroot: display upgrades support')
 provides=('pacseek')
 conflicts=('pacseek')
-source=("$url/releases/download/v$pkgver/$_pkgname-linux-x64-v$pkgver-libalpm_v16.tar.gz")
-sha256sums=('05fc8fc9851406ac0bda719111dfc116ddf33ef6c556a717fab7bbf9a5d0be6c')
+source=("$url/releases/download/v$pkgver/$_pkgname-linux-x64-v$pkgver.tar.gz")
+sha256sums=('a9cf0ecf9b3ed74b7aa891593618c00b002e1034d089eb1e5ebeb09ae56d2bf6')
 
 package() {
   # bin
