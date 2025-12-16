@@ -11,8 +11,8 @@ pkgbase=nvidia-open-egpu
 pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
-pkgver=580.105.08
-pkgrel=19
+pkgver=580.119.02
+pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules with Thunderbolt eGPU hotplug support'
 arch=('x86_64')
@@ -28,20 +28,18 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '150-nvidia-open-make-modeset-fbdev-default.patch'
         '160-nvidia-open-thunderbolt-egpu-hotplug.patch'
         '170-nvidia-open-force-external-gpu.patch'
-        '180-nvidia-open-kernel-6.18-get-dev-pagemap.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
-sha256sums=('59c518a2014f83efaf2a9f539b3097c55e74e8878aca01aedb59e92e3116080d'
+sha256sums=('ea06941cf2b095c2a9a6f1d0640a447d1c33baefbff9d95fd9726955dd210692'
             '70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
             '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-            'SKIP'
-            'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
-            'c6fbbf5ffea60670f9b845357176e6602b1e1d5c32b42e69066757cb41b367bb'
-            'SKIP'
-            'SKIP')
+        'a8d2d1944067e9c060b8afd596cdddecfc1e618d21329feee764157b6a3c5f96'
+        'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
+        'f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb'
+        '31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -49,12 +47,10 @@ prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    # Thunderbolt eGPU hotplug support: https://github.com/bdandy/open-gpu-kernel-modules/tree/fix/580.105.08-hotplug
+    # Thunderbolt eGPU hotplug support: https://github.com/bdandy/open-gpu-kernel-modules/tree/fix/hotunplug
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-thunderbolt-egpu-hotplug.patch"
     # https://github.com/NVIDIA/open-gpu-kernel-modules/pull/984 - force eGPU mode for TB4/5 enclosures
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/170-nvidia-open-force-external-gpu.patch"
-    # Kernel 6.18 compatibility: get_dev_pagemap() API change (backported from 590.44.01)
-    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/180-nvidia-open-kernel-6.18-get-dev-pagemap.patch"
     
     # Substitute version placeholder in dkms.conf
     sed -i "s/@@PKGVER@@/${pkgver}/" "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"

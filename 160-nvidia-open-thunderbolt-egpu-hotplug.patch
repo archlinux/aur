@@ -21,7 +21,7 @@ index feecd8c9..65b43b5b 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index 0b7c17f4..323a52a7 100644
+index 2684764b..c42f296a 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
 @@ -852,6 +852,50 @@ static void nv_drm_dev_unload(struct drm_device *dev)
@@ -75,7 +75,7 @@ index 0b7c17f4..323a52a7 100644
      /* Release modeset ownership if fbdev is enabled */
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
-@@ -2160,6 +2204,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+@@ -2167,6 +2211,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
      nv_drm_free(nv_dev);
  }
  
@@ -104,7 +104,7 @@ index 0b7c17f4..323a52a7 100644
  /*
   * Unregister a single NVIDIA DRM device.
   */
-@@ -2168,7 +2234,32 @@ void nv_drm_remove(NvU32 gpuId)
+@@ -2175,7 +2241,32 @@ void nv_drm_remove(NvU32 gpuId)
      struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
  
      if (nv_dev) {
@@ -226,10 +226,10 @@ index 8880bb48..f2ea4f48 100644
          if (nv_nvkms_memory->pWriteCombinedIORemapAddress != NULL) {
              iounmap(nv_nvkms_memory->pWriteCombinedIORemapAddress);
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-priv.h b/kernel-open/nvidia-drm/nvidia-drm-priv.h
-index d2c3a037..3df5f25c 100644
+index 84801235..8b931004 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-priv.h
 +++ b/kernel-open/nvidia-drm/nvidia-drm-priv.h
-@@ -146,6 +146,21 @@ struct nv_drm_device {
+@@ -147,6 +147,21 @@ struct nv_drm_device {
      NvBool subOwnershipGranted;
      NvBool hasFramebufferConsole;
  
@@ -981,7 +981,7 @@ index a0f61ed2..4da6bfca 100644
      {
          return 0;
 diff --git a/kernel-open/nvidia/nv-pci.c b/kernel-open/nvidia/nv-pci.c
-index c8fe67b4..7187b575 100644
+index 3b523b93..c71e22ca 100644
 --- a/kernel-open/nvidia/nv-pci.c
 +++ b/kernel-open/nvidia/nv-pci.c
 @@ -27,6 +27,7 @@
@@ -992,7 +992,7 @@ index c8fe67b4..7187b575 100644
  
  #if defined(NV_VGPU_KVM_BUILD)
  #include "nv-vgpu-vfio-interface.h"
-@@ -1736,6 +1737,13 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -1735,6 +1736,13 @@ nv_pci_remove(struct pci_dev *pci_dev)
  
      nv = NV_STATE_PTR(nvl);
  
@@ -1006,7 +1006,7 @@ index c8fe67b4..7187b575 100644
  #if NV_IS_EXPORT_SYMBOL_GPL_iommu_dev_disable_feature
  #if defined(CONFIG_IOMMU_SVA) && \
      (defined(NV_IOASID_GET_PRESENT) || defined(NV_MM_PASID_DROP_PRESENT))
-@@ -1773,22 +1781,34 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -1772,22 +1780,34 @@ nv_pci_remove(struct pci_dev *pci_dev)
      /*
       * Sanity check: A removed device shouldn't have a non-zero usage_count.
       * For eGPU, fall off the bus along with clients active is a valid scenario.
@@ -1048,7 +1048,7 @@ index c8fe67b4..7187b575 100644
              /*
               * While waiting, release the locks so that other threads can make
               * forward progress.
-@@ -1797,6 +1817,7 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -1796,6 +1816,7 @@ nv_pci_remove(struct pci_dev *pci_dev)
              UNLOCK_NV_LINUX_DEVICES();
  
              os_delay(500);
@@ -1056,7 +1056,7 @@ index c8fe67b4..7187b575 100644
  
              /* Re-acquire the locks before checking again */
              LOCK_NV_LINUX_DEVICES();
-@@ -1815,10 +1836,32 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -1814,10 +1835,32 @@ nv_pci_remove(struct pci_dev *pci_dev)
              down(&nvl->ldata_lock);
          }
  
@@ -1166,10 +1166,10 @@ index cc0e1a2e..c1cadefb 100644
                          int (*get_relaxed_ordering_mode)(int *mode, void *data),
                          void (*put_relaxed_ordering_mode)(int mode, void *data),
 diff --git a/kernel-open/nvidia/nv.c b/kernel-open/nvidia/nv.c
-index a11b3b98..da50dddf 100644
+index 94fe2e39..6fad53f3 100644
 --- a/kernel-open/nvidia/nv.c
 +++ b/kernel-open/nvidia/nv.c
-@@ -2195,14 +2195,49 @@ nvidia_close_callback(
+@@ -2196,14 +2196,49 @@ nvidia_close_callback(
  static void nvidia_close_deferred(void *data)
  {
      nv_linux_file_private_t *nvlfp = data;
@@ -1221,7 +1221,7 @@ index a11b3b98..da50dddf 100644
  }
  
  int
-@@ -2213,6 +2248,9 @@ nvidia_close(
+@@ -2214,6 +2249,9 @@ nvidia_close(
  {
      int rc;
      nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -1231,7 +1231,7 @@ index a11b3b98..da50dddf 100644
  
      nv_printf(NV_DBG_INFO,
                "NVRM: nvidia_close on GPU with minor number %d\n",
-@@ -2225,10 +2263,44 @@ nvidia_close(
+@@ -2226,10 +2264,44 @@ nvidia_close(
  
      NV_SET_FILE_PRIVATE(file, NULL);
  
@@ -1277,7 +1277,7 @@ index a11b3b98..da50dddf 100644
      }
  
      if (rc == 0)
-@@ -5206,15 +5278,25 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
+@@ -5207,15 +5279,25 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
  void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp)
  {
      nv_linux_state_t *nvl;
@@ -2203,7 +2203,7 @@ index ef241247..59f3f918 100644
      NVDevEvoPtr pDevEvo,
      NVDeferredRequestFifoRec *pDeferredRequestFifo)
 diff --git a/src/nvidia/arch/nvalloc/unix/src/osapi.c b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-index 8efb3db7..1c4d3a40 100644
+index 7b97b826..91330c31 100644
 --- a/src/nvidia/arch/nvalloc/unix/src/osapi.c
 +++ b/src/nvidia/arch/nvalloc/unix/src/osapi.c
 @@ -308,6 +308,17 @@ void
@@ -2460,10 +2460,10 @@ index d061de8a..d52293b9 100644
      rmapiutilFreeClientAndDeviceHandles(pRmApi, &pKernelDisplay->hInternalClient,
                                          &pKernelDisplay->hInternalDevice,
 diff --git a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
-index 14cc8c97..072489d8 100644
+index 8b828fc6..4cf70bef 100644
 --- a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
 +++ b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
-@@ -183,8 +183,13 @@ kflcnReset_TU102
+@@ -184,8 +184,13 @@ kflcnReset_TU102
      NV_ASSERT_OK_OR_RETURN(kflcnPreResetWait_HAL(pGpu, pKernelFlcn));
      NV_ASSERT_OK(kflcnResetHw(pGpu, pKernelFlcn));
      status = kflcnWaitForResetToFinish_HAL(pGpu, pKernelFlcn);
@@ -2480,10 +2480,10 @@ index 14cc8c97..072489d8 100644
      kflcnSwitchToFalcon_HAL(pGpu, pKernelFlcn);
      kflcnRegWrite_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_RM,
 diff --git a/src/nvidia/src/kernel/gpu/gpu.c b/src/nvidia/src/kernel/gpu/gpu.c
-index 44db3e9f..edd6a118 100644
+index 68430476..d2e83be4 100644
 --- a/src/nvidia/src/kernel/gpu/gpu.c
 +++ b/src/nvidia/src/kernel/gpu/gpu.c
-@@ -5105,6 +5105,17 @@ gpuSetDisconnectedProperties_IMPL
+@@ -5109,6 +5109,17 @@ gpuSetDisconnectedProperties_IMPL
      OBJGPU *pGpu
  )
  {
@@ -2624,7 +2624,7 @@ index 20f84418..d1ddf818 100644
      // SR code
      if (sysmemAddrOfSuspendResumeData != 0)
 diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
-index 81eafe36..9eb081d7 100644
+index 54566851..85167c86 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
 @@ -634,7 +634,18 @@ kgspTeardown_TU102
@@ -2666,10 +2666,10 @@ index 81eafe36..9eb081d7 100644
      status = kgspExecuteBooterUnloadIfNeeded_HAL(pGpu, pKernelGsp,
                                                   _kgspGetBooterUnloadArgs(pKernelGsp, unloadMode));
 diff --git a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
-index e262e8fc..af0367e9 100644
+index 6f76e5a5..b2cd796f 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
-@@ -149,6 +149,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
+@@ -150,6 +150,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
  static NV_STATUS _kgspRpcDrainEvents(OBJGPU *, KernelGsp *, NvU32, NvU32, KernelGspRpcEventHandlerContext);
  static void      _kgspRpcIncrementTimeoutCountAndRateLimitPrints(OBJGPU *, OBJRPC *);
  
@@ -2678,7 +2678,7 @@ index e262e8fc..af0367e9 100644
  static NV_STATUS _kgspAllocSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
  static void _kgspFreeSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
  
-@@ -302,11 +304,13 @@ _kgspRpcSanityCheck(OBJGPU *pGpu, KernelGsp *pKernelGsp, OBJRPC *pRpc)
+@@ -303,11 +305,13 @@ _kgspRpcSanityCheck(OBJGPU *pGpu, KernelGsp *pKernelGsp, OBJRPC *pRpc)
          pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
      {
          NV_PRINTF(LEVEL_INFO, "GPU lost, skipping RPC\n");
@@ -2692,7 +2692,7 @@ index e262e8fc..af0367e9 100644
          return NV_ERR_GPU_IS_LOST;
      }
      if (!gpuIsGpuFullPowerForPmResume(pGpu))
-@@ -705,9 +709,15 @@ kgspRcAndNotifyAllChannels_IMPL
+@@ -706,9 +710,15 @@ kgspRcAndNotifyAllChannels_IMPL
      CHANNEL_ITERATOR  chanIt;
      RMTIMEOUT         timeout;
  
@@ -2711,7 +2711,7 @@ index e262e8fc..af0367e9 100644
  
      // Pass 1: halt all channels.
      kfifoGetChannelIterator(pGpu, pKernelFifo, &chanIt, INVALID_RUNLIST_ID);
-@@ -2040,6 +2050,20 @@ kgspLogRpcDebugInfoToProtobuf
+@@ -2041,6 +2051,20 @@ kgspLogRpcDebugInfoToProtobuf
      prbEncNestedEnd(pProtobufData);
  }
  
@@ -2732,7 +2732,7 @@ index e262e8fc..af0367e9 100644
  void
  kgspLogRpcDebugInfo
  (
-@@ -2055,6 +2079,15 @@ kgspLogRpcDebugInfo
+@@ -2056,6 +2080,15 @@ kgspLogRpcDebugInfo
      NvU64  activeData[2];
      const NvU32 rpcEntriesToLog = (RPC_HISTORY_DEPTH > 8) ? 8 : RPC_HISTORY_DEPTH;
  
@@ -2748,9 +2748,9 @@ index e262e8fc..af0367e9 100644
      _kgspGetActiveRpcDebugData(pRpc, pMsgHdr->function,
                                 &activeData[0], &activeData[1]);
      NV_ERROR_LOG_DATA(pGpu, errorNum,
-@@ -2108,6 +2141,15 @@ _kgspLogXid119
-     char  durationUnitsChar;
+@@ -2110,6 +2143,15 @@ _kgspLogXid119
      KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
+     KernelFalcon *pKernelFlcn = staticCast(pKernelGsp, KernelFalcon);
  
 +    //
 +    // Suppress Xid 119 logging for expected external GPU surprise removal.
@@ -2764,7 +2764,7 @@ index e262e8fc..af0367e9 100644
      if (pRpc->timeoutCount == 1)
      {
          NV_PRINTF(LEVEL_ERROR,
-@@ -2168,6 +2210,16 @@ _kgspLogRpcSanityCheckFailure
+@@ -2183,6 +2225,16 @@ _kgspLogRpcSanityCheckFailure
  
      NV_ASSERT(expectedFunc == pHistoryEntry->function);
  
@@ -2953,7 +2953,7 @@ index 229cd5fc..42a40880 100644
  
      NV_PRINTF(LEVEL_INFO,
 diff --git a/src/nvidia/src/kernel/mem_mgr/mem.c b/src/nvidia/src/kernel/mem_mgr/mem.c
-index 2a81684a..7d1ccb84 100644
+index 998097ed..97e0bbc4 100644
 --- a/src/nvidia/src/kernel/mem_mgr/mem.c
 +++ b/src/nvidia/src/kernel/mem_mgr/mem.c
 @@ -177,7 +177,7 @@ memDestruct_IMPL

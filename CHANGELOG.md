@@ -1,5 +1,12 @@
 # Changelog
 
+## [1:580.119.02-1] - 2025-12-16
+
+### Changed
+- Updated base to NVIDIA open kernel modules 580.119.02
+- Refreshed Thunderbolt eGPU hotplug patchset for 580.119.02
+- Avoided a potential deadlock while marking GPU as lost during surprise removal
+
 ## [1-1] - 2024-12-11
 
 ### Added

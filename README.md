@@ -24,7 +24,7 @@ The upstream NVIDIA source is available at: https://github.com/NVIDIA/open-gpu-k
 ✅ No kernel crash when Thunderbolt eGPU is hot-unplugged
 ✅ Proper cleanup and recovery on reconnection
 ✅ Works with safe removal (e.g., `nvoff` script)
-✅ Compatible with NVIDIA utils 580.105.08+
+✅ Compatible with NVIDIA utils 580.119.02
 
 ## Installation
 
@@ -52,7 +52,7 @@ Choose one of the two packages:
 ## Requirements
 
 - Linux kernel headers matching your running kernel
-- NVIDIA utilities version 580.105.08 or higher
+- NVIDIA utilities version 580.119.02
 - GCC compiler for module compilation
 
 ## Known Issues
@@ -62,7 +62,7 @@ Choose one of the two packages:
 
 ## Based On
 
-- NVIDIA open-gpu-kernel-modules 580.105.08
+- NVIDIA open-gpu-kernel-modules 580.119.02
 - Original AUR package by Daniel Bermond
 - Patches maintained at: https://github.com/bdandy/open-gpu-kernel-modules
 
