@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-ovh
 	pkgdesc = OVH DNS Authenticator plugin for Certbot
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/certbot-dns-ovh
 	arch = any
 	license = Apache-2.0
