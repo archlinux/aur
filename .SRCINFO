@@ -1,6 +1,6 @@
 pkgbase = ricochet-refresh
 	pkgdesc = Anonymous metadata-resistant instant messaging with Tor Onion Services v3 support.
-	pkgver = 3.0.38
+	pkgver = 3.0.39
 	pkgrel = 1
 	url = https://www.ricochetrefresh.net/
 	arch = i686
@@ -10,12 +10,13 @@ pkgbase = ricochet-refresh
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-declarative
-	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-multimedia
 	depends = openssl
 	depends = protobuf
 	depends = tor
 	depends = hicolor-icon-theme
-	source = ricochet-refresh::git+https://github.com/blueprint-freespeech/ricochet-refresh.git#tag=v3.0.38-release
+	source = ricochet-refresh::git+https://github.com/blueprint-freespeech/ricochet-refresh.git#tag=v3.0.39-release
 	sha256sums = SKIP
 
 pkgname = ricochet-refresh
