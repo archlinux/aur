@@ -1,23 +1,21 @@
 pkgbase = requestly-bin
 	pkgdesc = Debug your network request across all platforms and browsers using a single app.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.0
-	pkgrel = 5
+	pkgver = 25.12.15
+	pkgrel = 1
 	url = https://requestly.com/
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = fuse2
 	makedepends = asar
 	depends = electron23
-	depends = python>3
+	depends = python
 	depends = java-runtime
-	depends = nodejs
-	provides = requestly=1.6.0
+	provides = requestly=25.12.15
 	conflicts = requestly
-	source = requestly-1.6.0.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v1.6.0/Requestly-1.6.0.AppImage
-	source = index.html-1.6.0::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v1.6.0/src/loadingScreen/index.html
+	source = requestly-25.12.15-x86_64.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v25.12.15/Requestly-25.12.15.AppImage
+	source = index.html-25.12.15::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v25.12.15/src/loadingScreen/index.html
 	source = requestly.sh
-	sha256sums = 6948609fa41e08772cdf28b528acf0fb2394b9c6d339e36a39b4d865390aaabb
+	sha256sums = 5da591e1a9f9ed369ba35ba21f8c37686ffa89ef7dc8ae790ae5bbc7b44c00d0
 	sha256sums = 458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = requestly-bin
