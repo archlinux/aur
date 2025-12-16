@@ -1,6 +1,6 @@
 _pkgname=pcre2
 pkgname=mingw-w64-$_pkgname
-pkgver=10.46
+pkgver=10.47
 pkgrel=1
 pkgdesc='A library that implements Perl 5-style regular expressions. 2nd version (mingw-w64)'
 arch=('any')
@@ -17,9 +17,9 @@ source=(
   $_pkgname::git+$url?signed#tag=$_pkgname-$pkgver
   sljit::git+https://github.com/zherczeg/sljit.git
 )
-sha512sums=('0adb31a8db7fbe33af3155ffccc117cbf604ac290fbbc5087638497dd7d22ab30b493dad7a0d9d3532980cf56ca76fc992b0e279d8ff641e9f9a31a1e28ef9a8'
+sha512sums=('5410982555171a3ab0713d04e0cac56f4d45c28cf7b89b4a39dd81ce6b3a19c665b1f0e63ea27deb89f2b9b85e0b959727a048958ba49d98c2b8d4d736578340'
             'SKIP')
-b2sums=('499d16dc44df9f2d352e3f954f576369cc7a11018e46d96ec24f33ffba6eec55b670fd5437b02a013db1c8f63612ebfaafb87a2d762a1f9c8ba271ef3727f1d5'
+b2sums=('ef02f212fe31db86dd8868a3bfc2957ef9af561b561d54c02b421ba9bf9439d9db0d9878cd829a1fcd4d483901c32e15d453d5576014c6e39a5971ffa56a6faf'
         'SKIP')
 validpgpkeys=(
   45F68D54BBE23FB3039B46E59766E084FB0F43D8  # Philip Hazel <ph10@hermes.cam.ac.uk>
