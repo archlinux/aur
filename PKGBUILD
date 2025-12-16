@@ -8,7 +8,7 @@ arch=('any')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://www.hdfgroup.org/ftp/lib-external/szip/${pkgver}/src/szip-${pkgver}.tar.gz")
+source=("https://support.hdfgroup.org/ftp/lib-external/szip/${pkgver}/src/szip-${pkgver}.tar.gz")
 sha256sums=('21ee958b4f2d4be2c9cabfa5e1a94877043609ce86fde5f286f105f7ff84d412')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -26,11 +26,8 @@ prepare() {
 build() {
   cd "$srcdir/szip-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      ..
-    make
-    popd
+    ${_arch}-cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
