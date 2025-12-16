@@ -1,4 +1,4 @@
-# Maintainer: gehenna14 <slkcrurzlmuq@use.startmail.com>
+# Maintainer: gehenna14 <bernkastel1337@disroot.org>
 # Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
@@ -12,7 +12,7 @@ pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
 url="http://tango.freedesktop.org"
 license=('custom:public domain' 'custom:TRADEMARKS')
-makedepends=('imagemagick' 'icon-naming-utils' 'intltool' 'parallel')
+makedepends=('imagemagick' 'librsvg' 'icon-naming-utils' 'intltool' 'parallel')
 options=(!strip !zipman)
 source=(${url}/releases/${pkgname}-${pkgver}.tar.bz2
         symbol.svg
