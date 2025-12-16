@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rclone-ui-bin
 _pkgname='Rclone UI'
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="The cross-platform desktop GUI for rclone & S3.(Prebuilt version)"
 arch=(
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_x86_64.rpm")
-sha256sums_aarch64=('1785c8ede1a3dde428d7b3ca3d9c78dac53c3804bd2f574525b9bc4a73a368d7')
-sha256sums_x86_64=('b3d0843e362f133884d091ff6168bc467018e5e6cf88ef7f7065749ea369aa27')
+sha256sums_aarch64=('2cffb79a7f6dfc1bfcdae85abdc679a6f8ba00383b0851e06ca8f4de11c28a30')
+sha256sums_x86_64=('ee39bc80df688269fe96a399cd012297cccbc581b5970aad6c77c7932d3c28ae')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
