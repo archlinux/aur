@@ -5,8 +5,8 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-flatpak
-pkgver=11.7.3
-_commit=29b31e251eb9eac3804955489c285851eb2aca97
+pkgver=11.7.4.3.gc7efe92
+_commit=c7efe923f980a3f5966f376bd6d6e6146539a970
 pkgrel=1
 epoch=1
 _srcdir="$_pkgname-$pkgver"
@@ -23,7 +23,7 @@ depends=(
     'glib2'
     'gnutls'
     'json-glib'
-    'libalpm.so=15'
+    'libalpm.so=16'
     'libnotify'
     'libsoup3'
     'pacman'
@@ -51,27 +51,22 @@ options=(!emptydirs !strip)
 backup=('etc/pamac.conf')
 install='pamac.install'
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7a0e6abfa5f1ea1f1530301566aacb0acffaf95d93d36a6811dcd874460ca57d')
+sha256sums=('4b297f6195cc248107ca5f9f21325a0992ba5d1260c7fb077b6c65c44af302b4')
 
 _srcdir="$_pkgname"
 
 pkgver() {
 	cd "$_srcdir"
-	git describe --tags | sed 's/^v//;s/-/+/g'
+	git describe --tags --abbrev=7 | sed 's/^v//;s/-/./g'
 }
 
-#prepare() {
-#	cd "$_srcdir"
-#	sed -i "s|--vapidir=../vapi'|--vapidir=' + join_paths(meson.source_root(), 'vapi')|" 'src/meson.build'
-#}
-
 build() {
-	arch-meson "$_srcdir" 'build' -Denable-snap=false -Denable-flatpak=true -Denable-appstream=true
+	arch-meson "$_srcdir" 'build' -Denable-appstream=true -Denable-flatpak=true -Denable-snap=false
 	meson compile -C 'build'
 }
 
 package() {
-    backup=('etc/pamac.conf')
+	backup=('etc/pamac.conf')
 	meson install -C 'build' --destdir="$pkgdir"
 	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

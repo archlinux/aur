@@ -1,6 +1,6 @@
 pkgbase = libpamac-flatpak
 	pkgdesc = Pamac package manager library based on libalpm. With Flatpak support
-	pkgver = 11.7.3
+	pkgver = 11.7.4.3.gc7efe92
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/manjaro/libpamac
@@ -29,7 +29,7 @@ pkgbase = libpamac-flatpak
 	depends = glib2
 	depends = gnutls
 	depends = json-glib
-	depends = libalpm.so=15
+	depends = libalpm.so=16
 	depends = libnotify
 	depends = libsoup3
 	depends = pacman
@@ -43,8 +43,8 @@ pkgbase = libpamac-flatpak
 	options = !emptydirs
 	options = !strip
 	backup = etc/pamac.conf
-	source = git+https://github.com/manjaro/libpamac.git#commit=29b31e251eb9eac3804955489c285851eb2aca97
-	sha256sums = 7a0e6abfa5f1ea1f1530301566aacb0acffaf95d93d36a6811dcd874460ca57d
+	source = git+https://github.com/manjaro/libpamac.git#commit=c7efe923f980a3f5966f376bd6d6e6146539a970
+	sha256sums = 4b297f6195cc248107ca5f9f21325a0992ba5d1260c7fb077b6c65c44af302b4
 
 pkgname = libpamac-flatpak
 	backup = etc/pamac.conf
