@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Serial Mate
+Comment=一个串口调试助手
+Exec=serial-mate
+Icon=serial-mate
+Terminal=false
+Categories=Development;Utility;Electronics;
+StartupNotify=true

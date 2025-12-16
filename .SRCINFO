@@ -1,0 +1,18 @@
+pkgbase = serial-mate
+	pkgdesc = 一个串口调试助手（Wails + Vue3）
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/TheWinds071/serial-mate
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = webkit2gtk
+	provides = serial-mate
+	source = serial-mate-1.3.6-linux-amd64.tar.gz::https://github.com/TheWinds071/serial-mate/releases/download/v1.3.6/serial-mate-1.3.6-linux-amd64.tar.gz
+	source = serial-mate.desktop
+	source = serial-mate.png::https://raw.githubusercontent.com/TheWinds071/serial-mate/refs/heads/master/build/appicon.png
+	sha256sums = f5621192049428bbc4714327d188a51f73d7a604916630365eabddb120f76a1d
+	sha256sums = e2d6394df5a6f82f69bee7a95faccb3db0afbf872f566a312350e4bf60b1c2b9
+	sha256sums = 956031a0bd464c898d514ae8d66fb317308dcef1198e3ab2486d7b5e137f8361
+
+pkgname = serial-mate
