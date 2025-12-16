@@ -1,0 +1,13 @@
+pkgbase = linkora-bin
+	pkgdesc = Link organizer for Android and desktop with self-hosted sync
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/LinkoraApp/Linkora
+	install = linkora.install
+	arch = x86_64
+	license = MIT
+	options = !debug
+	source = https://github.com/LinkoraApp/Linkora/releases/download/release-v0.14.0/linkora_1.0.11-1_amd64.deb
+	sha256sums = a589e805512f01b46e51581ac2e7b6262fab7629ac8e0cce5e968f6dfb6c9844
+
+pkgname = linkora-bin
