@@ -1,4 +1,4 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Maintainer: Edmund Lodewijks <edmund@proteamail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
@@ -6,7 +6,7 @@
 
 pkgname=solfege
 pkgver=3.23.4
-pkgrel=11
+pkgrel=12
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
@@ -23,7 +23,7 @@ optdepends=('csound: Generate example sounds'
             'vorbis-tools: Ogg playback'
             'lilypond: Generate print-outs and score sheets'
             'texlive-bin: Generate reports')
-source=("https://git.savannah.gnu.org/cgit/solfege.git/snapshot/${pkgname}-${pkgver}.tar.gz"
+source=("https://alpha.gnu.org/gnu/solfege/${pkgname}-${pkgver}.tar.gz"{,.sig}
         'hidden_menubar.patch'
         'fix_css.patch'
         'fix_lilypond_eps_file_mismatch.patch'
@@ -32,15 +32,19 @@ source=("https://git.savannah.gnu.org/cgit/solfege.git/snapshot/${pkgname}-${pkg
         'itstool.patch'
         'rm-linux-headers-from-CFLAGS.patch'
         'solfege.install')
-sha512sums=('f2ef7bdb3d1eb15842d803d4d093a177096b6960b211cd3607101f2c03c29fcd3f5151d3b02be4a04236305d18658ba6fa3b5a771b04be4a65f646e27b31914b'
-            '1f7340b7ba4224900b94af8060c125f631748938488c87b5c26e20feb2f8b24e927fe5fc8bb9591d6ab87d6b16a11462373b6d3324a9a95c97f1d4352b35de1f'
-            '631f5c5d3155927026cd33e75f65561302ec241af2db535e4db351c639812f74c0145940447d5acf58746af20a786c54c8e8aa294aaca8e13b99ad2da6019c53'
-            'c264f4b98c5fea78cc071058c6b623a68d98545e1e3b3b21bd9bfe2ffdcd1989876e83c08888d9278e48debb6412f79c5bf99d0a8e9280fd552639dbaf885d2b'
-            'f853d37106f079c18fe699ba70ecff6671d3ed5fdc3a45bfd8dd9ccef3737dd209c666ad4ce09278b6beb429cf27d8cb62f771ec5c348130a4073adbfb3bf49e'
-            '3eda0a2c845d6f4e82b79542835a9a20658a522c86b162821b0b0a61187505c811710660ee1fa5395709f14607fbd8e95b542263c155284e47950b5178a1854d'
-            'c18dce43d22f81b288ce6b3b42f76457e7371adf83e89f92676b3c96535c1b4eaf64037e32d4d650d126c65551aab4fa67f4479a86e7c2579305790829de6f44'
-            'a9c87b29e54311f457d932d8638f030226b059b04a230cb306fe6b1af4eb2950e4520f8aed0c58b49be3740585a58b372ab6ee4f2f63b6d31af378bc8bebb20e'
-            '647a4b0a108e9e4cd9dd67799811e29f3c5ab1563cf5238086130d6d109ae1657d226988c604046c39e75de4bb3d98178947c1656ce70d43fa1c6c4dfc5368de')
+b2sums=('8543aaa659f753af87f7b911401ee38713aa51afcf3dc33d4bfacbc880c8088aff78a81ce03369ba0b58d14a4b6965d78d97486ac2c3481f066591db0f29743d'
+        'SKIP'
+        '284817806aaf27b17f7733b5bbcf149ba5b2d9be3b2b6bcb77127bcb04ef7ad7647df4a78f807312237dae478a789c1426753791f3131f52ecb55c30c865c1fc'
+        'fe9265d1f62535060119961afc1234696d7b48028e8b8f0eda62a66feda152e3d3ed2903acf08bfc227d352c26badeeab4a71866aa2b2e150a55d177f328e3e7'
+        '7f85a88b69d574ca9d7fce7393f644a1a720b6d64601417a8b27b66a71caad2c456e78573908f09fa71294b986f3f830dfcb5faf384c5a24c01121815929f580'
+        '97c57c0b0645054916ff463f00a61bdf405ffdd0064c40de525a8330e8768eb7a8828f955aa4feca4047904ff1c1156e577f14f9801093e0ff922f1b65cfaa2e'
+        'bbc9b1247f68f36ab2a426972255dee4fa6c2531919df090133c9daf59e964eb6be93bac04f99e88c0d1184f10429b2b3d63b8b7a6eeb8acb089628f25295832'
+        '0f0fe564fea7ab8396fb597257bccf90ca7760d36d1c4e780243220b0f356353ca188f4a7bb87c2bef94d6b031ee27277d479ca4c3de304ad3672e09f2ba01c9'
+        '357e3bd1e73f41f446352f9b3de1185a3e47ee794606575749cc7dedfa5842ea6167ebfbe541e2c1ff25d8535f1517b59486d4c440ca684a8209dd6541073b3d'
+        'c147ea00556a5424040361b566ec02b29f7e71ea256aed3835245bcb672743940b558864ae32447cc3dcccc33c7ae9822dd1182953c35037bf54fb0d4c759f7a')
+validpgpkeys=(
+  'D1820E3CCB05255CCD9855988143F7EEA5E43EA3' # Tom Cato Amundsen - gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 8143F7EEA5E43EA3
+)
 install=solfege.install
 
 prepare() {
