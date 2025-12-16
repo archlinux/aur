@@ -1,0 +1,23 @@
+pkgbase = gtk-meshtastic-client-bin
+	pkgdesc = An unofficial client for Meshtastic devices in GTK4/Libadwaita.
+	pkgver = 1.4
+	pkgrel = 6
+	url = https://wiki.postmarketos.org/wiki/Meshtastic
+	arch = x86_64
+	license = GPLv3
+	depends = adwaita-icon-theme
+	depends = meshtastic-python
+	depends = python-pyqrcode
+	depends = gtk4
+	depends = pango
+	depends = libshumate
+	depends = python3
+	depends = python-dotmap
+	depends = python-gobject
+	depends = libgirepository
+	provides = gtk-meshtastic-client
+	conflicts = gtk-meshtastic-client
+	source = http://ftp.ru.debian.org/debian/pool/main/g/gtk-meshtastic-client/gtk-meshtastic-client_1.4-1_all.deb
+	sha256sums = 71c8b8c955f6c879cf7d53186bfe029c0b984b3ed2bcc65fd6cd5e1eb00f37ec
+
+pkgname = gtk-meshtastic-client-bin
