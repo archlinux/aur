@@ -1,6 +1,6 @@
 pkgbase = ls-x
 	pkgdesc = Imagine ls command, but better
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/desyatkoff/lsx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ls-x
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/desyatkoff/lsx/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = f648864ed133d3e22ae0473850c8c2bb0ca726fcf98d7013583174c8c104d015
+	source = https://github.com/desyatkoff/lsx/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 04775d0782fdd5d470c05ff2aceed72c9fc471cc0e0c5464f075e5e7c3f81fb3
 
 pkgname = ls-x
