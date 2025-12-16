@@ -2,8 +2,8 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.91.0.7712.251017.85ce217.r0.85ce21727
-pkgrel=4.1
+pkgver=1.91.0.7721.251216.c74566b.r0.c74566b0c
+pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -36,7 +36,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9eacfddce04dcc91df12038be04387abd508e2e16248561d15c92c173d5b94a363d6b8fa4df644c07732b2cb484aaa0c11b7a07e56295e2d30a87de59f760aef'
+            '07e3a9303ce2fd71ae89e1f0085ca070559a7d40271d5ea31ff965588f01b9259cc7337e734680077dd673343db7f8ad620698a2abd1d6178e15abba6d551ec8'
             'ab1062b9669b51b133824e6c0fdd0cd6d7f2c0ba88db41c1cfbb001626b1e0bcbf93d883f11a873d7d7e0d05311808d9b317fd7a0ce08a6ab7b72667cd3c71da')
 
 pkgver() {
@@ -44,7 +44,7 @@ pkgver() {
 }
 
 
-prepare(){
+prepare() {
   pushd $pkgname
   cp .absolute_gitmodules .gitmodules
   git submodule init
