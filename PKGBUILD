@@ -3,7 +3,7 @@
 _pkgname=solfege
 pkgname=solfege-git
 pkgver=3.23.5pre2.r14.g966b038
-pkgrel=1
+pkgrel=2
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
@@ -68,9 +68,12 @@ prepare() {
   sed -E 's|(PYTHON_INCLUDES=).+|\1"$(pkg-config --cflags-only-I python3)"|g' \
     -i acinclude.m4
 
-    # Update docbook stylesheet path for makeinfo/html docs
-    sed "s|/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/html/chunk.xsl|/usr/share/xml/docbook/xsl-stylesheets-1.79.2/html/chunk.xsl|" \
-      -i configure.ac
+  # Update docbook stylesheet path for makeinfo/html docs
+  sed "s|/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/html/chunk.xsl|/usr/share/xml/docbook/xsl-stylesheets-1.79.2/html/chunk.xsl|" \
+    -i configure.ac
+
+  # Remove explicit Linux headers from CFLAGS when building soundcard
+  sed -i 's|-I/usr/src/linux/include||' solfege/soundcard/Makefile
 
   aclocal $ACINCLUDE
   autoreconf -fvi

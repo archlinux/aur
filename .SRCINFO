@@ -1,7 +1,7 @@
 pkgbase = solfege-git
 	pkgdesc = Music education and ear training software
 	pkgver = 3.23.5pre2.r14.g966b038
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/solfege/
 	install = solfege.install
 	arch = x86_64
