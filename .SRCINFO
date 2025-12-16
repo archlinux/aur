@@ -1,0 +1,21 @@
+pkgbase = qi3pc
+	pkgdesc = Qt bindings for i3wm's IPC interface
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://qi3pc.hantz.sh
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = i3-wm>=4.24
+	source = qi3pc-0.4.1.tar.gz::https://git.sr.ht/~hantz/qi3pc/refs/download/0.4.1/qi3pc-0.4.1.tar.gz
+	source = qi3pc-0.4.1.tar.gz.sig::https://git.sr.ht/~hantz/qi3pc/refs/download/0.4.1/qi3pc-0.4.1.tar.gz.sig
+	validpgpkeys = 4E6BD8F6E1635AA9ED2E74695010C6B8DB833CF4
+	sha256sums = 74f990c4dc2c3a51820fbd863829a71d23687263c856a7060355ffb1eae3ddba
+	sha256sums = SKIP
+
+pkgname = qi3pc
