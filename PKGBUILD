@@ -2,17 +2,16 @@
 # Contributor: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 
 pkgname=hypopg
-pkgver=1.3.1
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="Hypothetical indexes for PostgreSQL... ask the optimizer if this hypothetical index would help"
+pkgdesc="Hypothetical indexes for PostgreSQL (ask the optimizer if this hypothetical index would help)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/HypoPG/hypopg"
-license=('BSD')
-depends=('postgresql')
-makedepends=(git)
-options=(!emptydirs !libtool)
+license=('PostgreSQL')
+depends=('postgresql-libs')
+makedepends=('git' 'postgresql' 'llvm')
 source=("git+https://github.com/HypoPG/hypopg.git#tag=${pkgver}")
-md5sums=('SKIP')
+sha256sums=('76650af78d8a88931851c83474bf8215335bfca7059e17e7a7b9af73a8b5bf5a')
 install='hypopg.install'
 
 build() {
@@ -22,5 +21,6 @@ build() {
 
 package() {
   cd hypopg
-  make DESTDIR="$pkgdir" install
+  make install DESTDIR="$pkgdir"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

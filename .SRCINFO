@@ -1,6 +1,6 @@
 pkgbase = hypopg
-	pkgdesc = Hypothetical indexes for PostgreSQL... ask the optimizer if this hypothetical index would help
-	pkgver = 1.3.1
+	pkgdesc = Hypothetical indexes for PostgreSQL (ask the optimizer if this hypothetical index would help)
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/HypoPG/hypopg
 	install = hypopg.install
@@ -8,12 +8,12 @@ pkgbase = hypopg
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = BSD
+	license = PostgreSQL
 	makedepends = git
-	depends = postgresql
-	options = !emptydirs
-	options = !libtool
-	source = git+https://github.com/HypoPG/hypopg.git#tag=1.3.1
-	md5sums = SKIP
+	makedepends = postgresql
+	makedepends = llvm
+	depends = postgresql-libs
+	source = git+https://github.com/HypoPG/hypopg.git#tag=1.4.2
+	sha256sums = 76650af78d8a88931851c83474bf8215335bfca7059e17e7a7b9af73a8b5bf5a
 
 pkgname = hypopg
