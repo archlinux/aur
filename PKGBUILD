@@ -1,7 +1,7 @@
 # Maintainer: Stephen Paul <stephen at lun1xr dot live>
 pkgname=ply-mksplash
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=4
 pkgdesc='Plymouth bootsplash animation generator. Supports framerates other than 30 fps by patching two-step.'
 url='https://github.com/lun1xr/plymouth-splash-genpatch'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-b2sums=('6668b0d32390d03c9fe5a3df3350767cf2520ff2ef8bd2862e7f917bc133fe4f4848a0348b80e0708036180d88cbf5b61f92d841144809318fb03ae364eabf61')
+b2sums=('ef117e9f269a3db419a628789c07adf5089f1aee82f0ea243312bc8f3cc9979b286347ca96a04415d57b452bf11767b86a7fdf844c072f0fd653057a79dd52ef')
 
 package() {
 
