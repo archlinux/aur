@@ -1,6 +1,6 @@
 pkgbase = lightdm-slick-greeter-mint-theme
 	pkgdesc = A slick-looking LightDM greeter. With additional options enabled
-	pkgver = 2.2.2
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/linuxmint/slick-greeter
 	install = slick-greeter.install
@@ -26,9 +26,9 @@ pkgbase = lightdm-slick-greeter-mint-theme
 	provides = lightdm-slick-greeter
 	conflicts = lightdm-slick-greeter
 	backup = etc/lightdm/slick-greeter.conf
-	source = slick-greeter-2.2.2.tar.gz::https://github.com/linuxmint/slick-greeter/archive/2.2.2.tar.gz
+	source = slick-greeter-2.2.5.tar.gz::https://github.com/linuxmint/slick-greeter/archive/2.2.5.tar.gz
 	source = slick-greeter.conf
-	sha256sums = c6d9be592783349844fafb432961d5085405f360f9c62b870f6aca1a3e681a35
+	sha256sums = 693f5e2f09cc2e0835d461deebeefb666e9862e3664f9d71318e58634ce1b9d2
 	sha256sums = 6ce9dda9e5f343e142926e7ed7aa127137214b823362653745cfe1f9d56c4492
 
 pkgname = lightdm-slick-greeter-mint-theme
