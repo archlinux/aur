@@ -1,9 +1,9 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
-pkgver=v2.31.0.beta.7.r18.g11067b7f
 pkgname="millennium-git"
 _pkgdir="Millennium"
-pkgrel=1
+pkgver=v2.31.0.beta.7.r18.g11067b7f
+pkgrel=2
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -44,8 +44,8 @@ build() {
     echo -e    "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
     cd         $srcdir/$_pkgdir
-    cmake --preset linux-release -G "Ninja" -DDISTRO_ARCH=ON
-    cmake --build build --config Release
+    cmake -GNinja . -DCMAKE_BUILD_TYPE=RelWithDebInfo --preset linux-release -DDISTRO_ARCH=ON
+    cmake --build build
 }
 
 package() {
