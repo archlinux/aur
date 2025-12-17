@@ -5,7 +5,7 @@
 _pkgname=sonarqube
 pkgname=sonarqube-bin
 pkgver=25.12.0.117093
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality (Community Build)"
 arch=('x86_64')
 url="https://www.sonarsource.com/products/sonarqube/"
@@ -29,7 +29,7 @@ sha256sums=('09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341'
             'a50fac609f12d3f1241bfb430a3d1b82d98f0649aff96e4a6f33bbe9733d854f'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
 
-pkgver() {
+latestver() {
     curl -s "https://www.sonarsource.com/products/sonarqube/downloads/" | 
     grep -oP 'Release \K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -1
 }
