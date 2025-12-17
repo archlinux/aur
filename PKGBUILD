@@ -16,7 +16,7 @@ conflicts=('talktype')
 options=('!strip')
 source=("TalkType-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TalkType/releases/download/v${pkgver}/TalkType-v${pkgver}-x86_64.AppImage"
         "talktype.desktop")
-sha256sums=('4a7b10438d073d1880cd518398bc157167414d0e8db2e6ec2c1f5a9563364c39'
+sha256sums=('27c79929b0b3fde4837f89dee32ae21d1909c0fed2d7f2de51158d9f097235dc'
             'SKIP')
 noextract=("TalkType-v${pkgver}-x86_64.AppImage")
 
