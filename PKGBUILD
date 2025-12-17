@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy K. <genues@mail.ru>
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
-pkgver=1.1.0_2025.12.10
+pkgver=1.1.0_2025.12.17
 pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
@@ -13,12 +13,12 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip' '!debug')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-1.1.0_2025.12.10.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.12.10/FreeCAD_weekly-2025.12.10-Linux-x86_64-py311.AppImage"
+source=("freecad-1.1.0_2025.12.17.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.12.17/FreeCAD_weekly-2025.12.17-Linux-x86_64-py311.AppImage"
   "freecad.sh"
   "org.freecad.FreeCAD.desktop.patch")
 
 sha256sums=(
-  "221a2a534c91886096b7034bfbce0923f80af7f29a3d115cc7edfdb12aba97e5"
+  "f314215576aa4085b4ed98a959f70936aefd741419bc12c08ebd18fec13bd553"
   "0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674"
   "52085d2850053db11009365ebdc164e7764f52c3b0d00add4a3d8d8c82860174")
 prepare() {
