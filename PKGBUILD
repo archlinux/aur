@@ -13,7 +13,7 @@ pkgver=2512
 _build1=8.17.0
 _build2=20187591429
 _cart="CART26FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=1
+pkgrel=2
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('resvg' 'oxipng')
@@ -37,6 +37,10 @@ prepare() {
 
 build() {
 	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}/x64/"
+
+	# remove 'horizon-client-next', at least for now...
+	rm --recursive --force \
+		"Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/"{'bin/horizon-client-next','lib/omnissa/horizon/bin/horizon-client-next-bundle/','share/applications/horizon-client-next.desktop'}
 
 	# remove duplicate libraries...
 	rm --force \
