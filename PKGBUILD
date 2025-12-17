@@ -3,22 +3,22 @@
 
 pkgname=fltk-editor
 _pkgname=fltk
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Simple text editor application for FLTK"
 arch=('i686' 'x86_64')
 url="http://www.fltk.org/"
 license=('LGPL')
 depends=('fltk')
 makedepends=('gendesk')
-source=(http://fltk.org/pub/fltk/$pkgver/fltk-$pkgver-source.tar.gz)
-md5sums=('9f7e707d4fb7a5a76f0f9b73ff70623d')
+source=(https://github.com/fltk/fltk/releases/download/release-$pkgver/fltk-$pkgver-source.tar.gz)
+md5sums=('83c567727e61c779f6681b0298226d05')
 
 prepare() {
   cd $_pkgname-$pkgver
   sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' \
          -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
-  gendesk -n -f --pkgname=$pkgname --pkgdesc="Simple text editor" --name="FLTK Editor" --categories="Utility;TextEditor"
+  gendesk -n -f --pkgname="fltk-editor" --pkgdesc="Simple text editor" --name "FLTK Editor" --exec="fltk-editor %f" --mimetypes="text/plain" --icon="accessories-text-editor" --categories="Utility;TextEditor"
 }
 
 build() {
