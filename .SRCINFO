@@ -1,0 +1,13 @@
+pkgbase = pev2-web
+	pkgdesc = Postgres Explain Visualizer 2
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://explain.dalibo.com/
+	arch = any
+	license = PostgreSQL
+	source = pev2-web-1.19.0.html::https://github.com/dalibo/pev2/releases/download/v1.19.0/pev2.html
+	source = https://raw.githubusercontent.com/dalibo/pev2/refs/heads/master/LICENSE
+	b2sums = f28edc72ebf3f86f7601d20a99a6ebb97dcbac13843000b72e6bd70cd53afbd78df1235a4be2057069a0a9fb4be6da1a29e5fa14083bfb65ffc93e1140b87521
+	b2sums = dbabc6d909305cc05b984a68381ab7fba91968113359b6916bd0565e9f352c720e5d95146525642307608011315ea332d03d5127ff934f9be9c32f0bb2811559
+
+pkgname = pev2-web
