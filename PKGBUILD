@@ -1,76 +1,77 @@
-# Maintainer: Richard Lees <git zero at bitservices dot io>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Richard Lees <git zero at bitservices dot io>
 # Contributor: mnussbaum <michaelnussbaum08@gmail.com>
-################################################################################
-
-_gemname=reverse_markdown
-
-################################################################################
-
-pkgname="ruby-${_gemname}"
+pkgname=ruby-reverse_markdown
+_name=${pkgname#ruby-}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby gem to convert html into markdown"
-arch=("any")
-url="https://github.com/xijo/${_gemname}"
-license=(WTFPL)
-depends=("ruby" "ruby-nokogiri")
-makedepends=("rubygems")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "0001-gemspec.patch")
-options=(!emptydirs)
-sha256sums=('4cbc8d31165f1c53f3ebee0dd830b08987e3ff7e792c6cf9998a970c5cd5b4b9'
-            'f40289fd12c3a65b31a9eadd19258204f60556b8841decde918afabc6b361b5b')
-
-################################################################################
+arch=('any')
+url="https://github.com/xijo/reverse_markdown"
+license=('WTFPL')
+depends=('ruby-nokogiri')
+makedepends=('rubygems')
+#checkdepends=('ruby-rake')
+options=('!emptydirs')
+source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4cbc8d31165f1c53f3ebee0dd830b08987e3ff7e792c6cf9998a970c5cd5b4b9')
 
 prepare() {
-  cd "${_gemname}-${pkgver}"
-  patch --strip=1 --input "../0001-gemspec.patch"
+  cd "${_name}-$pkgver"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "${_name}.gemspec"
+
+  # we don't build from a git checkout
+  sed -ie 's|git ls-files|find . -type f -not -path "*/\.git/*"|' "${_name}.gemspec"
 }
 
-################################################################################
-
 build() {
-  local _gemdir="$(gem env gemdir)"
-  local _tmpdir="tmpinstall"
+  cd "${_name}-$pkgver"
+  local gemdir="$(gem env gemdir)"
+  gem build "${_name}.gemspec"
 
-  cd "${_gemname}-${pkgver}"
-
-  gem build "${_gemname}.gemspec"
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
-    --no-user-install \
-    --install-dir "${_tmpdir}/${_gemdir}" \
-    --bindir "${_tmpdir}/usr/bin" \
-    "${_gemname}-${pkgver}.gem"
+    --build-root "tmp_install" \
+    "${_name}-$pkgver.gem"
 
-  find "${_tmpdir}/${_gemdir}/gems/" \
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${gemdir}/cache/" \
+    "tmp_install/${gemdir}/gems/${_name}-$pkgver/vendor/" \
+    "tmp_install/${gemdir}/doc/${_name}-$pkgver/ri/ext/"
+
+  find "tmp_install/${gemdir}/gems/" \
     -type f \
     \( \
-        -iname "*.o" -o \
-        -iname "*.c" -o \
-        -iname "*.so" -o \
-        -iname "*.time" -o \
-        -iname "gem.build_complete" -o \
-        -iname "Makefile" \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
     \) \
     -delete
 
-  rm -r "${_tmpdir}/${_gemdir}/cache"
+  find "tmp_install/${gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
-################################################################################
+#check() {
+#  cd "${_name}-$pkgver"
+#  local gemdir="$(gem env gemdir)"
+#  GEM_HOME="tmp_install/${gemdir}" rake test
+#}
 
 package() {
-  local _tmpdir="tmpinstall"
-
-  cd "${_gemname}-${pkgver}"
-
-  cp -a "${_tmpdir}"/* "${pkgdir}"/
-
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"/
+  cd "${_name}-$pkgver"
+  cp -a tmp_install/* "$pkgdir"
 }
-
-################################################################################

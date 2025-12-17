@@ -1,0 +1,4 @@
+[ruby-reverse_markdown]
+source = "git"
+git = "https://github.com/xijo/reverse_markdown.git"
+prefix = "v"
