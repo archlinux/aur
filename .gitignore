@@ -1,18 +1,24 @@
-# Ignore downloaded source
-*.zip
+# Ignore everything by default
+*
 
-# Ignore built packages
-*.pkg.tar.zst
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
 
-# Ignore build directories
-src/
-pkg/
-
-# Ignore any backup files
-*~
-
-# Ignore user-specific files
-.directory
-.idea/
-.vscode/
-*.code-workspace
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
+!*.service
+!*.desktop
+!*.conf
+!*.png
+!*.svg
+!*.sysusers
+!*.tmpfiles
+!LICENSE
+!README.md
+!CHANGELOG.md
+!*.ini
+!*.txt
