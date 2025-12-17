@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=2.33.0
+pkgver=2.33.2
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
@@ -25,7 +25,7 @@ source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate"
 )
 sha256sums=(
-	355f70e3c3224cd4a228a5d9cb6485595f8c876c00cf343d906246863be50f93
+	09ccca2d71f1331ef55f25d350daf69353bd29f2f95b0ebe8211510f740f7287
 )
 
 : "${pkgname}"
