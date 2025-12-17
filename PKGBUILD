@@ -1,31 +1,47 @@
-# Maintainer: sardach <sardach@uwu.mx>
+# Maintainer: Dan Griffiths <me at evertiro dot com>
+
 pkgname=bibisco
-_pkgname='bibisco CE'
-pkgver=2.1.0
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="Novel writing software. Community Edition."
+pkgdesc='Novel writing software for authors'
 arch=('x86_64')
-url="https://www.bibisco.com/"
-license=('GPL3')
-depends=('npm')
-source=("git+https://github.com/andreafeccomandi/bibisco")
-md5sums=('SKIP');
-build() {
-        cd "$srcdir"/bibisco/bibisco/app
-        npm install
+url='https://bibisco.com'
+license=('MIT')
+conflicts=('bibisco-ce')
+depends=(
+	'alsa-lib'
+	'at-spi2-core'
+	'gtk3'
+	'libcups'
+	'nodejs'
+	'nspr'
+	'nss'
+	'pango'
+)
+source=(
+	# Download the zip file and place in the same directory as this file.
+	"local://bibisco-linux-x64-${pkgver}-SE.zip"
+	${pkgname}.desktop
+)
+sha256sums=(
+	'0c3a86eebcca3d63775c819ad4f595804e81cfc0d4cf2c85f90e6b26dc483db8'
+	'c67436460914778542cb8bf82b77ebbc0b3860fa68ff64efdf50a76af7aa2f14'
+)
+package()
+{
+	_unpacked_dirname="bibisco-linux-x64-${pkgver}-SE"
+
+	# data
+	install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
+	chmod 755 "${srcdir}/${_unpacked_dirname}" # Fix incorrect permissions
+	cp -aT "${srcdir}/${_unpacked_dirname}" "${pkgdir}/opt/${pkgname}"
+	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+	# desktop integration
+	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -d "${pkgdir}/usr/share/pixmaps"
+	ln -s "/opt/${pkgname}/resources/app/assets/icons/linux/bibisco-circle-hr.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+	# legal
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${_unpacked_dirname}/LICENSE" "${srcdir}/${_unpacked_dirname}/LICENSES.chromium.html"
 }
-package() {
-mkdir -p $pkgdir/usr/share/$pkgname
-mkdir -p $pkgdir/usr/bin/
-mv $srcdir/bibisco/bibisco/app/* $pkgdir/usr/share/$pkgname
-echo '#!/bin/bash
-cd /usr/share/bibisco/
-npm start
-' > $pkgdir/usr/bin/bibisco
-chmod +x $pkgdir/usr/bin/bibisco
-}
-
-
-
-
-
