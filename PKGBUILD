@@ -2,7 +2,7 @@
 
 pkgname=pince-bin
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB"
 arch=('x86_64')
 url="https://github.com/korcankaraokcu/PINCE"
