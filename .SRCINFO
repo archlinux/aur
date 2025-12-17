@@ -1,6 +1,6 @@
 pkgbase = python-minecraft-model-reader
 	pkgdesc = Minecraft-Model-Reader for Amulet-Core
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/gentlegiantJGC/Minecraft-Model-Reader
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-minecraft-model-reader
 	makedepends = python-setuptools
 	makedepends = python-versioneer
 	depends = python
-	source = model-reader-1.4.6::https://github.com/gentlegiantJGC/Minecraft-Model-Reader/archive/refs/tags/1.4.6.tar.gz
-	md5sums = SKIP
+	source = model-reader-1.4.7::https://github.com/gentlegiantJGC/Minecraft-Model-Reader/archive/refs/tags/1.4.7.tar.gz
+	md5sums = 1b0947b72d337da261b06f164ee663f5
 
 pkgname = python-minecraft-model-reader
