@@ -4,7 +4,7 @@
 # Contributor: ribbons <aur dot ribbons at codefive dot co dot uk>
 _base=vispy
 pkgname=python-${_base}
-pkgver=0.15.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Interactive visualization in Python"
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=('ipython: ipython-static'
   'python-meshio: io'
   'python-pillow: io')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('81ebee239a3383348b306edeeae94c18e91d84056ea4ad9f7223d32f794088cdf6dc4524b6e0417cca062b04d773bbd3cfc784cef725a891ae7b6161572646d9')
+sha512sums=('54f5c6cdecae5c991232f83f835e07c8731b216a07c1d7604135790aef3e8687fedff367b10a62e536b7628c1fc85afb18aaec3b045d50490526009594b4004c')
 
 build() {
   cd ${_base}-${pkgver}
