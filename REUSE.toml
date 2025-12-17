@@ -37,4 +37,4 @@ path = [
     "python-nose-unicode.patch",
 ]
 SPDX-FileCopyrightText = "python-nose contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "LGPL-2.1-only"
