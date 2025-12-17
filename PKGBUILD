@@ -1,7 +1,7 @@
 # Maintainer: TheWinds071 <you@example.com>
 
 pkgname=serial-mate
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="一个串口调试助手（Wails + Vue3）"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=(
-  'f5621192049428bbc4714327d188a51f73d7a604916630365eabddb120f76a1d'  # TODO: replace with sha256 of tar.gz
+  '922a600ffb45b101e17404f3c03fcccebb11e771ff9742150ae9f04e509fff38'  # TODO: replace with sha256 of tar.gz
   'e2d6394df5a6f82f69bee7a95faccb3db0afbf872f566a312350e4bf60b1c2b9'  # TODO: replace with sha256 of serial-mate.desktop
   '956031a0bd464c898d514ae8d66fb317308dcef1198e3ab2486d7b5e137f8361'  # TODO: replace with sha256 of pict.png
 )
