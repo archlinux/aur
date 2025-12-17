@@ -1,7 +1,7 @@
 pkgbase = precice-config-graph
 	pkgdesc = A Library that builds a graph from a preCICE configuration file for validation and visualization purposes
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/precice/config-graph
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = precice-config-graph
 	depends = python-elementpath
 	depends = python-matplotlib
 	depends = python-networkx
-	source = git+https://github.com/precice/config-graph.git#tag=v2.0.1
-	sha512sums = ae6d7e68f9d228d8352250bd2b8c880565de44a7989bcda4ce9098df52cd853cf95a70f40fb61ea03a7b368d79bbf769da355aa3f0c99b09b64c81ad47ddd4b2
+	source = git+https://github.com/precice/config-graph.git#tag=v2.0.2
+	sha512sums = 1c4e31a66e30c63017391065c44c98a13d74253aa4976cae641ef8cf816bd983c74189aa01dfb23a63db0ced6952d418b264b923b4257c723bdac9b63f1bc83b
 
 pkgname = precice-config-graph
