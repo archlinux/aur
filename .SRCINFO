@@ -1,0 +1,20 @@
+pkgbase = dotup
+	pkgdesc = A .NET version manager
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/na1307/dotup
+	arch = x86_64
+	license = MIT
+	checkdepends = dotnet-sdk-10.0
+	makedepends = dotnet-sdk-10.0
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = krb5
+	depends = libunwind
+	source = https://github.com/na1307/dotup/archive/refs/tags/v0.0.tar.gz
+	sha256sums = 3ae533f1379277a25417dd474cc2f6a5abfb6fd5c7881d9300a94adbdea5da6f
+
+pkgname = dotup
