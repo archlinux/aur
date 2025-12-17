@@ -1,0 +1,17 @@
+pkgbase = opentranscribe-bin
+	pkgdesc = Herramienta de transcripción automática offline usando Whisper.cpp (Binario)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/anabasasoft/OpenTranscribe
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	provides = opentranscribe
+	conflicts = opentranscribe
+	source = https://github.com/anabasasoft/OpenTranscribe/releases/download/v2.0.3/OpenTranscribe
+	source = https://raw.githubusercontent.com/anabasasoft/OpenTranscribe/main/icon.png
+	sha256sums = 25e8f30499a4212aeeca70b6def1c0bc357afa15f5d3a63e856db03b7edf5c25
+	sha256sums = f5c0ec7f25e12ce72874bafc66473a3b1b878f529da1a1133b5a48b0dc0fbadf
+
+pkgname = opentranscribe-bin
