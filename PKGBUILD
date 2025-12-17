@@ -5,7 +5,7 @@
 _distname=Test-use-ok
 pkgname=perl-test-use-ok
 pkgver=0.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Alternative to Test::More::use_ok"
 arch=('any')
 url="https://search.mcpan.org/dist/$_distname"

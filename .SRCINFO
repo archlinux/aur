@@ -1,7 +1,7 @@
 pkgbase = perl-test-use-ok
 	pkgdesc = Alternative to Test::More::use_ok
 	pkgver = 0.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://search.mcpan.org/dist/Test-use-ok
 	arch = any
 	license = GPL
@@ -12,4 +12,3 @@ pkgbase = perl-test-use-ok
 	sha256sums = 8410438a2acf127bffcf1ab92205b747a615b487e80a48e8c3d0bb9fa0dbb2a8
 
 pkgname = perl-test-use-ok
-
