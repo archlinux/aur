@@ -4,7 +4,7 @@ _clientname="non-spatial-input"
 pkgdesc="Get your 2D input into Stardust XR and spatialize it"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.1.0"
+pkgver="0.50.0"
 pkgrel="1"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
@@ -22,7 +22,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/$_clientname.git"
+    "git+https://github.com/StardustXR/$_clientname.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
@@ -30,7 +30,7 @@ OPTIONS=(strip lto !debug)
 prepare() {
     cd "$srcdir/$_clientname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -48,9 +48,9 @@ package() {
     install -Dm755 "target/$CARCH-unknown-linux-gnu/release/manifold" "$pkgdir/usr/bin/"
     install -Dm755 "target/$CARCH-unknown-linux-gnu/release/simular" "$pkgdir/usr/bin/"
     install -Dm644 \
-		LICENSE \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 \
-		README.md \
-		"$pkgdir/usr/share/doc/$pkgname/README.md"
+	    LICENSE \
+	    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 \
+	    README.md \
+	    "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
