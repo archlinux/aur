@@ -1,0 +1,19 @@
+pkgbase = dotup-bin
+	pkgdesc = A .NET version manager
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/na1307/dotup
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = krb5
+	depends = libunwind
+	provides = dotup
+	conflicts = dotup
+	source_x86_64 = https://github.com/na1307/dotup/releases/download/v0.0/dotup_v0.0_linux-x64.tar.gz
+	sha256sums_x86_64 = d9a9e2172f8d940339abdf38bde7173b1e3785042f3115ce16c8421abdcc54fa
+
+pkgname = dotup-bin
