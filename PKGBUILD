@@ -49,7 +49,7 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/
 )
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
-makedepends=('rustup' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils' 'git' 'cmake' 'publicsuffix-list')
+makedepends=('rustup' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils' 'git' 'cmake' 'publicsuffix-list' 'gtk-doc' 'libxslt')
 depends=()
 #conflicts=('paru')
 #replaces=('paru')
