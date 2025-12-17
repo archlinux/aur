@@ -43,7 +43,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.28.9
+pkgver=0.29.0
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
