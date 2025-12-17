@@ -2,7 +2,7 @@
 pkgname=codemachine-cli
 _pkgname=CodeMachine-CLI
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-agent workflow orchestration CLI"
 arch=('any')
 url="https://github.com/moazbuilds/CodeMachine-CLI"
@@ -12,7 +12,7 @@ makedepends=('npm' 'jq' 'bun')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moazbuilds/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('4e56a341510fd48073069abd5da992d9559a3bcbec46a420e68e91c942909c12')
 
-pkgver() {
+latestver() {
     curl -fs "https://api.github.com/repos/moazbuilds/${_pkgname}/releases/latest" \
         | jq -r '.tag_name' | sed 's/^v//'
 }
