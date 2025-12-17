@@ -2,7 +2,7 @@
 pkgname=talktype-appimage
 pkgver=0.5.3
 pkgrel=1
-pkgdesc="Voice dictation for Linux Wayland using Whisper AI"
+pkgdesc="Voice dictation for Linux Wayland - press F8 to talk, powered by Whisper AI"
 arch=('x86_64')
 url="https://github.com/ronb1964/TalkType"
 license=('MIT')
