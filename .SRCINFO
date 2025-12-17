@@ -1,6 +1,6 @@
 pkgbase = rclone-shuttle
 	pkgdesc = Upload your files to anywhere - GTK4 GUI for Rclone
-	pkgver = 0.1.5
+	pkgver = 0.1.6+1
 	pkgrel = 1
 	url = https://github.com/pieterdd/RcloneShuttle
 	arch = arm
@@ -15,7 +15,7 @@ pkgbase = rclone-shuttle
 	depends = libadwaita
 	depends = rclone
 	options = !debug
-	source = rclone-shuttle-0.1.5.tar.gz::https://github.com/pieterdd/RcloneShuttle/archive/refs/tags/0.1.5.tar.gz
-	b2sums = 539ec44228946b9eab391ecc089d731ac292c43a5b92ac58e22b0dbf96e4b70cc56cc9e3bd4167d881cb6f23d41e3e9440b95184ce94108aa3bd893aaebacc7e
+	source = rclone-shuttle-0.1.6-1.tar.gz::https://github.com/pieterdd/RcloneShuttle/archive/refs/tags/0.1.6-1.tar.gz
+	b2sums = 269000b852a4fdbaaff080dad921deb71bb630074c5428589745150a1996e43d680c6eb93a77f563f5eae4b49eb18288a8e350da35f09883982bd41ded367f7a
 
 pkgname = rclone-shuttle
