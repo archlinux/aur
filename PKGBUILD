@@ -72,11 +72,6 @@ sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
             'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32')
 #options=('lto')
 
-# 環境変数 (pkg-configが./tmpを検索)
-TMPDIR=${srcdir}/tmp
-export PKG_CONFIG_PATH="$TMPDIR"/usr/lib/pkgconfig:/usr/lib/pacman/lib/pkgconfig:"$PKG_CONFIG_PATH"
-export PATH="$TMPDIR"/usr/bin:"$PATH"
-
 # Use musl toolchain
 export CC=musl-gcc
 export CXX=musl-g++  # For libs with C++ code (e.g., libxml2, krb5)
@@ -97,9 +92,6 @@ if [[ $CARCH = i686 || $CARCH = pentium4 || $CARCH = i486 ]]; then
 fi
 
 export LD=ld.lld
-export CFLAGS="$CFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
-export CXXFLAGS="$CXXFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
-export LDFLAGS="$LDFLAGS -L"$TMPDIR"/usr/lib -L/usr/lib/pacman/lib"
 
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
@@ -112,10 +104,6 @@ unset OBJDUMP
 unset READELF
 unset STRIP
 unset RANLIB
-
-env|grep llvm
-# 一時ディレクトリ作成
-mkdir -p "$TMPDIR"/usr/lib "$TMPDIR"/usr/include "$TMPDIR"/usr/bin
 
 case "$CARCH" in
   "armv6h")
@@ -135,12 +123,27 @@ case "$CARCH" in
     ;;
 esac
 
+set_env_var() {
+  # 環境変数 (pkg-configが./tmpを検索)
+  TMPDIR=${srcdir}/tmp
+  export PKG_CONFIG_PATH="$TMPDIR"/usr/lib/pkgconfig:/usr/lib/pacman/lib/pkgconfig:"$PKG_CONFIG_PATH"
+  export PATH="$TMPDIR"/usr/bin:"$PATH"
+  export CFLAGS="$CFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
+  export CXXFLAGS="$CXXFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
+  export LDFLAGS="$LDFLAGS -L"$TMPDIR"/usr/lib -L/usr/lib/pacman/lib"
+}
 checkver() {
   test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
 }
 
 prepare() {
   cd "$srcdir/$_pkgname-$_pkgver"
+
+  # 環境変数 (pkg-configが./tmpを検索)
+  TMPDIR=${srcdir}/tmp
+  # 一時ディレクトリ作成
+  mkdir -p "$TMPDIR"/usr/lib "$TMPDIR"/usr/include "$TMPDIR"/usr/bin
+
   rustup update stable
   TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
@@ -173,6 +176,14 @@ build_lib() {
   local dir=$2
   local extra_flags="${3:-}"
 
+  TMPDIR=${srcdir}/tmp
+  if compgen -G "$TMPDIR/usr/lib/*${name}*.a" > /dev/null; then
+	  echo "skip ${name}"
+	  return
+  elif [ ${name} == "e2fsprogs" ] && [ -f $TMPDIR/usr/lib/libcom_err.a ]; then
+	  echo "skip ${name}"
+	  return
+  fi
   echo "Building: $name"
   CFLAGS_=$CFLAGS
   CXXFLAGS_=$CXXFLAGS
@@ -244,6 +255,7 @@ build () {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
 
+  set_env_var
   # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
   # In clang-16, there seems to be no problem without this option specified.
   # (The -ffat-lto-objects option is planned to be supported from clang-17.)
@@ -268,6 +280,7 @@ build () {
         export LTOFLAGS
 		;;
   esac
+  echo $LTOFLAGS
 
   # ビルド順: 独立したものから
   # readline
@@ -275,26 +288,33 @@ build () {
   #export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all -std=gnu17"
   #build_lib "readline" "readline-8.2"
   #CFLAGS="$CFLAGS_"
+  # libedit
   # krb5
   #build_lib "krb5" "krb5-${_krb5_ver}/src" "--disable-threaded-resolver --disable-pkinit --without-system-verto"
 
   # curl
   # disable gssapi and krb5(kerberos-auth)
+  # Building the krb5 static library involves numerous dependencies (libedit, readline, etc.).
+  # As these were deemed unnecessary for paru, krb5 and gssapi are disabled.
   cd "${srcdir}"/curl-${_curl_ver}
-  # c-ares is not detected via pkg-config :(
-  ./configure --prefix="$TMPDIR"/usr \
-              --disable-shared \
-              --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-              --disable-{dict,gopher,imap,ldap,ldaps,manual,pop3,rtsp,smb,smtp,telnet,tftp} \
-              --without-{brotli,gssapi,libidn2,librtmp,libssh2,libpsl} \
-              --disable-libcurl-option \
-              --with-openssl \
-              --enable-ares=/usr/lib/pacman/ \
-              --disable-kerberos-auth
+  if [ -f $TMPDIR/usr/lib/libcurl.a ];then
+	  echo "skip curl"
+  else
+    # c-ares is not detected via pkg-config :(
+    ./configure --prefix="$TMPDIR"/usr \
+                --disable-shared \
+                --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
+                --disable-{dict,gopher,imap,ldap,ldaps,manual,pop3,rtsp,smb,smtp,telnet,tftp} \
+                --without-{brotli,gssapi,libidn2,librtmp,libssh2,libpsl} \
+                --disable-libcurl-option \
+                --with-openssl \
+                --enable-ares=/usr/lib/pacman/ \
+                --disable-kerberos-auth
     make -C lib
     make install-pkgconfigDATA
     make -C lib install
     make -C include install
+  fi
 
   # libunistring (idn2依存)
   build_lib "libunistring" "libunistring-${_unistring_ver}"
@@ -362,12 +382,14 @@ build () {
     _features+="generate,"
   fi
 
-  RUSTFLAGS+=" -Clink-arg=-fuse-ld=lld"
-  #RUSTFLAGS+=" -Clink-arg=-L/usr/lib/pacman/lib -Clink-arg=--verbose"
+  # If LD is set to mold, gold, or ld, an error will occur.
+  # It is best to use gcc (cc) or no linker specification.
+  RUSTFLAGS+=" -Clinker=gcc -Clink-arg=-fuse-ld=lld -Clink-arg=--verbose"
   if [[ $CARCH == x86_64 ]]; then
-
-    #export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now",
-    export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-Wl,-z,relro,-z,now",
+    #PIE
+    export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now"
+    # non PIE
+    #export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-Wl,-z,relro,-z,now"
   fi
 
   # paruビルド
