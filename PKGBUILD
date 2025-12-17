@@ -2,8 +2,8 @@
 
 _pkgname=shelved_cache
 pkgname=python-shelved-cache
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A persistent cache implementation for Python cachetools."
 arch=('any')
 url="https://github.com/mariushelf/shelved_cache"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 depends=('python' 'python-cachetools')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('91871a6df12eead600b8c7cd08d0126ac0543dc4ffd78bf7abeead504f20282d')
+b2sums=('7b55f1fdcb05d6a6ba6aabb283940f8aec5342e9cd3f9d3758c2700282cf788b064447e4d8eda7896899285886d0e327aa1f54306e897e7ccc7ef6d2ff68d376')
 
 build() {
     cd "$_pkgname-$pkgver"
