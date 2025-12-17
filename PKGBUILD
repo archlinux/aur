@@ -2,9 +2,9 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname='HTTP Toolkit Desktop'
-pkgver=1.23.0.r0.g2f75261
-_electronversion=37
-_nodeversion=20
+pkgver=1.24.2.r0.gc28ac61
+_electronversion=39
+_nodeversion=22
 pkgrel=1
 pkgdesc="A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.(Use system-wide electron)"
 arch=("any")
