@@ -21,6 +21,7 @@ prepare() {
   cd $pkgname
   # Various fixes
   patch -Np1 -i ../fixes.patch
+  sed -i '/bug-contact =/d' setup.cfg
 }
 
 build() {
