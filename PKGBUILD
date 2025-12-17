@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0.2.r1215.g30ff3710a
+pkgver=4.2.1.r205.gb29a85f45
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -43,7 +43,7 @@ makedepends=(
 checkdepends=(
   'expect'
   'procps-ng'
-  'python-black'
+  'ruff'
 )
 options=(!lto)
 provides=(
@@ -76,7 +76,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_SYSCONFDIR=/etc
     -DCMAKE_BUILD_TYPE=Release
-    -DBUILD_DOCS=True
+    -DWITH_DOCS=ON
     -DFISH_USE_SYSTEM_PCRE2=ON
     -DWITH_GETTEXT=ON
     -Wno-dev
