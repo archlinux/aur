@@ -4,7 +4,7 @@
 
 pkgname=anytype-alpha-bin
 _pkgname=anytype
-pkgver=0.52.4
+pkgver=0.52.11-alpha
 pkgrel=1
 pkgdesc="Operating environment for the new internet (Anytype)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 sha256sums=('c6fb8aafde67db244503ac33f8c83bd7f58377963a9d61e2c44890883910dd2c'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
-pkgver() {
+latestver() {
     curl -sI "https://github.com/anyproto/anytype-ts/releases/latest" | 
     grep -i location | 
     sed 's|.*/v||;s|\r||'
