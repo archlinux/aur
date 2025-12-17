@@ -1,7 +1,7 @@
 pkgbase = darkly-bin
 	pkgdesc = Fork of Lightly (A modern style for Qt applications)
 	pkgver = 0.5.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,6 @@ pkgbase = darkly-bin
 	depends = libplasma
 	conflicts = darkly
 	options = !emptydirs
-	options = !debug
 	source = https://github.com/Bali10050/darkly/releases/download/v0.5.28/darkly-0.5.28-x86_64.pkg.zst
 	sha256sums = d1b30ffa0c4dcfcbe22de05640ca377616a19e001e5db8ae0c57d5d4b4e6b5cf
 
