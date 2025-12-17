@@ -1,19 +1,20 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 pkgname="sleepy-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r5.g9ac9f44
+pkgver=1.6.1.r0.gd1ab543
 pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=("x86_64")
 url="https://github.com/an-anime-team/sleepy-launcher"
 license=("GPL3")
+provides=("sleepy-launcher")
+conflicts=("sleepy-launcher")
 depends=(
   "git"
   "p7zip"
   "glibc"
   "gtk4"
   "libadwaita"
-  "gstreamer"
 )
 makedepends=(rust)
 optdepends=(
@@ -51,6 +52,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}"
+  export CFLAGS+=" -ffat-lto-objects"
   cargo build --release
 }
 
