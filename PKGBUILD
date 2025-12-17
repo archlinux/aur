@@ -3,13 +3,13 @@
 
 pkgname=opentrace-bin
 pkgver=1.4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64')
 url="https://github.com/Archeb/opentrace"
 license=('GPL3')
 depends=('nexttrace' 'webkit2gtk')
-makedepends=('curl' 'jq')
+
 provides=('opentrace')
 conflicts=('opentrace')
 source=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/download/v$pkgver/linux-x64.tar.gz"

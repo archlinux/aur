@@ -1,12 +1,10 @@
 pkgbase = opentrace-bin
 	pkgdesc = A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience.
 	pkgver = 1.4.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Archeb/opentrace
 	arch = x86_64
 	license = GPL3
-	makedepends = curl
-	makedepends = jq
 	depends = nexttrace
 	depends = webkit2gtk
 	provides = opentrace
