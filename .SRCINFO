@@ -11,6 +11,6 @@ pkgbase = hdas
 	depends = libbpf
 	options = !lto
 	source = hdas-1.0.0.tar.gz::https://github.com/adelmonte/hdas/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 03c5b94309521acf2ba76d6fdc47f6376fe01eef1997c41731521108b8567339
+	sha256sums = b0f8452872d0fba8c500a24a126dc0ca6408a57fd17fa72fda2778caf8173de0
 
 pkgname = hdas
