@@ -5,7 +5,8 @@ _basename="zig"
 _suffix="-mach"
 pkgname="${_basename}${_suffix}"
 pkgver=0.14.0dev.2577+271452d22
-pkgrel=1
+_pkgver="${pkgver//dev/-dev}"
+pkgrel=2
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -18,7 +19,6 @@ arch=(
   'x86_64'      # 'x86_64'
 )
 url="https://machengine.org/docs/nominated-zig/"
-_url="https://codeberg.org/ziglang/${_basename}"
 license=(
   'MIT'
 )
@@ -35,9 +35,7 @@ depends=(
 )
 makedepends=(
   'cmake>=3.15'
-  'curl'
-  'git'
-  'jq'
+  'minisign'
   
   # "llvm>=${_llvm}"
   "llvm${_llvm}"
@@ -48,11 +46,22 @@ makedepends=(
 options=(
   '!lto'
 )
-_pkgsrc="${_url##*/}"
+_pkgsrc="${_basename}-${_pkgver}"
 source=(
-  "${_pkgsrc}::git+${_url}.git#commit=${pkgver##*+}"
+  "https://pkg.machengine.org/zig/${_pkgsrc}.tar.xz"
+  "https://pkg.machengine.org/zig/${_pkgsrc}.tar.xz.minisig"
 )
-sha256sums=('de5f26d99e3a5da91914b9d7592b0d5926c271b0952bd355b2657ae89691939a')
+sha256sums=('a979e021e3be89f45eccf6d081032da03afc674db753ab400ad8c85b7ee3c089'
+            'SKIP')
+
+verify() {
+  # https://ziglang.org/download/
+  local ziglang_minisign="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
+
+  minisign -V \
+    -P "${ziglang_minisign}" \
+    -m "${_pkgsrc}.tar.xz"
+}
 
 build() {
   local cmake_options=(

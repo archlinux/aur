@@ -1,14 +1,12 @@
 pkgbase = zig-mach
 	pkgdesc = General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.14.0dev.2577+271452d22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://machengine.org/docs/nominated-zig/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake>=3.15
-	makedepends = curl
-	makedepends = git
-	makedepends = jq
+	makedepends = minisign
 	makedepends = llvm19
 	depends = gcc-libs
 	depends = glibc
@@ -16,7 +14,9 @@ pkgbase = zig-mach
 	depends = lld19
 	depends = llvm19-libs
 	options = !lto
-	source = zig::git+https://codeberg.org/ziglang/zig.git#commit=271452d22
-	sha256sums = de5f26d99e3a5da91914b9d7592b0d5926c271b0952bd355b2657ae89691939a
+	source = https://pkg.machengine.org/zig/zig-0.14.0-dev.2577+271452d22.tar.xz
+	source = https://pkg.machengine.org/zig/zig-0.14.0-dev.2577+271452d22.tar.xz.minisig
+	sha256sums = a979e021e3be89f45eccf6d081032da03afc674db753ab400ad8c85b7ee3c089
+	sha256sums = SKIP
 
 pkgname = zig-mach
