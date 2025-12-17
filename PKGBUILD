@@ -2,7 +2,7 @@
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
 pkgver=0.19.52
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
 url="https://unmined.net/"
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/")
 sha256sums=('b0f3bf0fe9614058c0f94b9e6890c53672bfc560d8bd07e0dacd264e84523a8f')
 
-pkgver() {
+latestver() {
     curl -fsSL "https://unmined.net/downloads/" | \
     grep -oP 'title="uNmINeD CLI.*\([0-9]+\.[0-9]+\.[0-9]+\)"' | \
     head -n1 | sed -E 's/.*\(([0-9]+\.[0-9]+\.[0-9]+)\).*/\1/'
