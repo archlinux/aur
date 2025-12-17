@@ -2,7 +2,7 @@
 
 pkgname=odiff-bin
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing fast SIMD-optimized image comparison CLI"
 arch=('x86_64')
 url="https://github.com/dmtrKovalenko/odiff"
@@ -19,7 +19,7 @@ noextract=('odiff-linux-x64')
 sha256sums=('9608ab37156c8d14fbb2fab1381d023c1fce07e7850306bba3a227a85ec4fab4'
             '2c17e6bcf92a58e6668f19f17f4a27fa4b1d70840994f31bd837b55bb6b297d7')
 
-pkgver() {
+latestver() {
 	curl -s "https://api.github.com/repos/dmtrKovalenko/odiff/releases/latest" \
 		| jq -r '.tag_name' | sed 's/^v//'
 }
