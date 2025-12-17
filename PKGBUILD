@@ -1,9 +1,10 @@
-# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
+# Maintainer: Fabio Di Giorgio <ravnos at duck dot com>
+# Contributor: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-bin
-_name="${pkgname%-bin}"
+_pkgname="${pkgname%-bin}"
 pkgver=0.7.45
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The AI IDE for prototype to production'
 arch=('x86_64')
@@ -42,17 +43,17 @@ depends=(
     'pango'
     'systemd-libs'
 )
-provides=("$_name")
-conflicts=("$_name")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=('!debug' '!strip')
 _baseurl=https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/$pkgver/tar
 source=(
-    "$_name-$pkgver.tar.gz::$_baseurl/kiro-ide-$pkgver-stable-linux-x64.tar.gz"
-    "$_name-certificate.pem::$_baseurl/certificate.pem"
-    "$_name-$pkgver-signature.bin::$_baseurl/signature.bin"
-    "$_name.desktop"
-    "$_name-url-handler.desktop"
-    "$_name-workspace.xml"
+    "$_pkgname-$pkgver.tar.gz::$_baseurl/$_pkgname-ide-$pkgver-stable-linux-x64.tar.gz"
+    "$_pkgname-certificate.pem::$_baseurl/certificate.pem"
+    "$_pkgname-$pkgver-signature.bin::$_baseurl/signature.bin"
+    "$_pkgname.desktop"
+    "$_pkgname-url-handler.desktop"
+    "$_pkgname-workspace.xml"
     "Kiro-LICENSE.txt"
 )
 b2sums=('3dad69f765dfdca03666b4b1ef8a502b4112cfa007dfdd62b80f2d4e52604e2a8527982ae5b93b4e8889844f5107a8acecf91635c59db299f4aac9f4981bc40d'
@@ -65,9 +66,8 @@ b2sums=('3dad69f765dfdca03666b4b1ef8a502b4112cfa007dfdd62b80f2d4e52604e2a8527982
 
 verify() {
     cd "$SRCDEST"
-    openssl x509 -pubkey -noout -in $_name-certificate.pem > kiro-pubkey.pem
-    openssl dgst -sha256 -verify kiro-pubkey.pem -signature $_name-$pkgver-signature.bin \
-        $_name-$pkgver.tar.gz
+    openssl x509 -pubkey -noout -in $_pkgname-certificate.pem > kiro-pubkey.pem
+    openssl dgst -sha256 -verify kiro-pubkey.pem -signature $_pkgname-$pkgver-signature.bin $_pkgname-$pkgver.tar.gz
 }
 
 package() {
@@ -76,26 +76,20 @@ package() {
     chmod 4755 "$pkgdir/opt/Kiro/chrome-sandbox"
 
     install -dm755 "$pkgdir/usr/bin"
-    ln -s /opt/Kiro/bin/$_name "$pkgdir/usr/bin/$_name"
+    ln -s /opt/Kiro/bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm644 Kiro-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-    install -Dm644 Kiro/LICENSES.chromium.html \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    install -Dm644 Kiro/LICENSES.chromium.html "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 
     install -dm755 "$pkgdir/usr/share/pixmaps"
-    ln -s /opt/Kiro/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/$_name.png"
+    ln -s /opt/Kiro/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-    ln -s /opt/Kiro/resources/completions/bash/$_name \
-        "$pkgdir/usr/share/bash-completion/completions/$_name"
-    ln -s /opt/Kiro/resources/completions/zsh/_$_name \
-        "$pkgdir/usr/share/zsh/site-functions/_$_name"
+    ln -s /opt/Kiro/resources/completions/bash/$_pkgname "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    ln -s /opt/Kiro/resources/completions/zsh/_$_pkgname "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
-    install -Dm644 $_name.desktop \
-        "$pkgdir/usr/share/applications/$_name.desktop"
-    install -Dm644 $_name-url-handler.desktop \
-        "$pkgdir/usr/share/applications/$_name-url-handler.desktop"
-    install -Dm644 $_name-workspace.xml \
-        "$pkgdir/usr/share/mime/packages/$_name-workspace.xml"
+    install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 $_pkgname-url-handler.desktop "$pkgdir/usr/share/applications/$_pkgname-url-handler.desktop"
+    install -Dm644 $_pkgname-workspace.xml "$pkgdir/usr/share/mime/packages/$_pkgname-workspace.xml"
 }
