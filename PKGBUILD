@@ -1,12 +1,12 @@
-# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+# Maintainer: nardholio <nardholio@gmail.com>
+# Contributor: Xeonacid <h.dwwwwww@gmail.com>
 # Contributor: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 # Contributor: BlackCatDevel0per
 
-pkgname=solana  
+pkgname=solana
 epoch=1
-pkgver=2.3.13
-# https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
-_splTokenCliVersion=4.1.1
+pkgver=3.0.12
+_splTokenCliVersion=5.4.0
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
@@ -16,64 +16,45 @@ depends=(bash bzip2 cargo gcc-libs glibc systemd-libs)
 makedepends=(git protobuf clang llvm)
 provides=(spl-token)
 source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
-        git+https://github.com/solana-labs/solana-program-library.git#tag=token-cli-v$_splTokenCliVersion
+        "spl-token-cli-$_splTokenCliVersion.crate::https://static.crates.io/crates/spl-token-cli/spl-token-cli-$_splTokenCliVersion.crate"
         $pkgname.sysusers
-        $pkgname.tmpfiles
-        $pkgname-sbf_sdk-path.patch)
-sha256sums=('05c8506d73ea15bcf5f8539475e570cb3d80ef0870ba861cfeefaaa8da4c7aa2'
-            'd0d7c7e98b42a6613d4ba1ddc8ec7650434793bab5925bf565de6cf3ba6093a1'
+        $pkgname.tmpfiles)
+sha256sums=('4ca988c916c619d226dd9ae53dfb6ba2fc6f5dbbfa488bdb30ae8a235320d8ea'
+            '6c1044b2b001a9fb3994031e5f63b5d3b81db3314cf924f4633bfd2a5708b5aa'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
-            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
-            '8fee0981fb31343719c6f4f3b845dd8d957ad7d38319c0cc80f4637f9210874c')
+            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b')
 install=$pkgname.install
 options=(!lto)
 
-# https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/cargo-install-all.sh
 _BINS=(
-  solana
-  solana-faucet
-  solana-genesis
-  solana-gossip
   agave-install
+  solana
   solana-keygen
-  solana-log-analyzer
-  solana-net-shaper
   agave-validator
-  rbpf-cli
+  agave-watchtower
+  solana-gossip
+  solana-genesis
+  solana-faucet
+  agave-ledger-tool
   cargo-build-sbf
   cargo-test-sbf
-  agave-install-init
-  solana-stake-accounts
   solana-test-validator
+  solana-stake-accounts
   solana-tokens
-  agave-watchtower
-)
-
-_DCOU_BINS=(
-  agave-ledger-tool
-  solana-bench-tps
-  solana-dos
-)
-
-# https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/dcou-tainted-packages.sh
-_dcou_tainted_packages=(
-  solana-accounts-bench
-  solana-banking-bench
-  agave-ledger-tool
-  solana-bench-tps
-  agave-store-tool
-  agave-store-histogram
-  agave-accounts-hash-cache-tool
-  solana-dos
+  agave-install-init
 )
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd $srcdir/agave
-  patch -Np1 -i ../$pkgname-sbf_sdk-path.patch
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  cd $srcdir/solana-program-library
+  # Extract and fetch deps for spl-token-cli
+  cd "$srcdir"
+  tar -xzf spl-token-cli-*.crate
+  rm -rf spl-token-cli-src
+  mv spl-token-cli-$_splTokenCliVersion spl-token-cli-src
+  cd spl-token-cli-src
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -85,48 +66,32 @@ build() {
   # error: hiding a lifetime that's elided elsewhere is confusing
   sed -i '/^\[workspace\.lints\.rust\]$/,+1d' Cargo.toml
 
+  # C flags
+  export CXXFLAGS="$CXXFLAGS -include cstdint"
+
   local binargs=()
   for bin in "${_BINS[@]}"; do
     binargs+=(--bin "$bin")
   done
 
-  local excludeArgs=()
-  for package in "${_dcou_tainted_packages[@]}"; do
-    excludeArgs+=(--exclude "$package")
-  done
+  cargo build --frozen --release --workspace "${binargs[@]}"
 
-  local dcouBinArgs=()
-  for bin in "${_DCOU_BINS[@]}"; do
-    dcouBinArgs+=(--bin "$bin")
-  done
-
-  # Fix rocksdb
-  export CXXFLAGS="$CXXFLAGS -include cstdint"
-
-  cargo build --frozen --release "${binargs[@]}" --workspace "${excludeArgs[@]}"
-  cargo build --frozen --release "${dcouBinArgs[@]}"
-  cargo build --frozen --release --manifest-path programs/bpf_loader/gen-syscall-list/Cargo.toml
-  cargo run --frozen --release --bin gen-headers
-
-  cd $srcdir/solana-program-library
-  cargo build --frozen --release --bin spl-token
+  # Build spl-token-cli
+  cd $srcdir/spl-token-cli-src
+  cargo build --frozen --release
 }
 
 package() {
   cd $srcdir/agave
+
   for bin in "${_BINS[@]}"; do
     install -Dm755 target/release/$bin -t $pkgdir/usr/bin
   done
-  for bin in "${_DCOU_BINS[@]}"; do
-    install -Dm755 target/release/$bin -t $pkgdir/usr/bin
-  done
 
-  install -dm755 $pkgdir/usr/lib/$pkgname/platform-tools-sdk
-  cp -a platform-tools-sdk/sbf $pkgdir/usr/lib/$pkgname/platform-tools-sdk
-
-  cd $srcdir/solana-program-library
-  install -Dm755 target/release/spl-token -t $pkgdir/usr/bin
+  install -Dm755 $srcdir/spl-token-cli-src/target/release/spl-token $pkgdir/usr/bin/spl-token
 
   install -Dm644 $srcdir/$pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
   install -Dm644 $srcdir/$pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+
+  find "$pkgdir/usr/bin" -type f -executable -exec strip --strip-unneeded {} + || true
 }
