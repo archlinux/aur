@@ -1,0 +1,126 @@
+# Maintainer: artist for XLibre <artist4xlibre@proton.me>
+
+_pkgname1=plasma-workspace
+_pkgname2=sonic-workspace
+pkgname="${_pkgname2}-bin"
+pkgver=6.5.4
+pkgrel=1
+pkgdesc="KDE Plasma Workspace, light version with fixes and improvements for X11 session"
+arch=(x86_64)
+url="https://github.com/Sonic-DE/${_pkgname2}"
+license=('custom')
+options=(!strip)
+source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+depends=(accountsservice
+         appstream-qt
+         dbus
+         fontconfig
+         freetype2
+         gcc-libs
+         glibc
+         icu
+         kactivitymanagerd
+         karchive
+         kauth
+         kbookmarks
+         kcmutils
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kde-cli-tools
+         kdeclarative
+         kded
+         kdbusaddons
+         kglobalaccel
+         kguiaddons
+         kholidays
+         ki18n
+         kiconthemes
+         kidletime
+         kio
+         kio-extras
+         kio-fuse
+         kirigami
+         kirigami-addons
+         kitemmodels
+         kjobwidgets
+         knewstuff
+         knighttime
+         knotifications
+         knotifyconfig
+         kpackage
+         kparts
+         kpipewire
+         krunner
+         kquickcharts
+         kscreenlocker
+         kservice
+         kstatusnotifieritem
+         ksvg
+         ksystemstats
+         ktexteditor
+         ktextwidgets
+         kuserfeedback
+         kwallet
+         kwayland
+         kwidgetsaddons
+         kwin
+         kwindowsystem
+         kxmlgui
+         layer-shell-qt
+         libcanberra
+         libice
+         libkexiv2
+         libksysguard
+         libplasma
+         libqalculate
+         libsm
+         libx11
+         libxau
+         libxcb
+         libxcrypt
+         libxcursor
+         libxfixes
+         libxft
+         libxtst
+         milou
+         ocean-sound-theme
+         plasma-activities
+         plasma-activities-stats
+         plasma-integration
+         plasma-x11-session
+         plasma5support
+         prison
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-location
+         qt6-positioning
+         qt6-svg
+         qt6-tools # for qdbus
+         qt6-virtualkeyboard
+         sh
+         solid
+         systemd-libs
+         wayland
+         xcb-util
+         xcb-util-cursor
+         xcb-util-image
+         xorg-xmessage
+         xorg-xrdb
+         xorg-xwayland
+         zlib)
+provides=($_pkgname1 $_pkgname2 "${_pkgname1}-sonic-bin")
+conflicts=($_pkgname1 $_pkgname2 "${_pkgname1}-sonic-bin")
+replaces=("${_pkgname1}-sonic-bin")
+
+sha256sums=('850ad87016f55743aa624e6ae8ca7194164d1b02b968ca9ba579144fd81f4da7')
+
+package() {
+  tar -xf "${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
+}
+
