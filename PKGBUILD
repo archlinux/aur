@@ -1,21 +1,18 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 pkgname="stardust-xr-server"
-pkgver="0.45.1"
+pkgver="0.50.0"
 pkgrel="1"
 pkgdesc="Usable Linux display server that reinvents human-computer interaction for all kinds of XR"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/server"
-license=("GPL-2.0-or-later")
+license=("GPL-2.0-only")
 depends=(
-	"libgl"
-	"libegl"
+	"vulkan-icd-loader"
 	"mesa"
 	"libx11"
-	"libxfixes"
 	"fontconfig"
 	"libxkbcommon"
-	"libglvnd"
 )
 makedepends=(
 	"git"
@@ -24,21 +21,18 @@ makedepends=(
 	"pkg-config"
 )
 provides=("stardust-server")
-source=("git+https://github.com/StardustXR/server.git")
+source=("git+https://github.com/StardustXR/server.git#tag=$pkgver")
 sha256sums=("SKIP")
 options+=(!lto !debug !strip)
 
 prepare() {
 	cd "${srcdir}/server"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "${srcdir}/server"
-	export CPM_USE_LOCAL_PACKAGES=1
-	export CPM_DOWNLOAD_ALL=1
-	export CXXFLAGS=
 	cargo build --release --target "${CARCH}-unknown-linux-gnu"
 }
 
