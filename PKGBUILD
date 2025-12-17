@@ -1,7 +1,7 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 pkgname="stardust-xr-telescope"
-pkgver="0.1.0"
+pkgver="0.50.0"
 pkgrel="2"
 pkgdesc="See the stars! Simple Stardust XR overlay setup."
 arch=("any")
@@ -14,12 +14,14 @@ depends=(
 	"stardust-xr-gravity"
 	"stardust-xr-protostar"
 	"stardust-xr-black-hole"
+	"stardust-xr-non-spatial-input"
+	"stardust-xr-solar-sailer"
 	"xwayland-satellite"
 )
 makedepends=(
 	"git"
 )
-source=("git+https://github.com/StardustXR/telescope.git")
+source=("git+https://github.com/StardustXR/telescope.git#tag=$pkgver")
 sha256sums=("SKIP")
 OPTIONS=(!debug)
 
@@ -33,4 +35,11 @@ package() {
 	install -Dm644 \
 		README.md \
 		"$pkgdir/usr/share/doc/$pkgname/README.md"
+
+	install -Dm644 \
+		org.stardustxr.Telescope.desktop \
+		"$pkgdir/usr/share/applications/org.stardustxr.Telescope.desktop"
+	install -Dm644 \
+		org.stardustxr.Telescope.png \
+		"$pkgdir/usr/share/icons/hicolor/apps/org.stardustxr.Telescope.png"
 }
