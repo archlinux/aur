@@ -1,0 +1,24 @@
+pkgbase = plasma6-applet-homeassistant
+	pkgdesc = Plasmoid for Home Assistant on your plasma desktop.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/korapp/plasma-homeassistant
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = libplasma>6
+	depends = qt6-5compat
+	depends = kirigami
+	depends = ksvg
+	depends = qt6-declarative
+	depends = kdeclarative
+	depends = kquickcharts
+	depends = kcmutils
+	depends = qt6-websockets
+	depends = kwallet
+	source = git+https://github.com/korapp/plasma-homeassistant.git#tag=v1.2.1
+	source = secrets::git+https://github.com/korapp/plasma-lib-secrets.git
+	sha256sums = 1975ab7f36a2556d562db844e4ff0797a4824c61d380e3dfccd4b1dcbe065e89
+	sha256sums = SKIP
+
+pkgname = plasma6-applet-homeassistant
