@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.123.5
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha256sums=('a165ca406286e5cbba4c34e0edd7510d854e753bf1458e0385784b30d7564f19'
             'faa4145ec8723700c5f8f75ae2dd3d78c931597b67e200050b55fec9d73c3f06'
             '03cb79cddc04a0303be6d60ba2e7801106b6d4405d33953a2c508c5825c66a7c')
 
-pkgver() {
+latestver() {
   # Fetch latest version from npm registry
   curl -s "https://registry.npmjs.org/${pkgname}" | jq -r '.["dist-tags"].latest'
 }
