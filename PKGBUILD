@@ -4,7 +4,7 @@ pkgver=1.2.5
 pkgrel=3
 pkgdesc='A small, FLTK-based calculator'
 arch=('i686' 'x86_64')
-url='https://ziggi.org/category/developments/zalc/'
+url='https://github.com/ziggi/zalc'
 license=('GPL3')
 depends=('fltk')
 makedepends=('cmake')
@@ -14,7 +14,8 @@ sha512sums=('32416f71c1fb24a35730f70d4a875c1ae5ac916305dc43196274dcab75a4f1ab017
 
 build () {
 	cd ${pkgname}-${pkgver}
-	cmake -DCMAKE_INSTALL_PREFIX=/usr
+	sed -i '/#include <FL\/Fl.H>/a #include <cstdlib>' src/main.cpp
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make
 }
 package() {
