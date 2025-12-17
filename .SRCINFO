@@ -1,0 +1,23 @@
+pkgbase = nbb
+	pkgdesc = Scripting in Clojure on Node.js using SCI
+	pkgver = 1.3.204
+	pkgrel = 1
+	url = https://github.com/babashka/nbb
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	depends = bun
+	provides = nbb
+	provides = nbbum
+	noextract = nbb-1.3.204.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = nbb-1.3.204.tgz::https://registry.npmjs.org/nbb/-/nbb-1.3.204.tgz
+	b2sums = bbc8a9df7f74d3787e7b18e9d04e42f3d6f7b75c31d7198708702544b7cb68a1797c668eefebfe9322094282bca254319efbd45e54f78078deb98ccc29cdb448
+
+pkgname = nbb
