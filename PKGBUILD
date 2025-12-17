@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=1.7.3
+pkgver=1.7.4
 _electronversion=38
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -40,8 +40,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('f39fece1ba89345fab54f7ab68736efe00bb75915d8d83ce00ad438438df2066')
-sha256sums_x86_64=('535ca4d003e997d881ab7024d20a0273c4336238455e6a81a518243dfb9f2303')
+sha256sums_aarch64=('4bcbab28300c29ccbc63c0a33d317fcd4d18cf283228305e0b942eef55fa4896')
+sha256sums_x86_64=('4e1f6a3f708984e0051c48dffbf6b8f50e82ae5783494bca3901bb2f1afcc680')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
