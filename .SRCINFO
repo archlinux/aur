@@ -1,6 +1,6 @@
 pkgbase = openfodder
 	pkgdesc = An open source version of the Cannon Fodder engine, for modern operating systems
-	pkgver = 1.9.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://openfodder.com/
 	install = openfodder.install
@@ -13,7 +13,7 @@ pkgbase = openfodder
 	depends = glibc
 	depends = sdl2
 	depends = sdl2_mixer
-	source = git+https://github.com/OpenFodder/openfodder.git#tag=1.9.2
-	md5sums = cc94bf445bb4b6552158101b327c5610
+	source = git+https://github.com/OpenFodder/openfodder.git#tag=2.0.0
+	md5sums = 053e755e5268735c1963dc2cff5c0544
 
 pkgname = openfodder

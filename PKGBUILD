@@ -1,6 +1,6 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=openfodder
-pkgver=1.9.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An open source version of the Cannon Fodder engine, for modern operating systems"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc' 'sdl2' 'sdl2_mixer')
 makedepends=('git' 'clang')
 install=${pkgname}.install
 source=(git+"https://github.com/OpenFodder/openfodder.git#tag=${pkgver}")
-md5sums=('cc94bf445bb4b6552158101b327c5610')
+md5sums=('053e755e5268735c1963dc2cff5c0544')
 
 prepare() {
   cd openfodder
