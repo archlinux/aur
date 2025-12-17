@@ -1,6 +1,6 @@
 pkgbase = rcl
 	pkgdesc = A reasonable configuration language
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://rcl-lang.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rcl
 	makedepends = git
 	makedepends = python
 	makedepends = rustup
-	source = git+https://github.com/ruuda/rcl.git?signed#tag=v0.11.0
+	source = git+https://github.com/ruuda/rcl.git?signed#tag=v0.12.0
 	validpgpkeys = 94F3C99316DFFDE10FBA6939284FE5A783926532
-	sha256sums = fe29b61c334e88ed8d585f74c3a3cda9bd759227395d26fce75a887d82f7fe38
+	sha256sums = 6d1f809928b42fc95ab892ca4fd6c7ca237baa279427c0751135c2f937a60672
 
 pkgname = rcl
