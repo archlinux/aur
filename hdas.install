@@ -1,0 +1,33 @@
+post_install() {
+    echo
+    echo "==> HDAS installed successfully!"
+    echo
+    echo "To enable the monitoring service for your user:"
+    echo "  sudo systemctl enable --now hdas@\$USER"
+    echo
+    echo "Check status:"
+    echo "  sudo systemctl status hdas@\$USER"
+    echo
+    echo "View logs:"
+    echo "  sudo journalctl -u hdas@\$USER -f"
+    echo
+}
+
+post_upgrade() {
+    systemctl daemon-reload 2>/dev/null || true
+    echo
+    echo "==> HDAS upgraded. Restart the service if running:"
+    echo "  sudo systemctl restart hdas@\$USER"
+    echo
+}
+
+pre_remove() {
+    # Disable all hdas@ instances
+    for service in /etc/systemd/system/multi-user.target.wants/hdas@*.service; do
+        if [ -e "$service" ]; then
+            instance=$(basename "$service" | sed 's/hdas@\(.*\)\.service/\1/')
+            systemctl disable --now "hdas@$instance" 2>/dev/null || true
+        fi
+    done
+    echo "==> HDAS service disabled"
+}
