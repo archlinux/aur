@@ -1,0 +1,4 @@
+[python-sxdes]
+source = "github"
+github = "esheldon/sxdes"
+use_latest_release = "true"

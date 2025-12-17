@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=sxdes
 pkgname=python-${_base}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="run the sep code on images with DES settings"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-sep)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('f6ebb957c688f738762612fc0152b51d0fced4564b486d89aea44ba48ff6de06b0506809e31a2eb669067a3a41adc810646983ca9ddabc2d28a65d65584b3e27')
+sha512sums=('adf691fba09693484e502e01c9c3a80c798cd609b0ecff11eee5395d96f1dc1aa1d8f8e512a4e09e2de9908b8919597808db2a0b490fac52a5ca8fc70de60987')
 
 build() {
   cd ${_base}-${pkgver}
