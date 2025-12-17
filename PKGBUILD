@@ -3,8 +3,8 @@
 # Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 
 pkgname=xmcl-launcher
-pkgver=0.53.1
-pkgrel=2
+pkgver=0.53.2
+pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.app/"
@@ -30,8 +30,8 @@ source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minec
 
 sha256sums=('01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
-sha256sums_x86_64=('429c006d7a067000188c84e741bd6fb0bc62ef22829e519fa160b67b3e8cc827')
-sha256sums_aarch64=('b40a2a013325117982aaa3c4211935103b8d9a038dfebb0bf6fdf34c407e1200')
+sha256sums_x86_64=('87fc777496803ca0ab422e3d8816ee6b9fd166fd8bcf8d9a48e57213b193c48d')
+sha256sums_aarch64=('5c9f94034de1a6e4b1ce66ca97de43b0dc480e56decf24e9decfa843ffd17af6')
 
 prepare() {
   # Extract the appropriate archive based on architecture
