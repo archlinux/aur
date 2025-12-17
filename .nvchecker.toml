@@ -1,4 +1,3 @@
 [lib32-polkit]
-source = "github"
-github = "polkit-org/polkit"
-use_max_tag = true
+source = "git"
+git = "https://github.com/polkit-org/polkit.git"

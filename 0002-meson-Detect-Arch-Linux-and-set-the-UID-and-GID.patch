@@ -9,10 +9,10 @@ Subject: [PATCH] meson: Detect Arch Linux and set the UID and GID
  2 files changed, 24 insertions(+), 6 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 07a662f241b1..94b208cfc527 100644
+index d74cc3852413..0576f37fcdf7 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -231,9 +231,6 @@ endif
+@@ -236,9 +236,6 @@ endif
  polkitd_user = get_option('polkitd_user')
  config_data.set_quoted('POLKITD_USER', polkitd_user)
  
@@ -22,7 +22,7 @@ index 07a662f241b1..94b208cfc527 100644
  # Select which authentication framework to use
  auth_deps = []
  
-@@ -299,21 +296,42 @@ if os_type == ''
+@@ -304,21 +301,42 @@ if os_type == ''
      ['debian', '/etc/debian_version'],
      ['gentoo', '/etc/gentoo-release'],
      ['pardus', '/etc/pardus-release'],
@@ -65,7 +65,7 @@ index 07a662f241b1..94b208cfc527 100644
  # The default privileged group differs between distributions, set it accordingly if not specified
  privileged_group = get_option('privileged_group')
  if privileged_group == ''
-@@ -347,7 +365,7 @@ if pam_include == ''
+@@ -352,7 +370,7 @@ if pam_include == ''
        'PAM_FILE_INCLUDE_PASSWORD': 'system-password',
        'PAM_FILE_INCLUDE_SESSION': 'system-session',
      }

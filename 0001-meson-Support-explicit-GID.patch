@@ -6,33 +6,27 @@ Subject: [PATCH] meson: Support explicit GID
 On Arch Linux, the polkitd user is not available during packaging, and
 files must be created with a numeric UID and GID.
 ---
- data/meson.build             | 17 ++++++++++++++---
- data/polkit-tmpfiles.conf    |  1 -
- data/polkit-tmpfiles.conf.in |  1 +
- data/polkit.conf.with-gid    |  2 ++
- meson.build                  |  6 +++++-
- meson_options.txt            |  1 +
- meson_post_install.py        | 11 +++++++----
- 7 files changed, 30 insertions(+), 9 deletions(-)
- delete mode 100644 data/polkit-tmpfiles.conf
- create mode 100644 data/polkit-tmpfiles.conf.in
+ data/meson.build          |  9 ++++++++-
+ data/polkit.conf.with-gid |  2 ++
+ meson.build               |  6 +++++-
+ meson_options.txt         |  1 +
+ meson_post_install.py     | 11 +++++++----
+ 5 files changed, 23 insertions(+), 6 deletions(-)
  create mode 100644 data/polkit.conf.with-gid
 
 diff --git a/data/meson.build b/data/meson.build
-index e3776fb8319e..90c10ef03237 100644
+index 168deef7d32f..cdccaddd2906 100644
 --- a/data/meson.build
 +++ b/data/meson.build
-@@ -1,7 +1,9 @@
- service_conf = {
+@@ -2,6 +2,7 @@ service_conf = {
    'libprivdir': pk_prefix / pk_libprivdir,
-+  'pkgsysconfdir': pk_prefix / pk_pkgsysconfdir,
    'polkitd_user': polkitd_user,
    'polkitd_uid': polkitd_uid,
 +  'polkitd_gid': polkitd_gid,
  }
  
  configure_file(
-@@ -47,21 +49,30 @@ if not get_option('libs-only')
+@@ -60,8 +61,14 @@ if not get_option('libs-only')
      install_dir: systemdsystemunitdir,
    )
  
@@ -48,38 +42,6 @@ index e3776fb8319e..90c10ef03237 100644
      output: '@BASENAME@',
      configuration: service_conf,
      install: true,
-     install_dir: sysusers_dir,
-   )
- 
-   install_data(
-     'policyconfig-1.dtd',
-     install_dir: pk_datadir / 'polkit-1'
-   )
- 
--  install_data(
--    'polkit-tmpfiles.conf',
-+  configure_file(
-+    input: 'polkit-tmpfiles.conf.in',
-+    output: '@BASENAME@',
-+    configuration: service_conf,
-+    install: true,
-     install_dir: tmpfiles_dir
-   )
- endif
-diff --git a/data/polkit-tmpfiles.conf b/data/polkit-tmpfiles.conf
-deleted file mode 100644
-index 936f514e4bfa..000000000000
---- a/data/polkit-tmpfiles.conf
-+++ /dev/null
-@@ -1 +0,0 @@
--d /etc/polkit-1/rules.d 0750 root polkitd - -
-diff --git a/data/polkit-tmpfiles.conf.in b/data/polkit-tmpfiles.conf.in
-new file mode 100644
-index 000000000000..601c96ec6b52
---- /dev/null
-+++ b/data/polkit-tmpfiles.conf.in
-@@ -0,0 +1 @@
-+d @pkgsysconfdir@/rules.d 0750 root @polkitd_user@ - -
 diff --git a/data/polkit.conf.with-gid b/data/polkit.conf.with-gid
 new file mode 100644
 index 000000000000..bc98a6c664e7
@@ -89,10 +51,10 @@ index 000000000000..bc98a6c664e7
 +g @polkitd_user@ @polkitd_gid@
 +u @polkitd_user@ @polkitd_uid@:@polkitd_gid@ "User for polkitd"
 diff --git a/meson.build b/meson.build
-index b150c98242ff..07a662f241b1 100644
+index f8d94bc1c085..d74cc3852413 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -232,7 +232,7 @@ polkitd_user = get_option('polkitd_user')
+@@ -237,7 +237,7 @@ polkitd_user = get_option('polkitd_user')
  config_data.set_quoted('POLKITD_USER', polkitd_user)
  
  polkitd_uid = get_option('polkitd_uid')
@@ -101,7 +63,7 @@ index b150c98242ff..07a662f241b1 100644
  
  # Select which authentication framework to use
  auth_deps = []
-@@ -405,6 +405,7 @@ if not libs_only
+@@ -410,6 +410,7 @@ if not libs_only
      pk_libprivdir,
      pk_pkgsysconfdir,
      polkitd_user,
@@ -109,7 +71,7 @@ index b150c98242ff..07a662f241b1 100644
    )
  endif
  
-@@ -433,6 +434,9 @@ output += '        polkitd user:             ' + polkitd_user + ' \n'
+@@ -438,6 +439,9 @@ output += '        polkitd user:             ' + polkitd_user + ' \n'
  if polkitd_uid != '-'
    output += '        polkitd UID:              ' + polkitd_uid + ' \n'
  endif

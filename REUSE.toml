@@ -23,8 +23,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "0001-meson-Support-explicit-GID.patch",
-    "0002-meson-Detect-Arch-Linux-and-set-the-UID-and-GID.patch",
+    "*.patch",
 ]
-SPDX-FileCopyrightText = "lib32-polkit contributors"
+SPDX-FileCopyrightText = "polkit contributors"
 SPDX-License-Identifier = "LGPL-2.0-or-later"
