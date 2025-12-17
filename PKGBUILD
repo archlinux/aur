@@ -3,21 +3,21 @@
 
 pkgname=stardrop
 _pkgname=Stardrop
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='An open-source, cross-platform mod manager for Stardew Valley'
 url='https://github.com/Floogen/Stardrop'
 options=("strip" "!debug")
 arch=("x86_64")
 license=("GPL3")
-depends=('dotnet-runtime-7.0')
-makedepends=('dotnet-sdk-7.0' 'libicns')
+depends=('dotnet-runtime')
+makedepends=('dotnet-sdk' 'libicns')
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "stardrop.desktop"
 )
 sha256sums=(
-    '39fb06ed5cbfc80c80b8f86cea56ddd575d604890fff4df93d601e62b80d88b9'
+    'a656eedb672984f04f45104cce746e264fd9ec29e856a9f265556ccfbfea0a8d'
     'cfd312d94b81122a6faade6799ea195b52114e60574ca2d1706f94da00d27b17'
 )
 
