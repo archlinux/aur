@@ -1,7 +1,7 @@
 # Maintainer: harvey <harv at gmx dot de>
 
 pkgname=linhabu
-pkgver=25.4.1
+pkgver=26
 pkgrel=1
 pkgdesc="German Accounting Software (and more) for Linux"
 arch=('x86_64' 'i686')
@@ -17,9 +17,9 @@ source=('http://mcrichter.de/Media/Programme/LinHaBu.zip'
         'linhabu.desktop'
 	'linhabu.install')
 
-sha256sums=('b4def28d77a8d6cf9e72a70f0d14e733a483f5a73745decb08ee193bf8169932'
+sha256sums=('73a7e168363751000b502ff514e51258cd36d9cfe1c88d1cbcc2acb5bcace17f'
             '0121f0accb53a4af4207abfeb3e57d8f4129bc6ed33e4c98b11dbff988fedd36'
-	    'ca3873a5288d9087b271185cf1095a2ea8d094b51126e2d7213e6d7b01987d56')
+            '7d184dafba4113c7cd9af81015701ed052ba3994bd11399fc5817a8fdc8f05f2')
 				
 package() {
 	mkdir -p "${pkgdir}"/opt
