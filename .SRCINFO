@@ -1,0 +1,22 @@
+pkgbase = bibisco-ce
+	pkgdesc = Novel writing software for authors
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://bibisco.com
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libcups
+	depends = nodejs
+	depends = nspr
+	depends = nss
+	depends = pango
+	conflicts = bibisco
+	source = local://bibisco-linux-x64-4.0.1-CE.zip
+	source = bibisco.desktop
+	sha256sums = d0730f60d2420f8c3f32507439e12990bc22331bca1a0ba7c000907a3ae942c3
+	sha256sums = c67436460914778542cb8bf82b77ebbc0b3860fa68ff64efdf50a76af7aa2f14
+
+pkgname = bibisco-ce
