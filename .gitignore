@@ -1,18 +1,24 @@
-# makepkg build artifacts
-pkg/
-src/
-*.pkg.tar.zst
-*.pkg.tar.zst.sig
-*.tgz
-*.tar.xz
-*.tar.gz
+# Ignore everything by default
+*
 
-# Common build files
-*.log
-*.swp
-*.swo
-*~
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
 
-# IDE files
-.vscode/
-.idea/
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
+!*.service
+!*.desktop
+!*.conf
+!*.png
+!*.svg
+!*.sysusers
+!*.tmpfiles
+!LICENSE
+!README.md
+!CHANGELOG.md
+!*.ini
+!*.txt
