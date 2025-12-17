@@ -3,7 +3,7 @@
 _distname=YAML-Merge-Simple
 pkgname=perl-yaml-merge-simple
 pkgver=0.01
-pkgrel=8
+pkgrel=9
 _distrel=01
 pkgdesc='Recursively merge two or more YAMLs, simply'
 arch=('any')
