@@ -1,6 +1,6 @@
 # Maintainer: wakaka6 <your-email@example.com>
 pkgname=claude-code-relay
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="High-performance AI API relay service for Claude, Gemini, and OpenAI"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(
     "config.toml"
 )
 sha256sums=(
-    '6cccb2835b2ef460a7ef16f777f028857a183a1b2eb4115355c505bb83874e56'
+    'd8ffd1ccd3545ea138adb67d308c1a4c84c4a75ccb9b0d395aed24b38ad08225'
     '94adb3691bc1ec00d844e5fb943e345e0803591ad597f2af0b6613071f39642b'
     '0d949501bc8c7a12866d4e31978d92a2726f762c0ba4269594af8ec992de747e'
     '54ce71fea71f80bbef3263281f5b68b189d4afcd60b034bc2650207d042c8cf5'
