@@ -1,71 +1,108 @@
-# Maintainer: Nick Syntychakis <nsyntych@punkops.dev>
-# SPDX-FileCopyrightText: Arch Linux contributors
-# SPDX-License-Identifier: 0BSD
+# Maintainer: Jay Fox <fox@xwx.gg>
 
-_pkgname=helium
-pkgname="${_pkgname}-bin"
-_binaryname=helium
-pkgver=0.5.8.1
-pkgrel=2
-pkgdesc='Private, fast, and honest web browser based on ungoogled-chromium (Stable Linux release)' 
-arch=(x86_64 aarch64)
-url='https://github.com/imputnet/helium-linux'
-license=('GPL-3.0-only' 'BSD-3-Clause')
-options=('strip')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kdialog: support for native dialogs in Plasma'
-            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
-            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma'
-            'upower: Battery Status API support')
-conflicts=('helium-browser-bin' 'helium-browser-appimage')
-
-source=("helium.desktop::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/package/helium.desktop")
-source_x86_64=(
-    "${_pkgname}.tar.xz::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64_linux.tar.xz"
+pkgname=helium-bin
+pkgver=0.7.6.1
+pkgrel=1
+pkgdesc="Private, fast, and honest web browser based on Chromium"
+arch=('x86_64' 'aarch64')
+url="https://helium.computer"
+license=('GPL-3.0-or-later')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+    'zlib'
 )
-source_aarch64=(
-    "${_pkgname}.tar.xz::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-arm64_linux.tar.xz"
+optdepends=(
+    'libva: hardware video acceleration'
+    'libpipewire: screen sharing under Wayland'
+    'pipewire: screen sharing under Wayland'
+    'qt5-base: enable Qt5 integration for KDE'
+    'qt6-base: enable Qt6 integration for KDE'
+    'xdg-utils: open URLs with desktop default handler'
 )
+provides=('helium' 'chromium')
+conflicts=('helium')
+options=('!strip' '!emptydirs')
 
-sha256sums=('cce8668c18d33077a585cb5d96522e5a02ae017a2baf800f8d7214ce6d05d3d2')
-sha256sums_x86_64=('b0e464446600ebf42eeafe8c03e516ae8fb377f6d7883dc0a16e0f80350f5923')
-sha256sums_aarch64=('1a3913ac0da3614bec8ce5959fc0fe8be6c5d50484d701fdae6423ef3cd81460')
+source_x86_64=("https://github.com/imputnet/helium-linux/releases/download/0.7.6.1/helium-0.7.6.1-x86_64_linux.tar.xz")
+source_aarch64=("https://github.com/imputnet/helium-linux/releases/download/0.7.6.1/helium-0.7.6.1-arm64_linux.tar.xz")
 
-prepare() {
-  # Uniform name regardless of architecture
-  mv ${srcdir}/${_pkgname}-${pkgver}-*_linux ${srcdir}/${_pkgname}-${pkgver}
+sha256sums_x86_64=('44bd0c32c62671ba19b7b6aad91ffaa272d7d5b4f19446e197007bc816fce28b')
+sha256sums_aarch64=('b64a941824817141292eb0256c9f40b708d84b0701721c7fa7969c06ba7a5ab9')
 
-  # Fix .desktop exec
-  sed -i \
-  -e 's/Exec=chromium/Exec=helium/' \
-  "${srcdir}/helium.desktop"
-
-  # Disable user-local desktop generation in chrome-wrapper
-  sed -i 's/exists_desktop_file || generate_desktop_file/true/' \
-    "${srcdir}/${_pkgname}-${pkgver}/chrome-wrapper"
-}
+# GPG signature verification
+validpgpkeys=('7AE370C0BA3BAFA22DF85039C0B7810D56020A38')
 
 package() {
-  # Copy contents to /opt
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -a ${srcdir}/${_pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname}/
-  
-  # Copy .desktop file
-  install -Dm644 "${srcdir}/helium.desktop" \
-    "${pkgdir}/usr/share/applications/${_binaryname}.desktop"
-  
-  # Copy icons
-  install -Dm644 "${pkgdir}/opt/${pkgname}/product_logo_256.png" \
-    "${pkgdir}/usr/share/pixmaps/${_binaryname}.png"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/product_logo_256.png" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_binaryname}.png"
-  
-  # Link to /usr/bin
-  chmod 755 "${pkgdir}/opt/${pkgname}/chrome-wrapper"
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -sf /opt/${pkgname}/chrome-wrapper ${pkgdir}/usr/bin/${_binaryname}
+    # Map CARCH to upstream naming convention
+    local _arch_name
+    case "${CARCH}" in
+        x86_64) _arch_name="x86_64" ;;
+        aarch64) _arch_name="arm64" ;;
+        *) _arch_name="${CARCH}" ;;
+    esac
+    
+    local _extracted_dir="helium-${pkgver}-${_arch_name}_linux"
+    
+    # Install to /opt/helium
+    install -dm755 "${pkgdir}/opt/helium"
+    cp -a "${_extracted_dir}"/* "${pkgdir}/opt/helium/"
+    
+    # Create wrapper script
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/helium" <<'EOF'
+#!/bin/bash
+export CHROME_WRAPPER=/usr/bin/helium
+export CHROME_DESKTOP=helium.desktop
+exec /opt/helium/chrome "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/helium"
+    
+    # Install desktop file
+    install -Dm644 "${_extracted_dir}/helium.desktop" \
+        "${pkgdir}/usr/share/applications/helium.desktop"
+    
+    # Fix Exec path in desktop file
+    sed -i 's|Exec=chromium|Exec=/usr/bin/helium|g' \
+        "${pkgdir}/usr/share/applications/helium.desktop"
+    
+    # Install icon
+    install -Dm644 "${_extracted_dir}/product_logo_256.png" \
+        "${pkgdir}/usr/share/pixmaps/helium.png"
+    
+    # Install icons at various sizes
+    for size in 16 24 32 48 64 128 256; do
+        install -Dm644 "${_extracted_dir}/product_logo_256.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/helium.png"
+    done
+    
+    # Install license
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'LICEOF'
+Helium is licensed under GPL-3.0.
+See:  https://github.com/imputnet/helium/blob/main/LICENSE
+
+Components from ungoogled-chromium retain their BSD-3-Clause license.
+See: https://github.com/imputnet/helium/blob/main/LICENSE.ungoogled_chromium
+LICEOF
 }
