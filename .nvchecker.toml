@@ -1,4 +1,3 @@
 [lib32-openal]
-source = "github"
-github = "kcat/openal-soft"
-use_max_tag = true
+source = "git"
+git = "https://github.com/kcat/openal-soft.git"
