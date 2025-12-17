@@ -1,0 +1,9 @@
+pkgbase = selector.h-git
+	pkgdesc = A library to allow a caller to create a selection ui for the user
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/euro20179/selector.h
+	arch = x86_64
+	license = GPL-3.0
+
+pkgname = selector.h-git
