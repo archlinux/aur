@@ -1,7 +1,7 @@
 # Maintainer: Lewis Wynne <lew@ily.rs>
 
 pkgname=pda
-pkgver=2025.47
+pkgver=2025.51
 pkgrel=1
 pkgdesc="personal digital assistant! a key-value store with rich template support"
 arch=('x86_64')
@@ -31,6 +31,6 @@ package() {
 
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
