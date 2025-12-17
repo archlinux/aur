@@ -8,13 +8,13 @@ _pkgname=fileoptimizer
 pkgver=17.10.2857
 
 # Always fetch the latest version
-pkgver() {
+latestver() {
     curl -sL "https://sourceforge.net/projects/nikkhokkho/best_release.json" | \
     jq -r '.release.filename' | \
     sed -n 's|.*/\([0-9.]*\)/.*|\1|p'
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless file size optimizer supporting multiple formats"
 arch=('x86_64')
 url="https://nikkhokkho.sourceforge.io/?page=FileOptimizer"

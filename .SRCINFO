@@ -1,7 +1,7 @@
 pkgbase = fileoptimizer-bin
 	pkgdesc = Lossless file size optimizer supporting multiple formats
 	pkgver = 17.10.2857
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nikkhokkho.sourceforge.io/?page=FileOptimizer
 	arch = x86_64
 	license = AGPL-3.0-only or AGPL-3.0-or-later
