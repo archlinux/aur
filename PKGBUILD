@@ -16,7 +16,7 @@ optdepends=('jack2: Jack support for BassBoom addon'
 provides=("${pkgname%-git}" "${pkgname%-git}-lite" "${pkgname}-lite")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-lite" "${pkgname}-lite")
 options=('!strip')
-source=("${pkgname}::git+https://gitlab.com/aptivi/main/Nitrocid#branch=main")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {

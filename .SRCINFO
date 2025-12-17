@@ -24,7 +24,7 @@ pkgbase = nitrocid-28-git
 	conflicts = nitrocid-28-lite
 	conflicts = nitrocid-28-git-lite
 	options = !strip
-	source = nitrocid-28-git::git+https://gitlab.com/aptivi/main/Nitrocid#branch=main
+	source = nitrocid-28-git::git+https://github.com/Aptivi/Nitrocid#branch=main
 	sha256sums = SKIP
 
 pkgname = nitrocid-28-git
