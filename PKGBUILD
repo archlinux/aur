@@ -2,7 +2,7 @@
 _pkgname="letta-code"
 pkgname="$_pkgname"
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/letta-ai/letta-code"
@@ -34,10 +34,5 @@ package() {
     cd "${_pkgname}-${pkgver}"
     bun install
     bun run build
-    install -Dm755 ./bin/letta.js "$pkgdir/usr/bin/letta"
-    if [[ "$CARCH" == "aarch64" ]]; then
-    	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta-linux-arm64"
-    elif [[ "$CARCH" == "x86_64" ]]; then
-    	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta-linux-x64"
-    fi
+	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta"
 }
