@@ -1,0 +1,6 @@
+post_install() {
+  echo "*"
+  echo "* Hint: For an improved experience with sonic-win this guide is recommended:"
+  echo "*       https://gist.github.com/guiodic/2bcc8f2f126d14b1f8a439f644fdc2c9"
+  echo "*"
+}
