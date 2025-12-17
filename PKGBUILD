@@ -4,8 +4,8 @@ _clientname="comet"
 pkgdesc="Virtual annotation pen for Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.1.0"
-pkgrel="2"
+pkgver="0.50.0"
+pkgrel="1"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
@@ -15,7 +15,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/$_clientname.git"
+    "git+https://github.com/StardustXR/$_clientname.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
