@@ -1,7 +1,7 @@
 pkgbase = pvs-studio-bin
 	pkgdesc = Static code analyzer for C and C++
 	pkgver = 7.40.101088.713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pvs-studio.com/en/pvs-studio/
 	arch = x86_64
 	license = custom:pvs-studio
