@@ -1,0 +1,19 @@
+pkgbase = rusticon-git
+	pkgdesc = A mouse driven SVG favicon editor for your terminal
+	pkgver = 0.2.3.r1.ge2ece1a
+	pkgrel = 1
+	url = https://github.com/ronilan/rusticon
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = riscv64
+	arch = x86_64
+	license = CC-BY-NC-ND-4.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/ronilan/rusticon.git
+	sha256sums = SKIP
+
+pkgname = rusticon-git
