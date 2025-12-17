@@ -3,8 +3,8 @@
 # Contributor: Samega7Cattac <sameg7acattac@gmail.com>
 branch=1.4
 pkgname=open62541
-pkgver=v1.4.13_r0_g484348f30
-pkgrel=2
+pkgver=v1.4.14_r14_g62c025b15
+pkgrel=1
 pkgdesc="An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages."
 arch=('any')
 url="http://open62541.org/"
@@ -27,8 +27,8 @@ prepare() {
 " -DUA_NAMESPACE_ZERO=FULL"\
 " -DUA_ENABLE_AMALGAMATION=OFF"\
 " -DCMAKE_BUILD_TYPE=RelWithDebInfo"\
-" -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/"\
-" -DCMAKE_INSTALL_LIBDIR=$pkgdir/usr/lib/"
+" -DCMAKE_INSTALL_PREFIX=/usr/"\
+" -DCMAKE_INSTALL_LIBDIR=/usr/lib/"
 
     # OPEN62541_CMAKE_FLAGS is an environment variable which can be
     # set in order to specify custom compilation flags for open62541.

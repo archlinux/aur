@@ -1,7 +1,7 @@
 pkgbase = open62541
 	pkgdesc = An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages.
-	pkgver = v1.4.13_r0_g484348f30
-	pkgrel = 2
+	pkgver = v1.4.14_r14_g62c025b15
+	pkgrel = 1
 	url = http://open62541.org/
 	arch = any
 	license = MPL-2.0
