@@ -8,8 +8,6 @@ pkgbase = klit-unstable
 	makedepends = curl
 	makedepends = jq
 	depends = gtk3
-	provides = klit
-	conflicts = klit
 	options = !strip
 
 pkgname = klit-unstable
