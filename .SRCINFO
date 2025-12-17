@@ -1,6 +1,6 @@
 pkgbase = rime-minecraft-dict
 	pkgdesc = Minecraft dict for RIME
-	pkgver = 1.21.6
+	pkgver = 1.21.11.1
 	pkgrel = 1
 	url = https://github.com/Kimiblock/rime-minecraft-dict
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rime-minecraft-dict
 	makedepends = git
 	provides = rime-minecraft-dict
 	conflicts = rime-minecraft-dict
-	source = git+https://github.com/Kimiblock/rime-minecraft-dict.git#tag=1.21.6
-	sha256sums = 63abf09c08ea3d2ed5535a0205aa64be3b1e574bddc827cd919f747c5d1c8de2
+	source = git+https://github.com/Kimiblock/rime-minecraft-dict.git#tag=1.21.11.1
+	sha256sums = 91e407209fa7b901085eded4c2a0eff0dc5c473bb2c6fd676a69d2e77d3bfcb7
 
 pkgname = rime-minecraft-dict
