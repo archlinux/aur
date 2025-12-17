@@ -1,7 +1,7 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kaggle/kaggle-api
 	arch = any
 	license = Apache
@@ -18,6 +18,7 @@ pkgbase = kaggle-api
 	depends = python-tqdm
 	depends = python-slugify
 	depends = python-bleach
+	depends = python-protobuf
 	source = https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.8.2.tar.gz
 	sha256sums = d3945c32ce6f81046592d14f6d233ee1aec92769682fce4b05b3409e086db5f7
 
