@@ -2,7 +2,7 @@
 # Maintainer: Albert Latham <me@albertlatham.com>
 pkgname=ironclad-rivet-bin
 pkgver=1.11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Rivet, the IDE for creating complex AI agents and prompt chaining, and embedding it in your application."
 arch=('i686' 'x86_64')
 url="https://github.com/Ironclad/rivet"
@@ -16,7 +16,7 @@ source_x86_64=("https://github.com/Ironclad/rivet/releases/download/app-v${pkgve
 sha512sums_i686=('28da4252f2fe86c21a391c16cf50ffb4e18271ee173f928481943788733fd776d9eacfdef12584c55e783cefe3e17e80b39f4a09a87162546aa18f31d801ee63')
 sha512sums_x86_64=('28da4252f2fe86c21a391c16cf50ffb4e18271ee173f928481943788733fd776d9eacfdef12584c55e783cefe3e17e80b39f4a09a87162546aa18f31d801ee63')
 
-pkgver() {
+latestver() {
 	curl -s "https://api.github.com/repos/Ironclad/rivet/releases/latest" | 
 	jq -r '.tag_name' | sed 's/^app-v//'
 }

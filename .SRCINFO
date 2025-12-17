@@ -1,7 +1,7 @@
 pkgbase = ironclad-rivet-bin
 	pkgdesc = Rivet, the IDE for creating complex AI agents and prompt chaining, and embedding it in your application.
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ironclad/rivet
 	install = ironclad-rivet-bin.install
 	arch = i686
