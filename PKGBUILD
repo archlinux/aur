@@ -4,7 +4,7 @@
 
 pkgname=anytype-alpha-bin
 _pkgname=anytype
-pkgver=0.52.11-alpha
+pkgver=0.52.11_alpha
 pkgrel=1
 pkgdesc="Operating environment for the new internet (Anytype)"
 arch=('x86_64')
@@ -20,21 +20,21 @@ conflicts=('anytype'
            'anytype-bin')
 options=('!strip' '!debug')
 source=(
-	"anytype-${pkgver}.deb::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
-	"LICENSE-${pkgver}.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}/LICENSE.md"
+	"anytype-${pkgver//_/-}.deb::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver//_/-}/anytype_${pkgver//_/-}_amd64.deb"
+	"LICENSE-${pkgver//_/-}.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver//_/-}/LICENSE.md"
 )
-sha256sums=('c6fb8aafde67db244503ac33f8c83bd7f58377963a9d61e2c44890883910dd2c'
+sha256sums=('647a591df7430150a11b9411a4751f1b923c109da4be2d33e856758e8a2d98d8'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 latestver() {
-    curl -sI "https://github.com/anyproto/anytype-ts/releases/latest" | 
-    grep -i location | 
-    sed 's|.*/v||;s|\r||'
+    curl -sI "https://github.com/anyproto/anytype-ts/releases/latest" |
+    grep -i location |
+    sed 's|.*/v||;s|\r||;s|-|_|g'
 }
 
 package() {
     cd "${pkgdir}"
     tar -xf "${srcdir}/data.tar.xz"
     
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver//_/-}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
