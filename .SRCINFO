@@ -1,14 +1,14 @@
 pkgbase = stardust-xr-armillary
 	pkgdesc = Turntable 3D model viewer for Stardust XR
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.50.0
+	pkgrel = 1
 	url = https://github.com/StardustXR/armillary
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/StardustXR/armillary.git
+	source = git+https://github.com/StardustXR/armillary.git#tag=0.50.0
 	sha256sums = SKIP
 
 pkgname = stardust-xr-armillary
