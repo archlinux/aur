@@ -1,7 +1,7 @@
 pkgbase = opencode-optimal-model-temps
 	pkgdesc = Minimal OpenCode plugin that hooks chat.params and nudges specific models to their preferred sampling temperature
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lyapsus/opencode-optimal-model-temps
 	install = opencode-optimal-model-temps.install
 	arch = any
