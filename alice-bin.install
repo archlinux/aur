@@ -1,0 +1,16 @@
+post_remove() {
+  local version="$1"
+  version="${version#*:}"
+  version="${version%-*}"
+  
+  echo "
+*********************************************************************
+*
+*
+* AUR/alice-bin is a meta package to AUR/alice$version-bin.
+* You may need to manually remove AUR/alice$version-bin if orphaned.
+*
+*
+*********************************************************************
+"
+}

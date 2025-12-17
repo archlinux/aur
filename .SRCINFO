@@ -1,21 +1,14 @@
 pkgbase = alice-bin
-	pkgdesc = An educational software that teaches students computer programming in a 3D environment
-	pkgver = 3.7.0.0
+	pkgdesc = Meta package providing the latest stable Alice build (Alice 3)
+	pkgver = 3
 	pkgrel = 1
+	epoch = 1
 	url = https://www.alice.org
-	arch = i686
+	install = alice-bin.install
 	arch = x86_64
-	license = custom
-	depends = java-runtime=17
-	depends = xdg-utils
-	depends = lib32-glu
-	depends = lib32-libxrandr
-	depends = lib32-libxcursor
-	depends = lib32-libxi
-	provides = alice3
-	noextract = alice-bin-3.7.0.0.sh
-	options = !strip
-	source = alice-bin-3.7.0.0.sh::https://github.com/TheAliceProject/alice3/releases/download/3.7.0.0/alice3_unix_installer_3_7_0_0+build_876.sh
-	sha512sums = e534a67ff98ab64dd6e425ea8704d613bf7a6aa7e5bc4f66906afdcaf1153c953fb9e1780a9872004bbe62e1a2db59db71015717b7709d7ee6c5a08c2f2f93fa
+	license = LicenseRef-Alice3-EULA
+	license = LicenseRef-LookingGlass-EULA
+	license = LicenseRef-TheSimsTM2ArtAsset-EULA
+	depends = alice3-bin
 
 pkgname = alice-bin
