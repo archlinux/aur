@@ -2,5 +2,5 @@
 source = "jq"
 url = "https://machengine.org/zig/index.json"
 filter = '."mach-latest"."version"'
-from_pattern = "-"
-to_pattern = ""
+from_pattern = '-'
+to_pattern = ''
