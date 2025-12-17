@@ -1,0 +1,18 @@
+pkgbase = vgen
+	pkgdesc = Bitcoin vanity address generator with regex pattern matching and GPU acceleration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oritwoen/vgen
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	optdepends = vulkan-validation-layers: for debugging
+	source = git+https://github.com/oritwoen/vgen.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = vgen
