@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="letta-code"
 pkgname="$_pkgname-git"
-pkgver=r316.gc0e5aba
+pkgver=r322.ge9d6b16
 pkgrel=1
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
@@ -39,10 +39,5 @@ package() {
     cd "${_pkgname}"
     bun install
     bun run build
-    install -Dm755 ./bin/letta.js "$pkgdir/usr/bin/letta"
-    if [[ "$CARCH" == "aarch64" ]]; then
-    	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta-linux-arm64"
-    elif [[ "$CARCH" == "x86_64" ]]; then
-    	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta-linux-x64"
-    fi
+    install -Dm755 ./letta.js "$pkgdir/usr/bin/letta"
 }
