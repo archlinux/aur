@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -6,8 +7,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
@@ -39,9 +40,9 @@ source=(
   https://github.com/OpenShot/openshot-qt/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   $pkgname-2.6.1-no_metric_default.patch
 )
-sha512sums=('3744653ed8e89e52f72975891e3c357752baa8f99f04e5492072f366fc842b97852a2380bc1bc122bdbf4de6b7afab50d2f906a6f3701fcb798739364701fa77'
+sha512sums=('b017638455f3167a5248119b0bc29bd1c51f79b5c4404f95765a4e339d4382a888cce7dad2bd91a4844c08fd373c36008126eedf200b36011866209d43f9d3d6'
             'd52441559897ce0de476a6120b7e36b082bbcb0722436a77c1a60456a86d02f370df6bc58384c838a3ad2df47c1603a6fabd5044c303284bac2ea75a99a76a8a')
-b2sums=('d3d5d8c5394a3c8182f22978f660eb0b7f9a5d7fcb5d6e299f9d802c692ac12ba8c59b8901029f300f5747737b7163812621bf2b38ed476fccc98e2848a12e6c'
+b2sums=('30902c15c002748d2286d75a5bca352f84263c4fa1c7e1995a2412381cf93046af7a3f1e1f4b96c7702ce635c77f329cd50346c8aa44b1f9e32358f0eca773d6'
         '6f75f37be8d3e03090a8ca53e645b3269f92c7f44aa39cfbe1a03266a36d508d5c18eebbb5792ed9d6d031b3694902bc3fa3a2dac745aad60b2bc331657a364a')
 
 prepare() {
