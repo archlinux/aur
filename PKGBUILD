@@ -2,13 +2,13 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-_electron=electron36
+_electron=electron37
 depends=('bash' "$_electron" 'hicolor-icon-theme')
 makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
 source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
@@ -22,16 +22,11 @@ prepare() {
     cd ProtonWebClients
 
     local _electronver=$(jq -r '.devDependencies.electron | ltrimstr("^")' applications/inbox-desktop/package.json)
-    if [[ -z "$_electronver" || "$_electronver" == "null" ]]; then
-        echo "Failed to read electron version from source" >&2
-        exit 1
-    fi
     if [[ "electron${_electronver%%.*}" != "$_electron" ]]; then
         echo "Electron version mismatch: source requires electron${_electronver%%.*} but PKGBUILD specifies $_electron" >&2
         exit 1
     fi
-
-    # Change electron binary name to the target electron
+    # Change electron binary to the correct electron version
     sed "s|/usr/bin/electron|/usr/bin/$_electron|" -i "$srcdir/proton-mail.sh"
 
     # Limit workspace applications to inbox-desktop
