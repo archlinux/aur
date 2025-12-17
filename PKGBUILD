@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -64,7 +64,7 @@ provides=('blender')
 conflicts=('blender')
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('9de96e81432afba9c0a715c7233f1eff616705b75226dc5d0fa2708ddfb0e525'
+sha256sums=('8019580ee1b7262e505f4196a00237ccf743c88d205b38d34201510676e60b09'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
@@ -79,7 +79,7 @@ package() {
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
 	install -Dm644 "$srcdir/x-blender.xml" "${pkgdir}/usr/share/mime/application/x-blender.xml"
 	
-	cp -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"
+	cp -a -r "${pkgver:0:3}" lib "${pkgdir}/usr/lib/${pkgname}"
 	cp -a -r -T license "${pkgdir}/usr/share/licenses/${pkgname}"
 	pushd "${pkgdir}/usr/lib/${pkgname}/lib"
 	for file in *.so*;
