@@ -2,7 +2,7 @@
 
 _pkgname=sbom-tool
 pkgname=${_pkgname}-bin
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="A highly scalable and enterprise ready tool to create SPDX 2.2 compatible SBOMs"
 provides=("${_pkgname}")
@@ -15,7 +15,7 @@ source=(
     "${_pkgname}-${pkgver}::https://github.com/microsoft/sbom-tool/releases/download/v${pkgver}/sbom-tool-linux-x64"
 )
 
-sha256sums=('4f58464fa97c3c36038cd9d9cf3a289e3a215bc17e945b5640b6900fd7c71211')
+sha256sums=('bf5d4f99bc98c119d549d08fc02ae92598a7a42772f17317c01031a92632e05b')
 
 options=("!strip")
 
