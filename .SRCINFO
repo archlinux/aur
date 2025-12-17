@@ -1,6 +1,6 @@
 pkgbase = openscad-git
 	pkgdesc = The programmers solid 3D CAD modeller
-	pkgver = r11722.da8418b
+	pkgver = r11829.7962867
 	pkgrel = 1
 	url = https://github.com/openscad/openscad
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = openscad-git
 	makedepends = imagemagick
 	makedepends = python
 	makedepends = ninja
+	makedepends = bison
+	makedepends = flex
 	depends = boost-libs
 	depends = cgal
 	depends = libzip
