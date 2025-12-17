@@ -3,7 +3,7 @@
 pkgname=python-pyqrcode
 _gitcommit=674a77b5eaf850d063f518bd90c243ee34ad6b5d
 pkgver=1.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc='QR code generator written purely in Python with SVG, EPS, PNG and terminal output'
 url='https://github.com/mnooner256/pyqrcode'
 arch=('any')
