@@ -70,7 +70,52 @@ sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
             '9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53'
             '07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d'
             'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32')
-#options=('!lto')
+#options=('lto')
+
+# 環境変数 (pkg-configが./tmpを検索)
+TMPDIR=${srcdir}/tmp
+export PKG_CONFIG_PATH="$TMPDIR"/usr/lib/pkgconfig:/usr/lib/pacman/lib/pkgconfig:"$PKG_CONFIG_PATH"
+export PATH="$TMPDIR"/usr/bin:"$PATH"
+
+# Use musl toolchain
+export CC=musl-gcc
+export CXX=musl-g++  # For libs with C++ code (e.g., libxml2, krb5)
+export LDFLAGS="-static $LDFLAGS"
+
+# to enable func64 interface in musl for 64-bit file system functions
+export CFLAGS+=' -D_LARGEFILE64_SOURCE'
+export CXXFLAGS+=' -D_LARGEFILE64_SOURCE'
+
+# https://www.openwall.com/lists/musl/2014/11/05/3
+# fstack-protector and musl do not get along but only on i686
+if [[ $CARCH = i686 || $CARCH = pentium4 || $CARCH = i486 ]]; then
+  # silly build systems have configure checks or buildtime programs that don't CFLAGS but do do CC
+  export CC="musl-gcc -fno-stack-protector"
+  export CXX="musl-gcc -fno-stack-protector"
+  export CFLAGS="${CFLAGS/-fstack-protector-strong/}"
+  export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
+fi
+
+export LD=ld.lld
+export CFLAGS="$CFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
+export CXXFLAGS="$CXXFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
+export LDFLAGS="$LDFLAGS -L"$TMPDIR"/usr/lib -L/usr/lib/pacman/lib"
+
+# musl build for openssl-sys
+export PKG_CONFIG_ALLOW_CROSS=1
+export RUSTUP_TOOLCHAIN=stable
+unset RUSTC
+unset AR
+unset NM
+unset OBJCOPY
+unset OBJDUMP
+unset READELF
+unset STRIP
+unset RANLIB
+
+env|grep llvm
+# 一時ディレクトリ作成
+mkdir -p "$TMPDIR"/usr/lib "$TMPDIR"/usr/include "$TMPDIR"/usr/bin
 
 case "$CARCH" in
   "armv6h")
@@ -106,45 +151,7 @@ prepare() {
   #cargo update
   cargo fetch --locked --target $TARGET
 
-  # 一時ディレクトリ作成
-  TMPDIR=${srcdir}/tmp
-  mkdir -p "$TMPDIR"/usr/lib "$TMPDIR"/usr/include "$TMPDIR"/usr/bin
-
-  # 環境変数 (pkg-configが./tmpを検索)
-  #export PKG_CONFIG_PATH=$TMPDIR/usr/lib/pkgconfig:$PKG_CONFIG_PATH
-  export PKG_CONFIG_PATH="$TMPDIR"/usr/lib/pkgconfig:/usr/lib/pacman/lib/pkgconfig:"$PKG_CONFIG_PATH"
-  export PATH="$TMPDIR"/usr/bin:"$PATH"
-
-  # Use musl toolchain
-  export CC=musl-gcc
-  export CXX=musl-g++  # For libs with C++ code (e.g., libxml2, krb5)
-  export LDFLAGS="-static $LDFLAGS"
-
-  # https://www.openwall.com/lists/musl/2014/11/05/3
-  # fstack-protector and musl do not get along but only on i686
-  if [[ $CARCH = i686 || $CARCH = pentium4 || $CARCH = i486 ]]; then
-    # silly build systems have configure checks or buildtime programs that don't CFLAGS but do do CC
-    export CC="musl-gcc -fno-stack-protector"
-    export CXX="musl-gcc -fno-stack-protector"
-    export CFLAGS="${CFLAGS/-fstack-protector-strong/}"
-    export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
-  fi
-
-  # to enable func64 interface in musl for 64-bit file system functions
-  export CFLAGS+=' -D_LARGEFILE64_SOURCE'
-  export CXXFLAGS+=' -D_LARGEFILE64_SOURCE'
-
-  export LD=ld.lld
-  export CFLAGS="$CFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
-  export CXXFLAGS="$CXXFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
-  export LDFLAGS="$LDFLAGS -L"$TMPDIR"/usr/lib -L/usr/lib/pacman/lib"
-
-
-  # musl build for openssl-sys
-  export PKG_CONFIG_ALLOW_CROSS=1
-  export RUSTUP_TOOLCHAIN=stable
-  unset RUSTC
-
+  #depends library
   #attr patch
   cd ${srcdir}/attr-${_attr_ver}
   patch -p1 -i ${srcdir}/attr.patch
@@ -157,32 +164,6 @@ prepare() {
   #patch -p1 -i ${srcdir}/krb5.patch
   #cd $TMPDIR/usr/include
   #cd $CURDIR
-
-  # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
-  # In clang-16, there seems to be no problem without this option specified.
-  # (The -ffat-lto-objects option is planned to be supported from clang-17.)
-  : "${CC:=$(command -v gcc || command -v clang)}"
-  case "$CC" in
-    *gcc*)
-        if [ -n "$LTOFLAGS" ]; then
-            LTOFLAGS="$LTOFLAGS -fuse-linker-plugin -ffat-lto-objects"
-        else
-            LTOFLAGS="-ffat-lto-objects"
-        fi
-		export LTOFLAGS_="$LTOFLAGS"
-        export LTOFLAGS
-		;;
-	*clang*)
-		export LTOFLAGS_="$LTOFLAGS"
-		# for musl-gcc
-        if [ -n "$LTOFLAGS" ]; then
-            LTOFLAGS="$LTOFLAGS -fuse-linker-plugin -ffat-lto-objects"
-        else
-            LTOFLAGS="-ffat-lto-objects"
-        fi
-        export LTOFLAGS
-        ;;
-  esac
 
 }
 
@@ -250,10 +231,6 @@ build_lib() {
 
 build () {
   cd $srcdir/pacman-static
-  TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
-  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
-  echo $TARGET
-
   # If pacman-static($_ver_pacman_static) is not installed, build and install it.(Because it requires libalpm.a.)
   # Build and install pacman-static if the version is not greater than or not equal to $_ver_pacman_static or if the package cannot read symbols in the static link library(libalpm.a).
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "[0-9]+\.[0-9]+\.[0-9]+") $_ver_pacman_static || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
@@ -262,6 +239,35 @@ build () {
     #for i in $( . PKGBUILD; echo "${validpgpkeys[@]}" ); do gpg --receive "$i"; gpg -a --export "$i" > "keys/pgp/$i.asc" ; done
     makepkg -si --noconfirm --skippgpcheck
   fi
+
+  TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
+  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
+  echo $TARGET
+
+  # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
+  # In clang-16, there seems to be no problem without this option specified.
+  # (The -ffat-lto-objects option is planned to be supported from clang-17.)
+  export LTOFLAGS_="$LTOFLAGS"
+  : "${CC:=$(command -v gcc || command -v clang)}"
+  case "$CC" in
+    *gcc*)
+        if [ -n "$LTOFLAGS" ]; then
+            LTOFLAGS="$LTOFLAGS -fuse-linker-plugin -ffat-lto-objects"
+        else
+            LTOFLAGS="-ffat-lto-objects"
+        fi
+        export LTOFLAGS
+		;;
+	*clang*)
+        # for musl-gcc
+        if [ -n "$LTOFLAGS" ]; then
+            LTOFLAGS="$LTOFLAGS -fuse-linker-plugin -ffat-lto-objects"
+        else
+            LTOFLAGS="-ffat-lto-objects"
+        fi
+        export LTOFLAGS
+		;;
+  esac
 
   # ビルド順: 独立したものから
   # readline
