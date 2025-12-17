@@ -32,6 +32,7 @@ pkgbase = ik-llama.cpp-vulkan
 	conflicts = ik-llama.cpp-cuda
 	options = lto
 	options = !debug
+	backup = etc/conf.d/llama.cpp
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
