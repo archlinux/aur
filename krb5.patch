@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 77be7a2..12696fd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -939,7 +939,7 @@ AC_SUBST(FCTSH)
+ # specifications; not checking for other features like %zx at present.
+ AC_MSG_CHECKING(for POSIX printf positional specification support)
+ AC_CACHE_VAL(ac_cv_printf_positional,
+-[AC_RUN_IFELSE(
++[AC_COMPILE_IFELSE(
+   [AC_LANG_SOURCE(
+     [[#include <stdio.h>
+       #include <string.h>
