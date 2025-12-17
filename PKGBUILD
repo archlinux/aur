@@ -1,7 +1,7 @@
 # Maintainer: Thijzert123 <184778919+Thijzert123@users.noreply.github.com>
 
 pkgname="packrinth"
-pkgver="0.8.2"
+pkgver="0.8.3"
 pkgrel="1"
 pkgdesc="CLI tool for creating and maintaining your own Minecraft modpack."
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -12,7 +12,7 @@ options=("!lto")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 
 # https://crates.io/api/v1/crates/packrinth/versions to find the checksum
-sha256sums=("dee348eb9ce3426df0cc6787aba4e6f182af6914da9593112286ba616843e399")
+sha256sums=("486ef5984b595b0c4ccfa0c84476cf7f4e1c9c9edb59bad3c8d0da8227e5ebbd")
 
 build() {
     cd "${pkgname}-${pkgver}"
