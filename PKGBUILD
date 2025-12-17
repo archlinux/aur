@@ -4,7 +4,7 @@
 _distname=Hash-Merge-Simple
 pkgname=perl-${_distname,,}
 pkgver=0.052
-pkgrel=0
+pkgrel=1
 pkgdesc='Recursively merge two or more hashes, simply'
 arch=(any)
 url="https://search.cpan.org/dist/$_distname"
