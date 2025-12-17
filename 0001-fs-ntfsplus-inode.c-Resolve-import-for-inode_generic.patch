@@ -18,7 +18,7 @@ index f577ef28b..fb5f40e19 100644
  
 +// Replace inode_generic_drop with generic_drop_inode
 +// for backward compatibility with pre 6.18 kernels
-+#ifndef inode_generic_drop
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 18, 0)
 +#define inode_generic_drop generic_drop_inode
 +#endif
 +

@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.11.27.r8.3f937573c
+pkgver=2025.11.27.r8.2d25b83b1
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.12."
@@ -130,7 +130,7 @@ source=(
 )
 sha256sums=(
   SKIP
-  e848246d1cee6042c2bc8af1809b3cd348c2289749394ae363c8951cda69b32f
+  868519f029a18eb0b563020386fc9ab55fc31ed611e19f2eb446894a2677d416
   4bdb0d5c97bd676ee077d9ffccbaf67eadf232b23c3e9fe060780df6420e9513
   78353b18ad7e37d390d79bc22f424a8042351e30eb01a17e4e7ffadafb6c7dce
   f8dbf89bfa7891adcba1c9900a8b4f31c59a6e32bf3c4b1b290073eed048e8d9
