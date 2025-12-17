@@ -35,7 +35,7 @@ depends=(
     'python-toml'
     'python3'
 )
-source=("https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-${pkgver}.tar.gz" "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE")
+source=("https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-${pkgver}.tar.gz" "https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE")
 sha256sums=('9dd2787dee4d1fc28e47045c7a112435dd874be81969fa776497360e985bde6c'
             'ac4f1fa7ee565806d41b26bc9a0d9f313224730ddf3c0d4f346f3a511c47dd4e')
 
