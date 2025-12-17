@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 options=('!debug' 'strip')
-sha256sums=('807adc9642c631f7a7ca6e611231019ecbb491ce0fe6baf0eb82ec2de2dd0934')
+sha256sums=('5eaaade702d6025ef488d29184bd18e26fa417d849bd0f706fc2b878587a3bc4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
