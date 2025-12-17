@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='dirmap'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='dirmap is a tool for generating a directory map'
 url='https://github.com/k1LoW/dirmap'
@@ -10,7 +10,7 @@ arch=('x86_64')
 #depends=('')
 #conflicts=('')
 source=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('9cf83162817da5c8727391254ce09b819bb7cf7f8b7677df548625433cc17c79')
+sha256sums=('8c42b448e10ed8614000dd6b50d82d73c6eacd9301375524cac1ec2c16710517')
 
 package() {
   msg2 'Installing documentations...'
