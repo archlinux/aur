@@ -1,4 +1,13 @@
 post_install() {
+    # Create user config directory
+    local config_dir="$HOME/.config/hamr"
+    mkdir -p "$config_dir"
+
+    # Copy default colors.json if it doesn't exist
+    if [ ! -f "$config_dir/colors.json" ]; then
+        cp /etc/xdg/quickshell/hamr/defaults/colors.json "$config_dir/colors.json"
+    fi
+
     echo ""
     echo "==> Hamr has been installed to /etc/xdg/quickshell/hamr"
     echo ""
@@ -6,6 +15,12 @@ post_install() {
     echo "      hamr"
     echo ""
     echo "==> User config and plugins are stored in ~/.config/hamr/"
+    echo ""
+    echo "==> Color theme:"
+    echo "      Edit ~/.config/hamr/colors.json directly, or"
+    echo "      configure matugen/wallust to output to this path, or"
+    echo "      symlink to your existing colors (e.g. for end-4/dots-hyprland):"
+    echo "        ln -sf ~/.local/state/quickshell/user/generated/colors.json ~/.config/hamr/colors.json"
     echo ""
     echo "==> Add to your Hyprland config:"
     echo "      exec-once = hamr"
