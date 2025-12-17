@@ -2,7 +2,7 @@
 pkgname=simple-music
 _pkgname=SimpleMusic
 _zhsname='轻音乐'
-pkgver=0.6.8
+pkgver=0.6.9
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4f1115307fe62366fa90682080bcd38c5af9edc1d811d36bd608aab8e90d54db'
+sha256sums=('728fc6292eae8995ba0336fd6d4283b98127d432f766545c10bd16a24f1e09d5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -39,6 +39,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -46,7 +47,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
