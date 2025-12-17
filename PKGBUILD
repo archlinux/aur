@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=2
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ _node_version="22"
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('ea9a561a9f5ddf73a57e39ea202c8a9fef53a4869471e455e182872c230b9911'
+sha256sums=('29b12617e165f4c8667363c818ab2df5bd04c1b12dd06b821ae455ceba75ea45'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
-b2sums=('8f26673ba50539815bf38d2b391c047491cf0fa461f69626ece71b54b25e18168fda2090520e9a1981a88f34ad3f6799b53b81896b8e816cf167a6da1937a49f'
+b2sums=('0e48f798ecc962b2200549a74543ea0f08b467ea2e5f5b97a3a7a849097b9f5e2e8ebf4ef2b34c2f69a599a533e04d7816e0f04beca4b368c0d9d521f5518526'
         '718976c7c24fa0a2a8979a6704b36650ebe71e87edec944c1cc745cfa0e7e5aba7211efb3408b1bf12dc0065f838ed976bea75a818d5abefa23471e2e4354882')
 
 _ensure_local_nvm() {
@@ -63,17 +63,6 @@ build() {
 	rm -rf electron-output
 
 	yarn run dist
-
-	# Fix missing bufferutil prebuild for linux/arm64
-	# This is hacky, but fixes the issue until upstream fixes their build scripts
-	if [ "${CARCH}" = "aarch64" ]; then
-		cd "${srcdir}/${pkgname}-${pkgver}/node_modules/bufferutil"
-		npm install
-		npm run prebuild
-		rm -r build node_modules
-		cd ..
-		cp -r bufferutil  "${srcdir}/${pkgname}-${pkgver}/electron-output/linux-arm64-unpacked/resources/node_modules/"
-	fi
 }
 
 package() {
