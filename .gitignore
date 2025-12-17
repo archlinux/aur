@@ -1,0 +1,7 @@
+src/
+pkg/
+mbedtls
+mbedtls-framework
+mdns
+ot-commissioner
+*.log

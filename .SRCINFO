@@ -1,0 +1,27 @@
+pkgbase = ot-commissioner-git
+	pkgdesc = a Thread commissioner for joining new Thread devices and managing Thread networks.
+	pkgver = 20230622.r57.g46c1a00
+	pkgrel = 1
+	url = https://github.com/openthread/ot-commissioner.git
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = fmt
+	makedepends = libevent
+	makedepends = mbedtls
+	makedepends = nlohmann-json
+	depends = python
+	source = git+https://github.com/openthread/ot-commissioner.git
+	source = git+https://github.com/Mbed-TLS/mbedtls.git
+	source = git+https://github.com/Mbed-TLS/mbedtls-framework.git
+	source = git+https://github.com/wgtdkp/mdns.git
+	source = fix-build.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a1d1af95e864c71a480fe8a74957dc3963034dad446cfe4a1e9d3fe2312928e5
+
+pkgname = ot-commissioner-git

@@ -1,0 +1,73 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ade3f02..b49c4be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,6 +88,11 @@ else (OT_COMM_TEST)
+   add_definitions(-DMOCKABLE=)
+ endif (OT_COMM_TEST)
+ 
++if (OT_COMM_APP) 
++  find_package(nlohmann_json REQUIRED) 
++endif()
++
++find_package(fmt REQUIRED)
+ add_subdirectory(src)
+ add_subdirectory(tools)
+ add_subdirectory(third_party EXCLUDE_FROM_ALL)
+diff --git a/src/library/CMakeLists.txt b/src/library/CMakeLists.txt
+index 61e0094..6e125c2 100644
+--- a/src/library/CMakeLists.txt
++++ b/src/library/CMakeLists.txt
+@@ -127,18 +127,9 @@ install(FILES
+         $<$<BOOL:${OT_COMM_CCM}>:$<TARGET_FILE:cn-cbor::cn-cbor>>
+         $<$<BOOL:${OT_COMM_CCM}>:$<TARGET_FILE:cose>>
+         $<$<BOOL:${OT_COMM_APP}>:$<TARGET_FILE:mdns>>
+-        $<TARGET_FILE:mbedtls>
+-        $<TARGET_FILE:mbedx509>
+-        $<TARGET_FILE:mbedcrypto>
+-        $<TARGET_FILE:fmt::fmt>
+-        $<TARGET_FILE:${EVENT_CORE}>
+-        $<TARGET_FILE:${EVENT_PTHREADS}>
+         DESTINATION lib
+ )
+ 
+-## Update ldconfig links and caches.
+-install(CODE "execute_process(COMMAND sudo ldconfig)")
+-
+ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/commissioner
+         DESTINATION include
+ )
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index b557799..fe74b4b 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -39,13 +39,6 @@ if (OT_COMM_CCM)
+     add_subdirectory(COSE-C)
+ endif()
+ 
+-add_subdirectory(fmtlib/repo)
+-
+-if (OT_COMM_APP)
+-    set(JSON_BuildTests OFF CACHE BOOL "Disable compiling json tests" FORCE)
+-    add_subdirectory(json/repo)
+-endif()
+-
+ add_subdirectory(libevent)
+ 
+ add_subdirectory(mbedtls)
+diff --git a/third_party/libevent/CMakeLists.txt b/third_party/libevent/CMakeLists.txt
+index 1fe43fc..cbdaee3 100644
+--- a/third_party/libevent/CMakeLists.txt
++++ b/third_party/libevent/CMakeLists.txt
+@@ -37,10 +37,4 @@ set(EVENT__DISABLE_REGRESS ON CACHE BOOL "libevent disable regression tests" FOR
+ set(EVENT__DISABLE_TESTS ON CACHE BOOL "libevent disable tests" FORCE)
+ set(EVENT__DISABLE_BENCHMARK ON CACHE BOOL "libevent disable benchmark" FORCE)
+ set(EVENT__HAVE_PIPE2 OFF CACHE BOOL "disable use of pipe2 in libevent" FORCE)
+-add_subdirectory(repo)
+-
+-target_include_directories(event_core
+-    INTERFACE
+-        ${CMAKE_CURRENT_SOURCE_DIR}/repo/include
+-        ${CMAKE_CURRENT_BINARY_DIR}/repo/include
+-)
++find_package(Libevent REQUIRED)
