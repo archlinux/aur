@@ -17,7 +17,7 @@ _pkgname="${_basename}${_suffix}"
 pkgname="${_pkgname}-bin"
 pkgver=0.14.0dev.406+336f468
 _pkgver="${pkgver//dev/-dev}"
-pkgrel=3
+pkgrel=4
 pkgdesc="A language server for Zig"
 arch=(
   "${!_arch[@]}"
@@ -29,6 +29,9 @@ license=(
 depends=(
   'sh'
   "zig${_suffix}"
+)
+makedepends=(
+  'minisign'
 )
 provides=(
   "${_pkgname}=${pkgver}"
