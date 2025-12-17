@@ -2,8 +2,8 @@
 
 pkgname=pda-git
 _pkgname=pda
-pkgver=2025.47
-pkgrel=2
+pkgver=2025.51
+pkgrel=1
 pkgdesc="personal digital assistant! a key-value store with rich template support"
 arch=('x86_64')
 url="https://github.com/llywelwyn/$_pkgname"
@@ -45,4 +45,5 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
