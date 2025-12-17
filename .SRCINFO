@@ -1,0 +1,23 @@
+pkgbase = dotup-git
+	pkgdesc = A .NET version manager
+	pkgver = r3.60e891d
+	pkgrel = 1
+	url = https://github.com/na1307/dotup
+	arch = x86_64
+	license = MIT
+	checkdepends = dotnet-sdk-10.0
+	makedepends = dotnet-sdk-10.0
+	makedepends = clang
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = krb5
+	depends = libunwind
+	provides = dotup
+	conflicts = dotup
+	source = git+https://github.com/na1307/dotup.git
+	sha256sums = SKIP
+
+pkgname = dotup-git
