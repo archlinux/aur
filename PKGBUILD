@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-theme
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
@@ -13,14 +13,14 @@ depends=(
 )
 makedepends=(
     'python'
-    'sassc'
+    'python-libsass'
 )
 optdepends=(
     'mint-l-icons'
 )
 options=('!strip')
 source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('5f9385a665438556f5c353e656d1228f8f281672f312f72dca3431dada7db721')
+sha256sums=('0e4b9397c80d3beb7cc3dcb977321cb44b5c2daa0e63bd4cfa1ad989fb5e0ad9')
 
 build() {
 	cd "${pkgname}"
