@@ -1,0 +1,20 @@
+pkgbase = cnote-bin
+	pkgdesc = Casual Note is a minimalist, ephemeral CLI note-taking tool
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/amirfarzamnia/cnote
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = cnote
+	conflicts = cnote
+	source_x86_64 = cnote-x86_64-1.1.2.tgz::https://github.com/amirfarzamnia/cnote/releases/download/v1.1.2/cnote_1.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6cbf7d2a2052dbd18a6b69dda261b83bda2932578b286da27b774d3a239b19c4
+	source_i686 = cnote-i686-1.1.2.tgz::https://github.com/amirfarzamnia/cnote/releases/download/v1.1.2/cnote_1.1.2_linux_386.tar.gz
+	sha256sums_i686 = afa08343d2b81b3a623fb360c37165d1b6306ca13e422ee4ccff064b56acc4e4
+	source_aarch64 = cnote-aarch64-1.1.2.tgz::https://github.com/amirfarzamnia/cnote/releases/download/v1.1.2/cnote_1.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 549a81769d4d39591e2ea508bb940f762f76c94a98e6b98914c04db21cc798f9
+
+pkgname = cnote-bin

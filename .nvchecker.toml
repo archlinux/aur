@@ -1,0 +1,5 @@
+[cnote-bin]
+source = "github"
+github = "amirfarzamnia/cnote"
+use_latest_release = true
+prefix = "v"
