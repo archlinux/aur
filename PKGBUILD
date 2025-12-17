@@ -2,7 +2,7 @@
 
 pkgname=kora-icon-theme
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -29,10 +29,6 @@ package() {
     # Delete useless files from source folder
     rm -f "kora/$_iconnewcachescript"
     rm -f "kora/$_iconcache"
-    rm -f "kora-light/$_iconnewcachescript"
-    rm -f "kora-light/$_iconcache"
-    rm -f "kora-light-panel/$_iconnewcachescript"
-    rm -f "kora-light-panel/$_iconcache"
     rm -f "kora-pgrey/$_iconnewcachescript"
     rm -f "kora-pgrey/$_iconcache"
 
@@ -44,8 +40,6 @@ package() {
     # and some directories not executable if installed system wide while he didn't notice 
     # any issue because he installed the theme under the local icon folder on his system.
     cp -dr --no-preserve=mode "kora" "$pkgdir/$_iconpath/kora"
-    cp -dr --no-preserve=mode "kora-light" "$pkgdir/$_iconpath/kora-light"
-    cp -dr --no-preserve=mode "kora-light-panel" "$pkgdir/$_iconpath/kora-light-panel"
     cp -dr --no-preserve=mode "kora-pgrey" "$pkgdir/$_iconpath/kora-pgrey"
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
