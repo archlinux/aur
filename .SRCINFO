@@ -1,0 +1,19 @@
+pkgbase = hdas-git
+	pkgdesc = Track which packages create files in your home directory using eBPF
+	pkgver = 1.0.0.r0.g22f96e5
+	pkgrel = 1
+	url = https://github.com/adelmonte/hdas
+	install = hdas.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = clang
+	makedepends = git
+	depends = libbpf
+	provides = hdas
+	conflicts = hdas
+	options = !lto
+	source = git+https://github.com/adelmonte/hdas.git
+	sha256sums = SKIP
+
+pkgname = hdas-git
