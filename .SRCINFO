@@ -1,0 +1,15 @@
+pkgbase = cliptui
+	pkgdesc = A beautiful terminal-based clipboard history manager
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ddvital/cliptui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = xsel
+	optdepends = wl-clipboard: Wayland clipboard support
+	source = cliptui-0.1.4.tar.gz::https://github.com/ddvital/cliptui/archive/v0.1.4.tar.gz
+	sha256sums = 0b015910aac07491b20fc20d6d382a679b5d153d715c974a5209cf30e9cdbee2
+
+pkgname = cliptui
