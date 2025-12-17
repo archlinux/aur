@@ -1,3 +1,4 @@
 *.deb
 coccoc/*
 update.sh
+PKGBUILD.backup
