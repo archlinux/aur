@@ -11,8 +11,8 @@ pkgbase = cpr
 	depends = curl
 	provides = libcpr.so=1-64
 	source = cpr-1.14.1.tar.gz::https://github.com/libcpr/cpr/archive/refs/tags/1.14.1.tar.gz
-	source = 0001-disable-failing-tests.patch
+	source = 0001-fix-tests.patch
 	sha256sums = 213ccc7c98683d2ca6304d9760005effa12ec51d664bababf114566cb2b1e23c
-	sha256sums = 793379badbbc21f5f00215539854a6afb62697e2a4d84256a4281cb52c783946
+	sha256sums = d45f8f1a1932cfa1ac49f75a84bebbbf490e5d03a118aca7b1f4a760c15577c9
 
 pkgname = cpr

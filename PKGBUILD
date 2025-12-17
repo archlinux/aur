@@ -14,13 +14,13 @@ depends=('curl')
 makedepends=('cmake' 'git' 'gtest>=1.17') # gtest 1.17 fixes an issue that made this build fail
 provides=('libcpr.so=1-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        '0001-disable-failing-tests.patch')
+        '0001-fix-tests.patch')
 sha256sums=('213ccc7c98683d2ca6304d9760005effa12ec51d664bababf114566cb2b1e23c'
-            '793379badbbc21f5f00215539854a6afb62697e2a4d84256a4281cb52c783946')
+            'd45f8f1a1932cfa1ac49f75a84bebbbf490e5d03a118aca7b1f4a760c15577c9')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	patch -p1 -i ../0001-disable-failing-tests.patch
+	patch -p1 -i ../0001-fix-tests.patch
 }
 
 build() {
@@ -55,8 +55,7 @@ build() {
 }
 
 check() {
-    # TODO report tests failures
-	ctest --test-dir build || :
+	ctest --test-dir build
 }
 
 package() {

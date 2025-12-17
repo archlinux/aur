@@ -1,0 +1,33 @@
+From 112d5314252a72f1ec8189d163a19d030cea34a4 Mon Sep 17 00:00:00 2001
+From: "John A. Leuenhagen" <john@zlima12.com>
+Date: Wed, 17 Dec 2025 16:14:32 -0500
+Subject: [PATCH] test: don't reflect Content-Length from request
+
+Previously, POSTing to this endpoint would mean that the response would
+have two Content-Length headers: the one reflected from the request, and
+the new one that is for the response. This is improper, so this commit
+adds Content-Length to the headers excluded from reflection.
+
+This was causing curl (as of 8.17.0, though the change might have
+happened earlier) to give a "weird server reply" error, which made
+several tests fail.
+---
+ test/httpServer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/httpServer.cpp b/test/httpServer.cpp
+index 224767a..888f197 100644
+--- a/test/httpServer.cpp
++++ b/test/httpServer.cpp
+@@ -317,7 +317,7 @@ void HttpServer::OnRequestHeaderReflect(mg_connection* conn, mg_http_message* ms
+             hasContentTypeHeader = true;
+         }
+ 
+-        if (std::string{"Host"} != name && std::string{"Accept"} != name) {
++        if (std::string{"Host"} != name && std::string{"Accept"} != name && std::string{"Content-Length"} != name) {
+             if (header.value.ptr) {
+                 headers.append(name + ": " + std::string(header.value.ptr, header.value.len) + "\r\n");
+             }
+-- 
+2.52.0
+
