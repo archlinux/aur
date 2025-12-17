@@ -2,7 +2,7 @@
 pkgname=yeet-git
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A fast, minimal, configurable app launcher for Linux"
+pkgdesc="A fast, minimal, configurable app launcher for Wayland"
 arch=('x86_64')
 url="https://github.com/1337hero/yeet"
 license=('GPL3')
