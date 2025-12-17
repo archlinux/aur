@@ -1,6 +1,6 @@
 pkgbase = python-baidubce
 	pkgdesc = BCE SDK for python
-	pkgver = 0.9.54
+	pkgver = 0.9.56
 	pkgrel = 1
 	url = https://pypi.org/project/bce-python-sdk
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-baidubce
 	makedepends = python-wheel
 	depends = python-pycryptodome
 	depends = python-six
-	source = https://pypi.org/packages/source/b/bce-python-sdk/bce_python_sdk-0.9.54.tar.gz
-	sha512sums = 032eace0f39ba01ccd479de15c6e3834efd35e39c396ea6468dd92e157f10d7170930142dbe39485ac2f95bbb5abad52d74e7a7952e23121268777b65963ab1f
+	source = https://pypi.org/packages/source/b/bce-python-sdk/bce_python_sdk-0.9.56.tar.gz
+	sha512sums = 3e38f3369ee13f2ac4eef4f3f4d2993935bf44758387fcccd38a67a2cbf16a08dc6d11f40ee023d94044da363ffa13d53415f3b04f093f96167136b6558d2fee
 
 pkgname = python-baidubce
