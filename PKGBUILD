@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab'
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Custom commands for every project'
 url='https://github.com/bab-sh/bab'
@@ -13,7 +13,7 @@ conflicts=('bab-bin')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz")
-sha256sums=('4dd3d276f259a160f2ba5bf6ee0f9f46de522023ee09e30a122491f6d8f8976c')
+sha256sums=('fe3e3fd414a3f186d7403f6f7802efbfdab0f5fca1d7d70160ee8ae24c2bdfbb')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -24,8 +24,8 @@ build() {
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X main.version=${pkgver} \
-  -X main.commit=0e23bf7a7098793ea55c2a95ab71dbd10b4c4d7c \
-  -X main.date=2025-12-16T21:37:05Z" \
+  -X main.commit=3da8b28d49e43a1b94f868132b01d1a2043c64f8 \
+  -X main.date=2025-12-17T12:11:44Z" \
   -o bab .
 
   # Generate shell completions
