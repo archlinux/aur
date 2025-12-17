@@ -1,14 +1,14 @@
 pkgbase = stardust-xr-atmosphere
 	pkgdesc = 3D environment/homespace client for Stardust XR
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.50.0
+	pkgrel = 1
 	url = https://github.com/StardustXR/atmosphere
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/StardustXR/atmosphere.git
+	source = git+https://github.com/StardustXR/atmosphere.git#tag=0.50.0
 	sha256sums = SKIP
 
 pkgname = stardust-xr-atmosphere
