@@ -11,7 +11,7 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jax-rocm
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='XLA library for JAX (jaxlib for ROCM)'
 _srcname="jax-jaxlib-v${pkgver}"
