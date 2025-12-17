@@ -1,13 +1,13 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
 url="https://github.com/Gianluska/lvsk-calendar"
 license=('MIT')
-depends=('bash' 'coreutils')
+depends=('bash' 'coreutils' 'curl')
 makedepends=()
 install="${pkgname}.install"
 
@@ -35,6 +35,7 @@ package() {
     # Install the modular source files
     install -Dm644 "${srcdir}/${pkgname}/src/config.sh" "${pkgdir}/usr/share/${pkgname}/src/config.sh"
     install -Dm644 "${srcdir}/${pkgname}/src/utils.sh" "${pkgdir}/usr/share/${pkgname}/src/utils.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/holidays.sh" "${pkgdir}/usr/share/${pkgname}/src/holidays.sh"
     install -Dm644 "${srcdir}/${pkgname}/src/navigation.sh" "${pkgdir}/usr/share/${pkgname}/src/navigation.sh"
     install -Dm644 "${srcdir}/${pkgname}/src/input.sh" "${pkgdir}/usr/share/${pkgname}/src/input.sh"
 
