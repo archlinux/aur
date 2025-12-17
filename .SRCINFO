@@ -1,8 +1,8 @@
 pkgbase = delta-plugin-git
 	pkgdesc = A multi-purpose OMWAddon/ESP tool. Its primary features include a yaml transcoder, minimal diffing functionality, and using the minimal diffing functionality to produce merged plugins
-	pkgver = 0.24.1
+	pkgver = 0.25.2
 	pkgrel = 1
-	url = https://gitlab.com/bmwinger/delta-plugin
+	url = https://gitlab.com/portmod/delta-plugin
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -11,7 +11,7 @@ pkgbase = delta-plugin-git
 	makedepends = git
 	makedepends = cargo
 	provides = delta-plugin
-	source = git+https://gitlab.com/bmwinger/delta-plugin.git
+	source = git+https://gitlab.com/portmod/delta-plugin.git
 	sha1sums = SKIP
 
 pkgname = delta-plugin-git
