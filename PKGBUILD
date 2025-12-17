@@ -4,9 +4,9 @@
 # Contributor: Alkindi42
 
 pkgname='dasel'
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
-pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML, and HCL files with a single command-line tool'
+pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML, INI, and HCL files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -58,7 +58,7 @@ check() {
 
   : go test ./...
 
-  printf 'dasel v%s\n' $(./dasel version)
+  printf 'dasel v%s\n' "$(./dasel version)"
 }
 
 package() {
@@ -83,10 +83,10 @@ package() {
 }
 
 sha256sums=(
-  'a6490154fb98069575e762e2d0b53313319b56ead81faf4f5d57d3705734c71d'
+  'ee4d8073f040a1cf182eb05ced0f0540b6a70ffd49187be3ed80c8f1290c37a3'
 )
 b2sums=(
-  '617fedb5772cf63c7946d8a81edbfb027e6c235dbd7f62b1076a5242f4cd90a283560b6bce71197244847d73bc15d8b53e142dca5c2015bb8950c0026d89de8b'
+  'd2d44f8f60ac19ca31502e9d5731a5bcab1bf87fd2f398aec4f17127279a54a766eed602c0738a8cb89d03854036e7f6bbddea365f4d399e3a9a43e2cd92592e'
 )
 
 # eof
