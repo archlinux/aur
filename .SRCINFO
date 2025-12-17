@@ -20,6 +20,6 @@ pkgbase = cfait
 	replaces = fairouille
 	options = !lto
 	source = cfait-source-v0.3.0.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.3.0/cfait-source-v0.3.0.tar.gz
-	sha256sums = acab7ab3dec229c62b034dc92ec4609d8a0b38041dd4c4f36df58f4d3b82cd67
+	sha256sums = 4d18fa9bec7b31e9843b7e76a70f44ad7aa7da87cd122a11d0232a2b794b64b9
 
 pkgname = cfait
