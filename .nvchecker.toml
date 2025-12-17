@@ -1,0 +1,5 @@
+# Depends on nvchecker and python-jq
+[alice3-bin]
+source = "jq"
+url = "https://api.github.com/repos/TheAliceProject/alice3/releases/latest"
+filter = '.assets[] | select(.name | match("unix_bundle")) | .name | match("\\d+_\\d+_\\d+_\\d+\\+build\\d+") | .string | gsub("_"; ".")'

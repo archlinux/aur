@@ -1,0 +1,24 @@
+pkgbase = alice3-bin
+	pkgdesc = Block-based 3D programming environment that makes it easy to create animations, build interactive narratives, or program simple games
+	pkgver = 3.9.0.3+build1338
+	pkgrel = 1
+	url = https://www.alice.org
+	arch = x86_64
+	license = LicenseRef-Alice3-EULA
+	license = LicenseRef-LookingGlass-EULA
+	license = LicenseRef-TheSimsTM2ArtAsset-EULA
+	makedepends = gendesk
+	depends = java-runtime>=17
+	depends = java-runtime<=21
+	provides = alice3
+	noextract = alice3-bin-3.9.0.3+build1338.tar.gz
+	options = !debug
+	options = !strip
+	source = alice3-bin-3.9.0.3+build1338.tar.gz::https://github.com/TheAliceProject/alice3/releases/download/3.9.0.3/alice3_unix_bundle_3_9_0_3+build1338.tar.gz
+	source = https://raw.githubusercontent.com/TheAliceProject/alice3/refs/tags/3.9.0.3/installer/installerFiles/alice3.desktop.partial
+	source = alice3-bin.png::https://raw.githubusercontent.com/TheAliceProject/alice3/refs/tags/3.9.0.3/installer/installerFiles/desktopIcon256.png
+	sha256sums = 6dde04db4b737440a16dbf96d2ec3b5aaa655bd7f1a01d6d091597bcac1f3cd0
+	sha256sums = c9b7506d6830f1c8508b6254537a767f9c7ffaa32491b5ddd6956a1210e76a13
+	sha256sums = b17a0fe7489423933813e1f34e5effe2c095cadf65281cb74d9549399108e8d7
+
+pkgname = alice3-bin
