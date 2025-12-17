@@ -1,6 +1,6 @@
 pkgbase = opera-developer
 	pkgdesc = Fast, secure, easy-to-use web browser Opera is a fast, secure, and user-friendly web browser. It includes a built-in ad blocker, Video pop-out, and free VPN.(Developer Stream)
-	pkgver = 126.0.5744.0
+	pkgver = 126.0.5748.0
 	pkgrel = 1
 	url = https://www.opera.com/computer
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = opera-developer
 	optdepends = opera-developer-ffmpeg-codecs
 	optdepends = cairo
 	provides = opera-developer
-	source = https://get.geo.opera.com/pub/opera-developer/126.0.5744.0/linux/opera-developer_126.0.5744.0_amd64.deb
+	source = https://get.geo.opera.com/pub/opera-developer/126.0.5748.0/linux/opera-developer_126.0.5748.0_amd64.deb
 	source = opera
 	source = default
-	sha256sums = d710c1d7cd0c9adee062f78d32ac8affe74322cf753beb3a0da9b0cb90627e7e
+	sha256sums = 7c850d439f3d24cd9989293e03f952d48352d6d3307a69cd55c31c68aec99e9d
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
 
