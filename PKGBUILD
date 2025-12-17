@@ -2,13 +2,13 @@
 
 pkgname=ampcode
 pkgver=0.0.1766001680_gffaac6
-pkgrel=1
+pkgrel=2
 pkgdesc="Amp CLI (Sourcegraph's agentic coding tool) packaged from npm releases"
 arch=('any')
 url="https://ampcode.com"
 license=('custom:proprietary')
 depends=('nodejs' 'ripgrep')
-makedepends=('npm' 'jq')
+makedepends=('npm')
 provides=('amp')
 conflicts=('amp' 'ampcode-bin')
 replaces=('sourcegraph-amp')
