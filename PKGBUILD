@@ -2,13 +2,13 @@
 
 pkgname=odiff-bin
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Blazing fast SIMD-optimized image comparison CLI"
 arch=('x86_64')
 url="https://github.com/dmtrKovalenko/odiff"
 license=('MIT')
 depends=('glibc')
-makedepends=('curl' 'jq')
+
 provides=('odiff')
 conflicts=('odiff')
 source=(
