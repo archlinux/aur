@@ -4,7 +4,7 @@ _godot=4.5
 _system_godot=false
 
 pkgname=thrive
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -29,7 +29,7 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('e610aef6dc56166b832c437edf558682ac3f864ce24d1756cbe78d73e751499e'
+sha256sums=('a908d2339b1df2065da38487ce36ca939d2d298cd3f44c66daff3116bd990da9'
             'SKIP'
             'SKIP'
             'SKIP'
