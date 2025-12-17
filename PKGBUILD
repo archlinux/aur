@@ -1,6 +1,6 @@
 # Maintainer: Vincent B. <vb@luminar.eu.org>
 pkgname=restate-server
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 epoch=
 pkgdesc="Building resilient applications made easy! (server)"
@@ -29,8 +29,8 @@ sha256sums=('7a0a1cb51229527e3b42c9da00240aa492c51d110537090f7d23cb2d883825ce'
             '5345cfcd6b9fc4a1957c279f500a02bd554c9449e122c7b8e91b74c6ae97c5ab'
             '88660438134c7e01d96919b33e215a83456c847bd317c17dc8c8d4a5faccb989'
             'a602e5a6f17f5d424ab2a6c85b216846528d93db30eb9604631882921cbb3cdf')
-sha256sums_x86_64=('f867f050f9689c6b3909ba96b450e854c925fe27b77b9c90e16da222d03091aa')
-sha256sums_aarch64=('0bed5d04d0da3f158828c675cc4c5b07a303d3c501859e7aa4e70b6a165e20ee')
+sha256sums_x86_64=('cdff7630c4b9669ae858c7fd6694d55b2735e7f1ae6030d69a9e76aad82fe6c4')
+sha256sums_aarch64=('e4cad86bc5209973a0c4cc9fd21315e741506803119aebae5221c6808687ad89')
 
 
 noextract=()
