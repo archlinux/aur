@@ -2,12 +2,12 @@
 
 pkgname=pince-bin
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB"
 arch=('x86_64')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('fuse2' 'hicolor-icon-theme')
+depends=('fuse2' 'hicolor-icon-theme' 'zenity')
 provides=('pince')
 conflicts=('pince' 'pince-git')
 options=('!strip')
@@ -28,12 +28,19 @@ package() {
   cat >"${pkgdir}/usr/bin/pince" <<'EOF'
 #!/bin/bash
 if [ "$EUID" -ne 0 ]; then
-    exec pkexec /opt/pince/PINCE.AppImage "$@"
+    export SUDO_ASKPASS="/usr/bin/pince-askpass"
+    exec sudo -A -E /opt/pince/PINCE.AppImage "$@"
 else
     exec /opt/pince/PINCE.AppImage "$@"
 fi
 EOF
   chmod 755 "${pkgdir}/usr/bin/pince"
+
+  cat >"${pkgdir}/usr/bin/pince-askpass" <<'EOF'
+#!/bin/bash
+zenity --password --title="PINCE" --text="PINCE requires root privileges"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/pince-askpass"
   install -Dm644 "${srcdir}/pince.desktop" "${pkgdir}/usr/share/applications/pince.desktop"
   install -Dm644 "${srcdir}/squashfs-root/PINCE.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pince.svg"
 }
