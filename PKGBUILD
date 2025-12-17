@@ -35,5 +35,5 @@ fi
 EOF
   chmod 755 "${pkgdir}/usr/bin/pince"
   install -Dm644 "${srcdir}/pince.desktop" "${pkgdir}/usr/share/applications/pince.desktop"
-  install -Dm644 "${srcdir}/squashfs-root/PINCE.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pince.png"
+  install -Dm644 "${srcdir}/squashfs-root/PINCE.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pince.svg"
 }
