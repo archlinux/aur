@@ -1,14 +1,14 @@
 pkgbase = docker-scout
 	pkgdesc = Docker Scout is a set of software supply chain features integrated into Docker's user interfaces and command line interface (CLI).
-	pkgver = 1.18.4
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/docker/scout-cli
 	arch = aarch64
 	arch = x86_64
 	license = PROPRIETARY
-	source_aarch64 = docker-scout_1.18.4_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v1.18.4/docker-scout_1.18.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = a99eeacdc510c0013c7ba489a9bb1af093701a4afa877871c7d498071f342789
-	source_x86_64 = docker-scout_1.18.4_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v1.18.4/docker-scout_1.18.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = eb081bc7584f9b7b9d5f6b7e7147de850f3bfa8706076f4dc10776ead497086c
+	source_aarch64 = docker-scout_1.19.0_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v1.19.0/docker-scout_1.19.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6c116da924f8b9dfb15457c240980eee131e10c5a141965fe7d1b57d53245f4e
+	source_x86_64 = docker-scout_1.19.0_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v1.19.0/docker-scout_1.19.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b9fe38ffb73f8fc930696c5c4532b73658354f89faaafc5131bb01f625c91e46
 
 pkgname = docker-scout
