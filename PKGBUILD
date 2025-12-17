@@ -4,8 +4,8 @@ _clientname="black-hole"
 pkgdesc="Minimize all your objects with 1 tap in Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.1.0"
-pkgrel="2"
+pkgver="0.50.0"
+pkgrel="1"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
@@ -15,7 +15,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/$_clientname.git"
+    "git+https://github.com/StardustXR/$_clientname.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
@@ -30,7 +30,7 @@ build() {
     cd "$srcdir/$_clientname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export STARDUST_RES_PREFIXES=/usr/share
+    export STARDUST_RES_PREFIXES="/usr/share/$pkgname"
     cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -43,5 +43,5 @@ package() {
 	install -Dm644 \
 		README.md \
 		"$pkgdir/usr/share/doc/$pkgname/README.md"
-    cp -r "res/black_hole" "$pkgdir/usr/share/"
+    cp -r "res/black_hole" "$pkgdir/usr/share/$pkgname"
 }
