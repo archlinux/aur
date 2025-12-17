@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-bin
 	pkgdesc = The Linux kernel, modules and headers with Xanmod patches - Prebuilt version
-	pkgver = 6.17.8
+	pkgver = 6.17.12
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = linux-xanmod-bin
 	provides = NTFS3-MODULE
 	conflicts = linux-xanmod-headers
 	conflicts = linux-xanmod
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.8-xanmod1/6.17.8-x64v3-xanmod1/linux-image-6.17.8-x64v3-xanmod1_6.17.8-x64v3-xanmod1-0~20251113.gdd2b142_amd64.deb
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.8-xanmod1/6.17.8-x64v3-xanmod1/linux-headers-6.17.8-x64v3-xanmod1_6.17.8-x64v3-xanmod1-0~20251113.gdd2b142_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.12-xanmod1/6.17.12-x64v3-xanmod1/linux-image-6.17.12-x64v3-xanmod1_6.17.12-x64v3-xanmod1-0~20251213.gbec16dc_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.12-xanmod1/6.17.12-x64v3-xanmod1/linux-headers-6.17.12-x64v3-xanmod1_6.17.12-x64v3-xanmod1-0~20251213.gbec16dc_amd64.deb
 	options = !strip
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.8-xanmod1/6.17.8-x64v3-xanmod1/linux-image-6.17.8-x64v3-xanmod1_6.17.8-x64v3-xanmod1-0~20251113.gdd2b142_amd64.deb
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.8-xanmod1/6.17.8-x64v3-xanmod1/linux-headers-6.17.8-x64v3-xanmod1_6.17.8-x64v3-xanmod1-0~20251113.gdd2b142_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.12-xanmod1/6.17.12-x64v3-xanmod1/linux-image-6.17.12-x64v3-xanmod1_6.17.12-x64v3-xanmod1-0~20251213.gbec16dc_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.17.12-xanmod1/6.17.12-x64v3-xanmod1/linux-headers-6.17.12-x64v3-xanmod1_6.17.12-x64v3-xanmod1-0~20251213.gbec16dc_amd64.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
