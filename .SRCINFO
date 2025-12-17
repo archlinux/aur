@@ -1,6 +1,6 @@
 pkgbase = zen-adblocker
 	pkgdesc = Simple, free and efficient ad-blocker and privacy guard
-	pkgver = 0.15.4
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://zenprivacy.net
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = zen-adblocker
 	depends = networkmanager
 	depends = p11-kit
 	depends = webkit2gtk-4.1
-	source = git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v0.15.4
+	source = git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v0.16.0
 	source = zen-adblocker.desktop
-	sha256sums = c73f64e14eeee46e40457ac584299e6e30bdb511718b91320244527e0fa961ce
+	sha256sums = d829344d489bf1fc4b32fabe1785e025364df8e727d1a94982657fbff4294211
 	sha256sums = 83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf
 
 pkgname = zen-adblocker
