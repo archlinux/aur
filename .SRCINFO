@@ -8,6 +8,7 @@ pkgbase = ts_query_ls
 	makedepends = cargo
 	provides = ts_query_ls
 	conflicts = ts_query_ls
+	options = !lto
 	source = https://github.com/ribru17/ts_query_ls/archive/v3.14.0.tar.gz
 	sha256sums = cfe3bd81bd9fcd153e3813e8b6b7084eab40fc967d1eae4a4418637e37635b9d
 
