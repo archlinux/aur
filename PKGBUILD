@@ -6,16 +6,17 @@ arch=('x86_64')
 url='https://github.com/openthread/ot-commissioner.git'
 license=('BSD-3-Clause')
 depends=(
-	python
+	python-pexpect
+	fmt
+	libevent
 )
 makedepends=(
 	git
 	cmake
 	ninja
-	fmt
-	libevent
 	mbedtls
 	nlohmann-json
+	gtest
 	)
 source=(
 	git+https://github.com/openthread/ot-commissioner.git
@@ -32,7 +33,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd ot-commissioner
-  cat ../../fix-build.patch | patch -p1
+  cat ../fix-build.patch | patch -p1
 
   git rm third_party/{json,libevent,COSE-C,cn-cbor,fmtlib,googletest}/repo
   git submodule init
@@ -74,4 +75,10 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install builddir
+  mv "${pkgdir}"/usr/etc/* ${pkgdir}/etc/.
+  rm -r "${pkgdir}"/usr/etc
+  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+  mv "${pkgdir}/etc/systemd"/system/* "${pkgdir}/usr/lib/systemd/system/."
+  rm -r "${pkgdir}/etc/systemd"
+  install -Dm644 ot-commissioner/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
