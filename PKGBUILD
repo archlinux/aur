@@ -10,6 +10,7 @@ license=(MIT)
 makedepends=(cargo)
 conflicts=("$pkgname")
 provides=("$pkgname")
+options=('!lto')
 source=("https://github.com/uros-5/jinja-lsp/archive/v$pkgver.tar.gz")
 sha256sums=('bb61303c318bee8c9c30e23dc1cf618192d1de87f6b2f9acb92b2e358a45e4cf')
 
@@ -22,6 +23,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver" || return 1
 
-	install -D "$pkgname" -t "$pkgdir/usr/bin"
+	install -D "target/release/$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

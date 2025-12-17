@@ -8,6 +8,7 @@ pkgbase = jinja-lsp
 	makedepends = cargo
 	provides = jinja-lsp
 	conflicts = jinja-lsp
+	options = !lto
 	source = https://github.com/uros-5/jinja-lsp/archive/v0.1.90.tar.gz
 	sha256sums = bb61303c318bee8c9c30e23dc1cf618192d1de87f6b2f9acb92b2e358a45e4cf
 
