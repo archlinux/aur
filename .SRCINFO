@@ -1,6 +1,6 @@
 pkgbase = scie-pants-bin
 	pkgdesc = scie-pants is the Pants build tool launcher binary
-	pkgver = 0.12.3
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://github.com/pantsbuild/scie-pants
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = scie-pants-bin
 	license = apache
 	options = !strip
 	options = !debug
-	source = https://github.com/pantsbuild/scie-pants/releases/download/v0.12.3/scie-pants-linux-x86_64
-	sha256sums = 816ee23d7d68283ee2ff754eaba730a6f50e52a6026527516ab25204c2a50539
+	source = https://github.com/pantsbuild/scie-pants/releases/download/v0.12.5/scie-pants-linux-x86_64
+	sha256sums = 5c9d26c2c6e775a2a9ddcc1680b3849b1e09ab4af24b55b062bb8858d1138bc5
 
 pkgname = scie-pants-bin
