@@ -1,6 +1,6 @@
 pkgbase = stardust-xr-gravity
 	pkgdesc = Command line spatial offset launcher that ensures Stardust XR connection
-	pkgver = 0.1.0
+	pkgver = 0.50.0
 	pkgrel = 2
 	url = https://github.com/StardustXR/gravity
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stardust-xr-gravity
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/StardustXR/gravity.git
+	source = git+https://github.com/StardustXR/gravity.git#tag=0.50.0
 	sha256sums = SKIP
 
 pkgname = stardust-xr-gravity

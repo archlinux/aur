@@ -4,7 +4,7 @@ _clientname="gravity"
 pkgdesc="Command line spatial offset launcher that ensures Stardust XR connection"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.1.0"
+pkgver="0.50.0"
 pkgrel="2"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
@@ -15,7 +15,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/$_clientname.git"
+    "git+https://github.com/StardustXR/$_clientname.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
