@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-gemini-auth
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Gemini OAuth Plugin for opencode"
 arch=('any')
 url="https://github.com/jenslys/opencode-gemini-auth"
@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
-pkgver() {
+latestver() {
     local latest
     latest=$(curl -fsS "https://api.github.com/repos/jenslys/opencode-gemini-auth/releases/latest" \
         | grep -Po '"tag_name": "v\K[^"]+' \
