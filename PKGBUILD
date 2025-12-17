@@ -42,6 +42,7 @@ provides=(llama.cpp)
 
 options=(lto !debug)
 
+backup=("etc/conf.d/llama.cpp")
 source=(
     "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
     "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
