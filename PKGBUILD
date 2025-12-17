@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=csharp-language-server
-_pkgver=5.3.0-2.25557.9
+_pkgver=5.3.0-2.25608.6
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc='A wrapper around Roslyn language server which makes compatible with editors other than VSCode'
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'dotnet-runtime')
 makedepends=('cargo')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SofusA/csharp-language-server/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('668e7b79cf1a760b3ef2d6e7042435c028787aa0ba5caff09b2241ba2e749f65')
+sha256sums=('de970c3bae7b4144f409f4584fd836517704b8d78660cec4cf5b849819628cc9')
 
 prepare() {
     cd "$pkgname-$_pkgver"
