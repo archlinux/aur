@@ -1,0 +1,4 @@
+[intel-level-zero-raytracing-support]
+source = "git"
+git = "https://github.com/intel/level-zero-raytracing-support.git"
+prefix = "v"
