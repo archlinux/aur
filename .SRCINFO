@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbclassic
 	pkgdesc = Jupyter Notebook as a Jupyter Server Extension
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jupyter.org/
 	arch = any
 	license = BSD-3-Clause

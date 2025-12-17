@@ -3,7 +3,7 @@
 _pyname=nbclassic
 pkgname=jupyter-$_pyname
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
 url='https://jupyter.org/'
