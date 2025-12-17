@@ -1,12 +1,13 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Foster McLane <fkmclane@gmail.com>
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.4.0
-pkgrel=14
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -40,8 +41,8 @@ makedepends=(
 )
 provides=(libopenshot.so)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('e5aa91e2ec3f64952a60e069e3c843d3ac59c3f896d81dccd789e52244f442ceed2e62374b6aeeb2514a8b88557edd60faca33cadb06c297ff400aebc83f98a6')
-b2sums=('faf2bcabb484a167667c0b2191d8b51ee972d2c204ae7edebbfaa7500542eebdce2dc6c4a8134bc8490e5254190ebda1521e3f437d874df18a8c40dfb48ffed2')
+sha512sums=('6a19717ed9f1602e0c3737a69b7664de0a36f837e2cbcf3d9275b28001306ea75bc0cd45306221d5134913ac1173ee764e74a321e07045eca177d52355a70dd9')
+b2sums=('e667138e67debeb0161ac221744009f5112abdcd10689a14195fd21319874000c5fde3d69ea10900ddec71f21f991657e867929486b87fde78928a42a0597dbb')
 
 prepare() {
 # protobuf 23 requiers C++17
