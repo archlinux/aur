@@ -1,6 +1,6 @@
 # Maintainer: Brodino <brodino96@gmail.com>
 pkgname=shy-to-text
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A speech-to-text application using local Whisper AI models"
 arch=('x86_64' 'aarch64')

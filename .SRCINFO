@@ -1,6 +1,6 @@
 pkgbase = shy-to-text
 	pkgdesc = A speech-to-text application using local Whisper AI models
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Brodino96/shy-to-text
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = shy-to-text
 	depends = alsa-lib
 	depends = openblas
 	provides = shy-to-text
-	source = git+https://github.com/Brodino96/shy-to-text.git#tag=v1.0.1
+	source = git+https://github.com/Brodino96/shy-to-text.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = shy-to-text
