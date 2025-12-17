@@ -23,6 +23,7 @@ build() {
 
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=RELEASE \
+           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
            -DPYTHON_EXECUTABLE=/usr/bin/python2
   make
 }
