@@ -1,0 +1,15 @@
+pkgbase = desym
+	pkgdesc = Declaratively manage your symlinks, with lua!
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/initMayday/desym.git
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = lua
+	provides = desym
+	conflicts = desym
+	source = desym::git+https://github.com/initMayday/desym.git
+	sha256sums = SKIP
+
+pkgname = desym
