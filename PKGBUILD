@@ -1,6 +1,6 @@
 # Maintainer: Daniel Serrano Armenta (AnabasaSoft) <anabasasoft@gmail.com>
 pkgname=sign-and-seal
-pkgver=1.13
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="Simple PDF Signer for Linux (Sign & Seal) - Compiled from source"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('python' 'git')
 
 source=("https://github.com/AnabasaSoft/SignAndSeal/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('962e9f8ef65012de2aadb4cbdce05ce1e45ae126df051fe883252991300e5345')
+sha256sums=('3747f0fa759e88e153c0219c49a5778c4d739f5f4cda98636f22608707232748')
 
 prepare() {
     cd "SignAndSeal-${pkgver}"

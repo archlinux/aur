@@ -1,6 +1,6 @@
 pkgbase = sign-and-seal
 	pkgdesc = Simple PDF Signer for Linux (Sign & Seal) - Compiled from source
-	pkgver = 1.13
+	pkgver = 1.13.4
 	pkgrel = 1
 	url = https://github.com/AnabasaSoft/SignAndSeal
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sign-and-seal
 	depends = fuse2
 	provides = sign-and-seal
 	conflicts = sign-and-seal-bin
-	source = https://github.com/AnabasaSoft/SignAndSeal/archive/refs/tags/v1.13.tar.gz
-	sha256sums = 962e9f8ef65012de2aadb4cbdce05ce1e45ae126df051fe883252991300e5345
+	source = https://github.com/AnabasaSoft/SignAndSeal/archive/refs/tags/v1.13.4.tar.gz
+	sha256sums = 3747f0fa759e88e153c0219c49a5778c4d739f5f4cda98636f22608707232748
 
 pkgname = sign-and-seal
