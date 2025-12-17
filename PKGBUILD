@@ -1,6 +1,6 @@
 # Maintainer: Stan-breaks <stanleymwendwa03@email.com>
 pkgname=ytsurf
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="YouTube in your terminal. Clean and distraction-free."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
   'sentaku: A  minimalist selecter alternative'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d72e25f8bd9c9998f454f5455acc940e7aeee6de5916b19f5730f558ef6f189a')
+sha256sums=('1cd12507860ca8b4e2318061a9cbe3d4d5c8643b9306fbc00c11f1b8e8436fa1')
 
 package() {
 	cd "$pkgname-$pkgver"
