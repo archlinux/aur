@@ -1,7 +1,7 @@
 pkgbase = ck-bin
 	pkgdesc = Local first semantic and hybrid BM25 grep/search tool for use by AI and humans
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BeaconBay/ck
 	arch = x86_64
 	license = Apache-2.0
