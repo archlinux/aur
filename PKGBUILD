@@ -2,7 +2,7 @@
 
 pkgname=dmde
 pkgver=4.4.0.828
-pkgrel=4
+pkgrel=5
 pkgdesc="DM Disk Editor and Data Recovery Software"
 arch=('x86_64')
 url="https://dmde.com/"
@@ -20,7 +20,7 @@ sha256sums=('dee19e2774f38052b65a46568f8f7c3c34dc638b4c6abe12913238b07e2a3fe0'
             'f84d392bd8a60bbe2e8820f8d0f184d20ee6f8e9bd8be430f772b84c03beda12')
 noextract=("dmde-${pkgver}.zip")
 
-pkgver() {
+latestver() {
     curl -s https://dmde.com/ru/download.html | 
     grep -o 'dmde-[0-9-]\+-lin64-gui.zip' | 
     head -1 | 
