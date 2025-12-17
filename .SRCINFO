@@ -1,11 +1,11 @@
 pkgbase = python-django-docs
 	pkgdesc = Documentation for the Django framework
-	pkgver = 5.2
-	pkgrel = 3
+	pkgver = 6.0
+	pkgrel = 1
 	url = https://docs.djangoproject.com/
 	arch = any
 	license = BSD-3-Clause
-	source = python-django-docs-5.2.zip::https://media.djangoproject.com/docs/django-docs-5.2-en.zip
-	sha256sums = c76ec373ab1725a7744e8422725ea7c417234c546ffbbae4c9f898de92172ced
+	source = python-django-docs-6.0.zip::https://media.djangoproject.com/docs/django-docs-6.0-en.zip
+	sha256sums = e1bf8b58d4e3bc7d87b83d707f246905f8544b2c68687a4e973d415b5f836dc1
 
 pkgname = python-django-docs
