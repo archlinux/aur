@@ -1,73 +1,66 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="zls"
-pkgname="${_basename}-mach"
+_suffix="-mach"
+pkgname="${_basename}${_suffix}"
 pkgver=0.14.0dev.336+a9e651a2
-pkgrel=2
+_pkgver="${pkgver//dev/-dev}"
+pkgrel=3
 pkgdesc="A language server for Zig"
 arch=(
-  'aarch64'
-  'armv7h'
-  'i686'
-  'loong64'
-  # 'powerpc64le'
-  'riscv64'
-  'x86_64'
+  'aarch64'     # 'aarch64'
+  'armv7h'      # 'arm'
+  # 'loong64'     # 'loongarch64'
+  # 'powerpc64le' # 'powerpc64le'
+  # 'riscv64'     # 'riscv64'
+  # 's390x'       # 's390x'
+  'i686'        # 'x86'
+  'x86_64'      # 'x86_64'
 )
 url="https://zigtools.org/zls"
 _url="https://github.com/zigtools/${_basename}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'sh'
-  'zig-mach'
+  "zig${_suffix}"
 )
 makedepends=(
-  'curl'
   'git'
-  'jq'
+)
+_zigdepends=(
+  # zls
+  "known-folders-1cceeb70e77dec941a4178160ff6c8d05a74de6f.tar.gz::https://github.com/ziglibs/known-folders/archive/1cceeb70e77dec941a4178160ff6c8d05a74de6f.tar.gz"
+  "diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz::https://github.com/ziglibs/diffz/archive/ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz"
+  "zig-lsp-codegen-25b7b6676e00edb803c2b8398821b70f0f827c92.tar.gz::https://github.com/zigtools/zig-lsp-codegen/archive/25b7b6676e00edb803c2b8398821b70f0f827c92.tar.gz"
+  "tracy-0.11.1.tar.gz::https://github.com/wolfpld/tracy/archive/refs/tags/v0.11.1.tar.gz"
 )
 _pkgsrc="${_url##*/}"
-source=("${_basename}-versioned.sh"
-        "${_pkgsrc}::git+${_url}.git")
+source=(
+  "${_basename}-versioned.sh"
+  "${_pkgsrc}::git+${_url}.git#commit=${pkgver##*+}"
+  "${_zigdepends[@]}"
+)
+noextract=(
+  "${_zigdepends[@]%%::*}"
+)
 sha256sums=('b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68'
-            'SKIP')
+            '145169b90d6e383f29226964f6958187ca84e15a6fdde002b96eea3a5ccccb39'
+            '0ecaa2d606744e72d38a4251bd6ffb81c36b39bd3c9449d302b0b709c22110a0'
+            '1dd8f4678171bfd2476aa74743e48bce10aad2b90c2df038d3ac6b0ef37fc3ba'
+            'f559a194f33ac2946fcf92cc7fe1f9d9feaf6aee0d092648695fd4f5375b271a'
+            '2c11ca816f2b756be2730f86b0092920419f3dabc7a7173829ffd897d91888a1')
 
 prepare() {
-  local zig_version index_json zls_version zls_commit
-  zig_version="$(zig-mach version | tr -d '\n' | jq -sRr @uri)"
-  index_json="$(curl -s "https://releases.zigtools.org/v1/zls/select-version?zig_version=${zig_version}&compatibility=full")"
-  zls_version="$(jq -r '."version"' <<< "${index_json}")"
-  zls_commit="${zls_version##*+}"
-  
   cd "${srcdir}"
-  sed -e "s|@@ZIG_PATH@@|/opt/zig-mach|g" \
+  sed -e "s|@@ZIG_PATH@@|/opt/zig${_suffix}|g" \
       -e "s|@@ZLS_PATH@@|/usr/lib/${pkgname}|g" \
       -i "${_basename}-versioned.sh"
 
-  cd "${_pkgsrc}"
-  git -c advice.detachedHead=false checkout "${zls_commit}"
-
-  grep -oP '(?<=\.url = ")[^"]+' build.zig.zon | while read -r zig_fetch_url; do
-    zig-mach fetch --global-cache-dir "${srcdir}/zig-global-cache" "${zig_fetch_url}"
+  for dep in "${_zigdepends[@]}"; do
+    zig-mach fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
   done
-}
-
-pkgver() {
-  cd "${srcdir}/${_pkgsrc}"
-  local build_version build_version_normalized 
-  local git_describe git_describe_tail git_describe_normalized
-  # 0.16.0-dev
-  build_version="$(grep -Po '(?<=\.version = ")[^"]+' build.zig.zon)"
-  # 0.16.0dev
-  build_version_normalized="${build_version//-/}"
-  # 0.15.0-3-g1840a4b8
-  git_describe="$(git describe --match "*.*.*" --tags)"
-  # 3-g1840a4b8
-  git_describe_tail="${git_describe#*-}"
-  # 3+1840a4b8
-  git_describe_normalized="${git_describe_tail//-g/+}"
-  # 0.16.0dev.3+1840a4b8
-  printf '%s.%s' "${build_version_normalized}" "${git_describe_normalized}"
 }
 
 build() {
@@ -78,7 +71,7 @@ build() {
     --global-cache-dir "${srcdir}/zig-global-cache"
     --system "${srcdir}/zig-global-cache/p"
     --verbose
-    -Dtarget=native-linux.6.15-gnu.2.41
+    -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
     -Doptimize=ReleaseSafe
     -Dpie=true
@@ -89,6 +82,7 @@ build() {
 }
 
 # check() {
+#   export PATH="/opt/zig${_suffix}:$PATH"
 #   local zig_options=(
 #     --summary all
 #     --prefix /usr
@@ -101,7 +95,7 @@ build() {
 #     -Doptimize=ReleaseSafe
 #     -Dpie=true
 #   )
-# 
+
 #   cd "${srcdir}/${_pkgsrc}"
 #   DESTDIR="check" zig-mach build test "${zig_options[@]}"
 # }
@@ -112,7 +106,7 @@ package() {
 
   cd "${_pkgsrc}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "build/usr/bin"
   install -vDm755 "${_basename}" "${pkgdir}/usr/lib/${pkgname}/${_basename}"
