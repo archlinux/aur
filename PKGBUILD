@@ -1,7 +1,8 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
+
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.4.11.r32.g4d8fd06
+pkgver=0.6.3.r5.g0768995
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -20,10 +21,13 @@ depends=(
   'json-glib'
   'libadwaita'
   'libdex'
+  'libsecret'
   'libsoup3'
   'libxmlb'
   'libyaml'
+  'md4c'
   'pango'
+  'webkitgtk-6.0'
 )
 makedepends=('blueprint-compiler' 'git' 'glib2-devel' 'meson' 'ninja')
 optdepends=('krunner-bazaar: krunner integration')
