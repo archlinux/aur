@@ -4,7 +4,7 @@ _clientname="flatland"
 pkgdesc="3D window-manager like program for non-egocentric 2D app compaatibility"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.1.0"
+pkgver="0.50.0"
 pkgrel="2"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
@@ -15,7 +15,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/$_clientname.git"
+    "git+https://github.com/StardustXR/$_clientname.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
@@ -30,7 +30,7 @@ build() {
     cd "$srcdir/$_clientname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export STARDUST_RES_PREFIXES=/usr/share
+    export STARDUST_RES_PREFIXES="/usr/share/$pkgname"
     cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -38,10 +38,10 @@ package() {
     cd "$srcdir/$_clientname"
     install -Dm755 "target/$CARCH-unknown-linux-gnu/release/$_clientname" "$pkgdir/usr/bin/$_clientname"
     install -Dm644 \
-		LICENSE \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 \
-		README.md \
-		"$pkgdir/usr/share/doc/$pkgname/README.md"
-    cp -r "res/$_clientname" "$pkgdir/usr/share/"
+	    LICENSE \
+	    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 \
+	    README.md \
+	    "$pkgdir/usr/share/doc/$pkgname/README.md"
+    cp -r "res/$_clientname" "$pkgdir/usr/share/$pkgname"
 }
