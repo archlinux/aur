@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=go-ios-bin
-pkgver=1.0.189
+pkgver=1.0.190
 pkgrel=1
 pkgdesc="A collection of tools to interact with iOS devices on Linux"
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('glibc')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.zip::https://github.com/danielpaulus/go-ios/releases/download/v${pkgver}/go-ios-linux.zip"
         "LICENSE::https://raw.githubusercontent.com/danielpaulus/go-ios/main/LICENSE")
-sha256sums=('17fa16dad41b4d020266e22bf19bc03911ba7a48f48f7f706a7424222e74e165'
+sha256sums=('0a409528beedd838bfa22c05c8220afd1c0e7e61c29ab373091c1382365e3a27'
             'd368be6f632f8f928369c6f1923cf2f884a1ae42a5f0dd218acd96f9bcfa75b4')
 
-pkgver() {
+latestver() {
     curl -s "https://api.github.com/repos/danielpaulus/go-ios/releases/latest" |
     jq -r '.tag_name' | sed 's/^v//'
 }
