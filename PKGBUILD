@@ -1,6 +1,6 @@
 # Maintainer: Sandwich Farm <maintainers@sandwich.farm>
 pkgname=hyprlax-git
-pkgver=r122.2283dc9
+pkgver=r137.57bfcbe
 pkgrel=1
 pkgdesc="Smooth parallax wallpaper animation for Hyprland and other Wayland compositors"
 arch=('x86_64' 'aarch64')

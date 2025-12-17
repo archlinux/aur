@@ -1,6 +1,6 @@
 pkgbase = hyprlax-git
 	pkgdesc = Smooth parallax wallpaper animation for Hyprland and other Wayland compositors
-	pkgver = r122.2283dc9
+	pkgver = r137.57bfcbe
 	pkgrel = 1
 	url = https://github.com/sandwichfarm/hyprlax
 	arch = x86_64
