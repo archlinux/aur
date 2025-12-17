@@ -5,13 +5,13 @@
 pkgname=anytype-alpha-bin
 _pkgname=anytype
 pkgver=0.52.11_alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Operating environment for the new internet (Anytype)"
 arch=('x86_64')
 url="https://anytype.io"
 license=('custom')
 depends=('bash' 'glibc' 'gcc-libs' 'libsecret' 'glib2' 'hicolor-icon-theme')
-makedepends=('jq')
+
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
 conflicts=('anytype'

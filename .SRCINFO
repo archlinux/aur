@@ -1,11 +1,10 @@
 pkgbase = anytype-alpha-bin
 	pkgdesc = Operating environment for the new internet (Anytype)
 	pkgver = 0.52.11_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anytype.io
 	arch = x86_64
 	license = custom
-	makedepends = jq
 	depends = bash
 	depends = glibc
 	depends = gcc-libs
