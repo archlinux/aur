@@ -10,9 +10,8 @@ pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
-depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-pyxdg' 'python-setproctitle' 'python-pyenchant' 'python-pexpect')
-optdepends=('gstreamer: for soundicons via gstreamer'
-'socat: Control running Fenrir screenreader'
+depends=('espeak-ng' 'gst-plugins-base' 'gst-plugins-good' 'gstreamer' 'python' 'python-gobject' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-pyxdg' 'python-setproctitle' 'python-pyenchant' 'python-pexpect')
+optdepends=('socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
