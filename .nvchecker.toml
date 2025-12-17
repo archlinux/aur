@@ -1,5 +1,4 @@
 [xdg-desktop-portal]
-source = "github"
-github = "flatpak/xdg-desktop-portal"
-use_max_tag = true
+source = "git"
+git = "https://github.com/flatpak/xdg-desktop-portal.git"
 include_regex = '\d+\.\d*[02468]\.\d+'
