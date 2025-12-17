@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland built with Quickshell'
 arch=('any')
@@ -53,12 +53,12 @@ optdepends=(
     'slurp: Screen region selection for screenshots'
     'wf-recorder: Screen recording'
 )
-source=("git+${url}.git")
+source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 install=hamr.install
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Install to /etc/xdg/quickshell/hamr (system-wide quickshell config)
     install -dm755 "$pkgdir/etc/xdg/quickshell/$pkgname"

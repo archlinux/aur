@@ -1,9 +1,9 @@
 post_install() {
-    # Create user config directory
     local config_dir="$HOME/.config/hamr"
+    local state_dir="$HOME/.local/state/quickshell/hamr"
     mkdir -p "$config_dir"
+    mkdir -p "$state_dir"
 
-    # Copy default colors.json if it doesn't exist
     if [ ! -f "$config_dir/colors.json" ]; then
         cp /etc/xdg/quickshell/hamr/defaults/colors.json "$config_dir/colors.json"
     fi
@@ -14,7 +14,8 @@ post_install() {
     echo "==> To start hamr, run:"
     echo "      hamr"
     echo ""
-    echo "==> User config and plugins are stored in ~/.config/hamr/"
+    echo "==> User config and plugins: ~/.config/hamr/"
+    echo "==> Persistent state: ~/.local/state/quickshell/hamr/"
     echo ""
     echo "==> Color theme:"
     echo "      Edit ~/.config/hamr/colors.json directly, or"
@@ -39,8 +40,8 @@ post_upgrade() {
 
 post_remove() {
     echo ""
-    echo "==> User data in ~/.config/hamr/ has been preserved."
-    echo "==> Remove manually if no longer needed:"
+    echo "==> User data has been preserved. Remove manually if no longer needed:"
     echo "      rm -rf ~/.config/hamr"
+    echo "      rm -rf ~/.local/state/quickshell/hamr"
     echo ""
 }
