@@ -1,6 +1,6 @@
 # Maintainer: Tempik25 <tempik@mail.tempestfoundation.org>
 pkgname=rustffetch-git
-pkgver=0.1.0.r2.gb928ea2
+pkgver=0.1.0.r1.gded9187
 pkgdesc='Simple, fast and flexible neofetch-like information manager.'
 pkgrel=1
 arch=('x86_64')
@@ -28,10 +28,10 @@ package() {
   install -Dm755 target/release/rustffetch "$pkgdir/usr/bin/rustffetch"
 
   # /usr/share
-  install -d "$pkgdir/usr/share/rustffetch/distro"
-  for f in distro/*; do
-    install -Dm644 "$f" "$pkgdir/usr/share/rustffetch/distro/$(basename "$f")"
+  find distro -type f | while read file; do
+      dest="$pkgdir/usr/share/rustffetch/$file"
+      install -Dm644 "$file" "$dest"
   done
-  install -Dm644 default.jsonc "$pkgdir/usr/share/rustffetch/default.jsonc"
 
+  install -Dm644 default.jsonc "$pkgdir/usr/share/rustffetch/default.jsonc"
 }

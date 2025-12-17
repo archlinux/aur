@@ -1,6 +1,6 @@
 pkgbase = rustffetch-git
 	pkgdesc = Simple, fast and flexible neofetch-like information manager.
-	pkgver = 0.1.0.r2.gb928ea2
+	pkgver = 0.1.0.r1.gded9187
 	pkgrel = 1
 	url = https://github.com/tempik25/rustffetch
 	arch = x86_64
