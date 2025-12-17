@@ -2,8 +2,8 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.25.1
-_electronversion=35
+pkgver=0.25.7
+_electronversion=36
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 makedepends=(
     # https://github.com/toeverything/AFFiNE/blob/canary/docs/BUILDING.md#prerequisites
     # Keep nodejs the first as we might replace it later.
-    nodejs-lts-jod yarn
+    nodejs yarn
     # node gyp
     python
     # electron-packager
@@ -35,7 +35,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
-sha256sums=('d945c2737752ba23bb4b6527c0e2a01ddf18535a3a61614e2dab0e20fbf2cdd4'
+sha256sums=('53af0d30f63e0b5ab69352511d35da61173837a54f2a6aa8ab8ebbedf690d67d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
