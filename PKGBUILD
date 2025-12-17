@@ -4,14 +4,14 @@ pkgname="avalonia86"
 pkgdesc="A cross-platform configuration manager for the 86Box emulator"
 
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 
 arch=(aarch64 x86_64)
 
 url="https://github.com/notBald/Avalonia86"
 license=(MIT)
 
-depends=('dotnet-runtime>=9.0')
+depends=(dotnet-runtime-9.0)
 makedepends=('dotnet-sdk>=9.0' gendesk)
 optdepends=('86box>=2.0: emulator used with this configuration manager')
 
@@ -31,7 +31,7 @@ prepare() {
 		--pkgdesc "${pkgdesc}" \
 		--exec "${pkgname}" \
 		--icon "${pkgname}.svg" \
-		--categories Utility
+		--categories 'System;Emulator'
 }
 
 build() {
@@ -53,7 +53,7 @@ package() {
 	# move to the build directory
 	cd "Avalonia86-${pkgver}/bin"
 
-	# copy the built files to the package directory
+	# copy built files to the package directory
 	find . -type f \
 		-not -name '*.pdb' \
 		-exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
