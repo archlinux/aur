@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -17,9 +17,23 @@ depends=(
 )
 optdepends=('ipset: required for iptables mode')
 makedepends=('git')
-backup=("opt/$pkgname/config")
+backup=(
+  "opt/$pkgname/config"
+  #"opt/$pkgname/ipset/zapret-hosts-user-exclude.txt"
+  #"opt/$pkgname/ipset/zapret-hosts-user.txt"
+  #"opt/$pkgname/ipset/zapret-hosts-user-ipban.txt"
+  #"opt/$pkgname/ipset/zapret-ip-user.txt"
+)
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('efc52911d8447fcf8e72723c2f6f0534e10dd88f33216fcd68a34d5827bedba6')
+sha256sums=('7c419697b84634c64a71e372e892d55f6a1282a44fbf513cfa3f73e83b48e29c')
+
+prepare() {
+  cd "$pkgname"/ipset
+  #mv -f zapret-hosts-user-exclude.txt.default zapret-hosts-user-exclude.txt
+  #touch zapret-hosts-user.txt
+  #touch zapret-hosts-user-ipban.txt
+  #touch zapret-ip-user.txt
+}
 
 build() {
   cd "$pkgname"
