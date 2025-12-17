@@ -2,7 +2,7 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('01a5ab1d8445d9677f307db49178c87971afeeb29dbebec66486c5966137d444')
+sha256sums=('b2d189a5d6bc9b527ddce25ddd4a3eafde7790d792a7b68b8f56d2fcd14206e9')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -40,4 +40,3 @@ package() {
   # Use the project Makefile to install everything
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
-
