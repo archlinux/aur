@@ -92,7 +92,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpx electron-vite build
+    NODE_ENV=production     pnpm exec electron-vite build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 
 }
