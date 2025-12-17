@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-unstable
-pkgver=10.0.0
+pkgver=1.0.0 # Not the Doudou version but the aur package version
 pkgrel=1
 pkgdesc="Stream your music with ease and style (unstable/development version). Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
