@@ -1,6 +1,6 @@
 pkgbase = r-flowdensity
 	pkgdesc = Sequential Flow Cytometry Data Gating
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowDensity
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-flowdensity
 	depends = r-polyclip
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowDensity_1.42.0.tar.gz
-	md5sums = 8e63784247777828d7311a2e1900339a
-	b2sums = 9241da7a1952df31fa4f8da58faf28ac2b651f08894bbe78cc2714e85cb89cda1bffa701f1483f63e09662accb24472181f15d4c65bd079a564a6efc916e7588
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowDensity_1.44.0.tar.gz
+	md5sums = a69fc79ebeb2432174e46fa62f772247
+	b2sums = ab9d59a826989df381e7ed7044df50074e3b046452d6729aceeb85e41eb82f760c3a285c936709f002bd3e1ef7a5e7a57356fd225a8564fb1cd47c4083e5eebe
 
 pkgname = r-flowdensity
