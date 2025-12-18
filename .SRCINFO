@@ -6,6 +6,7 @@ pkgbase = jswank-murmur-bin
 	arch = x86_64
 	license = MIT
 	provides = jswank-murmur
+	provides = murmur
 	conflicts = jswank-murmur
 	conflicts = murmur
 	conflicts = murmur-bin
