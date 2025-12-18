@@ -1,0 +1,13 @@
+pkgbase = iff
+	pkgdesc = A tool to run previously run commands - un-forgetter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/will-x86/iff
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = iff-0.1.0.tar.gz::https://github.com/will-x86/iff/archive/0.1.0.tar.gz
+	sha256sums = d394b6a887f03b4e0052956a5cb1fd2168bc2ad07681a10981f10f718e3f7940
+
+pkgname = iff
