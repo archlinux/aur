@@ -3,7 +3,7 @@
 
 pkgname=alchitry-labs-v2-bin
 _pkgname=alchitry-labs
-pkgver=2.0.46
+pkgver=2.0.47
 pkgrel=1
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=(alchitry-labs)
 depends=('gmp' 'alsa-lib' 'glibc' 'libxi' 'libxtst')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2/releases/download/$pkgver/alchitry-labs-$pkgver-linux-amd64.tar.gz")
-sha256sums=("a7630f2eed916bfb32f65f343f4eb5257d282d48aecc6ab05f8ec7f0b9ef5380")
+sha256sums=("6907d21f2d45579e5b0576d249c0debfbce0f5e7d21d8eb81556870449c11d1f")
 
 package() {
     local _appdir="/usr/lib/alchitry/${_pkgname}"
