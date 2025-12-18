@@ -1,0 +1,3 @@
+[python-file-primitives]
+source = "pypi"
+pypi = "file-primitives"

@@ -1,0 +1,16 @@
+pkgbase = python-file-primitives
+	pkgdesc = File primitives for Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/file-primitives/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/file_primitives/file_primitives-0.2.1.tar.gz
+	sha256sums = 8f70e58dfbbbe2618d4645f1aaf6d5e7d49f68136d86486312b0a88275bbcde6
+
+pkgname = python-file-primitives
