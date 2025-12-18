@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-st
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal emulator for X with some patches applied"
 url="https://github.com/archy-linux/$pkgname"
 arch=('i686' 'x86_64')

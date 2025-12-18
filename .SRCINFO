@@ -1,7 +1,7 @@
 pkgbase = archy-st
 	pkgdesc = Simple terminal emulator for X with some patches applied
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archy-linux/archy-st
 	arch = i686
 	arch = x86_64
