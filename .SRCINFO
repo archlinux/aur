@@ -1,0 +1,25 @@
+pkgbase = claude-code-latest
+	pkgdesc = An agentic coding tool that lives in your terminal (latest channel)
+	pkgver = 2.0.72
+	pkgrel = 1
+	url = https://github.com/anthropics/claude-code
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-claude-code
+	depends = bash
+	depends = glibc
+	optdepends = git: allow Claude to use git
+	optdepends = github-cli: interact with GitHub
+	optdepends = glab: interact with GitLab
+	optdepends = ripgrep: enhanced file search
+	provides = claude-code
+	conflicts = claude-code
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/LICENSE.md
+	sha256sums = 728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6
+	source_x86_64 = claude-2.0.72-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.0.72/linux-x64/claude
+	sha256sums_x86_64 = 91521249ef601cc2e6a0f4432ce095acc99ecbb87cf29c2b5bf652e566503bb7
+	source_aarch64 = claude-2.0.72-aarch64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.0.72/linux-arm64/claude
+	sha256sums_aarch64 = 44fc21f4670c77ae30b0705f79c9a572bf8516a4f8ca918f62320444ed360c4b
+
+pkgname = claude-code-latest
