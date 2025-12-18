@@ -2,9 +2,10 @@
 
 _llvm=21
 _basename="zig"
-pkgname="${_basename}-master"
+_prefix="-master"
+pkgname="${_basename}${_prefix}"
 pkgver=0.16.0dev.1484+d0ba6642b
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -46,6 +47,7 @@ makedepends=(
 # )
 options=(
   '!lto'
+  '!strip'
 )
 _pkgsrc="${_url##*/}"
 source=(
@@ -72,7 +74,6 @@ prepare() {
     -D ZIG_USE_LLVM_CONFIG:BOOL=ON
     # -D ZIG_TARGET_TRIPLE:STRING='native-linux.6.6-gnu.2.42'
     -D ZIG_TARGET_MCPU:STRING='baseline'
-    -D ZIG_NO_LIB:BOOL=ON
   )
   
   cd "${srcdir}/${_pkgsrc}"
@@ -117,10 +118,12 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -vd "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-  cp -a --no-preserve=ownership "lib"                 -t "${pkgdir}/opt/${pkgname}"
-  cp -a --no-preserve=ownership "fakeinstall/usr/bin" -T "${pkgdir}/opt/${pkgname}"
+  cd "fakeinstall/usr"
+  install -vd "${pkgdir}/opt/${pkgname}"
+  cp -va --no-preserve=ownership "bin" -T "${pkgdir}/opt/${pkgname}"
+  cp -a  --no-preserve=ownership "lib" -t "${pkgdir}/opt/${pkgname}"
 
+  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
   ln -vsf "/opt/${pkgname}/${_basename}" "${pkgdir}/usr/bin/${pkgname}"
   ln -vsf "/opt/${pkgname}/lib"          "${pkgdir}/usr/lib/${pkgname}"
 }
