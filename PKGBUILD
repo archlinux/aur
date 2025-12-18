@@ -3,10 +3,10 @@
 makedepends=(python-build python-installer python-poetry python-pytest)
 depends=(python-yaml python-gobject python-pyotp gtk3 hicolor-icon-theme)
 optdepends=('sops: Enable otp encryption')
-source=('otpgui-0.2.8.tar.gz::https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.2.8.tar.gz')
-sha256sums=('b3ccfe3a3e691335f38280166c4447afa708360b83a3e454ec210b23d1f1f2d0')
+source=('otpgui-0.2.9.tar.gz::https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.2.9.tar.gz')
+sha256sums=('b842b93c2d415e97ce1f1c5e317f268af1b3f04cf8c4e261959dfaa02b30e3b9')
 pkgname=otpgui
-pkgver=0.2.8
+pkgver=0.2.9
 pkgdesc="An OTP generator compatible with totp. Written in python and gtk."
 url="https://github.com/gianluca-mascolo/otpgui"
 arch=('any')
