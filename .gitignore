@@ -45,6 +45,7 @@ gnupg/
 .idea/
 .qodo/
 .zencoder/
+.zenflow/
 .codacy/
 .codacy.*
 
