@@ -1,6 +1,6 @@
 # Maintainer: aman <amankumarmatta0@gmail.com>
 
-pkgname=unityhub
+pkgname=unityhub-bin
 pkgver=3.15.4
 pkgrel=1
 pkgdesc="The Unity Hub is a standalone application for managing Unity projects and installations"
