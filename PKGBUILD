@@ -6,7 +6,7 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.7.2.2.gf46f28a
+pkgver=1.7.2.25.g062e51c
 pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
@@ -16,6 +16,7 @@ license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 
 depends=('python>=3.11' 'python-pyqt6>=6.8.0' 'python-valve-parsers-git>=1.0.7' 'python-requests>=2.32.5' 'python-packaging>=25.0' 'python-platformdirs' 'python-pygithub-git>=v2.8.0')
 makedepends=('git' 'gendesk' 'sed')
+optdepends=('python-rich')
 
 install="${_pkgname}.install"
 
