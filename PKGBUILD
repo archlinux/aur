@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.4.9.r91.gad31b18
-_electronversion=31
-_nodeversion=20
+pkgver=5.5.0.beta.2.r19.g127800e
+_electronversion=32
+_nodeversion=22
 pkgrel=1
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more.(Use system-wide electron)"
 arch=('any')
