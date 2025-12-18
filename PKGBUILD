@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=8.1.r121754.gb478037423
+pkgver=8.1.r122185.g0d7b8d8913
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _obs_studio_ver='32.0.2'
@@ -108,6 +108,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
+    'svt-jpeg-xs-git'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -135,6 +136,7 @@ makedepends=(
     'amf-headers'
     'clang'
     'cmake'
+    'decklink-sdk'
     'git'
     'gmp'
     'libgl'
@@ -157,7 +159,6 @@ provides=(
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/lensfun/lensfun.git'
-        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -167,11 +168,10 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            'c774053b7279fc79966491dac275cded87eff0483feeb42b52e4f727f746a984'
+            'ec73ed3f3135ced7d24c7138d010789aed454b400bb39679098432cdef1df35d'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '4096e3909c9b0141095e8d578b5ab70e48d854e63190ddf3a58ee45aa1c01ef9'
+            '513f33f06f07798f638a7a1d2603a8538914083d088de420dc066386cfcfcc84'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -228,9 +228,6 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-    local _decklink_include="-isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
-    export CFLAGS+=" ${_decklink_include}"
-    export CXXFLAGS+=" ${_decklink_include}"
     export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
@@ -327,6 +324,7 @@ build() {
         --enable-libssh \
         --enable-libsvtav1 \
         --enable-libsvthevc \
+        --enable-libsvtjpegxs \
         --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
@@ -400,4 +398,9 @@ package() {
     make -C ffmpeg DESTDIR="$pkgdir" install
     install -D -m755 ffmpeg/tools/qt-faststart -t "${pkgdir}/usr/bin"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    sed -i \
+        -e 's|-llensfun ||' \
+        -e 's|-lwhisper ||' \
+        -e "s|-L${srcdir}/staging/lib ||g" \
+        "${pkgdir}/usr/lib/pkgconfig/libavfilter.pc"
 }
