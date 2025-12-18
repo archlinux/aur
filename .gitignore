@@ -2,4 +2,6 @@
 !PKGBUILD
 !.gitignore
 !.SRCINFO
+!prometheus-push-gateway.conf
 !prometheus-push-gateway.service
+!prometheus-push-gateway.sysusers

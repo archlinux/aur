@@ -1,9 +1,17 @@
 [Unit]
-Description=Prometheus exporter for PostgreSQL
-After=network.target
+Description=Prometheus push acceptor for ephemeral and batch jobs
+Requires=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/prometheus-push-gateway
+User=push_gateway
+Group=push_gateway
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-push-gateway
+ExecStart=/usr/bin/prometheus-push-gateway $PUSH_GATEWAY_ARGS
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
 
 [Install]
 WantedBy=multi-user.target
