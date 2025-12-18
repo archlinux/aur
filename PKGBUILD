@@ -2,14 +2,14 @@
 pkgname=random-access-kjv
 pkgdesc="Access Random KJV Bible location for reading. from local server in browser or from command line"
 pkgver=v1.0.0
-pkgrel=2
+pkgrel=0
 arch=('x86_64')
 url="https://github.com/pumenis/random-access-kjv"
 license=('MIT')
 depends=()
 makedepends=('git' 'go')
 source=("git+https://github.com/pumenis/random-access-kjv.git#tag=v1.0.0")
-sha256sums=("SKIP")
+sha256sums=('835b98ab4d3e1a4b6ac54d55715df28cb7624458ad48679f88c7b248bd479339')
 
 pkgver() {
     cd "$srcdir/$pkgname"
