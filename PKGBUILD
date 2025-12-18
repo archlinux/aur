@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=biu-bin
 _pkgname=biu
-pkgver=1.6.0_beta.9
+pkgver=1.6.0_beta.11
 _realver="${pkgver//_/-}"
 pkgrel=1 
 pkgdesc="A cross-platform desktop music player based on Bilibili API"
