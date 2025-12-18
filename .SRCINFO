@@ -1,6 +1,6 @@
 pkgbase = simpleble
 	pkgdesc = The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android
-	pkgver = 0.7.3
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://www.simpleble.org/
 	arch = x86_64
@@ -11,10 +11,8 @@ pkgbase = simpleble
 	makedepends = python-pip
 	makedepends = git
 	options = !strip
-	source = https://github.com/OpenBluetoothToolbox/SimpleBLE/archive/refs/tags/v0.7.3.tar.gz
-	source = simplebluez.patch
-	sha256sums = b44042e05ef81d7583540eead8076667f57a1294672d6e86b8b7dfa20a9b56d1
-	sha256sums = 4b9c55f90beaea675e072e666d0a999e815d3e1de4c9a8d360f71c40540e31cb
+	source = https://github.com/simpleble/simpleble/archive/refs/tags/v0.10.3.tar.gz
+	sha256sums = f770c0009f7abaec518e4c715e93fe36f6764a5d495dc6ae683f2695dfd5f9bc
 
 pkgname = simplebluez
 	depends = simpledbus

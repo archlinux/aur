@@ -1,12 +1,8 @@
-# This is an example of a PKGBUILD for splitting packages. Use this as a
-# start to creating your own, and remove these comments. For more information,
-# see 'man PKGBUILD'. NOTE: Please fill out the license field for your package!
-# If it is unknown, then please put 'unknown'.
-
+# Maintainer: Antoine Gaudreau Simard <antoine at gaudreau dot simard>
 # Maintainer: Michael Limiero <mike5713 at gmail dot com>
 pkgname=('simplebluez' 'simpleble' 'simpledbus' 'python-simplepyble')
 pkgbase=simpleble
-pkgver=0.7.3
+pkgver=0.10.3
 pkgrel=1
 epoch=
 pkgdesc="The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android"
@@ -25,20 +21,13 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("https://github.com/OpenBluetoothToolbox/SimpleBLE/archive/refs/tags/v${pkgver}.tar.gz"
-	"simplebluez.patch")
+source=("https://github.com/simpleble/simpleble/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('b44042e05ef81d7583540eead8076667f57a1294672d6e86b8b7dfa20a9b56d1'
-            '4b9c55f90beaea675e072e666d0a999e815d3e1de4c9a8d360f71c40540e31cb')
+sha256sums=('f770c0009f7abaec518e4c715e93fe36f6764a5d495dc6ae683f2695dfd5f9bc')
 validpgpkeys=()
 
-prepare() {
-	cd "SimpleBLE-$pkgver"
-	patch -p2 -i "$srcdir/simplebluez.patch"
-}
-
 build() {
-	cd "SimpleBLE-$pkgver"
+	cd "simpleble-$pkgver"
 	cmake -S simplebluez -B build_simplebluez -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build_simplebluez -j7
 	cmake -S simpleble -B build_simpleble -DCMAKE_INSTALL_PREFIX=/usr
@@ -46,28 +35,26 @@ build() {
 	cmake -S simpledbus -B build_simpledbus -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build_simpledbus -j7
 	PIP_REQUIRE_VENV=0 pip install --prefix=pkg --ignore-installed .
-	#cmake -S simplersble -B build_simplersble -DCMAKE_INSTALL_PREFIX=/usr
-	#cmake --build build_simplersble -j7
 }
 
 package_simplebluez() {
 	depends=('simpledbus')
-	cd "SimpleBLE-$pkgver/build_simplebluez"
+	cd "simpleble-$pkgver/build_simplebluez"
 	make DESTDIR="$pkgdir/" install
 }
 
 package_simpleble() {
-	cd "SimpleBLE-$pkgver/build_simpleble"
+	cd "simpleble-$pkgver/build_simpleble"
 	make DESTDIR="$pkgdir/" install
 }
 
 package_simpledbus() {
-	cd "SimpleBLE-$pkgver/build_simpledbus"
+	cd "simpleble-$pkgver/build_simpledbus"
 	make DESTDIR="$pkgdir/" install
 }
 
 package_python-simplepyble() {
-	cd "SimpleBLE-$pkgver/"
+	cd "simpleble-$pkgver/"
 	mkdir "$pkgdir/usr"
 	cp -a pkg/* "$pkgdir/usr/"
 }
