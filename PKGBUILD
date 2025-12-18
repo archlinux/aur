@@ -5,7 +5,7 @@ pkgdesc="Prototype app launchers for Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
 pkgver="0.50.0"
-pkgrel="3"
+pkgrel="4"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
@@ -45,5 +45,5 @@ package() {
     install -Dm644 \
 	    README.md \
 	    "$pkgdir/usr/share/doc/$pkgname/README.md"
-    cp -r "res" "$pkgdir/usr/share/"
+    cp -r "res" "$pkgdir/usr/share/$pkgname"
 }
