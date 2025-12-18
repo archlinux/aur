@@ -6,7 +6,7 @@
 
 pkgname=libfprint-cs9711-git
 _pkgname=libfprint
-pkgver=1.94.9+42.r1853.20251208.a1a301a1
+pkgver=1.94.9+43.r1854.20251218.6cb01231
 pkgrel=1
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
