@@ -1,6 +1,6 @@
 pkgbase = hyprcap
 	pkgdesc = A utility to easily capture screenshots and recordings in Hyprland
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/alonso-herreros/hyprcap
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = hyprcap
 	depends = hyprpicker
 	depends = wl-clipboard
 	optdepends = fuzzel
-	source = hyprcap-1.3.1.tar.gz::https://github.com/alonso-herreros/hyprcap/archive/v1.3.1.tar.gz
-	sha256sums = 295cc9ddd2291d9f6cecf16933492916421d934ada0f285e92e5d7af44cccc8b
+	source = hyprcap-1.4.0.tar.gz::https://github.com/alonso-herreros/hyprcap/archive/v1.4.0.tar.gz
+	sha256sums = f2c6699ce90f40a9dcfbbfb50bedeb0afb2f619e0fee8e60e3873bbfba824258
 
 pkgname = hyprcap
