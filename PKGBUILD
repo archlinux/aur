@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland built with Quickshell'
 arch=('any')
