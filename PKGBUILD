@@ -1,5 +1,5 @@
 pkgname=qt-hearts-git
-pkgver=1.0.0.r2.gd4e2c0b
+pkgver=r3.d4e2c0b
 pkgrel=1
 pkgdesc="Classic hearts card game (development version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
