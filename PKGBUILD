@@ -10,7 +10,7 @@ depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan
 makedepends=('cargo')
 options=('!lto')
 source=("cfait-source-v0.3.2.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.3.2/cfait-source-v0.3.2.tar.gz")
-sha256sums=('49cd5aa20219055a3cd204938c1f31873ffbc3b891560c3f8ced5642d7e6c249')
+sha256sums=('9e2fb288e7855ee7e3fbfb92a59038697c2bb0112b40eb5b4f0f2f162de5b33d')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
