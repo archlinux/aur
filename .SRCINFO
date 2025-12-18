@@ -1,18 +1,18 @@
 pkgbase = moebyts-music-player-bin
 	pkgdesc = A music player with real-time pitch shifting, reversing, and time stretching.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/Moebytes/Music-Player
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
 	makedepends = asar
 	depends = electron28
-	provides = moebyts-music-player=0.3.2
+	provides = moebyts-music-player=0.3.3
 	conflicts = moebyts-music-player
-	source = moebyts-music-player-0.3.2-x86_64.AppImage::https://github.com/Moebytes/Music-Player/releases/download/v0.3.2/Music-Player-0.3.2.AppImage
-	source = LICENSE-0.3.2.txt::https://raw.githubusercontent.com/Moebytes/Music-Player/v0.3.2/license.txt
+	source = moebyts-music-player-0.3.3-x86_64.AppImage::https://github.com/Moebytes/Music-Player/releases/download/v0.3.3/Music-Player-0.3.3.AppImage
+	source = LICENSE-0.3.3.txt::https://raw.githubusercontent.com/Moebytes/Music-Player/v0.3.3/license.txt
 	source = moebyts-music-player.sh
-	sha256sums = 5966175e109e7fe41b4225f129a31d1155854aac05e7e66d0781b2d1a6b5f53e
+	sha256sums = 55de6fb487e5239c7ad35ed584d3f8368233cf89ed36cbbb3cc4c94c244b5b92
 	sha256sums = 8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 

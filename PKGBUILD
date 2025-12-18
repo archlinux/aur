@@ -2,7 +2,7 @@
 _appname=music-player
 pkgname="moebyts-${_appname}-bin"
 _pkgname="Moebyts Music Player"
-pkgver=0.3.2
+pkgver=0.3.3
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player with real-time pitch shifting, reversing, and time stretching.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Moebytes/Music-Player/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5966175e109e7fe41b4225f129a31d1155854aac05e7e66d0781b2d1a6b5f53e'
+sha256sums=('55de6fb487e5239c7ad35ed584d3f8368233cf89ed36cbbb3cc4c94c244b5b92'
             '8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
