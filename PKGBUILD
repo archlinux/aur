@@ -3,7 +3,7 @@
 pkgname=unityhub-bin
 pkgver=3.15.4
 pkgrel=1
-pkgdesc="The Unity Hub is a standalone application for managing Unity projects and installations"
+pkgdesc="Unity Hub is a desktop application for managing Unity Editor installations, projects, modules, licenses, and related resources."
 arch=('x86_64')
 url="https://unity.com/"
 license=('custom')
