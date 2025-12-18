@@ -1,0 +1,13 @@
+pkgbase = omnictl-bin
+	pkgdesc = CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/siderolabs/omni
+	arch = x86_64
+	license = BSL-1.1
+	provides = omnictl
+	conflicts = omnictl
+	source = omnictl-1.4.0::https://github.com/siderolabs/omni/releases/download/v1.4.0/omnictl-linux-amd64
+	sha256sums = 009cc5126b1441203a9bd3b1303cd8f0b2affcdfe764385a6673670918d3a5ae
+
+pkgname = omnictl-bin
