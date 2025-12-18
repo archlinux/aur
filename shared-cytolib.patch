@@ -10,7 +10,7 @@ index 779fb83..6e42d7a 100644
 -      if (.Platform$OS.type == "windows")
 -         libDir <- paste(libDir, .Platform$r_arch, "/", sep="")
 -      cat(asBuildPath(system.file(paste(libDir, "libcytolib.a", sep = ""), package = "cytolib")))
-+      cat("-lcytolib -lboost_filesystem -lboost_system")
++      cat("-lcytolib -lboost_filesystem")
    }
  
  
@@ -62,7 +62,7 @@ index 0019570..0a7b232 100644
 -$(boost_fs_objs): ${boost_sys_objs}
 -
 +$(USERLIB): $(cytolib_objs)
-+	$(CC) -shared $(LDFLAGS) -Wl,-soname=$(USERLIB) -o $@ $^ -lboost_filesystem -lboost_system -lhdf5_cpp -lhdf5 -llapack $(RPROTOBUF_LIBS) $(LIBR)
++	$(CC) -shared $(LDFLAGS) -Wl,-soname=$(USERLIB) -o $@ $^ -lboost_filesystem -lhdf5_cpp -lhdf5 -llapack $(RPROTOBUF_LIBS) $(LIBR)
  
  clean:
  	rm -f $(OBJECTS) ${cytolib_objs} ${boost_fs_objs} ${boost_sys_objs} $(SHLIB)
