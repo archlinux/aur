@@ -1,0 +1,21 @@
+pkgbase = spotify-player-gstreamer
+	pkgdesc = A command driven spotify player with gstreamer (pipewire native, no pulse-audio) backend.
+	pkgver = 0.21.2
+	pkgrel = 2
+	url = https://github.com/aome510/spotify-player
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = gcc-libs
+	depends = dbus
+	depends = glibc
+	depends = gst-plugins-base
+	depends = openssl
+	provides = spotify-player
+	options = !lto
+	source = spotify-player-0.21.2.tar.gz::https://github.com/aome510/spotify-player/archive/v0.21.2.tar.gz
+	sha256sums = 63fce17376105ba57a3a20d9e237141dfe655a4df606d6cd666a6cdd485f2f24
+
+pkgname = spotify-player-gstreamer
