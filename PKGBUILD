@@ -3,7 +3,7 @@
 _pkgname="pamac-tray-plasma"
 pkgname="$_pkgname-git"
 pkgver=r21.58353a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pamac tray icon for Plasma"
 url="https://gitlab.com/LordTermor/pamac-tray-icon-plasma"
 license=('Unknown')
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git'
   'ninja'
 )
 

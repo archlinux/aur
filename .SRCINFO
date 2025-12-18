@@ -1,11 +1,12 @@
 pkgbase = pamac-tray-plasma-git
 	pkgdesc = Pamac tray icon for Plasma
 	pkgver = r21.58353a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/LordTermor/pamac-tray-icon-plasma
 	arch = x86_64
 	license = Unknown
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
 	depends = knotifications
 	depends = kstatusnotifieritem
