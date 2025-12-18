@@ -1,0 +1,26 @@
+pkgbase = kwin-effects-better-blur-dx
+	pkgdesc = KWin Better Blur DX effect fork with window class force blur feature (Wayland & X11)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/xarblu/kwin-effects-better-blur-dx
+	install = kwin-effects-better-blur-dx.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kwin
+	makedepends = kwin-x11
+	depends = kio
+	depends = knotifications
+	depends = kcrash
+	depends = kglobalaccel
+	depends = kcmutils
+	depends = libepoxy
+	optdepends = kwin-x11: for X11
+	optdepends = kwin: for Wayland
+	conflicts = kwin-effects-forceblur
+	replaces = kwin-effects-forceblur
+	source = kwin-effects-better-blur-dx-2.0.0.tar.gz::https://github.com/xarblu/kwin-effects-better-blur-dx/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = d9e66be7e6d1ca6f575e3f3383bc721096b47eb95c7f01b901446d862ffa5784
+
+pkgname = kwin-effects-better-blur-dx
