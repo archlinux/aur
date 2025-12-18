@@ -2,8 +2,8 @@
 pkgname=hys-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.1
-pkgrel=1
-pkgdesc=" Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll"
+pkgrel=2
+pkgdesc="Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll"
 url="https://github.com/superstarryeyes/hys"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 # validpgpkeys=()
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   # cutting off 'foo-' prefix that presents in the git tag
   git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
