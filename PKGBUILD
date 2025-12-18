@@ -9,20 +9,24 @@ depends=(gtk3 glib2 openssl libxcb libxkbcommon systemd-libs pango atk hicolor-i
 optdepends=('update-desktop-database: refresh desktop entries' 'gtk-update-icon-cache: refresh icon cache')
 provides=('tabular')
 conflicts=('tabular')
+install=tabular-bin.install
 source_x86_64=("https://github.com/tabular-id/tabular/releases/download/v${pkgver}/tabular-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/tabular-id/tabular/releases/download/v${pkgver}/tabular-aarch64-unknown-linux-gnu.tar.gz")
 source=("tabular.desktop::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/tabular.desktop"
         "LICENSE::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/LICENSE"
         "LICENSE-AGPL::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/LICENSE-AGPL"
         "README.md::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/README.md"
-        "logo.png::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/assets/logo.png")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "logo.png::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/assets/logo-512.png"
+        "logo.svg::https://raw.githubusercontent.com/tabular-id/tabular/v${pkgver}/assets/logo.svg"
+        "tabular-bin.install")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
     install -Dm644 "${srcdir}/tabular.desktop" "${pkgdir}/usr/share/applications/tabular.desktop"
     install -Dm644 "${srcdir}/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/tabular.png"
+    install -Dm644 "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tabular.svg"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/LICENSE-AGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPL"
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
