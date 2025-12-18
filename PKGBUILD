@@ -1,8 +1,8 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 pkgname="stardust-xr-telescope"
-pkgver="0.50.0"
-pkgrel="2"
+pkgver="0.50.1"
+pkgrel="1"
 pkgdesc="See the stars! Simple Stardust XR overlay setup."
 arch=("any")
 url="https://github.com/StardustXR/telescope"
@@ -41,5 +41,5 @@ package() {
 		"$pkgdir/usr/share/applications/org.stardustxr.Telescope.desktop"
 	install -Dm644 \
 		org.stardustxr.Telescope.png \
-		"$pkgdir/usr/share/icons/hicolor/apps/org.stardustxr.Telescope.png"
+		"$pkgdir/usr/share/icons/hicolor/512x512/apps/org.stardustxr.Telescope.png"
 }
