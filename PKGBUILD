@@ -1,17 +1,16 @@
-
-# Maintainer: Rooki <aur at rooki dot xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Rooki <aur at rooki dot xyz>
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
-pkgver=4.7.1
+pkgver=4.7.8
 pkgrel=1
 _pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('any')
 url="https://github.com/mfat/${_pkgname}"
 license=('GPL-3.0-only')
-
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=(
@@ -38,7 +37,7 @@ source=(
     "${_pkgname}_${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${_pkgrel_deb}_all.deb"
     "LICENSE::https://raw.githubusercontent.com/mfat/${_pkgname}/refs/tags/v${pkgver}/LICENSE"
 )
-sha512sums=('9a2fd0bf3da48cd35f14cec50c274cfbc7dd67e4fb8d0dc7f63bf672fe018e8a8a8362a90a86718723bde6e3b6dcebd1f4363d86919d0de18c35783acaffffeb'
+sha512sums=('64658a0c1710a90e7ff460f3a18f8b6d929d16dca7255569923a69c9e9777f787f4906782ad623e5fb6d8ea72f54abdc9e2ade43a7552f3e81449984951f3d14'
             '714d66c4a17e6dfc1553521af2be03f4579fac64048c0b96c592177562b01fc70a8e184bb21725e11ef96a54bf466ae1abd4992b8940f0fe2c0859d6a166a2ef')
 
 prepare() {
