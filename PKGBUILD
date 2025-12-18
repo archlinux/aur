@@ -90,8 +90,8 @@ package_omnissa-horizon-client() {
 	          'vmware-horizon-smartcard'
 	          'vmware-horizon-teams-optimization'
 	          'vmware-horizon-tsdr')
-	depends=('binutils' 'curl' 'expat' 'fuse2' 'gcc-libs' 'glib2' 'gtk3' 'libffi' 'libsigc++'
-	         'libxml2-legacy' 'libxss' 'libxtst' 'openssl' 'zlib')
+	depends=('binutils' 'expat' 'fuse2' 'gcc-libs' 'glib2' 'gtk3' 'libffi' 'libsigc++'
+	         'libxml2-legacy' 'libxss' 'libxtst' 'zlib')
 	optdepends=('alsa-lib: audio support via alsa'
 	            'freerdp: RDP remote desktop connections'
 	            'libpulse: audio support via pulse sound server'
