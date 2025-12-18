@@ -1,7 +1,7 @@
 pkgbase = mullvad-tray-git
 	pkgdesc = Mullvad VPN connection status in system tray. Latest git checkout.
-	pkgver = 2.0.2.r40.20251208.c1cbc2c
-	pkgrel = 2
+	pkgver = 2.0.4.r42.20251212.ea35158
+	pkgrel = 1
 	url = https://gitlab.com/Plague_Doctor/mullvad-tray
 	arch = i586
 	arch = i686
