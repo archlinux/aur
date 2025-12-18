@@ -1,0 +1,22 @@
+pkgbase = questionary-cli
+	pkgdesc = Command line tool for questionary
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/makukha/questionary-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-questionary
+	depends = python-typing_extensions
+	depends = python-rich-click
+	provides = questionary-cli
+	conflicts = python-questionary-cli
+	replaces = python-questionary-cli
+	source = questionary-cli-0.1.2.tar.gz::https://github.com/makukha/questionary-cli/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 1b0ed612328a8abc8afdcf7abfe65f9ac0963b49d36ef09115f63ccfad31c658
+
+pkgname = questionary-cli

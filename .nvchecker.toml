@@ -1,0 +1,3 @@
+[questionary-cli]
+source = "pypi"
+pypi = "questionary-cli"
