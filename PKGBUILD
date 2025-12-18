@@ -3,13 +3,13 @@
 
 pkgname=quicktile-git
 _pkgname=${pkgname%-git}
-pkgver=463.ce0c088
+pkgver=536.2179c8a
 pkgrel=1
 epoch=1
 url="https://github.com/ssokolow/quicktile"
 pkgdesc="Adds window-tiling hotkeys to any X11 desktop"
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python' 'gtk3' 'libwnck3' 'python-gobject' 'python-xlib')
 optdepends=('python-dbus: required if you want to interact with QuickTile over D-Bus')
 makedepends=('git' 'python-setuptools')
