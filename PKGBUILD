@@ -2,7 +2,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
 _pkgname=DbGate
-pkgver=6.7.3
+pkgver=6.8.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('f5b402c84ece74fa40bba9eb93f1c038152f44fe77787663c4e752c1397cce75'
+sha256sums=('6eee31bdcb37b0afbfa141b4d50539902e390312bf954520618bf378a31ff7e1'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
