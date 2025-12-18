@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liground-bin
-pkgver=0.5.0
+pkgver=0.5.1
 _electronversion=25
 pkgrel=1
 pkgdesc="A free, open-source and modern Chess Variant Analysis GUI for the 21st century.(Prebuilt version.Use system-wide electron)"
@@ -21,10 +21,10 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9bf192ba2e041407861b6a7d16f27e8149b8d0a089605a903c05139970fbc93'
+sha256sums=('4173b43aa1841b92cf2547a0c0baa04a196b47b324b2eb8ab6e0572167fb90d5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
