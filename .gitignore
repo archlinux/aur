@@ -1,0 +1,27 @@
+# --- Arch 标准打包产物 ---
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.src.tar.gz
+*.src.tar.zst
+*.log
+*.sig
+
+# --- 构建目录 (Make 产生的) ---
+src/
+pkg/
+glibc-build-pgo/
+lib32-glibc-build/
+configparms
+
+# --- 源代码目录 (Git Clone 下来的) ---
+# 这就是你刚才看到那一堆乱七八糟文件的真身
+glibc/
+
+# --- 你的个人工具 ---
+gcc-wrapper
+g++-wrapper
+maintain.sh
+
+# --- 压缩包 ---
+*.tar.gz
+*.zip

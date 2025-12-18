@@ -1,0 +1,68 @@
+pkgbase = glibc-git-native-pgo
+	pkgdesc = GNU C Library (Git Master) - Native Optimized with Selective PGO (Built for Performance)
+	pkgver = 2.42.9000.r635.g9da0585852
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = gd
+	makedepends = lib32-gcc-libs
+	makedepends = python
+	provides = glibc
+	provides = libglibc
+	conflicts = glibc
+	conflicts = glibc-git
+	options = staticlibs
+	options = !lto
+	options = !debug
+	options = !strip
+	source = git+https://sourceware.org/git/glibc.git
+	source = locale.gen.txt::https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/raw/main/locale.gen.txt
+	source = locale-gen::https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/raw/main/locale-gen
+	source = lib32-glibc.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/raw/main/lib32-glibc.conf
+	source = sdt.h::https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/raw/main/sdt.h
+	source = sdt-config.h::https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/raw/main/sdt-config.h
+	source = glibc.install
+	source = lib32-glibc.install
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = glibc-git-native-pgo
+	pkgdesc = GNU C Library (Git Master) - Native Optimized PGO
+	install = glibc.install
+	depends = linux-api-headers>=4.10
+	depends = tzdata
+	depends = filesystem
+	optdepends = gd: for memusagestat
+	optdepends = perl: for mtrace
+	provides = glibc
+	provides = libglibc
+	conflicts = glibc
+	backup = etc/gai.conf
+	backup = etc/locale.gen
+
+pkgname = lib32-glibc-git-native-pgo
+	pkgdesc = GNU C Library (32-bit, Git Master) - Native Optimized
+	install = lib32-glibc.install
+	depends = glibc-git-native-pgo=2.42.9000.r635.g9da0585852
+	provides = lib32-glibc
+	conflicts = lib32-glibc
+	options = staticlibs
+	options = !lto
+	options = !debug
+	options = !strip
+	options = !emptydirs
+
+pkgname = glibc-locales-git-native-pgo
+	pkgdesc = Pregenerated locales for GNU C Library
+	depends = glibc-git-native-pgo=2.42.9000.r635.g9da0585852
+	provides = glibc-locales
+	conflicts = glibc-locales
