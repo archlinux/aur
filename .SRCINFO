@@ -1,7 +1,7 @@
 pkgbase = biu-bin
 	pkgdesc = A cross-platform desktop music player based on Bilibili API
 	pkgver = 1.6.0_beta.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wood3n/biu
 	arch = x86_64
 	license = custom:PolyForm-Noncommercial
