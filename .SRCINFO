@@ -1,0 +1,20 @@
+pkgbase = voxtype-bin
+	pkgdesc = Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = https://github.com/peteonrails/voxtype
+	install = voxtype.install
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	provides = voxtype
+	conflicts = voxtype
+	backup = etc/voxtype/config.toml
+	source_x86_64 = voxtype-x86_64-0.4.0.deb::https://github.com/peteonrails/voxtype/releases/download/v0.4.0-2/voxtype_0.4.0-2_amd64.deb
+	sha256sums_x86_64 = 29c7f2e4573384572d8424705bbf3159fc04cc7cddf184237749cd3c49b237ac
+
+pkgname = voxtype-bin

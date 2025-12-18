@@ -1,0 +1,94 @@
+_detect_cpu_and_link() {
+    # Detect CPU capabilities and symlink the appropriate voxtype binary
+    #
+    # Binary variants:
+    #   voxtype-avx2:   CPU - Works on most CPUs from 2013+ (Intel Haswell, AMD Zen)
+    #   voxtype-avx512: CPU - Optimized for newer CPUs (AMD Zen 4+, some Intel)
+    #   voxtype-vulkan: GPU - Vulkan acceleration (NVIDIA, AMD, Intel)
+
+    # Remove existing binary/symlink if present
+    rm -f /usr/bin/voxtype
+
+    # Detect AVX-512 support (Linux-specific, falls back to AVX2)
+    if [ -f /proc/cpuinfo ] && grep -q avx512f /proc/cpuinfo 2>/dev/null; then
+        VARIANT="avx512"
+        ln -sf /usr/lib/voxtype/voxtype-avx512 /usr/bin/voxtype
+    else
+        VARIANT="avx2"
+        ln -sf /usr/lib/voxtype/voxtype-avx2 /usr/bin/voxtype
+    fi
+
+    echo "    CPU backend: $VARIANT (using voxtype-$VARIANT)"
+}
+
+_detect_gpu() {
+    # Detect GPU for Vulkan acceleration recommendation
+    GPU_DETECTED=""
+    if [ -d /dev/dri ]; then
+        if ls /dev/dri/renderD* >/dev/null 2>&1; then
+            if command -v lspci >/dev/null 2>&1; then
+                GPU_INFO=$(lspci 2>/dev/null | grep -i 'vga\|3d\|display' | head -1 | sed 's/.*: //')
+                if [ -n "$GPU_INFO" ]; then
+                    GPU_DETECTED="$GPU_INFO"
+                fi
+            fi
+            if [ -z "$GPU_DETECTED" ]; then
+                GPU_DETECTED="GPU detected (install pciutils for details)"
+            fi
+        fi
+    fi
+
+    if [ -n "$GPU_DETECTED" ]; then
+        echo ""
+        echo "    GPU detected: $GPU_DETECTED"
+        echo ""
+        echo "    For GPU acceleration (faster inference), run:"
+        echo "      sudo voxtype setup gpu --enable"
+        echo ""
+        echo "    Requires: vulkan-icd-loader package"
+    fi
+}
+
+post_install() {
+    echo ""
+    echo "==> Voxtype Post-installation Steps:"
+    echo ""
+
+    _detect_cpu_and_link
+    _detect_gpu
+
+    echo ""
+    echo "    1. Add your user to the 'input' group:"
+    echo "       sudo usermod -aG input \$USER"
+    echo ""
+    echo "    2. Log out and back in for group changes to take effect"
+    echo ""
+    echo "    3. Download a whisper model:"
+    echo "       voxtype setup --download"
+    echo ""
+    echo "    4. Start voxtype:"
+    echo "       systemctl --user enable --now voxtype"
+    echo "       Or run manually: voxtype"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Voxtype upgraded"
+    echo ""
+
+    _detect_cpu_and_link
+    _detect_gpu
+
+    echo ""
+    echo "    New in 0.3.2:"
+    echo "      - Ship Vulkan GPU binary alongside CPU binaries"
+    echo "      - Add 'voxtype setup gpu' command to switch backends"
+    echo "      - Post-install detects GPU and recommends enabling Vulkan"
+    echo ""
+}
+
+pre_remove() {
+    # Remove the symlink before package removal
+    rm -f /usr/bin/voxtype
+}
