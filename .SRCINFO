@@ -1,0 +1,17 @@
+pkgbase = rare-go-git
+	pkgdesc = A fast text scanner/regex extractor and realtime summarizer
+	pkgver = 0.5.4.r1.g33a3eab
+	pkgrel = 1
+	url = https://github.com/zix99/rare
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = pcre2
+	provides = rare-go
+	conflicts = rare-go
+	source = rare-go-git::git+https://github.com/zix99/rare
+	sha256sums = SKIP
+
+pkgname = rare-go-git
