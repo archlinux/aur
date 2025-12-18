@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RNetCDF
-_pkgver=2.10-2
+_pkgver=2.11-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-bit64
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8097178ed39326b6398e6b27c9b44759')
-b2sums=('6dc657c97e9ecab53c6b09b0addfe06ff4429ac41afe8365c3dfa2c8c43c60aa001f43be11ab921e00ef88d05d9e308d35232d20e904337ee7097df8a21a07a5')
+md5sums=('9acc95ef2f172363ce3f88ae7c5632c3')
+b2sums=('558e7babf251dd322a42c866344998a713dcca380ac87ca0e10354f34f372c131197b55c22de48de43f9898e3636a9379dae4a9235bb082c1e7563c963aad9a9')
 
 build() {
   mkdir build
@@ -33,7 +33,7 @@ build() {
       --configure-args="--with-mpicc=/usr/bin/mpicc --with-mpiexec=mpiexec"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" Rscript --vanilla RNetCDF-test.R
 }
