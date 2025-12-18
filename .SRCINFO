@@ -1,6 +1,6 @@
 pkgbase = r-emmeans
 	pkgdesc = Estimated Marginal Means, aka Least-Squares Means
-	pkgver = 1.11.2.8
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=emmeans
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = r-emmeans
 	depends = r-estimability
 	depends = r-mvtnorm
 	depends = r-numderiv
+	depends = r-rlang
 	optdepends = r-bayesplot
 	optdepends = r-bayestestr
 	optdepends = r-biglm
@@ -33,8 +34,9 @@ pkgbase = r-emmeans
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/emmeans_1.11.2-8.tar.gz
-	md5sums = 3e21c46575be3cb48f8c13c340294aed
-	b2sums = 27be4c0355ce4f983a9cee3be359cc557f0f493dd9a84e9e2cada0eb6e3940bc98c3ae4772f46ac1686916b4348f1ff879db5c187667bbb38e463dd65aa786b6
+	optdepends = r-robmixglm
+	source = https://cran.r-project.org/src/contrib/emmeans_2.0.1.tar.gz
+	md5sums = 5c7fbaf108f412d10402bcb47bc80492
+	b2sums = b9d4dde96633c65ac7e6d3580cbbbbdc54ba3aa3f06178fefe67c4cd6a61624d9399c048fcac2db1cf78c666c335243e3d97b55ef74df4417ec9d9f3cb694c22
 
 pkgname = r-emmeans
