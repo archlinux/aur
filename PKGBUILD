@@ -1,14 +1,14 @@
 # Maintainer: David Vick <david@failedstatic.click>
 # Contributer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.29.1
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/stashapp/stash"
 license=('AGPL-3.0-only')
 depends=('glibc' 'ffmpeg')
-makedepends=('go>=2:1.19' 'golangci-lint' 'yarn')
+makedepends=('go>=2:1.24.3' 'golangci-lint' 'nodejs' 'npm' 'pnpm')
 conflicts=('stash-bin')
 backup=(etc/conf.d/${pkgname})
 source=("$pkgname::git+$url.git#tag=v${pkgver}"

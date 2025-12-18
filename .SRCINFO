@@ -1,20 +1,22 @@
 pkgbase = stash
 	pkgdesc = Locally hosted web-based app written in Go which organizes and serves your Adult Video
-	pkgver = 0.29.1
+	pkgver = 0.30.1
 	pkgrel = 1
 	url = https://github.com/stashapp/stash
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = AGPL-3.0-only
-	makedepends = go>=2:1.19
+	makedepends = go>=2:1.24.3
 	makedepends = golangci-lint
-	makedepends = yarn
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pnpm
 	depends = glibc
 	depends = ffmpeg
 	conflicts = stash-bin
 	backup = etc/conf.d/stash
-	source = stash::git+https://github.com/stashapp/stash.git#tag=v0.29.1
+	source = stash::git+https://github.com/stashapp/stash.git#tag=v0.30.1
 	source = stash.service
 	source = stash-user.service
 	source = stash.sysusers
