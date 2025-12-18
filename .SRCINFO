@@ -1,6 +1,6 @@
 pkgbase = upower-nosystemd-git
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout.
-	pkgver = 1.91.0+1.r1849.20251127.c5df437
+	pkgver = 1.91.0+7.r1855.20251212.f6e63cf
 	pkgrel = 1
 	url = http://upower.freedesktop.org
 	install = upower-nocritical.install
@@ -29,10 +29,10 @@ pkgbase = upower-nosystemd-git
 	optdepends = python-gobject: For For /usr/lib/upower/integration-test.py.
 	optdepends = python-packaging: For /usr/lib/upower/integration-test.py.
 	optdepends = umockdev: For /usr/lib/upower/integration-test.py.
-	provides = upower=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-nocritical=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-nosystemd=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-git=1.91.0+1.r1849.20251127.c5df437
+	provides = upower=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-nocritical=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-nosystemd=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-git=1.91.0+7.r1855.20251212.f6e63cf
 	conflicts = upower
 	conflicts = upower-nocritical-nosystemd-git<1.90.4+10.r1708
 	replaces = upower-nocritical-nosystemd-git<=1.90.4+10.r1708.20240523.669a1c2
@@ -54,8 +54,8 @@ pkgname = upower-nosystemd-git
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
 	depends = libgio-2.0.so
-	provides = upower=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-nocritical=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-nosystemd=1.91.0+1.r1849.20251127.c5df437
-	provides = upower-git=1.91.0+1.r1849.20251127.c5df437
+	provides = upower=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-nocritical=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-nosystemd=1.91.0+7.r1855.20251212.f6e63cf
+	provides = upower-git=1.91.0+7.r1855.20251212.f6e63cf
 	provides = libupower-glib.so
