@@ -1,6 +1,6 @@
 pkgbase = survex
 	pkgdesc = Cave survey software
-	pkgver = 1.4.18
+	pkgver = 1.4.19
 	pkgrel = 1
 	url = http://survex.com/
 	install = survex.install
@@ -14,9 +14,9 @@ pkgbase = survex
 	depends = proj>=7.2.0
 	depends = glu
 	depends = gdal
-	source = http://survex.com/software/1.4.18/survex-1.4.18.tar.gz
+	source = http://survex.com/software/1.4.19/survex-1.4.19.tar.gz
 	source = http://survex.com/software/sample.tar.gz
-	sha512sums = 34111ad4dace1252da3301b7cbea4fb0392843bd2cef88a8864043d8fb430d32c726fa032f48594b60d52ab86e8dd4b593518bd9d1a81001468f842629f5d93a
+	sha512sums = 7ec8343fcace655be1d21d429082dc0c1d5f5570bbcc5d33cf9f9ed36ca843c75205d44a82a7226efb2dc02b79e6fe92d8724fb03df83172cd2ac97baff40cd2
 	sha512sums = b10901edf583ec9c3fa04eaee9c264adfe098e063d6b97109387736b991b69fb7ad84d8687299e5ee3f2cc1a67e59c07dab7f9b05991b507e7a76dbd253de374
 
 pkgname = survex
