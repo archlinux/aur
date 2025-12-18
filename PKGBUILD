@@ -8,7 +8,7 @@ license=('MIT')
 depends=('bash' 'fastfetch' 'lolcat')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stamer-programer/RainbowFetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d4c5c8d7d85d0cf4e7b0390e6e4cd1c4b12d5f3fe965da5116cd0034388f06c')
+sha256sums=('45790e6df4a3542f21e3dedce17c4a26a829a443d435bd1616dfd43a4c54acc1')
 
 package() {
   cd "$pkgname-$pkgver"
