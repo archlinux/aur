@@ -1,6 +1,6 @@
 # Maintainer: 0xbbuddha <killian@archimedeos.org>
 
-pkgname=evil-winrm-python
+pkgname=evil-winrm-py
 pkgver=1.5.0
 pkgrel=1
 pkgdesc="The ultimate WinRM shell for hacking/pentesting."
