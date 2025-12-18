@@ -2,7 +2,7 @@
 
 pkgname=projtlauncher
 pkgver=0.0.3
-pkgrel=2
+pkgrel=4
 pkgdesc='A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.'
 url='https://projtlauncher.yongdohyun.org.tr'
 arch=(x86_64 aarch64)
