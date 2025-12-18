@@ -1,6 +1,6 @@
 # Maintainer: hunkyburrito <hunkyburrito@protonmail.com>
 pkgname=xdg-desktop-portal-termfilechooser-hunkyburrito-git
-pkgver=v1.2.1.r0.g51d5c15
+pkgver=v1.3.0.r0.gc7ccfa2
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for your favorite terminal file chooser (hunkyburrito fork)'
 url="https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser"
@@ -34,7 +34,7 @@ pkgver () {
 
 build() {
     cd "${pkgname}"
-    arch-meson -Dsd-bus-provider=libsystemd build
+    arch-meson build
     ninja -C build
 }
 
