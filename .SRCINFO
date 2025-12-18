@@ -1,13 +1,13 @@
 pkgbase = fm-scripts
 	pkgdesc = A set of actions for extending the functionality of the GNOME Files (Nautilus), Nemo, Caja, Dolphin, Thunar and PCManFM-Qt file managers. 
-	pkgver = 30.12.2
+	pkgver = 30.13
 	pkgrel = 1
 	url = https://github.com/cfgnunes/fm-scripts
 	arch = x86_64
 	license = MIT
 	depends = bash
-	source = https://github.com/cfgnunes/fm-scripts/archive/refs/tags/30.12.2.tar.gz
-	md5sums = aa680fc0e87eed5ad27e8aceb98c23de
+	source = https://github.com/cfgnunes/fm-scripts/archive/refs/tags/30.13.tar.gz
+	md5sums = f2d4eafb396ea3ba98779f4a6e8ea035
 
 pkgname = fm-scripts
 	install = fm-scripts.install
