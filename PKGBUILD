@@ -30,6 +30,8 @@ source=("UnityHubSetup-amd64.deb::https://hub.unity3d.com/linux/repos/deb/pool/m
 sha256sums=('4557902db7d03a49f94b3a0f5ba6e3ae769135f94f7157f0fa0aeac4c5338206')
 
 options=('!strip' '!debug')
+provides=('unityhub')
+conflicts=('unityhub' 'unityhub-beta')
 
 package() {
   cd "$srcdir"
