@@ -1,9 +1,8 @@
 pkgbase = dasel
 	pkgdesc = Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomWright/dasel
-	changelog = dasel.changelog
 	arch = aarch64
 	arch = arm
 	arch = armv6h

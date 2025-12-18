@@ -5,7 +5,7 @@
 
 pkgname='dasel'
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
@@ -13,7 +13,6 @@ license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-changelog="$pkgname.changelog"
 
 # Used in LDFLAGS (although no longer used by dasel v3+)
 _majver="${pkgver/[.]*/}"
