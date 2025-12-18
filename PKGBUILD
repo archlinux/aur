@@ -2,7 +2,7 @@
 # Contributor: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-beta-bin"
-_pkgver="1.13.0-alpha.27"
+_pkgver="1.13.0-alpha.30"
 pkgver="${_pkgver/-/\~}"
 pkgrel="1"
 pkgdesc="The universal proxy platform (beta binary version)."
