@@ -1,6 +1,6 @@
 pkgbase = etcd-bin
 	pkgdesc = A highly-available key value store for shared configuration and service discovery - binary version
-	pkgver = 3.6.6
+	pkgver = 3.6.7
 	pkgrel = 1
 	url = https://github.com/etcd-io/etcd
 	install = etcd.install
@@ -10,10 +10,10 @@ pkgbase = etcd-bin
 	conflicts = etcd
 	conflicts = etcd-git
 	backup = etc/etcd/etcd.conf.yml
-	source = https://github.com/etcd-io/etcd/releases/download/v3.6.6/etcd-v3.6.6-linux-amd64.tar.gz
-	source = https://github.com/etcd-io/etcd/raw/v3.6.6/contrib/systemd/etcd.service
-	source = https://github.com/etcd-io/etcd/raw/v3.6.6/etcd.conf.yml.sample
-	sha256sums = 887afaa4a99f22d802ccdfbe65730a5e79aa5c9ce2c8799c67e9d804c50ecedb
+	source = https://github.com/etcd-io/etcd/releases/download/v3.6.7/etcd-v3.6.7-linux-amd64.tar.gz
+	source = https://github.com/etcd-io/etcd/raw/v3.6.7/contrib/systemd/etcd.service
+	source = https://github.com/etcd-io/etcd/raw/v3.6.7/etcd.conf.yml.sample
+	sha256sums = cf8af880c5a01ee5363cefa14a3e0cb7e5308dcf4ed17a6973099c9a7aee5a9a
 	sha256sums = 6b2921568bd96f5bb48ba61d2b9673f42e49eb90fda35a7003fbac469a226a13
 	sha256sums = 8972ae92788d38db7a7947d4baf943e63385a894658e9b361027e8a7f8893790
 
