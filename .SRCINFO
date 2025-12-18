@@ -1,6 +1,6 @@
 pkgbase = r-flowmerge
 	pkgdesc = Cluster Merging for Flow Cytometry Data
-	pkgver = 2.56.0
+	pkgver = 2.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowMerge
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-flowmerge
 	optdepends = r-knitr
 	optdepends = r-multicore
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowMerge_2.56.0.tar.gz
-	sha256sums = 3b4dc1bb4bbcbdf8b199ff3616b7b12437ebcb603daf9ba1fcb3013a4c2822ad
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowMerge_2.58.0.tar.gz
+	sha256sums = 4ca2798c94b21ebf5c6a40f75667300b9deb63e8928d1e3295abdf6740361548
 
 pkgname = r-flowmerge
