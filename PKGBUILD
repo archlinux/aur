@@ -21,4 +21,5 @@ build() {
 package() {
   cd mdbook-pandoc-$pkgver
   install -Dm 755 target/release/mdbook-pandoc "$pkgdir"/usr/bin/mdbook-pandoc
+  install -Dm 755 LICENSE-APACHE LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
