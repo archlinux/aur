@@ -3,4 +3,5 @@ Name=Legacy Launcher
 Exec=/usr/bin/legacy-launcher
 Icon=legacy-launcher
 Type=Application
-Categories=Games;
+Categories=Game;
+Comment=Stable, fast and simple Minecraft Launcher.
