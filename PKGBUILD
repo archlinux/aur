@@ -1,5 +1,7 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 
+# Version 11.2.14
+#
 # Version 11.1.71 - New Features:
 # - Enhanced Hardware Controller Support:
 #   * SSL UF1 controller support
@@ -26,7 +28,7 @@
 # Linux users receive core DAW functionality but not all advertised premium features.
 
 pkgname=mixbus11
-pkgver=11.1.71
+pkgver=11.2.14
 pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
@@ -42,11 +44,11 @@ optdepends=('avldrums.lv2: AVLinux drumkits'
             'setbfree-lv2: Tonewheel organ'
             'x42-plugins-lv2: Set of plugins and utilities from the X42 Project')
 source=(
-    "Mixbus-${pkgver}-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.1/Mixbus-${pkgver}-x86_64.tar"
+    "Mixbus-${pkgver}-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.2/Mixbus-${pkgver}-x86_64.tar"
     "${pkgname}.install"
 )
 sha256sums=(
-    '924b51e1d4f952690d8bc9fc8c7183a8d57553982e138d9a8330c526edca91b9'
+    '3130e4103ed4499ddafddcbfc8c44b3756e61e532684dedb03561e102ba2c40e'
     'b56e4663d14e856fd88ea1afb3b0bbe907bf0ebe67a6b584d17f9b1157b83abf'
 )
 options=('!strip')
