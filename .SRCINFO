@@ -1,7 +1,7 @@
 pkgbase = hys-git
 	pkgdesc = Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = v0.1.1.r0.g8f8aad6
+	pkgrel = 1
 	url = https://github.com/superstarryeyes/hys
 	arch = i686
 	arch = x86_64
