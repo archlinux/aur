@@ -1,0 +1,5 @@
+# Depends on nvchecker and python-jq
+[alice2-bin]
+source = "github"
+github = "TheAliceProject/alice2"
+use_latest_release = true
