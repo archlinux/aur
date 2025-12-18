@@ -1,6 +1,6 @@
 pkgbase = alterx
 	pkgdesc = Fast and customizable subdomain wordlist generator using DSL
-	pkgver = 0.0.6
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/alterx
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = alterx
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = alterx::git+https://github.com/projectdiscovery/alterx.git#tag=v0.0.6
-	b2sums = e2ac217f40f806decfc4bed1e39880308cfe1bfd275a6d5d38745056da29faa269f80e212909b1901a16a06382c39f09789c15a886f211a41b20d62db30f18f1
+	source = alterx::git+https://github.com/projectdiscovery/alterx.git#tag=v0.1.0
+	b2sums = 7741343edfdc26cdf9ae461f87d5bd622cb8e730d3333d8c6e8c6abe6e77194ee705acaa27eb324622581233c7524a806a1622029a895a60e9532d7d587b19fd
 
 pkgname = alterx

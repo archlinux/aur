@@ -1,25 +1,38 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="alterx"
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Fast and customizable subdomain wordlist generator using DSL"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('e2ac217f40f806decfc4bed1e39880308cfe1bfd275a6d5d38745056da29faa269f80e212909b1901a16a06382c39f09789c15a886f211a41b20d62db30f18f1')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('7741343edfdc26cdf9ae461f87d5bd622cb8e730d3333d8c6e8c6abe6e77194ee705acaa27eb324622581233c7524a806a1622029a895a60e9532d7d587b19fd')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  go mod download -modcacherw -x
+  go mod verify
 
   mkdir -p "build"
 }
