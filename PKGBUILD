@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=knn.covertree
-_pkgver=1.0
+_pkgver=1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc='An Accurate kNN Implementation with Multiple Distance Measures'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7fbfd7f2a6366392c7368fd282eba16b5ab0546f603559eac147f3e679654e57')
+sha256sums=('46d99e34f8793ce32cb07ae862156f6f4842ca8b9aa724488a4d627f723b19cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

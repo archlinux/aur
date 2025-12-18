@@ -1,7 +1,7 @@
 pkgbase = r-knn.covertree
 	pkgdesc = An Accurate kNN Implementation with Multiple Distance Measures
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=knn.covertree
 	arch = x86_64
 	license = AGPL
@@ -11,7 +11,7 @@ pkgbase = r-knn.covertree
 	depends = gcc
 	optdepends = r-fnn
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/knn.covertree_1.0.tar.gz
-	sha256sums = 7fbfd7f2a6366392c7368fd282eba16b5ab0546f603559eac147f3e679654e57
+	source = https://cran.r-project.org/src/contrib/knn.covertree_1.1.tar.gz
+	sha256sums = 46d99e34f8793ce32cb07ae862156f6f4842ca8b9aa724488a4d627f723b19cd
 
 pkgname = r-knn.covertree
