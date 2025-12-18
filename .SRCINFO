@@ -1,10 +1,10 @@
 pkgbase = windows-10-cursor
 	pkgdesc = A Windows 10 light and dark cursor theme
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	arch = any
 	options = !debug
-	source = windows-10-cursor.tar.gz::https://github.com/red-magic/cursor-themes/releases/download/1.0/windows-10-cursor.tar.gz
-	b2sums = f55cc48109846f7aa60cd9e60581197867061a2650a86c7b9ec2bfedf4cd677b0482a262789daca1ef252e3f043733ccbfe302548d0b5ea2a9729865e2b2358b
+	source = windows-10-cursor.tar.gz::https://github.com/red-magic/cursor-themes/releases/download/2.0/windows-10-cursor.tar.gz
+	b2sums = c2145e28061d044ebe0839de7a88bfaa76424409f9632bfee84ece547d652a2da8c377465453a3d97d770efe3f4ebc2c4796b56d429403e893d9bed803a9a742
 
 pkgname = windows-10-cursor
