@@ -1,0 +1,24 @@
+pkgbase = archy-st-git
+	pkgdesc = Simple terminal emulator for X with some patches applied
+	pkgver = 0.10.3.r0.g7775631
+	pkgrel = 1
+	url = https://github.com/archy-linux/archy-st
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gzip
+	makedepends = ncurses
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = fontconfig
+	depends = harfbuzz
+	provides = st
+	conflicts = archy-st
+	source = archy-st::git+https://github.com/archy-linux/archy-st.git
+	sha256sums = SKIP
+
+pkgname = archy-st-git
