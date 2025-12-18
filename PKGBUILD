@@ -6,8 +6,8 @@ pkgdesc="Cross-platform music player written in C#"
 arch=('x86_64' 'aarch64')
 url="https://aptivi.github.io"
 license=('GPL-3.0-or-later')
-depends=('dotnet-runtime-8.0' 'tzdata')
-makedepends=('git' 'dotnet-sdk-8.0' 'make' 'which')
+depends=('dotnet-runtime-10.0' 'tzdata')
+makedepends=('git' 'dotnet-sdk-10.0' 'make' 'which')
 optdepends=('jack2: Jack support for BassBoom'
 			'portaudio: PortAudio support for BassBoom'
 			'openal: OpenAL support for BassBoom'
