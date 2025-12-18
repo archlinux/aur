@@ -4,7 +4,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=20240827
+pkgver=20251218
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), other proceedings (svproc), journal articles (sn-jnl), monographs (svmono), and multiauthor volumes (svmult)"
 arch=('any')
@@ -21,11 +21,11 @@ backup=()
 options=()
 install=texlive.install
 
-source=('llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/26361882/data/v2'
+source=('llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v8'
   'svproc.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19338728/data/v1'
-  'svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v11'
-  'svmono.zip::https://dam.springernature.com/file/B9DCMjesqTi9--5PvAbAip/*/svmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA=='
-  'svmult.zip::https://dam.springernature.com/file/59jjnY1zKdxAzjFSy9LvfE/*/svmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==')
+  'svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v13'
+  'svmono.zip::https://dam.springernature.com/file/B1GioCMDKtNBBsyRKEpr1X/*/SNmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA=='
+  'svmult.zip::https://dam.springernature.com/file/3ioiVy6IqIfA73u4es9_Ls/*/SNmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==')
 
 noextract=("${source[@]%%::*}")
 
@@ -76,29 +76,25 @@ package() {
 
   # svmono
   cd svmono
-  install -m 0644 -D -t "${clsdir}" author/svmono.cls
-  install -m 0644 -D -t "${istdir}" styles/*.ist
-  install -m 0644 -D -t "${bstdir}" styles/*.bst
+  install -m 0644 -D -t "${clsdir}" SNmono.cls
+  install -m 0644 -D -t "${istdir}" book/*.ist
+  install -m 0644 -D -t "${bstdir}" book/*.bst
   install -m 0644 -D -t "${pkgdir}/usr/share/doc/svmono" history.txt \
-    readme.txt styles/liesmich.txt
-  rm author/*.bst author/*.ist author/svmono.cls
-  mv author "${pkgdir}/usr/share/doc/svmono/"
-  rm guideline/svmono.cls
-  mv guideline "${pkgdir}/usr/share/doc/svmono/"
+    instructions.pdf readme.txt
+  rm book/*.bst book/*.ist book/SNmono.cls
+  mv book "${pkgdir}/usr/share/doc/svmono/"
   cd ..
 
   # svmult
   cd svmult
-  install -m 0644 -D -t "${clsdir}" svmult.cls
-  install -m 0644 -D -t "${istdir}" styles/*.ist
-  install -m 0644 -D -t "${bstdir}" styles/*.bst
+  install -m 0644 -D -t "${clsdir}" SNmult.cls
+  install -m 0644 -D -t "${istdir}" editor/*.ist
+  install -m 0644 -D -t "${bstdir}" author/*.bst
   install -m 0644 -D -t "${pkgdir}/usr/share/doc/svmult" history.txt \
-    readme.txt 
-  rm author/*.bst author/*.ist author/svmult.cls
+    instructions.pdf readme.txt 
+  rm author/*.bst author/SNmult.cls
   mv author "${pkgdir}/usr/share/doc/svmult/"
-  rm editor/*.bst editor/*.ist editor/svmult.cls
+  rm editor/*.bst editor/*.ist editor/SNmult.cls
   mv editor "${pkgdir}/usr/share/doc/svmult/"
-  rm guideline/svmult.cls
-  mv guideline "${pkgdir}/usr/share/doc/svmult/"
   cd ..
 }

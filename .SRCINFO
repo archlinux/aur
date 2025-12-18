@@ -1,6 +1,6 @@
 pkgbase = latex-template-springer
 	pkgdesc = Springer templates for LNCS proceedings (llncs), other proceedings (svproc), journal articles (sn-jnl), monographs (svmono), and multiauthor volumes (svmult)
-	pkgver = 20240827
+	pkgver = 20251218
 	pkgrel = 1
 	url = https://www.springernature.com/gp/authors/campaigns/latex-author-support
 	install = texlive.install
@@ -16,11 +16,11 @@ pkgbase = latex-template-springer
 	noextract = svjour.zip
 	noextract = svmono.zip
 	noextract = svmult.zip
-	source = llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/26361882/data/v2
+	source = llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v8
 	source = svproc.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19338728/data/v1
-	source = svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v11
-	source = svmono.zip::https://dam.springernature.com/file/B9DCMjesqTi9--5PvAbAip/*/svmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==
-	source = svmult.zip::https://dam.springernature.com/file/59jjnY1zKdxAzjFSy9LvfE/*/svmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==
+	source = svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v13
+	source = svmono.zip::https://dam.springernature.com/file/B1GioCMDKtNBBsyRKEpr1X/*/SNmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==
+	source = svmult.zip::https://dam.springernature.com/file/3ioiVy6IqIfA73u4es9_Ls/*/SNmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
