@@ -1,7 +1,7 @@
 pkgbase = python-uproot
 	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
 	pkgver = 5.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/uproot5
 	arch = any
 	license = BSD-3-Clause
