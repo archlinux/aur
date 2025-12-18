@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-bin'
 _pkgname="winboat"
-pkgver='0.9.0'
-pkgrel='1'
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
 url='https://www.winboat.app'
