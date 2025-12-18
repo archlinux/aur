@@ -1,0 +1,26 @@
+pkgbase = c2ffi-21-git
+	pkgdesc = Clang-based FFI wrapper generator
+	pkgver = 21.1
+	pkgrel = 1
+	url = https://github.com/rpav/c2ffi
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	depends = clang>=21.0
+	depends = clang<22.0
+	depends = llvm>=21.0
+	depends = llvm<22.0
+	depends = libffi
+	depends = libedit
+	depends = zlib
+	depends = libxml2
+	provides = c2ffi
+	conflicts = c2ffi
+	conflicts = c2ffi-git
+	source = git+https://github.com/keelah-mt/c2ffi.git
+	sha256sums = SKIP
+
+pkgname = c2ffi-21-git
