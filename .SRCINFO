@@ -1,18 +1,18 @@
 pkgbase = exiled-exchange-2-bin
 	pkgdesc = Path of Exile 2 trading app for price checking
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://kvan7.github.io/Exiled-Exchange-2/download
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron31
-	provides = exiled-exchange-2=0.13.3
+	provides = exiled-exchange-2=0.13.4
 	conflicts = exiled-exchange-2
-	source = exiled-exchange-2-0.13.3.AppImage::https://github.com/Kvan7/Exiled-Exchange-2/releases/download/v0.13.3/Exiled-Exchange-2-0.13.3.AppImage
-	source = LICENSE-0.13.3::https://raw.githubusercontent.com/Kvan7/Exiled-Exchange-2/v0.13.3/LICENSE
+	source = exiled-exchange-2-0.13.4.AppImage::https://github.com/Kvan7/Exiled-Exchange-2/releases/download/v0.13.4/Exiled-Exchange-2-0.13.4.AppImage
+	source = LICENSE-0.13.4::https://raw.githubusercontent.com/Kvan7/Exiled-Exchange-2/v0.13.4/LICENSE
 	source = exiled-exchange-2.sh
-	sha256sums = 209f27cc9be9c802a151bf903469ac3cb60fe74f8044995a5e2bda198293823f
+	sha256sums = 72eeb8094232834b38656afde10ec8e01f04aa0f8bb395535857f8854cb74e73
 	sha256sums = 5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
