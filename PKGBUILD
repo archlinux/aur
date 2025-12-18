@@ -3,7 +3,7 @@
 pkgname=('simplebluez' 'simpleble' 'simpledbus' 'python-simplepyble')
 pkgbase=simpleble
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android"
 arch=("x86_64")
@@ -41,6 +41,9 @@ package_simplebluez() {
 	depends=('simpledbus')
 	cd "simpleble-$pkgver/build_simplebluez"
 	make DESTDIR="$pkgdir/" install
+	# Remove simpledbus files that are provided by the simpledbus package
+	rm -rf "$pkgdir/usr/include/simpledbus"
+	rm -f "$pkgdir/usr/lib/libsimpledbus"* "$pkgdir/usr/lib/cmake/simpledbus"* "$pkgdir/usr/lib/pkgconfig/simpledbus.pc"
 }
 
 package_simpleble() {

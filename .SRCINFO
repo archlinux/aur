@@ -1,7 +1,7 @@
 pkgbase = simpleble
 	pkgdesc = The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simpleble.org/
 	arch = x86_64
 	license = GPLv3
