@@ -3,15 +3,15 @@
 # Contributor:
 
 pkgname=tray-tui
-pkgver=0.3.2
-pkgrel=5
+pkgver=0.3.3
+pkgrel=6
 pkgdesc="System tray in your terminal"
 arch=('x86_64')
 url="https://github.com/Levizor/tray-tui"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/Levizor/tray-tui/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9abf02ef7231a64421c530e1639fc1ab5bf640dadd57f6e23bf7838de42217e3')
+sha256sums=('a53f8493c488a5c5e0ea976e312e0198b0c42724ce95d383828f66da1cac936d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
