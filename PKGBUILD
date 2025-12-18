@@ -3,8 +3,8 @@
 
 _pkgname="qlcplus"
 pkgname="$_pkgname-git"
-pkgver=5.0.0.r96.g0dda4e7
-pkgrel=1
+pkgver=5.0.1.r110.gba25d7c
+pkgrel=2
 pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
 url="https://github.com/mcallegari/qlcplus"
 license=('Apache-2.0')
@@ -15,6 +15,7 @@ depends=(
   'libftdi'
   'libmad'
   'libsndfile'
+  'qt6-3d'
   'qt6-multimedia'
   'qt6-serialport'
   'qt6-svg'
@@ -66,6 +67,8 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -Wno-dev
+
+    -Dqmlui=ON
   )
 
   cmake "${_cmake_options[@]}"
