@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -12,8 +12,8 @@ backup=("etc/default/${pkgname}")
 # Check upstream nodejs version constraints with:
 #   curl -s "https://registry.npmjs.org/n8n/${pkgver}" | jq -r '.engines.node'
 # Example output: ">=20.19 <= 24.x" means nodejs>=20.19.0 and nodejs<25
-depends=("nodejs>=22.16" "nodejs<26")
-makedepends=("npm" "jq" "curl")
+depends=("nodejs>=20.19" "nodejs<25")
+makedepends=("npm" "curl")
 source=("${pkgname}.env"
 "${pkgname}.service"
 "${pkgname}.sysusers"
