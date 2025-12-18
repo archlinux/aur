@@ -1,25 +1,26 @@
-# Maintainer: JL2210 <rot13 yneebjr.frznw11@tznvy.pbz>
+# Maintainer: sokui <violoncello82 gmail>
+# Contributor: JL2210 <rot13 yneebjr.frznw11@tznvy.pbz>
 # Contributor: basxto <archlinux basxto de>
 # based on gbdk package
 
 pkgname=gbdk-2020
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="An updated version of Game Boy Development Kit"
 url="https://github.com/gbdk-2020/gbdk-2020"
 license=('MIT')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm64')
 makedepends=('git')
 depends=('sdcc')
 conflicts=('gbdk' 'lcc')
-source=("https://github.com/gbdk-2020/gbdk-2020/archive/${pkgver}.tar.gz")
-sha256sums=('f958e50c6f12bc5e28e4f0699969d59d794a981f5c4ab7f3aaba4d953d78806d')
+source=("https://github.com/gbdk-2020/gbdk-2020/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('ef2ebe17a38f797578429f820bbb02fd12145e5b7c521b4bbff4579beff48e7c')
 options=('!strip')
 
 package() {
   make -C ${pkgname}-${pkgver} gbdk-build gbdk-support-install gbdk-lib-install \
     TARGETDIR=/usr/share/${pkgname}/ BINDIR=/usr/bin/ SDCCDIR=/usr/ \
-    PORTS='sm83 z80' PLATFORMS='gb ap duck gg sms msxdos' # disable NES until sdcc updates
+    PORTS='sm83 z80' PLATFORMS='gb ap duck gg sms msxdos' # can NES be supported now with sdcc 4.5.0?
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 
   mv ${pkgname}-${pkgver}/build/gbdk ${pkgdir}/usr/share/${pkgname}
