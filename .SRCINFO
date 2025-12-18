@@ -1,6 +1,6 @@
 pkgbase = python-loudify-git
 	pkgdesc = LoRa cloudified. This is a python package to run a GNU Radio flow graph in a client <-> broker <-> worker context. The idea behind this project is to get a Centralized Radio Access Network (CRAN) for LoRa.
-	pkgver = 1.0+5.r56.20250104.072ef65
+	pkgver = 1.0+9.r60.20251217.a1f8148
 	pkgrel = 1
 	url = https://github.com/martynvdijke/loudify
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = python-loudify-git
 	depends = python>=3.7
 	depends = python-coloredlogs>=15.0.1
 	depends = python-pyzmq>=22.1.0
-	provides = python-loudify=1.0+5.r56.20250104.072ef65
-	provides = loudify=1.0+5.r56.20250104.072ef65
-	provides = loudify-git=1.0+5.r56.20250104.072ef65
+	provides = python-loudify=1.0+9.r60.20251217.a1f8148
+	provides = loudify=1.0+9.r60.20251217.a1f8148
+	provides = loudify-git=1.0+9.r60.20251217.a1f8148
 	conflicts = python-loudify
 	conflicts = loudify
 	source = python-loudify::git+https://github.com/martynvdijke/loudify.git
