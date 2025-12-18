@@ -1,0 +1,19 @@
+pkgbase = mdbook-pandoc
+	pkgdesc = A mdbook backend powered by Pandoc.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/max-heller/mdbook-pandoc
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = pandoc
+	depends = mdbook
+	options = !lto
+	source = mdbook-pandoc-0.11.0.tar.gz::https://github.com/max-heller/mdbook-pandoc/archive/v0.11.0.tar.gz
+	sha256sums = fccd4f16656dbbadefdc34129ac4ef464fc8d8b2de8f93d9dbafe43019fc062a
+
+pkgname = mdbook-pandoc
