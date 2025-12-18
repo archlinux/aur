@@ -16,9 +16,9 @@ backup=("etc/sing-box/config.json")
 source_x86_64=("sing-box_${_pkgver}_linux_x86_64.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_x86_64.pkg.tar.zst")
 source_armv7h=("sing-box_${_pkgver}_linux_armv7h.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_armv7hl.pkg.tar.zst")
 source_aarch64=("sing-box_${_pkgver}_linux_aarch64.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_aarch64.pkg.tar.zst")
-sha256sums_x86_64=("c60ed70daee85c902f46a9ee2f7b2530516141842d9c13f8a6dc9e68d479b751")
-sha256sums_armv7h=("8f5bb149988181b0204c7e191a5fb42369a11e9a698d91a855f824ed515307e8")
-sha256sums_aarch64=("e468aa1ad26a511e48173a80ca559da6dffcef7513faf0980b3f4631cc427ca9")
+sha256sums_x86_64=("cd4342efe024d388f7201d54633a5a654229d62c642def8b99e0d37eaaf2260d")
+sha256sums_armv7h=("a8ff19fec095e26afd2b2486707e31fec5d0c9bdf9d3c5213fdcdc330d3a51db")
+sha256sums_aarch64=("395a967d141e83cdfcc998ff2cb3322467d06ad02a7db7403eefe8383cb71bc4")
 noextract=("${source_x86_64[@]%%::*}" "${source_armv7h[@]%%::*}" "${source_aarch64[@]%%::*}")
 
 package() {
