@@ -2,7 +2,7 @@
 # Maintainer: Dennis Rijsdijk, dennisrijsdijk <hello@dennis.gg>
 _mainver=5
 pkgname=firebot
-pkgver="${_mainver}.65.1"
+pkgver="${_mainver}.65.3"
 pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux-x64.tar
         "logo128.png"
         "logo256.png"
         "${pkgname}.desktop")
-sha256sums=('39e1e24fdf3d0565a8cd1add3cc03dd18d9893f1741b8dcdbb338d34619c0f65'
+sha256sums=('525b5dbcbc01bedd084a819c1aae5080628bdcc16732a0e9df2e0185c26bbba2'
             'c5e406b6f05e6cb2d276430c5e53a12581a580c16ca1a4c1258d2a168524ac65'
             '6d734f9ea57fcb04ebbc458fc0b222521d209ac587dffd6127f449a7bb73817e'
             '341c0df9578fc568b14e798ed6a16771a5af280e3a69dbb96364c40f4dc37e08'
