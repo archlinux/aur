@@ -3,7 +3,7 @@
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
 _pkgname=WireInternal
-pkgver=3.40.5285.r244.g77760e6
+pkgver=3.40.5285.r249.gb441549
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -72,6 +72,7 @@ prepare() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed -i "/npmjs.org/d" .yarnrc.yml
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
@@ -83,6 +84,7 @@ prepare() {
     fi
     _ensure_local_nvm
     NODE_ENV=development    yarn install --immutable
+    echo y | NODE_ENV=development    npx update-browserslist-db@latest
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -95,6 +97,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
