@@ -1,0 +1,3 @@
+[python-tidalapi]
+source = "pypi"
+pypi = "tidalapi"
