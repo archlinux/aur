@@ -1,7 +1,7 @@
 # Maintainer: Robert Zhou <meep.aur@meepzh.com>
 
 pkgname=renderman-pro-server
-pkgver=27.0.2386582
+pkgver=27.1.2389102
 pkgrel=1
 pkgdesc="Foundation for the RenderMan rendering pipeline"
 arch=('x86_64')
@@ -11,13 +11,13 @@ depends=('numactl' 'glu' 'libxml2-legacy' 'qt5-tools')
 optdepends=('renderman: Downloader for the RPM package')
 
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the RPM through the renderman package")
-source=('manual://RenderManProServer-27.0_2386582-linuxRHEL9_gcc11icx232.x86_64.rpm')
-b2sums=('bc1d65e2b3f64893570cb1e7fd82a24f31758fc0217708fc0c6d4c8ad3ca25b876d00499ff2a635505e6ec33fad236a9150e17db01c8163755010b4b73697cfa')
+source=('manual://RenderManProServer-27.1_2389102-linuxRHEL9_gcc11icx232.x86_64.rpm')
+b2sums=('60b43b9e99ffb9d04ab3909ee0fca77aec88acef7cd9d5c46bbeb50d51aba0563f63261f658d955c56cde36740a23651540cf90d14afcf0ff6a2603839a5b285')
 
 options=(!strip)
 
 prepare() {
-    ln -s /usr/lib/libncursesw.so.6 opt/pixar/RenderManProServer-27.0/lib/libncurses.so.6
+    ln -s /usr/lib/libncursesw.so.6 opt/pixar/RenderManProServer-27.1/lib/libncurses.so.6
 }
 
 package() {
