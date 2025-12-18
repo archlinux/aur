@@ -1,5 +1,5 @@
 # Maintainer: Antoine Gaudreau Simard <antoine at gaudreau dot simard>
-# Maintainer: Michael Limiero <mike5713 at gmail dot com>
+# Contributor: Michael Limiero <mike5713 at gmail dot com>
 pkgname=('simplebluez' 'simpleble' 'simpledbus' 'python-simplepyble')
 pkgbase=simpleble
 pkgver=0.10.3
