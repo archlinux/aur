@@ -65,7 +65,7 @@ aurx install some-package
 #### Download a package to modify before install.
 ```bash
 aurx install some-package --download-only --source-path /tmp
-cd /tmp/test
+cd /tmp/some-package
 # modifications
 cd -
 aurx install some-package --source-path /tmp

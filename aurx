@@ -884,8 +884,6 @@ remove_from_package_list() {
 	if grep -qe "^${TARGET_PACKAGE}$" "${PERSISTENT_PATH}"/package_list; then
 		return 2
 	fi
-	sort "${PERSISTENT_PATH}/package_list" \
-		| tee "${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list" 1> /dev/null 2>&1
 	return 0
 }
 
@@ -897,8 +895,6 @@ write_package_list() {
 	if ! grep -qe "${TARGET_PACKAGE}" "${PERSISTENT_PATH}"/package_list; then
 		return 1
 	fi
-	sort "${PERSISTENT_PATH}/package_list" \
-		| tee "${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list" 1> /dev/null 2>&1
 	return 0
 }
 
@@ -1219,7 +1215,7 @@ execute_script() {
 }
 
 # Metadata.
-INTERNAL_VERSION="1.0.5-2"
+INTERNAL_VERSION="1.0.5-3"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "MAINTAINED" \
 	"NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
