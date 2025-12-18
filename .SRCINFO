@@ -25,7 +25,7 @@ pkgbase = unityhub-bin
 	conflicts = unityhub-beta
 	options = !strip
 	options = !debug
-	source = UnityHubSetup-amd64.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/UnityHubSetup-3.15.4-amd64.deb
+	source = unityhub-3.15.4.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/UnityHubSetup-3.15.4-amd64.deb
 	sha256sums = 4557902db7d03a49f94b3a0f5ba6e3ae769135f94f7157f0fa0aeac4c5338206
 
 pkgname = unityhub-bin
