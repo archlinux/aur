@@ -5,17 +5,19 @@ pkgdesc="Native Tk/ttkbootstrap Ollama desktop UI with sessions and auto web sea
 arch=('any')
 depends=('python' 'tk' 'python-ttkbootstrap')
 license=('Apache-2.0')
-source=("ollama-gui::git+https://github.com/mehmetbayoglu/Ollama-gui.git")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mehmetbayoglu/Ollama-gui/archive/refs/heads/main.tar.gz")
+sha256sums=('SKIP')
 
 build() {
   :
 }
 
 package() {
-  install -Dm755 "$srcdir/ollama-gui" "$pkgdir/usr/bin/ollama-gui"
-  install -Dm644 "$srcdir/ollama_gui.py" "$pkgdir/usr/share/ollama-gui/ollama_gui.py"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ollama-gui/LICENSE"
+  cd "$srcdir/Ollama-gui-main"
+
+  install -Dm755 "ollama-gui" "$pkgdir/usr/bin/ollama-gui"
+  install -Dm644 "ollama_gui.py" "$pkgdir/usr/share/ollama-gui/ollama_gui.py"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ollama-gui/LICENSE"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/ollama-gui.desktop" <<'EOF'
 [Desktop Entry]

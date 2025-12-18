@@ -7,7 +7,7 @@ pkgbase = ollama-gui
 	depends = python
 	depends = tk
 	depends = python-ttkbootstrap
-	source = ollama-gui::git+https://github.com/mehmetbayoglu/Ollama-gui.git
-	md5sums = SKIP
+	source = ollama-gui-0.1.0.tar.gz::https://github.com/mehmetbayoglu/Ollama-gui/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
 
 pkgname = ollama-gui
