@@ -1,6 +1,6 @@
 pkgbase = r-bayestools
 	pkgdesc = Tools for Bayesian Analyses
-	pkgver = 0.2.22
+	pkgver = 0.2.23
 	pkgrel = 1
 	url = https://cran.r-project.org/package=BayesTools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-bayestools
 	optdepends = r-scales
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/BayesTools_0.2.22.tar.gz
-	sha256sums = e80abb519ec62fe677cbf697fff2d552af201d6169d1a51e6bcc2a780e82c782
+	source = https://cran.r-project.org/src/contrib/BayesTools_0.2.23.tar.gz
+	sha256sums = 3667fb82dc98fbaa3468ebbe729a07d4aea5bd55dc6341d175716546d1c2920f
 
 pkgname = r-bayestools
