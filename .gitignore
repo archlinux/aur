@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
+!prometheus-squid-exporter.conf
+!prometheus-squid-exporter.service
+!prometheus-squid-exporter.sysusers

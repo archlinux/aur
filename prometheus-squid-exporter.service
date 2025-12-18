@@ -1,0 +1,19 @@
+[Unit]
+Description=Exports squid metrics in Prometheus format
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=squid_exporter
+Group=squid_exporter
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-squid-exporter
+ExecStart=/usr/bin/prometheus-squid-exporter
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+AmbientCapabilities=CAP_DAC_READ_SEARCH
+
+[Install]
+WantedBy=multi-user.target

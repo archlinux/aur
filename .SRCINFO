@@ -1,0 +1,21 @@
+pkgbase = prometheus-squid-exporter
+	pkgdesc = Exports squid metrics in Prometheus format
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/boynux/squid-exporter
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/boynux/squid-exporter/archive/refs/tags/v1.13.0.tar.gz
+	source = prometheus-squid-exporter.conf
+	source = prometheus-squid-exporter.service
+	source = prometheus-squid-exporter.sysusers
+	sha256sums = SKIP
+	sha256sums = 53b089247a51e0648987186c1045bf0412a41110057b57d3627296384e571725
+	sha256sums = 5c358eb7c4b5c88b5861962dd5c717323e9366490f81a3856e391f09173b220d
+	sha256sums = c450176d8fd046e2cd5776df358a894a3b76ca6e50393ff0e20d62bbb27b7a0f
+
+pkgname = prometheus-squid-exporter
