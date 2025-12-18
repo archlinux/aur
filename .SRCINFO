@@ -1,6 +1,6 @@
 pkgbase = r-flowbin
 	pkgdesc = Combining multitube flow cytometry data by binning
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowBin
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-flowbin
 	depends = r-limma
 	depends = r-snow
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowBin_1.44.0.tar.gz
-	sha256sums = a1eb1247dd0002dc4addd3db85f777a241f8200ca12205aeb6e49ac85c5a59ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowBin_1.46.0.tar.gz
+	sha256sums = 52b3c5f1405008bd383f30fbea4176c92ecccebb976921078a4527cc736b30e5
 
 pkgname = r-flowbin
