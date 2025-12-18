@@ -7,11 +7,11 @@ pkgbase = iceshrimp.net
 	arch = x86_64
 	arch = aarch64
 	license = EUPL
-	makedepends = dotnet-sdk>=9.0
-	makedepends = aspnet-targeting-pack>=9.0
-	makedepends = aspnet-targeting-pack<10.0
-	depends = aspnet-runtime>=9.0
-	depends = aspnet-runtime<10.0
+	makedepends = dotnet-sdk-9.0>=9.0
+	makedepends = aspnet-targeting-pack-9.0>=9.0
+	makedepends = aspnet-targeting-pack-9.0<10.0
+	depends = aspnet-runtime-9.0>=9.0
+	depends = aspnet-runtime-9.0<10.0
 	optdepends = ffmpeg: for video transcoding
 	backup = etc/iceshrimp.net/configuration.ini
 	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#tag=v2025.1-beta5.patch3.security4
@@ -28,8 +28,8 @@ pkgbase = iceshrimp.net
 	sha512sums = 78c4eb031a3e9e6976760c3b3016fc3ff6d764aa123140dbf095d3834c7e8af2f4490a0874394f43e320c421136aa87388b309f3b181336347510fcc82d590c7
 
 pkgname = iceshrimp.net
-	depends = aspnet-runtime>=9.0
-	depends = aspnet-runtime<10.0
+	depends = aspnet-runtime-9.0>=9.0
+	depends = aspnet-runtime-9.0<10.0
 	depends = postgresql
 	depends = libvips
 	depends = openjpeg2
