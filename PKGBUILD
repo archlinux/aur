@@ -1,16 +1,16 @@
 # Maintainer: Amolith <amolith@secluded.site>
 pkgname=goradion
 pkgdesc='Terminal based online radio player'
-arch=("any")
+arch=("x86_64" "aarch64")
 url="https://github.com/agejevasv/goradion"
-pkgver="v0.6.2"
+pkgver="v0.7.0"
 pkgrel=1
 license=("Unlicense")
 makedepends=("go")
 depends=("mpv")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('2c0a61e27d079905a9d3ca175da1335a59daa6e3a6126b7f58b68289d2c782e056c107b15053adf01aa2b43490c3243c1c820baa175fd7957831891949f96994')
+b2sums=('93b4cd3840e3f41a627f7151a09ce907bb2d131302563fd3b7f0531798a07427595224be1d77cc0c65d177c84e5f3a45ccffe11eab0e81111ac91c9e1bab55f6')
 
 build() {
   cd "${pkgname}-${pkgver#v}"
