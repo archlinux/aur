@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowBeads
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='flowBeads: Analysis of flow bead data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-flowviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7304f467bddad459259229d7ae41f380cc6a06a685c256bbd6960e405164719b')
+sha256sums=('f0b03cef90b1c928521d27296f5064a2c912fe4673a0e98b522fc64bd35fddbe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-flowbeads
 	pkgdesc = flowBeads: Analysis of flow bead data
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowBeads
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-flowbeads
 	depends = r-rrcov
 	depends = r-xtable
 	optdepends = r-flowviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowBeads_1.46.0.tar.gz
-	sha256sums = 7304f467bddad459259229d7ae41f380cc6a06a685c256bbd6960e405164719b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowBeads_1.48.0.tar.gz
+	sha256sums = f0b03cef90b1c928521d27296f5064a2c912fe4673a0e98b522fc64bd35fddbe
 
 pkgname = r-flowbeads
