@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=shiny
-_pkgver=1.11.1
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,6 +24,7 @@ depends=(
   r-later
   r-lifecycle
   r-mime
+  r-otel
   r-promises
   r-r6
   r-rlang
@@ -36,6 +37,7 @@ checkdepends=(
   r-coro
   r-future
   r-ggplot2
+  r-otelsdk
   r-testthat
   ttf-font
 )
@@ -58,10 +60,11 @@ optdepends=(
   r-yaml
   r-mirai
   r-watcher
+  r-otelsdk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57f4e39ae3b46a6ba66d328c121e62b9')
-b2sums=('bac64637d3a1606d564eb8496be4842926c328e2660d02b829964125ad66a2d1a8c6f32bb97ae57e458d2fa502716e0724457a5e00a2f24f56e42dbebffdcff8')
+md5sums=('10bbe8880aac8ad4336f8d83f9b36495')
+b2sums=('d39a43ad1a30c66d4bb26ec8f09166a9a0e43637a36ebebf923051a9851a86b2482598c12936f8bbaf28202935eec39a0e44cb95143a38cb47d0288b46da8243')
 
 build() {
   mkdir build

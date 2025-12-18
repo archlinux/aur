@@ -1,6 +1,6 @@
 pkgbase = r-shiny
 	pkgdesc = Web Application Framework for R
-	pkgver = 1.11.1
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shiny
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = r-shiny
 	checkdepends = r-coro
 	checkdepends = r-future
 	checkdepends = r-ggplot2
+	checkdepends = r-otelsdk
 	checkdepends = r-testthat
 	checkdepends = ttf-font
 	depends = r-bslib
@@ -22,6 +23,7 @@ pkgbase = r-shiny
 	depends = r-later
 	depends = r-lifecycle
 	depends = r-mime
+	depends = r-otel
 	depends = r-promises
 	depends = r-r6
 	depends = r-rlang
@@ -47,8 +49,9 @@ pkgbase = r-shiny
 	optdepends = r-yaml
 	optdepends = r-mirai
 	optdepends = r-watcher
-	source = https://cran.r-project.org/src/contrib/shiny_1.11.1.tar.gz
-	md5sums = 57f4e39ae3b46a6ba66d328c121e62b9
-	b2sums = bac64637d3a1606d564eb8496be4842926c328e2660d02b829964125ad66a2d1a8c6f32bb97ae57e458d2fa502716e0724457a5e00a2f24f56e42dbebffdcff8
+	optdepends = r-otelsdk
+	source = https://cran.r-project.org/src/contrib/shiny_1.12.1.tar.gz
+	md5sums = 10bbe8880aac8ad4336f8d83f9b36495
+	b2sums = d39a43ad1a30c66d4bb26ec8f09166a9a0e43637a36ebebf923051a9851a86b2482598c12936f8bbaf28202935eec39a0e44cb95143a38cb47d0288b46da8243
 
 pkgname = r-shiny
