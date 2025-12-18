@@ -1,6 +1,6 @@
 pkgbase = waveterm-bin
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://www.waveterm.dev
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = waveterm-bin
 	options = !strip
 	source = waveterm.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = waveterm-0.13.0-aarch64.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.13.0/waveterm-linux-aarch64-0.13.0.pacman
-	sha256sums_aarch64 = 7929823e14840bd7125318fd22fa5c6bc7c6f90cf1d7f2f7e281ba19a1179a04
-	source_x86_64 = waveterm-0.13.0-x86_64.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.13.0/waveterm-linux-x64-0.13.0.pacman
-	sha256sums_x86_64 = e47722ff98311d786cd51bb60586a45d4836bdd9c1706c55ac9202ee8e6c6355
+	source_aarch64 = waveterm-0.13.1-aarch64.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.13.1/waveterm-linux-aarch64-0.13.1.pacman
+	sha256sums_aarch64 = 90cbd8dec57ef0992e52b51f934b38c44cd38f5aa159405c3564e160a288d9ca
+	source_x86_64 = waveterm-0.13.1-x86_64.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.13.1/waveterm-linux-x64-0.13.1.pacman
+	sha256sums_x86_64 = 1ada60543abf0d6921ebfab59addb142dc0b971f1a226bd70228868700dbb57d
 
 pkgname = waveterm-bin
