@@ -5,7 +5,8 @@ pkgbase = python-kikuchipy
 	url = https://kikuchipy.org/
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = python-setuptools
+	makedepends = python-setuptools>=64
+	makedepends = python-setuptools-scm>=8
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer

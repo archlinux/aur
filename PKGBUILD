@@ -30,7 +30,8 @@ depends=('python'
          'python-tqdm>=0.5.2'
          )
 
-makedepends=('python-setuptools'
+makedepends=('python-setuptools>=64'
+             'python-setuptools-scm>=8'
              'python-wheel'
              'python-build'
              'python-installer'
@@ -43,7 +44,7 @@ provides=('kikuchipy')
 
 source=(https://github.com/pyxem/kikuchipy/archive/v$pkgver.tar.gz)
 
-package() {
+build() {
   cd "$srcdir/$pkgshort-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
