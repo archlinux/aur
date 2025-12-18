@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jelle@vdwaa.nl>
+Date: Wed, 3 Dec 2025 10:10:02 +0100
+Subject: [PATCH] pacutils: pacman 7.1 compatibility
+
+Pacman 7.1 introduced removed alpm_option_set_disable_sandbox and made
+the configuration more fine grained allowing one to disable the syscalls
+or filesystem restrictions separately.
+---
+ lib/pacutils/config.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/pacutils/config.c b/lib/pacutils/config.c
+index f533194e15f6..798856a0e6a0 100644
+--- a/lib/pacutils/config.c
++++ b/lib/pacutils/config.c
+@@ -391,7 +391,10 @@ alpm_handle_t *pu_initialize_handle_from_config(pu_config_t *config) {
+   alpm_option_set_architectures(handle, config->architectures);
+   alpm_option_set_disable_dl_timeout(handle, config->disabledownloadtimeout);
+ 
+-  alpm_option_set_disable_sandbox(handle, config->disablesandbox);
++  if (config->disablesandbox) {
++      alpm_option_set_disable_sandbox_syscalls(handle, config->disablesandbox);
++      alpm_option_set_disable_sandbox_filesystem(handle, config->disablesandbox);
++  }
+   alpm_option_set_sandboxuser(handle, config->downloaduser);
+ 
+   alpm_option_set_default_siglevel(handle, config->siglevel);

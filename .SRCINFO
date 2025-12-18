@@ -1,7 +1,7 @@
 pkgbase = pacutils-git
 	pkgdesc = Helper tools for libalpm
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrewgregory/pacutils
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,10 @@ pkgbase = pacutils-git
 	provides = pacutils
 	conflicts = pacutils
 	source = git+https://github.com/andrewgregory/pacutils
-	sha1sums = SKIP
+	source = 0001-pacutils-pacman-7.1-compatibility.patch
+	source = 0002-Support-new-DisableSandbox-configuration-options.patch
+	sha256sums = SKIP
+	sha256sums = b9956e9593f27c354998b5728a534756ef7c2fd222eee36664d7f8a2d3a21093
+	sha256sums = 00acaa2e2d41324e351d9850deefc40b349a8251b125c298d6451144a13f64f1
 
 pkgname = pacutils-git

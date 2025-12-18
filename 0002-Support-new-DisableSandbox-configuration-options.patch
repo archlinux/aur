@@ -1,0 +1,126 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jelle@vdwaa.nl>
+Date: Wed, 3 Dec 2025 10:53:56 +0100
+Subject: [PATCH] Support new DisableSandbox configuration options
+
+Pacman 7.1 introduced DisableSandboxFilesystem and
+DisableSandboxSyscalls which allow a finer grained configuration of the
+sandboxing features. DisableSandbox disables both options.
+---
+ lib/pacutils/config.c | 19 ++++++++++++++++++-
+ lib/pacutils/config.h |  4 ++++
+ src/pacconf.c         |  6 ++++++
+ 3 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/lib/pacutils/config.c b/lib/pacutils/config.c
+index 798856a0e6a0..d99a4f7b2d92 100644
+--- a/lib/pacutils/config.c
++++ b/lib/pacutils/config.c
+@@ -55,6 +55,8 @@ struct _pu_config_setting {
+   {"ParallelDownloads",      PU_CONFIG_OPTION_PARALLELDOWNLOADS},
+ 
+   {"DisableSandbox", PU_CONFIG_OPTION_DISABLESANDBOX},
++  {"DisableSandboxFilesystem", PU_CONFIG_OPTION_DISABLESANDBOX_FILESYSTEM},
++  {"DisableSandboxSyscalls", PU_CONFIG_OPTION_DISABLESANDBOX_SYSCALLS},
+   {"DownloadUser",   PU_CONFIG_OPTION_DOWNLOADUSER},
+ 
+   {"SigLevel",        PU_CONFIG_OPTION_SIGLEVEL},
+@@ -267,6 +269,8 @@ pu_config_t *pu_config_new(void) {
+   config->noprogressbar = PU_CONFIG_BOOL_UNSET;
+   config->disabledownloadtimeout = PU_CONFIG_BOOL_UNSET;
+   config->disablesandbox = PU_CONFIG_BOOL_UNSET;
++  config->disablesandbox_filesystem = PU_CONFIG_BOOL_UNSET;
++  config->disablesandbox_syscalls = PU_CONFIG_BOOL_UNSET;
+   config->ilovecandy = PU_CONFIG_BOOL_UNSET;
+   config->usesyslog = PU_CONFIG_BOOL_UNSET;
+   config->verbosepkglists = PU_CONFIG_BOOL_UNSET;
+@@ -392,8 +396,11 @@ alpm_handle_t *pu_initialize_handle_from_config(pu_config_t *config) {
+   alpm_option_set_disable_dl_timeout(handle, config->disabledownloadtimeout);
+ 
+   if (config->disablesandbox) {
+-      alpm_option_set_disable_sandbox_syscalls(handle, config->disablesandbox);
+       alpm_option_set_disable_sandbox_filesystem(handle, config->disablesandbox);
++      alpm_option_set_disable_sandbox_syscalls(handle, config->disablesandbox);
++  } else {
++      alpm_option_set_disable_sandbox_filesystem(handle, config->disablesandbox_filesystem);
++      alpm_option_set_disable_sandbox_syscalls(handle, config->disablesandbox_syscalls);
+   }
+   alpm_option_set_sandboxuser(handle, config->downloaduser);
+ 
+@@ -528,6 +535,8 @@ int pu_config_resolve(pu_config_t *config) {
+   SETBOOL(config->noprogressbar);
+   SETBOOL(config->disabledownloadtimeout);
+   SETBOOL(config->disablesandbox);
++  SETBOOL(config->disablesandbox_filesystem);
++  SETBOOL(config->disablesandbox_syscalls);
+   SETBOOL(config->ilovecandy);
+   SETBOOL(config->usesyslog);
+   SETBOOL(config->verbosepkglists);
+@@ -573,6 +582,8 @@ void pu_config_merge(pu_config_t *dest, pu_config_t *src) {
+   MERGEBOOL(dest->ilovecandy, src->ilovecandy);
+   MERGEBOOL(dest->disabledownloadtimeout, src->disabledownloadtimeout);
+   MERGEBOOL(dest->disablesandbox, src->disablesandbox);
++  MERGEBOOL(dest->disablesandbox_filesystem, src->disablesandbox_filesystem);
++  MERGEBOOL(dest->disablesandbox_syscalls, src->disablesandbox_syscalls);
+ 
+   MERGEVAL(dest->cleanmethod, src->cleanmethod);
+   MERGEVAL(dest->paralleldownloads, src->paralleldownloads);
+@@ -906,6 +917,12 @@ int pu_config_reader_next(pu_config_reader_t *reader) {
+         case PU_CONFIG_OPTION_DISABLESANDBOX:
+           config->disablesandbox = 1;
+           break;
++        case PU_CONFIG_OPTION_DISABLESANDBOX_SYSCALLS:
++          config->disablesandbox_syscalls = 1;
++          break;
++        case PU_CONFIG_OPTION_DISABLESANDBOX_FILESYSTEM:
++          config->disablesandbox_filesystem = 1;
++          break;
+         default:
+           reader->status = PU_CONFIG_READER_STATUS_UNKNOWN_OPTION;
+           break;
+diff --git a/lib/pacutils/config.h b/lib/pacutils/config.h
+index f2f393baed51..4cecab59ecbd 100644
+--- a/lib/pacutils/config.h
++++ b/lib/pacutils/config.h
+@@ -63,6 +63,8 @@ typedef enum pu_config_option_t {
+ 
+   PU_CONFIG_OPTION_DOWNLOADUSER,
+   PU_CONFIG_OPTION_DISABLESANDBOX,
++  PU_CONFIG_OPTION_DISABLESANDBOX_FILESYSTEM,
++  PU_CONFIG_OPTION_DISABLESANDBOX_SYSCALLS,
+ 
+   PU_CONFIG_OPTION_INCLUDE
+ } pu_config_option_t;
+@@ -97,6 +99,8 @@ typedef struct pu_config_t {
+   pu_config_bool_t verbosepkglists;
+   pu_config_bool_t disabledownloadtimeout;
+   pu_config_bool_t disablesandbox;
++  pu_config_bool_t disablesandbox_filesystem;
++  pu_config_bool_t disablesandbox_syscalls;
+ 
+   int siglevel;
+   int localfilesiglevel;
+diff --git a/src/pacconf.c b/src/pacconf.c
+index dbb17c3f673f..1b3b29d821e5 100644
+--- a/src/pacconf.c
++++ b/src/pacconf.c
+@@ -304,6 +304,8 @@ void dump_options(void) {
+   show_str("XferCommand", config->xfercommand);
+   show_str("DownloadUser", config->downloaduser);
+   show_bool("DisableSandbox", config->disablesandbox);
++  show_bool("DisableSandboxFilesystem", config->disablesandbox_filesystem);
++  show_bool("DisableSandboxSyscalls", config->disablesandbox_syscalls);
+ 
+   show_bool("UseSyslog", config->usesyslog);
+   show_bool("Color", config->color);
+@@ -436,6 +438,10 @@ int list_directives(alpm_list_t *directives) {
+       show_bool("DisableDownloadTimeout", config->disabledownloadtimeout);
+     } else if (strcasecmp(i->data, "DisableSandbox") == 0) {
+       show_bool("DisableSandbox", config->disablesandbox);
++    } else if (strcasecmp(i->data, "DisableSandboxFilesystem") == 0) {
++      show_bool("DisableSandboxFilesystem", config->disablesandbox_filesystem);
++    } else if (strcasecmp(i->data, "DisableSandboxSyscalls") == 0) {
++      show_bool("DisableSandboxSyscalls", config->disablesandbox_syscalls);
+ 
+     } else if (strcasecmp(i->data, "CleanMethod") == 0) {
+       show_cleanmethod("CleanMethod", config->cleanmethod);

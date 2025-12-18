@@ -3,7 +3,7 @@
 # Contributor: Johannes Löthberg
 pkgname=pacutils-git
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper tools for libalpm'
 url='https://github.com/andrewgregory/pacutils'
 arch=('x86_64')
@@ -12,8 +12,19 @@ makedepends=('git' 'perl')
 conflicts=('pacutils')
 provides=("pacutils")
 license=('MIT')
-source=("git+${url}")
-sha1sums=('SKIP')
+source=("git+${url}"
+         0001-pacutils-pacman-7.1-compatibility.patch
+         0002-Support-new-DisableSandbox-configuration-options.patch)
+sha256sums=('SKIP'
+            'b9956e9593f27c354998b5728a534756ef7c2fd222eee36664d7f8a2d3a21093'
+            '00acaa2e2d41324e351d9850deefc40b349a8251b125c298d6451144a13f64f1')
+
+prepare() {
+    cd pacutils
+    # https://github.com/andrewgregory/pacutils/pull/83
+    git apply -3 ../0001-pacutils-pacman-7.1-compatibility.patch
+    git apply -3 ../0002-Support-new-DisableSandbox-configuration-options.patch
+}
 
 pkgver() {
     cd pacutils
