@@ -1,7 +1,7 @@
 pkgbase = pachca-bin
 	pkgdesc = Corporate messenger for modern teams
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pachca.com/apps
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = pachca-bin
 	conflicts = pachca
 	options = !debug
 	options = !strip
-	source = Pachca-2.8.1-amd64.deb::https://desktop.pachca.com/linux/deb/x64
+	source = Pachca-2.8.1-amd64.deb::https://install.pachca.com/linux/deb/x64
 	b2sums = f945da7361a8efa281c8c67d80ab10ba33f6511fd3b3b39729e9cb40543b17388431e1a948bfe7a1b7b2177580bae48573c91c8d9673684f5383f2c59955b4e8
 
 pkgname = pachca-bin
