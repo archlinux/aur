@@ -2,7 +2,7 @@
 
 _name="Pogo"
 pkgname=tango-${_name,,}
-pkgver=9.10.5
+pkgver=9.10.6
 _jarfile="${_name}-${pkgver}.jar"
 pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
@@ -16,16 +16,16 @@ source=(
   launcher
 )
 sha256sums=(
-  "cc6a1f9985c2c9e37cacdce9e32179d0d6aed443e3944f65378358cd0156cd1e"
+  "68a55e291b56eeb2c0338f20d670be29c76be097f98e4c0b611b26df942fce0d"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
 )
 
 prepare() {
   sed -i "s/jar_file/${_jarfile}/" launcher
   sed -i "s/package_name/${pkgname}/" launcher
-  sed -i "s/9.10.5-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/pom.xml
-  sed -i "s/9.10.5-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/org.tango.pogo/pom.xml
-  sed -i "s/9.10.5-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/org.tango.pogo.gui/pom.xml
+  sed -i "s/9.10.6-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/pom.xml
+  sed -i "s/9.10.6-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/org.tango.pogo/pom.xml
+  sed -i "s/9.10.6-SNAPSHOT/${pkgver}/" ${_name,,}-${pkgver}/org.tango.pogo.gui/pom.xml
 }
 
 build() {
