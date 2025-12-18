@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=prql
 pkgname=prql-bin
-pkgver=0.13.8
+pkgver=0.13.10
 pkgrel=1
 pkgdesc='PRQL is a modern language for transforming data — a simple, powerful, pipelined SQL replacement'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 provides=($_pkg)
 conflicts=($_pkg)
 source_x86_64=("$_git/releases/download/$pkgver/prqlc-$pkgver-$arch-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('1edf208508d0b1f4e0941e96d1d7046e475b8cf67c3cc3270c4478db4fa329cd')
+sha256sums_x86_64=('1bbfde8f8e685dbba187a176c1d3166699b4d925ae2bb48070ac480c5608f52c')
 
 package() {
     install -Dm755 prqlc -t "$pkgdir/usr/bin/"
@@ -19,11 +19,11 @@ package() {
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname}/"
 
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-	./prqlc shell-completion bash > "${pkgdir}/usr/share/bash-completion/completions/$_pkg"
+	./prqlc shell-completion bash > "${pkgdir}/usr/share/bash-completion/completions/prqlc"
 	mkdir -p "${pkgdir}/usr/share/elvish/lib/"
-	./prqlc shell-completion elvish > "$pkgdir/usr/share/elvish/lib/$_pkg.elv"
+	./prqlc shell-completion elvish > "$pkgdir/usr/share/elvish/lib/prqlc.elv"
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-	./prqlc shell-completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/$_pkg.fish"
+	./prqlc shell-completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/prqlc.fish"
 	mkdir -p "${pkgdir}/usr/share/nushell/vendor/autoload"
 	./prqlc shell-completion nushell > "$pkgdir/usr/share/nushell/vendor/autoload/$_pkg.nu"
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
