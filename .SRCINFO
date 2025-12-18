@@ -1,0 +1,18 @@
+pkgbase = python-dony
+	pkgdesc = A lightweight Python command runner
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/dony/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-questionary
+	source = https://files.pythonhosted.org/packages/source/d/dony/dony-0.3.1.tar.gz
+	sha256sums = a97cc122604ac60ea092863440c0d60849f905c09fd0fc0bd477eb605ab6b43f
+
+pkgname = python-dony
