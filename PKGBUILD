@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R.devices
-_pkgver=2.17.2
+_pkgver=2.17.3
 pkgname=r-${_pkgname,,}
-pkgver=2.17.2
+pkgver=2.17.3
 pkgrel=1
 pkgdesc='Unified Handling of Graphics Devices'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('403eeaf552dd696142096973dee3460dc52c19b73fd194841dd4638e2bdcec95')
+sha256sums=('4fa070d83781774e69c8ec5f4b3ffb3751f0d3f292271cdb47d76b0c012f3cf8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
