@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Stamer-programer/RainbowFet
 sha256sums=('45790e6df4a3542f21e3dedce17c4a26a829a443d435bd1616dfd43a4c54acc1')
 
 package() {
-    cd "$srcdir/RainbowFetch" || exit 1
+    cd "$srcdir/rainbowfetch" || exit 1
     install -Dm755 rainbowfetch "$pkgdir/usr/bin/rainbowfetch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
