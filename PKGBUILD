@@ -10,8 +10,8 @@ arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
 
-makedepends=('dotnet-sdk>=9.0' 'aspnet-targeting-pack>=9.0' 'aspnet-targeting-pack<10.0')
-depends=('aspnet-runtime>=9.0' 'aspnet-runtime<10.0')
+makedepends=('dotnet-sdk-9.0>=9.0' 'aspnet-targeting-pack-9.0>=9.0' 'aspnet-targeting-pack-9.0<10.0')
+depends=('aspnet-runtime-9.0>=9.0' 'aspnet-runtime-9.0<10.0')
 optdepends=(
   "ffmpeg: for video transcoding"
 )
