@@ -39,7 +39,7 @@ pkgbase = grub-silent
 	options = !makeflags
 	backup = etc/default/grub
 	source = https://ftp.gnu.org/gnu/grub/grub-2.12.tar.xz
-	source = https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-8a245d5c1800627af4cefa99162a89c7a46d8842.tar.gz
+	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842
 	source = 01-intel-ucode.patch
 	source = 02-linux-detect-archlinux-initramfs.patch
 	source = 03-add-GRUB_COLOR_variables.patch

@@ -53,7 +53,7 @@ if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
 fi
 
 source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
-        "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
+        "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842"
         '01-intel-ucode.patch'
         '02-linux-detect-archlinux-initramfs.patch'
         '03-add-GRUB_COLOR_variables.patch'
@@ -134,7 +134,7 @@ _build_grub-common_and_bios() {
 
 	msg "Add the grub-extra sources for bios build"
 	install -d "${srcdir}/grub-${pkgver}-bios/grub-extras"
-	cp -r "${srcdir}/grub-extras-${_GRUB_EXTRAS_COMMIT}/915resolution" \
+	cp -r "${srcdir}/grub-extras/915resolution" \
 		"${srcdir}/grub-${pkgver}-bios/grub-extras/915resolution"
 	export GRUB_CONTRIB="${srcdir}/grub-${pkgver}-bios/grub-extras/"
 

@@ -1,0 +1,5 @@
+*.tar.xz
+grub-extras/
+pkg/
+src/
+*.pkg.tar.*
