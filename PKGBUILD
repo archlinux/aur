@@ -6,7 +6,7 @@ _suffix="-mach"
 pkgname="${_basename}${_suffix}"
 pkgver=0.14.0dev.2577+271452d22
 _pkgver="${pkgver//dev/-dev}"
-pkgrel=2
+pkgrel=3
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -45,6 +45,7 @@ makedepends=(
 # )
 options=(
   '!lto'
+  '!strip'
 )
 _pkgsrc="${_basename}-${_pkgver}"
 source=(
