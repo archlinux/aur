@@ -1,7 +1,7 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
 pkgname=qoder-gui-bin
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Qoder Agentic Coding App (GUI) - AI-powered code editor from Alibaba (Linux Beta, proprietary)"
 url="https://qoder.com"
 arch=('x86_64')

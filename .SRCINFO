@@ -1,7 +1,7 @@
 pkgbase = qoder-gui-bin
 	pkgdesc = Qoder Agentic Coding App (GUI) - AI-powered code editor from Alibaba (Linux Beta, proprietary)
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoder.com
 	arch = x86_64
 	license = proprietary
