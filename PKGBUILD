@@ -2,7 +2,7 @@
 
 _pkgbase="hyprcap"
 pkgname="$_pkgbase-git"
-pkgver=1.0.1.r0.8cb9f77
+pkgver=1.3.1.r3.7bb4fe8
 pkgrel=1
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
@@ -42,8 +42,11 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgbase"
-  mkdir -p "$pkgdir/usr/bin"
 
-  cp hyprcap "$pkgdir/usr/bin/hyprcap"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  export DESTDIR="$pkgdir"
+  export PKGBASE="$_pkgbase"
+  export PREFIX="/usr"
+
+  make
+  make install
 }
