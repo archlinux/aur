@@ -3,7 +3,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=parcellite-git
-pkgver=1.2.5.r1.14628da
+pkgver=1.2.5.r3.4a0eafd
 pkgrel=1
 pkgdesc="Lightweight GTK clipboard manager (git version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('parcellite')
 source=("$pkgname::git+https://github.com/rickyrockrat/${pkgname%%-*}"
         port-to-gtk-3.patch)
 sha512sums=('SKIP'
-            'c9cc884f7f1492f9b4ee1a8f4f322cb10c3a691eaf511e9b655b5608d1414e0d19363a3ee788706caaa54854a72c37711587d6cad7a6db5195bd894a4f206b3b')
+            '394301c66caedd092a1b6dacb8b8eb2a338ab301c07e5bf136154898a2ef500adcb8543cd08e43ba45fae27f8200bf5cafc0b1f6d8328cd4c8193fe8175066b6')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"

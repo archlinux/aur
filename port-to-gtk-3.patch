@@ -258,15 +258,6 @@ index 2029fba..294a74b 100644
  #endif
  }
  
-@@ -2519,7 +2537,7 @@ int main(int argc, char *argv[])
- 	}	
-   
-   /* Init Parcellite */
--  parcellite_init(mode);
-+  parcellite_init();
-   /*g_printf("Start main loop\n"); */
-   /* Run GTK+ loop */
-   gtk_main();
 diff --git a/src/main.h b/src/main.h
 index d6d435f..24f570e 100644
 --- a/src/main.h
