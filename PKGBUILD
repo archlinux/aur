@@ -1,8 +1,8 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=cloudmount-wizard-bin
 _pkgname=cloudmount-wizard
-pkgver=1.0.1
-pkgrel=2  # He subido la "release" del paquete a 2 porque es una corrección
+pkgver=1.2
+pkgrel=1  # He subido la "release" del paquete a 2 porque es una corrección
 pkgdesc="Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/CloudMount-Wizard"
@@ -19,7 +19,8 @@ source=(
 
 # IMPORTANTE: Calcula los checksums reales con 'sha256sum archivo'
 # Si te da pereza ahora, usa 'SKIP' para probar, pero AUR te pedirá los reales al subir.
-sha256sums=('ada97b89882794bb2d207011de02ced6f942486fb4150f766363f1450f6c552c' '93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6')
+sha256sums=('b8d2ce91e8da8b3e5fd3b2d1e35704f858edecfeac8b61a5affe66c12d06e99c'
+            '93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6')
 
 package() {
     # 1. Instalar el BINARIO en /usr/bin
