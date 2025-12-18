@@ -7,15 +7,16 @@ _rpmRelease=3
 
 pkgname=$_pkgnameMeta-fedora
 pkgver=20251119
-pkgrel=2
+pkgrel=3
 #pkgdesc="UEFI firmware for x86_64 virtual machines (from Fedora ${_fedoraVersion}) — with Secure Boot enabled"
 pkgdesc="Firmware for Virtual Machines (x86_64) with Secure Boot enabled — from Fedora ${_fedoraVersion}"
 arch=('any')
 url="https://packages.fedoraproject.org/pkgs/edk2/${_pkgnameMeta}/"
 license=(
-  BSD-2-Clause-Patent
-  MIT
-  LicenseRef-Fedora-Public-Domain
+	Apache-2.0
+	BSD-2-Clause-Patent
+	MIT
+	LicenseRef-Fedora-Public-Domain
 )
 
 # conflicts=("${pkgname}-bin")
