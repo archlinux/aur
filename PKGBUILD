@@ -3,7 +3,7 @@
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
 url="https://kikuchipy.org/"
@@ -47,6 +47,11 @@ package() {
   cd "$srcdir/$pkgshort-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$srcdir/$pkgshort-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 md5sums=('246a7948e18daee7d9ff19f2869eeb01')
