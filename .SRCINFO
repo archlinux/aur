@@ -1,6 +1,6 @@
 pkgbase = python-uproot
 	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
-	pkgver = 5.6.8
+	pkgver = 5.6.9
 	pkgrel = 1
 	url = https://github.com/scikit-hep/uproot5
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = python-uproot
 	makedepends = python-fsspec
 	makedepends = python-numpy
 	makedepends = python-xxhash
-	source = uproot-5.6.8.tar.gz::https://github.com/scikit-hep/uproot5/archive/v5.6.8.tar.gz
-	sha256sums = a00038784cc906adb734ae2aff47ed6fa8c14e72ce159a64d19b1e2c71a9c3e2
+	source = uproot-5.6.9.tar.gz::https://github.com/scikit-hep/uproot5/archive/v5.6.9.tar.gz
+	sha256sums = a8472a71419a6d7c4aa1403bcb7a287c98f42ad4738079ce9060053ae340385e
 
 pkgname = python-uproot
 	depends = python
