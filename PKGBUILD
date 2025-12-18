@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeuratObject
-_pkgver=5.2.0
+_pkgver=5.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b81127abbba7b519cfb305b275fbe5fb')
-b2sums=('7f084bf52b78e93c75d91e9b7fcf2cd805d83cdb337f2dd1aaa627633c3a28c5287c538bbe6fca49d8eaf63eb3633aff1d7ba15894a1c92987e082024bb8b4ad')
+md5sums=('19d3fa5f98c52f4e7e77b70da76b8867')
+b2sums=('2b327ff03258acbfab999dcc7a1918743ab2e539f1e38cfe4c56d0850a3852d5f7d0c04d7877251bc0506b8d499f1b0b5b6d0d7b792c87062a677ea18da62dab')
 
 build() {
   mkdir build
