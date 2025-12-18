@@ -1,0 +1,15 @@
+pkgbase = python-pyotherside-qt6
+	pkgdesc = Asynchronous Python 3 Bindings for Qt6
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://thp.io/2011/pyotherside
+	arch = x86_64
+	license = ISC
+	depends = python
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	source = python-pyotherside-qt6-1.6.2.tar.gz::https://github.com/thp/pyotherside/archive/1.6.2.tar.gz
+	sha256sums = 9afe075f165c78ec584892887a6411fe1476f2115cf3bba026105bde29292a4b
+
+pkgname = python-pyotherside-qt6
