@@ -11,6 +11,7 @@ provides=('rclone')
 conflicts=('rclone' 'rclone-git' 'rclone-bin')
 url="https://beta.rclone.org/"
 license=('MIT')
+options=('!debug')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 _arch='linux-386'
