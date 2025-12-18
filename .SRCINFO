@@ -1,6 +1,6 @@
 pkgbase = r-flowstats
 	pkgdesc = Statistical methods for the analysis of flow cytometry data
-	pkgver = 4.20.0
+	pkgver = 4.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowStats
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-flowstats
 	optdepends = r-rbgl
 	optdepends = r-testthat
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowStats_4.20.0.tar.gz
-	sha256sums = 0c8bdcb613930328d8bb81f7b448f7f4ea0f6170fcee7e051e7ca9c63c56a5b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowStats_4.22.0.tar.gz
+	sha256sums = 94b92442ccf857191adf2d81524340e5169afdbf8608f9d11bd9eefd56f0c141
 
 pkgname = r-flowstats
