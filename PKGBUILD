@@ -119,10 +119,6 @@
 # If you use ZFS, refrain from building the RT kernel
 : "${_build_zfs:=no}"
 
-# Builds the nvidia module and package it into a own base
-# This does replace the requirement of nvidia-dkms
-: "${_build_nvidia:=no}"
-
 # Builds the open nvidia module and package it into a own base
 # This does replace the requirement of nvidia-open-dkms
 # Use this only if you have Turing+ GPU
@@ -152,7 +148,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.12
-_minor=62
+_minor=63
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -183,7 +179,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=580.119.02
+_nv_ver=590.48.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -215,11 +211,6 @@ if [ "$_build_zfs" = "yes" ]; then
     source+=("git+https://github.com/cachyos/zfs.git#commit=fe5ed524c72e0b2e2cd4c47ee5bc987290e89666")
 fi
 
-# NVIDIA pre-build module support
-if [ "$_build_nvidia" = "yes" ]; then
-    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "${_patchsource}/misc/nvidia/0001-Enable-atomic-kernel-modesetting-by-default.patch")
-fi
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
@@ -455,14 +446,6 @@ prepare() {
     local basedir="$(dirname "$(readlink "${srcdir}/config")")"
     cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
-    if [ "$_build_nvidia" = "yes" ]; then
-        cd "${srcdir}"
-        sh "${_nv_pkg}.run" --extract-only
-
-        # Use fbdev and modeset as default
-        patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_nv_pkg}/kernel"
-    fi
-
     if [ "$_build_nvidia_open" = "yes" ]; then
         patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_nv_open_pkg}/"
@@ -497,11 +480,6 @@ build() {
        SYSSRC="${srcdir}/${_srcname}"
        SYSOUT="${srcdir}/${_srcname}"
     )
-    if [ "$_build_nvidia" = "yes" ]; then
-        MODULE_FLAGS+=(NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES')
-        cd "${srcdir}/${_nv_pkg}/kernel"
-        make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
-    fi
 
     if [ "$_build_nvidia_open" = "yes" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
@@ -676,25 +654,6 @@ _package-zfs(){
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
-_package-nvidia(){
-    pkgdesc="nvidia module of ${_nv_ver} driver for the ${pkgbase} kernel"
-    depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
-    provides=('NVIDIA-MODULE')
-    conflicts=("$pkgbase-nvidia-open")
-    license=('custom')
-
-    cd "$_srcname"
-    local modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
-
-    cd "${srcdir}/${_nv_pkg}"
-    install -dm755 "${modulesdir}"
-    install -m644 kernel/*.ko "${modulesdir}"
-    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
-
-    _sign_modules "${modulesdir}"
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
-}
-
 _package-nvidia-open(){
     pkgdesc="nvidia open modules of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
@@ -718,7 +677,6 @@ pkgname=("$pkgbase")
 [ "$_build_debug" = "yes" ] && pkgname+=("$pkgbase-dbg")
 pkgname+=("$pkgbase-headers")
 [ "$_build_zfs" = "yes" ] && pkgname+=("$pkgbase-zfs")
-[ "$_build_nvidia" = "yes" ] && pkgname+=("$pkgbase-nvidia")
 [ "$_build_nvidia_open" = "yes" ] && pkgname+=("$pkgbase-nvidia-open")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
@@ -727,7 +685,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('79cfb4974c278218386070bdbf7bcde69c6d6b76df87ee69d064b6b4f6321173be1413eb34e84f55bb1b9b5cffc2b6483eb91ac83dd02ddefd2baf03e0744a16'
+b2sums=('8f24d8efe88f1b5e6fde5fba6833798e5b3d5aa8bbdb7e031ac0f8333f7ffb5fa19a9b0d028641729971cb63e147c6cd6d79b5cd97fb9851471d3efe832119e5'
         'a3c64898a65d8f3dbc97456cd89d99bf639b86bc924a2a5faa85fb709566200ed2ac12bac8b394b3b5a42dd2c2ac1aeb1d662e48c3b12c535754f39ea74f94e0'
         '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
         '14d0cc9c68af30adbd159af81227ab93b25bc654b8720e054782d092d9ffcadf30f57b54ba1b2b198b6cd0e6f985ead279a2f7398ca959b1f0620f5f66222c83'
