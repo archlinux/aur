@@ -1,0 +1,19 @@
+pkgbase = vleer-git
+	pkgdesc = Music, but without the subscription.
+	pkgver = r115.g9bb4186
+	pkgrel = 1
+	url = https://github.com/vleerapp/vleer
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	depends = sqlite
+	provides = vleer
+	conflicts = vleer
+	options = !strip
+	options = !lto
+	source = git+https://github.com/vleerapp/vleer
+	sha256sums = SKIP
+
+pkgname = vleer-git
