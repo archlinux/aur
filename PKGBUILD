@@ -13,7 +13,7 @@ pkgver=2512
 _build1=8.17.0
 _build2=20187591429
 _cart="CART26FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=2
+pkgrel=3
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('resvg' 'oxipng')
@@ -48,13 +48,12 @@ build() {
 	# let's use system libstdc++ from gcc-libs...
 	rm --recursive --force \
 		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/gcc/"
-	# let's use system libssl & libcrypto from openssl...
-	rm --force \
-		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'ssl','crypto'}'.so.3'
 	# ... and even more system libraries.
 	rm --force \
-		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'curl.so.4','ffi.so','fuse.so.2','sigc-2.0.so'{,'.0'},'z.so.1'}
-	# Warning: removing the mm-libraries (lib*mm.so.*) causes segmentation faults...
+		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'ffi.so','fuse.so.2','sigc-2.0.so'{,'.0'},'z.so.1'}
+	#    /\    Warning: Removing the mm-libraries (lib*mm.so.*) and openssl
+	#   /\7\   (libssl.so.* & libcrypto.so.*) causes segmentation faults...
+	#  /_()_\
 
 	# move common files into the client package...
 	mv "Omnissa-Horizon-scannerClient-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/horizon/scannerSerialPortCommon/" \
