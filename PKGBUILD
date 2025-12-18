@@ -1,5 +1,5 @@
 pkgname=delta-plugin-git
-pkgver=0.25.2
+pkgver=0.25.2.r0.g30254ac
 pkgrel=1
 pkgdesc='A multi-purpose OMWAddon/ESP tool. Its primary features include a yaml transcoder, minimal diffing functionality, and using the minimal diffing functionality to produce merged plugins'
 url='https://gitlab.com/bmwinger/delta-plugin'
@@ -35,7 +35,7 @@ build() {
 check() {
 	cd "${srcdir}/delta-plugin"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+	cargo test --frozen --release --all-features
 }
 
 package() {
