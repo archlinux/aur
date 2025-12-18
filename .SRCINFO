@@ -1,6 +1,6 @@
 pkgbase = draupnir
 	pkgdesc = A Matrix moderation bot
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/the-draupnir-project/Draupnir
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = draupnir
 	options = !zipman
 	options = !purge
 	options = !lto
-	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.8.0
-	sha256sums = b77b7b37b207fe677529cdfb28861f8eeb7a08ad0507e4ec575c401e089f6b3f
+	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.9.0
+	sha256sums = d3beb3dc2ecbaa59fa779919a67d12d2e6895b9acaeb03d7401fc1a19962e47d
 
 pkgname = draupnir
