@@ -1,13 +1,13 @@
 pkgbase = dnscontrol-bin
 	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL (binary release)
-	pkgver = 4.28.2
+	pkgver = 4.29.0
 	pkgrel = 1
 	url = https://stackexchange.github.io/dnscontrol/
 	arch = x86_64
 	license = MIT
 	provides = dnscontrol
 	conflicts = dnscontrol
-	source = https://github.com/StackExchange/dnscontrol/releases/download/v4.28.2/dnscontrol_4.28.2_linux_amd64.tar.gz
-	sha256sums = 0b15adae954da564fe71da1287b7cee2d9ed7d43cfbc0add0ecd7599738ae517
+	source = https://github.com/StackExchange/dnscontrol/releases/download/v4.29.0/dnscontrol_4.29.0_linux_amd64.tar.gz
+	sha256sums = f7618b22603403805e31d0d209ab748d60e232893fe55cc41102dbf11e9059b0
 
 pkgname = dnscontrol-bin
