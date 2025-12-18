@@ -13,7 +13,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Ollama-gui-main"
+  # GitHub archives extract to a directory named after the repo and ref (e.g., Ollama-gui-main or Ollama-gui-<commit>).
+  _srcdir="$(find "$srcdir" -maxdepth 1 -type d -name 'Ollama-gui*' | head -n 1)"
+  cd "$_srcdir"
 
   install -Dm755 "ollama-gui" "$pkgdir/usr/bin/ollama-gui"
   install -Dm644 "ollama_gui.py" "$pkgdir/usr/share/ollama-gui/ollama_gui.py"
