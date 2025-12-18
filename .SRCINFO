@@ -1,6 +1,6 @@
 pkgbase = r-statnet.common
 	pkgdesc = Common R Scripts and Utilities Used by the Statnet Project Software
-	pkgver = 4.12.0
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=statnet.common
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = r-statnet.common
 	optdepends = r-rlang
 	optdepends = r-roxygen2
 	optdepends = r-purrr
-	source = https://cran.r-project.org/src/contrib/statnet.common_4.12.0.tar.gz
-	md5sums = d74055cfddeadb4843750b746ba18af1
-	b2sums = 125e97ba814d92535197c44b0ee6339a6daa6ce93dd6e7328c6ac09d28d43c5373af1056b7af121ac406eb5f5da3915615ecb675c46e3d651ba5317af46894a9
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/statnet.common_4.13.0.tar.gz
+	md5sums = 28f6f15ec100a34f9e2b3cc94986b4d7
+	b2sums = 099a2056f9348a7f9210078597ac1b2ed2bd5fa09a74e9c05112dfd77b8a725942650092f6ed919bd65dc4ebbfe1533cbe67f5b18809d223d64cb4cc7595408a
 
 pkgname = r-statnet.common
