@@ -1,6 +1,6 @@
 pkgbase = r-afex
 	pkgdesc = Analysis of Factorial Experiments
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=afex
 	arch = any
@@ -52,7 +52,7 @@ pkgbase = r-afex
 	optdepends = r-tidyr
 	optdepends = r-vdiffr
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/afex_1.5-0.tar.gz
-	sha256sums = b78aa9acba8e7f47f9cfb69a9739f07635ba042a10364e92922f317fd0b777c6
+	source = https://cran.r-project.org/src/contrib/afex_1.5-1.tar.gz
+	sha256sums = 68c5bb370579e288c4e11603a84aa637d2c44995faee10ebc2b42ebd86c03dbb
 
 pkgname = r-afex
