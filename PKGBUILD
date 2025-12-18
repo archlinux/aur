@@ -8,17 +8,17 @@ url="https://github.com/whelanh/scidCommunity"
 license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/fd2bb32f23723f13c1dfefb2785f2f1b563e7747.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/61f90a83fb5df992a709174b2556c0e5269468a5.tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
-  cd "${srcdir}/scidCommunity-fd2bb32f23723f13c1dfefb2785f2f1b563e7747"
+  cd "${srcdir}/scidCommunity-61f90a83fb5df992a709174b2556c0e5269468a5"
   ./configure --prefix=/usr
   make all
 }
 
 package() {
-  cd "${srcdir}/scidCommunity-fd2bb32f23723f13c1dfefb2785f2f1b563e7747"
+  cd "${srcdir}/scidCommunity-61f90a83fb5df992a709174b2556c0e5269468a5"
   # Install under /usr so desktop/icon files land in standard system paths
   make install DESTDIR="${pkgdir}" SHAREDIR="${pkgdir}/usr/share/scid" BINDIR="${pkgdir}/usr/bin"
 }
