@@ -1,0 +1,19 @@
+pkgbase = gremux
+	pkgdesc = Declarative tmux session manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/leogabac/gremux
+	arch = any
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-libtmux
+	depends = python-pyyaml
+	depends = tmux
+	depends = fzf
+	source = https://files.pythonhosted.org/packages/source/g/gremux/gremux-0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = gremux
