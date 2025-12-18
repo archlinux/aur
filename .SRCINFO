@@ -1,0 +1,17 @@
+pkgbase = blip-git
+	pkgdesc = Sublime MySQL monitoring
+	pkgver = r482.7673cad
+	pkgrel = 1
+	url = https://github.com/block/blip
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = blip
+	conflicts = blip
+	source = blip-git::git+https://github.com/block/blip.git
+	sha256sums = SKIP
+
+pkgname = blip-git
