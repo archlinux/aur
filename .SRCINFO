@@ -1,0 +1,19 @@
+pkgbase = qt-hearts-git
+	pkgdesc = Classic hearts card game (development version)
+	pkgver = 1.0.0.r2.gd4e2c0b
+	pkgrel = 1
+	url = https://github.com/adelmonte/qt-hearts
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-multimedia
+	provides = qt-hearts
+	conflicts = qt-hearts
+	source = qt-hearts-git::git+https://github.com/adelmonte/qt-hearts.git
+	sha256sums = SKIP
+
+pkgname = qt-hearts-git
