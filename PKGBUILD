@@ -35,6 +35,7 @@ build() {
 check() {
 	cd "${srcdir}/delta-plugin"
 	export RUSTUP_TOOLCHAIN=stable
+	export RUSTFLAGS+=" -C link-arg=-llz4 "
 	cargo test --frozen --release --all-features
 }
 
