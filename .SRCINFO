@@ -1,6 +1,6 @@
 pkgbase = nekobox
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
-	pkgver = 5.9.13
+	pkgver = 5.9.14
 	pkgrel = 1
 	url = https://github.com/qr243vbi/nekobox
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = nekobox
 	makedepends = cpio
 	makedepends = upx
 	makedepends = boost-libs
-	source = https://github.com/qr243vbi/nekobox/releases/download/5.9.13/nekobox-unified-source-5.9.13.tar.xz
-	sha256sums = 64562521edb64be00560bb7c5b6fb13ead939123d268371f51750c709553f69c
+	source = https://github.com/qr243vbi/nekobox/releases/download/5.9.14/nekobox-unified-source-5.9.14.tar.xz
+	sha256sums = 8bb618fcfe85425581137662d29d42554c33808fc15be5979a8ce06871d0fd88
 
 pkgname = nekobox
 	depends = bash
