@@ -1,0 +1,14 @@
+pkgbase = rare-go
+	pkgdesc = A fast text scanner/regex extractor and realtime summarizer
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/zix99/rare
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = pcre2
+	source = rare-go-0.5.4.tar.gz::https://github.com/zix99/rare/archive/0.5.4.tar.gz
+	sha256sums = f07ace4af25658c7912861233a8308710b96bfa25aac55f016ed3ff344f43981
+
+pkgname = rare-go
