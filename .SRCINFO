@@ -1,7 +1,7 @@
 pkgbase = alice2-bin
 	pkgdesc = Block-based 3D programming environment that makes it easy to create animations, build interactive narratives, or program simple games
 	pkgver = 2.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.alice.org/get-alice/alice-2/
 	arch = x86_64
 	license = LicenseRef-Alice2-EULA

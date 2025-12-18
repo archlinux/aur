@@ -3,7 +3,7 @@
 
 pkgname=alice2-bin
 pkgver=2.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Block-based 3D programming environment that makes it easy to create animations, build interactive narratives, or program simple games"
 arch=('x86_64')
 url='https://www.alice.org/get-alice/alice-2/'
