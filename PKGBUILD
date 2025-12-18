@@ -2,11 +2,12 @@
 
 pkgname=eve-preview-manager
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EVE Online window preview manager"
 arch=('x86_64')
 url="https://github.com/h0lylag/EVE-Preview-Manager"
 license=('MIT')
+options=('!debug')
 depends=('fontconfig' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-icon-theme' 'libxcursor' 'libxrandr' 'libxi')
 makedepends=('rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v${pkgver}.tar.gz")
