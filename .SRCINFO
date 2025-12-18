@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-additionalinfo-chaps-trains-latest
 	pkgdesc = Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS.
-	pkgver = 2024_12_05
+	pkgver = 2025_12_15
 	pkgrel = 1
 	epoch = 0
 	url = https://chaps.cz/eng/download/idos/zip#kotvainf
@@ -9,12 +9,12 @@ pkgbase = idos-timetable-additionalinfo-chaps-trains-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains-cz
-	provides = idos-timetable-additionalinfo-chaps-trains=2024_12_05
-	provides = idos-timetable-additionalinfo-trains=2024_12_05
-	provides = idos-timetable-additionalinfo-trains-cz=2024_12_05
+	provides = idos-timetable-additionalinfo-chaps-trains=2025_12_15
+	provides = idos-timetable-additionalinfo-trains=2025_12_15
+	provides = idos-timetable-additionalinfo-trains-cz=2025_12_15
 	conflicts = idos-timetable-additionalinfo-chaps-trains
 	options = !strip
-	source = c1-2024_12_05.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/C1.ZIP
+	source = c1-2025_12_15.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/C1.ZIP
 	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
