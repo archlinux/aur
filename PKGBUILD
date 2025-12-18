@@ -5,7 +5,7 @@ pkgdesc="Minimize all your objects with 1 tap in Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
 pkgver="0.50.0"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
@@ -43,5 +43,5 @@ package() {
 	install -Dm644 \
 		README.md \
 		"$pkgdir/usr/share/doc/$pkgname/README.md"
-    cp -r "res/black_hole" "$pkgdir/usr/share/$pkgname"
+    cp -r "res" "$pkgdir/usr/share/$pkgname"
 }
