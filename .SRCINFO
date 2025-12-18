@@ -1,0 +1,26 @@
+pkgbase = zig0.12
+	pkgdesc = General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://ziglang.org
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = minisign
+	makedepends = llvm17
+	depends = gcc-libs
+	depends = glibc
+	depends = clang17
+	depends = lld17
+	depends = llvm17-libs
+	options = emptydirs
+	options = !lto
+	options = !strip
+	source = https://ziglang.org/download/0.12.1/zig-0.12.1.tar.xz
+	source = https://ziglang.org/download/0.12.1/zig-0.12.1.tar.xz.minisig
+	source = zig_skip_localhost_test.patch
+	sha256sums = cca0bf5686fe1a15405bd535661811fac7663f81664d2204ea4590ce49a6e9ba
+	sha256sums = SKIP
+	sha256sums = eeb5f0f72035c52bf558ffc77a171a3ddf93eac7d663ef0c82826007763717a8
+
+pkgname = zig0.12

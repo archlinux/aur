@@ -1,0 +1,6 @@
+["zig0.12"]
+# source = "jq"
+# url = "https://ziglang.org/download/index.json"
+# filter = "keys[]"
+# include_regex = "0.12.*"
+source = "manual"
