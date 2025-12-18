@@ -6,7 +6,7 @@ _suffix="-mach"
 pkgname="${_basename}${_suffix}"
 pkgver=0.14.0dev.2577+271452d22
 _pkgver="${pkgver//dev/-dev}"
-pkgrel=3
+pkgrel=4
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -44,6 +44,7 @@ makedepends=(
 #   'lib32-glibc'
 # )
 options=(
+  'emptydirs'
   '!lto'
   '!strip'
 )
@@ -104,12 +105,13 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "fakeinstall/usr"
-  install -vd "${pkgdir}/opt/${pkgname}"
-  cp -va --no-preserve=ownership "bin" -T "${pkgdir}/opt/${pkgname}"
-  cp -a  --no-preserve=ownership "lib" -t "${pkgdir}/opt/${pkgname}"
+  install -vd "${pkgdir}/opt/${pkgname}/lib" "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
 
-  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
+  cd "fakeinstall/usr"
+  cp -va --no-preserve=ownership "bin"          -T "${pkgdir}/opt/${pkgname}"
+  cd "lib"
+  cp -a  --no-preserve=ownership "${_basename}" -T "${pkgdir}/opt/${pkgname}/lib"
+
   ln -vsf "/opt/${pkgname}/${_basename}" "${pkgdir}/usr/bin/${pkgname}"
   ln -vsf "/opt/${pkgname}/lib"          "${pkgdir}/usr/lib/${pkgname}"
 }
