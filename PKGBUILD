@@ -3,7 +3,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=flowCore
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,9 +42,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('00b11f405306d30e7bfbf2d946496de6'
+md5sums=('39cb295639acaeb8d74e0b3b611dbebe'
          'fc433793c9af520e6dcf2d9a5e40af4b')
-b2sums=('91a116129eebd5d2c51f169fcf0f685bf7bb3bf1a55152bc8ee95338ca7c00c1586bf24a67dd6008ade669ac7c8b988fad08ffdc9fcbd802ba6d1a3b036cf37f'
+b2sums=('eed61bf88b6d04b8e20880d7586dee76d5a312d2f6e3442c523f79d9831468754052225031ec91c4df5c92a5ecabeefd87d1c2d78abca75b65cbeb08c7ff378e'
         'cf6f8d8d648cdd1cbfd0b37ab50e305b56e6fb1e0aa1cae15f56d6f714c51e4003e671611c77607396ea41dd5d282591bcf2e4483efa0d72c10d44042ab2f6b8')
 
 prepare() {
