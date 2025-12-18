@@ -14,13 +14,13 @@ latestver() {
     sed -n 's|.*/\([0-9.]*\)/.*|\1|p'
 }
 
-pkgrel=2
+pkgrel=3
 pkgdesc="Lossless file size optimizer supporting multiple formats"
 arch=('x86_64')
 url="https://nikkhokkho.sourceforge.io/?page=FileOptimizer"
 license=('AGPL-3.0-only or AGPL-3.0-or-later')
 depends=('wine' 'wine-mono')
-makedepends=('p7zip' 'jq' 'curl' 'icoutils' 'imagemagick')  # Added icoutils and imagemagick
+makedepends=('p7zip' 'icoutils' 'imagemagick')  # Added icoutils and imagemagick
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname-$pkgver.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe/download"
