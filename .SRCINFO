@@ -1,13 +1,15 @@
-pkgbase = murmur-bin
+pkgbase = jswank-murmur-bin
 	pkgdesc = CLI tool for orchestrating configuration file generation and deployment using Jsonnet
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/jswank/murmur
 	arch = x86_64
 	license = MIT
-	provides = murmur
+	provides = jswank-murmur
+	conflicts = jswank-murmur
 	conflicts = murmur
-	source = murmur-bin-0.2.2.tar.gz::https://github.com/jswank/murmur/releases/download/v0.2.2/murmur_Linux_x86_64.tar.gz
+	conflicts = murmur-bin
+	source = jswank-murmur-bin-0.2.2.tar.gz::https://github.com/jswank/murmur/releases/download/v0.2.2/murmur_Linux_x86_64.tar.gz
 	sha256sums = 27869eb1a7554d5f6cfa33ed23cd87904fbc96a18bc8e962d6a52817c3dc09e6
 
-pkgname = murmur-bin
+pkgname = jswank-murmur-bin
