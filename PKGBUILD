@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=edgetx-companion
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
         "git+https://github.com/signal11/hidapi")
-b2sums=('cde8b77618e4da96fe58423e05ca24b4d6cbfa0879ed36acffdb06b75b1b83f2cf78d4e4afd997f56f55bdf36e81bf6be52a846d3b9a5c903de10b8ab48238e9'
+b2sums=('867f5768a6d227470eb3806526265e116f16807ca7deab9864186da57c8ec0075a9ae0b1fc0d8b9b6a4964ddbcfd0fd216fc6220632e139e492160e290463b03'
         'SKIP'
         'SKIP'
         'SKIP'
