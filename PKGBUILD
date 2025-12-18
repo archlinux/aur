@@ -1,5 +1,5 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Max Bruckner <max at maxbruckner dot de>
 pkgname=smooth
 pkgver=0.9.10
