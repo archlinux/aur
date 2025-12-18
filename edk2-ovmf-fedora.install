@@ -16,20 +16,9 @@ post_install() {
 	# - This means they are named distinctly
 	# - Which also means these files can co-exist in the same folder
 	ln -s /usr/share/edk2-ovmf-fedora/qemu/firmware/* /usr/share/qemu/firmware/
-
-    # Latest news regarding this package
-    echo
-    echo "What's new on the \"edk2-ovmf-fedora\" package?"
-    echo "- Upgraded to the latest packaged version of Nov 19, 2025"
-    echo
-    echo "You can read more here:"
-    echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
-    echo
-    echo "Keep securing your systems! (Even virtual ones.)"    
-    echo
 }
 
-#pre_upgrade() {
+pre_upgrade() {
     # Remove symbolic links for JSON files in /usr/share/qemu/firmware/
     # Ensure that we only remove the symbolic links pointing to edk2-ovmf-fedora
     #
@@ -42,7 +31,7 @@ post_install() {
             rm -f "$link"
         fi
     done   
-#}
+}
 
 post_upgrade() {
 	# Create symbolic firmware JSON files
@@ -58,22 +47,11 @@ post_upgrade() {
             ln -s "$json_file" "$dest_file"
         fi
     done   
-
-    # Latest news regarding this package
-    echo
-    echo "What's new on the \"edk2-ovmf-fedora\" package?"
-    echo "- Upgraded to the latest packaged version of Nov 19, 2025"
-    echo
-    echo "You can read more here:"
-    echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
-    echo
-    echo "Keep securing your systems! (Even virtual ones.)"    
-    echo
 }
 
 post_remove() {
     # remove symbolic link to the firmware folder
-    rm /usr/share/edk2/ovmf    
+    rm /usr/share/edk2/ovmf
 
     # Remove symbolic links for JSON files in /usr/share/qemu/firmware/
     # Ensure that we only remove the symbolic links pointing to edk2-ovmf-fedora

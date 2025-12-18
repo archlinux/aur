@@ -3,12 +3,13 @@
 # custom, local variables used by this PKGBUILD
 _pkgnameMeta="edk2-ovmf"
 _fedoraVersion=43
-_rpmRelease=1
+_rpmRelease=3
 
 pkgname=$_pkgnameMeta-fedora
 pkgver=20251119
-pkgrel=1
-pkgdesc="UEFI firmware for x86_64 virtual machines (from Fedora ${_fedoraVersion}) — with Secure Boot enabled"
+pkgrel=2
+#pkgdesc="UEFI firmware for x86_64 virtual machines (from Fedora ${_fedoraVersion}) — with Secure Boot enabled"
+pkgdesc="Firmware for Virtual Machines (x86_64) with Secure Boot enabled — from Fedora ${_fedoraVersion}"
 arch=('any')
 url="https://packages.fedoraproject.org/pkgs/edk2/${_pkgnameMeta}/"
 license=(
@@ -28,7 +29,7 @@ install="$pkgname.install"
 # 
 # source=("https://download.fedoraproject.org/pub/fedora/linux/releases/${_fedoraVersion}/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}-${_rpmRelease}.fc${_fedoraVersion}.noarch.rpm")
 source=("https://kojipkgs.fedoraproject.org/packages/edk2/${pkgver}/${_rpmRelease}.fc${_fedoraVersion}/noarch/${_pkgnameMeta}-${pkgver}-${_rpmRelease}.fc${_fedoraVersion}.noarch.rpm")
-sha256sums=('3d1b4fadfc4c81850a958b58f3d081d7cf4703567edda6ffbd82f763184af92a')
+sha256sums=('2a7df8afe252f29352adc5ccae38c9d17711427feb9e653f63336a4e6020d882')
 
 package() {
 	# Copy documentation + licenses
