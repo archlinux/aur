@@ -28,6 +28,7 @@ build() {
 	cd "${srcdir}/delta-plugin"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS+=" -C link-arg=-llz4 "
 	cargo build --frozen --release --all-features
 }
 
@@ -40,4 +41,5 @@ check() {
 package() {
 	cd "${srcdir}/delta-plugin"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/delta_plugin"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
