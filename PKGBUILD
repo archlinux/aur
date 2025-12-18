@@ -59,7 +59,7 @@ package() {
   depends+=(postgresql libvips openjpeg2)
 
   # Since we're using the release tarballs, we only need the runtime after installation
-  depends+=('aspnet-runtime>=9.0' 'aspnet-runtime<10.0')
+  depends+=('aspnet-runtime-9.0>=9.0' 'aspnet-runtime-9.0<10.0')
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"
