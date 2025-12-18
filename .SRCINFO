@@ -1,7 +1,7 @@
 pkgbase = eve-preview-manager
 	pkgdesc = EVE Online window preview manager
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h0lylag/EVE-Preview-Manager
 	arch = x86_64
 	license = MIT
