@@ -1,5 +1,4 @@
 [libical]
-source = 'github'
-github = 'libical/libical'
-use_max_tag = true
-prefix = 'v'
+source = "git"
+git = "https://github.com/libical/libical.git"
+prefix = "v"
