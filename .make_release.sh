@@ -23,8 +23,8 @@ make_release() {
 
     git add -A
     git commit -m "${TARGET_VERSION}: ${RELEASE_MESSAGE}." 
-    git tag -a "${TARGET_VERSION}" -m "${TARGET_VERSION}: ${RELEASE_MESSAGE}."
-    git push --tags
+    #git tag -a "${TARGET_VERSION}" -m "${TARGET_VERSION}: ${RELEASE_MESSAGE}."
+    #git push --tags
     git push
 }
 
