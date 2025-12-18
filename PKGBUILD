@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.11.27.r8.2d25b83b1
+pkgver=2025.11.27.r0.c21e17241
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.12."
@@ -81,8 +81,7 @@ verify_dest() {
   git remote set-url origin "${ORG_URL}"
   
   # Abort any in-progress tasks
-  git am --abort ||
-    git merge --abort ||
+  git merge --abort ||
     git rebase --abort ||
     git cherry-pick --abort || :
 
@@ -151,7 +150,7 @@ prepare() {
 
   # Apply patches
   cd "$srcdir/linux"
-  git am --empty=keep --whitespace=fix "$srcdir"/0*.patch
+  git apply --whitespace=fix "$srcdir"/0*.patch
 }
 
 pkgver() {
