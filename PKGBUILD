@@ -8,6 +8,7 @@ pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar t
 arch=('x86_64')
 url="https://github.com/Archeb/opentrace"
 license=('GPL3')
+options=('!debug')
 depends=('nexttrace' 'webkit2gtk')
 
 provides=('opentrace')
