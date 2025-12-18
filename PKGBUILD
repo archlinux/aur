@@ -18,7 +18,7 @@ _url_pypi='https://pypi.org/project/questionary-cli/'
 _url_github='https://github.com/makukha/questionary-cli'
 url="${_url_github}"
 
-provides=("${_pypi_package}")
+provides=("que")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
