@@ -1,6 +1,6 @@
 pkgbase = r-ggfittext
 	pkgdesc = Fit Text Inside a Box in 'ggplot2'
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggfittext
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-ggfittext
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggfittext_0.10.2.tar.gz
-	sha256sums = b796a44c79eb497148eefa1572a378bf1d498742f3fde62bd93e538720278c3e
+	source = https://cran.r-project.org/src/contrib/ggfittext_0.10.3.tar.gz
+	sha256sums = 45cf2ea5faef8d6366b6d672617d8bdc73d6e7a14ebc9dce2b277f9c9d2cd5df
 
 pkgname = r-ggfittext
