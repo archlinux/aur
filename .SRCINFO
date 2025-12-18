@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 10.11.r0.g3e94d124
+	pkgver = 11.0rc2.r0.gbe758e63
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -77,12 +77,13 @@ pkgbase = wine-staging-git
 	optdepends = vulkan-icd-loader
 	optdepends = wine-gecko
 	optdepends = wine-mono
-	provides = wine-staging=10.11.r0.g3e94d124
-	provides = wine=10.11
+	provides = wine-staging=11.0rc2.r0.gbe758e63
+	provides = wine=11.0rc2
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !lto
+	options = pestrip
 	source = git+https://gitlab.winehq.org/wine/wine-staging.git
 	source = git+https://gitlab.winehq.org/wine/wine.git
 	source = 30-win32-aliases.conf

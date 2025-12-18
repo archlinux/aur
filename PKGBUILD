@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=10.11.r0.g3e94d124
+pkgver=11.0rc2.r0.gbe758e63
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -81,7 +81,7 @@ optdepends=(
     'vulkan-icd-loader'
     'wine-gecko'
     'wine-mono')
-options=('!lto')
+options=('!lto' 'pestrip')
 install="${pkgname}.install"
 provides=("wine-staging=${pkgver}" "wine=${pkgver%%.r*}" 'wine-wow64')
 conflicts=('wine' 'wine-wow64')
@@ -122,12 +122,21 @@ build() {
     export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
     export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
     
+    # Make sure correct source file paths are recorded in debug information,
+    # so that wine crash reports can have correct paths
+    if [[ $CFLAGS =~ (-ffile-prefix-map=[^[:space:]]+) ]]
+    then
+        CROSSCFLAGS="${CROSSCFLAGS} ${BASH_REMATCH[1]}"
+        CROSSCXXFLAGS="${CROSSCXXFLAGS} ${BASH_REMATCH[1]}"
+    fi
+    
     cd build
     ../wine/configure \
         --prefix='/usr' \
         --libdir='/usr/lib' \
         --disable-tests \
-        --enable-archs="${CARCH},i386"
+        --enable-archs="${CARCH},i386" \
+        --enable-build-id
     make
 }
 
@@ -145,8 +154,4 @@ package() {
     
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
-    
-    # strip native PE libraries
-    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib/wine/i386-windows"/*.dll
-    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/${CARCH}-windows"/*.dll
 }
