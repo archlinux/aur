@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
-pkgver=1.12.44
+pkgver=1.12.47
 pkgbase=windsurf
 pkgname=(windsurf{,-electron-latest})
 pkgrel=1
@@ -24,7 +24,7 @@ optdepends=('glib2: Move to trash functionality'
 options=('!strip') # for sing of ext ?
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('3a658b43d53dbe2c745c2e16cbe6f8c89e0eafc5d91a558bedbbf7f8fcb16da8'
+sha256sums=('b8921640b261038003c71f33bd9eed9bf2b3474489eed01111b696740f01cb01'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 noextract=(Windsurf-linux-x64-${pkgver}.deb) # avoid double tarball
 build() {
