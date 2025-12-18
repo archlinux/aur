@@ -1,6 +1,6 @@
 pkgbase = r-qusage
 	pkgdesc = qusage: Quantitative Set Analysis for Gene Expression
-	pkgver = 2.42.0
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qusage
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-qusage
 	depends = r-emmeans
 	depends = r-fftw
 	depends = r-limma
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qusage_2.42.0.tar.gz
-	sha256sums = 0b84110c6267df54060313295baf6ba4ad42ff6d29ca60e6583ca6c295feeecb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qusage_2.44.0.tar.gz
+	sha256sums = 6061bb65f864606177cb38a446033991b10f97ca21862e687d3ed8e04376209e
 
 pkgname = r-qusage
