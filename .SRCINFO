@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-beta
 	pkgdesc = NVIDIA open kernel modules (beta version)
-	pkgver = 590.44.01
+	pkgver = 590.48.01
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
@@ -10,14 +10,14 @@ pkgbase = nvidia-open-beta
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-590.44.01.tar.xz
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-590.48.01.tar.xz
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
 	source = 150-nvidia-open-make-modeset-fbdev-default.patch
-	sha256sums = 8ef621af31e017887b16f8901bb7ee944f051a85997c1550c5daa8fbd6ec118b
-	sha256sums = b41f452930d0cf38b8806e402c78c8a5179031b702c29a1e63391ca1120af1e6
+	sha256sums = ffcd948cfe32bb0655fc911b8204ae6df086346025dd644d559a9b148297a80d
+	sha256sums = cdb6d8536ed165a0df5e6db8f45aaad4a2c9489affbeaaea67a71224a9364932
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
 	sha256sums = 5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501
 	sha256sums = b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916
@@ -26,8 +26,8 @@ pkgbase = nvidia-open-beta
 pkgname = nvidia-open-beta
 	depends = libglvnd
 	depends = linux
-	depends = nvidia-utils-beta>=590.44
-	provides = nvidia-open=590.44.01
+	depends = nvidia-utils-beta>=590.48
+	provides = nvidia-open=590.48.01
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
@@ -36,8 +36,8 @@ pkgname = nvidia-open-beta-dkms
 	pkgdesc = NVIDIA open kernel modules (module sources; beta version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils-beta>=590.44
-	provides = nvidia-open=590.44.01
+	depends = nvidia-utils-beta>=590.48
+	provides = nvidia-open=590.48.01
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
