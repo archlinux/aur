@@ -87,7 +87,7 @@ build() {
 }
 
 package() {
-  pkgdesc='The extensible, customizable, self-documenting real-time display editor with PGTK enabled'
+  pkgdesc='The extensible, customizable, self-documenting real-time display editor with PGTK enabled and colored headerbar'
   provides=(emacs)
   conflicts=(emacs)
 

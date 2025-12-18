@@ -54,6 +54,6 @@ pkgbase = emacs-deco
 	b2sums = 9c1be7d9745a1887dbeca6fde826858596a167913f354552ee5f7eaa2b785f1aa0ee5b29f86747e22f5c967eeca6cff3c6bae19689c3688a16a20b0f1120149e
 
 pkgname = emacs-deco
-	pkgdesc = The extensible, customizable, self-documenting real-time display editor with PGTK enabled
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor with PGTK enabled and colored headerbar
 	provides = emacs
 	conflicts = emacs
