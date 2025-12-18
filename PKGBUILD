@@ -1,6 +1,6 @@
 # Maintainer: kohii <kohii.tokyo@gmail.com>
 pkgname=smoothcsv-bin
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A powerful and intuitive CSV editor built for real work"
 arch=('x86_64' 'aarch64')
@@ -13,18 +13,13 @@ source=("LICENSE-SmoothCSV.md::https://raw.githubusercontent.com/kohii/smoothcsv
 source_x86_64=("SmoothCSV_${pkgver}_amd64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_amd64.deb")
 source_aarch64=("SmoothCSV_${pkgver}_arm64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_arm64.deb")
 sha256sums=('21185cf5a704c8c91420cb9f25baf0937f852e3a40ada396b9f29cedf79bfab0')
-sha256sums_x86_64=('63f27b7144bddcccce60a8c2da7f9ffea039d22d3792665adf1e0ae1ffdce6ca')
-sha256sums_aarch64=('2fae1ed6ac7df92100afad12d99e5d231d8e47723674ba5faafcc116bd997712')
+sha256sums_x86_64=('0496d55a34b890d7e08c7bea50c816b06f68337903600b5c02f7b33f7183d0f4')
+sha256sums_aarch64=('84bae45658280f68c0b3cb0f8481400f9bf05ca79dbd033767562e3381802861')
 
 prepare() {
   # Strip the front matter (--- ... ---) from the terms markdown.
-  awk '
-    BEGIN { skip = 0; front = 1 }
-    front && /^---[[:space:]]*$/ { skip = 1; next }
-    front && skip && /^---[[:space:]]*$/ { skip = 0; front = 0; next }
-    skip { next }
-    { print }
-  ' "${srcdir}/LICENSE-SmoothCSV.md" > "${srcdir}/LICENSE-SmoothCSV.cleaned.md"
+  perl -0pe 's/\A\x{feff}?(?:[[:space:]]*\r?\n)*---\r?\n.*?\r?\n---\r?\n?//s' \
+    "${srcdir}/LICENSE-SmoothCSV.md" > "${srcdir}/LICENSE-SmoothCSV.cleaned.md"
 }
 
 package() {
