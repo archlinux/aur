@@ -1,0 +1,15 @@
+pkgbase = taskmaster
+	pkgdesc = A TUI personal task manager with pomodoro-inspired focus/break timers and todo list
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jamesNWT/taskmaster
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = go
+	source = taskmaster-0.1.0.tar.gz::https://github.com/jamesNWT/taskmaster/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 91a39127dc4aabbda373213bb2c54b415b24c15227eb50e3856cda3a699df67a
+
+pkgname = taskmaster
