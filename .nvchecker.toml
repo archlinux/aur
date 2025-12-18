@@ -1,0 +1,3 @@
+[python-mpegdash]
+source = "pypi"
+pypi = "mpegdash"
