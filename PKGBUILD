@@ -6,8 +6,8 @@ lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
 launcherVer=1.6.3
-loreVer=1.8.0
-tomeVer=1.8.0
+loreVer=1.8.1
+tomeVer=1.8.1
 
 pkgname=amsel_suite-bin
 pkgdesc="TTRPG Game Master companion"
@@ -22,14 +22,14 @@ provides=('amsel_suite' 'amsel_launcher' 'amsel_lore' 'amsel_tome')
 conflicts=("amsel_suite")
 
 source=(
-"${amsel_repo}/${launcher_rel}/v${launcherVer}/amsel-suite_${launcherVer}_amd64.deb"
-"${amsel_repo}/${lore_rel}/v${loreVer}/Lore-linux-x64-${loreVer}.zip"
-"${amsel_repo}/${tome_rel}/v${tomeVer}/Tome-linux-x64-${tomeVer}.zip"
+	"${amsel_repo}/${launcher_rel}/v${launcherVer}/amsel-suite_${launcherVer}_amd64.deb"
+	"${amsel_repo}/${lore_rel}/v${loreVer}/Lore-linux-x64-${loreVer}.zip"
+	"${amsel_repo}/${tome_rel}/v${tomeVer}/Tome-linux-x64-${tomeVer}.zip"
 )
 
 sha256sums=('976c961b012246d7fa026942ae7426ac88431df6a72b00468401a36e196909b8'
-            'c249a335d80872d016242c2302187b4691c3499e05cafe9278820ec090ccdb28'
-            '090de146a872c4ba46b6092f5ddad83e9c073a976d8baba5149994e86bb18207')            
+            'a20d8e327f568f3aba6292fb43209989cd34f23d04f67e3e60fc41deb6005ef3'
+            'ec4439de50a8bf01af839a9af4e28f89cd0bf9517d592917ddfdee1e0826209a')
 
 package() {
   cd ${pkgdir}
