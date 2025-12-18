@@ -1,0 +1,15 @@
+pkgbase = bbt
+	pkgdesc = A command-line tool for Bitbucket Cloud
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/romaintb/bbt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = bbt-0.1.0.tar.gz::https://codeberg.org/romaintb/bbt/archive/v0.1.0.tar.gz
+	sha256sums = c20e7b20012d16d50cefbc3c19be878197082e24421b4e09c5ab8aefcf7732a2
+
+pkgname = bbt
