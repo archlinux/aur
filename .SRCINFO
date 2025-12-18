@@ -1,0 +1,15 @@
+pkgbase = tele-bin
+	pkgdesc = An alternative syntax for Erlang.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/fancycade/tele
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = erlang-core: core erlang distribution
+	optdepends = rebar3: erlang dependency support
+	provides = tele
+	conflicts = tele
+	source = https://telelang.org/artifacts/tele-x86_64-linux-gnu
+	sha256sums = 5e0300d93deb1ef4598e8f7c1520390d9dd26fd7b35c031a7b13451c6953e26b
+
+pkgname = tele-bin
