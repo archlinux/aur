@@ -1,6 +1,6 @@
 pkgbase = oolite-git
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.91.0.7721.251216.c74566b.r0.c74566b0c
+	pkgver = 1.91.0.7725.251218.95855a3.r1.6934322f0
 	pkgrel = 1
 	url = https://oolite.space/
 	arch = x86_64
@@ -34,7 +34,6 @@ pkgbase = oolite-git
 	source = git+https://github.com/OoliteProject/libvorbis-1.3.3.git
 	source = git+https://github.com/OoliteProject/oolite-windows-dependencies.git
 	source = oolite-git.sh
-	source = linux_force_espeak-ng.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -46,6 +45,5 @@ pkgbase = oolite-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 07e3a9303ce2fd71ae89e1f0085ca070559a7d40271d5ea31ff965588f01b9259cc7337e734680077dd673343db7f8ad620698a2abd1d6178e15abba6d551ec8
-	sha512sums = ab1062b9669b51b133824e6c0fdd0cd6d7f2c0ba88db41c1cfbb001626b1e0bcbf93d883f11a873d7d7e0d05311808d9b317fd7a0ce08a6ab7b72667cd3c71da
 
 pkgname = oolite-git

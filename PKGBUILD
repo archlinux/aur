@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.91.0.7721.251216.c74566b.r0.c74566b0c
+pkgver=1.91.0.7725.251218.95855a3.r1.6934322f0
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -23,7 +23,6 @@ source=(oolite-git::git+https://github.com/OoliteProject/oolite
         git+https://github.com/OoliteProject/libvorbis-1.3.3.git
         git+https://github.com/OoliteProject/oolite-windows-dependencies.git
         oolite-git.sh
-        linux_force_espeak-ng.patch
 )
 
 sha512sums=('SKIP'
@@ -36,8 +35,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '07e3a9303ce2fd71ae89e1f0085ca070559a7d40271d5ea31ff965588f01b9259cc7337e734680077dd673343db7f8ad620698a2abd1d6178e15abba6d551ec8'
-            'ab1062b9669b51b133824e6c0fdd0cd6d7f2c0ba88db41c1cfbb001626b1e0bcbf93d883f11a873d7d7e0d05311808d9b317fd7a0ce08a6ab7b72667cd3c71da')
+            '07e3a9303ce2fd71ae89e1f0085ca070559a7d40271d5ea31ff965588f01b9259cc7337e734680077dd673343db7f8ad620698a2abd1d6178e15abba6d551ec8')
 
 pkgver() {
   git -C oolite-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -46,7 +44,6 @@ pkgver() {
 
 prepare() {
   pushd $pkgname
-  cp .absolute_gitmodules .gitmodules
   git submodule init
   git config submodule.Resources/Binary.url "$srcdir"/oolite-binary-resources
   git config submodule.Mac-specific.url "$srcdir"/oolite-mac-components
@@ -62,7 +59,6 @@ prepare() {
 # png.h & pngconf.h in 2 places screw up the use of libpng 1.6.x , remove them
   rm oolite-linux-dependencies/include/png.h oolite-linux-dependencies/include/pngconf.h
   rm $pkgname/deps/Linux-deps/include/png.h $pkgname/deps/Linux-deps/include/pngconf.h
-  patch -d $pkgname -Np1 -i "$srcdir"/linux_force_espeak-ng.patch
 }
 
 
