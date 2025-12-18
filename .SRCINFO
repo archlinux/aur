@@ -1,6 +1,6 @@
 pkgbase = fish-lsp
 	pkgdesc = LSP implementation for the fish shell language 🐠
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/ndonfris/fish-lsp
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = fish-lsp
 	depends = nodejs
 	optdepends = fish: fish shell
 	conflicts = fish-lsp-git
-	source = fish-lsp-1.1.2::https://github.com/ndonfris/fish-lsp/releases/download/v1.1.2/fish-lsp.standalone
-	source = fish-lsp-1.1.2-LICENSE.md::https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v1.1.2/LICENSE.md
-	source = fish-lsp-1.1.2-fish-lsp.1::https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v1.1.2/man/fish-lsp.1
-	sha256sums = 948cd962a77cac437307e56be5f9b70737207949b623d470c3ffaefeb125f1fd
+	source = fish-lsp-1.1.3::https://github.com/ndonfris/fish-lsp/releases/download/v1.1.3/fish-lsp.standalone
+	source = fish-lsp-1.1.3-LICENSE.md::https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v1.1.3/LICENSE.md
+	source = fish-lsp-1.1.3-fish-lsp.1::https://raw.githubusercontent.com/ndonfris/fish-lsp/refs/tags/v1.1.3/man/fish-lsp.1
+	sha256sums = c39aca71cb009782e636796011c551541d81e7173e2848964ed28ffbfa2855ee
 	sha256sums = 42d622608175e998ffcdbb53217a6356a578282782a553ef9a86f5192ffcd7c2
-	sha256sums = 3a7343fd1860c6380e5db8813bc1a9da608f48e54cb56cb8f8d6673e11b2f229
+	sha256sums = 554cfed432024784ef0cf26aa149145d0e4757ad5ef1a539d2ae9d06d6518559
 
 pkgname = fish-lsp
