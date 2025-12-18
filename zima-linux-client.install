@@ -1,0 +1,44 @@
+post_install() {
+    echo "================================================"
+    echo "ZimaOS Client - Post-Installation Setup"
+    echo "================================================"
+    echo ""
+    
+    # Create zima-zerotier group if it doesn't exist
+    if ! getent group zima-zerotier >/dev/null 2>&1; then
+        groupadd --system zima-zerotier
+        echo "✓ Created zima-zerotier group"
+    fi
+    
+    # Add all regular users (UID >= 1000) to the group
+    for user in $(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 { print $1 }'); do
+        if ! id -nG "$user" 2>/dev/null | grep -qw "zima-zerotier"; then
+            usermod -a -G zima-zerotier "$user" 2>/dev/null || true
+            echo "✓ Added $user to zima-zerotier group"
+        fi
+    done
+    
+    # Ensure TUN device exists
+    if [ ! -e /dev/net/tun ]; then
+        echo "Loading TUN kernel module..."
+        modprobe tun 2>/dev/null || true
+    fi
+    
+    echo ""
+    echo "NOTE: You may need to log out and back in for group changes to take effect."
+    echo ""
+    echo "To enable the ZeroTier user service, run:"
+    echo "  systemctl --user enable --now zima-zerotier.service"
+    echo ""
+    echo "To start the application, run: zima-linux-client"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "ZimaOS Client has been removed."
+    echo "You may want to remove the zima-zerotier group manually if no longer needed:"
+    echo "  sudo groupdel zima-zerotier"
+}

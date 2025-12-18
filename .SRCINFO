@@ -1,0 +1,37 @@
+pkgbase = zima-linux-client
+	pkgdesc = Modern Desktop Client for ZimaOS with integrated ZeroTier and SMB management
+	pkgver = 0.9.23
+	pkgrel = 1
+	url = https://github.com/chicohaager/zima-linux-client
+	install = zima-linux-client.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = electron
+	depends = fuse2
+	depends = smbclient
+	depends = nss
+	depends = gtk3
+	depends = libxkbcommon
+	depends = libxcb
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = libcups
+	depends = libdrm
+	depends = mesa
+	source = git+https://github.com/chicohaager/zima-linux-client.git#tag=v0.9.23
+	source = zima-linux-client.sh
+	source = zima-linux-client.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zima-linux-client

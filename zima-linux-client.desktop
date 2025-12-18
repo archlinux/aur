@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ZimaOS Client
+Comment=Modern Desktop Client for ZimaOS with integrated ZeroTier and SMB management
+Exec=zima-linux-client --no-sandbox --disable-gpu %U
+Icon=zima-linux-client
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Utility;
+Keywords=zima;zimaos;zerotier;smb;backup;cloud;
+StartupWMClass=ZimaOS Client
