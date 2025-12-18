@@ -1,4 +1,4 @@
-pkgbase = evil-winrm-python
+pkgbase = evil-winrm-py
 	pkgdesc = The ultimate WinRM shell for hacking/pentesting.
 	pkgver = 1.5.0
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = evil-winrm-python
 	source = evil_winrm_py-1.5.0.tar.gz::https://files.pythonhosted.org/packages/d8/e6/0f39fbc92ce26afd0ce79acadbacc312c81f3d438d3bf625a03f1a01c474/evil_winrm_py-1.5.0.tar.gz
 	sha256sums = 4f97ee36f236dd6b1af770470a5f844d97a9f42b4efe720b3781094661b161ad
 
-pkgname = evil-winrm-python
+pkgname = evil-winrm-py
