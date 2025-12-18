@@ -1,0 +1,15 @@
+pkgbase = hys
+	pkgdesc = Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/superstarryeyes
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = curl
+	provides = hys
+	source = https://github.com/superstarryeyes/hys/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 8fa2f2a515f9053a9e7753ab0e8d730e2f0115bcb3228afafc76ea88db1ca176
+
+pkgname = hys
