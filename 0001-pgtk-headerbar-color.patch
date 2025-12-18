@@ -1,0 +1,50 @@
+From 4c5f75ec98d2f9798d21d1b5c1157d183bcf8589 Mon Sep 17 00:00:00 2001
+From: Akilan Elango <akilan1997@gmail.com>
+Date: Thu, 18 Dec 2025 11:44:36 +0530
+Subject: [PATCH] pgtk use headerbar and update bg color based on theme
+
+---
+ src/gtkutil.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/src/gtkutil.c b/src/gtkutil.c
+index 655e838e745..69bd7c57363 100644
+--- a/src/gtkutil.c
++++ b/src/gtkutil.c
+@@ -1437,6 +1437,21 @@ xg_set_widget_bg (struct frame *f, GtkWidget *w, unsigned long pixel)
+                                       GTK_STYLE_PROVIDER (provider),
+                                       GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+       g_clear_object (&provider);
++
++      static char const title_format[] = "window headerbar, window headerbar * {\n"
++                                         "  background: none;\n"
++                                         "  background-color: #%02x%02x%02x;\n"
++                                         "  box-shadow: none;\n"
++                                         "  border-bottom: none;\n"
++                                         "}";
++      char title_buffer[sizeof title_format + 3 * INT_STRLEN_BOUND (xbg.red)];
++      sprintf (title_buffer, title_format, xbg.red >> 8, xbg.green >> 8, xbg.blue >> 8);
++      GtkCssProvider *title_provider = gtk_css_provider_new ();
++      gtk_css_provider_load_from_data (title_provider, title_buffer, -1, NULL);
++      gtk_style_context_add_provider_for_screen (gtk_widget_get_screen (w),
++                                                 GTK_STYLE_PROVIDER (title_provider),
++	                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
++      g_clear_object (&title_provider);
+     }
+ #else
+   GdkColor bg;
+@@ -1616,6 +1631,11 @@ xg_create_frame_widgets (struct frame *f)
+   f->output_data.xp->hbox_widget = whbox;
+ 
+   gtk_widget_set_has_window (wfixed, TRUE);
++  GtkWidget *header_bar = gtk_header_bar_new ();
++  gtk_widget_set_name (header_bar, "emacs_headerbar");
++  gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header_bar),
++                                        TRUE);
++  gtk_window_set_titlebar (GTK_WINDOW (wtop), header_bar);
+ 
+   gtk_container_add (GTK_CONTAINER (wtop), wvbox);
+   gtk_box_pack_start (GTK_BOX (wvbox), whbox, TRUE, TRUE, 0);
+-- 
+2.52.0
+
