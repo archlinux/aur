@@ -1,9 +1,9 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hys
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll"
-url="https://github.com/superstarryeyes"
+url="https://github.com/superstarryeyes/hys"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=()
