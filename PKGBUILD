@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rSpectral
-_pkgver=1.0.0.10
+_pkgver=1.0.0.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Spectral Modularity Clustering"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('53afeed2a8faf838905764c2e67b968a')
-b2sums=('70e4d9994d541d00ef3739457831bbae50201baca48cc1639558ef06d9a4e7a95052c9b3d096d7065b30e69538125bcf131ebab4593fba7bdf1069f4e40ac593')
+md5sums=('cff3e53e671acd337b01a5e0ef2776b3')
+b2sums=('a53a2c6cc14805260b3de9c78c6c52b5afca009580b8bbb40660a502cfb7c7a76a12a0413627b507daa2bd5f6b77b6630636a00760814f16f47a5757ae78e578')
 
 build() {
   mkdir build
