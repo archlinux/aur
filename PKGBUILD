@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowTime
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Annotation and analysis of biological dynamical systems using flow cytometry'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-stats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7ee917ea7aa6bb28583d1e0ec5ca27514e973c41e43204c47552ea83a443cd1')
+sha256sums=('6a15c0cda558dda199592309553ce14126f0047f9cc7cdb9efcc3ac7faeeb295')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
