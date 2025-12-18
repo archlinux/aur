@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="yamlfix"
-pkgver="1.19.0"
+pkgver="1.19.1"
 pkgrel="1"
 pkgdesc="A simple, opinionated yaml formatter that keeps your comments!"
 arch=("any")
@@ -15,7 +15,7 @@ license=("GPL-3.0-or-later")
 depends=("python" "python-click" "python-maison" "python-ruyaml")
 makedepends=("python-build" "python-installer" "python-pdm-backend" "python-wheel")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("a44be0d2ac53edd700d45f9a01865a3cbcb9a1ab7762d98c3e6f0653710d7b2a048aab4e8b89becf87bdc0505e0dcc29cd9b344a7de370ff1802fcb3f6587f13")
+sha512sums=("dead4fc7e324a0c769e14b017676f951a9975cbd69db4264b44053eecb5618dd057e2a5201c7e360e54a30c52df635c9acd0258ab019f58339afb90b5efba770")
 
 build()
 {
