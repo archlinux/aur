@@ -1,6 +1,6 @@
 pkgbase = letta-code-bin
 	pkgdesc = The memory-first coding agent
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/letta-ai/letta-code
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = letta-code-bin
 	conflicts = letta-code
 	conflicts = letta-code-git
 	options = !strip
-	source = letta.js::https://github.com/letta-ai/letta-code/releases/download/v0.7.0/letta.js
+	source = letta.js::https://github.com/letta-ai/letta-code/releases/download/v0.7.1/letta.js
 	sha256sums = 08ce6477c3a3238e85303700073cdfe69ba189e0a936ac58e0c36ea25734a7fa
 
 pkgname = letta-code-bin
