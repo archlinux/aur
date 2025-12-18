@@ -1,9 +1,11 @@
 pre_remove() {
-    # Remove user installation directory if it exists
-    if [[ -d "$HOME/.tkginstaller" ]]; then
-        echo "==> Removing user directory: $HOME/.tkginstaller"
-        rm -rf "$HOME/.tkginstaller"
-    fi
+    # Remove .tkginstaller from all user home directories
+    while IFS=: read -r _ _ _ _ _ home _; do
+        if [[ -d "$home/.tkginstaller" ]]; then
+            echo "==> Removing user directory: $home/.tkginstaller"
+            rm -rf "$home/.tkginstaller"
+        fi
+    done < <(getent passwd)
 }
 post_upgrade() {
     # Remove old .sh extension file if it exists
