@@ -10,6 +10,7 @@ pkgbase = alice2-bin
 	makedepends = gif2png
 	depends = jre17-openjdk
 	depends = glu
+	optdepends = alice-bin: Latest Alice release (currrently Alice 3)
 	provides = alice2
 	noextract = alice2-bin-2.6.1.tar.gz
 	options = !debug

@@ -1,9 +1,9 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
-# Contributor:  Johan Vandegriff <johan at vandymail dot com>
+# Contributor: Johan Vandegriff <johan at vandymail dot com>
 
 pkgname=alice2-bin
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Block-based 3D programming environment that makes it easy to create animations, build interactive narratives, or program simple games"
 arch=('x86_64')
 url='https://www.alice.org/get-alice/alice-2/'
@@ -13,6 +13,7 @@ license=(
 )
 depends=('jre17-openjdk' 'glu')
 makedepends=('gendesk' 'gif2png')
+optdepends=('alice-bin: Latest Alice release (currrently Alice 3)')
 provides=('alice2')
 options=(!debug !strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheAliceProject/alice2/releases/download/$pkgver/Alice_${pkgver//./_}.tar.gz")
