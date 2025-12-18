@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -51,20 +51,31 @@ build() {
     # local _features="--features gpu-cuda"     # NVIDIA only
     # local _features="--features gpu-hipblas"  # AMD ROCm
 
+    # Build AVX2 baseline binary (compatible with most CPUs from 2013+)
+    # Disable AVX-512 to prevent SIGILL on older CPUs
+    WHISPER_NO_AVX512=ON cargo build --frozen --release ${_features:-}
+    cp target/release/voxtype target/release/voxtype-avx2
+
+    # Build AVX-512 optimized binary (for Zen 4+, some Intel)
+    cargo clean
     cargo build --frozen --release ${_features:-}
+    cp target/release/voxtype target/release/voxtype-avx512
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
+    # Only test with AVX2 build to avoid SIGILL in build environments
+    WHISPER_NO_AVX512=ON cargo test --frozen
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install binary
-    install -Dm755 "target/release/voxtype" "$pkgdir/usr/bin/voxtype"
+    # Install tiered binaries to /usr/lib/voxtype/
+    # The install script creates a symlink at /usr/bin/voxtype
+    install -Dm755 "target/release/voxtype-avx2" "$pkgdir/usr/lib/voxtype/voxtype-avx2"
+    install -Dm755 "target/release/voxtype-avx512" "$pkgdir/usr/lib/voxtype/voxtype-avx512"
 
     # Install default configuration
     install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"

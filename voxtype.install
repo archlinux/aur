@@ -1,27 +1,44 @@
+_detect_cpu_and_link() {
+    # Detect CPU capabilities and symlink the appropriate voxtype binary
+    #
+    # Binary variants:
+    #   voxtype-avx2:   Works on most CPUs from 2013+ (Intel Haswell, AMD Zen)
+    #   voxtype-avx512: Optimized for newer CPUs (AMD Zen 4+, some Intel)
+
+    # Remove existing binary/symlink if present
+    rm -f /usr/bin/voxtype
+
+    # Detect AVX-512 support
+    if grep -q avx512f /proc/cpuinfo 2>/dev/null; then
+        VARIANT="avx512"
+        ln -sf /usr/lib/voxtype/voxtype-avx512 /usr/bin/voxtype
+    else
+        VARIANT="avx2"
+        ln -sf /usr/lib/voxtype/voxtype-avx2 /usr/bin/voxtype
+    fi
+
+    echo "    CPU detected: $VARIANT (using voxtype-$VARIANT)"
+}
+
 post_install() {
     echo ""
     echo "==> Voxtype Post-installation Steps:"
+    echo ""
+
+    _detect_cpu_and_link
+
     echo ""
     echo "    1. Add your user to the 'input' group:"
     echo "       sudo usermod -aG input \$USER"
     echo ""
     echo "    2. Log out and back in for group changes to take effect"
     echo ""
-    echo "    3. Install wtype for text output (recommended for Wayland):"
-    echo "       pacman -S wtype"
-    echo ""
-    echo "    4. Download a whisper model:"
+    echo "    3. Download a whisper model:"
     echo "       voxtype setup --download"
     echo ""
-    echo "    5. Start voxtype:"
+    echo "    4. Start voxtype:"
     echo "       systemctl --user enable --now voxtype"
     echo "       Or run manually: voxtype"
-    echo ""
-    echo "==> X11 Users:"
-    echo ""
-    echo "    Install ydotool and enable the daemon:"
-    echo "       pacman -S ydotool"
-    echo "       systemctl --user enable --now ydotool"
     echo ""
     echo "==> GPU Acceleration (Optional):"
     echo ""
@@ -39,17 +56,20 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to version 0.3.0"
+    echo "==> Voxtype upgraded"
     echo ""
-    echo "    New in this version:"
-    echo "      - wtype support for better CJK/Unicode text output"
-    echo "      - wtype is now primary output method on Wayland (no daemon required)"
-    echo "      - Fallback chain: wtype -> ydotool -> clipboard"
-    echo "      - Fix systemd service not starting on login after logout"
+
+    _detect_cpu_and_link
+
     echo ""
-    echo "    Wayland users: install wtype for best experience (pacman -S wtype)"
-    echo "    X11 users: continue using ydotool"
+    echo "    New in 0.3.0-2:"
+    echo "      - Tiered CPU binaries (AVX2 baseline + AVX-512 optimized)"
+    echo "      - Fixed SIGILL crash on CPUs without AVX-512 support"
+    echo "      - Auto-detects CPU and selects appropriate binary"
     echo ""
-    echo "    See: https://voxtype.io for details."
-    echo ""
+}
+
+pre_remove() {
+    # Remove the symlink before package removal
+    rm -f /usr/bin/voxtype
 }
