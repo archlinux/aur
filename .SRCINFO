@@ -1,0 +1,13 @@
+pkgbase = ollama-gui
+	pkgdesc = Native Tk/ttkbootstrap Ollama desktop UI with sessions and auto web search
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = Apache-2.0
+	depends = python
+	depends = tk
+	depends = python-ttkbootstrap
+	source = ollama-gui::git+https://github.com/mehmetbayoglu/Ollama-gui.git
+	md5sums = SKIP
+
+pkgname = ollama-gui
