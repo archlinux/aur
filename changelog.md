@@ -1,3 +1,17 @@
+# 1.19.2
+
+- Refactored file editing tools by replacing line-based tools with modern content-based editing for better reliability and context efficiency.
+
+- Replaced `create_file` with `write_file` - a tool for whole-file rewrites, ideal for generated code, config files, complete file replacements and the creation of new files.
+
+- Optimized system prompt to be more concise and reduce token usage.
+
+- Fix: Tool call results were incorrectly being passed as user messages, causing hallucinations in model responses. This has caused great gains for models like GLM 4.6 which commonly struggles with context poisoning.
+
+- Fix: `/usage` command now correctly displays context usage information.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.19.1
 
 - Fix Nix releases.
