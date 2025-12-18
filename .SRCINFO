@@ -1,0 +1,15 @@
+pkgbase = uutils-sed
+	pkgdesc = Rust implementation of sed
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/uutils/sed
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	provides = sed
+	conflicts = sed
+	source = https://github.com/uutils/sed/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 48356c208190ceb4e8bd98ffa98d4597111b000e471e4c8c284b0939f4bac3c1
+
+pkgname = uutils-sed
