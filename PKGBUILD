@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=10.11.r72.g54238a0646c
+pkgver=11.0rc2.r27.g11728e0a9c5
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -82,7 +82,7 @@ optdepends=(
     'v4l-utils'
     'wine-gecko'
     'wine-mono')
-options=('!lto')
+options=('!lto' 'pestrip')
 install="${pkgname}.install"
 provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
 conflicts=('wine' 'bin32-wine' 'wine-wow64')
@@ -108,12 +108,21 @@ build() {
     export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
     export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
     
+    # Make sure correct source file paths are recorded in debug information,
+    # so that wine crash reports can have correct paths
+    if [[ $CFLAGS =~ (-ffile-prefix-map=[^[:space:]]+) ]]
+    then
+        CROSSCFLAGS="${CROSSCFLAGS} ${BASH_REMATCH[1]}"
+        CROSSCXXFLAGS="${CROSSCXXFLAGS} ${BASH_REMATCH[1]}"
+    fi
+    
     cd build
     ../wine/configure \
         --prefix='/usr' \
         --libdir='/usr/lib' \
         --disable-tests \
-        --enable-archs="${CARCH},i386"
+        --enable-archs="${CARCH},i386" \
+        --enable-build-id
     make
 }
 
