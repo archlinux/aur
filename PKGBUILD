@@ -3,7 +3,7 @@
 pkgname=classisland-bin
 _pkgname=classisland
 _appname=cn.classisland.app
-pkgver=1.7.106.2
+pkgver=2.0.0.0
 pkgrel=1
 pkgdesc="适用于班级大屏的课表小工具（预编译二进制包）。Class schedule displaying tool for interactive whiteboards in classrooms. (Pre-built binary package)"
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,10 @@ source=("${_pkgname}.sh")
 sha256sums=('5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388')
 
 source_x86_64=("${url}/releases/download/${pkgver}/ClassIsland_app_linux_x64_selfContained_deb.deb")
-sha256sums_x86_64=('3727cbe423045ec8418368b592b75da5d6822c62b73b68308255b353415a77c0')
+sha256sums_x86_64=('d4e21aeaab52e499c834c8c9af5b29f877d3f31d0b8079310e8b64ef7e469cf1')
 
 source_aarch64=("${url}/releases/download/${pkgver}/ClassIsland_app_linux_arm64_selfContained_deb.deb")
-sha256sums_aarch64=('c166ae3b87f3834b0a3ceef6fc4e45658f295896b71b701baafe950158142a7c')
+sha256sums_aarch64=('2e6e9243173dd3bac3dccc763a97b4088ecc7c706e5817e7673e7c75f0693d60')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
