@@ -5,7 +5,7 @@ _basename="zig"
 _prefix="-master"
 pkgname="${_basename}${_prefix}"
 pkgver=0.16.0dev.1484+d0ba6642b
-pkgrel=2
+pkgrel=3
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -118,12 +118,13 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "fakeinstall/usr"
-  install -vd "${pkgdir}/opt/${pkgname}"
-  cp -va --no-preserve=ownership "bin" -T "${pkgdir}/opt/${pkgname}"
-  cp -a  --no-preserve=ownership "lib" -t "${pkgdir}/opt/${pkgname}"
+  install -vd "${pkgdir}/opt/${pkgname}/lib" "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
 
-  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
+  cd "fakeinstall/usr"
+  cp -va --no-preserve=ownership "bin"          -T "${pkgdir}/opt/${pkgname}"
+  cd "lib"
+  cp -a  --no-preserve=ownership "${_basename}" -T "${pkgdir}/opt/${pkgname}/lib"
+
   ln -vsf "/opt/${pkgname}/${_basename}" "${pkgdir}/usr/bin/${pkgname}"
   ln -vsf "/opt/${pkgname}/lib"          "${pkgdir}/usr/lib/${pkgname}"
 }
