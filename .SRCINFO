@@ -17,7 +17,6 @@ pkgbase = faugus-launcher-git
 	depends = imagemagick
 	depends = icoextract
 	depends = libayatana-appindicator
-	depends = xdg-desktop-portal-impl
 	provides = faugus-launcher
 	conflicts = faugus-launcher
 	source = git+https://github.com/Faugus/faugus-launcher.git
