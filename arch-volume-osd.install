@@ -1,0 +1,12 @@
+post_install() {
+    echo ">>> Enable the service with: systemctl --user enable --now volume-osd.service"
+    echo ">>> You may need to configure keyboard shortcuts - see /usr/share/doc/arch-volume-osd/README.md"
+}
+
+post_upgrade() {
+    echo ">>> Restart the service with: systemctl --user restart volume-osd.service"
+}
+
+post_remove() {
+    echo ">>> Don't forget to disable the service: systemctl --user disable volume-osd.service"
+}

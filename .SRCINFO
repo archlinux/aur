@@ -1,0 +1,16 @@
+pkgbase = arch-volume-osd
+	pkgdesc = Lightweight on-screen display for volume changes on Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/monjar/arch-volume-osd
+	install = arch-volume-osd.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = libnotify
+	depends = pipewire-pulse
+	optdepends = wireplumber: for wpctl support (recommended)
+	source = arch-volume-osd-1.0.0.tar.gz::https://github.com/monjar/arch-volume-osd/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = arch-volume-osd
