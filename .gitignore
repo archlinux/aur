@@ -1,0 +1,12 @@
+# AUR build artifacts
+/pkg/
+/src/
+*.pkg.tar.zst
+*.deb
+*.tar.gz
+*.tar.xz
+*.zip
+*.sig
+
+# Log files
+*.log
