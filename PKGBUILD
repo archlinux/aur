@@ -2,7 +2,7 @@
 
 pkgname=('python-phonopy')
 pkgver=2.45.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
 url="https://github.com/phonopy/phonopy"
@@ -10,11 +10,8 @@ license=('BSD')
 depends=("python-numpy" "python-yaml" "python-matplotlib" "spglib" "python-h5py")
 optdepends=("python-seekpath" "python-symfc")
 makedepends=(python
-             nanobind
              python-build
-             python-pip
-             python-scikit-build-core
-             python-setuptools-scm)
+             python-pip)
 
 source=("git+https://github.com/phonopy/phonopy.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -28,7 +25,9 @@ build() {
   _buildenv/bin/pip install --upgrade pip
   _buildenv/bin/pip install \
     numpy \
+    scikit-build-core \
     "nanobind<2.10.0" \
+    setuptools-scm \
     build
 
   _buildenv/bin/python -m build --wheel --no-isolation
