@@ -34,5 +34,5 @@ package() {
     cd "${_pkgname}-${pkgver}"
     bun install
     bun run build
-	install -Dm755 ./letta.js "$pkgdir/usr/bin/letta"
+    install -Dm755 ./letta.js "$pkgdir/usr/bin/letta"
 }
