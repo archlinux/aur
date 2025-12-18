@@ -15,7 +15,7 @@ provides=("fresh-editor")
 conflicts=("fresh-editor-bin")
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sinelaw/fresh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("1f57ff792c7886c8c0edd8327c2aa88892a3fb8bd1d331485e9b1d17dd729553")
+sha256sums=("a454ebf90b53a0e0097b317d13a413f71549e3d1685e6607361dd63c01cd3e35")
 
 prepare() {
     cd "fresh-$pkgver"
