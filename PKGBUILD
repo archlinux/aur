@@ -5,7 +5,7 @@ pkgdesc="3D window-manager like program for non-egocentric 2D app compaatibility
 
 pkgname="stardust-xr-$_clientname"
 pkgver="0.50.0"
-pkgrel="2"
+pkgrel="3"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
@@ -43,5 +43,5 @@ package() {
     install -Dm644 \
 	    README.md \
 	    "$pkgdir/usr/share/doc/$pkgname/README.md"
-    cp -r "res/$_clientname" "$pkgdir/usr/share/$pkgname"
+    cp -r "res" "$pkgdir/usr/share/$pkgname"
 }

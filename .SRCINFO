@@ -1,7 +1,7 @@
 pkgbase = stardust-xr-flatland
 	pkgdesc = 3D window-manager like program for non-egocentric 2D app compaatibility
 	pkgver = 0.50.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/StardustXR/flatland
 	arch = x86_64
 	arch = aarch64
