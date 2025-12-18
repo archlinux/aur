@@ -81,6 +81,8 @@ prepare() {
   cd "${_pkgname}"
   git reset --hard origin/master && git clean -fdd
   git config remote.sigfm.url >&- || git remote add sigfm $srcdir/sigfm
+  git config user.email >&- || git config user.email "makepkg@local.com"
+  git config user.name >&- || git config user.name "makepkg"
   git fetch sigfm makepkg
   git merge sigfm/makepkg --no-edit
   # Revert "libfprint: Use fatal-warnings on g-i-scanner" to fix build
