@@ -1,5 +1,5 @@
 pkgname=solflare-wallet-bin
-pkgver=2.18.1
+pkgver=2.18.2
 pkgrel=1
 pkgdesc="The most powerful wallet on Solana, trusted by 4M+ users managing 20B+ in assets."
 arch=('x86_64')
