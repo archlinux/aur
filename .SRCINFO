@@ -1,6 +1,6 @@
 pkgbase = omarchy-kanban-git
 	pkgdesc = A simple terminal-based kanban board for the Omarchy Arch Community (git version)
-	pkgver = r10.423ba9b
+	pkgver = r13.c6f37bf
 	pkgrel = 1
 	url = https://github.com/xRipzch/Omarchy-Kanban
 	arch = x86_64

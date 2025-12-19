@@ -1,6 +1,6 @@
 # Maintainer: xRipzch
 pkgname=omarchy-kanban-git
-pkgver=r10.423ba9b
+pkgver=r13.c6f37bf
 pkgrel=1
 pkgdesc="A simple terminal-based kanban board for the Omarchy Arch Community (git version)"
 arch=('x86_64')
