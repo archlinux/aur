@@ -1,0 +1,15 @@
+pkgbase = gasroot
+	pkgdesc = A graphical, simple alternative to sudo and doas
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/gasroot
+	arch = x86_64
+	license = custom:ISC
+	makedepends = libenv
+	makedepends = gtk2
+	depends = libenv
+	depends = gtk2
+	source = gasroot-1.0.tar.gz::https://codeberg.org/maandree/gasroot/archive/1.0.tar.gz
+	sha256sums = 043d3ccb69ba3d6027e2bda314928d62a7611903378381e95be228c527077760
+
+pkgname = gasroot
