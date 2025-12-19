@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=robslopes
-_pkgver=1.1.3
+_pkgver=1.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   r-rcpparmadillo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31b7009d1f6a74e59ede22c4e2192cad')
-b2sums=('acc401c1e5aa5d81740662545e0f4ca3a0dca180e6abba2a48ef637d8da3458d861730e4f94761b431e926f9c5b6ce2e92873edfed20dadf5c6f19fbadf54367')
+md5sums=('b9497740da34f16f3e1676e69118f88e')
+b2sums=('885e9d2f998c2c84b4070460f10847625775efac40baa49c60ba319b7d48cefa1b0cde8c2fbbee25aa7e5e46b7ef18f5fa9dc3e865781cefd040c47b74fa1b6f')
 
 build() {
   mkdir build
