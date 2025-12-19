@@ -1,0 +1,9 @@
+[Unit]
+Description=Firefly III cron timer
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

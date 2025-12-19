@@ -1,0 +1,26 @@
+post_install() {
+    chown -R http:http /var/lib/firefly-iii
+    chmod 775 /var/lib/firefly-iii
+    chown -R http:http /var/cache/firefly-iii
+    chmod 775 /var/cache/firefly-iii
+
+    echo "==> Firefly III has been installed to /usr/share/webapps/firefly-iii"
+    echo "==> Configuration file: /etc/webapps/firefly-iii/config.env"
+    echo ""
+    echo "==> Required PHP extensions must be enabled in /etc/php/php.ini:"
+    echo "    bcmath, curl, gd, intl, mbstring, sodium, xml, zip"
+    echo ""
+    echo "==> Configure your database and APP_KEY in /etc/webapps/firefly-iii/config.env"
+    echo "==> Generate APP_KEY with: php /usr/share/webapps/firefly-iii/artisan key:generate --show"
+    echo ""
+    echo "==> Point your web server's document root to /usr/share/webapps/firefly-iii/public"
+    echo ""
+    echo "==> Enable the cron timer for recurring transactions and auto-budgets:"
+    echo "    systemctl enable --now firefly-iii-cron.timer"
+}
+
+post_upgrade() {
+    post_install
+    echo ""
+    echo "==> Run database migrations: php /usr/share/webapps/firefly-iii/artisan migrate --force"
+}

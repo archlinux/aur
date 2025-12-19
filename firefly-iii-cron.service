@@ -1,0 +1,10 @@
+[Unit]
+Description=Firefly III cron job
+After=network.target
+
+[Service]
+Type=oneshot
+User=http
+Group=http
+ExecStart=/usr/bin/php /usr/share/webapps/firefly-iii/artisan firefly-iii:cron
+WorkingDirectory=/usr/share/webapps/firefly-iii
