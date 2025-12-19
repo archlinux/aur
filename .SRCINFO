@@ -1,6 +1,6 @@
 pkgbase = roc-nightly-bin
 	pkgdesc = A fast, friendly, functional language. Work in progress!
-	pkgver = 2025.03.22.c47a8e9
+	pkgver = 2025.09.09.d73ea109
 	pkgrel = 1
 	url = https://www.roc-lang.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = roc-nightly-bin
 	depends = binutils>=2.41
 	replaces = roc-nightly-bin
 	options = !debug
-	source = https://github.com/roc-lang/roc/releases/download/alpha3-rolling/roc-linux_x86_64-alpha3-rolling.tar.gz
-	sha256sums = c96045f1f54dc3d9e20c33ede8698d79b01e43f09652795beb4f0bc7fb38cba8
+	source = https://github.com/roc-lang/roc/releases/download/alpha4-rolling/roc-linux_x86_64-alpha4-rolling.tar.gz
+	sha256sums = 96e8be05e6f7176433ada74532ff36a62b8dc44c5247a82cdf919f2dadc5178b
 
 pkgname = roc-nightly-bin
