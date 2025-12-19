@@ -5,7 +5,7 @@
 # https://www.kernel.org/category/releases.html
 # 6.12 Greg Kroah-Hartman & Sasha Levin  2024-11-17  Dec, 2026
 _LLL_VER=6.12
-_LLL_SUBVER=52
+_LLL_SUBVER=63
 
 #PKGEXT='.pkg.tar'
 
@@ -68,7 +68,9 @@ _CJKTTY_PATCH=(
   "https://github.com/shmilee/linux-lts-cjktty-patches/raw/${_CJKTTY_COMMIT}/cjktty-${_LLL_VER}.0.patch"
   "https://github.com/shmilee/linux-lts-cjktty-patches/raw/${_CJKTTY_COMMIT}/font-headers/Unifont15.1-font_cjk_16x16.h.patch.gz"
 )
-_CJKTTY_PATCH_PATCH=()
+_CJKTTY_PATCH_PATCH=(
+  "cjktty-${_LLL_VER}.58+incremental.patch"
+)
 
 _PATHSET_DESC="Xanmod patches, cjktty"
 
@@ -117,9 +119,10 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            'bc2db9911f8e3c7e88f8ae37cd2baf9151a630bdf32cf4025a9cc606b1a57e8c'
+            '9d469983e1811c884f4e964ad6c143c74d1082ff33507bbd812d039a9b1f5921'
             'dd78d56eeddb61e152a31cd059148122963f423153f5274cb7b2bc026c6b74aa'
             'ab67a7d55b06dfa9a23dc20db8b34f58732c753dc62a480b984bbac5c5323cf4'
+            '76e138ee23bd1e8ac47ad5998768e2aa62dc9d00a1088005c23918f68951e97d'
             'bdfc2a723cde301e363088f1a311fe4e087dccae368a10d240e7f05ee6cd7ddb')
 
 export KBUILD_BUILD_HOST=archlinux
