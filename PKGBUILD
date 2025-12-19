@@ -1,5 +1,6 @@
 pkgname=qobuz-player
-pkgver=0.4.4_1
+pkgver=0.4.4_2
+_release_version="0.4.4-2"
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
@@ -8,9 +9,8 @@ license=('GPL-3')
 conflicts=('qobuz-player-git')
 depends=(alsa-lib)
 makedepends=(cargo nodejs npm alsa-lib)
-_release_version="0.4.4-1"
 source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${_release_version}.tar.gz")
-sha256sums=('d4df1db8dcca6454c3beb86c7cee9401f2c76cfe16044b2bef814c6880109532')
+sha256sums=('324d1c811be62578d68464ba412e32a5598e9bdf527a7caca491c61efbb3a704')
 options=('!lto')
 
 prepare() {
