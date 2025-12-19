@@ -1,8 +1,8 @@
 pkgbase = licensmith
 	pkgdesc = Crafting the ideal license for your Git repository in seconds!
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://github.com/wzykubek/licensmith
+	pkgrel = 2
+	url = https://codeberg.org/wzykubek/licensmith
 	arch = x86_64
 	arch = i686
 	arch = pentium4
@@ -12,7 +12,8 @@ pkgbase = licensmith
 	arch = riscv64
 	license = ISC
 	makedepends = go>=1.23.4
-	source = licensmith-1.2.0.tar.gz::https://github.com/wzykubek/licensmith/archive/v1.2.0.tar.gz
-	sha256sums = c94fd1e569d33223f16e250abe103ab9602150fc10806643457d55574d85a915
+	depends = glibc
+	source = licensmith-1.2.0.tar.gz::https://codeberg.org/wzykubek/licensmith/archive/v1.2.0.tar.gz
+	sha256sums = 95dae3a72ab83684ec137fdc59ba22f91616f4871300e1bf47513b646e1bda94
 
 pkgname = licensmith
