@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your_email@example.com>
+# Maintainer: Charlie Yu (charlieyu4994) <charlieyu4994@outlook.com>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=litex
