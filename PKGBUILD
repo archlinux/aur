@@ -46,7 +46,7 @@ prepare() {
 
   # download dependencies
   export GOPATH="${srcdir}"
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
