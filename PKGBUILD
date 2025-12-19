@@ -58,7 +58,7 @@ build() {
 	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_DASHBOARD=OFF \
-        -DWIVRN_OPENXR_MANIFEST_TYPE=filename \
+        -DWIVRN_OPENXR_MANIFEST_TYPE=relative \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
@@ -78,7 +78,4 @@ package() {
 
 	mkdir -p $pkgdir/usr/lib/environment.d
 	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
-	install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/wivrn.conf" <<EOF
-/usr/lib/wivrn
-EOF
 }
