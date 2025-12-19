@@ -8,12 +8,6 @@ pkgbase = brush-git
 	makedepends = rust
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
-	provides = brush
-	provides = bash
-	provides = sh
-	conflicts = brush
-	conflicts = bash
-	conflicts = sh
 	source = git+https://github.com/reubeno/brush.git
 	sha256sums = SKIP
 
