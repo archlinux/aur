@@ -1,6 +1,6 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 pkgname=asroot
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="A simpler alternative to sudo and doas"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:ISC')
 depends=(libenv)
 makedepends=(libenv)
 source=(asroot-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=(29e7c4e1081846b0b859944daa9e407366e9b82d99a77099d17086740756220e)
+sha256sums=(fe1d6950e38d30b2623b866d5a48a636cbe12dcb21c5a8026ea8d211abd70e86)
 
 build() {
   cd "${srcdir}/asroot"
