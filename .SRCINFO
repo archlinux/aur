@@ -1,0 +1,19 @@
+pkgbase = macsequoia-kde-theme-git
+	pkgdesc = MacOS Sequoia theme for KDE Plasma (development version)
+	pkgver = r15.9d68985
+	pkgrel = 1
+	url = https://github.com/vinceliuice/MacSequoia-kde
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	optdepends = kvantum: Kvantum theme support
+	optdepends = sddm: SDDM theme support
+	optdepends = whitesur-icon-theme: Whitesur icon theme
+	optdepends = whitesur-cursor-theme: Whitesur cursor theme
+	optdepends = whitesur-gtk-theme: Whitesur GTK theme
+	provides = macsequoia-kde-theme
+	conflicts = macsequoia-kde-theme
+	source = MacSequoia-kde::git+https://github.com/vinceliuice/MacSequoia-kde.git
+	sha256sums = SKIP
+
+pkgname = macsequoia-kde-theme-git
