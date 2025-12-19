@@ -1,0 +1,16 @@
+pkgbase = tui-kanban-git
+	pkgdesc = A simple, lightweight terminal-based kanban board built with Rust (git version)
+	pkgver = r1.92c3e30
+	pkgrel = 1
+	url = https://github.com/xRipzch/TUI-Kanban
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = tui-kanban
+	conflicts = tui-kanban
+	source = git+https://github.com/xRipzch/TUI-Kanban.git
+	sha256sums = SKIP
+
+pkgname = tui-kanban-git
