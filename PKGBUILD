@@ -1,35 +1,35 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Your Name <your_email@example.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=liteiclink
 pkgname=python-$_pkgname
-pkgver=2021.08
-pkgrel=3
+pkgver=2025.08
+pkgrel=1
 pkgdesc='Small footprint and configurable Inter-Chip communication cores'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
-license=('BSD')
-depends=('python-migen' 'python-litex')
-makedepends=('python-setuptools')
-#checkdepends=('python-pytest-runner') # no litescope release
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f83ac3bdb3fe8a2e5926caba67d18d73287bffd87cb008b245b80b1be2942f5b9c2a66c0a44fc0556342ea4e4c2058bd437a50a27e9704b9f4a6b528465e3869')
+license=('BSD-2-Clause')
+depends=('python' 'python-pyyaml' 'python-migen' 'python-litex')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('6837565aa8e496c7789ae59b6fefc8c42f3a4510b6d29d6fef0ac8fb83090f77')
 
 build() {
-  cd $_pkgname-$pkgver
-
-  python setup.py build
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver
-
-#  python setup.py pytest
+  cd "$_pkgname-$pkgver"
+  #no way to check need liteeth but liteeth need liteiclink
+  #pytest test
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+# vim:set et ts=2 sw=2 syntax=PKGBUILD:
