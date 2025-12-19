@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd5a7f2..2cac5e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,8 @@
+ # let's go with lower case for commands (or at least be consistent)
+ # arbitrarily following http://techbase.kde.org/Policies/CMake_Coding_Style#Upper.2Flower_casing
+ 
+-cmake_minimum_required(VERSION 2.8)
+-if(CMAKE_MAJOR_VERSION GREATER 2)
+-  # Continue to support compatiable interface for _DEBUG on targets
+-  # see: http://www.cmake.org/cmake/help/v3.0/policy/CMP0043.html
+-  cmake_policy(SET CMP0043 OLD)
+-endif()
++cmake_minimum_required(VERSION 3.10)
++cmake_policy(SET CMP0077 OLD)
+ 
+ # We don't use C but CMake on linux complains if we don't have it enabled
+ project(wxlauncher CXX C) 

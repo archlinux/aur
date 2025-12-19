@@ -8,7 +8,7 @@
 pkgname=wxlauncher-git
 
 pkgver=0.12.0.rc3.r18.ga204abb
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A cross-platform launcher for the FreeSpace 2 Open engine - Git version"
 # NOTE: architectures other than x86_64 have not been tested. However, all the hard dependencies
@@ -19,7 +19,7 @@ license=(GPL2)
 
 depends=(
   'sdl2' 
-  'wxwidgets'
+  'wxwidgets-gtk3'
 )
 makedepends=(
   'cmake' 
@@ -39,6 +39,7 @@ conflicts=('wxlauncher')
 source=(
   "git+https://github.com/scp-fs2open/wxLauncher.git"
   "wxwidgets-3.2-compatibility.patch"
+  "cmake-changes.patch"
 )
 
 sha256sums=('SKIP'
@@ -52,6 +53,7 @@ pkgver() {
 prepare() {
   cd wxLauncher || exit
   patch --forward --strip=1 --input="../wxwidgets-3.2-compatibility.patch"
+  patch --forward --strip=1 --input="../cmake-changes.patch"
 }
 
 build() {
