@@ -1,0 +1,5 @@
+[termirs-bin]
+source = "github"
+github = "caelansar/termirs"
+use_latest_release = true
+prefix = "v"
