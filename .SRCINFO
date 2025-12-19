@@ -1,6 +1,6 @@
 pkgbase = python-wrf
 	pkgdesc = A collection of diagnostic and interpolation routines for use with output from the Weather Research and Forecasting (WRF-ARW) Model.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://wrf-python.readthedocs.io/en/latest/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-wrf
 	depends = python-numpy
 	provides = wrf-python
 	conflicts = wrf-python
-	source = https://github.com/NCAR/wrf-python/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 975d7d128b15f5afea2245cab3a4929647c4295db3d440f366adf296afd9f766
+	source = https://github.com/NCAR/wrf-python/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = 48f360e3319c782e44653bc1e907842724873561c17dbbf1fe56ff625d3dab35
 
 pkgname = python-wrf
