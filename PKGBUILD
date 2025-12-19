@@ -8,7 +8,7 @@
 pkgbase=nvidia-580xx-utils
 pkgname=('nvidia-580xx-utils' 'opencl-nvidia-580xx' 'nvidia-580xx-dkms')
 pkgver=580.119.02
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -114,17 +114,9 @@ package_nvidia-580xx-dkms() {
 
 package_nvidia-580xx-utils() {
     pkgdesc="NVIDIA drivers utilities (580xx)"
-    depends=(
-        'libglvnd'
-        'egl-wayland'
-        'egl-gbm'
-        'egl-x11'
-        "opencl-nvidia-580xx=${pkgver}"
-        "lib32-nvidia-580xx-utils=${pkgver}"
-        "lib32-opencl-nvidia-580xx=${pkgver}"
-    )
+    depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
     optdepends=(
-        'nvidia-settings: configuration tool'
+        'nvidia-580xx-settings: configuration tool'
         'xorg-server: Xorg support'
         'xorg-server-devel: nvidia-xconfig'
     )

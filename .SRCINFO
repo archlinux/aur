@@ -1,6 +1,6 @@
 pkgbase = nvidia-580xx-utils
 	pkgver = 580.119.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -32,10 +32,7 @@ pkgname = nvidia-580xx-utils
 	depends = egl-wayland
 	depends = egl-gbm
 	depends = egl-x11
-	depends = opencl-nvidia-580xx=580.119.02
-	depends = lib32-nvidia-580xx-utils=580.119.02
-	depends = lib32-opencl-nvidia-580xx=580.119.02
-	optdepends = nvidia-settings: configuration tool
+	optdepends = nvidia-580xx-settings: configuration tool
 	optdepends = xorg-server: Xorg support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	provides = vulkan-driver
