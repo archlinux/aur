@@ -1,7 +1,7 @@
 pkgbase = python-pygithub-git
 	pkgdesc = Use the full Github API v3
 	pkgver = v2.8.0.r27.g61dcf49d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PyGithub/PyGithub
 	arch = any
 	license = LGPL
@@ -9,6 +9,7 @@ pkgbase = python-pygithub-git
 	checkdepends = python-cryptography
 	checkdepends = python-httpretty
 	checkdepends = python-parameterized
+	checkdepends = python-responses
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer

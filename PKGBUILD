@@ -3,7 +3,7 @@
 _name=python-pygithub
 pkgname="$_name-git"
 pkgver=v2.8.0.r27.g61dcf49d
-pkgrel=1
+pkgrel=2
 pkgdesc="Use the full Github API v3"
 arch=('any')
 license=('LGPL')
@@ -12,7 +12,7 @@ provides=('python-pygithub')
 conflicts=('python-pygithub')
 depends=('python-pynacl' 'python-requests' 'python-pyjwt' 'python-typing_extensions' 'python-urllib3')
 makedepends=('python-setuptools-scm' 'python-build' 'python-installer')
-checkdepends=('python-pytest' 'python-cryptography' 'python-httpretty' 'python-parameterized')
+checkdepends=('python-pytest' 'python-cryptography' 'python-httpretty' 'python-parameterized' 'python-responses')
 source=("${_name}::git+${url}.git")
 sha512sums=(SKIP)
 
