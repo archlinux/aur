@@ -10,7 +10,7 @@ arch=('x86_64')
 provides=('murmure')
 _model=parakeet-tdt-0.6b-v3-int8
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('cargo' 'pnpm' 'nodejs')
+makedepends=('cargo' 'pnpm' 'nodejs' 'xdotool')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Kieirra/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
@@ -34,8 +34,6 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}/
-  ls
-  tree src-tauri/target/release
   cp -a src-tauri/target/release/bundle/deb/${pkgname}_${pkgver}_amd64/data/* "${pkgdir}"
   cd ..
 

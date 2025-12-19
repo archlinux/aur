@@ -8,6 +8,7 @@ pkgbase = murmure
 	makedepends = cargo
 	makedepends = pnpm
 	makedepends = nodejs
+	makedepends = xdotool
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
