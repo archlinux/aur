@@ -1,0 +1,24 @@
+pkgbase = ugreen-leds-controller-git
+	pkgdesc = LED controller for UGREEN NAS
+	pkgver = v0.3.r8.g1defbaf
+	pkgrel = 1
+	url = https://github.com/miskcoo/ugreen_leds_controller
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/miskcoo/ugreen_leds_controller.git
+	sha256sums = SKIP
+
+pkgname = ugreen-leds-controller-dkms-git
+	pkgdesc = DKMS kernel module for UGREEN NAS leds
+	depends = dkms
+	depends = ugreen-leds-controller-utils-git
+	provides = ugreen-leds-controller-dkms
+	conflicts = ugreen-leds-controller-dkms
+
+pkgname = ugreen-leds-controller-utils-git
+	pkgdesc = Utils for module for UGREEN NAS leds
+	depends = smartmontools
+	depends = dmidecode
+	provides = ugreen-leds-controller-utills
+	conflicts = ugreen-leds-controller-utils
