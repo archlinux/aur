@@ -1,0 +1,107 @@
+#!/bin/sh
+
+### ===== COLORS =====
+C="\033[36m"
+B="\033[34m"
+G="\033[32m"
+Y="\033[33m"
+W="\033[0m"
+D="\033[90m"
+
+### ===== ARCH LOGO =====
+LOGO='
+        /\        
+       /  \       
+      /\   \      
+     /      \     
+    /\   /\   \    
+   /  \ /  \   \   
+  /\   /    \   \  
+ /  \ /      \   \ 
+/____\/________\___\
+'
+
+### ===== SAFE COMMAND =====
+has() { command -v "$1" >/dev/null 2>&1; }
+
+### ===== SYSTEM =====
+OS=$(grep "^PRETTY_NAME" /etc/os-release 2>/dev/null | cut -d= -f2 | tr -d '"')
+KERNEL=$(uname -r)
+HOST=$(uname -n)
+UPTIME=$(uptime -p 2>/dev/null | sed 's/up //')
+INIT=$(ps -p 1 -o comm=)
+
+### ===== USER =====
+USER=$(whoami)
+
+### ===== SHELL =====
+SHELL_PATH="$SHELL"
+SHELL_NAME=$(basename "$SHELL_PATH")
+SHELL_VER=$("$SHELL_PATH" --version 2>/dev/null | head -n1)
+
+### ===== HARDWARE =====
+CPU=$(grep -m1 "model name" /proc/cpuinfo | cut -d: -f2 | sed 's/^ //')
+CORES=$(nproc 2>/dev/null)
+MEM=$(free -h | awk '/Mem:/ {print $3 " / " $2}')
+DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2}')
+GPU=$(lspci 2>/dev/null | grep -Ei "vga|3d|display" | sed 's/.*: //' | head -n1)
+
+### ===== GRAPHICS =====
+SESSION="${XDG_SESSION_TYPE:-N/A}"
+DE="${XDG_CURRENT_DESKTOP:-N/A}"
+WM="${WAYLAND_DISPLAY:+Wayland}${DISPLAY:+X11}"
+
+### ===== PACKAGES =====
+PACMAN="N/A"
+FLATPAK="0"
+SNAP="0"
+
+has pacman  && PACMAN=$(pacman -Qq | wc -l)
+has flatpak && FLATPAK=$(flatpak list | wc -l)
+has snap    && SNAP=$(snap list | wc -l)
+
+### ===== KERNEL / LIBS =====
+GLIBC=$(ldd --version 2>/dev/null | head -n1)
+SYSTEMD=$(systemctl --version 2>/dev/null | head -n1)
+
+### ===== OUTPUT =====
+print_row() {
+  printf "${B}%-14s${W} %s\n" "$1" "$2"
+}
+
+printf "${C}%s${W}\n" "$LOGO"
+
+print_row "OS:" "$OS"
+print_row "Host:" "$HOST"
+print_row "Kernel:" "$KERNEL"
+print_row "Init:" "$INIT"
+print_row "Uptime:" "$UPTIME"
+
+printf "\n"
+print_row "User:" "$USER"
+print_row "Shell:" "$SHELL_NAME"
+print_row "Shell ver:" "$SHELL_VER"
+
+printf "\n"
+print_row "CPU:" "$CPU"
+print_row "Cores:" "$CORES"
+print_row "Memory:" "$MEM"
+print_row "Disk (/):" "$DISK"
+print_row "GPU:" "${GPU:-N/A}"
+
+printf "\n"
+print_row "Session:" "$SESSION"
+print_row "DE:" "$DE"
+print_row "WM:" "${WM:-N/A}"
+
+printf "\n"
+print_row "Packages:" "pacman: $PACMAN"
+print_row "" "flatpak: $FLATPAK"
+print_row "" "snap: $SNAP"
+
+printf "\n"
+print_row "glibc:" "$GLIBC"
+print_row "systemd:" "$SYSTEMD"
+
+printf "\n${G}✔ Arch Linux — clean & detailed${W}\n"
+

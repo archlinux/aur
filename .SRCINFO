@@ -1,0 +1,19 @@
+pkgbase = sysfetch
+	pkgdesc = Beautiful and detailed system fetch script for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/sysfetch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = procps-ng
+	depends = pciutils
+	optdepends = mesa: OpenGL / Vulkan info
+	optdepends = lm_sensors: temperature support
+	optdepends = flatpak: flatpak packages count
+	optdepends = snapd: snap packages count
+	source = sysfetch
+	sha256sums = SKIP
+
+pkgname = sysfetch
