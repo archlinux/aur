@@ -8,5 +8,43 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+	OLD_DIR="/opt/tosu"
+	DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/tosu"
+	CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tosu"
+	CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/tosu"
+
+	if [[ ! -d "$OLD_DIR" ]] || [[ ! "$(ls -A "$OLD_DIR" 2>/dev/null | grep -v '^tosu$')" ]]; then
+		exit 0
+	fi
+
+	mkdir -p "$DATA_DIR" "$CONFIG_DIR" "$CACHE_DIR"
+
+	for file in tsosu.toml config.ini; do
+		if [[ -f "$OLD_DIR/$file" ]]; then
+			mv "$OLD_DIR/$file" "$CONFIG_DIR/"
+		fi
+	done
+
+	if [[ -d "$OLD_DIR/.cache" ]]; then
+		cp -a "$OLD_DIR/.cache/." "$CACHE_DIR/"
+		rm -rf "$OLD_DIR/.cache"
+	fi
+
+	for item in logs static; do
+		if [[ -d "$OLD_DIR/$item" ]]; then
+			cp -a "$OLD_DIR/$item" "$DATA_DIR/"
+			rm -rf "$OLD_DIR/$item"
+		fi
+	done
+
+	for file in "$OLD_DIR"/*; do
+		[[ -e "$file" ]] || continue
+		name="$(basename "$file")"
+		[[ "$name" == "tosu" ]] && continue
+		if [[ -f "$file" ]]; then
+			mv "$file" "$DATA_DIR/"
+		fi
+	done
+
+	echo "tosu data migration succeeded!"
 }

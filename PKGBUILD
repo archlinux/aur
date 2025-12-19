@@ -4,8 +4,8 @@
 _pkgbase=tosu
 
 pkgname=${_pkgbase}-git
-pkgver=4.15.3.r0.gb326e47
-pkgrel=1
+pkgver=4.15.3.r14.gd54a2f3
+pkgrel=2
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer - git version"
 arch=('x86_64')
 url="https://github.com/tosuapp/tosu"
@@ -21,7 +21,7 @@ source=("${_pkgbase}::git+${url}.git"
         "tosu.service"
         "tosu-system.service")
 sha256sums=('SKIP'
-            'e59b923dae16cc0152b0e7515dc994b856a97f5ca3243934a3c32695a316981b'
+            'd136dbbe6fdef9a0eb35024d73cca90790dcad360705378e2c4ff3a6df0cba60'
             '6b7537506b8805d36c5257f58538bafdd1125db14fa642020c418ed6fa6b6231'
             '741763acdc2777c3c1af4c58888a969c1334466dd43562897994a9434e7a6961'
             '5d70f67abeea2ec89f15f6a4efeb00fabc98dee4742c9b2ba6198d4388900b53')
@@ -47,7 +47,6 @@ build() {
 package() {
     cd "${_pkgbase}"
     install -Dm755 "packages/tosu/dist/tosu" "${pkgdir}/opt/tosu/tosu"
-    install -d -m777 "${pkgdir}/opt/tosu"
     install -Dm755 "${srcdir}/tosu-bin.sh" "${pkgdir}/usr/bin/tosu"
     install -Dm644 "${srcdir}/tosu.service" "${pkgdir}/usr/lib/systemd/user/tosu.service"
     install -Dm644 "${srcdir}/tosu-system.service" "${pkgdir}/usr/lib/systemd/system/tosu.service"
