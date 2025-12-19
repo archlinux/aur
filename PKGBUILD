@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=115c59b4007cb6f3432c5c41f5580d7781b4f175
+_commit=bbe9649522cdaeebff05415d5bab4325513e65d3
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('d3362a9ef12cb0368e8fa3a05f0ef04657466c3edbc8263b200585382284f6ee')
+sha256sums=('268fa5ea2ce6f75e12e5ffa4e9649d7da24e637148f9ad5a4f83c501cc0882f0')
 validpgpkeys=()
 _pkgsrcdir=$pkgname-$pkgver
 
@@ -65,7 +65,7 @@ package() {
 	PROGRAM="${BBCYAN}SysD Manager${NC}"
 	echo -e Installing $PROGRAM Proxy  
 
-	sudo install -vDm755 "./target/release/sysd-manager-proxy" -t "$pkgdir/usr/bin"
+	install -vDm755 "./target/release/sysd-manager-proxy" -t "$pkgdir/usr/bin"
 	echo -e Executing Install srcipt
 	#/usr/bin/sysd-manager-proxy install
 
