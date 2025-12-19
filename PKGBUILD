@@ -2,7 +2,7 @@
 
 pkgname=kora-icon-theme
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -31,6 +31,10 @@ package() {
     rm -f "kora/$_iconcache"
     rm -f "kora-pgrey/$_iconnewcachescript"
     rm -f "kora-pgrey/$_iconcache"
+
+    # Remove icons that currently have an invalid symlink (https://github.com/bikass/kora/issues/245)
+    rm -f "kora/apps/scalable/net.lugsole.bible_gui.svg"
+    rm -f "kora/apps/scalable/org.xiphos.Xiphos.svg"
 
     install -dm755 "$pkgdir/$_iconpath"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
