@@ -1,12 +1,13 @@
 pkgbase = fennel-ls
 	pkgdesc = Language Server for Fennel
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~xerool/fennel-ls
 	arch = any
 	license = MIT
 	makedepends = make
 	makedepends = git
+	makedepends = pandoc
 	depends = lua
 	conflicts = fennel-ls-git
 	source = https://git.sr.ht/~xerool/fennel-ls/archive/0.2.3.tar.gz
