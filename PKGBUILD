@@ -11,7 +11,7 @@ provides=('gridix')
 conflicts=('gridix')
 source=("https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gridix-linux-x86_64.tar.gz"
         "gridix.desktop"
-        "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/master/LICENSE")
 sha256sums=('35b516e172d2093988108057520fe5eb5b896f68454460af1c3b2d4f06c9192e'
             'SKIP'
             'SKIP')
