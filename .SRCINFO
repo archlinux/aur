@@ -1,14 +1,14 @@
 pkgbase = gnu-slash-grub-git
 	pkgdesc = Fix GRUB boot menu nonsense
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 3
 	url = https://codeberg.org/midnightmaniac/gnu-slash-grub
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
 	depends = bash
-	provides = gnu-slash-grub=1.2.1
-	source = gnu-slash-grub::git+https://codeberg.org/midnightmaniac/gnu-slash-grub.git#tag=v1.2.1
+	provides = gnu-slash-grub=1.2.2
+	source = gnu-slash-grub::git+https://codeberg.org/midnightmaniac/gnu-slash-grub.git#tag=v1.2.2
 	sha256sums = SKIP
 
 pkgname = gnu-slash-grub-git
