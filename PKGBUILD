@@ -1,6 +1,6 @@
 # Maintainer: Feydreva <feydreva.aur at paradize dot io>
 pkgname=winamax-bin
-pkgver=2.45.1
+pkgver=2.45.2
 pkgrel=1.4
 pkgdesc="Winamax Poker"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://www.winamax.fr"
 license=('custom')
 depends=(libxtst nss mesa alsa-lib)
 optdepends=(libappindicator-gtk3)
-source=("https://dl.winamax.fr/client/electron/linux/all/winamax-2.45.1.deb")
-sha256sums=('725a1278d692715ddbccbee4b7d42c906572dff1890bb10ecbc73e20d4a08203')
+source=("https://dl.winamax.fr/client/electron/linux/all/winamax-2.45.2.deb")
+sha256sums=('2bdb9c30e9a959c3281ebf4f60a8894b0823da84fa21b5df7cc52222a3710c90')
 options=('!debug')
 package() {
   export LANG=C.UTF-8
