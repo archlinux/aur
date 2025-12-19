@@ -1,0 +1,27 @@
+pkgbase = pyqt5-extra-modules
+	pkgdesc = Extra Qt5 module bindings for PyQt5 (WebSockets, Bluetooth, NFC, RemoteObjects, Quick3D, WebChannel) formerly found in python-pyqt5.
+	pkgver = 5.15.11
+	pkgrel = 1
+	url = https://riverbankcomputing.com/software/pyqt/intro
+	arch = x86_64
+	groups = pyqt5
+	license = GPL
+	makedepends = sip
+	makedepends = pyqt-builder
+	makedepends = qt5-websockets
+	makedepends = qt5-connectivity
+	makedepends = qt5-remoteobjects
+	makedepends = qt5-quick3d
+	makedepends = qt5-webchannel
+	depends = python-pyqt5
+	depends = python-pyqt5-sip
+	depends = qt5-base
+	optdepends = qt5-websockets: QtWebSockets
+	optdepends = qt5-connectivity: QtNfc, QtBluetooth
+	optdepends = qt5-remoteobjects: QtRemoteObjects
+	optdepends = qt5-quick3d: QtQuick3D
+	optdepends = qt5-webchannel: QtWebChannel
+	source = https://pypi.python.org/packages/source/P/PyQt5/PyQt5-5.15.11.tar.gz
+	sha256sums = fda45743ebb4a27b4b1a51c6d8ef455c4c1b5d610c90d2934c7802b5c1557c52
+
+pkgname = python-pyqt5-extra-modules
