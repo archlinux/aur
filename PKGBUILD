@@ -1,4 +1,5 @@
-# Maintainer: Yuri Pieters <magejohnyjtp+archlinux@gmail.com>
+# Maintainer: Louis Jenncka <louis@waffle.tech>
+# Contributor: Yuri Pieters <magejohnyjtp+archlinux@gmail.com>
 # Contributor: Ray Powell <ray+archlinux@xphoniexx.net>
 # Contributor: Joe Davison <joedavison.davison@gmail.com>
 
@@ -43,7 +44,9 @@ source=(
 )
 
 sha256sums=('SKIP'
-            '704efd1e3404fc800e001811b579b82a3045330ea9513b15025fe5db1c71abb9')
+            '704efd1e3404fc800e001811b579b82a3045330ea9513b15025fe5db1c71abb9'
+            '56be3cc80d3faf13e470d76111daa12930d3efb0a08497659c038f89fb5c8607'
+)
 
 pkgver() {
   cd wxLauncher || exit

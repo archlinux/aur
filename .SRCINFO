@@ -1,7 +1,7 @@
 pkgbase = wxlauncher-git
 	pkgdesc = A cross-platform launcher for the FreeSpace 2 Open engine - Git version
 	pkgver = 0.12.0.rc3.r18.ga204abb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scp-fs2open/wxLauncher
 	arch = x86_64
 	arch = i486
@@ -16,14 +16,16 @@ pkgbase = wxlauncher-git
 	makedepends = python
 	makedepends = python-markdown
 	depends = sdl2
-	depends = wxwidgets
+	depends = wxwidgets-gtk3
 	optdepends = fs2_open: FreeSpace 2 Open engine executable
 	optdepends = openal: audio device configuration support
 	provides = wxlauncher
 	conflicts = wxlauncher
 	source = git+https://github.com/scp-fs2open/wxLauncher.git
 	source = wxwidgets-3.2-compatibility.patch
+	source = cmake-changes.patch
 	sha256sums = SKIP
 	sha256sums = 704efd1e3404fc800e001811b579b82a3045330ea9513b15025fe5db1c71abb9
+	sha256sums = 56be3cc80d3faf13e470d76111daa12930d3efb0a08497659c038f89fb5c8607
 
 pkgname = wxlauncher-git
