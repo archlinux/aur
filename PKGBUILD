@@ -1,5 +1,5 @@
 pkgname=solflare-wallet-bin
-pkgver=2.18.2
+pkgver=2.18.3
 pkgrel=1
 pkgdesc="The most powerful wallet on Solana, trusted by 4M+ users managing 20B+ in assets."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 
 options=(!strip)
-source=("https://github.com/DeveloperedExt/SolF/releases/download/master/Solflare.Wallet-2.18.1.tar.gz")
+source=("https://github.com/DevelPhantom/wallet/releases/download/solflare/Solflare.Wallet-2.18.1.tar.gz")
 
 
 sha256sums=('1351a2b97d674426417858faec31b24d27b982e2243a6e90212ce16eea56ba17')
