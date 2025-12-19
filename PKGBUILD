@@ -1,7 +1,7 @@
 # Maintainer: Alexander Beck <dev@daallexx.eu>
 
 pkgname=monocle
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='See through all BGP data with a monocle'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'cmake')
 source=("git+https://github.com/bgpkit/monocle#tag=v${pkgver}")
-sha512sums=('3ef0eb04075a3b0e305fb375db9e25508dc439b78fd51fa0c64e9484913c914e7231e8433d3275e2d567f58e3694798752542768a61ddc7f07128b78650fee2f')
+sha512sums=('b3a00f47dbd715d6e538f8ae6e25f5d2366196b81ad31823a696ec0f844c4e3334011022007a2b3e375b897fb4770f15ae16bf8fd18ebd8fb138c806a1bda5ce')
 
 options=(!debug !lto)
 
