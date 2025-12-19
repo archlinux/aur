@@ -2,7 +2,7 @@
 
 pkgname=bashhound-ce-git
 _pkgname=${pkgname%-git}
-pkgver=r2.b2e044d
+pkgver=r6.8f0438b
 pkgrel=1
 pkgdesc="Active Directory data collector for BloodHound written in Bash"
 arch=('any')
