@@ -1,6 +1,6 @@
 pkgbase = brush-git
 	pkgdesc = Bash compatible shell implemented in Rust
-	pkgver = brush.v0.3.0.68.g9066950
+	pkgver = 0.3.0.69.g30584b9
 	pkgrel = 1
 	url = https://github.com/reubeno/brush
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = brush-git
 	makedepends = rust
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	provides = brush
+	conflicts = brush
 	source = git+https://github.com/reubeno/brush.git
 	sha256sums = SKIP
 

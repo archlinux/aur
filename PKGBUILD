@@ -1,7 +1,7 @@
 
 
 pkgname=brush-git
-pkgver=brush.v0.3.0.68.g9066950
+pkgver=0.3.0.69.g30584b9
 pkgver() {
   cd brush
   git describe --long --abbrev=7 | sed -e 's/brush-v//' -e 's/\-/\./g'
@@ -14,8 +14,8 @@ license=(MIT)
 depends=(gcc-libs)
 makedepends=(rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
-#conflicts=(brush bash sh)
-#provides=(brush bash sh)
+conflicts=(brush)
+provides=(brush)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
