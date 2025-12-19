@@ -3,8 +3,8 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=2.2.2
-commit="e0c50b6581926aa87f07a55876f4e6e56b07a4b3"
+pkgver=2.3.0
+#commit="e0c50b6581926aa87f07a55876f4e6e56b07a4b3"
 pkgrel=1
 pkgdesc="A Rydberg Interaction Calculator"
 url="https://github.com/pairinteraction/pairinteraction"
@@ -14,11 +14,11 @@ license=('GPL-3.0-only' 'LGPL-3.0-only')
 arch=('x86_64')
 options=('!buildflags' 'staticlibs' '!strip' 'libtool')
 # every once in a while an actual release is build and we can grab that
-#source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$pkgver.tar.gz")
 # otherwise we just use the zip of whatever commit I updated this last
- source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
+# source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
 
-sha256sums=("fdd2d6dccb8fb52ab139f1cbef774cc28823b68829a434f6c4385fadcbf2afaa")
+sha256sums=("ee8d1541b0ab4a2cbb74e5690c52bd68468183d51ff14db19ee7374fa84211e4")
 
 
 package() {
