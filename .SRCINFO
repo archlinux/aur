@@ -1,0 +1,18 @@
+pkgbase = go-regal-bin
+	pkgdesc = A linter and language server for Rego
+	pkgver = v0.37.0
+	pkgrel = 1
+	url = https://github.com/StyraInc/regal
+	arch = x86_64
+	arch = aarch64
+	license = Apache2.0
+	provides = go-regal
+	conflicts = go-regal-git
+	source = regal-license::https://raw.githubusercontent.com/open-policy-agent/regal/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.37.0/regal_Linux_x86_64
+	sha256sums_x86_64 = 57b5946c1efad556cb88a4d0deaacc4dbc31a7d7610fbf701df268eddab04b6d
+	source_aarch64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.37.0/regal_Linux_arm64
+	sha256sums_aarch64 = f5bd13057d0884a95a4b94556669f0d19d00487812b66bb988eadecde5e05257
+
+pkgname = go-regal-bin
