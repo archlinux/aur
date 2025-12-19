@@ -1,7 +1,7 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordvpn.com
 	install = daemon_restart.install
 	arch = x86_64

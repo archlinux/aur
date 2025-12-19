@@ -1,7 +1,7 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
 url='https://nordvpn.com'
@@ -29,9 +29,9 @@ package() {
 	install -dm755 $pkgdir/opt/nordvpn-gui
 	cp -rf $srcdir/nordvpn-linux-${pkgver}/gui/build/linux/x64/release/bundle/* $pkgdir/opt/nordvpn-gui
 	install -dm644 $pkgdir/usr/share/icons/hicolor/scalable/apps
-	install -dm744 $pkgdir/usr/share/applications
+	install -dm755 $pkgdir/usr/share/applications
 	install -Dm644 $srcdir/nordvpn-linux-${pkgver}/gui/web/icons/icon-512.png $pkgdir/usr/share/icons/hicolor/scalable/apps/nordvpn-gui.png
-	install -Dm744 $srcdir/nordvpn-gui.desktop -t $pkgdir/usr/share/applications
+	install -Dm644 $srcdir/nordvpn-gui.desktop -t $pkgdir/usr/share/applications
 	install -dm755 $pkgdir/usr/bin
 	ln -s /opt/nordvpn-gui/nordvpn-gui $pkgdir/usr/bin/nordvpn-gui
 }
