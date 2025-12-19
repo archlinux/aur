@@ -1,0 +1,17 @@
+post_install() {
+    chown -R http:http /var/lib/firefly-iii-data-importer
+    chmod 775 /var/lib/firefly-iii-data-importer
+    chown -R http:http /var/cache/firefly-iii-data-importer
+    chmod 775 /var/cache/firefly-iii-data-importer
+
+    echo "==> Firefly III Data Importer has been installed to /usr/share/webapps/firefly-iii-data-importer"
+    echo "==> Configuration file: /etc/webapps/firefly-iii-data-importer/config.env"
+    echo ""
+    echo "==> Configure FIREFLY_III_URL and FIREFLY_III_ACCESS_TOKEN in the config file"
+    echo ""
+    echo "==> Point your web server's document root to /usr/share/webapps/firefly-iii-data-importer/public"
+}
+
+post_upgrade() {
+    post_install
+}

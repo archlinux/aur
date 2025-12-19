@@ -4,12 +4,16 @@
 _pkgname=data-importer
 pkgname=firefly-iii-$_pkgname
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Firefly III Data Importer can import data into Firefly III'
 arch=('any')
 url="https://github.com/firefly-iii/$_pkgname"
-license=('custom')
+license=('AGPL-3.0-or-later')
 depends=('php>=8.4.0')
+optdepends=('nginx: HTTP server'
+            'apache: HTTP server')
+options=('!strip' '!debug')
+install=$pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/DataImporter-v${pkgver}.tar.gz")
 sha256sums=('3cbdd30494d19a1a40f2a5f09943a777642a59571f15a37f1c8309ef996d8202')
 
@@ -28,13 +32,10 @@ package(){
     ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
-    mkdir -p "$pkgdir/var/cache/$pkgname"
-    chown http:http "$pkgdir/var/cache/$pkgname"
+    install -d "$pkgdir/var/cache/$pkgname"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
     mkdir -p "$pkgdir/var/lib"
     mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
-    chown -R http:http "$pkgdir/var/lib/$pkgname"
-    chmod 775 "$pkgdir/var/lib/$pkgname"
     ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
 }
