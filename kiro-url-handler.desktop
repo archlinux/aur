@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Kiro (URL Handler)
-GenericName=URL Handler
-Exec=/usr/bin/kiro --open-url %U
-Icon=kiro
-NoDisplay=true
-MimeType=x-scheme-handler/kiro;
-Categories=Development;

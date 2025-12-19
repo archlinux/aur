@@ -6,8 +6,6 @@ path = [
     ".SRCINFO",
     ".gitignore",
     ".nvchecker.toml",
-    "*.desktop",
-    "*.xml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
