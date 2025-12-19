@@ -11,8 +11,9 @@
 
 declare srcdir pkgdir
 pkgname=neovim-zig-git
+_nvim_version=0.12.0
 pkgver=0.12.0.r2529.g5f22cf5af3
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
@@ -27,7 +28,7 @@ optdepends=(
     'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
     'wl-clipboard: for clipboard support on wayland (see :help clipboard)'
 )
-provides=("neovim=${pkgver}" 'vim-plugin-runtime')
+provides=("neovim=${_nvim_version}" 'vim-plugin-runtime')
 conflicts=('neovim' 'neovim-git')
 source=(
     "git+https://github.com/neovim/neovim"
@@ -43,10 +44,10 @@ options=(!strip)
 
 pkgver() {
     cd "${srcdir}/neovim" || exit 1
-    local nvim_version nvim_version_git
-    nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
+    local nvim_version_git
+    _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
     nvim_version_git="$(git describe --always --dirty --match 'v*.*.*' | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
-    printf "%s.r%s\n" "$nvim_version" "$nvim_version_git"
+    printf "%s.r%s\n" "$_nvim_version" "$nvim_version_git"
 }
 
 build() {

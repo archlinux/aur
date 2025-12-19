@@ -1,7 +1,7 @@
 pkgbase = neovim-zig-git
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig
 	pkgver = 0.12.0.r2529.g5f22cf5af3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://neovim.io
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = neovim-zig-git
 	optdepends = xclip: for clipboard support on X11 (or xsel) (see :help clipboard)
 	optdepends = xsel: for clipboard support on X11 (or xclip) (see :help clipboard)
 	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
-	provides = neovim=0.12.0.r2529.g5f22cf5af3
+	provides = neovim=0.12.0
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	conflicts = neovim-git
