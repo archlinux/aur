@@ -10,7 +10,7 @@ url="http://xffm.sourceforge.net/"
 source=("https://sourceforge.net/projects/xffm/files/xffm%2B/$pkgname$pkgver.bz2")
 makedepends=('cmake' 'pkgconfig' 'libzip' 'readline' 'librsvg' 'libmagick' 'gtk4')
 depends=('ecryptfs-utils' 'sudo')
-md5sums=('317f4894a16f5730df1be1d3b335a13e')
+md5sums=('d48617be3f927b9bde77ec8d7e436f1c')
 
 build() {
 	cd "$pkgname$pkgver/build"
