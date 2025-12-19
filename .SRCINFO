@@ -1,0 +1,13 @@
+pkgbase = odfedit
+	pkgdesc = A tool for GrandOrgue ODF edition, and Hauptwerk to GrandOrgue ODF conversion
+	pkgver = 2.19
+	pkgrel = 1
+	url = https://github.com/GrandOrgue/OdfEdit
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = zlib
+	source = https://github.com/GrandOrgue/OdfEdit/releases/download/v2.19/OdfEdit-2.19-linux.zip
+	sha256sums = 938acb8bd5906a736283179d8fe39c542824414597c3e3966d05cea2ac69ce74
+
+pkgname = odfedit
