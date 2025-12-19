@@ -34,6 +34,10 @@ prepare() {
 		-e "s/@VERSION@/$pkgver/" \
 		-e "/CLEAN=/d" \
 		-i "$srcdir/$_pkgname/dkms.conf"
+
+	# Fix build with clang
+	# See https://github.com/mattkeenan/zenpower5/issues/1
+	sed -i "s/-Wimplicit-fallthrough=3/-Wimplicit-fallthrough/" "$srcdir/$_pkgname/Makefile"
 }
 
 package() {
