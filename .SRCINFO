@@ -1,0 +1,15 @@
+pkgbase = suiup-bin
+	pkgdesc = Installer & version manager for Sui toolchain
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/MystenLabs/suiup
+	arch = x86_64
+	arch = arm64
+	license = Apache-2.0
+	provides = suiup
+	source_x86_64 = https://github.com/MystenLabs/suiup/releases/download/v0.0.7/suiup-Linux-musl-x86_64.tar.gz
+	sha256sums_x86_64 = bf37c8f4b33eaea5cbebafa0db0a77b30e66cc5aa35215fb99497276bdf0292b
+	source_arm64 = https://github.com/MystenLabs/suiup/releases/download/v0.0.7/suiup-Linux-musl-arm64.tar.gz
+	sha256sums_arm64 = dc1c6f37a4f6eda02ce97c4cd3cdf2c05b84bd9ed52ec1d2359a3f7ee772084d
+
+pkgname = suiup-bin

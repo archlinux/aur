@@ -1,0 +1,5 @@
+[suiup]
+source = "github"
+github = "MystenLabs/suiup"
+prefix = "v"
+use_max_release = true
