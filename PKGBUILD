@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -19,7 +19,7 @@ optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
         "Fix-include.patch"
         "gdl.profile")
-sha512sums=("4334876b8c4fa5a173fe3cc304ec45a018945fd198e3503ec6b4fb984510f5147fd150dccfd5d702fe05ff8acb36f7e365fd74efb7f33142a446c464e91cfa72"
+sha512sums=("1adfaf2bee42bc93c78d7aa80e9bc9262ffcc91ecc6a5731bba2d44f06f5b67eacd6e1ef498af4fa086ab6b714014471908342003ed5ea20d56f65a5c8295410"
             "d849da6d6be16d6f7e81bfd7dca7e05fbcb8040e689d1e564a69037804171ca7fa722685a62ad37b607966b7ce10697cd1dc064f4210ea77ff9334a341954391"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
