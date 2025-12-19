@@ -1,9 +1,5 @@
-# Name: v2.8.1 
-### URL: https://github.com/TomWright/dasel/releases/tag/v2.8.1
-### published at '2024-06-30T18:38:16Z' by TomWright
+# Name: v3.1.4 
+### URL: https://github.com/TomWright/dasel/releases/tag/v3.1.4
+### published at '2025-12-18T15:56:38Z' by TomWright
 ---
-## What's Changed
-* handle non-merge aliasing by @pmeier in https://github.com/TomWright/dasel/pull/416
-
-
-**Full Changelog**: https://github.com/TomWright/dasel/compare/v2.8.0...v2.8.1
+**Full Changelog**: https://github.com/TomWright/dasel/compare/v3.1.3...v3.1.4
