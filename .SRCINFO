@@ -1,0 +1,18 @@
+pkgbase = dopamine
+	pkgdesc = The audio player that keeps it simple
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://digimezzo.github.io/site/
+	arch = x86_64
+	license = GPL3
+	makedepends = coreutils
+	provides = dopamine
+	conflicts = dopamine
+	replaces = dopamine
+	options = !strip
+	source = Dopamine-3.0.0.AppImage::https://github.com/digimezzo/dopamine/releases/download/v3.0.0/Dopamine-3.0.0.AppImage
+	source = dopamine.desktop
+	sha256sums = 92f5da9f927eaf127fba0704cfdc72b6adde406d2c696ad866317b3b577aad30
+	sha256sums = 11193ec4d802a63e7526efeab56cc6137db3809237bb5d79687c287d8d6f0531
+
+pkgname = dopamine
