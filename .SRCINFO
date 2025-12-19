@@ -1,0 +1,20 @@
+pkgbase = lnko-bin
+	pkgdesc = Simple stow-like dotfile linker
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pgagnidze/lnko
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = lnko
+	conflicts = lnko
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.0/LICENSE
+	source = README-0.2.0.md::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.0/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 5ad094d07ff9636fe04d0f87fa8a36c5867854b23ac918eb243a1233109e5a68
+	source_x86_64 = lnko-x86_64-0.2.0::https://github.com/pgagnidze/lnko/releases/download/v0.2.0/lnko-linux_x86_64
+	sha256sums_x86_64 = ab5eb1c913bd558ca679dde6c987384f5444953713029cf7966eace898cb315f
+	source_aarch64 = lnko-aarch64-0.2.0::https://github.com/pgagnidze/lnko/releases/download/v0.2.0/lnko-linux_arm64
+	sha256sums_aarch64 = 486aede6809dbfc0790e3556852fd7ded706e603e3d6598337396ea029c99bec
+
+pkgname = lnko-bin
