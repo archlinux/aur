@@ -1,7 +1,7 @@
 # Maintainer: 咸粽子 <xianzongzi aliyun.com>
 _pkgname=lbrowser
 pkgname=lbrowser-v3
-pkgver=3.3.2189.7
+pkgver=3.4.2039.0
 pkgrel=1
 pkgdesc="龙芯浏览器V3版（基于 Chromium）"
 arch=('x86_64' 'loongarch64')
@@ -14,10 +14,10 @@ depends=(
 conflicts=("lbrowser-v2")
 source_x86_64=("https://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/amd64/${_pkgname}_${pkgver}-1.stable.amd64.deb")
 source_loongarch64=("https://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/la64/${_pkgname}_${pkgver}-1.stable.loongarch64.deb")
-sha512sums_x86_64=('c4e3d59381601124b86bef93d435c4c2e4b47fe0ec281d9e91f868a45ca836eec7ffe59fc8e55f11f92a5c9b51ca14bc63b24e72db27005b66b1def5bf055caf')
-sha512sums_loongarch64=('4488332f48b4f6db0c755cbeb3d24b958862f78eb1374eb62e1b7170155333c91d77d975cb2144c80faa67f25564b36f0f4b3d08e01a911d7d1a7a11d6db4ee1')
-sm3sums_x86_64=('4b9ebfc5ef2e7526b719cb28763463ef0cc77d77dfc6744f2424b72294a97b2b')
-sm3sums_loongarch64=('44990655f390f17d0ab34da2e8def9f77130a7945d8acd2704e820c1c1a9efa6')
+source_loong64=("https://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/la64/abi2.0/${_pkgname}_${pkgver}-1.stable.loong64.deb")
+sha512sums_x86_64=('7627294735a52e5f66dbe6718ce19baf2b7db2d26abb2e2e813b543e6e02984f80a535449753734cc187efadff10d4bc10cbd606ac757069b2698801e32572e0')
+sha512sums_loongarch64=('9834b1bf6567e87237447f906a77fac4c502e939e9ccf4243a5d6358bbd982d212c7a64588bcd371ffe7715e49ae269e2114d7a56448f5636aa8b08eaa6ad601')
+sha512sums_loong64=('8529b6d4ea9e90efa9316d399cad18f17b38d81567d05e4a1b22810955f91e09af18b278dbeba2b7a99f604e24bfa435a9daf47489001d895bcfd947a2cddb86')
 
 package() {
 	cd "${srcdir}"
