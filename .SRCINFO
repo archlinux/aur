@@ -1,0 +1,13 @@
+pkgbase = podlet-bin
+	pkgdesc = Generate Podman Quadlet files from a Podman command
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/containers/podlet
+	arch = x86_64
+	license = MPL-2.0
+	provides = podlet
+	conflicts = podlet
+	source_x86_64 = https://github.com/containers/podlet/releases/download/v0.3.0/podlet-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 1d112aec2efbf2a9577816d783e944a0cef1afc82b0af208dc3d4505778fe08f
+
+pkgname = podlet-bin
