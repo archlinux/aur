@@ -1,6 +1,6 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.01
+pkgver=9.02
 pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(git+${url}.git#tag=${pkgver}
         fix-finding-hdr10plus.patch
         use-system-AMF-headers.patch
         fix-build-with-opencl-headers-2025.07.22.patch)
-sha256sums=('a7ac41236852648666ad08a57e2e7f7a9c78da89de992b2c7cd951eee131d60e'
+sha256sums=('a433908d59a80d2eda388450d194e064db7370fd1a550f0f86dc9b91b3ad5e5b'
             'SKIP'
             'SKIP'
             'SKIP'
