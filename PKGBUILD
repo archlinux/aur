@@ -2,7 +2,7 @@
 pkgname=maa-cli
 _pkgver=0.6.0-beta.1
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI for MAA by Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/maa-cli"
