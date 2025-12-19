@@ -1,7 +1,7 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
 pkgver=0.80.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="https://github.com/portfolio-performance/portfolio"
@@ -14,13 +14,13 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "i686" ]   && _platform="x86"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
-_mvnver=3.9.11
+_mvnver=3.9.12
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
         "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz"
         "portfolio.sh")
 sha1sums=('706d5b861336557e473a6a573cec44dd83120d99'
-          'c084cde986ba878da4370bde009ab0a0a1936343'
+          '3bdcdd002f5453b9d5bb417ee0d4d22a545c34b2'
           '044c48a939e20311b27a1bbbd98d4866ee3eff3c')
 
 prepare() {
@@ -33,6 +33,9 @@ prepare() {
 		--startupnotify="False" \
 		--custom="Icon=/usr/share/portfolio/icon.xpm"
 	sed -i '0,/Icon/{//d}' $pkgname.desktop
+
+    cd $pkgname-$pkgver
+    echo 'ewogICJjbGllbnRJZCI6ICJkNmQwdm9xMXcwODFzeHR5MHFxN2EiLAogICJiYXNlVXJsIjogImh0dHBzOi8vYWNjb3VudHMucG9ydGZvbGlvLXBlcmZvcm1hbmNlLmluZm8vb2lkYyIsCiAgImF1dGhFbmRwb2ludCI6ICIvYXV0aCIsCiAgInRva2VuRW5kcG9pbnQiOiAiL3Rva2VuIiwKICAicmV2b2NhdGlvbkVuZHBvaW50IjogIi90b2tlbi9yZXZvY2F0aW9uIiwKICAiYXV0aFNjb3BlIjogIm9wZW5pZCBvZmZsaW5lX2FjY2VzcyIsCiAgImFwaVJlc291cmNlIjogImh0dHBzOi8vYXBpLnBvcnRmb2xpby1wZXJmb3JtYW5jZS5pbmZvIgp9Cgo=' | base64 -d > name.abuchen.portfolio/src/name/abuchen/portfolio/oauth/impl/config.json
 }
 
 build() {
