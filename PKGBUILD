@@ -5,7 +5,7 @@
 
 pkgname=crawley
 pkgver=1.7.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple web scraper"
 arch=('x86_64')
 url="https://github.com/s0rg/${pkgname}"
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(glibc)
 provides=(crawley)
 conflicts=("crawley-bin" "crawley-git")
-makedepends=(go ld)
+makedepends=(go binutils)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('5c5b447463d2fccd4d918060aca50770957f45ca04b643e074382a240d79687912171ecbde9144f59fa200750b3b51af22f97cddfb708e130668d8c923859511')
 

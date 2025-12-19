@@ -1,12 +1,12 @@
 pkgbase = crawley
 	pkgdesc = Simple web scraper
 	pkgver = 1.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s0rg/crawley
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = ld
+	makedepends = binutils
 	depends = glibc
 	provides = crawley
 	conflicts = crawley-bin
