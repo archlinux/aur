@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gridix
+Comment=跨平台数据库管理工具
+Comment[en]=Cross-platform database management tool
+Exec=gridix
+Icon=gridix
+Terminal=false
+Type=Application
+Categories=Development;Database;
+Keywords=database;sql;sqlite;postgresql;mysql;
