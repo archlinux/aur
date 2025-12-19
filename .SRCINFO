@@ -1,7 +1,7 @@
 pkgbase = meson-cross-aarch64-linux-gnu
 	pkgdesc = Meson cross file for aarch64
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dcbaker/archlinux-meson-cross-aarch64-linux-gnu
 	arch = any
 	license = APL2
@@ -14,4 +14,3 @@ pkgbase = meson-cross-aarch64-linux-gnu
 	sha256sums = bc90a3325ffd6b22fe7c2dabc0f3adf6fa9f0665f3f057d92ceec3139c8d3de9
 
 pkgname = meson-cross-aarch64-linux-gnu
-

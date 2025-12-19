@@ -1,7 +1,8 @@
+# Maintainer: Sid Pranjale <sidpranjale127@protonmail.com>
 # Maintainer: Dylan Baker <dylan@pnwbakers.com>
 pkgname=meson-cross-aarch64-linux-gnu
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Meson cross file for aarch64"
 arch=('any')
 url="https://github.com/dcbaker/archlinux-meson-cross-aarch64-linux-gnu"
