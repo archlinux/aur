@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kovalenko <seryoga.engineering@gmail.com>
 
 pkgname=advanced-linux-system-cleaning
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Advanced system cleaning and privacy"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/SeryogaBrigada/AdvancedLinuxSystemCleaning"
 license=('MIT')
 optdepends=('bleachbit: additional custom options support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeryogaBrigada/AdvancedLinuxSystemCleaning/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('e5f4eef4c32e4f78c83a289d12d6542df744ef395ed5e562dd727d2e328d98ebe34fcecbef31c3bab86da3f658490e23db8442bfbf1c981b4b7ce5d18d6fe29c')
+sha512sums=('49f0d948e97d3b9115b534801e70086bf52f789f4d1018be5117d7b70427506eebbd662955699dff154deaae928b2e54503ba39b5af2b9ef8136263c87c32d06')
 
 package() {
   cd "AdvancedLinuxSystemCleaning-$pkgver"
