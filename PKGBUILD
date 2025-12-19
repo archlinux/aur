@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hys-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.1.r0.g8f8aad6
+pkgver=v0.1.2.r0.gef79b20
 pkgrel=1
 pkgdesc="Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll"
 url="https://github.com/superstarryeyes/hys"
