@@ -12,7 +12,7 @@ pkgbase = gridix-bin
 	source = https://github.com/MCB-SMART-BOY/Gridix/releases/download/v0.5.2/gridix-linux-x86_64.tar.gz
 	source = gridix.desktop
 	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/master/LICENSE
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = 4e16151fb4bb17bb075a91b1679f59dfd2bb79c14417fd9c890f1d2bbff1ee50
 	sha256sums = SKIP
 	sha256sums = SKIP
 
