@@ -1,6 +1,6 @@
 pkgbase = micro-git
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 2.0.12.r8.g1231d242
+	pkgver = r3469.467eb88
 	pkgrel = 1
 	url = https://micro-editor.github.io/
 	arch = x86_64
