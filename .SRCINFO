@@ -1,6 +1,6 @@
 pkgbase = gtk-layer-shell-git
 	pkgdesc = A library to create desktop components for Wayland using the Layer Shell protocol
-	pkgver = r264.a79edbb
+	pkgver = r583.577b2f0
 	pkgrel = 1
 	url = https://github.com/wmww/gtk-layer-shell
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = gtk-layer-shell-git
 	makedepends = wayland
 	makedepends = gtk3
 	makedepends = gobject-introspection
+	makedepends = vala
 	provides = gtk-layer-shell
 	conflicts = gtk-layer-shell
 	source = git+https://github.com/wmww/gtk-layer-shell.git
 	md5sums = SKIP
 
 pkgname = gtk-layer-shell-git
-

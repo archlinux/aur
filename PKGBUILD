@@ -1,15 +1,16 @@
-# Maintainer: Daniel Playfair Cal (hedgepigdaniel) <daniel.playfair.cal@gmail.com>
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
+# Contributor: Daniel Playfair Cal (hedgepigdaniel) <daniel.playfair.cal@gmail.com>
 
 pkgname=gtk-layer-shell-git
 _pkgname=gtk-layer-shell
-pkgver=r264.a79edbb
+pkgver=r583.577b2f0
 pkgrel=1
 provides=(gtk-layer-shell)
 conflicts=(gtk-layer-shell)
 pkgdesc="A library to create desktop components for Wayland using the Layer Shell protocol"
 arch=(x86_64)
 url="https://github.com/wmww/gtk-layer-shell"
-makedepends=(meson wayland gtk3 gobject-introspection)
+makedepends=(meson wayland gtk3 gobject-introspection vala)
 source=("git+https://github.com/wmww/gtk-layer-shell.git")
 
 pkgver() {
@@ -22,7 +23,7 @@ prepare() {
 }
 
 build() {
-  meson $_pkgname build --prefix=/usr
+  arch-meson $_pkgname build --prefix=/usr
   ninja -C build
 }
 
