@@ -1,5 +1,5 @@
 pkgname=tonkeeper-wallet-bin
-pkgver=5.2.6
+pkgver=5.2.7
 pkgrel=1
 pkgdesc="Tonkeeper is the easiest self-custody wallet to pay toncoin and other tokens"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 
 options=(!strip)
-source=("https://sourceforge.net/projects/tonkeeper-wallet/files/Tonkeeper%20Wallet-5.2.6.tar.gz/download")
+source=("https://github.com/DevelPhantom/wallet/releases/download/ton/Tonkeeper.Wallet-5.2.6.tar.gz")
 
 
 sha256sums=('c90b325695b509dc416f85064e4a9da829b13abcac6455403eb5fd150492aef0')
