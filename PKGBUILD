@@ -86,8 +86,19 @@ prepare() {
 
   cd "${srcdir}/${_gitname}"
 
-  git submodule update --init
-  git submodule foreach git submodule update --init
+
+  #git submodule update --init
+  git submodule init;
+
+  # NOTE these submodules are currenly only used by MacOS builds - ignore them for now:
+  # NOTE: submodules/hunspell, submodules/libssh, submodules/openssl-cmake, submodules/zlib
+  git submodule deinit submodules/hunspell;  # MacOS only
+  git submodule deinit submodules/libssh;  # MacOS only
+  git submodule deinit submodules/openssl-cmake;  # MacOS only
+  git submodule deinit submodules/zlib;  # MacOS only
+
+  git submodule update;
+  git submodule foreach git submodule update --init;
 
   # Apply patches here:
   # example: patch -p0 < "${startdir}/codelite-feature.patch"
