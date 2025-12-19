@@ -11,7 +11,7 @@ pkgbase=nvidia-open-egpu
 pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
-pkgver=580.119.02
+pkgver=590.48.01
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules with Thunderbolt eGPU hotplug support'
@@ -30,13 +30,13 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '170-nvidia-open-force-external-gpu.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
-sha256sums=('ea06941cf2b095c2a9a6f1d0640a447d1c33baefbff9d95fd9726955dd210692'
+sha256sums=('ffcd948cfe32bb0655fc911b8204ae6df086346025dd644d559a9b148297a80d'
             '70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
             '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-        'a8d2d1944067e9c060b8afd596cdddecfc1e618d21329feee764157b6a3c5f96'
+        'c46432c10af67bd1347c8b00c655fb8d9de3304aed9409c4f2cfaeb5346c8c0b'
         'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
         'f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb'
         '31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb')
