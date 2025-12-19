@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
 	pkgver = 20.0
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -30,9 +30,9 @@ pkgbase = xpipe-ptb
 	sha256sums = 3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8
 	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
 	sha256sums = 42DB40155DDCC4BA77A4EB79E4FF89617983DB7C91DBC05EACFF77679588013B
-	source_x86_64 = xpipe-ptb-20.0-6-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.0-6/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6c94965bdc6753828ac9d8f3ce64b82a7df22147a7c368f41e9633cbaf8d5a6f
-	source_aarch64 = xpipe-ptb-20.0-6-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.0-6/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = a29907c96a931c2f7f4f785ea3088114c8cfe6e7101d3a21372969300377719d
+	source_x86_64 = xpipe-ptb-20.0-7-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.0-7/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 680f04a640d251f0bb3ab43ede322cee5d26932f32db752736f9049c54de2ca4
+	source_aarch64 = xpipe-ptb-20.0-7-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.0-7/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = bfd31c7a4062c4c6324077f2e74c3d00399cec20b5714f23dfebfa66f56bcf29
 
 pkgname = xpipe-ptb
