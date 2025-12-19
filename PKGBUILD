@@ -18,19 +18,19 @@ if command -v git > /dev/null; then
         _base_ver="${_staging_ver}"
     else
         _git_branch="branch=${_git_branch}"
-        _base_ver="$(git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -F '.99' -v | head -n 1)"
+        _base_ver="$(git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -E 'rc|99' -v | head -n 1)"
         _base_ver="${_base_ver##*/zfs-}"
         _base_ver="${_base_ver:=${_staging_ver%.*}.$((${_staging_ver##*.}-1))}"
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.6-staging"
-    _staging_ver="2.3.6"
-    _base_ver="2.3.5"
+    _git_branch="branch=zfs-2.4.1-staging"
+    _staging_ver="2.4.1"
+    _base_ver="2.4.0"
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.3.5.r0.gab38521f31
+pkgver=2.4.0.r0.g743334913e
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
