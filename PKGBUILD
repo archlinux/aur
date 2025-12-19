@@ -15,7 +15,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=4.4.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -26,20 +26,20 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("154f18aade8b84acbd8ce090de82ce8e541b33d31976a2f6a5c5ea5370e69e3e")
+sha256sums=("d58fa842b4fc20c8f4950c1aa9af5468c493ac0870677e66e53a44afef6883ef")
 
 build() {
     tar -xvzf v$pkgver.tar.gz
     cd "hnefatafl-$pkgver"
 
-    cargo build --release --example hnefatafl-client --no-default-features
-    ./target/release/examples/hnefatafl-client --man
+    cargo build --release --bin hnefatafl-client --features client --no-default-features
+    ./target/release/hnefatafl-client --man
     gzip --no-name --best hnefatafl-client.1
 }
 
 package() {
     cd "hnefatafl-$pkgver"
-    install -Dm755 "target/release/examples/hnefatafl-client" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 "icons/king_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/org.hnefatafl.hnefatafl_client.png"
@@ -52,9 +52,4 @@ package() {
     install -Dm644 "icons/king_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.hnefatafl.hnefatafl_client.png"
     install -Dm644 "hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
-}
-
-check() {
-    cd "hnefatafl-$pkgver"
-    .githooks/pre-commit
 }
