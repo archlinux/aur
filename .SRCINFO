@@ -1,6 +1,6 @@
 pkgbase = obsbot-camera-control
 	pkgdesc = Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/aaronsb/obsbot-camera-control
 	install = obsbot-camera-control.install
@@ -16,7 +16,7 @@ pkgbase = obsbot-camera-control
 	optdepends = v4l2loopback-dkms: Kernel module for optional virtual camera output
 	optdepends = lsof: Detect when camera is in use by other applications
 	provides = obsbot-control
-	source = git+https://github.com/aaronsb/obsbot-camera-control.git#tag=v1.1.1
+	source = git+https://github.com/aaronsb/obsbot-camera-control.git#tag=v1.1.2
 	sha256sums = SKIP
 
 pkgname = obsbot-camera-control
