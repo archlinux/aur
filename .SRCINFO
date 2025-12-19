@@ -1,6 +1,6 @@
 pkgbase = php83-cli-static-bin
 	pkgdesc = A general-purpose scripting language that is especially suited to web development (8.3.x static precompiled binary)
-	pkgver = 8.3.28
+	pkgver = 8.3.29
 	pkgrel = 1
 	url = https://www.php.net
 	arch = x86_64
@@ -66,11 +66,11 @@ pkgbase = php83-cli-static-bin
 	provides = php83-zlib
 	conflicts = php83-cli
 	options = !strip
-	source = php-8.3.28-cli-build-extensions.json::https://dl.static-php.dev/static-php-cli/bulk/build-extensions.json
+	source = php-8.3.29-cli-build-extensions.json::https://dl.static-php.dev/static-php-cli/bulk/build-extensions.json
 	sha256sums = SKIP
-	source_x86_64 = php-8.3.28-cli-linux-x86_64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-8.3.28-cli-linux-x86_64.tar.gz
+	source_x86_64 = php-8.3.29-cli-linux-x86_64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-8.3.29-cli-linux-x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = php-8.3.28-cli-linux-aarch64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-8.3.28-cli-linux-aarch64.tar.gz
+	source_aarch64 = php-8.3.29-cli-linux-aarch64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-8.3.29-cli-linux-aarch64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = php83-cli-static-bin
