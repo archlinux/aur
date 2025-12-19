@@ -9,8 +9,8 @@ url='https://murmure.al1x-ai.com/'
 arch=('x86_64')
 provides=('murmure')
 _model=parakeet-tdt-0.6b-v3-int8
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('cargo' 'pnpm' 'nodejs' 'xdotool')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'xdotool')
+makedepends=('cargo' 'pnpm' 'nodejs')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Kieirra/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
