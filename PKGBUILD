@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bdash-bin
 _pkgname=Bdash
-pkgver=1.20.0
+pkgver=1.30.1
 _electronversion=32
 pkgrel=1
 pkgdesc="Simple SQL Client for lightweight data analysis.(Prebuilt version.Use system-wide electron)"
@@ -18,12 +18,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bdash-app/bdash/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('291d41e02c49e226e6796351fcf132e8ba9299f3e5c165ea183d6e096bd79e35'
+sha256sums=('04731ec70f31fb81a57d5d01b518f10f14d7caa7b35df282a47161317f6a6b6a'
             '44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -39,6 +39,7 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
