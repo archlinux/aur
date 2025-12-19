@@ -15,7 +15,7 @@ conflicts=('goplus')
 replaces=('goplus')
 makedepends=('go')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('af10b9e8d3980e4c4f4b9bf3d341e3d1dd72d1324ca26825b360c3ce865b7da0')
 
 prepare() {
