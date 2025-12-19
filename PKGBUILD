@@ -1,6 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.4_alpha2511160110
+_pkgver=0.8.5-alpha2512191358
+pkgver=${_pkgver//-/}
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -60,31 +61,28 @@ makedepends=(
   'swig'
   'sz'
 )
-source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_vername}-${pkgver//_/-}.tar.gz"
+_patch_url_prefix="https://github.com/sukanka/IfcOpenShell/commit"
+source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_vername}-${_pkgver}.tar.gz"
   "git+https://github.com/svgpp/svgpp.git"
   "git+https://github.com/IfcOpenShell/svgfill.git"
-  "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/36af62dc.patch"
-  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/f78260b3.patch"
-  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/e13226c2b.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/1e4871eed31.patch"
-  "007-fix-boost189.patch::https://github.com/sukanka/IfcOpenShell/commit/9f6a2a48.patch"
+  "001-skip-install-python-package-only-install-wrapper.patch::${_patch_url_prefix}/c6657803.patch"
+  "002-add-shared-libs.patch::${_patch_url_prefix}/053480f.patch"
+  "003-fix-rpath.patch::${_patch_url_prefix}/4523de21.patch"
+  "004-fix-boost189.patch::${_patch_url_prefix}/66910ae1.patch"
 
 )
-sha256sums=('38ccbd0d835a68161b27dca91e0ba78026f42efe3d2fdb6910085768171408d3'
-  'SKIP'
+sha256sums=('8ce8f965d346a8eb94a9727541274a0d96ed8ab7c7a329afd3697e244a04c7e1'
   'SKIP'
   'SKIP'
   'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-  'f85659ba598ccacdd187f946b43692e68a65f82bd9d1eded1840223fefc83ab5'
-  'b2760bdae194059ce22fbd0420781383bb3eda2e7bc42a87c8a7bd825a47bf0c'
-  '5dd5ea1464d110752cd0debb70f5913261c9f5046a2eb1084a3eb1af83ffe365'
-  '0d6081e5456108d89585190f2127aa2bda4f679e99618465fb68992846f41d8e'
-  '55281b2dc89609eec88241303c72b0e4eb6a017bcf6adf906a46a575b983ed34')
+  '522021a51b08a944dfed0d72cc0eed8e90db864ab264344d7bafd7627efa773a'
+  '41912eafef9d9224e01a204393d1481f84dab6131cce1bfcb731eb691e82487e'
+  '664b047d42e063185d2412321eec7bbebd6c2918fe7ec79361cb0aa0c50877c4'
+  'd3b4e1abb442fb748b217d753c580969a380a29a92e0a6a557cae77da94793f9')
 
-_iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
+_iosdir="IfcOpenShell-${_vername}-${_pkgver}"
 
 _apply_patch() {
   cd "${srcdir}/${_iosdir}"
@@ -97,7 +95,6 @@ prepare() {
   mv bpypolyskel-1.1.3 bpypolyskel
   cp -ar svgpp/* svgfill/3rdparty/svgpp
   cp -ar svgfill/* ${_iosdir}/src/svgfill
-  cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
   (
     _apply_patch
   )
@@ -135,8 +132,6 @@ build() {
     -DLIBXML2_INCLUDE_DIR=/usr/include/libxml2
     -DLIBXML2_LIBRARIES="/usr/lib/libxml2.so.2"
     -DGMP_INCLUDE_DIR=/usr/include
-    -DGMP_LIBRARY_DIR=/usr/lib
-    -DMPFR_LIBRARY_DIR=/usr/lib
     -DMPFR_INCLUDE_DIR=/usr/include
     -DJSON_INCLUDE_DIR=/usr/include
     -DSWIG_EXECUTABLE="/usr/bin/swig"
