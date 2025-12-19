@@ -4,7 +4,7 @@
 # Contributor: Brian Maloney
 
 pkgname=fluent-bit
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations'
 arch=(x86_64 aarch64 armv7h)
@@ -16,8 +16,8 @@ conflicts=('fluent-bit-git')
 backup=('etc/fluent-bit/fluent-bit.conf'
         'etc/fluent-bit/parsers.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fluent/fluent-bit/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('0e5961571bbf799b4e08e60eeca87be7')
-sha256sums=('44fe0f52e89a63b213695748f99691d0a6247a4bd05065f1b517c798d9f89bcc')
+md5sums=('d3508ce327dea7d32a2ae360a3460a70')
+sha256sums=('1310797832fffc29a257fbc21e25460274a9442d4e63047971ee354898ad5075')
 
 build() {
     cmake \
