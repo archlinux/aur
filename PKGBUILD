@@ -5,7 +5,7 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server','-tools'})
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
@@ -13,15 +13,22 @@ url='https://drawpile.net/'
 license=('GPL3')
 makedepends=('cmake' 'extra-cmake-modules' 'libzip' 'qt6-multimedia' 'qt6-svg' 'qt6-tools')
 source=(
-    "https://github.com/drawpile/Drawpile/archive/refs/tags/${pkgver}.tar.gz")
+    "https://github.com/drawpile/Drawpile/archive/refs/tags/${pkgver}.tar.gz"
+    'QT6_fix.patch')
 sha256sums=(
-    '159fc433b21ac3f82388a4b45853f2ed13fbb47b7dd57874bf4e41f44f801969')
+    'd09d3eef00b15004184700817d1b6620acc4cfd0738ad8977680c1e05bc2ea7d'
+    'dd46a05112d41a9444fe1ef0d283799ba6400a000638d877f71f69b7c7f44f93')
 
 _cmakeargs+=(
 		'--preset linux-release-qt6-all-make'
 		'-DCMAKE_EXPORT_COMPILE_COMMANDS=OFF'
 		'-DCMAKE_INSTALL_PREFIX=/usr'
 		'-DSOURCE_ASSETS=OFF')
+
+prepare() {
+	cd "Drawpile-${pkgver}"
+	patch -Np1 -i ../QT6_fix.patch
+}
 
 build() {
 	cd "Drawpile-${pkgver}"
