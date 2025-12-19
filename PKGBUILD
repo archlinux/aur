@@ -1,7 +1,7 @@
 # Maintainer: Marco Russo <tray-kebab-uneven@duck.com>
 # Maintainer: Matthew Johnston <warmwaffles@gmail.com>
 pkgname=expert-git
-pkgver=r835.123588e7
+pkgver=r839.0dfa33a9
 pkgrel=1
 pkgdesc="Official Elixir Language Server Protocol implementation"
 arch=('x86_64')
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "$srcdir/expert"
-  just release-local
+  just burrito-local
 }
 
 package() {
