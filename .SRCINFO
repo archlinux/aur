@@ -1,6 +1,6 @@
 pkgbase = viu-media
 	pkgdesc = Viu, your browser anime experience, from the terminal.
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/viu-media/viu
 	install = viu.install
@@ -35,7 +35,7 @@ pkgbase = viu-media
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
 	provides = viu-media
-	source = viu-media-v3.3.2.tar.gz::https://github.com/viu-media/viu/archive/refs/tags/v3.3.2.tar.gz
+	source = viu-media-v3.3.3.tar.gz::https://github.com/viu-media/viu/archive/refs/tags/v3.3.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = viu-media
