@@ -13,7 +13,7 @@ optdepends=(
 )
 
 options=(!strip)
-source=("https://sourceforge.net/projects/solflare-wallet/files/Solflare%20Wallet-2.18.1.tar.gz/download")
+source=("https://github.com/DeveloperedExt/SolF/releases/download/master/Solflare.Wallet-2.18.1.tar.gz")
 
 
 sha256sums=('1351a2b97d674426417858faec31b24d27b982e2243a6e90212ce16eea56ba17')
@@ -21,12 +21,12 @@ sha256sums=('1351a2b97d674426417858faec31b24d27b982e2243a6e90212ce16eea56ba17')
 install="${pkgname}.install"
 
 prepare() {
-    cd "$srcdir/Solflare Wallet-2.18.1"
+    cd "$srcdir/Solflare.Wallet-2.18.1"
     chmod +x "Solflare Wallet.AppImage"
 }
 
 package() {
-    cd "$srcdir/Solflare Wallet-2.18.1"
+    cd "$srcdir/Solflare.Wallet-2.18.1"
     
     install -Dm755 "Solflare Wallet.AppImage" "$pkgdir/opt/${pkgname}/${pkgname}.AppImage"
     
