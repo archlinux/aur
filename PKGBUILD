@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2025.38rc2.r1.g08db5c5
+pkgver=2025.48rc1.r2.g086ed53
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -32,8 +32,6 @@ conflicts=('intel-npu-compiler')
 source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/intel/linux-npu-driver.git'
-        # common git submodules
-        'git+https://github.com/google/flatbuffers.git'
         # npu-compiler git submodules
         'git+https://github.com/openvinotoolkit/npu_plugin_elf.git'
         'git+https://github.com/intel/npu-plugin-llvm.git'
@@ -55,6 +53,7 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
         'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/google/flatbuffers.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
         'git+https://github.com/oneapi-src/level-zero.git'
@@ -69,7 +68,7 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         '010-intel-npu-compiler-llvm-disable-atomic-check.patch'
         '020-intel-npu-compiler-disable-werror.patch'
         '030-intel-npu-compiler-fix-install.patch'
-        '040-intel-npu-compiler-llvm-gcc15-fix.patch'
+        '040-intel-npu-compiler-npu-plugin-elf-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
 sha256sums=('SKIP'
@@ -105,10 +104,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7'
-            '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '444bdc87986952074811e6599ae86834005ebd68781dbc108a448b5124e07533'
-            'c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2'
+            'ef3e2fec8ac0e63756350e6b33b1bf64909b6221b9a9f29248e2933143fda61c'
+            'a26a2f4646e7725c50344346abd31a18d0799db094d29ff095d37ede3224ca53'
+            '480e111634051276986ec40b4229ccc9c8fbca6eb105d735718a9721cf50fa02'
+            '10a20af32917aef812be816474cfe51c5ef65217a6eeadfda2c2c4fcfc4f2f60'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
 
@@ -168,12 +167,12 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
     
-    #ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
+    ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
     
     patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/010-intel-npu-compiler-llvm-disable-atomic-check.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/030-intel-npu-compiler-fix-install.patch"
-    patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/040-intel-npu-compiler-llvm-gcc15-fix.patch"
+    patch -d npu_compiler/thirdparty/elf -Np1 -i "${srcdir}/040-intel-npu-compiler-npu-plugin-elf-fix-install.patch"
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
     patch -d openvino/thirdparty/gtest/gtest -Np1 -i "${srcdir}/020-openvino-gtest-gcc15-fix.patch"
@@ -194,67 +193,18 @@ build() {
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
     
-    # https://github.com/openvinotoolkit/npu_compiler/issues/159
-    #export CONFIG='Release'
-    #export NPU_PLUGIN_HOME="${srcdir}/npu_compiler"
-    #export OPENVINO_HOME="${srcdir}/openvino"
-    #
-    #cmake -B build -S openvino \
-    #    --preset npuCidLinux \
-    #    -G 'Ninja' \
-    #    -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
-    #    -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
-    #    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    #    -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
-    #    -DENABLE_SYSTEM_TBB:BOOL='true' \
-    #    -Wno-dev
+    export CONFIG='Release'
+    export NPU_PLUGIN_HOME="${srcdir}/npu_compiler"
+    export OPENVINO_HOME="${srcdir}/openvino"
+    
     cmake -B build -S openvino \
+        --preset npuCidLinux \
         -G 'Ninja' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
+        -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        \
-        -DBUILD_SHARED_LIBS:BOOL='false' \
-        -DENABLE_OV_IR_FRONTEND:BOOL='true' \
-        -DTHREADING:STRING='TBB' \
-        -DENABLE_TBBBIND_2_5:BOOL='false' \
-        -DBUILD_COMPILER_FOR_DRIVER:BOOL='true' \
-        -DOPENVINO_EXTRA_MODULES:FILEPATH="${srcdir}/npu_compiler" \
-        \
-        -DENABLE_LTO:BOOL='false' \
-        -DENABLE_FASTER_BUILD:BOOL='false' \
-        -DENABLE_CPPLINT:BOOL='false' \
-        -DENABLE_TESTS:BOOL='false' \
-        -DENABLE_FUNCTIONAL_TESTS:BOOL='false' \
-        -DENABLE_SAMPLES:BOOL='false' \
-        -DENABLE_JS:BOOL='false' \
-        -DENABLE_PYTHON:BOOL='false' \
-        -DENABLE_PYTHON_PACKAGING:BOOL='false' \
-        -DENABLE_WHEEL:BOOL='false' \
-        -DENABLE_OV_ONNX_FRONTEND:BOOL='false' \
-        -DENABLE_OV_PADDLE_FRONTEND:BOOL='false' \
-        -DENABLE_OV_PYTORCH_FRONTEND:BOOL='false' \
-        -DENABLE_OV_TF_FRONTEND:BOOL='false' \
-        -DENABLE_OV_TF_LITE_FRONTEND:BOOL='false' \
-        -DENABLE_OV_JAX_FRONTEND:BOOL='false' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
         -DENABLE_SYSTEM_TBB:BOOL='true' \
-        -DENABLE_TBB_RELEASE_ONLY:BOOL='false' \
-        -DENABLE_OPENCV:BOOL='false' \
-        -DENABLE_MULTI:BOOL='false' \
-        -DENABLE_HETERO:BOOL='false' \
-        -DENABLE_AUTO:BOOL='false' \
-        -DENABLE_AUTO_BATCH:BOOL='false' \
-        -DENABLE_TEMPLATE:BOOL='false' \
-        -DENABLE_PROXY:BOOL='false' \
-        -DENABLE_INTEL_CPU:BOOL='false' \
-        -DENABLE_INTEL_GPU:BOOL='false' \
-        -DENABLE_NPU_PLUGIN_ENGINE:BOOL='false' \
-        -DENABLE_ZEROAPI_BACKEND:BOOL='false' \
-        -DENABLE_DRIVER_COMPILER_ADAPTER:BOOL='false' \
-        -DENABLE_INTEL_NPU_INTERNAL:BOOL='false' \
-        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='false' \
-        -DENABLE_PRIVATE_TESTS:BOOL='false' \
-        -DENABLE_NPU_LSP_SERVER:BOOL='false'\
         -Wno-dev
     cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
