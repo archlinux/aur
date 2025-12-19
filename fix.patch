@@ -1,0 +1,59 @@
+--- a/src/fuxi-gmac-net.c
++++ b/src/fuxi-gmac-net.c
+@@ -772,7 +772,9 @@
+ static void fxgmac_tx_hang_timer_handler(unsigned long data)
+ #endif
+ {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,16,0))
++    struct fxgmac_channel *channel = timer_container_of(channel, t, expansion.tx_hang_timer);
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
+     struct fxgmac_channel *channel = from_timer(channel, t, expansion.tx_hang_timer);
+ #else
+     struct fxgmac_channel *channel = (struct fxgmac_channel *)data;
+--- a/src/fuxi-gmac-phy.c
++++ b/src/fuxi-gmac-phy.c
+@@ -322,7 +322,9 @@
+ static void fxgmac_phy_link_poll(unsigned long data)
+ #endif
+ {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,16,0))
++    struct fxgmac_pdata *pdata = timer_container_of(pdata, t, expansion.phy_poll_tm);
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0))
+     struct fxgmac_pdata *pdata = from_timer(pdata, t, expansion.phy_poll_tm);
+ #else
+     struct fxgmac_pdata *pdata = (struct fxgmac_pdata*)data;
+@@ -350,7 +352,9 @@
+
+ int fxgmac_phy_timer_init(struct fxgmac_pdata *pdata)
+ {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,16,0))
++    timer_init_key(&pdata->expansion.phy_poll_tm, NULL, 0, "fuxi_phy_link_update_timer", NULL);
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0))
+     init_timer_key(&pdata->expansion.phy_poll_tm, NULL, 0, "fuxi_phy_link_update_timer", NULL);
+ #else
+     init_timer_key(&pdata->expansion.phy_poll_tm, 0, "fuxi_phy_link_update_timer", NULL);
+@@ -368,6 +372,10 @@
+
+ void fxgmac_phy_timer_destroy(struct fxgmac_pdata *pdata)
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,15,0))
++    timer_shutdown_sync(&pdata->expansion.phy_poll_tm);
++#else
+     del_timer_sync(&pdata->expansion.phy_poll_tm);
++#endif
+     DPRINTK("fxgmac_phy_timer removed\n");
+ }
+--- a/src/fuxi-gmac.h
++++ b/src//fuxi-gmac.h
+@@ -50,6 +50,8 @@
+ #define FXGMAC_NS_IFA_LOCAL_LINK     1
+ #define FXGMAC_NS_IFA_GLOBAL_UNICAST 2
+ 
++#define FXGMAC_INT_MODERATION_ENABLED 1
++
+ #define FXGMAX_ASPM_WAR_EN
+ /* Descriptor related parameters */
+ #if FXGMAC_TX_HANG_TIMER_ENABLED
