@@ -2,7 +2,7 @@
 
 _name=did
 pkgname="python-${_name}-git"
-pkgver=0.22.1.r759.64dfd8db
+pkgver=0.22.1.r779.56ad1f92
 pkgrel=1
 pkgdesc='What did you do last week, month, year?'
 arch=('any')
