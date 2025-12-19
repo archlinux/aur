@@ -1,0 +1,60 @@
+--- a/java/lib/build.gradle
++++ b/java/lib/build.gradle
+@@ -7,21 +7,51 @@ buildscript {
+ plugins {
+     id 'java-library'
+     id 'maven-publish'
+-    id 'com.vanniktech.maven.publish' version '0.18.0'
++    id 'com.vanniktech.maven.publish' version '0.35.0'
+ }
+ 
+ repositories {
+     mavenCentral()
+ }
+ 
+-archivesBaseName = 'vosk'
++base {
++    archivesName = 'vosk'
++}
++
+ group = 'com.alphacephei'
+ version = '0.3.75'
+ 
+-mavenPublish {
+-    group = 'com.alphacephei'
+-    version = version
+-    sonatypeHost = 's01'
++mavenPublishing {
++    coordinates(group, "vosk", version)
++    
++    pom {
++        name = 'vosk'
++        description = 'Vosk speech recognition'
++        url = 'https://github.com/alphacep/vosk-api'
++        
++        licenses {
++            license {
++                name = 'The Apache License, Version 2.0'
++                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
++            }
++        }
++        
++        developers {
++            developer {
++                id = 'nshmyrev'
++                name = 'Nickolay V. Shmyrev'
++                email = 'nshmyrev@gmail.com'
++            }
++        }
++        
++        scm {
++            connection = 'scm:git:https://github.com/alphacep/vosk-api.git'
++            developerConnection = 'scm:git:https://github.com/alphacep/vosk-api.git'
++            url = 'https://github.com/alphacep/vosk-api'
++        }
++    }
++    
++    publishToMavenCentral()
+ }
+ 
+ dependencies {
