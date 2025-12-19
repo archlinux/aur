@@ -3,7 +3,7 @@
 
 pkgname=prometheus-snmp-exporter-git
 _pkgname=snmp_exporter
-pkgver=r738.c771f70
+pkgver=r985.7425fee
 pkgrel=1
 pkgdesc='Prometheus exporter for SNMP metrics'
 arch=('x86_64')

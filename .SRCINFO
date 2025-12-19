@@ -1,6 +1,6 @@
 pkgbase = prometheus-snmp-exporter-git
 	pkgdesc = Prometheus exporter for SNMP metrics
-	pkgver = r738.c771f70
+	pkgver = r985.7425fee
 	pkgrel = 1
 	url = https://github.com/prometheus/snmp_exporter
 	install = package.install
