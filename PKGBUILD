@@ -8,20 +8,25 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'networkmanager')
 makedepends=('cargo' 'git')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cachebag/nmrs/archive/refs/tags/gui-v1.1.0.tar.gz"
-        "nmrs.desktop")
+_pkgname=nmrs-gui
 
-sha256sums=('13cecfa92640ba8071ac7cf467be01a12b7ff9ffd3d5db0a8a624bb08e3047e4'
-            '41bd0b473eaf0ba62a96f445a9c101f040a9c2fde9b7d277a3b28ac39d3f5dfe')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/cachebag/nmrs/archive/refs/tags/gui-v$pkgver.tar.gz"
+  "nmrs.desktop"
+)
+
+sha256sums=('b8285bb1a62f218aea49965c5cdda71d25d319e43d5be29256ea14053fee5d12'
+            '2279f157e299d52fabad1dfd9abd9e862b48dbba83921680f5134a537db061ef')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    cargo build --release --locked
+  cd "$srcdir/nmrs-gui-v$pkgver"
+  cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    install -Dm755 target/release/nmrs-gui "$pkgdir/usr/bin/nmrs"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/nmrs.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  cd "$srcdir/nmrs-gui-v$pkgver"
+  install -Dm755 target/release/nmrs-gui "$pkgdir/usr/bin/nmrs"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/nmrs.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
