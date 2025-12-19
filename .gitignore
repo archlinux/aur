@@ -1,0 +1,10 @@
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.zst
+*.zip
+
+pkg/
+src/
+
+clrsync-git/
