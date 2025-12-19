@@ -1,14 +1,20 @@
 pkgbase = python-litesdcard
 	pkgdesc = Small footprint and configurable SD Card core
-	pkgver = 2021.08
-	pkgrel = 3
+	pkgver = 2025.08
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litesdcard
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyyaml
 	depends = python-migen
 	depends = python-litex
-	source = python-litesdcard-2021.08.tar.gz::https://github.com/enjoy-digital/litesdcard/archive/2021.08.tar.gz
-	sha512sums = 4cb4e2d46c0f024c83f715adab79a933567061708c9b92e8fc7b0200529a18a35d461f1493f9b04666ac59f2a99e25b987566ada16cf22b203029cb25245251a
+	source = python-litesdcard-2025.08.tar.gz::https://github.com/enjoy-digital/litesdcard/archive/refs/tags/2025.08.tar.gz
+	sha256sums = 19acfcc57541b27a376a1d8cbfc1cfcdee5ea321be7a6ae288d227f5986bb0b4
 
 pkgname = python-litesdcard
