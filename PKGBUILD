@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=bbe9649522cdaeebff05415d5bab4325513e65d3
+_commit=d2aa0b202484be074f4dc228b1a5692fe54d97db
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('268fa5ea2ce6f75e12e5ffa4e9649d7da24e637148f9ad5a4f83c501cc0882f0')
+sha256sums=('95bffcec2d18f5493ac46cf8d7842a8948066cd5fdd47e42d2f3b7dd19099bfc')
 validpgpkeys=()
 _pkgsrcdir=$pkgname-$pkgver
 
@@ -50,6 +50,7 @@ build() {
 
 package() {
 	cd $_pkgsrcdir
+	pwd
 	echo Generating translation files
 	echo ""
 	cargo run -p transtools -- packfiles
@@ -64,16 +65,14 @@ package() {
 
 	PROGRAM="${BBCYAN}SysD Manager${NC}"
 	echo -e Installing $PROGRAM Proxy  
-
 	install -vDm755 "./target/release/sysd-manager-proxy" -t "$pkgdir/usr/bin"
 	echo -e Executing Install srcipt
 	#/usr/bin/sysd-manager-proxy install
 
-	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.conf" -T /usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf
-	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ /usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf
-	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.policy" -t /usr/share/polkit-1/actions
-	install -vDm644 "./sysd-manager-proxy/data/sysd-manager-proxy.service" -T /usr/lib/systemd/system/sysd-manager-proxy.service
-	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{EXECUTABLE}/\\/usr\\/bin\\/sysd-manager-proxy/ -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ -e s/{SERVICE_ID}/sysd-manager-proxy/ /usr/lib/systemd/system/sysd-manager-proxy.service
-
+	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.conf" -T  "$pkgdir/usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf"
+	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ "$pkgdir/usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf"
+	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.policy" -t "$pkgdir/usr/share/polkit-1/actions"
+	install -vDm644 "./sysd-manager-proxy/data/sysd-manager-proxy.service" -T "$pkgdir/usr/lib/systemd/system/sysd-manager-proxy.service"
+	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{EXECUTABLE}/\\/usr\\/bin\\/sysd-manager-proxy/ -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ -e s/{SERVICE_ID}/sysd-manager-proxy/ "$pkgdir/usr/lib/systemd/system/sysd-manager-proxy.service"
 	echo -e Installation of $PROGRAM completed, enjoy.
 }
