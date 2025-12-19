@@ -1,0 +1,26 @@
+pkgbase = caescript-bin
+	pkgdesc = Dialect of Monkey programming language
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/caelansar/caescript
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = caescript
+	conflicts = caescript
+	source = hello.cae
+	source = fibonacci.cae
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/caelansar/caescript/v0.1.0/LICENSE
+	source = README-0.1.0.md::https://raw.githubusercontent.com/caelansar/caescript/v0.1.0/README.md
+	sha256sums = daf86dff63debd796563dbbfb4ca750605a94c4398a121293cc0a59ede8b902b
+	sha256sums = a268c79fd411efac9624fda078f8214fd5174a056629387ac7c720169e57d332
+	sha256sums = 354e8a4cdba414b7c23647dbbef29159dc1141051814e6e4193c03d58991e819
+	sha256sums = 8b624a9f738ef03c17932b9aa327ea06ff91e229dc885a9418e60e0a84df84fa
+	source_x86_64 = caescript-x86_64-0.1.0.tgz::https://github.com/caelansar/caescript/releases/download/v0.1.0/caescript-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5d6a1998c1767d4f13612f4c5fb127c54bde93db4903260b5f14bbebeb4932cc
+	source_aarch64 = caescript-aarch64-0.1.0.tgz::https://github.com/caelansar/caescript/releases/download/v0.1.0/caescript-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7cd04cd4cecce492988310f0635a08c7370a7fb0116d383316127ce4c6226a61
+
+pkgname = caescript-bin

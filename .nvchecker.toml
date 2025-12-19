@@ -1,0 +1,5 @@
+[caescript-bin]
+source = "github"
+github = "caelansar/caescript"
+use_latest_release = true
+prefix = "v"
