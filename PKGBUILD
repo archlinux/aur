@@ -1,42 +1,35 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Your Name <your_email@example.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=litex
 pkgname=python-$_pkgname
-pkgver=2021.08
-pkgrel=4
+pkgver=2025.08
+pkgrel=1
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
 url='https://github.com/enjoy-digital/litex'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-migen' 'python-pyserial' 'python-requests' 'python-pythondata-software-compiler_rt')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-litedram' 'python-liteeth' 'python-liteiclink' 'python-litesdcard' 'yosys'
-              'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx'
-              'python-litex-boards' 'python-litepcie')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('5f1eb529137eb970373d67d62c56fb6d5ec5e156f41f41a724b7d50a4e7b4b681d9fd5383cdff178f3e6005b4584bcb599fdf6b5d27cb87c3287ca8bf29d2d07')
-
-prepare() {
-  # seems like running the tests breaks setup.py install
-  cp -r $_pkgname-$pkgver{,-tests}
-}
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=("0e70f0e3e4cf8b973296358771b0c0d6985df3bff18d642a297972de1c7a3483")
 
 build() {
-  cd $_pkgname-$pkgver
-
-  python setup.py build
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver-tests
-
-  pytest
+  cd "$_pkgname-$pkgver"
+  # only minimal testing will be performed
+  pytest test/test_wishbone.py
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+# vim:set et ts=2 sw=2 syntax=PKGBUILD:
