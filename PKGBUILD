@@ -3,7 +3,7 @@
 _name=hdr-image-viewer
 pkgname="${_name}-git"
 pkgver=r23.e17681c
-pkgrel=2
+pkgrel=3
 pkgdesc="An application for viewing HDR images with accurate color reproduction"
 arch=('x86_64')
 url='https://github.com/aaron-rust/hdr-image-viewer'
@@ -43,7 +43,10 @@ pkgver() {
 }
 
 build() {
-    cmake -S "$_name" -B build
+    cmake -S "$_name" -B build \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
     cmake --build build
 }
 
