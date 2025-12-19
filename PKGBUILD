@@ -12,6 +12,9 @@ arch=('x86_64')
 url="https://flashpointarchive.org/"
 license=('MIT')
 
+provides=(flashpoint-launcher)
+conflicts=(flashpoint-launcher)
+
 depends=(
 	'pulse-native-provider'
 	'lib32-libxcomposite'
