@@ -1,5 +1,5 @@
 pkgname=rusty-pipes
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue and Hauptwerk sample sets."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "rusty-pipes-text-$pkgver.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes-text.desktop"
     "rusty-pipes-$pkgver.png::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes.png"
 )
-sha256sums=('998166404f750b8c2a5bf92f5ff935f5765c6e396c246ce99a4509010d44543c'
+sha256sums=('b34c5e8f8540763cac629da751db9a607b3d970d047af0baa8e5ddd7c0bec432'
             'cd1eafd36d3185bed9dfe4a83f1c9b94575fa56c0ebc3a878fd9b8b6c7820341'
             'b54f72270c8bcd5557b1724dd2875ebc89bef247caffa2b75b7985f4d8f463ac'
             'bc867e93be2660685875873d33991ab343860b311cbf06cde753007e1d6a6990')
