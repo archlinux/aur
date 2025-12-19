@@ -1,5 +1,5 @@
 pkgbase = macsequoia-kde-theme-git
-	pkgdesc = MacOS Sequoia theme for KDE Plasma (development version)
+	pkgdesc = MacOS Sequoia theme for KDE Plasma by https://github.com/vinceliuice (development version)
 	pkgver = r15.9d68985
 	pkgrel = 1
 	url = https://github.com/vinceliuice/MacSequoia-kde

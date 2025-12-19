@@ -1,9 +1,9 @@
-# Maintainer: Monsoon XY <29970829+monsoon235@users.noreply.github.com>
+# Maintainer: monsoon235 <29970829+monsoon235@users.noreply.github.com>
 pkgname=macsequoia-kde-theme-git
 _gitname=MacSequoia-kde
 pkgver=r15.9d68985
 pkgrel=1
-pkgdesc="MacOS Sequoia theme for KDE Plasma (development version)"
+pkgdesc="MacOS Sequoia theme for KDE Plasma by https://github.com/vinceliuice (development version)"
 arch=("any")
 url="https://github.com/vinceliuice/${_gitname}"
 license=("GPL-3.0")
