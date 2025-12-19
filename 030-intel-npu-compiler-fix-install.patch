@@ -15,26 +15,9 @@
      DESTINATION cid
 -    COMPONENT ${CID_COMPONENT})
 +    COMPONENT ${CID_COMPONENT})]]
---- a/src/vpux_driver_compiler/src/loader/CMakeLists.txt
-+++ b/src/vpux_driver_compiler/src/loader/CMakeLists.txt
-@@ -75,7 +75,7 @@ ov_add_api_validator_post_build_step(TARGET ${TARGET_NAME})
- # loader folder | -> include/ | -> vpux_headers/ -> 1 hpp
- #               |             | -> vpux_loader/  -> 1 hpp
- 
--install(DIRECTORY "${LOADER_DIR_INC}/vpux_headers"
-+#[[install(DIRECTORY "${LOADER_DIR_INC}/vpux_headers"
-         DESTINATION cid/vpux_elf/loader/include/
-         COMPONENT ${CID_COMPONENT})
- 
-@@ -205,4 +205,4 @@ install(TARGETS npu_elf
-         CONFIGURATIONS RelWithDebInfo
-         LIBRARY DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
-         ARCHIVE DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
--        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})
-+        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})]]
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -89,12 +89,12 @@ if(WIN32)
+@@ -92,12 +92,12 @@ if(WIN32)
              COMPONENT ${CID_COMPONENT})
  else()
      install(TARGETS ${TARGET_NAME}

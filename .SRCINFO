@@ -1,6 +1,6 @@
 pkgbase = intel-npu-compiler
 	pkgdesc = Intel Neural Processing Unit (NPU) compiler
-	pkgver = 2025.44rc1
+	pkgver = 2025.48rc1
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/npu_compiler/
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = intel-npu-compiler
 	depends = pugixml
 	depends = zlib
 	depends = zstd
-	source = git+https://github.com/openvinotoolkit/npu_compiler.git#tag=npu_ud_2025_44_rc1
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=80e587bccec151a9acb0bc73fb96d007daa56e82
+	source = git+https://github.com/openvinotoolkit/npu_compiler.git#tag=npu_ud_2025_48_rc1
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=5fb69ea158126752aa9d8aa5ee4d6f65a5b409b5
 	source = git+https://github.com/openvinotoolkit/npu_plugin_elf.git
 	source = git+https://github.com/intel/npu-plugin-llvm.git
 	source = git+https://github.com/intel/npu-nn-cost-model.git
@@ -51,11 +51,11 @@ pkgbase = intel-npu-compiler
 	source = 010-intel-npu-compiler-llvm-disable-atomic-check.patch
 	source = 020-intel-npu-compiler-disable-werror.patch
 	source = 030-intel-npu-compiler-fix-install.patch
-	source = 040-intel-npu-compiler-llvm-gcc15-fix.patch
+	source = 040-intel-npu-compiler-npu-plugin-elf-fix-install.patch
 	source = 010-openvino-disable-werror.patch
 	source = 020-openvino-gtest-gcc15-fix.patch
-	sha256sums = b079fe27c6b9a7c23d8d5e3d2bfb45332885cc9f904122e15673e0102ea4abc1
-	sha256sums = 43efd5dad7abca2db2595e736fbdf672d05319db53faa73f0f524ad26d66ca47
+	sha256sums = 1ea864024e9e32e13ddf4832a47a9fdb7eb04d954cb41293a38e005ff6c514c0
+	sha256sums = 477ee9e61adc438dd34f8b786095763f414604ef9360b4bf3ea4eff7dd9f43cb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -86,10 +86,10 @@ pkgbase = intel-npu-compiler
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7
-	sha256sums = 142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a
-	sha256sums = 880e75bb3a0cd34fee3c5db2bf390e7f62592beb79b855c55d043b3100986453
-	sha256sums = c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2
+	sha256sums = ef3e2fec8ac0e63756350e6b33b1bf64909b6221b9a9f29248e2933143fda61c
+	sha256sums = a26a2f4646e7725c50344346abd31a18d0799db094d29ff095d37ede3224ca53
+	sha256sums = c5ded4dfcb2eaba91a49ba7a629155025f85ea781a40033412baa51d76189041
+	sha256sums = 10a20af32917aef812be816474cfe51c5ef65217a6eeadfda2c2c4fcfc4f2f60
 	sha256sums = ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9
 	sha256sums = e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f
 
