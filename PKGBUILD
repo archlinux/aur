@@ -1,5 +1,7 @@
 # shellcheck shell=bash
-# Maintainer: A Farzat <a@farzat.xyz>
+# shellcheck disable=SC2034
+# Maintainer: Chinmay Dalal
+# Contributor: A Farzat <a@farzat.xyz>
 # Contributor: éclairevoyant
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
@@ -7,46 +9,29 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 # Contributor: Gregory Anders <aur@gpanders.com>
 
-# shellcheck disable=2034
 declare srcdir pkgdir
 pkgname=neovim-git
-pkgver=0.12.0.r1848.g8a94daf80e
+pkgver=0.12.0.r2529.g5f22cf5af3
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=(
-  'libluv'
-  'libutf8proc'
-  'libuv'
-  'lua51-lpeg'
-  'luajit'
-  'msgpack-c'
-  'tree-sitter-c'
-  'tree-sitter-lua'
-  'tree-sitter-markdown'
-  'tree-sitter-query'
-  'tree-sitter-vimdoc'
-  'tree-sitter-vim'
-  'tree-sitter>=0.25.0'
-  'unibilium'
-)
-makedepends=('cmake' 'git' 'ninja' 'unzip')
+makedepends=('git' 'zig>=0.15.2' 'unzip')
 optdepends=(
-  'python-pynvim: for Python plugin support (see :help python)'
-  'tree-sitter-bash: tree-sitter parser for bash'
-  'tree-sitter-python: tree-sitter parser for python'
-  'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
-  'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
-  'wl-clipboard: for clipboard support on wayland (see :help clipboard)'
+    'python-pynvim: for Python plugin support (see :help python)'
+    'tree-sitter-bash: tree-sitter parser for bash'
+    'tree-sitter-python: tree-sitter parser for python'
+    'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
+    'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
+    'wl-clipboard: for clipboard support on wayland (see :help clipboard)'
 )
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
 source=(
-  "git+file:///home/chinmay/code/codebases/neovim.git"
-  nvimdoc{,.hook}
+    "git+file:///home/chinmay/code/codebases/neovim.git"
+    nvimdoc{,.hook}
 )
 sha512sums=('SKIP'
             '22662462c823de243599cdd3483e46ade4ab59b219e907468d34c18e584fe7477548e357ee2ce56bb098cf54b770b108a3511703dd486f0774a65c84af78f6aa'
@@ -57,66 +42,46 @@ b2sums=('SKIP'
 options=(!strip)
 
 pkgver() {
-  cd "${srcdir}/neovim" || exit 1
-  local nvim_version nvim_version_git
-  nvim_version="$(sed -nE '/NVIM_VERSION_/ s/.* +([0-9]+)\).*/\1/p' ./CMakeLists.txt | sed ':b;N;$!bb;s/\n/\./g')"
-  nvim_version_git="$(git describe --first-parent --always | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
-  printf "%s.r%s\n" "$nvim_version" "$nvim_version_git"
+    cd "${srcdir}/neovim" || exit 1
+    local nvim_version nvim_version_git
+    nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
+    nvim_version_git="$(git describe --always --dirty --match 'v*.*.*' | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
+    printf "%s.r%s\n" "$nvim_version" "$nvim_version_git"
 }
 
 build() {
-  cd "${srcdir}/neovim" || exit 1
-  cmake -S cmake.deps -B .deps \
-    -G Ninja \
-    -DUSE_BUNDLED=OFF \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
-    -DCMAKE_C_COMPILER_LAUNCHER=sccache \
-    -DCMAKE_C_COMPILER="/usr/bin/clang"
-
-  cmake --build .deps
-
-  cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -G Ninja \
-    -DCMAKE_C_FLAGS="-march=native -mtune=native" \
-    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
-    -DCMAKE_C_COMPILER_LAUNCHER=sccache \
-    -DCMAKE_C_COMPILER="/usr/bin/clang"
-
-  cmake --build build
+    cd "${srcdir}/neovim" || exit 1
+    zig build -Doptimize=ReleaseFast -Dcpu=native
 }
 
 check() {
-  cd "${srcdir}/neovim" || exit 1
-  build/bin/nvim --version
-  build/bin/nvim --headless -u NONE -i NONE -c ':quit'
+    cd "${srcdir}/neovim" || exit 1
+    zig-out/bin/nvim --version
+    zig-out/bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
-  install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
+    install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
+    install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
-  pushd . >/dev/null
-  cd "${srcdir}/neovim" || exit 1
-  DESTDIR="$pkgdir" cmake --install build
+    pushd . >/dev/null
+    cd "${srcdir}/neovim" || exit 1
+    zig build install --prefix "${pkgdir}/usr" -Doptimize=ReleaseFast -Dcpu=native
 
-  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
-  install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
-  popd >/dev/null
+    install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
+    install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
+    # shellcheck disable=SC2164
+    popd >/dev/null
 
-  # Make Arch Vim packages work
-  mkdir -p "${pkgdir}"/etc/xdg/nvim
-  echo "\" This line makes pacman-installed global Arch Linux vim packages work." > "${pkgdir}"/etc/xdg/nvim/sysinit.vim
-  echo "source /usr/share/nvim/archlinux.vim" >> "${pkgdir}"/etc/xdg/nvim/sysinit.vim
+    # Make Arch Vim packages work
+    mkdir -p "${pkgdir}"/etc/xdg/nvim
+    echo "\" This line makes pacman-installed global Arch Linux vim packages work." > "${pkgdir}"/etc/xdg/nvim/sysinit.vim
+    echo "source /usr/share/nvim/archlinux.vim" >> "${pkgdir}"/etc/xdg/nvim/sysinit.vim
 
-  mkdir -p "${pkgdir}"/usr/share/vim
-  echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/archlinux.vim
-
-  ln -s /usr/lib/tree_sitter "${pkgdir}"/usr/lib/nvim/parser
+    mkdir -p "${pkgdir}"/usr/share/vim
+    echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/archlinux.vim
 }
 
-# vim:set sw=2 sts=2 et:
+# vim:set sw=4 sts=4 et:
