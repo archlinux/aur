@@ -2,9 +2,8 @@
 # Contributor: Sam <dev at samarthj dot com>
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
-pkgbase=uutils-coreutils-git
-pkgname=($pkgbase coreutils-uutils)
-pkgver=0.5.0.r1.g06d843f
+pkgname=uutils-coreutils-git
+pkgver=0.5.0.r35.g3de9411
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -14,8 +13,8 @@ depends=(gcc-libs glibc oniguruma)
 makedepends=(git rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 options=(zipman)
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(coreutils)
+conflicts=({uutils-,}coreutils)
 _libc=0.2.178
 source=("${pkgname%-git}::git+${url}.git"
 "libc${_libc}.tar.gz::https://github.com/rust-lang/libc/archive/refs/tags/${_libc}.tar.gz"
@@ -29,40 +28,21 @@ pkgver() {
 
 prepare(){
   # glibc changed baud consts...
-  (cd ${pkgname%-git} && cargo update -p libc) # inject patched libc to nix
   echo -e "[patch.crates-io]\nlibc.path = \"../libc-${_libc}\"" >> ${pkgname%-git}/Cargo.toml
   for _b in 0 50 75 110 134 150 200 300 600 1200 1800 2400 4800 9600 19200 38400 57600 115200 230400 460800 500000 576000 921600 1000000 1152000 1500000 2000000 2500000 3000000 3500000 4000000;do
     sed -i "s/pub const B${_b}: crate::speed_t =.*;/pub const B${_b}: crate::speed_t = ${_b};/" libc-${_libc}/src/unix/linux_like/linux/gnu/b64/x86_64/mod.rs
   done
+  cd ${pkgname%-git} && cargo update -p libc
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic's default
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
-package_uutils-coreutils-git(){
+package(){
   cd ${pkgbase%-git}
   unset optdepends
-  make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} #LOCALES=n SKIP_UTILS="arch shred shuf factor kill more uptime hostname"
+  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" #LOCALES=n
+  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #"shred shuf factor"
+  make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
-}
-
-package_coreutils-uutils(){
-  pkgdesc='Use uutils as system coreutils'
-  provides=(coreutils)
-  conflicts=(coreutils)
-  cd ${pkgbase%-git}
-  unset optdepends
-  # Remove this hack after patch was removed
-  depends=(uutils-coreutils)
-  install -d "$pkgdir"/usr/{bin,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
-  cd "$pkgdir"/usr
-  ln -sf uu-\[ bin/\[ # zsh completion err
-  for _f in $("$srcdir"/uutils-coreutils/target/release-fast/coreutils --list | grep -v -E '^(kill|more|uptime|hostname|hashsum|\[)$') ; do
-    ln -sf uu-$_f bin/$_f
-    ln -sf uu-${_f}.1.gz share/man/man1/${_f}.1.gz
-    echo -e "#compdef ${_f}=uu-${_f}\n_uu-${_f}" > share/zsh/site-functions/_$_f
-    echo "complete -c ${_f} -w uu-${_f}" > share/fish/vendor_completions.d/${_f}.fish
-  done
-  ln -sf /usr/share/licenses/uutils-coreutils/LICENSE -t share/licenses/$pkgname
 }
