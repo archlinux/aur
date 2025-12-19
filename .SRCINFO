@@ -1,7 +1,7 @@
 pkgbase = arduino-ide-bin
 	pkgdesc = Arduino prototyping platform IDE, rewrite based on the Theia IDE framework.
-	pkgver = 2.3.6
-	pkgrel = 2
+	pkgver = 2.3.7
+	pkgrel = 1
 	url = https://github.com/arduino/arduino-ide
 	arch = x86_64
 	license = AGPL3
@@ -18,12 +18,12 @@ pkgbase = arduino-ide-bin
 	provides = arduino-ide
 	conflicts = arduino-ide
 	replaces = arduino-ide-beta-bin
-	noextract = arduino-ide_2.3.6_Linux_64bit.zip
+	noextract = arduino-ide_2.3.7_Linux_64bit.zip
 	options = !strip
-	source = https://github.com/arduino/arduino-ide/releases/download/2.3.6/arduino-ide_2.3.6_Linux_64bit.zip
+	source = https://github.com/arduino/arduino-ide/releases/download/2.3.7/arduino-ide_2.3.7_Linux_64bit.zip
 	source = https://raw.githubusercontent.com/arduino/arduino-ide/155f0aebaf0e4e77a80f33a3422856ae5d3ad8e7/electron-app/resources/icons/512x512.png
 	source = arduino-ide-bin.sh
-	sha256sums = 33bf2cb868abf92b3d160f7433dcd6348cec1c9e633b5c9e1c761f630f87b82b
+	sha256sums = 09f940d03350d286094b5a9e4fb297b7d156b1789e827f0d2bcf77c09fc04a78
 	sha256sums = bb8c484af1488c3596e0eb123a84766c84cf82328a1b3ec30c364203492157c9
 	sha256sums = c02f0c40b92e50f46b09339d1ccfb0cb7cd7caa1e5d386ee9b85938810bfda34
 
