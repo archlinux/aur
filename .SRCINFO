@@ -1,0 +1,22 @@
+pkgbase = epy-ereader-mcepl
+	pkgdesc = fork of wustho/epy with continued development
+	pkgver = 2025.5.27
+	pkgrel = 1
+	url = https://git.sr.ht/~mcepl/epy
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-imghdr
+	provides = epy
+	conflicts = epy-ereader-mcepl-git
+	conflicts = epy
+	source = epy-ereader-mcepl-2025.5.27.tar.gz::https://git.sr.ht/~mcepl/epy/archive/v2025.5.27.tar.gz
+	sha256sums = c338a6bbc251e46648c2ce26a895004c04ed1163df793ea74d7a0579fee51c70
+
+pkgname = epy-ereader-mcepl
