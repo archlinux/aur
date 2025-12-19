@@ -6,6 +6,7 @@ pkgdesc="Color scheme manager (git version)"
 arch=('x86_64')
 url="https://github.com/obsqrbtz/clrsync"
 license=('MIT')
+options=(!debug)
 depends=(
     glfw
     freetype2
