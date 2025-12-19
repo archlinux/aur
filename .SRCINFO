@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-forge-git
 	pkgdesc = Tiling and Window Manager for Gnome-Shell
-	pkgver = 88.r7.g86a04b3
+	pkgver = 89.r1.ga2fabeb
 	pkgrel = 1
 	url = https://github.com/forge-ext/forge
 	arch = any
