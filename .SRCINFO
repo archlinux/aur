@@ -1,13 +1,13 @@
 pkgbase = zep-bin
 	pkgdesc = Fast package manager for Zig (binary release)
-	pkgver = 0.7
-	pkgrel = 2
+	pkgver = 0.8
+	pkgrel = 1
 	url = https://github.com/XerWoho/zeP
 	arch = x86_64
 	license = GPLv3
 	provides = zep
 	conflicts = zep
-	source = https://zep.run/releases/0.7-dev-1/zep_x86_64-linux_0.7-dev-1.tar.xz
-	sha256sums = f21602c9f57eb1506580446b3c80e129faf4802cd3c7107f6596b0e3b2859c43
+	source = https://zep.run/releases/0.8/zep_x86_64-linux_0.8.tar.xz
+	sha256sums = 61da5e4164913072404c273aae6966cc86f76d830e8f59462973986a6b558945
 
 pkgname = zep-bin
