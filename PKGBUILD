@@ -4,7 +4,7 @@
 pkgname=classisland
 _appname=cn.classisland.app
 pkgver=2.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="适用于班级大屏的课表小工具。Class schedule displaying tool for interactive whiteboards in classrooms."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
     'dotnet-sdk-8.0'
+    'dotnet-sdk-9.0'
     'git'
 )
 source=(
