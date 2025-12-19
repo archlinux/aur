@@ -1,6 +1,6 @@
 pkgbase = tangent-dev-bin
 	pkgdesc = Open source markdown note-taking app with linked notes and visual map
-	pkgver = 0.11.0beta.2
+	pkgver = 0.11.0beta.3
 	pkgrel = 1
 	url = https://www.tangentnotes.com
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = tangent-dev-bin
 	provides = tangent
 	conflicts = tangent
 	conflicts = tangent-bin
-	noextract = tangent-0.11.0beta.2.AppImage
-	source = tangent-0.11.0beta.2.AppImage::https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/Tangent-0.11.0-beta.2.AppImage
+	noextract = tangent-0.11.0beta.3.AppImage
+	source = tangent-0.11.0beta.3.AppImage::https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/Tangent-0.11.0-beta.3.AppImage
 	source = tangent.desktop
-	sha256sums = c9aa5d31a53e02f4a96cbc636d77df97c53fa6bf820a6820fde5e681b504a9a7
+	sha256sums = 16605a111601af33bd73b079f88dc28071e3aef7a58b36892203c1eab76ad343
 	sha256sums = 7bd7e95acdf937c38adaf0456b60e07d501f8235499d13c872f89238fde7bd72
 
 pkgname = tangent-dev-bin
