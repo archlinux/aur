@@ -4,8 +4,8 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -17,17 +17,9 @@ makedepends=("cmake" "eigen" "python-numpy" "qhull")
 checkdepends=("openssh")
 optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
-        "Fix-include.patch"
         "gdl.profile")
-sha512sums=("1adfaf2bee42bc93c78d7aa80e9bc9262ffcc91ecc6a5731bba2d44f06f5b67eacd6e1ef498af4fa086ab6b714014471908342003ed5ea20d56f65a5c8295410"
-            "d849da6d6be16d6f7e81bfd7dca7e05fbcb8040e689d1e564a69037804171ca7fa722685a62ad37b607966b7ce10697cd1dc064f4210ea77ff9334a341954391"
+sha512sums=("4f4af5c5176a97d366d098fe27223895b90d6eed99a37cb144d334fd7751da8f27b06c4f09b7ac6628389387e8ad1108dbb6197a549d9c2b9ffce1da7ba418ac"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
-
-prepare() {
-    cd "${srcdir}/gdl-v${pkgver}"
-
-    patch -p1 -i ../Fix-include.patch
-}
 
 build() {
     local cmake_options=(
@@ -64,7 +56,7 @@ build() {
 }
 
 check() {
-    local excluded_tests="(test_gdl2gdl|test_plot_ranges)"
+    local excluded_tests=""
     local ctest_flags=(
         --test-dir build
         --output-on-failure
