@@ -1,6 +1,6 @@
 pkgbase = python-schwifty
 	pkgdesc = Validate/generate IBANS and BICS
-	pkgver = 2025.1.0
+	pkgver = 2025.9.0
 	pkgrel = 1
 	url = http://github.com/mdomke/schwifty
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-schwifty
 	depends = python-pycountry
 	depends = python-rstr
 	optdepends = python-pydantic>=2.0: data validation
-	source = https://files.pythonhosted.org/packages/source/s/schwifty/schwifty-2025.1.0.tar.gz
-	sha256sums = f492f3cbea3beb1fe0bf11a89075e6e413a5f500ee1afdb29a124a9a89b1a2ca
+	source = https://files.pythonhosted.org/packages/source/s/schwifty/schwifty-2025.9.0.tar.gz
+	b2sums = 36299baa9b6422038a2fe8b2d9db0a92686e7ddcba331b299c5993384936560382044a59f476c20d50d52d95c8588cc30f1a9edeb6cb8552bf456a2e4b8ffb08
 
 pkgname = python-schwifty
