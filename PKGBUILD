@@ -1,5 +1,5 @@
 pkgname=mpvwall-git
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Terminal UI manager for mpvpaper video wallpapers"
 arch=('any')

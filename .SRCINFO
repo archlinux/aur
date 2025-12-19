@@ -1,6 +1,6 @@
 pkgbase = mpvwall-git
 	pkgdesc = Terminal UI manager for mpvpaper video wallpapers
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/methamphetaminelab/mpvwall
 	arch = any
