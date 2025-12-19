@@ -5,7 +5,7 @@
 # basic info
 pkgname="darkly-bin"
 pkgver=0.5.28
-pkgrel=2
+pkgrel=1
 pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
 arch=('x86_64' 'aarch64')
