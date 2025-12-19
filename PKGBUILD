@@ -2,8 +2,8 @@
 # Contributor: Andrei Marinescu <iandrei.marinescu@gmail.com>
 
 pkgname=wavebox-beta
-_pkgver=10.143.21_3
-pkgver=10.143.21_3
+_pkgver=10.143.24_3
+pkgver=10.143.24_3
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication."
 arch=(x86_64)
@@ -12,13 +12,15 @@ license=('custom:Wavebox-EULA')
 depends=('ttf-liberation' 'libappindicator-gtk3' 'at-spi2-atk' 'cairo' 'libcups' 'gdk-pixbuf2' 'glib2' 'gtk3' 'nspr' 'nss' 'libxss' 'wget' 'xdg-utils')
 optdepends=('pam-u2f: Two-Factor Auth')
 conflicts=('wavebox-bin' 'wavebox-bin-beta' 'wavebox')
-source=("wavebox-$pkgver.tar.gz::https://download.wavebox.app/beta/linux/aur/Wavebox_10.143.21-3_aur.tar.gz"
+source=("wavebox-$pkgver.tar.gz::https://download.wavebox.app/beta/linux/aur/Wavebox_10.143.24-3_aur.tar.gz"
         'wavebox.appdata.xml'
         'wavebox.menu'
+        'wavebox.sh'
         'LICENSE')
-md5sums=('ff4f7d6aa5e810cb27a6299c21d03978'
+md5sums=('5e69d392647aa30f5678892d729f58bb'
          '170a7d4e04402fa5c759e8f5e87e9d9c'
          '4f08794ea93eafd0e77b522ac7738638'
+         'e0bb84adc9eb1ef6e74cf5fcfe291675'
          'b92c8854e4553540df6bc998afe68cc4')
 
 prepare() {
@@ -36,4 +38,7 @@ package() {
 	install -dm 755 ${pkgdir}/opt/wavebox.io
 
 	cp -r ../"wavebox_"* ${pkgdir}/opt/wavebox.io/wavebox
+
+	# Install launcher script that supports ~/.config/wavebox-flags.conf
+	install -Dm 755 ${srcdir}/wavebox.sh ${pkgdir}/usr/bin/wavebox
 }

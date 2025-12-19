@@ -1,6 +1,6 @@
 pkgbase = wavebox-beta
 	pkgdesc = The next generation of web-desktop communication
-	pkgver = 10.143.21_3
+	pkgver = 10.143.24_3
 	pkgrel = 1
 	url = https://wavebox.io
 	arch = x86_64
@@ -22,13 +22,15 @@ pkgbase = wavebox-beta
 	conflicts = wavebox-bin
 	conflicts = wavebox-bin-beta
 	conflicts = wavebox
-	source = Wavebox_10.143.21-3_aur.tar.gz::https://download.wavebox.app/beta/linux/aur/
+	source = Wavebox_10.143.24-3_aur.tar.gz::https://download.wavebox.app/beta/linux/aur/
 	source = wavebox.appdata.xml
 	source = wavebox.menu
+	source = wavebox.sh
 	source = LICENSE
-	md5sums = ff4f7d6aa5e810cb27a6299c21d03978
+	md5sums = 5e69d392647aa30f5678892d729f58bb
 	md5sums = 170a7d4e04402fa5c759e8f5e87e9d9c
 	md5sums = 4f08794ea93eafd0e77b522ac7738638
+	md5sums = e0bb84adc9eb1ef6e74cf5fcfe291675
 	md5sums = b92c8854e4553540df6bc998afe68cc4
 
 pkgname = wavebox-beta
