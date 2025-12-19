@@ -26,6 +26,7 @@ depends=(
     'wxwidgets-gtk3'
     'libedit'
     'libssh'
+    'zlib'
     'mariadb-libs'
     'ncurses'
     'uchardet'

@@ -14,6 +14,7 @@ pkgbase = codelite-git
 	depends = wxwidgets-gtk3
 	depends = libedit
 	depends = libssh
+	depends = zlib
 	depends = mariadb-libs
 	depends = ncurses
 	depends = uchardet
