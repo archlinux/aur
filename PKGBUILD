@@ -18,20 +18,20 @@ if command -v git > /dev/null; then
         _base_ver="${_staging_ver}"
     else
         _git_branch="branch=${_git_branch}"
-        _base_ver="$(git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -F '.99' -v | head -n 1)"
+        _base_ver="$(git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -E 'rc|99' -v | head -n 1)"
         _base_ver="${_base_ver##*/zfs-}"
         _base_ver="${_base_ver:=${_staging_ver%.*}.$((${_staging_ver##*.}-1))}"
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.6-staging"
-    _staging_ver="2.3.6"
-    _base_ver="2.3.5"
+    _git_branch="branch=zfs-2.4.1-staging"
+    _staging_ver="2.4.1"
+    _base_ver="2.4.0-rc5"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.5.r0.gab38521f31
-pkgrel=3
+pkgver=2.4.0.r0.g743334913e
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -43,31 +43,11 @@ makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch"
         "69-zfs-dkms-check.hook"
-        "zfs-dkms-check"
-        "Fix-LLVM-21-Wuninitialized-const-pointer-warning.patch::https://github.com/openzfs/zfs/commit/9acedbaceec362d08a33ebfe7c4c7efcee81d094.patch?full_index=1"
-        "Fix-clang-zvol_id-make-array-length-properly-known-at-compile-time.patch::https://github.com/openzfs/zfs/commit/b7e00c7397bfc504ec9d46eeb41ab7980adb21df.patch?full_index=1"
-        "Fix-clang-config-kmap_atomic-initialise-test-data.patch::https://github.com/openzfs/zfs/commit/bfd137d92b8972e5b709ea1eb7be875c21b3242d.patch?full_index=1"
-        "linux618-replace_nth_page.patch::https://github.com/darkbasic/zfs/commit/9ae69e2f11c7ff12a8a14f24d49c12d0c6f7b4d5.patch?full_index=1"
-        "linux618-convert_ida_simple_calls.patch::https://github.com/darkbasic/zfs/commit/2525b7726e3547af6e1a9ddc2b55b03b0eb51b32.patch?full_index=1"
-        "linux618-block_device_operations_getgeo_takes_struct_gendisk.patch::https://github.com/darkbasic/zfs/commit/a8b443445897daf82883abec3f95cbf762908f0f.patch?full_index=1"
-        "linux618-replace_write_cache_pages.patch::https://github.com/darkbasic/zfs/commit/72e04819f2382150d3be5f890fe9e270af13b995.patch?full_index=1"
-        "linux618-namespace_type_moved_to_ns_common.patch::https://github.com/darkbasic/zfs/commit/74c39c4171b8a5098529c029e04b1a24433099a7.patch?full_index=1"
-        "linux618-sha256_generic_make_internal_functions_a_little_more_private.patch::https://github.com/darkbasic/zfs/commit/fa694e8bde3717f6a070835eb854340b4293e843.patch?full_index=1"
-        "linux618-generic_drop_inode_and_generic_delete_inode_renamed.patch::https://github.com/darkbasic/zfs/commit/13c6a707958493df8fc6a7909072e0a311660af2.patch?full_index=1")
+        "zfs-dkms-check")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
-            '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f'
-            'd4c85e438f8bc9619b4980bdc460074a581058e3043cb1c493eab1b19c560cdb'
-            '23e320ae7f6fd10ca7cc81377e44656ec702d2d8655236170f91bf95d95531ef'
-            '49875a8df1ba450bb3d85aedee1c252c99e189c26b28b8085b2f59c6bca6b69b'
-            'ff5c0fabcb4762f2bc3d98110b3a378f3feb785ad4a710966747bdf22dd1d6f5'
-            'd7ef11ca273e0012505df302cb7a5906b097e72735919701886493b903b20f02'
-            'facd4ccee7bd4528afd18d7728fae2c9884537acb3bf528e0a63a7c9f3e9d3fa'
-            'd509392d54e4c53fa356bae8b891327a3b52acb7755d15e49652e64cc2b421ca'
-            '1ae844cf50c763dcf003fc112cead50a2b7c8de74e4d3faacc7665aad2f3ce1a'
-            '7c268cd7b87b832dde2e692b443ca2162aa62082a3c2c0aae1488a88c7e453e7'
-            'ca1f4c1fc3da7f0de50e5b5db1680e2bb5d3f9db989a0738ba5967b805cdb79f')
+            '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
