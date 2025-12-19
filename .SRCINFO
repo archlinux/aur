@@ -1,0 +1,36 @@
+pkgbase = nvidia-580xx-settings
+	pkgdesc = Tool for configuring the NVIDIA graphics driver (580xx)
+	pkgver = 580.119.02
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-settings
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = jansson
+	makedepends = gtk3
+	makedepends = libxv
+	makedepends = libvdpau
+	makedepends = nvidia-580xx-utils
+	makedepends = libxext
+	makedepends = vulkan-headers
+	options = staticlibs
+	source = nvidia-580xx-settings-580.119.02.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/580.119.02.tar.gz
+	source = nvidia-settings-libxnvctrl_so.patch
+	sha512sums = 9572a854cf5c97e79ad879fd6b9b1303443cbc1744a1fb57f8cce57a0759e83a56495840a48735551092986f0d1266bb83f501f44e1661b507b6c557ca9fdebb
+	sha512sums = 0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae
+
+pkgname = nvidia-580xx-settings
+	depends = jansson
+	depends = gtk3
+	depends = libxv
+	depends = libvdpau
+	depends = nvidia-utils
+	depends = libxnvctrl-580xx
+	provides = nvidia-settings
+	conflicts = nvidia-settings
+
+pkgname = libxnvctrl-580xx
+	pkgdesc = NVIDIA NV-CONTROL X extension (580xx)
+	depends = libxext
+	provides = libXNVCtrl.so
+	provides = libxnvctrl
+	conflicts = libxnvctrl
