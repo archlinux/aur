@@ -1,0 +1,7 @@
+pkg
+src
+*-git
+Makefile
+*.pkg.tar.gz
+*.pkg.tar.xz
+*.pkg.tar.zst
