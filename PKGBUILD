@@ -3,7 +3,7 @@
 
 pkgname=python-textualeffects
 _pkgname=textualeffects
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Visual effects for Textual, a TermincalTextEffects wrapper."
 url="https://github.com/ggozad/textualeffects"
@@ -14,7 +14,7 @@ makedepends=('python-installer' 'uv')
 depends=('python' 'python-textual' 'python-rich' 'python-terminaltexteffects')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/ggozad/textualeffects/archive/${pkgver}.tar.gz")
-b2sums=('ace677eba2fdd9d3c6f265ff81807b5a76e6167ad4a2128ffec0ad9362e0a41d54f300aeeb4e853800a40640627724fc563038b3b5a41968fe59f6a4d0fa08f8')
+b2sums=('b504554a30160078f97d56bd43ed584e3a1ed84d0113efa8f4e3aaa6803e55be970b41f055a74949fddfc88f7c10c0149a33ef7a9808797854afa8275111a0dd')
 
 build() {
 	cd "$_pkgname-$pkgver" || exit
