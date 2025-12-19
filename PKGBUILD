@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=steamclip
-pkgver=2.19
+pkgver=3.5
 pkgrel=1
 pkgdesc='A simple PYTHON script to convert Steam recordings to .mp4 files'
 arch=(any)
@@ -10,13 +10,14 @@ license=(GPL-3.0-only)
 depends=(
 	python
 	python-imageio-ffmpeg
+	python-pathvalidate
 	python-pillow
-	python-pyqt5
+	python-pyqt6
 	python-requests
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eb2a2a4212e99403f581bda09fffc6b6eb8038e98ad0d2222c8f9bc9d4616bba')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9b7eb11cebb90594e98c743f4123deb59d3b7da67aeb3192e71c7ca3e60e4f16')
 
 package() {
-	install -Dm755 "SteamClip-$pkgver/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "SteamClip-${pkgver}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
