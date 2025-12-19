@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -18,12 +18,17 @@ depends=(
 makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=(
+  'dotool: For autopaste service'
   'wl-clipboard: Automatically paste emojis (Wayland)'
   'xdotool: Automatically paste emojis (X11)'
 )
 conflicts=("$pkgname-emoji-picker")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9edd8e54653e43b6a7eb7fc44721ce918a615082594bdff5204756e35d0c7512')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz"
+        'autopaste'
+        'autopaste.service')
+sha256sums=('a4e85c3af5783789498b1bf84211747a08299441305ac97d0210a754a55bd11e'
+            'bb7322edc8d03836f9d74db75406ea02de5642f22d01a47ef2c02dad768eae67'
+            '7d5faaba3616c6d1d3534b878309a109a887c75191b675c2c0122362c6a39364')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -45,6 +50,9 @@ check() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  install -Dm755 "$srcdir/autopaste" -t "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 "$srcdir/autopaste.service" -t "$pkgdir/usr/lib/systemd/user/"
 
   rm -v "$pkgdir/usr/share/icons/hicolor/scalable/actions/meson.build"
   rm -v "$pkgdir/usr/share/$pkgname/assets/meson.build"

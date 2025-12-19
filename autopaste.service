@@ -1,0 +1,12 @@
+[Unit]
+Description=Smile Autopaste Service
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/share/smile/autopaste
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

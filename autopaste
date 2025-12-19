@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Monitor D-Bus signals and trigger dotool command
+dbus-monitor --session "type='signal',interface='it.mijorus.smile',member='CopiedEmojiBroadcast',path='/it/mijorus/smile/actions'" | \
+while read -r line; do
+    if echo "$line" | grep -q "member=CopiedEmojiBroadcast"; then
+        if ! which dotool &> /dev/null; then
+            echo "Error: dotool is not installed or not in PATH" >&2
+            continue
+        fi
+
+        # Trigger the dotool command
+        echo 'key ctrl+v' | dotool
+    fi
+done
