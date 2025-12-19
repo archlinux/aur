@@ -24,9 +24,9 @@ source=(
   yourkit-yjp.desktop
   yourkit.sh
 )
-sha256sums_x86_64=('f5b852cb419da2ca5ddfb389a112b6ca7813ed8435627346da34b83dfeb32260')
+sha256sums_x86_64=('3c1e7600e76067cfc446666101db515a9a247d69333b7cba5dfb05cf40e5e1d9')
 sha256sums_i686=("${sha256sums_x86_64[@]}") # Same as sha256sums_x86_64
-sha256sums_aarch64=('3c86366cb48e062b5fc3ed156fe0d70b5fe6eff4de57cbffffea37f9086aeca9')
+sha256sums_aarch64=('207223848b5bdbce77769b095e2e8bcd1eed9e583eeac233d1f3fd755a46639e')
 sha256sums=('b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
             '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e')
 
