@@ -9,7 +9,7 @@ _pypi_name='twig'
 
 pkgname="${_pypi_name}"
 pkgver="${_upstreamver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Inspect, navigate, and understand complex JSON files in your terminal"
 
 license=('MIT')
@@ -28,6 +28,13 @@ depends=('python' 'python-textual' 'python-pyperclip' 'python-rich' 'python-ijso
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7ae0ede73646c1f04a6e077799503b6e28925e99481a040b02afdda7cae1efd1')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}/"
+
+    msg2 "Patching BUG 'https://github.com/workdone0/twig/issues/37'"
+    sed -i -e '324d' "./src/twg/ui/app.py"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"

@@ -1,7 +1,7 @@
 pkgbase = twig
 	pkgdesc = Inspect, navigate, and understand complex JSON files in your terminal
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/workdone0/twig
 	arch = any
 	license = MIT
