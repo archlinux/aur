@@ -1,31 +1,30 @@
-# Maintainer: Tomasz Bursztyka <tomasz dot bursztyka at proton dot me>
-
+# Maintainer: Jim Madge <jim+aur@jmadge.com>
+# Contributor: Tomasz Bursztyka <tomasz dot bursztyka at proton dot me>
+_name=scikit_fmm
 pkgname=python-scikit-fmm
-pkgver=2024.05.29
+pkgver=2025.6.23
 pkgrel=1
 pkgdesc="The fast marching method for Python"
 arch=("any")
-url="https://github.com/scikit-fmm/scikit-fmm"
+url="https://scikit-fmm.readthedocs.io"
 license=("BSD-3-Clause")
-depends=("python-numpy"
-	 "python-scipy")
-makedepends=("gcc"
-	     "meson-python"
-	     "python-build"
-	     "python-numpy1>=1.0.2"
-	     "python-wheel")
-source=("https://github.com/scikit-fmm/scikit-fmm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("9f6973d1bd1b90dcdef4f94339e52402dc1a3d843e46f6505444f1368982ebe2")
+depends=(
+    "python-numpy"
+)
+makedepends=(
+    "python-build"
+    "meson-python"
+)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=("a3208f5f3881e40b7878d1121ba39b8d57f1bc38fb4e5f0d9d1c66a9b007e44f")
 
 build() {
-	cd "scikit-fmm-${pkgver}"
-	python -m build --wheel --no-isolation --skip-dependency-check
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "scikit-fmm-${pkgver}"
-
+    cd $_name-$pkgver
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
