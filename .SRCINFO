@@ -1,7 +1,7 @@
 pkgbase = hdr-image-viewer-git
 	pkgdesc = An application for viewing HDR images with accurate color reproduction
 	pkgver = r23.e17681c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaron-rust/hdr-image-viewer
 	arch = x86_64
 	license = MIT
@@ -24,6 +24,6 @@ pkgbase = hdr-image-viewer-git
 	source = hdr-image-viewer::git+https://github.com/aaron-rust/hdr-image-viewer.git
 	source = hdr-image-viewer.desktop
 	sha256sums = SKIP
-	sha256sums = 2474e8984bdd5dcae12a8f1a89ba198e70ce4ae804708fee5413a910b702c313
+	sha256sums = 718d0de089c9668b74e5661bf3a0f180857a10055ccc7ddddc084f56790ee6fb
 
 pkgname = hdr-image-viewer-git
