@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-full-git
-pkgver=r1668.58b6b9d
+pkgver=r2134.2095ab6
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -8,6 +8,7 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 depends=(
 	"avahi"
+	"cairo"
 	"ffmpeg"
 	"gcc-libs"
 	"glib2"
@@ -16,12 +17,13 @@ depends=(
 	"ki18n"
 	"kiconthemes"
 	"kirigami"
+	"libarchive"
 	"libbsd"
-	"libcap"
-	"libglvnd"
+	"libgl"
 	"libnotify"
 	"libpipewire"
-	"libpulse"
+	"libpng"
+	"librsvg"
 	"libx11"
 	"libxcb"
 	"openssl"
@@ -43,6 +45,7 @@ makedepends=(
 	"git"
 	"glib2-devel"
 	"kcoreaddons"
+	"libdrm"
 	"librsvg"
 	"libxrandr"
 	"nlohmann-json"
@@ -56,6 +59,7 @@ optdepends=(
 provides=(
 	"wivrn-server"
 	"wivrn-dashboard"
+	"openxr-runtime"
 )
 conflicts=(
 	"wivrn-server"
@@ -78,6 +82,7 @@ build() {
 	-DWIVRN_BUILD_SERVER=ON \
 	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_DASHBOARD=ON \
+        -DWIVRN_OPENXR_MANIFEST_TYPE=relative \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
