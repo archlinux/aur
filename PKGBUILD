@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver-git
-pkgver=1.22.0.r0.g9e3d56d
+pkgver=1.28.0.r0.g33ea218
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=('intel-npu-driver')
 install=intel-npu-driver.install
 source=('git+https://github.com/intel/linux-npu-driver.git'
         'git+https://github.com/intel/level-zero-vpu-extensions.git'
-        'git+https://github.com/openvinotoolkit/vpux_plugin_elf.git'
+        'git+https://github.com/openvinotoolkit/npu_compiler_elf.git'
         'git+https://github.com/google/perfetto.git'
         '10-intel-npu.rules'
         '010-intel-npu-driver-rename-installed-binaries.patch'
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
-            'd4d808b4877732c1de98b687a6a0e19676c0191bcf8f81dc54c498d928b959dd'
+            '97dbb45e871d108a7996428963dda81546b8c26e698d54f4743b878ef9ea3408'
             '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
             'c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825'
             'a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25')
@@ -46,8 +46,8 @@ sha256sums=('SKIP'
 prepare() {
     git -C linux-npu-driver submodule init
     git -C linux-npu-driver config --local submodule.third_party/level-zero.update none
-    git -C linux-npu-driver config --local submodule.third_party/level-zero-npu-extensions.url "${srcdir}/level-zero-vpu-extensions"
-    git -C linux-npu-driver config --local submodule.third_party/vpux_elf.url "${srcdir}/vpux_plugin_elf"
+    git -C linux-npu-driver config --local submodule.third_party/level-zero-vpu-extensions.url "${srcdir}/level-zero-vpu-extensions"
+    git -C linux-npu-driver config --local submodule.third_party/npu_compiler_elf.url "${srcdir}/npu_compiler_elf"
     git -C linux-npu-driver config --local submodule.third_party/googletest.update none
     git -C linux-npu-driver config --local submodule.third_party/yaml-cpp.update none
     git -C linux-npu-driver config --local submodule.third_party/perfetto.url "${srcdir}/perfetto"
