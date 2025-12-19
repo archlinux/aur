@@ -4,7 +4,7 @@ _pkgname=pandoc-eisvogel-template
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=3.3.0+4.r326.20251214.1d03625
-pkgrel=1
+pkgrel=2
 pkgdesc="The 'eisvogel' LaTeX-template for pandoc. A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX. It is designed for lecture notes and exercises with a focus on computer science. The template is compatible with pandoc 2."
 arch=(any)
 url="https://github.com/Wandmalfarbe/pandoc-latex-template"
@@ -67,7 +67,7 @@ package() {
   for _docfile in CHANGELOG.md README.md icon.png icon.svg; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
-  for _docdir in docs examples tests; do
+  for _docdir in examples; do
     cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/"
   done
   chmod a+x "${pkgdir}/usr/share/doc/${_pkgname}/"/*/*.sh
