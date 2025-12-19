@@ -1,6 +1,6 @@
 pkgbase = phantom-wallet-bin
         pkgdesc = A crypto wallet reimagined for DeFi & NFTs
-        pkgver = 25.43.6
+        pkgver = 25.43.7
         pkgrel = 1
         url = https://phantom.com
         arch = x86_64
