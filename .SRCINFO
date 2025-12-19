@@ -1,7 +1,7 @@
 pkgbase = vipsdisp
 	pkgdesc = Tiny libvips / gtk+4 image viewer
-	pkgver = 4.1.2
-	pkgrel = 2
+	pkgver = 4.1.3
+	pkgrel = 1
 	url = https://github.com/jcupitt/vipsdisp
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = vipsdisp
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = libvips
-	source = vipsdisp-4.1.2.tar.xz::https://github.com/jcupitt/vipsdisp/releases/download/v4.1.2/vipsdisp-4.1.2.tar.xz
-	sha256sums = 1f9edf4cf7b3abcccbd7cb61e63b8d9c8397db689dd3c937048fea7ca56d7b0c
+	source = vipsdisp-4.1.3.tar.xz::https://github.com/jcupitt/vipsdisp/releases/download/v4.1.3/vipsdisp-4.1.3.tar.xz
+	sha256sums = 4e3dbd72f8f56e0216045ef36b5097d00b3d14f2608cf856f0ecbab3d4c44ba4
 
 pkgname = vipsdisp

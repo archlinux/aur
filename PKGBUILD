@@ -1,8 +1,8 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=vipsdisp
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="Tiny libvips / gtk+4 image viewer"
 arch=('x86_64')
 url="https://github.com/jcupitt/vipsdisp"
@@ -24,7 +24,7 @@ makedepends=(
   'glib2-devel'
 )
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('1f9edf4cf7b3abcccbd7cb61e63b8d9c8397db689dd3c937048fea7ca56d7b0c')
+sha256sums=('4e3dbd72f8f56e0216045ef36b5097d00b3d14f2608cf856f0ecbab3d4c44ba4')
 
 build() {
   meson setup build $pkgname-$pkgver --prefix=/usr
