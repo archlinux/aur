@@ -1,5 +1,5 @@
 pkgname=solflare-wallet-bin
-pkgver=2.18.3
+pkgver=2.18.4
 pkgrel=1
 pkgdesc="The most powerful wallet on Solana, trusted by 4M+ users managing 20B+ in assets."
 arch=('x86_64')
@@ -21,12 +21,12 @@ sha256sums=('1351a2b97d674426417858faec31b24d27b982e2243a6e90212ce16eea56ba17')
 install="${pkgname}.install"
 
 prepare() {
-    cd "$srcdir/Solflare.Wallet-2.18.1"
+    cd "$srcdir/Solflare Wallet-2.18.1"
     chmod +x "Solflare Wallet.AppImage"
 }
 
 package() {
-    cd "$srcdir/Solflare.Wallet-2.18.1"
+    cd "$srcdir/Solflare Wallet-2.18.1"
     
     install -Dm755 "Solflare Wallet.AppImage" "$pkgdir/opt/${pkgname}/${pkgname}.AppImage"
     
