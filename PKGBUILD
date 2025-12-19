@@ -8,8 +8,8 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=32.0.1.r0.g0b12296
-pkgrel=2
+pkgver=32.0.4.r25.g407944a
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
 license=("GPL-2.0-or-later")
@@ -99,11 +99,12 @@ _source_cef() {
     'nss'
   )
 
-  local _response _cef_dl_url _cef_hash _cef_filename
-  _response=$(curl -Ssf --follow --retry 3 "$url/raw/refs/heads/master/build-aux/modules/99-cef.json")
+  local _response _response_cef _cef_dl_url _cef_hash _cef_filename
+  _response=$(curl -Ssf --follow --retry 3 "$url/raw/refs/heads/master/build-aux/com.obsproject.Studio.json")
+  _response_cef=$(grep -E -e '^\s*"(url|sha256)":' <<< "$_response" | grep -A1 cef_binary)
 
-  _cef_dl_url=$(grep -Pom1 '"url": "\K[^"]+' <<< "$_response")
-  _cef_hash=$(grep -Pom1 '"sha256": "\K[0-9a-f]+' <<< "$_response")
+  _cef_dl_url=$(grep -Pom1 '"url": "\K[^"]+' <<< "$_response_cef")
+  _cef_hash=$(grep -Pom1 '"sha256": "\K[0-9a-f]+' <<< "$_response_cef")
   _cef_filename=$(basename "$_cef_dl_url")
   _cef_src=$(sed -E 's&(_v[0-9]+)?\..*$&&' <<< "$_cef_filename")
 
