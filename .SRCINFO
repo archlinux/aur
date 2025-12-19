@@ -1,6 +1,6 @@
 pkgbase = banana-coding-style-checker-bin
 	pkgdesc = Epitech banana coding style checker (binary from Ubuntu PPA)
-	pkgver = 20251209141556
+	pkgver = 20251218161450
 	pkgrel = 1
 	url = https://launchpad.net/~epitech/+archive/ubuntu/ppa
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = banana-coding-style-checker-bin
 	depends = clang20
 	provides = banana-coding-style-checker
 	conflicts = banana-coding-style-checker
-	source = banana-coding-style-checker-20251209141556.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/b/banana-coding-style-checker/banana-coding-style-checker_20251209141556_amd64.deb
-	sha256sums = efc7830614e5d87de04a14f9580488e48803aeca4541f572ceef62eecdcb4ceb
+	source = banana-coding-style-checker-20251218161450.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/b/banana-coding-style-checker/banana-coding-style-checker_20251218161450_amd64.deb
+	sha256sums = 9cdd7e4f02ff65dc4eac4f8f074bcc7b44b2240d698ca2c7845a2c15887ec31b
 
 pkgname = banana-coding-style-checker-bin
