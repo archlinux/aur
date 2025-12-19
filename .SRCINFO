@@ -1,0 +1,22 @@
+pkgbase = trifold-git
+	pkgdesc = A quick way to deploy static projects to a fast, cheap, and reliable CDN (development version)
+	pkgver = 0.4.3.r3.g034eb94
+	pkgrel = 1
+	url = https://codeberg.org/jpt/trifold
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-httpx
+	depends = python-typer
+	provides = trifold
+	provides = python-trifold
+	conflicts = trifold
+	conflicts = python-trifold
+	source = trifold::git+https://codeberg.org/jpt/trifold.git
+	sha256sums = SKIP
+
+pkgname = trifold-git
