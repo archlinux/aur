@@ -22,12 +22,15 @@ function download_git-lfs {
   local url="${1/git-lfs+/git+}" dir
   dir="$SRCDEST/$(get_filename "$url")"
   download_git "$url"
-  git -C "$dir" lfs install
+  git -C "$dir" lfs install --worktree
   git -C "$dir" lfs fetch
 }
 
 function extract_git-lfs {
-  local url=${1/git-lfs+/git+}
+  local url="${1/git-lfs+/git+}" dir
+  dir="$srcdir/$(get_filename "$url")"
   extract_git "$url"
+  git -C "$dir" lfs install --worktree
+  git -C "$dir" lfs pull
 }
 
