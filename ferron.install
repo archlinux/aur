@@ -1,15 +1,7 @@
-pre_install() {
-    if [ -f "/usr/bin/ferron" ] || [ -f "/usr/bin/ferron-updater" ]; then
-        echo "ERROR: Ferron is already installed on this system."
-        echo "Please uninstall the existing Ferron installation first."
-        return 1
-    fi
-}
-
 post_install() {
-    echo "Creating ferron user and group..."
+    echo "==> Creating ferron user and group..."
     systemd-sysusers
-    echo "Setting up directories and permissions..."
+    echo "==> Setting up directories and permissions..."
     systemd-tmpfiles --create
     chown -R ferron:ferron /var/log/ferron
     chown -R ferron:ferron /var/www/ferron
@@ -17,14 +9,6 @@ post_install() {
     find /var/log/ferron -type f -exec chmod 644 {} \;
     find /var/www/ferron -type d -exec chmod 755 {} \;
     find /var/www/ferron -type f -exec chmod 644 {} \;
-    restoreconutil=$(whereis -b -B $(echo $PATH | sed 's|:| |g') -f restorecon | awk '{ print $2}' | xargs)
-    if [ "$restoreconutil" != "" ]; then
-        echo "Fixing SELinux context..."
-        restorecon -r /usr/sbin/ferron{,-*} /usr/bin/ferron-updater /etc/ferron.yaml /var/www/ferron /var/log/ferron
-    fi
-    echo "Enabling ferron.service..."
-    systemctl daemon-reload
-    systemctl enable ferron.service
     echo "==> Ferron is now installed. Start it with: systemctl start ferron"
 }
 
@@ -36,17 +20,33 @@ post_upgrade() {
     find /var/log/ferron -type f -exec chmod 644 {} \;
     find /var/www/ferron -type d -exec chmod 755 {} \;
     find /var/www/ferron -type f -exec chmod 644 {} \;
+    if [ -f /etc/ferron.yaml ] && [ ! -f /etc/ferron.kdl ]; then
+        if command -v ferron-yaml2kdl >/dev/null 2>&1; then
+            echo "==> Detected legacy /etc/ferron.yaml"
+            echo "==> Converting to /etc/ferron.kdl..."
+
+            if ferron-yaml2kdl /etc/ferron.yaml > /etc/ferron.kdl; then
+                cp -a /etc/ferron.yaml /etc/ferron.yaml.bak
+                echo "==> Conversion successful."
+                echo "==> Backup saved as /etc/ferron.yaml.bak"
+            else
+                echo "==> WARNING: Conversion failed."
+                echo "==> Please convert manually using ferron-yaml2kdl."
+            fi
+        else
+            echo "==> WARNING: ferron-yaml2kdl not found."
+            echo "==> Cannot auto-convert ferron.yaml."
+        fi
+    fi
     if systemctl is-active --quiet ferron; then
-        echo "Restarting ferron.service..."
-        systemctl restart ferron
+        echo "==> Ferron is still running, please restart it ASAP to apply updates"
     fi
 }
 
 post_remove() {
-    systemctl disable --now ferron.service
     echo "==> Ferron configuration and data directories are preserved."
     echo "==> Remove them manually if they are no longer needed:"
-    echo "==> /etc/ferron.yaml"
-    echo "==> /var/www/ferron"
-    echo "==> /var/log/ferron"
+    echo "    /etc/ferron.kdl"
+    echo "    /var/www/ferron"
+    echo "    /var/log/ferron"
 }
