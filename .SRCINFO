@@ -1,7 +1,7 @@
 pkgbase = python-piou-git
 	pkgdesc = A CLI tool to build rich text command-line interfaces with type validation (development version)
-	pkgver = 0.18.0.r0.g982260d
-	pkgrel = 2
+	pkgver = 0.22.0.r0.g3c6c768
+	pkgrel = 1
 	url = https://github.com/Andarius/piou
 	arch = any
 	license = MIT
@@ -9,9 +9,8 @@ pkgbase = python-piou-git
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-poetry
 	makedepends = python-wheel
-	depends = python>=3.9
+	depends = python>=3.10
 	depends = python-rich
 	depends = python-typing_extensions
 	provides = python-piou

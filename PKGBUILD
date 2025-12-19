@@ -6,8 +6,8 @@ pkgname='python-piou-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.18.0.r0.g982260d
-pkgrel=2
+pkgver=0.22.0.r0.g3c6c768
+pkgrel=1
 pkgdesc='A CLI tool to build rich text command-line interfaces with type validation (development version)'
 arch=('any')
 url="https://github.com/Andarius/$_srcname"
@@ -17,11 +17,11 @@ makedepends=(
   'python-build'
   'python-hatchling'
   'python-installer'
-  'python-poetry'
+  #'python-poetry'
   'python-wheel'
 )
 depends=(
-  'python>=3.9'
+  'python>=3.10'
   'python-rich'
   'python-typing_extensions'
 )
@@ -54,6 +54,10 @@ package() {
     examples/*.py
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -vsrf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
