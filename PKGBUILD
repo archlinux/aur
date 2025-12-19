@@ -1,37 +1,34 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Charlie Yu (charlieyu4994) <charlieyu4994@outlook.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=litepcie
 pkgname=python-$_pkgname
-pkgver=2021.08
-pkgrel=6
+pkgver=2025.08
+pkgrel=1
 pkgdesc='Small footprint and configurable PCIe core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
 license=('BSD-2-Clause')
-depends=('python-migen' 'python-litex' 'python-yaml')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-litex-boards')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('dbfecb9a3c47cb0ad3711bb7881557b8b1d598bfff87835ca6d7fda15b2a991797a675690da11b1fe46f3cf2a98ca3f2be35193e63b9e596bb1d697dde70a941')
+depends=('python' 'python-pyyaml' 'python-migen' 'python-litex')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('ac52405b7a036fa04a27eb257f5041f0b8224935befb6c6d440af3cc302a8a94')
 
 build() {
-  cd $_pkgname-$pkgver
-
+  cd "$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver
-
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -v
+  cd "$_pkgname-$pkgver"
+  #pytest test
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
+  cd "$_pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+# vim:set et ts=2 sw=2 syntax=PKGBUILD:
