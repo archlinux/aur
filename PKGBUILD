@@ -1,6 +1,6 @@
-# Maintainer: MCB-SMART-BOY <your-email@example.com>
+# Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('gridix')
 source=("https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gridix-linux-x86_64.tar.gz"
         "gridix.desktop"
         "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/master/LICENSE")
-sha256sums=('35b516e172d2093988108057520fe5eb5b896f68454460af1c3b2d4f06c9192e'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
