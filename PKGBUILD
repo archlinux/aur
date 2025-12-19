@@ -1,7 +1,7 @@
 # Maintainer: Ignacio Gonsalves <inscientebberman at tutanota dot com>
 pkgname=gnu-slash-grub-git
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=3
 pkgdesc='Fix GRUB boot menu nonsense'
 arch=('any')
 url='https://codeberg.org/midnightmaniac/gnu-slash-grub'
