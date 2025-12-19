@@ -1,6 +1,7 @@
 # Maintainer: nVjhNFGQWoBQEthk
 
-pkgname=epy-ereader-mcepl
+_pkgname=epy-ereader
+pkgname=$_pkgname-mcepl
 _pkgname_short=epy
 pkgver=2025.5.27
 pkgrel=1
@@ -11,7 +12,7 @@ arch=(x86_64)
 depends=(python python-imghdr)
 makedepends=(git python-build python-installer python-poetry python-wheel python-setuptools)
 provides=(epy)
-conflicts=($pkgname-git epy)
+conflicts=($_pkgname $_pkgname-git $pkgname-git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=(c338a6bbc251e46648c2ce26a895004c04ed1163df793ea74d7a0579fee51c70)
 

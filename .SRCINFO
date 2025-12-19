@@ -14,8 +14,9 @@ pkgbase = epy-ereader-mcepl
 	depends = python
 	depends = python-imghdr
 	provides = epy
+	conflicts = epy-ereader
+	conflicts = epy-ereader-git
 	conflicts = epy-ereader-mcepl-git
-	conflicts = epy
 	source = epy-ereader-mcepl-2025.5.27.tar.gz::https://git.sr.ht/~mcepl/epy/archive/v2025.5.27.tar.gz
 	sha256sums = c338a6bbc251e46648c2ce26a895004c04ed1163df793ea74d7a0579fee51c70
 
