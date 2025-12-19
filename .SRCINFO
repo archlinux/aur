@@ -1,7 +1,7 @@
 pkgbase = debhelper
 	pkgdesc = Programs to automate common tasks in debian/rules when building Debian packages
-	pkgver = 13.28
-	pkgrel = 2
+	pkgver = 13.29
+	pkgrel = 1
 	url = https://salsa.debian.org/debian/debhelper
 	arch = any
 	license = GPL-2.0-or-later
@@ -10,9 +10,9 @@ pkgbase = debhelper
 	depends = dpkg
 	depends = perl-pod-parser
 	optdepends = dh-make: convert source archives into Debian package source
-	source = debhelper::git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.28
+	source = debhelper::git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.29
 	source = strip-nondeterminism::git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git
-	sha256sums = bceb828f78479fc038124946f24829603d976cf10788b523f4b1674d3915df23
+	sha256sums = b9cbedda1d2e202b8883251daf0479b7a89dcd7d4837533bf5a9ef9745382bb4
 	sha256sums = SKIP
 
 pkgname = debhelper
