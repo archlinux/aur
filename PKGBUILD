@@ -6,7 +6,7 @@ _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
 epoch=1
-pkgver=12.1.0 # renovate: datasource=github-tags depName=Kong/insomnia extractVersion=^core@(?<version>(?:[^2].*|2(?:$|[^0].*)|20(?:$|[^2].*)|202(?:$|[^0-3].*|[0-3](?:$|[^.].*))))
+pkgver=12.2.0 # renovate: datasource=github-tags depName=Kong/insomnia extractVersion=^core@(?<version>(?:[^2].*|2(?:$|[^0].*)|20(?:$|[^2].*)|202(?:$|[^0-3].*|[0-3](?:$|[^.].*))))
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -21,7 +21,7 @@ source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.desktop"
 				"disable_verify_bundle_plugins.patch"
         "electron_target.patch")
-b2sums=('291c63b3549ac92fe417b80ba54aac9b4e8b750c5f8419f38e3d755e23738888705ba03b37bf4c9f6db17e49a1ccb3644bd060d46f3cc61e7017a7b3dbaf6a30'
+b2sums=('6eaf1fa99c9dc93e66db10d173d80914fdab35ef0daa9d67d8f50155626e9ffbf1f9de2006ed9a003cd080d2c462c13e2f695e4c1b10427f7618b8265812c341'
         '6fa7a0c1709a354a8d189b477f170bc04721a6236e7ffbd3eedb252e5b7c00da38619b958253c7f3a244c02fcbeafc9431779978b10de4ed308ed8c825e9e410'
         'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c'
         'b095c6b47d62670cb70c8bfb3ed7d605472522581b0a8a16ea2d3159bf4d44c57ae1347f98bdbc2ff1749f22f792b72cb965e9ade60aad8eb3bff06cf4db65ec'
