@@ -1,5 +1,5 @@
-pkgbase = neovim-git
-	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs.
+pkgbase = neovim-zig-git
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig
 	pkgver = 0.12.0.r2529.g5f22cf5af3
 	pkgrel = 1
 	url = https://neovim.io
@@ -21,9 +21,10 @@ pkgbase = neovim-git
 	provides = neovim=0.12.0.r2529.g5f22cf5af3
 	provides = vim-plugin-runtime
 	conflicts = neovim
+	conflicts = neovim-git
 	options = !strip
 	backup = etc/xdg/nvim/sysinit.vim
-	source = git+file:///home/chinmay/code/codebases/neovim.git
+	source = git+https://github.com/neovim/neovim
 	source = nvimdoc
 	source = nvimdoc.hook
 	sha512sums = SKIP
@@ -33,4 +34,4 @@ pkgbase = neovim-git
 	b2sums = d31cf81659e238fada8092755eb9be16f77c00a466107eb5770c6c9c32e043c91e6efada7ddb51663716a0e38ffa6e3d0093b3e6833aa961d845c7451a95491e
 	b2sums = 26588b9da6459393076723bdfb8d2b16fed882070f2326bf7c35cd272dee9c18df603afb1ae2254cd0a59eff68189caf04828ef165d5de42c7a4222267604101
 
-pkgname = neovim-git
+pkgname = neovim-zig-git

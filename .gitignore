@@ -1,0 +1,4 @@
+*.tar.zst
+/neovim/
+/pkg/
+/src/

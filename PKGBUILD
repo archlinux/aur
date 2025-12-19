@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034
-# Maintainer: Chinmay Dalal
+# Maintainer: Chinmay Dalal <dalal DOT chinmay DOT 0101 AT gmail DOT com>
 # Contributor: A Farzat <a@farzat.xyz>
 # Contributor: éclairevoyant
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
@@ -10,10 +10,10 @@
 # Contributor: Gregory Anders <aur@gpanders.com>
 
 declare srcdir pkgdir
-pkgname=neovim-git
+pkgname=neovim-zig-git
 pkgver=0.12.0.r2529.g5f22cf5af3
 pkgrel=1
-pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
+pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
@@ -28,9 +28,9 @@ optdepends=(
     'wl-clipboard: for clipboard support on wayland (see :help clipboard)'
 )
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
-conflicts=('neovim')
+conflicts=('neovim' 'neovim-git')
 source=(
-    "git+file:///home/chinmay/code/codebases/neovim.git"
+    "git+https://github.com/neovim/neovim"
     nvimdoc{,.hook}
 )
 sha512sums=('SKIP'
@@ -67,6 +67,7 @@ package() {
     pushd . >/dev/null
     cd "${srcdir}/neovim" || exit 1
     zig build install --prefix "${pkgdir}/usr" -Doptimize=ReleaseFast -Dcpu=native
+    rm "${pkgdir}/usr/bin/nlua0"
 
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
