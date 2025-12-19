@@ -2,8 +2,8 @@
 # Contributor: evan <mail@evangoo.de>
 _pkgname=drasl
 pkgname="${_pkgname}"
-pkgver=3.3.0
-pkgrel=4
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Yggdrasil-compatible API server for Minecraft"
 arch=('x86_64' 'aarch64')
 url="https://github.com/unmojang/drasl"
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+https://github.com/unmojang/drasl.git#tag=v${pkgver}"
 )
-sha256sums=('cc70e0d0ec9d2e982c08012b537dbc94857a53514e5e99b66a76c476c152e371')
+sha256sums=('af73d57558df7032c936ce9577b6ed13ffd5709edd118c8436257b004799c8c2')
 
 #function pkgver() {
 #	cd "${srcdir}/${_pkgname}"
@@ -24,9 +24,10 @@ sha256sums=('cc70e0d0ec9d2e982c08012b537dbc94857a53514e5e99b66a76c476c152e371')
 function prepare() {
 	cd "${srcdir}/${_pkgname}"
 	git reset --hard
-	git clean -f
-	git revert --no-commit 99a021bde97e7863c4830923edfd92d647c1f0f7
-	git cherry-pick --no-commit 52a7df7a1b5bc7f75232b06802cb5c2d8089a3a3
+	git clean -fdx
+	git remote add oidcfix https://github.com/evan-goode/drasl.git
+	git fetch --all
+	git cherry-pick 1a41da8f07c2c04d9d789bec5225c899c8f15946 --no-commit
 }
 
 function build() {
