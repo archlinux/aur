@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.17.4
+pkgver=1.17.5
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('11f9de497091aad7e86a1961641b1b82f04c8e0f57a67f488d9ba3fb0a4dc3d7'
+sha256sums=('8284323843f71b55aa30918cc39286a7a033d9d6a0f742d71d7555929fdc7f3d'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             '82fdfb8518905269d5fa7131f9645deb9e01aa602c13d2089be6bb3d7bbf4e39')
 

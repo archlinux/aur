@@ -1,6 +1,6 @@
 pkgbase = session-desktop
 	pkgdesc = A Decentralized, Onion Routed, Private Messenger
-	pkgver = 1.17.4
+	pkgver = 1.17.5
 	pkgrel = 1
 	url = https://getsession.org
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = session-desktop
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = python
-	source = session-desktop-1.17.4.tar.gz::https://github.com/session-foundation/session-desktop/archive/v1.17.4.tar.gz
+	source = session-desktop-1.17.5.tar.gz::https://github.com/session-foundation/session-desktop/archive/v1.17.5.tar.gz
 	source = session-desktop.desktop
 	source = session-desktop.sh
-	sha256sums = 11f9de497091aad7e86a1961641b1b82f04c8e0f57a67f488d9ba3fb0a4dc3d7
+	sha256sums = 8284323843f71b55aa30918cc39286a7a033d9d6a0f742d71d7555929fdc7f3d
 	sha256sums = 267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c
 	sha256sums = 82fdfb8518905269d5fa7131f9645deb9e01aa602c13d2089be6bb3d7bbf4e39
 
