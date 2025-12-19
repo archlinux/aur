@@ -1,0 +1,19 @@
+pkgbase = gsai-git
+	pkgdesc = Sign Arch Isos (for Secure Boot) - git checkout
+	pkgver = r11.bcea30c
+	pkgrel = 1
+	url = https://github.com/cvlc12/gsai
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libisoburn
+	depends = mtools
+	optdepends = sudo: for running commands as root when needed
+	optdepends = doas: alternative to sudo for privilege escalation
+	optdepends = polkit: to use run0 for privilege escalation
+	provides = gsai=r11.bcea30c
+	conflicts = gsai
+	source = git+https://github.com/cvlc12/gsai.git
+	sha256sums = SKIP
+
+pkgname = gsai-git
