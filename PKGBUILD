@@ -6,9 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2025.4.0
-pkgrel=2
-_commit=7a975177ff432c687e5619e8fb22e4bf265e48b7
+pkgver=2025.4.1
+pkgrel=1
+_commit=82bbf0292c5bd490bc25a383e63d6461d3ee05c5
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -57,7 +57,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch')
-sha256sums=('ffe6ab46ee35fa8bb7b1f5b4c55647df51171527ccd48cb284061fd75ef50606'
+sha256sums=('bdd6b8c7f36bd72886d5ea69676f4bc5bcbc04ce6aa310710d4f1e0cbff3af53'
             'SKIP'
             'SKIP'
             'SKIP'
