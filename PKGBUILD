@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=fUnitRoots
-_pkgver=4040.81
+_pkgver=4052.82
 pkgname=r-${_pkgname,,}
-pkgver=4040.81
+pkgver=4052.82
 pkgrel=1
 pkgdesc='Rmetrics - Modelling Trends and Unit Roots'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('543f1635bbff745e350aefa77ae4c1e0f2aec69988d4226d54eee389f197105d')
+sha256sums=('3396605942327d5410e35fcb98aeeed01ea2d8f0dbf61bc5bf16f68547e77335')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
