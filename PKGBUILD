@@ -1,17 +1,19 @@
-# Maintainer: Sebastian Frysztak <sebastian@frysztak.dev>
+# Maintainer: Dan <aur at drmoose dot net>
+# Based on openscad-git, which listed the following contributors:
+# Contributor: Sebastian Frysztak <sebastian@frysztak.dev>
 # Contributor: Haoyang Liu <tttturtleruss@gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Torsten Wagner <tottiwagner@yahoo.de>
 
-pkgname=openscad-git
+pkgname=pythonscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11829.7962867
+pkgver=r12464.4ed26e2
 pkgrel=1
-pkgdesc="The programmers solid 3D CAD modeller"
+pkgdesc="Fork of OpenSCAD allowing models to be written in Python"
 arch=('x86_64')
 license=('GPL2')
-url='https://github.com/openscad/openscad'
+url='https://github.com/pythonscad/pythonscad'
 provides=("$_pkg")
 conflicts=("$_pkg")
 depends=(
@@ -33,8 +35,9 @@ depends=(
     'mpfr'
     'tbb'
     'lib3mf'
+    'python'
 )
-makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'ninja' 'bison' 'flex')
+makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'ninja' 'bison' 'flex')
 source=("$_pkg::git+$url.git")
 sha256sums=('SKIP')
 
@@ -68,10 +71,9 @@ build() {
 		-DUSE_QT6=ON \
 		-DENABLE_TESTS=OFF \
 		-DUSE_BUILTIN_OPENCSG=ON \
+		-DENABLE_PYTHON=ON \
 		-Wno-dev
 	cmake --build build --parallel $(expr $(nproc) / 2)
-	cd "$_pkg/resources/icons/"
-	convert openscad.png -resize 128x128\> openscad-128.png
 }
 
 check() {
@@ -82,9 +84,16 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+	# the pythonscad fork leaves the original openscad manpage intact
+	man1="$pkgdir/usr/share/man/man1"
+	mv "$man1"/{open,python}scad.1
+	sed -i 's/openscad/pythonscad/g;s/OPENSCAD/PYTHONSCAD/g;/graphical program/s/OpenSCAD/PythonSCAD/' "$man1"/*.1
+
 	cd "$_pkg"
-	install -Dm644 "resources/icons/openscad.desktop" "$pkgdir/usr/share/applications/openscad.desktop"
-	install -Dm644 "resources/icons/openscad-128.png" "$pkgdir/usr/share/pixmaps/openscad.png"
+	install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "resources/icons/$_pkg.desktop" "$pkgdir/usr/share/applications/$_pkg.desktop"
+	install -Dm644 "resources/icons/${_pkg}-128.png" "$pkgdir/usr/share/pixmaps/$_pkg.png"
 }
 
 
