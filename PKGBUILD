@@ -11,7 +11,6 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'kconfigwidgets'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/l0drex/wallpaper_splitter/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b1970b27ab4aafc16fd13de53299e7b07ae15f6ff96e40464f868af464e607ec')
