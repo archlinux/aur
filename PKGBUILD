@@ -1,6 +1,6 @@
-# Maintainer: MCB-SMART-BOY <your-email@example.com>
+# Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix-appimage
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位 (AppImage)"
 arch=('x86_64')
@@ -11,9 +11,8 @@ provides=('gridix')
 conflicts=('gridix' 'gridix-bin')
 options=('!strip')
 source=("gridix-${pkgver}.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gridix.AppImage"
-        "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
-sha256sums=('bfaf3198f595478519443156639eecd061a4cf0907449dcd01155971d7563d35'
-            'SKIP')
+        "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/master/LICENSE")
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     chmod +x "gridix-${pkgver}.AppImage"
