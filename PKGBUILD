@@ -1,10 +1,10 @@
-# Maintainer: Solavoy <solavoy at qq dot com>
+# Maintainer: misaka10987 <misaka10987@outlook.com>
 
 _pkgname=splayer
 _Pkgname=SPlayer
 
 pkgname=splayer-appimage
-pkgver=3.0.0_beta.3
+pkgver=3.0.0_beta.7
 pkgrel=1
 pkgdesc="🎉 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${_Pkgname}.AppImage::${url}/releases/download/v${pkgver//_/-}/splayer-${pkgver//_/-}-x86_64.AppImage"
 )
 sha256sums=(
-    "3e408974f96ac89e6e9dcc0bd7b1b07010ec7fb14182d95dbe6da5030c0e87f4"
+    "0f564f9481839adb75ece2a391cbb1ad9928cbd0a451a3c1bf1293e10967f96f"
 )
 
 _appimage="${_Pkgname}.AppImage"
