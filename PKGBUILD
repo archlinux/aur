@@ -12,13 +12,13 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 pkgver=0.12.0.r2529.g5f22cf5af3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-makedepends=('git' 'zig>=0.15.2' 'unzip')
+makedepends=('git' 'zig>=0.15.2')
 optdepends=(
     'python-pynvim: for Python plugin support (see :help python)'
     'tree-sitter-bash: tree-sitter parser for bash'
