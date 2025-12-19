@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HDR Image Viewer
+GenericName=Image Viewer
+Icon=hdr-image-viewer
+Comment=An application for viewing HDR images with accurate color reproduction
+Exec=hdr-image-viewer %U
+Type=Application
+Categories=Qt;Graphics;Viewer;Photography;Utility
+MimeType=image/avif;image/png;image/heic;image/jpeg;image/jxl;image/png;image/tiff;
