@@ -16,7 +16,7 @@ options=(!strip)
 source=("https://github.com/DevelPhantom/wallet/releases/download/phantom/Phantom.Wallet-25.43.2.tar.gz")
 
 
-sha256sums=('df3c2011918e747bbc3bc66fc7c5e312a16dbe732d821a2b64ac2d012d1f2ce0')
+sha256sums=('543a0a5e1696c8d3775ba267f4ad0099f5451a1fb26bcdddc8201d5b5c604009')
 
 install="${pkgname}.install"
 
