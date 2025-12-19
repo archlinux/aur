@@ -16,8 +16,8 @@ url="https://github.com/mattkeenan/zenpower5"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-provides=('zenpower5' 'zenpower5-dkms')
-conflicts=('zenpower5' 'zenpower5-dkms')
+provides=('zenpower' 'zenpower5' 'zenpower5-dkms')
+conflicts=('zenpower' 'zenpower3' 'zenpower5' 'zenpower' 'zenpower3-dkms' 'zenpower5-dkms')
 install=$_pkgname.install
 source=("git+https://github.com/mattkeenan/zenpower5.git"
         "$_pkgname.conf")
