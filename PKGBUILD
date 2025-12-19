@@ -4,12 +4,12 @@
 _pkgname=litex
 pkgname=python-$_pkgname
 pkgver=2025.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
 url='https://github.com/enjoy-digital/litex'
 license=('BSD-2-Clause')
-depends=('python-migen' 'python-pyserial' 'python-requests' 'python-pythondata-software-compiler_rt')
+depends=('python-migen' 'python-pyserial' 'python-requests' 'python-packaging' 'python-pythondata-software-compiler_rt')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")

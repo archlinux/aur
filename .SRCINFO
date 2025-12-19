@@ -1,7 +1,7 @@
 pkgbase = python-litex
 	pkgdesc = Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs
 	pkgver = 2025.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litex
 	arch = any
 	license = BSD-2-Clause
