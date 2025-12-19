@@ -1,8 +1,8 @@
 # Maintainer: Robert Greener <dev at r0bert dot dev>
 
 pkgname=libpamtpmpin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="PAM module for TPM2 PIN authentication"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xr0bert/libpamtpmpin"
@@ -11,7 +11,7 @@ depends=('pam' 'tpm2-tss')
 makedepends=('cargo')
 checkdepends=('swtpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0xr0bert/libpamtpmpin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8adad5e1aeef91a9c1fc56a98bb3fabeaceca1c1525cc50950cc15265a62a28a')
+sha256sums=('49c0f55a3cee37c2ecf0e07fee09cc33d765bb45eafaa71df80a42cf02ea40e9')
 options=('!strip' '!debug')
 
 prepare() {
