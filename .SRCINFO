@@ -1,7 +1,7 @@
 pkgbase = vinyl
 	pkgdesc = Vinyl Theme for KDE Plasma 6
 	pkgver = 6.5.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/ekaaty/vinyl-theme
 	arch = x86_64
 	arch = aarch64
