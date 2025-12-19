@@ -2,7 +2,7 @@
 
 _npmname=graphite-cli
 pkgname=$_npmname
-pkgver=1.6.8
+pkgver=1.7.13
 pkgrel=1
 
 pkgdesc="Graphite helps you create smaller pull requests, stay unblocked, and ship faster."
@@ -19,7 +19,7 @@ changelog="changelog.md"
 
 source=("https://registry.npmjs.org/@withgraphite/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('91efd6d63a952d82b279b684ff7a4dcb12a90d1bc62040d8fe2e9358a9c2720031af8dbd0cc49af515aede60780e9eaae0d0f4fe0f47f5a36e01b5429480cdc1')
+b2sums=('d84dc682181724aef7862186c9c406cc1d41a5fd0bc0bf7d922951194fedaf286413075dd2045628f20c75ab08b8c54a626915c07bbd8ca59bedc5e7f1e404b4')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
