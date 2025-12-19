@@ -5,6 +5,7 @@ pkgbase = lbrowser-v3
 	url = https://www.loongnix.cn/zh/api/lbrowser/
 	arch = x86_64
 	arch = loongarch64
+	arch = loong64
 	license = unknown
 	depends = gtk2
 	depends = libxcrypt-compat
