@@ -1,7 +1,8 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=galene
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
 url='https://galene.org'
@@ -53,6 +54,7 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   install -m755 "_build/galene" "${pkgdir}/usr/bin"
+  install -m755 "_build/galenectl" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
@@ -60,7 +62,7 @@ package() {
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
   pandoc --from=markdown --to html --standalone --metadata title="Galène" README > "${doc}/README.html"
-  for file in README.FRONTEND README.PROTOCOL; do
+  for file in README.API README.FRONTEND README.PROTOCOL; do
     pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
   done
 

@@ -1,7 +1,7 @@
 pkgbase = galene
 	pkgdesc = A videoconferencing server
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://galene.org
 	install = galene.install
 	arch = x86_64
