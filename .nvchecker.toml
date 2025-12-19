@@ -1,0 +1,4 @@
+[mozillavpn]
+source = 'regex'
+url = 'https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages'
+regex = 'mozillavpn - ([\d.]+)'
