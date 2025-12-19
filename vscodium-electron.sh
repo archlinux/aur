@@ -38,7 +38,7 @@ fi
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
     unset DISPLAY
-    exec electron@electronversion@ "${_APPDIR}/out/cli.js" --enable-features=UseOzonePlatform --ozone-platform=wayland "${_APPDIR}/@appname@.js" "$@"
+    exec electron@electronversion@ "${_APPDIR}/out/cli.js" --enable-features=UseOzonePlatform --ozone-platform=wayland "${_APPDIR}/@appname@.js" "${flags[@]}" "$@"
 else
-    ELECTRON_RUN_AS_NODE=1 exec electron@electronversion@ "${_APPDIR}/out/cli.js" "${_APPDIR}/@appname@.js" "$@"
+    ELECTRON_RUN_AS_NODE=1 exec electron@electronversion@ "${_APPDIR}/out/cli.js" "${_APPDIR}/@appname@.js" "${flags[@]}" "$@"
 fi

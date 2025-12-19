@@ -1,7 +1,7 @@
 pkgbase = vscodium-electron-bin
 	pkgdesc = VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)
 	pkgver = 1.106.37943
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vscodium.com/
 	arch = aarch64
 	arch = armv7h
@@ -28,7 +28,7 @@ pkgbase = vscodium-electron-bin
 	source = vscodium-electron.sh
 	sha256sums = ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057
 	sha256sums = 7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf
-	sha256sums = e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207
+	sha256sums = c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f
 	source_aarch64 = vscodium-electron-1.106.37943-aarch64.rpm::https://github.com/VSCodium/vscodium/releases/download/1.106.37943/codium-1.106.37943-el8.aarch64.rpm
 	sha256sums_aarch64 = 871bd810aee4ba1e4de0d60388dc0e83180624d4a3c9eb4c30aacf48bd0a8b45
 	source_armv7h = vscodium-electron-1.106.37943-armv7h.rpm::https://github.com/VSCodium/vscodium/releases/download/1.106.37943/codium-1.106.37943-el8.armv7hl.rpm
