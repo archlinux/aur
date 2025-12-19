@@ -1,6 +1,6 @@
 pkgbase = python-asgi-middleware-static-file
 	pkgdesc = ASGI Middleware for serving static file.
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/rexzhang/asgi-middleware-static-file
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = python-asgi-middleware-static-file
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-aiofiles
-	source = asgi-middleware-static-file-0.6.2.tar.gz::https://github.com/rexzhang/asgi-middleware-static-file/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = c43e6799944ac53234f5d29303da42e3dacc47eb6912464c270643e06435a5e4
+	depends = python-asgiref
+	source = asgi-middleware-static-file-0.7.0.tar.gz::https://github.com/rexzhang/asgi-middleware-static-file/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 92d9cbaa6cb994029493abd10155bb69ba0214831861313d5a0f81474518f753
 
 pkgname = python-asgi-middleware-static-file
