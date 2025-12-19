@@ -1,7 +1,7 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Official Docker Compose build; docker compose version shows the real version.
 	pkgver = 5.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/docker/compose
 	arch = x86_64
 	license = MIT
