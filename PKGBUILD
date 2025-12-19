@@ -14,7 +14,7 @@ pkgname=(exim-heavy
          exim-lookup-pgsql)
 pkgname=exim-heavy
 pkgver=4.99.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
@@ -120,14 +120,14 @@ package_exim-lookup-mysql() {
   depends=(${pkgbase} 'libmariadbclient')
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd build-Linux-*
-  install -Dm0755 lookups/mysql.so "$pkgdir"/usr/lib/exim/lookups/mysql.so
+  install -Dm0755 lookups/mysql.so "$pkgdir"/usr/lib/exim/lookups/mysql_lookup.so
 }
 
 package_exim-lookup-passwd() {
   depends=(${pkgbase})
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd build-Linux-*
-  install -Dm0755 lookups/passwd.so "$pkgdir"/usr/lib/exim/lookups/passwd.so
+  install -Dm0755 lookups/passwd.so "$pkgdir"/usr/lib/exim/lookups/passwd_lookup.so
 }
 
 package_exim-lookup-pgsql() {
@@ -135,7 +135,7 @@ package_exim-lookup-pgsql() {
   replaces=('exim-pgsql')
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd build-Linux-*
-  install -Dm0755 lookups/pgsql.so "$pkgdir"/usr/lib/exim/lookups/pgsql.so
+  install -Dm0755 lookups/pgsql.so "$pkgdir"/usr/lib/exim/lookups/pgsql_lookup.so
 }
 
 # Local Variables:
