@@ -1,8 +1,8 @@
 pkgbase = sieveman
 	pkgdesc = Universal ManageSieve protocol client.
 	pkgver = 0.3.1
-	pkgrel = 2
-	url = https://github.com/wzykubek/sieveman
+	pkgrel = 3
+	url = https://codeberg.org/wzykubek/sieveman
 	arch = x86_64
 	arch = i686
 	arch = pentium4
@@ -13,7 +13,7 @@ pkgbase = sieveman
 	license = ISC
 	makedepends = go>=1.23.5
 	depends = glibc
-	source = sieveman-0.3.1.tar.gz::https://github.com/wzykubek/sieveman/archive/v0.3.1.tar.gz
-	sha256sums = b24d3c631ac32f8f81fe192e18b642105e8a219531d97193f825a8f2d42c12c7
+	source = sieveman-0.3.1.tar.gz::https://codeberg.org/wzykubek/sieveman/archive/v0.3.1.tar.gz
+	sha256sums = 0e5719d80168a3f4747d1473d189d106ae93c64c403f6d64026bfa60c9c971fa
 
 pkgname = sieveman
