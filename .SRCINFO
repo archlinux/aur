@@ -1,17 +1,19 @@
 pkgbase = feluda
 	pkgdesc = Detect license usage restrictions in your project
 	pkgver = 1.10.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/anistark/feluda
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = feluda-1.10.3.tar.gz::https://github.com/anistark/feluda/archive/v1.10.3.tar.gz
-	sha256sums = c78b3511e09ea3681eeaac5bf84a128dfcea594d0af4d4b2ea8cbd6ae3ece74c
+	source = feluda::git+https://github.com/anistark/feluda#commit=4b55730?signed
+	validpgpkeys = 40B91E0A4E89F8434EA16C9E9864F6B815BC2B00
+	sha256sums = 1e02ac671f0ba4ab7e28a0c1bac0a6e5e1f4a5258cd20a80f57bdab74667504e
 
 pkgname = feluda
