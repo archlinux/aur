@@ -1,0 +1,5 @@
+[pycharm]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products/releases?code=PC&latest=true&type=release'
+encoding = 'utf8'
+regex = 'pycharm-([\d.]+).tar.gz'
