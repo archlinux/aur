@@ -1,15 +1,15 @@
-# Maintainer: MCB-SMART-BOY <your-email@example.com>
+# Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位"
 arch=('x86_64')
 url="https://github.com/MCB-SMART-BOY/Gridix"
 license=('MIT')
 depends=('gtk3' 'xdotool')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'clang' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MCB-SMART-BOY/Gridix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('138e349be5cd8f8afbaa63e9a86747ba7850445ce7dac47fdd7868a420767597')
+sha256sums=('SKIP')
 
 prepare() {
     cd "Gridix-$pkgver"

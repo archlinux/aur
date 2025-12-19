@@ -1,15 +1,17 @@
 pkgbase = gridix
 	pkgdesc = 简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Gridix
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
+	makedepends = pkgconf
 	depends = gtk3
 	depends = xdotool
-	source = gridix-0.5.1.tar.gz::https://github.com/MCB-SMART-BOY/Gridix/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 138e349be5cd8f8afbaa63e9a86747ba7850445ce7dac47fdd7868a420767597
+	source = gridix-0.5.2.tar.gz::https://github.com/MCB-SMART-BOY/Gridix/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = gridix
