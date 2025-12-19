@@ -1,14 +1,20 @@
 pkgbase = python-liteeth
 	pkgdesc = Small footprint and configurable Ethernet core
-	pkgver = 2021.08
-	pkgrel = 3
+	pkgver = 2025.08
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/liteeth
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyyaml
 	depends = python-migen
 	depends = python-litex
-	source = python-liteeth-2021.08.tar.gz::https://github.com/enjoy-digital/liteeth/archive/2021.08.tar.gz
-	sha512sums = 800364f2ba4a264b660e4e563d2bd1b1c3054f6f3dd9916ca7b97b38ecde0b80bd840188415a00a8aa8e34270d8d41c6edf9ed42b5efbb50e25507e609b6b750
+	source = python-liteeth-2025.08.tar.gz::https://github.com/enjoy-digital/liteeth/archive/refs/tags/2025.08.tar.gz
+	sha256sums = b2085b9b0ad2808c07ac8d52e4777ff1217d4c7d67994153e58cfd2991dbd107
 
 pkgname = python-liteeth
