@@ -1,6 +1,6 @@
 pkgbase = carapace-bridge-bin
 	pkgdesc = A multi-shell completion bridge
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/carapace-sh/carapace-bridge
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = carapace-bridge-bin
 	provides = carapace-bridge
 	arch = aarch64
 	source_aarch64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v${pkgver}/carapace-bridge_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7ee9113982e98a1414d476e46d1598683340d03230fed7f2f907a67e8011ea9f
+	sha256sums_aarch64 = 8ea7f672e894c8eb628c747c44ddebe7fef49cd60a4db3c5f62e0e916466563d
 	arch = i686
 	source_i686 = https://github.com/carapace-sh/carapace-bridge/releases/download/v${pkgver}/carapace-bridge_${pkgver}_linux_386.tar.gz
-	sha256sums_i686 = 71c44411dd762809700f11fe573bd4ecc5e253a98041b32771f22d7602564e80
+	sha256sums_i686 = 027939603a969e6551c301913a4b30327a196756776e5f023b8aed6cd9801db4
 	arch = x86_64
 	source_x86_64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v${pkgver}/carapace-bridge_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = d6f299fc21aa339a76204b60e15da53d1052b8a449e0d9f41568c3c080b99b86
+	sha256sums_x86_64 = 31c12cf8ad5f33f95a5ca22f9efab0701bfb06aa7ec7618c1c2dc4f7c6efd8af
 	
 pkgname = carapace-bridge-bin
