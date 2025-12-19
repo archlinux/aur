@@ -1,11 +1,11 @@
 pkgbase = try-rs-bin
 	pkgdesc = try-rs CLI tool (binário pré-compilado)
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/tassiovirginio/try-rs
 	arch = x86_64
 	license = MIT
-	source = try-rs-x86_64-unknown-linux-gnu.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v0.1.3/try-rs-x86_64-unknown-linux-gnu.tar.gz
+	source = try-rs-x86_64-unknown-linux-gnu.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v0.1.5/try-rs-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = try-rs-bin
