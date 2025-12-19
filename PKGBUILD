@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver=153
+pkgver=154.2
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -29,8 +29,8 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  'aad8a07a27dc3e91dc1aff01fadefefda0fb3b8a431069d69798122af91ce714'
-  'd70e227aab93f9321997038fb19b10b8ee5d44405384513bde047c1d5a14ac48'
+  '565f9b134dd726854905b2327ad76eb8b3845a6cee917fc88a35a5def88f0b7a'
+  'f01d0a0a60bbaaeb74190055e2a019c652791978a18686edfde6ab47c382fc82'
 )
 
 prepare() {
