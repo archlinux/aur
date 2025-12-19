@@ -10,7 +10,7 @@
 # shellcheck disable=2034
 declare srcdir pkgdir
 pkgname=neovim-git
-pkgver=0.12.0.r471.gb77666e6f9
+pkgver=0.12.0.r1848.g8a94daf80e
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -98,7 +98,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
   install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
-  pushd .
+  pushd . >/dev/null
   cd "${srcdir}/neovim" || exit 1
   DESTDIR="$pkgdir" cmake --install build
 
@@ -106,7 +106,7 @@ package() {
   install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
   install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
   install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
-  popd || exit 1
+  popd >/dev/null
 
   # Make Arch Vim packages work
   mkdir -p "${pkgdir}"/etc/xdg/nvim
