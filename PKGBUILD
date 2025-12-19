@@ -14,7 +14,7 @@ conflicts=('igop')
 replaces=('igop')
 makedepends=('go')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0d16c4dcbb3aa88855b0df0968426e74e1aed5595e707e3d7099ce9435cb50fc')
 
 prepare() {

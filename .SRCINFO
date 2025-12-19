@@ -10,7 +10,7 @@ pkgbase = ixgo
 	provides = ixgo
 	conflicts = igop
 	replaces = igop
-	source = https://github.com/goplus/ixgo/archive/refs/tags/v0.60.1.tar.gz
+	source = ixgo-0.60.1.tgz::https://github.com/goplus/ixgo/archive/refs/tags/v0.60.1.tar.gz
 	sha256sums = 0d16c4dcbb3aa88855b0df0968426e74e1aed5595e707e3d7099ce9435cb50fc
 
 pkgname = ixgo
