@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-fast-dds
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="eProsima's Fast-DDS implementation"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'e915cc267f656303dc275ae62841d19cff091cf357695c46918d344680f15627'
+	'aa81801c1e14af71acd2bf897dd351e66d4dfaac15751c074c715779252aebbb'
 )
 validpgpkeys=()
 
