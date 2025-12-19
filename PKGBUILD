@@ -12,7 +12,7 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.9
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -38,7 +38,6 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         'git+https://github.com/onnx/onnx-tensorrt.git'
         'git+https://github.com/onnx/onnx.git'
         'git+https://github.com/pybind/pybind11.git'
-        'git+https://github.com/google/benchmark.git'
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
@@ -46,7 +45,6 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
 sha256sums=('c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6'
             '0c976d276abfde1b5de2b341907b696bc670c6235a2f04ed478e8a508f2b2fe9'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -73,7 +71,6 @@ prepare() {
     # onnx git submodules
     git -C TensorRT/parsers/onnx/third_party/onnx submodule init
     git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/pybind11.url  "${srcdir}/pybind11"
-    git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/benchmark.url "${srcdir}/benchmark"
     git -C TensorRT/parsers/onnx/third_party/onnx -c protocol.file.allow='always' submodule update
     
     git -C pybind11 config --local advice.detachedHead false
