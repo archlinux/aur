@@ -1,6 +1,6 @@
 # Maintainer: Christopher Dorrell <dorrellkc@gmail.com>
 pkgname=tux-assistant
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK4/Libadwaita Linux system configuration tool - simplifies post-installation setup"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 install=tux-assistant.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dorrellkc/Tux-Assistant/archive/refs/tags/v$pkgver.tar.gz"
         "tux-assistant.install")
-sha256sums=('d323e6a12fef30f08b055f2c2e64f033b5caa251e0476e3f1114b9e023374d44'
+sha256sums=('00fc1b9854257d1f1cdd73606104c84a7cf4b417f7708d66270642b6fc3e7f86'
             'SKIP')
 
 package() {
