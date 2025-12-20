@@ -1,6 +1,6 @@
 pkgbase = python-asteval
 	pkgdesc = Minimalistic evaluator of python expression using ast module
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/lmfit/asteval
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-asteval
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-numpy
-	source = asteval::git+https://github.com/lmfit/asteval#tag=1.0.7
-	b2sums = 9d51df1a722b8fc4c30d9ef271757df9fdadf15a20ecc36c5f1c112bd6d8214d108f479b07f50004b4ac48326531b4012ba2a348a39c3ecd7aff8f520416f3ba
+	source = asteval::git+https://github.com/lmfit/asteval#tag=1.0.8
+	b2sums = 909926f9e6e2f7cb507c13b0fdf4c8a05ac9704215db0bf830e3fed4bf8cf8688b5477ccafee2aa6f42f3fbab4554ef6144707220eb933397ad1a2bfaf119cc9
 
 pkgname = python-asteval
