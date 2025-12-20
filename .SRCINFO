@@ -1,6 +1,6 @@
 pkgbase = noutube-bin
 	pkgdesc = YouTube and YouTube Music in a single app. No ads.
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/nonbili/NouTube-Desktop
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = noutube-bin
 	depends = nss
 	provides = noutube
 	conflicts = noutube
-	noextract = noutube-linux-unpacked-0.1.13.zip
-	source = noutube-linux-unpacked-0.1.13.zip::https://github.com/nonbili/NouTube-Desktop/releases/download/v0.1.13/linux-unpacked.zip
+	noextract = noutube-linux-unpacked-0.1.14.zip
+	source = noutube-linux-unpacked-0.1.14.zip::https://github.com/nonbili/NouTube-Desktop/releases/download/v0.1.14/linux-unpacked.zip
 	source = NouTube.desktop
-	sha256sums = 6a5cf8d5573ae9a3cbecdb5cbd9a11585d691a0198b05f51c938ed9c3eb893ac
+	sha256sums = b44974468ba1b6d85a7c97fcf0c36f71bcfa37862eb106a9fbc40ad3efd01fbb
 	sha256sums = cad129d2c27f89ddc6af0a63cb2e8257dda4185ccf5c9cfa083e8ebca073aed8
 
 pkgname = noutube-bin
