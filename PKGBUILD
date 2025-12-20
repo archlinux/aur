@@ -2,7 +2,7 @@
 
 pkgname=fussr
 pkgver=0.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
@@ -16,6 +16,8 @@ sha256sums=('SKIP')
 build() {
     cd fussr
     export CARGO_TARGET_DIR=target
+    # Force completely clean build - remove any cached artifacts
+    rm -rf target
     # Ensure vendored builds don't try to use system libraries
     unset LIBSSH2_SYS_USE_PKG_CONFIG
     unset LIBGIT2_NO_VENDOR
