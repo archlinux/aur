@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
 pkgver=0.4.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -17,6 +17,7 @@ makedepends=(
     'clang'
     'cmake'
     'pkgconf'
+    'shaderc'
     'vulkan-headers'
 )
 optdepends=(
@@ -31,7 +32,7 @@ optdepends=(
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
-sha256sums=('7dc29d030b3c9ce40c1a50336c7f4d28f427b3b1b8b3154702d5b8049d37aaf2')
+sha256sums=('0935b4d987d123574b52a69f74f33d194ea1ce6fdd978e3ae5e17453b6fe28fd')
 
 prepare() {
     cd "$pkgname-$pkgver-$pkgrel"
@@ -68,13 +69,22 @@ build() {
     unset CXXFLAGS
     unset LDFLAGS
 
+    # Limit parallelism to prevent cmake deadlocks during whisper-rs build
+    export CMAKE_BUILD_PARALLEL_LEVEL=4
+    export MAKEFLAGS="-j4"
+
     # Build native CPU binary (optimized for the user's machine)
-    cargo build --frozen --release
+    # Disable LTO to prevent linking hangs (Cargo.toml has lto=true)
+    cargo build --frozen --release \
+        --config 'profile.release.lto=false' \
+        --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-cpu
 
     # Build Vulkan GPU binary (for GPU acceleration)
     cargo clean
-    cargo build --frozen --release --features gpu-vulkan
+    cargo build --frozen --release --features gpu-vulkan \
+        --config 'profile.release.lto=false' \
+        --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-vulkan
 }
 
