@@ -1,0 +1,20 @@
+pkgbase = rmpc-auto-theme-git
+	pkgdesc = Dynamic theme generator for rmpc music player using K-means color extraction
+	pkgver = r22.e0f6399
+	pkgrel = 1
+	url = https://github.com/animegolem/RMPC-Auto-Theme
+	install = rmpc-auto-theme.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	source = git+https://github.com/animegolem/RMPC-Auto-Theme.git
+	sha256sums = SKIP
+
+pkgname = rmpc-auto-theme-git

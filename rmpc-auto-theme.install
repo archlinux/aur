@@ -1,0 +1,10 @@
+post_install() {
+    echo "To integrate RMPC-Auto-Theme into your rmpc, add the following to your config.ron:"
+    echo "# ~/.config/rmpc/config.ron"
+    echo "("
+    echo "  theme: \"current-song\","
+    echo "  enable_config_hot_reload: true,"
+    echo "  on_song_change: [\"/usr/share/rmpc-auto-theme/on_song_change.sh\"],"
+    echo "  ..."
+    echo ")"
+}
