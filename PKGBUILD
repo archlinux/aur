@@ -3,11 +3,11 @@
 pkgname=thorvg-git
 pkgbase=thorvg-git
 _pkgname=thorvg
-pkgver=r3511.3e337083
-pkgrel=5
-pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
-arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
+pkgver=r4245.c498989b7
+pkgrel=1
+pkgdesc="lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 url="https://www.thorvg.org/"
+arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 license=('MIT')
 depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11')
 makedepends=('meson' 'ninja')
@@ -29,7 +29,6 @@ prepare() {
       -Dsavers=all \
       -Dbindings="capi,wasm_beta" \
       -Dtools=all \
-      -Dexamples=true \
       --reconfigure
 }
 
