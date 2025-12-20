@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.4.0'
+_upstreamver='0.4.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='gundog'
@@ -27,9 +27,9 @@ depends=('uvicorn' 'python' 'python-rich' 'python-urllib3' 'python-requests' 'py
 source=("${_url_github}/releases/download/v${pkgver}/${pkgname}-${pkgver}-py3-none-any.whl"
         "${_url_github}/releases/download/v${pkgver}/${pkgname}_core-${pkgver}-py3-none-any.whl"
         "${_url_github}/releases/download/v${pkgver}/${pkgname}_client-${pkgver}-py3-none-any.whl")
-sha256sums=('4b80524565d5cd76feca25874c0701e36388b3ebb5cb75293e3c5eb027f98bb1'
-            '9cbb730512130447c9a356fd2991fdc5009544d0a93a09179b9ee7498b835833'
-            'd617330fee57a8883aecd9cfeda88e56cde87597411322c01b005cd8e444fd91')
+sha256sums=('a29e7f86f544d19a0210fca7dea5ea57dc762586fbe2d79aa464c66876397603'
+            '76859faba53d540e4e7755ed82a7fe1e52d8a16e9fce3dfefc750e0bfa8f8746'
+            '429b78f4a9cfa2c97ff580440332bf1077dea8f4ed42f0b1663fd5c53517a6ed')
 
 
 package() {
