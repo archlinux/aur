@@ -2,7 +2,7 @@
 # Maintainer: NovaDragon <me@novadragon.space>
 
 pkgname=gdscript-formatter-bin
-pkgver=0.18.0
+pkgver=0.18.2
 pkgrel=1
 pkgdesc=" A fast code formatter for GDScript and Godot 4, written in Rust "
 arch=(x86_64)
@@ -14,7 +14,7 @@ options=('!strip')
 source=(
 "https://github.com/GDQuest/GDScript-formatter/releases/download/$pkgver/gdscript-formatter-$pkgver-linux-x86_64.zip"
 "https://raw.githubusercontent.com/GDQuest/GDScript-formatter/refs/tags/$pkgver/LICENSE")
-sha256sums=('bb41fb577356daeb89a007a6b58f7bec03e51b17a64637f7820a5398fb9525d1'
+sha256sums=('77a5a0f3f3317b00ae2817c5f6c7461b8f597faec19e04fdc308191d43f5f2a8'
 'dfbd41d6f39efbc96ca870f74f341f10ad44c1d66feca2049629917d19c2251c')
 
 package() {
