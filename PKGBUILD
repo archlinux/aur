@@ -7,8 +7,8 @@ pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
 license=('MIT')
-depends=('git')
-makedepends=('rust' 'cargo')
+depends=('git' 'libgit2' 'openssl')
+makedepends=('rust' 'cargo' 'libgit2' 'openssl' 'pkg-config')
 provides=('fussr')
 source=("git+https://github.com/tenseleyFlow/fussr.git#tag=v$pkgver")
 sha256sums=('SKIP')
