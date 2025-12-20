@@ -1,6 +1,6 @@
 pkgbase = shelldio
 	pkgdesc = KISS Shell Radio (Greek) for your terminal
-	pkgver = v25.06.132
+	pkgver = 25.12.20
 	pkgrel = 1
 	url = https://github.com/CerebruxCode/Shelldio
 	install = shelldio.install
@@ -10,7 +10,7 @@ pkgbase = shelldio
 	depends = curl
 	depends = jq
 	depends = socat
-	source = shelldio-v25.06.132.tar.gz::https://github.com/CerebruxCode/shelldio/archive/vv25.06.132.tar.gz
+	source = shelldio-25.12.20.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v25.12.20.tar.gz
 	md5sums = SKIP
 
 pkgname = shelldio
