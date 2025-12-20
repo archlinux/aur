@@ -1,7 +1,7 @@
 # Maintainer: Václav Šmejkal <engo@satan.red>
 pkgname=why2
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, fast, secure, and easy to use encryption system."
 arch=('x86_64' 'aarch64')
 url="https://git.satan.red/ENGO150/WHY2.git"
@@ -15,8 +15,8 @@ options=('!debug')
 
 build() {
   cd "WHY2"
-  cargo build --bin why2 --features client --release --locked
-  cargo build --bin why2-server --features server --release --locked
+  cargo build --release
+  cargo build --bin why2-server --no-default-features --features server --release
 }
 
 package() {
