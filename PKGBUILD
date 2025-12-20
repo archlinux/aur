@@ -3,8 +3,8 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.1.55
-pkgrel=2
+pkgver=0.1.56
+pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
 license=("GPL-2.0-only")
