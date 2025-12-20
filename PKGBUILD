@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.25.7
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$srcdir/OpenModelica"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -DBLA_VENDOR=Generic -B build .
   make -C build
 }
 
@@ -32,4 +32,6 @@ package() {
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
+  rm -r "${pkgdir}"/usr/share/cmake
+  rm -r "${pkgdir}"/home
 }
