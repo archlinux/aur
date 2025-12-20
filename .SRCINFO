@@ -1,0 +1,19 @@
+pkgbase = pttr-bin
+	pkgdesc = pttr is command line software that allows you to quickly run various transformation operations on the string.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/abhimanyu003/pttr
+	license = MIT
+	conflicts = pttr
+	provides = pttr
+	arch = aarch64
+	source_aarch64 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7785d524982e954e8ae4a96ff03ab3b62fdf65fec403d200d3e464aa79e815fb
+	arch = i686
+	source_i686 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_i386.tar.gz
+	sha256sums_i686 = 1b3f419cf5ab87092e71caecd0e7bad7be3ecf7d90d9ba83a098089fb0173dc6
+	arch = x86_64
+	source_x86_64 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 295355eb012597d9c47d527f595a313c39df07a5121b4dc0c6cd245152d17965
+	
+pkgname = pttr-bin
