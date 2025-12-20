@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fussr
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
@@ -16,9 +16,6 @@ sha256sums=('SKIP')
 build() {
     cd fussr
     export CARGO_TARGET_DIR=target
-    # Force using system libgit2 via pkg-config
-    export LIBGIT2_SYS_USE_PKG_CONFIG=1
-    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo build --release --locked
 }
 
