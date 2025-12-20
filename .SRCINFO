@@ -1,14 +1,12 @@
-pkgbase = vopk-git
-	pkgdesc = VOPK — unified cross-distro package frontend (tracking main branch)
+pkgbase = vopk
+	pkgdesc = VOPK — unified cross-distro package frontend
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/gpteamofficial/vopk
 	arch = any
 	license = GPL-3.0-only
 	depends = bash
-	provides = vopk
-	conflicts = vopk
 	source = vopk::https://raw.githubusercontent.com/gpteamofficial/vopk/main/bin/vopk
 	sha256sums = 106659b7de80068c9be80e61ed2272261e19755355bad34ab549dd023a80c688
 
-pkgname = vopk-git
+pkgname = vopk
