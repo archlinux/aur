@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="84"
 _suffix=""
-pkgver="8.4.7"
+pkgver="8.4.16"
 pkgbase_rc=""
 pkgrel="1"
 pkgbase="php84"
-pkgdesc="PHP 8.4.7 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.4.16 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -207,20 +207,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "openssl"
 )
 _ext_depends_intl=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "icu"
 )
 _ext_depends_imap=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "pam"
     "krb5"
     "c-client"
@@ -228,45 +228,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "gd"
 )
 _ext_depends_mysql=(
-    "php84=8.4.7"
-    "php84-pdo=8.4.7"
-    "php84-openssl=8.4.7"
+    "php84=8.4.16"
+    "php84-pdo=8.4.16"
+    "php84-openssl=8.4.16"
 )
 _ext_depends_dba=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "unixodbc"
-    "php84-pdo=8.4.7"
+    "php84-pdo=8.4.16"
 )
 _ext_depends_pgsql=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "postgresql-libs"
-    "php84-pdo=8.4.7"
+    "php84-pdo=8.4.16"
 )
 _ext_depends_firebird=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "libfbclient"
-    "php84-pdo=8.4.7"
+    "php84-pdo=8.4.16"
 )
 _ext_depends_sqlite=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "sqlite"
-    "php84-pdo=8.4.7"
+    "php84-pdo=8.4.16"
 )
 _ext_depends_mbstring=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php84=8.4.7"
+    "php84=8.4.16"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -495,7 +495,7 @@ _build_sapi() {
 ################################################################################
 build() {
     if ((_phpbase <= 80)); then
-        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CFLAGS="${CFLAGS} -fPIC -std=gnu89 -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
         export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
     else
         export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
@@ -1474,7 +1474,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            'e29f4c23be2816ed005aa3f06bbb8eae0f22cc133863862e893515fc841e65e3'
+            'f66f8f48db34e9e29f7bfd6901178e9cf4a1b163e6e497716dfcb8f88bcfae30'
             '6f674d415bf54d60a2ee3bdeadd43e8e754fb2ec8b13476f9a8d0faa67011103'
             'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
