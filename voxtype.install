@@ -1,11 +1,3 @@
-_setup_binary() {
-    # Create symlink to the native CPU binary
-    # The binary is built natively and optimized for the user's CPU
-    rm -f /usr/bin/voxtype
-    ln -sf /usr/lib/voxtype/voxtype-avx2 /usr/bin/voxtype
-    echo "    CPU backend: native (voxtype-avx2)"
-}
-
 _detect_gpu() {
     # Detect GPU for Vulkan acceleration recommendation
     GPU_DETECTED=""
@@ -39,7 +31,6 @@ post_install() {
     echo "==> Voxtype Post-installation Steps:"
     echo ""
 
-    _setup_binary
     _detect_gpu
 
     echo ""
@@ -62,17 +53,11 @@ post_upgrade() {
     echo "==> Voxtype upgraded"
     echo ""
 
-    _setup_binary
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.1-2:"
-    echo "      - Simplified AUR build (native compilation)"
-    echo "      - Fixed build errors on various Rust/clang toolchains"
+    echo "    New in 0.4.1-3:"
+    echo "      - Simplified binary naming (voxtype + voxtype-vulkan)"
+    echo "      - Native compilation for your CPU"
     echo ""
-}
-
-pre_remove() {
-    # Remove the symlink before package removal
-    rm -f /usr/bin/voxtype
 }
