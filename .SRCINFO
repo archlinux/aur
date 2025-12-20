@@ -1,6 +1,6 @@
 pkgbase = aur-check-updates-bin
 	pkgdesc = A very basic CLI app for checking updates from AUR (binary release)
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/HanabishiRecca/aur-check-updates
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = aur-check-updates-bin
 	provides = aur-check-updates
 	conflicts = aur-check-updates
 	options = !strip
-	source = https://github.com/HanabishiRecca/aur-check-updates/releases/download/1.1.7/aur-check-updates-1.1.7-archlinux-x86_64.tar.xz
-	sha256sums = f0266a01842b7fdce4e1c22f6997499be8e091278d2d08b7fa6b5ca34a6e1fa9
+	source = https://github.com/HanabishiRecca/aur-check-updates/releases/download/1.1.8/aur-check-updates-1.1.8-archlinux-x86_64.tar.xz
+	sha256sums = 416b48bc3923bf42daf6c2a963cd9d2a8a9e0aa7af182b17517b2ffeac62e913
 
 pkgname = aur-check-updates-bin
