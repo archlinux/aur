@@ -1,0 +1,11 @@
+post_install() {
+    for bin in /usr/bin/zenmonitor /usr/bin/zenmonitor-cli; do
+        if [[ -f "$bin" ]]; then
+            setcap cap_sys_rawio,cap_dac_read_search+ep "$bin"
+        fi
+    done
+}
+
+post_upgrade() {
+  post_install
+}
