@@ -1,6 +1,6 @@
 pkgbase = usergrant-git
 	pkgdesc = Temporarily grant ACLs and environment to a secondary user for the duration of a command
-	pkgver = 0.0.1.r2.8561346
+	pkgver = 0.0.1.r3.89a0b27
 	pkgrel = 1
 	url = https://github.com/pyamsoft/usergrant.git
 	arch = any
@@ -11,6 +11,9 @@ pkgbase = usergrant-git
 	depends = xorg-server-xwayland
 	depends = wayland
 	depends = xorg-xhost
+	depends = coreutils
+	depends = grep
+	depends = awk
 	provides = usergrant
 	conflicts = usergrant
 	source = usergrant::git+https://github.com/pyamsoft/usergrant.git#branch=main
