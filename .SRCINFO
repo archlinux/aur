@@ -1,11 +1,10 @@
 pkgbase = opsec
-	pkgdesc = Privacy and security toolkit with Cloudflare WARP VPN integration, Java malware scanner, password fortifier, and metadata anonymizer
-	pkgver = 1.0.0
+	pkgdesc = Privacy and security toolkit with Cloudflare WARP VPN, Java malware scanner, session checker, and password fortifier for Minecraft client users
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/yokai123debug/opsec
 	arch = x86_64
 	license = MIT
-	makedepends = pyinstaller
 	depends = python
 	depends = python-pyqt5
 	depends = python-pyqt5-webengine
@@ -14,7 +13,7 @@ pkgbase = opsec
 	depends = python-requests
 	depends = qt5-webengine
 	optdepends = cloudflare-warp-bin: Required for WARP VPN feature
-	source = opsec-1.0.0.tar.gz::https://github.com/yokai123debug/opsec/archive/v1.0.0.tar.gz
+	source = opsec-1.1.0.tar.gz::https://github.com/yokai123debug/opsec/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = opsec
