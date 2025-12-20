@@ -3,10 +3,12 @@
 
 pkgname=fdserver-git
 _pkgname=fdserver
-pkgver=r25.6d75263
+pkgver=r36.841c1cc
+#r36.841c1cc
+#r25.6d75263
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day - Multi-user Server for clients using the fdlogger package - GIT version"
-license=(GPL)
+license=('GPL-3.0-only')
 arch=(any)
 url="https://github.com/mbridak/$_pkgname"
 depends=('python' 'python-xmltodict' 'python-requests' 'sqlite' 'hamradio-menus' 'fdlogger')
