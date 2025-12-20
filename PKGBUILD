@@ -1,14 +1,14 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fussr
-pkgver=0.2.9
-pkgrel=3
+pkgver=0.2.10
+pkgrel=1
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
 license=('MIT')
-depends=('git')
-makedepends=('rust' 'cargo' 'cmake' 'pkg-config')
+depends=('git' 'libgit2' 'libssh2')
+makedepends=('rust' 'cargo' 'pkg-config')
 provides=('fussr')
 source=("git+https://github.com/tenseleyFlow/fussr.git#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -16,13 +16,6 @@ sha256sums=('SKIP')
 build() {
     cd fussr
     export CARGO_TARGET_DIR=target
-    # Force completely clean build - remove any cached artifacts
-    rm -rf target
-    # Ensure vendored builds don't try to use system libraries
-    unset LIBSSH2_SYS_USE_PKG_CONFIG
-    unset LIBGIT2_NO_VENDOR
-    # Disable incremental compilation for clean build
-    export CARGO_INCREMENTAL=0
     cargo build --release
 }
 
