@@ -31,11 +31,11 @@ options=('!strip')
 source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}"
         "fix.patch")
 sha512sums=('febfadfae1e0ed324196575bf5b2dd9760235b2036aab502e60763a5cd62faea09ee6d3880b14a3eab69d054fb29c1867ba78b67a2e504042ddf6f65d498dbf7'
-            '27ba5020f1cca58ed584347907bd1ed8e4456490c0923df257b45929612c1ad0ef7614ee6d04e818fc8d4118da6c3df46979c97979701d462dac37927dccb562')
+            '1376150a4b4310d7b4ac65f82f91d0e06c0588540d21634fe8f03bb0655a932a2defcc632cc19409f8175982620f08d3982d9986ac09b87e5b72703817314277')
 
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "${_whl}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action --no-deps "${_whl}"
 
   python -O -m compileall "${pkgdir}"
 
@@ -43,5 +43,5 @@ package() {
 
   patch -p1 < "${srcdir}/fix.patch"
 
-# find ./ -name '__pycache__' -type d -exec rm -rf {} +
+  # find ./ -name '__pycache__' -type d -exec rm -rf {} +
 }

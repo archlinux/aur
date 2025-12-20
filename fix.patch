@@ -18,7 +18,7 @@
          if self.scan_info:
              scan_info_dict = scan_info_to_dict(self.scan_info)
 -            log_record = log_data.log_record
-+            log_record=log_record.log_record,
++            log_record = log_record.log_record,
              mut_attrs = dict(log_record.attributes)  # type: ignore
              for k, v in scan_info_dict.items():
                  mut_attrs[k] = v
