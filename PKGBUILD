@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -29,8 +29,8 @@ source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-arc
 sha256sums=("62071f7141c3b7c3f6921faf797049ccc84dd7afff78e947347f02133b97c129")
 
 build() {
-    tar -xvzf v$pkgver.tar.gz
-    cd "hnefatafl-$pkgver"
+    tar -xvzf v$pkgver-arch.tar.gz
+    cd "hnefatafl-$pkgver-arch"
 
     cargo build --release --features client --no-default-features
 
