@@ -6,7 +6,7 @@ _root_dir=/opt/barmer-ecare
 
 pkgname="barmer-ecare-bin"
 pkgver=25.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER'
 arch=('x86_64')
 url='https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418'
@@ -41,6 +41,7 @@ depends=(
     mesa
     nspr
     nss
+    electron
 )
 
 makedepends=('squashfs-tools' 'jq' 'curl' 'gendesk' 'patchelf' 'asar' 'modclean' 'imagemagick')
