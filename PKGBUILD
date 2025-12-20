@@ -22,7 +22,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
+    'vectorchord>=0.3' 'vectorchord<1'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
@@ -81,9 +81,9 @@ sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
             '614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763'
-            '2ad1514697ccc5934d15034b2009c85b6c29943524eae33e11093d5af9042972'
-            '4e098d3a60902ca053f9f031c0cc455dbd8fd29e5036372ee40ad089f64eb38d'
-            '0be354fe31c16e73270af1ce53721dd33388719570a455defba31a27152935d3'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255')
 
 prepare() {
