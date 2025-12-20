@@ -2,7 +2,7 @@
 pkgname=try-rs-bin
 pkgver=0.1.7
 pkgrel=1
-pkgdesc="try-rs is a CLI tool designed to manage the chaos of temporary projects, organizes them into date-prefixed directories, offering a robust TUI (Terminal User Interface) to create, navigate, and clean up your experiments."
+pkgdesc="try-rs is a CLI tool designed to manage the chaos of temporary projects, organizes them into date-prefixed directories, offering a robust TUI."
 arch=('x86_64')
 url="https://github.com/tassiovirginio/try-rs"
 license=('MIT') 
