@@ -1,16 +1,16 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=ferp
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='A GNU grep clone written in Fortran'
 arch=('x86_64' 'aarch64')
 url='https://github.com/FortranGoingOnForty/ferp'
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'pcre2')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortranGoingOnForty/ferp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3febe342413219b7100ef82c5b75b9a88316dcd7aef738d02143639405ef23fe')
+sha256sums=('c40e7670c8ac7631c921e47fb304ba383d567046803d40bfe008506f31f0f255')
 
 build() {
     cd "$pkgname-$pkgver"
