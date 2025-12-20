@@ -1,15 +1,15 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=fake-battery-nut-dkms
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Kernel module to expose NUT UPS data as Linux power_supply devices for btop/KDE"
+pkgdesc="Bridge NUT UPS data to UPower/desktop - makes any UPS look like a laptop battery"
 arch=('x86_64')
 url="https://github.com/aaronsb/fake-battery-nut"
 license=('GPL2')
 depends=('dkms' 'nut' 'bc')
 makedepends=('linux-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aaronsb/fake-battery-nut/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('520073e7247173aba8b294a6646dde99e9431be55f02ab400b15099fae173ccd')
 
 package() {
     cd "$srcdir/fake-battery-nut-${pkgver}"

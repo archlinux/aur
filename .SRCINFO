@@ -1,6 +1,6 @@
 pkgbase = fake-battery-nut-dkms
-	pkgdesc = Kernel module to expose NUT UPS data as Linux power_supply devices for btop/KDE
-	pkgver = 1.0.0
+	pkgdesc = Bridge NUT UPS data to UPower/desktop - makes any UPS look like a laptop battery
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/aaronsb/fake-battery-nut
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fake-battery-nut-dkms
 	depends = dkms
 	depends = nut
 	depends = bc
-	source = fake-battery-nut-dkms-1.0.0.tar.gz::https://github.com/aaronsb/fake-battery-nut/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = fake-battery-nut-dkms-1.1.0.tar.gz::https://github.com/aaronsb/fake-battery-nut/archive/v1.1.0.tar.gz
+	sha256sums = 520073e7247173aba8b294a6646dde99e9431be55f02ab400b15099fae173ccd
 
 pkgname = fake-battery-nut-dkms
