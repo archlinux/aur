@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-rife-ncnn-vulkan
 	pkgdesc = Plugin for Vapoursynth: Real-Time Intermediate Flow Estimation for Video Frame Interpolation
 	pkgver = 9_mod_v33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = vapoursynth-plugin-rife-ncnn-vulkan
 	depends = ncnn
 	depends = vapoursynth
 	optdepends = vapoursynth-plugin-vmaf: Skip interpolating static frames
-	provides = vapoursynth-plugin-rife-ncnn-vulkan
-	conflicts = vapoursynth-plugin-rife-ncnn-vulkan
 	source = rife-ncnn-vulkan::git+https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan.git#tag=r9_mod_v33
-	sha256sums = SKIP
+	source = drop_shader_pack8.patch
+	sha256sums = 97c37b497b14eae43f9cfbd0c20fa15fc9b96d9170798cdc8bda8c0c9e2c405e
+	sha256sums = c2feb854198de070a6114af311899d11125d37be4a6ba82d6047c82a05a50b6d
 
 pkgname = vapoursynth-plugin-rife-ncnn-vulkan
