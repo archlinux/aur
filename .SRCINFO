@@ -1,6 +1,6 @@
 pkgbase = sk-chos-addon
 	pkgdesc = Addon for sk-chimeros
-	pkgver = 2.16.2
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://github.com/honjow/sk-chos-config.git
 	install = sk-chos-addon.install
@@ -31,7 +31,7 @@ pkgbase = sk-chos-addon
 	replaces = sk-chos-addon-git
 	options = !strip
 	backup = etc/sk-chos-tool/github_cdn.conf
-	source = sk-chos-addon-2.16.2.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v2.16.2.tar.gz
+	source = sk-chos-addon-2.17.0.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v2.17.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = sk-chos-addon
