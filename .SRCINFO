@@ -1,6 +1,6 @@
 pkgbase = fussr
 	pkgdesc = A git staging TUI tool - Rust port of fuss
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/fussr
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = fussr
 	makedepends = pkg-config
 	depends = git
 	depends = libgit2
+	depends = libssh2
 	provides = fussr
-	source = git+https://github.com/tenseleyFlow/fussr.git#tag=v0.2.5
+	source = git+https://github.com/tenseleyFlow/fussr.git#tag=v0.2.6
 	sha256sums = SKIP
 
 pkgname = fussr
