@@ -30,10 +30,3 @@ pkgname = thorvg-git
 	pkgdesc = An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats
 	provides = thorvg
 	conflicts = thorvg
-
-pkgname = thorvg-git-examples
-	pkgdesc = Examples for thorvg-git lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats
-	depends = sdl2
-	depends = thorvg-git
-	provides = thorvg-examples
-	conflicts = thorvg-examples
