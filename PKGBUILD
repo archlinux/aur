@@ -5,8 +5,8 @@ _pkgname=snapmaker-orca
 _Pkgname=Snapmaker_Orca
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/Snapmaker/OrcaSlicer/"
@@ -20,7 +20,7 @@ source_x86_64=("${_appimage}::https://github.com/Snapmaker/OrcaSlicer/releases/d
                "LICENSE::https://raw.githubusercontent.com/Snapmaker/OrcaSlicer/refs/heads/main/LICENSE.txt"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('ac49d5822bb84561c0324d1b6a2cedb1c779b652fcfe23db94b8aa36436915ad'
+sha256sums_x86_64=('41e959b0ad26f23f9ed8a1c99b6e6b7c424d869c4d943356056202bed5567afe'
                    '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
                   )
 
