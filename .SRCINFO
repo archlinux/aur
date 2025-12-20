@@ -1,7 +1,7 @@
 pkgbase = perl-math-prime-util
 	pkgdesc = Math::Prime::Util - utilities related to prime numbers, including fast sieves and factoring (ntheory)
 	pkgver = 0.73.git
-	pkgrel = 10
+	pkgrel = 11
 	url = https://metacpan.org/release/Math-Prime-Util
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = perl-math-prime-util
 	provides = perl-math-prime-util-zetabigfloat
 	provides = perl-ntheory
 	options = !emptydirs
-	source = https://github.com/danaj/Math-Prime-Util/archive/a2306646f7ffdb2461b530624bb6ecc62073bc30.zip
-	b2sums = b893c6943ff7f5109ae3fb41fa93c0045ed09d3baaafeba2df82fdb97763792c15914ab8c64da467d1fba5b69f705795b76eca3c7daed556200ffd04da87fe10
+	source = https://github.com/danaj/Math-Prime-Util/archive/18939e9cf7921cb577064bd8c2eb8b0435588ff8.zip
+	b2sums = fa7187a362c746508028f6afd24a151ff1b554f45815df05444e8f8e406b2c3a754b467b768a94a9682a047ba3bd94590fed972df92a84ab9a7fe3cb159a16ec
 
 pkgname = perl-math-prime-util
