@@ -1,11 +1,12 @@
---- php-8.3.9/ext/xml/compat.c
-+++ php-8.3.9/ext/xml/compat.c
-@@ -375,7 +375,7 @@
- 		if (ret == NULL)
+diff -ur php-8.1.34-orig/ext/xml/compat.c php-8.1.34/ext/xml/compat.c
+--- php-8.1.34-orig/ext/xml/compat.c	2025-12-16 20:33:34.000000000 +0200
++++ php-8.1.34/ext/xml/compat.c	2025-12-20 22:43:20.470018836 +0200
+@@ -376,7 +376,7 @@
  			ret = xmlGetDocEntity(parser->parser->myDoc, name);
  
+ 		ZEND_DIAGNOSTIC_IGNORED_START("-Wdeprecated-declarations")
 -		if (ret == NULL || (parser->parser->instate != XML_PARSER_ENTITY_VALUE && parser->parser->instate != XML_PARSER_ATTRIBUTE_VALUE)) {
 +		if (ret == NULL || parser->parser->instate == XML_PARSER_CONTENT) {
+ 		ZEND_DIAGNOSTIC_IGNORED_END
  			if (ret == NULL || ret->etype == XML_INTERNAL_GENERAL_ENTITY || ret->etype == XML_INTERNAL_PARAMETER_ENTITY || ret->etype == XML_INTERNAL_PREDEFINED_ENTITY) {
  				/* Predefined entities will expand unless no cdata handler is present */
- 				if (parser->h_default && ! (ret && ret->etype == XML_INTERNAL_PREDEFINED_ENTITY && parser->h_cdata)) {
