@@ -8,7 +8,7 @@
 
 # Maintainer: petitstrawberry <petitstrawberry.dev@gmail.com>
 pkgname=minibook-support-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=1.3.1.r0.bb36447
+pkgver=1.3.1.r12.74d0767
 pkgrel=1
 pkgdesc="Software for CHUWI MiniBook (8-inch) / MiniBook X (10-inch) running Linux"
 arch=('any')
