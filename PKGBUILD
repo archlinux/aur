@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.3.1'
+_upstreamver='0.4.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='gundog'
@@ -24,22 +24,21 @@ conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('uvicorn' 'python' 'python-rich' 'python-urllib3' 'python-requests' 'python-numpy' 'python-httpx' 'python-yaml' 'python-pyaml' 'python-typer' 'python-tqdm' 'python-pathspec' 'python-fastapi' 'python-huggingface-hub' 'python-onnxruntime' 'python-optimum' 'python-optimum-onnx' 'python-transformers' 'python-sentence-transformers' 'python-hnswlib' 'python-rank-bm25')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6dba5250f945f67364a2f53e276123eeeda66f9ee975621b2be219d24b6891f6')
+source=("${_url_github}/releases/download/v${pkgver}/${pkgname}-${pkgver}-py3-none-any.whl"
+        "${_url_github}/releases/download/v${pkgver}/${pkgname}_core-${pkgver}-py3-none-any.whl"
+        "${_url_github}/releases/download/v${pkgver}/${pkgname}_client-${pkgver}-py3-none-any.whl")
+sha256sums=('4b80524565d5cd76feca25874c0701e36388b3ebb5cb75293e3c5eb027f98bb1'
+            '9cbb730512130447c9a356fd2991fdc5009544d0a93a09179b9ee7498b835833'
+            'd617330fee57a8883aecd9cfeda88e56cde87597411322c01b005cd8e444fd91')
 
-build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
-
-    python -m build --wheel --no-isolation
-}
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    for whl in ${source[@]}; do
+        whl_bin="$(basename ${whl})"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+        msg2 "Compiling ${whl_bin}"
+        PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-warn-script-location --root-user-action ignore --no-deps "${whl_bin}"
+    done
 
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -O -m compileall "${pkgdir}"
 }

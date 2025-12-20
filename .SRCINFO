@@ -1,6 +1,6 @@
 pkgbase = gundog
 	pkgdesc = A fast semantic search and retrieval engine
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/adhityaravi/gundog
 	arch = any
@@ -33,7 +33,11 @@ pkgbase = gundog
 	provides = gundog
 	conflicts = python-gundog
 	replaces = python-gundog
-	source = gundog-0.3.1.tar.gz::https://github.com/adhityaravi/gundog/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 6dba5250f945f67364a2f53e276123eeeda66f9ee975621b2be219d24b6891f6
+	source = https://github.com/adhityaravi/gundog/releases/download/v0.4.0/gundog-0.4.0-py3-none-any.whl
+	source = https://github.com/adhityaravi/gundog/releases/download/v0.4.0/gundog_core-0.4.0-py3-none-any.whl
+	source = https://github.com/adhityaravi/gundog/releases/download/v0.4.0/gundog_client-0.4.0-py3-none-any.whl
+	sha256sums = 4b80524565d5cd76feca25874c0701e36388b3ebb5cb75293e3c5eb027f98bb1
+	sha256sums = 9cbb730512130447c9a356fd2991fdc5009544d0a93a09179b9ee7498b835833
+	sha256sums = d617330fee57a8883aecd9cfeda88e56cde87597411322c01b005cd8e444fd91
 
 pkgname = gundog
