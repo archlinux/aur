@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=4.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -25,12 +25,12 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-arch.tar.gz")
-sha256sums=("62071f7141c3b7c3f6921faf797049ccc84dd7afff78e947347f02133b97c129")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-ai.tar.gz")
+sha256sums=("1615b00e30afa36631e6e978898252fbe453de6411c063f65225c213654446c8")
 
 build() {
-    tar -xvzf v$pkgver-arch.tar.gz
-    cd "hnefatafl-$pkgver-arch"
+    tar -xvzf v$pkgver-ai.tar.gz
+    cd "hnefatafl-$pkgver-ai"
 
     cargo build --release --features client --no-default-features
 
@@ -46,13 +46,13 @@ build() {
 }
 
 package() {
-    cd "hnefatafl-$pkgver-arch"
+    cd "hnefatafl-$pkgver-ai"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-text-protocol" -t "$pkgdir/usr/bin"
-    install -Dm644 "packages/hnefatafl-ai-00-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 "packages/hnefatafl-ai-01-defender.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "packages/hnefatafl-ai-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "packages/hnefatafl-ai-defender.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 "icons/king_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/org.hnefatafl.hnefatafl_client.png"
