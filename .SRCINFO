@@ -1,0 +1,16 @@
+pkgbase = cisa
+	pkgdesc = A novelty prank program that spams fetch tools, prints CISA, and reveals a random file path
+	pkgver = 1.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	depends = fastfetch
+	depends = neofetch
+	depends = toilet
+	depends = findutils
+	depends = coreutils
+	source = cisa
+	sha256sums = SKIP
+
+pkgname = cisa
