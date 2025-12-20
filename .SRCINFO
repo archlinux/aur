@@ -10,6 +10,6 @@ pkgbase = ghdl
 	depends = gcc-ada
 	optdepends = python-pyghdl: python bindings and utilities
 	source = ghdl-5.1.1.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v5.1.1.tar.gz
-	sha256sums = 00cd58ec8f25e2532465aabc8705f43071f20dc1d13e03fd9dc235523186fca9
+	sha256sums = aca5d20522ef9b8e273e95c9157d2d3f77f6e40a4fdeee431fa330885bd78f7f
 
 pkgname = ghdl
