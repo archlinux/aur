@@ -1,6 +1,6 @@
 pkgbase = fdserver
 	pkgdesc = Ham Radio - ARRL Field Day - Multi-user Server for clients using the fdlogger package
-	pkgver = 24.6.26
+	pkgver = 25.7.12.1
 	pkgrel = 1
 	url = https://pypi.org/project/fdserver/
 	arch = any
@@ -16,11 +16,11 @@ pkgbase = fdserver
 	depends = fdlogger
 	provides = fdserver
 	conflicts = fdserver-git
-	source = https://files.pythonhosted.org/packages/source/f/fdserver/fdserver-24.6.26.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fdserver/fdserver-25.7.12.1.tar.gz
 	source = fdserver.1
-	md5sums = 9f56a7a067ca3e91078a2f6aa5cd305e
+	md5sums = b2149fdd44677dab9c588f339bdd21c9
 	md5sums = 22feefc9c03eeddd86785a77b4a5bc4e
-	sha256sums = 15eac1d668ef67f69eacd0470098b0fcbb921f2e028e195c179d85bdb0e395ac
+	sha256sums = c4859af9b2497f36583d47f419ed8c6f0eade15919f6e9ce1a052787963679f0
 	sha256sums = 88bc2d01839d6d3d5aaf98aec4ddad69824e1976ca0aab48ba3341da89dacd57
 
 pkgname = fdserver
