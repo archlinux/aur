@@ -17,7 +17,14 @@ noextract=()
 sha256sums=('a34b9e3de2c7c7f22be94f62e7ff9c86b468daba38c1e6ea8d6e9e991546f74d'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
             'ded273a6aacf8cf8f6bc031cf82e5a7f40c6824144ed03bcfea6e8480cb36b80'
-            '75c41ea6b3b2a12c4420f2931ad90f40ef812668482ea5cfd1b601894ad74703')
+            'd0953d5c137ece8c484445fe32e5a6ebeb5f70249855fdcc70dd915bd1c2df9e')
+
+pkgver() {
+    git -c 'versionsort.suffix=-' \
+        ls-remote --exit-code --refs --sort='version:refname' --tags "${url}" '*.*.*' \
+        | tail --lines=1 \
+        | cut --delimiter='/' --fields=3 | cut -c2-
+}
 
 package() {
     install -Dm0644 "${srcdir}/kanata.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
