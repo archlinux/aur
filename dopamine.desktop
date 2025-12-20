@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Dopamine
-Exec=/opt/Dopamine/dopamine %U
+Exec=dopamine %U
 Terminal=false
 Type=Application
 Icon=dopamine

@@ -1,7 +1,7 @@
 pkgbase = dopamine-official
 	pkgdesc = The audio player that keeps it simple
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://digimezzo.github.io/site/
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = dopamine-official
 	source = Dopamine-3.0.1.AppImage::https://github.com/digimezzo/dopamine/releases/download/v3.0.1/Dopamine-3.0.1.AppImage
 	source = dopamine.desktop
 	sha256sums = 72b396d48f1837bf8eca89607a256f059f19b30d113548e8ce6bc68103b5ca60
-	sha256sums = 9cb953f1c18efb35d165de778ae126ecfbd6b4a33c6bfe18d493ff92df354d25
+	sha256sums = e0ac0b0c4deaaa288eb712492661fc0d22614277f2d3fd6953d45a23c9a4890d
 
 pkgname = dopamine-official

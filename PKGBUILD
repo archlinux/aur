@@ -3,7 +3,7 @@ _pkgname=Dopamine
 __pkgname=dopamine
 pkgname=dopamine-official
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The audio player that keeps it simple"
 arch=('x86_64')
 url="https://digimezzo.github.io/site/"
@@ -18,7 +18,7 @@ options=(!strip)
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/digimezzo/${__pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
 	"${__pkgname}.desktop")
 sha256sums=('72b396d48f1837bf8eca89607a256f059f19b30d113548e8ce6bc68103b5ca60'
-		'9cb953f1c18efb35d165de778ae126ecfbd6b4a33c6bfe18d493ff92df354d25')
+		'e0ac0b0c4deaaa288eb712492661fc0d22614277f2d3fd6953d45a23c9a4890d')
 
 prepare() {
     chmod u+x      ${srcdir}/${_pkgname}-${pkgver}.AppImage
