@@ -1,8 +1,8 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
-pkghash=166290f8be8a525cc9c51a851b9e3e8921bf1017
+pkghash=472a970e10c3a85f9db938719ebba121321c1d90
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
@@ -17,7 +17,7 @@ depends=(
     'python-gobject>=3.48.0'
     'python-pillow'
     'python-cairo'
-    'python-pytesseract'
+#    'python-pytesseract'
 )
 makedepends=(
     'patch'
@@ -28,14 +28,14 @@ source=(
 #    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname-$pkgver.zip::${url}/archive/$pkghash.zip"
 )
-sha256sums=('d6d6d25f213aee9c85034ed0b8e982958cb7bab9a91b7cd2da3d79e7a44fe825')
+sha256sums=('b4146b2a30f91908a5f43c572fa6099be36c4377bdcd1ca6950a666bb5335e86')
 
 prepare() {
   mv Gradia-$pkghash $pkgname-$pkgver
 }
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson $pkgname-$pkgver build -Denable-ocr=false
   meson compile -C build
 }
 
