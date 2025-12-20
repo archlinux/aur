@@ -4,7 +4,7 @@
 # find-libdeps *.zst | sed 's/=.*//' | xargs -n1 pacman -F | grep -v multi | awk -F'[/ ]' '/^\w/ { print $2 }' | sort | uniq
 
 pkgname=ezra-bible-app-bin
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(curl
 provides=("${pkgname%-bin}")
 conflicts=("${provides[@]}")
 source=("$url/releases/download/$pkgver/${pkgname%-bin}_opensuse_leap_15.5-$pkgver.rpm")
-sha256sums=('fdb9cfccf3840037dce89f1852d69c0e831eb4d53bae1d627a859c63e3333768')
+sha256sums=('30b1a2f7f941bba84c0570834331fe4b6b69345356bbe5d7609777f05490f56a')
 
 prepare() {
 	rm -rf usr/lib/.build-id
