@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.25.7
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -17,13 +17,11 @@ prepare() {
   cd "${pkgname}"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
-
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/14760.patch | patch -p1
 }
 
 build() {
   cd "${pkgname}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -DBLA_VENDOR=Generic -B build .
   make -C build
 }
 
@@ -33,5 +31,6 @@ package() {
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
+  rm -r "${pkgdir}"/usr/share/cmake
   rm -r "${pkgdir}"/home
 }
