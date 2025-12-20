@@ -4,7 +4,7 @@
 
 pkgname=b4
 pkgver=0.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL-2.0-or-later')
 arch=('any')

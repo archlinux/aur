@@ -1,7 +1,7 @@
 pkgbase = b4
 	pkgdesc = Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.
 	pkgver = 0.14.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.kernel.org/pub/scm/utils/b4/b4.git/
 	arch = any
 	license = GPL-2.0-or-later
