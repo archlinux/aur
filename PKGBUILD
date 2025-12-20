@@ -9,7 +9,7 @@
 # - it would be possible to process the .exe to extract a version string but I don't see the point.
 
 pkgname=ltspice
-pkgver=24.1.9.1
+pkgver=26.0.1.0
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer."
 arch=('x86_64')
@@ -28,10 +28,10 @@ makedepends=('gawk'
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
 	"conv.sh"
-	"LTspice64-${pkgver}.msi::https://LTspice.analog.com/download/24.1.9/LTspice64.msi"
+	"LTspice64-${pkgver}.msi::https://LTspice.analog.com/download/26.0.1/LTspice64.msi"
 	)
 
-installer_sha256='AF93F7916FE70CDF7D99B4E4943AE67A0737C1F2286AD9900BC1DE028A1E987F'
+installer_sha256='EC35026697ED32D2AE57B17BE3A3C8877B631F642B66326491A9808C47EC0081'
 
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
@@ -39,7 +39,7 @@ sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
 	    ${installer_sha256}
     )
 
-OPTIONS=(!strip)
+options=(!strip)
 
 prepare() {
     cd "${srcdir}"
