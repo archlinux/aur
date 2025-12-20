@@ -1,0 +1,14 @@
+pkgbase = git-context
+	pkgdesc = Manage multiple Git repositories within a single working tree
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/angelodibella/git-context
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git-context-0.2.0.tar.gz::https://github.com/angelodibella/git-context/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = e6e889d5bd66f863bcbc680f5d06f53d9ed8c3dc7ca126ba317f5f3fea2f570f
+
+pkgname = git-context
