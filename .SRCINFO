@@ -1,6 +1,6 @@
 pkgbase = bcachefs-kernel-dkms-git
 	pkgdesc = Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure
-	pkgver = 20251209.r1.g1cb9d8b8c
+	pkgver = 20251218.r1.g04888b6f0
 	pkgrel = 1
 	url = https://bcachefs.org/
 	arch = x86_64
