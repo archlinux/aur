@@ -1,0 +1,8 @@
+php7*
+php8*
+pkg/*
+src/*
+xdebug/*
+*.tar.*
+*.t?z
+nohup.out
