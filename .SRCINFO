@@ -1,6 +1,6 @@
 pkgbase = hitpag
 	pkgdesc = An intelligent compression/decompression software.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/Hitmux/hitpag
 	arch = x86_64
