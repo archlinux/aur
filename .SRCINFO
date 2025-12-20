@@ -1,6 +1,6 @@
 pkgbase = classisland-git
 	pkgdesc = 适用于班级大屏的课表小工具（最新开发构建）。Class schedule displaying tool for interactive whiteboards in classrooms. (Built from latest Git commit)
-	pkgver = 2.0.0.0.r7.g8586819
+	pkgver = 2.0.0.0.r16.ga0ce760
 	pkgrel = 1
 	url = https://github.com/ClassIsland/ClassIsland
 	install = classisland-git.install

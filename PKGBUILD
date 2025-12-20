@@ -4,7 +4,7 @@
 pkgname=classisland-git
 _pkgname=classisland
 _appname=cn.classisland.app
-pkgver=2.0.0.0.r7.g8586819
+pkgver=2.0.0.0.r16.ga0ce760
 pkgrel=1
 pkgdesc="适用于班级大屏的课表小工具（最新开发构建）。Class schedule displaying tool for interactive whiteboards in classrooms. (Built from latest Git commit)"
 arch=('x86_64' 'aarch64')
@@ -49,6 +49,11 @@ prepare() {
 }
 build() {
     cd "${srcdir}/ClassIsland"
+
+    # Some components depend on .NET 9 but they are not included in Linux build
+    # (and they never even get compiled), so a hack to force using .NET 8 SDK
+    sed -i 's/9.0.0/8.0.0/g' global.json
+
     ./build.sh PublishApp \
         --configuration Release \
         --os-name linux \
