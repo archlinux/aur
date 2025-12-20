@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hextazy
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A coloful hexadecimal editor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('fe3d131e763c6ed311a50e20b8842c365185f7ba4d611b36eda766e840e358629607bd3546c7b868a773b3c4300ae936e7dfd7fb1532ed4f710123bea8698d28')
+sha512sums=('e8e245b30bd3e588e29daa9ca53f0593d1a0fbfd34537a080112d3895cba7dab756d11b2ba8142fe808a9ae9dca62d620888c073df9a21fd6c5b113a4a18b34f')
 
 prepare() {
   cd "$pkgname-$pkgver"
