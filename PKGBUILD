@@ -6,7 +6,7 @@
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server','-tools'})
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'
@@ -17,7 +17,7 @@ source=(
     'QT6_fix.patch')
 sha256sums=(
     'd09d3eef00b15004184700817d1b6620acc4cfd0738ad8977680c1e05bc2ea7d'
-    'dd46a05112d41a9444fe1ef0d283799ba6400a000638d877f71f69b7c7f44f93')
+    '03242dd19518e525832c1a67a5df946f62cd383b56d0f413e0c43ae0246c4e6a')
 
 _cmakeargs+=(
 		'--preset linux-release-qt6-all-make'
