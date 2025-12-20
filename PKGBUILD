@@ -1,7 +1,7 @@
 # Maintainer: RockinChaos
 
 pkgname=shiru
-pkgver=6.4.5
+pkgver=6.4.6
 pkgrel=1
 pkgdesc="Manage your personal media library, organize your collection, and stream your content in real time, no waiting required!"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 source=("https://github.com/RockinChaos/Shiru/releases/download/v${pkgver}/linux-Shiru-v${pkgver}.AppImage"
         "shiru.png"
         "shiru.desktop")
-sha256sums=("d6bb6f747289fc14fc568766335379ac9801a24e8d79ae737d3ceb4710ffdd47"
+sha256sums=("ed0d71292c4f47677de5b050842f7ed4390f8b510a438d2bddccdcc5f9e5100b"
             "2bbe68a752d1a96e4a4c97201cf2d15aef90284493f17619f528ab50f5729a60"
             "7e2b124d5e0ec388c8a5288339eeddda848c3e206ebe67377c32c49da2b17063")
 
