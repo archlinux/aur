@@ -1,7 +1,7 @@
 # Maintainer: SteinGaming <steingaming.online at gmail dot com>
 
 pkgname="gotatun-git"
-pkgver=v0.1.0.r28.g6753265
+pkgver=0.1.0.r28.g6753265
 pkgdesc="A boringtun (WireGuard® implementation in Rust) fork by Mulvad"
 pkgrel=1
 
@@ -19,7 +19,7 @@ options=(!lto)
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
