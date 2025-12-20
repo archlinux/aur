@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest-doctestplus'
 #             'python-roman-datamodels>=0.22.0'
               'python-gitpython')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f4068206f0a1c1ad4faf4f8c1a09dc2b')
+md5sums=('94acd3be8d7ff3ab0b08264e944f173f')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
