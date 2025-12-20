@@ -1,0 +1,27 @@
+pkgbase = python-optimum-onnx
+	pkgdesc = Optimum ONNX is an interface between the Hugging Face libraries and ONNX / ONNX Runtime
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/huggingface/optimum-onnx
+	arch = any
+	groups = huggingface
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-pytorch
+	depends = python-onnx
+	depends = python-optimum
+	depends = python-transformers
+	optdepends = python-datasets
+	optdepends = python-evaluate
+	optdepends = python-onnx
+	optdepends = python-onnxruntime
+	source = optimum-onnx-0.0.3.tar.gz::https://github.com/huggingface/optimum-onnx/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 86beb3249fe961fdfebdfcd232fc49e1b5c7d48c641aba133ca7c4b72e6a60c3
+
+pkgname = python-optimum-onnx
