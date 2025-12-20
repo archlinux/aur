@@ -6,8 +6,8 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=814
-pkgver=2.3.1
+pkgrel=1
+pkgver=2.4.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -22,7 +22,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<1'  # server/src/constants.ts
+    'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
@@ -73,7 +73,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt'
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('20bd60862447e7e369189f9390f8e013b50101cf2fb7561ed47793bcb63c6cc8'
+sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
             '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
             'SKIP'
             'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
@@ -81,9 +81,9 @@ sha256sums=('20bd60862447e7e369189f9390f8e013b50101cf2fb7561ed47793bcb63c6cc8'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
             '614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            '2ad1514697ccc5934d15034b2009c85b6c29943524eae33e11093d5af9042972'
+            '4e098d3a60902ca053f9f031c0cc455dbd8fd29e5036372ee40ad089f64eb38d'
+            '0be354fe31c16e73270af1ce53721dd33388719570a455defba31a27152935d3'
             '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255')
 
 prepare() {
@@ -124,7 +124,7 @@ build() {
 	if [[ $(grep MemTotal /proc/meminfo | awk '{print $2}') > $(expr 5 \* 1024 \* 1024) ]]; then
 		export NODE_OPTIONS=--max-old-space-size=4096
 	fi
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
+	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile --force install
     pnpm --filter @immich/sdk --filter immich-web build
 
     # build CLI
