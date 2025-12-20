@@ -1,13 +1,14 @@
 pkgbase = drand
 	pkgdesc = A Distributed Randomness Beacon Daemon
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/drand/drand
 	arch = x86_64
 	license = Apache-2.0 OR MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = drand-2.1.3.tar.gz::https://github.com/drand/drand/archive/refs/tags/v2.1.3.tar.gz
-	b2sums = 5641f1be902810d20c6e35adf4b6fb4837092e19fd078876f78c6b3c3faea2a0c8015fe5402618dd44bcbb9fe489ec58b4665861a189a15e084c89393c847bcf
+	source = drand::git+https://github.com/drand/drand.git#tag=v2.1.4
+	b2sums = 8b115ef8b8c73c89d7b94f2da787e67991962b09bbab7a33cae5015a648cd2facc9f1bd1f58bb418f5b97ce09abcb7a4b4bca7c6017006622e52f6f4ec541bbf
 
 pkgname = drand
