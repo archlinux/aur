@@ -1,7 +1,7 @@
 pkgname=plotune-bin
-pkgver=1.0.3
+pkgver=1.0.31
 pkgrel=2
-pkgdesc="Plotune – Modular data visualization and signal orchestration platform"
+pkgdesc="Plotune – Modular data operations and signal orchestration platform"
 arch=('x86_64')
 url="https://www.plotune.net"
 license=('custom')
