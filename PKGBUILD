@@ -1,6 +1,6 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.100.gc568efa
-pkgrel=4
+pkgver=0.2.163.ge6ed7b5
+pkgrel=1
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
 url="https://github.com/rabfulton/ChatGTK"
@@ -54,7 +54,6 @@ package() {
   install -d "$appdir"
   install -m644 src/"ChatGTK.py" "$appdir/ChatGTK.py"
   install -m644 src/"config.py" "$appdir/config.py"
-  install -m644 src/"audio.py" "$appdir/audio.py"
   install -m644 src/"ai_providers.py" "$appdir/ai_providers.py"
   install -m644 src/"controller.py" "$appdir/controller.py"
   install -m644 src/"conversation.py" "$appdir/conversation.py"
@@ -74,6 +73,26 @@ package() {
   install -m644 src/model_cards/"catalog.py" "$appdir/model_cards/catalog.py"
   install -m644 src/model_cards/"loader.py" "$appdir/model_cards/loader.py"
   install -m644 src/model_cards/"overrides.py" "$appdir/model_cards/overrides.py"
+
+  # repositories package
+  install -d "$appdir/repositories"
+  install -m644 src/repositories/*.py "$appdir/repositories/"
+
+  # services package
+  install -d "$appdir/services"
+  install -m644 src/services/*.py "$appdir/services/"
+
+  # events package
+  install -d "$appdir/events"
+  install -m644 src/events/*.py "$appdir/events/"
+
+  # settings package
+  install -d "$appdir/settings"
+  install -m644 src/settings/*.py "$appdir/settings/"
+
+  # ui package
+  install -d "$appdir/ui"
+  install -m644 src/ui/*.py "$appdir/ui/"
 
   # Icons and audio preview assets
   install -m644 src/"icon.png" "$appdir/icon.png"
