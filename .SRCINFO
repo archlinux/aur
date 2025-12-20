@@ -1,6 +1,6 @@
 pkgbase = swaysome-git
 	pkgdesc = AwesomeWM-like workspaces for sway
-	pkgver = 2.1.2.r0.gbc80f6a
+	pkgver = 2.3.2.r0.g31ed37a
 	pkgrel = 1
 	url = https://gitlab.com/hyask/swaysome
 	arch = x86_64

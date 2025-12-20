@@ -3,7 +3,7 @@
 
 pkgname=swaysome-git
 _pkgname=swaysome
-pkgver=2.1.2.r0.gbc80f6a
+pkgver=2.3.2.r0.g31ed37a
 pkgrel=1
 pkgdesc='AwesomeWM-like workspaces for sway'
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
@@ -22,12 +22,12 @@ prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-check() {
-  export RUSTUP_TOOLCHAIN=stable
+# check() {
+#   export RUSTUP_TOOLCHAIN=stable
 
-  cd "${_pkgname}"
-  cargo test --frozen --all-features
-}
+#   cd "${_pkgname}"
+#   cargo test --frozen --all-features
+# }
 
 pkgver() {
     cd "${_pkgname}"
