@@ -1,0 +1,15 @@
+pkgbase = make-your-choice
+	pkgdesc = Dead by Daylight server region selector for Linux
+	pkgver = 2.0.0_RC
+	pkgrel = 1
+	url = https://github.com/laewliet/make-your-choice
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = polkit
+	source = git+https://github.com/laewliet/make-your-choice.git#tag=2.0.0-RC
+	sha256sums = SKIP
+
+pkgname = make-your-choice
