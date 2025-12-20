@@ -1,6 +1,6 @@
 # Maintainer: Martin Liska <martin.liska@hey.com>
 
-_target=loongarch64-linux-gnu
+_target=loongarch64-elf
 pkgname=$_target-binutils
 pkgver=2.45.1
 pkgrel=1

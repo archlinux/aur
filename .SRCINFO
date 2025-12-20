@@ -1,10 +1,10 @@
-pkgbase = loongarch64-linux-gnu-binutils
+pkgbase = loongarch64-elf-binutils
 	pkgdesc = Assemble and manipulate binary and object files for 32-bit and 64-bit LoongArch
 	pkgver = 2.45.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gnu.org/software/binutils/
 	arch = x86_64
-	groups = risc-v
+	groups = loongarch64
 	license = GPL-2.0-or-later
 	makedepends = setconf
 	depends = glibc
@@ -17,4 +17,4 @@ pkgbase = loongarch64-linux-gnu-binutils
 	sha256sums = 5fe101e6fe9d18fdec95962d81ed670fdee5f37e3f48f0bef87bddf862513aa5
 	b2sums = 1ccab38659ec47f9100b61322627345fe79ebd04ed0b1e872c988edded4d292d7c9ac33d9f6ea47bf265ec823dfba60da0e84374900c15ec89e3aa9280ac020c
 
-pkgname = loongarch64-linux-gnu-binutils
+pkgname = loongarch64-elf-binutils
