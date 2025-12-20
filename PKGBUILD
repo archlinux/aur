@@ -1,15 +1,15 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager-git
 appname='Rclone.Manager'
-pkgver=0.1.8  # Set initial value, will be overwritten by pkgver()
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="User-friendly GUI for Rclone"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Zarestia-Dev/rclone-manager"
 license=('GPL-3.0-or-later')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'rclone')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+optdepends=('rclone: for file operations')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs' 'pkg-config' 'zstd' 'xz' 'clang' 'lld' 'nss' 'nspr')
-optdepends=('7zip: Encrypt/decrypt backup data')
 options=('!strip' '!debug')
 provides=('rclone-manager')
 conflicts=('rclone-manager')
