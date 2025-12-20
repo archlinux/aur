@@ -1,0 +1,4 @@
+[lib32-libgnome-keyring-bin]
+source = "jq"
+url = "https://tumbleweed.opensuse.org/download/repositories/GNOME:/Next/openSUSE_Factory/x86_64/?jsontable"
+filter = '.data[].name | match("libgnome-keyring0-32bit-([0-9].+)\\.x86_64\\.rpm")? .captures[0].string | gsub("-"; "_")'

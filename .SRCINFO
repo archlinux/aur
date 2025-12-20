@@ -1,0 +1,27 @@
+pkgbase = lib32-libgnome-keyring-bin
+	pkgdesc = GNOME keyring client library (deprecated, 32-bit)
+	pkgver = 3.12.0_116.85
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/libgnome-keyring
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	depends = lib32-dbus
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libgcrypt
+	provides = lib32-libgnome-keyring
+	provides = lib32-libgnome-keyring0
+	provides = libgnome-keyring.so=0
+	conflicts = lib32-libgnome-keyring
+	conflicts = lib32-libgnome-keyring0
+	options = !buildflags
+	options = !makeflags
+	options = !strip
+	options = !debug
+	source = https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/x86_64/libgnome-keyring0-32bit-3.12.0-116.85.x86_64.rpm
+	source = https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/src/libgnome-keyring-3.12.0-116.85.src.rpm
+	sha256sums = cb2fa2234e039904fcda8f4c0322fd4d4c90487a3c271b5a94c63ca720252bd7
+	sha256sums = 0291a08c25a90fa03ca75b66127d73bc4edb9b40da05a0068f293f69a93467aa
+
+pkgname = lib32-libgnome-keyring-bin
