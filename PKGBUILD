@@ -1,6 +1,6 @@
 _pkgname=ddns-go
 pkgname=${_pkgname}-bin
-pkgver="6.14.0"
+pkgver="6.14.1"
 pkgrel=1
 pkgdesc='A simple, easy-to-use ddns service optimized for Chinese Mainland users'
 license=('MIT')
@@ -15,7 +15,6 @@ arch=(
     "mipsel"
     "mips64"
     "mips64el"
-    "mipsel"
 )
 
 url="https://github.com/jeessy2/${_pkgname}"
@@ -35,16 +34,16 @@ source_mips64el=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linu
 # https://github.com/jeessy2/ddns-go/releases/download/v$pkgver/checksums.txt
 sha256sums=('4a8086b2ef19c1c2f9c60f7cae5b852e6ce4a28a11709065f5099f001f8b6934'
             'caf121192d465753c553163c8cd6fe56b3a5d27edf9fbce489bb3c1e7c27fe65')
-sha256sums_x86_64=('84c0e09b40bed554b77abcb4575c803e8787cbb80102213590a4ff48badae387')
-sha256sums_i686=('17f18b893aaf52604b59451ceda3d337478d557fe6f603351ece5db56d80f039')
-sha256sums_aarch64=('9600d95c41f70bdda9ef4f97b3701a975407d0fffb4221a53424de87623bcaa8')
-sha256sums_armv7h=('03705fb51b3e417a2226540de876cf1c0f053201bfa17545475e350ba0bae4fc')
-sha256sums_armv6h=('e0578b8b7ef12eead0b52c69f3e178b47f92269bbd153df3768b976c5d73a091')
-sha256sums_armv5tel=('40272958d683a7dd56fdfc1e6964b4733c61774a4608028d6a6e62e65dc21dd2')
-sha256sums_mips=('e971facab1ce2d8fc14d23283969df07bbb98f2b7ae7ba89dbac824abc05f43c')
-sha256sums_mipsel=('15323e295bd0bf968da64a22942bcb4e0bfe0aae54b85b079a3086142c5a8f0b')
-sha256sums_mips64=('970687055019141728857c9267d23cf878c1e8c359f0d1ea99954245b8fae518')
-sha256sums_mips64el=('3804830bbf0360e9557dc9027c890babab234826a0175a61bfc2c4d32812c38c')
+sha256sums_x86_64=('d0d6ee894488ae9ea3f071a7ec4400c235cc68d943b90b051ccdf92512ba821b')
+sha256sums_i686=('017475b8399d05ea6e2712a5234c38cc485e32a4aa5a36de34129ee5b2fd7906')
+sha256sums_aarch64=('0df0a55cac5057c2746651e1630c625cc70c3261dc3a4864b285aeac8e6cf1e5')
+sha256sums_armv7h=('cd81e6fb788cde1d9f0a4d92af2942871cf141793854c1df4279f7e127318b79')
+sha256sums_armv6h=('1e40602d9495159b7848af19afafdaac1fbb1798b1695e85240fb9f0293f0686')
+sha256sums_armv5tel=('7b77bb3ab15a724b1d341ece02dafa389ba60cc5ffa24683d32ac8866880e599')
+sha256sums_mips=('3d762d0e05c55fd97401daca723b2472058e3cff1c5a1bd96f814a44694a3689')
+sha256sums_mipsel=('8efbb7b2208f6668f2bd58429da00619e6073f0476f31b7b7df570f9dd81ffd8')
+sha256sums_mips64=('1d9331896d5b38e0e26f9c6ac6fd6975699a3a85168c3e285c0dacc8aa48e4ab')
+sha256sums_mips64el=('9a9ba0b4f0c6dd2f028b271ba3dabbf6c4f0787d7e2d2f2e6845f051b2dc262c')
 install=ddns-go.install
 
 package() {
