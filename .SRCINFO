@@ -1,6 +1,6 @@
 pkgbase = jail-git
-	pkgdesc = Temporarily grant ACLs and environment to a secondary user for the duration of a command
-	pkgver = 0.0.4.r2.8d25ab1
+	pkgdesc = Simple script that wraps the bwrap binary to isolate your $HOME directory.
+	pkgver = 0.0.4.r3.9ae85da
 	pkgrel = 1
 	url = https://github.com/pyamsoft/jail.git
 	arch = any
