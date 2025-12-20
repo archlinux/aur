@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=4.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -34,10 +34,10 @@ build() {
 
     cargo build --release --features client --no-default-features
 
-    cargo run --release --bin hnefatafl-ai -- --man --username ""
-    cargo run --release --bin hnefatafl-client -- --man
-    cargo run --release --bin hnefatafl-server -- --man
-    cargo run --release --bin hnefatafl-text-protocol -- --man
+    ./target/release/hnefatafl-ai --man --username ""
+    ./target/release/hnefatafl-client --man
+    ./target/release/hnefatafl-server --man
+    ./target/release/hnefatafl-text-protocol --man
 
     gzip --no-name --best hnefatafl-ai.1
     gzip --no-name --best hnefatafl-server.1
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "hnefatafl-$pkgver"
+    cd "hnefatafl-$pkgver-arch"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
