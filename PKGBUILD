@@ -1,8 +1,8 @@
-# Maintainer: 
+# Maintainer: Tilman BLUMENBACH <tilman+aur@ax86.net>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 # Contributor: Cory Farmer <rbgkofi@ameritech.net>
-
+#
 pkgname=vorbisgain
 pkgver=0.37
 pkgrel=6
