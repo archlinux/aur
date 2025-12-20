@@ -3,7 +3,7 @@
 pkgname="millennium-git"
 _pkgdir="Millennium"
 pkgver=v2.31.1.r5
-pkgrel=2
+pkgrel=3
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -34,32 +34,40 @@ build() {
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium assets...\e[0m"
 
+    # Build sdk
     pnpm --dir     src/sdk           install
     pnpm --dir     src/sdk           run build
 
+    # Copy shims
     mkdir -p       shims/build/
     cp -r          src/sdk/packages/loader/build "./shims/"
 
+    # Build frontend - has to be after sdk.
     pnpm --dir     src/frontend      install
     pnpm --dir     src/frontend      run build
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
+    # Build Millennium!
     cmake -GNinja  . -DCMAKE_BUILD_TYPE=RelWithDebInfo --preset linux-release -DDISTRO_ARCH=ON
     cmake --build  build
 }
 
 package() {
     cd             $srcdir/$_pkgdir
+
+    echo -e        "\e[1m\e[92m==>\e[0m \e[1mPackaging Millennium...\e[0m"
+
     # Create final directory structure
     mkdir -p       $pkgdir/usr/lib/millennium
     mkdir -p       $pkgdir/usr/share/millennium/shims
     mkdir -p       $pkgdir/usr/share/millennium/assets
     mkdir -p       $pkgdir/usr/share/licenses/$pkgname
 
+    # Finally, install files to package location
     install -Dm755 build/src/millennium_x86-build/libmillennium_x86.so                      "$pkgdir/usr/lib/millennium/"
-    install -Dm755 build/src/millennium_x86-build/boot/linux/libmillennium_bootstrap_x86.so "$pkgdir/usr/lib/millennium/"
     install -Dm755 build/src/hhx64-build/libmillennium_hhx64.so                             "$pkgdir/usr/lib/millennium/"
+    install -Dm755 build/src/millennium_x86-build/boot/linux/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/"
     cp -r          src/pipx                                                                 "$pkgdir/usr/share/millennium/assets/"
     cp -r          shims/build                                                              "$pkgdir/usr/share/millennium/shims/"
     install -Dm644 LICENSE.md                                                               "$pkgdir/usr/share/licenses/$pkgname/"
