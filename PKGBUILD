@@ -2,7 +2,7 @@
 # Maintainer: Abhimanyu Sharma <abhimanyusharma003@gmail.com>
 
 pkgname='pttr-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='pttr is command line software that allows you to quickly run various transformation operations on the string.'
 url='https://github.com/abhimanyu003/pttr'
@@ -12,13 +12,13 @@ provides=('pttr')
 conflicts=('pttr')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_arm64.tar.gz")
-sha256sums_aarch64=('be368402e617c21f790df4385e4aa89b94d81488506efa9c5a1bd1e743ae8b7e')
+sha256sums_aarch64=('cd2a283dad0d3235845a931f04bc49863b79da9779218a97f4d06240fa0f2a90')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_i386.tar.gz")
-sha256sums_i686=('dca87cd64352d829567c83c45be9dd5ce9acd60bb7c8d465cdcfd62bb067c46b')
+sha256sums_i686=('7ff567fc88a0e3cd3794122c5e0754e9b633b73c8adf401da62a624e28260871')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e9b41a83f0caae832527402534a2ce13cdecf8b4e20b810427d1a56dd184cbf3')
+sha256sums_x86_64=('aaf191fecf85a7b5cfe932793006d5a1b0da66a5e509b08b369ce2101f6c4a55')
 
 package() {
   install -Dm755 "./pttr" "${pkgdir}/usr/bin/pttr"
