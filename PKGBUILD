@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=clipper2
-pkgver=1.5.4
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Polygon Clipping and Offsetting'
 arch=(x86_64)
 url="https://github.com/AngusJohnson/${pkgname^}"
@@ -16,7 +16,7 @@ conflicts=(manifold)
 _tag="${pkgname^}_$pkgver"
 _archive="${pkgname^}-$_tag"
 source=("$url/archive/refs/tags/$_tag/$_archive.tar.gz")
-sha256sums=('9d8a35a29d04cd1b7b45f542c0ba48015feece1210036ea9e4efaad3140af4b0')
+sha256sums=('2a3693aceab4aed3e39b743e038d87701acc53cf05ed7b2013aab3e0aec5287e')
 
 build () {
 	cd "$_archive/CPP"

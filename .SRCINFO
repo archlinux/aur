@@ -1,7 +1,7 @@
 pkgbase = clipper2
 	pkgdesc = Polygon Clipping and Offsetting
-	pkgver = 1.5.4
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/AngusJohnson/Clipper2
 	arch = x86_64
 	license = BSL-1.0
@@ -11,7 +11,7 @@ pkgbase = clipper2
 	provides = libClipper2Z.so
 	provides = libClipper2.so
 	conflicts = manifold
-	source = https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_1.5.4/Clipper2-Clipper2_1.5.4.tar.gz
-	sha256sums = 9d8a35a29d04cd1b7b45f542c0ba48015feece1210036ea9e4efaad3140af4b0
+	source = https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_2.0.1/Clipper2-Clipper2_2.0.1.tar.gz
+	sha256sums = 2a3693aceab4aed3e39b743e038d87701acc53cf05ed7b2013aab3e0aec5287e
 
 pkgname = clipper2
