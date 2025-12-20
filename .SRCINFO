@@ -1,0 +1,18 @@
+pkgbase = jail-git
+	pkgdesc = Temporarily grant ACLs and environment to a secondary user for the duration of a command
+	pkgver = 0.0.4.r2.8d25ab1
+	pkgrel = 1
+	url = https://github.com/pyamsoft/jail.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bubblewrap
+	depends = coreutils
+	depends = grep
+	depends = awk
+	provides = jail
+	conflicts = jail
+	source = jail::git+https://github.com/pyamsoft/jail.git#branch=main
+	sha256sums = SKIP
+
+pkgname = jail-git
