@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene-stt
-pkgver=0.1
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 epoch=
 pkgdesc="Real-time speech-to-text support for Galene"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('go' 'opus' 'whisper.cpp')
 optdepends=('whisper.cpp-model-medium: a model for whisper.cpp'
             'whisper.cpp-model-large: a model for whisper.cpp')
 source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('1bd076de68c59c3c0775f43026f54a26e544a15ca1889080dc6377483cad4642')
+sha256sums=('a84dcdca9254e01d9eb470ddff1ef0d5dec41a5870618d5389d4832193703ab3')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
