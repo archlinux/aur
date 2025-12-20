@@ -1,8 +1,8 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='basicanalysis'
 pkgdesc='Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).'
-pkgver='0.3.9.20241018'
-pkgrel='2'
+pkgver='0.4.0.20251219'
+pkgrel='1'
 arch=('any')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL-2.1-or-later')
@@ -10,7 +10,7 @@ depends=(python wxparaver dimemas
          python-pandas python-seaborn python-matplotlib python-numpy python-scipy)
 optdepends=('gnuplot: Drawing the generated plots')
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=(77f77d6bd0b49c4769a25fa317e52460a9f076960d8ea1e5f485a10d88c6d68e40d170927765f38746c6d0e55b75396e438243b3f508a0fe361d0df7233dcd6e)
+sha512sums=(3c734eeb44803a7b1ec2bb6a1717eca68752d114889caec65d818db55bffba64875bd1734215080e8da52808bb7cc1b1f4d8fd66fc70412d500d57c3a46bff2c)
 
 package() {
 	# Install script and configurations in /usr/lib/basicanalysis
