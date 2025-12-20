@@ -1,0 +1,16 @@
+pkgbase = gotatun-git
+	pkgdesc = A boringtun (WireGuard® implementation in Rust) fork by Mulvad
+	pkgver = v0.1.0.r28.g6753265
+	pkgrel = 1
+	url = https://github.com/mullvad/gotatun
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = git
+	provides = gotatun
+	conflicts = gotatun
+	options = !lto
+	source = gotatun-git::git+https://github.com/mullvad/gotatun.git
+	sha256sums = SKIP
+
+pkgname = gotatun-git
