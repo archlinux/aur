@@ -4,7 +4,7 @@
 
 pkgname=badgerdb
 _name=badger
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="An embeddable, persistent and fast key-value (KV) database written in pure Go"
 arch=('x86_64')
@@ -12,8 +12,8 @@ url='https://docs.hypermode.com/badger'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
-source=("${_name}-${pkgver}.tar.gz::https://github.com/hypermodeinc/badger/archive/v${pkgver}.tar.gz")
-sha256sums=('4d77201f9d4c74ed1731c1bb2de8b4fa0091338f2dcac6d8cf6e28362c170837')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/dgraph-io/badger/archive/v${pkgver}.tar.gz")
+sha256sums=('5d58172251ab79cc3e4acf9bf3abfd48ffb42ea29ff6e790eb24af9aee1fb668')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}/badger"
