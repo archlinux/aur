@@ -1,0 +1,15 @@
+pkgbase = gxu-net-autologin
+	pkgdesc = Automatic campus network authentication at Guangxi University
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Chocola-X/GXU-Net-AutoLogin
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = gxu-net-autologin-1.0.0.tar.gz::https://github.com/Chocola-X/GXU-Net-AutoLogin/archive/v1.0.0.tar.gz
+	sha256sums = 38adfc35c93366c0abba22ebcefb8af225b20334c8f6679f993fee06e54b2f6f
+
+pkgname = gxu-net-autologin
