@@ -1,16 +1,16 @@
-# Maintainer: vantu5z <vantu5z@mail.ru>
+# Contributor: vantu5z <vantu5z@mail.ru>
 
 pkgname=python-translate
-pkgver=3.6.1
-pkgrel=2
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="Translate is a simple but powerful translation tool written in python with support for multiple translation providers."
 url="https://github.com/terryyin/translate-python"
-depends=('python' 'python-libretranslate')
+depends=('python' 'python-click' 'python-libretranslate' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 license=('MIT')
 arch=('any')
 source=(${pkgname}::"https://github.com/terryyin/translate-python/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('28ddafe090847031a46f626fd06a2adaff067ff9f7c15234e05b196c9393f7f1')
+sha256sums=('0af987a33e9dfbdd99060768e62d2e1961173442abe6baff1676fe46e442c128')
 
 
 build() {
