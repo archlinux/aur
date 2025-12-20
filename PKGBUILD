@@ -4,14 +4,15 @@
 pkgname=tlf-git
 _pkgname=tlf
 _author=Tlf
-pkgver=1.4.1.r245.g2b5c837
+pkgver=1.4.1.r394.gac890ace
+#.r245.g2b5c837
 #.r1.g3535aa1
-pkgrel=2
+pkgrel=1
 pkgdesc="Ham Radio networked logging and contest program - CLI"
 arch=('i686' 'x86_64')
 url="https://tlf.github.io/"
-license=('GPL')
-depends=('xfce4-terminal' 'hamlib-git' 'xmlrpc-c' 'hamradio-menus')
+license=('GPL-2.0-only')
+depends=('python-pexpect' 'xfce4-terminal' 'hamlib' 'xmlrpc-c' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'pkg-config')
 optdepends=('cwdaemon: transmitting cw'
 	    'winkeydaemon: transmitting cw'
