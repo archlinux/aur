@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -16,6 +16,9 @@ depends=(
     "python-linkify-it-py"
     "python-mcp"
     "python-mistralai"
+    "python-opentelemetry-api"
+    "python-opentelemetry-exporter-otlp"
+    "python-opentelemetry-semantic-conventions"
     "python-packaging"
     "python-pexpect"
     "python-pydantic"
