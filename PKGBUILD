@@ -9,7 +9,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=6.6.6
+pkgver=6.6.7
 pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -224,5 +224,5 @@ EOT
 	fi
 }
 #first browser package, second icon file 
-sha256sums=('29f8cf4c60caeb285477a092c8a831ad10acf007d3308bed10069a4607fa190e'
+sha256sums=('146e3d8e5b5f9d4967737e5152b5baa3e96e3d2065c1124e71dbb415730eb93f'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
