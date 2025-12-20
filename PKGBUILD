@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20250719
+pkgver=20251220
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -24,7 +24,6 @@ depends=(
 	'adobe-source-serif-fonts'
 	'awesome-terminal-fonts'
 	'cantarell-fonts'
-	'gentium-plus-font'
 	'gnu-free-fonts'
 	'gsfonts'
 	'inter-font'

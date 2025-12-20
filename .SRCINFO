@@ -1,6 +1,6 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20250719
+	pkgver = 20251220
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -20,7 +20,6 @@ pkgbase = all-repository-fonts
 	depends = adobe-source-serif-fonts
 	depends = awesome-terminal-fonts
 	depends = cantarell-fonts
-	depends = gentium-plus-font
 	depends = gnu-free-fonts
 	depends = gsfonts
 	depends = inter-font
