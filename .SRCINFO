@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-beta-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 7.84.0beta.1
+	pkgver = 7.84.0beta.2
 	pkgrel = 1
 	url = https://signal.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = signal-desktop-beta-bin
 	conflicts = signal-desktop-beta
 	options = !strip
 	options = !emptydirs
-	source = https://updates.signal.org/desktop/apt/pool/s/signal-desktop-beta/signal-desktop-beta_7.84.0-beta.1_amd64.deb
-	sha256sums = 62bbf948e0cf4b333cf94e76c8289bede93bd2fae53f4d05a96b6fb69e5a8d5d
+	source = https://updates.signal.org/desktop/apt/pool/s/signal-desktop-beta/signal-desktop-beta_7.84.0-beta.2_amd64.deb
+	sha256sums = f2e91958884b96bfdcc99e6a587ed962b13b232788c93fa9c042f8c829eec197
 
 pkgname = signal-desktop-beta-bin
