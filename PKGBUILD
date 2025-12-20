@@ -8,8 +8,8 @@
 # Contributor: zer0def <zer0def@github>
 
 pkgname=salt
-pkgver=3007.8
-pkgrel=5
+pkgver=3007.9
+pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
 url='https://saltproject.io/'
@@ -73,15 +73,13 @@ source=(
     utilspycrypto.patch
     httprequests.patch
 )
-sha256sums=(
-    '59f2b5a487fd83239e31a78db0082b125083393131dae10d3b90a3b3487699e2'
-    'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-    '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
-    'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
-    'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
-    '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
-    'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
-)
+sha256sums=('1f770d6b9ca5568f926d98edfcd26dce71c04f6094243db912857953e3d4a56d'
+            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
+            '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
+            'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
+            'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
+            '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
+            'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
