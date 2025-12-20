@@ -98,11 +98,6 @@ prepare() {
 # instructions adapted from relevant Dockerfile-s
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-	make clean
-	for dir in machine-learning/.venv/ output/
-	do
-		if [ -d "$dir" ]; then rm -r "$dir"; fi
-	done
     pnpm fetch
 
 	# build server
