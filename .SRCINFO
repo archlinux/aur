@@ -1,0 +1,20 @@
+pkgbase = opsec-shield
+	pkgdesc = Privacy and security toolkit with Cloudflare WARP VPN integration, Java malware scanner, password fortifier, and metadata anonymizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YOUR_USERNAME/opsec-shield
+	arch = x86_64
+	license = MIT
+	makedepends = python-pyinstaller
+	depends = python
+	depends = python-pyqt5
+	depends = python-pyqt5-webengine
+	depends = python-pywebview
+	depends = python-pillow
+	depends = python-requests
+	depends = qt5-webengine
+	optdepends = cloudflare-warp-bin: Required for WARP VPN feature
+	source = opsec-shield-1.0.0.tar.gz::https://github.com/YOUR_USERNAME/opsec-shield/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = opsec-shield
