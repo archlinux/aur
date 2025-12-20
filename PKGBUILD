@@ -1,6 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=galene-git
-pkgver=1.0.r5.gf5cd385
+pkgver=1.0.r36.g4cf2c9e
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -8,7 +9,7 @@ url='https://galene.org'
 groups=()
 license=('MIT')
 depends=('go')
-makedepends=('git' 'pandoc')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -65,15 +66,15 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   install -m755 "_build/galene" "${pkgdir}/usr/bin"
+  install -m755 "_build/galenectl" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
 
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
-  pandoc --from=markdown --to html --standalone --metadata title="Galène" README > "${doc}/README.html"
-  for file in README.FRONTEND README.PROTOCOL; do
-    pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
+  for file in *.md; do
+    install -Dm644 "$file" "$doc/$file"
   done
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
