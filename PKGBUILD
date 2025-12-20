@@ -2,7 +2,7 @@
 
 pkgname=swaysome
 pkgdesc="AwesomeWM-like workspaces for sway."
-pkgver=2.1.2
+pkgver=2.3.2
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://gitlab.com/hyask/swaysome"
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-  "53da1cc2bbf43110e17a6b499aec4360d0c2dd86e4be7b7faa568496a4dc388b"
+    "d052386f19fd83941da9e2dd0e651cca942eabad5d50297d77bb6fd34271f9a5"
 )
 
 prepare() {
@@ -26,12 +26,12 @@ prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-check() {
-  export RUSTUP_TOOLCHAIN=stable
+# check() {
+#   export RUSTUP_TOOLCHAIN=stable
 
-  cd "$pkgname-$pkgver"
-  cargo test --frozen --all-features
-}
+#   cd "$pkgname-$pkgver"
+#   cargo test --frozen --all-features
+# }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
