@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix
-pkgver=0.5.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位"
 arch=('x86_64')
