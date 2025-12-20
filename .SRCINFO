@@ -1,0 +1,20 @@
+pkgbase = rsjfw-git
+	pkgdesc = Roblox Studio Just Fucking Works - Hardened Linux compatibility layer in C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/9nunya/RSJFW
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = curl
+	depends = libzip
+	depends = wine
+	provides = rsjfw
+	conflicts = rsjfw
+	source = rsjfw::git+https://github.com/9nunya/RSJFW.git
+	sha256sums = SKIP
+
+pkgname = rsjfw-git
