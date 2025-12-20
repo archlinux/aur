@@ -1,7 +1,7 @@
 # Maintainer: Gerg0Vagyok <gerg0vagyok@lmao.sbs>
 
 pkgname=runbox
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A popup runbox for both wayland and x11"
 arch=('x86_64')
