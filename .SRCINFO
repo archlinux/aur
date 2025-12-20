@@ -1,12 +1,14 @@
 pkgbase = vorbisgain
 	pkgdesc = A utility that computes the ReplayGain values for Ogg Vorbis files.
 	pkgver = 0.37
-	pkgrel = 6
+	pkgrel = 7
 	url = https://sjeng.org/vorbisgain.html
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-only
 	depends = libvorbis
 	source = https://sjeng.org/ftp/vorbis/vorbisgain-0.37.tar.gz
-	sha512sums = 67181834e1a0d7c6e1ccd984e2d30ebf1dcdff84caa77f75e5e771de8414904810e966a43852b7184e075d2428fd8b431124835efc370ce6504b8b2756746e04
+	source = fix-compile-errors.patch
+	sha256sums = dd6db051cad972bcac25d47b4a9e40e217bb548a1f16328eddbb4e66613530ec
+	sha256sums = f40e30ace24081be9ec085f7332511b3ff0e16115a6e1bc3514229b2ba455ec0
 
 pkgname = vorbisgain

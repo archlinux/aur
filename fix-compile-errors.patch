@@ -1,0 +1,21 @@
+diff -ruNa vorbisgain-0.37.orig/misc.c vorbisgain-0.37/misc.c
+--- vorbisgain-0.37.orig/misc.c	2004-01-03 22:17:28.000000000 +0100
++++ vorbisgain-0.37/misc.c	2025-12-20 23:03:24.535349159 +0100
+@@ -14,6 +14,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <vorbis/codec.h>
+ #include "i18n.h"
+ #include "misc.h"
+@@ -56,8 +57,7 @@
+     vfprintf(stderr, message, args);
+     va_end(args);
+ 
+-    fprintf(stderr, strerror(err_num));
+-    fprintf(stderr, "\n");
++    fprintf(stderr, "%s\n", strerror(err_num));
+ }
+ 
+ 
