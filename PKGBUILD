@@ -2,8 +2,9 @@
 # Contributor: Max Stabel <max dot stabel03 at gmail dot com>
 
 # So, versioning is a bit of a mess now. Maybe it will improve over time.
+# - we have a 'maintainer.sh' script to automate version bumping, that retrieves an 'udpate.txt' file from Analog
 # - there are permalinks, like https://ltspice.analog.com/download/24.1.0/LTspice64.msi
-# - the above is the same file as what you currently (2025/01/25) get from https://ltspice.analog.com/software/LTspice64.msi
+# - the generic URL https://ltspice.analog.com/software/LTspice64.msi links to the 'latest' version
 # - 'LTspice.json' contains version string '24.0.12' (wasn't updated ?), but the .exe shows the expected 24.1.0 
 # - if you download https://ltspice.analog.com/download/24.0.12/LTspice64.msi, you get a file that self-describes as 24.0.11...
 # - it would be possible to process the .exe to extract a version string but I don't see the point.
@@ -36,7 +37,7 @@ installer_sha256='EC35026697ED32D2AE57B17BE3A3C8877B631F642B66326491A9808C47EC00
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
             '9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c'
-	    ${installer_sha256}
+            ${installer_sha256}
     )
 
 options=(!strip)
