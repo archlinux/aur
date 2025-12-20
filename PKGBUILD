@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=('meson' 'ninja' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('61616c3c4def204aa37fa4c04836493e227d9c527e43b942920f5e48c8f770a9')
+sha256sums=('e882feb355c5374ab11cf40824dd05c220ac7cda744028435c0c64a3e1d8959e')
 
 build() {
     cd "lyrics-$pkgver"
