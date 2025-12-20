@@ -1,7 +1,7 @@
 pkgbase = rkdeveloptool-git
 	pkgdesc = The firmware upgrade tool for Rockchip SoC, consider to be a opensource version of upgrade_tool
 	pkgver = 1.32.r83.304f073
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/rockchip-linux/rkdeveloptool
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = rkdeveloptool-git
 	provides = rkdeveloptool
 	conflicts = rkdeveloptool
 	source = git+https://github.com/rockchip-linux/rkdeveloptool.git
+	source = 0001-add-RK3588-to-udev-rules.patch
 	sha256sums = SKIP
+	sha256sums = cc2bff09638e4c3beef539aaab9ee3af43c06c522efbc2dd59b71ef8c226655c
 
 pkgname = rkdeveloptool-git
