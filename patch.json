@@ -445,6 +445,7 @@
 		],
 		"GitHub.vscode-pull-request-github": [
 			"activeComment",
+			"chatContextProvider",
 			"chatParticipantAdditions",
 			"chatParticipantPrivate",
 			"chatSessionsProvider",
@@ -453,6 +454,7 @@
 			"commentingRangeHint",
 			"commentReactor",
 			"commentReveal",
+			"commentsDraftState",
 			"commentThreadApplicability",
 			"contribAccessibilityHelpContent",
 			"contribCommentEditorActionsMenu",
@@ -530,7 +532,8 @@
 			"dataChannels",
 			"chatSessionsProvider",
 			"devDeviceId",
-			"contribEditorContentMenu"
+			"contribEditorContentMenu",
+			"tokenInformation"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -549,7 +552,8 @@
 		],
 		"ms-python.vscode-pylance": [
 			"terminalShellEnv",
-			"portsAttributes"
+			"portsAttributes",
+			"codeActionAI"
 		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
