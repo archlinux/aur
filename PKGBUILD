@@ -4,12 +4,12 @@
 
 pkgname=xlog
 pkgver=2.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/xlog/"
 license=('GPL-3.0-or-later')
-depends=('gtk2>=2.12.0' 'hamlib' 'winkeydaemon' 'hamradio-menus')
+depends=('gtk-engine-murrine' 'gtk2>=2.12.0' 'hamlib' 'winkeydaemon' 'hamradio-menus')
 optdepends=(	'cwdaemon: serial external-keyer - not usb'
 		'glabels: print log')
 makedepends=('pkg-config')

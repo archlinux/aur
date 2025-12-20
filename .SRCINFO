@@ -1,12 +1,13 @@
 pkgbase = xlog
 	pkgdesc = Ham Radio general purpose logging program.
 	pkgver = 2.0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/xlog/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = pkg-config
+	depends = gtk-engine-murrine
 	depends = gtk2>=2.12.0
 	depends = hamlib
 	depends = winkeydaemon
