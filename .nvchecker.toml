@@ -1,0 +1,6 @@
+[loongarch64-linux-gnu-binutils]
+source = "archpkg"
+archpkg = "binutils"
+strip_release = true
+from_pattern = "\\+.*"
+to_pattern = ""
