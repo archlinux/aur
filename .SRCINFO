@@ -1,7 +1,7 @@
 pkgbase = python-cpplint
 	pkgdesc = Command-line tool to check C/C++ files for style issues following Google's C++ style guide.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cpplint/cpplint
 	arch = any
 	license = custom:BSD3

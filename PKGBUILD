@@ -4,7 +4,7 @@
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
@@ -46,7 +46,7 @@ build() {
 
 check() {
   cd "${_pkgname}-${pkgver}"
-  PYTHONPATH=build/lib pytest -vv
+  PYTHONPATH=build/lib PYTHONWARNINGS="ignore::DeprecationWarning" pytest -W ignore::DeprecationWarning -vv
 }
 
 package() {
