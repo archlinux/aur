@@ -19,7 +19,7 @@ pkgbase = tensorrt
 	makedepends = python-typing_extensions
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.14.1/tars/TensorRT-10.14.1.48.Linux.-gnu.cuda-13.0.tar.gz
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.14.1/tars/TensorRT-10.14.1.48.Linux.x86_64-gnu.cuda-13.0.tar.gz
 	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.14
 	source = git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
