@@ -12,11 +12,10 @@ usage() {
 		usage: ${EXECUTABLE_NAME} [OPERATION] [OPTION].. [PACKAGE].. 
 		
 		The Archlinux User Repository eXplorer.
-		Every option can be set through environment variables but the explicit option has the highest priority.
 		
 		Operations:
-		  install       install any package from AUR or the working directory.
-		  remove        remove packages from system and the package list.
+		  install       install any package from AUR or the source path.
+		  remove        remove packages from the system and internal list.
 		  update        force install any package from AUR and delete source after.
 		  search        query the AUR database via the HTTP RPC API.
 		  suggest       completion results via the AUR HTTP RPC API.
@@ -38,7 +37,7 @@ usage() {
 		     --cleanup                         delete sources after successful installs.
 		     --clean-operation                 delete sources after unsucessful installs.
 		  -x --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
-		                                       "rpc" - AUR HTTP RPC API, "makepkg" - filesystem.
+		                                       "rpc" - AUR HTTP RPC API, "pkgbuild" - source path PKGBUILD.
 		  -d --download-only                   download the source from AUR and stop.
 		  -G --git-opts [OPTS]..               opts to give in to git operations. ("")
 		  -M --makepkg-opts [OPTS]..           opts to give in to makepkg installs. ("-sirc")
@@ -69,13 +68,12 @@ usage() {
 		                                       "submitter", "provides", "conflicts", "replaces",
 		                                       "keywords", "groups", "comaintainers".
 		     --sort-by [KEY]                   key to sort results by. ("popularity")
-		                                       "popularity", "firstsubmitted", "lastmodified",
-		                                       "votes", "popularity".
+		                                       "popularity", "firstsubmitted", "lastmodified", "votes".
 
 		  suggest:
 		  -C --curl-opts                       opts to give in to curl.
 		                                       timeouts can be overwritten with this.
-		     --order-by [ORDER]                how to order search results. ("descending")
+		     --order-by [ORDER]                how to order suggest results. ("descending")
 		                                       "ascending", "descending".
 		     --search-results [COUNT]          number of results to suggest, max 20. (20)
 		  -o --output [TYPE]                   how to output suggest results. ("formatted")
@@ -84,7 +82,7 @@ usage() {
 		  update:
 		     --block-overwrite                 don't overwrite existing sources.
 		  -x --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
-		                                       "rpc" - AUR HTTP RPC API, "makepkg" - filesystem.
+		                                       "rpc" - AUR HTTP RPC API, "pkgbuild" - source path PKGBUILD.
 		     --keep-sources                    don't cleanup after successful updates.
 		     --keep-failed-sources             don't cleanup after unsuccessful updates.
 		  -M --makepkg-opts [OPTS]             opts to give in to makepkg installs. ("-sirc")
@@ -99,6 +97,7 @@ usage() {
 		
 		Environment variables:
 		  Capitalized long option names with AURX_ prefix, for example: AURX_SEARCH_CRITERIA.
+		  The explicit options have the highest priority.
 	EOF
 }
 
@@ -220,8 +219,8 @@ print_error() {
 			;;
 		76 )
 			local TEMP_PACKAGES
-			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
-			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }." >&2
+			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[@]}"
+			echo "[!] Could not find ${TEMP_PACKAGES[*]/\ /,\ }." >&2
 			;;
 		77 )
 			echo "[!] The suggest operation can not output json." >&2
@@ -367,6 +366,7 @@ aurx_completion() {
 }
 
 launch_sanity_checks() {
+	# Check if installed kernel is the same version as the running one.
 	if [[ $(vercmp "$(pacman -Q linux | cut -d ' ' -f 2)" "$(uname -r)") -ne 0 ]]; then
 		print_error 80
 		exit 80
@@ -1215,7 +1215,18 @@ execute_script() {
 }
 
 # Metadata.
-INTERNAL_VERSION="1.0.5-4"
+declare -a METADATA_VARIABLES
+declare -a METADATA_ARRAYS
+
+METADATA_VARIABLES=("INTERNAL_VERSION")
+METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "GENERAL_OPTIONS" "INSTALL_OPTIONS" \
+	"REMOVE_OPTIONS" "UPDATE_OPTIONS" "SEARCH_OPTIONS" "SUGGEST_OPTIONS" "COMPLETION_OPTIONS" "LIST_OPTIONS" "AVAILABLE_COMPLETIONS" \
+	"COMPARISON_CRITERIA_VALUES" "OUTPUT_VALUES" "OUTPUT_SUGGEST_VALUES" "ORDER_BY_VALUES" "SEARCH_CRITERIA_VALUES" "SORT_BY_VALUES")
+
+declare "${METADATA_VARIABLES[@]}"
+declare -a "${METADATA_ARRAYS[@]}"
+
+INTERNAL_VERSION="1.0.6-1"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "MAINTAINED" \
 	"NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
@@ -1243,9 +1254,7 @@ SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends"
 	"submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers")
 SORT_BY_VALUES=("firstsubmitted" "lastmodified" "votes" "popularity")
 
-# Declarations and defaults.
 declare "${INTERNAL_VARIABLES[@]}"
 declare -a "${INTERNAL_ARRAYS[@]}"
 
-# Run.
 execute_script "${@}"

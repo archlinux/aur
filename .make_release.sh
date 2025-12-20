@@ -4,6 +4,10 @@ make_release() {
     local CURRENT_VERSION
     local TARGET_VERSION
     local RELEASE_MESSAGE
+    local CURRENT_PKGVER
+    local CURRENT_PKGREL
+    local TARGET_PKGVER
+    local TARGET_PKGREL
 
     CURRENT_PKGVER=$(sed -n 's/pkgver=\(.*\)/\1/p' PKGBUILD | tr -d '"')
 	CURRENT_PKGREL=$(sed -n 's/pkgrel=\(.*\)/\1/p' PKGBUILD)
