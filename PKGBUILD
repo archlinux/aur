@@ -29,7 +29,7 @@ build() {
     export ELECTRON_CACHE="$srcdir/electron-cache"
     export ELECTRON_BUILDER_CACHE="$srcdir/electron-cache"
     
-    npm install
+    npm install --verbose
     npm run build
 }
 
