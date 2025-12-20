@@ -15,6 +15,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create unit' Drop-Ins
 
+
+## [2.10.5] - 2025-12-20
+
+### Changed
+  - More actions side panel become a pop-up
+
+## [2.10.0] - 2025-12-18
+
+### Added
+  - Can create drop-in files
+  - Can remove drop-in files
+  - Can reload systemd manager configuration at system and user session level
+  - Clean, Freeze and Thaw actions privilege elevations (Unavailable with Flatpak)
+
 ## [2.9.2] - 2025-11-22
 
 ### Fixed
