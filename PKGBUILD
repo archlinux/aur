@@ -18,7 +18,7 @@ options=(!strip)
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/digimezzo/${__pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
 	"${__pkgname}.desktop")
 sha256sums=('72b396d48f1837bf8eca89607a256f059f19b30d113548e8ce6bc68103b5ca60'
-		'11193ec4d802a63e7526efeab56cc6137db3809237bb5d79687c287d8d6f0531')
+		'9cb953f1c18efb35d165de778ae126ecfbd6b4a33c6bfe18d493ff92df354d25')
 
 prepare() {
     chmod u+x      ${srcdir}/${_pkgname}-${pkgver}.AppImage
