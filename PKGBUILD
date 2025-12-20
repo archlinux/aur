@@ -10,10 +10,10 @@ depends=('libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 provides=('signal-desktop-beta')
 conflicts=('signal-desktop-beta')
-_pkgver=7.83.0-beta.1
+_pkgver=7.84.0-beta.1
 pkgver=${_pkgver/-/}
 source=("https://updates.signal.org/desktop/apt/pool/s/signal-desktop-beta/signal-desktop-beta_${_pkgver}_amd64.deb")
-sha256sums=('dc8e3b9a717821df4e2f79dacbf30cb865d14ba85c458754af7b0d7ce0798834')
+sha256sums=('62bbf948e0cf4b333cf94e76c8289bede93bd2fae53f4d05a96b6fb69e5a8d5d')
 
 package(){
   # Extract package data
