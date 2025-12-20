@@ -1,6 +1,6 @@
 pkgbase = calicoctl
 	pkgdesc = Calico CLI tool
-	pkgver = 3.31.2
+	pkgver = 3.31.3
 	pkgrel = 1
 	url = https://github.com/projectcalico/calico
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = calicoctl
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/projectcalico/calico/archive/v3.31.2/calico-3.31.2.tar.gz
-	sha256sums = 4c4126b0069c38f6917af251e5b166b28cc55b71885576e276ba73f0ec2cdbac
+	source = https://github.com/projectcalico/calico/archive/v3.31.3/calico-3.31.3.tar.gz
+	sha256sums = d130227adf56f5ae30ea22d8ef05974fbf4428360d4120f99f6bd3b1fa99d0d9
 
 pkgname = calicoctl
