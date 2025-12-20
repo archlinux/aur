@@ -1,7 +1,7 @@
 pkgbase = wivrn-dashboard
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
 	pkgver = 25.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WiVRn/WiVRn
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -26,7 +26,6 @@ pkgbase = wivrn-dashboard
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = vulkan-icd-loader
-	depends = wivrn-server=25.12
 	source = wivrn-dashboard-25.12.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v25.12.tar.gz
 	sha256sums = f8490c3cd7ec28b8885539d20519f8ef6af55c1f8fc1b4b486b05639a7d8f4d5
 
