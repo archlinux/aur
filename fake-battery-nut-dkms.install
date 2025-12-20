@@ -1,0 +1,35 @@
+post_install() {
+    echo ">>> Building kernel module with DKMS..."
+    dkms install fake-battery-nut/$1
+
+    echo ">>> Enabling and starting fake-battery-nut service..."
+    systemctl daemon-reload
+    systemctl enable --now fake-battery-nut.service 2>/dev/null || true
+
+    echo ""
+    echo ">>> fake-battery-nut is now active!"
+    echo ">>> Configure your UPS name in: /usr/lib/systemd/system/fake-battery-nut.service"
+    echo ">>> Default is: cyberpower@localhost"
+}
+
+post_upgrade() {
+    echo ">>> Rebuilding kernel module with DKMS..."
+    dkms remove fake-battery-nut --all 2>/dev/null || true
+    dkms install fake-battery-nut/$1
+
+    echo ">>> Restarting fake-battery-nut service..."
+    systemctl daemon-reload
+    systemctl restart fake-battery-nut.service 2>/dev/null || true
+}
+
+pre_remove() {
+    echo ">>> Stopping fake-battery-nut service..."
+    systemctl stop fake-battery-nut.service 2>/dev/null || true
+    systemctl disable fake-battery-nut.service 2>/dev/null || true
+
+    echo ">>> Unloading kernel module..."
+    rmmod fake_battery_nut 2>/dev/null || true
+
+    echo ">>> Removing DKMS module..."
+    dkms remove fake-battery-nut --all 2>/dev/null || true
+}

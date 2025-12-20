@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=fake-battery-nut-dkms
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Bridge NUT UPS data to UPower/desktop - makes any UPS look like a laptop battery"
 arch=('x86_64')
@@ -8,8 +8,9 @@ url="https://github.com/aaronsb/fake-battery-nut"
 license=('GPL2')
 depends=('dkms' 'nut' 'bc')
 makedepends=('linux-headers')
+install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aaronsb/fake-battery-nut/archive/v${pkgver}.tar.gz")
-sha256sums=('520073e7247173aba8b294a6646dde99e9431be55f02ab400b15099fae173ccd')
+sha256sums=('30545667d6f1de043d907fe3db533f04b14f50960fba6048d0c194ade4fdf747')
 
 package() {
     cd "$srcdir/fake-battery-nut-${pkgver}"
@@ -30,23 +31,4 @@ package() {
 
     # Udev rule for device permissions
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-fake-battery-nut.rules" <<< 'KERNEL=="fake_battery_nut", MODE="0666"'
-}
-
-post_install() {
-    dkms install fake-battery-nut/${pkgver}
-    echo ""
-    echo ">>> Configure your UPS in /usr/lib/systemd/system/fake-battery-nut.service"
-    echo ">>> Then: systemctl enable --now fake-battery-nut"
-}
-
-post_upgrade() {
-    dkms remove fake-battery-nut --all 2>/dev/null || true
-    dkms install fake-battery-nut/${pkgver}
-}
-
-pre_remove() {
-    systemctl stop fake-battery-nut 2>/dev/null || true
-    systemctl disable fake-battery-nut 2>/dev/null || true
-    rmmod fake_battery_nut 2>/dev/null || true
-    dkms remove fake-battery-nut --all 2>/dev/null || true
 }
