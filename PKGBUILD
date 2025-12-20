@@ -5,9 +5,9 @@
 
 _pkgname=fatrace
 pkgname=${_pkgname}-minimal
-pkgver=0.18.0
+pkgver=0.19.1
 pkgrel=1
-pkgdesc="Reports file access events from all running processes. Without powertop and python dependency; i.e. without the 'power-usage-report' script."
+pkgdesc="Reports file access events from running processes. Without powertop and python dependency; i.e. without the 'power-usage-report' script."
 arch=('x86_64' 'aarch64' 'armv6l')
 url="https://github.com/martinpitt/fatrace"
 license=('GPL')
@@ -16,8 +16,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(fatrace.tar.gz::https://github.com/martinpitt/fatrace/archive/${pkgver}.tar.gz
         Makefile.patch)
-sha256sums=('f2ca2623c7b3744d01827e0301df315e8b428c9a479081469ee6d21d0889de51'
-            '4b4c974c24d2ba9928ff578952656fa3383f6d5142b98b86aecb051668c43896')
+sha256sums=('fd8f143f4e162d36c8ae29c51b32d315415447829c81091e3bb86b326051c77c'
+            'e651f2a3edc6e782c1a474de1a4116653fe0b086b3da016c76332c8cacf303ac')
 
 prepare() {
     patch --directory="$_pkgname-$pkgver" --forward --strip=2 --input="${srcdir}/Makefile.patch"

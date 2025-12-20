@@ -1,14 +1,14 @@
-diff --color --unified --recursive --text a/fatrace-0.17.0/Makefile b/fatrace-0.17.0/Makefile
---- a/fatrace-0.17.0/Makefile	2022-11-11 11:04:56.000000000 +0100
-+++ b/fatrace-0.17.0/Makefile	2023-03-11 15:30:52.082983430 +0100
+diff --color --unified --recursive --text a/fatrace-0.19.1/Makefile b/fatrace-0.19.1/Makefile
+--- a/fatrace-0.19.1/Makefile	2025-08-26 03:50:19.000000000 -0500
++++ b/fatrace-0.19.1/Makefile	2025-12-19 17:37:28.224819974 -0500
 @@ -1,5 +1,5 @@
  CFLAGS ?= -O2 -g -Wall -Wextra -Werror
 -PREFIX ?= /usr/local
 +PREFIX ?= /usr
  
- fatrace: fatrace.o
- 	$(CC) $(LDFLAGS) -o $@ $<
-@@ -10,9 +10,7 @@
+ all: fatrace tests/slow-exit.so tests/simple-touch
+ 
+@@ -12,10 +12,8 @@
  distclean: clean
  
  install: fatrace
@@ -19,4 +19,15 @@ diff --color --unified --recursive --text a/fatrace-0.17.0/Makefile b/fatrace-0.
 +	install -m 755 -D fatrace $(DESTDIR)$(PREFIX)/bin/fatrace
 +	install -m 644 -D fatrace.8 $(DESTDIR)$(PREFIX)/share/man/man8/fatrace.8
  
- .PHONY: clean distclean install
+ tests/slow-exit.so: tests/slow-exit.c
+ 	$(CC) -shared -fPIC -o $@ $< -ldl
+@@ -24,9 +22,7 @@
+ 	$(CC) $(CFLAGS) -o $@ $<
+ 
+ lint:
+-	ruff check power-usage-report
+ 	ruff check tests
+-	mypy power-usage-report
+ 	mypy tests
+ 
+ 
