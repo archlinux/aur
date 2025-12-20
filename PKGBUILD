@@ -3,8 +3,8 @@
 # Contributor: csllbr; Popsch <popsch@gmx.net>
 
 pkgname=mu
-pkgver=1.12.13
-pkgrel=3
+pkgver=1.12.14
+pkgrel=1
 pkgdesc="Maildir indexer/searcher and Emacs client (mu4e)"
 arch=("x86_64" "armv7h" "aarch64")
 url="http://www.djcbsoftware.nl/code/mu"
@@ -15,14 +15,8 @@ optdepends=(
 	"emacs: mu4e support"
 	"guile: guile bindings"
 )
-source=(
-	"https://github.com/djcb/mu/releases/download/v${pkgver}/mu-${pkgver}.tar.xz"
-	"https://github.com/djcb/mu/commit/0a4fabbf446d15b538600dfe7d879cad70ce941e.patch"
-)
-sha256sums=(
-	'7908078c5cc90afc7c038d4372b33b404f7fddfe466a27994413dc06f993a445'
-	'24b385afcc508550e6edb745c03d320c2de37905128b15da348455814b2a7327'
-)
+source=("https://github.com/djcb/mu/releases/download/v${pkgver}/mu-${pkgver}.tar.xz")
+sha256sums=('e7215beb599bfa9b511bc6a7fec51da2cb8cc1122805542e5e50c1912c01043f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -35,9 +29,6 @@ prepare() {
 		-Dreadline=enabled \
 		-Dcld2=disabled \
 		build
-
-	patch -p1 < "${srcdir}/0a4fabbf446d15b538600dfe7d879cad70ce941e.patch"
-
 }
 
 
