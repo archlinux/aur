@@ -12,13 +12,13 @@ provides=('pttr')
 conflicts=('pttr')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7785d524982e954e8ae4a96ff03ab3b62fdf65fec403d200d3e464aa79e815fb')
+sha256sums_aarch64=('be368402e617c21f790df4385e4aa89b94d81488506efa9c5a1bd1e743ae8b7e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_i386.tar.gz")
-sha256sums_i686=('1b3f419cf5ab87092e71caecd0e7bad7be3ecf7d90d9ba83a098089fb0173dc6')
+sha256sums_i686=('dca87cd64352d829567c83c45be9dd5ce9acd60bb7c8d465cdcfd62bb067c46b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('295355eb012597d9c47d527f595a313c39df07a5121b4dc0c6cd245152d17965')
+sha256sums_x86_64=('e9b41a83f0caae832527402534a2ce13cdecf8b4e20b810427d1a56dd184cbf3')
 
 package() {
   install -Dm755 "./pttr" "${pkgdir}/usr/bin/pttr"
