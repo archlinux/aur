@@ -1,6 +1,6 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
-pkgver=1.2.1.r0.g43ed53b
+pkgver=1.3.0.r0.gd1ef778
 pkgrel=7
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
@@ -57,7 +57,7 @@ pkgver() {
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/XIVLauncher.Core/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:DefineConstants=WINE_XIV_ARCH_LINUX
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release
 }
 
 package() {
