@@ -5,7 +5,7 @@ _pkgname=scarb
 pkgname=${_pkgname}-bin
 _orgname=software-mansion
 _github=${_orgname}/${_pkgname}
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='The Cairo package manager'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('46cc07f23cac9e03dedbd6ddc73f56015bbcf3bcc5905ead95dd1c8ca50044c4')
-sha256sums_aarch64=('9082b499c223aeb1200b45b4f76dd553d1b849debc0002401cacdfe41fa4061c')
+sha256sums_x86_64=('119536045813331ab24c8993b3171f26d62e471368fc305d01e4c3a0c4324eba')
+sha256sums_aarch64=('a2a840947fed79487a805efd2c7158d084a696f01bb017f14326f65015d9843f')
 
 package() {
 	for each_executable in $(ls "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin/"); do
