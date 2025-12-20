@@ -1,6 +1,6 @@
 pkgbase = fotema
 	pkgdesc = Photo gallery for Linux
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/blissd/fotema
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = fotema
 	depends = opencv
 	depends = openssl
 	depends = xdg-desktop-portal
-	source = fotema-2.3.0.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = a1ff32abf0868804cd9a9d01617080b58eca33797123e306069025303304ef83
+	source = fotema-2.4.0.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = f548be7a6cd7a48a761a684ae03eaf55026fe802b84c6b4980da63dcb7a8856c
 
 pkgname = fotema
