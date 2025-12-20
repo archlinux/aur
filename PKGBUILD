@@ -3,7 +3,7 @@
 _target=loongarch64-linux-gnu
 pkgname=$_target-binutils
 pkgver=2.45.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit LoongArch'
 arch=(x86_64)
 url='https://gnu.org/software/binutils/'
