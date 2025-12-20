@@ -1,0 +1,17 @@
+pkgbase = ny-cli
+	pkgdesc = A beautiful terminal-based anime streaming client powered by nyanime.tech
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AnjishnuSengupta/ny-cli
+	arch = any
+	license = MIT
+	depends = curl
+	depends = grep
+	depends = sed
+	optdepends = mpv: recommended video player
+	optdepends = vlc: alternative video player
+	optdepends = fzf: fuzzy finder for better menus
+	source = ny-cli-1.0.0.tar.gz::https://github.com/AnjishnuSengupta/ny-cli/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ny-cli
