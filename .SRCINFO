@@ -1,12 +1,13 @@
 pkgbase = ripunzip
 	pkgdesc = Extract zip files in parallel
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/ripunzip
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = pkgconf
+	makedepends = mold
 	depends = bzip2
 	depends = gcc-libs
 	depends = glibc
