@@ -924,7 +924,7 @@ package_php84-litespeed() {
     fi
     case "${_phpbase}" in
         *)
-            install -D -m755 sapi/litespeed/php "${pkgdir}/usr/bin/ls${pkgbase}"
+            install -D -m755 sapi/litespeed/lsphp "${pkgdir}/usr/bin/ls${pkgbase}"
             ;;
     esac
     popd
