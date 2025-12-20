@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LTSpice
+Comment=SPICE simulator, schematic capture and waveform viewer.
+Exec=/usr/bin/ltspice
+Icon=ltspice
+Terminal=false
+StartupNotify=false
+Categories=Application;

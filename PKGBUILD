@@ -22,13 +22,13 @@ makedepends=('gawk'
 	'curl'
 	'icoutils'
 	'imagemagick'
-	'gendesk'
 	'msitools'
 )
 
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
 	"conv.sh"
+	"ltspice.desktop"
 	"LTspice64-${pkgver}.msi::https://LTspice.analog.com/download/26.0.1/LTspice64.msi"
 	)
 
@@ -37,6 +37,7 @@ installer_sha256='EC35026697ED32D2AE57B17BE3A3C8877B631F642B66326491A9808C47EC00
 sha256sums=('78f50fd44506093849421ec3c05516eba1d850160192175c4e7db4811df40f1c'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
             '9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c'
+            'a8b97e57c3fc33b856d45d8e93f38a84f825938dc461a40957ea0f56464d21ee'
             ${installer_sha256}
     )
 
@@ -56,8 +57,6 @@ build() {
     wrestool -x -t 14 LTspice.exe >${pkgname}.ico
     magick ${pkgname}.ico ${pkgname}.png
     rm ${pkgname}.ico
-
-    gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="LTSpice" --exec="/usr/bin/ltspice" -f
 
     #tweak mixed-case hyperlinks in help docs
     cd LTspiceHelp
