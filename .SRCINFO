@@ -1,13 +1,14 @@
 pkgbase = python-wyoming
 	pkgdesc = Peer-to-peer protocol for voice assistants
 	pkgver = 1.8.0
-	pkgrel = 1
-	url = https://github.com/rhasspy/wyoming
+	pkgrel = 2
+	url = https://github.com/OHF-Voice/wyoming
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-flask
+	checkdepends = python-swagger-ui-py
 	checkdepends = python-zeroconf
 	makedepends = git
 	makedepends = python-build
@@ -18,7 +19,7 @@ pkgbase = python-wyoming
 	optdepends = python-zeroconf: Zeroconf support
 	optdepends = python-flask: http
 	optdepends = python-swagger-ui-py: http
-	source = git+https://github.com/rhasspy/wyoming.git#tag=v1.8.0
+	source = git+https://github.com/OHF-Voice/wyoming.git#tag=v1.8.0
 	b2sums = 3e3a13224a13c350efb4fdf01fdef7ee5612af4fc6706e66d11477773d701141e509cf7883e949745c19a675844c9b8c3811f4b3ee688f5b4671d8ef26af02a6
 
 pkgname = python-wyoming
