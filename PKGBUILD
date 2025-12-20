@@ -2,7 +2,7 @@
 # Contributor: Rene Hollander <mail@renehollander.at>
 
 pkgname=cadvisor-bin
-pkgver=0.55.0
+pkgver=0.55.1
 pkgrel=1
 pkgdesc="Analyzes resource usage and performance characteristics of running containers."
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}::https://github.com/google/cadvisor/releases/downl
         cadvisor.conf
         cadvisor.service)
 
-sha256sums=('8e4e1b26fb1567668ffe91fe4ddfd94d3853f608883ff1eba07ed8a70db363a3'
+sha256sums=('da411af43a207e713a68f50999fc34576f18f6b6d7f90a680bf103d3ebb4c4a4'
             '785c5ad59f9cf5215afaba911a622dd09cc61749d17d8e46b449ccdece2a9787'
             'e6d6e399d0909a7aeb86b4beab52b8895760b740cf26d55f8b87003cb06b5f9b')
 
