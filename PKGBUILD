@@ -5,14 +5,15 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=25.0.0
+pkgver=25.1.0
 pkgrel=1
-pkgdesc='Fast, transactional, distributed graph database'
+#pkgdesc='Fast, transactional, distributed graph database'
+pkgdesc='Dgraph is a horizontally scalable and distributed GraphQL database with a graph backend'
 arch=('x86_64')
-url='https://github.com/hypermodeinc/dgraph'
+url='https://github.com/dgraph-io/dgraph'
 license=('Apache-2.0' 'custom:DCL')
 provides=('dgraph' 'badgerdb')
-conflicts=('dgraph' 'dgraph-git' 'badgerdb')
+conflicts=('dgraph' 'badgerdb')
 install="$pkgname.install"
 source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd64.tar.gz"
         "dgraph-$pkgver.tar.gz.sha256::$url/releases/download/v$pkgver/dgraph-checksum-linux-amd64.sha256"
@@ -22,8 +23,8 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('752e04949526b94aabd5e0bbaa9cac4a0260e12cfe2d7cdb36c5438b9c3bf3e8'
-            '9a0a821a6f1c7a65504a820e326f3c2d85049a17dc6b6d2bccc4142e0d3e80ba'
+sha256sums=('4cc8be73af1288c074e2d61f26ee00f1629d2e6dfbc97edee4b1c650c4262ecc'
+            '4d650a97ca7837be38c1dd626ddc56e80531b5e86da6490f0ed849c502842db0'
             '8af2e6f64aa7fe850fcaffd94700a53ab639ae42ae78d70713f6f44158e15937'
             '74a449f7100f36530a8d2a8b0ccc5e2a2e01044a9bdcfeeb60069235f8ec7cad'
             '5f245e21547ee20c65bde76a0b1db995a7dbfdd30f99de861036672cdebfb395'
