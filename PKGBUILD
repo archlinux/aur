@@ -2,7 +2,7 @@
 
 pkgname=snow-git
 groups=(snow-lang-git)
-pkgver=0.11.0.r6.g2f0ecfc
+pkgver=0.13.0.r0.g3de53a1
 pkgrel=1
 _java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
@@ -43,13 +43,26 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+
+    sed -i '
+        /<buildArg>--static<\/buildArg>/d
+        /<buildArg>--libc=musl<\/buildArg>/d
+        /<buildArg>-H:CCompilerPath=\/opt\/musl\/bin\/musl-gcc<\/buildArg>/d
+        /<buildArg>-H:CLibraryPath=\/opt\/musl\/lib<\/buildArg>/d
+    ' pom.xml
 }
 
 build() {
     export PATH="/usr/lib/jvm/java-${_java}-graalvm/bin/:$PATH"
     export JAVA_HOME="/usr/lib/jvm/java-${_java}-graalvm"
     cd "${pkgname}"
-    mvn -P native-linux -DskipTests clean package
+
+    mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
+    mvn dependency:resolve -U
+    mvn -P native-linux clean package -DskipTests \
+        -Ddependency.go-offline.skip=true \
+        -Dnative.image.buildArgs="--verbose --no-fallback"
 }
 
 package() {
