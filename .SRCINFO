@@ -1,14 +1,14 @@
 pkgbase = jugglinglab-git
 	pkgdesc = A program for animating juggling patterns
-	pkgver = 1.6.3.r13.g1457959
+	pkgver = 1.6.7.r183.g3dac62f
 	pkgrel = 1
 	url = https://jugglinglab.org/
 	arch = any
 	makedepends = git
-	makedepends = ant
-	makedepends = java-environment>=11
+	makedepends = java-environment>=17
+	makedepends = java-environment<25
 	depends = java-runtime>=11
-	provides = jugglinglab=1.6.3.r13.g1457959
+	provides = jugglinglab=1.6.7.r183.g3dac62f
 	conflicts = jugglinglab
 	source = git+https://github.com/jkboyce/jugglinglab.git
 	sha256sums = SKIP
