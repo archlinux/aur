@@ -1,7 +1,7 @@
 pkgbase = r-vcdextra
 	pkgdesc = 'vcd' Extensions and Additions
-	pkgver = 0.8.6
-	pkgrel = 1
+	pkgver = 0.8.7
+	pkgrel = 2
 	url = https://cran.r-project.org/package=vcdExtra
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = r-vcdextra
 	depends = r-here
 	depends = r-purrr
 	depends = r-readxl
+	depends = r-rgl
 	depends = r-stringr
 	depends = r-tidyr
 	depends = r-vcd
@@ -35,7 +36,7 @@ pkgbase = r-vcdextra
 	optdepends = r-sleuth2
 	optdepends = r-stats4
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/vcdExtra_0.8-6.tar.gz
-	sha256sums = 51cca108752d9a944964531bfa68607f7ecc2183d9e4d5a0d0bd639bcf333a0c
+	source = https://cran.r-project.org/src/contrib/vcdExtra_0.8.7.tar.gz
+	sha256sums = c4ce4caaa5008f835ad9a575bdeb3f0d40358d8a8cc4aa095f2cc0ae4426f4e8
 
 pkgname = r-vcdextra
