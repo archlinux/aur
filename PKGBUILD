@@ -2,7 +2,7 @@
 
 pkgname="millennium-git"
 _pkgdir="Millennium"
-pkgver=v2.31.0.beta.8
+pkgver=v2.31.1
 pkgrel=1
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
@@ -35,12 +35,12 @@ build() {
 
     pnpm --dir $srcdir/$_pkgdir/src/frontend  install
     pnpm --dir $srcdir/$_pkgdir/src/frontend  run build
-    pnpm --dir $srcdir/$_pkgdir/sdk           install
-    pnpm --dir $srcdir/$_pkgdir/sdk           run build
+    pnpm --dir $srcdir/$_pkgdir/src/sdk           install
+    pnpm --dir $srcdir/$_pkgdir/src/sdk           run build
 
     echo -e    "\e[1m\e[92m==>\e[0m \e[1mCopying Millennium shims...\e[0m"
     mkdir -p   $srcdir/$_pkgdir/shims/build
-    cp -r      $srcdir/$_pkgdir/sdk/packages/loader/build/ "./shims/"
+    cp -r      $srcdir/$_pkgdir/src/sdk/packages/loader/build/ "./shims/"
 
     echo -e    "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
