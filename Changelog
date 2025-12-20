@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 6.2.0 ➙ 7.0.1
+ Tags         : 6.3.0 ➙ 7.0.2
               : 2025-07-10 ➙ 2025-12-20
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-12-20   : 7.0.2
+              - Add note about Docs/Changes-7.x.rst to readme since github does
+                  not handle rst references correctly
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-12-20   : 7.0.1
               - Installer fix - license file in different directory
@@ -42,11 +47,4 @@
                 and then they are automatically synced and servers restarted.
 
  2025-07-10   : 6.3.0
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-07-10   : 6.2.0
-              - Make sure all changes to certs/ are properly marked so that production is updated for any change.
-                Fix buglet with min_roll_mins option.
-              - Update readme
-              - Update to README
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf
