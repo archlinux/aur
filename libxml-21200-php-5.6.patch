@@ -1,0 +1,58 @@
+--- php-5.6.40-o/ext/libxml/libxml.c
++++ php-5.6.40/ext/libxml/libxml.c
+@@ -424,6 +424,7 @@
+ 	return(ret);
+ }
+ 
++#if LIBXML_VERSION < 21200
+ static xmlOutputBufferPtr
+ php_libxml_output_buffer_create_filename(const char *URI,
+                               xmlCharEncodingHandlerPtr encoder,
+@@ -473,6 +474,7 @@
+ 
+ 	return(ret);
+ }
++#endif
+ 
+ static int _php_libxml_free_error(xmlErrorPtr error)
+ {
+@@ -740,7 +742,7 @@
+ 	va_end(args);
+ }
+ 
+-PHP_LIBXML_API void php_libxml_structured_error_handler(void *userData, xmlErrorPtr error)
++PHP_LIBXML_API void php_libxml_structured_error_handler(void *userData, const xmlError *error)
+ {
+ 	_php_list_set_error_structure(error, NULL);
+ 
+@@ -870,7 +872,9 @@
+ 		/* report errors via handler rather than stderr */
+ 		xmlSetGenericErrorFunc(NULL, php_libxml_error_handler);
+ 		xmlParserInputBufferCreateFilenameDefault(php_libxml_input_buffer_create_filename);
++#if LIBXML_VERSION < 21200
+ 		xmlOutputBufferCreateFilenameDefault(php_libxml_output_buffer_create_filename);
++#endif
+ 	}
+ 
+ 	return SUCCESS;
+@@ -883,7 +887,9 @@
+ 		/* report errors via handler rather than stderr */
+ 		xmlSetGenericErrorFunc(NULL, php_libxml_error_handler);
+ 		xmlParserInputBufferCreateFilenameDefault(php_libxml_input_buffer_create_filename);
++#if LIBXML_VERSION < 21200
+ 		xmlOutputBufferCreateFilenameDefault(php_libxml_output_buffer_create_filename);
++#endif
+ 
+ 		/* Enable the entity loader by default. This ensure that
+ 		 * other threads/requests that might have disable the loader
+@@ -1002,10 +1008,8 @@
+    Retrieve last error from libxml */
+ static PHP_FUNCTION(libxml_get_last_error)
+ {
+-	xmlErrorPtr error;
+-
+-	error = xmlGetLastError();
++	const xmlError *error = xmlGetLastError();
+ 	
+ 	if (error) {
+ 		object_init_ex(return_value, libxmlerror_class_entry);

@@ -1,0 +1,11 @@
+--- php-5.6.40-o/ext/standard/scanf.c	2025-11-26 16:55:22.471630848 +0100
++++ php-5.6.40/ext/standard/scanf.c	2025-11-26 16:55:27.775791290 +0100
+@@ -590,7 +590,7 @@
+ 	int  base = 0;
+ 	int  underflow = 0;
+ 	size_t width;
+-	long (*fn)() = NULL;
++	long (*fn)(const char *, char **, int) = NULL;
+ 	char *ch, sch;
+ 	int  flags;
+ 	char buf[64];	/* Temporary buffer to hold scanned number
