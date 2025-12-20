@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=4.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -25,12 +25,12 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-ai.tar.gz")
-sha256sums=("1615b00e30afa36631e6e978898252fbe453de6411c063f65225c213654446c8")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver--ai.tar.gz")
+sha256sums=("44b2213594957d81653f5b1ed73300169ba2d5f4359764d61a4c4ab4967c2c4b")
 
 build() {
-    tar -xvzf v$pkgver-ai.tar.gz
-    cd "hnefatafl-$pkgver-ai"
+    tar -xvzf v$pkgver--ai.tar.gz
+    cd "hnefatafl-$pkgver--ai"
 
     cargo build --release --features client --no-default-features
 
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "hnefatafl-$pkgver-ai"
+    cd "hnefatafl-$pkgver--ai"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
