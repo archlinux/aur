@@ -1,6 +1,6 @@
 pkgbase = deadlock-modmanager-bin
 	pkgdesc = A mod manager for the Valve game Deadlock
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/deadlock-mod-manager/deadlock-mod-manager
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = deadlock-modmanager-bin
 	provides = deadlock-modmanager
 	conflicts = deadlock-modmanager
 	conflicts = deadlock-modmanager-git
-	source = deadlock-modmanager-0.12.0.AppImage::https://github.com/deadlock-mod-manager/deadlock-mod-manager/releases/download/v0.12.0/Deadlock.Mod.Manager_0.12.0_amd64.AppImage
-	sha256sums = 05eec397681979093fb5a30216ba6933726711add368091d15bb38bf5e36a27a
+	source = deadlock-modmanager-0.13.0.AppImage::https://github.com/deadlock-mod-manager/deadlock-mod-manager/releases/download/v0.13.0/Deadlock.Mod.Manager_0.13.0_amd64.AppImage
+	sha256sums = 2ab46a94264d877f10f572b2071c2cb3297906828259d4b8df47c3af168196ee
 
 pkgname = deadlock-modmanager-bin
