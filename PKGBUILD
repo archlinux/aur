@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=parrot-cli
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Intelligent roasts of failed commands'
 arch=('x86_64')
