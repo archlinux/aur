@@ -1,6 +1,6 @@
 pkgbase = waterfox
 	pkgdesc = Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.
-	pkgver = 6.6.6
+	pkgver = 6.6.7
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
