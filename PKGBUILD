@@ -1,6 +1,6 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
@@ -50,7 +50,7 @@ prepare() {
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/XIVLauncher.Core/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:DefineConstants=WINE_XIV_ARCH_LINUX
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release
 }
 
 package() {
