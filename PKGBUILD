@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fussr
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
