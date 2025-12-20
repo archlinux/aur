@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Kanata tray
+Comment=Tray icon for Kanata
+Exec=kanata-tray
+Terminal=false
+Type=Application
+Icon=kanata

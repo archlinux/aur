@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!kanata-tray.desktop
+!kanata.svg
+!PKGBUILD
