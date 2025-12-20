@@ -34,7 +34,7 @@ source=("${pkgname}.sh"
 
 installer_sha256='EC35026697ED32D2AE57B17BE3A3C8877B631F642B66326491A9808C47EC0081'
 
-sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
+sha256sums=('78f50fd44506093849421ec3c05516eba1d850160192175c4e7db4811df40f1c'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
             '9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c'
             ${installer_sha256}
@@ -76,19 +76,21 @@ package()
     install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # Install docs to /usr/share/doc/
+    # Install docs
     install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
     cp -r LTspiceHelp/* "${pkgdir}/usr/share/doc/${pkgname}"
 
-    # Install binary files to /opt
-    install -m755 -d "${pkgdir}/opt/${pkgname}"
-    install -m755 *.exe "${pkgdir}/opt/${pkgname}"
-    install -m644 *.zip "${pkgdir}/opt/${pkgname}"
-    install -m644 LTspice.json "${pkgdir}/opt/${pkgname}"
-    install -m644 ChangeLog.txt "${pkgdir}/opt/${pkgname}"
+    # Install program files, following
+    # https://wiki.archlinux.org/title/Wine_package_guidelines
+    bin_destdir="${pkgdir}/usr/share/${pkgname}"
+    install -m755 -d "${bin_destdir}"
+    install -m755 *.exe "${bin_destdir}"
+    install -m644 *.zip "${bin_destdir}"
+    install -m644 LTspice.json "${bin_destdir}"
+    install -m644 ChangeLog.txt "${bin_destdir}"
 
     # symlink help files
-    ln -sv "/usr/share/doc/${pkgname}" "${pkgdir}/opt/${pkgname}/LTspiceHelp"
+    ln -sv "/usr/share/doc/${pkgname}" "${bin_destdir}/LTspiceHelp"
 
     # Install /usr/bin startscript
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

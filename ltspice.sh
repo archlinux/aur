@@ -16,4 +16,4 @@ if [ ! -d $WINEPREFIX ]; then
 fi
 export WINEARCH=win64
 export WINEPREFIX
-wine /usr/lib/wine/x86_64-windows/start.exe /unix /opt/ltspice/LTspice.exe -ini $CONFIG_DIR/LTspice.ini "$@"
+wine /usr/lib/wine/x86_64-windows/start.exe /unix /usr/share/ltspice/LTspice.exe -ini $CONFIG_DIR/LTspice.ini "$@"
