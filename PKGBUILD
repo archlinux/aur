@@ -1,14 +1,14 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fussr
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
 license=('MIT')
-depends=('git')
-makedepends=('rust' 'cargo' 'cmake' 'libssh2' 'openssl' 'zlib' 'pkg-config')
+depends=('git' 'libgit2')
+makedepends=('rust' 'cargo' 'pkg-config')
 provides=('fussr')
 source=("git+https://github.com/tenseleyFlow/fussr.git#tag=v$pkgver")
 sha256sums=('SKIP')
