@@ -5,7 +5,7 @@
 _pkgname="xpadneo"
 _dkmsname="hid-${_pkgname}"
 pkgname="$_pkgname-dkms-git"
-pkgver=0.9.r226.ga16acb0
+pkgver=0.9.r244.g886a83d
 pkgrel=1
 pkgdesc="Advanced Linux Driver for Xbox One Wireless Gamepad"
 url="https://github.com/atar-axis/xpadneo"
@@ -25,13 +25,15 @@ pkgver() (
 )
 
 prepare() {
+    local VERSION="$(pkgver)"
+
     cd "${_pkgname}/${_dkmsname}"
 
     sed -E \
       -e '/^CLEAN/d' \
       -e '/^POST_INSTALL/d' \
       -e '/^POST_REMOVE/d' \
-      -e 's/@DO_NOT_CHANGE@/'"v${pkgver}"'/g' \
+      -e 's/@DO_NOT_CHANGE@/'"v${VERSION}"'/g' \
       dkms.conf.in > dkms.conf
 
     rm -f dkms.post_*
