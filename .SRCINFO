@@ -1,0 +1,13 @@
+pkgbase = zoo-design-studio-bin
+	pkgdesc = Zoo Design Studio CAD application (AppImage)
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/KittyCAD/modeling-app
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	options = !strip
+	source = Zoo.Design.Studio-1.1.3.AppImage::https://github.com/KittyCAD/modeling-app/releases/download/v1.1.3/Zoo.Design.Studio-1.1.3-x86_64-linux.AppImage
+	sha256sums = 700852f5453c7e4b5726f54375490558acb6726bcab2ee68a7619e13adece3e9
+
+pkgname = zoo-design-studio-bin
