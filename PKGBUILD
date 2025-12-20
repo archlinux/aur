@@ -2,7 +2,7 @@
 
 pkgname=fussr
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
     cd fussr
     export CARGO_TARGET_DIR=target
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
