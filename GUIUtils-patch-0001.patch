@@ -1,0 +1,31 @@
+--- GUIUtils.lua	2025-12-18 17:14:26.315164086 +1100
++++ GUIUtils.lua.a	2025-12-20 13:14:51.220427209 +1100
+@@ -2050,7 +2050,7 @@
+   return x2string(text, "Hex")
+ end
+ 
+-local ansiPattern = rex.new("\\e\\[([0-9:;]*?)m")
++-- local ansiPattern = rex.new("\\e\\[([0-9:;]*?)m")
+ 
+ -- function for converting a raw ANSI string into plain strings
+ function ansi2string(text)
+@@ -2278,7 +2278,7 @@
+ 
+ 
+ 
+-local insertFuncs = {[echo] = insertText, [cecho] = cinsertText, [decho] = dinsertText, [hecho] = hinsertText}
++-- local insertFuncs = {[echo] = insertText, [cecho] = cinsertText, [decho] = dinsertText, [hecho] = hinsertText}
+ --- Suffixes text at the end of the current line when used in a trigger.
+ ---
+ --- @see prefix
+@@ -2812,8 +2812,8 @@
+ }
+ 
+ -- make these items local for easier and swifter use
+-local echoPatterns = _Echos.Patterns
+-local echoProcess = _Echos.Process
++-- local echoPatterns = _Echos.Patterns
++-- local echoProcess = _Echos.Process
+ 
+ --- internal function responsible for taking the color information
+ -- returned as part of the table by _Echos.Process and outputting

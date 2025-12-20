@@ -1,6 +1,6 @@
 pkgbase = mudlet-git
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch
-	pkgver = r1828.gce1845598
+	pkgver = 4.19.1.r2969.gfbb4799bd
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = mudlet-git
 	makedepends = git
 	makedepends = boost
 	makedepends = qt6-tools
+	makedepends = assimp
 	depends = qt6-multimedia
 	depends = qt6-5compat
 	depends = hunspell
@@ -24,11 +25,14 @@ pkgbase = mudlet-git
 	depends = pugixml
 	depends = lua-yajl
 	depends = qtkeychain-qt6
+	depends = openmp
 	optdepends = ttf-bitstream-vera: default font
 	optdepends = ttf-ubuntu-font-family: default font
 	optdepends = noto-fonts-emoji: emoji font support
 	conflicts = mudlet
 	source = git+https://github.com/Mudlet/Mudlet.git#branch=development
+	source = GUIUtils-patch-0001.patch
 	sha256sums = SKIP
+	sha256sums = 7d4ff78742fc3efa71818dfe8b441484527899a3810e4547e97fc4d7744e2833
 
 pkgname = mudlet-git
