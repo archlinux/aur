@@ -19,11 +19,12 @@
 #
 
 function download_git-lfs {
-  local url="${1/git-lfs+/git+}" dir
+  local url="${1/git-lfs+/git+}" dir fragment
   dir="$SRCDEST/$(get_filename "$url")"
+  fragment=$(get_uri_fragment "$url")
   download_git "$url"
   git -C "$dir" lfs install --worktree
-  git -C "$dir" lfs fetch
+  git -C "$dir" lfs fetch origin "${fragment##*=}"
 }
 
 function extract_git-lfs {
