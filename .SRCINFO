@@ -1,7 +1,7 @@
 pkgbase = python-histoprint
 	pkgdesc = Pretty print Numpy (and other) histograms to the console.
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/histoprint
 	arch = any
 	license = MIT
