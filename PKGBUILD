@@ -13,7 +13,7 @@
 
 pkgname=salt-onedir
 provides=('salt')
-pkgver=3007.9
+pkgver=3007.10
 pkgrel=1
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
@@ -29,16 +29,16 @@ backup=('etc/logrotate.d/salt'
         'etc/salt/minion')
 
 source_x86_64=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}-onedir-linux-x86_64.tar.xz")
-sha256sums_x86_64=('1565b65f3258a9e84315e2e316b187d4805159868823b0030494012ef215d885')
+sha256sums_x86_64=('7019ec28ab2f0d159446c5332282aa22e8c3be43547e3b467a1efaed225eae80')
 
 source_aarch64=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}-onedir-linux-arm64.tar.xz")
-sha256sums_aarch64=('02d5efcd89b4b5b287a8823ea7e01bdca70a40a81daff48a2352fef58055a8a4')
+sha256sums_aarch64=('9844f6a1a6c606c81b65271cae6e6378e5baac58ffae4a707dda5bc79cfcc4bb')
 
 # The source tarball is downloaded because we need various files from pkg/common that are not included in the onedir tarball
 source=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}.tar.gz"
         salt.logrotate
         0000-services.patch)
-sha256sums=('1f770d6b9ca5568f926d98edfcd26dce71c04f6094243db912857953e3d4a56d'
+sha256sums=('737151afd2f6be074883c96997431e609ec37ff31ac7b0645d09852fd4249d84'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
             '6eb7d8840c40da7070167d3c742e7337c45f80d639fb7ef72f196fcaa2843469')
 
