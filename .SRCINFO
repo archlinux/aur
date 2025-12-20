@@ -21,6 +21,6 @@ pkgbase = wshowlyrics
 	optdepends = snixembed: System tray support for Swaybar
 	optdepends = libexttextcat: Language detection for translation validation
 	source = wshowlyrics-0.7.0.tar.gz::https://github.com/unstable-code/lyrics/archive/v0.7.0.tar.gz
-	sha256sums = dd0ef6df6b43257f328aa372a91754aad7aafee9a53876d76b2009c052ad5da7
+	sha256sums = 9b19047c76c811cdabd67aa140283468759726c4bef2ebcdc4b5a400da53e08a
 
 pkgname = wshowlyrics
