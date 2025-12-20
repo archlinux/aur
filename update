@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# Update pkgver in PKGBUILD before running this
+
+# version = `sed -En 's/pkgver=([[:digit:].]+)/\\1/p' PKGBUILD`.chomp
+version = File.readlines("PKGBUILD", chomp: true).grep(/pkgver=/).first.split("=").last
+
+# Get checksums from this version
+latest_checksums = `curl -Ls https://github.com/jesseduffield/lazydocker/releases/download/v#{version}/checksums.txt`.lines(chomp: true)
+
+# Update checksums in PKGBUILD
+{
+  arm64: "sha256sums_aarch64",
+  armv7: "sha256sums_armv7h",
+  x86: "sha256sums_i686",
+  x86_64: "sha256sums_x86_64"
+}.each do |arch, id|
+  sum = latest_checksums.grep(%r{(\w+)\s+lazydocker_.+Linux_#{arch}.tar.+}).first.scan(/\A(\w+).+/).flatten.first
+  `sed -Ei "/#{id}=/s/'[[:xdigit:]]+'/'#{sum}'/" PKGBUILD`
+end
+
+# Then don’t forget this !
+system "makepkg --printsrcinfo > .SRCINFO"
