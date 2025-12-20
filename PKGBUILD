@@ -7,7 +7,7 @@
 pkgbase=nvidia-580xx-settings
 pkgname=('nvidia-580xx-settings' 'libxnvctrl-580xx')
 pkgver=580.119.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for configuring the NVIDIA graphics driver (580xx)'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
@@ -20,17 +20,18 @@ sha512sums=('9572a854cf5c97e79ad879fd6b9b1303443cbc1744a1fb57f8cce57a0759e83a564
             '0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae')
 
 prepare() {
-  export PREFIX=/usr
-  export NV_USE_BUNDLED_LIBJANSSON=0
-  export OUTPUTDIR=out
-
   cd "nvidia-settings-${pkgver}"
   patch -Np1 -i "${srcdir}/nvidia-settings-libxnvctrl_so.patch"
 }
 
 build() {
   cd "nvidia-settings-${pkgver}"
+
   export CFLAGS+=" -ffat-lto-objects"
+  export NV_USE_BUNDLED_LIBJANSSON=0
+  export OUTPUTDIR=out
+  export PREFIX=/usr
+
   make
 }
 
