@@ -1,6 +1,6 @@
 # Maintainer: Tássio Virgínio <tassiovirginio@gmail.com>
 pkgname=try-rs-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="try-rs is a CLI tool designed to manage the chaos of temporary projects."
 arch=('x86_64')
