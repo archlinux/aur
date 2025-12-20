@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+need_install=()
+
+for cmd in fastfetch neofetch toilet find shuf; do
+  if ! command_exists "$cmd"; then
+    need_install+=("$cmd")
+  fi
+done
+
+if [ ${#need_install[@]} -ne 0 ]; then
+  echo "Installing missing dependencies: ${need_install[*]}"
+  sudo pacman -S --needed --noconfirm "${need_install[@]}"
+fi
+
+echo "=== CISA INITIALIZING SYSTEM AUDIT ==="
+sleep 1
+
+# fastfetch 3 times
+for i in {1..3}; do
+  fastfetch
+done
+
+# neofetch 5 times
+for i in {1..5}; do
+  neofetch
+done
+
+# Harmless prank messages
+echo
+echo "⚠️  WARNING: Unauthorized commands ahead"
+sleep 1
+echo "Scanning for suspicious activity..."
+sleep 1
+echo "Result: You are clear or are you?"
+sleep 1
+
+# Random file path (safe)
+echo
+echo "Selecting a random file on your system..."
+
+RANDOM_FILE=$(find "$HOME" -type f 2>/dev/null | shuf -n 1 || true)
+
+if [ -n "$RANDOM_FILE" ]; then
+  echo "📂 Random file detected:"
+  echo "$RANDOM_FILE"
+else
+  echo "No file found (somehow)."
+fi
+
+echo
+toilet CISA
