@@ -1,11 +1,11 @@
 pkgbase = try-rs-bin
-	pkgdesc = try-rs CLI tool (binário pré-compilado)
-	pkgver = 0.1.6
+	pkgdesc = try-rs is a CLI tool designed to manage the chaos of temporary projects. Instead of cluttering your Desktop or with , , and , organizes them into date-prefixed directories, offering a robust TUI (Terminal User Interface) to create, navigate, and clean up your experiments.
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/tassiovirginio/try-rs
 	arch = x86_64
 	license = MIT
-	source = try-rs-x86_64-unknown-linux-gnu.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v0.1.6/try-rs-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = try-rs-v0.1.7-linux-x86_64.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v0.1.7/try-rs-v0.1.7-linux-x86_64.tar.gz
+	sha256sums = 33991012393bc8aa747bdee02b5251a628012edecd1975c9808122f328b0336e
 
 pkgname = try-rs-bin
