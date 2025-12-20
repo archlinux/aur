@@ -2,7 +2,7 @@
 
 pkgname=vapoursynth-plugin-mlrt-ext-models-rife
 pkgver=4.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for VapourSynth: mlrt (external models for RIFE v4.11 and newer)"
 arch=('any')
 url='https://github.com/AmusementClub/vs-mlrt'
@@ -60,7 +60,7 @@ sha256sums=(
   "e7c3872fd217663911f0b89a5940bdc314f5a061fd5fa8639fd1674d31d2f1cf"
   "7d53e29fff5e67345b19f4ce97dfd1e34b490eedc752df2236904fda1a13842c"
   "d51b92bf4f1408d1e2e243c44cb8ca1fc885fdff42a4a01f03b23b5f54917592"
-  "81f60538e067a28381d96174a06d577f82efb4e54f509e451318392423fe53b2"
+  "1e472e3f0309902440c2c9a6cb006ff44307248ace58c30a0ce87834c3670776"
 )
 
 package() {
