@@ -1,20 +1,20 @@
 pkgbase = neo4j-community-bin
 	pkgdesc = A fully transactional graph database implemented in Java (binary package)
-	pkgver = 2025.08.0
-	pkgrel = 2
+	pkgver = 2025.11.2
+	pkgrel = 1
 	url = https://github.com/neo4j/neo4j
 	arch = any
 	license = GPL-3.0-only
 	depends = java-runtime>=21
 	depends = psmisc
 	provides = neo4j-community
-	provides = neo4j-community=2025.08.0
+	provides = neo4j-community=2025.11.2
 	conflicts = neo4j-community
 	conflicts = neo4j-enterprise
-	source = https://dist.neo4j.org/deb/neo4j_2025.08.0_all.deb
+	source = https://dist.neo4j.org/deb/neo4j_2025.11.2_all.deb
 	source = neo4j.sysusers
 	source = neo4j.tmpfiles
-	sha256sums = 21c859363fe144714838d07dc6c9b3443dc345959324de39f4a3ccfb9355356e
+	sha256sums = 0def6133bf020fb2e1b2e6b15756ef323d16d5bce089ac7df847b3c6b9fe0404
 	sha256sums = 440874201629f436b3817be05d7f8240c9bef603a11dc0a125634287c0376b5d
 	sha256sums = a4a12084b93c357adfc54d1c0736d710ff507418824e08e33cc1f30bdc8a67f8
 
