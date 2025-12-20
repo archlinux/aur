@@ -1,6 +1,6 @@
 pkgbase = shufflecake
 	pkgdesc = Plausible deniability layer for Linux (Userland & DKMS)
-	pkgver = v0.5.5
+	pkgver = v0.5.6
 	pkgrel = 1
 	url = https://shufflecake.net/
 	arch = x86
@@ -13,10 +13,10 @@ pkgbase = shufflecake
 	depends = glibc
 	provides = shufflecake
 	conflicts = shufflecake
-	source = https://codeberg.org/shufflecake/shufflecake-c/archive/v0.5.5.tar.gz
+	source = https://codeberg.org/shufflecake/shufflecake-c/archive/v0.5.6.tar.gz
 	source = dkms.conf
 	source = dm-sflc-dkms.conf
-	sha256sums = b47c98d7194288112e637f0df8b6bc86bf2417da36832af78224c4eae42eb44b
+	sha256sums = d9464703e03d4387cdc38edd1c2baf689b69ed50ca32477b5da77290c60552b6
 	sha256sums = eb95503a32f8aea67a78e1503a97a29cdedfa9e7d7bafd743734faf4f4b69236
 	sha256sums = ce91cea869435bdc7d34c9777ef3112960e9b260556501125bbb048a9d6f4416
 
