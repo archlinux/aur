@@ -12,7 +12,7 @@ depends=('glibc')
 
 source=("${url}/releases/download/v${pkgver}/timemap-linux")
 
-sha256sums=('68ac6fa2188b39eddabb4c778601cc47a9010801043c7e1ff6ed719d8963f917')
+sha256sums=('4fa1ec563d9ee8b5ac321f79432b4ace9690af3b045336b768efdd24f12c01a0')
 
 package() {
     install -Dm755 "${srcdir}/timemap-linux" "${pkgdir}/usr/bin/timemap"
