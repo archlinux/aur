@@ -1,6 +1,6 @@
 # Maintainer: saxamaxas <sakshyamsigdel@gmail.com>
 pkgname=hyprdrover
-pkgver=0.1.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A lightweight session manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ab39f4005dc16c11a0a3ee290ba9aa38630ac0b8e7c5ec020f3f4ef4bb2a200c')
+sha256sums=('6d4ba2aca029bc97bf328a2887b27bce19e3444c9647ce8f3b583935cc21e8cb')
 
 prepare() {
   cd "$pkgname-$pkgver"
