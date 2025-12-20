@@ -1,0 +1,15 @@
+pkgbase = fake-battery-nut-dkms
+	pkgdesc = Kernel module to expose NUT UPS data as Linux power_supply devices for btop/KDE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aaronsb/fake-battery-nut
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = dkms
+	depends = nut
+	depends = bc
+	source = fake-battery-nut-dkms-1.0.0.tar.gz::https://github.com/aaronsb/fake-battery-nut/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fake-battery-nut-dkms
