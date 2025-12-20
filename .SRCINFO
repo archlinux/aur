@@ -30,6 +30,6 @@ pkgbase = google-cloud-ops-agent-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98
-	sha256sums = 9e4a033b122620fdcbe8181246f450e9e4009e1774b3ba2173d9e6a70494d984
+	sha256sums = aa5e5b1a27980a22a3c879a095909a20632af9eab614060e8d0f809028911a5f
 
 pkgname = google-cloud-ops-agent-git
