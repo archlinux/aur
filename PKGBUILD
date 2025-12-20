@@ -2,12 +2,12 @@
 
 pkgname=adb-gui-kit-bin
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, modern GUI for ADB and Fastboot"
 arch=('x86_64')
 url="https://github.com/Drenzzz/adb-gui-kit"
 license=('custom')
-depends=('gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'android-tools')
+depends=('gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'android-tools' 'rsync')
 provides=('adb-gui-kit')
 conflicts=('adb-gui-kit')
 options=('!strip')
