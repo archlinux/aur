@@ -4,10 +4,10 @@ _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
 
 _pkgver=148.0a1
-_pkgverx=""
+_pkgverx="_FP1"
 pkgver=${_pkgver}${_pkgverx}
 
-pkgrel=2
+pkgrel=1
 pkgdesc="Optimized Firefox for GNU/Linux"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -59,7 +59,7 @@ source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/hellfire-${_pkgver}.en-US.linux-x86_64.7z")
-sha256sums_x86_64=('1526a0d9618be569e93cb37cc3532bf3bc9c725445ff87ba6deb763d8466af8d')
+sha256sums_x86_64=('fd8fb1038d729d874fae9b45febfd3963d2b91bedc2f86fc4474b638950355c5')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
