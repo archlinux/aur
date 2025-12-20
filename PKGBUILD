@@ -19,7 +19,7 @@ optdepends=(
     'cloudflare-warp-bin: Required for WARP VPN feature'
 )
 makedepends=(
-    'python-pyinstaller'
+    'pyinstaller'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
