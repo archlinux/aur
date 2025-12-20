@@ -3,7 +3,7 @@
 _pkgname=uhi
 pkgname="python-${_pkgname}"
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Contains the code for the PlottableHistogram Protocol, to be used in type checking libraries wanting to conform to the protocol."
 arch=('any')
 url='https://github.com/scikit-hep/uhi'
