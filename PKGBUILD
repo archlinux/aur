@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -33,7 +33,7 @@ optdepends=(
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
-sha256sums=('26d1117cc37115f8756bd22ac7edbd7a5ecbc1686f762d5dfa64af219efffabb')
+sha256sums=('d38822a6dd15e86d7ea59a44760500a3d23f9312c94053f57e70d3da3ea59028')
 
 prepare() {
     cd "$pkgname-$pkgver-$pkgrel"
@@ -52,11 +52,14 @@ build() {
     # local _features="--features gpu-hipblas"  # AMD ROCm
 
     # Build AVX2 baseline binary (compatible with most CPUs from 2013+)
-    # Disable AVX-512 in both Rust code and whisper.cpp to prevent SIGILL on older CPUs
-    # -C target-feature disables AVX-512 in rustc/LLVM (affects Rust std lib and deps)
-    # CMAKE_*_FLAGS disable AVX-512 in whisper.cpp via -mno-avx512f
-    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl" \
-    CMAKE_C_FLAGS="-mno-avx512f" CMAKE_CXX_FLAGS="-mno-avx512f" \
+    # Disable AVX-512 and GFNI in both Rust code and whisper.cpp to prevent SIGILL on older CPUs
+    # -C target-feature disables these in rustc/LLVM (affects Rust std lib and deps)
+    # CMAKE_*_FLAGS disable them in whisper.cpp
+    # GGML_AVX512=OFF disables whisper.cpp's auto-detection of AVX-512 on build machine
+    # GFNI (Galois Field New Instructions) is separate from AVX-512 and unsupported on Zen 3
+    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl,-gfni" \
+    GGML_NATIVE=OFF GGML_AVX512=OFF \
+    CMAKE_C_FLAGS="-mno-avx512f -mno-gfni" CMAKE_CXX_FLAGS="-mno-avx512f -mno-gfni" \
     cargo build --frozen --release ${_features:-}
     cp target/release/voxtype target/release/voxtype-avx2
 
@@ -67,8 +70,9 @@ build() {
 
     # Build Vulkan GPU binary (for GPU acceleration)
     cargo clean
-    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl" \
-    CMAKE_C_FLAGS="-mno-avx512f" CMAKE_CXX_FLAGS="-mno-avx512f" \
+    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl,-gfni" \
+    GGML_NATIVE=OFF GGML_AVX512=OFF \
+    CMAKE_C_FLAGS="-mno-avx512f -mno-gfni" CMAKE_CXX_FLAGS="-mno-avx512f -mno-gfni" \
     cargo build --frozen --release --features gpu-vulkan
     cp target/release/voxtype target/release/voxtype-vulkan
 }
@@ -77,8 +81,9 @@ check() {
     cd "$pkgname-$pkgver-$pkgrel"
     export RUSTUP_TOOLCHAIN=stable
     # Only test with AVX2 build to avoid SIGILL in build environments
-    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl" \
-    CMAKE_C_FLAGS="-mno-avx512f" CMAKE_CXX_FLAGS="-mno-avx512f" \
+    RUSTFLAGS="-C target-cpu=haswell -C target-feature=-avx512f,-avx512bw,-avx512cd,-avx512dq,-avx512vl,-gfni" \
+    GGML_NATIVE=OFF GGML_AVX512=OFF \
+    CMAKE_C_FLAGS="-mno-avx512f -mno-gfni" CMAKE_CXX_FLAGS="-mno-avx512f -mno-gfni" \
     cargo test --frozen
 }
 
