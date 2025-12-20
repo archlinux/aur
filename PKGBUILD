@@ -4,7 +4,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 # Contributor: Ryan Steed <ryan.steed.usa@pm.me>
 pkgname=opensnitch-git
-pkgver=1.7.2.r71.9b1ae176
+pkgver=1.8.0.r18.65480fa5
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -50,14 +50,12 @@ _arch_commit=eebb5fb16ed15251d3ead163e8e4b4229c21a999
 _arch_git_url=${_arch_svntogit}/${_arch_commit}/trunk/
 source=(
   'git+https://github.com/evilsocket/opensnitch.git'
-  "fix-systemd-service.patch"
   "remove-debian-path.patch"
   "use-system-python-packages.patch"
   "${_arch_git_url}fix-setup.py.patch"
   "${_arch_git_url}tmpfiles.conf"
 )
 sha256sums=('SKIP'
-            'd4a8a88e15e1f2759964b53dce05bccd9842ccba22b9c10c50763ad4d03680e6'
             'd88cfe1acce3389ab577958048e5b642fc3b34d12f2f2f69123113bfe49d0099'
             '812824386d1ef72effd10c193d4fcbe371bf987a072cea77f9bc45bd526dc36e'
             'e77d2f6a6ada2761a987828e00c7725dee0c06bdb8793ae414d0df7fb1eb44a7'
@@ -81,11 +79,6 @@ prepare() {
   # of /usr
   # * prefer scaled SVG instead of pixellated 48x48 PNG
   patch -p1 -i "$srcdir/fix-setup.py.patch"
-
-  # TODO file an upstream bug
-  # fix a couple of issues with the systemd services
-  # (slightly adapted Arch upstream patch)
-  patch -p1 -i "$srcdir/fix-systemd-service.patch"
 
   # TODO file an upstream bug
   # remove Debian-specific path from sys.path
@@ -156,8 +149,8 @@ package() {
 
   install -d "$pkgdir/etc/${pkgname%-git}d/rules"
   install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
-  install -Dm644 "daemon/data/init/${pkgname%-git}d.service" -t \
-    "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "utils/packaging/daemon/deb/debian/${pkgname%-git}.service" \
+    "$pkgdir/usr/lib/systemd/system/${pkgname%-git}d.service"
   install -vDm644 "$srcdir/tmpfiles.conf" \
     "$pkgdir/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
   # install -Dm644 "daemon/${pkgname%-git}d-ebpf.service" -t \
