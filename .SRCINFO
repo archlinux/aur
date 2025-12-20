@@ -1,20 +1,17 @@
 pkgbase = dxcc
-	pkgdesc = Ham Radio - Determines ARRL DXCC entity of a callsign
+	pkgdesc = Ham Radio - Determines ARRL DX entity of a callsign
 	pkgver = 20191204
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fkurz.net/ham/dxcc.html
-	install = dxcc.install
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = cty
 	depends = perl-tk
-	depends = desktop-file-utils
 	source = http://fkurz.net/ham/dxcc/dxcc-20191204.tar.gz
 	source = dxcc.desktop
 	md5sums = eec8de4c7cc81172684510c21fb28451
-	md5sums = 2d79fa90731cc07fe9e8144275d8a301
+	md5sums = 66087dabafc0b72824037b136f6e53ed
 	sha256sums = 03e9036137b00f2b683e2f18a46e4422754fc3f1aa72807b42e0d9eaa0d0f288
-	sha256sums = 8e393a2e2dbf6621ea95dce06f800bfd72dcaa736f423e1d7ff1a60c58710a77
+	sha256sums = 325123ed9c391d95c73bf7a8bd13dec3a4aa3395a403db1d8b5b5a9f3960cbb4
 
 pkgname = dxcc
-
