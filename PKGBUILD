@@ -4,8 +4,8 @@ pkgbase=monado
 pkgname=(
     'monado'
     'monado-doc')
-pkgver=25.0.0
-pkgrel=3
+pkgver=25.1.0
+pkgrel=1
 pkgdesc='An open source OpenXR runtime'
 arch=('x86_64')
 url='https://monado.dev/'
@@ -50,14 +50,8 @@ makedepends=(
     'wayland'
     'wayland-protocols'
     'zlib')
-source=("https://gitlab.freedesktop.org/monado/monado/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
-        '010-monado-eigen5-fix.patch'::'https://gitlab.freedesktop.org/monado/monado/-/commit/c0c10fd34df85706e5897fd79eea3fb40461f1c0.patch')
-sha256sums=('75596aaa207f2ad03d4de4911e00995f084f407333b789d25fc8a88e946715e7'
-            '643400ade23ff221439d3f1a27583dae832384ea36ccd787283033aa7bf17aad')
-
-prepare() {
-    patch -d "${pkgname}-v${pkgver}" -Np1 -i "${srcdir}/010-monado-eigen5-fix.patch"
-}
+source=("https://gitlab.freedesktop.org/monado/monado/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('40291e8fa779f083658e7d813ef61c0c845d4f419cea73593d62b359cd781faa')
 
 build() {
     cmake -B build -S "${pkgname}-v${pkgver}" \
