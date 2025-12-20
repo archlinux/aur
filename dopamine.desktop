@@ -7,3 +7,4 @@ Icon=dopamine
 StartupWMClass=Dopamine
 Comment=The audio player that keeps it simple
 Categories=Utility;
+MimeType=audio/mpeg;audio/flac;audio/ogg;audio/opus;audio/wav;audio/mp4;
