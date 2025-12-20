@@ -11,11 +11,11 @@ arch=('x86_64')
 url="https://sjeng.org/vorbisgain.html"
 license=('GPL')
 depends=('libvorbis')
-source=(https://sjeng.org/ftp/vorbis/${pkgname}-${pkgver}.tar.gz)
+source=("https://sjeng.org/ftp/vorbis/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('67181834e1a0d7c6e1ccd984e2d30ebf1dcdff84caa77f75e5e771de8414904810e966a43852b7184e075d2428fd8b431124835efc370ce6504b8b2756746e04')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
     --enable-recursive \
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
