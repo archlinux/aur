@@ -69,9 +69,6 @@ package() {
     mv "${_distfile}" "${pkgdir}/etc/authlib/"`basename "${_distfile}" .dist`
   done
 
-  # copy the .schema; mostly refered to as courier.schema -> rename it
-  install -Dm 444 authldap.schema  "${pkgdir}/etc/openldap/schema/courier.schema"
-
   chown 72:72 "${pkgdir}/usr/lib/courier-authlib"
 
   # Install systemd sysuser file
