@@ -35,7 +35,7 @@ sha512sums=('febfadfae1e0ed324196575bf5b2dd9760235b2036aab502e60763a5cd62faea09e
 
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action --no-deps "${_whl}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action ignore --no-deps "${_whl}"
 
   python -O -m compileall "${pkgdir}"
 
