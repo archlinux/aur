@@ -1,0 +1,19 @@
+pkgbase = envlens-bin
+	pkgdesc = A application to easily manage environment variables from the terminal
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/craigf-svg/envlens
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = envlens
+	conflicts = envlens
+	source = LICENSE
+	sha256sums = 7f95b17e2c7efac1689df6facffaea4696caa55a63fe9f1a1492b3922aa816cf
+	source_x86_64 = envlens-x86_64-0.1.2.tgz::https://github.com/craigf-svg/envlens/releases/download/v0.1.2/envlens_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2c5a7000dc2d9a925b3659d0c361e5d74fcac4c34e15bc29e8e639d40a9e79b3
+	source_aarch64 = envlens-aarch64-0.1.2.tgz::https://github.com/craigf-svg/envlens/releases/download/v0.1.2/envlens_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 271b4acde5271b5d261e9f4ee652bafbd5208f420c0d93b049da3699dd6bb658
+
+pkgname = envlens-bin

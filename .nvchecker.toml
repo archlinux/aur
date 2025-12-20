@@ -1,0 +1,5 @@
+[envlens-bin]
+source = "github"
+github = "craigf-svg/envlens"
+use_latest_release = true
+prefix = "v"
