@@ -2,7 +2,7 @@
 
 pkgname=hexcore-link
 pkgver=2.5.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Hexcore Link for ANNE PRO 2D and other keyboards (firmware > 3.0)"
 arch=('x86_64')
 url="https://www.hexcore.xyz/hexcore-link"
