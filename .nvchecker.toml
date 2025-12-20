@@ -1,0 +1,4 @@
+[zfxtop-bin]
+source = "github"
+github = "ssleert/zfxtop"
+use_latest_release = true

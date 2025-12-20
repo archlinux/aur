@@ -1,0 +1,20 @@
+pkgbase = zfxtop-bin
+	pkgdesc = fetch top for gen Z with X written by bubbletea enjoyer
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/ssleert/zfxtop
+	arch = x86_64
+	arch = i686
+	license = BSD-2-Clause
+	provides = zfxtop
+	conflicts = zfxtop
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/ssleert/zfxtop/0.3.2/LICENSE
+	source = README-0.3.2.md::https://raw.githubusercontent.com/ssleert/zfxtop/0.3.2/.github/README.md
+	sha256sums = 02e9b43e0d03fe54ac4303c6d39caa5c2b173976d1fb8553c351acc383e81350
+	sha256sums = 237180dd714c7241872e986597c33eb5a283a958343977067ba807802355950f
+	source_x86_64 = zfxtop-x86_64-0.3.2.tgz::https://github.com/ssleert/zfxtop/releases/download/0.3.2/zfxtop_0.3.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5121708cd3e206d6439899a88fe1ce5293179eee9fd47061a5eece07763b3edc
+	source_i686 = zfxtop-i686-0.3.2.tgz::https://github.com/ssleert/zfxtop/releases/download/0.3.2/zfxtop_0.3.2_linux_386.tar.gz
+	sha256sums_i686 = 3da8cb2c654406ec91a37cab93ac1681e2d66abbb2fb42469185772c5eae2c71
+
+pkgname = zfxtop-bin
