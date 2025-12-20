@@ -1,0 +1,20 @@
+pkgbase = snitch-bin
+	pkgdesc = a friendlier ss/netstat for humans
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/karol-broda/snitch
+	license = MIT
+	depends = glibc
+	conflicts = snitch
+	provides = snitch
+	arch = aarch64
+	source_aarch64 = https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = 77a02ca0fcec2e8df40ce06d0dd14bbd9e9dce73d22a0b8d0587fe2316a913c9
+	arch = armv7h
+	source_armv7h = https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_armv7.tar.gz
+	sha256sums_armv7h = 4803805e3526f05ca9ff117ea2255baa9bcf3fa48bd6b70cc81e484e916234be
+	arch = x86_64
+	source_x86_64 = https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_amd64.tar.gz
+	sha256sums_x86_64 = b830da31e477236960eb2cee7c7b0bad67ac35be61baace39a00fa148bead03a
+	
+pkgname = snitch-bin
