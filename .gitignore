@@ -18,3 +18,5 @@
 /pkg
 *.kate-swp
 *.tar.*
+nohup.out
+

@@ -1,0 +1,11 @@
+diff -ur php-8.0.30-o/ext/libxml/libxml.c php-8.0.30/ext/libxml/libxml.c
+--- php-8.0.30-o/ext/libxml/libxml.c	2023-08-03 20:13:08.000000000 +0300
++++ php-8.0.30/ext/libxml/libxml.c	2025-12-20 23:06:07.453378187 +0200
+@@ -29,6 +29,7 @@
+ 
+ #ifdef HAVE_LIBXML
+ 
++#include <ansidecl.h>
+ #include <libxml/parser.h>
+ #include <libxml/parserInternals.h>
+ #include <libxml/tree.h>
