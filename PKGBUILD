@@ -5,16 +5,17 @@ pkgname=fdlogger-git
 _pkgname=fdlogger
 __pkgname=FieldDayLogger
 ___pkgname=fieldday
-pkgver=r417.9e6612e
+pkgver=r460.18b2db8
+#r417.9e6612e
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day logger GUI - GIT version"
-license=('GPL')
+license=('GPL-3.0-only')
 arch=('any')
 url="https://github.com/mbridak/$__pkgname"
 depends=('python' 'python-dicttoxml' 'python-xmltodict' 'python-pyqt5' 'python-requests' 'sqlite' 'hamradio-menus')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=(fdlogger)
-conflicts=(fdlogger fdcurses)
+conflicts=(fdlogger)
 source=($_pkgname::"git+$url.git"
 	"$_pkgname.1")
 
