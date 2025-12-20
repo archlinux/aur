@@ -1,0 +1,29 @@
+pkgname=vopk-git
+pkgver=0
+pkgrel=1
+pkgdesc="VOPK — unified cross-distro package frontend (tracking main branch)"
+arch=('any')
+url="https://github.com/gpteamofficial/vopk"
+license=('GPL-3.0-only')
+depends=('bash')
+provides=('vopk')
+conflicts=('vopk')
+
+source=("vopk::https://raw.githubusercontent.com/gpteamofficial/vopk/main/bin/vopk")
+sha256sums=('106659b7de80068c9be80e61ed2272261e19755355bad34ab549dd023a80c688')
+
+pkgver() {
+  # Extract version from the installed script itself
+  local v
+  v="$(grep -Eo '^VOPK_VERSION="[^"]+"' "$srcdir/vopk" | cut -d'"' -f2 || true)"
+  if [[ -n "$v" ]]; then
+    printf '%s' "$v"
+  else
+    # Fallback: date-based version if variable is missing
+    date -u +%Y%m%d
+  fi
+}
+
+package() {
+  install -Dm755 "$srcdir/vopk" "$pkgdir/usr/bin/vopk"
+}
