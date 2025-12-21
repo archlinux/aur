@@ -1,0 +1,20 @@
+pkgbase = soulver-cpp-git
+	pkgdesc = Simple C++ bindings for the SoulverCore Swift library
+	pkgver = r12.de956c0
+	pkgrel = 1
+	url = https://github.com/vicinaehq/soulver-cpp
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = nlohmann-json
+	depends = gcc-libs
+	depends = glibc
+	optdepends = swift-bin-6.1: Swift 6.1 toolchain (required for building)
+	provides = soulver-cpp
+	conflicts = soulver-cpp
+	source = soulver-cpp-git::git+https://github.com/vicinaehq/soulver-cpp.git
+	sha256sums = SKIP
+
+pkgname = soulver-cpp-git
