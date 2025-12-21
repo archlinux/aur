@@ -120,7 +120,6 @@ build() {
 
 package() {
     cd "$srcdir/build"
-    #DESTDIR="$pkgdir" cmake --build . --target install
 
     echo "==> Manually installing binaries..."
     install -d "$pkgdir/usr/bin"
