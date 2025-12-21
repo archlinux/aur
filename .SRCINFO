@@ -1,0 +1,23 @@
+pkgbase = python-dbzero-git
+	pkgdesc = DISTIC (Durable, Infinite, Shared, Transactional, Isolated, Composable) memory system for Python (development/alpha version)
+	pkgver = 0.1.1.alpha.r2.g2c546c96
+	pkgrel = 1
+	url = https://github.com/dbzero-software/dbzero
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python>=3.9
+	depends = python-fasteners
+	provides = python-dbzero
+	conflicts = python-dbzero
+	source = git+https://github.com/dbzero-software/dbzero.git
+	sha256sums = SKIP
+
+pkgname = python-dbzero-git
