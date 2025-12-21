@@ -1,13 +1,14 @@
 pkgbase = mfetch
 	pkgdesc = 📦 memory-focused system info tool written in Rust.
-	pkgver = 0.2.0
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/xdearboy/mfetch
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/xdearboy/mfetch/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = ed59ba2113396d8ac3e4008fd06bd92f4a96af7c434fb0e023fe66383aa9a8a5
+	depends = i2c-tools
+	source = https://github.com/xdearboy/mfetch/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 74d4c71b88ce4b2ab99d8cd88f43b9948642370b4da329ab95eda23442e953fe
 
 pkgname = mfetch
