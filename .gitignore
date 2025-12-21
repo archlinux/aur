@@ -1,4 +1,3 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+futurist
+*.log
+*.tar.*

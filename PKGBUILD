@@ -1,34 +1,48 @@
-# Maintainer: Andy Botting <andy@andybotting.com>
-
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Andy Botting <andy@andybotting.com>
 _name=futurist
 pkgname=python-futurist
-pkgver=3.0.0
-pkgrel=2
-pkgdesc='Code from the future, delivered to you in the now.'
+pkgver=3.2.1
+pkgrel=1
+pkgdesc='Code from the future, delivered to you in the now'
 arch=(any)
-url='https://docs.openstack.org/futurist/'
-license=(Apache)
-makedepends=(python-setuptools)
-depends=(python-pbr python-six python-monotonic python-prettytable
-         python-wheel)
-checkdepends=(python-eventlet python-oslotest python-stestr
-              python-testrepository python-testscenarios python-testtools)
-source=("https://tarballs.opendev.org/openstack/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('7a9dbf88f11e22064c0ddc4bca94b12696696736cd36bcc7f06e5dfd4689e9e43293babc8d97094d69e1a4bab224ad3483453327090718802392ed679cb41191')
-
-export PBR_VERSION=$pkgver
+url=https://docs.openstack.org/futurist
+license=(Apache-2.0)
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-pbr
+)
+depends=(python-debtcollector)
+checkdepends=(
+    python-eventlet
+    python-oslotest
+    python-prettytable
+    python-stestr
+    python-testscenarios
+    python-testtools
+)
+source=($_name::git+https://github.com/openstack/futurist.git#tag=$pkgver)
+sha512sums=('f6507b3e3ce4517fd9c834dd54213eee4174cadfe6f7b46287f84aaf24940b884b8aa4dc05c0ba30084db249b40e1f74e3da703b8d23e4eb828cb3663987cb88')
 
 build() {
-  cd $_name-$pkgver
-  python setup.py build
+    cd $_name
+    export PBR_VERSION=$pkgver
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_name-$pkgver
-  stestr run
+    cd $_name
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    python -m installer --destdir=../test_dir dist/*.whl
+    mv $_name/tests .
+    rm -rf $_name
+    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" stestr --test-path tests run
 }
 
 package() {
-  cd $_name-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+    cd $_name
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

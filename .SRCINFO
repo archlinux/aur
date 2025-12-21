@@ -1,23 +1,22 @@
 pkgbase = python-futurist
-	pkgdesc = Code from the future, delivered to you in the now.
-	pkgver = 3.0.0
-	pkgrel = 2
-	url = https://docs.openstack.org/futurist/
+	pkgdesc = Code from the future, delivered to you in the now
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://docs.openstack.org/futurist
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-eventlet
 	checkdepends = python-oslotest
+	checkdepends = python-prettytable
 	checkdepends = python-stestr
-	checkdepends = python-testrepository
 	checkdepends = python-testscenarios
 	checkdepends = python-testtools
-	makedepends = python-setuptools
-	depends = python-pbr
-	depends = python-six
-	depends = python-monotonic
-	depends = python-prettytable
-	depends = python-wheel
-	source = https://tarballs.opendev.org/openstack/futurist/futurist-3.0.0.tar.gz
-	sha512sums = 7a9dbf88f11e22064c0ddc4bca94b12696696736cd36bcc7f06e5dfd4689e9e43293babc8d97094d69e1a4bab224ad3483453327090718802392ed679cb41191
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pbr
+	depends = python-debtcollector
+	source = futurist::git+https://github.com/openstack/futurist.git#tag=3.2.1
+	sha512sums = f6507b3e3ce4517fd9c834dd54213eee4174cadfe6f7b46287f84aaf24940b884b8aa4dc05c0ba30084db249b40e1f74e3da703b8d23e4eb828cb3663987cb88
 
 pkgname = python-futurist
