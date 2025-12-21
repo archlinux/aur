@@ -21,4 +21,5 @@ prepare() {
 
 package() {
   cp -a  ${srcdir}/data/* ${pkgdir}/
+  chmod -R 755 ${pkgdir}/
 }
