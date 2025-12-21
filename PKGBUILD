@@ -24,7 +24,7 @@ prepare() {
   cd "${srcdir}/eternity"
   git submodule init
   git config submodule.adlmidi.url "${srcdir}/libADLMIDI"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
