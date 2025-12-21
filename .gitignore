@@ -1,4 +1,6 @@
-*.gz
-*.zst
-pkg/
-src/
+# Include nothing
+*
+# Except
+!PKGBUILD
+!.gitignore
+!.SRCINFO

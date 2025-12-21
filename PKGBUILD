@@ -1,8 +1,9 @@
-# Maintainer: ziyazzz <dragonleoqinqin@gmail.com>
+# Maintainer: ZephyrDRH <zephyrdrh at gmx dot de>
+# Contributor: ziyazzz <dragonleoqinqin@gmail.com>
 
 pkgname=espresso
 pkgver=2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to produce a minimal equivalent representation of a Boolean function."
 arch=("x86_64")
 url="https://github.com/chipsalliance/espresso/"
@@ -17,7 +18,7 @@ prepare() {
   cmake -Bbuild \
     -DCMAKE_INSTALL_BINDIR=/usr/bin \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man \
-    -DCMAKE_C_FLAGS="$LDFLAGS $CFLAGS"
+    -DCMAKE_C_FLAGS="$LDFLAGS $CFLAGS -std=c99"
 }
 
 build() {
