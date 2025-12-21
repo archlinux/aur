@@ -92,8 +92,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.17
-pkgver=${_major}.10
+_major=6.18
+pkgver=${_major}.2
 _branch=6.x
 xanmod=1
 _revision=
@@ -139,15 +139,15 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7' # kernel
+sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b' # kernel
             'SKIP'                                                             # kernel signature
-            'b1c56328fcd6101bbc133784a832af23ed6af8ca7cd6a3c337edb0c86a63788c' # xanmod patch
+            'f628c47c14ed40f9af1ec026225f396644b546bab539020b02bc31334402b844' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            'e25069b96ad0205013c6aae27d7fdbc9b000ea56439a42532e2d40c622cdf7bf' # 0001-bore.patch
-            '7aee0975e5f17c18c4e99dd1f88a45c9b311085e6560bb6ed6d12ede21cf1691' # 0002-prefer-the-previous-cpu-for-wakeup-v3.patch
+            '85dad269d971077ef99be39ecf7afce84a936f628da1e65009ebc15717c1c036' # 0001-bore.patch
+            'c9045b9122af93688e53396576c4355ff7af305f3af7a4ac3cb6d5f3043966be' # 0002-prefer-the-previous-cpu-for-wakeup-v3.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0003-glitched-cfs.patch
             '27b01429b372c00ba40bda4c9cdfaf45ec192f3a5018011bc5061ebbc28ee717' # 0004-glitched-eevdf-additions.patch
-            '1c86e1667217d1278c72883769eb2c652a5d36fa36556cbeb6343fd235e8d26e' # 0005-o3-optimization.patch
+            '88d7ad910a8dbf2158bb48bd286a0b2feb25d68c27f2f86353ef2b98abe49f4d' # 0005-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
