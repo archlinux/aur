@@ -2,7 +2,7 @@
 # Maintainer: Karol Broda <me@karolbroda.com>
 
 pkgname='snitch-bin'
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='a friendlier ss/netstat for humans'
 url='https://github.com/karol-broda/snitch'
@@ -13,13 +13,13 @@ conflicts=('snitch')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('44816d0c010430b19583463a8b6cd3dc2edbc01497167a2bc0ba065d86f4c428')
+sha256sums_aarch64=('0d2e89e257cd7178fcf6312cfef62ba1035ff80ad1e9874958ab042c538b30f5')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('8b4beefe68ae4c4a50ea1929c963192a498ede8c3c55dca480cb6af4e489ad82')
+sha256sums_armv7h=('2c16ce00bb413ca32348c15cfe99e6585a84bf2b3180435e41b02581275535f0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/karol-broda/snitch/releases/download/v${pkgver}/snitch_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('80c2d0d80001561a8182731434cffef3d9970b208905c3936995f942e3f512c3')
+sha256sums_x86_64=('4b620dfb725666eca69e9982f63ea046dd2fe9b009f3059b4ba668a2a639a1af')
 
 package() {
   install -Dm755 "./snitch" "${pkgdir}/usr/bin/snitch"
