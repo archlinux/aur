@@ -1,10 +1,10 @@
 # Maintainer: hengtseChou <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
-url="https://github.com/hengtseChou/aur-sync-vote"
+url="https://github.com/acaibowlz/aur-sync-vote"
 license=('MIT')
 depends=('python-beautifulsoup4' 'python-html5lib' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
