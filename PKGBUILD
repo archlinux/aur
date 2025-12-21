@@ -1,7 +1,7 @@
 # Maintainer: Moksh Malde maldemoksh437@gmail.com
 
-pkgname=reconsage
-pkgver=0.1.0
+pkgname=reconsage-git
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Advanced passive reconnaissance framework with WAF, rate-limit and fingerprint detection"
 arch=('any')
