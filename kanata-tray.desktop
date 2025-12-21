@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Kanata tray
 Comment=Tray icon for Kanata
-Exec=KANATA_TRAY_LOG_DIR=/tmp kanata-tray
+Exec=env KANATA_TRAY_LOG_DIR=/tmp kanata-tray
 Terminal=false
 Type=Application
 Icon=kanata

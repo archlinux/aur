@@ -17,7 +17,7 @@ noextract=()
 sha256sums=('a34b9e3de2c7c7f22be94f62e7ff9c86b468daba38c1e6ea8d6e9e991546f74d'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
             'ded273a6aacf8cf8f6bc031cf82e5a7f40c6824144ed03bcfea6e8480cb36b80'
-            'd0953d5c137ece8c484445fe32e5a6ebeb5f70249855fdcc70dd915bd1c2df9e')
+            '4bf35484ac98f86a2661f52f610268f60861c6b07395b3a189ec262eadfa09da')
 
 pkgver() {
     git -c 'versionsort.suffix=-' \
