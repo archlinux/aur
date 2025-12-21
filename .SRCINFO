@@ -11,7 +11,7 @@ pkgbase = media-launcher-git
 	optdepends = vlc: Play generated scripts with VLC
 	provides = media-launcher
 	conflicts = media-launcher
-	source = media-launcher::git+https://github.com/akoidan/media-launcher#branch=main
+	source = media-launcher::git+https://github.com/akoidan/media-launcher.git#branch=main
 	sha256sums = SKIP
 
 pkgname = media-launcher-git
