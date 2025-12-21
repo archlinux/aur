@@ -3,7 +3,7 @@
 
 _pkgbase=fuse
 pkgname=lib32-fuse3
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-glibc' 'fuse3')
 makedepends=('gcc-multilib' 'meson' 'pkg-config')
 source=("${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 options=(!libtool)
-sha256sums=('3c4678b366ce43eadf7b46c76e892f2d9db2dfe396455548f429f6892997ba3d')
+sha256sums=('dd395c88f29c7540bbdd0b830260ab8092ccb241bb6e66f603643f715fb9322c')
 
 build() {
 	# based off fuse3's build function
@@ -24,9 +24,8 @@ build() {
 
 	cd "${_pkgbase}-${pkgver}"
 	rm -rf build
-	meson --prefix=/usr --sbindir=bin --libdir=/usr/lib32 . build
-	cd build
-	ninja
+	meson setup --prefix=/usr --sbindir=bin --libdir=/usr/lib32 . build
+	meson compile -C build
 }
 
 package() {
