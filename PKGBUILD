@@ -13,7 +13,7 @@ depends=(
     'python'
     'python-pillow'
     'python-pystray'
-    'electron22'
+    'electron22-bin'
 )
 makedepends=(
     '7zip'
