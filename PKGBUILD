@@ -2,8 +2,8 @@
 # Maintainer: Luke Street <luke@street.dev>
 _pkgname=objdiff
 pkgname="$_pkgname-bin"
-_pkgver=v3.4.5
-pkgver=3.4.5
+_pkgver=v3.5.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A local diffing tool for decompilation projects"
 arch=("x86_64")
@@ -21,8 +21,8 @@ source=(
     "LICENSE-MIT"
 )
 b2sums=(
-    "47dc5db2d412b35cc82255d5da9f45452be3de5e45ae300495f4edf6dd42d1523b4cc6c045abee2148ad15a10ef1af8ebc4f59b31b68c5a3644ad02aef3304a3"
-    "7e976f235e41ffd9529024a3da758357d254522f55acf0495b5247c8d49b68e94ab3b017c11a6991427c6c71a56e78ac44a703fb1a2b33f3a587fafbb4466a1e"
+    "280ecca27f49a627aa1d47bc39d8c04003efa3ccae2add998b2ee14e0ff6476535e9792ba73f90d980e945c526de6e98b0319c4c75d615e67e1b1c25a3b0b613"
+    "f5a01870f056371e852cc93c5b4e9351afcc369a277830693bd6813f4f9ad00b1819e236f9f8d422468dd053c3b9d96942acca9655482af92da7da77fcb0ca5c"
     "SKIP"
     "SKIP"
     "SKIP"
