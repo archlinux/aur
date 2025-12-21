@@ -21,7 +21,7 @@ provides=('media-launcher')
 conflicts=('media-launcher')
 
 source=(
-    "${_pkgname}::git+https://github.com/${releaser}/${_pkgname}.git#branch=main"
+    "${_pkgname}::git+https://github.com/${releaser}/${_pkgname}#branch=main"
 )
 
 sha256sums=('SKIP')
