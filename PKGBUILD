@@ -181,8 +181,8 @@
 
 
 # Kernel version
-_kernel_major=6.17
-_kernel_minor=7
+_kernel_major=6.18
+_kernel_minor=1
 # Clear Linux patches version
 _clr=6.17.6-1594
 # kernel_compiler_patch version
@@ -209,8 +209,8 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
     "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.5"
-    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.16.patch"
+    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.0"
+    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.17.8.patch"
     "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
@@ -219,9 +219,9 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array
 sha256sums=(
-    "9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7"
+    "9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b"
     "SKIP"
-    "a017a72f03a01504f9ba9d9d0882699b451256bf8d4798d8b899fac959e5ff5c"
+    "d998cc20acf4d450d765423b4d6ba603f351e4b1ab1b929b678b8bb23d410f0e"
     "SKIP"
     "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
     'SKIP'
@@ -315,7 +315,7 @@ _get_patches() {
 ## Invokes '_get_patches' and applies them as well as KCC
 _apply_patches() {
     _info "Applying patches"
-
+    
     # Patch with kernel update patch
     _info "Applying kernel update patch"
     patch -sNp1 -i ../patch-${_kernel_major}.${_kernel_minor} || true

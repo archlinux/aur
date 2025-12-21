@@ -13,7 +13,7 @@ function post_upgrade() {
     local version upgrades=(
 #        "5.2.9-6"  # Only kept for reference
     )
-
+    
     for version in "${upgrades[@]}"; do
         if [[ "$(vercmp "${version}" "$2")" -eq "1" ]]; then
             "_${version//[.-]/_}_changes"
