@@ -8,7 +8,7 @@ pkgbase = stable-diffusion.cpp-cublas-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = gcc
+	makedepends = gcc13
 	makedepends = git
 	depends = cuda
 	provides = stable-diffusion.cpp-cublas
@@ -16,7 +16,7 @@ pkgbase = stable-diffusion.cpp-cublas-git
 	conflicts = stable-diffusion.cpp-cublas
 	conflicts = stable-diffusion.cpp
 	source = stable-diffusion.cpp-cublas::git+https://github.com/leejet/stable-diffusion.cpp
-	source = git+https://github.com/ggml-org/ggml
+	source = git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0
 	sha256sums = SKIP
 	sha256sums = SKIP
 
