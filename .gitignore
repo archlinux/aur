@@ -3,3 +3,5 @@
 /*.AppImage
 *.pkg.*
 instructions.md
+.DS_Store
+.syncthing.*
