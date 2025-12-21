@@ -1,0 +1,27 @@
+pkgbase = pulseview-qt6-git
+	pkgdesc = A Qt based logic analyzer, oscilloscope and MSO GUI for sigrok. (git version built with Qt6)
+	pkgver = 0.3.0.r1173.gaf02198
+	pkgrel = 1
+	url = https://sigrok.org/wiki/PulseView
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = qt6-tools
+	depends = boost-libs
+	depends = libsigrok-git
+	depends = libsigrokdecode-git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	provides = pulseview
+	conflicts = pulseview
+	conflicts = pulseview-git
+	source = git://sigrok.org/pulseview.git
+	sha256sums = SKIP
+
+pkgname = pulseview-qt6-git
