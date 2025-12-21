@@ -1,6 +1,6 @@
 pkgbase = python-modelscope
 	pkgdesc = ModelScope: bring the notion of Model-as-a-Service to life.
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://www.modelscope.cn/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-modelscope
 	depends = python-setuptools
 	depends = python-tqdm>=4.64.0
 	depends = python-urllib3>=1.26
-	source = https://files.pythonhosted.org/packages/py3/m/modelscope/modelscope-1.32.0-py3-none-any.whl
-	sha512sums = 0914c13532522f6c7c712a5ea88e3f47599d2f3b4137379cbe76e07d3d56bd2225a7988cd9b5eb8896e563a22cfd14fd5cb05c0a83aaf65314291ac8b3334609
+	source = https://files.pythonhosted.org/packages/py3/m/modelscope/modelscope-1.33.0-py3-none-any.whl
+	sha512sums = 46c0fd56ce5924090468df6774ec6d8fe366e082cd04f22d40356aa7fbae1d26755f4e1ff79afed26197a11bd93d3cd59bdcac983516f02fe34c60b24986b508
 
 pkgname = python-modelscope
