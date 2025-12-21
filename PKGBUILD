@@ -3,21 +3,19 @@ pkgbase=python-sphinxemoji
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="An extension to use emoji codes in your Sphinx documentation"
 arch=('any')
 url="https://sphinxemojicodes.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools'
-             'python-wheel'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 #'python-sphinx')
-checkdepends=('python-pytest'
-              'python-sphinx')
+checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9528e0aa916506c8d28ee5f5ff5eeb0f')
+md5sums=('a9e4cc83505e09be25c8e26b460e18de')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -30,7 +28,8 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count
+#   pytest -vv -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count #
+    nosetests -v -x || warning "Tests failed"
 }
 
 package_python-sphinxemoji() {
