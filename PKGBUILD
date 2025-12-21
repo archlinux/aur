@@ -1,8 +1,8 @@
 # Maintainer: Mokshit Bindal <your-email@example.com>
 
 pkgname=spotify-downloader
-pkgver=1.0.3
-pkgrel=6
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Download Spotify playlists, albums, and tracks in FLAC/MP3 format from free sources with beautiful terminal UI"
 arch=('any')
 url="https://github.com/MokshitBindal/Spotify_Downloader"
@@ -22,7 +22,7 @@ depends=(
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pip')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MokshitBindal/Spotify_Downloader/archive/v${pkgver}.tar.gz")
-sha256sums=('8bb089d755ac84719ec323dcb9992a8d7e15d788e6c64f970116f544f6a6f9ea')
+sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/Spotify_Downloader-${pkgver}"
