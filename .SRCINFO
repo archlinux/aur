@@ -1,5 +1,5 @@
 pkgbase = media-launcher
-	pkgdesc = Cross-platform tool that generates executable scripts to launch video files with external audio tracks and subtitles. Automatically resolves sidecar media and opens the video in the player of your choice. Designed for fast, repeatable multi-track playback.
+	pkgdesc = Generate mpv/vlc launch scripts for videos with external audio and subtitles
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/akoidan/media-launcher
