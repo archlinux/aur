@@ -4,7 +4,7 @@
 # Contributor: Avi H.D. <strykar@hotmail.com>
 
 pkgname=routeconverter
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
@@ -18,13 +18,13 @@ source=(routeconverter
         routeconverter-offline
         routeconverter-cli
         RouteConverterCmdLine-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
-        RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar)
+        RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterLinuxOpenSource.jar)
 
-sha256sums=('0a4dca96f3f02c274714192765eaacfb1ceb53f628150fd0c73e00bf2ce7f6d5'
-            '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
-            '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
-            '10c9d279e9254324245812456661e6e7c45b3c94eb850c76aad3b4ad74dae070'
-            '9e818cdd5c2ff0eec458c9ea86472d03b83207e4a8e69672cdf6ad8edd0a379e')
+sha256sums=('d35cd45946a2728a8e2d6b0fb7d53d1803df1016380eb052dad0f3f1b00a25a9'
+         '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
+         '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
+         '3c4e889c9296ee4e205189f5962fbd09cab2e6e999de5ed6eb4565422710e8a5'
+         'a27d3790208ccd019523d53da4fa491ad9c57e92f29ba38a371314c13c663275')
 
 noextract=(RouteConverterCmdLine-${pkgver}.jar
            RouteConverterLinux-${pkgver}.jar)
@@ -50,4 +50,3 @@ package()
   install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   unzip -p "${srcdir}/RouteConverterLinux-${pkgver}.jar" slash/navigation/converter/gui/RouteConverter.png >"${pkgdir}/usr/share/pixmaps/routeconverter.png"
 }
-
