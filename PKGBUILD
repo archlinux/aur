@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers")
-sha256sums=('e2aa3a16d27185275855fc9a8ebbf18e6a6987fcebb2fbbf97e75d9e18d4f528'
+sha256sums=('491c2b4d62b68e68314882abc383771aff6175e928351181a832782978097269'
             'SKIP')  # sysusers file checksum (local file)
 install=crossmacro.install
 
@@ -51,6 +51,10 @@ package() {
     # Install Daemon files
     install -dm755 "$pkgdir/usr/lib/$pkgname/daemon"
     cp -r publish-daemon/* "$pkgdir/usr/lib/$pkgname/daemon/"
+    
+    # Ensure binaries have executable permissions
+    chmod +x "$pkgdir/usr/lib/$pkgname/CrossMacro.UI"
+    chmod +x "$pkgdir/usr/lib/$pkgname/daemon/CrossMacro.Daemon"
     
     # Install Service File
     install -dm755 "$pkgdir/usr/lib/systemd/system"
