@@ -1,6 +1,6 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Powerful, fast and elegant CalDAV tasks / TODO manager (TUI & GUI)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
 makedepends=('cargo')
 options=('!lto')
-source=("cfait-source-v0.3.5.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.3.5/cfait-source-v0.3.5.tar.gz")
-sha256sums=('c264a5fd7d773afbf04b242b014eff6eca513974c0146e17182e70d433aa8074')
+source=("cfait-source-v0.3.6.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.3.6/cfait-source-v0.3.6.tar.gz")
+sha256sums=('927fc47e26a1ca57fb90e022a2f5875260e33db9d5a0912c8ef3718d65f27a49')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
