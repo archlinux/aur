@@ -2,7 +2,7 @@
 # Maintainer: Benedikt Zumtobel <benedikt at zumtobel dot dev>
 
 pkgname='yatto'
-pkgver=0.21.8
+pkgver=0.21.9
 pkgrel=1
 pkgdesc=' Interactive VCS-based todo-list for the command-line'
 url='https://github.com/handlebargh/yatto'
@@ -13,7 +13,7 @@ conflicts=('yatto')
 depends=('git')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v${pkgver}/yatto-${pkgver}.tar.gz")
-sha256sums=('f8551e8a5a3c099ff25287cc49ee5a9a56a279101f57eb329b7653a1e42539db')
+sha256sums=('93d481e95a1d44b9a0548453370a90a848d3927f62e426c19655246dc4d36354')
 prepare() {
   go mod download
 }
