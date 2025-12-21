@@ -1,0 +1,10 @@
+[Unit]
+Description=Windows 11 Clipboard History
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/win11-clipboard-history
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

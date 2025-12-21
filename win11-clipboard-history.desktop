@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Windows 11 Clipboard History
+Exec=win11-clipboard-history
+Icon=edit-paste
+Categories=Utility;
+X-GNOME-Autostart-enabled=true

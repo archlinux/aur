@@ -1,0 +1,24 @@
+pkgbase = win11-clipboard-history-git
+	pkgdesc = Windows 11 style clipboard history manager for Linux
+	pkgver = r99.14e87d8
+	pkgrel = 1
+	url = https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	depends = webkit2gtk
+	provides = win11-clipboard-history
+	conflicts = win11-clipboard-history
+	source = git+https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux.git
+	source = win11-clipboard-history.desktop
+	source = win11-clipboard-history.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = win11-clipboard-history-git
