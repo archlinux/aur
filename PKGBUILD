@@ -1,7 +1,7 @@
 # Maintainer: Lotte V
 # Contributor: Lotte V
 pkgname=dataset-tools-git
-pkgver=linux.v0.0.1.r0.g07d4f2e-1
+pkgver=linux.v0.0.1.r0.g07d4f2e
 pkgrel=1
 pkgdesc="DiffSinger dataset processing tools, including audio processing, labeling."
 arch=('x86_64')
