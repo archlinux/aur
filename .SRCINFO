@@ -1,7 +1,7 @@
 pkgbase = hashcards-bin
 	pkgdesc = Command line interface to manage clipboard
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/eudoxia0/hashcards/
 	arch = x86_64
 	license = Apache-2.0

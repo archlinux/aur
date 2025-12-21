@@ -3,7 +3,7 @@
 pkgname=hashcards-bin
 _pkgname=hashcards
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/eudoxia0/hashcards/"
 license=("Apache-2.0")
