@@ -3,14 +3,19 @@ pkgname=llama-swap
 : "${_fragment:=tag=v177}"
 
 pkgver=177
-pkgrel=1
+pkgrel=2
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
 arch=(x86_64 aarch64)
 url="https://github.com/mostlygeek/$pkgname"
 license=('MIT')
 
-makedepends=(git go deno)
+makedepends=(
+	git
+	go
+	# deno
+	pnpm
+)
 
 source=(
 	"git+$url.git#$_fragment"
@@ -28,7 +33,8 @@ prepare() {
 	go mod vendor
 
 	cd ui
-	deno install --npm
+	# deno install --npm
+	pnpm install
 }
 
 build() {
@@ -48,7 +54,8 @@ build() {
 		"
 	)
 
-	deno task --cwd=ui build
+	# deno task --cwd=ui build
+	pnpm -C ui run build
 	go build "${build_opts[@]}"
 }
 
