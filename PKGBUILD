@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=pdf-compress
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Compress an overlarge pdf file"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=(
   "perl-image-exiftool: used to update the metadata in the destination file"
 )
 source=($pkgname-$pkgver.sh::https://www.timedicer.co.uk/programs/$pkgname.sh)
-b2sums=('536ed151dfe3704b0fc667534162acd84ce8073b7713e5bdd761b661265ddaba9f956a13f4f41a3a257f020ae480abd1784817daf7401aea5f50cceecd6861e2')
+b2sums=('9cf5d23fa7a8bb2ddddf1ba4b41618ea95f9afa34cf1a140c46ff210fbbbac53c231dee46b2aebda5e730e01f5e16decc584229f80a55514956fd9f2063e857b')
 
 package() {
   install -Dm755 $pkgname-$pkgver.sh "$pkgdir"/usr/bin/$pkgname
