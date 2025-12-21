@@ -1,3 +1,7 @@
+wireshark
+oqs-provider
 *.h
+*.py
+*.jinja2
 *.log
 *.tar.*
