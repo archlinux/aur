@@ -1,4 +1,4 @@
-pkgbase = media-launcher
+pkgbase = media-launcher-git
 	pkgdesc = Generate mpv/vlc launch scripts for videos with external audio and subtitles
 	pkgver = 0
 	pkgrel = 1
@@ -9,7 +9,9 @@ pkgbase = media-launcher
 	makedepends = rust
 	optdepends = mpv: Play generated scripts with mpv (default player)
 	optdepends = vlc: Play generated scripts with VLC
+	provides = media-launcher
+	conflicts = media-launcher
 	source = media-launcher::git+https://github.com/akoidan/media-launcher.git#branch=main
 	sha256sums = SKIP
 
-pkgname = media-launcher
+pkgname = media-launcher-git

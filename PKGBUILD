@@ -1,10 +1,12 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
-pkgname=media-launcher
-pkgver=0
+pkgname=media-launcher-git
+pkgbase=media-launcher-git
+_pkgname=media-launcher
+pkgver=cb31997
 pkgrel=1
 releaser=akoidan
 pkgdesc="Generate mpv/vlc launch scripts for videos with external audio and subtitles"
-url="https://github.com/${releaser}/${pkgname}"
+url="https://github.com/${releaser}/${_pkgname}"
 license=('MIT')
 arch=('x86_64')
 
@@ -15,23 +17,26 @@ optdepends=(
     'vlc: Play generated scripts with VLC'
 )
 
+provides=('media-launcher')
+conflicts=('media-launcher')
+
 source=(
-    "${pkgname}::git+https://github.com/${releaser}/${pkgname}.git#branch=main"
+    "${_pkgname}::git+https://github.com/${releaser}/${_pkgname}.git#branch=main"
 )
 
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git describe --tags --always | sed 's/^v//; s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   cargo build --release --locked
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -D -m755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
+  install -D -m755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
