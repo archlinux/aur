@@ -18,7 +18,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	CXXFLAGS="-O3 --ffast-math -flto=auto -Wall -Wextra -pedantic -g -c -std=c++20" # why tf does makefile use ?=
+	CXXFLAGS="-O3 -ffast-math -flto=auto -Wall -Wextra -pedantic -g -c -std=c++20" # why tf does makefile use ?=
 	make -j
 }
 
