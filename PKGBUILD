@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.6.5.r8.g356fa1b
+pkgver=1.6.6.r1.g29cf70f
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -45,9 +45,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Causes test failure, only applies to Flatpak
-  git revert -n 9ac625241350e8de8afc9b39f499da20ff8f143f
 
   # modify compiler options
 #  for i in "${pkgname%-git}.lpi"; do
