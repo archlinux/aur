@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=1.0.0.r141.gba6c51c
+pkgver=1.0.0.r186.g524d967
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
             '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
-            '9382aa73056c4921f63f6be40d2ab68aa36e6ea716e0d4227dff68cb316a1ff3')
+            '5bfbce14d89eb4b107c671097cca0a846d2145efe7c337a24b9192563ff6b612')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"

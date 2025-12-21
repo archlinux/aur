@@ -6,5 +6,5 @@ Exec=dms open %u
 Icon=danklogo
 Terminal=false
 NoDisplay=true
-MimeType=x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/file;text/html;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;application/xhtml+xml;
 Categories=Utility;

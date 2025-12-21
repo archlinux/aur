@@ -32,7 +32,7 @@ pkgbase = dms-shell-git
 	sha256sums = 8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667
 	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
 	sha256sums = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
-	sha256sums = 9382aa73056c4921f63f6be40d2ab68aa36e6ea716e0d4227dff68cb316a1ff3
+	sha256sums = 5bfbce14d89eb4b107c671097cca0a846d2145efe7c337a24b9192563ff6b612
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install
