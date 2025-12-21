@@ -1,7 +1,7 @@
 # Maintainer: maki <maki@hotmilk.space>
 
 pkgname=frankenphp-bin
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='FrankenPHP is a modern application server for PHP built on top of the Caddy web server.'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("$source_prefix-x86_64")
 source_aarch64=("$source_prefix-aarch64")
 
 sha256sums=('96e04afcae74c52f02e43e693c97b5ba0c64694ba44c1c642d7f242cfe21d18c')
-sha256sums_x86_64=('04b1a8df9d5204922f3aa4d9aa118db946ce0ede832a8280c746ad4c3a3f7e4c')
-sha256sums_aarch64=('08a2581c44df92dad85f276c636d3d7614c0ce04d0e00bcba34163b1c656c283')
+sha256sums_x86_64=('31255a52413234989c2a4a1dd86f577a303a14bab07db49be035605a9bf0af33')
+sha256sums_aarch64=('f8d458475d30b8d0c32bd9e178fc677a611f319772bd94955c2962d3ecb401f5')
 
 package() {
 	cd "$srcdir"
