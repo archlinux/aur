@@ -2,13 +2,13 @@
 pkgname=olaris-git
 _pkgname=olaris-server
 epoch=1
-pkgver=0.4.0.r66.gbdb2aeb
+pkgver=0.4.0.r68.gd4b240e
 pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
 url="https://gitlab.com/olaris/olaris-server"
 license=('GPL3')
-makedepends=('go' 'git' 'unzip' 'go-bindata-assetfs')
+makedepends=('go' 'git' 'unzip')
 conflicts=('olaris')
 provides=('olaris')
 source=("${_pkgname}::git+https://gitlab.com/olaris/olaris-server.git"

@@ -1,6 +1,6 @@
 pkgbase = olaris-git
 	pkgdesc = open-source, community driven, media manager and transcoding server
-	pkgver = 0.4.0.r66.gbdb2aeb
+	pkgver = 0.4.0.r68.gd4b240e
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/olaris/olaris-server
@@ -9,7 +9,6 @@ pkgbase = olaris-git
 	makedepends = go
 	makedepends = git
 	makedepends = unzip
-	makedepends = go-bindata-assetfs
 	provides = olaris
 	conflicts = olaris
 	noextract = react-static.zip
