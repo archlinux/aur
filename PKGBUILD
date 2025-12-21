@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Sakaguchi <rodrigosaka@outlook.com>
 
 pkgname=gnome-pomodoro-extension
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='GNOME Shell extension that manages focus and break cycles with the Pomodoro technique'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('31c0ad477dc4f22e3c4fa284b51a415faa2e807f91aa580798b07f90973b7271')
+sha256sums=('c4f832b27022ec25768e595e5566a6261ab426a552a9c209074b0596fbf772b9')
 
 build() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
