@@ -7,6 +7,8 @@ pkgbase = mycelium
 	license = GPL
 	makedepends = cargo
 	source = https://github.com/threefoldtech/mycelium/archive/refs/tags/v0.7.0.tar.gz
+	source = hero.diff
 	sha256sums = 6b839c13fd9174d0c056c6ccd4afe2a55c32829eee7b4f4c951e8ada8d2539ec
+	sha256sums = f6257e35872fc92ab537e8202fb7693b12656eff2dc00c89adc39704027d9d70
 
 pkgname = mycelium
