@@ -66,17 +66,17 @@ source=('git+https://github.com/systemd/mkosi.git#branch=main')
 md5sums=('SKIP')
 
 pkgver() {
-  cd 'mkosi'
+    cd 'mkosi'
 
-  git describe --long | sed '
-    # v3-90-gd927f65 (tag - number of commits - g(it)hash)
-    s/^v//
-    # 3-90-gd927f65
-    s/\([^-]*-g\)/r\1/
-    # 3-r90-gd927f65
-    s/-/./g
-    # 3.r90.gd927f65
-'
+    git describe --long | sed '
+        # v3-90-gd927f65 (tag - number of commits - g(it)hash)
+        s/^v//
+        # 3-90-gd927f65
+        s/\([^-]*-g\)/r\1/
+        # 3-r90-gd927f65
+        s/-/./g
+        # 3.r90.gd927f65
+    '
 }
 
 build() {
@@ -87,18 +87,18 @@ build() {
 }
 
 package() {
-  cd 'mkosi'
+    cd 'mkosi'
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 755 kernel-install/50-mkosi.install -t "$pkgdir/usr/lib/kernel/install.d/"
+    install -Dm 755 kernel-install/50-mkosi.install -t "$pkgdir/usr/lib/kernel/install.d/"
 
-  install -Dm 644 mkosi/resources/man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
-  install -Dm 644 mkosi/resources/man/mkosi-initrd.1 "$pkgdir/usr/share/man/man1/mkosi-initrd.1" || true
-  install -Dm 644 mkosi/resources/man/mkosi-sandbox.1 "$pkgdir/usr/share/man/man1/mkosi-sandbox.1" || true
-  install -Dm 644 mkosi/resources/man/mkosi.news.7 "$pkgdir/usr/share/man/man7/mkosi.news.7" || true
+    install -Dm 644 mkosi/resources/man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+    install -Dm 644 mkosi/resources/man/mkosi-initrd.1 "$pkgdir/usr/share/man/man1/mkosi-initrd.1" || true
+    install -Dm 644 mkosi/resources/man/mkosi-sandbox.1 "$pkgdir/usr/share/man/man1/mkosi-sandbox.1" || true
+    install -Dm 644 mkosi/resources/man/mkosi.news.7 "$pkgdir/usr/share/man/man7/mkosi.news.7" || true
 
-  python -m mkosi completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/mkosi"
-  python -m mkosi completion fish | install -Dm 644 /dev/stdin "$pkgdir/usr/share/fish/completions/mkosi.fish"
-  python -m mkosi completion zsh  | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_mkosi"
+    python -m mkosi completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/mkosi"
+    python -m mkosi completion fish | install -Dm 644 /dev/stdin "$pkgdir/usr/share/fish/completions/mkosi.fish"
+    python -m mkosi completion zsh  | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_mkosi"
 }
