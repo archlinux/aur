@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TenseleyFlow/fackr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe4481bedbae570a011c4eb2570ddb846357ca3eb130bf309c0ec87cf187a94a')
+sha256sums=('a88cc2ee020dc8f0d2fce02deb01ad99c46403c3b69f8e502c8aac96a1c958d3')
 
 build() {
     cd "$pkgname-$pkgver"
