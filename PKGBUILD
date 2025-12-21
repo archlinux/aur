@@ -2,7 +2,8 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.26.8
+pkgver=1.29.1
+_flutter_ver=3.38.2
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -27,22 +28,27 @@ depends=('at-spi2-core'
          'webkit2gtk-4.1'
          'zenity'
          'zlib')
-makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-runtime' 'ninja')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-environment' 'ninja')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "saber.sh")
-sha256sums=('23a48d57093352757225285235316cbf741043d6a3f8cec63d73de12b7e91001'
+sha256sums=('f03dc68f4b52b5126036d703891e04b936dbcf3507638ef3c3fbcc19253a6de3'
             '2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    fvm install 3.35.3
-    fvm global 3.35.3
+    fvm install "${_flutter_ver}"
+    fvm global "${_flutter_ver}"
+
+    sed -i 's/dart/fvm dart/' ./patches/remove_dev_dependencies.sh
 
     # Disable analytics
     fvm flutter config --no-analytics
 
     # Pull dependencies within prepare, allowing for offline builds later on
     fvm flutter pub get
+
+    ./patches/remove_proprietary_dependencies.sh
+    ./patches/remove_dev_dependencies.sh
 }
 
 build() {
@@ -56,8 +62,9 @@ package() {
     # Install application, licence and desktop file (with assets)
     install -d "${pkgdir}/opt/${pkgname}"
     cp -r build/linux/x64/release/bundle/* "${pkgdir}/opt/${pkgname}"
+    install -Dm644 assets/icon/icon_linux.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.adilhanney.saber.svg"
     install -Dm644 flatpak/com.adilhanney.saber.desktop -t "${pkgdir}/usr/share/applications"
-    install -Dm644 assets/icon/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.adilhanney.saber.svg"
+    install -Dm644 flatpak/com.adilhanney.saber.metainfo.xml -t "${pkgdir}/usr/share/metainfo"
 
     # Copy wrapper script to /usr/bin
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
