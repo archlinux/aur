@@ -30,7 +30,7 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz"
+		"${srcdir}/${pkgname}-${pkgver}.tgz"
 
 	msg2 "Fix ownership of ALL FILES"
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
