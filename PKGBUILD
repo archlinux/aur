@@ -5,7 +5,7 @@ _pkgname=sqd
 pkgname=${_pkgname}-bin
 pkgdesc="A SQL-like document editor"
 
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 sha256sums=('859eb190b73b79fb7ff00b19bec989abe222efe8127df15c5bf857fdbbd61abe'
             '125c9c7dbd503cf595b0c5a5b24ffaccbbbaaa54fe3587235656309ad7cfa69c')
-sha256sums_x86_64=('1717d108849fbd9e3954bec3252b02863ca0f44704f73d74d3326c57508f6b91')
-sha256sums_aarch64=('6acf886424bc638bea80e434420d52bbf92f449542b21b895d085b3e27ad56f1')
+sha256sums_x86_64=('dbe92d293979ddea367c78140bdf45d890f448e7be75a136a0eb53c3db9e0b2c')
+sha256sums_aarch64=('664d3b9d45b46d4c4f90f9d85733e69928e05f4c5cce9c9b46ecd005630a373d')
 
 
 package() {
