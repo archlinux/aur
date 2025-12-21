@@ -1,9 +1,9 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.3.55.r0.gc59e4c0
+pkgver=0.4.12.r19.gd162b9f
 pkgrel=1
-pkgdesc="Video chat in your terminal (development version)"
-arch=('x86_64')
+pkgdesc="Video chat in your terminal - runtime binary (development version)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/zfogg/ascii-chat"
 license=('MIT')
 depends=()
@@ -20,15 +20,15 @@ makedepends=(
   'zstd'
   'libsodium'
   'portaudio'
-  'doxygen'
 )
 optdepends=(
+  'libasciichat-git: development headers and libraries'
   'v4l-utils: webcam device utilities'
   'openssh: ssh-agent support for key authentication'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
-options=('staticlibs' 'lto' 'docs' 'ccache')
+options=('lto' 'ccache')
 
 source=("$pkgname::git+https://github.com/zfogg/ascii-chat.git")
 sha256sums=('SKIP')
@@ -54,13 +54,12 @@ build() {
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
-  cmake --build build --target shared-lib
-  cmake --build build --target static-lib
-  cmake --build build --target docs
+  # Only build the runtime binary (no libraries or docs)
+  cmake --build build --target ascii-chat
 }
 
 package() {
   cd "$pkgname"
-  DESTDIR="$pkgdir" cmake --install build
+  # Install only Runtime component (binary + man1 + shell completions)
+  DESTDIR="$pkgdir" cmake --install build --component Runtime
 }
