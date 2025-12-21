@@ -3,7 +3,7 @@ PROJECT=fileformat
 DESCR="A tool for recognizing file formats"
 makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "ldc")
 depends=("glib2" "amalthea-ldc2")
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=0
 license=("BSL-1.0 or GPL-3+")
 
@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("7ebf9da336b30a050fa73664d876082804b54ffd3a2a3f1a999bac44a19b72c1")
+sha256sums=("c31dbec48c6555e9c0f067986f6afc9e1a41fd05c722e950bc2c7f176e244ef1")
 
 build() {
     cd "${PROJECT}-v$pkgver"
