@@ -30,11 +30,11 @@ pkgver() {
 }
 
 build() {
-  cd ReconSage
+  cd Recon_sage
 }
 
 package() {
-  cd ReconSage
+  cd Recon_sage
 
   install -d "$pkgdir/usr/lib/reconsage"
   cp -r . "$pkgdir/usr/lib/reconsage"
