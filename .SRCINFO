@@ -15,7 +15,7 @@ pkgbase = reconsage-git
 	depends = python-dnspython
 	depends = python-pydantic
 	depends = python-uvicorn-loguru-integration-git
-	source = git+https://github.com/moksh-codedeveloper/Recon_sage.git
+	source = Recon_sage::git+https://github.com/moksh-codedeveloper/Recon_sage.git
 	sha256sums = SKIP
 
 pkgname = reconsage-git
