@@ -1,4 +1,3 @@
-atmosim/
-pkg/
-src/
-atmosim-*
+*
+!PKGBUILD
+!.SRCINFO
