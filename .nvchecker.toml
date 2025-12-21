@@ -1,0 +1,4 @@
+[appimage-thumbnailer]
+source = "git"
+git = "https://github.com/kem-a/appimage-thumbnailer.git"
+prefix = "v"
