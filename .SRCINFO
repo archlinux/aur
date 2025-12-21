@@ -1,0 +1,14 @@
+pkgbase = syscope-bin
+	pkgdesc = Lightweight Linux system diagnosis tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ashvin-to/syscope
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = syscope
+	conflicts = syscope
+	source = syscope::https://github.com/ashvin-to/syscope/releases/download/v0.1.0/syscope
+	sha256sums = SKIP
+
+pkgname = syscope-bin
