@@ -1,6 +1,6 @@
 # Maintainer: Christopher Dorrell <dorrellkc@gmail.com>
 pkgname=tux-assistant
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="GTK4/Libadwaita Linux system configuration tool - simplifies post-installation setup"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 install=tux-assistant.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dorrellkc/Tux-Assistant/archive/refs/tags/v$pkgver.tar.gz"
         "tux-assistant.install")
-sha256sums=('00fc1b9854257d1f1cdd73606104c84a7cf4b417f7708d66270642b6fc3e7f86'
+sha256sums=('e8263eb7028ff5acbd0723a9528e1821e70fd6bb1d9b299249154916b0c63d75'
             'SKIP')
 
 package() {
@@ -42,9 +42,9 @@ package() {
     cp -r assets "$pkgdir/opt/tux-assistant/"
     cp -r data "$pkgdir/opt/tux-assistant/"
     cp -r scripts "$pkgdir/opt/tux-assistant/"
-    install -Dm755 tux-assistant.py "$pkgdir/opt/tux-assistant/"
-    install -Dm755 tux-helper "$pkgdir/opt/tux-assistant/"
-    install -Dm644 VERSION "$pkgdir/opt/tux-assistant/"
+    install -Dm755 tux-assistant.py "$pkgdir/opt/tux-assistant/tux-assistant.py"
+    install -Dm755 tux-helper "$pkgdir/opt/tux-assistant/tux-helper"
+    install -Dm644 VERSION "$pkgdir/opt/tux-assistant/VERSION"
     
     # Install Tux Assistant launcher script
     install -dm755 "$pkgdir/usr/bin"
