@@ -1,7 +1,7 @@
 # Maintainer: Filip Parag <filip@parag.rs>
 
 pkgname=bas-celik-bin
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A program for reading smart-card documents issued by the government of Serbia'
 arch=(x86_64)
@@ -10,14 +10,14 @@ provides=()
 url="https://github.com/ubavic/bas-celik/"
 license=(MIT)
 depends=(ccid opensc)
-source=("bas_celik-${pkgver}_amd64.tar.gz::https://github.com/ubavic/bas-celik/releases/download/v${pkgver}/bas-celik.linux.amd64.tar.xz")
-sha256sums=('eb7108defb06fc430bc8abaa9f615171e406e7b4cdb5296a14c2d799fe790376')
+source=("bas_celik-${pkgver}_amd64.tar.xz::https://github.com/ubavic/bas-celik/releases/download/v${pkgver}/bas-celik.linux.amd64.tar.xz")
+sha256sums=('12b2903d895469a006b204a730bd5b6e7bcf2d0929d9d3d5d22633b1c907ece3')
 
 package()
 {
     export DESTDIR="${pkgdir}"
     export PREFIX="/usr"
-    cd "${srcdir}"
+    cd "${srcdir}/bas-celik"
     make install
 }
 
