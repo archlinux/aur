@@ -29,4 +29,7 @@ if [ $PKGBUILD_VERSION != $VERSION ]; then
         git add .SRCINFO PKGBUILD
         git commit -m "Updated to $VERSION"
         git push
+
+	echo "Cleanup"
+	rm metabase.jar
 fi
