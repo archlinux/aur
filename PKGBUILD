@@ -1,48 +1,85 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="Mouse Macro Automation Tool for Linux Wayland"
+pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0')
-depends=('zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
-makedepends=('dotnet-sdk>=10.0' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz")
-sha256sums=('1c3e91648c92670f330c5f76692c7e0e125650b242e880b3c9eee00eac4a29fd')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit')
+makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
 options=('!strip')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
+        "crossmacro.sysusers")
+sha256sums=('0a6269aa1322cea50b9a516d270555d22a6c93f34441c317f3e361dc281b9716'
+            'SKIP')  # sysusers file checksum (local file)
+install=crossmacro.install
 
 build() {
     cd "CrossMacro-${pkgver}"
     
-    # Skip workload integrity check - resolves AUR build errors
-    # CrossMacro doesn't use any special workloads (MAUI, Blazor, etc.)
     export DOTNET_SKIP_WORKLOAD_INTEGRITY_CHECK=1
-    
     dotnet restore
+    
+    # Build UI
     dotnet publish src/CrossMacro.UI/CrossMacro.UI.csproj \
         -c Release \
         -r linux-x64 \
         --self-contained true \
-        -p:PublishTrimmed=false \
+        -p:PublishSingleFile=true \
+        -p:PublishTrimmed=true \
+        -p:PublishReadyToRun=true \
         -p:PublishAot=false \
+        -p:DebugType=None \
+        -p:DebugSymbols=false \
         -o publish/
+        
+    # Build Daemon
+    dotnet publish src/CrossMacro.Daemon/CrossMacro.Daemon.csproj \
+        -c Release \
+        -r linux-x64 \
+        -o publish-daemon/
 }
 
 package() {
     cd "CrossMacro-${pkgver}"
     
-    # Install application files
+    # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -r publish/* "$pkgdir/usr/lib/$pkgname/"
     
-    # Create executable symlink
+    # Install Daemon files
+    install -dm755 "$pkgdir/usr/lib/$pkgname/daemon"
+    cp -r publish-daemon/* "$pkgdir/usr/lib/$pkgname/daemon/"
+    
+    # Install Service File
+    install -dm755 "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "scripts/daemon/crossmacro.service" \
+        "$pkgdir/usr/lib/systemd/system/crossmacro.service"
+        
+    # Fix ExecStart path in service file
+    sed -i "s|ExecStart=/opt/crossmacro/daemon/CrossMacro.Daemon|ExecStart=/usr/lib/$pkgname/daemon/CrossMacro.Daemon|g" \
+        "$pkgdir/usr/lib/systemd/system/crossmacro.service"
+        
+    # Install sysusers config
+    install -Dm644 "$srcdir/crossmacro.sysusers" \
+        "$pkgdir/usr/lib/sysusers.d/crossmacro.conf"
+    
+    # Install udev rules
+    install -Dm644 "scripts/assets/99-crossmacro.rules" \
+        "$pkgdir/usr/lib/udev/rules.d/99-crossmacro.rules"
+        
+    # Install Polkit Policy
+    install -Dm644 "scripts/assets/org.crossmacro.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/org.crossmacro.policy"
+    
+    # Create executable symlink for UI
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/usr/lib/$pkgname/CrossMacro.UI" "$pkgdir/usr/bin/$pkgname"
     
-    # Install icon
-    install -Dm644 "src/CrossMacro.UI/Assets/mouse-icon.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    # Install icons
+    install -dm755 "$pkgdir/usr/share/icons/hicolor"
+    cp -r "src/CrossMacro.UI/Assets/icons/"* "$pkgdir/usr/share/icons/hicolor/"
     
     # Install desktop file
     install -Dm644 "scripts/assets/CrossMacro.desktop" \

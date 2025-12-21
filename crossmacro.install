@@ -1,0 +1,25 @@
+post_install() {
+    echo "Reloading systemd daemon..."
+    systemctl daemon-reload
+    udevadm control --reload-rules && udevadm trigger || true
+    echo "------------------------------------------------------------------------"
+    echo "CrossMacro Daemon installed."
+    echo ""
+    echo "1. Enable and start the service:"
+    echo "   sudo systemctl enable --now crossmacro.service"
+    echo ""
+    echo "2. Add yourself to the 'crossmacro' group to communicate with the daemon:"
+    echo "   sudo usermod -aG crossmacro \$USER"
+    echo ""
+    echo "3. Log out and log back in for group changes to take effect."
+    echo "------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart crossmacro.service
+}
+
+post_remove() {
+    systemctl disable --now crossmacro.service
+}
