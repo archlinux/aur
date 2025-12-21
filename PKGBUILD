@@ -2,7 +2,7 @@
 pkgbase=yade
 pkgname=(yade yade-cuda yade-doc)
 pkgver=2025.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -48,17 +48,29 @@ makedepends=(
     # for  manpage
     'help2man'
     'openssh'
+
+    patch
 )
 source=(
     "trunk-${pkgver}.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/${pkgver}/trunk-${pkgver}.tar.gz"
+    0001-fix-for-boost-1.88.patch
+    0002-fix-hidding.patch
+    "fix-eigen.patch::https://gitlab.com/sukanka/trunk/-/commit/a3619aa.patch"
 )
-sha512sums=('99d7e9ed1847a2b0a84e748761aeaf01f7118a161618cec61545fa8bc51832e4cb9abf45f4116ffc5b8930605dee7e0abb80628aec26f53d45d6986f9b45dbe7')
+sha512sums=('99d7e9ed1847a2b0a84e748761aeaf01f7118a161618cec61545fa8bc51832e4cb9abf45f4116ffc5b8930605dee7e0abb80628aec26f53d45d6986f9b45dbe7'
+    '4b3abf78bd44af9d704fbbeb5c6413e454479226d7a15db840a922e171f521ae8ee9ed3a0141633dc1d36e3fc99bd661b0938fe4a00b751808c160fda9964507'
+    'b7247b92909f710b477fc067f082636b9473e2dd5490ee7a73d8cfcf44cb5eaffa35e7aef4b4280887ebc04a7f0d47686b6eb57c4e5c479db75c8d68c314cd3a'
+    '8ca199cb4bc9a5208a279b63b5042a99a83336473df413da8549cbdbad6b3208da78ed02ccde93897399ecbe23a21d6fe32a9134e7e165d3da6cfb17791631b0')
 
 prepare() {
     # Follow https://yade-dem.org/doc/installation.html#compilation
     test -d trunk && rm -rf trunk
     mv trunk-${pkgver} trunk
     install -d tmproot build build-doc build-cuda
+    cd trunk
+    patch -Np1 <../0001-fix-for-boost-1.88.patch
+    patch -Np1 <../0002-fix-hidding.patch
+    patch -Np1 <../fix-eigen.patch
 }
 _build_doc() {
     cd $srcdir
@@ -99,7 +111,7 @@ build() {
         -DENABLE_PARTIALSAT=ON
         -DENABLE_POTENTIAL_BLOCKS=ON
         -DVECTORIZE=ON
-        -DENABLE_USEFUL_ERRORS=OFF
+        -DENABLE_USEFUL_ERRORS=ON
         -DCMAKE_BUILD_TYPE=None
         -DDISABLE_SAVE_TEMPS=ON
         # -DCHOLMOD_GPU=OFF
