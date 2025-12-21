@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers")
-sha256sums=('98d2f43e8f6243dffc7a229a96f79e8be032f680bce72e08831b27a6ba5a2e03'
+sha256sums=('dc74ce72ea36c6595ae4ef04a9f7d89053136435a6c7495f68e7e07ca532d469'
             'SKIP')  # sysusers file checksum (local file)
 install=crossmacro.install
 
