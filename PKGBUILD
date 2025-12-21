@@ -1,7 +1,7 @@
 # Maintainer: Johannes Simon Piermeier <pierm.jo+github-public@gmail.com>
 
 pkgname=discord-hushd-git
-pkgver=0.1.0.r3.g4b12c0f
+pkgver=0.1.1.r0.gd2af2a2
 pkgrel=1
 pkgdesc='Systemd daemon and CLI to mute/deafen Discord via RPC (git version)'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   'python-pypresence'
   'python-tomli-w'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core')
 source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 

@@ -1,2 +1,5 @@
-/discord-hushd/
-/src/
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
