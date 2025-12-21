@@ -1,5 +1,5 @@
 pkgname=mfetch
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="📦 memory-focused system info tool written in Rust."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('i2c-tools')
 makedepends=('rust' 'cargo')
 source=("https://github.com/xdearboy/mfetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('410070f536e4a492c9da7af9d9f47adb41b017ed962060a5f479838327d2744b')
+sha256sums=('b320395f96bac8c901b07bb301ef4c4d4b367c73f4d3d1f5f865192b0e21735f')
 
 build() {
   cd "$srcdir/mfetch-$pkgver"
