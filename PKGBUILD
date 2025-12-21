@@ -1,44 +1,57 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
-# Maintainer: John Cesarz <commandz@commandblockguy.xyz>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Julien Savard <juju@juju2143.ca>
+# Contributor: John Cesarz <commandz@commandblockguy.xyz>
 # Contributor: Nathaniel van Diepen <eeems@eeems.codes>
 
 pkgname=ticemu
 pkgver=2.0
 url='https://ce-programming.github.io/CEmu/'
-pkgrel=1
-makedepends=('git')
-depends=('qt5-base' 'libarchive')
+pkgrel=2
+makedepends=('git' 'cmake' 'ninja')
+depends=('qt6-base' 'libarchive' 'libusb' 'gcc-libs' 'glibc')
 pkgdesc='Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features'
-license=('GPL')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
-_subpkgver=('7eb89e56d219bbca5ca5cd82c98dce69bd75004b'
-            'f627164d42e1b8757e70b12c8d8c7913a4496cf0')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/CE-Programming/CEmu/archive/v$pkgver.tar.gz"
-	"https://github.com/CE-Programming/zdis/archive/${_subpkgver[0]}.tar.gz"
-	"https://github.com/adriweb/tivars_lib_cpp/archive/${_subpkgver[1]}.tar.gz")
-md5sums=('556651cc60756c85684b7eaa224ac2d8'
-         'f4e1cb5120afda89b90d8867d7c89b10'
-         '872b754ebfb07878d22de6abc651d9b4')
+source=("$pkgname::git+https://github.com/CE-Programming/CEmu.git#tag=v${pkgver}"
+	"git+https://github.com/CE-Programming/zdis.git"
+	"git+https://github.com/adriweb/tivars_lib_cpp.git"
+	"mainwindow.patch::https://github.com/CE-Programming/CEmu/commit/3e43e0358846f18d9246e9252d1fe0966aa26a14.diff")
+md5sums=('0c79f7bc6992b0ae4403486d16c7b0f6'
+         'SKIP'
+         'SKIP'
+         'd970f442be0d7ebe4a130cf3d204f64d')
 prepare(){
-  cd "$srcdir/CEmu-$pkgver"
-
-  rm -r core/debug/zdis
-  cp -r "${srcdir}"/zdis-${_subpkgver[0]} core/debug/zdis
-
-  rm -r gui/qt/tivars_lib_cpp
-  cp -r "${srcdir}"/tivars_lib_cpp-${_subpkgver[1]} gui/qt/tivars_lib_cpp
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.core/debug/zdis.url "$srcdir/zdis"
+  git config submodule.gui/qt/tivars_lib_cpp.url "$srcdir/tivars_lib_cpp"
+  git -c protocol.file.allow=always submodule update
+  sed -i 's/FILENAME_VARIABLE deploy_script/OUTPUT_SCRIPT deploy_script/g' gui/qt/CMakeLists.txt
+  patch -Np1 < "$srcdir/mainwindow.patch"
 }
-build() {
-  cd "$srcdir/CEmu-$pkgver/gui/qt"
 
-  qmake -r CEmu.pro "PREFIX=$pkgdir/usr" "CEMU_VERSION=v$pkgver"
-  make
+build() {
+  cd "$srcdir"
+  cmake -B build -S "$srcdir/$pkgname/gui/qt" \
+  -GNinja \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=None \
+  -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+  -DCMAKE_SKIP_RPATH=ON \
+  -DCMAKE_SKIP_INSTALL_RPATH=ON \
+  -DSHORT_VERSION="v${pkgver}" \
+  -DIS_OFFICIAL_RELEASE_VERSION=ON
+
+  cmake --build build
+
 }
 package() {
-  install -Dm644 "$srcdir/CEmu-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/CEmu-$pkgver/gui/qt/resources/linux/cemu.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/CEmu-$pkgver/gui/qt/resources/icons/linux/cemu-512x512.png" "$pkgdir/usr/share/pixmaps/cemu.png"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname/gui/qt/resources/linux/cemu.desktop" "$pkgdir/usr/share/applications/CEmu.desktop"
+  install -Dm644 "$srcdir/$pkgname/gui/qt/resources/icons/linux/cemu-512x512.png" "$pkgdir/usr/share/pixmaps/CEmu.png"
+  install -Dm644 "$srcdir/$pkgname/gui/qt/resources/linux/cemu.xml" "$pkgdir/usr/share/mime/packages/cemu.xml"
+  install -Dm755 "$srcdir/build/CEmu" "$pkgdir/usr/bin/CEmu"
 
-  cd "$srcdir/CEmu-$pkgver/gui/qt"
-  make install
+  sed -i 's/Icon=cemu/Icon=CEmu/g' "$pkgdir/usr/share/applications/CEmu.desktop"
 }
