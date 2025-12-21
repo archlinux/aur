@@ -6,7 +6,7 @@ pkgname=(cuda-pascal cuda-pascal-tools)
 pkgbase=cuda-pascal
 pkgver=12.9.1
 _driverver=575.57.08
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
@@ -143,8 +143,16 @@ build() {
 
 package_cuda-pascal() {
 #  replaces=('cuda-toolkit' 'cuda-sdk' 'cuda-static')
+  provides=(
+    "cuda=${pkgver}"
+    "cuda-toolkit=${pkgver}"
+    "cuda-sdk=${pkgver}"
+    "libcudart.so=12-64"
+    "libcublas.so=12-64"
+    "libcusolver.so=12-64"
+    "libcusparse.so=12-64"
+  )
   conflicts=('cuda')
-  provides=('cuda' 'cuda-toolkit' 'cuda-sdk' 'libcudart.so' 'libcublas.so' 'libcusolver.so' 'libcusparse.so')
   optdepends=('gdb: for cuda-gdb'
               'glu: required for some profiling tools in CUPTI')
 
@@ -162,8 +170,8 @@ package_cuda-pascal() {
 
 package_cuda-pascal-tools() {
   pkgdesc="CUDA extra tools (nvvp, nsight) for Pascal GPUs (matching cuda-pascal)"
+  provides=("cuda-tools=${pkgver}")
   conflicts=('cuda-tools')
-  provides=('cuda-tools')
   depends=('cuda-pascal' 'java-runtime=8' 'nss')
   optdepends=('perl: required by some NVVP plugins')
 

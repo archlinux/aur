@@ -1,7 +1,7 @@
 pkgbase = cuda-pascal
 	pkgdesc = NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)
 	pkgver = 12.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda.install
 	arch = x86_64
@@ -77,13 +77,13 @@ pkgbase = cuda-pascal
 pkgname = cuda-pascal
 	optdepends = gdb: for cuda-gdb
 	optdepends = glu: required for some profiling tools in CUPTI
-	provides = cuda
-	provides = cuda-toolkit
-	provides = cuda-sdk
-	provides = libcudart.so
-	provides = libcublas.so
-	provides = libcusolver.so
-	provides = libcusparse.so
+	provides = cuda=12.9.1
+	provides = cuda-toolkit=12.9.1
+	provides = cuda-sdk=12.9.1
+	provides = libcudart.so=12-64
+	provides = libcublas.so=12-64
+	provides = libcusolver.so=12-64
+	provides = libcusparse.so=12-64
 	conflicts = cuda
 
 pkgname = cuda-pascal-tools
@@ -92,5 +92,5 @@ pkgname = cuda-pascal-tools
 	depends = java-runtime=8
 	depends = nss
 	optdepends = perl: required by some NVVP plugins
-	provides = cuda-tools
+	provides = cuda-tools=12.9.1
 	conflicts = cuda-tools
