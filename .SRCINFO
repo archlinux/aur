@@ -1,0 +1,20 @@
+pkgbase = papirus-mace-icon-theme-git
+	pkgdesc = Pixel perfect icon theme for Linux - MACE edition
+	pkgver = r35.b209e9f
+	pkgrel = 1
+	url = https://gitlab.com/macelinux/icons/papirus-mace-icon-theme
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gtk-update-icon-cache
+	options = !strip
+	source = git+https://gitlab.com/macelinux/icons/papirus-mace-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = papirus-mace-icon-theme-git
+	install = alt-icons.install
+	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
+	optdepends = hardcode-tray-git: To fix hardcoded tray icons
+	optdepends = sif-git: To fix icons of running Steam games
+	provides = papirus-mace-icon-theme
+	conflicts = papirus-mace-icon-theme
