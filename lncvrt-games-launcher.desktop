@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=
+Exec=lncvrt-games-launcher
+StartupWMClass=lncvrt-games-launcher-loader
+Icon=lncvrt-games-launcher-loader
+Name=Lncvrt Games Launcher
+Terminal=false
+Type=Application

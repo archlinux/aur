@@ -1,0 +1,19 @@
+pkgbase = lncvrt-games-launcher
+	pkgdesc = The official Lncvrt Games Launcher AUR Package!
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://games.lncvrt.xyz
+	arch = x86_64
+	options = !strip
+	source = https://archive.org/download/lncvrt-games-launcher/Lncvrt-Games-Launcher-1.0.2-linux.AppImage
+	source = lncvrt-games-launcher.desktop
+	source = 32x32.png
+	source = 128x128.png
+	source = 256x256@2.png
+	sha256sums = 2fc50482cd7273821005bb803a4068c6fbf18728a6bc3869bfe8c8826f16292e
+	sha256sums = 773748b6ee35da1c11e47024dc222a2b5c43e97626ec649adbb0d87729dbcf3d
+	sha256sums = c40be4e50bca8c58fa0114aec50e62dc85b8747cd0c61ed7b464e3b5d1ae1bd5
+	sha256sums = d5272d77054a9a3f010760bf8ff78babf59eaecd31e5f695f5a7156d34252219
+	sha256sums = 6e812d3fcdce162d740fb7f4a0ad0a2c4b2485103b9569ed8062b952a9445c4f
+
+pkgname = lncvrt-games-launcher
