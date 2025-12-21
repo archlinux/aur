@@ -25,7 +25,6 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ReconSage
   git describe --long --tags --dirty --always 2>/dev/null \
     | sed 's/^v//;s/-/./g'
 }
