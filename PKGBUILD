@@ -39,7 +39,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=icx \
     -DCMAKE_CXX_COMPILER=icpx \
-    -DGGML_SYCL=1
+    -DGGML_SYCL=ON
 
   cmake --build build
 }
