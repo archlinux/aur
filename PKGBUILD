@@ -2,7 +2,7 @@
 
 pkgname=wlout
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies'
 url='https://github.com/sashokbg/wlout'
 license=(GPLv3)
@@ -10,7 +10,7 @@ makedepends=('cargo' 'git')
 depends=()
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(
-    "wlout::git+https://github.com/sashokbg/wlout.git#tag=0.1.0"
+    "git+https://github.com/sashokbg/wlout.git#tag=0.1.0"
 )
 b2sums=('SKIP')
 
