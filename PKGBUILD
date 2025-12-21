@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-source-dock
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio allowing you to create a Dock for a source, which lets you interact, see audio levels, change volume and control media"
 arch=("x86_64" "aarch64")
@@ -13,14 +13,18 @@ options=("debug")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
 sha256sums=("SKIP")
 
+prepare() {
+  cd $pkgname
+
+  sed -i 's/Widgets Core/Widgets Core GuiPrivate/g' CMakeLists.txt
+}
+
 build() {
   cmake -B build -S "$pkgname" \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6 \
-  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations -Wno-error=switch" \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
   -Wno-dev
 
   cmake --build build
