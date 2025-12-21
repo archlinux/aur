@@ -1,6 +1,6 @@
 # Maintainer: thacoon <thacoon@posteo.de>
 pkgname=cpass
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A terminal password manager written in Rust."
 arch=("x86_64")
