@@ -54,8 +54,7 @@ build() {
 
   (
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-    rm -rf server/android
-    ./gradlew build
+    ./gradlew shadowJar
   )
 }
 
