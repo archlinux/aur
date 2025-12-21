@@ -23,8 +23,8 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 epoch=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
@@ -61,6 +61,8 @@ prepare() {
   git config submodule.dlib.url $srcdir/dlib
   git config submodule.libvisca.url $srcdir/libvisca-ip
   git -c protocol.file.allow=always submodule update
+
+  sed -i 's/Core Gui/Core GuiPrivate/g' CMakeLists.txt
 }
 
 build() {
