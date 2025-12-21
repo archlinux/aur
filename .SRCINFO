@@ -1,0 +1,34 @@
+pkgbase = searxng-rama
+	pkgdesc = SearXNG RAMA Edition - Pre-configured SearXNG with custom theme and systemd service
+	pkgver = r9135.8bf600c
+	pkgrel = 2
+	url = https://github.com/Nomadcxx/searxng-RAMA
+	install = searxng-rama.install
+	arch = any
+	license = AGPL3
+	makedepends = openssl
+	makedepends = git
+	makedepends = python-virtualenv
+	makedepends = npm
+	makedepends = gcc
+	makedepends = make
+	makedepends = libvips
+	makedepends = python
+	makedepends = pkgconf
+	depends = python
+	depends = systemd
+	optdepends = redis: Caching support for improved performance
+	optdepends = valkey: Alternative caching support
+	optdepends = libmagic: File type detection for uploads
+	optdepends = p7zip: Archive support for file upload
+	provides = searxng
+	conflicts = searx
+	conflicts = searx-git
+	conflicts = searxng
+	backup = opt/searxng-rama/searx/settings.yml
+	source = git+https://github.com/searxng/searxng#branch=master
+	source = git+https://github.com/Nomadcxx/searxng-RAMA.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = searxng-rama

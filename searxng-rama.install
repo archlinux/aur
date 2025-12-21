@@ -1,0 +1,72 @@
+post_install() {
+    echo "==> Creating searxng user..."
+    if ! id searxng &>/dev/null; then
+        useradd -M -r -s /usr/bin/nologin searxng
+    fi
+    
+    echo "==> Setting permissions..."
+    chown -R searxng:searxng /opt/searxng-rama
+    
+    echo "==> Reloading systemd daemon..."
+    systemctl daemon-reload
+    
+    echo "==> Enabling searxng-rama service..."
+    systemctl enable searxng-rama.service
+    
+    cat << 'EOF'
+  ████████ ██████████   ██████   ████████   ████  ████ ████    ████   ████████
+████       ████       ████  ████ ████  ████ ████  ████ ██████  ████ ████      
+██████████ ████████   ████  ████ ████  ████   ██████   ████████████ ████  ████
+      ████ ████       ██████████ ████████   ████  ████ ████  ██████ ████  ████
+████████   ██████████ ████  ████ ████  ████ ████  ████ ████    ████   ████████
+
+  RAMA Edition: Pre-configured SearXNG with custom theme
+
+EOF
+    echo "==> SearXNG RAMA installed successfully!"
+    echo ""
+    echo "To start the service:"
+    echo "  sudo systemctl start searxng-rama.service"
+    echo ""
+    echo "To check status:"
+    echo "  sudo systemctl status searxng-rama.service"
+    echo ""
+    echo "To view logs:"
+    echo "  sudo journalctl -u searxng-rama.service -f"
+    echo ""
+    echo "Access RAMA Search at http://localhost:8855"
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Setting permissions..."
+    chown -R searxng:searxng /opt/searxng-rama 2>/dev/null || true
+    
+    echo "==> Reloading systemd daemon..."
+    systemctl daemon-reload
+    
+    echo ""
+    echo "==> SearXNG RAMA upgraded successfully!"
+    echo ""
+    echo "Your configuration at /opt/searxng-rama/searx/settings.yml is preserved."
+    echo "To apply changes:"
+    echo "  sudo systemctl restart searxng-rama.service"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Stopping and disabling searxng-rama service..."
+    systemctl stop searxng-rama.service 2>/dev/null || true
+    systemctl disable searxng-rama.service 2>/dev/null || true
+    systemctl daemon-reload
+    
+    echo "==> Removing searxng user..."
+    userdel searxng 2>/dev/null || true
+    
+    echo ""
+    echo "==> SearXNG RAMA removal complete!"
+    echo ""
+    echo "To completely remove all files:"
+    echo "  sudo rm -rf /opt/searxng-rama"
+    echo ""
+}
