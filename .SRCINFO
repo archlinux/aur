@@ -1,6 +1,6 @@
 pkgbase = media-launcher-git
 	pkgdesc = Generate mpv/vlc launch scripts for videos with external audio and subtitles
-	pkgver = 0
+	pkgver = cb31997
 	pkgrel = 1
 	url = https://github.com/akoidan/media-launcher
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = media-launcher-git
 	optdepends = vlc: Play generated scripts with VLC
 	provides = media-launcher
 	conflicts = media-launcher
-	source = media-launcher::git+https://github.com/akoidan/media-launcher.git#branch=main
+	source = media-launcher::git+https://github.com/akoidan/media-launcher#branch=main
 	sha256sums = SKIP
 
 pkgname = media-launcher-git
