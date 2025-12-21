@@ -2,7 +2,7 @@
 
 pkgname=myctl
 pkgdesc="A powerful CLI to control your Linux Desktop"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
@@ -32,12 +32,14 @@ package() {
     install -Dm755 "$binary" "${pkgdir}/usr/bin/$(basename "$binary")"
   done
 
-  msg2 "Packaging libraries..."
-  for libfile in lib/*; do
-    install -Dm644 "$libfile" "${pkgdir}/usr/lib/myctl/$(basename "$libfile")"
-  done
+    msg2 "Packaging src files..."
+    install -dm755 "${pkgdir}/usr/src/${pkgname}"
+    cp -a --no-preserve=ownership src/* "${pkgdir}/usr/src/${pkgname}/"
 
-  msg2 "Packaging assets..."
-  install -dm755 "${pkgdir}/usr/src/myctl"
-  cp -a --no-preserve=ownership src/* "${pkgdir}/usr/src/myctl/"
+    msg2 "Packaging icons..."
+    install -Dm644 "app/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "app/icons/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+    msg2 "Packaging completed."
+
 }
