@@ -1,12 +1,13 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=reframe
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…"
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://reframe.alynx.one/"
 license=("Apache-2.0")
 depends=("glib2" "libepoxy" "libvncserver" "libxkbcommon" "libdrm" "systemd-libs" "gcc-libs" "glibc")
+optdepends=("neatvnc: experimental neatvnc implementation")
 makedepends=("meson")
 backup=("etc/${pkgname}/example.conf")
 source=("git+https://github.com/AlynxZhou/${pkgname}.git#tag=v${pkgver}"
@@ -27,7 +28,7 @@ prepare() {
 build() {
   cd "${pkgname}/build"
 
-  arch-meson . ..
+  arch-meson -D neatvnc=true . ..
   meson compile
 }
 
