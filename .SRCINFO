@@ -1,7 +1,7 @@
 pkgbase = atmosim
 	pkgdesc = A CLI maxcap calculator for Space Station 14
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ilya246/atmosim
 	arch = any
 	license = GPL-3.0-or-later
