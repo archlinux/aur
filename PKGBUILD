@@ -36,7 +36,7 @@ build() {
     -S "${srcdir}/${pkgname%%-git}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_BLAS=1 \
+    -DGGML_BLAS=ON \
     -DGGML_BLAS_VENDOR=OpenBLAS
 
   cmake --build build
