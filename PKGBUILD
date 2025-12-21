@@ -3,7 +3,7 @@
 pkgname=myctl
 pkgdesc="A powerful CLI to control your Linux Desktop"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
 license=('GPL3')
@@ -37,8 +37,8 @@ package() {
     cp -a --no-preserve=ownership src/* "${pkgdir}/usr/src/${pkgname}/"
 
     msg2 "Packaging icons..."
-    install -Dm644 "app/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "app/icons/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "icons/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
     msg2 "Packaging completed."
 
