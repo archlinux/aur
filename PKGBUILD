@@ -10,14 +10,12 @@ arch=('x86_64')
 url="https://zalo.me"
 license=('custom')
 depends=(
-    'python'
     'python-pillow'
     'python-pystray'
     'electron22-bin'
 )
 makedepends=(
     '7zip'
-    'asar'
 )
 source=(
     "zalo.dmg::https://res-download-pc-te-vnso-ne-2.zadn.vn/mac/ZaloSetup-universal-${pkgver}.dmg"
