@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pre_upgrade() {
+  OLD_VERSION=`echo $2 | cut -d'-' -f1`
+
+  if [ `vercmp "$OLD_VERSION" 6.2` -le 0 ]; then
+    if [ -f /etc/stormfetch/config.yaml ]; then
+      mv /etc/stormfetch/config.yaml /etc/stormfetch/config.yml.old
+    fi
+  fi
+}
