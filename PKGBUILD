@@ -1,13 +1,12 @@
-# Maintainer: Moksh Malde maldemoksh437@gmail.com
+# Maintainer: Moksh Malde <maldemoksh437@gmail.com>
 
 pkgname=reconsage-git
-pkgver=1.9.0
+pkgver=1.9
 pkgrel=1
 pkgdesc="Advanced passive reconnaissance framework with WAF, rate-limit and fingerprint detection"
 arch=('any')
 url="https://github.com/glitchxmalde/ReconSage"
 license=('MIT')
-
 depends=(
   'python'
   'python-fastapi'
@@ -19,15 +18,17 @@ depends=(
   'python-dnspython'
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
-build() {
-  cd "ReconSage-$pkgver"
+pkgver() {
+  cd ReconSage
+  git describe --long --tags --dirty --always 2>/dev/null \
+    | sed 's/^v//;s/-/./g'
 }
 
 package() {
-  cd "ReconSage-$pkgver"
+  cd ReconSage
 
   install -d "$pkgdir/usr/lib/reconsage"
   cp -r . "$pkgdir/usr/lib/reconsage"
@@ -35,3 +36,4 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/reconsage/main.py "$pkgdir/usr/bin/reconsage"
 }
+

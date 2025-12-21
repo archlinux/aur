@@ -1,6 +1,6 @@
-pkgbase = reconsage
+pkgbase = reconsage-git
 	pkgdesc = Advanced passive reconnaissance framework with WAF, rate-limit and fingerprint detection
-	pkgver = 0.1.0
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/glitchxmalde/ReconSage
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = reconsage
 	depends = python-rich
 	depends = python-requests
 	depends = python-dnspython
-	source = reconsage-0.1.0.tar.gz::https://github.com/glitchxmalde/ReconSage/archive/v0.1.0.tar.gz
+	source = git+https://github.com/glitchxmalde/ReconSage.git
 	sha256sums = SKIP
 
-pkgname = reconsage
+pkgname = reconsage-git
