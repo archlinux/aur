@@ -7,7 +7,7 @@ pkgname=(
   "slimevr-gui"
 )
 pkgver="18.1.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Server for SlimeVR Full Body Tracking System"
 arch=("x86_64")
 url="https://github.com/SlimeVR/SlimeVR-Server"
