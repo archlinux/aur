@@ -1,7 +1,7 @@
 pkgbase = wlout
 	pkgdesc = Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sashokbg/wlout
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wlout
 	license = GPLv3
 	makedepends = cargo
 	makedepends = git
-	source = wlout::git+https://github.com/sashokbg/wlout.git#tag=0.1.0
+	source = git+https://github.com/sashokbg/wlout.git#tag=0.1.0
 	b2sums = SKIP
 
 pkgname = wlout
