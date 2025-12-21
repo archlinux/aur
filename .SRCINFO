@@ -1,6 +1,6 @@
 pkgbase = nohang
 	pkgdesc = A sophisticated low memory handler.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hakavlad/nohang
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = nohang
 	backup = etc/nohang/nohang.conf
 	backup = etc/nohang/nohang-desktop.conf
 	backup = etc/logrotate.d/nohang
-	source = git+https://github.com/hakavlad/nohang.git#tag=v0.2.0
-	sha256sums = SKIP
+	source = https://github.com/hakavlad/nohang/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6415b1ffcc6f9d811ce8b1cc827a551c344c9d15f55831440183d0a0210ed1d5
 
 pkgname = nohang
-
