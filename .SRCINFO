@@ -1,5 +1,5 @@
 pkgbase = dwu
-	pkgdesc = Daily Wallpaper Updater for a new anime wallpaper from wallpaper-a-day.com
+	pkgdesc = Daily Wallpaper Updater for new anime wallpapers everyday from wallpaper-a-day.com
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/starrieste/dwu
