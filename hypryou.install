@@ -1,0 +1,39 @@
+post_install() {
+    echo ":: Updating font cache..."
+    fc-cache -f > /dev/null
+    echo ":: Enabling NetworkManager service"
+    sudo systemctl enable NetworkManager
+    echo ":: Reboot your pc!"
+}
+
+post_upgrade() {
+    echo ":: Removing styles cache for all users"
+    for user_home in /home/*; do
+        if [ -d "$user_home/.cache/hypryou" ]; then
+            rm -f "$user_home/.cache/hypryou/style.css"
+        fi
+    done
+
+    echo ":: Trying to reload hypryou and hyprland"
+    users=$(ps -C Hyprland -o user= 2>/dev/null | sort -u)
+    users+=" $(ps -C hyprland -o user= 2>/dev/null | sort -u)"
+    users=$(echo "$users" | xargs -n1 | sort -u)
+
+    for user in $users; do
+        json=$(sudo -u "$user" hyprctl instances -j 2>/dev/null)
+        if jq empty >/dev/null 2>&1 <<<"$json"; then
+            instances=$(jq -r '.[].instance' <<<"$json" 2>/dev/null)
+            for inst in $instances; do
+                sudo -u "$user" hyprctl --instance "$inst" reload >/dev/null 2>&1 || true
+                sudo -u "$user" hyprctl --instance "$inst" dispatch exec hypryouctl reload >/dev/null 2>&1 || true
+            done
+        fi
+    done
+    echo ":: Updating font cache..."
+    fc-cache -f > /dev/null
+}
+
+post_remove() {
+    echo ":: Updating font cache..."
+    fc-cache -f > /dev/null
+}
