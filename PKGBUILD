@@ -1,6 +1,6 @@
 # Maintainer: Art <fn3x@proton.me>
 pkgname=sneemok
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Wayland screenshot annotation tool with clipboard support"
 arch=('x86_64')
@@ -22,8 +22,8 @@ optdepends=(
     'xdg-desktop-portal-hyprland: For Hyprland users'
     'xdg-desktop-portal-wlr: For wlroots-based compositors'
 )
-source=("sneemok-0.4.0.tar.gz::https://codeberg.org/fn3x/sneemok/archive/v0.4.0.tar.gz")
-sha256sums=('f30c47a3335cfdc5b78336ebfe1e83c4025fee188aec7f8a270d1e3e9c77818d')
+source=("sneemok-0.4.1.tar.gz::https://codeberg.org/fn3x/sneemok/archive/v0.4.1.tar.gz")
+sha256sums=('e49cfd33ca2bfa4b30cb3207319c34073c23e77d8beac7aa99ec6ab8307f29a1')
 
 build() {
     cd "$srcdir/$pkgname"
