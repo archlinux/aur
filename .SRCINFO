@@ -1,6 +1,6 @@
 pkgbase = r-knitr
 	pkgdesc = A General-Purpose Package for Dynamic Report Generation in R
-	pkgver = 1.50
+	pkgver = 1.51
 	pkgrel = 1
 	url = https://cran.r-project.org/package=knitr
 	arch = any
@@ -23,6 +23,8 @@ pkgbase = r-knitr
 	optdepends = r-litedown
 	optdepends = r-magick
 	optdepends = r-markdown
+	optdepends = r-otel
+	optdepends = r-otelsdk
 	optdepends = r-png
 	optdepends = r-ragg
 	optdepends = r-reticulate
@@ -40,8 +42,8 @@ pkgbase = r-knitr
 	optdepends = r-tikzdevice
 	optdepends = r-tinytex
 	optdepends = r-webshot
-	source = https://cran.r-project.org/src/contrib/knitr_1.50.tar.gz
-	md5sums = b58c37c2d9123ba4a98b1e838da9ac75
-	b2sums = 28c461406c5b5a2e590e3417079ca9971382d88fd2d9d09e8d395723f89905e1d7be9678ac77c912eeed17ad69915d86c4ec382dfcf0d07837495fd83a7a18f8
+	source = https://cran.r-project.org/src/contrib/knitr_1.51.tar.gz
+	md5sums = 79f32f24b572fe198baca8882d6aa87f
+	b2sums = eb35a26242c198d8a0a280983258cef8be5252aa842918e003564db83f7f814f8bff12d3b6f322ba52026d7c2d46cb3ae648c8bccdcdf6e6860bccdb9d600ac1
 
 pkgname = r-knitr
