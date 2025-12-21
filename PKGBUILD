@@ -1,8 +1,8 @@
 # Maintainer: Ted pheenty Lukin <fedorlukin2006@gmail.com>
 
 pkgname=atmosim
-pkgver=2.3
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A CLI maxcap calculator for Space Station 14"
 arch=(any)
 url="https://github.com/Ilya246/atmosim"
