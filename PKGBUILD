@@ -1,5 +1,5 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
-# Co-Maintainer: Jai Brown (aur JaINTP) <dev [at] gmail [dot] com>
+# Co-Maintainer: Jai Brown (aur JaINTP) <dev [at] jaintp [dot] com>
 
 _pkgname=capacities
 _version=1.57.24
