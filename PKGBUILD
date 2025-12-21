@@ -1,13 +1,13 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=2ship2harkinian
-_lus_commit=5f4be9b6f5f74917c303ab8b66a0b2f4ef91613d
+_lus_commit=5d498e780f25dc3c05804b0328db683121d96a2d
 _ZAPDTR_commit=684f21a475dcfeee89938ae1f4afc42768a3e7ef
 _OTRExporter_commit=32e088e28c8cdd055d4bb8f3f219d33ad37963f3
 
 pkgbase=2s2h
 pkgname=(2s2h 2s2h-otr-exporter)
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
@@ -22,8 +22,8 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/louist103/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/louist103/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "2s2h.desktop")
-sha256sums=('cf42d481b399554b2405c41ec0e1e7bf22b6c603522c6a0772324858420ae133'
-            '3df918a599a4c6320de36644107075dc9a51eb7bd23130cf8101ceba056fa96d'
+sha256sums=('dfc2942fde4a3bf8ff55cd40c6b20587186030cc00f983289041d2b41a3be5c4'
+            '40874d42d02f6e2d810addd8e6da6f39a7bef800c14b24a38ca2333f4b436fbb'
             '91a863f8899f2ebfc7868ccad4b5982ae416799c76358ce5b2c0edc11e42a672'
             '8016f735f9ef4e177384b0e51f243e374bf2f67ba66bdd5d21af8b185aed1635'
             '8c8525a09a94c30106f44219c0f0239789d5c53cd6e30c7748b55f8d83cee24b')
