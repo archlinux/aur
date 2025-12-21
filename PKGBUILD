@@ -1,6 +1,6 @@
 # Maintainer: Sevilze <sevilzcubing@gmail.com>
 pkgname=llminxsolver-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Megaminx Last Layer Solver with Compose Multiplatform GUI"
 arch=('x86_64')
@@ -11,15 +11,22 @@ provides=('llminxsolver')
 conflicts=('llminxsolver')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/llminxsolver-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('9f9c678136b989b3952708f02c1ca70aa2c5b23b97474285d77bc70b5b055782')
+sha256sums=('2af0cb40219cba49d8a2e55f59bd5e28cc725452f21048a6e1541ca9c1e780d9')
 
 package() {
     cd "$srcdir"
     
-    install -Dm755 "LLMinx Solver/bin/LLMinx Solver" "$pkgdir/usr/bin/llminxsolver"
-    
     install -dm755 "$pkgdir/usr/share/llminxsolver"
+    cp -r "LLMinx Solver/bin" "$pkgdir/usr/share/llminxsolver/"
     cp -r "LLMinx Solver/lib" "$pkgdir/usr/share/llminxsolver/"
+    chmod 755 "$pkgdir/usr/share/llminxsolver/bin/LLMinx Solver"
+    
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/llminxsolver" <<'EOF'
+#!/bin/sh
+exec "/usr/share/llminxsolver/bin/LLMinx Solver" "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/llminxsolver"
     
     install -Dm644 "LLMinx Solver/lib/LLMinx Solver.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/llminxsolver.png"
