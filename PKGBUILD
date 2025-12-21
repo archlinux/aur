@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 
 install=antimony.install
@@ -9,8 +9,8 @@ license=("Unlicense")
 url="https://github.com/kkernick/antimony"
 source=("git+https://github.com/kkernick/antimony#tag=${pkgver}")
 b2sums=("SKIP")
-depends=(findutils glibc bubblewrap libseccomp strace xdg-dbus-proxy sqlite libnotify)
-makedepends=(git cargo)
+depends=(findutils glibc bubblewrap libseccomp strace xdg-dbus-proxy sqlite libnotify dbus)
+makedepends=(git cargo pkgconf)
 arch=("any")
 
 prepare() {
