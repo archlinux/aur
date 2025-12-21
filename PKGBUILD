@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-bin
 _pkgname=tensamin
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
@@ -40,7 +40,6 @@ depends=(nodejs
          libxi
          libxrandr
          libxrender
-         libxscrnsaver
          libxtst
          libxcb)
 provides=('tensamin')

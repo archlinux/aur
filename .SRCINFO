@@ -1,6 +1,6 @@
 pkgbase = tensamin-bin
 	pkgdesc = True E2EE, decentralized messages. Open source and privacy first.
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://tensamin.net
 	arch = x86_64
@@ -38,13 +38,12 @@ pkgbase = tensamin-bin
 	depends = libxi
 	depends = libxrandr
 	depends = libxrender
-	depends = libxscrnsaver
 	depends = libxtst
 	depends = libxcb
 	provides = tensamin
 	conflicts = tensamin
 	conflicts = tensamin-git
-	source = https://github.com/Tensamin/Frontend/releases/download/v0.1.22/tensamin_0.1.22_amd64.deb
+	source = https://github.com/Tensamin/Frontend/releases/download/v0.1.23/tensamin_0.1.23_amd64.deb
 	sha256sums = SKIP
 
 pkgname = tensamin-bin
