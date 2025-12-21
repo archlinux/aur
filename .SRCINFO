@@ -21,12 +21,10 @@ pkgbase = zalo-macos
 	source = zalo_py
 	source = Zalo.png
 	source = LICENSE.html::https://zalo.vn/dieukhoan
-	source = zalo-linux-compatibility.patch
-	sha256sums = 55f1f0955450e14de5806f2f124be5710f4d3a117854d6723289da07cf367377
+	sha256sums = 4232e917d134f40897032e3be0ff1697f39cd0531965f5b9a491bb1b8c2a86a9
 	sha256sums = 3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9
 	sha256sums = 1d193ab57424a663d0f1180219a7dd8454ba325fdcc75fa0eb4b343e733e32a0
 	sha256sums = 54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445
 	sha256sums = SKIP
-	sha256sums = 9dee99c5c64944ede2e7fb38a40319bc7206bd840729a4c8a80e2cd6fd09b39a
 
 pkgname = zalo-macos
