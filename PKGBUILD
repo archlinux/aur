@@ -1,27 +1,17 @@
 pkgname=tomo
-tomover=2025-12-21
+tomover=2025-12-21.5
 pkgver="${tomover//-/.}"
 pkgrel=1
 pkgdesc='The Tomo programming language compiler'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://tomo.bruce-hill.com"
 license=('custom')
 depends=('gcc' 'binutils' 'gmp' 'libunistring' 'gc')
-makedepends=('git' 'make' 'gcc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bruce-hill/tomo/archive/refs/tags/v$tomover.tar.gz")
-sha256sums=('b55f1df28952e165ccbcc92a71c9f6666144e3cd8de472013ac3d319d14ea4b0')
-
-build() {
-  cd "tomo-$tomover"
-  cat <<END >config.mk
-PREFIX=$pkgdir
-DEFAULT_C_COMPILER=gcc
-SUDO=sudo
-END
-  PATH="$pkgdir/bin:$PATH" make -j
-}
+source=("https://github.com/bruce-hill/tomo/releases/download/v$tomover/tomo-linux-$CARCH.tar.gz")
+sha256sums=('d0852f62e97950b55c84c2f9d6e3ee91ce86e0c5ce70dc346a98d3c226c1156b')
 
 package() {
-  cd "tomo-$tomover"
-  PATH="$pkgdir/bin:$PATH" make -j install
+    cd "$srcdir"
+    mkdir "$pkgdir/usr"
+    tar -xzf "tomo-linux-${CARCH}.tar.gz" -C "$pkgdir/usr" --strip-components=1
 }
