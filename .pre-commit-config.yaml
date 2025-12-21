@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
+  - repo: 'https://gitea.sebastian-tobie.de/sebastian/pre-commit-standard-files'
+    rev: v0.12
+    hooks:
+      - id: standard-editorconfig
+      - id: pkgbuild-srcinfo

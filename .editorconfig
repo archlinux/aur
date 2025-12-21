@@ -1,0 +1,26 @@
+root = true
+
+[*]
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style = tab
+max_line_length = off
+
+[*.js]
+block_comment_start = /*
+block_comment = *
+block_comment_end = */
+
+[*.json]
+max_line_length = off
+
+[*.go]
+indent_style = tab
+
+[*.{yml,yaml}]
+indent_size = 2

@@ -3,18 +3,20 @@
 ## This script is for generating the dependency list of the package
 ## Usage:
 ##  get_deps.sh elffile.so ...
-PKGBUILD_FILE=$(dirname $(realpath "$0"))/PKGBUILD
 declare -a LIBRARIES
 declare -a DEPENDENCIES
 
 while [ -n "$1" ] ; do
-    LIBRARIES+=($(objdump -p "$1" | grep NEEDED | grep -v ld-linux-x86-64.so.2 | awk '{print $2}'))
+    for item in $(objdump -p "$1" | grep NEEDED | grep -v ld-linux-x86-64.so.2 | awk '{print $2}') ; do
+        LIBRARIES+=("$item")
+    done
     shift
 done
 printf "Found %d dynamic libraries. cleaning them up\n" "${#LIBRARIES[@]}"
+# shellcheck disable=SC2207,SC2068
 LIBRARIES=($(printf -- '%s\n' ${LIBRARIES[@]} | sort -u))
 printf "Amount of unique dynamic libraries: %d\n" "${#LIBRARIES[@]}"
-for dep in ${LIBRARIES[@]} ; do
+for dep in "${LIBRARIES[@]}" ; do
     case "$dep" in
         /*)
             echo "Raw paths are ignored: $dep"
@@ -23,7 +25,7 @@ for dep in ${LIBRARIES[@]} ; do
             libdep=${dep%*.so*}.so
             libversion=${dep##*so.}
             echo "Checking $dep"
-            if [[ "$dep" =~ '.so$' ]] ; then
+            if [[ "$dep" =~ .so$ ]] ; then
                 query="$dep"
             else
                 query="${libdep}=${libversion}-64"
@@ -31,14 +33,16 @@ for dep in ${LIBRARIES[@]} ; do
             if pacman -Qqq "$query" 2>/dev/null >/dev/null; then
                 DEPENDENCIES+=("$query")
             else
+                # shellcheck disable=SC2207
                 DEPENDENCIES+=($(pacman -F --machinereadable "usr/lib/$dep" | cut -f 2 -d '' | head -n 1))
             fi
             ;;
     esac
 done
 printf "Amount of found dependencies: %d\n" "${#DEPENDENCIES[@]}"
+# shellcheck disable=SC2207,SC2068
 DEPENDENCIES=($(printf -- '%s\n' ${DEPENDENCIES[@]} | sort -u))
 printf "Amount of unique dependencies: %d\n" "${#DEPENDENCIES[@]}"
 echo "depends=("
-printf "    %s\n" ${DEPENDENCIES[@]}
+printf "    %s\n" "${DEPENDENCIES[@]}"
 echo ")"
