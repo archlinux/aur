@@ -1,0 +1,17 @@
+pkgbase = llminxsolver-bin
+	pkgdesc = Megaminx Last Layer Solver with Compose Multiplatform GUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Sevilze/llminxsolver-cmp
+	arch = x86_64
+	license = MIT
+	depends = java-runtime>=21
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	provides = llminxsolver
+	conflicts = llminxsolver
+	options = !strip
+	source = llminxsolver-bin-0.1.0.tar.gz::https://github.com/Sevilze/llminxsolver-cmp/releases/download/v0.1.0/llminxsolver-v0.1.0-x86_64-linux.tar.gz
+	sha256sums = 9f9c678136b989b3952708f02c1ca70aa2c5b23b97474285d77bc70b5b055782
+
+pkgname = llminxsolver-bin
