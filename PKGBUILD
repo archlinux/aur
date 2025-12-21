@@ -4,7 +4,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.9.10 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/code
+pkgver=0.9.11 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/code
 pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
@@ -53,4 +53,4 @@ package() {
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha256sums=('aadd48058086baf2d95198926a60bf86b2f03fe1fdeb6b7a36cfdb0a5009ac4d')
+sha256sums=('be76278bf3be9214bb2878e0548926f1d025fa1cd2a184e3303447a8760bba38')
