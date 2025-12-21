@@ -2,8 +2,8 @@
 # Maintainer: HurricanePooits <hurricanepootis@protonmail.com>
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
-pkgver=0.0.3
-pkgrel=16
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -15,21 +15,17 @@ optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
 source=("https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
-sha256sums=('5e97058e43b0c8780caba7f549f5fdf50a08cfbb478289c86e0dd7c2d1c27aaa')
+sha256sums=('316099de9d3d4588cf9d8040033f513e36287652a5f86f5562f452a3caf9ecca')
 build() {
 	cd "$srcdir"
 	cmake -B build -S $pkgname -GNinja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
-		-DYUZU_CHECK_SUBMODULES=OFF \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
 		-DYUZU_USE_CPM=OFF \
 		-DCPM_USE_LOCAL_PACKAGES=ON \
-		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
-		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_BUNDLED_QT=OFF \
