@@ -12,9 +12,13 @@ provides=('pixelterm-c')
 options=('!debug' '!strip')
 source_x86_64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-amd64-linux")
 source_aarch64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-arm64-linux")
+source=("pixelterm.bash::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/bash/pixelterm"
+        "pixelterm.zsh::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/zsh/_pixelterm"
+        "pixelterm.fish::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/fish/pixelterm.fish")
 noextract=()
 md5sums_x86_64=('4f3a9d8b4435af2c2d819e5eacac3220')
 md5sums_aarch64=('532148cddee133f3b32f60276daea9b0')
+md5sums=('6f174edf5a388c6559d7d80bea008ee0' '166d4049afc2642435145b38aa32a936' 'fa87c1e39fd8ed85f12f3d4405056701')
 
 prepare() {
   find "${srcdir}" -maxdepth 1 -type f -name 'pixelterm-*' ! -name "pixelterm-${pkgver}" -delete
@@ -22,4 +26,7 @@ prepare() {
 
 package() {
   install -Dm755 "${srcdir}/pixelterm-${pkgver}" "${pkgdir}/usr/bin/pixelterm"
+  install -Dm644 "${srcdir}/pixelterm.bash" "${pkgdir}/usr/share/bash-completion/completions/pixelterm"
+  install -Dm644 "${srcdir}/pixelterm.zsh" "${pkgdir}/usr/share/zsh/site-functions/_pixelterm"
+  install -Dm644 "${srcdir}/pixelterm.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/pixelterm.fish"
 }
