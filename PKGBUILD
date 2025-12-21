@@ -12,7 +12,7 @@ sha256sums=('0c198525d3e503cf3b982800d4484154f4070e2b81549024fb21ecc396bcb0cb')
 
 build() {
   cd "$srcdir/mfetch-$pkgver"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
