@@ -1,0 +1,68 @@
+From ea8ab7ba6f2b616e3a5dfee03651756f577c4de2 Mon Sep 17 00:00:00 2001
+From: Denis Benato <denis.benato@linux.dev>
+Date: Tue, 16 Dec 2025 22:39:08 +0100
+Subject: [PATCH 1/2] platform/x86: asus-wmi: fix initializing TUFs keyboard at
+ probe
+
+Disabling oobe is an important step to be able to fully control
+the hardware in TUF laptops that supports this feature.
+---
+ drivers/platform/x86/asus-wmi.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 4aec7ec69250..7af5f58fe1f9 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -1059,6 +1059,8 @@ static const struct attribute_group kbd_rgb_mode_group = {
+ 	.attrs = kbd_rgb_mode_attrs,
+ };
+ 
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
++
+ /* TUF Laptop Keyboard RGB State **********************************************/
+ static ssize_t kbd_rgb_state_store(struct device *dev,
+ 				 struct device_attribute *attr,
+@@ -1106,6 +1108,8 @@ static const struct attribute_group kbd_rgb_state_group = {
+ 	.attrs = kbd_rgb_state_attrs,
+ };
+ 
++#endif
++
+ static const struct attribute_group *kbd_rgb_mode_groups[] = {
+ 	NULL,
+ 	NULL,
+@@ -1861,8 +1865,11 @@ static int asus_wmi_led_init(struct asus_wmi *asus)
+ 
+ 	if (asus->kbd_rgb_dev)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_mode_group;
++
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ 	if (asus->kbd_rgb_state_available)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_state_group;
++#endif
+ 
+ 	asus->led_workqueue = create_singlethread_workqueue("led_workqueue");
+ 	if (!asus->led_workqueue)
+@@ -4888,8 +4895,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+-	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+-	asus->oobe_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_OOBE);
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
+@@ -4902,6 +4907,9 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
+ #endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
++	asus->oobe_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_OOBE);
++	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
++
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY;
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO))
+-- 
+2.52.0
+

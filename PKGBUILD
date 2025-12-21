@@ -60,6 +60,9 @@ source=(
   PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
   PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling-id1-id2-pr_err.patch
 
+  0001-platform-x86-asus-wmi-fix-initializing-TUFs-keyboard.patch
+  0002-platform-x86-asus-armoury-add-keyboard-control-firmw.patch
+
   0001-acpi-proc-idle-skip-dummy-wait.patch
   PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
   PATCH-asus-wmi-fixup-screenpad-brightness.patch
@@ -89,7 +92,7 @@ sha256sums=('d0a78bf3f0d12aaa10af3b5adcaed5bc767b5b78705e5ef885d5e930b72e25d5'
             'SKIP'
             'e0de7a4ccf2636993b2f49081399efaa63c0bf1c0db5cf1cbbdd6f8bfbede241'
             'SKIP'
-            '3061f542f99dd8dec161029e31dce15281cd99ec68e8403312d135ed13787dfd'
+            'd0ce1ee11ca0bc6a817c3c17a2651076409bd9fd6c0ab9e744aae2131ab654ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
@@ -105,7 +108,9 @@ sha256sums=('d0a78bf3f0d12aaa10af3b5adcaed5bc767b5b78705e5ef885d5e930b72e25d5'
             '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
             '93f054d3a81ae4c32c92ea92e86ed6d1a250cb3d40a14ec5f01c532eb0a694b0'
-            'e42dc16849c71c8a2fb81cc8b1ffbbc06d5dfe8bf1833782bc8b51a3a031458b'
+            'c22b5c3575b2e8f20836c9ed4b504c98346da5840a7197d224f0c66ca5a8cf92'
+            '03be0cba7c3e9a1f19e3303d603e4c64b34e893c13dacac5c3be952ff2351f00'
+            '97414fb47bb35c88921ff2f86712dfe0c2d95320fc46825d7ed2a501d8466bd6'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'

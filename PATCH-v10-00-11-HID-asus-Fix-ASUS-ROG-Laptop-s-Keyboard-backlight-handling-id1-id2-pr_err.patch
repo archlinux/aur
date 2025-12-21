@@ -48,3 +48,22 @@ index 6fc251b6e528..4d5fd34e41ba 100644
  	}
  
  	if (dmi_match(DMI_PRODUCT_FAMILY, "ProArt P16")) {
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 4d5fd34e41ba..35c892285026 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -652,11 +652,11 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+ 		else
+ 			pr_err("Failed asus_kbd_init FEATURE_KBD_LED_REPORT_ID1: %d\n", ret);	
+ 
+-		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID2);
++		/*ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID2);
+ 		if (ret)
+ 			pr_info("Success asus_kbd_init FEATURE_KBD_LED_REPORT_ID2: %d\n", ret);
+ 		else
+-			pr_err("Failed asus_kbd_init FEATURE_KBD_LED_REPORT_ID2: %d\n", ret);
++			pr_err("Failed asus_kbd_init FEATURE_KBD_LED_REPORT_ID2: %d\n", ret);*/
+ 	}
+ 
+ 	if (dmi_match(DMI_PRODUCT_FAMILY, "ProArt P16")) {
