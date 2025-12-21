@@ -2,7 +2,7 @@
 
 pkgname=wlout
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies'
 url='https://github.com/sashokbg/wlout'
 license=(GPLv3)
