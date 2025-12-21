@@ -1,13 +1,14 @@
 # Maintainers: arraen, thadah
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname="synergy3-bin"
 pkgver="3.5.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
-license=('unknown')
+license=('custom:Proprietary')
 arch=("x86_64")
-source=("landing.html::https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x86_64.deb")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator')
 optdepends=('pugixml')
@@ -16,8 +17,12 @@ options=("!strip")
 # Since Synergy API now requires a token, we need to enter the landing page and scrape it to download the deb file
 prepare() {
   local html_file="${srcdir}/landing.html"
+
+  # Download landing page
+  curl -L -s -o "$html_file" "https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x86_64.deb"
+
   local token
-  token=$(grep -oP '(?<=\\\"token\\\":\\\")[^\\\"]+' "$html_file" | head -n1)
+  token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "$html_file" | head -n1)
 
   if [[ -z "$token" ]]; then
     echo "Failed to extract token from landing page"
@@ -26,10 +31,10 @@ prepare() {
 
   rm -f "$html_file"
 
-  local download_url="https://symless.com/synergy/api/download/synergy-$pkgver-linux-noble-x86_64.deb?token=$token"
-  
-  echo "Downloading from tokenized URL: $download_url"
-  curl -L -s -o "${srcdir}/synergy-$pkgver-linux-noble-x86_64.deb" "$download_url"
+  local download_url="https://symless.com/synergy/api/download/synergy-${pkgver}-linux-noble-x86_64.deb?token=${token}"
+
+  echo "Downloading .deb file with landing token..."
+  curl -L -s -o "${srcdir}/synergy-${pkgver}-linux-noble-x86_64.deb" "$download_url"
 }
 
 package() {
