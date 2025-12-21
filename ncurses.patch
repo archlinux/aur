@@ -1,9 +1,9 @@
 --- a/GNUmakef.def
 +++ b/GNUmakef.def
-@@ -160,10 +160,11 @@
-     LIBEXT=.a
+@@ -163,10 +163,11 @@
      CFLAGS+=-DHAVE_SNPRINTF -DHAVE_VSNPRINTF -DHAVE_STDARG_H
      ifeq ($(WIDE_NCURSES),1)
+         CPPFLAGS+=-D__USE_WIDE_NCURSES__
 -        CFLAGS+=-I/usr/include/ncursesw/
 -        LIBCURSES=-lncursesw
 +        LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncursesw
@@ -15,8 +15,8 @@
      endif
  endif
  endif
---- 1/GNUmakef.prg	2021-12-18 20:20:18.934724854 +0200
-+++ 2/GNUmakef.prg	2021-12-18 20:20:24.094724915 +0200
+--- 1/GNUmakef.prg
++++ 2/GNUmakef.prg
 @@ -13,9 +13,10 @@
  FGLIBS=$(addprefix $(FLIBPATH)/lib, $(addsuffix $(LIBEXT), $(GLIBS)))
  

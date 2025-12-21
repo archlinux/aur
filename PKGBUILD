@@ -1,5 +1,5 @@
 pkgname=golded-plus-git
-pkgver=r1602.f535cc7
+pkgver=r1658.f03f43c
 _ncurses_pkgver=6.2
 _ncurses="ncurses"
 pkgrel=1
@@ -17,6 +17,8 @@ depends=('luit')
 provides=('golded-plus')
 
 build() {
+    export CFLAGS="${CFLAGS} -fPIC -std=gnu99 -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
     rm -rf ncurses
     mkdir ncurses
     pushd "${_ncurses}-${_ncurses_pkgver}"
@@ -95,5 +97,5 @@ package() {
 
 sha256sums=('SKIP'
             '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
-            '3fbd050b9d087f2d386c3208115b11175ba0c6e728dc936c5d77cd244e83c6c3'
+            '48e0ca5f8d594d424eb318ac16cce0d4f6b7944e5b78e27fa04dacf300006b61'
             '70b54de4ad4cb2de5a4b03420aabb1454f3da86bd3f4e28381392d5de0ef7596')
