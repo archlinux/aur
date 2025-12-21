@@ -1,0 +1,5 @@
+[deeploy-bin]
+source = "github"
+github = "deeploy-sh/deeploy"
+use_latest_release = true
+prefix = "v"
