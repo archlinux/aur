@@ -1,0 +1,18 @@
+pkgbase = compute42-bin
+	pkgdesc = Compute42 IDE for Julia
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/elan8/compute42
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = webkit2gtk
+	depends = libayatana-appindicator
+	provides = compute42
+	conflicts = compute42
+	options = !strip
+	source = Compute42_0.1.0_amd64.deb::https://github.com/elan8/compute42/releases/download/v0.1.0/Compute42_0.1.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = compute42-bin
