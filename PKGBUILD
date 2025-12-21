@@ -3,7 +3,7 @@
 
 pkgname=python-polyfactory
 _pkgname=${pkgname#python-}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Simple and powerful factories for mock data generation"
 arch=(any)
@@ -34,7 +34,7 @@ makedepends=(
 #   python-pytest-asyncio
 # )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5609473ae7fa18a95d62193ddedfbc1045eeebd5e372cec5fc9c952144443c5')
+sha256sums=('ff4d28f62cdba442a9c0918b970fadf9f83e4b8b141a40d5b9bbb6ef04c056d9')
 
 _archive="$_pkgname-$pkgver"
 
