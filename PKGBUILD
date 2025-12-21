@@ -5,8 +5,8 @@ pkgname=(
   modemmanager-dev
   libmm-glib-dev
 )
-pkgver=1.25.1_dev
-_commit=8486641f922a409a514db33c177aff10b1a18304
+pkgver=1.25.95_dev
+_commit=61e2f69d489eceb51c0ac21c2989c18c3f00f734
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"
 url="https://www.freedesktop.org/wiki/Software/ModemManager/"
@@ -36,7 +36,7 @@ checkdepends=(
   python-gobject
 )
 source=(git+https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git#commit=$_commit)
-b2sums=('f38251c2b87eb832fd7258ace8d0e7f1001b2e2ccde10884d8a316433ad7cff6212dccd49d9688cc62c6ace04f5c7c089187e0d7e6fd2a3e07c30d220d5b31e9')
+b2sums=('281e56aec8f1a8b654f8742e2dc562f84930cb4f658a84a20bc8bb7329d134b8ba2fd491a78883e887362c03e8ace3ae1b540cf009b9f7339c2bfb4f0bc14af3')
 validpgpkeys=(
   A814D09B9C5BC01945A64308AECE0239C6606AD5 # Aleksander Morgado <aleksandermj@chromium.org>
 )
