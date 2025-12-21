@@ -1,0 +1,20 @@
+pkgbase = swift-bin-6.1
+	pkgdesc = Binary builds of the Swift programming language (6.1.x series)
+	pkgver = 6.1.2
+	pkgrel = 1
+	url = https://www.swift.org/
+	arch = x86_64
+	arch = aarch64
+	license = apache
+	makedepends = patchelf
+	depends = util-linux-libs
+	depends = libxml2-legacy
+	depends = ncurses
+	optdepends = python39: required for REPL
+	options = !strip
+	source_x86_64 = https://download.swift.org/swift-6.1.2-release/ubi9/swift-6.1.2-RELEASE/swift-6.1.2-RELEASE-ubi9.tar.gz
+	sha256sums_x86_64 = 04d1170099a4754d6606317b16c17e1b25f38a996a53c0dc742f16a1bf2d6784
+	source_aarch64 = https://download.swift.org/swift-6.1.2-release/ubi9-aarch64/swift-6.1.2-RELEASE/swift-6.1.2-RELEASE-ubi9-aarch64.tar.gz
+	sha256sums_aarch64 = f78b220528cb1486e7f1a7b5194974d9fb2f5d6e67ec858805ef0f93e9be2689
+
+pkgname = swift-bin-6.1
