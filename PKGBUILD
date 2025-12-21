@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.8.beta8.r0.gaa27703384a
+pkgver=10.8.r0.g981d7d71a27
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -143,7 +143,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         maxima-5.48.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            'b7114f2828d7e6eaaa0b7221f87cdd8c956f7710bf598b33b6225544faff5d9a')
+            'd70cf84f88fb7e4c846880ca73f85e680d43cb10ba787302bd30c5872819b3cf')
 
 pkgver() {
   cd sage

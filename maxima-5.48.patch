@@ -1,21 +1,21 @@
 diff --git a/build/pkgs/maxima/checksums.ini b/build/pkgs/maxima/checksums.ini
-index 2b0e2828df0..e764b01f4a6 100644
+index 2b0e2828df0..f5590e9d2d5 100644
 --- a/build/pkgs/maxima/checksums.ini
 +++ b/build/pkgs/maxima/checksums.ini
 @@ -1,4 +1,4 @@
  tarball=maxima-VERSION.tar.gz
 -sha1=fff13f4c010e6daab65fbc8a6895c2bd79925177
 -sha256=9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
-+sha1=c560b853864f333e999e475607de77facb9f358e
-+sha256=b0916b5fb37b6eeaae400083175e68e28f80b9a1ab580c106a05448cf1c496b2
++sha1=d487e477030cfad6b3ab0ed2e2fcc88e553ce1fd
++sha256=6d401a4aa307cd3a5a9cadca4fa96c4ef0e24ff95a18bb6a8f803e3d2114adee
  upstream_url=https://sourceforge.net/projects/maxima/files/Maxima-source/VERSION-source/maxima-VERSION.tar.gz/download
 diff --git a/build/pkgs/maxima/package-version.txt b/build/pkgs/maxima/package-version.txt
-index 5ddc1d087c6..297c7a9e65d 100644
+index 5ddc1d087c6..357e1c72e86 100644
 --- a/build/pkgs/maxima/package-version.txt
 +++ b/build/pkgs/maxima/package-version.txt
 @@ -1 +1 @@
 -5.47.0
-+5.48.1
++5.49.0
 diff --git a/src/doc/de/tutorial/tour_algebra.rst b/src/doc/de/tutorial/tour_algebra.rst
 index 84e97f773f1..c13b3a31d29 100644
 --- a/src/doc/de/tutorial/tour_algebra.rst
@@ -180,7 +180,7 @@ index 592f096341f..c4d66efccb4 100644
  这里是一个更复杂的示例。左侧连接到墙上的耦合弹簧的平衡位移
  
 diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
-index 425b820a069..48a55a160e1 100644
+index 980d2569e03..03f7b6d2d88 100644
 --- a/src/sage/calculus/calculus.py
 +++ b/src/sage/calculus/calculus.py
 @@ -133,8 +133,8 @@ including exponentiation::
@@ -194,7 +194,7 @@ index 425b820a069..48a55a160e1 100644
  
  Complex exponentiation works, but may require a patched version of
  maxima (:issue:`32898`) for now::
-@@ -1246,7 +1246,7 @@ def limit(ex, *args, dir=None, taylor=False, algorithm='maxima', **kwargs):
+@@ -1247,7 +1247,7 @@ def limit(ex, *args, dir=None, taylor=False, algorithm='maxima', **kwargs):
  
          sage: limit(sin(x)/x, x, 0, algorithm='sympy')
          1
@@ -203,7 +203,7 @@ index 425b820a069..48a55a160e1 100644
          1
          sage: limit(x^x, x, 0, dir='+', algorithm='fricas') # optional - fricas
          1
-@@ -1823,7 +1823,7 @@ def laplace(ex, t, s, algorithm='maxima'):
+@@ -1824,7 +1824,7 @@ def laplace(ex, t, s, algorithm='maxima'):
          sage: f = exp (2*t + a) * sin(t) * t; f
          t*e^(a + 2*t)*sin(t)
          sage: L = laplace(f, t, s); L
@@ -239,7 +239,7 @@ index 2879dda115d..abdbbad932e 100644
      sage: integrate((1-x^2)^n,x)  # long time
      x*hypergeometric((1/2, -n), (3/2,), x^2*exp_polar(2*I*pi))
 diff --git a/src/sage/functions/bessel.py b/src/sage/functions/bessel.py
-index db32eebe381..94e0b20870f 100644
+index db32eebe381..056bceaf49c 100644
 --- a/src/sage/functions/bessel.py
 +++ b/src/sage/functions/bessel.py
 @@ -1864,7 +1864,7 @@ class SphericalHankel1(BuiltinFunction):
@@ -428,7 +428,7 @@ index 5866b955bb0..e7c1da2a277 100644
          return self.partfrac(var)
  
 diff --git a/src/sage/interfaces/maxima_lib.py b/src/sage/interfaces/maxima_lib.py
-index 169b964b72f..92611205d9b 100644
+index 1b1172f0afc..b406fd1ba89 100644
 --- a/src/sage/interfaces/maxima_lib.py
 +++ b/src/sage/interfaces/maxima_lib.py
 @@ -164,7 +164,7 @@ ecl_eval("(initialize-runtime-globals)")
@@ -450,18 +450,78 @@ index 169b964b72f..92611205d9b 100644
  # we compile the dictionary
  sage_op_dict = {k: EclObject(sage_op_dict[k]) for k in sage_op_dict}
 diff --git a/src/sage/manifolds/chart.py b/src/sage/manifolds/chart.py
-index 7232f0c4ddb..cb5fd119bff 100644
+index 7232f0c4ddb..1240fe5ad83 100644
 --- a/src/sage/manifolds/chart.py
 +++ b/src/sage/manifolds/chart.py
-@@ -3798,7 +3798,7 @@ class CoordChange(SageObject):
+@@ -3761,7 +3761,7 @@ class CoordChange(SageObject):
+             sage: spher_to_cart.set_inverse(sqrt(x^2+y^2), atan2(y,x))
+             Check of the inverse coordinate transformation:
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+               x == x  *passed*
+               y == y  *passed*
+             NB: a failed report can reflect a mere lack of simplification.
+@@ -3798,8 +3798,8 @@ class CoordChange(SageObject):
  
              sage: spher_to_cart.set_inverse(sqrt(x^3+y^2), atan2(y,x))
              Check of the inverse coordinate transformation:
 -              r == sqrt(r*cos(ph)^3 + sin(ph)^2)*r  **failed**
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
 +              r == r*sqrt(abs(r*cos(ph)^3 + sin(ph)^2))  **failed**
-               ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
                x == sqrt(x^3 + y^2)*x/sqrt(x^2 + y^2)  **failed**
                y == sqrt(x^3 + y^2)*y/sqrt(x^2 + y^2)  **failed**
+             NB: a failed report can reflect a mere lack of simplification.
+diff --git a/src/sage/manifolds/continuous_map.py b/src/sage/manifolds/continuous_map.py
+index e673f0ced6d..bd9db2f3e2b 100644
+--- a/src/sage/manifolds/continuous_map.py
++++ b/src/sage/manifolds/continuous_map.py
+@@ -1578,7 +1578,7 @@ class ContinuousMap(Morphism):
+             sage: ch_spher_cart.set_inverse(sqrt(x^2+y^2), atan2(y,x))
+             Check of the inverse coordinate transformation:
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+               x == x  *passed*
+               y == y  *passed*
+             NB: a failed report can reflect a mere lack of simplification.
+@@ -1627,7 +1627,7 @@ class ContinuousMap(Morphism):
+               x == x  *passed*
+               y == y  *passed*
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+             NB: a failed report can reflect a mere lack of simplification.
+             sage: rot = U.continuous_map(U, ((x - sqrt(3)*y)/2, (sqrt(3)*x + y)/2),
+             ....:                        name='R')
+@@ -1681,7 +1681,7 @@ class ContinuousMap(Morphism):
+               x == x  *passed*
+               y == y  *passed*
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+             NB: a failed report can reflect a mere lack of simplification.
+             sage: rot = U.continuous_map(U, ((x - sqrt(3)*y)/2, (sqrt(3)*x + y)/2),
+             ....:                        name='R')
+@@ -1770,7 +1770,7 @@ class ContinuousMap(Morphism):
+               x == x  *passed*
+               y == y  *passed*
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+             NB: a failed report can reflect a mere lack of simplification.
+             sage: rot = U.continuous_map(U, ((x - sqrt(3)*y)/2, (sqrt(3)*x + y)/2),
+             ....:                        name='R')
+@@ -1784,7 +1784,7 @@ class ContinuousMap(Morphism):
+ 
+             sage: rot.display(c_spher, c_spher)
+             R: U → U
+-               (r, ph) ↦ (r, arctan2(1/2*(sqrt(3)*cos(ph) + sin(ph))*r, -1/2*(sqrt(3)*sin(ph) - cos(ph))*r))
++               (r, ph) ↦ (r, arctan2(1/2*sqrt(3)*cos(ph) + 1/2*sin(ph), -1/2*sqrt(3)*sin(ph) + 1/2*cos(ph)))
+ 
+         Therefore, we use the method :meth:`add_expr` to set the
+         spherical-coordinate expression by hand::
 diff --git a/src/sage/manifolds/differentiable/automorphismfield_group.py b/src/sage/manifolds/differentiable/automorphismfield_group.py
 index 45a2fad087a..11a548a0317 100644
 --- a/src/sage/manifolds/differentiable/automorphismfield_group.py
@@ -476,6 +536,19 @@ index 45a2fad087a..11a548a0317 100644
  
      Since any automorphism field can be considered as a tensor field of
      type-`(1,1)` on ``M``, there is a coercion map from ``G`` to the
+diff --git a/src/sage/manifolds/differentiable/curve.py b/src/sage/manifolds/differentiable/curve.py
+index 8a1cfc2e77e..9c1d518acc3 100644
+--- a/src/sage/manifolds/differentiable/curve.py
++++ b/src/sage/manifolds/differentiable/curve.py
+@@ -466,7 +466,7 @@ class DifferentiableCurve(DiffMap):
+               x == x  *passed*
+               y == y  *passed*
+               r == r  *passed*
+-              ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
++              ph == -2*pi*ceil(-1/2*(pi - ph)/pi) + ph  **failed**
+             NB: a failed report can reflect a mere lack of simplification.
+             sage: R.<t> = manifolds.RealLine()
+             sage: c = U.curve({c_spher: (1,t)}, (t, 0, 2*pi), name='c')
 diff --git a/src/sage/manifolds/differentiable/metric.py b/src/sage/manifolds/differentiable/metric.py
 index 01b48ef9724..43758ba7e73 100644
 --- a/src/sage/manifolds/differentiable/metric.py
@@ -504,6 +577,20 @@ index 01b48ef9724..43758ba7e73 100644
          """
          dom = self._domain
          if frame is None:
+diff --git a/src/sage/manifolds/differentiable/pseudo_riemannian_submanifold.py b/src/sage/manifolds/differentiable/pseudo_riemannian_submanifold.py
+index 57dc1c99862..e7c7aaebeea 100644
+--- a/src/sage/manifolds/differentiable/pseudo_riemannian_submanifold.py
++++ b/src/sage/manifolds/differentiable/pseudo_riemannian_submanifold.py
+@@ -819,8 +819,7 @@ class PseudoRiemannianSubmanifold(PseudoRiemannianManifold,
+             ....:                              atan2(-y,-x)+pi)
+             Check of the inverse coordinate transformation:
+               the == 2*arctan(sqrt(-cos(the) + 1)/sqrt(cos(the) + 1))  **failed**
+-              phi == pi + arctan2(sin(phi)*sin(the)/(cos(the) - 1),
+-                                  cos(phi)*sin(the)/(cos(the) - 1))  **failed**
++              phi == pi + arctan2(cos(the)*sin(phi) - sin(phi), cos(phi)*cos(the) - cos(phi))  **failed**
+               x == x  *passed*
+               y == y  *passed*
+             NB: a failed report can reflect a mere lack of simplification.
 diff --git a/src/sage/manifolds/utilities.py b/src/sage/manifolds/utilities.py
 index b1eed3b8b2e..57b35bef6cc 100644
 --- a/src/sage/manifolds/utilities.py
@@ -588,7 +675,7 @@ index 07170cde870..9ac3a8b6658 100644
          sage: U.<x,y,z> = PolynomialRing(ZZ, 3); U
          Multivariate Polynomial Ring in x, y, z over Integer Ring
 diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
-index 072533b413c..57a3c8c1c0c 100644
+index 90fa44941c3..f82fea0e280 100644
 --- a/src/sage/symbolic/expression.pyx
 +++ b/src/sage/symbolic/expression.pyx
 @@ -13016,21 +13016,21 @@ cdef class Expression(Expression_abc):
@@ -626,10 +713,10 @@ index 072533b413c..57a3c8c1c0c 100644
  
          Check that :issue:`16176` is fixed::
 diff --git a/src/sage/symbolic/integration/external.py b/src/sage/symbolic/integration/external.py
-index 1390c524300..4d52d4ab963 100644
+index c99676c0b88..105e8e3bbbd 100644
 --- a/src/sage/symbolic/integration/external.py
 +++ b/src/sage/symbolic/integration/external.py
-@@ -30,12 +30,7 @@ def maxima_integrator(expression, v, a=None, b=None):
+@@ -31,12 +31,7 @@ def maxima_integrator(expression, v, a=None, b=None):
      Check that :issue:`25817` is fixed::
  
          sage: maxima_integrator(log(e^x*log(x)*sin(x))/x^2, x)
@@ -644,7 +731,7 @@ index 1390c524300..4d52d4ab963 100644
      from sage.calculus.calculus import maxima
      if not isinstance(expression, Expression):
 diff --git a/src/sage/symbolic/integration/integral.py b/src/sage/symbolic/integration/integral.py
-index b3d1dd1c2bf..1f822b4d5a6 100644
+index b3d1dd1c2bf..1002343e884 100644
 --- a/src/sage/symbolic/integration/integral.py
 +++ b/src/sage/symbolic/integration/integral.py
 @@ -614,10 +614,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
@@ -659,6 +746,16 @@ index b3d1dd1c2bf..1f822b4d5a6 100644
  
      Alternatively, just use algorithm='mathematica_free' to integrate via Mathematica
      over the internet (does NOT require a Mathematica license!)::
+@@ -1011,8 +1008,8 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+         sage: f = log(sin(x))*sin(x)^2
+         sage: g = integrate(f, x) ; g
+         1/4*I*x^2
++        - 1/2*I*x*arctan2(-sin(x), -cos(x) + 1)
+         - 1/2*I*x*arctan2(sin(x), cos(x) + 1)
+-        + 1/2*I*x*arctan2(sin(x), -cos(x) + 1)
+         - 1/4*x*log(cos(x)^2 + sin(x)^2 + 2*cos(x) + 1)
+         - 1/4*x*log(cos(x)^2 + sin(x)^2 - 2*cos(x) + 1)
+         + 1/4*(2*x - sin(2*x))*log(sin(x))
 @@ -1036,7 +1033,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
          sage: assume(a > 0)
          sage: assume(a < 1)
@@ -668,6 +765,31 @@ index b3d1dd1c2bf..1f822b4d5a6 100644
  
      Check that :issue:`25905` is fixed::
  
+diff --git a/src/sage/symbolic/relation.py b/src/sage/symbolic/relation.py
+index 38e0abd9f18..b5eb89fb8e2 100644
+--- a/src/sage/symbolic/relation.py
++++ b/src/sage/symbolic/relation.py
+@@ -1300,20 +1300,6 @@ def _solve_expression(f, x, explicit_solutions, multiplicities,
+         sage: (x^2>1).solve(x)
+         [[x < -1], [x > 1]]
+ 
+-    Catch error message from Maxima::
+-
+-        sage: solve(acot(x),x)
+-        Traceback (most recent call last):
+-        ...
+-        TypeError: ECL says: cot: argument 0 isn't in the domain of cot.
+-
+-    ::
+-
+-        sage: solve(acot(x),x,to_poly_solve=True)
+-        Traceback (most recent call last):
+-        ...
+-        TypeError: ECL says: cot: argument 0 isn't in the domain of cot.
+-
+     :issue:`7491` fixed::
+ 
+         sage: y = var('y')
 diff --git a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py b/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
 index b5531b112b4..15f74fe5779 100644
 --- a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
