@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot <tuftedocelot@fastmail.fm>
 _pkgname=mcabber
 pkgname=${_pkgname}-hg
-pkgver=2347
+pkgver=2368
 pkgrel=1
 pkgdesc="A small Jabber console client, includes features: SSL, PGP, MUC, UTF8, and OTR"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.mcabber.com"
 license=('GPL')
 depends=('ncurses' 'glib2' 'openssl' 'gpgme' 'libotr' 'aspell' 'loudmouth')
 makedepends=('pkgconfig' 'mercurial')
-source=("hg+http://${_pkgname}.com/hg/")
+source=("hg+http://${_pkgname}.com/hg/" "fix-compat-glib.diff")
 md5sums=('SKIP')
 _hgrepo="hg"
 
@@ -21,9 +21,11 @@ pkgver() {
 }
 
 build() {
+
     cp -a ${srcdir}/${_hgrepo}/mcabber ${srcdir}/mcabber-build || return 1
-    cd ${srcdir}/mcabber-build
-    
+    cd ${srcdir}/mcabber-build/mcabber
+    pwd
+    patch -i ../../../fix-compat-glib.diff
     ./autogen.sh
     ./configure --with-libotr-inc-prefix=/usr/include/libotr --prefix=/usr --enable-hgcset \
         --mandir=/usr/share/man \

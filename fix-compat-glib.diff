@@ -1,0 +1,25 @@
+--- mcabber/screen.c	2025-12-20 20:20:13.413348756 +0000
++++ ../hg/mcabber/mcabber/screen.c	2025-12-20 19:38:06.719653969 +0000
+@@ -2257,7 +2257,7 @@
+           const char *bjid = buddy_getjid(BUDDATA(buddy));
+           for (head = rostercolrules; head; head = g_slist_next(head)) {
+             rostercolor_t *rc = head->data;
+-            if (g_pattern_spec_match_string(rc->compiled, bjid) &&
++            if (g_pattern_match_string(rc->compiled, bjid) &&
+                 (!strcmp("*", rc->status) || strchr(rc->status, status))) {
+               color = compose_color(rc->color);
+               break;
+@@ -2467,10 +2467,9 @@
+       guint jep_state;
+       if (chatstate == 1) {
+         if (chatstate_timeout_id == 0)
+-          chatstate_timeout_id = g_timeout_spec_add_seconds(5, (GSourceFunc)(void (*)(gpointer) {
+-    return scr_chatstates_spec_timeout();
+-}), NULL);
+-
++          chatstate_timeout_id = g_timeout_add_seconds(1,
++                                                       scr_chatstates_timeout,
++                                                       NULL);
+         jep_state = ROSTER_EVENT_COMPOSING;
+       }
+       else if (chatstate == 2)
