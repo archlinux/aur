@@ -1,0 +1,15 @@
+pkgbase = gaiaui-amd
+	pkgdesc = Open-source solution for quick setup and execution of generative AI applications on local AMD Ryzen AI hardware
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/amd/gaia
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = glib2
+	optdepends = lemonade-server
+	optdepends = vulkan-radeon
+	source = https://github.com/amd/gaia/releases/download/v0.13.0/gaia-linux-setup.deb
+	sha256sums = c68b0e23dc82c6857c26d6eef84bad2fc4ef1d5f10c77187524651654cddb0b0
+
+pkgname = gaiaui-amd
