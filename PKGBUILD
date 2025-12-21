@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=spectroterm-git
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Curses based terminal spectrum analyzer for currently playing audio"
 arch=('any')
