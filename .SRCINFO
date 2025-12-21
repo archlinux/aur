@@ -1,6 +1,6 @@
 pkgbase = arch-rich-presence
 	pkgdesc = Discord Rich Presence for Arch Linux with Hyprland window tracking and custom status support
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/r3dg0d/arch-rich-presence
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = arch-rich-presence
 	depends = nodejs
 	depends = hyprland
 	depends = libnotify
-	optdepends = waybar: For waybar integration
-	optdepends = chromium: For browser automation features
 	source = arch-rich-presence::git+https://github.com/r3dg0d/arch-rich-presence.git
 	sha256sums = SKIP
 

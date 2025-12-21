@@ -1,6 +1,6 @@
 # Maintainer: r3dg0d <r3dg0d@users.noreply.github.com>
 pkgname=arch-rich-presence
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Discord Rich Presence for Arch Linux with Hyprland window tracking and custom status support"
 arch=('any')
@@ -8,10 +8,7 @@ url="https://github.com/r3dg0d/arch-rich-presence"
 license=('MIT')
 depends=('nodejs' 'hyprland' 'libnotify')
 makedepends=('git' 'npm')
-optdepends=(
-    'waybar: For waybar integration'
-    'chromium: For browser automation features'
-)
+optdepends=()
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -57,7 +54,6 @@ EOF
     
     # Install scripts
     install -m755 "$srcdir/$pkgname/toggle.sh" "$pkgdir/usr/bin/arch-rich-presence-toggle"
-    install -m755 "$srcdir/$pkgname/waybar-status.sh" "$pkgdir/usr/bin/arch-rich-presence-waybar"
     install -m755 "$srcdir/$pkgname/setup-shell-hook.sh" "$pkgdir/usr/bin/arch-rich-presence-setup-hook"
     install -m755 "$srcdir/$pkgname/set-status.sh" "$pkgdir/usr/bin/arch-rich-presence-set-status"
     
