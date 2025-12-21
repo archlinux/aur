@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-vnc
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="This plugin is a VNC viewer that works as a source in OBS Studio"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28" "glibc" "libvncserver")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("64b652c2b93f37d4d6546bad0e58d9b6e92790716ba41bf3fd8d071a603a3ead")
+sha256sums=("cd6b3241454402593e3d2255dea01b0553dc9c540381c080135f24ea3ed7d09e")
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
