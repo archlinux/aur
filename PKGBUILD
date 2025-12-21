@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=ea1e9b
+pkgver=ec7c00
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
@@ -40,7 +40,6 @@ depends=(nodejs
          libxi
          libxrandr
          libxrender
-         libxscrnsaver
          libxtst
          libxcb)
 makedepends=('git' 'npm' 'dpkg' 'fakeroot')
