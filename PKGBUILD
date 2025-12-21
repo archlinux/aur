@@ -1,5 +1,5 @@
 pkgname=hostman
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
@@ -8,11 +8,11 @@ license=('MIT')
 depends=('curl' 'sqlite' 'openssl' 'cjson')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ed484cee6bc9eb538717de369321d0b81b9dee75fc644c7589b69b3c2ab54229')
+sha256sums=('16f4339c28e12a96d9149ee737d7a19bf233c712c1cc51b8e2b4f5be955ffc57')
 
 build() {
   cd "$pkgname-$pkgver"
-  cmake -B build -DCMAKE_BUILD_TYPE=Release
+  cmake -B build -DHOSTMAN_USE_TUI=ON -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
 
