@@ -3,8 +3,8 @@
 _name=FotoKilof
 
 pkgname=${_name,,}
-pkgver=5.2.1
-pkgrel=2
+pkgver=5.2.3
+pkgrel=1
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=(python-build python-installer python-setuptools python-wheel)
@@ -13,7 +13,7 @@ license=('MIT')
 arch=('any')
 source=("https://github.com/TeaM-TL/${_name}/archive/refs/tags/$pkgver.tar.gz"
         $pkgname.desktop)
-sha256sums=('8cb37af44bd18951d496cdb31c6b746c102c1f38d106356a6b697e62b0cf9560'
+sha256sums=('f0b334539de07714259d949887370c130ff4b5a0ba83a6b780e12331d1a66cfd'
             '8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2')
 
 build() {

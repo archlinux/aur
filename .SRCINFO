@@ -1,7 +1,7 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
-	pkgver = 5.2.1
-	pkgrel = 2
+	pkgver = 5.2.3
+	pkgrel = 1
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
 	license = MIT
@@ -19,9 +19,9 @@ pkgbase = fotokilof
 	depends = python-pyperclipimg
 	depends = python-darkdetect
 	depends = xclip
-	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.2.1.tar.gz
+	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.2.3.tar.gz
 	source = fotokilof.desktop
-	sha256sums = 8cb37af44bd18951d496cdb31c6b746c102c1f38d106356a6b697e62b0cf9560
+	sha256sums = f0b334539de07714259d949887370c130ff4b5a0ba83a6b780e12331d1a66cfd
 	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
 
 pkgname = fotokilof
