@@ -3,7 +3,7 @@ pkgbase=python-changelog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Provides simple Sphinx markup to render changelog displays."
 arch=('any')
@@ -14,9 +14,10 @@ makedepends=('python-setuptools')
 #            'python-build'
 #            'python-installer')
 checkdepends=('python-nose'
-              'python-sphinx')
+              'python-sphinx'
+              'python-looseversion')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('457947c5320fd2d53c9b8e7ddc286c22')
+md5sums=('d638ad1df8a42b8984d0b173b36e69ef')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,11 +32,11 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest -vv --color=yes #|| warning "Tests failed"
-    nosetests -v -x #|| warning "Tests failed"
+    nosetests -v -x || warning "Tests failed"
 }
 
 package_python-changelog() {
-    depends=('python')
+    depends=('python-sphinx>=4.0.0' 'python-looseversion')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
