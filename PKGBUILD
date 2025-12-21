@@ -12,7 +12,7 @@ url="https://github.com/clangd/clangd"
 # Licencia de clangd
 license=('Apache-2.0 WITH LLVM-exception')
 
-depends=()
+depends=('glibc' )
 
 optdepends=('gcc: Compiler without conflicts with clangd')
 

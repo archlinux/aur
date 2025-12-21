@@ -5,6 +5,7 @@ pkgbase = clangd-bin
 	url = https://github.com/clangd/clangd
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
+	depends = glibc
 	optdepends = gcc: Compiler without conflicts with clangd
 	provides = clangd
 	conflicts = clangd
