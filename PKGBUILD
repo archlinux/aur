@@ -2,8 +2,8 @@
 _pkgname=zalo
 pkgname=zalo-macos
 provides=(zalo)
-pkgver=25.11.1
-pkgrel=2
+pkgver=25.11.20
+pkgrel=1
 epoch=1
 pkgdesc="Unofficial Zalo client for Linux, ported from MacOS version"
 arch=('x86_64')
@@ -25,15 +25,13 @@ source=(
     "zalo_py"
     "Zalo.png"
     "LICENSE.html::https://zalo.vn/dieukhoan"
-    "zalo-linux-compatibility.patch"
 )
 noextract=("zalo.dmg")
-sha256sums=('55f1f0955450e14de5806f2f124be5710f4d3a117854d6723289da07cf367377'
+sha256sums=('4232e917d134f40897032e3be0ff1697f39cd0531965f5b9a491bb1b8c2a86a9'
             '3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9'
             '1d193ab57424a663d0f1180219a7dd8454ba325fdcc75fa0eb4b343e733e32a0'
             '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
             'SKIP'
-            '9dee99c5c64944ede2e7fb38a40319bc7206bd840729a4c8a80e2cd6fd09b39a'
 )
 options=('!strip' '!purge')
 prepare() {
@@ -44,20 +42,8 @@ prepare() {
         mv "$archive_path/$file" "${srcdir}/build/"
     done
     rm -rf "Zalo ${pkgver}-universal"
-
-    # Unpack asar, apply patch
-    cd "${srcdir}/build"
-    mkdir app
-    asar extract app.asar app/
-
-    cd app
-    patch -p1 < "${srcdir}/zalo-linux-compatibility.patch"
-
-    # Pack back to asar
-    cd "${srcdir}/build"
-    asar pack app app.asar
-    rm -rf app/
 }
+
 package() {
     install -d "${pkgdir}/opt/${_pkgname}"
     install -m644 "${srcdir}/build/app.asar" "${pkgdir}/opt/${_pkgname}/app.asar"
