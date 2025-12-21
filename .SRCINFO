@@ -1,13 +1,13 @@
 pkgbase = git-summmary
 	pkgdesc = Recursive Git summary using git-extras
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ferhadme/git-summmary
 	arch = any
 	license = MIT
 	depends = perl
 	depends = git-extras
-	source = git-summmary-1.0.2.tar.gz::https://github.com/ferhadme/git-summmary/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 38b2fadeb56496e441d7bad6a0bce317a5f0b961db488e25f8839bf0022ae986
+	source = git-summmary-1.0.3.tar.gz::https://github.com/ferhadme/git-summmary/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = f50cab95327c01d43d6427c365baeac09f3d93c2f384fc8364f440d13677b189
 
 pkgname = git-summmary
