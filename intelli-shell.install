@@ -4,5 +4,6 @@ post_install() {
 ==> Bash: eval "$(intelli-shell init bash)"
 ==> Zsh: eval "$(intelli-shell init zsh)"
 ==> Fish: intelli-shell init fish | source
+==> Nu: mkdir ($nu.data-dir | path join "vendor/autoload") && intelli-shell init nushell | save -f ($nu.data-dir | path join "vendor/autoload/intelli-shell.nu")
 EOF
 }
