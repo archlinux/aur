@@ -19,7 +19,7 @@ depends=('gtk3' 'webkit2gtk' 'python' 'python-dbus' 'python-gobject' 'python-cai
 makedepends=('tar')
 
 source=("https://github.com/archisman-panigrahi/typhoon/releases/download/v${pkgver}/${_basename}_${pkgver}_all.deb")
-sha256sums=('sha256:74c022a86cf728aaea95b6d7f7d6f44b229a3146a537ad819b0d9cb7e1eefb48')
+sha256sums=('74c022a86cf728aaea95b6d7f7d6f44b229a3146a537ad819b0d9cb7e1eefb48')
 
 package() {
     cd "${pkgdir}"
