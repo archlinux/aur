@@ -2,7 +2,7 @@
 # Contributor: nisk1
 
 pkgname=asap
-pkgver=6.0.3
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers"
 url="http://asap.sourceforge.net"
@@ -12,7 +12,7 @@ source=(
 	"https://downloads.sourceforge.net/asap/${pkgname}-${pkgver}.tar.gz"
 	"cflags_ldflags_append.patch"
 )
-sha256sums=('0bae15e2f29fef5d25f5b57dd87e2e130e91f727bc523e1b992413ed9209976a'
+sha256sums=('3ffca0cecc1bd993ba8dd992e6c27b683d717440439a2dc61f81f38d86b3434f'
             '1c17f996fe616daa4dc14eabb20f3e58546873aab24abe7dcb1f27edc90fbd5c')
 
 prepare() {
