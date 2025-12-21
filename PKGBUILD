@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: 2025 Bruce Hill
 # SPDX-License-Identifier: 0BSD
 # Maintainer: Bruce Hill <contact@bruce-hill.com>
-pkgname=tomo
+pkgname=tomo-bin
 _tomo_version=2025-12-21.5
 pkgver="${_tomo_version//-/_}"
 pkgrel=1
