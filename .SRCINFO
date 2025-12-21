@@ -1,18 +1,17 @@
 pkgbase = ibus-avro-git
 	pkgdesc = Avro Phonetic Bangla typing for Linux
-	pkgver = 1.0.r8.gfe50959
-	pkgrel = 1
+	pkgver = 1.2.r6.g8862f77
+	pkgrel = 2
 	epoch = 1
 	url = http://linux.omicronlab.com
 	arch = any
-	license = MPL
+	license = MPL-2.0
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
 	depends = ibus
 	depends = gjs
+	provides = ibus-avro
+	conflicts = ibus-avro
 	source = git+https://github.com/sarim/ibus-avro
 	sha256sums = SKIP
 
 pkgname = ibus-avro-git
-
