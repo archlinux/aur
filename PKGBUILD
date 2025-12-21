@@ -3,7 +3,7 @@
 
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20251220T010146
+_id=20251221T010844
 _ver=2.5.4
 pkgver=${_ver}.${_id}
 pkgrel=1
@@ -19,7 +19,7 @@ provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('bde5b1ee1bf3a11639ef6f59ab9c9b370e41705a2555142115e1c3662e21c133')
+sha256sums=('25e31d8200659f2b299496898a54fe28c8685aad5af9d46adf528285f943a19d')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
