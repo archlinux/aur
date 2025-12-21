@@ -8,7 +8,7 @@ license=('MIT')
 depends=('i2c-tools')
 makedepends=('rust' 'cargo')
 source=("https://github.com/xdearboy/mfetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c198525d3e503cf3b982800d4484154f4070e2b81549024fb21ecc396bcb0cb')
+sha256sums=('b6d82d925126f7a5b6a775f9edc0c3dfcbe45757dc9abd1b8c274b8da4538062')
 
 build() {
   cd "$srcdir/mfetch-$pkgver"
