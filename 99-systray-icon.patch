@@ -1,0 +1,36 @@
+--- a/build/main.js	2025-12-20 15:56:25.650740852 +0100
++++ b/build/main.js	2025-12-20 15:59:12.249220603 +0100
+@@ -120,23 +120,16 @@
+     return !app.isPackaged;
+   }
+   function getAppIcon(app) {
+-    let appIcon = "";
+-    switch (getPlatformName()) {
+-      case PLATFORM.WINDOWS:
+-        appIcon = "win/systray.png";
+-        break;
+-      case PLATFORM.DARWIN:
+-        appIcon = "mac/trayTemplate.png";
+-        break;
+-      case PLATFORM.LINUX:
+-        appIcon = "linux/systray.png";
+-    }
+-    return external_path_default().join(
+-      isDev(app)
+-        ? external_path_default().join(app.getAppPath(), "resources")
+-        : process.resourcesPath,
+-      appIcon
+-    );
++      const override = process.env.DZ_TRAY_ICON;
++      if (override && override.length) return override;
++      let scale = 1;
++      try {
++        const { screen } = require("electron");
++        const disp = screen.getPrimaryDisplay && screen.getPrimaryDisplay();
++        scale = (disp && disp.scaleFactor) || 1;
++      } catch (_) {}
++      const file = scale >= 2 ? "systray-48.png" : "systray-24.png";
++      return external_path_default().join(app.getAppPath(), "resources", "linux", file);
+   }
+   function getDzTld() {
+     return process.env.DZ_DEV_ENV ? "deezerdev.com" : "deezer.com";

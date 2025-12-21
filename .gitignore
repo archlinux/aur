@@ -1,3 +1,5 @@
 pkg
 src
 deezer-*.exe
+*.patch
+!99-*.patch
