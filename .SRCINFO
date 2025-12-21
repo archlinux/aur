@@ -1,11 +1,12 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
+	checkdepends = python-dask
 	checkdepends = python-photutils
 	checkdepends = python-puremagic
 	checkdepends = python-regions
@@ -13,8 +14,8 @@ pkgbase = python-ginga
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.4.0.tar.gz
-	md5sums = d3441689a9fa53961fcfe98f667b6fe3
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.5.0.tar.gz
+	md5sums = b03496dca32031db6d65a9b07ad09c06
 
 pkgname = python-ginga
 	depends = python-astropy>=6.0.1
@@ -36,8 +37,9 @@ pkgname = python-ginga
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution
 	optdepends = python-starlink-pyast: for WCS resolution
-	optdepends = python-cairo: for gtk3, web, tk backend
-	optdepends = python-gobject: for gtk3 backend
+	optdepends = python-cairo: for gtk3, gtk4, web, tk backend
+	optdepends = python-gobject: for gtk3, gtk4 backend
+	optdepends = gobject-introspection: for gtk3, gtk4 backend
 	optdepends = python-pyqt5: for qt5 backend
 	optdepends = python-pyqt6: for qt6 backend
 	optdepends = pyside2: for pyside2 backend

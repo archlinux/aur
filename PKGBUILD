@@ -3,7 +3,7 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
@@ -14,13 +14,15 @@ makedepends=('python-setuptools-scm'
              'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header'
 #             'python-pytest-xdist'
+              'python-dask'
               'python-photutils'
               'python-puremagic'
               'python-regions'
               'python-astlib')  # pillow <- matplotlib <- astlib, scipy required by astlib, photutils
+#             zarr<3 needed
 #             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d3441689a9fa53961fcfe98f667b6fe3')
+md5sums=('b03496dca32031db6d65a9b07ad09c06')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -60,8 +62,9 @@ package() {
                 'python-fitsio: for opening FITS files'
                 'python-astlib: for WCS resolution'
                 'python-starlink-pyast: for WCS resolution'
-                'python-cairo: for gtk3, web, tk backend'
-                'python-gobject: for gtk3 backend'
+                'python-cairo: for gtk3, gtk4, web, tk backend'
+                'python-gobject: for gtk3, gtk4 backend'
+                'gobject-introspection: for gtk3, gtk4 backend'
                 'python-pyqt5: for qt5 backend'
                 'python-pyqt6: for qt6 backend'
                 'pyside2: for pyside2 backend'
