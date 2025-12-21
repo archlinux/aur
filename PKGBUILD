@@ -1,7 +1,11 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname="lib32-libgnome-keyring-bin"
-pkgver=3.12.0_116.85
+pkgver=3.12.0_32_43
+_pkgver=( ${pkgver//_/ } )
+_upver="${_pkgver[0]}"
+_buildver="${_pkgver[1]}"
+_fcver="${_pkgver[2]}"
 pkgrel=1
 pkgdesc='GNOME keyring client library (deprecated, 32-bit)'
 arch=('x86_64')
@@ -22,20 +26,15 @@ conflicts=(
   'lib32-libgnome-keyring'
   'lib32-libgnome-keyring0'
 )
-options=(!buildflags !makeflags !strip !debug)
-source=(
-  "https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/x86_64/libgnome-keyring0-32bit-${pkgver//_/-}.x86_64.rpm"
-  "https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/src/libgnome-keyring-${pkgver//_/-}.src.rpm"
-)
-sha256sums=('cb2fa2234e039904fcda8f4c0322fd4d4c90487a3c271b5a94c63ca720252bd7'
-            '0291a08c25a90fa03ca75b66127d73bc4edb9b40da05a0068f293f69a93467aa')
+options=(staticlibs !buildflags !makeflags !strip !debug)
+source=("https://kojipkgs.fedoraproject.org//packages/libgnome-keyring/$_upver/$_buildver.fc$_fcver/i686/libgnome-keyring-$_upver-$_buildver.fc$_fcver.i686.rpm")
+sha256sums=('a33eec012200989be63d7cfecfd590f58337e6a9639557b1284b1ab581d06df9')
 
 package() {
-  # Extract the source to get the license and docs
-  bsdtar -xf "$srcdir/libgnome-keyring-${pkgver%_*}.tar.xz"
-
   mv "$srcdir/usr" "$pkgdir"
   mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/libgnome-keyring-${pkgver%_*}/COPYING"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/libgnome-keyring-${pkgver%_*}/"{AUTHORS,ChangeLog,HACKING,NEWS,README}
+  mv "$pkgdir/usr/share/doc/libgnome-keyring" "$pkgdir/usr/share/doc/$pkgname"
+  mv "$pkgdir/usr/share/licenses/libgnome-keyring" "$pkgdir/usr/share/licenses/$pkgname"
+  rm -rf "$pkgdir/usr/share/locale"
+  rm -rf "$pkgdir/usr/lib32/.build-id"
 }

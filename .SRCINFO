@@ -1,6 +1,6 @@
 pkgbase = lib32-libgnome-keyring-bin
 	pkgdesc = GNOME keyring client library (deprecated, 32-bit)
-	pkgver = 3.12.0_116.85
+	pkgver = 3.12.0_32_43
 	pkgrel = 1
 	url = https://gitlab.gnome.org/Archive/libgnome-keyring
 	arch = x86_64
@@ -15,13 +15,12 @@ pkgbase = lib32-libgnome-keyring-bin
 	provides = libgnome-keyring.so=0
 	conflicts = lib32-libgnome-keyring
 	conflicts = lib32-libgnome-keyring0
+	options = staticlibs
 	options = !buildflags
 	options = !makeflags
 	options = !strip
 	options = !debug
-	source = https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/x86_64/libgnome-keyring0-32bit-3.12.0-116.85.x86_64.rpm
-	source = https://tumbleweed.opensuse.org/repositories/GNOME:/Next/openSUSE_Factory/src/libgnome-keyring-3.12.0-116.85.src.rpm
-	sha256sums = cb2fa2234e039904fcda8f4c0322fd4d4c90487a3c271b5a94c63ca720252bd7
-	sha256sums = 0291a08c25a90fa03ca75b66127d73bc4edb9b40da05a0068f293f69a93467aa
+	source = https://kojipkgs.fedoraproject.org//packages/libgnome-keyring/3.12.0/32.fc43/i686/libgnome-keyring-3.12.0-32.fc43.i686.rpm
+	sha256sums = a33eec012200989be63d7cfecfd590f58337e6a9639557b1284b1ab581d06df9
 
 pkgname = lib32-libgnome-keyring-bin
