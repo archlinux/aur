@@ -1,7 +1,7 @@
 pkgbase = emu80-git
 	pkgdesc = Emulator for bunch of Soviet PCs. Git version
-	pkgver = .661eece
-	pkgrel = 1
+	pkgver = 4.0.545.661eece
+	pkgrel = 2
 	url = https://emu80.org/
 	arch = x86_64
 	license = GPL3
