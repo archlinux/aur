@@ -1,6 +1,6 @@
 pkgbase = rsjfw
 	pkgdesc = Roblox Studio Just Fucking Works - Hardened Linux compatibility layer (Binaries)
-	pkgver = 0.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/9nunya/RSJFW
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rsjfw
 	depends = hicolor-icon-theme
 	provides = rsjfw
 	conflicts = rsjfw-git
-	source = https://github.com/9nunya/RSJFW/releases/download/v0.0.0/rsjfw-0.0.0-x86_64.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/9nunya/RSJFW/releases/download/v1.0.2/rsjfw-1.0.2-x86_64.tar.gz
+	sha256sums = c108fef915fcac4b2c389e02cc306c771d3d1224ce5fc0645ff9b5b361bfbff7
 
 pkgname = rsjfw
