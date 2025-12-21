@@ -1,19 +1,21 @@
 pkgbase = reconsage-git
 	pkgdesc = Advanced passive reconnaissance framework with WAF, rate-limit and fingerprint detection
-	pkgver = 1.9
+	pkgver = 1.9.0
 	pkgrel = 1
-	url = https://github.com/glitchxmalde/ReconSage
+	url = https://github.com/moksh-codedeveloper/Recon_sage
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-pip
 	depends = python
 	depends = python-fastapi
 	depends = python-httpx
-	depends = python-uvicorn
-	depends = python-pydantic
 	depends = python-rich
 	depends = python-requests
 	depends = python-dnspython
-	source = git+https://github.com/glitchxmalde/ReconSage.git
+	depends = python-pydantic
+	depends = python-uvicorn-loguru-integration-git
+	source = git+https://github.com/moksh-codedeveloper/Recon_sage.git
 	sha256sums = SKIP
 
 pkgname = reconsage-git
