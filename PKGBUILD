@@ -2,7 +2,7 @@
 # Contributor: Nogweii <packages@nogweii.net>
 
 pkgname=poptracker
-pkgver=0.32.1
+pkgver=0.33.0
 pkgrel=1
 pkgdesc='universal, scriptable randomizer tracking solution that is open source, runs everywhere and supports auto-tracking.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(sdl2 sdl2_image sdl2_ttf openssl)
 makedepends=(git)
 source=("git+${url}.git#tag=v${pkgver}" poptracker.desktop)
-sha256sums=('7868653e8a1b97e1d8ca8788ee9974e005d484948f7ceb6265dffe7f0685a68b'
+sha256sums=('6b64c87853f2f93cf332b95b4d37d4e1925585318dfa99d77d72712ac0c6ffc8'
             '6d84910cabcadf7c14bc74fc4c1fc6e3402ee8bbcce07d6e7b4609ea456fd8e7')
 
 prepare() {
