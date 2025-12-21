@@ -1,0 +1,16 @@
+pkgbase = fluvio
+	pkgdesc = event stream processing for developers to collect and transform data in motion to power responsive data intensive applications
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://www.fluvio.io/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	options = !debug
+	source = fluvio-0.8.1.tar.gz::https://github.com/fluvio-community/fluvio/archive/v0.8.1.tar.gz
+	sha256sums = c0f8782ae1d5a2ba774b5edc53eecc752f254f56e49ee957adff4f321ddffe35
+
+pkgname = fluvio
