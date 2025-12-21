@@ -1,7 +1,7 @@
 pkgbase = spotify-downloader
 	pkgdesc = Download Spotify playlists, albums, and tracks in FLAC/MP3 format from free sources with beautiful terminal UI
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/MokshitBindal/Spotify_Downloader
 	arch = any
 	license = MIT

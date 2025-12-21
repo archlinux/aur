@@ -2,7 +2,7 @@
 
 pkgname=spotify-downloader
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Download Spotify playlists, albums, and tracks in FLAC/MP3 format from free sources with beautiful terminal UI"
 arch=('any')
 url="https://github.com/MokshitBindal/Spotify_Downloader"
@@ -35,8 +35,9 @@ package() {
     # Install the wheel
     python -m installer --destdir="$pkgdir" dist/*.whl
     
-    # Install spotipy and redis to package site-packages (not available in Arch repos)
-    # Use --no-deps since their dependencies (requests, urllib3) are already in depends as Arch packages
+    # Bundle redis and spotipy (not available in official Arch repos)
+    # Note: We always bundle these to avoid conflicts with user-installed system packages
+    # Users who have python-redis or python-spotipy can uninstall our package first
     local site_packages="$pkgdir/usr/lib/python3.13/site-packages"
     pip install --no-deps --target="$site_packages" redis>=5.0.0 spotipy>=2.24.0
     
@@ -45,4 +46,28 @@ package() {
     
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+post_install() {
+    echo ""
+    echo "======================================================================"
+    echo "  Spotify Downloader installed successfully!"
+    echo "======================================================================"
+    echo ""
+    echo "  NOTE: This package bundles python-redis and python-spotipy."
+    echo "  If you have these installed separately, you may see file conflicts."
+    echo "  Solution: sudo pacman -R python-redis && yay -R python-spotipy"
+    echo ""
+    echo "  First-time setup:"
+    echo "    1. Get Spotify API credentials: https://developer.spotify.com/dashboard"
+    echo "    2. Edit: ~/.config/spotify-downloader/config.yaml"
+    echo ""
+    echo "  Without Spotify credentials, you can still download from:"
+    echo "    - Internet Archive (free FLAC)"
+    echo "    - Jamendo (Creative Commons music)"
+    echo "    - YouTube (fallback)"
+    echo ""
+    echo "  Refresh shell command cache: hash -r"
+    echo "======================================================================"
+    echo ""
 }
