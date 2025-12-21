@@ -1,7 +1,7 @@
 pkgbase = git-summmary
 	pkgdesc = Recursive Git summary using git-extras
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ferhadme/git-summmary
 	arch = any
 	license = MIT
