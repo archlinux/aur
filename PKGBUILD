@@ -10,13 +10,13 @@ license=("MIT")
 depends=('cuda')
 makedepends=(
   'cmake'
-  'gcc13'
+  'gcc'
   'git'
 )
 conflicts=("${pkgname%%-git}" 'stable-diffusion.cpp')
 provides=("${pkgname%%-git}" 'stable-diffusion.cpp')
 source=("${pkgname%%-git}::git+${url}"
-  "git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0")
+  "git+https://github.com/ggml-org/ggml")
 
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
@@ -33,13 +33,14 @@ prepare() {
 
 build() {
   export PATH+=":/opt/cuda/bin"
-  export NVCC_CCBIN="gcc-13"
+  export NVCC_CCBIN="gcc"
   cmake \
     -B "${srcdir}/build" \
     -S "${srcdir}/${pkgname%%-git}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_CUDA=1
+    -DGGML_CUDA=ON \
+    -DSD_CUDA=ON
 
   cmake --build build
 }
