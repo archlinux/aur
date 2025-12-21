@@ -3,15 +3,15 @@
 
 pkgname=ultimmc-bin-git
 pkgver=1.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('x86_64')
 url="https://github.com/UltimMC/Launcher"
 license=('Apache')
 depends=('zlib' 'opengl-driver' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget' 'unzip')
-source=("$pkgname-$pkgver.zip::https://nightly.link/TasinFarhanMC/ultimmc-deb/workflows/ci/master/UltimMC.zip"
-  "https://raw.githubusercontent.com/UltimMC/ultimmc-deb/master/ultimmc/usr/share/man/man1/ultimmc.1")
-sha256sums=('SKIP'
+source=("$pkgname-$pkgver.zip::https://github.com/TasinFarhanMC/ultimmc-deb/raw/refs/heads/zip/UltimMC.zip"
+  "https://raw.githubusercontent.com/TasinFarhanMC/ultimmc-deb/master/ultimmc/usr/share/man/man1/ultimmc.1")
+sha256sums=('ba90b3f049087f042ba6899757c32a10396a35023522b1f7ce3f0206b9898758'
   'ef4957acc5be202049b46039512418df6556e409b816967b4949940bfadc2933')
 
 prepare() {
