@@ -3,25 +3,31 @@
 # Contributor: Filip Dvorak <fila@pruda.com>
 
 pkgname=mingw-w64-enca
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
 url="https://cihar.com/software/enca/"
 options=('!strip' '!buildflags' 'staticlibs' '!makeflags' '!debug')
-license=('GPL')
-depends=('mingw-w64-crt' 'mingw-w64-recode')
-makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-wine')
-source=(git+https://github.com/nijel/enca#tag=$pkgver
+license=('GPL-2.0-only')
+depends=(
+  'mingw-w64-crt'
+  'mingw-w64-recode'
+)
+makedepends=(
+  'git'
+  'mingw-w64-gcc'
+  'mingw-w64-libiconv'
+  'mingw-w64-wine'
+)
+source=("git+https://github.com/nijel/enca#tag=$pkgver"
         'enca-bad-file-descriptor.patch'
         'configure.patch'
-        'tools.patch'
-        'autogen.patch')
-sha256sums=('97972fd80faaec6ca9e037745151d8f234756889f515975fe0f908e2eb850790'
-            '270c7c0abaea5f3d10173b58849200d4106675d3127a0b9b8ce1fc3dcf775acb'
-            '0be6a38cd3920a69c3d6248f79bd3955944b2a3386ac5b4fd3b8b28b6f80ec7d'
-            'a06364e8a4c6985353b91e025bf482ff0b9ec57833c3aa0f05316052b7656061'
-            '346c7421e8e8f3e7d20264c2d5ce483d79fef12851914cd49ea3d81a611e1a62')
+        'tools.patch')
+b2sums=('6a6dccb2fbb71329b7460d560a483cc83b3d4b588a5978a66b6d10810d0038d98fd2d73d3b061fc943edc21feab8611a1889723adfe0ae0411ee0a7827b597f3'
+	'787e33ad3238c6e8bfc550587f243f4d2f81ccda66d83706d60d6488ed3bfb99e9cbf108067c5f1641386f17d07274d7fbea762445f686df56c050f166ac16bd'
+        'f08cfbf2f6ba47d9b21dc60e26e3722a80222394471f931667cf0d4991cf0a0bc6f1f204a1dcc8fd794ecaaabcba00dd47f3acc797b0c5dd06711787ab59008f'
+        'd04c92221c01b6e341686ec364c9d01fabee4d56b4426fcbad5b7b74ea68e2e3994418fd0aa4251ab761c736faa3f51974579473b26e316cb019f898fa341275')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -31,10 +37,8 @@ prepare() {
 
     patch -Np1 -i "${srcdir}/configure.patch"
     patch -Np1 -i "${srcdir}/tools.patch"
-    patch -Np1 -i "${srcdir}/autogen.patch"
 
-    ./autogen.sh
-    make distclean
+    autoreconf -fiv -I /usr/share/gettext/m4
 }
 
 build() {
@@ -46,6 +50,7 @@ build() {
                 --prefix=/usr/${_arch} \
                 --libexecdir=/usr/${_arch}/lib \
                 --mandir=/usr/${_arch}/share/man \
+                --with-libiconv=/usr/${_arch} \
                 --with-librecode=/usr/${_arch} \
                 --enable-external
 
