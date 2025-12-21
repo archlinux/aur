@@ -2,7 +2,7 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=imhex-bin
-pkgver=1.38.0
+pkgver=1.38.1
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=(git nlohmann-json)
 provides=(imhex)
 conflicts=(imhex)
 source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux-x86_64.pkg.tar.zst")
-md5sums=(5e329e84043b114876b67151643e086e)
+md5sums=(d71fa5504840d9d2049576e249c85929)
 
 package() {
     install -Dm755 "$srcdir/usr/bin/imhex" "$pkgdir/usr/bin/imhex"
