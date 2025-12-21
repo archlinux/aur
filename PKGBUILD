@@ -1,4 +1,4 @@
-# Maintainer: hengtseChou <hankthedev@gmail.com>
+# Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.1.0
 pkgrel=5
