@@ -42,7 +42,8 @@ build() {
     -S "${srcdir}/${pkgname%%-git}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_HIP=1
+    -DGGML_HIP=ON \
+    -DSD_HIPBLAS=ON
 
   cmake --build build
 }
