@@ -15,23 +15,27 @@ source=(
 b2sums=('SKIP')
 
 prepare() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
+    cd "$srcdir/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 "${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
