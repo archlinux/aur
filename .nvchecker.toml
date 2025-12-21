@@ -1,0 +1,5 @@
+[python-pysr]
+source = "github"
+github = "MilesCranmer/PySR"
+use_latest_release = "true"
+prefix = "v"
