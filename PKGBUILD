@@ -17,6 +17,7 @@ depends=(
     'libsndfile'
     'fftw'
     'onnxruntime'
+    'ffmpeg'
 )
 makedepends=(
     'git'
