@@ -1,12 +1,13 @@
 pkgbase = steamos-manager-hhd-git
 	pkgdesc = Fork of Valve's steamos-manager with Handheld Daemon (HHD) TDP integration
 	pkgver = 0.r619.g3dcc586
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazzite-org/steamos-manager
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
+	makedepends = clang
 	depends = hhd>=4.1
 	depends = dbus
 	depends = gamescope-session-steam-git

@@ -3,7 +3,7 @@
 _pkgname=steamos-manager
 pkgname=${_pkgname}-hhd-git
 pkgver=0.r619.g3dcc586
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Valve's steamos-manager with Handheld Daemon (HHD) TDP integration"
 arch=('x86_64')
 url='https://github.com/bazzite-org/steamos-manager'
@@ -15,13 +15,13 @@ depends=(
 	'systemd-libs')
 makedepends=(
 	'git'
-	'rust')
+	'rust'
+	'clang')
 source=(
 	"${_pkgname}::git+https://github.com/bazzite-org/steamos-manager.git"
 	"no-orca-service.patch")
-sha256sums=(
-	'SKIP'
-	'10a36852b2cddf2ecc4f76df0cbabd9dd1f53c507590ecb0e58e6524511ba38f')
+sha256sums=('SKIP'
+            '10a36852b2cddf2ecc4f76df0cbabd9dd1f53c507590ecb0e58e6524511ba38f')
 provides=('steamos-manager')
 conflicts=('steamos-manager')
 
