@@ -1,22 +1,48 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-bin
 _pkgname=tensamin
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
 url="https://tensamin.net"
 license=('custom')
-depends=(c-ares
-         gcc-libs # libgcc_s.so
-         glibc # libc.so libm.so
-         gtk3 libgtk-3.so
-         libevent
-         libffi libffi.so
-         libpulse libpulse.so
-         nss # libnss3.so
-         zlib libz.so
-		 libxss)
+depends=(nodejs
+         ffmpeg
+         glib2
+         nss
+         nspr
+         dbus
+         at-spi2-core
+         cups
+         cairo
+         gtk3
+         pango
+         mesa
+         expat
+         libxkbcommon
+         libxkbfile
+         wayland
+         systemd
+         alsa-lib
+         gcc
+         libvips
+         musl
+         libglvnd
+         libdrm
+         pipewire
+         libx11
+         libxcomposite
+         libxcursor
+         libxdamage
+         libxext
+         libxfixes
+         libxi
+         libxrandr
+         libxrender
+         libxscrnsaver
+         libxtst
+         libxcb)
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-git')
 source=("https://github.com/Tensamin/Frontend/releases/download/v${pkgver}/tensamin_${pkgver}_amd64.deb")
