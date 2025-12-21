@@ -1,7 +1,7 @@
 pkgbase = spruce-shonubot-git
 	pkgdesc = Spruce (shonubot) - lightweight cache cleaner / system maintenance tool (git)
-	pkgver = 0.0.0.r0
-	pkgrel = 1
+	pkgver = 0.0.0.r3f5b93b
+	pkgrel = 2
 	url = https://github.com/shonubot/Spruce
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = spruce-shonubot-git
 	makedepends = git
 	depends = python
 	depends = python-gobject
+	depends = python-cairo
 	depends = gtk4
 	depends = libadwaita
 	depends = flatpak

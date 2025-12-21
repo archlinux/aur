@@ -1,11 +1,11 @@
 pkgname=spruce-shonubot-git
 pkgver=0.0.0.r3f5b93b
-pkgrel=1
+pkgrel=2
 pkgdesc="Spruce (shonubot) - lightweight cache cleaner / system maintenance tool (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shonubot/Spruce"
 license=('GPL3')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'flatpak')
+depends=('python' 'python-gobject' 'python-cairo' 'gtk4' 'libadwaita' 'flatpak')
 makedepends=('meson' 'ninja' 'pkgconf' 'python-setuptools' 'python-pip' 'git')
 provides=('spruce-shonubot')
 conflicts=('spruce')
