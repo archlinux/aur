@@ -1,24 +1,27 @@
-# $Id$
-# Maintainer: netcrusher < tobias AT miglix DOT eu >
+# Maintainer: snit <snit@cock.li>
 # Contributor: tuxayo <victor@tuxayo.net>
 # Contributor: netcrusher < tobias AT miglix DOT eu >
+# Contributor: snit <snit@cock.li>
 
 pkgname=makeheaders
-pkgver=1.0
-pkgrel=2
+pkgver=2.27
+pkgrel=1
 pkgdesc="simple utility that will automatically generate .h files from .{c,cpp} files"
 arch=('i686' 'x86_64')
-url="http://www.hwaci.com/sw/mkhdr/"
-source=("http://www.hwaci.com/sw/mkhdr/makeheaders.c")
+url="https://www.hwaci.com/sw/mkhdr/"
 license=('BSD')
-sha256sums=('a03498d80e29c836b1525cd2aad7f2f75c80e8dfcd533dd619ac0fe0c5cef2cd')
+
+source=("https://fossil-scm.org/home/tarball/99675884a93c09125dbfbef0ca47959626c81545c132e247e67a08bd12ac7256/fossil-src-${pkgver}.tar.gz")
+
+sha256sums=('eadee1f351ab396a985822e2ff6804987e699b7720d99d5754748a610c8a492c')
 
 build() {
-  cd "$srcdir"
-  make makeheaders
+  cd "fossil-src-${pkgver}"
+  ./configure
+  make bld/makeheaders
 }
 
 package() {
-  install -D -t "$pkgdir/usr/bin" "$srcdir/makeheaders"
+  cd "fossil-src-${pkgver}"
+  install -D -t "$pkgdir/usr/bin" "bld/makeheaders"
 }
-
