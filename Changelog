@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 6.3.0 ➙ 7.0.2
-              : 2025-07-10 ➙ 2025-12-20
+ Tags         : 6.4.0 ➙ 7.1.0
+              : 2025-11-06 ➙ 2025-12-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-12-21   : 7.1.0
+              - Oops! Remove accidentally left debug in "-roll" code
+ 2025-12-20   ⋯
+              - Small readme tweak
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-12-20   : 7.0.2
               - Add note about Docs/Changes-7.x.rst to readme since github does
@@ -45,6 +51,3 @@
             
                 In current version, if production certs are out of sync, this is logged
                 and then they are automatically synced and servers restarted.
-
- 2025-07-10   : 6.3.0
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
