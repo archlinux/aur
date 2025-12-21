@@ -1,25 +1,37 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintainer: Aleksandar KIRILOV <alexander.n.kirilov@gmail.com>
 
-options=('!strip')
+pkgname=wlout
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies'
+url='https://github.com/sashokbg/wlout'
+license=(GPLv3)
+makedepends=('cargo' 'git')
+depends=()
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=(
+    "wlout::git+https://github.com/sashokbg/wlout.git#tag=0.1.0"
+)
+b2sums=('SKIP')
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 "${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
