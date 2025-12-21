@@ -30,7 +30,6 @@ sha256sums_x86_64=('5121708cd3e206d6439899a88fe1ce5293179eee9fd47061a5eece07763b
 sha256sums_i686=('3da8cb2c654406ec91a37cab93ac1681e2d66abbb2fb42469185772c5eae2c71')
 
 case ${CARCH} in
-
   ${arch[0]})
     _CARCH=${_barch[0]}
     ;;
