@@ -2,13 +2,13 @@
 
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
-pkgver=r3663.ga4945e85
+pkgver=r3777.g7f7ce268
 pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
 license=('GPL-3.0-only')
-depends=('aspnet-runtime-9.0' 'glibc' 'gcc-libs')
+depends=('aspnet-runtime' 'glibc' 'gcc-libs')
 makedepends=('dotnet-sdk')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
@@ -36,11 +36,15 @@ pkgver() {
 
 build() {
     cd "TechnitiumLibrary"
-    # echo "::: Setting target .NET version to 9.0"
-    # for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
-    # do
-    #     sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net9.0<\/TargetFramework>/g' "${pp}"
-    # done
+    echo "::: TechnitiumLibrary - Setting target .NET version to 10.0"
+#    for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
+#    do
+#     sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
+#    done
+    for pp in $(grep -Rl "<TargetFramework>net9.0</TargetFramework>")
+    do
+     sed -i 's/<TargetFramework>net9.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
+    done
     
     echo "::: Building TechnitiumLibrary binaries"
     LDFLAGS+=' -Wl,-z,cet-report=error'
@@ -52,11 +56,14 @@ build() {
     dotnet build TechnitiumLibrary.Net/TechnitiumLibrary.Net.csproj -c Release
     
     cd "../DnsServer"
-    
-    echo "::: Setting target .NET version to 9.0"
-    for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
+    echo "::: DnsServer - Setting target .NET version to 10.0"
+#    for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
+#    do
+#        sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
+#    done
+    for pp in $(grep -Rl "<TargetFramework>net9.0</TargetFramework>")
     do
-        sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net9.0<\/TargetFramework>/g' "${pp}"
+        sed -i 's/<TargetFramework>net9.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
     done
     
     echo "::: Building DnsServer binaries"
