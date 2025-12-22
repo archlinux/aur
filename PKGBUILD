@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-windows-driver
 pkgname="nodejs-$_pkgname"
-pkgver=5.1.4
+pkgver=5.1.5
 pkgrel=1
 pkgdesc="Appium bridge to WinAppDriver"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('917b8e6cfc5e785afbbb4b20c7c75dc0b25d9497bf9371a5d9f3b466c97fc680')
+sha256sums=('98ee0478ecf5d6bcee482ae3c8428bd8d4c9a43996215765fe76a3495f07c2d7')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
