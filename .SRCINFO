@@ -1,6 +1,6 @@
 pkgbase = r5valkyrie-launcher-bin
 	pkgdesc = Game launcher for R5V with mod management and server browser
-	pkgver = 0.9.55
+	pkgver = 0.9.56
 	pkgrel = 1
 	url = https://github.com/r5valkyrie/launcher
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r5valkyrie-launcher-bin
 	depends = alsa-lib
 	provides = r5valkyrie-launcher
 	conflicts = r5valkyrie-launcher
-	source = r5valkyrie-launcher-0.9.55.pkg.tar.zst::https://github.com/r5valkyrie/launcher/releases/download/v0.9.55/R5Valkyrie.Launcher-0.9.55-Arch.pkg.tar.zst
-	sha256sums = SKIP
+	source = r5valkyrie-launcher-0.9.56.pkg.tar.zst::https://github.com/r5valkyrie/launcher/releases/download/v0.9.56/R5Valkyrie.Launcher-0.9.56-Arch.pkg.tar.zst
+	sha256sums = 87957669253eca2ef5f1b7232ce5d057622301184c51eca02f06bd0939473fc5
 
 pkgname = r5valkyrie-launcher-bin
