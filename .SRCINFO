@@ -1,6 +1,6 @@
 pkgbase = dopamine-git
 	pkgdesc = The audio player that keeps it simple.(Use system-wide electron)
-	pkgver = 3.0.0.r0.gb1e70b5
+	pkgver = 3.0.1.r5.g7ff38e2
 	pkgrel = 1
 	url = https://github.com/digimezzo/dopamine
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = dopamine-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = curl
-	depends = electron26
+	depends = electron37
 	depends = python
-	provides = dopamine=3.0.0
+	provides = dopamine=3.0.1
 	conflicts = dopamine
 	source = dopamine.git::git+https://github.com/digimezzo/dopamine.git
 	source = dopamine.sh

@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-git
 _pkgname=Dopamine
-pkgver=3.0.0.r0.gb1e70b5
-_electronversion=26
-_nodeversion=20
+pkgver=3.0.1.r5.g7ff38e2
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="The audio player that keeps it simple.(Use system-wide electron)"
 arch=('any')
@@ -51,7 +51,7 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
