@@ -1,7 +1,7 @@
 pkgbase = archnote
 	pkgdesc = A beautiful, minimal scratchpad note-taking app for Arch Linux with Omarchy theme support
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/dannymcc/Archnote
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = archnote
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glib2
-	source = archnote-0.1.0::git+https://github.com/dannymcc/Archnote.git#tag=v0.1.0
+	source = archnote-0.2.0::git+https://github.com/dannymcc/Archnote.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = archnote

@@ -1,7 +1,7 @@
 # Maintainer: Danny McClelland <danny@dmcc.io>
 pkgname=archnote
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A beautiful, minimal scratchpad note-taking app for Arch Linux with Omarchy theme support"
 arch=('x86_64')
 url="https://github.com/dannymcc/Archnote"
@@ -19,10 +19,10 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    
+
     # Install binary
     install -Dm755 "src-tauri/target/release/archnote" "$pkgdir/usr/bin/archnote"
-    
+
     # Install desktop file
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/archnote.desktop" << END
 [Desktop Entry]
@@ -35,11 +35,14 @@ Type=Application
 Categories=Utility;TextEditor;
 Keywords=notes;scratchpad;text;
 END
-    
+
     # Install icon
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/archnote.png"
     install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/archnote.png"
-    
+
+    # Install Hyprland config for floating window
+    install -Dm644 "archnote.conf" "$pkgdir/usr/share/archnote/archnote.conf"
+
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
