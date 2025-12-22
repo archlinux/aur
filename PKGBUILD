@@ -1,6 +1,6 @@
 # Maintainer: Your Name <xnxmbx@gmail.com>
 pkgname=r5valkyrie-launcher-bin
-pkgver=0.9.62
+pkgver=0.9.63
 pkgrel=1
 pkgdesc="Game launcher for R5V with mod management and server browser"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib')
 provides=('r5valkyrie-launcher')
 conflicts=('r5valkyrie-launcher')
 source=("${pkgname%-bin}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/R5Valkyrie.Launcher-${pkgver}-Arch.pkg.tar.zst")
-sha256sums=('8cf6605d9d542a9aaa90e234d268354013ab1a996c80c7808892ddaf236f0c46')
+sha256sums=('bc9ce974cde25a2d47229e906fe0127a0dfdfa3f8a43447473d18682d96fb514')
 
 package() {
     cp -r "${srcdir}/"* "${pkgdir}/"
