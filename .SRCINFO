@@ -1,6 +1,6 @@
 pkgbase = pict-rs
 	pkgdesc = A simple image hosting service
-	pkgver = 0.5.16
+	pkgver = 0.5.19
 	pkgrel = 1
 	url = https://git.asonix.dog/asonix/pict-rs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pict-rs
 	depends = ffmpeg
 	depends = perl-image-exiftool
 	options = !lto
-	source = pict-rs::git+https://git.asonix.dog/asonix/pict-rs#commit=31049d3922c9ec4207a8da02d6f1e4714f17dee8
+	source = pict-rs::git+https://git.asonix.dog/asonix/pict-rs#commit=c20a7db2d91c118696c61acb45cb00ca073fda49
 	b2sums = SKIP
 
 pkgname = pict-rs
