@@ -1,7 +1,7 @@
 pkgbase = obinskit
 	pkgdesc = ObinsKit for Anne Pro and Anne Pro 2
 	pkgver = 1.2.11
-	pkgrel = 5
+	pkgrel = 4
 	url = https://www.hexcore.xyz/obinskit
 	install = obinskit.install
 	arch = x86_64

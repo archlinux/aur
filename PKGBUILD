@@ -1,7 +1,7 @@
 # Maintainer: Nick Haghiri <nshaghiri+aur [at] gmail [dot] com>
 pkgname=obinskit
 pkgver=1.2.11
-pkgrel=5
+pkgrel=4
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="https://www.hexcore.xyz/obinskit"
@@ -24,19 +24,26 @@ package() {
 
     # 2. Install extra files (icons/desktop)
     if [ -d "${srcdir}/usr" ]; then
-        # Ensure the target directory exists first
         install -d "${pkgdir}/usr" 
         cp -rt "${pkgdir}/usr" "${srcdir}/usr/"*
     fi
 
-    # 3. Create the symlink (tracked by pacman)
+    # 3. Fix the Desktop Entry Exec path (The user's requested fix)
+    if [ -f "${pkgdir}/usr/share/applications/${pkgname}.desktop" ]; then
+        sed -i "s|Exec=.*|Exec=/opt/${pkgname}/${pkgname} %U|" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    fi
+
+    # 4. Create the symlink for terminal usage
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    # 4. Create Udev Rules (tracked by pacman)
-	install -Dm644 "${srcdir}/70-obinskit.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${pkgname}.rules"
+    # 5. Install Udev Rules
+    install -Dm644 "${srcdir}/70-obinskit.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${pkgname}.rules"
 
-    # 5. Licenses
+    # 6. Set execution bit on the binary
+    chmod 755 "${pkgdir}/opt/${pkgname}/${pkgname}"
+
+    # 7. Licenses
     install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CHROMIUM"
     install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-ELECTRON"
 }
