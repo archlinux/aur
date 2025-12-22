@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Bruce Hill
-# SPDX-FileContributor: Bruce Hill <contact@bruce-hill.com>
-#
-# SPDX-License-Identifier: 0BSD
-
 pkgbase = tomo-bin
 	pkgdesc = The Tomo programming language compiler
 	pkgver = 2025_12_21.5
