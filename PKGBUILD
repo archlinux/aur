@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.40.0
-pkgrel=2
+pkgver=0.41.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -34,6 +34,7 @@ depends=(
     'libvdpau'
     'libx11'
     'libxext'
+    'libxfixes'
     'libxkbcommon'
     'libxpresent'
     'libxrandr'
@@ -44,7 +45,7 @@ depends=(
     'mujs'
     'openal'
     'rubberband'
-    'sdl2-compat'
+    'sdl2'
     'sh'
     'sndio'
     'uchardet'
@@ -55,7 +56,6 @@ depends=(
     'zlib')
 makedepends=(
     'ffnvcodec-headers'
-    'git'
     'ladspa'
     'meson'
     'python-docutils'
@@ -74,14 +74,8 @@ optdepends=(
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
-        '010-mpv-ffmpeg8.0-support.patch'::'https://github.com/mpv-player/mpv/commit/26b29fba02a2782f68e2906f837d21201fc6f1b9.patch')
-sha256sums=('10a0f4654f62140a6dd4d380dcf0bbdbdcf6e697556863dc499c296182f081a3'
-            '9596f2390a120a54d1bc48a3937d6f236feab0c4cecaae8a0d3dec59a38e29b3')
-
-prepare() {
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-ffmpeg8.0-support.patch"
-}
+source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
+sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -106,13 +100,13 @@ build() {
         \
         -Dpthread-debug='disabled' \
         -Drubberband='enabled' \
-        -Dsdl2='enabled' \
         -Dsdl2-gamepad='enabled' \
         -Duchardet='enabled' \
         -Duwp='disabled' \
         -Dvapoursynth='enabled' \
         -Dvector='enabled' \
         -Dwin32-threads='disabled' \
+        -Dx11-clipboard='enabled' \
         -Dzimg='enabled' \
         -Dzlib='enabled' \
         \
@@ -122,6 +116,8 @@ build() {
         -Davfoundation='disabled' \
         -Djack='enabled' \
         -Dopenal='enabled' \
+        -Daudiotrack='disabled' \
+        -Daaudio='disabled' \
         -Dopensles='disabled' \
         -Doss-audio='disabled' \
         -Dpipewire='enabled' \
