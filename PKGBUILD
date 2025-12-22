@@ -2,8 +2,8 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.42
-pkgrel=2
+pkgver=0.6.43
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -116,7 +116,7 @@ source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
         "open-webui.service"
         "open-webui.conf")
 
-b2sums=('50310fe5c49a064d8575343b07a207eed6c453087f22ba2a4aedb057da9921d53533017b6bcca7b1f942949a1a6dc515c8995bfcd0f35949ee13988959c928ff'
+b2sums=('afd4dd65af94357b63366c63e599c27ceb5ad848fdb1b49b2653572a0934011b8e699225e83fae9eb10c19a054ed527019352477703d6d42077d0400a76fc16a'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
