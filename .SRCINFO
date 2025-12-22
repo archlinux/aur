@@ -1,6 +1,6 @@
 pkgbase = r-ggseqlogo
 	pkgdesc = A 'ggplot2' Extension for Drawing Publication-Ready Sequence Logos
-	pkgver = 0.2
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggseqlogo
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-ggseqlogo
 	depends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ggseqlogo_0.2.tar.gz
-	sha256sums = 1cbfd532032dd51316a1fa084bc8cdabe5517bc6ce7b3abafc0d94340e6736b7
+	source = https://cran.r-project.org/src/contrib/ggseqlogo_0.2.2.tar.gz
+	sha256sums = 28a5d9b728a2155c0869200ed426e4b2cb7b768d98d801fce46b6360c9eb2d08
 
 pkgname = r-ggseqlogo
