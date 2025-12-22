@@ -1,7 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
+_pname=python_troveclient
 pkgname=python-troveclient
-pkgver=8.6.0
+pkgver=8.9.0
 pkgrel=1
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=(any)
@@ -14,25 +15,25 @@ depends=(python-pbr python-prettytable python-requests python-oslo-i18n
 checkdepends=(python-fixtures python-oslotest python-openstackclient
               python-requests-mock python-stestr python-testscenarios
               python-testtools python-httplib2)
-source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz"
         'trove.bash_completion')
-sha512sums=('b8013ef0a93ac5538a0d9a2328826fce3b97125a75e33ef2fe5d9da49d4f2e4aa3fef7001fd0513d80b20836e52039d80a3ed617f5045a598a7e38eb21ef26c2'
+sha512sums=('c37eff13af16c8e420ebd9d53ecb352045894f69050b5ebd0a91c0abce0d68e5575db16378de21c6e19c635df4642f89cbef4fc0ed4878b45b203a62d3c9e9a4'
             '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $_pname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd $_pname-$pkgver
+  python setup.py install --root=$pkgdir --optimize=1
   install -D --mode 644 $srcdir/trove.bash_completion $pkgdir/usr/share/bash-completion/completions/trove
 }
