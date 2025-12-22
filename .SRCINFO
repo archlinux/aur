@@ -15,6 +15,6 @@ pkgbase = hibob-tui
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = xclip: clipboard support on X11
 	source = hibob-tui-0.1.0.tar.gz::https://github.com/dannymcc/hibob-tui/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e033263986b1bfbd320a7dc699193472320e661cdf1dec7a504246a6dd5d697c
+	sha256sums = 6171f1e42f0473a9862a0c1081a2b3fbf7b180877b8805dbffaea5134f68a0c4
 
 pkgname = hibob-tui

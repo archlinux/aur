@@ -23,7 +23,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dannymcc/hibob-tui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e033263986b1bfbd320a7dc699193472320e661cdf1dec7a504246a6dd5d697c')
+sha256sums=('6171f1e42f0473a9862a0c1081a2b3fbf7b180877b8805dbffaea5134f68a0c4')
 
 build() {
     cd "$pkgname-$pkgver"
