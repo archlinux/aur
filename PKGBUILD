@@ -1,6 +1,6 @@
 # Maintainer: Tássio Virgínio <tassiovirginio@gmail.com>
 pkgname=try-rs-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="try-rs is a CLI tool designed to manage the chaos of temporary projects."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 source=(
   "try-rs-v${pkgver}-linux-x86_64.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v${pkgver}/try-rs-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('0bfc8265d909bd4f3746e4cf60aaf291fef22a33a15a7b26e2941d9c58d403c7')
+sha256sums=('19f81a7df3c3dc4c588e97c3d786c2ac3e5cd2d8aaddfb9012d4d3a95d2f92dd')
 
 
 package() {
