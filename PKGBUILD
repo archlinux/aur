@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.40.0.r468.g57d9d4eb42
+pkgver=0.41.0.r1.gd0e24ab17a
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -45,9 +45,9 @@ depends=(
     'mujs'
     'openal'
     'rubberband'
+    'sdl2'
     'sh'
     'sndio'
-    'sdl2-compat'
     'uchardet'
     'vapoursynth'
     'vulkan-icd-loader'
