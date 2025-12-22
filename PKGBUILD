@@ -1,8 +1,8 @@
 # Maintainer: marinara2025 <cjlworld@outlook.com>
 pkgname=biu-bin
 _pkgname=biu
-pkgver=1.6.0_beta.11
-_realver="${pkgver//_/-}"
+_realver=1.6.1 # renovate: datasource=github-tags depName=wood3n/biu
+pkgver="${_realver//-/_}"
 pkgrel=4
 pkgdesc="A cross-platform desktop music player based on Bilibili API"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wood3n/biu/v${_realver}/LICENSE"
 )
 
-sha256sums=('3642c1b68c09a9b4e6109c3daf740a72c8b1de69598c381c45f54656afb2282b'
+sha256sums=('8137d5f7e5cbc9fcf03165f14dd8f646957388ee32b038cd73a37836def50bbe'
             'b63003add694097450c9719baa1587f522f4c72a5714aae3d2cbd78efe3c0e0d')
 
 package() {
