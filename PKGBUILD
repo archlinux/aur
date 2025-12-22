@@ -2,7 +2,7 @@
 
 pkgname=hexcore-link
 pkgver=2.5.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Hexcore Link for ANNE PRO 2D and other keyboards (firmware > 3.0)"
 arch=('x86_64')
 url="https://www.hexcore.xyz/hexcore-link"
@@ -10,32 +10,35 @@ license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' 'nss' 'libxkbcommon-x11')
 options=('!strip' '!emptydirs')
 
-source_x86_64=("https://storage.googleapis.com/aur-resources/HexcoreLink_${pkgver}_x64_LOCAL.tar.gz"
-               "deb_extra_files_hexcore.tar.gz")
-sha256sums_x86_64=('586616ec0cd3dc373f4854cfd9f5ca04c7fd8c6bc9d61139fe32503b6ca3ed49'
-                   '94e4942cc7408feb419e76aa2867e50bdf2bedefd734eb367286b5a7844d2c46')
+source_x86_64=("https://storage.googleapis.com/aur-resources/HexcoreLink_${pkgver}_x64.tar.gz"
+               "deb_extra_files_hexcore.tar.gz"
+               "70-hexcore-link.rules")
+sha256sums_x86_64=('726f2062d2446d2101e6b2eec5e95d186c1a0a15e21ede69e5ff573ec30d24e9'
+                   '94e4942cc7408feb419e76aa2867e50bdf2bedefd734eb367286b5a7844d2c46'
+                   '105263bade160b4901378c8363842dcfd501756e61a97f98d6f5d271a7ebdbfe')
 
 package() {
-    # 1. Create directories
     install -d "${pkgdir}/opt/${pkgname}"
     install -d "${pkgdir}/usr/bin"
 
-    # 2. Extract files to /opt
     cp -rt "${pkgdir}/opt/${pkgname}" "${srcdir}/HexcoreLink_${pkgver}_x64/"*
 
-    # 3. Install extra files (icons, desktop files)
     if [ -d "${srcdir}/usr" ]; then
+        install -d "${pkgdir}/usr"
         cp -rt "${pkgdir}/usr" "${srcdir}/usr/"*
     fi
 
-    # 4. Fix the Desktop Entry Exec path automatically
-    # This replaces the hardcoded /opt path with a standard system-wide command
-    sed -i "s|Exec=.*|Exec=${pkgname} %U|" "${pkgdir}/usr/share/applications/hexcore-link.desktop"
+    # Fix: Reverting Exec path to the absolute path in /opt
+    sed -i "s|Exec=.*|Exec=/opt/${pkgname}/${pkgname} %U|" "${pkgdir}/usr/share/applications/hexcore-link.desktop"
 
-    # 5. Fix permissions
-    chmod 755 "${pkgdir}/opt/${pkgname}/hexcore-link"
+    # Create symlink for terminal use
+    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    # 6. Licenses
+    # Install the new Udev Rules for keyboard detection
+    install -Dm644 "${srcdir}/70-hexcore-link.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${pkgname}.rules"
+
+    chmod 755 "${pkgdir}/opt/${pkgname}/${pkgname}"
+
     install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CHROMIUM"
     install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-ELECTRON"
 }

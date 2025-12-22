@@ -1,0 +1,21 @@
+# 70-hexcore-link.rules
+# Allow user access to Anne Pro / Hexcore HID interfaces
+
+# Standard Anne Pro 2 (Holtek)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+
+# Anne Pro 2 - Alternative IDs (Firmware variations)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+
+# Anne Pro 1 / Hexcore D-Series (STM32)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+
+# Catch-all for Hexcore/Obins Vendors (Ensures newer firmware "D" models work)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", GROUP="input", MODE="0666"

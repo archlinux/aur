@@ -1,10 +1,7 @@
 post_install() {
-    # Ensure the post-install script is executable and run it
-    # This likely sets up the necessary USB permissions (udev rules)
-    if [ -f "/opt/hexcore-link/linux-after-install.sh" ]; then
-        chmod +x /opt/hexcore-link/linux-after-install.sh
-        /opt/hexcore-link/linux-after-install.sh
-    fi
+    # This makes the new 70-hexcore-link.rules active immediately
+    udevadm control --reload-rules
+    udevadm trigger
 }
 
 post_upgrade() {
@@ -12,8 +9,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    # Clean up udev rules if the script created them
-    # Update these filenames to match what hexcore-link actually uses
-    rm -f /etc/udev/rules.d/hexcore-link.rules
     udevadm control --reload-rules
 }
