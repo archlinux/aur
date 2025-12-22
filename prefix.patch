@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -25,7 +25,7 @@
+ ifeq ($(OS),Windows_NT)
+ PREFIX ?= c:/ack
+ else
+-PREFIX ?= /opt/pkg/ack
++PREFIX ?= /usr
+ #PREFIX = $(INSDIR)
+ endif
+ 
