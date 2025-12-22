@@ -3,11 +3,11 @@
 
 pkgname=openchrom-bin
 pkgver=1.5.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
-license=('EPL')
+license=('EPL-2.0')
 provides=(openchrom=$pkgver-$pkgrel)
 conflicts=(openchrom)
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_64_${pkgver}.tar.gz"
