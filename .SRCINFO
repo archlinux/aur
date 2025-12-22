@@ -1,0 +1,14 @@
+pkgbase = system76-scheduler-niri-git
+	pkgdesc = Niri integration for system76-scheduler
+	pkgver = r2.gc950aac
+	pkgrel = 1
+	url = https://github.com/Kirottu/system76-scheduler-niri
+	arch = x86_64
+	license = Custom:NONE
+	makedepends = cargo
+	makedepends = git
+	conflicts = system76-scheduler-niri
+	source = git+https://github.com/Kirottu/system76-scheduler-niri.git
+	sha256sums = SKIP
+
+pkgname = system76-scheduler-niri-git
