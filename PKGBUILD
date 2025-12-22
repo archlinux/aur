@@ -4,14 +4,14 @@
 
 : ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname=godots-git
-pkgver=1.4.r1.g72d4df0
+pkgver=1.4.stable.r1.g72d4df0
 pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=('MIT')
 arch=('x86_64')
 provides=("godots=$pkgver-$pkgrel")
-conflicts=('godots')
+conflicts=('godots' 'godots-bin')
 depends=('unzip')
 source=("git+https://github.com/MakovWait/godots.git")
 makedepends=('git' 'godot' 'godot-export-templates-linux')
@@ -20,8 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags --abbrev=7 --match='*stable*' \
-    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\.stable\././'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -34,7 +33,10 @@ build() {
 }
 
 package() {
+    install -Dm755 "${pkgname%-git}/build/godots" "$pkgdir/usr/bin/godots"
+
+    install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     install -Dm644 "${pkgname%-git}/icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.svg"
-    install -Dm644 "${pkgname%-git}/packaging/linux/io.github.MakovWait.Godots.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm755  "${pkgname%-git}/build/godots"  "$pkgdir/usr/bin/godots"
+    install -Dm644 "${pkgname%-git}/packaging/linux/io.github.MakovWait.Godots.desktop" "$pkgdir/usr/share/applications/io.github.MakovWait.Godots.desktop"
 }
