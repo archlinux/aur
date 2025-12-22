@@ -10,8 +10,6 @@ license=('GPL-2.0-or-later')
 url="https://github.com/${_repo}"
 depends=('util-linux')
 makedepends=(
-  'git'
-  'jq'
   'autoconf'
   'automake'
   'libtool'
@@ -21,7 +19,7 @@ makedepends=(
 conflicts=('ntfsprogs' 'ntfs-3g' 'ntfsprogs-plus-git')
 provides=('ntfsprogs' "$pkgname")
 source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0")
-sha256sums=('32cf8c6a876efa9dbb7418187b3d00e6004d1894518e75047eb7ed338dcbf9e6')
+sha256sums=('28f24aa673a81bf84d339cd0842dc7afd571bfa5345b6554fe3760ed6a71e343')
 
 prepare() {
   rm -f ${srcdir}/${pkgname}.tar.gz
