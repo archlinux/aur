@@ -1,20 +1,20 @@
-# Maintainer: NovaDragon <me@novadeagon.space>
+# Maintainer: yuna0x0 <yuna@yuna0x0.com>
+# Contributor: NovaDragon <me@novadeagon.space>
 
 pkgname=godots-bin
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub for managing your Godot versions and projects."
-arch=(x86_64)
-url=https://github.com/MakovWait/godots
-license=(MIT)
+arch=('x86_64')
+url="https://github.com/MakovWait/godots"
+license=('MIT')
 provides=('godots')
 conflicts=('godots')
 options=('!strip')
 depends=('unzip')
-source=(
-"https://github.com/MakovWait/godots/releases/download/v$pkgver.stable/LinuxX11.zip"
-        "https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/LICENSE"
-        "https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/icon.svg")
+source=("$pkgname-$pkgver-LinuxX11.zip::https://github.com/MakovWait/godots/releases/download/v$pkgver.stable/LinuxX11.zip"
+        "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/LICENSE"
+        "$pkgname-$pkgver-icon.svg::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/icon.svg")
 sha256sums=('0d7e16c526c82f147f79bf4e4f94904abc49db41d244b9e4929b2d05aa6007c7'
             '76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef'
             'de088f3452e04986b4988b2a22a6518a4aaaab64e808ea9eee352bea141e774a')
@@ -25,8 +25,8 @@ package() {
 
     install -Dm755 "Godots.x86_64" "${pkgdir}/opt/${pkgname}/godots"
 
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D icon.svg "${pkgdir}/usr/share/icons/godots.svg"
+    install -Dm644 "$pkgname-$pkgver-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D "$pkgname-$pkgver-icon.svg" "${pkgdir}/usr/share/icons/godots.svg"
 
     ln -s "/opt/${pkgname}/godots" "${pkgdir}/usr/bin/godots"
 
