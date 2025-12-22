@@ -1,5 +1,5 @@
 pkgname=vuke
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Research tool for studying vulnerable Bitcoin key generation practices"
 arch=('x86_64')
