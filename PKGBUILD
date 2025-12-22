@@ -65,6 +65,7 @@ prepare() {
   patch -p1 < ../../build_release_only.patch
   patch -p1 < ../../warn_off.patch
   patch -p1 < ../../rm_warn_dollar.patch
+  patch -p1 < ../../rm_pch.patch
 }
 
 build() {

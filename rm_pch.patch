@@ -1,0 +1,241 @@
+diff --git a/src/cpp/QtJambi/QtJambi.pro b/src/cpp/QtJambi/QtJambi.pro
+index 5b4a7660..adeb7877 100644
+--- a/src/cpp/QtJambi/QtJambi.pro
++++ b/src/cpp/QtJambi/QtJambi.pro
+@@ -206,12 +206,7 @@ win32-g++* {
+     }
+ }
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+ 
+ android:LIBS += -landroid
+ 
+diff --git a/src/cpp/QtJambi/configure.pri b/src/cpp/QtJambi/configure.pri
+index 77435780..19638a5e 100644
+--- a/src/cpp/QtJambi/configure.pri
++++ b/src/cpp/QtJambi/configure.pri
+@@ -178,12 +178,6 @@ CONFIG(release, debug|release): CONFIG(force_debug_info) {
+     INSTALLS = target
+ }
+ 
+-ios:{
+-    CONFIG -= precompile_header
+-}else{
+-    CONFIG += precompile_header
+-}
+-
+ android:{
+     CONFIG += rtti exceptions
+     CONFIG -= android_install
+diff --git a/src/cpp/QtJambi/jni_signals.cpp b/src/cpp/QtJambi/jni_signals.cpp
+index 8aefaea8..e25a3be8 100644
+--- a/src/cpp/QtJambi/jni_signals.cpp
++++ b/src/cpp/QtJambi/jni_signals.cpp
+@@ -32,11 +32,12 @@
+ #include <QtCore/qcompilerdetection.h>
+ QT_WARNING_DISABLE_DEPRECATED
+ 
++#include "pch_p.h"
++
+ #if QT_VERSION >= QT_VERSION_CHECK(6,4,0)
+ #include <QtCore/private/qobject_p_p.h>
+ #endif
+ 
+-#include "pch_p.h"
+ #include <QtCore/private/qmetaobject_p.h>
+ 
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+diff --git a/src/cpp/QtJambiCore/QtJambiCore.pro b/src/cpp/QtJambiCore/QtJambiCore.pro
+index c1471042..15e74045 100644
+--- a/src/cpp/QtJambiCore/QtJambiCore.pro
++++ b/src/cpp/QtJambiCore/QtJambiCore.pro
+@@ -64,12 +64,7 @@ lessThan(QT_MAJOR_VERSION, 6):{
+ QT = core core-private
+ CONFIG+=no_private_qt_headers_warning
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+ 
+ win32-arm64-msvc* | win32-msvc*: {
+     QMAKE_CXXFLAGS += /bigobj
+diff --git a/src/cpp/QtJambiGui/QtJambiGui.pro b/src/cpp/QtJambiGui/QtJambiGui.pro
+index 4d937dfa..f32cf587 100644
+--- a/src/cpp/QtJambiGui/QtJambiGui.pro
++++ b/src/cpp/QtJambiGui/QtJambiGui.pro
+@@ -54,12 +54,7 @@ HEADERS += \
+ 
+ OBJECTIVE_SOURCES += utils.mm
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+ 
+ win32-arm64-msvc* | win32-msvc*: {
+     QMAKE_CXXFLAGS += /bigobj
+diff --git a/src/cpp/QtJambiMultimedia/QtJambiMultimedia.pro b/src/cpp/QtJambiMultimedia/QtJambiMultimedia.pro
+index 6e8be35b..82dfa4da 100644
+--- a/src/cpp/QtJambiMultimedia/QtJambiMultimedia.pro
++++ b/src/cpp/QtJambiMultimedia/QtJambiMultimedia.pro
+@@ -58,9 +58,4 @@ HEADERS += \
+ SOURCES += \
+     impl.cpp
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+diff --git a/src/cpp/QtJambiNetwork/QtJambiNetwork.pro b/src/cpp/QtJambiNetwork/QtJambiNetwork.pro
+index 26b77235..05e34ab4 100644
+--- a/src/cpp/QtJambiNetwork/QtJambiNetwork.pro
++++ b/src/cpp/QtJambiNetwork/QtJambiNetwork.pro
+@@ -9,9 +9,4 @@ HEADERS += \
+ SOURCES += \
+     impl.cpp
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+diff --git a/src/cpp/QtJambiPlugin/QtJambiPlugin.pro b/src/cpp/QtJambiPlugin/QtJambiPlugin.pro
+index f21427a5..8459dcf8 100644
+--- a/src/cpp/QtJambiPlugin/QtJambiPlugin.pro
++++ b/src/cpp/QtJambiPlugin/QtJambiPlugin.pro
+@@ -75,7 +75,6 @@ macx:{
+     contains(QT_CONFIG, x86_64):CONFIG += x86_64
+     contains(QT_CONFIG, ppc64):CONFIG += ppc64
+     contains(QT_CONFIG, arm64):CONFIG += arm64
+-    CONFIG -= precompile_header
+     QMAKE_CXXFLAGS += -fpermissive
+     QMAKE_CXXFLAGS += -Wc++14-extensions
+     QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
+diff --git a/src/cpp/QtJambiQml/QtJambiQml.pro b/src/cpp/QtJambiQml/QtJambiQml.pro
+index 47b39f86..da216635 100644
+--- a/src/cpp/QtJambiQml/QtJambiQml.pro
++++ b/src/cpp/QtJambiQml/QtJambiQml.pro
+@@ -42,9 +42,4 @@ CONFIG+=no_private_qt_headers_warning
+ 
+ msvc:QMAKE_CXXFLAGS += /bigobj
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+diff --git a/src/cpp/QtJambiWebEngineCore/QtJambiWebEngineCore.pro b/src/cpp/QtJambiWebEngineCore/QtJambiWebEngineCore.pro
+index d6d52b4c..392b7b82 100644
+--- a/src/cpp/QtJambiWebEngineCore/QtJambiWebEngineCore.pro
++++ b/src/cpp/QtJambiWebEngineCore/QtJambiWebEngineCore.pro
+@@ -40,9 +40,4 @@ lessThan(QT_MAJOR_VERSION, 6) : linux-g++* : {
+     CONFIG+=use_gold_linker
+ }
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+diff --git a/src/cpp/QtJambiWidgets/QtJambiWidgets.pro b/src/cpp/QtJambiWidgets/QtJambiWidgets.pro
+index f8a40234..ce91e218 100644
+--- a/src/cpp/QtJambiWidgets/QtJambiWidgets.pro
++++ b/src/cpp/QtJambiWidgets/QtJambiWidgets.pro
+@@ -38,12 +38,7 @@ HEADERS += \
+     hashes.h \
+     utils_p.h
+ 
+-!ios:{
+-    PRECOMPILED_HEADER = pch_p.h
+-    CONFIG += precompile_header
+-}else{
+-    HEADERS += pch_p.h
+-}
++HEADERS += pch_p.h
+ 
+ QT = core core-private gui widgets widgets-private
+ CONFIG+=no_private_qt_headers_warning
+diff --git a/src/cpp/QtJambiXml/QtJambiXml.pro b/src/cpp/QtJambiXml/QtJambiXml.pro
+index 223b64a6..6fc350b7 100644
+--- a/src/cpp/QtJambiXml/QtJambiXml.pro
++++ b/src/cpp/QtJambiXml/QtJambiXml.pro
+@@ -39,9 +39,3 @@ HEADERS += \
+ 
+ SOURCES += \
+     impl.cpp
+-
+-!ios:{
+-    PRECOMPILED_HEADER = \
+-    pch_p.h
+-    CONFIG += precompile_header
+-}
+diff --git a/src/cpp/functionpointers/functionpointers.pri b/src/cpp/functionpointers/functionpointers.pri
+index 3904ac41..35020a29 100644
+--- a/src/cpp/functionpointers/functionpointers.pri
++++ b/src/cpp/functionpointers/functionpointers.pri
+@@ -88,7 +88,6 @@ android:{
+ #    }
+ }else{
+     macx:{
+-        CONFIG -= precompile_header
+         CONFIG += no_default_rpath no_qt_rpath
+         QMAKE_CXXFLAGS += -Wc++14-extensions
+         QMAKE_CXXFLAGS += -F$$[QT_INSTALL_LIBS]
+diff --git a/src/cpp/jarimport/jarimport.pro b/src/cpp/jarimport/jarimport.pro
+index 52a2c6f0..ecad0cb5 100644
+--- a/src/cpp/jarimport/jarimport.pro
++++ b/src/cpp/jarimport/jarimport.pro
+@@ -74,7 +74,6 @@ macx:{
+     contains(QT_CONFIG, x86_64):CONFIG += x86_64
+     contains(QT_CONFIG, ppc64):CONFIG += ppc64
+     contains(QT_CONFIG, arm64):CONFIG += arm64
+-    CONFIG -= precompile_header
+     QMAKE_CXXFLAGS += -fpermissive
+     QMAKE_CXXFLAGS += -Wc++14-extensions
+     QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
+diff --git a/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/containeraccess.pro b/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/containeraccess.pro
+index d651b41b..c61bc695 100644
+--- a/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/containeraccess.pro
++++ b/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/containeraccess.pro
+@@ -100,7 +100,6 @@ macx:{
+     contains(QT_CONFIG, x86_64):CONFIG += x86_64
+     contains(QT_CONFIG, ppc64):CONFIG += ppc64
+     contains(QT_CONFIG, arm64):CONFIG += arm64
+-    CONFIG -= precompile_header
+     QMAKE_CXXFLAGS += -fpermissive
+     QMAKE_CXXFLAGS += -Wc++14-extensions
+     QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
+diff --git a/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/plugin.pro b/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/plugin.pro
+index 2a55f110..f2b77118 100644
+--- a/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/plugin.pro
++++ b/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/plugin.pro
+@@ -28,7 +28,6 @@ macx:{
+     contains(QT_CONFIG, x86_64):CONFIG += x86_64
+     contains(QT_CONFIG, ppc64):CONFIG += ppc64
+     contains(QT_CONFIG, arm64):CONFIG += arm64
+-    CONFIG -= precompile_header
+     QMAKE_CXXFLAGS += -fpermissive
+     QMAKE_CXXFLAGS += -Wc++14-extensions
+     QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
