@@ -2,7 +2,7 @@
 
 _name=yaql
 pkgname="python-$_name"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='YAQL - Yet Another Query Language'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-six python-pbr python-babel python-dateutil
          python-ply)
 checkdepends=(python-fixtures python-testtools python-stestr)
 source=("https://tarballs.opendev.org/openstack/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('90722182a4ed8bcdbf3a459ff90b1c2e7c54de4e95da22dd954d020e25a4d0b1d6f0386df25bc51f88cc46fc53d8d884e172e5b36462c818d7ece0ba72fd270f')
+sha512sums=('8e650a7114babd1c30af25f7cf37cb0099033d5c202df14a26fb7d04650197c889a30ad4f6911e3cd22b24c010b611b39621040fd4f86d0b520b4b3b5d04c1d0')
 
 export PBR_VERSION=$pkgver
 
