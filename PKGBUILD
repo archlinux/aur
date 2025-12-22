@@ -3,14 +3,14 @@
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
 pkgver=2.5.0.r0.gf398cca
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI client for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 
-makedepends=(git pkg-config 'openconnect>=8.20' webkit2gtk-4.1 curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg libsecret)
-depends=('openconnect>=8.20' openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2)
+makedepends=(git pkg-config 'openconnect>=8.20' webkit2gtk-4.1 curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg libsecret cargo)
+depends=('openconnect>=8.20' vpnc openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2)
 optdepends=('wmctrl: for window management')
 
 conflicts=('globalprotect-openconnect')
@@ -31,20 +31,6 @@ pkgver() {
 }
 
 prepare() {
-  # Install the rust toolchain
-  export RUSTUP_HOME="${srcdir}/.rustup"
-  export CARGO_HOME="${srcdir}/.cargo"
-  export PATH="${CARGO_HOME}/bin:${PATH}"
-
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
-    -y \
-    -q \
-    --profile minimal \
-    --default-toolchain 1.85 \
-    --no-modify-path
-
-  cargo --version
-
   cd "${_pkgname_prefix}"
   git submodule update --init --recursive
 
@@ -52,12 +38,6 @@ prepare() {
 }
 
 build() {
-  export RUSTUP_HOME="${srcdir}/.rustup"
-  export CARGO_HOME="${srcdir}/.cargo"
-  export PATH="${CARGO_HOME}/bin:${PATH}"
-
-  cargo --version
-
   # Must unset the CFLAGS, otherwise the build fails on linking openssl, don't know why
   unset CFLAGS
 
