@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=supermodel
-pkgver=0.3a_20251120_git_3e94dd0
+pkgver=0.3a_20251221_git_b6673bf
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
@@ -14,20 +14,13 @@ source=(
   "https://github.com/trzy/Supermodel/archive/refs/tags/v${_pkgver}.tar.gz"
   "$pkgname"
   "${pkgname}.desktop"
-  '258.diff'
 )
 
 sha512sums=(
-  'bf7887677f5d0c4621e61cea0b3797838dbe4e9798367b4a3447f961825564a5e450895587dfe5096500fbcfbc12b66854c8f66f04f098874d4889730dfe72ab'
+  'f27216b62eea67dff59ed787a0e31d5660830fea2d8fb8da33edf6a37594bd3b4790033147f1537349c62f829406c5901384185f9390258f10c0f2a4eb851e77'
   'cc328bbd65142af9ea61dda371b89cf76007213e697b320b615a64c0f5df9d6ac0c59ccfdd313b85acf7aa3989790f93bca97dda9d327765fd659afc8bd4f1e3'
   '13266c13ecbaccc2a156c41d2d42a271d9bc4bffcfe794a875a10128e97981558302ee9f7b5b8dd8c87ef8b00c5b5216843a9576917f9dd37a13a0455a1bba69'
-  '894296aa2c691a23e52e0e6d45070bc86b662b7faefd57e790b2bbabe8e706fabaccba8029dc3cadd10939773e5c761575b7d9b5933a7d547e5e2a25e9111064'
 )
-
-prepare() {
-  cd Supermodel-${_pkgver}
-  patch -p1 < ../258.diff
-}
 
 build() {
   cd Supermodel-${_pkgver}
