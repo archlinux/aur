@@ -9,7 +9,7 @@ _debianver=dfsg1
 _debianrel=10
 _upstreamver=3.25
 pkgver="${_upstreamver}+${_debianver}.${_debianrel}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Some utilities from the 'ISDN4Linux' project."
 url="https://www.isdn4linux.de/"
 arch=(
@@ -76,8 +76,13 @@ conflicts=(
   "isdnvboxserver"
 )
 source=(
-  "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
-  "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"  # Debian patches.
+  ## Original upstream source:
+  # "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
+  "https://web.archive.org/web/20251222093202/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
+  ## Debian patches:
+  # "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"  
+ "https://web.archive.org/web/20251222093324/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"
+  ## More local patches:
   "01_adapt-for-y2025.patch"  # Very old codebase needs more fixups.
   "02_adapt-for-y2025.patch"  # Fixups for 'isdnlog/tools'.
   "config.in"                 # Tries to activate as many features as possible. Some do not build (needs old linux ISDN headers, or some other older software).
