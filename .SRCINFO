@@ -1,7 +1,7 @@
 pkgbase = twig
 	pkgdesc = Inspect, navigate, and understand complex JSON files in your terminal
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/workdone0/twig
 	arch = any
 	license = MIT
@@ -14,11 +14,12 @@ pkgbase = twig
 	depends = python-pyperclip
 	depends = python-rich
 	depends = python-ijson
+	depends = python-yaml
 	depends = python-json_repair
 	provides = twg
 	provides = twig
 	conflicts = python-twig
-	source = twg-2.0.0.tar.gz::https://github.com/workdone0/twig/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 7ae0ede73646c1f04a6e077799503b6e28925e99481a040b02afdda7cae1efd1
+	source = twg-2.1.0.tar.gz::https://github.com/workdone0/twig/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 51b100f408ebda1f52a43af31aa36017337155b8f9534cbf287c09a7bd32bcd3
 
 pkgname = twig
