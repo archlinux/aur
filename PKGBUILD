@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab'
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Task runner for defining project commands in YAML'
 url='https://github.com/bab-sh/bab'
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('bash-completion: for bash completions' 'zsh: for zsh completions' 'fish: for fish completions')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz")
-sha256sums=('71dd54406d47b49c1e9b28e9ca5748d03595d48c015ee7d8f1f520bd3662287e')
+sha256sums=('c367d20a44fb91f5ca87b6a3987468be4ca9bb95b280a6053e67ee08aeacc6cb')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -25,8 +25,8 @@ build() {
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X main.version=${pkgver} \
-  -X main.commit=7254d57edbb12dbfc17e98614302712359b3e0f3 \
-  -X main.date=2025-12-19T20:26:06Z" \
+  -X main.commit=bab38bcd9dfed1973a5cc48039763f8b57fe8f36 \
+  -X main.date=2025-12-22T12:26:19Z" \
   -o bab .
 
   # Generate shell completions
