@@ -1,5 +1,5 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.163.ge6ed7b5
+pkgver=0.2.177.g6c4cef3
 pkgrel=1
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
@@ -22,6 +22,8 @@ optdepends=(
   'texlive-latexrecommended: LaTeX support for math rendering'
   'beets: Music library management for the music control tool'
   'playerctl: MPRIS control for music playback'
+  'python-qdrant-client: Semantic memory feature'
+  'python-sentence-transformers: Local embeddings for memory (optional if using hosted embeddings)'
 )
 provides=('chatgtk_client')
 conflicts=('chatgtk_client')
@@ -93,6 +95,10 @@ package() {
   # ui package
   install -d "$appdir/ui"
   install -m644 src/ui/*.py "$appdir/ui/"
+
+  # memory package (optional feature)
+  install -d "$appdir/memory"
+  install -m644 src/memory/*.py "$appdir/memory/"
 
   # Icons and audio preview assets
   install -m644 src/"icon.png" "$appdir/icon.png"

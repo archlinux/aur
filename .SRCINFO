@@ -1,7 +1,7 @@
 pkgbase = chatgtk_client-git
 	pkgdesc = GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools
 	pkgver = 0.2.66.g042e574
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/rabfulton/ChatGTK
 	arch = any
 	license = MIT
@@ -19,6 +19,8 @@ pkgbase = chatgtk_client-git
 	optdepends = texlive-latexrecommended: LaTeX support for math rendering
 	optdepends = beets: Music library management for the music control tool
 	optdepends = playerctl: MPRIS control for music playback
+	optdepends = python-qdrant-client: Semantic memory feature
+	optdepends = python-sentence-transformers: Local embeddings for memory (optional if using hosted embeddings)
 	provides = chatgtk_client
 	conflicts = chatgtk_client
 	source = git+https://github.com/rabfulton/ChatGTK.git
