@@ -1,24 +1,29 @@
-# Maintainer: Torsten Keßler <tpkessler at archlinux dot org>
+# Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
+# Contributor: Torsten Keßler <tpkessler at archlinux dot org>
+
 pkgname=complgen
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Generate bash/fish/zsh completions from a single declarative grammar"
 arch=('x86_64')
 url="https://github.com/adaszko/complgen"
-license=('Apache-2.0')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('4535c14ea603745f5bf3f00887cddf15c94eb865dbf64576a26b47bcecfe8f64ce8f76178652969b05ed5657ee0e8067a2a7b4f4f895a7f444728f60d29bae78')
+b2sums=('22c65424f5b52d8b04d24be512c77dcabb13f660381fb066a407f69e5d47090712fa9b8b09627527997c3c14496b721601c07911339bb7e963d0a34bb59b0bb0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
@@ -26,12 +31,13 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+	install -Dm0755 "target/release/complgen" -t "$pkgdir/usr/bin"
 }
