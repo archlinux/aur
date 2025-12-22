@@ -5,7 +5,7 @@
 
 pkgname=autotag-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Automatic tagging and renaming of TV show episodes and movies'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 	"${pkgname}-${pkgver}_linux-x64.LICENSE::https://raw.githubusercontent.com/jamerst/AutoTag/refs/tags/v${pkgver}/LICENSE"
 )
 b2sums=(
-	'a474b72cfb2e34051b82aabc70f87cc13f7dc941f3eff309b0b234629e375ec8eb77dc8673e7ab3d009de350817da971f5913f12c436c04c2664558b366c9aad'
+	'ad95eec3540172b28563a98e306caf4028f4c7d2279673e8eccf16f70ae7d48b041123e672629cf041f07861c6b41f6d3c75dfc152252f43c7c5609a0613b0d5'
 	'd07bd39d4a2fb2574463c9f3b17e4b9075e8e5169a19d7499a0ed12e91b24075f6e33eba723b57019e43e261b8abb21d89b1e2f156c1d7170e4605e545302d10'
 )
 
