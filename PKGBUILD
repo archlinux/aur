@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs' 'bash')
 optdepends=(
   'protobuf-21: required for the AESM service'
   'nodejs: for running the SGX DCAP PCCS Server'
-  'curl: required for SGX Remotte Attestation Service (RA)'
+  'curl: required for SGX Remote Attestation Service (RA)'
   'boost183: required by the TDX Quote Generation Service (QGS)'
 )
 provides=("intel-sgx-psw=${pkgver}")

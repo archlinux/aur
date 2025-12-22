@@ -13,7 +13,7 @@ pkgbase = intel-sgx-psw-bin
 	depends = bash
 	optdepends = protobuf-21: required for the AESM service
 	optdepends = nodejs: for running the SGX DCAP PCCS Server
-	optdepends = curl: required for SGX Remotte Attestation Service (RA)
+	optdepends = curl: required for SGX Remote Attestation Service (RA)
 	optdepends = boost183: required by the TDX Quote Generation Service (QGS)
 	provides = intel-sgx-psw=2.27
 	conflicts = intel-sgx-psw
