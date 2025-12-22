@@ -1,7 +1,7 @@
 # Maintainer: Danny McClelland <danny@dmcc.io>
 pkgname=archnote
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, minimal scratchpad note-taking app for Arch Linux with Omarchy theme support"
 arch=('x86_64')
 url="https://github.com/dannymcc/Archnote"
