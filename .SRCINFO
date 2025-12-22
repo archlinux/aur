@@ -1,0 +1,15 @@
+pkgbase = gitcommit
+	pkgdesc = Automated Git workflow tool
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/CloveTwilight3/GitCommit
+	arch = any
+	license = MIT
+	depends = git
+	depends = bash
+	source = gitcommit.sh::https://raw.githubusercontent.com/CloveTwilight3/GitCommit/main/src/linux/gitcommit.sh
+	source = LICENSE::https://raw.githubusercontent.com/CloveTwilight3/GitCommit/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gitcommit
