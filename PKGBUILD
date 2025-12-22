@@ -2,7 +2,7 @@
 _name=starc
 
 pkgname="${_name}-appimage"
-pkgver=0.7.8
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Intuitive writing app with smart features and a streamlined process for film, TV, radio, stage and more."
 arch=('x86_64')
@@ -13,28 +13,28 @@ provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
 options=(!strip)
 source=("${pkgname}-${pkgver}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
-		"${_name}.desktop.patch"
-		"${_name}.sh")
-sha256sums=('b615bb0736d8d1e47bdac6b47904fc893a3e2b5f779360b96fe474cf25e78bd6'
-			'd004ebb0e333f4d3e3072cc0fa9db65cd79bdcfb959d8b86faec568643a75b91'
-			'642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7')
+  "${_name}.desktop.patch"
+  "${_name}.sh")
+sha256sums=('d250f69a91ec94e1a0bc61bc79d3ea961c8d8bd7b0cd280df8469a6db72cec22'
+  'd004ebb0e333f4d3e3072cc0fa9db65cd79bdcfb959d8b86faec568643a75b91'
+  '642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7')
 
 prepare() {
-	cd "${srcdir}"
-	chmod +x "${pkgname}-${pkgver}"
-	"./${pkgname}-${pkgver}" --appimage-extract
-	patch -Np0 < "./${_name}.desktop.patch"
+  cd "${srcdir}"
+  chmod +x "${pkgname}-${pkgver}"
+  "./${pkgname}-${pkgver}" --appimage-extract
+  patch -Np0 <"./${_name}.desktop.patch"
 }
 
 package() {
-	# Install AppImage and bin
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/appimages/starc.AppImage"
-	install -Dm755 "${srcdir}/${_name}.sh" "${pkgdir}/usr/bin/${_name}"
+  # Install AppImage and bin
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/appimages/${_name}.AppImage"
+  install -Dm755 "${srcdir}/${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
-	# Install icon and desktop
-	install -Dm644 "${srcdir}/squashfs-root/${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
-	install -Dm644 "${srcdir}/squashfs-root/${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+  # Install icon and desktop
+  install -Dm644 "${srcdir}/squashfs-root/${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
+  install -Dm644 "${srcdir}/squashfs-root/${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
 
-	# TODO: Install custom LICENSE when author makes it
-	# install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # TODO: Install custom LICENSE when author makes it
+  # install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
