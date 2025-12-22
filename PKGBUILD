@@ -2,10 +2,10 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 
 _pkgname=86Box
-_build=b8000
+_build=b8200
 
 pkgname=86box-appimage
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('x86_64' 'aarch64') # check https://ci.86box.net/job/86Box/6138/ for pentium4 and armv7h
@@ -20,8 +20,8 @@ _source="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
 
-sha256sums_x86_64=('97f6ef8430f27fe1a311aa963f4957bc85c62595c724b6752a5a7b94fa10531c')
-sha256sums_aarch64=('f61258e21a9d5e5255786e6edf886748e7879db96868a7ec8790321d9f5f47bc')
+sha256sums_x86_64=('47ba404ed08315f81d5d22252a3c18138d5c8afd0aabce5e56e6046cc358f714')
+sha256sums_aarch64=('b268200a107e4eba6fbca08c8f275ecb84ba7cdeea83dde452b67d88804a47f4')
 
 
 prepare() {
