@@ -36,6 +36,8 @@ prepare() {
   export CARGO_HOME="${srcdir}/.cargo"
   export PATH="${CARGO_HOME}/bin:${PATH}"
 
+
+
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     -y \
     -q \
@@ -46,6 +48,8 @@ prepare() {
   cargo --version
 
   cd "${_pkgname_prefix}"
+  git submodule update --init --recursive
+
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
