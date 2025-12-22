@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.0.34'
+_upstreamver='0.0.35'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='invocation-tree'
@@ -16,7 +16,7 @@ depends=('python' 'python-graphviz')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('0c35abe3c036ed012d8f440abf6b872f24bd004a89874ffbb99b5c6edbf008e6')
+sha256sums=('8ae20331c897370b23a96f9ad2b09185341d6f97ad7c80be962c5970626f8b6f')
 
 
 build() {
