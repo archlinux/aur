@@ -13,7 +13,6 @@ depends=(
     'openssl'
     'pango'
     'wayland'
-    'playerctl'
     'libappindicator-gtk3'
     'gdk-pixbuf2'
 )
