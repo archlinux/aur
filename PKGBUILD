@@ -1,7 +1,7 @@
 # Maintainer: r6eve <r6eve at acm dot org>
 
 pkgname=cntr-bin
-pkgver=1.6.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A container debugging tool based on FUSE'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-${CARCH}-unknown-linux-musl")
 noextract=("${pkgname}-${pkgver}")
-sha256sums=('2250a2bbedbb0de1790e879e37402593280c1d04af81dc9c5c88004484bdf1c7')
+sha256sums=('fd188214d1a41efd391fc314919079afae7d66955835492a01961896ca6b0357')
 
 package() {
   mv "${pkgname}-${pkgver}" "${pkgname%-bin}"

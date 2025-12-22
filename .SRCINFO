@@ -1,6 +1,6 @@
 pkgbase = cntr-bin
 	pkgdesc = A container debugging tool based on FUSE
-	pkgver = 1.6.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Mic92/cntr
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = cntr-bin
 	optdepends = containerd: containerd support
 	provides = cntr
 	conflicts = cntr
-	noextract = cntr-bin-1.6.1
-	source = cntr-bin-1.6.1::https://github.com/Mic92/cntr/releases/download/1.6.1/cntr-bin-1.6.1-x86_64-unknown-linux-musl
-	sha256sums = 2250a2bbedbb0de1790e879e37402593280c1d04af81dc9c5c88004484bdf1c7
+	noextract = cntr-bin-2.0.0
+	source = cntr-bin-2.0.0::https://github.com/Mic92/cntr/releases/download/2.0.0/cntr-bin-2.0.0-x86_64-unknown-linux-musl
+	sha256sums = fd188214d1a41efd391fc314919079afae7d66955835492a01961896ca6b0357
 
 pkgname = cntr-bin
