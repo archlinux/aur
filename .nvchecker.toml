@@ -1,0 +1,3 @@
+[python-click-prompt]
+source = "pypi"
+pypi = "click-prompt"
