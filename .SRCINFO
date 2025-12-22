@@ -1,0 +1,14 @@
+pkgbase = oneweb-bin
+	pkgdesc = OneWeb – lekka przeglądarka internetowa (AppImage)
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/OneDevelopmentPL/oneweb
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = glibc
+	options = !strip
+	source = OneWeb_Browser-x86_64.AppImage::https://github.com/OneDevelopmentPL/oneweb/releases/download/v2/OneWeb-1.0.0.AppImage
+	sha256sums = 85c3fcfc2870ce6f37e633aa61ef28b39714e90a259b5acf289ea0c764c23e1a
+
+pkgname = oneweb-bin
