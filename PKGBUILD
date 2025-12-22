@@ -3,8 +3,8 @@
 
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
-pkgver=2.26
-pkgrel=3
+pkgver=2.27
+pkgrel=1
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
@@ -20,7 +20,7 @@ provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz")
-b2sums=('6c298b4dd0705ea62dbe9a55f733ff19a66f0cc53834175ac08e8fd576718f5be5d081902720ae84b77e565dd9e8054414c3a2b5c146d3c58ef8bd3ef81bd8d3')
+b2sums=('aaa33087d8002a643f95d6699273738bdc847ea6b910e0f0ce61d42857a31f71517faaa9f4ea62396682622cdb0e01fec110e99d47d47fbec59bdddbb0a563e2')
 
 package() {
   find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec dpkg-deb -x {} "${pkgdir}" \;
@@ -39,7 +39,7 @@ _fix_non_standard_paths() {
   mv "${pkgdir}"/etc/udev/rules.d "${pkgdir}"/usr/lib/udev/rules.d
   rmdir "${pkgdir}"/etc/udev
 
-  # Debian has this /usr/lib/$TARGET folder, but you won't find them in Arch
+  # Debian has a /usr/lib/$TARGET folder, but you won't find them in Arch
   mv "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu/*.so* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu
 
