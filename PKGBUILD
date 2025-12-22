@@ -1,108 +1,129 @@
-# Maintainer:
-# Contributor: sp1rit <sp1ritCS@protonmail.com>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Maintainer: maki <maki@hotmilk.space>
 
-: ${CARGO_HOME:=$SRCDEST/cargo-home}
-: ${CARGO_TARGET_DIR:=target}
-: ${RUSTUP_TOOLCHAIN:=stable}
-export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
-
-_pkgname="czkawka"
-pkgname="$_pkgname-git"
-pkgver=9.0.0.r6.g2be42d9
+pkgname=czkawka-git
+pkgver=10.0.0.r12.g6296b06f
 pkgrel=1
-pkgdesc="Multi-functional app to find duplicates, similar images, and empty folders"
-url="https://github.com/qarmin/czkawka"
-license=(
-  'CC-BY-4.0'    # icons
-  'GPL-3.0-only' # krokiet
-  'MIT'          # cli, core, krokiet
+pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
+url='https://github.com/qarmin/czkawka'
+arch=(
+  aarch64 #ALARM
+  armv7h  #ALARM
+  i686    #Arch Linux32
+  x86_64  #Arch Linux
 )
-arch=('x86_64')
-
+license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
 depends=(
-  'gtk4'
-  'libheif'
+  bzip2
+  gcc-libs
+  glibc
+  libheif
 )
 makedepends=(
-  'git'
-  'cargo'
+  cargo
+  git
+  rust
+
+  # GUI (GTK4)
+  cairo
+  gdk-pixbuf2
+  glib2
+  gtk4
+  hicolor-icon-theme
+  pango
 )
+checkdepends=(xorg-server-xvfb)
+
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 provides=(
-  "czkawka=${pkgver%%.g*}"
-  "czkawka-cli=${pkgver%%.g*}"
-  "czkawka-gui=${pkgver%%.g*}"
-  "krokiet=${pkgver%%.g*}"
+  czkawka=$pkgver
+  czkawka-cli=$pkgver
+  czkawka-gui=$pkgver
+  krokiet=$pkgver
 )
 conflicts=(
-  "czkawka"
-  "czkawka-cli"
-  "czkawka-gui"
-  "krokiet"
+  czkawka-cli
+  czkawka-cli-bin
+  czkawka-gui
+  czkawka-gui-bin
+  krokiet
+  krokiet-bin
 )
 
-_pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git")
-sha256sums=("SKIP")
-
-prepare() {
-  sed -E -e 's&#(lto = "thin")&\1\ncodegen-units = 16&' -i "$_pkgsrc/Cargo.toml"
-
-  cd "$_pkgsrc"
-  cargo update
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
 pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $pkgname/
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  local _cargo_options=(
-    --bin czkawka_cli
-    --bin czkawka_gui
-    --bin krokiet
-    --features heif
-    --release
-  )
+  cd $pkgname/
 
-  cd "$_pkgsrc"
-  cargo build "${_cargo_options[@]}"
+  # Keep rust/cargo build-dependency management inside the build directory
+  export CARGO_HOME="${srcdir}/cargo"
+
+  cargo build \
+    --bin czkawka_cli \
+    --bin czkawka_gui \
+    --bin krokiet \
+    --features heif \
+    --release --verbose
 }
 
 check() {
-  cd "$_pkgsrc/czkawka_core"
-  cargo test
+  cd $pkgname/
+
+  export CARGO_HOME="${srcdir}/cargo"
+  cargo test --bin czkawka_cli --release
+  dbus-run-session xvfb-run -s '-nolisten local' \
+    cargo test --bin czkawka_gui --release
 }
 
 package() {
-  cd "$_pkgsrc"
+  # cli
 
-  # binaries
-  install -Dm755 "$CARGO_TARGET_DIR"/release/czkawka_gui -t "$pkgdir/usr/bin/"
-  install -Dm755 "$CARGO_TARGET_DIR"/release/czkawka_cli -t "$pkgdir/usr/bin/"
-  install -Dm755 "$CARGO_TARGET_DIR"/release/krokiet -t "$pkgdir/usr/bin/"
+  install -Dm644 "${srcdir}/${pkgname}/czkawka_cli/LICENSE_MIT" \
+        "${pkgdir}/usr/share/licenses/czkawka-cli/LICENSE_MIT"
+  install -Dm755 "${srcdir}/${pkgname}/target/release/czkawka_cli" \
+        "${pkgdir}/usr/bin/czkawka_cli"
 
-  # symlink
-  ln -sf "czkawka_gui" "$pkgdir/usr/bin/czkawka"
+  # gui
 
-  # icon
-  install -Dm644 data/icons/com.github.qarmin.czkawka-symbolic.svg "$pkgdir/usr/share/pixmaps/com.github.qarmin.czkawka.svg"
+  install -Dm644 "${srcdir}/${pkgname}/czkawka_gui/LICENSE_CC_BY_4_ICONS" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_CC_BY_4_ICONS"
+  install -Dm644 "${srcdir}/${pkgname}/czkawka_gui/LICENSE_MIT_APP_CODE" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_MIT_APP_CODE"
+  install -Dm644 "${srcdir}/${pkgname}/czkawka_gui/LICENSE_MIT_WINDOWS_THEME" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_MIT_WINDOWS_THEME"
 
-  # launcher
-  install -Dm644 data/com.github.qarmin.czkawka.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm755 "${srcdir}/${pkgname}/target/release/czkawka_gui" \
+        "${pkgdir}/usr/bin/czkawka_gui"
 
-  # license
-  local licenses=(
-    'LICENSE_CC_BY_4_ICONS'::'icons-LICENSE.CC-BY-4.0'
-    'czkawka_cli/LICENSE_MIT'::'czkawka_cli-LICENSE.MIT'
-    'czkawka_core/LICENSE_MIT'::'czkawka_core-LICENSE.MIT'
-    'czkawka_gui/LICENSE_MIT_APP_CODE'::'czkawka_gui-LICENSE'
-    'krokiet/LICENSE_GPL_APP'::'krokiet-LICENSE.GPL-3.0-only'
-    'krokiet/LICENSE_MIT_CODE'::'krokiet-LICENSE.MIT'
-  )
-  for i in "${licenses[@]}"; do
-    install -Dm644 "${i%%::*}" "$pkgdir/usr/share/licenses/$pkgname/${i##*::}"
-  done
+  install -Dm644 "${srcdir}/${pkgname}/data/com.github.qarmin.czkawka.desktop" \
+        "${pkgdir}/usr/share/applications/com.github.qarmin.czkawka.desktop"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/icons/com.github.qarmin.czkawka.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.github.qarmin.czkawka.svg"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/icons/com.github.qarmin.czkawka.Devel.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.github.qarmin.czkawka.Devel.svg"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/icons/com.github.qarmin.czkawka-symbolic.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/com.github.qarmin.czkawka-symbolic.svg"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/com.github.qarmin.czkawka.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/com.github.qarmin.czkawka.metainfo.xml"
+
+  # krokiet
+
+  install -Dm644 "${srcdir}/${pkgname}/krokiet/LICENSE_CC_BY_4_ICONS" \
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_CC_BY_4_ICONS"
+  install -Dm644 "${srcdir}/${pkgname}/krokiet/LICENSE_GPL_APP" \
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_GPL_APP"
+  install -Dm644 "${srcdir}/${pkgname}/krokiet/LICENSE_MIT_CODE" \
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_MIT_CODE"
+
+  install -Dm755 "${srcdir}/${pkgname}/target/release/krokiet" \
+        "${pkgdir}/usr/bin/krokiet"
 }

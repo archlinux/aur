@@ -1,25 +1,38 @@
 pkgbase = czkawka-git
-	pkgdesc = Multi-functional app to find duplicates, similar images, and empty folders
-	pkgver = 9.0.0.r6.g2be42d9
+	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
+	pkgver = 10.0.0.r12.g6296b06f
 	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
+	arch = aarch64
+	arch = armv7h
+	arch = i686
 	arch = x86_64
-	license = CC-BY-4.0
-	license = GPL-3.0-only
-	license = MIT
-	makedepends = git
+	license = LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0
+	checkdepends = xorg-server-xvfb
 	makedepends = cargo
-	depends = gtk4
+	makedepends = git
+	makedepends = rust
+	makedepends = cairo
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = gtk4
+	makedepends = hicolor-icon-theme
+	makedepends = pango
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
 	depends = libheif
-	provides = czkawka=9.0.0.r6
-	provides = czkawka-cli=9.0.0.r6
-	provides = czkawka-gui=9.0.0.r6
-	provides = krokiet=9.0.0.r6
-	conflicts = czkawka
+	provides = czkawka=10.0.0.r12.g6296b06f
+	provides = czkawka-cli=10.0.0.r12.g6296b06f
+	provides = czkawka-gui=10.0.0.r12.g6296b06f
+	provides = krokiet=10.0.0.r12.g6296b06f
 	conflicts = czkawka-cli
+	conflicts = czkawka-cli-bin
 	conflicts = czkawka-gui
+	conflicts = czkawka-gui-bin
 	conflicts = krokiet
-	source = czkawka::git+https://github.com/qarmin/czkawka.git
+	conflicts = krokiet-bin
+	source = czkawka-git::git+https://github.com/qarmin/czkawka.git
 	sha256sums = SKIP
 
 pkgname = czkawka-git
