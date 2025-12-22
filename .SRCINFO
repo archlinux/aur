@@ -14,6 +14,6 @@ pkgbase = dwu
 	depends = python-selectolax
 	depends = awww-git
 	source = dwu-0.1.0.tar.gz::https://github.com/starrieste/dwu/archive/v0.1.0.tar.gz
-	sha256sums = b718a9046ff28025d09d26a633f52763e100f4d784fdde0e8e9fec3bb686e7dc
+	sha256sums = ba998664275010a1c45d68a903b891f5ba8dedb5692c72a3c07aa0de3808cc81
 
 pkgname = dwu

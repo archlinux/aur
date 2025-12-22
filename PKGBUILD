@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-click' 'python-httpx' 'python-selectolax' 'awww-git')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/starrieste/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b718a9046ff28025d09d26a633f52763e100f4d784fdde0e8e9fec3bb686e7dc')
+sha256sums=('ba998664275010a1c45d68a903b891f5ba8dedb5692c72a3c07aa0de3808cc81')
 
 build() {
     cd "$pkgname-$pkgver"
