@@ -61,19 +61,9 @@ Categories=Audio;Music;Player;AudioVideo;
 Keywords=music;player;netease;cloud;
 EOF
 
-    # Install icons
-    for size in 16 24 32 48 64 128 256 512; do
-        if [ -f "assets/icons/linux/icon_${size}x${size}.png" ]; then
-            install -Dm644 "assets/icons/linux/icon_${size}x${size}.png" \
-                "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
-        fi
-    done
-
-    # Fallback to main icon
-    if [ -f "assets/icon.png" ]; then
-        install -Dm644 "assets/icon.png" \
-            "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-    fi
+    # Install icon
+    install -Dm644 "assets/icons/icon_256.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
