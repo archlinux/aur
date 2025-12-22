@@ -4,13 +4,24 @@ pkgname=baballonia
 pkgver=v1.1.0.9rc3
 _trainerver=1.3.8-linux-paths
 _calibrationver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
+_trainerurl="https://github.com/Project-Babble/BabbleTrainer"
 license=('LicenseRef-Babble Software Distribution License 1.0')
 
-makedepends=('dotnet-sdk-8.0' 'git' 'ca-certificates')
+makedepends=(
+    dotnet-sdk-8.0
+    git
+    ca-certificates
+
+    # babbletrainer
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+)
 depends=(
     dotnet-sdk-8.0
     lttng-ust
@@ -23,17 +34,33 @@ depends=(
     glib2
     onnxruntime
     espflash
+
+    # babbletrainer
+    python
+    opencv
+    python-pytorch
+    python-numpy
+    python-opencv
+    python-pillow
+    python-onnx
+    python-onnxscript
+    python-tqdm
+)
+optdepends=(
+    'python-pytorch-opt: with AVX2 CPU optimizations for training'
+    'python-pytorch-cuda: with CUDA for training'
+    'python-pytorch-opt-cuda: with CUDA and AVX2 CPU optimizations for training'
+    'python-pytorch-rocm: with ROCm for training'
+    'python-pytorch-opt-rocm: with ROCm and AVX2 CPU optimizations for training'
 )
 
 source=(
     "${pkgname}::git+${url}.git#tag=${pkgver}"
-    # will potentially desync from the official github builds since we're
-    # targeting latest but it's probably fine to just cachebust with our
-    # own pkgver
+    "babbletrainer::git+${_trainerurl}.git#tag=${_trainerver}"
     "BabbleCalibration_${_calibrationver}.zip::https://github.com/Project-Babble/BabbleCalibration/releases/download/${_calibrationver}/Linux.zip"
-    "BabbleTrainer-x64_${_trainerver}::https://github.com/Project-Babble/BabbleTrainer/releases/download/${_trainerver}/BabbleTrainer-x64"
 
     "baballonia.sh"
+    "babbletrainer.sh"
     "Baballonia.desktop"
     "LICENSE"
    )
@@ -41,9 +68,10 @@ noextract=(
     "BabbleCalibration_${_calibrationver}.zip"
 )
 sha256sums=('0136c14e531ff1244a54a1a5538a7482fcb14339f298e7bb868d9a3946cc4c1a'
+            '5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d'
             'e78593a5a9147fa948ee7703c95a424a0020ca668b157ce23fed65ab02693ee1'
-            'e9a505418ef85108c2b2dfff4b8f805e6288def7fb8ab6bf160bbc82b7cd1720'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
+            '168707bdb44a6c76e2f430041689438216f431730c700e233909c6f96a5be0a3'
             'c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450'
             'a0c3fedbc0083597993489730d8178d2e79fdb6c03d596cb4bebfafc819d063f')
 prepare() {
@@ -51,8 +79,11 @@ prepare() {
     git submodule update --init --recursive
 }
 build() {
-    cd "${pkgname}/src/Baballonia.Desktop"
+    cd "${srcdir}/${pkgname}/src/Baballonia.Desktop"
     dotnet publish -r linux-x64 -c Release --self-contained -f net8.0
+
+    cd "${srcdir}/babbletrainer/babble_data"
+    python -m build --wheel --no-isolation
 }
 package() {
     cd "${pkgname}"
@@ -65,15 +96,23 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "$_publishdir/"* "${pkgdir}/opt/${pkgname}/"
 
-    install -Dm755 "${srcdir}/BabbleTrainer-x64_${_trainerver}"        "${pkgdir}/opt/${pkgname}/Calibration/Linux/Trainer/BabbleTrainer"
-    unzip          "${srcdir}/BabbleCalibration_${_calibrationver}.zip" -d "${pkgdir}/opt/${pkgname}/Calibration/Linux/Overlay/"
-    mkdir -p "${pkgdir}/opt/${pkgname}/Firmware/Linux/"
-    ln -s /usr/bin/espflash "${pkgdir}/opt/${pkgname}/Firmware/Linux/espflash"
-
     install -Dm644 "${_publishdir}/Assets/Icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/baballonia.png"
     install -Dm644 "${_publishdir}/Assets/Icon_32x32.ico"   "${pkgdir}/usr/share/icons/hicolor/32x32/apps/baballonia.ico"
 
     install -Dm755 "${srcdir}/baballonia.sh"      "${pkgdir}/usr/bin/baballonia"
     install -Dm644 "${srcdir}/Baballonia.desktop" "${pkgdir}/usr/share/applications/Baballonia.desktop"
     install -Dm644 "${srcdir}/LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # BabbleCalibration
+    unzip "${srcdir}/BabbleCalibration_${_calibrationver}.zip" -d "${pkgdir}/opt/${pkgname}/Calibration/Linux/Overlay/"
+
+    # espflash
+    mkdir -p "${pkgdir}/opt/${pkgname}/Firmware/Linux/"
+    ln -s /usr/bin/espflash "${pkgdir}/opt/${pkgname}/Firmware/Linux/espflash"
+
+    # BabbleTrainer
+    python -m installer --destdir="$pkgdir" "${srcdir}/babbletrainer/babble_data/dist/"*.whl
+    mkdir -p "${pkgdir}/opt/${pkgname}/_babbletrainer"
+    cp -a "${srcdir}/babbletrainer/"*.py "${pkgdir}/opt/${pkgname}/_babbletrainer"
+    install -Dm755 "${srcdir}/babbletrainer.sh" "${pkgdir}/opt/${pkgname}/Calibration/Linux/Trainer/BabbleTrainer"
 }
