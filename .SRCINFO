@@ -1,0 +1,20 @@
+pkgbase = rustle
+	pkgdesc = A modern music player built with Rust and iced, supporting NetEase Cloud Music
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ArcticFoxNetwork/Rustle
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	depends = dbus
+	depends = alsa-lib
+	depends = libayatana-appindicator
+	optdepends = libpulse: PulseAudio support
+	optdepends = pipewire-pulse: PipeWire audio support
+	optdepends = vulkan-icd-loader: GPU acceleration
+	source = rustle-0.1.0.tar.gz::https://github.com/ArcticFoxNetwork/Rustle/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rustle
