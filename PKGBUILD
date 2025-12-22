@@ -1,7 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
+_pname=python_mistralclient
 pkgname=python-mistralclient
-pkgver=5.3.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='Mistral Client Library'
 arch=(any)
@@ -11,27 +12,25 @@ makedepends=(python-setuptools)
 depends=(python-cliff python-osc-lib python-oslo-utils
          python-oslo-i18n python-pbr python-keystoneclient
          python-yaml python-requests python-six python-stevedore)
-checkdepends=(python-openstackclient python-mock python-oslotest
-              python-requests-mock python-tempest python-osprofiler
-              python-stestr)
-source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('45f6fce1fcbfd684fa4d4b65bb15f53d753296d15605a1a2518d39f8af589038ebbae05ef3859589bfbb35226a520ce5498d511819294792acece19fa0e658af')
+checkdepends=(python-openstackclient python-oslotest python-requests-mock
+              python-tempest python-osprofiler python-stestr
+              python-openstacksdk)
+source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz")
+sha512sums=('6570f356a70ad4d772abb15a4ffef4d33fc3499cc4ff98a9cf6700551c0a46d7004f4f82903072ae11ea418dd2eac76b5099a0d9da1321d473e8588cbc924b69')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
-  # Skip failing test
-  sed -i '/^    def test_get_request_options_with_profile_enabled/a\        return' mistralclient/tests/unit/test_httpclient.py
+  cd $_pname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
