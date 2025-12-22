@@ -10,7 +10,8 @@ pkgbase = gopac
 	provides = gopac
 	conflicts = gopac-git
 	conflicts = gopac-bin
+	options = !debug
 	source = gopac-1.1.0.tar.gz::https://github.com/the-daonm/gopac/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 67524ab3640923f6710375c98d7c579a27372b1f811779cae950dbe1376b7b6b
 
 pkgname = gopac
