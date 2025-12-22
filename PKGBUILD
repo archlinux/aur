@@ -1,14 +1,16 @@
 # Maintainer: marinara2025 <cjlworld@outlook.com>
 pkgname=biu-bin
 _pkgname=biu
-_realver=1.6.1 # renovate: datasource=github-tags depName=wood3n/biu
+_realver=1.7.0 # renovate: datasource=github-tags depName=wood3n/biu
 pkgver="${_realver//-/_}"
-pkgrel=4
+pkgrel=1
 pkgdesc="A cross-platform desktop music player based on Bilibili API"
 arch=('x86_64')
 url="https://github.com/wood3n/biu"
-license=('custom:PolyForm-Noncommercial')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'glib2' 'libdrm' 'mesa')
+license=('PolyForm-Noncommercial-1.0.0')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'glib2' 'libdrm' 'mesa'
+          'libxcomposite' 'cairo' 'at-spi2-core' 'libxfixes' 'libxrandr'
+          'libcups' 'pango' 'libxkbcommon' 'dbus')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
@@ -28,6 +30,10 @@ package() {
     # Install main application files
     install -d "$pkgdir/opt/$_pkgname"
     cp -r "$srcdir/opt/Biu/"* "$pkgdir/opt/$_pkgname/"
+    
+    # Remove unnecessary files for other platforms to clean up the package
+    # and prevent namcap false positives.
+    rm -rf "$pkgdir/opt/$_pkgname/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
 
     # Fix sandbox permissions
     chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox" || true
@@ -38,10 +44,9 @@ package() {
 
     # Install .desktop file
     install -d "$pkgdir/usr/share/applications"
-    cp "$srcdir/usr/share/applications/"*".desktop" "$srcdir/biu.desktop.temp"
-    sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname %U|" "$srcdir/biu.desktop.temp"
-    sed -i "s|Icon=.*|Icon=$_pkgname|" "$srcdir/biu.desktop.temp"
-    install -Dm644 "$srcdir/biu.desktop.temp" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/usr/share/applications/Biu.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i "s|^Exec=.*|Exec=$_pkgname %U|" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i "s|^Icon=.*|Icon=$_pkgname|" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
     # Install icons to match the .desktop file's 'Icon=biu' entry
     for icon in "$srcdir"/usr/share/icons/hicolor/*/apps/Biu.png; do
