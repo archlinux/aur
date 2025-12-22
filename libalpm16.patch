@@ -1,30 +1,5 @@
 --- a/Cargo.toml	2025-12-15 17:18:53.408000000 +0900
 +++ b/Cargo.toml	2025-12-15 17:19:40.066735860 +0900
-@@ -1,6 +1,6 @@
- [package]
- name = "paru"
--version = "2.1.0"
-+version = "2.2.0"
- authors = ["morganamilo <morganamilo@archlinux.org>"]
- edition = "2021"
- 
-@@ -15,12 +15,12 @@
- 
- 
- [dependencies]
--alpm = "4.0.3"
--alpm-utils = "4.0.1"
--aur-depends = "4.0.3"
-+alpm = "5.0.0"
-+alpm-utils = "5.0.0"
-+aur-depends = "5.0.0"
- aur-fetch = "0.11.3"
- cini = "1.0.0"
--pacmanconf = "3.0.0"
-+pacmanconf = "3.1.0"
- raur = "7.0.0"
- srcinfo = "1.3.1"
- 
 @@ -76,3 +76,5 @@
  #alpm-utils = { path = "../alpm.rs/alpm-utils" }
  #aur-depends = { path = "../aur-depends" }

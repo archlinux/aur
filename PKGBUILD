@@ -19,16 +19,21 @@ _curl_ver=8.17.0
 #_readline_ver=8.2
 #_libedit_ver=20250104-3.1
 
+_commit=789beadf85ca4a3eac13259aa393d359ac62208d
+
 pkgname=paru-static
 _pkgname=paru
-_pkgver=2.1.0
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
-source=("$_pkgname-$_pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$_pkgver.tar.gz"
-        git+https://aur.archlinux.org/pacman-static.git
+source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
+		https://github.com/Morganamilo/paru/pull/1461.patch
+		# aur depends
 		libalpm16.patch
+        # Pacman Static
+		git+https://aur.archlinux.org/pacman-static.git
+		# Static Library
 		https://curl.haxx.se/download/curl-${_curl_ver}.tar.gz
         https://ftp.gnu.org/gnu/libunistring/libunistring-${_unistring_ver}.tar.gz
         https://download-mirror.savannah.gnu.org/releases/acl/acl-${_acl_ver}.tar.gz
@@ -38,14 +43,14 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/
         https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${_libxml2_ver}/libxml2-v${_libxml2_ver}.tar.gz
         https://ftp.gnu.org/gnu/libidn/libidn2-${_libidn2_ver}.tar.gz
 		brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
-		#https://ftp.gnu.org/gnu/readline/readline-${_readline_ver}.tar.gz
-		#https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
-		#https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
-		#krb5.patch
 		https://libssh2.org/download/libssh2-${_libssh2_ver}.tar.gz
 		e2fsprogs-${_e2fsprogs_ver}.tar.gz::https://github.com/tytso/e2fsprogs/archive/refs/tags/v${_e2fsprogs_ver}.tar.gz
         nghttp3-${_nghttp3_ver}.tar.gz::https://github.com/ngtcp2/nghttp3/releases/download/v${_nghttp3_ver}/nghttp3-${_nghttp3_ver}.tar.gz
         libpsl-${_libpsl_ver}.tar.gz::https://github.com/rockdaboot/libpsl/archive/refs/tags/${_libpsl_ver}.tar.gz
+		#https://ftp.gnu.org/gnu/readline/readline-${_readline_ver}.tar.gz
+		#https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
+		#https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
+		#krb5.patch
 )
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
@@ -54,9 +59,10 @@ depends=()
 #conflicts=('paru')
 #replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
-sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
+sha256sums=('SKIP'
+            'da9f59655b70367ca0c34e94ceca8d728166dbb895388fa977b80935760f7a2f'
+            '6ad7671d91553c8324c5e4160ac3989889a283bc046552f8c1cf3d3dc6b52f4f'
             'SKIP'
-            '0dc91c330f649155d349ed4e33942791f07171cc82f414a2387d2134e115127b'
             'e8e74cdeefe5fb78b3ae6e90cd542babf788fa9480029cfcee6fd9ced42b7910'
             '12542ad7619470efd95a623174dcd4b364f2483caf708c6bee837cb53a54cb9d'
             '5f2bdbad629707aa7d85c623f994aa8a1d2dec55a73de5205bac0bf6058a2f7c'
@@ -137,7 +143,7 @@ checkver() {
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname"
 
   # 環境変数 (pkg-configが./tmpを検索)
   TMPDIR=${srcdir}/tmp
@@ -149,6 +155,7 @@ prepare() {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
+  patch -p1 -i ${srcdir}/1461.patch
   patch -p1 -i ${srcdir}/libalpm16.patch
   cargo update alpm alpm-utils aur-depends
   #cargo update
@@ -355,7 +362,7 @@ build () {
 	  --with-psl-testfile=/usr/share/publicsuffix/test_psl.txt"
 
   # paru
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname"
   #if pacman -T pacman-git > /dev/null; then
     _features+="git,"
   #fi
@@ -399,7 +406,7 @@ build () {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname"
   TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
