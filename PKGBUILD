@@ -82,6 +82,12 @@ sha512sums=('a6539cf898e5fd22466002a4e23c0c672abab8221477586db3d18c7a814b699bd70
 # Set default rustup toolchain
 export RUSTUP_TOOLCHAIN=stable
 
+# Set JAVA_HOME for bazel
+if [ -z "$JAVA_HOME" ]; then
+  export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
+  echo "Setting JAVA_HOME: " $JAVA_HOME
+fi
+
 pkgver() {
   cd "${srcdir}/mozc" || exit
   source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
