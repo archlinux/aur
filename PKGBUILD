@@ -2,7 +2,7 @@
 
 pkgname=steamclip
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple PYTHON script to convert Steam recordings to .mp4 files'
 arch=(any)
 url=https://github.com/Nastas95/SteamClip
@@ -17,6 +17,11 @@ depends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9b7eb11cebb90594e98c743f4123deb59d3b7da67aeb3192e71c7ca3e60e4f16')
+
+prepare() {
+	# https://github.com/Nastas95/SteamClip/issues/22
+	sed -e "s/DEBUG = os.path.basename(sys.executable).startswith('python')/DEBUG = False/g" "SteamClip-${pkgver}/${pkgname}.py" -i
+}
 
 package() {
 	install -Dm755 "SteamClip-${pkgver}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
