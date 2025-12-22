@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='1.5.55'
+_upstreamver='2.0.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='scalene'
@@ -14,11 +14,11 @@ pkgdesc="A high-resolution, low-overhead CPU, GPU, and memory profiler for Pytho
 arch=('any')
 url='https://github.com/plasma-umass/scalene'
 license=('BSD-2-Clause')
-depends=('glibc' 'gcc-libs' 'python' 'ipython' 'python-cloudpickle' 'python-jinja' 'python-pydantic' 'python-cysignals' 'python-rich' 'python-boto3' 'python-astunparse' 'python-nvidia-ml-py')
+depends=('glibc' 'gcc-libs' 'python' 'ipython' 'python-yaml' 'python-cloudpickle' 'python-jinja' 'python-pydantic' 'python-cysignals' 'python-rich' 'python-boto3' 'python-astunparse' 'python-nvidia-ml-py')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('71c0c89287f46f9f1fa965def5866156313a949ed592b8acb008f8cafcf7c518')
+sha256sums=('df3f7f4274ff77e6d1384a7b36a031ea97dd1cd57b12e73c28c9e7f560f08ec5')
 
 
 build() {
