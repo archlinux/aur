@@ -10,6 +10,8 @@ pkgbase = gopac-git
 	depends = pacman
 	provides = gopac
 	conflicts = gopac
+	conflicts = gopac-bin
+	options = !debug
 	source = git+https://github.com/the-daonm/gopac.git
 	sha256sums = SKIP
 

@@ -5,12 +5,13 @@ pkgver=1.1.0.r1.gace4315
 pkgrel=1
 pkgdesc="A warm Gruvbox TUI for pacman and AUR"
 arch=('x86_64')
+options=('!debug')
 url="https://github.com/the-daonm/gopac"
 license=('MIT')
 depends=('pacman')
 makedepends=('git' 'go')
 provides=("$_pkgname")
-conflicts=('gopac', 'gopac-bin')
+conflicts=('gopac' 'gopac-bin')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
