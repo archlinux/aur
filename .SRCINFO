@@ -1,13 +1,14 @@
 pkgbase = mealie
 	pkgdesc = A self hosted recipe manager
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mealie-recipes/mealie
 	arch = any
 	license = AGPL
 	makedepends = yarn
 	makedepends = nodejs
 	makedepends = postgresql-libs
+	makedepends = uv
 	depends = python312
 	depends = sqlite
 	optdepends = postgresql: for postgresql support

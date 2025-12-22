@@ -2,13 +2,13 @@
 
 pkgname=mealie
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A self hosted recipe manager'
 arch=(any)
 url=https://github.com/mealie-recipes/mealie
 license=(AGPL)
 depends=(python312 sqlite)
-makedepends=(yarn nodejs postgresql-libs)
+makedepends=(yarn nodejs postgresql-libs uv)
 optdepends=('postgresql: for postgresql support')
 source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz
         mealie.sh
@@ -27,11 +27,8 @@ backup=(etc/mealie.conf)
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  python3.12 -m venv ./venv
-  source venv/bin/activate
-  pip install ./
-  pip install 'psycopg2>=2.0.0,<3.0.0'
-  deactivate
+  uv sync --frozen --all-extras --no-dev --no-editable --no-progress --python 3.12 --no-managed-python
+  sed -i "1s|^#!${srcdir}/${pkgname}-${pkgver}/.venv|#!/opt/mealie/venv|" .venv/bin/*
 
   cd frontend
   yarn install \
@@ -47,7 +44,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -pm755 "${pkgdir}/opt/mealie"
-  cp -r venv -t "${pkgdir}/opt/mealie/"
+  cp -r .venv "${pkgdir}/opt/mealie/venv"
   cp -rL frontend/dist -t "${pkgdir}/opt/mealie/"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   cd ..
