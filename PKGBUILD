@@ -23,7 +23,7 @@ optdepends=(
 options=('!strip')
 source=(
     "$pkgname-$pkgver.AppImage::$url/releases/download/v$pkgver/rustle-linux-x86_64.AppImage"
-    "rustle.png::$url/raw/main/assets/icon.png"
+    "rustle.png::$url/raw/main/assets/icons/icon_256.png"
 )
 sha256sums=(
     'SKIP'

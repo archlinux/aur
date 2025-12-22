@@ -17,7 +17,7 @@ pkgbase = rustle-bin
 	conflicts = rustle
 	options = !strip
 	source = rustle-bin-0.1.0.AppImage::https://github.com/ArcticFoxNetwork/Rustle/releases/download/v0.1.0/rustle-linux-x86_64.AppImage
-	source = rustle.png::https://github.com/ArcticFoxNetwork/Rustle/raw/main/assets/icon.png
+	source = rustle.png::https://github.com/ArcticFoxNetwork/Rustle/raw/main/assets/icons/icon_256.png
 	sha256sums = SKIP
 	sha256sums = SKIP
 
