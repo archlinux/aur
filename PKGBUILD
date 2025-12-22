@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.6.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -142,7 +142,6 @@ prepare() {
     # Backend part
     cd "${_pkgname}"
     patch -i ../build-only-backend.patch
-    patch -p1 -i ../fix-langchain-1.0.0-imports.patch
 }
 
 build() {
