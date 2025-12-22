@@ -1,6 +1,6 @@
 pkgbase = tribler-bin
 	pkgdesc = P2P/Bittorrent/YouTube client
-	pkgver = 8.2.3
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = http://tribler.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tribler-bin
 	provides = tribler
 	conflicts = tribler
 	options = !strip
-	source = https://github.com/Tribler/tribler/releases/download/v8.2.3/Tribler_8.2.3_x64.deb
-	sha256sums = c9ae9436d49425138fd83d02ece4e642b7df6d8d42b5f16367de8a0e37fa147f
+	source = https://github.com/Tribler/tribler/releases/download/v8.3.0/Tribler_8.3.0_x64.deb
+	sha256sums = db2ad25849daa0a54eec627a349101e03d7dfbed27a9eeae7dd38e407a300f13
 
 pkgname = tribler-bin
