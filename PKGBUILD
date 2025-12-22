@@ -1,8 +1,8 @@
 # Maintainer: Branimir Ricko <rickobranimir at gmail dot com>
 
 pkgname=brplot-git
-_pkgver=0.0.5
-pkgver=v0.0.5.r0.gb02ef20
+_pkgver=0.0.7
+pkgver=v0.0.6.r0.gfa286c5
 pkgrel=1
 pkgdesc='Better real time plot - plotting lines that are sent to stdin'
 url="https://github.com/branc116/brplot"
@@ -25,9 +25,6 @@ pkgver() { # Correct handling of VCS packages versions
 build() {
   cd brplot
   gcc -O2 -I. -o nob nob.c -lm
-  ./nob amalgam
-  gcc               -O3 -fvisibility=hidden -mtune=native -march=native -DBRPLOT_APP            -o brplot.final       .generated/brplot.c -lm
-  gcc -shared -fPIC -O3 -fvisibility=hidden -mtune=native -march=native -DBRPLOT_IMPLEMENTATION -o libbrplot.final.so .generated/brplot.c -lm
 }
 
 check() {
@@ -37,8 +34,6 @@ check() {
 
 package() {
   cd brplot
-  install -D -m755 "brplot.final" "${pkgdir}/usr/bin/brplot"
-  install -D -m755 "libbrplot.final.so" "${pkgdir}/usr/lib/libbrplot.so"
-  install -D -m644 ".generated/brplot.c" "${pkgdir}/usr/include/brplot.h"
-  install -D -m644 ".generated/FULL_LICENSE" "${pkgdir}/usr/share/licenses/brplot-git/LICENSE"
+  ./nob install --prefix ${pkgdir}/usr
+  mv ${pkgdir}/usr/share/licenses/brplot ${pkgdir}/usr/share/licenses/brplot-git
 }
