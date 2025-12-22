@@ -6,7 +6,7 @@
 
 pkgname=mysql-connector-c++
 pkgver=1.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc='A MySQL database connector for C++'
 arch=('i686' 'x86_64')
 url='http://dev.mysql.com/doc/connector-cpp/en/'
@@ -46,7 +46,7 @@ prepare() {
 build() {
 	cd $pkgname-$pkgver
 
-	$_cmake "../${pkgname}-${pkgver}/" \
+	$_cmake . \
 		-Wno-dev \
 		-DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_STANDARD_REQUIRED=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
