@@ -1,10 +1,10 @@
 pkgbase = theia-bin
 	pkgdesc = Cloud and Desktop IDE Platform
-	pkgver = 1.64.100
+	pkgver = 1.67.100
 	pkgrel = 1
 	url = https://www.theia-ide.org/
 	arch = x86_64
-	license = EPL2
+	license = EPL-2.0
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -20,7 +20,7 @@ pkgbase = theia-bin
 	provides = theia
 	conflicts = theia
 	options = !strip
-	source = TheiaIDE_x64_1.64.100.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/1.64.100/linux/TheiaIDE.deb&r=1
-	sha256sums = 9b4547bdc1057171f10b448ff7a713a8098560edf9006cca371a7681a56a80eb
+	source = TheiaIDE_x64_1.67.100.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/1.67.100/linux/TheiaIDE.deb&r=1
+	sha256sums = f5fa898e58b49752c52cd24d9c161f15dbe04e1936a8ce2c8fa6430ea45468be
 
 pkgname = theia-bin

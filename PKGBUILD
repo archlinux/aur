@@ -1,18 +1,18 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 
 pkgname=theia-bin
-pkgver=1.64.100
+pkgver=1.67.100
 pkgrel=1
 pkgdesc="Cloud and Desktop IDE Platform"
 arch=('x86_64')
 url='https://www.theia-ide.org/'
-license=('EPL2')
+license=('EPL-2.0')
 provides=('theia')
 conflicts=('theia')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'ripgrep' 'alsa-lib')
 optdepends=('libappindicator-gtk3: Systray indicator')
 source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1")
-sha256sums=('9b4547bdc1057171f10b448ff7a713a8098560edf9006cca371a7681a56a80eb')
+sha256sums=('f5fa898e58b49752c52cd24d9c161f15dbe04e1936a8ce2c8fa6430ea45468be')
 options=('!strip')
 
 package() {
