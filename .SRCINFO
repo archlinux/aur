@@ -1,13 +1,12 @@
 pkgbase = python-manilaclient
 	pkgdesc = Client library for OpenStack Manila API
-	pkgver = 5.1.0
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = http://docs.openstack.org/python-manilaclient
 	arch = any
 	license = Apache
 	checkdepends = python-ddt
 	checkdepends = python-fixtures
-	checkdepends = python-mock
 	checkdepends = python-stestr
 	checkdepends = python-tempest
 	checkdepends = python-testtools
@@ -24,7 +23,7 @@ pkgbase = python-manilaclient
 	depends = python-babel
 	depends = python-six
 	depends = python-keystoneclient
-	source = https://tarballs.opendev.org/openstack/python-manilaclient/python-manilaclient-5.1.0.tar.gz
-	sha512sums = 00fc2256c0ca0cfb4ed042a818f50199dbe3eb3f765b5dcb07163319f4d2719d6c0cce20a6f78812e1f12ca0ee653d9d6948aee9b13debdc66c23031e8d38ee6
+	source = https://tarballs.opendev.org/openstack/python-manilaclient/python_manilaclient-5.7.0.tar.gz
+	sha512sums = 731a95668ed19f90c5ab7ff2b933bf71cd5f09487e9f6841bc4ffcb6699541b4ca380e41622fc62224dca99e6000cf68461c66f6f55d18edca45873145343626
 
 pkgname = python-manilaclient
