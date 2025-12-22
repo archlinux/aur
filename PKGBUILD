@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine
 _pkgname=Dopamine
-pkgver=3.0.0
-_electronversion=26
-_nodeversion=20
+pkgver=3.0.1
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="The audio player that keeps it simple.Binary version.(Use system-wide electron)"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('52d0a36ecbd36cea52d549a7d0f2f9f93fbbdd691dca20c79c235353444428e1'
+sha256sums=('67f9170d93e8f6e313069de35fd9d06e3ad2814b7e25cc7938946cd45ea4c059'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -43,7 +43,7 @@ prepare() {
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
