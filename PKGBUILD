@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=emsmediasystem-bin
 _pkgname=EMS.Media.System
-pkgver=6.2.1
+pkgver=6.2.2
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('452b357f3f28c5b0b8d05cab8d0ece7f41569355cf54f23e03595d58a5bc1d80'
+sha256sums=('41c6a6ae57b123de425c9bc94eab0ffef3099901fa562633fdbf44732a282ccb'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname//./ }" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
