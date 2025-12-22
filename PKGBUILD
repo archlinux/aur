@@ -15,7 +15,7 @@ _formatted_date() {
     echo "$pkgver" | sed 's/\./-/g'
 }
 
-version() {
+pkgver() {
     curl -s 'https://api.github.com/repos/facebook/buck2/releases' | jq -r '.[1].tag_name' | sed 's/-/./g'
 }
 
