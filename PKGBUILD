@@ -2,7 +2,7 @@
 
 _pkgname=timekpr
 pkgname=$_pkgname-next-git
-pkgver=r604.d032a6f
+pkgver=r644.003ba63
 pkgrel=1
 pkgdesc="Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in. Beta branch."
 arch=('any')
