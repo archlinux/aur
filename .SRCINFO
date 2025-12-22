@@ -1,0 +1,11 @@
+pkgbase = otf-sinistre
+	pkgdesc = A font inspired by Gaelic and Uncial minuscule
+	pkgver = 69.420
+	pkgrel = 1
+	url = https://www.collletttivo.it/typefaces/sinistre
+	arch = any
+	license = OFL-1.1
+	source = https://codeload.github.com/collletttivo/sinistre/zip/refs/heads/main
+	sha256sums = 01c6daaaa07d7a61202608306ef15c1283a46a0c209e2dddf14ac1850bf86e94
+
+pkgname = otf-sinistre
