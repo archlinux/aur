@@ -9,7 +9,7 @@ _debianver=dfsg1
 _debianrel=10
 _upstreamver=3.25
 pkgver="${_upstreamver}+${_debianver}.${_debianrel}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Some utilities from the 'ISDN4Linux' project."
 url="https://www.isdn4linux.de/"
 arch=(
@@ -83,15 +83,17 @@ source=(
   # "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"  
  "https://web.archive.org/web/20251222093324/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"
   ## More local patches:
-  "01_adapt-for-y2025.patch"  # Very old codebase needs more fixups.
-  "02_adapt-for-y2025.patch"  # Fixups for 'isdnlog/tools'.
-  "config.in"                 # Tries to activate as many features as possible. Some do not build (needs old linux ISDN headers, or some other older software).
+  "01_adapt-for-y2025.patch"    # Very old codebase needs more fixups.
+  "02_adapt-for-y2025.patch"    # Fixups for 'isdnlog/tools'.
+  "03_termio-to-termios.patch"  # glibc 2.42 removed termio.h (https://github.com/llvm/llvm-project/issues/137321, https://aur.archlinux.org/packages/isdnutils#comment-1052578).
+  "config.in"                   # Tries to activate as many features as possible. Some do not build (needs old linux ISDN headers, or some other older software).
 )
 sha256sums=(
   "f9b534d32ff3729e2254f380f64894bf04d51a49a5e9ab32bc8f9fa9cce6abf8" # Upstream source
   "96d2b8e22eaded6d4a4bd06893d9c31ee2743132996d232929143e1eda5be530" # Debian patches
   "e3ae5011c25eefefcbd963779fe5ef075e6ec24910082c948fadfd606a007b12" # 01_adapt-for-y2025.patch
   "591e35a4f5e03f9c57143d8225565476140c8ed9ad05dbc80389c9ebeba1112a" # 02_adapt-for-y2025.patch
+  "a77135215a70f1074e37f69d9e651cc24085ba9e2775aa1add4c0ed7f88b86e8" # 03_termio-to-termios.patch
   "80d1c87d676932683ff978c33ba960378ef15eeaeb229059dc42fe8bfc3d6cec" # config.in
 )
 backup=(
@@ -134,7 +136,7 @@ prepare() {
     patch -Np1 --follow-symlinks -i "${srcdir}/debian/patches/${_patch}"
   done
 
-  for _patch in 01_adapt-for-y2025.patch 02_adapt-for-y2025.patch; do
+  for _patch in 01_adapt-for-y2025.patch 02_adapt-for-y2025.patch 03_termio-to-termios.patch; do
     printf '%s\n' "   > Applying patch '${_patch}' ..."
     patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}"
   done

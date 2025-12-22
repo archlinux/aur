@@ -1,0 +1,121 @@
+diff -rU1 isdnutils-3.25.orig/act2000/configure isdnutils-3.25.termios/act2000/configure
+--- isdnutils-3.25.orig/act2000/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/act2000/configure	2025-12-22 11:05:30.409394947 +0100
+@@ -2600,3 +2600,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/avmb1/configure isdnutils-3.25.termios/avmb1/configure
+--- isdnutils-3.25.orig/avmb1/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/avmb1/configure	2025-12-22 11:05:30.411869932 +0100
+@@ -2600,3 +2600,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+Only in isdnutils-3.25.termios: config
+diff -rU1 isdnutils-3.25.orig/divertctrl/configure isdnutils-3.25.termios/divertctrl/configure
+--- isdnutils-3.25.orig/divertctrl/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/divertctrl/configure	2025-12-22 11:05:30.414208280 +0100
+@@ -2710,3 +2710,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/eicon/configure isdnutils-3.25.termios/eicon/configure
+--- isdnutils-3.25.orig/eicon/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/eicon/configure	2025-12-22 11:05:30.416310904 +0100
+@@ -1357,3 +1357,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/hisax/configure isdnutils-3.25.termios/hisax/configure
+--- isdnutils-3.25.orig/hisax/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/hisax/configure	2025-12-22 11:05:30.418199293 +0100
+@@ -2603,3 +2603,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/icn/configure isdnutils-3.25.termios/icn/configure
+--- isdnutils-3.25.orig/icn/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/icn/configure	2025-12-22 11:05:30.420349497 +0100
+@@ -2605,3 +2605,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/ipppd/configure isdnutils-3.25.termios/ipppd/configure
+--- isdnutils-3.25.orig/ipppd/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/ipppd/configure	2025-12-22 11:05:30.423259161 +0100
+@@ -3506,3 +3506,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/ipppstats/configure isdnutils-3.25.termios/ipppstats/configure
+--- isdnutils-3.25.orig/ipppstats/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/ipppstats/configure	2025-12-22 11:05:30.426335851 +0100
+@@ -2594,3 +2594,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/isdnlog/configure isdnutils-3.25.termios/isdnlog/configure
+--- isdnutils-3.25.orig/isdnlog/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/isdnlog/configure	2025-12-22 11:05:30.428321955 +0100
+@@ -3956,3 +3956,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/loop/configure isdnutils-3.25.termios/loop/configure
+--- isdnutils-3.25.orig/loop/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/loop/configure	2025-12-22 11:05:30.431006525 +0100
+@@ -2710,3 +2710,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/rcapid/configure isdnutils-3.25.termios/rcapid/configure
+--- isdnutils-3.25.orig/rcapid/configure	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/rcapid/configure	2025-12-22 11:05:30.433256858 +0100
+@@ -1223,3 +1223,3 @@
+ #include "confdefs.h"
+-#include <termio.h>
++#include <termios.h>
+ Autoconf TCGETA
+diff -rU1 isdnutils-3.25.orig/vbox/src/modem.c isdnutils-3.25.termios/vbox/src/modem.c
+--- isdnutils-3.25.orig/vbox/src/modem.c	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/vbox/src/modem.c	2025-12-22 11:05:30.435069525 +0100
+@@ -19,3 +19,3 @@
+ 
+-#include <termio.h>
++#include <termios.h>
+ #include <unistd.h>
+diff -rU1 isdnutils-3.25.orig/vbox/src/modem.h isdnutils-3.25.termios/vbox/src/modem.h
+--- isdnutils-3.25.orig/vbox/src/modem.h	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/vbox/src/modem.h	2025-12-22 11:05:30.436815736 +0100
+@@ -9,3 +9,3 @@
+ 
+-#include <termio.h>
++#include <termios.h>
+ #include <sys/types.h>
+diff -rU1 isdnutils-3.25.orig/vbox3/vboxgetty/libvboxmodem.c isdnutils-3.25.termios/vbox3/vboxgetty/libvboxmodem.c
+--- isdnutils-3.25.orig/vbox3/vboxgetty/libvboxmodem.c	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/vbox3/vboxgetty/libvboxmodem.c	2025-12-22 11:05:30.438351271 +0100
+@@ -17,3 +17,3 @@
+ #include <fcntl.h>
+-#include <termio.h>
++#include <termios.h>
+ 
+diff -rU1 isdnutils-3.25.orig/vbox3/vboxgetty/modem.c isdnutils-3.25.termios/vbox3/vboxgetty/modem.c
+--- isdnutils-3.25.orig/vbox3/vboxgetty/modem.c	2012-07-06 08:27:19.000000000 +0200
++++ isdnutils-3.25.termios/vbox3/vboxgetty/modem.c	2025-12-22 11:05:30.439639309 +0100
+@@ -28,3 +28,3 @@
+ #include <fcntl.h>
+-#include <termio.h>
++#include <termios.h>
+ #include <signal.h>
