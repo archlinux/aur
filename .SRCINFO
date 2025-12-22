@@ -1,6 +1,6 @@
 pkgbase = python-blazarclient
 	pkgdesc = Client library for the Blazar API
-	pkgver = 4.1.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-blazarclient/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-blazarclient
 	depends = python-oslo-utils
 	depends = python-keystoneauth1
 	depends = python-osc-lib
-	source = https://tarballs.opendev.org/openstack/python-blazarclient/python-blazarclient-4.1.0.tar.gz
-	sha512sums = 0202463b083fb45b48d3aa15dc029c3d80cb22281d93ee882a4ab2109f9ac73bbda99ab54fb4a9115c08357cbdd9b2ea928dd44ae94983ed5b4689d884adf992
+	source = https://tarballs.opendev.org/openstack/python-blazarclient/python_blazarclient-4.4.0.tar.gz
+	sha512sums = 4bb8c22747ac5be926e1db293426deb5c70b7f2f04391268a713b1901b25b2003510f02d76c83944ffde510f79c18745894e0a0f8112283ef9b98d34afeccd97
 
 pkgname = python-blazarclient
