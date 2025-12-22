@@ -3,12 +3,12 @@
 
 pkgname=python-pluginmgr
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Python plugin system supporting config inheritance'
 arch=('any')
 url="https://github.com/20c/pluginmgr"
 license=('Apache')
-depends=('python-munge' 'python-importlib-metadata')
+depends=('python' 'python-munge' 'python-importlib-metadata')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-xdist' 'python-pytest-forked')
 changelog=CHANGELOG.md
