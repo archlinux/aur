@@ -7,11 +7,11 @@
 #
 pkgname=vorbisgain
 pkgver=0.37
-pkgrel=7
+pkgrel=8
 pkgdesc="A utility that computes the ReplayGain values for Ogg Vorbis files."
 arch=('x86_64')
 url="https://sjeng.org/vorbisgain.html"
-license=('LGPL-2.1-only')
+license=('LGPL-2.1-or-later')
 depends=('libvorbis')
 source=(
   "https://sjeng.org/ftp/vorbis/${pkgname}-${pkgver}.tar.gz"
