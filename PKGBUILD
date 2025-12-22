@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=cproc-git
 pkgdesc='Small C11 compiler using QBE as backend'
-pkgver=r592.9ae9aa6
+pkgver=r681.7051114
 pkgrel=1
 url=https://git.sr.ht/~mcf/cproc
 makedepends=(git)
