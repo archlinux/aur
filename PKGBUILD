@@ -1,7 +1,7 @@
 # Maintainer: Maria Nicolae <maria@marianicolae.com>
 
 pkgname=epubsynth
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A command-line program for generating EPUB documents'
 
@@ -15,7 +15,7 @@ makedepends=(python-build
              python-setuptools)
 
 source=("https://marianicolae.com/files/software/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('47a1004da7e869905d5d3c498ee0be6b532b50ac03b1f756ef7d3d3f8b29ec89')
+sha256sums=('9f74591c45b0197f8d1b4b3533e6cbb6329341756a0426f71c31727cdb5ab915')
 
 build() {
     cd ${srcdir}
@@ -26,6 +26,7 @@ package() {
     cd ${srcdir}
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
     licenses=('LICENSE' 'LICENSE.Apache-2.0' 'LICENSE.CC-BY-4.0')
     for filename in "${licenses[@]}"; do
         installpath="${pkgdir}/usr/share/licenses/${pkgname}/${filename}"
