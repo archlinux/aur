@@ -2,9 +2,9 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="A ready to go Wayland status bar for Hyprland"
+pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 _git="https://github.com/MalpenZibo/${_pkgname}.git#tag=${pkgver}"
 url="${_git}"
 license=("MIT")
