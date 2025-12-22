@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alice-ai-app-bin
 _pkgname=Alice-AI-App
-pkgver=1.2.1
+pkgver=1.2.2
 _electronversion=28
 pkgrel=1
 pkgdesc="A smart desktop AI assistant application built with Vue.js, Vite, and Electron. Advanced memory system, function calling, MCP support and more.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pmbstyle/Alice/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b13f24bf9ae19264ecb72281189532270fc80a0c6af3dd8d78a3fe2138093382'
+sha256sums=('a57a0a020675c4309bd11903c75dc1b2dffc65251456cb262a9c0333e6e03f38'
             '3e9927b4fcbf5507656ca5b5f90f71efb32fb5033321c0f6b9eeb69d50f4001a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -35,6 +35,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
