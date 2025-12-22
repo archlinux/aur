@@ -21,6 +21,14 @@ build() {
     meson compile -C build
 }
 
+check() {
+    cd "lyrics-$pkgver"
+    # Verify binary was built successfully
+    test -f build/lyrics
+    # Verify helper script exists
+    test -f wshowlyrics-offset
+}
+
 package() {
     cd "lyrics-$pkgver"
     meson install -C build --destdir="$pkgdir"
