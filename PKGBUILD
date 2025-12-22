@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgname=c47
 pkgver=00.109.03.00b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
 url="https://47calc.com"
@@ -26,9 +26,13 @@ prepare() {
 build() {
 	cd "$srcdir"
 	arch-meson --buildtype=custom -DDECNUMBER_FASTMUL=true \
-	"${_pkgname}-${pkgver}" build
+	${_pkgname}-${pkgver} build
 
 	meson compile -C build
+
+	cd "$srcdir/${_pkgname}-${pkgver}/docs/code"
+	mkdir -p "$srcdir/${_pkgname}-${pkgver}/build/docs"
+	doxygen
 }
 
 package() {
@@ -66,5 +70,6 @@ EOF
 		_count=$(($_count + 1))
 
 	done
-
+	install -dm755 "$pkgdir/usr/share/doc/"
+	cp -a "$srcdir/${_pkgname}-${pkgver}/build/docs/html" "$pkgdir/usr/share/doc/${pkgname}"
 }
