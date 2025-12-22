@@ -1,7 +1,7 @@
 # Maintainer: Branimir Ricko <rickobranimir at gmail dot com>
 
 pkgname=brplot-git
-_pkgver=0.0.8
+_pkgver=0.0.9
 pkgver=v0.0.8.r0.g81ca9e9
 
 pkgrel=1

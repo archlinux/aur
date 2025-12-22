@@ -9,7 +9,7 @@ pkgbase = brplot-git
 	makedepends = git
 	depends = glibc
 	provides = brplot
-	source = git+https://github.com/branc116/brplot.git#tag=v0.0.8
+	source = git+https://github.com/branc116/brplot.git#tag=v0.0.9
 	sha256sums = SKIP
 
 pkgname = brplot-git
