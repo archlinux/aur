@@ -1,7 +1,7 @@
 # Maintainer: Danny McClelland <danny@dmcc.io>
 pkgname=archnote
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful, minimal scratchpad note-taking app for Arch Linux with Omarchy theme support"
 arch=('x86_64')
 url="https://github.com/dannymcc/Archnote"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     npm install
-    npm run tauri build
+    npm run tauri build -- --bundles deb
 }
 
 package() {
