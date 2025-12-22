@@ -1,7 +1,7 @@
 pkgbase = biu-bin
 	pkgdesc = A cross-platform desktop music player based on Bilibili API
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wood3n/biu
 	arch = x86_64
 	license = PolyForm-Noncommercial-1.0.0
@@ -27,7 +27,7 @@ pkgbase = biu-bin
 	options = !debug
 	source = biu-1.7.0.deb::https://github.com/wood3n/biu/releases/download/v1.7.0/Biu-1.7.0-linux-amd64.deb
 	source = LICENSE-1.7.0::https://raw.githubusercontent.com/wood3n/biu/v1.7.0/LICENSE
-	sha256sums = 8137d5f7e5cbc9fcf03165f14dd8f646957388ee32b038cd73a37836def50bbe
+	sha256sums = 895a61c1ec275a9f7b6a43162849fb5bdce54e81384d33c18ba75330ca4c7131
 	sha256sums = b63003add694097450c9719baa1587f522f4c72a5714aae3d2cbd78efe3c0e0d
 
 pkgname = biu-bin

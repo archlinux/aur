@@ -3,7 +3,7 @@ pkgname=biu-bin
 _pkgname=biu
 _realver=1.7.0 # renovate: datasource=github-tags depName=wood3n/biu
 pkgver="${_realver//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop music player based on Bilibili API"
 arch=('x86_64')
 url="https://github.com/wood3n/biu"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wood3n/biu/v${_realver}/LICENSE"
 )
 
-sha256sums=('8137d5f7e5cbc9fcf03165f14dd8f646957388ee32b038cd73a37836def50bbe'
+sha256sums=('895a61c1ec275a9f7b6a43162849fb5bdce54e81384d33c18ba75330ca4c7131'
             'b63003add694097450c9719baa1587f522f4c72a5714aae3d2cbd78efe3c0e0d')
 
 package() {
