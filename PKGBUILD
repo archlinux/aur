@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -171,7 +171,7 @@ package() {
   install -dm755 "$pkgdir/usr/lib/$pkgname"
   mv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
   cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # Ensure the qt-config.ini is fixed
 _fix_theme(){
 	sed -i 's/theme=colorful/theme=default/g' "\$HOME/.config/citron/qt-config.ini"
