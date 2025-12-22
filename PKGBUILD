@@ -41,7 +41,7 @@ pkgname=(
   "${_otfs[@]}"
 )
 pkgver=20241017
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://hangeul.naver.com/font"
 license=('custom:OFL')
@@ -76,7 +76,6 @@ _install_otfs() {
 
 package_ttf-nanum-meta() {
   pkgdesc='Naver Nanum fonts meta package (TrueType)'
-  conflicts=(ttf-nanum)
   provides=(ttf-nanum)
   depends=("${_ttfs[@]}")
 }
@@ -88,7 +87,6 @@ package_otf-nanum-meta() {
 
 package_ttf-nanumgothic() {
   pkgdesc='Naver NanumGothic TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔고딕/NanumFontSetup_TTF_GOTHIC
 }
@@ -101,7 +99,6 @@ package_otf-nanumgothic() {
 
 package_ttf-nanumgothic-eco() {
   pkgdesc='Naver NanumGothic Eco TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔고딕에코/NanumFontSetup_TTF_GOTHICECO
 }
@@ -114,7 +111,6 @@ package_otf-nanumgothic-eco() {
 
 package_ttf-nanummyeongjo() {
   pkgdesc='Naver NanumMyeongjo TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔명조/NanumFontSetup_TTF_MYUNGJO
 }
@@ -127,7 +123,6 @@ package_otf-nanummyeongjo() {
 
 package_ttf-nanummyeongjo-eco() {
   pkgdesc='Naver NanumMyeongjo Eco TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔명조에코/NanumFontSetup_TTF_MYUNGJOECO
 }
@@ -140,7 +135,6 @@ package_otf-nanummyeongjo-eco() {
 
 package_ttf-nanummyeongjo-yethangul() {
   pkgdesc='Naver NanumMyeongjo YetHangul TrueType font'
-  conflicts=(ttf-nanum)
 
   install -Dm644 -t "$pkgdir/usr/share/fonts/nanum" "$srcdir/나눔 글꼴/나눔명조옛한글/NanumMyeongjo-YetHangul.ttf"
   _install_license
@@ -155,7 +149,6 @@ package_otf-nanummyeongjo-yethangul() {
 
 package_ttf-nanumbarungothic() {
   pkgdesc='Naver NanumBarunGothic TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔바른고딕/NanumFontSetup_TTF_BARUNGOTHIC
 }
@@ -168,7 +161,6 @@ package_otf-nanumbarungothic() {
 
 package_ttf-nanumbarungothic-yethangul() {
   pkgdesc='Naver NanumBarunGothic YetHangul TrueType font'
-  conflicts=(ttf-nanum)
 
   install -Dm644 -t "$pkgdir/usr/share/fonts/nanum" "$srcdir/나눔 글꼴/나눔바른고딕옛한글/NanumBarunGothic-YetHangul.ttf"
   _install_license
@@ -183,7 +175,6 @@ package_otf-nanumbarungothic-yethangul() {
 
 package_ttf-nanumbarunpen() {
   pkgdesc='Naver NanumBarunPen TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔바른펜/NanumFontSetup_TTF_BARUNPEN
 }
@@ -196,7 +187,6 @@ package_otf-nanumbarunpen() {
 
 package_ttf-nanumbrush() {
   pkgdesc='Naver NanumBrush TrueType font'
-  conflicts=(ttf-nanum)
 
   install -Dm644 -t "$pkgdir/usr/share/fonts/nanum" "$srcdir/나눔 글꼴/나눔손글씨_붓/NanumBrush.ttf"
   _install_license
@@ -211,7 +201,6 @@ package_otf-nanumbrush() {
 
 package_ttf-nanumpen() {
   pkgdesc='Naver NanumPen TrueType font'
-  conflicts=(ttf-nanum)
 
   install -Dm644 -t "$pkgdir/usr/share/fonts/nanum" "$srcdir/나눔 글꼴/나눔손글씨_펜/NanumPen.ttf"
   _install_license
@@ -226,7 +215,6 @@ package_otf-nanumpen() {
 
 package_ttf-nanumsquare() {
   pkgdesc='Naver NanumSquare TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔스퀘어/NanumFontSetup_TTF_SQUARE
 }
@@ -239,7 +227,6 @@ package_otf-nanumsquare() {
 
 package_ttf-nanumsquareround() {
   pkgdesc='Naver NanumSquareRound TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔스퀘어라운드/NanumFontSetup_TTF_SQUARE_ROUND
 }
@@ -252,7 +239,6 @@ package_otf-nanumsquareround() {
 
 package_ttf-nanumhuman() {
   pkgdesc='Naver NanumHuman TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs 나눔휴먼
 }
@@ -265,7 +251,6 @@ package_otf-nanumhuman() {
 
 package_ttf-nanumsquareneo() {
   pkgdesc='Naver NanumSquareNeo TrueType font'
-  conflicts=(ttf-nanum)
 
   _install_ttfs NanumSquareNeo/NanumSquareNeo/TTF
 }
@@ -278,7 +263,6 @@ package_otf-nanumsquareneo() {
 
 package_ttf-nanumsquareneo-variable() {
   pkgdesc='Naver NanumSquareNeo Variable TrueType font'
-  conflicts=(ttf-nanum)
 
   install -Dm644 -t "$pkgdir/usr/share/fonts/nanum" "$srcdir/나눔 글꼴/NanumSquareNeo/NanumSquareNeo/NanumSquareNeo-Variable.ttf"
   _install_license

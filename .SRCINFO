@@ -1,6 +1,6 @@
 pkgbase = nanum-fonts
 	pkgver = 20241017
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hangeul.naver.com/font
 	arch = any
 	license = custom:OFL
@@ -27,67 +27,51 @@ pkgname = ttf-nanum-meta
 	depends = ttf-nanumsquareneo-variable
 	depends = ttf-nanumhuman
 	provides = ttf-nanum
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumgothic
 	pkgdesc = Naver NanumGothic TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumgothic-eco
 	pkgdesc = Naver NanumGothic Eco TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanummyeongjo
 	pkgdesc = Naver NanumMyeongjo TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanummyeongjo-eco
 	pkgdesc = Naver NanumMyeongjo Eco TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanummyeongjo-yethangul
 	pkgdesc = Naver NanumMyeongjo YetHangul TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumbarungothic
 	pkgdesc = Naver NanumBarunGothic TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumbarungothic-yethangul
 	pkgdesc = Naver NanumBarunGothic YetHangul TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumbarunpen
 	pkgdesc = Naver NanumBarunPen TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumbrush
 	pkgdesc = Naver NanumBrush TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumpen
 	pkgdesc = Naver NanumPen TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumsquare
 	pkgdesc = Naver NanumSquare TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumsquareround
 	pkgdesc = Naver NanumSquareRound TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumsquareneo
 	pkgdesc = Naver NanumSquareNeo TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumsquareneo-variable
 	pkgdesc = Naver NanumSquareNeo Variable TrueType font
-	conflicts = ttf-nanum
 
 pkgname = ttf-nanumhuman
 	pkgdesc = Naver NanumHuman TrueType font
-	conflicts = ttf-nanum
 
 pkgname = otf-nanum-meta
 	pkgdesc = Naver Nanum fonts meta package (OpenType)
