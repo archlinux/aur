@@ -1,0 +1,5 @@
+[c47]
+source = "gitlab"
+gitlab = "rpncalculators/c43"
+prefix = "v"
+use_max_tag = true
