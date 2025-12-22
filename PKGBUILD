@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -19,29 +19,29 @@ optdepends=('ipset: required for iptables mode')
 makedepends=('git')
 backup=(
   "opt/$pkgname/config"
-  #"opt/$pkgname/ipset/zapret-hosts-user-exclude.txt"
+  "opt/$pkgname/ipset/zapret-hosts-user-exclude.txt"
   #"opt/$pkgname/ipset/zapret-hosts-user.txt"
   #"opt/$pkgname/ipset/zapret-hosts-user-ipban.txt"
   #"opt/$pkgname/ipset/zapret-ip-user.txt"
 )
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('7c419697b84634c64a71e372e892d55f6a1282a44fbf513cfa3f73e83b48e29c')
+sha256sums=('a1f1ce9305b274169ab1e4d19c3bc92593d1b7031e06c62635b02490989728ef')
 
 prepare() {
-  cd "$pkgname"/ipset
-  #mv -f zapret-hosts-user-exclude.txt.default zapret-hosts-user-exclude.txt
+  cd $pkgname/ipset
+  mv -f zapret-hosts-user-exclude.txt.default zapret-hosts-user-exclude.txt
   #touch zapret-hosts-user.txt
   #touch zapret-hosts-user-ipban.txt
   #touch zapret-ip-user.txt
 }
 
 build() {
-  cd "$pkgname"
+  cd $pkgname
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd $pkgname
 
   for i in ip2net mdig; do
     install -Dm755 binaries/my/$i -t "$pkgdir"/opt/$pkgname/$i/
@@ -61,6 +61,7 @@ package() {
   install -Dm644 lua/*    -t "$pkgdir"/opt/$pkgname/lua/
   
   install -Dm755 init.d/sysv/{functions,$pkgname} -t "$pkgdir"/opt/$pkgname/init.d/sysv/
+  install -dm755 "$pkgdir"/opt/$pkgname/init.d/sysv/custom.d/
   install -Dm644 init.d/systemd/*                 -t "$pkgdir"/usr/lib/systemd/system/
 
   install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf << END
