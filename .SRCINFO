@@ -1,6 +1,6 @@
 pkgbase = tuimer
 	pkgdesc = A minimal, beautiful terminal timer written in Go
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/tm4a/tuimer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tuimer
 	makedepends = git
 	depends = alsa-lib
 	depends = libnotify
-	source = tuimer-1.0.0.tar.gz::https://github.com/tm4a/tuimer/archive/v1.0.0.tar.gz
-	sha256sums = ae0bd2fc8b7205e13f34f0c9e9ec3a6830a7870e5df6506aaacd398d76015f56
+	source = tuimer-1.0.1.tar.gz::https://github.com/tm4a/tuimer/archive/v1.0.1.tar.gz
+	sha256sums = dfd898006a6315375ea5ba36ac815ff67e6d5115e2db191506e4e2ef0ea2a782
 
 pkgname = tuimer

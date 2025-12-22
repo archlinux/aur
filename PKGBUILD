@@ -1,6 +1,6 @@
 # Maintainer: YOUR_NAME <your_email@example.com>
 pkgname=tuimer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A minimal, beautiful terminal timer written in Go"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go' 'git')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
-sha256sums=('ae0bd2fc8b7205e13f34f0c9e9ec3a6830a7870e5df6506aaacd398d76015f56')
+sha256sums=('dfd898006a6315375ea5ba36ac815ff67e6d5115e2db191506e4e2ef0ea2a782')
 
 build() {
     cd "$pkgname-$pkgver"
