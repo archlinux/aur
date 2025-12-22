@@ -3,9 +3,9 @@
 
 pkgname=intel-sgx-sdk-bin
 pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
-pkgver=2.26
-_pkgver="${pkgver}.100.0"
-pkgrel=2
+pkgver=2.27
+_pkgver="${pkgver}.100.1"
+pkgrel=1
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
@@ -18,7 +18,7 @@ optdepends=(
 provides=("intel-sgx-sdk=${pkgver}")
 conflicts=('intel-sgx-sdk')
 source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_linux_x64_sdk_${_pkgver}.bin")
-b2sums=('cf8f255d82c0a2de1b34de5cee28597a5a3bb21011861d9572f178de1cb3ff91f2e6733c8826927555a9b78e46220ab32063178da1659dd6f4d07713c0c188fa')
+b2sums=('e4bd1e79e142cf9a136dcdf7f6b0efff879d28094e3afc93e24ab9ebb2546d74378d6d0ccf0562eec495ae0b40f7bdb63a51e1945e5ca98b148411fff37cd402')
 
 prepare() {
   chmod +x "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin"
