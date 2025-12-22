@@ -1,0 +1,14 @@
+pkgbase = ack-cpm
+	pkgdesc = A C compiler for 8-bit CPUs, configured for CP/M
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/davidgiven/ack
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = ack=dev
+	conflicts = ack
+	conflicts = ack-git
+	source = git+https://github.com/davidgiven/ack.git
+	sha256sums = SKIP
+
+pkgname = ack-cpm
