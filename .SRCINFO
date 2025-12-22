@@ -1,12 +1,15 @@
 pkgbase = python-jsonpath-rw-ext
 	pkgdesc = Extensions for JSONPath RW
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sileht/python-jsonpath-rw-ext
 	arch = any
 	license = Apache
 	checkdepends = python-pip
+	checkdepends = python-oslotest
+	checkdepends = python-testscenarios
 	makedepends = python-setuptools
+	depends = python-pbr
 	depends = python-jsonpath-rw
 	source = https://files.pythonhosted.org/packages/source/j/jsonpath-rw-ext/jsonpath-rw-ext-1.2.2.tar.gz
 	sha512sums = 28ca708023a942665c946d3e0ec618488f7d30d832e4ad0748d6c7019849f2ad19e3629c4452ab461b9c14d71f3360a4590357637f95ea44f8bc3b4544d5e0af
