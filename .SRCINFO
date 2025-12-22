@@ -1,0 +1,13 @@
+pkgbase = sc144xx-utils
+	pkgdesc = Tool for running software on sc144xx chips
+	pkgver = 0.1.0_20251222
+	pkgrel = 1
+	url = https://codeberg.org/CompactCall/sc144xx-utils
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python3
+	depends = python-pyserial
+	source = sc144xx-utils-0.1.0_20251222.tar.gz::https://codeberg.org/CompactCall/sc144xx-utils/archive/a9d6ca6cb11b6bd61a842108c6f42625d90e499a.tar.gz
+	sha256sums = f22d8b7805b62d96b82c3570ac577d88fdb6686f124d01059ab4986c0f6105be
+
+pkgname = sc144xx-utils
