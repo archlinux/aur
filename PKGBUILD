@@ -15,7 +15,7 @@ sha512sums=('SKIP'
             '0af6eabe1f2a5ff07b299d77e1ef878d368229e39bd4488831831de98ed5ef2d911f70bd5b9f82f8d9b2a788a0e339c99d7772b4b3f0880d114b0da2a252b0f1'
             '59ef6734505a8888f341b179d781cb6096da1984d60f70c6362bc7c8eba8c5e6625ab6d85f999726c57c29a9fdb5953c682d3b63cf7d1e2d05b1e2513a9c9c3f')
 
-OPTIONS=(!strip)
+options=(!strip)
 
 pkgver() {
     cd "$srcdir/RimSort"

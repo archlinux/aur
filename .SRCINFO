@@ -8,6 +8,7 @@ pkgbase = rimsort-git
 	makedepends = git
 	depends = python
 	depends = uv
+	options = !strip
 	source = git+https://github.com/RimSort/RimSort.git
 	source = RimSort.desktop
 	source = RimSort.sh
