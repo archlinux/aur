@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GeminiDesk
+Exec=gemini-desk %U
+Terminal=false
+Type=Application
+Icon=gemini-desk
+StartupWMClass=GeminiDesk
+Comment=Gemini Desktop Wrapper
+Categories=Utility;

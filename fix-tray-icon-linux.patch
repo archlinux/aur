@@ -1,0 +1,11 @@
+--- a/modules/tray.js
++++ b/modules/tray.js
+@@ -22,7 +22,7 @@ function createTrayIcon() {
+         return tray;
+     }
+ 
+-    const iconPath = path.join(__dirname, '..', 'icons', 'icon.ico');
++    const iconPath = path.join(process.resourcesPath, 'icons', 'icon-tray.png');
+     // Create and cache the icon to prevent garbage collection
+     trayIcon = nativeImage.createFromPath(iconPath);
+     tray = new Tray(trayIcon);

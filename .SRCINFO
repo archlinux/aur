@@ -1,0 +1,25 @@
+pkgbase = geminidesk-bin
+	pkgdesc = An unofficial Gemini client for desktop (prebuilt AppImage)
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = https://github.com/hillelkingqt/GeminiDesk
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = geminidesk
+	conflicts = geminidesk
+	conflicts = geminidesk-git
+	options = !strip
+	source = GeminiDesk-8.2.0.AppImage::https://github.com/hillelkingqt/GeminiDesk/releases/download/v8.2.0/GeminiDesk-8.2.0.AppImage
+	source = gemini-desk.desktop
+	source = fix-tray-icon-linux.patch
+	source = icon-tray.png
+	sha256sums = 6bcdcfe589451ab5fbb0d1189a702ef2712aa7be99f2409f1f76d1f4b38bb78a
+	sha256sums = d0971aa208441743f0654a53e63be90cf0007be67eb11741c1ee2c4b8232cc8c
+	sha256sums = 2d98f057cf7f8a448a7c55da717450f9e56d067ae6934f8e7320baa6e925c325
+	sha256sums = 7a0ee0649e6d89a6809fc09a5313bd7ef0eaff94d8b29aaae5de16da672437b8
+
+pkgname = geminidesk-bin
