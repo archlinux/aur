@@ -1,0 +1,17 @@
+pkgbase = openssh-gui-bin
+	pkgdesc = A graphical user interface for OpenSSH (Pre-compiled)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/frequency403/OpenSSH-GUI
+	arch = x86_64
+	license = MIT
+	depends = icu
+	depends = openssl
+	depends = zlib
+	provides = openssh-gui
+	conflicts = openssh-gui
+	conflicts = openssh-gui-git
+	source = openssh-gui-bin-2.2.0::https://github.com/frequency403/OpenSSH-GUI/releases/download/v2.2.0/OpenSSH-GUI-linux-x64
+	sha256sums = SKIP
+
+pkgname = openssh-gui-bin
