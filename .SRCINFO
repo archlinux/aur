@@ -1,0 +1,11 @@
+pkgbase = metal_time
+	pkgdesc = Prints the current time using toilet
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = toilet
+	source = metal_time.sh
+	sha256sums = SKIP
+
+pkgname = metal_time
