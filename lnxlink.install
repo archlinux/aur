@@ -1,0 +1,36 @@
+post_install() {
+    echo "==> LNXlink has been installed!"
+    echo "==> To set up and start the service:"
+    echo ""
+    echo "    1. Create config directory:"
+    echo "       mkdir -p ~/.config/lnxlink"
+    echo ""
+    echo "    2. Copy and edit the example config:"
+    echo "       cp /usr/share/doc/python-lnxlink/config.yaml.example ~/.config/lnxlink/config.yaml"
+    echo "       \$EDITOR ~/.config/lnxlink/config.yaml"
+    echo ""
+    echo "    3. Configure your MQTT broker settings (required):"
+    echo "       - mqtt.server: Your MQTT broker hostname/IP"
+    echo "       - mqtt.auth.user: Your MQTT username"
+    echo "       - mqtt.auth.pass: Your MQTT password"
+    echo ""
+    echo "    4. Enable and start the service:"
+    echo "       systemctl --user enable --now lnxlink"
+    echo ""
+    echo "    5. Check service status:"
+    echo "       systemctl --user status lnxlink"
+    echo "       journalctl --user -u lnxlink -f"
+    echo ""
+    echo "==> Documentation: https://bkbilly.gitbook.io/lnxlink"
+}
+
+post_upgrade() {
+    echo "==> LNXlink has been upgraded!"
+    echo "==> If you encounter issues, restart the service:"
+    echo "       systemctl --user restart lnxlink"
+    echo ""
+    echo "==> Check for config changes:"
+    echo "       diff ~/.config/lnxlink/config.yaml /usr/share/doc/python-lnxlink/config.yaml.example"
+    echo ""
+    post_install
+}

@@ -1,0 +1,14 @@
+[Unit]
+Description=LNXlink - Linux integration for Home Assistant
+Documentation=https://bkbilly.gitbook.io/lnxlink
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lnxlink -c %h/.config/lnxlink/config.yaml -i
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

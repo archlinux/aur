@@ -1,0 +1,50 @@
+# LNXlink Configuration Example
+# Copy this file to ~/.config/lnxlink/config.yaml and edit as needed
+# Documentation: https://bkbilly.gitbook.io/lnxlink/configuration
+
+mqtt:
+  # MQTT broker connection settings
+  prefix: lnxlink
+  clientId: DESKTOP-Linux
+  server: localhost
+  port: 1883
+
+  # Clear MQTT data when LNXlink stops
+  clear_on_off: true
+
+  # MQTT authentication
+  auth:
+    user: your_mqtt_user
+    pass: your_mqtt_password
+    tls: false
+    keyfile: ''
+    certfile: ''
+    ca_certs: ''
+
+  # Home Assistant MQTT Discovery
+  discovery:
+    enabled: true
+    prefix: homeassistant
+
+  # Last Will Testament for connection status
+  lwt:
+    enabled: true
+    qos: 1
+
+# Update frequency in seconds
+update_interval: 5
+
+# Send updates when changes detected (or every 15 minutes if false)
+update_on_change: false
+
+# Specific modules to load (empty list = load all available modules)
+modules: []
+
+# Custom modules (file paths or URLs)
+custom_modules: []
+
+# Modules to exclude from auto-loading
+exclude: []
+
+# Module-specific settings
+settings: {}
