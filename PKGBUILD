@@ -36,8 +36,6 @@ prepare() {
   export CARGO_HOME="${srcdir}/.cargo"
   export PATH="${CARGO_HOME}/bin:${PATH}"
 
-
-
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     -y \
     -q \
@@ -64,25 +62,11 @@ build() {
   unset CFLAGS
 
   cd "${_pkgname_prefix}"
-  cargo build --frozen --release -p gpclient -p gpservice -p gpauth
-  cargo build --frozen --release -p gpgui-helper --features "tauri/custom-protocol"
+  cargo build --frozen --release
 }
 
 package() {
   cd "${_pkgname_prefix}"
 
-  install -Dm755 target/release/gpclient "${pkgdir}/usr/bin/gpclient"
-  install -Dm755 target/release/gpservice "${pkgdir}/usr/bin/gpservice"
-  install -Dm755 target/release/gpauth "${pkgdir}/usr/bin/gpauth"
-  install -Dm755 target/release/gpgui-helper "${pkgdir}/usr/bin/gpgui-helper"
-
-  install -Dm644 packaging/files/usr/share/applications/gpgui.desktop "${pkgdir}/usr/share/applications/gpgui.desktop"
-  install -Dm644 packaging/files/usr/share/icons/hicolor/scalable/apps/gpgui.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpgui.svg"
-  install -Dm644 packaging/files/usr/share/icons/hicolor/32x32/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/gpgui.png"
-  install -Dm644 packaging/files/usr/share/icons/hicolor/128x128/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gpgui.png"
-  install -Dm644 packaging/files/usr/share/icons/hicolor/256x256@2/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png"
-  install -Dm644 packaging/files/usr/share/polkit-1/actions/com.yuezk.gpgui.policy "${pkgdir}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy"
-
-  install -Dm755 packaging/files/usr/lib/NetworkManager/dispatcher.d/pre-down.d/gpclient.down "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/pre-down.d/gpclient.down"
-	install -Dm755 packaging/files/usr/lib/NetworkManager/dispatcher.d/gpclient-nm-hook "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/gpclient-nm-hook"
+  DESTDIR="$pkgdir" make install
 }
