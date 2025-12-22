@@ -1,7 +1,7 @@
 pkgbase = aur-sync-vote
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
-	pkgver = 0.1.0
-	pkgrel = 5
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/acaibowlz/aur-sync-vote
 	arch = any
 	license = MIT
@@ -12,7 +12,10 @@ pkgbase = aur-sync-vote
 	depends = python-beautifulsoup4
 	depends = python-html5lib
 	depends = python-requests
-	source = aur-sync-vote-0.1.0.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5908f2629a18f9868f8d2a72892372bb4b5884bc2699228e32eeca2d04270283
+	optdepends = gnome-keyring: provides org.freedesktop.secrets.service
+	optdepends = kwallet: provides org.freedesktop.secrets.service
+	optdepends = keepassxc: provides org.freedesktop.secrets.service
+	source = aur-sync-vote-0.2.0.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ca93c91b8fce34323cbc547b4e5eb182e53d6476871b42af04dc4f103bced978
 
 pkgname = aur-sync-vote
