@@ -10,7 +10,7 @@ license=('MIT')
 depends=('pacman')
 makedepends=('git' 'go')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=('gopac', 'gopac-bin')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
