@@ -1,5 +1,5 @@
 pkgname=vopk
-pkgver=0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="VOPK — unified cross-distro package frontend"
 arch=('any')
@@ -7,8 +7,8 @@ url="https://github.com/gpteamofficial/vopk"
 license=('GPL-3.0-only')
 depends=('bash')
 
-source=("vopk::https://raw.githubusercontent.com/gpteamofficial/vopk/main/bin/vopk")
-sha256sums=('106659b7de80068c9be80e61ed2272261e19755355bad34ab549dd023a80c688')
+source=("vopk::https://raw.githubusercontent.com/gpteamofficial/vopk/main/src/vopk.sh")
+sha256sums=('SKIP')
 
 pkgver() {
   local v
