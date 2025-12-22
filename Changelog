@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 6.4.0 ➙ 7.1.0
-              : 2025-11-06 ➙ 2025-12-21
+ Tags         : 7.0.0 ➙ 7.1.1
+              : 2025-12-20 ➙ 2025-12-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-12-22   : 7.1.1
+              - Docs/conf.py: fix exclude_patterns to ignore rst files not used in pdf/html
+ 2025-12-21   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-12-21   : 7.1.0
               - Oops! Remove accidentally left debug in "-roll" code
@@ -33,21 +38,3 @@
                  - now licensed under GPL-2.0-or-later
  2025-11-06   ⋯
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-11-06   : 6.4.0
-              - Bug fix whereby state machine can lose track of changes
- 2025-09-08   ⋯
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-              - It is possible that production certs can occasionally get out of sync.
-                Not sure how this can happen under normal circumstances. One possible
-                scenario is server reboot while production certs are being updated.
-            
-                When sslm-mgr starts, it checks for production certs being
-                out of sync and issues a warning if they are.
-            
-                In previous version, it logged recommended commands to remediate.
-                This change automates that and removes the need for manual
-                intervention.
-            
-                In current version, if production certs are out of sync, this is logged
-                and then they are automatically synced and servers restarted.
