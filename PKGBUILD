@@ -1,7 +1,7 @@
 # Contributor: Caleb Jamison <cbjamo@gmail.com>
 pkgname=python-kinparse
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for KiCad schematic netlists."
 arch=(any)
 url="https://github.com/devbisme/kinparse"
@@ -22,5 +22,7 @@ build() {
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
