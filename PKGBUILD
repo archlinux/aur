@@ -7,7 +7,7 @@ pkgname=paper-velocity
 # curl -X GET "https://api.papermc.io/v2/projects/velocity" -H  "accept: application/json"
 _pkgver=3.4.0-SNAPSHOT
 # curl -X GET "https://api.papermc.io/v2/projects/velocity/versions/${_pkgver}" -H  "accept: application/json"
-_build=555
+_build=558
 pkgver="${_pkgver//-/_}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.0
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 source=("velocity.${pkgver}.jar"::"https://api.papermc.io/v2/projects/velocity/versions/${_pkgver}/builds/${_build}/downloads/velocity-${_pkgver}-${_build}.jar"
 	"velocity-proxy-mgmt-${_mng_ver}.tar.gz"::"https://github.com/yuna0x0/velocity-proxy-mgmt/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("velocity.${pkgver}.jar")
-sha256sums=('c77b11066c004e6fc07132145994537155fbbbbd5580b7db7b123e0a387560e3'
+sha256sums=('ef1a852bfae7397e84907837925e7ad21c6312066290edaae401b77f6f423ac3'
             '5b22bc55f350382e5c6e2b88c4a51247316814eb73fe3e9b8a45a265d3619ac8')
 
 _game="velocity"
