@@ -1,7 +1,9 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
+# Python package name now is with an underscore
+_pname=python_barbicanclient
 pkgname=python-barbicanclient
-pkgver=7.0.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc='Client library for the Barbican Key Management API'
 arch=(any)
@@ -14,24 +16,22 @@ depends=(python-pbr python-requests python-cliff
 checkdepends=(python-fixtures python-requests-mock python-stestr
               python-testtools python-oslotest python-oslo-config
               python-openstackclient)
-source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('b6ddb6881e1ab70e9a35562b3a12f55ebf6c1b84b61c0324f7e9547f109564f6fffeb3faacb8ef5ae74255c46795d571eae6a2f6bb3043c785018e48e23a7730')
+source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz")
+sha512sums=('2a40de2369f46752b1f02ffa8bdcd371adc3aeb6c03bd691319f0b74519e212953de034237b96ef233330f0b16bff4182907f89369d3e0ceab5dd2f6328cc2d9')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
-  # Skip failing test: MismatchError: 0 != None
-  sed -i '/test_should_show_usage_with_help_flag/a\        return' barbicanclient/tests/test_barbican.py
+  cd $_pname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd $_pname-$pkgver
+  python setup.py install --root=$pkgdir --optimize=1
 }
