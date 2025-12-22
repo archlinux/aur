@@ -3,7 +3,7 @@
 
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=25.3.1.60267
+pkgver=25.4.3.72304
 pkgrel=1
 pkgdesc='VK Team app for team collaboration'
 arch=("x86_64")
@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("$pkgbasename-$pkgver.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/$pkgver/$pkgbasename.tar.xz"
         "$pkgbasename.sh"
         "$pkgbasename.png")
-sha256sums=('fd95a6bbd884a7b3f2e41aaaa56afb6daef8d23c6baa63ce5fbf58f80aa6e5f2'
+sha256sums=('e04b6f3c24e4be5f82ab94868e47a36b8c18463b50b23155b9b079a60504a6d7'
             'a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b'
             'f4d3d9c11bcfd458a44f6e555bd753284b680c25977ddcfdf6039ea3ba65a75a')
 options=('!strip')
