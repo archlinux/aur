@@ -3,7 +3,7 @@
 
 pkgname=python-pycifrw
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='CIF/STAR file support for Python'
 arch=(any)
 url=https://github.com/jamesrhester/pycifrw
@@ -16,6 +16,7 @@ sha512sums=('88c11147bf7e718f596388f037a1614fedd338a59c81722668429bbf40c5a703577
 
 build() {
     cd ${_name}-${pkgver}
+    make sources
     python -m build --wheel --no-isolation
 }
 
