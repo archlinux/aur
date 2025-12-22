@@ -1,6 +1,6 @@
 # Maintainer: Clove Twilight <clovetwilight3@outlook.com>
 pkgname=gitcommit
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Automated Git workflow tool"
 arch=('any')
