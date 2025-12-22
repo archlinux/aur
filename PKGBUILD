@@ -1,6 +1,6 @@
 # Maintainer: DROO <droo@axol.io>
 pkgname=phos
-pkgver=0.4.0
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="High-performance universal log colorizer with 98 built-in programs"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/Hydepwns/phos"
 license=('MIT' 'Apache-2.0')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hydepwns/phos/archive/v$pkgver.tar.gz")
-sha256sums=('febc203f67053dc0b2acd436a198c9cf39e3770966c8fa080e7cab068f58c6a9')
+sha256sums=('7cb9ff69210ca79a320ba3f0febd3d068c5718ab8077c78775da7c159e47cc44')
 
 prepare() {
     cd "$pkgname-$pkgver"
