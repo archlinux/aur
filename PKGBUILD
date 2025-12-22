@@ -1,7 +1,7 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkghash=472a970e10c3a85f9db938719ebba121321c1d90
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'python-gobject>=3.48.0'
     'python-pillow'
     'python-cairo'
-#    'python-pytesseract'
+    'python-pytesseract'
 )
 makedepends=(
     'patch'
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname-$pkgver build -Denable-ocr=false
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 
