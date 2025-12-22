@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=candisc
-_pkgver=0.9.0
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=0.9.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc='Visualizing Generalized Canonical Discriminant and Canonical Correlation Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-car
   r-heplots
+  r-insight
 )
 optdepends=(
   r-corrplot
@@ -24,7 +25,7 @@ optdepends=(
   r-rpart.plot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a488a51a2931c18d4541a67539892646b67d9d4d286995660e0d2c087a858572')
+sha256sums=('75857923e65b265029aa544e26933b5feae14df0911a94c2cfd6bfed1b94d656')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
