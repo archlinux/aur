@@ -3,10 +3,11 @@ pkgname=wora-bin
 _pkgname=Wora
 pkgver=0.3.6
 _electronversion=31
-pkgrel=2
+pkgrel=3
 pkgdesc="🎧 A beautiful player for audiophiles.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/hiaaryan/wora"
+url="https://wora.app/"
+_ghurl="https://github.com/playwora/wora"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -17,13 +18,17 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/hiaaryan/wora/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/playwora/wora/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0d8146ccb2e24d7129f165fd0072826f94dccf5ec474a2b18c64352cc5e1a764'
             '86fbdd9a279c101416a691536c3ab99e4c5e9a8d1c81074d82148bb66acce0e6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,8 +37,14 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Utility/AudioVideo/g
