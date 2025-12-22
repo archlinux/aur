@@ -1,6 +1,6 @@
 pkgbase = aur-sync-vote
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/acaibowlz/aur-sync-vote
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = aur-sync-vote
 	optdepends = gnome-keyring: provides org.freedesktop.secrets.service
 	optdepends = kwallet: provides org.freedesktop.secrets.service
 	optdepends = keepassxc: provides org.freedesktop.secrets.service
-	source = aur-sync-vote-0.2.0.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = ca93c91b8fce34323cbc547b4e5eb182e53d6476871b42af04dc4f103bced978
+	source = aur-sync-vote-0.2.1.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 91b90e465abb262fa253b2b5fb82fed88622a32cb5a68731584f629e01977d33
 
 pkgname = aur-sync-vote

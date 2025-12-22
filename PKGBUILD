@@ -1,6 +1,6 @@
 # Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
   'keepassxc: provides org.freedesktop.secrets.service'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca93c91b8fce34323cbc547b4e5eb182e53d6476871b42af04dc4f103bced978')
+sha256sums=('91b90e465abb262fa253b2b5fb82fed88622a32cb5a68731584f629e01977d33')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
