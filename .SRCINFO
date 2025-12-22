@@ -1,11 +1,12 @@
 pkgbase = python-pyocd
 	pkgdesc = Programming and debugging Arm Cortex-M microcontrollers
 	pkgver = 0.42.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/pyocd/pyOCD
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -35,7 +36,7 @@ pkgbase = python-pyocd
 	provides = pyocd
 	conflicts = pyocd
 	replaces = pyocd
-	source = python-pyocd-0.42.0.tar.gz::https://github.com/pyocd/pyOCD/archive/refs/tags/v0.42.0.tar.gz
-	sha512sums = 39be1541f7d9c008b6d7121925098e355aea8cc261e4c93e8f81a7299377459e6225199cb56f43384f71660b8fe8cb6b58cdeadbc3c35e216c1cc07600ce895d
+	source = python-pyocd::git+https://github.com/pyocd/pyOCD.git#tag=v0.42.0
+	sha512sums = a47ddc4de015a3af07bcbcaa539797d10cf9a63cc8382f265ff9dec48e214887a6ef9b4b88a2c9e51cf330087885384aea7414cbb449b0f18e6bc77899848b40
 
 pkgname = python-pyocd

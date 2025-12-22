@@ -1,9 +1,10 @@
+# Maintainer: taotieren <admin@taotieren.com>
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 _name=pyOCD
 pkgname=python-pyocd
 pkgver=0.42.0
-pkgrel=3
+pkgrel=5
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -29,6 +30,7 @@ depends=(
   python-typing_extensions
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools
@@ -47,12 +49,13 @@ provides=(pyocd)
 conflicts=(pyocd)
 replaces=(pyocd)
 source=(
-  $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+  $pkgname::git+$url.git#tag=v$pkgver
 )
-sha512sums=('39be1541f7d9c008b6d7121925098e355aea8cc261e4c93e8f81a7299377459e6225199cb56f43384f71660b8fe8cb6b58cdeadbc3c35e216c1cc07600ce895d')
+sha512sums=('a47ddc4de015a3af07bcbcaa539797d10cf9a63cc8382f265ff9dec48e214887a6ef9b4b88a2c9e51cf330087885384aea7414cbb449b0f18e6bc77899848b40')
 
 prepare() {
-  cd $_name-$pkgver
+  git -C "${srcdir}/${pkgname}" clean -dfx
+  cd "${srcdir}/${pkgname}"
 
   # remove udev rules for stlink devices (the stlink package provides them):
   rm -v udev/*stlink*.rules
@@ -62,7 +65,7 @@ prepare() {
 }
 
 build() {
-  cd $_name-$pkgver
+  cd "${srcdir}/${pkgname}"
   python -m build --wheel --no-isolation
 }
 
@@ -74,7 +77,7 @@ check() {
     --deselect test/unit/test_autoflush.py::TestAutoflush::test_transfer_err_not_flushed
   )
 
-  cd $_name-$pkgver
+  cd "${srcdir}/${pkgname}"
   # install to temporary location
   python -m installer --destdir=test_dir dist/*.whl
   export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
@@ -82,7 +85,7 @@ check() {
 }
 
 package() {
-  cd $_name-$pkgver
+  cd "${srcdir}/${pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 udev/*.rules -t "$pkgdir/usr/lib/udev/rules.d/"
