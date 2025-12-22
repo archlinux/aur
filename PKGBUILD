@@ -1,19 +1,20 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.12.0.r0.g46d2639
-pkgrel=2
+pkgver=0.12.1.r109.gba57b44
+pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
 url=https://github.com/tramhao/termusic
 license=(GPL-3.0-or-later MIT)
 depends=(
   dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer
-  libsixel mpv opus soundtouch ueberzug) # alsa-lib libmpv.so
-makedepends=(cargo clang cmake git protobuf)
+  libsixel mpv opus ueberzugpp) # alsa-lib libmpv.so
+makedepends=(cargo clang git protobuf)
 optdepends=(
   'emoji-font: display emojis'
   'ffmpeg: extract audio by downloader'
+  'ueberzug: cover art'
   'yt-dlp: download files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -38,13 +39,13 @@ prepare() {
 build() {
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cd $pkgname
-  cargo build --frozen --release --all-features # --features=cover,gst
+  cargo build --frozen --release --all-features
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
   cd $pkgname
-  cargo test --frozen --all-features # --features=cover,gst
+  cargo test --frozen --all-features
 }
 
 package() {
