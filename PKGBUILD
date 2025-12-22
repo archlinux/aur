@@ -24,4 +24,7 @@ build() {
 package() {
     cd "lyrics-$pkgver"
     meson install -C build --destdir="$pkgdir"
+
+    # Rename binary from lyrics to wshowlyrics
+    mv "$pkgdir/usr/bin/lyrics" "$pkgdir/usr/bin/wshowlyrics"
 }
