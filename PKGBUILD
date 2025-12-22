@@ -1,11 +1,11 @@
 # Maintainer: Jove Yu <yushijun110 at 126 dot com>
 
-pkgbase=fm-scripts
-pkgname=('fm-scripts' 'fm-scripts-dolphin')
-pkgver=30.13
+pkgbase=nautilus-scripts
+pkgname=('nautilus-scripts' 'nautilus-scripts-dolphin')
+pkgver=30.13.1
 pkgrel=1
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (Nautilus), Nemo, Caja, Dolphin, Thunar and PCManFM-Qt file managers. '
-url=https://github.com/cfgnunes/fm-scripts
+url=https://github.com/cfgnunes/nautilus-scripts
 arch=('x86_64')
 license=('MIT')
 depends=(
@@ -14,24 +14,24 @@ depends=(
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-md5sums=('f2d4eafb396ea3ba98779f4a6e8ea035')
+md5sums=('6e2db54677b70b200b222bf814b2740f')
 
-package_fm-scripts() {
+package_nautilus-scripts() {
   install="${pkgname}.install"
-  optdepends=('fm-scripts-dolphin: dolphin servicemenus')
+  optdepends=('nautilus-scripts-dolphin: dolphin servicemenus')
 
   install -d ${pkgdir}/opt/
-  cp -r fm-scripts-${pkgver} ${pkgdir}/opt/${pkgname}
+  cp -r nautilus-scripts-${pkgver} ${pkgdir}/opt/${pkgname}
 }
 
-package_fm-scripts-dolphin() {
-  rm -rf fm-scripts
-  mv fm-scripts-${pkgver} fm-scripts
-  cd fm-scripts
+package_nautilus-scripts-dolphin() {
+  rm -rf nautilus-scripts
+  mv nautilus-scripts-${pkgver} nautilus-scripts
+  cd nautilus-scripts
 
   cp install.sh package.sh
   sed -i "s|\$INSTALL_HOME/.local/share/kio/servicemenus|${pkgdir}/usr/share/kio/servicemenus|g" package.sh
-  sed -i "\$cFILE_MANAGER=dolphin\nINSTALL_DIR=${srcdir}/fm-scripts/\n_install_actions" package.sh
+  sed -i "\$cFILE_MANAGER=dolphin\nINSTALL_DIR=${srcdir}/nautilus-scripts/\n_install_actions" package.sh
   bash package.sh
   rm package.sh
 
