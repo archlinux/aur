@@ -61,7 +61,7 @@ depends=()
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('SKIP'
             'da9f59655b70367ca0c34e94ceca8d728166dbb895388fa977b80935760f7a2f'
-            '6ad7671d91553c8324c5e4160ac3989889a283bc046552f8c1cf3d3dc6b52f4f'
+            '304653c98c2279e6ba6b62ca1364f0803b7c9f118128e21c388a510fc4cf9ca6'
             'SKIP'
             'e8e74cdeefe5fb78b3ae6e90cd542babf788fa9480029cfcee6fd9ced42b7910'
             '12542ad7619470efd95a623174dcd4b364f2483caf708c6bee837cb53a54cb9d'

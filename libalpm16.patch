@@ -5,4 +5,4 @@
  #aur-depends = { path = "../aur-depends" }
  #aur-fetch = { path = "../aur-fetch" }
 +#aur-fetch = { path = "../aur-fetch" }
-+aur-depends = { git = "https://github.com/ewanm89/aur-depends.git", rev = "814e5200183ffc10ed87888d4c3b0f96ebb50c6c" }
++aur-depends = { git = "https://github.com/Morganamilo/aur-depends.git", rev = "814e5200183ffc10ed87888d4c3b0f96ebb50c6c" }
