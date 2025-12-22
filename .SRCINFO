@@ -1,0 +1,149 @@
+pkgbase = nanum-fonts
+	pkgver = 20241017
+	pkgrel = 1
+	url = https://hangeul.naver.com/font
+	arch = any
+	license = custom:OFL
+	source = https://hangeul.naver.com/hangeul_static/webfont/zips/nanum-all_new.zip
+	source = OFL.txt
+	sha256sums = 173fd24bf38914f385401f602572dca3481f7669966e91ad289066f719f6cc56
+	sha256sums = 65c23f0be72b06e4e77f273a399c24cb57a310fbe273cf4bd6dc10d4dff9c2ba
+
+pkgname = ttf-nanum-meta
+	pkgdesc = Naver Nanum fonts meta package (TrueType)
+	depends = ttf-nanumgothic
+	depends = ttf-nanumgothic-eco
+	depends = ttf-nanummyeongjo
+	depends = ttf-nanummyeongjo-eco
+	depends = ttf-nanummyeongjo-yethangul
+	depends = ttf-nanumbarungothic
+	depends = ttf-nanumbarungothic-yethangul
+	depends = ttf-nanumbarunpen
+	depends = ttf-nanumbrush
+	depends = ttf-nanumpen
+	depends = ttf-nanumsquare
+	depends = ttf-nanumsquareround
+	depends = ttf-nanumsquareneo
+	depends = ttf-nanumsquareneo-variable
+	depends = ttf-nanumhuman
+	provides = ttf-nanum
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumgothic
+	pkgdesc = Naver NanumGothic TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumgothic-eco
+	pkgdesc = Naver NanumGothic Eco TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanummyeongjo
+	pkgdesc = Naver NanumMyeongjo TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanummyeongjo-eco
+	pkgdesc = Naver NanumMyeongjo Eco TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanummyeongjo-yethangul
+	pkgdesc = Naver NanumMyeongjo YetHangul TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumbarungothic
+	pkgdesc = Naver NanumBarunGothic TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumbarungothic-yethangul
+	pkgdesc = Naver NanumBarunGothic YetHangul TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumbarunpen
+	pkgdesc = Naver NanumBarunPen TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumbrush
+	pkgdesc = Naver NanumBrush TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumpen
+	pkgdesc = Naver NanumPen TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumsquare
+	pkgdesc = Naver NanumSquare TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumsquareround
+	pkgdesc = Naver NanumSquareRound TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumsquareneo
+	pkgdesc = Naver NanumSquareNeo TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumsquareneo-variable
+	pkgdesc = Naver NanumSquareNeo Variable TrueType font
+	conflicts = ttf-nanum
+
+pkgname = ttf-nanumhuman
+	pkgdesc = Naver NanumHuman TrueType font
+	conflicts = ttf-nanum
+
+pkgname = otf-nanum-meta
+	pkgdesc = Naver Nanum fonts meta package (OpenType)
+	depends = otf-nanumgothic
+	depends = otf-nanumgothic-eco
+	depends = otf-nanummyeongjo
+	depends = otf-nanummyeongjo-eco
+	depends = otf-nanummyeongjo-yethangul
+	depends = otf-nanumbarungothic
+	depends = otf-nanumbarungothic-yethangul
+	depends = otf-nanumbarunpen
+	depends = otf-nanumbrush
+	depends = otf-nanumpen
+	depends = otf-nanumsquare
+	depends = otf-nanumsquareround
+	depends = otf-nanumsquareneo
+	depends = otf-nanumhuman
+
+pkgname = otf-nanumgothic
+	pkgdesc = Naver NanumGothic OpenType font
+
+pkgname = otf-nanumgothic-eco
+	pkgdesc = Naver NanumGothic Eco OpenType font
+
+pkgname = otf-nanummyeongjo
+	pkgdesc = Naver NanumMyeongjo OpenType font
+
+pkgname = otf-nanummyeongjo-eco
+	pkgdesc = Naver NanumMyeongjo Eco OpenType font
+
+pkgname = otf-nanummyeongjo-yethangul
+	pkgdesc = Naver NanumMyeongjo YetHangul OpenType font
+
+pkgname = otf-nanumbarungothic
+	pkgdesc = Naver NanumBarunGothic OpenType font
+
+pkgname = otf-nanumbarungothic-yethangul
+	pkgdesc = Naver NanumBarunGothic YetHangul OpenType font
+
+pkgname = otf-nanumbarunpen
+	pkgdesc = Naver NanumBarunPen OpenType font
+
+pkgname = otf-nanumbrush
+	pkgdesc = Naver NanumBrush OpenType font
+
+pkgname = otf-nanumpen
+	pkgdesc = Naver NanumPen OpenType font
+
+pkgname = otf-nanumsquare
+	pkgdesc = Naver NanumSquare OpenType font
+
+pkgname = otf-nanumsquareround
+	pkgdesc = Naver NanumSquareRound OpenType font
+
+pkgname = otf-nanumsquareneo
+	pkgdesc = Naver NanumSquareNeo OpenType font
+
+pkgname = otf-nanumhuman
+	pkgdesc = Naver NanumHuman OpenType font
