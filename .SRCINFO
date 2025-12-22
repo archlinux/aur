@@ -1,6 +1,6 @@
 pkgbase = ce-toolchain
 	pkgdesc = Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series
-	pkgver = 13.0
+	pkgver = 14.0
 	pkgrel = 1
 	url = https://ce-programming.github.io/toolchain/index.html
 	install = ce-toolchain-bin.install
@@ -13,9 +13,10 @@ pkgbase = ce-toolchain
 	depends = zstd
 	provides = ce-toolchain
 	conflicts = ce-toolchain
+	noextract = CEdev-Linux-14.0.zip
 	options = !strip
 	options = !staticlibs
-	source = CEdev-Linux-13.0.tar.gz::https://github.com/CE-Programming/toolchain/releases/download/v13.0/CEdev-Linux.tar.gz
-	sha256sums = 21ecdfd9b8d9ffc9c2b45e0dc78ec4dc024e82d484cd245f6534941fdbcf397f
+	source = CEdev-Linux-14.0.zip::https://github.com/CE-Programming/toolchain/releases/download/v14.0/CEdev-Linux.zip
+	sha256sums = d288314ec31b2c7cf027960bc32daa053028e25086f71b1475794429efd14494
 
 pkgname = ce-toolchain-bin
