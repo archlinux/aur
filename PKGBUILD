@@ -16,41 +16,45 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=4.5.0
-pkgrel=7
+pkgrel=9
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
 arch=("x86_64")
 provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
-depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
+depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver--ai.tar.gz")
-sha256sums=("44b2213594957d81653f5b1ed73300169ba2d5f4359764d61a4c4ab4967c2c4b")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-09.tar.gz")
+sha256sums=("749199bbe5205c6a7bd73c04828eff9145678e760556f6098ac9dfe664354b62")
 
 build() {
-    tar -xvzf v$pkgver--ai.tar.gz
-    cd "hnefatafl-$pkgver-ai"
+    tar -xvzf v$pkgver-09.tar.gz
+    cd "hnefatafl-$pkgver-09"
 
-    cargo build --release --features client --no-default-features
+    cargo build --release
 
     ./target/release/hnefatafl-ai --man --username ""
     ./target/release/hnefatafl-client --man
     ./target/release/hnefatafl-server --man
+    ./target/release/hnefatafl-server-full --man
     ./target/release/hnefatafl-text-protocol --man
 
     gzip --no-name --best hnefatafl-ai.1
     gzip --no-name --best hnefatafl-server.1
+    gzip --no-name --best hnefatafl-server-full.1
     gzip --no-name --best hnefatafl-text-protocol.1
     gzip --no-name --best hnefatafl-client.1
 }
 
 package() {
-    cd "hnefatafl-$pkgver-ai"
+    cd "hnefatafl-$pkgver-09"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/hnefatafl-server-full" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-text-protocol" -t "$pkgdir/usr/bin"
+    install -Dm644 "packages/hnefatafl.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-defender.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
@@ -66,6 +70,7 @@ package() {
     install -Dm644 "hnefatafl-ai.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1.gz"
     install -Dm644 "hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
     install -Dm644 "hnefatafl-server.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-server.1.gz"
+    install -Dm644 "hnefatafl-server-full.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-server-full.1.gz"
     install -Dm644 "hnefatafl-text-protocol.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-text-protocol.1.gz"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
 }
