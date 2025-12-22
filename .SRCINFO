@@ -1,8 +1,8 @@
 pkgbase = structstore
 	pkgdesc = Multi-process shared data structures without communication overhead
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
-	url = https://github.com/mertemba/structstore
+	url = https://codeberg.org/mertemba/structstore
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-3.0-only

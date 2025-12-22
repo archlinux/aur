@@ -1,12 +1,12 @@
-# Maintainer: Max Mertens <max.mail@dameweb.de>
+# Maintainer: Max Mertens <git@mertemba.de>
 
 pkgbase=structstore
 pkgname=(structstore structstore_py)
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Multi-process shared data structures without communication overhead'
 arch=('x86_64' 'aarch64')
-url='https://github.com/mertemba/structstore'
+url='https://codeberg.org/mertemba/structstore'
 license=('LGPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'yaml-cpp')
 makedepends=('cmake' 'ninja' 'gcc' 'yaml-cpp' 'python' 'python-pip')
