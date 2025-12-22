@@ -1,0 +1,6 @@
+[lib32-libutempter-bin]
+source = "htmlparser"
+url = "https://packages.fedoraproject.org/pkgs/libutempter/libutempter/fedora-rawhide.html"
+xpath = "//h1"
+from_pattern = '.*libutempter-(\d+).(\d+).(\d+)-(\d+)\.fc(\d+).*'
+to_pattern = '\1.\2.\3_\4_\5'

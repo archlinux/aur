@@ -1,0 +1,33 @@
+pkgbase = lib32-libutempter-bin
+	pkgdesc = Interface for terminal emulators to record user sessions to utmp and wtmp files (32-bit)
+	pkgver = 1.2.1_19_43
+	pkgrel = 1
+	url = https://github.com/altlinux/libutempter
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = lib32-glibc
+	provides = lib32-libutempter
+	provides = lib32-libutempter0
+	provides = lib32-libutempter1
+	provides = lib32-utempter
+	provides = lib32-utempter0
+	provides = lib32-utempter1
+	provides = lib32-utempter_1.1
+	provides = libutempter.so=0
+	provides = libutempter.so=1
+	conflicts = lib32-libutempter
+	conflicts = lib32-libutempter0
+	conflicts = lib32-libutempter1
+	conflicts = lib32-utempter
+	conflicts = lib32-utempter0
+	conflicts = lib32-utempter1
+	conflicts = lib32-utempter_1.1
+	options = staticlibs
+	options = !buildflags
+	options = !makeflags
+	options = !strip
+	options = !debug
+	source = https://kojipkgs.fedoraproject.org/packages/libutempter/1.2.1/19.fc43/i686/libutempter-1.2.1-19.fc43.i686.rpm
+	sha256sums = be2444b05a96d73f99440ac5f1a69eecbe78fc1026434816f75b278f0ba53713
+
+pkgname = lib32-libutempter-bin
