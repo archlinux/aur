@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aur-pull
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 # shellcheck disable=SC2016  # No interpolation wanted
 pkgdesc='Plugin for aurutils to `git pull` multiple repositories'
 arch=('any')
@@ -25,7 +25,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/claui/aur-pull/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('dd4dab5af8f1ae55500f4019748dad6b93fcb70da10b01ccb6bd2d1ddd4ac639178dfcc903d0d8c7034bdae0c5bb418fba8a27b6ee8b2b1fe1713301cdf71d20')
+sha512sums=('323a9ad77d8680a5fbb7ec6768bff00749a05291b5c5a6f813ae0a4484a30f5a3c02c0ec575c01e5e32eabce516e522c8c2619f898976d28c087352e9da5941e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

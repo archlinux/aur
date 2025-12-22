@@ -1,7 +1,7 @@
 pkgbase = aur-pull
 	pkgdesc = Plugin for aurutils to `git pull` multiple repositories
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/claui/aur-pull
 	arch = any
 	license = Apache-2.0
@@ -17,7 +17,7 @@ pkgbase = aur-pull
 	optdepends = aurutils: as a plugin host
 	options = !debug
 	options = !strip
-	source = aur-pull-0.1.1.tar.gz::https://github.com/claui/aur-pull/archive/v0.1.1.tar.gz
-	sha512sums = dd4dab5af8f1ae55500f4019748dad6b93fcb70da10b01ccb6bd2d1ddd4ac639178dfcc903d0d8c7034bdae0c5bb418fba8a27b6ee8b2b1fe1713301cdf71d20
+	source = aur-pull-0.1.2.tar.gz::https://github.com/claui/aur-pull/archive/v0.1.2.tar.gz
+	sha512sums = 323a9ad77d8680a5fbb7ec6768bff00749a05291b5c5a6f813ae0a4484a30f5a3c02c0ec575c01e5e32eabce516e522c8c2619f898976d28c087352e9da5941e
 
 pkgname = aur-pull
