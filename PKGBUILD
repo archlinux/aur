@@ -2,7 +2,7 @@
 pkgname=mpc-qt-bin
 _pkgname="io.github.mpc_qt.${pkgname%-bin}"
 pkgver=25.07
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of Media Player Classic reimplemented in Qt.(Prebuilt version)"
 arch=('x86_64')
 url="https://mpc-qt.github.io/"
@@ -14,9 +14,6 @@ depends=(
     'mpv'
     'libice'
     'libsm'
-)
-makedepends=(
-    'fuse2'
 )
 options=(
     '!strip'
@@ -34,6 +31,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
 }
