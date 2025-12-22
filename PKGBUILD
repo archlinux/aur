@@ -1,7 +1,7 @@
 # Maintainer: daonm <daobilionusd@gmail.com>
 pkgname=gopac-git
 _pkgname=gopac
-pkgver=1.0.0.r0.ge5f0958
+pkgver=1.1.0.r1.gace4315
 pkgrel=1
 pkgdesc="A warm Gruvbox TUI for pacman and AUR"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = gopac-git
 	pkgdesc = A warm Gruvbox TUI for pacman and AUR
-	pkgver = 1.0.0.r0.ge5f0958
+	pkgver = 1.1.0.r1.gace4315
 	pkgrel = 1
 	url = https://github.com/the-daonm/gopac
 	arch = x86_64
