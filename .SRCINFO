@@ -1,0 +1,14 @@
+pkgbase = hashcards
+	pkgdesc = Plain text-based spaced repetition system for flashcards
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/eudoxia0/hashcards
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = hashcards-0.2.1.tar.gz::https://github.com/eudoxia0/hashcards/archive/v0.2.1.tar.gz
+	sha256sums = 37be85ab9b0d560a77188b86d2fef578a62152b48f85c707dbab212cd863c195
+
+pkgname = hashcards
