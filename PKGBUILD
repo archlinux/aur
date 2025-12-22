@@ -2,10 +2,10 @@
 
 pkgname='perl-apache-session-browseable'
 pkgver='1.3.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Add index and search methods to Apache::Session"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-apache-session' 'perl-json')
 makedepends=('perl-module-build')
