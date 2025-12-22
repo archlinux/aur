@@ -1,7 +1,7 @@
 pkgbase = easyconnect
 	pkgdesc = Support access to ssl vpn. With easyconect,you can secure and speed up connection to cooperate network at ease!
 	pkgver = 7.6.7.3
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.sangfor.com.cn
 	install = easyconnect.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = easyconnect
 	depends = sqlite
 	depends = nspr
 	depends = dbus-glib
+	depends = psmisc
 	conflicts = easyconnect
 	conflicts = easyconnect-rpc
 	conflicts = easyconnect-zjjy

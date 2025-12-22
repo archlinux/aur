@@ -5,7 +5,7 @@ pkgname=easyconnect
 _pkgname=EasyConnect
 pkgver=7.6.7.3
 _electronversion=1
-pkgrel=12
+pkgrel=13
 _pangover=1.42.4
 pkgdesc="Support access to ssl vpn. With easyconect,you can secure and speed up connection to cooperate network at ease!"
 arch=('x86_64')
@@ -25,6 +25,7 @@ depends=(
     'sqlite'
     'nspr'
     'dbus-glib'
+    'psmisc'
 )
 makedepends=(
     'gobject-introspection'
@@ -46,16 +47,19 @@ sha256sums=('ae623c6dc0354ff87afefbb770de5013bfd943051c9a653b93db708253b2f0d3'
             'b4b0db5e577c1b565a7f065ce8f9a4f9622b673fbcffa27ccbaf68f061a67a68'
             'a199da9f4f1579865094a2fbc768631e04fabcf84415882859eeba47ae1708d2')
 build() {
-    sed -e "s|@appname@|sangfor|g" \
-        -e "s|@runpath@|${_pkgname}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -i -e "
+        s/@appname@/sangfor/g
+        s/@runpath@/${_pkgname}/g
+        s/@runname@/${_pkgname}/g
+    " "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data."*
     cd "${srcdir}/pango-${_pangover}"
     ./configure --prefix=/usr
     make -j4 && make DESTDIR="${srcdir}/pango" install
-    sed "s|/usr/share/sangfor/${_pkgname}/${_pkgname}|${pkgname}|g;s|Icon=${_pkgname}|Icon=${pkgname}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i -e "
+        s/\/usr\/share\/sangfor\/${_pkgname}\/${_pkgname}/${pkgname}/g
+        s/Icon=${_pkgname}/Icon=${pkgname}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     chmod 755 "${srcdir}/usr/share/sangfor/${_pkgname}/${_pkgname}"
 }
 package() {
@@ -64,7 +68,7 @@ package() {
     install -Dm644 "${srcdir}/usr/lib/systemd/system/EasyMonitor.service" -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    cp -r "${srcdir}/usr/share/sangfor" "${pkgdir}/usr/share"
-    cp -r "${srcdir}/pango/usr/lib" "${pkgdir}/usr/share/sangfor/${_pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/sangfor" "${pkgdir}/usr/share"
+    cp -Pr --no-preserve=ownership "${srcdir}/pango/usr/lib" "${pkgdir}/usr/share/sangfor/${_pkgname}"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
