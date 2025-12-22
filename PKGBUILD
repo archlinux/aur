@@ -2,9 +2,9 @@
 pkgname=r5valkyrie-launcher-bin
 pkgver=0.9.55
 pkgrel=1
-pkgdesc="R5Valkyrie Launcher - A launcher for R5Reloaded"
+pkgdesc="Game launcher for R5V with mod management and server browser"
 arch=('x86_64')
-url="https://github.com/R5Reloaded-Kaleidoscope/launcher"
+url="https://github.com/r5valkyrie/launcher"
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib')
 provides=('r5valkyrie-launcher')
