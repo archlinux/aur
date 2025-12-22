@@ -1,6 +1,6 @@
 pkgbase = folio_tui
 	pkgdesc = TUI client for folio social network
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/foliofolio/folio_tui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = folio_tui
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = folio_tui-0.1.1.tar.gz::https://github.com/foliofolio/folio_tui/archive/v0.1.1.tar.gz
-	sha256sums = SKIP
+	source = folio_tui-0.1.2.tar.gz::https://github.com/foliofolio/folio_tui/archive/v0.1.2.tar.gz
+	sha256sums = 9b525882148894652c7da5817acf08c254b529673d8712000bc336a28732b743
 
 pkgname = folio_tui
