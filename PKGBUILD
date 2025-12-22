@@ -5,7 +5,7 @@ pkgdesc="Apollo Studio - standalone editor and live playback engine for Launchpa
 arch=('x86_64')
 url="https://github.com/Jacobeagle/apollo-studio/"
 license=('custom')
-depends=('openssl-1.1' 'dotnet-sdk-5.0-bin' 'dotnet-targeting-pack-2.1')
+depends=('openssl-1.1' 'dotnet-sdk-5.0-bin' 'dotnet-targeting-pack-bin')
 makedepends=()
 source=("https://github.com/Jacobeagle/apollo-studio/releases/download/${pkgver}/apollo-${pkgver}-linux.tar.gz"
 "apollo-studio.install")
