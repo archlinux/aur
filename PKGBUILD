@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=vtm-bin
-pkgver=2025.12.13
+pkgver=2025.12.19
 pkgrel=1
 pkgdesc="A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH.(Prebuilt version)"
 arch=(
 	'aarch64'
-	'armv7h'
-	'i686'
+	#'armv7h'
+	#'i686'
 	'x86_64'
 )
 url="https://github.com/directvt/vtm"
@@ -20,14 +20,12 @@ source=(
 )
 backup=("etc/${pkgname%-bin}/settings.xml")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.7z")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm32.tar.7z")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86.tar.7z")
+#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm32.tar.7z")
+#source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86.tar.7z")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86_64.tar.7z")
 sha256sums=('b7d69c3a45e98eb80ff9cd48d00334d72002d9d0f96b523f8feb33263af22e12')
-sha256sums_aarch64=('a40c733a6ab2702a89ffd6d51edc826ad3870f7a6143df2e15ab679c669b90c1')
-sha256sums_armv7h=('0970022fcf09920e0d5431b411bea7cf20b85574a293cdc28cc845824019ff20')
-sha256sums_i686=('3734f3d3d5e49dd2ac5a809222c5d3a2099f0239477e28df3ef6c3d98be2906c')
-sha256sums_x86_64=('80176848eb269ff5311965f2810d408039969c4c7ff1c1b9a2ad547286b2bd33')
+sha256sums_aarch64=('a51b68eb853707ad965f19c3955d411bd2ee00bb0be09b05dfd8644cd863078c')
+sha256sums_x86_64=('bece6d28e3f1483027dc88d11f6e2ccdcdc4e15826d3fb1eb8dce196601944d1')
 prepare() {
 	bsdtar -xf "${srcdir}/${pkgname%-bin}"*.tar
 }
