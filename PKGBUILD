@@ -4,8 +4,8 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.32.1.r0.gf5681d3
-pkgrel=3
+pkgver=33.0.1.r55.g2a309ce
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/${_pkgname}launcher"
@@ -21,6 +21,7 @@ depends=(
 	'qt6-shadertools'
 	'qt6-svg'
 	'qtkeychain-qt6'
+	'qcoro'
 )
 makedepends=('git' 'cmake' 'qt6-tools')
 conflicts=("${_pkgname}")
