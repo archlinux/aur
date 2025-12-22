@@ -2,7 +2,7 @@
 _appname='khiops covisualization'
 pkgname="${_appname// /-}-bin"
 _pkgname='khiops Covisualization'
-pkgver=11.5.2
+pkgver=11.5.3
 _electronversion=39
 pkgrel=1
 pkgdesc="The Electron application that encapsulates Khiops Covisualization.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/KhiopsML/kc-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('369a2f06b9725ffe3867e42d53001989515f483f5c2505ef94d89b8625bf07a6'
+sha256sums=('222b6bd542de34510a514183100650308d4b8792c16fa3451ac4fce3b227185c'
             '21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
