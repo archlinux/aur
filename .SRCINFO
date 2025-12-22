@@ -1,0 +1,17 @@
+pkgbase = python-fortune-python
+	pkgdesc = A simple self-contained clone of fortune.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://codeberg.org/jamesansley/fortune
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	noextract = fortune-python-1.1.2.tar.gz
+	source = fortune-python-1.1.2.tar.gz::https://codeberg.org/jamesansley/fortune/archive/v1.1.2.tar.gz
+	sha256sums = 27fc82411a4e941e55373361c2095215fb825a626a345563d9381f78ad918375
+
+pkgname = python-fortune-python

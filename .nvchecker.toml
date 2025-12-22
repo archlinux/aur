@@ -1,0 +1,4 @@
+[python-fortune-python]
+source = "git"
+git = "https://codeberg.org/jamesansley/fortune.git"
+prefix = "v"
