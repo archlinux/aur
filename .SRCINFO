@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -33,7 +33,7 @@ pkgbase = dms-shell-bin
 	sha256sums_x86_64 = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
 	sha256sums_x86_64 = 0e435f84ae5e6b5ef80d9c47dbfd508e91e5bac51ee84618a2944277cfa726c5
 	sha256sums_x86_64 = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
-	sha256sums_x86_64 = 5bfbce14d89eb4b107c671097cca0a846d2145efe7c337a24b9192563ff6b612
+	sha256sums_x86_64 = 16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d
 	source_aarch64 = dms.service
 	source_aarch64 = completions.bash
 	source_aarch64 = completions.fish
@@ -47,6 +47,6 @@ pkgbase = dms-shell-bin
 	sha256sums_aarch64 = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
 	sha256sums_aarch64 = bb1737ec381d26005f0152ef5b454d0cd1242c57dee10448993682232f349c4a
 	sha256sums_aarch64 = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
-	sha256sums_aarch64 = 5bfbce14d89eb4b107c671097cca0a846d2145efe7c337a24b9192563ff6b612
+	sha256sums_aarch64 = 16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d
 
 pkgname = dms-shell-bin
