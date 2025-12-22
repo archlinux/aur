@@ -1,7 +1,7 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 pkgname=cirno-catch-frog
 pkgver=1.0.3
-pkgrel=10
+pkgrel=11
 pkgdesc="Touhou fan game made with Godot. Let's help Cirno catch frogs!"
 arch=('x86_64')
 url="https://yuna0x0.itch.io/cirno-catch-frog"
@@ -33,6 +33,6 @@ package() {
 	install -d "${pkgdir}/usr/bin/"
 	ln -sf "/opt/${pkgname}/CirnoCatchFrog.${arch}" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.yuna0x0.CirnoCatchFrog.desktop"
 	install -Dm644 "${pkgname}_icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
