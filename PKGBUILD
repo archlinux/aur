@@ -1,6 +1,6 @@
 pkgname=mingw-w64-netcdf
 pkgver=4.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)"
 arch=('any')
 url="https://www.unidata.ucar.edu/software/netcdf/"
@@ -15,6 +15,14 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/netcdf-c-${pkgver}"
+
+  # Fix build with HDF5 2.0
+  curl -L https://github.com/Unidata/netcdf-c/commit/1f1f359a.patch | patch -p1
+  curl -L https://github.com/Unidata/netcdf-c/commit/cf095c62.patch | patch -p1
+  curl -L https://github.com/Unidata/netcdf-c/commit/741c4b4a.patch | patch -p1
+
+  # dpathmgr.c:706:27: error: passing argument 2 of '_wstat64' from incompatible pointer type
+  sed -i "68i#define stat _stat64" config.h.cmake.in
 }
 
 build() {
@@ -25,7 +33,6 @@ build() {
     make -C build-${_arch}
   done
 }
-
 
 package() {
   for _arch in ${_architectures}; do
