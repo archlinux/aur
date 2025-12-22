@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jmcomic-downloader-bin
 _pkgname='禁漫天堂下载器'
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器,带图形界面,带收藏夹,免费下载收费的漫画,下载速度飞快.(Prebuilt version)"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lanyeeee/jmcomic-downloader/v${pkgver}/LICENSE"
 )
-sha256sums=('2630ff90f21c7d618f70f34f87c3835fdd183b8c8563c77813eaa671bbb7f881'
-            '541954d98234bfc993f9cfcd1cf0d8d6b6e06a9375208a6b2a83a6663aa65ee8')
+sha256sums=('fc96143fdfef6562c4942df1b7e269e1846bba37d5b5c6c612d65db82ca0b9b7'
+            '21ca27fc0ad319b7f30c2b6ecd1786573482adc020d6716d7b4b6b42f5cc72cd')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
