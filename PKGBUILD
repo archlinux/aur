@@ -4,7 +4,7 @@
 pkgname=mago
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="A CLI text viewer tool that works interactively like less command on small pane within the terminal window."
+pkgdesc="An extremely fast PHP linter, formatter, and static analyzer, written in Rust."
 url="https://github.com/carthage-software/mago"
 arch=('x86_64')
 license=('MIT')
