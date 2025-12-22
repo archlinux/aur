@@ -54,6 +54,9 @@ package() {
     # Install binary
     install -Dm755 build/lyrics "$pkgdir/usr/bin/wshowlyrics"
 
+    # Install helper script for runtime offset control
+    install -Dm755 wshowlyrics-offset "$pkgdir/usr/bin/wshowlyrics-offset"
+
     # Install system-wide configuration file
     install -Dm644 settings.ini.example "$pkgdir/etc/wshowlyrics/settings.ini"
 
