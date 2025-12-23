@@ -9,6 +9,7 @@ pkgbase = openssh-gui-bin
 	provides = openssh-gui
 	conflicts = openssh-gui
 	conflicts = openssh-gui-git
+	options = !strip
 	source = openssh-gui-bin-2.2.1::https://github.com/frequency403/OpenSSH-GUI/releases/download/v2.2.1/OpenSSH-GUI-linux-x64
 	source = openssh-gui-bin-icon-2.2.1.png::https://github.com/frequency403/OpenSSH-GUI/raw/v2.2.1/OpenSSH_GUI/Assets/appicon.png
 	source = openssh-gui-bin-desktop-2.2.1.desktop::https://github.com/frequency403/OpenSSH-GUI/raw/v2.2.1/openssh-gui.desktop
