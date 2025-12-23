@@ -1,6 +1,6 @@
 pkgbase = finamp-git
 	pkgdesc = An open source Jellyfin music player
-	pkgver = 4433.363e59fb
+	pkgver = 4446.a677e567
 	pkgrel = 1
 	url = https://github.com/jmshrv/finamp
 	arch = x86_64
