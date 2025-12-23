@@ -5,7 +5,7 @@ pkgname=(
     "icingadb"
     "icingadb-migrate"
 )
-pkgver="1.5.0"
+pkgver="1.5.1"
 pkgrel=1
 epoch=0
 pkgdesc="Icinga configuration and state database supporting multiple environments"
@@ -40,7 +40,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "30f73091adc29d7615c0a4dcc801530f3e394c2a45398abf2125d356d988d949"
+    "006e63e983e599e789f91ec7a4b0425af1d2d036305e30f2d2028d18399b04c4"
     "SKIP"
     "SKIP"
 )
