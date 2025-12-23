@@ -11,7 +11,7 @@ arch=('any')
 source=("https://files.pythonhosted.org/packages/source/b/brother_ql-inventree/brother_ql_inventree-$pkgver.tar.gz"
        "fix_pandoc.patch")
 sha256sums=('be13019389962f09ab9d2b1366b55e080336905390261adcaa8f3ab75f937e3b'
-            '68bcf6d83f8a69364302fa367ec1e27aba1a5af77baf7338a83d315a638e992c')
+            'c7478997c52851439b81cb81db5cb6221f3c367aba9ca4ff787390d20fe4d1e7')
 
 prepare() {
     cd "$srcdir/brother_ql_inventree-$pkgver"
