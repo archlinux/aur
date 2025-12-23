@@ -1,0 +1,50 @@
+post_install() {
+    echo ""
+    cat <<'EOF'
+  ▄▀▀▀  ▄▀▀▀  █     ▄▀▀▀█ ▄▀▀▀▄  ▄▀▀▀▄ ▄▀▀▀▀▀ ▄▀▀▀▄
+  █ ▀▀█  ▀▀▀▄ █     █▀▀▀█ █▀▀▀   █▀▀▀  █▀▀▀▀  █▀▀▀▄
+   ▀▀▀   ▀▀▀   ▀▀▀▀ ▀   ▀ ▀      ▀      ▀▀▀▀▀ ▀   ▀
+EOF
+    echo ""
+    echo "==> gSlapper installed successfully!"
+    echo ""
+    echo "Quick Start Examples:"
+    echo ""
+    echo "  Video wallpaper:"
+    echo "    gslapper -o \"loop\" DP-1 /path/to/video.mp4"
+    echo ""
+    echo "  Static image:"
+    echo "    gslapper -o \"fill\" DP-1 /path/to/image.jpg"
+    echo ""
+    echo "Documentation:"
+    echo "  https://nomadcxx.github.io/gSlapper/"
+    echo ""
+    echo "Note: The next major release will include systemd service support"
+    echo "      for automatic wallpaper management at login."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    cat <<'EOF'
+  ▄▀▀▀  ▄▀▀▀  █     ▄▀▀▀█ ▄▀▀▀▄  ▄▀▀▀▄ ▄▀▀▀▀▀ ▄▀▀▀▄
+  █ ▀▀█  ▀▀▀▄ █     █▀▀▀█ █▀▀▀   █▀▀▀  █▀▀▀▀  █▀▀▀▄
+   ▀▀▀   ▀▀▀   ▀▀▀▀ ▀   ▀ ▀      ▀      ▀▀▀▀▀ ▀   ▀
+EOF
+    echo ""
+    echo "==> gSlapper upgraded successfully!"
+    echo ""
+    echo "Quick Start Examples:"
+    echo ""
+    echo "  Video wallpaper:"
+    echo "    gslapper -o \"loop\" DP-1 /path/to/video.mp4"
+    echo ""
+    echo "  Static image:"
+    echo "    gslapper -o \"fill\" DP-1 /path/to/image.jpg"
+    echo ""
+    echo "Documentation: https://nomadcxx.github.io/gSlapper/"
+    echo ""
+    echo "Note: The next major release will include systemd service support"
+    echo "      for automatic wallpaper management at login."
+    echo ""
+}
