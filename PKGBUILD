@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
 depends=('dotnet-runtime-9.0')
+options=('!strip')
 provides=('openssh-gui')
 conflicts=('openssh-gui' 'openssh-gui-git')
 source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/OpenSSH-GUI-linux-x64"
