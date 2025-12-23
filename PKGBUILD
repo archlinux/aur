@@ -1,11 +1,12 @@
 pkgname=pokeclicker-platinum
 pkgver=0.10.25_6  # Arch-friendly version string
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)"
 arch=('x86_64')
 url="https://github.com/wheat32/pokeclicker"
 license=('ISC')
+install=$pkgname.install
 depends=('zlib' 'glibc')
 makedepends=('npm' 'nodejs' 'git' 'electron-builder' 'electron')
 options=(!strip)
@@ -13,8 +14,11 @@ options=(!strip)
 # Convert _ to - for Git tag
 _gitver="${pkgver//_/-}"
 
-source=("git+$url.git#tag=v${_gitver}")
-sha256sums=('SKIP')
+source=(
+  "git+$url.git#tag=v${_gitver}"
+  "$pkgname.install"
+)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/pokeclicker"

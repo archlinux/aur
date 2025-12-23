@@ -1,0 +1,7 @@
+post_upgrade() {
+  cat <<EOF
+==> IMPORTANT:
+==> PokéClicker Platinum has been updated.
+==> Please ensure your save files are backed up before launching the game.
+EOF
+}
