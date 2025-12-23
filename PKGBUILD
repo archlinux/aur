@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.36.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=(npm
              python
              tk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2dc78622d458a1640dfa49dd1a9beddf77d365247248b5f893dcddbc499b42a1')
+sha256sums=('0360e7350eaba71b6259edbadb5203a2d96ae63c509ab97aa3bad4bfa85f86c4')
 
 prepare() {
     cd "$pkgname-$pkgver"
