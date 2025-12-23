@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PAGE=$(curl -s -A "Mozilla/5.0" "https://www.pornhub.com/video?o=tr")
+URL=$(echo "$PAGE" | grep -oE '/view_video.php\?viewkey=[^"]+' | shuf -n 1)
+
+[ -z "$URL" ] && exit 1
+
+mpv "https://www.pornhub.com$URL"
