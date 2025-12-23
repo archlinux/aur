@@ -1,32 +1,23 @@
 # Maintainer: CreamSodass <greatvaluecreamsoda@gmail.com>
 
 pkgname=ffvship
+pkgver=4.0.2
 pkgrel=1
-pkgver=4.0.0.21.g5308ad8
-pkgdesc="Cli tool for computing the metric difference between two videos (GIT version)"
+pkgdesc="CLI tool for computing the metric difference between two videos"
 arch=('x86_64')
 url='https://github.com/Line-fr/Vship'
 license=('MIT')
 depends=('ffms2' 'libvship')
-makedepends=('git' 'make')
-provides=("ffvship")
-conflicts=("ffvship")
-source=("ffvship::git+https://github.com/Line-fr/Vship.git")
+makedepends=('make' 'clang')
 sha256sums=('SKIP')
+source=("https://github.com/Line-fr/Vship/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-  cd "ffvship"
-
+  cd "Vship-${pkgver}"
   make buildFFVSHIP
 }
 
-pkgver() {
-  cd "${srcdir}/ffvship"
-  # Generate pkgver like: v3.0.0.0.g7cd1d4f
-  git describe --tags --long | sed 's/^v//;s/-/./g'
-}
-
-package(){
-  cd "ffvship"
+package() {
+  cd "Vship-${pkgver}"
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
 }
