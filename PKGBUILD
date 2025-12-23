@@ -122,14 +122,19 @@ build() {
 package() {
     cd "$srcdir/build"
 
-    echo "==> Manually installing binaries..."
     install -d "$pkgdir/usr/bin"
+    find "$srcdir/build/bin" -type f -executable -exec install -Dm755 "{}" "$pkgdir/usr/bin/" \;
+
     install -d "$pkgdir/usr/lib"
-
-    cp "$srcdir/build/bin"/* "$pkgdir/usr/bin/"
-    cp "$srcdir/build/lib"/* "$pkgdir/usr/lib/"
-
-    cp "$srcdir/vcpkg/installed/x64-linux/lib"/* "$pkgdir/usr/lib"
+    if [ -d "$srcdir/build/lib" ]; then
+        cp -dr --no-preserve=ownership "$srcdir/build/lib"/*.so* "$pkgdir/usr/lib/"
+    fi
+    if [ -d "$srcdir/vcpkg/installed/x64-linux/lib" ]; then
+        echo "==> Installing vcpkg libraries..."
+        cp -dr --no-preserve=ownership "$srcdir/vcpkg/installed/x64-linux/lib"/*.so* "$pkgdir/usr/lib/"
+    else
+        echo "==> WARNING: vcpkg lib directory not found!"
+    fi
 
     local appIcons=(
         "AudioSlicer|AudioSlicer|Slice audio into segments"
