@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = spotify
+Target = spotify-dev
+Target = spotify-edge
+Target = spotx
+Target = spotx-git
+
+[Action]
+Description = Running SpotX after Spotify/SpotX upgrade.
+When = PostTransaction
+Exec = /bin/sh -c '[ -n "$(pacman -Qq spotify spotify-dev spotify-edge 2>/dev/null)" ] && /usr/bin/spotx -f || true'
+Depends = spotx

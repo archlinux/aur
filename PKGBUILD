@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=spotx-git
-pkgver=r216+ge0d76eef9
+pkgver=r221+g64096381b
 pkgrel=1
 pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging"
 arch=('any')
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 package() {
+  install -Dm644 "${startdir}/spotx.hook" "${pkgdir}/usr/share/libalpm/hooks/spotx.hook"
   cd "${srcdir}/${pkgname}"
   install -Dm755 spotx.sh "${pkgdir}/usr/bin/spotx"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
