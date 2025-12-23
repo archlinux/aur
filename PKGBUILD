@@ -2,7 +2,7 @@
 
 pkgname=myctl
 pkgdesc="A powerful CLI to control your Linux Desktop"
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
@@ -32,9 +32,10 @@ package() {
     install -Dm755 "$binary" "${pkgdir}/usr/bin/$(basename "$binary")"
   done
 
+
   msg2 "Packaging libraries..."
   for libfile in lib/*; do
-    install -Dm644 "$libfile" "${pkgdir}/usr/lib/${pkgname}/$(basename "$libfile")"
+      install -Dm644 "$libfile" "${pkgdir}/usr/lib/${pkgname}/$(basename "$libfile")"
   done
 
   msg2 "Packaging src files..."
