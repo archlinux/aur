@@ -1,6 +1,6 @@
 pkgbase = llvm-libunwind
 	pkgdesc = LLVM's libunwind library
-	pkgver = 18.1.8
+	pkgver = 21.1.8
 	pkgrel = 1
 	url = https://github.com/llvm/llvm-project/tree/main/libunwind
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = llvm-libunwind
 	makedepends = ninja
 	makedepends = python
 	options = !lto
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz
-	b2sums = a950492f1dbfb874dff63b1ffef86468169ba2f211a9733ec2d4cf30040f7f277ef00f048bb44dee9f97d7d762f0f241f19e5a2a7b0b49217d3821ddfc8c354f
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/llvm-project-21.1.8.src.tar.xz
+	sha256sums = 4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142
 
 pkgname = llvm-libunwind
