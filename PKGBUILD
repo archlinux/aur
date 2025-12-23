@@ -2,7 +2,7 @@
 
 pkgname=getparty
 pkgdesc='HTTP download manager with multi-parts'
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/vbauerster/${pkgname}.git"
@@ -12,7 +12,7 @@ conflicts=("${pkgname}-bin")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-b2sums=('02abf5ac42732c16e4686790c115a1bb18d3a6ad41a7c91be2b8114f2edb060e38ea260692f6de233fc432ac47e5b989a839d8ba619f66dceddce5b210ce211d')
+b2sums=('f0dfdce65097997a39561c2285363352d96a44c0483aae6e8e49d0b99fb800a5e6185f99b01b6f2c93594a33eb7f05bf8cf90f73300d0f1759de6b06e74f1e70')
 
 build() {
     local _commit _flags
