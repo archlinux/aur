@@ -1,7 +1,7 @@
 pkgbase = python-pytest-language-server
 	pkgdesc = A blazingly fast Language Server Protocol (LSP) implementation for pytest.
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bellini666/pytest-language-server
 	arch = any
 	license = MIT
