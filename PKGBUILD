@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=ios-mount-gui
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern PyQt6 GUI to browse iOS app files on Linux"
 arch=('x86_64')
 url="https://github.com/kakalpa/Mount-IOS-Linux"

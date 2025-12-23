@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iOS Mount GUI
+Comment=Browse iOS app files on Linux
+Exec=ios-mount-gui
+Icon=ios-mount-gui
+Categories=Utility;System;
+Terminal=false
+StartupNotify=true
