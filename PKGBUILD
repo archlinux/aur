@@ -2,8 +2,8 @@
 
 pkgname=remora-ssh
 pkgver=1.0.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Simple SSH manager with TUI "
 arch=('x86_64')
 url="https://github.com/desyatkoff/$pkgname"
 license=('GPL-3.0-or-later')
