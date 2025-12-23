@@ -1,5 +1,5 @@
 pkgname=cloudfleet-cli
-pkgver=0.6.32
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Cloudfleet CLI"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://cloudfleet.ai"
 source=("cloudfleet_linux_amd64-${pkgver}.zip::https://downloads.cloudfleet.ai/cli/${pkgver}/cloudfleet_linux_amd64.zip"
         "cloudfleet_linux_arm64-${pkgver}.zip::https://downloads.cloudfleet.ai/cli/${pkgver}/cloudfleet_linux_arm64.zip")
 
-sha256sums=('d2f65bacf125db4618aa8ba97a6c9c0528dcdedf0de30282daf0b4828c86f370' 'c44bc2699c23a71f77a64dfead3ae0f175de5fbad7a5000c59da1c99e1ff0aa8')
+sha256sums=('55a540f4c6c3ac3f295b0f13fbd3ecf39814a4604712c4565aec5d41cb398d23' '708a97947a135ada05658236d49bc9af5f359d6bd16741cd3ef69630c8c7b14e')
 
 prepare() {
     cd "$srcdir"
