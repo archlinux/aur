@@ -2,6 +2,7 @@ pkgname=lianpkg-bin
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wallpaper Engine .pkg unpacker and resource tool"
+keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'rust')
 arch=('x86_64')
 url="https://github.com/Yueosa/lianpkg"
 license=('GPL3')
