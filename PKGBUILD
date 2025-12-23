@@ -126,7 +126,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/lib"
 
-    cp "$srcdir/vcpkg/installed/x64-linux/lib"/* "$pkgdir/usr/lib/"
+    cp "$srcdir/vcpkg/installed/x64-linux/lib"/* "$pkgdir/usr/lib"
 
     cp "$srcdir/build/bin"/* "$pkgdir/usr/bin/"
     cp "$srcdir/build/lib"/* "$pkgdir/usr/lib/"
