@@ -2,7 +2,7 @@
 # Contributor: Nicolas Martyanoff <nicolas@n16f.net>
 
 pkgname="k3s-bin"
-pkgver="1.34.2+k3s1"
+pkgver="1.34.3+k3s1"
 pkgrel="1"
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -30,9 +30,9 @@ source_aarch64=(
 
 sha256sums=('6dae4b76712fc5ad7e515ad8a14fee0b961bfb0cd624d998ac954c233aa90ff5'
             '667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0')
-sha256sums_x86_64=('15811d34187e03fe29d0e46108c42cc33e62cec1b3d9d80f50944536ebcad40a')
-sha256sums_armv7h=('8824bf5f2af87ecb05575d1712325615968c073b022c6178e5356887c2f1eff7')
-sha256sums_aarch64=('2e1db0e54a8b0d0ab8a264a119c9c617561f9290e7bb2722d795f8bc91b24cf8')
+sha256sums_x86_64=('f95350e3997165974d1d1406f01aabaf869aed7ca790cc2d83a92a82f26a06c5')
+sha256sums_armv7h=('e75d12a5c481e96372b112dc20faa9a64f1b73069897012b025b976bd359de3d')
+sha256sums_aarch64=('fa37b06df7ae82b46de6679a8682b6ece2adf531709bed6299086716c1038147')
 
 
 
