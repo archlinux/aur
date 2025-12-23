@@ -1,7 +1,7 @@
 # Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
 pkgname=wayback-x11
 _pkgname=wayback
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="An experimental X compatibility layer for Wayland."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wayland' 'libxkbcommon' 'wlroots0.19' 'glibc' 'xorg-xwayland' 'scdoc')
 makedepends=('meson' 'wayland-protocols')
 source=("${_pkgname}-${pkgver}.tar::https://gitlab.freedesktop.org/wayback/wayback/-/archive/$pkgver/""${_pkgname}-${pkgver}.tar")
-sha256sums=('77a9fb65ead58cce80225303259f8b3751db46a4b1f41b1acac4d0c37f46a501')
+sha256sums=('4b50d8dbc58aca6b5e6fce562b939cf86d938d1ec136f2a2d3eb400dc277b181')
 
 
 build() {

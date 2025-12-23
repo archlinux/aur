@@ -1,6 +1,6 @@
 pkgbase = wayback-x11
 	pkgdesc = An experimental X compatibility layer for Wayland.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://wayback.freedesktop.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wayback-x11
 	depends = glibc
 	depends = xorg-xwayland
 	depends = scdoc
-	source = wayback-0.2.tar::https://gitlab.freedesktop.org/wayback/wayback/-/archive/0.2/wayback-0.2.tar
-	sha256sums = 77a9fb65ead58cce80225303259f8b3751db46a4b1f41b1acac4d0c37f46a501
+	source = wayback-0.3.tar::https://gitlab.freedesktop.org/wayback/wayback/-/archive/0.3/wayback-0.3.tar
+	sha256sums = 4b50d8dbc58aca6b5e6fce562b939cf86d938d1ec136f2a2d3eb400dc277b181
 
 pkgname = wayback-x11
