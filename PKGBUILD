@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.8.r0.g981d7d71a27
+pkgver=10.9.beta0.r0.g4ec34ffab2e
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -107,12 +107,14 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
             'python-igraph: igraph backend for graph theory'
             'python-jupymake: polymake backend for polyhedral computations'
+            'python-khoca: for computing the Khovanov homology of knots'
             'python-matroid-database: matroids database'
             'python-phitigra: graph editor'
             'python-pkgconfig: to compile cython code'
             'python-pycosat: picosat SAT solver'
             'python-pynormaliz: Normaliz backend for polyhedral computations'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
+            'regina: some methods related to low-dimensional topology'
             'rubiks: Rubiks cube algorithms'
             'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
             'sagemath-doc: HTML documentation'
