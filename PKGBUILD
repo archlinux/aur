@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=mangowc
 pkgver=0.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
@@ -15,7 +15,7 @@ md5sums=('2fd851823e31aa26aeee70a870d88e01')
 
 build() {
   cd "$pkgname-$pkgver"
-  meson build
+  meson build --prefix /usr
 }
 
 package() {
