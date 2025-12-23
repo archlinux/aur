@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=apparmor.d-git
-pkgver=0.3713
+pkgver=v0.4900.r0.gc49d1ba
 pkgrel=1
 pkgdesc="Full set of apparmor profiles"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ install=apparmor.d.install
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo "0.$(git rev-list --count HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

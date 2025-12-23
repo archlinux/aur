@@ -1,6 +1,6 @@
 pkgbase = apparmor.d-git
 	pkgdesc = Full set of apparmor profiles
-	pkgver = 0.3713
+	pkgver = v0.4900.r0.gc49d1ba
 	pkgrel = 1
 	url = https://github.com/roddhjav/apparmor.d
 	install = apparmor.d.install
