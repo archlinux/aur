@@ -8,9 +8,7 @@ pkgbase = hub-rand
 	depends = coreutils
 	depends = curl
 	depends = xdg-utils
-	depends = grep
-	depends = sed
-	depends = awk
+	depends = fzf
 	source = hub-rand
 	sha256sums = SKIP
 
