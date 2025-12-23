@@ -1,17 +1,15 @@
 # Maintainer: FXS <admin@fxs.life>
 pkgname=rustle-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A modern music player built with Rust and iced, supporting NetEase Cloud Music (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/ArcticFoxNetwork/Rustle"
 license=('AGPL-3.0-or-later')
 depends=(
-    'openssl'
     'dbus'
     'alsa-lib'
     'libayatana-appindicator'
-    'fuse2'
 )
 provides=('rustle')
 conflicts=('rustle')
