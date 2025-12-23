@@ -1,0 +1,17 @@
+pkgbase = btrfs-rec-git
+	pkgdesc = Recover data from a broken Btrfs filesystem
+	pkgver = 0.1.0.r23.gc56295c
+	pkgrel = 1
+	url = https://git.lukeshu.com/btrfs-progs-ng
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	provides = btrfs-rec
+	conflicts = btrfs-rec
+	source = git+https://git.lukeshu.com/btrfs-progs-ng.git
+	sha256sums = SKIP
+
+pkgname = btrfs-rec-git
