@@ -5,7 +5,7 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=48.0.0.0
+pkgver=48.0.1.0
 # curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
 # strings src/opt/slimjet/slimjet | grep -Eo '^Chrome/([0-9]+(\.[0-9]+)+)' | head -n 1
 _libffmpegver=0.102.1
@@ -46,7 +46,7 @@ source=(
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('f42f0216ff82cd2670d6e5ead2d71bb9040b47f1d4c467ce435f9fd02cc3813d'
+sha256sums=('5f7c6bdb6ad073f88fdfcdc57e7a70cd96a8753fab70f0f36829ebd3330b9449'
             '9fe1ef70e837422794bbfd84cdcfab93cd1771e8a89c78c813ec401ff324a007')
 _get_versions() {
     _slimjetver="$(strings ${srcdir}/opt/${pkgname}/${pkgname} | grep -oP 'Chrome/\K[0-9]+' | head -n 1)"
