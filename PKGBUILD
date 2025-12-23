@@ -2,20 +2,20 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=4.9.2
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
 conflicts=('photoqt-bin' 'photoqt-bin-debug')
 provides=('photoqt-debug')
-depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg>=0.43.0' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2')
+depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg>=0.43.0' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'libsai-git')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('90f87159e91e704e7bc18e39a8bcbf1277e68c52e7d1c12667ee2a58719b2f85')
+sha256sums=('0527bde5dc33042569e631c85fac61f416783a03e5f3c614c6dd224d24e7c75f')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -32,7 +32,7 @@ sha256sums=('90f87159e91e704e7bc18e39a8bcbf1277e68c52e7d1c12667ee2a58719b2f85')
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=ON -DRESVG=ON -DZXING=ON -DLCMS2=ON -DCMAKE_BUILD_TYPE=Release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_FREEIMAGE=OFF -DWITH_DEVIL=OFF -DWITH_POPPLER=OFF -DWITH_QTPDF=ON -DWITH_IMAGEMAGICK=ON -DWITH_GRAPHICSMAGICK=OFF -DWITH_LIBVIPS=OFF -DWITH_VIDEO_MPV=ON -DWITH_CHROMECAST=ON -DWITH_RESVG=ON -DWITH_ZXING=ON -DWITH_LCMS2=ON -DWITH_LIBSAI=ON -DWITH_EXTENSIONS_SUPPORT=ON -DWITH_INCLUDED_EXTENSIONS=ON -DCMAKE_BUILD_TYPE=Release
 
 }
 
