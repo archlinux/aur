@@ -1,0 +1,16 @@
+pkgbase = tpipe
+	pkgdesc = Audio transparency tool for Unix-based systems using JACK audio engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/beaterblank/tpipe
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	depends = jack
+	depends = libdeep_filter_ladspa-git
+	source = tpipe-1.0.0.tar.gz::https://github.com/beaterblank/tpipe/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1eb4d1944e95cec71da2bdd32a133fd0879812f368bf088f6eb724f79df26df1
+
+pkgname = tpipe
