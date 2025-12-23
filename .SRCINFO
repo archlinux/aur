@@ -1,0 +1,12 @@
+pkgbase = hub-rand
+	pkgdesc = Open a random Pornhub video in mpv
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = mpv
+	depends = curl
+	source = hub-rand
+	sha256sums = SKIP
+
+pkgname = hub-rand
