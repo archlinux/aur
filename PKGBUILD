@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Menezes <menezes@mnzs.dev>
 pkgname=mrunner
-pkgver=0.0.4
-_gitver=0.0.4
+pkgver=0.0.5
+_gitver=0.0.5
 pkgrel=1
 pkgdesc="A fast, keyboard-driven application runner for Linux."
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
     'libnotify: for desktop notifications'
 )
 source=("$pkgname-$_gitver.AppImage::https://github.com/mnzsss/mrunner/releases/download/v$_gitver/mrunner-$_gitver-linux-x86_64.AppImage")
-sha256sums=('dbabe4e9a9448cd6558c8b503c8dabad8b1f6a41f1fc5add7c228dee955e4a45')
+sha256sums=('54d5c9ad1a6f4834f96543fdd78442e68361c420bed3a5f3b93f46f5d69ec7ec')
 options=('!strip')
 
 prepare() {
