@@ -1,0 +1,5 @@
+[neohtop-bin]
+source = "github"
+github = "Abdenasser/neohtop"
+use_latest_release = true
+prefix = "v"
