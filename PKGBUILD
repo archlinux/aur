@@ -11,7 +11,7 @@ makedepends=()
 provides=('ewwii')
 conflicts=('ewwii' 'ewwii-git')
 source=("https://github.com/Ewwii-sh/ewwii/releases/download/v${pkgver}/ewwii")
-sha256sums=('4098e568510ea4e8e149ea23864f8df562277e12184e7621d7c1628258d6b17d')
+sha256sums=('49eff35932e5d364e9a8ade4375e2bf3cfb4702bea9bbda4a56202df8a4d18a3')
 
 package() {
     install -Dm755 "$srcdir/ewwii" "$pkgdir/usr/bin/ewwii"
