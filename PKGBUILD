@@ -4,7 +4,7 @@
 # Contributor: paul2lv <paul2lv@gmail.com>
 # Contributor: dtw <dibblethewrecker@gmail.com>
 pkgname=foldingathome
-pkgver=8.4.9
+pkgver=8.5.5
 pkgrel=1
 epoch=1
 pkgdesc='A distributed computing project for simulating protein dynamics'
@@ -17,6 +17,7 @@ depends=('bzip2'
          'glibc'
          'lz4'
          'openssl'
+         're2'
          'sqlite'
          'systemd-libs'
          'zlib')
@@ -24,16 +25,21 @@ optdepends=('opencl-driver: GPU support')
 makedepends=('git'
              'leveldb'
              'libyaml'
-             're2'
              'scons'
              'snappy')
 backup=("etc/fah-client/config.xml")
 install="fah.install"
-source=("git+https://github.com/cauldrondevelopmentllc/cbang#commit=443c54e909eb8d8994405a18fb328b5b05a623a5"
-        "git+https://github.com/foldingathome/fah-client-bastet#commit=360fe71b1bd05bb89814bfb97b73a5bda84802d6"
-)
-sha256sums=('1021182019c080a810e94ef7635f8baad87d5d91609ab882c1eba20556ddc216'
-            'cb871d420a47c80c0c13dc4199eca2405b54da669ce4073f775b4bd7374b6a01')
+source=("git+https://github.com/cauldrondevelopmentllc/cbang#commit=83a4be55c1b21d5383650f51a7887fd9c25b836c"
+        "git+https://github.com/foldingathome/fah-client-bastet#commit=2c6fbaa45e4ee4854195a9f0d4b86300975b6543"
+        "as_string_fix.patch")
+sha256sums=('cc7768e72599e8e7285e981702fb96fbb0fcad22660722dbc425c16677e0ddf0'
+            '2415b1ca05c1dc34bfbe01b6d8566bb5106c0f59d2382addeba05ff75ee4df99'
+            '21ce7c732dc289e6eda5f4236d1f613c93228c49ce9aef0c2eb1d9d31ce1fc38')
+
+prepare() {
+	cd cbang
+	patch -p1 -i ../as_string_fix.patch
+}
 
 build() {
 	export CBANG_HOME=$PWD/cbang

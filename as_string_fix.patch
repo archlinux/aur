@@ -1,0 +1,10 @@
+--- err/src/cbang/util/Regex.cpp
++++ fix/src/cbang/util/Regex.cpp
+@@ -131,7 +131,7 @@ bool Regex::match_or_search(bool match, const string &s, Match &m) const {
+     m.offsets.clear();
+
+     for (unsigned i = 0; i < n; i++) {
+-      m.push_back(groups[i].as_string());
++      m.push_back(std::string(groups[i]));
+       m.offsets.push_back(groups[i].data() - s.data());
+     }
