@@ -1,5 +1,5 @@
 pkgname=python-brother_ql
-pkgver=1.3
+pkgver=1.4a0
 pkgrel=2
 pkgdesc="Python package for the raster language protocol of the Brother QL series label printers"
 url="https://github.com/matmair/brother_ql-inventree"
@@ -8,8 +8,15 @@ optdepends=('python-pyusb')
 makedepends=('python-setuptools')
 license=('GPL-3.0')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/b/brother_ql-inventree/brother_ql_inventree-$pkgver.tar.gz")
-sha256sums=('24335ca5f4b3444c692698b599459a7e6c4bd036dd580074c63d39382914fca3')
+source=("https://files.pythonhosted.org/packages/source/b/brother_ql-inventree/brother_ql_inventree-$pkgver.tar.gz"
+       "fix_pandoc.patch")
+sha256sums=('be13019389962f09ab9d2b1366b55e080336905390261adcaa8f3ab75f937e3b'
+            '68bcf6d83f8a69364302fa367ec1e27aba1a5af77baf7338a83d315a638e992c')
+
+prepare() {
+    cd "$srcdir/brother_ql_inventree-$pkgver"
+    patch -Np1 -i ../fix_pandoc.patch
+}
 
 build() {
     cd "$srcdir/brother_ql_inventree-$pkgver"
