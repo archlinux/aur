@@ -3,12 +3,12 @@
 # Contributor: sxe <sxxe@gmx.de>
 pkgname='qlipper'
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight & cross-platform clipboard history applet based on Qt'
 arch=('i686' 'x86_64')
 url="https://github.com/pvanek/${pkgname}"
 license=('GPL2')
-depends=('qt6-base')
+depends=('qt6-base' 'kguiaddons')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'git')
 source=("git+https://github.com/pvanek/${pkgname}#tag=${pkgver}")
 sha256sums=('SKIP')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
     cmake -G 'Ninja' -B "${srcdir}/build" \
 		-DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        	-DCMAKE_BUILD_TYPE:STRING='Release' \
 		"${srcdir}/${pkgname}"
     cmake --build "${srcdir}/build"
 }
