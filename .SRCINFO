@@ -1,0 +1,16 @@
+pkgbase = sxhkd1
+	pkgdesc = simple x hotkey daemon
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/sxhkd
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util-keysyms
+	provides = sxhkd
+	conflicts = sxhkd
+	source = git+https://github.com/rotkonetworks/sxhkd.git#branch=master
+	sha256sums = SKIP
+
+pkgname = sxhkd1
