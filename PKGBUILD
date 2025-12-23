@@ -1,7 +1,7 @@
 # Maintainer LA-MJ [ 4mr.minj at google-mail , com ]
 pkgname=fcast-receiver-bin
 epoch=1
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Binary releases of Fcast"
 arch=('x86_64')
@@ -36,7 +36,7 @@ depends=(
 'pango'
 )
 source=("${pkgname}.deb::https://dl.fcast.org/electron/${pkgver}/deb/x64/fcast-receiver-${pkgver}-linux-x64.deb")
-sha256sums=('4afacb5861640fa9c9778e75d0d36cf3a3da3eab44c9dc85b60d6037e2650589')
+sha256sums=('f89953b60eda63aaf73d64c70ea7d55205a9a22a0b2da80ff829eaa73f64a4dd')
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"

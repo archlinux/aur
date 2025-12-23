@@ -1,6 +1,6 @@
 pkgbase = fcast-receiver-bin
 	pkgdesc = Binary releases of Fcast
-	pkgver = 2.2.2
+	pkgver = 2.2.4
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.futo.org/videostreaming/fcast
@@ -34,7 +34,7 @@ pkgbase = fcast-receiver-bin
 	conflicts = fcast-receiver-bin
 	conflicts = fcast-receiver-git
 	conflicts = fcast-receiver
-	source = fcast-receiver-bin.deb::https://dl.fcast.org/electron/2.2.2/deb/x64/fcast-receiver-2.2.2-linux-x64.deb
-	sha256sums = 4afacb5861640fa9c9778e75d0d36cf3a3da3eab44c9dc85b60d6037e2650589
+	source = fcast-receiver-bin.deb::https://dl.fcast.org/electron/2.2.4/deb/x64/fcast-receiver-2.2.4-linux-x64.deb
+	sha256sums = f89953b60eda63aaf73d64c70ea7d55205a9a22a0b2da80ff829eaa73f64a4dd
 
 pkgname = fcast-receiver-bin
