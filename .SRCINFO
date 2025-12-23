@@ -1,6 +1,6 @@
 pkgbase = python-sqlit-tui
 	pkgdesc = The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/Maxteabag/sqlit
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = python-sqlit-tui
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
-	depends = python>=3.10
-	depends = python-textual>=6.9.0
-	depends = python-textual-fastdatatable>=0.12.0
-	depends = python-pyperclip>=1.8.2
-	depends = python-keyring>=24.0.0
-	depends = python-docker>=7.0.0
+	depends = python
+	depends = python-textual
+	depends = python-textual-fastdatatable
+	depends = python-pyperclip
+	depends = python-keyring
+	depends = python-docker
 	optdepends = python-psycopg2: PostgreSQL, CockroachDB and Supabase support
 	optdepends = python-pyodbc: SQL Server support
 	optdepends = python-mysql-connector: MySQL support
@@ -25,7 +25,7 @@ pkgbase = python-sqlit-tui
 	optdepends = python-snowflake-connector-python: Snowflake support
 	optdepends = python-paramiko: SSH tunnel support
 	optdepends = python-sshtunnel: SSH tunnel support
-	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.1.5.tar.gz
-	sha256sums = 3d851579f4bfa44101fb834fcea16bd46117aa4a89cd02a6d7aa5ff8c322fff0
+	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.1.6.tar.gz
+	sha256sums = 82a01f08a71cdfe7db95aa52758c40987c75c279a3b3db3afbd9e16c20525367
 
 pkgname = python-sqlit-tui

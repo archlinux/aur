@@ -1,18 +1,18 @@
 # Maintainer: Peter <peter.w.adams96@gmail.com>
 pkgname=python-sqlit-tui
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more"
 arch=('any')
 url="https://github.com/Maxteabag/sqlit"
 license=('MIT')
 depends=(
-    'python>=3.10'
-    'python-textual>=6.9.0'
-    'python-textual-fastdatatable>=0.12.0'
-    'python-pyperclip>=1.8.2'
-    'python-keyring>=24.0.0'
-    'python-docker>=7.0.0'
+    'python'
+    'python-textual'
+    'python-textual-fastdatatable'
+    'python-pyperclip'
+    'python-keyring'
+    'python-docker'
 )
 optdepends=(
     'python-psycopg2: PostgreSQL, CockroachDB and Supabase support'
@@ -29,7 +29,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-${pkgver}.tar.gz")
-sha256sums=('3d851579f4bfa44101fb834fcea16bd46117aa4a89cd02a6d7aa5ff8c322fff0')
+sha256sums=('82a01f08a71cdfe7db95aa52758c40987c75c279a3b3db3afbd9e16c20525367')
 
 build() {
     cd "sqlit_tui-${pkgver}"
