@@ -2,8 +2,8 @@
 
 pkgname=startlive-git
 _pkgname=startlive
-pkgver=0.7.1.r9.g5cbb403
-pkgrel=2
+pkgver=0.8.2.r4.g6ce8574
+pkgrel=1
 pkgdesc="绕过B站直播姬获取推流地址"
 arch=('any')
 url="https://github.com/Radekyspec/StartLive"
