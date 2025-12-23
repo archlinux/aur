@@ -2,7 +2,7 @@
 # Contributor: chr0mag <phillips.julian AT gmail DOT com>
 
 pkgname=sos
-pkgver=4.10.1
+pkgver=4.10.2
 pkgrel=1
 pkgdesc="A unified tool for collecting system logs and other debug information"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('usbutils')
 makedepends=('python-sphinx')
 checkdepends=('python-coverage' 'python-pycodestyle')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sosreport/sos/archive/${pkgver}.tar.gz")
-sha256sums=('e4bd74339bc5ff441ccb792c38a913944614ee0b2d49a7ec27ee256c44f4c9db')
+sha256sums=('405af7494860505fcbb60ff131eb771233294ea4681717641cfc6138d2ea5387')
 
 prepare() {
 	cd "$pkgname-$pkgver"
