@@ -2,7 +2,7 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
@@ -46,7 +46,7 @@ source=(
   'disable-telemetry.patch'
 )
 
-sha512sums=('b70e4a82bbd19c29f6219fda44cc328181d051d1deaf75b73885d6f677dabadc782e3abac17c8b92b136da97c1de619e4a414e832dbf6a9e7bcb9291c4a57331'
+sha512sums=('8f0cbbec3b8ebe2a18449bed24f8b529a86b0e37ad507792d82ea8a1d6c3d3ede6904a46a85b0114862a174766a4b4a58b8a6eab6373f735f48743600c7383cc'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
             'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
@@ -73,6 +73,11 @@ check() {
   cd "${_gitpkgname}-${pkgver}"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
+
+  # Configure `user.email` for Git (required by `tests/test_git.py`)
+  GIT_CONFIG_GLOBAL="$(mktemp)"
+  export GIT_CONFIG_GLOBAL
+  git config --global user.email builduser@archlinux.org
 
   echo >&2 'Running unit tests'
   # Exclude from pytest’s collection all Git/Mercurial integration
