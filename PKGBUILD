@@ -1,4 +1,4 @@
-# Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=mangowc
 pkgver=0.10.8
 pkgrel=1
