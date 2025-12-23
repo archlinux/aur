@@ -1,6 +1,6 @@
 pkgbase = python-boost-histogram
 	pkgdesc = Python bindings for Boost's Histogram library.
-	pkgver = 1.5.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/scikit-hep/boost-histogram
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-boost-histogram
 	makedepends = python-setuptools-scm
 	makedepends = pybind11
 	depends = python-numpy
-	source = python-boost-histogram::git+https://github.com/scikit-hep/boost-histogram.git#tag=v1.5.0
+	source = python-boost-histogram::git+https://github.com/scikit-hep/boost-histogram.git#tag=v1.6.1
 	source = python-boost-histogram-pybind11::git+https://github.com/pybind/pybind11.git
 	source = python-boost-histogram-histogram::git+https://github.com/boostorg/histogram.git
 	source = python-boost-histogram-core::git+https://github.com/boostorg/core.git
@@ -24,7 +24,7 @@ pkgbase = python-boost-histogram
 	source = python-boost-histogram-throw_exception::git+https://github.com/boostorg/throw_exception.git
 	source = python-boost-histogram-assert::git+https://github.com/boostorg/assert.git
 	source = python-boost-histogram-variant2::git+https://github.com/boostorg/variant2.git
-	sha256sums = ad8979e449d09cb68c256f35dcc7019ec19b5bc8801fae9a4ffd75287e6679d1
+	sha256sums = bb58ed2c4215f8bf71d70c6eacbe80ba23fe331a47cf26da6bbbc719fa0b31af
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

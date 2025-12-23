@@ -2,7 +2,7 @@
 
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-variant2::git+https://github.com/boostorg/variant2.git"
 )
 
-sha256sums=('ad8979e449d09cb68c256f35dcc7019ec19b5bc8801fae9a4ffd75287e6679d1'
+sha256sums=('bb58ed2c4215f8bf71d70c6eacbe80ba23fe331a47cf26da6bbbc719fa0b31af'
             'SKIP'
             'SKIP'
             'SKIP'
