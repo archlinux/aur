@@ -1,6 +1,6 @@
 pkgbase = openhome-bin
 	pkgdesc = Application for importing and transferring Pokémon between save files.(Prebuilt version)
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/andrewbenington/OpenHome
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = openhome-bin
 	license = GPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = openhome=1.7.1
+	provides = openhome=1.8.0
 	conflicts = openhome
-	source_aarch64 = openhome-1.7.1-aarch64.rpm::https://github.com/andrewbenington/OpenHome/releases/download/v1.7.1/OpenHome-1.7.1-1.aarch64.rpm
-	sha256sums_aarch64 = b8fa7b2147d54d8d15942fd219804ee3f8855b0f9cfec1c8d528200fdcf4f93b
-	source_x86_64 = openhome-1.7.1-x86_64.rpm::https://github.com/andrewbenington/OpenHome/releases/download/v1.7.1/OpenHome-1.7.1-1.x86_64.rpm
-	sha256sums_x86_64 = fc7738ea5051701a41669a547f89525382b1579b486962c84d98b67f30141760
+	source_aarch64 = openhome-1.8.0-aarch64.rpm::https://github.com/andrewbenington/OpenHome/releases/download/v1.8.0/OpenHome-1.8.0-1.aarch64.rpm
+	sha256sums_aarch64 = 914df1341af6b4d3c523d613ff64a96baad053ff4236932fa2c207892dcfac55
+	source_x86_64 = openhome-1.8.0-x86_64.rpm::https://github.com/andrewbenington/OpenHome/releases/download/v1.8.0/OpenHome-1.8.0-1.x86_64.rpm
+	sha256sums_x86_64 = 75ca36d403a1a43f4eb9ef7cdd1dc0caddb8031a7a49efe61a3dabf4f91abac6
 
 pkgname = openhome-bin
