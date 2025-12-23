@@ -1,0 +1,3 @@
+[cmajor]
+source = "git"
+git = "https://github.com/cmajor-lang/cmajor.git"

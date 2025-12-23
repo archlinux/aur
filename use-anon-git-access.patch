@@ -1,0 +1,131 @@
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,96 +1,96 @@
+ [submodule "3rdParty/choc"]
+ 	path = include/choc
+-	url = git@github.com:Tracktion/choc.git
++	url = https://github.com/Tracktion/choc
+ [submodule "3rdParty/boost/static_assert"]
+ 	path = 3rdParty/boost/static_assert
+-	url = git@github.com:boostorg/static_assert.git
++	url = https://github.com/boostorg/static_assert
+ [submodule "3rdParty/boost/system"]
+ 	path = 3rdParty/boost/system
+-	url = git@github.com:boostorg/system.git
++	url = https://github.com/boostorg/system
+ [submodule "3rdParty/boost/beast"]
+ 	path = 3rdParty/boost/beast
+-	url = git@github.com:boostorg/beast.git
++	url = https://github.com/boostorg/beast
+ [submodule "3rdParty/boost/asio"]
+ 	path = 3rdParty/boost/asio
+-	url = git@github.com:boostorg/asio.git
++	url = https://github.com/boostorg/asio
+ [submodule "3rdParty/boost/config"]
+ 	path = 3rdParty/boost/config
+-	url = git@github.com:boostorg/config.git
++	url = https://github.com/boostorg/config
+ [submodule "3rdParty/boost/core"]
+ 	path = 3rdParty/boost/core
+-	url = git@github.com:boostorg/core.git
++	url = https://github.com/boostorg/core
+ [submodule "3rdParty/boost/assert"]
+ 	path = 3rdParty/boost/assert
+-	url = git@github.com:boostorg/assert.git
++	url = https://github.com/boostorg/assert
+ [submodule "3rdParty/boost/mp11"]
+ 	path = 3rdParty/boost/mp11
+-	url = git@github.com:boostorg/mp11.git
++	url = https://github.com/boostorg/mp11
+ [submodule "3rdParty/boost/type_traits"]
+ 	path = 3rdParty/boost/type_traits
+-	url = git@github.com:boostorg/type_traits.git
++	url = https://github.com/boostorg/type_traits
+ [submodule "3rdParty/boost/throw_exception"]
+ 	path = 3rdParty/boost/throw_exception
+-	url = git@github.com:boostorg/throw_exception.git
++	url = https://github.com/boostorg/throw_exception
+ [submodule "3rdParty/boost/align"]
+ 	path = 3rdParty/boost/align
+-	url = git@github.com:boostorg/align.git
++	url = https://github.com/boostorg/align
+ [submodule "3rdParty/boost/bind"]
+ 	path = 3rdParty/boost/bind
+-	url = git@github.com:boostorg/bind.git
++	url = https://github.com/boostorg/bind
+ [submodule "3rdParty/boost/optional"]
+ 	path = 3rdParty/boost/optional
+-	url = git@github.com:boostorg/optional.git
++	url = https://github.com/boostorg/optional
+ [submodule "3rdParty/boost/move"]
+ 	path = 3rdParty/boost/move
+-	url = git@github.com:boostorg/move.git
++	url = https://github.com/boostorg/move
+ [submodule "3rdParty/boost/utility"]
+ 	path = 3rdParty/boost/utility
+-	url = git@github.com:boostorg/utility.git
++	url = https://github.com/boostorg/utility
+ [submodule "3rdParty/boost/date_time"]
+ 	path = 3rdParty/boost/date_time
+-	url = git@github.com:boostorg/date_time.git
++	url = https://github.com/boostorg/date_time
+ [submodule "3rdParty/boost/smart_ptr"]
+ 	path = 3rdParty/boost/smart_ptr
+-	url = git@github.com:boostorg/smart_ptr.git
++	url = https://github.com/boostorg/smart_ptr
+ [submodule "3rdParty/boost/numeric_conversion"]
+ 	path = 3rdParty/boost/numeric_conversion
+-	url = git@github.com:boostorg/numeric_conversion.git
++	url = https://github.com/boostorg/numeric_conversion
+ [submodule "3rdParty/boost/mpl"]
+ 	path = 3rdParty/boost/mpl
+-	url = git@github.com:boostorg/mpl.git
++	url = https://github.com/boostorg/mpl
+ [submodule "3rdParty/boost/preprocessor"]
+ 	path = 3rdParty/boost/preprocessor
+-	url = git@github.com:boostorg/preprocessor.git
++	url = https://github.com/boostorg/preprocessor
+ [submodule "3rdParty/boost/intrusive"]
+ 	path = 3rdParty/boost/intrusive
+-	url = git@github.com:boostorg/intrusive.git
++	url = https://github.com/boostorg/intrusive
+ [submodule "3rdParty/boost/logic"]
+ 	path = 3rdParty/boost/logic
+-	url = git@github.com:boostorg/logic.git
++	url = https://github.com/boostorg/logic
+ [submodule "3rdParty/boost/io"]
+ 	path = 3rdParty/boost/io
+-	url = git@github.com:boostorg/io.git
++	url = https://github.com/boostorg/io
+ [submodule "3rdParty/boost/endian"]
+ 	path = 3rdParty/boost/endian
+-	url = git@github.com:boostorg/endian.git
++	url = https://github.com/boostorg/endian
+ [submodule "3rdParty/boost/regex"]
+ 	path = 3rdParty/boost/regex
+-	url = git@github.com:boostorg/regex.git
++	url = https://github.com/boostorg/regex
+ [submodule "3rdParty/boost/predef"]
+ 	path = 3rdParty/boost/predef
+-	url = git@github.com:boostorg/predef.git
++	url = https://github.com/boostorg/predef
+ [submodule "3rdParty/boost/winapi"]
+ 	path = 3rdParty/boost/winapi
+-	url = git@github.com:boostorg/winapi.git
++	url = https://github.com/boostorg/winapi
+ [submodule "3rdParty/boost/static_string"]
+ 	path = 3rdParty/boost/static_string
+-	url = git@github.com:boostorg/static_string.git
++	url = https://github.com/boostorg/static_string
+ [submodule "3rdParty/llvm"]
+ 	path = 3rdParty/llvm
+-	url = git@github.com:cmajor-lang/llvm.git
++	url = https://github.com/cmajor-lang/llvm
+ [submodule "3rdParty/clap"]
+ 	path = 3rdParty/clap
+-	url = git@github.com:free-audio/clap.git
++	url = https://github.com/free-audio/clap
+ [submodule "3rdParty/clap-wrapper"]
+ 	path = 3rdParty/clap-wrapper
+-	url = git@github.com:cmajor-lang/clap-wrapper.git
++	url = https://github.com/cmajor-lang/clap-wrapper
