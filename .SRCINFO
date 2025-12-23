@@ -8,6 +8,7 @@ pkgbase = nccl-cuda12.9
 	makedepends = git
 	makedepends = gcc14
 	makedepends = cuda=12.9
+	makedepends = python3
 	depends = glibc
 	depends = gcc-libs
 	provides = nccl
