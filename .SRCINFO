@@ -1,0 +1,15 @@
+pkgbase = toml-f
+	pkgdesc = TOML Parser Implementation For Data Serialization and Deserialization in Fortran
+	pkgver = 0.4.3
+	pkgrel = 11
+	url = https://toml-f.readthedocs.io/en/latest/
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = meson>=0.55
+	makedepends = ninja>=1.7
+	makedepends = gcc-fortran>=5.0
+	source = https://github.com/toml-f/toml-f/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = d7fdd12a68c2e433785f453b20c1984bed037d213a35d8f0946da7e7f6b89c45
+
+pkgname = toml-f
