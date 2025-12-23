@@ -1,6 +1,6 @@
 pkgbase = vufind
 	pkgdesc = VuFind® is a discovery system designed and developed for libraries by libraries.
-	pkgver = 10.1.1
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://vufind.org/
 	install = vufind.install
@@ -17,7 +17,7 @@ pkgbase = vufind
 	optdepends = composer: update php packages
 	provides = vufind=${pkgver}
 	conflicts = vufind
-	source = https://github.com/vufind-org/vufind/releases/download/v10.1.1/vufind_10.1.1.deb
-	sha256sums = e07b62d793d0d1bb197aa301c668b02bd6a2fa3559129daa94c1ac0475db3133
+	source = https://github.com/vufind-org/vufind/releases/download/v11.0.0/vufind_11.0.0.deb
+	sha256sums = 64fe6c8acf063b7e2e59d15a494d48f9b211f5ad629ff399a100cb58c8f2e113
 
 pkgname = vufind
