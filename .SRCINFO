@@ -1,0 +1,17 @@
+pkgbase = mrunner
+	pkgdesc = A fast, keyboard-driven application runner for Linux.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/mnzsss/mrunner
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	optdepends = libnotify: for desktop notifications
+	options = !strip
+	source = mrunner-0.0.2.AppImage::https://github.com/mnzsss/mrunner/releases/download/v0.0.2/mrunner-0.0.2-linux-x86_64.AppImage
+	sha256sums = 450de400ac448abeaa7455b3abcdf787fad830c0eccaf8f4defd831f5850761a
+
+pkgname = mrunner
