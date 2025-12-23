@@ -1,7 +1,7 @@
 pkgbase = xffm
 	pkgdesc = Advanced filemanager for i3 window manager.
 	pkgver = 4_20_3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xffm.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = xffm
 	makedepends = gtk4
 	depends = ecryptfs-utils
 	depends = sudo
-	source = https://sourceforge.net/projects/xffm/files/xffm%2B/xffm4_20_3.bz2
-	md5sums = d48617be3f927b9bde77ec8d7e436f1c
+	depends = ghostscript
+	source = https://sourceforge.net/projects/xffm/files/xffm%2B/xffm4_20_3-2.bz2
+	md5sums = da7f2cf081dec3e6a98caba040365bea
 
 pkgname = xffm
