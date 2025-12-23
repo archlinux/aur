@@ -1,0 +1,31 @@
+pkgbase = hackatime-desktop-git
+	pkgdesc = A desktop client for Hackatime
+	pkgver = 1.7.5.r0.g832a610
+	pkgrel = 1
+	url = https://github.com/hackclub/hackatime-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs>=24
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git-lfs
+	makedepends = ccache
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	optdepends = libayatana-appindicator: system tray support
+	optdepends = libappindicator-gtk3: alternative system tray support
+	optdepends = gnome-shell-extension-appindicator: system tray support in GNOME (my choice)
+	provides = hackatime-desktop=1.7.5.r0.g832a610
+	conflicts = hackatime-desktop
+	source = git+https://github.com/hackclub/hackatime-desktop.git
+	source = 0001-remove-menu.patch
+	source = 0002-enable-window-transparency.patch
+	source = hackatime-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hackatime-desktop-git

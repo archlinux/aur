@@ -1,0 +1,14 @@
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 41681d0..2912cf7 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -25,7 +25,8 @@
+         "minimizable": true,
+         "maximizable": true,
+         "closable": true,
+-        "hiddenTitle": true
++        "hiddenTitle": true,
++        "transparent": true
+       }
+     ],
+     "security": {

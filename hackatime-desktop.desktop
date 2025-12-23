@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hackatime Desktop
+Comment=A desktop client for Hackatime
+Exec=hackatime-desktop
+Icon=hackatime-desktop
+Terminal=false
+Categories=Utility;Development;
+StartupWMClass=hackatime-desktop
