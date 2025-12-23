@@ -70,7 +70,7 @@ build() {
     -D OTBR_VENDOR_NAME="OpenThread"
     -D OTBR_PRODUCT_NAME="BorderRouter"
     -D OTBR_MDNS="openthread"
-    -D OTBR_RADIO_URL="spinel+hdlc+uart:///dev/tty/ACM0"
+    -D OTBR_RADIO_URL="spinel+hdlc+uart:///dev/ttyACM0"
     -D OTBR_DOC=OFF
   )
   cmake "${cmake_options[@]}"
