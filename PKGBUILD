@@ -1,7 +1,7 @@
 # Maintainer: Zack <zack@internetuniverse.org>
 pkgname=search-cache
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast file search daemon with trigram indexing for Nautilus integration"
 arch=('x86_64')
 url="https://github.com/johnzfitch/search-cache"
@@ -54,10 +54,15 @@ EOF
 directories = []
 exclude_patterns = [
     "**/node_modules/**",
+    "**/node_modules",
     "**/.git/**",
+    "**/.git",
     "**/target/**",
+    "**/target",
     "**/__pycache__/**",
+    "**/__pycache__",
     "**/.cache/**",
+    "**/.cache",
 ]
 max_file_size_mb = 100
 index_hidden_files = true
