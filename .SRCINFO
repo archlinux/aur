@@ -1,6 +1,6 @@
 pkgbase = goawk-bin
 	pkgdesc = A POSIX-compliant AWK interpreter written in Go, with CSV support
-	pkgver = 1.30.1
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://github.com/benhoyt/goawk
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = goawk-bin
 	license = MIT
 	provides = goawk
 	conflicts = goawk
-	source_x86_64 = https://github.com/benhoyt/goawk/releases/download/v1.30.1/goawk_v1.30.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = c68dd7bb17a893224341adf1b9d1510a8f6e2b8dec917cb4680d84f7aa2937ca
-	source_i686 = https://github.com/benhoyt/goawk/releases/download/v1.30.1/goawk_v1.30.1_linux_386.tar.gz
-	sha256sums_i686 = ed9c21339fe13bc976c2881dcebc7339271a0acdd28f52a8c4d2b20dda06a687
-	source_aarch64 = https://github.com/benhoyt/goawk/releases/download/v1.30.1/goawk_v1.30.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = fdaa31aa0448dec7cd17a0aad0281467e6918b20126476f59e6fa482814eb6a3
+	source_x86_64 = https://github.com/benhoyt/goawk/releases/download/v1.31.0/goawk_v1.31.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0b4a84798bb24479f2acd16dfb6e809046ca8d2572be52d621db59e3faba3bee
+	source_i686 = https://github.com/benhoyt/goawk/releases/download/v1.31.0/goawk_v1.31.0_linux_386.tar.gz
+	sha256sums_i686 = e6d9a4b6acd32d465c831a85605b371902b522c1494d00b2f88ac0059ed6d8ed
+	source_aarch64 = https://github.com/benhoyt/goawk/releases/download/v1.31.0/goawk_v1.31.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e744a944e9dcdd1e4fd7c0f51f6aefcba201dd5cf2038a91540efa0d0236ec31
 
 pkgname = goawk-bin
