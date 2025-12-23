@@ -1,7 +1,7 @@
 # Maintainer: Sergio Mancha <smancha@proton.me>
 pkgname=toml-f
 pkgver=0.4.3
-pkgrel=11
+pkgrel=1
 pkgdesc="TOML Parser Implementation For Data Serialization and Deserialization in Fortran"
 
 arch=("x86_64")
