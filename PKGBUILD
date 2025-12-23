@@ -2,7 +2,7 @@
 
 pkgname=python-submitit
 _gitpkgname=submitit
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Python toolbox for submitting jobs to Slurm'
 arch=('any')
@@ -35,7 +35,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/facebookincubator/submitit/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('f00a1e9f1b6a934a8a795b2ea3dca2e51a6538005fbe26ee4dda7951163347675a999aa40f553ccf5dabd685ca20bfdcd996bfec82b1695a118373e1e1a1c893')
+sha512sums=('01b5f30ee9af45cefc60fc10869956d285ff6bf7a73edf1f53691ca0b048c70751c463d9db74068beb0eaefc9301490c2384b29bfff89eec4e62cad9aed3dc3d')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
