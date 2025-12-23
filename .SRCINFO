@@ -1,6 +1,6 @@
 pkgbase = fackr
 	pkgdesc = Terminal text editor written in Rust - facsimile reimplementation
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/TenseleyFlow/fackr
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fackr
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = fackr-1.0.4.tar.gz::https://github.com/TenseleyFlow/fackr/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = f9fa4c7a3e751cc0c047822231ca0d55504aacf2eb3caafdb00fc5ef0f3def0e
+	source = fackr-1.1.0.tar.gz::https://github.com/TenseleyFlow/fackr/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 6a3212fb434554e148df0eb8abe34191dd7c413a2c25420e34103f014c03becf
 
 pkgname = fackr
