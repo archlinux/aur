@@ -1,7 +1,7 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 
 pkgname=gup
-pkgver=0.28.1
+pkgver=0.28.2
 pkgrel=1
 pkgdesc='Update binaries installed by "go install" with goroutines'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
@@ -11,8 +11,8 @@ depends=()
 makedepends=('go')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nao1215/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8706400020eae37354c6e7b80784147bd1a357341a66c2fe9e9d44c8308fc1af39d52fd812d2626f036e88ce26d55bdda8d2ec0e6dab02e6e7c4db98741b78d9')
-b2sums=('ab6d71c64f214d3bfc909bcd74f48b70c6487aeb52927830326f11949d9a6967d8f146d403d5ddcb730fba45de3128beb443603616594a2ff328949017bc7fdc')
+sha512sums=('2aa98445f2eadf302296f3134c0fe78ee41f7e9b901d0d3457270594f2eaf82e0a8091b68b10d557c319a174f73fe45a8aad6a381ea0ab59972abed5f54df4f0')
+b2sums=('1312348d84d0856835b15d5170701bd72f387ec545bf8e4d5d902530265a19abcb06b55a259d0c76d86783ddb7b55f2f8a578db3ab7411b2cf2f716bbb4cfbf2')
 
 build() {
   cd "${pkgname}-${pkgver}"
