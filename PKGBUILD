@@ -1,7 +1,7 @@
 # Maintainer: Zack <zack@internetuniverse.org>
 pkgname=search-cache
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast file search daemon with trigram indexing for Nautilus integration"
 arch=('x86_64')
 url="https://github.com/johnzfitch/search-cache"
