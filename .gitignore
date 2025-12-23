@@ -1,0 +1,13 @@
+# makepkg build dirs
+src/
+pkg/
+
+# built packages
+*.pkg.tar.*
+*.sig
+
+# downloaded AppImage
+*.AppImage
+
+# logs
+*.log
