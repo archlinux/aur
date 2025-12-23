@@ -2,7 +2,7 @@
 pkgname=python-pytest-language-server
 _pkgname=${pkgname#python-}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A blazingly fast Language Server Protocol (LSP) implementation for pytest."
 arch=('any')
 url="https://github.com/bellini666/$_pkgname"
