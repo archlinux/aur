@@ -4,8 +4,10 @@ pkgbase = hub-rand
 	pkgrel = 1
 	arch = any
 	license = MIT
-	depends = mpv
+	depends = bash
+	depends = coreutils
 	depends = curl
+	depends = xdg-utils
 	source = hub-rand
 	sha256sums = SKIP
 
