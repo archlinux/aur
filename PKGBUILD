@@ -1,6 +1,6 @@
 # Maintainer: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online - github binary artifact wrapper"
 arch=('x86_64')
