@@ -7,10 +7,10 @@
 
 _pkgname=maa-assistant-arknights
 pkgname=(maa-assistant-arknights)
-_pkgver=6.0.1
+_pkgver=6.1.0-beta.2
 pkgver=${_pkgver//-/}
 pkgrel=1
-pkgdesc="An Arknights assistant"
+_pkgdesc="An Arknights assistant"
 arch=(x86_64)
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL-3.0-only')
@@ -21,13 +21,13 @@ source=("git+$url.git#tag=v${_pkgver}"
 "git+https://github.com/MaaXYZ/MaaUtils.git"
 "FastDeploy-${_fastdeploy_ref}.tar.gz::https://github.com/MaaXYZ/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${_pkgname}.install"
-md5sums=('78974044a3dbd154a941f1611ff10720'
+md5sums=('8f933edbf21c8e2a14d59e544bfa9bf1'
          'SKIP'
          '4555f8dce0cec02022356d50c8f2275c')
 
 if ((WITH_CUDA)); then
     pkgname+=(maa-assistant-arknights-cuda)
-    depends+=(cuda)
+    makedepends+=(cuda)
 fi
 
 prepare() {
@@ -42,7 +42,7 @@ prepare() {
     sed -e '/^find_package(fast/s/^/# /;' \
         -e '/maadeps/s/^/# /;' \
         -e 's/imgproc/imgproc calib3d videoio xfeatures2d/' \
-        -e 's/ system)/ process)/'\
+        -e 's/COMPONENTS system/COMPONENTS process/'\
         -i CMakeLists.txt -i src/MaaUtils/MaaUtils.cmake
 
     sed -e '/copy_and_add_rpath_library(/s/^/# /;' \
@@ -71,6 +71,7 @@ _EOF
 #include <boost/process/v1/io.hpp>
 #include <boost/process/v1/pipe.hpp>
 #include <boost/process/v1/search_path.hpp>
+#include <boost/process/v1/start_dir.hpp>
 _EOF
     sed -e 's/address::from_string/make_address/g' \
         -e 's/\*ios\.rdbuf/ios\.socket/' \
@@ -107,6 +108,8 @@ build() {
         local _cmake_flags+=(
             -DWITH_CUDA=ON
             -DCUDA_DIRECTORY=/opt/cuda
+            -DCUDAToolkit_ROOT=/opt/cuda
+            -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc
             -DCUDA_ARCH_NAME=Auto
         )
         
@@ -115,20 +118,26 @@ build() {
     fi
 }
 
-package_maa-assistant-arknights() {
-    cmake --install "$srcdir"/build --prefix "$pkgdir"/usr
-    
+_package() {
     cd "$pkgdir"/usr/
     mkdir -p share/"$_pkgname"
     mv Python resource share/"$_pkgname"
     ln -sr lib/* share/"$_pkgname"
 }
 
+package_maa-assistant-arknights() {
+    pkgdesc="${_pkgdesc}"
+
+    cmake --install "$srcdir"/build --prefix "$pkgdir"/usr
+    
+    _package
+}
+
 package_maa-assistant-arknights-cuda() {
+    pkgdesc="${_pkgdesc} (with CUDA)"
+    depends+=(cuda)
+
     cmake --install "$srcdir"/build-cuda --prefix "$pkgdir"/usr
     
-    cd "$pkgdir"/usr/
-    mkdir -p share/"$_pkgname"
-    mv Python resource share/"$_pkgname"
-    ln -sr lib/* share/"$_pkgname"
+    _package
 }
