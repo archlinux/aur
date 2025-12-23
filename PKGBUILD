@@ -1,8 +1,9 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Moises Baltazar <null@moisesb.com>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: snafu <regflx@web.de>
 pkgname=genders
 pkgver=1.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Static cluster configuration database used for cluster configuration management."
 arch=('x86_64' 'i686')
 url='https://computing.llnl.gov/linux/genders.html'
@@ -19,6 +20,7 @@ build() {
   patch -p1 < ../624078.patch
   # export CPPFLAGS="-I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux ${CPPFLAGS}"
   ./configure --prefix=/usr               \
+              --with-non-shortened-hostnames \
               --with-perl-vendor-arch     \
               --with-cplusplus-extensions \
               --without-java-extensions   \
