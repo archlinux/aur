@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=8.2.2.r76.84c42fd3
+pkgver=8.2.3.r37.e4f499ff
 pkgrel=1
 pkgdesc='A modern music player'
 arch=('x86_64' 'aarch64')
@@ -52,7 +52,7 @@ depends=(
 makedepends=(
 	'miniaudio'
 	'git'
-	'pkg-config'
+	'pkgconf'
 	'python-build'
 	'python-installer')
 
@@ -62,7 +62,7 @@ optdepends=(
 	'p7zip: 7z archive extraction support'
 	'unrar: RAR archive extraction support'
 	'python-plexapi: Plex streaming support'
-	'python-lynxpresence: Discord status support'
+	'python-pypresence: Discord status support'
 	'python-pychromecast: Chromecast stream support'
 	'python-jxlpy: JPEG XL image support'
 	'python-tekore: Spotify feature support'
