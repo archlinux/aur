@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.6.2.r0.g223a9c7
+pkgver=0.7.0.r1.gd3d5ba9
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
@@ -35,7 +35,9 @@ optdepends=(
     'semgrep-bin: static analysis checks'
     'shellcheck: lint shell scripts'
     'downgrade: Downgrade of Packages'
+    'pacman-contrib: Used as a fallback for update checking'    
 )
+
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
 provides=('pacsea')
