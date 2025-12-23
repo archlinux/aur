@@ -1,0 +1,13 @@
+pkgbase = remora-ssh
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desyatkoff/remora-ssh
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/desyatkoff/remora-ssh/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 568b4acee79447df12821d080551bcd5acd460aefded2c643966b7b0e75437c8
+
+pkgname = remora-ssh
