@@ -55,7 +55,6 @@ Categories=AudioVideo;Audio;
 EOF
   
   # Install udev rules
-  cat > "$pkgdir/usr/lib/udev/rules.d/99-dawn-pro.rules" << EOF
-SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"
-EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/udev/rules.d/99-dawn-pro.rules"
+  echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"' > "$pkgdir/usr/lib/udev/rules.d/99-dawn-pro.rules"
 } 
