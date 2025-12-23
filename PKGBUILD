@@ -1,7 +1,8 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 
-_upstreamver='1.3'
+_upstreamver='1.4'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='clox'
@@ -18,7 +19,7 @@ depends=('python' 'python-pytz' 'python-art' 'python-pytz' 'python-jdatetime' 'p
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pydocstyle' 'bandit' 'vulture')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('c3b8153844c5d956d23eb57c933ba7ebab00b83e323ca736b21f892378c61fd5')
+sha256sums=('03c18563551471b8b5385a7f9eae8e75b0bcf76542130b4acac40b1ca4591917')
 
 build() {
   cd "$_pypi_package-$pkgver"
