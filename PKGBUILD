@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=prometheus-zfs-exporter
-pkgver=2.3.10
+pkgver=2.3.11
 pkgrel=1
 pkgdesc="Prometheus exporter for ZFS (pools, filesystems, snapshots and volumes)"
 url="https://github.com/pdf/zfs_exporter"
@@ -13,10 +13,10 @@ backup=('etc/conf.d/prometheus-zfs-exporter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pdf/zfs_exporter/archive/refs/tags/v$pkgver.tar.gz"
         prometheus-zfs-exporter.service
         prometheus-zfs-exporter.conf)
-sha256sums=('57b2fd2d19b71aedfb9284913e9473eba88384fa6a8dd3f3d05a5d36cea80fc1'
+sha256sums=('3b2580ba5599fdc418fee39ddc1c401a70705b320fa76e3b8fb8af067ac04b59'
             'b760884dd87bf47d0f3bd733d1ba2aabe8f6049242ed92503533ddb8023cbf01'
             'f83f5bb2c0fd93126ea76c29364fd23b80fe2acac286f74f9f92d7d6449b1e85')
-b2sums=('820fba41e4cf6abf2b5131b5dd63d0bb73cc3e5c663890c318b28d238143ebba5b0e072970bc87781f95593e3b093db04342495c130b6bf694eb740aeedbf548'
+b2sums=('2f2fb2bb783d1646c05393cbe6d75e5e4cf04681f9b01edd9fa236e77e8ada5dee411cc9b585a7b8a4e86ceed88c2f2a69d1cb81b0648fc6901e6b6360bf94d6'
         '2da7e1f78b77c5cc73fafc38c28d3524fec6f313ed002e3342da2ec9bb5ce8387190f52f6e8e2937bafb09bc9925bdd4e2064e1db0c1e545df90c3b65b13aee6'
         '9911aa90947ecbbecd036fd093e7c9bc649bd0bd7a0005c0c9eb33409adfc0476f4b95e562814943422ae6be49fd0031f54ad6ea3f6dde9541ba41d9f3effbfa')
 
