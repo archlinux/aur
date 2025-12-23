@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgname=c47
 pkgver=00.109.03.00b1
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
 url="https://47calc.com"
@@ -43,8 +43,13 @@ package() {
 	install -Dm755 build/src/${pkgname}-gtk/${pkgname} "$pkgdir/usr/lib/$pkgname/$pkgname"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
 #!/usr/bin/env sh
-cd "/usr/share/$pkgname" || exit
-/usr/lib/$pkgname/$pkgname "\$@"
+[[ ! -d "\$HOME/.config/${pkgname}" ]] && mkdir -p "\$HOME/.config/${pkgname}"
+cd "\$HOME/.config/${pkgname}" || exit
+ln -s /usr/share/${pkgname}/res ./
+ln -s /usr/lib/${pkgname}/${pkgname} ${pkgname}
+./${pkgname} "\$@"
+wait
+rm -rf res ${pkgname}
 EOF
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
 
