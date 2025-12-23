@@ -4,18 +4,14 @@
 pkgbase=wps-office-365-edu
 pkgname=('wps-office-365-edu' 'wps-office-365-edu-fonts')
 pkgver=12.1.2.23578
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office for education."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/edu/home"
 license=('LicenseRef-WPS-EULA')
 makedepends=(
   'tar')
-depends=(
-  'fontconfig' 'libxrender' 'xdg-utils' 'glu'
-  'libpulse' 'libxss' 'sqlite' 'libtool' 'libtiff'
-  'libxslt' 'libjpeg-turbo' 'libpng12' 'freetype2'
-  'gdk-pixbuf2' 'libxtst' 'gtk3' 'qrencode' 'nspr' 'qt5-base' 'libcups' 'pango' 'cairo' 'fuse3' 'sdl2-compat' 'libusb' 'libxkbcommon-x11' 'libxfixes' 'nss' 'at-spi2-core' 'hicolor-icon-theme' 'libxv' 'libxkbcommon' 'libxrandr' 'libxcomposite' 'libxdamage' 'python' 'gperftools')
+depends=('qt5-base' 'libxkbcommon-x11' 'libpulse' 'freetype2' 'libxrandr' 'gtk3' 'libxext' 'libxv' 'pango' 'libxcomposite' 'libx11' 'nspr' 'sqlite' 'wayland' 'libsm' 'libxdamage' 'sdl2-compat' 'libglvnd' 'xz' 'python' 'systemd-libs' 'libxtst' 'bzip2' 'curl' 'gcc-libs' 'at-spi2-core' 'gperftools' 'dbus' 'libxrender' 'mesa' 'qrencode' 'expat' 'libdrm' 'libcups' 'glib2' 'hicolor-icon-theme' 'libtool' 'libxfixes' 'nss' 'cairo' 'alsa-lib' 'gdk-pixbuf2' 'libxkbcommon' 'libusb' 'zlib' 'fontconfig' 'util-linux-libs' 'libice' 'libxcb' 'glibc')
 optdepends=(
   'wps-office-365-edu-fonts: FZ TTF fonts provided by wps office 365 edu'
   'cups: for printing support')
