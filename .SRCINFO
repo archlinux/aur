@@ -1,11 +1,12 @@
 pkgbase = genders
 	pkgdesc = Static cluster configuration database used for cluster configuration management.
 	pkgver = 1.32.1
-	pkgrel = 2
-	url = https://computing.llnl.gov/linux/genders.html
+	pkgrel = 3
+	url = https://github.com/chaos/genders
 	arch = x86_64
 	arch = i686
 	license = GPL
+	provides = genders
 	options = !makeflags
 	source = https://github.com/chaos/genders/archive/genders-1-32-1.tar.gz
 	source = 624078.patch

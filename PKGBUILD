@@ -3,11 +3,12 @@
 # Contributor: snafu <regflx@web.de>
 pkgname=genders
 pkgver=1.32.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Static cluster configuration database used for cluster configuration management."
 arch=('x86_64' 'i686')
-url='https://computing.llnl.gov/linux/genders.html'
+url='https://github.com/chaos/genders'
 license=('GPL')
+provides=('genders')
 source=("https://github.com/chaos/${pkgname}/archive/${pkgname}-${pkgver//./-}.tar.gz"
         '624078.patch')
 sha256sums=('0dc186ec8fd01ec10b5e171d8b8ef632a56d17c135baee2570c0a3c0ffd9d64d'
