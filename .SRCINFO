@@ -1,7 +1,7 @@
 pkgbase = home-assistant-lsp
 	pkgdesc = Home Assistant LSP from vscode-home-assistant
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keesschollaart81/vscode-home-assistant
 	arch = any
 	license = MIT
