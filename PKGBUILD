@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=garden-tools
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
-sha256sums=('37d74c63d9b88372259e69ba83193e556ec2b598f8e3cac48dceed0d17817352')
+sha256sums=('0bf78d16fa6d27d3a0d97319ce5c2c23f5693c6f86caa65f74253a50d92abad2')
 
 prepare() {
   cd "garden-v${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc --print host-tuple)"
 }
 
 build() {
