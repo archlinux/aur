@@ -13,8 +13,7 @@
 # Originally based on a Debian Squeeze package
 
 pkgname=zoneminder
-_commit=1fd0d76315f54a647687ace6773054caf2b37008
-pkgver=1.36.36.r39.g"${_commit::7}"
+pkgver=1.36.37
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -48,8 +47,7 @@ backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/httpd/conf/extra/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
 install=${pkgname}.install
-source=(#"https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
-        "https://github.com/ZoneMinder/zoneminder/archive/${_commit}.zip"
+source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
         'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
         'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
         'https://github.com/ZoneMinder/RtspServer/archive/eab32851421ffe54fec0229c3efc44c642bc8d46.zip'
@@ -57,7 +55,7 @@ source=(#"https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.t
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-b2sums=('7e2e70279a685c1a11ceb739f42674312d4c1d7014302b8fa438131eab85db3d5a8730333b82f17a767641756a6c28cbe2eadee0efb2642691af2b6d3f96db15'
+b2sums=('10d57b6e7e41f56204f3f52145e579ac62f7de00da73325a548de0ceb5e4251450d5985f3f47184e831ce0f31bfb6605f25bef997f7ab08edc8b342893d383cd'
         '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
         '89f9aeb88d06cad19d1a6d9c223b8291ad486f605bc87d939120d64524a85f2d8a07a0f23c9877833a6fdf03da84b20394e4f2a61c742a6669b6fae03c8af599'
@@ -67,7 +65,7 @@ b2sums=('7e2e70279a685c1a11ceb739f42674312d4c1d7014302b8fa438131eab85db3d5a87303
         '80354a9fc9de49f87183f2a0d7141b227bdd1eac421cfd5760e08d81e8e93a3c8ef6d9ec64c1c73cf0816a882da12527f9f0e2fce917991f1244900e3d973aef')
 
 prepare () {
-    cd ${pkgname}-${_commit}
+    cd ${pkgname}-${pkgver}
 
     # Fix the launcher
     sed -i 's|localhost/zm|localhost:8095|g' misc/${pkgname}.desktop.in
@@ -83,7 +81,7 @@ prepare () {
 }
 
 build() {
-    cd ${pkgname}-${_commit}
+    cd ${pkgname}-${pkgver}
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DLIBJWT_LIBRARY=/usr/lib/libjwt.so \
@@ -103,7 +101,7 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-${_commit}
+    cd ${pkgname}-${pkgver}
 
     make DESTDIR=${pkgdir} install
 
