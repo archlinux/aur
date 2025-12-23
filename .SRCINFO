@@ -1,6 +1,6 @@
 pkgbase = pdsh-genders
-	pkgdesc = Parallel Distributed Shell
-	pkgver = 2.34
+	pkgdesc = Parallel Distributed Shell with Genders Database support
+	pkgver = 2.35
 	pkgrel = 1
 	url = https://github.com/chaos/pdsh
 	arch = i686
@@ -14,8 +14,9 @@ pkgbase = pdsh-genders
 	provides = pdsh
 	conflicts = pdsh
 	options = libtool
-	source = https://github.com/chaos/pdsh/releases/download/pdsh-2.34/pdsh-2.34.tar.gz
-	sha256sums = b47b3e4662736ef44b6fe86e3d380f95e591863e69163aa0592e9f9f618521e9
+	source = https://github.com/chaos/pdsh/releases/download/pdsh-2.35/pdsh-2.35.tar.gz
+	source = patch
+	sha256sums = 75ef15347848fff43f8d6ff9c4424fe05c7dd2cdba029139901f861a05093cfe
+	sha256sums = d68600178b2d404dcd0719147263bc8caae0bdde5347ceee46164da9e890a424
 
 pkgname = pdsh-genders
-
