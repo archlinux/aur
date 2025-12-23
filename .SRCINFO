@@ -1,6 +1,6 @@
 pkgbase = perl-future
 	pkgdesc = Perl module to represent an operation awaiting completion
-	pkgver = 0.51
+	pkgver = 0.52
 	pkgrel = 1
 	url = https://metacpan.org/release/Future
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = perl-future
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Future-0.51.tar.gz
-	sha512sums = d87f565b78c09309d6931b967e7872762b5efe96d7759d8db655d85e4738962de53dc1993ee735176256de23ce0b6e38308dc84180c5659fb173aa5f9a7e7be3
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Future-0.52.tar.gz
+	sha512sums = 625d7c4cf967d9975851bbb2c4293be01bf70644ea7f21e168e1cb3622d3f5549cea67dda1df820e13898683874dea60cce979d65cd5e6aca69d96f3d0d91950
 
 pkgname = perl-future

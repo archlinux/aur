@@ -1,6 +1,6 @@
 # Contributor: loserMcloser <reebydobalina@gmail.com>
 pkgname=perl-future
-pkgver=0.51
+pkgver=0.52
 pkgrel=1
 pkgdesc='Perl module to represent an operation awaiting completion'
 _dist=Future
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('perl-module-build')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-sha512sums=('d87f565b78c09309d6931b967e7872762b5efe96d7759d8db655d85e4738962de53dc1993ee735176256de23ce0b6e38308dc84180c5659fb173aa5f9a7e7be3')
+sha512sums=('625d7c4cf967d9975851bbb2c4293be01bf70644ea7f21e168e1cb3622d3f5549cea67dda1df820e13898683874dea60cce979d65cd5e6aca69d96f3d0d91950')
 
 build() {
   cd $_dist-$pkgver
