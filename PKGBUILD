@@ -11,3 +11,5 @@ url='https://github.com/Dracape/SymP'
 license=('MIT')
 
 depends=('fish' 'fd')
+
+source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
