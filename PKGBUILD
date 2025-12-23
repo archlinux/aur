@@ -1,0 +1,71 @@
+##
+# Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
+##
+
+_gitname=portdropper
+# shellcheck disable=SC2034
+pkgname=portdropper-git
+# shellcheck disable=SC2034
+pkgdesc="Temporarily change the \`net.ipv4.unprivileged_port_start\` value"
+# shellcheck disable=SC2034
+pkgver="0.0.1".r1.e1340cf
+# shellcheck disable=SC2034
+pkgrel=1
+# shellcheck disable=SC2034
+arch=('any')
+# shellcheck disable=SC2034
+makedepends=('git')
+# shellcheck disable=SC2034
+depends=('systemd' 'pulse-native-provider' 'xorg-server-xwayland' 'wayland' 'xorg-xhost' 'coreutils' 'grep' 'awk')
+# shellcheck disable=SC2034
+optdepends=()
+# shellcheck disable=SC2034
+provides=('portdropper')
+# shellcheck disable=SC2034
+conflicts=('portdropper')
+# shellcheck disable=SC2034
+license=('GPL2')
+url="https://github.com/pyamsoft/portdropper.git"
+
+##
+# The SHA256 is constantly changing since this is
+# pulled from git so skip the verification check
+##
+# shellcheck disable=SC2034
+source=("${_gitname}::git+${url}#branch=main")
+# shellcheck disable=SC2034
+sha256sums=('SKIP')
+
+pkgver() {
+  # shellcheck disable=SC2154
+  cd "${srcdir}/${_gitname}" || {
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
+  }
+
+  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly VERSION=/) {print $2}}' "${_gitname}")" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  # shellcheck disable=SC2154
+  cd "${srcdir}/${_gitname}" || {
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
+  }
+
+  # Open up the umask in case you are running something more restrictive
+  umask 0022
+
+  # Mark the script executable
+  chmod 755 "${_gitname}"
+
+  # shellcheck disable=SC2154
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/doc/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${_gitname}"
+
+  cp "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  cp "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  cp "README.md" "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+}
