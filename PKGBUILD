@@ -1,8 +1,8 @@
 # Maintainer: Branimir Ricko <rickobranimir at gmail dot com>
 
 pkgname=brplot-git
-_pkgver=0.0.12
-pkgver=v0.0.12.r0.g0784aec
+_pkgver=0.0.13
+pkgver=v0.0.13.r0.gc3ed1fc
 
 pkgrel=1
 pkgdesc='Better real time plot - plotting lines that are sent to stdin'
