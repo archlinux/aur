@@ -1,40 +1,41 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Moises Baltazar <null@moisesb.com>
+# Contributor: drrossum <d.r.vanrossum at gmx.de>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: sh0 <mee@sh0.org>
 
-pkgname=pdsh-genders
-pkgver=2.34
+pkgname=pdsh
+pkgver=2.35
 pkgrel=1
-pkgdesc='Parallel Distributed Shell'
+pkgdesc='Parallel Distributed Shell with Genders Database support'
 url='https://github.com/chaos/pdsh'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glibc' 'openssh' 'readline' 'genders')
+depends=('openssh' 'genders')
+makedepends=('autoconf')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${pkgver}.tar.gz")
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('b47b3e4662736ef44b6fe86e3d380f95e591863e69163aa0592e9f9f618521e9')
+source=("https://github.com/chaos/pdsh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  patch)
+sha256sums=('75ef15347848fff43f8d6ff9c4424fe05c7dd2cdba029139901f861a05093cfe'
+            'd68600178b2d404dcd0719147263bc8caae0bdde5347ceee46164da9e890a424')
 
 build() {
-  cd "${srcdir}/pdsh-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 < ../patch
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --infodir=/usr/share/info \
-              --enable-ltdl-install \
+              --without-rsh \
               --with-ssh \
               --with-genders \
               --with-readline
   make
 }
 
-check() {
-  cd "${srcdir}/pdsh-${pkgver}"
-  make check
-}
-
 package() {
-  cd "${srcdir}/pdsh-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
 
