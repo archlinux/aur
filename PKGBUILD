@@ -2,7 +2,7 @@
 
 _pkgname='mplhep'
 pkgname="python-${_pkgname}"
-pkgver=0.3.55
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A set of helpers for matplotlib to more easily produce plots typically needed in HEP."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-numpy' 'python-matplotlib' 'python-mplhep_data' 'python-uhi' 'p
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-boost-histogram' 'python-scipy' 'python-uproot' 'python-scikit-hep-testdata' 'python-hist' 'python-fsspec')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('8abb058de47c23a79f173be79b14ce834c096d6da40269bab4325bca2a027936')
+sha256sums=('99a1b74d4979d32581977b6ec740c39ab3ddd805119be7c2efb3b3e47c217592')
 
 build() {
   cd "${srcdir}/${pkgname}"
