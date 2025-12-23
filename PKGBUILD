@@ -3,7 +3,7 @@
 _pkgauthor=j178
 _pkgname=prek
 pkgname=${_pkgname}-bin
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
@@ -25,12 +25,12 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[2]}-unknown-linux-gnu.tar.gz")
 sha256sums=('08215c44c901c7edf78c3a2b1e02558b0646a3ffa8161be0c112acfd3fb0c100'
-            '444e3f681554667d129d6ea77b8fe1660db813c66bdcbb706c626be58c013604'
+            '3e67cdb1cf54d6d153464be042578a7cf9974084e4d1d8bf6d6fe680ff74dbc2'
             '1a5a6b20a64f17ed68c1ddb9fe0a52ef5830e91d8c4a32c77cfb7a68c1a6bd9f'
-            '0c1e11bafd0660e4a642f5900d904457545753c549087dfd2967ba84de7e692e')
-sha256sums_x86_64=('e3b2683be102259a20a75c686080f78cba4a1cbb7138ec2e11e24b6582718757')
-sha256sums_i686=('72f2c2c289a0e50d8f281040911586cffe79b83120b7ee1193a5147d17ce1b41')
-sha256sums_aarch64=('3c5a284d036f9350f146e26e28b23cba86aca9595df4a3cad5ad69e37114dfb5')
+            '0dc42dfe5e04b8758918b24a7e00ee077d2507aae0d880a7cc485cf2c94ecc6e')
+sha256sums_x86_64=('f2d7508328f8f0da247f90e994f6a431aeb2c2d59b4aedbf00afaee66bab9794')
+sha256sums_i686=('f93abb844e60f83f8a4b765417fa970a27a1ffc1e7607cf44219bbeb27e8c33c')
+sha256sums_aarch64=('2fd67d9dc6832d447c09858d1fd1b82caba7e6becbab8a6f94abe4e8073eef31')
 
 
 package() {
