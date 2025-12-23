@@ -1,6 +1,6 @@
 pkgbase = ab-download-manager
 	pkgdesc = A Download Manager that speeds up your downloads
-	pkgver = 1.7.1
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://abdownloadmanager.com
 	arch = any
@@ -12,11 +12,12 @@ pkgbase = ab-download-manager
 	depends = libxtst
 	depends = harfbuzz
 	depends = fontconfig
+	depends = gtk3
 	optdepends = libappindicator-gtk3: tray icon support
 	conflicts = abdownloadmanager-bin
-	source = ab-download-manager::git+https://github.com/amir1376/ab-download-manager.git#tag=v1.7.1
+	source = ab-download-manager::git+https://github.com/amir1376/ab-download-manager.git#tag=v1.8.1
 	source = abdownloadmanager.desktop
-	sha256sums = 318169a55861512f3c6769359640f7039d2a218ef747e2a8b77e31e519c777c9
+	sha256sums = 38a6b559f4d3af92d9e2f44ed48c35773d2e007f74c222d038b6cb0d338a5775
 	sha256sums = d194cf142921d78c8a2a8c6c2b3a8b41bf2545eb2c7147a8f866946528227031
 
 pkgname = ab-download-manager
