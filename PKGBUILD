@@ -4,11 +4,11 @@ pkgname=amulet-map-editor
 
 pkgdesc="The new age Minecraft world editor and converter that supports every version since Java 1.12 and Bedrock 1.7"
 url="https://www.amuletmc.com/"
-license=(LicenseRef-none MIT)
+license=(LicenseRef-custom)
 
 arch=(any)
 pkgver=0.10.48
-pkgrel=1
+pkgrel=2
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git python-packaging)
 
 depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs)
@@ -39,4 +39,5 @@ function package() {
 	cd "${srcdir}/Amulet-Map-Editor"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	rm -rf "${pkgdir}/usr/bin/amulet_map_editor_no_console"
+	install -vDm644 "${srcdir}/Amulet-Map-Editor/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
