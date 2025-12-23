@@ -4,7 +4,7 @@ pkgbase=python-mfusepy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Ctypes bindings for the high-level API in libfuse 2 and 3"
 arch=('any')
@@ -13,7 +13,7 @@ license=('ISC')
 makedepends=('python-setuptools'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-order'
 #             'python-pytest-xdist'
               'python-ioctl-opt'
               'fuse2')
@@ -22,16 +22,20 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "${pkgver}-loopback.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/loopback.py"
         "${pkgver}-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory.py"
         "${pkgver}-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory_nullpath.py"
+        "${pkgver}-readdir_returning_offsets.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/readdir_returning_offsets.py"
+        "${pkgver}-readdir_with_offset.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/readdir_with_offset.py"
     )
-md5sums=('576731287e262395740eb99bac06760c'
-         'ac52b031e874bfcb7f30f5a332115ad2'
-         '4b43775856dbebafe0e4905443079459'
-         'ddd0c493d32978665a9ebda215a94bea')
+md5sums=('8ca5dc0545ba467aaf368163b51b2526'
+         '1ece541bd275b431df282627f3fff5cd'
+         '287bd1be09476006e285c365648fcfd1'
+         '043b00e7cd70920df66de35fe6da0a93'
+         'b97c524c50bd6fc20f9b55e82647a27f'
+         '1c917b5bf5dcfbfc00af97d6746422d5')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   sed -i "s/fusermount/fusermount3/" tests/test_memory.py
+#   sed -i "s/fusermount/fusermount3/g" tests/test_examples.py
     for tps in ${srcdir}/${pkgver}-*.py; do ln -rs ${tps} ${tps##*-}; done
 }
 
