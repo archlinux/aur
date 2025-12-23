@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'qt6-base')
 makedepends=('ninja' 'cmake' 'git' 'vulkan-headers')
-source=("$pkgname::git+$url.git#commit=ede259dfc2a7eaf18a79f444c34de3077ce2ab6d"
+source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/craftablescience/cmake-helpers.git"
 	"git+https://github.com/craftablescience/sourcepp.git"
 	"git+https://github.com/p-ranav/argparse.git"
@@ -24,7 +24,7 @@ source=("$pkgname::git+$url.git#commit=ede259dfc2a7eaf18a79f444c34de3077ce2ab6d"
 	"git+https://github.com/craftablescience/minizip-ng.git"
 	"git+https://github.com/phoboslab/qoi.git"
 	)
-sha256sums=('e83ffda006c359b701e4eb200b5f2881a9c63c16c79956decfbb8d261020eead'
+sha256sums=('e3bd7b5188f3be7db4f58c611208e965f1aaf39358c31b6166be56c6e3727e8d'
             'SKIP'
             'SKIP'
             'SKIP'
