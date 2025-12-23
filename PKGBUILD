@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland built with Quickshell'
 arch=('any')
@@ -50,6 +50,7 @@ optdepends=(
     'tesseract-data-eng: English OCR language data'
     'imagemagick: Alternative thumbnail generation'
     'bitwarden-cli: Bitwarden password manager integration'
+    'python-keyring: Secure session storage for Bitwarden plugin'
     'slurp: Screen region selection for screenshots'
     'wf-recorder: Screen recording'
 )
