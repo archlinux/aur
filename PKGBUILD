@@ -2,7 +2,7 @@
 
 pkgname=lotus-lang
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A systems programming language with Rust-inspired imports, type-first bindings, and x86-64 assembly output"
 arch=('x86_64')
 url="https://github.com/j-alexander3375/Lotus"
