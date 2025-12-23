@@ -1,22 +1,22 @@
-# Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
+# Maintainer: Peter Sutton <peter@foxdogstudios.com>
 
 pkgname=postgresql-unit
-pkgver=3.1
+pkgver=7.10
 pkgrel=1
 pkgdesc='SI Units for PostgreSQL'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/ChristophBerg/postgresql-unit'
 license=('GPL3')
 depends=('postgresql')
-source=('https://codeload.github.com/ChristophBerg/postgresql-unit/tar.gz/3.1')
-sha256sums=('60a8be238b7521d37b0541e07ff3be775490c53e184524b0b18c3b0bd2be06f2')
+source=('https://github.com/df7cb/postgresql-unit/archive/refs/tags/7.10.tar.gz')
+sha256sums=('95bd28deba70bd7d5a28ddceb28fa8dcabbb0821851e8ef62207459d780a2d70')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "$pkgname"-"$pkgver"
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  cd "$pkgname"-"$pkgver"
+  make DESTDIR="$pkgdir" install
 }
