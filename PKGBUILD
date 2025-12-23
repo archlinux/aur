@@ -1,4 +1,3 @@
-# Maintainer: Arun Mahapatra <arun@codito.in>
 # Maintainer: 0fflineuser <0fflineuser@cock.li>
 
 pkgname=python-tabula
