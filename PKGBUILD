@@ -2,7 +2,7 @@
 
 pkgname=bisq-bin
 pkgver=1.9.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
 url="https://bisq.network"
@@ -18,7 +18,7 @@ conflicts=("bisq" "bisq-git")
 provides=("bisq-bin")
 
 prepare() {
-  tar -Jxvf data.tar.xz
+  tar --zstd -xvf data.tar.zst
 }
 
 package() {
