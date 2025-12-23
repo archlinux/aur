@@ -1,7 +1,7 @@
 # Maintainer: Techoraye <contact.techoraye@gmail.com>
 pkgname=metetch
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast system information display utility with modular customizable features"
 arch=('x86_64')
 url="https://github.com/techoraye/metetch"
