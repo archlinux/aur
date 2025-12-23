@@ -1,6 +1,6 @@
 # Maintainer: unstable-code <assa0620@gmail.com>
 pkgname=wshowlyrics
-pkgver=0.8.1
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Wayland-native lyrics display for MPD with online fallback"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=('meson' 'ninja' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('085973996320c82e700300a073e02232bf7c8fe1b0a37849db216847b1fbb026')
+sha256sums=('da3b4d16ec93abdcb8d807a201a21bafc2628f9dfa7e19e51599bee4ad5e564a')
 
 build() {
     cd "lyrics-$pkgver"
