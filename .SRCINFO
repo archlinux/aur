@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l3740cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L3740CDW
+	pkgver = 3.5.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=mfcl3740cdw_eu
+	arch = x86_64
+	license = LicenseRef-brother
+	depends = cups
+	depends = ghostscript
+	depends = perl
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	optdepends = brscan4: scanner support
+	source = https://download.brother.com/welcome/dlf105760/mfcl3740cdwpdrv-3.5.1-1.i386.deb
+	sha256sums = df07a84388c927d8767c89b42c2c96f7263c76fb86112236ebf8ac7668730596
+
+pkgname = brother-mfc-l3740cdw
