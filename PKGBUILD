@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=hyprpier-git
-pkgver=r5.67c666c
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Hyprland monitor profile manager with Thunderbolt dock detection"
 arch=('x86_64')
@@ -12,11 +12,6 @@ provides=('hyprpier')
 conflicts=('hyprpier')
 source=("git+https://github.com/jakeb-grant/hyprpier.git")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd hyprpier
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
     cd hyprpier
