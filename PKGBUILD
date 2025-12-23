@@ -1,4 +1,4 @@
-# Maintainer: Techoraye <techoraye@example.com>
+# Maintainer: Techoraye <contact.techoraye@gmail.com>
 pkgname=metetch
 pkgver=0.5.0
 pkgrel=1
@@ -14,7 +14,7 @@ optdepends=(
 )
 provides=("$pkgname")
 conflicts=()
-source=("https://github.com/techoraye/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/techoraye/metetch/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {

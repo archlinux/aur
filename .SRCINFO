@@ -1,7 +1,7 @@
 pkgbase = metetch
 	pkgdesc = Fast system information display utility with modular customizable features
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/techoraye/metetch
 	arch = x86_64
 	license = proprietary
@@ -12,7 +12,7 @@ pkgbase = metetch
 	depends = curl
 	optdepends = lm_sensors: for temperature monitoring
 	optdepends = mesa: for GPU information
-	source = https://github.com/techoraye/metetch/archive/v0.5.0.tar.gz
+	source = https://github.com/techoraye/metetch/archive/refs/tags/v$pkgver.tar.gz
 	sha256sums = SKIP
 
 pkgname = metetch
