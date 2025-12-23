@@ -1,16 +1,19 @@
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
+
+# PKGBUILD forked from https://aur.archlinux.org/packages/firedragon-bin by
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Co-Maintainer: FGD
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-alpha.4
+_pkgver=13.0.0-alpha.5
 
 pkgname=${_pkgname}-alpha-bin
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
 pkgdesc="Floorp fork built with custom branding and settings - testing version for the upcoming FireDragon 13"
-url='https://firedragon.garudalinux.org'
+url='https://gitlab.com/garuda-linux/firedragon/firedragon13'
 arch=('x86_64' 'aarch64')
 license=('MPL2')
 depends=(dbus
@@ -29,7 +32,7 @@ optdepends=('hunspell-dictionary: Spell checking'
             'networkmanager: Location detection via available WiFi networks'
             'profile-sync-daemon: Load the browser profile into RAM'
             'pulse-native-provider: Audio support'
-            'searx: Searching the web using a locally running searX instance'
+            'searxng-git: Searching the web using a locally running searX instance'
             'speech-dispatcher: Text-to-Speech'
             'whoogle: Searching the web using a locally running Whoogle instance'
             'xdg-desktop-portal: Screensharing with Wayland')
@@ -46,10 +49,10 @@ source=(firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/r
         https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/v"$_pkgver"/assets/firedragon.desktop)
 source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v"$_pkgver"/downloads/firedragon.linux-x64.tar.xz)
 source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v"$_pkgver"/downloads/firedragon.linux-arm64.tar.xz)
-sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-sha256sums_x86_64=('040aec8e6ff101552fe6a13ea40af975d062220a2abb772ba5e3e6f43746e964')
-sha256sums_aarch64=('6af5e3e030e8ebe910a05de24873956e44e884544b2f68782c09dce5df599acd')
+b2sums=('a042cac06a3c2f424df86298775b9441ef6e1d181c065349c2c33740c15da57ee16c7114d84f006603e13e232891a3c635df630b22926ebca4a252204a2db281'
+        '77fb65365470533628c12389cfc210b4ac7cb37ef6fb946d10c4a5514b652e4969f63097a76e1e94ac53146b954a17ce84ebd61c73f7b07ac9b65446c6ff6b09')
+b2sums_x86_64=('04271b51c383093cf3575d4c6f2e9b8424e53db6dee2d2dfd01d0144068282632b3100fafbd80c2a275fcf5dfb2e66782a32197478231861847ea9df226ec9ce')
+b2sums_aarch64=('83c63b930295b244e4a0df70318e8e94c369008eedbfef49e9272e4fe0eb824cdda06bab31574291ccaac1a6dda097a67019537a64331bcb97ff1e4a34097ff5')
 
 
 package() {
