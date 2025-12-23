@@ -7,14 +7,22 @@ url='https://github.com/openthread/ot-br-posix.git'
 license=('BSD-3-Clause')
 depends=(
 	systemd-libs
+	cjson
+	abseil-cpp
+	jsoncpp
+	protobuf
+	dbus
 )
 makedepends=(
 	git
 	cmake
 	ninja
 	mbedtls
-	cjson
 	gtest
+	xmlto
+	nodejs
+	npm
+	glib2-devel
 	)
 source=(
 	git+https://github.com/openthread/ot-br-posix.git
@@ -30,6 +38,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '494e9af44403b3fa2e13dc46a961770ed8615785f95d711aaea269abde419bca')
+
+install=ot-br-posix-git.install
 
 prepare() {
   cd ot-br-posix
@@ -72,6 +82,12 @@ build() {
     -D OTBR_MDNS="openthread"
     -D OTBR_RADIO_URL="spinel+hdlc+uart:///dev/ttyACM0"
     -D OTBR_DOC=OFF
+    -D OTBR_WEB=ON
+    -D OTBR_BACKBONE_ROUTER=ON
+    -D OTBR_BORDER_AGENT=ON
+    -D OTBR_DBUS=ON
+    -D OTBR_TELEMETRY_DATA_API=ON
+    -D OTBR_REST=ON
   )
   cmake "${cmake_options[@]}"
   cmake --build builddir
@@ -79,6 +95,11 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install builddir
-  mv "${pkgdir}"/usr/sbin ${pkgdir}/usr/bin
+  mv "${pkgdir}/usr"/sbin "${pkgdir}/usr"/bin
+  mv "${pkgdir}/etc"/dbus-1 "${pkgdir}/usr"/share
+  _WEB_DEBUG_LEVEL=4
+  _WEB_HOST="127.0.0.1"
+  _WEB_PORT=8880
+  echo "OTBR_WEB_OPTS=\"-I wpan0 -d${_WEB_DEBUG_LEVEL} -a $_WEB_HOST -p $_WEB_PORT\"" > "${pkgdir}/etc/default"/otbr-web
   install -Dm644 ot-br-posix/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

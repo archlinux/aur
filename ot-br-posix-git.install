@@ -1,0 +1,17 @@
+message_the_user() {
+    echo "1. Edit /etc/default/otbr-agent"
+    echo "a. Change all occurances of wlan0 to your Internet uplink network interface"
+    echo "b. Change /dev/ttyACM0 to the actual serial port used by your Thread radio device"
+    echo "2. Edit /etc/default/otbr-web to change how the web interface is served up"
+    echo "3. Start the otbr-web systemd service"
+    echo "4. Start the otbr-agent systemd service"
+    echo "5. Use your browser to visit the web UI as configured in step 2"
+}
+
+post_install() {
+    message_the_user "$1"
+}
+
+post_upgrade() {
+    message_the_user "$1"
+}
