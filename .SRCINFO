@@ -1,7 +1,7 @@
 pkgbase = toml-f
 	pkgdesc = TOML Parser Implementation For Data Serialization and Deserialization in Fortran
 	pkgver = 0.4.3
-	pkgrel = 11
+	pkgrel = 1
 	url = https://toml-f.readthedocs.io/en/latest/
 	arch = x86_64
 	license = MIT
