@@ -1,6 +1,6 @@
 pkgbase = buck2-bin
 	pkgdesc = A large-scale build system from Meta, developed in Rust
-	pkgver = 2025.12.01
+	pkgver = 2025.12.15
 	pkgrel = 1
 	url = https://github.com/facebook/buck2
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = buck2-bin
 	depends = zstd
 	provides = buck2
 	options = !strip
-	source_x86_64 = buck2-2025.12.01-x86_64.zst::https://github.com/facebook/buck2/releases/download/2025-12-01/buck2-x86_64-unknown-linux-gnu.zst
-	sha256sums_x86_64 = 4ce80bd292e73440211e42afca79ccf75916d3a2ba8d93de267a5289b620f045
-	source_aarch64 = buck2-2025.12.01-aarch64.zst::https://github.com/facebook/buck2/releases/download/2025-12-01/buck2-aarch64-unknown-linux-gnu.zst
-	sha256sums_aarch64 = 3e46b41c412a46c429d91e37e5dbb2ea0272fd1417a7994ae4383dfab7ebf4bf
-	source_riscv64gc = buck2-2025.12.01-riscv64gc.zst::https://github.com/facebook/buck2/releases/download/2025-12-01/buck2-riscv64gc-unknown-linux-gnu.zst
-	sha256sums_riscv64gc = 5d3e985ee0c01f4587138c2dbd0b6c89a6fbf4c22e91c2a72b4229fef1494643
+	source_x86_64 = buck2-2025.12.15-x86_64.zst::https://github.com/facebook/buck2/releases/download/2025-12-15/buck2-x86_64-unknown-linux-gnu.zst
+	sha256sums_x86_64 = b9f55ac8bd15ac368a9dae313dc17411a4bfa27dea2d72333db31835d5636b5e
+	source_aarch64 = buck2-2025.12.15-aarch64.zst::https://github.com/facebook/buck2/releases/download/2025-12-15/buck2-aarch64-unknown-linux-gnu.zst
+	sha256sums_aarch64 = cac76aac702fa0cbc7f49e8129ee86c894d71ef1b492716dceb814abd7ba83fc
+	source_riscv64gc = buck2-2025.12.15-riscv64gc.zst::https://github.com/facebook/buck2/releases/download/2025-12-15/buck2-riscv64gc-unknown-linux-gnu.zst
+	sha256sums_riscv64gc = 699f465df9ef694060cee805e723d6458d4028ec909cd6327f572d91bd39ea27
 
 pkgname = buck2-bin
