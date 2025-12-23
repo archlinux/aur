@@ -11,7 +11,7 @@ options=('!strip')
 makedepends=('git' 'dotnet-sdk-9.0')
 provides=('openssh-gui')
 conflicts=('openssh-gui' 'openssh-gui-bin')
-source=("${pkgname}::git+${url}.git#branch=develop")
+source=("${pkgname}::git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {

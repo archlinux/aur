@@ -15,7 +15,7 @@ pkgbase = openssh-gui-git
 	conflicts = openssh-gui
 	conflicts = openssh-gui-bin
 	options = !strip
-	source = openssh-gui-git::git+https://github.com/frequency403/OpenSSH-GUI.git#branch=develop
+	source = openssh-gui-git::git+https://github.com/frequency403/OpenSSH-GUI.git#branch=development
 	sha256sums = SKIP
 
 pkgname = openssh-gui-git
