@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OneTube
+Comment=Prosty downloader wideo/audio (yt-dlp)
+Exec=onetube
+Icon=video-download
+Terminal=false
+Categories=AudioVideo;Network;
+StartupNotify=true

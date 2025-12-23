@@ -1,0 +1,19 @@
+pkgbase = onetube-gui
+	pkgdesc = OneTube - prosty downloader GUI (PyQt6 + yt-dlp)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OneDevelopmentPL/onetube-gui
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = yt-dlp
+	depends = ffmpeg
+	source = main.py
+	source = onetube
+	source = onetube.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = onetube-gui

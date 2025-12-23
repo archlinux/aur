@@ -1,0 +1,3 @@
+#!/bin/bash
+export QT_QPA_PLATFORMTHEME=qt6ct
+exec /usr/bin/python /usr/share/onetube/main.py
