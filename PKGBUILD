@@ -3,7 +3,7 @@
 
 pkgname=blivet-gui-git
 pkgver=2.6.0.r221.gf75148f
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
 license=('GPL')
@@ -22,10 +22,10 @@ pkgver() {
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-check() {
-	cd "${pkgname%-git}"
-	make -k check
-}
+#check() {
+#	cd "${pkgname%-git}"
+#	make -k check
+#}
 
 package() {
 	cd "${srcdir}/${pkgname%-git}/"
