@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=System;Utilites;
+Comment=Modern Linux System Monitor
+Exec=Taskwire
+Icon=Taskwire
+Name=Taskwire
+Terminal=false
+Type=Application

@@ -1,0 +1,5 @@
+[taskwire-bin]
+source = "github"
+github = "majoraexp/Taskwire"
+use_latest_release = true
+prefix = "v"
