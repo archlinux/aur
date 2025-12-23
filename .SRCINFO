@@ -1,0 +1,17 @@
+pkgbase = python-pytest-language-server
+	pkgdesc = A blazingly fast Language Server Protocol (LSP) implementation for pytest.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/bellini666/pytest-language-server
+	arch = any
+	license = MIT
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/p/pytest-language-server/pytest_language_server-0.17.0.tar.gz
+	sha256sums = 685fc7174d3137b48df53828fe88156f065f680a7177ac34d7dea90702826db7
+
+pkgname = python-pytest-language-server
