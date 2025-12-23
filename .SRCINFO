@@ -1,0 +1,25 @@
+pkgbase = c47-bin
+	pkgdesc = Emulator for the C47 pocket calculator
+	pkgver = 00.109.03.00b1
+	pkgrel = 1
+	url = https://47calc.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = icoutils
+	makedepends = gendesk
+	depends = glibc
+	depends = cairo
+	depends = gtk3
+	depends = libpulse
+	depends = bash
+	depends = glib2
+	depends = gmp
+	depends = hicolor-icon-theme
+	provides = c47
+	conflicts = c47
+	source = https://gitlab.com/api/v4/projects/14055190/packages/generic/c47/00.109.03.00b1/c47-linux-00.109.03.00b1.zip
+	source = https://gitlab.com/rpncalculators/c43/-/archive/00.109.03.00b1/c43-00.109.03.00b1.tar.gz
+	sha256sums = 21fe2ad1597c3d2f3f5698a323aeb55fd81e659669e25135c0708687cb90a506
+	sha256sums = 72d4b6906ab49b3236698f8a88e86f30f946d4ea1e78c87ff7e95682ad6883e2
+
+pkgname = c47-bin

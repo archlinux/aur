@@ -1,0 +1,76 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+_pkgname=c43
+pkgname=c47-bin
+pkgver=00.109.03.00b1
+pkgrel=1
+pkgdesc="Emulator for the C47 pocket calculator"
+arch=('x86_64')
+url="https://47calc.com"
+license=('GPL-3.0-or-later')
+depends=('glibc' 'cairo' 'gtk3' 'libpulse' 'bash' 'glib2' 'gmp' 'hicolor-icon-theme')
+makedepends=('icoutils' 'gendesk')
+checkdepends=()
+optdepends=()
+provides=("${pkgname::-4}")
+conflicts=("${pkgname::-4}")
+source=("https://gitlab.com/api/v4/projects/14055190/packages/generic/${pkgname::-4}/${pkgver}/${pkgname::-4}-linux-${pkgver}.zip"
+	"https://gitlab.com/rpncalculators/c43/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+noextract=()
+sha256sums=('21fe2ad1597c3d2f3f5698a323aeb55fd81e659669e25135c0708687cb90a506'
+            '72d4b6906ab49b3236698f8a88e86f30f946d4ea1e78c87ff7e95682ad6883e2')
+validpgpkeys=()
+
+prepare() {
+	cd "$srcdir"
+	gendesk -n -f \
+	--pkgname=${pkgname::-4} \
+	--pkgdesc="$pkgdesc" \
+	--exec="${pkgname::-4}" \
+	--icon=${pkgname::-4} \
+	--terminal=false \
+	--categories="Education;Office;Utilities"
+}
+
+package() {
+	cd "${pkgname::-4}-linux-$pkgver"
+	install -Dm755 ${pkgname::-4} "$pkgdir/usr/lib/${pkgname::-4}/${pkgname::-4}"
+	install -Dm755 C47__StandardFont.ttf -t "$pkgdir/usr/share/${pkgname::-4}"
+	cp -a res "$pkgdir/usr/share/${pkgname::-4}/res"
+	install -dm755 "$pkgdir/usr/bin"
+	cat >> "$pkgdir/usr/bin/${pkgname::-4}" <<-EOF
+#!/usr/bin/env sh
+[[ ! -d "\$HOME/.config/${pkgname::-4}" ]] && mkdir -p "\$HOME/.config/${pkgname::-4}"
+cd "\$HOME/.config/${pkgname::-4}" || exit
+ln -s /usr/share/${pkgname::-4}/res ./
+ln -s /usr/lib/${pkgname::-4}/${pkgname::-4} ${pkgname::-4}
+ln -s /usr/share/${pkgname::-4}/C47__StandardFont.ttf C47__StandardFont.ttf
+./${pkgname::-4} "\$@"
+wait
+rm -rf res ${pkgname::-4} C47__StandardFont.ttf
+EOF
+	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}"
+
+	install -Dm644 "$srcdir/c47.desktop" "$pkgdir/usr/share/applications/c47.desktop"
+	cd "$srcdir/${_pkgname}-${pkgver}/res"
+	icotool -x "${pkgname::-4}.ico"
+	_count=1
+	for _size in {16,24,32,48,64,128,256};
+	do
+		case $_size in
+			16|24|32|48|64)
+				_depth=8
+			;;
+			128)
+				_depth=24
+			;;
+			256)
+				_depth=32
+			;;
+		esac
+
+		install -Dm644 ${pkgname::-4}_${_count}_${_size}x${_size}x${_depth}.png "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname::-4}.png"
+		_count=$(($_count + 1))
+
+	done
+	
+}
