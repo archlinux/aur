@@ -14,7 +14,7 @@ license=('MIT')
 depends=('gtk3' 'webkit2gtk')
 makedepends=('tar' 'sed' 'coreutils')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_appname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch[0]}.deb")
@@ -31,7 +31,7 @@ package() {
     tar xf "${srcdir}/data.tar.gz"
 
     # add categories
-    sed -e '$aCategories=System;Utilites;' -i "${pkgdir}/usr/share/applications/NeoHtop.desktop"
+    sed -e 's/Categories=/Categories=System;Utilites;/g' -i "${pkgdir}/usr/share/applications/NeoHtop.desktop"
 
     # install LICENSE and README.md
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
