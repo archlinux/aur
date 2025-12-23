@@ -1,4 +1,4 @@
-# Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
+# Maintainer: <matt at mattquintanilla dot xyz>
 pkgname=wayback-x11
 _pkgname=wayback
 pkgver=0.3
