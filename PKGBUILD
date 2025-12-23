@@ -5,7 +5,7 @@ pkgbase="stm32cubeclt"
 pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
@@ -16,9 +16,9 @@ makedepends=('tar'
              'bash')
 options=('!strip')
 
-_prefix="25876"
-_date="20250729"
-_suffix="1159"
+_prefix="26822"
+_date="20251117"
+_suffix="1245"
 _pkg_name=${pkgbase}_${pkgver}
 _pkg_license_name="SLA0048_${_pkgname}.pdf"
 _pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
