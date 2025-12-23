@@ -37,7 +37,7 @@ build() {
     printf "\n%s\n" "Building kak-tree-sitter" 
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --frozen --release --all-features
-    printf "\n%s\n" "Building ktskctl" 
+    printf "\n%s\n" "Building ktsctl" 
     cd "$srcdir/$_ctlname-$_ctlver"
     cargo build --frozen --release --all-features
 }
