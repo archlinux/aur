@@ -11,7 +11,7 @@ makedepends=('cargo' 'gtk4' 'pkgconf' 'gtk-layer-shell' 'graphene')
 provides=('ewwii')
 conflicts=('ewwii-bin' 'ewwii-git')
 source=("https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d93b53a11183327efbd7404775105e138c6e4e8285d0ef014c192bf14a92e2b6')
+sha256sums=('bcc43ce0b662b918f4efdd689c54b15ab8926ee9492bcf9232c58b9bd44a5a88')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
