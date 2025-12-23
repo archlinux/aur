@@ -1,0 +1,17 @@
+pkgbase = mquickjs
+	pkgdesc = MicroQuickJS (aka. MQuickJS) is a Javascript engine targetted at embedded systems
+	pkgver = 2025.12.22
+	pkgrel = 1
+	url = https://github.com/bellard/mquickjs
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = mquickjs::git+https://github.com/bellard/mquickjs.git#commit=17ce6fe54c1ea4f500f26636bd22058fce2ce61a
+	sha256sums = 68cf2cafaf0188dd88aa483a53b510c6b70a2fb291f4d911338101f30b92c3d3
+
+pkgname = mquickjs
