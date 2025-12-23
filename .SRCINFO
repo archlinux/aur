@@ -1,16 +1,15 @@
 pkgbase = pgfuse
 	pkgdesc = FUSE-based file system with a PostgreSQL storage backend
 	pkgver = 0.0.2
-	pkgrel = 2
-	url = http://www.pgfuse.org
+	pkgrel = 3
+	url = https://www.pgfuse.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = pkg-config
 	depends = fuse
 	depends = postgresql-libs
-	source = http://www.andreasbaumann.cc/pgfuse/pgfuse-0.0.2.tar.gz
+	source = https://www.andreasbaumann.cc/pgfuse/pgfuse-0.0.2.tar.gz
 	md5sums = 19130ec8b1e96f7ce427fa269f316017
 
 pkgname = pgfuse
-
