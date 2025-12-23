@@ -85,11 +85,15 @@ groups=(plasma)
 source=(git+https://invent.kde.org/plasma/kwin.git
         sync_official.sh
 	8436.patch
+	8386.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/8386.patch
+	cherry-96508622.patch
 )
 # unused: 0001-retick.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/7980.patch
 sha256sums=('SKIP'
             '26b1d0926ab098d9da0b60270a368959887a6f2ee90e3f1c2c358e7325e8129c'
-            'SKIP')
+            '94f90aa229ae19952f19bbb6c673aa416b29ea3fc0d0208e43312f1d21b6c51a'
+            'SKIP'
+            'c335e20ba2811e9aec058e9e151f763661a40fe71af754c13cdab9d5802d8cfa')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -121,15 +125,17 @@ prepare() {
     return 1
   fi
 
-#  echo ">>> Applying MR 7980 patch for frame pacing fixes..."
-#  patch -Np1 -i "${srcdir}/0001-retick.patch"
+  #  echo ">>> Applying MR 7980 patch for frame pacing fixes..."
+  #  patch -Np1 -i "${srcdir}/0001-retick.patch" 
 
-echo ">>> Replacing old animation drivers and Overview implementation with the new one... (MR 8436)"
-  patch -Np1 -i "${srcdir}/8436.patch"
-  
- # echo ">>> Applying additional patches..."
- # patch -Np1 -i "${srcdir}/0002_set_interval_1ms.patch"
 
+  echo ">>> Syncing Qt render loop... (MR 8436)"
+  patch -Np1 -i "${srcdir}/8436.patch" 
+
+  echo ">>> Applying additional patches..."
+  patch -Np1 -i "${srcdir}/8386.patch"
+  patch -Np1 -i "${srcdir}/cherry-96508622.patch"
+  # patch -Np1 -i "${srcdir}/0002_set_interval_1ms.patch"
 
   echo ">>> Fixing docbook URLs (if any)..."
   find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true

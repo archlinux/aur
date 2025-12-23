@@ -1,0 +1,258 @@
+diff --git a/src/scene/surfaceitem_wayland.cpp b/src/scene/surfaceitem_wayland.cpp
+index 3edd24f955..77602887d1 100644
+--- a/src/scene/surfaceitem_wayland.cpp
++++ b/src/scene/surfaceitem_wayland.cpp
+@@ -209,7 +209,14 @@ void SurfaceItemWayland::freeze()
+ 
+ void SurfaceItemWayland::handleColorDescriptionChanged()
+ {
+-    setColorDescription(m_surface->colorDescription());
++    auto description = m_surface->colorDescription();
++    if (m_surface->colorDescriptionType() == ColorDescriptionType::Windows) {
++        // TODO also react to config changes after the image description is set?
++        const auto group = kwinApp()->config()->group("Windows_HDR");
++        description = description->withReference(group.readEntry("Reference", 203.0));
++        description = description->withHdrMetadata(group.readEntry("MaxFrameAverage", 600), group.readEntry("MaxLuminance", 1'000));
++    }
++    setColorDescription(description);
+     setRenderingIntent(m_surface->renderingIntent());
+ }
+ 
+diff --git a/src/wayland/colormanagement_v1.cpp b/src/wayland/colormanagement_v1.cpp
+index 62db2635d2..9d4c272aa7 100644
+--- a/src/wayland/colormanagement_v1.cpp
++++ b/src/wayland/colormanagement_v1.cpp
+@@ -4,6 +4,7 @@
+     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+ */
+ #include "colormanagement_v1.h"
++#include "clientconnection.h"
+ #include "display.h"
+ #include "surface.h"
+ #include "surface_p.h"
+@@ -103,7 +104,7 @@ void ColorManagerV1::wp_color_manager_v1_create_windows_scrgb(Resource *resource
+         Colorimetry::BT2020,
+         Colorimetry::BT709,
+     });
+-    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), scrgb);
++    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), scrgb, ColorDescriptionType::Windows);
+ }
+ 
+ ColorFeedbackSurfaceV1::ColorFeedbackSurfaceV1(wl_client *client, uint32_t id, uint32_t version, SurfaceInterface *surface)
+@@ -140,12 +141,12 @@ void ColorFeedbackSurfaceV1::wp_color_management_surface_feedback_v1_destroy(Res
+ 
+ void ColorFeedbackSurfaceV1::wp_color_management_surface_feedback_v1_get_preferred(Resource *resource, uint32_t image_description)
+ {
+-    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_preferred);
++    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_preferred, ColorDescriptionType::Normal);
+ }
+ 
+ void ColorFeedbackSurfaceV1::wp_color_management_surface_feedback_v1_get_preferred_parametric(Resource *resource, uint32_t image_description)
+ {
+-    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_preferred);
++    ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_preferred, ColorDescriptionType::Normal);
+ }
+ 
+ ColorSurfaceV1::ColorSurfaceV1(wl_client *client, uint32_t id, uint32_t version, SurfaceInterface *surface)
+@@ -159,6 +160,7 @@ ColorSurfaceV1::~ColorSurfaceV1()
+     if (m_surface) {
+         const auto priv = SurfaceInterfacePrivate::get(m_surface);
+         priv->pending->colorDescription = ColorDescription::sRGB;
++        priv->pending->colorDescriptionType = ColorDescriptionType::Normal;
+         priv->pending->committed |= SurfaceState::Field::ColorDescription;
+         priv->colorSurface = nullptr;
+     }
+@@ -207,8 +209,9 @@ void ColorSurfaceV1::wp_color_management_surface_v1_set_image_description(Resour
+         return;
+     }
+     const auto priv = SurfaceInterfacePrivate::get(m_surface);
+-    priv->pending->colorDescription = *ImageDescriptionV1::get(image_description)->description();
++    priv->pending->colorDescription = *description->description();
+     priv->pending->renderingIntent = *intent;
++    priv->pending->colorDescriptionType = description->type();
+     priv->pending->committed |= SurfaceState::Field::ColorDescription;
+ }
+ 
+@@ -220,6 +223,7 @@ void ColorSurfaceV1::wp_color_management_surface_v1_unset_image_description(Reso
+     }
+     const auto priv = SurfaceInterfacePrivate::get(m_surface);
+     priv->pending->colorDescription = ColorDescription::sRGB;
++    priv->pending->colorDescriptionType = ColorDescriptionType::Normal;
+     priv->pending->committed |= SurfaceState::Field::ColorDescription;
+ }
+ 
+@@ -265,7 +269,15 @@ void ColorParametricCreatorV1::wp_image_description_creator_params_v1_create(Res
+         maxHdrLuminance = 1'000;
+         m_minMasteringLuminance = func.minLuminance;
+     }
++
+     if (Colorimetry::isValid(m_colorimetry->red().toxy(), m_colorimetry->green().toxy(), m_colorimetry->blue().toxy(), m_colorimetry->white().toxy())) {
++        auto type = ColorDescriptionType::Normal;
++        ClientConnection *client = ClientConnection::get(resource->client());
++        // TODO remove gamescope from that list, once we have a Windows_PQ image description it can use
++        if (client->executablePath().endsWith("wine-preloader") || client->executablePath().endsWith("gamescope")) {
++            type = ColorDescriptionType::Windows;
++        }
++
+         ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), std::make_shared<ColorDescription>(ColorDescription{
+                                                                                                         *m_colorimetry,
+                                                                                                         func,
+@@ -275,7 +287,8 @@ void ColorParametricCreatorV1::wp_image_description_creator_params_v1_create(Res
+                                                                                                         maxHdrLuminance.value_or(func.maxLuminance),
+                                                                                                         m_masteringColorimetry.value_or(*m_colorimetry),
+                                                                                                         Colorimetry::BT709,
+-                                                                                                    }));
++                                                                                                    }),
++                                        type);
+     } else {
+         ImageDescriptionV1::createFailed(resource->client(), image_description, resource->version(), WP_IMAGE_DESCRIPTION_V1_CAUSE_UNSUPPORTED, QStringLiteral("The provided image description failed to verify as usable"));
+     }
+@@ -446,23 +459,24 @@ void ColorParametricCreatorV1::wp_image_description_creator_params_v1_set_max_fa
+ 
+ uint64_t ImageDescriptionV1::s_idCounter = 1;
+ 
+-ImageDescriptionV1 *ImageDescriptionV1::createReady(wl_client *client, uint32_t id, uint32_t version, const std::shared_ptr<ColorDescription> &colorDescription)
++ImageDescriptionV1 *ImageDescriptionV1::createReady(wl_client *client, uint32_t id, uint32_t version, const std::shared_ptr<ColorDescription> &colorDescription, ColorDescriptionType type)
+ {
+-    auto description = new ImageDescriptionV1(client, id, version, colorDescription);
++    auto description = new ImageDescriptionV1(client, id, version, colorDescription, type);
+     description->send_ready(s_idCounter++);
+     return description;
+ }
+ 
+ ImageDescriptionV1 *ImageDescriptionV1::createFailed(wl_client *client, uint32_t id, uint32_t version, wp_image_description_v1_cause error, const QString &message)
+ {
+-    auto description = new ImageDescriptionV1(client, id, version, std::nullopt);
++    auto description = new ImageDescriptionV1(client, id, version, std::nullopt, ColorDescriptionType::Normal);
+     description->send_failed(error, message);
+     return description;
+ }
+ 
+-ImageDescriptionV1::ImageDescriptionV1(wl_client *client, uint32_t id, uint32_t version, const std::optional<std::shared_ptr<ColorDescription>> &color)
++ImageDescriptionV1::ImageDescriptionV1(wl_client *client, uint32_t id, uint32_t version, const std::optional<std::shared_ptr<ColorDescription>> &color, ColorDescriptionType type)
+     : QtWaylandServer::wp_image_description_v1(client, id, version)
+     , m_description(color)
++    , m_type(type)
+ {
+ }
+ 
+@@ -590,6 +604,11 @@ const std::optional<std::shared_ptr<ColorDescription>> &ImageDescriptionV1::desc
+     return m_description;
+ }
+ 
++ColorDescriptionType ImageDescriptionV1::type() const
++{
++    return m_type;
++}
++
+ ImageDescriptionV1 *ImageDescriptionV1::get(wl_resource *resource)
+ {
+     if (auto resourceContainer = Resource::fromResource(resource)) {
+@@ -625,7 +644,7 @@ void ColorManagementOutputV1::wp_color_management_output_v1_get_image_descriptio
+     if (!m_output || m_output->isRemoved()) {
+         ImageDescriptionV1::createFailed(resource->client(), image_description, resource->version(), WP_IMAGE_DESCRIPTION_V1_CAUSE_NO_OUTPUT, QStringLiteral("wl_output has been removed"));
+     } else {
+-        ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_output->handle()->colorDescription());
++        ImageDescriptionV1::createReady(resource->client(), image_description, resource->version(), m_output->handle()->blendingColor(), ColorDescriptionType::Normal);
+     }
+ }
+ 
+diff --git a/src/wayland/colormanagement_v1.h b/src/wayland/colormanagement_v1.h
+index 807cb080be..aecf938bc4 100644
+--- a/src/wayland/colormanagement_v1.h
++++ b/src/wayland/colormanagement_v1.h
+@@ -5,6 +5,7 @@
+ */
+ #pragma once
+ #include "core/colorspace.h"
++#include "surface.h"
+ 
+ #include "wayland/qwayland-server-color-management-v1.h"
+ #include <QObject>
+@@ -106,22 +107,24 @@ private:
+ class ImageDescriptionV1 : private QtWaylandServer::wp_image_description_v1
+ {
+ public:
+-    static ImageDescriptionV1 *createReady(wl_client *client, uint32_t id, uint32_t version, const std::shared_ptr<ColorDescription> &color);
++    static ImageDescriptionV1 *createReady(wl_client *client, uint32_t id, uint32_t version, const std::shared_ptr<ColorDescription> &color, ColorDescriptionType type);
+     static ImageDescriptionV1 *createFailed(wl_client *client, uint32_t id, uint32_t version, wp_image_description_v1_cause error, const QString &message);
+ 
+     const std::optional<std::shared_ptr<ColorDescription>> &description() const;
++    ColorDescriptionType type() const;
+ 
+     static ImageDescriptionV1 *get(wl_resource *resource);
+     static uint64_t s_idCounter;
+ 
+ private:
+-    explicit ImageDescriptionV1(wl_client *client, uint32_t id, uint32_t version, const std::optional<std::shared_ptr<ColorDescription>> &color);
++    explicit ImageDescriptionV1(wl_client *client, uint32_t id, uint32_t version, const std::optional<std::shared_ptr<ColorDescription>> &color, ColorDescriptionType type);
+ 
+     void wp_image_description_v1_destroy_resource(Resource *resource) override;
+     void wp_image_description_v1_destroy(Resource *resource) override;
+     void wp_image_description_v1_get_information(Resource *resource, uint32_t information) override;
+ 
+     const std::optional<std::shared_ptr<ColorDescription>> m_description;
++    const ColorDescriptionType m_type;
+ };
+ 
+ class ColorManagementOutputV1 : public QObject, private QtWaylandServer::wp_color_management_output_v1
+diff --git a/src/wayland/surface.cpp b/src/wayland/surface.cpp
+index 98145a179a..c10e11ba30 100644
+--- a/src/wayland/surface.cpp
++++ b/src/wayland/surface.cpp
+@@ -639,6 +639,7 @@ void SurfaceState::mergeInto(SurfaceState *target)
+     target->contentType = contentType;
+     target->presentationHint = presentationHint;
+     target->colorDescription = colorDescription;
++    target->colorDescriptionType = colorDescriptionType;
+     target->renderingIntent = renderingIntent;
+     target->alphaMultiplier = alphaMultiplier;
+     target->yuvCoefficients = yuvCoefficients;
+@@ -1189,6 +1190,11 @@ PresentationModeHint SurfaceInterface::presentationModeHint() const
+     return d->current->presentationHint;
+ }
+ 
++ColorDescriptionType SurfaceInterface::colorDescriptionType() const
++{
++    return d->current->colorDescriptionType;
++}
++
+ const std::shared_ptr<ColorDescription> &SurfaceInterface::colorDescription() const
+ {
+     return d->current->colorDescription;
+diff --git a/src/wayland/surface.h b/src/wayland/surface.h
+index 774820adc4..bcd8e35d60 100644
+--- a/src/wayland/surface.h
++++ b/src/wayland/surface.h
+@@ -36,6 +36,11 @@ class SyncReleasePoint;
+ class RawSurfaceAttachedState;
+ class RawSurfaceExtension;
+ 
++enum class ColorDescriptionType {
++    Normal,
++    Windows,
++};
++
+ /**
+  * The SurfaceRole class represents a role assigned to a wayland surface.
+  */
+@@ -341,6 +346,7 @@ public:
+     Transaction *lastTransaction() const;
+     void setLastTransaction(Transaction *transaction);
+ 
++    ColorDescriptionType colorDescriptionType() const;
+     const std::shared_ptr<ColorDescription> &colorDescription() const;
+     RenderingIntent renderingIntent() const;
+ 
+diff --git a/src/wayland/surface_p.h b/src/wayland/surface_p.h
+index 702106f9fa..4ee905b150 100644
+--- a/src/wayland/surface_p.h
++++ b/src/wayland/surface_p.h
+@@ -83,6 +83,7 @@ struct SurfaceState
+     ContentType contentType = ContentType::None;
+     PresentationModeHint presentationHint = PresentationModeHint::VSync;
+     std::shared_ptr<ColorDescription> colorDescription = ColorDescription::sRGB;
++    ColorDescriptionType colorDescriptionType = ColorDescriptionType::Normal;
+     RenderingIntent renderingIntent = RenderingIntent::Perceptual;
+     std::shared_ptr<PresentationTimeFeedback> presentationFeedback;
+     struct
