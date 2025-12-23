@@ -42,5 +42,7 @@ check() {
 }
 
 package() {
-	install -Dm755 "${_srcname}/build/btrfs-rec" -t "${pkgdir}/usr/bin"
+	cd "${_srcname}/"
+	install -Dm755 build/btrfs-rec -t "${pkgdir}/usr/bin/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
