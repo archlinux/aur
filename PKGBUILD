@@ -2,7 +2,7 @@
 
 pkgname=clipse-git
 _pkgname=clipse
-pkgver=r285.ea4c0e1
+pkgver=r297.9511fe1
 pkgrel=1
 pkgdesc="Configurable TUI clipboard manager for Unix"
 arch=("any")
