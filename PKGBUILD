@@ -1,6 +1,6 @@
 # Maintainer: Philipp Marmet <fujexo@c0d3.ch>
 pkgname=gnome-shell-extension-headsetcontrol
-pkgver=49.5
+pkgver=49.6
 pkgrel=0
 pkgdesc="Gnome Shell Extension to visualize headset status from HeadsetControl "
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/ChrisLauinger77/gnome-shell-extension-HeadsetControl"
 license=('GPL')
 depends=('gnome-shell' 'headsetcontrol')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cfe066f05fb1944714b8663f10575673746e07ea28d5c712e2ee61487021f710')
+sha256sums=('b02e5cf32cc4bf8bcec769a7b42539226f017165320378828fe478b6e60ba969')
 _extension_name="HeadsetControl@lauinger-clan.de"
 _source_name="gnome-shell-extension-HeadsetControl"
 
