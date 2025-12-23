@@ -9,3 +9,5 @@ pkgdesc='Populate directories with least amount of symlinks'
 arch=(any)
 url='https://github.com/Dracape/SymP'
 license=('MIT')
+
+depends=('fish' 'fd')
