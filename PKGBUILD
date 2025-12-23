@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='5.6.7'
+pkgver='5.6.8'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity python python-gobject python-requests gtk3 vte3)
@@ -7,7 +7,7 @@ makedepends=()
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('bbd86dc623d04991ee5463ded0fc7b95513d7688a592576bdc796ebc38ecacbf')
+sha256sums=('43407f12192d2c0d783dd3a2d2837b40ad2346f2513e6d51b725ac85029a15aa')
 
 package() {
     mkdir -p ${pkgdir}/usr
@@ -15,6 +15,7 @@ package() {
     
     # Set proper permissions for executable files
     chmod +x "${pkgdir}/usr/bin/linuxtoys"
+    chmod +x "${pkgdir}/usr/bin/linuxtoys-cli"
     chmod +x "${pkgdir}/usr/share/linuxtoys/run.py"
     find "${pkgdir}/usr/share/linuxtoys/scripts/" -name "*.sh" -exec chmod +x {} \;
     find "${pkgdir}/usr/share/linuxtoys/helpers/" -name "*.sh" -exec chmod +x {} \;
