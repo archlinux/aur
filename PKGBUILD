@@ -1,4 +1,5 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=apparmor.d-git
 pkgver=0.3713
@@ -12,6 +13,7 @@ makedepends=('go' 'git' 'just')
 conflicts=('apparmor.d')
 source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git")
 sha512sums=('SKIP')
+install=apparmor.d.install
 
 pkgver() {
   cd "$srcdir/$pkgname"

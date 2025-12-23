@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+_warning_message() {
+    echo "==> Breaking changes:"
+    echo "==>"
+    echo "==> 1. You can now use the apparmor.d package instead of apparmor.d-git."
+    echo "==>"
+    echo "==> 2. apparmor.d now requires early policy loads:"
+    echo "==>    Ensure you have 'cache-loc /etc/apparmor/earlypolicy/'"
+    echo "==>    in '/etc/apparmor/parser.conf'. Otherwise your system may not load"
+    echo "==>    See: https://apparmor.pujol.io/install/#configure-apparmor"
+    echo "==>"
+}
+
+post_install () {
+    _warning_message
+}
+
+post_upgrade() {
+    _warning_message
+}
+_warning_message
