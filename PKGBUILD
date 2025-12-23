@@ -46,7 +46,7 @@ DLAGENTS=("https::/usr/bin/curl \
 source=("${_pkg_zip_name}"::"$_download_path"
         'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
-sha256sums=('b4eb64d33aee816091c3829602a7847b42583a3bcf59c51512d060555e66c0ed'
+sha256sums=('9a10c06dc2fe5d846c8b3f876c02b9f19916bb9c2b2c5db5b24bb71c9367168a'
             '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
             'SKIP')
 
