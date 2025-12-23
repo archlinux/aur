@@ -4,11 +4,11 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot org>
 # Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: SaultDon <sault.don gmail>
-# Contributor: Lantald < lantald at gmx.com >
-# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: Lantald <lantald at gmx.com>
+# Contributor: Thomas Dziedzic <gostrc at gmail>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
-# Contributor: Eric Forgeot < http://esclinux.tk >
+# Contributor: Eric Forgeot <http://esclinux.tk>
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
