@@ -1,11 +1,14 @@
 pkgbase = perl-crypt-pbkdf2
 	pkgdesc = The PBKDF2 password hashing algorithm
 	pkgver = 0.161520
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Crypt-PBKDF2
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test-fatal
+	checkdepends = perl-moo
+	checkdepends = perl-namespace-autoclean
 	depends = perl
 	depends = perl-strictures
 	depends = perl-type-tiny
