@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Kendall
-_pkgver=2.2.1
+_pkgver=2.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Kendall Rank Correlation and Mann-Kendall Trend Test"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('08c745865c00e824aaf6a721a4ef742b')
-b2sums=('88dd0a444e8e34e3cfb53d426805c465cde1ca16f65971a6c59bc722340e5160faa10c28faaca64a3c53f516bcec2d33e973b7048d8c394dec90461db0407941')
+md5sums=('98be76c85642b99c25911a390879a581')
+b2sums=('b7367e03b34ad64f0616b05ee9811247aa146b271d071bafec5c060ec3e64256a376c2d000462feeca66a6da6ed5084c6fa1cd3779eaf9ca950f2bd34a8d97a5')
 
 build() {
   mkdir build
