@@ -1,0 +1,5 @@
+[golazo-bin]
+source = "github"
+github = "0xjuanma/golazo"
+use_latest_release = true
+prefix = "v"
