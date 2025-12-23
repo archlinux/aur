@@ -3,9 +3,9 @@
 # Contributor: Davide Poderini <davide at poder dot in>
 
 pkgname=kak-tree-sitter
-pkgver=3.0.0
+pkgver=3.1.0
 _ctlname=ktsctl
-_ctlver=3.0.0
+_ctlver=3.1.0
 pkgrel=1
 pkgdesc='tree-sitter meets Kakoune '
 arch=('x86_64')
@@ -17,8 +17,8 @@ options=(!debug !lto)
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate    
     $_ctlname-$_ctlver.tar.gz::https://static.crates.io/crates/$_ctlname/$_ctlname-$_ctlver.crate)
-sha256sums=('fffec008a889b59dbb4beed55082da3976461ed584187a289e1a2e94b4ec9f28'
-            '8dd45c61d5a43ad4f15f2880b6c69ad4d5b704a2629882324f1e56d9c3fb418d')
+sha256sums=('c6106d55427617246520854e06f28a224304937ec0d7898f36f674b34c30621c'
+            '4365b7e397da87b3a7d58edd8a1b26af5a669e88a2256cd86394782ba71d0280')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=1.86.0
