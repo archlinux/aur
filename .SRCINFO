@@ -1,0 +1,17 @@
+pkgbase = tomlc17-git
+	pkgdesc = TOML parser in C17
+	pkgver = r116.f6c98d0
+	pkgrel = 1
+	url = https://github.com/cktan/tomlc17
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = tomlc17
+	conflicts = tomlc17
+	options = !debug
+	source = git+https://github.com/cktan/tomlc17.git
+	sha256sums = SKIP
+
+pkgname = tomlc17-git
