@@ -4,7 +4,7 @@
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
 url="https://abdownloadmanager.com/"
@@ -17,17 +17,17 @@ source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver
 sha256sums=("460a166f92c409889812a30cffbc682fea37e170f7c1d63f4bb8220c0b0fc46b")
 
 package() {
-    install -d "${pkgdir}/opt/"
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
 
+
     mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
+    mv "${srcdir}/${_pkgname}/"{bin,lib} "${pkgdir}/usr"
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.abdownloadmanager.desktop" <<EOF
 [Desktop Entry]
 Name=AB Download Manager
 Comment=Manage and organize your download files better than before
 GenericName=Download Manager
-Exec=/opt/${_pkgname}/bin/${_pkgname}
+Exec=${_pkgname}
 Icon=${_pkgname}
 Terminal=false
 Type=Application
