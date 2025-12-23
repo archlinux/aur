@@ -23,6 +23,6 @@ pkgbase = devpod-community-bin
 	conflicts = devpod-cli-bin
 	options = !strip
 	source = devpod-community-bin-0.8.3.tar.gz::https://github.com/skevetter/devpod/releases/download/v0.8.3/DevPod_linux_x86_64.tar.gz
-	sha256sums = cf0cfcab0520dccd97a57f78b0345b6ad93767067a2001cb90bd3800dca7110c
+	sha256sums = f792229eaeee490770c8c9ae0619dab0a2682910690196285f11ec859b917193
 
 pkgname = devpod-community-bin
