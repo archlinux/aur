@@ -4,3 +4,4 @@ src/
 *.log
 libfronius-*
 fronius-bridge-*
+publish.sh
