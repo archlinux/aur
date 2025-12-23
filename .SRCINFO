@@ -1,6 +1,6 @@
 pkgbase = sqlmap-git
 	pkgdesc = Automatic SQL injection and database takeover tool
-	pkgver = 1.9.4.r2.g663ab4a54
+	pkgver = 1.9.12.r5.gc62dd8511
 	pkgrel = 1
 	url = https://sqlmap.org
 	arch = any
