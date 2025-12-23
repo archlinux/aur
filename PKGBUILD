@@ -1,6 +1,6 @@
 # Maintainer: Piratheon <chafiq.dev@gmail.com>
 pkgname=ori
-pkgver=0.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="OpenRouter Interactive Terminal AI Assistant"
 arch=(x86_64)
@@ -17,7 +17,7 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
-sha256sums=('0cbf11de9e488491429e36252615b41e8843c38b6c904d085c4dc8534c976373')
+sha256sums=('ea85f2903780aa9f199c1fc8ea83d098feb6ccc76ee60b123eb2a6236123c877')
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
