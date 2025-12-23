@@ -5,7 +5,7 @@
 # basic info
 pkgname="darkly"
 _gitname="Darkly"
-pkgver=0.5.29
+pkgver=0.5.30
 pkgrel=1
 pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-  'e1fd9e81743a6b80e6507d1469b486b4b0736fc6c62c5e2eb93540fa5a57c1ff'
+  '4527949decb0b4715ef24a44e327f9a6189d7d0221a26fe634c5fab01530ed6a'
 )
 
 # KF6/Qt6
