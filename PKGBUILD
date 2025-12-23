@@ -1,7 +1,7 @@
 # Maintainer: Lewis Wynne <lew@ily.rs>
 
 pkgname=pda
-pkgver=2025.51
+pkgver="2025.52_XMAS"
 pkgrel=1
 pkgdesc="personal digital assistant! a key-value store with rich template support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 options=('!debug' 'strip')
-sha256sums=('5eaaade702d6025ef488d29184bd18e26fa417d849bd0f706fc2b878587a3bc4')
+sha256sums=('dabb7c9a2b791f34f63bae84162e15231d74b65ed894ff21b1ab90321e5b956b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
