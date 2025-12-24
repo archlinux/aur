@@ -1,6 +1,6 @@
 pkgbase = fortty
 	pkgdesc = GPU-accelerated terminal emulator written in Fortran
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/fortty
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = fortty
 	depends = glfw
 	depends = freetype2
 	depends = fontconfig
-	source = fortty-0.1.4.tar.gz::https://github.com/FortranGoingOnForty/fortty/archive/refs/tags/v0.1.4.tar.gz
+	source = fortty-0.1.5.tar.gz::https://github.com/FortranGoingOnForty/fortty/archive/refs/tags/v0.1.5.tar.gz
 	source = fortty.desktop
-	sha256sums = d8620f932e286679e0cc09af28fa6d395311ee8da7230a2f2c588127331233f3
+	sha256sums = 337da567e7d7efefdd6e516e111831f3c9a0a6a91e2c16dea8fe3380831b4c82
 	sha256sums = SKIP
 
 pkgname = fortty
