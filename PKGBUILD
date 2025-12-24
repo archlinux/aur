@@ -1,7 +1,7 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
 
 pkgname=gittuf
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A security layer for Git repositories"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 url="https://github.com/gittuf/gittuf"
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3398a7eab1cc620db39687115683198bded36540d628742239b4d93af45cbe80')
+sha256sums=('7411dbcf69122633e3ee140e76fead29abf7cd5e688a8481bfe20520965c34be')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"

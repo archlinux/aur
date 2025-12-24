@@ -1,12 +1,12 @@
 pkgbase = gittuf
 	pkgdesc = A security layer for Git repositories
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/gittuf/gittuf
 	arch = any
 	license = Apache-2.0
 	makedepends = go
-	source = gittuf-0.11.0.tar.gz::https://github.com/gittuf/gittuf/archive/v0.11.0.tar.gz
-	sha256sums = 3398a7eab1cc620db39687115683198bded36540d628742239b4d93af45cbe80
+	source = gittuf-0.12.0.tar.gz::https://github.com/gittuf/gittuf/archive/v0.12.0.tar.gz
+	sha256sums = 7411dbcf69122633e3ee140e76fead29abf7cd5e688a8481bfe20520965c34be
 
 pkgname = gittuf
