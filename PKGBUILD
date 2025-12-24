@@ -16,7 +16,7 @@ optdepends=(
 provides=('pacboost')
 conflicts=('pacboost' 'pacboost-git')
 backup=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/download/v$pkgver/pacboost-x86_64-linux.tar.gz")
+source=("pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/latest/download/pacboost-x86_64-linux.tar.gz")
 sha256sums=('SKIP')  # Update this with actual checksum after release
 
 package() {
