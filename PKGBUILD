@@ -1,4 +1,5 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
+# Maintainer: Ayla Ounce <ayla@ounce.email>
+# Contributor: Karim Vergnes <me@thesola.io>
 
 pkgname=intel-ipu6-dkms-git
 _pkgname=ipu6-drivers
