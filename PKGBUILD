@@ -2,7 +2,7 @@
 
 pkgname="devpod-community-bin"
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (prebuilt) - unofficial package"
 arch=("x86_64")
 url="https://github.com/skevetter/devpod"
@@ -30,7 +30,7 @@ conflicts=("devpod" "devpod-bin" "devpod-cli-bin")
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/DevPod_linux_x86_64.tar.gz"
 )
-sha256sums=('e029f1f23fc1c139e89ec7c5db4650124b55268bf4f78cef0eb67263ac7983eb')
+sha256sums=('0e2d11367e60a9923db3d81258502a72255e68e7ea6ffc8a8b84d4f7bb35619e')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${srcdir}"
