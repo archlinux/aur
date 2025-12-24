@@ -1,6 +1,6 @@
 pkgbase = lux-cli-bin
 	pkgdesc = A luxurious package manager for Lua
-	pkgver = 0.22.2
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://lux.lumen-labs.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lux-cli-bin
 	conflicts = lux-cli-git
 	conflicts = lux-cli
 	options = !lto
-	source = lx-0.22.2_x86_64.tar.gz::https://github.com/lumen-oss/lux/releases/download/v0.22.2/lx_0.22.2_x86_64.tar.gz
-	sha512sums = 9e6601faecdc20f3ba8e681d3572123fede2524be1da29c780248605a35d5b82570200da90d28f3d571c63ddb5dc92d78235cc8b9d3e456201e84b8ae12b4533
+	source = lx-0.22.3_x86_64.tar.gz::https://github.com/lumen-oss/lux/releases/download/v0.22.3/lx_0.22.3_x86_64.tar.gz
+	sha512sums = 715683275964b6fdb3fd74457656a3ce625659a5ffb77b0dbb108fecbe87b980f0c00365039e2db5f2cab84a65c9285b49b90af8b0331d580aae2d884167a791
 
 pkgname = lux-cli-bin
