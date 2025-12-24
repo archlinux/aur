@@ -1,9 +1,10 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=pica-comic-bin
 pkgdesc="A comic app built with Flutter, supporting multiple comic sources"
-pkgver=4.2.7
+pkgver=4.2.9
 pkgrel=1
 arch=('x86_64')
+options=(!debug)
 url="https://github.com/Pacalini/PicaComic"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1')
@@ -15,4 +16,5 @@ package() {
     tar -I zstd -xf data.tar.zst -C "${pkgdir}/"
     install -d "${pkgdir}/usr/local/bin"
     ln -sf /usr/local/lib/pica-comic/pica_comic "${pkgdir}/usr/local/bin/pica-comic"
+    sed -i 's/Keywords=Flutter;comic;images;/Keywords=Flutter;comic;images;\nIcon=pica-comic/' "${pkgdir}/usr/share/applications/pica-comic.desktop"
 }
