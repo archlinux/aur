@@ -1,0 +1,13 @@
+pkgbase = ttf-six-caps
+	pkgdesc = A highly condensed and tight display font by Vernon Adams
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Six+Caps
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	source = Six-Caps-Regular-1.0.ttf::https://github.com/google/fonts/raw/47a6c224b3e0287b2e48e3ffef8c9ce2ca4931f4/ofl/sixcaps/SixCaps.ttf
+	source = ttf-six-caps-1.0-OFL.txt::https://github.com/google/fonts/raw/47a6c224b3e0287b2e48e3ffef8c9ce2ca4931f4/ofl/sixcaps/OFL.txt
+	sha256sums = 7b54a46671722fb670647c9c3951e6e618b6a9d876fc5d9ae34dfd311628ae5a
+	sha256sums = 29cca754098468057880970c604e55c4e2bcb8479742e4130c94f2ddc0363f9c
+
+pkgname = ttf-six-caps
