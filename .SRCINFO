@@ -1,9 +1,10 @@
 pkgbase = codemap-bin
 	pkgdesc = A project brain for your AI. Give LLMs instant architectural context without burning tokens
 	pkgver = 3.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JordanCoin/codemap
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = git
 	optdepends = ast-grep: for dependency flow mode
@@ -13,5 +14,7 @@ pkgbase = codemap-bin
 	options = !strip
 	source_x86_64 = codemap-bin-3.1.6-x86_64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v3.1.6/codemap_3.1.6_linux_amd64.tar.gz
 	sha256sums_x86_64 = 3df556c8378fd7e74d2dc9f4050275d628532761331b348bbfa544618366144b
+	source_aarch64 = codemap-bin-3.1.6-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v3.1.6/codemap_3.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = ace6335499bfb4ed9a317e82c7de4d27c0d511610720e9c74220a3b745e6b5e6
 
 pkgname = codemap-bin
