@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Fortran Shell - A modern shell implementation with AST-based parsing'
 arch=('x86_64')
