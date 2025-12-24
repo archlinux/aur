@@ -1,6 +1,3 @@
-function post_install(){
-	echo "The EDL preloader script is located under /usr/bin/edl-preloader, if you need it!"
-}
 function post_upgrade(){
-	echo "The EDL preloader script is located under /usr/bin/edl-preloader, if you need it!"
+	echo "YTFE has switched to Qt 5. Make sure to remove GTK+ 2 unless it's needed by something else."
 }
