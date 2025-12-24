@@ -2,15 +2,15 @@
 
 pkgname=sqlitexx
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A C++ API for Sqlite."
 arch=('i686' 'x86_64')
-url='http://wiki.github.com/andreasbaumann/sqlitexx/'
+url='https://git.andreasbaumann.cc/cgit/sqlitexx/'
 license=('LGPL-3.0-or-later')
 makedepends=('sqlite3>=3.0' 'doxygen')
 depends=('sqlite3>=3.0')
 provides=('sqlitexx')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('41ecee2d76247f432454bc48fc5f069e')
 
 build() {
