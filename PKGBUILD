@@ -1,4 +1,5 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
+# Maintainer: Ayla Ounce <ayla@ounce.email>
+# Contibutor: Karim Vergnes <me@thesola.io>
 
 pkgname=icamerasrc-git
 _pkgname=icamerasrc
