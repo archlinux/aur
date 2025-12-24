@@ -2,7 +2,7 @@
 
 _pkgname=Frappe-Books
 pkgname=frappebooks-appimage
-pkgver=0.31.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Frappe Books is a simple, well-designed, desktop accounting software for freelancers and small businesses ."
 arch=('x86_64')
@@ -12,8 +12,9 @@ provides=('frappe-books')
 conflicts=('frappe-books' 'frappe-books-appimage')
 depends=('fuse-common')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
-source_x86_64=("${_filename}::https://github.com/frappe/books/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums_x86_64=('5fee9826cf06133c37ba601b618ae57c1edc0a958002deae1446c518dc9917ca')
+source_x86_64=("${_filename}::https://github.com/frappe/books/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch}.AppImage")
+# https://github.com/frappe/books/releases/download/v0.36.0/Frappe-Books-v0.36.0-linux-x86_64.AppImage
+sha256sums_x86_64=('c079d60b9811b6a2f6f329efe5ba14796c4f4ec6f693efdca39b6376fee79602')
 options=(!strip)
 prepare() 
 {
