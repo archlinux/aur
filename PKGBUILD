@@ -4,8 +4,8 @@
 
 pkgname=kaggle-api
 _name=${pkgname%-api}
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc='Kaggle API CLI'
 arch=('any')
 url="https://github.com/Kaggle/kaggle-api"
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d3945c32ce6f81046592d14f6d233ee1aec92769682fce4b05b3409e086db5f7')
+sha256sums=('3335da5752ae2843c3aa0523b7a7ed91a8dd5505c19cb4031f9d57651c346106')
 
 latestver() {
   curl -s "https://pypi.org/pypi/${_name}/json" | jq -r '.info.version'
