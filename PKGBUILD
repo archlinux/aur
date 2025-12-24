@@ -3,7 +3,7 @@
 pkgname=trbbfi-git
 pkgver=17
 pkgrel=1
-pkgdesc="The Really Better Brainfuck Interpreter (git version)"
+pkgdesc="The Really Better Brainfuck Interpreter (Git Version)"
 arch=('x86_64')
 url="https://github.com/TheRealOwenJ/trbbfi"
 license=('GPL3')
