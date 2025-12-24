@@ -1,0 +1,10 @@
+--- cpp/include/cuvs/util/file_io.hpp	2025-12-11 08:51:28.000000000 +0800
++++ cpp/include/cuvs/util/file_io.hpp.new	2025-12-24 15:44:13.330331222 +0800
+@@ -8,6 +8,7 @@
+ 
+ #include <algorithm>
+ #include <cstring>
++#include <cstdint>
+ #include <istream>
+ #include <limits.h>
+ #include <memory>

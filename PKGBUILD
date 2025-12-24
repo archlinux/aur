@@ -2,7 +2,7 @@
 
 pkgbase=cuvs
 pkgname=(libcuvs python-cuvs)
-pkgver=25.10.00
+pkgver=25.12.00
 pkgrel=1
 pkgdesc="cuVS - a library for vector search and clustering on the GPU"
 url="https://github.com/rapidsai/cuvs"
@@ -14,16 +14,22 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
     "missing-pkg.patch"
+    "system-dlpack.patch"
+    "missing-include.patch"
 )
 sha256sums=(
-    '4bfe4f07ce430261ad03618d200ecc061f18fc03915037f425cde8f820312511'
-    '50365355e85bf3b6ead903f39aa2cb82667d2b4f9172d95b903bd85c77b395dd'
+    '808caed1882584e58595dff9a9bcd58435414dcb38d1949dbd0a77cc6209bf1d'
+    'd0b3c866682c68b624e7e39743eed196723be3182f1f946e24b51e4c7c7cd112'
     '4781db2b3b552e1bcae18a7ca80ba094c66fb5ad33f588423fb2c1f51331743c'
+    '4391f34eab05396af8a6c6dac3cf918ae4fe0200c7a302052225be22950d820b'
+    '052865d777b4404ae68bd1272af301484adb70a8d9ab989287e2c59102011ac8'
 )
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
+    patch -p1 "c/CMakeLists.txt" < "$srcdir/system-dlpack.patch"
+    patch -p1 "cpp/include/cuvs/util/file_io.hpp" < "$srcdir/missing-include.patch"
     patch -p1 "python/cuvs/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
 }
 
@@ -45,7 +51,7 @@ build() {
 }
 
 package_libcuvs() {
-    depends+=('dlpack')
+    # depends+=('dlpack')
     cd "$srcdir/$pkgbase-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
 }

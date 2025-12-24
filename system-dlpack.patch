@@ -1,0 +1,11 @@
+--- c/CMakeLists.txt	2025-12-11 08:51:28.000000000 +0800
++++ c/CMakeLists.txt.new	2025-12-24 15:38:37.806302680 +0800
+@@ -62,7 +62,7 @@
+ rapids_cpm_init()
+ 
+ # add third party dependencies using CPM
+-include(../cpp/cmake/thirdparty/get_dlpack.cmake)
++find_package(dlpack REQUIRED)
+ 
+ if(BUILD_CAGRA_HNSWLIB)
+   include(../cpp/cmake/thirdparty/get_hnswlib.cmake)
