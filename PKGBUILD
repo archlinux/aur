@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-flatpak
-pkgver=202511271
+pkgver=202512231
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/5b5375277a9596d66b7d38f03fb7d6729831a072/archives/phoenix-flatpak.zip")
-sha512sums=('f82fa1f679904c769dc4ef5491db7f83814d4b6c71f7ca09cc7846614a42ff10d80a88cb81d8512b3a114222b21f962d7435efd69dbb123d45b7e7c6cf7d7e02')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/f09568c8a71af4fe42dd43c6f711c67daf605f1e/archives/phoenix-flatpak.zip")
+sha512sums=('d2241d6cb5358f77a6549201acdaf386ec2fca7737f65484b7eb131060f998545072853d910270273c14fef7e6440bb2c0a85c91fa684a4747f99ad269649df6')
 makedepends=('unzip')
 
 pkgver() {
@@ -47,6 +47,11 @@ package() {
     install -Dm644 "$tmpdir/defaults/pref/phoenix-desktop.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/defaults/pref/phoenix-desktop.js"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/policies/policies.json"
+    install -Dm644 "$tmpdir/resources/specs/apple-maps/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/apple-maps/permissions"
+    install -Dm644 "$tmpdir/resources/specs/discord/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/discord/permissions"
+    install -Dm644 "$tmpdir/resources/specs/element/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/element/permissions"
+    install -Dm644 "$tmpdir/resources/specs/google-maps/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/google-maps/permissions"
+    install -Dm644 "$tmpdir/resources/specs/twitter/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/twitter/permissions"
     install -Dm644 "$tmpdir/userjs/apple-maps/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/apple-maps/user.js"
     install -Dm644 "$tmpdir/userjs/discord/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/discord/user.js"
     install -Dm644 "$tmpdir/userjs/element/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/element/user.js"
