@@ -16,6 +16,7 @@ pkgbase = megacmd-bin
 	depends = pcre
 	depends = bzip2
 	depends = xz
+	optdepends = freeimage: For image preview/thumbnail support
 	provides = megacmd
 	provides = ffmpeg-mega
 	source = LICENSE

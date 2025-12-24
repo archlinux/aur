@@ -9,6 +9,7 @@ arch=('x86_64')
 url="http://mega.nz/cmd"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'zlib' 'libpsl' 'icu' 'bash-completion' 'pcre' 'bzip2' 'xz')
+optdepends=('freeimage: For image preview/thumbnail support')
 provides=('megacmd' 'ffmpeg-mega')
 source=('LICENSE'
 	"https://mega.nz/linux/repo/Arch_Extra/x86_64//megacmd-2.1.1-1-x86_64.pkg.tar.zst"
