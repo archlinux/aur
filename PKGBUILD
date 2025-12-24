@@ -3,7 +3,7 @@
 _pkgname=jalv
 pkgname=$_pkgname-git
 pkgver=1.8.0.r922.5a288e3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple but fully featured LV2 host for JACK (git version)'
 arch=(x86_64)
 url="https://drobilla.net/software/$_pkgname/"
@@ -24,7 +24,7 @@ makedepends=(
   'suil>=0.10.0'
   'zix>=0.8.0'
 )
-provides=($_pkgname)
+provides=($_pkgname lv2-host)
 conflicts=($_pkgname)
 optdepends=(
   'gtk3: Gtk 3.x frontend'

@@ -1,7 +1,7 @@
 pkgbase = jalv-git
 	pkgdesc = A simple but fully featured LV2 host for JACK (git version)
 	pkgver = 1.8.0.r922.5a288e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drobilla.net/software/jalv/
 	arch = x86_64
 	license = ISC
@@ -22,6 +22,7 @@ pkgbase = jalv-git
 	optdepends = gtk3: Gtk 3.x frontend
 	optdepends = qt5-base: Qt 5.x frontend
 	provides = jalv
+	provides = lv2-host
 	conflicts = jalv
 	source = jalv::git+https://gitlab.com/drobilla/jalv.git
 	sha256sums = SKIP
