@@ -1,22 +1,43 @@
-# Maintainer: Rooki <aur at rooki dot xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Rooki <aur at rooki dot xyz>
 # Contributor: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
+
 pkgname=rawbit
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.1.16
+pkgrel=1
 pkgdesc='A camera RAW photo preprocessor and importer'
 arch=('x86_64')
-url="https://github.com/cartercanedy/$pkgname"
+url="https://github.com/cartercanedy/rawbit"
 license=('MIT')
-source=(
- "${url}/releases/download/v${pkgver}/${pkgname}-x86_64-unknown-linux-gnu.tar.gz"
- "https://raw.githubusercontent.com/cartercanedy/${pkgname}/refs/heads/master/LICENSE.txt")
-sha256sums=('d27d4599e834a2a9aa1cf03a655d9cc08848909f8699bb6bca4761cc67b57b58'
-            '2771f32e4af957d2bfff91d25d2102e04fe0adf1d08280427091cab807d4c2cf')
 depends=('libiconv' 'gcc-libs')
+makedepends=('cargo')
+changelog=CHANGELOG.md
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e1e2f87db47090cd1b5eab7aef299b07cccb1692ad63457dcb2fe9460aa248bc')
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$pkgname-$pkgver"
+    cargo build --frozen --release --all-features --workspace
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname-$pkgver"
+    cargo test --frozen --all-features
+}
 
 package() {
-    install -Dm0755 "rawbit" -t "$pkgdir/usr/bin"
-    
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/rawbit" -t "$pkgdir/usr/bin" 
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md -t "$pkgdir/usr/share/docs/$pkgname/"
 }
