@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shadps4-bin
 _pkgname=shadPS4
-pkgver=0.12.5
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator.(Prebuilt version)"
 arch=('x86_64')
@@ -11,13 +11,14 @@ license=('GPL-2.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-
+    'util-linux-libs'
+    'zlib-ng-compat'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v.${pkgver}/${pkgname%-bin}-linux-sdl-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f7d7de431d50ad5cace6ac3e248f730f90e381597a9e198bda669cd2ce829f69'
+sha256sums=('558d1bb3888ca71e49394d4a43472344b1b2367cc0419180a6b0e6205843419c'
             'c2668b966dc1f5fef271c64e1749cf136e26b42dd9f993f063c69900a191e323')
 prepare() {
     sed -i -e "
