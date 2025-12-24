@@ -56,9 +56,26 @@ build() {
   # PortAudio's SSL cert expired Dec 2025 - skip TLS verification for downloads
   export CMAKE_TLS_VERIFY=0
 
+  # Force use of system LLVM tools instead of any custom install in /usr/local
+  # This ensures the defer tool links against the correct LLVM version (matching system clang)
+  # Same approach as homebrew-ascii-chat Formula to ensure all tools are from the same LLVM
+  export PATH="/usr/bin:$PATH"
+  export CC=/usr/bin/clang
+  export CXX=/usr/bin/clang++
+
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config \
+    -DASCIICHAT_CLANG_EXECUTABLE=/usr/bin/clang \
+    -DASCIICHAT_CLANG_PLUS_PLUS_EXECUTABLE=/usr/bin/clang++ \
+    -DASCIICHAT_LLVM_AR_EXECUTABLE=/usr/bin/llvm-ar \
+    -DASCIICHAT_LLVM_RANLIB_EXECUTABLE=/usr/bin/llvm-ranlib \
+    -DASCIICHAT_LLVM_NM_EXECUTABLE=/usr/bin/llvm-nm \
+    -DASCIICHAT_LLVM_READELF_EXECUTABLE=/usr/bin/llvm-readelf \
+    -DASCIICHAT_LLVM_OBJDUMP_EXECUTABLE=/usr/bin/llvm-objdump \
+    -DASCIICHAT_LLVM_STRIP_EXECUTABLE=/usr/bin/llvm-strip \
+    -DASCIICHAT_LLD_EXECUTABLE=/usr/bin/ld.lld
   # Only build the runtime binary (no libraries or docs)
   cmake --build build --target ascii-chat
 }
