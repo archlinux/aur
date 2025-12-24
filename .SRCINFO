@@ -1,6 +1,6 @@
 pkgbase = dwu
 	pkgdesc = Daily Wallpaper Updater for new anime wallpapers everyday from https://wallpaper-a-day.com
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/starrieste/dwu
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = dwu
 	depends = awww-git
 	depends = python-pillow
 	depends = wlr-randr
-	source = dwu-0.2.3.tar.gz::https://github.com/starrieste/dwu/archive/v0.2.3.tar.gz
-	sha256sums = 18fd8103df4185477b0071517b421ef3f13a66e0b6a0ec2aaf5e1c9de2ed1409
+	source = dwu-0.2.4.tar.gz::https://github.com/starrieste/dwu/archive/v0.2.4.tar.gz
+	sha256sums = 483b4d23ba775f5a05ea9a8ed38cc62500ecb0158ec85b8273d4c273588e3f21
 
 pkgname = dwu
