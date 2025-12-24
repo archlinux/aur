@@ -1,6 +1,6 @@
 pkgname=dwu
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Daily Wallpaper Updater for new anime wallpapers everyday from https://wallpaper-a-day.com"
 arch=('any')
 url="https://github.com/starrieste/dwu"
