@@ -2,7 +2,7 @@
 # Contributor: pacboost contributors
 
 pkgname=pacboost
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support, system diagnostics, and intelligent automation"
 arch=('x86_64')
