@@ -1,6 +1,6 @@
 # Maintainer: mfwolffe <wolffemf@dukes.jmu.edu>
 pkgname=fortty
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator written in Fortran"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glfw' 'freetype2' 'fontconfig')
 makedepends=('cmake' 'gcc-fortran')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortranGoingOnForty/fortty/archive/refs/tags/v$pkgver.tar.gz"
         "fortty.desktop")
-sha256sums=('5c8b2d9e331ad1f0985606ce9252f2fcceb94586d62f949d138048c28cea0749'
+sha256sums=('20b39136cb6dd954e2aae48cafc3fd8d05aa068779d14dfdbb5f84c71ee388d9'
             'SKIP')
 
 build() {

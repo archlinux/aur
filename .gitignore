@@ -1,0 +1,7 @@
+# Build artifacts
+pkg/
+src/
+*.tar.gz
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
