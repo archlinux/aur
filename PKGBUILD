@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=109.r8457
-pkgrel=1
+pkgrel=2
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut"
@@ -20,7 +20,6 @@ depends=(
   'pkgconf'
   'procps-ng'
   'sed'
-  'systemd'
   'util-linux'
 )
 makedepends=(
@@ -73,6 +72,7 @@ optdepends=(
   'rng-tools: enable rngd service to help generating entropy early during boot'
   'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
+  'systemd: systemd system and service manager'
   'systemd-ukify: Unified Kernel Image'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
