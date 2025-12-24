@@ -1,6 +1,6 @@
 pkgbase = pacboost
 	pkgdesc = High-performance package manager frontend for Arch Linux with integrated AUR support, system diagnostics, and intelligent automation
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/compiledkernel-idk/pacboost
 	arch = x86_64
