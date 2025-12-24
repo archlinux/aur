@@ -3,7 +3,7 @@
 pkgname=symp
 
 # Version
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 
 # Generic
@@ -18,7 +18,7 @@ makedepends=('fish' 'fd')
 
 source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
-b2sums=('b39921de8eca23fe8e61a04e14a4373953598edbe25b04b0014a9837e07b4512cb585cc79f8dfa152c2cb9d8619bdf4b1dca8910bd9a5455c6afd3cd982c7ca0')
+b2sums=('347403ca5eadbe8440a6ea8ce3162fddbfae632174c1fbbee6b32758b498ddeb7c2bbf5a1c7db669aa5fdba2fdd0edcaf63346675f0f6eee48a32c903e54dbf7')
 
 
 package() {
