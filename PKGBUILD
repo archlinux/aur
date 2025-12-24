@@ -27,7 +27,7 @@ makedepends=(
 #  "fzf"
 #)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("https://github.com/donydaily/PS2OPLmanager-cli/archive/refs/heads/main.tar.gz")
 sha256sums=("SKIP")
 
 package() {
