@@ -7,18 +7,17 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20251107.15113
+pkgver=20251219.15205
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL3')
 depends=('perl' 'guile1.8' 'texlive-core' 'python' 'libxext' 'freetype2'
-	 'qt6-svg' 'hicolor-icon-theme' 'gawk')
+	 'qt6-svg' 'hicolor-icon-theme' 'gawk' 'aspell')
 optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
-            'aspell: spell checking'
             'inkscape: svg convertion'
             'python-lxml: inkscape editting')
 makedepends=('ghostscript' 'gcc' 'subversion')
