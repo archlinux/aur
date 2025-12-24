@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=109.r8328
-pkgrel=2
+pkgver=109.r8457
+pkgrel=1
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut"
@@ -79,7 +79,7 @@ optdepends=(
   'tpm2-tools: tpm2 support for e.g. LUKS'
   'xz: xz compression'
 )
-provides=('initramfs')
+provides=('initramfs' 'dracut')
 backup=('etc/dracut.conf')
 source=(
   git+${url}.git
