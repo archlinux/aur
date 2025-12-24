@@ -2,7 +2,7 @@
 
 pkgbase=kvikio
 pkgname=(kvikio python-kvikio)
-pkgver=25.10.00
+pkgver=25.12.00
 pkgrel=1
 pkgdesc="KvikIO - High Performance File IO"
 url="https://github.com/rapidsai/kvikio"
@@ -12,8 +12,8 @@ depends=('gcc-libs' 'cuda' 'nvtx3' 'bs-thread-pool')
 makedepends=('cmake' 'ninja')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch")
 sha256sums=(
-    '1106f576e90cf816a846e207dda3630853ac2033de0785c03ce11e4f9794c116'
-    '96723986a190d582c80a4d9008dae99844d06e8fb60b5f92f9e45c77a3b6875e'
+    'a6f3180b5456494518290e770a8e2188c2a480ed557cfe2227bf1c690a2eecf5'
+    '5378e3fddc94fe0685554595b349fda8d5659eefa55ce41780fe2ed813b75298'
 )
 
 prepare() {

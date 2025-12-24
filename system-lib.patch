@@ -1,27 +1,24 @@
---- src/kvikio-25.06.00/cpp/CMakeLists.txt	2025-06-05 23:45:59.000000000 +0800
-+++ src/kvikio-25.06.00/cpp/CMakeLists.txt.new	2025-06-22 19:40:16.137584473 +0800
-@@ -75,7 +75,7 @@
-     BUILD_EXPORT_SET kvikio-exports
-     INSTALL_EXPORT_SET kvikio-exports
-   )
--  include(cmake/thirdparty/get_nvtx.cmake)
-+  find_package(nvtx3 REQUIRED)
+--- cpp/CMakeLists.txt	2025-12-11 06:11:52.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-12-24 15:26:46.202289786 +0800
+@@ -70,7 +70,7 @@
+   BUILD_EXPORT_SET kvikio-exports
+   INSTALL_EXPORT_SET kvikio-exports
+ )
+-include(cmake/thirdparty/get_nvtx.cmake)
++find_package(nvtx3 REQUIRED)
  
-   if(NOT TARGET CUDA::cuFile)
-     message(
-@@ -130,7 +130,10 @@
-   endif()
+ if(NOT TARGET CUDA::cuFile)
+   set(cuFile_FOUND 0)
+@@ -133,8 +133,6 @@
+   message(STATUS "Found cuFile Version API: ${cuFile_VERSION_API_FOUND}")
  endif()
  
 -include(cmake/thirdparty/get_thread_pool.cmake)
-+
-+
-+
-+
- 
+-
  # ##################################################################################################
  # * library targets --------------------------------------------------------------------------------
-@@ -180,7 +183,7 @@
+ 
+@@ -188,7 +186,7 @@
  # Notice, we do not link to cuda or cufile since KvikIO opens them manually using `dlopen()`.
  target_link_libraries(
    kvikio
