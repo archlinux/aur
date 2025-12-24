@@ -2,7 +2,7 @@
 
 pkgname=hexcore-link
 pkgver=2.5.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Hexcore Link for ANNE PRO 2D and other keyboards (firmware > 3.0)"
 arch=('x86_64')
 url="https://www.hexcore.xyz/hexcore-link"
@@ -16,7 +16,7 @@ source_x86_64=("https://storage.googleapis.com/aur-resources/HexcoreLink_${pkgve
                "70-hexcore-link.rules")
 sha256sums_x86_64=('726f2062d2446d2101e6b2eec5e95d186c1a0a15e21ede69e5ff573ec30d24e9'
                    '94e4942cc7408feb419e76aa2867e50bdf2bedefd734eb367286b5a7844d2c46'
-                   'ec38fecd631c49ad8c4c705e5a54c48d03c404da34c8d3b69a1eef26914ec3ea')
+                   '2aaca45668bc444b166f4aa3639df24c4dbbe843486221172010062abd9a0b0c')
 
 package() {
     install -d "${pkgdir}/opt/${pkgname}"

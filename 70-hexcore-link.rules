@@ -8,6 +8,8 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009", MODE="0666"
 KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
 KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a293", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a293", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
 
 # Anne Pro 1 / Hexcore D-Series (STM32)
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
@@ -17,7 +19,13 @@ KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710", MODE="0666
 SUBSYSTEM=="usb", ATTRS{idVendor}=="3311", ATTRS{idProduct}=="a298", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
 KERNEL=="hidraw*", ATTRS{idVendor}=="3311", ATTRS{idProduct}=="a298", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
 
+# Anne Pro 2D (Bluetooth)
+KERNEL=="hidraw*", KERNELS=="0005:000D:F0E0.*", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+KERNEL=="hidraw*", KERNELS=="0005:07D7:0000.*", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+
 # Catch-all for Hexcore/Obins vendors
 SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", MODE="0666", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3311", MODE="0666", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="3311", MODE="0666", TAG+="uaccess"
 SUBSYSTEM=="input", GROUP="input", MODE="0666"
