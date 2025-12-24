@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=fortty
+Comment=GPU-accelerated terminal emulator written in Fortran
+Exec=fortty
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+Keywords=terminal;console;shell;

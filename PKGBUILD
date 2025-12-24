@@ -1,15 +1,17 @@
 # Maintainer: mfwolffe <wolffemf@dukes.jmu.edu>
 pkgname=fortty
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU-accelerated terminal emulator written in Fortran"
 arch=('x86_64')
 url="https://github.com/FortranGoingOnForty/fortty"
 license=('MIT')
 depends=('glfw' 'freetype2' 'fontconfig')
 makedepends=('cmake' 'gcc-fortran')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/FortranGoingOnForty/fortty/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b7c33683d6f1b79dfa00a16f46d693cf0673ca1e483c5af734e85ba6e562b12')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FortranGoingOnForty/fortty/archive/refs/tags/v$pkgver.tar.gz"
+        "fortty.desktop")
+sha256sums=('9b7c33683d6f1b79dfa00a16f46d693cf0673ca1e483c5af734e85ba6e562b12'
+            'SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -21,4 +23,5 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 build/fortty "$pkgdir/usr/bin/fortty"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/fortty.desktop" "$pkgdir/usr/share/applications/fortty.desktop"
 }
