@@ -15,7 +15,7 @@ source_x86_64=("https://gitea.com/gitea/act_runner/releases/download/v${pkgver}/
 source_aarch64=("https://gitea.com/gitea/act_runner/releases/download/v${pkgver}/act_runner-${pkgver}-linux-arm64.xz")
 
 sha256sums=('245f610f82bcb5140d9040f997332186c03a575b98cce603e39f1f0300773e3e'
-            'ff4cc6b9b604da75254bbdcb550103d08b749a6986671c8fd69e1dbda2f230a6'
+            '8c79246331865e9316f60837de633b46e5be47f545e35a14ba139a8e6f840c15'
             '5ba0c3203cf42cb1e2b58840726b53e481fe980b8cfc24d14fba057d31d676ca'
             '5f8944df92d0e5278e3a29795dfcd8bcd340bea37075627d4f9d3303cdb58607')
 sha256sums_x86_64=('759821f7afc40afb9d0e55c07b7832e0fa08374e0f2b9626516156903cd632ad')

@@ -9,7 +9,7 @@ log:
 
 runner:
   # Where to store the registration result.
-  file: /etc/act_runner/.runner
+  file: .runner
   # Execute how many tasks concurrently at the same time.
   capacity: 1
   # Extra environment variables to run jobs.
@@ -23,18 +23,29 @@ runner:
   # Please note that the Gitea instance also has a timeout (3h by default) for the job.
   # So the job could be stopped by the Gitea instance if it's timeout is shorter than this.
   timeout: 3h
+  # The timeout for the runner to wait for running jobs to finish when shutting down.
+  # Any running jobs that haven't finished after this timeout will be cancelled.
+  shutdown_timeout: 0s
   # Whether skip verifying the TLS certificate of the Gitea instance.
   insecure: false
   # The timeout for fetching the job from the Gitea instance.
   fetch_timeout: 5s
   # The interval for fetching the job from the Gitea instance.
   fetch_interval: 2s
+  # The github_mirror of a runner is used to specify the mirror address of the github that pulls the action repository.
+  # It works when something like `uses: actions/checkout@v4` is used and DEFAULT_ACTIONS_URL is set to github,
+  # and github_mirror is not empty. In this case,
+  # it replaces https://github.com with the value here, which is useful for some special network environments.
+  github_mirror: ''
   # The labels of a runner are used to determine which jobs the runner can run, and how to run them.
-  # Like: "macos-arm64:host" or "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
-  # Find more images provided by Gitea at https://gitea.com/gitea/runner-images .
+  # Like: "macos-arm64:host" or "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest"
+  # Find more images provided by Gitea at https://gitea.com/docker.gitea.com/runner-images .
   # If it's empty when registering, it will ask for inputting labels.
   # If it's empty when execute `daemon`, will use labels in `.runner` file.
-  labels: []
+  labels:
+    - "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest"
+    - "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04"
+    - "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04"
 
 cache:
   # Enable cache server to use actions/cache.
@@ -88,6 +99,10 @@ container:
   force_pull: true
   # Rebuild docker image(s) even if already present
   force_rebuild: false
+  # Always require a reachable docker daemon, even if not required by act_runner
+  require_docker: false
+  # Timeout to wait for the docker daemon to be reachable, if docker is required by require_docker or act_runner
+  docker_timeout: 0s
 
 host:
   # The parent directory of a job's working directory.
