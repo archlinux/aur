@@ -1,6 +1,6 @@
 # Maintainer: dsrodrigues20 <dsrodrigues20@gmail.com>
 pkgname=auto-claude-bin
-pkgver=1.0.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Automação inteligente para Claude AI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('auto-claude')
 conflicts=('auto-claude')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/AndyMik90/Auto-Claude/releases/download/v${pkgver}/auto-claude_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
     cd "${srcdir}"
