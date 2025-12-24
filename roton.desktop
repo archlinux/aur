@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Roton
+Comment=Screen Recorder
+Exec=roton
+Icon=roton
+Terminal=false
+Categories=AudioVideo;Recorder;

@@ -1,6 +1,6 @@
 pkgname=roton-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Roton Screen Recording App (binary release)"
 arch=("x86_64")
 url="https://github.com/ferdinankurnian/roton"
@@ -19,7 +19,11 @@ sha256sums=('b9d7c76746ce8eeedf7da36df65f0bd94a19a6eb983432f69db079008c621d5d')
 package() {
   cd "${srcdir}/roton-v${pkgver}-linux-x86_64"
 
-  install -Dm755 roton "$pkgdir/usr/bin/roton"
+  install -Dm755 roton \
+    "$pkgdir/usr/bin/roton"
+
+  install -Dm644 roton.desktop \
+    "$pkgdir/usr/share/applications/roton.desktop"
 
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/roton/LICENSE"
