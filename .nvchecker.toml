@@ -1,0 +1,5 @@
+[justevery-code-bin]
+source = "github"
+github = "just-every/code"
+use_latest_release = true
+prefix = "v"
