@@ -1,5 +1,5 @@
 pkgname=lianpkg-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Wallpaper Engine .pkg unpacker and resource tool"
 keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'rust')
@@ -10,7 +10,7 @@ depends=('glibc')
 
 
 source=("lianpkg::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg_${pkgver}_linux_x86_64")
-sha256sums=('7e475643a46b0339ea2b417a2589db7af0fb8064ed9ade2e355c2af98a9bd384')
+sha256sums=('73bd0db671646cdfeac5e9fb7b4c52e85bfcc48be16b66bac090541db250ecba')
 
 package() {
   install -Dm755 "$srcdir/lianpkg" "$pkgdir/usr/bin/lianpkg"
