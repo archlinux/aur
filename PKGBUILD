@@ -3,8 +3,8 @@
 
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
 url="https://abdownloadmanager.com/"
@@ -14,7 +14,7 @@ provides=("abdownloadmanager" "ab-download-manager")
 conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz")
-sha256sums=("460a166f92c409889812a30cffbc682fea37e170f7c1d63f4bb8220c0b0fc46b")
+sha256sums=("7f2724387adc6480423bd9109abe3c5ab83bdc607dc3154435c74217638c1404")
 
 package() {
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
