@@ -1,6 +1,6 @@
 pkgbase = python-rapids-dependency-file-generator
 	pkgdesc = RAPIDSAI Dependency file generator
-	pkgver = 1.20.0
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://github.com/rapidsai/dependency-file-generator
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-rapids-dependency-file-generator
 	makedepends = python-setuptools
 	depends = python
 	depends = python-packaging
-	source = https://github.com/rapidsai/dependency-file-generator/archive/refs/tags/v1.20.0.tar.gz
-	sha256sums = bce0036440a1cc6734f0d2197ad118cb6356c288414b3e4d6a62573b33f3254d
+	source = https://github.com/rapidsai/dependency-file-generator/archive/refs/tags/v1.20.2.tar.gz
+	sha256sums = 4dcb77b9267b30d8e6648e3367c255e37cc575c107d35cf380ba741c06aaf64d
 
 pkgname = python-rapids-dependency-file-generator

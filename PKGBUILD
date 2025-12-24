@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-rapids-dependency-file-generator
-pkgver=1.20.0
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="RAPIDSAI Dependency file generator"
 url="https://github.com/rapidsai/dependency-file-generator"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-packaging')
 makedepends=('python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bce0036440a1cc6734f0d2197ad118cb6356c288414b3e4d6a62573b33f3254d')
+sha256sums=('4dcb77b9267b30d8e6648e3367c255e37cc575c107d35cf380ba741c06aaf64d')
 
 
 build() {
