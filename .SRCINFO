@@ -1,6 +1,6 @@
 pkgbase = procreate-thumbnailer-git
 	pkgdesc = Thumbnailer for Procreate (.procreate) files.
-	pkgver = 1.0.2.r0.g891e2bf
+	pkgver = 1.0.1.r0.g609dd88
 	pkgrel = 1
 	url = https://github.com/devlinman/Procreate-thumbnailer
 	arch = x86_64
