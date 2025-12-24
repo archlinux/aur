@@ -1,7 +1,7 @@
 pkgbase = finamp-bin
 	pkgdesc = An open source Jellyfin music player
 	pkgver = 0.9.22_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmshrv/finamp
 	arch = x86_64
 	license = MPL-2.0
@@ -11,6 +11,6 @@ pkgbase = finamp-bin
 	provides = finamp
 	conflicts = finamp
 	source = https://github.com/jmshrv/finamp/releases/download/0.9.22-beta/finamp-0.9.22-beta-linux-release.tar.gz
-	sha256sums = b870c199f42741327d39956de1c23012eb250d54abab268c0503ac1612ff126c
+	sha256sums = 86bf3263f9273df74ccf29dbfb09477a68986635c465062467c1164f45140649
 
 pkgname = finamp-bin
