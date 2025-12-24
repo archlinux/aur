@@ -1,0 +1,22 @@
+diff --git a/oqs-template/generate.yml b/oqs-template/generate.yml
+index e7033c8..f4884ab 100644
+--- a/oqs-template/generate.yml
++++ b/oqs-template/generate.yml
+@@ -321,7 +321,7 @@ kems:
+     nid_hybrid: '65041'
+     oqs_alg: 'OQS_KEM_alg_bike_l1'
+     enable_kem: true
+-    enable_tls: false
++    enable_tls: true
+     extra_nids:
+       current:
+         - hybrid_group: "x25519"
+@@ -1530,7 +1530,7 @@ sigs:
+         oid: '1.3.6.1.4.1.62245.2.1.9.2.2'
+         code_point: '0xff59'
+         enable: false
+-        enable_tls: false
++        enable_tls: true
+       # RSDPG 128
+       -
+         name: 'CROSSrsdpg128balanced'
