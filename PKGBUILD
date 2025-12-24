@@ -1,5 +1,5 @@
 pkgname=dwu
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Daily Wallpaper Updater for new anime wallpapers everyday from https://wallpaper-a-day.com"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('python' 'python-click' 'python-httpx' 'python-selectolax' 'python-pill
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('feh' 'nitrogen' 'awww-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/starrieste/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d1330b68f3bb1888e74336d730a43248f0eed7c1c2340b3011db239ae24567d8')
+sha256sums=('f35d54fc32dac935db5e496e49429745e15bfc3260a808b4d42cd5dc21624060')
 
 build() {
     cd "$pkgname-$pkgver"
