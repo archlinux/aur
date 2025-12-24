@@ -1,0 +1,15 @@
+pkgbase = sdtop
+	pkgdesc = A terminal-based systemd service manager with process tree visualization
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YashSaini99/sdtop
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.21
+	depends = systemd
+	source = sdtop-1.0.0.tar.gz::https://github.com/YashSaini99/sdtop/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sdtop
