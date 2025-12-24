@@ -2,7 +2,7 @@ pkgbase='python-moviepy'
 pkgname=('python-moviepy')
 _module='moviepy'
 pkgver='2.2.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Video editing with Python"
 url="https://github.com/Zulko/moviepy/"
 depends=('python' 'python-decorator' 'python-numpy' 'python-pillow' 'python-imageio' 'python-proglog' 'python-imageio-ffmpeg')
@@ -21,4 +21,6 @@ build() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENCE.txt \
+        "$pkgdir"/usr/share/licenses/$pkgname/LICENCE.txt
 }

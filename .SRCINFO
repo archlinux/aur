@@ -1,7 +1,7 @@
 pkgbase = python-moviepy
 	pkgdesc = Video editing with Python
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Zulko/moviepy/
 	arch = any
 	license = MIT
