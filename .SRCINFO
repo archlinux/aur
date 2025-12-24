@@ -18,6 +18,7 @@ pkgbase = mayaflux-dev-bin
 	depends = eigen
 	depends = spirv-headers
 	depends = spirv-tools
+	depends = spirv-cross
 	depends = vulkan-headers
 	depends = vulkan-icd-loader
 	depends = vulkan-tools

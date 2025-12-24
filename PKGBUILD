@@ -21,6 +21,7 @@ depends=(
     'eigen'
     'spirv-headers'
     'spirv-tools'
+    'spirv-cross'
     'vulkan-headers'
     'vulkan-icd-loader'
     'vulkan-tools'
