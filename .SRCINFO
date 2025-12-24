@@ -1,6 +1,6 @@
 pkgbase = wlout
 	pkgdesc = Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies
-	pkgver = 0.1.0
+	pkgver = 0.1.4
 	pkgrel = 3
 	url = https://github.com/sashokbg/wlout
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar KIRILOV <alexander.n.kirilov@gmail.com>
 
 pkgname=wlout
-pkgver=0.1.0
+pkgver=0.1.4
 pkgrel=3
 pkgdesc='Wayland (Wl Roots) Display Manager CLI with UNIX philosophy and modern goodies'
 url='https://github.com/sashokbg/wlout'
