@@ -9,6 +9,7 @@ pkgbase = swap-os-git
 	depends = efibootmgr
 	provides = swap-os
 	conflicts = swap-os
+	backup = etc/swapos.conf
 	source = git+https://github.com/CWZMorro/swap-OS.git
 	sha256sums = SKIP
 
