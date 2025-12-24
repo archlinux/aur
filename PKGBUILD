@@ -1,24 +1,26 @@
 # Maintainer: bemxio <bemxiov at protonmail dot com>
 
-pkgname="sklauncher-bin"
+_pkgname="sklauncher"
+pkgname="${_pkgname}-bin"
+
 pkgdesc="Secure and modern Minecraft Launcher"
 
-pkgver=3.2.12
-pkgrel=4
+pkgver=3.2.15
+pkgrel=1
 
 arch=(any)
 
 url="https://skmedix.pl"
-license=("Apache-2.0" "LicenseRef-SKlauncher")
+license=(Apache-2.0 LicenseRef-SKlauncher)
 
 depends=("java-runtime>=17")
 makedepends=(unzip gendesk)
-provides=(sklauncher)
+provides=("${_pkgname}=${pkgver}")
 
-install="${pkgname}.install"
+install="${_pkgname}.install"
 
-source=("https://skmedix.pl/binaries/skl/${pkgver}/SKlauncher-${pkgver}.jar" "sklauncher" "LICENSE.sklauncher")
-md5sums=("5b67c472ea94d09f540d598fcbd18f73" "3fbda136409cd254ce125839e59ae1c1" "edd0f7efa3df3a5cadaa2ecebf9eb57d")
+source=("${url}/binaries/skl/${pkgver}/SKlauncher-${pkgver}.jar" "${_pkgname}" "LICENSE.${_pkgname}")
+md5sums=("54d121176adfeff8b0f182117a8284bf" "b2df5498d1c951307ed1d5618445c2ee" "edd0f7efa3df3a5cadaa2ecebf9eb57d")
 
 noextract=("SKlauncher-${pkgver}.jar")
 
@@ -30,22 +32,22 @@ prepare() {
 	gendesk -f -n \
 		--pkgname SKlauncher \
 		--pkgdesc "${pkgdesc}" \
-		--exec sklauncher \
-		--icon sklauncher \
+		--exec "${_pkgname}" \
+		--icon "${_pkgname}" \
 		--categories "Game;Simulation"
 }
 
 package() {
 	# copy the JAR file
-	install -Dm755 "SKlauncher-${pkgver}.jar" "${pkgdir}/usr/share/java/sklauncher/SKlauncher.jar"
+	install -Dm755 "SKlauncher-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/SKlauncher.jar"
 
 	# copy the executable script
-	install -Dm755 sklauncher "${pkgdir}/usr/bin/sklauncher"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/sklauncher.png"
-	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/sklauncher.desktop"
+	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# copy the terms of service
-	install -Dm644 LICENSE.sklauncher "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE.${_pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
