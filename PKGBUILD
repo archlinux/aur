@@ -7,7 +7,7 @@
 
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=v0.7.2.r4.g7e60ce5
+pkgver=v0.8.1.r0.g1d16126
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
@@ -28,17 +28,17 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	dub build -b release-nobounds
+  cd "${srcdir}/${_pkgname}"
+  dub build -b release-nobounds
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	install -D ddhx "${pkgdir}/usr/bin/ddhx"
-	install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
-	#install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
-	#install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  cd "${srcdir}/${_pkgname}"
+  install -D ddhx "${pkgdir}/usr/bin/ddhx"
+  install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  #install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
+  #install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
 
 #
