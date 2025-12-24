@@ -1,4 +1,5 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
+# Maintainer: Ayla Ounce <ayla@ounce.email>
+# Contributor: Karim Vergnes <me@thesola.io>
 
 _ipu_ver=ipu6
 pkgname=intel-ipu6-camera-hal-git
