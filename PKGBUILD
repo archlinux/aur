@@ -16,7 +16,7 @@ license=('MIT')
 depends=('fish' 'fd')
 makedepends=('fish' 'fd')
 
-source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
 b2sums=('347403ca5eadbe8440a6ea8ce3162fddbfae632174c1fbbee6b32758b498ddeb7c2bbf5a1c7db669aa5fdba2fdd0edcaf63346675f0f6eee48a32c903e54dbf7')
 

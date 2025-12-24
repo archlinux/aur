@@ -9,7 +9,7 @@ pkgbase = symp
 	makedepends = fd
 	depends = fish
 	depends = fd
-	source = -5.2.1.tar.gz::https://github.com/Dracape/symp/archive/refs/tags/5.2.1.zip
+	source = symp-5.2.1.tar.gz::https://github.com/Dracape/symp/archive/refs/tags/5.2.1.zip
 	b2sums = 347403ca5eadbe8440a6ea8ce3162fddbfae632174c1fbbee6b32758b498ddeb7c2bbf5a1c7db669aa5fdba2fdd0edcaf63346675f0f6eee48a32c903e54dbf7
 
 pkgname = symp
