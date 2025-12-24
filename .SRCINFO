@@ -1,0 +1,23 @@
+pkgbase = pacboost
+	pkgdesc = High-performance package manager frontend for Arch Linux with integrated AUR support, system diagnostics, and intelligent automation
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/compiledkernel-idk/pacboost
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = pacman
+	depends = git
+	depends = base-devel
+	optdepends = sudo: for privilege escalation during AUR package building
+	optdepends = asp: for advanced source package management
+	provides = pacboost
+	conflicts = pacboost-bin
+	conflicts = pacboost-git
+	source = pacboost-1.4.3.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = pacboost
