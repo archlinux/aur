@@ -3,7 +3,7 @@
 _pkgname='vector'
 pkgname="python-${_pkgname}"
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way."
 arch=('any')
 url='https://github.com/scikit-hep/vector'

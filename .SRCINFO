@@ -1,7 +1,7 @@
 pkgbase = python-vector
 	pkgdesc = A library for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way.
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/vector
 	arch = any
 	license = MIT
