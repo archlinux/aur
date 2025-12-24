@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.0.185
+pkgver=1.0.193
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "${pkgname}-${pkgver}.deb::https://github.com/sst/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/sst/opencode/dev/LICENSE"
 )
-sha256sums=('40462c17e2ab6575efde16b6b9bb6c80fe5e3ba77445b94cff6104ca0eba1dae'
+sha256sums=('ca0cc125018f7934d21646e59b3a667de541a526e60790392f9090e65b91ca60'
             '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
 
 package() {
