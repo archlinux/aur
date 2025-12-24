@@ -3,9 +3,9 @@
 pkgname=libpurple-carbons
 _pkgname=carbons
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/gkdr/carbons'
 license=('GPL')
 depends=('libpurple' 'libxml2' 'glib2')
