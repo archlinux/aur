@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=2.6.0
+pkgver=3.0.0
 pkgrel=1
 
 install=antimony.install
