@@ -1,6 +1,6 @@
 pkgbase = spectacle-no-purpose
 	pkgdesc = KDE screenshot capture utility, without the dependency on purpose. This disables the share menu
-	pkgver = 6.5.3
+	pkgver = 6.5.4
 	pkgrel = 1
 	epoch = 1
 	url = https://kde.org/plasma-desktop/
@@ -43,7 +43,7 @@ pkgbase = spectacle-no-purpose
 	depends = xcb-util
 	depends = xcb-util-cursor
 	depends = xcb-util-image
-	source = https://download.kde.org/stable/plasma/6.5.3/spectacle-6.5.3.tar.xz
-	sha256sums = cf150166ecd4b40c2fa7b3b4761cee22ff08b2cc8da68cf8cd6ffc0efc78c8b7
+	source = https://download.kde.org/stable/plasma/6.5.4/spectacle-6.5.4.tar.xz
+	sha256sums = b356dd9362d9557202d87d5561ce45edde28f9eb4ab0e38fd3b892623f2d4bc1
 
 pkgname = spectacle-no-purpose
