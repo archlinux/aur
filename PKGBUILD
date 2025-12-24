@@ -2,7 +2,7 @@
 
 pkgname=cntr-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A container debugging tool based on FUSE'
 arch=('x86_64')
 url='https://github.com/Mic92/cntr'
@@ -15,8 +15,9 @@ optdepends=('docker: docker support'
   'containerd: containerd support')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname}-${pkgver}"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-${CARCH}-unknown-linux-musl")
 noextract=("${pkgname}-${pkgver}")
+options=('!debug')
+source=("${pkgname}-${pkgver}"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-${CARCH}-unknown-linux-musl")
 sha256sums=('fd188214d1a41efd391fc314919079afae7d66955835492a01961896ca6b0357')
 
 package() {
