@@ -17,3 +17,8 @@ depends=('fish' 'fd')
 source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
 b2sums=('731299069f0884628adf319034de3428d694cae03012caa89586288233e0eef0184383d90f825f9512d9afab649829e305ee9b450167632c4f7f90daa88bbbd8')
+
+
+package() {
+	"SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver"
+}
