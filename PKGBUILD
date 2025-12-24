@@ -1,7 +1,7 @@
 # Maintainer: devlinman <dev.linman.tech@gmail.com>
 
 pkgname=procreate-thumbnailer-git
-pkgver=1.0.1.r0.g609dd88
+pkgver=1.0.2.r0.g891e2bf
 pkgrel=1
 pkgdesc="Thumbnailer for Procreate (.procreate) files."
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
     if git describe --tags --long >/dev/null 2>&1; then
         git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
     else
-        echo "1.0.1.r0.g$(git rev-parse --short HEAD)"
+        echo "1.0.2.r0.g$(git rev-parse --short HEAD)"
     fi
 }
 
@@ -47,4 +47,8 @@ package() {
     # License (if present)
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+
+    echo -e "\n \e[31;1m  ENABLE PREVIEWS FOR \"PROCREATE ARTWORK\" IN YOUR FILE MANAGER. \e[0m \n"
+    sleep 2
+
 }
