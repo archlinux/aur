@@ -1,6 +1,6 @@
 pkgbase = lyvoxa-bin
 	pkgdesc = Optimize Linux system monitor with real-time TUI built in Rust (precompiled binary)
-	pkgver = 3.1.0
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/lyvoxa
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = lyvoxa-bin
 	conflicts = lyvoxa
 	conflicts = lyvoxa-git
 	options = !strip
-	source = lyvoxa-3.1.0-linux-amd64.tar.gz::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.0/lyvoxa-3.1.0-linux-amd64.tar.gz
-	source = lyvoxa-3.1.0-linux-amd64.tar.gz.sha256::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.0/lyvoxa-3.1.0-linux-amd64.tar.gz.sha256
-	source = lyvoxa-3.1.0-linux-amd64.tar.gz.asc::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.0/lyvoxa-3.1.0-linux-amd64.tar.gz.asc
+	source = lyvoxa-3.1.2-linux-amd64.tar.gz::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.2/lyvoxa-3.1.2-linux-amd64.tar.gz
+	source = lyvoxa-3.1.2-linux-amd64.tar.gz.sha256::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.2/lyvoxa-3.1.2-linux-amd64.tar.gz.sha256
+	source = lyvoxa-3.1.2-linux-amd64.tar.gz.asc::https://github.com/oxyzenQ/lyvoxa/releases/download/3.1.2/lyvoxa-3.1.2-linux-amd64.tar.gz.asc
 	validpgpkeys = 3495ABF0957D28A7E85013750D8D13BB989AF9F0
-	sha256sums = dc3156638609708618206713411058bba95514343a58871ecb07260fb5b3a13a
-	sha256sums = 0824ce2cc353a7500b326ef938967cc1de948c36700eb11a6f893561d5f805ac
-	sha256sums = e90b2f677e081c2516efbc0f09c94785b7366a82d33e9091409e390a8aa5449c
+	sha256sums = 2848247d8864c7350e92e9de4a65127d1b51d728b065a72b9a09a6a06d5f7479
+	sha256sums = c8dde257b8c17c1c8f8097ae3774b7af2f364ba920a4e1f918f5d1ee8509eb4d
+	sha256sums = 509dedd6de2434ea33a98f466598a206d4ffd28274043780e7f38dbab50786ab
 
 pkgname = lyvoxa-bin
