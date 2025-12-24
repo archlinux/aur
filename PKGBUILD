@@ -1,7 +1,7 @@
 # Maintainer: Techoraye <contact.techoraye@gmail.com>
 pkgname=metetch
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Fast system information display utility with modular customizable features"
 arch=('x86_64')
 url="https://github.com/techoraye/metetch"
@@ -33,5 +33,5 @@ package() {
     make DESTDIR="$pkgdir/" install
     
     # Install license
-    install -Dm 644 ../"LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
