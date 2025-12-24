@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+ipu6-drivers
+pkg
+src
