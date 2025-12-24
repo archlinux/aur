@@ -1,15 +1,17 @@
 pkgbase = python-yfinance
 	pkgdesc = Yahoo! Finance market data downloader (+faster Pandas Datareader)
-	pkgver = 0.2.66
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/ranaroussi/yfinance
 	arch = any
 	license = Apache-2.0
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-beautifulsoup4
+	depends = python-curl-cffi
 	depends = python-frozendict
 	depends = python-multitasking
 	depends = python-numpy
@@ -19,11 +21,11 @@ pkgbase = python-yfinance
 	depends = python-protobuf
 	depends = python-pytz
 	depends = python-requests
-	depends = python-requests-cache
 	depends = python-websockets
-	optdepends = python-pandas-datareader: to use pandas_datareader
+	optdepends = python-requests-cache: reduce requests
+	optdepends = python-requests-ratelimiter: limit requests
 	optdepends = python-scipy: repair
-	source = yfinance-0.2.66.tar.gz::https://github.com/ranaroussi/yfinance/archive/refs/tags/0.2.66.tar.gz
-	b2sums = 4cb10848688c96116c3d574035c85c0e6ff13d471b758a86c955497f8cab4cce1d5a1f5d918d59c93c5abd3a562ddb45837e834e96022f9c6e7e712ef74a2ec6
+	source = yfinance::git+https://github.com/ranaroussi/yfinance.git#tag=1.0
+	b2sums = d37dbc57a69cd81d56da18a6d961064e8a9d9a9f9b4bfb34cd98d3fce51c1ec74b6c9afea2fe3bf9e5c61fd2b963e82c4a8989e740b36f339111516153b405c6
 
 pkgname = python-yfinance

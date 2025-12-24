@@ -1,3 +1,4 @@
+yfinance
 *.tar.*
 *.log
 *.sh
