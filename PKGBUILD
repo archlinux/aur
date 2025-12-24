@@ -4,7 +4,7 @@ _pkgauthor=klpod221
 _pkgname=kerminal
 appname=Kerminal
 pkgname=${_pkgname}-bin
-pkgver=2.5.5
+pkgver=2.5.6
 _pkgvername=v${pkgver}
 pkgrel=2
 pkgdesc="Modern Terminal Emulator & SSH Manager"
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 
 install="${pkgname}.install"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${appname}_${pkgver}_${_barch[0]}.deb")
-sha256sums_x86_64=('09190aa50db31caec5af1da95269a854ca275d25576ec5f8a063b5b5f3b9047f')
+sha256sums_x86_64=('2ace687a1a65b86457edabffa68de31edaa0f7a9d09ecf61c9e60ce26d54d637')
 
 package() {
     cd "${pkgdir}"
