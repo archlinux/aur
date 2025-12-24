@@ -1,6 +1,6 @@
 pkgbase = vencoder-bin
 	pkgdesc = A graphical tool to transcode video
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/lines-of-codes/Vencoder
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = vencoder-bin
 	depends = ffmpeg
 	depends = gtk3
 	options = !strip
-	source = https://github.com/lines-of-codes/Vencoder/releases/download/v0.1.2/vencoder-release.zip
-	source = https://github.com/lines-of-codes/Vencoder/archive/refs/tags/v0.1.2.tar.gz
-	b2sums = abb223e7c9b1fc408b3a69dfbc789f637dc5adcd13e60c2a2599346f604954c7f0636aeab892fa66d9acad30c468de3281ed2310112d8675537c24cdef363fb9
-	b2sums = 7d6e93537816bb3ffe96bd72a0469343604fa2d1bcca0b7ea57bb33810049638f440cac6fe4c03e624acff1011e5573978d8a1ae4d7152e986f4bb2b328f6526
+	source = https://github.com/lines-of-codes/Vencoder/releases/download/v0.1.3/vencoder-release.zip
+	source = https://github.com/lines-of-codes/Vencoder/archive/refs/tags/v0.1.3.tar.gz
+	b2sums = b45a224918975042c74b45c933f2f254cf899d73e8b48091f174b0413c1dd9df0cc1b63733a8f773c99816c4c70d0431188e1eb2bd10d72bbdf51ec28a05fb47
+	b2sums = 0433474f8dfedf28af70fc056ed876c6354ad6f2558d08f2c3b73467969dba0466e451c75a6e502d8f35bdfbf1597713373668271069195e761a082da27c8df2
 
 pkgname = vencoder-bin
