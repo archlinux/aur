@@ -17,6 +17,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
+depends=('glibc' 'gcc-libs')
 provides=("${pkgname}")
 makedepends=('rust')
 
