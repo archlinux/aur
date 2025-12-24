@@ -1,6 +1,6 @@
 # Maintainer: Rodolfo Panerai <rodolfo.panerai at gmail dot com>
 pkgname=megasync-bin
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=('glibc>=2.33'
          'qt5-quickcontrols')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('6c2bbfc80f1dd0c38775af3928edf8185c18f8cc9f236f277aad533fc62e7788')
+sha256sums=('cfbc8f2135ab465b8944a2d94185fdb115b57101c1142f4d8b4cc2eb4f45cd89')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
