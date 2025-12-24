@@ -1,6 +1,6 @@
 pkgbase = win11-clipboard-history-bin
 pkgdesc = Windows 11-style Clipboard History Manager for Linux
-pkgver = 0.4.5
+pkgver = 0.4.6
 pkgrel = 1
 url = https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux
 arch = x86_64
@@ -16,8 +16,8 @@ provides = win11-clipboard-history
 conflicts = win11-clipboard-history
 options = !strip
 options = !debug
-source_x86_64 = https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux/releases/download/v0.4.5/win11-clipboard-history_0.4.5_amd64.deb
-sha256sums_x86_64 = 11f00b80dbc6265393f0d002c55ac26a4c15e60b79fe45b21c59d0316bb2539f
+source_x86_64 = https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux/releases/download/v0.4.6/win11-clipboard-history_0.4.6_amd64.deb
+sha256sums_x86_64 = bea44812d0a42179a6932d625a75eb887df1229a30d1d2b973cef72d5bf2cd27
 install = win11-clipboard-history-bin.install
 
 pkgname = win11-clipboard-history-bin
