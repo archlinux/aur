@@ -1,3 +1,9 @@
 post_install() {
-	echo $'You must run the following command to allow ds4drv access to uinput:\nudevadm control --reload-rules; rmmod uinput; modprobe uinput\nAlso, on some systems it may be necessary for you to force the uinput module to load at boot, as follows:\necho \"uinput\" > /etc/modules-load.d/uinput.conf'
+        local b="\e[1m"
+        local c="\e[0m"
+	printf "You must run the following command to allow ds4drv access to uinput:\n"
+        printf "${b}udevadm control --reload-rules; rmmod uinput; modprobe uinput${c}\n"
+        printf "if you can't use ${b}rmmod${c}, run this instead: ${b}udevadm trigger${c}\n"
+        printf "Also, on some systems it may be necessary for you to force the uinput module to load at boot, as follows:\n"
+        printf "echo \"uinput\" > /etc/modules-load.d/uinput.conf\n"
 }

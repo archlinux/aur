@@ -1,6 +1,6 @@
 pkgbase = ds4drv-git
-	pkgdesc = Sony DualShock 4 Userspace Driver
-	pkgver = 0.5.1.194.f6be043
+	pkgdesc = Sony DualShock 4 Userspace Driver - git version (Bluetooth LED patch included)
+	pkgver = 0.5.1.r26.gbe7327f
 	pkgrel = 1
 	url = https://github.com/chrippa/ds4drv
 	install = ds4drv.install
@@ -8,12 +8,16 @@ pkgbase = ds4drv-git
 	license = MIT
 	makedepends = git
 	depends = python-setuptools
-	depends = bluez-utils-compat
+	depends = bluez-utils
+	depends = bluez-deprecated-tools
 	depends = python-evdev
 	depends = python-pyudev
 	conflicts = ds4drv
 	source = git+https://github.com/chrippa/ds4drv.git
+	source = ds4drv.conf
+	source = 13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch
 	sha256sums = SKIP
+	sha256sums = d1b5537b7d76e029eac019f8b4c2b215dae08227fa65fa5da4fa58ffc23924a6
+        sha256sums = c134c74b7591d9ae3ba592bb192e339668b3db1d836b681e08aa6a6a1b3954f6
 
 pkgname = ds4drv-git
-
