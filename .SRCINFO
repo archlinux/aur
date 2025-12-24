@@ -1,5 +1,5 @@
 pkgbase = trbbfi-git
-	pkgdesc = The Really Better Brainfuck Interpreter (git version)
+	pkgdesc = The Really Better Brainfuck Interpreter (Git Version)
 	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/TheRealOwenJ/trbbfi
