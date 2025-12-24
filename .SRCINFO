@@ -1,0 +1,19 @@
+pkgbase = cumlprims-mg
+	pkgdesc = Multi-node, multi-GPU (MNMG) ML mathematical primitives and some algorithms used by cuML
+	pkgver = 25.12.00
+	pkgrel = 1
+	url = https://github.com/rapidsai/cumlprims_mg
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cuda
+	makedepends = cmake
+	makedepends = gcc
+	depends = cuda
+	depends = rmm
+	depends = libraft
+	source = https://github.com/rapidsai/cumlprims_mg/archive/refs/tags/v25.12.00.tar.gz
+	source = system-lib.patch
+	sha256sums = 9326eddc72e97ab3a55df2648e82cfc4e62609c2ff09602d5565c31a4180a6f5
+	sha256sums = c376c0fce01468ab8621df76b2a511864296b87b822880df4d2fd5a897c29972
+
+pkgname = cumlprims-mg
