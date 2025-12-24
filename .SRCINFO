@@ -1,6 +1,6 @@
 pkgbase = fisicalab.app
 	pkgdesc = Become familiar with physical concepts without the risk of getting lost in mathematical details
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/fisicalab
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = fisicalab.app
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
+	makedepends = renaissance
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
 	depends = gsl
-	source = https://ftp.gnu.org/gnu/fisicalab/fisicalab-0.3.5-1.tar.gz
-	sha256sums = a710d5ac8f5a096cbd2972fc42d8861f7996321161f90132c8e67c4704e55bb9
+	source = https://ftp.gnu.org/gnu/fisicalab/fisicalab-0.4.0.tar.gz
+	sha256sums = e08bf78ee55d3477754b3a3eb9c36a3f66a28da81005cf323df2b82950328c82
 
 pkgname = fisicalab.app
-
