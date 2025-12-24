@@ -1,0 +1,12 @@
+pkgbase = tlauncher-installer
+	pkgdesc = TLauncher (prebuilt binary from upstream .deb)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://tlauncher.org
+	arch = any
+	license = MIT
+	noextract = tlauncher-linux-installer.deb
+	source = tlauncher-linux-installer.deb::https://dl1.tlauncher.org/f.php?f=files%2Ftlauncher-linux-installer.deb
+	sha256sums = 418871838de35f024a285a7cebff5eb31b24cc3b3ddb086946a7027855cbff1a
+
+pkgname = tlauncher-installer
