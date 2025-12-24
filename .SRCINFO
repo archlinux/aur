@@ -7,6 +7,6 @@ pkgbase = lianpkg-bin
 	license = GPL3
 	depends = glibc
 	source = lianpkg::https://github.com/Yueosa/lianpkg/releases/download/v0.3.0/lianpkg_0.3.0_linux_x86_64
-	sha256sums = d2a33a626cedcc1ff0821219eeaf211417f5617d2d72671e370d7b44ef5d53cb
+	sha256sums = 7e475643a46b0339ea2b417a2589db7af0fb8064ed9ade2e355c2af98a9bd384
 
 pkgname = lianpkg-bin
