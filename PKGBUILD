@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-git
-pkgver=2.10.2.r0.g80ebf39
-_electronversion=35
+pkgver=2.10.4.r0.ge759627
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.(Use system-wide electron)一款支持webdav的开源桌面端markdown编辑器"
