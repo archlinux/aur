@@ -14,6 +14,7 @@ backup=("etc/default/${pkgname}")
 # Example output: ">=20.19 <= 24.x" means nodejs>=20.19.0 and nodejs<25
 depends=("nodejs>=20.19" "nodejs<25")
 makedepends=("npm" "curl")
+options=('!debug')
 source=("${pkgname}.env"
 "${pkgname}.service"
 "${pkgname}.sysusers"

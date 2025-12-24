@@ -9,6 +9,7 @@ pkgbase = n8n
 	makedepends = curl
 	depends = nodejs>=20.19
 	depends = nodejs<25
+	options = !debug
 	backup = etc/default/n8n
 	source = n8n.env
 	source = n8n.service
