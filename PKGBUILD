@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=gritty
-_npmver=9.0.0
+_npmver=9.0.1
 
 pkgname=$_npmname
 pkgdesc="Web Terminal Emulator."
@@ -22,7 +22,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('3b8056ae52ff90359040051ffd4dd505c4798c98198b4959ed544b80951ea589d815e444927a25c95ce0705b1d671d37f9d015f2025ceb1b031bf81b3f5d53b4')
+b2sums=('4724728ff092eeb2066c2b3a6c98bb8ec04dd214295c23fb9695531f39e446da59f64d211d0c45eded55814f4b4a19c554a0a1c8885dfdf8efb6c8a0aaf8ea9d')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
