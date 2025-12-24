@@ -2,7 +2,7 @@
 
 pkgname=aws-cli-bin
 # https://github.com/aws/aws-cli/raw/v2/CHANGELOG.rst
-pkgver=2.32.22
+pkgver=2.32.23
 pkgrel=1
 epoch=1
 pkgdesc='Unified command line interface for Amazon Web Services (Amazon provided v2 binary release)'
@@ -28,8 +28,8 @@ sha256sums=('451a681062516a0473c8764a6593b0a65b6e558bf6128899b1d5e19b258f679e'
 source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${pkgver}.zip)
 source_aarch64=(${pkgname}-${pkgver}-aarch64.zip::https://awscli.amazonaws.com/awscli-exe-linux-aarch64-${pkgver}.zip)
 
-sha256sums_x86_64=('6b8d55976cb44095e4ce89ac8723d200ca82eb9331057ef93ccd858cab22216c')
-sha256sums_aarch64=('34964be5b184c2bf6d39c6c013aa8ea4ee742da6d5435203aa301aa9cedf871a')
+sha256sums_x86_64=('3ac42eb500059bb01060529f8850afd7878487ce0f8f29f9ab4cf00fd7eba358')
+sha256sums_aarch64=('25c19767deae70c91e06499be40902647e5f56ac9d2fc78ecdeced53f9a1822c')
 validpgpkeys=(
   'FB5DB77FD5C118B80511ADA8A6310ACC4672475C'  # the key mentioned on https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 )
