@@ -1,6 +1,6 @@
 pkgbase = amazon-ec2-instance-selector-bin
 	pkgdesc = A CLI tool and go library which recommends instance types based on resource criteria like vcpus and memory
-	pkgver = 3.1.1
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/aws/amazon-ec2-instance-selector
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = amazon-ec2-instance-selector-bin
 	license = Apache
 	provides = ec2-instance-selector
 	conflicts = amazon-ec2-instance-selector
-	source_x86_64 = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.1/ec2-instance-selector-linux-amd64.tar.gz
-	sha256sums_x86_64 = f174062b6d6d8acfadcc3355e94ca06e6cf81c07b5bfeee7693d2f878947cb2f
-	source_aarch64 = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.1/ec2-instance-selector-linux-arm64.tar.gz
-	sha256sums_aarch64 = ef0de3146041436447cb0718efb386e41f68b0d2d5399d16595c06db48837db2
-	source_armv7h = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.1/ec2-instance-selector-linux-arm.tar.gz
-	sha256sums_armv7h = 756de41d30803363660e3ba5bbc076ce8b738446f862c3aefa7bf58056dceb93
+	source_x86_64 = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.3/ec2-instance-selector-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8ded7d361d9f73096a4a729d24ce4325353d84718fdd00a17879bf9d167fec06
+	source_aarch64 = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.3/ec2-instance-selector-linux-arm64.tar.gz
+	sha256sums_aarch64 = 738f42b081a42ea9f358a7ec76cce9519b703c51ff9a3e5dc8b8b1ce29a27370
+	source_armv7h = https://github.com/aws/amazon-ec2-instance-selector/releases/download/v3.1.3/ec2-instance-selector-linux-arm.tar.gz
+	sha256sums_armv7h = 39b82af69d20d65ca9490e7ec6ff2297138b4dd274e3ceafc833246dd2978b8f
 
 pkgname = amazon-ec2-instance-selector-bin
