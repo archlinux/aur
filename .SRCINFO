@@ -1,0 +1,13 @@
+pkgbase = orphanhunter
+	pkgdesc = A tool to find orphan packages based on binary access time (atime)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ggxerus/orphanhunter
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = gcc-libs
+	source = https://raw.githubusercontent.com/ggxerus/orphanhunter/main/orphanhunter.c
+	sha256sums = 6f701d2322a596cb7cd227ba09c0f1c3343370f9d5944ba054db310acd40303e
+
+pkgname = orphanhunter
