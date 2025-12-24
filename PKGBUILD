@@ -4,13 +4,13 @@
 # Contributor: Bruce Zhang
 pkgname=picgo-electron
 _pkgname=PicGo
-pkgver=2.3.1
-_electronversion=16
-_nodeversion=16
-pkgrel=2
+pkgver=2.4.1
+_electronversion=38
+_nodeversion=22
+pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue.(Use system-wide electron)"
 arch=('any')
-url="https://github.com/find-xposed-magisk/PicGo"
+url="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
 conflicts=(
 	"${pkgname%-electron}"
@@ -24,66 +24,88 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'yarn'
+    'pnpm'
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('fe6aa3b3fea32c0142506fa2c6d0c6f07c00a0a956dce0eaaaf74a5d382f7ae5'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('16e719a569fd91e6ccfa7ffed8f105c76dac211d26f9378428929e9468ac950a'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${_pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
-    sed -e "
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    _get_electron_version
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    " "${srcdir}/${pkgname}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     electronDist="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir=${srcdir}/.pnpm_cache"
+        echo "store-dir=${srcdir}/.pnpm_store"
+        echo "virtual-store-dir=${srcdir}/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=32"
+    } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+        } >> .npmrc
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-	NODE_ENV=development    yarn add -D xvfb-maybe
+    _ensure_local_nvm
+    sed -i -e "
+        /"author"/i \  \"homepage\": \"https:\/\/github.com\/Molunerfin\/PicGo\",
+        s/\&\& electron-builder --config electron-builder.config.ts\",/\",/g
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+    " package.json
+    NODE_ENV=development    pnpm install
 }
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-    NODE_ENV=production     yarn run build -l --dir
+    _ensure_local_nvm
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=development    pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist_electron/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist_electron/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/*.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    _icon_sizes=(256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
