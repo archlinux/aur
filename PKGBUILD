@@ -1,4 +1,5 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
+# Maintainer: Ayla Ounce <ayla@ounce.email>
+# Contributor: Karim Vergnes <me@thesola.io>
 
 pkgbase=ipu6-camera-bin
 pkgname="intel-ipu6-camera-bin"
