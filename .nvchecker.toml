@@ -1,0 +1,4 @@
+[lantern-bin]
+source = "regex"
+url = "https://github.com/getlantern/lantern-binaries"
+regex = 'lantern-installer-([\d\.]+)-64-bit\.deb'
