@@ -3,12 +3,12 @@
 
 pkgname=icamerasrc-git
 _pkgname=icamerasrc
-pkgver=r57.2d36ade
+pkgver=r91.4fb31db
 pkgrel=1
 pkgdesc="Intel IPU6 camera source for GStreamer"
 arch=('x86_64')
 url="https://github.com/intel/icamerasrc"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ipu6-camera-hal'
          'gstreamer'
          'libdrm'
