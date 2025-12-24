@@ -1,6 +1,5 @@
+oplmgr/
 pkg/
 src/
-PS2OPLManager-cli/
-main.tar.gz
-oplmgr-1.1.0-1-any.pkg.tar.zst
-oplmgr-git-1.1.1.0.gf47d7ff-1-any.pkg.tar.zst
+oplmgr-git-r2.48d4aef-1-any.pkg.tar.zst
+.gitignore
