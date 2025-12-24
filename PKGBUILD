@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Maintainer: Trevor Facer <trevordf@protonmail.com>
 pkgname=aliyun-cli-bin
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='A tool to manage and use Alibaba Cloud resources through a command line interface.(Prebuilt version)'
 url='https://github.com/aliyun/aliyun-cli'
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tgz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-arm64.tgz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tgz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.tgz")
-sha256sums_aarch64=('a5fbb3f7c30855647d30fb472f13877ad5c81372c4db047d656915aceb69ea4f')
-sha256sums_x86_64=('b4d2aed444051be3c421043f302bc9ea02f7bea5ae8632001630e9d20066a9d8')
+sha256sums_aarch64=('9ae709f388a6a5fa9a29f7947d32744704e14a4f5ad9dbe536a7c99b6c5c9899')
+sha256sums_x86_64=('6b5af936dc139811c90030e3e08d098d8bbcac32ce00c7eac6f9fde5b1d74881')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-cli-bin}" -t "${pkgdir}/usr/bin"
 }
