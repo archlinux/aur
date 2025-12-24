@@ -1,6 +1,6 @@
 pkgbase = cuml
 	pkgdesc = cuML - RAPIDS Machine Learning Library
-	pkgver = 25.10.00
+	pkgver = 25.12.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/cuml
 	arch = x86_64
@@ -17,16 +17,17 @@ pkgbase = cuml
 	depends = libraft
 	depends = libcuvs
 	depends = rapidjson
-	source = https://github.com/rapidsai/cuml/archive/refs/tags/v25.10.00.tar.gz
+	depends = cumlprims-mg
+	source = https://github.com/rapidsai/cuml/archive/refs/tags/v25.12.00.tar.gz
 	source = system-lib.patch
 	source = missing-include.patch
 	source = missing-include2.patch
 	source = missing-pkg.patch
-	sha256sums = 470844b85f89bf4afab8cd05cd69a8769fdcf2c1e6b82e687f21bf2cf948b9ec
-	sha256sums = 7bc3fa6f1f21222afe100eb7a8ee57b948bf1b03eb7f944c6663d019f42e1ae3
+	sha256sums = 5512ec00f8590879dcbc66a89850a1e47c196857d7b52fafcaf6d350ea5bc490
+	sha256sums = eef98e4572b886f58500d09854846defe6fc98b67c2ee4832d91a8468d46446c
 	sha256sums = a876fafc0102dcaa43d331ec496e0a8f3f0af03071e0a691414a38219c384909
 	sha256sums = e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520
-	sha256sums = 3740890159c6b92f3158dd7cd48418c862b5a5ac99d3cfb072aa37978be763ac
+	sha256sums = c0206eeaee662bd58ea8835fb25b0d8777e2522e729c3f8b380beb176ccdd99b
 
 pkgname = libcuml
 
@@ -36,6 +37,7 @@ pkgname = python-cuml
 	depends = libraft
 	depends = libcuvs
 	depends = rapidjson
+	depends = cumlprims-mg
 	depends = python
 	depends = python-pylibraft
 	depends = python-cuvs

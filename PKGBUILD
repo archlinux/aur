@@ -2,13 +2,13 @@
 
 pkgbase=cuml
 pkgname=(libcuml python-cuml)
-pkgver=25.10.00
+pkgver=25.12.00
 pkgrel=1
 pkgdesc="cuML - RAPIDS Machine Learning Library"
 url="https://github.com/rapidsai/cuml"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('cuda' 'rmm' 'libraft' 'libcuvs' 'rapidjson')
+depends=('cuda' 'rmm' 'libraft' 'libcuvs' 'rapidjson' 'cumlprims-mg')
 makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython')
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
@@ -18,11 +18,11 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    '470844b85f89bf4afab8cd05cd69a8769fdcf2c1e6b82e687f21bf2cf948b9ec'
-    '7bc3fa6f1f21222afe100eb7a8ee57b948bf1b03eb7f944c6663d019f42e1ae3'
+    '5512ec00f8590879dcbc66a89850a1e47c196857d7b52fafcaf6d350ea5bc490'
+    'eef98e4572b886f58500d09854846defe6fc98b67c2ee4832d91a8468d46446c'
     'a876fafc0102dcaa43d331ec496e0a8f3f0af03071e0a691414a38219c384909'
     'e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520'
-    '3740890159c6b92f3158dd7cd48418c862b5a5ac99d3cfb072aa37978be763ac'
+    'c0206eeaee662bd58ea8835fb25b0d8777e2522e729c3f8b380beb176ccdd99b'
 )
 
 prepare() {
@@ -45,10 +45,8 @@ build() {
         -DBUILD_PRIMS_TESTS=OFF \
         -DBUILD_CUML_EXAMPLES=OFF \
         -DBUILD_CUML_BENCH=OFF \
-        -DENABLE_CUMLPRIMS_MG=OFF \
         -DLINK_CUVS=ON \
         -DCUVS_LIB="cuvs::cuvs" \
-        -DSINGLEGPU=ON \
         -G Ninja
     cmake --build build
 

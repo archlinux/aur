@@ -1,6 +1,6 @@
---- cpp/CMakeLists.txt	2025-10-09 06:37:48.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-10-09 19:58:49.924669743 +0800
-@@ -233,8 +233,7 @@
+--- cpp/CMakeLists.txt	2025-12-11 13:33:19.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-12-24 17:27:15.908235765 +0800
+@@ -263,8 +263,7 @@
  rapids_cpm_init()
  rapids_cmake_install_lib_dir(lib_dir)
  
@@ -10,7 +10,7 @@
  create_logger_macros(CUML "ML::default_logger()" include/cuml/common)
  
  if(BUILD_CUML_TESTS OR BUILD_PRIMS_TESTS)
-@@ -242,15 +241,18 @@
+@@ -272,15 +271,18 @@
  endif()
  
  # CCCL before RMM, and RMM before RAFT
@@ -34,3 +34,12 @@
  endif()
  
  if(all_algo OR treeshap_algo)
+@@ -293,7 +295,7 @@
+ endif()
+ 
+ if(ENABLE_CUMLPRIMS_MG)
+-  include(cmake/thirdparty/get_cumlprims_mg.cmake)
++  find_package(cumlprims_mg REQUIRED)
+ endif()
+ 
+ if(BUILD_CUML_TESTS OR BUILD_PRIMS_TESTS)
