@@ -2,8 +2,8 @@
 # Contributor: Danny Waser (Waser Technologies) <waser@waser.tech>
 
 pkgname=python-crfsuite
-pkgver=0.9.11
-pkgrel=4
+pkgver=0.9.12
+pkgrel=1
 pkgdesc="A Python binding for crfsuite"
 arch=('x86_64')
 url="https://github.com/scrapinghub/${pkgname}"
@@ -14,9 +14,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.g
        "crfsuite.zip"::"https://github.com/chokkan/crfsuite/archive/refs/heads/master.zip"
        "liblbfgs.zip"::"https://github.com/chokkan/liblbfgs/archive/refs/heads/master.zip")
 noextract=('crfsuite.zip' 'liblbfgs.zip')
-sha512sums=('18419f44eb60c6fba42b4eca9f8ab1c30a1cab8e879b8beff53893ba779fb57a298658d78b734ad9751f6c0fc34cf076d48e6113dcd381b8804f7482a41115f9'
-            '3ddaddc385f1fd4771c18c42ebb2d8a0e0fb1f54375f450078ff7cc8485fb31159008f16125042e040a5ff2b0369b5e216b6853276d3e9dc44ed35d7d7cbbe4a'
-            '2b567b61e327cebf4aa0d8b36eb635a6758cd069520fbd7a546f591e6cc3dae178946cf4312f28815c166558f03088271e56133f011b8091ed453ff74fa8d7bd')
+b2sums=('1575895071b9a2cbfd2da19824404c0a21aaa582d331e3ccce76c7f9adc1a6cc44151c20b95307d91daaf8c7beb2e27da76e4312f6f7de79255b4862e71e1cb6'
+        '8cb74727595702862e0bdcf24a5b1c175121a7e717f3e4856cd2dba0fc122287b459b96992a45448c919b68fa1f6c1a2cef3fdbce7c7041782f8453ce973878b'
+        '16cb5681cb00e6600304730a0792770da574ba533a6167571f22004020bd92ea1f0edaa11d9f0eea91cb23be0a78969d8a5b9d13906dd77a3ad869fb242f7d7b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

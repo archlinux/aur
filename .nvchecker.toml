@@ -1,3 +1,4 @@
 [python-crfsuite]
-source = "git"
-git = "https://github.com/scrapinghub/python-crfsuite.git"
+source="github"
+github="scrapinghub/python-crfsuite"
+use_latest_tag=true
