@@ -2,8 +2,8 @@
 
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
-pkgver=25.10.00
-pkgrel=2
+pkgver=25.12.00
+pkgrel=1
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "missing-include.patch"
 )
 sha256sums=(
-    '85e7334a5993c537bba4714e53b19e1ff1f42f7c32fd5003717833a3882accf8'
+    'daf9747ae0b9937635df22054bf061295d36044344ffa1d113db598272b71a70'
     '653bfe4b37e67e283affaedf57e1f11c2cf261ac3cde72fbe04ae4439fd8ede7'
     '3aaac5dc31520092ebce845e178eac077ceb399774606b90598213697a18956d'
     '669b846f461a0ddb930d85243e5b8b37614e45da54c6d02a41bf164e444b46af'
