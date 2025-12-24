@@ -7,7 +7,7 @@ pkgdesc='A git staging TUI tool - Rust port of fuss'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/fussr'
 license=('MIT')
-depends=('git' 'libgit2' 'libssh2')
+depends=('git' 'libgit2' 'libssh2' 'openssl' 'zlib')
 makedepends=('rust' 'cargo' 'pkg-config')
 provides=('fussr')
 source=("git+https://github.com/tenseleyFlow/fussr.git#tag=v$pkgver")
@@ -16,6 +16,9 @@ sha256sums=('SKIP')
 build() {
     cd fussr
     export CARGO_TARGET_DIR=target
+    # Tell -sys crates to use system libraries via pkg-config
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    export LIBGIT2_SYS_USE_PKG_CONFIG=1
     cargo build --release
 }
 

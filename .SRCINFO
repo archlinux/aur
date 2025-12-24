@@ -11,6 +11,8 @@ pkgbase = fussr
 	depends = git
 	depends = libgit2
 	depends = libssh2
+	depends = openssl
+	depends = zlib
 	provides = fussr
 	source = git+https://github.com/tenseleyFlow/fussr.git#tag=v0.2.13
 	sha256sums = SKIP
