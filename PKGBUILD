@@ -2,7 +2,7 @@
 
 pkgname=python-dask-cuda
 _pkgname=dask-cuda
-pkgver=25.10.00
+pkgver=25.12.00
 pkgrel=1
 pkgdesc="Utilities for Dask and CUDA interactions"
 url="https://github.com/rapidsai/dask-cuda"
@@ -23,7 +23,7 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
 )
 sha256sums=(
-    '54c8c36221e69d5ff44a3b107d487d793a3894c9968620a523f2c108bbf3f212'
+    'b04b7fd947a122258e8aef6bc9324f1e36b1b8f343dfcd12af9cbc070913394f'
 )
 
 
