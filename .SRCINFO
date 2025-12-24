@@ -1,6 +1,6 @@
 pkgbase = tempesta-bin
 	pkgdesc = The fastest and lightest bookmark manager CLI written in Rust (binary package)
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/x71c9/tempesta
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = tempesta-bin
 	depends = glibc
 	provides = tempesta
 	conflicts = tempesta
-	source_x86_64 = https://github.com/x71c9/tempesta/releases/download/v0.1.12/tempesta-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 49ed17e0bd0b094f4b4802fa5870926cbdbd7ab37b729c381b83d0d73096786c
-	source_aarch64 = https://github.com/x71c9/tempesta/releases/download/v0.1.12/tempesta-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 061344dd6896c3fabda6d80a022a5c18f8fea4f6b9a693e3652c156716ec8fe9
+	source_x86_64 = tempesta-x86_64-0.1.13.tar.gz::https://github.com/x71c9/tempesta/releases/download/v0.1.13/tempesta-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ebbcda5f8389c0e634d4f0fd8f02f0f6584068b5f0e2ed8b2be384f871665a10
+	source_aarch64 = tempesta-aarch64-0.1.13.tar.gz::https://github.com/x71c9/tempesta/releases/download/v0.1.13/tempesta-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9a77d14c61ea50adb6b196579bdace264a0b9d268ff01c6957b08e9164812266
 
 pkgname = tempesta-bin
