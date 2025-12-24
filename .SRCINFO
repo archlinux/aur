@@ -1,0 +1,11 @@
+pkgbase = ttf-noto-sans-javanese-variable
+	pkgdesc = Noto Sans Javanese fonts.
+	pkgver = 2.005
+	pkgrel = 1
+	url = https://github.com/notofonts/javanese
+	arch = any
+	license = OFL-1.1
+	source = ttf-noto-sans-javanese-variable-2.005.zip::https://github.com/notofonts/javanese/releases/download/NotoSansJavanese-v2.005/NotoSansJavanese-v2.005.zip
+	sha256sums = 3d096aeee4dc607a91e7568785595643cb5fde4a0b7c9c7f13a762c48d37a0cf
+
+pkgname = ttf-noto-sans-javanese-variable
