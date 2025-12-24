@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='1.9'
+_upstreamver='2.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='pyrgg'
@@ -18,7 +18,7 @@ optdepends=()
 depends=('python' 'python-art' 'python-yaml')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4affac54d96b67a02669f54ed5d7286ab0f2204d2f350ccde7b8d2a0dc80f3fc')
+sha256sums=('989019b582dddb0b52baeee84417984f80d781f1211947c7f560be0af1539f4a')
 
 
 build() {
