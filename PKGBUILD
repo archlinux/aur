@@ -16,16 +16,44 @@ sha256sums=('SKIP')
 prepare() {
   cd "$srcdir"
   rm -rf squashfs-root
-
   chmod +x Mangayomi.AppImage
   ./Mangayomi.AppImage --appimage-extract >/dev/null
 }
 
 package() {
-  # AppImage
-  install -Dm755 "$srcdir/Mangayomi.AppImage" "$pkgdir/opt/mangayomi/mangayomi.AppImage"
+  # 1) AppImage in /opt
+  install -Dm755 "$srcdir/Mangayomi.AppImage" \
+    "$pkgdir/opt/mangayomi/mangayomi.AppImage"
 
-  # Desktop entry
+  # 2) Icona (stile mangayomi-bin): installa in /usr/share/pixmaps
+  # Prova prima un percorso "tipo flutter" se esiste, poi fallback al PNG più grande
+  local icon_src=""
+
+  # Tentativo "flutter-like" (non sempre esiste nell'AppImage, ma se c'è è perfetto)
+  if [[ -f "$srcdir/squashfs-root/data/flutter_assets/assets/app_icons/icon.png" ]]; then
+    icon_src="$srcdir/squashfs-root/data/flutter_assets/assets/app_icons/icon.png"
+  fi
+
+  # Fallback: trova un'icona sensata nel filesystem estratto (hicolor/pixmaps)
+  if [[ -z "$icon_src" ]]; then
+    icon_src="$(find "$srcdir/squashfs-root" -type f \
+      \( -path "*/icons/hicolor/*/apps/*" -o -path "*/pixmaps/*" \) \
+      \( -iname "*mangayomi*.png" -o -iname "icon.png" -o -iname "*.svg" \) \
+      -print 2>/dev/null | head -n 1)"
+  fi
+
+  # Ultimo fallback: PNG più grande disponibile
+  if [[ -z "$icon_src" ]]; then
+    icon_src="$(find "$srcdir/squashfs-root" -type f -iname "*.png" -printf "%s %p\n" 2>/dev/null \
+      | sort -nr | head -n 1 | cut -d' ' -f2-)"
+  fi
+
+  # Installa se trovata
+  if [[ -n "$icon_src" ]]; then
+    install -Dm644 "$icon_src" "$pkgdir/usr/share/pixmaps/mangayomi.png"
+  fi
+
+  # 3) Desktop entry (Icon=mangayomi => trova /usr/share/pixmaps/mangayomi.png)
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/applications/mangayomi.desktop" <<'EOF'
 [Desktop Entry]
@@ -33,26 +61,7 @@ Name=Mangayomi
 Exec=/opt/mangayomi/mangayomi.AppImage
 Icon=mangayomi
 Type=Application
-Categories=AudioVideo;Video;
+Categories=Graphics;Viewer;
 Terminal=false
 EOF
-
-  # Icona (sceglie automaticamente la migliore disponibile)
-  local icon_src=""
-  icon_src="$(find "$srcdir/squashfs-root" -type f \
-      \( -path "*/icons/hicolor/*/apps/*" -o -path "*/pixmaps/*" \) \
-      \( -iname "*mangayomi*.png" -o -iname "*mangayomi*.svg" \) \
-      -print 2>/dev/null \
-    | head -n 1)"
-
-  # fallback: PNG più grande
-  if [[ -z "$icon_src" ]]; then
-    icon_src="$(find "$srcdir/squashfs-root" -type f -iname "*.png" -printf "%s %p\n" 2>/dev/null \
-      | sort -nr | head -n 1 | cut -d' ' -f2-)"
-  fi
-
-  if [[ -n "$icon_src" ]]; then
-    # mettiamo sempre il nome "mangayomi" in hicolor, così Icon=mangayomi funziona ovunque
-    install -Dm644 "$icon_src" "$pkgdir/usr/share/icons/hicolor/512x512/apps/mangayomi.png"
-  fi
 }
