@@ -1,6 +1,6 @@
 # Maintainer: Techoraye <contact.techoraye@gmail.com>
 pkgname=metetch
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Fast system information display utility with modular customizable features"
 arch=('x86_64')
