@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r316.g6d76645
+pkgver=2.6.1.r361.gfdba247
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -68,7 +68,6 @@ prepare() {
   cd "$_pkgsrc"
 
   # fix tests
-  sed -E 's&(env -i)&\1 PATH=/usr/bin&' -i scripts/isolate-test.sh
   echo "WarningsAsErrors: ''" > .clang-tidy
 }
 
