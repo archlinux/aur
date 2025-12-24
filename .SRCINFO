@@ -1,0 +1,15 @@
+pkgbase = symp
+	pkgdesc = Populate directories with least amount of symlinks
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/Dracape/SymP
+	arch = any
+	license = MIT
+	makedepends = fish
+	makedepends = fd
+	depends = fish
+	depends = fd
+	source = -5.2.0.tar.gz::https://github.com/Dracape/symp/archive/refs/tags/5.2.0.zip
+	b2sums = b39921de8eca23fe8e61a04e14a4373953598edbe25b04b0014a9837e07b4512cb585cc79f8dfa152c2cb9d8619bdf4b1dca8910bd9a5455c6afd3cd982c7ca0
+
+pkgname = symp
