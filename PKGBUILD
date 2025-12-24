@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
-pkgname=('cfrds' 'python-cfrds')
-pkgver='1.0.0'
+pkgname=('cfrds')
+pkgver='1.0.1'
 pkgrel=1
 options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
@@ -15,21 +15,15 @@ source=(
 )
 
 sha512sums=(
-    '314a5667ac01a8ffe6388c718b3c4d13c0f4a0c2779b5ee2a12af89a021273ab28a2d94cdabb92b1cf8408d41e281c265ca26a0fb2a32950c61406a587f38d64'
+    '05eefb701c3460dde6cf3aca578de027326328f607b53e46ee2010a065f8d9933f0735db21c6be30130dc36a482c62626e7494d61a79d11e8dd97fb5bcedc5b2'
 )
 
 build() {
-    cmake "$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -B"$pkgname-$pkgver/build" -G Ninja
+    cmake -DMY_GIT_TAG="$pkgver" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -B"$pkgname-$pkgver/build" -G Ninja "$pkgname-$pkgver"
     cmake --build "$pkgname-$pkgver/build"
 }
 
 package_cfrds() {
     cmake --install "$srcdir/$pkgname-$pkgver/build"
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/cfrds/LICENSE"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/pkgconfig/cfrds.pc" "$pkgdir/usr/lib/pkgconfig/cfrds.pc"
-}
-
-package_python-cfrds() {
-    cp -r "$srcdir/cfrds-$pkgver/bin/usr" "$pkgdir/usr"
-    install -Dm644 "$srcdir/cfrds-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
