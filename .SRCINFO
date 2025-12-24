@@ -1,0 +1,22 @@
+pkgbase = keypop-git
+	pkgdesc = A simple Wayland key display application overlay
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/yossefsabry/keypop
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = libinput
+	depends = libxkbcommon
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = keypop
+	conflicts = keypop
+	source = git+https://github.com/yossefsabry/keypop.git
+	sha256sums = SKIP
+
+pkgname = keypop-git
