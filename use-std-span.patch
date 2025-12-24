@@ -1,21 +1,29 @@
 diff --git a/tools/mxl-info/main.cpp b/tools/mxl-info/main.cpp
-index 41ff126..0a7f291 100644
+index 866236e..c7818f4 100644
 --- a/tools/mxl-info/main.cpp
 +++ b/tools/mxl-info/main.cpp
-@@ -15,7 +15,6 @@
+@@ -5,6 +5,7 @@
+ #include <cstdlib>
+ #include <filesystem>
+ #include <iostream>
++#include <span>
+ #include <sstream>
+ #include <string>
+ #include <unistd.h>
+@@ -13,7 +14,6 @@
  #include <CLI/CLI.hpp>
  #include <fmt/color.h>
  #include <fmt/format.h>
 -#include <gsl/span>
  #include <picojson/picojson.h>
  #include <mxl/flow.h>
- #include <mxl/mxl.h>
-@@ -53,7 +52,7 @@ namespace
+ #include <mxl/flowinfo.h>
+@@ -98,7 +98,7 @@ namespace
  
- std::ostream& operator<<(std::ostream& os, mxlFlowInfo const& info)
- {
--    auto span = gsl::span<std::uint8_t, sizeof info.common.id>(const_cast<std::uint8_t*>(info.common.id), sizeof info.common.id);
-+    auto span = std::span<std::uint8_t, sizeof info.common.id>(const_cast<std::uint8_t*>(info.common.id), sizeof info.common.id);
-     auto id = uuids::uuid(span);
-     os << "- Flow [" << uuids::to_string(id) << ']' << '\n'
-        << '\t' << fmt::format("{: >18}: {}", "Version", info.version) << '\n'
+         std::ostream& operator<<(std::ostream& os, mxlFlowInfo const& info)
+         {
+-            auto const span = uuids::span<std::uint8_t, sizeof info.config.common.id>{
++            auto const span = std::span<std::uint8_t, sizeof info.config.common.id>{
+                 const_cast<std::uint8_t*>(info.config.common.id), sizeof info.config.common.id};
+             auto const id = uuids::uuid(span);
+             os << "- Flow [" << uuids::to_string(id) << ']' << '\n'
