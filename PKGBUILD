@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=25.10.00
+pkgver=25.12.00
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -16,13 +16,15 @@ source=(
     "system-lib.patch" 
     "missing-pkg.patch"
     "missing-include.patch"
+    "cuda-compile.cmake"
 )
 sha256sums=(
-    '110c01acb24c94a005d6337e27c273e80109d38354e0e3b9fab5a432de5ee97d'
+    'db4dc1e7644a3ef04d03223cf81418cf486209047e87f6e4f42eb95962541fd1'
     '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
-    'e084172285cd947e8f6e84e0f3c5868c683adc57420b53bfb62798b85e674478'
+    '6e5a3fdef9fbb499ccc9cac67c99d4c308423d55bdf76810455f06a92ed4f1de'
     '2958c6575d6aad29fb344f5d85c36975c8d7ba2d7a38a8ec1114679f67bd194f'
     '9c5c21ce596e3ec7dc0831ae2c5ab71d733f4ddcb917ea8c4d55e7c02dd40baa'
+    'ebb43a4a0f312802e1b129199e2aae9e623a89088829d7b8e68b278cd4ea00b8'
 )
 
 prepare() {
@@ -31,6 +33,7 @@ prepare() {
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibcudf/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
     patch -p1 "cpp/src/jit/row_ir.hpp" < "$srcdir/missing-include.patch"
+    echo "include($srcdir/cuda-compile.cmake)" >> cpp/CMakeLists.txt
 }
 
 

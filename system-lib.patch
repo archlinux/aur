@@ -1,6 +1,6 @@
---- cpp/CMakeLists.txt	2025-10-09 00:55:34.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-10-09 17:51:42.708054536 +0800
-@@ -19,6 +19,7 @@
+--- cpp/CMakeLists.txt	2025-12-11 06:34:07.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-12-24 16:11:59.542601037 +0800
+@@ -12,6 +12,7 @@
  include(rapids-cpm)
  include(rapids-cuda)
  include(${rapids-cmake-dir}/cuda/set_runtime.cmake)
@@ -8,7 +8,7 @@
  include(rapids-export)
  include(rapids-find)
  
-@@ -273,24 +274,23 @@
+@@ -266,24 +267,23 @@
  # add third party dependencies using CPM
  rapids_cpm_init()
  
@@ -28,17 +28,17 @@
 -include(cmake/thirdparty/get_nvcomp.cmake)
 +find_package(nvcomp REQUIRED)
  
- # find CCCL before rmm so that we get cudf's patched version of CCCL
+ # find CCCL
 -include(cmake/thirdparty/get_cccl.cmake)
 +find_package(CCCL REQUIRED)
  
- # find rmm
+ # find rmm, should come after including CCCL to allow overriding the CCCL version used for testing
 -include(cmake/thirdparty/get_rmm.cmake)
 +find_package(rmm REQUIRED)
  
  # find croaring
  include(cmake/thirdparty/get_croaring.cmake)
-@@ -299,10 +299,10 @@
+@@ -292,10 +292,10 @@
  include(cmake/thirdparty/get_flatbuffers.cmake)
  
  # find dlpack
@@ -51,7 +51,7 @@
  
  # find or install GoogleTest
  if(CUDF_BUILD_TESTUTIL)
-@@ -313,14 +313,11 @@
+@@ -306,14 +306,11 @@
  include(cmake/Modules/JitifyPreprocessKernels.cmake)
  
  # find KvikIO
@@ -67,7 +67,7 @@
  # find zstd
  include(cmake/thirdparty/get_zstd.cmake)
  
-@@ -987,7 +984,7 @@
+@@ -980,7 +977,7 @@
  # Specify the target module library dependencies
  target_link_libraries(
    cudf
