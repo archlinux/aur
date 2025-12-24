@@ -1,9 +1,9 @@
 # Maintainer: John Karpn <johnkarpn@gmail.com>
 
 pkgname=xtrabackup80
-pkgver=8.0.35_32
+pkgver=8.0.35_34.1
 _boost_ver=1.77.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Non-blocking backup tool for MySQL'
 arch=('x86_64')
 url='https://www.percona.com/software/mysql-database/percona-xtrabackup'
@@ -11,10 +11,10 @@ license=('GPL-2.0-only')
 depends=('libaio' 'libev' 'libgcrypt' 'curl' 'perl-dbd-mysql' 'numactl' 'protobuf' 'libprocps' 'icu' 'zlib' 'zstd' 'lz4')
 makedepends=('cmake3-bin' 'python-sphinx' 'vim' 'libedit' 'libevent' 'libfido2')
 optdepends=('qpress: for compressed backups')
-source=("https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${pkgver//_/-}/source/tarball/percona-xtrabackup-${pkgver//_/-}.tar.gz"
+source=("https://downloads.percona.com/downloads/Percona-XtraBackup-8.0/Percona-XtraBackup-8.0.35-34/source/tarball/percona-xtrabackup-8.0.35-34.tar.gz"
 		"https://archives.boost.io/release/$_boost_ver/source/boost_${_boost_ver//./_}.tar.gz")
 
-sha256sums=('04982a36e36d0e9dfb8487afa77329dd0d2d38da163a205f0179635ceea1aff1'
+sha256sums=('6ca81cd647e7cb1d8fd341f97cd32248bd719f9104a63eb24f1edda6a2d2441c'
             '5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131')
 
 prepare() {
