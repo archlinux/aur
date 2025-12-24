@@ -2,7 +2,7 @@
 
 pkgname=python-p115tiny302
 _name=${pkgname#python-}
-pkgver=0.2.2.1
+pkgver=0.2.3.1
 pkgrel=1
 epoch=
 pkgdesc="115 tiny 302 backend."
@@ -36,7 +36,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('2a77fdee368538fe4231194b316ea282003536ff0c1c057d0f98c84ca810faca')
+sha256sums=('cbe4c34ccb0f430c24f254482085e3157f00df00ba676bd0529fa243b768a4b4')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
