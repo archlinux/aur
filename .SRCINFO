@@ -1,0 +1,16 @@
+pkgbase = x11q
+	pkgdesc = X11 display forwarding over QUIC with P2P holepunching
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/x11q
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = libxcb
+	depends = libx11
+	source = x11q-0.5.0.tar.gz::https://github.com/rotkonetworks/x11q/archive/v0.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = x11q
