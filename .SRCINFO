@@ -1,18 +1,25 @@
 pkgbase = groonga-normalizer-mysql
-	pkgdesc = A MySQL compatible normalizer plugin for groonga.
-	pkgver = 1.1.4
+	pkgdesc = A MySQL compatible normalizer plugin for Groonga.
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = http://mroonga.org/
+	url = https://github.com/groonga/groonga-normalizer-mysql
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = LGPL2
+	license = LGPL-2.0-only
+	checkdepends = git
+	checkdepends = make
+	checkdepends = ruby-bundler
+	checkdepends = ruby-erb
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc
 	depends = groonga
-	depends = cmake
-	optdepends = cutter-test_framework
-	source = http://packages.groonga.org/source/groonga-normalizer-mysql/groonga-normalizer-mysql-1.1.4.tar.gz
-	sha1sums = fd12b12515c3296ce6d868e6e88ae622ab085481
+	source = https://github.com/groonga/groonga-normalizer-mysql/releases/download/v1.3.0/groonga-normalizer-mysql-1.3.0.tar.gz
+	source = https://github.com/groonga/groonga-normalizer-mysql/releases/download/v1.3.0/groonga-normalizer-mysql-1.3.0.tar.gz.asc
+	validpgpkeys = 2701F317CFCCCB975CADE9C2624CF77434839225
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+	sha512sums = SKIP
 
 pkgname = groonga-normalizer-mysql
-
