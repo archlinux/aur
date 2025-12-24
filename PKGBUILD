@@ -120,20 +120,20 @@ build() {
 }
 
 package() {
-    cd "$srcdir/build"
-
     install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/lib"
+
     find "$srcdir/build/bin" -type f -executable -exec install -Dm755 "{}" "$pkgdir/usr/bin/" \;
 
-    install -d "$pkgdir/usr/lib"
-    if [ -d "$srcdir/build/lib" ]; then
-        cp -dr --no-preserve=ownership "$srcdir/build/lib"/*.so* "$pkgdir/usr/lib/"
-    fi
+    ln -s "$pkgdir/usr/bin/libonnxruntime.so.1.17.3" "$pkgdir/usr/lib/libonnxruntime.so.1.17.3"
+
+    msg2 "Installing vcpkg libraries..."
     if [ -d "$srcdir/vcpkg/installed/x64-linux/lib" ]; then
-        echo "==> Installing vcpkg libraries..."
-        cp -dr --no-preserve=ownership "$srcdir/vcpkg/installed/x64-linux/lib"/*.so* "$pkgdir/usr/lib/"
-    else
-        echo "==> WARNING: vcpkg lib directory not found!"
+        cp -a "$srcdir/vcpkg/installed/x64-linux/lib"/*.so* "$pkgdir/usr/lib/"
+    fi
+
+    if [ -d "$srcdir/build/lib" ]; then
+        cp -a "$srcdir/build/lib"/*.so* "$pkgdir/usr/lib/"
     fi
 
     local appIcons=(
