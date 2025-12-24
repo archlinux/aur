@@ -13,8 +13,12 @@ sha256sums=('SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
-    export CGO_ENABLED=0
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export CGO_ENABLED=1
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -o $pkgname ./cmd/main.go
 }
 
