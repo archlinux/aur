@@ -13,6 +13,12 @@ conflicts=('hyprpier')
 source=("git+https://github.com/jakeb-grant/hyprpier.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd hyprpier
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
+        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
     cd hyprpier
     export RUSTUP_TOOLCHAIN=stable
