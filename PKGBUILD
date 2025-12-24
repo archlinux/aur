@@ -12,7 +12,9 @@ arch=(any)
 url='https://github.com/Dracape/SymP'
 license=('MIT')
 
+# Dependencies
 depends=('fish' 'fd')
+makedepends=('fish' 'fd')
 
 source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
