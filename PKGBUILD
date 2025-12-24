@@ -7,7 +7,7 @@ url="https://github.com/starrieste/dwu"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-click' 'python-httpx' 'python-selectolax' 'python-pillow' 'wlr-randr' 'xorg-xrandr')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-optdepends=('feh' 'nitrogen' 'awww-git', 'swww')
+optdepends=('feh' 'nitrogen' 'awww-git' 'swww')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/starrieste/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('f35d54fc32dac935db5e496e49429745e15bfc3260a808b4d42cd5dc21624060')
 
