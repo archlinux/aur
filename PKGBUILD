@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202511271
+pkgver=202512231
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6714eff17314bbfd8360c8a8a668ab37c9767231/archives/dove-linux.zip")
-sha512sums=('65d7f0505b7122abb9609aa1e37387ab0c041a5ec464c68d7d57396fc93795cffb7e9a9b5c6b2cb531c74bde1bc698149aa081e959c91f904d329a8dd51b114e')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6d86ac2efba527555c6143fd641d5fabfac13008/archives/dove-linux.zip")
+sha512sums=('57e3a7cd72c8b524ad2eff45d26ccdbfbd5cd84fbab722c40817b3dc3afe2171a039d2c15da189bf9b5f4073223f313b3b7d6d39956479a3ed671f05680e3670')
 makedepends=('unzip')
 
 pkgver() {
@@ -179,6 +179,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cswnet.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cswnet.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cty-net.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cty-net.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cty-net.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cty-net.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/currently.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/currently.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cutey.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cutey.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cyberdude.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cyberdude.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cyberdude.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cyberdude.dk"
@@ -193,6 +194,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.co.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.co.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/daum.net" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/daum.net"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dbzmail.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/dbzmail.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dd.iij4u.or.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/dd.ii4ju.or.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/deliveryman.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/deliveryman.com"
@@ -607,6 +609,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/myyahoo.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/myyahoo.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/narod.ru" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/narod.ru"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/natteliv.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/natteliv.dk"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/naver.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/naver.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netbruger.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/netbruger.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netscape.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/netscape.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netscape.net" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/netscape.net"
@@ -706,6 +709,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/popstar.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/popstar.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/post.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/post.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/post.cz" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/post.cz"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/postecert.it" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/postecert.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.at" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.at"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.be" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.be"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.ca" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.ca"
@@ -874,6 +878,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/thinline.cz" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/thinline.cz"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/thomsen.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/thomsen.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiki.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/tiki.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tim.it" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/tim.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tip.nl" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/tip.nl"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiscali.cz" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/tiscali.cz"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiscali.it" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/tiscali.it"
@@ -899,6 +904,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vestergaard.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/vestergaard.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/video.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/video.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vip.onet.pl" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/vip.onet.pl"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virgilio.it" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/virgilio.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virginmedia.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/virginmedia.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virgin.net" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/virgin.net"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vittig.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/vittig.dk"
@@ -981,8 +987,6 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zohomailcloud.ca" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zohomailcloud.ca"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zoomail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zoomail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zybermail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zybermail.dk"
-    install -Dm644 "$tmpdir/assets/uBlock/LICENSE.txt" "$pkgdir/etc/thunderbird/dove/assets/uBlock/LICENSE.txt"
-    install -Dm644 "$tmpdir/assets/uBlock.xpi" "$pkgdir/etc/thunderbird/dove/assets/uBlock.xpi"
 
     rm -rf "$tmpdir"
 }
