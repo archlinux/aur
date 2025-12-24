@@ -17,17 +17,17 @@ optdepends=(
 provides=('pacboost')
 conflicts=('pacboost-bin' 'pacboost-git')
 backup=()
-source=("pacboost.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/refs/heads/master.tar.gz")
-sha256sums=('02fd124b55e149a2c416caabd585023a64f1840169a447f5c7a3a8cf0319fd86')
+source=("pacboost-${pkgver}.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/v${pkgver}.tar.gz")
+sha256sums=('9dfc14315c05be407bf5c7373f9c82a39a72265dee99548b38fe44c0f70f26cb')
 
 prepare() {
-  cd "pacboost-master"
+  cd "pacboost-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "pacboost-master"
+  cd "pacboost-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
@@ -40,7 +40,7 @@ check() {
 }
 
 package() {
-  cd "pacboost-master"
+  cd "pacboost-${pkgver}"
   
   # Install binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"

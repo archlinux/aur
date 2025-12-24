@@ -17,7 +17,7 @@ pkgbase = pacboost
 	provides = pacboost
 	conflicts = pacboost-bin
 	conflicts = pacboost-git
-	source = pacboost.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/refs/heads/master.tar.gz
-	sha256sums = 02fd124b55e149a2c416caabd585023a64f1840169a447f5c7a3a8cf0319fd86
+	source = pacboost-1.6.0.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/v1.6.0.tar.gz
+	sha256sums = 9dfc14315c05be407bf5c7373f9c82a39a72265dee99548b38fe44c0f70f26cb
 
 pkgname = pacboost
