@@ -8,8 +8,10 @@ pkgbase = x11q
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = libxcb
 	depends = libx11
+	depends = zstd
 	source = x11q-0.5.0.tar.gz::https://github.com/rotkonetworks/x11q/archive/v0.5.0.tar.gz
 	sha256sums = SKIP
 

@@ -6,8 +6,8 @@ pkgdesc="X11 display forwarding over QUIC with P2P holepunching"
 arch=('x86_64')
 url="https://github.com/rotkonetworks/x11q"
 license=('MIT' 'Apache-2.0')
-depends=('libxcb' 'libx11')
-makedepends=('cargo' 'git')
+depends=('libxcb' 'libx11' 'zstd')
+makedepends=('cargo' 'git' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotkonetworks/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
