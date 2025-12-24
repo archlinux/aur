@@ -2,8 +2,8 @@
 # Contributor: Archeb <archebasic@hotmail.com>
 
 pkgname=opentrace-bin
-pkgver=1.4.4.0
-pkgrel=4
+pkgver=1.5.0.0
+pkgrel=1
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64')
 url="https://github.com/Archeb/opentrace"
@@ -16,7 +16,7 @@ conflicts=('opentrace')
 source=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/download/v$pkgver/linux-x64.tar.gz"
         "opentrace.desktop::https://raw.githubusercontent.com/Archeb/opentrace/master/opentrace.desktop"
         "logo.png::https://raw.githubusercontent.com/nxtrace/Ntrace-core/main/assets/logo.png")
-sha256sums=('200e23de0bee6603944818e8e48448825a394769f17d3c1f01f63495b5164653'
+sha256sums=('acedd8ecf6eef284f044d8385702c17c102f31073218d6c8f8da692a196a6901'
             '69f8c4799f6db03bf17cd78b1de7a18d939ec5e282190942172dbe13e39c2075'
             '93cf17802f2691d63e29a7020afb0c7c39782c85212ce4b795cc8486f36c758d')
 
