@@ -2,7 +2,7 @@
 # Contributor: Леонид Юрьев (Leonid Yuriev) <leo@yuriev.ru>
 # Contributor: Noel Kuntze <noel.kuntze@thermi.consulting>
 pkgname=libmdbx
-pkgver=0.13.9
+pkgver=0.13.10
 pkgrel=1
 pkgdesc="One of the fastest compact key-value ACID database without WAL, which surpasses the legendary LMDB in terms of reliability, features and performance. At the end of 2024 MDBX was chosen by all modern Ethereum frontiers/nodes as a storage engine."
 url="https://libmdbx.dqdkfa.ru/"
@@ -11,7 +11,7 @@ license=('Apache-2')
 depends=('glibc')
 subpackages="$pkgname-dev $pkgname-doc $pkgname-dbg"
 source=("$pkgname-$pkgver.tar.xz::https://libmdbx.dqdkfa.ru/release/libmdbx-amalgamated-$pkgver.tar.xz")
-sha256sums=('63d2608c8f7c23185c0d27d817d42dd720e84973224ffc584c7f7b522f5f06fe')
+sha256sums=('e6c9af085390c41d101fce0a72794c77159e1e271e41077ea0fd4270b43cc56c')
 
 build() {
 	make -C "$srcdir" \

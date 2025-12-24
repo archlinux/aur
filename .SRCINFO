@@ -1,6 +1,6 @@
 pkgbase = libmdbx
 	pkgdesc = One of the fastest compact key-value ACID database without WAL, which surpasses the legendary LMDB in terms of reliability, features and performance. At the end of 2024 MDBX was chosen by all modern Ethereum frontiers/nodes as a storage engine.
-	pkgver = 0.13.9
+	pkgver = 0.13.10
 	pkgrel = 1
 	url = https://libmdbx.dqdkfa.ru/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libmdbx
 	arch = powerpc64le
 	license = Apache-2
 	depends = glibc
-	source = libmdbx-0.13.9.tar.xz::https://libmdbx.dqdkfa.ru/release/libmdbx-amalgamated-0.13.9.tar.xz
-	sha256sums = 63d2608c8f7c23185c0d27d817d42dd720e84973224ffc584c7f7b522f5f06fe
+	source = libmdbx-0.13.10.tar.xz::https://libmdbx.dqdkfa.ru/release/libmdbx-amalgamated-0.13.10.tar.xz
+	sha256sums = e6c9af085390c41d101fce0a72794c77159e1e271e41077ea0fd4270b43cc56c
 
 pkgname = libmdbx
