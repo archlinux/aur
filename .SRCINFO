@@ -1,12 +1,13 @@
 pkgbase = selscan-bin
 	pkgdesc = Haplotype based scans for selection
 	pkgver = v2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/szpiech/selscan
 	arch = x86_64
 	license = GPL3
 	provides = selscan
 	conflicts = selscan
+	options = !debug
 	source = selscan-bin-v2.1.1.tar.gz::https://github.com/szpiech/selscan/archive/refs/tags/v2.1.1.tar.gz
 	sha256sums = 92079a2f41ef9df494635e8fb112ef35beb41349837a1cbd6a6b5c7d4689fbb7
 
