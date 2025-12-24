@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=109.r8457
-pkgrel=2
+pkgrel=3
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut"
@@ -11,7 +11,6 @@ license=('GPL-2.0-or-later')
 depends=(
   'bash'
   'coreutils'
-  'cpio'
   'filesystem'
   'findutils'
   'gawk'
@@ -29,6 +28,7 @@ makedepends=(
   'rust'
 )
 optdepends=(
+  '3cpio: cpio alternative written in rust'
   'binutils: --uefi option support'
   'biosdevname: BIOS network device renaming'
   'bluez: bluetooth (keyboard)'
@@ -37,6 +37,7 @@ optdepends=(
   'bzip2: bzip2 compression'
   'cifs-utils: support CIFS'
   'connman: support for connman networking'
+  'cpio: support cpio archive generation'
   'cryptsetup: support for encrypted with LUKS filesystems'
   'dash: allows use of dash (on your own risk)'
   'dbus: dbus-daemon dracut module'
