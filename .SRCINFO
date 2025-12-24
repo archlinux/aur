@@ -1,0 +1,19 @@
+pkgbase = mangayomi-linux
+	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip)
+	pkgver = 0.6.90
+	pkgrel = 1
+	url = https://github.com/kodjodevf/mangayomi
+	arch = x86_64
+	license = GPL3
+	depends = webkit2gtk-4.1
+	depends = mpv
+	depends = xdg-user-dirs
+	depends = unzip
+	provides = mangayomi
+	conflicts = mangayomi
+	conflicts = mangayomi-git
+	options = !strip
+	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.6.90/Mangayomi-v0.6.90-linux.zip
+	sha256sums = SKIP
+
+pkgname = mangayomi-linux
