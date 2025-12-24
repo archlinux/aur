@@ -1,3 +1,5 @@
+# Maintainer: Dracape <Dracape at outlook dot com>
+
 pkgname=symp
 
 # Version
