@@ -1,4 +1,2 @@
 [keypop-git]
-source = "github"
-github = "yossefsabry/keypop"
-use_latest_tag = true
+source = "manual"
