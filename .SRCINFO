@@ -1,6 +1,6 @@
 pkgbase = remote-explorer-bin
 	pkgdesc = SSH remote file explorer built with Tauri (binary release)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ErdemGKSL/remote-explorer
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = remote-explorer-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/ErdemGKSL/remote-explorer/releases/download/v0.1.4/Remote.Explorer_0.1.4_amd64.deb
-	source_aarch64 = https://github.com/ErdemGKSL/remote-explorer/releases/download/v0.1.4/Remote.Explorer_0.1.4_arm64.deb
+	source_x86_64 = https://github.com/ErdemGKSL/remote-explorer/releases/download/v0.1.5/Remote.Explorer_0.1.5_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/ErdemGKSL/remote-explorer/releases/download/v0.1.5/Remote.Explorer_0.1.5_arm64.deb
+	sha256sums_aarch64 = SKIP
 
 pkgname = remote-explorer-bin
