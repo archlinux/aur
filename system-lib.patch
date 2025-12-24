@@ -1,0 +1,17 @@
+--- cpp/CMakeLists.txt	2025-12-11 08:50:14.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-12-24 17:23:52.170041803 +0800
+@@ -113,8 +113,12 @@
+ rapids_cpm_init()
+ rapids_cmake_install_lib_dir(lib_dir)
+ 
+-include(cmake/thirdparty/get_cccl.cmake)
+-include(cmake/thirdparty/get_raft.cmake)
++find_package(CCCL REQUIRED)
++find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(raft REQUIRED)
+ 
+ if(BUILD_TESTS)
+   find_package(MPI REQUIRED)
