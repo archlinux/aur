@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202511271
+pkgver=202512231
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6714eff17314bbfd8360c8a8a668ab37c9767231/archives/dove-flatpak.zip")
-sha512sums=('92164d3949fbbfe6ec3719f645857efd1f6822de4f7c014cd0afa4994651663fec59944c91bd0ed007062b376b37b417e07ea5735834baaebb9a60cf2c346b75')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6d86ac2efba527555c6143fd641d5fabfac13008/archives/dove-flatpak.zip")
+sha512sums=('cfe522675bb3c50a20df8afbea2e77e9eaaacda8b81f221aafe878e737d9a66b6bddf9eef49e6d86fbea3980ad5984a3e2cd3a59e737f6ebfe3ab03ec3974205')
 makedepends=('unzip')
 
 pkgver() {
@@ -178,6 +178,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cswnet.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cswnet.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cty-net.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cty-net.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cty-net.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cty-net.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/currently.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/currently.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cutey.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cutey.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cyberdude.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cyberdude.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cyberdude.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cyberdude.dk"
@@ -192,6 +193,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.co.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.co.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dan.wind.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/dan.wind.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/daum.net" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/daum.net"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dbzmail.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/dbzmail.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/dd.iij4u.or.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/dd.ii4ju.or.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/deliveryman.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/deliveryman.com"
@@ -606,6 +608,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/myyahoo.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/myyahoo.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/narod.ru" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/narod.ru"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/natteliv.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/natteliv.dk"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/naver.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/naver.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netbruger.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/netbruger.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netscape.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/netscape.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netscape.net" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/netscape.net"
@@ -705,6 +708,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/popstar.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/popstar.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/post.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/post.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/post.cz" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/post.cz"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/postecert.it" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/postecert.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.at" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.at"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.be" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.be"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/posteo.ca" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/posteo.ca"
@@ -873,6 +877,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/thinline.cz" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/thinline.cz"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/thomsen.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/thomsen.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiki.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/tiki.ne.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tim.it" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/tim.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tip.nl" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/tip.nl"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiscali.cz" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/tiscali.cz"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/tiscali.it" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/tiscali.it"
@@ -898,6 +903,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vestergaard.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/vestergaard.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/video.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/video.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vip.onet.pl" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/vip.onet.pl"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virgilio.it" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/virgilio.it"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virginmedia.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/virginmedia.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/virgin.net" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/virgin.net"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/vittig.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/vittig.dk"
@@ -980,8 +986,6 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zohomailcloud.ca" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zohomailcloud.ca"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zoomail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zoomail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zybermail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zybermail.dk"
-    install -Dm644 "$tmpdir/assets/uBlock/LICENSE.txt" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/uBlock/LICENSE.txt"
-    install -Dm644 "$tmpdir/assets/uBlock.xpi" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/uBlock.xpi"
 
     rm -rf "$tmpdir"
 }
