@@ -1,6 +1,6 @@
 pkgname=simplytoast
 pkgver=0.9.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage startup and background applications,easier than ever before!"
 arch=(any)
 url="https://github.com/toast1599/SimplyToast"
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   python
   python-gobject
-  gtk3
+  gtk4
 )
 
 source=("https://github.com/toast1599/SimplyToast/archive/v0.9.5.4.tar.gz")
