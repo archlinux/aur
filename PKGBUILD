@@ -3,7 +3,7 @@
 pkgname=symp
 
 # Version
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 
 # Generic
@@ -16,9 +16,9 @@ depends=('fish' 'fd')
 
 source=("${pkgvar}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
-b2sums=('731299069f0884628adf319034de3428d694cae03012caa89586288233e0eef0184383d90f825f9512d9afab649829e305ee9b450167632c4f7f90daa88bbbd8')
+b2sums=('b39921de8eca23fe8e61a04e14a4373953598edbe25b04b0014a9837e07b4512cb585cc79f8dfa152c2cb9d8619bdf4b1dca8910bd9a5455c6afd3cd982c7ca0')
 
 
 package() {
-	"SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver"
+	"SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver" --rootdir=${pkgdir}
 }
