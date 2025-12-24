@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202511271
+pkgver=202512231
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/5b5375277a9596d66b7d38f03fb7d6729831a072/archives/phoenix-linux.zip")
-sha512sums=('a7a39a15e9a2d91f250adbe3295ded36640f3381da24f25d1ff8ced38405d172e92acfd0ccc68e2d2778328a1fbed43895e92127dcbf872812a75bcc866f00e0')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/f09568c8a71af4fe42dd43c6f711c67daf605f1e/archives/phoenix-linux.zip")
+sha512sums=('4758939dc7b9a3866a3a2c117f126e1c04dcf93ed6aa662c9e0b2665f4b8291a311194a0c606e683c7a2deb8d45dbf305356924cdd9258ed80ff2af125020a0f')
 makedepends=('unzip')
 
 pkgver() {
@@ -48,6 +48,11 @@ package() {
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
+    install -Dm644 "$tmpdir/resources/specs/apple-maps/permissions" "$pkgdir/resources/specs/apple-maps/permissions"
+    install -Dm644 "$tmpdir/resources/specs/discord/permissions" "$pkgdir/resources/specs/discord/permissions"
+    install -Dm644 "$tmpdir/resources/specs/element/permissions" "$pkgdir/resources/specs/element/permissions"
+    install -Dm644 "$tmpdir/resources/specs/google-maps/permissions" "$pkgdir/resources/specs/google-maps/permissions"
+    install -Dm644 "$tmpdir/resources/specs/twitter/permissions" "$pkgdir/resources/specs/twitter/permissions"
     install -Dm644 "$tmpdir/userjs/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/apple-maps/user.js"
     install -Dm644 "$tmpdir/userjs/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
     install -Dm644 "$tmpdir/userjs/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
