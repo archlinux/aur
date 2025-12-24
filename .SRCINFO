@@ -1,0 +1,21 @@
+pkgbase = tempesta-bin
+pkgdesc = The fastest and lightest bookmark manager CLI written in Rust (binary package)
+pkgver = 0.0.0
+pkgrel = 1
+url = https://github.com/x71c9/tempesta
+arch = x86_64
+arch = aarch64
+license = MIT
+depends = glibc
+provides = tempesta
+conflicts = tempesta
+source_x86_64 =
+tempesta-x86_64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/te
+mpesta-x86_64-unknown-linux-gnu.tar.gz
+sha256sums_x86_64 = 49ed17e0bd0b094f4b4802fa5870926cbdbd7ab37b729c381b83d0d73096786c
+source_aarch64 =
+tempesta-aarch64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/
+tempesta-aarch64-unknown-linux-gnu.tar.gz
+sha256sums_aarch64 = 061344dd6896c3fabda6d80a022a5c18f8fea4f6b9a693e3652c156716ec8fe9
+
+pkgname = tempesta-bin
