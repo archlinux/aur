@@ -1,0 +1,10 @@
+post_install() {
+  echo ">> Once installed remember to copy the following files into your Windows drive outside of WSL:"
+  echo ">> $ cp /usr/lib/modules/6.6.114.1-microsoft-standard-WSL2+/vmlinuz /mnt/c/WSL2/linux-wsl2-waydroid"
+  echo ">> $ cp /usr/lib/modules/6.6.114.1-microsoft-standard-WSL2+/modules.vhdx /mnt/c/WSL2/linux-wsl2-waydroid-modules.vhdx"
+  echo ""
+  echo ">> Then patch your .wslconfig to use them:"
+  echo ">> [wsl2]"
+  echo ">> kernel=C:\\WSL2\\linux-wsl2-waydroid"
+  echo ">> kernelModules=C:\\WSL2\\linux-wsl2-waydroid-modules.vhdx"
+}

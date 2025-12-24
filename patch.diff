@@ -1,0 +1,14 @@
+diff --git a/arch/x86/configs/config-wsl b/arch/x86/configs/config-wsl
+index cc3d37e1d0c4..42223710e8dd 100755
+--- a/arch/x86/configs/config-wsl
++++ b/arch/x86/configs/config-wsl
+@@ -6891,7 +6891,8 @@ CONFIG_RAS_CEC=y
+ #
+ # Android
+ #
+-# CONFIG_ANDROID_BINDER_IPC is not set
++CONFIG_ANDROID_BINDER_IPC=y
++CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
+ # end of Android
+ 
+ CONFIG_LIBNVDIMM=y

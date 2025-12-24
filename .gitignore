@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!patch.diff
+!gen_modules_vhdx.sh
+!linux-wsl2-waydroid.install
