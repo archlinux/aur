@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
 url="https://iminuit.readthedocs.io"
-license=('GPL' 'MIT')
+license=('MIT AND LGPL-2.1-or-later')
 makedepends=(
   'git'
   'cmake'
