@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="TOML Parser Implementation For Data Serialization and Deserialization in Fortran"
 
 arch=("x86_64")
-url="https://toml-f.readthedocs.io/en/latest/"
+url="https://github.com/toml-f/toml-f"
 license=("MIT" "Apache-2.0")
 
 depends=()
@@ -21,8 +21,8 @@ build () {
 }
 
 check() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    meson test -C _build --print-errorlogs
+	cd "$srcdir/${pkgname}-${pkgver}"
+	meson test -C _build --print-errorlogs
 }
 
 package() {
@@ -30,7 +30,7 @@ package() {
 	meson install -C _build --destdir="${pkgdir}"
     
 	install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-    install -Dm644 LICENSE-Apache "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Apache"
+	install -Dm644 LICENSE-Apache "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Apache"
 
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
