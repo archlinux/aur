@@ -4,7 +4,7 @@
 pkgname=icamerasrc-git
 _pkgname=icamerasrc
 pkgver=r91.4fb31db
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel IPU6 camera source for GStreamer"
 arch=('x86_64')
 url="https://github.com/intel/icamerasrc"
@@ -30,8 +30,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
     export CHROME_SLIM_CAMHAL=ON
-    export STRIP_VIRTUAL_CHANNEL_CAMHAL=ON
-    ./autogen.sh
+    ./autogen.sh --enable-gstdrmformat=yes
     make
 }
 
