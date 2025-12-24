@@ -24,7 +24,7 @@ makedepends=('git')
 conflicts=('ds4drv')
 install=ds4drv.install
 source=(
-	$_pkgname::"git+$url.git"
+	"$_pkgname::git+$url.git"
 	ds4drv.conf
 	13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch
 )
@@ -40,21 +40,21 @@ pkgver() {
 package() {
 	cd "$srcdir/$_pkgname"
 	git apply "${srcdir}/13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch"
-	mkdir -pm755 $pkgdir/etc/udev/rules.d
-	cp udev/50-ds4drv.rules $pkgdir/etc/udev/rules.d/50-ds4drv.rules
-	mkdir -pm755 $pkgdir/usr/share/licenses/$_pkgname
-	cp LICENSE $pkgdir/usr/share/licenses/$_pkgname/
+	mkdir -pm755 "$pkgdir/etc/udev/rules.d"
+	cp udev/50-ds4drv.rules "$pkgdir/etc/udev/rules.d/50-ds4drv.rules"
+	mkdir -pm755 "$pkgdir/usr/share/licenses/$_pkgname"
+	cp LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
 	python setup.py install --root="$pkgdir/" --optimize=1
-	mkdir -pm755 $pkgdir/etc/systemd/system
-	cp systemd/ds4drv.service $pkgdir/etc/systemd/system/ds4drv.service
-	cp $srcdir/ds4drv.conf $pkgdir/etc/ds4drv.conf;
+	mkdir -pm755 "$pkgdir/etc/systemd/system"
+	cp systemd/ds4drv.service "$pkgdir/etc/systemd/system/ds4drv.service"
+	cp "$srcdir/ds4drv.conf" "$pkgdir/etc/ds4drv.conf"
 	python_version_major=$(python -c "import sys; print(sys.version_info.major)")
 	python_version_minor=$(python -c "import sys; print(sys.version_info.minor)")
 	python_version="$python_version_major.$python_version_minor"
 	if awk 'BEGIN{exit ARGV[1]<3.12}' "$python_version"; then
-		sed -i "s/SafeConfigParser/ConfigParser/g" $pkgdir/usr/lib/python$python_version/site-packages/ds4drv/config.py
+		sed -i "s/SafeConfigParser/ConfigParser/g" "$pkgdir/usr/lib/python$python_version/site-packages/ds4drv/config.py"
 	fi
 	if awk 'BEGIN{exit ARGV[1]<3.13}' "$python_version"; then
-		sed -i "s/joystick.device.device.fn/joystick.device.device.path/g" $pkgdir/usr/lib/python$python_version/site-packages/ds4drv/actions/input.py
+		sed -i "s/joystick.device.device.fn/joystick.device.device.path/g" "$pkgdir/usr/lib/python$python_version/site-packages/ds4drv/actions/input.py"
 	fi
 }
