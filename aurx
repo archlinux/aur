@@ -621,7 +621,7 @@ load_explicit_opts() {
 				shift 2
 				;;
 			-c|--config )
-				GIVEN_CONFIG_STRING="${2}"
+				CONFIG="${2}"
 				shift 2
 				;;
 			-C|--curl-opts )
@@ -1227,7 +1227,7 @@ execute_script() {
 	load_env_vars
 	load_explicit_opts "${@}"
 	load_piped_packages
-	[[ -n "${GIVEN_CONFIG_STRING}" ]] && load_config "${GIVEN_CONFIG_STRING}"
+	[[ -n "${CONFIG}" ]] && load_config "${CONFIG}"
 	launch_sanity_checks
 	launch_system_checks
 	process_pseudofunctions
@@ -1248,9 +1248,9 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.6-4"
+INTERNAL_VERSION="1.0.6-5"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
-	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIVEN_CONFIG_STRING" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
+	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "CONFIG" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
 	"PARALLEL" "PERSISTENT_PATH" "SEARCH_CRITERIA" "SEARCH_RESULTS" "SORT_BY" "SOURCE_PATH" "TMP_PATH" \
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")

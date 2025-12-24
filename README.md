@@ -175,3 +175,11 @@ And then load it so:
 ```bash
 aurx --config "$(cat /path/to/json)" ..
 ```
+
+##### Load config from environment variable
+
+You can also load the config from an environment variable, like any other explicit option:
+
+```bash
+AURX_CONFIG='{"SEARCH_RESULTS": 2}' ./aurx search some-package
+```
