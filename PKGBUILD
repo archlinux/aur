@@ -39,6 +39,8 @@ build() {
     cd linkwarden-$pkgver
     sed -i 's|playwright install --with-deps chromium|:|' apps/web/package.json
     mkdir -p bin
+    # If user has libvips installed, the build will fail 
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=true
     corepack enable --install-directory bin
     corepack yarn
     corepack yarn prisma:generate
