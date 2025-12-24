@@ -1,7 +1,7 @@
 pkgbase = gabutdm
 	pkgdesc = Download manager with support for http, https, ftp, torrents and magnets.
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://github.com/gabutakut/gabutdm
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -14,8 +14,8 @@ pkgbase = gabutdm
 	depends = libgee
 	depends = libsoup3
 	depends = qrencode
-	optdepends = aria2: Bittorent and magnets support.
-	source = gabutdm-2.6.0.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/2.6.0.tar.gz
-	md5sums = a361af523cff8c4e28916f31007eb25f
+	optdepends = aria2: Bittorrent and magnets support.
+	source = gabutdm-2.7.0.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/2.7.0.tar.gz
+	md5sums = e4b249be7d263533e5339e759eb57a80
 
 pkgname = gabutdm
