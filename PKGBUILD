@@ -4,7 +4,7 @@ _pkgname=Apifox
 # 从以下网址确定版本 https://docs.apifox.com/changelog
 pkgver=2.7.60
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试"
 arch=(
     'aarch64'
@@ -43,13 +43,13 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    #sed -i -e "
+    #    s/@electronversion@/${_electronversion}/g
+    #    s/@appname@/${pkgname%-bin}/g
+    #    s/@runname@/app.asar/g
+    #    s/@cfgdirname@/${pkgname%-bin}/g
+    #    s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    #" "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${_pkgname}"*.AppImage ];then
         chmod +x "${srcdir}/${_pkgname}"*.AppImage
     fi
@@ -59,16 +59,22 @@ prepare() {
     "${srcdir}/${_pkgname}"*.AppImage --appimage-extract > /dev/null
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules" -type d -name ".github" -exec rm -rf {} +
+    #find "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules" -type d -name ".github" -exec rm -rf {} +
     rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/oracledb/build/Release/"{*darwin*,*win32*}
-    #ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cpu-features/build/node_gyp_bins/python3"
-    #ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/nodejieba/build/node_gyp_bins/python3"
     find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+	for _files in "${_file_list[@]}";do
+		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/squashfs-root/${_files}"
+	done
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    #install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
