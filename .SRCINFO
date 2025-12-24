@@ -1,0 +1,16 @@
+pkgbase = oplmgr-git
+	pkgdesc = PS2 OPL USB Manager CLI (git)
+	pkgver = 1.1.1.0.gf47d7ff
+	pkgrel = 1
+	url = https://github.com/donydaily/PS2OPLManager-cli
+	arch = any
+	license = MIT
+	makedepends = python-psutil
+	makedepends = python-tqdm
+	depends = python
+	depends = psutils
+	depends = fzf
+	source = git+https://github.com/donydaily/PS2OPLManager-cli.git
+	sha256sums = SKIP
+
+pkgname = oplmgr-git
