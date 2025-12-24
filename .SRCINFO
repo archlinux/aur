@@ -1,7 +1,7 @@
 pkgbase = lianpkg-bin
 	pkgdesc = Wallpaper Engine .pkg unpacker and resource tool
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yueosa/lianpkg
 	arch = x86_64
 	license = GPL3

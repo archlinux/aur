@@ -1,6 +1,6 @@
 pkgname=lianpkg-bin
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper Engine .pkg unpacker and resource tool"
 keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'rust')
 arch=('x86_64')
