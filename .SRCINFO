@@ -1,6 +1,6 @@
 pkgbase = i3-auto-layout-bin
 	pkgdesc = Automatic, optimal tiling for i3wm
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/pando85/i3-auto-layout
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = i3-auto-layout-bin
 	license = GPL
 	provides = i3-auto-layout
 	conflicts = i3-auto-layout
-	source = https://github.com/pando85/i3-auto-layout/releases/download/v0.4.3/i3-auto-layout-0.4.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 09455f34fc53684c11297f049c2f557c90a10f53e3828a931fb7e0377b6c6e66
+	source = https://github.com/pando85/i3-auto-layout/releases/download/v0.4.4/i3-auto-layout-0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4267d0ac851e2373f0a282bf513ce422942cd2d62d01f6140ae5966018cc117f
 
 pkgname = i3-auto-layout-bin
