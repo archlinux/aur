@@ -1,0 +1,5 @@
+[try-cli-bin]
+source = "github"
+github = "tobi/try-cli"
+use_latest_release = true
+prefix = "v"

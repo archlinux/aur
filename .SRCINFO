@@ -1,0 +1,19 @@
+pkgbase = try-cli-bin
+	pkgdesc = A fast, interactive CLI tool for managing ephemeral development workspaces
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/tobi/try-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = try
+	conflicts = try-cli
+	options = !strip
+	source = README-1.5.3.md::https://raw.githubusercontent.com/tobi/try-cli/v1.5.3/README.md
+	sha256sums = 5279d0d64164a7a65293fab61f38322d9965f3e5eb21b861d4c89a15ebafb9e0
+	source_x86_64 = try-cli-x86_64-1.5.3.tgz::https://github.com/tobi/try-cli/releases/download/v1.5.3/try-x86_64-linux.tar.gz
+	sha256sums_x86_64 = f1278dc312883b016c1d4b53199f59cc2c1d8f989271fe1144141313b79bcac6
+	source_aarch64 = try-cli-aarch64-1.5.3.tgz::https://github.com/tobi/try-cli/releases/download/v1.5.3/try-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 9baa82340d1d141cc5b2f18a981a42e595845ee710e1f2b35317cd725a99216b
+
+pkgname = try-cli-bin
