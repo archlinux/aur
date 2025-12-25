@@ -1,7 +1,7 @@
 pkgbase = python-ctranslate2-bin
 	pkgdesc = CTranslate2 is a C++ and Python library for efficient inference with Transformer models.
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenNMT/CTranslate2
 	arch = x86_64
 	arch = aarch64
