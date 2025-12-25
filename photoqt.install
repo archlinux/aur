@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo " IMPORTANT NOTE"
+    echo ""
+    echo " In order to get the full feature set of PhotoQt,"
+    echo " make sure to also install the extensions. You can"
+    echo " do so with the photoqt-extensions package from the AUR."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo " IMPORTANT NOTE"
+    echo ""
+    echo " In order to get the full feature set of PhotoQt,"
+    echo " make sure to also install the extensions. You can"
+    echo " do so with the photoqt-extensions package from the AUR."
+    echo ""
+}
