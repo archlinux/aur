@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=circle-to-search
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Draw to select, search with Google Lens - Linux Wayland edition"
 arch=('any')
@@ -16,12 +16,12 @@ depends=(
 optdepends=(
     'grim: screenshot support for wlroots compositors (Hyprland, Sway)'
     'spectacle: screenshot support for KDE Plasma'
-    'gnome-screenshot: screenshot support for GNOME'
     'tesseract: OCR text extraction'
     'tesseract-data-eng: English language data for OCR'
     'python-pytesseract: Python bindings for tesseract'
     'gtk-layer-shell: live mode support (Hyprland/Sway only)'
 )
+# Note: GNOME 42+ uses built-in D-Bus Screenshot API (no extra packages needed)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
