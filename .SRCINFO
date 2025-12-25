@@ -1,0 +1,25 @@
+pkgbase = deskreen-ce-bin
+	pkgdesc = Turn any device into a secondary screen for your computer - Community Edition (binary release)
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/pavlobu/deskreen
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = deskreen-ce
+	provides = deskreen
+	conflicts = deskreen-ce
+	conflicts = deskreen
+	conflicts = deskreen-bin
+	source_x86_64 = deskreen-ce-3.2.1-amd64.deb::https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce_3.2.1_amd64.deb
+	b2sums_x86_64 = 032b074a10cfb0b617094d9b85a1ca6727314281418e73e92e23ecc155502216c893abb76ceb129fb403fc93ce9e962756f82a24a556990e8b4bb497a10c7255
+	source_aarch64 = deskreen-ce-3.2.1-arm64.deb::https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce_3.2.1_arm64.deb
+	b2sums_aarch64 = 48de973028a48f582dcaf2924520b7a0d98961780f789027d34d4731cd38ed4cb006917631a2d7506607ac71b1a70323fd5d92d5e78539890ede460e6207490b
+
+pkgname = deskreen-ce-bin
+	depends = avahi
+	depends = gtk3
+	depends = libseccomp
+	depends = nss
+	depends = sqlite
+	depends = systemd-libs
