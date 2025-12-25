@@ -3,7 +3,7 @@
 # Maintainer: Self Denial <selfdenial at pm dot me>
 
 pkgname=qmmp-plugin-pack
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Qmmp Plugin Pack'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libmodplug>=0.8.4' 'libsamplerate>=0.1.2' 'ffmpeg>=3.4.0' 'yt-dlp')
 makedepends=('cmake>=3.18.0' 'qt6-tools' 'taglib>=1.12.0' 'libmodplug>=0.8.4'
              'libsamplerate>=0.1.2' 'ffmpeg>=3.4.0' 'yt-dlp')
 source=(https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/${pkgver#*.}/${pkgname}-${pkgver}.tar.bz2)
-b2sums=('a1a1263b7a1626639864c621ce21f426c2f42b9f1cc463997f712762d0cf7a13388325111142e62341d55a5f5608ab788b8973e56dae3cd88a9fd39434370a25')
+b2sums=('3c6623aaf0e27dab485e517bebf557033083a30044fb13c3e37a524c6a407775304dd9f9a91107842f445f50dc59f88fc0a9b73e62fbcb6945da3ce880c534ba')
 
 build() {
     local cmake_options=(

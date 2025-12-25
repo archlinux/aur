@@ -1,6 +1,6 @@
 pkgbase = qmmp-plugin-pack
 	pkgdesc = Qmmp Plugin Pack
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = qmmp-plugin-pack
 	makedepends = libsamplerate>=0.1.2
 	makedepends = ffmpeg>=3.4.0
 	makedepends = yt-dlp
-	depends = qmmp>=2.2.2
+	depends = qmmp>=2.3.0
 	depends = taglib>=1.12.0
 	depends = qt6-base
 	optdepends = libmodplug>=0.8.4
 	optdepends = libsamplerate>=0.1.2
 	optdepends = ffmpeg>=3.4.0
 	optdepends = yt-dlp
-	source = https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.2/qmmp-plugin-pack-2.2.2.tar.bz2
-	b2sums = a1a1263b7a1626639864c621ce21f426c2f42b9f1cc463997f712762d0cf7a13388325111142e62341d55a5f5608ab788b8973e56dae3cd88a9fd39434370a25
+	source = https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/3.0/qmmp-plugin-pack-2.3.0.tar.bz2
+	b2sums = 3c6623aaf0e27dab485e517bebf557033083a30044fb13c3e37a524c6a407775304dd9f9a91107842f445f50dc59f88fc0a9b73e62fbcb6945da3ce880c534ba
 
 pkgname = qmmp-plugin-pack
