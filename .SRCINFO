@@ -1,0 +1,14 @@
+pkgbase = http-remote-pc-control
+	pkgdesc = HTTP remote PC control tool
+	pkgver = 04c2737
+	pkgrel = 1
+	url = https://github.com/akoidan/http-remote-pc-control
+	arch = x86_64
+	license = MIT
+	depends = libxtst
+	depends = xcb-util-wm
+	depends = xorg-setxkbmap
+	source = http-remote-pc-control::https://github.com/akoidan/http-remote-pc-control/releases/download/04c2737/app.elf
+	sha256sums = 9009e02dda80354cf591ff8812dcf6b3e0ca8f59549cc823f54b3416214cb232
+
+pkgname = http-remote-pc-control

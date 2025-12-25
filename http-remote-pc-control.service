@@ -1,0 +1,12 @@
+[Unit]
+Description=HTTP Remote PC Control
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/http-remote-pc-control 5000
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=HTTP Remote PC Control (%i)
+After=network.target graphical.target
+
+[Service]
+Type=simple
+User=%i
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+EnvironmentFile=-/etc/conf.d/http-remote-pc-control@%i
+ExecStart=/usr/bin/http-remote-pc-control 5000
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
