@@ -17,9 +17,21 @@ post_install() {
 
 post_upgrade() {
     systemctl daemon-reload
-    systemctl try-restart crossmacro.service
+    # Only restart if service is active
+    if systemctl is-active --quiet crossmacro.service 2>/dev/null; then
+        systemctl try-restart crossmacro.service || true
+    fi
+}
+
+pre_remove() {
+    # Only disable if service exists and is enabled/active
+    if systemctl is-enabled --quiet crossmacro.service 2>/dev/null || \
+       systemctl is-active --quiet crossmacro.service 2>/dev/null; then
+        systemctl disable --now crossmacro.service || true
+    fi
 }
 
 post_remove() {
-    systemctl disable --now crossmacro.service
+    systemctl daemon-reload
+    udevadm control --reload-rules && udevadm trigger || true
 }
