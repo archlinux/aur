@@ -1,6 +1,6 @@
 pkgbase = playtorrio-bin
 	pkgdesc = All-in-one media center for streaming and for downloading games
-	pkgver = 2.2.6
+	pkgver = 2.2.7
 	pkgrel = 1
 	url = https://github.com/ayman708-UX/PlayTorrio
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = playtorrio-bin
 	provides = playtorrio
 	conflicts = playtorrio
 	conflicts = playtorrio-git
-	noextract = playtorrio-bin-2.2.6.AppImage
-	source = playtorrio-bin-2.2.6.AppImage::https://github.com/ayman708-UX/PlayTorrio/releases/download/v2.2.6/PlayTorrio.AppImage
+	noextract = playtorrio-bin-2.2.7.AppImage
+	source = playtorrio-bin-2.2.7.AppImage::https://github.com/ayman708-UX/PlayTorrio/releases/download/v2.2.7/PlayTorrio.AppImage
 	source = playtorrio.desktop
-	sha256sums = 98de1254db16da36098022ba5510b972f1a97ea20a5cd075d1ca5e24f928b82e
+	sha256sums = a5e75443d27d025c668707189557f4b99daaa6306604d2ac4ad67ea711fa65ed
 	sha256sums = 75681351c5da62ada264bf23a2b1d89cf47d64b0739dc5286a8bd3464a079c28
 
 pkgname = playtorrio-bin
