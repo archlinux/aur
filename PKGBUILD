@@ -15,6 +15,7 @@ license=('MIT')
 # Dependencies
 depends=('fish' 'fd')
 makedepends=('fish' 'fd')
+conflicts=('symp-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
