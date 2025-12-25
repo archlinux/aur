@@ -1,0 +1,10 @@
+post_install() {
+  echo "Start the Oberon emulator with a discimage in /usr/share/oberon-risc-emu"
+  echo "e.g."
+  echo "risc /usr/share/oberon-risc-emu/Oberon-2020-08-18.dsk"
+  echo ""
+}
+
+post_upgrade() {
+  post_install $1
+}
