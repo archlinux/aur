@@ -1,25 +1,54 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintainer: Nathan Sasser <fyrexdesign@outlook.com>
 
-options=('!strip')
+pkgname=labfyre-git
+pkgver=0.9.2.r129.ff2d0978
+pkgrel=1
+pkgdesc="A wayland stacking and tiling compositor (Labwc fork)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/FyreX-opensource-design/labFyre"
+license=('GPL-2.0-only')
+depends=(
+  'wayland'
+  'wayland-protocols'
+  'libxkbcommon'
+  'libdrm'
+  'libxml2'
+  'glib2'
+  'cairo'
+  'pango'
+  'libinput'
+  'pixman'
+  'libpng'
+  'librsvg'
+)
+makedepends=(
+  'meson'
+  'git'
+  'scdoc'
+  'wayland-protocols'
+  'xcb-util-wm'
+  'xcb-util-keysyms'
+)
+optdepends=(
+  'xwayland: X11 application support'
+)
+# wlroots and libsfdo are handled as meson subprojects
+source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/labFyre"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/labFyre"
+  meson setup build/
+  meson compile -C build/
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+  cd "$srcdir/labFyre"
+  DESTDIR="$pkgdir" meson install -C build/
 }
+
