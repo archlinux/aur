@@ -10,15 +10,15 @@ license=('AGPL-3.0-only')
 depends=('java-runtime')
 validpgpkeys=('B493319106CC3D1F252E19CBF806F422E222AA02'
               'B8A5D214ADFAA387A14C8BCF02AA2BAE387C8307')
-source_x86_64=("https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq_${pkgver}_amd64.deb"{,.asc})
-sha512sums_x86_64=('3d9b858dcab40e014b72eb786a079fbc5e1eab530b1483f3101a32c6b9df2e312ecc64a8fd325d4ce697b3dae4439c7fe7a435c644d44650f3b6990a0573b4f3'
+source_x86_64=("https://github.com/bisq-network/bisq/releases/download/v${pkgver}/Bisq-64bit-${pkgver}.deb"{,.asc})
+sha512sums_x86_64=('7ee31110bb8cd8c14c418984ac44b50d83b5f8a1d3b898543e20ab48e9b48ed7135af48a69cc045bb6e82d27554b9ead534cef9a9f105a2197cb4320fbaf0d1d'
                    'SKIP')
 _binname=Bisq
 conflicts=("bisq" "bisq-git")
 provides=("bisq-bin")
 
 prepare() {
-  tar --zstd -xvf data.tar.zst
+  tar -Jxvf data.tar.xz
 }
 
 package() {

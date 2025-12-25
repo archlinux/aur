@@ -11,9 +11,9 @@ pkgbase = bisq-bin
 	conflicts = bisq-git
 	validpgpkeys = B493319106CC3D1F252E19CBF806F422E222AA02
 	validpgpkeys = B8A5D214ADFAA387A14C8BCF02AA2BAE387C8307
-	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.9.22/bisq_1.9.22_amd64.deb
-	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.9.22/bisq_1.9.22_amd64.deb.asc
-	sha512sums_x86_64 = 3d9b858dcab40e014b72eb786a079fbc5e1eab530b1483f3101a32c6b9df2e312ecc64a8fd325d4ce697b3dae4439c7fe7a435c644d44650f3b6990a0573b4f3
+	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.9.22/Bisq-64bit-1.9.22.deb
+	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.9.22/Bisq-64bit-1.9.22.deb.asc
+	sha512sums_x86_64 = 7ee31110bb8cd8c14c418984ac44b50d83b5f8a1d3b898543e20ab48e9b48ed7135af48a69cc045bb6e82d27554b9ead534cef9a9f105a2197cb4320fbaf0d1d
 	sha512sums_x86_64 = SKIP
 
 pkgname = bisq-bin
