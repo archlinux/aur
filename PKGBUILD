@@ -2,7 +2,7 @@
 
 pkgname=vramfs-git
 _pkgbase=vramfs
-pkgver=r97.6eb95c9
+pkgver=r99.cc2605e
 pkgrel=1
 epoch=1
 pkgdesc="VRAM based file system for Linux"
