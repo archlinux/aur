@@ -86,7 +86,7 @@ if [[ "${_build_vfio::1}" == "t" ]]; then
   )
   sha256sums+=(
     '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '1063a64ae704938ea34e2731c357f99c192965cf8980187062589bbf2c2511ec'
+    '323fc06392a6c10d7eb3d844cde527fa7709c82f776238cebc98d8c966b06549'
   )
 fi
 
