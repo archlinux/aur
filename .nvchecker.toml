@@ -1,0 +1,4 @@
+[86box-assets-git]
+source = "git"
+git = "https://github.com/86Box/assets.git"
+prefix = "v"
