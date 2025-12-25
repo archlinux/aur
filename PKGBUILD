@@ -3,7 +3,7 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=lib32-lua
-pkgver=5.4.7
+pkgver=5.4.8
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A powerful light-weight programming language designed for extending applications"
@@ -16,7 +16,7 @@ options=('!makeflags' '!emptydirs')
 source=("http://www.lua.org/ftp/lua-${pkgver}.tar.gz"
         'lua.pc'
         'liblua.so.patch')
-sha512sums=('98c5c8978dfdf867e37e9eb3b3ec83dee92d199243b5119505da83895e33f10d43c841be6a7d3b106daba8a0b2bd25fe099ebff8f87831dcc55c79c78b97d8b8'
+sha512sums=('875ad1f6df3ba63722b5069564c9d3a4057b4c3564c691061bb49cf6cdf5d2e303f05762bd46797b444aaf992c03021f423df142123eebf86751fd77edaf8060'
             '318ad674d2b9492d5387ee1039ac1bf0f1f547c98e7c06474c9658b5f2cbe814267580ccd1b76b567a1d8a21a62ec7bf53b8ff4629be9287e32a29f7a5d433e4'
             '33011be2cb52a228f00184ce55268255f74c0d389172cec24508231864ed73c804346ce689021effe0afcf4d4a149e79cfaa2ca3a4622aad84e2d79492d49301')
 
