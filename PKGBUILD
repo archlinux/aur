@@ -19,7 +19,7 @@ optdepends=(
 )
 
 source=("https://github.com/siaeyy/sb/releases/download/v${pkgver}/sb_${target}")
-sha256sums=("sha256:0a89c6f78a7e5261e7028e032c477f3d0840fb82031177029ab483c53f4a4a9d")
+sha256sums=("0a89c6f78a7e5261e7028e032c477f3d0840fb82031177029ab483c53f4a4a9d")
 
 package() {
     cd "$srcdir"
