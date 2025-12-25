@@ -10,6 +10,7 @@ pkgbase = lightdm-kde-greeter
 	makedepends = extra-cmake-modules
 	makedepends = qt6-tools
 	makedepends = gtk2-compat
+	makedepends = vulkan-headers
 	depends = lightdm
 	depends = kdeclarative
 	depends = qt6-5compat
@@ -23,6 +24,7 @@ pkgbase = lightdm-kde-greeter
 	depends = ki18n
 	depends = kauth
 	depends = kservice
+	depends = libei
 	depends = libplasma
 	backup = etc/lightdm/lightdm-kde-greeter.conf
 	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.1.2
