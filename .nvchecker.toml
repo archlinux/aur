@@ -1,0 +1,3 @@
+[autohand-cli]
+source = "npm"
+npm = "autohand-cli"
