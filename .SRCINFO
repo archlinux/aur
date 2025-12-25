@@ -1,0 +1,17 @@
+pkgbase = lazydlp-bin
+	pkgdesc = A TUI for yt-dlp written in Go.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ayushsharma74/lazydlp
+	license = MIT
+	depends = yt-dlp
+	conflicts = lazydlp
+	provides = lazydlp
+	arch = aarch64
+	source_aarch64 = https://github.com/ayushsharma74/lazydlp/releases/download/v${pkgver}/lazydlp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 57ef78cb864da9e7bf397670f5451755aaa3ba16e8a413b916d424f0274dbc7a
+	arch = x86_64
+	source_x86_64 = https://github.com/ayushsharma74/lazydlp/releases/download/v${pkgver}/lazydlp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0b0a8b212311293a1f4a911ca03554e62c000b087b9fe226ec9c0159735c276e
+	
+pkgname = lazydlp-bin
