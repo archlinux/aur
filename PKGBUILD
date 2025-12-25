@@ -1,19 +1,20 @@
 # Maintainer: 9nunya <9nunya@example.com>
 pkgname=rsjfw
-pkgver=1.0.7 # PLACEHOLDER_VERSION
+pkgver=1.0.3 # PLACEHOLDER_VERSION
 pkgrel=1
 pkgdesc="Roblox Studio Just Fucking Works - Hardened Linux compatibility layer (Binaries)"
 arch=('x86_64')
 url="https://github.com/9nunya/RSJFW"
 license=('MIT')
-depends=('curl' 'libzip' 'wine' 'vulkan-icd-loader' 'hicolor-icon-theme')
+depends=('curl' 'libzip' 'wine' 'vulkan-icd-loader' 'hicolor-icon-theme' 'glfw' 'libglvnd')
 provides=('rsjfw')
 conflicts=('rsjfw-git')
-source=("https://github.com/9nunya/RSJFW/releases/download/v${pkgver}/rsjfw-${pkgver}-x86_64.tar.gz")
-sha256sums=('dd2700bb9ad4b179297ad483da8cb47437b653193c6d57e3e37d39cf609cbe75') # PLACEHOLDER_SHA256
+install=rsjfw.install
+source=("https://github.com/9nunya/RSJFW/releases/download/v${pkgver}/rsjfw-${pkgver}-x86_64.tar.gz"
+        "rsjfw.install")
+sha256sums=('7152b8bb172e04cd82c56202ec23b76f156cbb8ba7266cd45d9cce53797b24f7' 'SKIP') # PLACEHOLDER_SHA256
 
 package() {
-    # The binary release contains the full /usr structure
     install -d "$pkgdir/usr"
     cp -a "$srcdir"/usr/* "$pkgdir/usr/"
 }
