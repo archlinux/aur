@@ -1,16 +1,16 @@
 pkgbase = arangodb-bin
-	pkgdesc = Arangodb binary from deb.
-	pkgver = 3.10.6
+	pkgdesc = ArangoDB server is a native multi-model database with flexible data models for documents, graphs, and key-values
+	pkgver = 3.12.7
 	pkgrel = 1
-	url = https://www.arangodb.com/
+	url = https://arango.ai
 	install = arangodb.install
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	provides = arangodb
 	conflicts = arangodb
 	conflicts = arangodb-client-bin
-	source = https://download.arangodb.com/arangodb310/Community/Linux/arangodb3_3.10.6-1_amd64.deb
 	validpgpkeys = CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B
-	sha256sums = ceb5d51f4cafbe1d2817b6204941890fd25300c0d3dc3f9c1c2bb9b533f82234
+	source_x86_64 = https://download.arangodb.com/9c169fe900ff79790395784287bfa82f0dc0059375a34a2881b9b745c8efd42e/arangodb312/Enterprise/Linux/arangodb3e-linux-3.12.7_x86_64.tar.gz
+	sha256sums_x86_64 = 566214dc890aa89b8e1efd30abe7a1b34205abc5d59139ab23c0d32020de7cb4
 
 pkgname = arangodb-bin
