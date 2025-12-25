@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_let
 	pkgdesc = Monadic let-bindings
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_let
 	arch = x86_64
 	arch = aarch64
