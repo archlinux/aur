@@ -15,15 +15,18 @@ depends=(
 optdepends=(
   'openssl: generate TLS certificates on first start'
 )
+install=${pkgname}.install
 source=(
   "http-remote-pc-control::${url}/releases/download/${commit}/app.elf"
   "${pkgname}.service"
+  "${pkgname}.install"
   "http-remote-pc-control-gen-certs.sh"
   "san.cnf"
 )
 options=(!strip)
 sha256sums=(
   'a9dda35d0852ca0493cb99f5148b583772c61ca82d54c48cd9e0d285221ffbb4'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'

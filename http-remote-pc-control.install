@@ -1,0 +1,13 @@
+post_install() {
+  echo "To start the service for your current user:"
+  echo "  systemctl --user enable --now http-remote-pc-control.service"
+  echo
+  echo "Certificates will be generated on first start (requires openssl) and stored in:"
+  echo "  ~/.local/share/http-remote-pc-control/certs"
+  echo
+  echo "Documentation: https://github.com/akoidan/http-remote-pc-control"
+}
+
+post_upgrade() {
+  post_install
+}
