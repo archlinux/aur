@@ -21,6 +21,8 @@ depends=(
   'python-slugify'
   'python-bleach'
   'python-protobuf'
+  'python-packaging'
+  'python-kagglesdk'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
