@@ -2,7 +2,7 @@
 # Maintainer: Ayush Sharma <your@email.com>
 
 pkgname='lazydlp-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A TUI for yt-dlp written in Go.'
 url='https://github.com/ayushsharma74/lazydlp'
@@ -13,10 +13,10 @@ conflicts=('lazydlp')
 depends=('yt-dlp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ayushsharma74/lazydlp/releases/download/v${pkgver}/lazydlp_Linux_arm64.tar.gz")
-sha256sums_aarch64=('57ef78cb864da9e7bf397670f5451755aaa3ba16e8a413b916d424f0274dbc7a')
+sha256sums_aarch64=('e4f3e41a0feb6a45f4571a292d63e5e87c355c83f514aa503b9198d0b13998ad')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ayushsharma74/lazydlp/releases/download/v${pkgver}/lazydlp_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0b0a8b212311293a1f4a911ca03554e62c000b087b9fe226ec9c0159735c276e')
+sha256sums_x86_64=('f702e49900372ff327ab1aed092f4d25e775c2ecc7b1fcb030d064c56e26c802')
 
 package() {
   install -Dm755 "./lazydlp" "${pkgdir}/usr/bin/lazydlp"
