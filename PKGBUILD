@@ -3,7 +3,7 @@
 
 pkgname=remote-explorer-bin
 _pkgname=remote-explorer
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="SSH remote file explorer built with Tauri (binary release)"
 arch=('x86_64' 'aarch64')
