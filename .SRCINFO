@@ -1,7 +1,7 @@
 pkgbase = cloudcmd
 	pkgdesc = Cloud Commander file manager for the web with console and editor.
 	pkgver = 19.0.17
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/coderaiser/cloudcmd
 	changelog = changelog.md
 	arch = x86_64
