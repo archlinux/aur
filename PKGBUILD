@@ -23,15 +23,15 @@ prepare() {
 
 build() {
     cd ${pkgname}-${_release_version}
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    #refuses to work with clang
-    export CC=gcc
-    export CXX=g++
     #Build the webUI (thanks to moystard)
     cd qobuz-player-web
     npm run build
     cd ..
+    #refuses to work with clang
+    export CC=gcc
+    export CXX=g++
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 
 }
