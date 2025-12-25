@@ -17,7 +17,7 @@ provides=('pacboost')
 conflicts=('pacboost' 'pacboost-git')
 backup=()
 source=("pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/latest/download/pacboost-x86_64-linux.tar.gz")
-sha256sums=('b6733788cb1b71809d35697016026a9bf97e9754b1feed83fefbbf5c0978aa84')
+sha256sums=('6cd8c6e03bf50078f3889323537d1259a6bb962e92fa423c410e15b7f010650c')
 
 package() {
   # Install binary
