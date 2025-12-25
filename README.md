@@ -17,6 +17,7 @@
 - **🏠 Smart Installation** - Installs to `~/.local/share/fonts` with automatic cache updates
 - **🎨 Beautiful Interface** - Colorful terminal output for better user experience
 - **🛡️ Robust Error Handling** - Comprehensive error checking and recovery
+- **🔒 Secure by Design** - Input validation, memory safety, and hardened binary compilation
 - **⚡ High Performance** - C version optimized for speed and memory efficiency
 
 ---
@@ -111,36 +112,34 @@ nerdfonts-installer
 ### Example Session
 
 ```bash
-$ nerdfonts-installer
-Detected OS: arch, Package Manager: sudo pacman
-Creating directory: /home/fam007e/.local/share/fonts
-Creating directory: /home/fam007e/tmp
+❯ nerdfonts-installer
+🚀 Nerd Fonts Installer
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+Detected OS: arch
+✓ All dependencies are installed
 Fetching available fonts from GitHub...
 Found 70 available fonts
 Select fonts to install (separate with spaces, or enter "all" to install all fonts):
 ---------------------------------------------
-1. 0xProto                    21. DroidSansMono             41. JetBrainsMono             61. SourceCodePro
-2. 3270                       22. EnvyCodeR                 42. Lekton                    62. SpaceMono
-3. AdwaitaMono                23. FantasqueSansMono         43. LiberationMono            63. Terminus
-4. Agave                      24. FiraCode                  44. Lilex                     64. Tinos
-5. AnonymousPro               25. FiraMono                  45. MPlus                     65. Ubuntu
-6. Arimo                      26. GeistMono                 46. MartianMono               66. UbuntuMono
-7. AtkinsonHyperlegibleMono   27. Go-Mono                   47. Meslo                     67. UbuntuSans
-8. AurulentSansMono           28. Gohu                      48. Monaspace                 68. VictorMono
-9. BigBlueTerminal            29. Hack                      49. Monofur                   69. ZedMono
-10. BitstreamVeraSansMono     30. Hasklig                   50. Monoid                    70. iA-Writer
-11. CascadiaCode              31. HeavyData                 51. Mononoki
-12. CascadiaMono              32. Hermit                    52. NerdFontsSymbolsOnly
-13. CodeNewRoman              33. IBMPlexMono               53. Noto
-14. ComicShannsMono           34. Inconsolata               54. OpenDyslexic
-15. CommitMono                35. InconsolataGo             55. Overpass
-16. Cousine                   36. InconsolataLGC            56. ProFont
-17. D2Coding                  37. IntelOneMono              57. ProggyClean
-18. DaddyTimeMono             38. Iosevka                   58. Recursive
-19. DejaVuSansMono            39. IosevkaTerm               59. RobotoMono
-20. DepartureMono             40. IosevkaTermSlab           60. ShareTechMono
+1. 0xProto                      15. CommitMono                  29. Hack                        43. LiberationMono              57. ProggyClean
+2. 3270                         16. Cousine                     30. Hasklig                     44. Lilex                       58. Recursive
+3. AdwaitaMono                  17. D2Coding                    31. HeavyData                   45. MPlus                       59. RobotoMono
+4. Agave                        18. DaddyTimeMono               32. Hermit                      46. MartianMono                 60. ShareTechMono
+5. AnonymousPro                 19. DejaVuSansMono              33. IBMPlexMono                 47. Meslo                       61. SourceCodePro
+6. Arimo                        20. DepartureMono               34. Inconsolata                 48. Monaspace                   62. SpaceMono
+7. AtkinsonHyperlegibleMono     21. DroidSansMono               35. InconsolataGo               49. Monofur                     63. Terminus
+8. AurulentSansMono             22. EnvyCodeR                   36. InconsolataLGC              50. Monoid                      64. Tinos
+9. BigBlueTerminal              23. FantasqueSansMono           37. IntelOneMono                51. Mononoki                    65. Ubuntu
+10. BitstreamVeraSansMono       24. FiraCode                    38. Iosevka                     52. NerdFontsSymbolsOnly        66. UbuntuMono
+11. CascadiaCode                25. FiraMono                    39. IosevkaTerm                 53. Noto                        67. UbuntuSans
+12. CascadiaMono                26. GeistMono                   40. IosevkaTermSlab             54. OpenDyslexic                68. VictorMono
+13. CodeNewRoman                27. Go-Mono                     41. JetBrainsMono               55. Overpass                    69. ZedMono
+14. ComicShannsMono             28. Gohu                        42. Lekton                      56. ProFont                     70. iA-Writer
 ---------------------------------------------
+
 Enter the numbers of the fonts to install (e.g., "1 2 3") or type "all" to install all fonts:
+
 ```
 
 ---
@@ -213,9 +212,9 @@ Fonts are installed to `~/.local/share/fonts/` following XDG specifications:
 
 ### ⚡ Performance Comparison
 
-| Version | Dependencies | Speed | Memory | Error Handling | JSON Parsing | Recommended Use |
+| Version | Dependencies | Speed | Memory | Security | JSON Parsing | Recommended Use |
 |:--------|:-------------|:------|:-------|:---------------|:-------------|:----------------|
-| **C Binary** | libcurl, libjansson | 🔥 Fast | 💚 Low | 🛡️ Advanced | 🚀 Native | Production, Daily use |
+| **C Binary** | libcurl, libjansson | 🔥 Fast | 💚 Low | 🛡️ Hardened (PIE, RELRO) | 🚀 Native | Production, Daily use |
 | **Shell Script** | bash, curl, unzip | 🐌 Slower | 🟡 Higher | ⚠️ Basic | 🔧 awk-based | Testing, Quick installs |
 
 ---
@@ -297,12 +296,17 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **🔌 GitHub API**: For providing reliable font metadata
 - **🐧 Linux Community**: For inspiration and feedback
 
+Thank you to everyone who has contributed to the development of `nerd_fonts_installer`. Your efforts are greatly appreciated, and you're helping make this tool better for everyone!
+
+[![Contributors](https://contrib.rocks/image?repo=fam007e/nerd_fonts_installer)](https://github.com/fam007e/nerd_fonts_installer/graphs/contributors)
+
+
 ---
 
 ## 📞 Support & Links
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/fam007e/nerd_fonts_installer/issues)
-- 📦 **AUR Package**: [nerdfonts-installer](https://aur.archlinux.org/packages/nerdfonts-installer)
+- 📦 **AUR Package**: [nerdfonts-installer](https://aur.archlinux.org/packages/nerdfonts-installer-bin)
 - 📋 **Releases**: [Latest Release](https://github.com/fam007e/nerd_fonts_installer/releases/latest)
 - 📖 **Documentation**: [Wiki](https://github.com/fam007e/nerd_fonts_installer/wiki)
 
