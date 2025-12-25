@@ -20,7 +20,7 @@ provides=("libinput=${pkgver}" 'libinput' 'libinput.so=10-64') # bump SONAME if 
 conflicts=('libinput')
 
 source=("libinput-epp-${pkgver}.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/${pkgver}/libinput-epp-${pkgver}.tar.gz")
-sha256sums=('89222859f9d4d2fd4a8cbbb903d73d29ac3ebfa0d890448a13b4a440e358190b')
+sha256sums=('51ff895ef474f2db690b6c159652bbf92c8694c5d27963a08f46d03b94d89972')
 
 build() {
   arch-meson "libinput-epp-${pkgver}" build \
