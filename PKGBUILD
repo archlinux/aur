@@ -1,20 +1,29 @@
-# Maintainer:  Anton Kudelin <kudelin at proton dot me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Anton Kudelin <kudelin at proton dot me>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Carl Rogers <carl.rogers@gmail.com>
 # Contributor: Jed Brown <jed@59A2.org>
 # Contributor: Brenden Mervin <bmervin@utk.edu>
+# Contributor: David Wells <drwells.aur at fastmail dot com>
 _base=Silo
 pkgname=${_base,,}
 pkgver=4.12.0
-pkgrel=1
-pkgdesc="A Mesh and Field I/O Library and Scientific Database"
-url="http://software.llnl.gov/Silo"
+pkgrel=2
+pkgdesc="File-based, scientific data exchange and software interoperability"
+url="https://software.llnl.gov/${_base}"
 arch=(x86_64)
 depends=(qt5-base hdf5-openmpi)
 makedepends=(gcc-fortran)
 license=(BSD)
-source=(${_base}-${pkgver}.tar.gz::https://github.com/LLNL/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('66b5c5935794ac557f6feb7d060af1c269d3267780da8cb54c4e2c9829182fae289f8aa9a5596e18d41ce43611e66a79ec466de3b2c8a5269021270fb4452d87')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/LLNL/${_base}/archive/${pkgver}.tar.gz
+  local://hdf5-2.patch)
+sha512sums=('66b5c5935794ac557f6feb7d060af1c269d3267780da8cb54c4e2c9829182fae289f8aa9a5596e18d41ce43611e66a79ec466de3b2c8a5269021270fb4452d87'
+            '5b8d3cb1cdbfa1095c8d558f919e1dee0d91edbf4a626077e2d0cc789d120b6e119ac0d9af52241aa65c7b1e35a65e6ec0e4bdf0fa40fd7222c52338683adeb8')
+
+prepare() {
+  cd "$srcdir/$_base-$pkgver"
+  patch -p1 -i ../hdf5-2.patch
+}
 
 build() {
   cd "$srcdir/$_base-$pkgver"
@@ -36,7 +45,7 @@ build() {
   make
 }
 
-package(){
+package() {
   cd "$srcdir/$_base-$pkgver"
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-html
