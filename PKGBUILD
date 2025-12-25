@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=mmdbinspect
-pkgver=0.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='look up records for one or more IPs/networks in one or more .mmdb databases'
 arch=(x86_64 aarch64 armv7h)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('b293a03aa0d2b4407d06925ac5d6dcca22aa7170ce98cf757c5ddd7dadced42a2d9c662dbb32154a4f112d1ed1a43386a4c8512f0eb078936969dd412fa783d6')
+b2sums=('b33744bdc991553f52563521e6804447b107178e1f0d21cb73827b4b52ca31a14029aae080779bdd5eb6d3014e97d984bc8e2068642e7e55721384a8193ed458')
 
 build() {
   cd $pkgname-$pkgver
@@ -21,13 +21,13 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
 
   go build \
-  -trimpath \
-  -buildmode=pie \
-  -mod=readonly \
-  -modcacherw \
-  -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-  -o $pkgname \
-  cmd/mmdbinspect/main.go
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o $pkgname \
+    ./...
 }
 
 package() {
