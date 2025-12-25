@@ -1,0 +1,16 @@
+pkgbase = dbus-cxx-git
+	pkgdesc = Object-oriented DBus interface library
+	pkgver = 20251219.98cc097
+	pkgrel = 1
+	url = https://dbus-cxx.github.io/
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = libsigc++-3.0
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/dbus-cxx/dbus-cxx.git
+	sha256sums = SKIP
+
+pkgname = dbus-cxx-git
