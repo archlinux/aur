@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgbase"
-	make
+	CC=g++ make
 }
 
 package() {
