@@ -22,7 +22,7 @@ depends=(
   'python-bleach'
   'python-protobuf'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('3335da5752ae2843c3aa0523b7a7ed91a8dd5505c19cb4031f9d57651c346106')
 
