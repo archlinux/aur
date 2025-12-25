@@ -3,7 +3,7 @@
 pkgname=symp
 
 # Version
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 
 # Generic
@@ -19,7 +19,7 @@ conflicts=('symp-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
-b2sums=('2292b69cda5f3b59925cffc9e1b19c4adced5b6234c1cc5c8829ff81986290510f4fea27f02af35b1074d9e5699a31b8646d58ff835e844221e7662045f270c6')
+b2sums=('3e57ec2b2282f409185460e0d3cbd7fe34d895c964525c68a28f5e6c86ea171016864fdbfba8758926ac3c2053b272040f4203069f1450c0ff87bf8106c4bcc4')
 
 
 package() {
