@@ -1,0 +1,15 @@
+pkgbase = fastgltf
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://fastgltf.readthedocs.io/
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = catch2
+	makedepends = glad
+	makedepends = glfw
+	makedepends = glm
+	source = fastgltf-0.9.0.tar.gz::https://github.com/spnda/fastgltf/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 0bb564e127b14c22f062db50f89381dd2e0a20dbaf4987ca138a4ae8728712f9
+
+pkgname = fastgltf
