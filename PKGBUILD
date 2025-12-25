@@ -1,7 +1,7 @@
 # Maintainer: KevinLiu <kevin[at]atunemic.cn>
 pkgname='sakura-frp-launcher-bin'
 provides=('sakura-frpc' 'natfrp' 'sakura-frp-launcher')
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=3
 pkgdesc="A daemon for a fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -18,11 +18,11 @@ source_aarch64=("natfrp-service-${pkgver}_linux_arm64.tar.zst::https://nya.globa
 source_i686=("natfrp-service-${pkgver}_linux_386.tar.zst::https://nya.globalslb.net/natfrp/client/launcher-unix/${pkgver}/natfrp-service_linux_386.tar.zst")
 source=('natfrp.service')
 
-sha256sums=('37de6651e7ce428cb9143cd3bd12b61ff0af59be0d32b15f58d06dbd657d6d04')
-sha256sums_x86_64=('1d310284a7cd3590177e1a86805c6d617153d6671e675a60ddfb475b8fd04b1f')
-sha256sums_armv7h=('e6e0f2f671d4c4c16498a26477d23bd8aa4a48bf491813c5daa94b0a5b76c35b')
-sha256sums_aarch64=('cbb6d5db0877b13c71bf8d44957b89699de63866c30aa9bbb0dc0cdf4aba5e8e')
-sha256sums_i686=('a46a80fe6b73d85d7b72615743181ba4efefc1e99a498a93cbc8eac897c245b8')
+sha256sums=('ac53d785aa3111ec9dce74ff0ac0201f32c1704843cfbf5eb301564d6cffacca')
+sha256sums_x86_64=('980ab185ce4ea8b8bf2e4b67a1b4ae742877c4dd229f8260c80a5cf2ae20a291')
+sha256sums_armv7h=('d629cf08ed01f4858af1d9753ad6d1dc8002f6b7e7b0a9f3afbfe6f66f6a0642')
+sha256sums_aarch64=('494779a44d279f0c0dc0b706d6618496711e2bee63daeec5ab842ed26e807b78')
+sha256sums_i686=('f78bdbb671352f86cb06b64417283fb97c65257f4c9cfaa73abb8222c21f0b6d')
 
 package() {
     install -Dm755 "${srcdir}/natfrp-service" "${pkgdir}/usr/bin/natfrp-service"
