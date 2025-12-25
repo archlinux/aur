@@ -12,10 +12,10 @@ arch=("x86_64")
 provides=("vofi")
 conflicts=("vofi")
 depends=("gtk4" "gtk4-layer-shell")
-source=("https://github.com/eon-ic/vofi.git/releases/download/v$pkgver/vofi-$pkgver-x86_64.tar.gz")
+source=("https://github.com/eon-ic/vofi/releases/download/v$pkgver/vofi-$pkgver-x86_64.tar.gz")
 sha256sums=("2cdd9d92bd7661fb545daced00e2a87c3d65e3e4d8b056bded2c850831657032")
 
 package() {
-    install -Dm755 vofi -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 vofi -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
