@@ -10,9 +10,9 @@ depends=('curl' 'libzip' 'wine' 'vulkan-icd-loader' 'hicolor-icon-theme' 'glfw' 
 provides=('rsjfw')
 conflicts=('rsjfw-git')
 install=rsjfw.install
-source=("https://github.com/9nunya/RSJFW/releases/download/v${pkgver}/rsjfw-${pkgver}-x86_64.tar.gz"
+source=("https://github.com/9nunya/RSJFW/releases/download/v${pkgver}/rsjfw-${pkgver}-arch-x86_64.tar.gz"
         "rsjfw.install")
-sha256sums=('5a028da947a50004703f3d55ab62453666cc0503ba4ad17514087ccae8dc76c6' 'SKIP') # PLACEHOLDER_SHA256
+sha256sums=('6f1bb6bde4f4a45e0dc9e08bc8233d379c5a041b708fbb1f09ad45b74e0dd103' 'SKIP') # PLACEHOLDER_SHA256
 
 package() {
     install -d "$pkgdir/usr"

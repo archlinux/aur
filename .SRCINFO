@@ -15,9 +15,9 @@ pkgbase = rsjfw
 	depends = libglvnd
 	provides = rsjfw
 	conflicts = rsjfw-git
-	source = https://github.com/9nunya/RSJFW/releases/download/v2.0.0/rsjfw-2.0.0-x86_64.tar.gz
+	source = https://github.com/9nunya/RSJFW/releases/download/v2.0.0/rsjfw-2.0.0-arch-x86_64.tar.gz
 	source = rsjfw.install
-	sha256sums = 5a028da947a50004703f3d55ab62453666cc0503ba4ad17514087ccae8dc76c6
+	sha256sums = 6f1bb6bde4f4a45e0dc9e08bc8233d379c5a041b708fbb1f09ad45b74e0dd103
 	sha256sums = SKIP
 
 pkgname = rsjfw
