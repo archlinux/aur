@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='2.1.3'
+_upstreamver='2.1.4'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='twg'
@@ -27,7 +27,7 @@ depends=('python' 'python-textual' 'python-pyperclip' 'python-rich' 'python-ijso
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('904f7ea31a3b323832111f5ec420bde91fe91cd5462e99afda6a6e3fc6156479')
+sha256sums=('aaf5e2cbbd93fae419ab256221160765f0097cad3bdeb167eb5b6edaf7ae5cc8')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
