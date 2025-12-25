@@ -2,7 +2,7 @@
 
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
-pkgver=r694.64c2410
+pkgver=r794.1c6681b
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
@@ -12,14 +12,14 @@ depends=(
   'python'
   'python-cachecontrol'
   'python-cyclonedx-lib'
-  'python-html5lib'
   'python-packaging'
   'python-pip-api'
   'python-pip-requirements-parser'
   'python-platformdirs'
   'python-requests'
   'python-rich'
-  'python-toml'
+  'python-tomli'
+  'python-tomli-w'
 )
 checkdepends=('git' 'python-pretend' 'python-pytest')
 makedepends=(
