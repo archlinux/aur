@@ -1,6 +1,6 @@
 pkgbase = lightdm-kde-greeter
 	pkgdesc = LightDM Greeter for KDE
-	pkgver = 6.0.4
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/lightdm-kde-greeter
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = lightdm-kde-greeter
 	depends = kservice
 	depends = libplasma
 	backup = etc/lightdm/lightdm-kde-greeter.conf
-	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.0.4
-	sha512sums = e5f9d9712d7271a26afe09f6cf006442fc14ee3c82915d30de11f698423960c1b1d539150eb10f6d016541bde0aeace00d019e5eb2e956b70e361223b9353fee
+	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.1.2
+	sha512sums = 5fa4cde1ea02d364d9ad682c4b71a3231f92d88b30d5d83bcece8c86c746ad4676ab764ec81a6c32a0e14924292ec4580cefd91b1aaa99908225c9380369d36e
 
 pkgname = lightdm-kde-greeter
