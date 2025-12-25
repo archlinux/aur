@@ -1,14 +1,14 @@
 pkgbase = zenmonitor3-git
 	pkgdesc = A monitoring software for AMD Zen-based CPUs, now with Zen 3 support!
 	pkgver = r94.1e1ceec
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://github.com/detiam/zenmonitor3
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = zenpower3
+	depends = zenpower
 	depends = gtk3
 	optdepends = polkit: support application shortcut to launch Zen monitor as root
 	provides = zenmonitor
