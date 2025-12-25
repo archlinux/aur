@@ -19,7 +19,7 @@ arch=(x86_64)
 depends=('python' 'glibc' 'gcc-libs' 'java-runtime')
 optdepends=('python-ngs: python module for ncbi sra-tools')
 makedepends=('cmake'  'doxygen' 'hdf5' 'mbedtls' 'libxml2')
-sha256sums=('c8c1332747c913791914f4092bfba578d61131d3f742cd55d29f6ed7f8df5c92'
+sha256sums=('3bfa26c5499a94d3b2a98eb65113bbb902f51dadef767c7c7247fc0175885a9a'
             '36b3467affd53bea794e3eeb5598619d820bc726dc68751a189181ac7973047d'
             'b7bf289f0d52824d7871d35add266838524f7cea919c9e9424842f9291d3df2a')
 options=(!lto)
