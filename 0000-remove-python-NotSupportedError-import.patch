@@ -1,0 +1,13 @@
+diff --unified --recursive --text airrohr-firmware-flasher.orig/airrohr-flasher.py airrohr-firmware-flasher/airrohr-flasher.py
+--- airrohr-firmware-flasher.orig/airrohr-flasher.py	2025-12-25 22:54:07.970979998 +0100
++++ airrohr-firmware-flasher/airrohr-flasher.py	2025-12-25 22:55:32.712161655 +0100
+@@ -12,7 +12,7 @@
+ import json
+ 
+ import requests
+-from esptool import ESPLoader, erase_flash, write_flash, NotSupportedError
++from esptool import ESPLoader, erase_flash, write_flash
+ 
+ import airrohrFlasher
+ from airrohrFlasher.qtvariant import QtGui, QtCore, QtWidgets
+Only in airrohr-firmware-flasher: airrohr-flasher.py~
