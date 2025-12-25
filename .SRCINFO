@@ -1,6 +1,6 @@
 pkgbase = sttr-bin
 	pkgdesc = sttr is command line software that allows you to quickly run various transformation operations on the string.
-	pkgver = 0.2.29
+	pkgver = 0.2.30
 	pkgrel = 1
 	url = https://github.com/abhimanyu003/sttr
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = sttr-bin
 	provides = sttr
 	arch = aarch64
 	source_aarch64 = https://github.com/abhimanyu003/sttr/releases/download/v${pkgver}/sttr_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a858eba498f09fcee4bb04b0c2ee122b4012c4f8e1e927f24259d702542a6403
+	sha256sums_aarch64 = 3653d0b1ebebae7cc93e96260d03a872698e3bc689f3162de31c758f25331311
 	arch = i686
 	source_i686 = https://github.com/abhimanyu003/sttr/releases/download/v${pkgver}/sttr_Linux_i386.tar.gz
-	sha256sums_i686 = 04f7c57e8e8004a9e4911fe7d790efe4875aa83c8f2a8c25817cde860590c340
+	sha256sums_i686 = db3e354d76aa833347db005652441414402f539457834328a19e57749ee18e88
 	arch = x86_64
 	source_x86_64 = https://github.com/abhimanyu003/sttr/releases/download/v${pkgver}/sttr_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 396ea30f11bdbf17c22bce5779c1e9ec53cd8d4bcdc6d71e49d120b90bbb8904
+	sha256sums_x86_64 = f4cb5b240853b53f67d7b789c9cf5969e794675c5c38aad2ed5ff2c065be4c19
 	
 pkgname = sttr-bin
