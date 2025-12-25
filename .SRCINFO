@@ -10,7 +10,6 @@ pkgbase = photoqt-extensions
 	makedepends = qt6-tools
 	depends = exiv2
 	depends = imagemagick
-	optdepends = photoqt: PhotoQt image viewer
 	provides = photoqt-extensions-debug
 	conflicts = photoqt-extensions-bin
 	conflicts = photoqt-extensions-bin-debug

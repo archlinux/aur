@@ -10,7 +10,6 @@ license=('GPL2')
 conflicts=('photoqt-extensions-bin' 'photoqt-extensions-bin-debug')
 provides=('photoqt-extensions-debug')
 depends=('exiv2' 'imagemagick')
-optdepends=('photoqt: PhotoQt image viewer')
 makedepends=('cmake' 'qt6-tools')
 source=(https://photoqt.org/downloads/extensions/$pkgname-$pkgver.tar.gz)
 sha256sums=('7ceb4dd095167ee3e082a84b7478e13d5fe7fd07f9735a9d563825e290a99774')
@@ -22,7 +21,7 @@ install="photoqt-extensions.install"
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_IMAGEMAGICK=ON -DCMAKE_BUILD_TYPE=Release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr/lib/PhotoQt/extensions -DWITH_IMAGEMAGICK=ON -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
