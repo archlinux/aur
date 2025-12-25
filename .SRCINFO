@@ -1,13 +1,13 @@
 pkgbase = projhandler-client
 	pkgdesc = dont use this
-	pkgver = 2.0.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/slawacats/projhandler-client
 	arch = x86_64
 	license = MIT
 	provides = projhandler-client
 	conflicts = projhandler-client
-	source = https://github.com/slawacats/projhandler-client/releases/download/v2.0.1/projhandler-client-2.0.1-x86_64.tar.gz
-	sha256sums = ad5e5ec37123c7653dd4312b1d24be10946ea06284be65dff5dd6c735f8dd007
+	source = https://github.com/slawacats/projhandler-client/releases/download/v2.1.2/projhandler-client-2.1.2-x86_64.tar.gz
+	sha256sums = fd4bfeb100285342956b2128a3a34f1da74d5806ef82d8818572b495e59d1503
 
 pkgname = projhandler-client
