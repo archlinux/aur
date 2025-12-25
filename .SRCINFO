@@ -1,6 +1,6 @@
 pkgbase = eve-preview-manager
 	pkgdesc = EVE Online window preview manager
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/h0lylag/EVE-Preview-Manager
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = eve-preview-manager
 	depends = libxrandr
 	depends = libxi
 	options = !debug
-	source = eve-preview-manager-1.4.0.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = ebd97dc7d579d3ea8a95504670d28b5cf5c21ea4272395974fa5fb10ab715b51
+	source = eve-preview-manager-1.5.0.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 89a7ee038ab711d5973a8fa43ef783d455a308013922d29193438fe7a6b1523c
 
 pkgname = eve-preview-manager
