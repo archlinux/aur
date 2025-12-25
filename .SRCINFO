@@ -1,0 +1,14 @@
+pkgbase = backlog.md
+	pkgdesc = Markdown-native Task Manager & Kanban visualizer for any Git repository
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://github.com/MrLesk/Backlog.md
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = backlog
+	conflicts = backlog
+	source = backlog.md-1.28.0::https://github.com/MrLesk/Backlog.md/releases/download/v1.28.0/backlog-bun-linux-x64-baseline
+	sha256sums = 0d3511b8aad3a9fda337e19b8d03bdef37123d70374725b7dd3d4ea4d425f2f2
+
+pkgname = backlog.md
