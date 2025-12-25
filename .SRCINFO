@@ -1,6 +1,6 @@
 pkgbase = circle-to-search
 	pkgdesc = Draw to select, search with Google Lens - Linux Wayland edition
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/jaslrobinson/circle-to-search
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = circle-to-search
 	optdepends = tesseract-data-eng: English language data for OCR
 	optdepends = python-pytesseract: Python bindings for tesseract
 	optdepends = gtk-layer-shell: live mode support (Hyprland/Sway only)
-	source = circle-to-search-1.2.0.tar.gz::https://github.com/jaslrobinson/circle-to-search/archive/v1.2.0.tar.gz
-	sha256sums = 1c722f3e1660600593b35a36723b817e1fd6f9b9925ba00c31e168bf58a77a3c
+	source = circle-to-search-1.2.1.tar.gz::https://github.com/jaslrobinson/circle-to-search/archive/v1.2.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = circle-to-search

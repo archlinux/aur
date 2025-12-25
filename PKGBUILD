@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=circle-to-search
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Draw to select, search with Google Lens - Linux Wayland edition"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
     'gtk-layer-shell: live mode support (Hyprland/Sway only)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1c722f3e1660600593b35a36723b817e1fd6f9b9925ba00c31e168bf58a77a3c')
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
