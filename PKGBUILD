@@ -4,7 +4,7 @@ pkgbase=openjph-git
 pkgname=(
     'openjph-git'
     'openjph-doc-git')
-pkgver=0.21.5.r0.gcaa3d3d
+pkgver=0.26.0.r0.g4d4f4e8
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (git version)'
 arch=('x86_64')
@@ -34,11 +34,6 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DOJPH_DISABLE_SSSE3:BOOL='ON' \
-        -DOJPH_DISABLE_SSE4:BOOL='ON' \
-        -DOJPH_DISABLE_AVX:BOOL='ON' \
-        -DOJPH_DISABLE_AVX2:BOOL='ON' \
-        -DOJPH_DISABLE_AVX512:BOOL='ON' \
         -DOJPH_BUILD_TESTS:BOOL='ON' \
         -Wno-dev
     cmake --build build
