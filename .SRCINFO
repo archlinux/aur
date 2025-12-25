@@ -1,6 +1,6 @@
 pkgbase = rsjfw
 	pkgdesc = Roblox Studio Just Fucking Works - Hardened Linux compatibility layer (Binaries)
-	pkgver = 1.0.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/9nunya/RSJFW
 	install = rsjfw.install
@@ -15,9 +15,9 @@ pkgbase = rsjfw
 	depends = libglvnd
 	provides = rsjfw
 	conflicts = rsjfw-git
-	source = https://github.com/9nunya/RSJFW/releases/download/v1.0.5/rsjfw-1.0.5-x86_64.tar.gz
+	source = https://github.com/9nunya/RSJFW/releases/download/v2.0.0/rsjfw-2.0.0-x86_64.tar.gz
 	source = rsjfw.install
-	sha256sums = 81b5dee9229d31e10d60ee87c81e71ccd5709495a07111ae4c85a8ce8ab761e9
+	sha256sums = 5a028da947a50004703f3d55ab62453666cc0503ba4ad17514087ccae8dc76c6
 	sha256sums = SKIP
 
 pkgname = rsjfw
