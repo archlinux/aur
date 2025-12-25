@@ -1,13 +1,13 @@
 # Maintainer: JOLIMAITRE Matthieu <matthieu@imagevo.fr>
 pkgname="deno-stable-bin"
-pkgver=2.6.0
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="A modern JavaScript and TypeScript runtime. Latest artefact from github."
 url="https://deno.land"
 arch=("x86_64" "aarch64")
 license=('MIT')
 depends=('gcc-libs')
-source=("https://github.com/denoland/deno/releases/latest/download/deno-$arch-unknown-linux-gnu.zip")
+source=("https://github.com/denoland/deno/releases/latest/download/deno-$CARCH-unknown-linux-gnu.zip")
 sha256sums=("SKIP")
 options=("!strip")
 provides=("deno")
