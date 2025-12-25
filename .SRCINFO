@@ -1,6 +1,6 @@
 pkgbase = quickshell-greetd
 	pkgdesc = Use Quickshell lockscreen as greetd greeter
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/everyoneexe/quickshell-greetd
 	install = quickshell-greetd.install
@@ -9,8 +9,9 @@ pkgbase = quickshell-greetd
 	depends = quickshell
 	depends = greetd
 	depends = cage
+	depends = seatd
 	backup = etc/greetd/config.toml
-	source = quickshell-greetd-1.0.2.tar.gz::https://github.com/everyoneexe/quickshell-greetd/archive/v1.0.2.tar.gz
+	source = quickshell-greetd-1.0.3.tar.gz::https://github.com/everyoneexe/quickshell-greetd/archive/v1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = quickshell-greetd

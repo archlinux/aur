@@ -1,12 +1,12 @@
 # Maintainer: everyoneexe <everyoneexe@example.com>
 pkgname=quickshell-greetd
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Use Quickshell lockscreen as greetd greeter"
 arch=('any')
 url="https://github.com/everyoneexe/quickshell-greetd"
 license=('MIT')
-depends=('quickshell' 'greetd' 'cage')
+depends=('quickshell' 'greetd' 'cage' 'seatd')
 backup=('etc/greetd/config.toml')
 install=quickshell-greetd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")

@@ -4,8 +4,13 @@ post_install() {
     # Create greeter user if not exists
     if ! id greeter &>/dev/null; then
         useradd -r -s /bin/false greeter
-        echo "==> Created greeter user"
+        usermod -a -G seat greeter
+        echo "==> Created greeter user and added to seat group"
     fi
+    
+    # Enable seatd
+    systemctl enable seatd
+    systemctl start seatd
     
     # Setup greetd config if not exists
     if [ ! -f /etc/greetd/config.toml ]; then
