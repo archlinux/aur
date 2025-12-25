@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: ftiasch <ftiasch0@gmail.com>
 pkgname=backlog.md
 pkgver=1.28.0
 pkgrel=1
