@@ -2,7 +2,7 @@
 
 pkgname=libinput-epp
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Replaces Adaptive acceleration with Windows' Enhance Pointer Precision"
 url="https://gitlab.freedesktop.org/tehabstract/libinput-epp"
 arch=(x86_64)
