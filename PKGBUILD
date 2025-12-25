@@ -30,7 +30,7 @@ makedepends=(
   'xcb-util-keysyms'
 )
 optdepends=(
-  'xwayland: X11 application support'
+  'xorg-xwayland: X11 application support'
 )
 # wlroots and libsfdo are handled as meson subprojects
 source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
