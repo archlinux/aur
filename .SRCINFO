@@ -1,0 +1,13 @@
+pkgbase = peekfetch
+	pkgdesc = Interactive system information TUI with live updates
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YashSaini99/peekfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.21
+	source = peekfetch-1.0.0.tar.gz::https://github.com/YashSaini99/peekfetch/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = peekfetch
