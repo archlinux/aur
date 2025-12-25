@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-panel
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Tuner that adds panel mode switcher to Tweaks appearance page."
 arch=('x86_64')
 url="https://altlinux.space/alt-gnome/tunerpanel"
