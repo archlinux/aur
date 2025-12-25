@@ -6,7 +6,7 @@
 # Contributor: Adam Rustler
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.27.0
+pkgver=7.35.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.(Prebuilt version.Use system-wide electron)"
@@ -25,11 +25,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('37590c8b560a2eca91adda708246fb2d3f6c6d9b57d8147ed79406092d029933'
+sha256sums=('97a5e2b3c2c640df0e848e6de7f577c721915ae5fdee386e89c63888970173d4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
