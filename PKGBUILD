@@ -4,7 +4,7 @@
 pkgname=classin-bin
 _pkgname=classin
 pkgver=6.0.4.7807
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary remote classroom application by EEO."
 arch=('x86_64')
 url="https://www.eeo.cn/cn/classin"
@@ -17,12 +17,4 @@ sha512sums_x86_64=('00d7e99e54ba3814314123b47554a06c66b3bcfb400a405a61ff8c6b6bb4
 
 package(){
   tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
-
-  # HACK: Debian compatibility symlink
-  # ClassIn binary links several files in /usr/lib/x86_64-linux-gnu, which is
-  # invalid on Arch. I tried examining the binary using `patchelf`, `ldd`, and
-  # `strings`, but couldn't figure out how it's linked. In lieu of a proper fix,
-  # this makeshift solution will do for now.
-  mkdir -p "${pkgdir}/usr/lib"
-  ln -sf /usr/lib "${pkgdir}/usr/lib/x86_64-linux-gnu"
 }
