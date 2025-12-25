@@ -1,7 +1,7 @@
 pkgbase = qobuz-player
 	pkgdesc = High resolution audio player backed by Qobuz
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SofusA/qobuz-player
 	arch = x86_64
 	license = GPL-3
