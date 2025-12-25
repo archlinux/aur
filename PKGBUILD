@@ -1,0 +1,32 @@
+# Maintainer: Dracape <Dracape at outlook dot com>
+
+pkgname=symp-git
+
+# Version
+pkgver=5.2.1.r0.gcab889b
+pkgrel=1
+
+# Generic
+pkgdesc='Populate directories with least amount of symlinks'
+arch=(any)
+url='https://github.com/Dracape/SymP'
+license=('MIT')
+
+# Dependencies
+depends=('fish' 'fd')
+makedepends=('fish' 'fd' 'git')
+conflicts=('symp')
+provides=("symp=${pkgver}")
+
+source=("${pkgname}-${pkgver}::git+https://github.com/Dracape/SymP.git")
+
+b2sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname-$pkgver"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+	"$pkgname-$pkgver"/install.fish --vendor --repository="$pkgname-$pkgver" --rootdir=${pkgdir}
+}
