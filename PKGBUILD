@@ -13,7 +13,7 @@ depends=("qmmp>=$pkgver" 'taglib>=1.12.0' 'qt6-base')
 optdepends=('libmodplug>=0.8.4' 'libsamplerate>=0.1.2' 'ffmpeg>=3.4.0' 'yt-dlp')
 makedepends=('cmake>=3.18.0' 'qt6-tools' 'taglib>=1.12.0' 'libmodplug>=0.8.4'
              'libsamplerate>=0.1.2' 'ffmpeg>=3.4.0' 'yt-dlp')
-source=(https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/${pkgver#*.}/${pkgname}-${pkgver}.tar.bz2)
+source=(https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/${pkgver:0:3}/${pkgname}-${pkgver}.tar.bz2)
 b2sums=('3c6623aaf0e27dab485e517bebf557033083a30044fb13c3e37a524c6a407775304dd9f9a91107842f445f50dc59f88fc0a9b73e62fbcb6945da3ce880c534ba')
 
 build() {

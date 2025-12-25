@@ -19,7 +19,7 @@ pkgbase = qmmp-plugin-pack
 	optdepends = libsamplerate>=0.1.2
 	optdepends = ffmpeg>=3.4.0
 	optdepends = yt-dlp
-	source = https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/3.0/qmmp-plugin-pack-2.3.0.tar.bz2
+	source = https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.3/qmmp-plugin-pack-2.3.0.tar.bz2
 	b2sums = 3c6623aaf0e27dab485e517bebf557033083a30044fb13c3e37a524c6a407775304dd9f9a91107842f445f50dc59f88fc0a9b73e62fbcb6945da3ce880c534ba
 
 pkgname = qmmp-plugin-pack
