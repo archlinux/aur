@@ -1,11 +1,11 @@
 pkgbase = libwasmtime
 	pkgdesc = Wasmtime as library with C-bindings
-	pkgver = 37.0.0
+	pkgver = 40.0.0
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasmtime
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/bytecodealliance/wasmtime/releases/download/v37.0.0/wasmtime-v37.0.0-x86_64-linux-c-api.tar.xz
-	sha256sums = 34749b52ef98e37bf7bf1076a6eaecb30f85a82aba78c7799e72ddacea2050fb
+	source = https://github.com/bytecodealliance/wasmtime/releases/download/v40.0.0/wasmtime-v40.0.0-x86_64-linux-c-api.tar.xz
+	sha256sums = a52816587989fe15d6ddb60366ee0e9b617b6cbb7eff0cade782b3f0613e719d
 
 pkgname = libwasmtime
