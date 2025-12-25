@@ -1,0 +1,12 @@
+_srvname=zapret2.service
+
+post_upgrade() {
+  sudo systemctl daemon-reload
+  if systemctl is-active --quiet $_srvname; then
+    sudo systemctl restart $_srvname
+  fi
+}
+
+pre_remove() {
+  sudo systemctl disable --now $_srvname
+}

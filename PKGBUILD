@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -24,10 +24,14 @@ backup=(
   #"opt/$pkgname/ipset/zapret-hosts-user-ipban.txt"
   #"opt/$pkgname/ipset/zapret-ip-user.txt"
 )
+install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('a1f1ce9305b274169ab1e4d19c3bc92593d1b7031e06c62635b02490989728ef')
+sha256sums=('3570d301b43f4079ce9f57cd5108f9484893cc9e78ef8b3905c282337673be28')
 
 prepare() {
+  # 'KillMode=none' is a deprecated option and is not recommended for use.
+  sed -i 's/KillMode=none/KillMode=mixed/g' "$srcdir"/$pkgname/init.d/systemd/zapret2.service
+
   cd $pkgname/ipset
   mv -f zapret-hosts-user-exclude.txt.default zapret-hosts-user-exclude.txt
   #touch zapret-hosts-user.txt
@@ -51,7 +55,7 @@ package() {
   for i in custom standard; do
     install -Dm644 blockcheck2.d/$i/* -t "$pkgdir"/opt/$pkgname/blockcheck2.d/$i/
   done
-  
+
   for i in fake; do
     install -Dm644 files/$i/* -t "$pkgdir"/opt/$pkgname/files/$i/
   done
@@ -59,9 +63,9 @@ package() {
   install -Dm755 ipset/*  -t "$pkgdir"/opt/$pkgname/ipset/
   install -Dm644 common/* -t "$pkgdir"/opt/$pkgname/common/
   install -Dm644 lua/*    -t "$pkgdir"/opt/$pkgname/lua/
-  
-  install -Dm755 init.d/sysv/{functions,$pkgname} -t "$pkgdir"/opt/$pkgname/init.d/sysv/
+
   install -dm755 "$pkgdir"/opt/$pkgname/init.d/sysv/custom.d/
+  install -Dm755 init.d/sysv/{functions,$pkgname} -t "$pkgdir"/opt/$pkgname/init.d/sysv/
   install -Dm644 init.d/systemd/*                 -t "$pkgdir"/usr/lib/systemd/system/
 
   install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf << END
