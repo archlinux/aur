@@ -2,3 +2,7 @@ pkg
 src
 http-remote-pc-control
 http-remote-pc-control-*
+!http-remote-pc-control-*.service
+!http-remote-pc-control-*.bash
+!http-remote-pc-control-*.sh
+!http-remote-pc-control-*.conf

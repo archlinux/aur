@@ -1,6 +1,8 @@
 [Unit]
 Description=HTTP Remote PC Control (%i)
 After=network.target graphical.target
+Requires=http-remote-pc-control-certs.service
+After=http-remote-pc-control-certs.service
 
 [Service]
 Type=simple
