@@ -1,0 +1,33 @@
+pkgbase = cuda-tile-git
+	pkgdesc = An MLIR-based intermediate representation and compiler infrastructure for CUDA kernel optimization (git version)
+	pkgver = r3.802d937
+	pkgrel = 1
+	url = https://github.com/NVIDIA/cuda-tile/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = cmake
+	makedepends = git
+	makedepends = nanobind
+	makedepends = pybind11
+	makedepends = python
+	source = git+https://github.com/NVIDIA/cuda-tile.git
+	source = git+https://github.com/llvm/llvm-project.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cuda-tile-git
+	depends = gcc-libs
+	depends = glibc
+	provides = cuda-tile
+	conflicts = cuda-tile
+	options = !emptydirs
+
+pkgname = python-cuda-tile-git
+	pkgdesc = Python bindings for cuda-tile (git version)
+	depends = cuda-tile-git=r3.802d937
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-numpy
+	provides = python-cuda-tile
+	conflicts = python-cuda-tile
