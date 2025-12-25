@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-ublock-origin-bin
 	pkgdesc = uBlock Origin - An efficient blocker for LibreWolf. Fast and lean.
-	pkgver = 1.67.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = librewolf-extension-ublock-origin-bin
 	provides = librewolf-extension-ublock-origin
 	conflicts = librewolf-extension-ublock-origin
 	noextract = uBlock0@raymondhill.net.xpi
-	source = uBlock0@raymondhill.net.xpi::https://github.com/gorhill/uBlock/releases/download/1.67.0/uBlock0_1.67.0.firefox.signed.xpi
-	source = https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/1.67.0/LICENSE.txt
-	b2sums = 6c05826c94a46f6fef82a5b66afd022294a9621f8dde55328dd30d105f0cc65c4f5b5b1777ad28ffc7844d572a4d04d27145cbda67c9cd65a2ef14668e2c92cf
+	source = uBlock0@raymondhill.net.xpi::https://github.com/gorhill/uBlock/releases/download/1.68.0/uBlock0_1.68.0.firefox.signed.xpi
+	source = https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/1.68.0/LICENSE.txt
+	b2sums = 0dcb00b5a0035aff672f5ccf8348ac9dbcb7982559a191c97ac5122ac63feccb385d37b0f54bc8a36a905cb0ccc12ed11c1bb1fe9efb4aef3837821bc4f36dcc
 	b2sums = 70878e15940b01e24866195829871711509ab49d8aca2ff7bac1d0fade060e409b10c348cc45f290f4d9c32105439fff847d571102ba6688d5b6aa02bd91bc42
 
 pkgname = librewolf-extension-ublock-origin-bin
