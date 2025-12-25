@@ -24,7 +24,7 @@ pkgbase = labfyre-git
 	depends = pixman
 	depends = libpng
 	depends = librsvg
-	optdepends = xwayland: X11 application support
+	optdepends = xorg-xwayland: X11 application support
 	source = git+https://github.com/FyreX-opensource-design/labFyre.git
 	sha256sums = SKIP
 
