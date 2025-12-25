@@ -22,7 +22,7 @@
     #+end_src
   - When you first use this fuzzy find you have to create a user [1]
 
-  - You can use my program direct in terminal to find item names: --name string to find named program. --hidden hides password. --login jumps right to login without being ask about to create user (You don't need this if you use name flag)
+  - You can use my program direct in terminal to find item names: --name string to find named program. --hidden hides password. --login jumps right to login without being ask about to create user (You don't need this if you use name flag). --not-open dont ask about to open links.
 
   I hope you like this little Bitwarden cli fuzzy finder
 
