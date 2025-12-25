@@ -1,6 +1,6 @@
 # Maintainer: lawliet <https://github.com/laewliet>
 pkgname=make-your-choice
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Dead by Daylight server region selector for Linux"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/laewliet/make-your-choice"
 license=('custom')
 depends=('gtk4' 'polkit')
 makedepends=('cargo' 'git')
-source=("git+https://github.com/laewliet/make-your-choice.git#tag=${pkgver/_/-}")
+source=("git+https://github.com/laewliet/make-your-choice.git#tag=v${pkgver/_/-}")
 sha256sums=('SKIP')
 
 prepare() {
