@@ -31,7 +31,7 @@ package() {
     cd "${pkgdir}"
 
     # install executable
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "./usr/bin/${_appname}"
+    install -Dm755 "${srcdir}/${_pkgname}-${CARCH}-${pkgver}" "./usr/bin/${_appname}"
 
     # install app_icon
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.png" "./usr/share/icons/${_appname}.png"
@@ -40,9 +40,6 @@ package() {
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "./usr/share/applications/${_appname}.desktop"
 
     # install LICENSE and README.md
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/README-${pkgver}.md" "./usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
 } 
-
-
-# https://github.com/majoraexp/Taskwire/releases/download/v1.4/Taskwire_v1.4_Linux_x86_64
