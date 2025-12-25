@@ -3,7 +3,7 @@
 pkgname=chronodash
 pkgver=2.2.0.r22.731c4b5
 pkgrel=1
-pkgdesc="Transparent always-on-top desktop widgets (clocks, weather etc) - latest from crossplatform-Linux branch"
+pkgdesc="Transparent always-on-top desktop widgets (clocks, weather etc)"
 arch=('x86_64')
 url="https://github.com/Overl1te/ChronoDash"
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('python' 'qt6-base' 'qt6-svg' 'libx11' 'tk' 'glibc')
 makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools')
 provides=('chronodash')
 conflicts=('chronodash-bin' 'chronodash-git')
-source=("git+https://github.com/Overl1te/ChronoDash.git#branch=crossplatform-Linux")
+source=("git+https://github.com/Overl1te/ChronoDash.git")
 sha256sums=('SKIP')
 
 pkgver() {
