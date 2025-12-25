@@ -1,6 +1,6 @@
 # Maintainer: Peter <peter.w.adams96@gmail.com>
 pkgname=python-sqlit-tui
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-${pkgver}.tar.gz")
-sha256sums=('82a01f08a71cdfe7db95aa52758c40987c75c279a3b3db3afbd9e16c20525367')
+sha256sums=('b662f59213290f51edc57b5d7a53dba2d06e9944587ad458c00499b17e9363ae')
 
 build() {
     cd "sqlit_tui-${pkgver}"
