@@ -4,18 +4,19 @@
 pkgname=photoqt-bin
 _pkgname=photoqt
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface (binary release)"
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
 conflicts=('photoqt' 'photoqt-debug')
 provides=('photoqt' 'photoqt-bin-debug')
-depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'devil' 'libsai-git')
+depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'devil')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
-sha256sums=('563f36425ce2d1cedbe6223a4162ffb896629c5d39a15ae94dd1a825d0c86a91')
+sha256sums=('28b426fc79188c441bdcc7c64ba19fb22e9b3a3bed658f4eb7d57331593b18c5')
+install="photoqt.install"
 
 package() {
 
@@ -23,9 +24,6 @@ package() {
 
   # install binary
   install -Dm0755 -t "$pkgdir/usr/bin/" photoqt
-
-  # install extensions
-  find extensions/ -type f -exec install -Dm 755 "{}" "$pkgdir/usr/lib/PhotoQt/{}" \;
 
   # install desktop file
   install -Dm0644 -t "$pkgdir/usr/share/applications/" org.photoqt.PhotoQt.desktop
