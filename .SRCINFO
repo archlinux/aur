@@ -1,6 +1,6 @@
 pkgbase = ab-download-manager-bin
 	pkgdesc = A Download Manager that speeds up your downloads
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://abdownloadmanager.com/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = ab-download-manager-bin
 	conflicts = abdownloadmanager
 	conflicts = ab-download-manager
 	options = !debug
-	source = https://github.com/amir1376/ab-download-manager/releases/download/v1.8.2/ABDownloadManager_1.8.2_linux_x64.tar.gz
-	sha256sums = 7f2724387adc6480423bd9109abe3c5ab83bdc607dc3154435c74217638c1404
+	source = https://github.com/amir1376/ab-download-manager/releases/download/v1.8.3/ABDownloadManager_1.8.3_linux_x64.tar.gz
+	sha256sums = 21f62abdc50886f5b7ebc5aaa3387c3c5b99e83a29950c1014b7a311d8c0b765
 
 pkgname = ab-download-manager-bin
