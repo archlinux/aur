@@ -1,0 +1,17 @@
+pkgbase = csvtable
+	pkgdesc = Fault-tolerant viewer for CSV files
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/wofr06/csvtable
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	depends = perl
+	depends = perl-text-csv
+	depends = perl-text-csv-xs
+	provides = csvtable
+	conflicts = csvtable
+	source = csvtable-1.00.tgz::https://github.com/wofr06/csvtable/archive/refs/heads/main.zip
+	sha256sums = b5ccb153f9a3f1cd194c72b7190306433a03d0e37cc3a9708e52c59006c49fbf
+
+pkgname = csvtable

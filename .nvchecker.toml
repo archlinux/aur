@@ -1,0 +1,5 @@
+[csvtable]
+source = "github"
+github = "wofr06/csvtable"
+use_latest_release = true
+prefix = "v"
