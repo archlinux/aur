@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("projhandler-client")
 conflicts=("projhandler-client")
-source=("https://github.com/slawacats/projhandler-client/releases/download/v$pkgver/projhandler-client-$pkgver-x86_64.tar.gz")
+source=("https://github.com/slawacats/projhandler-client/releases/download/v$pkgver/projhandler-client-$pkgver.tar.gz")
 sha256sums=("fd4bfeb100285342956b2128a3a34f1da74d5806ef82d8818572b495e59d1503")
 
 package() {
