@@ -1,12 +1,18 @@
 pkgbase = sqlark-bin
 	pkgdesc = SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis.
-	pkgver = 3.3
-	pkgrel = 1
+	pkgver = 3.8
+	pkgrel = 2
 	url = https://www.sqlark.com/
+	arch = aarch64
 	arch = x86_64
-	license = Commercial
-	provides = sqlark
-	source = https://download.sqlark.com/fullPackage/Linux/SQLark_V3.3_linux_x86_64.tar.gz
-	sha256sums = 79c40e71247a84a8eda1996556937a3488cf75351b1fd7dda6e169604ec5f393
+	license = LicenseRef-scancode-commercial-license
+	depends = electron32
+	depends = python
+	provides = sqlark=3.8
+	conflicts = sqlark
+	source_aarch64 = sqlark-3.8-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/911014/SQLark_V3.8_linux_arm64.rpm
+	sha256sums_aarch64 = ae19612a672160a49e5869c6fc6c47cf2afb24cbc75605c6051f0bc1367921c2
+	source_x86_64 = sqlark-3.8-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/911014/SQLark_V3.8_linux_x86_64.rpm
+	sha256sums_x86_64 = bc037a0733219c7762b7d89b3e605ccf157b31b2a25811e2b8944e88a16747f9
 
 pkgname = sqlark-bin
