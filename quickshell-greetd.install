@@ -1,0 +1,33 @@
+post_install() {
+    echo "==> Setting up quickshell-greetd..."
+    
+    # Create greeter user if not exists
+    if ! id greeter &>/dev/null; then
+        useradd -r -s /bin/false greeter
+        echo "==> Created greeter user"
+    fi
+    
+    # Setup greetd config if not exists
+    if [ ! -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml.example /etc/greetd/config.toml
+        echo "==> Created /etc/greetd/config.toml"
+    fi
+    
+    # Create default greeter config
+    mkdir -p /home/greeter/.config/quickshell/greeter
+    cp /usr/share/quickshell-greetd/greeter.qml /home/greeter/.config/quickshell/greeter/shell.qml
+    chown -R greeter:greeter /home/greeter/.config 2>/dev/null || true
+    
+    echo "==> Setup complete!"
+    echo "==> Enable greetd: sudo systemctl enable greetd"
+    echo "==> Start greetd: sudo systemctl start greetd"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop greetd 2>/dev/null || true
+    systemctl disable greetd 2>/dev/null || true
+}
