@@ -1,7 +1,7 @@
 # Maintainer: Nathan Sasser <fyrexdesign@outlook.com>
 
 pkgname=labfyre-git
-pkgver=0.9.2.r129.ff2d0978
+pkgver=0
 pkgrel=1
 pkgdesc="A wayland stacking and tiling compositor (Labwc fork)"
 arch=('x86_64' 'aarch64')
@@ -37,8 +37,8 @@ source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/labFyre"
-  git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd "$srcdir/labFyre" || cd "$srcdir"/*/
+  git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' || echo "0.0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {

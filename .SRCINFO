@@ -1,6 +1,6 @@
 pkgbase = labfyre-git
 	pkgdesc = A wayland stacking and tiling compositor (Labwc fork)
-	pkgver = 0.9.2.r129.ff2d0978
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/FyreX-opensource-design/labFyre
 	arch = x86_64
