@@ -3,7 +3,7 @@
 pkgname=symp-git
 
 # Version
-pkgver=5.2.1.r0.gcab889b
+pkgver=5.2.1.r1.ge2be2e1
 pkgrel=1
 
 # Generic
@@ -18,15 +18,15 @@ makedepends=('fish' 'fd' 'git')
 conflicts=('symp')
 provides=("symp=${pkgver}")
 
-source=("${pkgname}-${pkgver}::git+https://github.com/Dracape/SymP.git")
+source=("${pkgname}::git+https://github.com/Dracape/SymP.git")
 
 b2sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	"$pkgname-$pkgver"/install.fish --vendor --repository="$pkgname-$pkgver" --rootdir=${pkgdir}
+	"$pkgname"/install.fish --vendor --repository="$pkgname" --rootdir=${pkgdir}
 }
