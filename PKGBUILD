@@ -3,7 +3,7 @@
 pkgbase=python-stpsf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Creates simulated point spread functions for Space Telescopes (James Webb, Roman)"
 arch=('any')
@@ -24,10 +24,13 @@ makedepends=('python-setuptools-scm>=3.4.3'
              'graphviz')  # wheel required by new setuptools; matplotlib, scipy <- poppy
 # takes long time and needs big data
 #checkdepends=('python-pytest-xdist'
-#              'python-pytest-timeout')   # poppy, astroquery, pysiaf, photutils
+#              'python-pytest-timeout'
+#              'python-jwst'
+#              )   # poppy, astroquery, pysiaf, photutils
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-#       "https://stsci.box.com/shared/static/kqfolg2bfzqc4mjkgmujo06d3iaymahv.gz")
-md5sums=('6db148cb6f1c44b476168ba8ae111a4e')
+#        "https://stsci.box.com/shared/static/kqfolg2bfzqc4mjkgmujo06d3iaymahv.gz"
+#)
+md5sums=('c14e6a5180e5de85f07f7a1ea93bb7ad')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
