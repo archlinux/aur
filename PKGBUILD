@@ -23,13 +23,16 @@ _vmapps=(victoria-metrics vmagent vmalert vmalert-tool vmauth vmbackup vmctl vmr
 
 build() {
   cd $_name-$pkgver
-  CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
 
   go build -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X github.com/VictoriaMetrics/VictoriaMetrics/lib/buildinfo.Version=$pkgver" \
+    -ldflags "-linkmode external -X github.com/VictoriaMetrics/VictoriaMetrics/lib/buildinfo.Version=$pkgver" \
     -o bin/ \
     ${_vmapps[@]/#/.\/app\/}
 }
