@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo " NOTE"
+    echo ""
+    echo " These extensions are used by PhotoQt."
+    echo " You can install it through the photoqt or photoqt-bin"
+    echo " package from the AUR."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo " NOTE"
+    echo ""
+    echo " These extensions are used by PhotoQt."
+    echo " You can install it through the photoqt or photoqt-bin"
+    echo " package from the AUR."
+    echo ""
+}

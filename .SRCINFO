@@ -1,0 +1,17 @@
+pkgbase = photoqt-extensions-bin
+	pkgdesc = Extensions for PhotoQt image viewer
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://photoqt.org/
+	install = photoqt-extensions.install
+	arch = x86_64
+	license = GPL2
+	depends = exiv2
+	depends = imagemagick
+	provides = photoqt-extensions-bin-debug
+	conflicts = photoqt-extensions
+	conflicts = photoqt-extensions-debug
+	source = https://photoqt.org/downloads/bin/photoqt-extensions-5.0.tar.gz
+	sha256sums = dbe6e921742f23dd71bc92f3c7fa9a02f3173d614a1db9fb903bb15d36d8f8b9
+
+pkgname = photoqt-extensions-bin
