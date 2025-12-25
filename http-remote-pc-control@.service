@@ -4,11 +4,11 @@ After=network.target graphical.target
 
 [Service]
 Type=simple
-User=%i
+User=httpremote
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=%h/.Xauthority
 EnvironmentFile=-/etc/conf.d/http-remote-pc-control@%i
-ExecStart=/usr/bin/http-remote-pc-control 5000
+ExecStart=/usr/bin/http-remote-pc-control --port=5000 --cert-dir=/var/lib/http-remote-pc-control/certs
 Restart=on-failure
 RestartSec=2
 
