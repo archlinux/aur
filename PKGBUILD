@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-28
-pkgver=4.0.28.44+0.2.0.0~rc
+pkgver=4.0.28.45+0.2.0.0
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('jack2: Jack support for BassBoom addon'
 provides=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
 conflicts=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.2.0-rc")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.2.0")
 sha256sums=('SKIP')
 
 prepare() {
