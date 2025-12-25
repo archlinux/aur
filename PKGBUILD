@@ -1,7 +1,7 @@
 # Maintainer: Overl1te Overl1teGithub@yandex.ru
 
 pkgname=chronodash
-pkgver=2.2.0.r$(git rev-list --count HEAD 2>/dev/null || echo 0).$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
+pkgver=2.2.0.r22.731c4b5
 pkgrel=1
 pkgdesc="Transparent always-on-top desktop widgets (clocks, weather etc) - latest from crossplatform-Linux branch"
 arch=('x86_64')
@@ -11,14 +11,14 @@ depends=('python' 'qt6-base' 'qt6-svg' 'libx11' 'tk' 'glibc')
 makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools')
 provides=('chronodash')
 conflicts=('chronodash-bin' 'chronodash-git')
-source=("git+https://github.com/Overl1te/ChronoDash.git")
+source=("git+https://github.com/Overl1te/ChronoDash.git#branch=crossplatform-Linux")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/ChronoDash"
   local count=$(git rev-list --count HEAD 2>/dev/null || echo 0)
   local hash=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
-  printf "2.1.0.r%s.%s" "$count" "$hash"
+  printf "2.2.0.r%s.%s" "$count" "$hash"
 }
 
 prepare() {
