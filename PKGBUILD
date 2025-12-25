@@ -1,7 +1,7 @@
 # Maintainer: compiledkernel-idk <berkkapla82@proton.me>
 # Contributor: pacboost contributors
 
-pkgname=pacboost-bin
+pkgname=pacboost
 pkgver=2.2.0
 pkgrel=1
 pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support (precompiled binary)"
