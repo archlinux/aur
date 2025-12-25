@@ -1,6 +1,6 @@
 pkgbase = gnome-tuner
 	pkgdesc = Extensible control center for GNOME
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://altlinux.space/alt-gnome/tuner
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gnome-tuner
 	optdepends = gnome-tuner-panel: Panel mode switcher
 	optdepends = gnome-tuner-tweaks: Extra GNOME settings
 	provides = libtuner-1.so
-	source = git+https://altlinux.space/alt-gnome/tuner.git#tag=0.5.0
-	sha256sums = 88d28f654a170ab4af5cddb6639e98e9acdebe8229656f4f42fa52a15cbfdc1b
+	source = git+https://altlinux.space/alt-gnome/tuner.git#tag=0.6.1
+	sha256sums = d5b67f526752c4f99be4e909078c2984f9cffd300a3dcd1f8cde9160fc71d929
 
 pkgname = gnome-tuner

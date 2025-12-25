@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Extensible control center for GNOME"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 )
 provides=('libtuner-1.so')
 source=("git+https://altlinux.space/alt-gnome/tuner.git#tag=$pkgver")
-sha256sums=('88d28f654a170ab4af5cddb6639e98e9acdebe8229656f4f42fa52a15cbfdc1b')
+sha256sums=('d5b67f526752c4f99be4e909078c2984f9cffd300a3dcd1f8cde9160fc71d929')
 
 build() {
   arch-meson tuner build
