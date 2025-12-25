@@ -1,6 +1,6 @@
 pkgbase = cheeseburger
 	pkgdesc = A lolcat clone in C++
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://git.lysator.liu.se/love/cheeseburger
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = cheeseburger
 	makedepends = boost
 	makedepends = gcc
 	makedepends = make
-	makedepends = git
 	depends = boost-libs
 	options = !debug
-	source = cheeseburger::git+https://git.lysator.liu.se/love/cheeseburger.git#tag=v1.1.0
-	sha256sums = SKIP
+	source = cheeseburger-1.1.2.tar.gz::https://github.com/lov3b/cheeseburger/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 8ff65cd56b0a3e0b3a3c6109fb91aa8b57704d1bf4e00310899b5299309c9478
 
 pkgname = cheeseburger
