@@ -11,7 +11,7 @@ WorkingDirectory=/usr/share/webapps/linkwarden
 EnvironmentFile=/etc/linkwarden/app.conf
 ExecStart=/usr/share/webapps/linkwarden/start.sh
 TimeoutStopSec=20
-KillMode=process
+KillMode=control-group
 Restart=on-failure
 
 [Install]
