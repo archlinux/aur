@@ -43,7 +43,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/labFyre" || cd "$srcdir"/*/
-  arch-meson build/ --prefix=/usr
+  arch-meson build/ \
+    --prefix=/usr \
+    --mandir=/usr/share/man
   meson compile -C build/
 }
 
