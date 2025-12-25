@@ -1,0 +1,10 @@
+--- a/build.zig
++++ b/build.zig
+@@ -37,6 +37,7 @@ pub fn build(b: *std.Build) !void {
+         .name = "phoenix",
+         .root_module = exe_mod,
+     });
++    exe.pie = true;
+     b.installArtifact(exe);
+ 
+     if (backends.x11) {

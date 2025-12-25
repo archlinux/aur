@@ -1,0 +1,21 @@
+pkgbase = phoenix-x-server-git
+	pkgdesc = A new X server written from scratch designed to be a modern alternative to the Xorg server (git version)
+	pkgver = r152.ced5dac
+	pkgrel = 1
+	url = https://git.dec05eba.com/phoenix/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = zig-bin0.14
+	depends = glibc
+	depends = libdrm
+	depends = libgl
+	depends = libxcb
+	provides = phoenix-x-server
+	conflicts = phoenix-x-server
+	source = phoenix-x-server::git+https://repo.dec05eba.com/phoenix
+	source = 010-phoenix-add-pie.patch
+	sha256sums = SKIP
+	sha256sums = 6d73db9a2c35354f2984e0643f2e98ef938305978a7ced3b5da2559f379d32d0
+
+pkgname = phoenix-x-server-git
