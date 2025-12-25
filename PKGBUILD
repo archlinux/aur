@@ -1,7 +1,7 @@
 # Maintainer: Hermann Höhne <hoehermann@gmx.de>
 pkgname=purple-gowhatsapp-git
 _pkgnam=${pkgname%-git}
-pkgver=1.17.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
@@ -27,7 +27,8 @@ prepare() {
   cd "$srcdir/${_pkgnam}"
   git submodule update --init
   rm go.mod go.sum # have bleeding edge whatsmeow
-  cmake -G "Unix Makefiles" -S . -B build -DCMAKE_Go_FLAGS="-mod=vendor" # prepare vendored build
+  export GOFLAGS="-modcacherw" # allow GOPATH to be manipulated (for easy removal after build)
+  cmake -G "Unix Makefiles" -S . -B build
   cmake --build build --target download-modules # download whatsmeow's and its dependencies' sources
   env GOPATH="$srcdir/${_pkgnam}/build/_go" go mod vendor # copy downloaded sources into source tree
 }
