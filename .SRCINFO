@@ -1,0 +1,19 @@
+pkgbase = finalmouse-cli
+	pkgdesc = CLI tool to set Finalmouse polling rate on Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/2thgun/finalmouse-cli
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = git
+	depends = hidapi
+	depends = cmake
+	source = finalmouse-cli-1.0.0.tar.gz::https://github.com/2thgun/finalmouse-cli/archive/refs/heads/master.tar.gz
+	source = https://raw.githubusercontent.com/2thgun/finalmouse-cli/master/99-finalmouse.rules
+	source = https://raw.githubusercontent.com/2thgun/finalmouse-cli/master/finalmouse-cli.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = finalmouse-cli
