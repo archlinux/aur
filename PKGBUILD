@@ -33,8 +33,6 @@ package() {
     
     # Install documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 QUICKSTART.md "${pkgdir}/usr/share/doc/${pkgname}/QUICKSTART.md"
-    install -Dm644 FEATURES.md "${pkgdir}/usr/share/doc/${pkgname}/FEATURES.md"
     
     # Install license if you create one
     # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
