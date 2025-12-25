@@ -2,7 +2,7 @@
 # Contributor: pacboost contributors
 
 pkgname=pacboost-bin
-pkgver=1.6.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support (precompiled binary)"
 arch=('x86_64')
