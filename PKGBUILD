@@ -1,5 +1,5 @@
 pkgname=git-fmt-diff
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Git integration with any code formatter"
 arch=('any')
@@ -7,10 +7,10 @@ depends=(git posix)
 optdepends=(
   'vim: automatic filetype detection'
 )
-url="https://github.com/Jorengarenar/${pkgname}"
+url="https://codeberg.org/Jorenar/${pkgname}"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jorengarenar/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d78c1fc2c7a3fa59044f3320c67a36d8c988e84a12d5f4bf4a645ca7729d4dff')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Jorenar/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('fd7dc11b4c7100e71d5862d4522c8fac5078e5c0e4a853e4ad6b7fdb28de5b75')
 
 package() {
     cd "$srcdir"/"$pkgname-$pkgver"
