@@ -4,7 +4,7 @@
 
 pkgname=qmmp-plugin-pack
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qmmp Plugin Pack'
 arch=('x86_64')
 url='http://qmmp.ylsoftware.com'
