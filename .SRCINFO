@@ -1,0 +1,13 @@
+pkgbase = zig-bin0.14
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (pre-compiled binaries; version 0.14)
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://ziglang.org/
+	arch = x86_64
+	license = MIT
+	options = !debug
+	options = !strip
+	source = https://ziglang.org/download/0.14.1/zig-x86_64-linux-0.14.1.tar.xz
+	sha256sums = 24aeeec8af16c381934a6cd7d95c807a8cb2cf7df9fa40d359aa884195c4716c
+
+pkgname = zig-bin0.14
