@@ -1,0 +1,21 @@
+pkgbase = vivlio
+	pkgdesc = Application Vivlio pour Mac / Windows / Linux
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://app.vivlio.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator
+	depends = libsecret
+	source = vivlio.deb::https://my.vivlio.com/desktop/download/linux64/deb
+	sha256sums = SKIP
+
+pkgname = vivlio
