@@ -1,0 +1,37 @@
+* Bitwarden fuzzy find written in go (Not offical)
+** Go to [[https://bitwarden.com][Bitwarden]] to support Bitwarden
+
+* How to use my program 
+  - You need to install bw (Bitwarden cli).
+    Arch
+    #+begin_src sh
+    yay -S bitwarden-cli
+    #+end_src
+    Derbian
+    #+begin_src sh
+    sudo apt-install bitwarden-cli
+    #+end_src
+  - You need to make text file in home (~/) with name sk.txt and type your session-key for your vault
+    vim
+    #+begin_src sh
+    vim ~/sk.txt
+    #+end_src
+    Find session key with this command:
+    #+begin_src sh
+    bw login --raw
+    #+end_src
+  - When you first use this fuzzy find you have to create a user [1]
+
+  - You can use my program direct in terminal to find item names: --name string to find named program. --hidden hides password. --login jumps right to login without being ask about to create user (You don't need this if you use name flag)
+
+  I hope you like this little Bitwarden cli fuzzy finder
+
+** Demo picture
+   [[https://gitlab.com/TobbeBob123/bitwarden_go_project/-/raw/master/demo.png?ref_type=heads]]
+
+* Security
+  - encrypted password in user.txt file
+  - uses bcrypt
+  - Password need to be 5 letters or more
+  - uses encryptions on users data 
+  - sk.txt deleted and session-key stored in encrypted file
