@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=1.0.0
+pkgver=0.2.24
 _electronversion=37
-pkgrel=2
-pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version)"
+pkgrel=1
+pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com/"
 license=('LicenseRef-custom')
@@ -13,6 +13,30 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python'
+    'python-websockets'
+    'gtk4'
+    'python-importlib-metadata'
+    'python-tomlkit'
+    'python-colorama'
+    'python-pyqt6'
+    'python-orjson'
+    'python-opengl'
+    'pyside6'
+    'python-packaging'
+    'python-yaml'
+    'python-attrs'
+    'python-wxpython'
+    'python-zipp'
+    'python-pyqt5'
+    'python-msgpack'
+    'python-requests'
+    'python-typing_extensions'
+    'python-greenlet'
+    'python-setuptools'
+    'python-pip'
+    'python-gobject'
+    'gtk2'
+    'libxkbfile'
 )
 optdepends=(
     'bash'
@@ -28,8 +52,8 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1869d17b91d62175be951092ed134a4a9e35110a186de56581da559c4fc5dace'
-            '052bf6f5d32dc967b562174cbdee199e3552030795a6f9be7497806f503729ae'
+sha256sums=('975a80270c03fca0059cdbfa54bf97f708e015b52f783c19e9688941c2d2e5df'
+            '9edfef3485b3d2b33d583116a8caf75b69ee6c8501dd7d281b66ee2007aa8784'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 _get_electron_version() {
