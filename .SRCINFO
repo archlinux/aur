@@ -20,6 +20,8 @@ pkgbase = twig
 	provides = twig
 	conflicts = python-twig
 	source = twg-2.1.4.tar.gz::https://github.com/workdone0/twig/archive/refs/tags/v2.1.4.tar.gz
+	source = fix_pyproject.patch
 	sha256sums = aaf5e2cbbd93fae419ab256221160765f0097cad3bdeb167eb5b6edaf7ae5cc8
+	sha256sums = c4d5ed27065c9b6ec9b6429567663a82b603827551efe306f29c1fd8ba64e0a1
 
 pkgname = twig

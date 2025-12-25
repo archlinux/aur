@@ -1,0 +1,32 @@
+--- src/twig-2.1.4/pyproject.toml	2025-12-25 11:34:08.522967222 -0300
++++ src/twig-2.1.4/pyproject.toml	2025-12-25 11:34:43.112848406 -0300
+@@ -34,21 +34,21 @@
+     "developer-tools"
+ ]
+ 
+-[project.scripts]
+-twig = "twg.ui.app:run"
+-twg = "twg.ui.app:run"
+-
+-[build-system]
+-requires = ["hatchling"]
+-build-backend = "hatchling.build"
+-
+ authors = [
+   { name = "Shubham Kumar" },
+ ]
+ license = { file = "LICENSE" }
+ 
++[project.scripts]
++twig = "twg.ui.app:run"
++twg = "twg.ui.app:run"
++
+ [project.urls]
+ Homepage = "https://twig.wtf/"
+ Documentation = "https://twig.wtf/guide"
+ Repository = "https://github.com/workdone0/twig"
+ Issues = "https://github.com/workdone0/twig/issues"
++
++[build-system]
++requires = ["hatchling"]
++build-backend = "hatchling.build"
