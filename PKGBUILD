@@ -1,20 +1,21 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=trojita-git
+pkgname=trojita-qt5-git
 pkgver=0.7.r796.gc10f2990
 pkgrel=1
-pkgdesc="A fast QT IMAP e-mail client"
+pkgdesc="A fast QT IMAP e-mail client (Qt5 version with webkit viewer)"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
 depends=('qt5-webkit' 'qtkeychain' 'qt5-tools' 'qt5-svg' 'mimetic'
          'qgpgme-qt5' 'desktop-file-utils' 'sonnet5' 'ragel')
-conflicts=('trojita')
+conflicts=('trojita' 'trojita-git')
 provides=('trojita')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'boost')
 
-source=('git+https://invent.kde.org/pim/trojita.git'
+_commithash='c10f299'
+source=("git+https://invent.kde.org/pim/trojita.git#commit=${_commithash}"
         'trojita-qgpgme5.patch')
 md5sums=('SKIP'
          '18c5e0061400e3180969b7edf2128a6e')
