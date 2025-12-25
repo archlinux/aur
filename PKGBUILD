@@ -31,7 +31,7 @@ pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 makedepends=(
   bc
@@ -82,11 +82,11 @@ validpgpkeys=(
 if [[ "${_build_vfio::1}" == "t" ]]; then
   source+=(
     1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.17.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
     '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '7aa1b5da09f5d4485bbe07f28725c9750dca544f7c7d66ffb0c822236cc14897'
+    '1063a64ae704938ea34e2731c357f99c192965cf8980187062589bbf2c2511ec'
   )
 fi
 
