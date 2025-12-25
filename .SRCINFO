@@ -1,6 +1,6 @@
 pkgbase = try-cli
 	pkgdesc = A fast, interactive CLI tool for managing ephemeral development workspaces
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/tobi/try-cli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = try-cli
 	depends = glibc
 	provides = try
 	conflicts = try
-	source = try-cli-1.5.2.tar.gz::https://github.com/tobi/try-cli/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = 896b5390f225d0a5235807111e521acdf8208f15a7d41e3779dd51372c7bc8e9
+	source = try-cli-1.5.3.tar.gz::https://github.com/tobi/try-cli/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = cbd6d6e2f66e6a6284e9c1f6c1ef3164e913887ae3ef9dab2425869c006ac58e
 
 pkgname = try-cli
