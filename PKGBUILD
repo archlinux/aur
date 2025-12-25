@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("projhandler-client")
 conflicts=("projhandler-client")
-source=("$pkgname-$pkgver.tar.gz::file://$PWD/projhandler-client-$pkgver-_x86-64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::file://$PWD/projhandler-client-$pcgver-x86_64.tar.gz")
 sha256sums=("4a49bc9bd68b484f50dd0f435591c0f1e0a2ee6c2e3fffe0c2581624c961a7aa")
 
 package() {

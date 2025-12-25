@@ -7,7 +7,7 @@ pkgbase = projhandler-client
 	license = MIT
 	provides = projhandler-client
 	conflicts = projhandler-client
-	source = projhandler-client-2.1.2.tar.gz::file:///home/nd1/projhandler/projects/software/projhandler2/client/projhandler-client/target/cargo-aur/projhandler-client-2.1.2-_x86-64.tar.gz
+	source = projhandler-client-2.1.2.tar.gz::file:///home/nd1/projhandler/projects/software/projhandler2/client/projhandler-client/target/cargo-aur/projhandler-client--x86_64.tar.gz
 	sha256sums = 4a49bc9bd68b484f50dd0f435591c0f1e0a2ee6c2e3fffe0c2581624c961a7aa
 
 pkgname = projhandler-client
