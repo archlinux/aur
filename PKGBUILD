@@ -2,7 +2,7 @@
 
 _basename=feluda
 pkgname=${_basename}-bin
-pkgver=1.10.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Detect license usage restrictions in your project"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ makedepends=('tar')
 
 source_x86_64=("${_basename}-${arch[0]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${_barch[0]}.deb")
 source_aarch64=("${_basename}-${arch[1]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${_barch[1]}.deb")
-sha256sums_x86_64=('929ebe1b41d9788e5857dcc46442bb8de6bb33b53c8dfc44a09990c6ad6bdc30')
-sha256sums_aarch64=('6f9c7ecf8bf91d7f0f219f6ac1f410ade3a27c0f028b55a56a2049f7eb59fba6')
+sha256sums_x86_64=('16338844953a4ddb9f6b05c3e41eb6144185cb66261e8ce4fc468bc93726e640')
+sha256sums_aarch64=('57deecc7a1518bb78e66245fcce3e2cc73057bf9d418f404c7014a214e17a664')
 
 package() {
     cd "${pkgdir}"
