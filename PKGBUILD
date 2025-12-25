@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b7531
+pkgver=b7536
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -41,7 +41,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('eac09a9575c318089485f643971d5f6c51548ae2e4a1a1d1e87706213d3ce4f9'
+sha256sums=('9aac8b33c2058927138e198346b114638e1a4646f382774dcf8519ea3962859a'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -85,7 +85,14 @@ build() {
       -DGGML_BACKEND_DL=ON
       -DGGML_CPU_ALL_VARIANTS=ON
       -DGGML_NATIVE=OFF
-      -DAMDGPU_TARGETS="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx942;gfx1010;gfx1030;gfx1032;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201;gfx1151"
+      # https://llvm.org/docs/AMDGPUUsage.html
+      # gfx906: MI 50/60, Radeon VII
+      # gfx 101x RX 5000 Series
+      # gfx 103x RX 6000 Series
+      # gfx 110x RX 7000 Series
+      # gfx 1151 Strix Halo
+      # gfx 120x RX 9000 Series
+      -DAMDGPU_TARGETS="gfx906;gfx1010;gfx1030;gfx1031;gfx1100;gfx1101;gfx1102;gfx1151;gfx1200;gfx1201"
     )
   else
     # 本地构建, 针对当前设备优化
