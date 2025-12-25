@@ -1,0 +1,53 @@
+From 088766472c086d00aa741720e2a875841fead67e Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <oss@c-mauderer.de>
+Date: Thu, 25 Dec 2025 21:14:48 +0100
+Subject: [PATCH] Make compatible with Arch
+
+---
+ CMakeLists.txt        | 4 ++--
+ openalchemist.desktop | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 87bbe08..c12f630 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
++CMake_Minimum_Required (VERSION 3.10)
+ Project (alchemyquest)
+-CMake_Minimum_Required (VERSION 3.1)
+ 
+ #Path options
+ Set (BINDIR "bin" CACHE STRING "Where to install binaries")
+@@ -49,7 +49,7 @@ File (GLOB SOURCES ${SRC_DIR}/*.cpp ${SRC_DIR}/*/*.cpp ${SRC_DIR}/*/*/*.cpp)
+ Add_Executable (${PROJECT_NAME} ${SOURCES})
+ 
+ if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+-	Set (BOOST_LIBRARIES "-lboost_filesystem -lboost_system")
++	Set (BOOST_LIBRARIES "-lboost_filesystem")
+ endif ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+ if(MINGW)
+ 	Set (BOOST_LIBRARIES "-lboost_filesystem-mt-x32 -lboost_system-mt-x32")
+diff --git a/openalchemist.desktop b/openalchemist.desktop
+index 0b54cef..b996d66 100644
+--- a/openalchemist.desktop
++++ b/openalchemist.desktop
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Type=Application
+ Terminal=false
+ Categories=Game;LogicGame;
+-Exec=openalchemist
++Exec=alchemyquest --openalchemist
+ Icon=openalchemist
+ Name=OpenAlchemist
+ Name[fr]=OpenAlchemist
+@@ -13,4 +13,4 @@ GenericName[fr]=Jeu de réflexion
+ GenericName[de]=Gedächtnisspiel
+ Comment=Transmute the elements !
+ Comment[fr]=Transmutez les éléments !
+-Comment[de]=Wandeln Elemente !
+\ No newline at end of file
++Comment[de]=Wandeln Elemente !
+-- 
+2.52.0
+

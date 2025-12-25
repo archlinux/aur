@@ -1,0 +1,23 @@
+pkgbase = alchemyquest-git
+	pkgdesc = A simple puzzle game where players combine alchemic elements to create exotic combinations and score points.
+	pkgver = r126.0db0d7f
+	pkgrel = 1
+	url = https://gitlab.com/dulsi/alchemyquest
+	arch = x86_64
+	license = GPL-2.0-or-later AND CC-BY-SA-2.0 AND CC-BY-SA-3.0
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = expat
+	depends = libzip
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2-compat
+	provides = alchemyquest
+	conflicts = alchemyquest
+	source = alchemyquest-git::git+https://gitlab.com/dulsi/alchemyquest.git
+	source = 0001-Make-compatible-with-Arch.patch
+	sha256sums = SKIP
+	sha256sums = 3c52185135f8921239c79fb3333ea2a3c0d2bfafd203e0a271b72e75c881976f
+
+pkgname = alchemyquest-git
