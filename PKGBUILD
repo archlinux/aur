@@ -1,7 +1,7 @@
 # Maintainer:  Markus Hansmair <archlinux at zendro dot de>
 
 pkgname=mkinitcpio-systemd-extras
-pkgver=0.7.3
+pkgver=0.8
 pkgrel=1
 pkgdesc="Collection of mkinitcpio install hooks for systemd based initramfs"
 arch=('any')
@@ -21,7 +21,7 @@ source=("repo::git+https://github.com/wolegis/mkinitcpio-systemd-extras.git#tag=
 sha256sums=('SKIP')
 
 package() {
-    local hookdir="${pkgdir}/usr/lib/initcpio/install"
-    mkdir -p "${hookdir}"
-    cp "${srcdir}/repo/sd-"* "${hookdir}"
+    mkdir -p "${pkgdir}/usr/lib/initcpio/"{install,functions.d}
+    cp "${srcdir}/repo/sd-"* "${pkgdir}/usr/lib/initcpio/install"
+    cp "${srcdir}/repo/functions" "${pkgdir}/usr/lib/initcpio/functions.d/systemd-extras"
 }
