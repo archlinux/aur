@@ -1,0 +1,18 @@
+pkgbase = python-kagglesdk
+	pkgdesc = Basic python bindings for Kaggle's external-facing endpoints
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/Kaggle/kagglesdk
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-protobuf
+	source = https://files.pythonhosted.org/packages/source/k/kagglesdk/kagglesdk-0.1.14.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-kagglesdk
