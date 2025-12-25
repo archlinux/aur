@@ -42,13 +42,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/labFyre"
-  meson setup build/
+  cd "$srcdir/labFyre" || cd "$srcdir"/*/
+  arch-meson build/ --prefix=/usr
   meson compile -C build/
 }
 
 package() {
-  cd "$srcdir/labFyre"
+  cd "$srcdir/labFyre" || cd "$srcdir"/*/
   DESTDIR="$pkgdir" meson install -C build/
 }
 
