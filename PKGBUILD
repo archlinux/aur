@@ -1,58 +1,42 @@
 # Maintainer: compiledkernel-idk <berkkapla82@proton.me>
 # Contributor: pacboost contributors
 
-pkgname=pacboost
-pkgver=2.1.1
+pkgname=pacboost-bin
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support, system diagnostics, and intelligent automation"
+pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support (precompiled binary)"
 arch=('x86_64')
 url="https://github.com/compiledkernel-idk/pacboost"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'pacman' 'git' 'base-devel')
-makedepends=('cargo' 'rust')
 optdepends=(
   'sudo: for privilege escalation during AUR package building'
   'asp: for advanced source package management'
 )
 provides=('pacboost')
-conflicts=('pacboost-bin' 'pacboost-git')
+conflicts=('pacboost' 'pacboost-git')
 backup=()
-source=("pacboost-${pkgver}.tar.gz::https://github.com/compiledkernel-idk/pacboost/archive/v${pkgver}.tar.gz")
-sha256sums=('9dfc14315c05be407bf5c7373f9c82a39a72265dee99548b38fe44c0f70f26cb')
-
-prepare() {
-  cd "pacboost-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-  cd "pacboost-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "pacboost-master"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-}
+source=("pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/latest/download/pacboost-x86_64-linux.tar.gz")
+sha256sums=('1d852dc9ec7578b4be3d8fb9c1357ef8075c765bc283bd61a58972bd3d26deba')
 
 package() {
-  cd "pacboost-${pkgver}"
-  
   # Install binary
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "pacboost" "$pkgdir/usr/bin/pacboost"
   
-  # Install documentation
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-  install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
+  # Install documentation (if included in release tarball)
+  if [ -f README.md ]; then
+    install -Dm644 README.md "$pkgdir/usr/share/doc/pacboost/README.md"
+  fi
   
-  # Install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [ -f CHANGELOG.md ]; then
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/pacboost/CHANGELOG.md"
+  fi
   
-  # Install logo/icon
-  install -Dm644 assets/logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/pacboost/LICENSE"
+  fi
+  
+  if [ -f logo.svg ]; then
+    install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/pacboost.svg"
+  fi
 }
