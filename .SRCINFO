@@ -1,5 +1,5 @@
 pkgbase = pass-phrase
-	pkgdesc = A pass extension to generate passphrases.
+	pkgdesc = A pass extension for generating passphrases.
 	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/programadoroccidental/pass-phrase

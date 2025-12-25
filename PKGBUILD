@@ -3,7 +3,7 @@
 pkgname='pass-phrase'
 pkgver=1.3
 pkgrel=1
-pkgdesc='A pass extension to generate passphrases.' 
+pkgdesc='A pass extension for generating passphrases.' 
 arch=('any')
 url='https://github.com/programadoroccidental/pass-phrase'
 license=('GPL3')
