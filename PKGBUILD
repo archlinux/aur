@@ -15,8 +15,7 @@ build() {
 }
 
 package() {
-    install -Dm755 "$srcdir/syscall" "$pkgdir/usr/bin/syscall"
-    install -Dm755 "$srcdir/sycall" "$pkgdir/usr/bin/sycall"
+    install -Dm755 "$srcdir/syca" "$pkgdir/usr/bin/syca"
     install -Dm4755 "$srcdir/syscall-helper" "$pkgdir/usr/lib/syscall-helper"
     install -Dm644 "$srcdir/syscall.pam" "$pkgdir/etc/pam.d/syscall"
 }
