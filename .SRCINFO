@@ -1,7 +1,7 @@
 pkgbase = numaplayer
-	pkgdesc = Set your music and inspiration totally free.
+	pkgdesc = Studiologic Numa Player: standalone and vst3 plugin
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.studiologic-music.com/products/numaplayer
 	arch = x86_64
 	license = custom:proprietary
@@ -10,7 +10,8 @@ pkgbase = numaplayer
 	depends = freetype2
 	depends = curl
 	depends = gcc-libs
-	source = https://www.studiologic-music.com/api/get-files/NumaPlayer_2.1.8.deb
+	options = !strip
+	source = numaplayer_2.1.8_amd64.deb::https://www.studiologic-music.com/api/get-files/NumaPlayer_2.1.8.deb
 	sha256sums = e86550e0a897f72e28743afce64a8dfb79193fbf8073f5be9676e62e227faefd
 
 pkgname = numaplayer
