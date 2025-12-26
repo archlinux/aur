@@ -1,6 +1,6 @@
 pkgbase = r-paa
 	pkgdesc = PAA (Protein Array Analyzer)
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PAA
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-paa
 	optdepends = r-biocstyle
 	optdepends = r-runit
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAA_1.42.0.tar.gz
-	sha256sums = 58366339c69e0187abed1a10f9bc230c3a291170467a64c93cd9e25410702cbf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAA_1.44.0.tar.gz
+	sha256sums = 63f60f4d86082d11302ca1d3008449b165c302a7c3bace17754cbee029c32b0f
 
 pkgname = r-paa
