@@ -1,0 +1,15 @@
+# Build artifacts
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+
+# Downloaded sources
+witr-linux-amd64
+witr-linux-arm64
+witr.1
+
+# Makepkg logs
+*.log
