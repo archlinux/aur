@@ -1,14 +1,14 @@
 # Maintainer: earthintruders <<earthintruders at tutanota dot de>>
 pkgname=qobuz-player-git
-pkgver=v0.4.5.r4.g45629c0
+pkgver=v0.4.5.r6.g889c61b
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
 url="https://github.com/SofusA/qobuz-player"
 license=('GPL-3')
 conflicts=('qobuz-player')
-depends=(gstreamer)
-makedepends=(git cargo nodejs npm)
+depends=(alsa-lib)
+makedepends=(alsa-lib git cargo nodejs npm)
 source=("qobuz-player-git::git+https://github.com/SofusA/qobuz-player.git")
 sha256sums=('SKIP')
 options=('!lto')
