@@ -10,6 +10,7 @@ pkgbase = noon-hyprland
 	depends = hypridle
 	depends = hyprlock
 	depends = hyprpicker
+	depends = hyprsunset
 	depends = hyprutils
 	depends = hyprwayland-scanner
 	depends = xdg-desktop-portal

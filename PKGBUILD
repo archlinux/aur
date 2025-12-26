@@ -12,6 +12,7 @@ depends=(
     'hypridle'
     'hyprlock'
     'hyprpicker'
+    'hyprsunset'
     'hyprutils'
     'hyprwayland-scanner'
     'xdg-desktop-portal'
