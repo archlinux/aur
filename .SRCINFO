@@ -8,7 +8,7 @@ pkgbase = wlctl-git
 	makedepends = git
 	makedepends = cargo
 	depends = networkmanager
-	conflicts = wlctl-git-bin
+	conflicts = wlctl-bin
 	source = git+https://github.com/aashish-thapa/wlctl.git
 	sha256sums = SKIP
 

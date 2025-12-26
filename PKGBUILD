@@ -11,7 +11,7 @@ url="https://github.com/aashish-thapa/wlctl"
 depends=("networkmanager")
 makedepends=("git" "cargo")
 license=("GPL-3.0")
-conflicts=("$pkgname-bin")
+conflicts=("$_pkgname-bin")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
