@@ -1,0 +1,21 @@
+pkgbase = noon-nvidia-legacy
+	pkgdesc = Legacy NVIDIA drivers support for Noon (580xx drivers)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	install = noon-nvidia-legacy.install
+	arch = any
+	license = MIT
+	depends = nvidia-580xx-dkms
+	depends = nvidia-580xx-utils
+	depends = opencl-nvidia-580xx
+	depends = lib32-nvidia-580xx-utils
+	depends = lib32-opencl-nvidia
+	depends = libva-nvidia-driver
+	depends = egl-wayland
+	provides = noon-nvidia-legacy-support
+	conflicts = noon-nvidia
+	source = setup_nvidia.sh::https://raw.githubusercontent.com/PharmaRacist/Noon/main/setup_data/setup_nvidia.sh
+	sha256sums = SKIP
+
+pkgname = noon-nvidia-legacy
