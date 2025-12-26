@@ -1,0 +1,11 @@
+pkgbase = proton-cachyos-launcher
+	pkgdesc = Launch any game with /usr/bin/proton-cachyos Proton-GE style
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = proton-cachyos
+	source = proton-cachyos.sh
+	sha256sums = SKIP
+
+pkgname = proton-cachyos-launcher
