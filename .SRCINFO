@@ -1,0 +1,15 @@
+pkgbase = wlctl-git
+	pkgdesc = TUI for managing WiFi using NetworkManager (a fork of impala)
+	pkgver = r159.7b3935d
+	pkgrel = 1
+	url = https://github.com/aashish-thapa/wlctl
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	depends = networkmanager
+	conflicts = wlctl-git-bin
+	source = git+https://github.com/aashish-thapa/wlctl.git
+	sha256sums = SKIP
+
+pkgname = wlctl-git
