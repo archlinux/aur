@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Bt.eg.db
-_pkgver=3.21.0
+_pkgver=3.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bba216d22682fef42b88c86a2db4b3f5')
-b2sums=('76141219211255bede79509bb71fad62f8deb5a6883573a5aaebe30acdaf0c463269ae3ed2be3962a8b24d5f657eb23744f40769b3b81c420c5cdf549fe40993')
+md5sums=('7198a14bed07de18efd8669f5ffb6da6')
+b2sums=('325c82b6c579e86df7dc593878c0a6ff5999e1a3a1b92b1820eadf0fc85cbc8c03384bed8553d2d93f5564673c39ae45a077fee3f6bfc968318496abd9501747')
 
 build() {
   mkdir build
