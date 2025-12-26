@@ -10,6 +10,7 @@ pkgbase = python-muxtools-git
 	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-versioningit
 	depends = python-ass
 	depends = python-mkvinfo
 	depends = python-py7zr

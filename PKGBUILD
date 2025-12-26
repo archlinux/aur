@@ -28,6 +28,7 @@ makedepends=(
     'python-wheel'
     'python-installer'
     'python-setuptools'
+    'python-versioningit'
 )
 provides=("python-${_plug}")
 conflicts=("python-${_plug}")
