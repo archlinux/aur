@@ -1,6 +1,6 @@
 pkgbase = r-pathview
 	pkgdesc = a tool set for pathway based data integration and visualization
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pathview
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-pathview
 	optdepends = r-gage
 	optdepends = r-org.mm.eg.db
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathview_1.48.0.tar.gz
-	sha256sums = 8f008d43fc4d03546b75331c648594bf1515c7ff2ae404602cd2cb642e70d624
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathview_1.50.0.tar.gz
+	sha256sums = abc0dfb46475142611be39ccede56e1e3ab0a9033074ff2cbc8e719302b443b3
 
 pkgname = r-pathview
