@@ -1,6 +1,6 @@
 # Maintainer: PharmaRacist
 pkgname=noon-main
-pkgver=2.1.r0.g1234567
+pkgver=2.1
 pkgrel=1
 pkgdesc="PharmaRacist's Perspective of a Desktop - Main package"
 arch=('any')
@@ -16,27 +16,17 @@ depends=(
     'noon-utils'
     'ntfs-3g'
     'uv'
-    'git'
 )
-makedepends=('git')
 optdepends=(
     'noon-nvidia: NVIDIA GPU support'
     'noon-nvidia-legacy: Legacy NVIDIA GPU support'
 )
 install=noon-main.install
-source=("git+https://github.com/PharmaRacist/Noon.git#branch=main")
+source=("https://github.com/PharmaRacist/Noon/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
-# Force shallow single-branch clone
-DLAGENTS=("git::/usr/bin/git clone --depth=1 --single-branch --branch %o %u %o")
-
-pkgver() {
-    cd "$srcdir/Noon"
-    printf "2.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-    cd "$srcdir/Noon"
+    cd "$srcdir/Noon-main"
     
     install -dm755 "$pkgdir/opt/noon"
     cp -r dots setup_data setup.sh "$pkgdir/opt/noon/"
