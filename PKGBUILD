@@ -30,7 +30,7 @@ package() {
     cd "$srcdir/Noon-main"
     
     install -dm755 "$pkgdir/opt/noon"
-    cp -r dots setup_data setup.sh "$pkgdir/opt/noon/"
+    cp -r dots setup.sh "$pkgdir/opt/noon/"
     chmod +x "$pkgdir/opt/noon/setup.sh"
     
     install -dm755 "$pkgdir/usr/bin"
