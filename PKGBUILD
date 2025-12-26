@@ -1,7 +1,7 @@
 pkgname=spaghettikart-bin
-pkgver=0.9.9.1
+pkgver=0.9.9.1.libpatch
 pkgrel=1
-scriptver=1.0
+scriptver=1.1
 rlname=SpaghettiKart
 _rlname=spaghettikart
 pkgdesc="Spaghetti Kart Reimplimentation engine for Mario Kart 64"
@@ -10,9 +10,9 @@ url="https://gitlab.com/linuxbombay/spaghettikart"
 license=('GPL')
 depends=('sdl2' 'libpng' 'libzip' 'nlohmann-json' 'tinyxml2' 'spdlog' 'sdl2_net' 'boost' 'libogg' 'libvorbis' 'zenity')
 makedepends=('unzip')
-sha256sums=('618c128326a590b62395b2806031f513540a17e20964fe2946da92a0c64099d1')
-sha256sums_x86_64=('936c1a5430cc13b583cd39fc1359b493c01a7db99fb63b66f11e9f76f0ed6d1d')
-sha256sums_aarch64=('3090f078276cbe61b23dfbf18d91d59989edc21053363fb3e622072b81265ca9')
+sha256sums=('380655e827c5750a1641cc318277af650d927045a5746fd915cccdc89eab7b4d')
+sha256sums_x86_64=('dbbb389f2f79b430d67c773b1259484ee3629ada46b1de5d82e32953e032ebb1')
+sha256sums_aarch64=('d484b358c2e83c23c6a8d783f39e4d631d3fc71d1c74cf781300987d822ea8d4')
 source=("https://gitlab.com/linuxbombay/spaghettikart/spaghettikart/-/archive/$scriptver/spaghettikart-$scriptver.tar.bz2")
 source_x86_64=("spaghettikart-$pkgver-linux-x64.tar.xz::https://gitlab.com/linuxbombay/spaghettikart/binaries/$pkgver/-/raw/main/spaghettikart-linux-x64.tar.xz")
 source_aarch64=("spaghettikart-$pkgver-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/spaghettikart/binaries/$pkgver/-/raw/main/spaghettikart-linux-arm64.tar.xz")
@@ -30,4 +30,7 @@ package() {
     install -Dm755 "$srcdir/$_rlname-$scriptver/$_rlname" "$pkgdir/usr/bin"
     install -Dm644 "$srcdir/$_rlname-$scriptver/$_rlname.png" "$pkgdir/usr/share/pixmaps"
     install -Dm755 "$srcdir/$_rlname-$scriptver/$_rlname.desktop" "$pkgdir/usr/share/applications"
+    
+    #libs
+    find "$srcdir/usr/lib/SpaghettiKart" -name "*.so*" -exec cp -a {} "$pkgdir/usr/lib/$rlname" \;
 }
