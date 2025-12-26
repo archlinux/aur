@@ -1,6 +1,6 @@
 pkgbase = python-rocket-fft
 	pkgdesc = Rocket-FFT extends Numba by scipy.fft and numpy.fft
-	pkgver = 0.2.5
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/styfenschaer/rocket-fft
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-rocket-fft
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-numba
-	source = rocket-fft-0.2.5.tar.gz::https://github.com/styfenschaer/rocket-fft/archive/v0.2.5.tar.gz
-	sha512sums = f19fc6ee45f6a2f52c8daade17508a7f0627c6d8e8d272791d4041bf9916d93bbdf88ee45f0c30943ef9982bcf035d088ecce5ee61f2d8cf2338710266b5a46e
+	source = rocket-fft-0.3.1.tar.gz::https://github.com/styfenschaer/rocket-fft/archive/v0.3.1.tar.gz
+	sha512sums = 560c393e71b17102c20dd22d481299628e97e85429dd51db16515be26d3d4eb4aec30b67f837c7b85b0419effc3816acdfe521e205fccf6f6198ce4d94523bb2
 
 pkgname = python-rocket-fft
