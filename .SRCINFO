@@ -1,6 +1,6 @@
 pkgbase = r-assign
 	pkgdesc = Adaptive Signature Selection and InteGratioN (ASSIGN)
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASSIGN
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-assign
 	optdepends = r-lintr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASSIGN_1.44.0.tar.gz
-	sha256sums = 69425f9360b9594665ee1c38cf29f150979e0d616f120ba3a4fe2c82f14adee9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASSIGN_1.46.0.tar.gz
+	sha256sums = 293be88f7d6c1b16bdc3d2bae5993fcf9c7919161c63c722682b7bc56df268cc
 
 pkgname = r-assign
