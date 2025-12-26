@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 
 pkgname=townsemu-git
-pkgver=3396.a6cf19ae
-pkgrel=2
+pkgver=3444.dea1a3e5
+pkgrel=1
 pkgdesc="An emulator of legendary Fujitsu FM TOWNS computer"
 arch=('i686' 'x86_64')
 url="https://github.com/captainys/TOWNSEMU"
@@ -11,11 +11,9 @@ depends=('alsa-lib' 'glu')
 makedepends=('git' 'cmake')
 provides=('townsemu')
 conflicts=('townsemu')
-source=("git+https://github.com/captainys/TOWNSEMU"
-    https://patch-diff.githubusercontent.com/raw/captainys/TOWNSEMU/pull/164.patch)
+source=("git+https://github.com/captainys/TOWNSEMU")
 options=('!buildflags')
-md5sums=('SKIP'
-         '997264f37dfcb6213f1ccf36125f7a87')
+md5sums=('SKIP')
 
 pkgver() {
   cd TOWNSEMU
@@ -24,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd TOWNSEMU
-  patch -p1 -i ../164.patch
   mkdir -p build
   mkdir -p build_gui
   cd gui/src
