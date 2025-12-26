@@ -21,7 +21,9 @@ build() {
     npm run build
     
     # Build Tauri/Rust backend
+    # Use system libssh2 instead of vendored version
     cd src-tauri
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo build --release --locked
 }
 
