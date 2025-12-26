@@ -33,7 +33,12 @@ depends=(
     'spicetify-cli'
     'spicetify-marketplace-bin' 
     'heroic-games-launcher'
-    'wine-stagging'
+    'wine-staging'
+    'gamemode'
+    'lib32-gamemode'
+    'vkd3d'
+    'lib32-vkd3d'
+    'nwg-look'
 )
 
 package() {

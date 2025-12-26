@@ -31,6 +31,11 @@ pkgbase = noon-optional
 	depends = spicetify-cli
 	depends = spicetify-marketplace-bin
 	depends = heroic-games-launcher
-	depends = wine-stagging
+	depends = wine-staging
+	depends = gamemode
+	depends = lib32-gamemode
+	depends = vkd3d
+	depends = lib32-vkd3d
+	depends = nwg-look
 
 pkgname = noon-optional
