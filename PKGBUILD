@@ -39,19 +39,19 @@ package() {
 
 	# 256 and 24 are proper colored icons
 	for res in 128 64 48 32; do
-		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256_beta.png" \
+		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256.png" \
 			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png"
+			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
 	done
 	for res in 22 16; do
-		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24_beta.png" \
+		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24.png" \
 			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png"
+			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
 	done
 
 	# install icons
 	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png" \
+		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
 	done
        # User flag aware launcher
