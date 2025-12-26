@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethTargetedNGS
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ depends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('765dca656b5f3a7c778d51ea76a0032a')
-b2sums=('1a7d63f153327b380b1edabf06b4f3afb7510bc36ac00ad54ddd30dcde5d45d7b90f3e580635b5b0b6b256b8ee69a1e89bec8cb60320b329163bcdf245c60592')
+md5sums=('3860ee1b9d205f60200dd62c3de3bae9')
+b2sums=('dc540067bca73a97ac453a774a65b6fc0efc98c9165d33b18b6e320b47e5b317a18903a335c830d7ad31af300a4307f0f8579edadefc261cce62d1bca2a12da3')
 
 build() {
   mkdir build
