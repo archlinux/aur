@@ -1,0 +1,40 @@
+post_install() {
+    echo ""
+    echo "========================================"
+    echo "NCALayer installed successfully!"
+    echo "========================================"
+    echo ""
+
+    # Automatically install certificates for all users
+    echo "Installing NCA certificates for all users..."
+    echo ""
+
+    # Install certificates for each user with a home directory
+    for user_home in /home/*; do
+        if [ -d "$user_home" ]; then
+            username=$(basename "$user_home")
+
+            # Check if user exists
+            if id "$username" >/dev/null 2>&1; then
+                echo "Installing certificates for user: $username"
+
+                # Run certificate installer as the user
+                su - "$username" -c "/usr/bin/ncalayer-install-certs" 2>/dev/null || true
+            fi
+        fi
+    done
+
+    echo ""
+    echo "Certificate installation completed."
+    echo ""
+    echo "To start NCALayer:"
+    echo "  ncalayer"
+    echo ""
+    echo "If you need to reinstall certificates later, run:"
+    echo "  ncalayer-install-certs"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
