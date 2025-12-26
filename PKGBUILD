@@ -1,14 +1,14 @@
 pkgname=syscall
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="minimal sudo‑like privilege elevation tool for Linux. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syscall"
 license=('GPL')
 depends=('python' 'python-pam')
 makedepends=('gcc')
-source=('syscall' 'syscall-helper.c' 'syscall.pam' 'sycall')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=('syca' 'syscall-helper.c' 'syscall.pam')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
     gcc syscall-helper.c -o syscall-helper
