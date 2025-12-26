@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Sc.sgd.db
-_pkgver=3.21.0
+_pkgver=3.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1e69cde3a5b722e50cc95a7a63ef642')
-b2sums=('357d0feae2e55289ac8d17cd7cae255dcfd947f428eb0dafbb4fb71bde5b6e5ce470506804ccefa54d15a4784333cc0578a497127e270dae556fc399e8b6842b')
+md5sums=('d80576fc746c2aa9dfe5a3158ae29ef6')
+b2sums=('d99f231dc43ec12278d90cd55d14be2f4faf9205ef028dd697d4e2856cfc8e84ea6970130c596d9f8ae702f05ab0eb6f284b59fe08c935e076f47ee14126ed87')
 
 build() {
   mkdir build
