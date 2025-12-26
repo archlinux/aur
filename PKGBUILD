@@ -8,7 +8,7 @@ license=('MIT')
 depends=('kitty')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/izeperson/waifu-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4cf0fba1acc5c06fd8df057c43320f5530f5c2cb2d6ea12d5e104bbd06c26baa')
+sha256sums=('322a3879ab0dbd76016e6ed1cbd0fd7e45f593a01ef20234ee258ed880b8fce3')
 
 build() {
   cd "$srcdir/waifu-cli-$pkgver"
