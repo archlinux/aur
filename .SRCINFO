@@ -1,0 +1,13 @@
+pkgbase = wlcrosshair
+	pkgdesc = Simple crosshair overlay for Wayland compositors
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/marzeq/wlcrosshair
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = wayland
+	source = wlcrosshair::git+https://github.com/marzeq/wlcrosshair.git
+	sha256sums = SKIP
+
+pkgname = wlcrosshair
