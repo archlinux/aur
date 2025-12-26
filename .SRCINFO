@@ -1,0 +1,15 @@
+pkgbase = simple-claude-gui
+	pkgdesc = Desktop app for managing multiple Claude Code sessions across projects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/simple-claude-gui
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	depends = nodejs
+	source = git+https://github.com/DonutsDelivery/simple-claude-gui.git
+	sha256sums = SKIP
+
+pkgname = simple-claude-gui
