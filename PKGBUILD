@@ -9,7 +9,7 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libssh2' 'cairo' 'gdk-pixbuf2' 'glib2' 'hicolor-icon-theme' 'pango')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8b1d568be734cb2f37acdf0f2ee8c27d37c108351be90a7c53147453e89d07c9')
+sha256sums=('7ffb0faaf931378e4f8f82332e773c78045015cfe75bff897f5d9631d5e61d0b')
 
 prepare() {
     cd "packet-$pkgver"

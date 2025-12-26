@@ -20,6 +20,6 @@ pkgbase = packet-term
 	depends = hicolor-icon-theme
 	depends = pango
 	source = packet-term-0.1.0.tar.gz::https://github.com/ernestoCruz05/packet/archive/v0.1.0.tar.gz
-	sha256sums = 8b1d568be734cb2f37acdf0f2ee8c27d37c108351be90a7c53147453e89d07c9
+	sha256sums = 7ffb0faaf931378e4f8f82332e773c78045015cfe75bff897f5d9631d5e61d0b
 
 pkgname = packet-term
