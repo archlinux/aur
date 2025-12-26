@@ -3,6 +3,7 @@
 !.nvchecker.toml
 !*.sysusers
 !*.tmpfiles
+!*.patch
 !PKGBUILD
 !.SRCINFO
 !plasmalogin

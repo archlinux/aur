@@ -1,0 +1,21 @@
+--- plasma-login-manager/data/pam/arch/plasmalogin-greeter	2025-12-26 21:12:03.315542475 +0200
++++ plasmalogin-greeter	2025-12-26 17:02:13.115182124 +0200
+@@ -1,8 +1,5 @@
+ #%PAM-1.0
+ 
+-# SPDX-License-Identifier: CC0-1.0
+-# SPDX-FileCopyrightText: none
+-
+ # Load environment from /etc/environment and ~/.pam_environment
+ auth		required pam_env.so
+ 
+@@ -18,3 +15,9 @@
+ # Setup session
+ session		required pam_unix.so
+ session		optional pam_systemd.so
++
++# kwallet support
++-auth       optional    pam_kwallet5.so
++-auth       optional    pam_kwallet6.so
++-session    optional    pam_kwallet5.so auto_start
++-session    optional    pam_kwallet6.so auto_start
