@@ -1,6 +1,6 @@
 pkgbase = samconf
 	pkgdesc = A c library to manage confiugrations form differnt verified sources
-	pkgver = 0.75.4
+	pkgver = 0.75.14
 	pkgrel = 1
 	url = https://github.com/Elektrobit/samconf
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = samconf
 	depends = json-c
 	depends = safu
 	depends = openssl
-	source = samconf-0.75.4.tar.gz::https://github.com/Elektrobit/samconf/archive/refs/tags/samconf-0.75.4.tar.gz
-	sha256sums = ab3fa256a73e99e108d37b6555ab3f6aa10e7397caedf26493aa36034696943f
+	source = samconf-0.75.14.tar.gz::https://github.com/Elektrobit/samconf/archive/refs/tags/samconf-0.75.14.tar.gz
+	sha256sums = d341234514dd3f43daa3b39f5a23a1299e3830e9eaa3ed01e366cb390ef6b20a
 
 pkgname = samconf
