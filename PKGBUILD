@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sva
-_pkgver=3.56.0
+_pkgver=3.58.0
 pkgname=r-${_pkgname,,}
-pkgver=3.56.0
+pkgver=3.58.0
 pkgrel=1
 pkgdesc='Surrogate Variable Analysis'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-zebrafishrnaseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d76da4634c6d06bd744610de224c9de0c92755decf49e8d11bcbfbdd7640250')
+sha256sums=('cfad02a44aa66db2986479d8321b8026ae9e0968d60149b39aa92ee268185260')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
