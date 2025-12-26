@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.96.r4.g7676418
+pkgver=0.8.124.r0.ge8b69b6
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -25,6 +25,7 @@ makedepends=(
 	'libpcap'
 	'libsamplerate'
 	'libslirp'
+	'libusb'
 	'meson'
 	'nlohmann-json'
 	'python-distlib'
@@ -43,7 +44,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -83,6 +84,7 @@ package() {
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
+		'libusb-1.0.so'
 		'libxxhash.so'
 		'libz.so'
 	)
