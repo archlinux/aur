@@ -1,0 +1,12 @@
+pkgbase = edit0
+	pkgdesc = Script to edit a single file as root using run0
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/HastD/run0edit
+	arch = any
+	license = MIT OR Apache-2.0
+	depends = systemd>=256
+	source = run0edit-0.5.6.tar.gz::https://github.com/HastD/run0edit/archive/refs/tags/v0.5.6.tar.gz
+	b2sums = 62da6d1beadb465c6b5ee82cf29dee75dfc8d8985f9e41b8629e0ab1d6e4b477a12091c6509a67aa9aa1ac7ea7e53774416fdd3e0b8e163c956ffe26baa4f13d
+
+pkgname = edit0
