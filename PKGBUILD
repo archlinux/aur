@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="a terminal blackboard for quick note taking"
 arch=("x86_64")
 url="https://gabrieldigitprint.work/ff/portfolio/blindpaste"
-#url="https://projectgrid.net/hello/portfolio/blindpaste"
 license=("0BSD")
 makedepends=("git")
 optdepends=(
@@ -13,7 +12,6 @@ optdepends=(
 )
 install="advice.install"
 source=("git+https://gabrieldigitprint.work/git/blindpaste.git")
-#source=("git+https://git.projectgrid.net/git/blindpaste.git")
 sha256sums=('SKIP')
 
 build()
