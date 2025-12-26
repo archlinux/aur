@@ -1,0 +1,21 @@
+pkgbase = noon-services
+	pkgdesc = System services for Noon desktop environment
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	arch = any
+	license = MIT
+	depends = ananicy-cpp
+	depends = auto-cpufreq
+	depends = gammastep
+	depends = geoclue
+	depends = gnome-keyring
+	depends = kwallet
+	depends = networkmanager
+	depends = polkit-kde-agent
+	depends = sddm
+	depends = tlp
+	depends = upower
+	depends = wireplumber
+
+pkgname = noon-services
