@@ -1,0 +1,18 @@
+pkgbase = neve-git
+	pkgdesc = A pure functional language for system configuration and package management
+	pkgver = 0.1.0.r1.gbd5f32c
+	pkgrel = 1
+	url = https://github.com/MCB-SMART-BOY/neve
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = neve
+	conflicts = neve
+	source = git+https://github.com/MCB-SMART-BOY/neve.git
+	sha256sums = SKIP
+
+pkgname = neve-git
