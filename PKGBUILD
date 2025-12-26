@@ -36,6 +36,7 @@ conflicts=(
   'labwc'
   'labwc-git'
 )
+provides=('labwc')
 # wlroots and libsfdo are handled as meson subprojects
 source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
 sha256sums=('SKIP')
@@ -59,5 +60,7 @@ package() {
   
   # Create lowercase symlink for easier access
   ln -s LabFyre "$pkgdir/usr/bin/labfyre"
+  # Create labwc symlink for compatibility
+  ln -s labfyre "$pkgdir/usr/bin/labwc"
 }
 

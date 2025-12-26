@@ -25,6 +25,7 @@ pkgbase = labfyre-git
 	depends = libpng
 	depends = librsvg
 	optdepends = xorg-xwayland: X11 application support
+	provides = labwc
 	conflicts = labwc
 	conflicts = labwc-git
 	source = git+https://github.com/FyreX-opensource-design/labFyre.git
