@@ -6,11 +6,12 @@ _plugins_split=(${_plugins//:/ })
 
 : ${_lua:=lua54}
 : ${_libsoup_ver=3}
+: ${_webkit2gtk_ver=-4.1}
 
 _pkgbase="geany-plugins-split"
 pkgbase="$_pkgbase-git"
-pkgver=2.1.0.r29.g0cfd614
-pkgrel=1
+pkgver=2.1.0.r33.g691ff5a
+pkgrel=2
 pkgdesc="Plugins for Geany (split)"
 url="https://github.com/geany/geany-plugins"
 license=('GPL-2.0-or-later')
