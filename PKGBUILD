@@ -5,7 +5,7 @@ pkgname=python-sievelib
 _pkg="${pkgname#python-}"
 pkgdesc="Client-side Sieve and Managesieve library written in Python"
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/tonioo/sievelib"
 license=('MIT')
@@ -17,7 +17,6 @@ sha256sums=('6c57a65af01ce966c90b13e52f14fbf9a7037767a071b8381474cc5ab23104f4')
 
 prepare() {
 	cd "$_pkg-$pkgver"
-	sed -i '/find_packages()/s/()/(exclude=["sievelib.tests*"])/' setup.py
 	sed -i '2d' MANIFEST.in
 	rm -rf "$_pkg.egg-info"
 }
