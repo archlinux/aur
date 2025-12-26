@@ -94,9 +94,6 @@ package() {
     # Install tmpfiles configuration
     install -Dm644 plasmalogin.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/plasmalogin.conf"
 
-    # Create required directory
-    install -dm1770 "$pkgdir/var/lib/plasmalogin"
-
     # Create directory for default configuration
     install -dm755 "$pkgdir/usr/lib/plasma-login"
 
