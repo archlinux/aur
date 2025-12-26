@@ -1,6 +1,6 @@
 pkgbase = sshpilot-git
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = r2545.gd9f876e
+	pkgver = r2555.g19004da
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = any
