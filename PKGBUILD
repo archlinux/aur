@@ -1,6 +1,6 @@
 # Maintainer: Václav Šmejkal <engo@satan.red>
 pkgname=why2
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Lightweight, fast, secure, and easy to use encryption system."
 arch=('x86_64' 'aarch64')
