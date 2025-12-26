@@ -2,7 +2,7 @@
 
 _npmname=dat
 pkgname=nodejs-$_npmname
-pkgver=14.0.2
+pkgver=14.0.3
 pkgrel=1
 pkgdesc="Sync data across the distributed web"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('8766e5c4f741ed18885bd361de983166132343bd5d68f96f2e5c8763eac4c686')
+sha1sums=('c9fb949fcd65fdc612b9c0645da70bb201437807')
 
 package() {
     cd "${srcdir}"
