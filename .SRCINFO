@@ -1,0 +1,13 @@
+pkgbase = wlctl-bin
+	pkgdesc = TUI for managing WiFi using NetworkManager (a fork of impala)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/aashish-thapa/wlctl
+	arch = x86_64
+	license = GPL3
+	depends = networkmanager
+	conflicts = wlctl-bin-git
+	source = wlctl::https://github.com/aashish-thapa/wlctl/releases/download/v0.1.1/wlctl-x86_64-unknown-linux-musl
+	sha256sums = 4b66ceee40f4e82477201f7b373a4aa36cc29b2fa5a221f34de4505ebf7a5ec3
+
+pkgname = wlctl-bin
