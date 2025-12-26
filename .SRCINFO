@@ -1,6 +1,6 @@
 pkgbase = r-org.ce.eg.db
 	pkgdesc = Genome wide annotation for Worm
-	pkgver = 3.21.0
+	pkgver = 3.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/org.Ce.eg.db
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-org.ce.eg.db
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Ce.eg.db_3.21.0.tar.gz
-	md5sums = 1ce14a0da8aa93b0a49c53253e3e0aa7
-	b2sums = a1f9d6e171593c96fffb5c1fb730cc6e1d056e3d5c07da88326e74df543fd28f473e3b3dab4604c90cfaa6f10b136a59989813731a9d8b6b5727101dcc4a3978
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Ce.eg.db_3.22.0.tar.gz
+	md5sums = e57ce3ebb7c2e87073b354db70c41c83
+	b2sums = d7a95c2291fc7f445cb30fb57b27ab502df5827b3800ac411bb19ae0d58ec8cf347526e31b85a6f9e753a43e582de4706890066310ffc87291fb4971405d52d2
 
 pkgname = r-org.ce.eg.db
