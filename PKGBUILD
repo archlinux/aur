@@ -9,8 +9,8 @@ url="https://github.com/j-alexander3375/Lotus"
 license=('MIT')
 depends=('gcc')
 makedepends=('go>=1.20')
-source=("lotus-lang-${pkgver}.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d8fdebcd97ccaaa47f9bbce9909248daa4f22dea24ca0685fc2a2c0a86d474e')
+source=("lotus-lang-${pkgver}.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 build() {
     cd "${srcdir}/Lotus-${pkgver}"
