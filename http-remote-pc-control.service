@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/lib/http-remote-pc-control/gen-certs
+ExecStartPre=/usr/share/http-remote-pc-control/gen-certs
 ExecStart=/usr/bin/http-remote-pc-control --port=5000 --cert-dir=%h/.local/share/http-remote-pc-control/certs
 Restart=on-failure
 RestartSec=2

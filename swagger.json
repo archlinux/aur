@@ -1,0 +1,1799 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/app/ping": {
+      "get": {
+        "operationId": "AppController_ping",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Pings this client to test whether it's working",
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/keyboard/key-press": {
+      "post": {
+        "operationId": "KeyboardController_keyPress",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KeyPressRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Press one or more keys",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/keyboard/type-text": {
+      "post": {
+        "operationId": "KeyboardController_typeText",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TypeTextRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Type text",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/keyboard/set-layout": {
+      "post": {
+        "operationId": "KeyboardController_setKeyboardLayout",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetKeyboardLayoutRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Change keyboard layout",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/process/launch-exe": {
+      "post": {
+        "operationId": "ExecuteController_lunchExe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaunchExeRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaunchPidResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Launch executable",
+        "tags": [
+          "Execute"
+        ]
+      }
+    },
+    "/process/kill-exe-by-name": {
+      "post": {
+        "operationId": "ExecuteController_killExeByName",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KillExeByNameRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Kill process by name",
+        "tags": [
+          "Execute"
+        ]
+      }
+    },
+    "/process/find-pids-by-name": {
+      "post": {
+        "operationId": "ExecuteController_findPidByName",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindExeByNameRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Returns processes ID list based on executable name",
+        "tags": [
+          "Execute"
+        ]
+      }
+    },
+    "/process/kill-exe-by-pid": {
+      "post": {
+        "operationId": "ExecuteController_killExeByPid",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KillExeByPidRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Kill process by PID",
+        "tags": [
+          "Execute"
+        ]
+      }
+    },
+    "/mouse/mouse-move-click": {
+      "post": {
+        "operationId": "MouseController_mouseMoveClick",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MouseMoveClickRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Instantly moves mouse to the position and performs a left click there",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/mouse-move": {
+      "post": {
+        "operationId": "MouseController_mouseMove",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MouseMoveClickRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Mouse move to the point, absolute coordinate for all monitors",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/mouse-position": {
+      "get": {
+        "operationId": "MouseController_getMousePosition",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MousePositionResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Returns X,Y of current mouse position, absolute to all monitors",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/mouse-move-human": {
+      "post": {
+        "operationId": "MouseController_mouseMoveHuman",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Function"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Moves mouse in a human pattern with time",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/left-mouse-click": {
+      "post": {
+        "operationId": "MouseController_leftMouseClick",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Left click on the current position",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/window/focus-exe": {
+      "post": {
+        "operationId": "WindowController_focusExe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusExeRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Focus window by process ID",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/get-process-windows/{id}": {
+      "get": {
+        "operationId": "WindowController_getWindowsIdByPid",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WindowsIdsResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all windows with their IDs for a concrete process id",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/get-active-window": {
+      "get": {
+        "operationId": "WindowController_getActiveWindowId",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActiveWindowResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get information about current active window",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/focus-window": {
+      "post": {
+        "operationId": "WindowController_focusWindowId",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusWindowRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Focuses a window by its id",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/active-window-id": {
+      "get": {
+        "operationId": "WindowController_getActiveWindow",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get active window id (raw handle)",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/bounds": {
+      "get": {
+        "operationId": "WindowController_getWindowBounds",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get window coordinates and parameters (x,y, width, height)",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/bounds": {
+      "post": {
+        "operationId": "WindowController_setWindowBounds",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetBoundsRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Set window position and dimensions",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/title": {
+      "get": {
+        "operationId": "WindowController_getWindowTitle",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get window title",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/show": {
+      "post": {
+        "operationId": "WindowController_showWindow",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShowWindowRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Show/Hide/Minimize/Restore/Maximize window",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/opacity": {
+      "get": {
+        "operationId": "WindowController_getWindowOpacity",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get window opacity (0..1)",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/opacity": {
+      "post": {
+        "operationId": "WindowController_setWindowOpacity",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetOpacityRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Set window opacity (0..1)",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/transparency": {
+      "post": {
+        "operationId": "WindowController_toggleTransparency",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToggleTransparencyRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Toggle window WS_EX_LAYERED transparency flag",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/owner": {
+      "get": {
+        "operationId": "WindowController_getWindowOwner",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get window owner handle",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/owner": {
+      "post": {
+        "operationId": "WindowController_setWindowOwner",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetOwnerRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Set window owner handle",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/is-window": {
+      "get": {
+        "operationId": "WindowController_isWindow",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Check if handle is a window",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/{wid}/is-visible": {
+      "get": {
+        "operationId": "WindowController_isWindowVisible",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Check if window is visible",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/redraw": {
+      "post": {
+        "operationId": "WindowController_redrawWindow",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusWindowRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Force window redraw",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/monitor": {
+      "get": {
+        "operationId": "MonitorController_getMonitors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "List monitors",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/monitor/{mid}/info": {
+      "get": {
+        "operationId": "MonitorController_getMonitorInfo",
+        "parameters": [
+          {
+            "name": "mid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitorInfoResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get monitor info",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/monitor/from-window/{wid}": {
+      "get": {
+        "operationId": "MonitorController_getMonitorFromWindow",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get monitor for window",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/monitor/{mid}/scale": {
+      "get": {
+        "operationId": "MonitorController_getMonitorScaleFactor",
+        "parameters": [
+          {
+            "name": "mid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get monitor scale factor",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/process/create": {
+      "post": {
+        "operationId": "ProcessController_createProcess",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProcessRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Create process",
+        "tags": [
+          "Process"
+        ]
+      }
+    },
+    "/process/{pid}/main-window": {
+      "get": {
+        "operationId": "ProcessController_getProcessMainWindow",
+        "parameters": [
+          {
+            "name": "pid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Get process' main window",
+        "tags": [
+          "Process"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Http Remote PC control API",
+    "description": "API Documentation",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "KeyPressRequestDto": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "f1",
+                "f2",
+                "f3",
+                "f4",
+                "f5",
+                "f6",
+                "f7",
+                "f8",
+                "f9",
+                "f10",
+                "f11",
+                "f12",
+                "f13",
+                "f14",
+                "f15",
+                "f16",
+                "f17",
+                "f18",
+                "f19",
+                "f20",
+                "f21",
+                "f22",
+                "f23",
+                "f24",
+                "backspace",
+                "delete",
+                "return",
+                "enter",
+                "tab",
+                "escape",
+                "space",
+                "insert",
+                "print_screen",
+                "home",
+                "end",
+                "page_up",
+                "page_down",
+                "up",
+                "down",
+                "left",
+                "right",
+                "caps_lock",
+                "num_lock",
+                "scroll_lock",
+                "add",
+                "subtract",
+                "multiply",
+                "divide",
+                "clear",
+                "numpad_0",
+                "numpad_1",
+                "numpad_2",
+                "numpad_3",
+                "numpad_4",
+                "numpad_5",
+                "numpad_6",
+                "numpad_7",
+                "numpad_8",
+                "numpad_9",
+                "numpad_decimal",
+                ",",
+                ".",
+                "/",
+                ";",
+                "'",
+                "[",
+                "]",
+                "\\",
+                "-",
+                "=",
+                "`",
+                "audio_mute",
+                "audio_vol_down",
+                "audio_vol_up",
+                "audio_play",
+                "audio_stop",
+                "audio_pause",
+                "audio_prev",
+                "audio_next",
+                "audio_rewind",
+                "audio_forward",
+                "audio_repeat",
+                "audio_random",
+                "lights_mon_up",
+                "lights_mon_down",
+                "lights_kbd_toggle",
+                "lights_kbd_up",
+                "lights_kbd_down",
+                "menu",
+                "pause",
+                "control",
+                "right_control",
+                "alt",
+                "right_alt",
+                "shift",
+                "right_shift",
+                "meta",
+                "right_meta",
+                "win",
+                "right_win",
+                "cmd",
+                "right_cmd",
+                "fn"
+              ],
+              "description": "A key to be sent."
+            }
+          },
+          "duration": {
+            "default": 50,
+            "type": "number",
+            "minimum": 50,
+            "description": "Duration of key beeing presssed"
+          },
+          "holdKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "f1",
+                "f2",
+                "f3",
+                "f4",
+                "f5",
+                "f6",
+                "f7",
+                "f8",
+                "f9",
+                "f10",
+                "f11",
+                "f12",
+                "f13",
+                "f14",
+                "f15",
+                "f16",
+                "f17",
+                "f18",
+                "f19",
+                "f20",
+                "f21",
+                "f22",
+                "f23",
+                "f24",
+                "backspace",
+                "delete",
+                "return",
+                "enter",
+                "tab",
+                "escape",
+                "space",
+                "insert",
+                "print_screen",
+                "home",
+                "end",
+                "page_up",
+                "page_down",
+                "up",
+                "down",
+                "left",
+                "right",
+                "caps_lock",
+                "num_lock",
+                "scroll_lock",
+                "add",
+                "subtract",
+                "multiply",
+                "divide",
+                "clear",
+                "numpad_0",
+                "numpad_1",
+                "numpad_2",
+                "numpad_3",
+                "numpad_4",
+                "numpad_5",
+                "numpad_6",
+                "numpad_7",
+                "numpad_8",
+                "numpad_9",
+                "numpad_decimal",
+                ",",
+                ".",
+                "/",
+                ";",
+                "'",
+                "[",
+                "]",
+                "\\",
+                "-",
+                "=",
+                "`",
+                "audio_mute",
+                "audio_vol_down",
+                "audio_vol_up",
+                "audio_play",
+                "audio_stop",
+                "audio_pause",
+                "audio_prev",
+                "audio_next",
+                "audio_rewind",
+                "audio_forward",
+                "audio_repeat",
+                "audio_random",
+                "lights_mon_up",
+                "lights_mon_down",
+                "lights_kbd_toggle",
+                "lights_kbd_up",
+                "lights_kbd_down",
+                "menu",
+                "pause",
+                "control",
+                "right_control",
+                "alt",
+                "right_alt",
+                "shift",
+                "right_shift",
+                "meta",
+                "right_meta",
+                "win",
+                "right_win",
+                "cmd",
+                "right_cmd",
+                "fn"
+              ],
+              "description": "A key to be sent."
+            }
+          }
+        },
+        "required": [
+          "keys"
+        ]
+      },
+      "TypeTextRequestDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "keyDelay": {
+            "default": 0,
+            "type": "number",
+            "description": "A delay between keystrokes in milliseconds. By default type as fast as possible"
+          },
+          "keyDelayDeviation": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "maximum": 1,
+            "description": "Deviation for randomness of delay. Final delay = delay ± (delay * deviation). E.g if keyDelay = 100 and deviation = 0.2. Then value would be 80-120ms"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "SetKeyboardLayoutRequestDto": {
+        "type": "object",
+        "properties": {
+          "layout": {
+            "type": "string",
+            "enum": [
+              "us",
+              "en",
+              "gb",
+              "ca",
+              "au",
+              "nz",
+              "ie",
+              "za",
+              "de",
+              "at",
+              "ch",
+              "li",
+              "fr",
+              "be",
+              "lu",
+              "mc",
+              "es",
+              "mx",
+              "ar",
+              "cl",
+              "co",
+              "ve",
+              "pe",
+              "ec",
+              "uy",
+              "py",
+              "bo",
+              "it",
+              "sm",
+              "va",
+              "pt",
+              "br",
+              "nl",
+              "sr",
+              "no",
+              "dk",
+              "se",
+              "fi",
+              "is",
+              "pl",
+              "cz",
+              "sk",
+              "hu",
+              "si",
+              "hr",
+              "ba",
+              "rs",
+              "me",
+              "mk",
+              "bg",
+              "ro",
+              "md",
+              "ee",
+              "lv",
+              "lt",
+              "mt",
+              "cy",
+              "tr",
+              "az",
+              "ru",
+              "by",
+              "ua",
+              "kz",
+              "kg",
+              "tj",
+              "uz",
+              "tm",
+              "mn",
+              "gr",
+              "ar",
+              "ae",
+              "bh",
+              "dz",
+              "eg",
+              "iq",
+              "jo",
+              "kw",
+              "lb",
+              "ly",
+              "ma",
+              "om",
+              "qa",
+              "sa",
+              "sy",
+              "tn",
+              "ye",
+              "fa",
+              "ir",
+              "af",
+              "ur",
+              "pk",
+              "il",
+              "he",
+              "cn",
+              "zh",
+              "tw",
+              "hk",
+              "mo",
+              "jp",
+              "ja",
+              "kr",
+              "ko",
+              "th",
+              "vn",
+              "vi",
+              "kh",
+              "km",
+              "lo",
+              "la",
+              "my",
+              "ms",
+              "id",
+              "ph",
+              "tl",
+              "sg",
+              "bn",
+              "bd",
+              "hi",
+              "in",
+              "ta",
+              "te",
+              "ml",
+              "kn",
+              "gu",
+              "or",
+              "pa",
+              "as",
+              "ne",
+              "si",
+              "lk",
+              "mm",
+              "my",
+              "am",
+              "et",
+              "sw",
+              "ke",
+              "tz",
+              "zu",
+              "xh",
+              "af",
+              "ha",
+              "ng",
+              "fr",
+              "sn",
+              "ml",
+              "bf",
+              "ne",
+              "ci",
+              "gn",
+              "td",
+              "cf",
+              "cm",
+              "ga",
+              "cg",
+              "cd",
+              "mg",
+              "dj",
+              "eo",
+              "la",
+              "eu",
+              "ca",
+              "gl",
+              "cy",
+              "ga",
+              "gd",
+              "br",
+              "oc",
+              "co",
+              "sc",
+              "fur",
+              "rm",
+              "lb",
+              "fo",
+              "kl",
+              "se",
+              "smj",
+              "sma",
+              "smn",
+              "sms"
+            ],
+            "description": "Keyboard layout"
+          }
+        },
+        "required": [
+          "layout"
+        ],
+        "description": "Request to change keyboard layout"
+      },
+      "LaunchExeRequestDto": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to executable"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Command line arguments"
+          },
+          "waitTillFinish": {
+            "type": "boolean",
+            "description": "Wait for process to finish"
+          }
+        },
+        "required": [
+          "path",
+          "arguments",
+          "waitTillFinish"
+        ]
+      },
+      "LaunchPidResponseDto": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "number",
+            "description": "Process ID"
+          }
+        },
+        "required": [
+          "pid"
+        ]
+      },
+      "KillExeByNameRequestDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "[a-zA-Z0-9._ -]",
+            "description": "Process name. Allows only specific symbols due to security reasons"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "FindExeByNameRequestDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "[a-zA-Z0-9._ -]",
+            "description": "Process name. Allows only specific symbols due to security reasons"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "KillExeByPidRequestDto": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "number",
+            "description": "Process ID"
+          }
+        },
+        "required": [
+          "pid"
+        ]
+      },
+      "MouseMoveClickRequestDto": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X coordinate to move mouse to"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate to move mouse to"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "MousePositionResponseDto": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X coordinate of mouse position"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate of mouse position"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "Function": {
+        "type": "object",
+        "properties": {}
+      },
+      "FocusExeRequestDto": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "number",
+            "description": "Process ID whose top-level window should receive focus"
+          }
+        },
+        "required": [
+          "pid"
+        ],
+        "description": "Focus window by process ID"
+      },
+      "WindowsIdsResponseDto": {
+        "type": "object",
+        "properties": {
+          "wids": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "description": "Window handle (HWND as number)"
+            },
+            "description": "Handles of all windows belonging to the specified process"
+          }
+        },
+        "required": [
+          "wids"
+        ],
+        "description": "List of window handles for a process"
+      },
+      "ActiveWindowResponseDto": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Absolute path to the process executable for the active window"
+          },
+          "wid": {
+            "type": "number",
+            "description": "Active window handle (HWND as number)"
+          },
+          "pid": {
+            "type": "number",
+            "description": "Process ID of the active window"
+          }
+        },
+        "required": [
+          "path",
+          "wid",
+          "pid"
+        ],
+        "description": "Information about the current foreground window"
+      },
+      "FocusWindowRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Window handle (HWND as number)"
+          }
+        },
+        "required": [
+          "wid"
+        ],
+        "description": "Target a specific window by handle"
+      },
+      "SetBoundsRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Target window handle (HWND as number)"
+          },
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Window width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Window height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "description": "New window rectangle to apply"
+          }
+        },
+        "required": [
+          "wid",
+          "bounds"
+        ],
+        "description": "Set window position and size"
+      },
+      "ShowWindowRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Target window handle (HWND as number)"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "show",
+              "hide",
+              "minimize",
+              "restore",
+              "maximize"
+            ],
+            "description": "Action to apply: show | hide | minimize | restore | maximize"
+          }
+        },
+        "required": [
+          "wid",
+          "type"
+        ],
+        "description": "Show/Hide/Minimize/Restore/Maximize a window"
+      },
+      "SetOpacityRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Target window handle (HWND as number)"
+          },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Opacity value in range 0..1 where 1 is fully opaque"
+          }
+        },
+        "required": [
+          "wid",
+          "opacity"
+        ],
+        "description": "Set layered window opacity"
+      },
+      "ToggleTransparencyRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Target window handle (HWND as number)"
+          },
+          "toggle": {
+            "type": "boolean",
+            "description": "If true: set WS_EX_LAYERED flag; if false: remove it"
+          }
+        },
+        "required": [
+          "wid",
+          "toggle"
+        ],
+        "description": "Toggle WS_EX_LAYERED transparency style flag"
+      },
+      "SetOwnerRequestDto": {
+        "type": "object",
+        "properties": {
+          "wid": {
+            "type": "number",
+            "description": "Child window handle (HWND as number)"
+          },
+          "owner": {
+            "type": "number",
+            "description": "New owner window handle (HWND as number) or 0 to clear"
+          }
+        },
+        "required": [
+          "wid",
+          "owner"
+        ],
+        "description": "Set window owner (GWLP_HWNDPARENT)"
+      },
+      "MonitorInfoResponseDto": {
+        "type": "object",
+        "properties": {
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Monitor width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Monitor height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "description": "Full monitor bounds"
+          },
+          "workArea": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Monitor width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Monitor height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "description": "Usable desktop area excluding taskbar/docks"
+          },
+          "isPrimary": {
+            "type": "boolean",
+            "description": "True if this is the primary display"
+          }
+        },
+        "required": [
+          "bounds",
+          "workArea",
+          "isPrimary"
+        ],
+        "description": "Monitor information"
+      },
+      "CreateProcessRequestDto": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Executable file path to start"
+          },
+          "cmd": {
+            "type": "string",
+            "description": "Optional command line string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "description": "Create a new process and return its PID"
+      }
+    }
+  }
+}

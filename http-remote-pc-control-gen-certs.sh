@@ -3,7 +3,7 @@
 set -euo pipefail
 
 CERT_ROOT="${CERT_ROOT:-${HOME}/.local/share/http-remote-pc-control/certs}"
-SAN_CNF="/usr/lib/http-remote-pc-control/san.cnf"
+SAN_CNF="/usr/share/http-remote-pc-control/san.cnf"
 
 if [ -f "${CERT_ROOT}/key.pem" ] ; then
   exit 0
