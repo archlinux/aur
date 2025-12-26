@@ -13,6 +13,7 @@ pkgbase = packet-term
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = openssl
+	depends = libssh2
 	source = packet-term-0.1.0.tar.gz::https://github.com/ernestoCruz05/packet/archive/v0.1.0.tar.gz
 	sha256sums = 77e9fefe40997217ae93456b8fd8de5cd78591a34a9738aac86c9b3f0fa39a34
 
