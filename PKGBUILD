@@ -2,7 +2,7 @@
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
 pkgver=5852.e67f84dc6
-pkgrel=4
+pkgrel=5
 pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
 url="https://github.com/EKA2L1/EKA2L1"
@@ -46,7 +46,8 @@ prepare() {
 	cd "${srcdir}/${_pkgname}-git"
 	git submodule update --recursive --init
     sed -i 's/-Werror//g' src/external/mbedtls/CMakeLists.txt
-    sed -i '/#include <cstdint>/a #include <algorithm>' src/emu/common/include/common/pystr.h 
+    sed -i 's/Gui REQUIRED)/Gui GuiPrivate REQUIRED)/g;s/Svg Network/Svg Network GuiPrivate/g;/Qt${QT_VERSION_MAJOR}::Network/a Qt${QT_VERSION_MAJOR}::GuiPrivate' src/emu/qt/CMakeLists.txt
+    sed -i '/#include <cstdint>/a #include <algorithm>' src/emu/common/include/common/pystr.h
 }
 
 build() {
@@ -57,7 +58,7 @@ build() {
 
     cd build
 
-    make
+    make VERBOSE=1
 }
 
 package() {
@@ -70,7 +71,7 @@ package() {
  install -m 755 ${srcdir}/eka2l1_qt "${pkgdir}/usr/bin/eka2l1_qt"
  for s in 16 24 32 48 64 96 128 512; do
     install -d -m 755 "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps"
-    convert "${srcdir}/${_pkgname}-git/src/emu/qt/duck_tank.ico" -resize ${s}x${s} "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/duck_tank.png"
+    magick convert "${srcdir}/${_pkgname}-git/src/emu/qt/duck_tank.ico" -resize ${s}x${s} "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/duck_tank.png"
  done
  install -d -m 755 "${pkgdir}/usr/share/applications"
  install -m 644 "${srcdir}/${_pkgname}-git/src/emu/qt/eka2l1.desktop" "${pkgdir}/usr/share/applications/eka2l1.desktop"
