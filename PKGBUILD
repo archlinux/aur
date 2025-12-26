@@ -9,7 +9,6 @@ license=('MIT')
 depends=(
     'plasma-meta'
     'gnome-desktop'
-    'youtube-music-desktop'
     'kdeconnect'
     'telegram-desktop-bin'
     'obsidian'
