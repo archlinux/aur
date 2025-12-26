@@ -5,7 +5,6 @@ pkgbase = qobuz-player-git
 	url = https://github.com/SofusA/qobuz-player
 	arch = x86_64
 	license = GPL-3
-	makedepends = alsa-lib
 	makedepends = git
 	makedepends = cargo
 	makedepends = nodejs
