@@ -1,0 +1,22 @@
+pkgbase = infodash
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/codingncaffeine/InfoDash
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk4
+	depends = json-glib
+	depends = libxml2
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = libcurl.so
+	depends = libjson-glib-1.0.so
+	source = infodash-1.0.0.tar.gz::https://github.com/codingncaffeine/InfoDash/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = infodash
