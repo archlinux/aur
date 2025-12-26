@@ -9,7 +9,7 @@ depends=('python' 'python-click' 'python-httpx' 'python-selectolax' 'python-pill
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('awww-git' 'swww' 'feh' 'nitrogen')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/starrieste/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a89ef74388be7b09aca1d040f9c1b7bb76a49c8de5cb8025164052580ecb1dff')
+sha256sums=('490af23a18ff1eb6b578d7298f554dc8ad37b143b7fd4116ba5d7e05a038ed4e')
 
 build() {
     cd "$pkgname-$pkgver"
