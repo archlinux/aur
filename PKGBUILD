@@ -1,6 +1,6 @@
 pkgname=syscall
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="minimal sudo‑like privilege elevation tool for Linux. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syscall"
