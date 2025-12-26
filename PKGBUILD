@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KEGGREST
-_pkgver=1.48.1
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.1
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Client-side REST access to the Kyoto Encyclopedia of Genes and Genomes (KEGG)'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('369a17ce4608f12d42884f912086c9986e62d89c24a1ecb7a0ca8f850d07684c')
+sha256sums=('85d5c1838cb4d02b04e3ab958a2097c3fd23f586d34e867d297c644555555c25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
