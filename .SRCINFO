@@ -29,12 +29,7 @@ pkgbase = noon-optional
 	depends = spotify
 	depends = spicetify-cli
 	depends = spicetify-marketplace-bin
-	depends = heroic-games-launcher
 	depends = wine-staging
-	depends = gamemode
-	depends = lib32-gamemode
-	depends = vkd3d
-	depends = lib32-vkd3d
 	depends = nwg-look
 
 pkgname = noon-optional
