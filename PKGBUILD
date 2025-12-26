@@ -1,10 +1,11 @@
-# Maintainer: CrimsonKnight13 <archlinuxaur.8hpc6@passinbox.com>
+# Maintainer: Nastya Grifon <me@nastyagrifon.me>
+# Contributor: CrimsonKnight13 <archlinuxaur.8hpc6@passinbox.com>
 # Contributor: jmcb <joelsgp@protonmail.com>
 
 pkgname='parallels-client'
-pkgver='19.3.24677'
+pkgver='21.0.26247'
 # has an extra digit in the middle for some reason
-_downloadver='19.3.2.24677'
+_downloadver='21.0.0.26247'
 pkgrel=1
 pkgdesc="A remote work tool"
 arch=('x86_64')
@@ -48,7 +49,7 @@ provides=()
 conflicts=()
 source=("https://download.parallels.com/ras/v${pkgver%%.*}/${_downloadver}/RASClient-${pkgver}_x86_64.tar.bz2")
 noextract=()
-sha256sums=('bf59b5a60a710aee5a354fc20f53892c49f2bdbeffbca72817d5d00e78260e9f')
+sha256sums=('757e0b1cd32e4fdad430ef6aaaa04f040916ec20ac37f8dda0261c7c7f1ba218')
 
 
 package() {
@@ -74,7 +75,7 @@ package() {
         "/${_opt}/bin/appserverclient"
 
     # libraries
-    install -D -t "${_dest}/lib/" 'lib/lib2xsupport.so.19' 'lib/libmtp-prl.so' 'lib/libwebview.so'
+    install -D -t "${_dest}/lib/" 'lib/lib2xsupport.so.21' 'lib/libmtp-prl.so' 'lib/libwebview.so'
 
     # license
     install -D -m644 -t "${_dest}/doc/" 'doc/EULA.txt' 
