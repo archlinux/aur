@@ -1,7 +1,7 @@
-# Maintainer: Elrondo46 directed by ERA Energie Assistance IT Departement <elrond94@hotmail.com>
+# Maintainer: xavinou51
 
 pkgname=openconcerto
-pkgver=1.7.3
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="ERP ILM Openconcerto client multi and mono"
 arch=('any')
@@ -12,7 +12,7 @@ source=("https://www.openconcerto.org/fr/telechargement/1.7/${pkgname}-${pkgver}
         "OpenConcerto-Caisse.desktop"
         "OpenConcerto-Configuration.desktop"
 	"OpenConcerto.desktop")
-sha256sums=('e643fb9aaf82dd987627d1d9eec94287052f826f1ee568c523fd46e379787f6e'
+sha256sums=('5f504d3e0103cb37ae73d0af6b57ff5ba10c33411432d244a944a2a503ed4cc3'
             '904b7a2837c4d2dc4242fb43d41150f8a4e5d9d06d9ea7ede811950f680e05ff'
             '95c53e1494e7424d8a37fea79e3b9b29c3efb0da95bce72867086c067657917d'
             '8c1cbf1a4bc1ec002802e4bea84374b133c721a0faf2240b70c2701c52a7a1cb')
