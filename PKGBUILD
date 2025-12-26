@@ -2,13 +2,13 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=augratin
-pkgver=23.6.4
+pkgver=25.5.18
 pkgrel=1
 pkgdesc="Ham Radio - An aid for POTA hunters"
 url="https://pypi.org/project/augratin/"
-depends=(python python-psutil python-requests python-pyqt5-webengine python-folium hamlib hamradio-menus)
+depends=(python python-psutil python-requests python-pyqt6-webengine python-folium hamlib hamradio-menus)
 makedepends=('python-build' 'python-installer' 'python-wheel')
-license=(GPL)
+license=(GPL-3.0-only)
 arch=(any)
 provides=(augratin)
 conflicts=(augratin-git)
@@ -32,5 +32,5 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte-$pkgname-128.png $pkgdir/usr/share/pixmaps/k6gte-$pkgname.png
 }
-md5sums=('6f096f11c11c62a60bc144524ec63d9c')
-sha256sums=('7f0094be3cef8988c6751a2f5b71db3825e1cb5f0d4c172fbba011c62f429112')
+md5sums=('c5470c7496d18dc761636f13f0937f37')
+sha256sums=('0d5ff82d3df2323ee11e31741bbc71d877b9913c45a936a681722ad8a5d798da')
