@@ -1,0 +1,21 @@
+pkgbase = myapps
+	pkgdesc = Linux package manager overview with GTK4 + Libadwaita
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nicolettas-muggelbude/myapps
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pillow
+	depends = hicolor-icon-theme
+	source = myapps-0.2.0.tar.gz::https://github.com/nicolettas-muggelbude/myapps/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = myapps
