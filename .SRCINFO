@@ -1,0 +1,14 @@
+pkgbase = nx-build
+	pkgdesc = An AI-first build platform that connects everything from your editor to CI.
+	pkgver = 22.3.3
+	pkgrel = 1
+	url = https://nx.dev/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = nx-build-22.3.3.tgz
+	source = http://registry.npmjs.org/nx-build/-/nx-build-22.3.3.tgz
+	sha512sums = a4ec6d29651fbdfd280fc19eaacf03f3d436c69b2d45369263e17a52dfd67741a71235233b7d924b5ca600ce9682018f1c364de2aa4dadde5c7c8c509806d12e
+
+pkgname = nx-build
