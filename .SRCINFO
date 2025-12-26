@@ -1,0 +1,14 @@
+pkgbase = noon-python
+	pkgdesc = Python dependencies for Noon desktop environment
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	arch = any
+	license = MIT
+	depends = python-click
+	depends = python-loguru
+	depends = python-psutil
+	depends = python-pywal16
+	depends = python-pywalfox
+
+pkgname = noon-python
