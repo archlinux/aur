@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LRBaseDbi
-_pkgver=2.18.1
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.1
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='DBI to construct LRBase-related package'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea3cc7c661b295f0b3a30856cf0b202fdb6847bbe69a5594877cd898f83eeaf2')
+sha256sums=('a66081d44c25f7abbbce2774fd73e8ca916a16312e8bc097931db2d4074c38c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
