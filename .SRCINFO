@@ -1,0 +1,15 @@
+pkgbase = hypr-audio
+	pkgdesc = Audio profile switcher for PipeWire/PulseAudio (CLI + GUI)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ShayanSadeghi/hypr-audio
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = pipewire
+	depends = libxkbcommon
+	source = hypr-audio-0.1.0.tar.gz::https://github.com/ShayanSadeghi/hypr-audio/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hypr-audio
