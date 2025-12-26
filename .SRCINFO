@@ -1,0 +1,21 @@
+pkgbase = noon-hyprland
+	pkgdesc = Hyprland compositor and related tools for Noon
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = hyprcursor
+	depends = hypridle
+	depends = hyprlock
+	depends = hyprpicker
+	depends = hyprutils
+	depends = hyprwayland-scanner
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	optdepends = hyprland-protocols: Additional Hyprland protocols
+	optdepends = hyprland-qt-support: Qt support for Hyprland
+	optdepends = hyprshot: Screenshot utility for Hyprland
+
+pkgname = noon-hyprland
