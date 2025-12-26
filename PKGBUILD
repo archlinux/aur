@@ -38,8 +38,11 @@ pkgver() {
 }
 
 package() {
+	local b="\e[1m" # bold
+	local y="\e[33m" # yellow
+	local c="\e[0m" # clear
 	cd "$srcdir/$_pkgname"
-	git apply "${srcdir}/13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch"
+	git apply "${srcdir}/13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch" || printf "${b}${y}NOTICE: Bluetooth LED patch did not apply, ignoring...${c}\n"
 	mkdir -pm755 "$pkgdir/etc/udev/rules.d"
 	cp udev/50-ds4drv.rules "$pkgdir/etc/udev/rules.d/50-ds4drv.rules"
 	mkdir -pm755 "$pkgdir/usr/share/licenses/$_pkgname"
