@@ -1,0 +1,18 @@
+pkgbase = stirlitz
+	pkgdesc = Text and files encryption program
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ProfessorNavigator/stirlitz
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = doxygen
+	depends = qt6-base
+	depends = libgcrypt
+	provides = stirlitz
+	source = https://github.com/ProfessorNavigator/stirlitz/archive/refs/tags/v1.0.tar.gz
+	sha256sums = ded72470975785f1567b7e9efedfc7118213eebcb2c64e3b04b7dc019600e857
+
+pkgname = stirlitz
