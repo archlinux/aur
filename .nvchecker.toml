@@ -1,0 +1,5 @@
+[tui-banner-bin]
+source = "github"
+github = "coolbeevip/tui-banner"
+use_latest_release = true
+prefix = "v"
