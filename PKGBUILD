@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('cfb08533c58ea5bc374c1f812780e3e9be6231999d23daab2a0d9fcf2fbcd0d5')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/NCALayer-Linux-${pkgver}"
 
     # Download and extract ncalayer.zip
     make download
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/NCALayer-Linux-${pkgver}"
 
     # Install JAR
     install -Dm644 ncalayer.jar "${pkgdir}/usr/share/${pkgname}/ncalayer.jar"
