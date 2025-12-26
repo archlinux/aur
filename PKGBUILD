@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_appname=xiao-hong-shu
-pkgname="${_appname//-/}-pake"
+_appname=xiaohongshu
+pkgname="${_appname}-pake"
 _pkgname=XiaoHongShu
-pkgver=3.6.0
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
@@ -18,18 +18,18 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('8d54c525563eeaffd89464a6436d24097e74cb4445b959111d28c8f6f58f90ce'
+sha256sums=('e355acd9c9a434a160ba65cf5dbff4f38c9ebd9cc07148d068cf5f1dd2c0aa25'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
-        s/com-pake-${_appname//-/}/${pkgname%-pake}/g
-        s/Office/Utility;/g
-    " -i "${srcdir}/usr/share/applications/com-pake-${_appname//-/}.desktop"
+        s/pake-//g
+        s/${_appname}_512/${_appname}/g
+    " -i "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/pake" "${pkgdir}/usr/bin/${pkgname%-pake}"
-    install -Dm644 "${srcdir}/usr/share/applications/com-pake-${_appname//-/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-pake}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-pake}.png"
+    install -Dm755 "${srcdir}/usr/bin/pake-${_appname}" "${pkgdir}/usr/bin/${_appname}"
+    install -Dm644 "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname}.png" "${pkgdir}/usr/share/pixmaps/${_appname}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
