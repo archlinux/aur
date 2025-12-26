@@ -15,7 +15,7 @@ pkgbase = noon-nvidia-legacy
 	depends = egl-wayland
 	provides = noon-nvidia-legacy-support
 	conflicts = noon-nvidia
-	source = setup_nvidia.sh::https://raw.githubusercontent.com/PharmaRacist/Noon/main/setup_data/setup_nvidia.sh
+	source = setup_nvidia.sh::https://raw.githubusercontent.com/PharmaRacist/Noon/main/setup_nvidia.sh
 	sha256sums = SKIP
 
 pkgname = noon-nvidia-legacy

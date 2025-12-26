@@ -18,7 +18,7 @@ depends=(
 conflicts=('noon-nvidia')
 provides=('noon-nvidia-legacy-support')
 install=noon-nvidia-legacy.install
-source=("setup_nvidia.sh::https://raw.githubusercontent.com/PharmaRacist/Noon/main/setup_data/setup_nvidia.sh")
+source=("setup_nvidia.sh::https://raw.githubusercontent.com/PharmaRacist/Noon/main/setup_nvidia.sh")
 sha256sums=('SKIP')
 
 package() {
