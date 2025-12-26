@@ -1,0 +1,14 @@
+pkgbase = blindpaste
+	pkgdesc = a terminal blackboard for quick note taking
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://projectgrid.net/hello/portfolio/blindpaste
+	install = advice.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	optdepends = bash-completion: for command line completions when pressing the <tab> key
+	source = git+https://git.projectgrid.net/git/blindpaste.git
+	sha256sums = SKIP
+
+pkgname = blindpaste
