@@ -1,0 +1,29 @@
+post_install() {
+    echo "==> Configuring NVIDIA..."
+    
+    # Run NVIDIA setup script
+    if [ -x /usr/bin/noon-nvidia-setup ]; then
+        /usr/bin/noon-nvidia-setup
+    fi
+    
+    # Enable NVIDIA-specific services if they exist
+    if systemctl list-unit-files nvidia-suspend.service &>/dev/null; then
+        systemctl enable nvidia-suspend.service
+        systemctl enable nvidia-hibernate.service
+        systemctl enable nvidia-resume.service
+    fi
+    
+    echo "==> NVIDIA configuration complete"
+    echo "==> Reboot for changes to take effect"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Disabling NVIDIA services..."
+    systemctl disable nvidia-suspend.service 2>/dev/null
+    systemctl disable nvidia-hibernate.service 2>/dev/null
+    systemctl disable nvidia-resume.service 2>/dev/null
+}
