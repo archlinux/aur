@@ -66,7 +66,7 @@ fi
 
 # Duplicates mods blacklist file to DataPath if it does not exist
 if [[ ! -f "${conf_path:?}/blacklist.json" ]]; then
-    cp "/opt/stardew-valley/smapi-internal/blacklist.json" "${conf_path:?}/blacklist.json"
+    cp "/opt/gog-stardew-valley/game/smapi-internal/blacklist.json" "${conf_path:?}/blacklist.json"
 fi
 
-/opt/stardew-valley/StardewModdingAPI --mods-path "$SMAPI_MODS_PATH" "$@"
+/opt/gog-stardew-valley/game/StardewModdingAPI --mods-path "$SMAPI_MODS_PATH" "$@"
