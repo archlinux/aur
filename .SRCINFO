@@ -1,6 +1,6 @@
 pkgbase = plink1.9-git
 	pkgdesc = whole-genome association analysis toolset, version 1.9
-	pkgver = 1.9.b.7.11.r7.g281b4937
+	pkgver = 1.9.b.7.11.r64.gacb45ef4
 	pkgrel = 1
 	epoch = 1
 	url = https://www.cog-genomics.org/plink/1.9/

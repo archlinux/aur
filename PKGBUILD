@@ -5,7 +5,7 @@ pkgname="$_pkgname-git"
 # Upstream has changed tag formats, epoch is necessary
 epoch=1
 _pkgver=1.9
-pkgver=1.9.b.7.11.r7.g281b4937
+pkgver=1.9.b.7.11.r64.gacb45ef4
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
