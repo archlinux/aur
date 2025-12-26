@@ -1,14 +1,14 @@
 pkgbase = fptn-server-bin
 	pkgdesc = Non-commercial VPN, a volunteer project for bypassing censorship (server)
-	pkgver = 0.3.30
+	pkgver = 0.3.32
 	pkgrel = 1
 	url = https://github.com/batchar2/fptn
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/batchar2/fptn/releases/download/0.3.30/fptn-server-0.3.30-ubuntu22.04-amd64.deb
-	sha256sums_x86_64 = 120cc9f7529564f6f548214200b625568e0f986b5dda232ffc64a9a277179988
-	source_aarch64 = https://github.com/batchar2/fptn/releases/download/0.3.30/fptn-server-0.3.30-ubuntu22.04-arm64.deb
-	sha256sums_aarch64 = aee2de69b7ed40640be78027ed0421946e10db1a4c5ac4ad7dd7973d2d87ae6e
+	source_x86_64 = https://github.com/batchar2/fptn/releases/download/0.3.32/fptn-server-0.3.32-ubuntu22.04-amd64.deb
+	sha256sums_x86_64 = 8b48fb49a3d12e56ef10b763d4c12d3d226aee7972cd38b78699f1479882338e
+	source_aarch64 = https://github.com/batchar2/fptn/releases/download/0.3.32/fptn-server-0.3.32-ubuntu22.04-arm64.deb
+	sha256sums_aarch64 = 3974a42c3bebbfe935f59cc7912ba9a6ababb57c97bdf113d236a4a6b04b05a8
 
 pkgname = fptn-server-bin
