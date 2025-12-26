@@ -1,0 +1,4 @@
+pkg/
+src/
+mncalc/
+*.pkg.tar.zst

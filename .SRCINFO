@@ -1,0 +1,14 @@
+pkgbase = mncalc-git
+	pkgdesc = Command-line alternative to macro-nutrient calculator websites
+	pkgver = r5.d9872fc
+	pkgrel = 1
+	url = https://codeberg.org/tecknian/mncalc
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = go
+	makedepends = git
+	provides = mncalc
+	source = git+https://codeberg.org/tecknian/mncalc.git
+	sha256sums = SKIP
+
+pkgname = mncalc-git
