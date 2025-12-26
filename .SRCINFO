@@ -1,6 +1,6 @@
 pkgbase = r-rontotools
 	pkgdesc = R Onto-Tools suite
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ROntoTools
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rontotools
 	depends = r-rgraphviz
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROntoTools_2.36.0.tar.gz
-	sha256sums = 5ba62b6756aed705e2f4aaa0120216211be8eb02358cff69a4ecf48346fffa81
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROntoTools_2.38.0.tar.gz
+	sha256sums = 47df0154d8d2102d39cd08c23dccd222355c03ec6ba4dd1f6ee7b1d13833440a
 
 pkgname = r-rontotools
