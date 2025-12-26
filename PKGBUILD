@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tracker
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="A terminal-based real-time satellite tracking and orbit prediction application"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fb6484423d5431c86fe9329e54ec2bd5a43d3f09719224625689ed8e0fba3b66341031318c8cbc2f1738d887d2cebda9252a35424fcd349baf3f8a168aba146a')
+sha512sums=('fe0313330e3ebf810f6ec003f3e1893893a59b5f4a13352750bfa24ed2bdd20bf4d4d9724aa1d95314ea112646a22753d8f1b2470075e49f307d4ef142ac1c2d')
 options=('!lto')
 
 prepare() {
