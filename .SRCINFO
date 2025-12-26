@@ -1,6 +1,6 @@
 pkgbase = r-rcm
 	pkgdesc = Fit row-column association models with the negative binomial distribution for the microbiome
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCM
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-rcm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCM_1.24.0.tar.gz
-	sha256sums = 65ccb0fc1b17d33dfcbab4824a6a89e32691d1ff135b699f314c4e9a5fa0f733
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCM_1.26.0.tar.gz
+	sha256sums = 667c6be0efb173004619981b0bc30ea5dbff9e8e2d1f3530526677fc277e46e4
 
 pkgname = r-rcm
