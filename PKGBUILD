@@ -10,7 +10,7 @@ depends=('pipewire' 'libxkbcommon')
 makedepends=('rust' 'cargo')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4a74c80caed20383a345e5b90574223bbface444f8260c6c0775fd78c2dd34a8')
 
 build() {
     cd "$pkgname-$pkgver"
