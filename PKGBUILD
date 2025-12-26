@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=kebabs
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-sparsem
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c463444e1493087a1eb32988c27e3986')
-b2sums=('14214646cfcf01cafb8002b85d75c2fc8e855c36eb13d7a58813196b204351dcd0bc7d9e4e7dcd6b7e4b45bb14efee736fd4eb960108b56b0b7a747813c4ac46')
+md5sums=('085aed39643f9c682043ae2754a959ee')
+b2sums=('f1b9cb10e84333d8507b4c71f0804bfb098138f419df6d4d893d77592484557272e8cb538f6be40b53a8ff85471e800dcf2e708a2203cbe8e1595de02b5b0eff')
 
 build() {
   mkdir build
