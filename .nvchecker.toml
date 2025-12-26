@@ -1,0 +1,4 @@
+[plasma-login-manager-git]
+source = "github"
+github = "KDE/plasma-login-manager/"
+use_max_tag = "true"

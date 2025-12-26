@@ -1,0 +1,11 @@
+*
+!.gitignore
+!.nvchecker.toml
+!*.sysusers
+!*.tmpfiles
+!PKGBUILD
+!.SRCINFO
+!plasmalogin
+!plasmalogin-autologin
+!plasmalogin-greeter
+!plasmalogin.install
