@@ -1,7 +1,7 @@
 # Maintainer: Tomas <me+aur at wereii.cz>
 
 pkgname=spacestation14-launcher-bin
-pkgver=0.35.0
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
@@ -17,7 +17,7 @@ source=(
     "spacestation14.svg::https://spacestation14.io/images/main/icon.svg"
     "SS14.desktop")
 
-sha256sums=('1faae8d65337e0eacb9570742a87a3ccc5c08babfd4c47d985f0205537c2b068'
+sha256sums=('f11280cef408d35fb1d33032bfd3d42bafd88c9d48f1231c8be607638d00b1a2'
             'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
             '7645b08e7ca3ac6460ceea8862793c63bc088c04b52b535bce07e5fd4327d4be')
 
@@ -41,4 +41,6 @@ package() {
 
     mkdir -p "${pkgdir}/usr/share/pixmaps"
     cp "${srcdir}/spacestation14.svg" "${pkgdir}/usr/share/pixmaps"
+
+    chmod +x "${pkgdir}/opt/SS14/SS14.Launcher"
 }
