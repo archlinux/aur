@@ -1,7 +1,7 @@
 pkgbase = karaokemugen
 	pkgdesc = Karaoke playlist manager/player app used in parties or events.
 	pkgver = 9.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mugen.karaokes.moe/
 	install = karaokemugen.install
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = karaokemugen
 	makedepends = git
 	makedepends = npm
 	makedepends = typescript
+	makedepends = yarn-corepack
 	depends = mpv
 	depends = ffmpeg
 	depends = postgresql
 	depends = electron
-	depends = patch
-	optdepends = sudo: for using karaokemugen-install script
 	provides = karaokemugen
 	conflicts = karaokemugen
 	source = karaokemugen::git+https://gitlab.com/karaokemugen/code/karaokemugen-app.git#tag=9.0.2

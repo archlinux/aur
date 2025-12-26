@@ -1,15 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron' 'patch')
-makedepends=('git' 'npm' 'typescript')
-optdepends=('sudo: for using karaokemugen-install script')
+depends=('mpv' 'ffmpeg' 'postgresql' 'electron')
+makedepends=('git' 'npm' 'typescript' 'yarn-corepack')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
