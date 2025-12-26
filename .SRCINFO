@@ -1,5 +1,5 @@
 pkgbase = cornelli-bin
-	pkgdesc = Cinematic ANSI banners for Rust CLI/TUI
+	pkgdesc = Write to your future self
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/hitblast/cornelli

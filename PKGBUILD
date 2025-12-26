@@ -3,7 +3,7 @@
 _pkgauthor=hitblast
 _pkgname=cornelli
 pkgname=${_pkgname}-bin
-pkgdesc="Cinematic ANSI banners for Rust CLI/TUI"
+pkgdesc="Write to your future self"
 
 pkgver=1.1.0
 pkgrel=1
