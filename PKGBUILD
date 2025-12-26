@@ -3,7 +3,7 @@
 
 pkgname=dns-lexicon
 pkgver=3.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=(any)
 url="https://github.com/dns-lexicon/dns-lexicon"
