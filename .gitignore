@@ -1,0 +1,7 @@
+pkg
+src
+CONFIG.md
+hotkey-hub
+hotkey-hub-*
+json-schema.json
+macros-schema.json
