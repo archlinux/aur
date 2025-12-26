@@ -6,46 +6,24 @@ pkgdesc="A terminal multiplexer and broadcast system for network engineers with 
 arch=('x86_64')
 url="https://github.com/ernestoCruz05/packet"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libssh2')
+depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libssh2' 'cairo' 'gdk-pixbuf2' 'glib2' 'hicolor-icon-theme' 'pango')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dbffe759218e74d2402c25adad9a577355b2c3e50e91d245efef6b866fc2c6aa')
+sha256sums=('8b1d568be734cb2f37acdf0f2ee8c27d37c108351be90a7c53147453e89d07c9')
 
 prepare() {
-    # Install tauri-cli for proper production builds
-    cargo install tauri-cli --locked
+    cd "packet-$pkgver"
+    npm install
 }
 
 build() {
     cd "packet-$pkgver"
-    
-    npm install
-    
-    cd src-tauri
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    cargo tauri build --no-bundle
+    npx tauri build -b deb
 }
 
 package() {
     cd "packet-$pkgver"
-    
-    install -Dm755 "src-tauri/target/release/packet" "$pkgdir/usr/bin/$pkgname"
-    
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
-[Desktop Entry]
-Name=Packet
-Comment=Terminal multiplexer for network engineers
-Exec=packet
-Icon=packet
-Terminal=false
-Type=Application
-Categories=Network;System;TerminalEmulator;
-Keywords=terminal;ssh;telnet;broadcast;gns3;
-EOF
-    
-    install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-    install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-    install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-    
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Extract from deb bundle - Tauri packages everything correctly there
+    cp -a src-tauri/target/release/bundle/deb/packet_${pkgver}_*/data/* "${pkgdir}"
 }
