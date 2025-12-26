@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=MsExperiment
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('27b205bad3ce344bec946f99c2ac1788')
-b2sums=('14c3d97619b0a3dc98ccb4711a6799405dddc3c3bdacdab9a048b037d89df8ded91cf40a9d5002a3066fcd83bf657b4213eadb5e728a2d3f6a8d874cc3c48556')
+md5sums=('209e50be728a1eae1792a9f6067ff698')
+b2sums=('3cdb3c487570262c6d1ff5864d354565929cc612335b35e29f96fe33f7f2dfd2ee179c3a74ee03afb17c98d02d7e13d85f1d15a81349f9025120b9e0d404fa00')
 
 build() {
   mkdir build
