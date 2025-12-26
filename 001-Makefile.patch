@@ -1,0 +1,58 @@
+diff --git a/Makefile b/Makefile
+index ba61570..ecbb731 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,37 +19,37 @@ LIBS     = $(LIBNAME) $(ARCNAME)
+ 
+ CC      = cc
+ #CFLAGS = -std=c11 -pedantic -g3 -Og -Wall -Wextra
+-CFLAGS  = -std=c11 -pedantic -g3 -Wall -Wextra
++CFLAGS  += -std=c11 -pedantic -g3 -Wall -Wextra
+ LOFLAGS = -fPIC
+-SOFLAGS = -shared -Wl,-soname,$(SONAME)
+-LDFLAGS = -L/usr/local/lib
++SOFLAGS = -shared -Wl,-soname,$(SONAME) $(LDFLAGS)
++LDFLAGS +=
+ LDLIBS  = -lssl -lcrypto
+ AR      = ar csrv
+ DESTDIR = 
+-PREFIX  = /usr/local
++PREFIX  ?= /usr/local
+ KMIP    = kmip
+ 
+ OFILES  = kmip.o kmip_memset.o kmip_bio.o
+ LOFILES = kmip.lo kmip_memset.lo kmip_bio.lo
+ 
+-all: demos tests $(LIBS)
++all: $(LIBS)
+ 
+ test: tests
+ 	$(SRCDIR)/tests
+ 
+ install: all
+-	mkdir -p $(DESTDIR)$(PREFIX)/bin/$(KMIP)
+-	mkdir -p $(DESTDIR)$(PREFIX)/include/$(KMIP)
++	# mkdir -p $(DESTDIR)$(PREFIX)/bin/$(KMIP)
++	# mkdir -p $(DESTDIR)$(PREFIX)/include/$(KMIP)
+ 	mkdir -p $(DESTDIR)$(PREFIX)/lib
+-	mkdir -p $(DESTDIR)$(PREFIX)/src/$(KMIP)
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/$(KMIP)/src
+-	cp demo_create $(DESTDIR)$(PREFIX)/bin/$(KMIP)
+-	cp demo_get $(DESTDIR)$(PREFIX)/bin/$(KMIP)
+-	cp demo_destroy $(DESTDIR)$(PREFIX)/bin/$(KMIP)
+-	cp tests $(DESTDIR)$(PREFIX)/bin/$(KMIP)
+-	cp -r $(SRCDIR)/docs/source/. $(DESTDIR)$(PREFIX)/share/doc/$(KMIP)/src
+-	cp $(SRCDIR)/*.c $(DESTDIR)$(PREFIX)/src/$(KMIP)
+-	cp $(SRCDIR)/*.h $(DESTDIR)$(PREFIX)/include/$(KMIP)
++	# mkdir -p $(DESTDIR)$(PREFIX)/src/$(KMIP)
++	# mkdir -p $(DESTDIR)$(PREFIX)/share/doc/$(KMIP)/src
++	# cp demo_create $(DESTDIR)$(PREFIX)/bin/$(KMIP)
++	# cp demo_get $(DESTDIR)$(PREFIX)/bin/$(KMIP)
++	# cp demo_destroy $(DESTDIR)$(PREFIX)/bin/$(KMIP)
++	# cp tests $(DESTDIR)$(PREFIX)/bin/$(KMIP)
++	# cp -r $(SRCDIR)/docs/source/. $(DESTDIR)$(PREFIX)/share/doc/$(KMIP)/src
++	# cp $(SRCDIR)/*.c $(DESTDIR)$(PREFIX)/src/$(KMIP)
++	# cp $(SRCDIR)/*.h $(DESTDIR)$(PREFIX)/include/$(KMIP)
+ 	cp $(SRCDIR)/$(LIBNAME) $(DESTDIR)$(PREFIX)/lib
+ 	cp $(SRCDIR)/$(ARCNAME) $(DESTDIR)$(PREFIX)/lib
+ 	cd $(DESTDIR)$(PREFIX)/lib && ln -s $(LIBNAME) $(LINKNAME) && cd -
