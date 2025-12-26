@@ -10,7 +10,8 @@ url='https://github.com/Jaded-Encoding-Thaumaturgy/muxtools'
 license=('MIT')
 depends=(
     'python-ass'
-    # 'python-fontcollector' # package doesn't exist
+    'python-fontcollector'
+    'python-langcodes'
     'python-mkvinfo'
     'python-py7zr'
     'python-pydantic'
