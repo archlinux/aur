@@ -1,6 +1,6 @@
 pkgbase = r-subcellbarcode
 	pkgdesc = SubCellBarCode: Integrated workflow for robust mapping and visualizing whole human spatial proteome
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SubCellBarCode
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-subcellbarcode
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SubCellBarCode_1.24.0.tar.gz
-	sha256sums = 65353acca8955ff264cf3e3474db835c6ee9d4abc62b4909b9b48d5b18c6d173
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SubCellBarCode_1.26.0.tar.gz
+	sha256sums = b078f04c2e30b7927ca07fb360f4516093ed0320a032e395904b3bfca57540b0
 
 pkgname = r-subcellbarcode
