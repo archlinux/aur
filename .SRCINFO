@@ -1,13 +1,13 @@
 pkgbase = php-ev
 	pkgdesc = PHP extension for interface to libev library
-	pkgver = 1.1.5
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://bitbucket.org/osmanov/pecl-ev
 	arch = any
 	license = New BSD
 	depends = php
 	backup = etc/php/conf.d/ev.ini
-	source = http://pecl.php.net/get/ev-1.1.5.tgz
-	sha512sums = 7033dc28ff63eca2d0aee44ce0f46da24aa78da4e4f74d3a44e7967bf00fdfcbd6c2fcfce42b8028441bef600267024e5c65955d90aa22578b0850c60c95be6e
+	source = http://pecl.php.net/get/ev-1.2.2.tgz
+	sha512sums = b794dfedc5ad0485b9674d5c7f6f20da1385338bdcec84dcea2e984fc6c0453895da8a2728fb9ae95c6f7c6a89273ba3c031688b5b897558ad561c2340bfa280
 
 pkgname = php-ev
