@@ -6,16 +6,16 @@ pkgname=vofi-bin
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="a app launch"
-url="https://github.com/eon-ic/vofi.git"
+url="https://github.com/eon-ic/vofi"
 license=("MIT OR Apache-2.0")
 arch=("x86_64")
 provides=("vofi")
 conflicts=("vofi")
 depends=("gtk4" "gtk4-layer-shell")
 source=("https://github.com/eon-ic/vofi/releases/download/v$pkgver/vofi-$pkgver-x86_64.tar.gz")
-sha256sums=("2cdd9d92bd7661fb545daced00e2a87c3d65e3e4d8b056bded2c850831657032")
+sha256sums=("8e4454178f3f0b71dd9e3adb6c2af8e3d4c89b807e18c6ee379de9b30b0071dd")
 
 package() {
-  install -Dm755 vofi -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 vofi -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
