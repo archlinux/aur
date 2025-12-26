@@ -1,4 +1,4 @@
 ds4drv/
 pkg/
 src/
-*.tar.xz
+*.tar.*
