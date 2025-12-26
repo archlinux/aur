@@ -15,7 +15,7 @@ _barch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
-license=('MIT')
+license=('Apache-2.0')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
