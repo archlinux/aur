@@ -1,7 +1,7 @@
 pkgbase = myctl
 	pkgdesc = A powerful CLI to control your Linux Desktop
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mydehq/myctl
 	arch = any
 	license = GPL3
