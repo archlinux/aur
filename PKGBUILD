@@ -1,6 +1,6 @@
 # Maintainer: Dawood <Nurysso at proton.me>
 pkgname=vanish
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Modern safe file deletion tool with recovery - Never lose files again! Beautiful TUI, pattern restore, themes."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nurysso/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('41f34d0f786acacc83d8bf8fdb10db7017adff6895ad12996f2f3fd1eb670880')
+sha256sums=('6a604d4bf01298e5a923942cd57b77e12c4dd1debf1d1835320e0a05305e4353')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
