@@ -1,0 +1,16 @@
+pkgbase = jotit-bin
+	pkgdesc = A simple command-line tool to jot notes
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mkaz/jotit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = jotit
+	conflicts = jotit
+	source_x86_64 = jotit-x86_64-0.6.0.tgz::https://github.com/mkaz/jotit/releases/download/v0.6.0/jotit_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ddcd7becec2fc685694762fc3a9184ab3a31ce4d010a5f2caff1db5c4cfe622a
+	source_aarch64 = jotit-aarch64-0.6.0.tgz::https://github.com/mkaz/jotit/releases/download/v0.6.0/jotit_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b94884b01730ffe15df9247f1d3b20c54cde7cbe17b16b60891b977a311676c7
+
+pkgname = jotit-bin
