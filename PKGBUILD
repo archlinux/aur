@@ -3,7 +3,7 @@
 _pkgauthor=pamburus
 _pkgname=termframe
 pkgname=${_pkgname}-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Convert terminal output into an SVG file"
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}-${_clib}.tar.gz")
 sha256sums=('ff7169dd7f49cfd2491e92944b22d3c0ffb9eb738f16d221cc3d3ce6fc839fd5'
             'd673fce84c24d313f19ac91d85c26aa6158db084140422d7c0b7ac2fdd5b0d5f')
-sha256sums_x86_64=('956c1cb0e448ddcf94bd1a3868924e455e07e57844af64ecb9f8960b15fb56bd')
-sha256sums_aarch64=('04157ecaf1ecc16f06f46ad36030d1eaddd7fd41b100d534aa8b0f4e1fd91694')
+sha256sums_x86_64=('c4e9621dca7fb57b2c3a145639fc98a0ee8ca11aacbb586e4bb2a63dcee9974f')
+sha256sums_aarch64=('65ceba9cdc1cfafd5938442812b46f57e353e9e8344e77ac7768b878645691a5')
 
 package() {
 	cd "${srcdir}/" || exit
