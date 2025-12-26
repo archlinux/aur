@@ -11,8 +11,8 @@ license=("MIT")
 arch=("x86_64")
 provides=("projhandler-client")
 conflicts=("projhandler-client")
-source=("$pkgname-$pkgver.tar.gz::file://$PWD/projhandler-client-$pkgver-x86_64.tar.gz")
-sha256sums=("4a49bc9bd68b484f50dd0f435591c0f1e0a2ee6c2e3fffe0c2581624c961a7aa")
+source=("https://github.com/slawacats/projhandler-client/releases/download/v$pkgver/projhandler-client-$pkgver-x86_64.tar.gz")
+sha256sums=("266caf6f19ddfb43e5b06fc8e46e9827558e5c7fdaf4f1a4260c15923972d71f")
 
 package() {
     install -Dm755 projhandler-client -t "$pkgdir/usr/bin"
