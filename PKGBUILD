@@ -1,6 +1,6 @@
 # Maintainer: earthintruders <<earthintruders at tutanota dot de>>
 pkgname=qobuz-player-git
-pkgver=v0.4.1.pre.2.r4.g5c5a7d1
+pkgver=v0.4.5.r4.g45629c0
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
     cd ${pkgname}
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
     cd qobuz-player-web
     npm install
 }
