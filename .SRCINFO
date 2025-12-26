@@ -1,0 +1,27 @@
+pkgbase = noon-looks
+	pkgdesc = Theming and appearance packages for Noon
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	arch = any
+	license = MIT
+	depends = adw-gtk-theme
+	depends = archlinux-xdg-menu
+	depends = fontconfig
+	depends = gtk4
+	depends = kde-material-you-colors
+	depends = libadwaita
+	depends = qt6-wayland
+	depends = ttc-iosevka
+	depends = ttf-readex-pro
+	depends = ttf-roboto-flex
+	depends = ttf-rubik-vf
+	optdepends = adw-gtk-theme-git: GTK theme (git version)
+	optdepends = darkly-bin: Dark theme support
+	optdepends = gowall: Wallpaper manager
+	optdepends = matugen-bin: Material You color generator
+	optdepends = ttf-gabarito-git: Gabarito font
+	optdepends = ttf-jetbrains-mono-nerd: JetBrains Mono Nerd Font
+	optdepends = ttf-material-symbols-variable-git: Material Symbols font
+
+pkgname = noon-looks
