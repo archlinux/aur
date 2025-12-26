@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SELEX
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Functions for analyzing SELEX-seq data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-rjava
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('03c6d3623a540d425f311497a5b1d2984af2ca597b6ff7c6c56a1517f3bb58f2')
+sha256sums=('f82b3ea35d8feab08b71d5a584344caad428d7cba55f7c58d126e0d5527fef56')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
