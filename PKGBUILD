@@ -4,9 +4,9 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.30.r3959.b77cd6ee
+pkgver=2.0.34.r4557.61d88a42
 pkgrel=1
-GOVERSION=go1.21.8
+GOVERSION=go1.24.11
 epoch=3
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("git+$url.git"
         "client.config"
         "psiphon-client.service"
         "psiphon-server.service"
-        "https://storage.googleapis.com/golang/${GOVERSION}.linux-amd64.tar.gz"
+        "https://go.dev/dl/${GOVERSION}.linux-amd64.tar.gz"
         )
 install=psiphon.install
 backup=('etc/psiphon/client.config' 'usr/lib/systemd/user/psiphon-client.service' 'usr/lib/systemd/user/psiphon-server.service')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
             '6711a12112a594ba70bbae51c66ee23302e08c54c4e059c92b67adba9451c037'
             '373c1eb939118055f799237df3e665680b8dc4b4a281505cce32e957a9554c56'
-            '538b3b143dc7f32b093c8ffe0e050c260b57fc9d57a12c4140a639a8dd2b4e4f')
+            'bceca00afaac856bc48b4cc33db7cd9eb383c81811379faed3bdbc80edb0af65')
 
 
 pkgver() {
