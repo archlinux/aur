@@ -12,7 +12,7 @@ _bldtype='Release'
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20250910
+_utdicdate=20251218
 _dict=(alt-cannadic
     edict2
     jawiki
@@ -24,15 +24,18 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.31.5851.102.20250910
+pkgver=2.32.5994.102.20251218
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
-source=(git+https://github.com/fcitx/mozc.git#commit=d1a070e6611640686979dc22e1308dc5606c8271
+source=(git+https://github.com/fcitx/mozc.git#commit=a02a2846ffaee7e5e71324b522fa0ea0b7723002
+    #         2023-07-13: osdn.net is unstable due to Amazon
     "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/ken_all.zip"
     "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/jigyosyo.zip"
+    #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
+    #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
     git+https://github.com/abseil/abseil-cpp.git
     git+https://chromium.googlesource.com/breakpad/breakpad
     git+https://github.com/google/googletest.git
@@ -41,13 +44,12 @@ source=(git+https://github.com/fcitx/mozc.git#commit=d1a070e6611640686979dc22e13
     git+https://github.com/open-source-parsers/jsoncpp.git
     git+https://github.com/google/protobuf.git
     git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-    jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2
-    0001-remove-download.patch)
+    jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2)
 noextract=(jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2)
 for dict in "${_dict[@]}"; do
     source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.bz2")
 done
-sha512sums=('SKIP'
+sha512sums=('e1dca88e784a78fd890d42172f38ed26f4745bf0a1dc98d239b97072854a3bc08c145de8350d964acf00235ac698dabb84eed4a4aa5fd801d1fa9d3639343db2'
     '00aef90b785a703d536813616eeec7057eeaf681b83bc35c6c4b597df298ccb6bbd97f97845c7570788e7f063d94b4c62e359ccc698fcaeff17ce472bc1b9225'
     'ec76f0c9b02a8f0a8633d752ebdb80ac7c4d5c71dfd9916cc9140d446bae8e09755db8d40eca87fbb08d21c31db80ec977f307c497f0d731087c73a1df9ea0c7'
     'SKIP'
@@ -58,16 +60,15 @@ sha512sums=('SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-    '5d66953bc816aeba63a166e191f7453a561f755bfd57f611f867378583e18c2aaa25d78340b641070e28672659ed241fd9252010df3d9a64dff79f0b68f613c7'
+    '8c1d315b6b5410c40017c3d552e3a87cbf1a294f16603aa6f2f5fe7d3286210be55dee5f86857a1b4825ff97cbc63ce6325ebd12f53f1b309754b7b578e0114a'
     '8a91bc01402aee8dc1bc3d572da20d4e787b714b1d4ef8c9fb7fbe56dbc25c3f956e508a663f67bf685af3ef913ec68b0b991116f44d846afdd130251f4a6ba7'
     '09b86b7527d45423090645a6763bb5d2d2bfe105a1db3736a2b7d48edf73dd2a6a4da4ae8ceb62bf26da210d07a6e6f7260dea7e01539e7746731d898793a07b'
-    'a28e2d4b888a3df58b95bc171ba722477e74a2c0384e977873387a6c507a5c3497a7baf2504ce66b890976dd63a2dc1a60c5158d3bdd5a2e5383b5936023c45d'
-    '2cb20d0e0352278f4651526f45576401a0fd63970c9c6e2623e70b0b00df230b6b2da4f1d316e60836ca0cfd867850a8e401ab8bf3caa7217d9cee92e1239283'
+    'd743123b0a2b5d647ba78b2c8d28a19024e03f80cf4702a47cc3226f2de63afa07fd3822a903c7b124157918e4c3572ac9a91e5cd82cecbee5051f09f1b18618'
+    '3d29498b27328b7cb5f6e9394ed280316c5d5b775bb07ca58ee661813941eac3fc3d1f6f7782877b59b8bb878b7913c1b5af3c4bd70abf4a0acdeaed38d54a01'
     '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
-    '3ecb1cadde93c8d986378894a3f99df12168b1849acb88e36a75909af16fbbb999ca1c263b719a84d0e0ef8572047d1e2071382d77f17bb6df75fd42d9ef3449'
-    'e4fcd96439328eaade7223bc815ed286057b93029df4088521c4b5f78a7da320a9cd0831443a40aacc883d0b3da386d88a20d7c914f0d5df2d33c5342c3f1718'
-    '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d'
-    '5b036ed1b3ed4f3613bbd936ed7661830a0bb29e8f2f964aabcfb9ffc4c864c1cf775c27fc2f6f79d8b8d7ae2ae2d94b3ccf757fb1a2de0b1e7fc3d2227a0bd1')
+    '7e6c0fac0b1a926ca8edd95f48cc80ee0adb22fda6bddcce330d0d01d56e509f1cb914d3b5b767aadc4ce35ef360229ea10269318387222039690466c31b902a'
+    'cc32f65d0ba4fd8c3cdbae3acb5780c723c4e091f08fd12adec3d6a3ad0a2bace0c2e7bd58ff6cb5a4991bbd32fd59dd973f80aa47a303ae94968bc9c82c5949'
+    '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d')
 
 pkgver() {
     cd "${srcdir}/mozc" || exit
@@ -104,9 +105,20 @@ prepare() {
 
     # UT Dictionary steps, rewrite of `sh make.sh`
     msg 'UT Dictionary steps, rewrite of `sh make.sh`'
-    cd "${srcdir}/merge-ut-dictionaries" || exit
-    patch -Np1 -i "${srcdir}/0001-remove-download.patch"
-    cd "src/merge" || exit
+    (
+        cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
+        # Use our local copy of the Mozc repo
+        sed -i -e '124,127d' merge_dictionaries.py
+        sed -i -e "65s|os\.path\.exists(f'mozc-{date}.zip')|False|" merge_dictionaries.py
+        sed -i -e '71s|zip_ref\.||' merge_dictionaries.py
+        sed -i -e "72s|mozc-master/src/data/dictionary_oss/id\.def|${srcdir}/mozc/src/data/dictionary_oss/id\.def|" merge_dictionaries.py
+        sed -i -e '74s|id_mozc\.|file\.read()\.|' merge_dictionaries.py
+        sed -i -e '80s|zip_ref\.||' merge_dictionaries.py
+        sed -i -e "81s|mozc-master/src/data/dictionary_oss/|${srcdir}/mozc/src/data/dictionary_oss/|" merge_dictionaries.py
+        sed -i -e '83s|decode()\.||' merge_dictionaries.py
+        sed -i -e '53,64d;66,69d;73d' merge_dictionaries.py
+    )
+    cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
     msg '1. Append dictionaries'
     for dict in "${_dict[@]}"; do
         cat "$srcdir/mozcdic-ut-${dict}-${_utdicdate}.txt" >>mozcdic-ut.txt
@@ -134,10 +146,7 @@ build() {
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
     export QT_BASE_PATH=/usr/include/qt
 
-    # Temp fix for GCC 14
-    sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
-
-    bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets --copt='-Wno-maybe-uninitialized' --host_copt='-Wno-maybe-uninitialized'
+    bazel build --compilation_mode opt --config oss_linux $_targets
 
 }
 
