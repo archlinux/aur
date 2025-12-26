@@ -160,3 +160,6 @@ Fix export
 Remove exception handling
 
 
+Fix progress sync bug
+
+
