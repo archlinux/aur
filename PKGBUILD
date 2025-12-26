@@ -31,7 +31,7 @@ source=("pycharm.desktop" "ltedit.desktop")
 source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
 source_x86_64_v3=($source_x86_64)
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
-sha256sums=('9fd489cc6c91f69d3e4678716910bceab95114028976051ec191d1671e300f59'
+sha256sums=('444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7'
             '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
 sha256sums_x86_64=('933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391')
 sha256sums_x86_64_v3=('933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391')
