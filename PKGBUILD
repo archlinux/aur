@@ -5,20 +5,20 @@
 #Contributor: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=bvi
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="https://bvi.sourceforge.net"
 arch=(i686 x86_64)
 depends=(ncurses)
 license=(GPL)
 source=("http://downloads.sourceforge.net/sourceforge/bvi/$pkgname-$pkgver.src.tar.gz")
-md5sums=(d96d4320a148945d3e564f2e5c6af981)
+md5sums=(056623e81e1ec1c378c4abcfa6fbc87c)
 
 build ()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  CFLAGS=-std=gnu17 ./configure --prefix=/usr --mandir=/usr/share/man
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 

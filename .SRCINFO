@@ -1,13 +1,13 @@
 pkgbase = bvi
 	pkgdesc = A display-oriented editor for binary files operate like 'vi' editor
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://bvi.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses
-	source = http://downloads.sourceforge.net/sourceforge/bvi/bvi-1.4.2.src.tar.gz
-	md5sums = d96d4320a148945d3e564f2e5c6af981
+	source = http://downloads.sourceforge.net/sourceforge/bvi/bvi-1.5.0.src.tar.gz
+	md5sums = 056623e81e1ec1c378c4abcfa6fbc87c
 
 pkgname = bvi
