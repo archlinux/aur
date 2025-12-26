@@ -28,9 +28,9 @@ build() {
 check() {
     cd "${srcdir}/Lotus-${pkgver}"
     
-    # Run basic compilation test
-    ./lotus tests/test_imports_basic.lts -o test_basic || true
-    ./lotus tests/test_control_flow.lts -o test_control || true
+    # Run basic compilation test on examples
+    ./lotus examples/control_flow_if.lts -o test_if || true
+    ./lotus examples/control_flow_for.lts -o test_for || true
 }
 
 package() {
