@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=a4
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Automated Affymetrix Array Analysis Umbrella Package'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4b69af770575dc97794c90521ae4ce3b50234d792dc7b1b1bb9d6a5081098374')
+sha256sums=('0de036216cb59e2abc23a97b8beba15f10950c14180d0a2ca6523c7bd5c1b16a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
