@@ -11,10 +11,14 @@ license=('MIT')
 groups=()
 depends=('libusb' 'curl' 'protobuf' 'protobuf-c')
 makedepends=('git' 'curl' 'libusb' 'openssl' 'cmake')
-source=('ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
-	'ttwatch-git.install')
-sha256sums=('SKIP'
-            'c2583dfb88ae16e9349406f9e0025b20d54b0404bfd77c5d4555f11856ae2396')
+source=(
+  'ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
+  'ttwatch-git.install'
+)
+sha256sums=(
+  'SKIP'
+  'c2583dfb88ae16e9349406f9e0025b20d54b0404bfd77c5d4555f11856ae2396'
+)
 install="ttwatch-git.install"
 
 noextract=()
@@ -27,15 +31,13 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" .
   make
 }
 
 package() {
   cd "$pkgname"
-  install -d ${pkgdir}/usr/bin
+  install -d "${pkgdir}/usr/bin"
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   make install
-
 }
-
