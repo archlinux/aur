@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SIM
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Integrated Analysis on two human genomic datasets'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55e9394100a4ec6b955a4aeaa6e9f115751153186510ab3e77b545746a788e5a')
+sha256sums=('211868dd1a84ebc1e17cd3c50a3873f3691a88d4fa8ecc20c3f93055cd8cc4c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
