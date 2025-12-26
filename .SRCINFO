@@ -1,10 +1,10 @@
 pkgbase = uncloud
 	pkgdesc = A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/psviderski/uncloud
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	provides = uncloud
 	conflicts = uncloud
 	options = !lto

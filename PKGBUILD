@@ -2,7 +2,7 @@
 _name=uncloud
 pkgname=uncloud
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨"
 arch=('x86_64')
