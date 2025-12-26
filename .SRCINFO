@@ -1,6 +1,6 @@
 pkgbase = menugenerator
 	pkgdesc = A simple menu generator for fluxbox openbox jwm that uses xdg-menu.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/BlackCodec/MenuGenerator/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = menugenerator
 	depends = python-xdg
 	depends = python-cairosvg
 	optdepends = lxmenu-data: menu data
-	source = https://github.com/BlackCodec/MenuGenerator/archive/refs/tags/1.1.zip
-	md5sums = 2d42be97efd7655894a0f6ed54ed19c6
+	source = https://github.com/BlackCodec/MenuGenerator/archive/refs/tags/1.2.zip
+	md5sums = 2db111f3964a2ba691a83f85dfcb95e2
 
 pkgname = menugenerator
