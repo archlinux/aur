@@ -13,13 +13,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/codingncaffeine/InfoDash/ar
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/InfoDash-$pkgver"
   cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build --parallel
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/InfoDash-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
   # Install .desktop file if present
   if [[ -f resources/infodash.desktop ]]; then
