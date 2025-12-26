@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-caio
 _name=${pkgname#python-}
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="Linux AIO c python bindings"
 arch=('x86_64')
@@ -20,9 +20,9 @@ makedepends=(
 ##  'python-pytest-aiomisc'  ## TODO
 #  'python-pytest-asyncio'
 #)
-#source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5bcdecaea02a9aa8e3acf0364eff8ad9903d57d70cdb274a42270126290a77f1')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+#source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('653e33772d88320169fe6bb3f78a04072e80e43be6868792a57dfb4882486531')
 
 build() {
   cd "$_name-$pkgver"
