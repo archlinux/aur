@@ -1,0 +1,27 @@
+pkgbase = hotkey-hub
+	pkgdesc = Allows to control remote PC (mouse/windows/keyboard/processses) using hotkeys on this pc
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/akoidan/hotkey-hub
+	install = hotkey-hub.install
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = libsm
+	depends = libxext
+	optdepends = http-remote-pc-control: allows to control remote pc
+	options = !strip
+	source = hotkey-hub::https://github.com/akoidan/hotkey-hub/releases/download/98bf098/app.elf
+	source = CONFIG.md::https://github.com/akoidan/hotkey-hub/releases/download/98bf098/CONFIG.md
+	source = json-schema.json::https://github.com/akoidan/hotkey-hub/releases/download/98bf098/json-schema.json
+	source = macros-schema.json::https://github.com/akoidan/hotkey-hub/releases/download/98bf098/macros-schema.json
+	source = hotkey-hub.service
+	source = hotkey-hub.install
+	sha256sums = 3679b641b0ab7b7ed549f7a463c53cd91687eccc08d5f683c024794ac6d3fcc5
+	sha256sums = d7954b165044696869c0709a46301f096b7e4cf99e5f8b68eaf74431e04d18d8
+	sha256sums = d7f63dac3ccfa16538485fe48b1de8536eaf64215fab9c88ab8bcb53d5e0936d
+	sha256sums = e2b67947f1d5bb4cbd903a2676037f7211c46ed7627753d84f1b85911aff4fe8
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hotkey-hub
