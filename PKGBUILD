@@ -21,6 +21,7 @@ optdepends=(
     'noon-nvidia: NVIDIA GPU support'
     'noon-nvidia-legacy: Legacy NVIDIA GPU support'
 )
+_commit=HEAD
 install=noon-main.install
 source=("https://github.com/PharmaRacist/Noon/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
