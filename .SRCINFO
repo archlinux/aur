@@ -1,11 +1,12 @@
 pkgbase = noon-main
 	pkgdesc = PharmaRacist's Perspective of a Desktop - Main package
-	pkgver = 2.1
+	pkgver = 2.1.r0.g1234567
 	pkgrel = 1
 	url = https://github.com/PharmaRacist/Noon
 	install = noon-main.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = noon-apps
 	depends = noon-dev
 	depends = noon-hyprland
@@ -15,9 +16,10 @@ pkgbase = noon-main
 	depends = noon-utils
 	depends = ntfs-3g
 	depends = uv
+	depends = git
 	optdepends = noon-nvidia: NVIDIA GPU support
 	optdepends = noon-nvidia-legacy: Legacy NVIDIA GPU support
-	source = noon-main-2.1.tar.gz::https://github.com/PharmaRacist/Noon/archive/refs/tags/v2.1.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	source = git+https://github.com/PharmaRacist/Noon.git
+	sha256sums = SKIP
 
 pkgname = noon-main
