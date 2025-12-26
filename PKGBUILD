@@ -7,10 +7,10 @@ arch=('any')
 url="https://github.com/tunjayoff/appimagemanager"
 license=('MIT')
 depends=(
-    'python>=3.8'
+    'python'
     'python-pyqt6'
     'python-packaging'
-    'libfuse2'
+    'fuse2'
     'gtk-update-icon-cache'
     'desktop-file-utils'
 )
