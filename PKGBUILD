@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=webbioc
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
+pkgver=1.82.0
 pkgrel=1
 pkgdesc='Bioconductor Web Interface'
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
   netpbm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fee2a141117a83854430d8ee7c01ac2fc3fca62bc4bb3b4c9948a4d6e1fc6f70')
+sha256sums=('93bdb4c1ad14728e4817c73d85ba5fe20d493d0287eb1da91cd1ee1d80377168')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
