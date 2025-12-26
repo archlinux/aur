@@ -10,6 +10,6 @@ pkgbase = hypr-audio
 	depends = pipewire
 	depends = libxkbcommon
 	source = hypr-audio-0.1.0.tar.gz::https://github.com/ShayanSadeghi/hypr-audio/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4a74c80caed20383a345e5b90574223bbface444f8260c6c0775fd78c2dd34a8
 
 pkgname = hypr-audio
