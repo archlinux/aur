@@ -41,7 +41,4 @@ depends=(
     'nwg-look'
 )
 
-package() {
-    :
-}
 
