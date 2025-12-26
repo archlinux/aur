@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.xyz/products/pclink"
 license=('AGPL-3.0-or-later')
 depends=(
-  'libappindicator'
+  'gtk3'
+  'libayatana-appindicator'
   'libnotify'
   'python-cryptography'
   'python-fastapi'
@@ -23,12 +24,12 @@ depends=(
   'python-pyautogui'
   'python-pydantic'
   'python-pynput'
-  'python-pyperclip'
   'python-qrcode'
   'python-requests'
   'python-websockets'
   'python-wsproto'
   'uvicorn'
+  'xdg-desktop-portal'
 )
 makedepends=(
   'python-build'
@@ -37,13 +38,17 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
+  'grim: Screenshot support for wlroots-based compositors'
   'python-aiofiles: Improves upload performance with async file I/O'
-  'python-pystray: fallback for system tray'
+  'python-pyperclip: Fallback for clipboard support'
+  'python-pystray: Fallback for system tray'
+  'spectacle: Screenshot support on KDE Plasma'
+  'wl-clipboard: Clipboard support on Wayland'
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
          "$pkgname.1")
-sha256sums=('480b5fac13482e1c8899d70b7068f4ba173a9a98bfadfb693fa01796667b8079'
-            '6df78f59e66ae33a54885144e0d9b0b8e17b3a00f59223b96a1b280a92dd2133')
+sha256sums=('2da0947236b36438475872652488955fb96b2e2ebcc1be46fb39c4c1567b45ca'
+            'd546c14fdba41eb64260597b1036dec6709c7c402f35f52975e0a2b973ce8ba5')
 
 build() {
   cd "PCLink-$pkgver"
