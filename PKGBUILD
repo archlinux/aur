@@ -56,5 +56,8 @@ build() {
 package() {
   cd "$srcdir/labFyre" || cd "$srcdir"/*/
   DESTDIR="$pkgdir" meson install -C build/
+  
+  # Create lowercase symlink for easier access
+  ln -s LabFyre "$pkgdir/usr/bin/labfyre"
 }
 
