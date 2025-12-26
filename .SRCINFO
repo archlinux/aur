@@ -1,13 +1,13 @@
 pkgbase = lotus-lang
 	pkgdesc = A systems programming language with Rust-inspired imports, type-first bindings, and x86-64 assembly output
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/j-alexander3375/Lotus
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.20
 	depends = gcc
-	source = lotus-lang-1.2.2.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/1.2.2.tar.gz
-	sha256sums = fb7a6496dca49f3f615048c86832a5c5d4810b2cbee83855643bdab9f46b4f52
+	source = lotus-lang-1.2.3.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/1.2.3.tar.gz
+	sha256sums = SKIP
 
 pkgname = lotus-lang
