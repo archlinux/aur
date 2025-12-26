@@ -1,4 +1,5 @@
 pkgbase = infodash
+	pkgdesc = InfoDash — customizable system/dashboard app
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/InfoDash
@@ -17,6 +18,6 @@ pkgbase = infodash
 	depends = libcurl.so
 	depends = libjson-glib-1.0.so
 	source = infodash-1.0.2.tar.gz::https://github.com/codingncaffeine/InfoDash/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = e45ec228596fe1ca04a8e315cf572ef861868fbb51ad578c3b78621485a7f232
 
 pkgname = infodash
