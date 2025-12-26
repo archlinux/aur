@@ -22,27 +22,33 @@ source=(
 )
 
 source_x86_64=(
-    "${pkgname}-${pkgver}-x86_64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-x64-gui.zip"
+  "${pkgname}-${pkgver}-x86_64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-x64-gui.zip"
 )
 
 source_aarch64=(
-    "${pkgname}-${pkgver}-aarch64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-arm64-gui.zip"
+  "${pkgname}-${pkgver}-aarch64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-arm64-gui.zip"
 )
 
 noextract=(
   "duplicati-${pkgver}_${_branch}_${_date}.zip"
-  )
+)
 backup=(
   etc/default/duplicati
 )
 
-sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
-            'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
-            'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
-            'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
-            '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c')
-sha256sums_x86_64=('9a4b5074a9930944feb7123b5888df886abe9a5c28796c409a3ee19118a9256b')
-sha256sums_aarch64=('8bf4d24afbca5991849552f5ac3ea425b64cb745d04969f717e7e385ee635a9d')
+sha256sums=(
+  'fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
+  'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
+  'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
+  'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
+  '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c'
+)
+sha256sums_x86_64=(
+  '9a4b5074a9930944feb7123b5888df886abe9a5c28796c409a3ee19118a9256b'
+)
+sha256sums_aarch64=(
+  '8bf4d24afbca5991849552f5ac3ea425b64cb745d04969f717e7e385ee635a9d')
+
 arch=('x86_64' 'aarch64')
 depends=()
 makedepends=(unzip)
