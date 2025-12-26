@@ -12,6 +12,7 @@ pkgbase = python-termgraph
 	makedepends = python-hatchling
 	depends = python
 	depends = python-colorama
+	provides = termgraph
 	source = https://files.pythonhosted.org/packages/source/t/termgraph/termgraph-0.7.5.tar.gz
 	sha256sums = 9660f3ce04cd182d34c9fb0390a57bc2ab596d8159ed544459b29d3f6db9d1da
 
