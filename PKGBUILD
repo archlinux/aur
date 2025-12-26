@@ -1,7 +1,7 @@
 # Maintainer: Václav Šmejkal <engo@satan.red>
 pkgname=why2
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, fast, secure, and easy to use encryption system."
 arch=('x86_64' 'aarch64')
 url="https://git.satan.red/ENGO150/WHY2.git"
