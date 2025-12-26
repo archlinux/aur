@@ -9,18 +9,21 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libssh2')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b7d9f969a61e2aa79faf92aff51a75784aa11c2d2afe0205b72eb2699bd4b90')
+sha256sums=('dbffe759218e74d2402c25adad9a577355b2c3e50e91d245efef6b866fc2c6aa')
+
+prepare() {
+    # Install tauri-cli for proper production builds
+    cargo install tauri-cli --locked
+}
 
 build() {
     cd "packet-$pkgver"
     
     npm install
     
-    npm run build
-    
     cd src-tauri
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    cargo build --release --locked
+    cargo tauri build --no-bundle
 }
 
 package() {

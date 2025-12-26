@@ -15,6 +15,6 @@ pkgbase = packet-term
 	depends = openssl
 	depends = libssh2
 	source = packet-term-0.1.0.tar.gz::https://github.com/ernestoCruz05/packet/archive/v0.1.0.tar.gz
-	sha256sums = 4b7d9f969a61e2aa79faf92aff51a75784aa11c2d2afe0205b72eb2699bd4b90
+	sha256sums = dbffe759218e74d2402c25adad9a577355b2c3e50e91d245efef6b866fc2c6aa
 
 pkgname = packet-term
