@@ -1,7 +1,7 @@
 # Maintainer: haoyuanli <lihaoyuan0506@gmail.com>
 
 pkgname=browseros-bin
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="An open-source agentic browser that runs AI agents locally"
 arch=("x86_64")
@@ -13,8 +13,8 @@ provides=('browseros')
 conflicts=('browseros')
 options=('!strip')
 
-source=("browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.34.0/BrowserOS_v0.34.0_x64.AppImage")
-sha256sums=('2b17b40681cd79cfaee56f85c4a429db2382b3991badb2d42568a0651c30f3e6')
+source=("browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.35.0/BrowserOS_v0.35.0_x64.AppImage")
+sha256sums=('a77b30fa76a01b4a6a815024bd7442d87af67250bc12bcbe5aae5bf9a1d93969')
 
 package() {
   7z x "$srcdir/browseros.AppImage" -o"$srcdir/squashfs-root" -y >/dev/null
