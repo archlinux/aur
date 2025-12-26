@@ -1,0 +1,21 @@
+pkgbase = freeimagere-git
+	pkgdesc = Fork of freeimage (library project for developers who would like to support popular graphics image formats)
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/agruzdev/FreeImageRe
+	arch = x86_64
+	license = GPL-2.0-only
+	license = GPL-3.0-only
+	license = LicenseRef-FreeImage
+	makedepends = git
+	makedepends = cmake
+	makedepends = meson
+	makedepends = nasm
+	makedepends = ninja
+	depends = python
+	provides = libFreeImageRE.so
+	conflicts = freeimage
+	source = freeimagere-git::git+https://github.com/agruzdev/FreeImageRe.git
+	sha512sums = SKIP
+
+pkgname = freeimagere-git
