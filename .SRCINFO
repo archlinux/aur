@@ -1,0 +1,17 @@
+pkgbase = noon-gaming
+	pkgdesc = Gaming dependencies for Noon desktop environment
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon
+	arch = any
+	license = MIT
+	depends = heroic-games-launcher
+	depends = wine-staging
+	depends = gamemode
+	depends = lib32-gamemode
+	depends = vkd3d
+	depends = lib32-vkd3d
+	depends = steam
+	depends = gamescope
+
+pkgname = noon-gaming
