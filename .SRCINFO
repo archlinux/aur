@@ -1,7 +1,7 @@
 pkgbase = packet-term
 	pkgdesc = A terminal multiplexer and broadcast system for network engineers with GNS3/EVE-NG integration
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ernestoCruz05/packet
 	arch = x86_64
 	license = MIT

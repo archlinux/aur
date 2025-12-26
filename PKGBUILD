@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Cruz <ernestobritocruz05@gmail.com>
 pkgname=packet-term
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal multiplexer and broadcast system for network engineers with GNS3/EVE-NG integration"
 arch=('x86_64')
 url="https://github.com/ernestoCruz05/packet"
