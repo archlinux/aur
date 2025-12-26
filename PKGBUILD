@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=1.27.20
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -72,4 +72,4 @@ package() {
   _editConfig 'del(.root.elos.Scanner.Plugins.SyslogScanner.Config.SyslogPath)'
   _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.UseSystemdSocket = false'
 }
-sha256sums=('6063b77d55ef558638b6df7eccd593aa3f2d0aebb0ce20d4acb16959cce99019')
+sha256sums=('066d894d0b2f5cddee86c9e0d4cddeedb2a23db14cb7e50c6b61a92e732acdc1')
