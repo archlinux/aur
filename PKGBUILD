@@ -1,31 +1,40 @@
-_pkgname=libcsys
-pkgname=${_pkgname}-git
-pkgver=2.8.0.r0.feb9591
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dan Johansen <strit@strits.dk>
+# Contributor: Shaber
+
+pkgname=libcsys-git
+pkgver=5.0.0.r0.gb8ca438
 pkgrel=1
-pkgdesc="Library for managing drive and getting system resource information in real time."
-arch=('any')
+pkgdesc="Library for managing drive and getting system resource information in real time"
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/libcsys"
-license=('GPL')
-depends=('qt5-base' )
-makedepends=('git')
-provides=("${pkgname%-git}")
+groups=('coreapps')
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'udisks2')
+makedepends=('cmake' 'git' 'ninja')
+provides=("${pkgname%-git}" 'libcsys.so')
 conflicts=("${pkgname%-git}")
-groups=('coreapps-git')
-source=("git+https://gitlab.com/cubocore/${_pkgname}.git")
-md5sums=('SKIP')
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	qmake-qt5 ${_pkgname}.pro
-	make
+  cmake \
+    -B build \
+    -S "$pkgname" \
+    -W no-dev \
+    -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=None
+  ninja -C build
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT=${pkgdir} install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+
