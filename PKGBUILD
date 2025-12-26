@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netboost
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,9 +31,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('1959c581ce396cf0e494ca7d8a48b0fc'
+md5sums=('b35622dd0b7f916bc1655706501d67a3'
          '8ec6c48c11194032999b97b498934753')
-b2sums=('cf6c8948dd6fbe91d77f62c755a6fb50ac7ef44d36e98b699b6efb684924dffb48d5bc72646d7c7ec395ef7c6ea03f82bdd03d9eb163df149f7d4856380c6a78'
+b2sums=('a1f94d18639ec09ab7ee1a158f0a084c9686f92e314ad86637bfc51ec08044bab0cfd4754c7cb331cb74eb4fc3dc58b88debe1112042c63a4d5214e255b8ccbb'
         'e607da2818fcc96d110e579ddbf7ac221aea127fbc730a1d6ac5946d608915fe3ef4af39e7b678a08c165c55d629b44df0147ecf6b758f1ff7a4715421374eab')
 
 prepare() {
