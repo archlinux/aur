@@ -32,6 +32,10 @@ makedepends=(
 optdepends=(
   'xorg-xwayland: X11 application support'
 )
+conflicts=(
+  'labwc'
+  'labwc-git'
+)
 # wlroots and libsfdo are handled as meson subprojects
 source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
 sha256sums=('SKIP')
