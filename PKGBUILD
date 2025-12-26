@@ -16,7 +16,7 @@ makedepends=('git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine.git")
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine.git#commit=c2bde81fbb1f7082b50db620c4ae6811dd40b9be")
 sha256sums=('SKIP')
 
 pkgver() {

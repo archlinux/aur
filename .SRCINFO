@@ -11,7 +11,7 @@ pkgbase = vapoursynth-plugin-vsengine-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-vsengine
 	conflicts = vapoursynth-plugin-vsengine
-	source = vsengine::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine.git
+	source = vsengine::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine.git#commit=c2bde81fbb1f7082b50db620c4ae6811dd40b9be
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vsengine-git
