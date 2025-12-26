@@ -1,6 +1,6 @@
 pkgbase = r-altcdfenvs
 	pkgdesc = alternative CDF environments (aka probeset mappings)
-	pkgver = 2.70.0
+	pkgver = 2.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/altcdfenvs
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-altcdfenvs
 	optdepends = r-plasmodiumanophelescdf
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/altcdfenvs_2.70.0.tar.gz
-	sha256sums = e64affe97973e5d86bdd66c2f109c8f021a20a0edca2a68645ba128c0ed9403d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/altcdfenvs_2.72.0.tar.gz
+	sha256sums = ac0456aa06b4b6956a5e968af7c168b33678d6f9be0714b10d708cd9c8540c2c
 
 pkgname = r-altcdfenvs
