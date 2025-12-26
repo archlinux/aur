@@ -1,6 +1,6 @@
 pkgbase = alsause
 	pkgdesc = Set default ALSA PCM device
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://codeberg.org/maandree/alsause
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = alsause
 	makedepends = libasound.so
 	depends = libsimple
 	depends = libasound.so
-	source = alsause-1.0.2.tar.gz::https://codeberg.org/maandree/alsause/archive/1.0.2.tar.gz
-	sha512sums = 0d4512929323f2040a3287a1dc5d2f1e4214e70dee360f558a1d7b13fcd9f45e03f3a71491de1a18c90d780bb9caf0cccac49031bd27466f550fc2d29228af25
+	source = alsause-1.0.3.tar.gz::https://codeberg.org/maandree/alsause/archive/1.0.3.tar.gz
+	sha256sums = 0841e96038461350eb7a96d30750a682b699c1b0cfb06e1c2a68fe3110d73a1c
 
 pkgname = alsause
