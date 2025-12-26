@@ -1,7 +1,7 @@
 # Maintainer: Roman Maksimovich <r.a.maksimovich@gmail.com>
 
 pkgname=pshash
-pkgver=0.1.16.8
+pkgver=0.1.17.1
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
@@ -10,7 +10,7 @@ url="https://github.com/thornoar/${pkgname}"
 license=('MIT')
 groups=()
 depends=()
-makedepends=("ghc" "help2man")
+makedepends=("ghc" "ghc-static" "ghc-libs" "haskell-random" "help2man")
 checkdepends=()
 optdepends=()
 provides=("${pkgname}")
@@ -30,7 +30,7 @@ prepare() {
 build() {
 	cd "${srcdir}/" || exit
 	tar -xvzf "source.tar.gz"
-	ghc --make -i${pkgname}-${pkgver}/lib ${pkgname}-${pkgver}/app/Main.hs -no-keep-o-files -no-keep-hi-files -o ${pkgname}
+	ghc -dynamic --make -i${pkgname}-${pkgver}/lib -i${pkgname}-${pkgver}/app ${pkgname}-${pkgver}/app/Main.hs -o ${pkgname}
 	help2man "./${pkgname}" --output "MAN-${pkgver}.1" --no-info
 	gzip -f "MAN-${pkgver}.1"
 }
@@ -48,4 +48,4 @@ package() {
 	install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
-sha256sums=('603bc5c8fd75cb819aa3a6185e6af89ff58b5044507c41774a1dc334a8afc0a2')
+sha256sums=('cdd8ee607755100a7e2b39ae62a805195fd5fe8e7e08ad069742fd12e0f86ee9')
