@@ -2,7 +2,7 @@
 # Maintainer: eldritch <your@email.com>
 pkgname=infodash
 desc="Modern GTK4 dashboard for RSS, weather, and stocks"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/codingncaffeine/InfoDash"
