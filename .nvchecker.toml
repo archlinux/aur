@@ -1,0 +1,5 @@
+[cornelli-bin]
+source = "github"
+github = "hitblast/cornelli"
+use_latest_release = true
+prefix = "v"
