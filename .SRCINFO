@@ -1,26 +1,13 @@
 pkgbase = kairo
-	pkgdesc = A game about exploring the lost world of Kairo
-	pkgver = 20140102
+	pkgdesc = CLI and Desktop application for smart URL routing
+	pkgver = 0.3.0
 	pkgrel = 1
-	epoch = 1
-	url = http://kairo.lockeddoorpuzzle.com/
-	changelog = kairo.changelog
-	arch = i686
+	url = https://github.com/aelesbao/kairo
 	arch = x86_64
-	groups = games
-	license = custom
-	depends = glu
-	depends = gcc-libs
-	depends = libxcursor
-	depends = gtk2
-	source = file://kairo_linux_01022014.gz
-	source = kairo.desktop
-	source = kairo.changelog
-	source = kairo.license
-	sha256sums = 87f2bd4946a4c2525c02a300e76865b15058f334b76cbf6326b433d7002175d8
-	sha256sums = 3e3c8e4a6387fbebf8840219ccadbdf6a06febf2524c2dc50a239750b6a6c267
-	sha256sums = b785da983359c325b1d6c1e4e16626f3c5dd4596f50432b0b353c0645448d751
-	sha256sums = 9acb1f5ff635ee1815322a4fe43b9ddc2a2a6f5fb74e35fa8d1494807b24a80c
+	license = Apache-2.0
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/aelesbao/kairo/releases/download/v0.3.0/kairo-0.3.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e70cabf955155e6888f7e2af5d2120758318fb84b1425a5bce86e08a8a2990dc
 
 pkgname = kairo
-
