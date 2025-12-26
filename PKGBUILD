@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IMMAN
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1695e8d8da20ba52f6e108d0f037a042')
-b2sums=('ed15ce599809deb0d3ca3f068b8857a2782a26e3265e7820eabde6276d6ba00f3e4f5584c47647ad65610276ce2ed219f4167f6ff2b20b78444ae0ba60a0eedf')
+md5sums=('efe5f8663ec0ab8000c9c4e3b04ac0fe')
+b2sums=('a99c94382ff6b8d4b1352ed88017f2f5ce59aea516229924c79bf3848b6736706f5166a24a772420b51b1fe77709c283002dd5984881fbffbc0d3e422a00ef1e')
 
 build() {
   mkdir build
