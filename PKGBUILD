@@ -6,7 +6,7 @@
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
 pkgver=r1883.d8a3065
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
@@ -28,6 +28,7 @@ depends=(
     kauth
     kcmutils
     ki18n
+    libxau # Hard dependency upstream
 )
 makedepends=(
     extra-cmake-modules
@@ -35,27 +36,22 @@ makedepends=(
     git
     qt6-tools
 )
-optdepends=('libxau: X11 authorisation library - required if you want to run an X11 session')
 source=(
     git+https://invent.kde.org/plasma/plasma-login-manager
-    plasmalogin
-    plasmalogin-autologin
-    plasmalogin-greeter
     plasmalogin.sysusers
     plasmalogin.tmpfiles
+    plasmalogin-greeter.patch
 )
 b2sums=('SKIP'
-        '14573b441db0dc485065d38a6d1fe4e69ab78f7bd2ba25134c0a11ceb9d686504f53c256ccb68f914545e3ab5588888892bd0d237ed9b610c0f4b836343a3d62'
-        '7e2d251c2c1272d6a70e8f82764718ea0e928bbe6714ca5acdd74f0a50c66273d55ef73ae04642e64e3f7d5131709d8af9443109827bd78fec8ac7e37bbb0d67'
-        'c31386c44d569ddb1ae3c21c590866178c86df3f00d6d2486686e73a936454c31e46134141cdc4d7f1ef2b2d5b96002dc0d01f6e231b402d213ff23fd040e16c'
         'a2d463ed3951f5261ca472b54761dbc3d2d135a70a780c859400421e3b3d1ea1dbe18cc1bacc477165aed04e238ddad98bf36dc02e9183576ee518b3cb7b5f6e'
         '0ad6e65aea70e5866ce6bd60be717d365f431116d1831409ec263d518f6561e4089ab30253ae93d44b21b4bb1ccd49ce81917f36969301b1fa68ac8cb614dbc3'
+        '89c305f92c6fcde45a8767f58f8e8ccbeca9ebe5b7a2a96e3395514ad4a8d72d288d3406c8da2f7cbcbabbf62aee3107da9882445d17c41b6b9d5f3e8ba9b10c'
 )
 provides=(display-manager)
 backup=(
-    'etc/pam.d/plasmalogin'
-    'etc/pam.d/plasmalogin-autologin'
-    'etc/pam.d/plasmalogin-greeter'
+    'usr/lib/pam.d/plasmalogin'
+    'usr/lib/pam.d/plasmalogin-autologin'
+    'usr/lib/pam.d/plasmalogin-greeter'
     'usr/lib/plasma-login/defaults.conf'
     'usr/share/plasmalogin/scripts/wayland-session'
     'usr/share/plasmalogin/scripts/Xsession'
@@ -69,11 +65,16 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+    cd $_pkgname
+    patch -p1 -i ../plasmalogin-greeter.patch
+}
+
 build() {
     cmake -B build -S $_pkgname \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DINSTALL_PAM_CONFIGURATION=OFF \
+        -DINSTALL_PAM_CONFIGURATION=arch \
         -DSESSION_COMMAND=/usr/share/plasmalogin/scripts/Xsession \
         -DWAYLAND_SESSION_COMMAND=/usr/share/plasmalogin/scripts/wayland-session \
         -DBUILD_TESTING=OFF \
@@ -87,24 +88,16 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    # Install PAM configuration files
-    install -Dm644 plasmalogin "$pkgdir/etc/pam.d/plasmalogin"
-    install -Dm644 plasmalogin-autologin "$pkgdir/etc/pam.d/plasmalogin-autologin"
-    install -Dm644 plasmalogin-greeter "$pkgdir/etc/pam.d/plasmalogin-greeter"
-
     # Install sysusers configuration
     install -Dm644 plasmalogin.sysusers "$pkgdir/usr/lib/sysusers.d/plasmalogin.conf"
 
     # Install tmpfiles configuration
     install -Dm644 plasmalogin.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/plasmalogin.conf"
 
-    # Create required directories with correct permissions
+    # Create required directory
     install -dm1770 "$pkgdir/var/lib/plasmalogin"
 
-    # Create config directory
-    install -dm755 "$pkgdir/etc/plasmalogin"
-
-    # Create directory for default config
+    # Create directory for default configuration
     install -dm755 "$pkgdir/usr/lib/plasma-login"
 
     "$pkgdir"/usr/bin/plasmalogin --example-config > "$pkgdir"/usr/lib/plasma-login/defaults.conf
@@ -112,7 +105,7 @@ package() {
     # Don't set PATH in /usr/lib/plasma-login/defaults.conf
     sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/plasma-login/defaults.conf
 
-    # Append missing critical settings
+    # Append missing critical settings (based on SDDM configuration on Arch Linux)
     # Add to [General] section
     sed -i '/^\[General\]/a DisplayServer=wayland' "$pkgdir"/usr/lib/plasma-login/defaults.conf
     sed -i '/^\[General\]/a HaltCommand=/usr/bin/systemctl poweroff' "$pkgdir"/usr/lib/plasma-login/defaults.conf
@@ -134,6 +127,7 @@ package() {
     # Install license files (note the $_pkgname subdirectory)
     install -Dm644 "$srcdir/$_pkgname"/LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"/
     install -Dm644 "$srcdir/$_pkgname"/LICENSE.CC-BY-3.0 -t "$pkgdir"/usr/share/licenses/"$pkgname"/
+
     for license in "$srcdir/$_pkgname/LICENSES/"*; do
         install -Dm644 "$license" "$pkgdir/usr/share/licenses/$pkgname/$(basename "$license")"
     done
