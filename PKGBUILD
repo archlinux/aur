@@ -1,14 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=5.0.33.r5066.g86944ad3f
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
 depends=('mpv' 'ffmpeg' 'postgresql' 'electron')
-makedepends=('git' 'npm' 'typescript' 'yarn-corepack')
+makedepends=('git' 'npm' 'typescript' 'corepack')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
