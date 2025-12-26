@@ -24,6 +24,25 @@ build() {
 
 package() {
     cd "packet-$pkgver"
-    # Extract from deb bundle - Tauri packages everything correctly there
-    cp -a src-tauri/target/release/bundle/deb/packet_${pkgver}_*/data/* "${pkgdir}"
+    
+    # Install binary (rename from 'packet' to 'packet-term')
+    install -Dm755 "src-tauri/target/release/bundle/deb/packet_${pkgver}_amd64/data/usr/bin/packet" \
+        "$pkgdir/usr/bin/$pkgname"
+    
+    # Install desktop entry (rename to packet-term and fix Exec)
+    install -Dm644 "src-tauri/target/release/bundle/deb/packet_${pkgver}_amd64/data/usr/share/applications/packet.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i "s/Exec=packet/Exec=$pkgname/" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i "s/Icon=packet/Icon=$pkgname/" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    
+    # Install icons (rename to packet-term)
+    install -Dm644 "src-tauri/target/release/bundle/deb/packet_${pkgver}_amd64/data/usr/share/icons/hicolor/32x32/apps/packet.png" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+    install -Dm644 "src-tauri/target/release/bundle/deb/packet_${pkgver}_amd64/data/usr/share/icons/hicolor/128x128/apps/packet.png" \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+    install -Dm644 "src-tauri/target/release/bundle/deb/packet_${pkgver}_amd64/data/usr/share/icons/hicolor/256x256@2/apps/packet.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
