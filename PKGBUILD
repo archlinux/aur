@@ -1,7 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/coolbeevip/tui-banner/releases/download/v0.2.2/tui-banner-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
-
 _pkgauthor=coolbeevip
 _pkgname=tui-banner
 pkgname=${_pkgname}-bin
