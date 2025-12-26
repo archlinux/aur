@@ -6,7 +6,7 @@ pkgname=(
   'autoport'
   'cbfstool'
   'cbmem'
-#  'coreboot-configurator'  # use StarLabs fork: https://support.starlabs.systems/kb/guides/coreboot-configurator
+#  'coreboot-configurator'  # use StarLabs fork: https://github.com/StarLabsLtd/coreboot-configurator
   'ectool'
   'ifdtool'
   'intelmetool'
