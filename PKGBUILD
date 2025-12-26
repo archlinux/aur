@@ -9,11 +9,10 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')  # Update this after uploading release
-validpgpkeys=('1E5EDD00A4EB7ED5368E03FA0A864F1B71F13D52')
+sha256sums=('77e9fefe40997217ae93456b8fd8de5cd78591a34a9738aac86c9b3f0fa39a34')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "packet-$pkgver"
     
     # Install frontend dependencies
     npm install
@@ -27,10 +26,10 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "packet-$pkgver"
     
     # Install binary
-    install -Dm755 "src-tauri/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "src-tauri/target/release/packet" "$pkgdir/usr/bin/$pkgname"
     
     # Install desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
