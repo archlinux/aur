@@ -1,6 +1,6 @@
 pkgbase = tuios-bin
 	pkgdesc = Terminal UI Operating System - A terminal-based window manager with tmux-style keybindings
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Gaurav-Gosain/tuios
 	license = MIT
@@ -8,15 +8,15 @@ pkgbase = tuios-bin
 	provides = tuios
 	arch = aarch64
 	source_aarch64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f0efba0b037d1e90058b9bd59578c813dfd520f6cb5e38b70239b4a0e6bf792
+	sha256sums_aarch64 = 7824d1afbb0a6ab5e96de02b270e16bc90f4ac76c73a14077229085a843e19f2
 	arch = armv7h
 	source_armv7h = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_armv7.tar.gz
-	sha256sums_armv7h = 9165e1848d35101269a56988b78fde9828292a23b8984a071934baad997cd67c
+	sha256sums_armv7h = e5ccc85a6cc16fa565fa8731268e0e586e00ccfe6de5a6bcfcc6e3e9aeccded7
 	arch = i686
 	source_i686 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_i386.tar.gz
-	sha256sums_i686 = d867bf77878f4f21d3819de9483adc329e2d78e335ab26fc7011ce9b60166682
+	sha256sums_i686 = bb3febfa867e9837b43a29079cbca880eec69acc0390ebce8f3f3d387daeae1e
 	arch = x86_64
 	source_x86_64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c70405d8317b84b1963804f5992c20650033cd2edbc34f84af05bd67b54705df
+	sha256sums_x86_64 = 369fbbfeb4b6db9c64ab835f835b90982b63276af34e0cb0408ec00d659fa9fd
 	
 pkgname = tuios-bin
