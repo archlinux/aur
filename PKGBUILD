@@ -1,6 +1,6 @@
 # Maintainer: Yeremi Rios <contact@yarso.dev>
 pkgname=systemctl-manager
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple utility to interact with systemd services through a TUI (Vim-Keys)"
 url="https://github.com/yarso-su/systemctl-manager"
@@ -9,7 +9,7 @@ arch=("x86_64")
 depends=("systemd")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=("65f9a1cebcf07426038fe2577bee18b96003819c78174d74c380b7edcf8a039b")
+sha256sums=("d9f3f20d8158b97e0b4a144f09be6f9ade68cfbefb22891195de3a6c55d19405")
 
 prepare() {
     cd "$pkgname-$pkgver"
