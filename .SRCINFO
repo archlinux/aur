@@ -15,4 +15,3 @@ pkgbase = gnome-shell-extension-coverflow-alt-tab-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-coverflow-alt-tab-git
-
