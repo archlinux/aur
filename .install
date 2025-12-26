@@ -1,0 +1,2 @@
+To connect to the daemon, users must be part of the 'waechter' group in order
+to be able to access the socket file.
