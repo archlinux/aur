@@ -4,16 +4,12 @@
 pkgname=flclash-appimage-bin
 _pkgname=FlClash
 pkgver=0.8.91
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free"
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
 license=('GPL-3.0-only')
-depends=('fuse2' 'hicolor-icon-theme')
-optdepends=(
-    'libayatana-appindicator: system tray support'
-    'libkeybinder3: global hotkey support'
-)
+depends=('gtk3' 'libayatana-appindicator' 'libkeybinder3' 'hicolor-icon-theme')
 provides=('flclash')
 conflicts=('flclash' 'flclash-bin')
 options=('!strip')
@@ -25,38 +21,44 @@ sha256sums_x86_64=('fdb76b7d9c1b40a434923f16b92db96d6843f6ab8e360fd8b6d0a35b5dff
 prepare() {
     chmod +x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
 
-    # 解壓 AppImage 取得圖示和 desktop 檔案
+    # 解壓 AppImage
     cd "${srcdir}"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null 2>&1 || true
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null 2>&1
 }
 
 package() {
-    # 安裝 AppImage 主程式
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" \
-        "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+    cd "${srcdir}/squashfs-root"
 
-    # 建立執行連結
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/flclash"
+    # 安裝主程式目錄
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
-    # 安裝圖示 (從解壓的 AppImage 取得)
-    if [[ -d "${srcdir}/squashfs-root" ]]; then
-        # 尋找圖示
-        for size in 16 32 48 64 128 256 512; do
-            icon_file=$(find "${srcdir}/squashfs-root" -name "*.png" -path "*${size}*" 2>/dev/null | head -1)
-            if [[ -f "$icon_file" ]]; then
-                install -Dm644 "$icon_file" \
-                    "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/flclash.png"
-            fi
-        done
+    # 複製主程式和核心
+    install -Dm755 "${_pkgname}" "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
+    install -Dm755 "${_pkgname}Core" "${pkgdir}/usr/lib/${pkgname}/${_pkgname}Core"
 
-        # 如果沒找到特定尺寸，用主圖示
-        main_icon=$(find "${srcdir}/squashfs-root" -maxdepth 1 -name "*.png" 2>/dev/null | head -1)
-        if [[ -f "$main_icon" ]]; then
-            install -Dm644 "$main_icon" \
-                "${pkgdir}/usr/share/icons/hicolor/256x256/apps/flclash.png"
-        fi
-    fi
+    # 複製 data 目錄
+    cp -r data "${pkgdir}/usr/lib/${pkgname}/"
+
+    # 複製 lib 目錄 (所有 .so 檔案)
+    cp -r lib "${pkgdir}/usr/lib/${pkgname}/"
+
+    # 建立啟動腳本
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/flclash" <<'EOF'
+#!/bin/bash
+set -o pipefail
+_APPDIR="/usr/lib/flclash-appimage-bin"
+_RUNNAME="${_APPDIR}/FlClash"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
+exec "${_RUNNAME}" "$@" || exit $?
+EOF
+
+    # 安裝圖示
+    install -Dm644 "usr/share/icons/hicolor/128x128/apps/${_pkgname}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/flclash.png"
+    install -Dm644 "usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/flclash.png"
 
     # 建立 desktop 檔案
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/flclash.desktop" <<EOF
