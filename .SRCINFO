@@ -11,6 +11,7 @@ pkgbase = why2
 	makedepends = pkgconf
 	depends = openssl
 	options = !debug
+	options = !lto
 	source = git+https://git.satan.red/ENGO150/WHY2.git#branch=release
 	sha256sums = SKIP
 

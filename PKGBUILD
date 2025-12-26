@@ -11,7 +11,7 @@ makedepends=('git' 'rust' 'pkgconf')
 source=("git+$url#branch=release")
 sha256sums=('SKIP')
 
-options=('!debug')
+options=('!debug' '!lto')
 
 build() {
   cd "WHY2"
