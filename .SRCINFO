@@ -19,7 +19,7 @@ pkgbase = noon-main
 	depends = git
 	optdepends = noon-nvidia: NVIDIA GPU support
 	optdepends = noon-nvidia-legacy: Legacy NVIDIA GPU support
-	source = git+https://github.com/PharmaRacist/Noon.git
+	source = git+https://github.com/PharmaRacist/Noon.git#branch=main
 	sha256sums = SKIP
 
 pkgname = noon-main

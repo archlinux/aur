@@ -24,8 +24,11 @@ optdepends=(
     'noon-nvidia-legacy: Legacy NVIDIA GPU support'
 )
 install=noon-main.install
-source=("git+https://github.com/PharmaRacist/Noon.git")
+source=("git+https://github.com/PharmaRacist/Noon.git#branch=main")
 sha256sums=('SKIP')
+
+# Force shallow single-branch clone
+DLAGENTS=("git::/usr/bin/git clone --depth=1 --single-branch --branch %o %u %o")
 
 pkgver() {
     cd "$srcdir/Noon"
