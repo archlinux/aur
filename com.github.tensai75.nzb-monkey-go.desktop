@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=nzb-monkey-go
+Exec=/usr/bin/nzb-monkey-go %u
+MimeType=x-scheme-handler/nzblnk;
+NoDisplay=true
+Terminal=true

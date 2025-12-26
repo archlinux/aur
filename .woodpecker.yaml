@@ -60,4 +60,4 @@ steps:
       - echo "Building and testing package"
       - sudo -u builduser mkdir -p /home/builduser/.config
       - sudo -u builduser makepkg -si --noconfirm
-      - sudo -u builduser nzb-monkey-go --register
+      - sudo -u builduser nzb-monkey-go --version
