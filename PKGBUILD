@@ -2,7 +2,7 @@
 
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-ncnn-runtime
-pkgver=v15.12
+pkgver=v15.14
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (Vulkan ncnn runtime)"
 arch=('x86_64')
@@ -14,23 +14,23 @@ optdepends=()
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 
-# Why do I have to host this artifact (original source: https://github.com/AmusementClub/vs-mlrt/actions/runs/15625227862/artifacts/3319440768)
+# Why do I have to host this artifact (original source: https://github.com/AmusementClub/vs-mlrt/actions/runs/19187416567)
 # on a separate server? Because:
 # - We can't build the library from source without using custom versions of onnx and shit.
-# - The maintainers of vs-mlrt only publish *Windows* binaries to their release tags, not Linux ones.
+# - The maintainers of vs-mlrt only publish Windows binaries to their release tags, not Linux ones.
 # - Apparently Github does not let you download Actions artifacts without being logged in.
 # The last one of those being particularly stupid. It's a public artifact but you can't download it without a Github account.
 # ANY Github account, even if it's not associated with AmusementClub.
 # /rant
 source=(
-  "vsncnn-linux-x64.zip::https://files.bluefalcon.cc/vsncnn-linux-x64.zip"
-  "scripts.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.12/scripts.v15.12.7z"
-  "models.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.12/models.v15.12.7z"
+  "vsncnn-linux-x64.zip::https://files.bluefalcon.cc/vsncnn-linux-x64-v15.14.zip"
+  "scripts.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.14/scripts.v15.14.7z"
+  "models.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.14/models.v15.14.7z"
 )
 sha256sums=(
-  'edd4fa27b877f3b2e4dcbc57a758de89829bd44b60ff5f451c8ecfeaff1894bd'
-  '4e707fb9d7f5ce13571d47ee07dc489347bfc76d39d5821428db8fcd89b16b97'
-  'acaeb63191ab0b54307c9ca68cb6a9ec5278205f602241aeb1dabade7c2344da'
+  '4bffbd7451a963ae68c6e4e59ea312baa16bb4d24019a4aac688f12df2c7d11a'
+  '19c6f89d2e34c714479b069290b1bae17e91ab3048f298264b8ab57cf0871849'
+  '08cd1361cf3cb68cec8db6c6ac58d69347e5bcfc039db3f8136cffb3940c36b0'
 )
 
 package() {
