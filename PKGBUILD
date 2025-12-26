@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=open-video-downloader
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('gtk3' 'webkit2gtk')
 optdepends=()
 source=("${pkgname}-${pkgver}.deb::https://github.com/jely2002/youtube-dl-gui/releases/download/app-v${pkgver}/Open.Video.Downloader_${pkgver}_amd64.deb")
-sha256sums=('5be55329984002d3420ab3c49f95c142062b555e20455bb0552e1b446eaa0660')
+sha256sums=('2372c0039599cd2ba89a3f47be23bfd6dfb3e0a1d29d94414284c2529477ed7a')
 
 package() {
     # Extract the .deb package
