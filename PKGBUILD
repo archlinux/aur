@@ -1,8 +1,8 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.25
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -36,7 +36,7 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         tz::git+https://github.com/eggert/tz.git
 	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('13b8b07fd79db3727afb5a86a67f0acd4a6b142fdf8f4220ad556c9eee6967646b992f74cf3cb70e3365e856a1fa9e2fa43971eff9c93e386e10f1dbe91103e6'
+b2sums=('732873ff2061b2f66ae3051d703215e9c4587182b925234d27ec0225db21aea108b7ad8671edcf20f918c8f1c9d38e2af713eddd213d683b1a9fe020d5360f59'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -102,11 +102,11 @@ prepare() {
   popd
 
   # Ensure cubeb is used from externals
-  sed -i '386d;387d;388d' CMakeLists.txt
+  sed -i '395d;396d;397d' CMakeLists.txt
 
   # Fix QT for 6.10.0
-  sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Widgets/find_package(Qt6 REQUIRED COMPONENTS Widgets GuiPrivate/g;s/set(CITRON_QT_COMPONENTS2 Core/set(CITRON_QT_COMPONENTS2 Core GuiPrivate/g' CMakeLists.txt
-  sed -i 's/target_link_libraries(citron PRIVATE Boost\:\:headers/target_link_libraries(citron PRIVATE Boost\:\:headers Qt6\:\:GuiPrivate/g' src/citron/CMakeLists.txt
+  #sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Widgets/find_package(Qt6 REQUIRED COMPONENTS Widgets GuiPrivate/g;s/set(CITRON_QT_COMPONENTS2 Core/set(CITRON_QT_COMPONENTS2 Core GuiPrivate/g' CMakeLists.txt
+  #sed -i 's/target_link_libraries(citron PRIVATE Boost\:\:headers/target_link_libraries(citron PRIVATE Boost\:\:headers Qt6\:\:GuiPrivate/g' src/citron/CMakeLists.txt
 }
 
 build() {
