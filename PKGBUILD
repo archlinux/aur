@@ -8,8 +8,8 @@ url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
-source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("6bac224d33b42e0930d86d57d899c5e4b16d13cf0d4525288bdf93969a28e290")
+source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-.tar.xz")
+sha256sums=("3f0dbe7c583e9b3ffaeae8f53e7d770dd29a0169d870ffda09f6ab4451d13fcf")
 
 
 prepare() {
