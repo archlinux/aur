@@ -10,12 +10,13 @@ pkgbase = lumina-desktop
 	license = BSD
 	makedepends = git
 	makedepends = qt5-tools
-	makedepends = qt5-svg
-	makedepends = qt5-declarative
-	makedepends = libxcursor
-	depends = poppler-qt5
 	depends = qt5-x11extras
 	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = libxcursor
+	depends = libxdamage
+	depends = hicolor-icon-theme
 	optdepends = xorg-xbacklight: required for changing screen brightness
 	optdepends = alsa-utils: required for adjusting audio volume
 	optdepends = acpi: required for monitoring battery life
@@ -25,7 +26,6 @@ pkgbase = lumina-desktop
 	optdepends = network-manager-applet: Manage network connections from panel
 	optdepends = xterm: Terminal emulator
 	optdepends = fluxbox: window manager for Lumina DE
-	conflicts = insight-fm
 	source = git+https://github.com/lumina-desktop/lumina.git#tag=v1.6.2
 	sha512sums = 7d0d67204b3a0cd661c09887b09d74b30054b809266bedf88b16a87e722c11b92e46542a1bf96fb21ff6160c1fc75c7132f4834ae8ff75a5f8163978bf534341
 

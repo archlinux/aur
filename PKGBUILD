@@ -13,8 +13,8 @@ pkgdesc="A Lightweight QT5 Desktop for FreeBSD"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://lumina-desktop.org/"
 license=(BSD)
-depends=(poppler-qt5 qt5-x11extras qt5-multimedia)
-makedepends=(git qt5-tools qt5-svg qt5-declarative libxcursor)
+depends=(qt5-x11extras qt5-multimedia qt5-svg qt5-declarative libxcursor libxdamage hicolor-icon-theme)
+makedepends=(git qt5-tools)
 optdepends=('xorg-xbacklight: required for changing screen brightness'
             'alsa-utils: required for adjusting audio volume'
             'acpi: required for monitoring battery life'
@@ -24,7 +24,6 @@ optdepends=('xorg-xbacklight: required for changing screen brightness'
             'network-manager-applet: Manage network connections from panel'
             'xterm: Terminal emulator'
             'fluxbox: window manager for Lumina DE')
-conflicts=(insight-fm)
 source=("git+https://github.com/lumina-desktop/lumina.git#tag=v${pkgver}")
 sha512sums=('7d0d67204b3a0cd661c09887b09d74b30054b809266bedf88b16a87e722c11b92e46542a1bf96fb21ff6160c1fc75c7132f4834ae8ff75a5f8163978bf534341')
 
