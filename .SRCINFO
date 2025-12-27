@@ -1,0 +1,13 @@
+pkgbase = aimp-skin-m5
+	pkgdesc = Inspired by AIMP SKIN and A4 from ELECTRON!CK
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://www.aimp.ru
+	arch = x86_64
+	license = custom
+	depends = aimp
+	provides = aimp-skin
+	source = https://www.aimp.ru/files/windows/skins/m/M5.zip
+	sha256sums = cb915821175a0cdfdb6537e6fb336d2f8d85e606a00d8ed336b4ebd9904ebb27
+
+pkgname = aimp-skin-m5
