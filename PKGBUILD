@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
 pkgver=1.6.1.r4.g534a4db
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
@@ -12,6 +12,8 @@ depends=(
   'qt6pas'     # Lazarus Qt6 bindings (LCL Qt6)
   'mesa'       # libGL
   'glu'        # libGLU
+  'sdl2-compat'
+  'hicolor-icon-theme'
 )
 makedepends=(
   'git'
@@ -44,7 +46,7 @@ build() {
   cd "${pkgname%-git}"
 
   # Compile missing PasVulkan LZMA object file
-  msg "Compiling lzmadec_linux_x86_64.o..."
+  echo "Compiling lzmadec_linux_x86_64.o..."
   clang -c -target x86_64-linux -g -gdwarf-2 -masm=intel -O3 -D linux -fverbose-asm -fno-builtin \
         "pasvulkan/src/lzma_c/LzmaDec.c" -o "pasvulkan/src/lzma_c/lzmadec_linux_x86_64.o"
 
