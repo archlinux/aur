@@ -2,16 +2,18 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
 license=('GPL-2.0-or-later')
 depends=(
-  'qt6-base'   # Qt6 runtime
-  'qt6pas'     # Pascal bindings for Qt6
-  'mesa'       # OpenGL/Vulkan drivers
-  'glu'        # OpenGL Utility Library
+  'qt6-base'            # Qt6 runtime
+  'qt6pas'              # Pascal bindings for Qt6
+  'mesa'                # OpenGL/Vulkan drivers
+  'glu'                 # OpenGL Utility Library
+  'sdl2-compat'         # SDL2 compatibility layer
+  'hicolor-icon-theme'  # Freedesktop.org Hicolor icon theme
 )
 makedepends=(
   'fpc'
