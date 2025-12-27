@@ -1,0 +1,13 @@
+pkgbase = try-rs
+	pkgdesc = A blazing fast, Rust-based workspace manager for your temporary experiments
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/tassiovirginio/try-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = try-rs-0.1.18.tar.gz::https://github.com/tassiovirginio/try-rs/archive/v0.1.18.tar.gz
+	sha256sums = 8490a18a276db03419fedbf5253cb0cd3937ab15bbc310226c72d8e4c7a60b10
+
+pkgname = try-rs
