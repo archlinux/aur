@@ -1,13 +1,12 @@
-# Maintainer: Benjamim Gois <benjamim.gois@gmail.com>
+# Maintainer: Benjamim Gois <your-email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
-pkgver=1.5.1.r0.ge926659
+pkgver=1.6.1.r2.gc5b5a77
 pkgrel=1
-pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
+pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
 license=('GPL-2.0-or-later')
-
 depends=(
   'qt6-base'   # Qt6 runtime
   'qt6pas'     # Lazarus Qt6 bindings (LCL Qt6)
@@ -19,28 +18,19 @@ makedepends=(
   'fpc'
   'fpc-src'
   'lazarus'    # provides lazbuild on Arch
+  'clang'      # for compiling PasVulkan lzma_c
 )
-
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  # Enter the working copy checked out by makepkg
-  cd "$srcdir/${pkgname%-git}" 2>/dev/null || cd "${pkgname%-git}"
-
-  # Try tag-based version; fallback to commitcount+short hash
-  _ver="$(git describe --long --tags --abbrev=7 2>/dev/null || true)"
-  if [[ -n "$_ver" ]]; then
-    # 1.2.3-45-g<hash> -> 1.2.3.r45.g<hash>
-    printf '%s' "$_ver" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  else
-    printf '0.r%s.g%s' \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
-  fi
+  cd "${pkgname%-git}"
+  # Prefer tags; fallback to commitcount+short hash
+  git describe --long --tags --abbrev=7 2>/dev/null \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+  || printf "0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -50,15 +40,16 @@ prepare() {
 }
 
 build() {
-  set -e
+
   cd "${pkgname%-git}"
 
-  # Build using LCL Qt6 with explicit Lazarus dir on Arch
-  lazbuild \
-    --lazarusdir=/usr/lib/lazarus \
-    --primary-config-path=build \
-    --widgetset=qt6 \
-    "${pkgname%-git}.lpi"
+  # Compile missing PasVulkan LZMA object file
+  msg "Compiling lzmadec_linux_x86_64.o..."
+  clang -c -target x86_64-linux -g -gdwarf-2 -masm=intel -O3 -D linux -fverbose-asm -fno-builtin \
+        "pasvulkan/src/lzma_c/LzmaDec.c" -o "pasvulkan/src/lzma_c/lzmadec_linux_x86_64.o"
+
+  # Build using LCL Qt6
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt6 --primary-config-path=build "${pkgname%-git}.lpi"
 
   # Detect the resulting binary location
   BIN_CANDIDATE=""
@@ -76,7 +67,6 @@ build() {
 }
 
 package() {
-  set -e
   cd "${pkgname%-git}"
 
   # Read binary path detected during build()
@@ -86,7 +76,7 @@ package() {
   # Install the real binary under /usr/lib/pascube
   install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname%-git}/${pkgname%-git}"
 
-  # Wrapper: force X11 via xcb (no provisioning into $HOME)
+  # Wrapper: force X11 via xcb
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<'EOF'
 #!/bin/sh
 export QT_QPA_PLATFORM=xcb
@@ -112,7 +102,7 @@ Comment=A simple OpenGL spinning cube written in Pascal
 Exec=pascube
 Icon=pascube
 Terminal=false
-Categories=Graphics;
+Categories=Graphics;Education;Qt;
 EOF
   fi
 
@@ -124,11 +114,13 @@ EOF
     fi
   done
 
-    # ---- Shared resources (skybox only under /usr/share/pascube) ----
-  install -d "${pkgdir}/usr/share/pascube"
-  if [[ -f "data/skybox.png" ]]; then
-    install -m644 "data/skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
+  # ---- Shared resources (skybox stays only under /usr/share/pascube) ----
+  if [[ -f "skybox.png" ]]; then
+    install -Dm644 "skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
+  elif [[ -f "data/skybox.png" ]]; then
+    install -Dm644 "data/skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
   fi
 
-
+  # License (if present)
+  [[ -f LICENSE ]] && install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
