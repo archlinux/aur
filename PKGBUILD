@@ -6,8 +6,8 @@ pkgdesc="A pure functional language for system configuration and package managem
 arch=('x86_64' 'aarch64')
 url="https://github.com/MCB-SMART-BOY/neve"
 license=('MPL-2.0')
-depends=('gcc-libs' 'libgit2' 'libssh2' 'openssl' 'zlib' 'xz')
-makedepends=('git' 'rust' 'cargo' 'pkg-config')
+depends=('gcc-libs' 'openssl' 'zlib' 'xz')
+makedepends=('git' 'rust' 'cargo' 'cmake')
 provides=('neve')
 conflicts=('neve')
 source=("git+https://github.com/MCB-SMART-BOY/neve.git")
@@ -20,16 +20,12 @@ pkgver() {
 
 build() {
     cd neve
-    export LIBGIT2_NO_VENDOR=1
-    export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    # Must specify -p neve to build the CLI binary
+    # Use vendored libgit2/libssh2 (Arch's libgit2 1.9.x is too new)
     cargo build --release -p neve
 }
 
 check() {
     cd neve
-    export LIBGIT2_NO_VENDOR=1
-    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo test --release -p neve-lexer -p neve-parser -p neve-eval -p neve-typeck -p neve-fmt
 }
 
