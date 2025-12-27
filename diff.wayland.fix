@@ -1,0 +1,20 @@
+--- src/main.cxx	2025-12-16 19:48:12.000000000 -0700
++++ src/main.cxx	2025-12-27 11:55:12.064443834 -0700
+@@ -665,6 +665,9 @@
+ 	mainwindow->icon((char *)Rig_icon_pixmap);
+ 	mainwindow->show(argc, argv);
+ 
++#    ifdef FLTK_USE_X11
++       fl_open_display(); /* multiple calls "harmless" */
++       if (fl_x11_display())
+ 	{
+ 	// read in the current window hints, then modify them to allow icon transparency
+ 		XWMHints* hints = XGetWMHints(fl_display, fl_xid(mainwindow));
+@@ -673,6 +676,7 @@
+ 		XSetWMHints(fl_display, fl_xid(mainwindow), hints);
+ 		XFree(hints);
+ 	}
++#    endif  // FLTK_USE_X11
+ #else
+ 	mainwindow->show(argc, argv);
+ #endif
