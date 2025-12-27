@@ -1,7 +1,7 @@
 # Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=thextech-assetpack-smbx13
 _packname=smbx13
-pkgver=v1.3.7.beta
+pkgver=v1.3.7.2
 pkgrel=1
 pkgdesc="SMBX 1.3 game assets for TheXTech"
 arch=('any')
@@ -11,9 +11,9 @@ depends=('thextech')
 makedepends=('p7zip')
 provides=('thextech-assetpack')
 conflicts=('thextech-supermariobrosx')
-source=("assets.7z::https://github.com/TheXTech/TheXTech/releases/download/v1.3.7-beta/thextech-${_packname}-assets-full-v1.3.7-beta.7z")
+source=("assets.7z::https://github.com/TheXTech/TheXTech/releases/download/${pkgver}/thextech-${_packname}-assets-full-${pkgver}.7z")
 noextract=("assets.7z")
-sha256sums=("a1123994041f56e337f059bc27ff67b7df4c961861d5a27326234ca711bb6f4b")
+sha256sums=("aac5e5f30338e34bc7d20104552a80e6dd05c7bd669a097e2207c23f7382a11c")
 options=('!strip')
 
 package() {
