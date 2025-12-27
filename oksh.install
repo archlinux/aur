@@ -1,0 +1,12 @@
+post_install() {
+  grep -qe /bin/ksh /etc/shells || echo /bin/ksh >>/etc/shells
+  grep -qe /usr/bin/ksh /etc/shells || echo /usr/bin/ksh >>/etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/ksh$/d' etc/shells
+}
