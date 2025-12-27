@@ -2,7 +2,7 @@
 # Maintainer: awsl1414 <awsl1414@qq.com>
 pkgname=wechat-devtools-git
 _pkgname=wechat-devtools
-pkgver=1.06.2504060
+pkgver=2.01.2510260
 pkgrel=3
 epoch=0
 pkgdesc="WeChat Devtools For Linux."
@@ -20,7 +20,7 @@ source=(
     "${_pkgname}.sh"
     "${_pkgname}-cli.sh"
 )
-md5sums=('3d10511365f6d885aa01ad52dbc632c5'
+md5sums=('d1be4636a5420c038aa27e3b257903e6'
          '08b27001217b9732289cd0e33f8f8d58'
          '9f585ae635005d2b6fa0570eb69cc12f'
          '6f3f6858627577e698c95d46e74e7e63'
