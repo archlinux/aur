@@ -1,11 +1,9 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
 	pkgver = 7.1.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
-	arch = armv7
-	arch = aarch64
 	license = GPL3
 	makedepends = glibc
 	makedepends = git
@@ -28,6 +26,6 @@ pkgbase = amiberry
 	conflicts = amiberry-lite
 	options = !lto
 	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=c53d6db770a5580732a7f2bb48abcbfcd95fd0f4
-	sha256sums = SKIP
+	sha256sums = 9507d3139cad29320de1f0f45e56053c2d306de07141915dbb921435a3a7057c
 
 pkgname = amiberry
