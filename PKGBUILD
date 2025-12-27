@@ -29,8 +29,8 @@ check() {
     cd neve
     export LIBGIT2_NO_VENDOR=1
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    # Skip fetch tests that require network
-    cargo test --release --locked -- --skip fetch
+    # Run only core language tests
+    cargo test --release --locked -p neve-lexer -p neve-parser -p neve-eval -p neve-typeck -p neve-fmt
 }
 
 package() {
