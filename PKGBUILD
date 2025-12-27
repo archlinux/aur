@@ -3,7 +3,7 @@
 
 _pkgname=Inform6
 pkgname=inform
-pkgver=6.42
+pkgver=6.44
 pkgrel=1
 pkgdesc="The Inform 6 compiler"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -17,9 +17,9 @@ optdepends=('inform-stdlib: Inform 6 standard library'
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/DavidKinder/Inform6/archive/refs/tags/v$pkgver.tar.gz"
 	'https://ifarchive.org/if-archive/infocom/compilers/inform6/examples/Advent.inf'
 	'inform.1')
-sha256sums=('2fc206551445a75ff88c3f3bcc68bf5b6580a58dfd9a4446bc488ac2aad73766'
+sha256sums=('4096da66193e35834e9b6d99bf58681e833ae20e747c3aa7352dba7975d172d0'
             '08229160f23e43e474973b592d386cffd857c1ed9f0bd96cec616fbdc9486c93'
-            '5fb635995933797aeeeb10f4eb52cad86a9c679cf0b5aeac3bfb1909f3ea5ec0')
+            '43ecdb931b738dc8d370a35dae9a9c692a0093242e60efad659476b68bf40662')
 
 build() {
   cd "$_pkgname-$pkgver"

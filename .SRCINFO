@@ -1,6 +1,6 @@
 pkgbase = inform
 	pkgdesc = The Inform 6 compiler
-	pkgver = 6.42
+	pkgver = 6.44
 	pkgrel = 1
 	url = https://github.com/DavidKinder/Inform6
 	arch = aarch64
@@ -17,11 +17,11 @@ pkgbase = inform
 	optdepends = inform-stdlib: Inform 6 standard library
 	optdepends = punyinform: a small Inform 6 library
 	optdepends = frotz: Z-machine interpreter
-	source = inform-6.42.tar.gz::https://github.com/DavidKinder/Inform6/archive/refs/tags/v6.42.tar.gz
+	source = inform-6.44.tar.gz::https://github.com/DavidKinder/Inform6/archive/refs/tags/v6.44.tar.gz
 	source = https://ifarchive.org/if-archive/infocom/compilers/inform6/examples/Advent.inf
 	source = inform.1
-	sha256sums = 2fc206551445a75ff88c3f3bcc68bf5b6580a58dfd9a4446bc488ac2aad73766
+	sha256sums = 4096da66193e35834e9b6d99bf58681e833ae20e747c3aa7352dba7975d172d0
 	sha256sums = 08229160f23e43e474973b592d386cffd857c1ed9f0bd96cec616fbdc9486c93
-	sha256sums = 5fb635995933797aeeeb10f4eb52cad86a9c679cf0b5aeac3bfb1909f3ea5ec0
+	sha256sums = 43ecdb931b738dc8d370a35dae9a9c692a0093242e60efad659476b68bf40662
 
 pkgname = inform
