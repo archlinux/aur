@@ -33,7 +33,7 @@ post_install() {
     echo -e "${green}>>> ${msg_wps_enable}${reset}"
     echo -e "    sudo chmod +x /opt/kingsoft/wps-office/office6/wpscloudsvr"
 
-    echo -e "${yellow}>>> --- ${msg_suggest} ~/.config/Kingsoft/Office.conf：${reset}"
+    echo -e "${yellow}>>> ${msg_suggest} ${reset}"
     echo -e "${yellow}>>> ${msg_fix} ~/.config/Kingsoft/Office.conf：${reset}"
     echo -e "${cyan}    [6.0]${reset}"
     echo -e "${cyan}    wpsoffice\\Application%20Settings\\AppComponentMode=prome_independ${reset}"
