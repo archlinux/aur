@@ -5,6 +5,7 @@ pkgbase = ddcci-hotplugd
 	url = https://github.com/detiam/ddcci-hotplugd
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = ddcci-driver-linux
 	depends = ddcutil
 	depends = libx11
 	depends = libxrandr
