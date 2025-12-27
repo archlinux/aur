@@ -1,7 +1,7 @@
 # Maintainer: Rin <icealtria at gmail dot com>
 
 pkgname=geph5-client
-pkgver=0.2.86
+pkgver=0.2.93
 pkgrel=1
 pkgdesc="The command-line Geph5 client"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
         "config.yml"
         "geph5-client.user.service"
         'geph5-client.service')
-md5sums=('8d4b0037f04eb4f65029bca252a2f213'
+md5sums=('da8635f1e193ed127d6f174fc87c66b3'
          '5d667053a82c655146baec7446b35e62'
          '186cca941b1c4a510a71bf79a0ef8921'
          '7ddb81dd9b4a9f66559247565cdb49a7')
@@ -32,7 +32,7 @@ build() {
   export CARGO_TARGET_DIR=target
   export CFLAGS+=" -ffat-lto-objects" # https://github.com/launchbadge/sqlx/issues/3149
   cd "${pkgname}-${pkgver}"/
-  cargo build --frozen --release --features aws_lambda
+  cargo build --frozen --release
 }
 
 package() {
