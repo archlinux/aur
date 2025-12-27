@@ -2,7 +2,7 @@
 # Maintainer: Leah Anderson <leah@chromebooks.lol>
 pkgname=uzdoom
 pkgver=4.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="UZDoom is a feature centric port for all Doom engine games, based on GZDoom, adding an advanced renderer and powerful scripting capabilities"
 arch=(x86_64)
 url="https://zdoom.org"
