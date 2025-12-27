@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2475.gb6d5803
+pkgver=4.3.r2550.gfa8011b
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -32,7 +32,8 @@ sha256sums=(
   'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
   '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
-# Disable libav, if the FFmpeg version is not known to support libav
+# Disable libav, if the FFmpeg version is not known to support libav.
+# Alternative to this function: '--enable-libav' on the './configure' line
 _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
@@ -87,9 +88,7 @@ build() {
     --enable-zlib \
     --mandir=/usr/share/man \
     --prefix=/usr \
-    --python=python3 \
-    \
-    --cflags='-Wno-format-truncation' # --nowerror
+    --python=python3
 
   make
 }
