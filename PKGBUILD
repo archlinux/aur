@@ -1,7 +1,7 @@
 # Maintainer: Tobias Os Finsbøl <tobias.finsbol@protonmail.com>
 pkgname=bitwarden_fuzzy
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A none offical fuzzy finder for bitwarden."
 arch=('x86_64')
 url="https://gitlab.com/TobbeBob123/bitwarden_fuzzy/"
