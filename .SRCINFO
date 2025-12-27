@@ -1,7 +1,7 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 7.8.15.5102301
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dingtalk.com/
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = dingtalk-bin
 	conflicts = com.alibabainc.dingtalk
 	replaces = com.alibabainc.dingtalk
 	options = !strip
-	source = service-terms-zh_7.8.15.5102301-2.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_dingtalk/suit_bu1_dingtalk202010200940_84493.html
+	source = service-terms-zh_7.8.15.5102301-3.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_dingtalk/suit_bu1_dingtalk202010200940_84493.html
 	source = com.alibabainc.dingtalk.desktop
 	source = dingtalk.sh
 	source = com.alibabainc.dingtalk.svg

@@ -8,7 +8,7 @@ _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
 pkgver=7.8.15.5102301
-pkgrel=2
+pkgrel=3
 pkgdesc="钉钉"
 arch=("x86_64" 'aarch64')
 url="https://www.dingtalk.com/"
@@ -62,7 +62,7 @@ package() {
     install -Dm644 "${srcdir}/${_pkgname2}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     # license
-    install -Dm644 "service-terms-zh_${pkgver}.html" "${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html"
+    install -Dm644 "service-terms-zh_${pkgver}-${pkgrel}.html" "${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html"
 
     patchelf --clear-execstack "${pkgdir}/opt/dingtalk/release"/{dingtalk_dll,libconference_new}.so
 
