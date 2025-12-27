@@ -2,13 +2,13 @@
 
 pkgname=eilmeldung-git
 pkgver=r283.01c760a
-pkgrel=2
+pkgrel=3
 pkgdesc="a TUI RSS reader based on the news-flash library"
 arch=('x86_64')
 url="https://github.com/christo-auer/eilmeldung"
 license=('GPL-3.0-or-later')
 depends=('libxml2' 'openssl' 'sqlite3' 'libsixel')  
-conflicts=( 'eilmeldung' )
+conflicts=( 'eilmeldung' 'eilmeldung-bin' )
 makedepends=('cargo' 'clang' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
