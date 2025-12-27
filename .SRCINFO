@@ -1,0 +1,25 @@
+pkgbase = maypaper
+	pkgdesc = The super dynamic wallpaper tool!
+	pkgver = 7f9c25a
+	pkgrel = 1
+	url = https://github.com/initMayday/maypaper.git
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = qt6-webengine
+	depends = qt6-base
+	depends = qt6-wayland
+	depends = qt6-webengine
+	depends = qt6-declarative
+	depends = layer-shell-qt
+	provides = maypaper
+	conflicts = maypaper
+	options = !lto
+	source = maypaper::git+https://github.com/initMayday/maypaper.git
+	sha256sums = SKIP
+
+pkgname = maypaper
