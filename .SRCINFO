@@ -1,6 +1,6 @@
 pkgbase = mytonwallet-appimage
 	pkgdesc = Feature rich TON wallet
-	pkgver = 4.3.3
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://mytonwallet.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mytonwallet-appimage
 	provides = mytonwallet
 	conflicts = mytonwallet
 	options = !strip
-	source = https://github.com/mytonwalletorg/mytonwallet/releases/download/v4.3.3/MyTonWallet-x86_64.AppImage
-	sha256sums = 43474e56ecc60ce793b7b76d1d8810357a517be03deac802fff3e7d0ca149107
+	source = https://github.com/mytonwalletorg/mytonwallet/releases/download/v4.5.1/MyTonWallet-x86_64.AppImage
+	sha256sums = 2532b554b1fb0de3bc0ce90c7a12e4eb353989065d268c887be6a8c77efa7367
 
 pkgname = mytonwallet-appimage
