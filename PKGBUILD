@@ -2,7 +2,7 @@
 # Maintainer: Esaias Westberg <esaias@westbergs.se>
 pkgname=gridlock
 pkgver=0.0.2 # Update this to the latest version
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful TMUX session manager and automator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/esaiaswestberg/gridlock"
