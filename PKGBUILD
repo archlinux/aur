@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Hyuuwu <hyuaee@yahoo.com>
 pkgname=audiovis
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A customizable terminal audio visualizer using PipeWire and ncurses"
+pkgdesc="A customisable audio visualizer made in C"
 arch=('x86_64')
-url="https://github.com/YOURUSERNAME/audiovis"
+url="https://github.com/hyuuwu/audiovis"
 license=('GPL3')
 depends=('pipewire' 'fftw' 'ncurses')
 makedepends=('pkgconf')
