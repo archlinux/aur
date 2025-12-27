@@ -1,25 +1,63 @@
-pkgname=wsjtx
-pkgver=2.6.1
+# Maintainer:
+
+_pkgname="wsjtx"
+pkgname="$_pkgname"
+pkgver=2.7.0
 pkgrel=3
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
+url="https://sourceforge.net/projects/wsjt/"
+license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64' 'aarch64')
-url="http://physics.princeton.edu/pulsar/k1jt/wsjtx.html"
-license=('GPL-3')
-makedepends=(cmake asciidoc asciidoctor boost git)
+
+depends=(
+  'fftw'
+  'hamlib'
+  'libboost_filesystem.so'
+  'libboost_log.so'
+  'libboost_log_setup.so'
+  'libboost_thread.so'
+  'libusb'
+  'qt5-base'
+  'qt5-multimedia'
+  'qt5-serialport'
+)
+makedepends=(
+  'asciidoc'    # manpages
+  'asciidoctor' # other docs
+  'boost'
+  'cmake'
+  'gcc-fortran'
+  'ninja'
+  'qt5-tools'
+)
+
 options=('!lto')
-depends=(qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw make patch)
-# source=(http://physics.princeton.edu/pulsar/K1JT/$pkgname-$pkgver.tgz)
-source=(http://downloads.sourceforge.net/sourceforge/wsjt/$pkgname-$pkgver.tgz)
-sha512sums=('0f151c10b75798ab28a01604b08981f399d612135b7e9ddc3e66f9121fd49c97bb9508ce649e342791705ee5e1247f8e461a31afa871ddd46da1cf7fd5826c74')
+
+_pkgsrc="$_pkgname-$pkgver"
+source=("$_pkgsrc.tar.gz"::"http://downloads.sourceforge.net/sourceforge/wsjt/$_pkgsrc.tgz")
+sha256sums=('3788f5df636af792514609ec2b4abe58477aa5f0ad32cb826424866fc21cec93')
+
+prepare() {
+  for i in "$_pkgsrc/src"/*.{tgz,tar.gz}; do
+    [ -f "$i" ] && bsdtar -xf "$i"
+  done
+}
 
 build() {
-    mkdir -p $srcdir/build
-    cd $srcdir/build
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release $srcdir/$pkgname-$pkgver
-    make || return 1
+  local _cmake_options=(
+    -B build
+    -S wsjtx
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    cd "${srcdir}/build"
-    make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
