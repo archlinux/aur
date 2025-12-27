@@ -1,6 +1,6 @@
 pkgbase = plink2-mkl-git
 	pkgdesc = whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL
-	pkgver = 2.0.a.6.17.r27.g281b4937
+	pkgver = 2.0.a.6.17.r84.gacb45ef4
 	pkgrel = 1
 	epoch = 1
 	url = https://www.cog-genomics.org/plink/2.0/
@@ -15,6 +15,6 @@ pkgbase = plink2-mkl-git
 	source = plink2::git+https://github.com/chrchang/plink-ng.git
 	source = fixes.patch
 	sha256sums = SKIP
-	sha256sums = 7b6b3c9b418bf3e8e59e1311e59554540407bef99eb85e78fdcb8f26e2e40852
+	sha256sums = 2391d3b519c379647de0825ec8c5311dd4e5ebe3c189eb3dcb73ad9a76c9f9d4
 
 pkgname = plink2-mkl-git

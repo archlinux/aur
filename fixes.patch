@@ -71,7 +71,7 @@
  all: plink2$(SFX) pgen_compress$(SFX)
  
  plink2$(SFX): $(CSRC2) $(ZCSRC2) $(ZSSRC2) $(CCSRC2) ../plink2_cpu.cc
-@@ -216,12 +223,17 @@
+@@ -216,12 +223,16 @@
  static_plink2lib_test: plink2lib.a ../pgen_compress.cc
  	$(CXX) $(CXXFLAGS) -o $@ ../pgen_compress.cc -L. plink2lib.a
  
@@ -81,8 +81,7 @@
 +
 +install:
 +	$(MKDIR) -p $(DESTDIR)$(PREFIX)/bin
-+	$(INSTALL) plink2 pgen_compress *.a $(DESTDIR)$(PREFIX)/bin
-+	rm $(DESTDIR)$(PREFIX)/bin/Makefile $(DESTDIR)$(PREFIX)/bin/*.o
++	$(INSTALL) plink2 pgen_compress $(DESTDIR)$(PREFIX)/bin
 +
  clean:
  	rm -f *.o

@@ -15,7 +15,7 @@ depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-co
 makedepends=('git')
 provides=('plink2')
 sha256sums=('SKIP'
-            '70c3c14ea410e0291e1398747ad263d02f2f8c091c5d9444f18b844b4fcdbf2b')
+            '2391d3b519c379647de0825ec8c5311dd4e5ebe3c189eb3dcb73ad9a76c9f9d4')
 
 prepare() {
     cd "$_pkgname/$_pkgver/build_dynamic"
