@@ -1,7 +1,7 @@
 pkgbase = access-irc
 	pkgdesc = Accessible IRC client with GTK3 and screen reader support
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/destructatron/access-irc
 	arch = any
 	license = MIT

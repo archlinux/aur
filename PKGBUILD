@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <storm_dragon@stormux.org>
 pkgname=access-irc
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Accessible IRC client with GTK3 and screen reader support"
 arch=('any')
 url="https://github.com/destructatron/access-irc"
@@ -22,6 +22,19 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Find the site-packages data directory
+    local sitePackages
+    sitePackages="$pkgdir/$(python -c 'import site; print(site.getsitepackages()[0])')"
+    local dataDir="$sitePackages/access_irc/data"
+
+    # Move data files to /usr/share/access-irc (the app checks here first)
+    install -dm755 "$pkgdir/usr/share/$pkgname/sounds"
+    install -Dm644 "$dataDir/sounds/"*.wav "$pkgdir/usr/share/$pkgname/sounds/"
+    install -Dm644 "$dataDir/config.json.example" "$pkgdir/usr/share/$pkgname/config.json.example"
+
+    # Remove duplicates from site-packages
+    rm -rf "$dataDir"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
