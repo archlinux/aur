@@ -2,8 +2,8 @@
 # Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
-pkgver=6.5.4
-pkgrel=4
+pkgver=6.5.5
+pkgrel=1
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
@@ -13,8 +13,8 @@ depends=('python-numpy')
 install=lhapdf.install
 source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz"
         'fix_installed_pdf_permissions.patch')
-b2sums=('9bd214f29ef0fb662095a045acf449bac60c2f12fb0e182c9c590ec51651f1c08d213a3f9280eda0711ec9a0d5cae620918f048c362838a9de8e69cc84f34798'
-        'c875018d666331588051adc394b24c40321d78573ec33ef9312ea8779eeb6cf15ea845a5267d4dc6530cc82050e782affc908b9a6727aa3125b9f0086f1917a2')
+b2sums=('14677cfb0e40e61006eb2cd69373a14d8c4049a6c19d2a504b736c733be35c25a11362e5aa0d0fe233d7c477fe5f9ef60084ca71330566b2728908017ccf90e7'
+        '5d47b87e8a83e177d93960140c71367d53ae07d3c861b0ed28efcdcee88e9ebb03e1292220ab1c061c63176aba9e5a304e24d535c8c78d9cd50a688a604f5f45')
 
 prepare() {
   cd "${srcdir}/LHAPDF-${pkgver}"

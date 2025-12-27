@@ -25,6 +25,6 @@ diff --color -aur LHAPDF-6.5.2-old/bin/lhapdf LHAPDF-6.5.2-new/bin/lhapdf
 +            if tar_info.isdir():
 +                tar_info.mode = dir_mode
 +        # extract PDF tar file
-         tar_file.extractall(dest_dir)
-         tar_file.close()
-     except:
+         if hasattr(tarfile, "data_filter"):
+             tar_file.extractall(dest_dir, filter="data")
+         else: # TODO: remove this and the attr test when Py < 3.12 is unnecessary
