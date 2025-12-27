@@ -1,14 +1,13 @@
 pkgbase = simagef-bin
-	pkgdesc = CLI tool for finding unwanted duplicate images
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgdesc = CLI tool for finding similar images
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/gert7/simagef
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = dav1d
 	provides = simagef
 	conflicts = simagef
-	source = https://github.com/gert7/simagef/releases/download/v1.3.0/simagef-1.3.0-x86_64.tar.gz
-	sha256sums = 88bc593e1b79c809c649cd0ad8eff26785174b56ee7b435bb8866fcadc4981ac
+	source = https://github.com/gert7/simagef/releases/download/v1.3.3/simagef-1.3.3-x86_64.tar.gz
+	sha256sums = 1fcfa743253dc27a56a80b8f441d4b2ecd4f9ff0f544f83b437712555e144d02
 
 pkgname = simagef-bin
