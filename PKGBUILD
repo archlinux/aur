@@ -30,7 +30,7 @@ depends=(
   'libpng'
   'librsvg'
   'xorg-xwayland'
-  'wlroots'
+  'wlroots0.19'
   'libsfdo'
 )
 conflicts=(
