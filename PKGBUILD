@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 optdepends=('python-numpy: for sound generation'
             'python-scipy: for sound generation')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/destructatron/access-irc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dae0136ef588836782c10034813934856c62f31e7813f6c77e6b1928bc258bee')
+sha256sums=('7e037c173a6095840fccf240710129c72c89a678ca95267ace8fc75c40d5c083')
 
 build() {
     cd "$pkgname-$pkgver"
