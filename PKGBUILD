@@ -26,9 +26,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 	    'xorg-xmessage: crash dialog (other)')
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
-provides=('uzdoom')
 options=(!lto)
-conflicts=('uzdoom-git' 'uzdoom-bin' 'uzdoom-appimage')
 source=("https://github.com/UZDoom/UZDoom/archive/refs/tags/4.14.3.tar.gz")
 sha256sums=('6ee381395e249fd02a8484e0e98330afd1cdf222b26cafece7b3d3f5188d7014')
 setup() {
