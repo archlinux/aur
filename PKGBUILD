@@ -2,7 +2,7 @@
 # Note: lazy-cli uses PyInstaller so beware of it
 #       I'm not the dev so this is just FYI.
 pkgname=lazy-cli
-pkgver=0.1.0.beta.13
+pkgver=0.2.0.pre
 pkgrel=1
 pkgdesc="Learning at ZJU Yes CLI"
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client"
 license=('LGPL-3.0-only')
 provides=('lazy-cli')
 conflicts=('lazy-cli-git')
-source=("https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client/releases/download/v0.1.0-beta.13/lazy-cli-linux-x86_64.tar.gz")
-sha256sums=('a15c56134dc206e58d1efd71fe6e26c533d3c6e7082ffce73d503ccdeb2a3b2c')
+source=("https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client/releases/download/v0.2.0-pre/lazy-cli-linux-x86_64.tar.gz")
+sha256sums=('6e4690ca5b4ed1380aba438b9df6db6eb8baf59db0703c5d1f10e5f06fd704b8')
 depends=('glibc' 'gcc-libs' 'zlib' 'xz' 'bzip2' 'readline' 'openssl' 'libffi' 'util-linux-libs')
 
 package() {
