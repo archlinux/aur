@@ -42,13 +42,27 @@ package() {
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Install desktop file
-    install -Dm644 io.github.nicolettas-muggelbude.myapps.desktop \
-        "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
+    # Install desktop file (v0.2.0 tarball has old filename)
+    if [ -f io.github.nicolettas-muggelbude.myapps.desktop ]; then
+        # New filename (for future releases)
+        install -Dm644 io.github.nicolettas-muggelbude.myapps.desktop \
+            "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
+    else
+        # Old filename (v0.2.0 tarball)
+        install -Dm644 de.pc-wittfoot.myapps.desktop \
+            "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
+    fi
 
-    # Install metainfo
-    install -Dm644 io.github.nicolettas-muggelbude.myapps.metainfo.xml \
-        "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
+    # Install metainfo (v0.2.0 tarball has old filename)
+    if [ -f io.github.nicolettas-muggelbude.myapps.metainfo.xml ]; then
+        # New filename (for future releases)
+        install -Dm644 io.github.nicolettas-muggelbude.myapps.metainfo.xml \
+            "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
+    else
+        # Old filename (v0.2.0 tarball)
+        install -Dm644 de.pc-wittfoot.myapps.metainfo.xml \
+            "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
+    fi
 
     # Install icon
     install -Dm644 assets/icons/io.github.nicolettas-muggelbude.myapps.svg \
