@@ -1,0 +1,16 @@
+pkgbase = adpcm-xq-git
+	pkgdesc = Xtreme Quality IMA-ADPCM WAV Encoder / Decoder
+	pkgver = 0.5.r47.g4cc950c
+	pkgrel = 1
+	url = https://github.com/dbry/adpcm-xq
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	provides = adpcm-xq
+	conflicts = adpcm-xq
+	source = adpcm-xq::git+https://github.com/dbry/adpcm-xq.git
+	sha256sums = SKIP
+
+pkgname = adpcm-xq-git
