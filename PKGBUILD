@@ -18,9 +18,10 @@ makedepends=('fish' 'fd' 'git')
 conflicts=('symp')
 provides=("symp=${pkgver}")
 
+# Download
 source=("${pkgname}::git+https://github.com/Dracape/SymP.git")
-
 b2sums=('SKIP')
+
 
 pkgver() {
 	cd "$pkgname"
