@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=termframe
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Convert terminal output into an SVG file'
 url='https://github.com/pamburus/termframe'
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!lto')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3097832ada6ceb238a197ef93b348bee895399d363409177bb0aea8a7cc98107')
+sha256sums=('411a64bc264720023887cac73f458b693c496b54840660585ad71dff94bd4ab1')
 
 prepare() {
   cd "$pkgname-$pkgver"
