@@ -1,0 +1,34 @@
+pkgbase = ProtonMOD-NEXT-AUR
+	pkgdesc = Community fork of proton-vpn-gtk-app. Features: hidden paid servers/countries for free users, unlocked some paid functions. Use at your own risk!
+	pkgver = 4.13.4
+	pkgrel = 1
+	url = https://github.com/SMH01-MOD-NEXT/ProtonMOD-NEXT-LINUX/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = dbus-python
+	depends = glib2
+	depends = pango
+	depends = gtk3
+	depends = libnotify
+	depends = python
+	depends = python-cairo
+	depends = python-distro
+	depends = python-gobject
+	depends = python-packaging
+	depends = proton-vpn-daemon
+	depends = python-proton-core
+	depends = python-proton-keyring-linux
+	depends = python-proton-vpn-api-core
+	depends = python-proton-vpn-local-agent
+	depends = python-proton-vpn-network-manager
+	depends = python-requests
+	optdepends = libappindicator-gtk3
+	source = git+https://github.com/SMH01-MOD-NEXT/ProtonMOD-NEXT-LINUX.git#tag=v4.13.4
+	sha256sums = ff47719183a2335651cc210cde99fcf07b3ada565dc5a04c7c07d74f1be59eb5
+
+pkgname = ProtonMOD-NEXT-AUR
