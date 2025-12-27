@@ -34,5 +34,4 @@ depends=(
     'wine-staging'
     'nwg-look'
 )
-
-
+install=noon-optional.install

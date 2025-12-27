@@ -3,6 +3,7 @@ pkgbase = noon-optional
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/PharmaRacist/Noon
+	install = noon-optional.install
 	arch = any
 	license = MIT
 	depends = plasma-meta
