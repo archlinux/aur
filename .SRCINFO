@@ -18,6 +18,6 @@ pkgbase = rsjfw
 	source = https://github.com/9nunya/RSJFW/releases/download/v2.0.0/rsjfw-2.0.0-arch-x86_64.tar.gz
 	source = rsjfw.install
 	sha256sums = 6f1bb6bde4f4a45e0dc9e08bc8233d379c5a041b708fbb1f09ad45b74e0dd103
-	sha256sums = SKIP
+	sha256sums = 87a7cdc5b43b23328285436f72ca7d4fb92268e756f46dc8ec5b02025e0c7c41
 
 pkgname = rsjfw
