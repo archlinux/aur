@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-claude-gui
-pkgver=1.2.6
+pkgver=1.3.15
 pkgrel=1
 pkgdesc="Desktop app for managing multiple Claude Code sessions across projects"
 arch=('x86_64')
@@ -32,7 +32,7 @@ package() {
     # Install desktop file
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
-Name=Claude Terminal
+Name=Simple Claude GUI
 Comment=Multi-session Claude Code terminal manager
 Exec=electron /usr/lib/$pkgname/main/index.js
 Icon=$pkgname
