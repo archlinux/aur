@@ -1,6 +1,6 @@
 pkgbase = keypop-git
 	pkgdesc = A simple Wayland key display application overlay
-	pkgver = 1.2
+	pkgver = v1.2.r3.g12f2bcc
 	pkgrel = 1
 	url = https://github.com/yossefsabry/keypop
 	arch = x86_64
