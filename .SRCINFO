@@ -1,0 +1,15 @@
+pkgbase = xray-oci-git
+	pkgdesc = A blazing fast Docker (or any OCI-compliant) image layer inspector
+	pkgver = v1.3.1.r0.98a29c8
+	pkgrel = 1
+	url = https://github.com/h33333333/xray
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = rust-nightly
+	provides = xray-oci
+	conflicts = xray-oci
+	source = upstream::git+https://github.com/h33333333/xray
+	md5sums = SKIP
+
+pkgname = xray-oci-git
