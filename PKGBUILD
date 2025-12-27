@@ -1,6 +1,6 @@
 # Maintainer: Christopher Auer <christopher AT auer DOT team>
 
-pkgname=eilmeldung
+pkgname=eilmeldung-git
 pkgver=r283.01c760a
 pkgrel=1
 pkgdesc="a TUI RSS reader based on the news-flash library"

@@ -1,4 +1,4 @@
-pkgbase = eilmeldung
+pkgbase = eilmeldung-git
 	pkgdesc = a TUI RSS reader based on the news-flash library
 	pkgver = r283.01c760a
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = eilmeldung
 	source = git+https://github.com/christo-auer/eilmeldung.git
 	sha256sums = SKIP
 
-pkgname = eilmeldung
+pkgname = eilmeldung-git
