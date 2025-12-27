@@ -1,0 +1,3 @@
+[concurrently]
+source = "npm"
+npm = "concurrently"
