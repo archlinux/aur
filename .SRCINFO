@@ -1,13 +1,13 @@
 pkgbase = hyprsession
-	pkgdesc = A session manager for Hyprland
-	pkgver = 0.1.5
-	pkgrel = 1
+	pkgdesc = Saves hyprland sessions
+	pkgver = 0.2.0
+	pkgrel = 4
 	url = https://github.com/joshurtree/hyprsession
-	arch = any
-	license = GPL-3.0
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
 	makedepends = cargo
-	depends = hyprland
-	source = hyprsession-0.1.5.tar.gz::https://github.com/joshurtree/hyprsession/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = b05e0bbf528eb2e9f6ad3c0c57dfe21d2f4c501516efb43b83257b861157581a
+	source = -.tar.gz::https://github.com/joshurtree/hyprsession/archive/refs/tags/v.tar.gz
+	sha256sums = 17485082b93ee691a42c3de61ee632d1d67be3f0cadc2f11c3287e34552b420f
 
 pkgname = hyprsession
