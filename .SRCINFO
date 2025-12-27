@@ -27,6 +27,9 @@ pkgbase = libasciichat
 	options = docs
 	options = ccache
 	source = ascii-chat-0.4.12-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.4.12/ascii-chat-0.4.12-full.tar.gz
+	source = ascii-chat-0.4.12-full.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v0.4.12/ascii-chat-0.4.12-full.tar.gz.asc
+	validpgpkeys = F315D1B948F33B2102FBD7B6B95124621822044A
 	sha256sums = 380bd84ff5811d33a0fdf6c98a0cee3add62deeb93636f9206268b5d8261c91a
+	sha256sums = SKIP
 
 pkgname = libasciichat

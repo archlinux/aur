@@ -26,8 +26,11 @@ provides=('libasciichat')
 conflicts=('libasciichat')
 options=('staticlibs' 'lto' 'docs' 'ccache')
 
-source=("ascii-chat-$pkgver-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/ascii-chat-$pkgver-full.tar.gz")
-sha256sums=('380bd84ff5811d33a0fdf6c98a0cee3add62deeb93636f9206268b5d8261c91a')
+validpgpkeys=('F315D1B948F33B2102FBD7B6B95124621822044A')  # Zachary Fogg <me@zfo.gg>
+source=("ascii-chat-$pkgver-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/ascii-chat-$pkgver-full.tar.gz"
+        "ascii-chat-$pkgver-full.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/ascii-chat-$pkgver-full.tar.gz.asc")
+sha256sums=('380bd84ff5811d33a0fdf6c98a0cee3add62deeb93636f9206268b5d8261c91a'
+            'SKIP')
 
 prepare() {
   cd "ascii-chat-$pkgver"
