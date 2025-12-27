@@ -23,7 +23,7 @@ makedepends=(
     python-setuptools
 )
 depends=(
-    dotnet-sdk-8.0
+    dotnet-runtime-8.0
     lttng-ust
     fontconfig
     libglvnd
