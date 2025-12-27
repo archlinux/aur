@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="bentopdf"
-pkgver=1.11.2
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A Privacy First PDF Toolkit"
 arch=("any")
@@ -12,7 +12,7 @@ optdepends=("caddy: for serving bentopdf"
             "nginx: for serving bentopdf"
             "traefik: for serving bentopdf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d21f06b32f3fffcc2c5938327618024ef755aa2846520e50a4bcfd3bd9c8ff53')
+sha256sums=('51a250d25e31f77a82c7b491b5c8a45d0a0900b2d05c66d384cb622778a959d3')
 
 build() {
     cd "${pkgname}-${pkgver}"
