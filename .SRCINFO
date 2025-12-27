@@ -1,0 +1,21 @@
+pkgbase = python-raztodo
+	pkgdesc = A fast, minimal dependency command-line todo/task manager backed by SQLite.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/razbuild/raztodo
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-raztint
+	provides = python-raztodo
+	conflicts = python-raztodo
+	options = !emptydirs
+	source = python-raztodo-0.2.1.tar.gz::https://github.com/razbuild/raztodo/archive/v0.2.1.tar.gz
+	sha256sums = 4a6201584d54d693c74bd50e768bed44fac19da6225d433c07985b59166f5a67
+
+pkgname = python-raztodo
