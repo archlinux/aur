@@ -34,6 +34,7 @@ pkgbase = ascii-chat-git
 	options = lto
 	options = ccache
 	source = ascii-chat-git::git+https://github.com/zfogg/ascii-chat.git
+	validpgpkeys = F315D1B948F33B2102FBD7B6B95124621822044A
 	sha256sums = SKIP
 
 pkgname = ascii-chat-git
