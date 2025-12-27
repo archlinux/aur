@@ -22,6 +22,4 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/arch
 b2sums=('3e57ec2b2282f409185460e0d3cbd7fe34d895c964525c68a28f5e6c86ea171016864fdbfba8758926ac3c2053b272040f4203069f1450c0ff87bf8106c4bcc4')
 
 
-package() {
-	"SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver" --rootdir=${pkgdir}
-}
+package() { "SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver" --rootdir=${pkgdir}; }
