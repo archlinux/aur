@@ -1,4 +1,4 @@
-# Maintainer: MCB-SMART-BOY <your-email@example.com>
+# Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-git
 pkgver=0.1.0.r4.ge26e6e0
 pkgrel=1
