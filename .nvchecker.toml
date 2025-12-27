@@ -1,0 +1,4 @@
+[wsjtx-improved-qt6]
+source = "regex"
+url = "https://sourceforge.net/projects/wsjt-x-improved/files/"
+regex = '>WSJT-X_v([\.0-9]+)<'

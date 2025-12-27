@@ -1,0 +1,46 @@
+pkgbase = wsjtx-improved-qt6
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/wsjt-x-improved/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = asciidoc
+	makedepends = asciidoctor
+	makedepends = boost
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = fftw
+	depends = hamlib
+	depends = libboost_filesystem.so
+	depends = libboost_log.so
+	depends = libboost_log_setup.so
+	depends = libboost_thread.so
+	depends = libusb
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-serialport
+	depends = qt6-websockets
+	provides = wsjtx
+	conflicts = wsjtx
+	noextract = wsjtx-improved-qt6-3.0.0.tar.gz
+	noextract = wsjtx-improved-al-qt6-3.0.0.tar.gz
+	noextract = wsjtx-improved-widescreen-qt6-3.0.0.tar.gz
+	options = !lto
+	source = wsjtx-improved-qt6-3.0.0.tar.gz::https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v3.0.0/Source%20code/Qt6/wsjtx-3.0.0_improved_PLUS_251212_qt6.tgz
+	source = wsjtx-improved-al-qt6-3.0.0.tar.gz::https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v3.0.0/Source%20code/Qt6/wsjtx-3.0.0_improved_AL_PLUS_251212_qt6.tgz
+	source = wsjtx-improved-widescreen-qt6-3.0.0.tar.gz::https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v3.0.0/Source%20code/Qt6/wsjtx-3.0.0_improved_widescreen_PLUS_251212_qt6.tgz
+	sha256sums = 46d9645e585e929ba1e3e9eb8e5e737419be1719d8db261120bca6868ac8a18a
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wsjtx-improved-qt6
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB, Standard
+
+pkgname = wsjtx-improved-al-qt6
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB, Alternative
+
+pkgname = wsjtx-improved-widescreen-qt6
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB, Widescreen
