@@ -1,0 +1,3 @@
+[python-ssh-lite]
+source = "pypi"
+pypi = "ssh-lite"
