@@ -1,6 +1,6 @@
 pkgbase = namp
 	pkgdesc = Terminal-based audio player
-	pkgver = 2.42
+	pkgver = 2.43
 	pkgrel = 1
 	url = https://github.com/d99kris/namp
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = namp
 	depends = taglib
 	provides = namp
 	conflicts = namp
-	source = https://github.com/d99kris/namp/archive/refs/tags/v2.42.tar.gz
-	sha256sums = c17f8adb6db52f76441425ace9e8acdd6ded2cef4163fe48f0b90435355178b7
+	source = namp-2.43.tgz::https://github.com/d99kris/namp/archive/refs/tags/v2.43.tar.gz
+	sha256sums = 2cf01db0723fc7537ac41e416e8b0eeca538a5521acc19db8ba68dd54a0187a6
 
 pkgname = namp
