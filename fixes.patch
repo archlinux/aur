@@ -1,9 +1,9 @@
---- src/plink2/2.0/build_dynamic/Makefile	2025-08-27 19:42:16.630221522 +0530
-+++ src/plink2-patched/2.0/build_dynamic/Makefile	2025-08-27 19:41:44.958582345 +0530
-@@ -17,20 +17,20 @@
+--- src/plink2/2.0/build_dynamic/Makefile	2025-12-27 16:52:53.591939278 +0530
++++ src/plink2-patched/2.0/build_dynamic/Makefile	2025-12-27 17:00:29.089812189 +0530
+@@ -17,24 +17,24 @@
  #     FORCE_32BIT (warning: you may need to add a zconf.h symlink to make that
  #     work)
- #   Debug symbols: set DEBUG to -g
+ #   Debug symbols: change DEBUG to -g (still incompatible with -flto?)
 -NO_AVX2 = 1
 -NO_SSE42 = 1
 -CPU_CHECK = 1
@@ -17,7 +17,6 @@
 -STATIC_AOCL =
 -AOCLROOT = /home/admin/aocl/5.1.0/gcc
 -FORCE_32BIT =
--DEBUG =
 +NO_AVX2 ?=
 +NO_SSE42 ?=
 +CPU_CHECK ?= 1
@@ -25,17 +24,22 @@
 +ZSTD_O2 ?= 1
 +STATIC_ZLIB ?=
 +STATIC_ZSTD ?= 1
-+DYNAMIC_MKL ?= 
++DYNAMIC_MKL ?=
 +MKLROOT ?= /opt/intel/oneapi/mkl/latest
 +MKL_IOMP5_DIR ?= /opt/intel/oneapi/compiler/latest/lib
 +STATIC_AOCL ?=
 +AOCLROOT ?=
 +FORCE_32BIT ?=
-+DEBUG ?=
+ # Warning: I have observed intermittent (i.e. has always disappeared on retry
+ # in my testing so far) gcc 10.2 crashes with -flto.  I'm leaving -flto here
+ # for now since I have yet to see a miscompilation when gcc doesn't crash, but
+ # this requires further investigation.
+-DEBUG = -flto
++DEBUG ?= -flto
  CC ?= gcc
  CXX ?= g++
  
-@@ -51,7 +51,7 @@
+@@ -55,7 +55,7 @@
    STATIC_ZLIB = 1
    ZSTD_O2 = 1
    ARCH32 = -m32 -march=i686
@@ -44,8 +48,8 @@
  else
    ifdef NO_AVX2
      ifndef NO_SSE42
-@@ -68,7 +68,7 @@
-       CPUCHECK_FLAGS = -O2 -DCPU_CHECK_AVX2 ${CXXWARN2}
+@@ -72,7 +72,7 @@
+       CPUCHECK_FLAGS = ${DEBUG} -O2 -DCPU_CHECK_AVX2 ${CXXWARN2}
      endif
    endif
 -  CXXFLAGS = -std=c++11
@@ -53,7 +57,7 @@
  endif
  BASEFLAGS += ${ARCH32}
  
-@@ -165,6 +165,13 @@
+@@ -188,6 +188,13 @@
  
  SFX ?= ""
  
@@ -67,7 +71,7 @@
  all: plink2$(SFX) pgen_compress$(SFX)
  
  plink2$(SFX): $(CSRC2) $(ZCSRC2) $(ZSSRC2) $(CCSRC2) ../plink2_cpu.cc
-@@ -193,12 +200,17 @@
+@@ -216,12 +223,17 @@
  static_plink2lib_test: plink2lib.a ../pgen_compress.cc
  	$(CXX) $(CXXFLAGS) -o $@ ../pgen_compress.cc -L. plink2lib.a
  
@@ -77,7 +81,7 @@
 +
 +install:
 +	$(MKDIR) -p $(DESTDIR)$(PREFIX)/bin
-+	$(INSTALL) -c * $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) plink2 pgen_compress *.a $(DESTDIR)$(PREFIX)/bin
 +	rm $(DESTDIR)$(PREFIX)/bin/Makefile $(DESTDIR)$(PREFIX)/bin/*.o
 +
  clean:

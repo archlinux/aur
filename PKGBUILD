@@ -4,7 +4,7 @@ pkgname="$_pkgname-mkl-git"
 # Upstream has changed tag formats, epoch is necessary
 epoch=1
 _pkgver=2.0
-pkgver=2.0.a.6.17.r27.g281b4937
+pkgver=2.0.a.6.17.r84.gacb45ef4
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-co
 makedepends=('git')
 provides=('plink2')
 sha256sums=('SKIP'
-            '7b6b3c9b418bf3e8e59e1311e59554540407bef99eb85e78fdcb8f26e2e40852')
+            '70c3c14ea410e0291e1398747ad263d02f2f8c091c5d9444f18b844b4fcdbf2b')
 
 prepare() {
     cd "$_pkgname/$_pkgver/build_dynamic"
