@@ -1,0 +1,3 @@
+AUR VCS package for https://github.com/h33333333/xray
+
+paru -Sy xray-oci-git
