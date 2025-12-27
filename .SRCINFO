@@ -1,6 +1,6 @@
 pkgbase = githem
 	pkgdesc = turn git repositories into llm ready text
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/githem
 	arch = x86_64

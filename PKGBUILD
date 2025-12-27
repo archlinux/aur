@@ -2,7 +2,7 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=githem
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="turn git repositories into llm ready text"
 arch=('x86_64')
