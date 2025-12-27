@@ -2,7 +2,7 @@
 pkgname=ebsl
 pkgver=2.6.0
 pkgrel=4
-pkgdesc="Equals-based Serialization Language"
+pkgdesc="A shell-accessible configuration file format."
 arch=('any')
 url="https://github.com/aarikpokras/ebsl"
 license=('MIT')

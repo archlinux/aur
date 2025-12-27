@@ -1,5 +1,5 @@
 pkgbase = ebsl
-	pkgdesc = Equals-based Serialization Language
+	pkgdesc = A shell-accessible configuration file format.
 	pkgver = 2.6.0
 	pkgrel = 4
 	url = https://github.com/aarikpokras/ebsl
