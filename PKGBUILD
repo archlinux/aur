@@ -1,7 +1,7 @@
 # Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=thextech-assetpack-aod
 _packname=adventure-of-demo
-pkgver=v1.3.7.beta
+pkgver=v1.3.7.2
 pkgrel=1
 pkgdesc="Adventures of Demo game assets for TheXTech"
 arch=('any')
@@ -11,9 +11,9 @@ depends=('thextech')
 makedepends=('p7zip')
 provides=('thextech-assetpack')
 conflicts=('thextech-supermariobrosx')
-source=("assets.7z::https://github.com/TheXTech/TheXTech/releases/download/v1.3.7-beta/thextech-${_packname}-assets-full-v1.3.7-beta.7z")
+source=("assets.7z::https://github.com/TheXTech/TheXTech/releases/download/${pkgver}/thextech-${_packname}-assets-full-${pkgver}.7z")
 noextract=("assets.7z")
-sha256sums=("6484e481a929ec5764b250ab8a053f1b5d0f938fdcd5fd0a9986b7671b31af42")
+sha256sums=("6b39276a7763309ac4ccc95d379bbb00fcc23373c4a5722248e1d40fe8b8d0e0")
 options=('!strip')
 
 package() {
