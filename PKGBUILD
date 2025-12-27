@@ -1,20 +1,20 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-sway
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Sway compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
 license=('MIT')
-depends=('greetd' 'kitty' 'sway' 'swww')
+depends=('greetd' 'kitty' 'sway' 'gslapper')
 optdepends=(
-    'gslapper: Video wallpaper support'
+    'swww: Legacy wallpaper support (fallback)'
 )
 makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-hyprland' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d19603a906b95a8a2108d568255968dc1def8594a03dd51772ff372fb18f594e')
+sha256sums=('0d9498d39754df89a5c91d87270246b8081855f297a748cd617f52ec72c2d2ef')
 backup=('etc/greetd/config.toml' 'etc/greetd/sway-greeter-config' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-sway.install
 
@@ -89,7 +89,7 @@ input type:touchpad {
 for_window [app_id="kitty"] fullscreen enable
 
 # Startup applications
-exec swww-daemon
+exec gslapper -f -I /tmp/sysc-greet-wallpaper.sock '*' /usr/share/sysc-greet/wallpapers/sysc-greet-default.png
 exec "XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet; swaymsg exit"
 EOF
 
