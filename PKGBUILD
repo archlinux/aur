@@ -2,7 +2,7 @@
 # Maintainer: Jove Yu <yushijun110@gmail.com>
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-linux
-pkgname=('wps-office-linux' 'wps-office-linux-fonts')
+pkgname=('wps-office-linux')
 pkgver=12.1.2.23578
 pkgrel=1
 pkgdesc="WPS Office: Writer, Presentation, and Spreadsheets. Compatible with MS Office."
@@ -16,7 +16,6 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core'
          'glu' 'libsm' 'libxrender' 'fontconfig' 'libxext' 'libxcb' 'bzip2')
 optdepends=(
   'ttf-mscorefonts-installer: for better MS Office compatibility'
-  'wps-office-linux-fonts: FZ TTF fonts provided by wps office'
   'cups: for printing support')
 options=('!strip' '!buildflags')
 
@@ -80,10 +79,4 @@ package_wps-office-linux() {
     #安装授权许可文件 (根据 control，WPS 有其自定义协议)
     #install -D -m644 "opt/kingsoft/wps-office/office6/mui/zh_CN/zyjkylin_License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     #install -D -m644 "opt/kingsoft/wps-office/office6/mui/zh_CN/zyjkylin_EULA_linux.html" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-}
-
-package_wps-office-linux-fonts() {
-  conflicts=('wps-office-fonts')
-  provides=('wps-office-fonts')
-  _install ./etc/fonts ./usr/share/fonts
 }

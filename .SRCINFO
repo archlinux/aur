@@ -27,18 +27,13 @@ pkgbase = wps-office-linux
 	depends = libxcb
 	depends = bzip2
 	optdepends = ttf-mscorefonts-installer: for better MS Office compatibility
-	optdepends = wps-office-linux-fonts: FZ TTF fonts provided by wps office
 	optdepends = cups: for printing support
 	options = !strip
 	options = !buildflags
-	source = wps-office-linux-12.1.2.23578.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/23578/wps-office_12.1.2.23578.AK.preread.sw_542488_amd64.deb?t=1766816720&k=a4fec39278ada07aba529f39330e5afb
+	source = wps-office-linux-12.1.2.23578.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/23578/wps-office_12.1.2.23578.AK.preread.sw_542488_amd64.deb?t=1766818943&k=1953176cd6c3f8949411b5fddee8f318
 	sha256sums = 20c9259c7eab08f6451c494b145e80b7941d0e0ed4b7f941645c3ea0fc106167
 
 pkgname = wps-office-linux
 	install = wps-office-linux.install
 	provides = wps-office
 	conflicts = wps-office
-
-pkgname = wps-office-linux-fonts
-	provides = wps-office-fonts
-	conflicts = wps-office-fonts
