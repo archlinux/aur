@@ -1,7 +1,7 @@
 pkgbase = uzdoom-git
 	pkgdesc = A fork of GZDoom, a feature-centric fork of ZDoom
-	pkgver = 4.15pre+765+g4be5c66
-	pkgrel = 1
+	pkgver = 4.14pre+1050+gdb1f1f7
+	pkgrel = 2
 	url = https://github.com/UZDoom/UZDoom
 	arch = x86_64
 	license = BSD
@@ -32,7 +32,6 @@ pkgbase = uzdoom-git
 	optdepends = kdialog: crash dialog (KDE)
 	optdepends = strife0-wad: Strife shareware game data
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
-	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
 	optdepends = zmusic-git: System-level ZMusic instead of static compile (requires cmake option change)
 	provides = uzdoom

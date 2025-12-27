@@ -2,8 +2,8 @@
 # A lot of this code was copied from Maddie's GZDoom-git package
 
 pkgname=uzdoom-git
-pkgver=4.15pre+765+g4be5c66
-pkgrel=1
+pkgver=4.14pre+1050+gdb1f1f7
+pkgrel=2
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 provides=(uzdoom)
 conflicts=('uzdoom' 'uzdoom-bin')
@@ -31,7 +31,6 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'kdialog: crash dialog (KDE)'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
-            'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)'
             'zmusic-git: System-level ZMusic instead of static compile (requires cmake option change)')
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
