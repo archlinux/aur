@@ -2,7 +2,7 @@
 
 _pkgname=inform6lib
 pkgname=inform-stdlib
-pkgver=6.12.7
+pkgver=6.12.8
 pkgrel=1
 pkgdesc="Inform 6 standard library"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://gitlab.com/DavidGriffith/inform6lib"
 license=('Artistic2.0')
 groups=('inform')
 source=("https://gitlab.com/DavidGriffith/inform6lib/-/archive/$pkgver/inform6lib-$pkgver.tar.gz")
-sha256sums=('097dd51921d365a34172b3b5c9d56c41756b4de942dda556e719db333ef966b9')
+sha256sums=('9c48e1f59240a5e07b0d3a0cdd843619ed8e4926c2ea0cbff88484048e203601')
 
 package() {
   install -vdm755 "$pkgdir/usr/share/$pkgname"
