@@ -4,7 +4,7 @@
 
 pkgname=python-nestedtext
 _pkg="${pkgname#python-}"
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
@@ -13,7 +13,7 @@ url='https://github.com/KenKundert/nestedtext'
 depends=('python-inform')
 makedepends=('python-build' 'python-installer' 'python-flit-core' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('0a58fe2789535139b9eb532b7bb6e810e5e288421b061eab6c942839e88a796d')
+sha256sums=('01f0a7b9c7339e7ca540c46f7d41d68a45fa067d7a9d873cebaac8157c9ce6dd')
 
 build() {
 	cd "$_pkg-$pkgver"
