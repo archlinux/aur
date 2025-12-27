@@ -1,0 +1,14 @@
+pkgbase = tuxxy
+	pkgdesc = Bash script that fetches aur packages and installs them.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TuxxyThePenguin/tuxxy
+	arch = any
+	license = GNU GPLv3-or-later
+	makedepends = git
+	depends = git
+	depends = base-devel
+	source = tuxxy.sh
+	sha256sums = SKIP
+
+pkgname = tuxxy
