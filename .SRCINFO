@@ -1,0 +1,14 @@
+pkgbase = gluhncheck
+	pkgdesc = Check number with Luhn's algorithm
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/gluhncheck
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = libsimple
+	depends = gtk2
+	source = gluhncheck-1.0.tar.gz::https://codeberg.org/maandree/gluhncheck/archive/1.0.tar.gz
+	sha256sums = 06ccf4a7eaa0f8def9567234ade1b56c0e8f4fca1ad3c4e6d1941e9b85a9ca75
+
+pkgname = gluhncheck
