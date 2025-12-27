@@ -1,6 +1,6 @@
 pkgbase = python-technical
 	pkgdesc = Various indicators developed or collected for the Freqtrade.
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/freqtrade/technical
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-technical
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-ta-lib
-	source = python-technical-v1.5.3.tar.gz::https://github.com/freqtrade/technical/archive/refs/tags/1.5.3.tar.gz
-	sha512sums = a214fa29acf348f52152c9be45c1bdf8ac2da0313cd4343911c4fab26d3bc3774b20a1dde2e3a1584c6981ae80ecf83ef65c8d99d0271bc0a07b64f54ccd8711
+	source = python-technical-v1.5.4.tar.gz::https://github.com/freqtrade/technical/archive/refs/tags/1.5.4.tar.gz
+	sha512sums = 6c1382210cbf6765b08f709570145ef77b7c89ec8a4d5d0d220f521fb2dfb71ffe03c0a021bf8fe7694db24b640cb72b69eda1b76ab454837409275c5addc456
 
 pkgname = python-technical
