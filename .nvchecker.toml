@@ -1,0 +1,3 @@
+[chokidar-cli]
+source = "npm"
+npm = "chokidar-cli"

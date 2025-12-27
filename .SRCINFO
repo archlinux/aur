@@ -1,0 +1,22 @@
+pkgbase = chokidar-cli
+	pkgdesc = Fast cross-platform cli utility to watch file system changes
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/open-cli-tools/chokidar-cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = chokidar
+	replaces = nodejs-chokidar-cli
+	noextract = chokidar-cli-3.0.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = chokidar-cli-3.0.0.tgz::https://registry.npmjs.org/chokidar-cli/-/chokidar-cli-3.0.0.tgz
+	b2sums = e44c8a12c9263f1a3c5330af6e27ac05c35af18eaf806d68d2744b4c01affa6c5b679d1d9d0bc5344db815ea0410e57c9b5b0f2200f188f981776b8676afa853
+
+pkgname = chokidar-cli
