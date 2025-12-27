@@ -1,6 +1,6 @@
 pkgbase = inkscape-bin
 	pkgdesc = Professional vector graphics editor - Prebuilt AppImage
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://inkscape.org
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = inkscape-bin
 	optdepends = pstoedit: PostScript support
 	provides = inkscape
 	conflicts = inkscape
-	noextract = inkscape-1.4.2.AppImage
+	noextract = inkscape-1.4.3.AppImage
 	options = !strip
-	source = inkscape-1.4.2.AppImage::https://inkscape.org/gallery/item/56343/Inkscape-ebf0e94-x86_64.AppImage
+	source = inkscape-1.4.3.AppImage::https://inkscape.org/gallery/item/58919/Inkscape-0d15f75-x86_64.AppImage
 	source = inkscape.desktop
-	sha256sums = 99c333c03ce77e207942ddcd5c8a5b77cde89959a23651bc7872ae880cf4ba6b
+	sha256sums = cb65ccb4bb070d9b8a61483e5cbfd0340c1e10c048db4a677053caad14be5e69
 	sha256sums = SKIP
 
 pkgname = inkscape-bin

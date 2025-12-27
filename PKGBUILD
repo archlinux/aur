@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff gfxoxinzh@mozmail.com
 pkgname=inkscape-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Professional vector graphics editor - Prebuilt AppImage"
 arch=('x86_64')
@@ -16,9 +16,9 @@ optdepends=('python: for extensions'
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!strip')
-source=("inkscape-${pkgver}.AppImage::https://inkscape.org/gallery/item/56343/Inkscape-ebf0e94-x86_64.AppImage"
+source=("inkscape-${pkgver}.AppImage::https://inkscape.org/gallery/item/58919/Inkscape-0d15f75-x86_64.AppImage"
         "inkscape.desktop")
-sha256sums=('99c333c03ce77e207942ddcd5c8a5b77cde89959a23651bc7872ae880cf4ba6b'
+sha256sums=('cb65ccb4bb070d9b8a61483e5cbfd0340c1e10c048db4a677053caad14be5e69'
             'SKIP')
 noextract=("inkscape-${pkgver}.AppImage")
 
