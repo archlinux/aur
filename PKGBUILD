@@ -13,6 +13,7 @@ license=("MIT")
 
 provides=("${_npmname%%-cli}")
 replaces=("nodejs-${_npmname}")
+conflicts=("nodejs-${_npmname}")
 
 makedepends=("npm" "jq")
 depends=("glibc" "nodejs")

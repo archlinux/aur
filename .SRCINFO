@@ -10,6 +10,7 @@ pkgbase = chokidar-cli
 	depends = glibc
 	depends = nodejs
 	provides = chokidar
+	conflicts = nodejs-chokidar-cli
 	replaces = nodejs-chokidar-cli
 	noextract = chokidar-cli-3.0.0.tgz
 	options = !strip
