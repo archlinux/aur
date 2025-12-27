@@ -59,8 +59,9 @@ package() {
   DESTDIR="$pkgdir" meson install -C build/
   
   # Create lowercase symlink for easier access
-  ln -s LabFyre "$pkgdir/usr/bin/labfyre"
+  install -d "$pkgdir/usr/bin"
+  ln -sf LabFyre "$pkgdir/usr/bin/labfyre"
   # Create labwc symlink for compatibility
-  ln -s labfyre "$pkgdir/usr/bin/labwc"
+  ln -sf labfyre "$pkgdir/usr/bin/labwc"
 }
 
