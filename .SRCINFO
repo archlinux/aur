@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 20.2.3
+	pkgver = 20.3.1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -35,9 +35,9 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = file://DaVinci_Resolve_20.2.3_Linux.zip
+	source = file://DaVinci_Resolve_20.3.1_Linux.zip
 	source = davinci-control-panels-setup.sh
-	sha256sums = e3bfeb9a671b10d4a3dbb0ac02772d2c81bbc3167048b3072c44bee2f14d50ee
+	sha256sums = d260846741029d07182fb568a98e1fe22fb1eff438b04224f0c5d8a6cd2a3243
 	sha256sums = f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8
 
 pkgname = davinci-resolve
