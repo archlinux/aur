@@ -1,7 +1,7 @@
 # Maintainer: ycna07 <aozakitouko at foxmail dot com>
 pkgname=myune_music-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="一个基于 Flutter (Dart) 实现的简洁本地音乐播放器，支持 Windows / Linux 双端。"
 arch=('x86_64')
 _pkgname=${pkgname%-bin} 
@@ -30,7 +30,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!debug')  # 禁用 debug 包
 source=("${_pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/MyuneMusic_v${pkgver}_linux-x64.tar.xz")
-sha256sums=('5d8cb4e1b2886f22509b1955408a02ebec6ccbc88b157cb6ee0c9600c146c97c')
+sha256sums=('b50520a582ddfc06d3d3e4e2e0d206b1e97356d38359b99eab1a147289855746')
 
 
 package() {
