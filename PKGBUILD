@@ -2,7 +2,7 @@
 
 pkgname=serial-studio
 _pkgname=Serial-Studio
-pkgver=3.1.10
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -29,7 +29,6 @@ depends=(
     libffi
     libglvnd
     libgudev
-    libldap
     libice
     libpng
     libpsl
@@ -84,7 +83,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('6d3fb24a2cfed6d64c1961cf9af8f12969d167b09427c93bb396f5f1bb37c4b8')
+sha256sums=('c0fca614a5bba3760748765bb677526f5665acd71705766a1c20c18ab887b734')
 noextract=()
 
 build() {
