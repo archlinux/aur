@@ -35,6 +35,7 @@ pkgbase = libasciichat-git
 	options = docs
 	options = ccache
 	source = libasciichat-git::git+https://github.com/zfogg/ascii-chat.git
+	validpgpkeys = F315D1B948F33B2102FBD7B6B95124621822044A
 	sha256sums = SKIP
 
 pkgname = libasciichat-git

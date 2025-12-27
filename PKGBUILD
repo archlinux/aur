@@ -34,6 +34,7 @@ provides=('libasciichat')
 conflicts=('libasciichat')
 options=('staticlibs' 'lto' 'docs' 'ccache')
 
+validpgpkeys=('F315D1B948F33B2102FBD7B6B95124621822044A')  # Zachary Fogg <me@zfo.gg>
 source=("$pkgname::git+https://github.com/zfogg/ascii-chat.git")
 sha256sums=('SKIP')
 
