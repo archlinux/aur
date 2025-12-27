@@ -1,5 +1,5 @@
 pkgbase = pascube-git
-	pkgdesc = A simple vulkan spinning cube written in Pascal (Lazarus/Qt6)
+	pkgdesc = A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)
 	pkgver = 1.6.1.r4.g534a4db
 	pkgrel = 1
 	url = https://github.com/benjamimgois/pascube
@@ -9,6 +9,7 @@ pkgbase = pascube-git
 	makedepends = fpc
 	makedepends = fpc-src
 	makedepends = lazarus
+	makedepends = clang
 	depends = qt6-base
 	depends = qt6pas
 	depends = mesa
