@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Raku Music
+Exec=raku-music
+Icon=raku-music
+Type=Application
+Categories=Audio;Music;
+StartupWMClass=raku_music

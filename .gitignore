@@ -1,0 +1,24 @@
+# makepkg directories
+src/
+pkg/
+
+# built packages
+*.pkg.tar.*
+*.log
+
+# downloaded sources
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# debug packages
+*-debug/
+
+# editor junk
+*.swp
+*.swo
+*~
+
+# misc
+.DS_Store
