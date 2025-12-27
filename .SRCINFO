@@ -1,0 +1,16 @@
+pkgbase = try-rs-git
+	pkgdesc = A blazing fast, Rust-based workspace manager for your temporary experiments
+	pkgver = 0.1.18.r0.g50732a1
+	pkgrel = 1
+	url = https://github.com/tassiovirginio/try-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = try-rs
+	conflicts = try-rs
+	source = try-rs-git::git+https://github.com/tassiovirginio/try-rs
+	sha256sums = SKIP
+
+pkgname = try-rs-git
