@@ -4,13 +4,13 @@
 pkgname=qdirstat-git
 _pkgname=qdirstat
 epoch=1
-pkgver=1.8.1.r42.g8174478
+pkgver=last.qt5.version.r34.g75a221c
 pkgrel=1
 pkgdesc="GUI disk usage utility (successor to kdirstat)"
 arch=('i686' 'x86_64')
 url="https://github.com/shundhammer/qdirstat"
 license=('GPL2')
-depends=('qt5-base')
+depends=('qt6-base')
 makedepends=('git')
 provides=('qdirstat')
 conflicts=('qdirstat')
@@ -24,7 +24,7 @@ pkgver() {
 
 build () {
     cd "$srcdir/${_pkgname}"
-    qmake-qt5
+    qmake6
     make
 }
 
