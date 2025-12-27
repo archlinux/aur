@@ -4,11 +4,12 @@
 
 pkgname=simagef-bin
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for finding similar images"
 url="https://github.com/gert7/simagef"
 license=("GPL-3.0-or-later")
 arch=("x86_64")
+depends=("dav1d")
 provides=("simagef")
 conflicts=("simagef")
 source=("https://github.com/gert7/simagef/releases/download/v$pkgver/simagef-$pkgver-x86_64.tar.gz")
