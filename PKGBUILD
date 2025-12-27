@@ -1,4 +1,4 @@
-# Maintainer: Dragynrain <your@email.com>
+# Maintainer: Dragynrain <roguesignalprotocol@gmail.com>
 # AUR Package: rogue-signal-protocol-bin
 #
 # Installation:
