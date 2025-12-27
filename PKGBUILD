@@ -1,6 +1,6 @@
 # Maintainer: Rotko Networks <hq@rotko.net>
 pkgname=zish
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="fast shell interpreter written in zig"
 arch=('x86_64')
