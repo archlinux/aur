@@ -1,7 +1,7 @@
 # This is an AUR PKGBUILD for gridlock-bin.
 # Maintainer: Esaias Westberg <esaias@westbergs.se>
 pkgname=gridlock-bin
-pkgver=0.0.3 # Update this to the latest version
+pkgver=0.0.4 # Update this to the latest version
 pkgrel=1
 pkgdesc="A powerful TMUX session manager and automator"
 arch=('x86_64' 'aarch64')
