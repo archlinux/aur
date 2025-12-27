@@ -6,7 +6,6 @@ pkgdesc = A native-like attempt to unify your clients with a fast, modern, and c
 url = https://github.com/Lazap-Development/Lazap
 license = GPL3
 arch = x86_64
-depends = mesa
 depends = libunistring
 provides = lazap
 conflicts = lazap
