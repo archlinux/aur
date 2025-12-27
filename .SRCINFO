@@ -1,6 +1,6 @@
 pkgbase = gslapper
-	pkgdesc = Wayland wallpaper utility combining swww and mpvpaper features, using GStreamer for NVIDIA compatibility
-	pkgver = 1.3.1
+	pkgdesc = Wallpaper utility for Wayland with video/image support and instant switching via RAM cache
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/gSlapper
 	install = gslapper.install
@@ -16,7 +16,7 @@ pkgbase = gslapper
 	depends = wayland
 	optdepends = gst-plugins-ugly: additional codec support
 	optdepends = gst-libav: FFmpeg-based codec support
-	source = gslapper-1.3.1.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.3.1.tar.gz
-	sha256sums = 241d95b4f95ee4b985455350f99dd04a30008fdada82d58f9ccf4201320ed893
+	source = gslapper-1.4.0.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.4.0.tar.gz
+	sha256sums = 7b8039cbb83d12ef900659cef367df34ff83a998e2cbef41583c5df249b3aa25
 
 pkgname = gslapper

@@ -1,8 +1,8 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=gslapper
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Wayland wallpaper utility combining swww and mpvpaper features, using GStreamer for NVIDIA compatibility"
+pkgdesc="Wallpaper utility for Wayland with video/image support and instant switching via RAM cache"
 arch=('x86_64')
 url="https://github.com/Nomadcxx/gSlapper"
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('meson' 'ninja' 'wayland-protocols')
 optdepends=('gst-plugins-ugly: additional codec support'
             'gst-libav: FFmpeg-based codec support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('241d95b4f95ee4b985455350f99dd04a30008fdada82d58f9ccf4201320ed893')
+sha256sums=('7b8039cbb83d12ef900659cef367df34ff83a998e2cbef41583c5df249b3aa25')
 install=${pkgname}.install
 
 prepare() {
@@ -33,4 +33,12 @@ package() {
 
     # Install documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    
+    # Install systemd user service (default - will be enabled post-install)
+    install -Dm644 gslapper.service \
+        "${pkgdir}/usr/lib/systemd/user/gslapper.service"
+    
+    # Install systemd template service for per-monitor instances
+    install -Dm644 gslapper@.service \
+        "${pkgdir}/usr/lib/systemd/user/gslapper@.service"
 }

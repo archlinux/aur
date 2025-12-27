@@ -1,9 +1,9 @@
 post_install() {
     echo ""
     cat <<'EOF'
-  ▄▀▀▀  ▄▀▀▀  █     ▄▀▀▀█ ▄▀▀▀▄  ▄▀▀▀▄ ▄▀▀▀▀▀ ▄▀▀▀▄
-  █ ▀▀█  ▀▀▀▄ █     █▀▀▀█ █▀▀▀   █▀▀▀  █▀▀▀▀  █▀▀▀▄
-   ▀▀▀   ▀▀▀   ▀▀▀▀ ▀   ▀ ▀      ▀      ▀▀▀▀▀ ▀   ▀
+ ▄▀▀▀  ▄▀▀▀  █     ▄▀▀▀█ ▄▀▀▀▄  ▄▀▀▀▄ ▄▀▀▀▀▀ ▄▀▀▀▄
+ █ ▀▀█  ▀▀▀▄ █     █▀▀▀█ █▀▀▀   █▀▀▀  █▀▀▀▀  █▀▀▀▄
+  ▀▀▀   ▀▀▀   ▀▀▀▀ ▀   ▀ ▀      ▀      ▀▀▀▀▀ ▀   ▀
 EOF
     echo ""
     echo "==> gSlapper installed successfully!"
@@ -16,35 +16,59 @@ EOF
     echo "  Static image:"
     echo "    gslapper -o \"fill\" DP-1 /path/to/image.jpg"
     echo ""
+    echo "  With image cache (instant switching):"
+    echo "    gslapper --cache-size 256 -I /tmp/gslapper.sock DP-1 /path/to/image.jpg"
+    echo "    echo \"change /path/to/other.jpg\" | nc -U /tmp/gslapper.sock"
+    echo ""
+    echo "Systemd Service Setup:"
+    echo ""
+    echo "  1. Create environment file (REQUIRED):"
+    echo "     mkdir -p ~/.config/gslapper"
+    echo "     echo \"WAYLAND_DISPLAY=\$WAYLAND_DISPLAY\" > ~/.config/gslapper/environment"
+    echo ""
+    echo "  2. Set initial wallpaper (run once, then Ctrl+C to save state):"
+    echo "     gslapper -o \"loop\" DP-1 /path/to/video.mp4"
+    echo ""
+    echo "  3. Enable and start service:"
+    echo "     systemctl --user daemon-reload"
+    echo "     systemctl --user enable --now gslapper.service"
+    echo ""
+    echo "  The service will automatically restore your wallpaper on login!"
+    echo ""
+    echo "  To customize the service, edit:"
+    echo "    ~/.config/systemd/user/gslapper.service"
+    echo ""
+    echo "  For per-monitor services, use:"
+    echo "    systemctl --user enable gslapper@DP-1.service"
+    echo ""
+    echo "  Full documentation:"
+    echo "    https://nomadcxx.github.io/gSlapper/systemd-service-setup/"
+    echo ""
+    echo "  What the service does:"
+    echo "    - Automatically starts gSlapper on login"
+    echo "    - Restores wallpaper from saved state"
+    echo "    - Restarts on failure"
+    echo "    - Manages Wayland environment variables"
+    echo ""
     echo "Documentation:"
     echo "  https://nomadcxx.github.io/gSlapper/"
-    echo ""
-    echo "Note: The next major release will include systemd service support"
-    echo "      for automatic wallpaper management at login."
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    cat <<'EOF'
-  ▄▀▀▀  ▄▀▀▀  █     ▄▀▀▀█ ▄▀▀▀▄  ▄▀▀▀▄ ▄▀▀▀▀▀ ▄▀▀▀▄
-  █ ▀▀█  ▀▀▀▄ █     █▀▀▀█ █▀▀▀   █▀▀▀  █▀▀▀▀  █▀▀▀▄
-   ▀▀▀   ▀▀▀   ▀▀▀▀ ▀   ▀ ▀      ▀      ▀▀▀▀▀ ▀   ▀
-EOF
-    echo ""
     echo "==> gSlapper upgraded successfully!"
     echo ""
-    echo "Quick Start Examples:"
+    echo "New in 1.4.0: Image Cache System"
+    echo "  - Instant wallpaper switching via RAM cache (--cache-size MB)"
+    echo "  - IPC commands: cache-list, cache-stats, unload, listactive"
+    echo "  - LRU eviction when cache is full"
     echo ""
-    echo "  Video wallpaper:"
-    echo "    gslapper -o \"loop\" DP-1 /path/to/video.mp4"
-    echo ""
-    echo "  Static image:"
-    echo "    gslapper -o \"fill\" DP-1 /path/to/image.jpg"
+    echo "Systemd service users:"
+    echo "  - Restart service: systemctl --user restart gslapper.service"
+    echo "  - View logs: journalctl --user -u gslapper.service -f"
+    echo "  - Reload (saves state): systemctl --user reload gslapper.service"
     echo ""
     echo "Documentation: https://nomadcxx.github.io/gSlapper/"
-    echo ""
-    echo "Note: The next major release will include systemd service support"
-    echo "      for automatic wallpaper management at login."
     echo ""
 }
