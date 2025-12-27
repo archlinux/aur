@@ -8,7 +8,6 @@ pkgbase = qobuz-player
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
-	makedepends = alsa-lib
 	depends = alsa-lib
 	conflicts = qobuz-player-git
 	options = !lto
