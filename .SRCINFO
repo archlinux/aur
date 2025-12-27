@@ -1,0 +1,13 @@
+pkgbase = mdserve-bin
+	pkgdesc = Serve a directory of markdown files for easy viewing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FireSquid6/markdown-preview-server
+	arch = x86_64
+	license = MIT
+	provides = mdserve
+	conflicts = mdserve
+	source_x86_64 = mdserve-bin-1.0.0::https://github.com/FireSquid6/markdown-preview-server/releases/download/v1.0.0/mdserve-linux-x64
+	sha256sums_x86_64 = 59299bacce472f5dbb5f8df2a90abf927ee18e58d2879ee05b798a759810c3f1
+
+pkgname = mdserve-bin
