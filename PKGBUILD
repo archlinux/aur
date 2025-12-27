@@ -19,3 +19,5 @@ package() {
     install -Dm4755 "$srcdir/syca-helper" "$pkgdir/usr/lib/syca-helper"
     install -Dm644 "$srcdir/syca.pam" "$pkgdir/etc/pam.d/syca"
 }
+
+
