@@ -33,5 +33,8 @@ depends=(
     'spicetify-marketplace-bin' 
     'wine-staging'
     'nwg-look'
+    'v4l2loopback-dkms'
+    'v4l2loopback-utils'
+    'obs-studio'
 )
 install=noon-optional.install

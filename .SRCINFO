@@ -32,5 +32,8 @@ pkgbase = noon-optional
 	depends = spicetify-marketplace-bin
 	depends = wine-staging
 	depends = nwg-look
+	depends = v4l2loopback-dkms
+	depends = v4l2loopback-utils
+	depends = obs-studio
 
 pkgname = noon-optional
