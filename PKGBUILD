@@ -1,7 +1,7 @@
 # Maintainer: Overl1te Overl1teGithub@yandex.ru
 
 pkgname=chronodash
-pkgver=2.2.0.r22.731c4b5
+pkgver=2.2.5.7_beta
 pkgrel=1
 pkgdesc="Transparent always-on-top desktop widgets (clocks, weather etc)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ pkgver() {
   cd "${srcdir}/ChronoDash"
   local count=$(git rev-list --count HEAD 2>/dev/null || echo 0)
   local hash=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
-  printf "2.2.0.r%s.%s" "$count" "$hash"
+  printf "2.2.5.7_beta.r%s.%s" "$count" "$hash"
 }
 
 prepare() {
@@ -69,14 +69,17 @@ EOF
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/chronodash.desktop" << EOF
 [Desktop Entry]
+Type=Application
+Version=1.5
 Name=ChronoDash
-Comment=Transparent desktop widgets manager (clocks, weather, metrics)
-Exec=chronodash %U
+GenericName=Desktop Widgets
+Comment=Modern, customizable desktop widgets
+Exec=chronodash
+TryExec=chronodash
 Icon=chronodash
 Terminal=false
-Type=Application
-Categories=Utility;System;
 StartupNotify=true
+Categories=Utility;System;
 EOF
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
