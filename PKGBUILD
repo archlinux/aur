@@ -1,7 +1,7 @@
 # Maintainer: Benjamim Gois <your-email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
-pkgver=1.6.1.r2.gc5b5a77
+pkgver=1.6.1.r4.g534a4db
 pkgrel=1
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
@@ -73,14 +73,18 @@ package() {
   BIN_PATH="$(< .built_binary_path)"
   [[ -x "${BIN_PATH}" ]] || { echo "Error: built binary not executable: ${BIN_PATH}"; exit 1; }
 
-  # Install the real binary under /usr/lib/pascube
-  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname%-git}/${pkgname%-git}"
+  # Install the real binary under /usr/lib/pascube/bin
+  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname%-git}/bin/${pkgname%-git}"
+
+  # Install assets into /usr/lib/pascube/assets
+  # We assume 'assets' is a directory in the build root
+  cp -a assets "${pkgdir}/usr/lib/${pkgname%-git}/"
 
   # Wrapper: force X11 via xcb
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<'EOF'
 #!/bin/sh
 export QT_QPA_PLATFORM=xcb
-exec /usr/lib/pascube/pascube "$@"
+exec /usr/lib/pascube/bin/pascube "$@"
 EOF
 
   # ---- Desktop entry ----
