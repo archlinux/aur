@@ -2,7 +2,7 @@
 
 pkgname=eilmeldung-git
 pkgver=r283.01c760a
-pkgrel=1
+pkgrel=2
 pkgdesc="a TUI RSS reader based on the news-flash library"
 arch=('x86_64')
 url="https://github.com/christo-auer/eilmeldung"
@@ -16,27 +16,27 @@ arch=('x86_64')
 options=('!lto')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/eilmeldung"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/eilmeldung"
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/eilmeldung"
   cargo build --frozen --release 
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/eilmeldung"
   cargo test --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/eilmeldung"
   install -Dm755 target/release/eilmeldung -t "${pkgdir}/usr/bin"
 }
 
