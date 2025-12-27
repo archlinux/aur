@@ -1,0 +1,9 @@
+* Web search without open web browser first (Linux)
+
+  Hi, this is my web searcher without need of browser. This will check if you input a full URL or not. If you do write for full URL. for example: google.com or https://google.com. you will be direct to https://google.com. If you not write a full URL. You will be search with DuckDuckGo with your search word you typed in.
+
+  [[https://gitlab.com/TobbeBob123/web-search-go/-/raw/master/demo/TobbeOS_webSearch.png]]
+
+** What do you need installed
+  1. YAD program
+  2. Linux or command xdg-open available
