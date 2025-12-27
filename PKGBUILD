@@ -2,7 +2,7 @@
 
 pkgname=xwaylandvideobridge
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility to allow streaming Wayland windows to X applications'
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
@@ -34,6 +34,15 @@ sha256sums=('ea72ac7b2a67578e9994dcb0619602ead3097a46fb9336661da200e63927ebe6'
 validpgpkeys=(
   E0A3EB202F8E57528E13E72FD7574483BB57B18D # Jonathan Esk-Riddell
 )
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i '/find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Quick DBus)/a\
+if (QT_MAJOR_VERSION STREQUAL "6")\
+    find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)\
+endif()' CMakeLists.txt
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

@@ -1,7 +1,7 @@
 pkgbase = xwaylandvideobridge
 	pkgdesc = Utility to allow streaming Wayland windows to X applications
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/system/xwaylandvideobridge
 	arch = x86_64
 	license = LGPL
