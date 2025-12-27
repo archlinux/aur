@@ -8,7 +8,7 @@ _pkgname=supertux
 pkgname=supertux-git
 
 pkgver=0.6.3.r1780.ga6d3088f2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game"
 url='https://www.supertux.org'
@@ -54,6 +54,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DINSTALL_SUBDIR_BIN=bin -DINSTALL_SUBDIR_SHARE=share/supertux2 \
+		-DUSE_STATIC_SIMPLESQUIRREL=ON \
 		-DSSQ_USE_SQ_SUBMODULE=ON \
 		-DENABLE_DISCORD=On
 
