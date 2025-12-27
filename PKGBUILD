@@ -12,7 +12,6 @@ arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
 options=('!strip')
-makedepends=('patchelf')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 _pkg_open="NVIDIA-kernel-module-source-${pkgver}"
 source=('nvidia-drm-outputclass.conf'

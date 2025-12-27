@@ -4,7 +4,6 @@ pkgbase = nvidia-utils
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = patchelf
 	options = !strip
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
