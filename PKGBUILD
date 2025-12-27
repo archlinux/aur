@@ -6,7 +6,7 @@
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
 pkgver=r1883.d8a3065
-pkgrel=3
+pkgrel=4
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
@@ -40,12 +40,10 @@ source=(
     git+https://invent.kde.org/plasma/plasma-login-manager
     plasmalogin.sysusers
     plasmalogin.tmpfiles
-    plasmalogin-greeter.patch
 )
 b2sums=('SKIP'
         'a2d463ed3951f5261ca472b54761dbc3d2d135a70a780c859400421e3b3d1ea1dbe18cc1bacc477165aed04e238ddad98bf36dc02e9183576ee518b3cb7b5f6e'
         '0ad6e65aea70e5866ce6bd60be717d365f431116d1831409ec263d518f6561e4089ab30253ae93d44b21b4bb1ccd49ce81917f36969301b1fa68ac8cb614dbc3'
-        '89c305f92c6fcde45a8767f58f8e8ccbeca9ebe5b7a2a96e3395514ad4a8d72d288d3406c8da2f7cbcbabbf62aee3107da9882445d17c41b6b9d5f3e8ba9b10c'
 )
 provides=(display-manager)
 backup=(
@@ -63,11 +61,6 @@ install=plasmalogin.install
 pkgver() {
     cd $_pkgname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    cd $_pkgname
-    patch -p1 -i ../plasmalogin-greeter.patch
 }
 
 build() {
