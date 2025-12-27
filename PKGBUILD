@@ -4,12 +4,12 @@
 pkgname=intel-ipu6-camera-hal-git
 _pkgname=ipu6-camera-hal
 pkgver=r126.c933525
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel IPU6 camera HAL (Tiger Lake / Alder Lake / Meteor Lake)"
 arch=('x86_64')
 url="https://github.com/intel/ipu6-camera-hal"
 license=('Apache-2.0')
-depends=('intel-ipu6-camera-bin')
+depends=('intel-ipu6-camera-bin' 'libdrm')
 makedepends=('git' 'cmake')
 provides=(ipu6-camera-hal)
 conflicts=(intel-ipu6ep-camera-hal-git)
