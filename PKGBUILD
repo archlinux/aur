@@ -1,12 +1,12 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=drm_info-git
 _pkgname=drm_info
-pkgver=2.4.0.r0.g4f4d727a
+pkgver=2.9.0.r6.ga7b4cd50
 pkgrel=1
 license=('MIT')
 pkgdesc='Small utility to dump info about DRM devices'
 makedepends=("meson" "git" "scdoc")
-depends=("libdrm" "json-c" "pciutils")
+depends=("libdrm" "json-c" "pciutils" "libdisplay-info")
 arch=("x86_64")
 url='https://gitlab.freedesktop.org/emersion/drm_info'
 source=("${_pkgname}::git+https://gitlab.freedesktop.org/emersion/drm_info.git")
