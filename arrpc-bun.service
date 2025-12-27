@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStart=/usr/bin/arrpc-bun
 Restart=on-failure
+Environment=ARRPC_STATE_FILE=1
 RestartSec=5s
 
 [Install]
