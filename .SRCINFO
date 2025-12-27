@@ -1,0 +1,13 @@
+pkgbase = aimp-skin-soot
+	pkgdesc = Skin for AIMP
+	pkgver = 3.13.1
+	pkgrel = 1
+	url = https://www.aimp.ru
+	arch = x86_64
+	license = custom
+	depends = aimp
+	provides = aimp-skin
+	source = https://www.aimp.ru/files/windows/skins/s/Soot.zip
+	sha256sums = 0271f5f68eff550933ae29c0708ebb85f7d2e3ea53cf2d50aa8b47654e72e54d
+
+pkgname = aimp-skin-soot
