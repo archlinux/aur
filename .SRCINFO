@@ -1,0 +1,18 @@
+pkgbase = obs-audio-wave-bin
+	pkgdesc = Simple, lightweight audio wave visualizer source for OBS Studio
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/mmlTools/audio-wave
+	arch = x86_64
+	groups = obs-plugins
+	license = GPL2
+	depends = obs-studio>=30.0.0
+	provides = obs-audio-wave
+	conflicts = obs-audio-wave
+	conflicts = obs-audio-wave-git
+	conflicts = obs-plugin-audio-wave-git
+	source = https://github.com/mmlTools/audio-wave/releases/download/1.2.1/audio-wave-1.2.0-x86_64-linux-gnu.deb
+	sha512sums = 107f319fe0789cc4aa8c89a237fe927872767e7e43a89d04082954642ea38a70b7aa0a3e48d149d67a422ff9bcb8e91354961d6da869388341a6b80eb31037b0
+	b2sums = a472da521389e1bb560d53de642d1ffcdc7fc2dda4c49699d143307518815ce2745489885eff734d8a4ed24aa80dea573bdd0aed2144a38923ee2623cae6be6b
+
+pkgname = obs-audio-wave-bin
