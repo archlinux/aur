@@ -6,6 +6,7 @@ tmp/
 *.log
 *.xz
 *.zst
+*.tar.gz
 
 LICENSE-*.html
 

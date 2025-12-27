@@ -4,11 +4,11 @@
 pkgname=larksuite-bin
 pkgver=7.54.11
 _pkgtyp=stable
-pkgrel=2
+pkgrel=3
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=1.2.1444
+_licensever=1.2.1445
 license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -21,7 +21,7 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 DLAGENTS=("https::/usr/bin/bash ${startdir}/dlagent-lark.sh %o %u"
 	"http::/usr/bin/bash ${startdir}/dlagent-license.sh %o %u")
 sha256sums=('aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9'
-            '5c3cce34657c98821f936b2cbebcf4c6e15594d64fda2653aff57344afa7c6a2')
+            'e75606963c4b1c39d0eb99b29cfaa797c0049a353434b189e6d5b97eb5f8e7aa')
 
 package() {
 	# License
