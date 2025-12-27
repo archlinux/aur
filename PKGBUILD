@@ -6,18 +6,18 @@
 pkgname=otf-ibm-plex
 epoch=1
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=("any")
-license=("custom")
+license=("OFL-1.1")
 source=(
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans@${pkgver}/ibm-plex-sans.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-serif@${pkgver}/ibm-plex-serif.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-mono@${pkgver}/ibm-plex-mono.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-math@${pkgver}/ibm-plex-math.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-arabic@${pkgver}/ibm-plex-sans-arabic.zip"
-	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@${pkgver}/ibm-plex-sans-condensed.zip"
+	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@2.0.0/ibm-plex-sans-condensed.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-devanagari@${pkgver}/ibm-plex-sans-devanagari.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-hebrew@${pkgver}/ibm-plex-sans-hebrew.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-jp@3.0.0/ibm-plex-sans-jp.zip"
@@ -33,7 +33,7 @@ sha256sums=(
 '4bfc936d0e1fd19db6327a3786eabdbc3dc0d464500576f6458f6706df68d26c'
 'd85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a'
 'f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013'
-'c172bedb417831bc6ba35ccb727f33959b7f2f8382902386947660bcd66a8077'
+'f86ba73abbeed7cf7690ead863192a87211dfc2b0cef0ac6bf4700533ec5ab9e'
 'effc4a35b2908c80806c97a4d5033e63f437611d17a3e09b237edd5c33d8ac94'
 'd7d490b8a767b972a7f361055fdcf60ad7cb7c270b38ff1bf859562a021369fd'
 '4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f'
