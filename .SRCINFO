@@ -1,7 +1,7 @@
 pkgbase = steamclip
 	pkgdesc = A simple PYTHON script to convert Steam recordings to .mp4 files
-	pkgver = 3.5
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://github.com/Nastas95/SteamClip
 	arch = any
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = steamclip
 	depends = python-pillow
 	depends = python-pyqt6
 	depends = python-requests
-	source = steamclip-3.5.tar.gz::https://github.com/Nastas95/SteamClip/archive/refs/tags/v3.5.tar.gz
-	sha256sums = 9b7eb11cebb90594e98c743f4123deb59d3b7da67aeb3192e71c7ca3e60e4f16
+	source = steamclip-3.5.1.tar.gz::https://github.com/Nastas95/SteamClip/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = 1162ccef32e12b53e547a9cce1c32e7cd5e30f8fbfa4ba979769a6dd470e4d6a
 
 pkgname = steamclip
