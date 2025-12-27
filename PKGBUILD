@@ -1,6 +1,6 @@
 # Maintainer: Shingo Kawamura <pannakoota1@gmail.com>
 pkgname=jq-lite
-pkgver=1.64
+pkgver=1.65
 pkgrel=1
 pkgdesc="Lightweight jq-like JSON query engine in Perl"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 makedepends=('perl-extutils-makemaker')
 source=("https://cpan.metacpan.org/authors/id/S/SH/SHINGO/JQ-Lite-${pkgver}.tar.gz")
-sha256sums=('05d26a63892632e3aca75d13adcce4e0c0853631df243e7410490417f87322fc')
+sha256sums=('c864a5f6f221dfd5e4e7ca1a6bdc696e3442fc6a1fe9f6206eaf250751e16efa')
 
 build() {
   cd "JQ-Lite-${pkgver}"
