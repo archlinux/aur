@@ -1,15 +1,15 @@
 pkgbase = octave-sockets
 	pkgdesc = Socket functions for networking from within octave
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/sockets
 	install = octave-sockets.install
 	arch = any
 	groups = octave-forge
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = octave>=3.6.0
-	noextract = sockets-1.4.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/sockets-1.4.1.tar.gz
-	sha512sums = 941ade43c1df3984084500a213db9d01f2a2264b4dd7c41145c5e222fb5197f43e17369491e6fd8be7f06faa865b072c08378c8f32f9a80e6275c12a169c5857
+	noextract = sockets-1.5.0.tar.gz
+	source = https://github.com/gnu-octave/octave-sockets/releases/download/release-1.5.0/sockets-1.5.0.tar.gz
+	sha512sums = 952996104072e42ac1257b8ae05ca1647c33020ffb2ea7e2ff51ae0e0b5887b0174bd77f5894902cad550edf3f42c086be864f9de322e4cf1920ee44f73a365b
 
 pkgname = octave-sockets

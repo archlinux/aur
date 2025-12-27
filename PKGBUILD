@@ -10,12 +10,12 @@
 
 _pack=sockets
 pkgname=octave-${_pack}
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Socket functions for networking from within octave"
 arch=(any)
 url="https://gnu-octave.github.io/packages/${_pack}"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 groups=('octave-forge')
 depends=('octave>=3.6.0')
 makedepends=()
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("https://github.com/gnu-octave/${pkgname}/releases/download/release-${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha512sums=('941ade43c1df3984084500a213db9d01f2a2264b4dd7c41145c5e222fb5197f43e17369491e6fd8be7f06faa865b072c08378c8f32f9a80e6275c12a169c5857')
+sha512sums=('952996104072e42ac1257b8ae05ca1647c33020ffb2ea7e2ff51ae0e0b5887b0174bd77f5894902cad550edf3f42c086be864f9de322e4cf1920ee44f73a365b')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

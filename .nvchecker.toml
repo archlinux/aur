@@ -1,0 +1,5 @@
+[octave-sockets]
+source = "github"
+github = "gnu-octave/octave-sockets"
+use_latest_release = "true"
+prefix = "release-"
