@@ -5,7 +5,7 @@ _pkgname=deeploy
 pkgname=${_pkgname}-bin
 pkgdesc="Modern Deployment. Terminal First. Open Source. The self-hosted alternative to Heroku, Vercel, and Netlify"
 
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('611b4ea565681a0004e150f63d277394e4c4ce685364f04760175b6760cfb623'
-            '2246825db80a70a25e33fdb2e82435e3d45d946c14cb885578e3e26df8b9a6a9')
-sha256sums_x86_64=('a6ad2692d4dd45b04ca77e82b54d210f1c29e76f08bbabfa8b4b78494ae12cb8')
-sha256sums_aarch64=('7959b014cad2c1ad1087ef5878a54b35446be468ce0354869b595e6145bae084')
+            '1c17e089a5067346dc62e8cc4832083c22be5044b98d4ef985dae9f37440718f')
+sha256sums_x86_64=('2eb433bde123a2262538721c0a461dfa618c2facf065f70bbcdcbdd3393ac91b')
+sha256sums_aarch64=('0438a20a5343a8b6ac0833034d7a52f4836962b827b80b329445fbf81cb53bd8')
 
 
 package() {
