@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=gotatun
 pkgname=(gotatun libgotatun)
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64')
 url="https://github.com/mullvad/gotatun"
@@ -11,13 +11,13 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('ae35a8f82087d362c784880fadf3919da262ce6cf4d2816d1897934439cbd27a')
+sha256sums=('9b8a980f48f41564c6805d72f4be96627310d10a70af568b186a4b8e37481b9c')
 validpgpkeys=()
 
 prepare() {
 	cd "$srcdir/$pkgbase-$pkgver"
     	export RUSTUP_TOOLCHAIN=stable
-    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" #--locked
 }
 
 build() {
@@ -30,7 +30,7 @@ build() {
 
 package_gotatun() {
 	cd "$pkgbase-$pkgver"
-	install -Dm755 target/release/${pkgname}-cli "$pkgdir/usr/bin/${pkgname}-cli"
+	install -Dm755 target/release/${pkgname} "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
