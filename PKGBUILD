@@ -5,7 +5,7 @@ pkgname="${_pkgname}-bin"
 
 pkgdesc="Secure and modern Minecraft Launcher"
 
-pkgver=3.2.15
+pkgver=3.2.18
 pkgrel=1
 
 arch=(any)
@@ -20,7 +20,7 @@ provides=("${_pkgname}=${pkgver}")
 install="${_pkgname}.install"
 
 source=("${url}/binaries/skl/${pkgver}/SKlauncher-${pkgver}.jar" "${_pkgname}" "LICENSE.${_pkgname}")
-md5sums=("54d121176adfeff8b0f182117a8284bf" "b2df5498d1c951307ed1d5618445c2ee" "edd0f7efa3df3a5cadaa2ecebf9eb57d")
+md5sums=("8a65e7d4f9fe599486d06199495671b7" "b2df5498d1c951307ed1d5618445c2ee" "edd0f7efa3df3a5cadaa2ecebf9eb57d")
 
 noextract=("SKlauncher-${pkgver}.jar")
 
