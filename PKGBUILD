@@ -7,6 +7,15 @@ pkgdesc="A wayland stacking and tiling compositor (Labwc fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FyreX-opensource-design/labFyre"
 license=('GPL-2.0-only')
+makedepends=(
+  'meson'
+  'git'
+  'scdoc'
+  'cmake'
+  'wayland-protocols'
+  'xcb-util-wm'
+  'xcb-util-keysyms'
+)
 depends=(
   'wayland'
   'wayland-protocols'
@@ -20,17 +29,7 @@ depends=(
   'pixman'
   'libpng'
   'librsvg'
-)
-makedepends=(
-  'meson'
-  'git'
-  'scdoc'
-  'wayland-protocols'
-  'xcb-util-wm'
-  'xcb-util-keysyms'
-)
-optdepends=(
-  'xorg-xwayland: X11 application support'
+  'xorg-xwayland'
 )
 conflicts=(
   'labwc'
@@ -50,7 +49,8 @@ build() {
   cd "$srcdir/labFyre" || cd "$srcdir"/*/
   arch-meson build/ \
     --prefix=/usr \
-    --mandir=/usr/share/man
+    --mandir=/usr/share/man \
+    --wrap-mode=default
   meson compile -C build/
 }
 
