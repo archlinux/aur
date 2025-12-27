@@ -1,0 +1,5 @@
+[idntag]
+source = "github"
+github = "d99kris/idntag"
+use_latest_release = true
+prefix = "v"

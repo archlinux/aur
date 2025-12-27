@@ -1,0 +1,23 @@
+pkgbase = idntag
+	pkgdesc = Automatically identify, tag and rename audio files
+	pkgver = 2.00
+	pkgrel = 1
+	url = https://github.com/d99kris/idntag
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = nlohmann-json
+	makedepends = chromaprint
+	makedepends = help2man
+	depends = glibc
+	depends = gcc-libs
+	depends = ncurses
+	depends = taglib
+	depends = curl
+	provides = idntag
+	conflicts = idntag
+	source = idntag-2.00.tgz::https://github.com/d99kris/idntag/archive/refs/tags/v2.00.tar.gz
+	sha256sums = fe03f18373c00cd6099c68a578062f167115bbbe4cbd726e0509cec76fe8e361
+
+pkgname = idntag
