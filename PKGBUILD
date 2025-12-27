@@ -4,7 +4,7 @@
 pkgname=kafs
 _pkgname=kafs
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 license=("GPL2")
 pkgdesc="kafs client tools"
 makedepends=("gcc" "git" "krb5" "openssl")
@@ -30,4 +30,5 @@ package() {
         cd "${srcdir}/${_pkgname}"
         mv ${srcdir}/cellservdb.conf conf/cellservdb.conf # copy in a recent cell database
         make DESTDIR="$pkgdir" LIBDIR=/usr/lib SBINDIR=/usr/bin DATADIR=/usr/share/kafs install
+        rm -f "$pkgdir"/usr/share/man/man1/aklog.1
 }
