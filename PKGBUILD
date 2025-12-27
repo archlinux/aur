@@ -2,7 +2,7 @@
 # Contributor: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 # SPDX-License-Identifier: 0BSD
 pkgname=waypipe
-pkgver=0.10.6
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('meson' 'ninja' 'scdoc' 'shaderc' 'pkgconf' 'cargo' 'rust-bindgen' 
 depends=('lz4' 'zstd' 'vulkan-icd-loader' 'mesa' 'ffmpeg')
 optdepends=('openssh: recommended transport')
 source=("https://gitlab.freedesktop.org/mstoeckl/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('51dd2a257f43f15cfe886ec5a7370366d3efcb5486385dab222773e05ba3fbf9')
+sha256sums=('dc4741bd4435666b4b45ef9b8354c9f742e9c2c5fb99bb49b2ac4f32a371bcd7')
 
 build() {
 	cargo fetch --locked --manifest-path "$pkgname-v$pkgver/Cargo.toml"
