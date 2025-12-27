@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=5d873d
+pkgver=da8465
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
@@ -56,11 +56,11 @@ pkgver() {
 build() {
 	command -v bun >/dev/null 2>&1 || sudo npm i -g bun
 
-	cd "$srcdir/Frontend"
+	cd "$srcdir/Frontend/web"
 	bun install
 	bun run build
 	
-	cd desktop
+	cd "$srcdir/Frontend/desktop"
 	bun install
 	bun run build:git
 }
