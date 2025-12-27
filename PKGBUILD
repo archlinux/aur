@@ -1,13 +1,13 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-git
-pkgver=0.1.0.r4.ge26e6e0
+pkgver=0.1.0.r5.gda4a934
 pkgrel=1
 pkgdesc="A pure functional language for system configuration and package management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MCB-SMART-BOY/neve"
 license=('MPL-2.0')
-depends=('gcc-libs' 'openssl' 'zlib' 'xz')
-makedepends=('git' 'rust' 'cargo' 'cmake')
+depends=('gcc-libs' 'libgit2' 'libssh2' 'openssl' 'zlib' 'xz')
+makedepends=('git' 'rust' 'cargo' 'pkg-config')
 provides=('neve')
 conflicts=('neve')
 source=("git+https://github.com/MCB-SMART-BOY/neve.git")
@@ -20,7 +20,8 @@ pkgver() {
 
 build() {
     cd neve
-    # Use vendored libgit2/libssh2 (Arch's libgit2 1.9.x is too new)
+    export LIBGIT2_NO_VENDOR=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo build --release -p neve
 }
 
