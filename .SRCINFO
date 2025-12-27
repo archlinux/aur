@@ -1,6 +1,6 @@
 pkgbase = arrpc-bun
 	pkgdesc = TypeScript/Bun port of arRPC - Open Discord RPC server
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/Creationsss/arrpc-bun
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = arrpc-bun
 	source = git+https://github.com/Creationsss/arrpc-bun.git#branch=main
 	source = arrpc-bun.service
 	sha256sums = SKIP
-	sha256sums = f1e20a82f8cb2fa8d5f007511ca78eed8eda44dbe1cef596afb2ec3bf03c66e9
+	sha256sums = 5b318f9251eb1aa45287e6437e543074933b3a8e6956d2c409fabc41fb9a7909
 
 pkgname = arrpc-bun
