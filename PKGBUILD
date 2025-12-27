@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ocrs
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='a modern OCR engine written in Rust'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(cargo-nightly)
 _tag="$pkgname-cli-v$pkgver"
 _archive="$pkgname-$_tag"
 source=("$url/archive/$_tag/$_archive.tar.gz")
-sha256sums=('02848ee5fb16295e99f0ea0ecdbfc16863024798ff5dd88817556a812d4b3fe3')
+sha256sums=('2287bb34ea4c798ecee1be1f5b52a318247e0046319f3edb1948470ebed8ad9a')
 
 prepare() {
 	cd "$_archive"
