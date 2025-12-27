@@ -1,6 +1,6 @@
 pkgbase = nmail
 	pkgdesc = Terminal-based email client
-	pkgver = 5.8.9
+	pkgver = 5.9.2
 	pkgrel = 1
 	url = https://github.com/d99kris/nmail
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nmail
 	depends = libxapian.so
 	depends = openssl
 	depends = python
-	source = nmail-5.8.9.tar.gz::https://github.com/d99kris/nmail/archive/v5.8.9.tar.gz
-	sha512sums = 262f7c8a2c25fe831c2749f4442ccbfe94d3eaac2e1b84a2b00e57901c5a8da1c78d2d73da415c7a75e9d5a92135b3b1280222696f076c70764b7595ed7d0409
+	source = nmail-5.9.2.tar.gz::https://github.com/d99kris/nmail/archive/v5.9.2.tar.gz
+	sha512sums = 8b0514b363f440f51171f3e973e706c3fb845b86257dba9d77ba7444582e7a87837eb0d85ec71d783e0dcbe5b3703cc486f6a975c598ddad3b32581739d491fe
 
 pkgname = nmail
