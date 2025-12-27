@@ -1,10 +1,10 @@
 # Maintainer: awh (https://aur.archlinux.org/account/awh)
 
 pkgname=baballonia
-pkgver=v1.1.0.9rc3
+pkgver=v1.1.0.9rc6
 _trainerver=1.3.8-linux-paths
 _calibrationver=1.0.5
-pkgrel=3
+pkgrel=1
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -67,7 +67,7 @@ source=(
 noextract=(
     "BabbleCalibration_${_calibrationver}.zip"
 )
-sha256sums=('0136c14e531ff1244a54a1a5538a7482fcb14339f298e7bb868d9a3946cc4c1a'
+sha256sums=('f1c1d8023293bc3abf81758c9a32d57a0da96b7f683446fc2444c6c0f8d6c4cd'
             '5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d'
             'e78593a5a9147fa948ee7703c95a424a0020ca668b157ce23fed65ab02693ee1'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
