@@ -1,6 +1,6 @@
 pkgbase = crystal-dock-bin
 	pkgdesc = A cool dock (desktop panel) for Linux desktop.
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 1
 	url = https://github.com/dangvd/crystal-dock
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = crystal-dock-bin
 	conflicts = crystal-dock
 	options = !strip
 	options = staticlibs
-	source_x86_64 = crystal-dock-bin-2.15-amd64.deb::https://github.com/dangvd/crystal-dock/releases/download/v2.15/crystal-dock_2.15-1_amd64.deb
-	sha256sums_x86_64 = 4d2106e97e1b5eff8929cd324a823a707e4a667513cdd36b67160e479e942969
+	source_x86_64 = crystal-dock-bin-2.16-amd64.deb::https://github.com/dangvd/crystal-dock/releases/download/v2.16/crystal-dock_2.16-1_amd64.deb
+	sha256sums_x86_64 = f5dc6df8df2646e1dc51bd0a2a26fe715da38a00f16869fb9780f75936313b3f
 
 pkgname = crystal-dock-bin

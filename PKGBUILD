@@ -2,7 +2,7 @@
 
 _pkgname=crystal-dock
 pkgname=${_pkgname}-bin
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="A cool dock (desktop panel) for Linux desktop."
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-1_amd64.deb")
 
-sha256sums_x86_64=("4d2106e97e1b5eff8929cd324a823a707e4a667513cdd36b67160e479e942969")
+sha256sums_x86_64=("f5dc6df8df2646e1dc51bd0a2a26fe715da38a00f16869fb9780f75936313b3f")
 
 prepare() {
     mkdir data
