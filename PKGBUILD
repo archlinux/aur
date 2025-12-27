@@ -3,7 +3,7 @@
 pkgname='porymap5'
 pkgdesc="Map editor for gen3 pret projects (legacy v5)"
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/huderlem/porymap/'
 license=('LGPL-3.0-only')
@@ -12,24 +12,20 @@ makedepends=('icoutils' 'qt6-tools')
 source=("porymap-${pkgver}.tar.gz::https://github.com/huderlem/porymap/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('093d19d45c789c6db3aa65af5856e29b20415cd1458d92491a48aa2ebfbd6a44')
 
-# Conflicts with the main 'porymap' package (6.0+).
-provides=("porymap=${pkgver}")
-conflicts=('porymap')
-
 prepare() {
-  cd "$srcdir/porymap"
+  cd "$srcdir/porymap-${pkgver}"
   # Apply patch to fix format string vulnerability (won't build otherwise)
   sed -i 's/qWarning(GifErrorString(error));/qWarning("%s", GifErrorString(error));/' src/vendor/QtGifImage/gifimage/qgifimage.cpp
 }
 
 build() {
-  cd "$srcdir/porymap"
+  cd "$srcdir/porymap-${pkgver}"
   qmake6
   make
 }
 
 package() {
-  cd "$srcdir/porymap"
+  cd "$srcdir/porymap-${pkgver}"
 
   # Install executable
   install -Dm755 porymap "$pkgdir/usr/bin/porymap5"
@@ -45,7 +41,7 @@ package() {
   cat <<EOF > porymap5.desktop
 [Desktop Entry]
 Name=porymap
-Comment=Map editor for legacy gen3 pret projects
+Comment=Map editor for gen3 pret projects (legacy v5)
 Exec=porymap5
 Icon=/usr/share/pixmaps/porymap5.png
 Terminal=false
