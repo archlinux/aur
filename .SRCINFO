@@ -1,7 +1,7 @@
 pkgbase = python-sqlalchemy1.4
 	pkgdesc = Python SQL toolkit and Object Relational Mapper
 	pkgver = 1.4.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sqlalchemy.org/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,8 @@ pkgbase = python-sqlalchemy1.4
 	provides = python-sqlalchemy
 	conflicts = python-sqlalchemy
 	source = python-sqlalchemy1.4-1.4.54.tar.gz::https://github.com/sqlalchemy/sqlalchemy/archive/refs/tags/rel_1_4_54.tar.gz
+	source = python-314-event-loop-changes.patch
 	sha512sums = 70447ff653f0d7c47855ffbb70d0b75c6982137673543da6dfbd38610eaf817d4fb41841d5495e8c3a953f169b93120ec2e3ab8c04bb7c53c84e8870af633682
+	sha512sums = ff7ebeac3dfdc01e94df8a883243ff23e0a34f801fa80f5d6e99ca0b14ab433e054e745b2b0d015704cc3dd17ade094f64873268c2b28a7fcd9ae50acdf5371a
 
 pkgname = python-sqlalchemy1.4

@@ -20,3 +20,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "python-314-event-loop-changes.patch",
+]
+SPDX-FileCopyrightText = "python-sqlalchemy1.4 contributors"
+SPDX-License-Identifier = "MIT"

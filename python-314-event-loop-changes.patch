@@ -1,0 +1,15 @@
+diff -aur sqlalchemy-rel_1_4_54.old/lib/sqlalchemy/util/_concurrency_py3k.py sqlalchemy-rel_1_4_54/lib/sqlalchemy/util/_concurrency_py3k.py
+--- sqlalchemy-rel_1_4_54.old/lib/sqlalchemy/util/_concurrency_py3k.py	2025-12-27 16:39:38.679928554 +0100
++++ sqlalchemy-rel_1_4_54/lib/sqlalchemy/util/_concurrency_py3k.py	2025-12-27 16:44:55.020976181 +0100
+@@ -190,6 +190,9 @@
+         try:
+             return asyncio.get_running_loop()
+         except RuntimeError:
+-            return asyncio.get_event_loop_policy().get_event_loop()
++            return asyncio.new_event_loop()
+     else:
+-        return asyncio.get_event_loop()
++        try:
++            return asyncio.get_event_loop()
++        except RuntimeError:
++            return asyncio.new_event_loop()
