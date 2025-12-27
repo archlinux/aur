@@ -1,6 +1,6 @@
 pkgbase = pascube-git
-	pkgdesc = A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)
-	pkgver = 1.5.1.r0.ge926659
+	pkgdesc = A simple vulkan spinning cube written in Pascal (Lazarus/Qt6)
+	pkgver = 1.6.1.r4.g534a4db
 	pkgrel = 1
 	url = https://github.com/benjamimgois/pascube
 	arch = x86_64
