@@ -1,6 +1,6 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=fentlauncher
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Minecraft Launcher for FENTCRAFT"
 arch=('x86_64')
