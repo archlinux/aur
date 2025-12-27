@@ -1,0 +1,4 @@
+post_install() {
+	echo "==> PokéClicker Automation has been installed."
+	echo "==> You can launch it from your application menu or by running 'pokeclicker' in the terminal."
+}
