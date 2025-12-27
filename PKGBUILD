@@ -2,7 +2,7 @@
 # Contributor: pacboost contributors
 
 pkgname=pacboost-bin
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="High-performance package manager frontend for Arch Linux with integrated AUR support (precompiled binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('pacboost')
 conflicts=('pacboost' 'pacboost-git')
 backup=()
 source=("pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/download/v$pkgver/pacboost-x86_64-linux.tar.gz")
-sha256sums=('31df081f764965ad732cf166037e213b3ff9db8ebd287fc82fb7464e2e097223')
+sha256sums=('e00fee99f5e25def7689cee911201065d8cb2f2adb9375b56bae344d5e5cb336')
 
 package() {
   # Install binary

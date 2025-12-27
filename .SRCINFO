@@ -1,6 +1,6 @@
 pkgbase = pacboost-bin
 	pkgdesc = High-performance package manager frontend for Arch Linux with integrated AUR support (precompiled binary)
-	pkgver = 2.3.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/compiledkernel-idk/pacboost
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pacboost-bin
 	provides = pacboost
 	conflicts = pacboost
 	conflicts = pacboost-git
-	source = pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/download/v2.3.3/pacboost-x86_64-linux.tar.gz
-	sha256sums = 31df081f764965ad732cf166037e213b3ff9db8ebd287fc82fb7464e2e097223
+	source = pacboost-x86_64-linux.tar.gz::https://github.com/compiledkernel-idk/pacboost/releases/download/v2.4.0/pacboost-x86_64-linux.tar.gz
+	sha256sums = e00fee99f5e25def7689cee911201065d8cb2f2adb9375b56bae344d5e5cb336
 
 pkgname = pacboost-bin
