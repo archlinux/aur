@@ -1,7 +1,7 @@
 pkgbase = music-presence-bin
 	pkgdesc = The Discord music status that works with any media player
-	pkgver = 2.3.4
-	pkgrel = 3
+	pkgver = 2.3.5
+	pkgrel = 4
 	url = https://github.com/ungive/discord-music-presence
 	arch = x86_64
 	license = custom
@@ -28,9 +28,9 @@ pkgbase = music-presence-bin
 	depends = systemd-libs
 	depends = zlib
 	depends = zstd
-	source = https://github.com/ungive/discord-music-presence/releases/download/v2.3.4/musicpresence-2.3.4-linux-x86_64.deb
+	source = https://github.com/ungive/discord-music-presence/releases/download/v2.3.5/musicpresence-2.3.5-linux-x86_64.deb
 	source = https://raw.githubusercontent.com/ungive/discord-music-presence/refs/heads/master/LICENSE.md
-	sha256sums = c5574a7726436d650dddb213a566c2b9fbffce2c4c442ff54ff50d4410f8c43e
-	sha256sums = 91c04d54bf908cbc42acacbcb05e5bda2e32cc0b63b7eeb98a42cbcbaf3f2151
+	sha256sums = 0c4ecc5c49e61eb6998a7205772442e381a04ae2c7d27f2d971f7f018bf39c3e
+	sha256sums = 569b9fb6be4ae1b2fa4e28ea4fdd1b384f7f0958847b0cdf34f97cadf97ad269
 
 pkgname = music-presence-bin
