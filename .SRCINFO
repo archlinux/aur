@@ -1,4 +1,4 @@
-pkgbase = ProtonMOD-NEXT-AUR
+pkgbase = protonvpn-mod-next-gtk
 	pkgdesc = Community fork of proton-vpn-gtk-app. Features: hidden paid servers/countries for free users, unlocked some paid functions. Use at your own risk!
 	pkgver = 4.13.4
 	pkgrel = 1
@@ -31,4 +31,4 @@ pkgbase = ProtonMOD-NEXT-AUR
 	source = git+https://github.com/SMH01-MOD-NEXT/ProtonMOD-NEXT-LINUX.git#tag=v4.13.4
 	sha256sums = ff47719183a2335651cc210cde99fcf07b3ada565dc5a04c7c07d74f1be59eb5
 
-pkgname = ProtonMOD-NEXT-AUR
+pkgname = protonvpn-mod-next-gtk

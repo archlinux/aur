@@ -1,7 +1,7 @@
 # Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname=ProtonMOD-NEXT-AUR
+pkgname=protonvpn-mod-next-gtk
 pkgclonename=ProtonMOD-NEXT-LINUX
 pkgver=4.13.4
 pkgrel=1
