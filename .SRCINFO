@@ -12,6 +12,7 @@ pkgbase = eilmeldung
 	depends = sqlite3
 	depends = libsixel
 	conflicts = eilmeldung-git
+	conflicts = eilmeldung-bin
 	options = !lto
 	source = eilmeldung-0.4.10.tar.gz::https://github.com/christo-auer/eilmeldung/archive/0.4.10.tar.gz
 	sha256sums = dd7521528e32ff9c7682853e8226af63222d38ead9e2d75ec9b24c82f16bf646
