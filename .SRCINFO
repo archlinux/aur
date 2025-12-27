@@ -1,4 +1,4 @@
-pkgbase = gridlock
+pkgbase = gridlock-bin
 	pkgdesc = A powerful TMUX session manager and automator
 	pkgver = 0.0.3
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = gridlock
 	source_aarch64 = https://github.com/esaiaswestberg/gridlock/releases/download/v0.0.3/gridlock_linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
-pkgname = gridlock
+pkgname = gridlock-bin
