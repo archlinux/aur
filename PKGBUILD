@@ -22,12 +22,6 @@ provides=("symp=${pkgver}")
 source=("${pkgname}::git+https://github.com/Dracape/SymP.git")
 b2sums=('SKIP')
 
-
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-package() {
-	"$pkgname"/install.fish --vendor --repository="$pkgname" --rootdir=${pkgdir}
-}
+# Functions
+pkgver() { GIT_DIR="$pkgname"/.git git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'; }
+package() { "$pkgname"/install.fish --vendor --repository="$pkgname" --rootdir=${pkgdir}; }
