@@ -1,7 +1,7 @@
 pkgname=gorae-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="Terminal-first TUI librarian for PDFs & EPUBs (prebuilt binary)"
+pkgdesc="Terminal-first TUI librarian for PDF & EPUB (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Han8931/gorae"
 license=('MIT')  # repo license is MIT :contentReference[oaicite:2]{index=2}

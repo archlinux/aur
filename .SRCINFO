@@ -1,6 +1,6 @@
 pkgbase = gorae-bin
-	pkgdesc = Terminal-first TUI librarian for PDFs & EPUBs (prebuilt binary)
-	pkgver = 1.2.0
+	pkgdesc = Terminal-first TUI librarian for PDF & EPUB (prebuilt binary)
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/Han8931/gorae
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gorae-bin
 	optdepends = zathura-pdf-mupdf: mupdf backend for zathura
 	provides = gorae
 	conflicts = gorae
-	source = gorae::https://github.com/Han8931/gorae/releases/download/v1.2.0/gorae-linux-amd64
+	source = gorae::https://github.com/Han8931/gorae/releases/download/v1.2.1/gorae-linux-amd64
 	sha256sums = 34d8cd072098fe0613542dc33c02a6007ae376915b1c26084a3f42c51b706861
 
 pkgname = gorae-bin
