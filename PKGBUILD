@@ -8,7 +8,7 @@ pkgrel=1
 epoch=1
 
 _package_name="proton-cachyos-${_srctag}-slr-x86_64"
-sha256sums=('48d59100d40d74ec835bcb28c5214081e3d52964223b9b8571c9fce9a649139b'
+sha256sums=('5bb702e298bc5840f8ace1176155c88a8d6d89436f02bceab1397ac4ac32fe66'
             '6983622dc08784891929b843e8c5bf566c160eb2c23b7fc89c0f4dbabcd5db69')
 source=(
   https://github.com/CachyOS/proton-cachyos/releases/download/cachyos-${_srctag}-slr/${_package_name}.tar.xz
