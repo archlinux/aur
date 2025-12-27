@@ -1,6 +1,6 @@
 pkgbase = gopac-bin
 	pkgdesc = A warm Gruvbox TUI for pacman and AUR (Binary)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/the-daonm/gopac
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gopac-bin
 	conflicts = gopac
 	conflicts = gopac-git
 	options = !debug
-	source = gopac::https://github.com/the-daonm/gopac/releases/download/v1.2.1/gopac
-	sha256sums = 490fef6d3cf1bc941c95307e7ba348b23385c44b52b8f05eb843ca95b1780fe8
+	source = gopac::https://github.com/the-daonm/gopac/releases/download/v1.2.2/gopac
+	sha256sums = e0ddf12263935d7134d9a361b345e89e8804e1f3d4cbbdff722af5d87c6b823d
 
 pkgname = gopac-bin
