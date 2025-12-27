@@ -4,7 +4,7 @@
 pkgbase=wps-office-linux
 pkgname=('wps-office-linux' 'wps-office-linux-fonts')
 pkgver=12.1.2.23578
-pkgrel=2
+pkgrel=1
 pkgdesc="WPS Office: Writer, Presentation, and Spreadsheets. Compatible with MS Office."
 arch=('x86_64')
 url="https://linux.wps.cn"
