@@ -1,0 +1,4 @@
+[android-tv-remote]
+source = "git"
+git = "https://github.com/erenseymen/android-tv-remote.git"
+prefix = "v"
