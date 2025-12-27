@@ -4,25 +4,22 @@
 # Contributor: Chris Allison <daemon@cca.me.uk>
 
 pkgname=ccextractor
-pkgver=0.94
-pkgrel=3
-pkgdesc="A closed captions and teletext subtitles extractor for video streams."
+pkgver=0.96.2
+pkgrel=1
+pkgdesc="A closed captions and teletext subtitles extractor for media file."
 arch=('x86_64')
 url="https://www.ccextractor.org"
 license=('GPL')
-depends=('gcc-libs' 'tesseract' 'ffmpeg4.4')
-makedepends=('rust' 'clang' 'ffmpeg4.4')
+depends=('gcc-libs' 'ffmpeg' 'gpac' 'tesseract')
+makedepends=('clang' 'ffmpeg' 'gpac' 'rust')
 source=(
-  https://github.com/CCExtractor/ccextractor/releases/download/v$pkgver/ccextractor_minimal.tar.gz
+  https://github.com/CCExtractor/ccextractor/releases/download/v$pkgver/ccextractor.$pkgver.tar.gz
 )
-sha512sums=('35ddcfb540f2b9a9354b81885c31c4fedd4385700401f71db59048a855f74bff045de8787e13dc8d772e1d3bf7d75ae8732c2d97a8148475502f0e0586b47aa9')
+sha512sums=('94bc894284b79959c57d6a3566fda1ec1267d0c9948a62f2f1ebdf57be858beeb7221519c9dc56efb4bb92e509cd0f0c8557e5b84195a4e6465d4f19aca70bbd')
 
 build() {
   cd "$srcdir/$pkgname/linux"
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-  ./autogen.sh
-  ./configure
-  make
+  ./build_hardsubx
 }
 
 package() {
