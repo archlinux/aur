@@ -1,0 +1,15 @@
+pkgbase = pajlada-serialize
+	pkgdesc = c++ serialize/deserialize helper functions based on rapidjson
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pajlada/serialize
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = rapidjson
+	source = git+https://github.com/pajlada/serialize.git#tag=v0.2.0
+	sha256sums = fef0b41f447f93a416c707c01386ea98b9a4675a69c95ebaef20864ca5193a9a
+
+pkgname = pajlada-serialize
