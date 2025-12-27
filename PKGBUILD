@@ -22,15 +22,14 @@ build() {
     cd neve
     export LIBGIT2_NO_VENDOR=1
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    # Force rebuild
-    cargo build --release
+    # Must specify -p neve to build the CLI binary
+    cargo build --release -p neve
 }
 
 check() {
     cd neve
     export LIBGIT2_NO_VENDOR=1
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
-    # Run only core language tests
     cargo test --release -p neve-lexer -p neve-parser -p neve-eval -p neve-typeck -p neve-fmt
 }
 
