@@ -76,14 +76,18 @@ package() {
   BIN_PATH="$(< .built_binary_path)"
   [[ -x "${BIN_PATH}" ]] || { echo "Error: built binary not executable: ${BIN_PATH}"; exit 1; }
 
-  # Install the real binary under /usr/lib/pascube
-  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+  # Install the real binary under /usr/lib/pascube/bin
+  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname}/bin/${pkgname}"
+
+  # Install assets into /usr/lib/pascube/assets
+  # We assume 'assets' is a directory in the build root
+  cp -a assets "${pkgdir}/usr/lib/${pkgname}/"
 
   # Wrapper: force X11 via xcb
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
 #!/bin/sh
 export QT_QPA_PLATFORM=xcb
-exec /usr/lib/pascube/pascube "$@"
+exec /usr/lib/pascube/bin/pascube "$@"
 EOF
 
   # Create and install desktop file
@@ -104,4 +108,3 @@ EOF2
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
