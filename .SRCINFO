@@ -1,7 +1,7 @@
 pkgbase = roonbridge
 	pkgdesc = The music player for music lovers
 	pkgver = 1.8.1125
-	pkgrel = 2
+	pkgrel = 3
 	url = https://roonlabs.com/
 	install = roonbridge.install
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = roonbridge
 	license = custom
 	depends = alsa-lib
 	depends = glibc
-	depends = ffmpeg
-	depends = cifs-utils
 	source = roonbridge.service
 	source = copyright
 	sha256sums = e24bfbb30142bcf819928c0cd87947ad2d988968aef4aa06e13f3abb578a1588

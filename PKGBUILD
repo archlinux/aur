@@ -3,7 +3,7 @@
 pkgname=roonbridge
 _pkgname=RoonBridge
 pkgver=1.8.1125
-pkgrel=2
+pkgrel=3
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -11,7 +11,7 @@ pkgdesc="The music player for music lovers"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://roonlabs.com/"
 license=('custom')
-depends=('alsa-lib' 'glibc' 'ffmpeg' 'cifs-utils')
+depends=('alsa-lib' 'glibc')
 source=('roonbridge.service'
         'copyright')
 source_x86_64=("http://download.roonlabs.net/builds/RoonBridge_linuxx64.tar.bz2")
