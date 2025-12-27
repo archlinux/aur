@@ -1,0 +1,16 @@
+pkgbase = python-cron-lite
+	pkgdesc = A very light library to run python function like a cron job do
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/rainydew/cron_lite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cron_lite/cron-lite-1.1.tar.gz
+	sha256sums = f3306c0e67ef96665770a4433b57bf85904eb4524d166d71691b724490954002
+
+pkgname = python-cron-lite

@@ -1,0 +1,3 @@
+[python-cron-lite]
+source = "pypi"
+pypi = "cron-lite"
