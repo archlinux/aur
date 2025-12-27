@@ -1,0 +1,38 @@
+# Maintainer: Raz <real.raz.dev@gmail.com>
+
+pkgname=python-raztint
+pkgver=0.1.1
+pkgrel=1
+provides=('python-raztint')
+conflicts=('python-raztint')
+pkgdesc="A zero-dependency Python library for ANSI coloring and smart CLI icons"
+url="https://github.com/razbuild/raztint"
+arch=('any')
+license=('MIT')
+depends=('python')
+checkdepends=('python-pytest')
+makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+provides=('python-raztint')
+conflicts=('python-raztint')
+options=('!emptydirs')
+source=("python-raztint-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('ca30284163e662bb93d1a83ae049464bfea02ab00b2725ecf5ce8de90b305b6f')
+
+build() {
+    cd "${srcdir}/raztint-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/raztint-${pkgver}"
+  export PYTHONPATH="$PWD/src:$PYTHONPATH"
+  python -m pytest tests
+}
+
+
+package() {
+    cd "${srcdir}/raztint-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+  
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
