@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=toad-ai
-pkgver=0.5.5
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='A unified interface for AI in your terminal'
 arch=('any')
@@ -12,7 +12,7 @@ provides=('toad')
 conflicts=('toad' 'batrachian-toad')
 options=('!debug')
 source=("https://github.com/batrachianai/toad/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('df4d9c1c0ef7b1401e6b9c3f613ac2241e4261a16a0148c55b9badea4253eae413ffb3badc3a4e5c6bfa110a5ff8e5ee1dd93dda91b9f0293aade64f1ca009bb')
+b2sums=('36505ff364ff22a5a1509346b096c78e5c6dcd0cb1a7a6ea588ef2e2c61c4e29d6427ffe998d08d5cae20f25489f23778f18d4dbdc919349e16e259481d595b5')
 
 build() {
   cd "toad-${pkgver}"
