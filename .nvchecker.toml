@@ -1,0 +1,4 @@
+[python-async-cron]
+source = "github"
+github = "aohan237/async_cron"
+use_latest_release = true

@@ -1,0 +1,18 @@
+pkgbase = python-async-cron
+	pkgdesc = Crontab for python, with asyncio
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/aohan237/async_cron
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-arrow
+	depends = python-dateutil
+	source = async-cron-1.6.3.tgz::https://github.com/aohan237/async_cron/archive/1.6.3.tar.gz
+	sha256sums = bd05ac13c2675f159d3c6cf02bcafed0de998584f7bb32238008bd8272ddd74b
+
+pkgname = python-async-cron
