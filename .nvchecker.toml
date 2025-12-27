@@ -1,0 +1,4 @@
+[python-utidylib]
+source = "git"
+git = "https://github.com/nijel/utidylib.git"
+prefix = "v"
