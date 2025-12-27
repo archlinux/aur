@@ -1,0 +1,22 @@
+pkgbase = stonks-dashboard
+	pkgdesc = Minimal real-time market dashboard for your terminal
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.npmjs.com/package/stonks-dashboard
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = stonks-dashboard
+	replaces = nodejs-stonks-dashboard
+	noextract = stonks-dashboard-1.0.2.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = stonks-dashboard-1.0.2.tgz::https://registry.npmjs.org/stonks-dashboard/-/stonks-dashboard-1.0.2.tgz
+	b2sums = 8b7b9c52518a5d3d6160c2170439a51cdea744bc914581da874925cc45b8e7e8d8cc50657afe05c99feafab4b7f7ce7341e44527155720dcab44c8dec30e0554
+
+pkgname = stonks-dashboard

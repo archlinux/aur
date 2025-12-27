@@ -1,0 +1,3 @@
+[stonks-dashboard]
+source = "npm"
+npm = "stonks-dashboard"
