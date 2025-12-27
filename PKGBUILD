@@ -4,7 +4,7 @@ _appName="pyfunceble"
 pkgname=${_appName}-dev
 _name=${pkgname}
 upstreamName="${pkgname//-/_}"
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="The tool to check the availability or syntax of domain, IP or URL."
 arch=('any')
@@ -36,7 +36,7 @@ depends=(
     'python3'
 )
 source=("https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-${pkgver}.tar.gz" "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE")
-sha256sums=('9dd2787dee4d1fc28e47045c7a112435dd874be81969fa776497360e985bde6c'
+sha256sums=('54424999361a93dda1ddc6d7a5534136a068deaf789f8202c41d6b6f4ab35ecb'
             'ac4f1fa7ee565806d41b26bc9a0d9f313224730ddf3c0d4f346f3a511c47dd4e')
 
 build() {
