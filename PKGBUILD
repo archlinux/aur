@@ -1,14 +1,14 @@
 # Maintainer: f4iey <f4iey@f4iey.fr>	
 
 pkgname=not1mm-git
-pkgver=r1447.5cad407
+pkgver=r2555.9d9854f
 pkgrel=1
 pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux."
 arch=('any')
 license=('GPL3')
 url="https://github.com/mbridak/not1mm"
 makedepends=(git python-build python-installer python-wheel)
-depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil'
+depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' 'python-sh' 'python-adif-io'
 	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata'
 	 'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus')
 optdepends=(hamlib flrig)

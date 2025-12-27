@@ -1,6 +1,6 @@
 pkgbase = not1mm-git
 	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux.
-	pkgver = r1447.5cad407
+	pkgver = r2555.9d9854f
 	pkgrel = 1
 	url = https://github.com/mbridak/not1mm
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = not1mm-git
 	depends = python-dicttoxml
 	depends = python-xmltodict
 	depends = python-psutil
+	depends = python-sh
+	depends = python-adif-io
 	depends = python-sounddevice
 	depends = python-soundfile
 	depends = python-numpy
