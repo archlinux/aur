@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=kairo
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="CLI and Desktop application for smart URL routing"
 arch=("x86_64")
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 
 source_x86_64=("$url/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('e70cabf955155e6888f7e2af5d2120758318fb84b1425a5bce86e08a8a2990dc')
+sha256sums_x86_64=('396d3ef48993fc5186a28297ae595a744eefb03ccd02aaf376353ee07de8c263')
 
 package() {
   install -Dm755 kairo kairo-desktop -t "${pkgdir}/usr/bin/"
