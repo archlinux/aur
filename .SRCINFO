@@ -1,0 +1,15 @@
+pkgbase = audiovis
+	pkgdesc = A customizable terminal audio visualizer using PipeWire and ncurses
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YOURUSERNAME/audiovis
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = pipewire
+	depends = fftw
+	depends = ncurses
+	source = audiovis-1.0.0.tar.gz::https://github.com/YOURUSERNAME/audiovis/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = audiovis
