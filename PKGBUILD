@@ -30,13 +30,15 @@ depends=(
   'libpng'
   'librsvg'
   'xorg-xwayland'
+  'wlroots'
+  'libsfdo'
 )
 conflicts=(
   'labwc'
   'labwc-git'
 )
 provides=('labwc')
-# wlroots and libsfdo are handled as meson subprojects
+# wlroots and libsfdo are now system dependencies
 source=("git+https://github.com/FyreX-opensource-design/labFyre.git")
 sha256sums=('SKIP')
 
