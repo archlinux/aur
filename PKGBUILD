@@ -1,20 +1,20 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
 license=('MIT')
-depends=('greetd' 'kitty' 'hyprland' 'swww')
+depends=('greetd' 'kitty' 'hyprland' 'gslapper')
 optdepends=(
-    'gslapper: Video wallpaper support'
+    'swww: Legacy wallpaper support (fallback)'
 )
 makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('d19603a906b95a8a2108d568255968dc1def8594a03dd51772ff372fb18f594e')
+sha256sums=('0d9498d39754df89a5c91d87270246b8081855f297a748cd617f52ec72c2d2ef')
 backup=('etc/greetd/config.toml' 'etc/greetd/hyprland-greeter-config.conf' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-hyprland.install
 
@@ -112,7 +112,7 @@ windowrulev2 = opacity 1.0 override, class:^(kitty)$
 layerrule = blur, wallpaper
 
 # Startup applications
-exec-once = swww-daemon
+exec-once = gslapper -f -I /tmp/sysc-greet-wallpaper.sock '*' /usr/share/sysc-greet/wallpapers/sysc-greet-default.png
 exec-once = XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet && hyprctl dispatch exit
 EOF
 
