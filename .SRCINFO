@@ -1,6 +1,6 @@
 pkgbase = symp
 	pkgdesc = Populate directories with least amount of symlinks
-	pkgver = 5.2.4
+	pkgver = 5.2.5
 	pkgrel = 1
 	url = https://github.com/Dracape/SymP
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = symp
 	depends = fish
 	depends = fd
 	conflicts = symp-git
-	source = symp-5.2.4.tar.gz::https://github.com/Dracape/symp/archive/refs/tags/5.2.4.zip
-	b2sums = 7d8ae439a720589b84dcc8272154400d69666bf94e74f01da66aab42e5d3848db529ff9cc00c656b2701379a6137b9e2dd4c3759016bacfb9dc8a0a8bbf36646
+	source = symp-5.2.5.tar.gz::https://github.com/Dracape/symp/archive/refs/tags/5.2.5.zip
+	b2sums = 80ba934a00cd5618ff8e017d7dad65a52cdd2b020ab8ac46e1940af2ddf08c7c02442e3c7ca21a7fb7f49117d27c607434505bb06ff006c36b422e150ff45f7a
 
 pkgname = symp
