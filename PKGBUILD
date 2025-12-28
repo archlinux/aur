@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.5.14
+pkgver=0.5.18
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('33d73575ff3df45fe73befaff91333ba6e6a544a0d82c7dcda5080038cab4fe9')
+sha256sums=('1f938dc2131586303860443ed0804c91b4f069b7bf45fb4f77c87c0e6954dc08')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -28,14 +28,6 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/${_upper_pkgname}
-  mkdir -p ${pkgdir}/usr/share/icons
-  mkdir -p ${pkgdir}/usr/share/applications
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/lib
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
-  cmake --install build --prefix ${pkgdir}/usr --config Release
-
-  install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
-  install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
+  cmake --install build --prefix ${pkgdir} --config Release
 }
