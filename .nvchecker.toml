@@ -1,0 +1,5 @@
+[fingerprintx-bin]
+source = "github"
+github = "praetorian-inc/fingerprintx"
+use_latest_release = true
+prefix = "v"
