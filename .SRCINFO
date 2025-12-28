@@ -1,0 +1,23 @@
+pkgbase = vis-cli
+	pkgdesc = 🔬 Visualize fuzzy tabular data without leaving the terminal
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/hcgatewood/vis
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-seaborn
+	depends = python-matplotlib
+	depends = python-pytimeparse
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-click
+	provides = vis
+	source = https://files.pythonhosted.org/packages/source/v/vis_cli/vis_cli-0.5.0.tar.gz
+	sha256sums = 1c93e09090c5882b7a277fbd5069ec7b2707e674a1393e9591f72c35ed6c528b
+
+pkgname = vis-cli

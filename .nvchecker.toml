@@ -1,0 +1,3 @@
+[vis-cli]
+source = "pypi"
+pypi = "vis_cli"
