@@ -1,0 +1,18 @@
+pkgbase = python-openttd-helpers
+	pkgdesc = Python libraries to support OpenTTD projects
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/OpenTTD/py-helpers
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-click
+	depends = python-sentry_sdk
+	source = https://github.com/OpenTTD/py-helpers/releases/download/2.0.0/openttd-helpers-2.0.0.tar.gz
+	sha256sums = 4ec741d3722d3fa68753f41f2481ca9ac58ece4d65c1da5f0753458bece30de7
+
+pkgname = python-openttd-helpers
