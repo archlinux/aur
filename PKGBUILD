@@ -3,13 +3,13 @@ _pluginname=audio-wave
 _gitname=obs-${_pluginname}
 pkgname=obs-${_pluginname}-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, lightweight audio wave visualizer source for OBS Studio"
 arch=('x86_64')
 url="https://github.com/mmlTools/${_pluginname}"
 license=('GPL2')
 groups=('obs-plugins')
-depends=('obs-studio>=30.0.0')
+depends=('obs-studio>=32.0.2')
 provides=("obs-${_pluginname}")
 conflicts=("${_gitname}" "${_gitname}-git" "obs-plugin-${_pluginname}-git")
 source=("${url}/releases/download/${pkgver}/${_pluginname}-1.2.0-${arch}-linux-gnu.deb")
