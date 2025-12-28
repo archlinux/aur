@@ -50,6 +50,24 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DDISTRIBUTOR="AUR (quickshell-allflags-git)" \
         -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
+        -DUSE_JEMALLOC=ON \
+        -DSOCKETS=ON \
+        -DWAYLAND=ON \
+        -DWAYLAND_WLR_LAYERSHELL=ON \
+        -DWAYLAND_SESSION_LOCK=ON \
+        -DWAYLAND_TOPLEVEL_MANAGEMENT=ON \
+        -DSCREENCOPY=ON \
+        -DX11=ON \
+        -DSERVICE_PIPEWIRE=ON \
+        -DSERVICE_STATUS_NOTIFIER=ON \
+        -DSERVICE_MPRIS=ON \
+        -DSERVICE_PAM=ON \
+        -DSERVICE_POLKIT=ON \
+        -DHYPRLAND=ON \
+        -DHYPRLAND_GLOBAL_SHORTCUTS=ON \
+        -DHYPRLAND_FOCUS_GRAB=ON \
+        -DI3=ON \
+        -DI3_IPC=ON \
         -DCRASH_REPORTER=OFF
     
     cmake --build build
