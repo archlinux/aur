@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.4.0.r267.g7c187787506
+pkgver=2025.4.1.r336.ge4b65a0ab6c
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -130,7 +130,7 @@ prepare() {
 
 pkgver() {
     local _version
-    _version="$(git -C openvino tag --list | grep '^[[:digit:]]' | sed '/dev/d' | sort -r | head -n1)"
+    _version="$(git -C openvino tag --list | grep '^[[:digit:]]' | sed '/dev/d;s/_[[:alpha:]].*$//' | sort -ru | head -n1)"
     printf '%s.r%s.g%s' "$_version" \
                         "$(git -C openvino rev-list --count "${_version}..HEAD")" \
                         "$(git -C openvino rev-parse --short HEAD)"
@@ -280,7 +280,9 @@ package_python-openvino-git() {
     mv "python${_pyver}" "${pkgdir}/usr/lib"
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
-    export WHEEL_VERSION="${pkgver%%.r*}"
+    local -x WHEEL_VERSION
+    WHEEL_VERSION="$(grep -oE '[0-9]+\.[0-9]+(|\.[0-9]+)' <<< "$pkgver")"
+    
     python openvino/setup.py dist_info -o "${pkgdir}${_site_pkgs}"
     
     install -D -m644 licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
