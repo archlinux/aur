@@ -11,17 +11,10 @@ pkgbase = riftbar-git
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = wayland
-	depends = cairo
-	depends = pango
-	depends = gdk-pixbuf2
-	depends = librsvg
-	depends = gstreamer
-	depends = gst-plugins-base
-	depends = libxkbcommon
 	depends = vulkan-icd-loader
 	provides = riftbar
 	conflicts = riftbar
-	source = git+https://github.com/binaryharbinger/riftbar.git
+	source = git+https://github.com/binaryharbinger/riftbar.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = riftbar-git

@@ -11,22 +11,16 @@ depends=(
   'gtk4'
   'gtk4-layer-shell'
   'wayland'
-  'cairo'
-  'pango'
-  'gdk-pixbuf2'
-  'librsvg'
-  'gstreamer'
-  'gst-plugins-base'
-  'libxkbcommon'
-  'vulkan-icd-loader'
 )
+
+depends+=('vulkan-icd-loader')
 
 makedepends=('git' 'cargo' 'pkg-config')
 
 provides=('riftbar')
 conflicts=('riftbar')
 
-source=("git+https://github.com/binaryharbinger/riftbar.git")
+source=("git+https://github.com/binaryharbinger/riftbar.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
