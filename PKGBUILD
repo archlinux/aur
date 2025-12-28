@@ -11,7 +11,7 @@ url="https://github.com/detiam/zenmonitor3"
 license=('GPL')
 depends=('gtk3')
 optdepends=('zenpower: for monitoring AMD Zen-based CPUs')
-makedepends=('git')
+makedepends=('git' 'base-devel')
 provides=('zenmonitor')
 install=$pkgname.install
 

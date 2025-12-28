@@ -8,6 +8,7 @@ pkgbase = zenmonitor3
 	arch = i686
 	license = GPL
 	makedepends = git
+	makedepends = base-devel
 	depends = gtk3
 	optdepends = zenpower: for monitoring AMD Zen-based CPUs
 	provides = zenmonitor
