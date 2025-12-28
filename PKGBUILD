@@ -1,7 +1,8 @@
 # Maintainer: William Booth <personal@booth-w.co.uk>
+
 _pkgname="superfile"
 pkgname="superfile-git"
-pkgver=v1.3.1.r84.ge7a7483
+pkgver=v1.4.1.rc.r14.g054fbe4
 pkgrel=1
 pkgdesc="Pretty fancy and modern terminal file manager"
 arch=('x86_64')
@@ -39,4 +40,5 @@ package() {
 	install -Dm755 "bin/spf" "$pkgdir/usr/bin/spf"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "asset/spf.desktop" "$pkgdir/usr/share/applications/spf.desktop"
 }
