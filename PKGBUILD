@@ -1,5 +1,5 @@
 # Maintainer: Kasui92 <me@lucapattocchio.dev>
-pkgname=lancher-bin
+pkgname=lancher-bin-git
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="A minimal, local project-template manager written in Go"
