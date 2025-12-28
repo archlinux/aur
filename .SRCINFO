@@ -1,0 +1,17 @@
+pkgbase = auto-throttle
+	pkgdesc = Lightweight thermal and power management orchestration for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ZauJulio/AutoThrottleSetup
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = bc
+	optdepends = ryzenadj: for AMD TDP control
+	optdepends = turbostat: for monitoring
+	optdepends = lm_sensors: for monitoring
+	backup = etc/auto-throttle.conf
+	source = auto-throttle-1.0.0.tar.gz::https://github.com/ZauJulio/AutoThrottleSetup/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = auto-throttle
