@@ -1,7 +1,7 @@
 pkgbase = cfait-git
-	pkgdesc = A powerful, simple, elegant, and lightweight CalDAV tasks / TODO manager (TUI & GUI, git version)
-	pkgver = v0.2.3.r9.g0fc9bf0
-	pkgrel = 2
+	pkgdesc = Powerful, fast and elegant CalDAV tasks / TODO manager (TUI & GUI, git version)
+	pkgver = v0.3.13.r0.gfa131df
+	pkgrel = 1
 	url = https://codeberg.org/trougnouf/cfait
 	arch = x86_64
 	license = GPL3
@@ -14,12 +14,15 @@ pkgbase = cfait-git
 	depends = libxrandr
 	depends = libxcb
 	depends = vulkan-driver
-	provides = cfait
+	provides = cfait-tui
+	provides = cfait-gui
 	conflicts = cfait
 	replaces = rustycal
 	replaces = rustache
 	replaces = fairouille
 	options = !lto
+	options = !strip
+	options = !debug
 	source = cfait::git+https://codeberg.org/trougnouf/cfait.git
 	sha256sums = SKIP
 

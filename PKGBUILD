@@ -1,9 +1,9 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=v0.2.3.r9.g0fc9bf0
-pkgrel=2
-pkgdesc="A powerful, simple, elegant, and lightweight CalDAV tasks / TODO manager (TUI & GUI, git version)"
+pkgver=v0.3.13.r0.gfa131df
+pkgrel=1
+pkgdesc="Powerful, fast and elegant CalDAV tasks / TODO manager (TUI & GUI, git version)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
 license=('GPL3')
@@ -14,7 +14,8 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 replaces=('rustycal' 'rustache' 'fairouille')
-options=('!lto')
+options=('!lto' '!strip' '!debug')
+provides=('cfait-tui' 'cfait-gui')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,7 +30,7 @@ build() {
 
 package() {
   cd "$_pkgname"
-  
+
   install -Dm755 "target/release/cfait" "$pkgdir/usr/bin/cfait"
   install -Dm755 "target/release/gui" "$pkgdir/usr/bin/cfait-gui"
 
@@ -39,3 +40,4 @@ package() {
   install -Dm644 "assets/cfait.desktop" "$pkgdir/usr/share/applications/cfait.desktop"
   install -Dm644 "assets/cfait.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/cfait.svg"
 }
+
