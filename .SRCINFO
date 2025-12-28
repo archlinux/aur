@@ -20,4 +20,3 @@ pkgbase = python-jupyterlite-sphinx
 	sha256sums = 586cefe8d1f5c9634dd23d96ea89237d014abfa3ed6cb556b8c133baa6b5f779
 
 pkgname = python-jupyterlite-sphinx
-
