@@ -1,9 +1,9 @@
 pkgname=kumono-git
 pkgver=vcs
-pkgrel=6
+pkgrel=7
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
-arch=('x86_64')
+arch=('any')
 makedepends=('git' 'cargo')
 license=('MIT-0')
 source=("kumono-$pkgver::git+$url")
