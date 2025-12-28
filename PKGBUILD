@@ -1,9 +1,9 @@
 pkgname=lm_sensors-git
 pkgdesc="Collection of user space tools for general SMBus access and hardware monitoring"
-pkgver=r5315.42f240d2
+pkgver=r5464.c297368a
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/lm-sensors/lm-sensors"
+url="https://github.com/hramrach/lm-sensors"
 license=('GPL' 'LGPL')
 conflicts=('lm_sensors')
 provides=('lm_sensors' 'libsensors.so')
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('git' 'rrdtool')
 optdepends=('rrdtool: for logging with sensord')
 backup=('etc/sensors3.conf' 'etc/conf.d/sensord')
-source=(git+https://github.com/lm-sensors/lm-sensors.git
+source=(git+https://github.com/hramrach/lm-sensors.git
     sensord.conf)
 sha1sums=('SKIP'
           'f4b5f21fdb3b2a55aa353afa1603f953b207b73b')
