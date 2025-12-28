@@ -1,7 +1,7 @@
 pkgbase = ironbar-bin
 	pkgdesc = Customisable Wayland gtk bar written in Rust.
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakestanger/ironbar
 	arch = aarch64
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = ironbar-bin
 	depends = lua51-lgi
 	depends = libinput
 	depends = libpulse
+	optdepends = ttf-font-nerd: for displaying text-based icons
 	provides = ironbar
 	conflicts = ironbar
 	source = https://raw.githubusercontent.com/JakeStanger/ironbar/refs/heads/master/LICENSE

@@ -3,11 +3,11 @@
 pkgname=ironbar-bin
 _pkgname=ironbar
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Customisable Wayland gtk bar written in Rust. "
 arch=(
     'aarch64'
-    $CARCH
+    'x86_64'
 )
 url="https://github.com/jakestanger/ironbar"
 license=('MIT')
@@ -21,11 +21,13 @@ depends=(
     'libinput' 
     'libpulse'
 )
-
+optdepends=(
+    'ttf-font-nerd: for displaying text-based icons'
+)
 source=("https://raw.githubusercontent.com/JakeStanger/ironbar/refs/heads/master/LICENSE")
 
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-arm64.tar.gz")
-source_x86_64=("${_pkgname}-${pkgver}-$CARCH.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64.tar.gz")
 
 sha256sums=('563e19d17778199999882de9dd1160fb1381f33c9712f310af6c07a2c4c3deb2')
 sha256sums_aarch64=('02642e29211e7b75a7e92bff91fe1a718c043d3c97fcb6feb3ada4a893de2273')
