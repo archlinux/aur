@@ -1,13 +1,13 @@
 # Maintainer: Samuel Q. <massnel at proton dot me>
 
 pkgname=fzur-git
-pkgver=r41.1b8d24e
+pkgver=r61.aa67925
 pkgrel=1
 pkgdesc="An fzf AUR helper"
 arch=('any')
 url="https://github.com/Samq64/fzur"
 license=('MIT')
-depends=('curl' 'fzf' 'git' 'jq')
+depends=('curl' 'fzf' 'git' 'jq' 'sudo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Samq64/fzur.git')
