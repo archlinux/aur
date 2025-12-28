@@ -1,5 +1,5 @@
 pkgname=any-code-appimage
-pkgver=5.17.1
+pkgver=5.17.5
 pkgrel=1
 pkgdesc='Any Code 是一个为 AI 驱动的代码开发工作流量身打造的专业桌面应用，支持 Claude Code CLI、OpenAI Codex 和 Google Gemini CLI 三大 AI 引擎。'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "https://github.com/anyme123/Any-code/releases/download/v${pkgver}/any-code_${pkgver}_amd64.AppImage"
 )
 sha512sums=(
-  '16cdcb6ce3eb5af4216ce140216bf5e23e58f08e8363f2bf24a53ce779016fc680e79c97fffdf7dc084b2bc04b8101557326994749cc8eed219dcb7864cf69bc'
+  '016a86d2a72d350d2a515449732d7ad0137221eb99a7e52f98fe8287076f14e4d94fe36a8b7770f5ac8f7cb9c0d1a7451413416a8e6d4756d0b27104840b9ae4'
 )
 
 _installdir=/opt/any-code
