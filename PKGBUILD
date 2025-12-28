@@ -1,25 +1,32 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+# Maintainer: Nici
+_pkgname=bibata_cursor_gruvbox
+pkgname=bibata-cursor-gruvbox-git
+pkgver=1.0.0.r0.f4ccfe8
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
-
+pkgdesc='Gruvbox Bibata Cursor Themes, including hyprcursor and Xcursor'
+arch=('any')
+url="https://github.com/NiciTheNici/${_pkgname}"
+license=('GPL-3.0-or-later')
+makedepends=('git' 'librsvg' 'python' 'xorg-xcursorgen')
 options=('!strip')
+source=("git+https://github.com/NiciTheNici/${_pkgname}.git")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd ${_pkgname}
+	./src/cursor_utils.py --hypr --x11 --x11-symlink adwaita --theme Bibata-Modern-Classic-Gruvbox --out-dir out
+	./src/cursor_utils.py --hypr --x11 --x11-symlink adwaita --theme Bibata-Modern-Classic-Gruvbox-Right --out-dir out_right
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+	cd ${_pkgname}
+	install -d "$pkgdir/usr/share/icons"
+	cp -r out/Bibata-* "$pkgdir/usr/share/icons/"
+	cp -r out_right/Bibata-* "$pkgdir/usr/share/icons/"
 }
