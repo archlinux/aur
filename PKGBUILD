@@ -1,62 +1,125 @@
-# Maintainer: Siddhartha <dev@sdht.in>
+# Maintainer: Leonid Lednev <leonidledn at gmail dot com>
+# Contributor: Aaron Keesing <agkphysics at gmail dot com>
+# Contributor: Siddhartha <dev@sdht.in>
 
 pkgname=zotero-git
-pkgver=r11712.20210914.f0a8c9ada
+_pkgname="${pkgname%-git}"
+pkgver=7.0.11.r900.g689e59f
 pkgrel=1
-pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.'
-arch=('x86_64')
-url='https://www.zotero.org'
-license=('AGPL3')
+pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
+arch=('x86_64' 'i686')
+url="https://www.zotero.org"
+license=('AGPL-3.0-or-later')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
-makedepends=('npm' 'wget' 'zip' 'unzip' 'python2' 'python' 'rsync' 'git')
-conflicts=('zotero')
-provides=('zotero')
-_src_dir_1=zotero-client
-_src_dir_2=zotero-build
-_src_dir_3=zotero-standalone-build
-source=(zotero.desktop
-    "${_src_dir_1}::git+https://github.com/zotero/zotero"
-    "${_src_dir_2}::git+https://github.com/zotero/zotero-build"
-    "${_src_dir_3}::git+https://github.com/zotero/zotero-standalone-build")
-sha256sums=('2e700ebe97d332a894be80d232b037b0117d84b38c5fa99dffc727cb10918228'
-            'SKIP' 'SKIP' 'SKIP')
+makedepends=('npm' 'git' 'zip' 'unzip' 'perl' 'python>=3' 'curl' 'wget' 'rsync' 'nodejs' 'patch')
+source=("zotero.desktop"
+        "zotero-client::git+https://github.com/zotero/zotero.git"
+        "zotero-translators::git+https://github.com/zotero/translators.git"
+        "zotero-styles::git+https://github.com/zotero/bundled-styles.git"
+        "zotero-pdf-worker::git+https://github.com/zotero/pdf-worker.git"
+        "zotero-note-editor::git+https://github.com/zotero/note-editor.git"
+        "zotero-reader::git+https://github.com/zotero/reader.git"
+        "zotero-schema::git+https://github.com/zotero/zotero-schema.git"
+        "zotero-SingleFile::git+https://github.com/gildas-lormeau/SingleFile.git"
+        "zotero-utilities::git+https://github.com/zotero/utilities.git"
+        "zotero-translate::git+https://github.com/zotero/translate.git"
+        "zotero-csl::git+https://github.com/citation-style-language/locales.git"
+        "zotero-libreoffice-integration::git+https://github.com/zotero/zotero-libreoffice-integration.git"
+        "zotero-pdf-js::git+https://github.com/zotero/pdf.js.git"
+        "zotero-epub-js::git+https://github.com/zotero/epub.js.git"
+        "disable-updater.patch")
+sha256sums=('eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'dc1894ac2e1520c3dae8e9cd5e09608f4bb3298bdede2891a77118187edffa9d')
 
 pkgver() {
-    cd ${_src_dir_1}
-    printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/zotero-client"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/zotero-client"
+
+  patch -N -p1 < "$srcdir/disable-updater.patch"
+
+  npm i --legacy-peer-deps
+
+  git submodule init
+  git submodule deinit --force app/modules/zotero-word-for-mac-integration app/modules/zotero-word-for-windows-integration
+  git config submodule.translators.url "$srcdir/zotero-translators"
+  git config submodule.styles.url "$srcdir/zotero-styles"
+  git config submodule.pdf-worker.url "$srcdir/zotero-pdf-worker"
+  git config submodule.note-editor.url "$srcdir/zotero-note-editor"
+  git config submodule.reader.url "$srcdir/zotero-reader"
+  git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
+  git config submodule.resource/SingleFile.url "$srcdir/zotero-SingleFile"
+  git config submodule.chrome/content/zotero/xpcom/utilities.url "$srcdir/zotero-utilities"
+  git config submodule.chrome/content/zotero/xpcom/translate.url "$srcdir/zotero-translate"
+  git config submodule.chrome/content/zotero/locale/csl.url "$srcdir/zotero-csl"
+  git config submodule.app/modules/zotero-libreoffice-integration.url "$srcdir/zotero-libreoffice-integration"
+  git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir/zotero-client/chrome/content/zotero/xpcom/utilities"
+  git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
+  git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir/zotero-client/chrome/content/zotero/xpcom/translate/modules/utilities"
+  git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
+  git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir/zotero-client/reader"
+  git submodule init
+  # Stupid hack because of dangling commit
+  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 67a1769bdaa0e89a6e239fcbaa5bf72b845223a0
+  git config submodule.pdfjs/pdf.js.url "$srcdir/zotero-pdf-js"
+  git config submodule.epubjs/epub.js.url "$srcdir/zotero-epub-js"
+  git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir/zotero-client/pdf-worker"
+  git submodule init
+  # Ditto
+  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 8ac2ccc54dab2049cd92096c3448d6fdfab436ac
+  git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd ${_src_dir_1}
-    git submodule init && git submodule update
-    cd ../${_src_dir_2}
-    git submodule init && git submodule update
-    cd ../${_src_dir_3}
-    git submodule init && git submodule update
-
-    cd ../${_src_dir_1}
-    npm i
-    npm run build
-    
-    cd ../${_src_dir_3}
-    ./fetch_xulrunner.sh -p l
-    ./fetch_pdftools
-    scripts/dir_build
+  cd "$srcdir/zotero-client"
+  _NODE_OPTIONS="--openssl-legacy-provider"
+  if (( $(vercmp "$(node --version)" "25.2.0") >= 0 )); then
+    _NODE_OPTIONS="$_NODE_OPTIONS --no-experimental-webstorage"
+  fi
+  NODE_OPTIONS="$_NODE_OPTIONS" npm run build
+  app/scripts/dir_build -q
 }
 
 package() {
-    local builddir="${_src_dir_3}"/staging/Zotero_linux-x86_64
-    install -dDm755 "$pkgdir"/usr/{bin,lib/zotero}
-    mv "$builddir"/* "$pkgdir"/usr/lib/zotero
-    ln -s /usr/lib/zotero/zotero "$pkgdir"/usr/bin/zotero
-    install -Dm644 "$srcdir"/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
-    # Copy zotero icons to a standard location
-    install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/zotero.png
-    install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
-    install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
-    install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
-    # Copy license
-    install -Dm644 "${_src_dir_3}"/COPYING "$pkgdir"/usr/share/licenses/zotero/LICENSE
-    # Disable APP update
-    sed -i '/pref("app.update.enabled", true);/c\pref("app.update.enabled", false);' "$pkgdir"/usr/lib/zotero/defaults/preferences/prefs.js
+  install -dDm755 "$pkgdir"/usr/{bin,lib/zotero}
+  cp -r "$srcdir/zotero-client/app/staging/Zotero_linux-$CARCH"/* "$pkgdir/usr/lib/zotero"
+  ln -s /usr/lib/zotero/zotero "$pkgdir/usr/bin/zotero"
+  install -Dm644 "$srcdir/zotero.desktop" "$pkgdir/usr/share/applications/zotero.desktop"
+
+  # Copy zotero icons to a standard location
+  install -Dm644 "$pkgdir/usr/lib/zotero/icons/icon32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/zotero.png"
+  install -Dm644 "$pkgdir/usr/lib/zotero/icons/icon64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/zotero.png"
+  install -Dm644 "$pkgdir/usr/lib/zotero/icons/icon128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/zotero.png"
+  install -Dm644 "$pkgdir/usr/lib/zotero/icons/symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/zotero-symbolic.svg"
+
+  # Close shell when launching
+  sed -i -r 's:^("\$CALLDIR/zotero-bin" -app "\$CALLDIR/application.ini" "\$@"):exec \1:' "$pkgdir/usr/lib/zotero/zotero"
 }
