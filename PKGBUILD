@@ -1,3 +1,4 @@
+# Maintainer: BinaryHarbinger <halilefeesen@proton.me>
 
 pkgname=riftbar-git
 pkgver=8fc89d4
