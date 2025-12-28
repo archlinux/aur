@@ -1,12 +1,12 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=taskfile-to-tasks-python-git
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Convert Taskfile.yml to an editor tasks format, like VSCode and Zed tasks.json"
 arch=('any')
 url="https://github.com/H3mul/taskfile-to-tasks"
 license=('MIT')
-depends=('python' 'python-pip')
+depends=('python' 'python-pip' 'python-setuptools' 'python-wheel' 'python-pyaml')
 makedepends=('git')
 provides=('taskfile-to-tasks')
 conflicts=('taskfile-to-tasks')
