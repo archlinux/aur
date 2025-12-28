@@ -1,0 +1,20 @@
+pkgbase = arch-updater
+	pkgdesc = A granular update utility for Arch Linux designed for power users who demand full control and transparency over package upgrades
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/chpock/arch-updater
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pacman
+	depends = pacman-contrib
+	depends = yay
+	depends = fzf
+	depends = curl
+	depends = jq
+	depends = expac
+	optdepends = sudo: Privilege elevation
+	optdepends = arch-log: Retrieve package changelog
+	source = arch-updater::https://github.com/chpock/arch-updater/releases/download/v0.0.2/arch-updater
+	sha256sums = f8092fa45e26cfadf18ec871adb769e3c429bc3dc76296daeace78ca12b6291a
+
+pkgname = arch-updater
