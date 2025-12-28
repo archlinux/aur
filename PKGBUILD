@@ -1,11 +1,11 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-claude-gui
-pkgver=1.3.15
+pkgver=1.3.20
 pkgrel=1
 pkgdesc="Desktop app for managing multiple Claude Code sessions across projects"
 arch=('x86_64')
 url="https://github.com/DonutsDelivery/simple-claude-gui"
-license=('MIT')
+license=('custom:PolyForm-Noncommercial-1.0.0')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git')
 source=("git+https://github.com/DonutsDelivery/simple-claude-gui.git")
