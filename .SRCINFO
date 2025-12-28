@@ -1,0 +1,15 @@
+pkgbase = prox
+	pkgdesc = A modern process manager with a beautiful Terminal User Interface (TUI)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/craigderington/prox
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = prox
+	conflicts = prox
+	source = prox-0.2.0.tgz::https://github.com/craigderington/prox/archive/v0.2.0.tar.gz
+	sha256sums = b7105d128e2a2360ada71182c5fad0d0b91e9bab04522db8a5c9158586990dd9
+
+pkgname = prox

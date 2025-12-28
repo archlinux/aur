@@ -1,0 +1,5 @@
+[prox]
+source = "github"
+github = "craigderington/prox"
+use_max_tag = true
+prefix = "v"
