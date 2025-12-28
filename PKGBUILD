@@ -6,7 +6,7 @@ pkgver=14.0.3_20251103
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
-pkgrel=5
+pkgrel=6
 pkgdesc="An archive for games and animations from the web."
 arch=('x86_64')
 url="https://flashpointarchive.org/"
@@ -23,7 +23,6 @@ depends=(
 	'nss'
 	'php'
 	'7zip'
-	'wine'
 	'bash'
 )
 
@@ -62,6 +61,9 @@ package() {
 	cp -rp "${pkgdir}/opt/Flashpoint/Launcher/licenses/" "${pkgdir}/usr/share/licenses/flashpoint"
 	install -Dm644 "${srcdir}/flashpoint-archive.desktop" "${pkgdir}/usr/share/applications/flashpoint-archive.desktop"
 
-    echo "Removing uneeded src folder..."
+    echo "Removing unneeded src folder..."
     rm -rf "${pkgdir}/opt/Flashpoint/src"
+
+    echo "Removing unneeded Libraries folder..."
+    rm -rf "${pkgdir}/opt/Flashpoint/Libraries"
 }
