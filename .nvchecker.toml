@@ -1,0 +1,3 @@
+[appa]
+source = "npm"
+npm = "@hcgatewood/appa"
