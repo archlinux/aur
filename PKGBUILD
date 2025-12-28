@@ -18,8 +18,6 @@ url='https://gcc.gnu.org'
 makedepends=(
   binutils
   doxygen
-  gcc-ada
-  gcc-d
   git
   libisl
   libmpc
@@ -59,7 +57,7 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
+  sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
   mkdir -p "$srcdir/gcc-build"
 }
 
