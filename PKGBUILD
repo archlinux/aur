@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=linkwarden
-pkgver=2.13.4
-pkgrel=2
+pkgver=2.13.5
+pkgrel=1
 pkgdesc="Self hosted bookmark manager"
 arch=('x86_64')
 url="https://github.com/linkwarden/linkwarden"
@@ -22,7 +22,7 @@ linkwarden.service
 start.sh
 )
 sha512sums_x86_64=(
-34bf3e6d5b040f1c92adc8ad43fe487651e99521a1cfcbb1a266eaa1c0470a172286f4e20ee0414b94db9ec443a34511b632d28833a4461c6c26a4b28e1aec07
+ce5c57cd4aec047e05419f162d564cb369e10a38875a499407c2a38eba0d6bb3aafc3841c8a56fbc2952ce14a6a4e97c3ddf51d8411f8a6bacd370218adfc35d
 aeb567c588f903e58c1b87e41bd4a950eb775252226c1534a1621d01f46cfb2f27e32657c40d4b154e150ac9e80b62d7b532aac8d0bb8ce5f28c4a1ca454ce6d
 79f547c9b9f69986bc29c97faa102e7cae48f04ba446f89ade4597b858fdaf70afee19846314b8d7cb47fc102f9058fe2d288d2e5cbb7eb50120913d673127bf
 ccc4088e8e9732164735781364d73e2d6d393477dd8d2f9b6f6b5aa2209784a08c4ce9350db565e0b6e02e94e590e839ad3b22d468952198fe67c09d75f9d188
