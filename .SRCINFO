@@ -1,7 +1,7 @@
 pkgbase = athas
 	pkgdesc = Lightweight code editor built with React, TypeScript, and Tauri
-	pkgver = 0.2.7
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 3
 	url = https://github.com/athasdev/athas
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = athas
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
-	source = athas-0.2.7.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = 2315f42f51858a0422ede22dd6beee97f4c3cc8992822a86731990bc50d8a0c4
+	source = athas-0.3.1.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 6b0f6c4d0e6d558167c99dffd6d8771b14144ed0296453b441650b130bfc642f
 
 pkgname = athas
