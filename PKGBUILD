@@ -1,5 +1,5 @@
 pkgname=ovpn-status
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="OVPN's status page in the terminal."
 url='https://github.com/APT37/ovpn-status'
@@ -7,7 +7,7 @@ arch=('x86_64')
 makedepends=('git' 'cargo')
 license=('MIT-0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3bbbb3450250eb7605dd7b8c2ea47abeb551d64fa8287d3d9400dade2a1c1c79')
+sha256sums=('0388c187681f13dd6c704c2a1319cce15b416c66041ddf0aaa5f9e3f73f1d458')
 options=('!lto')
 provides=('ovpn-status')
 conflicts=('ovpn-status-bin' 'ovpn-status-git')
