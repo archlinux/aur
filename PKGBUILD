@@ -23,6 +23,10 @@ sha256sums=("912582c648c50f7417aa4fd8c6a9bad2e6e3f39142bdcd468ffc324af412a8e4"
 	SKIP
 	SKIP
 	SKIP)
+
+provides=('kh-melonmix')
+conflicts=('kh-melonmix')
+
 package() {
 # making all the directories
 mkdir -p "$pkgdir/opt/Kingdom Hearts Melon Mix/roms"
