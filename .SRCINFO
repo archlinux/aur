@@ -1,8 +1,8 @@
 pkgbase = python-jupyterlite-p5-kernel
-	pkgdesc = None
+	pkgdesc = A p5.js jupyterlite kernel running in the browser
 	pkgver = 0.3.0
 	pkgrel = 3
-	url = None
+	url = https://jupyterlite.github.io/p5-kernel/
 	arch = any
 	license = custom:BSD License
 	makedepends = python-build
