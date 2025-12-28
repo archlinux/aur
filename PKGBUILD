@@ -6,7 +6,7 @@ pkgver=163.ca385ee
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://codeberg.org/Soichiro/soifunc'
+url='https://gitlab.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
   'vapoursynth-plugin-znedi3'
@@ -22,7 +22,7 @@ makedepends=('git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://codeberg.org/Soichiro/soifunc.git")
+source=("${_plug}::git+https://gitlab.com/shssoichiro/soifunc.git")
 sha256sums=('SKIP')
 
 pkgver() {
