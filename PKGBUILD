@@ -8,17 +8,20 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gitlab.com/shssoichiro/soifunc'
 license=('MIT')
-depends=('vapoursynth'
-  'vapoursynth-plugin-znedi3'
-  'vapoursynth-plugin-vsjetpack'
+depends=(
+	'vapoursynth'
+	'vapoursynth-plugin-vsjetpack'
+	'vapoursynth-plugin-vszip'
+	'vapoursynth-plugin-znedi3'
 )
-optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
-  'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
-  'vapoursynth-plugin-dfttest2: dfttest support, GPU version'
-  'vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version'
+optdepends=(
+	'vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
+	'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
+	'vapoursynth-plugin-dfttest2: dfttest support, GPU version'
+	'vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version'
 )
 makedepends=('git'
-  'python-poetry'
+	'python-poetry'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -26,23 +29,23 @@ source=("${_plug}::git+https://gitlab.com/shssoichiro/soifunc.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_plug}"
+	cd "${_plug}"
 
-  _rev=$(git rev-list --count --all)
-  _hash=$(git rev-parse --short HEAD)
-  printf "%s.%s" "$_rev" "$_hash"
+	_rev=$(git rev-list --count --all)
+	_hash=$(git rev-parse --short HEAD)
+	printf "%s.%s" "$_rev" "$_hash"
 }
 
 build() {
-  cd "${_plug}"
-  rm -rf dist/
-  poetry build -f wheel
+	cd "${_plug}"
+	rm -rf dist/
+	poetry build -f wheel
 }
 
 package() {
-  cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+	cd "${_plug}"
+	pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
