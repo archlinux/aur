@@ -2,7 +2,7 @@
 # Maintainer: Floyd Göttsch <floyd.goettsch1@gmail.com>
 
 pkgname='bm-bin'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Your command-line sidekick for teleporting to files, folders, and URLs in one hop.'
 url='https://github.com/Shu-AFK/bm'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('bm')
 conflicts=('bm')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v0.1.2/bm_0.1.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('f21f73eab80c204daf91df8789708a8a441a9835be8306c2f26165a0b06ca5cb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v${pkgver}/bm_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('c8c5c257724242078a67452cc567642fb45ecd34af20ed198f04b6dca84654ae')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v0.1.2/bm_0.1.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('c5e158d8953f587230b5b3c19be90060c162234ee30fdb4bc8a5fb008cf895ea')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v${pkgver}/bm_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('2cfe2fabe61b7f6e5543d965f8da540bf8619c6cf15ddecd1d6d3b9440e6fa87')
 
 package() {
   install -Dm755 "./bm" "${pkgdir}/usr/bin/bm"
