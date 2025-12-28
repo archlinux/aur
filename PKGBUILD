@@ -1,13 +1,20 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.11.3
-pkgrel=2
-pkghash=472a970e10c3a85f9db938719ebba121321c1d90
+pkgrel=3
+_pkghash=472a970e10c3a85f9db938719ebba121321c1d90
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
 license=('GPL-3.0-only')
 depends=(
+    'dconf'
+    'graphene'
+    'libsoup3'
+    'hicolor-icon-theme'
+    'pango'
+    'glibc'
+    'gdk-pixbuf2'
     'glib2'
     'gtk4>=4.12.0'
     'libadwaita>=1.5.0'
@@ -24,18 +31,22 @@ makedepends=(
     'meson'
     'blueprint-compiler'
 )
+options=('!debug')
 source=(
 #    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname-$pkgver.zip::${url}/archive/$pkghash.zip"
+    "$pkgname-$pkgver.zip::${url}/archive/$_pkghash.zip"
+    "gradia_ocr.patch"
 )
-sha256sums=('b4146b2a30f91908a5f43c572fa6099be36c4377bdcd1ca6950a666bb5335e86')
+sha256sums=('b4146b2a30f91908a5f43c572fa6099be36c4377bdcd1ca6950a666bb5335e86'
+            '770b874fed71ec84a6a190b6e931be9189f512b4433eaef8996dca32644472d7')
 
 prepare() {
-  mv Gradia-$pkghash $pkgname-$pkgver
+  mv Gradia-$_pkghash $pkgname-$pkgver
+  patch -d $pkgname-$pkgver -p1 < gradia_ocr.patch
 }
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson $pkgname-$pkgver build -Docr_tesseract_cmd=/usr/bin/tesseract -Docr_original_tessdata_dir=/usr/share/tessdata
   meson compile -C build
 }
 
