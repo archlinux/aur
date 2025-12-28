@@ -2,16 +2,17 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=1.6.6.105.g319d90cbb
+pkgver=1.7.0.6.g3fe75e1c7
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="http://vcmi.eu"
 license=('GPL2')
-depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base'
-         'libxkbcommon-x11' 'desktop-file-utils' 'gtk-update-icon-cache'
-         'hicolor-icon-theme' 'tbb' 'luajit')
-makedepends=('boost' 'cmake' 'git' 'qt5-tools')
+depends=('boost-libs' 'desktop-file-utils' 'ffmpeg' 'gtk-update-icon-cache'
+         'hicolor-icon-theme' 'libsquish' 'libxkbcommon-x11' 'luajit'
+         'onnxruntime' 'qt6-base' 'qt6-svg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf'
+         'tbb')
+makedepends=('boost' 'cmake' 'git' 'minizip' 'qt6-tools')
 optdepends=('innoextract: required by vcmibuilder'
             'unshield: required by vcmibuilder'
             'unzip: required by vcmibuilder')
@@ -24,7 +25,10 @@ source=("${pkgname}::git+https://github.com/vcmi/vcmi.git#branch=develop"
         git+https://github.com/google/googletest.git#branch=v1.15.x
 
 )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${pkgname}"
