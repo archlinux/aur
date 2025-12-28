@@ -1,6 +1,6 @@
 # Maintainer: Matthew Wolffe <mfwolffe@outlook.com>
 pkgname=fortress
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A command-line file explorer written in modern Fortran with cd-on-exit"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs' 'fzf' 'git')
 makedepends=('fortran-fpm' 'gcc-fortran')
 install=fortress.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8d0d70e89272c626f9108a071dbce234c8c1ce07752066b13652e73fbad26b65')
+sha256sums=('f596a9ac2bcd1d13c493f21b6a44fda0b370c77131de11908342084e25eafa67')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -20,10 +20,13 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Install the binary
-    install -Dm755 "build/gfortran_"*"/app/fortress" "$pkgdir/usr/bin/fortress-bin"
+    # Install the binary to lib (not directly in PATH)
+    install -Dm755 "build/gfortran_"*"/app/fortress" "$pkgdir/usr/lib/fortress/fortress"
 
-    # Install shell integration files
+    # Install wrapper script to /usr/bin/fortress
+    install -Dm755 "fortress-wrapper.sh" "$pkgdir/usr/bin/fortress"
+
+    # Install shell integration files (for cd-on-exit when sourced)
     install -Dm644 "fortress.sh" "$pkgdir/usr/share/fortress/fortress.sh"
     install -Dm644 "fortress.fish" "$pkgdir/usr/share/fortress/fortress.fish"
 
