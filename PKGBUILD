@@ -3,8 +3,8 @@
 
 pkgname=classisland
 _appname=cn.classisland.app
-pkgver=2.0.0.0
-pkgrel=2
+pkgver=2.0.0.1
+pkgrel=1
 pkgdesc="适用于班级大屏的课表小工具。Class schedule displaying tool for interactive whiteboards in classrooms."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
