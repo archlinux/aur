@@ -1,7 +1,7 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=b-em
-pkgver=20251010_0b6f1d2
-_tarball=0b6f1d2112a40cbed688ce6abaa6a10a00faeb2e
+pkgver=20251220_7eb9b67
+_tarball=7eb9b67707a15da02fc65681db98b9e0eae6e856
 pkgrel=1
 pkgdesc="BBC Micro emulator"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!debug)
 install=
 source=(https://github.com/stardot/b-em/archive/${_tarball}/b-em-${_tarball}.tar.gz)
 noextract=()
-sha256sums=(fd51c4cf1555d824168da81d19535044a2fba001a322c3b46eb420258f8f7f9f)
+sha256sums=(6a1681545035ac09663dbcd9934f569267aca74971f68913c94b7a3c5ae462e9)
 
 prepare() {
   cd "${srcdir}"
