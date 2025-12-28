@@ -2,7 +2,7 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="euporie"
-pkgver=2.9.1
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
 optdepends=('python-asyncssh: for Euporie hub support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('462e4e942b9f6990f5ac9cb61f7547cdbf5b7cf56b792f6065c78ffd2b4bdd2a')
+sha256sums=('f9651dbde2810e46145ede8a5e311e3d68903527c403d228f453452c94bea894')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
