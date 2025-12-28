@@ -1,0 +1,20 @@
+pkgbase = iris-bin
+	pkgdesc = A fast, minimal, config-driven file organizer
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/lordaimer/iris
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = iris
+	conflicts = iris
+	options = !strip
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/lordaimer/iris/v1.1.1/LICENSE
+	source = README-1.1.1.md::https://raw.githubusercontent.com/lordaimer/iris/v1.1.1/README.md
+	sha256sums = 0c5dd65ffbb483114d0de205e8353a142d69c91ea1b37a60db5c341d9f20ca63
+	sha256sums = 04703683b26ec4943bae6c41f5b539cc1d8c0a948da660adf34bbf225ad3cde1
+	source_x86_64 = iris-x86_64-1.1.1::https://github.com/lordaimer/iris/releases/download/v1.1.1/iris-linux-amd64
+	sha256sums_x86_64 = 1e1b97aa07bacd159bf0d11d88c74b090fd558b1da7b8d6eecfc42189b0ed476
+
+pkgname = iris-bin
