@@ -1,8 +1,8 @@
-# Maintainer: Benjamim Gois <your-email>
+# Maintainer: Benjamim Gois <benjamim dot gois at gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
@@ -109,4 +109,16 @@ EOF2
 
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # ---- Icons (from data/icons/{128x128,256x256,512x512}/pascube.png) ----
+  for sz in 128x128 256x256 512x512; do
+    if [[ -f "data/icons/${sz}/pascube.png" ]]; then
+      install -Dm644 "data/icons/${sz}/pascube.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${sz}/apps/pascube.png"
+    fi
+  done
+  # Fallback to pixmaps
+  if [[ -f "data/icons/512x512/pascube.png" ]]; then
+      install -Dm644 "data/icons/512x512/pascube.png" "${pkgdir}/usr/share/pixmaps/pascube.png"
+  fi
 }
