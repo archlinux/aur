@@ -23,7 +23,8 @@ optdepends=(
 	'vapoursynth-plugin-mlrt: frame interpolation functions'
 	'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
-makedepends=('git'
+makedepends=(
+	'git'
 	'python-poetry'
 )
 provides=("vapoursynth-plugin-${_plug}")
