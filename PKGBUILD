@@ -2,13 +2,13 @@
 pkgname=bbcsdl
 _tarball=2bb38045faced56e583819178af7a9304368c4eb
 pkgver=1.43b
-pkgrel=1
+pkgrel=2
 pkgdesc="BBC Basic Programming for Linux"
 arch=('x86_64')
 url="https://www.bbcbasic.co.uk/bbcsdl"
 license=('CC-BY-NC-SA-4.0')
 depends=('sdl2' 'sdl2-compat' 'sdl2_ttf' 'sdl2_net' 'zlib' 'glibc')
-makedepends=('nasm')
+makedepends=('nasm' 'unzip')
 provides=('bbcsdl')
 conflicts=('bbcsdl')
 replaces=()
