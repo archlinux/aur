@@ -1,8 +1,8 @@
 pkgbase = python-jupyterlite-core
-	pkgdesc = None
+	pkgdesc = Wasm powered Jupyter running in the browser
 	pkgver = 0.7.1
 	pkgrel = 3
-	url = None
+	url = https://github.com/jupyterlite
 	arch = any
 	license = custom:BSD License
 	makedepends = python-build
