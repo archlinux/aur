@@ -1,6 +1,6 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 pkgname=helion-bin
-pkgver=0.9.8.0
+pkgver=0.9.9.0
 pkgrel=1
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind (pre-compiled binary version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
 provides=('helion')
 conflicts=(helion)
 source=("https://github.com/Helion-Engine/Helion/releases/download/${pkgver}/Helion-${pkgver}-linux-x64_AOT.zip")
-sha256sums=('64b55aa3dd39b16d280d6fccbae70e20ba2747f5791ac958d6b430b79f16eb6d')
+sha256sums=('14f6e2378dd2b416071fd573691db1ef0d307a8ad3c3b199a8aa7861a00bcf08')
 package() {
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=755 -p "$pkgdir"/opt/Helion/SoundFonts

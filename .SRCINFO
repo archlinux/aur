@@ -1,6 +1,6 @@
 pkgbase = helion-bin
 	pkgdesc = A modern Doom FPS engine, made with C# and GPU usage in mind (pre-compiled binary version)
-	pkgver = 0.9.8.0
+	pkgver = 0.9.9.0
 	pkgrel = 1
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = helion-bin
 	depends = glib2
 	provides = helion
 	conflicts = helion
-	source = https://github.com/Helion-Engine/Helion/releases/download/0.9.8.0/Helion-0.9.8.0-linux-x64_AOT.zip
-	sha256sums = 64b55aa3dd39b16d280d6fccbae70e20ba2747f5791ac958d6b430b79f16eb6d
+	source = https://github.com/Helion-Engine/Helion/releases/download/0.9.9.0/Helion-0.9.9.0-linux-x64_AOT.zip
+	sha256sums = 14f6e2378dd2b416071fd573691db1ef0d307a8ad3c3b199a8aa7861a00bcf08
 
 pkgname = helion-bin
