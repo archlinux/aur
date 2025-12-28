@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 optdepends=('wezterm: for WezTerm terminal emulator integration')
-provides=('wezztershier-rust')
+provides=('wezztershier-rust' 'wezzterrust')
 source=("git+https://github.com/tenseleyFlow/wezzteRust.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
@@ -30,7 +30,7 @@ package() {
     cd wezzteRust
     
     # Install the binary
-    install -Dm755 target/release/wezztershier "$pkgdir/usr/bin/wezztershier-rust"
+    install -Dm755 target/release/wezztershier "$pkgdir/usr/bin/wezzterrust"
     
     # Install templates and examples
     install -Dm644 templates/basic.lua "$pkgdir/usr/share/wezztershier-rust/templates/basic.lua"
@@ -44,8 +44,8 @@ package() {
     
     # Install desktop file if it exists
     if [ -f packaging/wezztershier.desktop ]; then
-        install -Dm644 packaging/wezztershier.desktop "$pkgdir/usr/share/applications/wezztershier-rust.desktop"
+        install -Dm644 packaging/wezztershier.desktop "$pkgdir/usr/share/applications/wezzterrust.desktop"
         # Update the desktop file to use the correct binary name
-        sed -i 's/Exec=wezztershier/Exec=wezztershier-rust/' "$pkgdir/usr/share/applications/wezztershier-rust.desktop"
+        sed -i 's/Exec=wezztershier/Exec=wezzterrust/' "$pkgdir/usr/share/applications/wezzterrust.desktop"
     fi
 }

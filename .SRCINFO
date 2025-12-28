@@ -10,6 +10,7 @@ pkgbase = wezztershier-rust
 	depends = gcc-libs
 	optdepends = wezterm: for WezTerm terminal emulator integration
 	provides = wezztershier-rust
+	provides = wezzterrust
 	source = git+https://github.com/tenseleyFlow/wezzteRust.git#tag=v0.3.0
 	sha256sums = SKIP
 
