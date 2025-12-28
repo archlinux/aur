@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'gtk4' 'gtk4-layer-shell')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('92d9527c20aef84f55fdfee0a405daf6379cfcd2e4bbf28388c2bedd25df22bb28c12007785f4283f99c4258c3eb95fbeed25364c0c3a362eb3df8e22b4d5bef')
+b2sums=('e5f4ddca430141089a124852088d2d262c40fb35638c8d4ca48c46e94e1ad97d5ae3a8bbdc2aa430321e89a0f0abc9465b2dea49246f210f5951f6b29c68ae5b')
 
 prepare() {
     cd "$pkgname"
