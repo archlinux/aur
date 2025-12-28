@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 
 
-source=("lianpkg::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg_${pkgver}_linux_x86_64")
+source=("lianpkg-${pkgver}::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg_${pkgver}_linux_x86_64")
 sha256sums=('a3019a99525d68abe8f87f2cd5c532bced764c0a35c767f6ee39d6a652f4d10e')
 
 package() {
