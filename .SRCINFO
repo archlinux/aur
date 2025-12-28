@@ -1,6 +1,6 @@
 pkgbase = better-iptv-bin
 	pkgdesc = Modern, powerful IPTV player for Linux, Windows, and macOS
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/mewset/better-iptv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = better-iptv-bin
 	conflicts = better-iptv
 	conflicts = better-iptv-git
 	options = !strip
-	source = better-iptv-bin-2.2.0.AppImage::https://github.com/mewset/better-iptv/releases/download/v2.2.0/Better.IPTV_2.2.0_amd64.AppImage
-	sha256sums = 08501bedd712a8a24f43ed6af450955d7f40c44ac3e24a3b731360dd5d44d1fd
+	source = better-iptv-bin-2.3.0.AppImage::https://github.com/mewset/better-iptv/releases/download/v2.3.0/Better.IPTV_2.3.0_amd64.AppImage
+	sha256sums = 6be1a93d6ee923b6b1dd60254e8232c0867f92afa07e272e181045508f8753c6
 
 pkgname = better-iptv-bin
