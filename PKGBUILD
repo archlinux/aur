@@ -63,6 +63,12 @@ package() {
     # Install systemd user service file
     install -Dm644 wshowlyrics.service "$pkgdir/usr/lib/systemd/user/wshowlyrics.service"
 
+    # Install desktop file
+    install -Dm644 wshowlyrics.desktop "$pkgdir/usr/share/applications/wshowlyrics.desktop"
+
+    # Install icon
+    install -Dm644 wshowlyrics.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshowlyrics.svg"
+
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
