@@ -1,4 +1,4 @@
-# Maintainer: runa <runa-dev@proton.me>
+# Maintainer: alexm-dev <runa-dev@proton.me>
 pkgname=runa
 _pkgname=runa-tui
 pkgver=0.3.4
