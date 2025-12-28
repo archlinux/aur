@@ -1,6 +1,6 @@
 pkgbase = mrunner
 	pkgdesc = A fast, keyboard-driven application runner for Linux.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/mnzsss/mrunner
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mrunner
 	depends = librsvg
 	optdepends = libnotify: for desktop notifications
 	options = !strip
-	source = mrunner-0.0.7.AppImage::https://github.com/mnzsss/mrunner/releases/download/v0.0.7/mrunner-0.0.7-linux-x86_64.AppImage
-	sha256sums = aaebd58f4f21c1f5d677143cbe26cfec29967e4612abae7a601288a5d363a177
+	source = mrunner-0.0.8.AppImage::https://github.com/mnzsss/mrunner/releases/download/v0.0.8/mrunner-0.0.8-linux-x86_64.AppImage
+	sha256sums = 34e994e5306a056073fde9c58f588550dde1f53794b59e33b2b7ca8944089329
 
 pkgname = mrunner
