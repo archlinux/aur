@@ -1,0 +1,2 @@
+# Basic test for version output
+rain -v|||Rain v{{VERSION}} linux/amd64
