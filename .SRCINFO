@@ -11,6 +11,6 @@ pkgbase = witr
 	provides = witr
 	conflicts = witr-bin
 	source = git+https://github.com/pranshuparmar/witr.git#tag=v0.1.1
-	sha256sums = SKIP
+	sha256sums = e2a392d74cd44af8ecc0c84a4a3301135d96c45aa59dd7e7c190a581ce31f888
 
 pkgname = witr
