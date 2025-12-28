@@ -4,3 +4,5 @@
 *.pkg.*
 pkg/
 src/
+LICENSE.md
+LICENSE.ELv2
