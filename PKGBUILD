@@ -1,5 +1,5 @@
 pkgname=cmdcreate
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/owen-debiasio/cmdcreate"
@@ -11,7 +11,7 @@ source=("git+https://github.com/owen-debiasio/cmdcreate.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-    rustup default nightly
+    rustup default stable
     cd "$srcdir/$pkgname"
     cargo build --release
 }
