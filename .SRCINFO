@@ -1,15 +1,15 @@
 pkgbase = trash-d
 	pkgdesc = A near drop-in replacement for rm that uses the trash bin. Written in D
-	pkgver = 20
-	pkgrel = 2
+	pkgver = 21
+	pkgrel = 1
 	url = https://github.com/rushsteve1/trash-d
 	arch = x86_64
 	license = MIT
 	makedepends = dub
-	makedepends = dmd
+	makedepends = ldc
 	makedepends = scdoc
 	conflicts = trash-cli
-	source = https://github.com/rushsteve1/trash-d/archive/refs/tags/20.tar.gz
-	sha512sums = 86519a0ea3524f4d80ca2bfce2b34de029fc0d786556a99c19be0fe6d48f8a4b640b96a93c2f063e2de52b3783975b0d422662d9474ad175743b3a759183237f
+	source = https://github.com/rushsteve1/trash-d/archive/refs/tags/21.tar.gz
+	sha512sums = db5a827d6d6b57e3e55faec89107e65bcb5f81e92f4cd56d25ca95c7fa65fe38475a493f4ee1e82fb3bf2ee0a8113d77d5ef66b7fabbabc9a36a2570a264188e
 
 pkgname = trash-d
