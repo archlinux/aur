@@ -1,0 +1,4 @@
+[brief]
+source = "git"
+git = "https://github.com/shonebinu/Brief.git"
+prefix = "v"
