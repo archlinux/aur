@@ -1,0 +1,15 @@
+pkgbase = python-empack
+	pkgdesc = empack emscripten+boa
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = None
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/06/0c/39e11d3eed34490c31bf9655d7957eabf75c2dc50724060abb6f1cab4df2/empack-6.0.0.tar.gz
+	sha256sums = 4ab0ae6187e9c7c7d83301c09c7847bffa2e76382d16bb7e7edd72784bcd4669
+
+pkgname = python-empack
