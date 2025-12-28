@@ -2,7 +2,7 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='kubecolor'
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Colorize your kubectl output'
 url='https://github.com/kubecolor/kubecolor'
@@ -12,7 +12,7 @@ depends=('kubectl')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('cd68aad8c1f62f05bce06416e928c2922b76b608bd8af8311f518e2941acfd76')
+sha256sums=('68df2c57700095d4598f91807913a6d8052bfe2ff20046052fcc7350a1a34423')
 
 build() {
 	cd "${pkgname}-${pkgver}"
