@@ -1,0 +1,23 @@
+pkgbase = lettuceai-bin
+	pkgdesc = LettuceAI is a private roleplay chat client. Build characters, write stories, and chat with AI.
+	pkgver = 1.0.0.beta.6.2
+	pkgrel = 1
+	url = https://github.com/LettuceAI/mobile-app
+	install = lettuceai-bin.install
+	arch = x86_64
+	license = AGPL-3.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/LettuceAI/mobile-app/releases/download/1.0-beta.6.2/lettuceai_1.0.0-beta.6-2_amd64.deb
+	sha256sums_x86_64 = 7bf0170a9f41a870afe2cbaa351ce46b2da9fd1cbadbc9ba7ba06999917be249
+
+pkgname = lettuceai-bin
