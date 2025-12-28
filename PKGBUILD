@@ -1,5 +1,5 @@
 pkgname=hulios-git
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="HULIOS - Rust-based transparent Tor proxy for Linux with full system traffic routing, DNS leak protection, and enhanced privacy"
 arch=('x86_64')
