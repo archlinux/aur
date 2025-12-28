@@ -1,0 +1,5 @@
+[leap-bin]
+source = "github"
+github = "paramientos/leap"
+use_latest_release = true
+prefix = "v"
