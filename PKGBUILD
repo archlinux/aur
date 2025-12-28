@@ -11,7 +11,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=20.2.3
+pkgver=20.3.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('502b9fc836bc8b9f697585a70d0eef50e20069ce4fe9c356da353391775f0e20'
+sha256sums=('00630bd30f7bdddced7dd9bfc3f6407d9cb9554062481dbb946db1196d3b6f10'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -116,13 +116,13 @@ prepare() {
   # Fix desktop files
   sed -i 's#Exec=.*#Exec=davinci-control-panels-setup#' \
     "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
-  sed -i 's#Icon=.*#Icon=davinci-resolve.png#' \
+  sed -i 's#Icon=.*#Icon=davinci-resolve#' \
     "squashfs-root/share/DaVinciResolve.desktop"
-  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup.png#' \
+  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup#' \
     "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
-  sed -i 's#Icon=.*#Icon=blackmagicraw-player.png#' \
+  sed -i 's#Icon=.*#Icon=blackmagicraw-player#' \
     "squashfs-root/share/blackmagicraw-player.desktop"
-  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest.png#' \
+  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest#' \
     "squashfs-root/share/blackmagicraw-speedtest.desktop"
 }
 
