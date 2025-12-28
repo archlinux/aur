@@ -2,38 +2,38 @@
 
 pkgbase=dsp56300-emulator
 pkgname=(
-  'dsp56300-emulator-clap'
-  'dsp56300-emulator-lv2'
-  'dsp56300-emulator-vst3'
+  dsp56300-emulator-clap
+  dsp56300-emulator-lv2
+  dsp56300-emulator-vst3
 )
-pkgver=1.4.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/dsp56300/gearmulator'
-license=('GPL-3.0-only')
+license=(GPL-3.0-only)
 _common_depends=(
-  'glibc'
-  'freetype2'
-  'alsa-lib'
+  glibc
+  freetype2
+  alsa-lib
 )
 makedepends=(
   "${_common_depends[@]}"
-  'git'
-  'cmake'
-  'libx11'
-  'libxext'
-  'libxrandr'
-  'libxinerama'
-  'libxcursor'
-  'libxcomposite'
-  'mesa'
-  'mold'
-  'ninja'
-  'freeglut'
-  'webkit2gtk'
+  git
+  cmake
+  libx11
+  libxext
+  libxrandr
+  libxinerama
+  libxcursor
+  libxcomposite
+  mesa
+  mold
+  ninja
+  freeglut
+  webkit2gtk
 )
-options=('!debug')
+options=(!debug)
 source=(
   "$pkgbase::git+$url#tag=$pkgver"
   'github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300'
@@ -43,10 +43,12 @@ source=(
   'github.com-free-audio-clap-helpers::git+https://github.com/free-audio/clap-helpers'
   'github.com-free-audio-clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions'
   'github.com-dsp56300-mc68k::git+https://github.com/dsp56300/mc68k'
+  'github.com-dsp56300-RmlUi::git+https://github.com/dsp56300/RmlUi'
+  'github.com-freetype-freetype::git+https://github.com/freetype/freetype'
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('c28c1ccb634db1258a1d017dc4b3dc7499e3da1e3c90916a7ad60a70b0c4c3e80abb19bb8a020dc171285d8c3322d8c1ae37d4227061678708ffc96fdf1e9978'
+sha512sums=('bde91f551cc310fbc00888b1c2c7307ebaa734d4891300b4f39c5314a3504fab0ccbe580b94a41a44b596900f8966a50fdc7fec6649ed601c0b8875c2d6fbfef'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,9 +56,11 @@ sha512sums=('c28c1ccb634db1258a1d017dc4b3dc7499e3da1e3c90916a7ad60a70b0c4c3e80ab
             'SKIP'
             'SKIP'
             'SKIP'
-            '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
-            '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
-b2sums=('fb87b79166d8a897328fae538f4750e57702017a778f3f7d5cf9f02a2543e1f6f3fe1bf6acbfdf1aef73665b894294a8a86bb9c63dadd4c718f8f9e666c8a3d7'
+            'SKIP'
+            'SKIP'
+            'f4d862a6a46a1eec9be00fb6a48f80875e9ece1ff1a3deb6bb21c4a7a297dee1db178276f456eac21f1ffdea15b591b1bb8030731cebe081d3086aa12a2ffe37'
+            '8107dbd04953146aac91f5cacae77837ec8e99bebde069e1672a18f171e71751fbfe3b8194620d7ba4926974fcc7fc36b6e0fd71544c7ee00dc103d1c06afedc')
+b2sums=('807ad2e663ec0e767e3ae808f8924c75909ff64f53bf87ec811fb360ecc6613bfe49dd0115cbe27810d3dc0a0673a0412e50e077faf1889437a466056b7ed4ce'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -64,8 +68,10 @@ b2sums=('fb87b79166d8a897328fae538f4750e57702017a778f3f7d5cf9f02a2543e1f6f3fe1bf
         'SKIP'
         'SKIP'
         'SKIP'
-        '68ec32184ad27cd75a71383025abc4e4fef7252c06f32577832193ca9d58a22c1825631c377ac6160beccc13938c4a4565016844d4cdab5f43e0580f22aee853'
-        'a0f622bf3716435a66bb8023295a8c5250819279461c0e61849e784b1b4586b7514f701608beaff43b0a874430cc8178de7a49da2f89eb47cb5773bb270f1623')
+        'SKIP'
+        'SKIP'
+        '3481170c4f26ccda457a7cb8aa525924eb1f0c731412764d3f7b0dcec30ae661abd77a0c08f74794adba87edf96ecc9dae019ec57c209c1e394aceffd5f94a7b'
+        '00c0735be9248265576871085a757491a397ad20388aae91164e7fe444a20b3abd8d18a3bff1dff90f5ddced81fe499af9e649a820a0e86f82af269cd76c92c1')
 
 prepare() {
   cd "$pkgbase"
@@ -75,12 +81,16 @@ prepare() {
     source/dsp56300 \
     source/JUCE \
     source/mc68k \
-    source/clap-juce-extensions
+    source/clap-juce-extensions \
+    source/3rdparty/RmlUi \
+    source/3rdparty/freetype
 
   git config submodule.source/dsp56300.url "$srcdir/github.com-dsp56300-dsp56300"
   git config submodule.source/JUCE.url "$srcdir/github.com-dsp56300-JUCE"
   git config submodule.source/clap-juce-extensions.url "$srcdir/github.com-free-audio-clap-juce-extensions"
   git config submodule.source/mc68k.url "$srcdir/github.com-dsp56300-mc68k"
+  git config submodule.source/3rdparty/RmlUi.url "$srcdir/github.com-dsp56300-RmlUi"
+  git config submodule.source/3rdparty/freetype.url "$srcdir/github.com-freetype-freetype"
   git -c protocol.file.allow=always submodule update
 
   # setup git submodules for clap-juce-extensions
@@ -103,6 +113,10 @@ prepare() {
 
   # skip tests (only useful for development, reduces compile time by a *lot*)
   patch -p1 -i "$srcdir/skip-tests.patch"
+
+  # FTBFS missing headers
+  # https://github.com/dsp56300/gearmulator/pull/251
+  git cherry-pick --no-commit d4f4c32ea32811f9ad3a3b4a13e955e39d8285dc
 }
 
 build() {
@@ -126,6 +140,7 @@ build() {
     -D gearmulator_SYNTH_VAVRA=ON
     -D gearmulator_SYNTH_XENIA=ON
     -D gearmulator_SYNTH_NODALRED2X=ON
+    -D gearmulator_SYNTH_JE8086=ON
   )
 
   cmake "${cmake_options[@]}"
