@@ -1,7 +1,7 @@
 # Maintainer: thephoenix <ezrakhuzadi@gmail.com>
 pkgname=prismlauncher-offline
 pkgver=9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Prism Launcher fork with offline account support enabled (built from source)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
@@ -10,9 +10,9 @@ depends=('qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-networkauth' 'qt6-imageformats'
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'java-environment>=8')
 provides=('prismlauncher-offline')
 conflicts=('prismlauncher')
-source=("prismlauncher-cracked::git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
-        "libnbtplusplus::git+https://github.com/PrismLauncher/libnbtplusplus.git"
-        "filesystem::git+https://github.com/gulrak/filesystem.git"
+source=("git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
+        "git+https://github.com/PrismLauncher/libnbtplusplus.git"
+        "git+https://github.com/gulrak/filesystem.git"
         "qfile-open-checks.patch")
 sha256sums=('SKIP'
             'SKIP'
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd "${srcdir}/prismlauncher-cracked"
+    cd "${srcdir}/PrismLauncher-Cracked"
 
     # Copy git submodules into place
     cp -r "${srcdir}/libnbtplusplus/"* libraries/libnbtplusplus/
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/prismlauncher-cracked"
+    cd "${srcdir}/PrismLauncher-Cracked"
 
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/prismlauncher-cracked"
+    cd "${srcdir}/PrismLauncher-Cracked"
 
     DESTDIR="${pkgdir}" cmake --install build
 }
