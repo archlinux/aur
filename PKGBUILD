@@ -1,8 +1,8 @@
-# Maintainer: alexm-dev <runa-dev@proton.me>
+# Maintainer: runa <runa-dev@proton.me>
 pkgname=runa
 _pkgname=runa-tui
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"
