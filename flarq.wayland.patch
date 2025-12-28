@@ -1,0 +1,33 @@
+--- src/flarq-src/flarq.cxx	2025-07-04 17:44:13.000000000 +0200
++++ src/flarq-src/flarq.cxx	2025-12-27 20:35:27.210480632 +0100
+@@ -1966,14 +1966,22 @@
+ 	arqwin->show(argc, argv);
+ 
+ #ifdef USE_X
+-
+-	XWMHints* hints = XGetWMHints(fl_display, fl_xid(arqwin));
+-	hints->flags |= IconMaskHint; // ensure transparency mask is enabled for the XPM icon
+-	hints->icon_mask |= IconPixmapHint;
+-	XSetWMHints(fl_display, fl_xid(arqwin), hints);
+-	XFree(hints);
+-
+-#endif
++#  ifdef FLTK_USE_X11
++	fl_open_display(); /* multiple calls harmless */
++	if (fl_x11_display())
++	{
++		XWMHints* hints = XGetWMHints(fl_display, fl_xid(arqwin));
++		if (hints)
++		{
++			// enable transparency mask for icon
++			hints->flags |= IconMaskHint;
++			hints->icon_mask |= IconPixmapHint;
++			XSetWMHints(fl_display, fl_xid(arqwin), hints);
++			XFree(hints);
++		}
++	}
++#  endif // FLTK_USE_X11
++#endif // USE_X
+ 
+ 	return Fl::run();
+ }
