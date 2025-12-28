@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=phoenix-x-server-git
-pkgver=r152.ced5dac
+pkgver=r158.002d614
 pkgrel=1
 pkgdesc='A new X server written from scratch designed to be a modern alternative to the Xorg server (git version)'
 arch=('x86_64')
@@ -11,16 +11,17 @@ depends=(
     'glibc'
     'libdrm'
     'libgl'
-    'libxcb')
+    'libxcb'
+    'libxkbcommon')
 makedepends=(
     'git'
-    'zig-bin0.14')
+    'zig0.14')
 provides=('phoenix-x-server')
 conflicts=('phoenix-x-server')
 source=('phoenix-x-server'::'git+https://repo.dec05eba.com/phoenix'
         '010-phoenix-add-pie.patch')
 sha256sums=('SKIP'
-            '6d73db9a2c35354f2984e0643f2e98ef938305978a7ced3b5da2559f379d32d0')
+            '3cab832e60a4dc7674a6abbdc39e437ec248e460b06a01cc34427621b4e85aa3')
 
 prepare() {
     patch -d phoenix-x-server -Np1 -i "${srcdir}/010-phoenix-add-pie.patch"
@@ -35,10 +36,10 @@ pkgver() {
 
 build() {
     cd phoenix-x-server
-    zig-0.14 build -Doptimize='ReleaseSafe' --verbose
+    zig build -Doptimize='ReleaseSafe' --verbose
 }
 
 package() {
     cd phoenix-x-server
-    zig-0.14 build install -p "${pkgdir}/usr" -Doptimize='ReleaseSafe'
+    zig build install -p "${pkgdir}/usr" -Doptimize='ReleaseSafe'
 }
