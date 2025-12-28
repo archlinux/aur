@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
 pkgver=1.8.2
-pkgrel=4
+pkgrel=5
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
@@ -18,8 +18,8 @@ com.github.aliencoweatcake.imageviewer.xml
 )
 sha256sums=(
 '69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab'
-'ab23d8668932681ba640f7d3fddbe61c85241467ea865b22a124a1081c0fc7ec'
-'720b1e3cd4d072bad93f1308edf73ebe87269d3c04407f18d403f56b18834110'
+'292e40f0cff8416d04422cc594fcc03f8cad9bd9550e30089b5de5dd17a9af80'
+'240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
 )
 
 prepare() {
@@ -40,5 +40,5 @@ package() {
   install -Dm 755 "$srcdir"/src/ImageViewer/ImageViewer "$pkgdir"/usr/bin/ImageViewer
   install -Dm 755 ImageViewer.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ImageViewer.svg
   install -Dm 755 com.github.aliencoweatcake.imageviewer.desktop "$pkgdir"/usr/share/applications/com.github.aliencoweatcake.imageviewer.desktop
-  install -Dm 755 com.github.aliencoweatcake.imageviewer.xml "$pkgdir"/usr/share/metainfo/com.github.aliencoweatcake.imageviewer.xml
+  install -Dm 755 com.github.aliencoweatcake.imageviewer.appdata.xml "$pkgdir"/usr/share/metainfo/com.github.aliencoweatcake.imageviewer.appdata.xml
 }

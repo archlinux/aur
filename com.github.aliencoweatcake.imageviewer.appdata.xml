@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+    <id>com.github.aliencoweatcake.imageviewer.desktop</id>
+    <name>Image Viewer</name>
+    <summary>Simple, cross-platform image viewer</summary>
+    <description>
+        <p>Image Viewer is a open-source and cross-platform image viewer inspired by GPicView.</p>
+    </description>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+    <developer_name>AlienCowEatCake</developer_name>
+    <launchable type="desktop-id">com.github.aliencoweatcake.imageviewer.desktop</launchable>
+    <content_rating type="oars-1.1" />
+    <screenshots>
+        <screenshot type="default">
+            <image>https://github.com/AlienCowEatCake/ImageViewer/raw/master/img/Ubuntu.png</image>
+            <caption>Main window</caption>
+        </screenshot>
+    </screenshots>
+    <url type="homepage">https://github.com/AlienCowEatCake/ImageViewer</url>
+    <url type="bugtracker">https://github.https://github.com/AlienCowEatCake/ImageViewer/issues</url>
+    <provides>
+        <binary>ImageViewer</binary>
+</component>
