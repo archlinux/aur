@@ -1,16 +1,16 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=stabilitymatrix
-pkgver=2.15.3
+pkgver=2.15.4
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
 url='https://github.com/LykosAI/StabilityMatrix'
 license=('AGPL3')
 
-depends=('dotnet-runtime' 'libxcrypt-compat')
+depends=('dotnet-runtime-9.0' 'libxcrypt-compat')
 makedepends=(
-    'dotnet-sdk'
+    'dotnet-sdk-9.0'
 )
 
 options=('!strip')
