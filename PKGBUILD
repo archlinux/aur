@@ -1,40 +1,42 @@
-# Maintainer: Splith <spam at helper3000 net>
+# Contributor: Splith <spam at helper3000 net>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=swars
-pkgver=0.3
+pkgver=0.3.8.3283
 pkgrel=1
 pkgdesc="Syndicate Wars, a classic 1996 strategy game, with SDL patches to make it playable natively on Linux. Requires the Syndicate Wars CD to copy data files from before first run."
-url="http://swars.vexillium.org/"
-license=('GPL3')
+#url="http://swars.vexillium.org"
+url="https://github.com/swfans"
+license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
 depends=( 'lib32-sdl' 'lib32-libvorbis' 'lib32-libpng' 'lib32-zlib' 'lib32-openal' 'lib32-cdparanoia' )
-makedepends=('python2')
-source=("http://swars.vexillium.org/files/$pkgname-$pkgver.tar.bz2")
-sha256sums=('01f44e5b792d41b138d361d04810a875cfa5f897c642a2b13d0dde633fabdacb')
+#source=("http://swars.vexillium.org/files/$pkgname-$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.gz::$url/syndwarsfx/archive/$pkgver.tar.gz")
+sha256sums=('b95c60fa38922f8646b83cbd94258946c20133c168d7d3ac04d8a9d93d6535a9')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd syndwarsfx-$pkgver
 
+  autoreconf -if
   if [ "${CARCH}" = "x86_64" ]; then
-    ac_cv_prog_PYTHON=python2 ./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32" --prefix=/usr --libdir=/usr/lib32
+    ./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32" "LDFLAGS=-L../usr/lib32" --prefix=/usr
   else
-    ac_cv_prog_PYTHON=python2 ./configure --prefix=/usr
+    ./configure --prefix=/usr
   fi
-
+  sed -i '1i#include <string.h>' src/display.c src/guitext.c
 }
 
 build() {
-  cd $pkgname-$pkgver
-
+  cd syndwarsfx-$pkgver
   make
 }
 
 package () {
   install=swars.install
-  cd $pkgname-$pkgver
+  cd syndwarsfx-$pkgver
 
   make DESTDIR="$pkgdir" install
-  mkdir "${pkgdir}/usr/share/swars"
+  mkdir -p "${pkgdir}/usr/share/swars"
   install -Dm755 util/install "${pkgdir}/usr/share/swars/install"
 }
 
