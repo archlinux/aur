@@ -1,0 +1,19 @@
+pkgbase = repos-bin
+	pkgdesc = Interactive CLI tool for managing multiple git repositories
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/epilande/repos
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = repos
+	conflicts = repos
+	options = !strip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/epilande/repos/v1.0.0/LICENSE
+	source = README-1.0.0.md::https://raw.githubusercontent.com/epilande/repos/v1.0.0/README.md
+	sha256sums = 4968aae2669870a43427f40882b344a5d7ce9f7a5f44e4bc5b64d8c45e97d0a8
+	sha256sums = df58fe9a33df1569c06d5f2866e27a3888dce9e6803fe401c41c4c711a2d2ff8
+	source_x86_64 = repos-x86_64-1.0.0::https://github.com/epilande/repos/releases/download/v1.0.0/repos-linux-x64
+	sha256sums_x86_64 = bf3720a7bfec9301654a2367f9d7b40495f22b33c2a1d45cbef181bffd01c799
+
+pkgname = repos-bin

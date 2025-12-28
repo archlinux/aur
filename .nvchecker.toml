@@ -1,0 +1,5 @@
+[repos-bin]
+source = "github"
+github = "epilande/repos"
+use_latest_release = true
+prefix = "v"
