@@ -1,17 +1,17 @@
 pkgbase = kdrive-appimage
 	pkgdesc = kDrive allows you to collaborate, store and share your data securely via your web browser, your mobile, your tablet or your computer.
-	pkgver = 3.7.9.1
+	pkgver = 3.8.1.4
 	pkgrel = 1
 	url = https://www.infomaniak.com/en/apps/download-kdrive
 	arch = x86_64
 	arch = aarch64
 	license = custom:Unlicense
 	depends = zlib
-	noextract = kdrive-appimage-3.7.9.1.AppImage
+	noextract = kdrive-appimage-3.8.1.4.AppImage
 	options = !strip
-	source_x86_64 = kdrive-appimage-3.7.9.1.AppImage::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.9.1-amd64.AppImage
-	sha256sums_x86_64 = 80b05b321416a6a5fdb70c052ff2b3838da369a1f5865859de1081c0abb33362
-	source_aarch64 = kdrive-appimage-3.7.9.1.AppImage::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.9.1-arm64.AppImage
-	sha256sums_aarch64 = 2b8d3a6ba8ebd1a8bcbbd7756a3151d78bba40165c9c97e77169aab654e52a4b
+	source_x86_64 = kdrive-appimage-3.8.1.4.AppImage::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.1.4-amd64.AppImage
+	sha256sums_x86_64 = 2b327469187660582d619e40c357b8bfba50eb7383792e75829a338b72df604c
+	source_aarch64 = kdrive-appimage-3.8.1.4.AppImage::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.1.4-arm64.AppImage
+	sha256sums_aarch64 = 0c496749d9ef67dbebf25afc58e03bddadf58e83dbc0035b5d0b9ff023e80755
 
 pkgname = kdrive-appimage
