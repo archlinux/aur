@@ -8,9 +8,40 @@
  #include <vector>
 
 
---- a/cmake/CUDA.cmake	2024-05-30 16:05:48.178822318 +0200
-+++ b/cmake/CUDA.cmake	2024-05-30 16:05:09.742396651 +0200
-@@ -134,6 +134,7 @@
+--- a/cmake/CUDA.cmake	2025-12-28 09:36:57.973726366 +0100
++++ b/cmake/CUDA.cmake	2025-12-28 09:37:27.960774309 +0100
+@@ -14,29 +14,7 @@
+     add_definitions("-DXMRIG_LARGEGRID=${XMRIG_LARGEGRID}")
+ endif()
+
+-set(DEFAULT_CUDA_ARCH "50")
+-
+-# Fermi GPUs are only supported with CUDA < 9.0
+-if (CUDA_VERSION VERSION_LESS 9.0)
+-    list(APPEND DEFAULT_CUDA_ARCH "20;21")
+-endif()
+-
+-# Kepler GPUs are only supported with CUDA < 11.0
+-if (CUDA_VERSION VERSION_LESS 11.0)
+-    list(APPEND DEFAULT_CUDA_ARCH "30")
+-elseif (CUDA_VERSION VERSION_LESS 12.0)
+-    list(APPEND DEFAULT_CUDA_ARCH "35")
+-endif()
+-
+-# add Pascal support for CUDA >= 8.0
+-if (NOT CUDA_VERSION VERSION_LESS 8.0)
+-    list(APPEND DEFAULT_CUDA_ARCH "60")
+-endif()
+-
+-# add Volta support for CUDA >= 9.0
+-if (NOT CUDA_VERSION VERSION_LESS 9.0)
+-    list(APPEND DEFAULT_CUDA_ARCH "70")
+-endif()
++set(DEFAULT_CUDA_ARCH "80")
+
+ # add Turing support for CUDA >= 10.0
+ if (NOT CUDA_VERSION VERSION_LESS 10.0)
+@@ -135,6 +113,7 @@
          list(APPEND CUDA_NVRTC_LIB_HINTS "${CUDA_TOOLKIT_ROOT_DIR}/lib")
      else()
          set(LIB_HINTS
@@ -18,7 +49,7 @@
              "${CUDA_TOOLKIT_ROOT_DIR}/lib64"
              "${CUDA_TOOLKIT_ROOT_DIR}/lib/x64"
              "/usr/lib64"
-@@ -143,8 +144,8 @@
+@@ -144,8 +123,8 @@
          list(APPEND CUDA_NVRTC_LIB_HINTS ${LIB_HINTS})
          unset(LIB_HINTS)
      endif()
@@ -29,3 +60,24 @@
      unset(CUDA_LIB_HINTS)
      unset(CUDA_NVRTC_LIB_HINTS)
 
+--- a/src/cuda_extra.cu	2025-12-28 09:46:01.099012050 +0100
++++ b/src/cuda_extra.cu	2025-12-28 09:46:46.992371035 +0100
+@@ -551,8 +551,16 @@
+     ctx->device_mpcount         = props.multiProcessorCount;
+     ctx->device_arch[0]         = props.major;
+     ctx->device_arch[1]         = props.minor;
+-    ctx->device_clockRate       = props.clockRate;
+-    ctx->device_memoryClockRate = props.memoryClockRate;
++    err = cudaDeviceGetAttribute(&(ctx->device_clockRate), cudaDevAttrClockRate, ctx->device_id);
++    if (err != cudaSuccess) {
++        printf("\nGPU %d: %s\n%s line %d\n", ctx->device_id, cudaGetErrorString(err), __FUNCTION__, __LINE__);
++        return 1;
++    }
++    err = cudaDeviceGetAttribute(&(ctx->device_memoryClockRate), cudaDevAttrMemoryClockRate, ctx->device_id);
++    if (err != cudaSuccess) {
++        printf("\nGPU %d: %s\n%s line %d\n", ctx->device_id, cudaGetErrorString(err), __FUNCTION__, __LINE__);
++        return 1;
++    }
+     ctx->device_pciBusID        = props.pciBusID;
+     ctx->device_pciDeviceID     = props.pciDeviceID;
+     ctx->device_pciDomainID     = props.pciDomainID;
