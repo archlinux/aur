@@ -2,7 +2,7 @@
 
 pkgname=pdf-over
 pkgver=4.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical tool for creating PAdES conforming PDF signatures'
 arch=('x86_64')
 url='https://technology.a-sit.at/en/pdf-over/'

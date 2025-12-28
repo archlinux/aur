@@ -1,7 +1,7 @@
 pkgbase = pdf-over
 	pkgdesc = Graphical tool for creating PAdES conforming PDF signatures
 	pkgver = 4.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://technology.a-sit.at/en/pdf-over/
 	arch = x86_64
 	license = custom:EUPL-1.2
