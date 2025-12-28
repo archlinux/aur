@@ -16,6 +16,8 @@ pkgbase = pdate-cli
 	depends = python-humanize
 	provides = pdate
 	source = https://files.pythonhosted.org/packages/source/p/pdate_cli/pdate_cli-0.1.0.tar.gz
+	source = fix_warning.patch
 	sha256sums = 93fe03f695caa40f57759262b06e81e06d4e31218ffb456e6388f12f44e8a071
+	sha256sums = 153ff393a47300a285f7f79c29cdd63039c9bbdce43f6651f3a92ec5625a03a5
 
 pkgname = pdate-cli
