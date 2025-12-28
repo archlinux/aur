@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=gittorrent
-pkgver=1.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="a lightweight, encrypting version control system with a CI/CD pipeline"
+pkgdesc="a CLI encrypting version control system with a CI/CD pipeline"
 arch=("x86_64")
 url="https://projectgrid.net/portfolio/gittorrent"
 license=("0BSD")

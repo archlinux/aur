@@ -1,6 +1,6 @@
 pkgbase = gittorrent
-	pkgdesc = a lightweight, encrypting version control system with a CI/CD pipeline
-	pkgver = 1.0.0
+	pkgdesc = a CLI encrypting version control system with a CI/CD pipeline
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://projectgrid.net/portfolio/gittorrent
 	install = advice.install
