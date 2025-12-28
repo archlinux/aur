@@ -1,0 +1,3 @@
+[pdate-cli]
+source = "pypi"
+pypi = "pdate_cli"

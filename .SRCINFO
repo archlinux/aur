@@ -1,0 +1,21 @@
+pkgbase = pdate-cli
+	pkgdesc = 🔮 Human-readable dates and times
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hcgatewood/vis
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-click
+	depends = python-dateutil
+	depends = python-dateparser
+	depends = python-humanize
+	provides = pdate
+	source = https://files.pythonhosted.org/packages/source/p/pdate_cli/pdate_cli-0.1.0.tar.gz
+	sha256sums = 93fe03f695caa40f57759262b06e81e06d4e31218ffb456e6388f12f44e8a071
+
+pkgname = pdate-cli
