@@ -1,0 +1,20 @@
+pkgbase = riftbar-stable-git
+	pkgdesc = Async status bar for wayland written in rust (stable git version)
+	pkgver = 8fc89d4
+	pkgrel = 1
+	url = https://github.com/binaryharbinger/riftbar
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = wayland
+	depends = vulkan-icd-loader
+	provides = riftbar
+	conflicts = riftbar
+	source = git+https://github.com/binaryharbinger/riftbar.git#branch=main
+	sha256sums = SKIP
+
+pkgname = riftbar-stable-git
