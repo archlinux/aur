@@ -1,7 +1,7 @@
 pkgbase = python-jupyterlite-p5-kernel
 	pkgdesc = None
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = None
 	arch = any
 	license = custom:BSD License
@@ -17,6 +17,16 @@ pkgbase = python-jupyterlite-p5-kernel
 	depends = jupyter-nbconvert
 	depends = python-jupyterlite-core
 	depends = python-tinycss2-1.4
+	depends = python-isoduration
+	depends = python-tzdata
+	depends = python-jsonpointer
+	depends = python-uri-template
+	depends = python-fqdn
+	depends = python-terminado
+	depends = python-rfc3987-syntax
+	depends = python-debugpy
+	depends = python-hatch-nodejs-version
+	depends = python-hatch-jupyter-builder
 	source = https://files.pythonhosted.org/packages/6e/c5/e2d6f97f73cc368a802492a1e037950e56be11050e60ad62252669ec7343/jupyterlite_p5_kernel-0.3.0.tar.gz
 	sha256sums = 293974231974eef8d08eed6083a9ab6f3f2a9f18bd35cf98d9262d2ab8570fc6
 
