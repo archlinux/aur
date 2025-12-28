@@ -6,6 +6,8 @@ pkgbase = hulios-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = rust
+	makedepends = cargo
 	source = git+https://github.com/ghaziwali/Hulios.git
 	sha256sums = SKIP
 
