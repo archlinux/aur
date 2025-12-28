@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=qoa-git
-pkgver=r79.3c5af35
-pkgrel=2
+pkgver=r84.fb57da0
+pkgrel=1
 pkgdesc='Quite OK Audio (QOA) format and codec (git version)'
 arch=('x86_64')
 url='https://qoaformat.org/'
@@ -19,7 +19,7 @@ conflicts=('qoa')
 source=('git+https://github.com/phoboslab/qoa.git'
         '010-qoa-use-arch-flags.patch')
 sha256sums=('SKIP'
-            '88decb9b90164b7377b51aa2c6ca183198feb365438ad935985e0024bce1fe7a')
+            'e7ef5040b3221cc4d7bea4a2efbc9f70a4b76260f419b3c9c4a97cd266cb8d2e')
 
 prepare() {
     patch -d qoa -Np1 -i "${srcdir}/010-qoa-use-arch-flags.patch"
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-    CFLAGS+=' -isystem/usr/include/dr_libs' make -C qoa
+    CFLAGS+=' -isystem/usr/include/dr_libs' make -C qoa HAS_DRLIBS='true'
 }
 
 package() {
