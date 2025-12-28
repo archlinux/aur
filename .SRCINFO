@@ -1,0 +1,19 @@
+pkgbase = runa-bin
+	pkgdesc = A fast and lightweight console file browser written in Rust
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/alexm-dev/runa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = runa
+	conflicts = runa
+	source = LICENSE
+	sha256sums = 18f0dc4cd8fadfc12ef6e05373ad5baf634cbc857ffe6076c65f8147c77d48de
+	source_x86_64 = runa-bin-0.3.4-x86_64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.4/runa-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9add4f0777ea8e7e1ec34318b78ae40ce5e31e4f76e5d1655ad84c62e34d7a7e
+	source_aarch64 = runa-bin-0.3.4-aarch64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.4/runa-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9f46830cca3b55a90ae01016369a3d0a279a233e19789d5fef26451aa8ad36be
+
+pkgname = runa-bin
