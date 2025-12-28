@@ -1,13 +1,14 @@
-pkgver = 0.10.0
-pkgrel = 1
 pkgbase = lazap-bin
+	pkgdesc = A native-like attempt to unify your clients with a fast, modern, and cross-platform solution
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Lazap-Development/Lazap
+	arch = x86_64
+	license = GPL3
+	depends = libunistring
+	source = https://github.com/Lazap-Development/Lazap/releases/download/v0.10.0/Lazap-0.10.0-x86_64.rpm
+	sha256sums = 6bbd76cab0614cb0f44cfd60c3e960033f30921be5a541a52f8e67b047d8308b
+
 pkgname = lazap-bin
-pkgdesc = A native-like attempt to unify your clients with a fast, modern, and cross-platform solution
-url = https://github.com/Lazap-Development/Lazap
-license = GPL3
-arch = x86_64
-depends = libunistring
-provides = lazap
-conflicts = lazap
-source = https://github.com/Lazap-Development/Lazap/releases/download/v0.10.0/Lazap-0.10.0-x86_64.rpm
-sha256sums = 6bbd76cab0614cb0f44cfd60c3e960033f30921be5a541a52f8e67b047d8308b
+	provides = lazap
+	conflicts = lazap

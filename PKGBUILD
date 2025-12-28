@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Co-Maintainer: p0ryae <porya at contact dot me>
 
+pkgname=lazap-bin
 pkgver=0.10.0
 pkgrel=1
-pkgname=lazap-bin
 pkgdesc="A native-like attempt to unify your clients with a fast, modern, and cross-platform solution"
 url="https://github.com/Lazap-Development/Lazap"
 license=('GPL3')
