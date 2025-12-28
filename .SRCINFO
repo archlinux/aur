@@ -1,0 +1,17 @@
+pkgbase = runa-git
+	pkgdesc = A fast and lightweight console file browser written in Rust
+	pkgver = 0.3.4.r25.gd3fcbeb
+	pkgrel = 1
+	url = https://github.com/alexm-dev/runa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = runa
+	conflicts = runa
+	source = runa-git::git+https://github.com/alexm-dev/runa
+	sha256sums = SKIP
+
+pkgname = runa-git
