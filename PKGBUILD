@@ -1,6 +1,6 @@
 # Maintainer: WithoutAName <withoutaname@withoutaname.eu>
 pkgname=slider-cli
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Command-line implementation and Golang library for the RAMMB/CIRA SLIDER satellite image viewer"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Apache-2.0")
 depends=("glibc")
 makedepends=("git" "go" "make")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5790a3b0c63c2bf36af60153884eddb144007e6dd9d897a5579a9356b910ce70')
+sha256sums=('d2680a2a9689fb73da4430987f2ebc859a550889c0c8dc11958911849d73ed38')
 
 build() {
   cd "$srcdir/$_repo-$pkgver"
