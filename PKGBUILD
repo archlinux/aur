@@ -6,18 +6,11 @@ pkgname='python-jupyterlite-sphinx'
 _module='jupyterlite-sphinx'
 _src_folder='jupyterlite_sphinx-0.22.0'
 pkgver='0.22.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx extension for deploying JupyterLite"
 url="None"
-depends=('python' 'docutils' 'jupyter-server' 'jupiterlab-server' 'python-juputerlite-core' 'jupytext' 'python-sphinx' 'python-nbformat')
-Requires-Dist: jupytext
-Provides-Extra: dev
-Requires-Dist: hatch; extra == 'dev'
-Provides-Extra: docs
-Requires-Dist: jupyterlite-xeus<4,>=0.1.8; extra == 'docs'
-Requires-Dist: myst-parser; extra == 'docs'
-Requires-Dist: pydata-sphinx-theme; extra == 'docs'
-
+depends=('python' 'python-docutils' 'jupyter-server' 'jupyter-nbformat' 'python-jupyterlab-server' 'python-jupyterlite-core' 'python-jupytext' 'python-sphinx' 'python-pydata-sphinx-theme' 'python-myst-parser' 'python-hatch')
+#Requires-Dist: jupyterlite-xeus<4,>=0.1.8; extra == 'docs'
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('unknown')
 arch=('any')
