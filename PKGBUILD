@@ -1,6 +1,6 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=auto-throttle
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Lightweight thermal and power management orchestration for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('ryzenadj: for AMD TDP control'
             'lm_sensors: for monitoring')
 backup=('etc/auto-throttle.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2b36655edd671f997440be23e71c07e49ed7bb7434394b3222a189d63a119f9')
+sha256sums=('1237e1aebc989eef33e7f51f384b8b4c9117817a4248005a94e51dcab99f4f7e')
 package() {
     cd "${srcdir}/AutoThrottleSetup-${pkgver}"
     sed -i 's|/usr/local/bin/auto-throttle|/usr/bin/auto-throttle|g' auto-throttle.service
