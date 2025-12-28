@@ -1,13 +1,13 @@
 pkgbase = near-cli-rs
 	pkgdesc = Your human-friendly companion that helps to interact with NEAR Protocol from command line
-	pkgver = 0.22.2
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/near/near-cli-rs
 	arch = any
 	license = MIT
 	makedepends = cargo
 	options = !lto
-	source = near-cli-rs-0.22.2.tar.gz::https://github.com/near/near-cli-rs/archive/refs/tags/v0.22.2.tar.gz
-	sha256sums = 020221be5f8839d52b13adab6598bbc24ed5816f975ac31d11b10027dc544d2a
+	source = near-cli-rs-0.23.2.tar.gz::https://github.com/near/near-cli-rs/archive/refs/tags/v0.23.2.tar.gz
+	sha256sums = bc7b75cacbdc67ff8e4bdc76b7d4fc8c3d7d3f1bd29faea0b4484ede18102d39
 
 pkgname = near-cli-rs
