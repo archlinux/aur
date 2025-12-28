@@ -1,6 +1,6 @@
 pkgbase = wshowlyrics-git
 	pkgdesc = Wayland-based synchronized lyrics overlay with MPRIS integration
-	pkgver = r364.c031c2b
+	pkgver = r366.959a7d6
 	pkgrel = 1
 	url = https://github.com/unstable-code/lyrics
 	arch = x86_64
