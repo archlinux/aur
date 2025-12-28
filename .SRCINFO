@@ -1,6 +1,6 @@
 pkgbase = superfile-git
 	pkgdesc = Pretty fancy and modern terminal file manager
-	pkgver = v1.3.1.r84.ge7a7483
+	pkgver = v1.4.1.rc.r14.g054fbe4
 	pkgrel = 1
 	url = https://superfile.netlify.app/
 	arch = x86_64
