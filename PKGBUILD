@@ -2,7 +2,7 @@
 pkgbase="powertuner"
 pkgname="powertuner"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The first multi-platform client-daemon tuning app for desktop and handheld devices"
 url="https://github.com/PowerTuner"
 install="powertuner.install"
@@ -21,7 +21,7 @@ source=(
     "https://github.com/PowerTuner/PowerTuner-releases/releases/download/${pkgver}/PowerTunerArchLinux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    'ca9a5047d28ce049c4598b0bc74b00ebe47d476f8fdb3b3eb6fbfdc3998e9782'
+    '25f46fca3134743e708c8a33485c8015089a2c8ff4f854646bfa208349355315'
 )
 
 prepare() {
@@ -39,11 +39,11 @@ package() {
     install -Dm755 "${baseDir}"/usr/bin/PowerTunerDaemon -t "${pkgdir}"/usr/bin/
 
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so -t "${pkgdir}"/usr/lib/
-    install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so."${pkgver}" -t "${pkgdir}"/usr/lib/
+    install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so.1.0 -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so -t "${pkgdir}"/usr/lib/
-    install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so."${pkgver}" -t "${pkgdir}"/usr/lib/
+    install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so.1.1 -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so -t "${pkgdir}"/usr/lib/
-    install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so."${pkgver}" -t "${pkgdir}"/usr/lib/
+    install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so.1.1 -t "${pkgdir}"/usr/lib/
 
     for app in "powerTunerClient" "powerTunerConsole"; do
         for i in 16 22 24 32 48 64 128 256; do
