@@ -1,0 +1,23 @@
+pkgbase = fastcompmgr-dev
+	pkgdesc = An early Compton-based compositor for X11 focused on performance. (dev branch)
+	pkgver = 0.5.r16.gf3e63ff
+	pkgrel = 1
+	url = https://github.com/tycho-kirchner/fastcompmgr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxrender
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	depends = glibc
+	provides = fastcompmgr
+	conflicts = fastcompmgr
+	source = git+https://github.com/tycho-kirchner/fastcompmgr#branch=dev
+	sha512sums = SKIP
+
+pkgname = fastcompmgr-dev
