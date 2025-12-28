@@ -1,6 +1,6 @@
 pkgbase = owlry
 	pkgdesc = A lightweight, owl-themed application launcher for Wayland
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = owlry
 	depends = glibc
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = owlry-0.1.5.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.1.5.tar.gz
-	b2sums = 0de167f41483677461379d6d437d0363c546bf9cd74c0d2b3e0feb8d439d452dc26289f3757682231f306e673fb9713e43e1d65625fc90de0d41968e0e12c83e
+	source = owlry-0.1.6.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.1.6.tar.gz
+	b2sums = b680cc0f21465809e0b28febd450700a59a5041d43589cc924f70ab01b29106a4642c1b256824997bd87794cd714322fb3049020ad114fae19c3c25fa934f56e
 
 pkgname = owlry
