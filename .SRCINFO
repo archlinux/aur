@@ -6,9 +6,10 @@ pkgbase = lancher
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
 	depends = glibc
-	source = lancher-0.1.3.tar.gz::https://github.com/Kasui92/lancher/archive/v0.1.3.tar.gz
-	sha256sums = f349098b4c552ca20fa46c7e9fbd3d0c00014728087960d80e81828c47fa3228
+	source_x86_64 = lancher-0.1.3-x86_64::https://github.com/Kasui92/lancher/releases/download/v0.1.3/lancher-linux-amd64
+	sha256sums_x86_64 = 6c883094dfbab4bec288a3e928a1ad63f80e6fb14c7fcd7073900f97b9b00529
+	source_aarch64 = lancher-0.1.3-aarch64::https://github.com/Kasui92/lancher/releases/download/v0.1.3/lancher-linux-arm64
+	sha256sums_aarch64 = 07bfce7137d5855e5de2c60d256d2ff8a301df382174a5d3d5d6efb45ad00edf
 
 pkgname = lancher

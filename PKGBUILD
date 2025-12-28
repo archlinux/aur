@@ -7,32 +7,12 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Kasui92/lancher"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f349098b4c552ca20fa46c7e9fbd3d0c00014728087960d80e81828c47fa3228')
-
-build() {
-  cd "lancher-$pkgver"
-
-  # Go build flags for Arch
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  go build -o lancher .
-}
+source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$pkgname-linux-amd64")
+source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$pkgname-linux-arm64")
+sha256sums_x86_64=('6c883094dfbab4bec288a3e928a1ad63f80e6fb14c7fcd7073900f97b9b00529')
+sha256sums_aarch64=('07bfce7137d5855e5de2c60d256d2ff8a301df382174a5d3d5d6efb45ad00edf')
 
 package() {
-  cd "lancher-$pkgver"
-
   # install the binary
-  install -Dm755 myapp "$pkgdir/usr/bin/myapp"
-
-  # install the license (required by Arch policy)
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # optional - install shell completions if your app generates them
-  # install -Dm644 completions/lancher.bash "$pkgdir/usr/share/bash-completion/completions/lancher"
+  install -Dm755 "$srcdir/$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$pkgname"
 }
