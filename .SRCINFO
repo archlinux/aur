@@ -1,13 +1,14 @@
 pkgbase = python-jupyterlite-core
 	pkgdesc = None
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = None
 	arch = any
 	license = custom:BSD License
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-tornado
 	depends = python
 	optdepends = python-libarchive-c: for better performance when working with archives
 	source = https://files.pythonhosted.org/packages/c4/11/1e48ddaae568efc2d8354ff89e9e46425e32a033df600286521488d5656d/jupyterlite_core-0.7.1.tar.gz
