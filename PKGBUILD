@@ -1,7 +1,7 @@
 # Maintainer: datsfilipe <contact@datsfilipe.xyz>
 
 pkgname=trxsh
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Trxsh - A better trash-cli, built in Go."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/datsfilipe/trxsh"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b7e572d1626559fbfa68227fe388c63af4f2b63dc9300d5e3cb93ab6457b1f3f')
+sha256sums=('6f0766111a4566ef54c5439cfea544a1c9ffe5ef4e018871a6f1240b3740caa6')
 
 build() {
   cd "$pkgname-$pkgver"

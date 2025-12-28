@@ -1,12 +1,12 @@
 pkgbase = trxsh
-	pkgdesc = Trxsh - A better trash-cli, built in Go
-	pkgver = 1.0.4
+	pkgdesc = Trxsh - A better trash-cli, built in Go.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/datsfilipe/trxsh
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = git+https://github.com/datsfilipe/trxsh.git#tag=v1.0.0
-	sha256sums = SKIP
+	source = trxsh-1.1.0.tar.gz::https://github.com/datsfilipe/trxsh/archive/v1.1.0.tar.gz
+	sha256sums = 6f0766111a4566ef54c5439cfea544a1c9ffe5ef4e018871a6f1240b3740caa6
 
 pkgname = trxsh
