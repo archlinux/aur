@@ -1,0 +1,5 @@
+[athas-bin]
+source = "github"
+github = "athasdev/athas"
+use_latest_release = true
+prefix = "v"
