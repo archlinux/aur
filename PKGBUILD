@@ -10,6 +10,7 @@ url='https://gitlab.com/shssoichiro/soifunc'
 license=('MIT')
 depends=(
 	'vapoursynth'
+	'vapoursynth-plugin-neo_f3kdb-git'
 	'vapoursynth-plugin-vsjetpack'
 	'vapoursynth-plugin-vszip'
 	'vapoursynth-plugin-znedi3'
@@ -19,6 +20,8 @@ optdepends=(
 	'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
 	'vapoursynth-plugin-dfttest2: dfttest support, GPU version'
 	'vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version'
+	'vapoursynth-plugin-mlrt: frame interpolation functions'
+	'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
 makedepends=('git'
 	'python-poetry'
