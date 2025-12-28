@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+witr-*.tar.gz
+witr
+witr-*.tar

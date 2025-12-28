@@ -1,0 +1,16 @@
+pkgbase = witr
+	pkgdesc = A tool to determine why a process is running.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/pranshuparmar/witr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	provides = witr
+	conflicts = witr-bin
+	source = git+https://github.com/pranshuparmar/witr.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = witr
