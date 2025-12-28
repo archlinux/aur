@@ -9,8 +9,8 @@
 
 pkgbase=godot-double
 pkgname=(godot-double godot-double-mono)
-pkgver=4.4.1
-pkgrel=1
+pkgver=4.5.1
+pkgrel=0
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -18,7 +18,7 @@ arch=(x86_64)
 provides=("godot-double=${pkgver}" "godot-double-mono=${pkgver}")
 makedepends=(
   alsa-lib
-  dotnet-sdk
+  dotnet-sdk-8.0
   nuget
   pulse-native-provider
   scons
@@ -31,8 +31,6 @@ depends=(
   embree
   freetype2
   graphite
-  harfbuzz
-  harfbuzz-icu
   libglvnd
   libspeechd
   libsquish
@@ -53,7 +51,7 @@ optdepends=(
   'pulse-native-provider: for audio support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz")
-b2sums=('9ceacb4e7a2448377b7d29d81e36e198a9ca055673a46abf4d65be1d16c91ec7ed3d8841af272c0d348d5ee7a3104344a669d6793f9beb5c69ea008626c81511')
+b2sums=('657f675ebb39a97dd7ec1102b3650ee5a91feb9115634ee964efffcac01d957f9471e78f0169dae20d1c1cd58b99aad31c673ac5c4ed602a6c45266a581b05e0')
 
 prepare() {
   cd "godot-$pkgver-stable"
@@ -66,8 +64,8 @@ prepare() {
   # 1) Create a desktop file for the non-Mono double build
   cp org.godotengine.Godot.desktop org.godotengine.Godot-Double.desktop
   setconf org.godotengine.Godot-Double.desktop Exec godot-double
-  setconf org.godotengine.Godot-Double.desktop Name 'Godot Engine (Double Precision)'
   setconf org.godotengine.Godot-Double.desktop Icon godot-double
+  setconf org.godotengine.Godot-Double.desktop Name 'Godot Engine (Double Precision)'
 
   # 2) Fix MIME info, then duplicate for the non-Mono double build
   sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
@@ -77,8 +75,8 @@ prepare() {
   # 3) Create a desktop file for the Mono double build
   cp org.godotengine.Godot.desktop org.godotengine.Godot-Double-mono.desktop
   setconf org.godotengine.Godot-Double-mono.desktop Exec godot-double-mono
-  setconf org.godotengine.Godot-Double-mono.desktop Name 'Godot Engine Mono (Double Precision)'
   setconf org.godotengine.Godot-Double-mono.desktop Icon godot-double-mono
+  setconf org.godotengine.Godot-Double-mono.desktop Name 'Godot Engine Mono (Double Precision)'
 
   # 4) Duplicate MIME XML for the Mono double build
   cp org.godotengine.Godot.xml org.godotengine.Godot-Double-mono.xml
@@ -101,19 +99,18 @@ build() {
     builtin_embree=no
     builtin_enet=yes
     builtin_freetype=no
-    builtin_msdfgen=yes
     builtin_glslang=yes
     builtin_graphite=no
-    builtin_harfbuzz=no
+    builtin_harfbuzz=yes
     builtin_icu4c=yes
     builtin_libogg=no
     builtin_libpng=no
     builtin_libtheora=no
     builtin_libvorbis=no
     builtin_libwebp=no
-    builtin_wslay=yes
     builtin_mbedtls=yes
     builtin_miniupnpc=no
+    builtin_msdfgen=yes
     builtin_openxr=no
     builtin_pcre2=no
     builtin_pcre2_with_jit=no
@@ -121,10 +118,12 @@ build() {
     builtin_rvo2_2d=yes
     builtin_rvo2_3d=yes
     builtin_squish=no
+    builtin_wslay=yes
     builtin_xatlas=yes
     builtin_zlib=no
     builtin_zstd=no
     colored=yes
+    debug_symbols=yes
     disable_exceptions=false
     platform=linuxbsd
     production=yes
@@ -184,7 +183,7 @@ package_godot-double() {
 
 package_godot-double-mono() {
   # Declare runtime dependency on dotnet-sdk
-  depends+=(dotnet-sdk)
+  depends+=(dotnet-sdk-8.0)
 
   cd "godot-$pkgver-stable"
 
