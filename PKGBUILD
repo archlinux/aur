@@ -1,7 +1,7 @@
 # Maintainer: Aarik Pokras <me@aarikpokras.com>
 pkgname=ebsl
-pkgver=2.6.0
-pkgrel=4
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A shell-accessible configuration file format."
 arch=('any')
 url="https://github.com/aarikpokras/ebsl"
