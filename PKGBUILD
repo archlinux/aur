@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=gitmaster
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="GUI git client written in Qt."
 arch=('x86_64' 'i686')
@@ -8,9 +8,10 @@ url="https://github.com/bokic/gitmaster"
 license=('LGPL-3.0-only')
 depends=('qt6-base' 'libgit2' 'hicolor-icon-theme' 'gcc-libs' 'glibc')
 makedepends=('cmake' 'ninja')
+options=(!debug strip)
 
 source=($pkgname-$pkgver.tar.gz::"https://github.com/bokic/gitmaster/archive/${pkgver}.tar.gz")
-sha256sums=("36d2081a6ba5559e64185e407bc208906d208007308bd60e4db9747c56995fd1")
+sha256sums=("5c2af6e7c1d426a6eb53733f9992ac2590c29f24a957d23c2ca4ecda7f83fcbf")
 
 build() {
   cmake -G Ninja -S "${srcdir}/${pkgname}-${pkgver}" -B "build"
