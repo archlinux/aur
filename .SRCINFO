@@ -11,7 +11,7 @@ pkgbase = haveno
 	depends = java-runtime>=21
 	source = haveno-v1.2.2.tar.gz::https://github.com/haveno-dex/haveno/archive/refs/tags/v1.2.2.tar.gz
 	source = haveno.desktop
-	sha512sums = cf421ed79ef8ad027bc9ab69f0eb49857b5012cc3f456ed8a0fc4c7b19568489b44602241e84d12fec5f806a51564e9759a483ef7c2cb753c06d96c47bb335dc
+	sha512sums = 0bd02ed03f95e9eb533faaad4f4322f6a3cbc0910b2ab23bbd5572d14e20cc9661e20fd8e183c38b195c8f4da0209fdcd2ee237fdf383afaacb3e1cdc6adb573
 	sha512sums = 046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93
 
 pkgname = haveno
