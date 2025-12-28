@@ -1,6 +1,6 @@
 pkgname=clash-verge-rev-autobuild-bin
 _pkgname=clash-verge-rev
-pkgver=2.4.5+autobuild.1228.0193ba7
+pkgver=2.4.5+autobuild.1228.ca50e35
 pkgrel=1
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_armv7h=("Clash.Verge_${pkgver}_armhf.deb::${url}/releases/download/autobu
 source=(".install")
 
 sha256sums=('35b576cd9d0ae453ead9f65537451137069150a91364f0560ea14100e79b35e3')
-sha256sums_x86_64=('86f842823d489579fddda47d85d4a8fa7682f9d249b61c29612bde4eb72bc5bc')
-sha256sums_aarch64=('ff0cc207ba8ace0545c0413bdfbe0c1dcc4f4f55affc9035976e8cf9172178ad')
-sha256sums_armv7h=('304ead6953d3c4d994d84f65c722d494d77d79f1c498d1a9a7557b8e5016c4d9')
+sha256sums_x86_64=('1c3ac3df20907eaa83d3b12fd6e0e65b15db863aa60fa4612ace4f9877201e69')
+sha256sums_aarch64=('2ac744a8f69530557226fe85c8baa9768049eb6b30eb428f411981ea97778a73')
+sha256sums_armv7h=('0340c2584c3c76d831f82d918ca093a954e4f82b04c84499265213438f8e76f8')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
