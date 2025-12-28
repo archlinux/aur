@@ -1,8 +1,8 @@
-# Maintainer: Benjamim Gois <your-email>
+# Maintainer: Benjamim Gois <benjamim dot gois at gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
 pkgver=1.6.1.r4.g534a4db
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
@@ -13,7 +13,7 @@ depends=(
   'mesa'       # libGL
   'glu'        # libGLU
   'sdl2-compat'
-  'hicolor-icon-theme'
+  'hicolor-icon-theme' # Icon theme hierarchy
 )
 makedepends=(
   'git'
@@ -46,7 +46,7 @@ build() {
   cd "${pkgname%-git}"
 
   # Compile missing PasVulkan LZMA object file
-  echo "Compiling lzmadec_linux_x86_64.o..."
+  msg "Compiling lzmadec_linux_x86_64.o..."
   clang -c -target x86_64-linux -g -gdwarf-2 -masm=intel -O3 -D linux -fverbose-asm -fno-builtin \
         "pasvulkan/src/lzma_c/LzmaDec.c" -o "pasvulkan/src/lzma_c/lzmadec_linux_x86_64.o"
 
@@ -119,6 +119,11 @@ EOF
         "${pkgdir}/usr/share/icons/hicolor/${sz}/apps/pascube.png"
     fi
   done
+
+  # Fallback to pixmaps
+  if [[ -f "data/icons/512x512/pascube.png" ]]; then
+      install -Dm644 "data/icons/512x512/pascube.png" "${pkgdir}/usr/share/pixmaps/pascube.png"
+  fi
 
   # ---- Shared resources (skybox stays only under /usr/share/pascube) ----
   if [[ -f "skybox.png" ]]; then
