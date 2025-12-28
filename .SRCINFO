@@ -1,6 +1,6 @@
 pkgbase = hashdir
 	pkgdesc = A command-line utility to hash directories and files
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 0
 	url = https://ultimateanu.github.io/hashdir/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hashdir
 	depends = gcc-libs
 	depends = zlib
 	options = !strip
-	source = hashdir-1.4.1.tar.gz::https://github.com/ultimateanu/hashdir/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 9a9335d99a7938155505cd2abe08c4be970abcbaa0ac90cf4bebf9cb0d6d633c
+	source = hashdir-1.5.0.tar.gz::https://github.com/ultimateanu/hashdir/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 02a9fb260bf60a1c5c671ad26ae1ba8566977ebaddf6d04f518fe6163ace6f6b
 
 pkgname = hashdir

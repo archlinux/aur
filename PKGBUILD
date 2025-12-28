@@ -1,7 +1,7 @@
 # Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
 
 pkgname=hashdir
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=0
 pkgdesc="A command-line utility to hash directories and files"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=('!strip')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ultimateanu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('9a9335d99a7938155505cd2abe08c4be970abcbaa0ac90cf4bebf9cb0d6d633c')
+sha256sums=('02a9fb260bf60a1c5c671ad26ae1ba8566977ebaddf6d04f518fe6163ace6f6b')
 
 build() {
   cd "$pkgname-$pkgver"
