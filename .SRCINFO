@@ -1,0 +1,15 @@
+pkgbase = aic8800-dkms-git
+	pkgdesc = Linux Driver for AIC8800 chipsets
+	pkgver = r4.f49df85
+	pkgrel = 1
+	url = https://github.com/a5a5aa555oo/aic8800
+	arch = any
+	license = GPL-2.0-or-later
+	license = UNKNOWN
+	makedepends = git
+	depends = udev
+	depends = dkms
+	source = git+https://github.com/a5a5aa555oo/aic8800
+	sha512sums = SKIP
+
+pkgname = aic8800-dkms-git
