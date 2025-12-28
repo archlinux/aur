@@ -1,0 +1,59 @@
+--- a/src/config/settings.py
++++ b/src/config/settings.py
+@@ -26,6 +26,10 @@
+ 
+ # Build paths inside the project like this: BASE_DIR / 'subdir'.
+ BASE_DIR = Path(__file__).resolve().parent.parent
++
++# Arch packaging: allow writable state (db + collectstatic output) outside the code dir.
++YAMTRACK_DATA_DIR = config("YAMTRACK_DATA_DIR", default=None)
++DATA_DIR = Path(YAMTRACK_DATA_DIR) if YAMTRACK_DATA_DIR else BASE_DIR
+ 
+ 
+ def secret(key, default=undefined, **kwargs):
+@@ -131,6 +135,7 @@
+ MIDDLEWARE = [
+     "debug_toolbar.middleware.DebugToolbarMiddleware",
+     "django.middleware.security.SecurityMiddleware",
++    "whitenoise.middleware.WhiteNoiseMiddleware",
+     "django.contrib.sessions.middleware.SessionMiddleware",
+     "django.middleware.common.CommonMiddleware",
+     "django.middleware.csrf.CsrfViewMiddleware",
+@@ -176,7 +181,7 @@
+ # https://docs.djangoproject.com/en/stable/ref/settings/#databases
+ 
+ # create db folder if it doesn't exist
+-Path(BASE_DIR / "db").mkdir(parents=True, exist_ok=True)
++Path(DATA_DIR / "db").mkdir(parents=True, exist_ok=True)
+ 
+ if config("DB_HOST", default=None):
+     DATABASES = {
+@@ -205,7 +210,7 @@
+     DATABASES = {
+         "default": {
+             "ENGINE": "django.db.backends.sqlite3",
+-            "NAME": BASE_DIR / "db" / "db.sqlite3",
++            "NAME": DATA_DIR / "db" / "db.sqlite3",
+         },
+     }
+ 
+@@ -289,10 +294,17 @@
+ # Static files (CSS, JavaScript, Images)
+ # https://docs.djangoproject.com/en/stable/howto/static-files/
+ 
+-STATIC_URL = "static/"
+-STATIC_ROOT = BASE_DIR / "staticfiles"
++STATIC_URL = "/static/"
++STATIC_ROOT = DATA_DIR / "staticfiles"
+ 
+ STATICFILES_DIRS = [BASE_DIR / "static"]
++
++# WhiteNoise: serve static files directly from the app (reverse proxy is fine)
++STORAGES = {
++    "staticfiles": {
++        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
++    },
++}
+ 
+ if BASE_URL:
+     STATIC_URL = f"{BASE_URL}/static/"

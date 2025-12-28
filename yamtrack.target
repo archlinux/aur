@@ -1,0 +1,7 @@
+[Unit]
+Description=Yamtrack (all services)
+Wants=yamtrack-init.service yamtrack-web.service yamtrack-celery.service yamtrack-celery-beat.service
+After=network-online.target valkey.service
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+[Unit]
+Description=Yamtrack web (gunicorn)
+Requires=yamtrack-init.service
+After=yamtrack-init.service network-online.target
+PartOf=yamtrack.target
+
+[Service]
+Type=simple
+User=yamtrack
+Group=yamtrack
+StateDirectory=yamtrack
+Environment=YAMTRACK_DATA_DIR=%S/yamtrack
+EnvironmentFile=/usr/lib/yamtrack/version.env
+EnvironmentFile=/etc/yamtrack/yamtrack.env
+WorkingDirectory=/usr/share/yamtrack/src
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+Restart=on-failure
+RestartSec=2s
+
+ExecStart=/usr/lib/yamtrack/venv/bin/python -m gunicorn \
+  --bind ${YAMTRACK_BIND} \
+  --workers ${WEB_CONCURRENCY} \
+  --preload \
+  --timeout 200 \
+  --max-requests 500 \
+  --max-requests-jitter 10 \
+  config.wsgi:application
+
+[Install]
+WantedBy=yamtrack.target

@@ -1,0 +1,30 @@
+[Unit]
+Description=Yamtrack Celery worker
+Requires=yamtrack-init.service valkey.service
+After=yamtrack-init.service valkey.service network-online.target
+PartOf=yamtrack.target
+
+[Service]
+Type=simple
+User=yamtrack
+Group=yamtrack
+StateDirectory=yamtrack
+Environment=YAMTRACK_DATA_DIR=%S/yamtrack
+EnvironmentFile=/usr/lib/yamtrack/version.env
+EnvironmentFile=/etc/yamtrack/yamtrack.env
+WorkingDirectory=/usr/share/yamtrack/src
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+Restart=on-failure
+RestartSec=2s
+
+ExecStart=/usr/lib/yamtrack/venv/bin/python -m celery \
+  --app config worker \
+  --loglevel ${YAMTRACK_LOGLEVEL} \
+  --without-mingle \
+  --without-gossip
+
+[Install]
+WantedBy=yamtrack.target

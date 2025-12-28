@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+==> Yamtrack installed.
+
+1) Create a SECRET and edit config:
+   sudo editor /etc/yamtrack/yamtrack.env
+
+   Generate a good SECRET like:
+     python -c 'import secrets; print(secrets.token_urlsafe(64))'
+
+2) Ensure Valkey is running:
+   sudo systemctl enable --now valkey.service
+
+3) Start Yamtrack (init + services):
+   sudo systemctl enable --now yamtrack.target
+
+Notes:
+- By default Yamtrack binds to 127.0.0.1:8000. Put your reverse proxy in front of it.
+- State (SQLite DB + collected staticfiles) is stored in /var/lib/yamtrack (via YAMTRACK_DATA_DIR).
+- If you use PostgreSQL, set DB_HOST/DB_NAME/DB_USER/DB_PASSWORD/DB_PORT in yamtrack.env.
+- The yamtrack-manage helper script can be used to run manage.py commands.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

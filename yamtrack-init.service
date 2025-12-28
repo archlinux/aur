@@ -1,0 +1,26 @@
+[Unit]
+Description=Yamtrack init (migrate + collectstatic)
+Wants=network-online.target valkey.service
+After=network-online.target valkey.service
+PartOf=yamtrack.target
+
+[Service]
+Type=oneshot
+User=yamtrack
+Group=yamtrack
+StateDirectory=yamtrack
+Environment=YAMTRACK_DATA_DIR=%S/yamtrack
+EnvironmentFile=/usr/lib/yamtrack/version.env
+EnvironmentFile=/etc/yamtrack/yamtrack.env
+WorkingDirectory=/usr/share/yamtrack/src
+# Hardening (keep it modest; Django sometimes needs basics)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ExecStart=/usr/lib/yamtrack/venv/bin/python manage.py collectstatic --noinput
+ExecStart=/usr/lib/yamtrack/venv/bin/python manage.py migrate --noinput
+RemainAfterExit=yes
+
+[Install]
+WantedBy=yamtrack.target

@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+
+ENV_FILE="/etc/yamtrack/yamtrack.env"
+APP_DIR="/usr/share/yamtrack/src"
+PY="/usr/lib/yamtrack/venv/bin/python"
+MANAGE="${APP_DIR}/manage.py"
+
+if [[ ! -r "$ENV_FILE" ]]; then
+  echo "Error: missing $ENV_FILE" >&2
+  exit 1
+fi
+
+# Prefer systemd-run so we inherit the same sandboxing-ish environment.
+if command -v systemd-run >/dev/null 2>&1; then
+  exec systemd-run --quiet --pty --wait --collect \
+    --unit=yamtrack-manage-$$ \
+    --property=User=yamtrack \
+    --property=Group=yamtrack \
+    --property=WorkingDirectory="$APP_DIR" \
+    --property=Environment=YAMTRACK_DATA_DIR=/var/lib/yamtrack \
+    --property=EnvironmentFile=/usr/lib/yamtrack/version.env \
+    --property=EnvironmentFile="$ENV_FILE" \
+    --property=StateDirectory=yamtrack \
+    "$PY" "$MANAGE" "$@"
+fi
+
+# Fallback: use su
+exec su -s /bin/bash yamtrack -c "
+  set -euo pipefail
+  set -a
+  source /usr/lib/yamtrack/version.env
+  export YAMTRACK_DATA_DIR=/var/lib/yamtrack
+  source '$ENV_FILE'
+  set +a
+  cd '$APP_DIR'
+  exec '$PY' '$MANAGE' \"\$@\"
+" -- "$@"
