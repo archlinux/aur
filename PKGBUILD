@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=netbird-dashboard
-pkgver=2.23.0
+pkgver=2.23.1
 pkgrel=1
 pkgdesc="This project is the UI for NetBird's Management service."
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('nginx: reverse-proxy')
 makedepends=('nodejs' 'npm')
 license=('AGPL-3.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/dashboard/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('5fa99669960a2ab5b088834e4f55e0672f4bd9c30d45134eea3def4af4356d9d53cf5dc24757ec1c3da4ed95a36dbdc648bbde6c0cc80ac85bea2279ef91f4eb')
+sha512sums=('a1c3e452d8184cc10c895c6a63d8b7281d971a0b38a30591056daf3ad49f93ea621aee21daabd222ec153027f37570310e292692562336ec79da8d3a8c8c57fc')
 
 build() {
   cd "dashboard-$pkgver"
