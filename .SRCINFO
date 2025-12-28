@@ -1,12 +1,12 @@
 pkgbase = microcom
 	pkgdesc = terminal emulator
-	pkgver = 2023.09.0
+	pkgver = 2025.11.0
 	pkgrel = 1
 	url = https://github.com/pengutronix/microcom
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = readline
-	source = https://github.com/pengutronix/microcom/releases/download/v2023.09.0/microcom-2023.09.0.tar.xz
-	sha256sums = ef42184bb35c9762b3e9c70748696f7478efacad8412a88aaf2d9a6a500231a1
+	source = https://github.com/pengutronix/microcom/releases/download/v2025.11.0/microcom-2025.11.0.tar.xz
+	sha256sums = b1d734a249d8613db7ca1f1bb2ec4e28a35234a60212d91e0c00cc22e9c67a39
 
 pkgname = microcom
