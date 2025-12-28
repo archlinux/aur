@@ -2,8 +2,8 @@
 # Contributor: Patrick Ziegler <p.ziegler96@gmail.com>
 _pkgname=polybar
 pkgname="${_pkgname}-wireguard-git"
-pkgver=3.7.2
-pkgrel=3
+pkgver=3.7.2.r30.g58eebe85
+pkgrel=1
 pkgdesc="A fast and easy-to-use status bar, with patches to support WireGuard networks."
 # aarch64 is not officially supported by polybar, it is only listed here for convenience
 arch=("i686" "x86_64" "aarch64")
