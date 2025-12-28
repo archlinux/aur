@@ -2,8 +2,8 @@
 
 pkgname=errands-c-git
 _name=errands
-pkgver=46.2.4.r302.gcc0183d
-pkgrel=2
+pkgver=46.2.4.r390.gf33b9ce
+pkgrel=1
 pkgdesc="Todo application for those who prefer simplicity. (Rewrite in C. Experimental / potentially data-breaking)"
 arch=('x86_64')
 url="https://github.com/mrvladus/Errands"
@@ -34,6 +34,14 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname}"
+  # Fix the app build by defining DESKTOP_FILE, which is used by 'make install'
+  sed -i '/APP_ID = */a DESKTOP_FILE=$(APP_ID).desktop' Makefile
+  # Fix launching a program from a shortcut
+  sed -i 's/DBusActivatable=true/DBusActivatable=false/g' data/io.github.mrvladus.Errands.desktop.in
 }
 
 build() {
