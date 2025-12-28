@@ -1,6 +1,6 @@
 pkgbase = animely
 	pkgdesc = Terminal üzerinden anime izleme ve indirme CLI aracı
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/ewgsta/animely
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = animely
 	depends = npm
 	optdepends = mpv: video oynatıcı (önerilen, kaldığı yerden devam desteği)
 	optdepends = vlc: alternatif video oynatıcı
-	optdepends = aria2: hızlı indirme için
-	source = animely-2.0.0.tar.gz::https://github.com/ewgsta/animely/archive/refs/tags/v2.0.0.tar.gz
+	optdepends = aria2: hızlı MP4 indirme için
+	optdepends = yt-dlp: hızlı M3U8 indirme için
+	source = animely-3.0.0.tar.gz::https://github.com/ewgsta/animely/archive/refs/tags/v3.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = animely 
+pkgname = animely

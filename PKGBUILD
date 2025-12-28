@@ -1,6 +1,6 @@
 # Maintainer: ewgsta <ewgsta@proton.me>
 pkgname=animely
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Terminal üzerinden anime izleme ve indirme CLI aracı"
 arch=('any')
@@ -10,7 +10,8 @@ depends=('nodejs>=18' 'npm')
 optdepends=(
     'mpv: video oynatıcı (önerilen, kaldığı yerden devam desteği)'
     'vlc: alternatif video oynatıcı'
-    'aria2: hızlı indirme için'
+    'aria2: hızlı MP4 indirme için'
+    'yt-dlp: hızlı M3U8 indirme için'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ewgsta/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
