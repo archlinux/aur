@@ -1,0 +1,5 @@
+[jd-bin]
+source = "github"
+github = "josephburnett/jd"
+use_latest_release = true
+prefix = "v"
