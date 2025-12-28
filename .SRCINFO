@@ -1,0 +1,19 @@
+pkgbase = simple-duplicate-finder-git
+	pkgdesc = A program to find and delete duplicates, built on Python and GTK
+	pkgver = r203.g93cd923
+	pkgrel = 1
+	url = https://github.com/moltenib/simple-duplicate-finder
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	depends = python
+	depends = gtk3
+	depends = python-gobject
+	optdepends = xdg-utils: open files from the UI
+	provides = simple-duplicate-finder
+	conflicts = simple-duplicate-finder
+	source = git+https://github.com/moltenib/simple-duplicate-finder.git
+	sha256sums = SKIP
+
+pkgname = simple-duplicate-finder-git
