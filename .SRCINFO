@@ -1,6 +1,6 @@
 pkgbase = i915-sriov-dkms
 	pkgdesc = Linux i915 module patched with SR-IOV support
-	pkgver = 2025.10.10
+	pkgver = 2025.12.10
 	pkgrel = 1
 	url = https://github.com/strongtz/i915-sriov-dkms
 	install = i915-sriov-dkms.install
@@ -10,7 +10,7 @@ pkgbase = i915-sriov-dkms
 	depends = dkms
 	conflicts = i915-sriov-dkms-git
 	backup = etc/tmpfiles.d/i915-set-sriov-numvfs.conf
-	source = i915-sriov-dkms-2025.10.10.tar.gz::https://codeload.github.com/strongtz/i915-sriov-dkms/tar.gz/2025.10.10
-	sha256sums = 22e3513709a0797e5ef6cf08815daa689d4b07b5cf3b72046561501ae3144546
+	source = i915-sriov-dkms-2025.12.10.tar.gz::https://codeload.github.com/strongtz/i915-sriov-dkms/tar.gz/2025.12.10
+	sha256sums = 1ecefe8a41244198fdba8bc733c18933c020eaea6635b5fb4d83545810854a21
 
 pkgname = i915-sriov-dkms
