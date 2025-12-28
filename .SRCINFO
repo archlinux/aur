@@ -8,6 +8,7 @@ pkgbase = hulios-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	depends = tor
 	source = git+https://github.com/ghaziwali/Hulios.git
 	sha256sums = SKIP
 
