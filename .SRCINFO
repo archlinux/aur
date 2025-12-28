@@ -1,9 +1,9 @@
 pkgbase = kumono
 	pkgdesc = Media ripper for coomer and kemono
 	pkgver = 0.56.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/APT37/kumono
-	arch = x86_64
+	arch = any
 	license = MIT-0
 	makedepends = git
 	makedepends = cargo
