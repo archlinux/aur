@@ -1,0 +1,4 @@
+[newbie-bin]
+source = "github"
+github = "markallenbattey/Newbie"
+use_latest_release = true
