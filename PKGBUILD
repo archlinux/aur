@@ -1,7 +1,7 @@
 # Maintainer: MyApps Contributors <noreply@github.com>
 
 pkgname=myapps
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Linux package manager overview with GTK4 + Libadwaita"
 arch=('any')
@@ -80,4 +80,8 @@ package() {
     # Install assets
     install -dm755 "${pkgdir}/usr/share/myapps/assets"
     cp -r assets/* "${pkgdir}/usr/share/myapps/assets/"
+
+    # Install version and changelog info
+    install -Dm644 pyproject.toml "${pkgdir}/usr/share/myapps/pyproject.toml"
+    install -Dm644 WHATS_NEW.md "${pkgdir}/usr/share/myapps/WHATS_NEW.md"
 }
