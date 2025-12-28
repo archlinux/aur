@@ -1,0 +1,15 @@
+pkgbase = pgdr
+	pkgdesc = Cryptographically secure password generator powered by kernel entropy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sergik776/pgdr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cross
+	depends = gcc-libs
+	source = git+https://github.com/sergik776/pgdr.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = pgdr
