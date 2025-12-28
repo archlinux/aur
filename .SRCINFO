@@ -1,6 +1,6 @@
 pkgbase = smartgit
 	pkgdesc = Git client with Hg and SVN support.
-	pkgver = 25.1.100
+	pkgver = 25.1.103
 	pkgrel = 1
 	url = https://www.smartgit.dev/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = smartgit
 	depends = which
 	optdepends = mercurial: hg repositories support
 	replaces = smartgithg
-	source = https://download.smartgit.dev/smartgit/smartgit-25_1_100-linux-amd64.tar.gz
+	source = https://download.smartgit.dev/smartgit/smartgit-25_1_103-linux-amd64.tar.gz
 	source = smartgit.desktop
-	sha256sums = c66279d31b3c88e23b8f9081dd14286bd70a31abaf79016a479bde81a720c5bd
+	sha256sums = 0e7ecbbb8ded3d67bff4c89d738c50956dd7bd53920bbf1cdbc497bf498f73b0
 	sha256sums = bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32
 
 pkgname = smartgit
