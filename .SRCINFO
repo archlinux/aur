@@ -1,6 +1,6 @@
 pkgbase = powertuner
 	pkgdesc = The first multi-platform client-daemon tuning app for desktop and handheld devices
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/PowerTuner
 	install = powertuner.install
@@ -13,7 +13,7 @@ pkgbase = powertuner
 	depends = pciutils
 	provides = powertuner
 	conflicts = powertuner
-	source = https://github.com/PowerTuner/PowerTuner-releases/releases/download/1.0/PowerTunerArchLinux-1.0.tar.gz
-	sha256sums = 25d02f82dc2efdd4272b93f4d68cfba9ce2f2ba71872ada01791ed8362a7acc1
+	source = https://github.com/PowerTuner/PowerTuner-releases/releases/download/1.1/PowerTunerArchLinux-1.1.tar.gz
+	sha256sums = ca9a5047d28ce049c4598b0bc74b00ebe47d476f8fdb3b3eb6fbfdc3998e9782
 
 pkgname = powertuner
