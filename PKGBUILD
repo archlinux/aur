@@ -1,6 +1,6 @@
 # Maintainer: xxyangyoulin <xxyangyoulin@gmail.com>
 pkgname=hyptg-git
-pkgver=1.0.0.1.gd58a4c2  # 初始版本号，可根据需要更新
+pkgver=1.0.0.7.g0027e5e  # 初始版本号，可根据需要更新
 pkgrel=1
 pkgdesc="Intelligently switch floating windows to prevent overlapping floats and return to the previous tiled window workflow"
 arch=('any')

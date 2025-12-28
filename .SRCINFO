@@ -1,6 +1,6 @@
 pkgbase = hyptg-git
 	pkgdesc = Intelligently switch floating windows to prevent overlapping floats and return to the previous tiled window workflow
-	pkgver = 1.0.0.1.gd58a4c2
+	pkgver = 1.0.0.7.g0027e5e
 	pkgrel = 1
 	url = https://github.com/xxyangyoulin/hyptg
 	arch = any
