@@ -1,0 +1,19 @@
+pkgbase = amber-lang-git
+	pkgdesc = The programming language compiled to bash
+	pkgver = r681.ef8ad43
+	pkgrel = 1
+	url = https://amber-lang.com/
+	arch = any
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = rust
+	depends = bash
+	depends = bc
+	provides = amber-lang
+	conflicts = amber-bash-bin
+	conflicts = amber-bash-git
+	conflicts = amber-lang-bin
+	source = git+https://github.com/amber-lang/amber
+	sha256sums = SKIP
+
+pkgname = amber-lang-git
