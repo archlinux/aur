@@ -4,7 +4,7 @@ _appname=Taskwire
 _pkgauthor=majoraexp
 _pkgname=taskwire
 pkgname=${_pkgname}-bin
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Modern Linux System Monitor"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('99afca95edd7d783972c0c9ba84a0bd8dc06327c066b5abc738b987e75f36ae3'
             'ab57324b3ea51d1c3ecc4706fa8783f06994d2fa4581a6d27b7cc7e57048c71c'
             'fa3a3b3be2a98b2d3bca0ed9df5b8a295066b2ec227a0f13f1b93529a7aadae3'
             '3e797e8cc15333328259c2d675c7feededb7c16710ace0f6ba4727643e634b83')
-sha256sums_x86_64=('d6f88cd74a49570440c4e2cda1cf0fd192a31c8b541fe2beec9c93b1bf67c4e8')
+sha256sums_x86_64=('cde992d13637b62ce5ad3678173e8873df25879d643e72d9aea049e24d96a958')
 
 
 package() {
