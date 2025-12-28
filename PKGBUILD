@@ -14,6 +14,8 @@ depends=(
   'luajit'
 )
 
+optdepends=('ttf-font-nerd: for displaying text-based icons')
+
 provides=('ironbar')
 conflicts=('ironbar')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

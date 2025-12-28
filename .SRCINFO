@@ -18,6 +18,7 @@ pkgbase = ironbar-git
 	depends = libinput
 	depends = libpulse
 	depends = luajit
+	optdepends = ttf-font-nerd: for displaying text-based icons
 	provides = ironbar
 	conflicts = ironbar
 	options = !lto
