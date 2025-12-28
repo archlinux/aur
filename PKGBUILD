@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A lightweight, owl-themed application launcher for Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'gtk4' 'gtk4-layer-shell')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('c216208e5f2aac0c521f1598437ce1ca5db4276c66302c4ea3d9244211c4852b02d56b7f1b69dd9cb00fc095e8bb53da43928f658ca6878f909dbd4d8251c1ea')
+b2sums=('76b108a37b7bcb837eebee3b28f9675f1e0a309602e072145713dca16310275249ceb3786ea4ae99d9aa4bf8b2c95f8cb0826c40020055ff56722719f3cad409')
 
 prepare() {
     cd "$pkgname"
