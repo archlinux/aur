@@ -13,6 +13,6 @@ source=("lianpkg-${pkgver}::https://github.com/Yueosa/lianpkg/releases/download/
 sha256sums=('a3019a99525d68abe8f87f2cd5c532bced764c0a35c767f6ee39d6a652f4d10e')
 
 package() {
-  install -Dm755 "$srcdir/lianpkg" "$pkgdir/usr/bin/lianpkg"
+  install -Dm755 "$srcdir/lianpkg-${pkgver}" "$pkgdir/usr/bin/lianpkg"
 }
 
