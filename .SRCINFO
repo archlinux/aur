@@ -1,0 +1,17 @@
+pkgbase = python-tinycss2-1.4
+	pkgdesc = A tiny CSS parser
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = None
+	arch = any
+	license = custom:BSD License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-tinycss2
+	conflicts = python-tinycss2
+	source = https://github.com/Kozea/tinycss2/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = c8f0ea1b2bf55ceb5db60a5b4d7c151b584aade43353d2a44e8e55459ea735f4
+
+pkgname = python-tinycss2-1.4
