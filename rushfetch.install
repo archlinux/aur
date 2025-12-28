@@ -1,0 +1,50 @@
+post_install() {
+    cat << 'EOF'
+
+╔════════════════════════════════════════════════════════════════╗
+║              COMRADE! rushfetch is now installed!              ║
+╚════════════════════════════════════════════════════════════════╝
+
+Default configuration file location: /etc/rushfetch/config.toml
+
+TO CUSTOMIZE, COMRADE, DO THIS:
+    mkdir -p ~/.config/rushfetch
+    cp /etc/rushfetch/config.toml ~/.config/rushfetch/
+
+Then edit: ~/.config/rushfetch/config.toml
+
+FEATURES OF GLORIOUS RUSHFETCH:
+  ☭ Multiple languages (english/russian)
+  ☭ Custom color themes (like flag of motherland!)
+  ☭ Configurable categories with subcategories
+  ☭ Custom command fields (show anything you want!)
+  ☭ GPU detection, network info, and more
+  ☭ Written in Rust (BLAZING fast like Soyuz rocket!)
+
+NOW RUN COMMAND, COMRADE:
+    rushfetch
+
+FOR RUSSIAN VERSION, EDIT CONFIG AND SET:
+    language = "russian"
+
+GLORY TO OPEN SOURCE, GLORY TO COMMUNISM!
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+╔════════════════════════════════════════════════════════════════╗
+║         COMRADE! rushfetch upgraded to version $1         ║
+╚════════════════════════════════════════════════════════════════╝
+
+Check /etc/rushfetch/config.toml for new features!
+Your personal config at ~/.config/rushfetch/config.toml is safe.
+
+CONTINUE THE REVOLUTION!
+
+EOF
+}
+
+# vim:set ts=4 sw=4 et:
