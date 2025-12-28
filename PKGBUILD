@@ -1,8 +1,8 @@
 # Maintainer: Ryan Yuan <ryanyuanzhehan@gmail.com>
-# Contributor: 漓翎_cub
+# Contributor: 漓翎_cub <1534183068@qq.com>
 pkgname=hei-cursors-git
 pkgver=0.r1.g0000000
-pkgrel=6
+pkgrel=7
 pkgdesc="Hei Cursor Theme. Created by Bilibili user 1013625945 (漓翎_cub), ported by GitHub user Tseshongfeeshur (Ryan)."
 arch=('any')
 url="https://github.com/Tseshongfeeshur/hei-cursors"
