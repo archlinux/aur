@@ -1,14 +1,14 @@
 pkgbase = ramroot
-	pkgdesc = Load root file system to zram during boot
-	pkgver = 2.0.2
+	pkgdesc = Load root filesystem to zram in early userspace
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/arcmags/ramroot
-	arch = x86_64
-	license = GPL
-    conflicts = liveroot
+	arch = any
+	license = GPL-3.0-or-later
 	depends = mkinitcpio
-	source = https://github.com/arcmags/ramroot/archive/2.0.2.tar.gz
-    source = ramroot.install
-	md5sums = 0a70ecc2ea9f4700e20ee0fe56c07992
-	md5sums = cd9b4ef8c10a6eafead22453f8cf4ec0
+	backup = etc/ramroot.conf
+	backup = etc/ramroot.z/etc/issue.d/ramroot.issue
+	source = ramroot-2.1.0.tar.gz::https://github.com/arcmags/ramroot/archive/2.1.0.tar.gz
+	sha256sums = 6c1f91f844723eee19b672bfd526d5c35546bd8aa2e8d91895442fa4ee23f490r
+
 pkgname = ramroot
