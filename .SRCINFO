@@ -1,6 +1,6 @@
 pkgbase = tema-git
 	pkgdesc = Omarchy theming application
-	pkgver = 1.0.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/bjarneo/tema
 	install = tema.install
@@ -9,9 +9,8 @@ pkgbase = tema-git
 	depends = gjs
 	depends = gtk4
 	depends = libadwaita
-	depends = python-pywal
 	optdepends = omarchy: Theme application backend
-	source = tema-git-1.0.3.tar.gz::https://github.com/bjarneo/tema/archive/v1.0.3.tar.gz
-	sha256sums = 975497b4181b9a0ee48db8d6425e5f50e20355b72a63699a3222c9bad1654712
+	source = tema-git-2.0.0.tar.gz::https://github.com/bjarneo/tema/archive/v2.0.0.tar.gz
+	sha256sums = 6f07dbf9c7ac5f96a9cfb353e93c559e70db83d9d8f50716ff6528204e878104
 
 pkgname = tema-git

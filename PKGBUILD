@@ -1,16 +1,16 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=tema-git
-pkgver=1.0.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Omarchy theming application"
 arch=('any')
 url="https://github.com/bjarneo/tema"
 license=('MIT')
-depends=('gjs' 'gtk4' 'libadwaita' 'python-pywal')
+depends=('gjs' 'gtk4' 'libadwaita')
 optdepends=('omarchy: Theme application backend')
 install=tema.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('975497b4181b9a0ee48db8d6425e5f50e20355b72a63699a3222c9bad1654712')  # Replace with actual checksum after creating GitHub release
+sha256sums=('6f07dbf9c7ac5f96a9cfb353e93c559e70db83d9d8f50716ff6528204e878104')  # Replace with actual checksum after creating GitHub release
 
 package() {
     cd "$srcdir/tema-$pkgver"
