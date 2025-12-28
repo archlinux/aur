@@ -12,7 +12,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve
 pkgver=20.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -116,13 +116,13 @@ prepare() {
   # Fix desktop files
   sed -i 's#Exec=.*#Exec=davinci-control-panels-setup#' \
     "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
-  sed -i 's#Icon=.*#Icon=davinci-resolve.png#' \
+  sed -i 's#Icon=.*#Icon=davinci-resolve#' \
     "squashfs-root/share/DaVinciResolve.desktop"
-  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup.png#' \
+  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup#' \
     "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
-  sed -i 's#Icon=.*#Icon=blackmagicraw-player.png#' \
+  sed -i 's#Icon=.*#Icon=blackmagicraw-player#' \
     "squashfs-root/share/blackmagicraw-player.desktop"
-  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest.png#' \
+  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest#' \
     "squashfs-root/share/blackmagicraw-speedtest.desktop"
 }
 
