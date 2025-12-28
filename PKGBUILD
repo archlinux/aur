@@ -12,7 +12,7 @@ pkgbase="${_pkgbase}${_suffix}"
 pkgname=("${_pkgbase}${_suffix}"
          "${_pkgbase}-dkms${_suffix}")
 pkgdesc="Drivers and software for ExaNIC, a low latency network card from Exablaze."
-pkgver=2.0.1.r178.gbf547d1
+pkgver=2.7.5.r466.gcf0c6fb
 pkgrel=1
 arch=('x86_64')
 url='http://www.exablaze.com/'
@@ -20,7 +20,7 @@ license=('GPL2')
 depends=("linux-lts" "linux-lts-headers" "libnl")
 makedepends=("linux-lts-headers")
 options=('libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
-source=("${_pkgbase}::git+https://github.com/exablaze-oss/exanic-software.git")
+source=("${_pkgbase}::git+https://github.com/cisco/exanic-software.git")
 sha256sums=('SKIP')
 
 if [[ -z "$_kernelver" ]]; then
@@ -31,17 +31,15 @@ fi
 
 pkgver() {
     cd "${srcdir}/${_pkgbase}"
-    DRV_VERSION="$(grep DRV_VERSION "${srcdir}/${_pkgbase}/modules/exanic/exanic.h" | cut -d\" -f2)"
+    GITVER="$(git describe)"
     printf "%s.r%s.g%s" \
-        "${DRV_VERSION%%-git}" \
+        "${GITVER##v}" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "${srcdir}/${_pkgbase}"
-    #DRV_VERSION="$(grep DRV_VERSION "${srcdir}/${_pkgbase}/modules/exanic/exanic.h" | cut -d\" -f2)"
-    #sed -e 's/#MODULE_VERSION#/'"${DRV_VERSION}-${pkgrel}"'/g' \
     sed -e 's/#MODULE_VERSION#/'"${pkgver}-${pkgrel}"'/g' \
         -e 's/extra/extramodules/g' \
         "${srcdir}/${_pkgbase}/debian/${_pkgbase}-dkms.dkms" \
@@ -61,8 +59,7 @@ build() {
 
 package_exanic-git() {
     conflicts=("${_pkgbase}")
-    DRV_VERSION="$(grep DRV_VERSION "${srcdir}/${_pkgbase}/modules/exanic/exanic.h" | cut -d\" -f2)"
-    provides=("${_pkgbase}=${DRV_VERSION%%-git}")
+    provides=("${_pkgbase}=${pkgver}")
     depends+=("${_pkgbase}-dkms${_suffix}")
     make -C "${srcdir}/${_pkgbase}" install-bin \
         PREFIX=/usr \
@@ -74,8 +71,7 @@ package_exanic-git() {
 package_exanic-dkms-git() {
     pkgdesc="Linux network drivers for the ExaNIC."
     conflicts=("${_pkgbase}-dkms")
-    DRV_VERSION="$(grep DRV_VERSION "${srcdir}/${_pkgbase}/modules/exanic/exanic.h" | cut -d\" -f2)"
-    provides=("${_pkgbase}-dkms=${DRV_VERSION%%-git}")
+    provides=("${_pkgbase}-dkms=${pkgver}")
     depends=("dkms" "linux-lts-headers")
     _dkmsdir="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
 
