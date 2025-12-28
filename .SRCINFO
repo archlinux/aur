@@ -1,0 +1,15 @@
+pkgbase = python-rfc3987-syntax
+	pkgdesc = Helper functions to syntactically validate strings according to RFC 3987.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = None
+	arch = any
+	license = custom:Apache Software License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/2c/06/37c1a5557acf449e8e406a830a05bf885ac47d33270aec454ef78675008d/rfc3987_syntax-1.1.0.tar.gz
+	sha256sums = 717a62cbf33cffdd16dfa3a497d81ce48a660ea691b1ddd7be710c22f00b4a0d
+
+pkgname = python-rfc3987-syntax
