@@ -1,0 +1,23 @@
+pkgbase = ocaml-pgocaml
+	pkgdesc = Native OCaml interface to PostgreSQL databases
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://github.com/darioteixeira/pgocaml
+	arch = x86_64
+	license = LicenseRef-LGPL2.1-with-OCaml-LGPL-linking-exception
+	checkdepends = ocaml-ounit
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-sexplib
+	depends = ocaml-rresult
+	depends = ocaml-ppx_deriving
+	depends = ocaml-re
+	depends = ocaml-hex
+	depends = ocaml-csv
+	depends = ocaml-calendar
+	depends = ocaml-ppx_sexp_conv
+	options = !strip
+	source = ocaml-pgocaml-4.4.0.tar.gz::https://github.com/darioteixeira/pgocaml/archive/refs/tags/v4.4.0.tar.gz
+	b2sums = 6ecca66827f4798efffd2df66d23cd1dc6ab7f4eb819188782e00593dae9c96c774d17900c22eff068b57aae3b02c3dcd99943afa5869e0e2290fec5706ee829
+
+pkgname = ocaml-pgocaml
