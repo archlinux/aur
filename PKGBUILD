@@ -12,14 +12,14 @@ optdepends=('kimageformats' 'qt6-imageformats' 'resvg')
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname")
 source=(
-ImageViewer-"$pkgver".tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v"$pkgver"/ImageViewer-"$pkgver".tar.xz
-com.github.aliencoweatcake.imageviewer.desktop
-com.github.aliencoweatcake.imageviewer.xml
+  ImageViewer-"$pkgver".tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v"$pkgver"/ImageViewer-"$pkgver".tar.xz
+  com.github.aliencoweatcake.imageviewer.desktop
+  com.github.aliencoweatcake.imageviewer.appdata.xml
 )
 sha256sums=(
-'69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab'
-'292e40f0cff8416d04422cc594fcc03f8cad9bd9550e30089b5de5dd17a9af80'
-'240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
+  '69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab'
+  '292e40f0cff8416d04422cc594fcc03f8cad9bd9550e30089b5de5dd17a9af80'
+  '240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
 )
 
 prepare() {
@@ -29,9 +29,9 @@ prepare() {
 
 build() {
   qmake6 \
-  CONFIG+="release system_thirdparty" \
-  CONFIG+="disable_libjasper disable_libbpg disable_flif disable_lerc" \
-  INCLUDEPATH+="/usr/include/jxrlib" \
+    CONFIG+="release system_thirdparty" \
+    CONFIG+="disable_libjasper disable_libbpg disable_flif disable_lerc" \
+    INCLUDEPATH+="/usr/include/jxrlib" \
   -r "$srcdir"/ImageViewer-"$pkgver"/ImageViewer.pro
   make
 }
