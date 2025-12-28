@@ -1,75 +1,83 @@
 # Maintainer: Adrian Baumgart <adrian at abmgrt dot dev>
+# Co-Maintainer: Noctiro <noctiro@gmail.com>
 
 pkgname=keyguard
-pkgver=20250530
+pkgver=20251228.2
 pkgrel=1
-pkgdesc="Alternative client for the Bitwarden platform, created to provide the best user experience possible."
+pkgdesc="Keyguard is an alternative client for the Bitwarden® platform & KeePass (KDBX), created to provide the best user experience possible."
 arch=('x86_64')
-url='https://github.com/AChep/keyguard-app.git'
+url='https://github.com/AChep/keyguard-app'
 license=('custom')
 depends=()
-makedepends=('jdk17-openjdk' 'dpkg')
-source=("https://github.com/AChep/keyguard-app/archive/refs/tags/r${pkgver}.tar.gz")
-sha256sums=('215c891e6f66d92fd253c78fcc376f9a788db723371750fbbbddd14c031701b4')
+makedepends=('java-environment>=11')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AChep/keyguard-app/archive/refs/tags/r${pkgver}.tar.gz")
+sha256sums=('c755459b4c6633ac4d077441475705af6c0b0817b990802f075d1a260e3c5cd3')
 options=('!strip' '!debug')
 
-
 build() {
-    _codesource="${srcdir}/${pkgname}-app-r${pkgver}"
-    cd "${_codesource}"
+    cd "${pkgname}-app-r${pkgver}"
 
-    # create gradle.properties
+    # Configure build properties (matching the GitHub workflow)
+    echo "" >> gradle.properties
+    cat >> gradle.properties << EOF
+versionDate=${pkgver}
+versionRef=${pkgver}-${pkgrel}
+buildkonfig.flavor=release
+EOF
 
-    echo -e "\nbuildkonfig.flavor=release" >> "${_codesource}/gradle.properties"    
-
-    _current_java_version="$(archlinux-java get)"
-    sudo archlinux-java set java-17-openjdk
-
-    # build .deb file
-    ./gradlew :desktopApp:packageDeb
-
-    # reset java version to previous setting        
-    if [ "$_current_java_version" != "java-17-openjdk" ]; then
-      sudo archlinux-java set $_current_java_version
-    fi
+    # Build distributable package
+    ./gradlew :desktopApp:packageReleaseDistributable --no-daemon
 }
 
 package() {
-    _codesource="${srcdir}/${pkgname}-app-r${pkgver}"
+    cd "${pkgname}-app-r${pkgver}"
 
-    # extract data from built .deb file
-    mkdir -p "${srcdir}/deb"
-    cd "${srcdir}/deb"
-    ar vx "${_codesource}/desktopApp/build/compose/binaries/main/deb/$(ls ${_codesource}/desktopApp/build/compose/binaries/main/deb)"
-    
-    # extract data.tar.xz from .deb file
-    mkdir -p "${srcdir}/output"
-    tar -xvf "${srcdir}/deb/data.tar.xz" -C "${srcdir}/output"
+    # Find the generated .tar.gz file
+    local tarfile=$(find desktopApp/build/distributions -name "*.tar.gz" -type f)
 
-    # copy and install contents of data.tar.xz
-    cp -r "${srcdir}/output/"* "${pkgdir}"
-    install -d "${pkgdir}"/opt/keyguard
+    if [[ -z "$tarfile" ]]; then
+        error "No .tar.gz file found"
+        return 1
+    fi
 
-    # create link to /usr/bin
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -s "${pkgdir}/opt/keyguard/bin/Keyguard" "${pkgdir}/usr/bin/keyguard"
-    install -d "${pkgdir}"/usr/bin
+    # Extract tar.gz to temporary directory
+    mkdir -p "${srcdir}/extracted"
+    tar -xzf "$tarfile" -C "${srcdir}/extracted" --strip-components=1
 
-    # create .desktop file and install
-    cat > "${srcdir}/keyguard.desktop" << EOL
+    # Install application files
+    install -dm755 "${pkgdir}/opt"
+    cp -r "${srcdir}/extracted" "${pkgdir}/opt/keyguard"
+
+    # Create symlink to binary
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s /opt/keyguard/bin/Keyguard "${pkgdir}/usr/bin/keyguard"
+
+    # Fix permissions for executables
+    chmod +x "${pkgdir}/opt/keyguard/bin/Keyguard"
+    if [[ -f "${pkgdir}/opt/keyguard/bin/keyguard" ]]; then
+        chmod +x "${pkgdir}/opt/keyguard/bin/keyguard"
+    fi
+
+    # Install icon from extracted build
+    install -Dm644 "${srcdir}/extracted/lib/Keyguard.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/keyguard.png"
+
+    # Create and install .desktop file
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/keyguard.desktop" << EOF
 [Desktop Entry]
 Type=Application
 Name=Keyguard
-Comment=Alternative client for the Bitwarden platform
-Path=/opt/keyguard/bin
-Exec=/opt/keyguard/bin/Keyguard
+Comment=Alternative client for Bitwarden and KeePass
+Exec=keyguard
 Icon=keyguard
 Terminal=false
-Categories=Utility
-EOL
+Categories=Utility;Security;
+StartupWMClass=com-artemchep-keyguard-MainKt
+Keywords=password;bitwarden;keepass;vault;credentials;
+EOF
 
-    mkdir -p "${pkgdir}/usr/share/pixmaps"
-    mkdir -p "${pkgdir}/usr/share/applications"
-    install -Dm0644 "${_codesource}/desktopApp/icon.png" "${pkgdir}/usr/share/pixmaps/keyguard.png"
-    install -Dm0644 "${srcdir}/keyguard.desktop" "${pkgdir}/usr/share/applications/"
-} 
+    # Install license if available
+    if [[ -f LICENSE ]]; then
+        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
+}
