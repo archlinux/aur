@@ -1,7 +1,7 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=bbcsdl
-_tarball=e3d6e1582dc5a9f9b77b7fc2985f63d24702c7d3
-pkgver=1.42a
+_tarball=2bb38045faced56e583819178af7a9304368c4eb
+pkgver=1.43b
 pkgrel=1
 pkgdesc="BBC Basic Programming for Linux"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 
 noextract=()
 sha256sums=(
-  71a7a01d59defb39b692d20bc4c14c2c69e5e5fd12958c03472e1ce59aeef4e7
+  fa6f51b730777f4f5b9fe77338c3e6d4030cf20a00656cda3af20cfdf49041ec
   335c55a1f039b4f10742a2186bcd5f58f8a70bf860eba5a5318839194cf96030
 )
 
