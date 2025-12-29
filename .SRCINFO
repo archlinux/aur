@@ -16,8 +16,7 @@ pkgbase = noon-apps
 	depends = qalculate-qt
 	depends = systemsettings
 	depends = vlc
+	depends = quickshell
 	depends = wf-recorder
-	optdepends = wlogout: Logout menu
-	optdepends = quickshell: Shell utilities
 
 pkgname = noon-apps

@@ -6,6 +6,7 @@ pkgdesc="Applications for Noon desktop environment"
 arch=('any')
 url="https://github.com/PharmaRacist/Noon"
 license=('MIT')
+
 depends=(
     'ark'
     'bluedevil'
@@ -18,11 +19,8 @@ depends=(
     'qalculate-qt'
     'systemsettings'
     'vlc'
+    'quickshell'
     'wf-recorder'
-)
-optdepends=(
-    'wlogout: Logout menu'
-    'quickshell: Shell utilities'
 )
 
 package() {
