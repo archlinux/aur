@@ -1,0 +1,5 @@
+[ticker-bin]
+source = "github"
+github = "achannarasappa/ticker"
+use_latest_release = true
+prefix = "v"
