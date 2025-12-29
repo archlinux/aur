@@ -3,7 +3,7 @@
 pkgname=fzur-git
 pkgver=r61.aa67925
 pkgrel=1
-pkgdesc="An fzf AUR helper"
+pkgdesc="A standalone fzf AUR helper"
 arch=('any')
 url="https://github.com/Samq64/fzur"
 license=('MIT')
