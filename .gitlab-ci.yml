@@ -65,23 +65,34 @@ test_job:
 release_job:
   stage: release
   script:
-    - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
-    - git config --global user.email "zomundo@gmail.com"
-    - git config --global user.name "Mundo"
-    - git remote add aur ssh://aur@aur.archlinux.org/twos-appimage.git
-    - git fetch aur master
-    - git stash
-    - git checkout master
-    - git stash pop
-    - git add PKGBUILD .SRCINFO
-    - git commit -m "temp commit for rebase"
-    - git rebase aur/master
-    - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
-    - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
-    - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
-    - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
-    - git commit --amend -m "$commit_msg"
-    - git push aur master
+    - |
+      if [ -z "$pkgver" ]; then 
+        echo "version variable does not exist, skipping job"
+        exit 0
+      fi
+      git config --global user.email "zomundo@gmail.com"
+      git config --global user.name "Mundo"
+      git remote add aur ssh://aur@aur.archlinux.org/twos-appimage.git || git remote set-url aur ssh://aur@aur.archlinux.org/twos-appimage.git
+      if git ls-remote --heads aur master 2>/dev/null | grep -q master; then
+        echo "AUR repository exists, fetching and rebasing"
+        git fetch aur master
+        git stash || true
+        git checkout -b master 2>/dev/null || git checkout master
+        git stash pop || true
+        git add PKGBUILD .SRCINFO
+        git commit -m "temp commit for rebase" || true
+        git rebase aur/master || (git rebase --abort && git rebase aur/master)
+      else
+        echo "AUR repository is empty, creating initial commit"
+        git checkout -b master 2>/dev/null || git checkout master || true
+        git add PKGBUILD .SRCINFO
+      fi
+      pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
+      pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+      pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
+      commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+      git commit --amend -m "$commit_msg" 2>/dev/null || git commit -m "$commit_msg"
+      git push aur master || git push -u aur master
 
   dependencies:
     - test_job
