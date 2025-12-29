@@ -1,0 +1,45 @@
+post_install() {
+  echo ""
+  echo "════════════════════════════════════════════════════════════════"
+  echo "  WIZADO INSTALLED"
+  echo "════════════════════════════════════════════════════════════════"
+  echo ""
+  echo "  Run 'wizado setup' to configure gaming mode."
+  echo ""
+  echo "  This will:"
+  echo "    - Install Steam and gaming dependencies"
+  echo "    - Add Hyprland keybindings (Super+Shift+S)"
+  echo "    - Configure Waybar module"
+  echo ""
+  echo "  Commands:"
+  echo "    wizado              Launch Steam with gamescope"
+  echo "    wizado config       Configure settings & license"
+  echo "    wizado setup        Run system setup"
+  echo "    wizado-menu         Open TUI menu"
+  echo "    wizado-menu-float   Open TUI in floating terminal"
+  echo ""
+  echo "  Add to ~/.config/hypr/hyprland.conf for floating menu:"
+  echo "    windowrulev2 = float, class:^(wizado-menu)\$"
+  echo "    windowrulev2 = center, class:^(wizado-menu)\$"
+  echo "    windowrulev2 = size 500 400, class:^(wizado-menu)\$"
+  echo ""
+  echo "════════════════════════════════════════════════════════════════"
+  echo "  LICENSE REQUIRED"
+  echo "════════════════════════════════════════════════════════════════"
+  echo ""
+  echo "  Wizado requires a valid license to run."
+  echo "  Get one at: https://wizado.app (\$10 for 5 machines)"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  # Run removal if binary exists
+  if command -v wizado >/dev/null 2>&1; then
+    echo "Removing wizado configuration..."
+    wizado remove --yes 2>/dev/null || true
+  fi
+}

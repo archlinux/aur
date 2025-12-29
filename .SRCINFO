@@ -1,0 +1,21 @@
+pkgbase = wizado
+	pkgdesc = Steam gaming mode launcher for Hyprland with gamescope integration
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wattfource/wizado-omarchy
+	install = wizado.install
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.21
+	depends = glibc
+	optdepends = steam: Steam client (required for gaming)
+	optdepends = gamescope: Gaming compositor (required for gaming)
+	optdepends = gamemode: CPU/GPU performance optimizations
+	optdepends = mangohud: Performance overlay
+	optdepends = hyprland: Hyprland compositor
+	optdepends = gum: Interactive TUI menu scripts
+	optdepends = jq: JSON parsing for menu scripts
+	source = wizado-1.0.1.tar.gz::https://github.com/wattfource/wizado-omarchy/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e032d56ea9b639de15d33bcc11ea3e6e8270a7171f98e4594a49d052dd1c8d74
+
+pkgname = wizado
