@@ -10,9 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/anyme123/Any-code/releases/download/v${pkgver}/any-code_${pkgver}_amd64.AppImage"
 )
-sha512sums=(
-  '016a86d2a72d350d2a515449732d7ad0137221eb99a7e52f98fe8287076f14e4d94fe36a8b7770f5ac8f7cb9c0d1a7451413416a8e6d4756d0b27104840b9ae4'
-)
+sha512sums=('016a86d2a72d350d2a515449732d7ad0137221eb99a7e52f98fe8287076f14e4d94fe36a8b7770f5ac8f7cb9c0d1a7451413416a8e6d4756d0b27104840b9ae4')
 
 _installdir=/opt/any-code
 
