@@ -97,3 +97,7 @@ package_20_version() {
   fi
   unset depends[125]
 }
+
+package_03_dirs() {
+  cp -r --no-preserve=owner effects "$destdir/"
+}
