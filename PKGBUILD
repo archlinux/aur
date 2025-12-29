@@ -29,7 +29,7 @@ _supported_linux=
 #	linux vanilla could be called "pkgname=linux-vanilla  ;provides=(linux)"
 
 # official release . commit pull stepping . patching stepping
-pkgver=3.9.9.7
+pkgver=3.10.0.7
 # do not flag out-of-date unless it is incompatible with latest kernel version, or an important upstream commit as been pushed
 
 # increase pkgrel as you customize this package, 0 worked well so far (should be 1 officially)
@@ -43,7 +43,7 @@ arch=('x86_64')
 license=(GPL-2.0-only)
 
 # no need for iscsi digest and version parsing patches since 1ba89c391e032aba5d4be3842a1682ed897b921a and 314659ed7c7b6ca3bad2f92d2cbddd4e452ddbf1
-source=("git+https://github.com/SCST-project/scst.git#commit=d11040a0b19886aabffa6796e2931922a5c71d9b"
+source=("git+https://github.com/SCST-project/scst.git#commit=b2a1f6e66a26f1ad7acb215b741bb2ace193fd15"
         'pr_dif_vmp_files_location.patch'
 #       'iscsi_kernel_digest.patch'
 #       'version_parsing.patch'
@@ -59,6 +59,7 @@ source=("git+https://github.com/SCST-project/scst.git#commit=d11040a0b19886aabff
         'dkms-qla2x.conf'
         )
 # previously tested:
+#commit=d11040a0b19886aabffa6796e2931922a5c71d9b
 #commit=7d0b1d2588f98625b20b0cd508df188327531470
 #commit=6543c4c316ebe03e6afa5235544df78c26643c14
 #commit=5072f0ce5819fca7139f999c4bccd0b5cbe2a208
