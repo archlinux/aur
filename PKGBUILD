@@ -4,7 +4,7 @@
 pkgname=python-llm-mistral
 _gitpkgname=llm-mistral
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='LLM plugin providing access to Mistral models using the Mistral API'
 arch=('any')
 url='https://github.com/simonw/llm-mistral'
@@ -15,7 +15,6 @@ depends=(
   'python-httpx'
   'python-httpx-sse'
   'python-llm'
-  'python-ijson'
   'python-pydantic'
 )
 makedepends=(
@@ -26,6 +25,8 @@ makedepends=(
 checkdepends=(
   'python-inline-snapshot'
   'python-pytest'
+  'python-pytest-asyncio'
+  'python-pytest-httpx'
   'python-pytest-recording'
 )
 
