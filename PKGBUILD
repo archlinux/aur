@@ -2,13 +2,13 @@
 
 pkgname=sotto
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local speech-to-text transcription for Linux/Wayland using Whisper'
 arch=('x86_64')
 url="https://github.com/Maciejonos/sotto"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'pipewire' 'wl-clipboard')
-makedepends=('cargo' 'clang')
+makedepends=('cargo' 'clang' 'cmake')
 provides=('sotto')
 conflicts=('sotto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")

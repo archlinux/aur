@@ -1,12 +1,13 @@
 pkgbase = sotto
 	pkgdesc = Local speech-to-text transcription for Linux/Wayland using Whisper
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maciejonos/sotto
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = clang
+	makedepends = cmake
 	depends = gtk4
 	depends = libadwaita
 	depends = pipewire
