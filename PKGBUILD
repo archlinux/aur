@@ -5,7 +5,7 @@ _pkgname=iris
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, minimal, config-driven file organizer"
 
-pkgver=1.3.1
+pkgver=1.3.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 sha256sums=('0c5dd65ffbb483114d0de205e8353a142d69c91ea1b37a60db5c341d9f20ca63'
-            '8caa81634b99c6f9ef3bb08d078903943029f39627b56abd83b1190c961cf8f9')
-sha256sums_x86_64=('2f96ab11b53e2213af911636772dc9c348778a914b720bb9de2cb6bf8e929e86')
+            '33bd076e38f534bc8e192b0cbe7e36c94f6033e093e5486dac3ec54b609e9b7b')
+sha256sums_x86_64=('82ad9bf05423ccd6311c293f3bd582ff356f4462b096c8fbefc2cc290129ac98')
 
 package() {
 	cd "${srcdir}/" || exit
