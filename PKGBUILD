@@ -19,8 +19,8 @@ conflicts=('portablemc')
 
 validpgpkeys=('F659B0F0B84A26CAC635D72948CAEE8DC3456B2F')
 
-source=("${url}/releases/download/${pkgver}/portablemc-${pkgver}-linux-x86_64.tar.gz"
-	"${url}/releases/download/${pkgver}/portablemc-${pkgver}-linux-x86_64.tar.gz.sig")
+source=("${url}/releases/download/${pkgver}/portablemc-v${pkgver}-linux-x86_64.tar.gz"
+	"${url}/releases/download/${pkgver}/portablemc-v${pkgver}-linux-x86_64.tar.gz.sig")
 
 sha256sums=('88224f3d89f798fcfe97d61a6db4078262eaa9fcb5549c950801937b418e6b81'
 	    '5b2161c1ecec7cc9450847015a79b625ceb0f404bc75f3ac7117fd9c4c507c7e')
