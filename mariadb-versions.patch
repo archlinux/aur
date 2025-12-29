@@ -1,11 +1,12 @@
-@@ -2755,7 +2755,9 @@
+@@ -2755,7 +2755,10 @@
          or mysql_version_eq( 10, 6 )
          or mysql_version_eq( 10, 11 )
          or mysql_version_eq( 11, 4 )
 -        or mysql_version_eq( 11, 8 ) )
 +        or mysql_version_eq( 11, 7 )
 +        or mysql_version_eq( 11, 8 )
-+        or mysql_version_eq( 12, 0 ) )
++        or mysql_version_eq( 12, 0 )
++        or mysql_version_eq( 12, 1 ) )
      {
          goodprint "Currently running supported MySQL/MariaDB version "
            . $myvar{'version'} . "(LTS)";
