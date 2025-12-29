@@ -2,9 +2,9 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-restfulapi
+pkgver=0.2.6.8
+pkgrel=1
 epoch=1
-pkgver=0.2.6.6
-pkgrel=9
 _vdrapi=9
 pkgdesc="Restful-API Control for VDR"
 url="https://github.com/yavdr/vdr-plugin-restfulapi"
@@ -13,21 +13,17 @@ license=('GPL2')
 depends=('cxxtools' 'graphicsmagick' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yavdr/vdr-plugin-$_plugname/archive/$pkgver.tar.gz"
-        "${pkgname}-fix-build-with-vdr-2.7.1.patch::https://github.com/yavdr/vdr-plugin-restfulapi/commit/80d03486ef77ec9ce0d615225f8d356b72afd78e.patch"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/restfulapi/API.html'
         'var/lib/vdr/plugins/restfulapi/osd.css'
         'var/lib/vdr/plugins/restfulapi/osd.js')
-md5sums=('0ebe227bd662532dfe785452b5a325ba'
-         '6e1321aea1fb5c0da8c8f863ac713b3b'
-         '7b482249828a58f1f6ce2cd4a577f773')
+sha256sums=('b90dd204daf96125e65a2216ab98eaf3ccf8c23978e8967bcc20c287ca3bc4a8'
+            '93e1bba28d7c18499327f69e7751ea831efde6bb760490888a68dec238b0856b')
 
 prepare() {
   cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
-  patch -p1 -i "${srcdir}/${pkgname}-fix-build-with-vdr-2.7.1.patch"
   sed -i 's/Magick++/GraphicsMagick++/g' Makefile
-  sed -i -e 's/var\/lib\/video\.00/srv\/vdr\/video/' tools.cpp
 }
 
 build() {
