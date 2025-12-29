@@ -3,20 +3,20 @@
 pkgname=bluej-preview
 _pkgname=bluej
 pkgver=5.5.0.rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide. Release Candidate with Kotlin Support"
 arch=('x86_64')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CDDL' 'CPL' 'custom')
 depends=('gtk3' 'archlinux-java-run' 'java-runtime=21' 'java-environment=21' 'java-openjfx=21')
 makedepends=('gdown' 'unzip')
-gdriveid="1zZTeQH6jN04mGtzEHSEagr_qdcJeWQPQ"
+gdriveid="1wTuk1j3MMR4URhCQb1mLn_THpsaWyJm9"
 DLAGENTS+=('gdown::./gdown-unzip.sh %u %o')
 source=("BlueJ-linux-x64-${pkgver}.deb::gdown://${gdriveid}"
 	"${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('35023b052249c9d5e70d96eb4ec52ca8a2057071024a260f012d020d0a1f4847'
+sha256sums=('dcf54b81d4e9a598f5133a38bc3ed716891dd5f76b793a6516abfc973c38afa2'
             '979be5105b27c8da9650130f59eb840b3d8849d4f04728872604347ebf483714'
             '565c74b8eca934d2991294e8205bf73e1b2950083ab74ea539f919a9d87df413'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
