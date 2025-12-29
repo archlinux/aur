@@ -1,4 +1,4 @@
-# Maintainer: lazywalker <l4zywalk3r@gmail.com>
+# Maintainer: lazywalker <lazywalkerz@gmail.com>
 
 pkgname=rgrc
 pkgver=0.6.3.r0.gf451425
