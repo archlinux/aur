@@ -1,7 +1,7 @@
 # Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 
 pkgname="devpod-community-bin"
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (prebuilt) - unofficial package"
 arch=("x86_64")
@@ -30,7 +30,7 @@ conflicts=("devpod" "devpod-bin" "devpod-cli-bin")
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/DevPod_linux_x86_64.tar.gz"
 )
-sha256sums=('929061e746d6df05afb11ccdb2f8333d21d9f41d9216b74297a8d440186f7b1e')
+sha256sums=('9554fe64e69c43dcfa0772762ce8cafc7754bd17d99de1637097b544eb208a51')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${srcdir}"
