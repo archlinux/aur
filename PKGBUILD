@@ -7,7 +7,7 @@ pkgname=konform-browser
 provides=(konform-browser)
 conflicts=()
 __pkgname=konform
-_ffsrcver=136.0.4
+_ffsrcver=140.6.0
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
@@ -298,6 +298,8 @@ END
     # temporarily disable ublock-origin, interferes with profiling
     cp "lw/policies.json" "$srcdir/policies.json"
     jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
+    # temporarily enable nimbus telemetry for profiling
+    sed -i 's#^.*nimbus\.#// \0#' "lw/librewolf.cfg"
 
     echo "Building instrumented browser..."
 
@@ -364,6 +366,8 @@ END
 
     # reenable ublock-origin
     cp "$srcdir/policies.json" "lw/policies.json"
+    # disable nimbus telemetry
+    cp "$srcdir/src/settings/librewolf.cfg" "lw/librewolf.cfg"
 
   else
     cat >.mozconfig ../mozconfig
