@@ -23,7 +23,6 @@ pkgbase = transistor-git
 	depends = jack
 	provides = transistor-git
 	options = !emptydirs
-	options = !debug
 	source = transistor.git::git+https://invent.kde.org/saurov/transistor
 	sha256sums = SKIP
 

@@ -13,7 +13,7 @@ arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
 pkgdir="$srcdir/fakeinstall_kf6"
 build_dir="build"
-options=(!emptydirs !debug)
+options=(!emptydirs)
 source=("${_pkgname}.git::git+${url}")
 sha256sums=('SKIP')
 provides=($pkgname)
@@ -65,7 +65,6 @@ build() (
 )
 
 package() (
-  install -dm755 "$pkgdir.git"
   DESTDIR="$pkgdir" ninja install -C $build_dir
   rm -rf "$pkgdir/usr/lib/cmake"
 )
