@@ -2,8 +2,8 @@
 # Contributor: Michael Limiero <mike5713 at gmail dot com>
 pkgname=('simplebluez' 'simpleble' 'simpledbus' 'python-simplepyble')
 pkgbase=simpleble
-pkgver=0.10.3
-pkgrel=2
+pkgver=0.10.4
+pkgrel=1
 epoch=
 pkgdesc="The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android"
 arch=("x86_64")
