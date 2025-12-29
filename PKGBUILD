@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.4.12.r29.ga8971483
+pkgver=0.5.51.r242.g4d678975
 pkgrel=1
 pkgdesc="Video chat in your terminal - runtime binary (development version)"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,6 @@ makedepends=(
   'libsodium'
   'portaudio'
   'opus'
-  'speexdsp'
 )
 optdepends=(
   'libasciichat-git: development headers and libraries'
@@ -70,6 +69,7 @@ build() {
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_MUSL=ON \
     -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config \
     -DASCIICHAT_CLANG_EXECUTABLE=/usr/bin/clang \
     -DASCIICHAT_CLANG_PLUS_PLUS_EXECUTABLE=/usr/bin/clang++ \

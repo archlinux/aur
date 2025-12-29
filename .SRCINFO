@@ -1,6 +1,6 @@
 pkgbase = ascii-chat-git
 	pkgdesc = Video chat in your terminal - runtime binary (development version)
-	pkgver = 0.4.12.r29.ga8971483
+	pkgver = 0.5.51.r242.g4d678975
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = ascii-chat-git
 	makedepends = libsodium
 	makedepends = portaudio
 	makedepends = opus
-	makedepends = speexdsp
 	optdepends = libasciichat-git: development headers and libraries
 	optdepends = v4l-utils: webcam device utilities
 	optdepends = openssh: ssh-agent support for key authentication
