@@ -5,4 +5,5 @@
 *.tar
 *.xz
 *.zip
+*.zst
 *~
