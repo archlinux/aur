@@ -2,7 +2,7 @@
 
 pkgname=pushgarden-git
 _pkgname=pushgarden
-pkgver=r46.211319289b88
+pkgver=r51.e696825
 pkgrel=1
 pkgdesc='A Web Push gateway to proprietary services'
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'719749193fb165fd254ac53c7e82ac800db8a6c2613ccc2b38144dcb720a75d7'
+	'9ab4f6196de8079138fa6c448d01109e192c481d67fce450e0efe8fa6816720c'
 	'5cef488aa00aeaaaedea87dcffd26dd22203cdcec159e30c0cdc29ccc87ee30c'
 	'fcb114468a97a1b07e827dd1ff9d4789072a1c73db7f859a3b54b118cd622283'
-	'474304ccb5dca9e297d606db16ab371d913d88edccebd378ee1e5059423b438f'
+	'abe4bca771a393cb2928c208dba6768a20c56e30bf317eb8883aec4fe1752910'
 )
 
 pkgver() {

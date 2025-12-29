@@ -6,8 +6,9 @@ After=network.target
 Type=simple
 User=pushgarden
 Restart=always
+Environment=debug=false
 EnvironmentFile=/etc/pushgarden/params
-ExecStart=/usr/bin/pushgarden -listen=${listen} -db=/var/lib/pushgarden/db
+ExecStart=/usr/bin/pushgarden -listen=${listen} -db=/var/lib/pushgarden/db -debug=${debug}
 
 [Install]
 WantedBy=multi-user.target
