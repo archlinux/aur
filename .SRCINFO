@@ -1,7 +1,7 @@
 pkgbase = saphi-bin
 	pkgdesc = Leaderboard and time-trial tracking client for Crash Team Racing custom tracks
 	pkgver = 0.0.7.0.0.0.7.0beta
-	pkgrel = 1
+	pkgrel = 3
 	url = https://5ever.crashteamranking.com/
 	arch = x86_64
 	license = unknown

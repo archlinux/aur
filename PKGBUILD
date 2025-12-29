@@ -1,7 +1,7 @@
 # Maintainer: wituz
 pkgname=saphi-bin
 pkgver=0.0.7.0.0.0.7.0beta
-pkgrel=1
+pkgrel=3
 pkgdesc="Leaderboard and time-trial tracking client for Crash Team Racing custom tracks"
 arch=('x86_64')
 url="https://5ever.crashteamranking.com/"
@@ -31,7 +31,21 @@ package() {
     # Install desktop file
     install -Dm644 "${srcdir}/saphi.desktop" "${pkgdir}/usr/share/applications/saphi.desktop"
 
-    # Create symlink in /usr/bin
+    # Create launcher script that runs from user data directory
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/saphi/Client "${pkgdir}/usr/bin/saphi"
+    cat > "${pkgdir}/usr/bin/saphi" << 'EOF'
+#!/bin/sh
+DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/saphi"
+
+# Create user data directory if it doesn't exist
+if [ ! -d "$DATA_DIR" ]; then
+    mkdir -p "$DATA_DIR"
+    ln -s /opt/saphi/Client "$DATA_DIR/Client"
+    cp -r /opt/saphi/data "$DATA_DIR/data"
+fi
+
+cd "$DATA_DIR"
+exec ./Client "$@"
+EOF
+    chmod +x "${pkgdir}/usr/bin/saphi"
 }
