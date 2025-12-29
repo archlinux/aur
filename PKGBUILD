@@ -27,7 +27,8 @@ sha256sums=('88224f3d89f798fcfe97d61a6db4078262eaa9fcb5549c950801937b418e6b81'
 
 package() {
   cd "portablemc-${pkgver}-linux-x86_64"
-  install -dm 755 ${pkgdir}/usr/bin  
+  install -dm 755 ${pkgdir}/usr/bin
+  install -Dm755 "${srcdir}/portablemc-${pkgver}-linux-x86_64/portablemc" "${pkgdir}/usr/bin/portablemc"  
   install -Dm644 readme.txt "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
   #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
