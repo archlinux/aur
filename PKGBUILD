@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-bin
 _pkgname=Witsy
-pkgver=3.3.0
+pkgver=3.3.1
 _electronversion=38
 pkgrel=1
 pkgdesc="Generative AI desktop application.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea266a181344e1202aadb6720a9987907b919402b4a5c05feb05b90ac4541db3'
+sha256sums=('927f11bd9780d1d889b4db30d19824880e406d72d38d899c4e40f3fc9a8942e8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
