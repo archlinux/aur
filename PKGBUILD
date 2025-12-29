@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.4.1
-pkgrel=8
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -25,22 +25,22 @@ provides=('voxtype')
 conflicts=('voxtype')
 backup=('etc/voxtype/config.toml')
 install=voxtype-bin.install
-_github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver-$pkgrel"
+_github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver"
 source=(
     "voxtype-avx2::$_github/voxtype-$pkgver-linux-x86_64-avx2"
     "voxtype-avx512::$_github/voxtype-$pkgver-linux-x86_64-avx512"
     "voxtype-vulkan::$_github/voxtype-$pkgver-linux-x86_64-vulkan"
-    "config.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/config/default.toml"
-    "voxtype.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/packaging/systemd/voxtype.service"
-    "voxtype.bash::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/packaging/completions/voxtype.bash"
-    "voxtype.zsh::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/packaging/completions/voxtype.zsh"
-    "voxtype.fish::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/packaging/completions/voxtype.fish"
-    "LICENSE::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/LICENSE"
-    "README.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver-$pkgrel/README.md"
+    "config.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
+    "voxtype.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
+    "voxtype.bash::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.bash"
+    "voxtype.zsh::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.zsh"
+    "voxtype.fish::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.fish"
+    "LICENSE::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/LICENSE"
+    "README.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
 )
 sha256sums=(
-    '6f3b0bce4777221139006fab3e96e091226c6a625be8499e39c3ffb3040fc679'  # voxtype-avx2
-    '10a54747ba3cbc453b5bb456d5b676619393fb05db5124a83224c7e684b6a6e5'  # voxtype-avx512
+    'a8d62677566ee11cf8a6d56ea113c2dc5af14c8ade092e9f622444644d76ba17'  # voxtype-avx2
+    'cefb47a9b821d88ec04a007a455d365b9584f07a94a73d6e9c85285322ef5b1a'  # voxtype-avx512
     'd5171f84f43728f492e93604950d108bf9c76c8a6c1eeda5861605339efddcc9'  # voxtype-vulkan
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
