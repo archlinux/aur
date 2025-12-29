@@ -1,6 +1,6 @@
 pkgbase = thorvg
 	pkgdesc = An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats
-	pkgver = 0.15.13
+	pkgver = 0.15.16
 	pkgrel = 1
 	url = https://www.thorvg.org/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = thorvg
 	depends = libwebp
 	depends = mesa
 	depends = libx11
-	source = https://github.com/thorvg/thorvg/archive/refs/tags/v0.15.13.tar.gz
+	source = https://github.com/thorvg/thorvg/archive/refs/tags/v0.15.16.tar.gz
 	source = example_stdio_h.patch
-	sha256sums = ffd0eadba05bdfdfe1b425efe7be9730d9d88d6f46e86d239c3652681f651ebe
+	sha256sums = a7fc0aaf9e1aa5c1bc8f4f2035571ce87136a3c65fd9b3019eb25f9c58fba83c
 	sha256sums = 5eaf0991514b272c1da7f7f696643306b5d501a06733c36c01f5c972cc8394c7
 
 pkgname = thorvg
