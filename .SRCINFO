@@ -1,0 +1,15 @@
+pkgbase = btcheck-svn
+	pkgdesc = Bittorrent downloaded data checker and a torrent file content viewer
+	pkgver = r66
+	pkgrel = 3
+	url = https://sourceforge.net/projects/btcheck/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = subversion
+	depends = glibc
+	provides = btcheck
+	conflicts = btcheck
+	source = btcheck::svn+https://svn.code.sf.net/p/btcheck/code/trunk
+	sha256sums = SKIP
+
+pkgname = btcheck-svn
