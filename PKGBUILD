@@ -3,12 +3,12 @@
 pkgname=mysqltuner
 pkgver=2.7.2
 _tag='0b4d8aefc3a0c5f0a247d4d101348f49fcfdc53d'
-pkgrel=1
+pkgrel=2
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
 url='http://www.mysqltuner.com'
 license=('GPL')
-makedepends=('git' 'discount' 'perl-www-mechanize-gzip' 'perl-file-util' 'perl-list-moreutils' 'perl-lwp-protocol-https' 'perl-markdown-pod')
+makedepends=('git' 'discount' )
 depends=('perl')
 source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}"
 	"mariadb-versions.patch")
