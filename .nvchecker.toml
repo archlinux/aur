@@ -1,0 +1,4 @@
+[drill-bin]
+source = "github"
+github = "fcsonline/drill"
+use_latest_release = true
