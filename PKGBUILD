@@ -1,7 +1,7 @@
 # Maintainer: Tsaitang <tsaitang404 at gmail dot com>
 pkgname=univpn
 pkgver=10781.18.1.0512
-pkgrel=6
+pkgrel=10
 pkgdesc="企业级VPN客户端"
 arch=('x86_64')
 url="https://www.univpn.com/"
