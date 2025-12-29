@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Optional applications for Noon desktop environment"
 arch=('any')
 url="https://github.com/PharmaRacist/Noon"
+install=noon-optional.install
 license=('MIT')
 depends=(
     'plasma-meta'
@@ -30,11 +31,10 @@ depends=(
     'perplexity'
     'spotify'
     'spicetify-cli'
-    'spicetify-marketplace-bin' 
+    'spicetify-marketplace-bin'
     'wine-staging'
     'nwg-look'
     'v4l2loopback-dkms'
     'v4l2loopback-utils'
     'obs-studio'
 )
-install=noon-optional.install
