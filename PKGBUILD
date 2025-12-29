@@ -1,44 +1,64 @@
-# Maintainer: artist for XLibre <artist4xlibre@proton.me>
+# Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
 
-_basename="xf86-video-amdgpu"
-pkgname="${_basename//xf86/xlibre}"
-pkgver=23.0.0.6
-pkgrel=1
-pkgdesc="XLibre amdgpu video driver"
-arch=('aarch64' 'x86_64')
-url="https://github.com/X11Libre/${_basename}"
-license=('MIT')
-depends=('glibc' 'libdrm>=2.4.121' 'mesa' 'systemd-libs')
-makedepends=('systemd' 'xlibre-xserver-devel' 'xorgproto' 'X-ABI-VIDEODRV_VERSION=28.0')
-provides=("${_basename}")
-conflicts=("${_basename}" 'xorg-server<1.20.0' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
+pkgname=xlibre-video-amdgpu
+pkgver=25.0.0
+pkgrel=6
+pkgdesc="XLibre fork of X.Org amdgpu video driver"
+arch=('x86_64')
+_pkgname="${pkgname//xlibre/xf86}"
+url="https://github.com/X11Libre/${_pkgname}"
+depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
+makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
-_pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('f7e41ae0d9ac43e31a3393a3b2a332e34c63541d4cbe99d9faa8e6feeb2345ed62d599484cef0e1f84941aee94574a1907b3fe12b80e8f923bf6988521073332')
+depends+=('mesa' 'libdrm>=2.4.121')
+makedepends+=('meson>=0.59.0')
 
 build() {
-  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-  # With them, modules fail to load with undefined symbol.
-  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-  export CFLAGS="${CFLAGS/-fno-plt}"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt}"
-  export LDFLAGS="${LDFLAGS/-Wl,-z,now}"
-  local configure_options=(
-    --prefix='/usr'
-    --enable-glamor
-  )
+  arch-meson ${_pkgname}-xlibre-${_pkgname}-${pkgver} build \
+    -D udev=enabled \
+    -D glamor=enabled \
+    -D configdir=/usr/share/X11/xorg.conf.d/  \
+    -D moduledir="/usr/lib/xorg/modules/xlibre-${pkgver%%.*}/"
 
-  cd "${srcdir}/${_pkgsrc}"
-  autoreconf -vfi
-  ./configure "${configure_options[@]}"
-  make
+  meson configure build
+  ninja -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  make DESTDIR="${pkgdir}" install
-
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+
+
+xbuild() {
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+
+  ./autogen.sh
+  ./configure --prefix=/usr \
+    --enable-glamor
+  make
+}
+
+xcheck() {
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
+  make check
+}
+
+xpackage() {
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
+  make "DESTDIR=${pkgdir}" install
+  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+}
+
+sha256sums=('2fdf19250d1bfedcb9c4fc4f72a2eb23de90c6ce7bf1b37e2da7ef3410895c18')
+
