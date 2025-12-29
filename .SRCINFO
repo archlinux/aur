@@ -1,0 +1,15 @@
+pkgbase = thunderbird-extension-cardbook-git
+	pkgdesc = A new Thunderbird address book based on the CardDAV and vCard standards
+	pkgver = 101.4.r4653.92836ac
+	pkgrel = 1
+	url = https://gitlab.com/CardBook/CardBook
+	arch = any
+	license = MPL-2.0
+	makedepends = jq
+	makedepends = git
+	source = CardBook::git+https://gitlab.com/CardBook/CardBook.git#branch=Thunderbird-128#branch=Thunderbird-128
+	sha256sums = SKIP
+
+pkgname = thunderbird-extension-cardbook-git
+	depends = thunderbird>=
+	depends = thunderbird<1
