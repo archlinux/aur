@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=5.18.0
+pkgver=5.19.0
 _electronversion=39
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('2913650664e0cce5ea25b534573a30b8e369c305c3bcb799bece6ca7e1de7821')
-sha256sums_x86_64=('583da5ef2d750401b88a4d204f3efc00ffd4f927d15036ee96fd7e82d346a214')
+sha256sums_aarch64=('f288fc251a99974e5786cd5a2a9a767621e9496e5b0cfd74e6e8df2541927b35')
+sha256sums_x86_64=('aaac37a3815e6db9311c11cd93eb097c3b2d9b81243aa2618812fd2d1cd184f5')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
