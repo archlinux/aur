@@ -1,0 +1,62 @@
+From ec8f61d67c8de71af9afb9fdb5abe366a9c61edb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jostein=20B=C3=B8=20Fl=C3=B8ystad?=
+ <josteinbo.floystad@sintef.no>
+Date: Tue, 19 Jan 2016 10:38:16 +0100
+Subject: [PATCH 1/2] Ensure python3 compatibility.
+
+Problem was that dict.keys() returns an iterator on python3 and a list
+on python2. Explicitly convert to list.
+---
+ json_logic/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/json_logic/__init__.py b/json_logic/__init__.py
+index 85f910e..98c3697 100644
+--- a/json_logic/__init__.py
++++ b/json_logic/__init__.py
+@@ -10,7 +10,7 @@ def jsonLogic(tests, data=None):
+ 
+   data = data or {}
+ 
+-  op = tests.keys()[0]
++  op = list(tests.keys())[0]
+   values = tests[op]
+   operations = {
+     "=="  : (lambda a, b: a == b),
+
+From c6647946f8b57f0748cfd10ccde3f73acb0385ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jostein=20B=C3=B8=20Fl=C3=B8ystad?=
+ <josteinbo.floystad@sintef.no>
+Date: Tue, 19 Jan 2016 11:03:59 +0100
+Subject: [PATCH 2/2] Import reduce from six for py3 and py2 compatibility.
+
+---
+ json_logic/__init__.py | 1 +
+ setup.py               | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/json_logic/__init__.py b/json_logic/__init__.py
+index 98c3697..89d9303 100644
+--- a/json_logic/__init__.py
++++ b/json_logic/__init__.py
+@@ -2,6 +2,7 @@
+ # https://github.com/jwadhams/json-logic-js
+ 
+ import sys
++from six.moves import reduce
+ 
+ def jsonLogic(tests, data=None):
+   # You've recursed to a primitive, stop!
+diff --git a/setup.py b/setup.py
+index 5a2a283..146c727 100644
+--- a/setup.py
++++ b/setup.py
+@@ -79,7 +79,7 @@
+     # your project is installed. For an analysis of "install_requires" vs pip's
+     # requirements files see:
+     # https://packaging.python.org/en/latest/requirements.html
+-    install_requires=[],
++    install_requires=['six'],
+ 
+     # List additional groups of dependencies here (e.g. development
+     # dependencies). You can install these using the following syntax,

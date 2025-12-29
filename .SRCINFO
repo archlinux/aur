@@ -1,0 +1,19 @@
+pkgbase = python-json-logic
+	pkgdesc = Build complex rules, serialize them as JSON, and execute them in Python
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/nadirizr/json-logic-py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-six
+	source = json-logic-py-0.6.3.tar.gz::https://github.com/nadirizr/json-logic-py/archive/56d8e566755ea059a40b396fde0af5d65b7a0af5.tar.gz
+	source = github-pr-1.patch
+	sha512sums = 942fabe5bc4582beb363e777bb3fe955994e5d5c9d8b3aa0eaba64b71116ca415fbb62136fa39539e490d49b1483ff71ba4b7adc85884c45ad66593869e83e61
+	sha512sums = f1b49428e56b8ac06fd6e32012691577ce6e81b4f43c048bdbf95c4c9e93e35bedbcb1d7d7afc43cabdcda908674fa33d35c5f18d0ac85386ecc3a56174cc484
+
+pkgname = python-json-logic

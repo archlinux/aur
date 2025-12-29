@@ -1,0 +1,3 @@
+[python-json-logic]
+source = "pypi"
+pypi = "json-logic"
