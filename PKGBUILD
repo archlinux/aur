@@ -1,7 +1,7 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
-pkgver=3.7.1
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="Music for the Shell."
 arch=('x86_64')
@@ -12,7 +12,7 @@ replaces=('cue-music-command')
 conflicts=('kew-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('35e78138790acb2a8e21522f378d719e8f894a5d928730887e468fb61a0e74c637e4a12fa8cc1cd15aa33486bd9f32c43c9964c38bc60f501d4e02d2d5418eac')
+sha512sums=('208dc0fdf004d8284f6378d863617f8eec5f8e71b8febafca059964a4db07967ceb56950946c588765e5984d58df89f094e438ff878e53514688289932389432')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -21,5 +21,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make PREFIX="$pkgdir/usr" LANGDIRPREFIX="$pkgdir/usr" install
+    make PREFIX="$pkgdir/usr" install
 }
