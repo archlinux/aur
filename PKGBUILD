@@ -2,7 +2,7 @@
 
 pkgname=verylup-bin
 _pkgname=verylup
-pkgver=0.1.7
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="The Veryl toolchain installer"
 arch=('x86_64' 'aarch64')
@@ -17,5 +17,5 @@ source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-$CA
 package() {
   install -Dm 755 "$_pkgname" -t "${pkgdir}/usr/bin"
 }
-sha256sums_x86_64=('d8f31de7e0ece97290684022783ac8441a63a3f33a673f6f6359d774f4f55461')
-sha256sums_aarch64=('d8f31de7e0ece97290684022783ac8441a63a3f33a673f6f6359d774f4f55461')
+sha256sums_x86_64=('424de9a27b6667f74a352b058d6638f914e690b1058d16175e3f8fc36165f496')
+sha256sums_aarch64=('424de9a27b6667f74a352b058d6638f914e690b1058d16175e3f8fc36165f496')
