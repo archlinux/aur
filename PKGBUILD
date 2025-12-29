@@ -1,16 +1,16 @@
 # Maintainer: Elliot Hatch <elliot.hatch@gmail.com>
 pkgname=dug-git
-pkgver=r288.18e4280
+pkgver=r296.bbdbe3f
 pkgrel=1
 pkgdesc="A global DNS propagation checker that gives pretty output."
 arch=(x86_64)
 url="https://dug.unfrl.com/"
 license=('MIT')
 depends=(zlib gcc-libs glibc)
-makedepends=(git 'dotnet-runtime>=6.0.0' 'dotnet-sdk>=6.0.0', 'dotnet-host>=6.0.0')
+makedepends=(git 'dotnet-runtime>=10' 'dotnet-sdk>=10', 'dotnet-host>=10')
 provides=(dug)
 options=(!strip)
-source=($pkgname::git+https://github.com/unfrl/dug.git)
+source=($pkgname::git+https://git.unfrl.com/Unfrl/dug)
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,7 +25,6 @@ build() {
     --configuration Release \
     --runtime linux-x64 \
     -p:PublishSingleFile=true \
-    -p:PublishTrimmed=true \
     -p:PublishReadyToRun=true \
     --self-contained true \
     ./cli
@@ -36,5 +35,5 @@ package() {
 
   install -D -m644 "./LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -D -m755 "./cli/bin/Release/net6.0/linux-x64/publish/dug" -t "$pkgdir/usr/bin" 
+  install -D -m755 "./cli/bin/Release/net10.0/linux-x64/publish/dug" -t "$pkgdir/usr/bin" 
 }

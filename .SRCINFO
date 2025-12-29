@@ -1,20 +1,20 @@
 pkgbase = dug-git
 	pkgdesc = A global DNS propagation checker that gives pretty output.
-	pkgver = r288.18e4280
+	pkgver = r296.bbdbe3f
 	pkgrel = 1
 	url = https://dug.unfrl.com/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = dotnet-runtime>=6.0.0
-	makedepends = dotnet-sdk>=6.0.0,
-	makedepends = dotnet-host>=6.0.0
+	makedepends = dotnet-runtime>=10
+	makedepends = dotnet-sdk>=10,
+	makedepends = dotnet-host>=10
 	depends = zlib
 	depends = gcc-libs
 	depends = glibc
 	provides = dug
 	options = !strip
-	source = dug-git::git+https://github.com/unfrl/dug.git
+	source = dug-git::git+https://git.unfrl.com/Unfrl/dug
 	md5sums = SKIP
 
 pkgname = dug-git
