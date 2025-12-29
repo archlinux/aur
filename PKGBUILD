@@ -5,7 +5,7 @@ _pkgbase="xlibre-xserver"
 _pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=25.0.0.5.r70.85a66a723
+pkgver=25.1.0.r12.61a85df83
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -16,13 +16,12 @@ license=('LicenseRef-Adobe-Display-PostScript' 'BSD-3-Clause' 'LicenseRef-DEC-3-
 makedepends=('git' 'libepoxy' 'libpciaccess' 'libunwind' 'libx11' 'libxaw'
              'libxcvt' 'libxfont2' 'libxi' 'libxkbfile' 'libxmu' 'libxrender'
              'libxres' 'libxshmfence>=1.1' 'libxtst' 'libxv' 'mesa'
-             'mesa-libgl' 'meson>=0.58' 'pixman>=0.27.2' 'systemd>=209'
+             'mesa-libgl' 'meson>=0.58' 'pixman>=0.27.2' 'dbus'
              'xcb-util' 'xcb-util-image' 'xcb-util-keysyms'
              'xcb-util-renderutil' 'xcb-util-wm' 'xorg-font-util'
-             'xorg-util-macros' 'xorg-xkbcomp' 'xorgproto>=7.0.31'
-             'xtrans>=1.3.5')
+	     'xorg-util-macros' 'xorg-xkbcomp' 'xorgproto>=7.0.31')
 groups=('xlibre-git')
-options=('!emptydirs')
+options=('!emptydirs' '!debug')
 _pkgsrc="${_pkgbase}"
 source=("${_pkgsrc}::git+${url}.git"
         "xvfb-run"{,.1}) # with updates from FC master
@@ -56,10 +55,15 @@ build() {
     -D xcsecurity=true
     -D xorg=true
     -D xephyr=true
+    -D xfbdev=true
     -D glamor=true
     -D udev=true
     -D dtrace=false
     -D systemd_logind=true
+    -D suid_wrapper=true
+    -D linux_acpi=false
+    -D legacy_nvidia_padding=true \
+    -D legacy_nvidia_340x=true \
     -D suid_wrapper=true
     -D xkb_dir='/usr/share/X11/xkb'
     -D xkb_output_dir='/var/lib/xkb'
@@ -76,10 +80,8 @@ package_xlibre-xserver-git() {
   depends=('dbus' 'glibc' 'libdrm' 'libepoxy' 'libgl' 'libpciaccess' 'libtirpc'
            'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
            'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
-           'systemd-libs>=209' 'xlibre-input-libinput'
+           'dbus' 'xlibre-input-libinput'
            "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
-  # see xlibre-xserver*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
-  # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-xserver-devel pkg
   provides=("${_pkgbase}=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server') # {xlibre,xorg}"-server=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=("${_pkgbase}-bootstrap-git") # 'glamor-egl' 'xf86-video-modesetting'
@@ -106,7 +108,6 @@ package_xlibre-xserver-bootstrap-git() {
   depends=('dbus' 'glibc' 'libdrm' 'libepoxy' 'libgl' 'libpciaccess' 'libtirpc'
            'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
            'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
-           'systemd-libs>=209'
            "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
   provides=("${_pkgbase}"{,-bootstrap}"=${pkgver%%.r*}" 'x-server' # {xlibre,xorg}"-server=${pkgver%%.r*}" "xlibre-xserver-bootstrap=${pkgver%%.r*}"
             'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0')
@@ -165,7 +166,7 @@ package_xlibre-xserver-xephyr-git() {
   pkgdesc="A nested XLibre server that runs as an X application"
   depends=('glibc' 'libepoxy' 'libgl' 'libtirpc' 'libunwind' 'libx11' 'libxau'
            'libxdmcp' 'libxfont2' 'libxshmfence' 'nettle' 'pixman>=0.27.2'
-           'systemd-libs>=209' 'xcb-util' 'xcb-util-image' 'xcb-util-keysyms'
+           'dbus' 'xcb-util' 'xcb-util-image' 'xcb-util-keysyms'
            'xcb-util-renderutil' 'xcb-util-wm'
            "xlibre-xserver-common-git=${pkgver}-${pkgrel}")
   provides=("${_pkgbase}-xephyr=${pkgver%%.r*}") # {xlibre,xorg}"-server-xephyr=${pkgver%%.r*}"
@@ -181,7 +182,7 @@ package_xlibre-xserver-xnest-git() {
   pkgdesc="A nested XLibre server that runs as an X application"
   depends=('glibc' 'libtirpc' 'libunwind' 'libx11' 'libxau' 'libxdmcp'
            'libxext' 'libxfont2' 'nettle' 'pixman>=0.27.2'
-           'systemd-libs>=209' "xlibre-xserver-common-git=${pkgver}-${pkgrel}")
+           'dbus' "xlibre-xserver-common-git=${pkgver}-${pkgrel}")
   provides=("${_pkgbase}-xnest=${pkgver%%.r*}") # {xlibre,xorg}"-server-xnest=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xnest')
 
@@ -195,7 +196,7 @@ package_xlibre-xserver-xvfb-git() {
   pkgdesc="Virtual framebuffer XLibre server"
   license=('MIT' 'GPL-2.0-only')
   depends=('glibc' 'libgl' 'libtirpc' 'libunwind' 'libxau' 'libxdmcp'
-           'libxfont2' 'nettle' 'pixman' 'sh' 'systemd-libs>=209'
+           'libxfont2' 'nettle' 'pixman' 'sh' 'dbus'
            "xlibre-xserver-common-git=${pkgver}-${pkgrel}" 'xorg-xauth')
   provides=("${_pkgbase}-xvfb=${pkgver%%.r*}") # {xlibre,xorg}"-server-xvfb=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xvfb')
