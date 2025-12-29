@@ -1,0 +1,14 @@
+post_upgrade() {
+  cat <<MSG
+>>> Version 25.0.0 of the XLibre input/video drivers introduces a change 
+    for the versioning scheme:
+
+    * using semantic versioning now
+    * aligning driver versions with Xserver release series
+    * branching per Xserver release series
+
+    The major version - as in the first two digits - of the drivers is
+    the minimum required Xserver release.
+
+MSG
+}
