@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 pkgname=python-imblearn
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning'
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(
 )
 source=("git+https://github.com/scikit-learn-contrib/imbalanced-learn.git#tag=${pkgver}")
 # use makepkg -g to update
-sha256sums=('2e2299abd3ff662e8cb5fdadb4a88dbcd2d0a8d08c13de917ebbfa52a87e6eb5')
+sha256sums=('b209059b93aabfc1b90ab5ad4e4a500db15d77e8edb2a00813f4e1f044c113db')
 
 build() {
   cd "${srcdir}/imbalanced-learn"

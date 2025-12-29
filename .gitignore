@@ -1,4 +1,5 @@
 /*.tar.gz
+/imbalanced-learn/
 /src/
 /pkg/
 *.pkg.tar*
