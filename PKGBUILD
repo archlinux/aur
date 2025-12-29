@@ -2,13 +2,17 @@
 
 pkgname=cnmatrix
 pkgver=0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='C interface to a few matrix backends'
 arch=('x86_64')
 url='https://github.com/cntools/cnmatrix/'
 license=('MIT')
-depends=('cblas' 'lapacke')
-makedepends=('cmake' 'eigen')
+depends=(
+    'cblas'
+    'lapacke')
+makedepends=(
+    'cmake'
+    'eigen3')
 source=("https://github.com/cntools/cnmatrix/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('c9c43791b258feb25436288b1e219566903d72a158c81480a2185f21b0648426')
 
