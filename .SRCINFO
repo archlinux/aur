@@ -1,0 +1,16 @@
+pkgbase = xfux
+	pkgdesc = XFCE, but with animations and shadows. By OneDevelopment
+	pkgver = 2.1
+	pkgrel = 2
+	url = https://github.com/OneDevelopmentPL/xfux
+	arch = any
+	depends = xfce4-panel
+	depends = xfce4-session
+	depends = xfdesktop
+	depends = picom-pijulius-git
+	depends = python-pillow
+	depends = tk
+	source = git+https://github.com/OneDevelopmentPL/xfux.git
+	sha256sums = SKIP
+
+pkgname = xfux
