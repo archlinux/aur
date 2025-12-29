@@ -1,6 +1,6 @@
 pkgbase = wlmaker
 	pkgdesc = Wayland compositor inspired by WindowMaker
-	pkgver = 0.6.2
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/phkaeser/wlmaker
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = wlmaker
 	depends = bash
 	depends = cairo
 	depends = libxkbcommon
-	depends = wlroots0.18
+	depends = libxdg-basedir
+	depends = wlroots0.19
 	depends = xorg-xwayland
-	source = https://github.com/phkaeser/wlmaker/releases/download/v0.6.2/wlmaker-0.6.2.tar.gz
-	b2sums = 22341cef17edf73aa63ffe1b0b30aca3bb2345ceda8f46bb58f55d8bbb0629a6e9e9779b33753730b07b28cf2e942af88e959d7d7f13fc5ff1e6e75950b3e070
+	source = https://github.com/phkaeser/wlmaker/releases/download/v0.7/wlmaker-0.7.tar.gz
+	b2sums = 7339a4c8f7b828d5f2d83753d2a70a0129deea181fbd7486ea2a379338a51843283d4b1808dedd9bc5ea33b9ed5851b4fbccf39a673582ec405a14a34ca42467
 
 pkgname = wlmaker
