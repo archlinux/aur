@@ -1,5 +1,6 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Torsten Keßler <tpkessler@archlinux.org>
+# Maintainer: Dave Daynard <nardholio@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Torsten Keßler <tpkessler@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -7,10 +8,9 @@
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgname=(gcc14 gcc14-libs gcc14-fortran)
-pkgver=14.3.1+r416+g44d5743651c4
-_commit=44d5743651c487bd07010683e2b37e3efc03cf5b
-_majorver=${pkgver%%.*}
-pkgrel=2
+pkgver=14.3.1+r420+g039a62bd2e0c
+_commit=039a62bd2e0c7e67a00e5f6a4727f6dc1999faaf
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (14.x.x)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -33,14 +33,12 @@ checkdepends=(
 )
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
-source=(gcc14::git+https://sourceware.org/git/gcc.git#commit=${_commit}
+
+
+source=("gcc14::git+https://github.com/gcc-mirror/gcc.git#commit=${_commit}"
         c89 c99
 )
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              86CFFCA918CF3AF47147588051E8B148A9999C34  # foutrelis@archlinux.org
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('72ba384431b7cd5138f168d96e365c1e88e221649371c574ca48ee582678b05a'
+sha256sums=('e96d4e5a17479de8ea22ef6c6d7ceb70810cd45e0061b7d93f52d1fcbe965121'
             '7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab'
             '44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7')
 
@@ -224,7 +222,7 @@ package_gcc14() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc14-libs/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/$pkgname/"
 
   # remove conflicting files
@@ -246,6 +244,6 @@ package_gcc14-fortran() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc14-libs/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
