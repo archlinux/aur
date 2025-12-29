@@ -1,0 +1,15 @@
+pkgbase = claude-code-transcripts
+	pkgdesc = Convert Claude Code session files to HTML transcripts
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/simonw/claude-code-transcripts
+	arch = any
+	license = Apache-2.0
+	depends = uv
+	depends = python
+	optdepends = github-cli: for publishing to GitHub Gists
+	options = !debug
+	source = claude-code-transcripts-0.4.tar.gz::https://github.com/simonw/claude-code-transcripts/archive/refs/tags/0.4.tar.gz
+	b2sums = 48ead2a16e62b93fc399056523e0b8a7f5eb4d8bdbf676d90d8bf46711623da0745d776e5f8676f3a7991282a45de459d83b44505d8b379cb93fbd80bc212bee
+
+pkgname = claude-code-transcripts
