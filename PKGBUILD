@@ -3,7 +3,7 @@
 pkgbase=thorvg
 pkgname=thorvg
 pkgver=0.15.16
-pkgrel=1
+pkgrel=3
 pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 url="https://www.thorvg.org/"
@@ -40,6 +40,9 @@ _package() {
     cd ${pkgname}-${pkgver}
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
     DESTDIR="$pkgdir/" ninja -C builddir install
+#    mv $pkgdir/usr/bin/svg2png $pkgdir/usr/bin/tvg-svg2png
+#    mv $pkgdir/usr/bin/svg2tvg $pkgdir/usr/bin/tvg-svg2tvg
+#    mv $pkgdir/usr/bin/lottie2gif $pkgdir/usr/bin/tvg-lottie2gif
 }
 
 _package-examples() {
