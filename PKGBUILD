@@ -1,7 +1,7 @@
 # Maintainer: jabra11 <jabra11.gpg@gmail.com>
 pkgname=seer-gdb-git
 pkgver=r1468.9b99897
-pkgrel=1
+pkgrel=2
 pkgdesc="Seer - a gui frontend to gdb"
 arch=('x86_64')
 url="https://github.com/epasveer/seer.git"
@@ -30,7 +30,7 @@ package() {
 
     cd "$srcdir/${pkgname%-gdb-git}"
 
-    install -Dm644 src/resources/seergdb.desktop "$pkgdir/usr/share/application/seergdb.desktop"
+    install -Dm644 src/resources/seergdb.desktop "$pkgdir/usr/share/applications/seergdb.desktop"
 
     local i
     for i in 32 64 128 256 512; do
