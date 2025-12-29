@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '99f8d5d0dbfe056637e9e42f5689a93d20e83ce440c2061f7d8326cba19e1b44'
+  '3331934ad96d121e7505a71ac42c46ccf1b669052b7a44a2a88a12658e985a44'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -50,9 +50,10 @@ _install-yarn-berry() {
     sed -i '/^enableGlobalCache/d' $cwd/.yarnrc.yml
   fi
   cat .yarnrc.yml >>$cwd/.yarnrc.yml
-  echo "cacheFolder: ./.yarn/cache" >>$cwd/.yarnrc.yml
+  echo "cacheFolder: $cwd/.yarn/cache" >>$cwd/.yarnrc.yml
   echo "enableGlobalCache: false" >>$cwd/.yarnrc.yml
   popd
+  mkdir -p $cwd/.yarn/cache
   rm -r $yarntmp
 }
 
@@ -66,6 +67,12 @@ build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
   _install-yarn-berry
   sed -i '/^corepack/d' ./scripts/build
+
+  pushd ../render-wasm
+  _install-yarn-berry
+  sed -i '/corepack/d' ./_build_env
+  sed -i 's#/opt/emsdk/emsdk_env.sh#/usr/lib/emsdk/emsdk_env.sh#' ./build
+  popd
 
   rustup install $RUST_VERSION
   rustup default $RUST_VERSION
