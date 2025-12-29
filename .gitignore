@@ -1,5 +1,6 @@
 pkg/
 src/
 plink2/
+plink-ng/
 *.pkg.tar.*
 *.log
