@@ -14,4 +14,4 @@ pkgbase = chocolang
 	source = ChocoLang-0.4.8.tar.gz::https://github.com/mochacinno-dev/ChocoLang/archive/v0.4.8.tar.gz
 	sha256sums = 8ff7f22233a303ea591a14d3ded44ca6bc34b0d2969c9999baab2c4e7a9cb6a0
 
-pkgname = ChocoLang
+pkgname = chocolang
