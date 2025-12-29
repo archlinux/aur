@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.7.r6.g4c72d42
+pkgver=1.0.0.r3.g1dee7d1
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,14 @@ depends=(
   'cosmic-settings-daemon-git'
   'cosmic-settings-git'
   'cosmic-workspaces-git'
+  'libsecret'
   'noto-fonts'
+  'org.freedesktop.secrets'
+  'otf-fira-mono'
+  'otf-fira-sans'
   'switcheroo-control'
   'ttf-opensans'
+  'ttf-roboto-slab'
   'xdg-desktop-portal-cosmic-git'
   'xorg-xwayland'
 )
@@ -44,6 +49,7 @@ optdepends=(
   'cosmic-wallpapers-git: COSMIC wallpapers'
   'dconf: Apply COSMIC settings to GTK applications'
   'gnome-keyring: Start gnome keyring components if the daemon is active'
+  'orca: screen reader'
   'system-config-printer: printer settings'
   'vulkan-driver: packaged vulkan driver'
 )
@@ -85,4 +91,3 @@ package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
-
