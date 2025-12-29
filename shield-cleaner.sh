@@ -382,9 +382,9 @@ echo
 echo -e "${CYAN}${BOLD}╔════════════════════════════════════════╗${NC}"
 echo -e "${CYAN}${BOLD}║          Operation Summary             ║${NC}"
 echo -e "${CYAN}${BOLD}╠════════════════════════════════════════╣${NC}"
-echo -e "${CYAN}${BOLD}║${NC} Operations performed: ${GREEN}${OPERATIONS_PERFORMED}${NC}"║
-[[ "$OPERATIONS_SKIPPED" -gt 0 ]] && echo -e "${CYAN}${BOLD}║${NC} Operations skipped:   ${YELLOW}${OPERATIONS_SKIPPED}${NC}"║
-echo -e "${CYAN}${BOLD}║${NC} Total space freed:    ${GREEN}$(format_size $TOTAL_FREED)${NC}"║
+echo -e "${CYAN}${BOLD}║${NC} Operations performed: ${GREEN}${OPERATIONS_PERFORMED}${NC}${CYAN}${BOLD}║${NC}"
+[[ "$OPERATIONS_SKIPPED" -gt 0 ]] && echo -e "${CYAN}${BOLD}║${NC} Operations skipped:   ${YELLOW}${OPERATIONS_SKIPPED}${NC}${CYAN}${BOLD}║${NC}"
+echo -e "${CYAN}${BOLD}║${NC} Total space freed:    ${GREEN}$(format_size $TOTAL_FREED)${NC}${CYAN}${BOLD}║${NC}"
 echo -e "${CYAN}${BOLD}╚════════════════════════════════════════╝${NC}" 
 echo
 echo -e "${GREEN}${BOLD}You're in control.${NC}"
