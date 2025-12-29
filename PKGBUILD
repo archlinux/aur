@@ -47,6 +47,6 @@ package() {
     install -o root -g root -m 644 -t $pkgdir/usr/share/doc/$pkgname $_pkgname-$pkgver/README.md
 
     install -o root -g root -m 755 -d $pkgdir/usr/share/licenses/$pkgname
-    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $_pkgname/LICENSE-APACHE
-    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $_pkgname/LICENSE-MIT
+    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $_pkgname-$pkgver/LICENSE-APACHE
+    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $_pkgname-$pkgver/LICENSE-MIT
 }
