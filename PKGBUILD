@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pypdfium2
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 # Notice should always be explicitly included in the description, according to pypdfium2's README.
 pkgdesc="An ABI-level Python 3 binding to PDFium (unofficial AUR package)"
@@ -15,11 +15,11 @@ optdepends=('python-pillow: support PIL image objects for raster graphics'
 	"python-opencv: to save with pypdfium2's numpy adapter in the rendering CLI")
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
-_ctypesgencommit="a04e09a0a51e39988dcd4b43911f656663366fef"
+_ctypesgencommit="b561360fad763b4a64e2d8ef8f7ddf354670dbb7"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	# This is a pypdfium2-specific fork of the actual ctypesgen, hence we need to download it here.
 	"ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=$_ctypesgencommit")
-sha256sums=("46335ca30a1584b804a6824da84d2e846b4b954bdfc342d035b7bf15ed9a14e5"
+sha256sums=("43863625231ce999c1ebbed6721a88de818b2ab4d909c1de558d413b9a400256"
 	"SKIP") # No checksums for git sources.
 
 build() {
