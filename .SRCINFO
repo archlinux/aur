@@ -1,14 +1,14 @@
 pkgbase = nginx-mod-vts
 	pkgdesc = Nginx virtual host traffic status module
-	pkgver = 0.2.3
-	pkgrel = 5
+	pkgver = 0.2.5
+	pkgrel = 1
 	url = https://github.com/vozlt/nginx-module-vts
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = nginx
 	makedepends = nginx-src
-	source = nginx-mod-vts-0.2.3.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.2.3.tar.gz
-	sha256sums = 828dc1e6ef46f3d329f4857de12d302cd11c8a4d5dc4b0948326b1c00a54b12f
+	source = nginx-mod-vts-0.2.5.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.2.5.tar.gz
+	sha256sums = cac326607e6166d9e4b03e3d3b29e520ed43bc86516aff1a946f7d326ca9e19b
 
 pkgname = nginx-mod-vts
 	depends = nginx
