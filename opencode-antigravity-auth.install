@@ -1,0 +1,19 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  Opencode Antigravity Auth Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/config.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"opencode-antigravity-auth\"]"
+  echo "  }"
+  echo ""
+  echo "Then run 'opencode auth login' to authenticate."
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
