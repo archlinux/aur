@@ -1,6 +1,6 @@
 pkgname=code-weaver
 _reponame=CodeWeaver
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A tool to weave context for AI"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("gcc-libs")
 makedepends=("rust")
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6253b78231cfa4dcfc9a4e3b4389c8f0f1a86397df03d52ecf2f4b574fe48bcc')
+sha256sums=('0c697f4b1b77f5c862e0ac85636622e7e8e9b1aaa283c019f8ae5e134b4106cb')
 
 prepare() {
   cd "$_reponame-$pkgver" || return
