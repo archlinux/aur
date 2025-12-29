@@ -1,0 +1,17 @@
+pkgbase = calculator-cli-git
+	pkgdesc = Simple Ratatui-based TUI calculator
+	pkgver = 0.1.0.r2.g59c3cba
+	pkgrel = 1
+	url = https://github.com/webstriiix/calculator_cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = calculator-cli
+	conflicts = calculator-cli
+	source = git+https://github.com/webstriiix/calculator_cli.git
+	sha256sums = SKIP
+
+pkgname = calculator-cli-git
