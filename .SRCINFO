@@ -1,0 +1,13 @@
+pkgbase = jcdk-tools
+	pkgdesc = Java Card Development Kit Tools
+	pkgver = 25.1
+	pkgrel = 1
+	url = https://www.oracle.com/java/java-card/
+	arch = any
+	license = LicenseRef-Oracle
+	depends = bash
+	depends = java-runtime-headless>=17
+	source = https://download.oracle.com/otn-pub/java/java_card_kit/3.2/java_card_devkit_tools-bin-v25.1-b_611-26-OCT-2025.zip
+	sha256sums = 57c469750c6db085997372e09366fd2771f609a9f9e14f8d0874f86a965eb6b5
+
+pkgname = jcdk-tools
