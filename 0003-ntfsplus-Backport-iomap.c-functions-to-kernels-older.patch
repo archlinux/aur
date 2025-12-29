@@ -1,19 +1,19 @@
-From 2e50f4be4d04253b9ce21a110db605c3af88e332 Mon Sep 17 00:00:00 2001
+From 5a93c1ecb0a79f002977e7192fba2d51e509b9b2 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Mon, 3 Nov 2025 17:49:51 +0700
-Subject: [PATCH 3/7] ntfsplus: Backport ntfs_iomap.c functions to kernels
- older than 6.17
+Subject: [PATCH 3/8] ntfsplus: Backport iomap.c functions to kernels older
+ than 6.17
 
 ---
- fs/ntfsplus/ntfs_iomap.c | 26 ++++++++++++++++++++++++++
- fs/ntfsplus/ntfs_iomap.h |  4 ++++
+ fs/ntfs/iomap.c | 26 ++++++++++++++++++++++++++
+ fs/ntfs/iomap.h |  4 ++++
  2 files changed, 30 insertions(+)
 
-diff --git a/fs/ntfsplus/ntfs_iomap.c b/fs/ntfsplus/ntfs_iomap.c
-index c9fd99982..7f21a2e74 100644
---- a/fs/ntfsplus/ntfs_iomap.c
-+++ b/fs/ntfsplus/ntfs_iomap.c
-@@ -677,6 +677,7 @@ const struct iomap_ops ntfs_dio_iomap_ops = {
+diff --git a/fs/ntfs/iomap.c b/fs/ntfs/iomap.c
+index a4e13a150253..01e8252b70f1 100644
+--- a/fs/ntfs/iomap.c
++++ b/fs/ntfs/iomap.c
+@@ -732,6 +732,7 @@ const struct iomap_ops ntfs_dio_iomap_ops = {
  	.iomap_end		= ntfs_write_iomap_end,
  };
  
@@ -21,7 +21,7 @@ index c9fd99982..7f21a2e74 100644
  static ssize_t ntfs_writeback_range(struct iomap_writepage_ctx *wpc,
  		struct folio *folio, u64 offset, unsigned int len, u64 end_pos)
  {
-@@ -698,3 +699,28 @@ const struct iomap_writeback_ops ntfs_writeback_ops = {
+@@ -753,3 +754,28 @@ const struct iomap_writeback_ops ntfs_writeback_ops = {
  	.writeback_range	= ntfs_writeback_range,
  	.writeback_submit	= iomap_ioend_writeback_submit,
  };
@@ -51,10 +51,10 @@ index c9fd99982..7f21a2e74 100644
 +};
 +#endif
 \ No newline at end of file
-diff --git a/fs/ntfsplus/ntfs_iomap.h b/fs/ntfsplus/ntfs_iomap.h
-index b1a5d55fa..eac0c9c60 100644
---- a/fs/ntfsplus/ntfs_iomap.h
-+++ b/fs/ntfsplus/ntfs_iomap.h
+diff --git a/fs/ntfs/iomap.h b/fs/ntfs/iomap.h
+index c2602f3ff11a..77181b121f5f 100644
+--- a/fs/ntfs/iomap.h
++++ b/fs/ntfs/iomap.h
 @@ -12,6 +12,10 @@
  #include "volume.h"
  #include "inode.h"

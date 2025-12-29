@@ -1,17 +1,17 @@
-From 94680b0e897bbcb9d9d5589d3efa952dc0c34eb9 Mon Sep 17 00:00:00 2001
+From dfb666894f678cc5dc4bb9e2538da86cb41d2a20 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 6 Nov 2025 20:26:04 +0700
-Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
+Subject: [PATCH 4/8] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
  for kernels older than 6.15
 
 ---
- fs/ntfsplus/file.c | 30 ++++++++++++++++++++++++------
+ fs/ntfs/file.c | 30 ++++++++++++++++++++++++------
  1 file changed, 24 insertions(+), 6 deletions(-)
 
-diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index ab7bb4ff7..ea4defa85 100644
---- a/fs/ntfsplus/file.c
-+++ b/fs/ntfsplus/file.c
+diff --git a/fs/ntfs/file.c b/fs/ntfs/file.c
+index ec392f314518..34d4e54d9b69 100644
+--- a/fs/ntfs/file.c
++++ b/fs/ntfs/file.c
 @@ -692,9 +692,10 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
  	.page_mkwrite	= ntfs_filemap_page_mkwrite,
  };

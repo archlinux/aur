@@ -1,21 +1,23 @@
-From 731ee528ae18f8cc779cc230713e1147192acc07 Mon Sep 17 00:00:00 2001
+From b5e637d1184078866edf7a467294d4ca69bdd0e9 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
-Date: Thu, 6 Nov 2025 16:39:19 +0700
-Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
+Date: Mon, 29 Dec 2025 21:47:47 +0700
+Subject: [PATCH 2/8] ntfsplus: Resolve iomap_* arguments (temporarily) for
  kernel older than 6.17
 
+Signed-off-by: shadichy <shadichy@blisslabs.org>
 ---
- fs/ntfsplus/aops.c  |  9 +++++++++
- fs/ntfsplus/file.c  | 14 +++++++-------
- fs/ntfsplus/inode.c |  2 +-
- fs/ntfsplus/inode.h | 13 +++++++++++++
- 4 files changed, 30 insertions(+), 8 deletions(-)
+ fs/ntfs/aops.c  |  9 +++++++++
+ fs/ntfs/file.c  | 14 +++++++-------
+ fs/ntfs/inode.c |  2 +-
+ fs/ntfs/inode.h | 13 +++++++++++++
+ fs/ntfs/iomap.c |  2 +-
+ 5 files changed, 31 insertions(+), 9 deletions(-)
 
-diff --git a/fs/ntfsplus/aops.c b/fs/ntfsplus/aops.c
-index 9a1b3b80a..d9784dfc9 100644
---- a/fs/ntfsplus/aops.c
-+++ b/fs/ntfsplus/aops.c
-@@ -447,9 +447,13 @@ static int ntfs_writepages(struct address_space *mapping,
+diff --git a/fs/ntfs/aops.c b/fs/ntfs/aops.c
+index e6670e5bb03e..2390b08c0e29 100644
+--- a/fs/ntfs/aops.c
++++ b/fs/ntfs/aops.c
+@@ -416,9 +416,13 @@ static int ntfs_writepages(struct address_space *mapping,
  {
  	struct inode *inode = mapping->host;
  	struct ntfs_inode *ni = NTFS_I(inode);
@@ -29,7 +31,7 @@ index 9a1b3b80a..d9784dfc9 100644
  		.ops		= &ntfs_writeback_ops,
  	};
  
-@@ -474,7 +478,12 @@ static int ntfs_writepages(struct address_space *mapping,
+@@ -443,7 +447,12 @@ static int ntfs_writepages(struct address_space *mapping,
  		return -EACCES;
  	}
  
@@ -42,10 +44,10 @@ index 9a1b3b80a..d9784dfc9 100644
  }
  
  static int ntfs_swap_activate(struct swap_info_struct *sis,
-diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index aebc2b48b..ab7bb4ff7 100644
---- a/fs/ntfsplus/file.c
-+++ b/fs/ntfsplus/file.c
+diff --git a/fs/ntfs/file.c b/fs/ntfs/file.c
+index 245489f6558d..ec392f314518 100644
+--- a/fs/ntfs/file.c
++++ b/fs/ntfs/file.c
 @@ -290,7 +290,7 @@ int ntfsp_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
  			/* Serialize against page faults */
  			if (NInoNonResident(NTFS_I(vi)) &&
@@ -84,7 +86,7 @@ index aebc2b48b..ab7bb4ff7 100644
  out:
 @@ -1021,7 +1021,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
  
- 			to = min_t(loff_t, (start_vcn + 1) << vol->cluster_size_bits,
+ 			to = min_t(loff_t, NTFS_CLU_TO_B(vol, start_vcn + 1),
  				   end_offset);
 -			err = iomap_zero_range(vi, offset, to - offset, NULL,
 +			err = __iomap_zero_range(vi, offset, to - offset, NULL,
@@ -94,7 +96,7 @@ index aebc2b48b..ab7bb4ff7 100644
 @@ -1032,7 +1032,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
  			loff_t from;
  
- 			from = (end_vcn - 1) << vol->cluster_size_bits;
+ 			from = NTFS_CLU_TO_B(vol, end_vcn - 1);
 -			err = iomap_zero_range(vi, from, end_offset - from, NULL,
 +			err = __iomap_zero_range(vi, from, end_offset - from, NULL,
  					       &ntfs_read_iomap_ops,
@@ -109,11 +111,11 @@ index aebc2b48b..ab7bb4ff7 100644
  					       &ntfs_read_iomap_ops,
  					       &ntfs_iomap_folio_ops, NULL);
  		}
-diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
-index fb5f40e19..7ed279c7b 100644
---- a/fs/ntfsplus/inode.c
-+++ b/fs/ntfsplus/inode.c
-@@ -2434,7 +2434,7 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+diff --git a/fs/ntfs/inode.c b/fs/ntfs/inode.c
+index 97e0857b2389..d79c0e085a41 100644
+--- a/fs/ntfs/inode.c
++++ b/fs/ntfs/inode.c
+@@ -2423,7 +2423,7 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
  		return err;
  
  	if (!NInoCompressed(ni) && old_init_size < offset) {
@@ -122,11 +124,11 @@ index fb5f40e19..7ed279c7b 100644
  				       offset - old_init_size,
  				       NULL, &ntfs_read_iomap_ops,
  				       &ntfs_iomap_folio_ops, NULL);
-diff --git a/fs/ntfsplus/inode.h b/fs/ntfsplus/inode.h
-index 95fee0fd2..ae3377bc7 100644
---- a/fs/ntfsplus/inode.h
-+++ b/fs/ntfsplus/inode.h
-@@ -350,4 +350,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+diff --git a/fs/ntfs/inode.h b/fs/ntfs/inode.h
+index a22798e1d756..167f2920b625 100644
+--- a/fs/ntfs/inode.h
++++ b/fs/ntfs/inode.h
+@@ -351,4 +351,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
  		const loff_t new_size);
  void ntfs_set_vfs_operations(struct inode *inode, mode_t mode, dev_t dev);
  
@@ -144,6 +146,19 @@ index 95fee0fd2..ae3377bc7 100644
 +#endif
 +
  #endif /* _LINUX_NTFS_INODE_H */
+diff --git a/fs/ntfs/iomap.c b/fs/ntfs/iomap.c
+index e8a765a5d3a4..a4e13a150253 100644
+--- a/fs/ntfs/iomap.c
++++ b/fs/ntfs/iomap.c
+@@ -306,7 +306,7 @@ int ntfs_zero_range(struct inode *inode, loff_t offset, loff_t length, bool bdir
+ 					     BLKDEV_ZERO_NOUNMAP);
+ 	}
+ 
+-	return iomap_zero_range(inode,
++	return __iomap_zero_range(inode,
+ 				offset, length,
+ 				NULL,
+ 				&ntfs_zero_read_iomap_ops,
 -- 
 2.52.0
 

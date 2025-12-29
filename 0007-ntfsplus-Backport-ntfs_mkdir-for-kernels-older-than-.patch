@@ -1,18 +1,18 @@
-From d2746f2b6feb9a585c0f3b8dc8d611c2977c958a Mon Sep 17 00:00:00 2001
+From 160a7621072872c56ad2acb42bca154420ba484c Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 30 Nov 2025 17:59:54 +0700
-Subject: [PATCH 7/7] ntfsplus: Backport `ntfs_mkdir` for kernels older than
+Subject: [PATCH 7/8] ntfsplus: Backport `ntfs_mkdir` for kernels older than
  6.15
 
 ---
- fs/ntfsplus/namei.c | 22 ++++++++++++++++------
+ fs/ntfs/namei.c | 22 ++++++++++++++++------
  1 file changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/fs/ntfsplus/namei.c b/fs/ntfsplus/namei.c
-index 911f9139c..c4b81243e 100644
---- a/fs/ntfsplus/namei.c
-+++ b/fs/ntfsplus/namei.c
-@@ -1037,7 +1037,7 @@ static int ntfs_unlink(struct inode *dir, struct dentry *dentry)
+diff --git a/fs/ntfs/namei.c b/fs/ntfs/namei.c
+index f2eabec98dd9..1b2245641c8a 100644
+--- a/fs/ntfs/namei.c
++++ b/fs/ntfs/namei.c
+@@ -1038,7 +1038,7 @@ static int ntfs_unlink(struct inode *dir, struct dentry *dentry)
  	return err;
  }
  
@@ -21,7 +21,7 @@ index 911f9139c..c4b81243e 100644
  		struct dentry *dentry, umode_t mode)
  {
  	struct super_block *sb = dir->i_sb;
-@@ -1048,20 +1048,20 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+@@ -1049,20 +1049,20 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
  	int uname_len;
  
  	if (NVolShutdown(vol))
@@ -45,7 +45,7 @@ index 911f9139c..c4b81243e 100644
  	}
  
  	if (!(vol->vol_flags & VOLUME_IS_DIRTY))
-@@ -1071,13 +1071,23 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+@@ -1072,13 +1072,23 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
  	kmem_cache_free(ntfs_name_cache, uname);
  	if (IS_ERR(ni)) {
  		err = PTR_ERR(ni);

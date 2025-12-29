@@ -1,0 +1,53 @@
+From 21d926dd658f881d054f0603fb5ce4bfc319227b Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Mon, 29 Dec 2025 21:41:10 +0700
+Subject: [PATCH 8/8] ntfsplus: Resolve import for newly declared 6.19
+ functions
+
+Signed-off-by: shadichy <shadichy@blisslabs.org>
+---
+ fs/ntfs/aops.c  |  5 +++++
+ fs/ntfs/inode.h | 11 +++++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/fs/ntfs/aops.c b/fs/ntfs/aops.c
+index 2390b08c0e29..d1a42e567681 100644
+--- a/fs/ntfs/aops.c
++++ b/fs/ntfs/aops.c
+@@ -33,6 +33,11 @@ static s64 ntfs_convert_folio_index_into_lcn(struct ntfs_volume *vol, struct ntf
+ 	return lcn;
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0)
++#define iomap_bio_read_folio iomap_read_folio
++#define iomap_bio_readahead iomap_readahead
++#endif
++
+ /**
+  * ntfs_read_folio - fill a @folio of a @file with data from the device
+  * @file:	open file to which the folio @folio belongs or NULL
+diff --git a/fs/ntfs/inode.h b/fs/ntfs/inode.h
+index 888b9d6b2c57..c93a5db3d0da 100644
+--- a/fs/ntfs/inode.h
++++ b/fs/ntfs/inode.h
+@@ -354,6 +354,17 @@ void ntfs_set_vfs_operations(struct inode *inode, mode_t mode, dev_t dev);
+ /*
+  * Wrappers for backward compatibility
+  */
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0)
++// enum inode_state_flags_enum == enum inode_state_flags_t == u32
++static inline u32 inode_state_read_once(struct inode *inode) {
++	return inode->i_state;
++}
++static inline void inode_state_set(struct inode *inode, u32 flags) {
++	inode->i_state = flags;
++}
++#endif
++
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
+ #define __iomap_file_buffered_write iomap_file_buffered_write
+ #define __iomap_truncate_page iomap_truncate_page
+-- 
+2.52.0
+
