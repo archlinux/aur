@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
 _pkgname=Serial-Studio
-pkgver=3.1.10
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program.(Prebuilt version)"
 arch=(
@@ -22,6 +22,7 @@ depends=(
     'qt6-multimedia'
     'qt6-virtualkeyboard'
     'qt6-webengine'
+    'qt6-5compat'
 )
 options=('!strip')
 source=(
@@ -32,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Pro-${pkgver}-Linux-x64.AppImage")
 sha256sums=('bc8a79ec026bf93f896e5aecc1334b2b093bbc17745b1a71adad3c2fa98ad93a'
             '382dfc92c53dd659fb6644b4ab93915bff23075d0a2368147d8096c22533db8b')
-sha256sums_aarch64=('baae2fbf3a55c857e8aaa1c78d09bc978e8a0c559ef4462f1c655f93e9ab6a44')
-sha256sums_x86_64=('299f10dadeb3cb7a81f1c9646c3572bdffaf7a0dc52abe42573cabf9e3b77de9')
+sha256sums_aarch64=('8ee53c99b2848a17a3a102d3df233d38ac7e5ae2365e5ad18f01676fcda11d31')
+sha256sums_x86_64=('e1aabb5aa335003d544340a8d1359fd80ccc89f340c738512c3cc81b28716e89')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g

@@ -1,6 +1,6 @@
 pkgbase = serial-studio-bin
 	pkgdesc = Multi-purpose serial data visualization & processing program.(Prebuilt version)
-	pkgver = 3.1.10
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://serial-studio.com/
 	arch = aarch64
@@ -14,16 +14,17 @@ pkgbase = serial-studio-bin
 	depends = qt6-multimedia
 	depends = qt6-virtualkeyboard
 	depends = qt6-webengine
-	provides = serial-studio=3.1.10
+	depends = qt6-5compat
+	provides = serial-studio=3.2.1
 	conflicts = serial-studio
 	options = !strip
-	source = LICENSE-3.1.10.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v3.1.10/LICENSE.md
+	source = LICENSE-3.2.1.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v3.2.1/LICENSE.md
 	source = serial-studio.sh
 	sha256sums = bc8a79ec026bf93f896e5aecc1334b2b093bbc17745b1a71adad3c2fa98ad93a
 	sha256sums = 382dfc92c53dd659fb6644b4ab93915bff23075d0a2368147d8096c22533db8b
-	source_aarch64 = serial-studio-3.1.10-aarch64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.10/Serial-Studio-Pro-3.1.10-Linux-arm64.AppImage
-	sha256sums_aarch64 = baae2fbf3a55c857e8aaa1c78d09bc978e8a0c559ef4462f1c655f93e9ab6a44
-	source_x86_64 = serial-studio-3.1.10-x86_64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.10/Serial-Studio-Pro-3.1.10-Linux-x64.AppImage
-	sha256sums_x86_64 = 299f10dadeb3cb7a81f1c9646c3572bdffaf7a0dc52abe42573cabf9e3b77de9
+	source_aarch64 = serial-studio-3.2.1-aarch64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.1/Serial-Studio-Pro-3.2.1-Linux-arm64.AppImage
+	sha256sums_aarch64 = 8ee53c99b2848a17a3a102d3df233d38ac7e5ae2365e5ad18f01676fcda11d31
+	source_x86_64 = serial-studio-3.2.1-x86_64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.1/Serial-Studio-Pro-3.2.1-Linux-x64.AppImage
+	sha256sums_x86_64 = e1aabb5aa335003d544340a8d1359fd80ccc89f340c738512c3cc81b28716e89
 
 pkgname = serial-studio-bin
