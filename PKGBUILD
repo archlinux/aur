@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.0
 _xaliaver=0.4.6
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -295,6 +295,13 @@ build() {
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
+
+    cd dist
+    sed -r \
+      -e "s|##INSTALL_PATH##|.|" \
+      -e "s|##DISPLAY_NAME##|proton-cachyos-${_srctag} (native)|" \
+      -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
+      "${srcdir}/compatibilitytool.vdf.template" > compatibilitytool.vdf
 }
 
 package() {
@@ -304,22 +311,14 @@ package() {
     rm -rf dst-* obj-* src-* pfx-*
 
     local _compatdir="${pkgdir}/usr/share/steam/compatibilitytools.d"
-    mkdir -p "${_compatdir}"
-    sed -r \
-      -e "s|##INSTALL_PATH##|/opt/${pkgname}|" \
-      -e "s|##DISPLAY_NAME##|proton-cachyos-${_srctag} (native)|" \
-      -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
-      "${srcdir}/compatibilitytool.vdf.template" > "${_compatdir}/${pkgname}.vdf"
-
-    local _installdir="${pkgdir}/opt/"
-    mkdir -p "${_installdir}/${pkgname}"
-    rsync --delete -arx dist/* "${_installdir}/${pkgname}"
+    mkdir -p "${_compatdir}/${pkgname}"
+    rsync --delete -arx dist/* "${_compatdir}/${pkgname}"
 
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${_installdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
+    mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cd "${_installdir}/${pkgname}/files"
+    cd "${_compatdir}/${pkgname}/files"
 
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-debug \
