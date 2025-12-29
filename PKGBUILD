@@ -1,6 +1,6 @@
 # Maintainer: Livaiyena <livaiyena@users.noreply.github.com>
 pkgname=sessionmanager
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="cli-based activity tracker and session manager for hyprland"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'zsh-completions: zsh completion support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v$pkgver.tar.gz")
-sha256sums=('260ea667fbcd921f83f96737b4f41825bc9e0767998c0fb428fcd5e05c7db3b9')
+sha256sums=('3541d728f66d444f586205fcbbc9c7ac64d93ee7217e6d1877d8bde6709d2b38')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -36,9 +36,9 @@ package() {
     install -Dm644 src/sessionmanager/whitelist.py "$site_packages/"
     
     # install completions
-    install -Dm644 completions/session_manager.bash "$pkgdir/usr/share/bash-completion/completions/sessionmanager"
-    install -Dm644 completions/_session_manager "$pkgdir/usr/share/zsh/site-functions/_sessionmanager"
-    install -Dm644 completions/session_manager.py.fish "$pkgdir/usr/share/fish/vendor_completions.d/sessionmanager.fish"
+    install -Dm644 completions/sessionmanager.bash "$pkgdir/usr/share/bash-completion/completions/sessionmanager"
+    install -Dm644 completions/_sessionmanager "$pkgdir/usr/share/zsh/site-functions/_sessionmanager"
+    install -Dm644 completions/sessionmanager.fish "$pkgdir/usr/share/fish/vendor_completions.d/sessionmanager.fish"
     
     # install systemd service
     install -Dm644 sessionmanager.service "$pkgdir/usr/lib/systemd/user/sessionmanager.service"
