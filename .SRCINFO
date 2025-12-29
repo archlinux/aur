@@ -1,7 +1,7 @@
 pkgbase = rpc-bridge-bin
 	pkgdesc = Enable Rich Presence between your Wine applications and the native Discord client on Linux (binary release)
 	pkgver = 1.4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EnderIce2/rpc-bridge
 	arch = x86_64
 	license = MIT
