@@ -1,7 +1,7 @@
 # Maintainer: Reyansh Raj Mishra <reyanshrajmishra8@gmail.com>
 pkgname=shield-cleaner
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SHIELD Interactive System Cleaner - Advanced maintenance tool for Arch Linux"
 arch=('any')
 url="https://github.com/reyanshrajmishra/shield-cleaner"
@@ -10,7 +10,7 @@ depends=('bash' 'pacman' 'util-linux' 'coreutils')
 optdepends=('yay: for AUR cache cleaning')
 source=("shield-cleaner.sh"
         "LICENSE")
-sha256sums=('1da91205a9404eb8275e16ee39164a5ec4dead5f4fe1a9cf787632c2bfc2d1f6'
+sha256sums=('e4493b5cea91afef2813a03e9a7ce9a7dcea0c2cbf689e4132fa6f02c9d35cf5'
             '19c602dd2a18e02590e4f99cb0917abd819fe2c360bea72fd237a59ae25d5596')
 
 package() {
