@@ -1,0 +1,13 @@
+pkgbase = network-management-client-bin
+	pkgdesc = A desktop client for using and managing Meshtastic devices.
+	pkgver = 0.3.1
+	pkgrel = 3
+	url = https://github.com/meshtastic/network-management-client
+	arch = x86_64
+	license = GPLv3
+	provides = network-management-client
+	conflicts = network-management-client
+	source = https://github.com/meshtastic/network-management-client/releases/download/v0.3.1/Meshtastic.Network.Management.Client_0.3.1_amd64.deb
+	sha256sums = c99be350fb34651d19d2fc5fe085a0e2403b5581417a46aaffe07a84435e2ed0
+
+pkgname = network-management-client-bin
