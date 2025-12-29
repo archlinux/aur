@@ -1,16 +1,16 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=platformfolders
 _realpkgname=PlatformFolders
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='A C++ library to look for special directories like "My Documents" and "%APPDATA%" so that you do not need to write Linux, Windows and Mac OS X specific code'
 arch=('i686' 'x86_64')
 url="https://github.com/sago007/PlatformFolders"
 license=('MIT')
 provides=('libplatform_folders.so')
-makedepends=('cmake>=3.1.0' 'doxygen')
+makedepends=('cmake>=3.5.1' 'doxygen')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sago007/PlatformFolders/archive/${pkgver}.tar.gz")
-sha512sums=('50a9acd37b8b491e8938190b3b7ed1af2d3cc70bb6e59708dc1928269d5e4b8d52ec02f9330f3d9439099029ac61d193dadbca198e1d561432e02e488e103f7c')
+sha512sums=('0c5221581f6cb8ce44ee0200c6a9b9ddb85f1065f0f7dc48b33b8d380483094efba8c089f3d1fc8b6cef51c4f6b70497861e77ac2309a37d1ded9317085a06ae')
 build() {
 	mkdir -p "$srcdir/$_realpkgname-$pkgver/build"
 	cd "$srcdir/$_realpkgname-$pkgver/build"
