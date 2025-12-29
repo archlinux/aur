@@ -7,15 +7,12 @@ arch=('any')
 url="https://github.com/PharmaRacist/Noon"
 license=('MIT')
 depends=(
+    'nvidia-open-dkms'
     'nvidia-utils'
     'lib32-nvidia-utils'
     'lib32-opencl-nvidia'
     'libva-nvidia-driver'
     'egl-wayland'
-)
-optdepends=(
-    'nvidia-dkms: Proprietary NVIDIA drivers'
-    'nvidia-open-dkms: Open-source NVIDIA drivers (AUR)'
 )
 conflicts=('noon-nvidia-legacy')
 provides=('noon-nvidia-modern-support')
