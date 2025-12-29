@@ -11,7 +11,7 @@ depends=('gtk3' 'libxss' 'libindicator-gtk2' 'nss' 'dbus-glib' 'libdbusmenu-gtk2
 source=(
     "https://twos.s3.us-west-2.amazonaws.com/mac/Twos-${pkgver}.AppImage"
 )
-sha256sums=('083e0d3ce0621726ab94bab19178a8169d0f3e69a0f06db1c825e5626265573f')
+sha256sums=('c4e13a0899635f8c29872222a9e4d86b5e5e06a54aa2cc8d682c327015ddbf61')
 
 prepare() {
     chmod u+x ./Twos-${pkgver}.AppImage

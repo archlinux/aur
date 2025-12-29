@@ -1,8 +1,8 @@
-pkgbase = taskade-appimage
-	pkgdesc = Get things done with task lists, workflow automation, and real-time collaboration.
-	pkgver = 4.6.14
-	pkgrel = 1.1
-	url = https://taskade.com/
+pkgbase = twos-appimage
+	pkgdesc = A simple and beautiful way to capture your thoughts, organize your life, and get things done.
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = https://twosapp.com/
 	arch = x86_64
 	license = unset
 	depends = gtk3
@@ -11,7 +11,7 @@ pkgbase = taskade-appimage
 	depends = nss
 	depends = dbus-glib
 	depends = libdbusmenu-gtk2
-	source = https://apps.taskade.com/updates/Taskade_4.6.14_x86_64.AppImage
-	sha256sums = 083e0d3ce0621726ab94bab19178a8169d0f3e69a0f06db1c825e5626265573f
+	source = https://twos.s3.us-west-2.amazonaws.com/mac/Twos-7.5.0.AppImage
+	sha256sums = c4e13a0899635f8c29872222a9e4d86b5e5e06a54aa2cc8d682c327015ddbf61
 
-pkgname = taskade
+pkgname = twos
