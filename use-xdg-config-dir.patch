@@ -1,0 +1,12 @@
+--- a/scripts/automatically_detect_all_installed_coding_agents_and_install_mcp_agent_mail_in_all.sh
++++ b/scripts/automatically_detect_all_installed_coding_agents_and_install_mcp_agent_mail_in_all.sh
+@@ -2,7 +2,8 @@
+ set -euo pipefail
+
+ # Source shared helpers
+-ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
++# Use XDG config dir for writable .env storage (patched for system install)
++ROOT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/mcp-agent-mail"
+ if [[ -f "${ROOT_DIR}/scripts/lib.sh" ]]; then
+   # shellcheck disable=SC1090
+   . "${ROOT_DIR}/scripts/lib.sh"
