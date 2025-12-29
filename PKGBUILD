@@ -3,8 +3,8 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=9bcb4c6921fd09aaea62073ad704efa38f311436
-pkgver=6.18.pf3
+_rev=4e144092ddbfb410b36c3868a52a41147fb4b570
+pkgver=6.18.pf4
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
