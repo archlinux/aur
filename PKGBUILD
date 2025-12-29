@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
-pkgver=3.11.0.r108.gb8e0d53
+_app_id=com.github.th_ch.pear_music
+pkgver=3.11.0.r232.g1d6ab2a
 pkgrel=1
 _nodeversion=22
 _electronversion=38
@@ -22,12 +23,10 @@ conflicts=("${pkgname%-git}" 'youtube-music')
 install="${pkgname%-git}.install"
 source=('git+https://github.com/pear-devs/pear-desktop.git'
         "${pkgname%-git}.sh"
-        "${pkgname%-git}.desktop"
-        "${pkgname%-git}.png")
+        "${_app_id}.desktop")
 sha256sums=('SKIP'
             'bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996'
-            'facdb724c14b4d2a95d8ccba525ad70f399c5a511ebb2e9b6f05878cdc8e92a9'
-            '340f4645d69c399a612fb06123b3405113e9e5cc34c965b20a5c8c94c653e7ae')
+            '28e2b96c632ed7eb35dac98b0c04de62bf7721d5e202a231f09690a435251eac')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -73,7 +72,7 @@ package() {
   cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/${pkgname%-git}.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.png"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
