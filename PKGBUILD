@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
 _pkgname=QCalc
-pkgver=0.11.5
+pkgver=0.11.6
 _electronversion=33
 pkgrel=1
 pkgdesc="Quasar Calculator.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('526711f2496fc3e396118ad2828241ab9ebf9a269623a5bfe422c5ff7fe61cb0'
+sha256sums=('e3ef2980db5d4a3ae95defa28877833f9a5a9a8d977d5d8a35b6670f0ace5531'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
