@@ -9,7 +9,7 @@ license=('Apache-2.0')
 
 # different Pelican versions use the same name tarball - screws up srcdir
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PelicanPlatform/pelican/releases/download/v${pkgver}/pelican_Linux_x86_64.tar.gz")
-sha256sums=("cd46f58f46e16c2b0c5db3cc016c86ef6370c863179cf30ed459ed53b49399c2")
+sha256sums=("7d24a70dfffe15146651e2ab4c8b05fb2f654357face868752598f976e56bd54")
 
 # binary is named the same as unrelated utility. sigh.
 conflicts=("pelican")
