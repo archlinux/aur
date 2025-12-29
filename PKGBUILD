@@ -1,7 +1,7 @@
 # Maintainer: Maxim Balashov <rsg245@yandex.com>
 
 pkgname=portablemc-bin
-pkgver=0.5.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Lightweight cli launcher for minecraft on rust'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 provides=('portablemc')
 conflicts=('portablemc')
 
-validpgpkeys=('BA55EE21CC25660B28B62272C18BC0FF83A95A53')
+validpgpkeys=('F659B0F0B84A26CAC635D72948CAEE8DC3456B2F')
 
 source=("${url}/releases/download/${pkgver}/portablemc-${pkgver}-linux-x86_64.tar.gz"
 	"${url}/releases/download/${pkgver}/portablemc-${pkgver}-linux-x86_64.tar.gz.sig")
