@@ -15,5 +15,4 @@ source=("https://gitlab.com/TobbeBob123/bitwarden_fuzzy/-/archive/${pkgver}/${pk
 sha256sums=('f888982da8cdae4bab0247217032e561fd4557fdd054297a98f3fcadc3398282')
 
 package() {
-	install -Dm755 "$srcdir/${pkgname}-$pkgver/bff" "$pkgdir/usr/bin/bff"
 }
