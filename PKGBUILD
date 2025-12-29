@@ -37,6 +37,7 @@ b2sums=('69389958cb2016a1dbbd462fff603057339d772902b055b8299f6759f1f9a8cbadf3148
 
 build() {
     cd $pkgname-$pkgver
+    export CARGO_PROFILE_RELEASE_DEBUG=true
     make USER_CFLAGS="$CFLAGS" USER_CXXFLAGS="$CXXFLAGS" USER_LDFLAGS="$LDFLAGS"
     chrpath -r '/usr/lib' lzbench
 }
