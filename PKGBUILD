@@ -18,15 +18,13 @@ depends=(
     'ttf-readex-pro'
     'ttf-roboto-flex'
     'ttf-rubik-vf'
-)
-optdepends=(
-    'adw-gtk-theme-git: GTK theme (git version)'
-    'darkly-bin: Dark theme support'
-    'gowall: Wallpaper manager'
-    'matugen-bin: Material You color generator'
-    'ttf-gabarito-git: Gabarito font'
-    'ttf-jetbrains-mono-nerd: JetBrains Mono Nerd Font'
-    'ttf-material-symbols-variable-git: Material Symbols font'
+    'ttf-gabarito-git'
+    'ttf-jetbrains-mono-nerd'
+    'gowall'
+    'adw-gtk-theme-git'
+    'matugen-bin'
+    'darkly-bin'
+    'ttf-material-symbols-variable-git'
 )
 
 package() {
