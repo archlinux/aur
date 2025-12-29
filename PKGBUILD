@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=psutil
 pkgname=pypy3-${_base}
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/giampaolo/${_base}"
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=(pypy3)
 makedepends=(pypy3-setuptools)
 source=(${url}/archive/release-${pkgver}.tar.gz)
-sha512sums=('0845a51082fa7d1784df072f057078117edc35ef8c8768ee3c2834d5c0424589a322d24d30fb9f8f3c49b850e51b78816614122630b3f4d571d734613b4ad012')
+sha512sums=('a41170982d0a2e7cd6967f470e01519a505ec9bdde90fb0cd807b8ec068ea5ca8f8253fac48180076f9b337702848d78882cc1835a82c618bb8d9b894617960c')
 
 build() {
   cd ${_base}-release-${pkgver}
