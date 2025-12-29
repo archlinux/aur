@@ -1,0 +1,18 @@
+pkgbase = ttf-hackline-nerd
+	pkgdesc = A programming font that combines Hack and LINE Seed Font, with support for Japanese and Korean (including Nerd Fonts).
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/nemu626/hackline
+	arch = any
+	license = OFL
+	makedepends = unzip
+	depends = fontconfig
+	provides = hackline
+	provides = ttf-hackline
+	conflicts = hackline
+	conflicts = ttf-hackline
+	conflicts = ttf-hackline-nerd-git
+	source = ttf-hackline-nerd-1.1.0.zip::https://github.com/nemu626/hackline/releases/download/v1.1.0/HackLine-All-v1.1.0.zip
+	sha256sums = 92fd84e68df975cc35ffda6e1505cf87aba65cfee1c0e21e8a218f27bf56cf75
+
+pkgname = ttf-hackline-nerd
