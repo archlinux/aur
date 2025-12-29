@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=arco
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Terminal-based virtual instrument playground with real-time synthesis and built-in sequencer'
 arch=('x86_64')
@@ -29,7 +29,7 @@ package() {
     cd arcorrust
 
     # Install the binary
-    install -Dm755 target/release/arcorrust "$pkgdir/usr/bin/arco"
+    install -Dm755 target/release/arco "$pkgdir/usr/bin/arco"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
