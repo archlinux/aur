@@ -1,4 +1,4 @@
-pkgbase = ChocoLang
+pkgbase = chocolang
 	pkgdesc = ChocoLang - A sweet programming language.
 	pkgver = 0.4.8
 	pkgrel = 1
