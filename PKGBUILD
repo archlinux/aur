@@ -3,7 +3,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=kotlin-native-bin
-pkgver=2.1.20
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="An LLVM based backend for the Kotlin compiler and native implementation of the Kotlin standard library"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-prebuilt-linux-x86_64-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '139bb55d13a720fa6cbafe7008bdda71aba5194529051ed2e6e241cff7771648'
+    '60d4f92af2cd06dacf3e01e574c433cecca2e4b22fddefadaae40c4f531a567e'
 )
 
 package() {
@@ -37,8 +37,12 @@ package() {
   chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
   # Fix per user cache not working
   mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-pl"
+  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC"
+  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-system"  
   # Fix global cache permissions
-  chmod -R u+w "${pkgdir}/usr/lib/kotlin-native/klib/cache/"
+  chmod -R u+wr "${pkgdir}/usr/lib/kotlin-native/klib/cache/"
+  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-user-pl"
+  chmod -R u+wr "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-user-pl"
 
   ln -s /usr/lib/kotlin-native/bin/kotlinc-native "${pkgdir}/usr/bin/kotlinc-native"
   ln -s /usr/lib/kotlin-native/bin/konanc "${pkgdir}/usr/bin/konanc"
