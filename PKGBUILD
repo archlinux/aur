@@ -2,7 +2,11 @@
 
 pkgname=python-packageurl
 _gitpkgname=packageurl-python
-pkgver=0.17.5
+pkgver=0.17.6
+
+# git fetch https://github.com/package-url/packageurl-python.git "v${pkgver?}" && git rev-parse FETCH_HEAD:spec
+_spec_commit=c398646bb2d642ccdd43bfbf5923cf650d69dc6a
+
 pkgrel=1
 pkgdesc='A purl aka. Package URL parser and builder'
 arch=('any')
@@ -22,8 +26,14 @@ optdepends=(
 )
 conflicts=('python-packageurl-git')
 options=('!debug' '!strip')
-source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/package-url/packageurl-python/archive/v${pkgver}.tar.gz")
-sha512sums=('bd0dc3e8532de033b7039ab8b8a4653d59e20ee5ac8da00ea9bfa57d31e46395382793291c6f39f2895eaeafc4c2ec3ca3df4dcecbdd00c2aedf7d97a0df6350')
+source=(
+  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/package-url/packageurl-python/archive/v${pkgver}.tar.gz"
+  "purl-spec-${_spec_commit}.tar.gz::https://github.com/package-url/purl-spec/archive/${_spec_commit}.tar.gz"
+)
+sha512sums=(
+  '78027b3a6b9eeeb5e1f1bb222cf1b3d94c7edd1b84c96181823f70a6b660eeef73cdfc69a08f7379bd02665bacaee2b875b3c82fd23dee49e525d6256531cd14'
+  '7b136a62149eb6f08a5581b5c315dff4aee4f84635c58c61a66530ba6918a46ec529c87f06266249ffec0932ad50eee2aaad871bc91a91f54f8870a94fc60161'
+)
 
 build() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
@@ -32,7 +42,15 @@ build() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  python -m pytest
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+
+  echo >&2 'Linking spec source directory'
+  rm -rfv spec
+  ln -fnsv ../"purl-spec-${_spec_commit}" spec
+
+  echo >&2 'Running unit tests'
+  test-env/bin/python -m pytest tests
 }
 
 package() {
