@@ -1,0 +1,5 @@
+[mprocs-bin]
+source = "github"
+github = "pvolok/mprocs"
+use_latest_release = true
+prefix = "v"
