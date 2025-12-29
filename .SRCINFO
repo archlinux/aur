@@ -6,6 +6,7 @@ pkgbase = texlive-awesome-cv-git
 	arch = any
 	license = LPPL-1.3c
 	makedepends = git
+	depends = adobe-source-sans-fonts
 	depends = texlive-bin
 	provides = Awesome-CV
 	source = Awesome-CV::git+https://github.com/posquit0/Awesome-CV.git
