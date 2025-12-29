@@ -1,0 +1,13 @@
+pkgbase = xls
+	pkgdesc = Small ls tool written in rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/x64-OSS/xls
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/x64-OSS/xls
+	sha256sums = SKIP
+
+pkgname = xls
