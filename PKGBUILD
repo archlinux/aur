@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="19.6"
+_fullver="20.0"
 pkgname="xpipe"
-pkgver="19.6"
+pkgver="20.0"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
@@ -40,9 +40,9 @@ source=("logo_48x48.png" "logo_256x256.png" "${pkgname}.desktop")
 source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
-sha256sums=("3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8" "BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348" "02E3D638A1458899774EBCCC6592B0CF990348E78ABF4C1453127E13A982959E")
-sha256sums_x86_64=("94bc9518e1b114f28734e4796273a1ec32986f709f3b074e304ab86fc903bdf6")
-sha256sums_aarch64=("ed10bbc574a5c8d58570219a1881f8a2b12911843972968385348e78fc1980f5")
+sha256sums=("3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8" "BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348" "0F2861F0D7039D73EBA5705CBEC079D1A91706E0412CA8CC62A521BF5AE4B8BA")
+sha256sums_x86_64=("c4ede22d339b858e01692e3be62b8fb4584467ea687fe5472b0462fb973c4f3a")
+sha256sums_aarch64=("a65dcccb4ede5d0619d3821c1cd3184ce37404a44014b4f0a13fa628fa3e813e")
 
 package() {
 	install -dm0755 "$pkgdir/opt"

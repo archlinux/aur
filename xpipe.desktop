@@ -9,4 +9,4 @@ Icon=xpipe
 Terminal=false
 Categories=Utility;Development;
 StartupNotify=true
-MimeType=x-scheme-handler/xpipe;x-scheme-handler/ssh;x-scheme-handler/sftp
+MimeType=x-scheme-handler/xpipe;x-scheme-handler/ssh;x-scheme-handler/sftp;x-scheme-handler/s3
