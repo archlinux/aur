@@ -20,7 +20,7 @@ provides=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git"
     "1.patch")
 sha512sums=("SKIP"
-    "3458788ea7550fd96d424e90e968404f282c2f9703518fd18c10c40edead0e9bd5f0e1db6b71004dad51c49f165833623343a7410d0c0cda04d6a9863d8455c1")
+    "5081b4dcad1b65df4d8caa5076898c824f207973f62c02a312c2c3d4f6d7b49b7e8bc6415889aa466621fc1cdbe9b50a13482b5c5e04b0f5a04bffd9bac53de0")
 
 pkgver()
 {
