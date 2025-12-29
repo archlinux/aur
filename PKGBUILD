@@ -1,33 +1,39 @@
-# Alfred Roos alfred@stensatter.se
 pkgname=imagine-term-git
-pkgver=1.2.4
+pkgver=1.2.4  # placeholder, will be overridden by pkgver()
 pkgrel=1
-epoch=
 pkgdesc="Imagine is a program that displays images and video in the terminal."
 arch=(x86_64)
 url="https://github.com/spynets/imagine"
 license=('GPL-3.0-or-later')
 depends=(ffmpeg)
-makedepends=(git gcc)
+makedepends=(git meson)
 conflicts=(imagine)
-md5sums=()
+source=("git+https://github.com/spynets/imagine.git")
+md5sums=(SKIP)
+
+pkgver() {
+    cd "$srcdir/imagine"
+    # Option 1: use commit count + short hash
+    local count=$(git rev-list --count HEAD)
+    local commit=$(git rev-parse --short HEAD)
+    echo "r${count}.g${commit}"
+}
 
 prepare() {
-		git clone https://github.com/spynets/imagine
-		cd imagine
-		git submodule update --init --recursive
+    cd "$srcdir/imagine"
+    git submodule update --init --recursive
 }
 
 build() {
-	cd imagine
-	meson setup build
-	cd build
-	meson compile
+    cd "$srcdir/imagine"
+    meson setup build
+    cd build
+    meson compile
 }
 
 package() {
-	cd imagine
-	install -Dm755 ./bin/imagine "$pkgdir/usr/bin/imagine"
-	install -Dm655 ./readme.md "$pkgdir/usr/share/doc/imagine-term-images/README"
-	install -Dm655 ./LICENSE "$pkgdir/usr/share/licenses/imagine-term-images/LICENSE"
+    cd "$srcdir/imagine"
+    install -Dm755 ./build/imagine "$pkgdir/usr/bin/imagine"
+    install -Dm644 ./readme.md "$pkgdir/usr/share/doc/imagine-term-images/README"
+    install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/imagine-term-images/LICENSE"
 }
