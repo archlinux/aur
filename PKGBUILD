@@ -1,19 +1,49 @@
 pkgname=('phono3py')
-pkgver=1.21.0
+pkgver=3.22.0
 pkgrel=1
-pkgdesc="phono3py calculates phonon-phonon interaction and related properties using the supercell approach"
+pkgdesc="A simulation package of phonon-phonon interaction related properties"
 arch=('any')
-url="https://atztogo.github.io/phono3py"
+url="https://github.com/phonopy/phono3py"
 license=('BSD')
-depends=("python-numpy" "python-scipy" "python-h5py" "python-pyaml" "python-matplotlib" "openblas" "lapacke")
-makedepends=('python-setuptools' 'python')
-source=("https://github.com/atztogo/phono3py/archive/v$pkgver.tar.gz")
-sha512sums=('8b32c7e92527453fafd764dd7c32613bc5a2298824b6e4940c02a2df26758c1de31c23a3d2684dbdf8c71b37f0adc3de3d5cbaaf8dc3c79119aaa1fa66b85e9d')
+depends=(
+    "python-phonopy>=2.46.0"
+    "python-phonopy<2.47"
+    "python-scipy"
+    "python-matplotlib"
+)
+optdepends=(
+    "openmpi"
+)
+makedepends=(
+    "python"
+)
+
+source=("git+https://github.com/phonopy/phono3py.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+
+
+
+build() {
+  cd "$srcdir"/phono3py
+  rm -rf dist
+
+
+  python -m venv _buildenv
+  _buildenv/bin/pip install --upgrade pip
+  _buildenv/bin/pip install \
+    numpy \
+    scikit-build-core \
+    "nanobind<2.10.0" \
+    setuptools-scm \
+    build
+
+  _buildenv/bin/python -m build --wheel --no-isolation
+}
 
 
 
 package() {
-  cd "$srcdir"/phono3py-$pkgver
-  python setup.py install --root "$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir"/phono3py
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
 }
