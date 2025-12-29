@@ -8,6 +8,7 @@ pkgbase = python-phonopy
 	makedepends = python-pip
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = ninja
 	depends = python-numpy
 	depends = python-yaml
 	depends = python-matplotlib
@@ -15,7 +16,6 @@ pkgbase = python-phonopy
 	depends = python-h5py
 	depends = python-symfc
 	optdepends = python-seekpath
-	optdepends = openmpi
 	source = git+https://github.com/phonopy/phonopy.git#tag=v2.46.1
 	sha256sums = SKIP
 

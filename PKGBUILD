@@ -17,12 +17,12 @@ depends=(
 )
 optdepends=(
     "python-seekpath"
-    "openmpi"
 )
 makedepends=(
     python-pip
     cmake
     gcc
+    ninja
 )
 
 source=("git+https://github.com/phonopy/phonopy.git#tag=v${pkgver}")
