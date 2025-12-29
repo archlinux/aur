@@ -6,7 +6,7 @@
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
 pkgver=r1883.d8a3065
-pkgrel=4
+pkgrel=5
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
@@ -38,13 +38,8 @@ makedepends=(
 )
 source=(
     git+https://invent.kde.org/plasma/plasma-login-manager
-    plasmalogin.sysusers
-    plasmalogin.tmpfiles
 )
-b2sums=('SKIP'
-        'a2d463ed3951f5261ca472b54761dbc3d2d135a70a780c859400421e3b3d1ea1dbe18cc1bacc477165aed04e238ddad98bf36dc02e9183576ee518b3cb7b5f6e'
-        '0ad6e65aea70e5866ce6bd60be717d365f431116d1831409ec263d518f6561e4089ab30253ae93d44b21b4bb1ccd49ce81917f36969301b1fa68ac8cb614dbc3'
-)
+b2sums=('SKIP')
 provides=(display-manager)
 backup=(
     'usr/lib/pam.d/plasmalogin'
@@ -81,18 +76,12 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    # Install sysusers configuration
-    install -Dm644 plasmalogin.sysusers "$pkgdir/usr/lib/sysusers.d/plasmalogin.conf"
-
-    # Install tmpfiles configuration
-    install -Dm644 plasmalogin.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/plasmalogin.conf"
-
     # Create directory for default configuration
     install -dm755 "$pkgdir/usr/lib/plasma-login"
 
     "$pkgdir"/usr/bin/plasmalogin --example-config > "$pkgdir"/usr/lib/plasma-login/defaults.conf
 
-    # Don't set PATH in /usr/lib/plasma-login/defaults.conf
+    # Set correct PATH in /usr/lib/plasma-login/defaults.conf
     sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/plasma-login/defaults.conf
 
     # Append missing critical settings (based on SDDM configuration on Arch Linux)

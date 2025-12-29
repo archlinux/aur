@@ -1,3 +1,0 @@
-d /run/plasmalogin 0711 root plasmalogin
-d /var/lib/plasmalogin 1770 plasmalogin plasmalogin
-
