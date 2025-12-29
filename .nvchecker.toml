@@ -1,0 +1,5 @@
+[python-ink-extensions]
+source = "github"
+github = "evil-mad/ink_extensions"
+prefix = "v"
+use_max_tag = true
