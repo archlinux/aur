@@ -1,41 +1,35 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-# Maintainer:  artist for XLibre
+# Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
 
-_basename="xf86-input-synaptics"
-pkgname="${_basename//xf86/xlibre}"
-pkgver=1.10.0.2
-pkgrel=1
-pkgdesc="XLibre Synaptics driver for notebook touchpads"
-arch=('aarch64' 'x86_64')
-url="https://github.com/X11Libre/${_basename}"
+pkgname=xlibre-input-synaptics
+pkgver=25.0.0
+pkgrel=4
+pkgdesc="XLibre fork of X.Org Synaptics driver for notebook touchpads"
+arch=('x86_64')
 license=('MIT')
-depends=('glibc' 'libevdev>=0.4' 'libx11' 'libxi' 'libxtst')
-makedepends=('xlibre-xserver-devel' 'xorgproto' 'X-ABI-XINPUT_VERSION=26.0')
-provides=("${_basename}" 'synaptics')
-conflicts=("${_basename}" 'synaptics' 'xorg-server<21.1.2' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
-replaces=('synaptics')
+_pkgname="${pkgname//xlibre/xf86}"
+url="https://github.com/X11Libre/${_pkgname}"
+depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
+makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
-install="${pkgname}.install"
-_pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
-#source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgsrc}.tar.gz")
-b2sums=('6c3dbfbf0feaf35cb5dcfa9aa7f87c9ae64c625f18143dd08a523873595ed8ca98c57e62fe8bb631dfcbcdc85c199e956dd5f67ed87cf22ffa1c9f455f78c65d')
+depends+=('libxtst' 'libevdev' 'libx11' 'libxi')
+provides+=('synaptics')
+install=xlibre-input-synaptics.install
 
 build() {
-  local configure_options=(
-    --prefix='/usr'
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  autoreconf -vfi
-  ./configure "${configure_options[@]}"
+  cd ${srcdir}/${_pkgname}-xlibre-${_pkgname}-${pkgver}
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  make DESTDIR="${pkgdir}" install
+  cd ${srcdir}/${_pkgname}-xlibre-${_pkgname}-${pkgver}
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+
+sha256sums=('fca6a16ed199505a27dc167e88722b4d45aa5f46e86561d6c6eee3d7a750a107')

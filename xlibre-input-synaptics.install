@@ -4,6 +4,8 @@ post_install() {
     xlibre-input-libinput driver must be prefered over.
 MSG
 }
+
 post_upgrade() {
 	post_install
 }
+
