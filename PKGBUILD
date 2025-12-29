@@ -1,6 +1,6 @@
 # Alfred Roos alfred@stensatter.se
 pkgname=imagine-term-git
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 epoch=
 pkgdesc="Imagine is a program that displays images and video in the terminal."
@@ -20,7 +20,9 @@ prepare() {
 
 build() {
 	cd imagine
-	make
+	meson setup build
+	cd build
+	meson compile
 }
 
 package() {
