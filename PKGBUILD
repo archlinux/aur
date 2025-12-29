@@ -3,7 +3,7 @@
 pkgname=bootc-bcvk
 _pkgname=bcvk
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Launches ephemeral VMs from bootc containers and creates disk images.'
 url='https://github.com/bootc-dev/bcvk'
 license=('Apache-2.0 OR MIT')
