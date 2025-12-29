@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=twos
 pkgbase=twos-appimage
-pkgver=7.5.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc='A simple and beautiful way to capture your thoughts, organize your life, and get things done.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'libxss' 'libindicator-gtk2' 'nss' 'dbus-glib' 'libdbusmenu-gtk2
 source=(
     "https://twos.s3.us-west-2.amazonaws.com/mac/Twos-${pkgver}.AppImage"
 )
-sha256sums=('c4e13a0899635f8c29872222a9e4d86b5e5e06a54aa2cc8d682c327015ddbf61')
+sha256sums=('538ed790f324d0a23d9586f1e934544e5f21c7fef23054df8adf280b6b55f04b')
 
 prepare() {
     chmod u+x ./Twos-${pkgver}.AppImage
