@@ -1,0 +1,15 @@
+pkgbase = nitrolaunch-cli
+	pkgdesc = A fast, extensible, and powerful Minecraft launcher (CLI Version)
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/Nitrolaunch/nitrolaunch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = nitrolaunch-cli-0.27.0.tar.gz::https://github.com/Nitrolaunch/nitrolaunch/archive/refs/tags/0.27.0.tar.gz
+	sha256sums = f2329529ed3533c893ea4f4d22b4aa92d6387945351aeed3136deaae3cb70190
+
+pkgname = nitrolaunch-cli
