@@ -1,48 +1,76 @@
-* Bitwarden fuzzy find written in go (Not offical)
-** Go to [[https://bitwarden.com][Bitwarden]] to support Bitwarden
+#+TITLE: bff
+#+MAN_CLASS: User Commands
+#+MAN_SECTION: 1
+#+DATE: December 2025
+#+AUTHOR: TobbeBob123
 
-* How to use my program 
-  - You need to install bw (Bitwarden cli).
-    Arch
-    #+begin_src sh
-    yay -S bitwarden-cli
-    #+end_src
-    Derbian
-    #+begin_src sh
-    sudo apt-install bitwarden-cli
-    #+end_src
-  - You need to make text file in home (~/) with name sk.txt and type your session-key for your vault
-    vim
-    #+begin_src sh
-    vim ~/sk.txt
-    #+end_src
-    Find session key with this command:
-    #+begin_src sh
-    bw login --raw
-    #+end_src
-  - When you first use this fuzzy find you have to create a user [1]
+* NAME
+bff - Bitwarden fuzzy finder (not official)
 
-    use my program in the terminal with command
-    #+begin_src sh
-    bff
-    #+end_src
-    You can also apply flags:
-    #+begin_src sh
-    bff --name --hidden --not-open --login
-    #+end_src
-  - --name string to find named program. 
-  - --hidden hides password. 
-  - --login jumps right to login without being ask about to create user (You don't need this if you use name flag). 
-  - --not-open dont ask about to open links.
+* DESCRIPTION
+bff is an unofficial Bitwarden fuzzy finder written in Go.
 
-  I hope you like this little Bitwarden cli fuzzy finder
+Go to https://bitwarden.com to support Bitwarden.
 
-** Demo picture
-   [[https://gitlab.com/TobbeBob123/bitwarden_go_project/-/raw/master/demo.png?ref_type=heads]]
+* REQUIREMENTS
+You must have the Bitwarden CLI installed.
 
-* Security
-  - encrypted password in user.txt file
-  - uses bcrypt
-  - Password need to be 5 letters or more
-  - uses encryptions on users data 
-  - sk.txt deleted and session-key stored in encrypted file
+* INSTALLING BITWARDEN CLI
+** Arch Linux
+#+begin_src sh
+yay -S bitwarden-cli
+#+end_src
+
+** Debian
+#+begin_src sh
+sudo apt install bitwarden-cli
+#+end_src
+
+* SETUP
+** Get session key
+#+begin_src sh
+bw login --raw
+#+end_src
+
+** Store session key
+#+begin_src sh
+vim ~/sk.txt
+#+end_src
+
+Or in one command:
+
+#+begin_src sh
+bw login --raw >> ~/sk.txt
+#+end_src
+
+* USAGE
+#+begin_src sh
+bff
+#+end_src
+
+#+begin_src sh
+bff --name --hidden --not-open --login
+#+end_src
+
+* OPTIONS
+- *--name* string  
+  Find a specific named entry.
+
+- *--hidden*  
+  Hide the password output.
+
+- *--login*  
+  Jump directly to login.
+
+- *--not-open*  
+  Do not ask to open links.
+
+- *--create*  
+  Create a new user.
+
+* SECURITY
+- encrypted password in user.txt file
+- uses bcrypt
+- Password need to be 5 letters or more
+- uses encryptions on users data
+- sk.txt deleted and session-key stored in encrypted file
