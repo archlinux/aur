@@ -2,7 +2,7 @@
 pkgname='chatgpt.sh'
 pkgver=0.130.1
 pkgrel=1
-_commit=6a46d0bec5babd739f479c4e99935e380d0285ef
+_commit=911dc1c27235cad81b20b7c5909e158d782b4776
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')

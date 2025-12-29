@@ -20,7 +20,7 @@ pkgbase = chatgpt.sh
 	optdepends = libreoffice: dump doc files as text
 	optdepends = dialog: file picker (kdialog, zenity, vifm, ranger, nnn)
 	optdepends = yt-dlp: dump YouTube captions
-	source = chatgpt.sh::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=6a46d0bec5babd739f479c4e99935e380d0285ef
+	source = chatgpt.sh::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=911dc1c27235cad81b20b7c5909e158d782b4776
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
