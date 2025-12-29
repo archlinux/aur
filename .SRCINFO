@@ -1,6 +1,6 @@
 pkgbase = pingpong
 	pkgdesc = Reverse proxy powered by Pingora.
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Bluemangoo/Pingpong/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pingpong
 	license = GPL
 	depends = bash
 	depends = coreutils
-	source = pingpong-0.3.0-x86_64.zip::https://github.com/Bluemangoo/Pingpong/releases/download/0.3.0/pingpong-x86_64-unknown-linux-gnu.zip
-	sha256sums = f74fcd0c956b0d39eb872a48a0fb31da25acee5fccfacf6d3db61859f6ebcd48
+	source = pingpong-0.3.2-x86_64.zip::https://github.com/Bluemangoo/Pingpong/releases/download/0.3.2/pingpong-x86_64-unknown-linux-gnu.zip
+	sha256sums = db732d693ab3761891e84c7a687129ddd3c5662821ad1c25462ada6147c25973
 
 pkgname = pingpong
