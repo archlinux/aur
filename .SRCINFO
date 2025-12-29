@@ -1,6 +1,6 @@
 pkgbase = intel-npu-driver-bin
 	pkgdesc = Intel(R) NPU (Neural Processing Unit) Driver
-	pkgver = 1.23.0.20250827_17270089246
+	pkgver = 1.28.0.20251218_20347000698
 	pkgrel = 1
 	url = https://github.com/intel/linux-npu-driver
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = intel-npu-driver-bin
 	provides = intel-driver-compiler-npu
 	provides = intel-fw-npu
 	provides = intel-level-zero-npu
-	source = linux-npu-driver-v1.23.0.20250827-17270089246-ubuntu2404.tar.gz::https://github.com/intel/linux-npu-driver/releases/download/v1.23.0/linux-npu-driver-v1.23.0.20250827-17270089246-ubuntu2404.tar.gz
+	source = linux-npu-driver-v1.28.0.20251218-20347000698-ubuntu2404.tar.gz::https://github.com/intel/linux-npu-driver/releases/download/v1.28.0/linux-npu-driver-v1.28.0.20251218-20347000698-ubuntu2404.tar.gz
 	source = LICENSE.md::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md
-	sha256sums = e5b4368a2c8c555796d546acdc242a4c34556a0dbfb55b0c8e2a25aaefa002bf
+	sha256sums = 09cca227d7f1879c0a3785d63923f6c638fea206933d631fbe726237c08d03c2
 	sha256sums = 451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5
 
 pkgname = intel-npu-driver-bin
