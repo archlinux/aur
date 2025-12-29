@@ -1,6 +1,6 @@
 pkgbase = ollama-for-amd
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm, patched for AMD GPUs
-	pkgver = 0.12.7
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/likelovewant/ollama-for-amd
 	arch = x86_64
@@ -35,18 +35,18 @@ pkgbase = ollama-for-amd
 	depends = rocsparse
 	optdepends = rocm-smi-lib: monitor GPU usage with rocm-smi
 	optdepends = amdgpu_top: tool that shows AMD GPU utilization
-	provides = ollama=0.12.7
+	provides = ollama=0.13.5
 	conflicts = ollama
 	conflicts = ollama-rocm
 	options = !distcc
 	options = !debug
 	options = strip
 	options = lto
-	source = https://github.com/likelovewant/ollama-for-amd/archive/refs/tags/v0.12.7.tar.gz
+	source = https://github.com/likelovewant/ollama-for-amd/archive/refs/tags/v0.13.5.tar.gz
 	source = ollama.service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	b2sums = b82d23422695b1a7f302c9b45252f7cc01f40d53bf82349fc95621383f6c96458c8429717e242cde5af82b2935200fc3564206bfaf02a54ee1fc4126c7e74909
+	b2sums = 10cbd510d3fd73a4c8df89b6dc1dac36b512daa85902d3ba99d2210e294b167a80874f242b4b93c505eb8c195b7163c11632e7a1e15a308fbd4483e0e6bca801
 	b2sums = 683efc624a883aeb653b0afe944c0ab1fb4b79ff838066d3050d5ec6f8d21770c8cf65cf6fbb2ade7daacb65e0b54caed93cce1f7b987991aec6a9b69464f1ee
 	b2sums = 68622ac2e20c1d4f9741c57d2567695ec7b5204ab43356d164483cd3bc9da79fad72489bb33c8a17c2e5cb3b142353ed5f466ce857b0f46965426d16fb388632
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
