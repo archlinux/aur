@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
 pkgver=0.130
-pkgrel=4
-_commit=0898d8b7b711fadda6d14033fa8885c960075632
+pkgrel=5
+_commit=1c287ae8508ea42a2437aa4d860efe4b575177ac
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -10,7 +10,6 @@ license=('GPL-3.0-or-later')
 depends=('bash' 'curl' 'jq')
 makedepends=('git')
 optdepends=(
-	'base64: image input in vision models'
 	'xdg-utils: open files (xdg-open, open)'
 	'sox: audio recorder (arecod, ffmpeg)'
 	'mpv: audio player (sox, vlc, ffplay, afplay)'
