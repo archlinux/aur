@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Kushnir <chpock@gmail.com>
 
 pkgname=arch-updater
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A granular update utility for Arch Linux designed for power users who demand full control and transparency over package upgrades"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('pacman' 'pacman-contrib' 'yay' 'fzf' 'curl' 'jq' 'expac')
 optdepends=('sudo: Privilege elevation'
             'arch-log: Retrieve package changelog')
 source=("arch-updater::${url}/releases/download/v${pkgver}/arch-updater")
-sha256sums=('ede97aa4be32d645c2fafa5e0eb100d3835d00e19f3bef8a5a774d8b9febb025')
+sha256sums=('3e04d36e30dd3a5b1efc9351c0652029140bc435535dbd0c16790c183b395b54')
 
 package() {
     install -Dm755 "$srcdir/arch-updater" "$pkgdir/usr/bin/arch-updater"
