@@ -1,10 +1,10 @@
 pkgbase = python-pyparallel
 	pkgdesc = Python parallel port access library
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyserial/pyparallel
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pyparallel/pyparallel-0.2.2.tar.gz
@@ -13,4 +13,3 @@ pkgbase = python-pyparallel
 	md5sums = 0051a0dc811ee3fdb17a2fd0be44f3ad
 
 pkgname = python-pyparallel
-

@@ -1,14 +1,14 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=python-pyparallel
 _pkgname=pyparallel
-pkgrel=1
+pkgrel=2
 pkgver=0.2.2
 pkgdesc="Python parallel port access library"
 depends=('python')
 makedepends=('python-setuptools')
 url="https://github.com/pyserial/pyparallel"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/pyserial/pyparallel/master/LICENSE.txt")
