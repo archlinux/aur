@@ -1,6 +1,6 @@
 pkgbase = lock
 	pkgdesc = Process data with GnuPG 🔒
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://konstantintutsch.com/Lock/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lock
 	depends = gpgme
 	depends = gtk4
 	depends = libadwaita
-	source = lock::git+https://github.com/konstantintutsch/Lock.git#tag=v1.9.2
-	b2sums = 973ed8bc487128c657ae8ef3b997353f791795c2975caf04be44bdf6b87084ba7a4c6ee21318e616b3deba8e1fe01f8739238d7cec94fd3a3b7b25812195da58
+	source = lock::git+https://github.com/konstantintutsch/Lock.git#tag=v1.9.3
+	b2sums = bcdfcb4de5b44431a6e50682a635b534000f55b65f48a9ce82257bb5316a28693cdac05333b7e4ab0932437ffc65984eaa5a4b08de8839a37c56215dd838fe9e
 
 pkgname = lock
