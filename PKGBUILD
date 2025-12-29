@@ -11,7 +11,7 @@ pkgname=rogue-signal-protocol-bin
 install=rogue-signal-protocol-bin.install
 pkgver=0.9.1_beta
 pkgrel=1
-pkgdesc="Cyberpunk roguelike game - BETA release (binary)"
+pkgdesc="Turn-based stealth roguelike with deterministic gameplay - no RNG, pure tactics"
 arch=('x86_64')
 url="https://github.com/Dragynrain/RogueSignalProtocol"
 license=('MIT')
@@ -22,7 +22,6 @@ depends=('sdl2' 'sdl2_ttf' 'sdl2_mixer' 'glibc')
 
 # Optional dependencies for enhanced functionality
 optdepends=(
-    'steam: For Steam Deck integration'
     'gamecontrollerdb: Additional gamepad mappings'
 )
 

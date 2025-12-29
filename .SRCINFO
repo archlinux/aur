@@ -1,5 +1,5 @@
 pkgbase = rogue-signal-protocol-bin
-	pkgdesc = Cyberpunk roguelike game - BETA release (binary)
+	pkgdesc = Turn-based stealth roguelike with deterministic gameplay - no RNG, pure tactics
 	pkgver = 0.9.1_beta
 	pkgrel = 1
 	url = https://github.com/Dragynrain/RogueSignalProtocol
@@ -10,7 +10,6 @@ pkgbase = rogue-signal-protocol-bin
 	depends = sdl2_ttf
 	depends = sdl2_mixer
 	depends = glibc
-	optdepends = steam: For Steam Deck integration
 	optdepends = gamecontrollerdb: Additional gamepad mappings
 	provides = rogue-signal-protocol
 	conflicts = rogue-signal-protocol
