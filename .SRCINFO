@@ -1,6 +1,6 @@
 pkgbase = vdr-epgsearch
 	pkgdesc = Searchtimer and replacement of the VDR program menu
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vdr-projects/vdr-plugin-epgsearch
@@ -26,11 +26,9 @@ pkgbase = vdr-epgsearch
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchmenu.conf
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail-html.templ
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail.templ
-	source = vdr-epgsearch-2.4.4.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsearch/archive/refs/tags/v2.4.4.tar.gz
+	source = vdr-epgsearch-2.4.5.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsearch/archive/refs/tags/v2.4.5.tar.gz
 	source = 50-epgsearch.conf
-	source = calcstartstoptime.patch::https://github.com/vdr-projects/vdr-plugin-epgsearch/commit/76a2ac491493fc79817b7ae35d531da751ffe211.patch
-	sha256sums = e64b4ce3ac706d5cb080e060b6e1a2815785819695d20d3fd05d31d0ee7dad7f
+	sha256sums = d9dabc5717524f7510da1b76ae83ff6e1b27f1ac6c42d72ac70972fb6f9bed47
 	sha256sums = f3f8c750a0313c01a4295d2249f030ee510b2e35137b1f2cdcaa39aa440a3a88
-	sha256sums = cfe5b953610bd085234edbfa3730c563df18ae723140e5b8c8aa05a7e19bc8ce
 
 pkgname = vdr-epgsearch
