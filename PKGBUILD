@@ -4,7 +4,7 @@
 pkgname=proton-cachyos-slr
 _srctag=10.0-20251222
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _package_name="proton-cachyos-${_srctag}-slr-x86_64"
@@ -80,22 +80,22 @@ optdepends+=(
 provides=('proton')
 install=${pkgname}.install
 
-package() {
-
-    local _compatdir="${pkgdir}/usr/share/steam/compatibilitytools.d"
-    mkdir -p "${_compatdir}"
+build() {
+    cd "${_package_name}"
     sed -r \
-      -e "s|##INSTALL_PATH##|/opt/${pkgname}|" \
+      -e "s|##INSTALL_PATH##|.|" \
       -e "s|##DISPLAY_NAME##|proton-cachyos-${_srctag} (steam linux runtime)|" \
       -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
-      "${srcdir}/compatibilitytool.vdf.template" > "${_compatdir}/${pkgname}.vdf"
+      "${srcdir}/compatibilitytool.vdf.template" > compatibilitytool.vdf
+}
 
-    local _installdir="${pkgdir}/opt/"
-    mkdir -p "${_installdir}/${pkgname}"
-    rsync --delete -arx "${_package_name}"/* "${_installdir}/${pkgname}"
+package() {
+    local _compatdir="${pkgdir}/usr/share/steam/compatibilitytools.d"
+    mkdir -p "${_compatdir}/${pkgname}"
+    rsync --delete -arx "${_package_name}"/* "${_compatdir}/${pkgname}"
 
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${_installdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
+    mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
