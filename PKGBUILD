@@ -1,7 +1,7 @@
 # Maintainer: Mac Mansfield-Parisi <maclean dot mansfield dot parisi at gmail dot com>
 pkgname=pelicanplatform-bin
-pkgver=7.21.1
-pkgrel=2
+pkgver=7.22.0
+pkgrel=1
 pkgdesc="The command line client for the Pelican Platform data federation system"
 arch=('x86_64')
 url="https://github.com/PelicanPlatform/pelican"
