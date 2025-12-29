@@ -2,15 +2,15 @@
 # Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 
 pkgname=wasm-language-tools-bin
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Language server and other tools for WebAssembly"
 arch=('x86_64')
 url="https://github.com/g-plane/wasm-language-tools"
 license=('MIT')
 source=("https://github.com/g-plane/wasm-language-tools/releases/download/v${pkgver}/wat_server-x86_64-linux.zip"
         "https://raw.githubusercontent.com/g-plane/wasm-language-tools/refs/tags/v${pkgver}/LICENSE")
-b2sums=('37e073627ae44a0ff784f0039faabe5adcc1237c768b48095c469515bd05eeaad197566fdd9d6912b27309f52df88bb87c8618d7a83ec004175ec0fb3fb7aab8'
+b2sums=('477e1d9337d342dca1f099b61f9290176810bf0cf5dff10311767f0580c537aea0dbf4867ba563023e6c6e70774b9d5642d3d3dfd7fc698aff3d5a75fdddb111'
         'b59abf7c7cd2017c87dcdda9c36659525dfba35eaf611cda2a9abfb14d9d106b4cb5c4171f3cb6870625f8be2a161df2a33a312a4c629ed67a8f12dcea829c9e')
 provides=('wasm-language-tools')
 conflicts=('wasm-language-tools')
