@@ -1,0 +1,5 @@
+[xfconf]
+source = "gitlab"
+host = "gitlab.xfce.org"
+gitlab = "xfce/xfconf"
+branch = "master"
