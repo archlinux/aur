@@ -1,7 +1,7 @@
 # Maintainer: Tobias Os Finsbøl <tobias.finsbol@protonmail.com>
 pkgname=bitwarden_fuzzy
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Deprecated: use bitwarden-fuzzy instead"
 provides=('bitwarden-fuzzy')
 conflicts=('bitwarden-fuzzy')
@@ -15,4 +15,7 @@ source=("https://gitlab.com/TobbeBob123/bitwarden_fuzzy/-/archive/${pkgver}/${pk
 sha256sums=('f888982da8cdae4bab0247217032e561fd4557fdd054297a98f3fcadc3398282')
 
 package() {
+    mkdir -p "$pkgdir/usr/share/man/man1"
+    echo "This package is deprecated. Use bitwarden-fuzzy instead." > "$pkgdir/usr/share/man/man1/bff.1"
+    gzip -f "$pkgdir/usr/share/man/man1/bff.1"
 }
