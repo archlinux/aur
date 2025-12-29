@@ -4,9 +4,9 @@ variables:
   GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
 
 before_script:
-  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss nss dbus-glib git openssh curl python python-pip
-  - pip install playwright
-  - playwright install chromium
+  - rm -rf /var/cache/pacman/pkg/* || true
+  - sed -i 's/^#\?SigLevel.*/SigLevel = Never/' /etc/pacman.conf || echo -e "\n[options]\nSigLevel = Never\n" >> /etc/pacman.conf
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss nss dbus-glib git openssh curl
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
