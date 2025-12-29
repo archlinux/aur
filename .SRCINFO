@@ -8,7 +8,7 @@ pkgbase = e6-web-client
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	source = e6-web-client::git+https://github.com/Ivannivi/e6client.git#tag=v0.0.0
+	source = e6-web-client::git+https://github.com/Ivannivi/e6client.git
 	source = e6-web-client.desktop
 	source = e6-web-client.sh
 	sha256sums = SKIP

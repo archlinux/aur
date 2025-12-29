@@ -8,7 +8,7 @@ url="https://github.com/Ivannivi/e6client"
 license=('MIT')
 depends=('electron')
 makedepends=('git' 'npm')
-source=("$pkgname::git+https://github.com/Ivannivi/e6client.git#tag=v$pkgver"
+source=("$pkgname::git+https://github.com/Ivannivi/e6client.git"
         "$pkgname.desktop"
         "$pkgname.sh")
 sha256sums=('SKIP'
