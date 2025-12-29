@@ -24,7 +24,7 @@ prepare() {
       -Dengines=all \
       -Dloaders=all \
       -Dsavers=all \
-      -Dbindings="capi" \
+      -Dbindings="capi,wasm_beta" \
       -Dtools=all \
       -Dexamples=true \
       --reconfigure
