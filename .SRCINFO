@@ -1,10 +1,13 @@
 pkgbase = python-halcy-blurhash
 	pkgdesc = Pure-Python implementation of the blurhash algorithm
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/halcy/blurhash-python
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-cov
+	checkdepends = python-numpy
+	checkdepends = python-pillow
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -12,7 +15,7 @@ pkgbase = python-halcy-blurhash
 	depends = python
 	provides = python-blurhash
 	conflicts = python-blurhash
-	source = blurhash-1.1.5.tar.gz::/https://github.com/halcy/blurhash-python/archive/v1.1.5.tar.gz
-	sha256sums = da56b163e5a816e4ad07172f5639287698e09d7f3dc38d18d9726d9c1dbc4cee
+	source = blurhash-python-1.1.5.tar.gz::https://github.com/halcy/blurhash-python/archive/v1.1.5.tar.gz
+	sha512sums = d8569c602a68b3f635d2df83492b877bacbc8f06c92c14d33f68214ee424e059db75e43dceaceed0c8fdcaa08c76f5dbeabfccc74c82fb1301a412f93269c295
 
 pkgname = python-halcy-blurhash
