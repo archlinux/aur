@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "To use the Ptyxis palette, symlink to your home directory:"
+  echo "ln -s /usr/share/doc/zenith-theme-gtk/zenith.palette ~/.local/share/org.gnome.Ptyxis/palettes/"
+}
+
+post_upgrade() {
+  post_install
+}

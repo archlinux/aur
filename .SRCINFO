@@ -1,12 +1,13 @@
 pkgbase = zenith-theme-gtk
 	pkgdesc = A refined dark theme with cohesive colors and complete UI coverage for GTK-based text editors.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/vmkspv/zenith-theme-gtk
+	install = zenith-theme-gtk.install
 	arch = any
 	license = MIT
 	depends = gtksourceview5
-	source = zenith-theme-gtk-1.0.0.tar.gz::https://github.com/vmkspv/zenith-theme-gtk/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = e0376fd1586e302bf028a26c44b3af053b8efd2519a26f392157d0673bbbf5ed
+	source = zenith-theme-gtk-1.0.1.tar.gz::https://github.com/vmkspv/zenith-theme-gtk/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 2529c19a4e9195083a469af09b5f3852df45e3f0109981d7ffe8333e630e68dd
 
 pkgname = zenith-theme-gtk
