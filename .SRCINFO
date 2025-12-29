@@ -7,6 +7,7 @@ pkgbase = lancher
 	arch = aarch64
 	license = MIT
 	depends = glibc
+	options = !debug
 	source_x86_64 = lancher-0.1.3-x86_64::https://github.com/Kasui92/lancher/releases/download/v0.1.3/lancher-linux-amd64
 	sha256sums_x86_64 = 6c883094dfbab4bec288a3e928a1ad63f80e6fb14c7fcd7073900f97b9b00529
 	source_aarch64 = lancher-0.1.3-aarch64::https://github.com/Kasui92/lancher/releases/download/v0.1.3/lancher-linux-arm64
