@@ -1,6 +1,6 @@
 # Maintainer: jabra11 <jabra11.gpg@gmail.com>
 pkgname=seer-gdb-git
-pkgver=r1303.0cf9f32
+pkgver=r1468.9b99897
 pkgrel=1
 pkgdesc="Seer - a gui frontend to gdb"
 arch=('x86_64')
@@ -26,6 +26,14 @@ build() {
 }
 
 package() {
-	cd "$srcdir/build"
-        cmake --install . --prefix "$pkgdir/usr/"
+    cmake --install build --prefix "$pkgdir/usr/"
+
+    cd "$srcdir/${pkgname%-gdb-git}"
+
+    install -Dm644 src/resources/seergdb.desktop "$pkgdir/usr/share/application/seergdb.desktop"
+
+    local i
+    for i in 32 64 128 256 512; do
+        install -Dm644 "src/resources/icons/hicolor/${i}x${i}/seergdb.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/seergdb.png"
+    done
 }
