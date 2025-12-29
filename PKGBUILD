@@ -2,7 +2,7 @@
 
 pkgname=myctl
 pkgdesc="A powerful CLI to control your Linux Desktop"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
@@ -10,6 +10,8 @@ license=('GPL3')
 sha256sums=('SKIP')
 
 depends=(
+  'curl'
+  'tar'
   'bash'
   'gawk'
   'sed'
