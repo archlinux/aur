@@ -1,74 +1,76 @@
-# Maintainer: Aaron Rubesh <contact@aaronrubesh.io>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Aaron Rubesh <contact@aaronrubesh.io>
 pkgname=antigravity-bin
-pkgver=1.13.3_1766182170
+pkgver=1.13.3
+_electronversion=37
 pkgrel=1
-pkgdesc="Google Antigravity - Agentic Development Platform"
-arch=('x86_64')
-url="https://antigravity.google"
-license=('custom')
-depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxkbfile' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs')
-provides=('antigravity')
-conflicts=('antigravity')
-options=('!strip')
-source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.13.3-1766182170_amd64_365061c50063f9bd47a9ff88432261b8.deb")
-sha256sums=('d9920f9e0788245b1dab0f73a607b4eea00605bfb70e16795da1c1ac89eabd4b')
-
+pkgdesc="An agentic development platform from Google, evolving the IDE into the agent-first era.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url='https://antigravity.google/'
+_dlurl="https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian"
+license=('LicenseRef-Google-Antigravity')
+depends=(
+    "electron${_electronversion}"
+    'libxkbfile'
+    'python-fonttools'
+    'perl'
+)
+optdepends=(
+    'bash'
+    'zsh'
+)
+options=(
+    '!emptydirs'
+    '!strip'
+)
+source=(
+    "LICENSE-${pkgver}::https://antigravity.google/terms"
+    "${pkgname%-bin}.js"
+    "${pkgname%-bin}.sh"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/${pkgname%-bin}_${pkgver}-1766182168_arm64_940bc88042cadeaee51d9b1eedf6a506.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/${pkgname%-bin}_${pkgver}-1766182170_amd64_365061c50063f9bd47a9ff88432261b8.deb")
+sha256sums=('d87597d52234cb741574f0e68bd1f951a4cb680b9c621209b352b9078eb7689d'
+            '19a6316e7e32c598a99022d66f61b7e822cbc8b03f0fab1176a10bc00b1e59fa'
+            'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
+sha256sums_aarch64=('9d4d5a0f4dc39514a8841e726bf032e19f8baf42310ed11531cd95d43922c14e')
+sha256sums_x86_64=('d9920f9e0788245b1dab0f73a607b4eea00605bfb70e16795da1c1ac89eabd4b')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
+prepare() {
+    _get_electron_version
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
+    sed -i -e "
+        s/\/usr\/share\/${pkgname%-bin}\///g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
+}
 package() {
-    # Extract the data.tar.* from the deb package.
-    cd "$srcdir"
-    
-    if [ -f "data.tar.xz" ]; then
-        tar -xf data.tar.xz --no-same-owner
-    elif [ -f "data.tar.zst" ]; then
-        tar -xf data.tar.zst --no-same-owner
-    elif [ -f "data.tar.gz" ]; then
-        tar -xf data.tar.gz --no-same-owner
-    else
-        msg "Error: Could not find data.tar.* inside deb archive."
-        return 1
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
+    install -Dm644 "${srcdir}/usr/share/mime/packages/${pkgname%-bin}-workspace.xml" -t "${pkgdir}/usr/share/mime/packages"
+    if [ -x "/usr/bin/zsh" ];then
+        install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
     fi
-
-    # Create target directories
-    install -d "$pkgdir/opt/antigravity"
-    install -d "$pkgdir/usr/share/applications"
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/share/pixmaps"
-    install -d "$pkgdir/usr/share/licenses/$pkgname"
-
-    # Move application content to /opt/antigravity
-    cp -r usr/share/antigravity/* "$pkgdir/opt/antigravity/"
-    
-    # Install License(s)
-    # Look for common license files in the extracted directory
-    # Based on file listing, we know LICENSES.chromium.html exists.
-    if [ -f "usr/share/antigravity/LICENSES.chromium.html" ]; then
-        install -m644 "usr/share/antigravity/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    if [ -x "/usr/bin/zsh" ];then
+        install -Dm644 "${srcdir}/usr/share/zsh/vendor-completions/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/vendor-completions"
     fi
-    # Also check for a standard LICENSE file
-    if [ -f "usr/share/antigravity/LICENSE" ]; then
-        install -m644 "usr/share/antigravity/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    elif [ -f "usr/share/antigravity/resources/app/LICENSE.txt" ]; then
-        # Sometimes hidden in resources
-        install -m644 "usr/share/antigravity/resources/app/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
-
-    # Handle Desktop files
-    for desktop_file in usr/share/applications/*.desktop; do
-        if [ -f "$desktop_file" ]; then
-            sed 's|/usr/share/antigravity/antigravity|/opt/antigravity/antigravity|g' "$desktop_file" > "$pkgdir/usr/share/applications/$(basename "$desktop_file")"
-            chmod 644 "$pkgdir/usr/share/applications/$(basename "$desktop_file")"
-        fi
-    done
-
-    # Create symlink for the executable
-    ln -s /opt/antigravity/antigravity "$pkgdir/usr/bin/antigravity"
-    
-    # Create symlink for the icon, if found
-    if [ -f "$pkgdir/opt/antigravity/resources/app/resources/linux/code.png" ]; then
-        ln -s /opt/antigravity/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/antigravity.png"
-    fi
-
-    # Set executable permissions
-    chmod 755 "$pkgdir/opt/antigravity/antigravity"
-    chmod 755 "$pkgdir/opt/antigravity/chrome_crashpad_handler" 2>/dev/null || true
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
