@@ -1,38 +1,31 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-# Maintainer:  artist for XLibre
+# Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
 
-_basename="xf86-input-void"
-pkgname="${_basename//xf86/xlibre}"
-pkgver=1.4.2.2
-pkgrel=2
-pkgdesc="XLibre void input driver"
-arch=('aarch64' 'x86_64')
-url="https://github.com/X11Libre/${_basename}"
+pkgname=xlibre-input-void
+pkgver=25.0.0
+pkgrel=4
+pkgdesc="XLibre fork of X.Org void input driver"
+arch=(x86_64)
 license=('custom')
-depends=('glibc')
-makedepends=('xlibre-xserver-devel' 'xorgproto' 'X-ABI-XINPUT_VERSION=26.0')
-provides=("${_basename}")
-conflicts=("${_basename}" 'xorg-server<21.1.1' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
+_pkgname="${pkgname//xlibre/xf86}"
+url="https://github.com/X11Libre/${_pkgname}"
+depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
+makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
-_pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('23a9a9423eb395d84f67febc9df2388002d45d1cbe8abfeda9728c3d8a158b573e8e285829e82ee38b3ea7546c5abd4f5c9a4a09b7314506d0c5a2214c1e8fdb')
 
 build() {
-  local configure_options=(
-    --prefix='/usr'
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  autoreconf -vfi
-  ./configure "${configure_options[@]}"
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+
+sha256sums=('2b242b55e429c25e31ca884dedf43bb60be4dbdd0a7ff015f10fa23cd6e08064')

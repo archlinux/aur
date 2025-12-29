@@ -1,22 +1,18 @@
 pkgbase = xlibre-input-void
-	pkgdesc = XLibre void input driver
-	pkgver = 1.4.2.2
-	pkgrel = 2
+	pkgdesc = XLibre fork of X.Org void input driver
+	pkgver = 25.0.0
+	pkgrel = 4
 	url = https://github.com/X11Libre/xf86-input-void
-	arch = aarch64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = custom
-	makedepends = xlibre-xserver-devel
+	makedepends = xlibre-xserver-devel>=25.0
 	makedepends = xorgproto
-	makedepends = X-ABI-XINPUT_VERSION=26.0
+	depends = xlibre-xserver>=25.0
 	depends = glibc
 	provides = xf86-input-void
 	conflicts = xf86-input-void
-	conflicts = xorg-server<21.1.1
-	conflicts = X-ABI-XINPUT_VERSION<26
-	conflicts = X-ABI-XINPUT_VERSION>=27
-	source = xf86-input-void-xlibre-xf86-input-void-1.4.2.2.tar.gz::https://github.com/X11Libre/xf86-input-void/archive/refs/tags/xlibre-xf86-input-void-1.4.2.2.tar.gz
-	b2sums = 23a9a9423eb395d84f67febc9df2388002d45d1cbe8abfeda9728c3d8a158b573e8e285829e82ee38b3ea7546c5abd4f5c9a4a09b7314506d0c5a2214c1e8fdb
+	source = https://github.com/X11Libre/xf86-input-void/archive/refs/tags/xlibre-xf86-input-void-25.0.0.tar.gz
+	sha256sums = 2b242b55e429c25e31ca884dedf43bb60be4dbdd0a7ff015f10fa23cd6e08064
 
 pkgname = xlibre-input-void
