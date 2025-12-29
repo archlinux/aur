@@ -1,26 +1,8 @@
 post_install() {
-    echo "==> Enabling system services..."
-    
-    # Enable global services
-    systemctl enable sddm.service
-    systemctl enable NetworkManager.service
-    systemctl enable bluetooth.service
-    systemctl enable ufw.service
-    systemctl enable tlp.service
-    systemctl enable ananicy-cpp.service
-    
-    echo "==> Services enabled. Reboot to start them."
     echo "==> Run 'noon install' to deploy dotfiles"
 }
 
 post_upgrade() {
     echo "==> Noon upgraded to version $2"
     echo "==> Run 'noon install' to update dotfiles"
-}
-
-pre_remove() {
-    echo "==> Disabling services..."
-    systemctl disable sddm.service
-    systemctl disable ananicy-cpp.service
-    systemctl disable tlp.service
 }
