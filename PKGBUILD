@@ -1,7 +1,7 @@
 # Maintainer: Xaekai <archlinux at pink dot horse>
 
 pkgname=banyanapp
-pkgver=3.23.1
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="Zero trust secure access for modern enterprise"
 url="https://www.banyansecurity.io/"
@@ -16,7 +16,7 @@ depends=(
 optdepends=('libappindicator-gtk3: System tray support')
 
 source_x86_64=("https://www.banyanops.com/app/releases/banyanapp-${pkgver}.x86_64.rpm")
-sha256sums_x86_64=('8e274dff66b636050c0fb66f3a48e78eeacf52d6df247f887347eff970c07def')
+sha256sums_x86_64=('0d46809a71d6c4d1ad97b873267424dc29635878742fe1edf0f9ce3b9a551ce2')
 install=banyanapp.install
 
 # Prevent stripping of binaries
