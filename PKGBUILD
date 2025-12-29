@@ -1,93 +1,47 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=libasciichat
-pkgver=0.4.12
+pkgver=0.5.51
 pkgrel=1
-pkgdesc="Development libraries and documentation for ascii-chat"
-arch=('x86_64' 'aarch64')
+pkgdesc="Development libraries and documentation for ascii-chat - prebuilt"
+arch=('x86_64')
 url="https://github.com/zfogg/ascii-chat"
 license=('MIT')
 depends=('ascii-chat')
-makedepends=(
-  'git'
-  'pkg-config'
-  'cmake'
-  'ninja'
-  'clang'
-  'llvm'
-  'llvm-libs'
-  'musl'
-  'mimalloc'
-  'zstd'
-  'libsodium'
-  'portaudio'
-  'doxygen'
-)
+makedepends=('tar')
 provides=('libasciichat')
 conflicts=('libasciichat')
-options=('staticlibs' 'lto' 'docs' 'ccache')
+options=('staticlibs' 'docs')
 
 validpgpkeys=('F315D1B948F33B2102FBD7B6B95124621822044A')  # Zachary Fogg <me@zfo.gg>
-source=("ascii-chat-$pkgver-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/ascii-chat-$pkgver-full.tar.gz"
-        "ascii-chat-$pkgver-full.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/ascii-chat-$pkgver-full.tar.gz.asc")
-sha256sums=('380bd84ff5811d33a0fdf6c98a0cee3add62deeb93636f9206268b5d8261c91a'
-            'SKIP')
-
-prepare() {
-  cd "ascii-chat-$pkgver"
-  # Create a real git repo with the version tag so git describe works
-  rm -rf .git
-  git init -q
-  git config user.email "build@localhost"
-  git config user.name "Build"
-  git add -A
-  git commit -q -m "v$pkgver"
-  git tag "v$pkgver"
-}
-
-build() {
-  cd "ascii-chat-$pkgver"
-
-  # Strip _FORTIFY_SOURCE from CFLAGS - musl doesn't provide glibc's __*_chk wrappers
-  export CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=?/}"
-  export CFLAGS="${CFLAGS//-D_FORTIFY_SOURCE=?/}"
-  export CFLAGS="$CFLAGS -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0"
-
-  # PortAudio's SSL cert expired Dec 2025 - skip TLS verification for downloads
-  export CMAKE_TLS_VERIFY=0
-
-  # Force use of system LLVM tools instead of any custom install in /usr/local
-  # This ensures the defer tool links against the correct LLVM version (matching system clang)
-  # Same approach as homebrew-ascii-chat Formula to ensure all tools are from the same LLVM
-  export PATH="/usr/bin:$PATH"
-  export CC=/usr/bin/clang
-  export CXX=/usr/bin/clang++
-
-  cmake -B build -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config \
-    -DASCIICHAT_CLANG_EXECUTABLE=/usr/bin/clang \
-    -DASCIICHAT_CLANG_PLUS_PLUS_EXECUTABLE=/usr/bin/clang++ \
-    -DASCIICHAT_LLVM_AR_EXECUTABLE=/usr/bin/llvm-ar \
-    -DASCIICHAT_LLVM_RANLIB_EXECUTABLE=/usr/bin/llvm-ranlib \
-    -DASCIICHAT_LLVM_NM_EXECUTABLE=/usr/bin/llvm-nm \
-    -DASCIICHAT_LLVM_READELF_EXECUTABLE=/usr/bin/llvm-readelf \
-    -DASCIICHAT_LLVM_OBJDUMP_EXECUTABLE=/usr/bin/llvm-objdump \
-    -DASCIICHAT_LLVM_STRIP_EXECUTABLE=/usr/bin/llvm-strip \
-    -DASCIICHAT_LLD_EXECUTABLE=/usr/bin/ld.lld
-  # Build libraries and documentation
-  cmake --build build --target shared-lib
-  cmake --build build --target static-lib
-  cmake --build build --target docs
-}
+source=("$pkgname-$pkgver-Linux-amd64.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/$pkgname-$pkgver-Linux-amd64.tar.gz"
+        "$pkgname-$pkgver-Linux-amd64.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/$pkgname-$pkgver-Linux-amd64.tar.gz.asc")
+sha256sums=('4f594e7d3310f73ecb08646dae5af3817d370c2dc00a58a745076a90289c54dc'
+            'd4894cc2472961154a3fa95fd125bdcd41276abb1b86d1c8584e2c3afe17aa42')
 
 package() {
-  cd "ascii-chat-$pkgver"
-  # Install Development, Documentation, and Manpages components
-  # NOTE: Also install Unspecified component to get versioned shared library files
-  # (CMake's EXPORT splits shared libraries: versioned files → Unspecified, namelink → Development)
-  DESTDIR="$pkgdir" cmake --install build --component Unspecified
-  DESTDIR="$pkgdir" cmake --install build --component Development
-  DESTDIR="$pkgdir" cmake --install build --component Documentation
-  DESTDIR="$pkgdir" cmake --install build --component Manpages
+  # Create directory structure
+  mkdir -p "$pkgdir/usr"
+
+  # Copy the prebuilt directory structure to /usr
+  if [ -d "$srcdir/include" ]; then
+    cp -r "$srcdir/include" "$pkgdir/usr/"
+  fi
+  if [ -d "$srcdir/lib" ]; then
+    cp -r "$srcdir/lib" "$pkgdir/usr/"
+  fi
+  if [ -d "$srcdir/share" ]; then
+    cp -r "$srcdir/share" "$pkgdir/usr/"
+  fi
+
+  # Copy etc if it exists
+  if [ -d "$srcdir/etc" ]; then
+    cp -r "$srcdir/etc" "$pkgdir/"
+  fi
+
+  # Install license if available
+  if [ -f "$srcdir/LICENSE.txt" ]; then
+    install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  elif [ -f "$srcdir/LICENSE" ]; then
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
 }
