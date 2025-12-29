@@ -19,6 +19,7 @@ source=(
   'mcp-agent-mail-server.sh'
   'mcp-agent-mail-setup.sh'
   'use-xdg-config-dir.patch'
+  'fix-project-root.patch'
 )
 b2sums=(
   'SKIP'
@@ -26,6 +27,7 @@ b2sums=(
   '63e62022183b61677aa812e848d3e9161036c77ba93e1e35ad45051d02434ef15efa87fa62c604c31247034d1f810d07cb865299041704705467c85560435ce7'
   '4b268d32a9fcd3bb4005e958be165a3358fabca67628de702ff8d1da561127ee2b9a202213a209f87d714ed9f901a83c51f778069ae25fef7f581e794ce7857c'
   '19092592be5755978a0242356656fe160ea51e1ebf657769c3c00b30b5dd290128335b141ab85c3d78280ad5db9cafcfb243f6ccfe56e9a28ebf38c1986cf2a8'
+  'c8320e57bb1e7adfaeb20b88cb29b05d76b68e4f174fb33d6ca0645d370887c004647a186a5c4bdbb9374e45057e1ffe29724fcb6941d09278a7620365f9d97a'
 )
 
 pkgver() {
@@ -36,6 +38,7 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   patch -p1 < "$srcdir/use-xdg-config-dir.patch"
+  patch -p1 < "$srcdir/fix-project-root.patch"
 }
 
 build() {
@@ -102,6 +105,13 @@ package() {
     sed -i 's|"$ROOT_DIR/scripts/|"/usr/share/mcp-agent-mail/scripts/|g' {} \;
   find "$pkgdir/usr/share/mcp-agent-mail/scripts" -name '*.sh' -exec \
     sed -i 's|${ROOT_DIR}/scripts/|/usr/share/mcp-agent-mail/scripts/|g' {} \;
+
+  # Patch ROOT_DIR initialization to use XDG config dir (for writable config files)
+  find "$pkgdir/usr/share/mcp-agent-mail/scripts" -name '*.sh' -exec \
+    sed -i 's|ROOT_DIR=\$(cd "\$(dirname "\$0")/\.\." && pwd)|ROOT_DIR="\${XDG_CONFIG_HOME:-\$HOME/.config}/mcp-agent-mail"|g' {} \;
+
+  # Install README.md for docs command
+  install -Dm644 README.md "$pkgdir/usr/share/mcp-agent-mail/README.md"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

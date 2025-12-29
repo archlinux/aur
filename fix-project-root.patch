@@ -1,0 +1,14 @@
+--- a/src/mcp_agent_mail/cli.py
++++ b/src/mcp_agent_mail/cli.py
+@@ -3854,7 +3854,10 @@ class _SnippetSection:
+
+
+ def _project_root() -> Path:
+-    return Path(__file__).resolve().parents[2]
++    # Check system install location first, then fall back to dev path
++    if Path("/usr/share/mcp-agent-mail/README.md").exists():
++        return Path("/usr/share/mcp-agent-mail")
++    return Path(__file__).resolve().parents[2]
+
+
+ def _extract_readme_section(markers: tuple[str, str]) -> str:

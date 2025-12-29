@@ -1,9 +1,5 @@
 post_install() {
-  echo "First-time setup (auto-detects Claude Code, Codex, Cursor, etc.):"
-  echo "  mcp-agent-mail-setup"
-  echo ""
-  echo "Start server (subsequent runs):"
-  echo "  mcp-agent-mail-server"
-  echo ""
-  echo "Direct CLI: mcp-agent-mail <command> or am <command>"
+  echo "Run 'mcp-agent-mail-setup' to configure integrations with your coding agents."
+  echo "Run 'mcp-agent-mail-server' to start the server."
+  echo "CLI: mcp-agent-mail <command> or am <command>"
 }
