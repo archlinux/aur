@@ -2,7 +2,7 @@
 
 pkgname=python-genio-tools
 _name=${pkgname#python-}
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc="Tools for flashing boards using MediaTek Genio SoCs"
@@ -33,7 +33,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
 noextract=()
-sha256sums=('86b3bcaac1d28cffd9fa52ebff32ec3ee1feee59449cec4c8bceb0e85f4aa1ad')
+sha256sums=('f46225a0d4f2b456df32d133a64bb6aae80f0c33818b65ac7d3efd12ea5f3724')
 
 package() {
     cd "${srcdir}/"
