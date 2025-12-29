@@ -1,6 +1,6 @@
 pkgbase = sessionmanager
 	pkgdesc = cli-based activity tracker and session manager for hyprland
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/livaiyena/sessionmanager
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sessionmanager
 	optdepends = fish: fish shell completion support
 	optdepends = bash-completion: bash completion support
 	optdepends = zsh-completions: zsh completion support
-	source = sessionmanager-0.0.1.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.1.tar.gz
-	sha256sums = ec09b7844b86a4d1f4335e8d30dfe3cadb93886568b16b5456d1cae291c88996
+	source = sessionmanager-0.0.2.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.2.tar.gz
+	sha256sums = 260ea667fbcd921f83f96737b4f41825bc9e0767998c0fb428fcd5e05c7db3b9
 
 pkgname = sessionmanager
