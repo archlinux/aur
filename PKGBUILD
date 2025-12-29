@@ -27,6 +27,14 @@ pkgver() {
   [ ${PIPESTATUS[0]} -eq 0 ] || \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+build() {
+  cd "$_gitname"
+  make build
+  cd build
+  bsdtar xf *.zip
+}
+
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
   do
