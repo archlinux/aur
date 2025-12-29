@@ -32,7 +32,7 @@ license=(
 )
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'chrpath' 'gcc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/inikep/lzbench/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('69389958cb2016a1dbbd462fff603057339d772902b055b8299f6759f1f9a8cbadf31489254bb93f967ca6863e2db32e8da8bfe429cf5dfc4a4b61280164f4e5')
 
 build() {
