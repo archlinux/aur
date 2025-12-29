@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Extensible launcher for Wayland compositors built with Quickshell'
 arch=('any')
