@@ -37,7 +37,7 @@ optdepends=('krunner-bazaar: krunner integration')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('741fcff9696c4f64bf7104b8caaeb315e796f63da1d2d9ce362dfefccf577e8c')
 
 build() {
@@ -52,8 +52,4 @@ package() {
 	cd "${pkgname}-${pkgver}"
 
 	DESTDIR="${pkgdir}" ninja -C build install
-
-	rm -rf "${pkgdir}/usr/include/libdex"*
-	rm -rf "${pkgdir}/usr/lib/pkgconfig"
-	rm -rf "${pkgdir}/usr/lib/libdex"*
 }
