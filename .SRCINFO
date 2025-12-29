@@ -1,6 +1,6 @@
 pkgbase = zrc
 	pkgdesc = A custom shell inspired by Tcl
-	pkgver = 2.5hh.r42.g78d0b8c
+	pkgver = 2.5hh.r44.g0b80f5e
 	pkgrel = 1
 	url = https://github.com/Edd12321/zrc
 	install = zrc.install
@@ -9,7 +9,6 @@ pkgbase = zrc
 	makedepends = git
 	makedepends = posix
 	makedepends = gcc
-	options = !debug
 	source = git+https://github.com/Edd12321/zrc.git
 	sha256sums = SKIP
 

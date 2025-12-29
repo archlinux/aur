@@ -1,4 +1,8 @@
 #!../bin/zrc
+rm -rf src pkg
+if {[str $2 == "clean"]} {
+	exit 0
+}
 > .SRCINFO makepkg --printsrcinfo
 makepkg -siC --clean
 if {[str $2 != "keep"]} {

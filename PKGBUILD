@@ -8,8 +8,8 @@ license=('BSD-2-Clause')
 makedepends=('git' 'posix' 'gcc')
 source=("git+https://github.com/Edd12321/zrc.git")
 sha256sums=('SKIP')
-pkgver=2.5hh.r42.g78d0b8c
-options=('!debug')
+pkgver=2.5hh.r44.gc050dd7
+# options=('!debug')
 install="zrc.install"
 
 pkgver() {
@@ -24,15 +24,12 @@ build() {
 }
 
 package() {
+	# Binaries	
 	cd "$srcdir/zrc"
 	make DESTDIR="$pkgdir" PREFIX=/usr install
-
-	if [ ! -f ~/.zrc ]; then
-		echo "Copying default config..."
-		cp .zrc ~
-	fi
-
-	mkdir -p "$pkgdir"; mkdir -p "$pkgdir/usr"; mkdir -p "$pkgdir/usr/bin"
-	cp -f /bin/zrc "$pkgdir/usr/bin/zrc"	
-	chmod 755 "$pkgdir/usr/bin/zrc"	
+	rm -rf "$pkgdir/etc" # install hook does this
+	# Example scripts + doc stuff
+	mkdir -p "$pkgdir/usr/share/doc/zrc/examples"	
+	cp -LR examples "$pkgdir/usr/share/doc/zrc"
+	cp LICENSE Makefile "$pkgdir/usr/share/doc/zrc"
 }
