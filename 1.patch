@@ -1,43 +1,88 @@
---- src-original/Awesome-CV/awesome-cv.cls	2025-07-23 07:41:28.293602869 +0200
-+++ src-altered/Awesome-CV/awesome-cv.cls	2025-07-23 07:45:44.006960535 +0200
+diff --color -ura src-original/Awesome-CV/awesome-cv.cls src-altered/Awesome-CV/awesome-cv.cls
+--- src-original/Awesome-CV/awesome-cv.cls	2025-12-29 13:05:49.144598717 +0100
++++ src-altered/Awesome-CV/awesome-cv.cls	2025-12-29 13:14:26.348568206 +0100
 @@ -75,7 +75,7 @@
  % Needed to manage math fonts
  \RequirePackage{unicode-math}
  % Needed to use icons from font-awesome
 -\RequirePackage{fontawesome6}
 +\RequirePackage{fontawesome5}
- \RequirePackage{roboto}
- \RequirePackage[default,opentype]{sourcesanspro}
- % Needed for the photo ID
-@@ -503,19 +503,19 @@
+ \RequirePackage{accsupp}
+ \defaultfontfeatures{
+   Renderer=HarfBuzz,
+@@ -521,19 +521,19 @@
+         {}%
          {%
            \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-           % \mbox prevents wrapping of elements%
--          \mbox{\faCakeCandles\acvHeaderIconSep\@dateofbirth}%
-+          \mbox{\faBirthdayCake\acvHeaderIconSep\@dateofbirth}%
+-          \faAlt{DoB: \@dateofbirth}{\faCakeCandles}{\@dateofbirth}%
++          \faAlt{DoB: \@dateofbirth}{\faBirthdayCake}{\@dateofbirth}%
          }%
        \ifthenelse{\isundefined{\@homepage}}%
          {}%
          {%
            \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
--          \href{http://\@homepage}{\faHouseChimney\acvHeaderIconSep\@homepage}%
-+          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+-          \href{\@homepage}{\faAlt{homepage: \@homepage}{\faHouseChimney}{\@homepage}}%
++          \href{\@homepage}{\faAlt{homepage: \@homepage}{\faHouse}{\@homepage}}%
          }%
        \ifthenelse{\isundefined{\@github}}%
          {}%
          {%
            \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
--          \href{https://github.com/\@github}{\faSquareGithub\acvHeaderIconSep\@github}%
-+          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
+-          \href{https://github.com/\@github}{\faAlt{GitHub: @\@github}{\faSquareGithub}{\@github}}%
++          \href{https://github.com/\@github}{\faAlt{GitHub: @\@github}{\faGithubSquare}{\@github}}%
          }%
        \ifthenelse{\isundefined{\@gitlab}}%
          {}%
-@@ -587,7 +587,7 @@
+@@ -605,7 +605,7 @@
          {}%
          {%
            \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
--          \href{https://www.xing.com/profile/\@xing}{\faSquareXing\acvHeaderIconSep\@xing}
-+          \href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
+-          \href{https://www.xing.com/profile/\@xing}{\faAlt{Xing: \@xing}{\faSquareXing}{\@xing}}
++          \href{https://www.xing.com/profile/\@xing}{\faAlt{Xing: \@xing}{\faXingSquare}{\@xing}}
+         }%
+       \ifthenelse{\isundefined{\@medium}}%
+         {}%
+diff --color -ura src-original/Awesome-CV/examples/awesome-cv.cls src-altered/Awesome-CV/examples/awesome-cv.cls
+--- src-original/Awesome-CV/examples/awesome-cv.cls	2025-12-29 13:05:49.144598717 +0100
++++ src-altered/Awesome-CV/examples/awesome-cv.cls	2025-12-29 13:14:26.348568206 +0100
+@@ -75,7 +75,7 @@
+ % Needed to manage math fonts
+ \RequirePackage{unicode-math}
+ % Needed to use icons from font-awesome
+-\RequirePackage{fontawesome6}
++\RequirePackage{fontawesome5}
+ \RequirePackage{accsupp}
+ \defaultfontfeatures{
+   Renderer=HarfBuzz,
+@@ -521,19 +521,19 @@
+         {}%
+         {%
+           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+-          \faAlt{DoB: \@dateofbirth}{\faCakeCandles}{\@dateofbirth}%
++          \faAlt{DoB: \@dateofbirth}{\faBirthdayCake}{\@dateofbirth}%
+         }%
+       \ifthenelse{\isundefined{\@homepage}}%
+         {}%
+         {%
+           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+-          \href{\@homepage}{\faAlt{homepage: \@homepage}{\faHouseChimney}{\@homepage}}%
++          \href{\@homepage}{\faAlt{homepage: \@homepage}{\faHouse}{\@homepage}}%
+         }%
+       \ifthenelse{\isundefined{\@github}}%
+         {}%
+         {%
+           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+-          \href{https://github.com/\@github}{\faAlt{GitHub: @\@github}{\faSquareGithub}{\@github}}%
++          \href{https://github.com/\@github}{\faAlt{GitHub: @\@github}{\faGithubSquare}{\@github}}%
+         }%
+       \ifthenelse{\isundefined{\@gitlab}}%
+         {}%
+@@ -605,7 +605,7 @@
+         {}%
+         {%
+           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+-          \href{https://www.xing.com/profile/\@xing}{\faAlt{Xing: \@xing}{\faSquareXing}{\@xing}}
++          \href{https://www.xing.com/profile/\@xing}{\faAlt{Xing: \@xing}{\faXingSquare}{\@xing}}
          }%
        \ifthenelse{\isundefined{\@medium}}%
          {}%
