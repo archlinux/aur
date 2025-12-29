@@ -1,0 +1,28 @@
+# Python
+.venv/
+venv/
+*.pyc
+*.pyo
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Project specific
+build.env
+*.html
+*.AppImage
+*.tar.zst
+squashfs-root/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
