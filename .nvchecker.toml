@@ -1,0 +1,5 @@
+[rpc-bridge]
+source = "github"
+github = "EnderIce2/rpc-bridge"
+prefix = "v"
+use_max_tag = true
