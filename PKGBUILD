@@ -10,9 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/sethyuan/orca-note/releases/download/v${pkgver}/orcanote-linux-x86_64-${pkgver}.AppImage"
 )
-sha512sums=(
-  '94c68128b41c1b60b4dbe1bf1557755666252f20dbdba6a02dea594faf0d9a2d6f4c09c5cdb3734b2be7fe8cd1ff42759c0f4cdd3e3d771fe870935a98eda77b'
-)
+sha512sums=('94c68128b41c1b60b4dbe1bf1557755666252f20dbdba6a02dea594faf0d9a2d6f4c09c5cdb3734b2be7fe8cd1ff42759c0f4cdd3e3d771fe870935a98eda77b')
 
 _installdir=/opt/orca-note
 
