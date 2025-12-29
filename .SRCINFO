@@ -1,6 +1,6 @@
 pkgbase = r-maxlik
 	pkgdesc = Maximum Likelihood Estimation and Related Tools
-	pkgver = 1.5.2.1
+	pkgver = 1.5.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=maxLik
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-maxlik
 	optdepends = r-plot3d
 	optdepends = r-tibble
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/maxLik_1.5-2.1.tar.gz
-	sha256sums = d054c7626d0b4e03a5d5beecb7a39e60785322a146c34b2e1ee9f7939183925d
+	source = https://cran.r-project.org/src/contrib/maxLik_1.5-2.2.tar.gz
+	sha256sums = 554cdc9985f818d7e6a7b138cd9953aee34861795a5ff799979ec0c8616b6c1a
 
 pkgname = r-maxlik
