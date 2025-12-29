@@ -6,7 +6,8 @@ variables:
 before_script:
   - rm -rf /var/cache/pacman/pkg/* || true
   - sed -i 's/^#\?SigLevel.*/SigLevel = Never/' /etc/pacman.conf || echo -e "\n[options]\nSigLevel = Never\n" >> /etc/pacman.conf
-  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss nss dbus-glib git openssh curl
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss nss dbus-glib git openssh curl python python-pip
+  - pip install playwright
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
@@ -14,6 +15,10 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+  - mkdir -p /opt/playwright-browsers
+  - chmod 755 /opt/playwright-browsers
+  - PLAYWRIGHT_BROWSERS_PATH=/opt/playwright-browsers playwright install chromium
+  - chmod -R 755 /opt/playwright-browsers
 
 stages:
   - find_release
@@ -25,7 +30,8 @@ find_release_job:
   stage: find_release
   script:
     - rm -f build.env > /dev/null 2>&1 # clean build.env
-    - su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
+    - export PLAYWRIGHT_BROWSERS_PATH=/opt/playwright-browsers
+    - su -c "cd ${CI_PROJECT_DIR} && export PLAYWRIGHT_BROWSERS_PATH=/opt/playwright-browsers && ./find_release.sh" - builduser
   artifacts:
     reports:
       dotenv: build.env
