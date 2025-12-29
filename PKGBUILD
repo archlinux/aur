@@ -6,10 +6,10 @@
 
 pkgname=gnome-shell-extension-coverflow-alt-tab-git
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
-url="https://github.com/dmo60/CoverflowAltTab"
+url="https://github.com/dsheeler/CoverflowAltTab"
 license=('GPL')
 
 makedepends+=('git')
