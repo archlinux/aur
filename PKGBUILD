@@ -17,11 +17,9 @@ depends=(
     'hyprwayland-scanner'
     'xdg-desktop-portal'
     'xdg-desktop-portal-gtk'
-)
-optdepends=(
-    'hyprland-protocols: Additional Hyprland protocols'
-    'hyprland-qt-support: Qt support for Hyprland'
-    'hyprshot: Screenshot utility for Hyprland'
+    'hyprland-protocols'
+    'hyprland-qt-support'
+    'hyprshot'
 )
 
 package() {

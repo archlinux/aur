@@ -15,8 +15,8 @@ pkgbase = noon-hyprland
 	depends = hyprwayland-scanner
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
-	optdepends = hyprland-protocols: Additional Hyprland protocols
-	optdepends = hyprland-qt-support: Qt support for Hyprland
-	optdepends = hyprshot: Screenshot utility for Hyprland
+	depends = hyprland-protocols
+	depends = hyprland-qt-support
+	depends = hyprshot
 
 pkgname = noon-hyprland
