@@ -1,13 +1,13 @@
 pkgbase = yozo-office
-	pkgdesc = Yozo Office 2019 - An MS Office compatible office suite
-	pkgver = 9.0.3988.101ZH.S1
+	pkgdesc = Yozo Office 2024 - An MS Office compatible office suite
+	pkgver = 9.0.6589.141ZH.S1
 	pkgrel = 1
 	url = https://www.yozosoft.com/product-officelinux.html
 	arch = x86_64
 	license = LicenseRef-custom
 	options = !strip
-	source = yozo-office-9.0.3988.101ZH.S1.deb::https://dl.yozosoft.com/yozo/project/file/20231211_091218_231231/yozo-office_9.0.3988.101ZH.S1_amd64.deb
-	sha256sums = 84613f2e3243ebbd94445db0097df97ddb445ea3d2b31ad958bd446f06c52050
+	source = yozo-office-9.0.6589.141ZH.S1.deb::https://dl.yozosoft.com/yozo/project/file/20251224_134417_869690/yozo-office_9.0.6589.141ZH.S1_amd64.deb
+	sha256sums = 495375f2d122fb362ca7deb971f800a6090993deb77dbb4ae86624dcae098567
 
 pkgname = yozo-office
 	depends = freetype2
@@ -19,23 +19,20 @@ pkgname = yozo-office
 	depends = alsa-lib
 	depends = libglvnd
 	depends = libwebp
-	depends = libxshmfence
 	depends = gtk3
 	depends = mesa
 	depends = libmng
 	depends = nspr
 	depends = libpng12
-	depends = openssl-1.1
 	depends = twolame
 	depends = libice
 	depends = nss
-	depends = jansson
-	depends = c-ares
+	depends = sdl12-compat
 	optdepends = yozo-office-fonts: built-in fonts
 	optdepends = yozo-office-templates: built-in document templates
 
 pkgname = yozo-office-fonts
-	pkgdesc = Built-in fonts of Yozo Office 2019
+	pkgdesc = Built-in fonts of Yozo Office 2024
 
 pkgname = yozo-office-templates
-	pkgdesc = Built-in document templates of Yozo Office 2019
+	pkgdesc = Built-in document templates of Yozo Office 2024
