@@ -1,19 +1,19 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
 pkgname=mysqltuner
-pkgver=2.7.0
-_tag='2f926c8386fd2d0a177c50aa87837b66712e76ac'
+pkgver=2.7.2
+_tag='0b4d8aefc3a0c5f0a247d4d101348f49fcfdc53d'
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
 url='http://www.mysqltuner.com'
 license=('GPL')
-makedepends=('git' 'discount')
+makedepends=('git' 'discount' 'perl-www-mechanize-gzip' 'perl-file-util' 'perl-list-moreutils' 'perl-lwp-protocol-https' 'perl-markdown-pod')
 depends=('perl')
 source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}"
 	"mariadb-versions.patch")
-sha256sums=('e6b98710927617da8dcff1a5922f41c387f9716912c81bd3e2853056b410a1f8'
-            'd40a0ffcd1bfa77015e81a267e0746aec9390c83af7bfaced6ecec08449a2bef')
+sha256sums=('6e73d13afc89fc9c29d82cb4b0c77002dee6fd578233958037b7d3e03503c8fd'
+            'd13dcfa629a10c8aaa78c3b33352569a508cee4045741dfc910a3b3303758cb0')
 
 
 prepare() {
@@ -56,7 +56,6 @@ package() {
 	install -D -m0644 LICENSE ${pkgdir}/usr/share/licenses/mysqltuner/LICENSE
         install -D -m0644 CODE_OF_CONDUCT.md ${pkgdir}/usr/share/doc/mysqltuner/CODE_OF_CONDUCT.md
         install -D -m0644 CODE_OF_CONDUCT.html ${pkgdir}/usr/share/doc/mysqltuner/CODE_OF_CONDUCT.html
-        install -D -m0644 vulnerabilities.csv ${pkgdir}/usr/share/mysqltuner/vulnerabilities.csv
         install -D -m0644 basic_passwords.txt ${pkgdir}/usr/share/mysqltuner/basic_passwords.txt
 }
 
