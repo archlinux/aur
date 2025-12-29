@@ -2,7 +2,7 @@
 
 pkgname=xlibre-video-amdgpu
 pkgver=25.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64')
 _pkgname="${pkgname//xlibre/xf86}"
@@ -17,6 +17,11 @@ depends+=('mesa' 'libdrm>=2.4.121')
 makedepends+=('meson>=0.59.0')
 
 build() {
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CFLAGS+=" -Wno-incompatible-pointer-types"
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+
   arch-meson ${_pkgname}-xlibre-${_pkgname}-${pkgver} build \
     -D udev=enabled \
     -D glamor=enabled \
