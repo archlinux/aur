@@ -2,7 +2,7 @@
 folder_name="lucidglyph"
 
 pkgname=("lucidglyph")
-pkgver=0.12.0
+pkgver=0.13.1
 pkgrel=1
 arch=('any')
 pkgdesc='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux.'
@@ -15,11 +15,11 @@ validpgpkeys=(
 )
 md5sums=(
   'SKIP'
-  'cd0ec01d52992dbb763ac0e972c5cd18'
+  'b4790600c5d775a5fb78df11f02f924a'
 )
 sha512sums=(
   'SKIP'
-  '86ee125fefd3d1a25995d4b4af8c58ea3b8a08c94f8e02c7516297bc632ce65513c43b2671b66590cc69a2999eda1ea82445974d753fd3a6762572de7945c6b7'
+  '4662263480f0378b83cc19b98eda0ae1f0f7ca70fb8cb23c8899e3b830d9ea854fdf98d5f8903861d2af5ea4a7605ad8595287a8cca46e7323860f27a222fe79' # 0001-make-DEST_ENVIRONMENT-dynamic.patch
 )
 makedepends=('git')
 depends=(
@@ -56,16 +56,10 @@ package() {
   env_args=(
     "DEST_ENVIRONMENT=$lucid_glyph_environment_file"
     "DESTDIR=$pkgdir"
+    "DEST_CONF=/etc"
+    "DEST_USR=/usr"
+    "DISABLE_METADATA=1"
   )
 
-  env "${env_args[@]}" ./lucidglyph.sh install || exit 1
-
-  # Remove /usr/share/lucidglyph/info
-  rm --verbose "$pkgdir/usr/share/lucidglyph/info"
-
-  # Remove uninstaller shell script
-  rm --verbose "$pkgdir/usr/share/lucidglyph/uninstaller.sh"
-
-  # Remove empty files and directories
-  find "$pkgdir" -empty -delete
+  env "${env_args[@]}" ./lucidglyph.sh install --system || exit 1
 }
