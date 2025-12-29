@@ -6,14 +6,22 @@
 
 pkgname=python-numpy1
 pkgver=1.26.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('LicenseRef-custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('blas-openblas: faster linear algebra')
-makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'gcc-fortran' 'cython')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-pyproject-patcher'
+  'meson-python'
+  'cmake'
+  'gcc-fortran'
+  'cython'
+)
 checkdepends=('python-pytest' 'python-hypothesis' 'python-setuptools')
 provides=("python-numpy=$pkgver")
 conflicts=('python-numpy')
@@ -28,11 +36,22 @@ prepare() {
   cd numpy-$pkgver
 
   # Unpin the build system requirement to meson-python, so this package
-  # can be compatible to extra/meson-python, which is already on 0.16.0.
+  # can be compatible to extra/meson-python, which is already on 0.18.0.
   # The pin was never relevant for Linux anyway, as the reason upstream
   # originally added the pin was to shotgun-debug a macOS build issue [1].
+  #
+  # Also unpin the Cython build system requirement, whose upper bound
+  # was silently removed upstream [2].
+  #
   # [1]: https://github.com/numpy/numpy/pull/26365/files#r1586347845
-  sed -i -e 's/\(meson-python\)>[^"]*/\1/' pyproject.toml
+  # [2]: https://github.com/numpy/numpy/pull/23838
+  #
+  python << 'EOF'
+from pyproject_patcher import patch_in_place
+with patch_in_place('pyproject.toml') as toml:
+    toml.build_system_requires.strip_constraint('Cython')
+    toml.build_system_requires.strip_constraint('meson-python')
+EOF
 
   # Backport GitHub PR [2] for Python 3.13 compatibility
   # [2]: https://github.com/numpy/numpy/pull/26364
