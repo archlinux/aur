@@ -1,0 +1,1154 @@
+From 3ede54dcb39f133ac1c4f856aa417aa1626b2054 Mon Sep 17 00:00:00 2001
+From: Shoshana Berleant <sberleant@gmail.com>
+Date: Tue, 16 Jan 2024 17:10:57 -0500
+Subject: [PATCH 1/2] update `inkscape driver` to v3.9.7
+
+---
+ inkscape driver/axidraw.inx                   |   2 +-
+ inkscape driver/axidraw.py                    |  24 ++-
+ inkscape driver/axidraw_control.py            |  10 +-
+ inkscape driver/axidraw_naming.py             |   6 +-
+ .../axidraw_options/common_options.py         | 162 +++++++++---------
+ inkscape driver/axidraw_svg_reorder.py        |  17 +-
+ inkscape driver/clipping.py                   | 159 ++++-------------
+ inkscape driver/hershey_axidraw.inx           |   4 +-
+ 8 files changed, 153 insertions(+), 231 deletions(-)
+
+diff --git a/inkscape driver/axidraw.inx b/inkscape driver/axidraw.inx
+index 8b269ab..65a796a 100755
+--- a/inkscape driver/axidraw.inx	
++++ b/inkscape driver/axidraw.inx	
+@@ -58,7 +58,7 @@ support, email  contact@evilmadscientist.com  or visit axidraw.com/chat
+ <image width="10" height="5">axidraw_deps/axidrawinternal/inx_img/spacer_10px.svg</image>
+ 
+ <label indent="6"
+->Version 3.9.5      —      Copyright 2023 Evil Mad Science LLC</label>
++>Version 3.9.7      —      Copyright 2024 Evil Mad Science LLC</label>
+ 
+ 
+ 
+diff --git a/inkscape driver/axidraw.py b/inkscape driver/axidraw.py
+index a26e9d4..f02203a 100644
+--- a/inkscape driver/axidraw.py	
++++ b/inkscape driver/axidraw.py	
+@@ -26,7 +26,7 @@
+ """
+ # pylint: disable=pointless-string-statement
+ 
+-__version__ = '3.9.5'  # Dated 2023-12-06
++__version__ = '3.9.7'  # Dated 2024-01-16
+ 
+ import copy
+ import gettext
+@@ -79,13 +79,16 @@ def __init__(self, default_logging=True, user_message_fun=message.emit, params=N
+             params = import_module("axidrawinternal.axidraw_conf") # Default configuration file
+         self.params = params
+ 
+-        inkex.Effect.__init__(self)
+-        self.version_string = __version__
++        # axidraw.py is never actually called as a commandline tool, so why add options to
++        # self.arg_parser here? Because it helps populate the self.options object
++        # (argparse.Namespace) with necessary attributes and set the right defaults.
++        # See self.initialize_options
++        core_axidraw_options = common_options.core_axidraw_options(params.__dict__)
++        inkex.Effect.__init__(self, common_options = [core_axidraw_options])
++
++        self.initialize_options()
+ 
+-        self.OptionParser.add_option_group(
+-            common_options.core_options(self.OptionParser, params.__dict__))
+-        self.OptionParser.add_option_group(
+-            common_options.core_mode_options(self.OptionParser, params.__dict__))
++        self.version_string = __version__
+ 
+         self.plot_status = plot_status.PlotStatus()
+         self.pen = pen_handling.PenHandler()
+@@ -158,6 +161,13 @@ def set_defaults(self):
+         self.svg_transform = [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+         self.digest = None
+ 
++    def initialize_options(self):
++        """ Use the flags and arguments defined in __init__ to populate self.options with
++            the necessary attributes and set defaults """
++        self.getoptions([])
++        # self.getoptions initializes self.options by calling self.arg_parser.parse_args, which is
++        # not the intended use of parse_args
++
+     def update_options(self):
+         """ Parse and update certain options; called in effect and in interactive modes
+             whenever the options are updated """
+diff --git a/inkscape driver/axidraw_control.py b/inkscape driver/axidraw_control.py
+index e681d14..8166f21 100644
+--- a/inkscape driver/axidraw_control.py	
++++ b/inkscape driver/axidraw_control.py	
+@@ -63,12 +63,9 @@ def __init__( self, default_logging = True, params = None ):
+         self.params = params
+         self.status_code = 0
+ 
+-        inkex.Effect.__init__( self )
+-
+-        self.OptionParser.add_option_group(
+-            common_options.core_options(self.OptionParser, params.__dict__))
+-        self.OptionParser.add_option_group(
+-            common_options.core_mode_options(self.OptionParser, params.__dict__))
++        # certain options are common to many extensions in this library
++        core_axidraw_options = common_options.core_axidraw_options(params.__dict__)
++        inkex.Effect.__init__(self, common_options = [core_axidraw_options])
+ 
+         self.default_logging = default_logging
+         if default_logging:
+@@ -198,7 +195,6 @@ def plot_to_axidraw( self, port, primary):
+ 
+         ad = axidraw.AxiDraw(params=self.params, default_logging=self.default_logging)
+         ad.set_up_pause_receiver(self.software_initiated_pause_event)
+-        ad.getoptions([])
+ 
+         prim = "primary" if primary else "secondary"
+         logger.info("plot_to_axidraw started, at port %s (%s)", port, prim)
+diff --git a/inkscape driver/axidraw_naming.py b/inkscape driver/axidraw_naming.py
+index e2dee24..0dfbd9c 100644
+--- a/inkscape driver/axidraw_naming.py	
++++ b/inkscape driver/axidraw_naming.py	
+@@ -42,9 +42,9 @@ def __init__( self ):
+ 
+         self.version_string = "2.2.0" # Dated 2023-01-01
+ 
+-        self.OptionParser.add_option( "--mode", action="store", type="string",
++        self.arg_parser.add_argument( "--mode", action="store", type=str,
+                 dest="mode", default="plot", help="Mode (or GUI tab) selected" )
+-        self.OptionParser.add_option( "--nickname", action="store", type="string",
++        self.arg_parser.add_argument( "--nickname", action="store", type=str,
+                 dest="nickname", default="", help="The nickname to assign" )
+ 
+     def effect( self ):
+@@ -60,8 +60,6 @@ def effect( self ):
+ 
+         ad_ref = axidraw.AxiDraw()
+ 
+-        ad_ref.getoptions([])
+-
+         ad_ref.called_externally = True
+ 
+         # Pass the document off for plotting
+diff --git a/inkscape driver/axidraw_options/common_options.py b/inkscape driver/axidraw_options/common_options.py
+index 20a9fed..00dfdb8 100644
+--- a/inkscape driver/axidraw_options/common_options.py	
++++ b/inkscape driver/axidraw_options/common_options.py	
+@@ -1,104 +1,110 @@
+-import runpy
+-import sys
++import argparse
+ 
+-from optparse import OptionGroup
++from ink_extensions import inkex
+ 
+-def core_options(parser, config):
+-    options = OptionGroup(parser, "Core Options")
++def core_axidraw_options(config):
++    mode_options = core_mode_options(config)
++    options = core_options(config)
++    return argparse.ArgumentParser(add_help = False, parents = [mode_options, options])
+ 
+-    options.add_option("--speed_pendown",\
+-                        type="int", action="store", dest="speed_pendown", \
++def core_options(config):
++    ''' options that are used in extensions in this library, as well as in hershey-advanced and
++    potentially others '''
++    options = argparse.ArgumentParser(add_help = False) # parent parser
++
++    options.add_argument("--speed_pendown",\
++                        type=int, action="store", dest="speed_pendown", \
+                         default=config["speed_pendown"], \
+                         help="Maximum plotting speed, when pen is down (1-100)")
+ 
+-    options.add_option("--speed_penup",\
+-                        type="int", action="store", dest="speed_penup", \
++    options.add_argument("--speed_penup",\
++                        type=int, action="store", dest="speed_penup", \
+                         default=config["speed_penup"], \
+                         help="Maximum transit speed, when pen is up (1-100)")
+ 
+-    options.add_option("--accel",\
+-                        type="int", action="store", dest="accel", \
++    options.add_argument("--accel",\
++                        type=int, action="store", dest="accel", \
+                         default=config["accel"], \
+                         help="Acceleration rate factor (1-100)")
+ 
+-    options.add_option("--pen_pos_down",\
+-                        type="int", action="store", dest="pen_pos_down",\
++    options.add_argument("--pen_pos_down",\
++                        type=int, action="store", dest="pen_pos_down",\
+                         default=config["pen_pos_down"],\
+                         help="Height of pen when lowered (0-100)")
+ 
+-    options.add_option("--pen_pos_up",\
+-                        type="int", action="store", dest="pen_pos_up", \
++    options.add_argument("--pen_pos_up",\
++                        type=int, action="store", dest="pen_pos_up", \
+                         default=config["pen_pos_up"], \
+                         help="Height of pen when raised (0-100)")
+ 
+-    options.add_option("--pen_rate_lower",\
+-                        type="int", action="store", dest="pen_rate_lower",\
++    options.add_argument("--pen_rate_lower",\
++                        type=int, action="store", dest="pen_rate_lower",\
+                         default=config["pen_rate_lower"], \
+                         help="Rate of lowering pen (1-100)")
+ 
+-    options.add_option("--pen_rate_raise",\
+-                        type="int", action="store", dest="pen_rate_raise",\
++    options.add_argument("--pen_rate_raise",\
++                        type=int, action="store", dest="pen_rate_raise",\
+                         default=config["pen_rate_raise"],\
+                         help="Rate of raising pen (1-100)")
+ 
+-    options.add_option("--pen_delay_down",\
+-                        type="int", action="store", dest="pen_delay_down",\
++    options.add_argument("--pen_delay_down",\
++                        type=int, action="store", dest="pen_delay_down",\
+                         default=config["pen_delay_down"],\
+                         help="Optional delay after pen is lowered (ms)")
+ 
+-    options.add_option("--pen_delay_up",\
+-                        type="int", action="store", dest="pen_delay_up", \
++    options.add_argument("--pen_delay_up",\
++                        type=int, action="store", dest="pen_delay_up", \
+                         default=config["pen_delay_up"],\
+                         help="Optional delay after pen is raised (ms)")
+ 
+-    options.add_option("--no_rotate",\
+-                        type="inkbool", action="store", dest="no_rotate",\
++    options.add_argument("--no_rotate",\
++                        type=inkex.boolean_option, action="store", dest="no_rotate",\
+                         default=False,\
+                         help="Disable auto-rotate; preserve plot orientation")
+ 
+-    options.add_option("--const_speed",\
+-                        type="inkbool", action="store", dest="const_speed",\
++    options.add_argument("--const_speed",\
++                        type=inkex.boolean_option, action="store", dest="const_speed",\
+                         default=config["const_speed"],\
+                         help="Use constant velocity when pen is down")
+ 
+-    options.add_option("--report_time",\
+-                        type="inkbool", action="store", dest="report_time",\
++    options.add_argument("--report_time",\
++                        type=inkex.boolean_option, action="store", dest="report_time",\
+                         default=config["report_time"],\
+                         help="Report time elapsed")
+ 
+-    options.add_option("--page_delay",\
+-                        type="int", action="store", dest="page_delay",\
++    options.add_argument("--page_delay",\
++                        type=int, action="store", dest="page_delay",\
+                         default=config["page_delay"],\
+                         help="Optional delay between copies (s).")
+ 
+-    options.add_option("--preview",\
+-                        type="inkbool", action="store", dest="preview",\
++    options.add_argument("--preview",\
++                        type=inkex.boolean_option, action="store", dest="preview",\
+                         default=config["preview"],\
+                         help="Preview mode; simulate plotting only.")
+ 
+-    options.add_option("--rendering",\
+-                        type="int", action="store", dest="rendering",\
++    options.add_argument("--rendering",\
++                        type=int, action="store", dest="rendering",\
+                         default=config["rendering"],\
+                         help="Preview mode rendering option (0-3). 0: None. " \
+                         + "1: Pen-down movement. 2: Pen-up movement. 3: All movement.")
+ 
+-    options.add_option("--model",\
+-                        type="int", action="store", dest="model",\
++    options.add_argument("--model",\
++                        type=int, action="store", dest="model",\
+                         default=config["model"],\
+                         help="AxiDraw Model (1-6). 1: AxiDraw V2 or V3. " \
+                         + "2: AxiDraw V3/A3 or SE/A3. 3: AxiDraw V3 XLX. " \
+                         + "4: AxiDraw MiniKit. 5: AxiDraw SE/A1. 6: AxiDraw SE/A2.")
+ 
+-    options.add_option("--penlift",\
+-                        type="int", action="store", dest="penlift",\
++    options.add_argument("--penlift",\
++                        type=int, action="store", dest="penlift",\
+                         default=config["penlift"],\
+                         help="pen lift servo configuration (1-3). " \
+                         + "1: Default for AxiDraw model. " \
+                         + "2: Standard servo (lowest connector position). " \
+                         + "3: Narrow-band brushless servo (3rd position up).")
+ 
+-    options.add_option("--port_config",\
+-                        type="int", action="store", dest="port_config",\
++    options.add_argument("--port_config",\
++                        type=int, action="store", dest="port_config",\
+                         default=config["port_config"],\
+                         help="Port use code (0-3)."\
+                         +" 0: Plot to first unit found, unless port is specified."\
+@@ -106,38 +112,38 @@ def core_options(parser, config):
+                         + "2: Plot to specified AxiDraw. "\
+                         + "3: Plot to all AxiDraw units. ")
+ 
+-    options.add_option("--port",\
+-                        type="string", action="store", dest="port",\
++    options.add_argument("--port",\
++                        type=str, action="store", dest="port",\
+                         default=config["port"],\
+                         help="Serial port or named AxiDraw to use")
+ 
+-    options.add_option("--setup_type",\
+-                        type="string", action="store", dest="setup_type",\
++    options.add_argument("--setup_type",\
++                        type=str, action="store", dest="setup_type",\
+                         default="align",\
+                         help="Setup option selected (GUI Only)")
+ 
+-    options.add_option("--resume_type",\
+-                        type="string", action="store", dest="resume_type",\
++    options.add_argument("--resume_type",\
++                        type=str, action="store", dest="resume_type",\
+                         default="plot",
+                         help="The resume option selected (GUI Only)")
+ 
+-    options.add_option("--auto_rotate",\
+-                        type="inkbool", action="store", dest="auto_rotate",\
++    options.add_argument("--auto_rotate",\
++                        type=inkex.boolean_option, action="store", dest="auto_rotate",\
+                         default=config["auto_rotate"], \
+                         help="Auto select portrait vs landscape orientation")
+ 
+-    options.add_option("--random_start",\
+-                        type="inkbool", action="store", dest="random_start",\
++    options.add_argument("--random_start",\
++                        type=inkex.boolean_option, action="store", dest="random_start",\
+                         default=config["random_start"], \
+                         help="Randomize start locations of closed paths")
+ 
+-    options.add_option("--hiding",\
+-                        type="inkbool", action="store", dest="hiding",\
++    options.add_argument("--hiding",\
++                        type=inkex.boolean_option, action="store", dest="hiding",\
+                         default=config["hiding"], \
+                         help="Hidden-line removal")
+ 
+-    options.add_option("--reordering",\
+-                        type="int", action="store", dest="reordering",\
++    options.add_argument("--reordering",\
++                        type=int, action="store", dest="reordering",\
+                         default=config["reordering"],\
+                         help="SVG reordering option (0-4; 3 deprecated)."\
+                         + " 0: Least: Only connect adjoining paths."\
+@@ -145,66 +151,68 @@ def core_options(parser, config):
+                         + " 2: Full: Also allow path reversal."\
+                         + " 4: None: Strictly preserve file order.")
+ 
+-    options.add_option("--resolution",\
+-                        type="int", action="store", dest="resolution",\
++    options.add_argument("--resolution",\
++                        type=int, action="store", dest="resolution",\
+                         default=config["resolution"],\
+                         help="Resolution option selected")
+ 
+-    options.add_option("--digest",\
+-                        type="int", action="store", dest="digest",\
++    options.add_argument("--digest",\
++                        type=int, action="store", dest="digest",\
+                         default=config["digest"],\
+                         help="Plot optimization option (0-2)."\
+                         + "0: No change to behavior or output (Default)."\
+                         + "1: Output 'plob' digest, not full SVG, when saving file. "\
+                         + "2: Disable plots and previews; generate digest only. ")
+ 
+-    options.add_option("--webhook",\
+-                        type="inkbool", action="store", dest="webhook",\
++    options.add_argument("--webhook",\
++                        type=inkex.boolean_option, action="store", dest="webhook",\
+                         default=config["webhook"],\
+                         help="Enable webhook callback when a plot finishes")
+ 
+-    options.add_option("--webhook_url",\
+-                        type="string", action="store", dest="webhook_url",\
++    options.add_argument("--webhook_url",\
++                        type=str, action="store", dest="webhook_url",\
+                         default=config["webhook_url"],\
+                         help="Webhook URL to be used if webhook is enabled")
+ 
+-    options.add_option("--submode",\
+-                        action="store", type="string", dest="submode",\
++    options.add_argument("--submode",\
++                        action="store", type=str, dest="submode",\
+                         default="none", \
+                         help="Secondary GUI tab.")
+ 
+     return options
+ 
+-def core_mode_options(parser, config):
+-    options = OptionGroup(parser, "Mode Options")
++def core_mode_options(config):
++    ''' these are also common options, but unlike options in `core_options`, these
++    are options that are more specific to this repo '''
++    options = argparse.ArgumentParser(add_help = False) # parent parser
+ 
+-    options.add_option("--mode",\
+-                        action="store", type="string", dest="mode",\
++    options.add_argument("--mode",\
++                        action="store", type=str, dest="mode",\
+                         default=config["mode"], \
+                         help="Mode or GUI tab. One of: [plot, layers, align, toggle, cycle"\
+                         + ", manual, sysinfo, version, res_plot, res_home]. Default: plot.")
+ 
+-    options.add_option("--manual_cmd",\
+-                        type="string", action="store", dest="manual_cmd",\
++    options.add_argument("--manual_cmd",\
++                        type=str, action="store", dest="manual_cmd",\
+                         default=config["manual_cmd"],\
+                         help="Manual command. One of: [fw_version, raise_pen, lower_pen, "\
+                         + "walk_x, walk_y, walk_mmx, walk_mmy, walk_home, enable_xy, "\
+                         + "disable_xy, res_read, res_adj_in, res_adj_mm, bootload, "\
+                         + "strip_data, read_name, list_names, write_name]. Default: fw_version")
+ 
+-    options.add_option("--dist", "--walk_dist",\
+-                        type="float", action="store", dest="dist",\
++    options.add_argument("--dist", "--walk_dist",\
++                        type=float, action="store", dest="dist",\
+                         default=config["dist"],\
+                         help="Distance for manual walk or changing resume position. "\
+                             + "(The argument name walk_dist is deprecated.)")
+ 
+-    options.add_option("--layer",\
+-                        type="int", action="store", dest="layer",\
++    options.add_argument("--layer",\
++                        type=int, action="store", dest="layer",\
+                         default=config["default_layer"],\
+                         help="Layer(s) selected for layers mode (1-1000). Default: 1")
+ 
+-    options.add_option("--copies",\
+-                        type="int", action="store", dest="copies",\
++    options.add_argument("--copies",\
++                        type=int, action="store", dest="copies",\
+                         default=config["copies"],\
+                         help="Copies to plot, or 0 for continuous plotting. Default: 1")
+ 
+diff --git a/inkscape driver/axidraw_svg_reorder.py b/inkscape driver/axidraw_svg_reorder.py
+index 0aeec95..29b05dd 100644
+--- a/inkscape driver/axidraw_svg_reorder.py	
++++ b/inkscape driver/axidraw_svg_reorder.py	
+@@ -56,14 +56,15 @@
+ <_option value=2>Break apart</_option>
+ </param>
+ 
+-self.OptionParser.add_option( "--path_handling",\
+-action="store", type="int", dest="path_handling",\
++self.arg_parser.add_argument( "--path_handling",\
++action="store", type=int, dest="path_handling",\
+ default=1,help="How compound paths are handled")
+ 
+ 
+ * Consider re-introducing GUI method for rendering:
+ 
+-<param indent="1" name="rendering" type="boolean" _gui-text="Preview pen-up travel">false</param> 
++<param indent="1" name="rendering" type=inkex.boolean_option _gui-text="Preview pen-up travel">
++  false</param>
+ 
+ 
+ """
+@@ -78,14 +79,14 @@ class ReorderEffect(inkex.Effect):
+         be sorted.
+         
+     """
+-    
++
+     def __init__( self ):
+         inkex.Effect.__init__( self )
+-    
+-        self.OptionParser.add_option( "--reordering",\
+-        action="store", type="int", dest="reordering",\
++
++        self.arg_parser.add_argument( "--reordering",\
++        action="store", type=int, dest="reordering",\
+         default=1,help="How groups are handled")
+-        
++
+         self.auto_rotate = True
+ 
+     def effect(self):
+diff --git a/inkscape driver/clipping.py b/inkscape driver/clipping.py
+index 9604194..5bf4c3a 100644
+--- a/inkscape driver/clipping.py	
++++ b/inkscape driver/clipping.py	
+@@ -117,8 +117,6 @@ def _extract_paths(self, layers):
+ 
+         paths = filter(lambda p: p is not None, paths)
+ 
+-        paths = _HorizontalLineWorkaround.prepare(paths)
+-
+         paths = self._flatten_nonfilled_paths(paths)
+ 
+         return paths, layer_dict
+@@ -221,8 +219,26 @@ def __init__(self, path_item, layer_id, subpaths, is_stroked, is_filled, **kwarg
+         if self.is_filled:
+             self.fill_rule = fill_rule
+ 
++        self.adjust_horizontal_segments()
++
+         assert len(kwargs.keys()) == 0
+ 
++    def adjust_horizontal_segments(self):
++        ''' We've encountered a couple of very odd bugs, where clipper/pyclipper doesn't
++        handle horizontal line segments very well. '''
++        # naive implementation
++        X = 0
++        Y = 1
++
++        epsilon = 1
++        for subpath in self.subpaths:
++            i = 1
++            while i < len(subpath):
++                if subpath[i][Y] == subpath[i - 1][Y]: # y coordinates of this and prev point are equal
++                    subpath[i] = (subpath[i][X], subpath[i][Y] + epsilon) # bump the y coordinate a tiny bit
++                    epsilon *= -1 # flip the sign of epsilon so inaccuracy doesn't propagate
++                i += 1
++
+     @classmethod
+     def from_path_item(cls, path_item, layer_id):
+         ''' path_item = an item of class PathItem. '''
+@@ -300,15 +316,7 @@ def clip_filled(self, clippee):
+ 
+     def clip_stroked(self, clippee):
+         ''' used when clippee is stroked '''
+-        use_workaround = _HorizontalLineWorkaround.is_necessary(self, clippee)
+-        if use_workaround:
+-            _HorizontalLineWorkaround.begin(self, clippee)
+-
+         results = self.clip(clippee, PathType.STROKE, self._rejoin)
+-
+-        if use_workaround:
+-            _HorizontalLineWorkaround.end(self, clippee, results)
+-
+         return results
+ 
+     def clip(self, clippee, path_type, postclip_process):
+@@ -370,6 +378,7 @@ def _use_pyclipper_to_clip(self, clippee, clippee_fill_rule, path_type):
+     def _complete_the_loop(paths):
+         ''' pyclipper returns the closed paths without the last point,
+         (which is the same as the first point), but PathItem explicitly states the last point '''
++        paths = [pyclipper.CleanPolygon(path) if len(path) > 2 else path for path in paths]
+         return [ path + copy(path[:1]) for path in paths ]
+ 
+     @staticmethod
+@@ -384,19 +393,30 @@ def join_2(path_a, path_b):
+             joined = True
+             return path_a + path_b[1:] # so we don't have the same coordinate twice in a row
+ 
++        def almost_equal(a, b):
++            # due to horizontal adjusting, Y coordinates may be off by one
++            X, Y = 0, 1
++            if a[X] != b[X]:
++                return False
++
++            if abs(a[Y] - b[Y]) > 1:
++                return False
++
++            return True
++
+         i = 0
+         while i < len(paths):
+             j = i + 1
+             while j < len(paths):
+                 joined = False
+-                if paths[i][0] == paths[j][0]:
++                if almost_equal(paths[i][0], paths[j][0]):
+                     paths[i].reverse()
+                     paths[i] = join_2(paths[i], paths[j])
+-                elif paths[i][0] == paths[j][-1]:
++                elif almost_equal(paths[i][0], paths[j][-1]):
+                     paths[i] = join_2(paths[j], paths[i])
+-                elif paths[i][-1] == paths[j][0]:
++                elif almost_equal(paths[i][-1], paths[j][0]):
+                     paths[i] = join_2(paths[i], paths[j])
+-                elif paths[i][-1] == paths[j][-1]:
++                elif almost_equal(paths[i][-1], paths[j][-1]):
+                     paths[j].reverse()
+                     paths[i] = join_2(paths[i], paths[j])
+ 
+@@ -423,114 +443,3 @@ def __str__(self):
+ class PathType(Enum):
+     FILL = "fill"
+     STROKE = "stroke"
+-
+-class _HorizontalLineWorkaround:
+-    ''' The original clipper library contains a bug that applies only to
+-    certain horizontal two-vertex lines when clipped by a polygon (see
+-    https://sourceforge.net/p/polyclipping/bugs/190/). Specifically, it
+-    applies only to horizontal lines whose y axis coordinates are a lower
+-    number than (or an equal number to) the y axis coordinates of the polygon. The bug remains unfixed
+-    in the last release of the clipper library (6.4).
+-
+-    As of summer 2022, the original clipper library is no longer maintained, in
+-    favor of clipper2 (see https://sourceforge.net/projects/polyclipping/). It
+-    is unclear whether or not the bug has been fixed in the clipper2 library;
+-    furthermore, the pyclipper wrapper still packages the original clipper
+-    library and plans to transition to clipper2 are unclear (see
+-    https://github.com/fonttools/pyclipper/issues/46).
+-
+-    This workaround is inspired by a suggestion in a related bug report
+-    (https://sourceforge.net/p/polyclipping/bugs/183/). The suggestion calls it
+-    impractical, but considering the circumstance is a fairly rare occurrence, I
+-    think it's acceptable. Hopefully it eventually becomes unnecessary.'''
+-    @classmethod
+-    def is_necessary(cls, clipper, clippee):
+-        '''
+-        clippee is an object of type _ClippingPathItem_pyclipper
+-
+-        returns True if clippee has a subpath with two vertices, this subpath
+-        is exactly horizontal, and the y-coordinates are smaller than the
+-        y-coordinates of the clipping polygon; else False
+-        '''
+-        def min_y(subpaths):
+-            if len(subpaths) == 0: # should never happen but you never know
+-                return -100
+-            min_y = subpaths[0][0][1]
+-            for subpath in subpaths:
+-                min_y = min(*[point[1] for point in subpath], min_y)
+-            return min_y
+-
+-        for subpath in clippee.subpaths:
+-            if cls.is_horizontal(subpath) and min_y([subpath]) <= min_y(clipper.subpaths):
+-
+-                return True
+-        return False
+-
+-    @classmethod
+-    def is_horizontal(cls, path):
+-        return len(path) == 2 and path[0][1] == path[1][1]
+-
+-    @classmethod
+-    def is_vertical(cls, path):
+-        return cls.is_horizontal(cls._inverted_coords([path])[0])
+-
+-    @classmethod
+-    def begin(cls, clipper, clippee):
+-        ''' essentially swaps the x and y axes, since the bug does not apply to vertical lines '''
+-        for path_item in [clipper, clippee]:
+-            cls._swap_axes(path_item)
+-
+-    @classmethod
+-    def end(cls, clipper, clippee, results):
+-        ''' swap the axes back '''
+-        for path_item in [clipper, clippee, *results]:
+-            cls._swap_axes(path_item)
+-
+-    @classmethod
+-    def prepare(cls, path_items):
+-        ''' hack hack hack. the workaround does not work if one stroked path
+-        item contains BOTH a horizontal subpath and a vertical
+-        subpath--therefore if there is a path item with both, separate them.
+-        Luckily I think this should be very unusual '''
+-        new_path_items = []
+-        for path_item in path_items:
+-            if len(path_item.subpaths) <= 1 or not path_item.is_stroked:
+-                new_path_items.append(path_item)
+-                continue
+-
+-            horiz_subpaths = list(filter(cls.is_horizontal, path_item.subpaths))
+-            if len(horiz_subpaths) == 0:
+-                new_path_items.append(path_item)
+-                continue
+-
+-            verti_subpaths = list(filter(cls.is_vertical, path_item.subpaths))
+-            if len(verti_subpaths) == 0:
+-                new_path_items.append(path_item)
+-                continue
+-
+-            # has horiz and verti subpaths. separate into one path_item with
+-            # only horiz subpaths and another path_item with everything else
+-            horiz_path_item = _ClippingPathItem_pyclipper.from_cpath(
+-                    path_item, horiz_subpaths, is_stroked=True, is_filled=False)
+-            other_subpaths = list(filterfalse(cls.is_horizontal, path_item.subpaths))
+-            other_path_item = _ClippingPathItem_pyclipper.from_cpath(
+-                    path_item, other_subpaths,
+-                    is_stroked=path_item.is_stroked, is_filled=path_item.is_filled)
+-
+-            new_path_items.extend([horiz_path_item, other_path_item])
+-
+-        return new_path_items
+-
+-    @classmethod
+-    def _swap_axes(cls, path_item):
+-        path_item.subpaths = cls._inverted_coords(path_item.subpaths)
+-
+-    @staticmethod
+-    def _inverted_coords(paths):
+-        ''' if performance becomes a problem (unlikely), functools.cache may be helpful '''
+-        swapped_paths =  []
+-        for path in paths:
+-            x_coords = [point[0] for point in path]
+-            y_coords = [point[1] for point in path]
+-            swapped_paths.append(list(zip(y_coords, x_coords)))
+-        return swapped_paths
+diff --git a/inkscape driver/hershey_axidraw.inx b/inkscape driver/hershey_axidraw.inx
+index 6fedfff..0238247 100755
+--- a/inkscape driver/hershey_axidraw.inx	
++++ b/inkscape driver/hershey_axidraw.inx	
+@@ -122,10 +122,10 @@ distribution.
+   <effect needs-live-preview="true">
+     <object-type>all</object-type>
+     <effects-menu>
+-      <submenu _name="AxiDraw Utilities"/>
++      <submenu name="AxiDraw Utilities"/>
+     </effects-menu>
+   </effect>
+     <script>
+-      <command reldir="extensions" interpreter="python">hershey.py</command>
++      <command location="extensions" interpreter="python">hershey.py</command>
+     </script>
+ </inkscape-extension>
+
+From 847879d799f50e14e375390aa66ad89bc5851d11 Mon Sep 17 00:00:00 2001
+From: Shoshana Berleant <sberleant@gmail.com>
+Date: Wed, 17 Jan 2024 13:14:27 -0500
+Subject: [PATCH 2/2] update cli dir to 3.9.7
+
+---
+ cli/Installation.txt               | 174 +++++++++++------------------
+ cli/README.txt                     |   2 +-
+ cli/axicli/axidraw_cli.py          |   2 +-
+ cli/axicli/utils.py                |   4 +-
+ cli/pyaxidraw/axidraw.py           |   2 +-
+ cli/pyproject.toml                 |   4 +-
+ cli/requirements/requirements.txt  |   4 +-
+ cli/test/assets/axidraw_conf.py    |   6 +-
+ cli/test/test_axicli/test_utils.py |   9 +-
+ 9 files changed, 86 insertions(+), 121 deletions(-)
+
+diff --git a/cli/Installation.txt b/cli/Installation.txt
+index 9ec32f1..40dea78 100755
+--- a/cli/Installation.txt
++++ b/cli/Installation.txt
+@@ -1,13 +1,13 @@
+ AxiDraw CLI and Python API — Installation
+ 
+-Supported on python 3.6 and newer
++Supported on python 3.8 and newer
+ Mac, Windows, and Linux.
+ 
+ 
+ —————————————————————————————————————————
+ INSTALLATION
+ 
+-1.) Install python
++1.) Install python (minimum version 3.8)
+ 
+ Macs and linux boxes usually have python pre-installed.
+ 
+@@ -15,67 +15,52 @@ If you are on Windows, you'll probably not already have this on your computer.
+ Go to: https://www.python.org/download/
+ 
+ 
+-
+-2.) Install pip
+-
+-python versions 3.6 and newer come with pip pre-installed.
+-
+-If you do not have pip, download and install it, following the instructions at:
+-https://pip.pypa.io/en/stable/installing/
+-
+-
+-3.) [Optional:] Use virtualenv to control versioning
+-
+-
+-Install virtualenv:
+-
+-```
+-pip install virtualenv
+-```
++2.) [Recommended, optional] Use `venv` to control versioning
+ 
+ Create a virtual python environment:
+ 
+-```
+-virtualenv -p $(which python3) venv
+-```
++    python3 -m venv venv
++
++Replace `python3` with the name of the python on your system you want to use, e.g.  `python`, `py`,
++`python3.11`, etc.
+ 
+ This creates a directory called `venv` which contains the files for the new environment.
+-Replace `python3` with the name of the python on your system you want to use, e.g.  `python3.5`, `python3.6`, etc.
+ 
+-Enter the environment:
++Activate the environment:
+ 
+-```
+-source venv/bin/activate
+-```
++    source venv/bin/activate # bash/zsh shells, like on mac, ubuntu
++    venv\Scripts\Activate.ps1 # windows powershell
+ 
+-Now your command prompt should be prefixed with "(venv)", indicating that you are now in the virtual environment you created.
+-You can now continue as normal.
+-More reading: https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv
++Now your command prompt should be prefixed with `(venv)`, indicating that you are now in the virtual
++environment you created.  You can now continue as normal.  More reading about python virtual
++environments: https://docs.python.org/3/library/venv.html
+ 
+ 
+-4). Install this software (pyaxidraw and axicli)
++3.) Install this software (`pyaxidraw` and `axicli`)
+ 
+ Unzip the archive and move into the folder:
+ 
+-```
+-cd /Users/username/Documents/axidraw-api/  (Your location and path will vary)
+-```
++    cd /Users/username/Documents/axidraw-api/  (Your location and path will vary)
+ 
+-Then use pip to install it.
++Then use pip to install it:
+ 
+-```
+-pip install .
+-```
+-(On Windows, you may need to use "python -m pip install .")
++    pip install .
+ 
++Some additional flags on the `pip` command (like `--user`) are not supported in most situations. If
++you need to customize the installation (e.g., with extra `pip` flags like `--user`), you can modify
++the following commands and use them instead:
+ 
+-5.) Test that the software is operational:
++    pip install prebuild_dependencies/* # add flags here, e.g. `--user`
++    pip install . # add flags here, e.g. `--user`
++
++4.) Test that the software is operational:
+ 
+ A (very simple) sample file is included. You can plot it with the following command line:
+ 
+-axicli test/assets/AxiDraw_trivial.svg
++    axicli test/assets/AxiDraw_trivial.svg
+ 
+-If everything is set up correctly, this should plot the SVG file, which contains a very simple drawing.
++If everything is set up correctly, this should plot the SVG file, which contains a very simple
++drawing.
+ 
+ 
+ 
+@@ -84,116 +69,91 @@ GETTING STARTED
+ 
+ * Getting started with the command-line interface:
+ You can get additional documentation and command-line usage options by using
++
+     axicli --help
++
+ or refer to the full documentation, at: https://axidraw.com/doc/cli_api/
+ 
+ An example file is included. To plot it, use:
++
+     axicli test/assets/AxiDraw_trivial.svg
+ 
+ * Getting started with the python API:
+ Two example python scripts are included. See README.txt for instructions.
+-For the full python API documentation, please see: https://axidraw.com/doc/py_api/
+ 
++For the full python API documentation, please see: https://axidraw.com/doc/py_api/. The same API
++documentation is also included in the `documentation` folder of this download.
+ 
+ ________________________________________
+ TROUBLESHOOTING
+ 
+-(A) If you get errors (especially on Windows) indicating that axicli is not a recognized command, you may need to use
+-    python -m axicli <input> 
+-instead. You can add the python scripts directory to your system path in order to use axicli directly.
++(A) If you get errors (especially on Windows) indicating that `axicli` or `pip` is not a recognized
++command, you may need to add `python -m` to the beginning of the commands, e.g.:
++
++    python -m axicli <input> '
++    python -m pip install <etc>
++
++You may need to replace `python` with the name of the python on your system you want to use, e.g.
++`python3`, `python3.11`, etc.
++
++You can add the python scripts directory to your system path in order to use `axicli` or `pip`
++directly.
++
++(B) If you get the error “The fantastic lxml wrapper for libxml2 is required [...]”, then you do not
++have lxml installed. Additional help for lxml installation is available here:
++http://lxml.de/installation.html.
+ 
+-(B) If you get the error “The fantastic lxml wrapper for libxml2 is required [...]”,
+-then you do not have lxml installed. See supplementary instructions below and/or contact technical support.
++You can also contact technical support.
+ 
+ (C) If you get the error "ImportError: No module named pyserial", then you do not have pyserial installed.
+ 
+-(D) If you get the error "Failed to connect to AxiDraw", then your computer cannot locate the AxiDraw via USB. Check that it's plugged in.
++(D) If you get the error "Failed to connect to AxiDraw":
++    1. On linux, this message may indicate permissions problems. Refer to https://wiki.evilmadscientist.com/Axidraw_Software_Installation#About_adding_your_user_account_to_the_.22dialout.22_group
++    2. Your computer may not be able to locate the AxiDraw via USB. Check that it's plugged in.
+ 
+-If you do not have an AxiDraw in front of you, you can still use various offline functions. The following will render a preview of how the file will plot, and report the time that it will take to plot, even with no AxiDraw machine present:
++If you do not have an AxiDraw in front of you, you can still use various offline functions. The
++following will render a preview of how the file will plot, and report the time that it will take to
++plot, even with no AxiDraw machine present:
+ 
+-axicli test/assets/AxiDraw_trivial.svg -Tvg3 -o outputfile.svg
++    axicli test/assets/AxiDraw_trivial.svg -Tvg3 -o outputfile.svg
+ 
+ 
+ 
+ _________________________________________
+ UNINSTALLING
+ 
+-If you used `virtualenv` (step 3), uninstalling is as simple as leaving the virtual environment.
+-The easiest way to do that is to close your terminal.
++If you used a python virtual environment (step 2), uninstalling is as simple as leaving the virtual
++environment.  The easiest way to do that is to close your terminal.
+ 
+-If you did not use `virtualenv`, use pip to uninstall:
++If you did not use a virtual environment, use pip to uninstall:
+ 
+-```
+-pip uninstall pyaxidraw
+-```
++    pip uninstall pyaxidraw axicli
+ 
+-You may also want to uninstall pyaxidraw's dependencies, assuming you aren't using them for anything else:
++You may also want to uninstall `pyaxidraw`'s dependencies, assuming you aren't using them for anything
++else:
+ 
+-```
+-pip uninstall -r requirements/requirements.txt
+-```
++    pip uninstall -r requirements/requirements.txt
+ 
+ 
+ 
+ —————————————————————————————————————————
+ SUPPLEMENTARY INSTRUCTIONS
+ 
+-If you don't already have pip installed or want to install dependencies manually, you may find the following helpful.
+-
+ Recommended procedures for installing this software:
+ 
+ (A) Mac Users:
+ 
+-From the terminal, enter these three, providing password when requested:
+-sudo easy_install pip
+-xcode-select --install
+-
+-Then, in the AxiDraw API directory: 
+-sudo -H pip install .
+-
++From the terminal, enter the following, providing password when requested:
+ 
+-Additional help for lxml installation is available here:
+-http://lxml.de/installation.html
++    xcode-select --install
+ 
+ 
+ (B) Windows Users:
+ 
+-Install PIP on your computer, following the instructors here:
+-https://pip.pypa.io/en/stable/installing/
+-
+-
+-If pip is not directly accessible with the command 'pip' after installation, you may need to use:
+-
+-python -m pip install .
+-
+-You may need to open your command prompt with a right-click and "Run as administrator" in order to avoid permissions errors.
+-
+-
+-If you run into difficulties with installing lxml, you may prefer to start with precompiled binaries for your particular version of Windows and Python.
+-
+-Download the appropriate "WHL" file for your version of
+-http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
+-
+-* For a typical modern Windows 10 computer running python 3.6, the download might be something similar to: lxml‑3.7.3‑cp36‑cp36m‑win_amd64.whl
+-
+-
+-Once you have this "whl" package downloaded, you can install it with:
+-python -m pip install some-package.whl
+-
+-(As before, you may need to run your command prompt as administrator.)
+-
+-Additional help for lxml installation is available here:
+-http://lxml.de/installation.html
+-
+-
+-(C) Linux Users
+-
+-Install PIP on your computer, following the instructors here:
+-https://pip.pypa.io/en/stable/installing/
++You may need to open your command prompt with a right-click and "Run as administrator" in order to
++avoid permissions errors.
+ 
+-If you run into difficulty with the lxml installation, additional is available here:
+-http://lxml.de/installation.html
+ 
+ 
+ —————————————————————————————————————————
+-Copyright 2020 Windell H Oskay, Evil Mad Scientist Laboratories
++Copyright 2021 Windell H Oskay, Evil Mad Scientist Laboratories
+diff --git a/cli/README.txt b/cli/README.txt
+index 76df0a0..df57ce9 100644
+--- a/cli/README.txt
++++ b/cli/README.txt
+@@ -1,7 +1,7 @@
+ Stand-alone command line interface and python API
+ for the AxiDraw writing and drawing machine.
+ 
+-Supported on python 3.7+, Mac, Windows, and Linux.
++Supported on python 3.8+, Mac, Windows, and Linux.
+ 
+ 
+ Copyright 2023 Evil Mad Scientist Laboratories
+diff --git a/cli/axicli/axidraw_cli.py b/cli/axicli/axidraw_cli.py
+index 86b1382..aebf08a 100644
+--- a/cli/axicli/axidraw_cli.py
++++ b/cli/axicli/axidraw_cli.py
+@@ -70,7 +70,7 @@
+ from plotink.plot_utils_import import from_dependency_import # plotink
+ exit_status = from_dependency_import("ink_extensions_utils.exit_status")
+ 
+-cli_version = "AxiDraw Command Line Interface 3.9.5"
++cli_version = "AxiDraw Command Line Interface 3.9.7"
+ 
+ quick_help = '''
+     Basic syntax to plot a file:      axicli svg_in [OPTIONS]
+diff --git a/cli/axicli/utils.py b/cli/axicli/utils.py
+index 2eec9e9..3dc5e42 100644
+--- a/cli/axicli/utils.py
++++ b/cli/axicli/utils.py
+@@ -121,8 +121,8 @@ def assign_option_values(options_obj, command_line, configs, option_names):
+     """
+ 
+     for name in option_names:
+-        # argparse.ArgumentParser.parse_args and optparse.OptionParser.parse_args
+-        # assign None to any options that were
++        # argparse.ArgumentParser.parse_args
++        # assigns None to any options that were
+         # not defined by the user, so command line arguments are handled differently from
+         # configured values (which might be correctly assigned None)
+         command_line_value = getattr(command_line, name, None)
+diff --git a/cli/pyaxidraw/axidraw.py b/cli/pyaxidraw/axidraw.py
+index 30c0e2c..6010a68 100644
+--- a/cli/pyaxidraw/axidraw.py
++++ b/cli/pyaxidraw/axidraw.py
+@@ -24,7 +24,7 @@
+ 
+ Requires Python 3.7 or newer and Pyserial 3.5 or newer.
+ """
+-__version__ = '3.9.4'  # Dated 2023-09-09
++__version__ = '3.9.7'  # Dated 2024-01-16
+ 
+ import math
+ import gettext
+diff --git a/cli/pyproject.toml b/cli/pyproject.toml
+index d73808d..4b51f17 100644
+--- a/cli/pyproject.toml
++++ b/cli/pyproject.toml
+@@ -2,7 +2,7 @@
+ 
+ name = "axicli"
+ 
+-version = "3.9.5"
++version = "3.9.7"
+ 
+ description = "AxiDraw CLI and Python API"
+ 
+@@ -35,6 +35,7 @@ dependencies = {file = ["requirements.txt"]}
+ 
+ [project.scripts]
+ axicli = "axicli.__main__:axidraw_CLI"
++htacli = "axicli.__main__:hta_CLI"
+ 
+ [project.urls]  # Optional
+ "CLI API documentation" = "https://axidraw.com/doc/cli_api/'"
+@@ -47,6 +48,7 @@ axicli = "axicli.__main__:axidraw_CLI"
+ [project.optional-dependencies]
+ dev =  ["axidrawinternal>=3.0.0", "coverage", "mock", "pyfakefs"] # see Installation instructions
+ test = ["coverage", "mock", "pyfakefs"]
++hershey = ["hersheyadvanced"] # see Installation instructions
+ 
+ 
+ [build-system]
+diff --git a/cli/requirements/requirements.txt b/cli/requirements/requirements.txt
+index 094b127..8c766f4 100644
+--- a/cli/requirements/requirements.txt
++++ b/cli/requirements/requirements.txt
+@@ -2,9 +2,9 @@ axidrawinternal @ git+https://${AXIDRAWINTERNAL_DEPLOY_USER}:${AXIDRAWINTERNAL_D
+ certifi==2023.7.22
+ charset-normalizer==2.0.7
+ idna==3.3
+-ink-extensions==1.3.2
++ink-extensions==2.0.0
+ lxml==4.9.3
+-plotink==1.8.0
++plotink==1.9.0
+ pyserial==3.5
+ requests==2.31.0
+ tqdm==4.64.0
+diff --git a/cli/test/assets/axidraw_conf.py b/cli/test/assets/axidraw_conf.py
+index 8262b4b..355609c 100644
+--- a/cli/test/assets/axidraw_conf.py
++++ b/cli/test/assets/axidraw_conf.py
+@@ -2,7 +2,7 @@
+ # Part of the AxiDraw driver software
+ #
+ # https://github.com/evil-mad/axidraw
+-# Version 3.8.0, dated 2023-01-01.
++# Version 3.9.0, dated 2023-05-11.
+ #
+ # Copyright 2023 Windell H. Oskay, Evil Mad Scientist Laboratories
+ #
+@@ -99,6 +99,8 @@
+ 
+ random_start = False    # Randomize start locations of closed paths. Default False
+ 
++hiding = False          # Hidden-line removal. Default: False
++
+ webhook = False         # Enable webhook alerts when True
+                             # Default False
+ 
+@@ -164,7 +166,7 @@
+ 
+ clip_to_page = True  # Clip plotting area to SVG document size. Default: True
+ 
+-min_gap = 0.008     # Automatic path joining threshold, inches. Default: 0.008
++min_gap = 0.006     # Automatic path joining threshold, inches. Default: 0.006
+                     # If greater than zero, pen-up moves shorter than this distance
+                     #   will be replaced by pen-down moves. Set negative to disable.
+                     # Setting reordering to 4 (strict) will also disable path joining.
+diff --git a/cli/test/test_axicli/test_utils.py b/cli/test/test_axicli/test_utils.py
+index bdfcffc..e659519 100644
+--- a/cli/test/test_axicli/test_utils.py
++++ b/cli/test/test_axicli/test_utils.py
+@@ -1,7 +1,6 @@
+ import unittest
+ import copy
+ import random
+-import optparse
+ import argparse
+ 
+ from mock import patch
+@@ -54,12 +53,14 @@ def test_get_configured_value_none_anything(self):
+             self.assertIsNone(get_configured_value(attr, [user_config, standard_config]))
+ 
+     def test_assign_option_values(self):
+-        """ test that command line values override configured values, using optparse """
++        """ test that command line values override configured values """
+ 
+         option_names = ["not_overridden", "overridden"]
+         configured_values = { "not_overridden": "configured value", "overridden": "configured value" }
+-        command_line_values = optparse.Values({ "not_overridden": None, "overridden": "commandline value" })
+-        resulting_options = optparse.Values() # will contain the result of running assign_option_values
++        command_line_values = argparse.Namespace()
++        command_line_values.not_overridden = None
++        command_line_values.overridden = "commandline value"
++        resulting_options = argparse.Namespace() # will contain the result of running assign_option_values
+ 
+         assign_option_values(resulting_options, command_line_values, [configured_values], option_names)
+ 
