@@ -1,27 +1,28 @@
 pkgbase = bluej-preview
-	pkgdesc = An integrated Java environment specifically designed for introductory teaching - Preview Version
-	pkgver = 5.3.0
+	pkgdesc = A free Java Development Environment designed for beginners, used by millions worlwide. Release Candidate with Kotlin Support
+	pkgver = 5.5.0.rc2
 	pkgrel = 1
 	url = https://www.bluej-preview.org
-	arch = any
+	arch = x86_64
 	license = GPL2
 	license = Apache
 	license = BSD
 	license = CDDL
 	license = CPL
 	license = custom
-	makedepends = zstd
-	depends = gtk2
+	makedepends = gdown
+	makedepends = unzip
+	depends = gtk3
 	depends = archlinux-java-run
-	depends = java-runtime=17
-	depends = java-environment=17
-	depends = java-openjfx=17
-	source = https://www.bluej.org/download/files/rc/BlueJ-linux-5.3.0-rc1.deb
+	depends = java-runtime=21
+	depends = java-environment=21
+	depends = java-openjfx=21
+	source = BlueJ-linux-x64-5.5.0.rc2.deb::gdown://1zZTeQH6jN04mGtzEHSEagr_qdcJeWQPQ
 	source = bluej-preview
 	source = bluej-preview.desktop
 	source = bluej-preview.xml
-	sha256sums = 070827a6df3d528d2187c994b5cfa7e624425fd7d34f9deaca6c63624392adc3
-	sha256sums = 2c67336126c9114b2117635f1073d0da46a3792e6f0b83550fce2555678553f6
+	sha256sums = 35023b052249c9d5e70d96eb4ec52ca8a2057071024a260f012d020d0a1f4847
+	sha256sums = 979be5105b27c8da9650130f59eb840b3d8849d4f04728872604347ebf483714
 	sha256sums = 565c74b8eca934d2991294e8205bf73e1b2950083ab74ea539f919a9d87df413
 	sha256sums = e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772
 
