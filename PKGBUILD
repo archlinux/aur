@@ -10,9 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/WCY-dt/MrRSS/releases/download/v${pkgver}/MrRSS-${pkgver}-linux-amd64.AppImage"
 )
-sha512sums=(
-  '66d6585a625580ad3956b31dfd01c0eb727ce7228faa90f76f69935f58bcbc010ee140fcdcc9defdcac7f403db113f1bab5e58f779aef4e645cf7523e81cfe11'
-)
+sha512sums=('66d6585a625580ad3956b31dfd01c0eb727ce7228faa90f76f69935f58bcbc010ee140fcdcc9defdcac7f403db113f1bab5e58f779aef4e645cf7523e81cfe11')
 
 _installdir=/opt/mrrss
 
