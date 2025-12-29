@@ -11,10 +11,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/passer"
-    local date=$(git log -1 --format="%cd" --date=format:%Y%m%d)
-    local count=$(git rev-list --count HEAD)
-    local commit=$(git rev-parse --short HEAD)
-    echo "${date}.r${count}.g${commit}"
+    git rev-parse --short HEAD
 }
 
 package() {
