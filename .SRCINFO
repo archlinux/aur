@@ -1,0 +1,13 @@
+pkgbase = code-weaver
+	pkgdesc = A tool to weave context for AI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SaintFore/CodeWeaver
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = code-weaver-0.1.0.tar.gz::https://github.com/SaintFore/CodeWeaver/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 00b180b75a5cd00bd9c5bb228291b6d48d779624c560ba5a7f4765de4e2f35d9
+
+pkgname = code-weaver
