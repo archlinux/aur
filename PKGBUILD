@@ -237,9 +237,6 @@ END
 else
 
   cat >>../mozconfig <<END
-# Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
-ac_add_options --disable-elf-hack
-
 ac_add_options --enable-lto=cross
 END
 fi
@@ -261,6 +258,9 @@ build() {
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
   export MOZ_REQUIRE_SIGNING=
+
+  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
+  export RUST_MIN_STACK=33554432
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
