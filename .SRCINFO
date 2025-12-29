@@ -1,6 +1,6 @@
 pkgbase = fzur-git
-	pkgdesc = An fzf AUR helper
-	pkgver = r61.aa67925
+	pkgdesc = A standalone fzf AUR helper
+	pkgver = r66.7994538
 	pkgrel = 1
 	url = https://github.com/Samq64/fzur
 	arch = any

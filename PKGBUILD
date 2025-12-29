@@ -1,7 +1,7 @@
 # Maintainer: Samuel Q. <massnel at proton dot me>
 
 pkgname=fzur-git
-pkgver=r61.aa67925
+pkgver=r66.7994538
 pkgrel=1
 pkgdesc="A standalone fzf AUR helper"
 arch=('any')
