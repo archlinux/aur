@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawpen-bin
 _pkgname=DrawPen
-pkgver=0.0.34
+pkgver=0.0.35
 _electronversion=38
 pkgrel=1
 pkgdesc="A simple screen annotation.(Prebuild version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('649a6ed4b4429b6d388cddaaf13d917e586bfee3df88100a8bec8a4585461350'
+sha256sums=('2078a90b45f9f800c35c8cd9c4ec89dd9e8c2b6c72746e4addf742f280987e3e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
