@@ -1,6 +1,6 @@
 pkgbase = aimp
 	pkgdesc = Powerful free audio player, converter and tag editor (v6 Alpha, Unstable)
-	pkgver = 6.00.3028
+	pkgver = 6.00.3029
 	pkgrel = 1
 	url = https://www.aimp.ru
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = aimp
 	provides = aimp
 	conflicts = aimp
 	source = https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst
-	sha256sums = 58938e286674ef163935c2fca7edfa2384b4bc5b6de9ba931c5ee24b25c95b2c
+	sha256sums = f64f85eb6683024ed15e66643b09270743371f3120d55b2f5306f8175ca3d997
 
 pkgname = aimp
