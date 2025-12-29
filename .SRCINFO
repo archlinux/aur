@@ -9,6 +9,7 @@ pkgbase = bb-rs
 	makedepends = rust
 	depends = glibc
 	depends = gcc-libs
+	provides = bb
 	source = bb-rs-0.4.4.tar.gz::https://github.com/epilys/bb/archive/v0.4.4.tar.gz
 	b2sums = cc40490abef8badbfa613ae009f6fb1e44ddd6058baf72a4676271fe26665573f670a7ae9e617c0d2ea9b81c1dacb70bf65e97aadfeb9dc6f6f6cd522badda95
 

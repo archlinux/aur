@@ -13,6 +13,8 @@ arch=('x86_64' 'aarch64')
 url='https://nessuent.xyz/bb.html'
 license=('GPL-3.0')
 
+provides=("${_pkgname}")
+
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
