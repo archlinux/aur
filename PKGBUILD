@@ -2,8 +2,7 @@
 
 _reponame=SpaghettiKart
 pkgname=spaghettikart-git
-_pkgver=0.9.9.1
-pkgver=0.9.9.1.Latest2.r180.gdb01cf3d6
+pkgver=0.9.9.1.r227.g5fc7aebf8
 pkgrel=1
 pkgdesc="An unofficial native port of Mario Kart 64 (git)"
 license=("unknown" "MIT")
@@ -19,12 +18,14 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "git+https://github.com/mdqinc/SDL_GameControllerDB.git"
         "spaghettikart-cmake-flags.patch"
+        "spaghettikart-pkg-fixes.patch"
         "spaghettikart.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2318ff2a4d1cd282e11a8167f18c9e51193a389d605da338d894557c527e848b'
+            'c3ddb5e596b0d17aab6cf5851558b56dd65057f406b9b2f2baac363fe82c59d2'
+            'efcb423fe0c676d4721a09e75e3c68e8d697b0d2195c814d0e53f2307f27384f'
             '4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e')
 
 SHIP_PREFIX=/opt/spaghettikart
@@ -52,9 +53,6 @@ _init_submodule() {
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
-  # The tag should have been in a version format, so my solution is to
-  # Append both with the current package version and the reported git tag
-  echo -n "${_pkgver}."  # TEMP fix until this resolved
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -67,6 +65,9 @@ prepare() {
 
   # Required patch for compilation
   patch -Np1 -i "../spaghettikart-cmake-flags.patch"
+
+  # Fix preinit crash on this specific build
+  patch -Np1 -i "../spaghettikart-pkg-fixes.patch"
 }
 
 build() {
@@ -98,7 +99,7 @@ package() {
   install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
 
   # Main executable & assets to /opt
-  cp -r build/yamls "${pkgdir}/${SHIP_PREFIX}"
+  cp -r build/{yamls,meta} "${pkgdir}/${SHIP_PREFIX}"
   install -m755 build/Spaghettify "${pkgdir}/${SHIP_PREFIX}"
   install -m644 -t "${pkgdir}/${SHIP_PREFIX}" \
         build/config.yml \

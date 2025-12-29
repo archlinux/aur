@@ -1,17 +1,17 @@
-From e0562b4325a19fd884a3293ec67b8cec3844666c Mon Sep 17 00:00:00 2001
+From 5f6fdc685057d3fa54be96340670ccbbc239ecfa Mon Sep 17 00:00:00 2001
 From: AltoXorg <56553686+Alto1772@users.noreply.github.com>
 Date: Sun, 10 Aug 2025 13:01:16 +0800
 Subject: [PATCH] Readd project compile options
 
 ---
- CMakeLists.txt | 43 ++++++++++++++++++++++++++++++++-----------
- 1 file changed, 32 insertions(+), 11 deletions(-)
+ CMakeLists.txt | 51 +++++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 36 insertions(+), 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 66396af39..dbf001d23 100644
+index c4870b59b..2d55efc2b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -162,17 +162,17 @@ endif()
+@@ -163,21 +163,21 @@ endif()
  ################################################################################
  # Global configuration types
  ################################################################################
@@ -25,22 +25,30 @@ index 66396af39..dbf001d23 100644
 -    set(CMAKE_CXX_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_CXX_FLAGS}")
 -    set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_C_FLAGS}")
 -    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_CXX_FLAGS}")
+-    set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_C_FLAGS}")
+-    set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_CXX_FLAGS}")
+-    set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_C_FLAGS}")
+-    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_CXX_FLAGS}")
 -endif()
-+# if (MSVC)
-+#     set(CMAKE_C_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_C_FLAGS}")
-+#     set(CMAKE_CXX_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_CXX_FLAGS}")
-+#     set(CMAKE_C_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_C_FLAGS}")
-+#     set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_CXX_FLAGS}")
-+# else()
-+#     set(CMAKE_C_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_C_FLAGS}")
-+#     set(CMAKE_CXX_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_CXX_FLAGS}")
-+#     set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_C_FLAGS}")
-+#     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_CXX_FLAGS}")
-+# endif()
++#if (MSVC)
++#    set(CMAKE_C_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_CXX_FLAGS}")
++#    set(CMAKE_C_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_CXX_FLAGS}")
++#else()
++#    set(CMAKE_C_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_CXX_FLAGS}")
++#    set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_CXX_FLAGS}")
++#    set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_CXX_FLAGS}")
++#    set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_C_FLAGS}")
++#    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_CXX_FLAGS}")
++#endif()
  
  # Set game compilation version
  set(VERSION us)
-@@ -641,7 +641,28 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
+@@ -638,7 +638,28 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
            set(CPU_OPTION -msse2 -mfpmath=sse)
        endif()
  
@@ -70,5 +78,5 @@ index 66396af39..dbf001d23 100644
            ${CPU_OPTION}
        )
 -- 
-2.50.1
+2.52.0
 

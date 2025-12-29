@@ -1,6 +1,6 @@
 pkgbase = spaghettikart-git
 	pkgdesc = An unofficial native port of Mario Kart 64 (git)
-	pkgver = 0.9.9.1.Latest2.r180.gdb01cf3d6
+	pkgver = 0.9.9.1.r227.g5fc7aebf8
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/SpaghettiKart
 	install = spaghettikart.install
@@ -30,12 +30,14 @@ pkgbase = spaghettikart-git
 	source = git+https://github.com/Kenix3/libultraship.git
 	source = git+https://github.com/mdqinc/SDL_GameControllerDB.git
 	source = spaghettikart-cmake-flags.patch
+	source = spaghettikart-pkg-fixes.patch
 	source = spaghettikart.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2318ff2a4d1cd282e11a8167f18c9e51193a389d605da338d894557c527e848b
+	sha256sums = c3ddb5e596b0d17aab6cf5851558b56dd65057f406b9b2f2baac363fe82c59d2
+	sha256sums = efcb423fe0c676d4721a09e75e3c68e8d697b0d2195c814d0e53f2307f27384f
 	sha256sums = 4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e
 
 pkgname = spaghettikart-git
