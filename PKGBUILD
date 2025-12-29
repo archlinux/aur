@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname="invoiceninja"
-pkgver=5.11.73
+pkgver=5.12.40
 pkgrel=1
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com/"
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar::https://github.com/$pkgname/$pkgname/releases/dow
         "$pkgname-queue.timer"
         "$pkgname-scheduler.service"
         "$pkgname-scheduler.timer")
-sha256sums=('e10f24547a27e12d639be88575c77dcc4ae6ee31129a8c008f3b5b3231034279'
+sha256sums=('087ea4a40d5373eb318ad0710f87b27a7cf3a639611aad457642b970ca77bab9'
             '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
             'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
             'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
