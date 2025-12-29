@@ -1,16 +1,17 @@
 pkgbase = phono3py
 	pkgdesc = A simulation package of phonon-phonon interaction related properties
 	pkgver = 3.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phonopy/phono3py
 	arch = any
 	license = BSD
-	makedepends = python
+	makedepends = python-pip
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = ninja
 	depends = python-phonopy>=2.46.0
 	depends = python-phonopy<2.47
 	depends = python-scipy
-	depends = python-matplotlib
-	optdepends = openmpi
 	source = git+https://github.com/phonopy/phono3py.git#tag=v3.22.0
 	sha256sums = SKIP
 

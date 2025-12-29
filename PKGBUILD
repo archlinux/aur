@@ -1,6 +1,6 @@
 pkgname=('phono3py')
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation package of phonon-phonon interaction related properties"
 arch=('any')
 url="https://github.com/phonopy/phono3py"
@@ -9,25 +9,21 @@ depends=(
     "python-phonopy>=2.46.0"
     "python-phonopy<2.47"
     "python-scipy"
-    "python-matplotlib"
-)
-optdepends=(
-    "openmpi"
 )
 makedepends=(
-    "python"
+    python-pip
+    cmake
+    gcc
+    ninja
 )
 
 source=("git+https://github.com/phonopy/phono3py.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 
-
-
 build() {
   cd "$srcdir"/phono3py
   rm -rf dist
-
 
   python -m venv _buildenv
   _buildenv/bin/pip install --upgrade pip
@@ -42,8 +38,9 @@ build() {
 }
 
 
-
 package() {
   cd "$srcdir"/phono3py
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
+  PIP_CONFIG_FILE=/dev/null pip install \
+    --isolated --root="$pkgdir" \
+    --ignore-installed --no-deps dist/*.whl
 }
