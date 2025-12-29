@@ -1,7 +1,9 @@
+BUILDDATE=$(cat /usr/share/oberon-risc-emu/BUILD_DATE 2>/dev/null)
+
 post_install() {
-  echo "Start the Oberon emulator with a discimage in /usr/share/oberon-risc-emu"
+  echo "Start the Oberon emulator with a disc image in /usr/share/oberon-risc-emu"
   echo "e.g."
-  echo "risc /usr/share/oberon-risc-emu/Oberon-2020-08-18.dsk"
+  echo "risc /usr/share/oberon-risc-emu/Oberon-${BUILDDATE}.dsk"
   echo ""
 }
 

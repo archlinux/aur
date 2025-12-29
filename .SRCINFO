@@ -1,16 +1,24 @@
 pkgbase = oberon-risc-emu-git
 	pkgdesc = Emulator for the Oberon RISC machine
 	pkgver = 2016.1.r28.g26c8ac5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pdewacht/oberon-risc-emu
 	install = oberon-risc-emu.install
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = rust
+	makedepends = python
 	depends = sdl2
 	optdepends = rust: for some tools
 	source = git+https://github.com/pdewacht/oberon-risc-emu.git
+	source = git+https://github.com/pdewacht/project-norebo
+	source = manifest.csv
+	source = fetch-sources.py
+	source = upstream-20251229.tgz
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f72634f9692cbec150dba93c162bde07
+	md5sums = 920feb961fa305a766f80d8da892e8fe
+	md5sums = b967bad0f7ce38db0375a1004ccc27e3
 
 pkgname = oberon-risc-emu-git
