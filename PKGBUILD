@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=145.0.2_2
+pkgver=146.0.1_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -26,7 +26,7 @@ depends=(
   at-spi2-core
   bash
   cairo
-  ffmpeg4.4
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -110,18 +110,18 @@ options=(
 
 install='librewolf.install'
 source=(
-  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz # {,.sig} sig files are currently broken, it seems
+  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
 )
 
-sha256sums=('ad430591cb4a166e8d261cedc4b72d26b5afbdc0c7e5c7177f9a7476c5ee0678'
+sha256sums=('f872b12327543e1e454f9a50be9a7675450aed3e04cc87e1a8c7fb4f235c2bf7'
+			'SKIP'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '91936ae00b099f62d8915790e9fa441e905a00aebe54ffa8ef9f690ca1eb8975')
-validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
-
+            'a3cdb88e58fca72018f1443fb935cda3cc5ac5394e7d327664060dfc00e3b54d')
+validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
 prepare() {
   mkdir -p mozbuild
