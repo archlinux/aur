@@ -1,7 +1,7 @@
 pkgbase = xfconf-git
 	pkgdesc = D-Bus-based configuration storage system - git checkout
-	pkgver = 4.19.2+14+g4593943
-	pkgrel = 3
+	pkgver = 4.21.0+19+g549f783
+	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfconf/start
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = xfconf-git
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = xfce4-dev-tools>=4.19
+	makedepends = xfce4-dev-tools>=4.21
+	makedepends = meson
 	depends = libxfce4util
-	provides = xfconf=4.19.2+14+g4593943
+	provides = xfconf=4.21.0+19+g549f783
 	conflicts = xfconf
 	source = git+https://gitlab.xfce.org/xfce/xfconf.git
 	sha256sums = SKIP
