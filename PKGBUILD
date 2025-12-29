@@ -1,8 +1,8 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc='Extensible launcher for Hyprland built with Quickshell'
+pkgdesc='Extensible launcher for Wayland compositors built with Quickshell'
 arch=('any')
 url='https://github.com/Stewart86/hamr'
 license=('GPL-3.0-or-later')
@@ -33,7 +33,6 @@ depends=(
     'xdg-utils'
     'libnotify'
     'gtk3'
-    'hyprland'
     'libpulse'
     'jq'
 
@@ -45,6 +44,8 @@ depends=(
     'ttf-jetbrains-mono-nerd'
 )
 optdepends=(
+    'hyprland: Hyprland compositor support'
+    'niri: Niri compositor support'
     'ttf-readex-pro: Reading font for cards (AUR)'
     'tesseract: OCR text extraction for screenshot search'
     'tesseract-data-eng: English OCR language data'
@@ -71,4 +72,7 @@ package() {
 #!/bin/bash
 exec qs -c hamr "$@"
 EOF
+
+    # Install systemd user service (for Niri and other systemd-based compositors)
+    install -Dm644 hamr.service "$pkgdir/usr/lib/systemd/user/hamr.service"
 }

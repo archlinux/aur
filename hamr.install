@@ -23,38 +23,44 @@ post_install() {
     echo "      symlink to your existing colors (e.g. for end-4/dots-hyprland):"
     echo "        ln -sf ~/.local/state/quickshell/user/generated/colors.json ~/.config/hamr/colors.json"
     echo ""
-    echo "==> Add to your Hyprland config:"
+    echo "==> For Hyprland, add to ~/.config/hypr/hyprland.conf:"
     echo "      exec-once = hamr"
     echo "      bind = Ctrl, Space, global, quickshell:hamrToggle"
     echo ""
+    echo "==> For Niri, enable the systemd service and add keybind:"
+    echo "      systemctl --user enable hamr.service"
+    echo "      systemctl --user add-wants niri.service hamr.service"
+    echo "      systemctl --user start hamr.service"
+    echo ""
+    echo "      # Add to ~/.config/niri/config.kdl binds section:"
+    echo "      Ctrl+Space { spawn \"qs\" \"ipc\" \"call\" \"hamr\" \"toggle\"; }"
+    echo ""
 }
-
-
 
 post_upgrade() {
     local config_file="$HOME/.config/hamr/hamr.json"
-    
+
     # Migrate: remove old prefix config if it matches system defaults
     if [ -f "$config_file" ]; then
         local default_prefix='{"action":"/","app":">","clipboard":";","emojis":":","file":"~","math":"=","shellCommand":"$","shellHistory":"!","webSearch":"?"}'
         local current_prefix
         current_prefix=$(jq -c '.search.prefix // empty' "$config_file" 2>/dev/null)
-        
+
         if [ -n "$current_prefix" ]; then
             # Normalize both for comparison (sort keys)
             local current_sorted
             local default_sorted
             current_sorted=$(echo "$current_prefix" | jq -cS '.' 2>/dev/null)
             default_sorted=$(echo "$default_prefix" | jq -cS '.' 2>/dev/null)
-            
+
             if [ "$current_sorted" = "$default_sorted" ]; then
                 # Remove the old prefix config since it's the default
-                jq 'del(.search.prefix)' "$config_file" > "$config_file.tmp" && mv "$config_file.tmp" "$config_file"
+                jq 'del(.search.prefix)' "$config_file" >"$config_file.tmp" && mv "$config_file.tmp" "$config_file"
                 echo "==> Migrated: removed default prefix config (now using actionBarHints)"
             fi
         fi
     fi
-    
+
     echo ""
     echo "==> Hamr has been upgraded."
     echo "==> Restart quickshell to apply changes."
@@ -62,6 +68,9 @@ post_upgrade() {
 }
 
 post_remove() {
+    # Disable systemd service if enabled
+    systemctl --user disable hamr.service 2>/dev/null || true
+
     echo ""
     echo "==> User data has been preserved. Remove manually if no longer needed:"
     echo "      rm -rf ~/.config/hamr"
