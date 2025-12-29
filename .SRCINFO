@@ -1,0 +1,26 @@
+pkgbase = kalm-git
+	pkgdesc = Kalm can teach you different breathing techniques.
+	pkgver = r299.56fb3a7
+	pkgrel = 1
+	url = https://apps.kde.org/kalm/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = kconfig
+	depends = ki18n
+	depends = kirigami
+	depends = kirigami-addons
+	depends = kcrash
+	depends = qqc2-desktop-style
+	provides = kalm
+	conflicts = kalm
+	source = git+https://invent.kde.org/utilities/kalm.git
+	sha256sums = SKIP
+
+pkgname = kalm-git
