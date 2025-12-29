@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="A lightweight, owl-themed application launcher for Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'gtk4' 'gtk4-layer-shell')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('8809f7c1408506a0b75b8546767a2046f8ca0cba58c412c8891f386a513772d7566d0c951438c0bfd4b03b0115406af9e0cf42a2fb3320fd042f9012f8319fbd')
+b2sums=('7d0a9c895435a41052d9ab36ba7d19346520d31701213265b8a7542b9aa3391aaee5d7f1b62ffab8581057c9f86cc97e18b5b1f882645bacf4b8b8f1cb9f9657')
 
 prepare() {
     cd "$pkgname"
@@ -34,10 +34,16 @@ package() {
     cd "$pkgname"
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 data/config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
 
-    # Install example themes
+    # Documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # Example files
+    install -Dm644 data/config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
+    install -Dm644 data/style.example.css "$pkgdir/usr/share/doc/$pkgname/style.example.css"
+    install -Dm755 data/scripts/example.sh "$pkgdir/usr/share/doc/$pkgname/scripts/example.sh"
+
+    # Install themes
     install -d "$pkgdir/usr/share/$pkgname/themes"
     install -Dm644 data/themes/*.css "$pkgdir/usr/share/$pkgname/themes/"
 }
