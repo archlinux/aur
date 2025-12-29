@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Saphi
+Comment=Leaderboard and time-trial tracking client for Crash Team Racing custom tracks
+Exec=saphi
+Icon=saphi
+Terminal=false
+Categories=Game;
+Keywords=crash;team;racing;ctr;leaderboard;time-trial;
