@@ -2,7 +2,7 @@
 
 pkgname=python-ink-extensions-git
 _gitpkgname=ink_extensions
-pkgver=r47.7a167e4
+pkgver=2.2.0.r0.gf322527
 pkgrel=1
 pkgdesc='Python dependencies for running Inkscape extensions outside of Inkscape'
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('python-mock')
-provides=('python-ink-extensions')
+checkdepends=('python-mock' 'python-pytest')
+provides=("python-ink-extensions=${pkgver}")
 conflicts=('python-ink-extensions')
 options=('!debug' '!strip')
 
@@ -30,9 +30,8 @@ sha512sums=(
 )
 
 pkgver() {
-  printf "r%s.%s" \
-    "$(git -C "${_gitpkgname}" rev-list --count HEAD)" \
-    "$(git -C "${_gitpkgname}" rev-parse --short HEAD)"
+  cd "${_gitpkgname}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -49,7 +48,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}"
-  python -m unittest
+  pytest
 }
 
 package() {
