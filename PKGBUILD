@@ -27,7 +27,6 @@ makedepends=(
   'libsodium'
   'portaudio'
   'opus'
-  'speexdsp'
   'doxygen'
 )
 provides=('libasciichat')

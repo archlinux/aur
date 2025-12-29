@@ -25,7 +25,6 @@ pkgbase = libasciichat-git
 	makedepends = libsodium
 	makedepends = portaudio
 	makedepends = opus
-	makedepends = speexdsp
 	makedepends = doxygen
 	depends = ascii-chat-git
 	provides = libasciichat
