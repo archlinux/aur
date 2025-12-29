@@ -1,0 +1,26 @@
+pkgbase = cgsuite
+	pkgdesc = A computer algebra system for research in combinatorial game theory
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://www.cgsuite.org/
+	arch = x86_64
+	license = GPL-3
+	makedepends = netbeans
+	makedepends = ant
+	makedepends = jdk17-openjdk
+	makedepends = maven
+	makedepends = ttf-dejavu
+	makedepends = fontconfig
+	makedepends = unzip
+	depends = java-runtime
+	options = !strip
+	source = cgsuite-2.2-beta2.tar.gz::https://github.com/aaron-siegel/cgsuite/archive/refs/tags/v2.2-beta2.tar.gz
+	source = fix-build.patch
+	source = cgsuite-gui.sh
+	source = cgsuite-gui.desktop
+	sha256sums = 92fefcbb34873f27c68d7ba52f9a46045cb09b3172b018cd65e3e46da119b5b3
+	sha256sums = 17f0fd02b3525d4edc72c4f33b275d7ace9d0884ec47b01aaafebaae1fd9579a
+	sha256sums = 4358002d16fce0bdbcd02210bf0b3c54e1a35afc27ce68746f32fc3e709609eb
+	sha256sums = 9b6c9108da854c42acdc9eaff09bf5e585d0b90d193583442559f4c73beab7df
+
+pkgname = cgsuite

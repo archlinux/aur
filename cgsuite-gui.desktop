@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=2.2
+Type=Application
+Name=CGSuite
+Comment=A computer algebra system for research in combinatorial game theory
+Exec=cgsuite-gui
+Icon=cgsuite-gui
+Terminal=false
+StartupNotify=true
