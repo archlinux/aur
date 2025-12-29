@@ -15,10 +15,14 @@ depends=(
     "python-h5py"
     "python-symfc"
 )
-optdepends=("python-seekpath")
+optdepends=(
+    "python-seekpath"
+    "openmpi"
+)
 makedepends=(
     python-pip
     cmake
+    gcc
 )
 
 source=("git+https://github.com/phonopy/phonopy.git#tag=v${pkgver}")
@@ -39,7 +43,6 @@ build() {
 
   _buildenv/bin/python -m build --wheel --no-isolation
 }
-
 
 
 package() {
