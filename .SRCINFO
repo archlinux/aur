@@ -1,0 +1,18 @@
+pkgbase = e6-web-client
+	pkgdesc = A beautiful, modern client for e621/e926
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ivannivi/e6client
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	source = e6-web-client-1.0.0.tar.gz::https://github.com/Ivannivi/e6client/archive/refs/tags/v1.0.0.tar.gz
+	source = e6-web-client.desktop
+	source = e6-web-client.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = e6-web-client

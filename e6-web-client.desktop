@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=E6 Web Client
+Comment=A beautiful, modern client for e621/e926
+Exec=/usr/bin/e6-web-client
+Icon=e6-web-client
+Type=Application
+Categories=Utility;Network;
+Terminal=false
+StartupWMClass=e6-web-client
