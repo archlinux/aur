@@ -1,0 +1,5 @@
+[cloudflare-speed-cli-bin]
+source = "github"
+github = "kavehtehrani/cloudflare-speed-cli"
+use_latest_release = true
+prefix = "v"
