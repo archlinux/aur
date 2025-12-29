@@ -1,17 +1,17 @@
 pkgbase = dbgate-premium-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Premium edition (proprietary). (Uses system-wide Electron)
-	pkgver = 6.8.1
+	pkgver = 6.8.2
 	pkgrel = 1
 	url = https://github.com/dbgate/dbgate
 	arch = x86_64
 	license = MIT
 	depends = electron38
-	provides = dbgate-premium=6.8.1
+	provides = dbgate-premium=6.8.2
 	conflicts = dbgate-premium
-	source = dbgate-premium-6.8.1.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.8.1/dbgate-premium-latest.AppImage
-	source = LICENSE-6.8.1::https://raw.githubusercontent.com/dbgate/dbgate/v6.8.1/LICENSE
+	source = dbgate-premium-6.8.2.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.8.2/dbgate-premium-latest.AppImage
+	source = LICENSE-6.8.2::https://raw.githubusercontent.com/dbgate/dbgate/v6.8.2/LICENSE
 	source = dbgate-premium.sh
-	sha256sums = bc90fec8cc8dc36e9126fcc90ec80715be6706ba5c167c14f441e73920c99381
+	sha256sums = 332e528e131d81d91b00d53b2369a507a14db9e9170ab5bb24a6a8def74a65f2
 	sha256sums = SKIP
 	sha256sums = 5a5efc7622eff23064bb00809b9549df58e48ba9dec6c56ca6a735ea57bb18d7
 
