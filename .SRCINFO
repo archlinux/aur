@@ -1,6 +1,6 @@
 pkgbase = pixelterm-c
 	pkgdesc = A high-performance terminal image browser written in C, based on the Chafa library
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/zouyonghe/PixelTerm-C
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = pixelterm-c
 	source = pixelterm.bash::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/bash/pixelterm
 	source = pixelterm.zsh::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/zsh/_pixelterm
 	source = pixelterm.fish::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/fish/pixelterm.fish
-	md5sums = 6f174edf5a388c6559d7d80bea008ee0
-	md5sums = 0f4d7f8d9bf109df58c82a3a1f13be8c
-	md5sums = fa87c1e39fd8ed85f12f3d4405056701
-	source_x86_64 = pixelterm-1.3.5::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.3.5/pixelterm-amd64-linux
-	md5sums_x86_64 = 6cc7093ac68c9117457247d45eca2edf
-	source_aarch64 = pixelterm-1.3.5::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.3.5/pixelterm-arm64-linux
-	md5sums_aarch64 = 532148cddee133f3b32f60276daea9b0
+	md5sums = 7ecbbc3392e547d0eed7c7938a23196d
+	md5sums = eddbb991fa8a64fa58220a5712fb5309
+	md5sums = 51cc6fcfe67b9682169172cee44ca385
+	source_x86_64 = pixelterm-1.3.6::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.3.6/pixelterm-amd64-linux
+	md5sums_x86_64 = c6197db4e26615627bf330dd0bbad609
+	source_aarch64 = pixelterm-1.3.6::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.3.6/pixelterm-arm64-linux
+	md5sums_aarch64 = 63d446c3f88558e18e2884a6bf12343f
 
 pkgname = pixelterm-c
