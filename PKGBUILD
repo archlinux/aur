@@ -31,8 +31,6 @@ package() {
     # Install the binary
     install -Dm755 target/release/arco "$pkgdir/usr/bin/arco"
 
-    # Install documentation
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 ARCORRUST.md "$pkgdir/usr/share/doc/$pkgname/ARCORRUST.md"
+    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
