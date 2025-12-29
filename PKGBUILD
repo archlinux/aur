@@ -1,5 +1,5 @@
 pkgname=justevery-code
-pkgver=0.6.15
+pkgver=0.6.18
 pkgrel=1
 pkgdesc="Community-driven fork of the Codex CLI for local terminal coding assistance"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d37311ff0be0a46d329e798a6f354e567210017658cba0a1c866f38448bede2e5db62682c47b7b9570df8166a97e86919c74046bfbabf2c2e75c7a705b9a7223')
+b2sums=('f60bbf53c71008e083d224ee5957049608e36538222b6e28b4b4c35900380bb05108274237460f0a4c2c462e2e885bd598ec47c3e9d3953aced56b5bb74ddc6c')
 
 prepare() {
 	cd "code-${pkgver}/code-rs"
