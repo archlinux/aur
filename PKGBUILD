@@ -2,7 +2,7 @@
 pkgname=qobuz-player-git
 pkgver=v0.4.5.r6.g889c61b
 pkgrel=1
-pkgdesc="High resolution audio player backed by Qobuz"
+pkgdesc="High resolution audio player backed by Qobuz (git-version)"
 arch=('x86_64')
 url="https://github.com/SofusA/qobuz-player"
 license=('GPL-3')
