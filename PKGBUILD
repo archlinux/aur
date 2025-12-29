@@ -3,21 +3,21 @@
 
 pkgbase=cubeb
 pkgname=('cubeb' 'cubeb-docs')
-pkgver=20250911
-_commit=6f5a5986d356da246475e152132f62c0b556da52
+pkgver=20251204
+_commit=bed368eb0d901ec4b7921a8d704ca469b7fb4e19
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
 license=('ISC')
-makedepends=('alsa-lib' 'cmake' 'ninja' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
+makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp' 'cargo')
 conflicts=("$pkgname-git")
 source=(git+$url#commit=$_commit
 	git+https://github.com/google/googletest.git
 	git+https://github.com/arsenm/sanitizers-cmake.git
 	git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	git+https://github.com/mozilla/cubeb-pulse-rs.git)
-b2sums=('19ed11a96d2bc7ee7301de558765331d6b93597ab7147960757202117856854aa02456ac136d9270c2a6249297846cf711200815707a501b51a7f52e0c64846e'
+b2sums=('b61a96b0aca3477c3bc24f3bace0f718e7372f84c55de3214679006896efc2b3d0bfa20fc5214cb148db4f56ed83c957d9d9649c4a573f4cd1f8f5322b3e9547'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -42,14 +42,14 @@ prepare() {
 
 build() {
     cd "$srcdir"
+    export CFLAGS="$CFLAGS -ffat-lto-objects"
     cmake -B build -S "$pkgname" \
-    -G Ninja \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTS=OFF \
     -DBUNDLE_SPEEX=OFF \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SANITIZERS=ON \
+    -DBUILD_RUST_LIBS=ON \
     -Wno-dev
     cmake --build build
 }
@@ -58,9 +58,8 @@ package_cubeb() {
  optdepends+=(
     'alsa-lib: for ALSA backend'
     'jack: for JACK backend'
-    'libpulse: for PulseAudio backend'
     'sndio: for sndio backend')
-    depends+=('libspeexdsp.so' 'glibc' 'gcc-libs')
+    depends+=('libspeexdsp.so' 'glibc' 'gcc-libs' 'libpulse')
     provides+=("$pkgname=$pkgver" 'libcubeb.so')
 
     cd "$srcdir"
