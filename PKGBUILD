@@ -5,10 +5,10 @@ pkgrel=1
 arch=('any')
 url="https://github.com/Edd12321/zrc"
 license=('BSD-2-Clause')
-makedepends=('git' 'make' 'gcc' 'clang' 'grep')
+makedepends=('git' 'posix' 'gcc')
 source=("git+https://github.com/Edd12321/zrc.git")
 sha256sums=('SKIP')
-pkgver=2.5hh.r6.g365cc10
+pkgver=2.5hh.r42.g78d0b8c
 options=('!debug')
 install="zrc.install"
 
@@ -19,9 +19,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/zrc"
-	sed -i '\#\@grep#d' Makefile
-	export CXX="${CXX:-g++}"
-	make CXX="$CXX" CXXFLAGS="${CXXFLAGS:--std=gnu++11 -Wno-unused-result -O3}"
+	printf 'g/@grep/d\nw\nq\n' | ed -s Makefile
+	make
 }
 
 package() {
@@ -33,6 +32,7 @@ package() {
 		cp .zrc ~
 	fi
 
-	install -d "$pkgdir/usr/bin"
-	install -m755 bin/zrc "$pkgdir/usr/bin/zrc" || true
+	mkdir -p "$pkgdir"; mkdir -p "$pkgdir/usr"; mkdir -p "$pkgdir/usr/bin"
+	cp -f /bin/zrc "$pkgdir/usr/bin/zrc"	
+	chmod 755 "$pkgdir/usr/bin/zrc"	
 }
