@@ -15,7 +15,8 @@ depends=('libdisplay-info.so' 'libglvnd' 'libinput' 'liblcms2.so' 'libliftoff.so
          'libseat.so' 'libudev.so' 'libvulkan.so' 'libwayland-client.so' 'libwayland-server.so'
          'libxcb' 'libxkbcommon.so' 'opengl-driver' 'xcb-util-errors' 'xcb-util-renderutil' 'xcb-util-wm')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'systemd' 'vulkan-headers' 'wayland-protocols' 'xorg-xwayland')
-optdepends=('xorg-xwayland: Xwayland support')
+optdepends=('xorg-xwayland: Xwayland support'
+            'vulkan-validation-layers: validation layers for the experimental vulkan renderer backend')
 provides=("libwlroots-${pkgver%.*}.so")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}?signed"
         'Revert-layer-shell-error-on-0-dimension-without-anch.patch'
