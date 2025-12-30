@@ -1,6 +1,6 @@
 # Maintainer: Pauls Nartišs <paulsnar@paulsnar.lv>
 pkgname=victorialogs-bin
-pkgver=1.41.0
+pkgver=1.43.1
 pkgrel=1
 pkgdesc="Scalable logging solution designed to be fast and highly efficient"
 arch=('x86_64' 'aarch64')
@@ -18,12 +18,12 @@ source_aarch64=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 sha256sums_x86_64=(
-    'a84447589d6283a420631fd243adabaf7b7d1abf13b1b6a4a7713c2a017bb968'
-    '6695a4621c42aa2f62b524eeab2885920c0a880c78d36fe55a363656aa0f0020'
+    '64c7316778c6eaab363f4b71554f57503a789ee7ab7d252101038919f66fc114'
+    '737037826d607f7b078fe36166719d14ed51a67a15e71cf3d9d489f9692f43a4'
 )
 sha256sums_aarch64=(
-    'fe3fecc82476aa81555b622277d1473f51b6c31a0c4fa081f37168ef1ccf8059'
-    '36eb6dbf01be5d8f3ca1a3bf540a802d73e4b2af0d17efdf308202e500d47549'
+    'e8cf7e2b161036eec751c60752cf60906e5c3cbbdb650307b8b0396b8d5c3a7b'
+    '833e7074211a9ce2e574b99cd2bea6d39b57792bc3dd2904010429afe9f92d47'
 )
 
 package(){
