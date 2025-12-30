@@ -1,13 +1,13 @@
 pkgbase = teevee
 	pkgdesc = Single-button cyclic launcher using dunst notifications
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ThomasB3143/teevee
 	arch = any
 	license = MIT
 	depends = bash
 	depends = dunst
-	source = teevee-0.1.0.tar.gz::https://github.com/ThomasB3143/teevee/archive/v0.1.0.tar.gz
-	sha256sums = ce46007678bd99f32a737df453d6cf71fadb76ca2c13d7fdd238e68de7224ac5
+	source = teevee-0.2.0.tar.gz::https://github.com/ThomasB3143/teevee/archive/v0.2.0.tar.gz
+	sha256sums = ddb0e3c2760ac47af79066e85980c5b7cf9ed4afe1fcb1c43ad350204e914c78
 
 pkgname = teevee
