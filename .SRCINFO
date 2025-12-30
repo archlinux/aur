@@ -1,6 +1,6 @@
 pkgbase = todo-hunter
 	pkgdesc = A fast CLI tool to scan Git repositories for TODO comments
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/bmtron/todo-hunter
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = todo-hunter
 	depends = git
 	depends = libgit2
 	depends = libssh2
-	source = todo-hunter-0.1.0.tar.gz::https://github.com/bmtron/todo-hunter/archive/v0.1.0.tar.gz
+	source = todo-hunter-0.2.0.tar.gz::https://github.com/bmtron/todo-hunter/archive/v0.2.0.tar.gz
 	sha256sums = 5da02555987a351884ebd5bc40d2723c8ebfbe918faed8416278c5fa8ee0e51c
 
 pkgname = todo-hunter
