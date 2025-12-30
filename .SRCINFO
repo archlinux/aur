@@ -22,6 +22,6 @@ pkgbase = cogl
 	provides = libcogl-pango.so
 	provides = libcogl-path.so
 	source = git+https://gitlab.gnome.org/GNOME/cogl.git#commit=c2e25cef6bd7b3f12c8625f82956388e419cd046
-	sha256sums = SKIP
+	sha256sums = 6cf9974e735a8f7ce9d7af0c2e25e1dcac8b1728dece1e782c7e03bbd8556835
 
 pkgname = cogl

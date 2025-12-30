@@ -1,4 +1,5 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
@@ -14,7 +15,7 @@ makedepends=(gobject-introspection git gtk-doc glib2-devel)
 provides=(libcogl.so libcogl-{gles2,pango,path}.so)
 _commit=c2e25cef6bd7b3f12c8625f82956388e419cd046  # tags/1.22.8^0
 source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('6cf9974e735a8f7ce9d7af0c2e25e1dcac8b1728dece1e782c7e03bbd8556835')
 
 pkgver() {
   cd cogl
@@ -28,6 +29,7 @@ prepare() {
 
 build() {
   cd cogl
+  export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   ./configure --prefix=/usr \
     --enable-gles2 \
     --enable-{kms,wayland}-egl-platform \
