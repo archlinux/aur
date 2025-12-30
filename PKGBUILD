@@ -1,7 +1,7 @@
 # Maintainer:Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=any2fasta
-pkgver=0.4.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="convert various sequence formats to FASTA"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/tseemann/any2fasta"
 license=('GPL3')
 depends=('perl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tseemann/any2fasta/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1ba622430294a8966572031d77fee362a9b265059596bc249c8e2936829453eace9ede722bdee2586f9235de338d530560256abb845965193de451f005c37be6')
+b2sums=('0fcb4c5322060ac5776e98c6ce3e6f61e0aed0f91818002548572e1c7b66f9d4d5a84ca5cb2ba889f14e29843235f1a0ecb473983b3692184181e121fc6c75b8')
 
 prepare(){
   cd "$pkgname-$pkgver"
