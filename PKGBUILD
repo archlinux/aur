@@ -1,8 +1,8 @@
 pkgname=systemd-lsp
 
-: "${_fragment:=tag=v2025.10.16}"
+: "${_fragment:=tag=v2025.12.30}"
 
-pkgver=2025.10.16
+pkgver=2025.12.30
 pkgrel=1
 
 pkgdesc='A language server implementation for systemd unit files made in rust'
@@ -14,7 +14,7 @@ license=(MIT)
 makedepends=(git cargo)
 
 source=("git+$url.git#$_fragment")
-sha256sums=('9afb51c3e8c7e206dc3027c03d9027d40552fde9f09f4ec6194c79027c717f85')
+sha256sums=('180b5bf10b40027639c6a7d4db43c40270df7423195ff9f3c9e37ef452a88c2b')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
