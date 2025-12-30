@@ -1,0 +1,25 @@
+pkgbase = dumber-browser-git
+	pkgdesc = A minimal keyboard-driven browser for tiling WMs (git version)
+	pkgver = 0.23.1.r0.g6c872d5
+	pkgrel = 1
+	url = https://github.com/bnema/dumber
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.25
+	makedepends = npm
+	makedepends = git
+	depends = gtk4
+	depends = webkitgtk-6.0
+	optdepends = gstreamer: Media playback support
+	optdepends = gst-plugins-base: Base media codecs
+	optdepends = gst-plugins-good: Additional media codecs
+	optdepends = gst-plugins-bad: Extended media codecs
+	optdepends = gst-libav: FFmpeg-based codecs
+	provides = dumber-browser
+	provides = dumber
+	conflicts = dumber-browser
+	conflicts = dumber-browser-bin
+	source = git+https://github.com/bnema/dumber.git
+	sha256sums = SKIP
+
+pkgname = dumber-browser-git
