@@ -2,12 +2,14 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.12.beta.r9497.c6722b8
+_electron=electron
+pkgver=0.23.12.beta.r9678.fa84298
 pkgrel=1
-pkgdesc='A private YouTube client - built from latest git, with the default electron.'
+pkgdesc='A private YouTube client - built from latest git, with the system electron (unsupported).'
 arch=('x86_64')
 url="https://freetubeapp.io"
 license=('AGPL-3.0-or-later')
+depends=($_electron)
 makedepends=('git' 'yarn')
 provides=("${pkgname%-electron-git}")
 conflicts=("${pkgname%-electron-git}")
@@ -22,13 +24,14 @@ pkgver() {
 }
 
 prepare() {
+  sed -i "5i electronDist: '/usr/lib/$_electron'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
 
 build() {
   cd $_pkgname
-  NODE_OPTIONS="--no-experimental-webstorage" yarn install
-  NODE_OPTIONS="--no-experimental-webstorage" yarn run build
+  yarn install
+  yarn run build
 }
 
 package() {
