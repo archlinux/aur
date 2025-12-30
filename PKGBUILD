@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-ssh
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _srcver=0.4.0
 pkgdesc="SSH host launcher plugin for Owlry"
