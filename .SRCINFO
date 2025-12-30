@@ -1,6 +1,6 @@
 pkgbase = ebsl
 	pkgdesc = A shell-accessible configuration file format.
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/aarikpokras/ebsl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ebsl
 	depends = base-devel
 	depends = cmake
 	depends = gzip
-	source = ebsl-2.7.0.tar.gz::https://github.com/aarikpokras/ebsl/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = d4377e85dd874d9d2c2951d17e161f6258dba90f0d40510c2f0b8b3c84910651
+	source = ebsl-2.8.0.tar.gz::https://github.com/aarikpokras/ebsl/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = 3d439456914bcf045b8d79d4adae9bce698853bebd5831f6408dadc265bb2b33
 
 pkgname = ebsl
