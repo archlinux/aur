@@ -1,14 +1,14 @@
-# Maintainer: Inklare <vnaosov@gmail.com>
+# Maintainer: Advnirr <vnaosov@gmail.com>
 pkgname=hanuchi
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist GTK4 frontend for LogMeIn Hamachi"
 arch=('any')
-url="https://github.com/Inklare/hanuchi"
+url="https://github.com/Advnirr/hanuchi"
 license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'python-gobject' 'logmein-hamachi')
 makedepends=('git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Inklare/hanuchi/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Advnirr/hanuchi/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('91a072ee40508bc2f60dbfe0720e570490d450653ef57afd736f189db6f7a2ca')
 
 package() {
