@@ -1,0 +1,14 @@
+pkgbase = lwm-wm
+	pkgdesc = Legacy X11 window manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/brokenallmute/lwm
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	source = lwm-wm-1.0.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/v1.0.tar.gz
+	sha256sums = be4b82b9a812ea20c0ab0a4776f7dee4897709f1f616d4b400d07f5032902a93
+
+pkgname = lwm-wm
