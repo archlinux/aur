@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/VinoFFR/98kalculator"
 license=('MIT')
 depends=('python' 'python-pyqt6')
-makedepends=('git' 'python-pyinstaller')
+makedepends=('git' 'pyinstaller')
 provides=('98kalculator')
 conflicts=('98kalculator')
 source=("git+https://github.com/VinoFFR/98kalculator.git")
@@ -16,12 +16,10 @@ md5sums=('SKIP')
 # Git version function
 pkgver() {
     cd "$srcdir/98kalculator"
-    if git describe --tags --long >/dev/null 2>&1; then
-        git describe --tags --long | sed 's/^v//;s/-/./g'
-    else
-        # Fallback if no tags exist
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    fi
+    ( set -o pipefail
+      git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
