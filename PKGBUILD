@@ -2,7 +2,7 @@
 
 pkgname=say
 pkgdesc='Terminal based voice and video call utility written in go'
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 arch=(x86_64)
 license=('MIT')
@@ -10,7 +10,7 @@ url='https://github.com/svanichkin/say'
 depends=("glibc")
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/svanichkin/say/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ec6d9f7b08e3f57f35fbc8d087d178ef4f76b34a0b147aac770e1f7f7a2d6f5')
+sha256sums=('71a7263c7d5295614865b89f11631acc9af6a29b12e5e833ea9d14edf960dbb3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
