@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-rune
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Rune runtime for Owlry - enables loading user-created Rune plugins"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('owlry')
 makedepends=('cargo')
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('0b89ddf244af91700865bf9598a43502b4113b94e0fe5452e9df77f86437f20621d7b0e42105b18f40b87dc1251e4384f773b88813eb2f3d1ef3b04848753417')
+b2sums=('8d2deb89efb3978ab4c5aa0f7241a586efdfa54a702b885a7d17b1bbac94fb9be8aaf06737a9c7bc9602d7c2fcd19dfbb86ac0333c9bddadf4790983ac93e7cb')
 
 _cratename=owlry-rune
 
