@@ -1,0 +1,15 @@
+pkgbase = vitamin-browser
+	pkgdesc = A privacy-first browser that poisons tracking data by feeding trackers garbage information instead of just blocking them.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/realvitali/vitamin-releases/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	options = !strip
+	source = vitamin-browser::git+https://github.com/realvitali/vitamin-releases.git#branch=main
+	sha256sums = SKIP
+
+pkgname = vitamin-browser
