@@ -3,7 +3,7 @@
 pkgname=lzbench-bin
 _name=${pkgname%-bin}
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An in-memory benchmark of open-source compressors'
 arch=('aarch64' 'x86_64')
 url='https://github.com/inikep/lzbench'

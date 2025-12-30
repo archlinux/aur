@@ -1,7 +1,7 @@
 pkgbase = lzbench-bin
 	pkgdesc = An in-memory benchmark of open-source compressors
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inikep/lzbench
 	arch = aarch64
 	arch = x86_64
