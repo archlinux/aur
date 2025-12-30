@@ -43,10 +43,6 @@ build() {
 }
 
 package() {
-    # Fix CRLF directory names again for safety
-    for d in "$srcdir"/*$'\r'; do
-        mv "$d" "${d%$'\r'}"
-    done
 
     cd "$srcdir"/Lumen-$pkgver*/ui/build/linux/x64/release/bundle
 
