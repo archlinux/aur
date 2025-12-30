@@ -5,6 +5,7 @@ pkgbase = owlry-tools
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
+	depends = owlry
 	depends = owlry-plugin-clipboard
 	depends = owlry-plugin-emoji
 	depends = owlry-plugin-websearch
