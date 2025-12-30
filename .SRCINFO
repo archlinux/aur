@@ -1,0 +1,24 @@
+pkgbase = vkbasalt-overlay-git
+	pkgdesc = Vulkan post-processing layer with in-game ImGui overlay for real-time effect configuration
+	pkgver = r532.e14343a
+	pkgrel = 1
+	url = https://github.com/Boux/vkBasalt_overlay
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	depends = glslang
+	depends = libx11
+	depends = libxi
+	optdepends = reshade-shaders-git
+	provides = vkbasalt
+	conflicts = vkbasalt
+	conflicts = vkbasalt-git
+	source = vkbasalt-overlay-git::git+https://github.com/Boux/vkBasalt_overlay.git
+	sha256sums = SKIP
+
+pkgname = vkbasalt-overlay-git
