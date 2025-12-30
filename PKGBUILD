@@ -1,7 +1,7 @@
 # Maintainer: mewset
 pkgname=better-iptv-bin
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS"
 arch=('x86_64')
 url="https://github.com/mewset/better-iptv"
@@ -31,11 +31,15 @@ package() {
     chmod +x "$pkgdir/opt/$pkgname/AppRun"
     chmod +x "$pkgdir/opt/$pkgname/AppRun.wrapped"
 
-    # Create wrapper script
+    # Create wrapper script that uses system libraries instead of bundled ones
+    # This fixes EGL_BAD_PARAMETER crash on Arch/Manjaro with Wayland
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/better-iptv" << 'EOF'
 #!/bin/sh
-exec /opt/better-iptv-bin/AppRun "$@"
+# Use system WebKit/GTK libraries instead of bundled Ubuntu libs
+# This fixes EGL display initialization issues on Arch Linux
+export LD_LIBRARY_PATH=/usr/lib
+exec /opt/better-iptv-bin/usr/bin/better-ip-tv "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/better-iptv"
 
