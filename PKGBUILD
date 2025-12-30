@@ -7,7 +7,7 @@ package() {
 }
 
 pkgname="nak-bin"
-pkgver="0.17.2"
+pkgver="0.17.4"
 pkgrel="1"
 pkgdesc="a command line tool for doing all things Nostr"
 arch=("x86_64")
@@ -21,3 +21,4 @@ sha256sums=('a24bfc240ec188f78ca21cf6e255bdadc17009eb38acd02fe7ef62f6a7707a41')
 sha256sums=('495243c070c4533ce96e98b6f34b7e97fd4be2da3353488b400233ed7ed0d4da')
 sha256sums=('c5068bb999c3f8e557607d158090869552f06603147051e7f513cafc208208e0')
 sha256sums=('09604449be24509e9dedcc3e90471ee5735b9dea5bbfdbe2653482686faabad2')
+sha256sums=('be851c29ee4b3702709ae2cf832a90f1ffa2819c510e751c453e34de76ceab67')
