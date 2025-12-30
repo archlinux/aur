@@ -8,6 +8,7 @@ url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=('owlry')
 makedepends=('cargo')
+install=owlry-plugin-bookmarks.install
 optdepends=(
     'firefox: Firefox bookmarks support'
     'chromium: Chromium bookmarks support'
@@ -41,5 +42,5 @@ check() {
 package() {
     cd "owlry"
     install -Dm755 "target/release/lib${_cratename//-/_}.so" \
-        "$pkgdir/usr/lib/owlry/plugins/libbookmarks.so"
+        "$pkgdir/usr/lib/owlry/plugins/lib${_cratename//-/_}.so"
 }
