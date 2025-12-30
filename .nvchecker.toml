@@ -1,0 +1,3 @@
+[nemo-extensions]
+source = "git"
+git = "https://github.com/linuxmint/nemo-extensions.git"
