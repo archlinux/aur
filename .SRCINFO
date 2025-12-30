@@ -6,7 +6,7 @@ pkgbase = cjvs-bin
 	arch = x86_64
 	license = MulanPSL2
 	depends = openssl
-	source = cjvs_v0.3.0_linux_amd64.zip
+	source = https://github.com/ystyle/cjvs/releases/download/v0.3.0/cjvs_v0.3.0_linux_amd64.zip
 	sha256sums = 6b07609100669f9e3259445f2481529956b992669e9d208bbc4d1d7758c7d737
 
 pkgname = cjvs-bin
