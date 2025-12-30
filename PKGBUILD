@@ -9,7 +9,7 @@ depends=()
 makedepends=()
 DLAGENTS=("https::/usr/bin/curl -L -A 'Mozilla/5.0' -o %o %u")
 
-source=("$pkgname-$pkgver.tar.gz::https://release-assets.githubusercontent.com/github-production-release-asset/1045288007/6e6ca042-b265-4c61-8a24-64c03c5bc5be?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-12-30T15%3A19%3A59Z&rscd=attachment%3B+filename%3DLumen-$pkgver.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-12-30T14%3A19%3A15Z&ske=2025-12-30T15%3A19%3A59Z&sks=b&skv=2018-11-09&sig=ilM3hpTb%2BO23XnLvKXPdlJvt8uPeJZqDsKH1kBB1tGk%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NzEwNzQxMywibmJmIjoxNzY3MTA1NjEzLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.WnQucB-2p7eO4Fm6yuHdgJnc73E3wuoouzF1wWigYZY&response-content-disposition=attachment%3B%20filename%3DLumen-$pkgver.tar.gz&response-content-type=application%2Foctet-stream"
+source=("$pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Crazygiscool/Lumen/main/dist/Lumen-$pkgver.tar.gz"
         "lumen-journal.desktop"
         "lumen-journal.png"
         "lumen-journal.appdata.xml"
