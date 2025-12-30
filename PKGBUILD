@@ -6,7 +6,7 @@
 
 _pkgname="shadps4"
 pkgname="$_pkgname"
-pkgver=0.12.5
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
@@ -27,7 +27,6 @@ depends=(
   'libxxhash.so'     # xxhash
   'libz.so'          # zlib
   'pugixml'
-  'sdl3'
 )
 makedepends=(
   'boost'
@@ -35,10 +34,17 @@ makedepends=(
   'git'
   'half'
   'ninja'
+  'nlohmann-json'
   'robin-map'
   'spirv-headers'
+  'stb'
   'toml11'
-  'nlohmann-json'
+
+  ## sdl3
+  'libxi'
+  'libxrandr'
+  'libxss'
+  'libxtst'
 )
 
 if [[ "${_use_clang::1}" == "t" ]]; then
@@ -52,7 +58,7 @@ options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
-sha256sums=('0cd997c23e2aff043879e42f57a12c5f579b27172f837d92987aaf8a1afc54a8')
+sha256sums=('9b393334e548b445f643f6bb2f93a0d16c87159407d48e4c94904888efe84d13')
 
 prepare() {
   cd "$_pkgsrc"
@@ -63,21 +69,19 @@ prepare() {
   git rm -r externals/fmt
   git rm -r externals/glslang
   git rm -r externals/half
+  git rm -r externals/json
   git rm -r externals/libpng
   git rm -r externals/pugixml
   git rm -r externals/robin-map
-  git rm -r externals/sdl3
+  git rm -r externals/stb
   git rm -r externals/toml11
   git rm -r externals/xxhash
   git rm -r externals/zlib-ng
   git submodule update --init --recursive --depth 1
 
-  # remove vendored modules
-  sed -E -e '/add_subdirectory/s&^.*\b(ext-boost)\b.*&&' \
-    -i externals/CMakeLists.txt
-
-  # disable tracy
-  sed -E -e 's&if\s*\(CMAKE_BUILD_TYPE STREQUAL "Release"\)&if (TRUE)&' -i externals/CMakeLists.txt
+  # fix nlohmann-json
+  sed -E -e '/nlohmann_json/i find_package(nlohmann_json)' -i CMakeLists.txt
+  sed -E -e '/add_subdirectory\(json\)/d' -i externals/CMakeLists.txt
 
   # allow any version
   sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
@@ -85,6 +89,7 @@ prepare() {
   # respect system build flags
   sed -E -e '/march/d' -i CMakeLists.txt
 
+  # set version info
   sed -E -e 's&@APP_IS_RELEASE@&true&' \
     -e 's&@APP_VERSION@&'"${pkgver:?}&" \
     -i src/common/scm_rev.cpp.in
