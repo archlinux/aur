@@ -1,0 +1,18 @@
+pkgbase = antigravity-tools-bin
+	pkgdesc = Professional Antigravity Account Manager & Switcher (Binary from GitHub)
+	pkgver = 3.3.6
+	pkgrel = 1
+	url = https://github.com/lbjlaq/Antigravity-Manager
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = openssl
+	provides = antigravity-tools
+	conflicts = antigravity-tools
+	options = !strip
+	source = antigravity-tools-bin-3.3.6.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v3.3.6/Antigravity.Tools_3.3.6_amd64.deb
+	sha256sums = 1954d0867e2a070a3c07a97c91916db177b1d2cace6c08f895fbf2f7655378ed
+
+pkgname = antigravity-tools-bin
