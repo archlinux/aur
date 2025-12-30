@@ -1,7 +1,7 @@
 # Maintainer: Tobias Os Finsbøl <tobias.finsbol@protonmail.com>
 pkgname=bitwarden-fuzzy
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A unoffical fuzzy finder for bitwarden."
 provides=('bitwarden-fuzzy')
 conflicts=('bitwarden_fuzzy')
