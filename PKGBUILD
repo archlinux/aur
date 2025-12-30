@@ -17,14 +17,14 @@ source=("$pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Crazygiscool
         "lumen-journal.bash"
         "_lumen-journal"
         "lumen-journal.fish")
-sha256sums=('skip'
-            'skip'
-            'skip'
-            'skip'
-            'skip'
-            'skip'
-            'skip'
-            'skip')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 build() {
     cd "$srcdir/Lumen-linux-x64-v$pkgver"
