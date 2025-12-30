@@ -2,9 +2,8 @@
 
 pkgname=pinnacle-comp
 _pkgname=pinnacle
-pkgver=0.1.0
-_pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64)
 url="https://github.com/pinnacle-comp/$_pkgname"
@@ -32,35 +31,29 @@ optdepends=(
     "xdg-desktop-portal-wlr: for portal-based screencasting and screenshotting"
 )
 source=(
-    "$_pkgname-$_pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$_pkgver.tar.gz"
-    "https://github.com/pinnacle-comp/pinnacle/releases/download/v$_pkgver/pinnacle-api-$_pkgver-1.all.rock"
-    "libdisplay_info_0_3.patch"
+    "$_pkgname-$pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$pkgver.tar.gz"
+    "https://github.com/pinnacle-comp/pinnacle/releases/download/v$pkgver/pinnacle-api-$pkgver-1.all.rock"
 )
-sha256sums=('9002dd4caa8ab8d7831a8e66f449e535a8bfef6b04eeac9afd98ca1e4b5a3fb4'
-            '3924f915bd6abfeb714414ae09953e20f86b194aeb08323fdb070262dd93c067'
-            'a09b0c177c461e0a6c454fef92e7c07b52d08036c3b5f68db05c07cb05a6405d')
-b2sums=('6b90ae1b0c80a916dce078b0961523b8d07f2b383913f1939a992ff884ca9ff7be60cc185a98a8e2e6c0bee10976e5149703cbfcd5057b8ee1e7484e964c0814'
-        '629aa5c714e461cd15e6692eca96ed656cd65d3121516eb0f088d383f411d152c49524bf931859163fab772d58e22704cbba148cfa6a464ec2d95f276115bae2'
-        'c3ec0840046729d58787ea44bfe2dd176cfbe37499197ebd9ef1b937592aa8ae16f3acb222fff4b5e2598723670641d62fac7f7d5574d2439acccbeb0f52c14c')
+sha256sums=('4465d70316d06b3773515e3f0c75b198866f1f2d8cb15f856e0564a71dec5ae3'
+            'fa25a88abf146ebe82c5e5c62df7ea7f2a6f2a8a446460ad98ab426a0b301287')
+b2sums=('1af1f41b478ee1f404ffa1c09032500b3191f37cbcb5737c60b5be51cffd5fcc6bdc73e33ad32592eb2386b762665267369778ca8324551f73554a72eef7278a'
+        '4400c4b762f58a3232917eb92ed864d04c11faf2ee57f65c7aa850d4dfec08b71e7b0dabb28a1c918dd37e289d24b6c2152a4afbe4b5de05c06bee2e3b278423')
 
 prepare() {
-	cd "$_pkgname-$_pkgver"
-
-    # Fix build for libdisplay-info 0.3
-    patch -Np1 -i ../libdisplay_info_0_3.patch
+	cd "$_pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkgname-$_pkgver"
+	cd "$_pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 
     # Git info (should probably automate if possible)
     export VERGEN_GIT_BRANCH=main
-    export VERGEN_GIT_COMMIT_MESSAGE="release: Fix rockspec"
-    export VERGEN_GIT_SHA="a8974da"
+    export VERGEN_GIT_COMMIT_MESSAGE="release: 0.2.0"
+    export VERGEN_GIT_SHA="2277dec"
     export VERGEN_GIT_DIRTY="false"
 
 	cargo build --frozen --release
@@ -73,7 +66,7 @@ build() {
 }
 
 package() {
-	cd "$_pkgname-$_pkgver"
+	cd "$_pkgname-$pkgver"
 	install -Dm755 target/release/${_pkgname} -t "$pkgdir/usr/bin/"
     install -Dm755 resources/${_pkgname}-session -t "$pkgdir/usr/bin/"
     install -Dm644 resources/${_pkgname}.desktop -t "$pkgdir/usr/share/wayland-sessions/"
@@ -85,12 +78,12 @@ package() {
     install -Dm644 completions/_$_pkgname -t "$pkgdir/usr/share/zsh/site-functions/"
     install -Dm644 completions/$_pkgname.elv -t "$pkgdir/usr/share/elvish/lib/"
 
-    cd "$srcdir/$_pkgname-$_pkgver/api/protobuf"
+    cd "$srcdir/$_pkgname-$pkgver/api/protobuf"
     for proto in $(find . -type f -name "*.proto"); do
         install -Dm644 "$proto" "$pkgdir/usr/share/$_pkgname/protobuf/${proto#\./}"
     done
 
-    cd "$srcdir/$_pkgname-$_pkgver/snowcap/api/protobuf"
+    cd "$srcdir/$_pkgname-$pkgver/snowcap/api/protobuf"
     for proto in $(find . -type f -name "*.proto"); do
         install -Dm644 "$proto" "$pkgdir/usr/share/$_pkgname/snowcap/protobuf/${proto#\./}"
     done
