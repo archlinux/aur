@@ -1,0 +1,31 @@
+diff --git a/applications/inbox-desktop/src/utils/view/viewManagement.ts b/applications/inbox-desktop/src/utils/view/viewManagement.ts
+index cf28926051..7b5cc1d5ff 100644
+--- a/applications/inbox-desktop/src/utils/view/viewManagement.ts
++++ b/applications/inbox-desktop/src/utils/view/viewManagement.ts
+@@ -26,7 +26,7 @@ import { macOSExitEvent, windowsAndLinuxExitEvent } from "./windowClose";
+ import { handleBeforeInput } from "./windowShortcuts";
+ import { getAppURL, URLConfig } from "../../store/urlStore";
+ import metrics from "../metrics";
+-import { join } from "node:path";
++import { join, dirname } from "node:path";
+ import { c } from "ttag";
+ import { isElectronOnMac } from "@proton/shared/lib/helpers/desktop";
+ import { APPS, APPS_CONFIGURATION, CALENDAR_APP_NAME, MAIL_APP_NAME } from "@proton/shared/lib/constants";
+@@ -507,7 +507,7 @@ export async function showNetworkErrorPage(viewID: ViewID): Promise<void> {
+     }
+ 
+     const filePath = app.isPackaged
+-        ? join(process.resourcesPath, "error-network.html")
++        ? join(dirname(app.getAppPath()), "error-network.html")
+         : join(app.getAppPath(), "assets/error-network.html");
+ 
+     const themeColors = nativeTheme.shouldUseDarkColors
+@@ -547,7 +547,7 @@ async function showLoadingPage(title: string): Promise<void> {
+ 
+ async function renderLoadingPage(view: WebContentsView, title: string): Promise<void> {
+     const filePath = app.isPackaged
+-        ? join(process.resourcesPath, "loading.html")
++        ? join(dirname(app.getAppPath()), "loading.html")
+         : join(app.getAppPath(), "assets/loading.html");
+ 
+     const themeColors = nativeTheme.shouldUseDarkColors

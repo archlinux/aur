@@ -3,22 +3,25 @@
 
 pkgname=proton-mail-git
 _name=${pkgname%-git}
-pkgver=r50739.4d9be15
+pkgver=r53403.5262a2e
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-depends=('bash' 'electron36' 'hicolor-icon-theme')
-makedepends=('git' 'nodejs-lts-jod' 'yarn')
+_electron=electron37
+depends=('bash' "$_electron" 'hicolor-icon-theme')
+makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
 provides=("$_name")
 conflicts=("$_name")
 source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
         'proton-mail.desktop'
-        'proton-mail.sh')
+        'proton-mail.sh'
+        'fix-resources-path.patch')
 b2sums=('SKIP'
-        'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
-        'd71722fd78770b2025464fcde201b4ab18e58afc269105ea389a6d4665a6a0801adcece53507004c56722ba8954ee7fd6b5de3eec3b099c6cc67e206f14cf4aa')
+        'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
+        '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad'
+        'e43bd152b71c8c049ddfb1306983a3591a8220ef1c2816d7a2deeca2cd4519cf622d735901ddc58455123343778cf21707a7287120aae0b4e285585dd9b79f51')
 
 pkgver() {
     cd ProtonWebClients
@@ -27,13 +30,31 @@ pkgver() {
 
 prepare() {
     cd ProtonWebClients
+
+    # Fix resources path for system electron
+    patch -Np1 -i "$srcdir/fix-resources-path.patch"
+
+    # Find out which major release of electron this version of proton-mail requires
+    local _electron_major=$(jq --raw-output '.devDependencies.electron' < "applications/inbox-desktop/package.json" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
+
+    # Check if we depend on the correct electron version
+    if [ "$_electron" != "electron$_electron_major" ] ; then
+        echo "Error: Incorrect electron version detected. Please change the value of \"_electron\" from \"$_electron\" to \"electron$_electron_major\"."
+        return 1
+    fi
+
+    # Specify electron version in launcher
+    sed -i "s|@ELECTRON@|$_electron|" "$srcdir/proton-mail.sh"
+
+    # Configure Yarn workspaces to build only inbox-desktop (proton-mail) instead of all applications
     sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
+
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    yarn install
 }
 
 build() {
     cd ProtonWebClients
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
-    yarn install
     yarn workspace proton-inbox-desktop package
 }
 
@@ -44,12 +65,11 @@ check() {
 
 package() {
     install -Dm755 $_name.sh "$pkgdir/usr/bin/$_name"
-    install -Dm644 $_name.desktop "$pkgdir/usr/share/applications/$_name.desktop"
+    install -Dm644 $_name.desktop -t "$pkgdir/usr/share/applications"
 
     cd ProtonWebClients/applications/inbox-desktop
-
-    install -dm755 "$pkgdir/usr/share/$_name"
-    cp -r "out/Proton Mail-linux-x64/resources"/* "$pkgdir/usr/share/$_name/"
+    install -d "$pkgdir/usr/share/$_name"
+    cp out/"Proton Mail"-linux-*/resources/* "$pkgdir/usr/share/$_name/"
 
     cd assets
     install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_name.png"

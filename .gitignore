@@ -5,4 +5,5 @@
 !LICENSE
 !PKGBUILD
 !*.desktop
+!fix-resources-path.patch
 !proton-mail.sh
