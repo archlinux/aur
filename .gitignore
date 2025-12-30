@@ -1,0 +1,21 @@
+# Makepkg generated files
+pkg/
+src/
+*.pkg.tar*
+*.log
+
+# Downloaded sources and extracted artifacts
+*.deb
+data.tar.gz
+control.tar.gz
+debian-binary
+*.tar.gz
+*.tar.xz
+*.zip
+
+# System/Editor metadata
+.DS_Store
+*~
+*.swp
+.vscode/
+.idea/
