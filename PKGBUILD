@@ -51,6 +51,7 @@ build() {
   set -u
   cd "${_srcdir}"
 
+  CFLAGS+=' -std=gnu17'
   if [ ! -s 'configure' ]; then
     ./autogen.sh
   fi
