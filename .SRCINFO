@@ -1,6 +1,6 @@
 pkgbase = rimsort-git
 	pkgdesc = A Mod Manager For Rimworld game
-	pkgver = r2084.33b70b7c
+	pkgver = r2125.405f05b9
 	pkgrel = 1
 	url = https://github.com/RimSort/RimSort
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = rimsort-git
 	makedepends = git
 	depends = python
 	depends = uv
+	optdepends = todds: Texture optimization support
 	options = !strip
 	source = git+https://github.com/RimSort/RimSort.git
 	source = RimSort.desktop

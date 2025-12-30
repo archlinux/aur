@@ -1,6 +1,6 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r2084.33b70b7c
+pkgver=r2125.405f05b9
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
@@ -8,6 +8,7 @@ url="https://github.com/RimSort/RimSort"
 license=("GPL3")
 makedepends=(git)
 depends=(python uv)
+optdepends=('todds: Texture optimization support')
 source=("git+https://github.com/RimSort/RimSort.git"
         "RimSort.desktop"
         "RimSort.sh")
@@ -53,6 +54,10 @@ package() {
 
     # Add missing steam symlink
     ln -s SteamworksPy_x86_64.so "$pkgdir/opt/rimsort/libs/SteamworksPy.so"
+
+    # Add todds link
+    mkdir "$pkgdir/opt/rimsort/todds"
+    ln -s /usr/bin/todds "$pkgdir/opt/rimsort/todds/todds"
 
     # Icon
     install -Dm644 "./themes/default-icons/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"
