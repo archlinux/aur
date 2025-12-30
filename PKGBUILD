@@ -9,7 +9,7 @@
 
 pkgname=rogue-signal-protocol-bin
 install=rogue-signal-protocol-bin.install
-pkgver=0.9.1_beta
+pkgver=0.9.2_beta
 pkgrel=1
 pkgdesc="Turn-based stealth roguelike with deterministic gameplay - no RNG, pure tactics"
 arch=('x86_64')
@@ -31,12 +31,12 @@ conflicts=('rogue-signal-protocol' 'rogue-signal-protocol-git')
 
 # Source archive from GitHub releases
 # Note: pkgver uses underscore (0.9.0_beta) but release tag uses hyphen (v0.9.0-beta)
-_vertag=0.9.1-beta
+_vertag=0.9.2-beta
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dragynrain/RogueSignalProtocol/releases/download/v${_vertag}/RogueSignalProtocol-${_vertag}-Linux.tar.gz")
 
 # Update this checksum for each release
 # Generate with: sha256sum RogueSignalProtocol-X.Y.Z-beta-Linux.tar.gz
-sha256sums=('c165fd72c526573c238c32d27221cad73b3e87fc880417e27e2a8576657f5c90')
+sha256sums=('90ceae8bb18d137a17ffd86bfc81d168d8ca2e84de311672036cce79d30e6ef5')
 
 # Don't strip the binary - PyInstaller binaries don't like being stripped
 options=('!strip')

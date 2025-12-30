@@ -1,6 +1,6 @@
 pkgbase = rogue-signal-protocol-bin
 	pkgdesc = Turn-based stealth roguelike with deterministic gameplay - no RNG, pure tactics
-	pkgver = 0.9.1_beta
+	pkgver = 0.9.2_beta
 	pkgrel = 1
 	url = https://github.com/Dragynrain/RogueSignalProtocol
 	install = rogue-signal-protocol-bin.install
@@ -15,7 +15,7 @@ pkgbase = rogue-signal-protocol-bin
 	conflicts = rogue-signal-protocol
 	conflicts = rogue-signal-protocol-git
 	options = !strip
-	source = rogue-signal-protocol-bin-0.9.1_beta.tar.gz::https://github.com/Dragynrain/RogueSignalProtocol/releases/download/v0.9.1-beta/RogueSignalProtocol-0.9.1-beta-Linux.tar.gz
-	sha256sums = c165fd72c526573c238c32d27221cad73b3e87fc880417e27e2a8576657f5c90
+	source = rogue-signal-protocol-bin-0.9.2_beta.tar.gz::https://github.com/Dragynrain/RogueSignalProtocol/releases/download/v0.9.2-beta/RogueSignalProtocol-0.9.2-beta-Linux.tar.gz
+	sha256sums = 90ceae8bb18d137a17ffd86bfc81d168d8ca2e84de311672036cce79d30e6ef5
 
 pkgname = rogue-signal-protocol-bin
