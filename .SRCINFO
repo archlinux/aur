@@ -1,0 +1,20 @@
+pkgbase = vext
+	pkgdesc = High-performance IRC notification daemon for version control systems
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hyperpolymath/vext
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	provides = vextd
+	provides = vext-send
+	conflicts = vext-git
+	source = vext-1.0.0.tar.gz::https://github.com/hyperpolymath/vext/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = vext
