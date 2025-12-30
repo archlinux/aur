@@ -22,7 +22,7 @@ options=(
 )
 install=${pkgname}.install
 source=(
-    "${pkgname%-desktop-bin}-${pkgver}.deb::${url}/docs/releases/download/v${pkgver}/linux-${pkgname%-desktop-bin}-${pkgver}-linux.deb"
+    "${pkgname%-desktop-bin}-${pkgver}.deb::https://api.hayase.watch/files/linux-${pkgname%-desktop-bin}-${pkgver}-linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hayase-app/electron/main/LICENSE"
     "${pkgname}.install"
 )
