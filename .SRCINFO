@@ -1,6 +1,6 @@
 pkgbase = owlry-plugin-emoji
 	pkgdesc = Emoji picker plugin for Owlry
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = owlry-plugin-emoji
 	makedepends = cargo
 	depends = owlry
 	depends = wl-clipboard
-	source = owlry-0.1.0.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.1.0.tar.gz
-	b2sums = SKIP
+	source = owlry-0.2.0.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.2.0.tar.gz
+	b2sums = 03938310a657e1dfac5326cea805264e7c946dbb6df33634da31cfcd4c6712828d70227c6b59c3b3c1ec46e102ecabca30b75d9d5a06b2f7f9a7e3d80d0f8756
 
 pkgname = owlry-plugin-emoji
