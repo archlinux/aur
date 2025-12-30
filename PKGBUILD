@@ -1,16 +1,17 @@
-# Maintainer: mewset>
+# Maintainer: mewset
 pkgname=better-iptv-bin
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS"
 arch=('x86_64')
 url="https://github.com/mewset/better-iptv"
 license=('GPL2')
-depends=('mpv' 'webkit2gtk' 'gtk3')
+depends=('mpv' 'webkit2gtk-4.1' 'gtk3')
 provides=('better-iptv')
 conflicts=('better-iptv' 'better-iptv-git')
-source=("$pkgname-$pkgver.AppImage::https://github.com/mewset/better-iptv/releases/download/v${pkgver}/Better.IPTV_${pkgver}_amd64.AppImage")
-sha256sums=('6be1a93d6ee923b6b1dd60254e8232c0867f92afa07e272e181045508f8753c6')
+# Use the Arch-compatible AppImage (without bundled WebKit libs)
+source=("$pkgname-$pkgver.AppImage::https://github.com/mewset/better-iptv/releases/download/v${pkgver}/Better.IPTV_${pkgver}_amd64-arch.AppImage")
+sha256sums=('6a72463436ec404a3c1a854b8f4741014a33a696678157a580a21c29af2d70ec')
 options=('!strip')
 
 prepare() {
@@ -34,8 +35,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/better-iptv" << 'EOF'
 #!/bin/sh
-# Fix EGL display issues on some systems
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
 exec /opt/better-iptv-bin/AppRun "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/better-iptv"
