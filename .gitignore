@@ -1,5 +1,17 @@
 *.log
 *.tar.zst
+/CLI11/
 /fluxengine/
+/imgui/
+/ImHex/
+/json/
+/libromfs/
+/libwolv/
+/lunasvg/
+/md4c/
+/nativefiledialog-extended/
+/PatternLanguage/
 /pkg/
 /src/
+/throwing_ptr/
+/xdgpp/
