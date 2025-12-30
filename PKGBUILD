@@ -61,33 +61,33 @@ build() {
   echo "
 export PATH=\$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
 export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7.1
-export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.6.1
-export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation6.1
+export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.8
+export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation6.1.2
 export G4RADIOACTIVEDATA=/opt/Geant4/Libraries/RadioactiveDecay6.1.2
-export G4PARTICLEXSDATA=/opt/Geant4/Libraries/G4PARTICLEXS4.1
+export G4PARTICLEXSDATA=/opt/Geant4/Libraries/G4PARTICLEXS4.2
 export G4PIIDATA=/opt/Geant4/Libraries/G4PII1.3
 export G4REALSURFACEDATA=/opt/Geant4/Libraries/RealSurface2.2
 export G4SAIDXSDATA=/opt/Geant4/Libraries/G4SAIDDATA2.0
 export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
-export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.2
+export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.3
 export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE3.0
-export G4CHANNELINGDATA=/opt/Geant4/Libraries/G4CHANNELING1.0
+export G4CHANNELINGDATA=/opt/Geant4/Libraries/G4CHANNELING2.0
 export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4" > Geant4.sh
 
   echo "
 setenv PATH \$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
 setenv G4NEUTRONHPDATA /opt/Geant4/Libraries/G4NDL4.7.1
-setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.6.1
-setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation6.1
+setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.8
+setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation6.1.2
 setenv G4RADIOACTIVEDATA /opt/Geant4/Libraries/RadioactiveDecay6.1.2
-setenv G4PARTICLEXSDATA /opt/Geant4/Libraries/G4PARTICLEXS4.1
+setenv G4PARTICLEXSDATA /opt/Geant4/Libraries/G4PARTICLEXS4.2
 setenv G4PIIDATA /opt/Geant4/Libraries/G4PII1.3
 setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2
 setenv G4SAIDXSDATA /opt/Geant4/Libraries/G4SAIDDATA2.0
 setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.3
-setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.2
+setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.3
 setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE3.0
-setenv G4CHANNELINGDATA /opt/Geant4/Libraries/G4CHANNELING1.0
+setenv G4CHANNELINGDATA /opt/Geant4/Libraries/G4CHANNELING2.0
 setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
 
   [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
