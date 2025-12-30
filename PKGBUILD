@@ -3,7 +3,7 @@
 pkgname=plakar-git
 _pkgname=plakar
 pkgdesc="Backup for lazy^W smart engineers."
-pkgver=1.0.3.r97.g700a7872
+pkgver=1.0.3.r384.gd77c14a2
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://plakar.io/"
@@ -12,6 +12,7 @@ provides=('plakar')
 conflicts=('plakar')
 makedepends=(
   'go'
+  'fuse2'
 )
 
 pkgver() {
