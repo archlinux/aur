@@ -1,6 +1,6 @@
 pkgbase = owlry-plugin-system
 	pkgdesc = System actions plugin for Owlry (shutdown, reboot, logout, etc.)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
