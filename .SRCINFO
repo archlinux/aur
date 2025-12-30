@@ -1,6 +1,6 @@
 pkgbase = ash-git
 	pkgdesc = An immutable tree-shaped meta-distribution using snapshots.
-	pkgver = r470.9953135
+	pkgver = r469.9801ea1
 	pkgrel = 1
 	url = https://github.com/ochibani/ash
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ash-git
 	depends = efibootmgr
 	depends = pacman
 	depends = paru
-	depends = python
+	depends = python-anytree
 	depends = sed
 	depends = rc-local
 	optdepends = grub

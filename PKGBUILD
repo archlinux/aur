@@ -1,13 +1,13 @@
 # Maintainer: Chibani <11yzyv86j@relay.firefox.com>
 
 pkgname="ash-git"
-pkgver=r469.9801ea1
+pkgver=r470.9953135
 pkgrel=1
 pkgdesc="An immutable tree-shaped meta-distribution using snapshots."
 url="https://github.com/ochibani/ash"
 arch=("x86_64")
 license=("AGPL")
-depends=("btrfs-progs" "coreutils" "curl" "efibootmgr" "pacman" "paru" "python" "sed" "rc-local")
+depends=("btrfs-progs" "coreutils" "curl" "efibootmgr" "pacman" "paru" "python-anytree" "sed" "rc-local")
 makedepends=("cargo" "git")
 optdepends=("grub" "systemd")
 provides=("ash")
