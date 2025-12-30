@@ -1,0 +1,5 @@
+[bayesian-ssh-bin]
+source = "github"
+github = "abdoufermat5/bayesian-ssh"
+use_latest_release = true
+prefix = "v"
