@@ -1,0 +1,27 @@
+pkgbase = owlry-meta-full
+	pkgdesc = Complete Owlry installation with all plugins
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://somegit.dev/Owlibou/owlry
+	arch = any
+	license = GPL-3.0-or-later
+	depends = owlry
+	depends = owlry-plugin-bookmarks
+	depends = owlry-plugin-calculator
+	depends = owlry-plugin-scripts
+	depends = owlry-plugin-ssh
+	depends = owlry-plugin-system
+	depends = owlry-plugin-clipboard
+	depends = owlry-plugin-emoji
+	depends = owlry-plugin-filesearch
+	depends = owlry-plugin-systemd
+	depends = owlry-plugin-websearch
+	depends = owlry-plugin-media
+	depends = owlry-plugin-pomodoro
+	depends = owlry-plugin-weather
+	optdepends = owlry-lua: Lua runtime for custom user plugins
+	optdepends = owlry-rune: Rune runtime for custom user plugins
+	conflicts = owlry-full
+	replaces = owlry-full
+
+pkgname = owlry-meta-full
