@@ -1,7 +1,7 @@
 pkgbase = proton-mail
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/mail
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,8 +15,10 @@ pkgbase = proton-mail
 	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@1.12.0
 	source = proton-mail.desktop
 	source = proton-mail.sh
+	source = fix-resources-path.patch
 	b2sums = SKIP
 	b2sums = f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9
-	b2sums = 8e85e7543d433d57739d730707826baeadfadd537aed38ba487c7360fe5a69b0cd6e1989be13ebd5bceadc4b888bb3c1c1b17f02f7a5daadad7a2d1b2e0b1f89
+	b2sums = 45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad
+	b2sums = e43bd152b71c8c049ddfb1306983a3591a8220ef1c2816d7a2deeca2cd4519cf622d735901ddc58455123343778cf21707a7287120aae0b4e285585dd9b79f51
 
 pkgname = proton-mail
