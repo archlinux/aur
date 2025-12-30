@@ -1,7 +1,7 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowc-git
-pkgver=r1147.f3f3215
+pkgver=r1201.d6dbb7a
 pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
@@ -44,7 +44,8 @@ prepare() {
     cd $pkgname
 }
 
-build() {  
+build() {
+  export CC="gcc"
   arch-meson $pkgname build
   ninja -C build
 }

@@ -1,6 +1,6 @@
 pkgbase = mangowc-git
 	pkgdesc = A Wayland compositor with smooth animation
-	pkgver = r1147.f3f3215
+	pkgver = r1201.d6dbb7a
 	pkgrel = 1
 	url = https://github.com/DreamMaoMao/mangowc
 	arch = x86_64
