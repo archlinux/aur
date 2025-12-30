@@ -1,7 +1,7 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal-git
 pkgver=r50.179fdf7
-pkgrel=1
+pkgrel=2
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming (development version)"
 arch=('any')
 url="https://github.com/ind4skylivey/0ptiscaler4linux"
@@ -15,8 +15,16 @@ optdepends=(
 )
 provides=('optiscaler-universal')
 conflicts=('optiscaler-universal')
-source=("git+$url.git")
-sha256sums=('SKIP')
+modver=1.0.0
+
+source=(
+    "git+$url.git"
+    "optiscaler-universal-modingv2-${modver}.tar.zst::https://github.com/ind4skylivey/0ptiscaler4linux/releases/download/v${modver}/optiscaler-universal-modingv2-${modver}.tar.zst"
+)
+sha256sums=(
+    'SKIP'
+    'fa06081d5918040a03a90054da0f3cfe968c011f2c5365ced10c57119c2ccf89'
+)
 
 pkgver() {
     cd "$srcdir/0ptiscaler4linux"
@@ -40,6 +48,10 @@ package() {
     cp -r templates "$pkgdir/usr/share/optiscaler-universal/"
     cp -r config "$pkgdir/usr/share/optiscaler-universal/"
     cp -r src "$pkgdir/usr/share/optiscaler-universal/"
+
+    # Install modding assets (DLL overlays)
+    install -dm755 "$pkgdir/usr/share/optiscaler-universal/Modingv2"
+    bsdtar -xf "$srcdir/optiscaler-universal-modingv2-${modver}.tar.zst" -C "$pkgdir/usr/share/optiscaler-universal/"
 
     # Install binaries directory structure
     install -dm755 "$pkgdir/usr/share/optiscaler-universal/binaries"
