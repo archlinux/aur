@@ -3,7 +3,7 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.21
+pkgver=0.12.22
 pkgrel=1
 pkgdesc="Map widget for GTK 3"
 url="https://wiki.gnome.org/Projects/libchamplain"
@@ -11,9 +11,9 @@ license=(LGPL)
 arch=(x86_64)
 depends=(clutter-gtk libsoup3 cairo sqlite)
 makedepends=(glib2-devel gobject-introspection gtk-doc vala meson git)
-_commit=941560af497148588783db991e8135f52a82574d  # tags/0.12.21^0
+_commit=ad9de2896b8a2b0e91e6a9e3da86af9c961f000a  # HEAD, version bumped at 84ce376d81f1316c9796bf84a6ded7a767c4c361
 source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('60ff41c1c602e8eff71ae5348c01ccfc574cc4a178ca5ffd7e850460de7ff6a3')
 
 pkgver() {
   cd $pkgname

@@ -1,6 +1,6 @@
 pkgbase = libchamplain
 	pkgdesc = Map widget for GTK 3
-	pkgver = 0.12.21
+	pkgver = 0.12.22
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libchamplain
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = libchamplain
 	depends = libsoup3
 	depends = cairo
 	depends = sqlite
-	source = git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=941560af497148588783db991e8135f52a82574d
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=ad9de2896b8a2b0e91e6a9e3da86af9c961f000a
+	sha256sums = 60ff41c1c602e8eff71ae5348c01ccfc574cc4a178ca5ffd7e850460de7ff6a3
 
 pkgname = libchamplain
