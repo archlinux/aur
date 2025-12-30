@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-essentials
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Essential plugins for Owlry (calculator, system, ssh, scripts, bookmarks)"
 arch=('any')
