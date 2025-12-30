@@ -6,7 +6,6 @@ pkgbase = pinact-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = openssl
 	provides = pinact
 	conflicts = pinact
 	source_x86_64 = pinact-amd64-3.7.4.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v3.7.4/pinact_linux_amd64.tar.gz
