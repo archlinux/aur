@@ -5,6 +5,7 @@ pkgbase = libchamplain
 	url = https://wiki.gnome.org/Projects/libchamplain
 	arch = x86_64
 	license = LGPL
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = vala
