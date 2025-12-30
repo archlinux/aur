@@ -1,0 +1,9 @@
+pre_install() {
+    # Remove old plugin files that may have different names
+    rm -f /usr/lib/owlry/plugins/libwebsearch.so
+    rm -f /usr/lib/owlry/plugins/libowlry_plugin_websearch.so
+}
+
+pre_upgrade() {
+    pre_install
+}
