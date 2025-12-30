@@ -1,0 +1,24 @@
+pkgbase = sleipnirgroup-sleipnir
+	pkgdesc = Reverse mode autodiff library, interior-point method, and NLP solver DSL
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/SleipnirGroup/Sleipnir
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = cmake
+	makedepends = git
+	makedepends = nanobind
+	makedepends = python-build
+	makedepends = python-installer
+	depends = eigen-git
+	depends = python-numpy
+	depends = python-scipy
+	provides = sleipnirgroup-sleipnir
+	conflicts = sleipnirgroup-sleipnir
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/SleipnirGroup/Sleipnir#tag=v0.3.3
+	md5sums = c6b09e21ef9a8bf06245b42e9b2b3d2b
+
+pkgname = sleipnirgroup-sleipnir
