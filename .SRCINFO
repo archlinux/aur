@@ -1,14 +1,15 @@
 pkgbase = ghpkg
 	pkgdesc = Indev package manager
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Frothy7650/ghpkg/
 	arch = any
 	license = MIT
 	makedepends = vlang
+	makedepends = clang
 	depends = git
 	options = !debug
-	source = https://github.com/Frothy7650/ghpkg/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 5ea6a8597ddf9e23859d537a0c0e2d022ac578c3224625b8624cfd52a4568a40
+	source = https://github.com/Frothy7650/ghpkg/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 0734497e6038eafccbee5cb88660b37c9543877c80fffc6a00a26bfd56a66606
 
 pkgname = ghpkg
