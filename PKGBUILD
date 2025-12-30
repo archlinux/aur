@@ -1,16 +1,15 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-pomodoro
-pkgver=0.2.2
+pkgver=0.4.3
 pkgrel=1
-_srcver=0.4.2
 pkgdesc="Pomodoro timer widget plugin for Owlry"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=('owlry')
 makedepends=('cargo')
-source=("owlry-$_srcver.tar.gz::$url/archive/v$_srcver.tar.gz")
-b2sums=('4d4e6532e134d5cca4079daa610888cf8b05245b93d1b798b9b817dc5a08dc9cc1d3f45598c7736e967865366e5fcf610549fc50256d6875253d60982dfb6fef')
+source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('5d4d334d27d8ae5e6f3f295ced22e986ee92e0b2250f7b7480677a70b630742f62b5b95e14c66c51f5deb1ec8abf796afc251094c8060a5075b2334a499628b8')
 
 _cratename=owlry-plugin-pomodoro
 
