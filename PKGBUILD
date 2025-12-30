@@ -1,4 +1,4 @@
-# Maintainer: Cristian Gutierrez <cristian@crstian.me>
+# Maintainer: A43 <arirera43 [at] gmail [dot] com>
 
 pkgname="mxw-git"
 pkgver=v0.1
