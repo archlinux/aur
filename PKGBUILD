@@ -3,15 +3,14 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=1.0rc2
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
-optdepends=('i2c-tools: mainboard & RAM access'
-            'openrazer-driver-dkms: for Razer devices')
+optdepends=('i2c-tools: mainboard & RAM access')
 source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_$pkgver/OpenRGB-release_candidate_${pkgver}.tar.gz"
         openrgb-modules-load.conf
         openrgb.tmpfiles
