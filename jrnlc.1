@@ -1,0 +1,121 @@
+.TH JRNLC 1 "2025-03-15" "jrnl 3.0.0" "User Commands"
+
+.SH NAME
+jrnlc \- minimal CLI journaling tool
+
+.SH SYNOPSIS
+.B jrnlc
+.B init
+.RI [ --local | --global]
+
+
+.B jrnlc
+.B add
+.RI [ TEXT ] " " [ tag ] " " [ --local | --global ]
+
+.B jrnlc
+.B show
+.RI [ specifier ] " " [ options ] " " [ --local | --global ]
+
+.B jrnlc
+.B backup
+.RI [ filename ]
+
+.SH DESCRIPTION
+jrnlc is a small command-line journaling tool that stores
+journal entries in a plain-text format and provides simple
+filtering based on time and ranges.
+
+.SH OPTIONS
+.TP
+.BR add " " TEXT " " --tag " " [tag]
+Add a new journal entry with an optional tag. If no tag is
+provided, the previous entry's tag may be reused.
+
+.TP
+.BR show " " --before " " TIME
+Show entries before TIME.
+
+.TP
+.BR show " " --after " " TIME
+Show entries after TIME.
+
+.TP
+.BR show " " *N
+Show the first N entries.
+
+.TP
+.BR show " " N*
+Show the last N entries.
+
+.TP
+.BR --local
+Operate on the local journal in the current directory.
+
+.TP
+.BR --global
+Operate on the global journal.
+
+.TP
+.B TIME format
+YYYY-MM-DD HH:MM
+
+.TP
+.BR backup " " [filename]
+Create a backup at the path specified in the configuration
+file. An optional filename may be provided.
+
+.TP
+.BR -h ", " --help
+Show help and exit.
+
+.TP
+.BR -v ", " --version
+Show version information and exit.
+
+.SH FILES
+.TP
+.I $XDG_DATA_HOME/jrnlc/journal.txt
+Default global journal storage file.
+
+.TP
+.I $XDG_DATA_HOME/jrnlc/backup
+Default backup directory.
+
+.TP
+.I $XDG_CONFIG_HOME/jrnlc/config
+Configuration file.
+
+.SH NOTES
+If a local journal is not present, jrnlc falls back to the
+global journal unless --local is explicitly specified.
+
+jrnlc is intentionally minimal. Each invocation performs a
+single operation, following traditional Unix command-line
+tool design. Journal data is stored in plain text and is
+safe to inspect or process using standard Unix utilities.
+
+.SH DESIGN
+State-changing operations are implemented using atomic
+file replacement to avoid partial writes or corrupted
+journal states.
+
+.SH EXAMPLES
+Add a new entry:
+.RS
+jrnlc add "Finished N-body simulation draft"
+.RE
+
+Show the last 3 entries:
+.RS
+jrnlc show 3*
+.RE
+
+Create a backup:
+.RS
+jrnlc backup
+.RE
+
+.SH AUTHOR
+Manjunatha Sarma Majety
+
