@@ -9,11 +9,19 @@ license=('MIT')
 makedepends=('go>=1.25' 'npm' 'git')
 depends=('gtk4' 'webkitgtk-6.0')
 optdepends=(
-    'gstreamer: Media playback support'
     'gst-plugins-base: Base media codecs'
     'gst-plugins-good: Additional media codecs'
     'gst-plugins-bad: Extended media codecs'
+    'gst-plugins-ugly: Patented media codecs'
     'gst-libav: FFmpeg-based codecs'
+    'gst-plugin-pipewire: PipeWire audio support'
+    'gst-plugin-va: Hardware video decoding (VA-API stateless decoders)'
+    'pipewire: Audio/video routing'
+    'pipewire-pulse: PulseAudio replacement'
+    'mesa: VA-API driver for AMD GPUs'
+    'libva-nvidia-driver: VA-API driver for NVIDIA GPUs'
+    'libva-intel-driver: VA-API driver for older Intel GPUs'
+    'intel-media-driver: VA-API driver for newer Intel GPUs (Broadwell+)'
 )
 provides=('dumber-browser' 'dumber')
 conflicts=('dumber-browser' 'dumber-browser-bin')
