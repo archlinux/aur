@@ -1,13 +1,13 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.3.1.r0.g71a1a45
+pkgver=0.3.3.r14.gcd27694
 pkgrel=1
-pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
+pkgdesc="Reverse mode autodiff library, interior-point method, and NLP solver DSL"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
 depends=('eigen-git' 'python-numpy' 'python-scipy')
-makedepends=('cmake' 'nanobind' 'python-build' 'python-installer')
+makedepends=('cmake' 'git' 'nanobind' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 license=('BSD')
 options=('!strip' 'staticlibs')
