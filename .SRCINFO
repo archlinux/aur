@@ -1,14 +1,14 @@
 pkgbase = runa
 	pkgdesc = A fast and lightweight console file browser written in Rust
-	pkgver = 0.3.5
-	pkgrel = 3
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://github.com/alexm-dev/runa
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = runa-0.3.5.tar.gz::https://github.com/alexm-dev/runa/archive/v0.3.5.tar.gz
-	sha256sums = 4c85df83d72557239b5a4b8c2155f6234dd38a1d780d23391e9889e22253eaf2
+	source = runa-0.3.6.tar.gz::https://github.com/alexm-dev/runa/archive/v0.3.6.tar.gz
+	sha256sums = dc56b93897a03b151872eaeeee78022c3db1b54d355ec17eb58e724a65d70934
 
 pkgname = runa
