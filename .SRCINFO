@@ -1,7 +1,7 @@
 pkgbase = wlroots0.19
 	pkgdesc = Modular Wayland compositor library
 	pkgver = 0.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
 	license = MIT
@@ -31,6 +31,7 @@ pkgbase = wlroots0.19
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: Xwayland support
+	optdepends = vulkan-validation-layers: validation layers for the experimental vulkan renderer backend
 	provides = libwlroots-0.19.so
 	source = wlroots0.19::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#tag=0.19.2?signed
 	source = Revert-layer-shell-error-on-0-dimension-without-anch.patch
