@@ -1,7 +1,7 @@
 pkgbase = python-check50
 	pkgdesc = Command-line program with which you can check the correctness of your programs in the CS50 courses.
-	pkgver = 3.3.11
-	pkgrel = 3
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/cs50/check50
 	arch = any
 	license = GPLv3
@@ -22,7 +22,7 @@ pkgbase = python-check50
 	depends = python-yaml
 	depends = python-cryptography
 	optdepends = python-babel
-	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.3.11.tar.gz
-	sha256sums = bfbdfa4758f29e2604cf1b5f4ab31713ef3ca9bd5dc6e647da2479a57967d71f
+	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.4.0.tar.gz
+	sha256sums = 8a17a3ce74c1cdb0cefd43ad1f55ca488ce2c62f71998886209a757f094be89a
 
 pkgname = python-check50
