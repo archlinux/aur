@@ -1,0 +1,26 @@
+pkgbase = freetube-git-d3sox
+	pkgdesc = An open source desktop YouTube player built with privacy in mind - My fork with additional features
+	pkgver = r9680.85283d62
+	pkgrel = 1
+	url = https://freetubeapp.io
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	depends = electron39
+	provides = freetube
+	conflicts = freetube
+	source = git+https://github.com/D3SOX/FreeTube
+	source = freetube.desktop
+	source = freetube.sh
+	sha256sums = SKIP
+	sha256sums = ada2b4b8f6a1e8896acbce4f4d311228d2c86026c273ffa00afa3247294f8b1e
+	sha256sums = 3fcd6bf2c18f606c6fdbd09c9a81d8c0fda74b0c73c8db05d7a108db6ee9c2a6
+
+pkgname = freetube-git-d3sox
