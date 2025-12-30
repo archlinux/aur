@@ -1,6 +1,6 @@
 pkgbase = raku-music-bin
 	pkgdesc = Raku Music – Flutter-based Linux music player
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/sauraku/Raku-Music
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = raku-music-bin
 	depends = ffmpeg
 	provides = raku-music
 	conflicts = raku-music
-	source = https://github.com/sauraku/Raku-Music/releases/download/v1.0.0/raku-music-v1.0.0.tar.gz
+	source = https://github.com/sauraku/Raku-Music/releases/download/v1.1.0/raku-music-v1.1.0.tar.gz
 	source = raku-music.desktop
 	source = icon.png
-	sha256sums = 3f6253367db2e9a850bc8deec58b3245d9943edfd83bb1aeaaec93e9641def1b
+	sha256sums = 25034484037c3614d842930ac0e5b0a525237c7c450b4529e5202c699312b18a
 	sha256sums = SKIP
 	sha256sums = SKIP
 

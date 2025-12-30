@@ -1,5 +1,5 @@
 pkgname=raku-music-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Raku Music – Flutter-based Linux-first music player for your local library"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "icon.png"
 )
 sha256sums=(
-  '3f6253367db2e9a850bc8deec58b3245d9943edfd83bb1aeaaec93e9641def1b'
+  '25034484037c3614d842930ac0e5b0a525237c7c450b4529e5202c699312b18a'
   'SKIP'
   'SKIP'
 )
