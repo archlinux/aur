@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=gittorrent
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="a CLI encrypting version control system with a CI/CD pipeline"
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=(
 )
 install="advice.install"
 source=(
-  "git+file:///www/gitangular/repository/gittorrent.git"
+  "git+https://git.projectgrid.net/git/gittorrent.git"
   "LICENSE"
 )
 sha256sums=(
