@@ -1,7 +1,7 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings"
 arch=('any')
 url="https://github.com/ind4skylivey/0ptiscaler4linux"
@@ -12,8 +12,14 @@ optdepends=(
     'git-lfs: for downloading OptiScaler binaries'
     'python: for advanced YAML parsing'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('990633216e2c959b97a99051b8a82d74e18b93335f43a9f9e8ac553fc0f80feb')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+    "optiscaler-universal-modingv2-$pkgver.tar.zst::https://github.com/ind4skylivey/0ptiscaler4linux/releases/download/v$pkgver/optiscaler-universal-modingv2-$pkgver.tar.zst"
+)
+sha256sums=(
+    '990633216e2c959b97a99051b8a82d74e18b93335f43a9f9e8ac553fc0f80feb'
+    'fa06081d5918040a03a90054da0f3cfe968c011f2c5365ced10c57119c2ccf89'
+)
 
 package() {
     cd "$srcdir/0ptiscaler4linux-$pkgver"
@@ -32,6 +38,10 @@ package() {
     cp -r templates "$pkgdir/usr/share/$pkgname/"
     cp -r config "$pkgdir/usr/share/$pkgname/"
     cp -r src "$pkgdir/usr/share/$pkgname/"
+
+    # Install modding assets (DLL overlays)
+    install -dm755 "$pkgdir/usr/share/$pkgname/Modingv2"
+    bsdtar -xf "$srcdir/optiscaler-universal-modingv2-$pkgver.tar.zst" -C "$pkgdir/usr/share/$pkgname/"
 
     # Install binaries directory structure
     install -dm755 "$pkgdir/usr/share/$pkgname/binaries"
