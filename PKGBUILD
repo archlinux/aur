@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-tools
-pkgver=0.4.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Tool plugins for Owlry (clipboard, emoji, websearch, filesearch, systemd)"
 arch=('any')
@@ -10,12 +10,7 @@ depends=(
     'owlry'
     'owlry-plugin-clipboard'
     'owlry-plugin-emoji'
-    'owlry-plugin-websearch'
     'owlry-plugin-filesearch'
     'owlry-plugin-systemd'
+    'owlry-plugin-websearch'
 )
-
-package() {
-    # Meta-package - no files to install
-    true
-}
