@@ -1,6 +1,6 @@
 pkgbase = linkandroid-bin
 	pkgdesc = 全能手机连接助手,简单 高清投屏,多设备,USB/无线连接,录屏 MP4/GIF录屏,截屏美化,命令行,强大 文件管理,键盘鼠标OTG,应用管理。
-	pkgver = 0.7.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://linkandroid.com/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = linkandroid-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = 6b39c2445af52bf98c9fd3979b0a45f400178f2ec4ffd9188370c3ac6ae2e1f1
-	source_x86_64 = https://github.com/modstart-lib/linkandroid/releases/download/v0.7.0/LinkAndroid-0.7.0-linux-amd64.deb
-	sha256sums_x86_64 = 8ee20a3a345898a42b11170c04d1524e3fb18af63e3c078a11f0bcc374b047ae
-	source_arm64 = https://github.com/modstart-lib/linkandroid/releases/download/v0.7.0/LinkAndroid-0.7.0-linux-arm64.deb
-	sha256sums_arm64 = 8f2bc84fb5d047611bab5fb5534f5fd2df48ec27c1762414fbcae348993fa7cf
+	source_x86_64 = https://github.com/modstart-lib/linkandroid/releases/download/v1.0.3/LinkAndroid-1.0.3-linux-amd64.deb
+	sha256sums_x86_64 = acfbc345c1dc30b32e655add3cf25261251eb54dd253fe49144187f47368872a
+	source_arm64 = https://github.com/modstart-lib/linkandroid/releases/download/v1.0.3/LinkAndroid-1.0.3-linux-arm64.deb
+	sha256sums_arm64 = a7386cbd53e8ee6ec56fe0c272a07831c13d96b74907a52235a762b6d329a5b3
 
 pkgname = linkandroid-bin
