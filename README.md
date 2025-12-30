@@ -546,6 +546,8 @@ nGPT determines configuration values in the following order (highest priority fi
 4. Main configuration file `ngpt.conf` or `custom-config-file`
 5. Default values
 
+**Tip:** Use `ngpt --show-config` to see which configuration values are being used and their sources (command-line arguments, environment variables, or configuration file).
+
 ### Real-World Demonstrations with nGPT
 
 Let's see nGPT in action! Here are some practical ways you can use it every day:
