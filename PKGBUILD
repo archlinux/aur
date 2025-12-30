@@ -1,6 +1,6 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="A high-performance terminal image browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source=("pixelterm.bash-${pkgver}::https://raw.githubusercontent.com/zouyonghe/P
         "pixelterm.zsh-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/zsh/_pixelterm"
         "pixelterm.fish-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/fish/pixelterm.fish")
 noextract=()
-md5sums_x86_64=('81e5b77a4e327d64f2200750a44c5603')
-md5sums_aarch64=('3a133fdbc5e63d02584d7e2735d76228')
-md5sums=('73842245bd803ea52f10bd8ebd6b2fc8' 'f844476854b319ee1e97359c2524d210' 'c78eeeb102fb72c422b6f166b7bc1a2d')
+md5sums_x86_64=('5afe3a169dd51aba472affc64ac18fc3')
+md5sums_aarch64=('a32d9023d8a49230c71659bf6717a117')
+md5sums=('73842245bd803ea52f10bd8ebd6b2fc8' 'c4603e14d3acfe6c62eef89862bf40dc' '583b5c3fdd42af73d00379569d2201ce')
 
 prepare() {
   find "${srcdir}" -maxdepth 1 -type f -name 'pixelterm-*' ! -name "pixelterm-${pkgver}" -delete
