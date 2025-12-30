@@ -1,6 +1,6 @@
 pkgbase = owlry-plugin-media
 	pkgdesc = Media player controls plugin for Owlry (MPRIS)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
