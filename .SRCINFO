@@ -1,6 +1,6 @@
 pkgbase = zrc
 	pkgdesc = A custom shell inspired by Tcl
-	pkgver = 2.5hh.r44.g0b80f5e
+	pkgver = 2.6.r0.g2b85f78
 	pkgrel = 1
 	url = https://github.com/Edd12321/zrc
 	install = zrc.install

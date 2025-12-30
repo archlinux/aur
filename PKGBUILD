@@ -8,7 +8,7 @@ license=('BSD-2-Clause')
 makedepends=('git' 'posix' 'gcc')
 source=("git+https://github.com/Edd12321/zrc.git")
 sha256sums=('SKIP')
-pkgver=2.5hh.r44.gc050dd7
+pkgver=2.6.r0.g2b85f78
 # options=('!debug')
 install="zrc.install"
 
