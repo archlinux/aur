@@ -1,5 +1,5 @@
-[mprocs-bin]
+[bb-rs]
 source = "github"
-github = "pvolok/mprocs"
+github = "epilys/bb"
 use_latest_release = true
 prefix = "v"
