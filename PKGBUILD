@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-rune
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _srcver=0.4.0
 pkgdesc="Rune runtime for Owlry - enables loading user-created Rune plugins"
