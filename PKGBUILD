@@ -1,6 +1,6 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal
-pkgver=0.1.1_alpha2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings"
 arch=('any')
@@ -12,11 +12,11 @@ optdepends=(
     'git-lfs: for downloading OptiScaler binaries'
     'python: for advanced YAML parsing'
 )
-source=("$pkgname-${pkgver/_/-}.tar.gz::$url/archive/v${pkgver/_/-}.tar.gz")
-sha256sums=('af15ed06b5eab1a7175b30ac1838c897ecd5969809da5e5296f6bdd2cd2a90eb')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('990633216e2c959b97a99051b8a82d74e18b93335f43a9f9e8ac553fc0f80feb')
 
 package() {
-    cd "$srcdir/0ptiscaler4linux-${pkgver/_/-}"
+    cd "$srcdir/0ptiscaler4linux-$pkgver"
 
     # Create directories
     install -dm755 "$pkgdir/usr/share/$pkgname"
@@ -24,12 +24,14 @@ package() {
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
-    # Install core files
+    # Install core files and data
     cp -r core "$pkgdir/usr/share/$pkgname/"
     cp -r lib "$pkgdir/usr/share/$pkgname/"
     cp -r profiles "$pkgdir/usr/share/$pkgname/"
     cp -r scripts "$pkgdir/usr/share/$pkgname/"
     cp -r templates "$pkgdir/usr/share/$pkgname/"
+    cp -r config "$pkgdir/usr/share/$pkgname/"
+    cp -r src "$pkgdir/usr/share/$pkgname/"
 
     # Install binaries directory structure
     install -dm755 "$pkgdir/usr/share/$pkgname/binaries"
