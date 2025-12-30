@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.0.1
 _electronversion=37
-pkgrel=2
+pkgrel=3
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -23,13 +23,13 @@ makedepends=(
 )
 source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v${pkgver}/LICENSE.md"
-    "server.js::https://dl.strem.io/server/v4.20.12/desktop/server.js"
+    "server.js::https://dl.strem.io/server/v4.20.15/desktop/server.js"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('ed5f1a7791770773ed4aa8ba31fa28b3bb2cc1a263e0ed1997c290a6248a896a'
-            'a527f3dd20c6e7b35eb2077cebcf859cba8140602f26f10f8e89c3c1a08eac13'
+            '678332fecb0f2b22a7b65e3013afee065b43f8cf62c81bd3693b4d7ae664628d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('7c4626809fcae17ad303a67ee41f56f51c7053340dd66d0b0ccc81df73ddecaa')
 sha256sums_x86_64=('bdedd19248927b5b2f55ad0e5d44fb926da539173f232e38c859bd2cb6080350')
