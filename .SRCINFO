@@ -1,6 +1,6 @@
 pkgbase = gridix-bin
-	pkgdesc = 简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位
-	pkgver = 2.0.0
+	pkgdesc = Fast, secure, cross-platform database management tool with Helix/Vim keybindings
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Gridix
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gridix-bin
 	depends = xdotool
 	provides = gridix
 	conflicts = gridix
-	source = https://github.com/MCB-SMART-BOY/Gridix/releases/download/v2.0.0/gridix-linux-x86_64.tar.gz
+	source = https://github.com/MCB-SMART-BOY/Gridix/releases/download/v2.0.1/gridix-linux-x86_64.tar.gz
 	source = gridix.desktop
-	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/master/LICENSE
-	sha256sums = a9e929612fe53a9165ad377c8854443917a7e27a67bb07c88da5c81ed8699909
+	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v2.0.1/LICENSE
+	sha256sums = ac7b43ea1b4cced0ae93c2d0d2f51867ba2ef8b8c4ae620418e3d8a82f1f2a13
 	sha256sums = SKIP
 	sha256sums = SKIP
 
