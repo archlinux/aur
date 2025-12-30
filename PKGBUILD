@@ -2,7 +2,7 @@
 pkgname=owlry-plugin-weather
 pkgver=0.2.2
 pkgrel=1
-_srcver=0.4.1
+_srcver=0.4.2
 pkgdesc="Weather widget plugin for Owlry"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('owlry')
 makedepends=('cargo')
 source=("owlry-$_srcver.tar.gz::$url/archive/v$_srcver.tar.gz")
-b2sums=('b685dae422b9c53c57dee34100209fd1df0ac082aaaf5456a1e80631f4a85440b34a1891a10ac849a15345a37ec18aa97b01dd54ab2456765a8dd3ccffccf059')
+b2sums=('4d4e6532e134d5cca4079daa610888cf8b05245b93d1b798b9b817dc5a08dc9cc1d3f45598c7736e967865366e5fcf610549fc50256d6875253d60982dfb6fef')
 
 _cratename=owlry-plugin-weather
 
