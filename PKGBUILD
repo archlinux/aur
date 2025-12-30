@@ -28,11 +28,6 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    # Fix CRLF directory names (e.g., Lumen-1.1.26\r)
-    for d in "$srcdir"/*$'\r'; do
-        mv "$d" "${d%$'\r'}"
-    done
-
     cd "$srcdir"/Lumen-$pkgver*
 
     # Build Rust core
