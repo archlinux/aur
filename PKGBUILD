@@ -2,7 +2,7 @@
 pkgname=http-remote-pc-control
 pkgver=1.1.1
 PACKAGER="Andrew Koidan <deathangel908@gmail.com>"
-commit=2a9713f
+commit=fe0b438
 pkgrel=2
 pkgdesc="HTTP remote PC control tool"
 arch=('x86_64')
@@ -27,14 +27,12 @@ source=(
   "san.cnf"
 )
 options=(!strip)
-sha256sums=(
-  '5854b81799a5150795791681685b71c4faeb8e346f77f499f3113012583f50fe'
-  '35dd54cb3a415dc327c92637b1a7f629e0efb1eea2d5e8432c4134fa412383f4'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
   install -D -m755 "${srcdir}/http-remote-pc-control" "${pkgdir}/usr/bin/http-remote-pc-control"
