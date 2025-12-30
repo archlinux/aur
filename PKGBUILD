@@ -1,12 +1,12 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-emoji
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Emoji picker plugin for Owlry"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
-depends=('owlry' 'wl-clipboard')
+depends=('owlry' 'wl-clipboard' 'noto-fonts-emoji')
 makedepends=('cargo')
 install=owlry-plugin-emoji.install
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
