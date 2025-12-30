@@ -1,3 +1,6 @@
+# Maintainer: linuxlarp <larp@linuxlarp.dev>
+# Contributor: vitalilinux (original developer)
+
 pkgname=vitamin-browser
 pkgver=0.5.0
 pkgrel=1
