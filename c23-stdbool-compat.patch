@@ -1,0 +1,51 @@
+diff --git a/3rdparty/vgm/stdbool.h b/3rdparty/vgm/stdbool.h
+index c4e89c161..dd683e906 100644
+--- a/3rdparty/vgm/stdbool.h
++++ b/3rdparty/vgm/stdbool.h
+@@ -1,15 +1,38 @@
+-// custom stdbool.h to for 1-byte bool types
++// custom stdbool.h for 1-byte bool types (legacy)
++// Updated to be compatible with C23+ where `bool` is a keyword.
+ #ifndef __CST_STDBOOL_H__
+ #define __CST_STDBOOL_H__
+ 
+-#ifndef __cplusplus	// C++ already has the bool-type
++/* C++ already has bool */
++#ifndef __cplusplus
+ 
+-// the MS VC++ 6 compiler uses a one-byte-type (unsigned char, to be exact), so I'll reproduce this here
+-typedef unsigned char	bool;
++  /*
++   * In C23 (and later), `bool` is a keyword, so we must not typedef it.
++   * Use the system <stdbool.h> in that case.
++   *
++   * 202311L is the C23 __STDC_VERSION__ value.
++   */
++  #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 202311L)
+ 
+-#define false	0x00
+-#define true	0x01
++    #include <stdbool.h>
+ 
+-#endif // ! __cplusplus
++  #else
++    /* Legacy: emulate MSVC 1-byte bool in pre-C23 C */
++    typedef unsigned char bool;
+ 
+-#endif // ! __CST_STDBOOL_H__
++    #ifndef false
++      #define false 0x00
++    #endif
++
++    #ifndef true
++      #define true  0x01
++    #endif
++
++    #ifndef __bool_true_false_are_defined
++      #define __bool_true_false_are_defined 1
++    #endif
++  #endif /* __STDC_VERSION__ >= 202311L */
++
++#endif /* !__cplusplus */
++
++#endif /* !__CST_STDBOOL_H__ */

@@ -1,0 +1,24 @@
+pkgbase = zxtune123-git
+	pkgdesc = Chiptune player, CLI version
+	pkgver = r6167.3e08ae32b
+	pkgrel = 1
+	url = https://github.com/vitamin-caig/zxtune
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = boost
+	makedepends = make
+	makedepends = patch
+	depends = boost-libs
+	depends = zlib
+	provides = zxtune123
+	conflicts = zxtune123
+	source = git+https://github.com/vitamin-caig/zxtune.git
+	source = c23-stdbool-compat.patch
+	source = xmp-mixer-funcptr-fix.patch
+	sha256sums = SKIP
+	sha256sums = d76e098f01a2afac1077fe9cdfb1bc57c76a32aa40964851795e7062aa820eaf
+	sha256sums = ad33e916887004e54e2a50ee7d484c4b759221f231b93c561cf02704200734bc
+
+pkgname = zxtune123-git

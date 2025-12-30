@@ -1,0 +1,31 @@
+diff --git a/3rdparty/xmp/src/mixer.c b/3rdparty/xmp/src/mixer.c
+index 16a4de8d3..f9b8a20b7 100644
+--- a/3rdparty/xmp/src/mixer.c
++++ b/3rdparty/xmp/src/mixer.c
+@@ -30,6 +30,8 @@
+ 
+ #define MIX_FN(x) void x (struct mixer_voice *, int *, int, int, int, int)
+ 
++typedef void (*mix_func_t)(struct mixer_voice *, int *, int, int, int, int);
++
+ MIX_FN(smix_mono_8bit_nearest);
+ MIX_FN(smix_mono_8bit_linear);
+ MIX_FN(smix_mono_16bit_nearest);
+@@ -59,7 +61,7 @@ MIX_FN(smix_stereo_16bit_spline_filter);
+  * bit 2: 0=unfiltered, 1=filtered
+  */
+ 
+-typedef void (*mixer_set[])();
++typedef mix_func_t mixer_set[8];
+ 
+ static mixer_set nearest_mixers = {
+ 	smix_mono_8bit_nearest,
+@@ -290,7 +292,7 @@ void mixer_softmixer(struct context_data *ctx)
+ 	int prev_l, prev_r;
+ 	int lps, lpe;
+ 	int32 *buf_pos;
+-	void (*mix_fn)();
++	mix_func_t mix_fn;
+ 	mixer_set *mixers;
+ 
+ 	switch (s->interp) {
