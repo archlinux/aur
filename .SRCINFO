@@ -1,0 +1,22 @@
+pkgbase = lua-vim
+	pkgdesc = use vim.fs outside of neovim
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/rimeinn/rime.nvim/tree/main/packages/vim
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	source = https://luarocks.org/manifests/freed-wu/vim-0.0.7-1.rockspec
+	sha256sums = b84590860d04fbad0dfd13eb302f5ad102a7b974f3109e77f25cc02c0850d709
+
+pkgname = lua-vim
+	depends = lua-filesystem
+
+pkgname = lua51-vim
+	depends = lua51-filesystem
+
+pkgname = lua52-vim
+	depends = lua52-filesystem
+
+pkgname = lua53-vim
+	depends = lua53-filesystem
