@@ -1,6 +1,6 @@
 pkgbase = qt-hearts-git
 	pkgdesc = Classic hearts card game (development version)
-	pkgver = r7.9be0af8
+	pkgver = r9.2da6b89
 	pkgrel = 1
 	url = https://github.com/adelmonte/qt-hearts
 	arch = x86_64

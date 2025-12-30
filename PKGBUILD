@@ -1,5 +1,5 @@
 pkgname=qt-hearts-git
-pkgver=r7.9be0af8
+pkgver=r9.2da6b89
 pkgrel=1
 pkgdesc="Classic hearts card game (development version)"
 arch=('x86_64')
