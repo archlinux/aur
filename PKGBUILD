@@ -35,7 +35,7 @@ case ${CARCH} in
 esac
 
 package() {
-	cd "${srcdir}/${_pkgname}_-${_CARCH}/" || exit
+	cd "${srcdir}/${_pkgname}-${_CARCH}/" || exit
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
