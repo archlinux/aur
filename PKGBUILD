@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 pkgname=gweled
 _pkgver=1.0-beta1
