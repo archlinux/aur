@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-systemd
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Systemd service management plugin for Owlry"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('owlry' 'systemd')
 makedepends=('cargo')
 install=owlry-plugin-systemd.install
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('5d4d334d27d8ae5e6f3f295ced22e986ee92e0b2250f7b7480677a70b630742f62b5b95e14c66c51f5deb1ec8abf796afc251094c8060a5075b2334a499628b8')
+b2sums=('0b89ddf244af91700865bf9598a43502b4113b94e0fe5452e9df77f86437f20621d7b0e42105b18f40b87dc1251e4384f773b88813eb2f3d1ef3b04848753417')
 
 _cratename=owlry-plugin-systemd
 
