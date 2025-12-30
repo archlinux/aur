@@ -1,0 +1,12 @@
+pkgbase = gocrosshair
+	pkgdesc = Lightweight, static crosshair overlay for X11/XWayland gaming
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MatheusLasserre/gocrosshair
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = gocrosshair-1.0.0.tar.gz::https://github.com/MatheusLasserre/gocrosshair/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gocrosshair
