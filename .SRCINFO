@@ -5,6 +5,7 @@ pkgbase = owlry-full
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
+	depends = owlry
 	depends = owlry-essentials
 	depends = owlry-widgets
 	depends = owlry-tools
