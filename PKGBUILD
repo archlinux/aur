@@ -13,10 +13,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Crazygiscool/Lumen/releases
         "lumen-journal.png"
         "lumen-journal.appdata.xml"
         "lumen-journal.1"
-        "lumen-journal.service"
-        "completions/lumen-journal.bash"
-        "completions/_lumen-journal"
-        "completions/lumen-journal.fish")
+        "lumen-journal.bash"
+        "_lumen-journal"
+        "lumen-journal.fish")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
