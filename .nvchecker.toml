@@ -1,0 +1,4 @@
+[python-ssqueezepy]
+source = "git"
+git = "https://github.com/OverLordGoldDragon/ssqueezepy.git"
+prefix = "v"
