@@ -3,14 +3,14 @@
 _name=qcustomplot
 pkgname=qcustomplot-qt6
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt C++ widget for plotting and data visualization (built with Qt6)"
 arch=('x86_64')
 url="https://www.qcustomplot.com/"
 license=('GPL-3.0-only')
 depends=('qt6-base')
 optdepends=('qcustomplot: header file')
-makedepends=('graphviz' 'qt6-base')
+makedepends=('cmake' 'graphviz' 'qt6-base')
 source=(
   "${pkgname}-${pkgver}-source.tar.gz::https://www.qcustomplot.com/release/${pkgver}/QCustomPlot-source.tar.gz"
   "CMakeLists.txt"

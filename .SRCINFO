@@ -1,10 +1,11 @@
 pkgbase = qcustomplot-qt6
 	pkgdesc = Qt C++ widget for plotting and data visualization (built with Qt6)
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.qcustomplot.com/
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = cmake
 	makedepends = graphviz
 	makedepends = qt6-base
 	depends = qt6-base
