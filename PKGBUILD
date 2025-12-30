@@ -8,6 +8,7 @@ url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=('owlry' 'cliphist' 'wl-clipboard')
 makedepends=('cargo')
+install=owlry-plugin-clipboard.install
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('5d4d334d27d8ae5e6f3f295ced22e986ee92e0b2250f7b7480677a70b630742f62b5b95e14c66c51f5deb1ec8abf796afc251094c8060a5075b2334a499628b8')
 
