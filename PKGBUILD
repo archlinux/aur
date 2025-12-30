@@ -1,7 +1,7 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-websearch
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search plugin for Owlry (DuckDuckGo, Google, etc.)"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -37,5 +37,5 @@ check() {
 package() {
     cd "owlry"
     install -Dm755 "target/release/lib${_cratename//-/_}.so" \
-        "$pkgdir/usr/lib/owlry/plugins/libwebsearch.so"
+        "$pkgdir/usr/lib/owlry/plugins/lib${_cratename//-/_}.so"
 }
