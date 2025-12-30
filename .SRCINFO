@@ -1,0 +1,35 @@
+pkgbase = nemo-preview
+	pkgdesc = Quick file previewer for Nemo
+	pkgver = 6.6.0
+	pkgrel = 3
+	url = https://github.com/linuxmint/nemo-extensions
+	arch = x86_64
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = bash
+	depends = cairo
+	depends = cjs
+	depends = clutter
+	depends = clutter-gst
+	depends = clutter-gtk
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = gtk3
+	depends = gtksourceview4
+	depends = libgirepository
+	depends = libmusicbrainz5
+	depends = libx11
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = xreader
+	optdepends = cinnamon-translations: i18n
+	source = git+https://github.com/linuxmint/nemo-extensions.git#tag=6.6.0
+	b2sums = e3803f0d9254a663576c532e0dbdc08e29eac625ee18274725acdf37f73a1757f557b1bb6452a1f2578ac4c48017e919123ae9c36c117e5e917a81538b4f2d84
+
+pkgname = nemo-preview
