@@ -3,7 +3,7 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.1.65
+pkgver=0.1.67
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
@@ -14,8 +14,8 @@ makedepends=("cargo" "clang")
 provides=("fresh-editor")
 conflicts=("fresh-editor-bin")
 options=('!debug')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sinelaw/fresh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5")
+source=("fresh-editor-${pkgver}-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-${pkgver}-source.tar.gz")
+sha256sums=("aa42d4fe3affdb9ca349ab820b370dc0f00fa738f1d258a35d2d6f7c4fe9edf0")
 
 prepare() {
     cd "fresh-$pkgver"
