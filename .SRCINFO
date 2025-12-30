@@ -1,6 +1,6 @@
 pkgbase = shaha
 	pkgdesc = Hash database builder and reverse lookup tool
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/oritwoen/shaha
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shaha
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/oritwoen/shaha.git#tag=v0.1.0
+	source = git+https://github.com/oritwoen/shaha.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = shaha

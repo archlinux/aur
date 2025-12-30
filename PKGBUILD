@@ -1,5 +1,5 @@
 pkgname=shaha
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Hash database builder and reverse lookup tool"
 arch=('x86_64')
