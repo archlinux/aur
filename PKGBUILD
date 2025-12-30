@@ -1,6 +1,6 @@
 # Maintainer: Brendan Meehan <brendan@brendanmeehan.com>
 pkgname=todo-hunter
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A fast CLI tool to scan Git repositories for TODO comments"
 arch=('x86_64')
