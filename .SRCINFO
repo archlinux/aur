@@ -1,6 +1,6 @@
 pkgbase = python-pytnl
 	pkgdesc = Python bindings for the Template Numerical Library
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.com/tnl-project/pytnl
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = python-pytnl
 	depends = python
 	depends = tinyxml2
 	depends = zlib
-	source = https://gitlab.com/tnl-project/pytnl/-/archive/0.0.6/pytnl-0.0.6.tar.gz
-	b2sums = 6a85ee53cdb04079f0719af7d560a920393aa12198bc139d5531a6a33e3cd65d3cd2baa2b93691c1b19aaee3e52391738b9f527868da9893f9dd46d20fdc2ab0
+	source = https://gitlab.com/tnl-project/pytnl/-/archive/0.0.8/pytnl-0.0.8.tar.gz
+	b2sums = 1fe9b8c8342745f71259fb6c0b969534b1bffd0aed7bf0cd4781f34868e5e113d3fd69133c1298c5481f63ce99226e81f89b3aef48cfe9bbc497ce6151893972
 
 pkgname = python-pytnl
 	optdepends = python-numpy: interoperability with NumPy
