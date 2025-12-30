@@ -1,16 +1,15 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-ssh
-pkgver=0.2.1
+pkgver=0.4.3
 pkgrel=1
-_srcver=0.4.0
 pkgdesc="SSH host launcher plugin for Owlry"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=('owlry' 'openssh')
 makedepends=('cargo')
-source=("owlry-$_srcver.tar.gz::$url/archive/v$_srcver.tar.gz")
-b2sums=('3473b6ff157d5c1ff89318d713a54aa9aff3daef531efb28787591c6833c1cc3ae824fd09c6534655f01ef61b538d7ca864f13630121c3f6bc38286c72abfe32')
+source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('5d4d334d27d8ae5e6f3f295ced22e986ee92e0b2250f7b7480677a70b630742f62b5b95e14c66c51f5deb1ec8abf796afc251094c8060a5075b2334a499628b8')
 
 _cratename=owlry-plugin-ssh
 
