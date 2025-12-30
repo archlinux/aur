@@ -3,7 +3,7 @@
 pkgname=python-pip-requirements-parser
 _gitpkgname=pip-requirements-parser
 pkgver=32.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Mostly correct pip requirements parsing library'
 arch=('any')
 url='https://github.com/aboutcode-org/pip-requirements-parser'
@@ -21,6 +21,7 @@ makedepends=(
   'python-setuptools-scm'
   'python-wheel'
 )
+checkdepends=('python-pytest')
 conflicts=('python-pip-requirements-parser-git')
 options=('!debug' '!strip')
 
@@ -38,10 +39,16 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd "${srcdir}/${_gitpkgname}-${pkgver}"
+  # Excluding tests due to upstream issue:
+  # https://github.com/aboutcode-org/pip-requirements-parser/issues/22
+  pytest -k 'not fail_1 and not invalid_spec and not nikdoof-test-auth'
+}
+
 package() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  python -I -X pycache_prefix=pycache -m installer \
-    --destdir="${pkgdir}" dist/*.whl
+  python -I -m installer --destdir="${pkgdir}" dist/*.whl
   rm -rf pycache
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     LICENSE
