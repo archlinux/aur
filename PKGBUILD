@@ -1,9 +1,9 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=http-remote-pc-control
-pkgver=1.1.1
+pkgver=1.1.2
 PACKAGER="Andrew Koidan <deathangel908@gmail.com>"
-commit=fe0b438
-pkgrel=2
+tag=v1.1.2
+pkgrel=1
 pkgdesc="HTTP remote PC control tool"
 arch=('x86_64')
 url="https://github.com/akoidan/http-remote-pc-control"
@@ -19,20 +19,20 @@ optdepends=(
 install=http-remote-pc-control.install
 
 source=(
-  "http-remote-pc-control::${url}/releases/download/${commit}/app.elf"
-  "swagger.json::${url}/releases/download/${commit}/swagger.json"
+  "http-remote-pc-control::${url}/releases/download/${tag}/app.elf"
+  "swagger.json::${url}/releases/download/${tag}/swagger.json"
   "http-remote-pc-control.service"
   "http-remote-pc-control.install"
   "http-remote-pc-control-gen-certs.sh"
   "san.cnf"
 )
 options=(!strip)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('62e9eab23431dd70a3aa6e021eb489f59f2093fc9d254dfe65cc34fafa48c5bd'
+            '35dd54cb3a415dc327c92637b1a7f629e0efb1eea2d5e8432c4134fa412383f4'
+            'be3aa51b9cf0340d3fb172ba33cbe9bb70fefb9e33e6445f965b75564c8d83ed'
+            'a75e2cf6c74cc74e82ffd8c83d4942967025b2853f4e3a146f8a1244426b0171'
+            '201f45a79a8add80eb759802d14aa4340efdfe18cdc67208e264098806ef22ac'
+            '28f264af9f32cb2461d015a9f7054e40e389cffbcd5db5edbe7376e4c0dba82e')
 
 package() {
   install -D -m755 "${srcdir}/http-remote-pc-control" "${pkgdir}/usr/bin/http-remote-pc-control"
