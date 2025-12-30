@@ -12,6 +12,6 @@ pkgbase = sessionmanager
 	optdepends = bash-completion: bash completion support
 	optdepends = zsh-completions: zsh completion support
 	source = sessionmanager-0.0.5.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.5.tar.gz
-	sha256sums = SKIP
+	sha256sums = 0005ae406f8176f6f6609bb3e8cc9b992829cb20e945a73785e07b4800e6d23a
 
 pkgname = sessionmanager

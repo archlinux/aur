@@ -13,7 +13,7 @@ optdepends=(
     'zsh-completions: zsh completion support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Update after creating release
+sha256sums=('0005ae406f8176f6f6609bb3e8cc9b992829cb20e945a73785e07b4800e6d23a')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
