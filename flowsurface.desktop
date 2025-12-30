@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Flowsurface
+Type=Application
+Comment=A native desktop charting platform for crypto markets
+Exec=/usr/bin/flowsurface
+Categories=Office;Finance;
+
