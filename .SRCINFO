@@ -1,0 +1,14 @@
+pkgbase = stem-splitter-bin
+	pkgdesc = AI-powered audio stem separation tool (prebuilt binary)
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/gentij/stem-splitter-core
+	arch = x86_64
+	license = MIT
+	license = Apache
+	provides = stem-splitter
+	conflicts = stem-splitter
+	source = stem-splitter-linux-x86_64.tar.gz::https://github.com/gentij/stem-splitter-core/releases/download/v1.1.3/stem-splitter-linux-x86_64.tar.gz
+	sha256sums = 373099e6606c434bd84278251ebf953034f40f5f7dc07c7431873e60b9d79dfe
+
+pkgname = stem-splitter-bin
