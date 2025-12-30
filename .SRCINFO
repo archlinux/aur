@@ -1,0 +1,14 @@
+pkgbase = owlry-essentials
+	pkgdesc = Essential plugins for Owlry (calculator, system, ssh, scripts, bookmarks)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://somegit.dev/Owlibou/owlry
+	arch = any
+	license = GPL-3.0-or-later
+	depends = owlry-plugin-calculator
+	depends = owlry-plugin-system
+	depends = owlry-plugin-ssh
+	depends = owlry-plugin-scripts
+	depends = owlry-plugin-bookmarks
+
+pkgname = owlry-essentials
