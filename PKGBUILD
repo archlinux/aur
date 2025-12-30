@@ -3,14 +3,11 @@
 
 pkgname=nginx-mod-accesskey
 pkgver=2.0.5
-pkgrel=16
+pkgrel=17
 _dirname="nginx-accesskey-$pkgver"
-_nginxver=1.28.0
-
 pkgdesc='Accesskey module for NGINX'
 arch=('x86_64')
-depends=("nginx=$_nginxver")
-makedepends=("nginx-src")
+makedepends=('nginx' 'nginx-src')
 url='https://github.com/Martchus/nginx-accesskey'
 license=('unknown')
 
@@ -29,6 +26,9 @@ build() {
 }
 
 package() {
+  _nginxver=$(pacman -Q nginx | sed 's|nginx \([^-]*\).*|\1|')
+  depends+=("nginx=$_nginxver")
+
   cd "$srcdir"/nginx/objs
   for mod in ngx_*.so; do
     install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
