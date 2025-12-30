@@ -1,0 +1,8 @@
+post_install() {
+	echo "Config auto-generates on first use"
+	echo "Optional: run 'hyprspaces setup install --waybar' for Waybar example files"
+}
+
+pre_remove() {
+	hyprspaces setup uninstall 2>/dev/null || true
+}
