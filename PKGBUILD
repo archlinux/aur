@@ -3,14 +3,12 @@
 
 pkgname=nginx-mod-dav-ext
 pkgver=3.0.0
-pkgrel=14
+pkgrel=16
 _dirname="nginx-dav-ext-module-$pkgver"
-_nginxver=1.28.0
-
 pkgdesc='NGINX WebDAV missing commands support'
 arch=('x86_64')
-depends=("nginx=$_nginxver" "libxslt")
-makedepends=("nginx-src")
+depends=('libxslt')
+makedepends=('nginx' 'nginx-src')
 url='https://github.com/arut/nginx-dav-ext-module'
 license=('BSD')
 
@@ -29,6 +27,9 @@ build() {
 }
 
 package() {
+  _nginxver=$(pacman -Q nginx | sed 's|nginx \([^-]*\).*|\1|')
+  depends+=("nginx=$_nginxver")
+
   install -Dm755 "$srcdir/$_dirname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   cd "$srcdir"/nginx/objs
   for mod in ngx_*.so; do
