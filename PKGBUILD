@@ -2,8 +2,8 @@
 
 pkgname=freetube-git-d3sox
 _pkgname=FreeTube
-pkgver=r9680.85283d62
-pkgrel=1
+pkgver=r9682.937b7c9a
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind - My fork with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
@@ -31,8 +31,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  npm install --cache "${srcdir}/npm-cache"
-  npm run build
+  yarn install --frozen-lockfile
+  yarn build
 }
 
 package() {
