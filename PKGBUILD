@@ -1,7 +1,7 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-bookmarks
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser bookmarks plugin for Owlry (Firefox, Chrome, Chromium)"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
