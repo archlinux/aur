@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3816.3df27923b
+pkgver=r3858.7b21f596a
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -46,6 +46,7 @@ source=(
 	'googletest'::'git+https://github.com/google/googletest.git'
 	'imgui'::'git+https://github.com/ocornut/imgui.git'
 	'imgui_club'::'git+https://github.com/ocornut/imgui_club.git'
+    'libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
 	'nativefiledialog-extended'::'git+https://github.com/btzy/nativefiledialog-extended.git'
 	'pugixml'::'git+https://github.com/zeux/pugixml.git'
 	'sdl'::'git+https://github.com/libsdl-org/SDL.git'
@@ -88,6 +89,7 @@ sha256sums=(
 	'SKIP'
 	'18009fe1d5e6b44854ab360d0ec01955858d5ddf03f0a807a97cf1c3491d77f7'
 
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -162,6 +164,7 @@ prepare() {
 			['googletest']='external/googletest'
 			['imgui']='external/imgui'
 			['imgui_club']='external/imgui_club'
+			['libadrenotools']='external/libadrenotools'
 			['nativefiledialog-extended']='external/nativefiledialog-extended'
 			['pugixml']='external/pugixml'
 			['sdl']='external/sdl'
