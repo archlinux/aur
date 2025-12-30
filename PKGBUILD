@@ -3,16 +3,16 @@
 _pkgname="autoaspm"
 pkgname="$_pkgname-git"
 pkgver=r10.0c73e0e
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that automatically activates ASPM for all supported devices on Linux"
 arch=("any")
-url="https://github.com/notthebee/AutoASPM"
+url="https://git.notthebe.ee/notthebee/AutoASPM"
 license=("unknown")
 depends=("pciutils" "python" "which")
 makedepends=("git")
 provides=("autoaspm=${pkgver}")
 conflicts=("autoaspm")
-source=($pkgname::git+https://github.com/notthebee/AutoASPM.git $_pkgname.service)
+source=($pkgname::git+https://git.notthebe.ee/notthebee/AutoASPM.git $_pkgname.service)
 sha256sums=("SKIP" "SKIP")
 
 pkgver() {
