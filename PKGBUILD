@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
-_app_id=com.github.th_ch.pear_music
+_app_id=com.github.th_ch.youtube_music
 pkgver=3.11.0.r232.g1d6ab2a
-pkgrel=1
+pkgrel=2
 _nodeversion=22
 _electronversion=38
 pkgdesc="Extension for music player"
