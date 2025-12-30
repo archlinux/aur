@@ -1,49 +1,46 @@
 # Maintainer: VinoFFR <vin@example.com>
 pkgname=98kalculator-git
-pkgver=1.0.0.r1.gf696e30
+pkgver=1.0.0.r1
 pkgrel=1
-pkgdesc="The God Tier Calculator for Linux (Wayland/Qt6)"
+pkgdesc="A modern calculator for Linux with Wayland/Qt6 support"
 arch=('x86_64')
 url="https://github.com/VinoFFR/98kalculator"
 license=('MIT')
 depends=('python' 'python-pyqt6')
-makedepends=('git' 'pyinstaller')
+makedepends=('git' 'python-pyinstaller')
 provides=('98kalculator')
 conflicts=('98kalculator')
 source=("git+https://github.com/VinoFFR/98kalculator.git")
 md5sums=('SKIP')
 
+# Git version function
 pkgver() {
-    cd "98kalculator"
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/98kalculator"
+    if git describe --tags --long >/dev/null 2>&1; then
+        git describe --tags --long | sed 's/^v//;s/-/./g'
+    else
+        # Fallback if no tags exist
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
-    cd "98kalculator"
-    # Create the binary
+    cd "$srcdir/98kalculator"
     pyinstaller --onefile --windowed --name 98kalculator src/main.py
 }
 
 package() {
-    cd "98kalculator"
+    cd "$srcdir/98kalculator"
     
     # Install binary
     install -Dm755 "dist/98kalculator" "$pkgdir/usr/bin/98kalculator"
     
-    # Install desktop entry
-    # We need to ensure the Exec path is correct for system install or let the desktop file handle it
-    # The desktop file in usage usually has Exec=/path/to/binary or just binary name.
-    # Our generated one has absolute paths which might be wrong for package.
-    # We will create a clean desktop file here or patch it.
-    
+    # Install desktop file
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/share/pixmaps"
     
-    # Install icon
     install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/98kalculator.png"
     
-    # Create system compliant desktop file
     cat > "$pkgdir/usr/share/applications/98kalculator.desktop" <<EOF
 [Desktop Entry]
 Name=98kalculator
@@ -55,6 +52,6 @@ Type=Application
 Categories=Utility;Calculator;Science;
 EOF
 
-    # Install License
+    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
