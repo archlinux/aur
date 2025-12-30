@@ -72,6 +72,8 @@ build() {
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    # https://github.com/libspatialindex/libspatialindex/issues/276
+    -DWITH_INTERNAL_SPATIALINDEX=TRUE \
     -DWITH_PDAL=TRUE
     #-DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
     #-DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
