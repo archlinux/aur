@@ -1,13 +1,13 @@
 pkgbase = owlry-widgets
 	pkgdesc = Widget plugins for Owlry (weather, media, pomodoro)
-	pkgver = 0.4.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
 	depends = owlry
-	depends = owlry-plugin-weather
 	depends = owlry-plugin-media
 	depends = owlry-plugin-pomodoro
+	depends = owlry-plugin-weather
 
 pkgname = owlry-widgets
