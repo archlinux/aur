@@ -5,14 +5,11 @@
 
 pkgname=nginx-mod-rtmp
 pkgver=1.2.2
-pkgrel=9
+pkgrel=10
 _dirname="nginx-rtmp-module-$pkgver"
-_nginxver=1.28.0
-
 pkgdesc='Module for nginx that adds RTMP support'
 arch=('x86_64')
-depends=("nginx=$_nginxver")
-makedepends=("nginx-src")
+makedepends=('nginx' 'nginx-src')
 url='https://github.com/arut/nginx-rtmp-module'
 license=('BSD')
 
@@ -31,6 +28,9 @@ build() {
 }
 
 package() {
+  _nginxver=$(pacman -Q nginx | sed 's|nginx \([^-]*\).*|\1|')
+  depends+=("nginx=$_nginxver")
+
   install -Dm755 "$srcdir/$_dirname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   cd "$srcdir"/nginx/objs
   for mod in ngx_*.so; do
