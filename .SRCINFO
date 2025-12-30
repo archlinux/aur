@@ -92,6 +92,7 @@ pkgname = xlibre-xserver-git
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
 	replaces = xlibre-xserver-bootstrap-git
+	replaces = xlibre-server-git
 	options = emptydirs
 
 pkgname = xlibre-xserver-bootstrap-git
@@ -137,6 +138,7 @@ pkgname = xlibre-xserver-common-git
 	provides = xlibre-xserver-common=25.1.0
 	conflicts = xlibre-server-common
 	conflicts = xorg-server-common
+	replaces = xlibre-server-common-git
 
 pkgname = xlibre-xserver-devel-git
 	pkgdesc = Development files for the XLibre X server
@@ -149,6 +151,7 @@ pkgname = xlibre-xserver-devel-git
 	provides = xlibre-xserver-devel=25.1.0
 	conflicts = xlibre-server-devel
 	conflicts = xorg-server-devel
+	replaces = xlibre-server-devel-git
 
 pkgname = xlibre-xserver-xephyr-git
 	pkgdesc = A nested XLibre server that runs as an X application
@@ -174,6 +177,7 @@ pkgname = xlibre-xserver-xephyr-git
 	provides = xlibre-xserver-xephyr=25.1.0
 	conflicts = xlibre-server-xephyr
 	conflicts = xorg-server-xephyr
+	replaces = xlibre-server-xephyr-git
 
 pkgname = xlibre-xserver-xnest-git
 	pkgdesc = A nested XLibre server that runs as an X application
@@ -192,6 +196,7 @@ pkgname = xlibre-xserver-xnest-git
 	provides = xlibre-xserver-xnest=25.1.0
 	conflicts = xlibre-server-xnest
 	conflicts = xorg-server-xnest
+	replaces = xlibre-server-xnest-git
 
 pkgname = xlibre-xserver-xvfb-git
 	pkgdesc = Virtual framebuffer XLibre server
@@ -213,3 +218,4 @@ pkgname = xlibre-xserver-xvfb-git
 	provides = xlibre-xserver-xvfb=25.1.0
 	conflicts = xlibre-server-xvfb
 	conflicts = xorg-server-xvfb
+	replaces = xlibre-server-xvfb-git

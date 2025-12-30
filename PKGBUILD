@@ -84,7 +84,7 @@ package_xlibre-xserver-git() {
            "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
   provides=("${_pkgbase}=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server') # {xlibre,xorg}"-server=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
-  replaces=("${_pkgbase}-bootstrap-git") # 'glamor-egl' 'xf86-video-modesetting'
+  replaces=("${_pkgbase}-bootstrap-git" "xlibre-server-git") # 'glamor-egl' 'xf86-video-modesetting'
   options=('emptydirs')
   install="${_pkgbase}.install"
 
@@ -137,6 +137,7 @@ package_xlibre-xserver-common-git() {
   depends=('xkeyboard-config' 'xorg-setxkbmap' 'xorg-xkbcomp')
   provides=("${_pkgbase}-common=${pkgver%%.r*}") # {xlibre,xorg}"-server-common=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-common')
+  replaces=("xlibre-server-common-git")
 
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
@@ -155,6 +156,7 @@ package_xlibre-xserver-devel-git() {
            'xorg-util-macros') # not technically required but almost every Xorg pkg needs it to build
   provides=("${_pkgbase}-devel=${pkgver%%.r*}") # {xlibre,xorg}"-server-devel=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-devel')
+  replaces=("xlibre-server-devel-git")
 
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
@@ -171,6 +173,7 @@ package_xlibre-xserver-xephyr-git() {
            "xlibre-xserver-common-git=${pkgver}-${pkgrel}")
   provides=("${_pkgbase}-xephyr=${pkgver%%.r*}") # {xlibre,xorg}"-server-xephyr=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xephyr')
+  replaces=("xlibre-server-xephyr-git")
 
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
@@ -185,6 +188,7 @@ package_xlibre-xserver-xnest-git() {
            'dbus' "xlibre-xserver-common-git=${pkgver}-${pkgrel}")
   provides=("${_pkgbase}-xnest=${pkgver%%.r*}") # {xlibre,xorg}"-server-xnest=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xnest')
+  replaces=("xlibre-server-xnest-git")
 
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
@@ -200,6 +204,7 @@ package_xlibre-xserver-xvfb-git() {
            "xlibre-xserver-common-git=${pkgver}-${pkgrel}" 'xorg-xauth')
   provides=("${_pkgbase}-xvfb=${pkgver%%.r*}") # {xlibre,xorg}"-server-xvfb=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xvfb')
+  replaces=("xlibre-server-xvfb-git")
 
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
