@@ -1,7 +1,7 @@
 # Maintainer: Overl1te Overl1teGithub@yandex.ru
 
 pkgname=chronodash
-pkgver=2.2.6_beta
+pkgver=2.2.7_beta
 pkgrel=1
 pkgdesc="Transparent always-on-top desktop widgets (clocks, weather etc)"
 arch=('x86_64')

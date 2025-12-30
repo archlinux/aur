@@ -1,6 +1,6 @@
 pkgbase = chronodash
 	pkgdesc = Transparent always-on-top desktop widgets (clocks, weather etc)
-	pkgver = 2.2.6_beta
+	pkgver = 2.2.7_beta
 	pkgrel = 1
 	url = https://github.com/Overl1te/ChronoDash
 	arch = x86_64
