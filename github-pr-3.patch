@@ -1,0 +1,29 @@
+From 6887b1f97521803073f29527762f5da2c82223fd Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 4 Sep 2025 14:22:36 +0200
+Subject: [PATCH] Fix ragged alignment of menu item labels
+
+---
+ internal/ui/menu.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/internal/ui/menu.go b/internal/ui/menu.go
+index 751737e..61ee3ed 100644
+--- a/internal/ui/menu.go
++++ b/internal/ui/menu.go
+@@ -24,13 +24,13 @@ func ShowMainMenu(locationCode string) error {
+ 		categories := []string{
+ 			"🚨 Emergency Services",
+ 			"🧠 Mental Health & Crisis Support",
+-			"☠️  Poison Control",
++			"☠️ Poison Control",
+ 			"🏠 Domestic Violence",
+ 			"👶 Child Abuse",
+ 			"🤝 Sexual Assault",
+ 			"🏥 Substance Abuse",
+ 			"🌈 LGBTQ Support",
+-			"🎖️  Veterans Support",
++			"🎖️ Veterans Support",
+ 			"🔍 Search Resources",
+ 			"❌ Exit",
+ 		}
