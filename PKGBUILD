@@ -1,47 +1,31 @@
-# Maintainer: Nikolay Arhipov <nikolajs.arhipovs@gmail.com>
+# Maintainer: lgx
 
 pkgname=dingo
-pkgver=0.13
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='A DNS client in Go that supports Google DNS over HTTPS'
-provides=('dingo')
-conflicts=('dingo-git')
-arch=('i686' 'x86_64')
-license=('unknown')
-makedepends=('go' 'git')
-url='https://github.com/pforemski/dingo'
-_gopkg=github.com/pforemski
-source=("git://${_gopkg}/${pkgname}.git#tag=${pkgver}"
-       dingo.config
-       dingo.service)
-sha256sums=('SKIP'
-            'b550726b87687f0dc659d0d3eb2eb1e2448d0bf556743992d853de572675fefd'
-            'c84e727bb76af4c7a8d88014de5992e6a6bf056aa5be4654d96b1229df55984c')
-
-backup=('etc/dingo')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags
-}
+pkgdesc="A meta-language for Go with Result types, error propagation, and pattern matching"
+arch=('x86_64' 'aarch64')
+url="https://github.com/MadAppGang/dingo"
+license=('MIT')
+makedepends=('go>=1.21')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MadAppGang/dingo/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3bac21ef9963cfff32f7ff330ea24711fb717f09f772ce0b8151030649e5857a')
 
 build() {
-  [ -d "${srcdir}/go" ] && rm -rf "${srcdir}/go"
+    cd "$pkgname-$pkgver"
 
-  mkdir -p "${srcdir}/go/src/${_gopkg}/"
-  ln -s "${srcdir}/${pkgname}" "$srcdir/go/src/${_gopkg}/"
-  cd "${srcdir}/go/src/${_gopkg}/${pkgname}"
-  GOPATH="${srcdir}/go" go get -v \
-		-gcflags "-trimpath $GOPATH/src" \
-		./...
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+    go build -o "$pkgname" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" ./cmd/dingo
 }
 
 package() {
-  cd "${srcdir}/go/bin"
-  install -Dm755 dingo "${pkgdir}/usr/bin/dingo"
+    cd "$pkgname-$pkgver"
 
-  cd "${srcdir}"
-  install -Dm644 dingo.config "${pkgdir}/etc/dingo"
-  install -Dm644 dingo.service "${pkgdir}/usr/lib/systemd/system/dingo.service"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    # Note: Upstream has no LICENSE file but claims MIT on GitHub
 }
-
