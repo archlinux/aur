@@ -2,18 +2,18 @@
 
 # shellcheck disable=SC2034
 pkgname=rong
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A Material You and Base16 color generator"
 arch=('x86_64')
 url="https://github.com/Nadim147c/rong"
 license=('GPL-3.0-only')
-makedepends=('go')
+makedepends=('go' 'just')
 provides=("$pkgname")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("glibc" "ffmpeg")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3c8d59f29ef6d85133d9c64c9d57e87635b78716d5789f9c1601eb6ccd445852')
+sha256sums=('32fde55862d2ec2e177e21c247c7d00eb25b4ae589269ca157e69bf677dd2297')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}" || exit
@@ -24,10 +24,10 @@ build() {
         GOENV=off \
         CGO_ENABLED=0 \
         VERSION="$pkgver" \
-        make build generate-completion
+        just build
 }
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}" || exit
-    make install PREFIX="$pkgdir/usr/"
+    env PREFIX="$pkgdir/usr/" just install
 }
