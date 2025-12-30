@@ -8,6 +8,6 @@ pkgbase = teevee
 	depends = bash
 	depends = dunst
 	source = teevee-0.1.0.tar.gz::https://github.com/ThomasB3143/teevee/archive/v0.1.0.tar.gz
-	sha256sums = 23b7bcd7b2c3de41d537a8b4999f36488a752a873067785d44c9e91f1898690c
+	sha256sums = ce46007678bd99f32a737df453d6cf71fadb76ca2c13d7fdd238e68de7224ac5
 
 pkgname = teevee
