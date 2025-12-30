@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-widgets
-pkgver=0.2.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Widget plugins for Owlry (weather, media, pomodoro)"
 arch=('any')
