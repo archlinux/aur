@@ -1,4 +1,4 @@
-# Maintainer: lgx
+# Maintainer: structwafel <aur@structwafel.dev>
 
 pkgname=dingo
 pkgver=0.6.0
