@@ -2,7 +2,7 @@
 
 _plug=znedi3_resample
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.d3d13a8
+pkgver=r46.2d1129c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('vapoursynth-plugin-mvsfunc-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/xyx98/my-vapoursynth-script.git")
+source=("${_plug}::git+https://github.com/xyx98/my-vapoursynth-script.git#branch=legacy")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
