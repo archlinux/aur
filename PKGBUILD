@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=blindpaste
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="a TUI blackboard for quick note taking"
 arch=("x86_64")
@@ -12,7 +12,7 @@ optdepends=(
 )
 install="advice.install"
 source=(
-  "git+file:///www/gitangular/repository/blindpaste.git"
+  "git+https://git.projectgrid.net/git/blindpaste.git"
   "LICENSE"
 )
 sha256sums=(

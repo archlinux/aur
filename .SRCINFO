@@ -1,6 +1,6 @@
 pkgbase = blindpaste
 	pkgdesc = a TUI blackboard for quick note taking
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://projectgrid.net/portfolio/blindpaste
 	install = advice.install
@@ -8,7 +8,7 @@ pkgbase = blindpaste
 	license = 0BSD
 	makedepends = git
 	optdepends = bash-completion: for command line completions when pressing the <tab> key
-	source = git+file:///www/gitangular/repository/blindpaste.git
+	source = git+https://git.projectgrid.net/git/blindpaste.git
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
