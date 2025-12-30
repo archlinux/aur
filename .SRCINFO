@@ -1,6 +1,6 @@
 pkgbase = owlry-tools
 	pkgdesc = Tool plugins for Owlry (clipboard, emoji, websearch, filesearch, systemd)
-	pkgver = 0.2.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any

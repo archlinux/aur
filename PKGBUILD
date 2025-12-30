@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-tools
-pkgver=0.2.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Tool plugins for Owlry (clipboard, emoji, websearch, filesearch, systemd)"
 arch=('any')
