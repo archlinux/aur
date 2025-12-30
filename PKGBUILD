@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git' 'libgit2' 'libssh2')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bmtron/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5da02555987a351884ebd5bc40d2723c8ebfbe918faed8416278c5fa8ee0e51c')
+sha256sums=('a3f7b8993b62b7ac8bd735483231a9bee5476506339f8b35778864dad45659fd')
 
 build() {
     cd "$pkgname-$pkgver"
