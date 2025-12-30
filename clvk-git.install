@@ -2,7 +2,7 @@ post_install() {
 cat << EOF
 ==============================================================================
 In order to use clvk, please either log out and log back into your environment
-or source /etc/profile.d/clvk-git.sh in the terminal you want to use clvk in.
+or source /etc/profile.d/clvk.sh in the terminal you want to use clvk in.
 
 Go to https://github.com/kpet/clvk to view more environmental variables
 ==============================================================================
@@ -13,7 +13,7 @@ post_upgrade() {
 cat << EOF
 ==============================================================================
 In order to use clvk, please either log out and log back into your environment
-or source /etc/profile.d/clvk-git.sh in the terminal you want to use clvk in.
+or source /etc/profile.d/clvk.sh in the terminal you want to use clvk in.
 
 Go to https://github.com/kpet/clvk to view more environmental variables
 ==============================================================================

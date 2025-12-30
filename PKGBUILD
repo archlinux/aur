@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=clvk-git
-pkgver=r751.8cd638b
+pkgver=r769.78aa08a
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
@@ -52,7 +52,7 @@ prepare() {
 	fi
 
 	cd "$srcdir/${pkgname::-4}/external/clspv/utils"
-	python fetch_sources.py
+	python fetch_sources.py --shallow
 }
 
 build() {
@@ -62,10 +62,10 @@ build() {
 	-DCMAKE_C_FLAGS="$CFLAGS" \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-	-DCLVK_BUILD_SPIRV_TOOLS=O \
-	-DSKIP_SPIRV_TOOLS_INSTALL=1 \
-	-DCLSPV_BUILD_TESTS=0 \
-	-DCLVK_BUILD_TESTS=0 \
+	-DCLVK_BUILD_SPIRV_TOOLS=OFF \
+	-DSKIP_SPIRV_TOOLS_INSTALL=ON \
+	-DCLSPV_BUILD_TESTS=OFF \
+	-DCLVK_BUILD_TESTS=OFF \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/${pkgname::-4}
 	cmake --build build
 }
@@ -80,7 +80,12 @@ package() {
 	/usr/lib/clvk/libOpenCL.so
 	EOF
 
-	cat > "$pkgdir/etc/profile.d/clvk-git.sh" <<-EOF
-	export CLVK_CLSPV_PATH=/usr/lib/clvk/clspv
+	cat > "$pkgdir/etc/profile.d/clvk.sh" <<-EOF
+	export CLVK_CONFIG_FILE=/usr/lib/clvk/clvk.conf
+	EOF
+
+	cat > "$pkgdir/usr/lib/clvk/clvk.conf" <<-EOF
+	clspv_path = /usr/lib/clvk/clspv
+	clspv_options = -w
 	EOF
 }
