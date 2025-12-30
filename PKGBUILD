@@ -1,8 +1,8 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-emoji
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-_srcver=0.4.0
+_srcver=0.4.1
 pkgdesc="Emoji picker plugin for Owlry"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('owlry' 'wl-clipboard')
 makedepends=('cargo')
 source=("owlry-$_srcver.tar.gz::$url/archive/v$_srcver.tar.gz")
-b2sums=('3473b6ff157d5c1ff89318d713a54aa9aff3daef531efb28787591c6833c1cc3ae824fd09c6534655f01ef61b538d7ca864f13630121c3f6bc38286c72abfe32')
+b2sums=('b685dae422b9c53c57dee34100209fd1df0ac082aaaf5456a1e80631f4a85440b34a1891a10ac849a15345a37ec18aa97b01dd54ab2456765a8dd3ccffccf059')
 
 _cratename=owlry-plugin-emoji
 
