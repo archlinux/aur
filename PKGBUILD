@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.12.5.r28.g78e301c
+pkgver=0.13.0.r2.g9a3e4ea
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -55,11 +55,13 @@ source=(
 	"$_pkgname-libusb::git+https://github.com/shadps4-emu/ext-libusb.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"aac::git+https://android.googlesource.com/platform/external/aac.git"
 	"miniz::git+https://github.com/richgel999/miniz.git"
 	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -80,6 +82,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	git config submodule.externals/aacdec/fdk-aac.url ../aac
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/ext-libusb.url ../$_pkgname-libusb
