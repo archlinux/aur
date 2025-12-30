@@ -1,5 +1,5 @@
 pkgbase = nitrolaunch-gui
-	pkgdesc = A fast, extensible, and powerful Minecraft launcher (CLI Version)
+	pkgdesc = A fast, extensible, and powerful Minecraft launcher (GUI Version)
 	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/Nitrolaunch/nitrolaunch
