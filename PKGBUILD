@@ -2,7 +2,7 @@
 
 pkgname=xlibre-video-fbdev
 pkgver=25.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="XLibre fork of framebuffer video driver"
 arch=(x86_64)
 license=('X11')
@@ -16,11 +16,37 @@ source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
 
 build() {
-  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
-  export CFLAGS=${CFLAGS/-fno-plt}
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+  case "$CARCH" in
+    "x86_64")
+      CFLAGS=" -march=x86-64"
+      ;;
+    "aarch64")
+      CFLAGS=" -march=armv8-a"
+      ;;
+    *)
+      CFLAGS=" -march=native"
+      ;;
+  esac
+  CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
+  CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
+  LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
+  if [[ $CARCH != 'aarch64' ]]; then
+    CFLAGS+=" -fcf-protection"
+  fi
+  if [[ "$_pkgname" == *"xf86-input"* ]]; then
+    CFLAGS+=" -fno-plt"
+    LDFLAGS+=" -Wl,-z,now"
+  fi
+  if [[ "$_pkgname" == *"xf86-video-intel"* ]]; then
+    CFLAGS+=" -fno-lto"
+    LDFLAGS+=" -fno-lto"
+  fi
+  CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+  export CFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
 
+  cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr
   make
