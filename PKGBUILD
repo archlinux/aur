@@ -8,7 +8,7 @@ license=('custom:CC-BY-NC-SA-4.0')
 depends=()
 makedepends=('cargo' 'git')
 DLAGENTS=("https::/usr/bin/curl -L -A 'Mozilla/5.0' -o %o %u")
-source=("$pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Crazygiscool/Lumen/$pkgver/Lumen-linux-x64-v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://release-assets.githubusercontent.com/github-production-release-asset/1045288007/6585ba31-1520-4e17-820a-b08a5d3248a3?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-12-30T10%3A57%3A11Z&rscd=attachment%3B+filename%3DLumen-linux-x64-v$pkgver.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-12-30T09%3A56%3A18Z&ske=2025-12-30T10%3A57%3A11Z&sks=b&skv=2018-11-09&sig=ZfWZt7qp%2F6azWXo7EwMg0Q9l%2B%2FdhteJ85Mpc1C4rjxk%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NzA5MDE0NiwibmJmIjoxNzY3MDg5ODQ2LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.etaswKOpVlT5c-OiXSTnkDGX2Sjkuyqu-XlohuPsvvw&response-content-disposition=attachment%3B%20filename%3DLumen-linux-x64-v$pkgver.tar.gz&response-content-type=application%2Foctet-stream"
 
         "lumen-journal.desktop"
         "lumen-journal.png"
