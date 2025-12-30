@@ -2,7 +2,7 @@
 
 pkgname='geant4-full-debug'
 pkgver=11.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -72,7 +72,9 @@ export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
 export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.3
 export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE3.0
 export G4CHANNELINGDATA=/opt/Geant4/Libraries/G4CHANNELING2.0
-export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4" > Geant4.sh
+export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4
+export G4NUDEXLIBDATA=/opt/Geant4/Libraries/G4NUDEXLIB1.0
+export G4URRPTDATA=/opt/Geant4/Libraries/G4URRPT1.1" > Geant4.sh
 
   echo "
 setenv PATH \$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
@@ -88,7 +90,9 @@ setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.3
 setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.3
 setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE3.0
 setenv G4CHANNELINGDATA /opt/Geant4/Libraries/G4CHANNELING2.0
-setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
+setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4
+setenv G4NUDEXLIBDATA /opt/Geant4/Libraries/G4NUDEXLIB1.0
+setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
 
   [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
   cd "${srcdir}"/build
@@ -100,6 +104,8 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_INSTALL_DATASETS_TENDL=ON \
+    -DGEANT4_INSTALL_DATASETS_URRPT=ON \
+    -DGEANT4_INSTALL_DATASETS_NUDEXLIB=ON \
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_FREETYPE=ON \
