@@ -1,8 +1,8 @@
 pkgbase = python-dbzero-git
 	pkgdesc = Durable, Infinite, Shared, Transactional, Isolated, Composable (DISTIC) memory system for Python (development/alpha version)
-	pkgver = 0.1.2.r2.gb28a84b5
+	pkgver = 0.1.2.r0.g1ce9165b
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/dbzero-software/dbzero
 	arch = aarch64
 	arch = x86_64
