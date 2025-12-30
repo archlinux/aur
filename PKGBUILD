@@ -18,7 +18,7 @@ arch=('x86_64')
 url='http://www.exablaze.com/'
 license=('GPL2')
 depends=("linux-lts" "linux-lts-headers" "libnl")
-makedepends=("linux-lts-headers")
+makedepends=("linux-lts-headers" "git")
 options=('libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
 source=("${_pkgbase}::git+https://github.com/cisco/exanic-software.git#commit=cf0c6fb95f697644885701fba45221d6eaac37cd")
 sha256sums=('efc8165b34c9d13d4da1318346176c1d2508241a9cdae982db6c34f356a17801')

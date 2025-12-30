@@ -6,6 +6,7 @@ pkgbase = exanic
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-lts-headers
+	makedepends = git
 	depends = linux-lts
 	depends = linux-lts-headers
 	depends = libnl
