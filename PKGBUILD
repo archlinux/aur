@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=25.07.70.r3459.7fb8eafc0
+pkgver=26.03.70.r3618.96369c0f5
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ makedepends=(
   'boost'
   'taglib'
   'libmaxminddb'
-  'qt5-webengine'
+  'qt6-webengine'
   'phonon-qt6'
   'plasma-workspace'
   'kdnssd'
