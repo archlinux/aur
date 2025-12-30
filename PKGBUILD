@@ -4,11 +4,11 @@
 pkgname=throne-git
 _pkgname=${pkgname%-git}
 _srcname=Throne
-pkgver=1.0.7.r1.gf9dd55a
+pkgver=1.0.13.r0.gda4e25d
 pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
-url="https://github.com/throneproj/${_pkgname}"
+url="https://throneproj.github.io"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-charts')
 makedepends=('git' 'cmake' 'go' 'qt6-tools' 'protobuf' 'vulkan-headers')
@@ -20,7 +20,7 @@ conflicts=('throne' 'nekoray-git')
 provides=('throne')
 replaces=('nekoray-git')
 source=(
-	"git+${url}.git"
+	"git+https://github.com/throneproj/${_srcname}.git"
 	"https://raw.githubusercontent.com/throneproj/routeprofiles/rule-set/srslist.h"
 	"${_pkgname}.sh"
 	"${_srcname}.desktop"
@@ -31,11 +31,11 @@ sha512sums=('SKIP'
             'a47e8b547bd8759e7bc5c31f6055ad5ed3f6ee5879c07de8c05349b381578f907d3bdfb833fd5296fb4b20b6cacae6b622b2ab1fc7e46fce309cb273e82bc1c5')
 
 pkgver() {
-	git -C "${_pkgname}" describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "${_srcname}" describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${_pkgname}/"
+	cd "${_srcname}/"
 	cp "${srcdir}/srslist.h" .
 
 	cd core/server
@@ -49,7 +49,7 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}/"
+	cd "${_srcname}/"
 
 	cmake -B build \
 		-DCMAKE_BUILD_TYPE=None \
@@ -77,7 +77,7 @@ package() {
 	install -Dm644 "${_srcname}.desktop" -t "${pkgdir}/usr/share/applications/"
 	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-	cd "${_pkgname}/"
+	cd "${_srcname}/"
 	install -Dm644 "res/public/${_srcname}.png" -t "${pkgdir}/usr/share/pixmaps/"
 	install -Dm755 build/{Core,Throne} -t "${pkgdir}/usr/lib/${_pkgname}/"
 }
