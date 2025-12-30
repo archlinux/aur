@@ -1,0 +1,9 @@
+# AUR ignores
+*.tar.zst
+*.tar.xz
+*.tar.gz
+pkg/
+src/
+98kalculator/
+98kalculator-git/
+*.log
