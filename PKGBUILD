@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=fizzy-cli
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="CLI for managing Fizzy boards, cards, and tasks"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robzolkos/fizzy-cli/archive/v$pkgver.tar.gz")
-sha256sums=('d27b0f931054ad56b4e577365809b04e6f7c6cfb16df1f7343f8af46d13b36d2')
+sha256sums=('803d918e174d2402ae13037313de72428a9937cf743dab6c65525a92831373df')
 options=('!debug')
 
 build() {
