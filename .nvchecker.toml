@@ -1,5 +1,5 @@
 [python-pip-requirements-parser]
 source = "github"
-github = "nexB/pip-requirements-parser"
+github = "aboutcode-org/pip-requirements-parser"
 prefix = "v"
 use_max_tag = true

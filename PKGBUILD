@@ -6,13 +6,13 @@ pkgver=32.0.1
 pkgrel=3
 pkgdesc='Mostly correct pip requirements parsing library'
 arch=('any')
-url='https://github.com/nexB/pip-requirements-parser'
+url='https://github.com/aboutcode-org/pip-requirements-parser'
 license=('MIT')
 
 # Upstream also declares `python-pyparsing` as a dependency.
 # However, we don’t need it in the PKGBUILD due to Arch Linux’s
 # `extra/python-packaging` being recent enough. See also:
-# https://github.com/nexB/pip-requirements-parser/commit/52be2f7e7e85c2c492c50fe9429d2d72ab18c3b7
+# https://github.com/aboutcode-org/pip-requirements-parser/commit/52be2f7e7e85c2c492c50fe9429d2d72ab18c3b7
 depends=('python' 'python-packaging')
 
 makedepends=(
@@ -25,7 +25,7 @@ conflicts=('python-pip-requirements-parser-git')
 options=('!debug' '!strip')
 
 source=(
-  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/nexB/pip-requirements-parser/archive/v${pkgver}.tar.gz"
+  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/aboutcode-org/pip-requirements-parser/archive/v${pkgver}.tar.gz"
 )
 
 sha512sums=(
