@@ -5,7 +5,7 @@ _pkgname=cloudflare-speed-cli
 pkgname=${_pkgname}-bin
 pkgdesc="CLI for internet speed test via cloudflare"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -20,10 +20,10 @@ license=('GPL-3.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_-${_barch[0]}.tar.xz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('c2dd65c80cc094f92421ff62c0d9ef890468c299e20dda2a60e71d3597b4bd8a')
-sha256sums_aarch64=('992f1c98e7157eb2dc7e51d676aa681f120646f425284208cc5c4bb447aa0cee')
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.xz")
+sha256sums_x86_64=('024a5ed6deb38de02180046ca35db04c55fd2fc45c5680284c395c3ccb481ee6')
+sha256sums_aarch64=('14e9665e7c8ce76cc3467f0c2e44371bff681fead7f5c1becdcfed90f7cbf41a')
 
 case ${CARCH} in
   ${arch[0]})
