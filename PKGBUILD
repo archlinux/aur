@@ -2,7 +2,7 @@
 
 pkgname=lug-helper
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
@@ -26,6 +26,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-helper.sh" "$pkgdir/usr/bin/lug-helper"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lug-logo.png"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/rsi-launcher.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rsi-launcher.png"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/starcitizen.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/starcitizen.png"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lib/sc-launch.sh" "$pkgdir/usr/share/lug-helper/sc-launch.sh"
     install -Dm755 "${srcdir}/lug-helper.desktop" "$pkgdir/usr/share/applications/lug-helper.desktop"
 }

@@ -1,7 +1,7 @@
 pkgbase = lug-helper
 	pkgdesc = Star Citizen's Linux Users Group Helper Script
 	pkgver = 4.8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/starcitizen-lug/lug-helper
 	arch = any
