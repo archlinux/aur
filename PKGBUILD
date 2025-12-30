@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64')
@@ -11,12 +11,10 @@ depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
 makedepends=('cmake' 'gendesk' 'git' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
-        "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set"
-        "fix-quic-go.patch::https://github.com/throneproj/Throne/commit/f03ad7d16555324fc7308dbadde1ade1f0011d6d.patch")
-sha256sums=('2b0c328262814c50c6323f93d7a1930427e83626463cccf8c6c07d55b1f992e2'
+        "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
+sha256sums=('b5abdc6aab685e4433762fdf678ccb6a2e32c31a7f348f486634c6c231de0c7c'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
-            'SKIP'
-            'a95cad9156fde270851254b9a897ff52e5df8605b65ed685bc2b26bc5baf51fc')
+            'SKIP')
 
 prepare() {
     mkdir -p build
@@ -28,10 +26,7 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 
-    cd "${pkgname^}-${pkgver}"
-    patch -Np1 -i "${srcdir}/fix-quic-go.patch"
-
-    cd core/server
+    cd "${pkgname^}-${pkgver}/core/server"
     export GOBIN="${srcdir}/bin"
     export PATH="${PATH}:${GOBIN}"
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
