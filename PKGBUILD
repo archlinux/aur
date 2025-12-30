@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager
-_pkgver=3.6.0
+_pkgver=3.7.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
-sha256sums=('95ca76ee22c630b99e22575409de02ab8f362840f308bf4be0f87d5a649ff933')
+sha256sums=('426e559606d9d50d52bc7748b18e3eac20ae286b5dbfadb0d05233a07d112e3c')
 
 prepare() {
     cd "$pkgname-$_pkgver"
