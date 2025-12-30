@@ -104,8 +104,8 @@ build() {
   ../scripts/build_fcitx_bazel \
       --config release_build \
       --registry="file://${srcdir}/bcr" \
-      $(echo "${CFLAGS}"|xargs -n1 echo "--copt") \
-      $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt") \
+      $(echo "${CFLAGS}"|xargs -n1 echo "--copt"|grep -v _FORTIFY_SOURCE) \
+      $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt"|grep -v _FORTIFY_SOURCE) \
       $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
       --copt="-Wno-uninitialized" \
       --host_copt="-Wno-uninitialized" --verbose_failures \
