@@ -1,0 +1,15 @@
+pkgbase = mxw-git
+	pkgdesc = Cross platform CLI tool for Glorious Core v1 compatible wireless mice, based on mow
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/dkbednarczyk/mxw.git
+	arch = any
+	makedepends = cargo
+	makedepends = git
+	makedepends = libusb
+	provides = mxw
+	options = !lto
+	source = git+https://github.com/dkbednarczyk/mxw.git
+	md5sums = SKIP
+
+pkgname = mxw-git
