@@ -5,12 +5,12 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
 license=('MIT')
-_electron=electron38
+_electron=electron35
 depends=(
   'alsa-lib'
   'docker'
@@ -26,7 +26,7 @@ makedepends=(
   'go'
   'zip'
   'imagemagick'
-  # 'asar'
+  'asar'
 )
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
@@ -38,7 +38,7 @@ prepare(){
   cd "$_pkgname"
 
   ## don't use resourcesPath
-  sed --in-place -e "s/process\.resourcesPath, '/'\/usr\/lib\/winboat\//g" ./src/renderer/lib/*.ts
+  sed --in-place -e "s/process\.resourcesPath, \"/\"\/usr\/lib\/winboat\//g" ./src/renderer/lib/*.ts
 
   export npm_config_cache="$srcdir/npm_cache"
   npm install
