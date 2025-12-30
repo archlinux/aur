@@ -1,0 +1,5 @@
+[rlr]
+source = "github"
+github = "epilys/rlr"
+use_latest_release = true
+prefix = "v"

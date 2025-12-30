@@ -1,0 +1,21 @@
+pkgbase = rlr
+	pkgdesc = Interactive pixel screen ruler and protractor
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://nessuent.xyz/bb.html
+	install = rlr.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	provides = rlr
+	source = rlr-0.3.2.tar.gz::https://github.com/epilys/rlr/archive/v0.3.2.tar.gz
+	b2sums = 9b1376bfade63875eb950130460dfc278f3dfd381d61d92ca0ae5ad7cd9a98d806e59e1fc04b5cc5516b539245565053fb294dbea5abf61eafbb7b605f9e96bf
+
+pkgname = rlr
