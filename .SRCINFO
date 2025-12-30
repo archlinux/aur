@@ -1,13 +1,14 @@
 pkgbase = nginx-mod-upload-progress
 	pkgdesc = NGINX module implementing an upload progress system, that monitors RFC1867 POST uploads
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/masterzen/nginx-upload-progress-module
 	arch = x86_64
 	license = CUSTOM
+	makedepends = nginx
 	makedepends = nginx-src
-	depends = nginx=1.28.0
 	source = nginx-mod-upload-progress-0.9.4::https://github.com/masterzen/nginx-upload-progress-module/archive/v0.9.4.tar.gz
 	sha256sums = 6793c006bf57b06155eb50f35356d30a357c4b1727435c3578f08a820a7d13f7
 
 pkgname = nginx-mod-upload-progress
+	depends = nginx=

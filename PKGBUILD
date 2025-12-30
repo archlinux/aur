@@ -3,14 +3,11 @@
 
 pkgname=nginx-mod-upload-progress
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 _dirname="nginx-upload-progress-module-$pkgver"
-_nginxver=1.28.0
-
 pkgdesc='NGINX module implementing an upload progress system, that monitors RFC1867 POST uploads'
 arch=('x86_64')
-depends=("nginx=$_nginxver")
-makedepends=("nginx-src")
+makedepends=('nginx' 'nginx-src')
 url='https://github.com/masterzen/nginx-upload-progress-module'
 license=('CUSTOM')
 
@@ -29,6 +26,9 @@ build() {
 }
 
 package() {
+  _nginxver=$(pacman -Q nginx | sed 's|nginx \([^-]*\).*|\1|')
+  depends+=("nginx=$_nginxver")
+
   install -Dm755 "$srcdir/$_dirname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   cd "$srcdir"/nginx/objs
   for mod in ngx_*.so; do
