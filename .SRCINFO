@@ -1,0 +1,19 @@
+pkgbase = spotiflac-bin
+	pkgdesc = Get Spotify tracks in true FLAC from Tidal, Qobuz & Amazon Music — no account required.
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/afkarxyz/SpotiFLAC
+	arch = x86_64
+	license = unknown
+	depends = webkit2gtk-4.1
+	noextract = spotiflac-bin-7.0.AppImage
+	options = !debug
+	options = !strip
+	source = spotiflac-bin-7.0.AppImage::https://github.com/afkarxyz/SpotiFLAC/releases/download/v7.0/SpotiFLAC.AppImage
+	source = icon.svg::https://raw.githubusercontent.com/afkarxyz/SpotiFLAC/main/frontend/public/icon.svg
+	source = spotiflac.desktop
+	sha256sums = a466b8ed8875f6b450ad44664ed120f28082b6fa596a5f1072aafa4617a7e8d2
+	sha256sums = add21ab3055c27b208850811efc096a1bb1d1804fb74c9e2e0b4076ffbf54562
+	sha256sums = cccb9aeec382cceaba8dadfa6e95f0c54b2601c2e8c4589f877a24035d9d3515
+
+pkgname = spotiflac-bin
