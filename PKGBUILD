@@ -5,7 +5,7 @@ _ver=1.0.2u
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=3
+pkgrel=4
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -13,6 +13,7 @@ license=('custom:BSD')
 depends=('lib32-glibc' 'openssl-1.0')
 makedepends=('diffutils'
              'gcc'
+             'lib32-gcc-libs'
              'make'
              'patch'
              'perl')

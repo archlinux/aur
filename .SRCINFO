@@ -1,12 +1,13 @@
 pkgbase = lib32-openssl-1.0
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
 	pkgver = 1.0.2.u
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openssl.org
 	arch = x86_64
 	license = custom:BSD
 	makedepends = diffutils
 	makedepends = gcc
+	makedepends = lib32-gcc-libs
 	makedepends = make
 	makedepends = patch
 	makedepends = perl
