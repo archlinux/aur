@@ -1,0 +1,26 @@
+pkgbase = r-otelsdk
+	pkgdesc = 'OpenTelemetry' is a collection of tools, 'APIs', and 'SDKs' used to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=otelsdk
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-otel
+	depends = r-utils
+	optdepends = r-callr
+	optdepends = r-cli
+	optdepends = r-curl
+	optdepends = r-gh
+	optdepends = r-jsonlite
+	optdepends = r-processx
+	optdepends = r-ps
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-webfakes
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/otelsdk_0.2.2.tar.gz
+	sha256sums = 51ba34bb853666c773258a203d0afcbd00c6be86f3100e1cb6230f2532c8c7fd
+
+pkgname = r-otelsdk
