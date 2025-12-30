@@ -2,7 +2,7 @@
 
 _pkgname="surface-dtx-daemon"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 _pkgrel=1
 pkgdesc="Surface Detachment System (DTX) Daemon"
@@ -19,7 +19,7 @@ source=(
     "https://github.com/linux-surface/surface-dtx-daemon/releases/download/v${pkgver}-${_pkgrel}/surface-dtx-daemon-${pkgver}.${_pkgrel}-${CARCH}.bin.tar.xz"
 )
 
-sha256sums=('dddc2b5132e38570fdd5dd81b291a2de26b41b96796dbfdcc578628a814c0582')
+sha256sums=('72fa2186b9cdf346ad42e3e9e5f3764af933ab4decd3b558202fa7605eadb28e')
 
 backup=(
     'etc/surface-dtx/surface-dtx-daemon.conf'
