@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd Neve
-    printf "0.6.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.6.4.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
