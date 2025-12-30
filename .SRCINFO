@@ -1,7 +1,7 @@
 pkgbase = pear-desktop-git
 	pkgdesc = Extension for music player
-	pkgver = 3.11.0.r232.g1d6ab2a
-	pkgrel = 2
+	pkgver = 3.11.0.r233.g2b15f0a
+	pkgrel = 1
 	url = https://github.com/pear-devs/pear-desktop
 	install = pear-desktop.install
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = pear-desktop-git
 	source = com.github.th_ch.youtube_music.desktop
 	sha256sums = SKIP
 	sha256sums = bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996
-	sha256sums = 28e2b96c632ed7eb35dac98b0c04de62bf7721d5e202a231f09690a435251eac
+	sha256sums = 19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4
 
 pkgname = pear-desktop-git
