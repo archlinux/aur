@@ -1,7 +1,7 @@
 pkgbase = python-lib50
 	pkgdesc = CS50's own internal library used in many of its tools.
-	pkgver = 3.0.12
-	pkgrel = 2
+	pkgver = 3.1.4
+	pkgrel = 1
 	url = https://github.com/cs50/lib50
 	arch = any
 	license = GPLv3
@@ -16,7 +16,7 @@ pkgbase = python-lib50
 	depends = python-requests
 	depends = python-termcolor
 	optdepends = python-babel
-	source = https://files.pythonhosted.org/packages/source/l/lib50/lib50-3.0.12.tar.gz
-	sha256sums = 15ce076f501b49e7ad2b7807d7f7510947c718394ccdfce01757272b749ed355
+	source = https://files.pythonhosted.org/packages/source/l/lib50/lib50-3.1.4.tar.gz
+	sha256sums = fdfba28b3580bccd4bfac86e127628d295f05ac2c08c311850d7dbe7a77ff18d
 
 pkgname = python-lib50
