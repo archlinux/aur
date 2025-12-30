@@ -1,6 +1,6 @@
 # Maintainer: Peter <peter.w.adams96@gmail.com>
 pkgname=python-sqlit-tui
-pkgver=1.1.11
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 optdepends=(
     'python-psycopg2: PostgreSQL, CockroachDB and Supabase support'
     'python-pyodbc: SQL Server support'
-    'python-mysql-connector: MySQL support'
+    'python-pymysql: MySQL support'
     'python-mariadb-connector: MariaDB support'
     'python-oracledb: Oracle support'
     'python-duckdb: DuckDB support'
@@ -29,7 +29,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-${pkgver}.tar.gz")
-sha256sums=('5273226369b571e6afa81a56210723e86fd231b2a1f093c9673abdeb3e9dd41e')
+sha256sums=('c23ddce66971ff1f33cb0eb7019c19c16fa396d585ca7de8dc100b742a17a75d')
 
 build() {
     cd "sqlit_tui-${pkgver}"
