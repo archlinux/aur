@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=kodi-addon-pvr-vdr-vnsi
-pkgver=21.1.2
-_gitver=27906c5b8f74583724db98e3fb6cfa6186a73bd4
+pkgver=21.1.3
+_gitver=fc3739419a2829858ec54e4d9952c3b25beb9c59
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ pkgdesc="PVR add-on for XBMC to add VDR as a TV/PVR Backend"
 depends=('kodi')
 makedepends=('cmake' 'git' 'kodi-dev' 'kodi-platform')
 source=("git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#commit=$_gitver")
-sha256sums=('d0db21d7b1e9ba610b334b09f23223f1b22cb83d942505d84cacaff73f4b8a1a')
+sha256sums=('ac052c47298ab3e766f14f04f83efebb20748340c7bf6fd22754070dcf861540')
 
 pkgver() {
   cd "${srcdir}/pvr.vdr.vnsi/pvr.vdr.vnsi"
