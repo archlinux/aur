@@ -1,16 +1,18 @@
 # Maintainer: Lily <pika@pikafan.de>
+# Maintainer: CarbonSmasher
+
 _pkgname=nitrolaunch
 pkgname=$_pkgname-cli
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A fast, extensible, and powerful Minecraft launcher (CLI Version)"
 arch=(x86_64 aarch64)
 url="https://github.com/Nitrolaunch/nitrolaunch"
 license=('GPL-3.0-or-later')
-depends=(gcc-libs glibc)
+depends=()
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f2329529ed3533c893ea4f4d22b4aa92d6387945351aeed3136deaae3cb70190')
+sha256sums=('0023407378d47d07d47d8b2b8bfc7e469ef670b95b7bdb7e86fc726255fde28a')
 options=(!lto)
 
 prepare() {
@@ -23,7 +25,7 @@ build() {
 	cd "$_pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build -p nitro_cli --frozen --release --all-features
+	cargo build -p nitro_cli --frozen --profile fast_release  --all-features
 }
 
 check() {
@@ -34,5 +36,5 @@ check() {
 
 package() {
 	cd "$_pkgname-$pkgver"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/nitro"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/fast_release/nitro"
 }
