@@ -6,8 +6,8 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r89692.9a4f6e79aff
-_pkgver=3.99_master  # fake pkgver prefix for the name
+pkgver=4.99_master.r94760.55f92bfce07
+_pkgver=4.99_master  # fake pkgver prefix for the name
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
@@ -15,11 +15,11 @@ license=('GPL')
 arch=('x86_64')
 depends=(
   'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
-  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webengine' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
+  'qt6-tools' 'qtkeychain' 'sip' 'qca-qt6' 'qt6-webengine' 'qt6-3d' 'qt6-serialport'
   'python-gdal' 'python-owslib' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
-  'python-pyqt5' 'python-qscintilla-qt5'
+  'python-pyqt6' 'python-qscintilla-qt6'
 )
-makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt5-tools sip)
+makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt6-tools sip)
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
@@ -72,10 +72,10 @@ build() {
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_PDAL=TRUE \
-    -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
-    -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
-    -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
+    -DWITH_PDAL=TRUE
+    #-DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
+    #-DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
+    #-DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
     # https://github.com/qgis/QGIS/issues/48374
     #-DWITH_INTERNAL_LAZPERF=FALSE \
     # https://github.com/qgis/QGIS/issues/35440
