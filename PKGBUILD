@@ -27,8 +27,8 @@ _wil_commit=fc5dbf5
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.32.5994.102
-pkgrel=5
+pkgver=2.32.5994.102.gf9feca5e
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -84,8 +84,12 @@ export RUSTUP_TOOLCHAIN=stable
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
-  source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
-  printf "%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
+  # change pkgver is OK because we fixed commit
+  # parse major.minor.buildid from version template, revision is fixed to 102 for Linux
+  source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' src/data/version/mozc_version_template.bzl | tr -d ' ')
+  _mozc_commit_short=$(git log -1 --pretty=%h)
+  _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$((REVISION+2))"
+  printf "%s.g%s" "${_bzr_ver}" "${_mozc_commit_short}"
 }
 
 prepare() {
