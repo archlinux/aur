@@ -1,12 +1,14 @@
 pkgbase = mmry
 	pkgdesc = A lean, local-first memory management system for humans and AI agents
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/mmry
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
-	source = mmry-0.7.1.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.7.1/mmry-v0.7.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = db12e4f7a14dc49085deb154dc5025f8ec46f07dd25acd8d3c9bbb9a70ae47a6
+	provides = mmry
+	conflicts = mmry-cuda
+	source = mmry-0.8.0.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.8.0/mmry-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 713276207309d5a2ea27e5792a4027694f818bae680d0e22bca89c2d534353d6
 
 pkgname = mmry
