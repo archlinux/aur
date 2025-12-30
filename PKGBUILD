@@ -9,6 +9,7 @@ pkgrel=3
 pkgdesc='Quick file previewer for Nemo'
 arch=(x86_64)
 url='https://github.com/linuxmint/nemo-extensions'
+license=(GPL-2.0-or-later)
 depends=(
   bash
   cairo

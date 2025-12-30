@@ -4,6 +4,7 @@ pkgbase = nemo-preview
 	pkgrel = 3
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = x86_64
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
