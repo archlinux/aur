@@ -1,0 +1,22 @@
+pkgbase = lua-platformdirs
+	pkgdesc = Respect the standards of Unix XDG, Android, macOS, Windows
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://github.com/rimeinn/rime.nplatformdirs/tree/main/packages/platformdirs
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	source = https://luarocks.org/manifests/freed-wu/platformdirs-0.2.11-1.src.rock
+	sha256sums = 43681a23e466a046b958e30f7ab79c711507aeb259cddae7565ce5c88dee38b6
+
+pkgname = lua-platformdirs
+	depends = lua-vim
+
+pkgname = lua51-platformdirs
+	depends = lua51-vim
+
+pkgname = lua52-platformdirs
+	depends = lua52-vim
+
+pkgname = lua53-platformdirs
+	depends = lua53-vim
