@@ -8,7 +8,7 @@ license=('custom:CC-BY-NC-SA-4.0')
 depends=()
 makedepends=('cargo' 'git')
 DLAGENTS=("https::/usr/bin/curl -L -A 'Mozilla/5.0' -o %o %u")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Crazygiscool/Lumen/releases/download/$pkgver/Lumen-linux-x64-v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Crazygiscool/Lumen/$pkgver/Lumen-linux-x64-v$pkgver.tar.gz"
 
         "lumen-journal.desktop"
         "lumen-journal.png"
