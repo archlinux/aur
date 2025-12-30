@@ -2,7 +2,7 @@
 # Maintainer: jidckii <jidckii@gmail.com>
 
 pkgname='kolor-keyboard-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='RGB keyboard backlight based on keyboard layout'
 url='https://github.com/jidckii/kolor-keyboard'
@@ -10,11 +10,12 @@ arch=('x86_64')
 license=('MIT')
 provides=('kolor-keyboard')
 conflicts=('kolor-keyboard')
-depends=('hidapi' 'systemd')
+depends=('systemd' 'hidapi')
 optdepends=('plasma-desktop: for KDE Plasma layout detection')
+install=kolor-keyboard.install
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jidckii/kolor-keyboard/releases/download/v${pkgver}/kolor-keyboard_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('16f38b344b037db994fd90d5a7625101f86882683f537edc6c6c9ac7bce21916')
+sha256sums_x86_64=('3307bd263e56f391e5061468c4155d7b6b680f57cda564ae1d6841b12ccc504a')
 
 package() {
   install -Dm755 kolor-keyboard "${pkgdir}/usr/bin/kolor-keyboard"
@@ -22,4 +23,7 @@ package() {
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
   cp -r examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+  # udev rules for HID access
+  install -Dm644 scripts/udev/50-qmk.rules "${pkgdir}/etc/udev/rules.d/50-qmk.rules"
+  install -Dm644 scripts/udev/51-kolor-keyboard.rules "${pkgdir}/etc/udev/rules.d/51-kolor-keyboard.rules"
 }

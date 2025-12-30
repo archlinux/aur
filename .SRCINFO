@@ -1,16 +1,16 @@
 pkgbase = kolor-keyboard-bin
 	pkgdesc = RGB keyboard backlight based on keyboard layout
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/jidckii/kolor-keyboard
 	license = MIT
 	optdepends = plasma-desktop: for KDE Plasma layout detection
-	depends = hidapi
 	depends = systemd
+	depends = hidapi
 	conflicts = kolor-keyboard
 	provides = kolor-keyboard
 	arch = x86_64
 	source_x86_64 = https://github.com/jidckii/kolor-keyboard/releases/download/v${pkgver}/kolor-keyboard_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = 16f38b344b037db994fd90d5a7625101f86882683f537edc6c6c9ac7bce21916
+	sha256sums_x86_64 = 3307bd263e56f391e5061468c4155d7b6b680f57cda564ae1d6841b12ccc504a
 	
 pkgname = kolor-keyboard-bin

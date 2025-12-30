@@ -1,0 +1,21 @@
+#!/bin/sh
+# Arch Linux .install script for kolor-keyboard
+
+post_install() {
+    # Reload udev rules
+    if command -v udevadm >/dev/null 2>&1; then
+        udevadm control --reload-rules 2>/dev/null || true
+        udevadm trigger 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Reload udev rules after removal
+    if command -v udevadm >/dev/null 2>&1; then
+        udevadm control --reload-rules 2>/dev/null || true
+    fi
+}
