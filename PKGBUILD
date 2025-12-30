@@ -28,8 +28,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    mv "$srcdir/Lumen-*" "$srcdir/Lumen-$pkgver"
-    cd "$srcdir/Lumen-$pkgver"
+    # Fix CRLF directory names (e.g., Lumen-1.1.26\r)
+    for d in "$srcdir"/*$'\r'; do
+        mv "$d" "${d%$'\r'}"
+    done
+
+    cd "$srcdir"/Lumen-$pkgver*
 
     # Build Rust core
     cd core
@@ -44,7 +48,12 @@ build() {
 }
 
 package() {
-    cd "$srcdir/Lumen-$pkgver/ui/build/linux/x64/release/bundle"
+    # Fix CRLF directory names again for safety
+    for d in "$srcdir"/*$'\r'; do
+        mv "$d" "${d%$'\r'}"
+    done
+
+    cd "$srcdir"/Lumen-$pkgver*/ui/build/linux/x64/release/bundle
 
     # Install binary
     install -Dm755 Lumen "$pkgdir/usr/bin/lumen-journal"
