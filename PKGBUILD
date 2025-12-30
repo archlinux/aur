@@ -1,7 +1,9 @@
+# Maintainer: deadc0de6 <info@deadc0de.ch>
+
 _pkgname=gocatcli
 pkgname="${_pkgname}-git"
-pkgver=1.0.3.r1.g9db735a
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='The command line catalog tool for your offline data'
 arch=('x86_64')
 url="https://github.com/deadc0de6/gocatcli"
