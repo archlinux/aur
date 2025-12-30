@@ -1,0 +1,13 @@
+pkgbase = matrix-commander-rs-bin
+	pkgdesc = A terminal client for Matrix written in Rust
+	pkgver = 0.10.2
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	source_x86_64 = https://github.com/8go/matrix-commander-rs/releases/download/v0.10.2/matrix-commander-rs.x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = bf40743eff62557bd6d6f607c7f672512a306dbdd7c39e0e34f413010520ba0f
+	source_aarch64 = https://github.com/8go/matrix-commander-rs/releases/download/v0.10.2/matrix-commander-rs.x86_64-unknown-linux-gnu
+	sha256sums_aarch64 = 9a29f77fb30f59d59513e3fe611337fc2b6165dce011d1d328f92623608604e3
+
+pkgname = matrix-commander-rs-bin
