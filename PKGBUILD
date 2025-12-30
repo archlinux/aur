@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-full
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Complete Owlry installation with all plugins"
 arch=('any')
