@@ -1,13 +1,13 @@
 pkgbase = owlry-plugin-pomodoro
 	pkgdesc = Pomodoro timer widget plugin for Owlry
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = owlry
-	source = owlry-0.4.0.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.4.0.tar.gz
-	b2sums = 3473b6ff157d5c1ff89318d713a54aa9aff3daef531efb28787591c6833c1cc3ae824fd09c6534655f01ef61b538d7ca864f13630121c3f6bc38286c72abfe32
+	source = owlry-0.4.1.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.4.1.tar.gz
+	b2sums = b685dae422b9c53c57dee34100209fd1df0ac082aaaf5456a1e80631f4a85440b34a1891a10ac849a15345a37ec18aa97b01dd54ab2456765a8dd3ccffccf059
 
 pkgname = owlry-plugin-pomodoro
