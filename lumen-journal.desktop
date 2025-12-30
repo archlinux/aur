@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Lumen Journal
+Comment=Encrypted journal app
+Exec=lumen-journal
+Icon=lumen-journal
+Terminal=false
+Categories=Utility;Office;

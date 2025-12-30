@@ -1,0 +1,2 @@
+#compdef lumen-journal
+_arguments "*:filename:_files"

@@ -1,0 +1,11 @@
+post_install() {
+    echo "Lumen-git installed."
+}
+
+post_upgrade() {
+    echo "Lumen-git upgraded."
+}
+
+post_remove() {
+    echo "Lumen-git removed."
+}
