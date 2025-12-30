@@ -6,7 +6,7 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=6.18.arch1
+pkgver=6.18.1.arch1
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
@@ -30,7 +30,7 @@ makedepends=(
   xz
 )
 options=(
-  !debug
+  zipkmod
 )
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -49,16 +49,16 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 # https://gitlab.archlinux.org/packaging/packages/linux/blob/6.18.arch1-1/PKGBUILD
-sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b'
+sha256sums=('d0a78bf3f0d12aaa10af3b5adcaed5bc767b5b78705e5ef885d5e930b72e25d5'
             'SKIP'
-            '1461db929834dad3b39595dcff5650afcb69465be1f3a11d6f63e89ed3904910'
+            'e0de7a4ccf2636993b2f49081399efaa63c0bf1c0db5cf1cbbdd6f8bfbede241'
             'SKIP'
-            '1c1568b06b57a1db79120b0430a8c88130702eab06507572dd18030d901adad2')
-b2sums=('b94b7b9bf18aca0c3e50baf79b009a1448fc6cd9c3ee019f641cc247dcf53a4abef4274ee0608ad8cd4943af69854363a95d26e117ff23620bb07dccb158859f'
+            '7f5793bfae1b8f02b5fb77b383e4b1cac82013efac1195ac317b9c44e19b7f1b')
+b2sums=('6ea6a7235ee59f876b015c6fda0f2772980c6ea58240689ce581182262387cbef3aed3c95ced66cdb56479cbd83961fbcbdfdff09f049941c3daf047710adb61'
         'SKIP'
-        '38b85a7633fb194bd77786963d123c5439e0e8b73ba2beeb9f1c465daf9a9798014f3b342a90d2bfb3d31aed349114ab7245f1a3fbf864546a503199b2ac956b'
+        '48a0b27d9c7ede9141fa581c2415f48d73e155d5afb515f9f10e0cd95947027464b3e2335bb5c275527007d9170889961858909520f2e6049ef2701cf4df9095'
         'SKIP'
-        '067232df172dd8a2bbd0bfa40468ef97d0df736d07ee60b90ccaba4d2e360ec6e3639844a9185e54fbd0871afd35e3d4200c13b07a234045e35975ceb2722782')
+        '27ac52ad3c1ac815b2cf6a36e5b9963ba7fb069c8fc98961e0e979eeaef8b13a7066067461eaf5994550934718667363a67cac5e0d838bc01f46b627cd09e959')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -137,9 +137,9 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist \
-     modules_install
-    # Suppress depmod
+
+  # Suppress depmod
+    make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
 
   # Remove build link
     rm "$modulesdir"/build
@@ -212,24 +212,6 @@ _package-headers() {
 
   echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
-
-  echo "Stripping build tools..."
-    local file
-    while read -rd '' file; do
-      case "$(file -Sib "$file")" in
-        application/x-sharedlib\;*)           # Libraries (.so)
-          strip -v $STRIP_SHARED "$file" ;;
-        application/x-archive\;*)             # Libraries (.a)
-          strip -v $STRIP_STATIC "$file" ;;
-        application/x-executable\;*)          # Binaries
-          strip -v $STRIP_BINARIES "$file" ;;
-        application/x-pie-executable\;*)      # Relocatable binaries
-          strip -v $STRIP_SHARED "$file" ;;
-      esac
-    done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-
-  echo "Stripping vmlinux..."
-    strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
