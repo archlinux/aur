@@ -5,6 +5,7 @@ pkgbase = owlry-widgets
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
+	depends = owlry
 	depends = owlry-plugin-weather
 	depends = owlry-plugin-media
 	depends = owlry-plugin-pomodoro
