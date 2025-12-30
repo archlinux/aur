@@ -2,6 +2,7 @@
 pkgname=owlry-plugin-bookmarks
 pkgver=0.2.0
 pkgrel=1
+_srcver=0.4.0
 pkgdesc="Browser bookmarks plugin for Owlry (Firefox, Chrome, Chromium)"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -13,8 +14,8 @@ optdepends=(
     'chromium: Chromium bookmarks support'
     'google-chrome: Chrome bookmarks support'
 )
-source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('03938310a657e1dfac5326cea805264e7c946dbb6df33634da31cfcd4c6712828d70227c6b59c3b3c1ec46e102ecabca30b75d9d5a06b2f7f9a7e3d80d0f8756')
+source=("owlry-$_srcver.tar.gz::$url/archive/v$_srcver.tar.gz")
+b2sums=('3473b6ff157d5c1ff89318d713a54aa9aff3daef531efb28787591c6833c1cc3ae824fd09c6534655f01ef61b538d7ca864f13630121c3f6bc38286c72abfe32')
 
 _cratename=owlry-plugin-bookmarks
 
