@@ -1,8 +1,10 @@
-# Maintainer: Gerardo Junior <me@gerardo-junior.com>
-# Maintainer: Xaver Hellauer <software@hellauer.bayern>
+# Maintainer: Christopher Gertig <hi@chriffpy.de>
+# Contributor: Gerardo Junior <me@gerardo-junior.com>
+# Contributor: Xaver Hellauer <software@hellauer.bayern>
+# Previous Maintainer: Michael Stapelberg <michael@stapelberg.ch>
 
 pkgname=tresorit
-pkgver=3.5.1244.4360
+pkgver=3.5.1281.4700
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
@@ -12,7 +14,7 @@ license=('custom:tresorit')
 depends=(bash libglvnd)
 makedepends=('xxd' 'sed')
 source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run"
-        "https://support.tresorit.com/hc/en-us/article_attachments/25125072592530"
+        "check_signature.sh::https://support.tresorit.com/hc/en-us/article_attachments/25125072592530"
         "tresorit.service")
 sha512sums=('a329ee3e5870481dd357d389da664711230add49c7ba74db04bd0bb0116b6ffde9930e6a320481d4d7d1ee0ed00b2afaa38ede948da16fe81e4faf7e07a817e9'
             '73515383174adc51c9da24e6f238e92ede445cbf75d55f927cb51a1a57f630ed95eda2740ac52d2997daf6105f2e22f11591b3208c4296c7d614daaa5f3c57ed'
@@ -50,8 +52,21 @@ package() {
       cp -r ./tresorit/tresorit_x86/* "$pkgdir/opt/$pkgname"
   fi
 
-  echo "Exec=\$HOME/.local/share/tresorit/tresorit --hidden" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
-  echo "Icon=/opt/tresorit/tresorit.png" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
+  desktop="${pkgdir}/opt/tresorit/tresorit.desktop"
+
+  # Set Exec
+  if grep -q '^Exec=' "$desktop"; then
+    sed -i 's|^Exec=.*|Exec=\$HOME/.local/share/tresorit/tresorit --hidden|' "$desktop"
+  else
+    echo 'Exec=$HOME/.local/share/tresorit/tresorit --hidden' >> "$desktop"
+  fi
+
+  # Set Icon
+  if grep -q '^Icon=' "$desktop"; then
+    sed -i 's|^Icon=.*|Icon=/opt/tresorit/tresorit.png|' "$desktop"
+  else
+    echo 'Icon=/opt/tresorit/tresorit.png' >> "$desktop"
+  fi
 
   mkdir -p "${pkgdir}"/usr/share/licenses/tresorit
   ln -s /opt/tresorit/LICENSES.txt \
