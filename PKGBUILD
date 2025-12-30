@@ -1,6 +1,6 @@
 # Maintainer: Ville Lautanala <lautis at gmail dot com>
 pkgname=ruuvitag-listener
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Listen to RuuviTag Bluetooth LE sensor measurements and output using InfluxDB line protocol.'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=(bluez dbus)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lautis/ruuvitag-listener/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('305e1ae50c8285f6a5ea0de2116586089916b3de1a5752918b1837ff692f5d13')
+sha256sums=('c11733e43a696edfe3ca416349e3398d96f70e76316007d48eae0f1e46c6fe79')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
