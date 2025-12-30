@@ -8,6 +8,7 @@ url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=('owlry')
 makedepends=('cargo')
+install=owlry-plugin-filesearch.install
 optdepends=(
     'fd: fast file finding (recommended)'
     'mlocate: locate-based file search'
