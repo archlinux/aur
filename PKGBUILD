@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -43,8 +43,8 @@ depends=(
   zlib
 )
 makedepends=(
+  clang
   cmake
-  gcc14
   gendesk
   git
   ninja
@@ -71,8 +71,8 @@ prepare() {
 }
 
 build() {
-  export CC=gcc-14
-  export CXX=g++-14
+  export CC=clang
+  export CXX=clang++
   cmake \
     -B "${srcdir}/build" \
     -DBUILD_TESTING=OFF \
@@ -80,8 +80,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSlicer_BUILD_DOCUMENTATION=OFF \
     -DSlicer_BUILD_I18N_SUPPORT=ON \
-    -DSlicer_STORE_SETTINGS_IN_APPLICATION_HOME_DIR=OFF \
     -DSlicer_BUILD_PARAMETERSERIALIZER_SUPPORT=OFF \
+    -DSlicer_REQUIRED_QT_VERSION=5 \
+    -DSlicer_STORE_SETTINGS_IN_APPLICATION_HOME_DIR=OFF \
     -DSlicer_USE_GIT_PROTOCOL=OFF \
     -DSlicer_USE_PYTHONQT=ON \
     -DSlicer_USE_SimpleITK_SHARED=ON \
