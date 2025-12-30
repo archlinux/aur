@@ -1,0 +1,18 @@
+pkgbase = nitrolaunch-gui
+	pkgdesc = A fast, extensible, and powerful Minecraft launcher (CLI Version)
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://github.com/Nitrolaunch/nitrolaunch
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cargo-tauri
+	makedepends = npm
+	makedepends = imagemagick
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = nitrolaunch-gui-0.28.0.tar.gz::https://github.com/Nitrolaunch/nitrolaunch/archive/refs/tags/0.28.0.tar.gz
+	sha256sums = 0023407378d47d07d47d8b2b8bfc7e469ef670b95b7bdb7e86fc726255fde28a
+
+pkgname = nitrolaunch-gui
