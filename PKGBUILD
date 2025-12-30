@@ -11,7 +11,7 @@ url="https://gitlab.com/TobbeBob123/bitwarden-fuzzy/"
 license=('GPL2' 'GPL3')
 depends=('bitwarden-cli' 'xclip')
 source=("https://gitlab.com/TobbeBob123/bitwarden-fuzzy/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c4dd7835fbcf2c6714c8f07e09dd98e904e1a4b68d7e6aa7e3f8e4abb5e700f2')
+sha256sums=('c532406cf62bf4581ddd02241662eff9ca9480c8013bfa78dfeecac069f08d89')
 
 package() {
 	install -Dm755 "$srcdir/${pkgname}-$pkgver/bff" "$pkgdir/usr/bin/bff"
