@@ -7,5 +7,4 @@
 # actual package
 !PKGBUILD
 !0001-drop-etc-files.patch
-!0002-hotfix-0.9.7.patch
 !.SRCINFO
