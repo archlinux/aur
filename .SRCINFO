@@ -1,6 +1,6 @@
 pkgbase = qt-hearts
 	pkgdesc = Classic hearts card game
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/qt-hearts
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qt-hearts
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-multimedia
-	source = qt-hearts-1.0.1.tar.gz::https://github.com/adelmonte/qt-hearts/archive/v1.0.1.tar.gz
-	sha256sums = f1b04e05ad5eb24bb0b7441daac55851d8f74a6e7d759534a9c15a351eb90161
+	source = qt-hearts-1.0.2.tar.gz::https://github.com/adelmonte/qt-hearts/archive/v1.0.2.tar.gz
+	sha256sums = 768a726128fd2a96aacbe388c8d51909317b2b58101aa004130e4927210ed09d
 
 pkgname = qt-hearts
