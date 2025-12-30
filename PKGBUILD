@@ -3,7 +3,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 _base=endpoints
 pkgname=python-${_base}
-pkgver=9.1.0
+pkgver=9.1.1
 pkgrel=1
 pkgdesc="Get an api up and running quickly"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-testdata python-requests) # python-websocket-client python-gevent
 optdepends=('python-websocket-client')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('702196ae6ba9839ff2141747e48a7c8a59b0931a458d942d660173a4c7ce62d3173978330c7c0c06743f5b488544169fe6960d288ed30f881efdb7e51013f4f9')
+sha512sums=('ebf837dd62896c6813386a6d447918b2a8c2c554b7293a079397ed86bb7049497041635b3ae5516adfa171221c5f4bc5d824e8353dbf8f9f0710fc87f777235f')
 
 build() {
   cd ${_base}-${pkgver}
