@@ -1,9 +1,9 @@
 # Maintainer: John Karpn <johnkarpn@gmail.com>
 
 pkgname=xtrabackup80
-pkgver=8.0.35_34.1
+pkgver=8.0.35_34
 _boost_ver=1.77.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Non-blocking backup tool for MySQL'
 arch=('x86_64')
 url='https://www.percona.com/software/mysql-database/percona-xtrabackup'
