@@ -1,0 +1,5 @@
+[go-mitmproxy-bin]
+source = "github"
+github = "lqqyt2423/go-mitmproxy"
+use_latest_release = true
+prefix = "v"
