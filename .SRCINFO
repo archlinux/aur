@@ -1,0 +1,14 @@
+pkgbase = owlry-full
+	pkgdesc = Complete Owlry installation with all plugins
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://somegit.dev/Owlibou/owlry
+	arch = any
+	license = GPL-3.0-or-later
+	depends = owlry-essentials
+	depends = owlry-widgets
+	depends = owlry-tools
+	optdepends = owlry-lua: Lua runtime for custom user plugins
+	optdepends = owlry-rune: Rune runtime for custom user plugins
+
+pkgname = owlry-full
