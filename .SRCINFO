@@ -1,12 +1,13 @@
 pkgbase = afterstep-git
 	pkgdesc = A Window Manager based on NextStep Interface
-	pkgver = 2.2.12.r20.g8de50a8
-	pkgrel = 3
+	pkgver = 2.2.12.r45.gf6da4b79
+	pkgrel = 1
 	url = http://www.afterstep.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = libxt
+	makedepends = git
 	depends = gtk2>=2.18.6
 	depends = libpng
 	depends = libtiff
@@ -18,8 +19,7 @@ pkgbase = afterstep-git
 	conflicts = afterstep
 	options = !emptydirs
 	options = staticlibs
-	source = afterstep::git+https://github.com/bbidulock/afterstep-devel.git
+	source = afterstep::git+https://github.com/afterstep/afterstep.git
 	md5sums = SKIP
 
 pkgname = afterstep-git
-
