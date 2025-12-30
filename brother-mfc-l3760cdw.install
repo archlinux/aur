@@ -1,15 +1,54 @@
 post_install() {
-    post_upgrade;
+    echo "Adding an entry to /etc/printcap.local"
+    /opt/brother/Printers/mfcl3760cdw/inf/setupPrintcapij mfcl3760cdw -i
+
+    echo "Adding CUPS printer"
+    /opt/brother/Printers/mfcl3760cdw/cupswrapper/cupswrappermfcl3760cdw
+    chmod 755 /opt/brother/Printers/mfcl3760cdw/cupswrapper
+    if [ "$(which semanage 2> /dev/null)" != '' ];then
+        semanage fcontext -a -t cupsd_rw_etc_t '/opt/brother/Printers/mfcl3760cdw/inf(/.*)?'
+        semanage fcontext -a -t bin_t          '/opt/brother/Printers/mfcl3760cdw/lpd(/.*)?'
+        semanage fcontext -a -t bin_t          '/opt/brother/Printers/mfcl3760cdw/cupswrapper(/.*)?'
+        if [ "$(which restorecon 2> /dev/null)" != '' ];then
+            restorecon -R /opt/brother/Printers/mfcl3760cdw
+        fi
+    fi
+
+    paper_size=$(paper --no-size)
+    if [[ $paper_size == "A4" ]]; then
+        echo "Setting paper format to A4"
+        sudo sed -i 's/^PageSize=Letter/PageSize=A4/' /opt/brother/Printers/mfcl3760cdw/inf/brmfcl3760cdwrc
+    else
+        echo "Keeping Letter format"
+    fi
+
+    if systemctl is-active --quiet cups; then
+        echo "restarting CUPS service"
+        systemctl restart cups
+    elif systemctl is-active --quiet lpd; then
+        echo "restarting LPRng service"
+        systemctl restart lpd
+    fi
+
 }
 
-post_upgrade() {
-    /opt/brother/Printers/mfcl3760cdw/cupswrapper/cupswrappermfcl3760cdw > /dev/null
-    if [ "$?" -eq 0 ]; then
-        printf "\033[1m\033[32m\x3d\x3d\x3e\033\1330m Done. The printer should be visible now via "
-        printf "the CUPS web interface (http://localhost:631).\n"
-        printf "\033[1m\033[32m\x3d\x3d\x3e\033\1330m Make sure org.cups.cupsd.service is enabled "
-        printf "and started, in order for printing to work.\n"
-    else
-        printf "\033[1m\032[32m\x3d\x3d\x3e\033\1330m Something went wrong...\n"
+post_remove() {
+    rm -f /tmp/mfcl3760cdw_latest_print_info
+    if [ "$(which semanage 2> /dev/null)" != '' ];then
+        semanage fcontext -d -t cupsd_rw_etc_t '/opt/brother/Printers/mfcl3760cdw/inf(/.*)?'
+        semanage fcontext -d -t bin_t          '/opt/brother/Printers/mfcl3760cdw/lpd(/.*)?'
+        semanage fcontext -d -t bin_t          '/opt/brother/Printers/mfcl3760cdw/cupswrapper(/.*)?'
+        if [ "$(which restorecon 2> /dev/null)" != '' ];then
+            restorecon -R /opt/brother/Printers/mfcl3760cdw
+        fi
     fi
+
+    if systemctl is-active --quiet cups; then
+        echo "restarting CUPS service"
+        systemctl restart cups
+    elif systemctl is-active --quiet lpd; then
+        echo "restarting LPRng service"
+        systemctl restart lpd
+    fi
+
 }

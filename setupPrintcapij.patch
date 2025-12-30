@@ -1,0 +1,21 @@
+--- setupPrintcapij	2021-12-23 03:52:34.000000000 +0100
++++ setupPrintcapij_patch	2025-12-30 16:36:22.106027800 +0100
+@@ -25,16 +25,12 @@
+ 
+ DEVICE_IF=/dev/usb/lp0
+ 
+-if [ ! -f $PRINTCAP_NAME ]; then
+-	PRINTCAP_NAME=/etc/printcap
+-fi
+-
+ case "$2" in
+ 	-i)
+ 	if [ ! -d $SPOOLER_NAME ]; then
+-	        mkdir $SPOOLER_NAME
++		mkdir $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown daemon $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
+ 

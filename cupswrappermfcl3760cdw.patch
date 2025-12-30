@@ -1,0 +1,51 @@
+--- cupswrappermfcl3760cdw	2021-12-23 03:52:34.000000000 +0100
++++ cupswrappermfcl3760cdw_patched	2025-12-30 16:12:23.553146183 +0100
+@@ -47,20 +47,17 @@
+   rm -f /usr/lib64/cups/filter/brother_lpdwrapper_${printer_model}
+ #  rm -f /opt/brother/${device_model}/${printer_model}/cupswrapper/brother_lpdwrapper_${printer_model}
+ #  rm -f /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if systemctl is-active --quiet cups; then
++  systemctl restart cups
+ fi
+ #  /etc/init.d/cups restart
+   exit 0
+ fi
+ if [ "$1" = "-r" ]; then
+   lpadmin -x ${printer_name}
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if systemctl is-active --quiet cups; then
++  systemctl restart cups
++fi
+ fi
+ #  /etc/init.d/cups restart
+   exit 0
+@@ -122,18 +119,13 @@
+ 
+ #chmod a+w /opt/brother/${device_model}/${printer_model}/inf/br${printer_model}rc
+ #chmod a+w /opt/brother/${device_model}/${printer_model}/inf
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
+-fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
++if systemctl is-active --quiet lpd; then
++	systemctl restart lpd
+ fi
+ 
+ 
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if systemctl  is-active --quiet cups; then
++  systemctl restart cups
+ fi
+ 
+ sleep 2s
