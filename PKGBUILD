@@ -1,17 +1,17 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst')
 makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers")
-sha256sums=('2627ffa29e884a5fc94124045fde98c7771f84f35e6f77ac5e6f89446e981f0c'
+sha256sums=('e33c8eb396531f35b10f525538c466fd4cf6d49372067cdfaad9b4c5cb07f62c'
             'SKIP')  # sysusers file checksum (local file)
 install=crossmacro.install
 
@@ -76,6 +76,11 @@ package() {
     # Install Polkit Policy
     install -Dm644 "scripts/assets/org.crossmacro.policy" \
         "$pkgdir/usr/share/polkit-1/actions/org.crossmacro.policy"
+        
+    # Install Polkit Rules
+    install -dm755 "$pkgdir/usr/share/polkit-1/rules.d"
+    install -Dm644 "scripts/assets/50-crossmacro.rules" \
+        "$pkgdir/usr/share/polkit-1/rules.d/50-crossmacro.rules"
     
     # Create executable symlink for UI
     install -dm755 "$pkgdir/usr/bin"
