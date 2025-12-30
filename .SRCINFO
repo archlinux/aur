@@ -1,6 +1,6 @@
 pkgbase = zashterminal
 	pkgdesc = A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/leoberbert/zashterminal
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = zashterminal
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = uv
+	makedepends = gettext
 	depends = gtk4
 	depends = libadwaita
 	depends = libsecret
