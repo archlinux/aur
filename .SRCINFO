@@ -1,6 +1,6 @@
 pkgbase = spm-arch
-	pkgdesc = Simple Package Manager FZF Wrapper for Arch Linux
-	pkgver = 2.0
+	pkgdesc = Simple Package Manager - Interactive fzf tui for Arch package management
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/Simple_Package_Manager
 	install = spm.install
@@ -10,7 +10,7 @@ pkgbase = spm-arch
 	depends = yay
 	provides = spm
 	conflicts = spm
-	source = spm-arch-2.0.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v2.0/spm-2.0.tar.gz
-	sha256sums = ed12f64aaf937b3c328389c5373f18ef05d9c39931319d91e7be772e086cfb6a
+	source = spm-arch-2.1.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v2.1/spm-2.1.tar.gz
+	sha256sums = a83914b4bf32f5beaba1e944efc56b464ae098874fc8f58b0ff46739437e1ea1
 
 pkgname = spm-arch

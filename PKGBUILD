@@ -1,7 +1,7 @@
 pkgname=spm-arch
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
-pkgdesc="Simple Package Manager FZF Wrapper for Arch Linux"
+pkgdesc="Simple Package Manager - Interactive fzf tui for Arch package management"
 arch=('any')
 url="https://github.com/adelmonte/Simple_Package_Manager"
 license=('GPL-3.0-or-later')
@@ -10,7 +10,7 @@ provides=('spm')
 conflicts=('spm')
 install=spm.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('ed12f64aaf937b3c328389c5373f18ef05d9c39931319d91e7be772e086cfb6a')
+sha256sums=('a83914b4bf32f5beaba1e944efc56b464ae098874fc8f58b0ff46739437e1ea1')
 
 package() {
     cd "$srcdir"
