@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.2.25
+pkgver=0.2.26
 _electronversion=37
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com/"
+_ghurl="https://github.com/QoderAI/changelog-zh_CN"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -52,8 +53,8 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9e1bc7d2a6e79491a64ecf32ca0946ad75788534009e4e7995d0ad65abf11191'
-            '5a2f3a00ad01884e2d21cb7573c0a920dca10720a52826d3444e629213560076'
+sha256sums=('2bdd05872b9b0836e339191fde51557ec22a4e28b29c8c67c77ed26a3f4fcd32'
+            'df32128f1a64f2cf4338567e55e8e2bb84019103538384c1796d2f6084f8d0cd'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 _get_electron_version() {
