@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.0.1
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -29,7 +29,7 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('ed5f1a7791770773ed4aa8ba31fa28b3bb2cc1a263e0ed1997c290a6248a896a'
-            '3fa5f444200f8176b288c9a1af9b6fbae8a88f7efd5ec5ab634ac474a7f87293'
+            'a527f3dd20c6e7b35eb2077cebcf859cba8140602f26f10f8e89c3c1a08eac13'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('7c4626809fcae17ad303a67ee41f56f51c7053340dd66d0b0ccc81df73ddecaa')
 sha256sums_x86_64=('bdedd19248927b5b2f55ad0e5d44fb926da539173f232e38c859bd2cb6080350')
