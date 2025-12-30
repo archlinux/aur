@@ -5,7 +5,7 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -41,7 +41,7 @@ prepare(){
   sed --in-place -e "s/process\.resourcesPath, \"/\"\/usr\/lib\/winboat\//g" ./src/renderer/lib/*.ts
 
   export npm_config_cache="$srcdir/npm_cache"
-  npm install
+  npm i
 }
 
 build() {
@@ -57,6 +57,10 @@ build() {
   #build:linux-gs
   bash build-guest-server.sh
   node scripts/build.ts
+  
+  rm -rf main
+  cp -r build/main main
+
   npx electron-builder --linux  --dir \
          -c.electronDist=/usr/lib/"$_electron" \
          -c.electronVersion="$(</usr/lib/${_electron}/version)"
