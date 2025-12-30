@@ -23,6 +23,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "fix-argparse-output-changes.patch",
     "fix-tests-python-3.13.patch",
 ]
 SPDX-FileCopyrightText = "python-calmjs contributors"

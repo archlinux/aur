@@ -1,0 +1,12 @@
+diff -aur calmjs-3.4.4.old/src/calmjs/tests/test_argparse.py calmjs-3.4.4/src/calmjs/tests/test_argparse.py
+--- calmjs-3.4.4.old/src/calmjs/tests/test_argparse.py	2025-12-30 15:00:20.390649374 +0100
++++ calmjs-3.4.4/src/calmjs/tests/test_argparse.py	2025-12-30 15:02:47.670802208 +0100
+@@ -306,7 +306,7 @@
+         with self.assertRaises(SystemExit):
+             argparser.parse_known_args(['-p', '3,2,1,0'])
+ 
+-        self.assertIn("(choose from '1', '2', '3')", sys.stderr.getvalue())
++        self.assertIn("(choose from 1, 2, 3)", sys.stderr.getvalue())
+ 
+         with self.assertRaises(SystemExit):
+             argparser.parse_known_args(['-p', '0'])
