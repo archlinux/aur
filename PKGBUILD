@@ -7,6 +7,7 @@ arch=('any')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=(
+    'owlry'
     'owlry-plugin-calculator'
     'owlry-plugin-system'
     'owlry-plugin-ssh'

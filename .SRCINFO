@@ -5,6 +5,7 @@ pkgbase = owlry-essentials
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
+	depends = owlry
 	depends = owlry-plugin-calculator
 	depends = owlry-plugin-system
 	depends = owlry-plugin-ssh
