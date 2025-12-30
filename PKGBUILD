@@ -1,6 +1,6 @@
 # Maintainer: AmarBego <begovicamar@proton.me>
 pkgname=gittop-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A lightweight GitHub notifications client. Why spin up a browser just to check your GitHub notifications?"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'gtk3' 'xdotool' 'libappindicator-gtk3')
 options=('!strip' '!debug')
 install=gittop.install
 source=("gittop-linux-x86_64-${pkgver}.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v${pkgver}/gittop-linux-x86_64.tar.gz")
-sha256sums=('cd22e666542ca9da3a7ea0d9ff4c9932ec0f31a8f4c77e102b600390bac8d660')
+sha256sums=('3ecd9a40540d3fe5a7487b32d80ab205ced5afa273a96f453af5bf348f9d2940')
 
 package() {
     cd "${srcdir}/gittop-linux-x86_64"
