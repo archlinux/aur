@@ -28,6 +28,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
+    mv "$srcdir/Lumen-*" "$srcdir/Lumen-$pkgver"
     cd "$srcdir/Lumen-$pkgver"
 
     # Build Rust core
