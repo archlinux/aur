@@ -28,18 +28,29 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    # No build step — this is a prebuilt binary release
-    :
+    cd "$srcdir/Lumen-$pkgver"
+
+    # Build Rust core
+    cd core
+    cargo build --release --locked
+
+    # Copy Rust library into Flutter linux/lib
+    install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
+
+    # Build Flutter UI
+    cd ../ui
+    flutter build linux --release
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/Lumen-$pkgver/ui/build/linux/x64/release/bundle"
 
-    # Install binary (the prebuilt executable is named "Lumen")
+    # Install binary
     install -Dm755 Lumen "$pkgdir/usr/bin/lumen-journal"
 
     # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/Lumen-$pkgver/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Desktop file
     install -Dm644 "$srcdir/lumen-journal.desktop" \
