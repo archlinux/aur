@@ -28,7 +28,7 @@ diff --unified --recursive --text a/system76driver/actions.py b/system76driver/a
 -    relpath = ('usr', 'share', 'initramfs-tools', 'modules.d', 's76-i915-initramfs.conf')
 -    content = '# Added by system76-driver\ni915\n'
 +    relpath = ('etc', 'modprobe.d', 's76-i915-mkinitcpio.conf')
-+    content = '# Added by system76-driver\noptions i915\n'
++    content = '# Added by system76-driver\noptions i915 1\n'
  
      def describe(self):
          return _('Add i915 driver to initramfs')
