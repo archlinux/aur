@@ -1,20 +1,20 @@
 pkgbase = xlibre-video-amdgpu
 	pkgdesc = XLibre fork of X.Org amdgpu video driver
-	pkgver = 25.0.0
-	pkgrel = 7
+	pkgver = 25.0.1
+	pkgrel = 8
 	url = https://github.com/X11Libre/xf86-video-amdgpu
 	arch = x86_64
 	groups = xlibre-drivers
 	makedepends = xlibre-xserver-devel>=25.0
 	makedepends = xorgproto
-	makedepends = meson>=0.59.0
+	makedepends = meson
 	depends = xlibre-xserver>=25.0
 	depends = glibc
 	depends = mesa
-	depends = libdrm>=2.4.121
+	depends = libdrm
 	provides = xf86-video-amdgpu
 	conflicts = xf86-video-amdgpu
-	source = https://github.com/X11Libre/xf86-video-amdgpu/archive/refs/tags/xlibre-xf86-video-amdgpu-25.0.0.tar.gz
-	sha256sums = 2fdf19250d1bfedcb9c4fc4f72a2eb23de90c6ce7bf1b37e2da7ef3410895c18
+	source = https://github.com/X11Libre/xf86-video-amdgpu/archive/refs/tags/xlibre-xf86-video-amdgpu-25.0.1.tar.gz
+	sha256sums = d6c006a1efc389974b63e152e07338a4af87a8d0a692f4f2ce3c1484747e912f
 
 pkgname = xlibre-video-amdgpu

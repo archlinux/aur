@@ -1,8 +1,8 @@
 # Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
 
 pkgname=xlibre-video-amdgpu
-pkgver=25.0.0
-pkgrel=7
+pkgver=25.0.1
+pkgrel=8
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64')
 _pkgname="${pkgname//xlibre/xf86}"
@@ -13,14 +13,39 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
-depends+=('mesa' 'libdrm>=2.4.121')
-makedepends+=('meson>=0.59.0')
+depends+=('mesa' 'libdrm')
+makedepends+=('meson')
 
 build() {
-  export CFLAGS=${CFLAGS/-fno-plt}
-  export CFLAGS+=" -Wno-incompatible-pointer-types"
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+  case "$CARCH" in
+    "x86_64")
+      CFLAGS=" -march=x86-64"
+      ;;
+    "aarch64")
+      CFLAGS=" -march=armv8-a"
+      ;;
+    *)
+      CFLAGS=" -march=native"
+      ;;
+  esac
+  CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
+  CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
+  LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
+  if [[ $CARCH != 'aarch64' ]]; then
+    CFLAGS+=" -fcf-protection"
+  fi
+  if [[ "$_pkgname" == *"xf86-input"* ]]; then
+    CFLAGS+=" -fno-plt"
+    LDFLAGS+=" -Wl,-z,now"
+  fi
+  if [[ "$_pkgname" == *"xf86-video-intel"* ]]; then
+    CFLAGS+=" -fno-lto"
+    LDFLAGS+=" -fno-lto"
+  fi
+  CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+  export CFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
 
   arch-meson ${_pkgname}-xlibre-${_pkgname}-${pkgver} build \
     -D udev=enabled \
@@ -65,5 +90,5 @@ xpackage() {
   install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha256sums=('2fdf19250d1bfedcb9c4fc4f72a2eb23de90c6ce7bf1b37e2da7ef3410895c18')
+sha256sums=('d6c006a1efc389974b63e152e07338a4af87a8d0a692f4f2ce3c1484747e912f')
 
