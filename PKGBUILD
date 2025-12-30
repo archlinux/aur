@@ -1,6 +1,6 @@
 # Maintainer: Arsany Samuel <arsanysamuel.as@gmail.com>
 pkgname=stakpak-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Stakpak is a terminal-native DevOps Agent in Rust 🦀. It can run commands, edit files, search docs, and more. It has security super powers, and generates high quality IaC"
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,10 @@ source_aarch64=(
 )
 
 # Generated checksums using updpkgsums
-sha256sums_x86_64=('b58d4c2be5050e58b13b8cb46cb7870922a8f1f629529079222e45a5db024232'
+sha256sums_x86_64=('bc02680d033ed550df033c25a31a1b303e78c23abd525ef61fd690048dc4780c'
                    'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
                    'ebe4050dd66fe80e4c383175eeef434b21debada67e262e46e70f67c03c9d533')
-sha256sums_aarch64=('acbadef0da09df072dca636dc3ea8e7b25696fef1dac9d3a971b6eff8e846f57'
+sha256sums_aarch64=('9b44f46d18d36b85968da67d0a1d66dc9540eb469e7a71f2defefc358560b1d6'
                     'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
                     'ebe4050dd66fe80e4c383175eeef434b21debada67e262e46e70f67c03c9d533')
 
