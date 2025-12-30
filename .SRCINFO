@@ -1,6 +1,6 @@
 pkgbase = neve-bin
 	pkgdesc = A pure functional language for system configuration and package management (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Neve
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = neve-bin
 	provides = neve
 	conflicts = neve
 	conflicts = neve-git
-	source_x86_64 = https://github.com/MCB-SMART-BOY/Neve/releases/download/v0.5.0/neve-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2f03f2043c8559b2f160ac6d1d654f600744fa08a546de57e7fc51aaae15e561
-	source_aarch64 = https://github.com/MCB-SMART-BOY/Neve/releases/download/v0.5.0/neve-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 979209fef16aa200770f076aeb86b0a2ee41249d307c3486556d2572c7c32353
+	source_x86_64 = https://github.com/MCB-SMART-BOY/Neve/releases/download/v0.6.0/neve-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7e56abc25b60cf9ee9e9d4419e6b43721660f23af7627a6bd37cac90a33b17d2
+	source_aarch64 = https://github.com/MCB-SMART-BOY/Neve/releases/download/v0.6.0/neve-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0b8b26f99c20be5c03f54eb83c43e0bb00822b0dfedfbf9f99bd63f7088b433b
 
 pkgname = neve-bin
