@@ -14,8 +14,8 @@ arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0')
 
-provides=("${pkgname%-binarydots}")
-conflicts=("${pkgname%-binarydots}")
+provides=("$pkgname")
+conflicts=("$pkgname")
 depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
 optdepends=('elephant-all: elephant + all official elephant providers')
 
