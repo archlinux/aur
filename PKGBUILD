@@ -1,7 +1,7 @@
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 # Contributor: Faaris <faaris dot ansari at proton dot me>
 
-# PKGBUILD 'forked' from electron*-bin [https://aur.archlinux.org/packages/electron40-bin] by
+# PKGBUILD forked from electron*-bin [https://aur.archlinux.org/packages/electron40-bin] by
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron41
 pkgname=electron-nightly-bin
-_pkgver=41.0.0-nightly.20251219
+_pkgver=41.0.0-nightly.20251229
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,7 +48,7 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_x86_64=('32e04fcae1eedfcc511bd37da6f5572652cd80850dabe55da2837c679e8ec448'
+sha256sums_x86_64=('903fc5ad6904f4e9f3e9571344214fa9f7144c823c613336ae265fc6054b7b31'
                    '52d37554d0e729262652afd52c8430eda02ca7a89a6f6ad5610d5fe71144aa6a')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
