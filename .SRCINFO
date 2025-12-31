@@ -1,7 +1,7 @@
 pkgbase = radare2-git
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 5.9.8.r748.g2bfc8f0
-	pkgrel = 2
+	pkgver = 6.0.8.r2.g1362812
+	pkgrel = 1
 	url = https://github.com/radare/radare2
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,21 +17,10 @@ pkgbase = radare2-git
 	depends = xxhash
 	depends = zlib
 	optdepends = r2ghidra: ghidra decompiler plugin
-	provides = radare2=5.9.8.r748
+	provides = radare2=6.0.8.r2
 	conflicts = radare2
 	options = !emptydirs
 	source = radare2::git+https://github.com/radare/radare2.git
 	sha256sums = SKIP
 
 pkgname = radare2-git
-	depends = capstone
-	depends = file
-	depends = libuv
-	depends = libzip
-	depends = lz4
-	depends = sh
-	depends = xxhash
-	depends = zlib
-	depends = libcapstone.so
-	depends = libmagic.so
-	depends = libzip.so

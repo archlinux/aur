@@ -4,8 +4,8 @@
 
 _pkgname="radare2"
 pkgname="$_pkgname-git"
-pkgver=5.9.8.r748.g2bfc8f0
-pkgrel=2
+pkgver=6.0.8.r2.g1362812
+pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 url="https://github.com/radare/radare2"
 license=(
@@ -41,6 +41,11 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+  # fix for libuv
+  sed -e '/R_API bool r_core_session_register/i #endif\n#if 1' -i "$_pkgsrc/libr/core/rtr.c"
+}
+
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
@@ -72,14 +77,18 @@ build() {
 
 package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
-    depends+=(
-      libcapstone.so
-      libmagic.so
-      libzip.so
-    )
+    eval "depends+=(
+      'libcapstone.so'
+      'libmagic.so'
+      'libzip.so'
+    )"
   fi
 
+  # install expects pre-existing directory
+  mkdir -pm755 "$pkgdir/usr/share/doc/radare2"
+
   meson install -C build --destdir "$pkgdir"
-  cp -r "$_pkgsrc"/doc/* "$pkgdir/usr/share/doc/radare2"
-  ln -s radare2.1.gz "${pkgdir}/usr/share/man/man1/r2.1.gz"
+
+  # symlink manpage
+  ln -sf radare2.1.gz "${pkgdir}/usr/share/man/man1/r2.1.gz"
 }
