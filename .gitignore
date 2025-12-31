@@ -1,6 +1,8 @@
 # Sources
 /linux.part/
 /linux/
+ntfsplus-dkms/
+ntfsplus-dkms-git/
 *.gz
 
 # Download agent
