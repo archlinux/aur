@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=mangowc
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
