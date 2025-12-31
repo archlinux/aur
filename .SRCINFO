@@ -4,6 +4,7 @@ pkgbase = xlibre-input-void
 	pkgrel = 5
 	url = https://github.com/X11Libre/xf86-input-void
 	arch = x86_64
+	arch = aarch64
 	groups = xlibre-drivers
 	license = custom
 	makedepends = xlibre-xserver-devel>=25.0
