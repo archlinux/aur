@@ -1,9 +1,11 @@
 *
 !.gitignore
-!.nvchecker.toml
 !.SRCINFO
-!LICENSE
 !PKGBUILD
-!*.desktop
-!fix-resources-path.patch
+!proton-mail.desktop
 !proton-mail.sh
+!fix-resources-path.patch
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml
