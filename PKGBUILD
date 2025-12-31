@@ -3,7 +3,7 @@
 
 _pkgname=splayer
 pkgname=splayer
-pkgver=3.0.0_beta.8.2025
+pkgver=3.0.0_beta.8
 pkgrel=1
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,9 @@ else
     exit 1
 fi
 
-source=("https://github.com/imsyy/SPlayer/releases/download/v${pkgver//_/-}/splayer-${pkgver//_/-}-${_arch_pkg}.pacman")
+# 下次更新时记得删掉 .2025(
+
+source=("https://github.com/imsyy/SPlayer/releases/download/v${pkgver//_/-}.2025/splayer-${pkgver//_/-}-${_arch_pkg}.pacman")
 sha256sums=("${_sha256}")
 
 noextract=("${source[0]##*/}")
