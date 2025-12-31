@@ -3,7 +3,7 @@
 
 _pkgname=splayer
 pkgname=splayer
-pkgver=3.0.0-beta.8.2025
+pkgver=3.0.0_beta.8.2025
 pkgrel=1
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
