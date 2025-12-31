@@ -1,6 +1,6 @@
 # Maintainer: Max Tottenham <mtottenh@gmail.com>
 pkgname=pcapsql
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="SQL query engine for PCAP network traffic analysis"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mtottenh/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7ee674a6c4a3576450381ffdd0c666eee5ade43d4fb66ad4e689b7e050745dc0')
+sha256sums=('0e58eecc4bf7b6ce8e378ad5204e43cfa55c69e7e6271aac37547dbc55f2a1c6')
 
 build() {
     cd "$pkgname-$pkgver"
