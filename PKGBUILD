@@ -7,6 +7,7 @@ pkgdesc="Cross platform CLI tool for Glorious Core v1 compatible wireless mice, 
 arch=('any')
 url="https://github.com/dkbednarczyk/mxw.git"
 makedepends=('cargo' 'git' 'libusb')
+optdepends=('mxw-udev: Use `mxw` without privelige escalation (sudo)')
 provides=('mxw')
 source=('git+https://github.com/dkbednarczyk/mxw.git')
 md5sums=('SKIP')
