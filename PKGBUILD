@@ -9,15 +9,14 @@ arch=('x86_64')
 url="https://github.com/brokenallmute/lwm"
 license=('MIT')
 depends=('libxinerama' 'libx11')
-wmakedepends=('gcc' 'make') 
+makedepends=('gcc' 'make') 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/${pkgver}.tar.gz")
 
 sha256sums=('1bfa5352bdf22f1da6769ceebb1955e6e422dfb0d57bc25e4dc2b6d0c12f4781')
 
 build() {
     cd "lwm-${pkgver}"
-    export LDFLAGS="${LDFLAGS} -lXinerama"
-    make 
+    make LDLIBS="-lXinerama"
 }
 
 package() {
