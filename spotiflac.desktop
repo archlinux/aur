@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=SpotiFLAC
-Comment=Get Spotify tracks in true FLAC from Tidal, Qobuz & Amazon Music — no account required.
-Exec=spotiflac
-Icon=spotiflac
-Terminal=false
-Type=Application
-Categories=AudioVideo;Audio;Music;
