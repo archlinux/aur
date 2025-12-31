@@ -3,17 +3,23 @@
 _appname=Taskwire
 _pkgauthor=majoraexp
 _pkgname=taskwire
+
 pkgname=${_pkgname}-bin
 pkgver=1.52
 pkgrel=1
 pkgdesc="Modern Linux System Monitor"
+
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_appname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_appname}/v${pkgver}"
 license=('GPL-3.0')
-depends=('glibc' 'zlib')
+
 conflicts=("${_pkgname}")
+depends=('glibc' 'zlib')
 provides=("${_appname}")
+
+options=(!strip)
+
 source=("${_pkgname}.desktop"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"

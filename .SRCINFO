@@ -9,6 +9,7 @@ pkgbase = taskwire-bin
 	depends = zlib
 	provides = Taskwire
 	conflicts = taskwire
+	options = !strip
 	source = taskwire.desktop
 	source = LICENSE-1.52::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.52/LICENSE
 	source = README-1.52.md::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.52/README.md
