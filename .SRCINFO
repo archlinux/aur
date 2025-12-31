@@ -1,6 +1,6 @@
 pkgbase = python-quiffen
 	pkgdesc = Quiffen is a Python package for parsing QIF (Quicken Interchange Format) files.
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/isaacharrisholt/quiffen
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-quiffen
 	depends = python-pydantic
 	depends = python-dateutil
 	optdepends = python-pandas: for exporting to DataFrames
-	source = python-quiffen-4.0.0.tar.gz::https://github.com/isaacharrisholt/quiffen/archive/v4.0.0.tar.gz
-	sha256sums = 2393ce25d3f12f48e7739f719c17a8d21daa7730fde0423e767550da802fcad5
+	source = python-quiffen-4.0.1.tar.gz::https://github.com/isaacharrisholt/quiffen/archive/v4.0.1.tar.gz
+	sha256sums = 6170a8bf22d19e7249d929e5b5a24b167c84e833bea8942d87edf7a5a522fb4a
 
 pkgname = python-quiffen
