@@ -3,7 +3,7 @@
 pkgbase=oxc
 pkgname=(oxlint oxfmt oxc-language-server)
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of JavaScript tools written in Rust"
 arch=(x86_64)
 url="https://github.com/oxc-project/oxc"
@@ -52,6 +52,7 @@ package_oxc-language-server() {
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ox/oxfmt/package.nix
 package_oxfmt() {
   pkgdesc="Formatter for the JavaScript Oxidation Compiler"
+  depends=("nodejs")
   cd "oxc-oxlint_v${pkgver}"
 
   install -dm755 "$pkgdir/usr/bin"
