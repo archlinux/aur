@@ -1,12 +1,12 @@
 pkgbase = cjvs-bin
 	pkgdesc = 仓颉Cangjie版本切换工具
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/ystyle/cjvs
 	arch = x86_64
 	license = MulanPSL2
 	depends = openssl
-	source = https://github.com/ystyle/cjvs/releases/download/v0.3.2/cjvs_v0.3.2_linux_amd64.zip
-	sha256sums = 5918d6c659e61fcb6fdf60758a8e2917344b46f2ac0cdc062149d1214c9268f3
+	source = https://github.com/ystyle/cjvs/releases/download/v0.3.3/cjvs_v0.3.3_linux_amd64.zip
+	sha256sums = d1310907cdda14d3b5bbc93f39562c3999987b11504f7772969c3faf7d2808c2
 
 pkgname = cjvs-bin
