@@ -1,0 +1,3 @@
+[lic-cli]
+source = "pypi"
+pypi = "lic-cli"
