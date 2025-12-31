@@ -2,7 +2,7 @@
 pkgname=http-remote-pc-control
 pkgver=1.1.2
 PACKAGER="Andrew Koidan <deathangel908@gmail.com>"
-tag=v1.1.2
+tag=ubuntu1
 pkgrel=1
 pkgdesc="HTTP remote PC control tool"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "san.cnf"
 )
 options=(!strip)
-sha256sums=('62e9eab23431dd70a3aa6e021eb489f59f2093fc9d254dfe65cc34fafa48c5bd'
+sha256sums=('eaafb0fd6d7015e965ea96b7e090c64146eb89c9a9d8d338ecd9039cc48bcdf3'
             '35dd54cb3a415dc327c92637b1a7f629e0efb1eea2d5e8432c4134fa412383f4'
             'be3aa51b9cf0340d3fb172ba33cbe9bb70fefb9e33e6445f965b75564c8d83ed'
             'a75e2cf6c74cc74e82ffd8c83d4942967025b2853f4e3a146f8a1244426b0171'
