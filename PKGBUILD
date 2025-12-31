@@ -3,8 +3,8 @@
 
 pkgname=notepad---bin
 _pkgname=com.hmja.notepadqt6
-pkgver=3.5.1.0
-_pkgver=v3.5
+pkgver=3.6.3.0
+_pkgver=v3.6
 pkgrel=1
 epoch=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
@@ -28,7 +28,7 @@ makedepends=(
 )
 source=("https://github.com/maoyaotang12/deb/raw/refs/heads/main/${_pkgname}_${pkgver}_amd64.deb"
 "${url}/raw/master/LICENSE")
-sha256sums=('0f1f63c29f5b95f9ba113373e46a1d8d48872fcdbb93109bbd21b9407ee7f7c1'
+sha256sums=('05b6e22829ff5b17222f5f1be8ead34e51d3e6b957340c750987a07fa34f80ef'
             '0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b')
 options=("!strip")
 
