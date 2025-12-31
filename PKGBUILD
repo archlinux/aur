@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=gotp
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A command line interface to manage and generate Time-based One Time Password (TOTP)"
 arch=(x86_64)
@@ -9,10 +9,10 @@ url='https://git.sr.ht/~shulhan/gotp'
 license=('GPL3')
 makedepends=('go' 'git' 'asciidoctor')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('07a07f1a5f01c97bb09bc29b42d5be640bb1179a1f18ad6d5bdbd2462f6df33e')
+sha256sums=('19b3f6c1ddc03db607abe53b3332d282eb088a32f5b9055379416ee18a2fed40')
 
 prepare() {
-  cd "${pkgname}-v${pkgver}/_doc"
+  cd "${pkgname}-v${pkgver}/"
   asciidoctor -q -b manpage README.md
   mv README.1 ${pkgname}.1
   gzip -c ${pkgname}.1 > ${pkgname}.1.gz
@@ -31,6 +31,6 @@ build() {
 package() {
   cd "${pkgname}-v${pkgver}"
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 _doc/${pkgname}.1.gz ${pkgdir}/usr/share/man/man1/${pkgname}.1.gz
+  install -Dm644 ${pkgname}.1.gz ${pkgdir}/usr/share/man/man1/${pkgname}.1.gz
   install -Dm644 _sys/usr/share/bash-completion/completions/${pkgname} ${pkgdir}/usr/share/bash-completion/completions/${pkgname}
 }
