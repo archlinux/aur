@@ -1,0 +1,15 @@
+pkgbase = oports-git
+	pkgdesc = A wrapper around 'ss -tunlp' to display cleaner output
+	pkgver = r7.f891e4c
+	pkgrel = 1
+	url = https://github.com/sdushantha/oports
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = iproute2
+	provides = oports
+	conflicts = oports
+	source = oports::git+https://github.com/sdushantha/oports#branch=master
+	sha256sums = SKIP
+
+pkgname = oports-git
