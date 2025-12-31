@@ -1,12 +1,13 @@
 pkgbase = python-style50
 	pkgdesc = Command-line program to check code against the CS50 style guide.
 	pkgver = 2.10.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cs50/style50
 	arch = any
 	license = GPLv3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python
 	depends = icdiff
 	depends = autopep8
