@@ -2,7 +2,7 @@
 
 pkgname=gx52
 pkgver=0.7.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK application designed to provide control for the LEDs and MFD of Logitech X52 and X52 Pro H.O.T.A.S."
 arch=('any')
 url="https://gitlab.com/leinardi/gx52"

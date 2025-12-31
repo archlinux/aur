@@ -1,14 +1,14 @@
 pkgbase = gx52
 	pkgdesc = A GTK application designed to provide control for the LEDs and MFD of Logitech X52 and X52 Pro H.O.T.A.S.
 	pkgver = 0.7.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://gitlab.com/leinardi/gx52
 	install = gx52.install
 	arch = any
 	license = GPL3
 	makedepends = meson
 	makedepends = appstream-glib
-	makedepends = libudev0
+	makedepends = libudev0-shim
 	makedepends = libusb
 	depends = gobject-introspection
 	depends = libappindicator-gtk3
