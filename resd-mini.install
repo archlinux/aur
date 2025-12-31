@@ -1,0 +1,16 @@
+# res-downloader.install
+info() {
+    echo -e "> If you are prompted that the certificate is not installed when you run it, you need to run it with root to install the certificate automatically, and you can ignore the error if the certificate is already installed."
+    echo -e ">  sudo resd-mini"
+    echo -e ">  ls -lash /usr/share/ca-certificates/trust-source/resd-mini.crt"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+}
+pre_remove() {
+    echo "deleting the resd-mini crt..."
+    find /usr/share/ca-certificates/trust-source/ -type f -name "resd-mini.crt" -exec rm -rf {} +
+}
