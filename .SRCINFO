@@ -11,8 +11,6 @@ pkgbase = sessionmanager
 	depends = python
 	depends = python-setuptools
 	depends = hyprland
-	optdepends = bash-completion: bash completion
-	optdepends = zsh-completions: zsh completion
 	source = sessionmanager-0.0.6.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.6.tar.gz
 	sha256sums = 2ec97d433a48557e3c4f5cd948739e73d2263bce49641b314127274067f8d14c
 
