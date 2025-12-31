@@ -1,7 +1,7 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Stefan Tatschner <stefan.tatschner@mailbox.org>
 
 pkgname=gallia
-pkgver=2.0.0b3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Extendable Pentesting Framework'
 arch=(any)
@@ -23,9 +23,15 @@ makedepends=(
 	"python-uv-build"
 	"python-build"
 	"python-installer"
+	"python-argcomplete"
+)
+checkdepends=(
+	"python-pytest"
+	"python-pytest-asyncio"
+	"bats"
 )
 source=("https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6e5f8ee17218f52a052e0d4d63788c169b207e471660508876184a114311d5d3')
+sha256sums=('0b797a3161d2b537d704aaf69de610d0ea8bd9aa9964606d38e45cf62c0e92e1')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -38,4 +44,12 @@ package() {
 
 	register-python-argcomplete --shell bash gallia | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/bash-completion/completions/gallia
 	register-python-argcomplete --shell fish gallia | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/fish/vendor_completions.d/gallia.fish
+	register-python-argcomplete --shell zsh  gallia | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/zsh/vendor-completions/_gallia
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+
+	python -m pytest -v tests/pytest
+	./tests/bats/run_bats.sh
 }

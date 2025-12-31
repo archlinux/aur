@@ -1,6 +1,6 @@
 pkgbase = gallia
 	pkgdesc = Extendable Pentesting Framework
-	pkgver = 2.0.0b3
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Fraunhofer-AISEC/gallia
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = gallia
 	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-argcomplete
 	depends = python
 	depends = python-pydantic
 	depends = python-aiosqlite
@@ -18,7 +19,7 @@ pkgbase = gallia
 	depends = python-construct
 	depends = python-boltons
 	depends = python-zstandard
-	source = https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v2.0.0b3.tar.gz
+	source = https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v2.0.2.tar.gz
 	sha256sums = 6e5f8ee17218f52a052e0d4d63788c169b207e471660508876184a114311d5d3
 
 pkgname = gallia
