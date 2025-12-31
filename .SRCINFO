@@ -1,0 +1,24 @@
+pkgbase = meerk40t-git
+	pkgdesc = Hackable Laser software for the K40 Stock-LIHUIYU laser boards.
+	pkgver = 0.9.8920.r19993.dab6ce164
+	pkgrel = 1
+	url = https://github.com/meerk40t/meerk40t
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gendesk
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pyusb
+	depends = python-pyserial
+	depends = python-wxpython
+	depends = python-opencv
+	depends = python-websocket-client
+	optdepends = python-ezdxf
+	source = meerk40t-git::git+https://github.com/meerk40t/meerk40t.git
+	source = meerk40t-logo.png
+	sha256sums = SKIP
+	sha256sums = e6fa82a217675a14591a2482c96459b4a0f0fa5bce38206f2a3e373811a2be35
+
+pkgname = meerk40t-git
