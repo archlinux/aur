@@ -1,4 +1,9 @@
-# Maintainer: h8d13 <hadrien dot loge at gmail dot com>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Maintainer: Anton Hvornum <torxed@archlinux.org>
+# Contributor: Anton Hvornum <anton@hvornum.se>
+# Contributor: demostanis worlds <demostanis@protonmail.com>
+# Contributor: h8d13 <hadean-eon-dev@proton.me>
 
 pkgname=archinstall-latest
 pkgver=3.0.14
