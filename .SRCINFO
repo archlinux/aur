@@ -1,6 +1,6 @@
 pkgbase = python-cryptolyzer
 	pkgdesc = A comprehensive cryptographic settings analyzer
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/coroner/CryptoLyzer
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-cryptolyzer
 	depends = python-pyfakefs
 	depends = python-requests
 	depends = python-dnspython
-	source = https://gitlab.com/coroner/CryptoLyzer/-/archive/v1.0.1/cryptolyzer-v1.0.1.tar.gz
-	sha512sums = 2d6eedd787253e644e58a9f7e2f3a80bfcd3d4483fe5997decb52d4adb90a123cf5c9d97cd49bb146a88b99fc186e02d3bbd9325460c8dcb9e433e6e53cd9e27
+	source = https://gitlab.com/coroner/CryptoLyzer/-/archive/v1.0.2/cryptolyzer-v1.0.2.tar.gz
+	sha512sums = 3af6d9068f907254cbedfddba921e6671d25f434ded8cf1c6b8b56c21b7000e533e6bf2262c7a39b19536d0ab1a81dbf3972899976d0b19d73520d69db773488
 
 pkgname = python-cryptolyzer
