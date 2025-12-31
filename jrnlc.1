@@ -26,12 +26,33 @@ jrnlc is a small command-line journaling tool that stores
 journal entries in a plain-text format and provides simple
 filtering based on time and ranges.
 
+When adding entries, jrnlc supports implicit tag continuation:
+.TP
+- If a tag is explicitly provided, it is used.
+.TP
+- If no tag is provided, the tag from the previous entry is reused.
+.TP
+- If no previous tag exists, entries default to the tag "jrnl".
+.TP
+- An explicitly empty tag is treated as invalid and falls back to the same behavior.
+
+This allows fast journaling without repeatedly retyping tags,
+while still allowing explicit overrides.
+
 .SH OPTIONS
 .TP
 .BR add " " TEXT " " --tag " " [tag]
 Add a new journal entry with an optional tag. If no tag is
 provided, the previous entry's tag may be reused.
-
+.RS
+Implicit tag continuation:
+.TP
+- If a tag is provided, it is used.
+.TP
+- If no tag is provided, the previous entry's tag is reused.
+.TP
+- If no previous tag exists, defaults to "jrnl".
+.RE
 .TP
 .BR show " " --before " " TIME
 Show entries before TIME.
