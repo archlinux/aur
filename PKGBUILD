@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('0d9498d39754df89a5c91d87270246b8081855f297a748cd617f52ec72c2d2ef')
+sha256sums=('f6d1d5f123b7d9d13ed8119350b2f1643e15a07f423c7132722c0a3d4fb1935a')
 backup=('etc/greetd/config.toml' 'etc/greetd/hyprland-greeter-config.conf' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-hyprland.install
 
@@ -88,6 +88,8 @@ misc {
     disable_hyprland_logo = true
     disable_splash_rendering = true
     background_color = rgb(000000)
+    # Suppress watchdog warning - greetd doesn't pass fd properly to start-hyprland
+    disable_watchdog_warning = true
 }
 
 # Input configuration
@@ -104,12 +106,11 @@ input {
 # Disable all keybindings (security for greeter)
 # No binds = no user control
 
-# Window rules for kitty greeter
-windowrulev2 = fullscreen, class:^(kitty)$
-windowrulev2 = opacity 1.0 override, class:^(kitty)$
+# Window rules for kitty greeter (Hyprland 0.53+ syntax)
+windowrule = match:class ^(kitty)$, fullscreen on, opacity 1.0
 
 # Layer rules for wallpaper daemon
-layerrule = blur, wallpaper
+layerrule = match:namespace wallpaper, blur on
 
 # Startup applications
 exec-once = gslapper -f -I /tmp/sysc-greet-wallpaper.sock '*' /usr/share/sysc-greet/wallpapers/sysc-greet-default.png

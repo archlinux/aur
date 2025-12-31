@@ -1,6 +1,6 @@
 pkgbase = sysc-greet-hyprland
 	pkgdesc = Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysc-greet
 	install = sysc-greet-hyprland.install
@@ -20,7 +20,7 @@ pkgbase = sysc-greet-hyprland
 	backup = etc/greetd/config.toml
 	backup = etc/greetd/hyprland-greeter-config.conf
 	backup = etc/polkit-1/rules.d/85-greeter.rules
-	source = sysc-greet-1.0.9.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v1.0.9.tar.gz
-	sha256sums = 0d9498d39754df89a5c91d87270246b8081855f297a748cd617f52ec72c2d2ef
+	source = sysc-greet-1.1.0.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v1.1.0.tar.gz
+	sha256sums = f6d1d5f123b7d9d13ed8119350b2f1643e15a07f423c7132722c0a3d4fb1935a
 
 pkgname = sysc-greet-hyprland
