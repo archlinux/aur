@@ -1,6 +1,6 @@
 # Maintainer: f0ruD <fzero@rubi.gd>
 pkgname=witr
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A tool to determine why a process is running."
 arch=('x86_64' 'aarch64')
@@ -31,4 +31,4 @@ package() {
   install -Dm644 docs/witr.1 "$pkgdir/usr/share/man/man1/witr.1"
 }
 
-sha256sums=('762965257fa07835c9cd615e2a88a6374c49a6bd49243ead55279f2ac30c0dd2')
+sha256sums=('1035bd8500cc545a53e8d827f500c6754293d25dab8188a83411c41db219dc47')
