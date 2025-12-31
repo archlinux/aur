@@ -1,6 +1,6 @@
 # Maintainer: ddvital <ddvital@gmail.com>
 pkgname=cliptui
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A beautiful terminal-based clipboard history manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('xsel')
 optdepends=('wl-clipboard: Wayland clipboard support')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f272ad6d8c7b4cce5fcbdedc8fa2b6fe7e8be77cfdc4fb9da93089cd02cb7c2d')
+sha256sums=('63d9ccc3af2eec412b569091e5611c36b610e329d787595d87dcfe87b3e034ab')
 
 build() {
   cd "ClipTUI-$pkgver"
