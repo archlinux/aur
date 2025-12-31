@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops (prebuilt binaries)'
 url='https://github.com/jmylchreest/histui'
@@ -31,8 +31,8 @@ source_aarch64=(
 )
 
 sha256sums=('8ff243f94c8ce063629e32cee0d83eed31046dcf6470edb040276cba7d53c501' 'c1e549369c37b9f8423c02e25a12946a455c953b19615b8f000f221728975429' '5c226038c1c603adb4bc657ab8b47050d1db63a4da171b610f76f3a18fe31d2c')
-sha256sums_x86_64=('b9a1ca2975b6c1fa99ff11c37dd733619580ec1f5d8dd9185f7cc3375ab5f0a4' '282fb6f65054dfcc023f6fd6bb12a428a4e61f7fd86dc473ca8fe95865a7c0a3')
-sha256sums_aarch64=('cbdfecfbbcc88b397b63de078d41d40b79e95eabdcddbc714d356eceab00b61d' '6848609d9c9d61abdf6a5fef26b1afbb74babdde9018ab5b55d02dad50e75123')
+sha256sums_x86_64=('973884da15e301c9f86327db51eeb673f77824dc8a3309c37d9db47839d13add' 'de30e7d0d70cd8d3f3a3777aac61cbce697169ca9c138121e2d5c13abc7bbe6d')
+sha256sums_aarch64=('f5e43ea6acda8498c3b7cbf4f125fadf5b55e375fed33b04c64117b4c9191dbc' '24d7cd10d89e0fec338d78bcfc335585b9d020a39d961ccdaefff1edbad73936')
 
 package() {
     install -Dm755 "histui-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/histui"
