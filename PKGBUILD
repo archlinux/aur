@@ -2,7 +2,7 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.13.2'
+pkgver='3.14.0'
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -35,9 +35,7 @@ source=(
 
 build() {
     cd "PlotJuggler-${pkgver}"
-    PJ_PLUGIN_INSTALL_DIRECTORY=/usr/lib; cmake -S . -B build \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DCMAKE_INSTALL_PREFIX="/usr"
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX="/usr"
     make -C build
 }
 
@@ -46,4 +44,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('5cbb9f0de8b3b68d5c017d15c64ad20aa3cece95b034aa1aa02cd13d39237850')
+sha256sums=('e5c7e56b81bcac36dae9c059688ceadb909393c5181f26f5b3cd9bed8dbd37bb')
