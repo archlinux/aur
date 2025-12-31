@@ -4,6 +4,7 @@ pkgbase = xlibre-video-amdgpu
 	pkgrel = 8
 	url = https://github.com/X11Libre/xf86-video-amdgpu
 	arch = x86_64
+	arch = aarch64
 	groups = xlibre-drivers
 	makedepends = xlibre-xserver-devel>=25.0
 	makedepends = xorgproto
