@@ -1,0 +1,15 @@
+pkgbase = manpage2html.bash
+	pkgdesc = Convert man pages to HTML with a keyword index
+	pkgver = 20240128
+	pkgrel = 4
+	url = https://tukaani.org/manpage2html/
+	arch = any
+	license = 0BSD
+	depends = bash>=3
+	depends = sed>=4.3
+	depends = groff
+	depends = gzip
+	source = manpage2html-20240128.bash::https://tukaani.org/manpage2html/manpage2html.bash
+	sha256sums = d7dde6c5c7efb4972f753d67d8fdeead959766f4663c029990cc022ee14910c3
+
+pkgname = manpage2html.bash
