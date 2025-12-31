@@ -1,6 +1,6 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
-pkgver=1.3.16
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A high-performance terminal image browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("pixelterm.bash-${pkgver}::https://raw.githubusercontent.com/zouyonghe/P
         "pixelterm.zsh-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/zsh/_pixelterm"
         "pixelterm.fish-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/fish/pixelterm.fish")
 noextract=()
-md5sums_x86_64=('aee5a1a2c63fed1cca1a480644271e00')
-md5sums_aarch64=('fe8e53a528bae9c23f7a96b68f4d2194')
+md5sums_x86_64=('4ea6b473aaa32519e687cdb390f3a32b')
+md5sums_aarch64=('44621307dc3b57df5e17a8fe7366509e')
 md5sums=('7ecbbc3392e547d0eed7c7938a23196d' 'eddbb991fa8a64fa58220a5712fb5309' '51cc6fcfe67b9682169172cee44ca385')
 
 prepare() {
