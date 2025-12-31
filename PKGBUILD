@@ -6,23 +6,24 @@ pkgdesc="Hyprland compositor and related tools for Noon"
 arch=('any')
 url="https://github.com/PharmaRacist/Noon"
 license=('MIT')
+install=noon-hyprland.install
 depends=(
-    'hyprland'
-    'hyprcursor'
-    'hypridle'
-    'hyprlock'
-    'hyprpicker'
-    'hyprsunset'
-    'hyprutils'
-    'hyprwayland-scanner'
-    'xdg-desktop-portal'
-    'xdg-desktop-portal-gtk'
-    'hyprland-protocols'
-    'hyprland-qt-support'
-    'hyprshot'
+  'hyprland'
+  'hyprcursor'
+  'hypridle'
+  'hyprlock'
+  'hyprpicker'
+  'hyprsunset'
+  'hyprutils'
+  'hyprwayland-scanner'
+  'xdg-desktop-portal'
+  'xdg-desktop-portal-gtk'
+  'hyprland-protocols'
+  'hyprland-qt-support'
+  'hyprshot'
 )
 
 package() {
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-    echo "Hyprland compositor and tools for Noon" > "$pkgdir/usr/share/doc/$pkgname/README"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  echo "Hyprland compositor and tools for Noon" >"$pkgdir/usr/share/doc/$pkgname/README"
 }

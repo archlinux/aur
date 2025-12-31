@@ -1,0 +1,5 @@
+post_install() {
+  hyprpm update
+  hyprpm enable hyprscrolling # IDK IF THIS IS SYNC OR NOT
+  hyprpm reload
+}
