@@ -1,5 +1,4 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
-# Contributor: Zen <dev@pyl.onl>
 
 pkgname=python-zenlib
 _name=${pkgname#python-}
