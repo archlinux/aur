@@ -1,7 +1,7 @@
 pkgbase = ruby-syck
 	pkgdesc = Syck from stdlib turned in to a gem
 	pkgver = 1.5.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ruby/syck
 	arch = x86_64
 	license = MIT

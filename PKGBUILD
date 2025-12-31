@@ -1,7 +1,7 @@
 _name='syck'
 pkgname="ruby-syck"
 pkgver=1.5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Syck from stdlib turned in to a gem'
 arch=('x86_64')
 url="https://github.com/ruby/${_name}"
@@ -76,4 +76,6 @@ package() {
   cp --archive --verbose tmp_install/* "${pkgdir}"
 
   install --verbose -D --mode=0644 *.rdoc --target-directory "${pkgdir}/usr/share/doc/syck"
+  # readme contains license
+  install -Dm 644 README.rdoc -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
