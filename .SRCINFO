@@ -1,0 +1,24 @@
+pkgbase = aniworld-cli-git
+	pkgdesc = CLI tool to browse and watch anime from aniworld.to (development version)
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/dxmoc/aniworld-cli
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = sed
+	depends = grep
+	depends = fzf
+	depends = nodejs
+	optdepends = mpv: video playback (recommended)
+	optdepends = vlc: alternative video player
+	optdepends = yt-dlp: enhanced video extraction
+	optdepends = aria2: download support
+	provides = aniworld-cli
+	conflicts = aniworld-cli
+	source = aniworld-cli-git::git+https://github.com/dxmoc/aniworld-cli.git
+	sha256sums = SKIP
+
+pkgname = aniworld-cli-git
