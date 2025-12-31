@@ -1,6 +1,6 @@
 pkgbase = topiary-bin
 	pkgdesc = Topiary is a tool in the Tree-sitter ecosystem, designed for formatter authors and formatter users
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/tweag/topiary
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = topiary-bin
 	license = MIT
 	provides = topiary
 	conflicts = topiary
-	source_x86_64 = https://github.com/tweag/topiary/releases/download/v0.7.2/topiary-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha512sums_x86_64 = beb8c23d7c0103ec90e644ac56dc7441e3d57b1c3e3a150f95151b00ecdb3aac9e7ae7cf7e31943f8a286e557e9b73c7e3f99828b6def11b981610b5526394d9
-	source_aarch64 = https://github.com/tweag/topiary/releases/download/v0.7.2/topiary-cli-aarch64-unknown-linux-gnu.tar.xz
-	sha512sums_aarch64 = 204b1aa0257dfb426b07bc3c11a79f29b96419ddca8a4d7b050dd2207716775cdfadd8d335d16d86e47b666c86968d5aafedfbe15b9bfc3caa18e445882d4fc1
+	source_x86_64 = topiary-cli-x86_64-0.7.3.tar.xz::https://github.com/tweag/topiary/releases/download/v0.7.3/topiary-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha512sums_x86_64 = 1a2a205713992e2dd5e4116894f6c9f7407a9ae9adeac78cf965ccdee54ab8b25ee9d7ca7dde1dcff8eb35bc6490097b750f39189a276c3509e8cf8d0e68cc3d
+	source_aarch64 = topiary-cli-aarch64-0.7.3.tar.xz::https://github.com/tweag/topiary/releases/download/v0.7.3/topiary-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha512sums_aarch64 = d216bbf95056dc2510f4c7a1d424fdaa06032eda8f8dd81d95ef45d2b6e039cbc804a3f20b25fe573dc142cdbe69ccf25119007fae14d0e71d8bb6b7d36c4985
 
 pkgname = topiary-bin
