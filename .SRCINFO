@@ -1,0 +1,24 @@
+pkgbase = rgrc-bin
+	pkgdesc = Rusty Generic Colouriser - like grc but faster and with more features
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/lazywalker/rgrc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	provides = rgrc-bin
+	conflicts = rgrc
+	source = rgrc-source-0.6.4.tar.gz::https://github.com/lazywalker/rgrc/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = 2029adccdf6533120ccdf956a7ed9147f6050d811b356fb76b786b7a8103c1f6
+	source_i686 = rgrc_0.6.4_i686.tar.gz::https://github.com/lazywalker/rgrc/releases/download/v0.6.4/rgrc-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = ef0137bc560d4dc1d44b6af7adc6b334cc82983772fcd115ae88b7e5a4f75c1d
+	source_x86_64 = rgrc_0.6.4_x86_64.tar.gz::https://github.com/lazywalker/rgrc/releases/download/v0.6.4/rgrc-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 9105537e3605831390bb78276eb7c7a0099517f84e887bb267a67d49787d0745
+	source_arm = rgrc_0.6.4_arm.tar.gz::https://github.com/lazywalker/rgrc/releases/download/v0.6.4/rgrc-arm-unknown-linux-musleabihf.tar.gz
+	sha256sums_arm = f18cbf41257f0a779a0744bc5d219d45f8acf5714dec089048e558962f0c9b46
+	source_aarch64 = rgrc_0.6.4_aarch64.tar.gz::https://github.com/lazywalker/rgrc/releases/download/v0.6.4/rgrc-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 343d0976ecce0eed460cd64bf65759cb9f1b31230d6319d07b3e901a1fbd4b02
+
+pkgname = rgrc-bin
