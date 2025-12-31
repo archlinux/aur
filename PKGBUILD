@@ -9,7 +9,7 @@ arch=('any')
 url='http://support.brother.com/g/s/id/linux/en/download_esp.html'
 license=('custom:Brother Industries')
 depends=('java-environment')
-source=("http://www.brother.com/pub/bsc/linux/dlf/${_brfile}.tar.gz")
+source=("https://www.brother.com/pub/bsc/linux/dlf/${_brfile}.tar.gz")
 sha256sums=('a6e09cf8b39be008d0cdf3cdd45c4e23ae1548720415671b8840a81359b09c39')
 
 package() {
