@@ -1,17 +1,19 @@
 pkgbase = sessionmanager
-	pkgdesc = cli-based activity tracker and session manager for hyprland
-	pkgver = 0.0.5
+	pkgdesc = cli activity tracker for hyprland
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/livaiyena/sessionmanager
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = sqlite
+	depends = python-setuptools
 	depends = hyprland
-	optdepends = fish: fish shell completion support
-	optdepends = bash-completion: bash completion support
-	optdepends = zsh-completions: zsh completion support
-	source = sessionmanager-0.0.5.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.5.tar.gz
-	sha256sums = 0005ae406f8176f6f6609bb3e8cc9b992829cb20e945a73785e07b4800e6d23a
+	optdepends = bash-completion: bash completion
+	optdepends = zsh-completions: zsh completion
+	source = sessionmanager-0.0.6.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v0.0.6.tar.gz
+	sha256sums = 2ec97d433a48557e3c4f5cd948739e73d2263bce49641b314127274067f8d14c
 
 pkgname = sessionmanager
