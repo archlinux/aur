@@ -1,6 +1,6 @@
 pkgbase = ruby-ruby_wasm
 	pkgdesc = Ruby to WebAssembly toolkit.
-	pkgver = 2.7.2
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://rubygems.org/gems/ruby_wasm
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ruby-ruby_wasm
 	depends = glibc
 	depends = ruby
 	depends = ruby-logger
-	noextract = ruby_wasm-2.7.2.gem
+	noextract = ruby_wasm-2.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ruby_wasm-2.7.2.gem
-	sha256sums = 6e197a3d48c83240fc741027d9a38ced8637604d2b77372b5ae587f742a1420d
+	source = https://rubygems.org/downloads/ruby_wasm-2.8.1.gem
+	sha256sums = 00b53cf88b719bd83e7adde029e192d2d3b52befff322e95d24e2a0cbf0e7775
 
 pkgname = ruby-ruby_wasm
