@@ -41,10 +41,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
-  'python-sphinx'
   'python-wheel'
-  'python-sphinx_rtd_theme'
-  'python-pylint'
   'ruff'
 )
 optdepends=(
@@ -66,12 +63,10 @@ build() {
   cd archinstall-$pkgver
 
   python -m build --wheel --no-isolation
-  PYTHONDONTWRITEBYTECODE=1 make man -C docs
 }
 
 package() {
   cd archinstall-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm 644 docs/_build/man/archinstall.1 -t "$pkgdir/usr/share/man/man1/"
 }
