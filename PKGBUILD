@@ -5,12 +5,12 @@ pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
 url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-makedepends=("gcc14" "rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
+makedepends=("gcc" "rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
 depends=("gcc-libs" "glibc" "liburing" "jemalloc")
 source=("git+https://forgejo.ellis.link/continuwuation/continuwuity.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')")
-sha256sums=('e6a0109daea5831f392a81bd372d6f003004c7f4ea322c882150bfce3a48117c')
+sha256sums=('7199c79994a82b3521102c2b35759a9aa344b3cba5ae70a8c95cbc9e461f9d5f')
 provides=("conduwuit" "continuwuity")
 conflicts=("conduwuit" "continuwuity")
 options=(!lto)
@@ -22,8 +22,6 @@ backup=("etc/conduwuit/conduwuit.toml")
 #}
 
 function prepare() {
-	export CC=gcc-14
-	export CXX=g++-14
 	export CFLAGS="-march=x86-64-v3 -mtune=generic -O3 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
@@ -32,8 +30,6 @@ function prepare() {
 }
 
 function build() {
-	export CC=gcc-14
-	export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -41,8 +37,6 @@ function build() {
 }
 
 function check() {
-	export CC=gcc-14
-	export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 #	cargo test --frozen --locked
