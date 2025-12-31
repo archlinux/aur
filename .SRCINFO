@@ -1,6 +1,6 @@
 pkgbase = vuke
 	pkgdesc = Research tool for studying vulnerable Bitcoin key generation practices
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/oritwoen/vuke
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = vuke
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/oritwoen/vuke.git#tag=v0.7.0
+	source = git+https://github.com/oritwoen/vuke.git#tag=v0.8.0
 	sha256sums = SKIP
 
 pkgname = vuke
