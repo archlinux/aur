@@ -1,7 +1,7 @@
 # Maintainer: Josh Andrews <coding@joshandrews.xyz>
 pkgname=hyprsession
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Saves hyprland sessions"
 arch=('x86_64')
 url="https://github.com/joshurtree/hyprsession"
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("-.tar.gz::https://github.com/joshurtree/hyprsession/archive/refs/tags/v.tar.gz")
-sha256sums=('17485082b93ee691a42c3de61ee632d1d67be3f0cadc2f11c3287e34552b420f')
+sha256sums=('ba0c2368e337eff12a08194ebcbe4ec5a21f0a63a84ee6ab85b0adcf836f7a23')
 
 build() {
   cd "-"
