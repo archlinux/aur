@@ -1,18 +1,20 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs')
 makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
-        "crossmacro.sysusers")
-sha256sums=('071f77ddb875d24d39a2d5b43ff2efd09468d6124e1f9916e1282163b308c663'
-            'SKIP')  # sysusers file checksum (local file)
+        "crossmacro.sysusers"
+        "crossmacro-modules.conf")
+sha256sums=('20668fd4381b682ead6fbf6e8605e8f2f0d2b7b59b7531900f8fcc55a2acb734'
+            'SKIP'
+            'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
 
 build() {
@@ -61,13 +63,15 @@ package() {
     install -Dm644 "scripts/daemon/crossmacro.service" \
         "$pkgdir/usr/lib/systemd/system/crossmacro.service"
         
-    # Fix ExecStart path in service file
-    sed -i "s|ExecStart=/opt/crossmacro/daemon/CrossMacro.Daemon|ExecStart=/usr/lib/$pkgname/daemon/CrossMacro.Daemon|g" \
-        "$pkgdir/usr/lib/systemd/system/crossmacro.service"
+
         
     # Install sysusers config
     install -Dm644 "$srcdir/crossmacro.sysusers" \
         "$pkgdir/usr/lib/sysusers.d/crossmacro.conf"
+
+    # Install modules-load config
+    install -Dm644 "$srcdir/crossmacro-modules.conf" \
+        "$pkgdir/usr/lib/modules-load.d/crossmacro.conf"
     
     # Install udev rules
     install -Dm644 "scripts/assets/99-crossmacro.rules" \
