@@ -1,13 +1,13 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="letta-code"
 pkgname="$_pkgname-git"
-pkgver=r469.gfab0ca6
+pkgver=r487.gdbf02f9
 pkgrel=1
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/letta-ai/letta-code"
 license=('Apache-2.0')
-depends=('org.freedesktop.secrets')
+depends=('nodejs' 'org.freedesktop.secrets')
 conflicts=(
     "$_pkgname"
     "$_pkgname-bin"
