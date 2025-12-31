@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Berthomier <oz-cypr-dot-io>
 
 _pkgname=telegram-tdlib
-pkgname=${_pkgname}
+pkgname=${_pkgname}17
 pkgver=1.7.0
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients'
@@ -18,7 +18,7 @@ sha256sums=('3daaf419f1738b7e0ac0e8a08f07e01a1faaf51175a59c0b113c15e30c69e173')
 build() {
   mkdir -p "td-$pkgver/build"
   cd "td-$pkgver/build"
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
   cmake --build .
 }
 
