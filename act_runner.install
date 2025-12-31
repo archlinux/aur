@@ -1,0 +1,7 @@
+post_install() {
+	echo "==> HINT: To register the runner on Gitea, run 'act_runner register' from '/var/lib/act_runner'"
+	echo
+	echo "==> HINT: To setup the runner with Docker, either:"
+	echo "    - Add the 'act_runner' user to the 'docker' group (but be aware of the potential security implications: https://docs.docker.com/engine/security/#docker-daemon-attack-surface)"
+	echo "    - Follow upstream documentation to setup the runner with rootless Docker: https://gitea.com/gitea/act_runner/src/branch/main/examples/vm/rootless-docker.md"
+}
