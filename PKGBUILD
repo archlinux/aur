@@ -4,14 +4,14 @@ _pkgauthor=lazywalker
 _pkgname=lazydns
 pkgname=${_pkgname}-bin
 pkgver=0.2.52
-pkgrel=2
+pkgrel=1
 pkgdesc="A light and fast DNS server/forwarder implementation in Rust"
 arch=('x86_64' 'aarch64' 'arm' 'i686')
 license=('GPL-3.0-or-later')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 provides=($pkgname)
 conflicts=($_pkgname)
-backup=('etc/lazydns/config.yaml')
+backup=('/etc/lazydns/config.yaml')
 source=(
     'lazydns.service'
     'lazydns-sysusers.conf'
