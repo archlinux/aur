@@ -11,10 +11,11 @@ pkgver='1.08'
 pkgrel='4'
 pkgdesc='A minimal getty which allows automatic logins.'
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/projects/mingetty'
+url='https://sourceforge.net/projects/mingetty'
 license=('GPL')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/sourceforge/mingetty/${pkgname}-${pkgver}.tar.gz"
+makedepends=('patch')
+source=("https://downloads.sourceforge.net/sourceforge/mingetty/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-utf8.patch")
 sha256sums=('0f55c90ba4faa913d91ef99cbf5cb2eb4dbe2780314c3bb17953f849c8cddd17'
             '0a97f54bb071771101ba6187cfabd2a572d3a344165279b858419b97c38057a6')
