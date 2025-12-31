@@ -1,7 +1,7 @@
 # Maintainer: dxmoc <dxmoc@users.noreply.github.com>
 pkgname=aniworld-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to browse and watch anime from aniworld.to'
 arch=('any')
 url='https://github.com/dxmoc/aniworld-cli'
@@ -18,6 +18,9 @@ sha256sums=('f8663bff17e079879ce77aabc19a0c28b1241b4536128c72f7312649e22a3a7d')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # Patch LIB_DIR to use system path
+    sed -i 's|LIB_DIR="\$SCRIPT_DIR/lib"|LIB_DIR="/usr/share/aniworld-cli/lib"|' aniworld-cli
 
     install -Dm755 aniworld-cli "${pkgdir}/usr/bin/aniworld-cli"
 
