@@ -1,0 +1,13 @@
+pkgbase = vimdecrypt-go-git
+	pkgdesc = Golang tool for decrypting VIM encrypted files
+	pkgver = r18.ccd1079
+	pkgrel = 1
+	url = https://github.com/doggeddog/vimdecrypt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/doggeddog/vimdecrypt.git#branch=main
+	sha256sums = SKIP
+
+pkgname = vimdecrypt-go-git
