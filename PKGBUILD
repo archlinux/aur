@@ -1,11 +1,11 @@
 # Maintainer: dxmoc <dxmoc@users.noreply.github.com>
 pkgname=aniworld-cli
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI tool to browse and watch anime from aniworld.to'
 arch=('any')
 url='https://github.com/dxmoc/aniworld-cli'
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('bash' 'curl' 'sed' 'grep' 'fzf' 'nodejs')
 optdepends=(
     'mpv: video playback (recommended)'

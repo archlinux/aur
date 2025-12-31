@@ -1,10 +1,10 @@
 pkgbase = aniworld-cli
 	pkgdesc = CLI tool to browse and watch anime from aniworld.to
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dxmoc/aniworld-cli
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = bash
 	depends = curl
 	depends = sed
