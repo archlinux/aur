@@ -1,0 +1,16 @@
+pkgbase = thermometer
+	pkgdesc = A simple CPU frequency management utility using cpupower and lm_sensors -- just in one package
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/watchmypizza/thermometer
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = cpupower
+	depends = lm_sensors
+	depends = bash
+	depends = curl
+	options = !debug
+
+pkgname = thermometer
