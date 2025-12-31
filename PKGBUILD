@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joshurtree/hyprsession/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('df342d10a4d4e8e3c89f8a1ff5de9ccdf3cca260cd90cad391b14be19aecb1a4')
+sha256sums=('9a6e679c8eab2bd3ac48796e10ea5f648ea64d9b4e99f20a07b923984fcae576')
 
 build() {
   cd "$pkgname-$pkgver"
