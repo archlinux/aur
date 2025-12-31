@@ -1,16 +1,16 @@
 # Maintainer: myt <myt at qq dot com>
 pkgname=fonts-apple
-pkgver=20.0d4e1
-pkgrel=13
+pkgver=21.0d2e1
+pkgrel=1
 epoch=1
 pkgdesc='Apple公司出品的字体,包含苹方简体和繁体，圆简粗体。少女简粗体，SFPro系列和Monaco等宽英文体和AppleColorEmoji符号字体。🏃'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom:apple-restricted-font')
 makedepends=('tar')
-source=("git+https://github.com/maoyaotang12/fonts-apple.git#tag=${pkgver}?signed"
+source=("git+https://github.com/maoyaotang12/sougouscel.git"
 )
-sha256sums=('a84f0df76246bf5a5fb92020e450c70bb1984634f713f8c01d75aefe96f08098')
+sha256sums=('SKIP')
 
 package(){
     cd "${srcdir}/${pkgname}/Apple";
