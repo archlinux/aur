@@ -1,7 +1,7 @@
 # Maintainer: nyoravim <nora@bedafamily.com>
 
 pkgname=libnyoravim-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=2
 pkgdesc="Personal C utility library."
 arch=("any")
