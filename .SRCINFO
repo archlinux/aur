@@ -1,0 +1,14 @@
+pkgbase = checkupdates-diff-git
+	pkgdesc = Reformats and colorizes the output of the checkupdates utility, similar to yay
+	pkgver = r8.5d71ad5
+	pkgrel = 1
+	url = https://github.com/bastimeyer/checkupdates-diff
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pacman-contrib
+	depends = expac
+	depends = gawk
+	source = git+https://github.com/bastimeyer/checkupdates-diff.git
+	sha256sums = SKIP
+
+pkgname = checkupdates-diff-git
