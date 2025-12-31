@@ -3,7 +3,7 @@
 
 _pkgname="qpdftools"
 pkgname="$_pkgname"
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="An easy-to-use Qt interface for Ghostscript and QPDF"
 url="https://github.com/silash35/qpdftools"
@@ -27,7 +27,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('a728ad4fc0e9919f157a8d67d36cd109b7a14e2f9087bbaf7cd32ade5aaea589')
+sha256sums=('ffb7d132744af3fb03a16199acf4be9120e2fe46221a0391f7b60522c3035633')
 
 build() {
   local _cmake_options=(

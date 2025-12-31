@@ -1,6 +1,6 @@
 pkgbase = qpdftools
 	pkgdesc = An easy-to-use Qt interface for Ghostscript and QPDF
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/silash35/qpdftools
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = qpdftools
 	depends = qpdf
 	depends = qt6-base
 	depends = qt6-svg
-	source = qpdftools-3.1.2.tar.gz::https://github.com/silash35/qpdftools/archive/v3.1.2.tar.gz
-	sha256sums = a728ad4fc0e9919f157a8d67d36cd109b7a14e2f9087bbaf7cd32ade5aaea589
+	source = qpdftools-3.1.3.tar.gz::https://github.com/silash35/qpdftools/archive/v3.1.3.tar.gz
+	sha256sums = ffb7d132744af3fb03a16199acf4be9120e2fe46221a0391f7b60522c3035633
 
 pkgname = qpdftools
