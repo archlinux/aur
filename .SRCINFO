@@ -1,6 +1,6 @@
 pkgbase = boha
 	pkgdesc = Crypto bounties, puzzles and challenges data library
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/oritwoen/boha
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = boha
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/oritwoen/boha.git#tag=v0.5.0
+	source = git+https://github.com/oritwoen/boha.git#tag=v0.6.0
 	sha256sums = SKIP
 
 pkgname = boha
