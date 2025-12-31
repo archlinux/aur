@@ -3,7 +3,7 @@ _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
 pkgver=16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -62,7 +62,7 @@ then
 	wineboot -u
 fi
 cd "\$HOME/.$pkgname"
-DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/$pkgname.exe "\$@"
+DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/$pkgname.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/$pkgname-wine" <<-EOF
 #!/usr/bin/env bash
