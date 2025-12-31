@@ -28,7 +28,7 @@ _opt_build=0
 
 set -u
 pkgname='openmeetings'
-_pkgver='8.0.0'
+_pkgver='8.1.0'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
@@ -36,7 +36,7 @@ pkgdesc='Provides video conferencing, instant messaging, white board, collaborat
 arch=('any')
 #url='https://code.google.com/p/openmeetings/'
 #url='https://github.com/apache/openmeetings/'
-url='http://openmeetings.apache.org/'
+url='https://openmeetings.apache.org/'
 license=('Apache-2.0')
 _minjv='11'
 depends=('bash' 'libjpeg' 'lame' "java-environment-openjdk>=${_minjv}")
@@ -73,10 +73,8 @@ else
   noextract=("${_srzgz}")
 fi
 #_verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
-md5sums=('32c2fca4fe15bad67121a9a1b7ce43a2')
-sha256sums=('144ee0804f9995b4764b41ce6debcc5e54b348e8f8a2bc1d2e27d15db089fcd1')
-
-#PKGEXT='.pkg.tar.gz'
+md5sums=('91795682b99c44feff534a54f4071dcd')
+sha256sums=('e2bf1289fe10a1ac84a0cad50d19a46e24ea98ed93fe1339e54cc90aff937e5f')
 
 build() {
   set -u
