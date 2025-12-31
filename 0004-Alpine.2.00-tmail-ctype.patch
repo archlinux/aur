@@ -1,0 +1,15 @@
+diff -pNaru5 a/imap/src/tmail/tmail.c b/imap/src/tmail/tmail.c
+--- a/imap/src/tmail/tmail.c	2008-06-04 14:18:34.000000000 -0400
++++ b/imap/src/tmail/tmail.c	2025-12-31 13:42:50.533791852 -0500
+@@ -25,10 +25,11 @@
+  * Date:	5 April 1993
+  * Last Edited:	17 September 2007
+  */
+ 
+ #include <stdio.h>
++#include <ctype.h>
+ #include <pwd.h>
+ #include <errno.h>
+ extern int errno;		/* just in case */
+ #include <sysexits.h>
+ #include <sys/file.h>
