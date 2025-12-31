@@ -18,13 +18,13 @@ provides=('kumono')
 conflicts=('kumono' 'kumono-git')
 
 package_x86_64() {
-    install -Dm755 "kumono-$pkgver.x64" "$pkgdir/usr/bin/kumono"
+    install -Dm755 "kumono-$pkgver.x64" -t "$pkgdir/usr/bin/kumono"
     install -Dm644 "kumono-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "kumono-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
 package_aarch64() {
-    install -Dm755 "kumono-$pkgver.arm64" "$pkgdir/usr/bin/kumono"
+    install -Dm755 "kumono-$pkgver.arm64" -t "$pkgdir/usr/bin/kumono"
     install -Dm644 "kumono-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "kumono-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
