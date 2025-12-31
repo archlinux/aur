@@ -5,7 +5,7 @@
 pkgname=python-prov
 _pypiname=${pkgname/python-/}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O (RDF)"
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
@@ -31,6 +31,8 @@ package() {
 
     cd $srcdir/${_pypiname}-${pkgver}
     python setup.py install --root="${pkgdir}/" --optimize=1
+    install -D -m644 LICENSE \
+        "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 }
 

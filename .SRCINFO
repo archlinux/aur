@@ -1,7 +1,7 @@
 pkgbase = python-prov
 	pkgdesc = A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O (RDF)
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/prov/
 	arch = any
 	license = MIT
