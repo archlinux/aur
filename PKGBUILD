@@ -1,5 +1,4 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
-# Contributor: Zen <dev@pyl.onl>
 
 pkgname=ugrd
 pkgver=2.0.2
