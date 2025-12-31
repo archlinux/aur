@@ -1,7 +1,7 @@
 # Maintainer: Marco van den Oever <arch@flyingpie.nl>
 _pkgname=wtq
 pkgname=$_pkgname-bin
-pkgver=2.0.18
+pkgver=2.0.19
 pkgrel=1
 pkgdesc="Enable Quake-style dropdown for (almost) any application."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  "97e294fffa5eebb7f818a69f1ae874afe69e3894b05c760d695765f8e1cccb6f"
+  "60605edec5208ac4d03c6b5b357f8c53588f224d2adb56512ac1e3a00483c1a6"
 )
 validpgpkeys=()
 
