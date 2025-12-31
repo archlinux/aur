@@ -9,10 +9,10 @@ pkgver=10.14.1.48
 _cudaver=13.0
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.5.9
+#_onnx_graphsurgeon_ver=0.5.9
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -26,8 +26,8 @@ makedepends=(
     'python'
     'python-build'
     'python-installer'
-    'python-ml-dtypes'
-    'python-onnx'
+    #'python-ml-dtypes'
+    #'python-onnx'
     'python-setuptools'
     'python-typing_extensions'
     'python-wheel')
@@ -129,7 +129,7 @@ build() {
     
     # python tools
     local _dir
-    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
     do
         cd "${srcdir}/TensorRT/tools/${_dir}"
         python -m build --wheel --no-isolation
@@ -199,15 +199,16 @@ package_python-tensorrt() {
         'python-numpy'
         'tensorrt')
     optdepends=(
-        'python-colored: for onnx_graphsurgeon and polygraphy python modules'
-        'python-ml-dtypes: for onnx_graphsurgeon python module'
-        'python-onnx: for onnx_graphsurgeon python module'
-        'python-onnxruntime: for onnx_graphsurgeon python module'
+        ##'python-colored: for onnx_graphsurgeon and polygraphy python modules'
+        'python-colored: for polygraphy python module'
+        #'python-ml-dtypes: for onnx_graphsurgeon python module'
+        #'python-onnx: for onnx_graphsurgeon python module'
+        #'python-onnxruntime: for onnx_graphsurgeon python module'
         'python-protobuf: for polygraphy python modules'
         'python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules'
         'python-tf2onnx: for tensorflow-quantization python module')
     provides=(
-        "python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
+        #"python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
         "python-polygraphy=${_polygraphy_ver}"
         "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
@@ -217,7 +218,7 @@ package_python-tensorrt() {
         python -m installer --destdir="$pkgdir" "TensorRT/python/build_${_dir}/bindings_wheel/dist"/*.whl
     done
     
-    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done

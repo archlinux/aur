@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
 	pkgver = 10.14.1.48
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = Apache-2.0 AND LicenseRef-TensorRT-LICENSE-AGREEMENT
@@ -13,8 +13,6 @@ pkgbase = tensorrt
 	makedepends = python
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-ml-dtypes
-	makedepends = python-onnx
 	makedepends = python-setuptools
 	makedepends = python-typing_extensions
 	makedepends = python-wheel
@@ -65,13 +63,9 @@ pkgname = python-tensorrt
 	depends = python
 	depends = python-numpy
 	depends = tensorrt
-	optdepends = python-colored: for onnx_graphsurgeon and polygraphy python modules
-	optdepends = python-ml-dtypes: for onnx_graphsurgeon python module
-	optdepends = python-onnx: for onnx_graphsurgeon python module
-	optdepends = python-onnxruntime: for onnx_graphsurgeon python module
+	optdepends = python-colored: for polygraphy python module
 	optdepends = python-protobuf: for polygraphy python modules
 	optdepends = python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules
 	optdepends = python-tf2onnx: for tensorflow-quantization python module
-	provides = python-onnx-graphsurgeon=0.5.9
 	provides = python-polygraphy=0.49.27
 	provides = python-tensorflow-quantization=0.2.0
