@@ -1,6 +1,6 @@
 pkgbase = void-mod-manager-git
 	pkgdesc = A simple mod manager made for Linux
-	pkgver = r62.f083c3a
+	pkgver = r68.02a2ca8
 	pkgrel = 1
 	url = https://github.com/void-modding/app
 	arch = x86_64
