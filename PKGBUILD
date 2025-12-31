@@ -1,7 +1,7 @@
 # Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=imperator-tiger
 pkgname=${_basename}-bin
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Checks game mod files for common mistakes and warns about them."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/amtep/tiger"
 license=('GPL3')
 depends=()
 source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
-sha256sums=('8ff037788c42f589cdb6ea799412bff0d634bdf83013347bfae872f47270e2e2')
+sha256sums=('f911815f6da9e998544e39c666a1d27c91e95ce2e58d20a191bc5d956d4eac52')
 
 package() {
     cd "${srcdir}/${_basename}-linux-v${pkgver}"
