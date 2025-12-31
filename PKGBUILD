@@ -1,40 +1,39 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgbase=platformio-core
-pkgname=('platformio-core' 'platformio-core-udev')
+pkgname=(platformio-core platformio-core-udev)
 pkgver=6.1.18
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source ecosystem for IoT development'
-arch=('any')
+arch=(any)
 url='https://platformio.org'
-license=('Apache-2.0')
+license=(Apache-2.0)
 depends=(
-  'python'
-  'python-bottle'
-  'python-click'
-  'python-colorama'
-  'python-pyserial'
-  'python-requests'
-  'python-semantic-version'
-  'python-tabulate'
-  'python-pyelftools'
-  'python-marshmallow'
-  'python-zeroconf'
-  'python-ajsonrpc'
-  'python-starlette'
-  'python-wsproto'
-  'uvicorn'
+  python
+  python-bottle
+  python-click
+  python-colorama
+  python-pyserial
+  python-requests
+  python-semantic-version
+  python-tabulate
+  python-pyelftools
+  python-marshmallow
+  python-zeroconf
+  python-ajsonrpc
+  python-starlette
+  python-wsproto
+  uvicorn
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 optdepends=(
   'platformio-core-udev: Udev rules for PlatformIO supported boards/devices'
-  'python-click-completion: for shell completions'
   'python-shellingham: for shell completions'
 )
 source=("$pkgbase::git+https://github.com/platformio/platformio-core#tag=v$pkgver")

@@ -1,7 +1,7 @@
 pkgbase = platformio-core
 	pkgdesc = An open source ecosystem for IoT development
 	pkgver = 6.1.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://platformio.org
 	arch = any
 	license = Apache-2.0
@@ -26,7 +26,6 @@ pkgbase = platformio-core
 	depends = python-wsproto
 	depends = uvicorn
 	optdepends = platformio-core-udev: Udev rules for PlatformIO supported boards/devices
-	optdepends = python-click-completion: for shell completions
 	optdepends = python-shellingham: for shell completions
 	source = platformio-core::git+https://github.com/platformio/platformio-core#tag=v6.1.18
 	sha512sums = 0b184c0a87ade643712c48fb54ee75f2bed0fb7005d7aa9ed6cf76c66925086b7901a78ef7cc173b8e12ad8f7dead5aab764b049823207c85a755456386eb804
