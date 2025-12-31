@@ -6,7 +6,6 @@ pkgbase = spotiflac-bin
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = webkit2gtk-4.1
-	noextract = spotiflac-bin-7.0.AppImage
 	options = !strip
 	source = spotiflac-bin-7.0.AppImage::https://github.com/afkarxyz/SpotiFLAC/releases/download/v7.0/SpotiFLAC.AppImage
 	sha256sums = a466b8ed8875f6b450ad44664ed120f28082b6fa596a5f1072aafa4617a7e8d2

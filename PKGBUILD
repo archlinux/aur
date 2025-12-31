@@ -9,7 +9,6 @@ license=('LicenseRef-unknown')
 depends=('webkit2gtk-4.1')
 options=('!strip')
 source=("$pkgname-$pkgver.AppImage::https://github.com/afkarxyz/SpotiFLAC/releases/download/v$pkgver/SpotiFLAC.AppImage")
-noextract=("$pkgname-$pkgver.AppImage")
 sha256sums=('a466b8ed8875f6b450ad44664ed120f28082b6fa596a5f1072aafa4617a7e8d2')
 
 prepare() {
