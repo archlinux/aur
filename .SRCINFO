@@ -1,0 +1,18 @@
+pkgbase = tankionline
+	pkgdesc = A free-to-play multiplayer online browser-based game in the arcade tank simulator genre
+	pkgver = 1
+	pkgrel = 1
+	url = https://tankionline.com
+	install = tankionline.install
+	arch = x86_64
+	license = custom
+	makedepends = zlib
+	makedepends = fuse2
+	makedepends = rsync
+	provides = tankionline
+	source = tankionline-1-x86_64.AppImage::https://tankionline.com/desktop/TankiOnlineSetup-linux-x86_64.AppImage
+	source = tankionline
+	sha256sums = 17986e51b7aa85b1a1ffd391ee2492f35b98d20c8f76d6137d7098a8f5bb0717
+	sha256sums = 95d37050e149a15a04122680106ed671945feba0a701963ac6eef52db66d8713
+
+pkgname = tankionline
