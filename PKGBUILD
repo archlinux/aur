@@ -16,26 +16,37 @@ conflicts=("$_name")
 source=("ProtonMail-$pkgver.deb::https://proton.me/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb"
         "$_name.sh")
 sha512sums=('0f9a8996d1b58ed3e9b2236d610a4a4aae912cec10a39c7e9cd59ee2d0addbba7da931b2691c764f23a44566204c86651e07e3cc1b1730e78dd788dc0cf2c306'
-            '3f125e921fda73ebeaf4d9ad8a1c044f955dc74e6fbb43a2895a0cb9a710d934d1707778ca3537bbd81786c8a7e8ef5273fcb36f4ecea816719040ba302b1774')
+            'd8304e653256b917f9ef607e3d0085020c3f8ceaf86f438a411e517622806b8ea5014fb77d96683dfd6be396ebf2cd50443630512debb17b20abdf1447de0616')
 b2sums=('45a0b1f93e12dccb0b9075a24334f1d36bf83ded4d7ef5b38d94d3690b73a8fd1a401dc548ebd565e6abf0ac9659da1b791f5ddf36bf1f0afac89cfe93bcc952'
-        '117439951f7200879663c0566991acd22bd7dd94506f93b731bf7b83475775fb1eb890f11afba001b8087c61c6b969c9238cfad5581a5304e0ae21b06d4f6458')
+        '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
 prepare() {
-    tar -xf data.tar.xz
+    # Extract only the files we need
+    tar -xf data.tar.xz \
+        "./usr/lib/$_name/resources/" \
+        "./usr/lib/$_name/version" \
+        "./usr/share/applications/$_name.desktop" \
+        "./usr/share/pixmaps/$_name.png"
 
-    local _electronver=$(cat "usr/lib/$_name/version")
-    if [[ "electron${_electronver%%.*}" != "$_electron" ]]; then
-        echo "Electron version mismatch: software requires electron${_electronver%%.*} but package specifies $_electron" >&2
-        exit 1
+    # Find out which major release of electron this version of proton-mail requires
+    local _electron_major=$(cat "usr/lib/$_name/version" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
+
+    # Check if we depend on the correct electron version
+    if [ "$_electron" != "electron$_electron_major" ] ; then
+        echo "Error: Incorrect electron version detected. Please change the value of \"_electron\" from \"$_electron\" to \"electron$_electron_major\"."
+        return 1
     fi
-    sed "s|/usr/bin/electron|/usr/bin/$_electron|" -i $_name.sh
+
+    # Specify electron version in launcher
+    sed -i "s|@ELECTRON@|$_electron|" "$srcdir/proton-mail.sh"
 }
 
 package() {
     install -Dm755 $_name.sh "$pkgdir/usr/bin/$_name"
-    install -Dm644 usr/lib/proton-mail/resources/app.asar "$pkgdir/usr/share/$_name/app.asar"
-    install -Dm644 usr/share/applications/$_name.desktop \
-        "$pkgdir/usr/share/applications/$_name.desktop"
-    install -Dm644 usr/share/pixmaps/$_name.png \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_name.svg"
+
+    install -d "$pkgdir/usr/share/$_name"
+    cp usr/lib/proton-mail/resources/* "$pkgdir/usr/share/$_name/"
+
+    install -Dm644 usr/share/applications/$_name.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 usr/share/pixmaps/$_name.png "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_name.svg"
 }
