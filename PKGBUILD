@@ -1,7 +1,7 @@
 # Maintainer: Livaiyena <livaiyena@users.noreply.github.com>
 
 pkgname=sessionmanager
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="cli activity tracker for hyprland"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'zsh-completions: zsh completion'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v$pkgver.tar.gz")
-sha256sums=('039a9f79382a7225e62424e61fe94c3aad7b3471e969ea96078190d21f656e08')
+sha256sums=('03af92691dab3bc89ad6045cd62eacacff76f949901bd706a0068ff514d8b2d4')
 
 build() {
     cd "$pkgname-$pkgver"
