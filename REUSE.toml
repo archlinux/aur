@@ -13,7 +13,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "add-missing-dnd-kit-sortable.patch",
-    "Proton Authenticator.desktop",
+    "proton-authenticator.desktop",
 ]
 SPDX-FileCopyrightText = "Proton AG"
 SPDX-License-Identifier = "GPL-3.0-or-later"
