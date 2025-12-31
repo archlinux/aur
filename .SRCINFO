@@ -1,7 +1,7 @@
 pkgbase = platformio-core
 	pkgdesc = An open source ecosystem for IoT development
 	pkgver = 6.1.18
-	pkgrel = 3
+	pkgrel = 4
 	url = https://platformio.org
 	arch = any
 	license = Apache-2.0

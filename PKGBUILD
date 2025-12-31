@@ -3,7 +3,7 @@
 pkgbase=platformio-core
 pkgname=(platformio-core platformio-core-udev)
 pkgver=6.1.18
-pkgrel=3
+pkgrel=4
 pkgdesc='An open source ecosystem for IoT development'
 arch=(any)
 url='https://platformio.org'
