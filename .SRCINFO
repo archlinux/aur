@@ -1,6 +1,6 @@
 pkgbase = presto-bin
 	pkgdesc = Presto is a dependency manager for PHP and drop-in-replacement for Composer
-	pkgver = 0.1.7
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/paramientos/presto
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = presto-bin
 	provides = presto
 	conflicts = presto
 	options = !strip
-	source = README-0.1.7.md::https://raw.githubusercontent.com/paramientos/presto/v0.1.7/README.md
+	source = README-0.1.9.md::https://raw.githubusercontent.com/paramientos/presto/v0.1.9/README.md
 	source = LICENSE
 	sha256sums = f5fc84230d8bb7550a4d89c9d5274c0bf564fd42e6ee22e1d9d9ce854e2d1f63
 	sha256sums = 73496093fa9eb666ddd2b81bde20166ff90a4e68c61f0c7d64c67b2d9cc4022d
-	source_x86_64 = presto-x86_64-0.1.7::https://github.com/paramientos/presto/releases/download/v0.1.7/presto-linux-amd64
-	sha256sums_x86_64 = c98fcaa0d87acf6247fbad3d24b437ba8c5384cb1272f0253fa6a266aeca2da7
-	source_aarch64 = presto-aarch64-0.1.7::https://github.com/paramientos/presto/releases/download/v0.1.7/presto-linux-arm64
-	sha256sums_aarch64 = 8d525da193efa48d96b41d21f5f672cd6c07d280986faf30f50a5dba06da739f
+	source_x86_64 = presto-x86_64-0.1.9::https://github.com/paramientos/presto/releases/download/v0.1.9/presto-linux-amd64
+	sha256sums_x86_64 = c3556bea60c4de07bbad48d1ee020efe55d5c5ca24dc641c9abd713d8dd2a6a5
+	source_aarch64 = presto-aarch64-0.1.9::https://github.com/paramientos/presto/releases/download/v0.1.9/presto-linux-arm64
+	sha256sums_aarch64 = 00476113ed1b593fd9dfd4f2465a8fe82b5a4252f9d273850e9a8e78e0099dca
 
 pkgname = presto-bin
