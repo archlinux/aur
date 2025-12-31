@@ -12,23 +12,18 @@ post_install() {
     chmod 755 /var/lib/greeter
 
     echo "==> Configuring greetd for Hyprland..."
-    if [ ! -s /etc/greetd/config.toml ]; then
-        cat > /etc/greetd/config.toml <<'EOF'
+    if [ -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+    fi
+    cat > /etc/greetd/config.toml <<'EOF'
 [terminal]
 vt = 1
 
 [default_session]
-command = "Hyprland -c /etc/greetd/hyprland-greeter-config.conf"
-user = "greeter"
-
-[initial_session]
-command = "Hyprland -c /etc/greetd/hyprland-greeter-config.conf"
+command = "Hyprland --config /etc/greetd/hyprland-greeter-config.conf"
 user = "greeter"
 EOF
-        echo "Created /etc/greetd/config.toml"
-    else
-        echo "Existing /etc/greetd/config.toml found, not modifying"
-    fi
 
     echo "==> Enabling greetd service..."
     systemctl enable greetd.service
@@ -39,7 +34,10 @@ EOF
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "sysc-greet-hyprland installed. Reboot to start."
+    echo "sysc-greet (Hyprland) installed successfully!"
+    echo ""
+    echo "IMPORTANT: You must REBOOT to start using sysc-greet."
+    echo "           Logging out is NOT sufficient when switching compositors."
     echo ""
 }
 
@@ -47,9 +45,23 @@ post_upgrade() {
     echo "==> Updating greeter groups..."
     usermod -aG video,render,input greeter 2>/dev/null || true
 
-    echo "==> Fixing permissions..."
+    echo "==> Setting permissions..."
     chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
+
+    echo "==> Updating greetd config for Hyprland..."
+    if [ -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+    fi
+    cat > /etc/greetd/config.toml <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "Hyprland --config /etc/greetd/hyprland-greeter-config.conf"
+user = "greeter"
+EOF
 
     echo ""
     echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
@@ -57,15 +69,14 @@ post_upgrade() {
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "Upgraded to v1.1.0"
+    echo "sysc-greet upgraded to v1.1.0"
     echo ""
     echo "What's new:"
-    echo "  v1.1.0: Hyprland 0.53 compatibility (config + installer)"
+    echo "  v1.1.0: Hyprland 0.53 compatibility, config.toml auto-updates"
     echo "  v1.0.9: Custom themes, gSlapper wallpapers, theme-aware effects"
     echo ""
-    echo "Reboot or restart greetd to apply changes."
-    echo ""
-    echo "WARNING: sudo systemctl restart greetd will kill your current session"
+    echo "IMPORTANT: You must REBOOT to apply changes."
+    echo "           Logging out is NOT sufficient when switching compositors."
     echo ""
 }
 
