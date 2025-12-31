@@ -1,0 +1,25 @@
+pkgbase = libfprint-elitebook
+	pkgdesc = LibFPrint fork for 06cb:00e9 Elitebook x360 1040 G7
+	pkgver = 1.94.5
+	pkgrel = 1
+	url = https://github.com/Aperre/libfprint-elitebook
+	arch = x86_64
+	groups = fprint
+	license = LGPL
+	checkdepends = cairo
+	makedepends = git
+	makedepends = meson
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	depends = libgusb
+	depends = pixman
+	depends = nss
+	depends = systemd
+	depends = libgudev
+	provides = libfprint
+	provides = libfprint-2.so
+	conflicts = libfprint
+	source = git+https://github.com/Aperre/libfprint-elitebook.git#commit=db70f8a16a81220256d861e704c2b771668754a5
+	sha256sums = SKIP
+
+pkgname = libfprint-elitebook
