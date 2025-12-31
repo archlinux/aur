@@ -3,7 +3,7 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.22
+pkgver=0.12.22.r2160.ad9de28
 pkgrel=1
 pkgdesc="Map widget for GTK 3"
 url="https://wiki.gnome.org/Projects/libchamplain"
@@ -16,8 +16,8 @@ source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit")
 sha256sums=('60ff41c1c602e8eff71ae5348c01ccfc574cc4a178ca5ffd7e850460de7ff6a3')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^LIBCHAMPLAIN_//;s/_/./g;s/[^-]*-g/r&/;s/-/+/g'
+  cd "${pkgname}"
+  printf "%s.r%s.%s" "$(sed -n "/version:/{s/.*version: '\([^']*\)'.*/\1/p;q}" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

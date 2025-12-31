@@ -1,6 +1,6 @@
 pkgbase = libchamplain
 	pkgdesc = Map widget for GTK 3
-	pkgver = 0.12.22
+	pkgver = 0.12.22.r2160.ad9de28
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libchamplain
 	arch = x86_64
