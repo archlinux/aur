@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=upkeep-git
-pkgver=0.1.2.r2.gf286b11
+pkgver=0.1.3.r0.gefaafd8
 pkgrel=1
 pkgdesc="TUI for managing Arch Linux updates, packages, and system maintenance"
 arch=('x86_64')
