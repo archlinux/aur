@@ -13,7 +13,7 @@ _pkgname="Antigravity.Tools"
 _repouser="lbjlaq"
 _reponame="Antigravity-Manager"
 
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 
 pkgdesc="Professional Antigravity Account Manager & Switcher (Binary from GitHub)"
@@ -30,7 +30,7 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/${_repouser}/${_reponame}/
 
 # [需更新] 校验和
 # 运行 'updpkgsums' 命令可以自动更新此处的值，无需手动修改
-sha256sums=('4a3cf8469ef21fee588da8bdb64262ca3206a157ab50c04f421911aebde078cf'
+sha256sums=('e89b23805a71a21ab9c0e24d2a4ef9ef7ad2f9d80636cdc26b80bcea35c76fc9'
             '6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
 
 options=('!strip')
