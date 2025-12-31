@@ -4,6 +4,7 @@ pkgbase = xlibre-video-ati
 	pkgrel = 7
 	url = https://github.com/X11Libre/xf86-video-ati
 	arch = x86_64
+	arch = aarch64
 	groups = xlibre-drivers
 	makedepends = xlibre-xserver-devel>=25.0
 	makedepends = xorgproto
