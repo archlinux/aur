@@ -1,7 +1,7 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc='Extensible launcher for Hyprland and Niri built with Quickshell'
 arch=('any')
 url='https://github.com/Stewart86/hamr'
