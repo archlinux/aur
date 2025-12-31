@@ -20,11 +20,11 @@ pkgbase = histui-bin
 	sha256sums = 5c226038c1c603adb4bc657ab8b47050d1db63a4da171b610f76f3a18fe31d2c
 	source_aarch64 = histui-0.0.4-aarch64::https://github.com/jmylchreest/histui/releases/download/v0.0.4/histui-linux-arm64
 	source_aarch64 = histuid-0.0.4-aarch64::https://github.com/jmylchreest/histui/releases/download/v0.0.4/histuid-linux-arm64
-	sha256sums_aarch64 = c2200aa22d7f23ac47c34dbc90ca90b491bca20f817bef3c5c7f991605c891df
-	sha256sums_aarch64 = 55cf13fa7ad4c3c0636f95ff4a5635e3b7fb9bac288ce19c9e56536429721c98
+	sha256sums_aarch64 = 7ac30de5b65f32f30a94a44382f9a05e39a7c3decb84116b7255582796f5c074
+	sha256sums_aarch64 = 72e96afc2e17baabca655d9fe1a51e722469a7df1ee7f571f7bf6992059e30cf
 	source_x86_64 = histui-0.0.4-x86_64::https://github.com/jmylchreest/histui/releases/download/v0.0.4/histui-linux-amd64
 	source_x86_64 = histuid-0.0.4-x86_64::https://github.com/jmylchreest/histui/releases/download/v0.0.4/histuid-linux-amd64
-	sha256sums_x86_64 = a5ddc1033449fcd5cb5751557d1bd2e17a9f3365024abbd5bb89cb3ea75e7255
-	sha256sums_x86_64 = d17cd4c85687462187a2ecc3901101ab45a928d90d4f1191dd3de1647cb57eb9
+	sha256sums_x86_64 = 33042b05e31effb8dc796fdead9e44ff3ff0752bf143c93c5c5b35a3186eb300
+	sha256sums_x86_64 = 1631b8b03d4ecd0ed7df62d253efa15475476d35f028208fb455054fd8b99903
 
 pkgname = histui-bin
