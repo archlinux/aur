@@ -5,6 +5,7 @@ pkgbase = xlibre-input-synaptics
 	url = https://github.com/X11Libre/xf86-input-synaptics
 	install = xlibre-input-synaptics.install
 	arch = x86_64
+	arch = aarch64
 	groups = xlibre-drivers
 	license = MIT
 	makedepends = xlibre-xserver-devel>=25.0
