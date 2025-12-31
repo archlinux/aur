@@ -11,7 +11,7 @@ pkgver="${_ver//-/_}"
 pkgrel='1'
 pkgdesc='A debugger for Bash scripts loosely modeled on the gdb command syntax'
 arch=('any')
-url='http://bashdb.sourceforge.net/'
+url='https://bashdb.sourceforge.net/'
 license=('GPL')
 depends=("bash>=${_ver%%-*}" 'python-pygments' 'pygmentize')
 makedepends=('texi2html')
