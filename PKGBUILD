@@ -1,6 +1,6 @@
 pkgname=kumono-bin
 pkgver=0.56.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64' 'aarch64')
