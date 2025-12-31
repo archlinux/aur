@@ -1,0 +1,22 @@
+--- ./CMakeLists.txt	2025-12-31 17:16:10.836869346 +0100
++++ ./CMakeLists.txt	2025-12-31 17:18:56.857544835 +0100
+@@ -27,8 +27,9 @@
+ 
+ if(IMGUI_FREETYPE)
+ 	message(STATUS "Building with freetype")
+-	FIND_PACKAGE(freetype REQUIRED PATHS ${FREETYPE_PATH})
+-	list(APPEND IMGUI_LIBRARIES freetype)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(FREETYPE REQUIRED freetype2)
++	list(APPEND IMGUI_LIBRARIES ${FREETYPE_LIBRARIES})
+ 	list(APPEND IMGUI_SOURCES imgui/misc/freetype/imgui_freetype.cpp)
+ endif(IMGUI_FREETYPE)
+ 
+@@ -42,6 +43,7 @@
+ if(IMGUI_FREETYPE)
+ 	target_compile_definitions(cimgui PUBLIC IMGUI_ENABLE_FREETYPE)
+ 	target_compile_definitions(cimgui PUBLIC IMGUI_ENABLE_STB_TRUETYPE)
++    target_include_directories(cimgui PUBLIC ${FREETYPE_INCLUDE_DIRS})
+ endif(IMGUI_FREETYPE)
+ 
+ if(IMGUI_WCHAR32)
