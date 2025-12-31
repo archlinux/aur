@@ -1,6 +1,6 @@
 _pkgname=api-calls
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Simple application to call and test REST APIs"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "${_pkgname}-${pkgver}.sh::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/aur/${_pkgname}.sh"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/LICENSE"
 )
-sha256sums=("d8d402cb73daf511344af6463074e212f3b1d971e905eecd9c3743e60d61fcbe" "056d6bc11fd8fa9fdbd9460a5a1a8dab4254751d28fb3857194be45d0f51a673" "581195c48c61f557d6011e28e1b73744c53c2511b844ea85ede40ef2fa146e27" "6caf04ab572e54edbe2ce69ea035a92f22ae328d1b44769f792930bbd7931c34" "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986")
+sha256sums=("c70d596fff2ef2a5c8864383df23acf2d8226b2ec369db01a0067f250d802d08" "056d6bc11fd8fa9fdbd9460a5a1a8dab4254751d28fb3857194be45d0f51a673" "581195c48c61f557d6011e28e1b73744c53c2511b844ea85ede40ef2fa146e27" "6caf04ab572e54edbe2ce69ea035a92f22ae328d1b44769f792930bbd7931c34" "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986")
 
 package() {
   # Extract xz file
