@@ -2,7 +2,7 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=sdl2-compat-git
-pkgver=2.30.52.r24.gff4c0ca
+pkgver=2.32.60.r10.gf1ff620
 pkgrel=1
 pkgdesc="SDL2 runtime compatibility library using SDL3"
 url="https://github.com/libsdl-org/sdl2-compat"
@@ -26,6 +26,7 @@ build() {
   cmake -B build -S sdl2-compat \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=None \
+  -DSDL2COMPAT_TESTS=OFF \
   -GNinja
 
   cmake --build build
