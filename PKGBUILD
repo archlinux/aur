@@ -1,7 +1,7 @@
 # Maintainer: queinu (ZzEdovec) <zzedovec@yahoo.com>
 pkgname=tankionline
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play multiplayer online browser-based game in the arcade tank simulator genre"
 arch=('x86_64')
 url="https://tankionline.com"

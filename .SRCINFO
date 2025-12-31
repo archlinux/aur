@@ -1,7 +1,7 @@
 pkgbase = tankionline
 	pkgdesc = A free-to-play multiplayer online browser-based game in the arcade tank simulator genre
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tankionline.com
 	install = tankionline.install
 	arch = x86_64
