@@ -9,8 +9,12 @@ url="https://github.com/livaiyena/sessionmanager"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-setuptools' 'hyprland')
 makedepends=('python-build' 'python-installer' 'python-wheel')
+optdepends=(
+    'bash-completion: bash completion'
+    'zsh-completions: zsh completion'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/livaiyena/sessionmanager/archive/v$pkgver.tar.gz")
-sha256sums=('2ec97d433a48557e3c4f5cd948739e73d2263bce49641b314127274067f8d14c')
+sha256sums=('a7c0a9a91a59e74b8ead0e82aef1c62cf71e9ddfc7b4edf8960a55e383856873')
 
 build() {
     cd "$pkgname-$pkgver"
