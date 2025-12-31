@@ -2,7 +2,7 @@
 pkgname=spectroterm
 pkgver=0.6.1
 pkgrel=1
-pkgdesc="Curses based terminal spectrum analyzer for currently playing audio"
+pkgdesc="Terminal spectrum analyzer for currently playing audio"
 arch=('any')
 url="https://github.com/sparklost/$pkgname"
 license=('GPL-3.0-only')
