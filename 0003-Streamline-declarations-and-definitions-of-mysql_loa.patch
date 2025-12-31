@@ -1,0 +1,44 @@
+From b779a6ec5750a4a8f2fdce16bbb6792ec8b6e91a Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Wed, 31 Dec 2025 15:20:21 +0100
+Subject: [PATCH 3/3] Streamline declarations and definitions of
+ `mysql_load_plugin`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Prevent build errors like:
+
+```
+/build/mingw-w64-mariadb-connector-c/src/mariadb-connector-c-3.4.8/build-i686-w64-mingw32-static/libmariadb/ma_client_plugin.c: At top level:
+/build/mingw-w64-mariadb-connector-c/src/mariadb-connector-c-3.4.8/build-i686-w64-mingw32-static/libmariadb/ma_client_plugin.c:508:1: error: conflicting types for ‘mysql_load_plugin’; have ‘struct st_mysql_client_plugin *(MYSQL *, const char *, int,  int, ...)’ {aka ‘struct st_mysql_client_plugin *(struct st_mysql *, const char *, int,  int, ...)’}
+  508 | mysql_load_plugin(MYSQL *mysql, const char *name, int type, int argc, ...)
+      | ^~~~~~~~~~~~~~~~~
+In file included from /build/mingw-w64-mariadb-connector-c/src/mariadb-connector-c-3.4.8/include/ma_common.h:24,
+                 from /build/mingw-w64-mariadb-connector-c/src/mariadb-connector-c-3.4.8/build-i686-w64-mingw32-static/libmariadb/ma_client_plugin.c:38:
+/build/mingw-w64-mariadb-connector-c/src/mariadb-connector-c-3.4.8/include/mysql/client_plugin.h:199:1: note: previous declaration of ‘mysql_load_plugin’ with type ‘struct st_mysql_client_plugin *(struct st_mysql *, const char *, int,  int, ...)’
+  199 | mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
+```
+---
+ libmariadb/ma_client_plugin.c.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libmariadb/ma_client_plugin.c.in b/libmariadb/ma_client_plugin.c.in
+index de9fa991..3c0842b5 100644
+--- a/libmariadb/ma_client_plugin.c.in
++++ b/libmariadb/ma_client_plugin.c.in
+@@ -478,8 +478,9 @@ err:
+ 
+ 
+ /* see <mysql/client_plugin.h> for a full description */
+-struct st_mysql_client_plugin * STDCALL
+-mysql_load_plugin(MYSQL *mysql, const char *name, int type, int argc, ...)
++struct st_mysql_client_plugin *
++mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
++                  int argc, ...)
+ {
+   struct st_mysql_client_plugin *p;
+   va_list args;
+-- 
+2.52.0
+

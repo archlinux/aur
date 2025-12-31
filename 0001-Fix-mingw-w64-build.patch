@@ -1,4 +1,4 @@
-From f1095a1c3cc81a3ab05e92dd9fea23756409ae18 Mon Sep 17 00:00:00 2001
+From 31b46559ba37d92cf8c1969a8997c42c3fcd0619 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 10 Aug 2024 17:49:11 +0200
 Subject: [PATCH 1/3] Fix mingw-w64 build
@@ -11,10 +11,10 @@ This patch is taken from https://raw.githubusercontent.com/msys2/MINGW-packages/
  3 files changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b987bc7f..dbf008d8 100644
+index 72324102..64e3d86c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -428,7 +428,7 @@ ENDIF()
+@@ -446,7 +446,7 @@ ENDIF()
  INCLUDE(${CC_SOURCE_DIR}/plugins/CMakeLists.txt)
  ADD_SUBDIRECTORY(include)
  ADD_SUBDIRECTORY(libmariadb)
@@ -43,7 +43,7 @@ index 90bae8b5..d9797138 100644
    SET(INSTALL_PLUGINDIR_DEFAULT "lib/mariadb/plugin")
  ELSE()
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 43ed67b4..82068487 100644
+index 69e8683c..09ca2417 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
 @@ -496,6 +496,13 @@ SET_TARGET_PROPERTIES(libmariadb PROPERTIES VERSION
@@ -72,5 +72,5 @@ index 43ed67b4..82068487 100644
  # in cmake 3.12+ we can use
  #INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
 -- 
-2.46.0
+2.52.0
 

@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-mariadb-connector-c
 	pkgdesc = MariaDB client libraries (mingw-w64)
-	pkgver = 3.3.10
-	pkgrel = 2
-	url = https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c
+	pkgver = 3.4.8
+	pkgrel = 1
+	url = https://mariadb.com/docs/connectors/mariadb-connector-c
 	arch = any
 	license = LGPL-2.1-or-later
 	makedepends = mingw-w64-cmake
@@ -10,19 +10,19 @@ pkgbase = mingw-w64-mariadb-connector-c
 	depends = mingw-w64-crt
 	depends = mingw-w64-zlib
 	depends = mingw-w64-curl
-	provides = mingw-w64-libmariadbclient=3.3.10
+	provides = mingw-w64-libmariadbclient=3.4.8
 	conflicts = mingw-w64-libmariadbclient
 	replaces = mingw-w64-libmariadbclient
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.3.10.tar.gz
+	source = https://github.com/mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.4.8.tar.gz
 	source = 0001-Fix-mingw-w64-build.patch
-	source = 0002-Fix-prototype.patch
-	source = 0003-Fix-use-of-VA_ARGS.patch
-	sha256sums = 0a79088af2fbde4dbe6655dbc51bbb272b606c0d9116745697e08879e70198a7
-	sha256sums = 89a8f6d778763a241050fe501147507020cc00cbb5690d47c2d66dfab18c70e0
-	sha256sums = 248a7539e9bda0538992cde14e3f3b81b8db9eb90af1cce9830e28e291782f3d
-	sha256sums = f0d1807e6610c25ab3badd99e542e9e10e50b2152220ac86a0a5e6f0163da185
+	source = 0002-Fix-use-of-VA_ARGS.patch
+	source = 0003-Streamline-declarations-and-definitions-of-mysql_loa.patch
+	sha256sums = ced7e5063c91fe2bfafd9d63a759490fe53e81df80599a9abad01c570c202f0c
+	sha256sums = 29a1746c4da59d9c8e694c2fbece5dbf8734381178ae99175175410ed30d0ec0
+	sha256sums = d0fff1614f048d939eb7b7379e948faa779ec3627111f48822a8345a1735a843
+	sha256sums = d4ba9c5f67418ce610afc39803d4ff7f56d33df82fd611fae2e476a80acaf322
 
 pkgname = mingw-w64-mariadb-connector-c

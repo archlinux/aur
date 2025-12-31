@@ -7,11 +7,11 @@
 # All patches are managed at https://github.com/Martchus/mariadb-connector-c
 
 pkgname=mingw-w64-mariadb-connector-c
-pkgver=3.3.10
-pkgrel=2
+pkgver=3.4.8
+pkgrel=1
 pkgdesc='MariaDB client libraries (mingw-w64)'
 arch=('any')
-url='https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c'
+url='https://mariadb.com/docs/connectors/mariadb-connector-c'
 license=('LGPL-2.1-or-later')
 replaces=('mingw-w64-libmariadbclient')
 conflicts=('mingw-w64-libmariadbclient')
@@ -21,12 +21,12 @@ makedepends=('mingw-w64-cmake' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/mariadb-corporation/mariadb-connector-c/archive/refs/tags/v$pkgver.tar.gz"
         '0001-Fix-mingw-w64-build.patch'
-        '0002-Fix-prototype.patch'
-        '0003-Fix-use-of-VA_ARGS.patch')
-sha256sums=('0a79088af2fbde4dbe6655dbc51bbb272b606c0d9116745697e08879e70198a7'
-            '89a8f6d778763a241050fe501147507020cc00cbb5690d47c2d66dfab18c70e0'
-            '248a7539e9bda0538992cde14e3f3b81b8db9eb90af1cce9830e28e291782f3d'
-            'f0d1807e6610c25ab3badd99e542e9e10e50b2152220ac86a0a5e6f0163da185')
+        '0002-Fix-use-of-VA_ARGS.patch'
+        '0003-Streamline-declarations-and-definitions-of-mysql_loa.patch')
+sha256sums=('ced7e5063c91fe2bfafd9d63a759490fe53e81df80599a9abad01c570c202f0c'
+            '29a1746c4da59d9c8e694c2fbece5dbf8734381178ae99175175410ed30d0ec0'
+            'd0fff1614f048d939eb7b7379e948faa779ec3627111f48822a8345a1735a843'
+            'd4ba9c5f67418ce610afc39803d4ff7f56d33df82fd611fae2e476a80acaf322')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
