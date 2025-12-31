@@ -3,7 +3,7 @@
 pkgbase=ce-toolchain
 pkgname=ce-toolchain-bin
 pkgver=14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series"
 install=$pkgname.install
 depends=("glibc" "zlib" "gcc-libs" "zstd")
@@ -13,15 +13,8 @@ conflicts=("ce-toolchain")
 arch=('i686' 'x86_64')
 url="https://ce-programming.github.io/toolchain/index.html"
 license=('LGPL-3.0-only')
-source=("CEdev-Linux-${pkgver}.zip::https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/CEdev-Linux.zip")
-noextract=("CEdev-Linux-${pkgver}.zip")
-sha256sums=('d288314ec31b2c7cf027960bc32daa053028e25086f71b1475794429efd14494')
-
-prepare() {
-	cd "$srcdir"
-	bsdtar xf CEdev-Linux-${pkgver}.zip
-	bsdtar xf CEdev-Linux.tar.gz
-}
+source=("CEdev-Linux-${pkgver}.tar.gz::https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/CEdev-Linux.tar.gz")
+sha256sums=('32ab8ab3d21b2ccb69534b9974e8136ad518495ffe55a7c78e2e1363681f90fc')
 
 package_ce-toolchain-bin() {
         cd "$srcdir/CEdev"
