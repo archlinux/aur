@@ -1,7 +1,7 @@
 pkgbase = openstarbound-nightly
 	pkgdesc = OpenStarbound Client (Nightly Build, requires original Starbound game assets)
 	pkgver = 0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/OpenStarbound/OpenStarbound
 	arch = x86_64
 	license = custom
