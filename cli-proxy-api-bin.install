@@ -1,4 +1,5 @@
 post_install() {
+    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
     echo ":: Configuration files are expected in ~/.cli-proxy-api/"
     echo "   An example config has been installed to /usr/share/doc/cli-proxy-api-bin/config.example.yaml"
     echo ""
