@@ -1,0 +1,18 @@
+pkgbase = phylax-git
+	pkgdesc = A Polkit authentication agent written in GTK4
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/jakeb-grant/phylax
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = polkit
+	provides = phylax
+	provides = polkit-authentication-agent
+	conflicts = phylax
+	source = git+https://github.com/jakeb-grant/phylax.git
+	sha256sums = SKIP
+
+pkgname = phylax-git
