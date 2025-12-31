@@ -13,9 +13,7 @@ optdepends=(
     'bat: syntax-highlighting pager for script review'
     'shellcheck: for linting downloaded scripts'
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v$pkgver.tar.gz"
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('ab59591183233125fc9f3db2c39a79d0f7df2972543765f44fc2c04fc84caaab350e4872ac1e90bf5adadfcfb004d3aea5acf56e5d91ebfc049ec24e01d8420e')
 
 check() {
@@ -32,6 +30,6 @@ check() {
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 vet -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/vet"
 }
