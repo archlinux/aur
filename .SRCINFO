@@ -1,6 +1,6 @@
 pkgbase = moonasst
 	pkgdesc = Moonasst Qt application
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitee.com/nemozz-hz/moonasst
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = moonasst
 	depends = vulkan-headers
 	options = strip
 	options = !debug
-	source = https://gitee.com/nemozz-hz/moonasst/repository/archive/v1.0.2.tar.gz
-	sha256sums = 8669b3fa4752d6459f817b9664c4e7ff195484b93dd75431030ab30b9bfb5671
+	source = https://gitee.com/nemozz-hz/moonasst/repository/archive/v1.0.3.tar.gz
+	sha256sums = 63b13102c26bebf354bf7845c072eb9630223084a41843ea5413108d5f6268cb
 
 pkgname = moonasst
