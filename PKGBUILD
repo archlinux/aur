@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.16.1
-pkgrel=2
+pkgver=4.17.0
+pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -33,14 +33,16 @@ checkdepends=(
   'python-pytest'
 )
 optdepends=(
+  'hunspell: Spell checking support'
   'python-notify2: Enables desktop notifications'
   'python-pygments: Syntax highlighting'
   'python-pyinotify: Enable file system change monitoring'
   'python-send2trash: Enables "Send to Trash" functionality'
-  'tk: To use the built-in ssh-askpass handler'
+  'tk: Fallback built-in ssh-askpass handler'
+  'x11-ssh-askpass: Default askpass credential helper'
 )
 source=("git+https://github.com/git-cola/git-cola.git#tag=v$pkgver?signed")
-sha256sums=('40e5a4fd514391795c2eff4eca97fa2298e32726bd479b9fef0406b274f4ea27')
+sha256sums=('3a40ecc6086281bf3b7c33fa640d3f6c719aabad1695f3721302503a385dcb5d')
 validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 prepare() {
