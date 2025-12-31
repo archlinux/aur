@@ -1,0 +1,58 @@
+From 0eb968c38ccdb438803cb6ffa6e1ada818fa66d5 Mon Sep 17 00:00:00 2001
+From: Thomas Touhey <thomas@touhey.fr>
+Date: Sat, 21 Dec 2024 23:58:37 +0100
+Subject: [PATCH] fix: do not take git information from outer context
+
+---
+ misc/CahuteConfig.cmake | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/misc/CahuteConfig.cmake b/misc/CahuteConfig.cmake
+index 5cee45c..615905d 100644
+--- a/misc/CahuteConfig.cmake
++++ b/misc/CahuteConfig.cmake
+@@ -7,7 +7,9 @@ if(CAHUTE_GIT)
+ 
+     if(Git_FOUND)
+         execute_process(
+-            COMMAND ${GIT_EXECUTABLE} log -1 --format=%h
++            COMMAND
++                ${GIT_EXECUTABLE} --git-dir=.git
++                log -1 --format=%h
+             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+             OUTPUT_VARIABLE CAHUTE_GIT_COMMIT
+             RESULT_VARIABLE CAHUTE_GIT_RET
+@@ -16,13 +18,17 @@ if(CAHUTE_GIT)
+         )
+         if(${CAHUTE_GIT_RET} EQUAL 0)
+             execute_process(
+-                COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
++                COMMAND
++                    ${GIT_EXECUTABLE} --git-dir=.git
++                    rev-parse --abbrev-ref HEAD
+                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                 OUTPUT_VARIABLE CAHUTE_GIT_BRANCH
+                 OUTPUT_STRIP_TRAILING_WHITESPACE
+             )
+             execute_process(
+-                COMMAND ${GIT_EXECUTABLE} tag --points-at HEAD
++                COMMAND
++                    ${GIT_EXECUTABLE} --git-dir=.git
++                    tag --points-at HEAD
+                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                 OUTPUT_VARIABLE CAHUTE_GIT_TAGS
+                 OUTPUT_STRIP_TRAILING_WHITESPACE
+@@ -30,7 +36,9 @@ if(CAHUTE_GIT)
+             string(REPLACE "\n" ";" CAHUTE_GIT_TAGS "${CAHUTE_GIT_TAGS}")
+ 
+             execute_process(
+-                COMMAND ${GIT_EXECUTABLE} status --porcelain=v1
++                COMMAND
++                    ${GIT_EXECUTABLE} --git-dir=.git
++                    status --porcelain=v1
+                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                 OUTPUT_VARIABLE CAHUTE_UNCOMMITED_FILES
+                 OUTPUT_STRIP_TRAILING_WHITESPACE
+-- 
+GitLab
+
