@@ -37,8 +37,8 @@ check() {
 
   cd "$srcdir"/Sleipnir
   local glibc_version=$(pacman -Q glibc | cut -d ' ' -f 2 | cut -d '+' -f 1 | sed 's/\./_/')
-  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_sleipnir.abi3.so python
-  PYTHONPATH=. pytest
+  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_sleipnir.abi3.so python/src/sleipnir
+  PYTHONPATH=python/src pytest
 }
 
 package() {
