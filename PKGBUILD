@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-conversation-search
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI + MCP tool for searching Claude Code conversation history with Tantivy/BM25"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ticpu/claude-conversation-search-mcp"
