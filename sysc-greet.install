@@ -55,7 +55,11 @@ post_upgrade() {
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
 
     echo ""
-    echo "==> sysc-greet upgraded successfully!"
+    echo "==> sysc-greet upgraded to v1.1.0"
+    echo ""
+    echo "What's new:"
+    echo "  v1.1.0: Hyprland 0.53 compatibility, installer fixes"
+    echo "  v1.0.9: Custom themes, gSlapper wallpapers, theme-aware effects"
     echo ""
     echo "NOTE: greetd service was NOT restarted automatically."
     echo "To apply changes:"
