@@ -69,7 +69,7 @@ pkgver='3.5.4'
 pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
-url='http://www.amanda.org'
+url='https://www.amanda.org/'
 license=('custom' 'GPL')
 depends=('perl>=5.6.0' 'glib2>=2.2.0' 'gawk' 'tar>=1.12' 'gzip' 'curl>=7.10' 'openssl' 'openssh' 'cron' 'libarchive' 'readline' 'netcat' 'bash')
 # perl-module-scandeps: cd pkg; scandeps.pl $(grep -lR '/usr/bin/perl' .) | sort -u | grep -v "^'Amanda::"
