@@ -1,2 +1,0 @@
-yapi W: ELF file ('usr/bin/yapi') lacks FULL RELRO, check LDFLAGS.
-yapi W: ELF file ('usr/bin/yapi') lacks PIE.
