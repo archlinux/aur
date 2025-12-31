@@ -1,16 +1,16 @@
 # Maintainer: Artem Fedulaev <artem.fedulaev11@email.com>
 pkgname=lwm-wm
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Legacy X11 window manager"
 arch=('x86_64')
 url="https://github.com/brokenallmute/lwm"
 license=('MIT')
-depends=('libx11')
+depends=('libxinerama' 'libx11')
 makedepends=('gcc' 'make') 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/${pkgver}.tar.gz")
 
-sha256sums=('be4b82b9a812ea20c0ab0a4776f7dee4897709f1f616d4b400d07f5032902a93')
+sha256sums=('1bfa5352bdf22f1da6769ceebb1955e6e422dfb0d57bc25e4dc2b6d0c12f4781')
 
 build() {
     cd "lwm-${pkgver}"
