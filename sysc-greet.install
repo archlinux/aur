@@ -15,33 +15,33 @@ post_install() {
     chown -R greeter:greeter /var/lib/greeter
     chmod 755 /var/lib/greeter
 
-    echo "==> Configuring greetd..."
-    # Create greetd config if it doesn't exist or is empty
-    if [ ! -s /etc/greetd/config.toml ]; then
-        cat > /etc/greetd/config.toml <<'EOF'
+    echo "==> Configuring greetd for niri..."
+    if [ -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+    fi
+    cat > /etc/greetd/config.toml <<'EOF'
 [terminal]
 vt = 1
 
 [default_session]
 command = "niri -c /etc/greetd/niri-greeter-config.kdl"
 user = "greeter"
-
-[initial_session]
-command = "niri -c /etc/greetd/niri-greeter-config.kdl"
-user = "greeter"
 EOF
-        echo "Created /etc/greetd/config.toml"
-    else
-        echo "Existing /etc/greetd/config.toml found, not modifying"
-    fi
 
     echo "==> Enabling greetd service..."
     systemctl enable greetd.service
 
     echo ""
-    echo "==> sysc-greet installed successfully!"
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "Reboot to see sysc-greet"
+    echo "sysc-greet (niri) installed successfully!"
+    echo ""
+    echo "IMPORTANT: You must REBOOT to start using sysc-greet."
+    echo "           Logging out is NOT sufficient when switching compositors."
     echo ""
 }
 
@@ -54,19 +54,34 @@ post_upgrade() {
     chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
 
+    echo "==> Updating greetd config for niri..."
+    if [ -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+    fi
+    cat > /etc/greetd/config.toml <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "niri -c /etc/greetd/niri-greeter-config.kdl"
+user = "greeter"
+EOF
+
     echo ""
-    echo "==> sysc-greet upgraded to v1.1.0"
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //          "
+    echo ""
+    echo "sysc-greet upgraded to v1.1.0"
     echo ""
     echo "What's new:"
-    echo "  v1.1.0: Hyprland 0.53 compatibility, installer fixes"
+    echo "  v1.1.0: Config.toml now auto-updates on install/upgrade"
     echo "  v1.0.9: Custom themes, gSlapper wallpapers, theme-aware effects"
     echo ""
-    echo "NOTE: greetd service was NOT restarted automatically."
-    echo "To apply changes:"
-    echo "  - Reboot your system, OR"
-    echo "  - Manually restart: sudo systemctl restart greetd.service"
-    echo ""
-    echo "WARNING: Restarting greetd will kill your current session!"
+    echo "IMPORTANT: You must REBOOT to apply changes."
+    echo "           Logging out is NOT sufficient when switching compositors."
     echo ""
 }
 
