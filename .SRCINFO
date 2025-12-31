@@ -1,6 +1,6 @@
 pkgbase = iris-bin
 	pkgdesc = A fast, minimal, config-driven file organizer
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/lordaimer/iris
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = iris-bin
 	provides = iris
 	conflicts = iris
 	options = !strip
-	source = LICENSE-1.3.5::https://raw.githubusercontent.com/lordaimer/iris/v1.3.5/LICENSE
-	source = README-1.3.5.md::https://raw.githubusercontent.com/lordaimer/iris/v1.3.5/README.md
+	source = LICENSE-1.3.6::https://raw.githubusercontent.com/lordaimer/iris/v1.3.6/LICENSE
+	source = README-1.3.6.md::https://raw.githubusercontent.com/lordaimer/iris/v1.3.6/README.md
 	sha256sums = 0c5dd65ffbb483114d0de205e8353a142d69c91ea1b37a60db5c341d9f20ca63
 	sha256sums = 33bd076e38f534bc8e192b0cbe7e36c94f6033e093e5486dac3ec54b609e9b7b
-	source_x86_64 = iris-x86_64-1.3.5::https://github.com/lordaimer/iris/releases/download/v1.3.5/iris-linux-amd64
-	sha256sums_x86_64 = 82ad9bf05423ccd6311c293f3bd582ff356f4462b096c8fbefc2cc290129ac98
+	source_x86_64 = iris-x86_64-1.3.6::https://github.com/lordaimer/iris/releases/download/v1.3.6/iris-linux-amd64
+	sha256sums_x86_64 = 05bb1a9aa02fce5db3b8c0b1cfa7214a8cbc10ec96df17664e2dbb55913314c9
 
 pkgname = iris-bin
