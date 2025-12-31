@@ -1,6 +1,6 @@
 pkgbase = opencode-bin
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 1.0.218
+	pkgver = 1.0.219
 	pkgrel = 1
 	url = https://github.com/sst/opencode
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = opencode-bin
 	conflicts = opencode
 	options = !debug
 	options = !strip
-	source_aarch64 = opencode-bin_1.0.218_aarch64.tar.gz::https://github.com/sst/opencode/releases/download/v1.0.218/opencode-linux-arm64.tar.gz
-	sha256sums_aarch64 = e5e55530fade6b5e4e81951e5c9b473d631bfceb9a193d875d57fc77dd6a380d
-	source_x86_64 = opencode-bin_1.0.218_x86_64.tar.gz::https://github.com/sst/opencode/releases/download/v1.0.218/opencode-linux-x64.tar.gz
-	sha256sums_x86_64 = 23cea6c225a7bcc7779d9e213aaa16bf296c2312d96f501dca17ed45d22b2863
+	source_aarch64 = opencode-bin_1.0.219_aarch64.tar.gz::https://github.com/sst/opencode/releases/download/v1.0.219/opencode-linux-arm64.tar.gz
+	sha256sums_aarch64 = a8442b11f077d228ad3955c026577e20ec050a89c1aedbbcda5c248c9376958a
+	source_x86_64 = opencode-bin_1.0.219_x86_64.tar.gz::https://github.com/sst/opencode/releases/download/v1.0.219/opencode-linux-x64.tar.gz
+	sha256sums_x86_64 = 445a6430332e70b71931e2fbc46606f25d6c0f8362b54c732f1b31194eff82e3
 
 pkgname = opencode-bin
