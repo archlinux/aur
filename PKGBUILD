@@ -1,14 +1,12 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r3204.5f39475e
+pkgver=r3208.6dde81b1
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
 url="http://cowlark.com/fluxengine/"
 license=('MIT')
 depends=(
-    'boost-libs'
-    'cli11'
     'curl'
     'dbus'
     'file'
@@ -20,7 +18,6 @@ depends=(
     'libudev.so'
     'mbedtls'
     'md4c'
-    'nlohmann-json'
     'protobuf'
     'sqlite3'
     'wxwidgets-gtk3'
@@ -29,6 +26,8 @@ depends=(
 makedepends=(
     'boost'
     'clang'
+    'cli11'
+    'nlohmann-json'
     'git'
     'ninja'
     'xxd'
@@ -45,13 +44,8 @@ source=('git+https://github.com/davidgiven/fluxengine.git'
         "git+https://github.com/WerWolv/libromfs.git"
         "git+https://github.com/rockdreamer/throwing_ptr.git"
         "git+https://github.com/sammycage/lunasvg.git"
-        "git+https://github.com/mity/md4c"
-        "git+https://github.com/nlohmann/json"
-        "git+https://github.com/CLIUtils/CLI11")
+)
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,14 +64,11 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname%-git}"
     git submodule init
-    git config submodule.dep/cli11.url "$srcdir/CLI11"
     git config submodule.dep/imgui.url "$srcdir/imgui"
     git config submodule.dep/imhex.url "$srcdir/ImHex"
-    git config submodule.dep/nlohmann_json.url "$srcdir/json"
     git config submodule.dep/libromfs.url "$srcdir/libromfs"
     git config submodule.dep/libwolv.url "$srcdir/libwolv"
     git config submodule.dep/lunasvg.url "$srcdir/lunasvg"
-    git config submodule.dep/md4c.url "$srcdir/md4c"
     git config submodule.dep/native-file-dialog.url "$srcdir/nativefiledialog-extended"
     git config submodule.dep/pattern-language.url "$srcdir/PatternLanguage"
     git config submodule.dep/throwing_ptr.url "$srcdir/throwing_ptr"
