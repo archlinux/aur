@@ -2,7 +2,7 @@
 # Maintainer: Henry Graham <henry)dot(arch)at(hgrahamcs)dot(com(>
 
 pkgname=edmarketconnector
-pkgver=6.0.0
+pkgver=6.0.2
 pkgrel=1
 pkgdesc='Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools'
 arch=('x86_64')
@@ -15,10 +15,10 @@ source=("https://github.com/EDCD/EDMarketConnector/releases/download/Release%2F$
   "edmarketconnector.sh"
   "edmarketconnector.desktop"
   "edmarketconnector.svg")
-sha256sums=('915157c2141304c828f8cefac3be7c031ef54ecd748ba2497b434685fa32dca3'
-  '9a78ba9acb74e3d8c5a2a051cb058e113437dd786f6e8ed863398f4176a3b8a7'
-  '204d4fb3d8d6b907d618d581fa32559d5270f16c65e8818ffcf836a554c5e3d3'
-  '91f7fdd2f960bdaec07bfa6611d03b74d7be5f561b5b36363473db3c41b6c518')
+sha256sums=('a2a815573546e775c31b9446b4334c38f16f9902f12cd3454e5fb862e0285279'
+            '9a78ba9acb74e3d8c5a2a051cb058e113437dd786f6e8ed863398f4176a3b8a7'
+            '204d4fb3d8d6b907d618d581fa32559d5270f16c65e8818ffcf836a554c5e3d3'
+            '91f7fdd2f960bdaec07bfa6611d03b74d7be5f561b5b36363473db3c41b6c518')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/edmarketconnector
