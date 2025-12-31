@@ -1,6 +1,6 @@
 pkgbase = phylax-git
 	pkgdesc = A Polkit authentication agent written in GTK4
-	pkgver = 0.1.0.r1.g7448d63
+	pkgver = 0.1.0.r2.g2fb3e8d
 	pkgrel = 1
 	url = https://github.com/jakeb-grant/phylax
 	arch = x86_64
