@@ -1,27 +1,23 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
-
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Adam Perkowski <adas1per@protonmail.com>
+# Contributor: Jonathan Engber
 pkgname=brlcad
-pkgver=7.36.0
+pkgver=7.42.0
 pkgrel=1
-pkgdesc='Extensive 3D solid modeling system'
-url='https://brlcad.org'
-license=('LGPL-2.1-only' 'BSD-3-Clause' 'LicenseRef-BDL')
-arch=('i686' 'x86_64')
-depends=('gdal' 'libgl' 'libxft' 'libxi')
-makedepends=('cmake' 'ninja')
-install="$pkgname.install"
+pkgdesc="Extensive 3D solid modeling system"
+url="https://${pkgname}.org"
+license=(LGPL-2.1-only BSD-3-Clause LicenseRef-BDL)
+arch=(i686 x86_64)
+depends=(gdal libgl libxft libxi)
+makedepends=(cmake ninja) # git
+install="${pkgname}".install
 _tag_name="rel-${pkgver//./-}"
-source=(
-    'build.patch'
-    "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz")
-sha256sums=('9ab01f9148cc0dc0771fcc64d77f9b8d1d52e2ea031444db5fdc55ef49c88dfd'
-            '1108ae3bb031c5ab84c1c5eaf752bc253ae8a81853113afeba9d4b1ec61db835')
-
-
+source=(build.patch
+    ${pkgname}-${_tag_name}.tar.gz::https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz)
+sha512sums=('65a458f3a0cbb60b1b32599dbd0b9933b24fe7a92c04cc6cb937b56bbacc878ab8ccaf69bf511709ced28e2742fe5d21a10c42509070978a7a9f2b5bf92eda9e'
+    'b22b3cbb8f574f2be67516dbf5be03630505a15a706060d7ef528c3fdd53489a076dbc9f7b77251d1fb189e839636525dc78eff3ec2d9c4191ad1777cc3e56cc')
 _build_config='Release'
 _prefix="/opt/${pkgname}"
-
 
 prepare() {
     patch \
@@ -29,7 +25,6 @@ prepare() {
         "--directory=${srcdir}/${pkgname}-${_tag_name}" \
         "--input=${srcdir}/build.patch"
 }
-
 
 build() {
     cmake \
@@ -58,7 +53,6 @@ build() {
         >"${srcdir}/build/${pkgname}.sh"
 }
 
-
 package() {
     cmake \
         --install "${srcdir}/build" \
@@ -77,5 +71,3 @@ package() {
         "--target-directory=${pkgdir}/etc/profile.d" \
         "${srcdir}/build/${pkgname}.sh"
 }
-
-# vim: ts=2 sw=2 et:
