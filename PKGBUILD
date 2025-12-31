@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
@@ -58,7 +58,7 @@ package() {
   install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "scripts/$pkgname.bash" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions/"
+  install -Dm644 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 "scripts/$pkgname.zsh" "$pkgdir/usr/share/doc/$pkgname/_$pkgname"
 
