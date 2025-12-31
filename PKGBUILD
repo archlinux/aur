@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7f00e458fab5e703fd6da003d987a5192ae8d9d09699d93676a89a7704a57d42')
+sha256sums=('2ba79dd4dcd2fb8c78a70fd5a09a0df53a04f9042b7938bb7f6654ff288dc231')
 
 build() {
     cd "${pkgname}-${pkgver}"
