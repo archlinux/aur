@@ -3,7 +3,7 @@
 
 pkgname=clipse
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A configurable TUI clipboard manager for Unix, built for wayland."
 arch=('any')
 url="https://github.com/savedra1/clipse"
@@ -12,7 +12,6 @@ makedepends=(
   'go'
 )
 optdepends=(
-  'xclip'
   'wl-clipboard'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -24,8 +23,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_ENABLED=1
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_ENABLED=0
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd "$srcdir/$pkgname-$pkgver"
   go mod tidy
