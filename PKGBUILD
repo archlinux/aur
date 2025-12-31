@@ -2,7 +2,7 @@
 
 pkgname=libnyoravim-git
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal C utility library."
 arch=("any")
 url="https://github.com/libnyoravim/libnyoravim"

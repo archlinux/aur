@@ -1,7 +1,7 @@
 pkgbase = libnyoravim-git
 	pkgdesc = Personal C utility library.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libnyoravim/libnyoravim
 	arch = any
 	license = Apache-2.0
