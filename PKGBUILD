@@ -8,8 +8,8 @@ pkgdesc='Useful python decorators and utilities'
 arch=('any')
 url="https://github.com/desultory/$_name"
 license=('GPL-2.0-only')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('900cc0dbdb087d0d294027747eed046dee452ac7dd15cb572ff769e148e07478a5030f8412fdbebcf89db17c6e06df5368fe28ff1df983723e068b9005cba6ce')
 
