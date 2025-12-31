@@ -1,7 +1,7 @@
-From a1ffde20b67b981b5667652f6fa0c779e51a594a Mon Sep 17 00:00:00 2001
+From 12c55b80899d0590d62d128c172eec4de58978ae Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:10:11 +0100
-Subject: [PATCH 4/5] *.service: update systemd service files
+Subject: [PATCH 4/6] *.service: update systemd service files
 
 ---
  k3s-agent-rootless.service | 47 ++++++++++++++++++++++++++++++++++++++

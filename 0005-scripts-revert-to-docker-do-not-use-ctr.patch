@@ -1,0 +1,38 @@
+From 9cd4d08359f64aa6775243c184a372715bc837e0 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 16 Dec 2025 17:40:32 +0100
+Subject: [PATCH 5/6] scripts: revert to `docker`, do not use `ctr`
+
+We cannot emulate `ctr` with podman, and we do not need the advanced
+multiarch support present in `ctr`.
+---
+ scripts/package-airgap | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/package-airgap b/scripts/package-airgap
+index 50727a49c8..d5588e904b 100755
+--- a/scripts/package-airgap
++++ b/scripts/package-airgap
+@@ -14,7 +14,7 @@ OPT_ARCH=${1:-""}
+ if [ -n "${OPT_ARCH}" ]; then
+   ARCH=${OPT_ARCH}
+   if [ "${ARCH}" = "arm" ]; then
+-    OPT_PLATFORM="--platform=linux/arm/v6 --platform=linux/arm/v7"
++    OPT_PLATFORM="--platform=linux/arm/v7"
+   else
+     OPT_PLATFORM="--platform=linux/${ARCH}"
+   fi
+@@ -22,8 +22,8 @@ fi
+ 
+ airgap_image_file='scripts/airgap/image-list.txt'
+ images=$(cat "${airgap_image_file}")
+-xargs -tn1 ctr -n moby images pull ${OPT_PLATFORM} 1> /dev/null <<< "${images}" || true
+-ctr -n moby images export ${OPT_PLATFORM} dist/artifacts/k3s-airgap-images-${ARCH}.tar ${images}
++xargs -n1 docker pull ${OPT_PLATFORM} <<< "${images}"
++docker save ${images} ${OPT_PLATFORM} -o dist/artifacts/k3s-airgap-images-${ARCH}.tar
+ zstd --no-progress -T0 -16 -f --long=25 dist/artifacts/k3s-airgap-images-${ARCH}.tar -o dist/artifacts/k3s-airgap-images-${ARCH}.tar.zst
+ pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
+ sha256sum dist/artifacts/k3s-airgap-images-${ARCH}.tar* | sed 's|dist/artifacts/||' > dist/artifacts/k3s-airgap-images-${ARCH}.sha256sum
+-- 
+2.52.0.5.g6c3c29cc24e
+

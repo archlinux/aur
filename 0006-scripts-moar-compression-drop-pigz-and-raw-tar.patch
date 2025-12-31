@@ -1,18 +1,18 @@
-From df2e1f284e3fbb0a79b6cc043977418cf37bb2f7 Mon Sep 17 00:00:00 2001
+From 25acc29f24442e17bf40272a2dc68f429341b431 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
-Subject: [PATCH 5/5] scripts: moar compression, drop pigz and raw tar
+Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
 
 ---
- scripts/package-airgap | 15 ++++++++++-----
+ scripts/package-airgap | 20 ++++++++++++++------
  scripts/package-cli    |  9 +++++----
- 2 files changed, 15 insertions(+), 9 deletions(-)
+ 2 files changed, 19 insertions(+), 10 deletions(-)
 
 diff --git a/scripts/package-airgap b/scripts/package-airgap
-index 36c4084db9..43a729bed7 100755
+index d5588e904b..c939669399 100755
 --- a/scripts/package-airgap
 +++ b/scripts/package-airgap
-@@ -20,12 +20,17 @@ if [ -n "${OPT_ARCH}" ]; then
+@@ -20,10 +20,18 @@ if [ -n "${OPT_ARCH}" ]; then
    fi
  fi
  
@@ -24,19 +24,21 @@ index 36c4084db9..43a729bed7 100755
  airgap_image_file='scripts/airgap/image-list.txt'
 -images=$(cat "${airgap_image_file}")
 -xargs -n1 docker pull ${OPT_PLATFORM} <<< "${images}"
--docker save ${images} -o dist/artifacts/k3s-airgap-images-${ARCH}.tar
+-docker save ${images} ${OPT_PLATFORM} -o dist/artifacts/k3s-airgap-images-${ARCH}.tar
 -zstd --no-progress -T0 -16 -f --long=25 dist/artifacts/k3s-airgap-images-${ARCH}.tar -o dist/artifacts/k3s-airgap-images-${ARCH}.tar.zst
 -pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
+-sha256sum dist/artifacts/k3s-airgap-images-${ARCH}.tar* | sed 's|dist/artifacts/||' > dist/artifacts/k3s-airgap-images-${ARCH}.sha256sum
 +airgap_tar_file="dist/artifacts/k3s-airgap-images-${ARCH}.tar"
 +readarray -t images <"${airgap_image_file}"
-+printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -n1 docker pull ${OPT_PLATFORM}
-+docker save "${images[@]}" -o "${airgap_tar_file}"
++printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -t -n1 docker pull ${OPT_PLATFORM}
++docker save "${images[@]}" ${OPT_PLATFORM} -o "${airgap_tar_file}"
 +zstd -T0 --ultra -22 --long --verbose --force --rm "${airgap_tar_file}"
- if [ ${ARCH} = amd64 ]; then
-   cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
- fi
++(
++cd "${airgap_tar_file%/*}"
++sha256sum "${airgap_tar_file##*/}"* > "${airgap_tar_file##*/}.sha256sum"
++)
 diff --git a/scripts/package-cli b/scripts/package-cli
-index a15d754926..c11b0d0ebe 100755
+index fbdc3463e6..6c89fec818 100755
 --- a/scripts/package-cli
 +++ b/scripts/package-cli
 @@ -54,11 +54,12 @@ mkdir -p ./etc

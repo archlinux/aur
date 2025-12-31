@@ -1,7 +1,7 @@
-From 8e7e4e262e20a7b975107b4f62cb129d69e55bae Mon Sep 17 00:00:00 2001
+From d3d07699a833b50547b91e181fc2149b590c9c1c Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:07:38 +0100
-Subject: [PATCH 1/5] .dockerignore: do not ignore parts of $GITDIR
+Subject: [PATCH 1/6] .dockerignore: do not ignore parts of $GITDIR
 
 ---
  .dockerignore | 1 -
