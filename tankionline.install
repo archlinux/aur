@@ -10,5 +10,5 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note "Custom flags should be put directly in: ~/.config/tankonline-flags.conf"
+    note "Custom flags should be put directly in: ~/.config/tankionline-flags.conf"
 }

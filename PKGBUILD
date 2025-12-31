@@ -33,4 +33,5 @@ package() {
     rsync -a --exclude 'usr' --exclude 'AppRun' "${srcdir}/squashfs-root/" "${pkgdir}/opt/tankionline/"
     cp -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+    find "${pkgdir}/opt/tankionline" -type d -exec chmod 755 {} +
 }
