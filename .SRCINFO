@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl2-compat-git
 	pkgdesc = SDL2 runtime compatibility library using SDL3
-	pkgver = r701.44a2d4d
+	pkgver = 2.32.60.r10.gf1ff620
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl2-compat
 	arch = x86_64

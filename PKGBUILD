@@ -3,7 +3,7 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=lib32-sdl2-compat-git
-pkgver=r701.44a2d4d
+pkgver=2.32.60.r10.gf1ff620
 pkgrel=1
 pkgdesc="SDL2 runtime compatibility library using SDL3"
 url="https://github.com/libsdl-org/sdl2-compat"
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd sdl2-compat
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,6 +29,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cmake -B build \
   -S sdl2-compat \
+  -GNinja \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_LIBDIR=lib32 \
