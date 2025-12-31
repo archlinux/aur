@@ -1,6 +1,6 @@
 pkgbase = tinct-plugin-templater-bin
 	pkgdesc = Template-based output plugin for Tinct
-	pkgver = 0.1.18
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
@@ -9,12 +9,12 @@ pkgbase = tinct-plugin-templater-bin
 	provides = tinct
 	arch = aarch64
 	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = d06924a4d118a8e1fb3239f6465ef4cbe1f055b7349797aae61c9d3d412a45e1
+	sha256sums_aarch64 = dd5f1e1a7327f95d9ea9f749287544f86a0b7e0d6a078f6680d029abfd7267ed
 	arch = armv7h
 	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_armv7.tar.gz
-	sha256sums_armv7h = 95d1a1de13b8b3aeaa51f9efa757a5f92a44048eb883c2ed338f38693630daf5
+	sha256sums_armv7h = 994624a0dea74f6d2f216b2f071d2fbe967f6544d249a48395ff655c1775b1d8
 	arch = x86_64
 	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-templater_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ea3348dd8c1f52c1bc79980bdc34fff427129256bd65936ed4d01cafe1e54f14
+	sha256sums_x86_64 = 126fddcaf69c9e741aa4d0c50b9b62a95d16d7d7f36bee6e2bf3655975cbeda9
 	
 pkgname = tinct-plugin-templater-bin
