@@ -8,7 +8,7 @@ pkgrel='1'
 pkgdesc='A tool that summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs'
 arch=('i686' 'x86_64')
 #url='http://www.cs.ucla.edu/~kohler/ipsumdump/'
-url="http://www.read.seas.harvard.edu/~kohler/${pkgname}/"
+url="https://www.read.seas.harvard.edu/~kohler/${pkgname}/"
 license=('GPL2' 'custom:Click')
 depends=('gcc-libs' 'libpcap' 'gzip' 'iproute2' 'bzip2')
 optdepends=('iptables')
@@ -32,7 +32,8 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j $(nproc)
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${nproc}"
   set +u
 }
 
