@@ -1,42 +1,41 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=sshp-git
-_name=${pkgname%-git}
-pkgver=1.1.3.r2.g01c3f71
+pkgver=1.1.3.r3.gb7db440
 pkgrel=1
 epoch=1
 pkgdesc="Parallel SSH Executor"
 arch=('x86_64')
-url="https://github.com/bahamas10/$_name"
+url='https://github.com/bahamas10/sshp'
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-provides=("$_name")
-conflicts=("$_name")
+provides=('sshp')
+conflicts=('sshp')
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $_name
+    cd sshp
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $_name
+    cd sshp
     export CFLAGS+=' -fPIE -Wl,-z,relro,-z,now'
     make
 }
 
 check() {
-    cd $_name
+    cd sshp
     make -k check
 }
 
 package() {
-    cd $_name
-    install -Dm755 sshp "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 man/sshp.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 CHANGES.md "$pkgdir/usr/share/doc/$pkgname/CHANGES.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd sshp
+    install -Dm755 sshp -t "$pkgdir/usr/bin"
+    install -Dm644 man/sshp.1 -t "$pkgdir/usr/share/man/man1"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/sshp"
+    install -Dm644 CHANGES.md -t "$pkgdir/usr/share/doc/sshp"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
