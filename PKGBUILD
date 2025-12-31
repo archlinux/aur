@@ -16,7 +16,7 @@ source=(
   "https://raw.githubusercontent.com/facebook/$pkgname/refs/tags/v$pkgver/LICENSE"
 )
 sha256sums=('c755828a9ba4be226b9d109fb0112fc3399a1e16d53141c7523bd5eb5fdd8fd0'
-            '8205754e3e71b54bddcd9a2a280c29ea1daaf171ee2627c1621425fac9f6d23e'
+            '62228af9300c9ee416aeef97fb589a91ddcd321e6b262e5e5c0924d26cb4ef52'
             '5f1521fb886be393d8afc4655ab7c6ffe84e1d4f15dfd321ceec3ce62968d058')
 
 package() {
