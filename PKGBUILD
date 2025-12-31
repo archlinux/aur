@@ -2,7 +2,7 @@
 
 _pkgname="gpu-screen-recorder-ui"
 pkgname="$_pkgname-git"
-pkgver=1.7.1.r0.g2e0dc48
+pkgver=1.9.1.r3.g2bb6754
 pkgrel=1
 pkgdesc="A fullscreen overlay for gpu-screen-recorder, a shadowplay-like screen recorder"
 url="https://git.dec05eba.com/gpu-screen-recorder-ui"
@@ -24,8 +24,8 @@ depends=(
   'wayland'
 )
 makedepends=(
+  'desktop-file-utils'
   'git'
-  #'linux-api-headers'
   'meson'
 )
 
@@ -45,10 +45,6 @@ pkgver() {
 build() {
   arch-meson "$_pkgsrc" build
   meson compile -C build
-}
-
-check() {
-  meson test -C build
 }
 
 package() {

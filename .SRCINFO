@@ -1,10 +1,11 @@
 pkgbase = gpu-screen-recorder-ui-git
 	pkgdesc = A fullscreen overlay for gpu-screen-recorder, a shadowplay-like screen recorder
-	pkgver = 1.7.1.r0.g2e0dc48
+	pkgver = 1.9.1.r3.g2bb6754
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-ui
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = meson
 	depends = libdrm
