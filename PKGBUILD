@@ -3,7 +3,7 @@
 
 pkgbase=stalwart-bin
 pkgname=('stalwart-mail' 'stalwart-cli')
-pkgver=0.14.1
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='All-in-one Mail & Collaboration server. Secure, scalable and fluent in every protocol (IMAP, JMAP, SMTP, CalDAV, CardDAV, WebDAV).'
 arch=('x86_64' 'aarch64' 'arm' 'armv7')
@@ -20,9 +20,9 @@ source=(
   'stalwart-mail.tmpfiles'
 )
 sha512sums=(
-  '844db6c54a4b5d20facc97a675ec7ff3a565bb0936e53e6f14661bdfd4dc248879657f0d71e842aa8f0d569af014261111c210a4267cc4102bb02dd61ae3a686'
-  'c8fca16e7cffb0bedfa6ef0d34192b118d323c53130a003b8b6fb917f46bd222f2a0cd0fc64801f7aa2decba6eed468df51eafcf2b01c08a040296d3e685cc4e'
-  '2ef4e53716fbef6006bc69175645a8a18e3aae8d57f73b97a9d7d0e326a39ed8a09f5f32aa6ea4763ee5b7f1dc054ebdee355f53dbd79d72b41c987753f40a36'
+  '7ab5a58db5bf81b6ea14352567e7858cc5823ddc75014780a5b8ff595a3f5d15972d779803edb8dfa89a31520b248829bc20bbd50b9593ff7f2dfece3da3f4e0'
+  'a05d99a9919527376fee8b2ef8a77fa1fabf48296c461a421dc4981fa0c1da9dcf39013b233f3afeac485bcadd75ced315cb5bf59c400a1f67710fd0df85a36d'
+  '0c43f879b0c16e8401d2f135d89e308138f5c3eb2306a045ac07017909cce55a4daf8680804b33c00b93987e0ec3e0d6f8b95bb8257064a2e116880a2718e97a'
   '32e9718f9bc8ddf63f92d10c0a9b03ba7b1f6582682876c06cd9ae971e7be5e08593b9df4692828bde17f9317ea37d17ba9469940d000344f89bd6c216e084ee'
   '547d97e94931079b06e3da459313b16467986d37eb8688210a6f6eff974dbdf60383217ea65d6f306eb81958b9c5eab72648e7645d95cf83ca418b8791f899f8'
   'dcbd241ab98a37cf900d22b418f0e757db6b0b4d4133a55343794d1655e77a4c372a9d754f8ee977766ab5e77b12de6b9eff4dbebddc6e9ba5d5185af4b4190c'
@@ -54,7 +54,6 @@ package_stalwart-mail() {
     ["stalwart-$pkgver/README.md"]="usr/share/doc/$pkgname/README.md:644:0:0"
     ["stalwart-$pkgver/SECURITY.md"]="usr/share/doc/$pkgname/SECURITY.md:644:0:0"
     ["stalwart-$pkgver/SECURITY_PROCESS.md"]="usr/share/doc/$pkgname/SECURITY_PROCESS.md:644:0:0"
-    ["stalwart-$pkgver/UPGRADING.md"]="usr/share/doc/$pkgname/UPGRADING.md:644:0:0"
   )
 
   for source_file in "${!_files[@]}"; do
@@ -64,6 +63,8 @@ package_stalwart-mail() {
     group="$(cut -f 4 -d ':' <<< "${_files[$source_file]}")"
     install -Dm "$mode" -o "$user" -g "$group" "${srcdir}/${source_file}" "${pkgdir}/${target_file}"
   done
+  cp -r "stalwart-$pkgver/UPGRADING" "${pkgdir}/usr/share/doc/$pkgname/UPGRADING"
+  chown 0:0 -R $_
 }
 
 package_stalwart-cli() {
@@ -77,7 +78,6 @@ package_stalwart-cli() {
     ["stalwart-$pkgver/README.md"]="usr/share/doc/$pkgname/README.md:644:0:0"
     ["stalwart-$pkgver/SECURITY.md"]="usr/share/doc/$pkgname/SECURITY.md:644:0:0"
     ["stalwart-$pkgver/SECURITY_PROCESS.md"]="usr/share/doc/$pkgname/SECURITY_PROCESS.md:644:0:0"
-    ["stalwart-$pkgver/UPGRADING.md"]="usr/share/doc/$pkgname/UPGRADING.md:644:0:0"
   )
 
   for source_file in "${!_files[@]}"; do
@@ -87,5 +87,7 @@ package_stalwart-cli() {
     group="$(cut -f 4 -d ':' <<< "${_files[$source_file]}")"
     install -Dm "$mode" -o "$user" -g "$group" "${srcdir}/${source_file}" "${pkgdir}/${target_file}"
   done
+  cp -r "stalwart-$pkgver/UPGRADING" "${pkgdir}/usr/share/doc/$pkgname/UPGRADING"
+  chown 0:0 -R $_
 }
 
