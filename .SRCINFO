@@ -1,7 +1,7 @@
 pkgbase = spotiflac-bin
 	pkgdesc = Get Spotify tracks in true FLAC from Tidal, Qobuz & Amazon Music
 	pkgver = 7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/afkarxyz/SpotiFLAC
 	arch = x86_64
 	license = LicenseRef-unknown
