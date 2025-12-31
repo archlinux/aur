@@ -45,8 +45,9 @@ pkgbase = gtk2-patched-filechooser-icon-view
 
 pkgname = gtk2-patched-filechooser-icon-view
 	install = gtk2.install
+	optdepends = adwaita-fonts: Default font
 	optdepends = adwaita-icon-theme: Default icon theme
-	optdepends = gnome-themes-standard: Default widget theme
+	optdepends = gnome-themes-extra-gtk2: Default widget theme
 	optdepends = python: gtk-builder-convert
 	provides = gtk2=2.24.33
 	provides = libgailutil.so

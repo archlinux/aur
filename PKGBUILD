@@ -87,8 +87,9 @@ build() {
 
 package() {
   optdepends=(
+    'adwaita-fonts: Default font'
     'adwaita-icon-theme: Default icon theme'
-    'gnome-themes-standard: Default widget theme'
+    'gnome-themes-extra-gtk2: Default widget theme'
     'python: gtk-builder-convert'
   )
   provides=(
@@ -103,7 +104,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-2.0/gtkrc" <<END
 gtk-icon-theme-name = "Adwaita"
 gtk-theme-name = "Adwaita"
-gtk-font-name = "Cantarell 11"
+gtk-font-name = "Adwaita Sans 11"
 END
 
   install -Dm644 gtk-query-immodules-2.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
