@@ -12,18 +12,18 @@ pkgver="${_pkgver}"
 pkgrel='2'
 pkgdesc='produce plots and graphs in GIF, PNG, PostScript, SVG from CSV like data'
 arch=('i686' 'x86_64')
-url='http://ploticus.sourceforge.net/doc/welcome.html'
+url='https://ploticus.sourceforge.net/doc/welcome.html'
 license=('GPL')
 depends=('gd' 'libpng' 'libjpeg' 'freetype2' 'zlib' 'libx11')
 makedepends=('patch')
-source=("http://prdownloads.sourceforge.net/sourceforge/${pkgname}/pl241src.tar.gz"
+source=("https://prdownloads.sourceforge.net/sourceforge/${pkgname}/pl241src.tar.gz"
         "Makefile2.41.patch"
         "Makefile2.42.patch")
 if [ "${pkgver}" = '2.42' ]; then
   source+=(
-        "http://prdownloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}${_pkgver/./}_src.tar.gz"
-        'http://ploticus.sourceforge.net/download/execline.c.gz'
-        'http://ploticus.sourceforge.net/download/init.c'
+        "https://prdownloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}${_pkgver/./}_src.tar.gz"
+        'https://ploticus.sourceforge.net/download/execline.c.gz'
+        'https://ploticus.sourceforge.net/download/init.c'
   )
   pkgver="${pkgver}.r201406"
 fi
