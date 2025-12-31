@@ -3,7 +3,7 @@
 pkgname="millennium-git"
 _pkgdir="Millennium"
 pkgver=v2.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
@@ -74,7 +74,7 @@ package() {
     mkdir -p       $pkgdir/usr/share/licenses/$pkgname
 
     # Finally, install files to package location
-    install -Dm755 build/src/millennium_x86-build/libmillennium_x86.so                      "$pkgdir/usr/lib/millennium/"
+    install -Dm755 build/src/libmillennium_x86.so                                           "$pkgdir/usr/lib/millennium/"
     install -Dm755 build/src/hhx64-build/libmillennium_hhx64.so                             "$pkgdir/usr/lib/millennium/"
     install -Dm755 build/src/millennium_x86-build/boot/linux/libmillennium_bootstrap_86x.so "$pkgdir/usr/lib/millennium/"
     cp -r          src/pipx                                                                 "$pkgdir/usr/share/millennium/assets/"
