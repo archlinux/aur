@@ -8,12 +8,12 @@ pkgver='0.9.8.6'
 pkgrel='1'
 pkgdesc='A post install security auditor for Linux/Unix'
 arch=('i686' 'x86_64')
-url='http://usat.sourceforge.net/'
+url='https://usat.sourceforge.net/'
 license=('GPL')
 depends=('popt')
 optdepends=('nmap' 'lsof')
 _verwatch=('https://sourceforge.net/projects/usat/files/' "/projects/usat/files/${pkgname}-\(.*\)/stats/timeline" 'l')
-source=("http://usat.sourceforge.net/code/${pkgname}-${pkgver}.tgz")
+source=("${url}code/${pkgname}-${pkgver}.tgz")
 md5sums=('6c1924001ddac03b7c0e5eec589c47b7')
 sha256sums=('13dfd05040d360eddb95185f3b2122ba98387374d3052f2d0317a8eec838e537')
 
