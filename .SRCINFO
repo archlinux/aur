@@ -1,17 +1,19 @@
 pkgbase = lwm-legacy
 	pkgdesc = Legacy X11 window manager
-	pkgver = 1.2.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/brokenallmute/lwm
 	arch = x86_64
 	license = MIT
+	makedepends = libxinerama
+	makedepends = libx11
 	makedepends = gcc
 	makedepends = make
 	depends = libxinerama
 	depends = libx11
 	conflicts = lwm-wm
 	replaces = lwm-wm
-	source = lwm-legacy-1.2.1.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/1.2.1.tar.gz
-	sha256sums = 8217f8b85a13aff28cf7fe04f7fb71dd6cbf4b67ea36a403baf6856e4ffe58f4
+	source = lwm-legacy-1.2.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/1.2.tar.gz
+	sha256sums = 1bfa5352bdf22f1da6769ceebb1955e6e422dfb0d57bc25e4dc2b6d0c12f4781
 
 pkgname = lwm-legacy
