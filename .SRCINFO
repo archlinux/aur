@@ -1,6 +1,6 @@
 pkgbase = git-iris-bin
 	pkgdesc = An intelligent agent that understands your code and crafts perfect Git artifacts
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/hyperb1iss/git-iris
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = git-iris-bin
 	depends = openssl
 	provides = git-iris
 	conflicts = git-iris
-	source_x86_64 = git-iris-bin-2.0.2-x86_64::https://github.com/hyperb1iss/git-iris/releases/download/v2.0.2/git-iris-linux-amd64
-	sha256sums_x86_64 = 07ef88f68ef37865d01eaccdf56145b82a80c1d12c6e75baa8c601d20befd3fd
-	source_aarch64 = git-iris-bin-2.0.2-aarch64::https://github.com/hyperb1iss/git-iris/releases/download/v2.0.2/git-iris-linux-arm64
-	sha256sums_aarch64 = 89870cabf3d37608e149bacdfd4b2eb892b89240770831a617c5941531b4234b
+	source_x86_64 = git-iris-bin-2.0.3-x86_64::https://github.com/hyperb1iss/git-iris/releases/download/v2.0.3/git-iris-linux-amd64
+	sha256sums_x86_64 = e99045436c3855ad4c6101f2c89d558163031da35f4c408bbca3fb0b2285b5f2
+	source_aarch64 = git-iris-bin-2.0.3-aarch64::https://github.com/hyperb1iss/git-iris/releases/download/v2.0.3/git-iris-linux-arm64
+	sha256sums_aarch64 = 646f01998673c4e81a5b977d25364c14c2ed7e759c58af63ae739d74f240df65
 
 pkgname = git-iris-bin
