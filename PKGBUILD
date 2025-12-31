@@ -1,7 +1,7 @@
 # Maintainer: RouHim
 
 pkgname=binvec-bin
-pkgver=1.20.15
+pkgver=1.20.16
 pkgrel=1
 pkgdesc="A simple application to convert raster graphics to vector graphics (pre-compiled)"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -14,11 +14,11 @@ options=('!strip')
 
 # Source code archive for desktop files and icons
 source=("binvec-${pkgver}.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c0c9f29bd8854e1f1ad9df5077c23aaf7baa888c3c2b1ae1a6db70796aa2945e')
-sha256sums_x86_64=('9e8a052c1bd519be1f9f72e8935e388668ec0880e1fd50290e602fb24b8e953f')
-sha256sums_aarch64=('9e8a052c1bd519be1f9f72e8935e388668ec0880e1fd50290e602fb24b8e953f')
-sha256sums_armv7h=('9e8a052c1bd519be1f9f72e8935e388668ec0880e1fd50290e602fb24b8e953f')
-sha256sums_armv6h=('9e8a052c1bd519be1f9f72e8935e388668ec0880e1fd50290e602fb24b8e953f')
+sha256sums=('43e435cfd86e50a6bc1e323da2a51a31f77aa8eb65700044e90e7c937b98b365')
+sha256sums_x86_64=('6e4baf6e0c1cb32143781c0fce9c85ff4cb8a0ca9f7b85d8a6743169d813ef27')
+sha256sums_aarch64=('6e4baf6e0c1cb32143781c0fce9c85ff4cb8a0ca9f7b85d8a6743169d813ef27')
+sha256sums_armv7h=('6e4baf6e0c1cb32143781c0fce9c85ff4cb8a0ca9f7b85d8a6743169d813ef27')
+sha256sums_armv6h=('6e4baf6e0c1cb32143781c0fce9c85ff4cb8a0ca9f7b85d8a6743169d813ef27')
 
 # Map Arch Linux architectures to Rust build targets
 source_x86_64=("binvec-${pkgver}-x86_64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-x86_64-unknown-linux-gnu")
