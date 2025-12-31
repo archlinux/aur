@@ -1,0 +1,27 @@
+pkgbase = walker-binarydots-bin
+	pkgdesc = wayland application runner patched for binarydots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BinaryHarbinger/walker
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = poppler-glib
+	depends = cairo
+	depends = elephant
+	optdepends = elephant-all: elephant + all official elephant providers
+	provides = walker-binarydots-bin
+	conflicts = walker-binarydots-bin
+	options = !strip
+	source = https://github.com/BinaryHarbinger/walker/releases/download/v1.0.0/walker
+	source = https://raw.githubusercontent.com/BinaryHarbinger/walker/v1.0.0/LICENSE
+	source = https://raw.githubusercontent.com/BinaryHarbinger/walker/v1.0.0/README.md
+	sha256sums = a52092c2ea3175043782715dd17f166d4485013dc83f7782be8edfdbb3eb26a5
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = walker-binarydots-bin
