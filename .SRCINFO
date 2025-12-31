@@ -1,7 +1,7 @@
 pkgbase = lazydns-bin
 	pkgdesc = A light and fast DNS server/forwarder implementation in Rust
 	pkgver = 0.2.52
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/lazywalker/lazydns
 	arch = x86_64
 	arch = aarch64

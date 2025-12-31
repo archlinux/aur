@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 provides=($pkgname)
 conflicts=($_pkgname)
-backup=('/etc/lazydns/config.yaml')
+backup=('etc/lazydns/config.yaml')
 source=(
     'lazydns.service'
     'lazydns-sysusers.conf'
