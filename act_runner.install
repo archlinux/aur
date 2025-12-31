@@ -1,5 +1,5 @@
 post_install() {
-	echo "==> HINT: To register the runner on Gitea, run 'act_runner register' from '/var/lib/act_runner'"
+	echo "==> HINT: To register the runner on Gitea, run 'act_runner --config /etc/act_runner/config.yaml register' from '/var/lib/act_runner'"
 	echo
 	echo "==> HINT: To setup the runner with Docker, either:"
 	echo "    - Add the 'act_runner' user to the 'docker' group (but be aware of the potential security implications: https://docs.docker.com/engine/security/#docker-daemon-attack-surface)"
