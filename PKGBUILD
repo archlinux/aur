@@ -7,8 +7,8 @@ pkgdesc="The Industrial I/O equivalent to pciutils"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('sysfsutils')
-url="http://sourceforge.net/projects/iioutils/"
-source=("http://sourceforge.net/projects/iioutils/files/iioutils/iioutils-${pkgver}.tar.gz")
+url="https://sourceforge.net/projects/iioutils/"
+source=("https://sourceforge.net/projects/iioutils/files/iioutils/iioutils-${pkgver}.tar.gz")
 md5sums=('8a88b711d3d6a7fedd75af833c5470cb')
 
 build() {
