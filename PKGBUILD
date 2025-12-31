@@ -2,8 +2,8 @@
 
 pkgbase="iloader"
 pkgname="iloader-appimage"
-pkgver="1.1.5"
-pkgrel=2
+pkgver="1.1.6"
+pkgrel=1
 pkgdesc="User-friendly sideloader"
 url="https://github.com/nab138/iloader"
 arch=("x86_64")
@@ -11,11 +11,10 @@ license=("MIT")
 depends=("fuse3" "hicolor-icon-theme")
 conflicts=("iloader-bin")
 options=("!strip" "!debug")
-
 _appimage="iloader-linux-amd64.AppImage"
 source=("$_appimage::$url/releases/download/v$pkgver/$_appimage"
         "LICENSE::$url/raw/refs/tags/v$pkgver/LICENSE")
-sha256sums=("2e5d85da7716ebff0e05ffde80ea218621debbcdf412884b054e4b0aea6b2c77"
+sha256sums=("2f57c5c058dd22bae1be2065c0e4614835ec35882b4f535c54a00a96cb3a878a"
             "c6e929e3490b6475e382b4f74aaddd068deb3bf27cca2109821591e692dfcb3b")
 
 prepare() {
