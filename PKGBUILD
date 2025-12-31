@@ -54,11 +54,8 @@ provides=(archinstall)
 conflicts=(archinstall python-archinstall archinstall-git)
 source=(
   archinstall-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
-  archinstall-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/archinstall-$pkgver.tar.gz.sig
 )
-sha256sums=('92f81ac80779b955d6e2550edf74c17bdedc2da9c69ea50b21fce034f9fa49e0'
-            'SKIP')
-validpgpkeys=('8AA2213C8464C82D879C8127D4B58E897A929F2E') # torxed@archlinux.org
+sha256sums=('92f81ac80779b955d6e2550edf74c17bdedc2da9c69ea50b21fce034f9fa49e0')
 
 check() {
   cd archinstall-$pkgver
