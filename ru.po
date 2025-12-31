@@ -1,0 +1,375 @@
+# MDVIEW MTX перевод на русский
+# Copyright (C) 2024-2025 step, http://github.com/step-/mdview
+# FIRST AUTHOR <sfslinux@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mdview 2025.01.04\n"
+"Report-Msgid-Bugs-To: http://github.com/step-/mdview/issues\n"
+"POT-Creation-Date: 2025-01-27 12:07+0100\n"
+"PO-Revision-Date: 2024-11-08 15:00+0300\n"
+"Last-Translator: sfs <sfslinux@gmail.com>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/main.c:331
+#, c-format
+msgid "MDVIEW_OPTIONS is invalid: %s\n"
+msgstr "MDVIEW_OPTIONS содержит недопустимые параметры: %s\n"
+
+#: src/main.c:359
+msgid "Version:"
+msgstr "Версия:"
+
+#: src/main.c:365
+msgid "License:"
+msgstr "Лицензия:"
+
+#: src/main.c:585
+msgid "invalid option:"
+msgstr "неверная опция:"
+
+#: src/mtxcmm.c:2199
+#, c-format
+msgid "Heading has stop characters '[', ']', '<', '>', '\\' or '&': %s"
+msgstr "Заголовок содержит запрещённые символы '[', ']', '<', '>', '\\' или '&': %s"
+
+#: src/mtxcmm.c:2211
+#, c-format
+msgid "Heading has unbalanced '*', '_' or '~': %s"
+msgstr "Заголовок содержит несбалансированные '*', '_' или '~': %s"
+
+#: src/mtxcmm.c:2223
+#, c-format
+msgid "Heading has spaced/punctuated '_': %s"
+msgstr "Заголовок содержит пробелы/знаки пунктуации вокруг '_': %s"
+
+#: src/mtxcmm.c:2470
+#, c-format
+msgid "% 3d. Headings have the same anchors: #%d(%s) and #%d(%s)\n"
+msgstr "% 3d. Заголовки имеют одинаковые якоря: #%d(%s) и #%d(%s)\n"
+
+#: src/mtxtextview.c:1826
+msgid "Error: No markdown input"
+msgstr "Ошибка: Отсутствуют входные данные Markdown"
+
+#: src/mtxtextview.c:1844
+msgid "Error: Cannot render markdown"
+msgstr "Ошибка: Невозможно отобразить Markdown"
+
+#: src/mtxviewer.c:169
+msgctxt "Home page accel, in status bar before the name"
+msgid "(Alt-H)"
+msgstr "(Alt-H)"
+
+#: src/mtxviewer.c:405
+msgid "Browser not found. Set environment variable BROWSER."
+msgstr "Браузер не найден. Установите переменную окружения BROWSER."
+
+#: src/mtxviewer.c:448
+msgid "Text editor not found. Set environment variable DEFAULTTEXTEDITOR."
+msgstr "Текстовый редактор не найден. Установите переменную окружения DEFAULTTEXTEDITOR."
+
+#: src/mtxviewer.c:511
+msgid "Working..."
+msgstr "Работаю..."
+
+#: src/mtxviewer.c:562
+msgctxt "progress"
+msgid "Parsing..."
+msgstr "Разбор..."
+
+#: src/mtxviewer.c:563
+msgctxt "progress"
+msgid "Shebang."
+msgstr "Shebang."
+
+#: src/mtxviewer.c:564
+msgctxt "progress"
+msgid "Legacy support."
+msgstr "Поддержка устаревшего формата."
+
+#: src/mtxviewer.c:565
+msgctxt "progress"
+msgid "Headings."
+msgstr "Заголовки."
+
+#: src/mtxviewer.c:566
+msgctxt "progress"
+msgid "Parsed."
+msgstr "Разобрано."
+
+#: src/mtxviewer.c:567
+msgctxt "progress"
+msgid "Units optimized."
+msgstr "Элементы оптимизированы."
+
+#: src/mtxviewer.c:568
+msgctxt "progress"
+msgid "Inlines optimized."
+msgstr "Встроенные элементы оптимизированы."
+
+#: src/mtxviewer.c:569
+msgctxt "progress"
+msgid "Blocks optimized."
+msgstr "Блоки оптимизированы."
+
+#: src/mtxviewer.c:570
+msgctxt "progress"
+msgid "Tables loaded."
+msgstr "Таблицы загружены."
+
+#: src/mtxviewer.c:571
+msgctxt "progress"
+msgid "Tables formatted."
+msgstr "Таблицы отформатированы."
+
+#: src/mtxviewer.c:572
+msgctxt "progress"
+msgid "Text filters applied."
+msgstr "Текстовые фильтры применены."
+
+#: src/mtxviewer.c:573
+msgctxt "progress"
+msgid "Text ready."
+msgstr "Текст готов."
+
+#: src/mtxviewer.c:574
+msgctxt "progress"
+msgid "Table of Contents."
+msgstr "Оглавление."
+
+#: src/mtxviewer.c:575
+msgctxt "progress"
+msgid "Markup ready."
+msgstr "Разметка готова."
+
+#: src/mtxviewer.c:576
+msgctxt "progress"
+msgid "Rendering page..."
+msgstr "Отрисовка страницы..."
+
+#: src/mtxviewer.c:577
+msgctxt "progress"
+msgid "Content loaded."
+msgstr "Содержимое загружено."
+
+#: src/mtxviewer.c:578
+msgctxt "progress"
+msgid "Links loaded."
+msgstr "Ссылки загружены."
+
+#: src/mtxviewer.c:579
+msgctxt "progress"
+msgid "Lines indented."
+msgstr "Строки с отступами."
+
+#: src/mtxviewer.c:580
+msgctxt "progress"
+msgid "Page rendered."
+msgstr "Страница отрисована."
+
+#: src/mtxviewer.c:581
+msgctxt "progress"
+msgid "Done."
+msgstr "Готово."
+
+#: src/mtxviewer.c:738
+msgid "::: Action not allowed while the page is loading :::"
+msgstr "::: Действие не разрешено во время загрузки страницы :::"
+
+#: src/mtxviewer.c:1111
+#, c-format
+msgctxt "1=path:2=error"
+msgid ""
+"%1$s:\n"
+"%2$s."
+msgstr ""
+"%1$s:\n"
+"%2$s."
+
+#: src/mtxviewer.c:1161
+msgid "Searching ..."
+msgstr "Поиск ..."
+
+#: src/mtxviewer.c:1171
+msgid "Loading ..."
+msgstr "Загрузка ..."
+
+#: src/mtxviewer.c:1181
+#, c-format
+msgid "Loading %s ..."
+msgstr "Загрузка %s ..."
+
+#: src/mtxviewer.c:1440
+msgid "Cancelling..."
+msgstr "Отмена..."
+
+#: src/mtxviewer.c:1548
+#, c-format
+msgid "%s: Error: %s\n"
+msgstr "%s: Ошибка: %s\n"
+
+#: src/mtxviewer.c:1669
+msgid "Search complete."
+msgstr "Поиск завершён."
+
+#: src/mtxviewer.c:1673
+msgid "Loaded."
+msgstr "Загружено."
+
+#: src/mtxviewer.c:1678
+#, c-format
+msgid "%1$s loaded."
+msgstr "%1$s загружен."
+
+#: src/mtxviewer.c:1744
+#, c-format
+msgid "Link to %s"
+msgstr "Ссылка на %s"
+
+#: src/mtxviewer.c:2124
+#, c-format
+msgid "%d document examined"
+msgid_plural "%d documents examined"
+msgstr[0] "проверен %d документ"
+msgstr[1] "проверено %d документа"
+msgstr[2] "проверено %d документов"
+
+#: src/mtxviewer.c:2130
+#, c-format
+msgid "%d document found"
+msgid_plural "%d documents found"
+msgstr[0] "найден %d документ"
+msgstr[1] "найдено %d документа"
+msgstr[2] "найдено %d документов"
+
+#: src/mtxviewer.c:2135
+#, c-format
+msgctxt "search:1=#terms:2=terms:3=```"
+msgid "%1$d search term %3$s %2$s %3$s"
+msgid_plural "%1$d search terms %3$s %2$s %3$s"
+msgstr[0] "%1$d поисковый термин %3$s %2$s %3$s"
+msgstr[1] "%1$d поисковых термина %3$s %2$s %3$s"
+msgstr[2] "%1$d поисковых терминов %3$s %2$s %3$s"
+
+#: src/mtxviewer.c:2139
+#, c-format
+msgctxt "search:1=ctr_subjects,2=ctr_results:3=terms"
+msgid ""
+"### %1$s, %2$s, %3$s\n"
+"# \n"
+msgstr ""
+"### %1$s, %2$s, %3$s\n"
+"# \n"
+
+#: src/mtxviewer.c:2431
+msgid "::: Home page not set; specify it when launching the program :::"
+msgstr "::: Домашняя страница не установлена; задайте её при запуске программы :::"
+
+#: src/mtxviewer.c:2497
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: src/mtxviewer.c:2500
+msgid "_Cancel"
+msgstr "_Отмена"
+
+#: src/mtxviewer.c:2501
+msgid "_Open"
+msgstr "_Открыть"
+
+#: src/mtxviewer.c:2505
+msgid "All files"
+msgstr "Все файлы"
+
+#: src/mtxviewer.c:2510
+msgid "Text files"
+msgstr "Текстовые файлы"
+
+#: src/mtxviewer.c:2514
+msgid "Markdown files"
+msgstr "Файлы Markdown"
+
+#: src/mtxviewer.c:2699
+msgctxt "error page back-link label"
+msgid "Back"
+msgstr "Назад"
+
+#: src/mtxviewer.c:2941
+msgid "Open file..."
+msgstr "Открыть файл..."
+
+#: src/mtxviewer.c:2944
+msgid "(Ctrl-O) Open file..."
+msgstr "(Ctrl-O) Открыть файл..."
+
+#: src/mtxviewer.c:2953
+msgid "Home"
+msgstr "Домой"
+
+#: src/mtxviewer.c:2956
+msgid "(Alt-H) Reload the home page"
+msgstr "(Alt-H) Перезагрузить домашнюю страницу"
+
+#: src/mtxviewer.c:2966
+msgid "Back"
+msgstr "Назад"
+
+#: src/mtxviewer.c:2969
+msgid "(Alt-B) Navigate back to the previous page"
+msgstr "(Alt-B) Вернуться к предыдущей странице"
+
+#: src/mtxviewer.c:2981
+msgid "Forward"
+msgstr "Вперёд"
+
+#: src/mtxviewer.c:2984
+msgid "(Alt-F) Navigate forward to the next page"
+msgstr "(Alt-F) Перейти к следующей странице"
+
+#: src/mtxviewer.c:2994
+msgid "HTML Preview"
+msgstr "Предпросмотр HTML"
+
+#: src/mtxviewer.c:2996
+msgid "(Alt-P) Preview the page in the browser"
+msgstr "(Alt-P) Предпросмотр страницы в браузере"
+
+#: src/mtxviewer.c:3002
+msgid "(Alt-T) Change Table of Contents depth"
+msgstr "(Alt-T) Изменить глубину оглавления"
+
+#: src/mtxviewer.c:3044
+msgid ""
+"(Alt-S) Set focus on the search field to enter terms\n"
+"(Enter) Search through all documents"
+msgstr ""
+"(Alt-S) Установить фокус в поле поиска для ввода запроса\n"
+"(Enter) Искать по всем документам"
+
+#: src/mtxviewer.c:3049
+msgid ""
+"(Ctrl-F) Search forward in this page (also by primary button click)\n"
+"(Ctrl-B) Search backward (also by opposite button click)"
+msgstr ""
+"(Ctrl-F) Искать вперёд на этой странице (также щелчком основной кнопки)\n"
+"(Ctrl-B) Искать назад (также щелчком противоположной кнопки)"
+
+#: src/mtxviewer.c:3091
+msgid "Cancel page loading"
+msgstr "Отменить загрузку страницы"
+
+#: src/mtxviewer.c:3094
+msgid "(Alt-X) Cancel loading this page"
+msgstr "(Alt-X) Отменить загрузку этой страницы"
+
+#: src/mtxviewer.c:3309
+#, c-format
+msgid "%s: generic error.\n"
+msgstr "%s: общая ошибка.\n"
