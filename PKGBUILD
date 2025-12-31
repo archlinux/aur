@@ -1,7 +1,7 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
 pkgname=ytdl-sub
-pkgver=2025.12.31
+pkgver=2025.12.31.post1
 pkgrel=1
 pkgdesc="Automate downloading and metadata generation with yt-dlp"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0')
 depends=('python' 'yt-dlp' 'python-colorama' 'python-mergedeep' 'python-mediafile' 'python-yaml')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jmbannon/ytdl-sub/archive/$pkgver.tar.gz")
-sha512sums=('ed2eced4cf5869f46f5a6883faefb3c6216e8f7a29354b93fd3293bdceb552ea98a94a8c8694c628f7ba966ace1c204e65b41bba1202da5ef9591b68488a51d8')
+sha512sums=('edc2c0bb7018053c59a1f9211e56c4ccc6316386282dd675bf93609083ad38dece2ae4e2b86cf77c2e48b46c347fc7debb8b75eb6ae371c88098019174840469')
 
 build() {
     cd ytdl-sub-$pkgver
