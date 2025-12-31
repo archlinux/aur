@@ -1,6 +1,6 @@
 pkgbase = witr-bin
 	pkgdesc = A Linux CLI tool that explains the causal chain behind running processes
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/pranshuparmar/witr
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = witr-bin
 	license = Apache-2.0
 	provides = witr
 	conflicts = witr
-	source_x86_64 = witr-bin-0.1.3-amd64::https://github.com/pranshuparmar/witr/releases/download/v0.1.3/witr-linux-amd64
-	source_x86_64 = witr.1::https://github.com/pranshuparmar/witr/releases/download/v0.1.3/witr.1
-	sha256sums_x86_64 = 869e538e3aaf0c5f33f470af8d3de4d479aefaf4dad26bc97e4fb2ce7fee45a6
+	source_x86_64 = witr-bin-0.1.4-amd64::https://github.com/pranshuparmar/witr/releases/download/v0.1.4/witr-linux-amd64
+	source_x86_64 = witr.1::https://github.com/pranshuparmar/witr/releases/download/v0.1.4/witr.1
+	sha256sums_x86_64 = 9e782e16161bbd4cc3159e9ef256c35ca71b0ac9db7c7699d2aec47de785757a
 	sha256sums_x86_64 = f17680e7631eae6f8a10335f2d607c92b1b7db11f9dfa199946d7f28f0e2a8c8
-	source_aarch64 = witr-bin-0.1.3-arm64::https://github.com/pranshuparmar/witr/releases/download/v0.1.3/witr-linux-arm64
-	source_aarch64 = witr.1::https://github.com/pranshuparmar/witr/releases/download/v0.1.3/witr.1
-	sha256sums_aarch64 = 5de713de6cd735d47391ecebc0725a1592e708140786ae320f794be0be0eded5
+	source_aarch64 = witr-bin-0.1.4-arm64::https://github.com/pranshuparmar/witr/releases/download/v0.1.4/witr-linux-arm64
+	source_aarch64 = witr.1::https://github.com/pranshuparmar/witr/releases/download/v0.1.4/witr.1
+	sha256sums_aarch64 = 995cc24777ae996cb036168e8707c2bca55d218d70841facdfff6f30e1d72033
 	sha256sums_aarch64 = f17680e7631eae6f8a10335f2d607c92b1b7db11f9dfa199946d7f28f0e2a8c8
 
 pkgname = witr-bin
