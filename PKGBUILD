@@ -1,8 +1,8 @@
 # Maintainer: nyoravim <nora@bedafamily.com>
 
 pkgname=libnyoravim-git
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=4
 pkgdesc="Personal C utility library."
 arch=("any")
 url="https://github.com/nyoravim/libnyoravim"
