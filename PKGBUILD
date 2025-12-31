@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=13.0.r161.g6c1ed75
+pkgver=16.0.r208.gf30a0b1
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine' 'dotnet-ru
 makedepends=('dotnet-sdk-bin' #dotnet-sdk-bin
 		'git' 'gendesk')
 options=(!strip !debug)
-provides=("${pkgname::-4}")
-conflicts=("${pkgname::-4}" valveresourceformat)
+provides=("${pkgname::-4}" "${pkgname::-4}-cli")
+conflicts=("${pkgname::-4}" valveresourceformat "${pkgname::-4}-cli")
 replaces=(valveresourceformat)
 install=$pkgname.install
 source=("$pkgname::git+$url.git")
@@ -63,7 +63,7 @@ then
 	wineboot -u
 fi
 cd "\$HOME/.${pkgname::-4}"
-DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/${pkgname::-4}.exe "\$@"
+DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/${pkgname::-4}.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/${pkgname::-3}wine" <<-EOF
 #!/usr/bin/env bash
