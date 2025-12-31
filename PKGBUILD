@@ -4,13 +4,15 @@ pkgname=thorvg-git
 pkgbase=thorvg-git
 _pkgname=thorvg
 pkgver=r4245.c498989b7
-pkgrel=1
+pkgrel=2
 pkgdesc="lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 url="https://www.thorvg.org/"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 license=('MIT')
 depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11') # doesn"t work with it either: 'wgpu-native-git')
 makedepends=('meson' 'ninja')
+conflicts=('thorvg')
+provides=('thorvg')
 source=("${_pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git"
 	"${_pkgname}.examples::git+https://github.com/${_pkgname}/${_pkgname}.example.git"
 )
