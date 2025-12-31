@@ -1,0 +1,26 @@
+Backport of:
+https://github.com/jinliu/kdotool/commit/e0a3bff3b5d9882033dd72836e5fcff572b64135
+
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -463,7 +463,7 @@ fn main() -> anyhow::Result<()> {
+     context.dbus_addr = receiver_conn.unique_name().to_string();
+ 
+     if context.remove {
+-        kwin_proxy.method_call("org.kde.kwin.Scripting", "unloadScript", (context.name,))?;
++        let _: () = kwin_proxy.method_call("org.kde.kwin.Scripting", "unloadScript", (context.name,))?;
+         return Ok(());
+     }
+ 
+@@ -537,9 +537,9 @@ fn main() -> anyhow::Result<()> {
+     });
+ 
+     let start_time = chrono::Local::now();
+-    script_proxy.method_call("org.kde.kwin.Script", "run", ())?;
++    let _: () = script_proxy.method_call("org.kde.kwin.Script", "run", ())?;
+     if context.shortcut.is_empty() {
+-        script_proxy.method_call("org.kde.kwin.Script", "stop", ())?;
++        let _: () = script_proxy.method_call("org.kde.kwin.Script", "stop", ())?;
+     }
+ 
+     let journal = Command::new("journalctl")

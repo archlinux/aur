@@ -2,7 +2,7 @@
 
 pkgname=kdotool
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A xdotool clone for KDE Wayland'
 arch=('x86_64')
 url='https://github.com/jinliu/kdotool/'
@@ -13,12 +13,17 @@ depends=(
     'glibc')
 makedepends=(
     'cargo')
-source=("https://github.com/jinliu/kdotool/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('655d4c3d760ab3fdfa3798831c75c7dd7b4be1fe20a808fd18f2835a261d5bd5')
+source=("https://github.com/jinliu/kdotool/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        '010-kdotool-explicitly-specify-return-type-for-dbus-method_call.patch')
+sha256sums=('655d4c3d760ab3fdfa3798831c75c7dd7b4be1fe20a808fd18f2835a261d5bd5'
+            '71ece4a7d3676e0a512d81315de55fcceaa602c35797987d2fa8ec235c265eff')
 
 prepare() {
     export RUSTUP_TOOLCHAIN='stable'
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path="${pkgname}-${pkgver}/Cargo.toml"
+    
+    # fix build with recent rust versions
+    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-kdotool-explicitly-specify-return-type-for-dbus-method_call.patch"
 }
 
 build() {
