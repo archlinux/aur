@@ -35,6 +35,10 @@ post_install() {
     echo "      # Add to ~/.config/niri/config.kdl binds section:"
     echo "      Ctrl+Space { spawn \"qs\" \"ipc\" \"call\" \"hamr\" \"toggle\"; }"
     echo ""
+    echo "==> Troubleshooting:"
+    echo "      View logs: journalctl --user -u hamr -f"
+    echo "      Qt mismatch crash? Rebuild: paru -S quickshell --rebuild"
+    echo ""
 }
 
 post_upgrade() {
@@ -64,6 +68,9 @@ post_upgrade() {
     echo ""
     echo "==> Hamr has been upgraded."
     echo "==> Restart quickshell to apply changes."
+    echo ""
+    echo "==> If hamr crashes after a Qt update, rebuild quickshell:"
+    echo "      paru -S quickshell --rebuild"
     echo ""
 }
 
