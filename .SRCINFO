@@ -1,8 +1,8 @@
 pkgbase = relax-and-recover-git
 	pkgdesc = bootable Linux disaster recovery, formerly rear
-	pkgver = 2.9.r103.g4dd5392b3
+	pkgver = 2.9.r169.g695cb519b
 	pkgrel = 1
-	url = http://relax-and-recover.org/
+	url = https://relax-and-recover.org/
 	arch = any
 	license = GPL
 	makedepends = git
