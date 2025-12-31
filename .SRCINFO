@@ -1,6 +1,6 @@
 pkgbase = jackify-bin
 	pkgdesc = Jackify - Simplifying Wabbajack modlist installation and configuration on Linux
-	pkgver = 0.2.0.8
+	pkgver = 0.2.0.9
 	pkgrel = 1
 	url = https://github.com/Omni-guides/Jackify
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = jackify-bin
 	depends = python-vdf
 	depends = python-packaging
 	depends = python-pycryptodome
-	provides = jackify=0.2.0.8
+	provides = jackify=0.2.0.9
 	conflicts = jackify
-	source = jackify-0.2.0.8.AppImage::https://github.com/Omni-guides/Jackify/releases/download/v0.2.0.8/Jackify.AppImage
-	source = LICENSE-0.2.0.8::https://raw.githubusercontent.com/Omni-guides/Jackify/v0.2.0.8/LICENSE
-	sha256sums = ba0f37bfb7e99a3137db8e4c690d7a2b17509bf0cf842e007ae0d45a22bfb916
+	source = jackify-0.2.0.9.AppImage::https://github.com/Omni-guides/Jackify/releases/download/v0.2.0.9/Jackify.AppImage
+	source = LICENSE-0.2.0.9::https://raw.githubusercontent.com/Omni-guides/Jackify/v0.2.0.9/LICENSE
+	sha256sums = 204b32d44b311b4ce117b77059a1ece993b6854724be3e332df58d6cdbfd43c5
 	sha256sums = ba4feaea2dc97aa54d3510d203c9180105cda05ed23d26c5253a75f2869bd069
 
 pkgname = jackify-bin
