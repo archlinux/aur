@@ -1,7 +1,7 @@
 pkgbase = sessionmanager
 	pkgdesc = cli activity tracker for hyprland
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livaiyena/sessionmanager
 	arch = any
 	license = GPL-3.0-or-later

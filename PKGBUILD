@@ -2,7 +2,7 @@
 
 pkgname=sessionmanager
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="cli activity tracker for hyprland"
 arch=('any')
 url="https://github.com/livaiyena/sessionmanager"
