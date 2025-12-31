@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops'
 url='https://github.com/jmylchreest/histui'
@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6033c9f8a9a41ac5615f021079574a31319a0a476dab8ffabe50b68f7bc76170')
+sha256sums=('12b92eea48de6893912eb7e507b7c7029eb0939ec2c0e2438baf4310d785961a')
 
 build() {
     cd "${pkgname}-${pkgver}"
