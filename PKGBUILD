@@ -1,10 +1,10 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 
 set -u
-_picover='5.04'
+_picover='5.09'
 pkgname='pico'
-pkgver='2.00'
-pkgrel='3'
+pkgver='2.26'
+pkgrel='1'
 pkgdesc="the real pico text editor version ${_picover} from the Alpine Messaging System"
 arch=('i686' 'x86_64')
 #url='https://www.washington.edu/alpine/'
@@ -14,30 +14,25 @@ depends=('ncurses')
 makedepends=('gcc')
 _srcdir="alpine-${pkgver}"
 source=(
-  #"http://ftp.swin.edu.au/alpine/${_srcdir}.tar.bz2"
-  "https://mirror.its.dal.ca/freebsd/distfiles/${_srcdir}/${_srcdir}.tar.bz2"
-  #"https://alpineapp.email/alpine/release/src/${_srcdir}.tar.xz"
-  '0000-Alpine.2.00-safe_flock.patch'
-  '0001-Alpine.2.00-mtest-gets.patch'
-  '0002-Alpine.2.00-mlock-unistd.patch'
-  '0003-Alpine.2.00-dmail-ctype.patch'
-  '0004-Alpine.2.00-tmail-ctype.patch'
-  '0005-Alpine.2.00-charconv-utf8-wcwidth.patch'
+  "https://alpineapp.email/alpine/release/src/${_srcdir}.tar.xz"
+  "maildir-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/maildir.patch.gz"
+  "fancy-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/fancy.patch.gz"
+  "fillpara-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/fillpara.patch.gz"
+  "compose-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/compose.patch.gz"
+  "longurl-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/longurl.patch.gz"
 )
-md5sums=('84e44cbf71ed674800a5d57eed9c1c52'
-         '60229dd00cb66209616a7bb14c986785'
-         '81c42dd80180c4da587326efd03af019'
-         '5d4457eb85c9a8103425dfe13e268210'
-         'd30b84761c742bba56660c14700ed883'
-         '618fd66a70d32093cd3cb1ed89f8d9fb'
-         '67640ffb6bf157e1c45ba55f10e1c823')
-sha256sums=('c85db8405af90375ba2440c85b7952d80996154e9916b83acca558dc82e0a2a6'
-            '636773b9667485e4a2a47ff7f7beb7f77d2bbe1b24c5fdb2166cd0b7bacbcc29'
-            'd3304ccae3dbc10822adb60beb5ca2491e5f95e8efa1296a90097a1c6eb2a2f7'
-            '6353e12ef4ec652b9e6cca6c6c328f0bb11fe236a3cfa8dd8c8a67c9e0ba9269'
-            'ce04b6a160fe7812acca9e4d2d5b2d08299efc09f2398bb1cd4381bee7d01de3'
-            'c69002f8685c3e38c68feca800ac87bbbda16bcd577491a65891c780bb635fee'
-            '32dcc9f13c7d2e71b4f83a9705a68597ce9bea4115716b81754a2ccbcdfa7207')
+md5sums=('0943b31c476276e924b02afbfaf98392'
+         'a51d0537d56a5903e59f2e152e859d4d'
+         'e3465d2fede6793e03535873333f79c9'
+         'cb30683e7834bf61a400930a2161b6df'
+         'af6eae2ba290eba783365d266255cea9'
+         '4a1e702f0b52190466e48cacaee184eb')
+sha256sums=('c0779c2be6c47d30554854a3e14ef5e36539502b331068851329275898a9baba'
+            '57808418b02a0e1cb826940068aa10eaed827b2b23609f05fd2015ec92043d37'
+            'c178459dd885e4caa32640e5ce63c689ec4752a1e039ddb149e034b935fe5181'
+            '960bb9656353529964e86f0f782bf032f9aae36af9493ed7f2c8ccfd5695330f'
+            '013d31d95dbf6e31c1ebfdcb745481cf31fd0df466b81e077a7538dcfe75a9f4'
+            'b29b4b6f8986c4c07ce2db21b6ff27341b4f7c0844c3dee8c1c63b0536fc88b2')
 
 prepare() {
   local -; set -u
@@ -70,27 +65,6 @@ prepare() {
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
-  pushd 'imap/src/osdep/unix' > /dev/null
-  local _sedsutime=(
-    -e '#fix utime'
-    -e '/stdio\.h/ a #include <utime.h>'
-    -e 's:time_t tp\[2]:struct utimbuf tp:g'
-    -e 's:tp\[0]:tp.actime:g'
-    -e 's:tp\[1]:tp.modtime:g'
-    -e '/utime\s*\(/ s:,tp\):,\&tp):g'
-  )
-  sed -E "${_sedsutime[@]}" -i $(grep -lFe 'time_t tp[2]' *.c)
-
-  local _sedsdirent=(
-    -e '#fix select'
-    -e '/select/ s:\(struct direct \*:(const struct direct *:g'
-    -e '#fix dirent'
-    -e 's:const void \*d1,const void \*d2:const struct dirent **d1, const struct dirent **d2:g'
-    -e 's:\*\(struct direct \*\*\) d:*d:g'
-  )
-  sed -E "${_sedsdirent[@]}" -i $(grep -lFe '(struct direct ' *.c)
-  popd > /dev/null
-
   # Disable pam
   sed -e 's:am_start:omme_start:g' -i 'configure'
   #_configure
@@ -121,8 +95,6 @@ build() {
   make 'c-client.d'
   nice -n1 make -C 'pith'
   nice -n1 make -C 'pico'
-  # making Alpine 2.00 crashes on pam errors
-  # Disabling pam gets the Alpine make farther but then it crashes on a TCP error
 }
 
 package() {
@@ -130,6 +102,6 @@ package() {
   cd "${_srcdir}"
   make DESTDIR="${pkgdir}" install -C 'pico'
   rm -f "${pkgdir}/usr/bin"/{pilot,alpine,rpdump,rpload}
-  install -Dpm644 'doc/pico.1' -t "${pkgdir}/usr/share/man/man1/"
+  install -Dpm644 'doc/man1/pico.1' -t "${pkgdir}/usr/share/man/man1/"
 }
 set +u
