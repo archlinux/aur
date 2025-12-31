@@ -5,7 +5,7 @@ pkgver=1.1.3
 pkgrel=10
 pkgdesc='Parallel SSH Executor'
 arch=('x86_64')
-url="https://github.com/bahamas10/$pkgname"
+url='https://github.com/bahamas10/sshp'
 license=('MIT')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -24,9 +24,9 @@ check() {
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm755 sshp "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 man/sshp.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 CHANGES.md "$pkgdir/usr/share/doc/$pkgname/CHANGES.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 sshp -t "$pkgdir/usr/bin"
+    install -Dm644 man/sshp.1 -t "$pkgdir/usr/share/man/man1"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/sshp"
+    install -Dm644 CHANGES.md -t "$pkgdir/usr/share/doc/sshp"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/sshp"
 }
