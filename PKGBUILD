@@ -1,6 +1,6 @@
 pkgname=kumono-bin
 pkgver=0.56.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64' 'aarch64')
@@ -18,13 +18,13 @@ provides=('kumono')
 conflicts=('kumono' 'kumono-git')
 
 package_x86_64() {
-    install -Dm755 "kumono-$pkgver.x64" -t "$pkgdir/usr/bin/kumono"
+    install -Dm755 "kumono-$pkgver.x64" "$pkgdir/usr/bin/kumono"
     install -Dm644 "kumono-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "kumono-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
 package_aarch64() {
-    install -Dm755 "kumono-$pkgver.arm64" -t "$pkgdir/usr/bin/kumono"
+    install -Dm755 "kumono-$pkgver.arm64" "$pkgdir/usr/bin/kumono"
     install -Dm644 "kumono-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "kumono-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
