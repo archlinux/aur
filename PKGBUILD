@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=phylax-git
-pkgver=0.1.0.r2.g2fb3e8d
+pkgver=0.1.1.r0.gfe8a81e
 pkgrel=1
 pkgdesc="A Polkit authentication agent written in GTK4"
 arch=('x86_64')
