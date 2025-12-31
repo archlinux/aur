@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.5.0.r35.g3de9411
+pkgver=0.5.0.r180.gd97bc73
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -40,9 +40,10 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
+  bsdtar -a -cf docs/tldr.zip --files-from /dev/null # Mask warning
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" #LOCALES=n
-  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #"shred shuf factor"
+  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #shred shuf factor"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
 }
