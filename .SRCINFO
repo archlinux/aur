@@ -1,6 +1,6 @@
 pkgbase = texlive-awesome-cv-git
 	pkgdesc = LaTeX template for your outstanding job application.
-	pkgver = r261.dc50c6d
+	pkgver = r273.12dd17c
 	pkgrel = 1
 	url = https://github.com/posquit0/Awesome-CV
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = texlive-awesome-cv-git
 	makedepends = git
 	depends = adobe-source-sans-fonts
 	depends = texlive-bin
+	depends = ttf-roboto
 	provides = Awesome-CV
 	source = Awesome-CV::git+https://github.com/posquit0/Awesome-CV.git
 	source = 1.patch

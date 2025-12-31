@@ -8,13 +8,13 @@
 readonly _pkgname="Awesome-CV"
 
 pkgname="texlive-awesome-cv-git"
-pkgver="r261.dc50c6d"
+pkgver="r273.12dd17c"
 pkgrel="1"
 pkgdesc="LaTeX template for your outstanding job application."
 arch=("any")
 url="https://github.com/posquit0/${_pkgname}"
 license=("LPPL-1.3c")
-depends=("adobe-source-sans-fonts" "texlive-bin")
+depends=("adobe-source-sans-fonts" "texlive-bin" "ttf-roboto")
 makedepends=("git")
 provides=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git"
