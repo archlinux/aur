@@ -1,0 +1,46 @@
+pkgbase = bms-shell
+	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Heroblaze2310/bms-shell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = dgop
+	depends = inter-font
+	depends = quickshell
+	depends = ttf-fira-code
+	depends = ttf-material-symbols-variable
+	optdepends = brightnessctl: Laptop display brightness control
+	optdepends = cava: Audio visualizer
+	optdepends = cliphist: Clipboard history functionality
+	optdepends = matugen: Dynamic wallpaper-based theming
+	optdepends = networkmanager: Required for network management
+	optdepends = qt5ct: Qt5 application theming
+	optdepends = qt6ct: Qt6 application theming
+	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
+	source = https://github.com/Heroblaze2310/bms-shell/raw/main/BakraDEMaterialShell-1.0.3.tar.gz
+	sha256sums = 073132dadd4b7067193e6ad1c5791d0acb27307518df55a341cbb62da9a05918
+
+pkgname = bms-shell
+	depends = dgop
+	depends = inter-font
+	depends = quickshell
+	depends = ttf-fira-code
+	depends = ttf-material-symbols-variable
+	depends = bms-shell-compositor
+
+pkgname = bms-shell-hyprland
+	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles (for Hyprland)
+	depends = bms-shell
+	depends = hyprland
+	optdepends = 
+	provides = bms-shell-compositor
+
+pkgname = bms-shell-niri
+	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles (for Niri)
+	depends = bms-shell
+	depends = niri
+	optdepends = 
+	provides = bms-shell-compositor
