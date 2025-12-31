@@ -1,6 +1,6 @@
 # Maintainer: Artem Fedulaev <artem.fedulaev11@email.com>
 pkgname=lwm-legacy
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 replaces=('lwm-wm')
 conflicts=('lwm-wm')
@@ -12,7 +12,7 @@ depends=('libxinerama' 'libx11')
 makedepends=('gcc' 'make') 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brokenallmute/lwm/archive/refs/tags/${pkgver}.tar.gz")
 
-sha256sums=('1bfa5352bdf22f1da6769ceebb1955e6e422dfb0d57bc25e4dc2b6d0c12f4781')
+sha256sums=('8217f8b85a13aff28cf7fe04f7fb71dd6cbf4b67ea36a403baf6856e4ffe58f4')
 
 build() {
     cd "lwm-${pkgver}"
