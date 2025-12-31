@@ -1,4 +1,5 @@
 # Maintainer: Your Name <youremail@example.com>
+# Packaging Repo: https://github.com/orange-guo/aur-packages
 
 # ---------------------------------------------------------------------------
 # [更新指南]
