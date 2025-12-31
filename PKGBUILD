@@ -1,19 +1,26 @@
 # Maintainer: sfs <sfslinux@gmail.com>
 
 pkgname=brushshe
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Raster graphical editor"
 arch=('any')
 url="https://github.com/limafresh/Brushshe"
 license=('MPL2.0' 'CC0')
 depends=('python' 'tk' 'python-pillow')
-source=("brushshe-${pkgver}.deb::https://github.com/limafresh/Brushshe/releases/download/v2.3.0-vientiane/brushshe.deb"
-	"brushshe.desktop")
-sha256sums=('25964eb843ee353beddf4f40e1e308c115837490a09c90db4421492397aac697'
-	    '93bf03e1c2b41f671aea4701b4c0685ac74051c9e343d37429b3f0de0ee705ce')
+source=("brushshe.desktop")
+sha256sums=('SKIP'
+	    'e86d31e40f1172a5fe54b413193aba58ad42fd46fa7e5a89271f50787e04decc')
 
+pkgver() {
+    echo $_pkgver
+}
 prepare() {
+    source=("`wget -qO- https://api.github.com/repos/limafresh/Brushshe/releases/latest |jq -r '.assets[].browser_download_url' |grep deb`")
+    _pkgver="$(echo "$source" | sed -n 's|.*/v\([0-9.]\+\).*|\1|p')"
+    echo $source $pkgver
+        wget "$source" -O ${pkgname}.deb &&
+	bsdtar -xf ${pkgname}.deb &&
     tar -xf data.tar.xz
 }
 
