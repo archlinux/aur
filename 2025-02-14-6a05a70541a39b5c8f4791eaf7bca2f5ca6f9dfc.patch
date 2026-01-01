@@ -1,5 +1,16 @@
---- misc/60-casio-calculators.rules.in
-+++ misc/60-casio-calculators.rules.in
+From 6a05a70541a39b5c8f4791eaf7bca2f5ca6f9dfc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Baltaz=C3=A1r=20Radics?= <baltazar.radics@gmail.com>
+Date: Fri, 14 Feb 2025 00:41:56 +0100
+Subject: [PATCH] fix: fix udev rule generation
+
+---
+ misc/60-casio-calculators.rules.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/misc/60-casio-calculators.rules.in b/misc/60-casio-calculators.rules.in
+index efc4123..6e52d63 100644
+--- a/misc/60-casio-calculators.rules.in
++++ b/misc/60-casio-calculators.rules.in
 @@ -1,3 +1,3 @@
 -ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6101", GROUP="@UDEV_GROUP@"
 -ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6102", GROUP="@UDEV_GROUP@"
@@ -7,3 +18,6 @@
 +ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6101", GROUP="@CAHUTE_UDEV_GROUP@"
 +ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6102", GROUP="@CAHUTE_UDEV_GROUP@"
 +ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6103", GROUP="@CAHUTE_UDEV_GROUP@"
+-- 
+GitLab
+
