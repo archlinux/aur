@@ -5,7 +5,7 @@ if [ "$(id -u)" -ne 0 ] ; then
 		grep -vE '^(\s*$|#)' $conf | while read -r line ; do
 			sanitized_line=$(echo "$line" | sed -e 's/[^A-Za-z0-9/_]//g')
 			if [ -d "$sanitized_line" ]; then
-				duperemove -hdr --hashfile="$line"/.duperemove "$line"
+				duperemove -hdr --io-threads=$(($(nproc)/2)) --hashfile="$line"/.duperemove "$line"
 			fi
 		done
 	else
