@@ -6,7 +6,7 @@
 
 _pkgname=rsyslog
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=8.2512.0+33.r19435.20251218.853165bf2
+pkgver=8.2512.0+114.r19516.20260101.468993279
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout."
 _giturl="https://github.com/rsyslog/rsyslog"
