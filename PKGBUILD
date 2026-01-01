@@ -1,7 +1,7 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=stream-alert
-pkgver=1.0.1
-tag=v1.0.1
+pkgver=1.0.2
+tag=v1.0.2
 pkgrel=1
 pkgdesc="Get a Telegram notification when your webcam or screen changes"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "stream-alert.install"
 )
 options=(!strip)
-sha256sums=('a05a7acd73b305c5c02561a160e60ed8cd7362e953293949156129564c25e7ef'
+sha256sums=('efa759bbe4edf8c26273cd54ce5796c722ee0a246be90b272d12a2bc3ab6c2fa'
             '18c7fd76bb4dd6dc1f2206f604a0a8751d944b1d47c963e0f61bb006967642a7'
             '0ae764b4158b2dc475d118c8a750da97ab09222674260b8ea587119fe2973fc3')
 
