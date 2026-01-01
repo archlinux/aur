@@ -1,15 +1,15 @@
 pkgbase = radio-record-cli
 	pkgdesc = Terminal radio player for Radio Record stations
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/isalikov/radio-record-cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = mpv
-	source_x86_64 = radio-record-cli-1.0.0.tar.gz::https://github.com/isalikov/radio-record-cli/releases/download/v1.0.0/radio-record-cli_1.0.0_linux_amd64.tar.gz
+	source_x86_64 = radio-record-cli-1.1.1.tar.gz::https://github.com/isalikov/radio-record-cli/releases/download/v1.1.1/radio-record-cli_1.1.1_linux_amd64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = radio-record-cli-1.0.0.tar.gz::https://github.com/isalikov/radio-record-cli/releases/download/v1.0.0/radio-record-cli_1.0.0_linux_arm64.tar.gz
+	source_aarch64 = radio-record-cli-1.1.1.tar.gz::https://github.com/isalikov/radio-record-cli/releases/download/v1.1.1/radio-record-cli_1.1.1_linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = radio-record-cli
