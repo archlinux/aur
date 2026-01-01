@@ -1,6 +1,6 @@
 # Maintainer: Vinay <vinaymeldrum@gmail.com>
 pkgname=go-send-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Secure file transfer tool with challenge-response authentication (Binary)"
 arch=('x86_64' 'aarch64')
@@ -20,5 +20,5 @@ package() {
   # Install license (downloaded or embedded if possible, but for binary packages often skipped or fetched separately)
   # For now, we assume the user accepts the license at the URL.
 }
-sha256sums_x86_64=('c68c704ce32d4a8a811fcc8e824abf6bfc8af96e4080414829e13a79b1f727ba')
-sha256sums_aarch64=('ce1894df313523b674b7de86dd454cf2d2ec6d593e1ad15598c7ba6ac23964e1')
+sha256sums_x86_64=('09d9a218db141ac6811d9bc816b81a6ed6aea2a6a25e47b4f00e673e45366157')
+sha256sums_aarch64=('4eb019c8d7349a15257119752a8cb96163baf5868700e162d947635721c74a6d')
