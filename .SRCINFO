@@ -1,12 +1,12 @@
 pkgbase = continuwuity-git
 	pkgdesc = a very cool, featureful fork of conduit (rust matrix homeserver)
-	pkgver = 0.5.0.5701.gc0f1d8eab
+	pkgver = 0.5.1.5872.g6c61b3ec5
 	pkgrel = 1
 	epoch = 1
 	url = https://forgejo.ellis.link/continuwuation/continuwuity
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = gcc14
+	makedepends = gcc
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
