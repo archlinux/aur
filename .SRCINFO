@@ -1,0 +1,16 @@
+pkgbase = curd-git
+	pkgdesc = Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc.
+	pkgver = 20260102.r1f990ab
+	pkgrel = 1
+	url = https://github.com/Wraient/curd
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = mpv
+	depends = rofi
+	depends = ueberzugpp
+	provides = curd
+	conflicts = curd
+
+pkgname = curd-git
