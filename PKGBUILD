@@ -9,7 +9,7 @@ license=('GPL')
 depends=('bash' 'coreutils' 'grep' 'awk' 'xorg-xrandr' 'lm_sensors') # Добавляем все нужные утилиты
 
 # Источники для makepkg. Мы используем локальные файлы
-source=("superfetch" "superfetch-config") 
+source=('superfetch' 'superfetch-config' 'https://github.com/zuterogwindows/superfetch-bash/archive/main.tar.gz') 
 
 # Так как это локальные файлы, мы используем 'SKIP'
 sha256sums=('SKIP' 'SKIP') 

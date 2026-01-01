@@ -13,6 +13,7 @@ pkgbase = superfetch
 	depends = lm_sensors
 	source = superfetch
 	source = superfetch-config
+	source = https://github.com/zuterogwindows/superfetch-bash/archive/main.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
