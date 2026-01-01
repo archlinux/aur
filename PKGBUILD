@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r598.8ee487b
+pkgver=r599.e09d349
 pkgrel=1
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
