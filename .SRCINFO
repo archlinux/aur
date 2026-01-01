@@ -1,6 +1,6 @@
 pkgbase = sandwine-git
 	pkgdesc = A command-line tool to run Windows applications on GNU/Linux that offers more isolation than raw Wine and more convenience than raw bubblewrap. (Uses bubblewrap.)
-	pkgver = 6.0.0+15.r366.20251215.39926b6
+	pkgver = 6.0.0+17.r368.20251219.fcc1bc3
 	pkgrel = 1
 	url = https://pypi.org/project/sandwine/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = sandwine-git
 	depends = python>=3.9
 	depends = wine
 	optdepends = python-coloredlogs>=15.0.1
-	provides = sandwine=6.0.0+15.r366.20251215.39926b6
-	provides = python-sandwine=6.0.0+15.r366.20251215.39926b6
-	provides = python-sandwine-git=6.0.0+15.r366.20251215.39926b6
+	provides = sandwine=6.0.0+17.r368.20251219.fcc1bc3
+	provides = python-sandwine=6.0.0+17.r368.20251219.fcc1bc3
+	provides = python-sandwine-git=6.0.0+17.r368.20251219.fcc1bc3
 	conflicts = sandwine
 	conflicts = python-sandwine
 	source = sandwine::git+https://github.com/hartwork/sandwine.git
