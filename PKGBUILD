@@ -1,11 +1,11 @@
 pkgname=thermometer
 pkgver=1.3.3
 pkgrel=1
-pkgdesc="A simple CPU frequency management utility using cpupower and lm_sensors -- just in one package"
+pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
 url="https://github.com/watchmypizza/thermometer"
 license=('GPL3')
-depends=('dotnet-runtime' 'cpupower' 'lm_sensors' 'bash' 'curl')
+depends=('dotnet-runtime' 'bash' 'curl')
 makedepends=('dotnet-sdk')
 
 options=('!debug')
@@ -31,6 +31,7 @@ package() {
 exec dotnet /usr/lib/thermometer/thermometer.dll "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/thermometer"
+  setcap "cap_sys_admin=ep" /usr/bin/thermometer
 }
 
 clean() {
