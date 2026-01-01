@@ -4,7 +4,7 @@
 
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.10.1.r1174.fe108b5
+pkgver=v1.12.1.r1426.39d9acc
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
@@ -12,8 +12,8 @@ url=https://github.com/vadimcn/codelldb
 license=(MIT)
 provides=("$_pkgname" "vscode-lldb")
 depends=(lldb)
-makedepends=(cmake cargo npm python libc++ git)
-options=(!debug strip) #Debug package is broken
+makedepends=(cmake cargo nodejs npm python libc++)
+options=(!lto)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -27,17 +27,51 @@ pkgver() {
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cd "$_pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "$_pkgname"
+
+  # The tests break if the flags `--remap-path-prefix=...` or `-ffile-prefix-map=...` are given to
+  # C/C++/Rust compilers when building the debuggee. These flags are supplied by `makepkg` through
+  # environment variables `CFLAGS`, `CXXFLAGS` and `RUSTFLAGS` to ensure that executables in the
+  # built package don't contain references to `$srcdir`. Fortunately, the debuggee executable is
+  # built in a separate CMake project, which can easily be isolated in order to not receive the
+  # those flags.
+  local _pat='${CMAKE_COMMAND} \(${CMAKE_SOURCE_DIR}\|--build ${CMAKE_CURRENT_BINARY_DIR}\)\/debuggee'
+  local _rep='${CMAKE_COMMAND} -E env --unset=CFLAGS --unset=CXXFLAGS --unset=RUSTFLAGS --unset=LDFLAGS &'
+  sed -i "s/$_pat/$_rep/g" ./CMakeLists.txt
+
+  # This change is necessary for building the package with Clang >= 20. However, it breaks
+  # compatibility of the package with LLDB < 18. This shouldn't be a problem since it is linked
+  # with the system installation of LLDB, whose version will be the same as that of Clang's and
+  # the rest of LLVM.
+  # sed -i 's|^\(\s*\)\(.*is_default_constructible<lldb::SBCommandInterpreter>.*\)$|\1//\2|' \
+  #   ./src/lldb/src/sb/sbcommandinterpreter.rs
+
+  cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  export CFLAGS="-mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security"
-  # Doesn't build with -fno-plt
-  cd "$_pkgname-$pkgver/"
-  cmake -B build -DLLDB_PACKAGE=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
-  cmake --build build --target adapter
+  cd "$_pkgname"
+
+  local cmake_options=(
+    # For building the package with Clang:
+    # -DCMAKE_TOOLCHAIN_FILE="$PWD/cmake/toolchain-$(rustc --print host-tuple | cut -d- -f1,3-).cmake"
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DLLDB_PACKAGE=/usr
+    -DLLVM_SOURCE_DIR="$PWD"
+    -DCMAKE_CTEST_ARGUMENTS="--verbose"
+    -DTEST_TIMEOUT=20000
+  )
+
+  cmake -B build -Wno-dev "${cmake_options[@]}"
+  cmake --build build --target adapter debuggee adapter_tests
+}
+
+check() {
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$_pkgname"
+  ctest --test-dir build --verbose -R '^adapter'
 }
 
 package() {
@@ -49,7 +83,7 @@ package() {
     shopt -s globstar nullglob
 
     # Files that need to be installed:
-    # https://github.com/vadimcn/codelldb/blob/v1.11.0/CMakeLists.txt#L200-L213
+    # https://github.com/vadimcn/codelldb/blob/v1.12.1/CMakeLists.txt#L182-L197
 
     install -Dm644 -t "$libdir" platform.ok
 
@@ -57,7 +91,7 @@ package() {
       install -Dm755 "$file" "$libdir/$file"
     done
 
-    local file; for file in adapter/scripts/**/*.py formatters/**/*.py; do
+    local file; for file in adapter/scripts/**/*.py formatters/**/*.py lang_support/**/*.py; do
       install -Dm644 "$file" "$libdir/$file"
     done
   )
