@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=typeshare
-pkgver=1.13.3
+pkgver=1.13.4
 pkgrel=1
 pkgdesc='Command line tool for generating files with typeshare'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(APACHE MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('853806d1a5eb824fd520963b58da091c793442936f81edc474051dc74a9f324bddc553a0b15d536bcdab45f1cdd06562525077284ad1bd564d013b3c05d867c0')
+b2sums=('b3ef5fd0745b8101bf8fc37b8aba9f62506125f2f5ea52b70ea95509e64d9542b20da9d25d2c63c25f2aa1d7e7aa52faeaf37179f3f3270a6ea08ab0bf2a496c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
