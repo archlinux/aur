@@ -1,6 +1,6 @@
 # Maintainer: Iakov Salikov <me@isalikov.com>
 pkgname=radio-record-cli
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Terminal radio player for Radio Record stations"
 arch=('x86_64' 'aarch64')
