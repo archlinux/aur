@@ -43,7 +43,7 @@ package() {
     install -Dm644 $_f "$pkgdir/usr/share/$pkgname/skins/$_f"
   done
 
-  install -Dm644 "$srcdir/free42.desktop" "$pkgdir/usr/share/applications/com.thomasokken.free42.desktop"
+  install -Dm644 "$srcdir/free42.desktop" "$pkgdir/usr/share/applications/free42.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
