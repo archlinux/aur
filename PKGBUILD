@@ -13,6 +13,7 @@ depends=(crypto++
          libxkbcommon
          qt6-base
          qt6-declarative
+         qt6-webengine
          qt6-websockets
          qt6-webview
          sdl3)
@@ -41,7 +42,7 @@ prepare() {
 }
 
 build() {
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_WEBENGINE=OFF -S "$_pkgname"
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -S "$_pkgname"
     cmake --build build --config Release
 }
 

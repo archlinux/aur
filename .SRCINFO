@@ -17,6 +17,7 @@ pkgbase = bb_launcher
 	depends = libxkbcommon
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-webengine
 	depends = qt6-websockets
 	depends = qt6-webview
 	depends = sdl3
