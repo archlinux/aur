@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gitswitcher
-pkgver=1.1.4
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Secure Git identity and SSH/GPG key management tool for seamless account switching'
 arch=('x86_64')
