@@ -1,0 +1,11 @@
+pkgbase = python-meteostat
+	pkgdesc = Access and analyze historical weather and climate data with Python
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/meteostat/meteostat
+	arch = any
+	license = MIT
+	source = python-meteostat-2.0.0.tar.gz::https://github.com/meteostat/meteostat/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 36352ed451605d2909092b5b4199f8c22bb98dff43b3f1a358fd7d2464bb02b7
+
+pkgname = python-meteostat
