@@ -1,7 +1,7 @@
 pkgbase = kwin-effects-better-blur-dx-x11
 	pkgdesc = KWin Better Blur DX effect fork with window class force blur feature (X11)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xarblu/kwin-effects-better-blur-dx
 	install = kwin-effects-better-blur-dx-x11.install
 	arch = x86_64
