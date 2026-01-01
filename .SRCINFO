@@ -1,17 +1,18 @@
 pkgbase = jhentai-bin
 	pkgdesc = A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.
-	pkgver = v8.0.10_302
+	pkgver = v8.0.10_303
 	pkgrel = 1
 	url = https://github.com/jiangtian616/JHenTai
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = webkit2gtk-4.1
+	depends = zenity
 	conflicts = jhentai-git
 	options = !debug
-	source_x86_64 = jhentai-8.0.10_302.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.10+302/JHenTai-8.0.10+302-Linux-x64.deb
-	sha256sums_x86_64 = bd6b110436e8c091cc3749f8aaf58a1a5ee9b3d42fd17ddd5d2d051fb3ddbe21
-	source_aarch64 = jhentai-8.0.10_302.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.10+302/JHenTai-8.0.10+302-Linux-arm64.deb
-	sha256sums_aarch64 = 49ae6742bf0433faa804ef43130c399def276b2b3122091336190dbf842213e0
+	source_x86_64 = jhentai-8.0.10_303.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.10+303/JHenTai-8.0.10+303-Linux-x64.deb
+	sha256sums_x86_64 = 7501ccf5c5cd7e5107953408ca8eded3371ecf529cedc94e00b4c5e1d014dddb
+	source_aarch64 = jhentai-8.0.10_303.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.10+303/JHenTai-8.0.10+303-Linux-arm64.deb
+	sha256sums_aarch64 = 9a2203219e0a4ba10473ee0ae4157046eb143e37bd47ecb95b25454cb10fbe4d
 
 pkgname = jhentai-bin
