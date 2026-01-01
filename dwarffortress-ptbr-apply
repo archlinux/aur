@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import csv
 import json
 import os
 import re
@@ -69,12 +70,69 @@ def select_dict_entry(dicts: list[dict], code: str) -> dict:
     die(f"dictionary not found for code {code}")
 
 
+def load_overrides(path: Path) -> dict[str, str]:
+    overrides: dict[str, str] = {}
+    with path.open(encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if not row:
+                continue
+            if row[0].strip().startswith("#"):
+                continue
+            if len(row) < 2:
+                continue
+            src = row[0].strip()
+            dst = row[1].strip()
+            if src:
+                overrides[src] = dst
+    return overrides
+
+
+def apply_overrides(dictionary_path: Path, overrides: dict[str, str]) -> int:
+    if not overrides:
+        return 0
+
+    rows: list[list[str]] = []
+    existing: set[str] = set()
+    applied = 0
+
+    with dictionary_path.open(encoding="cp850", errors="replace", newline="") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if len(row) < 2:
+                rows.append(row)
+                continue
+            src = row[0]
+            existing.add(src)
+            if src in overrides:
+                row = [src, overrides[src], *row[2:]]
+                applied += 1
+            rows.append(row)
+
+    for src, dst in overrides.items():
+        if src not in existing:
+            rows.append([src, dst])
+            applied += 1
+
+    with dictionary_path.open("w", encoding="cp850", errors="replace", newline="") as f:
+        writer = csv.writer(f, lineterminator="\r\n", quoting=csv.QUOTE_ALL)
+        writer.writerows(rows)
+
+    return applied
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Apply DFInt PT-BR localization to system Dwarf Fortress")
     parser.add_argument("--df-dir", default="/opt/dwarffortress", help="Dwarf Fortress install dir")
     parser.add_argument("--lang", default="pt-BR", help="language code (default: pt-BR)")
     parser.add_argument("--version", default=None, help="override DF version (e.g. 53.06)")
     parser.add_argument("--user", default=None, help="create dfint-data symlink for this user (default: sudo user)")
+    parser.add_argument(
+        "--overrides",
+        action="append",
+        default=[],
+        help="path to override CSV (repeatable). Default: packaged overrides for lang",
+    )
     args = parser.parse_args()
 
     df_dir = Path(args.df_dir)
@@ -108,6 +166,27 @@ def main() -> int:
         die(f"failed to update log_file in config.toml: {exc}")
 
     download(dct["font"], df_dir / "data" / "art" / "curses_640x300.png")
+
+    overrides_paths: list[Path] = []
+    if args.overrides:
+        overrides_paths = [Path(p) for p in args.overrides]
+    else:
+        packaged_dir = Path("/usr/share/dwarffortress-ptbr/overrides")
+        for name in (f"{args.lang}.csv", f"{args.lang}.dfint.csv", f"{args.lang}.missing.csv"):
+            path = packaged_dir / name
+            if path.exists():
+                overrides_paths.append(path)
+
+    for overrides_path in overrides_paths:
+        if not overrides_path.exists():
+            print(f"warning: overrides not found: {overrides_path}", file=sys.stderr)
+            continue
+        try:
+            overrides = load_overrides(overrides_path)
+            applied = apply_overrides(dfint_dir / "dictionary.csv", overrides)
+            print(f"Applied {applied} overrides from {overrides_path}")
+        except Exception as exc:
+            die(f"failed to apply overrides: {exc}")
 
     # The Arch launcher runs DF from XDG_DATA_HOME and expects dfint-data and dfhooks libs in CWD.
     target_user = args.user or os.environ.get("SUDO_USER") or os.environ.get("USER")

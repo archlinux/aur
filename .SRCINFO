@@ -1,15 +1,21 @@
 pkgbase = dwarffortress-ptbr-dfint
 	pkgdesc = Headless DFInt PT-BR applier + pacman hook for Dwarf Fortress
 	pkgver = 1.0.0
-	pkgrel = 5
+pkgrel = 7
 	url = https://github.com/dfint/installer
 	arch = any
 	license = MIT
 	depends = python
 	optdepends = dwarffortress: system install at /opt/dwarffortress
-	source = dwarffortress-ptbr-apply
-	source = dwarffortress-ptbr.hook
-	sha256sums = SKIP
-	sha256sums = SKIP
+source = dwarffortress-ptbr-apply
+source = dwarffortress-ptbr.hook
+source = pt-BR.csv
+source = pt-BR.dfint.csv
+source = pt-BR.missing.csv
+sha256sums = SKIP
+sha256sums = SKIP
+sha256sums = SKIP
+sha256sums = SKIP
+sha256sums = SKIP
 
 pkgname = dwarffortress-ptbr-dfint

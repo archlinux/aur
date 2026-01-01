@@ -66,6 +66,49 @@ find ~/tmp-df-test -maxdepth 3 -type f | sort
 rm -rf ~/tmp-df-test
 ```
 
+## Overrides locais (PT-BR)
+- Overrides são aplicadas após o download do dicionário DFInt.
+- Arquivos:
+- `/usr/share/dwarffortress-ptbr/overrides/pt-BR.csv` (correções pontuais)
+- `/usr/share/dwarffortress-ptbr/overrides/pt-BR.dfint.csv` (correções do dicionário DFInt)
+- `/usr/share/dwarffortress-ptbr/overrides/pt-BR.missing.csv` (frases faltantes de todos os `text_*.txt`)
+- É possível aplicar overrides customizadas:
+  ```bash
+  sudo dwarffortress-ptbr-apply --overrides /caminho/pt-BR.csv --overrides /caminho/pt-BR.missing.csv
+  ```
+
+## Gerar faltantes a partir do jogo instalado
+Use todos os `text_*.txt` em `data/` e filtre linhas
+que são metadados (vazias, iniciadas por `[` ou `text_`).
+Exemplo de geração rápida (use como base e adapte):
+```bash
+python - <<'PY'
+from pathlib import Path
+import csv
+text_dir = Path('/opt/dwarffortress/data')
+lines = []
+for p in sorted(text_dir.rglob('text_*.txt')):
+    stem = p.stem
+    for line in p.read_text(encoding='utf-8', errors='replace').splitlines():
+        s = line.strip().strip('\ufeff')
+        if not s or s.startswith('[') or s == stem or s.startswith('text_'):
+            continue
+        lines.append(s)
+with open('overrides/pt-BR.missing.csv','w',encoding='utf-8',newline='') as f:
+    w = csv.writer(f, lineterminator='\n')
+    w.writerow(['# Original','Translation (vanilla_text)'])
+    for s in lines:
+        w.writerow([s, s])
+PY
+```
+
+## Processos longos
+Para tarefas demoradas, execute em background com log e acompanhe com `tail`:
+```bash
+nohup <comando> > /tmp/dfint-long.log 2>&1 &
+tail -n 20 /tmp/dfint-long.log
+```
+
 ## Quando atualizar o pacote AUR
 ```bash
 makepkg -si

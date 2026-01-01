@@ -1,0 +1,296 @@
+# Original,Translation (text_*.txt)
+who was too short to live,que era baixo demais para viver
+who tunneled away from me like a frightened mole,que cavou para longe de mim como uma toupeira assustada
+who sucked plump helmets like a purring maggot,que sugou capacetes-gordinhos como um verme ronronante
+whose hammer shattered on the anvil of my power,cujo martelo se despedaçou na bigorna do meu poder
+who forged [PRO_POS] own doom by challenging me,que forjou [PRO_POS] própria ruína ao me desafiar
+who was returned to the rock and muck from which it was spawned,que foi devolvido à rocha e ao lodo de onde surgiu
+whose tall tales of bravery were all the more embarrassing because of [PRO_POS] height,cujas bravatas de bravura eram ainda mais constrangedoras por causa da altura de [PRO_POS]
+who was felled like a slender sapling,que tombou como uma muda esguia
+whom I sent back to the home-tree as fertilizer,a quem enviei de volta à árvore-lar como adubo
+whose fragile bones shattered before the power of my contempt,cujos ossos frágeis se despedaçaram diante do poder do meu desprezo
+who came down from the home-tree and was devoured,que desceu da árvore-lar e foi devorado
+who should have stayed in the trees when the real elves came down to fight,que deveria ter ficado nas árvores quando os elfos de verdade desceram para lutar
+I want your bones for my bone mill!,Quero seus ossos para meu moinho de ossos!
+I'll grind you into porridge!,Vou moer você até virar mingau!
+I'll eat you whole!,Vou engolir você inteiro!
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME],"procure [CONTEXT:HIST_FIG:TRANS_NAME] em [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME], lá em [CONTEXT:SITE:TRANS_NAME]"
+I have taken down [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] while stalking [CONTEXT:PLACE:TRANS_NAME].,Derrubei [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] enquanto caçava em [CONTEXT:PLACE:TRANS_NAME].
+It is said that the [CONTEXT:ARCH_ELEMENT] of [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] for the glory of [CONTEXT:HIST_FIG:TRANS_NAME].,Dizem que o [CONTEXT:ARCH_ELEMENT] de [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] para a glória de [CONTEXT:HIST_FIG:TRANS_NAME].
+The [ADJ] [NO_ART_NAME],O [NO_ART_NAME] [ADJ]
+The [NOUN] and [NAME],O [NOUN] e [NAME]
+The [ADJ] [NOUN] and [NAME],O [NOUN] [ADJ] e [NAME]
+It Must Have Been [NAME],Deve Ter Sido [NAME]
+My Friend [NAME],Meu Amigo [NAME]
+The Birth of [NAME],O Nascimento de [NAME]
+The Sun Sets on [NAME],O Sol se Põe em [NAME]
+We See [NAME],Vemos [NAME]
+And [ANY_PRONOUN] Sang '[NAME]!',E [ANY_PRONOUN] Cantou '[NAME]!'
+A Course on [NAME],Um Curso sobre [NAME]
+A Humble Offering to [NAME],Uma Humilde Oferenda a [NAME]
+A Meditation on [NAME],Uma Meditação sobre [NAME]
+A Record of [NAME],Um Registro de [NAME]
+A Treatise on [NAME],Um Tratado sobre [NAME]
+A World of [NAME],Um Mundo de [NAME]
+About [NAME],Sobre [NAME]
+After [NAME],Depois de [NAME]
+Against [NAME],Contra [NAME]
+An Exploration of [NAME],Uma Exploração de [NAME]
+An Introduction to [NAME],Uma Introdução a [NAME]
+An Offering to [NAME],Uma Oferenda a [NAME]
+At One With [NAME],Em Sintonia com [NAME]
+Before [NAME],Antes de [NAME]
+Better [NO_ART_NAME],Melhor [NO_ART_NAME]
+Beyond [NAME],Além de [NAME]
+Book of [NAME],Livro de [NAME]
+Captivated by [NAME],Cativado por [NAME]
+Choose [NAME],Escolha [NAME]
+Classic [NO_ART_NAME],Clássico [NO_ART_NAME]
+Commentary on [NAME],Comentário sobre [NAME]
+Common Sense [NO_ART_NAME],Senso Comum [NO_ART_NAME]
+Concerning [NAME],A Respeito de [NAME]
+Discourse on [NAME],Discurso sobre [NAME]
+Discovering [NAME],Descobrindo [NAME]
+Doubts About [NAME],Dúvidas sobre [NAME]
+Dreams of [NAME],Sonhos de [NAME]
+Elements of [NAME],Elementos de [NAME]
+Errors In [NAME],Erros em [NAME]
+Exploring [NAME],Explorando [NAME]
+Explorations of [NAME],Explorações de [NAME]
+Factual [NO_ART_NAME],Factual [NO_ART_NAME]
+For the Love of [NAME],Pelo Amor de [NAME]
+Foundations of [NAME],Fundamentos de [NAME]
+Give Me [NAME],Dê-me [NAME]
+Great [NO_ART_NAME],Grande [NO_ART_NAME]
+In Pursuit of [NAME],Em Busca de [NAME]
+Inquiries on [NAME],Investigações sobre [NAME]
+Interpretations of [NAME],Interpretações de [NAME]
+Introduction to [NAME],Introdução a [NAME]
+It All Begins With [NAME],Tudo Começa com [NAME]
+It Is [NAME],É [NAME]
+Journey to [NAME],Jornada para [NAME]
+Life With [NAME],Vida com [NAME]
+Master of [NAME],Mestre de [NAME]
+Mastering [NAME],Dominando [NAME]
+Meditations on [NAME],Meditações sobre [NAME]
+Misconceptions About [NAME],Equívocos sobre [NAME]
+More [NO_ART_NAME],Mais [NO_ART_NAME]
+Musings on [NAME],Reflexões sobre [NAME]
+My Thoughts on [NAME],Meus Pensamentos sobre [NAME]
+Mysteries of [NAME],Mistérios de [NAME]
+Never Underestimate [NAME],Nunca Subestime [NAME]
+New [NO_ART_NAME],Novo [NO_ART_NAME]
+Of [NAME],De [NAME]
+On [NAME],Sobre [NAME]
+Pathways to [NAME],Caminhos para [NAME]
+Principles of [NAME],Princípios de [NAME]
+Question [NAME],Questione [NAME]
+Questions About [NAME],Perguntas sobre [NAME]
+Records of [NAME],Registros de [NAME]
+Reflections on [NAME],Reflexões sobre [NAME]
+Secret [NO_ART_NAME],Secreto [NO_ART_NAME]
+Start Your Day With [NAME],Comece Seu Dia com [NAME]
+Strange [NO_ART_NAME],Estranho [NO_ART_NAME]
+The Art of [NAME],A Arte de [NAME]
+The Book of [NAME],O Livro de [NAME]
+The Future of [NAME],O Futuro de [NAME]
+The Great [NO_ART_NAME],O Grande [NO_ART_NAME]
+The Hidden Meaning of [NAME],O Significado Oculto de [NAME]
+The History of [NAME],A História de [NAME]
+The Interpretation of [NAME],A Interpretação de [NAME]
+The Journey into [NAME],A Jornada em [NAME]
+The Knowledge of [NAME],O Conhecimento de [NAME]
+The Meaning of [NAME],O Significado de [NAME]
+The Mysteries of [NAME],Os Mistérios de [NAME]
+The Mystery of [NAME],O Mistério de [NAME]
+The Nuanced [NO_ART_NAME],O [NO_ART_NAME] Sutil
+The Possibilities of [NAME],As Possibilidades de [NAME]
+The Pursuit of [NAME],A Busca de [NAME]
+The Secret of [NAME],O Segredo de [NAME]
+The Student's [NO_ART_NAME],O [NO_ART_NAME] do Estudante
+The Study of [NAME],O Estudo de [NAME]
+The True [NO_ART_NAME],O Verdadeiro [NO_ART_NAME]
+The Truth About [NAME],A Verdade sobre [NAME]
+The Unabridged [NO_ART_NAME],O [NO_ART_NAME] Não Abreviado
+The Way With [NAME],O Caminho com [NAME]
+The Wizard's Guide to [NAME],O Guia do Mago para [NAME]
+The World of [NAME],O Mundo de [NAME]
+The World Without [NAME],O Mundo sem [NAME]
+Thoughts on [NAME],Pensamentos sobre [NAME]
+Time Spent With [NAME],Tempo Passado com [NAME]
+Traditional [NO_ART_NAME],Tradicional [NO_ART_NAME]
+Treatise on [NAME],Tratado sobre [NAME]
+True [NO_ART_NAME],Verdadeiro [NO_ART_NAME]
+Uncanny [NO_ART_NAME],Assombroso [NO_ART_NAME]
+Uncovering [NAME],Desvendando [NAME]
+Understanding [NAME],Entendendo [NAME]
+Unknown [NO_ART_NAME],Desconhecido [NO_ART_NAME]
+Unusual [NO_ART_NAME],Incomum [NO_ART_NAME]
+Useful [NO_ART_NAME],Útil [NO_ART_NAME]
+Victory By [NAME],Vitória por [NAME]
+Can [NAME] Save The World?,[NAME] Pode Salvar o Mundo?
+Could It Be [NAME]?,Poderia Ser [NAME]?
+Did [NAME] Falter?,[NAME] Vacilou?
+Do We Understand [NAME]?,Nós Entendemos [NAME]?
+Do You Know [NAME]?,Você Conhece [NAME]?
+"First [NAME], Then The World!","Primeiro [NAME], Depois o Mundo!"
+The [NO_ART_NAME] Book,O Livro [NO_ART_NAME]
+To [NAME] and Glory!,A [NAME] e Glória!
+I'm [CONTEXT:NUMBER]!,Tenho [CONTEXT:NUMBER]!
+I am a [CONTEXT:UNIT_NAME].,Sou um(a) [CONTEXT:UNIT_NAME].
+This is my [CONTEXT:ORDINAL] year as a [CONTEXT:UNIT_NAME].,Este é meu [CONTEXT:ORDINAL] ano como [CONTEXT:UNIT_NAME].
+Who dares to enter my house?  I curse you!,Quem ousa entrar na minha casa? Eu te amaldiçoo!
+I have [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME],Tenho [CONTEXT:INDEF_FAMILY_RELATIONSHIP] chamado(a) [CONTEXT:HIST_FIG:TRANS_NAME]
+I had [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME],Eu tinha [CONTEXT:INDEF_FAMILY_RELATIONSHIP] chamado(a) [CONTEXT:HIST_FIG:TRANS_NAME]
+my [CONTEXT:FAMILY_RELATIONSHIP] is named [CONTEXT:HIST_FIG:TRANS_NAME],meu/minha [CONTEXT:FAMILY_RELATIONSHIP] se chama [CONTEXT:HIST_FIG:TRANS_NAME]
+my [CONTEXT:FAMILY_RELATIONSHIP] was named [CONTEXT:HIST_FIG:TRANS_NAME],meu/minha [CONTEXT:FAMILY_RELATIONSHIP] se chamava [CONTEXT:HIST_FIG:TRANS_NAME]
+whose cries for mercy went unheeded by my wrath,cujos clamores por misericórdia não foram ouvidos pela minha ira
+whose insignificant name I struggle to recall,cujo nome insignificante mal consigo lembrar
+a spineless slug who was crushed under my might,uma lesma sem espinha esmagada sob meu poder
+whom I buried alive under a mountain of hatred,a quem enterrei vivo sob uma montanha de ódio
+"who lies dead, now only an embarrassing memory","que jaz morto, agora apenas uma lembrança embaraçosa"
+"who sought my praise, only to be rejected in death","que buscou meu elogio, apenas para ser rejeitado na morte"
+once revered by those who didn't know any better,antes reverenciado por aqueles que não sabiam melhor
+"upon arising in the mornings,","ao levantar pela manhã,"
+"when going on a long journey,","ao partir para uma longa jornada,"
+"before retiring in the evening,","antes de se recolher à noite,"
+"as sure as I am here now,","tão certo quanto estou aqui agora,"
+"and lo,","e eis que,"
+it cannot be said enough;,não se pode dizer o bastante;
+"these are dangerous times, so","estes são tempos perigosos, então"
+I say again,repito
+"yes,","sim,"
+"before every meal,","antes de cada refeição,"
+"whenever the tide turns,","sempre que a maré muda,"
+"when you return to this place,","quando você retornar a este lugar,"
+"when you arrive at your destination,","quando você chegar ao seu destino,"
+"at this juncture in your life,","neste momento de sua vida,"
+don't forget to,não se esqueça de
+always remember to,sempre se lembre de
+it would be wise to,seria sábio
+you should,você deveria
+you must,você deve
+prudence demands that you,a prudência exige que você
+even for a moment,nem que seja por um momento
+follow my advice and,siga meu conselho e
+heed my words and,preste atenção às minhas palavras e
+remember to,lembre-se de
+show devotion and,demonstre devoção e
+speak the praises of [SPEAKER:HF_LINK:DEITY:TRANS_NAME],entoe os louvores a [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+speak the praises of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],entoe os louvores a [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+go with [SPEAKER:HF_LINK:DEITY:TRANS_NAME],vá com [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+go with [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],vá com [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+put your faith in [SPEAKER:HF_LINK:DEITY:TRANS_NAME],deposite sua fé em [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+put your faith in [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],deposite sua fé em [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+experience [SPEAKER:HF_LINK:DEITY:TRANS_NAME],vivencie [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+experience [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],vivencie [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+consider [SPEAKER:HF_LINK:DEITY:TRANS_NAME],considere [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+consider [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],considere [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+give yourself to [SPEAKER:HF_LINK:DEITY:TRANS_NAME],entregue-se a [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+give yourself to [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE],entregue-se a [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+Greetings.  My name is [SPEAKER:TRANS_NAME].,Saudações. Meu nome é [SPEAKER:TRANS_NAME].
+Hellooo!,Olaaa!
+Look at you!,Olhe só para você!
+A baby!  How adorable!,Um bebê! Que adorável!
+"Ah, hello.  I'm [SPEAKER:TRANS_NAME].","Ah, olá. Eu sou [SPEAKER:TRANS_NAME]."
+I am [SPEAKER:TRANS_NAME].  Can I be of some help?,Eu sou [SPEAKER:TRANS_NAME]. Posso ajudar?
+I am [SPEAKER:TRANS_NAME].  How can I be of service?,Eu sou [SPEAKER:TRANS_NAME]. Como posso ajudar?
+"Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].","Olá, [AUDIENCE:RACE]. Eu sou [SPEAKER:TRANS_NAME]."
+"You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].","Sabe, não se encontra muita gente com o nome [AUDIENCE:FIRST_NAME]."
+"So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?","Então, [AUDIENCE:FIRST_NAME]... [AUDIENCE:FIRST_NAME], não é?"
+Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].,Louvado seja [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].,Louve [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+"Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].","A vida é, em uma palavra, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]."
+This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.,Este servo de [SPEAKER:HF_LINK:DEITY:TRANS_NAME] o saúda.
+This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.,Este servo de [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] o saúda.
+I am a guard.,Sou um guarda.
+Don't start any trouble.,Não comece confusão.
+It is I that felled [CONTEXT:HIST_FIG:TRANS_NAME] the [CONTEXT:HIST_FIG:RACE].,"Fui eu quem derrubou [CONTEXT:HIST_FIG:TRANS_NAME], o/a [CONTEXT:HIST_FIG:RACE]."
+I hunt great beasts in [CONTEXT:PLACE:TRANS_NAME].,Eu caço grandes feras em [CONTEXT:PLACE:TRANS_NAME].
+I have hunted great beasts in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.,Caço grandes feras em [CONTEXT:PLACE:TRANS_NAME] há [CONTEXT:NUMBER] dos meus anos.
+can be thought of as the antithesis of,pode ser visto como o oposto de
+can allow one to experience,pode permitir que alguém experimente
+can bring one near to,pode aproximar alguém de
+can remind one of,pode lembrar alguém de
+can be thought of as a representation of,pode ser visto como uma representação de
+I seek fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME].,Busco fortuna e glória oferecendo minha habilidade com armas em [CONTEXT:PLACE:TRANS_NAME].
+I have sought fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.,Tenho buscado fortuna e glória oferecendo minha habilidade com armas em [CONTEXT:PLACE:TRANS_NAME] por [CONTEXT:NUMBER] dos meus anos.
+I have no family to speak of,Não tenho família que se possa mencionar.
+"In the past, I hunted great beasts.","No passado, eu caçava grandes feras."
+I was a hunter of mighty beasts for [CONTEXT:NUMBER] of my years.,Fui caçador de feras poderosas por [CONTEXT:NUMBER] dos meus anos.
+"In the past, I sought fortune and glory by offering my skill at arms.","No passado, busquei fortuna e glória oferecendo minha habilidade com armas."
+I sought fortune and glory by offering my skill at arms for [CONTEXT:NUMBER] of my years.,Busquei fortuna e glória oferecendo minha habilidade com armas por [CONTEXT:NUMBER] dos meus anos.
+I was once a [CONTEXT:UNIT_NAME].,Eu já fui um(a) [CONTEXT:UNIT_NAME].
+I was a [CONTEXT:UNIT_NAME] for [CONTEXT:NUMBER] of the years of my life.,Fui um(a) [CONTEXT:UNIT_NAME] por [CONTEXT:NUMBER] anos da minha vida.
+Once it was my calling to rescue lost children.,Houve uma época em que minha missão era resgatar crianças perdidas.
+"For [CONTEXT:NUMBER] of my years, I rescued lost children.","Por [CONTEXT:NUMBER] dos meus anos, resgatei crianças perdidas."
+I once sought great treasures.,Já busquei grandes tesouros.
+I sought great treasures for [CONTEXT:NUMBER] of my years.,Busquei grandes tesouros por [CONTEXT:NUMBER] dos meus anos.
+I once wandered the wilds.,Já vaguei pelas terras selvagens.
+"For [CONTEXT:NUMBER] of my years, I wandered the wilds.","Por [CONTEXT:NUMBER] dos meus anos, vaguei pelas terras selvagens."
+fantastic!,fantástico!
+wonderful!,maravilhoso!
+I'm thrilled to hear that.,Fico emocionado em ouvir isso.
+I'm pleased to hear that.,Fico feliz em ouvir isso.
+that is good news.,isso é uma boa notícia.
+that is wonderful news.,isso é uma ótima notícia.
+this is encouraging.,isso é encorajador.
+very good.,muito bom.
+I'm proud of you.,Tenho orgulho de você.
+that is a good turn of affairs.,isso é uma boa reviravolta.
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME],"procure [CONTEXT:HIST_FIG:TRANS_NAME] aqui em [CONTEXT:SITE:TRANS_NAME], em [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME]"
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME],procure [CONTEXT:HIST_FIG:TRANS_NAME] aqui em [CONTEXT:SITE:TRANS_NAME]
+Annihilation,Aniquilação
+Bereavement,Luto
+Death,Morte
+Demise,Falecimento
+Departure,Partida
+Doom,Condenação
+Dying,Agonia
+Eternal Rest,Descanso Eterno
+Expiration,Fim
+Extinction,Extinção
+Mortality,Mortalidade
+Immortality,Imortalidade
+Loss,Perda
+Oblivion,Oblívio
+Parting,Despedida
+Ruin,Ruína
+Ruination,Arruinamento
+Sleep,Sono
+the Afterlife,a Vida Após a Morte
+the End,o Fim
+the Grave,o Túmulo
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME],procure [CONTEXT:HIST_FIG:TRANS_NAME] lá em [CONTEXT:SITE:TRANS_NAME]
+bane,flagelo
+conqueror,conquistador
+death,morte
+foe,inimigo
+killer,assassino
+lord,lorde
+master,mestre
+nemesis,nêmesis
+slayer,matador
+vanquisher,vencedor
+murderer,assassino
+crusher,esmagador
+extinguisher,exterminador
+strangler,estrangulador
+I rescue lost children and bring them back to [CONTEXT:PLACE:TRANS_NAME].,Resgato crianças perdidas e as trago de volta a [CONTEXT:PLACE:TRANS_NAME].
+"For [CONTEXT:NUMBER] of my years, I have been rescuing lost children and bringing them back to [CONTEXT:PLACE:TRANS_NAME].","Por [CONTEXT:NUMBER] dos meus anos, venho resgatando crianças perdidas e trazendo-as de volta a [CONTEXT:PLACE:TRANS_NAME]."
+I am a soldier.,Sou um soldado.
+simply,simplesmente
+it is enough to,basta
+your task is simple;,sua tarefa é simples;
+just,apenas
+all you need is to,tudo o que você precisa é
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!,Bem-vindo a [CONTEXT:ENTITY:TRANS_NAME]. Louvado seja [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!,Bem-vindo a [CONTEXT:ENTITY:TRANS_NAME]. Louvado seja [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!
+"As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME].","Como membro de [CONTEXT:ENTITY:TRANS_NAME], você agora pode buscar os mistérios mais elevados de [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]."
+"As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE].","Como membro de [CONTEXT:ENTITY:TRANS_NAME], você agora pode buscar os mistérios mais elevados de [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]."
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME].,Busco tesouros e os trago de volta a [CONTEXT:PLACE:TRANS_NAME].
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME] and have done so for [CONTEXT:NUMBER] of the years of my life.,"Busco tesouros e os trago de volta a [CONTEXT:PLACE:TRANS_NAME], e faço isso por [CONTEXT:NUMBER] anos da minha vida."
+Prepare to die!,Prepare-se para morrer!
+"seek out [CONTEXT:HIST_FIG:TRANS_NAME], wherever [CONTEXT:HIST_FIG:PRO_SUB] might be","procure [CONTEXT:HIST_FIG:TRANS_NAME], onde quer que [CONTEXT:HIST_FIG:PRO_SUB] esteja"
+I wander [CONTEXT:PLACE:TRANS_NAME].,Vago por [CONTEXT:PLACE:TRANS_NAME].
+I have wandered [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.,Vago por [CONTEXT:PLACE:TRANS_NAME] há [CONTEXT:NUMBER] dos meus anos.
