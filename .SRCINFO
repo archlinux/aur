@@ -1,7 +1,7 @@
 pkgbase = libzippp-git
 	pkgdesc = C++ wrapper for libzip.
 	pkgver = 7.1.1.10.1.12+r510.20251006.8992d60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctabin/libzippp
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,11 @@ pkgbase = libzippp-git
 	makedepends = xz
 	makedepends = zlib
 	makedepends = zstd
-	depends = libbz2.so
-	depends = libz.so
+	depends = gcc-libs
+	depends = glibc
 	depends = libzip.so
-	depends = liblzma.so
-	depends = libzstd.so
 	provides = libzippp=7.1.1.10.1.12+r510.20251006.8992d60
+	provides = libzippp.so
 	conflicts = libzippp
 	options = emptydirs
 	options = staticlibs

@@ -5,7 +5,7 @@ _pkgname="${_gitname}"
 _pkgsource=git
 pkgname="${_pkgname}-${_pkgsource}"
 pkgver=7.1.1.10.1.12+r510.20251006.8992d60
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrapper for libzip."
 url="https://github.com/ctabin/libzippp"
 license=('BSD-3-Clause')
@@ -17,11 +17,9 @@ arch=(
   'aarch64'
 )
 depends=(
-  'libbz2.so'
-  'libz.so'
+  'gcc-libs'
+  'glibc'
   'libzip.so'
-  'liblzma.so'
-  'libzstd.so'
 )
 makedepends=(
   'cmake'
@@ -35,11 +33,13 @@ makedepends=(
 )
 optdepends=()
 options+=('emptydirs' 'staticlibs')
+#options+=('!lto')  # Otherwise, gerbera fails to link against it.
 source=(
   "${_pkgname}::git+${url}.git"
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "libzippp.so"
 )
 conflicts=(
   "${_pkgname}"
@@ -78,6 +78,7 @@ build() {
   cmake -S "${_pkgname}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
     -DLIBZIPPP_BUILD_TESTS=ON \
     -DLIBZIPPP_CMAKE_CONFIG_MODE=ON \
     -DLIBZIPPP_ENABLE_ENCRYPTION=ON \
