@@ -1,7 +1,7 @@
 pkgbase = optimal-congress-git
-	pkgdesc = Command line tool to find an optional, personal chedule for the 37th Chaos Communication Congress (37C3) 2023.
+	pkgdesc = Command line tool to find an optimal, personal chedule for the Chaos Communication Congress (C3).
 	pkgver = 1.2.0+6.r133.20251230.c22c2d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/top-on/optimal-congress
 	arch = any
 	license = MIT
