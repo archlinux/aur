@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = dwarffortress
+
+[Action]
+Description = Re-apply DFInt PT-BR after Dwarf Fortress update
+When = PostTransaction
+Exec = /usr/bin/dwarffortress-ptbr-apply

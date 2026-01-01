@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+UPDATE_BASE = "https://dfint.github.io/update-data/metadata"
+DICT_JSON = f"{UPDATE_BASE}/dict.json"
+HOOK_JSON = f"{UPDATE_BASE}/hook_v2.json"
+
+
+def die(msg: str, code: int = 1) -> None:
+    print(msg, file=sys.stderr)
+    sys.exit(code)
+
+
+def fetch_json(url: str) -> list[dict]:
+    with urllib.request.urlopen(url, timeout=60) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def download(url: str, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    with urllib.request.urlopen(url, timeout=120) as resp:
+        dest.write_bytes(resp.read())
+
+
+def get_df_version() -> str:
+    try:
+        out = subprocess.check_output(["pacman", "-Qi", "dwarffortress"], text=True)
+    except Exception as exc:
+        die(f"failed to query pacman: {exc}")
+
+    m = re.search(r"^Version\s*:\s*([0-9.]+)", out, re.MULTILINE)
+    if not m:
+        m = re.search(r"^Vers[aã]o\s*:\s*([0-9.]+)", out, re.MULTILINE)
+    if not m:
+        die("could not detect dwarffortress version from pacman output")
+
+    return m.group(1)
+
+
+def select_hook_entry(hooks: list[dict], df_version: str) -> dict:
+    candidates = [h for h in hooks if "linux64" in h.get("offsets", "") and df_version in h.get("offsets", "")]
+    if not candidates:
+        die(f"no hook metadata found for DF {df_version} linux64")
+
+    def score(h: dict) -> int:
+        offsets = h.get("offsets", "")
+        if "_classic_" in offsets:
+            return 0
+        if "_other_" in offsets:
+            return 1
+        if "_steam_" in offsets:
+            return 2
+        return 3
+
+    return sorted(candidates, key=score)[0]
+
+
+def select_dict_entry(dicts: list[dict], code: str) -> dict:
+    for d in dicts:
+        if d.get("code") == code:
+            return d
+    die(f"dictionary not found for code {code}")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Apply DFInt PT-BR localization to system Dwarf Fortress")
+    parser.add_argument("--df-dir", default="/opt/dwarffortress", help="Dwarf Fortress install dir")
+    parser.add_argument("--lang", default="pt-BR", help="language code (default: pt-BR)")
+    parser.add_argument("--version", default=None, help="override DF version (e.g. 53.06)")
+    parser.add_argument("--user", default=None, help="create dfint-data symlink for this user (default: sudo user)")
+    args = parser.parse_args()
+
+    df_dir = Path(args.df_dir)
+    if not df_dir.exists():
+        die(f"DF directory not found: {df_dir}")
+
+    df_version = args.version or get_df_version()
+
+    hooks = fetch_json(HOOK_JSON)
+    dicts = fetch_json(DICT_JSON)
+
+    hook = select_hook_entry(hooks, df_version)
+    dct = select_dict_entry(dicts, args.lang)
+
+    # Download and install
+    download(hook["lib"], df_dir / "libdfhooks_dfint.so")
+    download(hook["dfhooks"], df_dir / "libdfhooks.so")
+
+    dfint_dir = df_dir / "dfint-data"
+    config_path = dfint_dir / "config.toml"
+    download(hook["config"], config_path)
+    download(hook["offsets"], dfint_dir / "offsets.toml")
+    download(dct["csv"], dfint_dir / "dictionary.csv")
+    download(dct["encoding"], dfint_dir / "encoding.toml")
+
+    try:
+        text = config_path.read_text(encoding="utf-8")
+        text = re.sub(r'^log_file\s*=.*$', 'log_file = "/tmp/dfint-log.log"', text, flags=re.M)
+        config_path.write_text(text, encoding="utf-8")
+    except Exception as exc:
+        die(f"failed to update log_file in config.toml: {exc}")
+
+    download(dct["font"], df_dir / "data" / "art" / "curses_640x300.png")
+
+    # The Arch launcher runs DF from XDG_DATA_HOME and expects dfint-data and dfhooks libs in CWD.
+    target_user = args.user or os.environ.get("SUDO_USER") or os.environ.get("USER")
+    if target_user:
+        user_home = Path("/home") / target_user
+        user_data_dir = user_home / ".local" / "share" / "dwarffortress"
+        dfint_link = user_data_dir / "dfint-data"
+        try:
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+            if dfint_link.exists() or dfint_link.is_symlink():
+                if dfint_link.is_symlink() and dfint_link.resolve() == (df_dir / "dfint-data").resolve():
+                    pass
+                else:
+                    print(f"warning: {dfint_link} exists and will not be replaced", file=sys.stderr)
+            else:
+                dfint_link.symlink_to(df_dir / "dfint-data")
+
+            for libname in ("libdfhooks.so", "libdfhooks_dfint.so", "dwarfort"):
+                src = df_dir / libname
+                dst = user_data_dir / libname
+                if dst.exists() or dst.is_symlink():
+                    if dst.is_symlink() and dst.resolve() == src.resolve():
+                        continue
+                else:
+                    dst.symlink_to(src)
+        except Exception as exc:
+            die(f"failed to create dfint-data symlink: {exc}")
+
+    print(f"Applied DFInt {args.lang} for DF {df_version} in {df_dir}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

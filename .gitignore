@@ -1,0 +1,7 @@
+/pkg/
+/src/
+*.pkg.tar.*
+*.tar.gz
+*.log
+hook_v2.json
+dict.json
