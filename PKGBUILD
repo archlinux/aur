@@ -15,10 +15,10 @@ install="$pkgname.install"
 sha256sums=('d9e66be7e6d1ca6f575e3f3383bc721096b47eb95c7f01b901446d862ffa5784')
 
 build() {
-    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
+    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr -DBETTERBLUR_X11=ON)
     local _srcdir="$pkgname-$pkgver"
 
-    cmake "${_cmake_args[@]}" -DBETTERBLUR_X11=ON -B build -S "$_srcdir"
+    cmake "${_cmake_args[@]}" -B build -S "$_srcdir"
     make -C build
 }
 
