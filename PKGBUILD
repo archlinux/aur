@@ -1,6 +1,6 @@
 # Maintainer: Barnaby Gray <barnaby at pickle dot me dot uk>
 pkgname=raspberry-pico-sdk-git
-pkgver=1.0.0.r3.g0f3b795
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Raspberry Pico SDK "
 arch=("any")
