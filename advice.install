@@ -3,7 +3,7 @@ post_install()
   echo -e "\nThank you for choosing blindpaste"
   echo -e "For a better experience with this software, consider adding the line\n"
   echo -e "\t\033[1;36malias bp='blindpaste'\033[0m\n"
-  echo -e "to the bottom of $HOME/.bashrc\n"
+  echo -e "to the bottom of ~/.bashrc\n"
 }
 
 post_remove()
@@ -11,5 +11,5 @@ post_remove()
   echo -e "\nThank you for using blindpaste"
   echo -e "Don't forget to remove the line\n"
   echo -e "\t\033[1;36malias bp='blindpaste'\033[0m\n"
-  echo -e "from $HOME/.bashrc\n"
+  echo -e "from ~/.bashrc\n"
 }

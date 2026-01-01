@@ -12,7 +12,7 @@ optdepends=(
 )
 install="advice.install"
 source=(
-  "git+https://git.projectgrid.net/git/blindpaste.git"
+  "git+https://git.projectgrid.net/blindpaste.git"
   "LICENSE"
 )
 sha256sums=(
