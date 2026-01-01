@@ -1,0 +1,22 @@
+pkgbase = qiq-git
+	pkgdesc = GUI shell, app runner, command input (and output), status widgets, notes, notifcations
+	pkgver = r118.5e7e745
+	pkgrel = 1
+	url = https://github.com/luebking/qiq
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt6-base
+	optdepends = aha: Output colors
+	optdepends = ansifilter: (suggested) Output colors
+	optdepends = bc: Calculator
+	optdepends = qalc: (suggested) Calculator
+	optdepends = zsh: To use its autocompletion
+	provides = qiq
+	conflicts = qiq
+	options = docs
+	source = git+https://github.com/luebking/qiq.git
+	sha256sums = SKIP
+
+pkgname = qiq-git
