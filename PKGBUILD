@@ -6,13 +6,16 @@ pkgver='1.20.0'; _brfile='qdsel120brl'
 pkgrel='1'
 pkgdesc='administer Brother printers'
 arch=('any')
-url='http://support.brother.com/g/s/id/linux/en/download_esp.html'
+#url='http://support.brother.com/g/s/id/linux/en/download_esp.html'
+url='https://www.brother.com/apps/'
 license=('custom:Brother Industries')
 depends=('java-environment')
 source=("https://www.brother.com/pub/bsc/linux/dlf/${_brfile}.tar.gz")
+md5sums=('716bca6f565de905b8f0596f010a17fa')
 sha256sums=('a6e09cf8b39be008d0cdf3cdd45c4e23ae1548720415671b8840a81359b09c39')
 
 package() {
+  local -
   set -u
   cd "${_brfile}"
   install -d "${pkgdir}/opt/brother-bradmin/"
@@ -32,6 +35,5 @@ Categories=Settings;Utility;
 MimeType=application/x-executable
 EOF
   ) "${pkgdir}/usr/share/applications/brother-bradmin-light.desktop"
-  set +u
 }
 set +u
