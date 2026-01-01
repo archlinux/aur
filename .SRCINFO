@@ -1,0 +1,17 @@
+pkgbase = nicol
+	pkgdesc = A minimal web browser based on Qt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/arnav-kr/nicol
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webengine
+	depends = hicolor-icon-theme
+	source = nicol-1.0.0.tar.gz::https://github.com/arnav-kr/nicol/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4ac42b4b435eec1258df3dd432ee25d3977b3b19911a7616ba667c4d78614698
+
+pkgname = nicol
