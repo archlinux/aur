@@ -2,7 +2,7 @@
 _pkgname=cubyz
 
 pkgname=cubyz-bin
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Open source voxel sandbox game"
 arch=("x86_64" "aarch64")
@@ -14,9 +14,9 @@ source=("$_pkgname.desktop"
 md5sums=("c2ef0d9256c5213e3a8d3a28117f65bd"
          "945afd003b39ee45a36ad50b2e9ca9e5")
 source_x86_64=("$url/releases/download/$pkgver/Linux-x86_64.tar.gz")
-sha256sums_x86_64=("466875ed7a4efc2b4b0e86dcf096f8a2386d33b7d437eba781b57342522f13b5")
+sha256sums_x86_64=("d409e15f9596322f5f5e55472acc02f820564bdedf53d7d125da9ae1cb58f11b")
 source_aarch64=("$url/releases/download/$pkgver/Linux-aarch64.tar.gz")
-sha256sums_aarch64=("082429b37760be181b78d8a9397f80849df3aa6c37a1cd6d8f7e46890ed9c5c9")
+sha256sums_aarch64=("d316eea69402a5f9433879ab19a065a18225e84e5721635d3053bed6799bda55")
 
 package() {
 	# Copy application icon, .desktop file and launcher script
