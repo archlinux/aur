@@ -1,0 +1,18 @@
+pkgbase = go-send-bin
+	pkgdesc = Secure file transfer tool with challenge-response authentication (Binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/VinMeld/go-send
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = glibc
+	provides = go-send
+	conflicts = go-send
+	conflicts = go-send-git
+	source_x86_64 = https://github.com/VinMeld/go-send/releases/download/v1.0.0/go-send-linux-amd64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/VinMeld/go-send/releases/download/v1.0.0/go-send-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = go-send-bin
