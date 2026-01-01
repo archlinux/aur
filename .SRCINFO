@@ -1,6 +1,6 @@
 pkgbase = writetex
 	pkgdesc = Latex/Tex editor for Inkscape
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/wanglongqi/WriteTeX
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = writetex
 	depends = inkscape
 	depends = python-lxml
 	depends = pdf2svg
-	source = WriteTeX-1.9.0.tar.gz::https://github.com/wanglongqi/WriteTeX/archive/v1.9.0.tar.gz
-	sha512sums = e24943b81900ec429c938271b6e5da6e4915a54c6fe169ff323653c8b21a58ae5aed26848bb1983be673d2e3de170d564ea5914437f01a5cc90210ac8ede212a
+	source = WriteTeX-2.0.0.tar.gz::https://github.com/wanglongqi/WriteTeX/archive/v2.0.0.tar.gz
+	sha512sums = ca42919f34a885fc24634b0bbf545cd52e2842b11d4d092b9dd27379aa10ab1742e0038f8f3474ed20f3452b64d9d350870e5c52c9cf257a88fa3b388e521e40
 
 pkgname = writetex

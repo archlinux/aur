@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=WriteTeX
 pkgname=${_base,,}
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Latex/Tex editor for Inkscape"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/wanglongqi/${_base}"
 license=(GPL-3.0-or-later)
 depends=(inkscape python-lxml pdf2svg)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e24943b81900ec429c938271b6e5da6e4915a54c6fe169ff323653c8b21a58ae5aed26848bb1983be673d2e3de170d564ea5914437f01a5cc90210ac8ede212a')
+sha512sums=('ca42919f34a885fc24634b0bbf545cd52e2842b11d4d092b9dd27379aa10ab1742e0038f8f3474ed20f3452b64d9d350870e5c52c9cf257a88fa3b388e521e40')
 
 package() {
   cd ${_base}-${pkgver}/1.x.x
