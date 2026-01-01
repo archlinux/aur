@@ -77,11 +77,11 @@ conflicts=(
 )
 source=(
   ## Original upstream source:
-  # "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
-  "https://web.archive.org/web/20251222093202/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
+  "https://archive.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
+  # "https://web.archive.org/web/20251222093202/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
   ## Debian patches:
-  # "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"  
- "https://web.archive.org/web/20251222093324/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"
+  "https://archive.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"  
+  # "https://web.archive.org/web/20251222093324/https://debian.sipwise.com/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}-${_debianrel}.debian.tar.xz"
   ## More local patches:
   "01_adapt-for-y2025.patch"    # Very old codebase needs more fixups.
   "02_adapt-for-y2025.patch"    # Fixups for 'isdnlog/tools'.
