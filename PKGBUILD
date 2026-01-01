@@ -1,14 +1,15 @@
-# Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
+# Maintainer: alstruit <alsturit at gmail.com>
+# Contributor: CrankySupertoon <crankysupertoon@gmail.com>
 
 pkgname=shticker-book-rewritten-git
 _pkgname=shticker-book-rewritten
-pkgver=1.2.1.1.r1.gbcb2537
+pkgver=1.2.1.1.r24.g2dec933
 pkgrel=1
 pkgdesc="Custom launcher and tool for the Toontown Rewritten MMORPG"
 url="https://github.com/CrankySupertoon/Shticker-Book-Rewritten"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('bzip2' 'qt5-base' 'qt5-webengine')
+depends=('bzip2' 'qt6-base' 'qt6-webengine')
 makedepends=('git')
 conflicts=('shticker-book-rewritten')
 source=("$_pkgname::git+https://github.com/CrankySupertoon/Shticker-Book-Rewritten")
@@ -23,7 +24,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
   git submodule update
-  qmake-qt5
+  qmake6
 }
 
 build() {
