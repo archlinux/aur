@@ -1,7 +1,7 @@
 pkgbase = qefientrymanager-git
 	pkgdesc = A userspace cross-platform EFI boot entry management GUI App based on Qt
-	pkgver = 0.4.1.r4.gfc4205a
-	pkgrel = 2
+	pkgver = 0.4.1.r12.gebe7108
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Inokinoki/QEFIEntryManager
 	arch = x86_64
