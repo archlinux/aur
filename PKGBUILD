@@ -1,4 +1,4 @@
-# Maintainer: Kamk14dze <me[at]kam1k4dze.com>
+# Maintainer: Kam1k4dze <me@kam1k4dze.com>
 pkgname=inspect-deps
 pkgver=0.1.0
 pkgrel=1
