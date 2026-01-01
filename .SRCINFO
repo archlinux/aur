@@ -1,6 +1,6 @@
 pkgbase = optimal-congress-git
 	pkgdesc = Command line tool to find an optional, personal chedule for the 37th Chaos Communication Congress (37C3) 2023.
-	pkgver = 1.2.0+4.r131.20250524.9e07af5
+	pkgver = 1.2.0+6.r133.20251230.c22c2d4
 	pkgrel = 1
 	url = https://github.com/top-on/optimal-congress
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = optimal-congress-git
 	depends = python-pandera>=0.18.0
 	depends = python-requests
 	depends = python-rich
-	provides = optimal-congress=1.2.0+4.r131.20250524.9e07af5
-	provides = python-optimal_congress=1.2.0+4.r131.20250524.9e07af5
+	provides = optimal-congress=1.2.0+6.r133.20251230.c22c2d4
+	provides = python-optimal_congress=1.2.0+6.r133.20251230.c22c2d4
 	conflicts = optimal-congress
 	conflicts = python-optimal_congress
 	source = optimal-congress::git+https://github.com/top-on/optimal-congress.git
