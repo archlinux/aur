@@ -1,0 +1,19 @@
+pkgbase = stream-alert
+	pkgdesc = Get a Telegram notification when your webcam or screen changes
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/akoidan/stream-alert
+	install = stream-alert.install
+	arch = x86_64
+	license = MIT
+	depends = libjpeg
+	depends = v4l-utils
+	options = !strip
+	source = stream-alert::https://github.com/akoidan/stream-alert/releases/download/v1.0.1/stream-alert.elf
+	source = stream-alert.service
+	source = stream-alert.install
+	sha256sums = a05a7acd73b305c5c02561a160e60ed8cd7362e953293949156129564c25e7ef
+	sha256sums = 18c7fd76bb4dd6dc1f2206f604a0a8751d944b1d47c963e0f61bb006967642a7
+	sha256sums = 0ae764b4158b2dc475d118c8a750da97ab09222674260b8ea587119fe2973fc3
+
+pkgname = stream-alert

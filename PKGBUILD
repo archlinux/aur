@@ -19,11 +19,9 @@ source=(
   "stream-alert.install"
 )
 options=(!strip)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('a05a7acd73b305c5c02561a160e60ed8cd7362e953293949156129564c25e7ef'
+            '18c7fd76bb4dd6dc1f2206f604a0a8751d944b1d47c963e0f61bb006967642a7'
+            '0ae764b4158b2dc475d118c8a750da97ab09222674260b8ea587119fe2973fc3')
 
 package() {
   install -D -m755 "${srcdir}/stream-alert" "${pkgdir}/usr/bin/stream-alert"
