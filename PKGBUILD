@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-clearml
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Auto-Magical Suite of tools to streamline your ML workflow"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-attrs' 'python-furl' 'python-jsonschema' 'python-numpy' 'python-pathlib2' 'python-pillow' 'python-pyparsing' 'python-dateutil' 'python-pyjwt' 'python-pyyaml' 'python-requests' 'python-six' 'python-urllib3')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("clearml-$pkgver.tar.gz::https://github.com/allegroai/clearml/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('f78a9cf7b6d23205927be890074992ef')
+md5sums=('89d2b0b2c85f1141a0a02051e4428ca3')
 
 build() {
   cd "$srcdir"/clearml-$pkgver
