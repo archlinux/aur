@@ -3,17 +3,22 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=12.8.2
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
 url="https://github.com/rmcrackan/Libation"
 license=('GPL-3.0-only')
-depends=('bash' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
+depends=('bash' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lame' 'lttng-ust2.12')
 makedepends=('dotnet-sdk>=10')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3e7f012e0d6a00c79353e89d700051c72912ece6c0982062f46d99b22a94593c')
+sha256sums=('303feb0801a56ccdce0a446dae80ee28470eb579e465c28b0c0ec63a89ae40d6')
+
+prepare() {
+    cd "${pkgname^}-${pkgver}"
+    sed -i "s/\"version\":.*/\"version\": \"$(dotnet --list-sdks | cut -d' ' -f1)\"/" global.json
+}
 
 build() {
     cd "${pkgname^}-${pkgver}"
