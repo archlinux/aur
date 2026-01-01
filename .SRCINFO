@@ -1,7 +1,7 @@
 pkgbase = erhe-git
 	pkgdesc = C++ library for modern OpenGL experiments
 	pkgver = r1.90cbe1b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tksuoran/erhe
 	arch = x86_64
 	arch = aarch64

@@ -3,7 +3,7 @@
 pkgname=erhe-git
 _pkgname=erhe
 pkgver=r1.90cbe1b
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for modern OpenGL experiments"
 url="https://github.com/tksuoran/erhe"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
@@ -64,6 +64,6 @@ package() {
     cd ${_pkgname}
     #install already existing libs
     #DESTDIR="$pkgdir" cmake --install build
-    install -D655 build/src/editor/editor ${pkgdir}/usr/bin/erhe-editor
-    install -D655 build/src/editor/net-test ${pkgdir}/usr/bin/erhe-net-test
+    install -Dm655 build/src/editor/editor ${pkgdir}/usr/bin/erhe-editor
+    install -Dm655 build/src/editor/net-test ${pkgdir}/usr/bin/erhe-net-test
 }
