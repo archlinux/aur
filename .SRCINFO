@@ -12,7 +12,6 @@ pkgbase = superfetch
 	depends = xorg-xrandr
 	depends = lm_sensors
 	source = https://github.com/zuterogwindows/superfetch-bash/archive/main.tar.gz
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6fc8765514e9f2b06a1ceb294f7bfa69fc692701eecef78489b4d9bfe6b690d5
 
 pkgname = superfetch
