@@ -4,9 +4,7 @@ post_install() {
 reboot-to-windows has been installed.
 
 To allow wheel users to reboot to Windows without a password, copy the
-polkit files:
-
-  sudo cp /usr/share/doc/reboot-to-windows/polkit/wartybix.reboot-to-windows.policy /usr/share/polkit-1/actions/
+polkit rule:
 
   sudo cp /usr/share/doc/reboot-to-windows/polkit/50-wartybix.reboot-to-windows.rules /usr/share/polkit-1/rules.d/
 

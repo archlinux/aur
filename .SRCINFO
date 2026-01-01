@@ -1,6 +1,6 @@
 pkgbase = reboot-to-windows
 	pkgdesc = Application to quickly reboot to Windows from Linux, bypassing the boot menu.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/nardholio/reboot-to-windows
 	install = reboot-to-windows.install
@@ -11,7 +11,7 @@ pkgbase = reboot-to-windows
 	depends = bash
 	optdepends = qt5-tools: Reboot screen support for KDE
 	options = !debug
-	source = git+https://github.com/nardholio/reboot-to-windows.git#commit=1de324cbb0cff932ab6b3818f16e1ed9ed0c54ec
-	sha256sums = f170861af8774bfd706fc0885835f8fa4d6dd7c6f38fdc256014c4a30175f329
+	source = git+https://github.com/nardholio/reboot-to-windows.git#commit=db981ef85cd24a9007c59184ed71df7ad0f7621b
+	sha256sums = 96403a43e670767bfd1b82ca8f44ec1d2cb475e9d9b8dc0734419489e16ea2ce
 
 pkgname = reboot-to-windows

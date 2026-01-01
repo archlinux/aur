@@ -1,8 +1,8 @@
 # Maintainer: Dave Daynard <nardholio@gmail.com>
 # Contributor: Wartybix <34974060+Wartybix@users.noreply.github.com>
 pkgname=reboot-to-windows
-pkgver=1.6.1
-_commit=1de324cbb0cff932ab6b3818f16e1ed9ed0c54ec
+pkgver=1.6.2
+_commit=db981ef85cd24a9007c59184ed71df7ad0f7621b
 pkgrel=1
 pkgdesc="Application to quickly reboot to Windows from Linux, bypassing the boot menu."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('qt5-tools: Reboot screen support for KDE')
 options=('!debug')
 install=reboot-to-windows.install
 source=(git+https://github.com/nardholio/reboot-to-windows.git#commit=${_commit})
-sha256sums=('f170861af8774bfd706fc0885835f8fa4d6dd7c6f38fdc256014c4a30175f329')
+sha256sums=('96403a43e670767bfd1b82ca8f44ec1d2cb475e9d9b8dc0734419489e16ea2ce')
 
 package_reboot-to-windows() {
   cd "${srcdir}/reboot-to-windows"
@@ -25,6 +25,5 @@ package_reboot-to-windows() {
 
   # Provide polkit files in /usr/share/doc for optional manual installation
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/polkit"
-  install -m644 polkit/wartybix.reboot-to-windows.policy "${pkgdir}/usr/share/doc/${pkgname}/polkit/"
   install -m644 polkit/50-wartybix.reboot-to-windows.rules "${pkgdir}/usr/share/doc/${pkgname}/polkit/"
 }
