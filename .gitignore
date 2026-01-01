@@ -4,4 +4,5 @@
 /nlohmann-json/
 /qmicroz/
 /volk/
-*.tar.zst
+/bb_launcher-*.tar.zst
+/bb_launcher-*.log
