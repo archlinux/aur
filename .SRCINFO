@@ -1,7 +1,7 @@
 pkgbase = renpy
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs
 	pkgver = 8.5.1.25123106
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.renpy.org
 	install = renpy.install
 	arch = i686

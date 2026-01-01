@@ -2,7 +2,7 @@
 
 pkgname=renpy
 pkgver=8.5.1.25123106
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -69,6 +69,7 @@ package() {
 
 	cd "${pkgname}"
 	cp -a 'sdk-fonts' 'launcher' 'renpy.py' 'renpy' 'the_question' 'tutorial' 'gui' '_renpy.cpython-'* "$pkgdir/usr/lib/$pkgname"
+	find "$pkgdir/usr/lib/$pkgname" -name '*.pyx' -o -name '*.pyi' -delete
 	#cp -r doc/* "$pkgdir/usr/share/doc/$pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 	install -D -m644 'sphinx/source/license.rst' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
