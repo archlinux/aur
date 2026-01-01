@@ -1,0 +1,14 @@
+pkgbase = mspace-git
+	pkgdesc = M-SPACE - Enhanced Solar System Simulator
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/m4rcel-lol/mspace
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = raylib
+	source = git+https://github.com/m4rcel-lol/mspace.git
+	sha256sums = SKIP
+
+pkgname = mspace-git
