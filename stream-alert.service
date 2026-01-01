@@ -1,0 +1,13 @@
+[Unit]
+Description=Hotkey hub
+After=graphical-session.target
+ConditionPathExists=%h/.local/share/stream-alert/config.json
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/stream-alert --config %h/.local/share/stream-alert/config.json
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
