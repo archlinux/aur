@@ -7,12 +7,12 @@ license=('MIT')
 options=('!strip')
 pkgdesc="Protection, packer, and archive scanning library"
 provides=('burnoutsharp' 'binaryobjectscanner')
-pkgver=3.4.6
+pkgver=3.5.0
 pkgrel=1
-source=('https://github.com/SabreTools/BinaryObjectScanner/releases/download/3.4.6/ProtectionScan_3.4.6_net9.0_linux-x64_release.zip'
+source=('https://github.com/SabreTools/BinaryObjectScanner/releases/download/3.5.0/ProtectionScan_3.5.0_net10.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/README.md'
 'https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/LICENSE')
-sha256sums=('bcd9dec3191cc5a1d3471b3917d9d4f66298876676f4e3a04999fe6c7d059419'
+sha256sums=('83fc66bfa79b0285a8bd77829098bca869bf9587f0ce8938a0cb636a57e02edc'
 'SKIP'
 'SKIP')
 
