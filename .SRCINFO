@@ -1,12 +1,12 @@
 pkgbase = busybox-udhcpc
 	pkgdesc = Busybox DHCP client
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.busybox.net
 	arch = x86_64
 	license = GPL
 	depends = busybox
 	source = https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/busybox/default.script
-	sha256sums = 1cf94e3918ce389c722f4408490ae7334321a5ca2aec2c945b0c47662aa274a6
+	sha256sums = c7b39bba4d7f1ce05dbdeba7d2fd97b96a8c3c0c1ebc0259f641fb8e1c3827d2
 
 pkgname = busybox-udhcpc
