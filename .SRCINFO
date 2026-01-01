@@ -1,18 +1,17 @@
 pkgbase = go-send-bin
 	pkgdesc = Secure file transfer tool with challenge-response authentication (Binary)
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/VinMeld/go-send
-	arch = x86_64
-	arch = aarch64
-	license = GPL3
-	depends = glibc
-	provides = go-send
+	license = GPL-3.0
 	conflicts = go-send
 	conflicts = go-send-git
-	source_x86_64 = https://github.com/VinMeld/go-send/releases/download/v2.1.0/go-send_2.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 43addc7668c78e39cceec9b57a22c7b2ba73f188a1af959a70b7a9655ce9def1
-	source_aarch64 = https://github.com/VinMeld/go-send/releases/download/v2.1.0/go-send_2.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6cae52f59fa42fbee38693d4255e5f29eb0c4975af45265d35d81b35c736379c
-
+	provides = go-send
+	arch = aarch64
+	source_aarch64 = https://github.com/VinMeld/go-send/releases/download/v${pkgver}/go-send_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1eaa1f412d60aa0ee1a5bae769b3e5ba0c9a3e34c721f0a411144454ca4880d7
+	arch = x86_64
+	source_x86_64 = https://github.com/VinMeld/go-send/releases/download/v${pkgver}/go-send_${pkgver}_linux_amd64.tar.gz
+	sha256sums_x86_64 = c0637b61d93dd5f3c8e2246606378d877201c2004cdeefff95a604bd54303a37
+	
 pkgname = go-send-bin
