@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-gitconfig
 pkgdesc='A gitconfig sandbox for testing'
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 url='https://github.com/noirbizarre/pytest-gitconfig'
 arch=('any')
@@ -25,7 +25,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '0dc72c2ce96b1ac6f26cb0375aa882ee017fb4833a864f64d0c11998912418dd'
+  '5f9e8a29b4a8e55ddd740216ddb0a8a5e97f1c9c7f6bfdac91863473a8c60f9c'
 )
 
 build() {
