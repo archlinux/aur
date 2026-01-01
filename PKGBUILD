@@ -5,7 +5,7 @@ _pkgname=touchportal
 appname=TouchPortal
 
 pkgname="${_pkgname}"-appimage
-pkgver=4.3.0
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="Remote macro control deck for PC and Mac OS for streamers, content creators and other professionals"
 arch=('x86_64')
