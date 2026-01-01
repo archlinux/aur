@@ -1,5 +1,5 @@
 pkgname=thermometer
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
