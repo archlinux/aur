@@ -1,0 +1,5 @@
+[jumpy-bin]
+source = "github"
+github = "ClementNerma/Jumpy"
+use_latest_release = true
+prefix = "v"
