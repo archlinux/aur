@@ -3,7 +3,7 @@
 pkgname=qefientrymanager
 _srcname=QEFIEntryManager
 pkgver=0.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Inokinoki/${_srcname}"
@@ -23,20 +23,23 @@ prepare() {
 	git submodule init
 	git config submodule.qefivar.url "${srcdir}/qefivar/"
 	git -c protocol.file.allow=always submodule update
-
-	mkdir -p build
 }
 
 build() {
-	cd "${_srcname}/build/"
-	cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr ..
-	cmake --build .
+	local cmake_options=(
+		-B build
+		-S "${_srcname}"
+		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_INSTALL_PREFIX=/usr
+	)
+
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
 package() {
-	cd "${_srcname}/"
 	DESTDIR="${pkgdir}" cmake --install build
 
 	# Documentation
-	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+	install -Dm644 "${_srcname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
