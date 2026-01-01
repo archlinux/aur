@@ -1,6 +1,6 @@
 pkgbase = luajit-openresty
 	pkgdesc = Just-in-time compiler for Lua, OpenResty fork
-	pkgver = 2.1.20251030
+	pkgver = 2.1.20251229
 	pkgrel = 1
 	url = https://github.com/openresty/luajit2
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = luajit-openresty
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	provides = luajit=2.1.20251030
+	provides = luajit=2.1.20251229
 	conflicts = luajit
-	source = https://github.com/openresty/luajit2/archive/refs/tags/v2.1-20251030/luajit-openresty-2.1.20251030.tar.gz
-	sha256sums = b9a6de5c2253e120f5146ea375e3ad4224e777e6942e578acdb93038078fd5ae
+	source = https://github.com/openresty/luajit2/archive/refs/tags/v2.1-20251229/luajit-openresty-2.1.20251229.tar.gz
+	sha256sums = 3dd64a194a9bb4f9fd06d9277d09282814260399beda29e988f4b0c7ed3e4705
 
 pkgname = luajit-openresty
