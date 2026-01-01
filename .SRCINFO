@@ -10,6 +10,7 @@ pkgbase = fey
 	depends = cairo
 	depends = wayland
 	depends = exiv2
+	depends = imlib2
 	provides = fey
 	conflicts = fey
 	source = fey::git+https://github.com/SykikXO/fey.git
