@@ -1,7 +1,7 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=hotkey-hub
 pkgver=1.1.0
-tag=v1.1.0
+tag=v1.1.1
 pkgrel=1
 pkgdesc="Allows to control remote PC (mouse/windows/keyboard/processses) using hotkeys on this pc"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 
 install=hotkey-hub.install
 source=(
-  "hotkey-hub::${url}/releases/download/${tag}/app.elf"
+  "hotkey-hub::${url}/releases/download/${tag}/hotkey-hub.elf"
   "CONFIG.md::${url}/releases/download/${tag}/CONFIG.md"
   "json-schema.json::${url}/releases/download/${tag}/json-schema.json"
   "macros-schema.json::${url}/releases/download/${tag}/macros-schema.json"
@@ -26,7 +26,7 @@ source=(
   "hotkey-hub.install"
 )
 options=(!strip)
-sha256sums=('8fe53f88356655f076d106972db9ee89e4391d2612e55c431d7ef6b8ec863e92'
+sha256sums=('2700d5dd1842b85ca750428332122901f54c3967644617e265d3e1205b970aa0'
             '84485c5b299bffd19e1c2ff2fac43cd8bfdb51ed1a67d9bd7709bc5986cfc61b'
             '1daa810fce31c3627999f25f93baf14cb39c62f6ed24906e7ab51fc4b1ef94d6'
             'd97dc3944a7c2ed5e548650b25172701975ac4958d5f85e17b2e5123c93fdfb1'
