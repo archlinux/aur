@@ -1,5 +1,5 @@
 ## dedupe-dir
-simple script using duperemove to deduplicate btrfs and xfs directories of the user's choosing, either automatically, once a week, or manually
+simple script using duperemove to deduplicate btrfs, bcachefs, and xfs (bcachefs and xfs throw weird blkid error message I have not investigated yet, but somewhat work) directories of the user's choosing, either automatically, once a week, or manually
 utilizes duperemove's hashfile functionality
 systemd timer runs at niceness value of 15 so it won't lock up your system
 
