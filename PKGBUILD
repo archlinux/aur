@@ -1,5 +1,5 @@
 pkgname=waybar-module-music-git
-pkgver=0.3.0_r211.784af86
+pkgver=0.4.0_r217.e174c27
 pkgrel=1
 pkgdesc='A Waybar module to show & control the current MPRIS media players state'
 arch=('x86_64')
