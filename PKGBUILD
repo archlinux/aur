@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.11.6
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland and Niri built with Quickshell'
 arch=('any')
@@ -71,7 +71,63 @@ package() {
     # Install hamr command
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'EOF'
 #!/bin/bash
-exec qs -c hamr "$@"
+set -euo pipefail
+
+show_help() {
+    cat <<HELP
+Usage: hamr [OPTIONS] [COMMAND]
+
+Hamr - Extensible launcher for Wayland compositors
+
+Commands:
+  (none)              Start hamr daemon (use in autostart)
+  toggle              Toggle hamr open/close
+  plugin <name>       Open a specific plugin directly
+
+Options:
+  -h, --help          Show this help message
+
+Examples:
+  hamr                Start hamr daemon
+  hamr toggle         Toggle launcher visibility
+  hamr plugin clipboard   Open clipboard plugin
+  hamr plugin emoji       Open emoji picker
+
+Keybinding examples (Hyprland):
+  bind = SUPER, Space, exec, hamr toggle
+  bind = SUPER, V, exec, hamr plugin clipboard
+
+Keybinding examples (Niri):
+  Mod+Space { spawn "hamr" "toggle"; }
+  Mod+V { spawn "hamr" "plugin" "clipboard"; }
+HELP
+}
+
+case "${1:-}" in
+    -h|--help)
+        show_help
+        exit 0
+        ;;
+    toggle)
+        exec qs ipc -c hamr call hamr toggle
+        ;;
+    plugin)
+        if [[ -z "${2:-}" ]]; then
+            echo "Error: plugin name required" >&2
+            echo "Usage: hamr plugin <name>" >&2
+            exit 1
+        fi
+        exec qs ipc -c hamr call hamr plugin "$2"
+        ;;
+    "")
+        exec qs -c hamr
+        ;;
+    *)
+        echo "Error: unknown command '$1'" >&2
+        echo "Run 'hamr --help' for usage" >&2
+        exit 1
+        ;;
+esac
 EOF
 
     # Install systemd user service (for Niri and other systemd-based compositors)
