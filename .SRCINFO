@@ -13,6 +13,6 @@ pkgbase = firefox-extension-localcdn
 	conflicts = librewolf-extension-localcdn
 	source = git+https://codeberg.org/nobody/LocalCDN.git#commit=427c74a6dc3319d18dd7a4cc60d37a0803254c45?signed
 	validpgpkeys = 3F59043BE267E1B1177688AC8F6DE3D614FCFD7A
-	b2sums = 1edce75455a6580e819fc4127891d9029f799ba026edd52fb44d756c56466f08ef626c6860c1a0d2ad90174d5ad841e4163a0ac76c0bba3e3281c9a2db5c3412
+	b2sums = 7b6db15ad6d5537a9a2421569a449a54cbb516ef7139b7cecac92d2dbc7dfc01e14fefc58499e87ea8748add93a81d613f730567065675ab04d57fba3cb0fc5b
 
 pkgname = firefox-extension-localcdn
