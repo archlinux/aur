@@ -1,8 +1,8 @@
 # Maintainer: Scott-Nx <158021536 plus Scott-Nx at users dot noreply dot github dot com>
 
 pkgname=quantumlauncher-bin
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A simple, powerful Minecraft launcher"
 arch=('x86_64')
 url="https://github.com/Mrmayman/quantumlauncher"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/Mrmayman/quantumlauncher/r
         "ql_logo_512x512.png::https://raw.githubusercontent.com/Mrmayman/quantumlauncher/02c9e1ae25e9b22f98403e189ea6e44e4284d865/assets/icon/512x512/ql_logo.png"
         "quantumlauncher.desktop")
 
-sha256sums=('7ca878491e120b711e27d783110684ebdb4656ebb383b5d8c7520ae339110e42'
+sha256sums=('53c7bb83624bbdbbdfb3e227ed7139bb999fbc52693b10985b5cec26a79fdedd'
             '155505fc1c8e7139ee5b7e2c430c984dc54ac23ccaf3f67b2a1635bfd3f71fab'
             '9562d3780eae741c9c407cfde6873e9b54a36d148aefcc56733a0c482cf782b3'
             '51e20ef1e0c37128523be60ae5007694efb0914b8f097a2be1bd24055768df9f'
