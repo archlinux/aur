@@ -1,8 +1,8 @@
 # Maintainer: Pqolk <tiangloo@outlook.com>
 
 pkgname=azurlaneautoscript
-pkgver=2025.01.19
-pkgrel=2
+pkgver=2025.07.13
+pkgrel=1
 pkgdesc="Azur Lane bot (CN/EN/JP/TW) 碧蓝航线脚本 | 无缝委托科研，全自动大世界"
 arch=('x86_64')
 url="https://github.com/LmeSzinc/AzurLaneAutoScript"
