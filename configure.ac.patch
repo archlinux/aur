@@ -1,0 +1,12 @@
+--- configure.ac
++++ configure.ac
+@@ -9,8 +9,7 @@
+ AM_PROG_AR
+ 
+ # Predefined header checks.
+-AC_HEADER_STAT    # sys/stat.h
+-AC_HEADER_STDC    # stdlib.h string.h (implied: errno.h limits.h stdio.h)
++AC_CHECK_HEADERS([sys/stat.h stdlib.h string.h errno.h limits.h stdio.h])
+ 
+ # Check for header files not covered by the predefined macros above.
+ AC_HEADER_REQUIRE(sys/types.h)
