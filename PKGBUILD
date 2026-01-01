@@ -1,5 +1,5 @@
 pkgname=thermometer
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple CPU frequency management utility using cpupower and lm_sensors -- just in one package"
 arch=('x86_64')
@@ -15,6 +15,7 @@ source=()
 md5sums=()
 
 build() {
+  cd $srcdir
   git clone https://github.com/watchmypizza/thermometer.git
   cd thermometer
   dotnet publish ./Thermometer.sln -c Release -r linux-x64 -o "$srcdir/publish"
