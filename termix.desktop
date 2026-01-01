@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Termix
+Comment=Modern SSH client
+Exec=termix
+Icon=termix
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupWMClass=Termix
+
