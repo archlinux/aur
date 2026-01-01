@@ -2,8 +2,8 @@
 # Contributor: Archeb <archebasic@hotmail.com>
 
 pkgname=opentrace-bin
-pkgver=1.5.0.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Archeb/opentrace"
@@ -19,10 +19,10 @@ source=(
 )
 sha256sums=('69f8c4799f6db03bf17cd78b1de7a18d939ec5e282190942172dbe13e39c2075'
             '93cf17802f2691d63e29a7020afb0c7c39782c85212ce4b795cc8486f36c758d')
+sha256sums_x86_64=('acfc08a3285218444d1ed9d127de699b5666118a666059990bb131d6dfaa6104')
+sha256sums_aarch64=('acfc08a3285218444d1ed9d127de699b5666118a666059990bb131d6dfaa6104')
 source_x86_64=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/download/v$pkgver/linux-x64.tar.gz")
-sha256sums_x86_64=('acedd8ecf6eef284f044d8385702c17c102f31073218d6c8f8da692a196a6901')
 source_aarch64=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/download/v$pkgver/linux-arm64.tar.gz")
-sha256sums_aarch64=('3ff41fd0028b9c43c8ced1c177d7e283fb1c87e4deb804d2bcc5d0b12f16db4f')
 
 latestver() {
   # Fetch latest version from GitHub API
@@ -35,7 +35,10 @@ package() {
   
   # Copy files
   cp -r "${srcdir}"/* "${pkgdir}/opt/${pkgname}"
-  
+
+  # Remove bundled NextTrace to use system dependency
+  rm -f "${pkgdir}/opt/${pkgname}/nexttrace"
+
   # Create binary symlink
   install -dm755 "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/OpenTrace" "${pkgdir}/usr/bin/opentrace"

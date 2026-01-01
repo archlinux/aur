@@ -1,7 +1,7 @@
 pkgbase = opentrace-bin
 	pkgdesc = A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience.
-	pkgver = 1.5.0.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/Archeb/opentrace
 	arch = x86_64
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = opentrace-bin
 	source = logo.png::https://raw.githubusercontent.com/nxtrace/Ntrace-core/main/assets/logo.png
 	sha256sums = 69f8c4799f6db03bf17cd78b1de7a18d939ec5e282190942172dbe13e39c2075
 	sha256sums = 93cf17802f2691d63e29a7020afb0c7c39782c85212ce4b795cc8486f36c758d
-	source_x86_64 = opentrace-bin-1.5.0.0::https://github.com/Archeb/opentrace/releases/download/v1.5.0.0/linux-x64.tar.gz
-	sha256sums_x86_64 = acedd8ecf6eef284f044d8385702c17c102f31073218d6c8f8da692a196a6901
-	source_aarch64 = opentrace-bin-1.5.0.0::https://github.com/Archeb/opentrace/releases/download/v1.5.0.0/linux-arm64.tar.gz
-	sha256sums_aarch64 = 3ff41fd0028b9c43c8ced1c177d7e283fb1c87e4deb804d2bcc5d0b12f16db4f
+	source_x86_64 = opentrace-bin-1.5.1::https://github.com/Archeb/opentrace/releases/download/v1.5.1/linux-x64.tar.gz
+	sha256sums_x86_64 = acfc08a3285218444d1ed9d127de699b5666118a666059990bb131d6dfaa6104
+	source_aarch64 = opentrace-bin-1.5.1::https://github.com/Archeb/opentrace/releases/download/v1.5.1/linux-arm64.tar.gz
+	sha256sums_aarch64 = acfc08a3285218444d1ed9d127de699b5666118a666059990bb131d6dfaa6104
 
 pkgname = opentrace-bin
