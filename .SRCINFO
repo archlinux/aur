@@ -1,0 +1,13 @@
+pkgbase = rein-git
+	pkgdesc = Minimalist engine for 2d games & demos
+	pkgver = r1342.26331bb
+	pkgrel = 1
+	url = https://github.com/hugeping/rein
+	arch = any
+	license = MIT
+	depends = sdl3
+	depends = luajit
+	source = rein-git::git+https://github.com/hugeping/rein.git
+	md5sums = SKIP
+
+pkgname = rein-git
