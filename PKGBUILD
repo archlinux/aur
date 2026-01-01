@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your_email@example.com>
+# Maintainer: aman-sanin
 pkgname=phantimer
 pkgver=0.1.0
 pkgrel=1
