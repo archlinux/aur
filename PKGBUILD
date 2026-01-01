@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 
 pkgname=sctd
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A daemon to change the display color temperature based on time of day"
 url="https://github.com/amir/sctd"
@@ -10,14 +10,14 @@ license=(custom)
 depends=(gcc-libs libx11 libxrandr)
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amir/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('5f2c8da707462c23bd32da2de3e527304bcf31f5aac841babb64853b38d4971656a9edefb7fdc5e63ef33cbeefc84e17fcb10ce26b514c4ac7b309326b210efa')
+sha512sums=('f281dbccee7fd187333259049d7b39be41a1c6fc62a5dbccbcc49cdef95884e963c0747fce49502a2bb6d57f574e255896543a6cfb4cdcbd2ba3c70371b8d8de')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
