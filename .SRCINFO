@@ -1,6 +1,6 @@
 pkgbase = hyper8-cli
 	pkgdesc = A static site generator for video publishing
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://simonrepp.com/hyper8
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = hyper8-cli
 	conflicts = hyper8
 	conflicts = hyper8-bin
 	options = !lto
-	source = hyper8-1.0.0.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/1.0.0.tar.gz
-	sha256sums = 6786c2b4bad6b5f70d6859a55a17e47905209cebc780dd78e4bd25615988f450
+	source = hyper8-1.0.1.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/1.0.1.tar.gz
+	sha256sums = 44bed5af1aa3ce9aff0cabfa6817501473b58924cc1e186a05bcb5369e028386
 
 pkgname = hyper8-cli
