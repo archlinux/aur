@@ -1,6 +1,6 @@
 # Maintainer: <ayedeil at posteo dot com>
 pkgname=bricklink-studio
-pkgver=2.25.2_1
+pkgver=2.25.11_3
 pkgrel=1
 pkgdesc="Lego cad software created by Bricklink"
 arch=('x86_64')
@@ -9,14 +9,14 @@ license=('custom')
 depends=('wine')
 makedepends=('innoextract')
 source=(
-  "$pkgname-$pkgver.exe::https://s3.amazonaws.com/blstudio/Studio2.0/Archive/$pkgver/Studio+2.0.exe"
+  "$pkgname-$pkgver.exe::https://studio.download.bricklink.info/Studio2.0/Archive/$pkgver/Studio+2.0.exe"
   "$pkgname.sh"
   "$pkgname.desktop"
   "$pkgname.xml"
   "icon.png"
 )
 noextract=("$pkgname-$pkgver.exe")
-sha256sums=('9f4d42da82186c80b0aaf7d8cd55ed7b4202fc9547ff7d841d1562f609916233'
+sha256sums=('a3d3b9942bffcb5c28529c6ee13ba31d6a4302358becc314f5a80e5318bd8b08'
             'a6b6ec21561e2a9594d8ba9e7dc496b819060003eef52a98c474f256da626f24'
             'cd760f9ad2a3210359ff6c0862cc3aa548a78a81246962748896f624364da47b'
             '799ebcbfd268cba96294f128abb2ea4b24f6841a8ee4863a10ef4ad4912419f3'
