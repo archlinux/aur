@@ -1,6 +1,6 @@
 pkgbase = jrnlc
 	pkgdesc = A fast, minimal, terminal-based journaling tool written in C++ with plain-text storage.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/manjunathamajety/jrnlc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jrnlc
 	makedepends = cmake
 	makedepends = gcc
 	depends = glibc
-	source = jrnlc-0.2.1.tar.gz::https://github.com/manjunathamajety/jrnlc/archive/refs/tags/v0.2.1.tar.gz
+	source = jrnlc-0.2.2.tar.gz::https://github.com/manjunathamajety/jrnlc/archive/refs/tags/v0.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = jrnlc
