@@ -1,6 +1,6 @@
 pkgbase = inspect-deps
 	pkgdesc = ELF dependency analyzer for Arch Linux
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Kam1k4dze/inspect-deps
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = inspect-deps
 	depends = python
 	depends = binutils
 	depends = pacman
-	source = inspect-deps-0.1.1.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 6578b10a334a60a97a3d4223782105cf2340dc82df7c8a70199b43f3b7bb6c7a
+	source = inspect-deps-0.1.2.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = cf80692bb7b3d115c8e661766d8f570b6edbcfb596ac433512d486a2a3515462
 
 pkgname = inspect-deps

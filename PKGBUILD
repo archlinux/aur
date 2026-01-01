@@ -1,6 +1,6 @@
 # Maintainer: Kam1k4dze <me@kam1k4dze.com>
 pkgname=inspect-deps
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="ELF dependency analyzer for Arch Linux"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'binutils' 'pacman')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6578b10a334a60a97a3d4223782105cf2340dc82df7c8a70199b43f3b7bb6c7a')
+sha256sums=('cf80692bb7b3d115c8e661766d8f570b6edbcfb596ac433512d486a2a3515462')
 
 build() {
   cd "$pkgname-$pkgver"
