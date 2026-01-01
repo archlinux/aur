@@ -1,15 +1,14 @@
 pkgbase = hdaps-gl
 	pkgdesc = ThinkPad HDAPS OpenGL monitor
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hdaps.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = glu
 	depends = freeglut
 	source = https://github.com/linux-thinkpad/hdaps-gl/releases/download/0.0.7/hdaps-gl-0.0.7.tar.xz
 	sha256sums = 2c75100929876ba0b9a671853da73957b8d49bfc2c93bcc53f11e3fb9eadb035
 
 pkgname = hdaps-gl
-
