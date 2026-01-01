@@ -47,5 +47,5 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build --prefix /usr
 }
