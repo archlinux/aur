@@ -23,7 +23,6 @@ pkgbase = libzippp-git
 	provides = libzippp.so
 	conflicts = libzippp
 	options = emptydirs
-	options = staticlibs
 	source = libzippp::git+https://github.com/ctabin/libzippp.git
 	sha256sums = SKIP
 

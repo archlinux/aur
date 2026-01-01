@@ -32,8 +32,7 @@ makedepends=(
   'zstd'
 )
 optdepends=()
-options+=('emptydirs' 'staticlibs')
-#options+=('!lto')  # Otherwise, gerbera fails to link against it.
+options+=('emptydirs')
 source=(
   "${_pkgname}::git+${url}.git"
 )
