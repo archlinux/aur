@@ -16,7 +16,7 @@ kh-melonmix.desktop
 kh-melonmix-days.desktop
 kh-melonmix-recoded.desktop
 )
-sha256sums=("912582c648c50f7417aa4fd8c6a9bad2e6e3f39142bdcd468ffc324af412a8e4"
+sha256sums=("1fb8038d84291f3c955b6bf8407a48674faedc1524ce4e6f385408f9b0a4d28c"
 	SKIP
 	SKIP
 	SKIP
