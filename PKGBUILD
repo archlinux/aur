@@ -10,7 +10,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libno
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-source_x86_64=("https://storage.googleapis.com/aur-resources/ObinsKit_${pkgver}_x64.tar.gz"
+source_x86_64=("https://pub-0ff293aefb644607ac910219d9762b50.r2.dev/ObinsKit_${pkgver}_x64.tar.gz"
                "deb_extra_files_obins.tar.gz"
 				"70-obinskit.rules")
 sha256sums_x86_64=('2a10aed5366c2667174525924da60e323b7e200e2aa9abc1c1a6335e792096cd'
