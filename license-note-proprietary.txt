@@ -1,0 +1,5 @@
+The game "Viewfinder", is property of their creators:
+
+* Thunderful Publishing AB, Kvarnbergsgatan 2, 411 05, Goterborg, Sweden (https://thunderfulgames.com/)
+
+As of 2026-01-01, the license agreement can be viewed at https://thunderfulgames.com/privacy-policy/thunderfulgames-end-user-licence-agreement/, and should be installed together with this software as file name 'thunderfulgames-EULA.html'.

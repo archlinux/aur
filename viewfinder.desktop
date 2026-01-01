@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Viewfinder
+Comment=A puzzle video game based on mapping photographs or other two-dimension works onto the three-dimensional space of the game's world, creating new geometries and layouts.
+Exec=viewfinder
+Icon=viewfinder
+Terminal=false
+Type=Application
+Categories=Game;AdventureGame;LogicGame;

@@ -1,0 +1,39 @@
+pkgbase = viewfinder-gog-bin
+	pkgdesc = A puzzle video game based on mapping photographs or other two-dimension works onto the three-dimensional space of the game's world, creating new geometries and layouts. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
+	pkgver = 1.0.6+gog80943
+	pkgrel = 1
+	epoch = 0
+	url = https://thunderfulgames.com/games/viewfinder/
+	arch = x86_64
+	groups = games
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	source = viewfinder.sh
+	source = viewfinder.desktop
+	source = license-note-proprietary.txt
+	source = thunderfulgames-EULA.html::https://thunderfulgames.com/privacy-policy/thunderfulgames-end-user-licence-agreement/
+	sha256sums = 603702ba7c13e982f2d36eacbe16930639ad49d893b9ef6e0f44dee2d3728fd9
+	sha256sums = cdd4d852c651f228121455a97c3f293b63a79e629bd0c2706a2871f31296738c
+	sha256sums = 911d46210699f7e6f453bb2ed7a6d8f1baeeabd6b724e04d8a83361e2e18da4c
+	sha256sums = SKIP
+
+pkgname = viewfinder-data-gog-bin
+	pkgdesc = A puzzle video game based on mapping photographs or other two-dimension works onto the three-dimensional space of the game's world, creating new geometries and layouts.
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	license = LicenseRef-GOG_User_Agreement
+	depends = 
+	optdepends = viewfinder-launcher: To launch the game via wine by executing '/usr/bin/viewfinder'.
+	provides = viewfinder-data=1.0.6+gog80943
+	conflicts = viewfinder-data
+
+pkgname = viewfinder-launcher
+	pkgdesc = Launcher script for the game 'Viewfinder'.
+	arch = any
+	license = GPL-3.0-or-later
+	depends = sh
+	depends = viewfinder-data
+	depends = wine
+	optdepends = 
+	provides = viewfinder=1.0.6+gog80943
+	conflicts = 
