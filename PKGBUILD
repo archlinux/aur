@@ -11,6 +11,7 @@ arch=(x86_64)
 depends=(crypto++
          libx11
          libxkbcommon
+         pugixml
          qt6-base
          qt6-declarative
          qt6-webengine
@@ -20,7 +21,6 @@ depends=(crypto++
 makedepends=(git
              cmake
              fmt
-             pugixml
              toml11
              vulkan-headers
              zlib-ng)
