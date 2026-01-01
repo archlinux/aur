@@ -2,8 +2,8 @@
 
 pkgname=python-laszip
 pkgdesc='Python bindings for the LASzip compression library'
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 url='https://github.com/tmontaigu/laszip-python'
 license=('MIT')
 arch=('x86_64')
@@ -24,10 +24,17 @@ makedepends=(
 _pyname=laszip-python
 source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/tmontaigu/laszip-python/archive/refs/tags/$pkgver.tar.gz"
+  'include_header_dir.patch'
 )
 sha256sums=(
-  '95d969063fdffc32495bf4dbd4e6a74108f942f5eee7cc19b951954b346657d6'
+  'cc33c46d8956e3f8446c92b95f2d162e182088cf54b53d9ba30f2c0089b197d5'
+  'd4b71285ba691b6255c431f74decc066aad69e145ab3228c9902597cc90f6812'
 )
+
+prepare() {
+  cd "$_pyname-$pkgver"
+  patch -p0 -i "$srcdir/include_header_dir.patch"
+}
 
 build() {
   cd "$_pyname-$pkgver"

@@ -1,0 +1,10 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -54,6 +54,7 @@
+         POSITION_INDEPENDENT_CODE TRUE
+     )
+ else()
++    target_include_directories(${PY_MODULE_NAME} PRIVATE /usr/include/laszip)
+     target_link_libraries(${PY_MODULE_NAME} PRIVATE LASzip::LASzip)
+ endif()
+ 
