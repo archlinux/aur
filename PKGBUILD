@@ -13,7 +13,7 @@ makedepends=(git)
 optdepends=('aha: Output colors'
             'ansifilter: (suggested) Output colors'
             'bc: Calculator'
-            'qalc: (suggested) Calculator'
+            'libqalculate: (suggested) Calculator'
             'zsh: To use its autocompletion')
 provides=(qiq)
 conflicts=(qiq)
