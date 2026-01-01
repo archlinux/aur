@@ -5,14 +5,14 @@
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
 pkgver=v1.12.1.r1426.39d9acc
-pkgrel=1
+pkgrel=2
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url=https://github.com/vadimcn/codelldb
 license=(MIT)
 provides=("$_pkgname" "vscode-lldb")
 depends=(lldb)
-makedepends=(cmake cargo nodejs npm python libc++)
+makedepends=(cmake cargo nodejs npm python libc++ git)
 options=(!lto)
 source=("git+$url.git")
 sha256sums=('SKIP')
