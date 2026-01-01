@@ -1,0 +1,5 @@
+[altirra]
+source = "htmlparser"
+url = "https://www.virtualdub.org/altirra.html"
+xpath = "/html/body/div[1]/div[1]/h3[text()=\"Current version\"]/following-sibling::p"
+prefix = " Altirra "
