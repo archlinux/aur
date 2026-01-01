@@ -1,0 +1,39 @@
+post_install() {
+  # Эта функция запускается после установки пакета
+
+  # Определяем файл bashrc
+  BASHRC_FILE="/home/$USER/.bashrc"
+  
+  # Проверяем, существует ли пользователь и .bashrc
+  if [ -f "$BASHRC_FILE" ]; then
+    
+    # Блок кода для добавления в .bashrc
+    BASHRC_CONFIG="
+
+# --- SuperFetch: Автозапуск и Приветствие ---
+# Запускает SuperFetch при старте новой сессии
+if [ -x \"\$(command -v superfetch)\" ]; then
+    superfetch
+fi
+
+# Выводит дружелюбное приветствие
+echo -e \"👋 Hello, system! Добро пожаловать в Arch Linux!\"
+# --------------------------------------------
+"
+    # Добавляем блок в .bashrc, если его там еще нет
+    if ! grep -q "--- SuperFetch: Автозапуск и Приветствие ---" "$BASHRC_FILE"; then
+        echo -e "$BASHRC_CONFIG" >> "$BASHRC_FILE"
+        echo "==> Настройка SuperFetch добавлена в ~/.bashrc."
+    fi
+  fi
+
+  echo "==> Установка SuperFetch завершена."
+  echo "==> Пожалуйста, перезапустите терминал или выполните 'source ~/.bashrc' для активации."
+}
+
+post_upgrade() {
+  # Запускается после обновления пакета
+  post_install
+}
+
+# Остальные функции (pre_install, pre_remove и т.д. можно оставить пустыми)
