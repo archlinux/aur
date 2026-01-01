@@ -23,9 +23,9 @@ pkgver() {
 }
 
 build() {
-    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
+    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr -DBETTERBLUR_X11=ON)
 
-    cmake "${_cmake_args[@]}" -DBETTERBLUR_X11=ON -B build -S "$pkgname"
+    cmake "${_cmake_args[@]}" -B build -S "$pkgname"
     make -C build
 }
 
