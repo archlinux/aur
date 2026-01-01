@@ -3,7 +3,7 @@
 # The Archlinux User Repository eXplorer.
 # A simple bash script for easily managing AUR installs.
 
-# Copyright (C) 2025 the aurx contributors
+# Copyright (C) 2026 the aurx contributors
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1248,7 +1248,7 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.6-5"
+INTERNAL_VERSION="1.0.7-1"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "CONFIG" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
