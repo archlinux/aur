@@ -1,0 +1,17 @@
+pkgbase = go-send-git
+	pkgdesc = Secure file transfer tool with challenge-response authentication
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/VinMeld/go-send
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = go-send
+	conflicts = go-send
+	source = git+https://github.com/VinMeld/go-send.git
+	sha256sums = SKIP
+
+pkgname = go-send-git
