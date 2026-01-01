@@ -1,7 +1,7 @@
 # Maintainer: Liam Doan <not.lamdn@gmail.com>
 
 pkgname=surfshark-client
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Official Surfshark VPN client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_${pkgver}_amd64.deb")
-sha256sums=('444ef9f614df31358b3d92b931ee21fdfd14bd73ba2114cada0208dfac1281fd')
+sha256sums=('920c1c14bb92473978c4b59ebbdff4690fb681164d350dae4e88c6ab57d89340')
 
 prepare() {
     tar xf data.tar.xz
