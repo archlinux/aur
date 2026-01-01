@@ -1,5 +1,5 @@
 pkgname=termix-bin
-pkgver=1.0.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Modern cross-platform SSH client built with Electron"
 arch=('x86_64')
@@ -10,11 +10,10 @@ depends=('glibc' 'gtk3' 'nss' 'libxss')
 options=('!strip' '!debug')
 
 source=(
-  "termix-linux-x64.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/v$pkgver/termix_linux_x64_portable.tar.gz"
+  "termix-linux-x64.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/release-$pkgver-tag/termix_linux_x64_portable.tar.gz"
 )
-sha256sums=(
-  'cbb1ac1ee67792b94a92e702ee09cfe8d3f61bb7b97d616fa4847395461b8c02'
-)
+
+sha256sums=('cbb1ac1ee67792b94a92e702ee09cfe8d3f61bb7b97d616fa4847395461b8c02')
 
 package() {
   install -dm755 "$pkgdir/opt/termix"
