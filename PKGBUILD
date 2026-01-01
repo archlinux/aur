@@ -6,7 +6,7 @@ _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=7.0.0+4.r1691.20251231.98ba889
-pkgrel=1
+pkgrel=2
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
@@ -36,6 +36,7 @@ makedepends=(
   'sdl'
   'vlc'
   'xasm'
+  'xmms2'
 )
 checkdepends=()
 optdepends=(
@@ -45,6 +46,7 @@ optdepends=(
   "opencl-icd-loader:  For the 'asapcl' executable."
   "gcc-libs:           For the 'asapcl' executable."
   "moc>=2.4:           For the moc plugin."
+  "xmms2:              For the XMMS2 plugin."
   "vlc:                For the VLC plugin."
 )
 provides=(
@@ -58,6 +60,7 @@ provides=(
   "asapweb=${pkgver}"
   "python-${_pyname}=${pkgver}"
   "vlc-${_origname}=${pkgver}"
+  "xmms2-${_origname}=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
@@ -121,6 +124,7 @@ build() {
   make asapscan
   make asapconv
   make asap-sdl
+  make asap-xmms2
   make MOC_INCLUDE=/usr/include/moc asap-moc
   make asap-vlc
   make opencl
@@ -152,6 +156,7 @@ package() {
   make DESTDIR="${pkgdir}" prefix="/usr" install-lib
   make DESTDIR="${pkgdir}" prefix="/usr" install-asapconv
   make DESTDIR="${pkgdir}" prefix="/usr" install-sdl
+  make DESTDIR="${pkgdir}" prefix="/usr" install-xmms2
   make DESTDIR="${pkgdir}" prefix="/usr" MOC_PLUGIN_DIR=/usr/lib/moc/decoder_plugins install-moc
   make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
 
