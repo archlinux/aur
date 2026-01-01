@@ -5,7 +5,7 @@ pkgdesc="Screenshot, screen recording, and file uploader with OCR support for Zi
 arch=('any')
 url="https://heliopolis.live/creations/grabit.git"
 license=('BSD')
-depends=('bash' 'curl' 'jq' 'xdg-utils' 'python' 'tk' 'libnotify')
+depends=('bash' 'curl' 'jq' 'xdg-utils' 'python' 'tk' 'libnotify' 'python-pillow' 'python-screeninfo')
 optdepends=(
   'grim: Wayland screenshot support'
   'slurp: Wayland region selection'
@@ -15,8 +15,6 @@ optdepends=(
   'xclip: X11 clipboard'
   'ffmpeg: X11 screen recording'
   'slop: X11 region selection for recording'
-  'python-pillow: image preview'
-  'python-screeninfo: screen placement'
   'python-pyocr: OCR text extraction'
   'tesseract: OCR engine'
   'spectacle: KDE screenshot and recording support'
