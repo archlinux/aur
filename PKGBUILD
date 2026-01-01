@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-pomodoro
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Pomodoro timer widget plugin for Owlry"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('owlry')
 makedepends=('cargo')
 install=owlry-plugin-pomodoro.install
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('28ec839a4bdbfd0d9fdfccc59ea6da020132c76aa26808d7a824bd7e64fa14902911e68f359c631b82adf55dfa9c16f2dc1e07c022800a9811f5e226468b6a4d')
+b2sums=('65960b1ebb3a58f7f1b251d64f6958debcf40ac4360c166f277dae3fa2b7f50f669c64c2728ac876fc73d983b39b64736878980ca8d3a4eb5130271ae5445f33')
 
 _cratename=owlry-plugin-pomodoro
 
