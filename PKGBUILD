@@ -14,36 +14,52 @@ arch=(
   'i686'
   'x86_64'
   'armv7h'
+  'armv8h'
+  'aarch64'
 )
 depends=(
   'curl'
   'duktape'
   'exiv2'
-  'expat'
   'ffmpeg'
   'ffmpegthumbnailer'
   'file'
   'fmt'
   'gcc-libs'
+  'glibc'
   'libebml'
   'libexif'
+  'libicui18n.so'
+  'libicuio.so'
+  'libicuuc.so'
+  'libjsoncpp.so'
   'libmatroska'
   'libnpupnp' # Alternative to `libupnp` -- Usage of this is set in a cmake config variable.
   # 'libupnp' # Needs to be compiled with special options to make gerbera work reliably (`cmake` issues warnings saying so).
+  'libuuid.so'  # util-linux-libs
+  'libzip.so'
+  'libzippp.so'
   'pugixml'
   'spdlog' 
   'sqlite'
   'taglib'
+  'wavpack'
 )
 makedepends=(
   'cmake'
   'git'
+
+  'icu'
+  'jsoncpp'
+  'libzip'
+  'libzippp'
+  'util-linux-libs'
 )
 optdepends=(
   "${_pkgname}-openrc: For OpenRC startup script."
 )
 install="gerbera.install"
-options=('emptydirs')
+options+=('emptydirs')
 source=(
   "${_pkgname}::git+https://github.com/gerbera/gerbera.git"
   "gerbera.sysusers"
@@ -83,6 +99,12 @@ sha256sums=(
 #   done
 # }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '.')"
@@ -96,14 +118,19 @@ pkgver() {
   else
     printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
   fi
+
+  mkdir -p "${srcdir}/build"
 }
 
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  cmake . \
+  cd "${srcdir}"
+
+  cmake -S "${_pkgname}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_CHANGELOG=ON \
+    -DBUILD_DOC=ON \
     -DCXX_FILESYSTEM_HAVE_FS=ON \
     -DEXIF_ROOT_DIR=/usr \
     -DSTATIC_LIBUPNP=OFF \
@@ -120,24 +147,37 @@ build() {
     -DWITH_MATROSKA=ON \
     -DWITH_MYSQL=OFF \
     -DWITH_NPUPNP=ON \
+    -DWITH_ONLINE_SERVICES=ON \
+    -DWITH_PGSQL=OFF \
     -DWITH_SYSTEMD=OFF \
     -DWITH_TAGLIB=ON \
-    -DWITH_TESTS=ON
-  make
+    -DWITH_TESTS=ON \
+    -DWITH_WAVPACK=ON \
+    -DWITH_ZIP=ON
+    # -DZIPPP_LIBRARY=/usr/lib/libzippp_static.a
+
+  make -C build
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"
 
-  make test
+  make -C build test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}"
+  make -C build DESTDIR="${pkgdir}/" install
 
   install -dm0755 "${pkgdir}/var/lib/gerbera"
   install -dm0755 "${pkgdir}/etc/gerbera"
   install -Dm0644 "${srcdir}/gerbera.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm0644 "${srcdir}/gerbera.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+  mv -v "${pkgdir}/usr/share/doc/Gerbera" "${pkgdir}/usr/share/doc/${_pkgname}" # Lowecase the install-script generated documentation directory.
+
+  cd "${srcdir}/${_pkgname}"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log AUTHORS ChangeLog.md CONTRIBUTING.md README.Docker.md README.md ReleaseNotes.md
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE.md
 }
