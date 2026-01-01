@@ -1,7 +1,7 @@
 pkgbase = freetube-git-d3sox
 	pkgdesc = An open source desktop YouTube player built with privacy in mind - My fork with additional features
-	pkgver = r9682.937b7c9a
-	pkgrel = 3
+	pkgver = r9686.d2f88582
+	pkgrel = 5
 	url = https://freetubeapp.io
 	arch = x86_64
 	arch = i686

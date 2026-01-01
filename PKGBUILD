@@ -2,8 +2,8 @@
 
 pkgname=freetube-git-d3sox
 _pkgname=FreeTube
-pkgver=r9682.937b7c9a
-pkgrel=3
+pkgver=r9686.d2f88582
+pkgrel=5
 pkgdesc='An open source desktop YouTube player built with privacy in mind - My fork with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}"/{usr/bin,usr/lib/freetube-git}
+  install -d "${pkgdir}"/{usr/bin,usr/lib/freetube-git-d3sox}
   cp -R "./$_pkgname/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./freetube.sh" "$pkgdir/usr/bin/freetube"
   
