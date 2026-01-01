@@ -1,0 +1,5 @@
+[shell2http-bin]
+source = "github"
+github = "msoap/shell2http"
+use_latest_release = true
+prefix = "v"
