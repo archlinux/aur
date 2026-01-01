@@ -1,0 +1,7 @@
+/pkg/
+/src/
+/BB_Launcher/
+/nlohmann-json/
+/qmicroz/
+/volk/
+*.tar.zst
