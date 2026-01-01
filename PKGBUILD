@@ -15,7 +15,7 @@ sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
-  install -Dm755 "go-send-linux-amd64" "$pkgdir/usr/bin/go-send"
+  install -Dm755 "go-send" "$pkgdir/usr/bin/go-send"
   
   # Install license (downloaded or embedded if possible, but for binary packages often skipped or fetched separately)
   # For now, we assume the user accepts the license at the URL.
