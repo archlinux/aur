@@ -1,6 +1,6 @@
 pkgbase = localbooru-donut
 	pkgdesc = Local image library with automatic AI tagging
-	pkgver = 0.1.85
+	pkgver = 0.1.86
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/LocalBooru
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = localbooru-donut
 	depends = python-opencv
 	optdepends = python-pytorch: For AI tagging and age detection
 	optdepends = python-transformers: For AI models
-	source = localbooru-donut-0.1.85.tar.gz::https://github.com/DonutsDelivery/LocalBooru/archive/refs/tags/v0.1.85.tar.gz
+	source = localbooru-donut-0.1.86.tar.gz::https://github.com/DonutsDelivery/LocalBooru/archive/refs/tags/v0.1.86.tar.gz
 	sha256sums = SKIP
 
 pkgname = localbooru-donut
