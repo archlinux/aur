@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
 url="https://github.com/watchmypizza/thermometer"
-license=('GPL3')
+license=('MIT')
 depends=('dotnet-runtime' 'bash' 'curl')
 makedepends=('dotnet-sdk')
 
