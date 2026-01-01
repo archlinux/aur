@@ -1,16 +1,14 @@
 pkgbase = mux-media
-	pkgdesc = A simple automated utility for muxing media (e.g. video, audio, subtitles).
-	pkgver = 0.15.0
+	pkgdesc = A CLI utility for muxing media (e.g. video, audio, subtitles).
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
-	license = GPL3
-	makedepends = git
+	license = MIT OR Apache-2.0
 	makedepends = rustup
-	depends = mkvtoolnix-cli
-	optdepends = ffmpeg: for retiming and custom output containers (.avi, .mp4, .webm)
+	depends = ffmpeg
 	options = !debug
-	source = mux-media-0.15.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = 2190c53c04fc185e9b17c7d501ee0012c9682fca8a51cd6087f1a8460b2f60ba
+	source = mux-media-0.16.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 914d11f72baf8e8034a3dd037603352934fb85ab41aac62fb91638e76ef2b8af
 
 pkgname = mux-media
