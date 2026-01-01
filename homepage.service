@@ -1,25 +1,17 @@
-# Be sure to use `systemctl edit homepage` to modify this service with an override.conf because
-# direct changes will be overwritten by package updates.
-#
-# A user per service w/ shared group setup would have an override like:
-# [Service]
-# Group=sharedgroupname
-# UMask=002
-
 [Unit]
 Description=Homepage Service
-Wants=network-online.target
-After=network-online.target
+After=network.target
 
 [Service]
 Type=simple
 User=homepage
 Group=homepage
-SyslogIdentifier=homepage
-WorkingDirectory=/var/lib/homepage/
-Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node server.js
-Restart=on-failure
+WorkingDirectory=/var/lib/homepage
+# Uses pnpm start to launch the standard build
+ExecStart=/usr/bin/pnpm start
+Restart=always
+Environment=NODE_ENV=production
+Environment=PORT=3000
 
 [Install]
 WantedBy=multi-user.target

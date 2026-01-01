@@ -1,42 +1,54 @@
 pkgname=homepage
-pkgver=1.4.0
-pkgrel=5
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
 url="https://github.com/gethomepage/homepage"
 license=('GPL-3.0-only')
-makedepends=('pnpm')
-depends=('pnpm')
+makedepends=('nodejs-lts-iron' 'pnpm' 'git')
+depends=('nodejs-lts-iron' 'pnpm')
 source=("https://github.com/gethomepage/homepage/archive/v${pkgver}.tar.gz"
         'homepage.service'
         'homepage.sysusers'
         'homepage.tmpfiles')
-sha256sums=('8a90dcca10a001818d0f6f28a15d4eaef1ae5f614a4bc019d3a95ecb02ab60de'
-            '74650f1be92d42d6969dc4b9d34fd3a11cdf5ce2d98029752e400ac0fef67f62'
+sha256sums=('66e7b0282d1e1372821ee62dbe3d21640d58c10d285a35716a65911895a0092b'
+            '98e54ffbf5fb251f66a50457d20d78b057d87f9dce645be15e87d84b181b094a'
             'b35b3df75248f5dd1298cb1a13921cb40b66998608eae3a8bf0c36562d43d278'
             'e10cf0af4417326d32acffddd7104ce5e033dfbbf06f7f8f71bc92a1d6c37165')
+
 build() {
+  # Fix Date Crash
+  export NEXT_PUBLIC_BUILDTIME="$(date --iso-8601=seconds)"
+
   export NEXT_TELEMETRY_DISABLED=1
-  export NEXT_PUBLIC_BUILDTIME="$(date +%s)"
   export NEXT_PUBLIC_VERSION="${pkgver}"
   export NEXT_PUBLIC_REVISION="aur"
+
   cd "homepage-${pkgver}"
-  pnpm install
+  pnpm install --frozen-lockfile
   pnpm build
 }
+
 package() {
-  # Create directories
+  cd "homepage-${pkgver}"
+
+  # Install Dir
   install -dm 755 "${pkgdir}/var/lib/homepage"
-  # Copy build output (assumes no config/ exists here)
-  cp -r "$srcdir/homepage-${pkgver}/.next/standalone/." "${pkgdir}/var/lib/homepage/"
-  mkdir -p "${pkgdir}/var/lib/homepage/.next"
-  cp -r "$srcdir/homepage-${pkgver}/.next/standalone/.next/." "${pkgdir}/var/lib/homepage/.next/"
-  # Copy public assets
-  cp -r "${srcdir}/homepage-${pkgver}/public/." "${pkgdir}/var/lib/homepage/public/"
-  mkdir -p "${pkgdir}/var/lib/homepage/.next/static"
-  cp -r "${srcdir}/homepage-${pkgver}/.next/static/." "${pkgdir}/var/lib/homepage/.next/static/"
-  # Copy service files
-  install -Dm644 "$srcdir/homepage.service" "$pkgdir/usr/lib/systemd/system/homepage.service"
-  install -Dm644 "$srcdir/homepage.sysusers" "$pkgdir/usr/lib/sysusers.d/homepage.conf"
-  install -Dm644 "$srcdir/homepage.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/homepage.conf"
+
+  # Copy Build Artifacts
+  # ADDED: next-i18next.config.js (Required by next.config.js)
+  cp -r .next public package.json pnpm-lock.yaml next.config.js next-i18next.config.js "${pkgdir}/var/lib/homepage/"
+
+  # Create config dir
+  install -dm 755 "${pkgdir}/var/lib/homepage/config"
+
+  # Install Production Deps
+  cd "${pkgdir}/var/lib/homepage"
+  pnpm install --prod --frozen-lockfile
+
+  # Install System Files
+  cd "${srcdir}"
+  install -Dm644 "homepage.service" "$pkgdir/usr/lib/systemd/system/homepage.service"
+  install -Dm644 "homepage.sysusers" "$pkgdir/usr/lib/sysusers.d/homepage.conf"
+  install -Dm644 "homepage.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/homepage.conf"
 }
