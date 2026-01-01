@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Ginko <aur.pj7ic@passmail.net>
+#
+# SPDX-License-Identifier: 0BSD
+
 *.tar.bz2
 *.tar.xz
 /pkg
