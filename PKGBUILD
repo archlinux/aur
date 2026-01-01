@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Modern cross-platform SSH client built with Electron"
 arch=('x86_64')
 url="https://github.com/Termix-SSH/Termix"
-license=('custom')
+license=('Apache-2.0')
 depends=('glibc' 'gtk3' 'nss' 'libxss')
 
 options=('!strip' '!debug')
