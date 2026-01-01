@@ -1,12 +1,12 @@
 # Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
 url="https://github.com/acaibowlz/aur-sync-vote"
 license=('MIT')
-depends=('python-beautifulsoup4' 'python-html5lib' 'python-requests')
+depends=('python-beautifulsoup4' 'python-html5lib' 'python-requests' 'python-keyring')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
   'gnome-keyring: provides org.freedesktop.secrets.service'
