@@ -1,18 +1,19 @@
-# Maintainer: Lev Gorodetskiy <aur@droserasprout.space>
+# Maintainer: Lev Gorodetskii <aur@drsr.io>
 pkgname=pacman-fix-permissions
-pkgver=1.1.2
+_package=pacman_fix_permissions
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Fix broken filesystem permissions"
 arch=('any')
-url="https://github.com/droserasprout/${pkgname}"
+url="https://github.com/droserasprout/$pkgname"
 license=('GPL3')
 depends=('python' 'python-zstandard')
-source=("https://github.com/droserasprout/pacman-fix-permissions/releases/download/v$pkgver/pacman-fix-permissions-$pkgver.tar.gz")
-sha256sums=('bb698ea57c48b5285b516c96ecde49ab84d3ffd188a5c5d303a7159c24d7e636')
-makedepends=('python-setuptools')
+source=("https://github.com/droserasprout/$pkgname/releases/download/v$pkgver/$_package-$pkgver.tar.gz")
+sha256sums=('0156f2730c3409afe1d4bb3473adc7bc8796888338dc1e58142d05e206c98b80')
+makedepends=('python-pip')
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd ${_package}-${pkgver}
+  pip install . --root="${pkgdir}"
 }
 
