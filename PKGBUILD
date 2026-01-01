@@ -20,11 +20,10 @@ groups=(
   'games'
 )
 makedepends=(
-  #'imagemagick' # to extract icon
+  'imagemagick' # to extract icon
   'innoextract'
   'lgogdownloader'
-  #'libarchive'  # for 'bsdtar'
-  #'zopfli'      # For 'zopflipng'
+  'zopfli'      # For 'zopflipng'
 )
 checkdepends=()
 source=(
