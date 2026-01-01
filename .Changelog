@@ -1,8 +1,12 @@
 # redumper-bin .Changelog
 
-## 2025-11-20, redumper-bin r664
+## 2026-01-01, redumper-bin b683
 
-* Bump to r664 release.
+* Bump to b683 release.
+
+## 2025-11-20, redumper-bin b664
+
+* Bump to b664 release.
 * The dev once again changed how build numbers are expressed and also the distribution filenames.  The distribution filename previously included the release date which made the filename nondeterministic, which necessitated the `_pkgfilename` variable; this can probably be safely refactored out now.  I'll tackle this later.
 
 ## 2025-07-27, redumper-bin build_631-1

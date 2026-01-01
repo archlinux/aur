@@ -1,15 +1,15 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = r664
+	pkgver = b683
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
 	license = GPL3
 	provides = redumper
-	source = https://github.com/superg/redumper/releases/download/b664/redumper-b664-linux-x64.zip
+	source = https://github.com/superg/redumper/releases/download/b683/redumper-b683-linux-x64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 412c6782d1f62af1dd1934207e6aef5a1b77ca50c76b4172f8aeb900cbd6f457
+	sha256sums = 13bfb9475424b54b2ffb1dfc2f8d738911912815282d9d93ea07926eb12c36bb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
