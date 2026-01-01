@@ -1,8 +1,8 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=http-remote-pc-control
-pkgver=1.1.2
+pkgver=1.1.3
 PACKAGER="Andrew Koidan <deathangel908@gmail.com>"
-tag=1.1.3
+tag=v1.1.3
 pkgrel=1
 pkgdesc="HTTP remote PC control tool"
 arch=('x86_64')
@@ -19,17 +19,17 @@ optdepends=(
 install=http-remote-pc-control.install
 
 source=(
-  "http-remote-pc-control::${url}/releases/download/${tag}/app.elf"
+  "http-remote-pc-control::${url}/releases/download/${tag}/http-remote-pc-control.elf"
   "swagger.json::${url}/releases/download/${tag}/swagger.json"
   "http-remote-pc-control.service"
   "http-remote-pc-control.install"
-  "http-remote-pc-control-gen-certs.sh"
+  "gen-certs.sh"
   "san.cnf"
 )
 options=(!strip)
-sha256sums=('0acba1afeca103f959c09a0b60cdbfc769984676066d676c2f9618a8d03f0208'
+sha256sums=('d72decef0f69bca44da98c791c38d452c035742f37fbbc2f8b2ce7510883dda0'
             '35dd54cb3a415dc327c92637b1a7f629e0efb1eea2d5e8432c4134fa412383f4'
-            'be3aa51b9cf0340d3fb172ba33cbe9bb70fefb9e33e6445f965b75564c8d83ed'
+            '83c87c4eb2abce1b40b26bd05dac2be439b64814821a7859545098b7b3601eb9'
             'a75e2cf6c74cc74e82ffd8c83d4942967025b2853f4e3a146f8a1244426b0171'
             '201f45a79a8add80eb759802d14aa4340efdfe18cdc67208e264098806ef22ac'
             '28f264af9f32cb2461d015a9f7054e40e389cffbcd5db5edbe7376e4c0dba82e')
@@ -37,7 +37,7 @@ sha256sums=('0acba1afeca103f959c09a0b60cdbfc769984676066d676c2f9618a8d03f0208'
 package() {
   install -D -m755 "${srcdir}/http-remote-pc-control" "${pkgdir}/usr/bin/http-remote-pc-control"
   install -D -m644 "${srcdir}/http-remote-pc-control.service" "${pkgdir}/usr/lib/systemd/user/http-remote-pc-control.service"
-  install -D -m755 "${srcdir}/http-remote-pc-control-gen-certs.sh" "${pkgdir}/usr/share/http-remote-pc-control/gen-certs"
+  install -D -m755 "${srcdir}/gen-certs.sh" "${pkgdir}/usr/share/http-remote-pc-control/gen-certs"
   install -D -m644 "${srcdir}/san.cnf" "${pkgdir}/usr/share/http-remote-pc-control/san.cnf"
   install -D -m644 "${srcdir}/swagger.json" "${pkgdir}/usr/share/http-remote-pc-control/swagger.json"
 }
