@@ -12,7 +12,7 @@ depends=('bash' 'coreutils' 'grep' 'awk' 'xorg-xrandr' 'lm_sensors') # Доба�
 source=('https://github.com/zuterogwindows/superfetch-bash/archive/main.tar.gz') 
 
 # Так как это локальные файлы, мы используем 'SKIP'
-sha256sums=(6fc8765514e9f2b06a1ceb294f7bfa69fc692701eecef78489b4d9bfe6b690d5) 
+sha256sums=(6fc8765514e9f2b06a1ceb294f7bfa69fc692701eecef78489b4d9bfe6b690d5  main.tar.gz) 
 
 build() {
   # Для Bash-скриптов ничего не нужно
