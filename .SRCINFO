@@ -1,5 +1,5 @@
 pkgbase = gittorrent
-	pkgdesc = a CLI encrypting version control system with a CI/CD pipeline
+	pkgdesc = a CLI version control system with a CI/CD pipeline
 	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://projectgrid.net/portfolio/gittorrent
@@ -9,7 +9,7 @@ pkgbase = gittorrent
 	makedepends = git
 	makedepends = cargo
 	optdepends = bash-completion: for command line completions when pressing the <tab> key
-	source = git+https://git.projectgrid.net/git/gittorrent.git
+	source = git+https://git.projectgrid.net/gittorrent.git
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3

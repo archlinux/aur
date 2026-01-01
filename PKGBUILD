@@ -2,7 +2,7 @@
 pkgname=gittorrent
 pkgver=3.0.1
 pkgrel=1
-pkgdesc="a CLI encrypting version control system with a CI/CD pipeline"
+pkgdesc="a CLI version control system with a CI/CD pipeline"
 arch=("x86_64")
 url="https://projectgrid.net/portfolio/gittorrent"
 license=("0BSD")
@@ -15,7 +15,7 @@ optdepends=(
 )
 install="advice.install"
 source=(
-  "git+https://git.projectgrid.net/git/gittorrent.git"
+  "git+https://git.projectgrid.net/gittorrent.git"
   "LICENSE"
 )
 sha256sums=(
