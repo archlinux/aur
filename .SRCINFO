@@ -1,0 +1,19 @@
+pkgbase = html2data-bin
+	pkgdesc = CLI for extracting data from HTML via CSS selectors
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/msoap/html2data
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = html2data
+	conflicts = html2data
+	source_x86_64 = html2data-x86_64-1.2.3.tgz::https://github.com/msoap/html2data/releases/download/v1.2.3/html2data_1.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0e6a9bd09138bbf04fdb4cdcf28012a940b61d42ecf5c2b69a89d07654d3232
+	source_i686 = html2data-i686-1.2.3.tgz::https://github.com/msoap/html2data/releases/download/v1.2.3/html2data_1.2.3_linux_386.tar.gz
+	sha256sums_i686 = bcd390b4ce434c2a63d24a43fa52b45a6c0d4ee9b0063aabb91745e8b14c9366
+	source_aarch64 = html2data-aarch64-1.2.3.tgz::https://github.com/msoap/html2data/releases/download/v1.2.3/html2data_1.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 151c59271bd976b30cd8b839b081471efa15d87846e47590d27bfe06fbba989a
+
+pkgname = html2data-bin

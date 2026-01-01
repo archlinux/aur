@@ -1,0 +1,5 @@
+[html2data-bin]
+source = "github"
+github = "msoap/html2data"
+use_latest_release = true
+prefix = "v"
