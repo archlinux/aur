@@ -2,7 +2,7 @@
 
 pkgname=cliwt
 pkgdesc='CLI ASCII avatar for entertainment and motivational purposes'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=(x86_64)
 license=('GPL-3.0-only')
@@ -10,7 +10,7 @@ url='https://github.com/HenryLoM/CliWaifuTamagotchi/'
 depends=("glibc")
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/HenryLoM/CliWaifuTamagotchi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d7b937fbe6d19eda003233f13ed5578243848bb4ca00c41deb1bd21593c59dc2')
+sha256sums=('2b4e6667ca65f7d12546ef326c9bea4b5ca316587d6875397bed2e2470a1ae6e')
 
 prepare() {
   cd "CliWaifuTamagotchi-${pkgver}"
