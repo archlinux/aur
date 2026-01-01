@@ -1,26 +1,28 @@
 # Maintainer: Goldy goldy@devgoldy.xyz
 
 pkgname=roseate
-_pkgver="v0.1.0-alpha.17"
+_pkgver="0.1.0-alpha.17"
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast as fu#k."
+pkgrel=2
+pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast."
 url="https://github.com/cloudy-org/roseate"
 license=(GPL-3.0-only)
+makedepends=("git" "cargo")
+depends=("libxcb" "libxkbcommon" "openssl" "libxrandr" "gcc-libs" "glibc")
+arch=("x86_64")
+source=("git+$url.git#tag=v$_pkgver")
+sha256sums=("SKIP")
+options=(!lto) # negating lto is required as the ring dependency fails otherwise: 
+# https://github.com/WilliamVenner/gmpublisher/issues/262
 provides=("roseate")
 conflicts=("roseate-bin")
-makedepends=("git" "cargo")
-depends=("libxcb" "libxkbcommon" "openssl" "libxrandr")
-arch=("x86_64")
-source=("git+$url.git#tag=$_pkgver")
-sha256sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname
     git submodule update --init --recursive
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n "s/host: //p")"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
@@ -28,14 +30,11 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    CFLAGS+=' -ffat-lto-objects'
-
-    cargo build --release
+    cargo build --frozen --release
 }
 
 package() {
     cd $srcdir/$pkgname
-
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
