@@ -1,6 +1,6 @@
 pkgbase = freetube-git-d3sox
-	pkgdesc = An open source desktop YouTube player built with privacy in mind - My fork with additional features
-	pkgver = r9688.b02d545f
+	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
+	pkgver = r9689.e8b0f6ea
 	pkgrel = 1
 	url = https://github.com/D3SOX/OpenTubeX
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = freetube-git-d3sox
 	makedepends = npm
 	makedepends = yarn
 	depends = electron39
-	source = git+https://github.com/D3SOX/FreeTube
+	source = git+https://github.com/D3SOX/OpenTubeX
 	source = opentubex.desktop
 	source = opentubex.sh
 	sha256sums = SKIP

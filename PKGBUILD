@@ -1,16 +1,16 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=freetube-git-d3sox
-_pkgname=FreeTube
-pkgver=r9688.b02d545f
+_pkgname=OpenTubeX
+pkgver=r9689.e8b0f6ea
 pkgrel=1
-pkgdesc='An open source desktop YouTube player built with privacy in mind - My fork with additional features'
+pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/D3SOX/OpenTubeX"
 license=('AGPL-3.0-or-later')
 depends=('electron39')
 makedepends=('git' 'npm' 'yarn')
-source=(git+https://github.com/D3SOX/FreeTube
+source=(git+https://github.com/D3SOX/OpenTubeX
         opentubex.desktop
         opentubex.sh)
 sha256sums=('SKIP'
