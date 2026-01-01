@@ -1,4 +1,4 @@
 [python-xlsx2csv]
 source = "github"
 github = "dilshod/xlsx2csv"
-use_latest_release = true
+use_max_tag = true
