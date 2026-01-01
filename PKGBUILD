@@ -21,7 +21,7 @@ sha256sums=('a3d3b9942bffcb5c28529c6ee13ba31d6a4302358becc314f5a80e5318bd8b08'
             'cd760f9ad2a3210359ff6c0862cc3aa548a78a81246962748896f624364da47b'
             '799ebcbfd268cba96294f128abb2ea4b24f6841a8ee4863a10ef4ad4912419f3'
             'edfb03fbc30b6c39d0a63e5e04296a58439db44e2bc50434c270cdf441978927')
-options=(!strip)
+options=(!strip !debug)
 
 prepare() {
   innoextract -d "$srcdir" "$pkgname-$pkgver.exe"

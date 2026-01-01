@@ -4,5 +4,5 @@ pkgname=bricklink-studio
 export WINEPREFIX="$XDG_DATA_HOME/$pkgname"
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
-wine /usr/share/"$pkgname"/Studio.exe "$@"
+exec wine /usr/share/"$pkgname"/Studio.exe "$@"
 
