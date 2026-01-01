@@ -1,7 +1,7 @@
 pkgbase = roseate-bin
-	pkgdesc = 🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast as fu#k.
+	pkgdesc = 🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast.
 	pkgver = 0.1.0.alpha.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudy-org/roseate
 	arch = x86_64
 	license = GPL-3.0-only
