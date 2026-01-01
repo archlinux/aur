@@ -1,19 +1,16 @@
 pkgbase = lib32-gc
 	pkgdesc = A garbage collector for C and C++ (32-bit)
-	pkgver = 8.2.8
+	pkgver = 8.2.10
 	pkgrel = 2
 	url = https://www.hboehm.info/gc
 	arch = x86_64
 	license = LicenseRef-GC
 	license = MIT
-	depends = gc>=8.2.8
+	makedepends = git
+	depends = gc>=8.2.10
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	provides = libcord.so
-	provides = libgc.so
-	provides = libgccpp.so
-	provides = libgctba.so
-	source = bdwgc-8.2.8.tar.gz::https://github.com/ivmai/bdwgc/archive/refs/tags/v8.2.8.tar.gz
-	sha256sums = f8f85e2ad675375df37916826c70f80630b7cc4d3ae33c4447a72640641d224f
+	source = git+https://github.com/bdwgc/bdwgc.git#tag=v8.2.10
+	sha512sums = f174b630dd205fa9cc3c9a965a14da661131c17ed87c52f2bc1479f26e5cf12d80ebfa98876611f9e4a288d2fb9eec64ccc4596cdb778aee6fe5dfb4ac26470b
 
 pkgname = lib32-gc

@@ -2,18 +2,25 @@
 
 _name="gc"
 pkgname="lib32-${_name}"
-pkgver=8.2.8
+pkgver=8.2.10
 pkgrel=2
 pkgdesc="A garbage collector for C and C++ (32-bit)"
 arch=('x86_64')
 url="https://www.hboehm.info/gc"
-_url="https://github.com/ivmai/bdwgc"
 license=('LicenseRef-GC' 'MIT')
 depends=("${_name}>=${pkgver}" 'lib32-gcc-libs' 'lib32-glibc')
-provides=('libcord.so' "lib${_name}.so" 'libgccpp.so' 'libgctba.so')
-_pkgsrc="bdwgc-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f8f85e2ad675375df37916826c70f80630b7cc4d3ae33c4447a72640641d224f')
+makedepends=(git)
+source=(git+https://github.com/bdwgc/bdwgc.git#tag=v${pkgver})
+sha512sums=('f174b630dd205fa9cc3c9a965a14da661131c17ed87c52f2bc1479f26e5cf12d80ebfa98876611f9e4a288d2fb9eec64ccc4596cdb778aee6fe5dfb4ac26470b')
+
+prepare() {
+  cd bdwgc
+
+  git revert -n 2cd0f5e56
+  git revert -n 74fc05d12
+
+  ./autogen.sh
+}
 
 build() {
   export CFLAGS+=" -m32"
@@ -21,7 +28,7 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cd "${srcdir}/${_pkgsrc}"
+  cd bdwgc
   ./autogen.sh
   ./configure \
     --prefix='/usr' \
@@ -36,12 +43,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd bdwgc
   make check
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd bdwgc
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}/usr"
