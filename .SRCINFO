@@ -1,0 +1,20 @@
+pkgbase = leanux
+	pkgdesc = GNU/Linux performance tools and C++ API
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jmspit/leanux
+	arch = i686
+	arch = x86_64
+	arch = mips
+	arch = sparc
+	arch = armv7h
+	license = GPLv3
+	makedepends = ncurses
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = sqlite3
+	depends = hwdata
+	source = git+https://github.com/jmspit/leanux#tag=2.0.1
+	sha256sums = a9b5ebdc45d2692e36ce1081b7cc997c38983da8c9d2ef23b2b584898e90ec48
+
+pkgname = leanux
