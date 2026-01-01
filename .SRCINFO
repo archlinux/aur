@@ -1,0 +1,22 @@
+pkgbase = prometheus-chrony-exporter
+	pkgdesc = Prometheus exporter for Chrony
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/SuperQ/chrony_exporter
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !lto
+	source = git+https://github.com/SuperQ/chrony_exporter.git#tag=v0.12.2?signed
+	source = prometheus-chrony-exporter.conf
+	source = prometheus-chrony-exporter.service
+	source = prometheus-chrony-exporter.sysusers
+	validpgpkeys = A058935287E75D832E814E46C646B23C9E3245F1
+	sha256sums = e997f8fe308791889fae9966cee8d61f9ec536f1c43f0e12619e518dd8f69fcb
+	sha256sums = d1c43502cb42810f388efdea93296ee8f426062659b0f16daeb6f77dfc99433b
+	sha256sums = e3efb7af3025ad664a6d114e61ec2504970ea7e50d4414b1a29609343ff2fc46
+	sha256sums = afa34329ae6433161ffd25075a1b23529458bc4d51d2483baff6c079a41ab9e3
+
+pkgname = prometheus-chrony-exporter

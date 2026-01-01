@@ -1,0 +1,19 @@
+[Unit]
+Description=Prometheus exporter for Chrony
+Requires=network-online.target
+After=chrony.service
+After=network-online.target
+
+[Service]
+User=chrony_exporter
+Group=chrony_exporter
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-chrony-exporter
+ExecStart=/usr/bin/chrony_exporter $CHRONY_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
