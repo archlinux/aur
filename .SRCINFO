@@ -1,6 +1,6 @@
 pkgbase = gdlauncher-carbon-bin
 	pkgdesc = GDLauncher Carbon is the new version of the simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 2.0.24
+	pkgver = 2.0.27
 	pkgrel = 2
 	url = https://gdlauncher.com
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gdlauncher-carbon-bin
 	conflicts = gdlauncher-bin
 	conflicts = gdlauncher-appimage
 	options = !strip
-	source = gdlauncher-carbon-bin.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__2.0.24__linux__x64.AppImage
+	source = gdlauncher-carbon-bin.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__2.0.27__linux__x64.AppImage
 	source = gdlauncher-carbon-bin.png::https://raw.githubusercontent.com/gorilla-devs/GDLauncher-Carbon/e048803142f1b8edb024e29329da7dc7be042ca5/apps/desktop/build/icon.png
-	sha256sums = 77966f5922c0ffb998d39e344c32cc5bdaa6105039c42e9977cdc859a90e986a
+	sha256sums = 6e9cd21553c889f846f135a56653182cb0407eaeafaf4648af85325f033c77b4
 	sha256sums = e72d839270b646c138aec74fbbf45a6aa601735801a478e48ca8f4c29d8ec021
 
 pkgname = gdlauncher-carbon-bin

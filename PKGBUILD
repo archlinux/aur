@@ -13,7 +13,7 @@ conflicts=('gdlauncher' 'gdlauncher-beta' 'gdlauncher-beta-bin' 'gdlauncher-appi
 provides=('gdlauncher-carbon')
 source=("${pkgname}.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__${pkgver}__linux__x64.AppImage"
     "${pkgname}.png::https://raw.githubusercontent.com/gorilla-devs/GDLauncher-Carbon/e048803142f1b8edb024e29329da7dc7be042ca5/apps/desktop/build/icon.png")
-sha256sums=('77966f5922c0ffb998d39e344c32cc5bdaa6105039c42e9977cdc859a90e986a'
+sha256sums=('6e9cd21553c889f846f135a56653182cb0407eaeafaf4648af85325f033c77b4'
     'e72d839270b646c138aec74fbbf45a6aa601735801a478e48ca8f4c29d8ec021')
 
 prepare() {
