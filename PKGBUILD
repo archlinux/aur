@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libno
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-source_x86_64=("https://storage.googleapis.com/aur-resources/HexcoreLink_${pkgver}_x64.tar.gz"
+source_x86_64=("https://pub-0ff293aefb644607ac910219d9762b50.r2.dev/HexcoreLink_${pkgver}_x64.tar.gz"
                "deb_extra_files_hexcore.tar.gz"
                "70-hexcore-link.rules")
 sha256sums_x86_64=('726f2062d2446d2101e6b2eec5e95d186c1a0a15e21ede69e5ff573ec30d24e9'
