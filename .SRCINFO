@@ -1,7 +1,7 @@
 pkgbase = nuggetvpn-bin
 	pkgdesc = Modern, lightweight, and fast VPN client built with Tauri v2 and React 19 (Binary release)
-	pkgver = 0.4.0
-	pkgrel = 5
+	pkgver = 1.0.0_beta.1
+	pkgrel = 1
 	url = https://github.com/Rigby-Foundation/nuggetvpn
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = nuggetvpn-bin
 	provides = nuggetvpn
 	conflicts = nuggetvpn
 	options = !strip
-	source_x86_64 = NuggetVPN_0.4.0_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v0.4.0/NuggetVPN_0.4.0_amd64.deb
-	sha256sums_x86_64 = 516c9da6469edd148c5112238c72cca0d8e4496b51636e3649c24db329bbcf3b
+	source_x86_64 = NuggetVPN_1.0.0-beta.1_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v1.0.0-beta.1/NuggetVPN_1.0.0-beta.1_amd64.deb
+	sha256sums_x86_64 = b711717d9e6a4db107df08f06019a2d19462c745e29083ab8bdd40080c1ee27d
 
 pkgname = nuggetvpn-bin

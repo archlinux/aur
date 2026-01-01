@@ -2,8 +2,8 @@
 
 pkgname=nuggetvpn-bin
 _pkgname=nuggetvpn
-pkgver=0.4.0
-pkgrel=5
+pkgver=1.0.0_beta.1
+pkgrel=1
 pkgdesc="Modern, lightweight, and fast VPN client built with Tauri v2 and React 19 (Binary release)"
 arch=('x86_64')
 url="https://github.com/Rigby-Foundation/nuggetvpn"
@@ -13,11 +13,12 @@ conflicts=("${_pkgname}")
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'glibc')
 options=('!strip')
 
-source_x86_64=("NuggetVPN_${pkgver}_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v${pkgver}/NuggetVPN_${pkgver}_amd64.deb")
-sha256sums_x86_64=('516c9da6469edd148c5112238c72cca0d8e4496b51636e3649c24db329bbcf3b')
+_pkgver=${pkgver/_/-}
+source_x86_64=("NuggetVPN_${_pkgver}_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v${_pkgver}/NuggetVPN_${_pkgver}_amd64.deb")
+sha256sums_x86_64=('b711717d9e6a4db107df08f06019a2d19462c745e29083ab8bdd40080c1ee27d')
 
 package() {
-    bsdtar -O -xf "$srcdir/NuggetVPN_${pkgver}_amd64.deb" data.tar* | bsdtar -C "$pkgdir" -x
+    bsdtar -O -xf "$srcdir/NuggetVPN_${_pkgver}_amd64.deb" data.tar* | bsdtar -C "$pkgdir" -x
 
     if [ -f "$pkgdir/usr/bin/${_pkgname}" ]; then
         chmod 755 "$pkgdir/usr/bin/${_pkgname}"
@@ -27,7 +28,7 @@ package() {
     cat <<EOF > "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 [Desktop Entry]
 Type=Application
-Version=0.4.0
+Version=1.0.0-beta.1
 Name=NuggetVPN
 Comment=${pkgdesc}
 Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 /usr/bin/${_pkgname} %U
