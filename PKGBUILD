@@ -15,7 +15,7 @@ source=("git+$url"
         opentubex.sh)
 sha256sums=('SKIP'
             '07f95cd1ed647ab0e818f17cfbf77676ca8123b8e6390ca81d37501f70f37361'
-            '6819a0d45794fc7d5588263f723bc3092719be1a8f81b58d7d3df485dcbbffd3')
+            '308ed89c0b0efb2c5cd8aa7751a7a7bbdfdd6061a8fa9313111905d332e2c772')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}"/{usr/bin,usr/lib/freetube-git-d3sox}
+  install -d "${pkgdir}"/{usr/bin,usr/lib/opentubex-git}
   cp -R "./$_pkgname/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./opentubex.sh" "$pkgdir/usr/bin/opentubex"
   
