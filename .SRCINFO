@@ -13,11 +13,15 @@ pkgbase = bb_launcher
 	makedepends = vulkan-headers
 	makedepends = zlib-ng
 	depends = crypto++
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
 	depends = pugixml
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = qt6-websockets
 	depends = sdl3
+	depends = zlib
 	source = BB_Launcher::git+https://github.com/rainmakerv3/BB_Launcher.git#tag=Release13.01
 	source = nlohmann-json::git+https://github.com/nlohmann/json.git
 	source = qmicroz::git+https://github.com/artemvlas/qmicroz.git

@@ -9,11 +9,15 @@ url="https://github.com/rainmakerv3/$_pkgname"
 license=(GPL-3.0-or-later)
 arch=(x86_64)
 depends=(crypto++
+         gcc-libs
+         glibc
+         hicolor-icon-theme
          pugixml
          qt6-base
          qt6-webengine
          qt6-websockets
-         sdl3)
+         sdl3
+         zlib)
 makedepends=(git
              cmake
              fmt
