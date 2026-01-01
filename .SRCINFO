@@ -1,6 +1,6 @@
 pkgbase = hyper8-bin
 	pkgdesc = A static site generator for video publishing
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://simonrepp.com/hyper8
 	install = hyper8-bin.install
@@ -18,7 +18,7 @@ pkgbase = hyper8-bin
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !lto
-	source_x86_64 = https://simonrepp.com/hyper8/packages/hyper8_1.0.0-1+deb12_amd64.deb
-	sha256sums_x86_64 = e44ab832263f0ad17bb018c17c8be4b1553d2a024b89d93d4bedc420d52bb194
+	source_x86_64 = https://simonrepp.com/hyper8/packages/hyper8_1.0.1-1+deb12_amd64.deb
+	sha256sums_x86_64 = 97d3ab6853fd8fc458804a465f6cd86157a8a47a2292d8ced9371d0dee0a0f81
 
 pkgname = hyper8-bin
