@@ -4,7 +4,7 @@
 
 pkgname=python-pygame-sdl2
 _dir=pygame_sdl2
-pkgver=8.4.0.25071206
+pkgver=8.5.1.25123106
 pkgrel=1
 epoch=1
 pkgdesc='Reimplementation of portions of the pygame API using SDL2'
@@ -26,7 +26,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("git+${url}.git#tag=renpy-${pkgver}")
-b2sums=('160e1d0f8e46b40ffd8a16a4457ced24fee3658fe98229ef90a86e442e5f93c813eb8a416c70753cd0673fe53a1279d472eb61e075607ea02e83297133fa60a5')
+b2sums=('4513869e80bdb97a13652275d7050fec89446b31fa6388ab7402952ee587c9f6216435e92eab479ff0e95b226445109f35515752575d412e3bcc37477f6eec55')
 
 prepare() {
 	cd "$_dir"
