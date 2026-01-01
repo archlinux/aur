@@ -53,13 +53,15 @@ pkgname=(
   'dns01proxy-scaleway'
   'dns01proxy-simplydotcom'
   'dns01proxy-spaceship'
+  'dns01proxy-tecnocratica'
   'dns01proxy-tencentcloud'
   'dns01proxy-transip'
   'dns01proxy-vultr'
+  'dns01proxy-websupport'
   'dns01proxy-westcn'
 )
 pkgbase='dns01proxy'
-pkgver='0.1.9'
+pkgver='0.1.10'
 pkgrel=1
 pkgdesc='ACME DNS-01 proxy server'
 arch=('x86_64' 'aarch64')
@@ -150,9 +152,11 @@ package_dns01proxy-acmedns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -229,9 +233,11 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -308,9 +314,11 @@ package_dns01proxy-alidns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -387,9 +395,11 @@ package_dns01proxy-all-inkl() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -466,9 +476,11 @@ package_dns01proxy-azure() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -545,9 +557,11 @@ package_dns01proxy-bunny() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -624,9 +638,11 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -703,9 +719,11 @@ package_dns01proxy-cloudns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -782,9 +800,11 @@ package_dns01proxy-conoha() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -861,9 +881,11 @@ package_dns01proxy-desec() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -940,9 +962,11 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1019,9 +1043,11 @@ package_dns01proxy-directadmin() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1098,9 +1124,11 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1177,9 +1205,11 @@ package_dns01proxy-dode() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1256,9 +1286,11 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1335,9 +1367,11 @@ package_dns01proxy-duckdns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1414,9 +1448,11 @@ package_dns01proxy-dynu() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1493,9 +1529,11 @@ package_dns01proxy-dynv6() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1572,9 +1610,11 @@ package_dns01proxy-easydns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1651,9 +1691,11 @@ package_dns01proxy-edgeone() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1730,9 +1772,11 @@ package_dns01proxy-gandi() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1809,9 +1853,11 @@ package_dns01proxy-gcore() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1888,9 +1934,11 @@ package_dns01proxy-glesys() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1967,9 +2015,11 @@ package_dns01proxy-godaddy() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2046,9 +2096,11 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2125,9 +2177,11 @@ package_dns01proxy-he() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2204,9 +2258,11 @@ package_dns01proxy-hetzner() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2283,9 +2339,11 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2362,9 +2420,11 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2441,9 +2501,11 @@ package_dns01proxy-inwx() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2520,9 +2582,11 @@ package_dns01proxy-ionos() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2599,9 +2663,11 @@ package_dns01proxy-linode() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2678,9 +2744,11 @@ package_dns01proxy-loopia() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2757,9 +2825,11 @@ package_dns01proxy-luadns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2836,9 +2906,11 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2915,9 +2987,11 @@ package_dns01proxy-metaname() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2994,9 +3068,11 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3073,9 +3149,11 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3152,9 +3230,11 @@ package_dns01proxy-namecheap() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3231,9 +3311,11 @@ package_dns01proxy-nanelo() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3310,9 +3392,11 @@ package_dns01proxy-netcup() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3389,9 +3473,11 @@ package_dns01proxy-netlify() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3468,9 +3554,11 @@ package_dns01proxy-nfsn() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3547,9 +3635,11 @@ package_dns01proxy-njalla() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3626,9 +3716,11 @@ package_dns01proxy-ovh() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3705,9 +3797,11 @@ package_dns01proxy-porkbun() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3784,9 +3878,11 @@ package_dns01proxy-powerdns() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3863,9 +3959,11 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3942,9 +4040,11 @@ package_dns01proxy-route53() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4021,9 +4121,11 @@ package_dns01proxy-scaleway() {
     'dns01proxy-route53'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4100,9 +4202,11 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-route53'
     'dns01proxy-scaleway'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4179,9 +4283,11 @@ package_dns01proxy-spaceship() {
     'dns01proxy-route53'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4203,6 +4309,87 @@ package_dns01proxy-spaceship() {
     "${pkgdir}/etc/dns01proxy/env.conf"
 
   sed -i 's/@BUILD@/spaceship/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-tecnocratica() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-tecnocratica "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/tecnocratica/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
 package_dns01proxy-tencentcloud() {
@@ -4259,8 +4446,10 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4338,8 +4527,10 @@ package_dns01proxy-transip() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4417,8 +4608,10 @@ package_dns01proxy-vultr() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-websupport'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4440,6 +4633,87 @@ package_dns01proxy-vultr() {
     "${pkgdir}/etc/dns01proxy/env.conf"
 
   sed -i 's/@BUILD@/vultr/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-websupport() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-websupport "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/websupport/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
 package_dns01proxy-westcn() {
@@ -4496,9 +4770,11 @@ package_dns01proxy-westcn() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
     'dns01proxy-vultr'
+    'dns01proxy-websupport'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-westcn "${pkgdir}/usr/bin/dns01proxy"
@@ -4521,7 +4797,7 @@ package_dns01proxy-westcn() {
   sed -i 's/@BUILD@/westcn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-b2sums=('7355bda122a5ffc87f8154103ca208d813e98ed9a1720e83b2d6f4dd8019e72a362f2462ac10bed3c7dc0f54e8d12fa9c82aa8a92c4ea34ec5091d298d46480d'
+b2sums=('afabfa6fdd7322b55556991260fbbf3008dfd5f6db3152d7357175ee76bc4760e72eb66f1419aa74958103b0349a0503356bf94f1f53ba48a88743cc74686a91'
         '3805fbcc7d8d73515f702e0c0bb9066a33477c389586c187f182b6d3989cdf33fe5d63c8b6a4059d2848bacd55014ebf97ff67437e27534c55f4a0a496f65531'
         '0b6a5ecf1e7e475cd5b74e60009f0f48f3e06ef51ef6ba96babe7fb5b9bb5aa80e1effe49c7d1be8fd9309d5446afb1b9800f14e690a71b48b7f442ccc739092'
         '790f85266921ee4634a376132ae394276c85dfd270692406233dcd69ca1e86b9a7cfd0a264c7c51ab30051a225afc1bc3fa3c017f8ec58631e33d27269ece83d'
