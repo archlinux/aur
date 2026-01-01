@@ -42,5 +42,5 @@ package() {
     install -Dm644 $x "$pkgdir/usr/share/$pkgname/skins/$x"
   done
 
-  install -Dm644 "$srcdir/plus42.desktop" "$pkgdir/usr/share/applications/com.thomasokken.plus42.desktop"
+  install -Dm644 "$srcdir/plus42.desktop" "$pkgdir/usr/share/applications/plus42.desktop"
 }
