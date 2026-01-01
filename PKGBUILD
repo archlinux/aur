@@ -1,10 +1,11 @@
 # Maintainer: alstruit <alsturit at gmail.com>
 # Contributor: CrankySupertoon <crankysupertoon@gmail.com>
+# Contributor: Riley Trautman <asonix.dev@gmail.com>
 
 pkgname=shticker-book-rewritten-git
 _pkgname=shticker-book-rewritten
 pkgver=1.2.1.1.r24.g2dec933
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom launcher and tool for the Toontown Rewritten MMORPG"
 url="https://github.com/CrankySupertoon/Shticker-Book-Rewritten"
 arch=('i686' 'x86_64')
