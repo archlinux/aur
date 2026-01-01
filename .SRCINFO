@@ -1,0 +1,19 @@
+pkgbase = superfetch
+	pkgdesc = Супер-быстрая и легковесная утилита для отображения системной информации с настраиваемым цветом.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YourGitHubUser/superfetch
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = awk
+	depends = xorg-xrandr
+	depends = lm_sensors
+	source = superfetch
+	source = superfetch-config
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = superfetch
