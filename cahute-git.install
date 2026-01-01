@@ -1,0 +1,4 @@
+post_install() {
+	echo "You may want to add you to the uucp group for access to serial and USB devices, by running the following command as root then restarting your session:
+	usermod -a -G uucp <your-username>"
+}
