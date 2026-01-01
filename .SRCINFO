@@ -1,11 +1,13 @@
 pkgbase = mux-media
 	pkgdesc = A CLI utility for muxing media (e.g. video, audio, subtitles).
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
 	license = MIT OR Apache-2.0
-	makedepends = rustup
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = rust
 	depends = ffmpeg
 	options = !debug
 	source = mux-media-0.16.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.16.0.tar.gz

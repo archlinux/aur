@@ -2,13 +2,13 @@
 
 pkgname=mux-media
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
 url="https://github.com/nujievik/mux-media"
 license=("MIT OR Apache-2.0")
 depends=("ffmpeg")
-makedepends=("rustup")
+makedepends=("clang" "pkgconf" "rust")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
