@@ -1,14 +1,14 @@
 pkgbase = stardust-xr-flatland
 	pkgdesc = 3D window-manager like program for non-egocentric 2D app compaatibility
-	pkgver = 0.50.0
-	pkgrel = 3
+	pkgver = 0.50.1
+	pkgrel = 1
 	url = https://github.com/StardustXR/flatland
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/StardustXR/flatland.git#tag=0.50.0
+	source = git+https://github.com/StardustXR/flatland.git#tag=0.50.1
 	sha256sums = SKIP
 
 pkgname = stardust-xr-flatland
