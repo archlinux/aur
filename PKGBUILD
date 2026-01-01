@@ -1,5 +1,7 @@
+# Maintainer: Goldy goldy@devgoldy.xyz
+
 pkgname=roseate
-_pkgver="0.1.0-alpha.16"
+_pkgver="v0.1.0-alpha.17"
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast as fu#k."
@@ -37,7 +39,7 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    cd $srcdir/$pkgname/assets
+    cd $srcdir/$pkgname/app/assets
     install -Dm644 roseate.desktop "$pkgdir/usr/share/applications/roseate.desktop"
     install -Dm644 rose_emojis/google_noto.png "$pkgdir/usr/share/pixmaps/roseate.png"
 }
