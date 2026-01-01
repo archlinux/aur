@@ -1,0 +1,26 @@
+pkgbase = fusiontunx
+	pkgdesc = FusionTunX - Controller and manager for Mihomo (Clash Meta) core
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = https://github.com/bobbyunknown/FusionTunX
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = git
+	makedepends = wget
+	makedepends = unzip
+	depends = iptables
+	depends = iproute2
+	depends = ca-certificates
+	optdepends = nftables: Modern firewall backend
+	backup = etc/fusiontunx/app.yaml
+	backup = etc/fusiontunx/configs/config.yaml
+	backup = etc/fusiontunx/proxy_providers/proxy.yaml
+	backup = etc/fusiontunx/rule_providers/rule.yaml
+	source = fusiontunx-1.0.3::git+https://github.com/bobbyunknown/FusionTunX.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = fusiontunx

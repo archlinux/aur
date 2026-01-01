@@ -1,0 +1,23 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+pkg/
+src/
+
+# makepkg source directories
+fusiontunx-*/
+gopath/
+
+# Downloaded files
+*.gz
+*.zip
+*.tgz
+*.tar.gz
+
+# Temporary files
+*~
+*.swp
+*.swo
+
+# makepkg files
+*.log
