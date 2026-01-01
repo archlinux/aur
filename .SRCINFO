@@ -1,6 +1,6 @@
 pkgbase = aliasx
 	pkgdesc = Alias extended - task, alias and build handles
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/hansbinderup/aliasx
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = aliasx
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
-	source = https://github.com/hansbinderup/aliasx/archive/refs/tags/0.1.6.tar.gz
-	sha256sums = b2934384ffb576f9b50acda40b72c66ec3c15b924edcf85df802de162b1c56d8
+	source = https://github.com/hansbinderup/aliasx/archive/refs/tags/0.1.7.tar.gz
+	sha256sums = f808a18d0e049cb30cc1e8662f8270f6fd46d08f65848edd5a6e4e59221d114f
 
 pkgname = aliasx
