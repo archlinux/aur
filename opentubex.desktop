@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OpenTubeX
+GenericName=YouTube Player
+Comment=An open source desktop YouTube player based on FreeTube with extra features.
+Exec=opentubex %U
+Terminal=false
+Type=Application
+Icon=freetube
+MimeType=x-scheme-handler/opentubex;
+Categories=Network;
+StartupWMClass=OpenTubeX
