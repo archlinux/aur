@@ -1,0 +1,18 @@
+pkgbase = whatsit-git
+	pkgdesc = Lightweight native Qt6 WhatsApp Web client
+	pkgver = 2.0.0.r1.g34a7dba
+	pkgrel = 1
+	url = https://github.com/devlinman/whatsit
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = qt6-webengine
+	provides = whatsit
+	conflicts = whatsit
+	source = git+https://github.com/devlinman/whatsit.git
+	sha256sums = SKIP
+
+pkgname = whatsit-git
