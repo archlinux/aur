@@ -1,0 +1,20 @@
+pkgbase = noctalia-polkit-git
+	pkgdesc = Polkit authentication agent and GNOME Keyring prompter for noctalia-shell
+	pkgver = r43.fc40397
+	pkgrel = 1
+	url = https://github.com/anthonyhab/noctalia-polkit
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = polkit-qt6
+	depends = polkit
+	depends = gcr-4
+	depends = json-glib
+	provides = noctalia-polkit
+	conflicts = noctalia-polkit
+	source = noctalia-polkit-git::git+https://github.com/anthonyhab/noctalia-polkit.git
+	sha256sums = SKIP
+
+pkgname = noctalia-polkit-git
