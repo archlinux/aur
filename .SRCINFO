@@ -1,0 +1,18 @@
+pkgbase = inspect-deps
+	pkgdesc = ELF dependency analyzer for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Kam1k4dze/inspect-deps
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = binutils
+	depends = pacman
+	source = inspect-deps-0.1.0.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 33becf070fa434889c5d744927df6f995ef8646e6871cc36fff4527debdc1374
+
+pkgname = inspect-deps
