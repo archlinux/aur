@@ -1,7 +1,7 @@
 pkgbase = raspberry-pico-sdk-git
 	pkgdesc = Raspberry Pico SDK
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/pico-sdk
 	install = pico-sdk.install
 	arch = any

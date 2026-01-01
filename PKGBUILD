@@ -1,7 +1,7 @@
 # Maintainer: Barnaby Gray <barnaby at pickle dot me dot uk>
 pkgname=raspberry-pico-sdk-git
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pico SDK "
 arch=("any")
 url="https://github.com/raspberrypi/pico-sdk"
@@ -22,14 +22,16 @@ makedepends=('git')
 install="pico-sdk.install"
 
 pkgver() {
-    cd "${srcdir}/pico-sdk"
-    git describe --tags --match '?.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/pico-sdk"
+  git describe --tags --match '?.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd "${srcdir}/pico-sdk"
   git submodule update --init
   mkdir -p "${pkgdir}/usr/share"
+  find "${srcdir}/pico-sdk" -type f -executable -iname '*.c' -print0|xargs -0 chmod -x
+  find "${srcdir}/pico-sdk" -type f -executable -iname '*.h' -print0|xargs -0 chmod -x
   cp -r "${srcdir}/pico-sdk" "${pkgdir}/usr/share/pico-sdk"
   install -Dm755 "${srcdir}/pico-sdk.sh" "${pkgdir}/etc/profile.d/pico-sdk.sh"
   install -Dm755 "${srcdir}/pico-sdk.csh" "${pkgdir}/etc/profile.d/pico-sdk.csh"
