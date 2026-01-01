@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-claude-gui-bin
-pkgver=1.3.26
+pkgver=1.3.27
 pkgrel=1
 pkgdesc="A simple GUI for Claude Code CLI - terminal interface for AI-assisted coding"
 arch=('x86_64')
