@@ -2,13 +2,13 @@
 
 pkgname=fb2-clean
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility for clean fb2 files."
 arch=("x86_64" "aarch64")
 url="https://github.com/nujievik/fb2-clean"
 license=("MIT OR Apache-2.0")
 depends=("zstd")
-makedepends=("rustup" "pkgconf" "zstd")
+makedepends=("rust" "pkgconf" "zstd")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
