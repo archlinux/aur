@@ -3,7 +3,7 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-full-git
-pkgver=2025_12_R0.r12232.20251107.97d2dd89c
+pkgver=2026_01_R0.r12239.20251228.d6573552b
 pkgrel=1
 pkgdesc="A sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF. Latest git checkout, built with as many features as possible."
 url="https://www.kismetwireless.net/"

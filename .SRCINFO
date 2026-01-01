@@ -1,6 +1,6 @@
 pkgbase = kismet-full-git
 	pkgdesc = A sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF. Latest git checkout, built with as many features as possible.
-	pkgver = 2025_12_R0.r12232.20251107.97d2dd89c
+	pkgver = 2026_01_R0.r12239.20251228.d6573552b
 	pkgrel = 1
 	url = https://www.kismetwireless.net/
 	install = kismet.install
@@ -45,9 +45,9 @@ pkgbase = kismet-full-git
 	optdepends = wireshark-cli: mergecap, to merge multiple capture files
 	optdepends = libbtbb: bluetooth baseband decoding library
 	optdepends = kismet-docs: For documentation
-	provides = kismet=2025_12_R0.r12232.20251107.97d2dd89c
-	provides = kismet-full=2025_12_R0.r12232.20251107.97d2dd89c
-	provides = kismet-git=2025_12_R0.r12232.20251107.97d2dd89c
+	provides = kismet=2026_01_R0.r12239.20251228.d6573552b
+	provides = kismet-full=2026_01_R0.r12239.20251228.d6573552b
+	provides = kismet-git=2026_01_R0.r12239.20251228.d6573552b
 	conflicts = kismet
 	backup = etc/kismet/kismet.conf
 	backup = etc/kismet/kismet_80211.conf
