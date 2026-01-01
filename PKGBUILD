@@ -39,7 +39,7 @@ build() {
     cd $pkgname-$pkgver
     export CARGO_PROFILE_RELEASE_DEBUG=true
     make USER_CFLAGS="$CFLAGS" USER_CXXFLAGS="$CXXFLAGS" USER_LDFLAGS="$LDFLAGS"
-    chrpath -r '/usr/lib' lzbench
+    chrpath -d lzbench
 }
 
 package() {
