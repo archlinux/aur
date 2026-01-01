@@ -1,6 +1,6 @@
 # Maintainer: L Santos <hello@lsantos.dev>
 pkgname="gdlauncher-carbon-bin"
-pkgver="2.0.24"
+pkgver="2.0.27"
 pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher Carbon is the new version of the simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
