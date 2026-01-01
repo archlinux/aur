@@ -11,10 +11,7 @@
 !*.patch
 !*.diff
 !*.service
-!*.desktop
 !*.conf
-!*.png
-!*.svg
 !*.sysusers
 !*.tmpfiles
 !LICENSE
@@ -22,5 +19,9 @@
 !CHANGELOG.md
 !*.ini
 !*.txt
+
+# Downloaded source files (downloaded by PKGBUILD)
 logo.png
+icon.png
 opentrace.desktop
+opentrace-bin-*
