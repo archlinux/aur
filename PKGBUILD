@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=ugrd
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Minimalistic POSIX initramfs generator, designed for encrypted systems'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-zstandard: zstd cpio compression')
 provides=('initramfs')
 backup=("etc/ugrd/config.toml")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('31a8307fc1e516c94eac5a75ff70e10adcec041359d065fcb24e708f3578b219907ce8144a6d8ad0fb168127040c620cb5bbdcdaedd9e9dd86a61ff72fb7ce00')
+b2sums=('b94a04403f83102b6ae4a120ebed64b3291051b0876143abea5610265428f6cc9e8e5f0b5bfdfbaa1d4336fe900e53cdcc432234e51cfab6c16c763f2bc9bf6c')
 
 build() {
     cd $pkgname-$pkgver
