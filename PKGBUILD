@@ -40,6 +40,4 @@ package() {
   # Install the license (Required by Arch policy)
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # (Optional) Install README if you want
-  #install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
