@@ -1,0 +1,19 @@
+pkgbase = handoff-git
+	pkgdesc = Daemon for seamless audio handoff between Linux and Apple using AirPods.
+	pkgver = r1.be3d40b
+	pkgrel = 1
+	url = https://github.com/xatuke/handoff
+	arch = x86_64
+	license = MIT
+	makedepends = qt6-base
+	makedepends = qt6-connectivity
+	makedepends = cmake
+	makedepends = make
+	depends = dbus
+	depends = bluez-utils
+	source = handoff@.service
+	source = handoff-git::git+https://github.com/xatuke/handoff.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = handoff-git

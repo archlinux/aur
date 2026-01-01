@@ -1,0 +1,13 @@
+[Unit]
+Description=AirPods Linux-Apple Handoff
+After=bluetooth.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/bluetoothctl connect %i
+ExecStart=/usr/bin/airpods-handoff %i
+ExecStopPost=/usr/bin/bluetoothctl disconnect %i
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
