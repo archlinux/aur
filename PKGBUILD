@@ -1,7 +1,7 @@
 # Maintainer: m5rcel <ilovewomenfrom@asia.com>
 pkgname=mspace-git
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="M-SPACE - Enhanced Solar System Simulator"
 arch=('x86_64')
 url="https://github.com/m4rcel-lol/mspace"
