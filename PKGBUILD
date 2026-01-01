@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 pkgname=tg-notify
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Simple command line interface to send notifications through Telegram Bot."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/liljaylj/tg-notify"
 license=('MIT')
 depends=('bash' 'coreutils' 'util-linux' 'sed' 'curl' 'jq')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/liljaylj/tg-notify/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('37785732f5f70fa46dd66443d355aef3ac24622c4c73e71616411e3994c25d6624958d1e49fca878659ce5e66db2fbe1bf382f06ac32426d1777a0a42205692f')
+b2sums=('023a25709591e7c307282b7eac94b817fec8c194573a4fb662f1bcce2280540e10546261e2a93095abf3ff0d848e11e1d19ce5046e8265432e32a6a3b701c81c')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
