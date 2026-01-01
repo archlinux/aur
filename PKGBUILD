@@ -2,7 +2,7 @@
 
 pkgname=xgalaga
 pkgver=2.1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An open source remake of the classic arcade game Galaga"
 arch=('i686' 'x86_64')
 url="http://rumsey.org/xgal.html"
@@ -10,12 +10,12 @@ license=('GPL-2.0-or-later')
 depends=('libxmu' 'libxpm')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-	fix-header.patch
+        0001-fix-compilation-errors.patch
         $pkgname.patch
         $pkgname.png
         $pkgname.desktop)
 sha256sums=('adcfbfd04876f5197c60b37af0ad89a629e553d6e09314a4b3b5c70f6c634f9b'
-            'd291d22749ef04a91553283bb93ad20ad3016f9ecd8b99d10d7268795ab96b53'
+            '09191ef0d3e940cf066bcd2b108bc34580fe575735a33ec97a171b63cbc149c9'
             '86be834b06ce745d71471aea8b936d8a04d4b8ffe3af7c5c95432e86a2e02dbd'
             '01918eda208b20fc34670ee4e063083b750f55289eae624be0e8dba6a2354436'
             '363cb392b792e99380d94443c44e5e8f31d9ab0d2c54e05da94467114ff5f4d4')
@@ -23,11 +23,11 @@ sha256sums=('adcfbfd04876f5197c60b37af0ad89a629e553d6e09314a4b3b5c70f6c634f9b'
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  local _ver=$(automake --version | head -1 | cut -d' ' -f4)
+  local _ver=$(automake --version | perl -ae '/^automake.* (\d+)\.(\d+)/ && print "$1.$2";')
   cp -f /usr/share/automake-${_ver}/config.guess .
   cp -f /usr/share/automake-${_ver}/config.sub   .
 
-  patch -p1 < ../fix-header.patch
+  patch -p1 < ../0001-fix-compilation-errors.patch
   patch -Np2 -b -z .orig -i ../$pkgname.patch
 }
 

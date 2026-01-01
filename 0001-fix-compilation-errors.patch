@@ -1,0 +1,74 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: a821 <a821@mail.de>
+Date: Thu, 1 Jan 2026 23:52:20 +0100
+Subject: [PATCH] fix compilation errors
+
+This fixes some compilation errors:
+
+* missing header (title.c)
+* signal handler needs an `int` argument (xgal.sndsrv.linux.c)
+* disable check for `strdup` since it doesn't work (libsprite/data.c)
+---
+ libsprite/data.c    | 3 ---
+ title.c             | 7 ++++---
+ xgal.sndsrv.linux.c | 4 ++--
+ 3 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/libsprite/data.c b/libsprite/data.c
+index bb8758b..f4a9d71 100644
+--- a/libsprite/data.c
++++ b/libsprite/data.c
+@@ -79,9 +79,6 @@ W_Font  W_HighlightFont = (W_Font) & two, W_UnderlineFont = (W_Font) & three;
+ W_Color W_White = WHITE, W_Black = BLACK, W_Red = RED, W_Green = GREEN;
+ W_Color W_Yellow = YELLOW, W_Cyan = CYAN, W_Grey = LIGHT_GREY, W_DarkGrey = DARK_GREY;
+ int     W_Textwidth, W_Textheight, W_BigTextwidth, W_BigTextheight;
+-#ifndef strdup
+-char   *strdup();
+-#endif
+ int     W_in_message = 0;	/* jfy -- for Jerry's warp message hack */
+ 
+ #ifdef RJC
+diff --git a/title.c b/title.c
+index ee747af..7d4c110 100644
+--- a/title.c
++++ b/title.c
+@@ -7,6 +7,7 @@
+ #include <stdlib.h>
+ #ifdef HAVE_FCNTL_H
+ # include <fcntl.h>
++#include <unistd.h>
+ #endif
+ #include "math.h"
+ #include "Wlib.h"
+@@ -17,9 +18,9 @@
+ #include "proto.h"
+ 
+ /* for scrolling credits */
+-const LINESIZE= 70;
+-const VISIBLELINES=7;
+-const SPEEDFACTOR=5;
++const int LINESIZE= 70;
++const int VISIBLELINES=7;
++const int SPEEDFACTOR=5;
+ char *gchLBuf;
+ int giCreditLines=0, giActCreditLine=0;
+ 
+diff --git a/xgal.sndsrv.linux.c b/xgal.sndsrv.linux.c
+index 659d76c..b0a57e5 100644
+--- a/xgal.sndsrv.linux.c
++++ b/xgal.sndsrv.linux.c
+@@ -49,9 +49,9 @@ int fragsize;
+ 
+ 
+ /* Terminate: Signal Handler */
+-void quit ()
++void quit (int sign)
+ {
+-  exit (0);
++  exit (sign);
+ }
+ 
+ 
+-- 
+2.52.0
+
