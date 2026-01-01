@@ -3,7 +3,7 @@
 _pkgname=crossover-overlay
 _pkgname2=crossoverlay
 pkgname=$_pkgname-bin
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="🎯 A Crosshair Overlay for any screen (binary release, system Electron)"
 url="https://github.com/lacymorrow/crossover"
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _desktop=$_pkgname2.desktop
 source_x86_64=("$url/releases/download/v$pkgver/CrossOver-$pkgver-amd64.deb")
-sha256sums_x86_64=('c17c6276861195ed5fbec1b3dd10405abfe1dd3163a6ff63ef52c52954ded7a3')
+sha256sums_x86_64=('bc23095c54cf3ae4b0ebcc069d4016ba65bfea58f60fae97e080d0e8f48a27e3')
 #source_i686=("$url/releases/download/v$pkgver/CrossOver-$pkgver-i386.deb")
 #sha256sums_i686=('SKIP')
 
