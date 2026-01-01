@@ -1,4 +1,0 @@
-[discimagecreator-git]
-source = "git"
-git = "https://github.com/saramibreak/DiscImageCreator.git"
-prefix = "v"

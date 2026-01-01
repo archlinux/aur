@@ -2,7 +2,7 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname-git"
-pkgver=20250501.r0.g82858ee
+pkgver=20260101.r0.g4de6850
 pkgrel=2
 pkgdesc="A disk image creation tool supporting a large number of formats"
 url="https://github.com/saramibreak/DiscImageCreator"
@@ -10,8 +10,9 @@ license=('Apache-2.0')
 arch=('x86_64')
 
 depends=(
-  'gcc-libs'
-  'glibc'
+  'libarchive'
+  'openssl'
+  'zlib'
 )
 makedepends=(
   'git'
@@ -22,7 +23,7 @@ optdepends=(
   'unscrambler: Unscramble GC/Wii optical disks'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
