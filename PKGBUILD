@@ -1,8 +1,8 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=http-remote-pc-control
-pkgver=1.1.3
+pkgver=1.1.4
 PACKAGER="Andrew Koidan <deathangel908@gmail.com>"
-tag=v1.1.3
+tag=v1.1.4
 pkgrel=1
 pkgdesc="HTTP remote PC control tool"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "san.cnf"
 )
 options=(!strip)
-sha256sums=('d72decef0f69bca44da98c791c38d452c035742f37fbbc2f8b2ce7510883dda0'
+sha256sums=('b3a6ac06a9237b9e4870f0b871c464da2722b4a54fb4c45ba8fe4e50e4da8f4a'
             '35dd54cb3a415dc327c92637b1a7f629e0efb1eea2d5e8432c4134fa412383f4'
             '83c87c4eb2abce1b40b26bd05dac2be439b64814821a7859545098b7b3601eb9'
             'a75e2cf6c74cc74e82ffd8c83d4942967025b2853f4e3a146f8a1244426b0171'
