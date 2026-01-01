@@ -34,3 +34,4 @@ clean() {
   rm -rf "$srcdir"
   rm -rf "$pkgdir"
 }
+ 
