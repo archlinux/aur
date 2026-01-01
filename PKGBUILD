@@ -1,7 +1,7 @@
 # Maintainer: wingsummer <wing-summer@qq.com>
 
 pkgname=winghexexplorer2-git
-pkgver=2.3.2.r0.g86740fe
+pkgver=2.3.3.r0.g954fa9c
 pkgrel=1
 pkgdesc='一个自由强大跨平台的十六进制编辑器（每日构建版） / A free, powerful, cross-platform hex editor (Nightly Builds)'
 url="https://github.com/Wing-summer/WingHexExplorer2"
@@ -65,7 +65,7 @@ package() {
     install -Dm755 build/WingHexExplorer2 "$_optdir/WingHexExplorer2"
     install -Dm644 build/WingPlugin/libWingPlugin.so "$_optdir/libWingPlugin.so"
 
-    for _sub in plugin scripts aslib; do
+    for _sub in plugin scripts; do
         mkdir -p "$_optdir/$_sub"
     done
 
