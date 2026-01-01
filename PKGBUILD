@@ -3,7 +3,7 @@
 pkgname=freetube-git-d3sox
 _pkgname=FreeTube
 pkgver=r9682.937b7c9a
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source desktop YouTube player built with privacy in mind - My fork with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
@@ -17,7 +17,7 @@ source=(git+https://github.com/D3SOX/FreeTube
         freetube.sh)
 sha256sums=('SKIP'
             'ada2b4b8f6a1e8896acbce4f4d311228d2c86026c273ffa00afa3247294f8b1e'
-            '3fcd6bf2c18f606c6fdbd09c9a81d8c0fda74b0c73c8db05d7a108db6ee9c2a6')
+            '6819a0d45794fc7d5588263f723bc3092719be1a8f81b58d7d3df485dcbbffd3')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
