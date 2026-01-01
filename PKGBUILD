@@ -1,8 +1,8 @@
 # Maintainer: Dave Daynard <nardholio@gmail.com>
 # Contributor: Wartybix <34974060+Wartybix@users.noreply.github.com>
 pkgname=reboot-to-windows
-pkgver=1.6
-_commit=920dc7a78c6850537cd067d9f32bd1cf18c0e20b
+pkgver=1.6.1
+_commit=1de324cbb0cff932ab6b3818f16e1ed9ed0c54ec
 pkgrel=1
 pkgdesc="Application to quickly reboot to Windows from Linux, bypassing the boot menu."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('qt5-tools: Reboot screen support for KDE')
 options=('!debug')
 install=reboot-to-windows.install
 source=(git+https://github.com/nardholio/reboot-to-windows.git#commit=${_commit})
-sha256sums=('df332f3e644363372b98e4724b489d8e1791574ea29ae0fd6a6d4dbf6b5f8d36')
+sha256sums=('f170861af8774bfd706fc0885835f8fa4d6dd7c6f38fdc256014c4a30175f329')
 
 package_reboot-to-windows() {
   cd "${srcdir}/reboot-to-windows"
