@@ -2,8 +2,8 @@
 # Created mostly for personal usage, and therefore maintained as such, but on the AUR for a few friends.
 
 pkgname=dedupe-dir
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='Dedupes directories of your choosing once a week.'
 arch=('any')
 url='https://github.com/theblu3j/dedupe-dir'
