@@ -21,17 +21,12 @@ pkgver() {
 build() {
   cd "go-send"
   export CGO_ENABLED=0
-  go build -trimpath -ldflags "-s -w" -o go-send-client cmd/client/main.go
-  go build -trimpath -ldflags "-s -w" -o go-send-server cmd/server/main.go
+  go build -trimpath -ldflags "-s -w" -o go-send cmd/client/main.go
 }
 
 package() {
   cd "go-send"
-  install -Dm755 go-send-client "$pkgdir/usr/bin/go-send-client"
-  install -Dm755 go-send-server "$pkgdir/usr/bin/go-send-server"
-  
-  # Install systemd service
-  install -Dm644 packaging/systemd/go-send-server.service "$pkgdir/usr/lib/systemd/system/go-send-server.service"
+  install -Dm755 go-send "$pkgdir/usr/bin/go-send"
   
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
