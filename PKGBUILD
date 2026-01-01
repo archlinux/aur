@@ -15,7 +15,9 @@ source=()
 md5sums=()
 
 build() {
-  dotnet publish ../Thermometer.sln -c Release -r linux-x64 -o "$srcdir/publish"
+  git clone https://github.com/watchmypizza/thermometer.git
+  cd thermometer
+  dotnet publish ./Thermometer.sln -c Release -r linux-x64 -o "$srcdir/publish"
 } 
 
 package() {
