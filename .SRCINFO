@@ -1,6 +1,6 @@
 pkgbase = altirra
 	pkgdesc = An 8-bit Atari computer emulator, on Wine
-	pkgver = 4.31
+	pkgver = 4.40
 	pkgrel = 1
 	url = https://www.virtualdub.org/altirra.html
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = altirra
 	sha256sums = 713b375c8467da838f4c4c9f1eca2a947aecc6c429161bc67eeedecc7c81b620
 	sha256sums = 5319fd88751fa886683d955976ed74eb266e9ea462ae77431b6a6c457ce42dc1
 	sha256sums = cd3a40e290d999912767a70ffc8e4185019290251b350f887f4a2fa972b6c96b
-	source_x86_64 = https://www.virtualdub.org/downloads/Altirra-4.31.zip
-	sha256sums_x86_64 = a02eb382730fee3075b4339ad5bd011b736c249b12841f81a828292291661f41
-	source_aarch64 = https://www.virtualdub.org/downloads/Altirra-4.31-ARM64.zip
-	sha256sums_aarch64 = 67c55c12e09ffb7b0abe57f505cd05f060c0396be14bb86b8d2508e8ee9fa7f8
+	source_x86_64 = https://www.virtualdub.org/downloads/Altirra-4.40.zip
+	sha256sums_x86_64 = 8b0be7d81211a97d4633d6c8fdb85f446aa874ebd1e2d82f3aa6b7e41eb42c87
+	source_aarch64 = https://www.virtualdub.org/downloads/Altirra-4.40-ARM64.zip
+	sha256sums_aarch64 = f85562886d885f5a6b5d5073d1536a374cc0dd427aa8ccd40b2235a3cb9da63d
 
 pkgname = altirra
