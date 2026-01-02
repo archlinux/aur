@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=patchy-cli
-_npmver=0.0.24
+_npmver=0.0.25
 
 _appname=${_npmname%%-cli}
 
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('6f4bdf48207ecbd73f94f047b72011db0d82338372e351734a88c963aed1539dcd3906e58b2584448396b9886b8617aff9e719269465e905f165d6b6fbe78b4d')
+b2sums=('d49683740e7f69c1a4895c92bce499b9ad48bb4f5042f7839154b8f48859bf7026c7d71cab46ba011146bbacd238c6cf4f78d0b9340be321390cc425142bd4ee')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
