@@ -1,17 +1,15 @@
 pkgbase = ginkgo-cli
 	pkgdesc = Local-first journaling CLI with daemon, search, and sync
-	pkgver = 0.0.0.r0.g0000000
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/iMithrellas/GinkGo
 	arch = x86_64
 	arch = aarch64
 	license = WTFPL
-	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = systemd: user service for ginkgod
-	source = ginkgo::git+https://github.com/iMithrellas/GinkGo.git
-	source = bubbles::git+https://github.com/iMithrellas/bubbles.git
-	sha256sums = SKIP
+	source = https://github.com/iMithrellas/GinkGo/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 6ca28788190f53e982501a16f5dfd415db74b270fb980b3debc86aff6f37e946
 
 pkgname = ginkgo-cli
