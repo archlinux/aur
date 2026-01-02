@@ -1,6 +1,6 @@
 pkgbase = python-remind-caldav-git
 	pkgdesc = Tools to sync between 'remind' and CalDAV
-	pkgver = 0.8.0.r5.g6a375c4
+	pkgver = 0.8.0.r6.gf5f29c7
 	pkgrel = 1
 	url = https://github.com/jspricke/remind-caldav
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = python-remind-caldav-git
 	depends = python-vobject
 	depends = python-caldav
 	depends = python-remind
+	depends = python-icalendar-searcher-git
 	optdepends = python-keyring: manage password
 	provides = python-remind-caldav
 	conflicts = python-remind-caldav
