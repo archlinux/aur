@@ -4,11 +4,11 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=conkeror-git
 pkgver=1.0.4.r13.g5e5736d
-pkgrel=2
+pkgrel=3
 pkgdesc='A keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla XULRunner.'
 arch=('i686' 'x86_64')
 url='http://conkeror.org/'
-license=('MPL-1.1' 'GPL-2.1' 'LGPL-2.1')
+license=('MPL-1.1' 'GPL-2.0-only' 'LGPL-2.1-only')
 depends=('palemoon')
 makedepends=('git')
 provides=("${pkgname%-*}")
