@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui'
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops'
 url='https://github.com/jmylchreest/histui'
@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('920bc0db96c0edd43b7e2c30a51e564ceb55782285ffa4f308f9756811f0e0e6')
+sha256sums=('ffcccb7e470f6307fd3b5ae5a713e7b007508d87b5b19eb9abdb8dea9d67fa2e')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
 
     # Build metadata
-    local _commit="95f4758d9e1db339c9585161084dc3801a4b4ea6"
+    local _commit="505d2c4a221ed93ba7e01a0418e8e2d5ecf6b325"
     local _buildtime="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     local _ldflags="-s -w -X main.version=${pkgver} -X main.commit=${_commit} -X main.buildTime=${_buildtime}"
 
@@ -47,4 +47,5 @@ package() {
     install -Dm644 contrib/histuid.service "${pkgdir}/usr/lib/systemd/user/histuid.service"
     install -Dm644 contrib/histuid-monitor.service "${pkgdir}/usr/lib/systemd/user/histuid-monitor.service"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 docs/static/examples/histuid.toml "${pkgdir}/usr/share/doc/${pkgname}/histuid.toml.example"
 }
