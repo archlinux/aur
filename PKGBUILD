@@ -5,7 +5,7 @@ _tag="v0.9.0"
 _commit="25536dc7399c91504ed2e825041da537a464eb60"
 
 pkgname=mayo-git
-pkgver=0.9.0.r2.ge6171c2
+pkgver=0.9.0.r102.g1dbc056
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
@@ -28,7 +28,7 @@ build() {
   cd "${srcdir}"
   mkdir -p build && cd build
   cmake ../${_pkgname}
-  make
+  cmake --build .
 }
 
 package() {
