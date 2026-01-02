@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Real-time Wayland screen mirroring to a terminal using Unicode braille characters, half‑blocks, or ASCII. Includes bidirectional input forwarding, audio streaming (PipeWire), zooming, focus-follow, and optional NVIDIA CUDA acceleration (server-side)."
 arch=('x86_64')
 url="https://github.com/cyber-wojtek/waytermirror"
-license=('Apache-2.0')
+license=('MIT')
 
 depends=(
     # Core runtime
