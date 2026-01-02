@@ -9,7 +9,7 @@ pkgbase = ghla-lang
 	makedepends = gcc
 	makedepends = binutils
 	depends = nasm
-	source = ghla-2::git+https://github.com/gorciu-official/ghla.git
+	source = git+https://github.com/gorciu-official/ghla.git#tag=v2
 	sha256sums = SKIP
 
-pkgname = ghla
+pkgname = ghla-lang

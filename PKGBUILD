@@ -11,16 +11,22 @@ license=('GPL-3.0-only')
 makedepends=('make' 'gcc' 'binutils')
 depends=('nasm')
 
-source=("ghla-${pkgver}::git+https://github.com/gorciu-official/ghla.git")
+source=("git+https://github.com/gorciu-official/ghla.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/ghla-${pkgver}"
+    cd "$srcdir/ghla"
     make
 }
 
 package() {
-    cd "$srcdir/ghla-${pkgver}"
+    cd "$srcdir/ghla"
+
+    if [[ ! -f ghla.bin ]]; then
+        echo "ERROR: ghla.bin not found after make!"
+        exit 1
+    fi
 
     install -Dm755 ghla.bin "$pkgdir/usr/bin/ghlac"
 }
+
