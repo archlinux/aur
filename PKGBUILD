@@ -3,7 +3,7 @@
 pkgname=evil-winrm-py
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="The ultimate WinRM shell for hacking/pentesting."
+pkgdesc="WinRM shell for Windows and Active Directory pentesting"
 arch=('any')
 url="https://github.com/adityatelange/evil-winrm-py"
 license=('MIT')
