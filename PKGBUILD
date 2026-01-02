@@ -1,6 +1,6 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 pkgname=soco-cli
-pkgver=0.4.80
+pkgver=0.4.82
 pkgrel=1
 pkgdesc="Command Line Interface to Control Sonos Sound Systems"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=("python-setuptools>=61.2" "python-build" "python-installer" "python
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72a7c3d4263e13d539f52048e0c622d50becebbb5fd318dfb78d2d3fca4c7832')
+sha256sums=('1fb76483a022e1d8e491d182141facf1fd2833f7a2b68c82eaea13f6e2083007')
 
 build() {
     cd "$pkgname-$pkgver"

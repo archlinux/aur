@@ -1,6 +1,6 @@
 pkgbase = soco-cli
 	pkgdesc = Command Line Interface to Control Sonos Sound Systems
-	pkgver = 0.4.80
+	pkgver = 0.4.82
 	pkgrel = 1
 	url = https://github.com/avantrec/soco-cli
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = soco-cli
 	depends = uvicorn
 	provides = soco-cli
 	conflicts = soco-cli
-	source = soco-cli-0.4.80.tar.gz::https://github.com/avantrec/soco-cli/archive/refs/tags/v0.4.80.tar.gz
-	sha256sums = 72a7c3d4263e13d539f52048e0c622d50becebbb5fd318dfb78d2d3fca4c7832
+	source = soco-cli-0.4.82.tar.gz::https://github.com/avantrec/soco-cli/archive/refs/tags/v0.4.82.tar.gz
+	sha256sums = 1fb76483a022e1d8e491d182141facf1fd2833f7a2b68c82eaea13f6e2083007
 
 pkgname = soco-cli
