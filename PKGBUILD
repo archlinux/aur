@@ -2,7 +2,7 @@
 
 pkgname=geminidesk-bin
 _pkgname=gemini-desk
-pkgver=8.2.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="An unofficial Gemini client for desktop (prebuilt AppImage)"
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=('fuse2' 'zlib' 'hicolor-icon-theme')
 makedepends=('asar')
 provides=('geminidesk')
 conflicts=('geminidesk' 'geminidesk-git')
-source=("GeminiDesk-${pkgver}.AppImage::https://github.com/hillelkingqt/GeminiDesk/releases/download/v${pkgver}/GeminiDesk-${pkgver}.AppImage"
+source=("GeminiDesk-${pkgver}.AppImage::https://github.com/hillelkingqt/GeminiDesk/releases/download/v${pkgver}/GeminiDesk-${pkgver}-x86_64.AppImage"
         "gemini-desk.desktop"
         "fix-tray-icon-linux.patch"
         "icon-tray.png")
-sha256sums=('6bcdcfe589451ab5fbb0d1189a702ef2712aa7be99f2409f1f76d1f4b38bb78a'
+sha256sums=('221808d4a92b22f4f9def45ef33d3c0c408323f77f68170f892ab733c6f91374'
             'd0971aa208441743f0654a53e63be90cf0007be67eb11741c1ee2c4b8232cc8c'
             '2d98f057cf7f8a448a7c55da717450f9e56d067ae6934f8e7320baa6e925c325'
             '7a0ee0649e6d89a6809fc09a5313bd7ef0eaff94d8b29aaae5de16da672437b8')
