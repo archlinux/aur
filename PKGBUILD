@@ -10,13 +10,13 @@ arch=('x86_64')
 url="https://gitlab.melroy.org/melroy/winegui"
 license=('AGPL3')
 depends=(
-	'cabextract'
+	'cabextract' # used by winetricks
 	'gtkmm-4.0'
 	'p7zip'
 	'unzip'
-	'wget'
+	'wget' # to download winetricks latest release
 	'wine'
-	# namcap claims some dependencies aren't needed, but they're infact used on the source-code as a terminal command
+	'zenity' # used by winetricks
 )
 optdepends=(
 	'ccache: Speeds up rebuilds'
