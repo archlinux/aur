@@ -1,0 +1,5 @@
+[ffhuman-bin]
+source = "github"
+github = "alpbak/ffhuman"
+use_latest_release = true
+prefix = "v"

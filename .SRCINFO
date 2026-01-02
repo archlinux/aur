@@ -1,0 +1,23 @@
+pkgbase = ffhuman-bin
+	pkgdesc = FFmpeg for humans. Built by someone who was tired, not by a committee.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/alpbak/ffhuman
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = ffhuman
+	conflicts = ffhuman
+	source = LICENSE
+	source = README-1.0.6.md::https://raw.githubusercontent.com/alpbak/ffhuman/v1.0.6/README.md
+	source = EXAMPLES-1.0.6.md::https://raw.githubusercontent.com/alpbak/ffhuman/v1.0.6/EXAMPLES.md
+	source = FEATURES-1.0.6.md::https://raw.githubusercontent.com/alpbak/ffhuman/v1.0.6/FEATURES.md
+	sha256sums = d0eea681f06c390e8e5a2851c6ce1fb7cee036642ca664d739fd6ae91f0a0b4c
+	sha256sums = 3eac1c8999ee6e8e2d598676ff51f712e5b2bc2726f2cde8357b3e7b596e567e
+	sha256sums = ba4afa60c9bc97268d6de9c43203548790fd987c13d351b055e255acb1cbd7b3
+	sha256sums = 6b5a77c50d2373671d0871b05cb99a032001b5b49f810a5bffad5cde84b3d9c5
+	source_x86_64 = ffhuman-x86_64-1.0.6.tgz::https://github.com/alpbak/ffhuman/releases/download/v1.0.6/ffhuman-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9e3c3aa591dc2be67e4b0659deb3d8cd2c9d2d81a62e7c95535fd82c8bae9197
+
+pkgname = ffhuman-bin
