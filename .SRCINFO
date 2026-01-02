@@ -1,17 +1,16 @@
 pkgbase = caprine
 	pkgdesc = Elegant Facebook Messenger desktop app
-	pkgver = 2.60.3
+	pkgver = 2.61.0
 	pkgrel = 1
 	url = https://github.com/sindresorhus/caprine
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = bash
-	depends = electron29
-	depends = hicolor-icon-theme
-	source = caprine-2.60.3.tar.gz::https://github.com/sindresorhus/caprine/archive/refs/tags/v2.60.3.tar.gz
+	depends = electron39
+	source = caprine-2.61.0.tar.gz::https://github.com/sindresorhus/caprine/archive/v2.61.0.tar.gz
 	source = caprine.sh
-	sha256sums = ae836f009aeb587270c33eb05777939c5bbccee7e792ebbe03a6e709491bb8a1
+	sha256sums = 4ac222309a86afde59866dc15f59065fec2f30372d9311acb8fe5a6660beaff8
 	sha256sums = 70679c9959bae776d667ae1dbd4ffca9298d8784ad4a5959f3b35d2493f2c131
 
 pkgname = caprine
