@@ -2,7 +2,7 @@
 _pkgname="netgen"
 pkgname="${_pkgname}-lvs"
 pkgver=1.5.314
-pkgrel=1
+pkgrel=2
 pkgdesc="Layout Vs Schematic (LVS) for comparing SPICE or Verilog netlists"
 arch=('x86_64')
 url="http://opencircuitdesign.com/netgen/index.html"
