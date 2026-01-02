@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <harryroberts306@gmail.com>
-pkgname=kernel++-beta
+pkgname=deskedit-kernel++-beta
 pkgver=0.2.1.fix
 pkgrel=0
 epoch=
