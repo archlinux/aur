@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4' 'vte4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8fc08a20596880899b1459b019bfba859a91c3ed551fa525451efd3f90746e0f')
+sha256sums=('13f2cd66d7a78d09b113aaf85a72b497670e43b08e903fefbc11da799b31059a')
 
 prepare() {
   cd "$pkgname-$pkgver"
