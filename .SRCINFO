@@ -1,33 +1,38 @@
 pkgbase = uefitool-bin
 	pkgdesc = UEFI firmware image viewer and editor
-	pkgver = A71
+	pkgver = A72
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
-	license = BSD
-	depends = qt6-base
-	provides = uefiextract=A71
-	provides = uefifind=A71
-	provides = uefitool=A71
-	source = UEFIExtract-A71.zip::https://github.com/LongSoft/UEFITool/releases/download/A71/UEFIExtract_NE_A71_x64_linux.zip
-	source = UEFIFind-A71.zip::https://github.com/LongSoft/UEFITool/releases/download/A71/UEFIFind_NE_A71_x64_linux.zip
-	source = UEFITool-A71.zip::https://github.com/LongSoft/UEFITool/releases/download/A71/UEFITool_NE_A71_x64_linux.zip
-	source = UEFITool.desktop
-	source = uefitool_32x32.png
-	source = uefitool_48x48.png
-	source = uefitool_64x64.png
-	source = uefitool_128x128.png
-	source = uefitool_256x256.png
-	source = uefitool_512x512.png
-	sha256sums = 55cf07b59fb5bf7d219851d4e4418bf75988d959491f9bea7254cb0e983e19ea
-	sha256sums = 19d7031edb5abc2777a04a6fd0ebb09d4ec446ae88b0f074683590e8ebd14ca5
-	sha256sums = a163db8e3898a4d02f09f0b89a4ff931180bf201941d1e556e76a3aae92daa57
-	sha256sums = bb0d0c10ff1a860ded6c2f2c09d3aa3fe8f7ef77ecd88b42a4cf893f8d8cfc5b
+	license = BSD-2-Clause
+	provides = uefiextract=A72
+	provides = uefifind=A72
+	provides = uefitool=A72
+	source = UEFIExtract-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFIExtract_NE_A72_x64_linux.zip
+	source = UEFIFind-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFIFind_NE_A72_x64_linux.zip
+	source = UEFITool-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFITool_NE_A72_x64_linux.zip
+	source = uefitool_A72-1_16.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_16x16.png
+	source = uefitool_A72-1_32.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_32x32.png
+	source = uefitool_A72-1_48.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_48x48.png
+	source = uefitool_A72-1_64.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_64x64.png
+	source = uefitool_A72-1_128.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_128x128.png
+	source = uefitool_A72-1_256.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_256x256.png
+	source = uefitool_A72-1_512.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_512x512.png
+	source = uefitool_A72-1.desktop::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/uefitool.desktop
+	source = uefitool_A72-1.license::https://github.com/LongSoft/UEFITool/raw/A72/LICENSE.md
+	sha256sums = cfa9a8ad7b17321007b81254e34cd93755e8ca194b7329b452a35542ae483a7e
+	sha256sums = 9e0bcb313e535525c7c60b76653c6f95fde5a2176bea24d4a84d53c749894c92
+	sha256sums = 402612653bdcc8e6a68e31ae8375db497ae228f4f888068681abc731df81938d
+	sha256sums = 8a026dc03d82500aeac6bfa47ddb838b10196b7cc09169981430e67bf79aab7a
 	sha256sums = 9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a
 	sha256sums = ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335
 	sha256sums = 6b82394411bdc2a2b62f18056f07f6f29a651c6f542cfd132db0ba255e05242e
 	sha256sums = 20e1cf7fe9e7b429a2daa0b75e17f4d0f362d1312401c6178658fd9fdb69dc14
 	sha256sums = c75715b87263f3663bdc60bd0ee1dcbb374a688931018f04d767ea3cfc965bf7
 	sha256sums = 33ace8f0eb8f7c4f6918e9a3033d676293b4decd0fa5ca28987818a63e0ecf1b
+	sha256sums = bb0d0c10ff1a860ded6c2f2c09d3aa3fe8f7ef77ecd88b42a4cf893f8d8cfc5b
+	sha256sums = fa9dc837378838e632d09ca56f1b8e8b002245b9b4471a4335024d74616c4c1f
 
 pkgname = uefitool-bin
+	depends = hicolor-icon-theme
+	depends = qt6-base

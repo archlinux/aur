@@ -1,0 +1,5 @@
+*.zip
+*.log
+src
+pkg
+*.pkg.*
