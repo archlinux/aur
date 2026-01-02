@@ -2,7 +2,7 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=25.3.0
+pkgver=26.1.0
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://github.com/unobserved-io/Furtherance"
 license=('GPL-3.0-or-later')
 depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxss' 'openssl')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b99404e03b8c8436283269c7a61eee02a45e1c349519190cc39ef8cfa705ffab')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('56bfce156b615ab56398ea94b9b111e9b8cce11fa1a9e31759f88df8c518381d')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
