@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=xeus-python
-pkgver=0.17.1
+pkgver=0.17.6
 pkgrel=1
 pkgdesc="Jupyter kernel for the Python programming language"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(BSD-3-Clause)
 depends=(pybind11-json xeus-zmq python-xeus-python-shell jupyterlab)
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('d84089364a673ddb76d40f96b75ab8161bc0f46c94c2727a5c9f4e15bcb9673eebe59b2a6f3c7eedb46b7457fc75125109710785ed2eb0db7b7922f62b638668')
+sha512sums=('38e3216bb802512c701dd25db8fd3dff4978884c53f788a5cd16ab33a14f600250200eb9424e513d2964fbb9d6cca2c786c5df5edccd18266f7a73de88566dd4')
 
 build() {
   cmake \
