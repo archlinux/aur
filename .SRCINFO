@@ -1,0 +1,17 @@
+pkgbase = ticket
+	pkgdesc = Minimal ticket tracking in bash
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wedow/ticket
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = gawk
+	optdepends = ripgrep: faster searching
+	optdepends = jq: query command
+	source = ticket-0.1.0.tar.gz::https://github.com/wedow/ticket/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ticket
