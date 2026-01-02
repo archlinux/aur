@@ -1,6 +1,6 @@
 pkgbase = tandoor-recipes-git
 	pkgver = 1.2.2.r4132.c5fcfd07a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TandoorRecipes/recipes
 	install = tandoor.install
 	arch = any
@@ -28,6 +28,6 @@ pkgbase = tandoor-recipes-git
 	sha1sums = b564ef5c07d98c9983cb891e1e974dbf678e5c73
 	sha1sums = 431a88a4ab33ec118961d80c00e3a5944d2c5691
 	sha1sums = 6072447d59acbc452b1e4dc5b0064c5ccafae97b
-	sha1sums = d97eedbb1e58a98e3bd4c34ed124542e20758b80
+	sha1sums = 8d1d8d9a3cf6963cf7eb145d25a3d724479a89c2
 
 pkgname = tandoor-recipes-git
