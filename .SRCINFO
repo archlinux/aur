@@ -1,7 +1,7 @@
 pkgbase = python-picard
 	pkgdesc = Preconditioned ICA for Real Data
-	pkgver = 0.8
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/pierreablin/picard
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = python-picard
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/p/python-picard/python-picard-0.8.tar.gz
-	sha1sums = e15bd042bc8811c259308d2af3066ed90f9c3c7f
+	source = https://files.pythonhosted.org/packages/source/p/python-picard/python_picard-0.8.1.tar.gz
+	sha1sums = f47547f902335129ed2cecee01025cd2f7b1691c
 
 pkgname = python-picard

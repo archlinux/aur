@@ -1,7 +1,8 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-picard
-pkgver=0.8
-pkgrel=2
+_name=${pkgname/-/_}
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Preconditioned ICA for Real Data"
 arch=('any')
 url="https://github.com/pierreablin/picard"
@@ -17,17 +18,17 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('e15bd042bc8811c259308d2af3066ed90f9c3c7f')
+sha1sums=('f47547f902335129ed2cecee01025cd2f7b1691c')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
     mkdir -p "$pkgdir/usr/share/applications"
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
