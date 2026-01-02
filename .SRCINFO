@@ -1,0 +1,16 @@
+pkgbase = maclean-git
+	pkgdesc = A script to automate some relatively safe cleaning activities for Linux users.
+	pkgver = r111.87d490c
+	pkgrel = 1
+	url = https://gitlab.com/cscs/maclean
+	arch = any
+	license = Beerware
+	makedepends = git
+	provides = maclean=r111.87d490c
+	conflicts = maclean
+	source = maclean-git::git+https://gitlab.com/cscs/maclean.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = maclean-git
