@@ -1,16 +1,13 @@
 # Maintainer: Johan Brandhorst <johan.brandhorst at gmail dot com>
 pkgname=tinygo-bin
 pkgver=0.40.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='TinyGo - Go for small spaces'
 arch=('x86_64')
 url='https://tinygo.org'
-license=('custom: BSD 3-clause')
-depends=('gcc-libs'
-         'go>=1.11.0'
-         'debugedit'
-)
+license=('BSD-3-Clause AND Apache-2.0 WITH LLVM-exception')
+depends=('go>=1.22.0')
 optdepends=('avr-gcc: Arduino Uno support'
             'avrdude: Arduino Uno support'
             'openocd: BBC Micro:bit support'
