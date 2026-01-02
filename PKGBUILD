@@ -9,7 +9,7 @@ url="https://github.com/eslam-allam/canvas-rubric-importer"
 license=('MIT')   # Change as needed
 depends=()          # List dependencies
 source=("https://github.com/eslam-allam/canvas-rubric-importer/releases/download/v${pkgver}/canvas-rubric-importer_${pkgver}_amd64.deb")
-sha256sums=('84a6ce814653a90cf65606a8521e12eb5abd9eb5ad923e01e483ade419ff3fb9')
+sha256sums=('4859f0cda46714f9978ffc8c889c8574845741057b295f9e256c64215bfe257f')
 
 package() {
     bsdtar -xOf "$srcdir/canvas-rubric-importer_${pkgver}_amd64.deb" data.tar.zst | bsdtar -C "$pkgdir" -xv
