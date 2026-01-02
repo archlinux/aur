@@ -9,8 +9,6 @@ license=('zlib')
 depends=('gcc-libs' 'glslang' 'libx11' 'libxi')
 makedepends=('git' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers')
 optdepends=('reshade-shaders-git')
-provides=('vkbasalt')
-conflicts=('vkbasalt' 'vkbasalt-git')
 source=("${pkgname}::git+https://github.com/Boux/vkBasalt_overlay.git")
 sha256sums=('SKIP')
 
