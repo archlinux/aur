@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=uefi-manager-git
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical tool for managing UEFI boot entries"
 pkgver=25.09.1.r5.g5c4b181
 arch=('x86_64' 'i686')
@@ -75,4 +75,7 @@ package() {
     if [ -d docs ]; then
         cp -r docs/* "${pkgdir}/usr/share/doc/uefi-manager/" 2>/dev/null || true
     fi
+
+    # Install changelog
+    gzip -c debian/changelog > "${pkgdir}/usr/share/doc/uefi-manager/changelog.gz"
 }
