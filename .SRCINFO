@@ -1,7 +1,7 @@
 pkgbase = netgen-lvs
 	pkgdesc = Layout Vs Schematic (LVS) for comparing SPICE or Verilog netlists
 	pkgver = 1.5.314
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencircuitdesign.com/netgen/index.html
 	arch = x86_64
 	license = GPL-1.0-or-later
