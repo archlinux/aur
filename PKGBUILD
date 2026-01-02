@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-websearch
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="Web search plugin for Owlry (DuckDuckGo, Google, etc.)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('owlry')
 makedepends=('cargo')
 install=owlry-plugin-websearch.install
 source=("owlry-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('2776afa1c9a4546a4254b6d460d1a7248dc5f36ebe3f94279bfa9632289836265273a5afda2b63346b5f21ac72cb0fb005393b8187cc1d97f15036a02776d266')
+b2sums=('2d3761ee892d7f283a65fa58ca6206735b1b3b6e7f764f839e8a2cbd2fee2ce446c4b992e664790439393e6cb2f21fb21abacdeaf8de9eca4514da86c608216d')
 
 _cratename=owlry-plugin-websearch
 
