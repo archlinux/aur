@@ -1,11 +1,11 @@
 pkgbase = canvas-rubric-importer
 	pkgdesc = Import canvas rubrics from csv using the api
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/eslam-allam/canvas-rubric-importer
 	arch = x86_64
 	license = MIT
-	source = https://github.com/eslam-allam/canvas-rubric-importer/releases/download/v1.1.0/canvas-rubric-importer_1.1.0_amd64.deb
-	sha256sums = 4859f0cda46714f9978ffc8c889c8574845741057b295f9e256c64215bfe257f
+	source = https://github.com/eslam-allam/canvas-rubric-importer/releases/download/v1.1.1/canvasrubricimporter_1.1.1_amd64.deb
+	sha256sums = e07c9c1389bbc41c680e605a304bc14f0e6e8a591bff29c939c6a5c5ed1796f1
 
 pkgname = canvas-rubric-importer
