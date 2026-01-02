@@ -1,7 +1,7 @@
 # Maintainer: Nathan Sasser <fyrexdesign@outlook.com>
 
 pkgname=labfyre-git
-pkgver=0.9.2.r135.8103a01a
+pkgver=0.9.2.r135.aef86f65
 pkgrel=1
 pkgdesc="A wayland stacking and tiling compositor (Labwc fork)"
 arch=('x86_64' 'aarch64')
