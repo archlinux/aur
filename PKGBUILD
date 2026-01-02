@@ -1,7 +1,7 @@
 # Maintainer: SoulHarsh007 <harsh.peshwani@outlook.com>
 
 pkgname=cachy-chroot
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Chroot helper for CachyOS'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/CachyOS/cachy-chroot"
 depends=('arch-install-scripts' 'btrfs-progs' 'util-linux')
 makedepends=('git' 'cargo' 'lld' 'clang' 'llvm')
 source=("git+${url}?signed#tag=${pkgver}")
-b2sums=('2a81e3d850817e1e015b703fbbb6af6322e1521febe02a81e9868e98ca67f11aac2a41326d4bf0012f416c7bb7434750d6168bcc22cb6e77f20b823feda534d9')
+b2sums=('b401824acfe0d77267329f574c964fe43ade2f599f9378e72746f7b347fc2ad341e08f7bc617587799200215c6e7ce69106764fe9d02357c00c7b70b83bd7277')
 validpgpkeys=(
     2BDE2DF6DDC89DBA55698CA4D06942E10F32FD49 # SoulHarsh007 <harsh.peshwani@outlook.com>
     6FE9632C37251BCE0E04551DBFDF8F508D7F0B79 # SoulHarsh007 (new signing key) <harsh.peshwani@outlook.com>

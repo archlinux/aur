@@ -1,6 +1,6 @@
 pkgbase = cachy-chroot
 	pkgdesc = Chroot helper for CachyOS
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/CachyOS/cachy-chroot
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = cachy-chroot
 	depends = arch-install-scripts
 	depends = btrfs-progs
 	depends = util-linux
-	source = git+https://github.com/CachyOS/cachy-chroot?signed#tag=1.2.1
+	source = git+https://github.com/CachyOS/cachy-chroot?signed#tag=1.3.0
 	validpgpkeys = 2BDE2DF6DDC89DBA55698CA4D06942E10F32FD49
 	validpgpkeys = 6FE9632C37251BCE0E04551DBFDF8F508D7F0B79
-	b2sums = 2a81e3d850817e1e015b703fbbb6af6322e1521febe02a81e9868e98ca67f11aac2a41326d4bf0012f416c7bb7434750d6168bcc22cb6e77f20b823feda534d9
+	b2sums = b401824acfe0d77267329f574c964fe43ade2f599f9378e72746f7b347fc2ad341e08f7bc617587799200215c6e7ce69106764fe9d02357c00c7b70b83bd7277
 
 pkgname = cachy-chroot
