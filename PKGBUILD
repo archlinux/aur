@@ -19,6 +19,7 @@ depends=(
 makedepends=(
   'git'
   'mingw-w64-configure'
+  'python-sphinx'
 )
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.com/libtiff/libtiff.git?signed#tag=v${pkgver}")
