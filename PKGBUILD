@@ -32,7 +32,7 @@ source=("https://winegui.melroy.org/downloads/WineGUI-Source-v$pkgver.tar.gz")
 sha256sums=('61b732379875c70e4d47f214409854fae6ff943a38207feabfa94ceabaa4a275')
 
 build() {
-	cmake -GNinja -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -B build_prod
+	cmake -GNinja -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCHECK_FOR_UPDATE=OFF -B build_prod
 	cmake --build ./build_prod --config Release
 }
 
