@@ -1,0 +1,21 @@
+pkgbase = clickpaste
+	pkgdesc = Paste clipboard contents as simulated keystrokes - for KVMs, VMs, and restricted applications
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dresden196/clickpaste-linux
+	install = clickpaste.install
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = kglobalaccel
+	depends = layer-shell-qt
+	depends = ydotool
+	depends = wl-clipboard
+	optdepends = plasma-desktop: Full KDE Plasma integration
+	source = clickpaste-1.0.0.tar.gz::https://github.com/dresden196/clickpaste-linux/archive/v1.0.0.tar.gz
+	sha256sums = 9a779a1a7241b46f2600e2e82be69e6489449e7a932807092fdb17e67f7e2354
+
+pkgname = clickpaste

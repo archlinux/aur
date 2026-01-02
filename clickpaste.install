@@ -1,0 +1,33 @@
+post_install() {
+    # Create runtime directory for socket
+    systemd-tmpfiles --create ydotoold.conf 2>/dev/null || true
+
+    # Enable and start the ydotoold service
+    systemctl daemon-reload
+    systemctl enable --now ydotoold.service 2>/dev/null || true
+
+    echo ""
+    echo "==> ClickPaste installed successfully!"
+    echo ""
+    echo "==> The ydotoold service has been enabled and started."
+    echo ""
+    echo "==> Usage: Run 'clickpaste' or find it in your application menu."
+    echo "    - Click the tray icon to select a target window"
+    echo "    - Or use Ctrl+Alt+V hotkey"
+    echo ""
+}
+
+post_upgrade() {
+    # Reload and restart service on upgrade
+    systemctl daemon-reload
+    systemctl restart ydotoold.service 2>/dev/null || true
+    echo ""
+    echo "==> ClickPaste upgraded successfully!"
+    echo ""
+}
+
+pre_remove() {
+    # Stop and disable service before removal
+    systemctl stop ydotoold.service 2>/dev/null || true
+    systemctl disable ydotoold.service 2>/dev/null || true
+}
