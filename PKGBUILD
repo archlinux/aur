@@ -1,6 +1,7 @@
 # Maintainer: piotrek1372 <your-email@example.com>
 pkgname=ca-racing
-pkgver=0.1.0_alpha
+_realver=0.1.0-alpha
+pkgver=${_realver//-/_}
 pkgrel=1
 pkgdesc="A retro-style 2D top-down racing game"
 arch=('x86_64')
@@ -12,7 +13,7 @@ provides=('ca-racing')
 conflicts=('ca-racing')
 # For local testing, you can use: source=("file://path/to/CA-Racing-0.1.0-alpha-setup.run")
 # For AUR release, use the GitHub URL after creating the release
-source=("https://github.com/piotrek1372/ca-racing/releases/download/v0.1.0-alpha/CA-Racing-0.1.0-alpha-setup.run")
+source=("https://github.com/piotrek1372/ca-racing/releases/download/v${_realver}/CA-Racing-${_realver}-setup.run")
 sha256sums=('SKIP')  # Run 'updpkgsums' after release to update checksum
 
 package() {
@@ -23,12 +24,12 @@ package() {
     
     # Extract and install game files
     cd "${srcdir}"
-    chmod +x "CA-Racing-${pkgver}-setup.run"
+    chmod +x "CA-Racing-${_realver}-setup.run"
     
     # Manual extraction (since the installer requires root)
     # Extract the archive part
-    ARCHIVE_LINE=$(awk '/^__ARCHIVE_BELOW__/ {print NR + 1; exit 0; }' "CA-Racing-${pkgver}-setup.run")
-    tail -n +${ARCHIVE_LINE} "CA-Racing-${pkgver}-setup.run" | tar -xz
+    ARCHIVE_LINE=$(awk '/^__ARCHIVE_BELOW__/ {print NR + 1; exit 0; }' "CA-Racing-${_realver}-setup.run")
+    tail -n +${ARCHIVE_LINE} "CA-Racing-${_realver}-setup.run" | tar -xz
     
     # Install files
     cp -r files/* "${pkgdir}/opt/ca-racing/"
