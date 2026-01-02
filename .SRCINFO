@@ -1,24 +1,21 @@
 pkgbase = python-influxdb-client
-	pkgdesc = Python client for InfluxDB 1.8+ and 2.0
-	pkgver = 1.44.0
+	pkgdesc = InfluxDB 2.0 Python client
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://github.com/influxdata/influxdb-client-python/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools>=21.0.0
-	depends = python>=3.7
-	depends = python-dateutil>=2.5.3
-	depends = python-reactivex>=4.0.4
-	depends = python-certifi>=14.05.14
-	depends = python-urllib3>=1.26.0
-	optdepends = influxdb
-	optdepends = python-ciso8601>=2.1.1
-	optdepends = python-pandas>=1.0.0
-	optdepends = python-numpy
-	optdepends = python-aiohttp>=3.8.1
-	optdepends = python-aiocsv>=1.2.2
-	options = !emptydirs
-	source = python-influxdb-client-1.44.0.tar.gz::https://github.com/influxdata/influxdb-client-python/archive/v1.44.0.tar.gz
-	sha512sums = 96d7c0151f576f687b97098e54824b4f489c0aa76d6fcab453ad18f8129c61896b5abf2ac1795c44d635657440bfa268c8b09dea18ba04cf7044b268b37672de
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-certifi
+	depends = python-dateutil
+	depends = python-reactivex
+	depends = python-urllib3
+	optdepends = python-numpy: Support data_frame
+	optdepends = python-pandas: Support query_data_frame
+	source = influxdb-client::git+https://github.com/influxdata/influxdb-client-python.git#tag=v1.49.0
+	b2sums = fb060acff04f6b7fc010278b1bad7f7152cf21845da59d0741d4fcf3ed1269db172e6e2657cde4638904ac9fa4bf0be45d8e832c38ab76e932ba90bd427f141d
 
 pkgname = python-influxdb-client
