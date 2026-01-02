@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=cfc24b
+pkgver=31bd59
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
