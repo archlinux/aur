@@ -1,8 +1,7 @@
 # Maintainer: fam007e <faisalmoshiur+secpasswdmgmt@gmail.com>
-
 pkgname=securepasswd_mgmt
 pkgver=2025.12.28
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure, cross-platform password manager with TOTP support"
 arch=('x86_64')
 url="https://github.com/fam007e/SecurePasswd_MGMT"
@@ -14,43 +13,25 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/a
 sha256sums=('e5bf81d94b79647b25901b7eb770c872d3ee59b39b5cd1515e8ea7c693236e41')
 
 build() {
-	cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
-
-	cmake -B build \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DPROJECT_VERSION=${pkgver}
-
-	cmake --build build
+    cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DPROJECT_VERSION=${pkgver}
+    cmake --build build
 }
 
 check() {
-	cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build/tests"
-	# Run tests if available
-	ctest --output-on-failure || warning "Some tests failed"
+    cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build/tests"
+    # Run tests if available
+    ctest --output-on-failure || warning "Some tests failed"
 }
 
 package() {
-	cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build"
-	make DESTDIR="$pkgdir" install
+    cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build"
+    make DESTDIR="$pkgdir" install
 
-	# Install license
-	install -Dm644 "$srcdir/SecurePasswd_MGMT-${pkgver}/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	# Install desktop file
-	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/securepasswd_mgmt.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=SecurePasswd MGMT
-Comment=Password Manager with TOTP
-Exec=securepasswd_gui
-Icon=securepasswd_mgmt
-Terminal=false
-Categories=Utility;Security;
-EOF
-
-	# Install icon
-	install -Dm644 "$srcdir/SecurePasswd_MGMT-${pkgver}/gui/icons/app_icon.svg" \
-		"$pkgdir/usr/share/icons/hicolor/scalable/apps/securepasswd_mgmt.svg"
+    # Install license
+    install -Dm644 "$srcdir/SecurePasswd_MGMT-${pkgver}/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

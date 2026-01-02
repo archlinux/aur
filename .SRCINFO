@@ -1,7 +1,7 @@
 pkgbase = securepasswd_mgmt
 	pkgdesc = A secure, cross-platform password manager with TOTP support
 	pkgver = 2025.12.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fam007e/SecurePasswd_MGMT
 	install = securepasswd_mgmt.install
 	arch = x86_64
