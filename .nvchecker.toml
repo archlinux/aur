@@ -1,0 +1,4 @@
+[annotation-mono]
+source = "git"
+git = "https://github.com/qwerasd205/AnnotationMono.git"
+prefix = "v"

@@ -1,0 +1,27 @@
+pkgbase = annotation-mono
+	pkgdesc = A lovingly crafted handwriting-style monospace font.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://qwerasd205.github.io/AnnotationMono/
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	provides = annotationmono
+	provides = annotation-mono
+	source = git+https://github.com/qwerasd205/AnnotationMono.git#tag=v0.2
+	b2sums = 43ca1e7210b5b69e6666f23166e493caa909f0fa11661250f4851bd4b93221f27e7382b2f0c15865a248aa8f4b4d271596270bc7021cca08495445b929c01cff
+
+pkgname = annotation-mono.otf
+	pkgdesc = A lovingly crafted handwriting-style monospace font. (otf edition)
+
+pkgname = annotation-mono.ttf
+	pkgdesc = A lovingly crafted handwriting-style monospace font. (ttf edition)
+
+pkgname = annotation-mono.variable
+	pkgdesc = A lovingly crafted handwriting-style monospace font. (variable edition)
+
+pkgname = annotation-mono.variable.woff2
+	pkgdesc = A lovingly crafted handwriting-style monospace font. (variable woff2 edition)
+
+pkgname = annotation-mono.woff2
+	pkgdesc = A lovingly crafted handwriting-style monospace font. (woff2 edition)
