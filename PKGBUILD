@@ -1,7 +1,7 @@
 pkgname=cmdcreate
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
-arch=('x86_64')
+arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL-2.0-only')
 depends=('curl' 'nano')
