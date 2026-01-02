@@ -6,7 +6,7 @@ url="https://github.com/watchmypizza/thermometer"
 sha256sums=('SKIP')
 license=('MIT')
 pkgver=1.3.3.18.9fa75e4
-depends=('dotnet-runtime' 'bash' 'curl')
+depends=('dotnet-runtime')
 makedepends=('dotnet-sdk')
 options=('!debug')
 
