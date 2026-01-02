@@ -11,7 +11,7 @@ url="https://gitlab.melroy.org/melroy/winegui"
 license=('AGPL3')
 depends=(
 	'cabextract'
-	'gtkmm4'
+	'gtkmm-4.0'
 	'p7zip'
 	'unzip'
 	'wget'
