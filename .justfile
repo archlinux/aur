@@ -27,6 +27,7 @@ bump:
 
   echo "Bumping version to $latest"
   sed -i "s/pkgver=.*/pkgver=$latest/" PKGBUILD
+  sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
 
   just update-checksums
   just commit
@@ -49,8 +50,8 @@ commit:
   #!/bin/sh
   set -e
 
-  latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
-  git commit -am "chore: bump to sui v$latest"
+  msg="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.name + " " + .version')"
+  git commit -am "chore: $msg"
 
 install:
   makepkg -si
