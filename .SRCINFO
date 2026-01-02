@@ -1,6 +1,6 @@
 pkgbase = htmlbuilder
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	install = htmlbuilder.install
 	arch = x86_64
 	license = custom
@@ -101,6 +101,7 @@ pkgbase = htmlbuilder
 	source = ssos2ws1.inc
 	source = ssposix.inc
 	source = sswin32.inc
+	source = emoji_shortcodes.pas
 	md5sums = 7041faa0de35c0ec237cabf095bd085f
 	md5sums = 4d842e008ba2889a1703447503b992e3
 	md5sums = cda97082278438d1d28676c2f1ee8d7e
@@ -194,5 +195,6 @@ pkgbase = htmlbuilder
 	md5sums = c099b491e2e79f5338efbebfaf1d6747
 	md5sums = 9498ba86e80a41fba4c45d16ecaaa206
 	md5sums = 41f1d440865016f6cc5572c2b6f2c87c
+	md5sums = fa30aa0b1ff0ae4e7084d20532746729
 
 pkgname = htmlbuilder
