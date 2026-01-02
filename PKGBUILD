@@ -2,7 +2,7 @@
 pkgname=mamofetch-git
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Быстрый системный фетч с погодой и поддержкой Xeon"
+pkgdesc="A simple Fetch with weather and useful information"
 arch=('x86_64')
 url="https://codeberg.org/ivanv444/mmntfetch"
 license=('MIT')
@@ -14,11 +14,11 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/mmntfetch"
   g++ mfetch.cpp -o mamofetch
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/mmntfetch"
   install -Dm755 mamofetch "${pkgdir}/usr/bin/mamofetch"
 }

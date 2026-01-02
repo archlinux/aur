@@ -1,5 +1,5 @@
 pkgbase = mamofetch-git
-	pkgdesc = Быстрый системный фетч с погодой и поддержкой Xeon
+	pkgdesc = A simple Fetch with weather and useful information
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://codeberg.org/ivanv444/mmntfetch
