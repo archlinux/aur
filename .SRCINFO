@@ -1,0 +1,18 @@
+pkgbase = python-icalendar-searcher-git
+	pkgdesc = Searching, filtering and sorting icalendar data
+	pkgver = 1.0.3.r0.g53e4ea2
+	pkgrel = 1
+	url = https://github.com/python-caldav/icalendar-searcher
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-icalendar
+	depends = python-recurring-ical-events
+	provides = python-icalendar-searcher
+	conflicts = python-icalendar-searcher
+	source = icalendar_searcher::git+https://github.com/python-caldav/icalendar-searcher
+	md5sums = SKIP
+
+pkgname = python-icalendar-searcher-git
