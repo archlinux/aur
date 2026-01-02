@@ -3,12 +3,12 @@
 
 pkgname=openkj
 pkgver=2.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open KJ - Cross-platform open source karaoke hosting software"
 arch=('i686' 'x86_64')
 url="https://openkj.org/"
 license=('GPL3')
-depends=('qt5-multimedia' 'gst-plugins-good' 'taglib1')
+depends=('qt5-svg' 'qt5-multimedia' 'gst-plugins-good' 'taglib1')
 makedepends=('qt5-tools' 'git' 'cmake')
 provides=("$pkgname=$pkgver")
 conflicts=('openkj-git')
