@@ -1,10 +1,10 @@
 # Maintainer: Nevimmu <nevimmu@gmail.com>
 pkgname=hyprdvd
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bouncy DVD-like terminal"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/nevimmu/hyprdvd"
 license=("MIT")
 groups=()
