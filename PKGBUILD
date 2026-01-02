@@ -1,9 +1,9 @@
 # Maintainer: Goldy goldy@devgoldy.xyz
 
 pkgname=roseate
-_pkgver="0.1.0-alpha.17"
+_pkgver="0.1.0-alpha.18"
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast."
 url="https://github.com/cloudy-org/roseate"
 license=(GPL-3.0-only)
