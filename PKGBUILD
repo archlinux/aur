@@ -34,5 +34,6 @@ package() {
   cd "$srcdir/Kernel-Plus-Plus-b$pkgver"
   echo $pkgdir
   install -Dm0644 -t "$pkgdir/usr/bin" "$srcdir/Kernel-Plus-Plus-b$pkgver/build/kernel"
+  install -Dm0644 "$srcdir/Kernel-Plus-Plus-b$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/"
   chmod +x "$pkgdir/usr/bin/kernel"
 }
