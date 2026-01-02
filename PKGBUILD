@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-edfio
 _name=${pkgname#python-}
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Python package for reading and writing EDF and EDF+C files"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('9ce92019f6b29fd489d9abbf2ff401e09d76f489')
+sha1sums=('d18fbfcc50b9ba77540ed00fcae1d0dfb6dbc93c')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
