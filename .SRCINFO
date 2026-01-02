@@ -1,14 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks
-	pkgver = 15.0.8_1
+pkgbase = dayrecap-git
+	pkgdesc = A notification client which prompts you to recap the the days events and log them.
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://paranoiaworks.mobi
+	url = https://github.com/TreasureJim/dayrecap
 	arch = x86_64
-	license = custom
-	options = !strip
-	source = https://paranoiaworks.mobi/download/files/pfte_15.0.8-1_amd64.deb
-	source = license.txt
-	sha256sums = 31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c
-	sha256sums = f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = dayrecap-git-0.2.0.tar.gz::https://github.com/TreasureJim/dayrecap/archive/v0.2.0.tar.gz
+	sha256sums = 25ce10cd0dbc8ae68f7096c2f095f27bea004e3f660da088004a8d82677a0ea7
 
-pkgname = sse-bin
+pkgname = dayrecap-git
