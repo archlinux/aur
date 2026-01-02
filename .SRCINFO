@@ -1,7 +1,7 @@
 pkgbase = pyprime
 	pkgdesc = CPU and RAM benchmark
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbntr/PYPrime-2.x
 	arch = i686
 	arch = x86_64
