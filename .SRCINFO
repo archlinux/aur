@@ -1,6 +1,6 @@
 pkgbase = pdf-compress
 	pkgdesc = Compress an overlarge pdf file
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://www.timedicer.co.uk/programs/help/pdf-compress.sh.php
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pdf-compress
 	depends = imagemagick
 	optdepends = qpdf: further 10% compression or slightly better quality
 	optdepends = perl-image-exiftool: used to update the metadata in the destination file
-	source = pdf-compress-2.0.3.sh::https://www.timedicer.co.uk/programs/pdf-compress.sh
-	b2sums = 9cf5d23fa7a8bb2ddddf1ba4b41618ea95f9afa34cf1a140c46ff210fbbbac53c231dee46b2aebda5e730e01f5e16decc584229f80a55514956fd9f2063e857b
+	source = pdf-compress-2.0.4.sh::https://www.timedicer.co.uk/programs/pdf-compress.sh
+	b2sums = 9346140bbdf0f25eb735fcb863f00b500e393fe20fadf660f9ba635b82f0f18c54110393be6cff20d135b31316f6ad46d5f8810d24a9726ed6a43a964858efc6
 
 pkgname = pdf-compress
