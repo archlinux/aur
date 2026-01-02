@@ -2,13 +2,14 @@
 
 pkgname=cachy-chroot
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chroot helper for CachyOS'
 arch=('x86_64')
 groups=('cachyos')
 license=(BSD-3-Clause)
 url="https://github.com/CachyOS/cachy-chroot"
-depends=('arch-install-scripts' 'btrfs-progs' 'util-linux')
+depends=('arch-install-scripts' 'util-linux')
+optdepends=('btrfs-progs: for btrfs support' 'cryptsetup: for LUKS support' 'zfs-utils: for ZFS support')
 makedepends=('git' 'cargo' 'lld' 'clang' 'llvm')
 source=("git+${url}?signed#tag=${pkgver}")
 b2sums=('b401824acfe0d77267329f574c964fe43ade2f599f9378e72746f7b347fc2ad341e08f7bc617587799200215c6e7ce69106764fe9d02357c00c7b70b83bd7277')
