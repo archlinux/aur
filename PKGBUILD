@@ -2,7 +2,7 @@
 
 pkgname=ghla-lang
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="GHLA is a language level higher than Assembly"
 arch=('x86_64')
 url="https://github.com/gorciu-official/ghla"
