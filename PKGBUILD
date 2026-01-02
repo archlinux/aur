@@ -17,6 +17,7 @@ sha512sums=('2251cf9511c3ba7c0f993a844c82e59d3bdd378297e1df6034643f3d1c9c0415460
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    ./autogen.sh
     ./configure --prefix=/usr --enable-shared=yes --enable-static=yes
     make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
 }
