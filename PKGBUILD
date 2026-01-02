@@ -3,17 +3,16 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=onvif-util
-pkgver=1.4.7
-pkgrel=2
+pkgver=1.4.9
+pkgrel=1
 pkgdesc='A client side implementation of the ONVIF specification - CLI app'
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
 makedepends=('cmake'
              'git')
-# _prjrel=3.0.10
-source=("git+${url}.git#commit=2f03007de328e5da5dfd771989fa0f406529ad24")
-sha256sums=('b54485dc8c3abc1dc9c94206dc364163a2a3c2b80a7fa371f129c78767001db1')
+source=("git+${url}.git#commit=ad941d342320e58caa3b9b6b95e2bcccb44285ff")
+sha256sums=('e14c75c6917baf19f51c36d0c8490368d13e2b57544a7d00451de8811cc4c443')
 
 pkgver() {
 	cd ${srcdir}/libonvif/${pkgname}
