@@ -2,7 +2,7 @@
 pkgname=chatterino2-git
 _pkgname=chatterino2
 pkgver=2.5.4.r143.g95bc67f
-pkgrel=1
+pkgrel=2
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('x86_64' 'aarch64')
 url=https://chatterino.com
@@ -104,4 +104,5 @@ package() {
     fi
     install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
     install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
