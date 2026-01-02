@@ -1,0 +1,31 @@
+# User configuration files (may contain actual IPs/credentials)
+*.conf
+!*.conf.example
+
+# Environment files
+.env
+.env.*
+
+# Credentials and keys
+*.key
+*.pem
+*.crt
+credentials/
+cifs-credentials/
+
+# Build artifacts
+*.tar.gz
+*.pkg.tar.zst
+pkg/
+src/
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
