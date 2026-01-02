@@ -1,6 +1,6 @@
 pkgbase = sqd-bin
 	pkgdesc = A SQL-like document editor
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/albertoboccolini/sqd
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = sqd-bin
 	license = MIT
 	provides = sqd
 	conflicts = sqd
-	source = LICENSE-0.0.6::https://raw.githubusercontent.com/albertoboccolini/sqd/v0.0.6/LICENSE
-	source = README-0.0.6.md::https://raw.githubusercontent.com/albertoboccolini/sqd/v0.0.6/README.md
+	source = LICENSE-0.0.7::https://raw.githubusercontent.com/albertoboccolini/sqd/v0.0.7/LICENSE
+	source = README-0.0.7.md::https://raw.githubusercontent.com/albertoboccolini/sqd/v0.0.7/README.md
 	sha256sums = 859eb190b73b79fb7ff00b19bec989abe222efe8127df15c5bf857fdbbd61abe
 	sha256sums = 125c9c7dbd503cf595b0c5a5b24ffaccbbbaaa54fe3587235656309ad7cfa69c
-	source_x86_64 = sqd-x86_64-0.0.6.tgz::https://github.com/albertoboccolini/sqd/releases/download/v0.0.6/sqd_0.0.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = df2191e8cbb38b8ef24f248c255615362a66864cfbdbffe87e1bce21c7b7c98a
-	source_aarch64 = sqd-aarch64-0.0.6.tgz::https://github.com/albertoboccolini/sqd/releases/download/v0.0.6/sqd_0.0.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = caa24355ecc9d9833f6e107f29a4987f53f5fc8aea2e1bf6f0d317c85910f8b6
+	source_x86_64 = sqd-x86_64-0.0.7.tgz::https://github.com/albertoboccolini/sqd/releases/download/v0.0.7/sqd_0.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = a2f736b66764a03fcaf0765dea666fc272e4c96c865ab48d8d3a4be159bb7429
+	source_aarch64 = sqd-aarch64-0.0.7.tgz::https://github.com/albertoboccolini/sqd/releases/download/v0.0.7/sqd_0.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = d856339b4df806212c2684569c7c55253d2ef5ae382f4a82effe64da75cf5289
 
 pkgname = sqd-bin
