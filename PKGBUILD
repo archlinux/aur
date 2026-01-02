@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-better-blur-dx-x11-git
-pkgver=r541.ae8d454
+pkgver=r552.089a158
 pkgrel=1
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (X11)"
 arch=('x86_64')
