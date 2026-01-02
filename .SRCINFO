@@ -1,7 +1,7 @@
 pkgbase = hyprland-plugins
 	pkgdesc = Official plugins for Hyprland
 	pkgver = 0.53.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprland-plugins
 	arch = x86_64
 	license = BSD
@@ -22,6 +22,9 @@ pkgname = hyprland-plugin-hyprbars
 
 pkgname = hyprland-plugin-hyprexpo
 	pkgdesc = A Hyprland plugin that adds an expo-like workspace overview
+
+pkgname = hyprland-plugin-hyprfocus
+	pkgdesc = A Hyprland plugin that adds a flashfocus
 
 pkgname = hyprland-plugin-hyprscrolling
 	pkgdesc = A Hyprland plugin that adds a scrolling layout
