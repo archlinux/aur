@@ -1,7 +1,7 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 _pkgname=openanime
 pkgname="${_pkgname}-bin"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Resmi olmayan OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
