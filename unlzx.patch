@@ -1,0 +1,14 @@
+--- unlzx.c	2026-01-02 23:31:47.046866756 +0100
++++ ../unlzx.c	2026-01-02 23:32:32.587833670 +0100
+@@ -21,6 +21,11 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
++#include <sys/stat.h>
++#include <sys/types.h>
++
++#include <getopt.h>
++
+ /* ---------------------------------------------------------------------- */
+ 
+ static const unsigned char VERSION[]="$VER: unlzx 1.1 (03.4.01)";
