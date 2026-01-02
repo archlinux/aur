@@ -1,7 +1,7 @@
 # Maintainer: snemc1 <snemc@qq.com>
 pkgname=markpix-bin
 _pkgname=markpix
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A modern cross-platform image annotation tool built with Tauri (Binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 source=("${_pkgname}-${pkgver}.deb::https://github.com/jswysnemc/markpix/releases/download/v${pkgver}/MarkPix_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/jswysnemc/markpix/main/LICENSE")
 
-sha256sums=('c827a2f7c9bc6d254589c4eb4d55e6eab52688e2407297e3e0dd7412523429b9'
+sha256sums=('42d610f957f6d2268614aab04fb7b31e3441a38f33f950f4ac8034112db80bba'
             '9a46a71b6c82da530bc5f2d5e568bc4ae5d1d0f3e95510a85ab2cfbf048c6c24')
 
 prepare() {
