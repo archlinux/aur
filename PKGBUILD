@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd cmdcreate
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
