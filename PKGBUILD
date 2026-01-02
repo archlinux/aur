@@ -11,6 +11,7 @@ provides=('evil-winrm-py')
 conflicts=('evil-winrm-py')
 depends=('python' 'python-pypsrp' 'python-prompt_toolkit' 'python-tqdm')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=('python-kerberos: Kerberos authentication support')
 source=("evil_winrm_py-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/d8/e6/0f39fbc92ce26afd0ce79acadbacc312c81f3d438d3bf625a03f1a01c474/evil_winrm_py-${pkgver}.tar.gz")
 sha256sums=('4f97ee36f236dd6b1af770470a5f844d97a9f42b4efe720b3781094661b161ad')
 
