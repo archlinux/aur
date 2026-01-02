@@ -14,8 +14,8 @@
 ## Contributor: sowieso <sowieso@dukun.de>
 
 _minecraft_ver="1.21.11"
-_fabric_ver="1.1.0"
-_fabric_loader_ver="0.18.2"
+_fabric_ver="1.1.1"
+_fabric_loader_ver="0.18.4"
 _mng_ver=1.0.4
 
 pkgname="fabric-server"
@@ -52,7 +52,6 @@ prepare() {
 
 build() {
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" clean
-
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		GAME=${_game} \
 		INAME=${_game}d \
@@ -76,15 +75,15 @@ package() {
 	install -Dm644 "server.jar" "${pkgdir}${_server_root}/server.jar"
 
 	# Install libraries
-  install -dm755 "libraries" "${pkgdir}${_server_root}/libraries"
+	install -dm755 "libraries" "${pkgdir}${_server_root}/libraries"
 	cp -r libraries/* "${pkgdir}${_server_root}/libraries/"
-  find "${pkgdir}${_server_root}/libraries" -type d -exec chmod 755 {} +
-  find "${pkgdir}${_server_root}/libraries" -type f -exec chmod 644 {} +
+	find "${pkgdir}${_server_root}/libraries" -type d -exec chmod 755 {} +
+	find "${pkgdir}${_server_root}/libraries" -type f -exec chmod 644 {} +
 
 	# Link log files
 	install -dm755 "${pkgdir}/var/log"
-  install -dm2755 "${pkgdir}${_server_root}/logs"
-  ln -s "/srv/${_fabric_name}/logs" "${pkgdir}/var/log/${_fabric_name}"
+	install -dm2755 "${pkgdir}${_server_root}/logs"
+	ln -s "/srv/${_fabric_name}/logs" "${pkgdir}/var/log/${_fabric_name}"
 
 	# Give the group write permissions and set user or group ID on execution
 	chmod g+ws "${pkgdir}${_server_root}"
