@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.41.0.r1.gd0e24ab17a
+pkgver=0.41.0.r47.ga3350e2fbb
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -112,6 +112,7 @@ build() {
         -Dpthread-debug='disabled' \
         -Drubberband='enabled' \
         -Dsdl2-gamepad='enabled' \
+        -Dsubrandr='disabled' \
         -Duchardet='enabled' \
         -Duwp='disabled' \
         -Dvapoursynth='enabled' \
@@ -137,6 +138,7 @@ build() {
         -Dsndio='enabled' \
         -Dwasapi='disabled' \
         \
+        -Damf='disabled' \
         -Dcaca='enabled' \
         -Dcocoa='disabled' \
         -Dd3d11='disabled' \
