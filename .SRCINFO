@@ -1,0 +1,16 @@
+pkgbase = magicpodscore-git
+	pkgdesc = A command-line utility for managing AirPods, Beats, and Galaxy Buds.
+	pkgver = 2.0.4.r0.g565cbba
+	pkgrel = 1
+	url = https://github.com/steam3d/MagicPodsCore
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = docker
+	makedepends = docker-buildx
+	source = git+https://github.com/steam3d/MagicPodsCore.git
+	source = LICENSE::https://raw.githubusercontent.com/steam3d/MagicPodsCore/refs/heads/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = magicpodscore-git
