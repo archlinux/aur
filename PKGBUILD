@@ -9,7 +9,11 @@ license=('GPL-2.0-only')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 
-source=("git+$url.git")
+conflicts=('cmdcreate' 'cmdcreate-debug')
+provides=('cmdcreate')
+options=('debug')
+
+source=("cmdcreate::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,7 +23,7 @@ pkgver() {
 
 build() {
   cd cmdcreate
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {

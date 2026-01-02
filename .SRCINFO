@@ -8,7 +8,11 @@ pkgbase = cmdcreate-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/owen-debiasio/cmdcreate.git
+	provides = cmdcreate
+	conflicts = cmdcreate
+	conflicts = cmdcreate-debug
+	options = debug
+	source = cmdcreate::git+https://github.com/owen-debiasio/cmdcreate.git
 	sha256sums = SKIP
 
 pkgname = cmdcreate-git
