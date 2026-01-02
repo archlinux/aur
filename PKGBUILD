@@ -6,8 +6,8 @@ pkgdesc="Lightweight, fast, secure, and easy to use encryption system."
 arch=('x86_64' 'aarch64')
 url="https://git.satan.red/ENGO150/WHY2.git"
 license=('GPL-3.0-only')
-depends=('openssl')
-makedepends=('git' 'rust' 'pkgconf')
+depends=('alsa-lib' 'opus' 'gcc-libs')
+makedepends=('git' 'cargo' 'clang' 'pkgconf')
 source=("git+$url#branch=release")
 sha256sums=('SKIP')
 

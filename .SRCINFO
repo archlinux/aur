@@ -7,9 +7,12 @@ pkgbase = why2
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
 	makedepends = pkgconf
-	depends = openssl
+	depends = alsa-lib
+	depends = opus
+	depends = gcc-libs
 	options = !debug
 	options = !lto
 	source = git+https://git.satan.red/ENGO150/WHY2.git#branch=release
