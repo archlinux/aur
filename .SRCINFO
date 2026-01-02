@@ -1,0 +1,16 @@
+pkgbase = tododo
+	pkgdesc = The todo manager that should be extinct
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/bmarse/tododo
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = tododo
+	conflicts = tododo
+	source = tododo-v0.7.0-stable.tgz::https://github.com/bmarse/tododo/archive/v0.7.0-stable.tar.gz
+	sha256sums = d57c5d28efabc8f63e6ee21b5283449545ff7db6b299ed80649022c75dcfb215
+
+pkgname = tododo
