@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=pocket-id
 pkgname="${_pkgname}-bin"
-pkgver=1.16.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A simple and easy-to-use OIDC provider (Pre-compiled binary)"
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('BSD')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}/config.env")
+install="${_pkgname}.install"
 
 source=(
   "${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
@@ -19,7 +20,7 @@ source=(
   "${_pkgname}.tmpfiles"
 )
 
-sha256sums=('e931b1023bb00da67c8a39ed4be64f3e6541832d306a020a56d116215bf48c8e'
+sha256sums=('6e15119553b090353dd4cebbaed95c522af39e0454e34e46452e7d11f8087e55'
             'a16d41415d11c4cf586cb67147190678181abef880306aca6f5267bd496a1a67'
             'b3eecd75778be96a757fadb11366d7cc5e166deb7d06c2c75fc6e4d63545d90b'
             '48ee29e40d3b949bb884fb6c3bb2b6739626c38a42ab4f8ab10a5a4e3d7c735d'

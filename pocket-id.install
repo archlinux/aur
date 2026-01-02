@@ -1,0 +1,14 @@
+post_upgrade() {
+  if [[ "$2" == 1.* ]]; then
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "WARNING: You are upgrading Pocket ID to v2.0.0."
+    echo "This is a MAJOR release with BREAKING changes."
+    echo ""
+    echo "1. You may need to add 'ENCRYPTION_KEY' to your config.env."
+    echo "2. Database migrations may be required."
+    echo ""
+    echo "Please read the migration guide BEFORE restarting the service:"
+    echo "https://pocket-id.org/docs/setup/major-releases/migrate-v2"
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  fi
+}
