@@ -1,0 +1,17 @@
+pkgbase = beutl-git
+	pkgdesc = Beutl – cross-platform visual editor
+	pkgver = v1.1.0.549a7c735
+	pkgrel = 1
+	url = https://github.com/b-editor/beutl
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = dotnet-sdk
+	makedepends = jq
+	makedepends = bash
+	depends = dotnet-runtime
+	optdepends = oxipng: optimize PNG icon
+	source = git+https://github.com/b-editor/beutl.git
+	sha256sums = SKIP
+
+pkgname = beutl-git
