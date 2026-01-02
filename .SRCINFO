@@ -9,7 +9,6 @@ pkgbase = deskedit-kernel++-beta
 	makedepends = git
 	depends = gcc-libs
 	provides = kernel
-	conflicts = kernel++
 	source = deskedit-kernel++-beta-0.2.1.fix.tar.gz::https://github.com/DESKEDIT/Kernel-Plus-Plus/archive/refs/tags/b0.2.1.fix.tar.gz
 	sha256sums = 058f93ef3b82ee9e66914e3b501c8df0c3a61a04862ed3f689306490dc9aaddc
 
