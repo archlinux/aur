@@ -1,0 +1,39 @@
+post_install() {
+    shell=$(basename "$SHELL")
+
+    echo ""
+    echo "Detected shell: $shell"
+    echo ""
+
+    case "$shell" in
+        bash)
+            echo "Add this line to your ~/.bashrc:"
+            echo 'export PATH="$HOME/.config/herd-lite/bin:$PATH"'
+            ;;
+
+        zsh)
+            echo "Add this line to your ~/.zshrc:"
+            echo 'export PATH="$HOME/.config/herd-lite/bin:$PATH"'
+            ;;
+
+        fish)
+            echo "Run this command (Fish uses a different syntax):"
+            echo 'set -Ux PATH $HOME/.config/herd-lite/bin $PATH'
+            echo ""
+            echo "Or add this to ~/.config/fish/config.fish:"
+            echo 'set -gx PATH $HOME/.config/herd-lite/bin $PATH'
+            ;;
+
+        tcsh|csh)
+            echo "Add this line to your ~/.cshrc or ~/.tcshrc:"
+            echo 'setenv PATH "$HOME/.config/herd-lite/bin:$PATH"'
+            ;;
+
+        *)
+            echo "Unknown shell. Add this to your shell config file:"
+            echo 'export PATH="$HOME/.config/herd-lite/bin:$PATH"'
+            ;;
+    esac
+
+    echo ""
+}
