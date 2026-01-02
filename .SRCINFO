@@ -25,7 +25,6 @@ pkgbase = waytermirror-git
 	depends = libffi
 	depends = pcre2
 	depends = lz4
-	depends = lua
 	depends = rapidjson
 	optdepends = cuda: GPU-accelerated rendering via NVIDIA CUDA
 	provides = waytermirror

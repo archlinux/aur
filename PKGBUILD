@@ -36,10 +36,7 @@ depends=(
 
     # Compression / data
     lz4
-
-    # Scripting / config
-    lua
-
+    
     # JSON
     rapidjson
 )
