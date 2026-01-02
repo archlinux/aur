@@ -2,9 +2,9 @@
 _name=fastexcel
 pkgname=python-${_name}
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast excel reader for Rust and Python"
-arch=(any)
+arch=(x86_64)
 url=https://github.com/ToucanToco/fastexcel
 license=(MIT)
 depends=(python)

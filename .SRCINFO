@@ -1,9 +1,9 @@
 pkgbase = python-fastexcel
 	pkgdesc = A fast excel reader for Rust and Python
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ToucanToco/fastexcel
-	arch = any
+	arch = x86_64
 	license = MIT
 	checkdepends = python-openpyxl
 	checkdepends = python-pandas
@@ -20,7 +20,7 @@ pkgbase = python-fastexcel
 	optdepends = python-pandas: Traditional usage (requires python-pyarrow, too)
 	optdepends = python-polars: Polars support
 	optdepends = python-pyarrow: Arrow support
-	source = fastexcel::git+https://github.com/earthobservations/wetterdienst.git#tag=v0.18.0
-	b2sums = 8df090cf2af883c98271d1d13fb429c3ea45962336f29dd04d302c348fab1e03b9a933dc4ffaea2dc89f035fc3e259ec9eee2a3266cf0214e1cbf4bdea5139de
+	source = fastexcel::git+https://github.com/ToucanToco/fastexcel#tag=v0.18.0
+	b2sums = 600e5459a8f01c4e4d34f4c0f2f0f1e5d463908e5cf86d81e652b89bc70ffc64f79a35625014e7cf0ab75ab00ac5200bd1d258b52b9b643952a93381fb1377fb
 
 pkgname = python-fastexcel
