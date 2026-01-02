@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops'
 url='https://github.com/jmylchreest/histui'
@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2ba79dd4dcd2fb8c78a70fd5a09a0df53a04f9042b7938bb7f6654ff288dc231')
+sha256sums=('920bc0db96c0edd43b7e2c30a51e564ceb55782285ffa4f308f9756811f0e0e6')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -23,14 +23,19 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
 
+    # Build metadata
+    local _commit="95f4758d9e1db339c9585161084dc3801a4b4ea6"
+    local _buildtime="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    local _ldflags="-s -w -X main.version=${pkgver} -X main.commit=${_commit} -X main.buildTime=${_buildtime}"
+
     # histui CLI - pure Go, no CGO needed
     CGO_ENABLED=0 go build \
-        -ldflags "-s -w -X main.version=${pkgver}" \
+        -ldflags "${_ldflags}" \
         -o histui ./cmd/histui
 
     # histuid daemon - requires CGO for GTK4 bindings
     CGO_ENABLED=1 go build \
-        -ldflags "-s -w -X main.version=${pkgver}" \
+        -ldflags "${_ldflags}" \
         -o histuid ./cmd/histuid
 }
 
