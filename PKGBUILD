@@ -3,7 +3,7 @@
 
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20251231T010801
+_id=20260102T182518
 _ver=2.5.4
 pkgver=${_ver}.${_id}
 pkgrel=1
@@ -12,14 +12,14 @@ arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
 license=('MIT')
 depends=(gdk-pixbuf2 glib2 hicolor-icon-theme libglvnd libnotify openssl
-		qt6-{base,imageformats,svg} qtkeychain-qt6)
+		qt6-{base,imageformats,svg} qtkeychain-qt6 hunspell)
 optdepends=('streamlink: For piping streams to video players'
 'qt6-wayland: Wayland support')
 provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('d63bfc2bab4a5fecd76ad269858787cf8ff7e175f82a7a995a9952d254c9e9eb')
+sha256sums=('b2a3f1f8caae3b00de87774a3d7d49b0d39d2429a096687e7fb6f112d6f8c5b3')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
