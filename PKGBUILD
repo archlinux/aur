@@ -2,7 +2,7 @@
 # Maintainer: Jamie Pond <yapi@pond.audio>
 
 pkgname='yapi-bin'
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='The API client that lives in your terminal (and your git repo)'
 url='https://yapi.run/'
@@ -12,10 +12,10 @@ provides=('yapi')
 conflicts=('yapi')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jamierpond/yapi/releases/download/v${pkgver}/yapi_linux_arm64.tar.gz")
-sha256sums_aarch64=('daca352d68c97cb88e74cb12193d9f3d93d5956466bc47b86580c792e47d5b22')
+sha256sums_aarch64=('b4519987a8d9785ea30d2335c0badbb302327a94726810a9561ea665406a8963')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jamierpond/yapi/releases/download/v${pkgver}/yapi_linux_amd64.tar.gz")
-sha256sums_x86_64=('316dfdadf0c370697a9dafe379b6de2b5b682427b7a577dcde516c4c7b067fbb')
+sha256sums_x86_64=('c39c33ea67ba7b235c49e4e599d89c08a0c841e86fc114507053eca930fa83db')
 
 package() {
   install -Dm755 "./yapi" "${pkgdir}/usr/bin/yapi"
