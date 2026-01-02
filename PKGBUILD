@@ -1,9 +1,9 @@
 # Maintainer: mdmrk <mariodavo.20@gmail.com>
 _pkgname=Eden
 pkgname=eden-nightly-bin
-pkgver=2025.12.31.28139
-_tagver=2025-12-31-28139
-_buildnum=28139
+pkgver=2026.01.02.28158
+_tagver=2026-01-02-28158
+_buildnum=28158
 pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (PGO optimized)"
 arch=('x86_64')
