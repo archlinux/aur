@@ -1,5 +1,3 @@
 [python-numpy-typing-compat]
-source = "github"
-github = "jorenham/numpy-typing-compat"
-use_latest_release = "true"
-prefix = "v"
+source = "pypi"
+pypi = "numpy-typing-compat"
