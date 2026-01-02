@@ -1,0 +1,21 @@
+pkgbase = patchy
+	pkgdesc = A CLI for generating and applying patches to git repositories
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/coderaiser/cloudcmd
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = patchy
+	noextract = patchy-0.0.24.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = patchy-0.0.24.tgz::https://registry.npmjs.org/patchy-cli/-/patchy-cli-0.0.24.tgz
+	b2sums = 6f4bdf48207ecbd73f94f047b72011db0d82338372e351734a88c963aed1539dcd3906e58b2584448396b9886b8617aff9e719269465e905f165d6b6fbe78b4d
+
+pkgname = patchy

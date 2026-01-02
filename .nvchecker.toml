@@ -1,0 +1,3 @@
+[patchy]
+source = "npm"
+npm = "patchy-cli"
