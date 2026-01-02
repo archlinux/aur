@@ -1,4 +1,4 @@
-pkgbase = thermometer
+pkgbase = thermometer-git
 	pkgdesc = A simple CPU frequency management utility
 	pkgver = 1.3.3.16.g6c97d92
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = thermometer
 	source = git+https://github.com/watchmypizza/thermometer.git
 	sha256sums = SKIP
 
-pkgname = thermometer
+pkgname = thermometer-git

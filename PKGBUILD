@@ -1,4 +1,4 @@
-pkgname=thermometer
+pkgname=thermometer-git
 pkgrel=1
 pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
