@@ -1,7 +1,7 @@
 pkgbase = larksuite-bin
 	pkgdesc = Collaboration suite service for office messaging, calendars, meetings, docs...
 	pkgver = 7.54.11
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.larksuite.com
 	arch = x86_64
 	license = LicenseRef-Lark-User-${_licensever}
@@ -20,6 +20,6 @@ pkgbase = larksuite-bin
 	source = Lark-linux_x64-7.54.11.deb::https://www.larksuite.com/api/package_info?platform=10
 	source = LICENSE-1.2.1444.html::http://www.larksuite.com/en_us/user-terms-of-service
 	sha256sums = aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9
-	sha256sums = 3a545290973fa70bd3d61e1e16d5f948fac0b43cf2bedc2fbc5d470bcd0ff9f5
+	sha256sums = 21f4a8f5cc42b83e3e3f77317ac6078ae54ec34b77f4e56625e17684d5bb3846
 
 pkgname = larksuite-bin
