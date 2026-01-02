@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="A lightweight, owl-themed application launcher for Wayland"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
     'owlry-rune: Rune runtime for user plugins'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('65960b1ebb3a58f7f1b251d64f6958debcf40ac4360c166f277dae3fa2b7f50f669c64c2728ac876fc73d983b39b64736878980ca8d3a4eb5130271ae5445f33')
+b2sums=('2776afa1c9a4546a4254b6d460d1a7248dc5f36ebe3f94279bfa9632289836265273a5afda2b63346b5f21ac72cb0fb005393b8187cc1d97f15036a02776d266')
 
 prepare() {
     cd "$pkgname"
