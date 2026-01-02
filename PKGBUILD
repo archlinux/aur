@@ -4,7 +4,7 @@
 # It builds ginkgo-cli and installs the user service + man pages.
 
 pkgname=ginkgo-cli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Local-first journaling CLI with daemon, search, and sync"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 
 source=("https://github.com/iMithrellas/GinkGo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f025904165ce141ff6d8792e5f3eb54032b826e85ab338fd0d8cd8ea5e2d2c3e')
+sha256sums=('c264b920b9eeb66cbf08c6591d1501463d12f552182c607ef3144315939c551e')
 
 build() {
   cd "$srcdir/GinkGo-$pkgver"
