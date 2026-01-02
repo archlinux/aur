@@ -4,7 +4,6 @@
 # you also find the URL of a binary repository.
 
 _reponame=reflective-rapidjson
-_llvmver=20
 pkgname=reflective-rapidjson-git
 _name=${pkgname%-git}
 pkgver=268.1fba0c7
