@@ -1,7 +1,7 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
 pkgname='python-django-webpack-loader'
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Transparently use webpack with django'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('96fa7e51c1250e4efcc33b30d96ba149462ce91fa83a2abb8051247d24c1ef68')
+sha256sums=('3693a8b7b54c37e08ef0c5612d41d616b6d2d79b6010a1de1828fb4e83912c52')
 
 build() {
     cd "$srcdir/django-webpack-loader-$pkgver"
