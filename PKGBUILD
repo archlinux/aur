@@ -23,4 +23,5 @@ package() {
   cd "WHY2"
   install -Dm755 "target/release/why2" "$pkgdir/usr/bin/why2"
   install -Dm755 "target/release/why2-server" "$pkgdir/usr/bin/why2-server"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
