@@ -9,9 +9,10 @@ pkgrel=1
 pkgdesc="Local-first journaling CLI with daemon, search, and sync"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iMithrellas/GinkGo"
-license=('MIT')
+license=('WTFPL')
 depends=('glibc')
 makedepends=('git' 'go')
+keywords=('journal' 'notes' 'cli' 'tui' 'jrnl')
 optdepends=(
   'systemd: user service for ginkgod'
 )
