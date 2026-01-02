@@ -1,6 +1,6 @@
 # Maintainer: Kenzo <https://github.com/codewithkenzo>
 pkgname=pplx-zero
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Minimal Perplexity AI CLI - search from terminal"
 arch=('any')
