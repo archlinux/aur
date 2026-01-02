@@ -7,4 +7,4 @@ Icon=plotune
 Terminal=false
 Type=Application
 Categories=Development;Science;Graphics;
-MimeType=x-scheme-handler/plotune;
+MimeType=x-scheme-handler/plotune;application/x-plotune;

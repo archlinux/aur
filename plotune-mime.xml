@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-plotune">
+    <comment>Plotune Data File</comment>
+    <glob pattern="*.pltx"/>
+    <icon name="plotune"/>
+  </mime-type>
+</mime-info>
