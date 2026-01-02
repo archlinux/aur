@@ -43,7 +43,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.29.8
+pkgver=0.29.9
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -53,12 +53,12 @@ arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
 depends=('git' 'onefetch')
-optdepends=('bat: for syntax highlighting'
-            'curl: for downloading files'
-            'fzf: for the interactive menu'
-            'glow: for markdown rendering'
-            'nano: for editing config files'
-            'wdiff: for comparing config files')
+optdepends=('bat: syntax highlighting'
+            'curl: downloading files'
+            'fzf: the interactive menu'
+            'glow: markdown rendering'
+            'nano: editing config files'
+            'wdiff: comparing config files')
 install=tkginstaller.install
 source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
 sha256sums=('SKIP')
