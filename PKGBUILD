@@ -1,7 +1,7 @@
 pkgname=beutl-git
 pkgver=v1.1.0.549a7c735
 pkgrel=1
-pkgdesc="Beutl – cross-platform visual editor"
+pkgdesc="Cross-platform video editing (compositing) software"
 arch=('x86_64')
 url="https://github.com/b-editor/beutl"
 license=('GPL-3.0')
