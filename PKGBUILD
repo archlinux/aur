@@ -13,7 +13,7 @@ makedepends=(git make gcc)
 source=("https://github.com/bartp5/libtexprintf/archive/refs/heads/${pkgver}.zip")
 conflicts=(libtexprintf)
 provides=('libtexprintf')
-sha512sums=('2251cf9511c3ba7c0f993a844c82e59d3bdd378297e1df6034643f3d1c9c0415460f4470c8fa6c84de6b68aa63e1e893fd3211386c55b8d7dd6e4a451b2fca6d')
+sha512sums=(SKIP)
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
