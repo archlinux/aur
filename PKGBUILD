@@ -1,6 +1,7 @@
 # Maintainer: qr243vbi
+
 pkgname=(nekobox nekobox-core)
-pkgver=5.9.22
+pkgver=5.9.24
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
@@ -9,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("34a177de295b17b2ecab8f2215f813c7b474ef028526314b2ce12e454952f38a")
+sha256sums=("39b98bb050206c6fdb319a73cce358111f8c4d4ccdca40229de9db10f9392a8a")
 
 
 prepare() {
@@ -34,7 +35,7 @@ build() {
     export GOFLAGS='-mod=vendor'
     export VERSION_SINGBOX="$(cat SingBox.Version)"
     ( bash -x script/build_go.sh ; )
-
+    
     cmake -B "${DEST}" -S . \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
@@ -64,9 +65,8 @@ package_nekobox() {
 
     cd "nekobox-unified-source-${pkgver}"
     install -Dm644 srslist.json -t "${pkgdir}/usr/lib/NekoBox"
+    install -Dm644 global.ini -t "${pkgdir}/usr/lib/NekoBox"
     cp *.js "${pkgdir}/usr/lib/NekoBox"
     cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
-    echo "${pkgver}" > "${pkgdir}/usr/lib/NekoBox/version.txt"
     install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
-
