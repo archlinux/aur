@@ -22,7 +22,7 @@ source=("htmlbuilder.lpi" "htmlbuilder.lpr" "htmlbuilder.install" "asn1util.pas"
 "cn_localization.ini"  "en_localization.ini"  "es_localization.ini"  "fonts.ini"  "kp_localization.ini"  "ru_localization.ini"
 "css3-props-all.txt"  "russian_help.txt"      "sql_tags_for_all.txt"
 "english_help.txt"    "sql_pages_by_tag.txt"  "sql_tags_for_page.txt"
-"jedi.inc"  "kylix.inc"  "ssdotnet.inc"  "ssfpc.inc"  "sslinux.inc"  "ssos2ws1.inc"  "ssposix.inc"  "sswin32.inc" "emoji_shortcodes.pas"
+"jedi.inc"  "kylix.inc"  "ssdotnet.inc"  "ssfpc.inc"  "sslinux.inc"  "ssos2ws1.inc"  "ssposix.inc"  "sswin32.inc" "emoji_shortcodes.pas" "func_str_composition.pas"
 
 )  # Исходные файлы
 
@@ -122,7 +122,8 @@ md5sums=('7041faa0de35c0ec237cabf095bd085f'
          'c099b491e2e79f5338efbebfaf1d6747'
          '9498ba86e80a41fba4c45d16ecaaa206'
          '41f1d440865016f6cc5572c2b6f2c87c'
-         'fa30aa0b1ff0ae4e7084d20532746729')
+         'fa30aa0b1ff0ae4e7084d20532746729'
+         '5af78eb2a77b5c82282dfdec2a6cf4ec')
 
 
 

@@ -102,6 +102,7 @@ pkgbase = htmlbuilder
 	source = ssposix.inc
 	source = sswin32.inc
 	source = emoji_shortcodes.pas
+	source = func_str_composition.pas
 	md5sums = 7041faa0de35c0ec237cabf095bd085f
 	md5sums = 4d842e008ba2889a1703447503b992e3
 	md5sums = cda97082278438d1d28676c2f1ee8d7e
@@ -196,5 +197,6 @@ pkgbase = htmlbuilder
 	md5sums = 9498ba86e80a41fba4c45d16ecaaa206
 	md5sums = 41f1d440865016f6cc5572c2b6f2c87c
 	md5sums = fa30aa0b1ff0ae4e7084d20532746729
+	md5sums = 5af78eb2a77b5c82282dfdec2a6cf4ec
 
 pkgname = htmlbuilder
