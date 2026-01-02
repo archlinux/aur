@@ -1,5 +1,5 @@
 pkgbase = evil-winrm-py
-	pkgdesc = The ultimate WinRM shell for hacking/pentesting.
+	pkgdesc = WinRM shell for Windows and Active Directory pentesting
 	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/adityatelange/evil-winrm-py
@@ -13,6 +13,7 @@ pkgbase = evil-winrm-py
 	depends = python-pypsrp
 	depends = python-prompt_toolkit
 	depends = python-tqdm
+	optdepends = python-kerberos: Kerberos authentication support
 	provides = evil-winrm-py
 	conflicts = evil-winrm-py
 	source = evil_winrm_py-1.5.0.tar.gz::https://files.pythonhosted.org/packages/d8/e6/0f39fbc92ce26afd0ce79acadbacc312c81f3d438d3bf625a03f1a01c474/evil_winrm_py-1.5.0.tar.gz
