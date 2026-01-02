@@ -3,7 +3,7 @@
 pkgname=portablemc-bin
 pkgver=5.0.0
 pkgrel=1
-pkgdesc='Lightweight cli launcher for minecraft on rust'
+pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
 arch=(x86_64)
 url='https://github.com/mindstorm38/portablemc'
 license=('Apache-2.0')
