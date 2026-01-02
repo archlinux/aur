@@ -2,20 +2,23 @@
 
 pkgname=godef
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Print where symbols are defined in Go source code.'
 arch=('x86_64')
 url="https://github.com/rogpeppe/godef"
 license=('BSD-3-Clause')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"${pkgname}-128.patch::${url}/pull/128.patch")
+	"${pkgname}-128.patch::${url}/pull/128.patch"
+	"${pkgname}-131.patch::${url}/pull/131.patch")
 sha256sums=('48a1680e9a7db28f19c4b5716402c615bbab454c769c28d9e373df75bde48b9c'
-            'dcaf6eb70f023ef46817d4bbda41f6972d991ce45429112f2868179a618d45d6')
+            'dcaf6eb70f023ef46817d4bbda41f6972d991ce45429112f2868179a618d45d6'
+            'b1619356fe3c851f98358e99c6a0288427d2416fba64916a43aa4192abdfb7c1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 < ../"${pkgname}-128.patch"
+	patch -p1 < ../"${pkgname}-131.patch"
 }
 
 build() {

@@ -1,14 +1,16 @@
 pkgbase = godef
 	pkgdesc = Print where symbols are defined in Go source code.
 	pkgver = 1.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rogpeppe/godef
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
 	source = godef-1.1.2.tar.gz::https://github.com/rogpeppe/godef/archive/v1.1.2.tar.gz
 	source = godef-128.patch::https://github.com/rogpeppe/godef/pull/128.patch
+	source = godef-131.patch::https://github.com/rogpeppe/godef/pull/131.patch
 	sha256sums = 48a1680e9a7db28f19c4b5716402c615bbab454c769c28d9e373df75bde48b9c
 	sha256sums = dcaf6eb70f023ef46817d4bbda41f6972d991ce45429112f2868179a618d45d6
+	sha256sums = b1619356fe3c851f98358e99c6a0288427d2416fba64916a43aa4192abdfb7c1
 
 pkgname = godef
