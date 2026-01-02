@@ -1,31 +1,39 @@
-# Maintainer: Leah Anderson <leah.anderson4435@proton.me>
+# Maintainer: konkitoman <open.issue.on@github.com>
+# Contributor: Leah Anderson <leah.anderson4435@proton.me>
 pkgname=theclicker
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Autoclicker coded in Rust for Wayland and X11"
 arch=('x86_64')
-url="https://crates.io/crates/theclicker"
+url="https://github.com/konkitoman/autoclicker"
 license=('MIT')
-depends=('gcc-libs' 'openssl' 'libxcb')
-makedepends=('cargo' 'python')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha512sums=('a73842dee5a1e0122712ddaac2946628fc4a4e03154d5b54afd15b8515bf7e45a59328dca1057419db5a23a5202c07cf77b7468073d0ffdfe8e7aa7538db0690')
+options=(!debug)
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target $(rustc --print host-tuple)
+}
 
 build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-  	export CARGO_TARGET_DIR=target
-  	cargo build --release
-	
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 check() {
 	cd "$pkgname-$pkgver"
-  	export RUSTUP_TOOLCHAIN=stable
-  	cargo test
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen
 }
 
 package() {
-	install -Dm 755 "$srcdir/$pkgname-$pkgver/target/release/theclicker" -t "$pkgdir/usr/bin"
- 	install -Dm 644 "$srcdir/$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
- 	install -Dm 644 "$srcdir/$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$pkgname-$pkgver"
+	install -vDm 755 -t "$pkgdir/usr/bin/" target/release/theclicker
+	install -vDm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -vDm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
