@@ -1,4 +1,5 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: imcb <irismessage@protonmail.com>
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname='neo-matrix'
 _name='neo'
