@@ -1,6 +1,6 @@
 # Maintainer: Leah Anderson <leah.anderson4435@proton.me>
 pkgname=theclicker
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Autoclicker coded in Rust for Wayland and X11"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl' 'libxcb')
 makedepends=('cargo' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('4166c237fa9189e36bfade5d7a38040b4ee8cf12349e701300f177ee9723d60202bddb41f00a36d8abbdfeff6f5f5caaac390194002c11e81f2b20ee0764142e')
+sha512sums=('a73842dee5a1e0122712ddaac2946628fc4a4e03154d5b54afd15b8515bf7e45a59328dca1057419db5a23a5202c07cf77b7468073d0ffdfe8e7aa7538db0690')
 
 build() {
 	cd "$pkgname-$pkgver"
