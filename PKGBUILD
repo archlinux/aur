@@ -6,29 +6,84 @@
 pkgname=magpie-wm
 _pkgname=magpie
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Budgie's X11 window manager and compositor library forked from Mutter"
-url="https://github.com/BuddiesOfBudgie/magpie"
 arch=(x86_64)
-license=(GPL)
-depends=(colord dconf gnome-desktop gnome-settings-daemon graphene gsettings-desktop-schemas
-         lcms2 libcanberra libgudev libinput libsm libxkbcommon-x11 libxkbfile mutter pipewire 
-         startup-notification)
-makedepends=(glib2-devel gobject-introspection meson sysprof xorg-server)
-source=("https://github.com/BuddiesOfBudgie/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.xz"{,.asc})
-b2sums=('9983a4e451e6f60ef1808906e57d164de79dbe9fe718529d02a06689dede9e3432f90061e0ae7ea1fe6ce775345b1f30a06cade5115208ef8e2584371f380df5'
-        'SKIP')
-validpgpkeys=("1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE" # David Mohammed <fossfreedom at ubuntu dot com>
-              "0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B") # Joshua Strobl <me at joshuastrobl dot com>
+url="https://github.com/BuddiesOfBudgie/magpie"
+license=(GPL-2.0-or-later)
+depends=(
+  at-spi2-core
+  cairo
+  colord
+  dconf
+  fontconfig
+  fribidi
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gnome-desktop
+  gnome-settings-daemon
+  graphene
+  gsettings-desktop-schemas
+  gtk3
+  json-glib
+  lcms2
+  libcanberra
+  libcolord
+  libdrm
+  libglvnd
+  libgudev
+  libice
+  libinput
+  libpipewire
+  libsm
+  libwacom
+  libx11
+  libxcb
+  libxcomposite
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxinerama
+  libxkbcommon
+  libxkbcommon-x11
+  libxkbfile
+  libxrandr
+  libxtst
+  mesa
+  mutter
+  pango
+  pipewire
+  startup-notification
+  systemd-libs
+)
+makedepends=(
+  git
+  glib2-devel
+  gobject-introspection
+  meson
+  sysprof
+  xorg-server
+)
+source=("git+https://github.com/BuddiesOfBudgie/magpie.git#tag=v$pkgver")
+b2sums=(0090c17fdb6ee57892c45ca333c9d4e914e796e70c5dd3c17141b7e4b614994d422a25cb48e47b5a5219cfeafaed35d8748b367b0c36d5ecb10cf1ee0106f74e)
+validpgpkeys=(
+  1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE # David Mohammed <fossfreedom at ubuntu dot com>
+  0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B # Joshua Strobl <me at joshuastrobl dot com>
+)
 
 build() {
-    CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
-    LDFLAGS+=" -Wl,-Bsymbolic-functions"
+  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
+  LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-    arch-meson "${_pkgname}-$pkgver" build -Degl_device=true
-    meson compile -C build
+  arch-meson $_pkgname build \
+    -D egl_device=true
+  meson compile -C build
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
