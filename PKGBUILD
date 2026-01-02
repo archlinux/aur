@@ -1,13 +1,13 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_friction_docs_commit=ff53ffec5ae6ca10dd8605577ba8545590b77f15
-_friction_icon_theme_commit=7d4585ffbe9540fe39a2d63c95c743e3d4ce3881
-_gn_commit=82d673acb802cee21534c796a59f8cdf26500f53
+_friction_docs_commit=55d538038c39a16af3d9625606c541fa5a23bd5b
+_friction_icon_theme_commit=867bf64575aa2eb31fd837c6541be54d00e68c24
+_gn_commit=70a9617aad7c09642457b6296d35638b97375dad
 _gperftools_commit=b97c293c812c7ec3cdeccd50a89769e746c01377
-_skia_commit=4e897d0bec0ee279f77320db76f89e47eb60b7e4
+_skia_commit=c30d2c4f604a9b65a98e847ba008ac6e1a936eda
 
 pkgname=friction
-pkgver=1.0.0_rc.2
+pkgver=1.0.0_rc.3
 _pkgver=${pkgver/_/-}
 pkgrel=1
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("$pkgname-$_pkgver.tar.gz::$_url_github/$pkgname/archive/refs/tags/v${_p
         "gn-$_gn_commit.tar.gz::$_url_github/gn/archive/$_gn_commit.tar.gz"
         "gperftools-$_gperftools_commit.tar.gz::$_url_github/gperftools/archive/$_gperftools_commit.tar.gz"
         "skia-$_skia_commit.tar.gz::$_url_github/skia/archive/$_skia_commit.tar.gz")
-b2sums=('9dab6341ebb6bf7f1095db60956bfcae6bf3fd0418bdecaf1ff005b1c7ecf69c6c39cedddab1ae255308125c3e4f27f502a3d44c211dedf154b5dcbe151f19bd'
+b2sums=('178ffff866e6b03761a885026d374943e3a12666d077535d7640d6e5b59244087680d18a429ea0676bf0e67bb047fa423e0b14162b045fd120beeac20f108fa5'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -38,9 +38,9 @@ prepare() {
   tar -xzf "gperftools-$_gperftools_commit.tar.gz" --strip 1 \
       -C   "$pkgname-$_pkgver/src/gperftools"
   tar -xzf "skia-$_skia_commit.tar.gz" --strip 1 \
-      -C   "$pkgname-$_pkgver/src/engine/skia"
+      -C   "$pkgname-$_pkgver/src/skia"
   tar -xzf "gn-$_gn_commit.tar.gz" --strip 1 \
-      -C   "$pkgname-$_pkgver/src/engine/skia/gn-src"
+      -C   "$pkgname-$_pkgver/src/skia/gn-src"
 
   # Disabling LTO in gperftools build
   # Required to create static library
