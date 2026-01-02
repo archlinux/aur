@@ -5,7 +5,7 @@ _pkgname=patchy
 pkgname=${_pkgname}-bin
 pkgdesc="A CLI for generating and applying patches to git repositories"
 
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,9 +28,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.tar.gz")
 sha256sums=('5037e2e281dc4311edd18487a9ccc0c0540a5b21ba513f6b3f1763b609a8e554'
-            'a73a99984b77548351b94016dc7457f2b4dc7116f0f6d37e4c28f28b3dfbd4e1')
-sha256sums_x86_64=('311843f140a506ea1aae8d5c21781e7fc1e73542b6de5e6d5bf36f78c3ba9707')
-sha256sums_aarch64=('ad99d0168f234f12645f0888a1b7f09abbe36bcb00bf18e9105438676cec1f46')
+            '6e3c52b8dc7cd39aa9955ef583e8e605e3ef8af3563e55823a774e1631641edf')
+sha256sums_x86_64=('f0a2e2e8afc0322c663d911fe5f9e3cf1f45db59181ebd912312107c4a86f153')
+sha256sums_aarch64=('8555ee0db303f000e9adbe4b35a6ff928a5a3c1bb5aeb31137ba38f58d45d103')
 
 
 case ${CARCH} in
