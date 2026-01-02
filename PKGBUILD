@@ -10,8 +10,7 @@ pkgdesc="A CLI for generating and applying patches to git repositories"
 pkgver=${_npmver}
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/coderaiser/cloudcmd"
-_urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
+url="https://github.com/richardgill/patchy"
 license=("MIT")
 
 depends=("glibc" "nodejs")
