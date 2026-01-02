@@ -1,3 +1,4 @@
 [proton-mail]
-source = "cmd"
-cmd = "curl -s 'https://api.github.com/repos/ProtonMail/WebClients/branches' | jq -r '.[].name' | grep '^release/inbox-desktop@' | sed 's/release\\/inbox-desktop@//' | sort -V | tail -1"
+source = 'jq'
+url = 'https://proton.me/download/mail/linux/version.json'
+filter = '.Releases[] | select(.CategoryName=="Stable") | .Version'
