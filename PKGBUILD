@@ -2,13 +2,13 @@
 _name=portion
 pkgname="python-$_name"
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library providing data structure and operations for intervals'
 url="https://github.com/AlexandreDecan/$_name"
 license=(LGPL-3.0-or-later)
 arch=(any)
 depends=(python python-sortedcontainers)
-makedepends=(python-setuptools python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-hatch)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
 sha256sums=('39daaf6eb8e56528db2a1b9990f786b4cb87c6e6f2d7f97029429bb6e408e60e')
 
