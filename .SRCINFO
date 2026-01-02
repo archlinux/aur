@@ -9,6 +9,6 @@ pkgbase = termilyon
 	depends = gtk4
 	depends = vte4
 	source = termilyon-0.1.0.tar.gz::https://github.com/alikaya/termilyon/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8fc08a20596880899b1459b019bfba859a91c3ed551fa525451efd3f90746e0f
+	sha256sums = 13f2cd66d7a78d09b113aaf85a72b497670e43b08e903fefbc11da799b31059a
 
 pkgname = termilyon
