@@ -1,4 +1,5 @@
 config.env
+LICENSE
 pocket-id
 pocket-id-bin*
 pkg/
