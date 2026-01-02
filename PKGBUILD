@@ -14,12 +14,11 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-  # ВАЖНО: папка после клонирования будет называться mmntfetch
-  cd "$srcdir/mmntfetch"
-  g++ -O3 mfetch.cpp -o mfetch
+  cd "$srcdir/$_pkgname"
+  g++ mfetch.cpp -o mamofetch
 }
 
 package() {
-  cd "$srcdir/mmntfetch"
-  install -Dm755 mfetch "$pkgdir/usr/bin/mfetch"
+  cd "$srcdir/$_pkgname"
+  install -Dm755 mamofetch "${pkgdir}/usr/bin/mamofetch"
 }
