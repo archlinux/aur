@@ -1,0 +1,8 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.*
+dcli-arch/
+
+# Temporary files
+*.log

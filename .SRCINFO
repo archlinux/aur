@@ -1,0 +1,22 @@
+pkgbase = dcli-arch-git
+	pkgdesc = A declarative package management CLI tool for Arch Linux, inspired by NixOS
+	pkgver = 0.1.0.r99.571cb85
+	pkgrel = 1
+	url = https://gitlab.com/theblackdon/dcli
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	makedepends = cargo
+	makedepends = git
+	optdepends = fzf: for interactive TUI features
+	optdepends = paru: AUR helper support
+	optdepends = yay: AUR helper support (alternative to paru)
+	optdepends = timeshift: snapshot/backup functionality
+	optdepends = snapper: snapshot/backup functionality (alternative to timeshift)
+	provides = dcli
+	conflicts = dcli
+	conflicts = dcli-bin
+	source = dcli-arch::git+https://gitlab.com/theblackdon/dcli.git
+	sha256sums = SKIP
+
+pkgname = dcli-arch-git
