@@ -1,0 +1,5 @@
+[neo-matrix]
+source = "github"
+github = "st3w/neo"
+use_latest_release = true
+prefix = "v"

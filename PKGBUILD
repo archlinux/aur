@@ -2,7 +2,7 @@
 
 pkgname='neo-matrix'
 _name='neo'
-pkgver='0.6.1'
+pkgver=0.6.1
 pkgrel=3
 pkgdesc='Simulates the digital rain from "The Matrix"'
 arch=('x86_64')
