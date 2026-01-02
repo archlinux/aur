@@ -1,6 +1,6 @@
 pkgbase = python-sqlit-tui
 	pkgdesc = The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more
-	pkgver = 1.2
+	pkgver = 1.2.0.1
 	pkgrel = 1
 	url = https://github.com/Maxteabag/sqlit
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-sqlit-tui
 	optdepends = python-snowflake-connector-python: Snowflake support
 	optdepends = python-paramiko: SSH tunnel support
 	optdepends = python-sshtunnel: SSH tunnel support
-	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.2.tar.gz
-	sha256sums = 8bde7ff9b3213a2fb13c8d7426e023a89a425f14e3f082e4a137314f6f2e5e5b
+	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.2.0.1.tar.gz
+	sha256sums = 044d304572e4e1ef7139caa52ea7b5f4d058d29bc6b86e04fa7121375db7e99c
 
 pkgname = python-sqlit-tui
