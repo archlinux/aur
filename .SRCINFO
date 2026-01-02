@@ -1,16 +1,13 @@
 pkgbase = scx-openrc
 	pkgdesc = OpenRC init script for scx-scheds
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://aur.archlinux.org/pkgbase/scx-openrc
 	arch = any
 	license = GPL2
 	depends = openrc
 	depends = scx-tools
-	backup = etc/conf.d/scx
 	source = scx
-	source = scx-conf.d
-	sha256sums = 8374e55e7a0eb57ec046a9042d879b9d071532b05c8bff1253f60e18674a2fba
-	sha256sums = 71887a9a941785d141b4db0afbea1311ab04b254ba7dfdbbe170f43e4aca3043
+	sha256sums = a395965ba8bfc651c4d653490eb6261b577ec4827f40a6c83fe379752bec4bad
 
 pkgname = scx-openrc
