@@ -4,44 +4,31 @@
 # It builds ginkgo-cli and installs the user service + man pages.
 
 pkgname=ginkgo-cli
-pkgver=0.0.0.r0.g0000000
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Local-first journaling CLI with daemon, search, and sync"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iMithrellas/GinkGo"
 license=('WTFPL')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 keywords=('journal' 'notes' 'cli' 'tui' 'jrnl')
 optdepends=(
   'systemd: user service for ginkgod'
 )
 
-source=(
-  "ginkgo::git+https://github.com/iMithrellas/GinkGo.git"
-  "bubbles::git+https://github.com/iMithrellas/bubbles.git"
-)
-sha256sums=(
-  'SKIP'
-)
-
-pkgver() {
-  cd "$srcdir/ginkgo"
-  git describe --tags --long --always | sed 's/^v//; s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/ginkgo"
-}
+source=("https://github.com/iMithrellas/GinkGo/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/ginkgo"
+  cd "$srcdir/GinkGo-$pkgver"
   export CGO_ENABLED=0
   go build -trimpath -ldflags "-s -w" -o build/ginkgo-cli ./cmd/ginkgo-cli
 }
 
 package() {
-  cd "$srcdir/ginkgo"
+  cd "$srcdir/GinkGo-$pkgver"
+
   # Install binaries (ginkgod is a symlink to ginkgo-cli).
   install -Dm755 build/ginkgo-cli "$pkgdir/usr/bin/ginkgo-cli"
   ln -sf ginkgo-cli "$pkgdir/usr/bin/ginkgod"
