@@ -1,7 +1,7 @@
 # Maintainer: Ali <avileli@outlook.com>
 
 pkgname=termilyon
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GTK4+VTE tabbed terminal emulator"
 arch=('x86_64')

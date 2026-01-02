@@ -1,6 +1,6 @@
 pkgbase = termilyon
 	pkgdesc = GTK4+VTE tabbed terminal emulator
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/alikaya/termilyon
 	arch = x86_64
