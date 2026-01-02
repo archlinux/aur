@@ -1,13 +1,13 @@
 pkgbase = rucola-notes-bin
 	pkgdesc = Terminal-based markdown note manager.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/Linus-Mussmaecher/rucola
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = rucola-notes
 	conflicts = rucola-notes
-	source = https://github.com/Linus-Mussmaecher/rucola/releases/download/v0.8.1/rucola-notes-0.8.1-x86_64.tar.gz
-	sha256sums = 5e17788c40ecffdf68cc768ff287f2d83b4ec9a3432aa6c9d024ea015deb138d
+	source = https://github.com/Linus-Mussmaecher/rucola/releases/download/v0.8.2/rucola-notes-0.8.2-x86_64.tar.gz
+	sha256sums = c3b4e44c5c84b86268143776778278cd38b4b092162959a429e6b54833525f93
 
 pkgname = rucola-notes-bin
