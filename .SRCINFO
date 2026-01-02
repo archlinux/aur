@@ -2,6 +2,7 @@ pkgbase = deskedit-kernel++-beta
 	pkgdesc = The beta release of Deskedit Kernel++
 	pkgver = 0.2.1.fix
 	pkgrel = 0
+	url = https://github.com/DESKEDIT/Kernel-Plus-Plus.git
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = base-devel
