@@ -1,10 +1,14 @@
 pkgbase = python-anyconfig-configobj-backend
 	pkgdesc = Backend module for python-anyconfig to load and dump ConfigObj data
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssato/python-anyconfig-configobj-backend
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-anyconfig
 	depends = python-configobj
 	source = https://files.pythonhosted.org/packages/source/a/anyconfig-configobj-backend/anyconfig-configobj-backend-0.3.0.tar.gz
