@@ -15,7 +15,7 @@ pkgbase = termix-bin
 	source = termix.desktop
 	source = termix.png
 	sha256sums = cbb1ac1ee67792b94a92e702ee09cfe8d3f61bb7b97d616fa4847395461b8c02
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = e7e212579407ecb581d2c22ef115fbbe4b2a0b07781515cd714a2499904e4623
+	sha256sums = 028538b18db920510c0f52887c897ca7f2d753be1bbe675e87cd9710c5081086
 
 pkgname = termix-bin
