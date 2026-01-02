@@ -1,0 +1,22 @@
+pkgbase = patchy-bin
+	pkgdesc = A CLI for generating and applying patches to git repositories
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/richardgill/patchy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = patchy
+	conflicts = patchy
+	options = !strip
+	source = LICENSE-0.0.24::https://raw.githubusercontent.com/richardgill/patchy/v0.0.24/LICENSE
+	source = README-0.0.24.md::https://raw.githubusercontent.com/richardgill/patchy/v0.0.24/README.md
+	sha256sums = 5037e2e281dc4311edd18487a9ccc0c0540a5b21ba513f6b3f1763b609a8e554
+	sha256sums = a73a99984b77548351b94016dc7457f2b4dc7116f0f6d37e4c28f28b3dfbd4e1
+	source_x86_64 = patchy-x86_64-0.0.24.tgz::https://github.com/richardgill/patchy/releases/download/v0.0.24/patchy-linux-x64.tar.gz
+	sha256sums_x86_64 = 311843f140a506ea1aae8d5c21781e7fc1e73542b6de5e6d5bf36f78c3ba9707
+	source_aarch64 = patchy-aarch64-0.0.24.tgz::https://github.com/richardgill/patchy/releases/download/v0.0.24/patchy-linux-arm64.tar.gz
+	sha256sums_aarch64 = ad99d0168f234f12645f0888a1b7f09abbe36bcb00bf18e9105438676cec1f46
+
+pkgname = patchy-bin

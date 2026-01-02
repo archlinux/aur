@@ -1,0 +1,5 @@
+[patchy-bin]
+source = "github"
+github = "richardgill/patchy"
+use_latest_release = true
+prefix = "v"
