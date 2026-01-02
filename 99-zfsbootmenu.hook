@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = zfs-dkms*
+Target = zfs-linux*
+
+[Action]
+Description = Regenerate ZFSBootMenu image after ZFS module upgrade
+When = PostTransaction
+Exec = /usr/bin/generate-zbm
