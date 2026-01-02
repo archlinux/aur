@@ -2,7 +2,7 @@
 
 pkgname=commitlint-config-conventional
 _pkgname=@commitlint/config-conventional
-pkgver=20.2.0
+pkgver=20.3.0
 pkgrel=1
 pkgdesc="Commitlint config enforcing conventional commits"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 makedepends=(npm)
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/config-conventional-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('fee72b08742ae14c7238f3a25a78a6c29b53be2d52e4684b043a0a10f4e96653')
+sha256sums=('ae4244eed6783a69b24b28ddd28a5f982632e87b888edf3cfdfcf5cc4c3d80e0')
 
 package() {
   npm install -g \
