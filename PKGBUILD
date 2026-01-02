@@ -1,13 +1,13 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.5.4.r57.g9a78bf9
+pkgver=2.5.4.r143.g95bc67f
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-svg' 'libnotify')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-svg' 'libnotify' 'hunspell')
 makedepends=('git' 'boost' 'cmake' 'rapidjson')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
@@ -85,6 +85,7 @@ build() {
         -DUSE_PRECOMPILED_HEADERS=OFF \
         -DCHATTERINO_UPDATER=OFF \
         -DSKIP_JSON_GENERATION=ON \
+        -DCHATTERINO_SPELLCHECK=ON \
         "${flags[@]}" \
         ..
     cmake --build .
