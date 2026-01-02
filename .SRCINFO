@@ -15,9 +15,6 @@ pkgbase = vkbasalt-overlay-git
 	depends = libx11
 	depends = libxi
 	optdepends = reshade-shaders-git
-	provides = vkbasalt
-	conflicts = vkbasalt
-	conflicts = vkbasalt-git
 	source = vkbasalt-overlay-git::git+https://github.com/Boux/vkBasalt_overlay.git
 	sha256sums = SKIP
 
