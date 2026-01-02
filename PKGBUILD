@@ -3,12 +3,11 @@
 _reponame=SpaghettiKart
 _torch_commit=5773373b3620e4a6bc6c92fdc4690d66741c086d
 _lus_commit=5e33d3e7cd0396f847923cd6c471eaf324e90351
-_sdl_gcdb_commit=dce2d3593c6a96a57716d13d58aa3b1d4965fe6f  # This needs to be updated on every package release
+_sdl_gcdb_commit=5e686a3e781937e7f43138440a032f47140d0624  # This needs to be updated on every package release
 
 pkgname=spaghettikart
 pkgver=0.9.9.1
-_vertag=Latest2
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial native port of Mario Kart 64"
 license=("unknown" "MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -16,8 +15,7 @@ url="https://github.com/HarbourMasters/${_reponame}"
 depends=("sdl2" "sdl2_net" "zenity" "libogg" "libvorbis" "libzip" "tinyxml2" "fmt" "spdlog")
 makedepends=("git" "cmake" "ninja" "nlohmann-json")  # nlohmann-json is set as required on LUS's CMakeLists.txt but not dynamic linked
 install="spaghettikart.install"
-source=(#"${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
-        "${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${_vertag}.tar.gz"  # Tag should have been in a version format
+source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
         "Torch-${_torch_commit:0:8}.tar.gz::https://github.com/HarbourMasters/Torch/archive/${_torch_commit}.tar.gz"
         "libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
         "https://github.com/mdqinc/SDL_GameControllerDB/raw/${_sdl_gcdb_commit}/gamecontrollerdb.txt"
@@ -25,7 +23,7 @@ source=(#"${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_re
         "lus-save-file-path.patch::https://github.com/Kenix3/libultraship/pull/908.patch"
         "spaghettikart-non-portable-fix.patch"
         "spaghettikart.desktop")
-sha256sums=('5c3e79f8440f65c0f36270a781f26f9b83ecd58de2e414c68b4bb0a057707d69'
+sha256sums=('034156f3ee600b0a9087c9c474ce7b8e0830627deb78488f78ce26dbb31655a5'
             'c4809596a77415d7376691aa80bdee601b358613a196ad6cf59fdf4185c03227'
             '40691d2f05679d6c96a33bb8382fd0f4ca09d2c932532aa1aa51de3df635eeb4'
             'a401e7784adb216419677d401b14f2c8b1b3247d00e35f617ea5900da3ea409e'
@@ -48,7 +46,7 @@ _is_debug() {
 
 
 prepare() {
-  cd "${srcdir}/${_reponame}-${_vertag}"
+  cd "${srcdir}/${_reponame}-${pkgver}"
 
   rm -r libultraship torch
   cp -r ../libultraship-${_lus_commit} libultraship
@@ -64,7 +62,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_reponame}-${_vertag}"
+  cd "${srcdir}/${_reponame}-${pkgver}"
 
   if _is_debug; then
     BUILD_TYPE=RelWithDebInfo
@@ -86,7 +84,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_reponame}-${_vertag}"
+  cd "${srcdir}/${_reponame}-${pkgver}"
 
   # Create Directories
   install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
