@@ -1,8 +1,8 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprfocus' 'hyprland-plugin-hyprscrolling' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap' 'hyprland-plugin-xtra-dispatchers')
 pkgbase='hyprland-plugins'
-pkgver='0.53.0'
-pkgrel=2
+pkgver='0.53.1'
+pkgrel=1
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64')
 url='https://github.com/hyprwm/hyprland-plugins'
