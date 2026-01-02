@@ -1,0 +1,16 @@
+pkgbase = gastown-git
+	pkgdesc = Multi-agent orchestrator for Claude Code instances
+	pkgver = r2076.ae61d98
+	pkgrel = 1
+	url = https://github.com/steveyegge/gastown
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.24
+	makedepends = git
+	depends = glibc
+	provides = gastown
+	conflicts = gastown
+	source = gastown-git::git+https://github.com/steveyegge/gastown.git
+	sha256sums = SKIP
+
+pkgname = gastown-git
