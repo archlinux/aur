@@ -27,16 +27,17 @@ package() {
     chmod +x "CA-Racing-${_realver}-setup.run"
     
     # Manual extraction (since the installer requires root)
-    # Extract the archive part
+    # Extract the archive part into a temporary directory
+    mkdir -p extracted
     ARCHIVE_LINE=$(awk '/^__ARCHIVE_BELOW__/ {print NR + 1; exit 0; }' "CA-Racing-${_realver}-setup.run")
-    tail -n +${ARCHIVE_LINE} "CA-Racing-${_realver}-setup.run" | tar -xz
+    tail -n +${ARCHIVE_LINE} "CA-Racing-${_realver}-setup.run" | tar -xz -C extracted
     
     # Install files
-    cp -r files/* "${pkgdir}/opt/ca-racing/"
+    cp -r extracted/* "${pkgdir}/opt/ca-racing/"
     chmod +x "${pkgdir}/opt/ca-racing/CA-Racing"
     
     # Install icon
-    install -Dm644 "files/ca-racing.png" \
+    install -Dm644 "extracted/icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/ca-racing.png"
     
     # Install desktop file
