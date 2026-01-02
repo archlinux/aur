@@ -27,9 +27,9 @@ build() {
     local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr -DBETTERBLUR_X11=OFF)
 
     cmake "${_cmake_args[@]}" -B build -S "$pkgname"
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+    DESTDIR="${pkgdir}" cmake --install build
 }
