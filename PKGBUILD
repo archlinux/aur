@@ -1,6 +1,6 @@
 # Maintainer: Boux
 pkgname=vkbasalt-overlay-git
-pkgver=r532.e14343a
+pkgver=r629.ca0f13b
 pkgrel=1
 pkgdesc="Vulkan post-processing layer with in-game ImGui overlay for real-time effect configuration"
 arch=('x86_64')
