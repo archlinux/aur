@@ -7,8 +7,9 @@ Type=simple
 User=homepage
 Group=homepage
 WorkingDirectory=/var/lib/homepage
-# Uses pnpm start to launch the standard build
-ExecStart=/usr/bin/pnpm start
+# OPTIMIZED: We run the standalone server directly with Node
+# This removes the need for pnpm and the massive node_modules folder
+ExecStart=/usr/bin/node server.js
 Restart=always
 Environment=NODE_ENV=production
 Environment=PORT=3000
