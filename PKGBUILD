@@ -1,7 +1,7 @@
 # Maintainer: Artyom Nazarov <artnazarov@vk.com>
 pkgname=htmlbuilder
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.2
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 depends=('lazarus' 'qt5pas' 'gtk2' 'fpc' )  # Зависимости
@@ -29,8 +29,8 @@ source=("htmlbuilder.lpi" "htmlbuilder.lpr" "htmlbuilder.install" "asn1util.pas"
 install=htmlbuilder.install
 
 
-md5sums=('2f3b9d098de560079e9b51ea24e3fedf'
-         'd5afd932dc498e4a61eec56a5379be3d'
+md5sums=('7041faa0de35c0ec237cabf095bd085f'
+         '4d842e008ba2889a1703447503b992e3'
          'cda97082278438d1d28676c2f1ee8d7e'
          'c89a7ac8ed19cb6d1e9a51816dde38ad'
          '5f96e60bfab29dac681ff47a8be57006'
@@ -73,7 +73,7 @@ md5sums=('2f3b9d098de560079e9b51ea24e3fedf'
          '599206d42781616af78e7dee7b323c64'
          'cd29a7b79c89685b1c99a0b55efe34ac'
          '2b9d95d258a9c9f30f9bd495d665fc58'
-         '36a901c4ff645a1b9282e9e1e2d244dc'
+         'f8cb9cbad329d88d3626e9530014cd4a'
          'e28a16c66e25c2a7072c513409fc1bf6'
          '687fc3141f7043aaf7914e0a6d32583c'
          'acd7183bfa438f1c2539ce569a36bbc4'
@@ -86,7 +86,7 @@ md5sums=('2f3b9d098de560079e9b51ea24e3fedf'
          '6098aafd58075e8685f440d5c4b2016e'
          'bf613c8887a22676c43bb15a4b652811'
          '39ab26992b984064131afd074554f91b'
-         '6189886da921415eabd46f59aa3f5dfc'
+         '00573dcd4d442a4a98bc80fa4e9da05f'
          'ccb58b9b1ca76cd37351c3c654435508'
          'ca3f89223869483ecee50078130a4c3e'
          '3518cfb11c4666a2bc21f0c761034073'
@@ -100,7 +100,7 @@ md5sums=('2f3b9d098de560079e9b51ea24e3fedf'
          'd0ea051c0ee706a76d5f56348d142608'
          '4e23721eaea7b3a570f8174b9165a89e'
          'a08c6886c7c6a31535f84946920bb85a'
-         'e4422173402af954a12ba4d363c0a72d'
+         '01d4537d4af5ad8aee0dc215b6bfd9cf'
          '6fe56f64b02c9e5b2bef92e89c02d1e3'
          '44ffd55f76807ed263eb16e0e0a7bbb7'
          '2baf2b3f48eb06ef9b27fc30b14868d8'
