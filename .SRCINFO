@@ -1,12 +1,13 @@
 pkgbase = box64-git
 	pkgdesc = Linux Userspace x86_64 Emulator with a twist
-	pkgver = 0.3.0.r402.g2d0b6089
-	pkgrel = 2
+	pkgver = 0.3.8.r458.g0254fbdd8
+	pkgrel = 1
 	url = https://github.com/ptitSeb/box64
 	install = box64-git.install
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
+	arch = powerpc64le
 	license = MIT
 	makedepends = git
 	makedepends = cmake

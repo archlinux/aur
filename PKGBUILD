@@ -2,10 +2,10 @@
 
 _pkgname=box64
 pkgname=${_pkgname}-git
-pkgver=0.3.8.r107.g1a552f210
+pkgver=0.3.8.r458.g0254fbdd8
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=('x86_64' 'aarch64' 'riscv64' 'powerpc64le')
 url='https://github.com/ptitSeb/box64'
 license=('MIT')
 install="box64-git.install"
@@ -27,22 +27,43 @@ pkgver() {
 
 build() {
     cd ${_pkgname}
-    if [[ $CARCH == "aarch64" ]]; then 
+    if [[ $CARCH == "aarch64" ]]; then
+        if [ -n "$(echo $name | grep RK3588)" ]; then
+              exargs="-DRK3588=1"
+        elif [ -n "$(echo $name | grep RK3399)" ]; then
+              exargs="-DRK3399=1"
+        elif [ -n "$(echo $name | grep 'Cortex-A53')" ]; then
+              exargs="-DRPI3ARM64=1"
+        elif [ -n "$(echo $name | grep 'Cortex-A72')" ]; then
+              exargs="-DRPI4ARM64=1"
+        elif [ -n "$(echo $name | grep 'Cortex-A76')" ]; then
+              exargs="-DRPI5ARM64=1"
+        fi
         cmake -B build -S . \
+              -DBOX32=ON \
+              -DBOX32_BINFMT=ON \
               -DARM_DYNAREC=ON \
-              -DBOX32=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "x86_64" ]]; then
         cmake -B build -S . \
+              -DBOX32=ON \
+              -DBOX32_BINFMT=ON \
               -DLD80BITS=1 -DNOALIGN=1 \
-              -DBOX32=1 \
+              -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+              -DCMAKE_INSTALL_PREFIX=/usr
+    elif [[ $CARCH == "powerpc64le" ]]; then
+        cmake -B build -S . \
+              -DBOX32=ON \
+              -DBOX32_BINFMT=ON \
+              -DPPC64LE=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "riscv64" ]]; then
         cmake -B build -S . \
+              -DBOX32=ON \
+              -DBOX32_BINFMT=ON \
               -DRV64=1 \
-              -DBOX32=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     fi
@@ -55,6 +76,8 @@ package() {
       make DESTDIR=${pkgdir} install
     elif [[ $CARCH == "x86_64" ]]; then
       install -Dm755 box64 -t "${pkgdir}/usr/bin/"
+    elif [[ $CARCH == "powerpc64le" ]]; then
+      make DESTDIR=${pkgdir} install
     elif [[ $CARCH == "riscv64" ]]; then
       make DESTDIR=${pkgdir} install
     fi
