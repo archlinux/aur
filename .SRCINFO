@@ -1,0 +1,24 @@
+pkgbase = dae-next-git
+	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF.
+	pkgver = 1.0.0.r885.g3942dff
+	pkgrel = 1
+	url = https://github.com/LostAttractor/dae
+	install = dae.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = clang
+	makedepends = go
+	makedepends = git
+	makedepends = jq
+	depends = glibc
+	depends = v2ray-geoip
+	depends = v2ray-domain-list-community
+	provides = dae-next
+	conflicts = dae
+	source = git+https://github.com/LostAttractor/dae.git
+	source = git+https://github.com/LostAttractor/outbound.git#branch=next
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dae-next-git
