@@ -1,20 +1,21 @@
-## Gateway adjustments
+## Command rework
 
-The SSH gateway setting has been adjusted again to be more clear on what it does. The documentation has also been updated. The default value has also been reverted to use gateway tunnels instead of ProxyJump again as gateway tunnels turn out to still work better than jump servers.
+The custom command entries that you can create at `New` -> `Command` have been completely reworked. You can now create runnable commands / scripts to be run in a terminal or in the background without having to depend on creating scripts.
 
-![Gateway choice](https://xpipe.io/assets/images/BlogPage/gateway-choice.png)
+## Remote SSH configs
 
-Furthermore, various fixes have been implemented for SSH gateways and EC2 gateways.
+This update adds back support for SSH configs located on a remote system. You can now add entries from the config file by searching for available connections on the remote system.
 
-## Changes
+## Network scan
 
-- Add support for passbolt
-- Add proper connection dropdown in Windows SSH settings for X11 forward WSL instance
-- Format key passphrase prompts to not include the full file path to be shorter
+The network scan has been improved. You can now also explicitly select detected systems even when there was no listening server running on them. Furthermore, the check whether an SSH server is listening it has been improved as there were a few false negatives.
+
+The names and location of SSH connections in the creation menu have been updated. There is now no longer a simple SSH connection but instead just an SSH connection.
 
 ## Fixes
 
-- Fix disable TLS setting for HTTP requests not applying properly
-- Fix various NullPointers
-- Fix occasional application freeze due to deadlock
+- Fix the autoupdater on Windows not fully updating all necessary files in some circumstances
+- Fix website open action in the webtop container not returning and greying out entries
+- Fix terminal tracker not tracking all terminal sessions properly, leading to some inconsistencies
+- Fix WezTerm on Windows not being focused when a new tab is opened
 - Fix various typos
