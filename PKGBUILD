@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=r556.d06e79c
+pkgver=r568.5494bf1
 pkgrel=1
 pkgdesc='An implementation of troff typesetting system in C programming language.'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("$pkgname::git+https://github.com/aligrudi/neatroff"
         'http://dev.rudi.ir/neatroff.pdf')
 md5sums=('SKIP'
          'SKIP'
-         'ada01d6183f58aeddd7c95a341f0de85')
+         '1e0c494991fcaa6a9acb74297d5cb526')
 
 ## FONTS directory
 FDIR=/usr/share/neatroff/font

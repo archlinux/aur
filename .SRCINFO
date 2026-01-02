@@ -1,6 +1,6 @@
 pkgbase = neatroff-git
 	pkgdesc = An implementation of troff typesetting system in C programming language.
-	pkgver = r556.d06e79c
+	pkgver = r568.5494bf1
 	pkgrel = 1
 	url = http://dev.rudi.ir/
 	arch = i686
@@ -21,6 +21,6 @@ pkgbase = neatroff-git
 	source = http://dev.rudi.ir/neatroff.pdf
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = ada01d6183f58aeddd7c95a341f0de85
+	md5sums = 1e0c494991fcaa6a9acb74297d5cb526
 
 pkgname = neatroff-git
