@@ -1,6 +1,6 @@
 pkgbase=qtcreator-patches
 pkgname=(qtcreator-patches qtcreator-devel-patches)
-pkgver=18.0.1
+pkgver=18.0.2
 _commit=18.0
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
