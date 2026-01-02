@@ -1,0 +1,12 @@
+pkgbase = hipify-perl
+	pkgdesc = A perl-based script that heavily uses regular expressions, that is automatically generated from hipify-clang.
+	pkgver = 7.1.1
+	pkgrel = 1
+	url = https://github.com/ROCm/HIPIFY
+	arch = any
+	license = MIT
+	depends = perl
+	source = https://github.com/ROCm/HIPIFY/raw/refs/tags/rocm-7.1.1/bin/hipify-perl
+	sha256sums = 7f27e200b3523d8ffd268df7770e1f2c86dcfd34d7562539c12c74dc0055c279
+
+pkgname = hipify-perl
