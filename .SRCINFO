@@ -1,7 +1,7 @@
 pkgbase = tac-writer
 	pkgdesc = Academic writing assistant using the Continuous Argumentation Technique (CAT)
-	pkgver = 25.12.19
-	pkgrel = 1123
+	pkgver = 26.01.02
+	pkgrel = 1331
 	url = https://github.com/narayanls/tac-writer
 	arch = any
 	license = MIT
