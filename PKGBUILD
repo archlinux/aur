@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui-bin'
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops (prebuilt binaries)'
 url='https://github.com/jmylchreest/histui'
@@ -13,11 +13,12 @@ conflicts=('histui')
 
 _github_url="https://github.com/jmylchreest/histui"
 
-# Common sources (systemd units, license)
+# Common sources (systemd units, license, example config)
 source=(
     "histuid.service::${_github_url}/releases/download/v${pkgver}/histuid.service"
     "histuid-monitor.service::${_github_url}/releases/download/v${pkgver}/histuid-monitor.service"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jmylchreest/histui/v${pkgver}/LICENSE"
+    "histuid.toml.example::https://raw.githubusercontent.com/jmylchreest/histui/v${pkgver}/docs/static/examples/histuid.toml"
 )
 
 # Architecture-specific binary sources
@@ -30,9 +31,9 @@ source_aarch64=(
     "histuid-${pkgver}-aarch64::${_github_url}/releases/download/v${pkgver}/histuid-linux-arm64"
 )
 
-sha256sums=('8ff243f94c8ce063629e32cee0d83eed31046dcf6470edb040276cba7d53c501' 'c1e549369c37b9f8423c02e25a12946a455c953b19615b8f000f221728975429' '5c226038c1c603adb4bc657ab8b47050d1db63a4da171b610f76f3a18fe31d2c')
-sha256sums_x86_64=('7facd697d188fb8c2d53242a70816644bef1f8b96bbef2835df323d54cb60e94' '9cd203c0ba40ba680dc8d6ee8c8454c227bae2341f44883ba47ee41a78868b86')
-sha256sums_aarch64=('dd111451f0a86e161f999baf4f824c55d2fec087d0505e33a00b0e5da009cc1b' '56457a340993964e0c4c86b9e74611748bf3601f4f9fa8b6256651a5e693f37b')
+sha256sums=('8ff243f94c8ce063629e32cee0d83eed31046dcf6470edb040276cba7d53c501' 'c1e549369c37b9f8423c02e25a12946a455c953b19615b8f000f221728975429' '5c226038c1c603adb4bc657ab8b47050d1db63a4da171b610f76f3a18fe31d2c' 'a02c73424e6c3a215163a7c1407b2cf384770c0c9fbfa5d6f17992ebb862a20a')
+sha256sums_x86_64=('845a9b38b982928ded05b94fca212f6fb35b4f8eb4a59a00402a1698058d5538' 'ff91cb8f1775e6fe78ea998ba08e8452e732c87f5b6f9a03f61508196650398f')
+sha256sums_aarch64=('b91a2fdba4eb9a10486de7c7b4f8140412cf2552c0af2e09c62dc90203bab5b0' 'c2abe60e463a535ab84980ac17d53d30d8ae9b545a27b95da058996b011e3631')
 
 package() {
     install -Dm755 "histui-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/histui"
@@ -40,4 +41,5 @@ package() {
     install -Dm644 "histuid.service" "${pkgdir}/usr/lib/systemd/user/histuid.service"
     install -Dm644 "histuid-monitor.service" "${pkgdir}/usr/lib/systemd/user/histuid-monitor.service"
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "histuid.toml.example" "${pkgdir}/usr/share/doc/${pkgname%-bin}/histuid.toml.example"
 }
