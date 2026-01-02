@@ -1,6 +1,6 @@
 pkgbase = qtcreator-patches
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = 18.0.1
+	pkgver = 18.0.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
