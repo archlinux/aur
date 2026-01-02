@@ -1,0 +1,15 @@
+pkgbase = hatchet
+	pkgdesc = A TUI for managing Git worktrees with automatic database cloning for Rails projects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ryanrhughes/hatchet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun-bin
+	options = !debug
+	options = !strip
+	source = hatchet-1.0.0.tar.gz::https://github.com/ryanrhughes/hatchet/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hatchet
