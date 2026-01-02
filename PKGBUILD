@@ -4,7 +4,7 @@
 _pkgname=libtexprintf
 pkgname=libtexprintf-git
 pkgver=main
-pkgrel=2
+pkgrel=1
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
@@ -13,7 +13,7 @@ makedepends=(git make gcc)
 source=("https://github.com/bartp5/libtexprintf/archive/refs/heads/${pkgver}.zip")
 conflicts=(libtexprintf)
 provides=('libtexprintf')
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
