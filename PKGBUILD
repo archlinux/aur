@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'coreutils' 'findutils' 'gawk')
 optdepends=('ripgrep: faster searching' 'jq: query command')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wedow/ticket/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('710590d8b664e8589785b53ed6b2134e39aa4d9e806bf932e01cb2379d284949')
+sha256sums=('970c09c052e128c3f1b8cca030ecc3bb803400c29f4a98ad705d2de6996387ec')
 
 package() {
     cd "$pkgname-$pkgver"
