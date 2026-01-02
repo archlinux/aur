@@ -1,6 +1,7 @@
 # Maintainer: Wojciech Dudek <wojtek.dudek.pl@gmail.com>
 
 pkgname=waytermirror-git
+pkgver=r78.d7123f7
 pkgrel=1
 pkgdesc="Real-time Wayland screen mirroring to a terminal using Unicode braille characters, half‑blocks, or ASCII. Includes bidirectional input forwarding, audio streaming (PipeWire), zooming, focus-follow, and optional NVIDIA CUDA acceleration (server-side)."
 arch=('x86_64')
