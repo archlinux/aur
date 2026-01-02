@@ -1,11 +1,11 @@
 pkgname=syca
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal sudo‑like privilege elevation tool for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syca"
 license=('GPL')
-depends=('python' 'python-pam')
+depends=('ruby' 'python-pam')
 makedepends=('gcc')
 source=('syca' 'syca-helper.c' 'syca-pam-auth.py' 'syca.pam')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')

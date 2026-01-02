@@ -1,13 +1,13 @@
 pkgbase = syca
 	pkgdesc = Minimal sudo‑like privilege elevation tool for Linux
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/0xraincandy/syca
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = gcc
-	depends = python
+	depends = ruby
 	depends = python-pam
 	source = syca
 	source = syca-helper.c
