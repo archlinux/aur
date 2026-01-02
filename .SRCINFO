@@ -1,4 +1,4 @@
-pkgbase = ghla
+pkgbase = ghla-lang
 	pkgdesc = GHLA is a language level higher than Assembly
 	pkgver = 2
 	pkgrel = 1

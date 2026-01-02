@@ -1,6 +1,6 @@
 # Maintainer: gorciu <gorciuyt@gmail.com>
 
-pkgname=ghla
+pkgname=ghla-lang
 pkgver=2
 pkgrel=1
 pkgdesc="GHLA is a language level higher than Assembly"
