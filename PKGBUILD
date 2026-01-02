@@ -4,7 +4,7 @@
 _pkgname=libtexprintf
 pkgname=libtexprintf-git
 pkgver=main
-pkgrel=1
+pkgrel=3
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
