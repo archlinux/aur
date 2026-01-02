@@ -3,7 +3,7 @@ _pkgname=cubyz
 
 pkgname=cubyz-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source voxel sandbox game"
 arch=("x86_64" "aarch64")
 url="https://github.com/PixelGuys/Cubyz"
@@ -13,9 +13,9 @@ source=("$_pkgname.desktop"
         "$_pkgname.sh")
 md5sums=("c2ef0d9256c5213e3a8d3a28117f65bd"
          "945afd003b39ee45a36ad50b2e9ca9e5")
-source_x86_64=("$url/releases/download/$pkgver/Linux-x86_64.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::$url/releases/download/$pkgver/Linux-x86_64.tar.gz")
 sha256sums_x86_64=("d409e15f9596322f5f5e55472acc02f820564bdedf53d7d125da9ae1cb58f11b")
-source_aarch64=("$url/releases/download/$pkgver/Linux-aarch64.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::$url/releases/download/$pkgver/Linux-aarch64.tar.gz")
 sha256sums_aarch64=("d316eea69402a5f9433879ab19a065a18225e84e5721635d3053bed6799bda55")
 
 package() {

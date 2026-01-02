@@ -1,7 +1,7 @@
 pkgbase = cubyz-bin
 	pkgdesc = Open source voxel sandbox game
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PixelGuys/Cubyz
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = cubyz-bin
 	source = cubyz.sh
 	md5sums = c2ef0d9256c5213e3a8d3a28117f65bd
 	md5sums = 945afd003b39ee45a36ad50b2e9ca9e5
-	source_x86_64 = https://github.com/PixelGuys/Cubyz/releases/download/0.1.1/Linux-x86_64.tar.gz
+	source_x86_64 = cubyz-0.1.1-x86_64.tar.gz::https://github.com/PixelGuys/Cubyz/releases/download/0.1.1/Linux-x86_64.tar.gz
 	sha256sums_x86_64 = d409e15f9596322f5f5e55472acc02f820564bdedf53d7d125da9ae1cb58f11b
-	source_aarch64 = https://github.com/PixelGuys/Cubyz/releases/download/0.1.1/Linux-aarch64.tar.gz
+	source_aarch64 = cubyz-0.1.1-aarch64.tar.gz::https://github.com/PixelGuys/Cubyz/releases/download/0.1.1/Linux-aarch64.tar.gz
 	sha256sums_aarch64 = d316eea69402a5f9433879ab19a065a18225e84e5721635d3053bed6799bda55
 
 pkgname = cubyz-bin
