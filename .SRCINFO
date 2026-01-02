@@ -1,6 +1,6 @@
 pkgbase = lotus-lang
 	pkgdesc = A systems programming language with Rust-inspired imports, type-first bindings, and x86-64 assembly output
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/j-alexander3375/Lotus
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lotus-lang
 	depends = gcc
 	depends = llvm
 	depends = clang
-	source = lotus-lang-1.4.0.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 9bfca93cf4b8d45fd6791343a02929ab3be1fafc0bc7494d0eb13407b04bb4e7
+	source = lotus-lang-1.5.0.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = 7bfb0853ed8a93099cbf185ddd84d0328d20914d712b1fb403be5751142248a4
 
 pkgname = lotus-lang
