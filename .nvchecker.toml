@@ -1,8 +1,3 @@
 [kitty-img]
-source = "cmd"
-cmd = '''
-git ls-remote --tags https://git.sr.ht/~zethra/kitty-img \
-  | awk -F/ '/refs\/tags\/[0-9.]+$/ {print $3}' \
-  | sort -V \
-  | tail -n1
-'''
+source = "git"
+git = "https://git.sr.ht/~zethra/kitty-img"
