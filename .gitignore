@@ -1,0 +1,5 @@
+pkg/
+src/
+ttf-wenjin-mincho-font-*.pkg.tar.zst
+ttf-wenjin-mincho-font-*.7z
+LICENSE-*.md
