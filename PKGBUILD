@@ -1,6 +1,6 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=prmt
-pkgver=0.1.8
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A tool for prompt manipulation (Binary version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('prmt')
 
 source=("https://github.com/3axap4eHko/prmt/releases/download/v${pkgver}/prmt-x86_64-unknown-linux-gnu-ubuntu-24.04.tar.gz")
 
-sha256sums=('2a1b3e1bbb1030f84f04ac77836ab2fbfd4418656bf4ca0d124d60f8321a4e50')
+sha256sums=('1949dcb4edb222ea59298982e596031e53b1ebe572294203e25a8c07c1e9ad44')
 
 package() {
     _dirname="prmt-x86_64-unknown-linux-gnu-ubuntu-24.04"
