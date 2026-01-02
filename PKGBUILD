@@ -19,9 +19,9 @@ build() {
     local _srcdir="${pkgname%-x11}-$pkgver"
 
     cmake "${_cmake_args[@]}" -B build -S "$_srcdir"
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+    DESTDIR="${pkgdir}" cmake --install build
 }
