@@ -1,198 +1,147 @@
-#!/usr/bin/env python3
-import argparse
-import os
-import time
-import subprocess
-from pathlib import Path
-import sys
-import termios
-import tty
-import signal
-import grp
+#!/usr/bin/env ruby
+require 'etc'
+require 'fileutils'
+require 'optparse'
+require 'time'
 
-def ensure_wheel_member():
-    try:
-        wheel_gid = grp.getgrnam("wheel").gr_gid
-    except KeyError:
-        print("[syca] ERROR: group 'wheel' does not exist!")
-        exit(1)
-
-    user_groups = os.getgroups()
-    user_gid = os.getgid()
-
-    if wheel_gid not in user_groups and wheel_gid != user_gid:
-        print("[syca] Permission denied: user is not in wheel group")
-        exit(1)
-
-
-def masked_input(prompt="[syca] password: "):
-    sys.stdout.write(prompt)
-    sys.stdout.flush()
-    password = ""
-    fd = sys.stdin.fileno()
-    old = termios.tcgetattr(fd)
-
-    try:
-        tty.setcbreak(fd)
-        while True:
-            ch = sys.stdin.read(1)
-            if ch in ("\n", "\r"):
-                break
-            if ch == "\x03":
-                print()
-                raise KeyboardInterrupt
-            if ch == "\x7f":
-                if password:
-                    password = password[:-1]
-                    sys.stdout.write("\b \b")
-                    sys.stdout.flush()
-            else:
-                password += ch
-                sys.stdout.write("*")
-                sys.stdout.flush()
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
-    print()
-    return password
-
-
-
-RUNTIME_DIR = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
-CACHE_DIR = RUNTIME_DIR / "syca"
-CACHE_FILE = CACHE_DIR / "timestamp"
-CONFIG_FILE = CACHE_DIR / "config"
-
-HELPER = "/usr/lib/syca-helper"
+RUNTIME_DIR = ENV['XDG_RUNTIME_DIR'] || "/run/user/#{Process.uid}"
+CACHE_DIR   = File.join(RUNTIME_DIR, "syca")
+CACHE_FILE  = File.join(CACHE_DIR, "timestamp")
+CONFIG_FILE = File.join(CACHE_DIR, "config")
+HELPER      = "/usr/lib/syca-helper"
+PAM_HELPER  = "/usr/lib/syca-pam-auth.py"
 DEFAULT_MINUTES = 3
 
+def ensure_wheel_member
+  wheel_gid = Etc.getgrnam('wheel').gid rescue nil
+  if wheel_gid.nil?
+    puts "[syca] ERROR: group 'wheel' does not exist!"
+    exit 1
+  end
+  unless Process.groups.include?(wheel_gid) || Process.gid == wheel_gid
+    puts "[syca] Permission denied: user is not in wheel group"
+    exit 1
+  end
+end
 
-def load_config():
-    if CONFIG_FILE.exists():
-        try:
-            return int(CONFIG_FILE.read_text().strip())
-        except:
-            pass
-    return DEFAULT_MINUTES
+def load_config
+  File.exist?(CONFIG_FILE) ? (Integer(File.read(CONFIG_FILE).strip) rescue DEFAULT_MINUTES) : DEFAULT_MINUTES
+end
 
-def save_config(minutes):
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    CONFIG_FILE.write_text(str(minutes))
+def save_config(minutes)
+  FileUtils.mkdir_p(CACHE_DIR)
+  File.write(CONFIG_FILE, minutes.to_s)
+end
 
-def save_timestamp():
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    CACHE_FILE.write_text(str(time.time()))
+def save_timestamp
+  FileUtils.mkdir_p(CACHE_DIR)
+  File.write(CACHE_FILE, Time.now.to_i.to_s)
+end
 
-def load_timestamp():
-    try:
-        return float(CACHE_FILE.read_text().strip())
-    except:
-        return None
+def load_timestamp
+  File.exist?(CACHE_FILE) ? (Integer(File.read(CACHE_FILE).strip) rescue nil) : nil
+end
 
-def clear_cache():
-    if CACHE_FILE.exists():
-        CACHE_FILE.unlink()
+def clear_cache
+  File.delete(CACHE_FILE) if File.exist?(CACHE_FILE)
+end
 
-def cache_valid():
-    ts = load_timestamp()
-    if ts is None:
-        return False
-    lifetime = load_config() * 60
-    return (time.time() - ts) < lifetime
+def disable_cache
+  clear_cache
+  File.delete(CONFIG_FILE) if File.exist?(CONFIG_FILE)
+  puts "[syca] Passwordless mode disabled."
+end
 
-def seconds_left():
-    ts = load_timestamp()
-    if ts is None:
-        return 0
-    lifetime = load_config() * 60
-    return max(0, int(lifetime - (time.time() - ts)))
+def cache_valid?
+  ts = load_timestamp
+  return false if ts.nil? || !File.exist?(CONFIG_FILE)
+  (Time.now.to_i - ts) < load_config * 60
+end
 
+def seconds_left
+  ts = load_timestamp
+  return 0 if ts.nil? || !File.exist?(CONFIG_FILE)
+  [(load_config * 60 - (Time.now.to_i - ts)), 0].max
+end
 
+def pam_authenticate_once
+  system(PAM_HELPER)
+end
 
+def pam_authenticate_loop
+  loop do
+    return true if pam_authenticate_once
+    puts "[syca] Incorrect password. Try again."
+  end
+end
 
-def pam_authenticate_once():
+def run_command(cmd)
+  begin
+    if cache_valid?
+      success = system(HELPER, *cmd)
+    elsif File.exist?(CONFIG_FILE)
+      if pam_authenticate_loop
+        success = system(HELPER, *cmd)
+        save_timestamp if success
+      else
+        success = false
+      end
+    else
+      pam_authenticate_loop
+      success = system(HELPER, *cmd)
+    end
+    success
+  rescue Interrupt
+    puts "\n[syca] Command cancelled by user."
+    false
+  end
+end
 
-    import pam
-    pw = masked_input("[syca] password: ")
-    auth = pam.pam()
-    return auth.authenticate(os.getlogin(), pw, service="syca")
+def enable_cache(minutes)
+  save_config(minutes)
+  puts "[syca] Enable passwordless mode for #{minutes} minutes"
+  if pam_authenticate_loop
+    save_timestamp
+    puts "[syca] Passwordless mode enabled for #{minutes} minutes."
+  else
+    puts "[syca] Authentication failed. Cache not enabled."
+  end
+end
 
-def pam_authenticate_loop():
+# --- CLI ---
+ensure_wheel_member
 
-    while True:
-        if pam_authenticate_once():
-            return True
-        print("[syca] Incorrect password. Try again.")
+options = {}
+parser = OptionParser.new do |o|
+  o.on("--enable N", Integer) { |v| options[:enable] = v }
+  o.on("--disable") { options[:disable] = true }
+  o.on("--status") { options[:status] = true }
+end
 
+parser.order! rescue nil
 
+if options[:enable]
+  enable_cache(options[:enable])
+  exit
+end
 
+if options[:disable]
+  disable_cache
+  exit
+end
 
-def run_command(cmd):
+if options[:status]
+  if cache_valid?
+    puts "[syca] Passwordless mode active (#{seconds_left}s remaining)."
+  else
+    puts "[syca] Passwordless mode is NOT active."
+  end
+  exit
+end
 
-    if cache_valid():
-        return subprocess.run([HELPER] + cmd).returncode
+if ARGV.empty?
+  puts "Usage: syca <command>"
+  exit
+end
 
-
-    if pam_authenticate_loop():
-        return subprocess.run([HELPER] + cmd).returncode
-
-
-    return 1
-
-
-def enable_cache(minutes):
-    save_config(minutes)
-    print(f"[syca] Enable passwordless mode for {minutes} minutes")
-
-
-    if pam_authenticate_loop():
-        save_timestamp()
-        print(f"[syca] Passwordless mode enabled for {minutes} minutes.")
-    else:
-        print("[syca] Authentication failed. Cache not enabled.")
-
-
-
-
-def main():
-    ensure_wheel_member()
-
-    parser = argparse.ArgumentParser(description="syca — minimal sudo-like privilege elevation tool.")
-    parser.add_argument("--enable", type=int, help="Enable passwordless mode for N minutes")
-    parser.add_argument("--disable", action="store_true", help="Disable passwordless mode")
-    parser.add_argument("--status", action="store_true", help="Show current passwordless status")
-    parser.add_argument("cmd", nargs=argparse.REMAINDER, help="Command to run")
-
-    args = parser.parse_args()
-
-    try:
-        if args.enable is not None:
-            enable_cache(args.enable)
-            return
-
-        if args.disable:
-            clear_cache()
-            print("[syca] Passwordless mode disabled.")
-            return
-
-        if args.status:
-            if cache_valid():
-                left = seconds_left()
-                print(f"[syca] Passwordless mode active ({left}s remaining).")
-            else:
-                print("[syca] Passwordless mode is NOT active.")
-            return
-
-        if not args.cmd:
-            print("Usage: syca <command>")
-            return
-
-        exit(run_command(args.cmd))
-
-    except KeyboardInterrupt:
-        print("\nCancelled by user.")
-        exit(1)
-
-
-if __name__ == "__main__":
-    main()
+exit(run_command(ARGV))

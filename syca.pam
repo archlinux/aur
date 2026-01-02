@@ -1,11 +1,5 @@
-# /etc/pam.d/syca
-
-# Restrict to wheel group
+#%PAM-1.0
 auth       required   pam_wheel.so group=wheel
-
-# Always ask for password — NO PAM caching
 auth       required   pam_unix.so nullok try_first_pass
-
 account    include    system-auth
 session    include    system-auth
-
