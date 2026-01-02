@@ -1,7 +1,7 @@
 pkgbase = lightgbm-cl
 	pkgdesc = Distributed gradient boosting framework based on decision tree algorithms.
 	pkgver = 4.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Microsoft/LightGBM
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = lightgbm-cl
 	makedepends = python-setuptools
 	makedepends = git
 	makedepends = python-scikit-build-core
-	makedepends = eigen
 	makedepends = fmt
 	makedepends = python-pip
 	depends = opencl-icd-loader

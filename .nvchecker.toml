@@ -1,0 +1,4 @@
+[lightgbm-cl]
+source = "git"
+git = "https://github.com/Microsoft/LightGBM.git"
+prefix = "v"

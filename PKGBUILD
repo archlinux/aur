@@ -7,7 +7,7 @@ pkgbase=lightgbm-cl
 _pkgbase="${pkgbase%-*}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=4.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
 url="https://github.com/Microsoft/LightGBM"
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('opencl-icd-loader' 'boost-libs' 'openmpi')
 makedepends=('boost' 'cmake' 'ninja' 'opencl-headers' 'python-build'
 	'python-installer' 'python-wheel' 'python-setuptools' 'git'
-	'python-scikit-build-core' 'eigen' 'fmt' 'python-pip')
+	'python-scikit-build-core' 'fmt' 'python-pip')
 source=("${_pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('1e2c2e8ebe9acb8b730e7ca56efddee3ee6bf11d2674efccf4bb27673e1529c0')
 
@@ -33,9 +33,13 @@ prepare() {
 	rmdir external_libs/compute
 	ln -sf /usr/include/ external_libs/compute
 
-	git submodule deinit external_libs/eigen # provided by makedep `eigen`
-	rmdir external_libs/eigen
-	ln -sf /usr/include/eigen3 external_libs/eigen
+	# git submodule deinit external_libs/eigen # provided by makedep `eigen`
+	# rmdir external_libs/eigen
+	# ln -sf /usr/include/eigen3 external_libs/eigen
+	# # needs a specific eigen version, use submodule
+
+	# Remove request for Boost "system" component, which is now header-only
+	sed -ie 's/\(Boost.*COMPONENTS.*\) system\(.* REQUIRED)\)/\1\2/' CMakeLists.txt
 
 	# Configure C++ build
 	cmake -S. -B build -G Ninja \
