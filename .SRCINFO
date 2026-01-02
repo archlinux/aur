@@ -4,10 +4,12 @@ pkgbase = neo-matrix
 	pkgrel = 3
 	url = https://github.com/st3w/neo
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = ncurses
+	depends = gcc-libs
+	depends = glibc
 	optdepends = ttf-hanazono
-	source = https://github.com/st3w/neo/archive/refs/tags/v0.6.1.tar.gz
+	source = neo-matrix-0.6.1.tar.gz::https://github.com/st3w/neo/archive/refs/tags/v0.6.1.tar.gz
 	sha256sums = 744a88cc6b98a4625ae5c5ee819640561f3df87518be0f9fca00ad787814b200
 
 pkgname = neo-matrix
