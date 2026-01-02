@@ -1,41 +1,40 @@
 pkgname=thermometer
-pkgver=1.4.6
 pkgrel=1
 pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
 url="https://github.com/watchmypizza/thermometer"
+sha256sums=('SKIP')
 license=('MIT')
+pkgver=1.3.3.16.g6c97d92
 depends=('dotnet-runtime' 'bash' 'curl')
 makedepends=('dotnet-sdk')
-
 options=('!debug')
 
-noextract=()
-source=()
+source=("git+https://github.com/watchmypizza/thermometer.git")
 md5sums=()
 
+pkgver() {
+  cd "$srcdir/thermometer"
+  echo "$(git describe --long --tags --dirty --always | sed 's/^v//;s/-/./g')"
+}
+
 build() {
-  cd $srcdir
-  git clone https://github.com/watchmypizza/thermometer.git
-  cd thermometer
-  dotnet publish ./Thermometer.sln -c Release -r linux-x64 -o "$srcdir/publish"
-} 
+  cd "$srcdir/thermometer"
+  dotnet publish Thermometer.sln \
+    -c Release \
+    -r linux-x64 \
+    --self-contained false \
+    -o "$srcdir/publish"
+}
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/thermometer"
+  install -dm755 "$pkgdir/usr/lib/thermometer"
   cp -a "$srcdir/publish/." "$pkgdir/usr/lib/thermometer/"
 
-  mkdir -p "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/thermometer" <<'EOF'
 #!/bin/sh
 exec dotnet /usr/lib/thermometer/thermometer.dll "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/thermometer"
-  setcap "cap_sys_admin=ep" /usr/bin/thermometer
 }
-
-clean() {
-  rm -rf "$srcdir"
-  rm -rf "$pkgdir"
-}
- 
