@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffvship-git
-pkgver=4.0.2.r15.g231138c
+pkgver=4.0.2.r16.gae43ead
 pkgrel=1
 pkgdesc=" A Library for GPU-accelerated visual fidelity metrics, featuring SSIMULACRA2, Butteraugli and CVVDP. "
 arch=('x86_64')
@@ -10,16 +10,19 @@ depends=('glibc' 'ffms2' 'gcc-libs')
 makedepends=('cuda' 'hip-runtime-amd' 'patchelf' 'clang' 'git')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
-source=("${pkgname}::git+$url.git")
+source=("${pkgname}::git+$url.git"
+	"make.diff")
 optdepends=('cuda: For FFVship-nvidia'
 	    'hip-runtime-amd: For FFVship-amd')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '83a54aa305df52be4f6f85e31eb990766dfbc299500050b489d3a9d50e920af2')
 pkgver() {
 	cd "$srcdir/$pkgname"
 	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 prepare() {
 	cd "$srcdir/$pkgname"
+	patch -Np1 < "$srcdir/make.diff"
 }
 
 build() {
@@ -27,8 +30,9 @@ build() {
 	export ROCM_PATH=/opt/rocm
 	export CUDA_PATH=/opt/cuda
 	export NVCC_CCBIN='/usr/bin/g++'
-	make buildall
-	make buildFFVSHIP
+	export PATH=/opt/cuda/bin:$PATH
+	make buildall LDFLAGS="$LDFLAGS"
+	make buildFFVSHIP LDFLAGS="$LDFLAGS" CXXFLAGS="$CXXFLAGS"
 	mv libvship.so libvship-amd.so
 	make buildcudaall
 	mv libvship.so libvship-nvidia.so

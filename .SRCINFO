@@ -1,6 +1,6 @@
 pkgbase = ffvship-git
 	pkgdesc = A Library for GPU-accelerated visual fidelity metrics, featuring SSIMULACRA2, Butteraugli and CVVDP.
-	pkgver = 4.0.2.r15.g231138c
+	pkgver = 4.0.2.r16.gae43ead
 	pkgrel = 1
 	url = https://github.com/Line-fr/Vship
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = ffvship-git
 	provides = ffvship
 	conflicts = ffvship
 	source = ffvship-git::git+https://github.com/Line-fr/Vship.git
+	source = make.diff
 	sha256sums = SKIP
+	sha256sums = 83a54aa305df52be4f6f85e31eb990766dfbc299500050b489d3a9d50e920af2
 
 pkgname = ffvship-git
