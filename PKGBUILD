@@ -2,14 +2,14 @@
 pkgname=canvas-rubric-importer
 conflicts=()
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Import canvas rubrics from csv using the api"
 arch=('x86_64')
 url="https://github.com/eslam-allam/canvas-rubric-importer"
 license=('MIT')   # Change as needed
 depends=()          # List dependencies
 source=("https://github.com/eslam-allam/canvas-rubric-importer/releases/download/v${pkgver}/canvas-rubric-importer_${pkgver}_amd64.deb")
-sha256sums=('4859f0cda46714f9978ffc8c889c8574845741057b295f9e256c64215bfe257f')
+sha256sums=('ea164f50c1e8cb14ffba9b66a2812cd6dba575718acaea53ec145963b88d5f52')
 
 package() {
     bsdtar -xOf "$srcdir/canvas-rubric-importer_${pkgver}_amd64.deb" data.tar.zst | bsdtar -C "$pkgdir" -xv
