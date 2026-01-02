@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=20.0.0_r510973.d6d60707ec2b
+pkgver=22.0.0_r563976.16d6ecc19b5cc
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -11,11 +11,10 @@ url="https://libclc.llvm.org/"
 license=('MIT')
 provides=(libclc)
 conflicts=(libclc)
-makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git ninja)
+makedepends=(llvm-minimal-git clang-minimal-git clang-opencl-headers-minimal-git spirv-llvm-translator-minimal-git cmake git python ninja )
 source=("git+https://github.com/llvm/llvm-project.git"
 )
-sha256sums=('SKIP'
-)
+sha256sums=('SKIP')
 options=(!lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
