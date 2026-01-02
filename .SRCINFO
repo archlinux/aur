@@ -1,16 +1,21 @@
 pkgbase = nitch-git
-	pkgdesc = Incredibly fast system fetch written in nim - newest git checkout
-	pkgver = 0.1.6.r36.g142fd89
+	pkgdesc = Incredibly fast system fetch written in Nim (git snapshot)
+	pkgver = 0.0.0.r0
 	pkgrel = 1
-	url = https://github.com/unxsh/nitch
+	url = https://github.com/ruxir-ig/nitch
 	arch = x86_64
 	license = MIT
 	makedepends = nim
+	makedepends = nimble
 	makedepends = git
-	makedepends = openssl-1.1
-	provides = nitch
-	conflicts = nitch
-	source = git+https://github.com/unxsh/nitch
-	md5sums = SKIP
+	source = git+https://github.com/ruxir-ig/nitch.git
+	sha256sums = SKIP
 
 pkgname = nitch-git
+	pkgdesc = Incredibly fast system fetch written in Nim (Nerd Font icons)
+	optdepends = nerd-fonts: for icon support
+
+pkgname = nitch-git-nonerd
+	pkgdesc = Incredibly fast system fetch written in Nim (no Nerd Font icons)
+	provides = nitch
+	conflicts = nitch
