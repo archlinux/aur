@@ -1,0 +1,15 @@
+pkgbase = unlzx
+	pkgdesc = Unlzx - decompresses LZX archives on multiple platforms
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://aminet.net/package/misc/unix/unlzx.c
+	arch = any
+	license = UNKNOWN
+	makedepends = gcc
+	provides = unlzx
+	source = http://aminet.net/misc/unix/unlzx.c.gz
+	source = unlzx.patch
+	sha256sums = 3cfd5dfe34482f91b6fbfc6a5fdd44c7454ce4867061e99cda8aaba628208f7d
+	sha256sums = d17336aa2b89236cdd3879deb187583e480e48f080b9dc0be6735ad5468ef608
+
+pkgname = unlzx
