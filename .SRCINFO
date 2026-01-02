@@ -1,0 +1,16 @@
+pkgbase = relax-player
+	pkgdesc = Ambient sound player (rain, thunder, campfire) with an alsamixer-style TUI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ebithril/relax-player
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = alsa-lib
+	source = https://github.com/ebithril/relax-player/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 7d123fc2550a2806a96dc4790a56f334c94e5fb83a3b1acf89397b5562b9a40a
+
+pkgname = relax-player
