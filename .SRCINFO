@@ -1,4 +1,4 @@
-pkgbase = kernel++-beta
+pkgbase = deskedit-kernel++-beta
 	pkgdesc = The beta release of Deskedit Kernel++
 	pkgver = 0.2.1.fix
 	pkgrel = 0
@@ -10,7 +10,7 @@ pkgbase = kernel++-beta
 	depends = gcc-libs
 	provides = kernel
 	conflicts = kernel++
-	source = kernel++-beta-0.2.1.fix.tar.gz::https://github.com/DESKEDIT/Kernel-Plus-Plus/archive/refs/tags/b0.2.1.fix.tar.gz
-	sha256sums = 04cee3fc6461ef880de6b988a45b42b6d759d5e003fa6e63c0321fe2973f62be
+	source = deskedit-kernel++-beta-0.2.1.fix.tar.gz::https://github.com/DESKEDIT/Kernel-Plus-Plus/archive/refs/tags/b0.2.1.fix.tar.gz
+	sha256sums = 058f93ef3b82ee9e66914e3b501c8df0c3a61a04862ed3f689306490dc9aaddc
 
-pkgname = kernel++-beta
+pkgname = deskedit-kernel++-beta
