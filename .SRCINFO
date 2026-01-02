@@ -1,0 +1,23 @@
+pkgbase = darknet-hankai
+	pkgdesc = An open source neural network framework written in C, C++, and CUDA
+	pkgver = 5.1
+	pkgrel = 17
+	url = https://github.com/hank-ai/darknet
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = cmake
+	depends = opencv
+	depends = protobuf
+	depends = openblas
+	optdepends = cuda: For NVIDIA GPU support
+	optdepends = rocm-hip-sdk: For AMD GPU support
+	optdepends = clang: Required for ROCm/HIP builds
+	optdepends = lld: Required for ROCm/HIP builds
+	provides = darknet-hankai
+	conflicts = darknet-hankai-git
+	options = !buildflags
+	source = git+https://codeberg.org/CCodeRun/darknet.git#tag=v5.1
+	sha256sums = f33743c9ef67a7a7a9109db2e2a29d291a0230ea9f67cb2d41c7f29da43e54c3
+
+pkgname = darknet-hankai
