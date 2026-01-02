@@ -1,25 +1,25 @@
 # Maintainer: Josesk Volpe <joseskvolpe at gmail dot com>
 # Co-Maintainer: Melroy van den Berg <melroy at melroy dot org>
 pkgname=winegui-bin
-pkgver=2.8.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A user-friendly WINE graphical interface"
 arch=('x86_64')
 url="https://gitlab.melroy.org/melroy/winegui"
 license=('AGPL3')
 depends=(
-	'gtkmm3'
-	'cabextract'
+	'gtkmm-4.0'
+	'cabextract' # used by winetricks
 	'unzip'
 	'p7zip'
-	'wget'
+	'wget' # to download winetricks latest release
 	'wine'
-	# namcap claims some dependencies aren't needed, but they're infact used on the source-code as a terminal command
+	'zenity' # used by winetricks
 )
 conflicts=('winegui')
 provides=('winegui')
 source=("$pkgname-$pkgver.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v$pkgver.tar.gz")
-md5sums=('a9a62d129a6e4057833eaf8dd3998579')
+md5sums=('14926d187027c3de17f17c89fe9bbb7a')
 
 package() {
 	mkdir $pkgdir/usr

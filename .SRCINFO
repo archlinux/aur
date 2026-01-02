@@ -1,19 +1,20 @@
 pkgbase = winegui-bin
 	pkgdesc = A user-friendly WINE graphical interface
-	pkgver = 2.8.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://gitlab.melroy.org/melroy/winegui
 	arch = x86_64
 	license = AGPL3
-	depends = gtkmm3
+	depends = gtkmm-4.0
 	depends = cabextract
 	depends = unzip
 	depends = p7zip
 	depends = wget
 	depends = wine
+	depends = zenity
 	provides = winegui
 	conflicts = winegui
-	source = winegui-bin-2.8.1.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v2.8.1.tar.gz
-	md5sums = a9a62d129a6e4057833eaf8dd3998579
+	source = winegui-bin-3.0.0.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v3.0.0.tar.gz
+	md5sums = 14926d187027c3de17f17c89fe9bbb7a
 
 pkgname = winegui-bin
