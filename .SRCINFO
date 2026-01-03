@@ -1,6 +1,6 @@
 pkgbase = gastown-git
 	pkgdesc = Multi-agent orchestrator for Claude Code instances
-	pkgver = r2076.ae61d98
+	pkgver = r2176.7f9795f
 	pkgrel = 1
 	url = https://github.com/steveyegge/gastown
 	arch = x86_64
