@@ -1,7 +1,7 @@
 # Maintainer: Jose Lopes <josemslopes at gmail dot com>
 pkgname=sipsak-git
-pkgver=r539.e03190b
-pkgrel=1
+pkgver=r541.ed6a911
+pkgrel=2
 pkgdesc='A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.'
 arch=('x86_64')
 url='https://github.com/nils-ohlmeier/sipsak'
@@ -9,9 +9,11 @@ license=('GPL2')
 groups=('voip')
 depends=('gnutls' 'openssl' 'c-ares')
 makedepends=('git' 'gcc')
-source=("${pkgname}::git+https://github.com/nils-ohlmeier/sipsak.git")
+source=("${pkgname}::git+https://github.com/nils-ohlmeier/sipsak.git"
+    "sipsak-gcc14-check.patch")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+     'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -20,6 +22,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+    patch -Np1 -i "${srcdir}/sipsak-gcc14-check.patch"
     autoreconf --install
 }
 
