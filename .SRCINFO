@@ -1,0 +1,14 @@
+pkgbase = soeder-flag
+	pkgdesc = Terminal animation mit Farben
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bayernliebe918-source/soeder_flag
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyfiglet
+	depends = python-colorama
+	source = git+https://github.com/bayernliebe918-source/soeder_flag.git
+	sha256sums = SKIP
+
+pkgname = soeder-flag
