@@ -13,8 +13,8 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.0.0_devel.215663.6b67ca2e8fa
-pkgrel=1
+pkgver=26.0.0_devel.216617.3d8286d7c8d
+pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
@@ -79,7 +79,7 @@ build() {
        -D llvm=enabled \
        -D lmsensors=enabled \
        -D valgrind=disabled \
-       -D vulkan-layers=device-select,overlay,anti-lag \
+       -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit \
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled \
