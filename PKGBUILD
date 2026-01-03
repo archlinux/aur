@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=idescriptor-appimage
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform iDevice management tool (AppImage)"
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
@@ -16,8 +16,8 @@ sha256sums=('8559044aaa44e27fbc42ca0c76a236c838b7a4c01de1a1aa7731d0145cdb04cf'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 latestver() {
-    curl -s "https://api.github.com/repos/iDescriptor/iDescriptor/releases/latest" |
-    jq -r '.tag_name' | sed 's/^v//'
+    curl -fsSL "https://api.github.com/repos/iDescriptor/iDescriptor/releases/latest" |
+    jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 package() {
