@@ -1,24 +1,19 @@
-# Maintainer: Endg4me_ <tyman.pocht at gmail.com>
+# Maintainer: Endg4me_ <timka.tarasen at gmail.com>
 pkgname=lrcsnc
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Player-agnostic (MPRIS) synced lyrics fetcher and displayer."
+pkgdesc="🎶 Synced lyrics fetcher and synchronizer that works with any of your MPRIS-capable players!"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Endg4meZer0/lrcsnc"
 license=('MIT')
-options=(!lto)
-optdepends=(
-    'kakasi: Japanese romanization'
-)
 makedepends=('go>=1.23')
-backup=(
-    'etc/lrcsnc/config.toml'
-)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Endg4meZer0/lrcsnc/archive/v${pkgver}.tar.gz")
-sha256sums=('5c0c91194db8105d8572204b8f3e82ff61a26e5f86fad4a7b353c346b9c32c70')
+sha256sums=('adb236b9be4582b968420d1b4d72a778f21484ffca22055004da7e11ffe7528f')
 
 build() {
-    export GOPATH="$srcdir"/gopath
+    export GOPATH="$srcdir/gopath"
+    export GOFLAGS="-mod=readonly -modcacherw"
+
     cd "$srcdir/$pkgname-$pkgver"
     make VERSION="v$pkgver" DESTDIR="$pkgdir" PREFIX="/usr" build
 }
