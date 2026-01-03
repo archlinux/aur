@@ -1,23 +1,21 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 # Co-Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=v2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/nekename/OpenDeck"
-license=('GPL-3.0')
+license=('GPL-3.0-or-later')
 makedepends=(git deno cargo dpkg hidapi)
 depends=(libappindicator-gtk3 webkit2gtk-4.1)
 optdepends=('wine: For most Windows only Plugins support needed')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 options=('!lto')
 source=(
-	"${pkgname}::git+https://github.com/nekename/OpenDeck#tag=${pkgver//_/-}"
+	"${pkgname}::git+https://github.com/nekename/OpenDeck#tag=v${pkgver//_/-}"
 )
 
-sha256sums=('407a456b3fba5a9f7c946b17a13381ddc2ba918ccce7784b06f6a1b74cf6d47d')
+sha256sums=('7f6b66c2d1a90961b6a7e81afa25f950f13457974d9163e76367f97a155b48a5')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
