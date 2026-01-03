@@ -1,12 +1,14 @@
 pkgbase = kosmorro
 	pkgdesc = A program to calculate the ephemerides
-	pkgver = 0.10.13
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://kosmorro.space
 	arch = any
-	license = AGPL3
-	makedepends = python-pip
-	makedepends = python-poetry
+	license = AGPL
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = ruby-ronn
 	depends = python
 	depends = python-kosmorrolib>=1.0.0
@@ -14,8 +16,10 @@ pkgbase = kosmorro
 	depends = python-tabulate
 	depends = python-dateutil
 	depends = python-babel
+	depends = python-pytz
+	depends = python-argcomplete
 	optdepends = texlive-bin: PDF creation support
-	source = kosmorro-v0.10.13.tar.gz::https://codeload.github.com/Kosmorro/kosmorro/tar.gz/v0.10.13
-	sha256sums = 7f16c6367a1e53cb144e2c0a0e0eed77a3569fbcb3c3d54a25d9e9a694495805
+	source = kosmorro-v1.0.1.tar.gz::https://codeload.github.com/Kosmorro/kosmorro/tar.gz/v1.0.1
+	sha256sums = 60752024fca7ba2a88153c68cc2cf3eee0a3abc6d9d126bdfa907f1865cff1bb
 
 pkgname = kosmorro
