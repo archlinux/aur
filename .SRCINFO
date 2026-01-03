@@ -1,0 +1,16 @@
+pkgbase = kss-bin
+	pkgdesc = kss - Kubernetes status on steroids
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chmouel/kss
+	license = Apache 2.0
+	conflicts = kss
+	provides = kss
+	arch = aarch64
+	source_aarch64 = https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5ff0a18dcb56cf4f340c602a8141c816c7566e94bc7c9814a7a12bb217e3aa7c
+	arch = x86_64
+	source_x86_64 = https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1d9905c5f22a669dcad6aa9c8d1329dc380d0d2abae416e63d25b741bf4ea553
+	
+pkgname = kss-bin
