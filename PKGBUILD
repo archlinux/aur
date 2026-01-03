@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-jsdoc
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JSDoc grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-jsdoc"
@@ -36,4 +36,8 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-jsdoc"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-jsdoc"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-jsdoc.so" "$pkgdir/usr/lib/tree_sitter/jsdoc.so"
 }
