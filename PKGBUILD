@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.0.223
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
@@ -13,8 +13,8 @@ depends=('gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-theme' 'gst-
 options=('!strip' '!debug')
 
 latestver() {
-  curl -s "https://api.github.com/repos/sst/opencode/releases/latest" |
-    jq -r '.tag_name' | sed 's/^v//'
+  curl -fsSL "https://api.github.com/repos/sst/opencode/releases/latest" |
+    jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 case "$CARCH" in
