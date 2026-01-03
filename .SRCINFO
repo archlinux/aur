@@ -1,10 +1,9 @@
 pkgbase = xapp-symbolic-icons-git
 	pkgdesc = A set of symbolic icons for GTK applications and projects (git)
-	pkgver = 1.0.2+0
+	pkgver = 1.0.7+0
 	pkgrel = 1
 	url = https://github.com/xapp-project/xapp-symbolic-icons
 	arch = any
-	license = GPL-3.0-only
 	license = LGPL-3.0-only
 	makedepends = git
 	makedepends = meson
