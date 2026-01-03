@@ -1,0 +1,17 @@
+#!/bin/sh
+
+show_message() {
+  cat <<-EOM
+	Warning: The 'bridge-utils' package is DEPRECATED and will be
+	         dropped in near future. Instead use the 'bridge' command
+	         from 'iproute2' package!
+	EOM
+}
+
+post_install() {
+  show_message
+}
+
+post_upgrade() {
+  show_message
+}
