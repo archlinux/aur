@@ -1,6 +1,6 @@
 pkgbase = signal-styler
 	pkgdesc = Add custom CSS to Signal Desktop
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/m-obeid/signal-styler
 	arch = any
