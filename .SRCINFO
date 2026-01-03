@@ -1,7 +1,7 @@
 pkgbase = ccusage
 	pkgdesc = A CLI tool for analyzing Claude Code token usage and costs from local JSONL files
 	pkgver = 17.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ryoppippi/ccusage
 	arch = any
 	license = MIT
