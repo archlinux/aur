@@ -1,0 +1,15 @@
+pkgbase = amifuse
+	pkgdesc = Native AMIGA filesystems on Linux with FUSE
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://github.com/reinauer/amifuse
+	arch = x86_64
+	makedepends = git
+	depends = fuse
+	depends = python
+	depends = python-virtualenv
+	provides = amifuse=0.2.0
+	source = git+https://github.com/reinauer/amifuse.git#commit=9bc9aa2c57c45c15cf5bef8ccdd114a9ad7a3187
+	sha256sums = 7410b4459bdca1c0dc391d5e6d2d85af03df50536d5492ef9ee2bc369a57b745
+
+pkgname = amifuse
