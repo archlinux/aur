@@ -1,7 +1,7 @@
 pkgbase = rakarrack-plus
 	pkgdesc = Guitar Effects Processor
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Stazed/rakarrack-plus
 	arch = x86_64
 	arch = aarch64

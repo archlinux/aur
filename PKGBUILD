@@ -3,7 +3,7 @@
 
 pkgname=rakarrack-plus
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
 url='https://github.com/Stazed/rakarrack-plus'
@@ -23,6 +23,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DEnableSysex=ON -DBuildCarlaPresets=OFF \
     -DEnableNTK=OFF -DBuildRakarrackPlusLV2=OFF \
+    -DEnablePFFFT=OFF \
     -Wno-dev
   cmake --build build-$pkgname-$pkgver
 }
