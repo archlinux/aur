@@ -1,6 +1,6 @@
 pkgbase = letta-code-git
 	pkgdesc = The memory-first coding agent
-	pkgver = r500.g2c7e3aa
+	pkgver = r511.g3ab15cc
 	pkgrel = 1
 	url = https://github.com/letta-ai/letta-code
 	arch = x86_64
