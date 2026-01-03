@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver="2.11.0"
+pkgver="2.12.0"
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
@@ -60,8 +60,8 @@ build() {
     # --------------
     # echo "Build docs"
     # cd ./Docs
+    # make latexpdf ; make latexpdf
     # make html
-    # make latexpdf
 }
 
 check() {
