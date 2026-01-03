@@ -6,8 +6,8 @@ _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=7.0.0+4.r1691.20251231.98ba889
-pkgrel=2
-pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
+pkgrel=3
+pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC."
 arch=(
   'aarch64'
   'armv6h'
@@ -79,10 +79,12 @@ replaces=(
 
 source=(
   "${_pkgname}::${_gitprotocol}://${_giturl}"
+  "xmms2-plugin_add_plugin-header.patch"
   "cflags_ldflags_append.patch"
 )
 sha256sums=(
   'SKIP'                                                              # main upstream source
+  '7b26cbf212daca03978bb71a04c7782f830657de42eebab0c9e110f0f9204b46'  # xmms2-plugin_add_plugin-header.patch
   '3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b'  # cflags_ldflags_append.patch
 )
 
@@ -90,6 +92,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git log > "${srcdir}/git.log"
+  patch -Np1 --follow-symlinks -i "${srcdir}/xmms2-plugin_add_plugin-header.patch"
   patch -Np1 --follow-symlinks -i "${srcdir}/cflags_ldflags_append.patch"
 }
 

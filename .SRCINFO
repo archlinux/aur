@@ -1,7 +1,7 @@
 pkgbase = asap-chiptunes-player-git
-	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC.
+	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC.
 	pkgver = 7.0.0+4.r1691.20251231.98ba889
-	pkgrel = 2
+	pkgrel = 3
 	url = http://asap.sourceforge.net
 	arch = aarch64
 	arch = armv6h
@@ -52,8 +52,10 @@ pkgbase = asap-chiptunes-player-git
 	conflicts = vlc-asap
 	replaces = asap<=5.3.0
 	source = asap-chiptunes-player::git+git://git.code.sf.net/p/asap/code
+	source = xmms2-plugin_add_plugin-header.patch
 	source = cflags_ldflags_append.patch
 	sha256sums = SKIP
+	sha256sums = 7b26cbf212daca03978bb71a04c7782f830657de42eebab0c9e110f0f9204b46
 	sha256sums = 3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b
 
 pkgname = asap-chiptunes-player-git
