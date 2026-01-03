@@ -1,7 +1,7 @@
 pkgbase = go-ios-bin
 	pkgdesc = A collection of tools to interact with iOS devices on Linux
 	pkgver = 1.0.192
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielpaulus/go-ios
 	arch = x86_64
 	license = MIT
