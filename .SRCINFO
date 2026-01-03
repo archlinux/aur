@@ -1,5 +1,3 @@
-#SPDX-FileCopyrightText: Arch Linux contributors
-#SPDX-License-Identifier: 0BSD
 pkgbase = gtfs-validator-cli
 	pkgdesc = Canonical GTFS Validator project for schedule (static) files. (CLI)
 	pkgver = 7.1.0
@@ -7,7 +5,7 @@ pkgbase = gtfs-validator-cli
 	url = https://github.com/MobilityData/gtfs-validator
 	arch = any
 	license = Apache-2.0
-	depends = java-runtime
+	depends = jdk17-temurin
 	source = https://github.com/MobilityData/gtfs-validator/releases/download/v7.1.0/gtfs-validator-7.1.0-cli.jar
 	sha256sums = 52c2785089aaf04e7ba1bb11b2db215692e2622eb0e196b823c194d156d9b58c
 
