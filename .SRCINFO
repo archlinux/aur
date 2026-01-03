@@ -1,0 +1,23 @@
+pkgbase = meerk40t
+	pkgdesc = Hackable Laser software for K40 / GRBL / Fibre Lasers
+	pkgver = 0.98.1
+	pkgrel = 1
+	url = https://github.com/meerk40t/meerk40t
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pyusb
+	depends = python-pyserial
+	depends = python-wxpython
+	depends = python-opencv
+	depends = python-websocket-client
+	optdepends = python-ezdxf
+	source = meerk40t-0.9.8100.tar.gz::https://github.com/meerk40t/meerk40t/archive/refs/tags/0.9.8100.tar.gz
+	source = meerk40t-logo.png
+	sha256sums = aa2abacd5a8407696833cdc7f04c0401dab7a5b3f6bf84ccc29cd0bc79e9cc82
+	sha256sums = e6fa82a217675a14591a2482c96459b4a0f0fa5bce38206f2a3e373811a2be35
+
+pkgname = meerk40t
