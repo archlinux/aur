@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-zig
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Zig grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-zig"
@@ -35,4 +35,8 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-zig"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-zig"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-zig.so" "$pkgdir/usr/lib/tree_sitter/zig.so"
 }
