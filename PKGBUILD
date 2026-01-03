@@ -2,8 +2,8 @@
 # Previous maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-json-git
-pkgver=0.24.8.r4.g46aa487
-pkgrel=3
+pkgver=0.24.8.r7.g001c28d
+pkgrel=1
 pkgdesc="JSON grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-json"
@@ -22,7 +22,7 @@ pkgver() {
   cd "tree-sitter-json"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -47,4 +47,8 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-json"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-json"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-json.so" "$pkgdir/usr/lib/tree_sitter/json.so"
 }
