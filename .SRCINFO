@@ -1,6 +1,6 @@
 pkgbase = termilyon
 	pkgdesc = GTK4+VTE tabbed terminal emulator
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/alikaya/termilyon
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = termilyon
 	makedepends = cargo
 	depends = gtk4
 	depends = vte4
-	source = termilyon-0.1.1.tar.gz::https://github.com/alikaya/termilyon/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 13f2cd66d7a78d09b113aaf85a72b497670e43b08e903fefbc11da799b31059a
+	source = termilyon-0.1.2.tar.gz::https://github.com/alikaya/termilyon/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2713887471b9296b8ac03f51f616d5dee5ea251e7b3cd45ba206010f768c10b3
 
 pkgname = termilyon
