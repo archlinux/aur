@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+post_install() {
+  echo "If you are using a custom config file, make sure to wrap strings in double quotes. See https://github.com/uiriansan/SilentSDDM/issues/77"
+}
+
+post_upgrade() {
+  echo "If you are using a custom config file, make sure to wrap strings in double quotes. See https://github.com/uiriansan/SilentSDDM/issues/77"
+}
