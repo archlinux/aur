@@ -1,0 +1,5 @@
+[dimensions-bin]
+source = "github"
+github = "KarlVM12/dimensions"
+use_latest_release = true
+prefix = "v"

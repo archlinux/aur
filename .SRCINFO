@@ -1,0 +1,20 @@
+pkgbase = dimensions-bin
+	pkgdesc = Terminal Tab Manager - Organize your terminal workflows with an interactive TUI
+	pkgver = 0.2.13
+	pkgrel = 1
+	url = https://github.com/KarlVM12/dimensions
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dimensions
+	conflicts = dimensions
+	source = README-0.2.13.md::https://raw.githubusercontent.com/KarlVM12/dimensions/v0.2.13/README.md
+	source = CHANGELOG-0.2.13.md::https://raw.githubusercontent.com/KarlVM12/dimensions/v0.2.13/CHANGELOG.md
+	sha256sums = a534a04ad2f05eb242287a2accf35c554ddaed79e47d1a5c4c370a6821c8e69e
+	sha256sums = 73737e484d71d6d9c4f35dddb5861d11f99a37af3bed2f1e2b0015d4bcbd934a
+	source_x86_64 = dimensions-x86_64-0.2.13::https://github.com/KarlVM12/dimensions/releases/download/v0.2.13/dimensions-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = de1087ffc4b4662abad0b01aea6f4b5edde987c9256543c06f52f1323f2104db
+	source_aarch64 = dimensions-aarch64-0.2.13::https://github.com/KarlVM12/dimensions/releases/download/v0.2.13/dimensions-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = af664aa5188b45e21ce3222e58fc41b9d8fb226f306bd7ccc1eedf08e0990f7c
+
+pkgname = dimensions-bin
