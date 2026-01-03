@@ -9,6 +9,7 @@ url="https://github.com/moazbuilds/CodeMachine-CLI"
 license=('MIT')
 depends=('nodejs>=20')
 makedepends=('npm')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moazbuilds/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('4e56a341510fd48073069abd5da992d9559a3bcbec46a420e68e91c942909c12')
 
