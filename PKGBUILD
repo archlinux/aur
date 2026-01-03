@@ -56,7 +56,7 @@ source=('git+https://git.code.sf.net/p/cdesktopenv/code'
     'cde.desktop')
 
 sha256sums=('SKIP'
-            '39d1b69d94ce755ae2c3a484f0022fd9f6d2cde177f554f765dee2f8cb7748c1'
+            'c7b9114eba1a89991a4abeb0b87cd7420f7301c341e29593901125214ea86e4d'
             'b6ca01a4ea42849e11dba973c02b6d26608c2abb48a13dca0af3b95efec6de7f'
             '5de87d008bc6a8b7d6c2dc0637a127fb1ceea819fdc28a5d466973d302337e90'
             '9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa'

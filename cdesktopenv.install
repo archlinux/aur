@@ -1,14 +1,14 @@
 post_install() {
-	  echo "  * To use the dtlogin display manager, make sure rpcbind service is enabled"
-	  echo "  * The ttsession binary *also* requires rpcbind service to be enabled"
-	  echo "  * The session start script is /usr/bin/startcdesession.sh"
-    echo "  * Note that you can test CDE in a dedicated Xwayland window:"
-    echo ""
-    echo "        Xwayland -retro -hidpi -fullscreen :10 &"
-    echo "        DISPLAY=:10 /usr/bin/startcdesession.sh"
-    echo ""
+  echo "  * To use the dtlogin display manager, make sure rpcbind service is enabled"
+  echo "  * The ttsession binary *also* requires rpcbind service to be enabled"
+  echo "  * The session start script is /usr/bin/startcdesession.sh"
+  echo "  * Note that you can test CDE in a dedicated Xwayland window:"
+  echo ""
+  echo "        Xwayland -retro -hidpi -fullscreen :10 &"
+  echo "        DISPLAY=:10 /usr/bin/startcdesession.sh"
+  echo ""
 }
 
 post_upgrade() {
-	  post_install
+  post_install
 }
