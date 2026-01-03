@@ -1,0 +1,20 @@
+pkgbase = uefi-manager
+	pkgdesc = A graphical tool for managing UEFI boot entries
+	pkgver = 25.09.1
+	pkgrel = 1
+	url = https://mxlinux.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = efibootmgr
+	depends = qt6-base
+	depends = polkit
+	provides = uefi-manager
+	conflicts = uefi-manager
+	source = https://github.com/MX-Linux/uefi-manager/archive/refs/tags/25.09.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = uefi-manager
