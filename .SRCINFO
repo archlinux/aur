@@ -9,6 +9,6 @@ pkgbase = inspect-deps
 	depends = glibc
 	optdepends = pacman: for package resolution
 	source = inspect-deps-1.0.0.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = ed4230ae6dae54bb85b611076cb625e5642e4a035d4db15ee3361c436b1dcdbf
+	sha256sums = d88c4137ce0cb844bd6744dc3c724e3f3025dadbfbca170bdbf2615d681d5098
 
 pkgname = inspect-deps

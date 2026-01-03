@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('cmake')
 optdepends=('pacman: for package resolution')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ed4230ae6dae54bb85b611076cb625e5642e4a035d4db15ee3361c436b1dcdbf')
+sha256sums=('d88c4137ce0cb844bd6744dc3c724e3f3025dadbfbca170bdbf2615d681d5098')
 
 build() {
   cd "$pkgname-$pkgver"
