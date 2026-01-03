@@ -2,7 +2,7 @@
 
 pkgname=beads-bin
 pkgver=0.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graph-based memory + issue tracker for coding agents (binary release)"
 arch=('x86_64')
 url="https://github.com/steveyegge/beads"
@@ -14,7 +14,7 @@ conflicts=('beads')
 
 latestver() {
     local latest
-    latest=$(curl -fsS "https://api.github.com/repos/steveyegge/beads/releases/latest" \
+    latest=$(curl -fsSL "https://api.github.com/repos/steveyegge/beads/releases/latest" \
         | grep -Po '"tag_name": "v\K[^"]+' \
         | head -n1 || true)
     printf '%s\n' "${latest:-$pkgver}"
