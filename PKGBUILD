@@ -12,7 +12,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 provides=(tsql)
-sha256sums=('11cad48de8f5d3938502b61c1ea7170c21f3b6e5b3a9d3903e11c5f82375b962')
+sha256sums=('8a4781f9e268257a08423ef4c2adb25ea996cc29eb5b2ecf1d5a4b91abd93e24')
 
 prepare() {
   cd "$pkgname-$pkgver"
