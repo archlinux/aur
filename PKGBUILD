@@ -12,7 +12,7 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('8464307557546b0e9622e40bb948dd2ee1d373a927b13b5164113ed62bc96cf8'
+sha256sums=('55adfbea2e52be2709b785ce453a4efb0223de96a651a3562a55d544ef250f00'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
