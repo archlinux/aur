@@ -1,6 +1,6 @@
 pkgbase = waytermirror-git
 	pkgdesc = Real-time Wayland screen mirroring to a terminal using Unicode braille characters, half‑blocks, or ASCII. Includes bidirectional input forwarding, audio streaming (PipeWire), zooming, focus-follow, and optional NVIDIA CUDA acceleration (server-side).
-	pkgver = r105.fe91ebb
+	pkgver = r120.fe91ebb
 	pkgrel = 1
 	url = https://github.com/cyber-wojtek/waytermirror
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = waytermirror-git
 	depends = pcre2
 	depends = lz4
 	depends = rapidjson
+	depends = opus
+	depends = opusfile
 	optdepends = cuda: GPU-accelerated rendering via NVIDIA CUDA
 	provides = waytermirror
 	conflicts = waytermirror
