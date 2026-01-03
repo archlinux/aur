@@ -1,0 +1,12 @@
+pkgbase = gti-cli
+	pkgdesc = A fast, lightweight and terminal based typing speed and practice application.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/developic/gti
+	arch = any
+	license = MIT
+	makedepends = go>=1.19
+	source = git+https://github.com/developic/gti.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = gti-cli
