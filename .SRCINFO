@@ -1,0 +1,12 @@
+pkgbase = typomat
+	pkgdesc = Turn your code into muscle memory
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/vupdivup/typomat
+	arch = any
+	license = MIT
+	makedepends = go>=1.25.4
+	source = typomat-0.1.3.tar.gz::https://github.com/vupdivup/typomat/archive/v0.1.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = typomat
