@@ -1,7 +1,7 @@
 pkgbase = tsql
 	pkgdesc = A modern PostgreSQL manager TUI
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcoury/tsql
 	arch = x86_64
 	arch = aarch64
