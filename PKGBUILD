@@ -14,7 +14,7 @@ pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
 pkgver=26.0.0_devel.216617.3d8286d7c8d
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
@@ -102,11 +102,6 @@ package_mesa-minimal-git() {
     conflicts+=("opencl-mesa<$pkgver-$pkgrel")
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
-
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
 
     # rusticl files go to a separate package
     mkdir -p "$srcdir"/rusticl/{etc/OpenCL/vendors,usr/lib} 
