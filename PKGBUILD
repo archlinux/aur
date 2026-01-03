@@ -1,7 +1,7 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 
 pkgname=sleepy-launcher-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 url="https://github.com/an-anime-team/sleepy-launcher"
@@ -11,6 +11,8 @@ arch=("x86_64")
 license=("GPL-3.0-only")
 
 depends=(
+  "gstreamer"
+  "gst-libav"
   "libadwaita"
   "xdg-desktop-portal"
   "libwebp"
