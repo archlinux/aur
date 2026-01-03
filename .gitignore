@@ -1,1 +1,4 @@
-*.pkg.tar.xz
+*.pkg.tar.zst
+pkg
+src
+stderred
