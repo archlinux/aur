@@ -1,15 +1,17 @@
-# Maintainer: Mike Pento <mpento@darkforge.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=enlightenment16
 pkgver=1.0.31
 _themever=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, flexible, and very extensible Window Manager"
 arch=('x86_64' 'i686')
-url="http://www.enlightenment.org"
-license=('BSD' 'custom')
+url="https://www.enlightenment.org/e16"
+license=('MIT-advertising')
 depends=('libxinerama' 'imlib2' 'perl' 'pango' 'libxcomposite'
-         'libxrandr' 'libpulse' 'libxdamage')
+         'libxrandr' 'libpulse' 'libxdamage' 'libice' 'libsm' 'python' 
+         'libxrender' 'glib2' 'libx11' 'glibc' 'libxext' 'bash' 'dbus'
+         'libxft' 'libsndfile' 'libxfixes')
 source=(http://downloads.sourceforge.net/sourceforge/enlightenment/e16-${pkgver}.tar.gz
         http://downloads.sourceforge.net/enlightenment/e16-themes-${_themever}.tar.gz)
 sha1sums=('5f403eda4caa3aedabd5344042cebd2c0795a251'
