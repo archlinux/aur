@@ -1,7 +1,7 @@
 pkgname=seija
 pkgver=1.0
 pkgrel=1
-pkgdesc="A tiny CLI utility that flips and reverses text, written in Ruby"
+pkgdesc="A small script that prints out text flipped and reversed (touhou reference)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/seija"
 license=('GPL')
