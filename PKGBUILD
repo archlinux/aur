@@ -1,4 +1,4 @@
-pkgname=Dause
+pkgname=dause
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator. DAUSE includes integrated media visualization and a robust parallel tab system."
