@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.2.1.r205.gb29a85f45
+pkgver=4.3.2.r38.g0a23a7852
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -78,7 +78,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DWITH_DOCS=ON
     -DFISH_USE_SYSTEM_PCRE2=ON
-    -DWITH_GETTEXT=ON
+    -DWITH_MESSAGE_LOCALIZATION=ON
     -Wno-dev
   )
   cmake "${cmake_options[@]}"
