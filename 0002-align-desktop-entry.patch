@@ -1,0 +1,52 @@
+# Maintainer: Sam Sinclair <sam at playleft dot com>
+# Contributor: Pujan Modha <pujan.pm@hotmail.com>
+# Contributor: init_harsh
+# /*
+#  * SPDX-FileCopyrightText: 2025 Arch Linux Contributors
+#  *
+#  * SPDX-License-Identifier: 0BSD
+#  */
+From 86af2b79fac8a7a47936cb1a010acfc06087aa11 Mon Sep 17 00:00:00 2001
+From: Sam Sinclair <sam@playleft.com>
+Date: Thu, 1 Jan 2026 13:59:00 +1100
+Subject: [PATCH] align .desktop with wrapper
+
+---
+ helium.desktop | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/helium.desktop b/helium.desktop
+index 8cce3b1..16cd94c 100644
+--- a/helium.desktop
++++ b/helium.desktop
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Version=1.0
+-Name=Helium
++Name=Helium Browser
+ GenericName=Web Browser
+ Comment=Access the Internet
+-Exec=helium %U
++Exec=helium-browser %U
+ StartupNotify=true
+ StartupWMClass=helium
+ Terminal=false
+-Icon=helium
++Icon=helium-browser
+ Type=Application
+ Categories=Network;WebBrowser;
+ MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
+@@ -15,8 +15,8 @@ Actions=new-window;new-private-window;
+ 
+ [Desktop Action new-window]
+ Name=New Window
+-Exec=helium
++Exec=helium-browser
+ 
+ [Desktop Action new-private-window]
+ Name=New Incognito Window
+-Exec=helium --incognito
++Exec=helium-browser --incognito
+-- 
+2.52.0
+
