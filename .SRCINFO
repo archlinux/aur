@@ -1,8 +1,9 @@
 pkgbase = openterfaceqt-appimage
 	pkgdesc = Openterface Mini-KVM Host Application (AppImage version)
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TechxArtisanStudio/Openterface_QT
+	install = openterfaceqt-appimage.install
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = zlib

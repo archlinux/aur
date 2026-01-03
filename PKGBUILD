@@ -4,18 +4,18 @@ _pkgname=openterfaceqt
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Openterface Mini-KVM Host Application (AppImage version)"
 arch=('x86_64')
 url="https://github.com/TechxArtisanStudio/Openterface_QT"
 license=('GPL-3.0-only')
 depends=('zlib' 'fuse2')
 options=(!strip)
+install=${pkgname}.install
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/TechxArtisanStudio/Openterface_QT/releases/download/${pkgver}/openterfaceQT_linux_amd64.AppImage"
                "https://raw.githubusercontent.com/TechxArtisanStudio/Openterface_QT/${pkgver}/LICENSE"
-               "51-openterface.rules"
-              )
+               "51-openterface.rules")
 noextract=("${_appimage}")
 sha256sums_x86_64=('2468085a0e74e73c34c837ce04c153d54ebbd0d86d6931d27262e13e5f219c9b'
                    '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=[A-Za-z]*$|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s|Exec=.*$|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -54,5 +54,5 @@ package() {
     ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname"
 
     # Udev rules
-    install -Dm644 "${srcdir}/51-openterface.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
+    install -Dm644 "${srcdir}/51-openterface.rules" "${pkgdir}/usr/lib/udev/rules.d/51-openterface.rules"
 }
