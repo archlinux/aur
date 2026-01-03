@@ -1,7 +1,7 @@
 pkgbase = linux-hardened
 	pkgdesc = Security-Hardened Linux
 	pkgver = 6.17.13.hardened1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL-2.0-only
