@@ -15,6 +15,6 @@ pkgbase = eilmeldung
 	conflicts = eilmeldung-bin
 	options = !lto
 	source = eilmeldung-0.6.1.tar.gz::https://github.com/christo-auer/eilmeldung/archive/0.6.1.tar.gz
-	sha256sums = 6330ade2b321188692660a479b26ef3a6236b1e4271382120390bcb12f018631
+	sha256sums = b3ead1077726cb8d34336363472422626abf44e2170af628432048fc8800d424
 
 pkgname = eilmeldung
