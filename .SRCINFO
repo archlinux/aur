@@ -1,0 +1,24 @@
+pkgbase = scrap-git
+	pkgdesc = New advanced block based programming language, built from ground up in C
+	pkgver = 0.5.1.r5.g32ce623
+	pkgrel = 1
+	url = https://github.com/Grisshink/scrap
+	arch = x86_64
+	license = Zlib
+	makedepends = git
+	makedepends = gettext
+	depends = libx11
+	depends = libxrandr
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxi
+	provides = scrap
+	conflicts = scrap
+	source = git+https://github.com/Grisshink/scrap.git
+	source = git+https://github.com/raysan5/raylib.git
+	source = scrap.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 872b6fd2079dbcc1859e524ee5807a1c8cfb8d898fa5df0143ca1b1f0c1306a2
+
+pkgname = scrap-git
