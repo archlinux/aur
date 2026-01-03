@@ -1,7 +1,7 @@
 # Maintainer: Milad Alizadeh (git@mil.ad)
 _pkgname=sioyek
 pkgname="${_pkgname}-supernote"
-pkgver=r2015.07c95d3b
+pkgver=r2016.d2209ca6
 pkgrel=1
 pkgdesc="A PDF viewer designed for reading research papers and technical books with Supernote .mark file support."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
