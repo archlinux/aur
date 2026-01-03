@@ -1,7 +1,7 @@
 pkgbase = mux-media
 	pkgdesc = A CLI utility for muxing media (e.g. video, audio, subtitles).
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.16.1
+	pkgrel = 1
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
 	license = MIT OR Apache-2.0
@@ -10,7 +10,7 @@ pkgbase = mux-media
 	makedepends = rust
 	depends = ffmpeg
 	options = !debug
-	source = mux-media-0.16.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = 914d11f72baf8e8034a3dd037603352934fb85ab41aac62fb91638e76ef2b8af
+	source = mux-media-0.16.1.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = ddeb36b0ad7f53e6a70ceb63d97f810ddca12260c085b69709ede8472f37e048
 
 pkgname = mux-media

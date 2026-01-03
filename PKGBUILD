@@ -1,8 +1,8 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=mux-media
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="A CLI utility for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
 url="https://github.com/nujievik/mux-media"
@@ -12,7 +12,7 @@ makedepends=("clang" "pkgconf" "rust")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("914d11f72baf8e8034a3dd037603352934fb85ab41aac62fb91638e76ef2b8af")
+sha256sums=("ddeb36b0ad7f53e6a70ceb63d97f810ddca12260c085b69709ede8472f37e048")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
