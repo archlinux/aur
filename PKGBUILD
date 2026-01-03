@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.16.18
+pkgver=3.16.19
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -49,7 +49,7 @@ makedepends=(
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=08a4595b2bda6901792e2225a6b2f0c39266ebfd
+commit=c3cc9b8414d4afa8c53217112a71f17a95b939f8
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
   "subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863"
@@ -113,7 +113,7 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899') # End
 
-sha512sums=('6095880ace77d5eb53fe8ad06e0adae22de6455d691a85b3afc651260b96cc840cc12d1d5c01e920afab4fb4f566292071b4981af7c3157a7a2edee9c9b587c8'
+sha512sums=('b769b0b3beeaa239e3e39c503c00029d40064a91f44e45ff51bb6ba00ff3a76248da842688b899f5b9f81c2dba215358557a8569af3506d7805cb60705678c14'
             '16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
             '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
