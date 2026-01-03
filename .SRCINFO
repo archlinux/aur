@@ -1,7 +1,7 @@
 pkgbase = opencode-desktop-bin
 	pkgdesc = OpenCode desktop client
 	pkgver = 1.0.223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencode.ai
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = opencode-desktop-bin
 	depends = webkit2gtk-4.1
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
+	depends = gst-plugins-good
 	provides = opencode-desktop
 	conflicts = opencode-desktop
 	options = !strip

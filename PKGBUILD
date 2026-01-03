@@ -2,14 +2,14 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.0.223
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
 license=('MIT')
 provides=('opencode-desktop')
 conflicts=('opencode-desktop')
-depends=('gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-theme' 'gst-plugins-good')
 options=('!strip' '!debug')
 
 latestver() {
