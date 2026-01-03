@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-html-git
 	pkgdesc = HTML grammar for tree-sitter
-	pkgver = 0.23.2.r4.gcbb91a0
-	pkgrel = 3
+	pkgver = 0.23.2.r7.g73a3947
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-html
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tree-sitter-html-git
 	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
-	provides = tree-sitter-html=0.23.2.r4.gcbb91a0
+	provides = tree-sitter-html=0.23.2.r7.g73a3947
 	provides = libtree-sitter-html.so
 	conflicts = tree-sitter-html
 	options = staticlibs
