@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-kotlin-git
 	pkgdesc = Kotlin grammar for tree-sitter
 	pkgver = 1.1.0.r1.g3dea6df
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter-grammars/tree-sitter-kotlin
 	arch = i686
 	arch = x86_64
