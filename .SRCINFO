@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-r
 	pkgdesc = R grammar for tree-sitter
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r-lib/tree-sitter-r
 	arch = i686
 	arch = x86_64
