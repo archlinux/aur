@@ -1,0 +1,10 @@
+pkgbase = nautilus-dummy
+	pkgdesc = Dummy package to satisfy nautilus dependency
+	pkgver = 1.1
+	pkgrel = 1
+	install = nautilus-dummy.install
+	arch = any
+	provides = nautilus
+	conflicts = nautilus
+
+pkgname = nautilus-dummy

@@ -1,0 +1,14 @@
+post_install() {
+  echo "--------------------------NOTE----------------------------------"
+  echo " This is a dummy package to satisfy dependencies."
+  echo " Please install any other file manager."
+  echo " For portal:"
+  echo "   Install xdg-desktop-portal-gtk &"
+  echo "   Set: org.freedesktop.impl.portal.FileChooser=gtk"
+  echo " in ~/.config/xdg-desktop-portal/portals.conf"
+  echo "----------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
