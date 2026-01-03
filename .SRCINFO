@@ -1,14 +1,14 @@
 pkgbase = lowfi
 	pkgdesc = An extremely simple lofi player.
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/talwat/lowfi
 	arch = any
 	license = MIT
 	makedepends = cargo
 	makedepends = alsa-lib
 	makedepends = openssl
-	source = lowfi-1.7.2.tar.gz::https://static.crates.io/crates/lowfi/lowfi-1.7.2.crate
-	sha512sums = 6731344af46c472e6657285a2ed9b0348422747543de822c0628562212a63d074fd7b739effbbe09853b050064141e658da7456d9b04b97778cd3ef5753cba6a
+	source = lowfi-2.0.0.tar.gz::https://static.crates.io/crates/lowfi/lowfi-2.0.0.crate
+	sha512sums = 0769d42ea6dc1ec5ffc9e200fe310adda2b7548af2bcee7f4360c9b83c46514d526f894159b0b19cb5800b27a19931733ceb2649690cb39d9058738c3c19a1d8
 
 pkgname = lowfi
