@@ -1,7 +1,7 @@
 # Maintainer: Ali <avileli@outlook.com>
 
 pkgname=termilyon
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="GTK4+VTE tabbed terminal emulator"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4' 'vte4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3e6e53fe24e234f4943d93275307b5356276dddf738fe847d7ee08fd2e640c6')
+sha256sums=('3a922f53c43fb6c8cfc4f731b45f9740e455aa7d8f8b75cd3301c0155b2711ab')
 
 prepare() {
   cd "$pkgname-$pkgver"
