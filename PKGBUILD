@@ -34,7 +34,7 @@ source=(
   "sleepy-launcher.desktop"
 )
 
-md5sums=('f655d996843986e15f0ee572b29dcb00'
+md5sums=('97fcdfbd507fed9cfcc5292f43b8a68e'
          '808f0ccaac7bac70b56e400760f0b764'
          'a039b4bdbc28710d8784c84e2da16785')
 
