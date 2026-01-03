@@ -4,8 +4,8 @@
 _name=CloudReverb
 pkgname=${_name,,}
 _plugin_uri="http://github.com/xunil-cloud/$_name"
-pkgver=0.4
-pkgrel=1
+pkgver=0.4.1
+pkgrel=2
 pkgdesc='An algorithmic reverb plugin and app for creating huge, endless spaces and modulated echoes'
 arch=(x86_64 aarch64)
 url='https://github.com/xunil-cloud/CloudReverb'
@@ -25,7 +25,7 @@ source=(
   "JUCE-$_juce_commit.tar.gz::https://github.com/juce-framework/JUCE/archive/$_juce_commit.tar.gz"
 )
 
-sha256sums=('076dd690fcc31188e4eaa0a0ea7c39a2dfc339c55697ac81d37dcd6199fba2d1'
+sha256sums=('5a018f8e414999e65a98c12b5817744eb21d1f6f11c05681df97a3568fa5fc2a'
             'ab02a58f4cc0e42102a22e863e8bbe3aaa1c3e72899fd567154a5a1aa7898219')
 
 prepare() {

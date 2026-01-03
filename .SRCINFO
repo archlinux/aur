@@ -1,7 +1,7 @@
 pkgbase = cloudreverb
 	pkgdesc = An algorithmic reverb plugin and app for creating huge, endless spaces and modulated echoes
-	pkgver = 0.4
-	pkgrel = 1
+	pkgver = 0.4.1
+	pkgrel = 2
 	url = https://github.com/xunil-cloud/CloudReverb
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = cloudreverb
 	optdepends = jack: for running the standalone version with JACK
 	optdepends = lv2-host: for loading the LV2 plugin
 	optdepends = vst3-host: for loading the VST3 plugin
-	source = cloudreverb-0.4.tar.gz::https://github.com/xunil-cloud/CloudReverb/archive/refs/tags/v0.4.tar.gz
+	source = cloudreverb-0.4.1.tar.gz::https://github.com/xunil-cloud/CloudReverb/archive/refs/tags/v0.4.1.tar.gz
 	source = JUCE-d6181bde38d858c283c3b7bf699ce6340c050b5d.tar.gz::https://github.com/juce-framework/JUCE/archive/d6181bde38d858c283c3b7bf699ce6340c050b5d.tar.gz
-	sha256sums = 076dd690fcc31188e4eaa0a0ea7c39a2dfc339c55697ac81d37dcd6199fba2d1
+	sha256sums = 5a018f8e414999e65a98c12b5817744eb21d1f6f11c05681df97a3568fa5fc2a
 	sha256sums = ab02a58f4cc0e42102a22e863e8bbe3aaa1c3e72899fd567154a5a1aa7898219
 
 pkgname = cloudreverb
