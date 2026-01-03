@@ -1,10 +1,9 @@
 pkgbase = pandora_launcher
-	pkgdesc = Pandora is a modern Minecraft launcher that balances ease-of-use with powerful instance management features
+	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pandora.moulberry.com/
 	arch = x86_64
-	arch = amd64
 	license = MIT
 	makedepends = cargo
 	makedepends = mold
@@ -17,6 +16,7 @@ pkgbase = pandora_launcher
 	depends = libxcb
 	depends = vulkan-icd-loader
 	depends = vulkan-driver
+	depends = openssl
 	optdepends = flite: minecraft narrator support
 	source = pandora_launcher::git+https://github.com/Moulberry/PandoraLauncher.git#tag=v2.3.0
 	source = pandora_launcher.desktop

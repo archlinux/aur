@@ -1,12 +1,9 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora_launcher
 pkgver=2.3.0
-pkgrel=1
-pkgdesc="Pandora is a modern Minecraft launcher that balances ease-of-use with powerful instance management features"
-arch=(
-  'x86_64'
-  'amd64'
-)
+pkgrel=2
+pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
+arch=('x86_64')
 url="http://pandora.moulberry.com/"
 license=('MIT')
 depends=(
@@ -17,6 +14,7 @@ depends=(
   'libxcb'
   'vulkan-icd-loader'
   'vulkan-driver'
+  'openssl'
 )
 makedepends=(
   'cargo'
@@ -56,4 +54,5 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname/target/$(rustc --print host-tuple)/release/$pkgname"
   install "$pkgname/package/icon_256x256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
