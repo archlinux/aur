@@ -2,7 +2,7 @@
 
 _module=drf-spectacular-sidecar
 pkgname=python-$_module
-pkgver=2025.10.1
+pkgver=2026.1.1
 pkgrel=1
 pkgdesc="Serve self-contained distribution builds of Swagger UI and Redoc with Django"
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
 source=(
 	"${_module}-${pkgver}.tar.gz::https://github.com/tfranzel/${_module}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('65fd9f8661141243f91287e97508c2d848e4b8afc97e69ab447113d21403cef1')
+sha256sums=('ccb8df82b733bfe15f86c45c90baa2ff5c11a7d5ea2c96b3a32f0a151de9ee6c')
 
 
 build() {
