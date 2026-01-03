@@ -1,6 +1,6 @@
 pkgbase = whyis
 	pkgdesc = A simple linux troubleshooting utility.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/xZepyx/whyis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = whyis
 	makedepends = nim
 	makedepends = git
 	depends = glibc
-	source = whyis-0.1.0.tar.gz::https://github.com/xZepyx/whyis/archive/refs/tags/v0.1.0.tar.gz
+	source = whyis-0.2.0.tar.gz::https://github.com/xZepyx/whyis/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = 4850fa4e2920951a16f8fb84d49fe41fcac9a75890617bc5aa4c407868b67b3c
 
 pkgname = whyis
