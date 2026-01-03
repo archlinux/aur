@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-typescript
 pkgver=0.23.2
-pkgrel=3
+pkgrel=4
 pkgdesc="TypeScript grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-typescript"
@@ -35,4 +35,9 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-typescript"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-typescript"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-tsx.so" "$pkgdir/usr/lib/tree_sitter/tsx.so"
+  ln -s "/usr/lib/libtree-sitter-typescript.so" "$pkgdir/usr/lib/tree_sitter/typescript.so"
 }
