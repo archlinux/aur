@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-verilog
 	pkgdesc = SystemVerilog grammar for tree-sitter
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter/tree-sitter-verilog
 	arch = i686
 	arch = x86_64
