@@ -5,7 +5,7 @@ _pkgname=dimensions
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal Tab Manager - Organize your terminal workflows with an interactive TUI"
 
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ source=("README-${pkgver}.md::${_urlraw}/README.md" "CHANGELOG-${pkgver}.md::${_
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
 sha256sums=('601106ec230e339989c3eabb474fab35ea66274063e387b00540e943c7700e83'
-            'df82357d0fc184d202eafe9dc0d7b17df28a71fb21d2b83858266b00e2c11c61')
-sha256sums_x86_64=('2468e4dfee4ed43a8f770cc96beea03cd5565c06687c0421cc31b2a8c21c5a67')
-sha256sums_aarch64=('a157350a5339ac340861ccea65d2a2ae9e0421ec60f6026eb68a0170756a4dbb')
+            'c9cf2ad670cccd20cd9c49762ac2aec76cc8fa753822882b81948d7dddfed0fc')
+sha256sums_x86_64=('6fc18ca049dac536d95982f34ec04471ecacb2d80c8b44fdb349a7b3348edf8d')
+sha256sums_aarch64=('38918198d22b3207262072f89ad3f5b7e611766538603b26da6be8e9ac3ae73c')
 
 
 
