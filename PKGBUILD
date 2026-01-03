@@ -3,7 +3,7 @@
 
 pkgname=opentrace-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Archeb/opentrace"
@@ -26,7 +26,7 @@ source_aarch64=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/
 
 latestver() {
   # Fetch latest version from GitHub API
-  curl -s "https://api.github.com/repos/Archeb/opentrace/releases/latest" | jq -r '.tag_name' | sed 's/^v//'
+  curl -fsSL "https://api.github.com/repos/Archeb/opentrace/releases/latest" | jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 package() {
