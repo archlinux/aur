@@ -1,9 +1,9 @@
-# Maintainer: Raphael Scholer <rascholer@gmail.com>
+# Contributor: Raphael Scholer <rascholer@gmail.com>
 # Maintainer: m8D2 <omui (at) proton mail (dot) com>
 
 pkgname="elementary-xfce-icons"
-pkgver=0.21
-pkgrel=3
+pkgver=0.22
+pkgrel=1
 pkgdesc='Elementary icon theme with improved Xfce support'
 arch=('any')
 url="https://github.com/shimmerproject/elementary-xfce"
@@ -11,7 +11,7 @@ license=(GPL3)
 makedepends=(gtk3 optipng)
 depends=(adwaita-icon-theme)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('54061d52495a67e945cdbadeef7fe72395e0a8aebf30ed140cc614093c1597f5')
+sha256sums=('0be90252c4bf8e06bbca16ef376bd1d7891f3353a5145289bff8a48563568259')
 
 build() {
     cd "elementary-xfce-$pkgver"
