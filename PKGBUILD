@@ -1,8 +1,8 @@
 pkgname=nautilus-dummy
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dummy package to satisfy nautilus dependency"
-pkgurl="https://github.com/mydehq/${pkgname}"
+url="https://github.com/mydehq/${pkgname}"
 arch=('any')
 provides=('nautilus')
 conflicts=('nautilus')

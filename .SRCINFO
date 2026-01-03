@@ -1,7 +1,8 @@
 pkgbase = nautilus-dummy
 	pkgdesc = Dummy package to satisfy nautilus dependency
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/mydehq/nautilus-dummy
 	install = nautilus-dummy.install
 	arch = any
 	provides = nautilus
