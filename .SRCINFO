@@ -1,0 +1,18 @@
+pkgbase = oddmu-git
+	pkgdesc = Oddμ helps you run a minimal wiki, blog, digital garden, memex or Zettelkasten (development version)
+	pkgver = 1.19.r14.gecfee31
+	pkgrel = 1
+	url = https://alexschroeder.ch/view/oddmu/index
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	depends = glibc
+	provides = oddmu
+	conflicts = oddmu
+	source = git+https://src.alexschroeder.ch/oddmu.git
+	sha256sums = SKIP
+
+pkgname = oddmu-git
