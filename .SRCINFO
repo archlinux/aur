@@ -1,6 +1,6 @@
 pkgbase = hfdownloader-git
 	pkgdesc = Simple go utility to download HuggingFace Models and Datasets
-	pkgver = r58.6d06f40
+	pkgver = r87.fd209ac
 	pkgrel = 1
 	url = https://github.com/bodaay/HuggingFaceModelDownloader/
 	arch = x86_64

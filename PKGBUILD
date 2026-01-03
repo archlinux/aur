@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Feddad <mrf345@gmail.com>
 
 pkgname=hfdownloader-git
-pkgver=r72.cbf2f5e
+pkgver=r87.fd209ac
 pkgrel=1
 pkgdesc="Simple go utility to download HuggingFace Models and Datasets"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${dirname}"
-    CGO_ENABLED=0 GOOS=linux go build -o ${pkgname%-git}.bin  main.go
+    CGO_ENABLED=0 GOOS=linux go build -o ${pkgname%-git}.bin ./cmd/hfdownloader
 }
 
 package() {
