@@ -1,4 +1,5 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer: Pablo Lezaeta <prflr88 (Arro'a) gmail puntocom>
 
 pkgname=linuxmint-keyring
 pkgver=2022.06.21
