@@ -1,0 +1,15 @@
+pkgbase = ocaml-domain-name
+	pkgdesc = RFC 1035 Internet domain names
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/hannesm/domain-name
+	arch = x86_64
+	license = ISC
+	checkdepends = ocaml-alcotest
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	source = ocaml-domain-name-0.5.0.tbz::https://github.com/hannesm/domain-name/releases/download/v0.5.0/domain-name-0.5.0.tbz
+	sha256sums = 9ec7ae2c22772c150b84cfa3f21d9bf25fae14a796f31e20df52d86f46499d89
+
+pkgname = ocaml-domain-name
