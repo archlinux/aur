@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.6.0 ➙ 2.10.1
-              : 2025-06-19 ➙ 2026-01-03
+ Tags         : 2.7.0 ➙ 2.11.0
+              : 2025-06-22 ➙ 2026-01-03
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-03   : 2.11.0
+              - Actualy make the hatch to uv changes (oops)
+                Change license to GPL-2.0-or-later
+              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2026-01-03   : 2.10.1
               - Change packaging from hatch to uv
@@ -24,8 +29,4 @@
  2025-06-22   : 2.7.0
               - run_prog: refactor code. Protect against one possible deadlock
  2025-06-19   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-06-19   : 2.6.0
-              - run_prog: When writing to subprocess stdin, add a flush() before we close the file object
               - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
