@@ -1,17 +1,15 @@
 pkgname=thermometer-git
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CPU frequency management utility"
 arch=('x86_64')
-url="https://github.com/watchmypizza/thermometer"
-sha256sums=('SKIP')
+url="github.com"
 license=('MIT')
-pkgver=1.3.3.18.b156c44
-depends=('dotnet-runtime')
+pkgver=1.3.3.24.gb156c44
+depends=('dotnet-runtime' 'dotnet-host')
 makedepends=('dotnet-sdk')
-options=('!debug')
-
+options=('!debug' '!strip')
 source=("git+https://github.com/watchmypizza/thermometer.git")
-md5sums=()
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/thermometer"
@@ -24,6 +22,7 @@ build() {
     -c Release \
     -r linux-x64 \
     --self-contained false \
+    -p:PublishSingleFile=true \
     -o "$srcdir/publish"
 }
 
@@ -31,10 +30,8 @@ package() {
   install -dm755 "$pkgdir/usr/lib/thermometer"
   cp -a "$srcdir/publish/." "$pkgdir/usr/lib/thermometer/"
 
+  local bin_name=$(find "$srcdir/publish" -maxdepth 1 -executable -type f ! -name "*.dll" ! -name "*.so" -printf "%f\n" | head -n 1)
+
   install -dm755 "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/thermometer" <<'EOF'
-#!/bin/sh
-exec dotnet /usr/lib/thermometer/thermometer.dll "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/thermometer"
+  ln -s "/usr/lib/thermometer/$bin_name" "$pkgdir/usr/bin/thermometer"
 }
