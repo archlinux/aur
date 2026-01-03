@@ -1,6 +1,6 @@
 pkgbase = python-django-choices-field
 	pkgdesc = Django field that set/get django's new TextChoices/IntegerChoices enum
-	pkgver = 3.1.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/bellini666/django-choices-field
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-django-choices-field
 	depends = python
 	depends = python-django
 	depends = python-typing_extensions
-	source = django-choices-field-3.1.1.tar.gz::https://github.com/bellini666/django-choices-field/archive/refs/tags/v3.1.1.tar.gz
-	sha256sums = 41591e4c76984a02cb50d92a6039b611d56f5f9f406082d5d46f758650061764
+	source = django-choices-field-4.0.0.tar.gz::https://github.com/bellini666/django-choices-field/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = f5060e9edbb5bbbd845207c00c7a0a52d9e380586d38b79c4cd1896e093a4471
 
 pkgname = python-django-choices-field

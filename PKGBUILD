@@ -2,7 +2,7 @@
 
 _name=django-choices-field
 pkgname=python-$_name
-pkgver=3.1.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Django field that set/get django's new TextChoices/IntegerChoices enum"
 arch=('any')
@@ -35,4 +35,4 @@ package() {
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('41591e4c76984a02cb50d92a6039b611d56f5f9f406082d5d46f758650061764')
+sha256sums=('f5060e9edbb5bbbd845207c00c7a0a52d9e380586d38b79c4cd1896e093a4471')
