@@ -3,7 +3,7 @@
 
 pkgname=venera-bin
 pkgdesc="A comic reader that support reading local and network comics."
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/venera-app/venera"
