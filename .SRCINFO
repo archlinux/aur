@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-yaml
 	pkgdesc = YAML grammar for tree-sitter
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-yaml
 	arch = i686
 	arch = x86_64
