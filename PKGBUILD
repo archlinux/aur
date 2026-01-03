@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('nim' 'git')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4850fa4e2920951a16f8fb84d49fe41fcac9a75890617bc5aa4c407868b67b3c')
+sha256sums=('b5fcba395c457ab42d0259eb8d9c21be25061d42be493f2303a4818e13aa08c2')
 
 pkgver() {
   git ls-remote --tags "$url.git" \
