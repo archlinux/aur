@@ -1,6 +1,6 @@
 # Maintainer: Anjishnu Sengupta <itsaemail@duck.com>
 pkgname=ny-cli
-pkgver=2.0.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A beautiful terminal-based anime streaming client powered by nyanime.tech"
 arch=('any')
