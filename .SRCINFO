@@ -1,6 +1,6 @@
 pkgbase = arch-tui
 	pkgdesc = A unified TUI for Arch Linux package management (Pacman + AUR)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sreevarshan-xenoz/arch-tui
 	arch = x86_64
