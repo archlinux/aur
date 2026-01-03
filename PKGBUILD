@@ -1,6 +1,6 @@
 # Maintainer: CassandraGargoyle <cassandragargoyle@gmail.com>
 pkgname=portunix
-pkgver=1.7.5
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Portunix CLI – intelligent developer environment automation toolkit'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 provides=('portunix')
 conflicts=('portunix-bin')
 source=("portunix-${pkgver}.tar.gz::https://github.com/cassandragargoyle/Portunix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d7d24e330b6f8170602f54e6e02245435f5b49baa362178ebe5e03298826172')
+sha256sums=('SKIP')
 
 build() {
   cd "portunix-${pkgver}"
@@ -33,6 +33,11 @@ package() {
   install -Dm755 "ptx-virt" "$pkgdir/usr/bin/ptx-virt"
   install -Dm755 "ptx-ansible" "$pkgdir/usr/bin/ptx-ansible"
   install -Dm755 "ptx-prompting" "$pkgdir/usr/bin/ptx-prompting"
+  install -Dm755 "ptx-python" "$pkgdir/usr/bin/ptx-python"
+  install -Dm755 "ptx-installer" "$pkgdir/usr/bin/ptx-installer"
+  install -Dm755 "ptx-aiops" "$pkgdir/usr/bin/ptx-aiops"
+  install -Dm755 "ptx-make" "$pkgdir/usr/bin/ptx-make"
+  install -Dm755 "ptx-pft" "$pkgdir/usr/bin/ptx-pft"
 
   # Install shell completions
   $pkgdir/usr/bin/portunix completion bash > portunix.bash
