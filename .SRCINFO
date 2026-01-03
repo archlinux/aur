@@ -5,6 +5,7 @@ pkgbase = ximaging
 	url = https://fastestcode.org/ximaging.html
 	arch = x86_64
 	makedepends = make
+	depends = gcc-libs
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libtiff

@@ -5,6 +5,7 @@ pkgdesc="Lightweight, Motif-based image viewer for X11"
 url="https://fastestcode.org/ximaging.html"
 arch=(x86_64)
 depends=(
+	gcc-libs	# libgomp.so
 	libjpeg-turbo	# libjpeg
 	libpng		# libpng
 	libtiff		# libtiff
@@ -14,8 +15,8 @@ depends=(
 makedepends=(
 	make
 )
-#source=("git+https://github.com/alx210/ximaging")
-source=("https://fastestcode.org/dl/ximaging-src-$pkgver.tar.xz")
+#source=("git+https://github.com/alx210/$pkgname")
+source=("https://fastestcode.org/dl/$pkgname-src-$pkgver.tar.xz")
 sha256sums=('1bf62c19156e537b037a9e7f7ff25d2f6d824c5d9a57f9ad06ff55640622e43a')
 
 build() {
