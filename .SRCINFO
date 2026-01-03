@@ -1,0 +1,10 @@
+pkgbase = ttf-ob-freie
+	pkgdesc = Old Babylonian Freie - A font made for the Institut für Altorientalistik Berlin, based on aBZL.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/crzfub/OB-Freie
+	arch = any
+	license = SIL
+	source = https://github.com/crzfub/OB-Freie/archive/refs/tags/v.2.0.0.tar.gz
+
+pkgname = ttf-ob-freie
