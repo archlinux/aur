@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-regex-git
 	pkgdesc = Regex grammar for tree-sitter
-	pkgver = 1.0.0.r34.gb638d29
-	pkgrel = 3
+	pkgver = 1.0.0.r38.gb2ac15e
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-regex
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tree-sitter-regex-git
 	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
-	provides = tree-sitter-regex=1.0.0.r34.gb638d29
+	provides = tree-sitter-regex=1.0.0.r38.gb2ac15e
 	provides = libtree-sitter-regex.so
 	conflicts = tree-sitter-regex
 	options = staticlibs
