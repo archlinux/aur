@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-php
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-php"
@@ -37,4 +37,9 @@ package() {
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-php"
 
   chmod 644 "$pkgdir"/usr/lib/libtree-sitter-php{,_only}.a
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-php.so" "$pkgdir/usr/lib/tree_sitter/php.so"
+  ln -s "/usr/lib/libtree-sitter-php_only.so" "$pkgdir/usr/lib/tree_sitter/php_only.so"
 }
