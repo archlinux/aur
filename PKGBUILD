@@ -11,7 +11,7 @@ depends=('libxml2' 'openssl' 'sqlite3' 'libsixel')
 conflicts=('eilmeldung-git' 'eilmeldung-bin' )
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a03f5a71c9cc2dc2de87c9b759b3a471ebc65e1505b0b3d771a902982d0433dc')
+sha256sums=('6330ade2b321188692660a479b26ef3a6236b1e4271382120390bcb12f018631')
 arch=('x86_64')
 options=('!lto')
 
