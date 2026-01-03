@@ -1,6 +1,6 @@
 pkgbase = inspect-deps
 	pkgdesc = ELF dependency analyzer with optional pacman integration
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Kam1k4dze/inspect-deps
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = inspect-deps
 	makedepends = cmake
 	depends = glibc
 	optdepends = pacman: for package resolution
-	source = inspect-deps-1.0.1.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = d88c4137ce0cb844bd6744dc3c724e3f3025dadbfbca170bdbf2615d681d5098
+	source = inspect-deps-1.0.2.tar.gz::https://github.com/Kam1k4dze/inspect-deps/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 9b3d2a0cab2bc8f665eea8f5aee60a8739f77252f61c599a1c3e3df096175f0c
 
 pkgname = inspect-deps
