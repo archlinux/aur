@@ -2,7 +2,7 @@
 
 pkgname=ankama-launcher
 pkgver=3.13.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
 
@@ -11,8 +11,10 @@ license=('custom:Ankama License')
 install='ankama-launcher.install'
 depends=('zlib' 'bash' 'fuse')
 makedepends=('p7zip')
-optdepends=('wine: to play Dofus'
-            'java-environment: to play Wakfu')
+optdepends=('libnotify' 'libappindicator'
+            'java-runtime: to play Wakfu'
+            'alsa-lib: to play Wakfu'
+            'gtk3: to play Wakfu')
 options=('!strip')
 source=('ankama-launcher')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
@@ -23,19 +25,22 @@ prepare() {
     cd "${srcdir}"
     mv "${pkgname}-${pkgver}-${CARCH}.AppImage" "ankama-launcher.AppImage"
     7z e "${srcdir}/ankama-launcher.AppImage" "zaap.desktop"
-    7z e "${srcdir}/ankama-launcher.AppImage" "usr/share/icons/hicolor/128x128/apps/zaap.png"
+    7z x "${srcdir}/ankama-launcher.AppImage" "usr/share/icons/hicolor/*/apps/zaap.png" -o"icons/"
 
-    mv "zaap.desktop" "ankama-launcher.desktop"
-    mv "zaap.png" "ankama-launcher.png"
-
-    sed -i "s/^Exec=.*$/Exec=${pkgname}/" "ankama-launcher.desktop"
-    sed -i "s/^Icon=zaap$/Icon=ankama-launcher/" "ankama-launcher.desktop"
+    sed -i "s/^Exec=.*$/Exec=${pkgname}/" "zaap.desktop"
+    sed -i "s/^Icon=zaap$/Icon=ankama-launcher/" "zaap.desktop"
 }
 
 package() {
-    install -dm775 -ggames "${pkgdir}/opt/ankama-launcher"
-    install -Dm775 -ggames "ankama-launcher.AppImage" "${pkgdir}/opt/ankama-launcher/ankama-launcher.AppImage"
-    install -Dm755 "ankama-launcher"                  "${pkgdir}/usr/bin/ankama-launcher"
-    install -Dm644 "ankama-launcher.desktop"          "${pkgdir}/usr/share/applications/ankama-launcher.desktop"
-    install -Dm644 "ankama-launcher.png"              "${pkgdir}/usr/share/pixmaps/ankama-launcher.png"
+    install -dm775 "${pkgdir}/opt/ankama-launcher"
+    install -Dm775 "ankama-launcher.AppImage" "${pkgdir}/opt/ankama-launcher/ankama-launcher.AppImage"
+    install -Dm755 "ankama-launcher"          "${pkgdir}/usr/bin/ankama-launcher"
+    install -Dm644 "zaap.desktop"             "${pkgdir}/usr/share/applications/ankama-launcher.desktop"
+
+    # Install all icons to hicolor directory structure, renaming from zaap to ankama-launcher
+    find icons/usr/share/icons/hicolor -name "zaap.png" | while read -r icon; do
+        dest="${pkgdir}${icon#icons}"
+        dest="${dest%zaap.png}ankama-launcher.png"
+        install -Dm644 "$icon" "$dest"
+    done
 }
