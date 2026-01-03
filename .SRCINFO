@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.5.0.r180.gd97bc73
+	pkgver = 0.5.0.r250.gea64612
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -16,8 +16,6 @@ pkgbase = uutils-coreutils-git
 	conflicts = coreutils
 	options = zipman
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = libc0.2.178.tar.gz::https://github.com/rust-lang/libc/archive/refs/tags/0.2.178.tar.gz
 	sha256sums = SKIP
-	sha256sums = 4917975056bad9c6098fd389229804d6dadae2bcb1eb2040ceef448ba95a2ec8
 
 pkgname = uutils-coreutils-git
