@@ -1,0 +1,18 @@
+pkgbase = wl-kaomoji
+	pkgdesc = wayland kaomoji picker using wofi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xo-xo-xo-xo/wl-kaomoji
+	arch = any
+	license = MIT
+	depends = bash
+	depends = wofi
+	depends = wl-clipboard
+	depends = wtype
+	depends = jq
+	source = wl-kaomoji-1.0.0.tar.gz::https://github.com/xo-xo-xo-xo/wl-kaomoji/archive/v1.0.0.tar.gz
+	source = emoticons.json::https://raw.githubusercontent.com/w33ble/emoticon-data/master/emoticons.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wl-kaomoji
