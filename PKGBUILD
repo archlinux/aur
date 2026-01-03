@@ -1,16 +1,16 @@
 pkgname=amphi-music
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Cross-platform music player with support for syncing libraries via a self-hosted server'
 url=https://amphi.site
 arch=('x86_64' 'aarch64')
-license=(APACHE)
+license=('GPL-3.0-or-later')
 depends=(fuse2 mpv mimalloc zenity)
 options=(!debug)
-source_x86_64=("https://github.com/amphi2024/music/releases/download/v${pkgver}/music-linux-x64-${pkgver}.deb")
-source_aarch64=("https://github.com/amphi2024/music/releases/download/v${pkgver}/music-linux-arm64-${pkgver}.deb")
-sha256sums_x86_64=("59c96eacf38de396a1451ccc0b1232cd2b91ed5496526a7b55dc43546f0fdb70")
-sha256sums_aarch64=("54451f25f2e79efa3bbf2231a755f6ae8fc80bc60f3e3a4c78027c4f9810cb2e")
+source_x86_64=("https://github.com/amphi2024/music/releases/download/v${pkgver}/Music-${pkgver}-Linux-x86_64.deb")
+source_aarch64=("https://github.com/amphi2024/music/releases/download/v${pkgver}/Music-${pkgver}-Linux-arm64.deb")
+sha256sums_x86_64=("cfac23cc8c961731f4c522b9497c9207be769ff606b141714d9d0f196d90ecbe")
+sha256sums_aarch64=("d49f148d1d109ee019d36fed8e5a05b5f91d9c54437307c71f0f3ae67dcf7e75")
 _pkgdesktop="amphi-music.desktop"
 
 
