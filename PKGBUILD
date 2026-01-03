@@ -7,7 +7,7 @@
 
 pkgname=mbpfan
 pkgver=2.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple daemon to control fan speed on all MacBook/MacBook Pros'
 arch=('x86_64' 'i686')
 url='https://github.com/linux-on-mac/mbpfan'
@@ -17,12 +17,12 @@ depends=('glibc')
 provides=('mbpfan')
 conflicts=('mbpfan')
 source=("$pkgname::git+https://github.com/linux-on-mac/mbpfan.git#tag=v$pkgver")
-md5sums=('SKIP')
+md5sums=('9030df16eb2bbe616eadf9d1de477d90')
 backup=('etc/mbpfan.conf')
 
 latestver() {
-	curl -s "https://api.github.com/repos/linux-on-mac/mbpfan/releases/latest" | 
-	jq -r '.tag_name' | sed 's/^v//'
+	curl -fsSL "https://api.github.com/repos/linux-on-mac/mbpfan/releases/latest" |
+	jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 prepare(){
