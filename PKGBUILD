@@ -1,4 +1,4 @@
-# Maintainer: verysillycat
+# Maintainer: creations
 ## Forked from vesktop-git
 
 ## options
@@ -10,7 +10,7 @@ _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (git version)"
 pkgver=3.1.5.r0.g0000000
-pkgrel=1
+pkgrel=2
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
 arch=("any")
@@ -37,7 +37,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'bun-bin'
+  'bun'
   'cmake'
   'gcc'
   'nodejs'

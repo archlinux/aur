@@ -1,12 +1,12 @@
 pkgbase = equibop-git
 	pkgdesc = A custom Discord desktop app with Equicord pre-installed (git version)
 	pkgver = 3.1.5.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Equicord/Equibop
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = bun-bin
+	makedepends = bun
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = nodejs
