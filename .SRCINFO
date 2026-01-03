@@ -1,14 +1,16 @@
 pkgbase = dsc
 	pkgdesc = Docspell command line interface
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/docspell/dsc
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/docspell/dsc/archive/refs/tags/v0.10.0.tar.gz
-	sha512sums = fc326a5fb8c2c93da366727a060746945a011fd80b6c5b93776e691425fe7218f5122bd3fc0e046988033bcfb8891e20642ad3cf0671c58bc7d9eac6bdb608e3
+	source = https://github.com/docspell/dsc/archive/refs/tags/v0.11.0.tar.gz
+	source = Cargo.lock.patch
+	sha512sums = a210d42ce29f933de22a53b4bf071001bb7bbd1763397df4d8fcd30546b6ec5929de5595108038bc298c62350213ac8c6c2a427ff9942cfe6a6ab2626948daf4
+	sha512sums = 0630160f61297908e0d98d09dbca0e6922f5ffb253804374e8537e91f01b13cc93d037c1032c3662ccc30ffc1cc1962b7cd6454768031894a49bf8d29ed55cbc
 
 pkgname = dsc

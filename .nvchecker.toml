@@ -1,0 +1,4 @@
+[dsc]
+source = "git"
+git = "https://github.com/docspell/dsc.git"
+prefix = "v"
