@@ -10,6 +10,8 @@ url="https://github.com/lobehub/lobe-chat"
 license=('Apache-2.0 WITH lobe-chat-exception')
 makedepends=()
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+conflicts=('lobehub-desktop-beta-bin' 'lobe-chat-appimage')
+
 source=("lobehub-desktop-beta-1.143.2.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.143.2.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/main/LICENSE"
   "lobehub-desktop-beta.png::https://raw.githubusercontent.com/lobehub/lobe-chat/main/apps/desktop/resources/tray.png")
