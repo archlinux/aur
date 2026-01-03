@@ -3,11 +3,11 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.8.00.r512.g2d6ec2d3
+pkgver=0.9.00.r1435.gc04258e0
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
-url="https://mrirecon.github.io/bart/"
+url="https://mrirecon.codeberg.page/"
 license=('BSD')
 makedepends=('git' 'gcc>=11.2.0')
 depends=('gcc-libs' 'blas-openblas' 'fftw' 'libpng')
@@ -15,7 +15,7 @@ optdepends=('octave: MATLAB/Octave wrapper'
 	    'python: Python wrapper'
 	    'python-numpy: Python wrapper'
 	    'python-matplotlib: Python scripts')
-source=('bart::git+https://github.com/mrirecon/bart.git'
+source=('bart::git+https://codeberg.org/mrirecon/bart.git#branch=master'
 	'Makefile.local')
 sha512sums=('SKIP'
             '4ab4bb30e696dd262ecf59a64ec2ae5fa8f4832153816b4966c6af6e33fcf3981a5a4083d963cd3e470cd6000df32bfff4db146e9e34672f94962b5b329f4846')
@@ -55,7 +55,7 @@ check() {
 
 package() {
     cd "$_pkgname"
-    make PREFIX="$pkgdir"/usr install
+    make DESTDIR="$pkgdir" PREFIX=usr install
     install commands/* "$pkgdir"/usr/lib/bart/commands/
 
     # Also install the libs, the viewer needs this and its not done by the Makefile atm
