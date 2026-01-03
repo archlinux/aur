@@ -1,4 +1,4 @@
-pkgname=typomat
+pkgname=typomat-git
 pkgver=0.1.3.r0.g2baf227
 pkgrel=1
 pkgdesc="Turn your code into muscle memory"
