@@ -1,12 +1,11 @@
 pkgbase = otf-garamond-math
 	pkgdesc = Garamond-Math is an open type math font matching EB Garamond.
-	pkgver = 20190816
+	pkgver = 20220103
 	pkgrel = 1
-	url = https://github.com/YuanshengZhao/Garamond-Math
+	url = https://https://ctan.org/pkg/garamond-math
 	arch = any
 	license = OFL-1.1
-	makedepends = git
-	source = git+https://github.com/YuanshengZhao/Garamond-Math.git
-	md5sums = SKIP
+	source = https://mirrors.ctan.org/fonts/garamond-math.zip
+	md5sums = c473aa0a4fa588747ab1cf72a8f6dc9b
 
 pkgname = otf-garamond-math
