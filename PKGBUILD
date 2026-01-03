@@ -1,7 +1,7 @@
 # Maintainer: Agustin Moyano <agustin.moyano@gmail.com>
 
 pkgname=gastown-git
-pkgver=r2076.ae61d98
+pkgver=r2176.7f9795f
 pkgrel=1
 pkgdesc="Multi-agent orchestrator for Claude Code instances"
 arch=('x86_64')
@@ -21,12 +21,13 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  export GOPATH="${srcdir}/gopath"
+
   go mod download
 }
 
 build() {
   cd "$pkgname"
+
   export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
