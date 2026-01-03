@@ -1,0 +1,15 @@
+pkgbase = srb-id-pkcs11-git
+	pkgdesc = An open source PKCS11 v2.40 module for Serbian ID smart cards
+	pkgver = 0.2.0.r10.g8a067b6
+	pkgrel = 1
+	url = https://github.com/ubavic/srb-id-pkcs11
+	arch = x86_64
+	license = Unlicense
+	makedepends = zig
+	depends = nss
+	provides = srb-id-pkcs11
+	conflicts = srb-id-pkcs11
+	source = git+https://github.com/ubavic/srb-id-pkcs11.git
+	sha256sums = SKIP
+
+pkgname = srb-id-pkcs11-git
