@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.5.0 ➙ 7.8.0
-              : 2025-06-22 ➙ 2025-11-13
+ Tags         : 7.7.0 ➙ 8.0.1
+              : 2025-06-26 ➙ 2026-01-03
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-03   : 8.0.1
+              - Arch didnt pick up tag - bump and try again
+              - update Docs/Changelogs Docs/mkpkg.pdf for 8.0.0
+
+ 2025-11-13   : 8.0.0
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.8.0
 
  2025-11-13   : 7.8.0
               - Release 7.8.0
@@ -22,14 +29,3 @@
               - run_prog: sync local copy with latest from pyconcurrent
  2025-06-25   ⋯
               - update Docs/Changelogs Docs/mkpkg.pdf for 7.6.0
-
- 2025-06-25   : 7.6.0
-              - Use pyconcurrent.run_prog when available otherwise local copy.
-                Fix typo
- 2025-06-22   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.5.0
-
- 2025-06-22   : 7.5.0
-              - Sync local copy of run_prog with latest from pyconcurrent
- 2025-06-19   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.4.0

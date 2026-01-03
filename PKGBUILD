@@ -10,20 +10,33 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=7.8.0
+pkgver="8.0.1"
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
-license=(MIT)
-depends=('python>=3.13' 'pyalpm' 'python-tomli-w' 'python-pyelftools')
-optdepends=('pyconcurrent')
+license=(GPL-2.0-or-later)
+depends=(
+    'python>=3.13' 
+    'pyalpm' 
+    'python-tomli-w' 
+    'python-pyelftools'
+)
+optdepends=(
+    'pyconcurrent'
+)
 
 # To build docs uncommont sphinx/texlive
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
-            #'python-sphinx' 'texlive-latexextra'
-            )
-_mkpkg_depends=('python>minor')
+makedepends=(
+    'git' 
+    'uv'
+    'python-uv-build'
+    'rsync'
+    #'python-sphinx' 'texlive-latexextra'
+)
+_mkpkg_depends=(
+    'python>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -40,7 +53,7 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs - uncomment these and sphinx makedepends above
 #    echo "Build docs"
