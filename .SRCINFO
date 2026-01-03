@@ -1,12 +1,12 @@
 pkgbase = shard
 	pkgdesc = A minimal, content-addressed Minecraft launcher (CLI)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://shard.thomas.md
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
-	source = https://github.com/th0rgal/shard/releases/download/v0.1.7/shard-cli-linux-x64.tar.gz
-	sha256sums = 589681193e8605b6372573b70ce646621dd9505b4d44fcd516faa6bbf1c4f969
+	source = https://github.com/th0rgal/shard/releases/download/v0.1.8/shard-cli-linux-x64.tar.gz
+	sha256sums = 83750176c5f403763ef6c0edddb89e8710550d9336c8da078bf240c10792cf2e
 
 pkgname = shard
