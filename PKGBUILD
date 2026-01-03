@@ -13,7 +13,7 @@ conflicts=("crowdin-cli")
 arch=('x86_64')
 _debver="${pkgver%.*}-${pkgver##*.}"
 source=("https://artifacts.crowdin.com/repo/deb/crowdin_${_debver}.deb")
-sha256sums=('3369540ad1f3a87262f7fe90926105186ab47eeb2f5a602d16f63614ff741d3d')
+sha256sums=('97a7a5728a6c451eadf3950e2c651e0645a8c0ca9fb2a175b554810a31178591')
 
 package() {
   tar -xvf data.tar.xz -C "${pkgdir}/"
