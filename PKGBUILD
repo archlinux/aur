@@ -2,16 +2,15 @@
 
 pkgname=tree-sitter-meson
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Meson grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-meson"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('nodejs' 'tree-sitter-cli')
+makedepends=('cmake' 'tree-sitter-cli')
 provides=('libtree-sitter-meson.so')
-options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-meson/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('fe9923e14405edfc41d76a1ffa82c8a03d8cf42e8651459a57882a55c00c83ea')
 
@@ -19,21 +18,25 @@ sha256sums=('fe9923e14405edfc41d76a1ffa82c8a03d8cf42e8651459a57882a55c00c83ea')
 build() {
   cd "$pkgname-$pkgver"
 
-  tree-sitter generate
-  CFLAGS="$CFLAGS -ffat-lto-objects" \
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    ./
+  cmake --build "_build"
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
-  #tree-sitter test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-meson"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-meson"
 
