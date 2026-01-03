@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-swift
 	pkgdesc = Swift grammar for tree-sitter
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex-pinkus/tree-sitter-swift
 	arch = i686
 	arch = x86_64
