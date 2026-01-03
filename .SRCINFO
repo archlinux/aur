@@ -1,7 +1,7 @@
 pkgbase = codemap-bin
 	pkgdesc = A project brain for your AI. Give LLMs instant architectural context without burning tokens
 	pkgver = 3.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JordanCoin/codemap
 	arch = x86_64
 	arch = aarch64

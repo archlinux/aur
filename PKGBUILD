@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codemap-bin
 pkgver=3.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A project brain for your AI. Give LLMs instant architectural context without burning tokens"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JordanCoin/codemap"
@@ -13,12 +13,12 @@ optdepends=('ast-grep: for dependency flow mode')
 options=('!debug' '!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=('3df556c8378fd7e74d2dc9f4050275d628532761331b348bbfa544618366144b')
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_arm64.tar.gz")
 sha256sums_aarch64=('ace6335499bfb4ed9a317e82c7de4d27c0d511610720e9c74220a3b745e6b5e6')
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_arm64.tar.gz")
 
 latestver() {
-    curl -s "https://api.github.com/repos/JordanCoin/codemap/releases/latest" |
-    jq -r '.tag_name' | sed 's/^v//'
+    curl -fsSL "https://api.github.com/repos/JordanCoin/codemap/releases/latest" |
+    jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 package() {
