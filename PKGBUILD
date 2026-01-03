@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cmake' 'ninja')
 provides=($pkgname)
 conflicts=($pkgname-git)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('7d2c7e360cb1e17ea141e577b3639be32e14c7fadfc54686569047da8d34735f')
+sha256sums=('827ee99de109164266a9558c0db4dee2fd162ab2b2f35d789423e746246d0a13')
 
 build() {
     cd "${srcdir}/release"
