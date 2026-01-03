@@ -1,0 +1,18 @@
+pkgbase = arch-tui
+	pkgdesc = A unified TUI for Arch Linux package management (Pacman + AUR)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sreevarshan-xenoz/arch-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = pacman
+	optdepends = paru: AUR support
+	optdepends = yay: AUR support
+	source = git+https://github.com/sreevarshan-xenoz/arch-tui.git
+	sha256sums = SKIP
+
+pkgname = arch-tui
