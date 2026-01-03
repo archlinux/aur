@@ -1,6 +1,6 @@
 pkgbase = python-application
 	pkgdesc = Basic building blocks for Python applications
-	pkgver = 3.0.7
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/AGProjects/python3-application
 	arch = aarch64
@@ -9,12 +9,12 @@ pkgbase = python-application
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = python>=3.13
 	depends = python-zope-interface
 	provides = python3-application
 	conflicts = python3-application
 	replaces = python3-application
-	source = python-application-3.0.7.tar.gz::https://github.com/AGProjects/python3-application/archive/release-3.0.7.tar.gz
-	sha512sums = aca22866367318c19c04fafa75d611ccdadfffe095e650eb7dc410004654664bdd4c7e8df247284b37f6f143d1041ef354c6cb3351ce896b33ce9312815ce06e
+	source = python-application-3.0.9.tar.gz::https://github.com/AGProjects/python3-application/archive/release-3.0.9.tar.gz
+	sha512sums = 7c9d05b72b9e22c0ef09c0b2f36304d1ace9136016c83c2679bb34fee001bbf4a3bf3d50c31cb56bb4e2c096f5cc559093040eb281dc0dded118375923ec674e
 
 pkgname = python-application
