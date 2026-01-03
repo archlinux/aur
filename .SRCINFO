@@ -1,7 +1,7 @@
 pkgbase = opencode-gemini-auth
 	pkgdesc = Google Gemini OAuth Plugin for opencode
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jenslys/opencode-gemini-auth
 	install = opencode-gemini-auth.install
 	arch = any
