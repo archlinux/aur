@@ -1,7 +1,7 @@
 pkgbase = ops
 	pkgdesc = Build and run nanos unikernels
-	pkgver = 0.1.43
-	pkgrel = 2
+	pkgver = 0.1.45
+	pkgrel = 1
 	url = https://ops.city
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = ops
 	makedepends = protoc-gen-grpc-gateway
 	depends = glibc
 	optdepends = qemu
-	source = ops-0.1.43.tar.gz::https://github.com/nanovms/ops/archive/0.1.43.tar.gz
-	sha256sums = 06b14a746eefb6b328568c73cded184e66b5fa0671ff5e9fa167bae3d7d8c650
+	source = ops-0.1.45.tar.gz::https://github.com/nanovms/ops/archive/0.1.45.tar.gz
+	sha256sums = a657ee753559c5598cf3e952460fc164f9344a81476a02bc20c8ca18bccb042c
 
 pkgname = ops
