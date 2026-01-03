@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-r-git
 	pkgdesc = R grammar for tree-sitter
-	pkgver = 1.1.0.r11.ga0d3e33
-	pkgrel = 3
+	pkgver = 1.2.0.r13.g0e6ef77
+	pkgrel = 1
 	url = https://github.com/r-lib/tree-sitter-r
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tree-sitter-r-git
 	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
-	provides = tree-sitter-r=1.1.0.r11.ga0d3e33
+	provides = tree-sitter-r=1.2.0.r13.g0e6ef77
 	provides = libtree-sitter-r.so
 	conflicts = tree-sitter-r
 	options = staticlibs
