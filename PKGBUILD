@@ -3,7 +3,7 @@
 # Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname='gsh'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A battery-included, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -13,7 +13,7 @@ provides=('gsh')
 conflicts=('gsh')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v${pkgver}/gsh-${pkgver}.tar.gz")
-sha256sums=('8751f324c2af67053b5a10a78cac0e67f6b90d421ff7d177dc4ef7b8810a7aff')
+sha256sums=('01ca083f3ce3d25f9bdd98713bc2b4f2d09e854f47847db9abbb11e54877dda0')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download
