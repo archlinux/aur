@@ -1,0 +1,16 @@
+pkgbase = lxqt-panel-tool-git
+	pkgdesc = Save and switch configurations of lxqt-panel
+	pkgver = 4696b53
+	pkgrel = 1
+	url = https://github.com/stefonarch/lxqt-panel-tool
+	arch = any
+	license = GPL 2.0
+	makedepends = git
+	depends = lxqt-panel
+	depends = python-pyqt6
+	depends = qt6-tools
+	provides = lxqt-panel-tool-git=4696b53
+	source = git+https://github.com/stefonarch/lxqt-panel-tool.git
+	md5sums = SKIP
+
+pkgname = lxqt-panel-tool-git
