@@ -4,12 +4,12 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=8.0
-pkgrel=2
-_svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_obs_studio_ver='32.0.1'
+pkgver=8.0.1
+pkgrel=1
+_svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
+_svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
 _whispercpp_ver='1.8.2'
-pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac for AMD)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LicenseRef-nonfree-and-unredistributable')
@@ -43,7 +43,6 @@ depends=(
     'lame'
     'lcevcdec'
     'lcms2'
-    'lensfun-git'
     'libaribcaption'
     'libass'
     'libavc1394'
@@ -91,7 +90,7 @@ depends=(
     'openal'
     'openapv'
     'opencore-amr'
-    'opencv2'
+    'opencv'
     'openh264'
     'openjpeg2'
     'opus'
@@ -136,6 +135,7 @@ makedepends=(
     'amf-headers'
     'clang'
     'cmake'
+    'decklink-sdk'
     'git'
     'gmp'
     'libgl'
@@ -155,27 +155,29 @@ provides=(
     'libswresample.so')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
+        'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        '030-ffmpeg-add-svt-vp9.patch'
+        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
-        '070-ffmpeg-lcevcdec4.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/fa23202cc7baab899894e8d22d82851a84967848'
-        '090-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
+        '100-ffmpeg-add-opencv4-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c4ce51ee62205c74604767f1b7dab6a036edac7f'
+        '110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/0cd75dbfa0fc6c213cf9240b3c03c809070c5209'
+        '120-ffmpeg-add-decklink-sdk14.3-build-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/27e94281d1c880b4cae28738e35c0d6f9a58f06b'
         'LICENSE')
-sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
+sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             'SKIP'
-            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
+            'SKIP'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
+            'ccdc1cab97d1fe5a454cd57fbd2bb865256092d715fd7f380c30cc3f42891b3c'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
+            '1f06dfcb78e43a6c732cbc4f6ae583ae19fb111b56d33c8c860d5b6566c04f99'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
-            'd2bacb3a5b0201503554c3394ea1f3fbc8ad79d5c2721e0c226134d40812ad08'
-            '0010bf826a7008452ccc8a072b0186688e8687be0dbe2be2ca7540e26ca076f1'
+            'f5b448f7e6e567273f74ed6e62ed25d8470f6bc9183c247993f1c03e78b57587'
+            'd1c4bdbcdd5a852f46639e0cb3dbf0b4a71884487c9fbcdb38139a1e5e96ddaf'
+            'ee89e0759f5233d390e3a23415e2664aae38bbe89e10d49ecda8a06c26bd21ee'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -183,31 +185,50 @@ prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec"/libsvt_{hevc,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-glslang16-fix.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/100-ffmpeg-add-opencv4-support.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/120-ffmpeg-add-decklink-sdk14.3-build-support.patch"
 }
 
 build() {
+    local _stagingdir="${srcdir}/staging"
+    local _pkgconfigdir="${_stagingdir}/lib/pkgconfig"
+    export PKG_CONFIG_PATH="${_pkgconfigdir}${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    
+    local -a _cmake_opts=(
+        '-GUnix Makefiles'
+        '-DBUILD_SHARED_LIBS:BOOL=OFF'
+        '-DCMAKE_BUILD_TYPE:STRING=None'
+        "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
+        '-Wno-dev')
+    
+    # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
+    # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
+    # building it locally as a static library for the time being - this also have the benefit of avoid rebuilding packages
+    # requiring lensfun, like gegl (required for gimp, a commonly used package), as lensfun git master have a soname bump
+    cmake -B build/lensfun -S lensfun \
+        "${_cmake_opts[@]}" \
+        -DBUILD_STATIC:BOOL='ON' \
+        -DINSTALL_PYTHON_MODULE:BOOL='OFF' \
+        -DINSTALL_HELPER_SCRIPTS:BOOL='OFF'
+    cmake --build build/lensfun --target install
+    sed -i \
+        -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
+        -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
+    
     # whisper.cpp AUR package conflicts with imagemagick at the time of writing
     # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
-        -G 'Unix Makefiles' \
-        -DBUILD_SHARED_LIBS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
+        "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
-        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
-        -Wno-dev
+        -DWHISPER_BUILD_TESTS:BOOL='OFF'
     cmake --build build/whisper.cpp --target install
     
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
-    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
-    export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
@@ -370,9 +391,13 @@ build() {
     make tools/qt-faststart
 }
 
-
 package() {
     make -C "ffmpeg-${pkgver}" DESTDIR="$pkgdir" install
     install -D -m755 "ffmpeg-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    sed -i \
+        -e 's|-llensfun ||' \
+        -e 's|-lwhisper ||' \
+        -e "s|-L${srcdir}/staging/lib ||g" \
+        "${pkgdir}/usr/lib/pkgconfig/libavfilter.pc"
 }
