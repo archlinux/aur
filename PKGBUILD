@@ -1,17 +1,17 @@
 # Maintainer: Nathan Campolina <spectronp@proton.me>
 pkgname=version
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="What version do I have of ___?"
 arch=('any')
-url="https://github.com/bit101/version"
+url="https://codeberg.org/bit101/version"
 license=('MIT')
 depends=('bash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bit101/version/archive/v$pkgver.tar.gz")
-sha256sums=('1e1413d482ee8cb6cd0c0b44ee4545c64590cc0921717a5184de399190050848')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/bit101/version/archive/v$pkgver.tar.gz")
+sha256sums=('5047c17f28a0477af378d09084a8077ca981830feb1badd9cdfbae0c0ff2662f')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   gzip -k ./man/version.1
 
