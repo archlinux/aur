@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-agda
 pkgver=1.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Agda grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-agda"
@@ -34,11 +34,10 @@ package() {
   cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-agda"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-agda"
 
   # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
   install -d "$pkgdir/usr/lib/tree_sitter"
   ln -s "/usr/lib/libtree-sitter-agda.so" "$pkgdir/usr/lib/tree_sitter/agda.so"
-
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-agda"
-  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-agda"
 }
