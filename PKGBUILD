@@ -18,27 +18,27 @@ sha256sums=('SKIP'
             '872b6fd2079dbcc1859e524ee5807a1c8cfb8d898fa5df0143ca1b1f0c1306a2')
 
 pkgver() {
-	cd "scrap"
+    cd "scrap"
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/-beta//;s/\([^-]*-g\)/r\1/;s/-/./g' 
 }
 
 prepare() {
-	cd "scrap"
+    cd "scrap"
     git submodule init
     git config submodule.raylib.url "$srcdir/raylib"
     git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "scrap"
-	make SCRAP_VERSION="$pkgver"
+    cd "scrap"
+    make SCRAP_VERSION="$pkgver"
 }
 
 package() {
     install -D scrap.desktop "$pkgdir/usr/share/applications/scrap.desktop"
 
-	cd "scrap"
-	make PREFIX="$pkgdir/usr" install
+    cd "scrap"
+    make PREFIX="$pkgdir/usr" install
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D extras/scrap.png "$pkgdir/usr/share/pixmaps/scrap.png"
