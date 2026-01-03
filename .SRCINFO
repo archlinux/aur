@@ -11,6 +11,7 @@ pkgbase = odiff-bin
 	conflicts = odiff
 	noextract = odiff-linux-x64
 	noextract = odiff-linux-arm64
+	options = !debug
 	source = LICENSE-4.3.2.txt::https://raw.githubusercontent.com/dmtrKovalenko/odiff/v4.3.2/LICENSE.txt
 	sha256sums = 9608ab37156c8d14fbb2fab1381d023c1fce07e7850306bba3a227a85ec4fab4
 	source_x86_64 = odiff-linux-x64::https://github.com/dmtrKovalenko/odiff/releases/download/v4.3.2/odiff-linux-x64

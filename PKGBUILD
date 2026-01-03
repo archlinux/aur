@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/dmtrKovalenko/odiff"
 license=('MIT')
 depends=('glibc')
+options=('!debug')
 
 provides=('odiff')
 conflicts=('odiff')
