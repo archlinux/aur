@@ -2,7 +2,7 @@
 
 pkgname=sleepy-launcher-bin
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 url="https://github.com/an-anime-team/sleepy-launcher"
 conflicts=("sleepy-launcher")
