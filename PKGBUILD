@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-elixir
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/elixir-lang/tree-sitter-elixir"
@@ -18,6 +18,8 @@ sha256sums=('cd40b25fc0259fda2f456d7a1e29c067c58c11cd7d96fbf71b546da069d92239')
 
 build() {
   cd "$pkgname-$pkgver"
+
+  export PARSER_NAME="elixir"
 
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
@@ -35,4 +37,8 @@ package() {
 
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-elixir"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-elixir.so" "$pkgdir/usr/lib/tree_sitter/elixir.so"
 }

@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-elixir
 	pkgdesc = Elixir grammar for tree-sitter
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elixir-lang/tree-sitter-elixir
 	arch = i686
 	arch = x86_64
