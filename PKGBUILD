@@ -6,13 +6,13 @@ pkgrel=1
 pkgdesc="YouTube Music Desktop App - V2 (Git Version)"
 arch=('x86_64')
 options=('!debug')
-url="https://github.com/ytmdesktop/ytmdesktop"
+url="https://github.com/niiithish/ytmdesktop"
 license=('GPL3')
 depends=('nss' 'libxss' 'alsa-lib' 'libsecret' 'gtk3' 'libnotify')
 makedepends=('git' 'nodejs' 'yarn')
 provides=("youtube-music-desktop-app")
 conflicts=("youtube-music-desktop-app")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {
