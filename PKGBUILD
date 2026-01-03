@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 epoch=
 pkgdesc="A modern PostgreSQL manager TUI"
 arch=(x86_64 aarch64)
