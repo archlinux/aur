@@ -1,7 +1,7 @@
 pkgbase = animecix-desktop-bin
-	pkgdesc = AnimeciX Desktop App
+	pkgdesc = AnimeciX Desktop App (Official Bin)
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/RamazanMuslu/animecix-linux
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = animecix-desktop-bin
 	depends = alsa-lib
 	depends = libxss
 	depends = libxtst
+	depends = libdbusmenu-glib
 	provides = animecix-desktop
 	conflicts = animecix-desktop
 	options = !strip
