@@ -2,7 +2,7 @@
 
 _name=strawberry-graphql-django
 pkgname=python-$_name
-pkgver=0.67.2
+pkgver=0.72.0
 pkgrel=1
 pkgdesc=" Strawberry GraphQL Django extension"
 arch=('any')
@@ -42,4 +42,4 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('b496c5295062a767de68b3acaea383602337954b23c175e7e4df609bb05be7d5')
+sha256sums=('105ee730df7d5859b89284965d5a8597fb0c98d6305cf5b55debc452519732bc')
