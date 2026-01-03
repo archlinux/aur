@@ -1,6 +1,6 @@
-pkgbase = mcabber-hg
+pkgbase = mcabber-git
 	pkgdesc = A small Jabber console client, includes features: SSL, PGP, MUC, UTF8, and OTR
-	pkgver = 2347
+	pkgver = 2368
 	pkgrel = 1
 	url = http://www.mcabber.com
 	arch = i686
@@ -17,10 +17,12 @@ pkgbase = mcabber-hg
 	depends = loudmouth
 	provides = mcabber=1.0.0
 	conflicts = mcabber
+	conflicts = mcabber-hg
 	conflicts = mcabber-lm-hg
 	conflicts = mcabber-crew-hg
-	source = hg+http://mcabber.com/hg/
+	source = git+https://github.com/McKael/mcabber
+	source = fix-compat-glib.diff
 	md5sums = SKIP
+	md5sums = a34ac665872d5d8a278c350ba5cee0dc
 
-pkgname = mcabber-hg
-
+pkgname = mcabber-git
