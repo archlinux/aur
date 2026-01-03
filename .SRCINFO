@@ -1,7 +1,7 @@
 pkgbase = gpt4all-chat
 	pkgdesc = run open-source LLMs anywhere
 	pkgver = 3.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gpt4all.io
 	arch = x86_64
 	license = MIT

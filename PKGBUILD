@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=3.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -118,6 +118,10 @@ prepare() {
     # https://github.com/KomputeProject/kompute/issues/410
     sed -i "/strtol()/ d;/ftell()/ d" \
         gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/external/bin/xxd.c
+    # Qt 6.10 requires finding Qt::GuiPrivate explicitly
+    # https://doc-snapshots.qt.io/qt6-6.10/qtguiprivate-module.html#details
+    sed -i "s/Gui REQUIRED/Gui GuiPrivate REQUIRED/g" \
+        gpt4all-chat/deps/QXlsx/QXlsx/CMakeLists.txt
 }
 build() {
     CFLAGS+=" -DNDEBUG"
