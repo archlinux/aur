@@ -1,13 +1,13 @@
 pkgbase = bumper-bin
 	pkgdesc = Easily bump $pkgver in your AUR packages.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/bcyran/bumper
 	arch = x86_64
 	license = MIT
 	provides = bumper
 	conflicts = bumper
-	source = bumper-1.0.1-linux-amd64.tar.gz::https://github.com/bcyran/bumper/releases/download/v1.0.1/bumper-1.0.1-linux-amd64.tar.gz
-	sha256sums = a97c43b5db089197529428157b88a7251e7ac6f658a6870da479ebd78e11a4ce
+	source = bumper-1.0.2-linux-amd64.tar.gz::https://github.com/bcyran/bumper/releases/download/v1.0.2/bumper-1.0.2-linux-amd64.tar.gz
+	sha256sums = 318bd4348fba26ca52cbd0ef001c1c5ad9ebdaa699539a26bb66c102ed525d31
 
 pkgname = bumper-bin
