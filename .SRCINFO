@@ -1,0 +1,18 @@
+pkgbase = python-omdbapi
+	pkgdesc = Python lib to get movie, series, episode data from the Open Movie Database (OMDb) api
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/dubirajara/omdbapi
+	arch = any
+	license = AGPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pytest
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/o/omdbapi/omdbapi-0.7.0.tar.gz
+	sha256sums = e1f66ba4dd1ebc7a9da1c12d8e040e2fdf48c8004fe1a463bffb880447227608
+
+pkgname = python-omdbapi
