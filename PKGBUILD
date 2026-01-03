@@ -3,7 +3,7 @@
 _pkgauthor=lazywalker
 _pkgname=lazydns
 pkgname=${_pkgname}-bin
-pkgver=0.2.52
+pkgver=0.2.60
 pkgrel=1
 pkgdesc="A light and fast DNS server/forwarder implementation in Rust"
 arch=('x86_64' 'aarch64' 'arm' 'i686')
@@ -26,11 +26,12 @@ source_arm=(lazydns_${pkgver}_arm.tar.gz::${url}/releases/download/v${pkgver}/la
 sha256sums=('c24b54bb3ef3d63cec7b37fa4dc5c22c69ff97e093620c80d8a5868344e2e9a4'
             '93a5bb5952088a0f7012844a8f152b0a098c6002535b99a6d518aa93fea91fd3'
             '60427ca27cf0632e4862d7f74ca9f4b03022800dd063161952ac34ff76b78ec9'
-            'ece56a6d6112da221c543e2044a8df85653819769e23b75975813f8c2dd26a1a')
-sha256sums_x86_64=('a6551a6166f64259793dd9a8e5fe28adc61c29f56efc4cc0b363e89c960ae847')
-sha256sums_aarch64=('084f31aa0caa91bdbb9ad6e2375ed201cbd7057f4a544faba5c1f3fd4e54acb4')
-sha256sums_arm=('7373c67cff1a272b05e187cbd96a3eb2c9f9970eb16f824fd5ed3585eeb5900f')
-sha256sums_i686=('3d2ac5c084521fcc92c05507081376c0bf0aa2b69456b6fba62bdb5d78d41fdd')
+            'cb998579da44035f30b3bb8a30b54459ec8d8225f6bc8413442bf988fb0cca9b')
+sha256sums_x86_64=('a394f9b732511584c9e1973bbd3d4763088d025a708da3c9efac60ef17bea1a6')
+sha256sums_aarch64=('305d90d8b50e509e8e5c72e89173d69eb98c5ebde2f72cd0c922bcc1714c7fa1')
+sha256sums_arm=('9e2f5f51de65b4e62fcbf149d2f315982d3c311493bcc7ce5d259c9e3c22481c')
+sha256sums_i686=('556fabd81431878203ff503f744ec397f0dba9f656f6fdc51544e9c6a2d50648')
+
 package() {
     install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
