@@ -1,0 +1,7 @@
+post_install() {
+	printf "\033[1;33mYour user needs to be included in the input group!\033[22;39m\n"
+}
+
+post_remove() {
+	printf "\033[1;33mREMINDER: you should remove the input group from your user,\033[22m if you don't have other application that uses that\033[;39m\n"
+}
