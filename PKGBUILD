@@ -2,8 +2,8 @@
 # Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-lua-git
-pkgver=0.2.0.r4.g68d29aa
-pkgrel=2
+pkgver=0.4.1.r2.ge284fce
+pkgrel=1
 pkgdesc="Lua grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-lua"
@@ -22,7 +22,7 @@ pkgver() {
   cd "tree-sitter-lua"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -47,4 +47,8 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/tree-sitter-lua"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-lua"
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
+  install -d "$pkgdir/usr/lib/tree_sitter"
+  ln -s "/usr/lib/libtree-sitter-lua.so" "$pkgdir/usr/lib/tree_sitter/lua.so"
 }
