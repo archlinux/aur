@@ -1,0 +1,13 @@
+pkgbase = mintcommon
+	pkgdesc = Common Python modules and utilities for Linux Mint tools
+	pkgver = 2.4.9
+	pkgrel = 1
+	url = https://github.com/linuxmint/mintcommon
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	source = mintcommon::git+https://github.com/linuxmint/mintcommon.git#commit=ec304f3422aabf84a69141d36e95a3eb55b300f7
+	sha256sums = SKIP
+
+pkgname = mintcommon
