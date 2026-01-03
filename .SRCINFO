@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-commonlisp
 	pkgdesc = Common Lisp grammar for tree-sitter
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-commonlisp
 	arch = i686
 	arch = x86_64
