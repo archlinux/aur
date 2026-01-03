@@ -1,0 +1,12 @@
+pkgbase = insync-dolphin-plasma-6-git
+	pkgdesc = Insync plugin for Dolphin on Plasma 6
+	pkgver = r26.54c70f2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	source = insync-dolphin-plasma-6-git::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git
+	b2sums = SKIP
+
+pkgname = insync-dolphin-plasma-6-git
