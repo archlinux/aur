@@ -1,7 +1,7 @@
 pkgbase = opencode-antigravity-auth
 	pkgdesc = Google Antigravity OAuth Plugin for opencode
 	pkgver = 1.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NoeFabris/opencode-antigravity-auth
 	install = opencode-antigravity-auth.install
 	arch = any
