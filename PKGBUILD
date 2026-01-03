@@ -35,11 +35,8 @@ optdepends=(
   'python-chameleon: pserve/pcreate'
   'python-waitress: pserve/pcreate')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-$pkgver.tar.gz.asc")
-sha256sums=('45431b387587ed0fac6213b54d6e9f0936f0cc85238a8f5af7852fc9484c5c77'
-            'SKIP')
-validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-$pkgver.tar.gz")
+sha256sums=('372138a738e4216535cc76dcce6eddd5a1aaca95130f2354fb834264c06f18de')
 
 build() {
   cd "pyramid-$pkgver"
