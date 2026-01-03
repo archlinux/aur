@@ -1,6 +1,6 @@
 # Maintainer: Kam1k4dze <me@kam1k4dze.com>
 pkgname=inspect-deps
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="ELF dependency analyzer with optional pacman integration"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('cmake')
 optdepends=('pacman: for package resolution')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b3d2a0cab2bc8f665eea8f5aee60a8739f77252f61c599a1c3e3df096175f0c')
+sha256sums=('8b91ace13730a6f14a356998d9a6216c330b323b9b5e7e36b3e4e5e107938601')
 
 build() {
   cd "$pkgname-$pkgver"
