@@ -1,6 +1,6 @@
 pkgbase = xwayland-satellite-nosystemd
 	pkgdesc = Xwayland outside your Wayland (without systemd feature)
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/Supreeeme/xwayland-satellite
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = xwayland-satellite-nosystemd
 	depends = xorg-xwayland
 	depends = gcc-libs
 	depends = glibc
-	provides = xwayland-satellite=0.7
+	provides = xwayland-satellite=0.8
 	conflicts = xwayland-satellite
-	source = git+https://github.com/Supreeeme/xwayland-satellite.git#tag=838e68b9ef35613524b0a76a569afdaab7d5ce8c
-	sha256sums = 6c35d2588ae011e1a473fd6bff427451a1703b003c901cc6612227e80a034e36
+	source = git+https://github.com/Supreeeme/xwayland-satellite.git#tag=dacdbc61e427cf8e06d6cdf435eee08df2f054e3
+	sha256sums = cc1347fd78590a03c46027a2372a1e3de7c25cc0d2b770115f44782cbac1dea8
 
 pkgname = xwayland-satellite-nosystemd
