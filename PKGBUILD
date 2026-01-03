@@ -1,7 +1,7 @@
 pkgname=whyis
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Diagnose common system issues and resource usage causes"
+pkgdesc="A simple linux troubleshooting utility."
 arch=('x86_64')
 url="https://github.com/xZepyx/whyis"
 license=('MIT')
