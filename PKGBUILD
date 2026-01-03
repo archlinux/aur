@@ -1,8 +1,8 @@
-# Maintainer: Damglador <vse.stopchanskyi at gmail dot com>
+# Maintainer: Damglador <damglador@gmail.com>
 # Contributor: Alex Tharp <alex at toastercup dot io>
 
 pkgname=crowdin-cli-bin
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://crowdin.github.io/crowdin-cli/"
