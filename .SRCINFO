@@ -1,6 +1,6 @@
 pkgbase = tpnoisie
 	pkgdesc = Make the ThinkPad TrackPoint make noises
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ackledotdev/tpnoisie
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tpnoisie
 	depends = alsa-lib
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/ackledotdev/tpnoisie/archive/v0.3.0/tpnoisie-0.3.0.tar.gz
-	sha256sums = 58cce039bf12fe6743ed31798c842f2a2e19bdac4ade6d4bf465b0446c7b0d0c
+	source = https://github.com/ackledotdev/tpnoisie/archive/v0.3.1/tpnoisie-0.3.1.tar.gz
+	sha256sums = 67e3c4d25ed5517e63bee35636d7079e04f3646ad14c52909f66ba63343595ce
 
 pkgname = tpnoisie

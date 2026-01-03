@@ -1,7 +1,7 @@
 # Maintainer: Akhil Pillai <ackledotdev@gmail.com>
 
 pkgname=tpnoisie
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Make the ThinkPad TrackPoint make noises"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=('cargo' 'git')
 depends=('libinput' 'alsa-lib' 'glibc' 'gcc-libs')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('58cce039bf12fe6743ed31798c842f2a2e19bdac4ade6d4bf465b0446c7b0d0c')
+sha256sums=('67e3c4d25ed5517e63bee35636d7079e04f3646ad14c52909f66ba63343595ce')
 
 prepare() {
     cd "$pkgname-$pkgver"
