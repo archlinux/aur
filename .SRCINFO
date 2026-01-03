@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-markdown-git
 	pkgdesc = Markdown grammar for tree-sitter
 	pkgver = 0.5.1.r0.g2dfd57f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = tree-sitter-markdown-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = tree-sitter-markdown=0.5.1.r0.g2dfd57f

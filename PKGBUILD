@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-markdown-git
 pkgver=0.5.1.r0.g2dfd57f
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-markdown"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'cmake' 'nodejs' 'tree-sitter-cli')
+makedepends=('git' 'cmake' 'tree-sitter-cli')
 provides=("tree-sitter-markdown=$pkgver" 'libtree-sitter-markdown.so' 'libtree-sitter-markdown-inline.so')
 conflicts=('tree-sitter-markdown')
 source=("git+https://github.com/tree-sitter-grammars/tree-sitter-markdown.git")
