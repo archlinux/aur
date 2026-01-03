@@ -5,6 +5,7 @@ pkgbase = bros
 	url = http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html
 	arch = any
 	license = Unlicense
+	depends = bash
 	depends = altirra
 	source = https://archive.org/download/a8b_Bros_1989_KE_Soft_DE_en_a3/Bros_1989_KE_Soft_DE_en_a3.atr
 	source = bros
