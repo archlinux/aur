@@ -1,0 +1,16 @@
+pkgbase = tsql-git
+	pkgdesc = A modern PostgreSQL manager TUI
+	pkgver = v0.2.0.r66.g4518df8
+	pkgrel = 1
+	url = https://github.com/fcoury/tsql
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = tree-sitter
+	provides = tsql=v0.2.0.r66.g4518df8
+	conflicts = tsql
+	source = tsql::git+https://github.com/fcoury/tsql.git#branch=master
+	sha256sums = SKIP
+
+pkgname = tsql-git
