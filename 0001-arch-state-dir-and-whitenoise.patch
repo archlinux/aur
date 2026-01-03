@@ -5,13 +5,13 @@
  # Build paths inside the project like this: BASE_DIR / 'subdir'.
  BASE_DIR = Path(__file__).resolve().parent.parent
 +
-+# Arch packaging: allow writable state (db + collectstatic output) outside the code dir.
++# Arch packaging: allow writable state (db + collectstatic + media) outside the code dir.
 +YAMTRACK_DATA_DIR = config("YAMTRACK_DATA_DIR", default=None)
 +DATA_DIR = Path(YAMTRACK_DATA_DIR) if YAMTRACK_DATA_DIR else BASE_DIR
  
  
  def secret(key, default=undefined, **kwargs):
-@@ -131,6 +135,7 @@
+@@ -136,6 +140,7 @@
  MIDDLEWARE = [
      "debug_toolbar.middleware.DebugToolbarMiddleware",
      "django.middleware.security.SecurityMiddleware",
@@ -37,7 +37,7 @@
          },
      }
  
-@@ -289,10 +294,17 @@
+@@ -289,10 +294,23 @@
  # Static files (CSS, JavaScript, Images)
  # https://docs.djangoproject.com/en/stable/howto/static-files/
  
@@ -48,12 +48,18 @@
  
  STATICFILES_DIRS = [BASE_DIR / "static"]
 +
-+# WhiteNoise: serve static files directly from the app (reverse proxy is fine)
++# WhiteNoise: serve static files directly. Restoring 'default' is critical for health checks.
 +STORAGES = {
++    "default": {
++        "BACKEND": "django.core.files.storage.FileSystemStorage",
++    },
 +    "staticfiles": {
 +        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
 +    },
 +}
++
++MEDIA_ROOT = DATA_DIR / "media"
++MEDIA_URL = "/media/"
  
  if BASE_URL:
      STATIC_URL = f"{BASE_URL}/static/"
