@@ -9,6 +9,7 @@ pkgbase = ocaml-ipaddr
 	checkdepends = ocaml-ppx_sexp_conv
 	makedepends = dune
 	makedepends = ocaml-domain-name
+	makedepends = ocaml-hex
 	makedepends = ocaml-macaddr
 	depends = ocaml
 	options = !strip
