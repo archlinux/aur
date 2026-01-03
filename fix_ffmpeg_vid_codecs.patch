@@ -1,0 +1,146 @@
+diff --color -ur python3-sipsimple-5.3.3/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c python3-sipsimple-5.3.3.mod/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c
+--- python3-sipsimple-5.3.3/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c	2026-01-03 17:15:28.397489739 +0000
++++ python3-sipsimple-5.3.3.mod/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c	2026-01-03 17:13:51.254345276 +0000
+@@ -44,6 +44,7 @@
+ #include "../pjmedia/ffmpeg_util.h"
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
++#include <libavutil/frame.h>
+ #if LIBAVCODEC_VER_AT_LEAST(53,20)
+   /* Needed by 264 so far, on libavcodec 53.20 */
+ # include <libavutil/opt.h>
+@@ -69,6 +70,14 @@
+ #endif
+ #define AVCODEC_HAS_DECODE(c)         (c->decode)
+ 
++#if defined(AV_FRAME_FLAG_KEY)
++#define PJ_FFMPEG_FRAME_IS_KEY(frame_ptr) \
++    ((frame_ptr) ? (((frame_ptr)->flags & AV_FRAME_FLAG_KEY) != 0) : PJ_FALSE)
++#else
++#define PJ_FFMPEG_FRAME_IS_KEY(frame_ptr) \
++    ((frame_ptr) ? ((frame_ptr)->key_frame != 0) : PJ_FALSE)
++#endif
++
+ /* AVCodec H264 default PT */
+ #define AVC_H264_PT                       PJMEDIA_RTP_PT_H264_RSV3
+ 
+@@ -597,13 +606,14 @@
+     pj_status_t status;
+     pj_uint8_t *outbuf = payload;
+     pj_size_t out_size = *payload_len;
++    const pj_uint8_t *pkt_payload = NULL;
+     status = pjmedia_h264_packetize(data->pktz, bits, bits_len, bits_pos,
+-				  &payload, payload_len);
++				  &pkt_payload, payload_len);
+     if (status != PJ_SUCCESS)
+         return status;
+     if (out_size < *payload_len)
+         return PJMEDIA_CODEC_EFRMTOOSHORT;
+-    pj_memcpy(outbuf, payload, *payload_len);
++    pj_memcpy(outbuf, pkt_payload, *payload_len);
+     return PJ_SUCCESS;
+ }
+ 
+@@ -670,13 +680,14 @@
+     pj_status_t status;
+     pj_uint8_t *outbuf = payload;
+     pj_size_t out_size = *payload_len;
++    const pj_uint8_t *pkt_payload = NULL;
+     status = pjmedia_h263_packetize(data->pktz, bits, bits_len, bits_pos,
+-				  &payload, payload_len);
++				  &pkt_payload, payload_len);
+     if (status != PJ_SUCCESS)
+         return status;
+     if (out_size < *payload_len)
+         return PJMEDIA_CODEC_EFRMTOOSHORT;
+-    pj_memcpy(outbuf, payload, *payload_len);
++    pj_memcpy(outbuf, pkt_payload, *payload_len);
+     return PJ_SUCCESS;
+ }
+ 
+@@ -1257,6 +1268,21 @@
+ 
+ }
+ 
++static void ffmpeg_release_codec_ctx(AVCodecContext **ctx, pj_bool_t opened)
++{
++    if (!ctx || !*ctx)
++        return;
++#if LIBAVCODEC_VER_AT_LEAST(54, 15)
++    PJ_UNUSED_ARG(opened);
++    avcodec_free_context(ctx);
++#else
++    if (opened)
++        avcodec_close(*ctx);
++    av_free(*ctx);
++#endif
++    *ctx = NULL;
++}
++
+ static pj_status_t open_ffmpeg_codec(ffmpeg_private *ff,
+                                      pj_mutex_t *ff_mutex)
+ {
+@@ -1383,18 +1409,10 @@
+     return PJ_SUCCESS;
+ 
+ on_error:
+-    if (ff->enc_ctx) {
+-	if (enc_opened)
+-	    avcodec_close(ff->enc_ctx);
+-	av_free(ff->enc_ctx);
+-	ff->enc_ctx = NULL;
+-    }
+-    if (ff->dec_ctx) {
+-	if (dec_opened)
+-	    avcodec_close(ff->dec_ctx);
+-	av_free(ff->dec_ctx);
+-	ff->dec_ctx = NULL;
+-    }
++    if (ff->enc_ctx)
++    ffmpeg_release_codec_ctx(&ff->enc_ctx, enc_opened);
++    if (ff->dec_ctx)
++    ffmpeg_release_codec_ctx(&ff->dec_ctx, dec_opened);
+     return status;
+ }
+ 
+@@ -1486,16 +1504,10 @@
+     ff_mutex = ((struct ffmpeg_factory*)codec->factory)->mutex;
+ 
+     pj_mutex_lock(ff_mutex);
+-    if (ff->enc_ctx) {
+-        avcodec_close(ff->enc_ctx);
+-        av_free(ff->enc_ctx);
+-    }
+-    if (ff->dec_ctx && ff->dec_ctx!=ff->enc_ctx) {
+-        avcodec_close(ff->dec_ctx);
+-        av_free(ff->dec_ctx);
+-    }
+-    ff->enc_ctx = NULL;
+-    ff->dec_ctx = NULL;
++    if (ff->enc_ctx)
++        ffmpeg_release_codec_ctx(&ff->enc_ctx, PJ_TRUE);
++    if (ff->dec_ctx)
++        ffmpeg_release_codec_ctx(&ff->dec_ctx, PJ_TRUE);
+     pj_mutex_unlock(ff_mutex);
+ 
+     return PJ_SUCCESS;
+@@ -1680,7 +1692,7 @@
+ #if LIBAVCODEC_VER_AT_LEAST(54,15)
+         has_key_frame = (avpacket.flags & AV_PKT_FLAG_KEY);
+ #else
+-	has_key_frame = ff->enc_ctx->coded_frame->key_frame;	    
++    has_key_frame = PJ_FFMPEG_FRAME_IS_KEY(ff->enc_ctx->coded_frame);
+ #endif
+         if (has_key_frame)    
+             output->bit_info |= PJMEDIA_VID_FRM_KEYFRAME;
+@@ -1943,8 +1955,8 @@
+ 	/* Check decoding result, e.g: see if the format got changed,
+ 	 * keyframe found/missing.
+ 	 */
+-	status = check_decode_result(codec, &input->timestamp,
+-				     avframe.key_frame);
++    status = check_decode_result(codec, &input->timestamp,
++                 PJ_FFMPEG_FRAME_IS_KEY(&avframe));
+ 	if (status != PJ_SUCCESS)
+ 	    return status;
+ 

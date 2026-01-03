@@ -1,0 +1,26 @@
+diff --git a/deps/ZRTPCPP/zrtp/EmojiBase32.cpp b/deps/ZRTPCPP/zrtp/EmojiBase32.cpp
+index 593ea77..ee42f35 100644
+--- a/deps/ZRTPCPP/zrtp/EmojiBase32.cpp
++++ b/deps/ZRTPCPP/zrtp/EmojiBase32.cpp
+@@ -4,6 +4,8 @@
+ #include <iostream>
+ // stdlib.h required for Android NDK builds, not included within the above includes
+ #include <cstdlib>
++#include <stdint.h>
++#include <cstdint>
+ 
+ #include <libzrtpcpp/EmojiBase32.h>
+ 
+diff --git a/deps/pjsip/third_party/zsrtp/zrtp/zrtp/EmojiBase32.cpp b/deps/pjsip/third_party/zsrtp/zrtp/zrtp/EmojiBase32.cpp
+index 593ea77..ee42f35 100644
+--- a/deps/pjsip/third_party/zsrtp/zrtp/zrtp/EmojiBase32.cpp
++++ b/deps/pjsip/third_party/zsrtp/zrtp/zrtp/EmojiBase32.cpp
+@@ -4,6 +4,8 @@
+ #include <iostream>
+ // stdlib.h required for Android NDK builds, not included within the above includes
+ #include <cstdlib>
++#include <stdint.h>
++#include <cstdint>
+ 
+ #include <libzrtpcpp/EmojiBase32.h>
+ 

@@ -1,0 +1,22 @@
+diff --git a/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c b/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c
+index 108022d..028607d 100644
+--- a/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c
++++ b/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c
+@@ -761,7 +761,7 @@ static pj_status_t open_playback (struct alsa_stream* stream,
+ 	if (result < 0) {
+ 	PJ_LOG (3,(THIS_FILE, "Unable to set a channel count of %d for "
+ 		   "playback device '%s'", param->channel_count,
+-		   stream->af->devs[param->play_id].name));
++		   stream->af->devs[param->play_id].info.name));
+ 	snd_pcm_close (stream->pb_pcm);
+ 	return PJMEDIA_EAUD_SYSERR;
+     }
+@@ -900,7 +900,7 @@ static pj_status_t open_capture (struct alsa_stream* stream,
+     if (result < 0) {
+ 	PJ_LOG (3,(THIS_FILE, "Unable to set a channel count of %d for "
+ 		   "capture device '%s'", param->channel_count,
+-		   stream->af->devs[param->rec_id].name));
++		   stream->af->devs[param->rec_id].info.name));
+ 	snd_pcm_close (stream->ca_pcm);
+ 	return PJMEDIA_EAUD_SYSERR;
+     }
