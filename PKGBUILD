@@ -4,14 +4,14 @@ pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 
 url="https://github.com/wojtmic/prefixer"
 license=('GPL3')
 
-depends=('python>3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-click')
+depends=('python>=3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-click')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/${pkgver}.tar.gz")
@@ -36,7 +36,7 @@ package() {
   install -d "$pkgdir/usr/share/fish/vendor_completions.d"
 
   export PATH="$pkgdir/usr/bin:$PATH"
-  export PYTHONPATH="$pkgdir/usr/lib/python3.13/site-packages"
+  export PYTHONPATH="$pkgdir$(python -c 'import sys; print(f"/usr/lib/python{sys.version_info.major}.{sys.version_info.minor}/site-packages")')"
 
   _PREFIXER_COMPLETE=zsh_source prefixer > \
       "$pkgdir/usr/share/zsh/site-functions/_prefixer"
