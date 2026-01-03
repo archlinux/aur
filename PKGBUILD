@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -24,18 +24,21 @@ optdepends=(
 options=(!debug)
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('9408a4cead4d56c8c70217aba031c61accea4ece6de540f590f86c3e3a7889e39636f680588180d2c1d9b535edfea6c9bf99df34d3ecd29a33a5a554ce8c3233')
+b2sums=('5fdc9c2141fb340ba80f39d1822a9139520a3c340baf9d10295ffbec50f06d18b04e60dd33958d84090fced16a0f6f3890308c67f6b369f5a65192584f003fdc')
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                                            ${pkgname:1}.sh
-  sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'                               ${pkgname:1}.sh
-  sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'                                    ${pkgname:1}.sh
-  sed -i 's|/usr/local/|/usr/lib/|g'                                                                    ${pkgname:1}.sh
-  sed -i 's|log_folder="\${XUI_LOG_FOLDER:=/var/log}"|log_folder="\${XUI_LOG_FOLDER:=/var/log/3x-ui}"|' ${pkgname:1}.sh
-  sed -i '/Environment="XRAY_VMESS_AEAD_FORCED=false"/a Environment="XUI_LOG_FOLDER=/var/log/3x-ui"'    ${pkgname:1}.service
-  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|'                         ${pkgname:1}.service
-  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'                               ${pkgname:1}.service
+  sed -i 's|:=/usr/local|:=/usr/lib|'                                                        ${pkgname:1}.sh
+  sed -i 's|:=/etc|:=/usr/lib|'                                                              ${pkgname:1}.sh
+  sed -i 's|&& legacy_version\( 0\)\?|\&\& echo "Please use AUR helper for this function"|g' ${pkgname:1}.sh
+  sed -i 's|&& uninstall\( 0\)\?|\&\& echo "Please use AUR helper for this function"|g'      ${pkgname:1}.sh
+  sed -i 's|&& update_menu|\&\& echo "Please use AUR helper for this function"|'             ${pkgname:1}.sh
+  sed -i 's|&& update 0$|\&\& echo "Please use AUR helper for this function"|'               ${pkgname:1}.sh
+  sed -i 's|&& update$|\&\& echo "Please use AUR helper for this function"|'                 ${pkgname:1}.sh
+
+  sed -i 's|EnvironmentFile=-/etc/default/x-ui|EnvironmentFile=-/etc/x-ui/x-ui.env|'         ${pkgname:1}.service.debian
+  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|'              ${pkgname:1}.service.debian
+  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'                    ${pkgname:1}.service.debian
 }
 
 build() {
@@ -53,7 +56,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -vDm 755 ${pkgname:1}.sh          "$pkgdir"/usr/bin/${pkgname:1}
-  install -vDm 755 build/$pkgname           "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
-  install -vDm 644 ${pkgname:1}.service  -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 755 ${pkgname:1}.sh             "$pkgdir"/usr/bin/${pkgname:1}
+  install -vDm 755 build/$pkgname              "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
+  install -vDm 644 ${pkgname:1}.service.debian "$pkgdir"/usr/lib/systemd/system/${pkgname:1}.service
 }
