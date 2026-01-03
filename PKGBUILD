@@ -3,13 +3,13 @@
 _ocamlname=ipaddr
 pkgname=ocaml-$_ocamlname
 pkgver=5.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for manipulation of IP (and MAC) address representations"
 arch=('x86_64')
 url="https://github.com/mirage/ocaml-ipaddr"
 license=('ISC')
 depends=('ocaml')
-makedepends=('dune')
+makedepends=('dune' 'ocaml-domain-name' 'ocaml-hex' 'ocaml-macaddr')
 checkdepends=('ocaml-ounit' 'ocaml-ppx_sexp_conv')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tbz::${url}/releases/download/v${pkgver}/${_ocamlname}-${pkgver}.tbz")
