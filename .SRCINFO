@@ -1,0 +1,17 @@
+pkgbase = nanokvm-usb-appimage
+	pkgdesc = NanoKVM USB Host Application (AppImage version)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sipeed/NanoKVM-USB
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = fuse2
+	noextract = nanokvm-usb-appimage-1.0.1.AppImage
+	options = !strip
+	source_x86_64 = nanokvm-usb-appimage-1.0.1.AppImage::https://github.com/sipeed/NanoKVM-USB/releases/download/v1.0.1/nanokvm-usb-1.0.1.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/sipeed/NanoKVM-USB/v1.0.1/LICENSE
+	sha256sums_x86_64 = 48e4643ea0a90ea2ced0c00029c7ad8f9631909307e3eb62a8cf5cb5f36e9526
+	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = nanokvm-usb-appimage
