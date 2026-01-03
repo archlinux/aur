@@ -8,6 +8,6 @@ pkgbase = eilmeldung-bin
 	conflicts = eilmeldung
 	conflicts = eilmeldung-git
 	source = eilmeldung-bin-0.6.1.tar.gz::https://github.com/christo-auer/eilmeldung/releases/download/0.6.1/eilmeldung-x86_64-unknown-linux-musl-0.6.1.tar.gz
-	sha256sums = 57abf277f87eb2267ba4b20edc21dd31088614869b9c624fc502ceebc01c6c81
+	sha256sums = a05457f9de39f74a20b1bcd3ff1b2d98a829d2e8bf877a73e67dcc7a94435842
 
 pkgname = eilmeldung-bin
