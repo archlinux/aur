@@ -1,0 +1,35 @@
+diff --git a/mcabber/mcabber/screen.c b/mcabber/mcabber/screen.c
+index 00b5704..19a52b2 100644
+--- a/mcabber/mcabber/screen.c
++++ b/mcabber/mcabber/screen.c
+@@ -2257,7 +2257,7 @@ void scr_draw_roster(void)
+           const char *bjid = buddy_getjid(BUDDATA(buddy));
+           for (head = rostercolrules; head; head = g_slist_next(head)) {
+             rostercolor_t *rc = head->data;
+-            if (g_pattern_match_string(rc->compiled, bjid) &&
++            if (g_pattern_spec_match_string(rc->compiled, bjid) &&
+                 (!strcmp("*", rc->status) || strchr(rc->status, status))) {
+               color = compose_color(rc->color);
+               break;
+@@ -2468,7 +2468,7 @@ static void set_chatstate(int state)
+       if (chatstate == 1) {
+         if (chatstate_timeout_id == 0)
+           chatstate_timeout_id = g_timeout_add_seconds(1,
+-                                                       scr_chatstates_timeout,
++                                                       (GSourceFunc)scr_chatstates_timeout,
+                                                        NULL);
+         jep_state = ROSTER_EVENT_COMPOSING;
+       }
+diff --git a/mcabber/mcabber/xmpp.c b/mcabber/mcabber/xmpp.c
+index f15197f..71971bd 100644
+--- a/mcabber/mcabber/xmpp.c
++++ b/mcabber/mcabber/xmpp.c
+@@ -795,7 +795,7 @@ static void _try_to_reconnect(void)
+   xmpp_disconnect();
+   if (AutoConnection)
+     g_timeout_add_seconds(RECONNECTION_TIMEOUT + (random() % 90L),
+-                          xmpp_reconnect, NULL);
++                          (GSourceFunc)xmpp_reconnect, NULL);
+ }
+ 
+ static void connection_open_cb(LmConnection *connection, gboolean success,
