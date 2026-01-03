@@ -1,10 +1,10 @@
 # Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
 
 pkgname=garuda-rani
-pkgver="3.5.0"
-_commit='e2f2d8f64b9d1baf2b44f36395ed8a2599045076'
+pkgver="3.5.1"
+_commit='773b1e34bbefae2ebd60d905935e066bdf3267f9'
 pkgrel=1
-_electronversion=38
+_electronversion=39
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
 url="https://gitlab.com/garuda-linux/applications/rani"

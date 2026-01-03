@@ -1,6 +1,6 @@
 pkgbase = garuda-rani
 	pkgdesc = Garuda's Reliable Assistant for Native Installations
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/rani
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = garuda-rani
 	makedepends = pnpm
 	depends = bash
 	depends = curl
-	depends = electron38
+	depends = electron39
 	depends = pacman-contrib
 	depends = garuda-libs>=1.6.0
 	optdepends = paru: show pending AUR updates
