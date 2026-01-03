@@ -1,5 +1,5 @@
-pkgbase = piper-voices-cs-cz
-	pkgdesc = Voices for Piper text to speech system (cs_CZ)
+pkgbase = piper-voices-sk-sk
+	pkgdesc = Voices for Piper text to speech system (sk_SK)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://huggingface.co/rhasspy/piper-voices
@@ -10,4 +10,4 @@ pkgbase = piper-voices-cs-cz
 	depends = piper-voices-common
 	provides = piper-voices
 
-pkgname = piper-voices-cs-cz
+pkgname = piper-voices-sk-sk

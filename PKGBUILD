@@ -4,8 +4,8 @@
 # https://huggingface.co/rhasspy/piper-voices/tree/main
 # then copy this PKGBUILD and adjust $_lang and $_region accordingly
 
-_lang="cs"
-_region="CZ"
+_lang="sk"
+_region="SK"
 
 _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
