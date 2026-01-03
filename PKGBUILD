@@ -3,7 +3,7 @@
 _pkgname=hyprwhspr
 pkgname=hyprwhspr-git
 pkgver=0
-pkgrel=4
+pkgrel=5
 pkgdesc="Native Whisper speech-to-text for Arch/Omarchy with Waybar integration (git)"
 arch=('x86_64')
 url="https://github.com/goodroot/${_pkgname}"
@@ -26,6 +26,7 @@ depends=(
   'python-pyudev'
   'python-rich'
   'python-gobject'
+  'python-pulsectl'
   'ydotool'
   'pipewire' 'pipewire-alsa' 'pipewire-pulse'
 )
