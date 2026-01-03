@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-meson
 	pkgdesc = Meson grammar for tree-sitter
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-meson
 	arch = i686
 	arch = x86_64
