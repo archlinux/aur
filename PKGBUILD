@@ -3,7 +3,7 @@
 # Contributors: teutat3s
 
 pkgname=k6
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ url="https://github.com/grafana/k6"
 license=('AGPL3')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a2f5ccf6ca7be527cf510d7b1ef7d7b45a2f487023ded0f3bfc88cf8dbf1cbdb')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('1f653584c4b8a191474a55a8f2a1ae661b82c6e7e90e243cf27969eb21ee8453')
 
 build() {
 	cd "${pkgname}-${pkgver}"
