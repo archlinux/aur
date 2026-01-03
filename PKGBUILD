@@ -2,25 +2,24 @@
 
 pkgname=python-nvtx
 _name=${pkgname#python-}
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Python NVTX - Python code annotation library"
 url="https://github.com/NVIDIA/NVTX"
-arch=('any')
+arch=('x86_64')
 license=('Apache-2.0')
 depends=('python' 'cython')
 makedepends=('python-setuptools')
-_nvtx_commit=2210002a22bf865e6718d650af59b938cecd1d90
-source=("nvtx.tar.gz::$url/archive/$_nvtx_commit.tar.gz")
-sha256sums=('afc0fe0d1bbbba574d07650153ed2f736709658f09f5a9c342a7371a616a4538')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('12945242a31bde70b1f15cae867f8706bdff290e2f808a11738e03ebefdf847f')
 
 
 build() {
-    cd "$srcdir/NVTX-$_nvtx_commit/python"
+    cd "$srcdir/nvtx-$pkgver"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd "$srcdir/NVTX-$_nvtx_commit/python"
+    cd "$srcdir/nvtx-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
