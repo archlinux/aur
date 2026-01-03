@@ -1,0 +1,19 @@
+pkgbase = openterfaceqt-appimage
+	pkgdesc = Openterface Mini-KVM Host Application (AppImage version)
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/TechxArtisanStudio/Openterface_QT
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = fuse2
+	noextract = openterfaceqt-appimage-0.5.7.AppImage
+	options = !strip
+	source_x86_64 = openterfaceqt-appimage-0.5.7.AppImage::https://github.com/TechxArtisanStudio/Openterface_QT/releases/download/0.5.7/openterfaceQT_linux_amd64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/TechxArtisanStudio/Openterface_QT/0.5.7/LICENSE
+	source_x86_64 = 51-openterface.rules
+	sha256sums_x86_64 = 2468085a0e74e73c34c837ce04c153d54ebbd0d86d6931d27262e13e5f219c9b
+	sha256sums_x86_64 = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	sha256sums_x86_64 = c2b3f7e0ad8456d3e6f85931986f4b624687bf15309eaba0c6ab1685cf75d89d
+
+pkgname = openterfaceqt-appimage
