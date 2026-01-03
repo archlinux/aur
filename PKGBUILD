@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='kss-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='kss - Enhanced Kubernetes Pod Inspection'
 url='https://github.com/chmouel/kss'
@@ -12,10 +12,10 @@ provides=('kss')
 conflicts=('kss')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_arm64.tar.gz")
-sha256sums_aarch64=('24c99f1107939fb23e160c1f5e3a40e5446fe2a47970f5bdd5dfd07de7c9c56d')
+sha256sums_aarch64=('743e6aa2550197ba86266b247952a0488eaf6b9b17bb13a262670b15549fad45')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('707e94054c9d9eb53dfdd8bb642bf6777b8ece36d395bb4c4c2d060bc2669782')
+sha256sums_x86_64=('45c96e43a8241a754aa73c922cc6796cdfd4d4d83abac231aa404dcbb5359c5e')
 
 package() {
   # bin
