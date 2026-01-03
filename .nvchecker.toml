@@ -1,0 +1,5 @@
+[grove-bin]
+source = "github"
+github = "sQVe/grove"
+use_latest_release = true
+prefix = "v"
