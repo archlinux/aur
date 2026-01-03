@@ -5,7 +5,7 @@ pkgdesc="TypeScript/Bun port of arRPC - Open Discord RPC server"
 arch=('any')
 url="https://github.com/Creationsss/arrpc-bun"
 license=('MIT')
-depends=('bun-bin')
+depends=('bun')
 makedepends=('git')
 conflicts=('arrpc-bun-bin')
 source=("git+https://github.com/Creationsss/arrpc-bun.git#branch=main"

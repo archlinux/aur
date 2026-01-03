@@ -6,7 +6,7 @@ pkgbase = arrpc-bun
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = bun-bin
+	depends = bun
 	conflicts = arrpc-bun-bin
 	source = git+https://github.com/Creationsss/arrpc-bun.git#branch=main
 	source = arrpc-bun.service
