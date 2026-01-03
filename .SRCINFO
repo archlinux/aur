@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-agda
 	pkgdesc = Agda grammar for tree-sitter
 	pkgver = 1.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tree-sitter/tree-sitter-agda
 	arch = i686
 	arch = x86_64
