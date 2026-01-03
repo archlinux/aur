@@ -1,0 +1,26 @@
+pkgbase = mcabber-hg
+	pkgdesc = A small Jabber console client, includes features: SSL, PGP, MUC, UTF8, and OTR
+	pkgver = 2347
+	pkgrel = 1
+	url = http://www.mcabber.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = mercurial
+	depends = ncurses
+	depends = glib2
+	depends = openssl
+	depends = gpgme
+	depends = libotr
+	depends = aspell
+	depends = loudmouth
+	provides = mcabber=1.0.0
+	conflicts = mcabber
+	conflicts = mcabber-lm-hg
+	conflicts = mcabber-crew-hg
+	source = hg+http://mcabber.com/hg/
+	md5sums = SKIP
+
+pkgname = mcabber-hg
+
