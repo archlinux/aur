@@ -1,7 +1,7 @@
 pkgbase = sleepy-launcher-git
 	pkgdesc = Sleepy game launcher for Linux with telemetry disabling
 	pkgver = 1.6.1.r0.gd1ab543
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/sleepy-launcher
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,8 @@ pkgbase = sleepy-launcher-git
 	depends = glibc
 	depends = gtk4
 	depends = libadwaita
+	depends = gstreamer
+	depends = gst-libav
 	optdepends = mangohud: FPS Hud/GUI
 	optdepends = gamemode: Game Optimizations
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance

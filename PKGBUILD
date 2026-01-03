@@ -2,7 +2,7 @@
 pkgname="sleepy-launcher-git"
 _pkgname="${pkgname%-git}"
 pkgver=1.6.1.r0.gd1ab543
-pkgrel=1
+pkgrel=2
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=("x86_64")
 url="https://github.com/an-anime-team/sleepy-launcher"
@@ -15,6 +15,8 @@ depends=(
   "glibc"
   "gtk4"
   "libadwaita"
+  "gstreamer"
+  "gst-libav"
 )
 makedepends=(rust)
 optdepends=(
