@@ -3,8 +3,8 @@
 
 _pkgname=python3-otr
 pkgname=python-otr
-pkgver=2.0.1
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Off-The-Record Messaging protocol implementation for Python"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
@@ -20,7 +20,7 @@ conflicts=('python3-otr')
 provides=('python3-otr')
 replaces=('python3-otr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('3fc0a49b30e752f77be7533744a418a8471486a2860f50b7d9157f2bc25fe593cf4b486ae856cb3944695f61466a87e1ca34cdaf48eea7ef9ba2feaef78332c7')
+sha512sums=('cfa73bc21e8b98f96cb83c87fc279f16b461b18cca3a6e0cc64b6295d627190415f75cff7b1e50c39f49636f4e48b1b428219d54bf3bf676018d10aa8f61ca1c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
