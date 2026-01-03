@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-xml
 	pkgdesc = XML & DTD grammars for tree-sitter
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter-grammars/tree-sitter-xml
 	arch = i686
 	arch = x86_64
