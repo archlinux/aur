@@ -1,4 +1,5 @@
-pkgname=typomat-git
+_pkgname=typomat
+pkgname="$_pkgname"-git
 pkgver=0.1.3.r0.g2baf227
 pkgrel=1
 pkgdesc="Turn your code into muscle memory"
@@ -11,25 +12,25 @@ source=(git+"$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
 
     git describe --tags --long | \
         sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
 
     export GOBIN="$srcdir/gobin"
     export GOPATH="$srcdir/gopath"
 
-    go install ./cmd/$pkgname
+    go install ./cmd/$_pkgname
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
 
-    install -Dm755 "$srcdir/gobin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/gobin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/_$pkgname/LICENSE"
 }
