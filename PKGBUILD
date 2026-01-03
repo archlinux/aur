@@ -1,7 +1,6 @@
 # Maintainer: Manos G. <seventh dot fret at protonmail dot com>
 pkgname="meerk40t"
-pkgver="0.98.1"
-_pkgversion="0.9.8100"
+pkgver="0.9.8100"
 pkgrel="1"
 pkgdesc="Hackable Laser software for K40 / GRBL / Fibre Lasers"
 arch=("any")
@@ -17,7 +16,7 @@ depends=("python"
      "python-websocket-client")
 optdepends=("python-ezdxf")
 makedepends=('gendesk')
-source=("${pkgname}-${_pkgversion}.tar.gz::https://github.com/meerk40t/meerk40t/archive/refs/tags/${_pkgversion}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/meerk40t/meerk40t/archive/refs/tags/${pkgver}.tar.gz"
         "meerk40t-logo.png"
 )
 sha256sums=('aa2abacd5a8407696833cdc7f04c0401dab7a5b3f6bf84ccc29cd0bc79e9cc82'
@@ -44,7 +43,7 @@ package() {
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 
   mkdir -p ${pkgdir}/opt
-  cp -r ${srcdir}/${pkgname}-${_pkgversion} ${pkgdir}/opt/${pkgname}
+  cp -r ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/opt/${pkgname}
 
   install -Dm644 meerk40t-logo.png ${pkgdir}/opt/${pkgname}/meerk40t-logo.png
 
