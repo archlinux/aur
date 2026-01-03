@@ -3,7 +3,7 @@
 # Maintainer: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=5.0.7
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums_x86_64=('3a53ddf34075ac945cadccd5c0897fe19c574794f41771007bcec9d40e140914')
+sha256sums_x86_64=('e2cfb09173cce87cb68c42331a6d4e23f5fd6135980e17c2dd37bfd23432cea3')
 
 prepare () {
 	cd "$pkgname-$pkgver"
