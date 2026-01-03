@@ -1,4 +1,4 @@
-pkgbase = Dause
+pkgbase = dause
 	pkgdesc = Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator. DAUSE includes integrated media visualization and a robust parallel tab system.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -11,9 +11,9 @@ pkgbase = Dause
 	depends = qtermwidget
 	depends = fftw
 	depends = ffmpeg
-	source = Dause-1.0.0.tar.gz::https://github.com/moyhatake/Dause/archive/refs/tags/v1.0.0.tar.gz
+	source = dause-1.0.0.tar.gz::https://github.com/moyhatake/Dause/archive/refs/tags/v1.0.0.tar.gz
 	source = dause.desktop
 	sha256sums = 6986571ade22cf92fbc7da4d8962e5bd32fd49072ee9f3a8d677b54deb844546
 	sha256sums = 753a2f8e2f6d62766ef3bf0cfd41509a336624ca8994a1d784e580fe462372c9
 
-pkgname = Dause
+pkgname = dause
