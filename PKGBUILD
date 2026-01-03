@@ -1,6 +1,6 @@
 # Maintainer: Kam1k4dze <me@kam1k4dze.com>
 pkgname=inspect-deps
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="ELF dependency analyzer with optional pacman integration"
 arch=('x86_64')
