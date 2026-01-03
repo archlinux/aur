@@ -1,7 +1,7 @@
 pkgbase = codemachine-cli
 	pkgdesc = Multi-agent workflow orchestration CLI
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/moazbuilds/CodeMachine-CLI
 	arch = any
 	license = MIT
