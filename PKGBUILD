@@ -4,13 +4,13 @@ _pkgname=Equibop
 pkgdesc="A custom Discord desktop app with Equicord pre-installed"
 pkgver=3.1.5
 # Reminder for devs: don't forget to update the electron version on equibop.sh
-pkgrel=1
+pkgrel=2
 electron=electron39
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
 license=('GPL3')
 depends=("${electron}")
-makedepends=('bun-bin' 'cmake' 'gcc' 'nodejs' 'npm')
+makedepends=('bun' 'cmake' 'gcc' 'nodejs' 'npm')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
