@@ -1,18 +1,18 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A modern PostgreSQL manager TUI"
 arch=(x86_64 aarch64)
 url="https://github.com/fcoury/tsql"
 license=('MIT')
-makedepends=(cargo tree-sitter tree-sitter-json tree-sitter-html)
+makedepends=(cargo tree-sitter)
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 provides=(tsql)
-sha256sums=('be3d22b060f40126942f524e34961e43f03b9e04bcb7d7cab66890109c9f4473')
+sha256sums=('11cad48de8f5d3938502b61c1ea7170c21f3b6e5b3a9d3903e11c5f82375b962')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,6 +23,9 @@ build() {
   cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+ # fix the naitive linking errors 
+  export RUSTFLAGS="-Clinker-plugin-lto"
+  # export ARGO_PROFILE_RELEASE_LTO=false
   cargo build --frozen --release --all-features
 }
 
