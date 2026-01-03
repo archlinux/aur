@@ -1,8 +1,8 @@
 pkgbase = python-iterfzf
-	pkgdesc = Generate an invocation tree of functions calls
+	pkgdesc = Pythonic interface to fzf
 	pkgver = 1.8.0.62.0
 	pkgrel = 1
-	url = https://github.com/bterwijn/invocation_tree
+	url = https://github.com/dahlia/iterfzf
 	arch = any
 	license = GPL-3.0
 	makedepends = python-setuptools
