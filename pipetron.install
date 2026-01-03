@@ -1,0 +1,11 @@
+post_install() {
+  systemctl --global enable pipetron.service
+}
+
+post_upgrade() {
+  systemctl --global reenable pipetron.service
+}
+
+pre_remove() {
+  systemctl --global disable pipetron.service
+}

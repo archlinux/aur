@@ -1,0 +1,14 @@
+pkgbase = pipetron
+	pkgdesc = Electron node manager for PipeWire
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://codeberg.org/ponleou/pipetron
+	install = pipetron.install
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	depends = pipewire
+	source = pipetron-1.0.0.tar.gz::https://codeberg.org/ponleou/pipetron/archive/v1.0.0.tar.gz
+	sha256sums = 77d435c9fb736176c73c6d7bf7be937240ccbd37f4861541428459e1e476ca5c
+
+pkgname = pipetron
