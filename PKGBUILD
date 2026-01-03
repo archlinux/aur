@@ -1,7 +1,7 @@
 # Maintainer: Semyon Ivanov <aur at semyon dot dev>
 
 pkgname=srb-id-pkcs11-git
-pkgver=0.2.0.r13.g82c00f5
+pkgver=0.2.0.r14.g215f330
 pkgrel=1
 pkgdesc='An open source PKCS11 v2.40 module for Serbian ID smart cards'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
-    zig build --release=small
+    zig build -Doptimize=ReleaseSmall -Duse_system_pkcs11
 }
 
 package() {
