@@ -1,6 +1,6 @@
 pkgbase = gamescope-nvidia
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.16.14.3
+	pkgver = 3.16.18
 	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install
@@ -38,30 +38,24 @@ pkgbase = gamescope-nvidia
 	optdepends = mangohud: for option "--mangoapp"
 	provides = gamescope
 	conflicts = gamescope
-	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#commit=d2c5701255b7cb359abf951117627e148265790a
+	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#commit=08a4595b2bda6901792e2225a6b2f0c39266ebfd
 	source = subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863
 	source = subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
-	source = https://github.com/ValveSoftware/gamescope/pull/1826.patch
-	source = https://github.com/ValveSoftware/gamescope/pull/1867.patch
-	source = reverts-bd722f7.patch
 	source = thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers/#commit=d790ced752b5bfc06b6988baadef6eb2d16bdf96
 	source = subprojects|vkroots::git+https://github.com/Joshua-Ashton/vkroots#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540
 	source = subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ff87f683f41fe26cc9353dd9d9d7028357fd8e1a
 	source = src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283
-	source = subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=66b802d05b374cd8f388dc6ad1e7ae4f08cb3300
+	source = subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=47a5590e9c4eb35d67651b8c05a55f1a48259329
 	source = subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4
 	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899
-	sha512sums = 25bc3c805fbf433dab08e6c2a6d0dcd93b2e4924246cfd41f3e1f1a9546da669032fae87424e147ed3661a839dd9c8a898f5d524418bdbd0e39c72302b25a1a9
+	sha512sums = 6095880ace77d5eb53fe8ad06e0adae22de6455d691a85b3afc651260b96cc840cc12d1d5c01e920afab4fb4f566292071b4981af7c3157a7a2edee9c9b587c8
 	sha512sums = 16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa
 	sha512sums = 53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f
-	sha512sums = 415c94ff0d7561ddc734a177848b99a39efb944800b59e3838bace637ba41fd505bec363c3243d5a168542245f3a1b743178b2eb59def7b3053d5f255cb2c51c
-	sha512sums = 848a7813ffce045e6785293d0b4e252c39fec386722d1885dc87cc5e1163b06d88d8b93f2dd3e82c715559505287691eafe8535993bd1e816f36f5ccfdce97e5
-	sha512sums = 52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27
 	sha512sums = 65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0
 	sha512sums = 0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc
 	sha512sums = 8665c797ca979b7df07f730ee9ec58d6eb8f9c9b2689d371ce0ae9a8d6d2d83cb5e034f15e4785e11f1387eaaf06bb929766a80198cfee670bea62d23968e58b
 	sha512sums = 5629b847abdab649a205470e9128ffc104231f5cf248bbeb01fe555429f24206760c3aea8139d8b18e41ce5f423fd177515eb21f31b2d9b0a2fd19dfe20062ea
-	sha512sums = 69cc98e1f4e8b9949a15f80f8d05f0b143f3fee544357d097d5e0d6634f381ce853b8be83770b96545e782686b824ae77f8dc3a9946344341d6464463125db55
+	sha512sums = 76c398291bc3a201b03a42d299a320f08c04b48a273973182cf2f3ed5c433768b6f5998ec9420ccb4b911ee8c5357a4a2a620c92337532fd75f15ae974273727
 	sha512sums = f947f3a52f0d6aa4b2762f646cf785cea90c299d7116692120ebe2fc703ea79f52bc98d71631a07a87695addf2d8fd0e7c39d6690e0b18148c8652cf155cf17f
 	sha512sums = 1763e46e12876222fa76effb566c0088eff8f0e484814fc9bc6bbd7fcb55ee6d5d739cc20040dd1eb29bfd7ba133967cf796659df5a4726108d2d6858d26a5b9
 
