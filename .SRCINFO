@@ -1,6 +1,6 @@
 pkgbase = vcmi-git
 	pkgdesc = Open-source engine for Heroes of Might and Magic III
-	pkgver = 1.7.0.6.g3fe75e1c7
+	pkgver = 1.7.1.12.g70a6bda8f
 	pkgrel = 1
 	url = http://vcmi.eu
 	install = vcmi-git.install
