@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   # This generates a proper Arch version string from git tags/commits
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "2.0.10.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
