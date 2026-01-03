@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('20668fd4381b682ead6fbf6e8605e8f2f0d2b7b59b7531900f8fcc55a2acb734'
+sha256sums=('8464307557546b0e9622e40bb948dd2ee1d373a927b13b5164113ed62bc96cf8'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
