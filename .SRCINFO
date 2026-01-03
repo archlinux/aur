@@ -11,7 +11,7 @@ pkgbase = garuda-rani-git
 	makedepends = pnpm
 	depends = bash
 	depends = curl
-	depends = electron38
+	depends = electron39
 	depends = pacman-contrib
 	depends = garuda-libs>=1.6.0
 	optdepends = paru: show pending AUR updates

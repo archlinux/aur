@@ -3,7 +3,7 @@
 pkgname=garuda-rani-git
 pkgver=3.0.0.r0.ga1902a8
 pkgrel=1
-_electronversion=38
+_electronversion=39
 _pkgname=garuda-rani
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
