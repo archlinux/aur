@@ -2,7 +2,7 @@
 _pkgname=pocket-id
 pkgname="${_pkgname}-bin"
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and easy-to-use OIDC provider (Pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/pocket-id/pocket-id"
@@ -13,9 +13,9 @@ backup=("etc/${_pkgname}/config.env")
 install="${_pkgname}.install"
 
 source=(
-  "${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
-  "config.env::https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/.env.example"
-  "https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/LICENSE"
+  "${_pkgname}-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
+  "config-v${pkgver}.env::https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/.env.example"
+  "LICENSE-v${pkgver}::https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/LICENSE"
   "${_pkgname}.service"
   "${_pkgname}.sysusers"
   "${_pkgname}.tmpfiles"
@@ -29,10 +29,10 @@ sha256sums=('6e15119553b090353dd4cebbaed95c522af39e0454e34e46452e7d11f8087e55'
             'fdead2921933c62fe2a0bccdfa2b2a0ff630edce3a3b62d0a97594302dd05e44')
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm640 "${srcdir}/config.env" "${pkgdir}/etc/${_pkgname}/config.env"
+  install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm640 "${srcdir}/config-v${pkgver}.env" "${pkgdir}/etc/${_pkgname}/config.env"
   install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE-v${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
