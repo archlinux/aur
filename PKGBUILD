@@ -1,5 +1,7 @@
 # Maintainer: hosua <hosua.o@gmail.com>
 # Contributor: aspen <aspenuwu@protonmail.com>
+
+# Note: Amazon Corretto 15 is end-of-life and no longer receives updates or security fixes
 pkgname=amazon-corretto-15
 pkgver=15.0.2.7.1
 pkgrel=1
