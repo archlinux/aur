@@ -1,6 +1,6 @@
 pkgbase = fresh-editor
 	pkgdesc = A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins
-	pkgver = 0.1.69
+	pkgver = 0.1.70
 	pkgrel = 1
 	url = https://sinelaw.github.io/fresh/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fresh-editor
 	provides = fresh-editor
 	conflicts = fresh-editor-bin
 	options = !debug
-	source = fresh-editor-0.1.69-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v0.1.69/fresh-editor-0.1.69-source.tar.gz
-	sha256sums = c47ba9e9ff9f16126b5fb9ddda14b5baab5c377bdc40abae0f0710bdeb617342
+	source = fresh-editor-0.1.70-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v0.1.70/fresh-editor-0.1.70-source.tar.gz
+	sha256sums = 3c2435c195ebaf377161c17c1374a4daf06f2b02b248c986a758149fa969e1b3
 
 pkgname = fresh-editor
