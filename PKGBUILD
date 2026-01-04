@@ -2,27 +2,27 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=1.0.223
+pkgver=1.1.1
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'
-url='https://github.com/sst/opencode'
+url='https://github.com/anomalyco/opencode'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('opencode')
 conflicts=('opencode-bin')
 depends=('ripgrep')
-makedepends=('git' 'bun-bin' 'go')
+makedepends=('git' 'bun' 'go')
 
-source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v${pkgver}${_subver}.tar.gz")
+source=("opencode-${pkgver}.tar.gz::https://github.com/anomalyco/opencode/archive/v${pkgver}${_subver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
   cd "opencode-${pkgver}"
   bun install
   cd ./packages/opencode
-  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.0.223 bun run ./script/build.ts --single
+  OPENCODE_CHANNEL=latest OPENCODE_VERSION=1.1.1 bun run ./script/build.ts --single
 }
 
 package() {

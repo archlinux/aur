@@ -1,20 +1,20 @@
 pkgbase = opencode
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 1.0.223
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = https://github.com/sst/opencode
+	url = https://github.com/anomalyco/opencode
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = bun-bin
+	makedepends = bun
 	makedepends = go
 	depends = ripgrep
 	provides = opencode
 	conflicts = opencode-bin
 	options = !debug
 	options = !strip
-	source = opencode-1.0.223.tar.gz::https://github.com/sst/opencode/archive/v1.0.223.tar.gz
+	source = opencode-1.1.1.tar.gz::https://github.com/anomalyco/opencode/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = opencode
