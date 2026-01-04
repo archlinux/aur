@@ -1,6 +1,6 @@
 pkgbase = solian
 	pkgdesc = Next Generation Network Center
-	pkgver = 3.5.0+157
+	pkgver = 3.5.0+160
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
@@ -20,12 +20,13 @@ pkgbase = solian
 	depends = mpv
 	depends = libsecret
 	depends = libpdfium-nojs
+	depends = icu76
 	provides = solian
 	conflicts = solian
 	conflicts = solian-bin
 	conflicts = solian-bin-git
 	options = !debug
-	source = solian-3.5.0+157.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.5.0+157.tar.gz
-	sha256sums = a9e6f211b9a33fa584155f6b9c5c8be8e76f3b2c1d6be53a15464f42bec33ee2
+	source = solian-3.5.0+160.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.5.0+160.tar.gz
+	sha256sums = 77f05d86af18ebf531b5fecb9856ba554110ec1245d6990798b87f977d5f40ff
 
 pkgname = solian
