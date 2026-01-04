@@ -4,5 +4,3 @@ git/
 *.zip
 *.part
 *.pkg.tar.*
-*README*
-*LICENSE*
