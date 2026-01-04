@@ -80,9 +80,7 @@ build() {
 package() {
   cd "$pkgname"
   # Install Development, Documentation, and Manpages components
-  # NOTE: Also install Unspecified component to get versioned shared library files
-  # (CMake's EXPORT splits shared libraries: versioned files → Unspecified, namelink → Development)
-  DESTDIR="$pkgdir" cmake --install build --component Unspecified
+  # All files are now properly assigned to named components (no Unspecified)
   DESTDIR="$pkgdir" cmake --install build --component Development
   DESTDIR="$pkgdir" cmake --install build --component Documentation
   DESTDIR="$pkgdir" cmake --install build --component Manpages
