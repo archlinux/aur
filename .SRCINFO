@@ -1,0 +1,14 @@
+pkgbase = typomat-bin
+	pkgdesc = Turn your code into muscle memory
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/vupdivup/typomat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = typomat.tar.gz::https://github.com/vupdivup/typomat/releases/download/v0.1.3/typomat_0.1.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 17c3753323c3a2167e439f6a60c2df7e37d761c192d008f92d6751ad132591df
+	source_aarch64 = typomat.tar.gz::https://github.com/vupdivup/typomat/releases/download/v0.1.3/typomat_0.1.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = da3ced27a4baef9e36f324ec775a25680f5cf2b50068bdc8373fc3f3be6f9a21
+
+pkgname = typomat-bin
