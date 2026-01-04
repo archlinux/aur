@@ -8,6 +8,7 @@ PRODUCT_JSON_LOCATIONS = tuple((
     "/usr/share/vscodium-git/resources/app/product.json",
     "/usr/share/vscodium-insiders/resources/app/product.json",
     "/usr/share/vscodium-insiders-bin/resources/app/product.json",
+    "/usr/share/vscodium-insiders-git/resources/app/product.json",
     "/usr/share/vscodium-electron/resources/app/product.json",
     "/usr/share/vscodium-electron-bin/resources/app/product.json",
 ))
