@@ -2,7 +2,7 @@
 
 _name=stamina
 pkgname=python-stamina
-pkgver=25.1.0
+pkgver=25.2.0
 pkgrel=1
 pkgdesc="Production-grade retries for Python"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 checkdepends=('python-pytest' 'python-anyio' 'python-dirty-equals')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('63d4deccdf17ac586d6c8c4fdaece98c8ec358f44390e9a87c7695835554af48')
+sha256sums=('780d099b67490d266f591aa14218827e9819b215b31aea18eca0b89fc4e68ab9')
 
 build() {
     export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
