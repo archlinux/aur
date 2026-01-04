@@ -1,8 +1,8 @@
 # Maintainer: Sarat Chandra <me at saratchandra dot in>
 
 pkgname=doggo-bin
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Command-line DNS client for humans "
 arch=('x86_64' 'aarch64')
 url="https://github.com/mr-karan/doggo"
@@ -13,8 +13,8 @@ provides=('doggo')
 conflicts=('doggo')
 source_x86_64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('1cc8a80f64fe69de733e6d2efb397d7d20e75e254f8f23515349519c62aa0adf')
-sha256sums_aarch64=('6e92e54fe62c2ffa28590259e6497a4a9138c6462ccd1079b513ce1f338dbcdd')
+sha256sums_x86_64=('cb57b10dd48ed3084161de2afe71a74514177b440b3f5643e02bf7a638585a5c')
+sha256sums_aarch64=('73963d2b39048997427a4596f4cd30e14a3d62015f7f39e2980d235a216e33e9')
 
 package() {
     cd "${srcdir}"
@@ -45,11 +45,11 @@ package() {
 
     # Install completions
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-    "${pkgdir}/usr/bin/doggo" completions bash > "${pkgdir}/usr/share/bash-completion/completions/doggo"
+    "${pkgdir}/usr/bin/doggo" completions bash >"${pkgdir}/usr/share/bash-completion/completions/doggo"
 
     mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
-    "${pkgdir}/usr/bin/doggo" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_doggo"
+    "${pkgdir}/usr/bin/doggo" completions zsh >"${pkgdir}/usr/share/zsh/site-functions/_doggo"
 
     mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
-    "${pkgdir}/usr/bin/doggo" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
+    "${pkgdir}/usr/bin/doggo" completions fish >"${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
 }
