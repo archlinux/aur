@@ -35,7 +35,7 @@ prepare(){
  printf '%s\n' ${_models[*]}
  
  # convert specific lfs pointers into actual models
- git lfs install
+ git lfs install --local
  git lfs pull --include $(IFS=,; echo "${_models[*]}")
 }
 
