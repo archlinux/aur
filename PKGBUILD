@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=xdelta3-gui
 pkgver=26.01
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for xdelta3 application"
 arch=("x86_64")
 url="https://github.com/AdrianTM/xdelta3-gui"
