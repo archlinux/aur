@@ -1,7 +1,7 @@
 pkgbase = renpy
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs
-	pkgver = 8.5.1.25123106
-	pkgrel = 2
+	pkgver = 8.5.2.26010301
+	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install
 	arch = i686
@@ -11,9 +11,6 @@ pkgbase = renpy
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx_rtd_dark_mode
 	makedepends = python-sphinx_rtd_theme
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = git
 	depends = glibc
 	depends = ffmpeg
@@ -33,10 +30,10 @@ pkgbase = renpy
 	depends = ftgl
 	provides = python-renpy
 	replaces = renpy64
-	source = git+https://github.com/renpy/renpy.git#tag=8.5.1.25123106
+	source = git+https://github.com/renpy/renpy.git#tag=8.5.2.26010301
 	source = renpy.desktop
 	source = renpy-launcher.sh
-	sha256sums = 9e8a871f93ca7c3e5930881b21810947cbe2f0ab0c00fe1b24eeb327583afe31
+	sha256sums = 0cf18da7f94c69dd6ffbb5fca1fcbf55b36b25629dadc8da9309ee08e8e83def
 	sha256sums = b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6
 	sha256sums = 1fc31125ce1a6be454e2e5995da1ba4860db6da687dbfffbca80a06f64aba43c
 
