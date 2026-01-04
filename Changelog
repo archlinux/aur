@@ -1,26 +1,36 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.7.0 ➙ 4.10.1
-              : 2025-06-15 ➙ 2025-06-26
+ Tags         : 4.8.0 ➙ 5.1.0
+              : 2025-06-20 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2026-01-04   : 5.1.0
+              - **Version 5.0.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working on python 3.14.2
+                * License GPL-2.0-or-later
+ 2025-06-26   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
+
  2025-06-26   : 4.10.1
-                update arch PKGBUILD
-                update Docs/Changelog Docs/${my_name}.pdf
+              - update arch PKGBUILD
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-26   : 4.10.0
-                Use run_prog from pyconcurrent if available otherwise use local copy.
+              - Use run_prog from pyconcurrent if available otherwise use local copy.
                 Sync local copy of run_prog from pyconcurrent
- 2025-06-22     update Docs/Changelog Docs/${my_name}.pdf
+ 2025-06-22   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-22   : 4.9.0
-                run_prog: Sync local copy with latest from pycocurrent
- 2025-06-20     update Docs/Changelog Docs/${my_name}.pdf
+              - run_prog: Sync local copy with latest from pycocurrent
+ 2025-06-20   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-20   : 4.8.0
-                Pull local copy of latest run_prog from pycocurrent
- 2025-06-16     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-15   : 4.7.0
-                update Docs/Changelog Docs/${my_name}.pdf
+              - Pull local copy of latest run_prog from pycocurrent
+ 2025-06-16   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
