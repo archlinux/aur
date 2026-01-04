@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <megusta52@proton.me>
 pkgname=plasma6-applet-freeradio
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Ad-free internet radio widget for KDE Plasma 6"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('qt6-websockets: Enhanced streaming features')
 provides=('plasma-applet-freeradio')
 conflicts=('plasma-applet-freeradio' 'plasma5-applet-freeradio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5047868e04c924b4e6e4b050fb0da8f603ed696d6d11901af20313469fb41bbe')
+sha256sums=('e4c8f6df311ac9b2fea48ae4e63ac3729bc579eabc2b6f7587628b22f48b71e3')
 
 prepare() {
     cd "$srcdir/Free-Radio-NoAds-NoTalk-$pkgver"

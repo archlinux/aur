@@ -1,6 +1,6 @@
 pkgbase = plasma6-applet-freeradio
 	pkgdesc = Ad-free internet radio widget for KDE Plasma 6
-	pkgver = 1.5.8
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Free-Radio-NoAds-NoTalk
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = plasma6-applet-freeradio
 	provides = plasma-applet-freeradio
 	conflicts = plasma-applet-freeradio
 	conflicts = plasma5-applet-freeradio
-	source = plasma6-applet-freeradio-1.5.8.tar.gz::https://github.com/DonutsDelivery/Free-Radio-NoAds-NoTalk/archive/v1.5.8.tar.gz
-	sha256sums = 5047868e04c924b4e6e4b050fb0da8f603ed696d6d11901af20313469fb41bbe
+	source = plasma6-applet-freeradio-1.5.9.tar.gz::https://github.com/DonutsDelivery/Free-Radio-NoAds-NoTalk/archive/v1.5.9.tar.gz
+	sha256sums = e4c8f6df311ac9b2fea48ae4e63ac3729bc579eabc2b6f7587628b22f48b71e3
 
 pkgname = plasma6-applet-freeradio
