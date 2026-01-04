@@ -1,7 +1,7 @@
 # Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 pkgname=supersayer
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text input tool for GNOME using whisper.cpp and PyGTK"
 arch=('any')
 url="https://github.com/demizer/supersayer"
@@ -29,7 +29,7 @@ optdepends=(
 )
 install=supersayer.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/demizer/supersayer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('094ddd4bfbcbdf611304fc4d8c801052369b2f427fe5a77a60eb23d666adcd9b')
+sha256sums=('47c5f7055b5e0e9617d2de5e11483beb1063de76c40436be57d40cf763b74a7b')
 
 build() {
     cd "$pkgname-$pkgver"
