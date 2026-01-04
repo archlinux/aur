@@ -1,6 +1,6 @@
 pkgbase = sqlcl
 	pkgdesc = SQL Developer command line interface for Oracle
-	pkgver = 25.3.0.274.1210
+	pkgver = 25.4.0.346.1855
 	pkgrel = 1
 	url = https://www.oracle.com/database/sqldeveloper/technologies/sqlcl
 	changelog = CHANGELOG.md
@@ -8,7 +8,7 @@ pkgbase = sqlcl
 	license = custom
 	depends = bash
 	depends = java-runtime>=17
-	source = sqlcl-25.3.0.274.1210.zip::https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-25.3.0.274.1210.zip
-	sha256sums = 4ce293bc11685050ea37baa3abac986018746df4baea492cdb8deaebee7e8ba7
+	source = sqlcl-25.4.0.346.1855.zip::https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-25.4.0.346.1855.zip
+	sha256sums = 62e97f6d994b12e3693e156ec50291c29c801bbfae141fbb2f2aa2f178416001
 
 pkgname = sqlcl

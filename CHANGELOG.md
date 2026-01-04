@@ -1,3 +1,6 @@
+# New Features and Issues Fixed in 25.4
+  https://www.oracle.com/tools/sqlcl/sqlcl-relnotes-25.4.html
+
 # New Features and Issues Fixed in 25.3
   https://www.oracle.com/tools/sqlcl/sqlcl-relnotes-25.3.0.html
 
