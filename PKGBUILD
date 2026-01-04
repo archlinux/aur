@@ -2,8 +2,8 @@
 
 pkgname=vapoursynth-preview
 pkgver=0.18.2
-pkgrel=1
-pkgdesc='Previewer for VapourSynth scripts'
+pkgrel=2
+pkgdesc='Previewer for VapourSynth scripts (vs-preview)'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview'
 license=('Apache-2.0')
