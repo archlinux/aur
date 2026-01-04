@@ -30,12 +30,8 @@ optdepends=(
   'clang: Alternative for gcc (gcc preferred by upstream)'
 )
 arch=('x86_64')
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "Patch01-disable-fortify-sources-jitterentropy.patch"
-)
-b2sums=('05f515f363efed85d0031bbd83d9c0d150d72c94d352a4e53a753872e92521218f2aa80098959f6cfd093035c8fba86bc675e035f5193aa924bc78bd71802ad9'
-        '84c1e992d09720f77ee34ec951a6a0fe12d060431c22b8d2f567c888147c54472ce6b394d3f63c5e89eaa7d44c2625ed9de74bbb112ff4f8d7694fdb9b80020b')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('05f515f363efed85d0031bbd83d9c0d150d72c94d352a4e53a753872e92521218f2aa80098959f6cfd093035c8fba86bc675e035f5193aa924bc78bd71802ad9')
 options=(!strip !lto)
 
 build() {
