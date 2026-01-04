@@ -3,7 +3,7 @@
 _pkgbase=hp-vendor
 pkgname=${_pkgbase}-dkms-git
 pkgver=r279.67a92d0
-pkgrel=2
+pkgrel=3
 pkgdesc="HP Dev One specific platform driver from Pop!_OS"
 arch=('x86_64')
 url="https://github.com/pop-os/hp-vendor"
@@ -16,7 +16,7 @@ install=
 source=("${_pkgbase}::git+https://github.com/pop-os/${_pkgbase}.git"
     dkms.conf)
 md5sums=('SKIP'
-    'f18343301f682c68137c25234cf52f19')
+         '87aa9b611253df40bbbcef43fb208251')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"

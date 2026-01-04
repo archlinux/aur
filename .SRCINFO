@@ -12,6 +12,6 @@ pkgbase = hp-vendor-dkms-git
 	source = hp-vendor::git+https://github.com/pop-os/hp-vendor.git
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = f18343301f682c68137c25234cf52f19
+	md5sums = 87aa9b611253df40bbbcef43fb208251
 
 pkgname = hp-vendor-dkms-git
