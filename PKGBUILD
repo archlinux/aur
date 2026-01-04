@@ -29,7 +29,7 @@ optdepends=(
 )
 install=supersayer.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/demizer/supersayer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('448c5b3387d5a1a7aaf301abc19ecd70ea7073732542e4b668786619807a5e75')
+sha256sums=('471a733ee54e2f723f5c16f5fa1c2f6bfb3fa9d30bc9659d71960e973aada791')
 
 build() {
     cd "$pkgname-$pkgver"
