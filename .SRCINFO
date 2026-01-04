@@ -1,0 +1,17 @@
+pkgbase = kwin-focus-helper
+	pkgdesc = KWin script + CLI to allow per-app focus raising without lowering global focus stealing prevention
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/darko5r/kwin-focus-helper
+	install = kwin-focus-helper.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = make
+	depends = kwin
+	source = kwin-focus-helper-0.1.2.tar.gz::https://github.com/darko5r/kwin-focus-helper/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 7e655052d4b501652704e8a5165e43a8e3b60b80b984e8890530a17694f323d6
+
+pkgname = kwin-focus-helper
