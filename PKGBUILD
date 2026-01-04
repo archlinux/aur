@@ -3,7 +3,7 @@
 
 pkgname=vscodium-insiders-git
 pkgver=1.107.18627.r1.g3bf7629
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -109,7 +109,7 @@ build() {
     export OS_NAME="linux"
     export VSCODE_ARCH="${_vscode_arch}"
     export VSCODE_QUALITY="insider"
-    export RELEASE_VERSION=$( echo "${pkgver}" | sed 's/\.r.*$//' )
+    export RELEASE_VERSION="$( echo ${pkgver} | sed 's/\.r.*$//' )-insider"
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
 
