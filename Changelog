@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.0.1 ➙ 3.3.0
-              : 2025-10-15 ➙ 2026-01-04
+ Tags         : 3.1.0 ➙ 3.3.1
+              : 2025-12-22 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 3.3.1
+              - Small non-code tidy ups
+              - update Docs/Changelogs
 
  2026-01-04   : 3.3.0
                   - **Version 3.3.0**
@@ -25,25 +29,4 @@
               - * Remove os.getlogin() in tests (ENOTTY reported by @ccharabaruk on AUR package).
                 * Small tidy ups
  2025-10-15   ⋯
-              - update Docs/Changelogs Docs/${my_name}.pdf
-
- 2025-10-15   : 3.0.1
-              - **Version 3.0.0**
-            
-                * Reduce our reliance on passlib (it is unmaintained).
-            
-                  * passlib bcrypt is broken
-                  * there is a fork which works
-            
-                * Algo changes no longer using passlib:
-            
-                  * bcrypt now uses python-bcrypt directly
-                  * argon2 now uses python-argon2-cffi (which uses C library)
-                  * pbkdf2_sha512 now uses python-cryptography
-                  * pbkdf2_sha256 now uses python-cryptography
-            
-                * Switch license to GPL-2.0-or-later
-            
-                * Allow algo names to be hypen or underscore (pbkdf2-sha256 or pbkdf2_sha256)
- 2025-05-21   ⋯
               - update Docs/Changelogs Docs/${my_name}.pdf

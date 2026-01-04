@@ -10,12 +10,12 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver="3.3.0"
+pkgver="3.3.1"
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
 arch=(any)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 depends=(
     'python>=3.13'
@@ -31,6 +31,7 @@ makedepends=(
     'uv'
     'python-uv-build'
     'rsync'
+    'bash'
     #'python-sphinx' 'texlive-latexextra' 
             )
 checkdepends=(
