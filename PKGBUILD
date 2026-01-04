@@ -1,7 +1,5 @@
-# Maintainer: MegalithOfficial <https://github.com/megalithofficial>
-
 pkgname=lettuceai-bin
-pkgver=1.0.0.beta.6.2
+pkgver=1.0.0.beta.2
 pkgrel=1
 pkgdesc="LettuceAI is a private roleplay chat client. Build characters, write stories, and chat with AI."
 arch=('x86_64')
@@ -21,9 +19,10 @@ depends=(
 options=('!strip' '!debug')
 install=${pkgname}.install
 
-source_x86_64=("${url}/releases/download/1.0-beta.6.2/lettuceai_1.0.0-beta.6-2_amd64.deb")
-sha256sums_x86_64=('7bf0170a9f41a870afe2cbaa351ce46b2da9fd1cbadbc9ba7ba06999917be249')
+source_x86_64=("${url}/releases/download/1.0.0/lettuceai_1.0.0-beta-2_amd64.deb")
+sha256sums_x86_64=('ca08abe2d8e4a6033efd6bc0093d490a9ca45ac58ff3aed0d15f71a1478d929d')
 
 package() {
+  rm -rf "${pkgdir}/usr/lib/lettuceai"
   tar -xvf data.tar.gz -C "${pkgdir}"
 }
