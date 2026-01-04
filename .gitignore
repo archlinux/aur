@@ -2,6 +2,10 @@ pkg
 src
 *-git
 Makefile
+.nvchecker.toml
 *.pkg.tar.gz
 *.pkg.tar.xz
 *.pkg.tar.zst
+
+# package name
+termirs
