@@ -1,32 +1,39 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 4.14.0 ➙ 5.0.1
-              : 2025-03-23 ➙ 2025-07-20
+ Tags         : 4.16.0 ➙ 5.2.1
+              : 2025-05-29 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2026-01-04   : 5.2.1
+              - Update arch PKGBUILD
+              - update Docs/Changelog
+
+ 2026-01-04   : 5.2.0
+              - ** 5.2.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working on python 3.14.2
+                * License GPL-2.0-or-later
+ 2025-07-20   ⋯
+              - update Docs/Changelog Docs/kea_config.pdf
+
  2025-07-20   : 5.0.1
-                readme - more rst tweaks
-                more readme
-                Readme: tidy up some rst
-                update Docs/Changelog Docs/kea_config.pdf
+              - readme - more rst tweaks
+              - more readme
+              - Readme: tidy up some rst
+              - update Docs/Changelog Docs/kea_config.pdf
 
  2025-07-20   : 5.0.0
-                update Docs/Changelog Docs/kea_config.pdf
-                Code re-org/cleanup.
+              - update Docs/Changelog Docs/kea_config.pdf
+              - Code re-org/cleanup.
                 Code now complies with PEP-8, PEP-257 and PEP-484 style and type annotations
- 2025-05-29     update Docs/Changelog Docs/kea_config.pdf
+ 2025-05-29   ⋯
+              - update Docs/Changelog Docs/kea_config.pdf
 
  2025-05-29   : 4.16.0
-                Make default socket_dir "/var/run/kea". Linux FHS recommends "/run".
-                  "/var/run" is typically a legacy compatibility symlink. Unclear why kea us
-                  requiring legacy paths
- 2025-03-27     update Docs/Changelog.rst Docs/kea_config.pdf
-
- 2025-03-27   : 4.15.0
-                option-data routers can be single IP or list of IPs
- 2025-03-23     update Docs/Changelog.rst Docs/kea_config.pdf
-
- 2025-03-23   : 4.14.0
-                Better error handling of host reservations/dns_net when missing info
- 2024-12-31     update Docs/Changelog.rst Docs/kea_config.pdf
+              - Make default socket_dir "/var/run/kea". Linux FHS recommends "/run".
+                  "/var/run" is typically a legacy compatibility symlink. Unclear why kea us requiring legacy paths
+ 2025-03-27   ⋯
+              - update Docs/Changelog.rst Docs/kea_config.pdf

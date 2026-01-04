@@ -1,19 +1,17 @@
 pkgbase = kea_config
 	pkgdesc = Manage kea dhcp4 configs from single source config
-	pkgver = 5.0.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/gene-git/kea_config
 	arch = any
-	license = MIT
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-hatch
+	makedepends = uv
+	makedepends = python-uv-build
 	makedepends = rsync
 	depends = python>=3.13
 	depends = python-dnspython
-	source = git+https://github.com/gene-git/kea_config#tag=5.0.1
+	source = git+https://github.com/gene-git/kea_config#tag=5.2.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
