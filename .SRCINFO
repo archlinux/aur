@@ -1,0 +1,12 @@
+pkgbase = leakdice-rust-git
+	pkgdesc = Analyse memory leaks by randomly reading process memory
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/tialaramex/leakdice-rust
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = rust
+	source = git+https://github.com/tialaramex/leakdice-rust.git
+	b2sums = SKIP
+
+pkgname = leakdice-rust-git
