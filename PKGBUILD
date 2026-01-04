@@ -8,10 +8,10 @@
 #  * SPDX-License-Identifier: 0BSD
 #  */
 _pkgname="helium"
-pkgname="${_pkgname}-browserbeta-bin"
+pkgname="${_pkgname}-browser-beta-bin"
 _binaryname="helium-browser"
 pkgver=0.7.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Private, fast, and honest web browser based on Chromium (pre-release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imputnet/helium-linux"
