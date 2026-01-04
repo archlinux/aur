@@ -11,6 +11,7 @@ pkgbase = hyprkvm
 	makedepends = wayland-protocols
 	makedepends = clang
 	makedepends = cmake
+	makedepends = perl
 	depends = wayland
 	depends = libxkbcommon
 	depends = openssl

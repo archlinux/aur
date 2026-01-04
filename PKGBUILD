@@ -8,15 +8,24 @@ arch=('x86_64')
 url='https://github.com/tenseleyFlow/hyprKVM'
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'openssl')
-makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols' 'clang' 'cmake')
+makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols' 'clang' 'cmake' 'perl')
 optdepends=('wl-clipboard: for clipboard synchronization')
 source=("git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+prepare() {
+    cd hyprKVM
+    # Clean any stale build artifacts
+    rm -rf target
+}
 
 build() {
     cd hyprKVM
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Use clang for ring crate assembly compilation
+    export CC=clang
+    export CXX=clang++
     cargo build --release --locked
 }
 
