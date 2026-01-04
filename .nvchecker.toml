@@ -1,4 +1,4 @@
 [postallow]
-source = "github"
-github = "lquidfire/postallow"
-use_latest_release = true
+source = "git"
+git = "https://codeberg.org/peregrinus13/postallow.git"
+use_max_tag = "true"
