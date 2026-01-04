@@ -28,10 +28,10 @@ if [[ ! -v FAKEROOTKEY ]]; then
     download_file "$_url/SHA512SUMS.asc" > /dev/null 2>&1
     # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
     moz_gpg_key=14F26682D0916CDD81E37B6D61B7B526D98F0353
-    gpg -q --no-default-keyring --keyring ./moz.gpg --recv-keys $moz_gpg_key || exit 1
-    gpg --no-default-keyring --keyring ./moz.gpg --verify SHA512SUMS.asc || exit 1
+    gpg -q --recv-keys $moz_gpg_key || exit 1
+    gpg --verify SHA512SUMS.asc 2>/dev/null || exit 1
     sha512sums=($(grep -Po "^.+(?=  $_source)" SHA512SUMS))
-    rm SHA512SUMS SHA512SUMS.asc moz.gpg moz.gpg~
+    rm SHA512SUMS SHA512SUMS.asc
 fi
 
 build() {
