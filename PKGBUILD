@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=yadaw-bin
 _pkgname=yadaw
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https:/
 
 source=("icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
 
-sha256sums_x86_64=('2a653d174f0ece9d35b1e9f96f0f9e8867b3e45f24083309bab036e13620dc7d')
-sha256sums_aarch64=('771e822ec2b24e127370980846911a55a4c583918d26a77b4202c558baa65ac3')
+sha256sums_x86_64=('8ed257b9b6d600b4b33884fc90620c49afe7c6ef57a86fd963ceb93bd7e68494')
+sha256sums_aarch64=('803cfad8030fc8aa49a1d07f2a793e84daa9915a40e9db06a61bf2820af761d8')
 sha256sums=('SKIP') # for icon.png
 
 package() {
