@@ -1,15 +1,13 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=roleboi-git
-pkgver=1.0.0.0.gitd7fc570
+pkgver=1.0.0.1.git976aa47
 pkgrel=1
 pkgdesc="A small role management Discord bot. Dev build."
 arch=("x86_64")
 url="https://github.com/KarlOfDuty/RoleBoi"
 license=('GPL-3.0-or-later')
 options=('!debug' '!strip')
-depends=(
-  "dotnet-runtime-9.0"
-)
+#depends=()
 makedepends=(
   "dotnet-sdk-9.0"
 )
@@ -44,7 +42,7 @@ prepare() {
 
 build() {
   cd "$_srcdir"
-  dotnet publish RoleBoi.csproj -p:PublishSingleFile=true -r linux-x64 -c Release --self-contained false --output out
+  dotnet publish RoleBoi.csproj -r linux-x64 -c Release --output out
 }
 
 package() {
