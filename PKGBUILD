@@ -37,7 +37,7 @@ conflicts=("${pkgname}")
 
 # --- Source File ---
 source=("falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('25faf5ae428ba0e0b67cf075401fd1310df57651424e2bfe742ff7b4711ba422')
+sha256sums=('0c3ac12e749647cd05a8e8bd6281541e5ba8496ca1ba042eda6637f547db5dc0')
 
 # --- Packaging Function ---
 package() {
