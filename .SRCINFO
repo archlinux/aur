@@ -1,7 +1,7 @@
 pkgbase = greybird-gtk-theme
-	pkgdesc = A grey theme for GNOME, Xfce and GTK 3
+	pkgdesc = A grey theme for GNOME, Xfce, GTK+ 2 and 3
 	pkgver = 3.23.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shimmerproject.org
 	arch = any
 	license = CC-BY-SA-3.0 AND GPL-2.0-or-later
