@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=VSCodium - Wayland
+Name=VSCodium Insiders - Wayland
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
 Exec=/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F
-Icon=vscodium
+Icon=vscodium-insiders-git
 Type=Application
 StartupNotify=false
 StartupWMClass=codium-url-handler
@@ -15,4 +15,4 @@ Keywords=vscode;
 [Desktop Action new-empty-window]
 Name=New Empty Window
 Exec=/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --new-window %F
-Icon=vscodium
+Icon=vscodium-insiders-git

@@ -3,6 +3,6 @@
 !.SRCINFO
 !BUILDING
 !PKGBUILD
-!vscodium-git-uri-handler.desktop
-!vscodium-git-wayland.desktop
-!vscodium-git.desktop
+!vscodium-insiders-git-uri-handler.desktop
+!vscodium-insiders-git-wayland.desktop
+!vscodium-insiders-git.desktop

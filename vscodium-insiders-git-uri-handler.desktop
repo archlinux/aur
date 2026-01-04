@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=VSCodium - URL Handler
+Name=VSCodium Insiders - URL Handler
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/usr/share/vscodium-git/bin/codium --open-url %U
-Icon=vscodium-git
+Exec=/usr/bin/codium --open-url %U
+Icon=vscodium-insiders-git
 Type=Application
 NoDisplay=true
 StartupNotify=true

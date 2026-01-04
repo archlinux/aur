@@ -1,4 +1,4 @@
-pkgbase = vscodium-git
+pkgbase = vscodium-insiders-git
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
 	pkgver = 1.95.1.24307.r5.gd598450
 	pkgrel = 1
@@ -36,15 +36,19 @@ pkgbase = vscodium-git
 	conflicts = vscodium
 	conflicts = vscodium-bin
 	conflicts = vscodium-git
+	conflicts = vscodium-insiders
+	conflicts = vscodium-insiders-bin
+	conflicts = vscodium-electron
+	conflicts = vscodium-electron-bin
 	options = !strip
 	options = !debug
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
-	source = vscodium-git.desktop
-	source = vscodium-git-wayland.desktop
-	source = vscodium-git-uri-handler.desktop
+	source = vscodium-insiders-git.desktop
+	source = vscodium-insiders-git-wayland.desktop
+	source = vscodium-insiders-git-uri-handler.desktop
 	sha256sums = SKIP
-	sha256sums = 608baf1de99fe3ebfa63dafd6e9aaf1c177d5709388f93d630bf89237a84c293
-	sha256sums = ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6
-	sha256sums = eecbc3b4eb61b654ee8246dfd3c6211d218b2fc8a9f1763f9169fcbad32956ac
+	sha256sums = d5ce6e1efb74cadd1ff006859e11e7c9fa05447a7002ad04f650c4b0f1ed0d70
+	sha256sums = 910e86ff7a8be9ef295c5f6a74f1ddf1610c6f83cbc61aa829eec4ecab9d20cd
+	sha256sums = 4f0b1c04b0a246dea0edd07dd8dcbc706b037324560d25a766328ab295266674
 
-pkgname = vscodium-git
+pkgname = vscodium-insiders-git

@@ -1,7 +1,7 @@
-# Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
-# Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
+# Maintainer: Toria <ninetailedtori@uwu.gal>
+# Inspired by vscodium-git
 
-pkgname=vscodium-git
+pkgname=vscodium-insiders-git
 pkgver=1.95.1.24307.r5.gd598450
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
@@ -45,9 +45,9 @@ source=(
     "${pkgname}-uri-handler.desktop"
 )
 sha256sums=('SKIP'
-            '608baf1de99fe3ebfa63dafd6e9aaf1c177d5709388f93d630bf89237a84c293'
-            'ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6'
-            'eecbc3b4eb61b654ee8246dfd3c6211d218b2fc8a9f1763f9169fcbad32956ac')
+            'd5ce6e1efb74cadd1ff006859e11e7c9fa05447a7002ad04f650c4b0f1ed0d70'
+            '910e86ff7a8be9ef295c5f6a74f1ddf1610c6f83cbc61aa829eec4ecab9d20cd'
+            '4f0b1c04b0a246dea0edd07dd8dcbc706b037324560d25a766328ab295266674')
 provides=(
     'codium'
     'vscodium'
@@ -57,6 +57,10 @@ conflicts=(
     'vscodium'
     'vscodium-bin'
     'vscodium-git'
+    'vscodium-insiders'
+    'vscodium-insiders-bin'
+    'vscodium-electron'
+    'vscodium-electron-bin'
 )
 
 ###############################################################################
@@ -85,11 +89,11 @@ version() {
 
 prepare() {
     cd "vscodium"
-    
+
     git checkout $( echo $pkgver | sed 's/\.r\([0-9]\+\)\./-r\1-/' )
-    
+
     current=$( git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' )
-    
+
     if [ ! "$pkgver" == $current ]; then
         echo "current: $current != $pkgver"
         return 1
@@ -136,7 +140,7 @@ build() {
     export CI_BUILD="no"
     export OS_NAME="linux"
     export VSCODE_ARCH="${_vscode_arch}"
-    export VSCODE_QUALITY="stable"
+    export VSCODE_QUALITY="insider"
     export RELEASE_VERSION=$( echo "${pkgver}" | sed 's/\.r.*$//' )
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
@@ -156,10 +160,10 @@ package() {
 
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
-    
+
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
-    
+
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -D -m644 ${pkgname}-wayland.desktop ${pkgdir}/usr/share/applications/${pkgname}-wayland.desktop
     install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
