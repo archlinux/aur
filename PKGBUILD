@@ -1,8 +1,8 @@
 # Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 pkgname=supersayer
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Speech-to-text input tool for GNOME"
+pkgrel=3
+pkgdesc="Speech-to-text input tool for GNOME using whisper.cpp and PyGTK"
 arch=('any')
 url="https://github.com/demizer/supersayer"
 license=('MIT')
