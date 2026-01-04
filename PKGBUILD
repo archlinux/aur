@@ -35,6 +35,7 @@ optdepends=(
     'vapoursynth-plugin-nlm: NLMeans Denoiser (CPU)'
     'vapoursynth-plugin-bm3d: Denoiser'
     'vapoursynth-plugin-bm3dcuda: Denoiser (CUDA accelerated)'
+    'vapoursynth-plugin-bm3dhip: Denoiser (AMD HIP accelerated)'
     'vapoursynth-plugin-dfttest2: Denoiser'
     'vapoursynth-plugin-fft3dfilter: Denoiser'
     'vapoursynth-plugin-scxvid: Scene detection'
