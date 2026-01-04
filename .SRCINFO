@@ -1,6 +1,6 @@
 pkgbase = pinact-bin
 	pkgdesc = pinact is a CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows. pinact can also update their versions and verify version annotations.
-	pkgver = 3.7.4
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/suzuki-shunsuke/pinact
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pinact-bin
 	license = MIT
 	provides = pinact
 	conflicts = pinact
-	source_x86_64 = pinact-amd64-3.7.4.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v3.7.4/pinact_linux_amd64.tar.gz
-	sha256sums_x86_64 = dbbb251a6334bf06110d5365cfc9b1d6213472df3be34698ecb1fbeba9fbcba0
-	source_aarch64 = pinact-arm64-3.7.4.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v3.7.4/pinact_linux_arm64.tar.gz
-	sha256sums_aarch64 = 08f90bc25fa6e136f4269f3dae1503bc5253aadb78221ee1a02c6ce904fd8c51
+	source_x86_64 = pinact-amd64-3.8.0.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v3.8.0/pinact_linux_amd64.tar.gz
+	sha256sums_x86_64 = 13a5415f6a9e6f6cc7140954eeff120488c0b6c69525fa541011acc2a39f0429
+	source_aarch64 = pinact-arm64-3.8.0.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v3.8.0/pinact_linux_arm64.tar.gz
+	sha256sums_aarch64 = 03ac062b927571372b6575e11a5e5760c4e1e3658a246ffbf6c8062369ffa5e5
 
 pkgname = pinact-bin
