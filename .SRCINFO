@@ -1,7 +1,7 @@
 pkgbase = supersayer
 	pkgdesc = Speech-to-text input tool for GNOME
-	pkgver = 1.0.2
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = https://github.com/demizer/supersayer
 	install = supersayer.install
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = supersayer
 	depends = whisper.cpp-model-small.en
 	optdepends = whisper.cpp-model-medium.en: higher accuracy model
 	optdepends = whisper.cpp-cuda: GPU acceleration
-	source = supersayer-1.0.2.tar.gz
-	sha256sums = SKIP
+	source = supersayer-1.0.0.tar.gz::https://github.com/demizer/supersayer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 448c5b3387d5a1a7aaf301abc19ecd70ea7073732542e4b668786619807a5e75
 
 pkgname = supersayer
