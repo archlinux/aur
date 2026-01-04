@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=7.0.11.r900.g689e59f
+pkgver=7.0.11.r913.g47e6a0f
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -84,16 +84,12 @@ prepare() {
 
   cd "$srcdir/zotero-client/reader"
   git submodule init
-  # Stupid hack because of dangling commit
-  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 67a1769bdaa0e89a6e239fcbaa5bf72b845223a0
   git config submodule.pdfjs/pdf.js.url "$srcdir/zotero-pdf-js"
   git config submodule.epubjs/epub.js.url "$srcdir/zotero-epub-js"
   git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/zotero-client/pdf-worker"
   git submodule init
-  # Ditto
-  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 8ac2ccc54dab2049cd92096c3448d6fdfab436ac
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
   git -c protocol.file.allow=always submodule update
 }
