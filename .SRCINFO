@@ -1,6 +1,6 @@
 pkgbase = newsraft
 	pkgdesc = Feed reader with text-based user interface
-	pkgver = 0.34
+	pkgver = 0.35
 	pkgrel = 1
 	url = https://codeberg.org/newsraft/newsraft
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = newsraft
 	depends = curl
 	depends = expat
 	depends = gumbo-parser
-	source = https://codeberg.org/newsraft/newsraft/archive/newsraft-0.34.tar.gz
-	sha256sums = 8d55441ddfc2e7d49ad3ff36c384ad4c1533de97d92a9fcaf3f6753b49b37c7c
+	source = https://codeberg.org/newsraft/newsraft/archive/newsraft-0.35.tar.gz
+	sha256sums = 6a87c8a9b8556650d18443baf827cf930aa4a5c5361a36397b95f275e28d540d
 
 pkgname = newsraft
