@@ -13,7 +13,7 @@ source=("https://github.com/AdrianTM/update-notifier-qt/archive/refs/tags/26.01.
 sha256sums=('a49162b56aa5f4bca64dec411980452cd722620eee1a9aae0b023028a5a24347')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build
   cd build
 
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
   DESTDIR="${pkgdir}" ninja install
 
   # Create symlink to enable tray service globally (package-managed)
