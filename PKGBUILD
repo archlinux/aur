@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=roleboi-git
-pkgver=1.0.0.0.git227e4e4
+pkgver=1.0.0.1.git9b5885d
 pkgrel=1
 pkgdesc="A small role management Discord bot. Dev build."
 arch=("x86_64")
