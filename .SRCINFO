@@ -1,0 +1,12 @@
+pkgbase = jmap-mcp
+	pkgdesc = mcp server for jmap email - works with claude desktop, cursor, and other mcp clients
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/jmap-mcp
+	arch = any
+	license = MIT
+	depends = deno
+	source = jmap-mcp-0.1.0.tar.gz::https://github.com/rotkonetworks/jmap-mcp/archive/v0.1.0.tar.gz
+	sha256sums = f52e32b3a83164f4293af5b685005b97e7cc70d562fdb1abd224620f58fb16f7
+
+pkgname = jmap-mcp
