@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.5.3 ➙ 1.8.0
-              : 2024-12-31 ➙ 2026-01-04
+ Tags         : 1.5.4 ➙ 1.8.1
+              : 2025-02-26 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 1.8.1
+              - fix license string in pyproject.toml
+              - update Docs/Changelog
 
  2026-01-04   : 1.8.0
               - **1.8.0**
@@ -29,11 +33,4 @@
  2025-02-26   : 1.5.4
               - PKGBUILD: Add missing makedepends on python-installer (per aur comment by @piater)
  2024-12-31   ⋯
-              - update Docs/Changelog.rst Docs/lockmgr.pdf
-
- 2024-12-31   : 1.5.3
-              - Git tags are now signed.
-                Update SPDX tags
-                Add git signing key to Arch Package
- 2024-12-22   ⋯
               - update Docs/Changelog.rst Docs/lockmgr.pdf
