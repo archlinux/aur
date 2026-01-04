@@ -1,17 +1,16 @@
 pkgbase = shout
 	pkgdesc = Lightweight speech-to-text for Wayland/Hyprland, optimized for AI coding agents
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/robzolkos/shout
 	arch = any
 	license = MIT
-	depends = libggml-git
-	depends = whisper.cpp
-	depends = whisper.cpp-model-tiny
+	depends = whisper.cpp-git
+	depends = whisper.cpp-model-tiny.en
 	depends = wtype
 	depends = pipewire-audio
 	depends = libnotify
-	source = shout-1.0.3.tar.gz::https://github.com/robzolkos/shout/archive/v1.0.3.tar.gz
+	source = shout-1.1.0.tar.gz::https://github.com/robzolkos/shout/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = shout

@@ -1,12 +1,12 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=shout
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight speech-to-text for Wayland/Hyprland, optimized for AI coding agents"
 arch=('any')
 url="https://github.com/robzolkos/shout"
 license=('MIT')
-depends=('libggml-git' 'whisper.cpp' 'whisper.cpp-model-tiny' 'wtype' 'pipewire-audio' 'libnotify')
+depends=('whisper.cpp-git' 'whisper.cpp-model-tiny.en' 'wtype' 'pipewire-audio' 'libnotify')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
