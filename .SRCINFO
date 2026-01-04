@@ -1,0 +1,16 @@
+pkgbase = cash-register
+	pkgdesc = Cash register application with Qt6 interface
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Brigio/cash-register
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	source = cash-register-0.1.tar.gz::https://github.com/Brigio/cash-register/archive/v0.1.tar.gz
+	sha256sums = 5d87bbc8f5a4ad4f730b721b2ddfd43f359f674bbd783251fe3aa114ff75f68f
+
+pkgname = cash-register
