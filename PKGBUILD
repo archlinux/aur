@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=hyprkvm
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Hyprland-native software KVM switch for seamless keyboard/mouse sharing between Linux machines'
 arch=('x86_64')
