@@ -13,12 +13,11 @@ pkgbase = python-fmod-tookit-git
 	makedepends = python-wheel
 	makedepends = git
 	makedepends = git-lfs
-	makedepends = makepkg-git-lfs-proto
 	depends = python
 	provides = python-fmod-tookit
 	conflicts = python-fmod-tookit
 	options = !strip
-	source = fmod_toolkit::git-lfs+https://github.com/K0lb3/fmod_toolkit.git
+	source = fmod_toolkit::git+https://github.com/K0lb3/fmod_toolkit.git
 	md5sums = SKIP
 
 pkgname = python-fmod-tookit-git
