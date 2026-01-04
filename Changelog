@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.8.0 ➙ 2.12.0
-              : 2025-06-22 ➙ 2026-01-03
+ Tags         : 2.9.0 ➙ 2.13.0
+              : 2025-06-26 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 2.13.0
+              - **2.13.0**
+            
+                * Add code check script
+ 2026-01-03   ⋯
+              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2026-01-03   : 2.12.0
               - Add some uv installer options to install script
@@ -24,8 +31,4 @@
  2025-06-26   : 2.9.0
               - run_prog: Make sure iolists are updated before calling select()
  2025-06-22   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-06-22   : 2.8.0
-              - run_prog - make internal helper class internal so not included in API ref
               - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
