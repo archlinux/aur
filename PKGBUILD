@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-claude-gui
-pkgver=1.3.26
+pkgver=1.3.29
 pkgrel=1
 pkgdesc="Desktop app for managing multiple Claude Code sessions across projects"
 arch=('x86_64')
