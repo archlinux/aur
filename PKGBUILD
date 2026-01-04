@@ -1,6 +1,6 @@
 # Maintainer: piotrek1372 <your-email@example.com>
 pkgname=ca-racing
-_realver=0.1.0-alpha
+_realver=0.2.0-alpha
 pkgver=${_realver//-/_}
 pkgrel=1
 pkgdesc="A retro-style 2D top-down racing game"
@@ -14,7 +14,7 @@ conflicts=('ca-racing')
 # For local testing, you can use: source=("file://path/to/CA-Racing-0.1.0-alpha-setup.run")
 # For AUR release, use the GitHub URL after creating the release
 source=("https://github.com/piotrek1372/ca-racing/releases/download/v${_realver}/CA-Racing-${_realver}-setup.run")
-sha256sums=('SKIP')  # Run 'updpkgsums' after release to update checksum
+sha256sums=('392203f13e9d60c897b4b0938c1770c18d54b6f12aa6977ead409c864edd3437')
 
 package() {
     # Create directories
@@ -44,7 +44,7 @@ package() {
     cat > "${pkgdir}/usr/share/applications/ca-racing.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
-Name=CA-Racing 0.1.0-alpha
+Name=CA-Racing 0.2.0-alpha
 GenericName=Racing Game
 Comment=A retro-style 2D top-down racing game (Alpha version)
 Exec=/opt/ca-racing/CA-Racing
