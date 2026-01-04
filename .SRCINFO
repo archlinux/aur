@@ -7,7 +7,7 @@ pkgbase = ca-racing
 	license = MIT
 	depends = glibc
 	options = !strip
-	source = https://github.com/piotrek1372/ca-racing/releases/0.2.0/ca-racing_linux_amd64
+	source = https://github.com/piotrek1372/ca-racing/releases/0.2.0-1/ca-racing_linux_amd64
 	sha256sums = SKIP
 
 pkgname = ca-racing
