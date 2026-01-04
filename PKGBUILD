@@ -1,7 +1,7 @@
 # Maintainer: txfx <fx.roure@gmail.com>
 
 pkgname=fastbuild
-pkgver=1.15
+pkgver=1.18
 pkgrel=1
 pkgdesc="High-performance build system"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.fastbuild.org"
 license=('custom')
 makedepends=('gcc')
 source=("https://www.fastbuild.org/downloads/v$pkgver/FASTBuild-Src-v$pkgver.zip")
-md5sums=('b6710394d1b7db25449fd2030b0a1e5a')
+md5sums=('811163fc2f8ff0d0d78fd92f408e91b1')
 
 build() {
 	chmod +x Bin/Linux-x64/fbuild
