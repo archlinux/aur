@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=ascii_moon
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A TUI application written in Rust that displays the moon phase in ASCII art"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/rockydd/ascii_moon"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('be5d1ad3a5bfad11fedc093b256d2153e93de084969d45496f2a5f60da712077')
+sha256sums=('17c35528abedae5ce90b3777631692665d689f394aaea698c6d4aee004d399b0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
