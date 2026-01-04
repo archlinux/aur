@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=update-notifier-qt
 pkgver=26.01.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based update notifier tray for Arch Linux"
 arch=("x86_64")
 url="https://github.com/AdrianTM/update-notifier-qt"
