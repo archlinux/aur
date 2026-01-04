@@ -1,4 +1,4 @@
-# Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: kokan  <kokaipeter@gmail.com>
 
 pkgname=mmtui
 pkgver=0.1.1
@@ -16,7 +16,7 @@ makedepends=(
   rust
   clang
 )
-options=(!debug !lto)
+options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 b2sums=('446792cb17b066d8e251d69d018355ef60161438280aef53bbcb13a161248ba1939fc9555cccf619851a5cbf2e42f86e691e7ee169786025b86ae0e93c2fe36e')
 
