@@ -1,0 +1,13 @@
+pkgbase = wg-healthcheck
+	pkgdesc = WireGuard client health-check & auto-reconnect script.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/STARRY-S/wg-healthcheck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = bash
+	source = git+https://github.com/STARRY-S/wg-healthcheck#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = wg-healthcheck
