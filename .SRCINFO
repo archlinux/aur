@@ -1,13 +1,13 @@
 pkgbase = bingoo
 	pkgdesc = Generate bingo images from plain text
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.mylloon.fr/Anri/bingoo
 	arch = x86_64
 	license = GPL3
 	provides = bingoo
 	conflicts = bingoo
-	source_x86_64 = bingoo::https://git.mylloon.fr/Anri/bingoo/releases/download/1.0.3/bingoo__linux
+	source_x86_64 = bingoo-1.0.3::https://git.mylloon.fr/Anri/bingoo/releases/download/1.0.3/bingoo__linux
 	sha256sums_x86_64 = SKIP
 
 pkgname = bingoo
