@@ -1,7 +1,7 @@
 pkgname=serycade-git
 pkgdesc='Some tui games i made because i was bored. Currently pong and a maze'
 pkgver=r33.a4325bf
-pkgrel=1
+pkgrel=2
 license=('CDDL-1.0')
 url='https://serenit.ie/projects#serycade'
 arch=('x86_64' 'aarch64')
