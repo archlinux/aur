@@ -1,6 +1,6 @@
 pkgbase = runa-bin
 	pkgdesc = A fast and lightweight console file browser written in Rust
-	pkgver = 0.3.5
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/alexm-dev/runa
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = runa-bin
 	conflicts = runa
 	source = LICENSE
 	sha256sums = 18f0dc4cd8fadfc12ef6e05373ad5baf634cbc857ffe6076c65f8147c77d48de
-	source_x86_64 = runa-bin-0.3.5-x86_64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.5/runa-linux-x86_64.tar.gz
-	sha256sums_x86_64 = bbcfa5c59cf6a9698e084c0be9ba42e53692e09c4a3ce24eb5dc7e738215c1cd
-	source_aarch64 = runa-bin-0.3.5-aarch64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.5/runa-linux-arm64.tar.gz
-	sha256sums_aarch64 = d1fdbc11ef7aa977a4eb7d89782d0d2338ddc963440eec71aec72dd1d4d411b5
+	source_x86_64 = runa-bin-0.3.10-x86_64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.10/runa-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ed4480d8a3475ac9772f0bdd96945b06553355f4f1f45bb05b3d27c501a329c9
+	source_aarch64 = runa-bin-0.3.10-aarch64.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.3.10/runa-linux-arm64.tar.gz
+	sha256sums_aarch64 = b5572f3321fb56471155337858462453604de27dc45cb64b8d8d81c3788dda31
 
 pkgname = runa-bin
