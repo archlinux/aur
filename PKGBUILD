@@ -6,9 +6,9 @@
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-_major=5-1
-pkgver=5.1.0
-pkgrel=2
+_major=5-2
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
