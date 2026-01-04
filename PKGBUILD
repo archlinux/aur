@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7262.0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
 mirror=vpn-mgmt.it.mtu.edu
@@ -20,7 +20,10 @@ sha256sums_x86_64=('5bd98349e5b83d27ea0839543d883ce2f8d9e54c5cee67220b8ba2a7ec53
 sha256sums=('85f06be8b8e438c4cefdad9e8975d1c48fd53446fe35e95d4260ba14ac7f98fd'
 'fadc7ae9c2297a93101a98c24ed63087a05a6e24bb33ba4b795bfd4339dba7cf'
 '3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
-depends=(libxml2-legacy openssl)
+depends=(openssl)
+optdepends=(
+  'xorg-xwayland: wayland support'
+)
 provides=("${pkgname}")
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')

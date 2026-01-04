@@ -1,13 +1,13 @@
 pkgbase = f5vpn
 	pkgdesc = VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM
 	pkgver = 7262.0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://support.f5.com/csp/article/K32311645#link_04_05
 	arch = aarch64
 	arch = x86_64
 	license = commercial
-	depends = libxml2-legacy
 	depends = openssl
+	optdepends = xorg-xwayland: wayland support
 	provides = f5vpn
 	source = LICENSE
 	source = no-desktop-file-dbus.aarch64.patch
