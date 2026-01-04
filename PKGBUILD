@@ -23,8 +23,8 @@ makedepends=("git-lfs")
 
 prepare(){
  # needed to avoid smudge error
- rm -rf "piper-voices"
- 
+ #rm -rf "piper-voices"
+
  # download the full repo (~220MB) but keep the lfs pointers
  GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/piper-voices"
  
@@ -35,7 +35,8 @@ prepare(){
  printf '%s\n' ${_models[*]}
  
  # convert specific lfs pointers into actual models
- git lfs install
+ git lfs install --local
+ #git lfs install
  git lfs pull --include $(IFS=,; echo "${_models[*]}")
 }
 
