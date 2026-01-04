@@ -1,7 +1,7 @@
 pkgbase = omada-controller-rxy
 	pkgdesc = Omada SDN Controller
-	pkgver = 5.14.32.3
-	pkgrel = 1
+	pkgver = 6.0.0.25
+	pkgrel = 2
 	url = https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software
 	install = omada-controller.install
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = omada-controller-rxy
 	depends = mongodb<7
 	conflicts = omada-sdn-controller
 	conflicts = omada-controller
-	source = https://static.tp-link.com/upload/software/2024/202411/20241101/Omada_SDN_Controller_v5.14.32.3_linux_x64.tar.gz
+	source = https://static.tp-link.com/upload/software/2025/202512/20251203/Omada_SDN_Controller_v6.0.0.25_linux_x64_20251120205736.tar.gz
 	source = git+https://github.com/prfiredragon/omada-controller-scripts.git
-	sha256sums = 04d0f34e2c4e7604629ae055d9ee61a6b1bb76c043869a82709b0aeb380e7132
+	sha256sums = 9ca0007e892876c9b46f799be5572838224deb395396b856a6923a048490f9fc
 	sha256sums = SKIP
 
 pkgname = omada-controller-rxy
