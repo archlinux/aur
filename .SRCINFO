@@ -1,0 +1,16 @@
+pkgbase = seqtui-git
+	pkgdesc = A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)
+	pkgver = 0.1.0.r5.ga8d06be
+	pkgrel = 1
+	url = https://github.com/ranwez-search/SeqTUI
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = git+https://github.com/ranwez-search/SeqTUI
+	sha256sums = SKIP
+
+pkgname = seqtui-git
