@@ -1,0 +1,18 @@
+pkgbase = torrent-vpn-stack
+	pkgdesc = Cross-platform Docker Compose stack for secure torrenting via VPN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ddmoney420/torrent-vpn-stack
+	install = torrent-vpn-stack.install
+	arch = any
+	license = MIT
+	depends = docker
+	depends = docker-compose
+	depends = bash
+	optdepends = systemd: for automated backup service
+	optdepends = cronie: alternative for automated backups
+	backup = .env
+	source = torrent-vpn-stack-1.0.0.tar.gz::https://github.com/ddmoney420/torrent-vpn-stack/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = efb998c1b2be0fba8f4a01341606e352376e4ac7fb603a14c62db33e017734fc
+
+pkgname = torrent-vpn-stack

@@ -1,0 +1,134 @@
+#!/bin/bash
+
+post_install() {
+    cat << EOF
+
+====================================================================
+  Torrent VPN Stack has been installed successfully!
+====================================================================
+
+Installation Directory:
+  /usr/share/torrent-vpn-stack
+
+Quick Start:
+  1. Copy the example environment file:
+     cp /usr/share/torrent-vpn-stack/.env.example /usr/share/torrent-vpn-stack/.env
+
+  2. Run the interactive setup wizard:
+     torrent-vpn-setup
+     OR
+     cd /usr/share/torrent-vpn-stack && ./scripts/setup.sh
+
+  3. Start the stack:
+     cd /usr/share/torrent-vpn-stack
+     docker compose up -d
+
+  4. Access qBittorrent Web UI:
+     http://localhost:8080
+
+Available Commands:
+  torrent-vpn-setup              - Interactive setup wizard
+  torrent-vpn-verify             - Verify VPN connection
+  torrent-vpn-check-leaks        - Check for IP/DNS leaks
+  torrent-vpn-backup             - Backup configuration
+  torrent-vpn-restore            - Restore from backup
+  torrent-vpn-benchmark          - Benchmark VPN performance
+  torrent-vpn-setup-automation   - Setup automated backups (systemd/cron)
+  torrent-vpn-remove-automation  - Remove automated backups
+
+Documentation:
+  README:       /usr/share/doc/torrent-vpn-stack/README.md
+  Architecture: /usr/share/doc/torrent-vpn-stack/docs/architecture.md
+  Linux Guide:  /usr/share/doc/torrent-vpn-stack/docs/install-linux.md
+  Backups:      /usr/share/doc/torrent-vpn-stack/docs/backups.md
+
+Requirements:
+  - Docker (installed)
+  - Docker Compose (installed)
+  - VPN subscription (Mullvad, ProtonVPN, PIA, or others)
+  - 8 GB RAM minimum (16 GB recommended)
+
+Support:
+  Issues:      https://github.com/ddmoney420/torrent-vpn-stack/issues
+  Discussions: https://github.com/ddmoney420/torrent-vpn-stack/discussions
+
+====================================================================
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+====================================================================
+  Torrent VPN Stack has been upgraded to version ${1}
+====================================================================
+
+Changes:
+  See CHANGELOG: /usr/share/doc/torrent-vpn-stack/CHANGELOG.md
+
+Action Required:
+  1. Review your .env file for any new configuration options:
+     diff /usr/share/torrent-vpn-stack/.env.example /usr/share/torrent-vpn-stack/.env
+
+  2. Restart the stack if running:
+     cd /usr/share/torrent-vpn-stack
+     docker compose down
+     docker compose pull
+     docker compose up -d
+
+====================================================================
+
+EOF
+}
+
+pre_remove() {
+    cat << EOF
+
+====================================================================
+  Removing Torrent VPN Stack
+====================================================================
+
+WARNING: This will remove the installation files.
+Your Docker volumes and downloaded files will be preserved.
+
+To stop and remove containers:
+  cd /usr/share/torrent-vpn-stack
+  docker compose down
+
+To completely remove all data (WARNING: deletes everything):
+  docker volume rm torrent-vpn-stack_gluetun-config
+  docker volume rm torrent-vpn-stack_qbittorrent-config
+
+====================================================================
+
+EOF
+}
+
+post_remove() {
+    cat << EOF
+
+====================================================================
+  Torrent VPN Stack has been removed
+====================================================================
+
+Preserved Data:
+  - Docker volumes (gluetun-config, qbittorrent-config)
+  - Downloaded files (if outside installation directory)
+  - User backups in ~/backups/torrent-vpn-stack
+
+To completely remove all data:
+  docker volume rm torrent-vpn-stack_gluetun-config
+  docker volume rm torrent-vpn-stack_qbittorrent-config
+
+To reinstall:
+  yay -S torrent-vpn-stack
+  # OR
+  paru -S torrent-vpn-stack
+
+====================================================================
+
+EOF
+}
+
+# vim:set ts=4 sw=4 et:
