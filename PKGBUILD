@@ -2,8 +2,8 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=bigcty
-pkgver=20251218
-_pkgyear=2025
+pkgver=20260103
+_pkgyear=2026
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
         that are used by amateur (ham) radio logging software - EVERYDAY LOGGING VERSION."
@@ -21,5 +21,5 @@ package() {
 
 	cp -R *.{csv,dat} $pkgdir/usr/share/cty
 }
-md5sums=('3088a44b51471e5adb4e6472a77ccaf6')
-sha256sums=('4bc0a346a31087a8f4ee8743be3fefbb5427f5a3d0ce369b16e335427512317b')
+md5sums=('d477450f7e6cc7ac74201559a327b828')
+sha256sums=('12ee82b810abd64807bcf3d1f5825054adae9a39667167f4514b51b569f4ae8b')
