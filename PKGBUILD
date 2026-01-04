@@ -1,6 +1,6 @@
 # Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 pkgname=hmr
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A slim, fast CLI for Home Assistant"
 arch=('x86_64' 'aarch64')
