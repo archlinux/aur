@@ -7,3 +7,4 @@ falcon-sensor-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
+.idea/
