@@ -1,0 +1,13 @@
+pkgbase = rolldice-gorou
+	pkgdesc = CLI music player with true shuffle (roll the dice)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://example.com/rolldice
+	arch = any
+	license = MIT
+	depends = python
+	depends = mpv
+	source = rolldice.py
+	sha256sums = SKIP
+
+pkgname = rolldice-gorou
