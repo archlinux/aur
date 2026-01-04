@@ -1,0 +1,21 @@
+pkgbase = python-cyclopts
+	pkgdesc = A modern, intuitive command line interface framework for Python
+	pkgver = 3.16.2
+	pkgrel = 1
+	url = https://github.com/BrianPugh/cyclopts
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-poetry-dynamic-versioning
+	depends = python
+	depends = python-attrs
+	depends = python-docstring-parser
+	depends = python-rich
+	depends = python-rich-rst
+	source = https://files.pythonhosted.org/packages/source/c/cyclopts/cyclopts-3.16.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-cyclopts
