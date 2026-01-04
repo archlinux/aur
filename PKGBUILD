@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 #  Maintainer:  Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -7,14 +8,14 @@
 # Contributor: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=python-stdnum
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)'
 arch=('any')
 url='https://github.com/arthurdejong/python-stdnum'
 license=('LGPL-2.1-or-later')  # SPDX-License-Identifier: LGPL-2.1-or-later
 depends=(
-  'python>=3.8'
+  'python'
   'python-lxml'
   'python-requests'
   'python-setuptools'
@@ -25,13 +26,13 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'python-suds: second recommended SOAP implementation'
   'python-zeep: recommended SOAP implementation'
+  'python-suds: fallback SOAP implementation'
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=('e29383b26e3efccb8de4d8ddac98e1890fe043e3dfcf28e6571a32446357653d')
+sha256sums=('2fef7597bc2ee7542f22975142922adc77c0cf0f3908879717496708cb7c0f06')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -45,7 +46,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    ChangeLog ./*.md
+    ChangeLog NEWS ./*.md
 }
 
 # eof

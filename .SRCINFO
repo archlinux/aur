@@ -1,6 +1,6 @@
 pkgbase = python-stdnum
 	pkgdesc = Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/arthurdejong/python-stdnum
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = python-stdnum
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	depends = python-lxml
 	depends = python-requests
 	depends = python-setuptools
-	optdepends = python-suds: second recommended SOAP implementation
 	optdepends = python-zeep: recommended SOAP implementation
-	source = python-stdnum-2.1.tar.gz::https://github.com/arthurdejong/python-stdnum/archive/refs/tags/2.1.tar.gz
-	sha256sums = e29383b26e3efccb8de4d8ddac98e1890fe043e3dfcf28e6571a32446357653d
+	optdepends = python-suds: fallback SOAP implementation
+	source = python-stdnum-2.2.tar.gz::https://github.com/arthurdejong/python-stdnum/archive/refs/tags/2.2.tar.gz
+	sha256sums = 2fef7597bc2ee7542f22975142922adc77c0cf0f3908879717496708cb7c0f06
 
 pkgname = python-stdnum
