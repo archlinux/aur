@@ -2,7 +2,7 @@
 # Inspired by vscodium-git
 
 pkgname=vscodium-insiders-git
-pkgver=1.95.1.24307.r5.gd598450
+pkgver=1.107.18627.r1.g3bf7629
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -83,25 +83,37 @@ case "$CARCH" in
     ;;
 esac
 
-version() {
-    echo "$@" | tr 'v' ' ' | awk -F. '{ printf("%03d%03d%03d%03d\n", $1,$2,$3,$4); }'
+prepare() {
+    cd $srcdir/vscodium
+
+    # Add custom patches if needed
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        git apply -v "../$src"
+    done
 }
 
-prepare() {
-    cd "vscodium"
-
-    git checkout $( echo $pkgver | sed 's/\.r\([0-9]\+\)\./-r\1-/' )
-
-    current=$( git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' )
-
-    if [ ! "$pkgver" == $current ]; then
-        echo "current: $current != $pkgver"
-        return 1
-    fi
+pkgver() {
+    cd  $srcdir/vscodium
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "vscodium"
+    # Export necessary environment variables
+    export SHOULD_BUILD="yes"
+    export SHOULD_BUILD_REH="no"
+    export CI_BUILD="no"
+    export OS_NAME="linux"
+    export VSCODE_ARCH="${_vscode_arch}"
+    export VSCODE_QUALITY="insider"
+    export RELEASE_VERSION=$( echo "${pkgver}" | sed 's/\.r.*$//' )
+    # the app will be updated with pacman
+    export DISABLE_UPDATE="yes"
+
+    cd $srcdir/vscodium
 
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
     command -v nvm >/dev/null && nvm deactivate && nvm unload
@@ -133,17 +145,6 @@ build() {
     if [ -d "vscode" ]; then
         rm -rf vscode* VSCode*
     fi
-
-    # Export necessary environment variables
-    export SHOULD_BUILD="yes"
-    export SHOULD_BUILD_REH="no"
-    export CI_BUILD="no"
-    export OS_NAME="linux"
-    export VSCODE_ARCH="${_vscode_arch}"
-    export VSCODE_QUALITY="insider"
-    export RELEASE_VERSION=$( echo "${pkgver}" | sed 's/\.r.*$//' )
-    # the app will be updated with pacman
-    export DISABLE_UPDATE="yes"
 
     # Disabling this patch, since it is for win32 and does not apply here
     rm -rf patches/cleanup-archive.patch
