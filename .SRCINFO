@@ -1,6 +1,6 @@
 pkgbase = tsduck-bin
 	pkgdesc = MPEG Transport Stream Toolkit
-	pkgver = 3.42
+	pkgver = 3.43
 	pkgrel = 1
 	url = https://tsduck.io/
 	arch = x86_64
@@ -20,17 +20,17 @@ pkgbase = tsduck-bin
 	depends = pcsclite
 	depends = python
 	depends = srt
-	provides = tsduck=3.42
+	provides = tsduck=3.43
 	conflicts = tsduck
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/tsduck/tsduck/releases/download/v3.42-4421/tsduck-3.42-4421.fc42.x86_64.rpm
-	source_x86_64 = https://github.com/tsduck/tsduck/releases/download/v3.42-4421/tsduck-devel-3.42-4421.fc42.x86_64.rpm
-	sha256sums_x86_64 = a0c8536a7b8167bf1a6bcde79b9fba9ad91a2505a3450eca62b98ce508d93cdb
-	sha256sums_x86_64 = 26fd24f5cae17c9d409f5d38a2e79995209c0737c69d9eaacc5f594281279875
-	source_aarch64 = https://github.com/tsduck/tsduck/releases/download/v3.42-4421/tsduck-3.42-4421.fc42.aarch64.rpm
-	source_aarch64 = https://github.com/tsduck/tsduck/releases/download/v3.42-4421/tsduck-devel-3.42-4421.fc42.aarch64.rpm
-	sha256sums_aarch64 = fa9547643a5501534c23c2eafc7f74d37eb542a1b6255c0965370280cb8c13f7
-	sha256sums_aarch64 = b05b77c895129035227bde69494a7d5107a2427a99f6a576e78f95829b2e70a3
+	source_x86_64 = https://github.com/tsduck/tsduck/releases/download/v3.43-4549/tsduck-3.43-4549.fc43.x86_64.rpm
+	source_x86_64 = https://github.com/tsduck/tsduck/releases/download/v3.43-4549/tsduck-devel-3.43-4549.fc43.x86_64.rpm
+	sha256sums_x86_64 = e4869a4afc6b68efb45fcb9107f6d007743d0243ae6f9717554bd9f1227995fd
+	sha256sums_x86_64 = b208b596d321a9982f902a18a6f778aab17127c995dacafcf467cba7c0b855c9
+	source_aarch64 = https://github.com/tsduck/tsduck/releases/download/v3.43-4549/tsduck-3.43-4549.fc43.aarch64.rpm
+	source_aarch64 = https://github.com/tsduck/tsduck/releases/download/v3.43-4549/tsduck-devel-3.43-4549.fc43.aarch64.rpm
+	sha256sums_aarch64 = 3c2b6b8c9cd38d1abebb17f2dea5ea11601f23618a5a444079bb169cb9788cd7
+	sha256sums_aarch64 = 41e667dda1a5b5109b88081e5e51b3995daf0e014d2c86985b593507061819ec
 
 pkgname = tsduck-bin
