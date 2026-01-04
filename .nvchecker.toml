@@ -1,0 +1,5 @@
+[orla-bin]
+source = "github"
+github = "dorcha-inc/orla"
+use_latest_release = true
+prefix = "v"
