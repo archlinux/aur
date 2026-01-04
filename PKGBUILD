@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
 arch=(x86_64)
@@ -10,7 +10,7 @@ conflicts=(seanime-bin)
 depends=('systemd')
 makedepends=('go' 'npm' 'nodejs')
 source=("https://github.com/5rahim/seanime/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b95cd3305b9956a7b964c9fb886c23d4b0df2154c6bfda024fbc7e4681ad873a')
+sha256sums=('dbf685b5dad62cb67cccb0a0b0345c40103abf63d8606fb24a177125509df85c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
