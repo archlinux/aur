@@ -34,12 +34,15 @@ build() {
         target='LinuxArm64'
     fi
 
-    # Use local directories to not mess with gradle cache stuff
-    export GRADLE_USER_HOME="$srcdir/gradle"
+    # Figure out jvm >= 17 installation
+    jvm=$(ls /usr/lib/jvm | sed -n -r "s/(.*([0-9][0-9]).*)/\2 \1/p" | awk '$1>=17{print $2}' | head -n 1)
+
+    export JAVA_HOME="/usr/lib/jvm/$jvm"
     export KONAN_DATA_DIR="$srcdir/konan"
+    # Also using local konan and gradle directories to avoid weird conflicts
 
     cd "$srcName"
-    gradle "linkReleaseExecutable$target"
+    gradle -g "$srcdir/gradle" "linkReleaseExecutable$target"
 }
 
 package() {
@@ -55,4 +58,4 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# invokekitty (serenity) <meow@serenit.ie>
+# invokekitty (sery) <meow@serenit.ie>
