@@ -1,6 +1,6 @@
 pkgbase = hmr-bin
 	pkgdesc = A slim, fast CLI for Home Assistant
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/byteowlz/hmr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hmr-bin
 	depends = gcc-libs
 	provides = hmr
 	conflicts = hmr
-	source = hmr-0.4.0.tar.gz::https://github.com/byteowlz/hmr/releases/download/v0.4.0/hmr-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 2efca53dc709f9db89f9fafd2543f2709a6a2e1883938d6b0d0ac38961518721
+	source = hmr-0.4.1.tar.gz::https://github.com/byteowlz/hmr/releases/download/v0.4.1/hmr-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 34958616e18aa901c9d6e5175a19a253abfb4debcab5a65add71982dcf26b8ad
 
 pkgname = hmr-bin
