@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-awarp-git
+	pkgdesc = Plugin for Vapoursynth: awarp (GIT version)
+	pkgver = 2.0.gb3f2fc8
+	pkgrel = 1
+	url = https://github.com/HolyWu/VapourSynth-AWarp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = vapoursynth
+	provides = vapoursynth-plugin-awarp
+	conflicts = vapoursynth-plugin-awarp
+	source = awarp::git+https://github.com/HolyWu/VapourSynth-AWarp.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-awarp-git
