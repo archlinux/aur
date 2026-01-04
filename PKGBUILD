@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=0.3.0.r216.gcaab1e0
+pkgver=0.5.0.r49.g79b75e1
 
 pkgver() {
     cd "$pkgname"
@@ -53,7 +53,9 @@ check() {
 
 package() {
     cd "$pkgname"
-    desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "surfer/assets/Surfer.desktop"
     install -Dm644 "./LICENSE-EUPL-1.2.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 "target/release/surfer" "$pkgdir/usr/bin/surfer"
+
+    desktop_file="surfer/assets/com.gitlab.surferproject.surfer.desktop"
+    desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$desktop_file"
 }
