@@ -2,7 +2,7 @@
 # based off of https://aur.archlinux.org/packages/maretf-git
 pkgname=vtf-thumbnailer-git
 pkgver=0.1.3.r0.g646cdd4d
-pkgrel=1
+pkgrel=2
 pkgdesc="adds previews for VTF files in your file explorer of choice. git version."
 arch=('x86_64')
 url="https://github.com/craftablescience/vtf-thumbnailer"
@@ -41,7 +41,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DZLIBNG_ENABLE_TESTS=OFF \
 		-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
-		-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+		-DCPACK_GENERATOR="DEB"
 
 	cmake --build build
 }
