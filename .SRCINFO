@@ -1,6 +1,6 @@
 pkgbase = thermometer-git
 	pkgdesc = A simple CPU frequency management utility
-	pkgver = 1.3.3.24.gb156c44
+	pkgver = 1.3.3.24.1ee17b2
 	pkgrel = 2
 	url = github.com
 	arch = x86_64
