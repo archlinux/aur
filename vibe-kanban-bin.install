@@ -1,0 +1,16 @@
+post_install() {
+    echo "To start the service, run:"
+    echo "  systemctl --user enable --now vibe-kanban.service"
+    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+}
+
+post_upgrade() {
+    echo "You may need to restart the user service:"
+    echo "  systemctl --user daemon-reload"
+    echo "  systemctl --user restart vibe-kanban.service"
+}
+
+post_remove() {
+    echo "You may need to stop the user service:"
+    echo "  systemctl --user stop vibe-kanban.service"
+}

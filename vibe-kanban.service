@@ -1,0 +1,15 @@
+[Unit]
+Description=Vibe Kanban Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vibe-kanban
+Restart=always
+RestartSec=10
+Environment=PORT=3000
+# Bind to 0.0.0.0 so it can be accessed externally if needed, or change to 127.0.0.1
+Environment=HOST=0.0.0.0
+
+[Install]
+WantedBy=default.target
