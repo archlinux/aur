@@ -4,11 +4,11 @@
 pkgbase=aider-chat
 pkgname=(
   'aider-chat'
-  'aider-chat-docs'
+  # 'aider-chat-docs'  # see `build()` for details
 )
 _gitpkgname=aider
 pkgver=0.86.1
-pkgrel=2
+pkgrel=3
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
@@ -81,25 +81,36 @@ source=(
   'archlinux-use-system.patch'
   'aur-install-notice.patch'
   'fix-build-from-tarball.patch'
+  'fix-litellm-exception-list.patch'
   'github-pr-4369.patch'
+  'github-pr-4748.patch'
 )
 
 sha512sums=('0a0c44b5d91db839611f21c8062c2700fe728a1937cf1485375a94aa85c4330e3029547f8e464f2282f3ca21d58d9e1b0e68bc7ffd8190ef93eda2b768697c7f'
             '18acc792128e0748c099e0daa7061c780a43fdb384251f980ff36424b5450cb35e885a8e84af4990923db76a1f30e39a2e1a178eaf88409c0818e4ee134f1644'
             '39466f05535330372d3f89a361b3984ef82bfdbf3e1b9f359cc0c039bbe098163c4253634155d74dd3971145131fa12afdfc9aff001f05b8cd0840b870a68555'
             'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac'
-            'fe4e0a66b853ab00d35be6929d60d5e86463918f51bf9d60c36e3afb3a4ab8857daba8629a3b7c8e6b6e2891bdecfcce98b53ba5c2bbe49d47297b0f7fec3620')
+            'd89fa476f253c17675401693efce2bad8d3b7b525e95e3d655bf62c6f12ca39de1d36327fcdd37856dbbcca741a97535abd2f8cfb254eb211096f78dc08dd376'
+            'fe4e0a66b853ab00d35be6929d60d5e86463918f51bf9d60c36e3afb3a4ab8857daba8629a3b7c8e6b6e2891bdecfcce98b53ba5c2bbe49d47297b0f7fec3620'
+            '9b35d6a443ed0d750912776d19de6f003368a3bbb1355aa76fad01f21f2e17c9a25b0b0fca6efbd2edd8fccf7e0a5b3f31cf718c4ab97ce0801997c6a5513faa')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
 
-  # Replace custom downloads with system packages
+  echo >&2 'Replacing custom downloads with system packages'
   patch -p1 < ../archlinux-use-system.patch
 
-  # Replace auto-updater and optdepends installers with AUR notice
+  echo >&2 'Replacing auto-updater and optdepends installers with AUR notice'
   patch -p1 < ../aur-install-notice.patch
 
-  # Fix issues with incomplete build from source tarball (needs upstreaming)
+  echo >&2 'Applying patches to fix the LiteLLM exception list'
+  # Remove the following two patches after the next stable upstream
+  # release drops (v0.86.2 or higher).
+  patch -p1 < ../fix-litellm-exception-list.patch
+  patch -p1 < ../github-pr-4748.patch
+
+  # Needs to be upstreamed
+  echo >&2 'Fixing incomplete build from source tarball'
   patch -p1 < ../fix-build-from-tarball.patch
 
   # Remove this patch once the upstream author has merged PR #4369 and
@@ -111,7 +122,7 @@ prepare() {
   # Update Gemfile to allow newer version of the dependencies,
   # add undeclared dependencies, and remove dependencies not
   # relevant to this package
-  #
+  echo >&2 'Updating dependencies in Gemfile'
   # shellcheck disable=SC2016  # Not meant to expand
   sed -i \
     -e 's/"\([0-9]\)/">=\1/g' \
@@ -120,7 +131,7 @@ prepare() {
     -e 's/\(^gem "html-proofer".*\)/#\1/' \
     aider/website/Gemfile
 
-  # Adjust base URL for documentation
+  echo >&2 'Adjusting base URL for documentation'
   sed -i \
     -e 's|^\(url:\).*|\1 file:///usr/share/doc/'"${pkgbase}"'/html|' \
     aider/website/_config.yml
@@ -149,9 +160,10 @@ build() {
 
   cd aider/website
 
-  echo >&2 'Generating HTML documentation'
-  export JEKYLL_ENV=production
-  jekyll build --baseurl "file:///usr/share/doc/${pkgbase}/html/"
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/protobuf/-/issues/23
+  echo >&2 'Not building HTML documentation build due to packaging issue'
+  # export JEKYLL_ENV=production
+  # jekyll build --baseurl "file:///usr/share/doc/${pkgbase}/html/"
 }
 
 check() {
@@ -213,20 +225,4 @@ package_aider-chat() {
     'completions/bash/aider'
   install -D -m 644 -t "${pkgdir}/usr/share/zsh/site-functions" \
     'completions/zsh/_aider'
-}
-
-# shellcheck disable=SC2128
-package_aider-chat-docs() {
-  cd "${_gitpkgname}-${pkgver}"
-
-  echo >&2 'Packaging the documentation'
-  install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgbase}" \
-    README.md
-  mkdir "${pkgdir}/usr/share/doc/${pkgbase}/html"
-  cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgbase}/html" \
-    aider/website/_site/{assets,docs,examples,HISTORY.html,index.html,share}
-
-  echo >&2 'Packaging the license'
-  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    LICENSE.txt
 }
