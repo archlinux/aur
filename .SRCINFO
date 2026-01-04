@@ -1,6 +1,6 @@
 pkgbase = redisearch
 	pkgdesc = A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations.
-	pkgver = 2.10.25
+	pkgver = 2.10.26
 	pkgrel = 1
 	url = https://github.com/RediSearch/RediSearch
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = redisearch
 	makedepends = git
 	depends = boost-libs
 	depends = redis
-	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=2637ecb6bb00e1e7d31f551c83cccaf93ee229f0
+	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=7d7830113b001aa36bb9cc0fb8bd7b2c4fd464f3
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/redis/hiredis.git
 	source = git+https://github.com/libuv/libuv.git
@@ -18,7 +18,7 @@ pkgbase = redisearch
 	source = git+https://github.com/RedisLabsModules/RedisModulesSDK.git
 	source = git+https://github.com/google/s2geometry.git
 	source = git+https://github.com/RedisAI/VectorSimilarity.git
-	sha512sums = fee9d3ca6da7a8f197f1935eea00b7434fee70d893eab5afcdbd7f7408ee98918baec6e4a0aca91ee828d73d9fde80d3cb4392ae3645e6ff73c768a0ddf5114d
+	sha512sums = 43c603c3a31e743bb4aac67089fb33ee714d6dd44f53700c1a8f023d9f6dcedf321a34da1b4528ff93fbcd0457fd379d596ec9f364ab04fe79a7474ab9c1429b
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
