@@ -8,7 +8,7 @@ url="https://github.com/piotrek1372/ca-racing"
 license=('MIT')
 depends=('glibc') # PyInstaller bundles most things, but glibc is system-level
 options=('!strip') # Don't strip PyInstaller binaries, it can break them
-source=("https://github.com/piotrek1372/ca-racing/releases/download/${pkgver//_/-}/ca-racing_linux_amd64")
+source=("https://github.com/piotrek1372/ca-racing/releases/${pkgver//_/-}/ca-racing_linux_amd64")
 sha256sums=('SKIP') # Zaktualizowane przez CI/CD
 
 package() {
