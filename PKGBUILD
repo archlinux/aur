@@ -12,26 +12,36 @@ pkgname='netcheck'
 pkgdesc='Check network connectivity'
 _gitname='netcheck'
 
-pkgver=1.9.2
+pkgver="1.10.0"
 pkgrel=1
 url="https://github.com/gene-git/netcheck"
 
 arch=(any)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
-depends=('python>3.13'
-         'python-pandas'
-         'python-matplotlib'
-         'pyconcurrent'
-         'python-dateutil')
+depends=(
+    'python>3.13'
+    'python-pandas'
+    'python-matplotlib'
+    'pyconcurrent'
+    'python-dateutil'
+)
 
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
-             #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
-            )
+makedepends=(
+    'git'
+    'uv'
+    'python-uv-build'
+    'rsync' 
+    #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
+)
 
 # Used by package : mkpkg
-_mkpkg_depends=('python>minor')
+_mkpkg_depends=(
+    'python>minor'
+    'pyconcurrent>minor'
+    'python-matplotlib>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -48,7 +58,21 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
+
+    # To build Docs 
+    # uncomment these and sphinx makedepends above
+    # --------------
+    # echo "Build docs"
+    # pdf='netcheck.pdf'
+    # cd ./Docs
+    # /usr/bin/rm -f $pdf
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    # make html
+    # /usr/bin/cp _build/latex/$pdf .
+    # /usr/bin/rm -rf _build/doctrees _build/latex
+
 
     # To build Docs 
     # uncomment these and sphinx makedepends above
