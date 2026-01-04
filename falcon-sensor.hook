@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = falcon-sensor
+
+[Action]
+Description = Cleaning up falcon-sensor runtime files...
+When = PreTransaction
+Exec = /usr/bin/rm -f /opt/CrowdStrike/falcon-flow

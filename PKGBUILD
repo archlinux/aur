@@ -36,9 +36,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 install="${pkgname}.install"
 
-# --- Source File ---
-source=("falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('0c3ac12e749647cd05a8e8bd6281541e5ba8496ca1ba042eda6637f547db5dc0')
+# --- Source Files ---
+source=("falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb"
+        "falcon-sensor.hook")
+sha256sums=('0c3ac12e749647cd05a8e8bd6281541e5ba8496ca1ba042eda6637f547db5dc0'
+            'SKIP')
 
 # --- Packaging Function ---
 package() {
@@ -53,4 +55,7 @@ package() {
 
   # Remove the now-empty 'lib' directory from the package
   rmdir "${pkgdir}/lib"
+
+  # Install pacman hook to clean up runtime-generated files before upgrades
+  install -Dm644 "${srcdir}/falcon-sensor.hook" "${pkgdir}/usr/share/libalpm/hooks/falcon-sensor.hook"
 }
