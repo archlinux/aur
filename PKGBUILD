@@ -3,7 +3,7 @@ _appname=bitshares_astro_ui
 pkgname="${_appname//_/-}-bin"
 _pkgname=BTSAstroUI
 _orginame='Bitshares Astro UI'
-pkgver=0.5.20
+pkgver=0.5.21
 _electronversion=39
 pkgrel=1
 pkgdesc="A Bitshares UI built using Astro, React and Electron!.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BTS-CM/astro-ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db69a686eccc435713947fd3ee52c2b5a9f2eaf89d879f0595f77a3d5b194fb0'
+sha256sums=('007fec9b9b91a11779f6b83b1ebf43f54fdfd23637f1c91be18327659056049e'
             '8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
