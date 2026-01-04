@@ -4,12 +4,12 @@
 : ${_ver_plutovg:=1.3.1}
 : ${_ver_plutosvg:=0.0.7}
 
-: ${_commit=e4af1c424451c6b65c5c387404315cef77e9901b}
+: ${_commit=96284205a112ae7e74a8fffa15cb3d867cd0b32f}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
@@ -108,11 +108,6 @@ prepare() {
   sed -E -e '/CMAKE_INSTALL_FULL_DATADIR/s@/PCSX2\b@/'"${_pkgname}@" \
     -i pcsx2/CMakeLists.txt \
     cmake/BuildParameters.cmake
-
-  # fix for Qt 6.10
-  sed -E -e 's@\b(Qt6::)?(Gui)\b@\1\2 \1\2Private@' \
-    -i cmake/SearchForStuff.cmake \
-    pcsx2-qt/CMakeLists.txt
 }
 
 pkgver() {
