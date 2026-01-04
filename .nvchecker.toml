@@ -1,0 +1,3 @@
+[fts]
+source = "pypi"
+pypi = "fts-tool"

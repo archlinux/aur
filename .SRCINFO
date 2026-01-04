@@ -1,0 +1,24 @@
+pkgbase = fts
+	pkgdesc = A lightweight CLI tool and TUI application for fast local-network file transfers and communication
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/Terabase-Studios/fts
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-textual
+	depends = python-tqdm
+	depends = python-psutil
+	depends = python-cryptography
+	depends = python-filelock
+	provides = fts-tool
+	conflicts = python-fts
+	replaces = python-fts
+	source = fts-tool-2.3.0.tar.gz::https://github.com/Terabase-Studios/fts/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = 4d5d55d5a485e6fdaa4effae2d053135f7f4aeb504058234e064d31c881a2cbe
+
+pkgname = fts
