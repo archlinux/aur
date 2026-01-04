@@ -18,9 +18,11 @@ package() {
   # Install the estructure of usr/
   mkdir --verbose -p  "${pkgdir}/usr"
   cp --verbose -r usr/* "${pkgdir}/usr/"
+  mv --verbose "${pkgdir}/usr/lib/python3" "${pkgdir}/usr/lib/python3.13"
+
   
   # Install the aditionals
   install -d -m 0755 "${pkgdir}/etc"
-  cp -r -p etc/* "${pkgdir}/etc/"
+  cp --verbose -r -p etc/* "${pkgdir}/etc/"
   install -d -m 0750 -o root -g 102 "${pkgdir}/etc/polkit-1/rules.d"
 }
