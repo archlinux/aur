@@ -1,6 +1,6 @@
 pkgbase = cosmic-greeter-git
 	pkgdesc = libcosmic greeter for greetd, which can be run inside cosmic-comp
-	pkgver = 1.0.0.alpha.7.r46.gf150f9e
+	pkgver = 1.0.1.r0.g4d74121
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-greeter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cosmic-greeter-git
 	makedepends = just
 	makedepends = mold
 	depends = cosmic-comp-git
-	depends = cosmic-randr-git
+	depends = cosmic-icons-git
 	depends = gnome-keyring
 	depends = greetd
 	depends = libxkbcommon
