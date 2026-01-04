@@ -1,12 +1,12 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=mpsolve
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.3
+pkgrel=1
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('x86_64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('gmp' 'mpfr')
 makedepends=('gcc-fortran')
 optdepends=('cython: Python bindings'
@@ -14,8 +14,15 @@ optdepends=('cython: Python bindings'
             'gtk3: Graphical debugger'
             'qt5-base: Graphical interface xmpsolve')
 options=(!libtool)
-source=("http://numpi.dm.unipi.it/_media/software/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('45b22f6b04544b9eda2457eec58580d892c7e00824ebd2d6e31fe24cdd763804')
+source=("https://numpi.dm.unipi.it/wp-content/uploads/2025/08/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('1f2e239c698c783b63a5e6903e76316c0335a01d71c466a8551e8a3f790b3971')
+
+prepare () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # precompiled versions in 3.2.3 tarball are incompatible with recent bison
+  # see https://github.com/robol/MPSolve/issues/48
+  rm src/libmps/monomial/yacc-parser.{c,h}
+}
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
