@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+    echo "==> Run the configuration wizard to complete setup:"
+    echo "    supersayer config"
+    echo ""
+}
