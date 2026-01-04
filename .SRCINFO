@@ -1,13 +1,13 @@
 pkgbase = gitmastery-bin
 	pkgdesc = Git-Mastery CLI for practicing Git
-	pkgver = v7.1.8
+	pkgver = v7.2.0
 	pkgrel = 1
 	url = https://github.com/git-mastery/app
 	changelog = gitmastery.changelog
 	arch = x86_64
 	license = MIT
 	depends = python
-	source = gitmastery-7.1.8-linux-amd64::https://github.com/git-mastery/app/releases/download/main/gitmastery-7.1.8-linux-amd64
+	source = gitmastery-7.2.0-linux-amd64::https://github.com/git-mastery/app/releases/download/v7.2.0/gitmastery-7.2.0-linux-amd64
 	sha256sums = SKIP
 
 pkgname = gitmastery-bin
