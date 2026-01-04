@@ -1,7 +1,7 @@
 pkgbase = maa-cli
 	pkgdesc = A simple CLI for MAA by Rust.
-	pkgver = 0.6.0beta.3
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/MaaAssistantArknights/maa-cli
 	arch = x86_64
 	arch = aarch64

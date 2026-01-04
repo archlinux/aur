@@ -1,8 +1,8 @@
 # Maintainer: Horror Proton <107091537+horror-proton@users.noreply.github.com>
 pkgname=maa-cli
 _pkgver=0.6.0-beta.3
-pkgver=${_pkgver//-/}
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A simple CLI for MAA by Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/maa-cli"
