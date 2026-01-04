@@ -1,0 +1,17 @@
+pkgbase = roleboi
+	pkgdesc = A small role management Discord bot.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KarlOfDuty/RoleBoi
+	install = roleboi.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dotnet-sdk-9.0
+	conflicts = roleboi-git
+	options = !debug
+	options = !strip
+	backup = etc/roleboi/config.yml
+	source = git+https://github.com/KarlOfDuty/RoleBoi.git#tag=1.0.0
+	sha512sums = SKIP
+
+pkgname = roleboi
