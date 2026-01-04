@@ -1,32 +1,33 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.6.0 ➙ 3.10
-              : 2025-07-16 ➙ 2025-09-01
+ Tags         : 3.7.0 ➙ 3.11.0
+              : 2025-07-17 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2025-09-01   : 3.10
-                Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
- 2025-08-31     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
+ 2026-01-04   : 3.11.0
+              - **3.11.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working on python 3.14.2
+                * License GPL-2.0-or-later
+
+ 2025-09-01   : 3.10.0, origin/master
+              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
+              - Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
+ 2025-08-31   ⋯
+              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-08-31   : 3.9.0
-                compact(cidrs) can now handle mixed ipv4/ipv6
- 2025-07-17     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
+              - compact(cidrs) can now handle mixed ipv4/ipv6
+ 2025-07-17   ⋯
+              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-07-17   : 3.8.0
-                Cidr cache lockfile name use effective user id instead of username.
+              - Cidr cache lockfile name use effective user id instead of username.
 
  2025-07-17   : 3.7.0
-                Cidr cache lockfile: remove getlogin() line accidently left in - reported by
-                AUR user @piate
- 2025-07-16     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-07-16   : 3.6.0
-                Add net_to_cidr()
-                Add sort_nets()
-                Add net_is_subnet()
-                Add address_to_net()
-                Change cidr_iptype() address_iptype() to return empty string on invalid
-                insteed of None
-                Cidr Cache lockfile name: use effective user instead of real user
- 2025-05-21     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
+              - Cidr cache lockfile: remove getlogin() line accidently left in - reported by AUR user @piate
+ 2025-07-16   ⋯
+              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
