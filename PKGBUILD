@@ -4,8 +4,8 @@ _pkgauthor=Gu1llaum-3
 _pkgname=sshm
 pkgname=${_pkgname}-bin
 pkgver=1.10.0
+pkgrel=2
 _pkgvername=v${pkgver}
-pkgrel=1
 pkgdesc="A modern, interactive SSH Manager for your terminal"
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'arm64')
@@ -18,8 +18,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5a7190da1c88f89644091c71d43107681c065a0ae420b0ccba2e55f7ee121bfc')
-sha256sums_aarch64=('75bbfd36bccc3c3c6f8cfd55a5fb5c9b0457458a2dbc7ab87aace4502d98c770')
+sha256sums_x86_64=('86df71fa2618f8103c0e10206190e792ffc1954e371aaebb5a7870dab45bc5c9')
+sha256sums_aarch64=('a5e0559e344b8b99c3b57805c323e35e8df15c3b71f8aa03d4d65cb6956167ef')
 
 case "${CARCH}" in
 	${arch[0]})
