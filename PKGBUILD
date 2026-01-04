@@ -1,7 +1,7 @@
 pkgname=archchat
-pkgver=0.1
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Minimal peer-to-peer terminal chat for Arch Linux"
+pkgdesc="Simple P2P chat for Arch Linux"
 arch=('any')
 url="https://aur.archlinux.org/packages/archchat"
 license=('MIT')
