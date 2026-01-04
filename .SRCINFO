@@ -1,13 +1,13 @@
 pkgbase = ca-racing
-	pkgdesc = A retro-style 2D top-down racing game
-	pkgver = 0.2.0_alpha
+	pkgdesc = Top-down 2D racing game written in Python
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/piotrek1372/ca-racing
 	arch = x86_64
-	license = Apache
-	provides = ca-racing
-	conflicts = ca-racing
-	source = https://github.com/piotrek1372/ca-racing/releases/download/v0.2.0-alpha/CA-Racing-0.2.0-alpha-setup.run
-	sha256sums = 392203f13e9d60c897b4b0938c1770c18d54b6f12aa6977ead409c864edd3437
+	license = MIT
+	depends = glibc
+	options = !strip
+	source = https://github.com/piotrek1372/ca-racing/releases/download/0.2.0/ca-racing_linux_amd64
+	sha256sums = SKIP
 
 pkgname = ca-racing
