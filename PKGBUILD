@@ -2,13 +2,13 @@
 
 pkgname=proton-pass-git
 _name=${pkgname%-git}
-_electron=electron37
-pkgver=1.32.11.r51486.66b7aad
+pkgver=1.34.0.r53453.5d85ec7
 pkgrel=1
 pkgdesc='Proton official password manager'
 arch=('x86_64')
 url='https://proton.me/pass'
 license=('GPL-3.0-or-later')
+_electron=electron39
 depends=('bash' "$_electron" 'hicolor-icon-theme')
 makedepends=('git' 'jq' 'nodejs-lts-jod' 'npm' 'rustup' 'yarn')
 provides=("$_name")
@@ -18,7 +18,7 @@ source=('ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git'
         'proton-pass.sh')
 b2sums=('SKIP'
         '8c98df9532c76667ee88211be72b14b233f9fb84e921bfb045ae6f9d74dc314489a9917452246018c1923e9d99fb5e195cf137f656e1f1d17bd8d22f9369c054'
-        '84235372e9f8b9f5a8129c46e6fa75a9b7de66dce0b66e91ebfed25001d8c4ba3b62e7f186fcffc13c8344d33e0c7f7472405ac4b963ae0ab7fc59d9195e925e')
+        '9d30272588cb239c81c8cf91385cbde044701cb8eccb884be2e51b3248a15a93f10e2eccdde732c041564a80a1feb8a23c91a90ea9651a3dd448e5540d4e2570')
 
 pkgver() {
     cd ProtonWebClients
@@ -31,18 +31,17 @@ pkgver() {
 prepare() {
     cd ProtonWebClients
 
-    local _electronver=$(jq -r '.devDependencies.electron | ltrimstr("^")' applications/pass-desktop/package.json)
-    if [[ -z "$_electronver" || "$_electronver" == "null" ]]; then
-        echo "Failed to read electron version from source" >&2
-        exit 1
-    fi
-    if [[ "electron${_electronver%%.*}" != "$_electron" ]]; then
-        echo "Electron version mismatch: source requires electron${_electronver%%.*} but PKGBUILD specifies $_electron" >&2
-        exit 1
+    # Find out which major release of electron this version of proton-pass requires
+    local _electron_major=$(jq --raw-output '.devDependencies.electron' < "applications/pass-desktop/package.json" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
+
+    # Check if we depend on the correct electron version
+    if [ "$_electron" != "electron$_electron_major" ] ; then
+        echo "Error: Incorrect electron version detected. Please change the value of \"_electron\" from \"$_electron\" to \"electron$_electron_major\"."
+        return 1
     fi
 
-    # Change electron binary name to the target electron
-    sed "s|/usr/bin/electron|/usr/bin/$_electron|" -i ../proton-pass.sh
+    # Specify electron version in launcher
+    sed -i "s|@ELECTRON@|$_electron|" "$srcdir/proton-pass.sh"
 
     # Limit workspace applications to pass and pass-desktop
     sed -i 's/"applications\/\*",/"applications\/pass", "applications\/pass-desktop",/' package.json
