@@ -39,7 +39,7 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
-  echo -e "#!/bin/sh\n\n/usr/bin/env python3 /opt/${pkgname}/meerk40t.py" > ${pkgdir}/usr/bin/${pkgname}
+  echo -e "#!/bin/sh\nexport PYTHONDONTWRITEBYTECODE=1\nexec python3 /opt/${pkgname}/meerk40t.py" > ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 
   mkdir -p ${pkgdir}/opt
@@ -51,5 +51,5 @@ package() {
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   cd "${pkgdir}/opt/${pkgname}/${pkgname}"
-  python -m compileall .
+  python3 -m compileall -q -o 0 .
 }
