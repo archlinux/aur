@@ -1,0 +1,4 @@
+[tiddl]
+source = "git"
+git = "https://github.com/oskvr37/tiddl.git"
+prefix = "v"
