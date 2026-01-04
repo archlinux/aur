@@ -1,6 +1,6 @@
 pkgbase = yacreader-bin
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection, binary version.
-	pkgver = 9.16.2
+	pkgver = 9.16.3
 	pkgrel = 1
 	url = https://www.yacreader.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = yacreader-bin
 	depends = qt5-quickcontrols
 	provides = yacreader
 	conflicts = yacreader
-	source_x86_64 = https://kojipkgs.fedoraproject.org//packages/yacreader/9.16.2/1.el9/x86_64/yacreader-9.16.2-1.el9.x86_64.rpm
-	sha256sums_x86_64 = 3eb8db35a2aa6e461b783ea7ba1e99a8dcd43e71f40257d92395e2f4a7dfb09b
+	source_x86_64 = https://kojipkgs.fedoraproject.org//packages/yacreader/9.16.3/1.fc42/x86_64/yacreader-9.16.3-1.fc42.x86_64.rpm
+	sha256sums_x86_64 = b9b523d9a864eb7c1e37e253c5b2d3659b5e62eb40da0237c70528df8c8d0dc4
 
 pkgname = yacreader-bin
