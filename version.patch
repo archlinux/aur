@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 595201b..05276c8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@
+ include config.mk
+ 
+ BIN     = chmap
+-VERSION = 1.1.0
++VERSION = 1.1.1
+ PKGNAME = $(BIN)-$(shell uname -s)-$(shell uname -m)-$(VERSION)
+ 
+ SRC     = src/utf8.c src/unicode.c src/util.c src/main.c
