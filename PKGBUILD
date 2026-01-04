@@ -2,7 +2,7 @@
 pkgname=meerk40t-git
 pkgver=0.9.8920.r19993.dab6ce164
 pkgrel=1
-pkgdesc="Hackable Laser software for the K40 Stock-LIHUIYU laser boards."
+pkgdesc="Hackable Laser software for K40 / GRBL / Fibre Lasers"
 arch=("any")
 url="https://github.com/meerk40t/meerk40t"
 license=('MIT')
@@ -44,7 +44,7 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
-  echo -e "#!/bin/sh\n\n/usr/bin/python /opt/meerk40t-git/meerk40t.py" > ${pkgdir}/usr/bin/${pkgname}
+  echo -e "#!/bin/sh\nexport PYTHONDONTWRITEBYTECODE=1\nexec python3 /opt/${pkgname}/meerk40t.py" > ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 
   mkdir -p ${pkgdir}/opt
@@ -56,5 +56,5 @@ package() {
   install -Dm644 Meerk40t-Git.desktop ${pkgdir}/usr/share/applications/meerk40t-git.desktop
 
   cd "${pkgdir}/opt/${pkgname}"
-  python -m compileall -f meerk40t
+  python3 -m compileall -q -o 0 -f meerk40t
 }

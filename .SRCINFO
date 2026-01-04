@@ -1,5 +1,5 @@
 pkgbase = meerk40t-git
-	pkgdesc = Hackable Laser software for the K40 Stock-LIHUIYU laser boards.
+	pkgdesc = Hackable Laser software for K40 / GRBL / Fibre Lasers
 	pkgver = 0.9.8920.r19993.dab6ce164
 	pkgrel = 1
 	url = https://github.com/meerk40t/meerk40t
