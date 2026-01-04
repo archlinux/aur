@@ -10,22 +10,38 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=4.8.0
+pkgver="5.0.0"
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
 arch=(x86_64)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 install='iwinfo.install'
 
 # To build docs uncomment sphinx/texlive
 # Note libcap_ng >= 0.6 provides python bindings
-depends=('python>=3.13' 'libcap-ng>=0.6' 'python-capng' 'iwd')
-makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-hatch' 'rsync'
-             'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
-            )
-_mkpkg_depends=('python>minor' 'libcap-ng>minor')
+depends=(
+    'python>=3.13' 
+    'libcap-ng>=0.6' 
+    'python-capng' 
+    'iwd'
+    'glibc'
+)
+makedepends=(
+    'git' 
+    'uv'
+    'python-uv-build'
+    'rsync'
+    # 'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
+)
+_mkpkg_depends=(
+    'python>minor' 
+    'libcap-ng>minor'
+    'python-capng>minor'
+    'glibc>minor'
+    'gcc>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -41,9 +57,10 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
+
     echo 'Building python'
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     echo 'Building C'
     cd src/ambient
@@ -54,8 +71,13 @@ build() {
     # -------------
     # echo "Build docs"
     # cd ./Docs
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    # pdf='dns_tools.pdf'
+    # /usr/bin/rm -f $pdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # /usr/bin/rm -rf _build/doctrees _build/latex
     # make html
-    # make latexpdf
 }
 
 package() {

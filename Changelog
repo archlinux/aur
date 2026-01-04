@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.3.0 ➙ 4.8.0
-              : 2025-06-22 ➙ 2025-11-25
+ Tags         : 4.4.0 ➙ HEAD
+              : 2025-06-22 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : HEAD
+              - **5.0.0**
+            
+                * Reorg source a little
+                * Switch python packaging from hatch to uv
+                * License GPL-2.0-or-later
+
+ 2025-11-25   : 5.0.0, origin/master
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-11-25   : 4.8.0
               - New option "-v" prints all frequencies supported by each phy
@@ -26,8 +36,3 @@
 
  2025-06-22   : 4.4.0
               - Put run_cmd in its own file
-
- 2025-06-22   : 4.3.0
-              - run_prog: sync our copy with latest from pyconcurrent
- 2025-06-16   ⋯
-              - update Docs/Changelog Docs/${my_name}.pdf
