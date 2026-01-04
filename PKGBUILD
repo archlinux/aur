@@ -2,8 +2,8 @@
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=fingerprintx
-pkgver=1.1.15
-pkgrel=2
+pkgver=1.1.19
+pkgrel=1
 pkgdesc="Standalone utility for service discovery on open ports!"
 arch=('x86_64')
 url="https://github.com/praetorian-inc/fingerprintx"
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5dc1e112b57e38ca60d87f3ecc8c9c0956a1cfebcb9a57272d1f2d8a13e78748')
+sha256sums=('90cf8b96f3d1ad0f525486d10bc83588144b3eed62ef2b431629f5bb030a5468')
 
 prepare() {
 	cd "$pkgname-$pkgver"
