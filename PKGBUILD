@@ -1,7 +1,7 @@
 # Maintainer: kokan  <kokaipeter@gmail.com>
 
 pkgname=mmtui
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="TUI disk mount manager for TUI file managers"
 arch=(x86_64)
@@ -16,26 +16,26 @@ makedepends=(
   rust
   clang
 )
-options=(!debug)
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('446792cb17b066d8e251d69d018355ef60161438280aef53bbcb13a161248ba1939fc9555cccf619851a5cbf2e42f86e691e7ee169786025b86ae0e93c2fe36e')
+options=(!debug !lto)
+source=($url/archive/refs/tags/mmt-v$pkgver.tar.gz)
+b2sums=('ffb0ad40f6464cb848168b1d03b8b886ac32a3d261a202621b597af95a9cdc1af70ed6114f3352499131d886b416d4cfd8342dece81faae1daf52a41fd5a0be4')
 
 prepare() {
-  cd $pkgname-$pkgver
-  export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
+  cd $pkgname-mmt-v$pkgver
+  export CARGO_HOME="$srcdir"/$pkgname-mmt-v$pkgver/.cargo
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-mmt-v$pkgver
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
-  export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
+  export CARGO_HOME="$srcdir"/$pkgname-mmt-v$pkgver/.cargo
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-mmt-v$pkgver
   install -vDm755 target/release/$pkgname -t "$pkgdir"/usr/bin/
   install -vDm644 LICENSE                 -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
