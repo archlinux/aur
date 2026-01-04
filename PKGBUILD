@@ -1,0 +1,23 @@
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
+
+pkgname=seqtui-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)'
+arch=(x86_64)
+url='https://github.com/ranwez-search/SeqTUI'
+license=(MIT)
+depends=(gcc-libs glibc)
+options=(!strip !debug)
+source=("SeqTUI-LICENSE::https://raw.githubusercontent.com/ranwez-search/SeqTUI/refs/tags/v$pkgver/LICENSE")
+source_x86_64=("$url/releases/download/v$pkgver/seqtui-v$pkgver-linux-x86_64.tar.gz")
+sha256sums=('23b63f434f3efc22c45d74a21c4ed3e4b33a64e85c07457e3902e4dbb530d9cc')
+sha256sums_x86_64=('84af249fa266efa3217b8f63332742678892c5ce38949698370ecd555bf42712')
+b2sums=('4350f3fe32a75b1e282f8c7a80cc52f70f3d482e3d51bdbb1102cfa85bd83680133096e47b128ef0e16470dce130a37606e6c4eb27d3fd8d74fd046244606c11')
+b2sums_x86_64=('a19a8767b1e4ec6cede40b030e42a7a3200751f8bfb51cf3439a7add4e043b51173b550b753b9d69fe97d61fe2979b673df4c57467c431ab65aff2e1170475f7')
+
+package() {
+    install -Dm755 seqtui -t "$pkgdir/usr/bin"
+    install -Dm644 *.{nex,fasta} -t "$pkgdir/usr/share/doc/seqtui/examples"
+    install -Dm644 SeqTUI-LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
