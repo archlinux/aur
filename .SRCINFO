@@ -1,0 +1,20 @@
+pkgbase = mx-packageinstaller
+	pkgdesc = Package installation tool for MX Linux
+	pkgver = 25.12.4
+	pkgrel = 1
+	url = https://github.com/MX-Linux/mx-packageinstaller
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-network
+	depends = qt6-xml
+	depends = xdg-utils
+	depends = sudo
+	depends = socat
+	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/25.12.4.tar.gz
+	sha256sums = PLACEHOLDER_NEEDS_ACTUAL_CHECKSUM
+
+pkgname = mx-packageinstaller
