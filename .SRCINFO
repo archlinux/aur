@@ -1,6 +1,6 @@
 pkgbase = mold-x86-git
 	pkgdesc = A Modern Linker - patched to compile only for x86 target
-	pkgver = 2.40.4.r59.g016bb8af
+	pkgver = 2.40.4.r70.g17956fdf
 	pkgrel = 1
 	url = https://github.com/rui314/mold
 	arch = x86_64
@@ -10,17 +10,18 @@ pkgbase = mold-x86-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = mold
+	makedepends = ninja
 	makedepends = python
 	depends = glibc
 	depends = gcc-libs
 	depends = libblake3
 	depends = mimalloc
 	depends = zstd
-	provides = mold=2.40.4.r59.g016bb8af
+	provides = mold=2.40.4.r70.g17956fdf
 	conflicts = mold
 	source = mold::git+https://github.com/rui314/mold
 	source = x86.patch
 	b2sums = SKIP
-	b2sums = 9b6d8dece09dcca8faaea9d0261690427260b56dfe8582718e219b7db9f636afdf9bbd398e66a4e49b2648c5706238255366e86b9830d5aa09abd74da41c9b49
+	b2sums = SKIP
 
 pkgname = mold-x86-git

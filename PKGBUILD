@@ -3,7 +3,7 @@
 # PKGBUILD forked from mold-git [https://aur.archlinux.org/packages/mold-git] by
 # Maintainer: Peter Jung <ptr1337@cachyos.org>
 pkgname=mold-x86-git
-pkgver=2.40.4.r59.g016bb8af
+pkgver=2.40.4.r70.g17956fdf
 pkgrel=1
 pkgdesc='A Modern Linker - patched to compile only for x86 target'
 arch=('x86_64')
@@ -21,6 +21,7 @@ makedepends=(
   cmake
   git
   mold
+  ninja
   python
 )
 checkdepends=(
@@ -29,8 +30,7 @@ checkdepends=(
 )
 source=("mold::git+https://github.com/rui314/mold"
         'x86.patch')
-b2sums=('SKIP'
-        '9b6d8dece09dcca8faaea9d0261690427260b56dfe8582718e219b7db9f636afdf9bbd398e66a4e49b2648c5706238255366e86b9830d5aa09abd74da41c9b49')
+b2sums=('SKIP' 'SKIP')
 provides=("mold=$pkgver")
 conflicts=("mold")
 _reponame="mold"
@@ -42,7 +42,7 @@ pkgver() {
 
 prepare() {
     cd "$_reponame"
-    patch -p1 -i ../x86.patch
+    patch -Np1 -i ../x86.patch
 }
 
 build() {
