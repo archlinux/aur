@@ -1,0 +1,5 @@
+[seqtui]
+source = "github"
+github = "ranwez-search/SeqTUI"
+use_latest_release = true
+prefix = "v"
