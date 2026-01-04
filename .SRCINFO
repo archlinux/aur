@@ -1,0 +1,19 @@
+pkgbase = hyprkvm
+	pkgdesc = Hyprland-native software KVM switch for seamless keyboard/mouse sharing between Linux machines
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/hyprKVM
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = openssl
+	optdepends = wl-clipboard: for clipboard synchronization
+	source = git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v0.5.1
+	sha256sums = SKIP
+
+pkgname = hyprkvm
