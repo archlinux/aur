@@ -1,6 +1,6 @@
 pkgbase = ffbox
 	pkgdesc = An user-friendly ffmpeg GUI.(Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = ffbox
 	depends = ffmpeg
 	depends = nodejs
 	conflicts = ffbox
-	source = ffbox-5.1::git+https://github.com/ttqftech/FFBox#tag=v5.1
+	source = ffbox-5.2::git+https://github.com/ttqftech/FFBox#tag=v5.2
 	source = ffbox.sh
-	sha256sums = c97bbc469370e05e63e4868352d6353228575ccad4fa55adb87acbf488251e37
+	sha256sums = 5ad3f5420d8e4e1baddcabcc25b0196b12402eac67d64983905b7cfd447e49cd
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ffbox
