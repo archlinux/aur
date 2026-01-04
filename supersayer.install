@@ -4,3 +4,10 @@ post_install() {
     echo "    supersayer config"
     echo ""
 }
+
+post_remove() {
+    echo ""
+    echo "==> Remember to remove your GNOME keyboard shortcuts for supersayer"
+    echo "    Settings > Keyboard > Custom Shortcuts"
+    echo ""
+}
