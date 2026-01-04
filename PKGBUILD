@@ -2,7 +2,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=masterscp
-pkgver=20240802
+pkgver=20251126
 pkgrel=1
 pkgdesc="Super Check Partial Database Files for Ham Radio Contesting"
 arch=('any')
@@ -18,5 +18,5 @@ package() {
 	cp -R *.{DTA,SCP} $pkgdir/usr/share/masterscp
 }
 
-md5sums=('b5b94e9575938c068c0553273794bc79')
-sha256sums=('8ba711f95d851805dd7dc97655d76b6bf550163912694096b1c7809834bf761a')
+md5sums=('6977b3b22fe3bb12597394b7b3092c5c')
+sha256sums=('45733332b784d0cc123cc8d3be4fcd39a21c9de822d71ff05d44333a4f262e31')
