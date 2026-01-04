@@ -12,7 +12,7 @@ _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
 pkgname="piper-voices-${_lang}-${_regionSmall}"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Voices for Piper text to speech system ($_locale)"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
@@ -36,7 +36,7 @@ prepare() {
     printf '%s\n' "${_models[*]}"
 
     # convert specific lfs pointers into actual models
-    git lfs install
+    git lfs install --local
     git lfs pull --include "$(
         IFS=,
         echo "${_models[*]}"
