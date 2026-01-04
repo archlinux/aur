@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mangabox-bin
 _pkgname=MangaBox
-pkgver=0.3.5
+pkgver=0.3.6
 _electronversion=38
 pkgrel=1
 pkgdesc="An Electron client for Komga.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('551afdd3fb56fc9efe379734f98c397492cd856049ccf9822eac050132fc925f'
+sha256sums=('793236d8e2264ebe243a23f4951ab51e32d187060d92755481668d426d60f1ab'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
