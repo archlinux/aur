@@ -1,6 +1,6 @@
 pkgbase = mmtui-bin
 	pkgdesc = Terminal User Interface disk mount manager for TUI file managers
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SL-RU/mmtui
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = mmtui-bin
 	depends = udisks2
 	provides = mmtui
 	conflicts = mmtui
-	source = https://github.com/SL-RU/mmtui/releases/download/v0.1.1/mmtui-0.1.1-x86_64.tar.gz
-	sha256sums = 9f545e2ff0d9ead3a671f207f4d4a208fb53c26b1b6b228a132508974c0e4699
+	source = mmtui-bin-0.2.0.tar.gz::https://github.com/SL-RU/mmtui/releases/download/mmt-v0.2.0/mmtui_mmt-v0.2.0_x86_64-unknown-linux-musl.tar.gz
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/SL-RU/mmtui/mmt-v0.2.0/LICENSE
+	sha256sums = 380583edbce1333d9a6a115ccd9244e05ffb4ef02bd502961b5a8ed2565e5967
+	sha256sums = 6224f824ae91817ade393e1533ec77ad981620ab6b2c35d7c079ee72fba63c02
 
 pkgname = mmtui-bin
