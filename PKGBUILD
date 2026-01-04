@@ -1,7 +1,8 @@
+# Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 # Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini AT gmail DOT com>
 pkgname=python-rich-rst
 _name=rich_rst
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A reStructuredText renderer for rich "
 arch=('any')
