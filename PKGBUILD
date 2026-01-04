@@ -2,11 +2,11 @@
 pkgname=python-fontcollector
 _origpkgname=fontcollector
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FontCollector for Advanced SubStation Alpha file."
 arch=("x86_64")
 url='https://pypi.org/project/FontCollector/'
-license=("None")
+license=("MIT")
 depends=(
 	"fontconfig"
 	"mkvtoolnix-cli"

@@ -1,10 +1,10 @@
 pkgbase = python-fontcollector
 	pkgdesc = FontCollector for Advanced SubStation Alpha file.
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/FontCollector/
 	arch = x86_64
-	license = None
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
