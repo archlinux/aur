@@ -4,14 +4,14 @@
 # pkgver is set to 5.0.0 is replaced in the update-aur.sh script
 
 pkgname=system-bridge
-pkgver=5.2.2
+pkgver=5.2.3
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'go' 'pnpm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.2.2.tar.gz")
-sha256sums=('71c057c59fbd869b33ac1af3386dde4917d050b8c77de04752ba487b84301c6c')
-conflicts=('system-bridge-git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.2.3.tar.gz")
+sha256sums=('60a26065db59c8d257837465060b85aae7d2e2962cf0ee6ff28efc98a726098d')
+conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
