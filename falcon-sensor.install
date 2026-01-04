@@ -1,3 +1,10 @@
+pre_upgrade() {
+  # Note: This message won't help with file conflicts since pacman checks
+  # for conflicts before running hooks. Users upgrading from <7.32 need:
+  # yay -S falcon-sensor --overwrite '/opt/CrowdStrike/*'
+  :
+}
+
 post_install() {
   printf "$(tput setaf 4)Add your customer id and provisioning token to falcon by issuing:$(tput sgr0)\n"
   printf "$(tput setaf 6)sudo $(tput setaf 2)/opt/CrowdStrike/falconctl -s -f --cid=<CID> --provisioning-token=<PROVISIONING_TOKEN>$(tput sgr0)\n"

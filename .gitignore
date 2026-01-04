@@ -9,3 +9,4 @@ pkg/
 src/
 .idea
 .claude/
+*.md
