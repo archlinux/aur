@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 
 depends=('libcrypt.so')
 makedepends=('gradle')
-source=("git+https://codeberg.org/sery/serycade")
+source=("git+https://codeberg.org/sery/serycade.git")
 sha256sums=("SKIP")
 
 srcName="serycade"
@@ -54,3 +54,5 @@ package() {
     install -Dm755 "build/bin/$target/releaseExecutable/$binaryName.kexe" "$pkgdir/usr/bin/$binaryName"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# invokekitty (serenity) <meow@serenit.ie>
