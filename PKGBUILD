@@ -34,6 +34,7 @@ pkgrel=${_pkgrel}
 depends=('glibc' 'openssl')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+install="${pkgname}.install"
 
 # --- Source File ---
 source=("falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb")

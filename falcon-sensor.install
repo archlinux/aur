@@ -1,9 +1,22 @@
 pre_upgrade() {
-  printf "$(tput setaf 5)You may need to uninstall the package first and remove the folder $(tput setaf 2)/opt/CrowdStrike$(tput sgr0)\n"
-  printf "$(tput setaf 6)sudo $(tput setaf 2)systemctl stop falcon-sensor$(tput sgr0)\n"
-  printf "$(tput setaf 6)sudo $(tput setaf 2)pacman --remove --nosave --recursive falcon-sensor$(tput sgr0)\n"
-  printf "$(tput setaf 6)sudo $(tput setaf 2)rm -rf /opt/CrowdStrike$(tput sgr0)\n"
-  printf "$(tput setaf 5)This is necessary because falcon-sensor creates some files after installation which are already contained in newer installation packages.$(tput sgr0)\n"
+  # Stop the service before upgrade to release file locks
+  if systemctl is-active --quiet falcon-sensor; then
+    printf "$(tput setaf 5)Stopping falcon-sensor service for upgrade...$(tput sgr0)\n"
+    systemctl stop falcon-sensor
+  fi
+
+  # Remove runtime-generated files that may conflict with newer package versions
+  # These files are created by the sensor after installation
+  local runtime_files=(
+    "/opt/CrowdStrike/falcon-flow"
+  )
+
+  for file in "${runtime_files[@]}"; do
+    if [[ -e "$file" ]]; then
+      printf "$(tput setaf 5)Removing runtime-generated file: %s$(tput sgr0)\n" "$file"
+      rm -f "$file"
+    fi
+  done
 }
 
 post_install() {
@@ -14,5 +27,9 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install
+  # Restart the service if it was enabled
+  if systemctl is-enabled --quiet falcon-sensor; then
+    printf "$(tput setaf 4)Restarting falcon-sensor service...$(tput sgr0)\n"
+    systemctl start falcon-sensor
+  fi
 }
