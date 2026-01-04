@@ -1,6 +1,6 @@
 pkgbase = liquidshell
 	pkgdesc = Basic desktop shell using QtWidgets
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://invent.kde.org/system/liquidshell
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = liquidshell
 	depends = qt6-base
 	depends = sh
 	depends = solid
-	source = https://download.kde.org/stable/liquidshell/liquidshell-1.10.0.tar.xz
-	source = https://download.kde.org/stable/liquidshell/liquidshell-1.10.0.tar.xz.sig
+	source = https://download.kde.org/stable/liquidshell/liquidshell-1.10.1.tar.xz
+	source = https://download.kde.org/stable/liquidshell/liquidshell-1.10.1.tar.xz.sig
 	validpgpkeys = 3DAB43DA42E08DE44800A2891E674FA08DFB0F86
-	sha256sums = 27adb52c1ee292f853921414b46ac8968f39126c5c7e8afb169abb2736c3f604
+	sha256sums = 4e079293a90c47fc3c862f4aa9472936a4cb8a2c72f16098d234997e86c8364a
 	sha256sums = SKIP
 
 pkgname = liquidshell

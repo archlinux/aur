@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=liquidshell
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Basic desktop shell using QtWidgets'
 arch=(x86_64)
@@ -34,7 +34,7 @@ depends=(bluez-qt
          solid)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('27adb52c1ee292f853921414b46ac8968f39126c5c7e8afb169abb2736c3f604'
+sha256sums=('4e079293a90c47fc3c862f4aa9472936a4cb8a2c72f16098d234997e86c8364a'
             'SKIP')
 validpgpkeys=(3DAB43DA42E08DE44800A2891E674FA08DFB0F86) # Martin Koller <kollix@aon.at>
 
