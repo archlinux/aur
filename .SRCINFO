@@ -1,6 +1,6 @@
 pkgbase = dns_tools
 	pkgdesc = DNS Tools for managing DNSSEC aka easy dnssec
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/gene-git/dns_tools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = dns_tools
 	depends = lockmgr
 	depends = bash
 	optdepends = pyconcurrent
-	source = git+https://github.com/gene-git/dns_tools#tag=5.1.0
+	source = git+https://github.com/gene-git/dns_tools#tag=5.1.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

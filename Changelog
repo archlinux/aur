@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.8.0 ➙ 5.1.0
-              : 2025-06-20 ➙ 2026-01-04
+ Tags         : 4.9.0 ➙ 5.1.1
+              : 2025-06-22 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 5.1.1
+              - fix type
+              - update Docs/Changelog
 
  2026-01-04   : 5.1.0
               - **Version 5.0.0**
@@ -28,9 +32,4 @@
  2025-06-22   : 4.9.0
               - run_prog: Sync local copy with latest from pycocurrent
  2025-06-20   ⋯
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-20   : 4.8.0
-              - Pull local copy of latest run_prog from pycocurrent
- 2025-06-16   ⋯
               - update Docs/Changelog Docs/${my_name}.pdf
