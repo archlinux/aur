@@ -2,10 +2,10 @@
 _appname=netflix
 pkgname="discord-${_appname}"
 _pkgname=Discord-Netflix
-pkgver=1.2.18
+pkgver=1.2.19
 _electronversion=37
-_nodeversion=20
-pkgrel=3
+_nodeversion=22
+pkgrel=1
 pkgdesc="An updated and improved version from the original Discord-Netflix from Nirewen."
 arch=('any')
 url="https://discord.gg/kbf8EjpxbU"
@@ -28,16 +28,21 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 )
-sha256sums=('3532c317b6f56cbc9e3375433566ef876a5ebd138ad5ada5726eb4ba6367c6c9')
+sha256sums=('70061c6a3f5b0b45548fffe3e6653cd30751c902d4d1b3a29f254284b6b04e43')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.build["electronVersion"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    _ensure_local_nvm
+    _get_electron_version
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -55,10 +60,12 @@ prepare() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         sed -i "s/https:\/\/github.com\/castlabs/https:\/\/cors.isteed.cc\/github.com/g" package.json
     fi
+    _ensure_local_nvm
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     NODE_ENV=production     npm exec -c "electron-builder --linux dir"
 }
 package() {
