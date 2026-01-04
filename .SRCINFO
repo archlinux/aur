@@ -1,6 +1,6 @@
 pkgbase = smartmeter-gateway
 	pkgdesc = Protocol gateway for domestic meter telemetry
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ahpohl/smartmeter-gateway
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = smartmeter-gateway
 	depends = mosquitto
 	depends = fmt
 	backup = etc/smartmeter-gateway/config.yaml
-	source = smartmeter-gateway-1.0.2::git+https://github.com/ahpohl/smartmeter-gateway.git#tag=v1.0.2
+	source = smartmeter-gateway-1.0.3::git+https://github.com/ahpohl/smartmeter-gateway.git#tag=v1.0.3
 	source = sysusers-meter.conf
 	source = smartmeter-gateway.service
-	sha256sums = e457903942c71ca221f3ae958d4474b77ddb35fcc94278fbe821dd68a8cb156d
+	sha256sums = e6898b4c2a2f155d74865f528ddbfda493fdc6daf8d46594e2b340d0744ee38e
 	sha256sums = ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24
 	sha256sums = b6695bf8190bf81047908b85ae4950839f4e6eedd91fe58c7890c2b9eceae565
 
