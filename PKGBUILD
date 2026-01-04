@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-docutils' 'python-rich')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
 source=("https://github.com/wasi-master/rich-rst/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('fad46e3ba42785ea8c1785e2ceaa56e0ffa32dbe5410dec432f37e4107c4f383')
+sha256sums=('605230b5e36dfa4e2ef45d7b2951a42a4987ad69a86f4cb7e079daa84d4a04dd')
 
 prepare() {
 	cd "$_name-$pkgver"
