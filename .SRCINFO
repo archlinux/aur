@@ -6,14 +6,13 @@ pkgbase = vibe-kanban-bin
 	install = vibe-kanban-bin.install
 	arch = x86_64
 	license = Proprietary
-	makedepends = npm
-	depends = nodejs
+	makedepends = unzip
 	provides = vibe-kanban
 	conflicts = vibe-kanban
 	options = !strip
-	source = https://registry.npmjs.org/vibe-kanban/-/vibe-kanban-0.0.143.tgz
+	source = https://npm-cdn.vibekanban.com/binaries/v0.0.143-20251229180119/linux-x64/vibe-kanban.zip
 	source = vibe-kanban.service
-	sha256sums = 1043fde3daa980cdf4fbb7874c3a187d6e261455e6babf6730d2944bb8bd364b
+	sha256sums = f841e2210216608ef0078296babe4d78f69e1810412ea9a89f5df957128d5569
 	sha256sums = 48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f
 
 pkgname = vibe-kanban-bin
