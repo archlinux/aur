@@ -25,6 +25,6 @@ pkgbase = vrcx
 	source = build.patch
 	sha256sums = 9364e447a2c7d8e0693e6448f56d8c67689e4f9cb12669bffb7c21a86735ab26
 	sha256sums = 3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5
-	sha256sums = 3519827b3d8423d2441a4ac01a474f9f8ed8df1c09dea092de36da207a9c2eb1
+	sha256sums = db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df
 
 pkgname = vrcx
