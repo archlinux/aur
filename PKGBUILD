@@ -1,7 +1,7 @@
 _pkgname=typomat
 pkgname="$_pkgname"-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn your code into muscle memory"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vupdivup/typomat"
