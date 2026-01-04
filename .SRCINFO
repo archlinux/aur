@@ -1,6 +1,6 @@
 pkgbase = caprine-git
 	pkgdesc = Elegant Facebook Messenger desktop app.(Use system-wide electron)
-	pkgver = 2.60.3.r1.g9a2d7e0
+	pkgver = 2.61.0.r0.gc3cbcf9
 	pkgrel = 1
 	url = https://sindresorhus.com/caprine
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = caprine-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron29
-	provides = caprine=2.60.3
+	provides = caprine=2.61.0
 	conflicts = caprine
 	source = caprine.git::git+https://github.com/sindresorhus/caprine.git
 	source = caprine.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = caprine-git
