@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.0.223
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
@@ -13,7 +13,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-theme' 'gst-
 options=('!strip' '!debug')
 
 latestver() {
-  curl -fsSL "https://api.github.com/repos/sst/opencode/releases/latest" |
+  curl -fsSL "https://api.github.com/repos/anomalyco/opencode/releases/latest" |
     jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
@@ -23,8 +23,8 @@ case "$CARCH" in
 esac
 
 source=(
-  "${pkgname}-${pkgver}.deb::https://github.com/sst/opencode/releases/download/v${pkgver}/opencode-desktop-linux-${_pkgarch}.deb"
-  "LICENSE::https://raw.githubusercontent.com/sst/opencode/dev/LICENSE"
+  "${pkgname}-${pkgver}.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-${_pkgarch}.deb"
+  "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/dev/LICENSE"
 )
 case "$CARCH" in
   x86_64) sha256sums=('4090c531df6c87a19e6329701f2d6467ce19c6fd6e8950ae4d4666d4b43ddaa2'
