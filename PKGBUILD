@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=5.2.3.r5433.gec1ac4e
+pkgver=5.2.3.r5434.gb14831e
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'go' 'pnpm')
