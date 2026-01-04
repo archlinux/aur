@@ -1,6 +1,6 @@
 pkgbase = cai
 	pkgdesc = Use LLM to create git commit messages.
-	pkgver = 0.6.5
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/cai
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = cai
 	depends = python-groq
 	depends = python-anthropic
 	depends = git
-	source = cai-0.6.5.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/0.6.5.tar.gz
-	sha256sums = 53bf7d1e8d872516ba1c0d365805591044966d22cb549c6c8b36318ae7e46000
+	source = cai-0.7.0.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 5bc4ae0ee21ded258924b6bd22b479ff2a58ab899e9585d5c766a49c15575d3b
 
 pkgname = cai
