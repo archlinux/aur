@@ -1,0 +1,30 @@
+diff --git i/tracker-neuralnet/env.cpp w/tracker-neuralnet/env.cpp
+index 563c9c1..1dfc93c 100644
+--- i/tracker-neuralnet/env.cpp
++++ w/tracker-neuralnet/env.cpp
+@@ -1,6 +1,7 @@
+ #include "compat/library-path.hpp"
+ #include "ftnoir_tracker_neuralnet.h"
+ #include <QLibrary>
++#include <QtGlobal>
+ #include <cstdlib>
+ #include <onnxruntime_cxx_api.h>
+ 
+@@ -11,7 +12,7 @@ void NeuralNetTracker::maybe_load_onnxruntime_dynamically()
+ {
+     QLibrary lib;
+     lib.setLoadHints(QLibrary::PreventUnloadHint);
+-    lib.setFileName(OPENTRACK_BASE_PATH + OPENTRACK_LIBRARY_PATH "onnxruntime" "." OPENTRACK_LIBRARY_EXTENSION);
++    lib.setFileName("onnxruntime" "." OPENTRACK_LIBRARY_EXTENSION);
+     qDebug() << "tracker/nn: loading onnxruntime library" << lib.fileName();
+     if (!lib.load())
+     {
+@@ -20,7 +21,7 @@ void NeuralNetTracker::maybe_load_onnxruntime_dynamically()
+         std::abort();
+     }
+ 
+-    void* fn_OrtGetApiBase = lib.resolve("OrtGetApiBase");
++    QFunctionPointer fn_OrtGetApiBase = lib.resolve("OrtGetApiBase");
+     if (!fn_OrtGetApiBase)
+     {
+         qDebug().nospace() << "tracker/nn: can't find OrtGetApiBase in onnxruntime: " << lib.errorString() << ". now crashing.";
