@@ -1,0 +1,24 @@
+pkgbase = tsync
+	pkgdesc = Synchronize directory trees and subtrees using rsync
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jayghoshrao/tsync
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = rsync
+	depends = python
+	depends = python-deepdiff
+	depends = python-magic
+	depends = python-ruamel-yaml
+	depends = python-rich
+	provides = tsync
+	conflicts = python-tsync
+	replaces = python-tsync
+	source = tsync-0.1.0.tar.gz::https://github.com/jayghoshrao/tsync/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a5d0eea39f1bc16af59d503dcfce2293de6d2931aac2e665980b193215b12fe6
+
+pkgname = tsync
