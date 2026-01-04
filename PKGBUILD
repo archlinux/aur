@@ -1,7 +1,7 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 pkgname=opendeck-bin
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/nekename/OpenDeck"
