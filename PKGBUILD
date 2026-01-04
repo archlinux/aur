@@ -1,14 +1,14 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2025.12.06
+pkgver=2026.01.04
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
 license=('MIT')
-depends=('dotnet-runtime' 'electron' 'gtk3' 'nss' 'libxss' 'gconf' 'libxrandr' 'alsa-lib')
-makedepends=('dotnet-sdk' 'git' 'nodejs' 'npm' 'imagemagick')
+depends=('dotnet-runtime-9.0' 'electron' 'gtk3' 'nss' 'libxss' 'libxrandr' 'alsa-lib')
+makedepends=('dotnet-sdk-9.0' 'git' 'nodejs' 'npm' 'imagemagick')
 conflicts=('vrcx-bin')
 options=(!debug !lto)
 source=(
@@ -17,9 +17,9 @@ source=(
     "build.patch"
 )
 
-sha256sums=('c40b05ef58a90a3ab16b3dc83fecb7d95c55c42bd18dc36df404fbc89682f715'
+sha256sums=('9364e447a2c7d8e0693e6448f56d8c67689e4f9cb12669bffb7c21a86735ab26'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
+            '3519827b3d8423d2441a4ac01a474f9f8ed8df1c09dea092de36da207a9c2eb1')
             
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
