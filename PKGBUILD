@@ -2,7 +2,7 @@
 # Contributor: Brodi <me@brodi.space>
 
 pkgname=aretext
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Minimalist text editor with vim-compatible key bindings"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/aretext/aretext"
 license=("GPL-3.0-only")
 makedepends=("go")
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1f435371505b1183f69ad8913a34fd7169a4de0efbe7ad70b1c265a1e353213')
+sha256sums=('7b98d35073d893a2fd889986301cb9647a37d923b6b25fc6bc6c5b7bb54282ca')
 
 build() {
 	cd ${pkgname}-${pkgver}
