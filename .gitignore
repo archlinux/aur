@@ -6,4 +6,5 @@
 !.shellcheckrc
 # actual package
 !PKGBUILD
+!intel-sgx-sysusers.conf
 !.SRCINFO

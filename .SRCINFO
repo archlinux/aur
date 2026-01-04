@@ -1,7 +1,7 @@
 pkgbase = intel-sgx-psw-bin
 	pkgdesc = Intel® Software Guard Extensions Platform Software for Linux* OS
 	pkgver = 2.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/linux-sgx
 	arch = x86_64
 	license = BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty
@@ -22,6 +22,8 @@ pkgbase = intel-sgx-psw-bin
 	backup = etc/qgs.conf
 	backup = etc/sgx_default_qcnl.conf
 	source = sgx_2.27_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/2.27/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz
+	source = intel-sgx-sysusers.conf
 	b2sums = aaa33087d8002a643f95d6699273738bdc847ea6b910e0f0ce61d42857a31f71517faaa9f4ea62396682622cdb0e01fec110e99d47d47fbec59bdddbb0a563e2
+	b2sums = 258d4bf13a00b299f72f1fe720fa1adc40201dfdb45ca2f557d9fff660c3233163e82114e2b5f5037cbb07fee82676e79c7def8bdf62b06e3d14b30ed6148761
 
 pkgname = intel-sgx-psw-bin
