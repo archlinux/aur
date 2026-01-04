@@ -7,7 +7,7 @@
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
 
 pkgname=aws-lc
-pkgver=1.60.0
+pkgver=1.66.1
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -34,19 +34,9 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "Patch01-disable-fortify-sources-jitterentropy.patch"
 )
-b2sums=('fd49992965523eff1b7c14c70c77e4ac80e55d5c53aa9f5da0171b3e450c8607f7358f162ff2ddd3b2969b68c625f651096e9a19bd8337c9c134f1c8a4484258'
+b2sums=('05f515f363efed85d0031bbd83d9c0d150d72c94d352a4e53a753872e92521218f2aa80098959f6cfd093035c8fba86bc675e035f5193aa924bc78bd71802ad9'
         '84c1e992d09720f77ee34ec951a6a0fe12d060431c22b8d2f567c888147c54472ce6b394d3f63c5e89eaa7d44c2625ed9de74bbb112ff4f8d7694fdb9b80020b')
 options=(!strip !lto)
-
-prepare() {
-    cd ${pkgname}-${pkgver}
-    
-    # 'jitterentropy' has to be built wiht '-O0' (no optimisation). As a
-    # result, the build warns that it cannot apply 'FORTIFY_SOURCES'. With
-    # the patch we make sure that warning is just a warning, not a
-    # build-breaking error.
-    patch -p1 -i ../Patch01-disable-fortify-sources-jitterentropy.patch
-}
 
 build() {
     cd ${pkgname}-${pkgver}
