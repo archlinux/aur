@@ -1,57 +1,62 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: Tokyob0t <kparra2023[at]alu.uct.cl>
 
 _pkgname=fht-share-picker
 pkgname="$_pkgname-git"
-pkgver=r999ca73
+pkgver=25.10.0.r10.a6ed304
 pkgrel=1
 pkgdesc='A Wayland XDG screencast output picker'
 groups=('fht-desktop')
 arch=('x86_64')
 url="https://github.com/nferhat/$_pkgname"
 license=('GPL-3.0-or-later')
-source=("git+$url.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
+
 makedepends=(
-  'git'
-  'cargo'
-  'cairo'
-  'pango'
-  'graphene'
-  'gdk-pixbuf2'
+    'git'
+    'cargo'
+    'cairo'
+    'pango'
+    'graphene'
+    'gdk-pixbuf2'
 )
+
 depends=(
-  'gtk4'
-  'glibc'
-  'glib2'
-  'gcc-libs'
-  'libadwaita'
+    'gtk4'
+    'glibc'
+    'glib2'
+    'gcc-libs'
+    'libadwaita'
 )
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 pkgver() {
-  cd "$_pkgname"
-  echo "r$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+
+    printf "%s.r%s.%s" \
+        "$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml)" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "$_pkgname"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "$srcdir/$_pkgname"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+    cd "$srcdir/$_pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-}
+    cd "$srcdir/$_pkgname"
 
-# vim: ts=2 sw=2 et:
+    install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
