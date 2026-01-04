@@ -1,4 +1,4 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks at gmail.com>
+# Maintainer: Edmund Lodewijks <edmund @ proteamail.com>
 
 pkgname=postallow
 pkgver=3.10.2
