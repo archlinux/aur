@@ -3,24 +3,24 @@
 
 _base=dj-database-url
 pkgname=python-${_base}
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 arch=('any')
 pkgdesc="Use Database URLs in your Django Application"
 url="https://github.com/jazzband/${_base}"
 license=('BSD-3-Clause')
 depends=(python-django)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-wheel python-uv-build)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('73290a47e1af47cc310f1eac3a4b1a13cf7d135bbe4a9c929774f880fb48f260fd4aa03e2e4cef242bae0064b7202906ab672b4ed6cee377a8661c395785823c')
+sha512sums=('4bb6bf83273a459e62e31353765bfecebf29cb41cbd8d05bf3faf5809b189f659702b51f1733f437981008714db4c4b25936d09099cc9aaceb310a70baceaab7')
 
 build() {
   cd "${_base}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_base}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
 }
