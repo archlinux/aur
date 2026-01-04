@@ -6,7 +6,7 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=1
 pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
 url='https://sourceforge.net/projects/enlightenment/'
@@ -24,8 +24,8 @@ optdepends=('lib32-libid3tag: ID3 loader'
             'lib32-librsvg: SVG loader'
             'lib32-libwebp: WEBP loader')
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('fa2315f28379b430a6e6605b4284b07be06a3ef422d4f5e1c9bb24714c4cf6dd')
-sha512sums=('ac83840506b3c104936c57fab370b11e460854857218f91975bf8b589f3037dd628e5ff274caf67af4a64c0930ef3ad4884bef048b889fc926410cc068e3144c')
+sha256sums=('250f9752f69dc522e529a81aaa9395705f7fc312ff2453e5de59ac2ba1f2858f')
+sha512sums=('e62b7e89f6d75fb6a649a589f06fea34d08bba696c68d9ece59ee9500558af874c1073ffecae2d1cadd6d603f1acf4d071a415dbf2ba73b505ccf11fe45eea62')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -43,7 +43,8 @@ build() {
     --disable-amd64 \
     --libdir=/usr/lib32 \
     --libexecdir=/usr/lib32 \
-    --without-heif
+    --without-heif \
+    --without-jxl
 
   make
 }
