@@ -1,6 +1,6 @@
 # Maintainer: Tu Nombre <tuemail@ejemplo.com>
 pkgname=opentranscribe-bin
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Herramienta de transcripción automática offline usando Whisper.cpp (Binario)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/anabasasoft/OpenTranscribe/releases/download/v${pkgv
         "https://raw.githubusercontent.com/anabasasoft/OpenTranscribe/main/icon.png")
 
 # Las sumas de verificación se llenarán automáticamente luego
-sha256sums=('25e8f30499a4212aeeca70b6def1c0bc357afa15f5d3a63e856db03b7edf5c25'
+sha256sums=('7f1f3cdf0adc79c1caf9bf90e01e3dc5a91944cae389cd0da56785737ecf2642'
             'f5c0ec7f25e12ce72874bafc66473a3b1b878f529da1a1133b5a48b0dc0fbadf')
 
 package() {
