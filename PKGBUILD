@@ -2,7 +2,7 @@
 
 pkgname='omada-controller-rxy'
 pkgver=6.0.0.25
-pkgrel=2
+pkgrel=3
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
 _basepkgpath='upload/software/2025/202512/20251203'
@@ -10,7 +10,7 @@ _baseos='linux_x64'
 arch=('x86_64' 'aarch64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('GPL')
-depends=('java-runtime=11' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<7')
+depends=('java-runtime=17' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<7')
 makedepends=('git')
 conflicts=('omada-sdn-controller' 'omada-controller')
 install=omada-controller.install
