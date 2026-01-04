@@ -6,14 +6,14 @@ _communicator=GKCommunicator
 _genetix=GKGenetix
 _pkgname=gedkeeper
 pkgname=${_pkgname}-git
-pkgver=v3.11.0.r128.g56ce3c02d
+pkgver=v3.13.0.r11.g52e501a13
 pkgrel=1
 pkgdesc="Personal genealogical database editor"
 arch=('x86_64' 'i686')
 url="https://github.com/serg-norseman/gedkeeper"
 license=('GPLv3')
-depends=('sqlite3' 'dotnet-runtime-6.0' 'lua')
-makedepends=('dotnet-sdk-6.0')
+depends=('sqlite3' 'dotnet-runtime-8.0' 'lua')
+makedepends=('dotnet-sdk-8.0')
 
 provides=("gedkeeper=${pkgver}")
 source=("git+https://github.com/Serg-Norseman/${_gitname}.git"
