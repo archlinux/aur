@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : pynotify
- Tags         : 1.5.0 ➙ 1.6.2
-              : 2025-05-02 ➙ 2025-11-01
+ Tags         : 1.5.1 ➙ 1.7.0
+              : 2025-05-04 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 1.7.0
+              - **1.7.0**
+            
+                * Switch packaging from hatch to uv
+ 2025-11-01   ⋯
+              - update Docs/Changelogs Docs/pynotify.pdf
 
  2025-11-01   : 1.6.2
               - Doc build: use xelatex which candle unicode characters
@@ -21,11 +28,4 @@
  2025-05-04   : 1.5.1
               - Improve API Reference docs
  2025-05-02   ⋯
-              - update Docs/Changelog.rst Docs/pynotify.pdf
-
- 2025-05-02   : 1.5.0
-              - Tidy ups: PEP-8, PEP-257, PEP-484 PEP-561
-                improve reference API doc.
-                Add py.typed so type checkers like mypy can be used with the module
- 2024-12-31   ⋯
               - update Docs/Changelog.rst Docs/pynotify.pdf

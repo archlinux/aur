@@ -10,7 +10,7 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver=1.6.2
+pkgver="1.7.0"
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 
@@ -18,12 +18,21 @@ arch=(any)
 license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
-depends=('python>=3.13')
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'python-installer' 'rsync' 
-             #'python-sphinx' 'texlive-latexextra' python-sphinx-autoapi'
-            )
-
-_mkpkg_depends=('python>minor')
+depends=(
+    'python>=3.13'
+    'glibc'
+)
+makedepends=(
+    'git'
+    'rsync' 
+    'uv'
+    'python-uv-build'
+    #'python-sphinx' 'texlive-latexextra' python-sphinx-autoapi'
+)
+_mkpkg_depends=(
+    'python>minor'
+    'glibc>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -40,15 +49,20 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs 
     # uncomment these and sphinx makedepends above
     # --------------
     # echo "Build docs"
+    # pdf='pynotify.pdf'
     # cd ./Docs
-    # make html
+    # make latexpdf >/dev/null 2>&1
     # make latexpdf
+    # /usr/bin/rm -f $pdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # /usr/bin/rm -rf _build/doctrees _build/latex
+    # make html
 }
 
 package() {
