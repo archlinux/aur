@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : process-mem
- Tags         : 1.1.0 ➙ 1.4.1
-              : 2024-09-30 ➙ 2025-10-14
+ Tags         : 1.2.0 ➙ 1.5.0
+              : 2024-10-13 ➙ 2026-01-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-04   : 1.5.0
+              - **1.5.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working on python 3.14.2
+                * License GPL-2.0-or-later
+ 2025-10-14   ⋯
+              - update Changelog and man page
 
  2025-10-14   : 1.4.1
               - Drop unused pydantic dependency from Arch PKGBUILD
@@ -30,7 +40,3 @@
                   -sr, --sort-rev       Sort in reverse order
  2024-09-30   ⋯
               - update Changelog and man page
-
- 2024-09-30   : 1.1.0
-              - Sort output by process name.
-                Add (-v, --vers) option to display the version and exit

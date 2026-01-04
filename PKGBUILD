@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: © 2024-present  Gene C <arch@sapience.com>
 #
 # Arch Linux PKGBUILD for process-mem 
@@ -12,18 +12,25 @@ pkgname='process-mem'
 pkgdesc='Display Memory Used by Process(es)'
 _gitname='process-mem'
 
-pkgver=1.4.1
+pkgver="1.5.0"
 pkgrel=1
 url="https://github.com/gene-git/process-mem"
 
 arch=(any)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
-depends=('python>=3.13' 'python-psutil')
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
-             'python-docutils'
-            )
+depends=(
+    'python>=3.13' 
+    'python-psutil'
+)
+makedepends=(
+    'git'
+    'rsync' 
+    'uv'
+    'python-uv-build'
+    'python-docutils'
+)
 
 # Used by package : mkpkg
 _mkpkg_depends=('python>minor')
@@ -43,7 +50,7 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     echo "Build man page"
     cd ./Docs
