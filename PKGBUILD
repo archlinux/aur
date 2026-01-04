@@ -5,7 +5,7 @@
 pkgname=amazon-corretto-15
 pkgver=15.0.2.7.1
 pkgrel=1
-pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
+pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK (EOL, for legacy use only)'
 arch=('x86_64')
 url='https://aws.amazon.com/corretto/'
 license=('GPL2')
