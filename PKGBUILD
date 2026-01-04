@@ -1,6 +1,6 @@
 pkgname=soeder-flag
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal animation mit Farben"
 arch=('any')
 url="https://github.com/bayernliebe918-source/soeder_flag"

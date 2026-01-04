@@ -1,7 +1,7 @@
 pkgbase = soeder-flag
 	pkgdesc = Terminal animation mit Farben
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bayernliebe918-source/soeder_flag
 	arch = any
 	license = MIT
