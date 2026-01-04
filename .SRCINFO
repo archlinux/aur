@@ -12,6 +12,6 @@ pkgbase = steam-cloud-file-manager-bin
 	conflicts = steam-cloud-file-manager
 	options = !strip
 	source = steam-cloud-file-manager-bin-0.9.6.tar.gz::https://github.com/Fldicoahkiin/SteamCloudFileManager/releases/download/v0.9.6/SteamCloudFileManager-0.9.6-linux-x86_64.tar.gz
-	sha256sums = 31767f4cf0dd0b20eabd4dc430ceadec2836aa22dfad0216c6cf640e1f7c2ff8
+	sha256sums = 16d63ebc54c959654120fea3b027b681257b7ce4aa5d73fba6ffb7de41aa750a
 
 pkgname = steam-cloud-file-manager-bin

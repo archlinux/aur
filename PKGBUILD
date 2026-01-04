@@ -11,11 +11,8 @@ optdepends=('steam: Steam client integration')
 provides=('steam-cloud-file-manager')
 conflicts=('steam-cloud-file-manager')
 options=('!strip')
-
-# AUR 搜索关键词
-# Keywords: steam cloud save backup sync game savegame archive manager
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fldicoahkiin/SteamCloudFileManager/releases/download/v${pkgver}/SteamCloudFileManager-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('31767f4cf0dd0b20eabd4dc430ceadec2836aa22dfad0216c6cf640e1f7c2ff8')
+sha256sums=('16d63ebc54c959654120fea3b027b681257b7ce4aa5d73fba6ffb7de41aa750a')
 
 package() {
     cd "$srcdir"
