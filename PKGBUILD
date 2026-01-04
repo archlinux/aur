@@ -1,78 +1,40 @@
-<<<<<<< HEAD
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 # Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 # Contributor: Ivy Foster <ivy.foster@gmail.com>
-pkgname='libutf8proc-git'
-pkgver=2.4.0.1.r0.g0d22740
-pkgrel=1
-pkgdesc='C library for processing UTF-8 encoded Unicode strings'
-url='http://git.netsurf-browser.org/libutf8proc.git/'
-license=('MIT')
 
-makedepends=('git' 'netsurf-buildsystem-git')
+_pkgname='libutf8proc'
+pkgname='libutf8proc-git'
+pkgver=2.11.3.r0.ge5e7992
+pkgrel=1
+pkgdesc="C library for processing UTF-8 encoded Unicode strings"
+arch=('i686' 'x86_64')
+url="https://github.com/JuliaStrings/utf8proc"
+license=('MIT')
+depends=('glibc')
+makedepends=('git' 'cmake' 'ninja')
 provides=('libutf8proc')
 conflicts=('libutf8proc')
-
-arch=('x86_64' 'i686')
-source=('git://git.netsurf-browser.org/libutf8proc.git')
+source=("git+https://github.com/JuliaStrings/utf8proc.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd libutf8proc
-	git describe --long | sed 's:release/::; s:-\([0-9]\+\)-\([0-9]\+\)-:.\1.r\2.:'
-}
-
-prepare() {
-	sed 's:-D_BSD_SOURCE::' -i libutf8proc/Makefile
+	cd utf8proc
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	make -C libutf8proc PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared
+  cmake \
+    -B build \
+    -D CMAKE_BUILD_TYPE=Release -GNinja \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_SHARED_LIBS=ON \
+    -S utf8proc
+  cmake --build build
 }
 
 package() {
-	cd libutf8proc
-	make DESTDIR="$pkgdir" PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared install
-	install -Dm644 LICENSE.md \
-		"$pkgdir/usr/share/licenses/netsurf/libutf8proc"
-=======
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-
-_basename="libutf8proc"
-_so="2"
-pkgname="${_basename}${_so}"
-pkgver=2.8.0
-pkgrel=2
-pkgdesc="C library for processing UTF-8 encoded Unicode strings (so-version ${_so})"
-arch=('i686' 'x86_64')
-url="https://github.com/JuliaStrings/utf8proc"
-license=('custom')
-depends=('glibc')
-provides=("${_basename}.so")
-_pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a0a60a79fe6f6d54e7d411facbfcc867a6e198608f2cd992490e46f04b1bcecc')
-
-build() {
-  cd "${srcdir}/${_pkgsrc}"
-  make CFLAGS="${CFLAGS}" LDFLAG_SHARED="${LDFLAGS} -shared"
-}
-
-package() {
-  cd "${srcdir}/${_pkgsrc}"
-  make \
-    prefix="${pkgdir}/usr" \
-    libdir="${pkgdir}/usr/lib/${pkgname}" \
-    includedir="${pkgdir}/usr/include/${pkgname}" \
-    install
-
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-
-  cd "${pkgdir}/usr/lib/${pkgname}"
-  for lib in *.so.*; do
-    ln -sf "/usr/lib/${pkgname}/${lib}" "${pkgdir}/usr/lib/${lib}"
-  done
->>>>>>> 9618023 (Initial build (2.8.0))
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm64 utf8proc/README.md  "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm64 utf8proc/LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.md"
 }

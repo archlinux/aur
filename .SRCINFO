@@ -1,33 +1,18 @@
-<<<<<<< HEAD
 pkgbase = libutf8proc-git
 	pkgdesc = C library for processing UTF-8 encoded Unicode strings
-	pkgver = 2.4.0.1.r0.g0d22740
+	pkgver = 2.11.3.r0.ge5e7992
 	pkgrel = 1
-	url = http://git.netsurf-browser.org/libutf8proc.git/
-	arch = x86_64
-	arch = i686
-	license = MIT
-	makedepends = git
-	makedepends = netsurf-buildsystem-git
-	provides = libutf8proc
-	conflicts = libutf8proc
-	source = git://git.netsurf-browser.org/libutf8proc.git
-	sha256sums = SKIP
-
-pkgname = libutf8proc-git
-=======
-pkgbase = libutf8proc2
-	pkgdesc = C library for processing UTF-8 encoded Unicode strings (so-version 2)
-	pkgver = 2.8.0
-	pkgrel = 2
 	url = https://github.com/JuliaStrings/utf8proc
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	depends = glibc
-	provides = libutf8proc.so
-	source = utf8proc-2.8.0.tar.gz::https://github.com/JuliaStrings/utf8proc/archive/refs/tags/v2.8.0.tar.gz
-	sha256sums = a0a60a79fe6f6d54e7d411facbfcc867a6e198608f2cd992490e46f04b1bcecc
+	provides = libutf8proc
+	conflicts = libutf8proc
+	source = git+https://github.com/JuliaStrings/utf8proc.git
+	sha256sums = SKIP
 
-pkgname = libutf8proc2
->>>>>>> 9618023 (Initial build (2.8.0))
+pkgname = libutf8proc-git
