@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='kss-bin'
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='kss - Enhanced Kubernetes Pod Inspection'
 url='https://github.com/chmouel/kss'
@@ -12,14 +12,15 @@ provides=('kss')
 conflicts=('kss')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_arm64.tar.gz")
-sha256sums_aarch64=('743e6aa2550197ba86266b247952a0488eaf6b9b17bb13a262670b15549fad45')
+sha256sums_aarch64=('e9c574ab54a598e1d5fd8e400865ad7d2a48926b7a040efe5a737feb1d0d3873')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/kss/releases/download/v${pkgver}/kss_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('45c96e43a8241a754aa73c922cc6796cdfd4d4d83abac231aa404dcbb5359c5e')
+sha256sums_x86_64=('a961f12f0ed18eea269a382089f61bffba83dfcf50ca30f2f361345253d9e80e')
 
 package() {
   # bin
   install -Dm755 "./kss" "${pkgdir}/usr/bin/kss"
+  install -Dm755 "./tkss" "${pkgdir}/usr/bin/tkss"
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/kss/LICENSE"
@@ -27,4 +28,6 @@ package() {
   # completions
   install -Dm644 "./completions/kss.bash" "${pkgdir}/usr/share/bash-completion/completions/kss"
   install -Dm644 "./completions/kss.zsh" "${pkgdir}/usr/share/zsh/site-functions/_kss"
+  install -Dm644 "./completions/tkss.bash" "${pkgdir}/usr/share/bash-completion/completions/tkss"
+  install -Dm644 "./completions/tkss.zsh" "${pkgdir}/usr/share/zsh/site-functions/_tkss"
 }
