@@ -3,7 +3,7 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
@@ -27,9 +27,9 @@ sha256sums=('14b5f5d7dfa2f0e3bbe13ba7ee8e9e71469a90998d53a85727864093fc76e5a4'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
             '824075343fe6b2f0bda7a627bec99f826e86571fee6c393812315f265d82a741'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('c405c211828fc95d12264214d0ff025d0b9fae3f99588bc14ddd0d96249f2b67')
-sha256sums_i686=('f3bf1b5f3866722489f6b28fefa5138a67571a963be650e0fd853a645c94c5b7')
-sha256sums_x86_64=('c1cfc578d5703612c306c593a6839a8e20d5634914a84a9a0d5dda03abd08655')
+sha256sums_aarch64=('73892b70dcc35f6d321346fa6c755939367a60b249e88a1311f314d36add3f69')
+sha256sums_i686=('eeee1988635f4cffd57e75ab4ef48d3433de653411f8d3b78c1b2c283a4d4f36')
+sha256sums_x86_64=('b98ac5095c1031a3129a7a35865f5c092caf3a3e5bdae4ed778a0d29fe4ea1a1')
 
 package() {
   cd "${srcdir}"
