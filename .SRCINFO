@@ -1,20 +1,18 @@
 pkgbase = zig-waybar-contrib-beta-bin
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
-	optdepends = fakeroot: required for the updates module
-	optdepends = amdsmi: AMD GPU Backend
-	optdepends = cuda: NVIDIA GPU Backend
+	depends = fakeroot
 	provides = zig-waybar-contrib=2.0.0
 	conflicts = zig-waybar-contrib
-	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/actions/runs/2173940/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu
+	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/actions/runs/2233373/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu
 	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16-dev/config.waybar.jsonc
 	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16-dev/LICENSE
-	md5sums = a7d61761729528e7067e348d99d286e2
+	md5sums = 9eccd5ee5c3c72bd21e5bda2cdf78000
 	md5sums = 282a9591456c5cdeeb3a966756d27acd
-	md5sums = 9bbaac5ea06926c87d57bb799d7825a2
+	md5sums = e82d9f97e08dad7b968fbbd80c7e67ee
 
 pkgname = zig-waybar-contrib-beta-bin
