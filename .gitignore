@@ -1,5 +1,6 @@
-src/
-pkg/
-*.tar.xz
-*.tar.gz
-*.zip
+# Ignore everything
+*
+# Except for
+!.gitignore
+!PKGBUILD
+!.SRCINFO
