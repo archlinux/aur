@@ -1,0 +1,17 @@
+pkgbase = malvoid-analysis
+	pkgdesc = Malvoid is a lightweight static malware analysis and reverse engineering tool for inspecting raw binaries, understanding file internals, and safely analyzing suspicious artifacts without execution.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Akash420-oss/MalVoid
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = git
+	depends = python
+	depends = sudo
+	depends = gcc
+	depends = make
+	source = malvoid-analysis::git+https://github.com/Akash420-oss/MalVoid.git
+	md5sums = SKIP
+
+pkgname = malvoid-analysis
