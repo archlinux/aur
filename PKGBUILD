@@ -7,25 +7,34 @@
 # Contributor: 
 # 
 pkgname='dual-root'
-pkgdesc='Dual Root Tools for Managing dual esp systems'
+pkgdesc='Dual Root Tools to Manage dual esp systems with backup boot on alternate disk.'
 _gitname='dual-root'
 
-pkgver=3.6.0
+pkgver="3.7.0"
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
 arch=(any)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 # To build docs uncomment sphinx/texlive
-depends=('python>=3.13' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 
-         'python-psutil'
-        #'python-sphinx' 'texlive-latexextra' # Docs
-        )
+depends=(
+    'python>=3.13' 
+    'efibootmgr' 
+    'util-linux' 
+    'rsync' 
+    'inotify-tools' 
+    'python-psutil'
+    #'python-sphinx' 'texlive-latexextra' # Docs
+)
 makedepends=('git')
 
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
-_mkpkg_depends=('python>minor')
+_mkpkg_depends=(
+    'python>minor'
+    'python-psutil'
+    'util-linux'
+)
 
 #
 # Verifying Signed Tag
@@ -43,10 +52,16 @@ build() {
     cd "${_gitname}"
     #
     # To build Docs - uncomment these and sphinx makedepends above
+    #
 #    echo "Build docs"
 #    cd ./Docs
+#    make latexpdf >/dev/null 2>&1
+#    make latexpdf > /dev/null
+#    pdf='dual_root.pdf'
+#    /usr/bin/rm -f $pdf
+#    /usr/bin/cp _build/latex/$pdf .
+#    /usr/bin/rm -rf _build/doctrees _build/latex
 #    make html
-#    make latexpdf
 }
 
 package() {
