@@ -1,7 +1,7 @@
 pkgbase = mangowc
 	pkgdesc = A Wayland compositor with smooth animation
-	pkgver = 0.10.9
-	pkgrel = 3
+	pkgver = 0.10.10
+	pkgrel = 1
 	url = https://github.com/DreamMaoMao/mangowc
 	arch = x86_64
 	license = GPL-3.0
@@ -18,7 +18,7 @@ pkgbase = mangowc
 	depends = libwlroots-0.19.so
 	depends = scenefx0.4
 	provides = wayland-compositor
-	source = mangowc-0.10.9.tar.gz::https://github.com/DreamMaoMao/mangowc/archive/refs/tags/0.10.9.tar.gz
-	md5sums = 964cb29a7537ec53723f73c93e0f9b10
+	source = mangowc-0.10.10.tar.gz::https://github.com/DreamMaoMao/mangowc/archive/refs/tags/0.10.10.tar.gz
+	md5sums = 35389efa44bed2be3686fb5486c85f2d
 
 pkgname = mangowc
