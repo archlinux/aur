@@ -1,0 +1,24 @@
+pkgbase = mintsysadm
+	pkgdesc = System Administration tool for Linux Mint (boot menu configuration and more)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/linuxmint/mintsysadm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = mintcommon
+	depends = python-gobject
+	depends = gtk3
+	depends = polkit
+	depends = gobject-introspection
+	depends = xapp
+	depends = python-xapp
+	depends = glib2
+	depends = gtksourceview3
+	optdepends = grub: Grub bootloader configuration
+	provides = mintsysadm-git
+	conflicts = mintsysadm-git
+	source = mintsysadm::git+https://github.com/linuxmint/mintsysadm.git#commit=b4b41e2341a9f3c6fd2e944d741a863b9b9fbaa3
+	sha256sums = 383d4e24d79e153a36d670a770cf062a348f1cf6743f1ed4821590ab5d8b4edd
+
+pkgname = mintsysadm

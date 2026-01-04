@@ -1,0 +1,8 @@
+*.zst
+src
+pkg
+mintsysadm
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
