@@ -1,0 +1,20 @@
+pkgbase = archclean
+	pkgdesc = A CLI tool for safely cleaning Arch Linux systems.
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/rajchauhan28/archClean
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-sh
+	depends = python-textual
+	source = archclean-0.1.13.tar.gz::https://github.com/rajchauhan28/archClean/archive/v0.1.13.tar.gz
+	sha256sums = 2098c09a79b296ead4551661092a447a3ca20958963ebd31a4e3a5d05ecc0b18
+
+pkgname = archclean
