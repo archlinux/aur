@@ -1,6 +1,6 @@
 pkgbase = ascii-chat
 	pkgdesc = Video chat in your terminal - prebuilt binary
-	pkgver = 0.5.51
+	pkgver = 0.5.64
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ascii-chat
 	optdepends = openssh: ssh-agent support for key authentication
 	provides = ascii-chat
 	conflicts = ascii-chat
-	source = ascii-chat-0.5.51-Linux-amd64.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.5.51/ascii-chat-0.5.51-Linux-amd64.tar.gz
-	source = ascii-chat-0.5.51-Linux-amd64.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v0.5.51/ascii-chat-0.5.51-Linux-amd64.tar.gz.asc
+	source = ascii-chat-0.5.64-Linux-amd64.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.5.64/ascii-chat-0.5.64-Linux-amd64.tar.gz
+	source = ascii-chat-0.5.64-Linux-amd64.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v0.5.64/ascii-chat-0.5.64-Linux-amd64.tar.gz.asc
 	validpgpkeys = F315D1B948F33B2102FBD7B6B95124621822044A
-	sha256sums = d1b50cbc20754a6587f6d8c00777a4f556c40d5cbf59a1a3a6f19c5f57a2fd8a
-	sha256sums = bb48ba509a80741ed3d46aa181241ca01f2f4249623552466fe6da380306dd67
+	sha256sums = ab4e25c54dbb07b6a4108aaaa113a71d74c9d23974c0a59ccd92d7a8b674c382
+	sha256sums = 2930c0d1cf703e05a97e8975eae49cc9fff192517527fcd8c7f65fcec9fd7713
 
 pkgname = ascii-chat
