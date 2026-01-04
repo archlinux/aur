@@ -1,6 +1,6 @@
 pkgbase = cwc
 	pkgdesc = Extensible Wayland compositor with dynamic window management
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Cudiph/cwcwm
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = cwc
 	optdepends = xdg-desktop-portal-gtk: Default portal for file picker
 	optdepends = xdg-desktop-portal-wlr: Portal for screen sharing
 	provides = wayland-compositor
-	source = https://github.com/Cudiph/cwcwm/archive/v0.2.0.tar.gz
-	md5sums = baf871485f2a60ec99d2bda73b034065
+	source = https://github.com/Cudiph/cwcwm/archive/v0.3.0.tar.gz
+	md5sums = 7699ff709eb548412cd615639b069eea
 
 pkgname = cwc
