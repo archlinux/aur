@@ -1,4 +1,5 @@
-# Maintainer: Yann Büchau <nobodyinperson at posteo de>
+# Maintainer: Jesus Alvarez <jesusalv@rez.codes>
+# Contributor: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Hao Long <imlonghao@archlinuxcn.org>
 
@@ -10,24 +11,23 @@ arch=(any)
 url='https://github.com/wasi-master/rich-rst'
 license=('MIT')
 depends=('python-rich' 'python-docutils')
-makedepends=('python-pip')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url")
 md5sums=('SKIP')
 
-pkgver () {
+pkgver() {
     cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
-build () {
+build() {
     cd "$srcdir/${pkgname%-git}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
-package () {
+package() {
     cd "$srcdir/${pkgname%-git}"
-    export PYTHONHASHSEED=0
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
