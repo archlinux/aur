@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.0.1
 _electronversion=37
-pkgrel=3
+pkgrel=4
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v${pkgver}/LICENSE.md"
-    "server.js::https://dl.strem.io/server/v4.20.15/desktop/server.js"
+    "server-4.20.15.js::https://dl.strem.io/server/v4.20.15/desktop/server.js"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
@@ -63,7 +63,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/server.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}/streamingserver"
+    install -Dm644 "${srcdir}/server-4.20.15.js" "${pkgdir}/usr/lib/${pkgname%-bin}/streamingserver/server.js"
     ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-bin}/streamingserver/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${pkgdir}/usr/lib/${pkgname%-bin}/streamingserver/ffprobe"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
