@@ -1,0 +1,23 @@
+pkgbase = kwin-pen-cursor
+	pkgdesc = Custom cursor overlay for pen tablets on KDE Plasma 6 (KWin Wayland)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/BlossomOS/kwin-pen-cursor
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kwin
+	depends = qt6-base
+	depends = qt6-svg
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcmutils
+	depends = kio
+	depends = libxcb
+	depends = xcb-util-cursor
+	source = kwin-pen-cursor-1.0.tar.gz::https://codeberg.org/BlossomOS/kwin-pen-cursor/archive/1.0.tar.gz
+	sha256sums = ce6fc6932eb3b559a86608cdda8d0a741a920352a044837e354f0c59667e9d64
+
+pkgname = kwin-pen-cursor
