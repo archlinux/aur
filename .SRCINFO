@@ -23,6 +23,7 @@ pkgbase = vapoursynth-plugin-vsjetpack
 	optdepends = vapoursynth-plugin-nlm: NLMeans Denoiser (CPU)
 	optdepends = vapoursynth-plugin-bm3d: Denoiser
 	optdepends = vapoursynth-plugin-bm3dcuda: Denoiser (CUDA accelerated)
+	optdepends = vapoursynth-plugin-bm3dhip: Denoiser (AMD HIP accelerated)
 	optdepends = vapoursynth-plugin-dfttest2: Denoiser
 	optdepends = vapoursynth-plugin-fft3dfilter: Denoiser
 	optdepends = vapoursynth-plugin-scxvid: Scene detection
