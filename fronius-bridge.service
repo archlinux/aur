@@ -6,8 +6,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/fronius-bridge --config /etc/fronius-bridge/config.yaml
-User=fronius
-Group=fronius
+User=meter
+Group=meter
 
 # Sandboxing
 NoNewPrivileges=yes

@@ -1,6 +1,6 @@
 pkgbase = fronius-bridge
 	pkgdesc = Lightweight Modbus-to-MQTT bridge for Fronius inverters
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/ahpohl/fronius-bridge
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = fronius-bridge
 	depends = mosquitto
 	depends = fmt
 	backup = etc/fronius-bridge/config.yaml
-	source = fronius-bridge-1.0.8::git+https://github.com/ahpohl/fronius-bridge.git#tag=v1.0.8
-	source = sysusers-fronius.conf
+	source = fronius-bridge-1.0.9::git+https://github.com/ahpohl/fronius-bridge.git#tag=v1.0.9
+	source = sysusers-meter.conf
 	source = fronius-bridge.service
-	sha256sums = fa40564646018cef7219aba24c2473a4e4823d3b8786d445c4dcf746e4def7da
-	sha256sums = f93532f32babcf1c4cce79a1bfc49cca702e1cfd41267d6b580181af277009f2
-	sha256sums = 5047953f514a345441fb69ee5c60e79acf7ccb387d206ae7d0e11a2550683060
+	sha256sums = 975df1e575524dd93f9a1f5ba621ce310e67e28b51c61b0335438d63c5e60a31
+	sha256sums = ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24
+	sha256sums = dca32ad410dd3803c840bb5980169ed2d92d37038cdd3832596af652666dc1eb
 
 pkgname = fronius-bridge
