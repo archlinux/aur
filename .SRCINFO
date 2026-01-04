@@ -15,6 +15,7 @@ pkgbase = fts
 	depends = python-psutil
 	depends = python-cryptography
 	depends = python-filelock
+	depends = python-pycrdt
 	provides = fts-tool
 	conflicts = python-fts
 	replaces = python-fts

@@ -22,7 +22,7 @@ provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'python-textual' 'python-tqdm' 'python-psutil' 'python-cryptography' 'python-filelock')
+depends=('python' 'python-textual' 'python-tqdm' 'python-psutil' 'python-cryptography' 'python-filelock' 'python-pycrdt')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
