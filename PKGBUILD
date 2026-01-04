@@ -2,8 +2,8 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.14.5.r0.gfcd071a
-_electronversion=37
+pkgver=1.15.1.r3.g290c925
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.(Use system-wide electron)"
@@ -21,6 +21,7 @@ makedepends=(
     'nvm'
     'curl'
     'git'
+    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -41,8 +42,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
