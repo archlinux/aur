@@ -2,11 +2,10 @@ pkgbase = ttf-piboto
 	pkgdesc = Piboto is a fork of Roboto before the 2014 redesign.
 	pkgver = 1.2
 	pkgrel = 1
-	url = https://github.com/thunderbird-1990/fonts-piboto
+	url = https://archive.raspberrypi.org/debian/pool/main/f/fonts-piboto/
 	arch = any
 	license = custom:OFL
-	makedepends = git
-	source = git+https://github.com/thunderbird-1990/fonts-piboto.git
-	md5sums = SKIP
+	source = https://archive.raspberrypi.org/debian/pool/main/f/fonts-piboto/fonts-piboto_1.2.tar.xz
+	md5sums = dc8dca7ab4ca8805b9e1b6c8f1959df4
 
 pkgname = ttf-piboto
