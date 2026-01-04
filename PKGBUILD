@@ -12,7 +12,7 @@ provides=('steam-cloud-file-manager')
 conflicts=('steam-cloud-file-manager')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fldicoahkiin/SteamCloudFileManager/releases/download/v${pkgver}/SteamCloudFileManager-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('762fd6a69cddd4127d7d3d16e65b99d5858e80915c639405109bbf55616e7c40')
 
 package() {
     cd "$srcdir"
