@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/tenseleyFlow/hyprKVM'
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'openssl')
-makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols')
+makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols' 'clang' 'cmake')
 optdepends=('wl-clipboard: for clipboard synchronization')
 source=("git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v$pkgver")
 sha256sums=('SKIP')
