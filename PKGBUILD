@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='bingoo'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Generate bingo images from plain text"
 arch=('x86_64')
