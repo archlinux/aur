@@ -1,6 +1,6 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 8.2.2
+	pkgver = 8.2.3
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -37,10 +37,10 @@ pkgbase = mongodb
 	depends = gcc14-libs
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	optdepends = mongosh: interactive shell to connect with MongoDB
-	provides = mongodb=8.2.2
+	provides = mongodb=8.2.3
 	options = !debug
 	backup = etc/mongodb.conf
-	source = https://github.com/mongodb/mongo/archive/refs/tags/r8.2.2.tar.gz
+	source = https://github.com/mongodb/mongo/archive/refs/tags/r8.2.3.tar.gz
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = bazel-python-path.patch
@@ -48,7 +48,7 @@ pkgbase = mongodb
 	source = bazel-distro.patch
 	source = bazel-version.patch
 	source = bazelisk-url.patch
-	sha256sums = a870bf4c1acc30a4d040a268ecbf250797bd9248d164baa0111f25c8b5ed5d87
+	sha256sums = eb2592c71dc75081bd044607e3bbcf3c8436a07b26d6532630b5c1bf55732350
 	sha256sums = 3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795
 	sha256sums = b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39
 	sha256sums = 59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e
