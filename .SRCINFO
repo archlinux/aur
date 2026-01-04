@@ -1,6 +1,6 @@
 pkgbase = kdecodexbar
 	pkgdesc = AI Usage Tracker for KDE Plasma (Codex, Claude, Gemini, Antigravity)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/rursache/KDECodexBar
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kdecodexbar
 	depends = kconfig
 	depends = ki18n
 	depends = kwindowsystem
-	source = kdecodexbar-1.0.0.tar.gz::https://codeload.github.com/rursache/KDECodexBar/tar.gz/v1.0.0
-	sha256sums = 291f56442f6bae93b9613c529624886059fb27547163de282162573c89e1447c
+	source = kdecodexbar-1.0.1.tar.gz::https://codeload.github.com/rursache/KDECodexBar/tar.gz/v1.0.1
+	sha256sums = 1642e6d0359a8039c8f6d7d5cee457a13ab56eaf840df93dd595beb78123dc98
 
 pkgname = kdecodexbar
