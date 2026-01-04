@@ -11,8 +11,8 @@ pkgname=(
   ${pkgbase}
   ${_langs[@]/#/${pkgbase}-}
 )
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Protoc plugin to generate polyglot message validators'
 arch=(
   aarch64
@@ -27,7 +27,7 @@ makedepends=(
 )
 options=(!debug)
 source=(${pkgbase}::git+${url}.git#tag=v${pkgver})
-sha256sums=('968c62bd5446832b6f9b5fe640ceeb37f317729eda6e1d62dfbd832e4f679f60')
+sha256sums=('daa4c674c9c9c792a51f65646ddd410c414cb5d42f323cd1286fcdf2a812ae7f')
 
 
 prepare() {
