@@ -16,10 +16,10 @@ sha256sums=('6a3706accf9872aafea1eb3f3f3018b135e2671033824ccebf0735a98b2440a5')
 prepare() {
   _sqsrc="${srcdir}/SQUIRREL3"
 
-  mkdir "${_sqsrc}/include/${pkgname}"
+  mkdir -p "${_sqsrc}/include/${pkgname}"
   mv -v "${_sqsrc}/include/"*.h "${_sqsrc}/include/${pkgname}/"
 
-  mkdir "${_sqsrc}/lib/${pkgname}"
+  mkdir -p "${_sqsrc}/lib/${pkgname}"
 
   # sq/ directory
   sed -r -io -e 's/(LIBZ=.*\/lib)/\1\/'${pkgname}'/g'                                 "${_sqsrc}/sq/Makefile"
