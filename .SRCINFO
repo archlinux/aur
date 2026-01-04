@@ -1,6 +1,6 @@
 pkgbase = meerk40t-git
 	pkgdesc = Hackable Laser software for K40 / GRBL / Fibre Lasers
-	pkgver = 0.9.8920.r19993.dab6ce164
+	pkgver = 0.9.8930.r20018.8c31bf754
 	pkgrel = 1
 	url = https://github.com/meerk40t/meerk40t
 	arch = any

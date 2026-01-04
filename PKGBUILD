@@ -1,6 +1,6 @@
 # Maintainer: Manos G. <seventh dot fret at protonmail dot com>
 pkgname=meerk40t-git
-pkgver=0.9.8920.r19993.dab6ce164
+pkgver=0.9.8930.r20018.8c31bf754
 pkgrel=1
 pkgdesc="Hackable Laser software for K40 / GRBL / Fibre Lasers"
 arch=("any")
@@ -33,10 +33,10 @@ build() {
   gendesk -f -n \
      --pkgname="Meerk40t-Git" \
      --pkgdesc="$pkgdesc" \
-     --name="MeerK40t-Git" \
-     --comment "Laser software for the K40 Stock-LIHUIYU laser boards" \
-     --exec=meerk40t-git \
-     --icon=/opt/meerk40t-git/meerk40t-logo.png \
+     --name=${pkgname} \
+     --comment "$pkgdesc" \
+     --exec=${pkgname} \
+     --icon=/opt/${pkgname}/meerk40t-logo.png \
      --terminal=false \
      --startupnotify=true \
      --categories=Graphics
