@@ -1,5 +1,5 @@
 pkgname=vgen
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Bitcoin vanity address generator with regex pattern matching and GPU acceleration"
 arch=('x86_64')
