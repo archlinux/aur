@@ -2,7 +2,7 @@
 
 pkgname=lbn
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight program (~2MB of RAM) that sends a notification to the user's desktop when battery percentage drops bellow 20, 10 and 5 %"
 arch=("any")
 url="https://git.sr.ht/~aeldit/lbn"
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(cargo)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("b8fb92796e8a9ef16b60fc28d5ec367c07f47f0363eeb94502cc27ac7f35181e")
+sha256sums=("82ccac72cb3090b3b536212f4d03cf4d09ee57adc1c3b7d85c1026c9429571fb")
 
 prepare() {
 	cd "$pkgname-$pkgver"
