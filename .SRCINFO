@@ -1,6 +1,6 @@
 pkgbase = roleboi-git
 	pkgdesc = A small role management Discord bot. Dev build.
-	pkgver = 1.0.0.1.git976aa47
+	pkgver = 1.0.0.0.git976aa47
 	pkgrel = 1
 	url = https://github.com/KarlOfDuty/RoleBoi
 	install = roleboi.install
