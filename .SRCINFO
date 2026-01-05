@@ -1,20 +1,19 @@
 pkgbase = nato-spell-git
 	pkgdesc = Spelling engine for the NATO phonetic alphabet
-	pkgver = 0.3.1.r1.ga5ecf81
+	pkgver = 0.3.2.r0.g1d4e830
 	pkgrel = 1
 	url = https://github.com/Qu4tro/nato-spell
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = sed
-	makedepends = python-setuptools
-	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = alsa-utils
 	depends = python
 	provides = nato-spell
 	conflicts = nato-spell
 	source = nato-spell::git+https://github.com/Qu4tro/nato-spell.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nato-spell-git
