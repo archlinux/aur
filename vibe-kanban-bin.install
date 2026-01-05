@@ -1,16 +1,27 @@
 post_install() {
-    echo "To start the service, run:"
-    echo "  systemctl --user enable --now vibe-kanban.service"
     echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ""
+    echo ":: Service Management"
+    echo "   > User Level (Recommended):"
+    echo "     systemctl --user enable --now vibe-kanban.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
 
 post_upgrade() {
-    echo "You may need to restart the user service:"
-    echo "  systemctl --user daemon-reload"
-    echo "  systemctl --user restart vibe-kanban.service"
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     systemctl --user daemon-reload"
+    echo "     systemctl --user restart vibe-kanban.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
 
 post_remove() {
-    echo "You may need to stop the user service:"
-    echo "  systemctl --user stop vibe-kanban.service"
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     The service file has been removed. Stop the service if running:"
+    echo "     systemctl --user stop vibe-kanban.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
