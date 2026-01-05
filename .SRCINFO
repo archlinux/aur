@@ -1,6 +1,6 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = 5.2.4.r5437.g9f51c26
+	pkgver = 5.2.4.r5439.gcf0ea9c
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = system-bridge-git
 	provides = system-bridge
 	conflicts = system-bridge
 	conflicts = system-bridge-debug
-	conflicts = system-bridge-git-debug
 	source = system-bridge-git::git+https://github.com/timmo001/system-bridge.git
 	md5sums = SKIP
 
