@@ -1,4 +1,4 @@
-pkgbase = scrapfetch
+pkgbase = scrapfetch.git
 	pkgdesc = A tool for fetching system information. Written in C for Linux.
 	pkgver = 1.0
 	pkgrel = 1
