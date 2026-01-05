@@ -1,8 +1,8 @@
 pkgbase = noirup-bin
 	pkgdesc = Installation tooling for Noir
 	pkgver = 0.1.4
-	pkgrel = 2
-	url = https://https://github.com/noir-lang/noirup
+	pkgrel = 3
+	url = https://github.com/noir-lang/noirup
 	arch = x86_64
 	license = LicenseRef-unknown
 	provides = noirup
