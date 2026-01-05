@@ -3,7 +3,7 @@
 _pkgname=hyprwhspr
 pkgname=hyprwhspr-git
 pkgver=0
-pkgrel=8
+pkgrel=9
 pkgdesc="Native Whisper speech-to-text for Arch/Omarchy with Waybar integration (git)"
 arch=('x86_64')
 url="https://github.com/goodroot/${_pkgname}"
@@ -65,21 +65,10 @@ package() {
   install -Dm644 "config/systemd/${_pkgname}.service" \
     "$pkgdir/usr/lib/systemd/user/${_pkgname}.service"
 
+  # Create wrapper that uses the repo's bin/hyprwhspr with fixed paths
   install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/${_pkgname}" << 'EOF'
-#!/usr/bin/env bash
-# hyprwhspr launcher - routes CLI commands or runs application
-
-if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" =~ ^(setup|config|waybar|systemd|status|model|validate)$ ]]; then
-    export HYPRWHSPR_ROOT="/usr/lib/hyprwhspr"
-    export PYTHONPATH="/usr/lib/hyprwhspr/lib:$PYTHONPATH"
-    exec python /usr/lib/hyprwhspr/lib/cli.py "$@"
-else
-    export HYPRWHSPR_ROOT="/usr/lib/hyprwhspr"
-    export PYTHONPATH="/usr/lib/hyprwhspr/lib:$PYTHONPATH"
-    exec python /usr/lib/hyprwhspr/lib/main.py "$@"
-fi
-EOF
+  sed 's|PACKAGE_ROOT="$(dirname "$SCRIPT_DIR")"|PACKAGE_ROOT="/usr/lib/hyprwhspr"|' \
+    "$srcdir/${_pkgname}/bin/${_pkgname}" > "$pkgdir/usr/bin/${_pkgname}"
   chmod 755 "$pkgdir/usr/bin/${_pkgname}"
 
   install -d "$pkgdir/usr/share/doc/${_pkgname}" \
