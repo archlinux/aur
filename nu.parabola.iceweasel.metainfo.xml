@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>nu.parabola.iceweasel</id>
+  <launchable type="desktop-id">iceweasel.desktop</launchable>
+  <name>Iceweasel</name>
+  <developer_name>Parabola GNU/Linux-libre</developer_name>
+  <summary>Fast, Private &amp; Safe Web Browser</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MPL-2.0</project_license>
+  <description>
+    <p>When it comes to your life online, you have a choice: accept the factory settings or put your privacy first. When you choose Iceweasel as your default browser, you’re choosing to protect your data. Choose to protect what's important by choosing Iceweasel - a web browser designed to be fast, easy to use, customizable and private.</p>
+  </description>
+  <keywords>
+    <keyword>internet</keyword>
+    <keyword>web</keyword>
+  </keywords>
+  <content_rating type="oars-1.1" />
+  <url type="homepage">https://www.parabola.nu/</url>
+  <url type="donation">https://wiki.parabola.nu/Donations</url>
+  <url type="bugtracker">https://labs.parabola.nu/</url>
+  <url type="help">https://forum.parabola.nu/</url>
+  <url type="translate">https://wiki.mozilla.org/L10n:Starting_a_localization</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Iceweasel_icon.svg/768px-Iceweasel_icon.svg.png</image>
+    </screenshot>
+  </screenshots>
+</component>

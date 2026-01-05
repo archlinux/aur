@@ -1,0 +1,13 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch
+!*.sh
+!*.xml
+!*.js
+!*.py
+!*.install
+!*.desktop
+!*.diff
+!*.in

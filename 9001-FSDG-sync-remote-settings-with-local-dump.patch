@@ -1,0 +1,1272 @@
+From 3955633e64158c6a093788fa009378359b8931f6 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:20:39 +0200
+Subject: [PATCH 01/13] Point to local omni.ja files, not remote server
+
+This patch series tries to remove any network communication with Remote
+Settings [1], which can be used by Mozilla to silently push data to client
+browsers. This data can include references to nonfree software, for example,
+to search engines or other websites that contain nonfree JavaScript code.
+Without this patching, it would be hard to make sure the browser does not
+violate paragraph 4 of [2]: "Programs in the system should not suggest
+installing nonfree plugins, documentation, and so on."
+
+Changes in the current patch:
+First of all, replace every occurrence of Remote Settings server domain name
+with URIs that point to built-in local files within omni.ja.
+
+Some links to json files may point to non-existing files, but that's OK
+because it's better than leave them point to Remote Settings server.
+If necessary, missing files can be added later.
+
+[1] https://remote-settings.readthedocs.io/en/latest/introduction.html
+[2] https://www.gnu.org/distros/free-system-distribution-guidelines.en.html#license-rules
+---
+ browser/components/asrouter/bin/import-rollouts.js   |  4 ++--
+ .../components/ASRouterAdmin/ASRouterAdmin.jsx       |  2 +-
+ .../asrouter/content/asrouter-admin.bundle.js        |  2 +-
+ .../search/telemetry/SerpTelemetryRepository.kt      |  2 +-
+ .../support/remotesettings/RemoteSettingsClient.kt   |  2 +-
+ .../remotesettings/RemoteSettingsClientTest.kt       |  2 +-
+ .../docs/_posts/2018-08-10-fretboard.md              |  2 +-
+ .../main/java/org/mozilla/fenix/components/Core.kt   |  4 ++--
+ .../mozilla/focus/telemetry/GleanMetricsService.kt   |  4 ++--
+ services/settings/Utils.sys.mjs                      |  2 +-
+ services/settings/docs/index.rst                     |  4 ++--
+ .../scripts/periodic_file_updates.sh                 |  2 +-
+ .../rust/remote_settings/.cargo-checksum.json        |  2 +-
+ third_party/rust/remote_settings/src/client.rs       |  2 +-
+ third_party/rust/remote_settings/src/config.rs       | 12 ++++++------
+ .../antitracking/docs/query-stripping/index.md       |  2 +-
+ .../backgroundtasks/BackgroundTask_message.sys.mjs   |  6 +++---
+ toolkit/components/search/SearchUtils.sys.mjs        |  8 ++++----
+ .../components/search/docs/DefaultSearchEngines.rst  |  2 +-
+ .../search/docs/SearchEngineConfiguration.rst        |  8 ++++----
+ .../search/docs/SearchEngineConfigurationArchive.rst |  2 +-
+ toolkit/modules/AppConstants.sys.mjs                 |  4 ++--
+ 22 files changed, 40 insertions(+), 40 deletions(-)
+
+diff --git a/browser/components/asrouter/bin/import-rollouts.js b/browser/components/asrouter/bin/import-rollouts.js
+index 60a2801bc9..2c09a93fc3 100644
+--- a/browser/components/asrouter/bin/import-rollouts.js
++++ b/browser/components/asrouter/bin/import-rollouts.js
+@@ -36,7 +36,7 @@ const jsonschema = require("../../../../third_party/js/cfworker/json-schema.js")
+ 
+ const DEFAULT_COLLECTION_ID = "nimbus-desktop-experiments";
+ const BASE_URL =
+-  "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/";
++  "resource://app/defaults/settings/main/";
+ const EXPERIMENTER_URL = "https://experimenter.services.mozilla.com/nimbus/";
+ const OUTPUT_PATH = "./tests/NimbusRolloutMessageProvider.sys.mjs";
+ const LICENSE_STRING = `/* This Source Code Form is subject to the terms of the Mozilla Public
+@@ -241,7 +241,7 @@ async function main() {
+     }
+   );
+ 
+-  const RECORDS_URL = `${BASE_URL}${cli.flags.collection}/records`;
++  const RECORDS_URL = `${BASE_URL}${cli.flags.collection}.json`;
+ 
+   console.log(`Fetching records from ${chalk.underline.yellow(RECORDS_URL)}`);
+ 
+diff --git a/browser/components/asrouter/content-src/components/ASRouterAdmin/ASRouterAdmin.jsx b/browser/components/asrouter/content-src/components/ASRouterAdmin/ASRouterAdmin.jsx
+index 753fbc633f..75d5a2e94a 100644
+--- a/browser/components/asrouter/content-src/components/ASRouterAdmin/ASRouterAdmin.jsx
++++ b/browser/components/asrouter/content-src/components/ASRouterAdmin/ASRouterAdmin.jsx
+@@ -819,7 +819,7 @@ export class ASRouterAdminInner extends React.PureComponent {
+                   <a
+                     className="small-text"
+                     target="_blank"
+-                    href="https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/nimbus-desktop-experiments/records"
++                    href="resource://app/defaults/settings/main/nimbus-desktop-experiments.json"
+                     rel="noopener noreferrer"
+                   >
+                     nimbus-desktop-experiments
+diff --git a/browser/components/asrouter/content/asrouter-admin.bundle.js b/browser/components/asrouter/content/asrouter-admin.bundle.js
+index 7d0ed87430..700c2d18ad 100644
+--- a/browser/components/asrouter/content/asrouter-admin.bundle.js
++++ b/browser/components/asrouter/content/asrouter-admin.bundle.js
+@@ -1154,7 +1154,7 @@ class ASRouterAdminInner extends (react__WEBPACK_IMPORTED_MODULE_1___default().P
+         label = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, "remote settings (", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+           className: "small-text",
+           target: "_blank",
+-          href: "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/nimbus-desktop-experiments/records",
++          href: "resource://app/defaults/settings/main/nimbus-desktop-experiments.json",
+           rel: "noopener noreferrer"
+         }, "nimbus-desktop-experiments"), ")");
+       }
+diff --git a/mobile/android/android-components/components/feature/search/src/main/java/mozilla/components/feature/search/telemetry/SerpTelemetryRepository.kt b/mobile/android/android-components/components/feature/search/src/main/java/mozilla/components/feature/search/telemetry/SerpTelemetryRepository.kt
+index 20eab9e438..b6b1817e89 100644
+--- a/mobile/android/android-components/components/feature/search/src/main/java/mozilla/components/feature/search/telemetry/SerpTelemetryRepository.kt
++++ b/mobile/android/android-components/components/feature/search/src/main/java/mozilla/components/feature/search/telemetry/SerpTelemetryRepository.kt
+@@ -16,7 +16,7 @@ import org.json.JSONException
+ import org.json.JSONObject
+ import java.io.File
+ 
+-internal const val REMOTE_PROD_ENDPOINT_URL = "https://firefox.settings.services.mozilla.com"
++internal const val REMOTE_PROD_ENDPOINT_URL = "resource://app/defaults/settings"
+ internal const val REMOTE_ENDPOINT_BUCKET_NAME = "main"
+ 
+ /**
+diff --git a/mobile/android/android-components/components/support/remotesettings/src/main/java/mozilla/components/support/remotesettings/RemoteSettingsClient.kt b/mobile/android/android-components/components/support/remotesettings/src/main/java/mozilla/components/support/remotesettings/RemoteSettingsClient.kt
+index f746b3f709..e142454e05 100644
+--- a/mobile/android/android-components/components/support/remotesettings/src/main/java/mozilla/components/support/remotesettings/RemoteSettingsClient.kt
++++ b/mobile/android/android-components/components/support/remotesettings/src/main/java/mozilla/components/support/remotesettings/RemoteSettingsClient.kt
+@@ -45,7 +45,7 @@ import mozilla.appservices.remotesettings.InternalException as UniffiInternalExc
+ 
+ class RemoteSettingsClient(
+     private val storageRootDirectory: File,
+-    private val serverUrl: String = "https://firefox.settings.services.mozilla.com",
++    private val serverUrl: String = "resource://app/defaults/settings",
+     private val bucketName: String = "main",
+     private val collectionName: String,
+ ) {
+diff --git a/mobile/android/android-components/components/support/remotesettings/src/test/java/mozilla/components/support/remotesettings/RemoteSettingsClientTest.kt b/mobile/android/android-components/components/support/remotesettings/src/test/java/mozilla/components/support/remotesettings/RemoteSettingsClientTest.kt
+index e6b153a9a4..afca8776f5 100644
+--- a/mobile/android/android-components/components/support/remotesettings/src/test/java/mozilla/components/support/remotesettings/RemoteSettingsClientTest.kt
++++ b/mobile/android/android-components/components/support/remotesettings/src/test/java/mozilla/components/support/remotesettings/RemoteSettingsClientTest.kt
+@@ -37,7 +37,7 @@ class RemoteSettingsClientTest {
+         mockFileReader = mock()
+         mockJsonObject = mock()
+         mockRemoteSettings = mock()
+-        remoteSettingsClient = RemoteSettingsClient(File(""), "https://firefox.settings.services.mozilla.com", "", "")
++        remoteSettingsClient = RemoteSettingsClient(File(""), "resource://app/defaults/settings", "", "")
+     }
+ 
+     @Test
+diff --git a/mobile/android/android-components/docs/_posts/2018-08-10-fretboard.md b/mobile/android/android-components/docs/_posts/2018-08-10-fretboard.md
+index f4f852eeb1..b877808e79 100644
+--- a/mobile/android/android-components/docs/_posts/2018-08-10-fretboard.md
++++ b/mobile/android/android-components/docs/_posts/2018-08-10-fretboard.md
+@@ -8,7 +8,7 @@ author: fernando
+ ## Overview
+ Firefox for Android (codenamed Fennec) started using [KeepSafe's Switchboard library](https://github.com/KeepSafe/Switchboard) and server component in order to run A/B testing or staged rollout of features, but since then the code changed significantly. It used a special [switchboard server](https://github.com/mozilla-services/switchboard-server) that decided which experiments a client is part of and returned a simplified list for the client to consume. However, this required the client to send data (including a unique id) to the server.
+ 
+-To avoid this Firefox moved to using [Kinto](https://github.com/Kinto/kinto) as storage and server of the experiment configuration. Clients now download the whole list of experiments and decide locally what experiments they are enrolled in (the configuration for Fennec [looks like this](https://firefox.settings.services.mozilla.com/v1/buckets/fennec/collections/experiments/records)).
++To avoid this Firefox moved to using [Kinto](https://github.com/Kinto/kinto) as storage and server of the experiment configuration. Clients now download the whole list of experiments and decide locally what experiments they are enrolled in (the configuration for Fennec [looks like this](resource://app/defaults/settings/fennec/experiments.json)).
+ 
+ The purpose of this Google Summer of Code project, which is called Fretboard, was to develop an A/B testing framework written in Kotlin based on the existing code from Fennec, but making it independent of both the server used and the local storage mechanism, allowing it to be used on other apps, such as Firefox Focus, which started to need to do some A/B tests.
+ 
+diff --git a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/components/Core.kt b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/components/Core.kt
+index 2079fc1ba3..e78ac7dc76 100644
+--- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/components/Core.kt
++++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/components/Core.kt
+@@ -709,7 +709,7 @@ class Core(
+ 
+         // collection name to fetch from server for SERP telemetry
+         const val COLLECTION_NAME = "search-telemetry-v2"
+-        internal const val REMOTE_PROD_ENDPOINT_URL = "https://firefox.settings.services.mozilla.com"
+-        internal const val REMOTE_STAGE_ENDPOINT_URL = "https://firefox.settings.services.allizom.org"
++        internal const val REMOTE_PROD_ENDPOINT_URL = "resource://app/defaults/settings"
++        internal const val REMOTE_STAGE_ENDPOINT_URL = "resource://app/defaults/settings"
+     }
+ }
+diff --git a/mobile/android/focus-android/app/src/main/java/org/mozilla/focus/telemetry/GleanMetricsService.kt b/mobile/android/focus-android/app/src/main/java/org/mozilla/focus/telemetry/GleanMetricsService.kt
+index 4cf1635be9..d8923e6868 100644
+--- a/mobile/android/focus-android/app/src/main/java/org/mozilla/focus/telemetry/GleanMetricsService.kt
++++ b/mobile/android/focus-android/app/src/main/java/org/mozilla/focus/telemetry/GleanMetricsService.kt
+@@ -61,8 +61,8 @@ class GleanMetricsService(context: Context) : MetricsService {
+         const val COLLECTION_NAME = "search-telemetry-v2"
+ 
+         // urls for prod and stage remote settings server
+-        internal const val REMOTE_PROD_ENDPOINT_URL = "https://firefox.settings.services.mozilla.com"
+-        internal const val REMOTE_STAGE_ENDPOINT_URL = "https://firefox.settings.services.allizom.org"
++        internal const val REMOTE_PROD_ENDPOINT_URL = "resource://app/defaults/settings"
++        internal const val REMOTE_STAGE_ENDPOINT_URL = "resource://app/defaults/settings"
+ 
+         private val isEnabledByDefault: Boolean
+             get() = !AppConstants.isKlarBuild
+diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
+index 8cd4afc313..48ccc30ffc 100644
+--- a/services/settings/Utils.sys.mjs
++++ b/services/settings/Utils.sys.mjs
+@@ -102,7 +102,7 @@ export var Utils = {
+       : AppConstants.REMOTE_SETTINGS_SERVER_URL;
+   },
+ 
+-  CHANGES_PATH: "/buckets/monitor/collections/changes/changeset",
++  CHANGES_PATH: "/monitor/changes",
+ 
+   /**
+    * Logger instance.
+diff --git a/services/settings/docs/index.rst b/services/settings/docs/index.rst
+index 7d25a1a739..305d1fd640 100644
+--- a/services/settings/docs/index.rst
++++ b/services/settings/docs/index.rst
+@@ -188,11 +188,11 @@ It is possible to package a dump of the server records that will be loaded into
+ 
+ The JSON dump will serve as the default dataset for ``.get()``, instead of doing a round-trip to pull the latest data. It will also reduce the amount of data to be downloaded on the first synchronization.
+ 
+-#. Place the JSON dump of the server records in the ``services/settings/dumps/main/`` folder. Using this command:
++#. Place the JSON dump of the server records in the ``services/settings/dumps/main/`` folder. Using this command (replace 'https://settings.invalid' with your Remote Settings address):
+    ::
+ 
+       CID="your-collection"
+-      curl "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/${CID}/changeset?_expected=0" | jq '{"data": .changes, "timestamp": .timestamp}' > services/settings/dumps/main/${CID}.json``
++      curl "https://settings.invalid/v1/buckets/main/collections/${CID}/changeset?_expected=0" | jq '{"data": .changes, "timestamp": .timestamp}' > services/settings/dumps/main/${CID}.json``
+ 
+ #. Add the filename to the relevant ``FINAL_TARGET_FILES`` list in ``services/settings/dumps/main/moz.build``
+ 
+diff --git a/taskcluster/docker/periodic-updates/scripts/periodic_file_updates.sh b/taskcluster/docker/periodic-updates/scripts/periodic_file_updates.sh
+index 6377d16364..ac347e8c10 100755
+--- a/taskcluster/docker/periodic-updates/scripts/periodic_file_updates.sh
++++ b/taskcluster/docker/periodic-updates/scripts/periodic_file_updates.sh
+@@ -402,7 +402,7 @@ function compare_suffix_lists {
+ function compare_remote_settings_files {
+   # cd "${TOPSRCDIR}"
+ 
+-  REMOTE_SETTINGS_SERVER="https://firefox.settings.services.mozilla.com/v1"
++  REMOTE_SETTINGS_SERVER="resource://app/defaults/settings"
+ 
+   # 1. List remote settings collections from server.
+   echo "INFO: fetch remote settings list from server"
+diff --git a/third_party/rust/remote_settings/.cargo-checksum.json b/third_party/rust/remote_settings/.cargo-checksum.json
+index e8824d18f2..44828b1d7a 100644
+--- a/third_party/rust/remote_settings/.cargo-checksum.json
++++ b/third_party/rust/remote_settings/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{"Cargo.toml":"19c95234033bcb34a4f179937308bd6075c8df6671d7b2f34b897fc3c33718e6","dumps/main/attachments/regions/world":"00b308033d44f61612b962f572765d14a3999586d92fc8b9fff2217a1ae070e8","dumps/main/attachments/regions/world-buffered":"1d3ed6954fac2a5b31302f5d3e8186c5fa08a20239afc0643ca5dfbb4d8a86fc","dumps/main/attachments/regions/world-buffered.meta.json":"914a71376a152036aceccb6877e079fbb9e3373c6219f24f00dd30e901a72cce","dumps/main/attachments/regions/world.meta.json":"2a47d77834997b98e563265d299723e7f7fd64c8c7a5731afc722862333d6fbd","dumps/main/attachments/search-config-icons/001500a9-1a6c-3f5a-ba15-a5f5a075d256":"fdadf15c6eae7933c3d254ae6311112e0bc8a422c38c758189dbe6a4d7f6b718","dumps/main/attachments/search-config-icons/001500a9-1a6c-3f5a-ba15-a5f5a075d256.meta.json":"6ed1e1c390a45360590e5a1e6d7823218e7b10860581646ddb5e368143aa72fc","dumps/main/attachments/search-config-icons/06cf7432-efd7-f244-927b-5e423005e1ea":"b75ef04a805325e303c4195833cdd077d3d406f360b25b72502fc55880b9150b","dumps/main/attachments/search-config-icons/06cf7432-efd7-f244-927b-5e423005e1ea.meta.json":"0d4cce0ed0dc6b2c46651bea32fc3cc2facfe8b341e1022b65f2cd2231f6b713","dumps/main/attachments/search-config-icons/0a57b0cf-34f0-4d09-96e4-dbd6e3355410":"a7493c6a9d70d60acccf73f62dcbc127a580469570aee60b7482cd42cdb59f69","dumps/main/attachments/search-config-icons/0a57b0cf-34f0-4d09-96e4-dbd6e3355410.meta.json":"d33a128c92b96af2e643158ed3b861d3726bd67a59907fed0795ab2210c82b96","dumps/main/attachments/search-config-icons/0d7668a8-c3f4-cfee-cbc8-536511528937":"7042293af6b04e421cb7b68dc599ac644b76939cdcf5970159e44f658dd6a0cc","dumps/main/attachments/search-config-icons/0d7668a8-c3f4-cfee-cbc8-536511528937.meta.json":"d6523508334a67b201326591606d7e225a04fc53fdce2c1b4d8afac1b41af6b0","dumps/main/attachments/search-config-icons/0eec5640-6fde-d6fe-322a-c72c6d5bd5a2":"64800e32b24b2c8c0582750e1657426d56abd74b65682e20e892f82710d120b6","dumps/main/attachments/search-config-icons/0eec5640-6fde-d6fe-322a-c72c6d5bd5a2.meta.json":"56fb61a078cc45abf7bc3b8fe89b60ef75f3b86ea61d63084749607c4662bbef","dumps/main/attachments/search-config-icons/101ce01d-2691-b729-7f16-9d389803384b":"62d2faa3a8322b1f643aab6e045837500ebe3049c5cb140cb44c4dfc7290337a","dumps/main/attachments/search-config-icons/101ce01d-2691-b729-7f16-9d389803384b.meta.json":"de134ed423a2bd92b4ad8cdf631aad6a83cc2c30f8df9ee251a435ee9f46f28f","dumps/main/attachments/search-config-icons/177aba42-9bed-4078-e36b-580e8794cd7f":"3b88f3ef3cbfaed127d679ec7e44a44fe8dcad688feb89a70a1a9447c1460d15","dumps/main/attachments/search-config-icons/177aba42-9bed-4078-e36b-580e8794cd7f.meta.json":"c35210da5afc11b3af156baf46c23fa523dafac7e8cb2738b4caef80ed48c72e","dumps/main/attachments/search-config-icons/25de0352-aabb-d31f-15f7-bf9299fb004c":"828c3ca82e9be483ae583e5a705dde57b24fd8431e192e3a2d0809871992afa5","dumps/main/attachments/search-config-icons/25de0352-aabb-d31f-15f7-bf9299fb004c.meta.json":"aa5483b5c65427c028a676b2fc13892f6fcaf602613183962744c43ca146d86a","dumps/main/attachments/search-config-icons/2bbe48f4-d3b8-c9e0-86e3-a54c37ec3335":"723ac3228124926537d5a61284d60e198a52895195f9f69b967c578ef7a012ad","dumps/main/attachments/search-config-icons/2bbe48f4-d3b8-c9e0-86e3-a54c37ec3335.meta.json":"d754b38d7e2f79e651d5fe110a7bb9855e0f7269e177be6d047453a36a52a4c5","dumps/main/attachments/search-config-icons/2e835b0e-9709-d1bb-9725-87f59f3445ca":"16ea89d4baa39529d7a84d5152867a4c6ed6867198c4dfa1648b1f43ce6a3f6f","dumps/main/attachments/search-config-icons/2e835b0e-9709-d1bb-9725-87f59f3445ca.meta.json":"7edb361a6610fdabb431a58bc170b7df3f179ca1fadebae6f2e98777b64b35c5","dumps/main/attachments/search-config-icons/2ecca3f8-c1ef-43cc-b053-886d1ae46c36":"774f0a7a613c6c5bea642e3628fa7436851de79e7da9713ad0c96d5db7f44300","dumps/main/attachments/search-config-icons/2ecca3f8-c1ef-43cc-b053-886d1ae46c36.meta.json":"194cb07dd29fd66121f05bbef38291e894291adcbc4c63c373b5f72f6f2e245e","dumps/main/attachments/search-config-icons/32d26d19-aeb0-5c01-32e8-f8970be9246f":"a64f553b79fbb8c45734310dac401ad253ccd05aeabfa58bb5541daa6d8caf70","dumps/main/attachments/search-config-icons/32d26d19-aeb0-5c01-32e8-f8970be9246f.meta.json":"6e56cf6a9470f575b283e40ed6a049e9dbffadcb59fa74a0f941b431c444d795","dumps/main/attachments/search-config-icons/39d0b17d-c020-4890-932f-83c0f6ed130b":"4f409c3ffc67cfa870b05e4089b6ffc3fc81448fa60afba447f0177cd1192b1e","dumps/main/attachments/search-config-icons/39d0b17d-c020-4890-932f-83c0f6ed130b.meta.json":"686c72d6cd220285d8b97af55474198027eab1b1af7ed89508c8935c9e00e7d4","dumps/main/attachments/search-config-icons/41135a88-093d-4077-873b-9de1ae133427":"c2718c5e416670426475dd8cc496f5464bf95224e8f8f0a72b695360ddc917c0","dumps/main/attachments/search-config-icons/41135a88-093d-4077-873b-9de1ae133427.meta.json":"a941fc27ca88b56eccbdec380ce2d3b911f4c62e4aba1f5399bc4498c6601d94","dumps/main/attachments/search-config-icons/41f0d805-3775-4988-8d8c-5ad8ccd86d1c":"755b8939c63b1fcc9acd05cd33ffed675397516d37b5bd8f3a03875e25d3fb43","dumps/main/attachments/search-config-icons/41f0d805-3775-4988-8d8c-5ad8ccd86d1c.meta.json":"25cafe7d629c6b006e15dee98987c26ef509f348ed0350a3ccf1f06838db86f3","dumps/main/attachments/search-config-icons/47da97b5-600f-c450-fd15-a52bb2169c11":"d7fdfd971d874f2ec6f209df6f6b8173d126cd3f7a25daacb94de4259efbcf16","dumps/main/attachments/search-config-icons/47da97b5-600f-c450-fd15-a52bb2169c11.meta.json":"e6b95ca29bf3e750819cf890ae8e879ac506d54b918c3c0ab065adc16a131188","dumps/main/attachments/search-config-icons/48c72361-cd67-412e-bd7f-f81a43c10791":"92da7ef030e1d3ed97235748156383e5d75fa6d2744bd124334ab47dc0b689a1","dumps/main/attachments/search-config-icons/48c72361-cd67-412e-bd7f-f81a43c10791.meta.json":"21d1320d60c981b9c9248b9b186fc49f9d95046a817d7a3145f48465236087e8","dumps/main/attachments/search-config-icons/4e271681-3e0f-91ac-9750-03f665efc171":"189ed3031a2cefd3150c9e5b37bee1ffbc1f7850f7ac0621e4b8d262f2c1048c","dumps/main/attachments/search-config-icons/4e271681-3e0f-91ac-9750-03f665efc171.meta.json":"0a401871b82f1c1cbca91232fd643be1cc1a76c07a48830eaa2a47cdfafb1f14","dumps/main/attachments/search-config-icons/50f6171f-8e7a-b41b-862e-f97397038fb2":"9140bd1b30953f41bc758d2c0ecc873f5163e4f51126c278991eccd38589c541","dumps/main/attachments/search-config-icons/50f6171f-8e7a-b41b-862e-f97397038fb2.meta.json":"805d8ce33bac4611ce12d1f84ef431313555d76bf996264736e401ceb6dabe98","dumps/main/attachments/search-config-icons/5203dd03-2c55-4b53-9c60-58258d587be1":"adb29f6fd95956401630d94967381ac473f57215d96a5bcf500a00e747731380","dumps/main/attachments/search-config-icons/5203dd03-2c55-4b53-9c60-58258d587be1.meta.json":"27a6f994c2c7653a33d380ac13c4cfbc00f543a92f229426aa71d85b1f968357","dumps/main/attachments/search-config-icons/5914932e-66ba-4126-8be5-d37beadd9532":"02f54211387baa59e4246356dc7344e48f39a412f2e5993d7f403aa538df7276","dumps/main/attachments/search-config-icons/5914932e-66ba-4126-8be5-d37beadd9532.meta.json":"2df77daeeef5892fdb7fdeecffb804638bd0d2f7da5b9e617f01303d786dcd09","dumps/main/attachments/search-config-icons/5ded611d-44b2-dc46-fd67-fb116888d75d":"877fb3aca13d2a7c656df1f94df3fa052afbb40b65c99ba5382392ff5499016e","dumps/main/attachments/search-config-icons/5ded611d-44b2-dc46-fd67-fb116888d75d.meta.json":"d1c75915fdc86461e755cd08e670b01da41cd3d76688afe692f841733a9b7ee0","dumps/main/attachments/search-config-icons/5e03d6f4-6ee9-8bc8-cf22-7a5f2cf55c41":"9cd3da38e3938549434d1c3cba6fed249ffa7d91d9a6d7ffb5f4184f527cac76","dumps/main/attachments/search-config-icons/5e03d6f4-6ee9-8bc8-cf22-7a5f2cf55c41.meta.json":"8506d9438825f2dc34875e04e0212e22a2652c5c43aa93e4d184d59ec765316f","dumps/main/attachments/search-config-icons/6644f26f-28ea-4222-929d-5d43a02dae05":"4f1bfbfec1441bd9a304ca7f3b8fd54130e94df185f7b28bb17c86ba517e13b7","dumps/main/attachments/search-config-icons/6644f26f-28ea-4222-929d-5d43a02dae05.meta.json":"f7d37f9c8b87480539cd981f463790c99ed15b2ffc5e3ff4786dd11c25228df4","dumps/main/attachments/search-config-icons/6d10d702-7bd6-1452-90a5-3df665a38f66":"f895a965b68d02e7391cc4504d9be75e1ba7f9b50a1dd59af77bb44a7769c08c","dumps/main/attachments/search-config-icons/6d10d702-7bd6-1452-90a5-3df665a38f66.meta.json":"d782d80f8187cf8051be89c6b8a1ef4700e0b84dcda006843d1fd2f266c4419b","dumps/main/attachments/search-config-icons/6e36a151-e4f4-4117-9067-1ca82c47d01a":"e9849089ffced59563896974afee0fceedac7fc8455bbeaa5bae230f54c933d9","dumps/main/attachments/search-config-icons/6e36a151-e4f4-4117-9067-1ca82c47d01a.meta.json":"0e5a64c06ea0ae875e8e0fdc850feddf5a8714b8290293dcd100d455de32ace0","dumps/main/attachments/search-config-icons/6f4da442-d31e-28f8-03af-797d16bbdd27":"dd5cab3711f778677859e86000a127ed07a6175e8e58aecb0fba71b825ce76d7","dumps/main/attachments/search-config-icons/6f4da442-d31e-28f8-03af-797d16bbdd27.meta.json":"0a947797180fdaf031a9c2d2f841b88243c90ff85f0af873f99ddd770fc59e8b","dumps/main/attachments/search-config-icons/7072564d-a573-4750-bf33-f0a07631c9eb":"0a653ea57472694ac05623d9b237e479232a0d65683d05f89661f996054e3276","dumps/main/attachments/search-config-icons/7072564d-a573-4750-bf33-f0a07631c9eb.meta.json":"bb8a256f72b37166fea2ecd4c3a59f49615854a7210e6963f2571f8dcb3d3a3f","dumps/main/attachments/search-config-icons/70fdd651-6c50-b7bb-09ec-7e85da259173":"31a793dad95b5ffd02d39ebf14fc40877596f418f5926247487265034181dc8f","dumps/main/attachments/search-config-icons/70fdd651-6c50-b7bb-09ec-7e85da259173.meta.json":"8c744e9d2f218256e63f1b1a2193f2fc4a7b980e72464e8d57fbe150446f2efc","dumps/main/attachments/search-config-icons/71f41a0c-5b70-4116-b30f-e62089083522":"5aad083bfcef256d433c1ffa571b814d16f61832bcd7565bf03909011f6a0bfc","dumps/main/attachments/search-config-icons/71f41a0c-5b70-4116-b30f-e62089083522.meta.json":"4a8f0c4e4ee643faa2f8d8cc4ddb8f87d14c740e8c9252223f826181c0117741","dumps/main/attachments/search-config-icons/74793ce1-a918-a5eb-d3c0-2aadaff3c88c":"ca8f102ac4f35189ebcb786d080843b603b234f89b8d8b1c0ef27a0ab7148182","dumps/main/attachments/search-config-icons/74793ce1-a918-a5eb-d3c0-2aadaff3c88c.meta.json":"60a7975cd79156623b0ca58be4110d152e50b6e9caaaa211dad1cd37eabb0345","dumps/main/attachments/search-config-icons/74f94dc2-caf6-4b90-b3d2-f3e2f7714d88":"3376e14529ed2e96c7dc491b3bf11914d7c8ff47a068311b2432c086c2ae0f28","dumps/main/attachments/search-config-icons/74f94dc2-caf6-4b90-b3d2-f3e2f7714d88.meta.json":"3a94a78a846f312c85c0609971b153aaba9819e2b657f25e3b0648a3956933d1","dumps/main/attachments/search-config-icons/764e3b14-fe16-4feb-8384-124c516a5afa":"71413ef23ac14ce2b7bb76f7f5d16b2df267239841a88ddab36b129481e00616","dumps/main/attachments/search-config-icons/764e3b14-fe16-4feb-8384-124c516a5afa.meta.json":"2f16dd51ade97a327d4e5f14d689f822a5c9061b9b27810bbccbf2f406a5e56f","dumps/main/attachments/search-config-icons/7bbe6c5c-fdb8-2845-a4f4-e1382e708a0e":"24daa27a3234d01b5add42e027b0a34000d0ab47c17fe3924c2ca267b7b61c19","dumps/main/attachments/search-config-icons/7bbe6c5c-fdb8-2845-a4f4-e1382e708a0e.meta.json":"308d345dbcfd7583e5f7460d34caf3b63d01b747a6e060a2b0971bf00ed2b22c","dumps/main/attachments/search-config-icons/7bf4ca37-e2b8-4d31-a1c3-979bc0e85131":"912d20feefcba57d43bffff5e245b8c1e3865155ed686d8ad253bbab71116e83","dumps/main/attachments/search-config-icons/7bf4ca37-e2b8-4d31-a1c3-979bc0e85131.meta.json":"3ec071b0a2940cd8892a72bd28d44237aecfd20d88303661348257ddb98aee43","dumps/main/attachments/search-config-icons/7c81cf98-7c11-4afd-8279-db89118a6dfb":"e988445d87afe0d285bea251705fc23eb70ac42426ab0d7a69d9276585c5573c","dumps/main/attachments/search-config-icons/7c81cf98-7c11-4afd-8279-db89118a6dfb.meta.json":"273dd09cad2a62459cc062e3b39b835d55a06b10cb7d5149aad77dd55451821f","dumps/main/attachments/search-config-icons/7cb4d88a-d4df-45b2-87e4-f896eaf1bbdb":"8dc2e75e6792b8374b20621fa2151ac24b4626e5c1f6a1abec4f912746441859","dumps/main/attachments/search-config-icons/7cb4d88a-d4df-45b2-87e4-f896eaf1bbdb.meta.json":"21d2522ab4e47477e72da3a2d2223e50e55fef442e2ba736d56df1e09593d76f","dumps/main/attachments/search-config-icons/7edaf4fe-a8a0-432b-86d2-bf75ebe80851":"27541cb376bdda829a6cf9cefd13da112728881e3daa4ac3c1178d4ce15f1e8b","dumps/main/attachments/search-config-icons/7edaf4fe-a8a0-432b-86d2-bf75ebe80851.meta.json":"3aea5d0652172940ac33e32628dcc6a03b79fe686c6de752482c8e3ae5cd70eb","dumps/main/attachments/search-config-icons/7efbed51-813c-581d-d8d3-f8758434e451":"b0c6d1850265e3c946917232ca6c6ace3dad23347bfab4f81351eac569326d34","dumps/main/attachments/search-config-icons/7efbed51-813c-581d-d8d3-f8758434e451.meta.json":"5a723c8f04bffa33a69a7054d30a4816caf1a3924081c85e1d9770126f761a96","dumps/main/attachments/search-config-icons/84bb4962-e571-227a-9ef6-2ac5f2aac361":"a1fd5d127a5f2590ddcd439b7a2abb3456b48217ea11daf0345b26e108f520e6","dumps/main/attachments/search-config-icons/84bb4962-e571-227a-9ef6-2ac5f2aac361.meta.json":"5cb0ebdde367b9754ddf6cbd01150414d27977b2d4c5f65cd6bbb89989388f3b","dumps/main/attachments/search-config-icons/87ac4cde-f581-398b-1e32-eb4079183b36":"33ca72f1eac56793d1fd811189cedef98004a067c85b1143083b564814a4b0db","dumps/main/attachments/search-config-icons/87ac4cde-f581-398b-1e32-eb4079183b36.meta.json":"d97eca8063cc17b99c81c55d4ff121d765c793e006ed252fec5f9539bd0fc339","dumps/main/attachments/search-config-icons/8831ce10-b1e4-6eb4-4975-83c67457288e":"ca3cc8786977f6ffeb0546ff8f3bb2b7fd240d1956fbf86777dbf0e8bec9c03b","dumps/main/attachments/search-config-icons/8831ce10-b1e4-6eb4-4975-83c67457288e.meta.json":"45274d848d1f6d398563bb46a2bfa3eee40ff16a5dbf0bbc8904db442f80702c","dumps/main/attachments/search-config-icons/890de5c4-0941-a116-473a-5d240e79497a":"6ba1f0fd1d12014cab32f74daab24dfa16fb26613ace20a1e595267621038a07","dumps/main/attachments/search-config-icons/890de5c4-0941-a116-473a-5d240e79497a.meta.json":"107547059360c3658dcf187a546ffb52bb23fa385e1338151043bebe82bbf640","dumps/main/attachments/search-config-icons/8abb10a7-212f-46b5-a7b4-244f414e3810":"f8780adb4d7b28f2f881db4ca7b697d8fc916cd9fa834ccc445fe7d4b72a6cc7","dumps/main/attachments/search-config-icons/8abb10a7-212f-46b5-a7b4-244f414e3810.meta.json":"5401603c7abbc6ca5bdddb8f9cca7eee2e26e5721cc73f23d95f600d5421d431","dumps/main/attachments/search-config-icons/91a9672d-e945-8e1e-0996-aefdb0190716":"5d53ef1866a08cc29011f5f2a9ce99bbf37cf42e80de7f0e8cc30d13337e8187","dumps/main/attachments/search-config-icons/91a9672d-e945-8e1e-0996-aefdb0190716.meta.json":"4e8ea36e3d659eb22ac7c86498003ca8885bab9c40685bb8ca7796a8230201da","dumps/main/attachments/search-config-icons/94a84724-c30f-4767-ba42-01cc37fc31a4":"98dca7e24cad0a1be96ef2c323e9759beb63c72440756f887e2482d9ce8e8969","dumps/main/attachments/search-config-icons/94a84724-c30f-4767-ba42-01cc37fc31a4.meta.json":"1070966901fe9db82b71bfa74ddeedd4f23ab2ed1eddaf201634e06a604e6006","dumps/main/attachments/search-config-icons/95ed201d-4ab8-4cb8-831d-454f53cab0f8":"3426b5100a6bdb45f8039f0c71a6b68193750ba7bae5b36e5ed31b2b7f372cda","dumps/main/attachments/search-config-icons/95ed201d-4ab8-4cb8-831d-454f53cab0f8.meta.json":"3447cd050619c1d2e5859147ab894a43da75235a580219306d8629e28a7a3eb5","dumps/main/attachments/search-config-icons/96327a73-c433-5eb4-a16d-b090cadfb80b":"ca6e972004f62355c1ea97656bc2328e1643971bdecab9c6b563d45593b8122e","dumps/main/attachments/search-config-icons/96327a73-c433-5eb4-a16d-b090cadfb80b.meta.json":"c4e3c9e6426e6f35410c287eef95b3e2134e54409e462f02dd440876c06b1bb4","dumps/main/attachments/search-config-icons/9802e63d-05ec-48ba-93f9-746e0981ad98":"6b1b073183eb0012daea0dce351a94d395c8a0b531b610e56eac52b3d1d1da0e","dumps/main/attachments/search-config-icons/9802e63d-05ec-48ba-93f9-746e0981ad98.meta.json":"cceb55c68db8dddd23d064364a281e982069bfe2bb55eba7d282fffcec2aa89f","dumps/main/attachments/search-config-icons/9d96547d-7575-49ca-8908-1e046b8ea90e":"6a743574353de0ec7c85b49f46b2b554caa0fc1d064b90544c5dea0fea2b8901","dumps/main/attachments/search-config-icons/9d96547d-7575-49ca-8908-1e046b8ea90e.meta.json":"10897754c5aafe0b84413afee5e9948fd799262a26aa07bca85fe6fb369beac4","dumps/main/attachments/search-config-icons/a06db97d-1210-ea2e-5474-0e2f7d295bfd":"617dec5d635efb0a12d0de935c6999ef0249f4a63c62bdcb96551518bc3d1812","dumps/main/attachments/search-config-icons/a06db97d-1210-ea2e-5474-0e2f7d295bfd.meta.json":"06cf576ca882bd7c2d54c18329e21e5b1a9cb7732d4954b52cbfa52979a67765","dumps/main/attachments/search-config-icons/a06dc3fd-4bdb-41f3-2ebc-4cbed06a9bd3":"d994f806b1e4225b50be5ab681b2cecf845cc216a19a432d878cea3cb815bafd","dumps/main/attachments/search-config-icons/a06dc3fd-4bdb-41f3-2ebc-4cbed06a9bd3.meta.json":"67524e18799023a017c7d9db1b9ba5c9cc3090d20f8154449a8f44ba22719104","dumps/main/attachments/search-config-icons/a2c7d4e9-f770-51e1-0963-3c2c8401631d":"1bf68aca7bfc75ca8485c3dac9a1daa13c1a3eb480688c32262096af6076adfa","dumps/main/attachments/search-config-icons/a2c7d4e9-f770-51e1-0963-3c2c8401631d.meta.json":"4ab103bba0f8fde581c3950c6c08cfcf6786104d8cbcba240499308f26958d04","dumps/main/attachments/search-config-icons/a83f24e4-602c-47bd-930c-ad0947ee1adf":"66612f999921d892645c8a2b37aa5dad17b134e7fdaed375a683baec7fc10697","dumps/main/attachments/search-config-icons/a83f24e4-602c-47bd-930c-ad0947ee1adf.meta.json":"f985ffbde6cf6ef972b6798c9336922dcfa29ca9a31e3aa4fae1962e069bdb0c","dumps/main/attachments/search-config-icons/b64f09fd-52d1-c48e-af23-4ce918e7bf3b":"c3e8300801c5c585662f14fd8e819d635efd9830783dc3c631212927866e9898","dumps/main/attachments/search-config-icons/b64f09fd-52d1-c48e-af23-4ce918e7bf3b.meta.json":"f7fd846d6717131e75865f8f5ed562e88f40be3dcf1603f2660b425dedabc7d1","dumps/main/attachments/search-config-icons/b882b24d-1776-4ef9-9016-0bdbd935eda3":"076352591c7077af4af5771918f80b5da9c6bf479327cc68390abdb158f3ec03","dumps/main/attachments/search-config-icons/b882b24d-1776-4ef9-9016-0bdbd935eda3.meta.json":"229139bca53bc63bd59b8f261f36c11fbe76b2b45dfeac2580261cf290c41365","dumps/main/attachments/search-config-icons/b8ca5a94-8fff-27ad-6e00-96e244a32e21":"1474c93e49c209aca2a2df2acb61b64574805106bead6edebd67287de21920e0","dumps/main/attachments/search-config-icons/b8ca5a94-8fff-27ad-6e00-96e244a32e21.meta.json":"6fd72c11afb4249d0166d8d98c552ee02d73c0e07f0578bfd3d7e67d70bcaee3","dumps/main/attachments/search-config-icons/b9424309-f601-4a69-98ca-ca68e65633e6":"601d72e7abde5ec864b3d8ca0031896f769107670b84c66053062481a56d8665","dumps/main/attachments/search-config-icons/b9424309-f601-4a69-98ca-ca68e65633e6.meta.json":"f299a7d56c5552fc592c66073d3e1e1d16ce4a99e935dcc0cad7dafcad6b9e3b","dumps/main/attachments/search-config-icons/c411adc1-9661-4fb5-a4c1-8cfe74911943":"150765e8e9b985ba5b820ac9b8e7623023d5a0e24f94663d5e9203d8d7598059","dumps/main/attachments/search-config-icons/c411adc1-9661-4fb5-a4c1-8cfe74911943.meta.json":"c5cc89d5f24ef1fa40b1c47c2e97eaeb01439b8d3b186b9c2fe716c94ead30f2","dumps/main/attachments/search-config-icons/cbf9e891-d079-2b28-5617-283450d463dd":"5b2c34b3c4e8dd898b664dba6c3786e2ff9869eff55d673aa48361f11325ed07","dumps/main/attachments/search-config-icons/cbf9e891-d079-2b28-5617-283450d463dd.meta.json":"b757806fd1b922d81bbecab94c73d3db98cfc2aa2791a4d5137112f795a732ee","dumps/main/attachments/search-config-icons/d87f251c-3e12-a8bf-e2d0-afd43d36c5f9":"865d76c8175a8f11dedc93f0bc212242a97a8a76adac870e8249368cecc81402","dumps/main/attachments/search-config-icons/d87f251c-3e12-a8bf-e2d0-afd43d36c5f9.meta.json":"22594c8870cbabe5fc5d2637509235202502661b466e9e37c5878716f323a34f","dumps/main/attachments/search-config-icons/db0e1627-ae89-4c25-8944-a9481d8512d9":"97a68f0b948b68bbf389a9ef43e2fe6c31ff8dc7889c939fdfdea79378576c67","dumps/main/attachments/search-config-icons/db0e1627-ae89-4c25-8944-a9481d8512d9.meta.json":"1eccc999dcd377af84cf63ed60b7ef23d5d4b936a1e465d12349a5366b1b012d","dumps/main/attachments/search-config-icons/e02f23df-8d48-2b1b-3b5c-6dd27302c61c":"247aa26993083705ce99a8e5612cdf262aca98cde86ba19afc964329ba95986a","dumps/main/attachments/search-config-icons/e02f23df-8d48-2b1b-3b5c-6dd27302c61c.meta.json":"06fc893d29cf406519611da9d1993a13bd9134192940c12bf64536ea571db4f0","dumps/main/attachments/search-config-icons/e718e983-09aa-e8f6-b25f-cd4b395d4785":"809697f48848e7c3638d5f3e0b224ea60b3800504e7bd8417854d55989b85196","dumps/main/attachments/search-config-icons/e718e983-09aa-e8f6-b25f-cd4b395d4785.meta.json":"0d9baef39747776500e5b83e72cd9d901fc09ac08247368dd2117bb4ec011f54","dumps/main/attachments/search-config-icons/e7547f62-187b-b641-d462-e54a3f813d9a":"c971ee33b8c0a57349669d957bf73070b0632b128c94748e845b57d5e15221a4","dumps/main/attachments/search-config-icons/e7547f62-187b-b641-d462-e54a3f813d9a.meta.json":"8ec4f6a7826966f2ff82632ef527366db3452ebc40c90a557602111f0ea956c9","dumps/main/attachments/search-config-icons/eb62e768-151b-45d1-9fe5-9e1d2a5991c5":"aa46b3d1ed8557e5bc7e71988cc6c46b00363b890d2a781973f9dc9073f8dd31","dumps/main/attachments/search-config-icons/eb62e768-151b-45d1-9fe5-9e1d2a5991c5.meta.json":"a06682b589df8dd63b1f25c01630ead55a89217f72c0bc04b391829af3fef59f","dumps/main/attachments/search-config-icons/f312610a-ebfb-a106-ea92-fd643c5d3636":"91d17ba44192a6430ffdb447ff3a11533ef964628f67c13480cc9470212d3d65","dumps/main/attachments/search-config-icons/f312610a-ebfb-a106-ea92-fd643c5d3636.meta.json":"ce26ab2382a7a67a55688330dd74127b4a980610f4030bde8eaaa20b81306559","dumps/main/attachments/search-config-icons/fa0fc42c-d91d-fca7-34eb-806ff46062dc":"6da5620880159634213e197fafca1dde0272153be3e4590818533fab8d040770","dumps/main/attachments/search-config-icons/fa0fc42c-d91d-fca7-34eb-806ff46062dc.meta.json":"0c3c0eb832be884f25186395b8bf08cdbe0a6e2845b9e55e7cbea5d0f183ed7d","dumps/main/attachments/search-config-icons/fca3e3ee-56cd-f474-dc31-307fd24a891d":"c4d88cfa5262f6d2cf76b167281d25821c9e1770684b739ed6ad3cf7277a121b","dumps/main/attachments/search-config-icons/fca3e3ee-56cd-f474-dc31-307fd24a891d.meta.json":"a40c37a5150e3745849f67305fe2fe1e06ef1c3901f6dc604a8e3f6c94e7b624","dumps/main/attachments/search-config-icons/fe75ce3f-1545-400c-b28c-ad771054e69f":"3a9d06951c7c9d2c19cd00533a760b0f8755b1e2e718af81c710297d030fbe44","dumps/main/attachments/search-config-icons/fe75ce3f-1545-400c-b28c-ad771054e69f.meta.json":"3f353e083d7a885f6d59d36c9276a2d325686a533cf8c502cd41a10172e763ea","dumps/main/attachments/search-config-icons/fed4f021-ff3e-942a-010e-afa43fda2136":"d7fdfd971d874f2ec6f209df6f6b8173d126cd3f7a25daacb94de4259efbcf16","dumps/main/attachments/search-config-icons/fed4f021-ff3e-942a-010e-afa43fda2136.meta.json":"740f77dcc93ece89fd55557baf399a4464373c81154b0a9758b8622f6c458253","dumps/main/regions.json":"e8990158373f82d3f89fed5089cf29e4177cc85904479128728e05025e9a0c0c","dumps/main/search-config-icons.json":"8bfa7c4abd2ab4238cd2ea66dc143bb9048f2699735b01560980109dbe39d759","dumps/main/search-config-v2.json":"377a7027e3b50118ca5f198ebc89461674f9d480edd4bff7ba419539280a13f5","dumps/main/search-telemetry-v2.json":"62a96014721bbd546d677eda35e33a71526245a511b32efaa5b6d2ef1f5294e6","dumps/main/summarizer-models-config.json":"545c53023a18e1a91e0817c1d5a5a11e45469516f8813b1a4dcad40426e1464c","src/cache.rs":"c6179802017b43885136e7d64004890cc13e8c2d4742e04073cf404b578f63db","src/client.rs":"c3e54387ebaef56508a0fb66cf891e0c245cd1a0e6e03047cde05b7f6eddee54","src/config.rs":"3e322bdab94855e17427187ffe92a59c1a64c9175d5e1f8605df2f6409a3c93f","src/context.rs":"43bab81026b6f1a2509d129e806fffd09ba80110d656798a02589985017a3c21","src/error.rs":"7f56c3ae167811c5a8413b73a7e6abcec2377c67cf48e7520929e15532678eef","src/jexl_filter.rs":"48a9d960e05dae444421f7c4ceeb45eab656f03f1e7071215c8e8d39aab56b54","src/lib.rs":"cd7d816f87146693471c328a185747e3b786a51f3ddbb780a71f244f18179526","src/macros.rs":"6b06d0ba42ee95235bfd71bac1a0eed02f60c894775ebee64165648b10e932c4","src/schema.rs":"348e0d5ad1840aaae796b537d21381ef91bd75be262138bfec376d9f88d205b3","src/service.rs":"3f0757473194d30d7fb5be75dfe9647640e9d23253f4167139e8bd70468e9abd","src/signatures.rs":"baa2dae76abd8166158fea4676e67e17c17b65af6968de52768350409dbd7092","src/storage.rs":"c33dd92914770e96d3d44dbb9e95f512ce54261710a42c7cf4a896be348c529e","uniffi.toml":"bd7cc0e7c1981f53938f429c4f2541ac454ed4160a8a0b4670659e38acd23ee5"},"package":null}
+\ No newline at end of file
++{"files":{"Cargo.toml":"19c95234033bcb34a4f179937308bd6075c8df6671d7b2f34b897fc3c33718e6","dumps/main/attachments/regions/world":"00b308033d44f61612b962f572765d14a3999586d92fc8b9fff2217a1ae070e8","dumps/main/attachments/regions/world-buffered":"1d3ed6954fac2a5b31302f5d3e8186c5fa08a20239afc0643ca5dfbb4d8a86fc","dumps/main/attachments/regions/world-buffered.meta.json":"914a71376a152036aceccb6877e079fbb9e3373c6219f24f00dd30e901a72cce","dumps/main/attachments/regions/world.meta.json":"2a47d77834997b98e563265d299723e7f7fd64c8c7a5731afc722862333d6fbd","dumps/main/attachments/search-config-icons/001500a9-1a6c-3f5a-ba15-a5f5a075d256":"fdadf15c6eae7933c3d254ae6311112e0bc8a422c38c758189dbe6a4d7f6b718","dumps/main/attachments/search-config-icons/001500a9-1a6c-3f5a-ba15-a5f5a075d256.meta.json":"6ed1e1c390a45360590e5a1e6d7823218e7b10860581646ddb5e368143aa72fc","dumps/main/attachments/search-config-icons/06cf7432-efd7-f244-927b-5e423005e1ea":"b75ef04a805325e303c4195833cdd077d3d406f360b25b72502fc55880b9150b","dumps/main/attachments/search-config-icons/06cf7432-efd7-f244-927b-5e423005e1ea.meta.json":"0d4cce0ed0dc6b2c46651bea32fc3cc2facfe8b341e1022b65f2cd2231f6b713","dumps/main/attachments/search-config-icons/0a57b0cf-34f0-4d09-96e4-dbd6e3355410":"a7493c6a9d70d60acccf73f62dcbc127a580469570aee60b7482cd42cdb59f69","dumps/main/attachments/search-config-icons/0a57b0cf-34f0-4d09-96e4-dbd6e3355410.meta.json":"d33a128c92b96af2e643158ed3b861d3726bd67a59907fed0795ab2210c82b96","dumps/main/attachments/search-config-icons/0d7668a8-c3f4-cfee-cbc8-536511528937":"7042293af6b04e421cb7b68dc599ac644b76939cdcf5970159e44f658dd6a0cc","dumps/main/attachments/search-config-icons/0d7668a8-c3f4-cfee-cbc8-536511528937.meta.json":"d6523508334a67b201326591606d7e225a04fc53fdce2c1b4d8afac1b41af6b0","dumps/main/attachments/search-config-icons/0eec5640-6fde-d6fe-322a-c72c6d5bd5a2":"64800e32b24b2c8c0582750e1657426d56abd74b65682e20e892f82710d120b6","dumps/main/attachments/search-config-icons/0eec5640-6fde-d6fe-322a-c72c6d5bd5a2.meta.json":"56fb61a078cc45abf7bc3b8fe89b60ef75f3b86ea61d63084749607c4662bbef","dumps/main/attachments/search-config-icons/101ce01d-2691-b729-7f16-9d389803384b":"62d2faa3a8322b1f643aab6e045837500ebe3049c5cb140cb44c4dfc7290337a","dumps/main/attachments/search-config-icons/101ce01d-2691-b729-7f16-9d389803384b.meta.json":"de134ed423a2bd92b4ad8cdf631aad6a83cc2c30f8df9ee251a435ee9f46f28f","dumps/main/attachments/search-config-icons/177aba42-9bed-4078-e36b-580e8794cd7f":"3b88f3ef3cbfaed127d679ec7e44a44fe8dcad688feb89a70a1a9447c1460d15","dumps/main/attachments/search-config-icons/177aba42-9bed-4078-e36b-580e8794cd7f.meta.json":"c35210da5afc11b3af156baf46c23fa523dafac7e8cb2738b4caef80ed48c72e","dumps/main/attachments/search-config-icons/25de0352-aabb-d31f-15f7-bf9299fb004c":"828c3ca82e9be483ae583e5a705dde57b24fd8431e192e3a2d0809871992afa5","dumps/main/attachments/search-config-icons/25de0352-aabb-d31f-15f7-bf9299fb004c.meta.json":"aa5483b5c65427c028a676b2fc13892f6fcaf602613183962744c43ca146d86a","dumps/main/attachments/search-config-icons/2bbe48f4-d3b8-c9e0-86e3-a54c37ec3335":"723ac3228124926537d5a61284d60e198a52895195f9f69b967c578ef7a012ad","dumps/main/attachments/search-config-icons/2bbe48f4-d3b8-c9e0-86e3-a54c37ec3335.meta.json":"d754b38d7e2f79e651d5fe110a7bb9855e0f7269e177be6d047453a36a52a4c5","dumps/main/attachments/search-config-icons/2e835b0e-9709-d1bb-9725-87f59f3445ca":"16ea89d4baa39529d7a84d5152867a4c6ed6867198c4dfa1648b1f43ce6a3f6f","dumps/main/attachments/search-config-icons/2e835b0e-9709-d1bb-9725-87f59f3445ca.meta.json":"7edb361a6610fdabb431a58bc170b7df3f179ca1fadebae6f2e98777b64b35c5","dumps/main/attachments/search-config-icons/2ecca3f8-c1ef-43cc-b053-886d1ae46c36":"774f0a7a613c6c5bea642e3628fa7436851de79e7da9713ad0c96d5db7f44300","dumps/main/attachments/search-config-icons/2ecca3f8-c1ef-43cc-b053-886d1ae46c36.meta.json":"194cb07dd29fd66121f05bbef38291e894291adcbc4c63c373b5f72f6f2e245e","dumps/main/attachments/search-config-icons/32d26d19-aeb0-5c01-32e8-f8970be9246f":"a64f553b79fbb8c45734310dac401ad253ccd05aeabfa58bb5541daa6d8caf70","dumps/main/attachments/search-config-icons/32d26d19-aeb0-5c01-32e8-f8970be9246f.meta.json":"6e56cf6a9470f575b283e40ed6a049e9dbffadcb59fa74a0f941b431c444d795","dumps/main/attachments/search-config-icons/39d0b17d-c020-4890-932f-83c0f6ed130b":"4f409c3ffc67cfa870b05e4089b6ffc3fc81448fa60afba447f0177cd1192b1e","dumps/main/attachments/search-config-icons/39d0b17d-c020-4890-932f-83c0f6ed130b.meta.json":"686c72d6cd220285d8b97af55474198027eab1b1af7ed89508c8935c9e00e7d4","dumps/main/attachments/search-config-icons/41135a88-093d-4077-873b-9de1ae133427":"c2718c5e416670426475dd8cc496f5464bf95224e8f8f0a72b695360ddc917c0","dumps/main/attachments/search-config-icons/41135a88-093d-4077-873b-9de1ae133427.meta.json":"a941fc27ca88b56eccbdec380ce2d3b911f4c62e4aba1f5399bc4498c6601d94","dumps/main/attachments/search-config-icons/41f0d805-3775-4988-8d8c-5ad8ccd86d1c":"755b8939c63b1fcc9acd05cd33ffed675397516d37b5bd8f3a03875e25d3fb43","dumps/main/attachments/search-config-icons/41f0d805-3775-4988-8d8c-5ad8ccd86d1c.meta.json":"25cafe7d629c6b006e15dee98987c26ef509f348ed0350a3ccf1f06838db86f3","dumps/main/attachments/search-config-icons/47da97b5-600f-c450-fd15-a52bb2169c11":"d7fdfd971d874f2ec6f209df6f6b8173d126cd3f7a25daacb94de4259efbcf16","dumps/main/attachments/search-config-icons/47da97b5-600f-c450-fd15-a52bb2169c11.meta.json":"e6b95ca29bf3e750819cf890ae8e879ac506d54b918c3c0ab065adc16a131188","dumps/main/attachments/search-config-icons/48c72361-cd67-412e-bd7f-f81a43c10791":"92da7ef030e1d3ed97235748156383e5d75fa6d2744bd124334ab47dc0b689a1","dumps/main/attachments/search-config-icons/48c72361-cd67-412e-bd7f-f81a43c10791.meta.json":"21d1320d60c981b9c9248b9b186fc49f9d95046a817d7a3145f48465236087e8","dumps/main/attachments/search-config-icons/4e271681-3e0f-91ac-9750-03f665efc171":"189ed3031a2cefd3150c9e5b37bee1ffbc1f7850f7ac0621e4b8d262f2c1048c","dumps/main/attachments/search-config-icons/4e271681-3e0f-91ac-9750-03f665efc171.meta.json":"0a401871b82f1c1cbca91232fd643be1cc1a76c07a48830eaa2a47cdfafb1f14","dumps/main/attachments/search-config-icons/50f6171f-8e7a-b41b-862e-f97397038fb2":"9140bd1b30953f41bc758d2c0ecc873f5163e4f51126c278991eccd38589c541","dumps/main/attachments/search-config-icons/50f6171f-8e7a-b41b-862e-f97397038fb2.meta.json":"805d8ce33bac4611ce12d1f84ef431313555d76bf996264736e401ceb6dabe98","dumps/main/attachments/search-config-icons/5203dd03-2c55-4b53-9c60-58258d587be1":"adb29f6fd95956401630d94967381ac473f57215d96a5bcf500a00e747731380","dumps/main/attachments/search-config-icons/5203dd03-2c55-4b53-9c60-58258d587be1.meta.json":"27a6f994c2c7653a33d380ac13c4cfbc00f543a92f229426aa71d85b1f968357","dumps/main/attachments/search-config-icons/5914932e-66ba-4126-8be5-d37beadd9532":"02f54211387baa59e4246356dc7344e48f39a412f2e5993d7f403aa538df7276","dumps/main/attachments/search-config-icons/5914932e-66ba-4126-8be5-d37beadd9532.meta.json":"2df77daeeef5892fdb7fdeecffb804638bd0d2f7da5b9e617f01303d786dcd09","dumps/main/attachments/search-config-icons/5ded611d-44b2-dc46-fd67-fb116888d75d":"877fb3aca13d2a7c656df1f94df3fa052afbb40b65c99ba5382392ff5499016e","dumps/main/attachments/search-config-icons/5ded611d-44b2-dc46-fd67-fb116888d75d.meta.json":"d1c75915fdc86461e755cd08e670b01da41cd3d76688afe692f841733a9b7ee0","dumps/main/attachments/search-config-icons/5e03d6f4-6ee9-8bc8-cf22-7a5f2cf55c41":"9cd3da38e3938549434d1c3cba6fed249ffa7d91d9a6d7ffb5f4184f527cac76","dumps/main/attachments/search-config-icons/5e03d6f4-6ee9-8bc8-cf22-7a5f2cf55c41.meta.json":"8506d9438825f2dc34875e04e0212e22a2652c5c43aa93e4d184d59ec765316f","dumps/main/attachments/search-config-icons/6644f26f-28ea-4222-929d-5d43a02dae05":"4f1bfbfec1441bd9a304ca7f3b8fd54130e94df185f7b28bb17c86ba517e13b7","dumps/main/attachments/search-config-icons/6644f26f-28ea-4222-929d-5d43a02dae05.meta.json":"f7d37f9c8b87480539cd981f463790c99ed15b2ffc5e3ff4786dd11c25228df4","dumps/main/attachments/search-config-icons/6d10d702-7bd6-1452-90a5-3df665a38f66":"f895a965b68d02e7391cc4504d9be75e1ba7f9b50a1dd59af77bb44a7769c08c","dumps/main/attachments/search-config-icons/6d10d702-7bd6-1452-90a5-3df665a38f66.meta.json":"d782d80f8187cf8051be89c6b8a1ef4700e0b84dcda006843d1fd2f266c4419b","dumps/main/attachments/search-config-icons/6e36a151-e4f4-4117-9067-1ca82c47d01a":"e9849089ffced59563896974afee0fceedac7fc8455bbeaa5bae230f54c933d9","dumps/main/attachments/search-config-icons/6e36a151-e4f4-4117-9067-1ca82c47d01a.meta.json":"0e5a64c06ea0ae875e8e0fdc850feddf5a8714b8290293dcd100d455de32ace0","dumps/main/attachments/search-config-icons/6f4da442-d31e-28f8-03af-797d16bbdd27":"dd5cab3711f778677859e86000a127ed07a6175e8e58aecb0fba71b825ce76d7","dumps/main/attachments/search-config-icons/6f4da442-d31e-28f8-03af-797d16bbdd27.meta.json":"0a947797180fdaf031a9c2d2f841b88243c90ff85f0af873f99ddd770fc59e8b","dumps/main/attachments/search-config-icons/7072564d-a573-4750-bf33-f0a07631c9eb":"0a653ea57472694ac05623d9b237e479232a0d65683d05f89661f996054e3276","dumps/main/attachments/search-config-icons/7072564d-a573-4750-bf33-f0a07631c9eb.meta.json":"bb8a256f72b37166fea2ecd4c3a59f49615854a7210e6963f2571f8dcb3d3a3f","dumps/main/attachments/search-config-icons/70fdd651-6c50-b7bb-09ec-7e85da259173":"31a793dad95b5ffd02d39ebf14fc40877596f418f5926247487265034181dc8f","dumps/main/attachments/search-config-icons/70fdd651-6c50-b7bb-09ec-7e85da259173.meta.json":"8c744e9d2f218256e63f1b1a2193f2fc4a7b980e72464e8d57fbe150446f2efc","dumps/main/attachments/search-config-icons/71f41a0c-5b70-4116-b30f-e62089083522":"5aad083bfcef256d433c1ffa571b814d16f61832bcd7565bf03909011f6a0bfc","dumps/main/attachments/search-config-icons/71f41a0c-5b70-4116-b30f-e62089083522.meta.json":"4a8f0c4e4ee643faa2f8d8cc4ddb8f87d14c740e8c9252223f826181c0117741","dumps/main/attachments/search-config-icons/74793ce1-a918-a5eb-d3c0-2aadaff3c88c":"ca8f102ac4f35189ebcb786d080843b603b234f89b8d8b1c0ef27a0ab7148182","dumps/main/attachments/search-config-icons/74793ce1-a918-a5eb-d3c0-2aadaff3c88c.meta.json":"60a7975cd79156623b0ca58be4110d152e50b6e9caaaa211dad1cd37eabb0345","dumps/main/attachments/search-config-icons/74f94dc2-caf6-4b90-b3d2-f3e2f7714d88":"3376e14529ed2e96c7dc491b3bf11914d7c8ff47a068311b2432c086c2ae0f28","dumps/main/attachments/search-config-icons/74f94dc2-caf6-4b90-b3d2-f3e2f7714d88.meta.json":"3a94a78a846f312c85c0609971b153aaba9819e2b657f25e3b0648a3956933d1","dumps/main/attachments/search-config-icons/764e3b14-fe16-4feb-8384-124c516a5afa":"71413ef23ac14ce2b7bb76f7f5d16b2df267239841a88ddab36b129481e00616","dumps/main/attachments/search-config-icons/764e3b14-fe16-4feb-8384-124c516a5afa.meta.json":"2f16dd51ade97a327d4e5f14d689f822a5c9061b9b27810bbccbf2f406a5e56f","dumps/main/attachments/search-config-icons/7bbe6c5c-fdb8-2845-a4f4-e1382e708a0e":"24daa27a3234d01b5add42e027b0a34000d0ab47c17fe3924c2ca267b7b61c19","dumps/main/attachments/search-config-icons/7bbe6c5c-fdb8-2845-a4f4-e1382e708a0e.meta.json":"308d345dbcfd7583e5f7460d34caf3b63d01b747a6e060a2b0971bf00ed2b22c","dumps/main/attachments/search-config-icons/7bf4ca37-e2b8-4d31-a1c3-979bc0e85131":"912d20feefcba57d43bffff5e245b8c1e3865155ed686d8ad253bbab71116e83","dumps/main/attachments/search-config-icons/7bf4ca37-e2b8-4d31-a1c3-979bc0e85131.meta.json":"3ec071b0a2940cd8892a72bd28d44237aecfd20d88303661348257ddb98aee43","dumps/main/attachments/search-config-icons/7c81cf98-7c11-4afd-8279-db89118a6dfb":"e988445d87afe0d285bea251705fc23eb70ac42426ab0d7a69d9276585c5573c","dumps/main/attachments/search-config-icons/7c81cf98-7c11-4afd-8279-db89118a6dfb.meta.json":"273dd09cad2a62459cc062e3b39b835d55a06b10cb7d5149aad77dd55451821f","dumps/main/attachments/search-config-icons/7cb4d88a-d4df-45b2-87e4-f896eaf1bbdb":"8dc2e75e6792b8374b20621fa2151ac24b4626e5c1f6a1abec4f912746441859","dumps/main/attachments/search-config-icons/7cb4d88a-d4df-45b2-87e4-f896eaf1bbdb.meta.json":"21d2522ab4e47477e72da3a2d2223e50e55fef442e2ba736d56df1e09593d76f","dumps/main/attachments/search-config-icons/7edaf4fe-a8a0-432b-86d2-bf75ebe80851":"27541cb376bdda829a6cf9cefd13da112728881e3daa4ac3c1178d4ce15f1e8b","dumps/main/attachments/search-config-icons/7edaf4fe-a8a0-432b-86d2-bf75ebe80851.meta.json":"3aea5d0652172940ac33e32628dcc6a03b79fe686c6de752482c8e3ae5cd70eb","dumps/main/attachments/search-config-icons/7efbed51-813c-581d-d8d3-f8758434e451":"b0c6d1850265e3c946917232ca6c6ace3dad23347bfab4f81351eac569326d34","dumps/main/attachments/search-config-icons/7efbed51-813c-581d-d8d3-f8758434e451.meta.json":"5a723c8f04bffa33a69a7054d30a4816caf1a3924081c85e1d9770126f761a96","dumps/main/attachments/search-config-icons/84bb4962-e571-227a-9ef6-2ac5f2aac361":"a1fd5d127a5f2590ddcd439b7a2abb3456b48217ea11daf0345b26e108f520e6","dumps/main/attachments/search-config-icons/84bb4962-e571-227a-9ef6-2ac5f2aac361.meta.json":"5cb0ebdde367b9754ddf6cbd01150414d27977b2d4c5f65cd6bbb89989388f3b","dumps/main/attachments/search-config-icons/87ac4cde-f581-398b-1e32-eb4079183b36":"33ca72f1eac56793d1fd811189cedef98004a067c85b1143083b564814a4b0db","dumps/main/attachments/search-config-icons/87ac4cde-f581-398b-1e32-eb4079183b36.meta.json":"d97eca8063cc17b99c81c55d4ff121d765c793e006ed252fec5f9539bd0fc339","dumps/main/attachments/search-config-icons/8831ce10-b1e4-6eb4-4975-83c67457288e":"ca3cc8786977f6ffeb0546ff8f3bb2b7fd240d1956fbf86777dbf0e8bec9c03b","dumps/main/attachments/search-config-icons/8831ce10-b1e4-6eb4-4975-83c67457288e.meta.json":"45274d848d1f6d398563bb46a2bfa3eee40ff16a5dbf0bbc8904db442f80702c","dumps/main/attachments/search-config-icons/890de5c4-0941-a116-473a-5d240e79497a":"6ba1f0fd1d12014cab32f74daab24dfa16fb26613ace20a1e595267621038a07","dumps/main/attachments/search-config-icons/890de5c4-0941-a116-473a-5d240e79497a.meta.json":"107547059360c3658dcf187a546ffb52bb23fa385e1338151043bebe82bbf640","dumps/main/attachments/search-config-icons/8abb10a7-212f-46b5-a7b4-244f414e3810":"f8780adb4d7b28f2f881db4ca7b697d8fc916cd9fa834ccc445fe7d4b72a6cc7","dumps/main/attachments/search-config-icons/8abb10a7-212f-46b5-a7b4-244f414e3810.meta.json":"5401603c7abbc6ca5bdddb8f9cca7eee2e26e5721cc73f23d95f600d5421d431","dumps/main/attachments/search-config-icons/91a9672d-e945-8e1e-0996-aefdb0190716":"5d53ef1866a08cc29011f5f2a9ce99bbf37cf42e80de7f0e8cc30d13337e8187","dumps/main/attachments/search-config-icons/91a9672d-e945-8e1e-0996-aefdb0190716.meta.json":"4e8ea36e3d659eb22ac7c86498003ca8885bab9c40685bb8ca7796a8230201da","dumps/main/attachments/search-config-icons/94a84724-c30f-4767-ba42-01cc37fc31a4":"98dca7e24cad0a1be96ef2c323e9759beb63c72440756f887e2482d9ce8e8969","dumps/main/attachments/search-config-icons/94a84724-c30f-4767-ba42-01cc37fc31a4.meta.json":"1070966901fe9db82b71bfa74ddeedd4f23ab2ed1eddaf201634e06a604e6006","dumps/main/attachments/search-config-icons/95ed201d-4ab8-4cb8-831d-454f53cab0f8":"3426b5100a6bdb45f8039f0c71a6b68193750ba7bae5b36e5ed31b2b7f372cda","dumps/main/attachments/search-config-icons/95ed201d-4ab8-4cb8-831d-454f53cab0f8.meta.json":"3447cd050619c1d2e5859147ab894a43da75235a580219306d8629e28a7a3eb5","dumps/main/attachments/search-config-icons/96327a73-c433-5eb4-a16d-b090cadfb80b":"ca6e972004f62355c1ea97656bc2328e1643971bdecab9c6b563d45593b8122e","dumps/main/attachments/search-config-icons/96327a73-c433-5eb4-a16d-b090cadfb80b.meta.json":"c4e3c9e6426e6f35410c287eef95b3e2134e54409e462f02dd440876c06b1bb4","dumps/main/attachments/search-config-icons/9802e63d-05ec-48ba-93f9-746e0981ad98":"6b1b073183eb0012daea0dce351a94d395c8a0b531b610e56eac52b3d1d1da0e","dumps/main/attachments/search-config-icons/9802e63d-05ec-48ba-93f9-746e0981ad98.meta.json":"cceb55c68db8dddd23d064364a281e982069bfe2bb55eba7d282fffcec2aa89f","dumps/main/attachments/search-config-icons/9d96547d-7575-49ca-8908-1e046b8ea90e":"6a743574353de0ec7c85b49f46b2b554caa0fc1d064b90544c5dea0fea2b8901","dumps/main/attachments/search-config-icons/9d96547d-7575-49ca-8908-1e046b8ea90e.meta.json":"10897754c5aafe0b84413afee5e9948fd799262a26aa07bca85fe6fb369beac4","dumps/main/attachments/search-config-icons/a06db97d-1210-ea2e-5474-0e2f7d295bfd":"617dec5d635efb0a12d0de935c6999ef0249f4a63c62bdcb96551518bc3d1812","dumps/main/attachments/search-config-icons/a06db97d-1210-ea2e-5474-0e2f7d295bfd.meta.json":"06cf576ca882bd7c2d54c18329e21e5b1a9cb7732d4954b52cbfa52979a67765","dumps/main/attachments/search-config-icons/a06dc3fd-4bdb-41f3-2ebc-4cbed06a9bd3":"d994f806b1e4225b50be5ab681b2cecf845cc216a19a432d878cea3cb815bafd","dumps/main/attachments/search-config-icons/a06dc3fd-4bdb-41f3-2ebc-4cbed06a9bd3.meta.json":"67524e18799023a017c7d9db1b9ba5c9cc3090d20f8154449a8f44ba22719104","dumps/main/attachments/search-config-icons/a2c7d4e9-f770-51e1-0963-3c2c8401631d":"1bf68aca7bfc75ca8485c3dac9a1daa13c1a3eb480688c32262096af6076adfa","dumps/main/attachments/search-config-icons/a2c7d4e9-f770-51e1-0963-3c2c8401631d.meta.json":"4ab103bba0f8fde581c3950c6c08cfcf6786104d8cbcba240499308f26958d04","dumps/main/attachments/search-config-icons/a83f24e4-602c-47bd-930c-ad0947ee1adf":"66612f999921d892645c8a2b37aa5dad17b134e7fdaed375a683baec7fc10697","dumps/main/attachments/search-config-icons/a83f24e4-602c-47bd-930c-ad0947ee1adf.meta.json":"f985ffbde6cf6ef972b6798c9336922dcfa29ca9a31e3aa4fae1962e069bdb0c","dumps/main/attachments/search-config-icons/b64f09fd-52d1-c48e-af23-4ce918e7bf3b":"c3e8300801c5c585662f14fd8e819d635efd9830783dc3c631212927866e9898","dumps/main/attachments/search-config-icons/b64f09fd-52d1-c48e-af23-4ce918e7bf3b.meta.json":"f7fd846d6717131e75865f8f5ed562e88f40be3dcf1603f2660b425dedabc7d1","dumps/main/attachments/search-config-icons/b882b24d-1776-4ef9-9016-0bdbd935eda3":"076352591c7077af4af5771918f80b5da9c6bf479327cc68390abdb158f3ec03","dumps/main/attachments/search-config-icons/b882b24d-1776-4ef9-9016-0bdbd935eda3.meta.json":"229139bca53bc63bd59b8f261f36c11fbe76b2b45dfeac2580261cf290c41365","dumps/main/attachments/search-config-icons/b8ca5a94-8fff-27ad-6e00-96e244a32e21":"1474c93e49c209aca2a2df2acb61b64574805106bead6edebd67287de21920e0","dumps/main/attachments/search-config-icons/b8ca5a94-8fff-27ad-6e00-96e244a32e21.meta.json":"6fd72c11afb4249d0166d8d98c552ee02d73c0e07f0578bfd3d7e67d70bcaee3","dumps/main/attachments/search-config-icons/b9424309-f601-4a69-98ca-ca68e65633e6":"601d72e7abde5ec864b3d8ca0031896f769107670b84c66053062481a56d8665","dumps/main/attachments/search-config-icons/b9424309-f601-4a69-98ca-ca68e65633e6.meta.json":"f299a7d56c5552fc592c66073d3e1e1d16ce4a99e935dcc0cad7dafcad6b9e3b","dumps/main/attachments/search-config-icons/c411adc1-9661-4fb5-a4c1-8cfe74911943":"150765e8e9b985ba5b820ac9b8e7623023d5a0e24f94663d5e9203d8d7598059","dumps/main/attachments/search-config-icons/c411adc1-9661-4fb5-a4c1-8cfe74911943.meta.json":"c5cc89d5f24ef1fa40b1c47c2e97eaeb01439b8d3b186b9c2fe716c94ead30f2","dumps/main/attachments/search-config-icons/cbf9e891-d079-2b28-5617-283450d463dd":"5b2c34b3c4e8dd898b664dba6c3786e2ff9869eff55d673aa48361f11325ed07","dumps/main/attachments/search-config-icons/cbf9e891-d079-2b28-5617-283450d463dd.meta.json":"b757806fd1b922d81bbecab94c73d3db98cfc2aa2791a4d5137112f795a732ee","dumps/main/attachments/search-config-icons/d87f251c-3e12-a8bf-e2d0-afd43d36c5f9":"865d76c8175a8f11dedc93f0bc212242a97a8a76adac870e8249368cecc81402","dumps/main/attachments/search-config-icons/d87f251c-3e12-a8bf-e2d0-afd43d36c5f9.meta.json":"22594c8870cbabe5fc5d2637509235202502661b466e9e37c5878716f323a34f","dumps/main/attachments/search-config-icons/db0e1627-ae89-4c25-8944-a9481d8512d9":"97a68f0b948b68bbf389a9ef43e2fe6c31ff8dc7889c939fdfdea79378576c67","dumps/main/attachments/search-config-icons/db0e1627-ae89-4c25-8944-a9481d8512d9.meta.json":"1eccc999dcd377af84cf63ed60b7ef23d5d4b936a1e465d12349a5366b1b012d","dumps/main/attachments/search-config-icons/e02f23df-8d48-2b1b-3b5c-6dd27302c61c":"247aa26993083705ce99a8e5612cdf262aca98cde86ba19afc964329ba95986a","dumps/main/attachments/search-config-icons/e02f23df-8d48-2b1b-3b5c-6dd27302c61c.meta.json":"06fc893d29cf406519611da9d1993a13bd9134192940c12bf64536ea571db4f0","dumps/main/attachments/search-config-icons/e718e983-09aa-e8f6-b25f-cd4b395d4785":"809697f48848e7c3638d5f3e0b224ea60b3800504e7bd8417854d55989b85196","dumps/main/attachments/search-config-icons/e718e983-09aa-e8f6-b25f-cd4b395d4785.meta.json":"0d9baef39747776500e5b83e72cd9d901fc09ac08247368dd2117bb4ec011f54","dumps/main/attachments/search-config-icons/e7547f62-187b-b641-d462-e54a3f813d9a":"c971ee33b8c0a57349669d957bf73070b0632b128c94748e845b57d5e15221a4","dumps/main/attachments/search-config-icons/e7547f62-187b-b641-d462-e54a3f813d9a.meta.json":"8ec4f6a7826966f2ff82632ef527366db3452ebc40c90a557602111f0ea956c9","dumps/main/attachments/search-config-icons/eb62e768-151b-45d1-9fe5-9e1d2a5991c5":"aa46b3d1ed8557e5bc7e71988cc6c46b00363b890d2a781973f9dc9073f8dd31","dumps/main/attachments/search-config-icons/eb62e768-151b-45d1-9fe5-9e1d2a5991c5.meta.json":"a06682b589df8dd63b1f25c01630ead55a89217f72c0bc04b391829af3fef59f","dumps/main/attachments/search-config-icons/f312610a-ebfb-a106-ea92-fd643c5d3636":"91d17ba44192a6430ffdb447ff3a11533ef964628f67c13480cc9470212d3d65","dumps/main/attachments/search-config-icons/f312610a-ebfb-a106-ea92-fd643c5d3636.meta.json":"ce26ab2382a7a67a55688330dd74127b4a980610f4030bde8eaaa20b81306559","dumps/main/attachments/search-config-icons/fa0fc42c-d91d-fca7-34eb-806ff46062dc":"6da5620880159634213e197fafca1dde0272153be3e4590818533fab8d040770","dumps/main/attachments/search-config-icons/fa0fc42c-d91d-fca7-34eb-806ff46062dc.meta.json":"0c3c0eb832be884f25186395b8bf08cdbe0a6e2845b9e55e7cbea5d0f183ed7d","dumps/main/attachments/search-config-icons/fca3e3ee-56cd-f474-dc31-307fd24a891d":"c4d88cfa5262f6d2cf76b167281d25821c9e1770684b739ed6ad3cf7277a121b","dumps/main/attachments/search-config-icons/fca3e3ee-56cd-f474-dc31-307fd24a891d.meta.json":"a40c37a5150e3745849f67305fe2fe1e06ef1c3901f6dc604a8e3f6c94e7b624","dumps/main/attachments/search-config-icons/fe75ce3f-1545-400c-b28c-ad771054e69f":"3a9d06951c7c9d2c19cd00533a760b0f8755b1e2e718af81c710297d030fbe44","dumps/main/attachments/search-config-icons/fe75ce3f-1545-400c-b28c-ad771054e69f.meta.json":"3f353e083d7a885f6d59d36c9276a2d325686a533cf8c502cd41a10172e763ea","dumps/main/attachments/search-config-icons/fed4f021-ff3e-942a-010e-afa43fda2136":"d7fdfd971d874f2ec6f209df6f6b8173d126cd3f7a25daacb94de4259efbcf16","dumps/main/attachments/search-config-icons/fed4f021-ff3e-942a-010e-afa43fda2136.meta.json":"740f77dcc93ece89fd55557baf399a4464373c81154b0a9758b8622f6c458253","dumps/main/regions.json":"e8990158373f82d3f89fed5089cf29e4177cc85904479128728e05025e9a0c0c","dumps/main/search-config-icons.json":"8bfa7c4abd2ab4238cd2ea66dc143bb9048f2699735b01560980109dbe39d759","dumps/main/search-config-v2.json":"377a7027e3b50118ca5f198ebc89461674f9d480edd4bff7ba419539280a13f5","dumps/main/search-telemetry-v2.json":"62a96014721bbd546d677eda35e33a71526245a511b32efaa5b6d2ef1f5294e6","dumps/main/summarizer-models-config.json":"545c53023a18e1a91e0817c1d5a5a11e45469516f8813b1a4dcad40426e1464c","src/cache.rs":"c6179802017b43885136e7d64004890cc13e8c2d4742e04073cf404b578f63db","src/client.rs":"07eb62f218282aa03a739b6a1fe8800585e2635b322277d6469c2da2e00041b8","src/config.rs":"c9a7a8c1bf94fb71d78369a64496332aec472b9cefbacf1be29f1eeb5a22bd48","src/context.rs":"43bab81026b6f1a2509d129e806fffd09ba80110d656798a02589985017a3c21","src/error.rs":"7f56c3ae167811c5a8413b73a7e6abcec2377c67cf48e7520929e15532678eef","src/jexl_filter.rs":"48a9d960e05dae444421f7c4ceeb45eab656f03f1e7071215c8e8d39aab56b54","src/lib.rs":"cd7d816f87146693471c328a185747e3b786a51f3ddbb780a71f244f18179526","src/macros.rs":"6b06d0ba42ee95235bfd71bac1a0eed02f60c894775ebee64165648b10e932c4","src/schema.rs":"348e0d5ad1840aaae796b537d21381ef91bd75be262138bfec376d9f88d205b3","src/service.rs":"3f0757473194d30d7fb5be75dfe9647640e9d23253f4167139e8bd70468e9abd","src/signatures.rs":"baa2dae76abd8166158fea4676e67e17c17b65af6968de52768350409dbd7092","src/storage.rs":"c33dd92914770e96d3d44dbb9e95f512ce54261710a42c7cf4a896be348c529e","uniffi.toml":"bd7cc0e7c1981f53938f429c4f2541ac454ed4160a8a0b4670659e38acd23ee5"},"package":null}
+diff --git a/third_party/rust/remote_settings/src/client.rs b/third_party/rust/remote_settings/src/client.rs
+index 316e5ce402..cb191cef69 100644
+--- a/third_party/rust/remote_settings/src/client.rs
++++ b/third_party/rust/remote_settings/src/client.rs
+@@ -1241,7 +1241,7 @@ mod test {
+         };
+         let client = Client::new(config).unwrap();
+         assert_eq!(
+-            Url::parse("https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/the-collection").unwrap(),
++            Url::parse("resource://app/defaults/settings/main/the-collection.json").unwrap(),
+             client.endpoints.collection_url
+         );
+     }
+diff --git a/third_party/rust/remote_settings/src/config.rs b/third_party/rust/remote_settings/src/config.rs
+index 5b43a1aa2e..3f24aa4f8f 100644
+--- a/third_party/rust/remote_settings/src/config.rs
++++ b/third_party/rust/remote_settings/src/config.rs
+@@ -95,9 +95,9 @@ impl RemoteSettingsServer {
+ 
+     fn raw_url(&self) -> &str {
+         match self {
+-            Self::Prod => "https://firefox.settings.services.mozilla.com/v1",
+-            Self::Stage => "https://firefox.settings.services.allizom.org/v1",
+-            Self::Dev => "https://remote-settings-dev.allizom.org/v1",
++            Self::Prod => "resource://app/defaults/settings",
++            Self::Stage => "resource://app/defaults/settings",
++            Self::Dev => "resource://app/defaults/settings",
+             Self::Custom { url } => url,
+         }
+     }
+@@ -108,9 +108,9 @@ impl RemoteSettingsServer {
+     /// inside the crate.
+     pub fn get_url(&self) -> Result<Url> {
+         Ok(match self {
+-            Self::Prod => Url::parse("https://firefox.settings.services.mozilla.com/v1")?,
+-            Self::Stage => Url::parse("https://firefox.settings.services.allizom.org/v1")?,
+-            Self::Dev => Url::parse("https://remote-settings-dev.allizom.org/v1")?,
++            Self::Prod => Url::parse("resource://app/defaults/settings")?,
++            Self::Stage => Url::parse("resource://app/defaults/settings")?,
++            Self::Dev => Url::parse("resource://app/defaults/settings")?,
+             Self::Custom { url } => {
+                 let mut url = Url::parse(url)?;
+                 // Custom URLs are weird and require a couple tricks for backwards compatibility.
+diff --git a/toolkit/components/antitracking/docs/query-stripping/index.md b/toolkit/components/antitracking/docs/query-stripping/index.md
+index e49d8513ba..c1c6ae5deb 100644
+--- a/toolkit/components/antitracking/docs/query-stripping/index.md
++++ b/toolkit/components/antitracking/docs/query-stripping/index.md
+@@ -63,7 +63,7 @@ of query params:
+ It is enabled in Nightly by default in all modes with an extended
+ strip-list. You can find the current list of parameters that are
+ stripped
+-[here](https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/query-stripping/records).
++[here](resource://app/defaults/settings/main/collections/query-stripping/records).
+ Note that some records have a *filter\_expression* that limits where
+ they apply.
+ 
+diff --git a/toolkit/components/backgroundtasks/BackgroundTask_message.sys.mjs b/toolkit/components/backgroundtasks/BackgroundTask_message.sys.mjs
+index 7c49fb68f8..990772ffc9 100644
+--- a/toolkit/components/backgroundtasks/BackgroundTask_message.sys.mjs
++++ b/toolkit/components/backgroundtasks/BackgroundTask_message.sys.mjs
+@@ -19,8 +19,8 @@
+ // environment variables still apply.
+ //
+ // --stage: use stage Remote Settings
+-//   (`https://firefox.settings.services.allizom.org/v1`) rather than production
+-//   (`https://firefox.settings.services.mozilla.com/v1`)
++//   (`resource://app/defaults/settings/`) rather than production
++//   (`resource://app/defaults/settings/`)
+ //
+ // --preview: enable Remote Settings and Experiment previews.
+ //
+@@ -72,7 +72,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
+   Utils: "resource://services-settings/Utils.sys.mjs",
+ });
+ 
+-const SERVER_STAGE = "https://firefox.settings.services.allizom.org/v1";
++const SERVER_STAGE = "resource://app/defaults/settings";
+ 
+ // Default profile targeting snapshot.
+ let defaultProfileTargetingSnapshot = {};
+diff --git a/toolkit/components/search/SearchUtils.sys.mjs b/toolkit/components/search/SearchUtils.sys.mjs
+index 3fddbb319b..ad79325d95 100644
+--- a/toolkit/components/search/SearchUtils.sys.mjs
++++ b/toolkit/components/search/SearchUtils.sys.mjs
+@@ -185,13 +185,13 @@ export var SearchUtils = {
+ 
+   ENGINES_URLS: {
+     "prod-main":
+-      "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-config/records",
++      "resource://app/defaults/settings/main/search-config.json",
+     "prod-preview":
+-      "https://firefox.settings.services.mozilla.com/v1/buckets/main-preview/collections/search-config/records",
++      "resource://app/defaults/settings/main/search-config.json",
+     "stage-main":
+-      "https://firefox.settings.services.allizom.org/v1/buckets/main/collections/search-config/records",
++      "resource://app/defaults/settings/main/search-config.json",
+     "stage-preview":
+-      "https://firefox.settings.services.allizom.org/v1/buckets/main-preview/collections/search-config/records",
++      "resource://app/defaults/settings/main/search-config.json",
+   },
+ 
+   // The following constants are left undocumented in nsISearchService.idl
+diff --git a/toolkit/components/search/docs/DefaultSearchEngines.rst b/toolkit/components/search/docs/DefaultSearchEngines.rst
+index 46ffc30641..af5b46dfc5 100644
+--- a/toolkit/components/search/docs/DefaultSearchEngines.rst
++++ b/toolkit/components/search/docs/DefaultSearchEngines.rst
+@@ -99,4 +99,4 @@ is updated.
+ 
+ .. _configuration schema: SearchConfigurationSchema.html
+ .. _remote settings: /services/settings/index.html
+-.. _search-default-override-allowlist bucket: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-default-override-allowlist/records
++.. _search-default-override-allowlist bucket: resource://app/defaults/settings/main/search-default-override-allowlist.json
+diff --git a/toolkit/components/search/docs/SearchEngineConfiguration.rst b/toolkit/components/search/docs/SearchEngineConfiguration.rst
+index ca6009a0ef..66ef611e73 100644
+--- a/toolkit/components/search/docs/SearchEngineConfiguration.rst
++++ b/toolkit/components/search/docs/SearchEngineConfiguration.rst
+@@ -40,7 +40,7 @@ An outline of the schemas may be found on the `Search Configuration Schema`_ pag
+ .. _JSON schema: https://json-schema.org/
+ .. _stored in mozilla-central: https://searchfox.org/mozilla-central/source/toolkit/components/search/schema/
+ .. _Search Configuration Schema: SearchConfigurationSchema.html
+-.. _viewed live: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-config-v2/records
+-.. _search-config-icons: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-config-icons/records
+-.. _search-config-overrides-v2: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-config-overrides-v2/records
+-.. _search-default-override-allowlist: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-default-override-allowlist/records
++.. _viewed live: resource://app/defaults/settings/main/search-config-v2.json
++.. _search-config-icons: resource://app/defaults/settings/main/search-config-icons.json
++.. _search-config-overrides-v2: resource://app/defaults/settings/main/search-config-overrides-v2.json
++.. _search-default-override-allowlist: resource://app/defaults/settings/main/search-default-override-allowlist.json
+diff --git a/toolkit/components/search/docs/SearchEngineConfigurationArchive.rst b/toolkit/components/search/docs/SearchEngineConfigurationArchive.rst
+index a6aba91a42..0700ab0b69 100644
+--- a/toolkit/components/search/docs/SearchEngineConfigurationArchive.rst
++++ b/toolkit/components/search/docs/SearchEngineConfigurationArchive.rst
+@@ -68,5 +68,5 @@ related. As a result several situations may occur:
+ .. _JSON schema: https://json-schema.org/
+ .. _stored in mozilla-central: https://searchfox.org/mozilla-central/source/toolkit/components/search/schema/
+ .. _Search Configuration Schema: SearchConfigurationSchema.html
+-.. _viewed live: https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/search-config/records
++.. _viewed live: resource://app/defaults/settings/main/search-config.json
+ .. _Normandy: /toolkit/components/normandy/normandy/services.html
+diff --git a/toolkit/modules/AppConstants.sys.mjs b/toolkit/modules/AppConstants.sys.mjs
+index 5465ed3fb0..4e6e6470b1 100644
+--- a/toolkit/modules/AppConstants.sys.mjs
++++ b/toolkit/modules/AppConstants.sys.mjs
+@@ -209,9 +209,9 @@ export var AppConstants = Object.freeze({
+ 
+   REMOTE_SETTINGS_SERVER_URL:
+ #ifdef MOZ_THUNDERBIRD
+-    "https://thunderbird-settings.thunderbird.net/v1",
++    "resource://app/defaults/settings",
+ #else
+-    "https://firefox.settings.services.mozilla.com/v1",
++    "resource://app/defaults/settings",
+ #endif
+ 
+   REMOTE_SETTINGS_VERIFY_SIGNATURE:
+-- 
+2.52.0
+
+
+From d9d75275325030bf603d72e5a5ea9340aa532e3e Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:34:08 +0200
+Subject: [PATCH 02/13] Remove polling triggered by push broadcasts
+
+When initialized, remote-settings.sys.mjs adds a listener to push broadcasts,
+that let Remote Settings server send push messages to trigger polling
+for changes from the client side. This is not needed for local-only
+setup. Remove the record from broadcast-listeners.json file stored in
+the user profile, so that it doesn't get picked up by push broadcast
+service.
+---
+ dom/push/PushBroadcastService.sys.mjs     | 13 +++++++++++++
+ services/settings/remote-settings.sys.mjs | 11 ++---------
+ 2 files changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/dom/push/PushBroadcastService.sys.mjs b/dom/push/PushBroadcastService.sys.mjs
+index a0b049b94b..aba7a7d194 100644
+--- a/dom/push/PushBroadcastService.sys.mjs
++++ b/dom/push/PushBroadcastService.sys.mjs
+@@ -165,6 +165,19 @@ export var BroadcastService = class {
+     }
+   }
+ 
++  async deleteListener(broadcastId) {
++    await this.initializePromise;
++
++    if (this.jsonFile.data.listeners.hasOwnProperty(broadcastId)) {
++      console.info(
++        "deleteListener: deleting listener",
++        broadcastId
++      );
++      delete this.jsonFile.data.listeners[broadcastId];
++      this.jsonFile.saveSoon();
++    }
++  }
++
+   /**
+    * Call the listeners of the specified broadcasts.
+    *
+diff --git a/services/settings/remote-settings.sys.mjs b/services/settings/remote-settings.sys.mjs
+index 1c48cfdb89..dd6c3ff8b3 100644
+--- a/services/settings/remote-settings.sys.mjs
++++ b/services/settings/remote-settings.sys.mjs
+@@ -765,11 +765,7 @@ function remoteSettingsFunction() {
+       moduleURI: import.meta.url,
+       symbolName: "remoteSettingsBroadcastHandler",
+     };
+-    lazy.pushBroadcastService.addListener(
+-      BROADCAST_ID,
+-      currentVersion,
+-      moduleInfo
+-    );
++    lazy.pushBroadcastService.deleteListener(BROADCAST_ID);
+   };
+ 
+   return remoteSettings;
+@@ -789,9 +785,6 @@ export var remoteSettingsBroadcastHandler = {
+       `Push notification received (version=${version} phase=${phase})`
+     );
+ 
+-    return RemoteSettings.pollChanges({
+-      expectedTimestamp: version.replace('"', ""),
+-      trigger: isStartup ? "startup" : "broadcast",
+-    });
++    return;
+   },
+ };
+-- 
+2.52.0
+
+
+From 8f5c6567ec1f89dd839c8c9d947863bb7f5382d8 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:41:54 +0200
+Subject: [PATCH 03/13] Remove timer that triggers polling for changes
+
+That is not needed for local-only setup.
+---
+ services/settings/components.conf           | 9 +--------
+ services/settings/servicesSettings.manifest | 5 +----
+ 2 files changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/services/settings/components.conf b/services/settings/components.conf
+index fbc4df9bfc..25109415a7 100644
+--- a/services/settings/components.conf
++++ b/services/settings/components.conf
+@@ -4,11 +4,4 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-Classes = [
+-    {
+-        'cid': '{5e756573-234a-49ea-bbe4-59ec7a70657d}',
+-        'contract_ids': ['@mozilla.org/services/settings;1'],
+-        'esModule': 'resource://services-settings/RemoteSettingsComponents.sys.mjs',
+-        'constructor': 'RemoteSettingsTimer',
+-    },
+-]
++Classes = []
+diff --git a/services/settings/servicesSettings.manifest b/services/settings/servicesSettings.manifest
+index c9c2370d2c..85c4a5cafe 100644
+--- a/services/settings/servicesSettings.manifest
++++ b/services/settings/servicesSettings.manifest
+@@ -1,7 +1,4 @@
+ # Register resource aliases
+ resource services-settings resource://gre/modules/services-settings/
+ 
+-# Schedule polling of remote settings changes
+-# (default 6H, max 24H)
+-# see syntax https://searchfox.org/mozilla-central/rev/cc280c4be94ff8cf64a27cc9b3d6831ffa49fa45/toolkit/components/timermanager/UpdateTimerManager.jsm#155
+-category update-timer RemoteSettingsComponents @mozilla.org/services/settings;1,getService,services-settings-poll-changes,services.settings.poll_interval,21600,86400
++
+-- 
+2.52.0
+
+
+From da15b470bf871d9be7d0ccea3c21ba03c7128993 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:47:41 +0200
+Subject: [PATCH 04/13] Utils: fetch timestamps of each collection locally
+
+Utils.CHANGES_PATH points to
+services/settings/dumps/monitor/changes
+which will be generated later by JSON processing script. Fetch the
+timestamps from that file and mock response headers to not confuse any
+code that expects them.
+---
+ services/settings/Utils.sys.mjs           | 28 ++++++++++++++++++++---
+ services/settings/dumps/monitor/moz.build |  8 +++++++
+ services/settings/dumps/moz.build         |  1 +
+ 3 files changed, 34 insertions(+), 3 deletions(-)
+ create mode 100644 services/settings/dumps/monitor/moz.build
+
+diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
+index 48ccc30ffc..ed98b9fde5 100644
+--- a/services/settings/Utils.sys.mjs
++++ b/services/settings/Utils.sys.mjs
+@@ -415,7 +415,7 @@ export var Utils = {
+   async fetchLatestChanges(serverUrl, options = {}) {
+     const { expectedTimestamp, lastEtag = "", filters = {} } = options;
+ 
+-    let url = serverUrl + Utils.CHANGES_PATH;
++    let url = Utils.SERVER_URL + Utils.CHANGES_PATH;
+     const params = {
+       ...filters,
+       _expected: expectedTimestamp ?? 0,
+@@ -430,7 +430,21 @@ export var Utils = {
+           .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
+           .join("&");
+     }
+-    const response = await Utils.fetch(url);
++    const rawResponse = await fetch(url);
++    const responseDate = new Date().toUTCString();
++
++    const headers = new Headers();
++    headers.set("Date", responseDate);
++    headers.set("Last-Modified", responseDate);
++    headers.set("Content-Type", "application/json");
++
++    const responseAttributes = {
++      status: rawResponse.status,
++      statusText: rawResponse.statusText,
++      headers,
++    };
++
++    const response = new Response(rawResponse.body, responseAttributes);
+ 
+     if (response.status >= 500) {
+       throw new Error(`Server error ${response.status} ${response.statusText}`);
+@@ -465,7 +479,15 @@ export var Utils = {
+       }
+     }
+ 
+-    const { changes = [], timestamp } = payload;
++    const { timestamp } = payload;
++    const { bucket, collection } = filters;
++    if (!bucket || !collection) {
++      throw new Error('Unable to fetch latest change without bucket or collection');
++    }
++    const change = payload.changes.find(
++        change => change.bucket === bucket && change.collection === collection
++      ) ?? { last_modified: 0, bucket, collection };
++    const changes = [change];
+ 
+     let serverTimeMillis = Date.parse(response.headers.get("Date"));
+     // Since the response is served via a CDN, the Date header value could have been cached.
+diff --git a/services/settings/dumps/monitor/moz.build b/services/settings/dumps/monitor/moz.build
+new file mode 100644
+index 0000000000..25c53a2eeb
+--- /dev/null
++++ b/services/settings/dumps/monitor/moz.build
+@@ -0,0 +1,8 @@
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++
++FINAL_TARGET_FILES.defaults.settings.monitor += ["changes"]
++
++if CONFIG["MOZ_BUILD_APP"] == "browser":
++    DIST_SUBDIR = "browser"
+diff --git a/services/settings/dumps/moz.build b/services/settings/dumps/moz.build
+index a3e9e9b3f2..b32a8d8691 100644
+--- a/services/settings/dumps/moz.build
++++ b/services/settings/dumps/moz.build
+@@ -5,6 +5,7 @@
+ DIRS += [
+     "blocklists",
+     "main",
++    "monitor",
+     "security-state",
+ ]
+ 
+-- 
+2.52.0
+
+
+From 6f3a6e343cd964a7705cf28c6e49d607375305c3 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:52:10 +0200
+Subject: [PATCH 05/13] Utils: disable offline checking
+
+Since only local data is read now, it should always return false for the
+current and any future code that relies on it.
+---
+ services/settings/Utils.sys.mjs | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
+index ed98b9fde5..81c64bb09b 100644
+--- a/services/settings/Utils.sys.mjs
++++ b/services/settings/Utils.sys.mjs
+@@ -196,16 +196,6 @@ export var Utils = {
+    * @return {bool} Whether network is down or not.
+    */
+   get isOffline() {
+-    try {
+-      return (
+-        Services.io.offline ||
+-        lazy.CaptivePortalService.state ==
+-          lazy.CaptivePortalService.LOCKED_PORTAL ||
+-        !lazy.gNetworkLinkService.isLinkUp
+-      );
+-    } catch (ex) {
+-      log.warn("Could not determine network status.", ex);
+-    }
+     return false;
+   },
+ 
+-- 
+2.52.0
+
+
+From d602ec0006afb86d4c66171b8b2d984a11676f8f Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 17:56:02 +0200
+Subject: [PATCH 06/13] Refactor hashing logic to a separate function
+
+It is used instead of internal signature validation mechanism, for
+integrity checking of the locally cached data.
+---
+ services/settings/RemoteSettingsWorker.sys.mjs | 4 ++++
+ services/settings/SharedUtils.sys.mjs          | 9 +++++++--
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/services/settings/RemoteSettingsWorker.sys.mjs b/services/settings/RemoteSettingsWorker.sys.mjs
+index 57bfb3f3d5..52a0b7961a 100644
+--- a/services/settings/RemoteSettingsWorker.sys.mjs
++++ b/services/settings/RemoteSettingsWorker.sys.mjs
+@@ -177,6 +177,10 @@ class Worker {
+     // task on the current thread instead of the worker thread.
+     return lazy.SharedUtils.checkContentHash(buffer, size, hash);
+   }
++
++  async getContentHash(bytes) {
++    return lazy.SharedUtils.getContentHash(bytes);
++  }
+ }
+ 
+ // Now, first add a shutdown blocker. If that fails, we must have
+diff --git a/services/settings/SharedUtils.sys.mjs b/services/settings/SharedUtils.sys.mjs
+index 1eeaf0bed9..d998a2d3b1 100644
+--- a/services/settings/SharedUtils.sys.mjs
++++ b/services/settings/SharedUtils.sys.mjs
+@@ -21,11 +21,16 @@ export var SharedUtils = {
+       return false;
+     }
+     // Has expected content?
++    const hashStr = await this.getContentHash(bytes);
++    return hashStr == hash;
++  },
++
++  async getContentHash(bytes) {
+     const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
+     const hashBytes = new Uint8Array(hashBuffer);
+     const toHex = b => b.toString(16).padStart(2, "0");
+-    const hashStr = Array.from(hashBytes, toHex).join("");
+-    return hashStr == hash;
++
++    return Array.from(hashBytes, toHex).join("");
+   },
+ 
+   /**
+-- 
+2.52.0
+
+
+From 67c4cedff40aff2fce2bfca18cb0c4f5106212cb Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 18:05:02 +0200
+Subject: [PATCH 07/13] Client: Fetch and hash records from local dump
+
+Read the records from local dumps. See [1] for details on how to prepare
+custom dumps). Records are cached in the local IndexedDB, and the client
+updates cached records each time there's a change. Also it verifies
+integrity of the data. Then the list of current / created / updated /
+deleted records is generated and emitted to every registered listener.
+
+Change upstream signature validation mechanism to a simpler one.
+Otherwise, it'd be necessary to sign local records, which is redundant,
+because the application package should be signed already by the distro.
+
+Instead of signature property from metadata records, json_dump_metadata
+has been introduced. It contains the checksum of the records and size in
+bytes. Also added app_build_id property for version checking and updates
+of cached data.
+
+Although it's possible to disable integrity checking via preference, it
+seems to be not a good idea, because the logic that detects invalid
+local data relies on it. In the context of local-only setup, data that
+has been received from real Remote Settings server will not contain the
+custom metadata, and thus will be considered invalid and then discarded,
+while the client gets a chance to gracefully inform registered listeners
+about these changes so that they can discard the data received before
+the upgrade to local-only setup.
+
+[1] https://firefox-source-docs.mozilla.org/services/common/services/RemoteSettings.html#initial-data
+---
+ .../settings/RemoteSettingsClient.sys.mjs     | 99 +++++++------------
+ 1 file changed, 33 insertions(+), 66 deletions(-)
+
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index 06ff1ea91e..7684375b82 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -776,11 +776,9 @@ export class RemoteSettingsClient extends EventEmitter {
+ 
+           // If the data is up-to-date but don't have metadata (records loaded from dump),
+           // we fetch them and validate the signature immediately.
+-          if (this.verifySignature && lazy.ObjectUtils.isEmpty(localMetadata)) {
++          if (this.verifySignature && lazy.ObjectUtils.isEmpty(localMetadata?.json_dump_metadata)) {
+             lazy.console.debug(`${this.identifier} pull collection metadata`);
+-            const metadata = await this.httpClient().getData({
+-              query: { _expected: expectedTimestamp },
+-            });
++            const { metadata } = await this._fetchChangeset(expectedTimestamp);
+             await this.db.importChanges(metadata);
+             // We don't bother validating the signature if the dump was just loaded. We do
+             // if the dump was loaded at some other point (eg. from .get()).
+@@ -1067,62 +1065,29 @@ export class RemoteSettingsClient extends EventEmitter {
+    *   The collection metadata, that contains the signature payload.
+    */
+   async validateCollectionSignature(records, timestamp, metadata) {
+-    if (
+-      !metadata?.signatures ||
+-      !Array.isArray(metadata.signatures) ||
+-      metadata.signatures.length === 0
+-    ) {
++    if (!metadata?.json_dump_metadata) {
+       throw new MissingSignatureError(this.identifier);
+     }
+ 
+-    if (!this._verifier) {
+-      this._verifier = Cc[
+-        "@mozilla.org/security/contentsignatureverifier;1"
+-      ].createInstance(Ci.nsIContentSignatureVerifier);
+-    }
+-
++    const {
++      json_dump_metadata: { hash, size },
++    } = metadata;
+     // Merge remote records with local ones and serialize as canonical JSON.
+     const serialized = await lazy.RemoteSettingsWorker.canonicalStringify(
+       records,
+       timestamp
+     );
+ 
+-    // Iterate over the list of signatures until we find a valid one.
+-    const thrownErrors = [];
+-    const { signatures } = metadata;
+-    for (const sig of signatures) {
+-      // This is a content-signature field from an autograph response.
+-      const { x5u, signature, mode } = sig;
+-      if (!x5u || !signature || (mode && mode !== "p384ecdsa")) {
+-        lazy.console.warn(
+-          `${this.identifier} ignore unsupported signature entry in metadata`
+-        );
+-        continue;
+-      }
+-      const certChain = await (await lazy.Utils.fetch(x5u)).text();
+-      lazy.console.debug(`${this.identifier} verify signature using ${x5u}`);
+-
+-      if (
+-        await this._verifier.asyncVerifyContentSignature(
+-          serialized,
+-          "p384ecdsa=" + signature,
+-          certChain,
+-          this.signerName,
+-          lazy.Utils.CERT_CHAIN_ROOT_IDENTIFIER
+-        )
+-      ) {
+-        // Signature is valid, exit!
+-        return;
+-      }
+-      // Try next signature.
+-      thrownErrors.push(
+-        new InvalidSignatureError(this.identifier, x5u, this.signerName)
+-      );
++    lazy.console.debug(`${this.identifier} verify signature using size ${size} and hash ${hash}`);
++    if (
++      !(await lazy.RemoteSettingsWorker.checkContentHash(
++        new TextEncoder().encode(serialized),
++        size,
++        hash
++      ))
++    ) {
++      throw new InvalidSignatureError(this.identifier);
+     }
+-
+-    // We now that the list of signature is not empty, so if we are here
+-    // it means that none was valid.
+-    throw thrownErrors[0];
+   }
+ 
+   /**
+@@ -1323,24 +1288,26 @@ export class RemoteSettingsClient extends EventEmitter {
+    * @param since timestamp of last sync (optional)
+    */
+   async _fetchChangeset(expectedTimestamp, since) {
+-    const client = this.httpClient();
+-    const {
+-      metadata,
+-      timestamp: remoteTimestamp,
+-      changes: remoteRecords,
+-    } = await client.execute(
+-      {
+-        path: `/buckets/${this.bucketName}/collections/${this.collectionName}/changeset`,
+-      },
+-      {
+-        query: {
+-          _expected: expectedTimestamp,
+-          _since: since,
+-        },
+-      }
++    const { data } = await lazy.SharedUtils.loadJSONDump(
++      this.bucketName,
++      this.collectionName
++    );
++    const remoteRecords = data ?? [];
++
++    const serialized = await lazy.RemoteSettingsWorker.canonicalStringify(
++      remoteRecords,
++      expectedTimestamp
+     );
++    const bytes = new TextEncoder().encode(serialized);
++    const metadata = {
++      app_build_id: Services.appinfo.appBuildID,
++      json_dump_metadata: {
++        hash: await lazy.RemoteSettingsWorker.getContentHash(bytes),
++        size: bytes.length,
++      },
++    }
+     return {
+-      remoteTimestamp,
++      remoteTimestamp: expectedTimestamp,
+       metadata,
+       remoteRecords,
+     };
+-- 
+2.52.0
+
+
+From 9b6b5465c039ba005089ae2fb47e18293e3b79f2 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 18:42:56 +0200
+Subject: [PATCH 08/13] Client: start deferred sync on get() or on()
+
+The users of the RemoteSettingsClient.sys.mjs can receive records from it in
+two ways: by calling get(), and by subscribing to events by calling
+on().
+
+So hook a deferred sync whenever something calls these methods. Because
+multiple of those calls can be made quite early and in very short time,
+set up a deferred task that will be armed only when needed and only once
+in a second. When the task is running it first checks if the local data
+came from the dump of the current app build, and no-ops if true. If
+false, it triggers a sync. Then adds a flag if the client has been
+correctly synchronized with the dump, so that no metadata checking
+occurs during the session.
+---
+ .../settings/RemoteSettingsClient.sys.mjs     | 27 ++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index 7684375b82..c2793eb004 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -13,6 +13,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
+   ClientEnvironmentBase:
+     "resource://gre/modules/components-utils/ClientEnvironment.sys.mjs",
+   Database: "resource://services-settings/Database.sys.mjs",
++  DeferredTask: "resource://gre/modules/DeferredTask.sys.mjs",
+   IDBHelpers: "resource://services-settings/IDBHelpers.sys.mjs",
+   KintoHttpClient: "resource://services-common/kinto-http-client.sys.mjs",
+   ObjectUtils: "resource://gre/modules/ObjectUtils.sys.mjs",
+@@ -25,6 +26,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
+ });
+ 
+ const TELEMETRY_COMPONENT = "Remotesettings";
++const DEFERRED_SYNC_DELAY_MILLISECONDS = 1000;
+ 
+ ChromeUtils.defineLazyGetter(lazy, "console", () => lazy.Utils.log);
+ 
+@@ -344,6 +346,11 @@ export class RemoteSettingsClient extends EventEmitter {
+     this._lastCheckTimePref = lastCheckTimePref;
+     this._verifier = null;
+     this._syncRunning = false;
++    this._deferredSync = new lazy.DeferredTask(async () => {
++      if (!this._syncRunning && !(await this._isSynced())) {
++        await this.sync();
++      }
++    }, DEFERRED_SYNC_DELAY_MILLISECONDS);
+ 
+     // This attribute allows signature verification to be disabled, when running tests
+     // or when pulling data from a dev server.
+@@ -374,6 +381,11 @@ export class RemoteSettingsClient extends EventEmitter {
+     this.db.identifier = this.identifier;
+   }
+ 
++  on(event, callback) {
++    super.on(event, callback);
++    this._deferredSync.arm();
++  }
++
+   get identifier() {
+     return `${this.bucketName}/${this.collectionName}`;
+   }
+@@ -457,6 +469,10 @@ export class RemoteSettingsClient extends EventEmitter {
+       let lastModified = forceSync ? null : await this.db.getLastModified();
+       let hasLocalData = lastModified !== null;
+ 
++      if (!(await this._isSynced())) {
++        throw new MissingSignatureError(this.identifier);
++      }
++
+       if (forceSync) {
+         if (!this._importingPromise) {
+           this._importingPromise = (async () => {
+@@ -606,7 +622,10 @@ export class RemoteSettingsClient extends EventEmitter {
+       // No need to verify signature on JSON dumps.
+       // If local DB cannot be read, then we don't even try to do anything,
+       // we return results early.
+-      return this._filterEntries(data);
++      const filtered = this._filterEntries(data);
++      this._deferredSync.arm();
++
++      return filtered;
+     }
+ 
+     if (this.verifySignature && verifySignature) {
+@@ -642,6 +661,12 @@ export class RemoteSettingsClient extends EventEmitter {
+     return final;
+   }
+ 
++  async _isSynced() {
++    this._synced ||=
++      Services.appinfo.appBuildID === (await this.db?.getMetadata())?.app_build_id;
++    return this._synced;
++  }
++
+   /**
+    * Synchronize the local database with the remote server.
+    *
+-- 
+2.52.0
+
+
+From 30607cdbb94d463a0cb4a4f94d10e2646b56c218 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 18:53:51 +0200
+Subject: [PATCH 09/13] Client: deep compare records if timestamps match
+
+When the list of current / updated / deleted records is generated, their
+modification timestamps are compared to detect the updates.
+
+Although in practice this is unlikely to happen, in theory the
+timestamp of some older record received from Remote Settings can match
+with the modified record in the dump. Although JSON processing script
+makes sure to add unique timestamps to each of the modified records,
+it's still possible to update dumps manually and simply forget to update
+timestamps. So serialize the records and compare them as strings to be
+on the safe side. This should happen only once after upgrading to each
+new version of the application, so is not likely to introduce any
+noticeable performance issues.
+---
+ services/settings/RemoteSettingsClient.sys.mjs | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index c2793eb004..5d8662ea88 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -10,6 +10,7 @@ import { Downloader } from "resource://services-settings/Attachments.sys.mjs";
+ const lazy = {};
+ 
+ ChromeUtils.defineESModuleGetters(lazy, {
++  CanonicalJSON: "resource://gre/modules/CanonicalJSON.sys.mjs",
+   ClientEnvironmentBase:
+     "resource://gre/modules/components-utils/ClientEnvironment.sys.mjs",
+   Database: "resource://services-settings/Database.sys.mjs",
+@@ -1288,7 +1289,10 @@ export class RemoteSettingsClient extends EventEmitter {
+         const old = oldById.get(r.id);
+         if (old) {
+           oldById.delete(r.id);
+-          if (r.last_modified != old.last_modified) {
++          if (
++            r.last_modified != old.last_modified ||
++            lazy.CanonicalJSON.stringify(r) != lazy.CanonicalJSON.stringify(old)
++          ) {
+             syncResult.updated.push({ old, new: r });
+           }
+         } else {
+-- 
+2.52.0
+
+
+From fed8d07799f77e7d585b43dc5c6659edabb9679a Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 19:01:39 +0200
+Subject: [PATCH 10/13] Client: delete more data on cleanup
+
+When the client detects the local data is invalid (i.e. it came from
+real Remote Settings and can have unwanted records), delete not only
+the records, but also the attachments that came with them, because they
+too can be problematic. And last check time preference, because it's not
+useful anyway when remote-settings.sys.mjs doesn't do any polling for changes.
+
+Note that attachments should be deleted before the records, because the
+logic gets the data about the attachments from those records.
+---
+ services/settings/RemoteSettingsClient.sys.mjs | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index 5d8662ea88..a0db6c80da 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -1239,7 +1239,7 @@ export class RemoteSettingsClient extends EventEmitter {
+           // Signature failed, clear local DB because it contains
+           // bad data (local + remote changes).
+           lazy.console.debug(`${this.identifier} clear local data`);
+-          await this.db.clear();
++          await this._clearAll();
+           // Local data was tampered, throw and it will retry from empty DB.
+           lazy.console.error(`${this.identifier} local data was corrupted`);
+           throw new CorruptedDataError(this.identifier);
+@@ -1261,7 +1261,7 @@ export class RemoteSettingsClient extends EventEmitter {
+             // _importJSONDump() only clears DB if dump is available,
+             // therefore do it here!
+             if (imported < 0) {
+-              await this.db.clear();
++              await this._clearAll();
+             }
+           }
+         }
+@@ -1310,6 +1310,12 @@ export class RemoteSettingsClient extends EventEmitter {
+     return syncResult;
+   }
+ 
++  async _clearAll() {
++    await this.attachments.deleteAll();
++    await this.db.clear();
++    Services.prefs.clearUserPref(this.lastCheckTimePref);
++  }
++
+   /**
+    * Fetch information from changeset endpoint.
+    *
+-- 
+2.52.0
+
+
+From dc6fe8191e5ef0b1f54387dd0cb7a21db46b58de Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 19:07:56 +0200
+Subject: [PATCH 11/13] Client: remove comparison of collection timestamps
+
+In case if the cached data that came from real Remote Settings server
+(before the upgrade to local-only setup) has collection timestamp, that
+is newer than the packaged local dump, then this comparison logic can
+lead to early return of old data, skipping the integrity checking and
+necessary cleanup. So remove the checks.
+---
+ .../settings/RemoteSettingsClient.sys.mjs     | 19 -------------------
+ 1 file changed, 19 deletions(-)
+
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index a0db6c80da..df5f7a7c66 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -1182,25 +1182,6 @@ export class RemoteSettingsClient extends EventEmitter {
+       `${this.identifier} local timestamp: ${localTimestamp}, remote: ${remoteTimestamp} (expected: ${expectedTimestamp})`
+     );
+ 
+-    if (remoteTimestamp < localTimestamp) {
+-      // This should never happen. Unless the CDN serves stale data.
+-      // If the local data is valid, then we can safely ignore this stage remote changeset.
+-      const localTrustworthy = await new Promise(verifySignatureLocalData);
+-      if (localTrustworthy) {
+-        lazy.console.info(`${this.identifier} CDN served staled data, ignore.`);
+-        return {
+-          current: localRecords,
+-          created: [],
+-          updated: [],
+-          deleted: [],
+-        };
+-      }
+-      // Otherwise, continue with importing, since we prefer stale data over corrupt/tempered.
+-      lazy.console.warn(
+-        `${this.identifier} CDN served staled data, but local data is corrupted, import anyway.`
+-      );
+-    }
+-
+     await this.db.importChanges(metadata, remoteTimestamp, remoteRecords, {
+       clear: retry,
+     });
+-- 
+2.52.0
+
+
+From 812e304313b42ad001f3eb6dbde48e7f820cbeec Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 19:15:44 +0200
+Subject: [PATCH 12/13] Attachments: load only from dump and drop cached
+
+---
+ services/settings/Attachments.sys.mjs | 42 +++++----------------------
+ 1 file changed, 7 insertions(+), 35 deletions(-)
+
+diff --git a/services/settings/Attachments.sys.mjs b/services/settings/Attachments.sys.mjs
+index eb4f74f445..5b44a1faeb 100644
+--- a/services/settings/Attachments.sys.mjs
++++ b/services/settings/Attachments.sys.mjs
+@@ -337,11 +337,12 @@ export class Downloader {
+       retries,
+       checkHash,
+       attachmentId = record?.id,
+-      fallbackToCache = false,
+       fallbackToDump = false,
+       avoidDownload = false,
+       cacheResult = true,
+     } = options || {};
++    const fallbackToCache = false;
++
+     if (!attachmentId) {
+       // Check for pre-condition. This should not happen, but it is explicitly
+       // checked to avoid mixing up attachments, which could be dangerous.
+@@ -401,6 +402,7 @@ export class Downloader {
+         const newBuffer = await this.downloadAsBytes(record, {
+           retries,
+           checkHash,
++          dumpInfo,
+         });
+         if (cacheResult) {
+           const blob = new Blob([newBuffer]);
+@@ -436,7 +438,7 @@ export class Downloader {
+       }
+ 
+       try {
+-        return { ...(await cacheInfo.getResult()), _source: "cache_fallback" };
++        await this.cacheImpl.delete(attachmentId);
+       } catch (e) {
+         // Failed to read from cache, e.g. IndexedDB unusable.
+         console.error(e);
+@@ -518,40 +520,10 @@ export class Downloader {
+    */
+   async downloadAsBytes(record, options = {}) {
+     const {
+-      attachment: { location, hash, size },
+-    } = record;
+-
+-    let baseURL;
+-    try {
+-      baseURL = await lazy.Utils.baseAttachmentsURL();
+-    } catch (error) {
+-      throw new Downloader.ServerInfoError(error);
+-    }
+-
+-    const remoteFileUrl = baseURL + location;
++      dumpInfo = new LazyRecordAndBuffer(() => this._readAttachmentDump(attachmentId))
++    } = options;
+ 
+-    const { retries = 3, checkHash = true } = options;
+-    let retried = 0;
+-    while (true) {
+-      try {
+-        const buffer = await this._fetchAttachment(remoteFileUrl);
+-        if (!checkHash) {
+-          return buffer;
+-        }
+-        if (
+-          await lazy.RemoteSettingsWorker.checkContentHash(buffer, size, hash)
+-        ) {
+-          return buffer;
+-        }
+-        // Content is corrupted.
+-        throw new Downloader.BadContentError(location);
+-      } catch (e) {
+-        if (retried >= retries) {
+-          throw e;
+-        }
+-      }
+-      retried++;
+-    }
++    return (await dumpInfo.getResult()).buffer;
+   }
+ 
+   async _fetchAttachment(url) {
+-- 
+2.52.0
+
+
+From 079a89b6f05e9be50600ca127c264579dd554f8a Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 30 Dec 2020 19:22:20 +0200
+Subject: [PATCH 13/13] Disable CRLite entirely for now
+
+It's designed to fetch the data from Remote Settings. One of the main
+selling points is that new revocations can be pushed to the clients
+within minutes. That won't work with local-only setup. Although (some?)
+of the JSON dumps for it are in place, obviously the updates won't
+happen that fast.
+
+Disable the preference right in the source code, so that the patch fails
+to apply when the upstream decides to set it to fully enforcing mode
+by default.
+
+The solution with CRLite is up for discussion. If necessary, it's
+possible to make clients for blessed collections to communicate to real
+Remote Settings server. For example, for collections related to
+certificate revocations.
+---
+ modules/libpref/init/StaticPrefList.yaml | 2 +-
+ security/manager/ssl/nsNSSComponent.cpp  | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index 6c725ea8c7..18bccb6275 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -17296,7 +17296,7 @@
+ #    security.OCSP.enable is 0).
+ - name: security.pki.crlite_mode
+   type: RelaxedAtomicUint32
+-  value: 2
++  value: 0
+   mirror: always
+ 
+ # The CRLite filter channel to which the user is subscribed.
+diff --git a/security/manager/ssl/nsNSSComponent.cpp b/security/manager/ssl/nsNSSComponent.cpp
+index b2a58f07ac..7c5dba7872 100644
+--- a/security/manager/ssl/nsNSSComponent.cpp
++++ b/security/manager/ssl/nsNSSComponent.cpp
+@@ -1077,6 +1077,7 @@ void nsNSSComponent::setValidationOptions(
+   CRLiteMode defaultCRLiteMode = CRLiteMode::Enforce;
+   CRLiteMode crliteMode =
+       static_cast<CRLiteMode>(StaticPrefs::security_pki_crlite_mode());
++  // Adding a comment just in case so that the patch breaks as soon as any surrounding lines get changed
+   switch (crliteMode) {
+     case CRLiteMode::Disabled:
+     case CRLiteMode::TelemetryOnly:
+-- 
+2.52.0
+

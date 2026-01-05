@@ -1,0 +1,1558 @@
+From 9d986c440f6f05f8a75d6b32afe6dee7cb7a2a8d Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sat, 12 Mar 2022 17:14:25 +0100
+Subject: [PATCH 1/7] Replace upstream default bookmarks
+
+---
+ browser/base/content/default-bookmarks.html | 50 +++++++++------------
+ 1 file changed, 20 insertions(+), 30 deletions(-)
+
+diff --git a/browser/base/content/default-bookmarks.html b/browser/base/content/default-bookmarks.html
+index 2f764caf6f..a0f27ae8e7 100644
+--- a/browser/base/content/default-bookmarks.html
++++ b/browser/base/content/default-bookmarks.html
+@@ -1,14 +1,14 @@
+ #filter substitution
+ 
+-#define mozilla_icon data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E %3Cpath d='M0 0h16v16H0z'/%3E %3Cpath d='M13.994 10.356H15V12h-3.171V7.741c0-1.308-.435-1.81-1.29-1.81-1.04 0-1.46.737-1.46 1.8v2.63h1.006V12H6.918V7.741c0-1.308-.435-1.81-1.291-1.81-1.039 0-1.459.737-1.459 1.8v2.63h1.441V12H1v-1.644h1.006V6.079H1V4.435h3.168v1.139a2.507 2.507 0 0 1 2.3-1.29A2.452 2.452 0 0 1 8.931 5.91 2.535 2.535 0 0 1 11.4 4.284 2.448 2.448 0 0 1 14 6.9v3.458z' fill='%23fff'/%3E %3C/svg%3E
+-
+-#define firefox_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAHY0lEQVR4Aa3VA5RrSdfG8f+uOidJp/umczm2ffFhbNvG9722bdv22LZt+3I81+04B1XvfpPmWHut3yk06smus1Z4L8uXDv6MHzpowA8eWFS8FaY9eU+cCvxaFfF8W/FWGDy8a6n7DM7/H96DR3ldu0MVb8a0J+9CI1qXJP11a+79GOdP1f11FW/EtCfvQpx8mziFxMHEEEV1KYkrKl6Pea1Nbnrs/7hz7q2KUQsqRcUE/eV1acb/pyFQ7b9N3fguzNTxVsXrMa/avFgPb6SnukY8W6EgXvszrszjivH08F0VLZFK0rbUgRt9H2aS+lORznUxnTMV45kJG6fNPZSGnEodTJwUFGbphqdSll/H/SxWjEc92kYxSoO0uzEcwo90g/9rlKpHpCmX491MxQgzuvjtE0UieyqxhYZA3UGp8CjUtSMR2YrkFdf+/szi9X88+zM3/uncSx/81/f+7/HzPsu8q09i8MUNcCUHUTImceAAL+RC+UW1nMzHuUvxSVGBCloTgMT+GuOLipaGyg/OpLuE/jVI58wHb/zsdxD5tBVbDMQwOPe/8UDqHYuuPJjCZnP5nw/+mfyUPhADRtkAaIfosum23klBxH8b+KzCfuczG8IPXi4C5yHQwvDoPYhCBSkz1n9y1+WLd8xFzVUxxmIRjBIBVHXFZF58aEtW3exxsp0V8Aac8gpBnGQBRNymkP4VXKPdgdj8H2JB/DgMVwreATFhdoCdj/wY8x7+GM8/djyJ81hlnCPTUWfHb/0QlyRUelalEPcCHswIQARJPd64ohh/KHBagPcQB7sggHgIVHcM0wUyWWUAoNaEuobI9bP1dj9lw1nnMvehj/LS0wdinYO4wM1f/h6z3v9n1t3pTnAWBj04ZQA7LFROwMsu7QCpgcjuCh4Asg5Wa0ImgNDqqHTOtDyIgPPKkZ/cZOstzmT+Nw4jcA5JBO9SHjzzWKZt8CRd03ohD/RZALCigIwHawBmKgKSVoAiAi2VDCzsgo0bYB04lSojEAaQDyETsmTZf3PPdZ+irvMgTTF4SAVX7+SRC/dj5/f/C6D9d5UQLBAIFBJILIhtB1g2a8uZq+1+LwiAV8CSTujPwqoRbJjCJMdAeRVue+j/WLh4T2I3jcCEhN4ShmDFYR2IAXC8OHdDaMYAYBxU82AFAgPShHoejAEgUEViy2h5UbS9LLBajf5oMr866wc0wlWQvEEyNQKbIcSSwZBNIfAO41NQ9ZXd0IgBAQdUDAQWpjQhcfi6gCgguDtTm3vIUBdhdwUA/Pggqmy49/n/pr/q8ZMq4DziEwI0QOtpiT1kXUqQRqC8ohaDy0BqoGzxOUE6q9DwMBiOvtzm5OLi3migAFEwpjnOCzmKhZXUkyr1uEwtLqky1aStNk4jqhFFDVZb6ykYMjBodQxw5RAKZUgSqAq+YmmWzFxF0P8L61Z8pHhf5/S+bfHQJm1OLcuzw4YPcWH3/qysTcebFHyESTOkhLjUokt8M8VFCVYDbLXhvdCfARfiG3lkykDr2qhbXJTRUZBAngMwootGI3tbrbcIsR3ugp3Yhbun89l9/ko+qCDVGpQruHKJqDakBmnq2KyXaDZKrDX1KWau+ij0ZqAvgwR1JFuFmihwPTkdDQN9co3C6IMnwujs0sppELcOV+NHVc2wzv2eb+74J6ZP6kGazeEgZZJqiaRWJo6qbDb5MU7c4ixYmYUhC7YJaQxVgYrgSxa3sgNftdww31+usFuvuykfWDzU/4HytL0llTVz+SbiAScTryKxFFc6dlnnQVZP+wEo2grT7ACb5V7g2BnXsVfxHsLEgfGQTYb/1kJqWpKV3VDLM1iXi/a8PDrtqmecl451DwLg8oG1DtnMmcsKq/bQ1V3BmBTsfzgIfHucwINxICivADt8eADkBLJGtcc0ydHsmU7QEXBFfzwTeFwRnLFtDoBD7nv5+vv61v2XXzHlfR7oKtQxLkFcCqkDK8qMHdIex4gSMxaoKZBtS8lQ18NtJsPSmv/Nyfc3nma4RjsA8Jnq1HU+WC9cY01z865pJQrdDcQkrW6IpGOfun3oxLnw6m/SEBIyVFbOIMhmiXJy35oL+vYDBhkuGxY3YaTuy9TLA+Jv2inu2j2ph9NrTUMmCyIGjwEnyiCtUaUWnGlLR1hIlM6rKwpUX5qBiTuI02Du94aqx8zJhEsVI4IPduUZV+7vDC0CDv9GdeolUjObL18ckutqMKkQkc2kiFHOITLCwyiUp1bNUhuYRFrrxPoMzdDM/XbUf/gZvvYsozX+Cl5d5vh690afrk3+0hR4XyoxqYmQICaTSwjClI6cA3EIvhWi0QiIm6rRgaQh1ikfsMK43/xv8YWfASuUe6sBAIzqPmNwjb1nJdnP5PDbOpPgJMXjWhDAC4JgvEWUaQkoib/o/NzQb37S1fP0+Dt/6wHGKqe6v1yZvuG+zc69p3m7d4dnW8TjAaEdwmFKEcztkfSG67KVG346aeV8YEglincRYLQClVcdKsery6lI1VVNJbyF+jdp8gPG4E08mAAAAABJRU5ErkJggg==
+-
+-#define bugzilla_icon data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnYCL7J0pY9wwETY9kYEM9AAAAAEBAYAhVVVUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1bjTOS1Vb/wAA2/8JEqT/Q0g8kQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJnMqoiJtJ/0haST/NEkp/yQnW/8AAPD8AAHY/RsgP/JZUI+GKitih4ObUEAAAAAAAAAAAAAAAAAAAAAAKnouwip5Lv9ooW//a6Jz/y9GIv8JBXb/AADO/gEBvf8AAK7/FRJp/z9BfP8iLGj1AAAAAAAAAAAAAAAAL4YzwiB0I/+UwJ3/bK+C/02eZ/9CTjz/DBa1/wABxf8BAOj/AACp/w8Oc/sJCv//EhCN9AAAAAAAAAAANJA6iC2MMv93tYL/TZ5U/3mzjP9NoWr/NEss/wYIU/8CBOn/ARCX/wwNqP0TD6X/Cgyex5qacDAAAAAAAAAAADKUN/ZirWj/d76R/0SgXf9Ln1P/eLSM/1mda/8rOkb/CQiD/wMQvf8UEnT/MTAt4P//MwUhZyN8AAAAAAAAAAAznDf5UqlZ/228jP9NqnD/Qp9c/0yiVP+Dv5b/VaVw/0VxXf9PZXD/S3pQ/y54Nf8jcCf/I2wn/wAAAAA0ozjIM6E4/zOeOP+Uz6z/XLR+/06scv9BoV3/TqZX/4XBmP9XqHP/hr6Z/yp+Lf8leSr1JXUqbQAAAAA3rTz7Nqo7/zWmOqM3oz7rUK1W/43Mpf9etYD/T61z/0KjXf9Rqln/msup/46/lf8pgy7/JFg6sAAAAAAAAAAAOK8+8jqvOiMAAAAAAAAAADSlOv85pT//kM6o/2K5hP9Ysnv/YLJ2/ziXPv8piS3/V6Ri/yZQQ9wAAAAAAAAAAAAAAAAAAAAAAAAAADetP0E2qzz/OKg98UWsS/+e1K3/pNe4/4XDjv8ojy3/T7df/5fIqv8sjTH/K4kw/yqFLv8AAAAAAAAAAAAAAAA4sT3xN7A8+QAAAAA4qz3yNag6/zSlOf80oTn/csJ+/6/jwv9fjHj/MmRMdQAAAAAAAAAAAAAAAAAAAAAAAAAAOrdA/zm0QHQAAAAAAAAAADasO/k2qTvuRX5lpjqGT/gznDr/O3FXigAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADq9QiMAAAAAAAAAAAAAAAA4sj7/Nq09s0uOaSI1qTplM6U68wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOrc//zu0P0EAAAAAOK4+UjWsPPgAAAAAAAAAAAAAAAAAAAAA/48AAP8HAAD4AQAA8AAAAOAAAADAAQAAwAMAAMAAAACAAwAAAAMAAHADAADwAAAA5AcAAO4HAAD+bwAA/u8AAA==
+-
+-#define mdn_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABgElEQVR4AWPouPiRpmjUAjgatSBj+aG0OVuyVhymsgWl2y475zXySikwwIC4lpFDVk3avG0BrXP9mmeV7bhCvgXuxW3M7JwMeAGfpByZFpjHFzAQB2KmrSfZAtuMKgaiAZ+MUuLc7SRY4FbYwkA60HAJiJm8uubQAwIWeJV1MlAAOAREHDJrcFqQMG+ngIK6oKyykLwqAyMjeXZwiUjgtKD+yGMIwyGzmoGBTAs4hcXrgObgi4OiVkpCiUtYov7YU5wW1B194t0ww69ldvjktYouwWRYIGdkQ1Q+iJ28hp2Xn7B5zKzIPAlNw6S52wlbkL3mJJecOq+CBqeIJC6TjUJTMlcdz9lwLmriSuPgJBVbj/D+5SSXRequQVhNN4nIoEJhV77jKgs7B6bprJw85XtuU8GCpNlbSS3gSA4ii4QiTAvElDWpWeH41kxg5eZDSypUrtFKd1zTcA1EpHRDS5rUyQEts+VN7JjYOGR0TWhY6RdsOhc/Y9NoswUJjVoAAE+h555Rgcg2AAAAAElFTkSuQmCC
+-
+-#define addon_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAABOFBMVEUAAAAAzdwAydcAyNgA//8AzOYAydcAyNgAyNgA2NgAytoAzNkAytgAydgA29sA0egAyNgAyNgA//8AyNgAydgA//8Ay9cAydcAytkAz90Ay9gA1eoAydgAytsAyNgAytgAydkAydgAydgAyNgAydgAyNcAy9oAydgA//8AytsAy9kAytkAyNgAydgAydkAy9kAzP8AydgAydgAydgAz98AzN0AyNcAyNsAydcAydgAydgAydcAytgAytcAydcAydcAytcAydcAyNcAydcAy9gAztgAydcAydgAzOAAydcAyNgAyNgAytwAyNcAyNgAy9wAyNcAyNcAyNgAydgAyNcAydcAydgA0uEAydkAyNgAyeQA4+MAyNgAydkAzN0AyNsA1f8AyNgAydgAydcA1eMAydgAydcAyNdj6PGJAAAAZ3RSTlMAJFpBAQqm8qwNPiiPygcLv8QEw5cDQMA1JU4MwiuDbl/+6+m4+0XLAj9KePz9cjYFvervEA/IDsfFr+xcgeaOYIDo+ica1OMZ9bXlHe73LM3M35itxs8Rf5ATCbFeHjgGttC5ErzO3WvwaAAAAWxJREFUOMt9kudCwkAQhFcITQWCoaggiBqxoaixYUVsYMMGCmLXff838LIXCJAL84fvmCHsTg4AYMDhlIDkcnu8Po4w6BjiIA0joj+gY1BmGKLEiMIwHNFR9xGjuh8jpMQoYZjRGBGOA8QTHDEUB4hynABwcEqCT8GW2DNSnCYBnJzSoSk0NT2jcphlM/rRXpk5NkRgfmFxSWBml6MrOWNlWBUEEmDKtyYIrGttP66gSP4Nww8mUKzNLd5/zHaJbb1Tl9xnzR2WcGM/5QE8BLvJvf0Dc4HDo8IxUVECL5Vywv7s9Mzwz/WLcFHSsWy8w0sa9+qa/JtbOlUY3mnGLbjnCz9Q4JEfnhCrNb5nXi3w754p8MIPKVWpt6psGJ+vFJBbBUO3GlozzYdsSmCV1NlntiTnegNvPQ29Wx7h7fKrEUvg47PD/6oLpgh8m7//AZEav4b/J/bbb75SAzvR3crY+6y8fLGsQV9ZSvwHF4LQIhDjT+8AAAAASUVORK5CYII=
++#define parabola_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAaa5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC
++ 
++#define fsf_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADG0lEQVQoFQEQA+/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQECAAAAAAAAAAAAAAAAAAAA2qOp7tTXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP///wAAAAAAAOCyt7pUXQcSEgcQDwAAAP///wAAAAAAAAD//x9NSDqNhQEBAQQAAAAAAAAAAAAAAAAQJiQGDQ0aPToZPjoAAQEAAAAAAAAAAAABAQEpZV4AAAAAAAAAAAAA////////////////pSIv05KZ////////////////////////////////AAAAAQAAAP///6krNwAAAAAAAPHc3ggSEQcSEQAAAAAAAAAAABY3NEGelQAAAAAAAAEBAQEAAAD///+YARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGDg1g690CBgYAAAABAQEEAAAAAAAAS7etAAAAAAAAwGVtHklFIlJOAAAAAAAAAAAAAAAA+/X2BwYGAAAAAAAABAAAAAAAAB1IQwAAAAAAAAYNDBAmJB1IQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgL//v4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAQEB//7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAECAv/+/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////////////cqK3qzM////////////////////////////////8AAAABAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGuLjDf9F8oBAAAAAElFTkSuQmCC
++ 
++#define gnu_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAGFBMVEVFRUV+fn6mpqa/v7/Ozs7Y2Njg4OD8/Pwuhn+TAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9MBDhQ6Gd8s57cAAAEVSURBVBgZBcGxVtpgGADQL9gHSBzqSognzMixmcWWzB6pmRHhnyvku6/fewMAIPD3TwHmQxHs6vr+A16bphNum/vV0x429201hcPjAGBTDZGnR/Kw1U181+u4HXvOdSxjUcztz8jjg1xGVBG9XPYxt4PviKiaWLg168iXtbrq+mPT1utjNcR1U73deRnL43M2sRgj3+oYs8uL3rLphPd2QWmHbMu/VS/cnk6UdtSW657g9yBlcZ0UAkUWzPvyRaAYmfd+HT4IZtvC59ibEJxXiqJjQpBpNEufBYE0McoOAunGhRMEFIPc7h4goJigQEBxk8u7AgEpL3IEAUZfcgAByGFXQACm5+4MAuB19QMEgI8CAgDgP4rivVgoKP6ZAAAAAElFTkSuQmCC
++ 
++#define libreplanet_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACfElEQVQ4jZXTS0hUcRTH8f+9M3fGd0gRRq1a2bZdBAotWtS6TQtB6IHgKzRy0UKqjRaRCAq+R21MDMsUR83JR5fJxhmaK2lzsWAWw+ToEHJxgnFm7reFIgza66z/58P/dzhHcESZpsluIsFPwyCVSmGa5lHPEEIIkdGYTqPPvqUlP4fK8nJ2DINYNEq71YJ3fv4QlAGkUynaj+VRdfUK7580M52rEN/ZYWNjg2GrjEMSPFXsmOn0YcA0TZ4V5tNZUkJTTTWfJiZIJhJ8U1VczwcZs0o4JUHzufM0ZGcf/OQASCaTxGIxDMNA00P8iEbpuXyJ8Tw77+wWJhWZQYuVbiHoFIKwpmUC4XCYzc1NDMMgHo9z8+IFvl6/xsf7D9ArbjOpyAxLEt1C0CUErfvJDwBd14lEImxvb/N9fR1fgY3egmyWsq0sO/poUyw4pb3mLiFolyRM09wDEokEfr+fUChEJBJh4HgBS7kKn92zLIy9ZriqklFZwiEEHfsRRp1O0un0HpDa3cU9M8PKygp3Tp5AzbKgZlmYt1uYtkn02q0MyYKmnBxWNI27Nhtut5tkMrkHmKZJbWkpqqryQpFxKTJTisyEVeaVRWJIlqgpLuZRWRkejwe/34/P58ucwZvWVhYXF5l2uejIzeHGqbM4ZYmB/dy1hUV8mJpibm4On8/H1tbW4T1YXV3F6/WysLDA5Pg4nfsDe5yfz8OiIjweD5qmEQwGf7/KwWCQtbU1NE2jRZbpEoI2SWKqr49lVUXX9T/fAkAgEKC/e5SW6mo6hKD+zGn6e0bw+/x/PyaA9S/rvOwfobGukfpbddyraMDR7iCwHPg34H9KCCF+Abts3KCj/p6aAAAAAElFTkSuQmCC
++ 
++#define hnode_icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABgElEQVQ4jaXRz2uSARzHcb0vlRGEzTVWISU1BVkFYTIyjNK1pKcxHA+yhWMWIamHYikFgpoLIi9jwegi3QbL9SzdLmMbM9J+DkJBgm5RDvEPeHeQHOyQz0OH9+V7ePGBr0pqpPmfVPsP8a0AR4MnMEwf48x9K0s/E8oAY9iEMOvD+8yP2qVjrhhRBnSN61n5sIpULqC+pGHh8wNlgEY8jPQXcGh4VXukDND5evYAl46odIuXtYdKAANSudAChO52/XeMZMohecCbcoGdH99Y+7LO72adT9+/4nh8nYOjBl7/SsoB8gBkpHk8T0S2K++pN3fRin3cfnFDHvCuWkI9rEMvHGEo5gbAHnXhnLF1BpZLeRaLOVT2A8Q3A5wMngXgWtKLxX9KPqC+rCWQvYkpeK4NWKcGOgO50ts2MJJ0cPreeQDciTHMchZYIhcwh2wcuqjn+ccwGm9v6wsTxxn0dVgQXZ7Ek3Agpq6QrcaQGmmebtxFSDkRU1fJVmL/BpT2ByV/3eDMhinRAAAAAElFTkSuQmCC
+ <!-- This Source Code Form is subject to the terms of the Mozilla Public
+    - License, v. 2.0. If a copy of the MPL was not distributed with this
+    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+@@ -28,30 +28,20 @@
+ <h1 data-l10n-id="default-bookmarks-heading">default-bookmarks-heading</h1>
+ 
+ <dl><p>
+-#ifndef NIGHTLY_BUILD
+-    <dt><h3 data-l10n-id="default-bookmarks-firefox-heading">default-bookmarks-firefox-heading</h3></dt>
++    <dt><h3>Parabola GNU/Linux-libre</h3></dt>
+         <dl><p>
+-            <dt><a href="https://support.mozilla.org/products/firefox" icon="@firefox_icon@" data-l10n-id="default-bookmarks-firefox-get-help">default-bookmarks-firefox-get-help</a></dt>
+-            <dt><a href="https://support.mozilla.org/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize" icon="@firefox_icon@" data-l10n-id="default-bookmarks-firefox-customize">default-bookmarks-firefox-customize</a></dt>
+-#ifdef EARLY_BETA_OR_EARLIER
+-            <dt><a href="https://www.mozilla.org/contribute/?utm_medium=firefox-desktop&utm_source=bookmarks-toolbar&utm_campaign=new-users-beta&utm_content=-global" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-firefox-community">default-bookmarks-firefox-community</a></dt>
+-#else
+-            <dt><a href="https://www.mozilla.org/contribute/" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-firefox-community">default-bookmarks-firefox-community</a></dt>
+-#endif
+-            <dt><a href="https://www.mozilla.org/about/" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-firefox-about">default-bookmarks-firefox-about</a></dt>
+-        </dl><p>
+-#else
+-    <dt><h3 data-l10n-id="default-bookmarks-nightly-heading">default-bookmarks-nightly-heading</h3></dt>
++            <dt><a href="https://www.parabola.nu/" icon="@parabola_icon@">Parabola GNU/Linux-libre</a>
++            <dt><a href="https://www.parabola.nu/packages/" icon="@parabola_icon@">Parabola GNU/Linux-libre Packages</a>
++            <dt><a href="https://wiki.parabola.nu/" icon="@parabola_icon@">Parabola GNU/Linux-libre Wiki</a>
++            <dt><a href="https://labs.parabola.nu/" icon="@parabola_icon@">Parabola GNU/Linux-libre Labs</a>
++    </dl><p>
++    <dt><h3>Free Software Foundation</h3></dt>
+         <dl><p>
+-            <dt><a href="https://www.mozilla.org/contribute/?utm_medium=firefox-desktop&utm_source=bookmarks-toolbar&utm_campaign=new-users-nightly&utm_content=-global" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-firefox-community">default-bookmarks-firefox-community</a></dt>
+-            <dt><a href="https://blog.nightly.mozilla.org/" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-nightly-blog">default-bookmarks-nightly-blog</a></dt>
+-            <dt><a href="https://bugzilla.mozilla.org/" icon="@bugzilla_icon@" shortcuturl="bz" data-l10n-id="default-bookmarks-bugzilla">default-bookmarks-bugzilla</a></dt>
+-            <dt><a href="https://developer.mozilla.org/" icon="@mdn_icon@" shortcuturl="mdn" data-l10n-id="default-bookmarks-mdn">default-bookmarks-mdn</a></dt>
+-            <dt><a href="https://addons.mozilla.org/firefox/addon/nightly-tester-tools/" icon="@addon_icon@" data-l10n-id="default-bookmarks-nightly-tester-tools">default-bookmarks-nightly-tester-tools</a></dt>
+-            <dt><a href="about:crashes" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-crashes">default-bookmarks-crashes</a></dt>
+-            <dt><a href="https://planet.mozilla.org/" icon="@mozilla_icon@" data-l10n-id="default-bookmarks-planet">default-bookmarks-planet</a></dt>
++            <dt><a href="https://www.fsf.org/" icon="@fsf_icon@">Free Software Foundation</a>
++            <dt><a href="https://www.gnu.org/" icon="@gnu_icon@">The GNU Operating System and the Free Software Movement</a>
++            <dt><a href="https://libreplanet.org/" icon="@libreplanet_icon@">LibrePlanet</a>
++            <dt><a href="https://www.h-node.org/" icon="@hnode_icon@">h-node</a>
+         </dl><p>
+-#endif
+ </dl>
+ </body>
+ </html>
+-- 
+2.52.0
+
+
+From 3a971de085334f3733e9a1b73b9079f4c4ac8ac9 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sat, 7 May 2022 21:46:48 +0200
+Subject: [PATCH 2/7] Remove 'More from Mozilla' section in Preferences
+
+Currently it contains functionality to provide links to nonfree software
+like Firefox Mobile, which is not compatible with the FSDG for the same
+reasons as desktop Firefox.
+---
+ browser/app/profile/firefox.js                |  2 +-
+ .../static/browser_all_files_referenced.js    |  9 ------
+ browser/components/preferences/jar.mn         |  3 --
+ .../more-from-mozilla-qr-code-simple-cn.svg   |  4 ---
+ .../more-from-mozilla-qr-code-simple.svg      |  4 ---
+ .../components/preferences/moreFromMozilla.js | 30 -------------------
+ browser/components/preferences/preferences.js |  8 -----
+ .../components/preferences/preferences.xhtml  | 12 --------
+ 8 files changed, 1 insertion(+), 71 deletions(-)
+ delete mode 100644 browser/components/preferences/more-from-mozilla-qr-code-simple-cn.svg
+ delete mode 100644 browser/components/preferences/more-from-mozilla-qr-code-simple.svg
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 642c97ebc9..8e6e70f8a4 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -1370,7 +1370,7 @@ pref("accessibility.typeaheadfind.flashBar", 1);
+ // Whether we had to hide the "Firefox Labs" section because it would be empty.
+ pref("browser.preferences.experimental.hidden", false);
+ // Whether we show the "More from Mozilla" section.
+-pref("browser.preferences.moreFromMozilla", true);
++pref("browser.preferences.moreFromMozilla", false);
+ 
+ // Used by settings to track whether the user customized advanced
+ // performance settings. Not used directly elsewhere.
+diff --git a/browser/base/content/test/static/browser_all_files_referenced.js b/browser/base/content/test/static/browser_all_files_referenced.js
+index 632a337ee2..871fc91b6b 100644
+--- a/browser/base/content/test/static/browser_all_files_referenced.js
++++ b/browser/base/content/test/static/browser_all_files_referenced.js
+@@ -188,15 +188,6 @@ var allowlist = [
+   // extensions/pref/autoconfig/src/nsReadConfig.cpp
+   { file: "resource://gre/defaults/autoconfig/prefcalls.js" },
+ 
+-  // browser/components/preferences/moreFromMozilla.js
+-  // These files URLs are constructed programatically at run time.
+-  {
+-    file: "chrome://browser/content/preferences/more-from-mozilla-qr-code-simple.svg",
+-  },
+-  {
+-    file: "chrome://browser/content/preferences/more-from-mozilla-qr-code-simple-cn.svg",
+-  },
+-
+   { file: "resource://gre/greprefs.js" },
+ 
+   // layout/mathml/nsMathMLChar.cpp
+diff --git a/browser/components/preferences/jar.mn b/browser/components/preferences/jar.mn
+index 7c5f6e9053..9933e070b8 100644
+--- a/browser/components/preferences/jar.mn
++++ b/browser/components/preferences/jar.mn
+@@ -15,12 +15,9 @@ browser.jar:
+    content/browser/preferences/translations.js
+    content/browser/preferences/sync.js
+    content/browser/preferences/experimental.js
+-   content/browser/preferences/moreFromMozilla.js
+    content/browser/preferences/fxaPairDevice.xhtml
+    content/browser/preferences/fxaPairDevice.js
+    content/browser/preferences/findInPage.js
+-   content/browser/preferences/more-from-mozilla-qr-code-simple.svg
+-   content/browser/preferences/more-from-mozilla-qr-code-simple-cn.svg
+    content/browser/preferences/web-appearance-dark.svg
+    content/browser/preferences/web-appearance-light.svg
+    content/browser/preferences/widgets/dialog-button.mjs                (widgets/dialog-button/dialog-button.mjs)
+diff --git a/browser/components/preferences/more-from-mozilla-qr-code-simple-cn.svg b/browser/components/preferences/more-from-mozilla-qr-code-simple-cn.svg
+deleted file mode 100644
+index edcad0f36c..0000000000
+--- a/browser/components/preferences/more-from-mozilla-qr-code-simple-cn.svg
++++ /dev/null
+@@ -1,4 +0,0 @@
+-<!-- This Source Code Form is subject to the terms of the Mozilla Public
+-   - License, v. 2.0. If a copy of the MPL was not distributed with this
+-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+-<svg width="80" height="80" fill="context-fill" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 2h72a2 2 0 0 1 2 2v72a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM0 4a4 4 0 0 1 4-4h72a4 4 0 0 1 4 4v72a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4Zm7.08 3.08h15.892v15.892H7.08V7.08Zm4.54 2.27H9.35V20.701H20.701V9.35h-9.08Zm18.163-2.27h4.541v2.27h2.27v2.27h-2.27v2.27h-2.27v2.271h4.54v-4.54h2.27V9.35h2.271v6.811h-2.27v2.27h2.27v4.541h-2.27v-2.27h-2.27v-2.27h-2.27v2.27h-2.271v-2.27h-2.27V7.08Zm0 13.622v-2.27h-2.27V9.35h-2.27v13.622h2.27v2.27h-9.081v2.271h-2.27v2.27H13.89v-4.54h-2.27v2.27H7.08v2.27h2.27v2.27h2.27v2.271h9.081v2.27h2.271v2.27h-2.27v2.271h-2.27v-2.27h-2.27v-2.27H7.08v2.27h4.54v2.27H9.35v2.27h6.811v-2.27h2.27v4.54h6.811v-2.27h2.271v2.27h2.27v-4.54h-4.54v-2.27h2.27v-4.54h2.27v-2.271h-4.54v-2.27h2.27v-2.271h2.27v-4.54h2.27v2.27h4.541v2.27h-2.27v2.27h2.27v-2.27h2.27v-4.54h-2.27v-2.271h-2.27v2.27h-2.27v-2.27h-2.27Zm0 0h-2.27v2.27h2.27v-2.27Zm-9.081 11.352v2.27h2.27v2.27h2.27v-4.54h-4.54Zm4.54 9.081h-4.54v2.27h4.54v-2.27Zm-4.54-9.081v-2.27h2.27v-2.271h-4.54v4.54h2.27Zm-9.082 0v-2.27h2.27v2.27h-2.27ZM41.135 9.35V7.08h2.27v2.27h-2.27Zm2.27 20.433h-2.27v-4.54h2.27v2.27h2.27v-2.27h2.271v-4.541h2.27v2.27h2.271v-4.54h2.27V25.242h2.27v2.271h-4.54v-2.27h-2.27v4.54h-6.811Zm9.082 2.27v-2.27h-2.27v2.27h2.27Zm2.27 0h-2.27v4.541h-2.27v4.541h2.27v4.54h-2.27v4.541h-4.541v2.271h-2.27v-2.27h-2.27v2.27h2.27v2.27h-4.541v-4.54h-6.811v2.27h-2.27v-4.54h-4.541v2.27h-2.27v-2.27h-2.271v2.27h2.27v2.27h-4.54v-4.54H13.89v2.27h-2.27v-4.541H9.35v2.27H7.08v2.27h4.54v2.271H7.08v2.27h4.54v-2.27h2.27v2.27h2.271v-2.27h2.27v2.27h6.811v6.811h2.271v2.27h2.27v2.271h-4.54v2.27h2.27v2.271h2.27v-4.54h2.27v-2.271h-2.27v-4.54h4.541v2.27h2.27v2.27h-2.27v2.27h2.27v4.541h-2.27v2.27h2.27v-2.27h2.27v2.27h6.811v-2.27h4.541v-4.54h4.541v2.27h-2.27v4.54h2.27v-2.27h2.27v2.27h9.082V66.11h2.27v2.27h4.541v-2.27h-2.27v-6.811h2.27V45.675h-2.27v13.622h-2.27v-2.27h-2.27v-4.541h-6.811v-2.27h-4.541v-6.811h2.27v4.54h4.54v-4.54h-2.27v-2.27h-6.811v-2.271h2.27v-2.27h2.27v2.27h2.271v-4.54h4.54v9.08h2.271v-2.27h2.27v-2.27h-2.27v-6.811h2.27v-2.27h2.271v2.27h2.27v-4.541h-2.27v-2.27H59.299v2.27h-2.271v2.27h-2.27v2.27Zm2.27 0v2.271h-2.27v-2.27h2.27Zm2.271-2.27h2.27v2.27h2.27v-4.54h-4.54v2.27Zm0 0v2.27h-2.27v-2.27h2.27Zm9.082 29.515h-2.27v2.27h-2.271v2.27h4.54v-4.54ZM54.757 66.11h2.27v2.27h2.271v2.271h4.54v-2.27h-2.27v-2.27h-2.27v-2.271h-4.54v2.27Zm-6.81-2.27v2.27h2.27v-2.27h-2.27Zm-2.271 0v-2.27h-6.811v-2.27h2.27v-2.271h2.27v-2.27h9.082v4.54h-4.54v-2.27h-2.271v2.27h2.27v4.54h-2.27Zm0 0h-9.081v2.27h2.27v2.27h2.27v2.271h2.27v-2.27h2.27v-4.541Zm-9.082-6.811v2.27h-2.27v-2.27h2.27Zm0-2.27h2.27v2.27h-2.27v-2.27Zm0 0h-2.27v-2.271h2.27v2.27Zm-6.81 4.54v-6.811h-2.271v6.811h2.27ZM47.945 7.08h4.541v4.54h-2.27V9.35h-2.27V7.08Zm0 2.27v2.27h2.27v2.27h4.541v2.271h-4.54v2.27h-6.811v-2.27h2.27v-2.27h-2.27v-2.27h2.27V9.35h2.27Zm9.082-2.27H72.92v15.892H57.028V7.08Zm4.54 2.27h-2.27V20.701H70.65V9.35h-9.081ZM11.62 11.62h6.811v6.811H11.621V11.621Zm49.949 0H68.379v6.811H61.57V11.621Zm-18.163 9.082h2.27v2.27h-2.27v-2.27ZM68.38 34.324h2.27v2.27h-2.27v-2.27Zm2.27 2.27h2.27v4.541h-2.27v-4.54Zm-4.54 11.352h2.27v2.27h-2.27v-2.27Zm-9.082 6.811h-2.27v6.811H61.567V54.758h-4.54ZM7.08 57.027h15.892V72.92H7.08V57.028Zm4.54 2.271H9.35V70.65H20.701V59.299h-9.08Zm45.408-2.27h2.27v2.27h-2.27v-2.27Zm-45.408 4.54h6.811v6.811H11.621V61.57Zm59.03 9.082h2.27v2.27h-2.27v-2.27Z"/></svg>
+diff --git a/browser/components/preferences/more-from-mozilla-qr-code-simple.svg b/browser/components/preferences/more-from-mozilla-qr-code-simple.svg
+deleted file mode 100644
+index bb847abdd1..0000000000
+--- a/browser/components/preferences/more-from-mozilla-qr-code-simple.svg
++++ /dev/null
+@@ -1,4 +0,0 @@
+-<!-- This Source Code Form is subject to the terms of the Mozilla Public
+-   - License, v. 2.0. If a copy of the MPL was not distributed with this
+-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+-<svg width="80" height="80" fill="context-fill" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M76 2H4a2 2 0 0 0-2 2v72a2 2 0 0 0 2 2h72a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2ZM4 0a4 4 0 0 0-4 4v72a4 4 0 0 0 4 4h72a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4H4Zm3.08 7.08h15.892v15.892H7.08V7.08Zm4.54 2.27H9.35V20.701H20.701V9.35h-9.08Zm20.434-2.27h2.27v2.27h2.27V7.08h4.541v2.27h2.27v2.27H36.596v2.27h-4.541v2.271h-2.27v-2.27h-2.271v-2.27h2.27V9.35h2.27V7.08Zm-4.541 4.54h-2.27V9.35h2.27v2.27Zm2.27 11.352v-4.54h2.27v-2.27h4.541V13.89h4.541v2.27h4.54v2.27h-2.27v2.27h-2.27v-2.27h-2.27v2.27h-2.27v-2.27h-2.27v2.27h-2.271v2.271h-2.27Zm-4.54 2.27V18.433h2.27v4.54h2.27v2.27h-4.54Zm0 0v2.271h-9.081v-2.27h9.08Zm11.351-2.27h-2.27v-2.27h2.27v2.27Zm2.27 0h-2.27v4.541h-2.27v-2.27h-2.27v2.27h2.27v2.27h4.54V22.973Zm2.271 0v-2.27h-2.27v2.27h2.27Zm2.27 0h-2.27v6.811h4.54v-2.27h-2.27v-4.54Zm2.27 0h-2.27v-2.27h2.27v2.27Zm4.542-6.81h-2.27V22.971h-2.271v2.27h2.27v2.271h2.27v2.27h-2.27v2.27h2.27v-2.27h2.271v2.27h2.27v2.271h2.27v-4.54h2.271v2.27h2.27v2.27h-2.27v2.27h-2.27v2.27h-4.541v6.811h2.27v2.271h4.541v4.541h-6.811v-2.27h-2.27v2.27h-2.27v-2.27h-4.541v2.27h-4.541v-2.27h-4.54v2.27h2.27v2.27h2.27v2.27H45.675v4.541h2.271v2.27h-2.27v2.271h-2.27v-4.54h-4.541v-2.27h-2.27v-2.271h-2.27v2.27h2.27v2.27h-2.27v2.27h-2.271v-2.27h-2.27v-2.27h-2.271v-4.54h2.27v2.27h2.27v-2.27h-2.27v-2.271h2.27v-2.27h-4.54v-2.27h2.27v-2.271h-2.27v-4.54h2.27v-2.271h-2.27v-6.811h2.27v-2.27h-2.27v2.27h-4.54v-2.27h-2.271v2.27h2.27v2.27h-4.54v-4.54h-2.27V36.593H13.89v-4.54h-2.27v-2.27h2.27v-2.271H7.08v6.811h2.27v4.54h4.54v2.271h-2.27v2.27H9.35v-2.27H7.08v2.27h2.27v2.27H7.08v2.271h2.27v-2.27h2.27v2.27h2.27v-4.54h4.541v-2.27h-2.27v-4.541h2.27v2.27h2.27v2.27h2.271v2.27h-2.27v2.27h-2.27v2.271h-2.27v2.27H11.62v2.271H7.08v2.27h4.54v-2.27h4.541v2.27h9.081v9.081h4.541v4.541h-2.27v4.541h4.54v-2.27h2.271v2.27h2.27v-4.54h-4.54v-2.27h2.27v-2.271h2.27v-2.27h2.27v2.27h2.271v2.27h-2.27v6.811H45.675v-4.54h2.271v4.54h2.27v-4.54h2.271v4.54h6.811v-2.27h2.27v2.27h2.27v-2.27h-2.27v-2.27h-4.54v-2.27h-9.081v-2.271H59.297v2.27h2.27v-2.27h2.27v4.54h4.541v4.541h2.271v-2.27h2.27v-4.54h-2.27v-2.271h2.27v-2.27h-2.27v-2.27h2.27v-4.541h-2.27v-4.541h2.27V27.513h-2.27v-2.27h-2.27v2.27h-6.811v-2.27h-4.541v2.27h-2.27v-2.27h-2.271v-2.27h2.27v-4.541h-4.54v-2.27Zm2.27-6.812h2.27v4.54h-2.27v2.271h-2.27v-4.54h2.27V9.35Zm0 0h-6.811V7.08h6.811v2.27Zm0 13.622v-2.27h-2.27v2.27h2.27Zm9.081 6.811v2.27h2.27v2.271h-2.27v2.27h-2.27v4.541h-4.54v2.27h2.27v2.27h4.54v-2.27h2.27v4.541h-2.27v4.541h2.27v6.811h2.271v2.27h-2.27v2.27h4.54v-4.54h2.271v-4.54h-2.27v-4.541h2.27v-4.541h-2.27v-4.54h2.27v-6.811h-2.27v-2.271h2.27v-2.27h-4.54v2.27h-2.271v-2.27h-2.27Zm6.812 24.974h-2.27v2.27h2.27v-2.27Zm0-4.54h-4.541v-2.27h4.54v2.27Zm-4.541-9.082h2.27v2.27h-2.27v-2.27Zm-2.27 0v-4.54h2.27v4.54h-2.27Zm4.54-4.54v-2.27h-2.27v2.27h2.27Zm0 0h2.27v2.27h-2.27v-2.27Zm-4.54 4.54v2.27h-2.27v-2.27h2.27Zm0-11.352v-2.27h-2.27v2.27h2.27ZM57.028 68.38h-2.27v2.27h2.27v-2.27Zm-24.974 0h-2.27v2.27h2.27v-2.27ZM20.702 47.946v2.27h2.27v2.271h-4.54v-4.54h2.27Zm2.27-2.27v2.27h-2.27v-2.27h2.27Zm2.27 0v2.27h2.271v-2.27h-2.27Zm0 0h-2.27v-2.27h2.27v2.27Zm-2.27-9.082v2.27h-2.27v-2.27h2.27Zm0 0h2.27v-2.27h-2.27v2.27ZM9.35 34.324v-2.27h2.27v2.27H9.35Zm15.893 20.433h2.27v-2.27h-2.27v2.27ZM41.135 66.11v4.541h2.27v-4.54h-2.27Zm6.811-4.54v-2.27h2.27v2.27h-2.27Zm-2.27-6.812h-2.27v-2.27h2.27v2.27Zm0 0v2.27h2.27v-2.27h-2.27Zm4.54-20.433v2.27h2.271v-2.27h-2.27Zm2.271-9.081h-2.27v2.27h2.27v-2.27Zm4.54-18.163H72.92v15.892H57.028V7.08Zm4.541 2.27h-2.27V20.701H70.65V9.35h-9.081ZM11.62 11.62h6.811v6.811H11.621V11.621Zm34.056 0h2.27v2.27h-2.27v-2.27Zm15.892 0h6.811v6.811H61.57V11.621Zm-4.54 43.137h-2.27v6.811H61.567V54.758h-4.54ZM7.08 57.027h15.892V72.92H7.08V57.028Zm4.54 2.271H9.35V70.65H20.701V59.299h-9.08Zm45.408-2.27h2.27v2.27h-2.27v-2.27Zm-45.408 4.54h6.811v6.811H11.621V61.57Z"/></svg>
+diff --git a/browser/components/preferences/moreFromMozilla.js b/browser/components/preferences/moreFromMozilla.js
+index 5b8ed28a00..d13dbf7b22 100644
+--- a/browser/components/preferences/moreFromMozilla.js
++++ b/browser/components/preferences/moreFromMozilla.js
+@@ -82,36 +82,6 @@ var gMoreFromMozillaPane = {
+   renderProducts() {
+     const isRegionUS = Region.home.toLowerCase() === "us";
+     let products = [
+-      {
+-        id: "firefox-mobile",
+-        title_string_id: "more-from-moz-firefox-mobile-title",
+-        description_string_id: "more-from-moz-firefox-mobile-description",
+-        region: "global",
+-        button: {
+-          id: "fxMobile",
+-          type: "link",
+-          label_string_id: "more-from-moz-learn-more-link",
+-          actionURL: BrowserUtils.isChinaRepack()
+-            ? "https://www.firefox.com.cn/browsers/mobile/"
+-            : "https://www.mozilla.org/firefox/browsers/mobile/",
+-        },
+-        qrcode: {
+-          title: {
+-            string_id: "more-from-moz-qr-code-box-firefox-mobile-title",
+-          },
+-          image_src_prefix:
+-            "chrome://browser/content/preferences/more-from-mozilla-qr-code",
+-          button: {
+-            id: "qr-code-send-email",
+-            label: {
+-              string_id: "more-from-moz-qr-code-box-firefox-mobile-button",
+-            },
+-            actionURL: BrowserUtils.isChinaRepack()
+-              ? "https://www.firefox.com.cn/mobile/get-app/"
+-              : "https://www.mozilla.org/firefox/mobile/get-app/?v=mfm",
+-          },
+-        },
+-      },
+       {
+         id: "mozilla-monitor",
+         title_string_id: "more-from-moz-mozilla-monitor-title",
+diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
+index a0e16b375f..c39b133b84 100644
+--- a/browser/components/preferences/preferences.js
++++ b/browser/components/preferences/preferences.js
+@@ -11,7 +11,6 @@
+ /* import-globals-from privacy.js */
+ /* import-globals-from sync.js */
+ /* import-globals-from experimental.js */
+-/* import-globals-from moreFromMozilla.js */
+ /* import-globals-from findInPage.js */
+ /* import-globals-from /browser/base/content/utilityOverlay.js */
+ /* import-globals-from /toolkit/content/preferencesBindings.js */
+@@ -256,13 +255,6 @@ function init_all() {
+     document.getElementById("category-experimental").hidden = true;
+   }
+ 
+-  NimbusFeatures.moreFromMozilla.recordExposureEvent({ once: true });
+-  if (NimbusFeatures.moreFromMozilla.getVariable("enabled")) {
+-    document.getElementById("category-more-from-mozilla").hidden = false;
+-    gMoreFromMozillaPane.option =
+-      NimbusFeatures.moreFromMozilla.getVariable("template");
+-    register_module("paneMoreFromMozilla", gMoreFromMozillaPane);
+-  }
+   // The Sync category needs to be the last of the "real" categories
+   // registered and inititalized since many tests wait for the
+   // "sync-pane-loaded" observer notification before starting the test.
+diff --git a/browser/components/preferences/preferences.xhtml b/browser/components/preferences/preferences.xhtml
+index 993554d64e..30c9c9bc63 100644
+--- a/browser/components/preferences/preferences.xhtml
++++ b/browser/components/preferences/preferences.xhtml
+@@ -49,7 +49,6 @@
+   <link rel="localization" href="browser/browser.ftl"/>
+     <!-- Used by fontbuilder.js -->
+   <link rel="localization" href="browser/preferences/fonts.ftl"/>
+-  <link rel="localization" href="browser/preferences/moreFromMozilla.ftl"/>
+   <link rel="localization" href="browser/preferences/preferences.ftl"/>
+   <link rel="localization" href="toolkit/branding/brandings.ftl"/>
+   <link rel="localization" href="toolkit/firefoxlabs/features.ftl"/>
+@@ -176,16 +175,6 @@
+           <image class="category-icon"/>
+           <label class="category-name" flex="1" data-l10n-id="settings-pane-labs-title"></label>
+         </richlistitem>
+-        <richlistitem id="category-more-from-mozilla"
+-                      class="category"
+-                      hidden="true"
+-                      data-l10n-id="more-from-moz-category"
+-                      data-l10n-attrs="tooltiptext"
+-                      value="paneMoreFromMozilla"
+-                      align="center">
+-          <image class="category-icon"/>
+-          <label class="category-name" flex="1" data-l10n-id="more-from-moz-title"></label>
+-        </richlistitem>
+ 
+         <!-- The following <richlistitem> elements are hidden from the list of items via the hidden-category class.
+             The intent is that they act as sub-pages, accessible from the UI of one of the main pages, but are
+@@ -253,7 +242,6 @@
+ #include translations.inc.xhtml
+ #include sync.inc.xhtml
+ #include experimental.inc.xhtml
+-#include moreFromMozilla.inc.xhtml
+         </vbox>
+       </vbox>
+     </vbox>
+-- 
+2.52.0
+
+
+From 5d9a22398c0db558c433d270ada349ddd18211a3 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sat, 7 May 2022 21:51:06 +0200
+Subject: [PATCH 3/7] Remove promos of Firefox Focus and Klar from Private
+ Browsing
+
+Please correct me if I'm wrong, but these are not compatible with FSDG
+for the same reasons as the original Firefox.
+---
+ browser/app/profile/firefox.js                |   2 +-
+ .../static/browser_all_files_referenced.js    |   2 -
+ .../modules/OnboardingMessageProvider.sys.mjs | 309 ------------------
+ .../modules/PanelTestProvider.sys.mjs         |  79 -----
+ .../content/assets/focus-qr-code.svg          | 114 -------
+ .../content/assets/klar-qr-code.svg           | 114 -------
+ 6 files changed, 1 insertion(+), 619 deletions(-)
+ delete mode 100644 browser/components/privatebrowsing/content/assets/focus-qr-code.svg
+ delete mode 100644 browser/components/privatebrowsing/content/assets/klar-qr-code.svg
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 8e6e70f8a4..68cf8ca123 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -2549,7 +2549,7 @@ pref("browser.contentblocking.report.vpn_regions", "as,at,au,bd,be,bg,br,ca,ch,c
+ pref("browser.promo.focus.disallowed_regions", "cn");
+ 
+ // Default to enabling focus promos to be shown where allowed.
+-pref("browser.promo.focus.enabled", true);
++pref("browser.promo.focus.enabled", false);
+ 
+ // Default to enabling pin promos to be shown where allowed.
+ pref("browser.promo.pin.enabled", true);
+diff --git a/browser/base/content/test/static/browser_all_files_referenced.js b/browser/base/content/test/static/browser_all_files_referenced.js
+index 871fc91b6b..de59cc4c6b 100644
+--- a/browser/base/content/test/static/browser_all_files_referenced.js
++++ b/browser/base/content/test/static/browser_all_files_referenced.js
+@@ -40,8 +40,6 @@ var gExceptionPaths = [
+   "chrome://activity-stream/content/data/content/assets/euo-chatbot.svg",
+   "chrome://browser/content/assets/moz-vpn.svg",
+   "chrome://browser/content/assets/vpn-logo.svg",
+-  "chrome://browser/content/assets/focus-promo.png",
+-  "chrome://browser/content/assets/klar-qr-code.svg",
+   "chrome://browser/content/asrouter/assets/fox-with-box-on-cloud.svg",
+   "chrome://browser/content/asrouter/assets/fox-with-devices.svg",
+   "chrome://browser/content/asrouter/assets/fox-with-locked-box.svg",
+diff --git a/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs b/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
+index 772984f11a..dcf5ce5745 100644
+--- a/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
++++ b/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
+@@ -1333,315 +1333,6 @@ const BASE_MESSAGES = () => [
+       ],
+     },
+   },
+-  {
+-    id: "PB_NEWTAB_FOCUS_PROMO",
+-    type: "default",
+-    template: "pb_newtab",
+-    groups: ["pbNewtab"],
+-    content: {
+-      infoBody: "fluent:about-private-browsing-info-description-simplified",
+-      infoEnabled: true,
+-      infoIcon: "chrome://global/skin/icons/indicator-private-browsing.svg",
+-      infoLinkText: "fluent:about-private-browsing-learn-more-link",
+-      infoTitle: "",
+-      infoTitleEnabled: false,
+-      promoEnabled: true,
+-      promoType: "FOCUS",
+-      promoHeader: "fluent:about-private-browsing-focus-promo-header-c",
+-      promoImageLarge: "chrome://browser/content/assets/focus-promo.png",
+-      promoLinkText: "fluent:about-private-browsing-focus-promo-cta",
+-      promoLinkType: "button",
+-      promoSectionStyle: "below-search",
+-      promoTitle: "fluent:about-private-browsing-focus-promo-text-c",
+-      promoTitleEnabled: true,
+-      promoButton: {
+-        action: {
+-          type: "SHOW_SPOTLIGHT",
+-          data: {
+-            content: {
+-              id: "FOCUS_PROMO",
+-              template: "multistage",
+-              modal: "tab",
+-              backdrop: "transparent",
+-              screens: [
+-                {
+-                  id: "DEFAULT_MODAL_UI",
+-                  content: {
+-                    logo: {
+-                      imageURL:
+-                        "chrome://browser/content/assets/focus-logo.svg",
+-                      height: "48px",
+-                    },
+-                    title: {
+-                      string_id: "spotlight-focus-promo-title",
+-                    },
+-                    subtitle: {
+-                      string_id: "spotlight-focus-promo-subtitle",
+-                    },
+-                    dismiss_button: {
+-                      action: {
+-                        navigate: true,
+-                      },
+-                    },
+-                    ios: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/167k4ih?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Ffirefox-focus-privacy-browser%2Fid1055677337",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    android: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/167k4ih?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.mozilla.focus",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    tiles: {
+-                      type: "mobile_downloads",
+-                      data: {
+-                        QR_code: {
+-                          image_url:
+-                            "chrome://browser/content/assets/focus-qr-code.svg",
+-                          alt_text: {
+-                            string_id: "spotlight-focus-promo-qr-code",
+-                          },
+-                        },
+-                        marketplace_buttons: ["ios", "android"],
+-                      },
+-                    },
+-                  },
+-                },
+-              ],
+-            },
+-          },
+-        },
+-      },
+-    },
+-    priority: 2,
+-    frequency: {
+-      custom: [
+-        {
+-          cap: 3,
+-          period: 604800000, // Max 3 per week
+-        },
+-      ],
+-      lifetime: 12,
+-    },
+-    // Exclude the next 2 messages: 1) Klar for en 2) Klar for de
+-    targeting:
+-      "!(region in [ 'DE', 'AT', 'CH'] && localeLanguageCode == 'en') && localeLanguageCode != 'de'",
+-  },
+-  {
+-    id: "PB_NEWTAB_KLAR_PROMO",
+-    type: "default",
+-    template: "pb_newtab",
+-    groups: ["pbNewtab"],
+-    content: {
+-      infoBody: "fluent:about-private-browsing-info-description-simplified",
+-      infoEnabled: true,
+-      infoIcon: "chrome://global/skin/icons/indicator-private-browsing.svg",
+-      infoLinkText: "fluent:about-private-browsing-learn-more-link",
+-      infoTitle: "",
+-      infoTitleEnabled: false,
+-      promoEnabled: true,
+-      promoType: "FOCUS",
+-      promoHeader: "fluent:about-private-browsing-focus-promo-header-c",
+-      promoImageLarge: "chrome://browser/content/assets/focus-promo.png",
+-      promoLinkText: "Download Firefox Klar",
+-      promoLinkType: "button",
+-      promoSectionStyle: "below-search",
+-      promoTitle:
+-        "Firefox Klar clears your history every time while blocking ads and trackers.",
+-      promoTitleEnabled: true,
+-      promoButton: {
+-        action: {
+-          type: "SHOW_SPOTLIGHT",
+-          data: {
+-            content: {
+-              id: "KLAR_PROMO",
+-              template: "multistage",
+-              modal: "tab",
+-              backdrop: "transparent",
+-              screens: [
+-                {
+-                  id: "DEFAULT_MODAL_UI",
+-                  order: 0,
+-                  content: {
+-                    logo: {
+-                      imageURL:
+-                        "chrome://browser/content/assets/focus-logo.svg",
+-                      height: "48px",
+-                    },
+-                    title: "Get Firefox Klar",
+-                    subtitle: {
+-                      string_id: "spotlight-focus-promo-subtitle",
+-                    },
+-                    dismiss_button: {
+-                      action: {
+-                        navigate: true,
+-                      },
+-                    },
+-                    ios: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/a8bxj8j?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fklar-by-firefox%2Fid1073435754",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    android: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/a8bxj8j?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.mozilla.klar",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    tiles: {
+-                      type: "mobile_downloads",
+-                      data: {
+-                        QR_code: {
+-                          image_url:
+-                            "chrome://browser/content/assets/klar-qr-code.svg",
+-                          alt_text: "Scan the QR code to get Firefox Klar",
+-                        },
+-                        marketplace_buttons: ["ios", "android"],
+-                      },
+-                    },
+-                  },
+-                },
+-              ],
+-            },
+-          },
+-        },
+-      },
+-    },
+-    priority: 2,
+-    frequency: {
+-      custom: [
+-        {
+-          cap: 3,
+-          period: 604800000, // Max 3 per week
+-        },
+-      ],
+-      lifetime: 12,
+-    },
+-    targeting: "region in [ 'DE', 'AT', 'CH'] && localeLanguageCode == 'en'",
+-  },
+-  {
+-    id: "PB_NEWTAB_KLAR_PROMO_DE",
+-    type: "default",
+-    template: "pb_newtab",
+-    groups: ["pbNewtab"],
+-    content: {
+-      infoBody: "fluent:about-private-browsing-info-description-simplified",
+-      infoEnabled: true,
+-      infoIcon: "chrome://global/skin/icons/indicator-private-browsing.svg",
+-      infoLinkText: "fluent:about-private-browsing-learn-more-link",
+-      infoTitle: "",
+-      infoTitleEnabled: false,
+-      promoEnabled: true,
+-      promoType: "FOCUS",
+-      promoHeader: "fluent:about-private-browsing-focus-promo-header-c",
+-      promoImageLarge: "chrome://browser/content/assets/focus-promo.png",
+-      promoLinkText: "fluent:about-private-browsing-focus-promo-cta",
+-      promoLinkType: "button",
+-      promoSectionStyle: "below-search",
+-      promoTitle: "fluent:about-private-browsing-focus-promo-text-c",
+-      promoTitleEnabled: true,
+-      promoButton: {
+-        action: {
+-          type: "SHOW_SPOTLIGHT",
+-          data: {
+-            content: {
+-              id: "FOCUS_PROMO",
+-              template: "multistage",
+-              modal: "tab",
+-              backdrop: "transparent",
+-              screens: [
+-                {
+-                  id: "DEFAULT_MODAL_UI",
+-                  content: {
+-                    logo: {
+-                      imageURL:
+-                        "chrome://browser/content/assets/focus-logo.svg",
+-                      height: "48px",
+-                    },
+-                    title: {
+-                      string_id: "spotlight-focus-promo-title",
+-                    },
+-                    subtitle: {
+-                      string_id: "spotlight-focus-promo-subtitle",
+-                    },
+-                    dismiss_button: {
+-                      action: {
+-                        navigate: true,
+-                      },
+-                    },
+-                    ios: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/a8bxj8j?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fklar-by-firefox%2Fid1073435754",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    android: {
+-                      action: {
+-                        data: {
+-                          args: "https://app.adjust.com/a8bxj8j?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.mozilla.klar",
+-                          where: "tabshifted",
+-                        },
+-                        type: "OPEN_URL",
+-                        navigate: true,
+-                      },
+-                    },
+-                    tiles: {
+-                      type: "mobile_downloads",
+-                      data: {
+-                        QR_code: {
+-                          image_url:
+-                            "chrome://browser/content/assets/klar-qr-code.svg",
+-                          alt_text: {
+-                            string_id: "spotlight-focus-promo-qr-code",
+-                          },
+-                        },
+-                        marketplace_buttons: ["ios", "android"],
+-                      },
+-                    },
+-                  },
+-                },
+-              ],
+-            },
+-          },
+-        },
+-      },
+-    },
+-    priority: 2,
+-    frequency: {
+-      custom: [
+-        {
+-          cap: 3,
+-          period: 604800000, // Max 3 per week
+-        },
+-      ],
+-      lifetime: 12,
+-    },
+-    targeting: "localeLanguageCode == 'de'",
+-  },
+   {
+     id: "PB_NEWTAB_PIN_PROMO",
+     template: "pb_newtab",
+diff --git a/browser/components/asrouter/modules/PanelTestProvider.sys.mjs b/browser/components/asrouter/modules/PanelTestProvider.sys.mjs
+index 6d4a1bb620..2083e8ae6d 100644
+--- a/browser/components/asrouter/modules/PanelTestProvider.sys.mjs
++++ b/browser/components/asrouter/modules/PanelTestProvider.sys.mjs
+@@ -1727,85 +1727,6 @@ const MESSAGES = () => [
+     frequency: { lifetime: 3 },
+     trigger: { id: "defaultBrowserCheck" },
+   },
+-  {
+-    id: "PB_FOCUS_PROMO",
+-    groups: ["panel-test-provider"],
+-    template: "spotlight",
+-    content: {
+-      template: "multistage",
+-      backdrop: "transparent",
+-      screens: [
+-        {
+-          id: "PBM_FIREFOX_FOCUS",
+-          order: 0,
+-          content: {
+-            logo: {
+-              imageURL: "chrome://browser/content/assets/focus-logo.svg",
+-              height: "48px",
+-            },
+-            title: {
+-              string_id: "spotlight-focus-promo-title",
+-            },
+-            subtitle: {
+-              string_id: "spotlight-focus-promo-subtitle",
+-            },
+-            dismiss_button: {
+-              action: {
+-                dismiss: true,
+-              },
+-            },
+-            ios: {
+-              action: {
+-                data: {
+-                  args: "https://app.adjust.com/167k4ih?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Ffirefox-focus-privacy-browser%2Fid1055677337",
+-                  where: "tabshifted",
+-                },
+-                type: "OPEN_URL",
+-                navigate: true,
+-              },
+-            },
+-            android: {
+-              action: {
+-                data: {
+-                  args: "https://app.adjust.com/167k4ih?campaign=firefox-desktop&adgroup=pb&creative=focus-omc172&redirect=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.mozilla.focus",
+-                  where: "tabshifted",
+-                },
+-                type: "OPEN_URL",
+-                navigate: true,
+-              },
+-            },
+-            email_link: {
+-              action: {
+-                data: {
+-                  args: "https://mozilla.org",
+-                  where: "tabshifted",
+-                },
+-                type: "OPEN_URL",
+-                navigate: true,
+-              },
+-            },
+-            tiles: {
+-              type: "mobile_downloads",
+-              data: {
+-                QR_code: {
+-                  image_url:
+-                    "chrome://browser/content/assets/focus-qr-code.svg",
+-                  alt_text: {
+-                    string_id: "spotlight-focus-promo-qr-code",
+-                  },
+-                },
+-                email: {
+-                  link_text: "Email yourself a link",
+-                },
+-                marketplace_buttons: ["ios", "android"],
+-              },
+-            },
+-          },
+-        },
+-      ],
+-    },
+-    trigger: { id: "defaultBrowserCheck" },
+-  },
+   {
+     id: "PB_NEWTAB_VPN_PROMO",
+     template: "pb_newtab",
+diff --git a/browser/components/privatebrowsing/content/assets/focus-qr-code.svg b/browser/components/privatebrowsing/content/assets/focus-qr-code.svg
+deleted file mode 100644
+index f182567314..0000000000
+--- a/browser/components/privatebrowsing/content/assets/focus-qr-code.svg
++++ /dev/null
+@@ -1,114 +0,0 @@
+-<!-- This Source Code Form is subject to the terms of the Mozilla Public
+-   - License, v. 2.0. If a copy of the MPL was not distributed with this
+-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+-<svg width="113" height="113" viewBox="0 0 113 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+-<rect width="113" height="113" rx="4" fill="white"/>
+-<path fill-rule="evenodd" clip-rule="evenodd" d="M4 2H109C110.105 2 111 2.89543 111 4V109C111 110.105 110.105 111 109 111H4C2.89543 111 2 110.105 2 109V4C2 2.89543 2.89543 2 4 2ZM0 4C0 1.79086 1.79086 0 4 0H109C111.209 0 113 1.79086 113 4V109C113 111.209 111.209 113 109 113H4C1.79086 113 0 111.209 0 109V4ZM103 10H99.7931H96.5862H93.3793H90.1724H86.9655H83.7586H80.5517V13.2069V16.4138V19.6207V22.8276V26.0345V29.2414V32.4483H83.7586H86.9655H90.1724H93.3793H96.5862H99.7931H103V29.2414V26.0345V22.8276V19.6207V16.4138V13.2069V10ZM96.5862 13.2069H99.7931V16.4138V19.6207V22.8276V26.0345V29.2414H96.5862H93.3793H90.1724H86.9655H83.7586V26.0345V22.8276V19.6207V16.4138V13.2069H86.9655H90.1724H93.3793H96.5862ZM77.3448 10H74.1379H70.931H67.7241V13.2069H64.5172H61.3103V16.4138V19.6207H58.1034H54.8966V16.4138V13.2069V10H51.6897V13.2069H48.4828V10H45.2759H42.069V13.2069H38.8621V10H35.6552V13.2069H38.8621V16.4138H35.6552V19.6207H38.8621V22.8276H35.6552V26.0345H38.8621H42.069V29.2414V32.4483H38.8621V29.2414H35.6552V32.4483H38.8621V35.6552V38.8621H42.069H45.2759V35.6552H42.069V32.4483H45.2759V29.2414V26.0345V22.8276H48.4828V26.0345H51.6897V22.8276H54.8966H58.1034H61.3103V26.0345H58.1034V29.2414H54.8966V32.4483H51.6897V29.2414H48.4828V32.4483V35.6552V38.8621H51.6897V42.069H54.8966V38.8621H58.1034H61.3103V35.6552H64.5172V38.8621V42.069H67.7241V45.2759H70.931H74.1379V42.069H77.3448H80.5517V45.2759H83.7586V48.4828H80.5517V51.6897H83.7586V54.8966H80.5517H77.3448H74.1379V51.6897V48.4828H70.931V51.6897V54.8966V58.1034H74.1379V61.3103H77.3448V64.5172V67.7241H74.1379V70.931H70.931V67.7241H67.7241V70.931H64.5172V74.1379H67.7241V70.931H70.931V74.1379H74.1379V77.3448H70.931H67.7241V80.5517H64.5172V83.7586H61.3103V86.9655H58.1034V83.7586H54.8966V86.9655H58.1034V90.1724H54.8966V93.3793H51.6897V90.1724V86.9655V83.7586V80.5517V77.3448H48.4828V74.1379H51.6897V70.931H48.4828V74.1379H45.2759V70.931V67.7241H42.069V64.5172V61.3103H38.8621V58.1034V54.8966H42.069V51.6897H38.8621V48.4828H35.6552V45.2759H38.8621V42.069H35.6552V38.8621V35.6552H32.4483H29.2414H26.0345V38.8621H22.8276V42.069H19.6207V45.2759H22.8276V48.4828H26.0345V51.6897H22.8276H19.6207V48.4828H16.4138V45.2759H13.2069V48.4828H10V51.6897V54.8966H13.2069H16.4138V51.6897H19.6207V54.8966H22.8276H26.0345V58.1034H22.8276H19.6207V61.3103H16.4138V58.1034H13.2069V61.3103H10V64.5172V67.7241H13.2069H16.4138V70.931H13.2069H10V74.1379H13.2069H16.4138V77.3448H13.2069H10V80.5517H13.2069H16.4138V77.3448H19.6207V80.5517H22.8276V83.7586H19.6207V86.9655H16.4138V83.7586H13.2069H10V86.9655V90.1724H13.2069V86.9655H16.4138V90.1724H19.6207H22.8276H26.0345V93.3793H22.8276H19.6207H16.4138H13.2069V96.5862V99.7931H16.4138V96.5862H19.6207V99.7931H22.8276V103H26.0345V99.7931V96.5862H29.2414H32.4483V99.7931H29.2414V103H32.4483V99.7931H35.6552H38.8621V103H42.069H45.2759V99.7931H48.4828V103H51.6897V99.7931H54.8966H58.1034V103H61.3103H64.5172V99.7931H67.7241V103H70.931V99.7931H74.1379V96.5862H77.3448V93.3793V90.1724V86.9655H74.1379V83.7586V80.5517H77.3448V77.3448V74.1379H80.5517V77.3448H83.7586H86.9655H90.1724H93.3793V74.1379H96.5862V70.931V67.7241H93.3793V64.5172H90.1724V61.3103H93.3793H96.5862V64.5172H99.7931V67.7241V70.931V74.1379V77.3448H103V74.1379V70.931V67.7241V64.5172H99.7931V61.3103H96.5862V58.1034H99.7931V54.8966H103V51.6897H99.7931V54.8966H96.5862V58.1034H93.3793V54.8966H90.1724V58.1034V61.3103H86.9655V58.1034H83.7586V54.8966H86.9655V51.6897H90.1724H93.3793H96.5862V48.4828H93.3793V45.2759V42.069H96.5862V45.2759H99.7931V42.069H103V38.8621H99.7931V42.069H96.5862V38.8621V35.6552H93.3793H90.1724H86.9655V38.8621H90.1724V42.069V45.2759V48.4828H86.9655V45.2759V42.069H83.7586H80.5517V38.8621H83.7586V35.6552H80.5517V38.8621H77.3448V35.6552V32.4483V29.2414V26.0345H74.1379V22.8276H70.931V26.0345H74.1379V29.2414V32.4483V35.6552V38.8621H70.931H67.7241V35.6552H70.931V32.4483V29.2414H67.7241V26.0345V22.8276H64.5172V19.6207V16.4138H67.7241H70.931V19.6207H74.1379H77.3448V16.4138V13.2069V10ZM64.5172 29.2414H67.7241V32.4483H64.5172V29.2414ZM61.3103 29.2414V32.4483H58.1034V29.2414H61.3103ZM61.3103 29.2414H64.5172V26.0345H61.3103V29.2414ZM83.7586 58.1034V61.3103H80.5517V58.1034H83.7586ZM90.1724 64.5172V67.7241V70.931H93.3793V74.1379H90.1724H86.9655V70.931V67.7241H83.7586H80.5517V64.5172H83.7586H86.9655H90.1724ZM80.5517 74.1379V70.931H83.7586V74.1379H80.5517ZM70.931 90.1724V93.3793H74.1379V96.5862H70.931H67.7241V93.3793V90.1724H70.931ZM64.5172 90.1724V86.9655H67.7241V90.1724H64.5172ZM61.3103 93.3793V90.1724H64.5172V93.3793H61.3103ZM61.3103 93.3793V96.5862H64.5172V99.7931H61.3103H58.1034V96.5862V93.3793H61.3103ZM70.931 90.1724V86.9655H74.1379V90.1724H70.931ZM45.2759 99.7931H42.069H38.8621V96.5862H42.069V93.3793H45.2759H48.4828V96.5862H45.2759V99.7931ZM16.4138 74.1379V70.931H19.6207H22.8276H26.0345V74.1379H22.8276H19.6207H16.4138ZM13.2069 61.3103H16.4138V64.5172H13.2069V61.3103ZM29.2414 51.6897V54.8966H26.0345V51.6897H29.2414ZM29.2414 51.6897V48.4828H32.4483V51.6897H29.2414ZM22.8276 45.2759V42.069H26.0345V45.2759H22.8276ZM26.0345 58.1034H29.2414V61.3103H32.4483V58.1034H35.6552V61.3103H38.8621V64.5172H35.6552H32.4483H29.2414H26.0345H22.8276V61.3103H26.0345V58.1034ZM42.069 80.5517H38.8621V77.3448V74.1379V70.931H35.6552V74.1379H32.4483V70.931V67.7241H35.6552H38.8621H42.069V70.931V74.1379V77.3448V80.5517ZM42.069 86.9655V83.7586V80.5517H45.2759V77.3448H48.4828V80.5517V83.7586V86.9655V90.1724H45.2759V86.9655H42.069ZM42.069 86.9655V90.1724H38.8621V86.9655H42.069ZM54.8966 38.8621H51.6897V35.6552H54.8966V38.8621ZM42.069 13.2069V16.4138H45.2759V19.6207H48.4828V16.4138V13.2069H45.2759H42.069ZM58.1034 74.1379V70.931H61.3103V74.1379H58.1034ZM32.4483 10H29.2414H26.0345H22.8276H19.6207H16.4138H13.2069H10V13.2069V16.4138V19.6207V22.8276V26.0345V29.2414V32.4483H13.2069H16.4138H19.6207H22.8276H26.0345H29.2414H32.4483V29.2414V26.0345V22.8276V19.6207V16.4138V13.2069V10ZM26.0345 13.2069H29.2414V16.4138V19.6207V22.8276V26.0345V29.2414H26.0345H22.8276H19.6207H16.4138H13.2069V26.0345V22.8276V19.6207V16.4138V13.2069H16.4138H19.6207H22.8276H26.0345ZM96.5862 16.4138H93.3793H90.1724H86.9655V19.6207V22.8276V26.0345H90.1724H93.3793H96.5862V22.8276V19.6207V16.4138ZM26.0345 16.4138H22.8276H19.6207H16.4138V19.6207V22.8276V26.0345H19.6207H22.8276H26.0345V22.8276V19.6207V16.4138ZM19.6207 35.6552H16.4138H13.2069H10V38.8621V42.069H13.2069V38.8621H16.4138H19.6207V35.6552ZM32.4483 77.3448H35.6552V80.5517V83.7586V86.9655H32.4483H29.2414H26.0345V83.7586V80.5517V77.3448H29.2414H32.4483ZM61.3103 77.3448H58.1034V80.5517H61.3103V77.3448ZM103 80.5517H99.7931H96.5862H93.3793H90.1724H86.9655H83.7586H80.5517V83.7586V86.9655V90.1724V93.3793V96.5862V99.7931V103H83.7586H86.9655H90.1724H93.3793H96.5862H99.7931H103V99.7931V96.5862V93.3793V90.1724V86.9655V83.7586V80.5517ZM96.5862 83.7586H99.7931V86.9655V90.1724V93.3793V96.5862V99.7931H96.5862H93.3793H90.1724H86.9655H83.7586V96.5862V93.3793V90.1724V86.9655V83.7586H86.9655H90.1724H93.3793H96.5862ZM32.4483 80.5517H29.2414V83.7586H32.4483V80.5517ZM96.5862 86.9655H93.3793H90.1724H86.9655V90.1724V93.3793V96.5862H90.1724H93.3793H96.5862V93.3793V90.1724V86.9655ZM29.2414 90.1724H32.4483V93.3793H29.2414V90.1724Z" fill="#1C1B22"/>
+-<path d="M66.2056 52.7475C65.7266 51.5785 64.7572 50.3139 63.9959 49.9148C64.6155 51.1492 64.9742 52.3872 65.1112 53.3113C65.1112 53.3113 65.1112 53.3177 65.1112 53.3299C63.8657 50.1757 61.7537 48.9037 60.0292 46.1343C59.9419 45.994 59.8551 45.8537 59.7678 45.7055C59.7192 45.621 59.6805 45.546 59.6465 45.4738C59.575 45.3332 59.5199 45.1847 59.4823 45.0312C59.4825 45.0239 59.48 45.0169 59.4754 45.0114C59.4707 45.0059 59.4643 45.0023 59.4572 45.0014C59.4503 44.9995 59.4431 44.9995 59.4363 45.0014L59.431 45.0046C59.4283 45.0057 59.4256 45.0071 59.4232 45.0088L59.4274 45.0025C56.6608 46.6497 55.7222 49.6954 55.6359 51.2193C54.5305 51.2961 53.4736 51.7098 52.6032 52.4064C52.512 52.3282 52.4167 52.2551 52.3177 52.1875C52.0667 51.2949 52.0561 50.3502 52.2868 49.452C51.1553 49.9754 50.2753 50.8033 49.6358 51.5339H49.6379C49.2012 50.9722 49.2321 49.1183 49.2567 48.731C49.2514 48.7071 48.9309 48.9 48.8906 48.9292C48.5053 49.2088 48.145 49.5224 47.814 49.8665C47.4375 50.2545 47.0935 50.6738 46.7855 51.12C46.0764 52.1399 45.5731 53.2924 45.3047 54.5111C45.2994 54.535 45.2947 54.5605 45.29 54.5849C45.2691 54.6832 45.1943 55.1763 45.1813 55.2837C45.1813 55.2916 45.1813 55.2996 45.1813 55.3081C45.0847 55.8177 45.0249 56.3338 45.0024 56.8522C45.0024 56.8714 45.0024 56.89 45.0024 56.9091C45.0024 63.0898 49.9338 68.1 56.0166 68.1C61.464 68.1 65.9876 64.0813 66.8728 58.8012C66.8916 58.6583 66.9063 58.5143 66.9251 58.3698C67.139 56.4516 66.8932 54.434 66.2056 52.7475ZM53.5109 61.5074C53.5632 61.5324 53.6108 61.5606 53.6636 61.5834L53.6709 61.5882C53.6176 61.5622 53.5642 61.5351 53.5109 61.5074ZM65.1154 53.3331V53.3219C65.1151 53.326 65.1151 53.3301 65.1154 53.3341V53.3331Z" fill="url(#paint0_linear_1186_7637)"/>
+-<path d="M66.2063 52.7477C65.7273 51.5787 64.7579 50.3141 63.9966 49.915C64.6162 51.1494 64.9749 52.3874 65.1119 53.3115C65.1119 53.3088 65.1119 53.3115 65.1119 53.3221C65.1116 53.3262 65.1116 53.3302 65.1119 53.3343C66.1509 56.1973 65.5825 59.108 64.7689 60.887C63.5066 63.6394 60.4509 66.4604 55.6706 66.3228C50.5029 66.174 45.9506 62.2776 45.1009 57.1744C44.9441 56.3699 45.1009 55.9608 45.1788 55.3078C45.0837 55.8115 45.0476 55.9571 45 56.8519C45 56.871 45 56.8896 45 56.9087C45 63.0895 49.9314 68.0996 56.0141 68.0996C61.4616 68.0996 65.9851 64.081 66.8704 58.8009C66.8892 58.658 66.9038 58.514 66.9227 58.3694C67.1397 56.4518 66.8939 54.4342 66.2063 52.7477Z" fill="url(#paint1_radial_1186_7637)"/>
+-<path d="M66.2063 52.7477C65.7273 51.5787 64.7579 50.3141 63.9966 49.915C64.6162 51.1494 64.9749 52.3874 65.1119 53.3115C65.1119 53.3088 65.1119 53.3115 65.1119 53.3221C65.1116 53.3262 65.1116 53.3302 65.1119 53.3343C66.1509 56.1973 65.5825 59.108 64.7689 60.887C63.5066 63.6394 60.4509 66.4604 55.6706 66.3228C50.5029 66.174 45.9506 62.2776 45.1009 57.1744C44.9441 56.3699 45.1009 55.9608 45.1788 55.3078C45.0837 55.8115 45.0476 55.9571 45 56.8519C45 56.871 45 56.8896 45 56.9087C45 63.0895 49.9314 68.0996 56.0141 68.0996C61.4616 68.0996 65.9851 64.081 66.8704 58.8009C66.8892 58.658 66.9038 58.514 66.9227 58.3694C67.1397 56.4518 66.8939 54.4342 66.2063 52.7477Z" fill="url(#paint2_radial_1186_7637)"/>
+-<path d="M60.854 54.0624C60.878 54.0794 60.9 54.0964 60.9225 54.1155C60.6463 53.6162 60.3021 53.159 59.9002 52.7574C56.4763 49.2786 59.0024 45.2121 59.4296 45.0081L59.4338 45.0017C56.6672 46.6489 55.7286 49.6946 55.6423 51.2186C55.7704 51.2095 55.8986 51.1984 56.0293 51.1984C58.0926 51.1989 59.8913 52.3525 60.854 54.0624Z" fill="url(#paint3_radial_1186_7637)"/>
+-<path d="M56.0574 54.7568C56.0396 55.0352 55.0717 55.9954 54.7329 55.9954C51.6008 55.9954 51.0925 57.9205 51.0925 57.9205C51.2311 59.5422 52.3417 60.8769 53.6871 61.5836C53.7483 61.616 53.8105 61.6453 53.8727 61.674C53.9804 61.7223 54.0882 61.7675 54.1964 61.8084C54.6575 61.9743 55.1404 62.0688 55.6291 62.089C61.1195 62.3509 62.1825 55.4194 58.2206 53.4066C59.2355 53.227 60.2886 53.642 60.8763 54.0618C59.9137 52.3519 58.1155 51.1978 56.0506 51.1978C55.9198 51.1978 55.7891 51.2089 55.6636 51.2179C54.5582 51.2947 53.5013 51.7084 52.6309 52.405C52.7987 52.5495 52.988 52.7424 53.3875 53.1425C54.1357 53.8907 56.0532 54.6654 56.0574 54.7568Z" fill="url(#paint4_radial_1186_7637)"/>
+-<path d="M56.0574 54.7568C56.0396 55.0352 55.0717 55.9954 54.7329 55.9954C51.6008 55.9954 51.0925 57.9205 51.0925 57.9205C51.2311 59.5422 52.3417 60.8769 53.6871 61.5836C53.7483 61.616 53.8105 61.6453 53.8727 61.674C53.9804 61.7223 54.0882 61.7675 54.1964 61.8084C54.6575 61.9743 55.1404 62.0688 55.6291 62.089C61.1195 62.3509 62.1825 55.4194 58.2206 53.4066C59.2355 53.227 60.2886 53.642 60.8763 54.0618C59.9137 52.3519 58.1155 51.1978 56.0506 51.1978C55.9198 51.1978 55.7891 51.2089 55.6636 51.2179C54.5582 51.2947 53.5013 51.7084 52.6309 52.405C52.7987 52.5495 52.988 52.7424 53.3875 53.1425C54.1357 53.8907 56.0532 54.6654 56.0574 54.7568Z" fill="url(#paint5_radial_1186_7637)"/>
+-<path d="M52.0962 52.0338C52.1856 52.0927 52.2594 52.14 52.3247 52.1873C52.0738 51.2947 52.0631 50.3501 52.2939 49.4519C51.1623 49.9753 50.2823 50.8031 49.6428 51.5338C49.6951 51.5353 51.2925 51.5029 52.0962 52.0338Z" fill="url(#paint6_radial_1186_7637)"/>
+-<path d="M45.1022 57.1743C45.9519 62.2753 50.5041 66.1738 55.6719 66.3226C60.4547 66.4602 63.5105 63.6393 64.7701 60.8868C65.5858 59.1079 66.1521 56.1971 65.1132 53.3341V53.323C65.1132 53.315 65.1132 53.3097 65.1132 53.3124C65.1132 53.315 65.1132 53.3187 65.1132 53.331C65.5038 55.9234 64.2059 58.432 62.1777 60.1323L62.1714 60.1467C58.2189 63.4172 54.4368 62.1201 53.6708 61.5888C53.6185 61.5627 53.5662 61.5356 53.5108 61.508C51.2059 60.3884 50.2542 58.255 50.4581 56.4256C48.5125 56.4256 47.8489 54.7576 47.8489 54.7576C47.8489 54.7576 49.5959 53.492 51.8982 54.5929C54.031 55.6126 56.0337 54.7582 56.0337 54.7582C56.0295 54.6668 54.1126 53.8921 53.367 53.1439C52.9675 52.7443 52.7782 52.5515 52.6103 52.4069C52.5192 52.3287 52.4239 52.2557 52.3248 52.188C52.2595 52.1423 52.1858 52.0934 52.0963 52.0344C51.2932 51.5031 49.6958 51.5334 49.6429 51.5344H49.6388C49.2022 50.9728 49.233 49.1189 49.2576 48.7315C49.2524 48.7076 48.9318 48.9005 48.8916 48.9297C48.5062 49.2093 48.1459 49.523 47.8149 49.867C47.4384 50.2551 47.0944 50.6744 46.7864 51.1205C46.0774 52.1403 45.5741 53.2927 45.3056 54.5111C45.2988 54.5345 44.9092 56.2725 45.1022 57.1743Z" fill="url(#paint7_radial_1186_7637)"/>
+-<path d="M59.9009 52.7576C60.3027 53.1586 60.6468 53.6151 60.9232 54.1136C60.9839 54.1599 61.0403 54.2061 61.0884 54.2507C63.5858 56.5887 62.2775 59.8958 62.1797 60.1312C64.208 58.4309 65.5058 55.9218 65.1152 53.3299C63.8697 50.1757 61.7577 48.9037 60.0332 46.1343C59.9459 45.994 59.8591 45.8537 59.7718 45.7055C59.7232 45.621 59.6845 45.546 59.6505 45.4738C59.579 45.3332 59.5239 45.1847 59.4863 45.0312C59.4865 45.0239 59.484 45.0169 59.4794 45.0114C59.4747 45.0059 59.4683 45.0023 59.4612 45.0014C59.4543 44.9995 59.4471 44.9995 59.4403 45.0014L59.4351 45.0046C59.4323 45.0057 59.4296 45.0071 59.4272 45.0088C59.0031 45.215 56.4771 49.2793 59.9009 52.7576Z" fill="url(#paint8_radial_1186_7637)"/>
+-<path d="M61.0892 54.251C61.0411 54.2064 60.9846 54.1601 60.924 54.1139C60.9015 54.0964 60.8795 54.0794 60.8555 54.0608C60.2677 53.641 59.2146 53.2265 58.1997 53.4056C62.1616 55.4184 61.0981 62.3488 55.6083 62.0869C55.1194 62.067 54.6362 61.9724 54.175 61.8063C54.0673 61.7654 53.9596 61.7203 53.8519 61.6719C53.7897 61.6432 53.7274 61.614 53.6663 61.5816L53.6736 61.5864C54.4396 62.1177 58.2227 63.4148 62.1742 60.1443L62.1805 60.1299C62.2756 59.8961 63.5839 56.589 61.0892 54.251Z" fill="url(#paint9_radial_1186_7637)"/>
+-<path d="M51.07 57.9207C51.07 57.9207 51.5783 55.9956 54.7104 55.9956C55.0492 55.9956 56.0176 55.036 56.0349 54.7576C56.0349 54.7576 54.0322 55.612 51.8994 54.5923C49.5986 53.4913 47.8501 54.757 47.8501 54.757C47.8501 54.757 48.5136 56.425 50.4593 56.425C50.2554 58.2544 51.207 60.3878 53.5119 61.5074C53.5642 61.5324 53.6118 61.5605 53.6646 61.5834C52.3192 60.8772 51.2076 59.5419 51.07 57.9207Z" fill="url(#paint10_radial_1186_7637)"/>
+-<path d="M66.2057 52.7475C65.7268 51.5785 64.7573 50.3139 63.996 49.9148C64.6156 51.1492 64.9743 52.3872 65.1113 53.3113C65.1113 53.3113 65.1113 53.3177 65.1113 53.3299C63.8658 50.1757 61.7539 48.9037 60.0294 46.1343C59.942 45.994 59.8552 45.8537 59.7679 45.7055C59.7193 45.621 59.6806 45.546 59.6466 45.4738C59.5751 45.3332 59.52 45.1847 59.4824 45.0312C59.4826 45.0239 59.4802 45.0169 59.4755 45.0114C59.4709 45.0059 59.4644 45.0023 59.4573 45.0014C59.4505 44.9995 59.4433 44.9995 59.4364 45.0014L59.4312 45.0046C59.4284 45.0057 59.4258 45.0071 59.4233 45.0088L59.4275 45.0025C56.6609 46.6497 55.7223 49.6954 55.6361 51.2193C55.7642 51.2103 55.8923 51.1991 56.023 51.1991C58.0874 51.1991 59.8861 52.3527 60.8487 54.0626C60.261 53.6428 59.2079 53.2284 58.193 53.4074C62.1549 55.4202 61.0914 62.3507 55.6015 62.0887C55.1126 62.0688 54.6295 61.9743 54.1683 61.8082C54.0606 61.7673 53.9529 61.7221 53.8452 61.6738C53.7829 61.6451 53.7207 61.6158 53.6595 61.5834L53.6669 61.5882C53.6146 61.5622 53.5623 61.5351 53.5069 61.5074C53.5591 61.5324 53.6067 61.5606 53.6595 61.5834C52.3141 60.8772 51.202 59.542 51.065 57.9208C51.065 57.9208 51.5732 55.9957 54.7053 55.9957C55.0441 55.9957 56.0125 55.0361 56.0298 54.7576C56.0256 54.6662 54.1087 53.8915 53.3631 53.1434C52.9636 52.7438 52.7743 52.5509 52.6064 52.4064C52.5153 52.3282 52.42 52.2551 52.3209 52.1875C52.07 51.2949 52.0593 50.3502 52.2901 49.452C51.1586 49.9754 50.2785 50.8033 49.639 51.5339H49.638C49.2014 50.9722 49.2322 49.1183 49.2568 48.731C49.2516 48.7071 48.931 48.9 48.8908 48.9292C48.5054 49.2088 48.1451 49.5224 47.8142 49.8665C47.4376 50.2545 47.0936 50.6738 46.7856 51.12C46.0766 52.1399 45.5733 53.2924 45.3048 54.5111C45.2996 54.535 45.2949 54.5605 45.2902 54.5849C45.2693 54.6832 45.1762 55.1832 45.1631 55.2906C45.078 55.8073 45.0237 56.3288 45.0005 56.8522C45.0005 56.8714 45.0005 56.89 45.0005 56.9091C45.0005 63.0898 49.9319 68.1 56.0146 68.1C61.4621 68.1 65.9856 64.0813 66.8709 58.8012C66.8897 58.6583 66.9043 58.5143 66.9231 58.3698C67.1391 56.4516 66.8933 54.434 66.2057 52.7475ZM65.1155 53.3219C65.1153 53.326 65.1153 53.3301 65.1155 53.3341V53.3219Z" fill="url(#paint11_linear_1186_7637)"/>
+-<defs>
+-<linearGradient id="paint0_linear_1186_7637" x1="65.8887" y1="50.9308" x2="46.6588" y2="62.8511" gradientUnits="userSpaceOnUse">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.13" stop-color="#9356F4"/>
+-<stop offset="0.29" stop-color="#8951E5"/>
+-<stop offset="0.46" stop-color="#7A49CD"/>
+-<stop offset="0.64" stop-color="#643DAB"/>
+-<stop offset="0.82" stop-color="#492E81"/>
+-<stop offset="1" stop-color="#291D4F"/>
+-</linearGradient>
+-<radialGradient id="paint1_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(63.1519 48.6778) rotate(112.511) scale(23.2839 24.3126)">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.65" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint2_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.8824 59.334) scale(22.9415 23.3129)">
+-<stop offset="0.25" stop-color="#AB71FF" stop-opacity="0"/>
+-<stop offset="0.42" stop-color="#9462E0" stop-opacity="0.18"/>
+-<stop offset="0.73" stop-color="#573B8D" stop-opacity="0.65"/>
+-<stop offset="0.94" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint3_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60.6484 44.5148) scale(16.5843 16.8528)">
+-<stop offset="0.18" stop-color="#9658F9"/>
+-<stop offset="0.33" stop-color="#7E48EA"/>
+-<stop offset="0.37" stop-color="#7542E5"/>
+-<stop offset="0.41" stop-color="#6A3DD0"/>
+-<stop offset="0.48" stop-color="#5332A2"/>
+-<stop offset="0.56" stop-color="#41297E"/>
+-<stop offset="0.63" stop-color="#342264"/>
+-<stop offset="0.69" stop-color="#2C1E54"/>
+-<stop offset="0.74" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint4_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(52.8479 62.089) scale(10.9331 11.1101)">
+-<stop offset="0.07" stop-color="#9358FC"/>
+-<stop offset="0.13" stop-color="#9857F8"/>
+-<stop offset="0.21" stop-color="#A755EB"/>
+-<stop offset="0.3" stop-color="#BF52D7"/>
+-<stop offset="0.39" stop-color="#E14EBA"/>
+-<stop offset="0.42" stop-color="#EF4CAF"/>
+-<stop offset="0.74" stop-color="#FF7583"/>
+-<stop offset="0.97" stop-color="#FFB753"/>
+-</radialGradient>
+-<radialGradient id="paint5_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(55.4787 54.1254) rotate(-14.1133) scale(5.79733 6.90775)">
+-<stop offset="0.22" stop-color="#FFB653" stop-opacity="0.3"/>
+-<stop offset="0.34" stop-color="#FF807A" stop-opacity="0.5"/>
+-<stop offset="0.44" stop-color="#FF7781" stop-opacity="0.48"/>
+-<stop offset="0.57" stop-color="#FF5C94" stop-opacity="0.43"/>
+-<stop offset="0.64" stop-color="#FF4AA2" stop-opacity="0.4"/>
+-<stop offset="0.86" stop-color="#9658F9" stop-opacity="0.3"/>
+-</radialGradient>
+-<radialGradient id="paint6_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.5929 48.8515) scale(7.85915 7.9864)">
+-<stop offset="0.03" stop-color="#9658F9"/>
+-<stop offset="0.62" stop-color="#7542E5"/>
+-<stop offset="0.72" stop-color="#6339C2"/>
+-<stop offset="0.93" stop-color="#37246B"/>
+-<stop offset="1" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint7_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(58.8404 39.1507) rotate(102.662) scale(32.7229 25.3152)">
+-<stop offset="0.2" stop-color="#AB71FF"/>
+-<stop offset="0.29" stop-color="#A46BFC"/>
+-<stop offset="0.41" stop-color="#9059F2"/>
+-<stop offset="0.54" stop-color="#7542E5"/>
+-<stop offset="0.64" stop-color="#6239BF"/>
+-<stop offset="0.94" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint8_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(59.5059 49.1947) rotate(84.0697) scale(24.9532 16.1464)">
+-<stop offset="0.09" stop-color="#9658F9"/>
+-<stop offset="0.14" stop-color="#8C51F3"/>
+-<stop offset="0.26" stop-color="#7542E5"/>
+-<stop offset="0.29" stop-color="#6E3ED6"/>
+-<stop offset="0.4" stop-color="#5533A6"/>
+-<stop offset="0.5" stop-color="#422980"/>
+-<stop offset="0.59" stop-color="#342365"/>
+-<stop offset="0.67" stop-color="#2C1E55"/>
+-<stop offset="0.74" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint9_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.4076 51.8087) scale(20.9312 21.2702)">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.12" stop-color="#9155F6"/>
+-<stop offset="0.25" stop-color="#834CEE"/>
+-<stop offset="0.34" stop-color="#7542E5"/>
+-<stop offset="0.78" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint10_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(62.9339 53.0525) scale(22.862 23.2321)">
+-<stop offset="0.19" stop-color="#9658F9"/>
+-<stop offset="0.49" stop-color="#834BED"/>
+-<stop offset="0.66" stop-color="#7542E5"/>
+-<stop offset="0.7" stop-color="#6B3DD2"/>
+-<stop offset="0.79" stop-color="#52319F"/>
+-<stop offset="0.91" stop-color="#291D4F"/>
+-</radialGradient>
+-<linearGradient id="paint11_linear_1186_7637" x1="64.5267" y1="48.4823" x2="48.7204" y2="64.0368" gradientUnits="userSpaceOnUse">
+-<stop stop-color="#9059FF" stop-opacity="0.9"/>
+-<stop offset="0.61" stop-color="#291D4F" stop-opacity="0"/>
+-</linearGradient>
+-</defs>
+-</svg>
+diff --git a/browser/components/privatebrowsing/content/assets/klar-qr-code.svg b/browser/components/privatebrowsing/content/assets/klar-qr-code.svg
+deleted file mode 100644
+index 2217ca055c..0000000000
+--- a/browser/components/privatebrowsing/content/assets/klar-qr-code.svg
++++ /dev/null
+@@ -1,114 +0,0 @@
+-<!-- This Source Code Form is subject to the terms of the Mozilla Public
+-   - License, v. 2.0. If a copy of the MPL was not distributed with this
+-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+-<svg width="113" height="113" viewBox="0 0 113 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+-<rect width="113" height="113" rx="4" fill="white"/>
+-<path fill-rule="evenodd" clip-rule="evenodd" d="M4 2H109C110.105 2 111 2.89543 111 4V109C111 110.105 110.105 111 109 111H4C2.89543 111 2 110.105 2 109V4C2 2.89543 2.89543 2 4 2ZM0 4C0 1.79086 1.79086 0 4 0H109C111.209 0 113 1.79086 113 4V109C113 111.209 111.209 113 109 113H4C1.79086 113 0 111.209 0 109V4ZM103 10H99.7931H96.5862H93.3793H90.1724H86.9655H83.7586H80.5517V13.2069V16.4138V19.6207V22.8276V26.0345V29.2414V32.4483H83.7586H86.9655H90.1724H93.3793H96.5862H99.7931H103V29.2414V26.0345V22.8276V19.6207V16.4138V13.2069V10ZM96.5862 13.2069H99.7931V16.4138V19.6207V22.8276V26.0345V29.2414H96.5862H93.3793H90.1724H86.9655H83.7586V26.0345V22.8276V19.6207V16.4138V13.2069H86.9655H90.1724H93.3793H96.5862ZM70.931 10H67.7241V13.2069H64.5172V10H61.3103H58.1034V13.2069H54.8966V10H51.6897H48.4828H45.2759H42.069H38.8621V13.2069H35.6552V16.4138V19.6207H38.8621V22.8276H42.069V26.0345H38.8621H35.6552V29.2414V32.4483H38.8621V35.6552H35.6552V38.8621V42.069H32.4483V38.8621V35.6552H29.2414H26.0345V38.8621H22.8276H19.6207H16.4138V35.6552H13.2069V38.8621H10V42.069V45.2759V48.4828V51.6897V54.8966V58.1034V61.3103V64.5172V67.7241V70.931H13.2069V74.1379V77.3448H10V80.5517V83.7586H13.2069V86.9655H10V90.1724H13.2069V93.3793H10V96.5862V99.7931H13.2069V103H16.4138V99.7931V96.5862H19.6207V99.7931H22.8276V103H26.0345V99.7931H29.2414H32.4483V103H35.6552H38.8621H42.069H45.2759V99.7931V96.5862H48.4828H51.6897V99.7931H48.4828V103H51.6897H54.8966H58.1034V99.7931V96.5862V93.3793V90.1724H54.8966V86.9655H51.6897V90.1724H48.4828H45.2759V86.9655H48.4828V83.7586H45.2759V80.5517H48.4828H51.6897H54.8966V83.7586H58.1034V80.5517H61.3103V83.7586H64.5172V80.5517H61.3103V77.3448V74.1379H64.5172H67.7241H70.931V77.3448H67.7241V80.5517V83.7586V86.9655V90.1724V93.3793V96.5862H70.931V99.7931H67.7241V103H70.931H74.1379V99.7931V96.5862H70.931V93.3793V90.1724V86.9655H74.1379V90.1724H77.3448V86.9655V83.7586V80.5517V77.3448H80.5517H83.7586H86.9655H90.1724V74.1379V70.931V67.7241H86.9655V70.931V74.1379H83.7586H80.5517V70.931H83.7586V67.7241H80.5517V64.5172H83.7586H86.9655V61.3103H90.1724V64.5172H93.3793H96.5862V67.7241H99.7931H103V64.5172H99.7931H96.5862V61.3103V58.1034H99.7931V61.3103H103V58.1034H99.7931V54.8966H103V51.6897H99.7931V48.4828H103V45.2759V42.069V38.8621H99.7931H96.5862H93.3793V42.069H90.1724H86.9655V45.2759V48.4828H83.7586H80.5517V51.6897H77.3448V48.4828H74.1379V51.6897H70.931V54.8966V58.1034H74.1379V61.3103H70.931V64.5172V67.7241H74.1379V64.5172H77.3448V67.7241V70.931H74.1379H70.931H67.7241H64.5172H61.3103H58.1034V74.1379H54.8966V70.931H51.6897V74.1379H54.8966V77.3448H51.6897H48.4828V74.1379V70.931H45.2759V74.1379H42.069H38.8621H35.6552H32.4483H29.2414V70.931V67.7241V64.5172H26.0345H22.8276V67.7241H19.6207H16.4138V70.931H13.2069V67.7241V64.5172H16.4138V61.3103V58.1034H13.2069V54.8966V51.6897V48.4828H16.4138V45.2759H13.2069V42.069H16.4138H19.6207V45.2759H22.8276V42.069H26.0345H29.2414H32.4483V45.2759V48.4828H35.6552H38.8621V51.6897H42.069V48.4828V45.2759H45.2759V42.069H42.069V38.8621H45.2759V35.6552H48.4828V32.4483H51.6897V35.6552V38.8621V42.069H54.8966H58.1034H61.3103V38.8621H58.1034V35.6552H61.3103V32.4483H64.5172V29.2414H67.7241V32.4483H70.931V35.6552H74.1379H77.3448V38.8621H80.5517H83.7586H86.9655H90.1724V35.6552H86.9655H83.7586H80.5517H77.3448V32.4483V29.2414V26.0345H74.1379V22.8276H70.931V19.6207H74.1379V16.4138H77.3448V13.2069H74.1379V16.4138H70.931V13.2069V10ZM70.931 26.0345V22.8276H67.7241V19.6207H64.5172V16.4138H61.3103H58.1034H54.8966V19.6207H58.1034H61.3103V22.8276H64.5172H67.7241V26.0345H70.931ZM70.931 26.0345V29.2414V32.4483H74.1379V29.2414V26.0345H70.931ZM64.5172 29.2414V26.0345H61.3103H58.1034V29.2414V32.4483H61.3103V29.2414H64.5172ZM51.6897 29.2414H54.8966V32.4483H51.6897V29.2414ZM51.6897 29.2414V26.0345H48.4828V22.8276H51.6897V19.6207H48.4828H45.2759V16.4138H48.4828V13.2069H45.2759H42.069H38.8621V16.4138H42.069V19.6207V22.8276H45.2759V26.0345V29.2414V32.4483H48.4828V29.2414H51.6897ZM42.069 42.069H38.8621V45.2759H42.069V42.069ZM22.8276 90.1724H19.6207H16.4138V86.9655V83.7586H13.2069V80.5517V77.3448H16.4138V80.5517H19.6207V77.3448H16.4138V74.1379V70.931H19.6207H22.8276H26.0345V74.1379H22.8276V77.3448V80.5517V83.7586H19.6207V86.9655H22.8276V90.1724ZM80.5517 61.3103V64.5172H77.3448V61.3103H80.5517ZM86.9655 58.1034V61.3103H83.7586H80.5517V58.1034H83.7586H86.9655ZM86.9655 58.1034V54.8966H90.1724V58.1034H86.9655ZM80.5517 51.6897V54.8966H83.7586V51.6897H80.5517ZM96.5862 45.2759H99.7931V48.4828H96.5862V45.2759ZM93.3793 45.2759V42.069H96.5862V45.2759H93.3793ZM93.3793 45.2759V48.4828V51.6897H90.1724V48.4828V45.2759H93.3793ZM96.5862 58.1034V54.8966H93.3793V58.1034H96.5862ZM77.3448 77.3448V74.1379H74.1379V77.3448H77.3448ZM45.2759 83.7586V86.9655H42.069V83.7586H45.2759ZM32.4483 96.5862H29.2414H26.0345V99.7931H22.8276V96.5862V93.3793V90.1724H26.0345V93.3793H29.2414V90.1724H32.4483H35.6552H38.8621H42.069H45.2759V93.3793H42.069H38.8621H35.6552H32.4483V96.5862ZM51.6897 90.1724V93.3793V96.5862H54.8966V93.3793V90.1724H51.6897ZM32.4483 96.5862V99.7931H35.6552V96.5862H32.4483ZM42.069 38.8621H38.8621V35.6552H42.069V38.8621ZM38.8621 32.4483V29.2414H42.069V32.4483H38.8621ZM64.5172 38.8621V42.069H67.7241V38.8621V35.6552H64.5172V38.8621ZM32.4483 10H29.2414H26.0345H22.8276H19.6207H16.4138H13.2069H10V13.2069V16.4138V19.6207V22.8276V26.0345V29.2414V32.4483H13.2069H16.4138H19.6207H22.8276H26.0345H29.2414H32.4483V29.2414V26.0345V22.8276V19.6207V16.4138V13.2069V10ZM26.0345 13.2069H29.2414V16.4138V19.6207V22.8276V26.0345V29.2414H26.0345H22.8276H19.6207H16.4138H13.2069V26.0345V22.8276V19.6207V16.4138V13.2069H16.4138H19.6207H22.8276H26.0345ZM96.5862 16.4138H93.3793H90.1724H86.9655V19.6207V22.8276V26.0345H90.1724H93.3793H96.5862V22.8276V19.6207V16.4138ZM26.0345 16.4138H22.8276H19.6207H16.4138V19.6207V22.8276V26.0345H19.6207H22.8276H26.0345V22.8276V19.6207V16.4138ZM83.7586 42.069H80.5517V45.2759H83.7586V42.069ZM74.1379 42.069H70.931V45.2759H74.1379V42.069ZM29.2414 45.2759H26.0345V48.4828V51.6897H22.8276V48.4828H19.6207V51.6897H16.4138V54.8966H19.6207V51.6897H22.8276V54.8966V58.1034H19.6207V61.3103H22.8276V58.1034H26.0345V61.3103H29.2414V58.1034H32.4483H35.6552V61.3103H32.4483V64.5172V67.7241H35.6552V70.931H38.8621V67.7241V64.5172H35.6552V61.3103H38.8621V58.1034V54.8966H35.6552H32.4483V51.6897H29.2414V48.4828V45.2759ZM29.2414 51.6897V54.8966V58.1034H26.0345V54.8966V51.6897H29.2414ZM96.5862 70.931H93.3793V74.1379H96.5862V77.3448H99.7931H103V74.1379H99.7931H96.5862V70.931ZM32.4483 77.3448H35.6552V80.5517V83.7586V86.9655H32.4483H29.2414H26.0345V83.7586V80.5517V77.3448H29.2414H32.4483ZM70.931 80.5517H74.1379V83.7586H70.931V80.5517ZM103 80.5517H99.7931H96.5862H93.3793H90.1724H86.9655H83.7586H80.5517V83.7586V86.9655V90.1724V93.3793V96.5862V99.7931V103H83.7586H86.9655H90.1724H93.3793H96.5862H99.7931H103V99.7931V96.5862V93.3793V90.1724V86.9655V83.7586V80.5517ZM96.5862 83.7586H99.7931V86.9655V90.1724V93.3793V96.5862V99.7931H96.5862H93.3793H90.1724H86.9655H83.7586V96.5862V93.3793V90.1724V86.9655V83.7586H86.9655H90.1724H93.3793H96.5862ZM32.4483 80.5517H29.2414V83.7586H32.4483V80.5517ZM96.5862 86.9655H93.3793H90.1724H86.9655V90.1724V93.3793V96.5862H90.1724H93.3793H96.5862V93.3793V90.1724V86.9655ZM64.5172 90.1724H61.3103V93.3793V96.5862V99.7931V103H64.5172V99.7931V96.5862V93.3793V90.1724Z" fill="#1C1B22"/>
+-<path d="M66.2056 52.7475C65.7266 51.5785 64.7572 50.3139 63.9959 49.9148C64.6155 51.1492 64.9742 52.3872 65.1112 53.3113C65.1112 53.3113 65.1112 53.3177 65.1112 53.3299C63.8657 50.1757 61.7537 48.9037 60.0292 46.1343C59.9419 45.994 59.8551 45.8537 59.7678 45.7055C59.7192 45.621 59.6805 45.546 59.6465 45.4738C59.575 45.3332 59.5199 45.1847 59.4823 45.0312C59.4825 45.0239 59.48 45.0169 59.4754 45.0114C59.4707 45.0059 59.4643 45.0023 59.4572 45.0014C59.4503 44.9995 59.4431 44.9995 59.4363 45.0014L59.431 45.0046C59.4283 45.0057 59.4256 45.0071 59.4232 45.0088L59.4274 45.0025C56.6608 46.6497 55.7222 49.6954 55.6359 51.2193C54.5305 51.2961 53.4736 51.7098 52.6032 52.4064C52.512 52.3282 52.4167 52.2551 52.3177 52.1875C52.0667 51.2949 52.0561 50.3502 52.2868 49.452C51.1553 49.9754 50.2753 50.8033 49.6358 51.5339H49.6379C49.2012 50.9722 49.2321 49.1183 49.2567 48.731C49.2514 48.7071 48.9309 48.9 48.8906 48.9292C48.5053 49.2088 48.145 49.5224 47.814 49.8665C47.4375 50.2545 47.0935 50.6738 46.7855 51.12C46.0764 52.1399 45.5731 53.2924 45.3047 54.5111C45.2994 54.535 45.2947 54.5605 45.29 54.5849C45.2691 54.6832 45.1943 55.1763 45.1813 55.2837C45.1813 55.2916 45.1813 55.2996 45.1813 55.3081C45.0847 55.8177 45.0249 56.3338 45.0024 56.8522C45.0024 56.8714 45.0024 56.89 45.0024 56.9091C45.0024 63.0898 49.9338 68.1 56.0166 68.1C61.464 68.1 65.9876 64.0813 66.8728 58.8012C66.8916 58.6583 66.9063 58.5143 66.9251 58.3698C67.139 56.4516 66.8932 54.434 66.2056 52.7475ZM53.5109 61.5074C53.5632 61.5324 53.6108 61.5606 53.6636 61.5834L53.6709 61.5882C53.6176 61.5622 53.5642 61.5351 53.5109 61.5074ZM65.1154 53.3331V53.3219C65.1151 53.326 65.1151 53.3301 65.1154 53.3341V53.3331Z" fill="url(#paint0_linear_1186_7637)"/>
+-<path d="M66.2063 52.7477C65.7273 51.5787 64.7579 50.3141 63.9966 49.915C64.6162 51.1494 64.9749 52.3874 65.1119 53.3115C65.1119 53.3088 65.1119 53.3115 65.1119 53.3221C65.1116 53.3262 65.1116 53.3302 65.1119 53.3343C66.1509 56.1973 65.5825 59.108 64.7689 60.887C63.5066 63.6394 60.4509 66.4604 55.6706 66.3228C50.5029 66.174 45.9506 62.2776 45.1009 57.1744C44.9441 56.3699 45.1009 55.9608 45.1788 55.3078C45.0837 55.8115 45.0476 55.9571 45 56.8519C45 56.871 45 56.8896 45 56.9087C45 63.0895 49.9314 68.0996 56.0141 68.0996C61.4616 68.0996 65.9851 64.081 66.8704 58.8009C66.8892 58.658 66.9038 58.514 66.9227 58.3694C67.1397 56.4518 66.8939 54.4342 66.2063 52.7477Z" fill="url(#paint1_radial_1186_7637)"/>
+-<path d="M66.2063 52.7477C65.7273 51.5787 64.7579 50.3141 63.9966 49.915C64.6162 51.1494 64.9749 52.3874 65.1119 53.3115C65.1119 53.3088 65.1119 53.3115 65.1119 53.3221C65.1116 53.3262 65.1116 53.3302 65.1119 53.3343C66.1509 56.1973 65.5825 59.108 64.7689 60.887C63.5066 63.6394 60.4509 66.4604 55.6706 66.3228C50.5029 66.174 45.9506 62.2776 45.1009 57.1744C44.9441 56.3699 45.1009 55.9608 45.1788 55.3078C45.0837 55.8115 45.0476 55.9571 45 56.8519C45 56.871 45 56.8896 45 56.9087C45 63.0895 49.9314 68.0996 56.0141 68.0996C61.4616 68.0996 65.9851 64.081 66.8704 58.8009C66.8892 58.658 66.9038 58.514 66.9227 58.3694C67.1397 56.4518 66.8939 54.4342 66.2063 52.7477Z" fill="url(#paint2_radial_1186_7637)"/>
+-<path d="M60.854 54.0624C60.878 54.0794 60.9 54.0964 60.9225 54.1155C60.6463 53.6162 60.3021 53.159 59.9002 52.7574C56.4763 49.2786 59.0024 45.2121 59.4296 45.0081L59.4338 45.0017C56.6672 46.6489 55.7286 49.6946 55.6423 51.2186C55.7704 51.2095 55.8986 51.1984 56.0293 51.1984C58.0926 51.1989 59.8913 52.3525 60.854 54.0624Z" fill="url(#paint3_radial_1186_7637)"/>
+-<path d="M56.0574 54.7568C56.0396 55.0352 55.0717 55.9954 54.7329 55.9954C51.6008 55.9954 51.0925 57.9205 51.0925 57.9205C51.2311 59.5422 52.3417 60.8769 53.6871 61.5836C53.7483 61.616 53.8105 61.6453 53.8727 61.674C53.9804 61.7223 54.0882 61.7675 54.1964 61.8084C54.6575 61.9743 55.1404 62.0688 55.6291 62.089C61.1195 62.3509 62.1825 55.4194 58.2206 53.4066C59.2355 53.227 60.2886 53.642 60.8763 54.0618C59.9137 52.3519 58.1155 51.1978 56.0506 51.1978C55.9198 51.1978 55.7891 51.2089 55.6636 51.2179C54.5582 51.2947 53.5013 51.7084 52.6309 52.405C52.7987 52.5495 52.988 52.7424 53.3875 53.1425C54.1357 53.8907 56.0532 54.6654 56.0574 54.7568Z" fill="url(#paint4_radial_1186_7637)"/>
+-<path d="M56.0574 54.7568C56.0396 55.0352 55.0717 55.9954 54.7329 55.9954C51.6008 55.9954 51.0925 57.9205 51.0925 57.9205C51.2311 59.5422 52.3417 60.8769 53.6871 61.5836C53.7483 61.616 53.8105 61.6453 53.8727 61.674C53.9804 61.7223 54.0882 61.7675 54.1964 61.8084C54.6575 61.9743 55.1404 62.0688 55.6291 62.089C61.1195 62.3509 62.1825 55.4194 58.2206 53.4066C59.2355 53.227 60.2886 53.642 60.8763 54.0618C59.9137 52.3519 58.1155 51.1978 56.0506 51.1978C55.9198 51.1978 55.7891 51.2089 55.6636 51.2179C54.5582 51.2947 53.5013 51.7084 52.6309 52.405C52.7987 52.5495 52.988 52.7424 53.3875 53.1425C54.1357 53.8907 56.0532 54.6654 56.0574 54.7568Z" fill="url(#paint5_radial_1186_7637)"/>
+-<path d="M52.0962 52.0338C52.1856 52.0927 52.2594 52.14 52.3247 52.1873C52.0738 51.2947 52.0631 50.3501 52.2939 49.4519C51.1623 49.9753 50.2823 50.8031 49.6428 51.5338C49.6951 51.5353 51.2925 51.5029 52.0962 52.0338Z" fill="url(#paint6_radial_1186_7637)"/>
+-<path d="M45.1022 57.1743C45.9519 62.2753 50.5041 66.1738 55.6719 66.3226C60.4547 66.4602 63.5105 63.6393 64.7701 60.8868C65.5858 59.1079 66.1521 56.1971 65.1132 53.3341V53.323C65.1132 53.315 65.1132 53.3097 65.1132 53.3124C65.1132 53.315 65.1132 53.3187 65.1132 53.331C65.5038 55.9234 64.2059 58.432 62.1777 60.1323L62.1714 60.1467C58.2189 63.4172 54.4368 62.1201 53.6708 61.5888C53.6185 61.5627 53.5662 61.5356 53.5108 61.508C51.2059 60.3884 50.2542 58.255 50.4581 56.4256C48.5125 56.4256 47.8489 54.7576 47.8489 54.7576C47.8489 54.7576 49.5959 53.492 51.8982 54.5929C54.031 55.6126 56.0337 54.7582 56.0337 54.7582C56.0295 54.6668 54.1126 53.8921 53.367 53.1439C52.9675 52.7443 52.7782 52.5515 52.6103 52.4069C52.5192 52.3287 52.4239 52.2557 52.3248 52.188C52.2595 52.1423 52.1858 52.0934 52.0963 52.0344C51.2932 51.5031 49.6958 51.5334 49.6429 51.5344H49.6388C49.2022 50.9728 49.233 49.1189 49.2576 48.7315C49.2524 48.7076 48.9318 48.9005 48.8916 48.9297C48.5062 49.2093 48.1459 49.523 47.8149 49.867C47.4384 50.2551 47.0944 50.6744 46.7864 51.1205C46.0774 52.1403 45.5741 53.2927 45.3056 54.5111C45.2988 54.5345 44.9092 56.2725 45.1022 57.1743Z" fill="url(#paint7_radial_1186_7637)"/>
+-<path d="M59.9009 52.7576C60.3027 53.1586 60.6468 53.6151 60.9232 54.1136C60.9839 54.1599 61.0403 54.2061 61.0884 54.2507C63.5858 56.5887 62.2775 59.8958 62.1797 60.1312C64.208 58.4309 65.5058 55.9218 65.1152 53.3299C63.8697 50.1757 61.7577 48.9037 60.0332 46.1343C59.9459 45.994 59.8591 45.8537 59.7718 45.7055C59.7232 45.621 59.6845 45.546 59.6505 45.4738C59.579 45.3332 59.5239 45.1847 59.4863 45.0312C59.4865 45.0239 59.484 45.0169 59.4794 45.0114C59.4747 45.0059 59.4683 45.0023 59.4612 45.0014C59.4543 44.9995 59.4471 44.9995 59.4403 45.0014L59.4351 45.0046C59.4323 45.0057 59.4296 45.0071 59.4272 45.0088C59.0031 45.215 56.4771 49.2793 59.9009 52.7576Z" fill="url(#paint8_radial_1186_7637)"/>
+-<path d="M61.0892 54.251C61.0411 54.2064 60.9846 54.1601 60.924 54.1139C60.9015 54.0964 60.8795 54.0794 60.8555 54.0608C60.2677 53.641 59.2146 53.2265 58.1997 53.4056C62.1616 55.4184 61.0981 62.3488 55.6083 62.0869C55.1194 62.067 54.6362 61.9724 54.175 61.8063C54.0673 61.7654 53.9596 61.7203 53.8519 61.6719C53.7897 61.6432 53.7274 61.614 53.6663 61.5816L53.6736 61.5864C54.4396 62.1177 58.2227 63.4148 62.1742 60.1443L62.1805 60.1299C62.2756 59.8961 63.5839 56.589 61.0892 54.251Z" fill="url(#paint9_radial_1186_7637)"/>
+-<path d="M51.07 57.9207C51.07 57.9207 51.5783 55.9956 54.7104 55.9956C55.0492 55.9956 56.0176 55.036 56.0349 54.7576C56.0349 54.7576 54.0322 55.612 51.8994 54.5923C49.5986 53.4913 47.8501 54.757 47.8501 54.757C47.8501 54.757 48.5136 56.425 50.4593 56.425C50.2554 58.2544 51.207 60.3878 53.5119 61.5074C53.5642 61.5324 53.6118 61.5605 53.6646 61.5834C52.3192 60.8772 51.2076 59.5419 51.07 57.9207Z" fill="url(#paint10_radial_1186_7637)"/>
+-<path d="M66.2057 52.7475C65.7268 51.5785 64.7573 50.3139 63.996 49.9148C64.6156 51.1492 64.9743 52.3872 65.1113 53.3113C65.1113 53.3113 65.1113 53.3177 65.1113 53.3299C63.8658 50.1757 61.7539 48.9037 60.0294 46.1343C59.942 45.994 59.8552 45.8537 59.7679 45.7055C59.7193 45.621 59.6806 45.546 59.6466 45.4738C59.5751 45.3332 59.52 45.1847 59.4824 45.0312C59.4826 45.0239 59.4802 45.0169 59.4755 45.0114C59.4709 45.0059 59.4644 45.0023 59.4573 45.0014C59.4505 44.9995 59.4433 44.9995 59.4364 45.0014L59.4312 45.0046C59.4284 45.0057 59.4258 45.0071 59.4233 45.0088L59.4275 45.0025C56.6609 46.6497 55.7223 49.6954 55.6361 51.2193C55.7642 51.2103 55.8923 51.1991 56.023 51.1991C58.0874 51.1991 59.8861 52.3527 60.8487 54.0626C60.261 53.6428 59.2079 53.2284 58.193 53.4074C62.1549 55.4202 61.0914 62.3507 55.6015 62.0887C55.1126 62.0688 54.6295 61.9743 54.1683 61.8082C54.0606 61.7673 53.9529 61.7221 53.8452 61.6738C53.7829 61.6451 53.7207 61.6158 53.6595 61.5834L53.6669 61.5882C53.6146 61.5622 53.5623 61.5351 53.5069 61.5074C53.5591 61.5324 53.6067 61.5606 53.6595 61.5834C52.3141 60.8772 51.202 59.542 51.065 57.9208C51.065 57.9208 51.5732 55.9957 54.7053 55.9957C55.0441 55.9957 56.0125 55.0361 56.0298 54.7576C56.0256 54.6662 54.1087 53.8915 53.3631 53.1434C52.9636 52.7438 52.7743 52.5509 52.6064 52.4064C52.5153 52.3282 52.42 52.2551 52.3209 52.1875C52.07 51.2949 52.0593 50.3502 52.2901 49.452C51.1586 49.9754 50.2785 50.8033 49.639 51.5339H49.638C49.2014 50.9722 49.2322 49.1183 49.2568 48.731C49.2516 48.7071 48.931 48.9 48.8908 48.9292C48.5054 49.2088 48.1451 49.5224 47.8142 49.8665C47.4376 50.2545 47.0936 50.6738 46.7856 51.12C46.0766 52.1399 45.5733 53.2924 45.3048 54.5111C45.2996 54.535 45.2949 54.5605 45.2902 54.5849C45.2693 54.6832 45.1762 55.1832 45.1631 55.2906C45.078 55.8073 45.0237 56.3288 45.0005 56.8522C45.0005 56.8714 45.0005 56.89 45.0005 56.9091C45.0005 63.0898 49.9319 68.1 56.0146 68.1C61.4621 68.1 65.9856 64.0813 66.8709 58.8012C66.8897 58.6583 66.9043 58.5143 66.9231 58.3698C67.1391 56.4516 66.8933 54.434 66.2057 52.7475ZM65.1155 53.3219C65.1153 53.326 65.1153 53.3301 65.1155 53.3341V53.3219Z" fill="url(#paint11_linear_1186_7637)"/>
+-<defs>
+-<linearGradient id="paint0_linear_1186_7637" x1="65.8887" y1="50.9308" x2="46.6588" y2="62.8511" gradientUnits="userSpaceOnUse">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.13" stop-color="#9356F4"/>
+-<stop offset="0.29" stop-color="#8951E5"/>
+-<stop offset="0.46" stop-color="#7A49CD"/>
+-<stop offset="0.64" stop-color="#643DAB"/>
+-<stop offset="0.82" stop-color="#492E81"/>
+-<stop offset="1" stop-color="#291D4F"/>
+-</linearGradient>
+-<radialGradient id="paint1_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(63.1519 48.6778) rotate(112.511) scale(23.2839 24.3126)">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.65" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint2_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.8824 59.334) scale(22.9415 23.3129)">
+-<stop offset="0.25" stop-color="#AB71FF" stop-opacity="0"/>
+-<stop offset="0.42" stop-color="#9462E0" stop-opacity="0.18"/>
+-<stop offset="0.73" stop-color="#573B8D" stop-opacity="0.65"/>
+-<stop offset="0.94" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint3_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60.6484 44.5148) scale(16.5843 16.8528)">
+-<stop offset="0.18" stop-color="#9658F9"/>
+-<stop offset="0.33" stop-color="#7E48EA"/>
+-<stop offset="0.37" stop-color="#7542E5"/>
+-<stop offset="0.41" stop-color="#6A3DD0"/>
+-<stop offset="0.48" stop-color="#5332A2"/>
+-<stop offset="0.56" stop-color="#41297E"/>
+-<stop offset="0.63" stop-color="#342264"/>
+-<stop offset="0.69" stop-color="#2C1E54"/>
+-<stop offset="0.74" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint4_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(52.8479 62.089) scale(10.9331 11.1101)">
+-<stop offset="0.07" stop-color="#9358FC"/>
+-<stop offset="0.13" stop-color="#9857F8"/>
+-<stop offset="0.21" stop-color="#A755EB"/>
+-<stop offset="0.3" stop-color="#BF52D7"/>
+-<stop offset="0.39" stop-color="#E14EBA"/>
+-<stop offset="0.42" stop-color="#EF4CAF"/>
+-<stop offset="0.74" stop-color="#FF7583"/>
+-<stop offset="0.97" stop-color="#FFB753"/>
+-</radialGradient>
+-<radialGradient id="paint5_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(55.4787 54.1254) rotate(-14.1133) scale(5.79733 6.90775)">
+-<stop offset="0.22" stop-color="#FFB653" stop-opacity="0.3"/>
+-<stop offset="0.34" stop-color="#FF807A" stop-opacity="0.5"/>
+-<stop offset="0.44" stop-color="#FF7781" stop-opacity="0.48"/>
+-<stop offset="0.57" stop-color="#FF5C94" stop-opacity="0.43"/>
+-<stop offset="0.64" stop-color="#FF4AA2" stop-opacity="0.4"/>
+-<stop offset="0.86" stop-color="#9658F9" stop-opacity="0.3"/>
+-</radialGradient>
+-<radialGradient id="paint6_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.5929 48.8515) scale(7.85915 7.9864)">
+-<stop offset="0.03" stop-color="#9658F9"/>
+-<stop offset="0.62" stop-color="#7542E5"/>
+-<stop offset="0.72" stop-color="#6339C2"/>
+-<stop offset="0.93" stop-color="#37246B"/>
+-<stop offset="1" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint7_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(58.8404 39.1507) rotate(102.662) scale(32.7229 25.3152)">
+-<stop offset="0.2" stop-color="#AB71FF"/>
+-<stop offset="0.29" stop-color="#A46BFC"/>
+-<stop offset="0.41" stop-color="#9059F2"/>
+-<stop offset="0.54" stop-color="#7542E5"/>
+-<stop offset="0.64" stop-color="#6239BF"/>
+-<stop offset="0.94" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint8_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(59.5059 49.1947) rotate(84.0697) scale(24.9532 16.1464)">
+-<stop offset="0.09" stop-color="#9658F9"/>
+-<stop offset="0.14" stop-color="#8C51F3"/>
+-<stop offset="0.26" stop-color="#7542E5"/>
+-<stop offset="0.29" stop-color="#6E3ED6"/>
+-<stop offset="0.4" stop-color="#5533A6"/>
+-<stop offset="0.5" stop-color="#422980"/>
+-<stop offset="0.59" stop-color="#342365"/>
+-<stop offset="0.67" stop-color="#2C1E55"/>
+-<stop offset="0.74" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint9_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(57.4076 51.8087) scale(20.9312 21.2702)">
+-<stop stop-color="#9658F9"/>
+-<stop offset="0.12" stop-color="#9155F6"/>
+-<stop offset="0.25" stop-color="#834CEE"/>
+-<stop offset="0.34" stop-color="#7542E5"/>
+-<stop offset="0.78" stop-color="#291D4F"/>
+-</radialGradient>
+-<radialGradient id="paint10_radial_1186_7637" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(62.9339 53.0525) scale(22.862 23.2321)">
+-<stop offset="0.19" stop-color="#9658F9"/>
+-<stop offset="0.49" stop-color="#834BED"/>
+-<stop offset="0.66" stop-color="#7542E5"/>
+-<stop offset="0.7" stop-color="#6B3DD2"/>
+-<stop offset="0.79" stop-color="#52319F"/>
+-<stop offset="0.91" stop-color="#291D4F"/>
+-</radialGradient>
+-<linearGradient id="paint11_linear_1186_7637" x1="64.5267" y1="48.4823" x2="48.7204" y2="64.0368" gradientUnits="userSpaceOnUse">
+-<stop stop-color="#9059FF" stop-opacity="0.9"/>
+-<stop offset="0.61" stop-color="#291D4F" stop-opacity="0"/>
+-</linearGradient>
+-</defs>
+-</svg>
+-- 
+2.52.0
+
+
+From 915e322c1c354b7937436e7381380e136ddaaf22 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Tue, 17 Jan 2023 21:59:51 +0100
+Subject: [PATCH 4/7] Remove 'Extensions for developers' menu item
+
+Main menu -> 'More tools' -> 'Extensions for developers' opens
+ addons.mozilla.org (AMO), a third-party repository, not compatible with the
+ FSDG, because it is not committed to only including free software, see [1].
+
+[1] https://labs.parabola.nu/issues/2409#note-4
+---
+ browser/components/asrouter/modules/CFRPageActions.sys.mjs | 2 +-
+ devtools/client/framework/devtools-browser.js              | 3 ++-
+ devtools/client/menus.js                                   | 2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/browser/components/asrouter/modules/CFRPageActions.sys.mjs b/browser/components/asrouter/modules/CFRPageActions.sys.mjs
+index 2490ec8051..1eb9f879f7 100644
+--- a/browser/components/asrouter/modules/CFRPageActions.sys.mjs
++++ b/browser/components/asrouter/modules/CFRPageActions.sys.mjs
+@@ -42,7 +42,7 @@ const SUMO_BASE_URL = Services.urlFormatter.formatURLPref(
+   "app.support.baseURL"
+ );
+ const ADDONS_API_URL =
+-  "https://services.addons.mozilla.org/api/v4/addons/addon";
++  "";
+ 
+ const DELAY_BEFORE_EXPAND_MS = 1000;
+ const CATEGORY_ICONS = {
+diff --git a/devtools/client/framework/devtools-browser.js b/devtools/client/framework/devtools-browser.js
+index d51274c5ce..1bc0168118 100644
+--- a/devtools/client/framework/devtools-browser.js
++++ b/devtools/client/framework/devtools-browser.js
+@@ -131,8 +131,9 @@ var gDevToolsBrowser = (exports.gDevToolsBrowser = {
+       toggleMenuItem("menu_browserConsole", false);
+       toggleMenuItem("menu_responsiveUI", false);
+       toggleMenuItem("menu_eyedropper", false);
+-      toggleMenuItem("extensionsForDevelopers", false);
+     }
++
++    toggleMenuItem("extensionsForDevelopers", false);
+   },
+ 
+   /**
+diff --git a/devtools/client/menus.js b/devtools/client/menus.js
+index 837e99fbfa..7c68c4f47f 100644
+--- a/devtools/client/menus.js
++++ b/devtools/client/menus.js
+@@ -179,7 +179,7 @@ exports.menuitems = [
+     appMenuL10nId: "appmenu-developer-tools-extensions",
+     oncommand() {
+       openDocLink(
+-        "https://addons.mozilla.org/firefox/collections/mozilla/webdeveloper/"
++        ""
+       );
+     },
+   },
+-- 
+2.52.0
+
+
+From 557d0c4fe70ba64cea6e2836d6e90d5283911453 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 12 Mar 2023 21:57:14 +0100
+Subject: [PATCH 5/7] Change DuckDuckGo URL to DuckDuckGo HTML URL
+
+Some of JavaScript files from the regular DDG URL lack license info, and
+I couldn't find their freely licensed sources, so they can be considered
+nonfree.
+
+Replace the regular DDG URL with DDG HTML URL and rename the search
+engine accordingly. Currently, it looks like HTML version does not have
+any JS.
+
+Also:
+1. Change search method from GET to POST, because with GET, DDG HTML
+   will mangle URLs in search results, so that [1] becomes [2]. Not sure
+why that is done. Probably to avoid leaking search terms to visited
+sites (via Referer header?) at the cost of leaking clicked URLs to DDG,
+so this can still be a privacy concern.  BTW, POST is the default search
+method when searching directly from DDG HTML home page.
+
+2. Remove suspicious t=ffab URL parameter, because it can tell DDG that
+   this particular search extension is the origin of the search.
+
+Private search engine that doesn't track its users, huh?
+
+[1] https://www.gnu.org/
+[2] https://duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.gnu.org%2F&rut=b1ab1ab1a...
+---
+ browser/components/search/extensions/ddg/manifest.json | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/browser/components/search/extensions/ddg/manifest.json b/browser/components/search/extensions/ddg/manifest.json
+index 104eee6457..9a3279c622 100644
+--- a/browser/components/search/extensions/ddg/manifest.json
++++ b/browser/components/search/extensions/ddg/manifest.json
+@@ -1,6 +1,6 @@
+ {
+-  "name": "DuckDuckGo",
+-  "description": "Search DuckDuckGo",
++  "name": "DuckDuckGo HTML",
++  "description": "Search DuckDuckGo HTML",
+   "manifest_version": 2,
+   "version": "1.5",
+   "browser_specific_settings": {
+@@ -12,9 +12,9 @@
+   "chrome_settings_overrides": {
+     "search_provider": {
+       "keyword": ["@duckduckgo", "@ddg"],
+-      "name": "DuckDuckGo",
+-      "search_url": "https://duckduckgo.com/",
+-      "search_url_get_params": "t=ffab&q={searchTerms}",
++      "name": "DuckDuckGo HTML",
++      "search_url": "https://html.duckduckgo.com/html/",
++      "search_url_post_params": "q={searchTerms}",
+       "suggest_url": "https://ac.duckduckgo.com/ac/",
+       "suggest_url_get_params": "q={searchTerms}&type=list"
+     }
+-- 
+2.52.0
+
+
+From 37680f9dd7d8b31bd7879b04668da77e3c89b6b6 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 15 Sep 2024 22:12:44 +0200
+Subject: [PATCH 6/7] Remove references to nonfree Generative AI chats
+
+The GenAI chatbot feature opens the chat with the provider selected by
+the user in the side panel, and essentially loads all the software
+and/or information for practical use from the website of that provider.
+These websites can be considered software repositories, and I haven't
+found any claims about the commitment to include only free software in
+those.
+
+So remove references to these websites and keep only the localhost
+(disabled by default). And since Iceweasel doesn't ship any local chat
+provider, hide the whole set of related options from the Labs. If
+somebody wants to host one locally, options can be shown by setting
+browser.ml.chat.hideFromLabs to true and browser.ml.chat.hideLocalhost
+to false.
+---
+ browser/components/genai/GenAI.sys.mjs        | 95 +------------------
+ .../components/genai/LinkPreviewModel.sys.mjs | 18 +---
+ browser/locales/en-US/browser/genai.ftl       |  8 +-
+ 3 files changed, 5 insertions(+), 116 deletions(-)
+
+diff --git a/browser/components/genai/GenAI.sys.mjs b/browser/components/genai/GenAI.sys.mjs
+index 663e6e3b64..1d29c7f1ad 100644
+--- a/browser/components/genai/GenAI.sys.mjs
++++ b/browser/components/genai/GenAI.sys.mjs
+@@ -75,7 +75,7 @@ XPCOMUtils.defineLazyPreferenceGetter(
+   lazy,
+   "chatProviders",
+   "browser.ml.chat.providers",
+-  "claude,chatgpt,copilot,gemini,lechat",
++  "",
+   reorderChatProviders
+ );
+ XPCOMUtils.defineLazyPreferenceGetter(
+@@ -117,99 +117,10 @@ export const GenAI = {
+   // will allow for additional UI shown such as populating dropdown with a name,
+   // showing links, and other special behaviors needed for individual providers.
+   chatProviders: new Map([
+-    [
+-      "https://claude.ai/new",
+-      {
+-        iconUrl: "chrome://browser/content/genai/assets/brands/claude.svg",
+-        id: "claude",
+-        link1:
+-          "https://www.anthropic.com/legal/archive/6370fb23-12ed-41d9-a4a2-28866dee3105",
+-        link2:
+-          "https://www.anthropic.com/legal/archive/7197103a-5e27-4ee4-93b1-f2d4c39ba1e7",
+-        link3:
+-          "https://www.anthropic.com/legal/archive/628feec9-7df9-4d38-bc69-fbf104df47b0",
+-        linksId: "genai-settings-chat-claude-links",
+-        maxLength: 14150,
+-        name: "Anthropic Claude",
+-        supportAutoSubmit: true,
+-        tooltipId: "genai-onboarding-claude-tooltip",
+-      },
+-    ],
+-    [
+-      "https://chatgpt.com",
+-      {
+-        iconUrl: "chrome://browser/content/genai/assets/brands/chatgpt.svg",
+-        id: "chatgpt",
+-        link1: "https://openai.com/terms",
+-        link2: "https://openai.com/privacy",
+-        linksId: "genai-settings-chat-chatgpt-links",
+-        maxLength: 9350,
+-        name: "ChatGPT",
+-        supportAutoSubmit: true,
+-        tooltipId: "genai-onboarding-chatgpt-tooltip",
+-      },
+-    ],
+-    [
+-      "https://copilot.microsoft.com/?form=MOZCMC",
+-      {
+-        iconUrl: "chrome://browser/content/genai/assets/brands/copilot.svg",
+-        id: "copilot",
+-        link1: "https://www.bing.com/new/termsofuse",
+-        link2: "https://go.microsoft.com/fwlink/?LinkId=521839",
+-        linksId: "genai-settings-chat-copilot-links",
+-        maxLength: 3260,
+-        name: "Copilot",
+-        tooltipId: "genai-onboarding-copilot-tooltip",
+-      },
+-    ],
+-    [
+-      "https://gemini.google.com",
+-      {
+-        header: "X-Firefox-Gemini",
+-        iconUrl: "chrome://browser/content/genai/assets/brands/gemini.svg",
+-        id: "gemini",
+-        link1: "https://policies.google.com/terms",
+-        link2: "https://policies.google.com/terms/generative-ai/use-policy",
+-        link3: "https://support.google.com/gemini?p=privacy_notice",
+-        linksId: "genai-settings-chat-gemini-links",
+-        // Max header length is around 55000, but spaces are encoded with %20
+-        // for header instead of + for query parameter
+-        maxLength: 45000,
+-        name: "Google Gemini",
+-        tooltipId: "genai-onboarding-gemini-tooltip",
+-      },
+-    ],
+-    [
+-      "https://huggingface.co/chat",
+-      {
+-        iconUrl: "chrome://browser/content/genai/assets/brands/huggingchat.svg",
+-        id: "huggingchat",
+-        link1: "https://huggingface.co/chat/privacy",
+-        link2: "https://huggingface.co/privacy",
+-        linksId: "genai-settings-chat-huggingchat-links",
+-        maxLength: 8192,
+-        name: "HuggingChat",
+-        tooltipId: "genai-onboarding-huggingchat-tooltip",
+-      },
+-    ],
+-    [
+-      "https://chat.mistral.ai/chat",
+-      {
+-        iconUrl: "chrome://browser/content/genai/assets/brands/lechat.svg",
+-        id: "lechat",
+-        link1: "https://mistral.ai/terms/#terms-of-service-le-chat",
+-        link2: "https://mistral.ai/terms/#privacy-policy",
+-        linksId: "genai-settings-chat-lechat-links",
+-        maxLength: 13350,
+-        name: "Le Chat Mistral",
+-        tooltipId: "genai-onboarding-lechat-tooltip",
+-      },
+-    ],
+     [
+       "http://localhost:8080",
+       {
+         id: "localhost",
+-        link1: "https://llamafile.ai",
+         linksId: "genai-settings-chat-localhost-links",
+         maxLength: 8192,
+         name: "localhost",
+@@ -1026,7 +937,7 @@ export const GenAI = {
+   },
+ 
+   /**
+-   * Set up automatic prompt submission for ChatGPT and Claude
++   * Set up automatic prompt submission
+    *
+    * @param {Browser} browser - current browser
+    * @param {string} prompt - prompt text
+@@ -1212,7 +1123,7 @@ export const GenAI = {
+     }
+     browser.fixupAndLoadURIString(url, options);
+ 
+-    // Run autosubmit only for chatGPT, Claude, or mochitest
++    // Run autosubmit only for mochitest
+     if (
+       supportAutoSubmit ||
+       lazy.chatProvider?.includes("file_chat-autosubmit.html")
+diff --git a/browser/components/genai/LinkPreviewModel.sys.mjs b/browser/components/genai/LinkPreviewModel.sys.mjs
+index 8bf40b5c6f..c03ed398ca 100644
+--- a/browser/components/genai/LinkPreviewModel.sys.mjs
++++ b/browser/components/genai/LinkPreviewModel.sys.mjs
+@@ -404,23 +404,7 @@ export const LinkPreviewModel = {
+     let engine;
+     try {
+       engine = await this.createEngine(
+-        {
+-          backend: "best-llama",
+-          engineId: "wllamapreview",
+-          kvCacheDtype: "q8_0",
+-          modelFile: "smollm2-360m-instruct-q8_0.gguf",
+-          modelHubRootUrl: "https://model-hub.mozilla.org",
+-          modelId: "HuggingFaceTB/SmolLM2-360M-Instruct-GGUF",
+-          modelRevision: "main",
+-          numBatch: numContext,
+-          numContext,
+-          numUbatch: numContext,
+-          taskName: "wllama-text-generation",
+-          timeoutMS: -1,
+-          useMlock: false,
+-          useMmap: true,
+-          ...JSON.parse(lazy.config),
+-        },
++        { },
+         data => {
+           if (data.type == lazy.Progress.ProgressType.DOWNLOAD) {
+             onDownload?.(
+diff --git a/browser/locales/en-US/browser/genai.ftl b/browser/locales/en-US/browser/genai.ftl
+index 6f32a1c1ff..676ce3dff7 100644
+--- a/browser/locales/en-US/browser/genai.ftl
++++ b/browser/locales/en-US/browser/genai.ftl
+@@ -4,13 +4,7 @@
+ 
+ ## Generative AI (GenAI) Settings section
+ 
+-genai-settings-chat-chatgpt-links = By choosing ChatGPT, you agree to the OpenAI <a data-l10n-name="link1">Terms of Use</a> and <a data-l10n-name="link2">Privacy Policy</a>.
+-genai-settings-chat-claude-links = By choosing Anthropic Claude, you agree to the Anthropic <a data-l10n-name="link1">Consumer Terms of Service</a>, <a data-l10n-name="link2">Usage Policy</a>, and <a data-l10n-name="link3">Privacy Policy</a>.
+-genai-settings-chat-copilot-links = By choosing Copilot, you agree to the <a data-l10n-name="link1">Copilot AI Experiences Terms</a> and <a data-l10n-name="link2">Microsoft Privacy Statement</a>.
+-genai-settings-chat-gemini-links = By choosing Google Gemini, you agree to the <a data-l10n-name="link1">Google Terms of Service</a>, <a data-l10n-name="link2">Generative AI Prohibited Use Policy</a>, and <a data-l10n-name="link3">Gemini Apps Privacy Notice</a>.
+-genai-settings-chat-huggingchat-links = By choosing HuggingChat, you agree to the <a data-l10n-name="link1">HuggingChat Privacy Notice</a> and <a data-l10n-name="link2">Hugging Face Privacy Policy</a>.
+-genai-settings-chat-lechat-links = By choosing Le Chat Mistral, you agree to the Mistral AI <a data-l10n-name="link1">Terms of Service</a> and <a data-l10n-name="link2">Privacy Policy</a>.
+-genai-settings-chat-localhost-links = Bring your own private local chatbot such as <a data-l10n-name="link1">llamafile</a> from { -vendor-short-name }’s Innovation group.
++genai-settings-chat-localhost-links = Bring your own private local chatbot such as llamafile.
+ 
+ ## Chatbot prompts
+ ## Prompts are plain language ‘instructions’ sent to a chatbot.
+-- 
+2.52.0
+
+
+From 54da4442ac052ec3a4659d6609a00f34eda86d70 Mon Sep 17 00:00:00 2001
+From: various_authors <various_authors@parabola.nu>
+Date: Mon, 17 Sep 2001 00:00:00 +0100
+Subject: [PATCH 7/7] Various patches
+
+I'm too lazy to find the history for each, just making the whole patch
+set compatible with 'git am' and easier to manage. If needed, it can be
+found using git.
+---
+ browser/app/permissions                       |  3 --
+ browser/components/preferences/sync.inc.xhtml | 18 -----------
+ .../protections/content/protections.ftl       |  2 +-
+ .../protections/content/protections.html      | 10 ------
+ .../protections/content/vpn-card.mjs          | 16 ----------
+ .../en-US/browser/preferences/preferences.ftl | 10 ------
+ .../en-US/toolkit/about/aboutAddons.ftl       | 14 ++++----
+ .../en-US/toolkit/branding/brandings.ftl      | 32 +++++++++----------
+ 8 files changed, 25 insertions(+), 80 deletions(-)
+
+diff --git a/browser/app/permissions b/browser/app/permissions
+index fe018a08c7..0d1bff96d6 100644
+--- a/browser/app/permissions
++++ b/browser/app/permissions
+@@ -15,9 +15,6 @@ origin	uitour	1	about:newtab
+ # Bug 1942328: firefox.com needs the same privileges as mozilla.org
+ origin	uitour	1	https://www.firefox.com
+ 
+-# XPInstall
+-origin	install	1	https://addons.mozilla.org
+-
+ # Remote troubleshooting
+ origin	remote-troubleshooting	1	https://support.mozilla.org
+ 
+diff --git a/browser/components/preferences/sync.inc.xhtml b/browser/components/preferences/sync.inc.xhtml
+index 4ecdbdb129..a6f77e3110 100644
+--- a/browser/components/preferences/sync.inc.xhtml
++++ b/browser/components/preferences/sync.inc.xhtml
+@@ -35,24 +35,6 @@
+         </hbox>
+       </vbox>
+     </hbox>
+-    <label class="fxaMobilePromo" data-l10n-id="sync-mobile-promo">
+-      <html:img
+-        role="none"
+-        src="chrome://browser/skin/logo-android.svg"
+-        data-l10n-name="android-icon"
+-        class="androidIcon"/>
+-      <html:a
+-        data-l10n-name="android-link"
+-        class="fxaMobilePromo-android text-link" target="_blank"/>
+-      <html:img
+-        role="none"
+-        src="chrome://browser/skin/logo-ios.svg"
+-        data-l10n-name="ios-icon"
+-        class="iOSIcon"/>
+-      <html:a
+-        data-l10n-name="ios-link"
+-        class="fxaMobilePromo-ios text-link" target="_blank"/>
+-    </label>
+   </groupbox>
+ 
+   <vbox id="hasFxaAccount">
+diff --git a/browser/components/protections/content/protections.ftl b/browser/components/protections/content/protections.ftl
+index 0f5b96e7ff..9617795e92 100644
+--- a/browser/components/protections/content/protections.ftl
++++ b/browser/components/protections/content/protections.ftl
+@@ -18,7 +18,7 @@ get-vpn-link = Get { -mozilla-vpn-brand-name }
+ 
+ vpn-title-subscribed = VPN: Subscribed
+ # Note This text is not being translated, and the <br> will need to be removed if or when it does get translated
+-vpn-header-content-subscribed = Using the { -mozilla-vpn-brand-name } encrypts all your traffic and hides your location — on up to 5 devices. Get the most from your subscription — add it from <br> the <a data-l10n-name="vpn-google-playstore-link">Google Play Store</a> or <a data-l10n-name="vpn-app-store-link">Apple App Store</a>.
++vpn-header-content-subscribed = Using the { -mozilla-vpn-brand-name } encrypts all your traffic and hides your location — on up to 5 devices.
+ 
+ vpn-banner-header = Protection that extends beyond the browser
+ # Note This text is not being translated, and the <br> will need to be removed if or when it does get translated
+diff --git a/browser/components/protections/content/protections.html b/browser/components/protections/content/protections.html
+index 25f891e4b0..bc73352148 100644
+--- a/browser/components/protections/content/protections.html
++++ b/browser/components/protections/content/protections.html
+@@ -557,16 +557,6 @@
+                 class="content subscribed"
+                 data-l10n-id="vpn-header-content-subscribed"
+               >
+-                <a
+-                  target="_blank"
+-                  id="vpn-google-playstore-link"
+-                  data-l10n-name="vpn-google-playstore-link"
+-                ></a>
+-                <a
+-                  target="_blank"
+-                  id="vpn-app-store-link"
+-                  data-l10n-name="vpn-app-store-link"
+-                ></a>
+               </p>
+             </div>
+             <a
+diff --git a/browser/components/protections/content/vpn-card.mjs b/browser/components/protections/content/vpn-card.mjs
+index 84ffc25fb5..7a0c647616 100644
+--- a/browser/components/protections/content/vpn-card.mjs
++++ b/browser/components/protections/content/vpn-card.mjs
+@@ -22,22 +22,6 @@ export default class VPNCard {
+     vpnLink.addEventListener("click", () => {
+       this.doc.sendTelemetryEvent("clickVpnCardLink");
+     });
+-    let androidVPNAppLink = document.getElementById(
+-      "vpn-google-playstore-link"
+-    );
+-    androidVPNAppLink.href = RPMGetStringPref(
+-      "browser.contentblocking.report.vpn-android.url"
+-    );
+-    androidVPNAppLink.addEventListener("click", () => {
+-      document.sendTelemetryEvent("clickVpnAppLinkAndroid");
+-    });
+-    let iosVPNAppLink = document.getElementById("vpn-app-store-link");
+-    iosVPNAppLink.href = RPMGetStringPref(
+-      "browser.contentblocking.report.vpn-ios.url"
+-    );
+-    iosVPNAppLink.addEventListener("click", () => {
+-      document.sendTelemetryEvent("clickVpnAppLinkIos");
+-    });
+ 
+     const vpnBanner = this.doc.querySelector(".vpn-banner");
+     const exitIcon = vpnBanner.querySelector(".exit-icon");
+diff --git a/browser/locales/en-US/browser/preferences/preferences.ftl b/browser/locales/en-US/browser/preferences/preferences.ftl
+index 62d771a689..af6aa8a6ab 100644
+--- a/browser/locales/en-US/browser/preferences/preferences.ftl
++++ b/browser/locales/en-US/browser/preferences/preferences.ftl
+@@ -922,16 +922,6 @@ sync-signedout-account-signin3 =
+     .label = Sign in to sync…
+     .accesskey = i
+ 
+-# This message contains two links and two icon images.
+-#   `<img data-l10n-name="android-icon"/>` - Android logo icon
+-#   `<a data-l10n-name="android-link">` - Link to Android Download
+-#   `<img data-l10n-name="ios-icon">` - iOS logo icon
+-#   `<a data-l10n-name="ios-link">` - Link to iOS Download
+-#
+-# They can be moved within the sentence as needed to adapt
+-# to your language, but should not be changed or translated.
+-sync-mobile-promo = Download Firefox for <img data-l10n-name="android-icon"/> <a data-l10n-name="android-link">Android</a> or <img data-l10n-name="ios-icon"/> <a data-l10n-name="ios-link">iOS</a> to sync with your mobile device.
+-
+ ## Firefox account - Signed in
+ 
+ sync-profile-picture-with-alt =
+diff --git a/toolkit/locales/en-US/toolkit/about/aboutAddons.ftl b/toolkit/locales/en-US/toolkit/about/aboutAddons.ftl
+index 5b2ddf8947..807b825830 100644
+--- a/toolkit/locales/en-US/toolkit/about/aboutAddons.ftl
++++ b/toolkit/locales/en-US/toolkit/about/aboutAddons.ftl
+@@ -5,7 +5,7 @@
+ addons-page-title = Add-ons Manager
+ 
+ search-header =
+-    .placeholder = Search addons.mozilla.org
++    .placeholder = Search Mozarella
+     .searchbuttonlabel = Search
+ 
+ ## Variables
+@@ -364,7 +364,8 @@ install-theme-button = Install Theme
+ # The label of the button that appears after installing an add-on. Upon click,
+ # the detailed add-on view is opened, from where the add-on can be managed.
+ manage-addon-button = Manage
+-find-more-addons = Find more add-ons
++find-more-addons = Popular add-ons are in the Parabola pacman repos.
++  For others, you can search here:
+ find-more-themes = Find more themes
+ 
+ # This is a label for the button to open the "more options" menu, it is only
+@@ -543,12 +544,13 @@ sitepermission-heading = Manage Your Site Permissions
+ discover-heading = Personalize Your { -brand-short-name }
+ shortcuts-heading = Manage Extension Shortcuts
+ 
+-default-heading-search-label = Find more add-ons
++default-heading-search-label = Popular add-ons are in the Parabola pacman repos.
++  For others, you can search here:
+ addons-heading-search-input =
+-    .placeholder = Search addons.mozilla.org
++    .placeholder = Search Mozzarella
+ addons-heading-search-button =
+-    .title = Search addons.mozilla.org
+-    .aria-label = Search addons.mozilla.org
++    .title = Search Mozzarella
++    .aria-label = Search Mozzarella
+ 
+ addon-page-options-button =
+     .title = Tools for all add-ons
+diff --git a/toolkit/locales/en-US/toolkit/branding/brandings.ftl b/toolkit/locales/en-US/toolkit/branding/brandings.ftl
+index d9766a9e79..2234988dab 100644
+--- a/toolkit/locales/en-US/toolkit/branding/brandings.ftl
++++ b/toolkit/locales/en-US/toolkit/branding/brandings.ftl
+@@ -15,17 +15,17 @@
+ ## https://mozilla-l10n.github.io/styleguides/mozilla_general/#brands-copyright-and-trademark
+ 
+ -facebook-container-brand-name = Facebook Container
+--monitor-brand-name = Firefox Monitor
++-monitor-brand-name = Iceweasel Monitor
+ -monitor-brand-short-name = Monitor
+ -mozmonitor-brand-name = Mozilla Monitor
+ -pocket-brand-name = Pocket
+--send-brand-name = Firefox Send
+--screenshots-brand-name = Firefox Screenshots
++-send-brand-name = Iceweasel Send
++-screenshots-brand-name = Iceweasel Screenshots
+ -mozilla-vpn-brand-name = Mozilla VPN
+--profiler-brand-name = Firefox Profiler
+--translations-brand-name = Firefox Translations
+--focus-brand-name = Firefox Focus
+--relay-brand-name = Firefox Relay
++-profiler-brand-name = Iceweasel Profiler
++-translations-brand-name = Iceweasel Translations
++-focus-brand-name = Iceweasel Focus
++-relay-brand-name = Iceweasel Relay
+ -relay-brand-short-name = Relay
+ -fakespot-brand-name = Fakespot
+ -solo-ai-brand-name = Solo
+@@ -36,20 +36,20 @@
+ # The particle "by" can be localized, "Fakespot" and "Mozilla" should not be localized or transliterated.
+ -fakespot-brand-full-name = Fakespot by Mozilla
+ 
+-# “Suggest” can be localized, “Firefox” must be treated as a brand
++# “Suggest” can be localized, “Iceweasel” must be treated as a brand
+ # and kept in English.
+--firefox-suggest-brand-name = Firefox Suggest
++-firefox-suggest-brand-name = Iceweasel Suggest
+ 
+-# ”Home" can be localized, “Firefox” must be treated as a brand
++# ”Home" can be localized, “Iceweasel” must be treated as a brand
+ # and kept in English.
+--firefox-home-brand-name = Firefox Home
++-firefox-home-brand-name = Iceweasel Home
+ 
+-# View" can be localized, “Firefox” must be treated as a brand
++# View" can be localized, “Iceweasel” must be treated as a brand
+ # and kept in English.
+--firefoxview-brand-name = Firefox View
++-firefoxview-brand-name = Iceweasel View
+ 
+-# Firefox Labs is the name for a page in Settings to allow users to learn about
++# Iceweasel Labs is the name for a page in Settings to allow users to learn about
+ # experimental and in-development features, and turn those features on and off.
+-# The "Labs" portion can be localized, “Firefox” must be treated as a brand
++# The "Labs" portion can be localized, “Iceweasel” must be treated as a brand
+ # and kept in English.
+--firefoxlabs-brand-name = Firefox Labs
++-firefoxlabs-brand-name = Iceweasel Labs
+-- 
+2.52.0
+

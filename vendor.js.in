@@ -1,30 +1,13 @@
-// Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
 
-// Disable default browser checking.
-pref("browser.shell.checkDefaultBrowser", false);
 
-// Don't disable our bundled extensions in the application directory
-pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
-
-// Opt all of us into e10s, instead of just 50%
-pref("browser.tabs.remote.autostart", true);
-
-// Disable "alt" as a shortcut key to open full menu bar. Conflicts with "alt" as a modifier
-pref("ui.key.menuAccessKeyFocuses", false);
-
-// Disable the GeoLocation API for content
-pref("geo.enabled", false);
-
-// Make sure that the request URL of the GeoLocation backend is empty
-pref("geo.wifi.uri", "");
-
-// Disable Freedom Violating DRM Feature
-pref("browser.eme.ui.enabled", false);
-// EME
-pref("media.eme.enabled", false);
-pref("media.eme.apiVisible", false);
+/*\
+|*| Parabola additions to vendor.js
+|*|
+|*| TODO: Go through this and figure out what's nescessary, remove
+|*| most of it. For example, some of these settings no longer exist.
+|*| Some of these settings don't do anything on GNU/Linux systems.
+|*| However, they don't seem to be causing any of the critical issues.
+\*/
 
 // Google Widevine DRM
 // https://blog.mozilla.org/futurereleases/2016/04/08/mozilla-to-test-widevine-cdm-in-firefox-nightly/
@@ -34,8 +17,8 @@ pref("media.gmp-widevinecdm.visible", false);
 pref("media.gmp-widevinecdm.enabled", false);
 pref("media.gmp-widevinecdm.autoupdate", false);
 
-// Default to classic view for about:newtab
-pref("browser.newtabpage.enhanced", false);
+// Default sites for about:newtab
+pref("browser.newtabpage.activity-stream.default.sites", "https://wiki.parabola.nu/,https://labs.parabola.nu/,https://www.gnu.org/,https://libreplanet.org/,https://www.wikipedia.org/");
 
 // Poodle attack
 pref("security.tls.version.min", 1);
@@ -63,17 +46,18 @@ pref("network.cookie.cookieBehavior", 1);
 // Prevent EULA dialog to popup on first run
 pref("browser.EULA.override", true);
 
-// Set useragent to Firefox compatible
-//pref("general.useragent.compatMode.firefox", true);
 // Spoof the useragent to a generic one
-pref("general.useragent.compatMode.firefox", true);
-// Spoof the useragent to a generic one
-pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:53.0) Gecko/20100101 Firefox/53.0");
-pref("general.appname.override", "Netscape");
-pref("general.appversion.override", "53.0");
-pref("general.buildID.override", "Gecko/20100101");
-pref("general.oscpu.override", "Windows NT 6.1");
-pref("general.platform.override", "Win32");
+// people tend to agree that this was a bad idea
+// these are the default values (same as arch):
+// pref("general.useragent.compatMode.firefox", false);
+// pref("general.useragent.override", "Mozilla/5.0 (X11; Linux @_ARCH_@; rv:@_SHORTVER_@) Gecko/20100101 Firefox/@_SHORTVER_@");
+// pref("general.appname.override", "Netscape");        // deprecated
+// pref("general.appCodeName.override", "Mozilla");     // deprecated
+// pref("general.appversion.override", "@_SHORTVER_@"); // deprecated
+// pref("general.buildID.override", "Gecko/20100101");  // deprecated
+// pref("general.oscpu.override", "Linux @_ARCH_@");    // deprecated
+// pref("general.platform.override", "Linux @_ARCH_@"); // deprecated
+// pref("general.product.override", "Gecko");           // deprecated
 
 // Privacy & Freedom Issues
 // https://webdevelopmentaid.wordpress.com/2013/10/21/customize-privacy-settings-in-mozilla-firefox-part-1-aboutconfig/
@@ -154,13 +138,7 @@ pref("security.enterprise_roots.enabled", false);
 //pref("services.sync.privacyURL", "https://www.gnu.org/software/gnuzilla/");
 pref("social.enabled", false);
 pref("social.remote-install.enabled", false);
-pref("datareporting.healthreport.uploadEnabled", false);
-pref("datareporting.healthreport.about.reportUrl", "127.0.0.1");
-pref("datareporting.healthreport.documentServerURI", "127.0.0.1");
-pref("healthreport.uploadEnabled", false);
 pref("social.toast-notifications.enabled", false);
-pref("datareporting.policy.dataSubmissionEnabled", false);
-pref("datareporting.healthreport.service.enabled", false);
 pref("browser.slowStartup.notificationDisabled", true);
 pref("network.http.sendRefererHeader", 2);
 //pref("network.http.referer.spoofSource", true);
@@ -170,8 +148,19 @@ pref("dom.event.clipboardevents.enabled",false);
 pref("network.prefetch-next", false);
 pref("network.dns.disablePrefetch", true);
 pref("network.http.sendSecureXSiteReferrer", false);
+pref("toolkit.telemetry.archive.enabled", false);
+pref("toolkit.telemetry.bhrPing.enabled", false);
 pref("toolkit.telemetry.enabled", false);
 pref("toolkit.telemetry.unified", false);
+pref("toolkit.telemetry.newProfilePing.enabled", false);
+pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+pref("toolkit.telemetry.server", "127.0.0.1");
+pref("toolkit.telemetry.server_owner", "User");
+pref("app.shield.optoutstudies.enabled", false);
+pref("experiments.enabled", false);
+pref("experiments.manifest.uri", "127.0.0.1");
+pref("extensions.pocket.enabled", false);
+pref("extensions.pocket.api", "127.0.0.1");
 // Do not tell what plugins do we have enabled: https://mail.mozilla.org/pipermail/firefox-dev/2013-November/001186.html
 pref("plugins.enumerable_names", "");
 pref("plugin.state.flash", 0);
@@ -202,15 +191,13 @@ pref("browser.search.suggest.enabled", false);
 
 
 // WebRTC
-pref("media.peerconnection.enabled", false);
+//pref("media.peerconnection.enabled", false);
 pref("media.peerconnection.ice.default_address_only", true);
 
 pref("font.default.x-western", "sans-serif");
 
-// Preferences for the Get Add-ons panel and search engines
-pref("extensions.webservice.discoverURL", "https://directory.fsf.org/wiki/GNU_IceCat");
-pref("extensions.getAddons.search.url", "https://directory.fsf.org/wiki/GNU_IceCat");
-pref("browser.search.searchEnginesURL", "https://directory.fsf.org/wiki/GNU_IceCat");
+// URL for the 'Find more search engines' link in about:preferences#search
+pref("browser.search.searchEnginesURL", "https://directory.fsf.org/wiki/Collection:Search_engines");
 
 // Mobile
 pref("privacy.announcements.enabled", false);
@@ -220,8 +207,6 @@ pref("identity.mobilepromo.android", "https://f-droid.org/repository/browse/?fdi
 pref("browser.snippets.geoUrl", "http://127.0.0.1/");
 pref("browser.snippets.updateUrl", "http://127.0.0.1/");
 pref("browser.snippets.statsUrl", "http://127.0.0.1/");
-pref("datareporting.policy.firstRunTime", 0);
-pref("datareporting.policy.dataSubmissionPolicyVersion", 2);
 pref("browser.webapps.checkForUpdates", 0);
 pref("browser.webapps.updateCheckUrl", "http://127.0.0.1/");
 pref("app.faqURL", "http://libreplanet.org/wiki/Group:IceCat/FAQ");
@@ -229,10 +214,6 @@ pref("app.faqURL", "http://libreplanet.org/wiki/Group:IceCat/FAQ");
 // PFS url
 pref("pfs.datasource.url", "http://gnuzilla.gnu.org/plugins/PluginFinderService.php?mimetype=%PLUGIN_MIMETYPE%");
 pref("pfs.filehint.url", "http://gnuzilla.gnu.org/plugins/PluginFinderService.php?mimetype=%PLUGIN_MIMETYPE%");
-
-// Geolocation depends on third party services
-pref("geo.enabled", false);
-pref("geo.wifi.uri", "");
 
 // Disable heartbeat
 pref("browser.selfsupport.url", "");
@@ -292,3 +273,31 @@ pref("dom.webkitBlink.dirPicker.enabled", false);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=907707
 // https://wicg.github.io/directory-upload/proposal.html
 pref("dom.input.dirpicker", false);
+
+// fix alsa sound sandbox issue for iceweasel-58
+// https://labs.parabola.nu/issues/1628
+pref("security.sandbox.content.syscall_whitelist", "16");
+
+// Disable "Recommend extensions as you browse" in about:preferences#general
+pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+
+// Make extensions work on Mozilla domains
+pref("extensions.webextensions.restrictedDomains", "");
+pref("privacy.resistFingerprinting.block_mozAddonManager", true);
+
+// Disable 'What's New' gift icon in toolbar and main menu.
+// It shows downloaded news that sometimes contain links to non-free software like mobile Firefox.
+pref("browser.messaging-system.whatsNewPanel.enabled", false);
+
+// Disable 'Recommendations' section in about:addons
+// Related to: https://labs.parabola.nu/issues/2409
+pref("extensions.getAddons.showPane", false);
+
+// Disable some bits of Normandy, subsystem that allows Mozilla to make changes remotely.
+// Should be already disabled by setting MOZ_NORMANDY to False in build configuration.
+// Setting these preferences just in case and to not frustrate users.
+pref("app.normandy.api_url", "http://127.0.0.1/");
+pref("app.normandy.enabled", false);
+
+// enable "sync" feature
+pref("webchannel.allowObject.urlWhitelist", "https://content.cdn.mozilla.net https://support.mozilla.org https://install.mozilla.org https://accounts.firefox.com");

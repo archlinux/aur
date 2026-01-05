@@ -1,0 +1,33 @@
+diff --git a/config/makefiles/rust.mk b/config/makefiles/rust.mk
+index 5d1d547..a04aeaf 100644
+--- a/config/makefiles/rust.mk
++++ b/config/makefiles/rust.mk
+@@ -450,17 +450,17 @@ $(RUST_LIBRARY_FILE): $(CARGO_FILE) $(if $(RUST_LIBRARY_DEPS),$(RUST_LIBRARY_DEP
+ # the chance of proxy bypasses originating from rust code.
+ # The check only works when rust code is built with -Clto but without MOZ_LTO_RUST_CROSS.
+ # Sanitizers and sancov also fail because compiler-rt hooks network functions.
+-ifndef MOZ_PROFILE_GENERATE
+-ifeq ($(OS_ARCH), Linux)
+-ifeq (,$(rustflags_sancov)$(MOZ_ASAN)$(MOZ_TSAN)$(MOZ_UBSAN))
+-ifndef MOZ_LTO_RUST_CROSS
+-ifneq (,$(filter -Clto,$(cargo_rustc_flags)))
+-	$(call py_action,check_binary,--networking $@)
+-endif
+-endif
+-endif
+-endif
+-endif
++#ifndef MOZ_PROFILE_GENERATE
++#ifeq ($(OS_ARCH), Linux)
++#ifeq (,$(rustflags_sancov)$(MOZ_ASAN)$(MOZ_TSAN)$(MOZ_UBSAN))
++#ifndef MOZ_LTO_RUST_CROSS
++#ifneq (,$(filter -Clto,$(cargo_rustc_flags)))
++#	$(call py_action,check_binary,--networking $@)
++#endif
++#endif
++#endif
++#endif
++#endif
+ 
+ define make_default_rule
+ $(1):

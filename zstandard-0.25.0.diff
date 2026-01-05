@@ -1,0 +1,13 @@
+diff --git a/python/sites/mach.txt b/python/sites/mach.txt
+index 3d66ac1ee5..e9081554a3 100644
+--- a/python/sites/mach.txt
++++ b/python/sites/mach.txt
+@@ -63,7 +63,7 @@ pypi-optional:orjson>=3.10.15:json operations will be slower in various tools
+ # We aren't (yet) able to pin packages in automation, so we have to
+ # support down to the oldest locally-installed version (5.4.2).
+ pypi-optional:psutil>=5.4.2,<=5.9.4:telemetry will be missing some data
+-pypi-optional:zstandard>=0.11.1,<=0.24.0:zstd archives will not be possible to extract
++pypi-optional:zstandard>=0.11.1,<=0.25.0:zstd archives will not be possible to extract
+ vendored-fallback:pyyaml:third_party/python/pyyaml/lib/:faster native loading is disabled
+ vendored:third_party/python/ansicon
+ vendored:third_party/python/appdirs

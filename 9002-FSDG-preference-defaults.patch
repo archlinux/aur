@@ -1,0 +1,2065 @@
+From 67b677c0765d33e3e86f63ddeb38bab5266bac82 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 4 Apr 2021 13:09:05 +0300
+Subject: [PATCH 1/9] geolocation: Disable API and remove Google API URLs
+
+The idea for Iceweasel is to reference only services which can be
+self-hosted using 100% free software stack.
+
+At the moment, upstream uses Google Geolocation API by default for
+release builds. There's also a special configuration for Nightly and
+early Beta builds to use Mozilla Location Services. Since I couldn't find
+the source code of Google Geolocation API, let's assume it's nonfree.
+So removed the URLs.
+
+Mozilla Location Services need further evaluation. But as we don't ship
+Nightly or Beta builds and strive to stick as close to upstream as
+possible while keeping the SW stack 100% free, release builds don't have
+any valid geolocation provider, so let's disable geolocation API by
+default for now.
+---
+ modules/libpref/init/StaticPrefList.yaml | 2 +-
+ modules/libpref/init/all.js              | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index 18bccb6275..7b2182b519 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -6545,7 +6545,7 @@
+ # Is support for Navigator.geolocation enabled?
+ - name: geo.enabled
+   type: bool
+-  value: true
++  value: false
+   mirror: always
+ 
+ # Time, in milliseconds, to wait for the location provider to spin up.
+diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
+index 1300ac12e5..1cfc856498 100644
+--- a/modules/libpref/init/all.js
++++ b/modules/libpref/init/all.js
+@@ -3095,7 +3095,7 @@ pref("network.tcp.keepalive.idle_time", 600); // seconds; 10 mins
+ 
+ // All the Geolocation preferences are here.
+ //
+-pref("geo.provider.network.url", "https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_LOCATION_SERVICE_API_KEY%");
++pref("geo.provider.network.url", "");
+ 
+ // Timeout to wait before sending the location request.
+ pref("geo.provider.network.timeToWaitBeforeSending", 5000);
+-- 
+2.52.0
+
+
+From a00786fad9d3eca5fe3ac09291d3877f06eee600 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 4 Apr 2021 13:49:05 +0300
+Subject: [PATCH 2/9] Disable banners and remove URLs for mobile apps on
+ about:protections page
+
+---
+ browser/app/profile/firefox.js | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index c5e32481a5..468e6f8419 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -2528,7 +2528,7 @@ pref("browser.contentblocking.report.monitor.enabled", false);
+ pref("browser.contentblocking.report.proxy.enabled", false);
+ 
+ // Disable the mobile promotion by default.
+-pref("browser.contentblocking.report.show_mobile_app", true);
++pref("browser.contentblocking.report.show_mobile_app", false);
+ 
+ // Locales in which Send to Device emails are supported
+ // The most recent list of supported locales can be found at https://github.com/mozilla/bedrock/blob/6a08c876f65924651554decc57b849c00874b4e7/bedrock/settings/base.py#L963
+@@ -2558,7 +2558,7 @@ pref("browser.promo.pin.enabled", true);
+ // Set to true for Fx113 (see bug 1808611)
+ pref("browser.promo.cookiebanners.enabled", false);
+ 
+-pref("browser.contentblocking.report.hide_vpn_banner", false);
++pref("browser.contentblocking.report.hide_vpn_banner", true);
+ pref("browser.contentblocking.report.vpn_sub_id", "sub_HrfCZF7VPHzZkA");
+ 
+ pref("browser.contentblocking.report.monitor.url", "https://monitor.firefox.com/?entrypoint=protection_report_monitor&utm_source=about-protections");
+@@ -2569,12 +2569,12 @@ pref("browser.contentblocking.report.monitor.home_page_url", "https://monitor.fi
+ pref("browser.contentblocking.report.manage_devices.url", "https://accounts.firefox.com/settings/clients");
+ pref("browser.contentblocking.report.endpoint_url", "https://monitor.firefox.com/user/breach-stats?includeResolved=true");
+ pref("browser.contentblocking.report.proxy_extension.url", "https://fpn.firefox.com/browser?utm_source=firefox-desktop&utm_medium=referral&utm_campaign=about-protections&utm_content=about-protections");
+-pref("browser.contentblocking.report.mobile-ios.url", "https://apps.apple.com/app/firefox-private-safe-browser/id989804926");
+-pref("browser.contentblocking.report.mobile-android.url", "https://play.google.com/store/apps/details?id=org.mozilla.firefox&referrer=utm_source%3Dprotection_report%26utm_content%3Dmobile_promotion");
+-pref("browser.contentblocking.report.vpn.url", "https://vpn.mozilla.org/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_campaign=about-protections-card");
+-pref("browser.contentblocking.report.vpn-promo.url", "https://vpn.mozilla.org/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_campaign=about-protections-top-promo");
+-pref("browser.contentblocking.report.vpn-android.url", "https://play.google.com/store/apps/details?id=org.mozilla.firefox.vpn&referrer=utm_source%3Dfirefox-browser%26utm_medium%3Dfirefox-browser%26utm_campaign%3Dabout-protections-mobile-vpn%26anid%3D--");
+-pref("browser.contentblocking.report.vpn-ios.url", "https://apps.apple.com/us/app/firefox-private-network-vpn/id1489407738");
++pref("browser.contentblocking.report.mobile-ios.url", "");
++pref("browser.contentblocking.report.mobile-android.url", "");
++pref("browser.contentblocking.report.vpn.url", "");
++pref("browser.contentblocking.report.vpn-promo.url", "");
++pref("browser.contentblocking.report.vpn-android.url", "");
++pref("browser.contentblocking.report.vpn-ios.url", "");
+ 
+ // Protection Report's SUMO urls
+ pref("browser.contentblocking.report.lockwise.how_it_works.url", "https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/password-manager-report");
+-- 
+2.52.0
+
+
+From 97032c0c2173600554bb4ef8739731d118c4de4d Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Tue, 17 Jan 2023 21:59:51 +0100
+Subject: [PATCH 3/9] Remove some references to AMO
+
+* addons.mozilla.org (AMO) is a third-party repository, not compatible
+  with the FSDG, because it is not committed to only including free
+  software, see [1]. The work to remove the references to it from
+  Iceweasel right now is far from being complete.
+* Remove URLs to services.addons.mozilla.org as one of these URLs is
+  used to fetch recommendations from AMO after the click on Extensions
+  button from the toolbar.
+* Disable abuse reporting functionality as it uses the API on the same
+  hostname. Sanity check during build preparation should verify this
+  hostname is not available in the sources, and make it clear the patch
+  needs reworking when that check fails.
+* Remove AMO URL to fetch langpacks. These are for Firefox, and Parabola
+  has Iceweasel langpacks anyway.
+* Remove some AMO URLs from mobile.js. There's no Android version of
+  Iceweasel AFAIK, but these are some steps towards total removal of
+  references to AMO.
+* Remove references to AMO from mobile codebase, to satisfy the sanity
+  checking.
+* Remove some AMO related preferences from vendor.js.in and patch them
+  directly in the sources, to avoid the rotting and to get notified
+  quickly when Mozilla introduces any changes to them in the future.
+
+[1] https://labs.parabola.nu/issues/2409#note-4
+---
+ browser/app/profile/firefox.js                | 14 +++----
+ .../feature/addons/amo/AMOAddonsProvider.kt   |  2 +-
+ .../addons/amo/AMOAddonsProviderTest.kt       | 40 ++++++-------------
+ mobile/android/app/geckoview-prefs.js         |  8 ++--
+ mobile/android/fenix/app/build.gradle         |  2 +-
+ modules/libpref/init/all.js                   |  6 +--
+ 6 files changed, 28 insertions(+), 44 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 468e6f8419..c9729bfdf6 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -24,7 +24,7 @@
+ #endif
+ 
+ // Set add-ons abuse report related prefs specific to Firefox Desktop.
+-pref("extensions.abuseReport.enabled", true);
++pref("extensions.abuseReport.enabled", false);
+ 
+ // Enables some extra Extension System Logging (can reduce performance)
+ pref("extensions.logging.enabled", false);
+@@ -38,12 +38,12 @@ pref("extensions.postDownloadThirdPartyPrompt", true);
+ 
+ // Preferences for AMO integration
+ pref("extensions.getAddons.cache.enabled", true);
+-pref("extensions.getAddons.get.url", "https://services.addons.mozilla.org/api/v4/addons/search/?guid=%IDS%&lang=%LOCALE%");
+-pref("extensions.getAddons.search.browseURL", "https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%");
+-pref("extensions.getAddons.link.url", "https://addons.mozilla.org/%LOCALE%/firefox/");
+-pref("extensions.getAddons.langpacks.url", "https://services.addons.mozilla.org/api/v4/addons/language-tools/?app=firefox&type=language&appversion=%VERSION%");
+-pref("extensions.getAddons.discovery.api_url", "https://services.addons.mozilla.org/api/v4/discovery/?lang=%LOCALE%&edition=%DISTRIBUTION%");
+-pref("extensions.getAddons.browserMappings.url", "https://services.addons.mozilla.org/api/v5/addons/browser-mappings/?browser=%BROWSER%");
++pref("extensions.getAddons.get.url", "");
++pref("extensions.getAddons.search.browseURL", "https://gnuzilla.gnu.org/mozzarella/search.php?q=%TERMS%");
++pref("extensions.getAddons.link.url", "https://gnuzilla.gnu.org/mozzarella/");
++pref("extensions.getAddons.langpacks.url", "");
++pref("extensions.getAddons.discovery.api_url", "");
++pref("extensions.getAddons.browserMappings.url", "");
+ 
+ // The URL for the privacy policy related to recommended extensions.
+ pref("extensions.recommendations.privacyPolicyUrl", "https://www.mozilla.org/privacy/firefox/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_content=privacy-policy-link#addons");
+diff --git a/mobile/android/android-components/components/feature/addons/src/main/java/mozilla/components/feature/addons/amo/AMOAddonsProvider.kt b/mobile/android/android-components/components/feature/addons/src/main/java/mozilla/components/feature/addons/amo/AMOAddonsProvider.kt
+index bd3ea6e569..bacd6fc415 100644
+--- a/mobile/android/android-components/components/feature/addons/src/main/java/mozilla/components/feature/addons/amo/AMOAddonsProvider.kt
++++ b/mobile/android/android-components/components/feature/addons/src/main/java/mozilla/components/feature/addons/amo/AMOAddonsProvider.kt
+@@ -38,7 +38,7 @@ import java.util.concurrent.ConcurrentHashMap
+ import java.util.concurrent.TimeUnit
+ 
+ internal const val API_VERSION = "api/v4"
+-internal const val DEFAULT_SERVER_URL = "https://services.addons.mozilla.org"
++internal const val DEFAULT_SERVER_URL = ""
+ internal const val DEFAULT_COLLECTION_USER = "mozilla"
+ internal const val DEFAULT_COLLECTION_NAME = "7e8d6dc651b54ab385fb8791bf9dac"
+ internal const val COLLECTION_FILE_NAME_PREFIX = "mozilla_components_addon_collection"
+diff --git a/mobile/android/android-components/components/feature/addons/src/test/java/mozilla/components/feature/addons/amo/AMOAddonsProviderTest.kt b/mobile/android/android-components/components/feature/addons/src/test/java/mozilla/components/feature/addons/amo/AMOAddonsProviderTest.kt
+index 95670bd58b..1d6e1268b9 100644
+--- a/mobile/android/android-components/components/feature/addons/src/test/java/mozilla/components/feature/addons/amo/AMOAddonsProviderTest.kt
++++ b/mobile/android/android-components/components/feature/addons/src/test/java/mozilla/components/feature/addons/amo/AMOAddonsProviderTest.kt
+@@ -83,8 +83,7 @@ class AMOAddonsProviderTest {
+         assertNull(addon.author)
+         verify(client).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "7e8d6dc651b54ab385fb8791bf9dac/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -151,8 +150,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(client).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "7e8d6dc651b54ab385fb8791bf9dac/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY_DESC.value}&lang=en",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -169,8 +167,7 @@ class AMOAddonsProviderTest {
+         provider.getFeaturedAddons(readTimeoutInSeconds = 5)
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "7e8d6dc651b54ab385fb8791bf9dac/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(5, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -426,8 +423,7 @@ class AMOAddonsProviderTest {
+         provider.getFeaturedAddons()
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -453,8 +449,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -472,8 +467,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -491,8 +485,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.NAME.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -510,8 +503,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.NAME_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -529,8 +521,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.DATE_ADDED.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -548,8 +539,7 @@ class AMOAddonsProviderTest {
+ 
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/mozilla/collections/" +
+-                    "$collectionName/addons/?page_size=$PAGE_SIZE&sort=${SortOption.DATE_ADDED_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -574,10 +564,7 @@ class AMOAddonsProviderTest {
+         provider.getFeaturedAddons()
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/" +
+-                    "$collectionUser/collections/$collectionName/addons/" +
+-                    "?page_size=$PAGE_SIZE" +
+-                    "&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+@@ -602,10 +589,7 @@ class AMOAddonsProviderTest {
+         provider.getFeaturedAddons()
+         verify(mockedClient).fetch(
+             Request(
+-                url = "https://services.addons.mozilla.org/api/v4/accounts/account/" +
+-                    "$DEFAULT_COLLECTION_USER/collections/$DEFAULT_COLLECTION_NAME/addons/" +
+-                    "?page_size=$PAGE_SIZE" +
+-                    "&sort=${SortOption.POPULARITY_DESC.value}",
++                url = "",
+                 readTimeout = Pair(DEFAULT_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS),
+                 conservative = true,
+             ),
+diff --git a/mobile/android/app/geckoview-prefs.js b/mobile/android/app/geckoview-prefs.js
+index 225ceecb0c..51696a8745 100644
+--- a/mobile/android/app/geckoview-prefs.js
++++ b/mobile/android/app/geckoview-prefs.js
+@@ -207,11 +207,11 @@ pref("extensions.experiments.enabled", false);
+ // Support credit cards in GV autocomplete API (bug 1691819)
+ pref("extensions.formautofill.addresses.capture.enabled", true);
+ 
+-pref("extensions.getAddons.browseAddons", "https://addons.mozilla.org/%LOCALE%/android/collections/4757633/mob/?page=1&collection_sort=-popularity");
++pref("extensions.getAddons.browseAddons", "");
+ pref("extensions.getAddons.cache.enabled", true);
+-pref("extensions.getAddons.get.url", "https://services.addons.mozilla.org/api/v4/addons/search/?guid=%IDS%&lang=%LOCALE%");
+-pref("extensions.getAddons.langpacks.url", "https://services.addons.mozilla.org/api/v4/addons/language-tools/?app=android&type=language&appversion=%VERSION%");
+-pref("extensions.getAddons.search.browseURL", "https://addons.mozilla.org/%LOCALE%/android/search?q=%TERMS%&platform=%OS%&appver=%VERSION%");
++pref("extensions.getAddons.get.url", "");
++pref("extensions.getAddons.langpacks.url", "");
++pref("extensions.getAddons.search.browseURL", "");
+ 
+ // Don't let XPIProvider install distribution add-ons; we do our own thing on mobile
+ pref("extensions.installDistroAddons", false);
+diff --git a/mobile/android/fenix/app/build.gradle b/mobile/android/fenix/app/build.gradle
+index 237d28a560..0812507465 100644
+--- a/mobile/android/fenix/app/build.gradle
++++ b/mobile/android/fenix/app/build.gradle
+@@ -89,7 +89,7 @@ android {
+         buildConfigField "String", "AMO_COLLECTION_NAME", "\"Extensions-for-Android\""
+         buildConfigField "String", "AMO_COLLECTION_USER", "\"mozilla\""
+         // This should be the base URL used to call the AMO API.
+-        buildConfigField "String", "AMO_SERVER_URL", "\"https://services.addons.mozilla.org\""
++        buildConfigField "String", "AMO_SERVER_URL", "\"\""
+ 
+         def deepLinkSchemeValue = "fenix-dev"
+         buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
+diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
+index 1cfc856498..6c0943d0ac 100644
+--- a/modules/libpref/init/all.js
++++ b/modules/libpref/init/all.js
+@@ -1767,8 +1767,8 @@ pref("services.common.uptake.sampleRate", 1);   // 1%
+ 
+ pref("extensions.abuseReport.enabled", false);
+ // Whether Firefox integrated abuse reporting feature should be opening the new abuse report form hosted on AMO.
+-pref("extensions.abuseReport.amoFormURL", "https://addons.mozilla.org/%LOCALE%/firefox/feedback/addon/%addonID%/");
+-pref("extensions.addonAbuseReport.url", "https://services.addons.mozilla.org/api/v5/abuse/report/addon/");
++pref("extensions.abuseReport.amoFormURL", "");
++pref("extensions.addonAbuseReport.url", "");
+ 
+ // Blocklist preferences
+ pref("extensions.blocklist.enabled", true);
+@@ -3155,7 +3155,7 @@ pref("extensions.webextensions.ExtensionStorageIDB.enabled", true);
+ // Whether to allow the inline options browser in HTML about:addons page.
+ pref("extensions.htmlaboutaddons.inline-options.enabled", true);
+ // Show recommendations on the extension and theme list views.
+-pref("extensions.htmlaboutaddons.recommendations.enabled", true);
++pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+ 
+ // The URL for the privacy policy related to recommended add-ons.
+ pref("extensions.recommendations.privacyPolicyUrl", "");
+-- 
+2.52.0
+
+
+From 839e38cb8f185633e1c9513f86b1e3a07eb7295e Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 4 Jun 2023 13:16:40 +0200
+Subject: [PATCH 4/9] Disable Contile and autoupdate of system addons
+
+1. Contile (see change context lines) is used to fetch sponsored top
+   sites, which are not controlled by Parabola and are likely to not
+be committed to include only free software.
+2. While system addons shipped in the source code seem to be free
+   software, I'm not sure if the update endpoint also returns only free
+software, given that Mozilla is not committed to include only free
+software in their repositories.
+
+As these URLs can be considered as repositories not committed to include
+only free software, remove them from the source code.
+---
+ browser/app/profile/firefox.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index c9729bfdf6..cab7e95f41 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -53,8 +53,8 @@ pref("extensions.recommendations.themeRecommendationUrl", "https://color.firefox
+ pref("extensions.update.autoUpdateDefault", true);
+ 
+ // Check AUS for system add-on updates.
+-pref("extensions.systemAddon.update.url", "https://aus5.mozilla.org/update/3/SystemAddons/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml");
+-pref("extensions.systemAddon.update.enabled", true);
++pref("extensions.systemAddon.update.url", "");
++pref("extensions.systemAddon.update.enabled", false);
+ 
+ // Disable add-ons that are not installed by the user in all scopes by default.
+ // See the SCOPE constants in AddonManager.sys.mjs for values to use here.
+@@ -1819,8 +1819,8 @@ pref("browser.topsites.component.enabled", false);
+ 
+ pref("browser.topsites.useRemoteSetting", true);
+ // Fetch sponsored Top Sites from Mozilla Tiles Service (Contile)
+-pref("browser.topsites.contile.enabled", true);
+-pref("browser.topsites.contile.endpoint", "https://contile.services.mozilla.com/v1/tiles");
++pref("browser.topsites.contile.enabled", false);
++pref("browser.topsites.contile.endpoint", "");
+ 
+ // Whether to enable the Share-of-Voice feature for Sponsored Topsites via Contile.
+ pref("browser.topsites.contile.sov.enabled", true);
+-- 
+2.52.0
+
+
+From cd2ac647e0e447bbfbb7f5ea8191ecb7b4bc2a80 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Tue, 26 Sep 2023 21:27:34 +0200
+Subject: [PATCH 5/9] Disable Firefox Translations for now
+
+Although fully local translation is a great achievement, I'd hesitate to keep it
+enabled for now, because of the following concerns:
+
+1. According to the FSDG [1]:
+
+ > All information for practical use in a free distribution must be available in
+source form.
+
+ Translation models are downloaded as Remote Settings attachments, see their
+paths on the attachment server, for example in [2] in the source tree. The
+hostname of that server is returned by Remote Settings server, access to which
+is disabled by 9001-FSDG-sync-remote-settings-with-local-dump.patch and
+PKGBUILD. So in my understanding, to comply with the FSDG, the distro has to
+make sources of those models available. It looks like those can be found using
+info from [4], but even then...
+
+2. According to FSDG [3]:
+
+ > a free system distribution cannot include free software that can only be
+built by using nonfree software.
+
+ It depends on whether those models can be considered software (or "information
+for practical use" in case the FSDG is not totally precise when talking only
+about software here). While the models are freely licensed [4], their README
+mentions the first training pipeline [5] that lists CUDA and CUDNN in the
+requirements. Both are nonfree and blocklisted in Parabola. Further research is
+needed on possibility to make the models with 100% free software stack.
+
+3. Because calls to Remote Settings server are disabled, as mentioned above, the
+models won't be downloaded anyway, and Firefox Translations feature will be
+broken, so keeping it enabled would lead to poor user experience. An alternative
+would be to use something like [6], but that requires additional research and
+probably has the same issues with the toolchain for the models.
+
+[1] https://www.gnu.org/distros/free-system-distribution-guidelines.html#license-rules
+[2] services/settings/dumps/main/translations-models.json
+[3] https://www.gnu.org/distros/free-system-distribution-guidelines.html#complete-distros
+[4] WARNING! GitHub webpage is likely to run nonfree software in user's web browser, so at least disable JavaScript when opening: https://github.com/mozilla/firefox-translations-models
+[5] WARNING! GitHub webpage is likely to run nonfree software in user's web browser, so at least disable JavaScript when opening: https://github.com/mozilla/firefox-translations-training
+[6] https://addons.mozilla.org/en-US/firefox/addon/translatelocally-for-firefox/
+---
+ browser/app/profile/firefox.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index cab7e95f41..15117d714e 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -2384,7 +2384,7 @@ pref("browser.translation.neverForLanguages", "");
+ 
+ // Enable Firefox translations powered by the Bergamot translations
+ // engine https://browser.mt/.
+-pref("browser.translations.enable", true);
++pref("browser.translations.enable", false);
+ 
+ // Enable the new Firefox Translations Settings UI Design
+ pref("browser.translations.newSettingsUI.enable", false);
+-- 
+2.52.0
+
+
+From 6acc4be60bd93d6e8b513bb9c571453b90cf8797 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Wed, 12 Jun 2024 00:17:17 +0200
+Subject: [PATCH 6/9] Remove some references to Pocket and disable
+ recommendations
+
+Please see [1].
+
+In theory it can be possible to replace getpocket.com and other related
+service(s) from Mozilla, so just removed the most significant references
+(many more are still in the tests) and disabled the preferences to make
+this nonfunctional by default.
+
+[1] https://labs.parabola.nu/issues/2488#note-26
+---
+ browser/app/profile/firefox.js                      |  4 +++-
+ .../DiscoveryStreamBase/DiscoveryStreamBase.jsx     |  1 -
+ .../DiscoveryStreamComponents/DSImage/DSImage.jsx   |  4 +---
+ .../DSLinkMenu/DSLinkMenu.jsx                       |  2 +-
+ .../SafeAnchor/SafeAnchor.jsx                       |  2 +-
+ .../TopicsWidget/TopicsWidget.jsx                   |  6 +++---
+ .../newtab/docs/v2-system-addon/preferences.md      |  4 ++--
+ .../extensions/newtab/lib/ActivityStream.sys.mjs    | 10 +++++-----
+ .../newtab/lib/DiscoveryStreamFeed.sys.mjs          | 13 ++-----------
+ .../extensions/newtab/lib/SectionsManager.sys.mjs   |  4 ++--
+ browser/extensions/newtab/lib/TopSitesFeed.sys.mjs  |  4 +---
+ .../service/pocket/spocs/api/SpocsEndpointRaw.kt    |  4 ++--
+ .../service/pocket/stories/api/PocketEndpointRaw.kt |  3 +--
+ .../java/org/mozilla/fenix/settings/SupportUtils.kt | 12 ++++++------
+ 14 files changed, 30 insertions(+), 43 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 15117d714e..ea864c2f82 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -2093,7 +2093,9 @@ pref("browser.newtabpage.activity-stream.discoverystream.thumbsUpDown.searchTops
+ pref("browser.newtabpage.activity-stream.discoverystream.publisherFavicon.enabled", true);
+ 
+ // User pref to show stories on newtab (feeds.system.topstories has to be set to true as well)
+-pref("browser.newtabpage.activity-stream.feeds.section.topstories", true);
++pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
++// Turn off 'Support Iceweasel' pref on 'about:settings#home' page.
++pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false);
+ 
+ // The pref controls if search hand-off is enabled for Activity Stream.
+ pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", true);
+diff --git a/browser/extensions/newtab/content-src/components/DiscoveryStreamBase/DiscoveryStreamBase.jsx b/browser/extensions/newtab/content-src/components/DiscoveryStreamBase/DiscoveryStreamBase.jsx
+index c9403fdaa3..8bd53c4e46 100644
+--- a/browser/extensions/newtab/content-src/components/DiscoveryStreamBase/DiscoveryStreamBase.jsx
++++ b/browser/extensions/newtab/content-src/components/DiscoveryStreamBase/DiscoveryStreamBase.jsx
+@@ -21,7 +21,6 @@ import { Widgets } from "content-src/components/Widgets/Widgets";
+ const ALLOWED_CSS_URL_PREFIXES = [
+   "chrome://",
+   "resource://",
+-  "https://img-getpocket.cdn.mozilla.net/",
+ ];
+ const DUMMY_CSS_SELECTOR = "DUMMY#CSS.SELECTOR";
+ 
+diff --git a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSImage/DSImage.jsx b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSImage/DSImage.jsx
+index c36c34eda8..72cacf0206 100644
+--- a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSImage/DSImage.jsx
++++ b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSImage/DSImage.jsx
+@@ -123,9 +123,7 @@ export class DSImage extends React.PureComponent {
+     // Change the image URL to request a size tailored for the parent container width
+     // Also: force JPEG, quality 60, no upscaling, no EXIF data
+     // Uses Thumbor: https://thumbor.readthedocs.io/en/latest/usage.html
+-    const formattedUrl = `https://img-getpocket.cdn.mozilla.net/${width}x${height}/${smart}filters:format(jpeg):quality(60):no_upscale():strip_exif()/${encodeURIComponent(
+-      url
+-    )}`;
++    const formattedUrl = ``;
+     return this.secureImageURL(formattedUrl);
+   }
+ 
+diff --git a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSLinkMenu/DSLinkMenu.jsx b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSLinkMenu/DSLinkMenu.jsx
+index f2406b6264..23a48e83a7 100644
+--- a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSLinkMenu/DSLinkMenu.jsx
++++ b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/DSLinkMenu/DSLinkMenu.jsx
+@@ -56,7 +56,7 @@ export class _DSLinkMenu extends React.PureComponent {
+             shouldSendImpressionStats={true}
+             userEvent={ac.DiscoveryStreamUserEvent}
+             site={{
+-              referrer: "https://getpocket.com/recommendations",
++              referrer: "",
+               title: this.props.title,
+               type: this.props.type,
+               url: this.props.url,
+diff --git a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/SafeAnchor/SafeAnchor.jsx b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/SafeAnchor/SafeAnchor.jsx
+index 94c6a4bd6b..88136e0b5c 100644
+--- a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/SafeAnchor/SafeAnchor.jsx
++++ b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/SafeAnchor/SafeAnchor.jsx
+@@ -22,7 +22,7 @@ export class SafeAnchor extends React.PureComponent {
+           data: {
+             event: { altKey, button, ctrlKey, metaKey, shiftKey },
+             referrer:
+-              this.props.referrer || "https://getpocket.com/recommendations",
++              this.props.referrer || "",
+             // Use the anchor's url, which could have been cleaned up
+             url: event.currentTarget.href,
+             is_sponsored: this.props.isSponsored,
+diff --git a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/TopicsWidget/TopicsWidget.jsx b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/TopicsWidget/TopicsWidget.jsx
+index 904fc2589b..b8386760cc 100644
+--- a/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/TopicsWidget/TopicsWidget.jsx
++++ b/browser/extensions/newtab/content-src/components/DiscoveryStreamComponents/TopicsWidget/TopicsWidget.jsx
+@@ -30,7 +30,7 @@ export function _TopicsWidget(props) {
+     {
+       label: "Must-Reads",
+       name: "must-reads",
+-      url: `https://getpocket.com/collections${queryParams}`,
++      url: ``,
+     },
+   ];
+ 
+@@ -77,7 +77,7 @@ export function _TopicsWidget(props) {
+         <SafeAnchor
+           url={
+             topic.url ||
+-            `https://getpocket.com/explore/${topic.name}${queryParams}`
++            ``
+           }
+           dispatch={dispatch}
+           onLinkClick={() => onLinkClick(topic.name, index)}
+@@ -97,7 +97,7 @@ export function _TopicsWidget(props) {
+       </div>
+       <SafeAnchor
+         className="ds-topics-widget-button button primary"
+-        url={`https://getpocket.com/${queryParams}`}
++        url={``}
+         dispatch={dispatch}
+         onLinkClick={() => onLinkClick("more-topics")}
+       >
+diff --git a/browser/extensions/newtab/docs/v2-system-addon/preferences.md b/browser/extensions/newtab/docs/v2-system-addon/preferences.md
+index cbe427171a..6b4b38c634 100644
+--- a/browser/extensions/newtab/docs/v2-system-addon/preferences.md
++++ b/browser/extensions/newtab/docs/v2-system-addon/preferences.md
+@@ -127,7 +127,7 @@ When this is set to `true` the Discovery Stream experience will show up if `enab
+ ### `browser.newtabpage.activity-stream.discoverystream.endpointSpocsClear`
+ 
+ - Type: `string (URL)`
+-- Default: `https://spocs.getpocket.com/user`
++- Default: ``
+ - Pref Type: AS
+ 
+ Endpoint for when a user opts-out of sponsored content to delete the corresponding data from the ad server.
+@@ -135,7 +135,7 @@ Endpoint for when a user opts-out of sponsored content to delete the correspondi
+ ### `browser.newtabpage.activity-stream.discoverystream.endpoints`
+ 
+ - Type: `string (URLs, CSV)`
+-- Default: `https://getpocket.cdn.mozilla.net/,https://spocs.getpocket.com/`
++- Default: ``
+ - Pref Type: AS
+ 
+ A list of endpoints that are allowed to be used by Discovery Stream for remote content (eg: story metadata) and configuration (eg: remote layout definitions for experimentation).
+diff --git a/browser/extensions/newtab/lib/ActivityStream.sys.mjs b/browser/extensions/newtab/lib/ActivityStream.sys.mjs
+index bd453da1b0..8cf22321e5 100644
+--- a/browser/extensions/newtab/lib/ActivityStream.sys.mjs
++++ b/browser/extensions/newtab/lib/ActivityStream.sys.mjs
+@@ -236,7 +236,7 @@ export const PREFS_CONFIG = new Map([
+     "showSponsored",
+     {
+       title: "User pref for sponsored Pocket content",
+-      value: true,
++      value: false,
+     },
+   ],
+   [
+@@ -251,7 +251,7 @@ export const PREFS_CONFIG = new Map([
+     "showSponsoredTopSites",
+     {
+       title: "Show sponsored top sites",
+-      value: true,
++      value: false,
+     },
+   ],
+   [
+@@ -1133,7 +1133,7 @@ export const PREFS_CONFIG = new Map([
+       title:
+         "Endpoint prefixes (comma-separated) that are allowed to be requested",
+       value:
+-        "https://getpocket.cdn.mozilla.net/,https://firefox-api-proxy.cdn.mozilla.net/,https://spocs.getpocket.com/,https://merino.services.mozilla.com/,https://ads.mozilla.org/",
++        "",
+     },
+   ],
+   [
+@@ -1187,7 +1187,7 @@ export const PREFS_CONFIG = new Map([
+     {
+       title:
+         "Endpoint for when a user opts-out of sponsored content to delete the user's data from the ad server.",
+-      value: "https://spocs.getpocket.com/user",
++      value: "",
+     },
+   ],
+   [
+@@ -1346,7 +1346,7 @@ export const PREFS_CONFIG = new Map([
+     {
+       title:
+         "'Support Firefox' pref on 'about:settings#home' page. Toggles all sponsored results on and off at the same time",
+-      value: true,
++      value: false,
+     },
+   ],
+ ]);
+diff --git a/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs b/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs
+index 64e4de4015..714504b190 100644
+--- a/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs
++++ b/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs
+@@ -51,7 +51,7 @@ const TOPIC_SELECTION_LAST_DISPLAYED =
+ const TOPIC_SELECTION_DISPLAY_TIMEOUT =
+   "discoverystream.topicSelection.onboarding.displayTimeout";
+ 
+-const SPOCS_URL = "https://spocs.getpocket.com/spocs";
++const SPOCS_URL = "";
+ const PREF_CONFIG = "discoverystream.config";
+ const PREF_ENDPOINTS = "discoverystream.endpoints";
+ const PREF_IMPRESSION_ID = "browser.newtabpage.activity-stream.impressionId";
+@@ -3115,16 +3115,7 @@ getHardcodedLayout = ({
+           newFooterSection,
+           properties: {
+             alignment: "left-align",
+-            extraLinks: [
+-              {
+-                name: "Career",
+-                url: "https://getpocket.com/explore/career?utm_source=pocket-newtab",
+-              },
+-              {
+-                name: "Technology",
+-                url: "https://getpocket.com/explore/technology?utm_source=pocket-newtab",
+-              },
+-            ],
++            extraLinks: [],
+             privacyNoticeURL: {
+               url: "https://www.mozilla.org/privacy/firefox/#recommend-relevant-content",
+               title: {
+diff --git a/browser/extensions/newtab/lib/SectionsManager.sys.mjs b/browser/extensions/newtab/lib/SectionsManager.sys.mjs
+index 8225d3857b..7c1a2b2be8 100644
+--- a/browser/extensions/newtab/lib/SectionsManager.sys.mjs
++++ b/browser/extensions/newtab/lib/SectionsManager.sys.mjs
+@@ -58,7 +58,7 @@ const BUILT_IN_SECTIONS = () => ({
+       ],
+       learnMore: {
+         link: {
+-          href: "https://getpocket.com/firefox/new_tab_learn_more",
++          href: "https://labs.parabola.nu/issues/2488#note-26",
+           id: "home-prefs-recommended-by-learn-more",
+         },
+       },
+@@ -71,7 +71,7 @@ const BUILT_IN_SECTIONS = () => ({
+     },
+     learnMore: {
+       link: {
+-        href: "https://getpocket.com/firefox/new_tab_learn_more",
++        href: "https://labs.parabola.nu/issues/2488#note-26",
+         message: { id: "newtab-pocket-learn-more" },
+       },
+     },
+diff --git a/browser/extensions/newtab/lib/TopSitesFeed.sys.mjs b/browser/extensions/newtab/lib/TopSitesFeed.sys.mjs
+index 2baa1823e0..61f7585ce7 100644
+--- a/browser/extensions/newtab/lib/TopSitesFeed.sys.mjs
++++ b/browser/extensions/newtab/lib/TopSitesFeed.sys.mjs
+@@ -1253,9 +1253,7 @@ export class TopSitesFeed {
+           // Also: force JPEG, quality 60, no upscaling, no EXIF data
+           // Uses Thumbor: https://thumbor.readthedocs.io/en/latest/usage.html
+           // For now we wrap this in single quotes because this is being used in a url() css rule, and otherwise would cause a parsing error.
+-          return `'https://img-getpocket.cdn.mozilla.net/${width}x${height}/filters:format(jpeg):quality(60):no_upscale():strip_exif()/${encodeURIComponent(
+-            url
+-          )}'`;
++          return ``;
+         }
+ 
+         // We need to loop through potential spocs and set their positions.
+diff --git a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/spocs/api/SpocsEndpointRaw.kt b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/spocs/api/SpocsEndpointRaw.kt
+index 81bf2dd7e2..7a43fac926 100644
+--- a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/spocs/api/SpocsEndpointRaw.kt
++++ b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/spocs/api/SpocsEndpointRaw.kt
+@@ -24,8 +24,8 @@ import org.json.JSONObject
+ import java.io.IOException
+ import java.util.UUID
+ 
+-private const val SPOCS_ENDPOINT_DEV_BASE_URL = "https://spocs.getpocket.dev/"
+-private const val SPOCS_ENDPOINT_PROD_BASE_URL = "https://spocs.getpocket.com/"
++private const val SPOCS_ENDPOINT_DEV_BASE_URL = ""
++private const val SPOCS_ENDPOINT_PROD_BASE_URL = ""
+ private const val SPOCS_ENDPOINT_DOWNLOAD_SPOCS_PATH = "spocs"
+ private const val SPOCS_ENDPOINT_DELETE_PROFILE_PATH = "user"
+ private const val SPOCS_PROXY_VERSION_KEY = "version"
+diff --git a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/stories/api/PocketEndpointRaw.kt b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/stories/api/PocketEndpointRaw.kt
+index 3db458069b..45e4ac26b7 100644
+--- a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/stories/api/PocketEndpointRaw.kt
++++ b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/stories/api/PocketEndpointRaw.kt
+@@ -38,8 +38,7 @@ internal class PocketEndpointRaw internal constructor(
+     }
+ 
+     companion object {
+-        private const val POCKET_ENDPOINT_URL = "https://firefox-android-home-recommendations.getpocket.com/"
+-
++        private const val POCKET_ENDPOINT_URL = ""
+         /**
+          * Returns a new instance of [PocketEndpointRaw].
+          *
+diff --git a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/settings/SupportUtils.kt b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/settings/SupportUtils.kt
+index 4b0f1cd450..032a6c1a0c 100644
+--- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/settings/SupportUtils.kt
++++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/settings/SupportUtils.kt
+@@ -21,12 +21,12 @@ import java.net.URLEncoder
+ import java.util.Locale
+ 
+ object SupportUtils {
+-    const val RATE_APP_URL = "market://details?id=" + BuildConfig.APPLICATION_ID
+-    const val FENIX_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
+-    const val GOOGLE_URL = "https://www.google.com/"
+-    const val GOOGLE_US_URL = "https://www.google.com/webhp?client=firefox-b-1-m&channel=ts"
+-    const val GOOGLE_XX_URL = "https://www.google.com/webhp?client=firefox-b-m&channel=ts"
+-    const val WHATS_NEW_URL = "https://www.mozilla.org/firefox/android/notes"
++    const val RATE_APP_URL = ""
++    const val FENIX_PLAY_STORE_URL = ""
++    const val GOOGLE_URL = ""
++    const val GOOGLE_US_URL = ""
++    const val GOOGLE_XX_URL = ""
++    const val WHATS_NEW_URL = ""
+     const val FXACCOUNT_SUMO_URL = "https://support.mozilla.org/kb/access-mozilla-services-firefox-account"
+     const val ANDROID_SUPPORT_SUMO_URL = "mzl.la/AndroidSupport"
+ 
+-- 
+2.52.0
+
+
+From 50675e31bf92a29717c6ca4b06926d2a409c32e9 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Sun, 15 Sep 2024 19:19:31 +0200
+Subject: [PATCH 7/9] Disable experimental Machine Learning support
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Remove references to Mozilla Model Hub. According to FSDG [1]:
+ > Programs in the system should not suggest installing nonfree plugins,
+documentation, and so on.
+While machine learning models can be freely licensed on that hub, it's
+not fully clear for me if they can be made using 100% free software
+stack, without CUDA or any other nonfree stuff. And the most important
+thing is, as can be seen from the other Iceweasel patches, Mozilla is
+"not committed to only including free software" [1] in their
+repositories, and this is likely to apply to the “Information for
+practical use” [1] as well.
+* Ensure the preference is disabled by default. Other parts of the code
+  base can override that, so there's some more patching work to do. But
+I think that's not a huge concern as long as the reference to Mozilla
+Model Hub is removed. Users are free to host some models themselves on
+localhost and enable the feature if needed.
+
+[1] https://www.gnu.org/distros/free-system-distribution-guidelines.html#license-rules
+---
+ modules/libpref/init/all.js                   |   6 +-
+ .../aboutinference/content/aboutInference.js  | 385 +-----------------
+ .../ml/content/EngineProcess.sys.mjs          |  12 +-
+ .../components/ml/content/ModelHub.sys.mjs    |   8 +-
+ toolkit/components/ml/docs/api.rst            |  52 +--
+ toolkit/components/ml/docs/models.rst         |   2 +-
+ .../ml/tests/browser/browser_ml_cache.js      |   2 +-
+ .../browser/browser_ml_static_embeddings.js   |   4 +-
+ .../ml/tests/browser/browser_ml_utils.js      |  65 ---
+ .../internal/ModelHubProvider.sys.mjs         |   6 +-
+ .../test/xpcshell/test_ModelHubProvider.js    |  12 +-
+ 11 files changed, 27 insertions(+), 527 deletions(-)
+
+diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
+index 6c0943d0ac..e296136033 100644
+--- a/modules/libpref/init/all.js
++++ b/modules/libpref/init/all.js
+@@ -3694,12 +3694,12 @@ pref("browser.translations.simulateUnsupportedEngine", false);
+ pref("browser.translations.chaos.errors", false);
+ pref("browser.translations.chaos.timeoutMS", 0);
+ 
+-// Enable the experimental machine learning inference engine.
+-pref("browser.ml.enable", true);
++// Disable the experimental machine learning inference engine.
++pref("browser.ml.enable", false);
+ // Set to "All" to see all logs, which are useful for debugging.
+ pref("browser.ml.logLevel", "Error");
+ // Model hub root URL used to download models.
+-pref("browser.ml.modelHubRootUrl", "https://model-hub.mozilla.org/");
++pref("browser.ml.modelHubRootUrl", "https://localhost/");
+ // Model URL template
+ pref("browser.ml.modelHubUrlTemplate", "{model}/{revision}");
+ // Maximum disk size for ML model cache (in GiB)
+diff --git a/toolkit/components/aboutinference/content/aboutInference.js b/toolkit/components/aboutinference/content/aboutInference.js
+index 01533ad4c9..e34bf9dab7 100644
+--- a/toolkit/components/aboutinference/content/aboutInference.js
++++ b/toolkit/components/aboutinference/content/aboutInference.js
+@@ -89,319 +89,7 @@ const TINY_ARTICLE =
+ /**
+  * Presets for the pad
+  */
+-const INFERENCE_PAD_PRESETS = {
+-  "summarization-large": {
+-    modelId: "onnx-community/Qwen2.5-0.5B-Instruct",
+-    task: "text-generation",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-    inputArgs: [
+-      "Summarize: The exploration of space has always been a subject of fascination and curiosity for humanity. \nFrom the earliest  stargazers mapping the heavens to modern astronomers utilizing cutting-edge telescopes, the quest to \nunderstand the  cosmos has driven technological and scientific advancement. In the 20th century, the space race between \nthe United States and the Soviet Union culminated in humanity's first steps on the moon, marking a new era of space \nexploration.\n\nToday, space exploration is no longer confined to government agencies. Private companies, such as SpaceX and Blue \nOrigin, are pioneering new methods of space travel, with ambitions ranging from commercial space tourism to colonizing \nMars. These ventures have sparked debates about the ethical, environmental, and economic implications of privatizing \nspace.\n\nThe potential benefits of space exploration are vast. Satellites have revolutionized communication, weather forecasting, \nand navigation. Space-based observations have provided critical data for understanding climate change and protecting \nEarth’s ecosystems. Moreover, the possibility of mining asteroids for rare minerals could address resource shortages on \nour planet.\n\nHowever, the challenges are equally significant. Space travel remains extraordinarily expensive and risky. The harsh \nenvironment of space poses threats to human health, including exposure to radiation and the psychological effects of \nprolonged isolation. Additionally, the accumulation of space debris presents a growing hazard to both current and future \nmissions.\n\nInternational collaboration has proven to be a powerful tool in overcoming some of these challenges. The International \nSpace Station (ISS) serves as a testament to what can be achieved when nations work together, pooling resources and \nexpertise. Future projects, such as the planned Lunar Gateway and Mars missions, highlight the importance of cooperative \nefforts in pushing the boundaries of human capability.\n\nAs humanity looks to the stars, questions about our role in the universe arise. What responsibilities do we have as \nstewards of our own planet and potential explorers of others? How can we ensure that space exploration benefits all of \nhumanity and not just a privileged few?\n\nThe journey into space is a reflection of our innate desire to explore and understand. It challenges us to innovate, to \ndream, and to collaborate. While the road ahead is fraught with difficulties, the potential rewards—both tangible and \nintangible—make the endeavor worthwhile. With careful planning, international cooperation, and ethical considerations, \nspace exploration can continue to inspire and benefit humanity for generations to come.",
+-    ],
+-    runOptions: {
+-      max_new_tokens: 195,
+-      min_new_tokens: 200,
+-      return_full_text: false,
+-      return_tensors: false,
+-      do_sample: false,
+-    },
+-    timeout: 120,
+-  },
+-  "feature-large": {
+-    inputArgs: [
+-      [
+-        "The quick brown fox jumps over the lazy dog.",
+-        "She sells seashells by the seashore.",
+-        "He walked slowly across the deserted street at dawn.",
+-        "A red rose blossomed in the middle of the garden.",
+-        "The sound of rain on the roof lulled me to sleep.",
+-        "We must never forget the lessons of history.",
+-        "The sun sets, painting the sky in bright shades of orange and purple.",
+-        "He found a hidden treasure chest in the old abandoned house.",
+-        "They enjoyed a picnic by the river on a sunny afternoon.",
+-        "Mathematics is the language of the universe.",
+-        "Music has the power to heal and transform hearts.",
+-        "A gentle breeze rustled the leaves of the towering oak tree.",
+-        "Many species of birds migrate to warmer climates each winter.",
+-        "The city lights sparkled like stars in the distance.",
+-        "Her bright smile lit up the room when she entered.",
+-        "A library is a portal to countless worlds and possibilities.",
+-        "The smell of fresh coffee filled the cozy café.",
+-        "He missed the sound of ocean waves crashing on the shore.",
+-        "The distant mountains were capped with snow even in summer.",
+-        "An empty page can represent infinite possibilities.",
+-        "We watched the fireworks explode in vibrant colors above us.",
+-        "The cat watched a butterfly dance in the garden.",
+-        "My grandmother taught me how to bake delicious apple pies.",
+-        "The conference was an opportunity to share groundbreaking research.",
+-        "They adopted a small puppy from the local animal shelter.",
+-        "Snow covered the streets, making them look like a winter wonderland.",
+-        "He wrote a letter to express the depth of his feelings.",
+-        "A curious child asked endless questions about the world.",
+-        "They dreamed of visiting every continent before turning forty.",
+-        "The aroma of freshly baked bread welcomed them home.",
+-        "Her voice resonated with passion as she spoke of her dreams.",
+-        "He overcame his fears and made a bold career change.",
+-        "Learning a new language can open doors to unexpected opportunities.",
+-        "A gentle melody drifted from the old piano in the corner.",
+-        "The festival brought the entire community together for a weekend of fun.",
+-        "He discovered an ancient map hidden beneath the floorboards.",
+-        "She overcame adversity with resilience and determination.",
+-        "The child's laughter echoed in the empty park.",
+-        "A well-written book can transport you to distant worlds.",
+-        "They found solace in the stillness of the forest.",
+-        "A strong partnership can often accomplish more than an individual.",
+-        "His grandmother had the best recipe for homemade cookies.",
+-        "The large oak tree provided shade on a scorching summer day.",
+-        "Innovation thrives when diverse minds come together.",
+-        "The smell of wet paint filled the newly renovated room.",
+-        "A random act of kindness can brighten a stranger's day.",
+-        "He spent hours stargazing, marveling at the vastness of the universe.",
+-        "She gently rocked the baby to sleep with a lullaby.",
+-        "Confidence grows when you face your fears one step at a time.",
+-        "They shared stories by the campfire under the star-filled sky.",
+-        "Music can express emotions words fail to capture.",
+-        "He meticulously planned every detail of the surprise party.",
+-        "Her paintings were inspired by her travels around the world.",
+-        "The thunderstorm raged outside while they stayed cozy indoors.",
+-        "The excitement of a new adventure can be exhilarating.",
+-        "His dedication to his craft was evident in every masterpiece.",
+-        "She found beauty in the simplicity of everyday moments.",
+-        "He whistled a cheerful tune while waiting for the bus.",
+-        "They discovered rare flowers blooming deep within the rainforest.",
+-        "His curiosity led him to explore the abandoned mansion alone.",
+-        "A family vacation can create lifelong memories for everyone.",
+-        "Her determination helped her overcome countless obstacles.",
+-        "He admired the intricate design of the old cathedral's stained glass windows.",
+-        "She found a book in the attic that changed her perspective on life.",
+-        "They hiked through the mountains, mesmerized by the panoramic view.",
+-        "A warm cup of tea soothed her nerves after a long day.",
+-        "He recounted tales of his youth with a nostalgic smile.",
+-        "The teacher praised the students for their collaborative spirit.",
+-        "She embraced the quiet solitude of her countryside retreat.",
+-        "They discovered a mysterious artifact beneath the ancient ruins.",
+-        "He woke early to watch the sunrise illuminate the horizon.",
+-        "A kind gesture can leave a lasting impression.",
+-        "She wore her grandmother's necklace for good luck.",
+-        "The baby giggled when the puppy licked her tiny toes.",
+-        "Every painting in the gallery told a unique story.",
+-        "He spent all morning crafting a heartfelt letter of apology.",
+-        "Her eyes lit up when she recognized an old friend across the street.",
+-        "They marveled at the bioluminescent plankton glowing in the midnight sea.",
+-        "He cherished the sound of rain tapping on his window.",
+-        "The library was his refuge, a place to dream and learn.",
+-        "She danced gracefully, captivated by the gentle piano music.",
+-        "A single spark can ignite a roaring flame.",
+-        "He spent weeks planning the perfect proposal on the beach.",
+-        "Her passion for art was evident in every brushstroke.",
+-        "They lost track of time while playing board games all evening.",
+-        "He gently patted the old dog that slept peacefully by his feet.",
+-        "The newborn foal struggled to stand on wobbly legs.",
+-        "She found inspiration in nature's boundless beauty.",
+-        "They found hope in the darkest moments, clinging to each other for support.",
+-        "He discovered a passion for cooking while helping at a local bistro.",
+-        "She carried the memory of her best friend in a locket around her neck.",
+-        "He spoke softly, trying not to disturb the sleeping baby.",
+-        "They visited the art museum to admire the classic Renaissance paintings.",
+-        "She overcame her stage fright by focusing on the joy of performing.",
+-        "He daydreamed about exploring uncharted territories.",
+-        "They danced in the rain, laughing at the storm's thunderous roar.",
+-        "He spent a quiet Sunday afternoon reading in the backyard hammock.",
+-        "She wrote poetry to capture her most profound emotions.",
+-        "They snuggled under warm blankets to watch the first snowfall of winter.",
+-        "He presented his research findings at the international conference.",
+-        "She carefully traced the family lineage back several centuries.",
+-        "They planted a garden together, hoping for a bountiful harvest.",
+-        "He woke up early to practice yoga in the morning light.",
+-        "She believed that kindness could change the world one step at a time.",
+-        "They gazed at the shooting stars streaking across the night sky.",
+-        "He built a small treehouse for his younger siblings to play in.",
+-        "She reminisced about the childhood summers spent at her grandparents' farm.",
+-        "They formed a band, blending various genres to create a unique sound.",
+-        "He spent years saving money for the trip of a lifetime.",
+-        "She had a knack for solving complex puzzles in record time.",
+-        "They cultivated a thriving vegetable garden in their backyard.",
+-        "He overcame his stage fright with daily practice and meditation.",
+-        "She found solace in writing letters to her future self.",
+-        "They huddled around the fireplace sharing ghost stories late into the night.",
+-        "He repaired the old clock that had been silent for decades.",
+-        "She painted vibrant sunsets inspired by her travels in the tropics.",
+-        "They organized a neighborhood cleanup to celebrate Earth Day.",
+-        "He discovered a hidden talent for sculpting while taking an art class.",
+-        "She sang lullabies to soothe her restless toddler at bedtime.",
+-        "They embarked on a cross-country road trip to visit national parks.",
+-        "He studied ancient myths to glean lessons about human nature.",
+-        "She volunteered at the local shelter, caring for abandoned animals.",
+-        "They joined a choir, finding joy in the harmony of voices.",
+-        "He journaled daily, reflecting on personal growth and gratitude.",
+-        "She followed a cherished family recipe to bake a special birthday cake.",
+-        "They marveled at the northern lights dancing across the icy tundra.",
+-        "He explored a remote island, documenting rare wildlife species.",
+-        "She wrote a heartfelt farewell message when leaving her childhood home.",
+-      ],
+-    ],
+-    runOptions: {
+-      pooling: "mean",
+-      normalize: true,
+-    },
+-    task: "feature-extraction",
+-    modelId: "Xenova/all-MiniLM-L6-v2",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  "image-to-text": {
+-    inputArgs: [
+-      "https://huggingface.co/datasets/mishig/sample_images/resolve/main/football-match.jpg",
+-    ],
+-    runOptions: {},
+-    task: "image-to-text",
+-    modelId: "mozilla/distilvit",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  ner: {
+-    inputArgs: ["Sarah lives in the United States of America"],
+-    runOptions: {},
+-    task: "token-classification",
+-    modelId: "Xenova/bert-base-NER",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  summary: {
+-    inputArgs: [TINY_ARTICLE],
+-    runOptions: {
+-      max_new_tokens: 100,
+-    },
+-    task: "summarization",
+-    modelId: "Xenova/long-t5-tglobal-base-16384-book-summary",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  zero: {
+-    inputArgs: [
+-      "Last week I upgraded my iOS version and ever since then my phone has been overheating whenever I use your app.",
+-      ["mobile", "billing", "website", "account access"],
+-    ],
+-    runOptions: {},
+-    task: "zero-shot-classification",
+-    modelId: "Xenova/mobilebert-uncased-mnli",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  feature: {
+-    inputArgs: [["This is an example sentence", "Each sentence is converted"]],
+-    runOptions: { pooling: "mean", normalize: true },
+-    task: "feature-extraction",
+-    modelId: "Xenova/all-MiniLM-L6-v2",
+-    modelRevision: "main",
+-    modelHub: "huggingface",
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  "static-embeddings": {
+-    inputArgs: [
+-      "This is an example of encoding",
+-      "The quick brown fox jumps over the lazy dog.",
+-      "Curaçao, naïve fiancé, jalapeño, déjà vu.",
+-      "Привет, как дела?",
+-      "Бързата кафява лисица прескача мързеливото куче.",
+-      "Γρήγορη καφέ αλεπού πηδάει πάνω από τον τεμπέλη σκύλο.",
+-      "اللغة العربية جميلة وغنية بالتاريخ.",
+-      "مرحبا بالعالم!",
+-      "Simplified: 快速的棕色狐狸跳过懒狗。",
+-      "Traditional: 快速的棕色狐狸跳過懶狗。",
+-      "素早い茶色の狐が怠け者の犬を飛び越える。",
+-      "コンピュータープログラミング",
+-      "빠른 갈색 여우가 게으른 개를 뛰어넘습니다.",
+-      "तेज़ भूरी लोमड़ी आलसी कुत्ते के ऊपर कूदती है।",
+-      "দ্রুত বাদামী শিয়াল অলস কুকুরের উপর দিয়ে লাফ দেয়।",
+-      "வேகமான பழுப்பு நரி சோம்பேறி நாயின் மேல் குதிக்கிறது.",
+-      "สุนัขจิ้งจอกสีน้ำตาลกระโดดข้ามสุนัขขี้เกียจ.",
+-      "ብሩክ ቡናማ ቀበሮ ሰነፍ ውሻን ተዘልሏል።",
+-      // Mixed scripts:
+-      "Hello 世界 مرحبا 🌍",
+-      "123, αβγ, абв, العربية, 中文, हिन्दी.",
+-    ],
+-    runOptions: {
+-      // Use mean pooling, where each static embedding is averaged together into
+-      // a new vector.
+-      pooling: "mean",
+-      // Normalize the resulting vector.
+-      normalize: true,
+-    },
+-    task: "static-embeddings",
+-    modelHub: "mozilla",
+-    modelId: "mozilla/static-embeddings",
+-    modelRevision: "v1.0.0",
+-    backend: "static-embeddings",
+-    staticEmbeddingsOptions: {
+-      // View the available models here:
+-      //   https://huggingface.co/gregtatum/static-embeddings/tree/main/models
+-      subfolder: "models/minishlab/potion-retrieval-32M",
+-      // The precision of the embeddings: fp32, fp16, fp8_e5m2, fp8_e4m3
+-      dtype: "fp8_e4m3",
+-      // The dimensions available: 32, 64, 128, 256.
+-      dimensions: 128,
+-      // Whether or not to use ZST compression.
+-      compression: true,
+-    },
+-  },
+-  "link-preview": {
+-    inputArgs: `Summarize this: ${TINY_ARTICLE}`,
+-    runOptions: {
+-      nPredict: 100,
+-    },
+-    task: "wllama-text-generation",
+-    modelId:
+-      "HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/smollm2-360m-instruct-q8_0.gguf",
+-    modelRevision: "main",
+-    modelHub: "mozilla",
+-    modelHubRootUrl: "https://model-hub.mozilla.org",
+-    numThreads: 0,
+-    dtype: "q8",
+-    device: "cpu",
+-    backend: "onnx",
+-  },
+-  openai: {
+-    inputArgs: [
+-      {
+-        role: "system",
+-        content:
+-          "You are a helpful assistant that summarizes text clearly and concisely.",
+-      },
+-      {
+-        role: "user",
+-        content: `Please summarize the following text:\n\n ${TINY_ARTICLE} /no_think`,
+-      },
+-    ],
+-    runOptions: {},
+-    task: "text-generation",
+-    modelId: "qwen3:0.6b",
+-    modelRevision: "main",
+-    apiKey: "ollama",
+-    baseURL: "http://localhost:11434/v1",
+-    backend: "openai",
+-  },
+-};
++const INFERENCE_PAD_PRESETS = {};
+ 
+ const PREDEFINED = Object.keys(INFERENCE_PAD_PRESETS);
+ 
+@@ -928,7 +616,7 @@ async function runInference() {
+     } catch (e) {
+       resultsConsole.addLine(e);
+       if (
+-        e.message.includes("Invalid model hub root url: https://huggingface.co")
++        e.message.includes("Invalid model hub root url: ")
+       ) {
+         resultsConsole.addLine(
+           "Make sure you started Firefox with MOZ_ALLOW_EXTERNAL_ML_HUB=1"
+@@ -1184,74 +872,7 @@ async function runBenchmark() {
+     repeatedSentences.push(...baseSentences);
+   }
+ 
+-  const workloads = [
+-    {
+-      name: "ner-small",
+-      inputArgs: ["Sarah lives in the United States of America"],
+-      runOptions: {},
+-      compatibleBackends: [lazy.BACKENDS.onnx],
+-      pipelineOptions: {
+-        taskName: "token-classification",
+-        modelId: "Xenova/bert-base-NER",
+-        modelRevision: "main",
+-        modelHub: "huggingface",
+-        dtype: "q8",
+-        device: "cpu",
+-      },
+-    },
+-    {
+-      name: "feature-extraction-large",
+-      inputArgs: [repeatedSentences],
+-      compatibleBackends: [lazy.BACKENDS.onnx],
+-      runOptions: { pooling: "mean", normalize: true },
+-      pipelineOptions: {
+-        taskName: "feature-extraction",
+-        modelId: "Xenova/all-MiniLM-L6-v2",
+-        modelRevision: "main",
+-        modelHub: "huggingface",
+-        dtype: "q8",
+-        device: "cpu",
+-      },
+-    },
+-    {
+-      name: "image-to-text",
+-      compatibleBackends: [lazy.BACKENDS.onnx],
+-      inputArgs: [
+-        "https://huggingface.co/datasets/mishig/sample_images/resolve/main/football-match.jpg",
+-      ],
+-      runOptions: {},
+-      pipelineOptions: {
+-        taskName: "image-to-text",
+-        modelId: "mozilla/distilvit",
+-        modelRevision: "main",
+-        modelHub: "huggingface",
+-        dtype: "q8",
+-        device: "cpu",
+-      },
+-    },
+-    {
+-      name: "link-preview",
+-      compatibleBackends: [lazy.BACKENDS.wllama],
+-      inputArgs: `Summarize this: ${TINY_ARTICLE}`,
+-      runOptions: {
+-        nPredict: 100,
+-      },
+-      pipelineOptions: {
+-        taskName: "wllama-text-generation",
+-        modelId: "HuggingFaceTB/SmolLM2-360M-Instruct-GGUF",
+-        modelFile: "smollm2-360m-instruct-q8_0.gguf",
+-        modelRevision: "main",
+-        modelHub: "mozilla",
+-        modelHubRootUrl: "https://model-hub.mozilla.org",
+-        numContext: 1024,
+-        numBatch: 1024,
+-        numUbatch: 1024,
+-        useMlock: false,
+-        useMmap: true,
+-        kvCacheDtype: "q8_0",
+-      },
+-    },
+-  ];
++  const workloads = [];
+ 
+   let results = [];
+ 
+diff --git a/toolkit/components/ml/content/EngineProcess.sys.mjs b/toolkit/components/ml/content/EngineProcess.sys.mjs
+index 5dc3e3daa1..da761af43b 100644
+--- a/toolkit/components/ml/content/EngineProcess.sys.mjs
++++ b/toolkit/components/ml/content/EngineProcess.sys.mjs
+@@ -212,18 +212,12 @@ class PipelineOptionsValidationError extends Error {
+  * @enum {string}
+  */
+ export const ModelHub = {
+-  HUGGINGFACE: "huggingface",
+-  MOZILLA: "mozilla",
++  LOCALHOST: "localhost",
+ 
+   apply(options, hub) {
+     switch (hub) {
+-      case ModelHub.HUGGINGFACE:
+-        options.modelHubRootUrl = "https://huggingface.co/";
+-        options.modelHubUrlTemplate = "{model}/resolve/{revision}";
+-        options.modelRevision = "main";
+-        break;
+-      case ModelHub.MOZILLA:
+-        options.modelHubRootUrl = "https://model-hub.mozilla.org/";
++      case ModelHub.LOCALHOST:
++        options.modelHubRootUrl = "https://localhost/";
+         options.modelHubUrlTemplate = "{model}/{revision}";
+         options.modelRevision = "main";
+         break;
+diff --git a/toolkit/components/ml/content/ModelHub.sys.mjs b/toolkit/components/ml/content/ModelHub.sys.mjs
+index 71bcafb44f..0268be4025 100644
+--- a/toolkit/components/ml/content/ModelHub.sys.mjs
++++ b/toolkit/components/ml/content/ModelHub.sys.mjs
+@@ -41,8 +41,8 @@ const ALLOWED_HEADERS_KEYS = [
+   "lastUsed",
+ ];
+ 
+-const MOZILLA_HUB_HOSTNAME = "model-hub.mozilla.org";
+-const HF_HUB_HOSTNAME = "huggingface.co";
++const MOZILLA_HUB_HOSTNAME = "localhost";
++const HF_HUB_HOSTNAME = "localhost";
+ const MOCHITESTS_HOSTNAME = "mochitests";
+ const DEFAULT_CONTENT_TYPE = "application/octet-stream";
+ const DEFAULT_DELETE_TIMEOUT_MS = 5000;
+@@ -71,7 +71,7 @@ XPCOMUtils.defineLazyPreferenceGetter(
+   lazy,
+   "DEFAULT_ROOT_URL",
+   "browser.ml.modelHubRootUrl",
+-  "https://model-hub.mozilla.org/"
++  "https://localhost/"
+ );
+ 
+ const ONE_GIB = 1024 * 1024 * 1024;
+@@ -157,7 +157,7 @@ class ModelOwner {
+ 
+     // Switch from Mozilla to Hugging Face if needed
+     if (this.hostname === MOZILLA_HUB_HOSTNAME) {
+-      this.hostname = "huggingface.co";
++      this.hostname = HF_HUB_HOSTNAME;
+     }
+ 
+     const hubRootUrl = `https://${this.hostname}/`;
+diff --git a/toolkit/components/ml/docs/api.rst b/toolkit/components/ml/docs/api.rst
+index 29c5c07fd1..dbb2957d14 100644
+--- a/toolkit/components/ml/docs/api.rst
++++ b/toolkit/components/ml/docs/api.rst
+@@ -56,7 +56,7 @@ To get access to the full toolbox, set the **devtools.debugger.remote-enabled**
+ We recommend using the toolbox to get access to more tools. You will get a security warning
+ when starting it, when the toolbox connects to the browser.
+ 
+-When running this code, Firefox will look for models in the Mozilla model hub located at https://model-hub.mozilla.org
++When running this code, Iceweasel will look for models in the Mozilla model hub located at https://localhost
+ which contains a curated list of models.
+ 
+ Available Options
+@@ -137,13 +137,6 @@ Each record comes with the following fields:
+ 
+ When the API is about to fetch a file, its URL is controlled in the allow/deny list.
+ 
+-Examples of patterns:
+-
+-- ALL models ALL VERSIONS from the mozilla organization on hugging face : https://huggingface.co/Mozilla/
+-- ALL models ALL VERSIONS from our hub: https://model-hub.mozilla.org/
+-- A specific model ALL VERSIONS https://huggingface.co/typeform/distilbert-base-uncased-mnli/
+-- A specific model and a specific version https://huggingface.co/Mozilla/distilvit/blob/v0.5.0/
+-
+ Each URL is tested and needs to be included in the allowlist and not in the denylist
+ 
+ To bypass this check and allow Firefox to download any file for runnings models,
+@@ -153,49 +146,6 @@ If you want to add a new hub, organization or a specific model, ask us by
+ `opening a ticket <https://bugzilla.mozilla.org/enter_bug.cgi?product=Core&component=Machine%20Learning>`_.
+ 
+ 
+-Using the Hugging Face model hub
+-::::::::::::::::::::::::::::::::
+-
+-By default, the engine will use the Mozilla model hub. You will need to pass `huggingface` as `modelHub`.
+-
+-The inference engine will then look for models in the Hugging Face model hub. If the URL is
+-not allowed (see previous section) and you still want to experiment with the model,
+-use `MOZ_ALLOW_EXTERNAL_ML_HUB`.
+-
+-To run against a Hugging Face model, visit `this page <https://huggingface.co/models?library=transformers.js>`_ and select on
+-the top left corner `tasks`. You can pick a task and then choose a model.
+-
+-For example, models for the `summarization` tasks compatible with our inference engine are listed `here <https://huggingface.co/models?pipeline_tag=summarization&library=transformers.js&sort=trending>`_.
+-
+-Let's say you want to pick the `Xenova/distilbart-cnn-6-6` model. All you have to do is use the id when calling our
+-`createEngine` pipeline:
+-
+-.. code-block:: javascript
+-
+-  const { createEngine } = ChromeUtils.importESModule("chrome://global/content/ml/EngineProcess.sys.mjs");
+-
+-  const options = {
+-    taskName: "summarization",
+-    modelId: "Xenova/distilbart-cnn-6-6",
+-    modelHub: "huggingface"
+-  };
+-
+-  const engine = await createEngine(options);
+-
+-  const text = 'The tower is 324 metres (1,063 ft) tall, about the same height as an 81-storey building, ' +
+-  'and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. ' +
+-  'During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest ' +
+-  'man-made structure in the world, a title it held for 41 years until the Chrysler Building in New ' +
+-  'York City was finished in 1930. It was the first structure to reach a height of 300 metres. Due to ' +
+-  'the addition of a broadcasting aerial at the top of the tower in 1957, it is now taller than the ' +
+-  'Chrysler Building by 5.2 metres (17 ft). Excluding transmitters, the Eiffel Tower is the second ' +
+-  'tallest free-standing structure in France after the Millau Viaduct.';
+-
+-  const request = { args:  [text], options: { max_new_tokens: 100 } };
+-  const res = await engine.run(request);
+-  console.log(res[0]["summary_text"]);
+-
+-
+ Running the internal APIs
+ :::::::::::::::::::::::::
+ 
+diff --git a/toolkit/components/ml/docs/models.rst b/toolkit/components/ml/docs/models.rst
+index 253f128bb2..bcfd27c363 100644
+--- a/toolkit/components/ml/docs/models.rst
++++ b/toolkit/components/ml/docs/models.rst
+@@ -107,7 +107,7 @@ By doing this, you will be able to create an engine with this simple call:
+ Our Model hub follows the same structure than Hugging Face, each file for a model is under
+ a unique URL:
+ 
+-  `https://model-hub.mozilla.org/<organization>/<model>/<revision>/<path>`
++  `https://localhost/<organization>/<model>/<revision>/<path>`
+ 
+ Where:
+ - `organization` and `name` are the model id. example " `mozilla/distivit`"
+diff --git a/toolkit/components/ml/tests/browser/browser_ml_cache.js b/toolkit/components/ml/tests/browser/browser_ml_cache.js
+index b54a602f66..4ade49b249 100644
+--- a/toolkit/components/ml/tests/browser/browser_ml_cache.js
++++ b/toolkit/components/ml/tests/browser/browser_ml_cache.js
+@@ -72,7 +72,7 @@ function stripLastUsed(data) {
+  */
+ add_task(async function test_allow_external_ml_hub() {
+   Services.env.set("MOZ_ALLOW_EXTERNAL_ML_HUB", "1");
+-  new ModelHub({ rootUrl: "https://huggingface.co" });
++  new ModelHub({ rootUrl: "https://localhost" });
+   Services.env.set("MOZ_ALLOW_EXTERNAL_ML_HUB", "");
+ });
+ 
+diff --git a/toolkit/components/ml/tests/browser/browser_ml_static_embeddings.js b/toolkit/components/ml/tests/browser/browser_ml_static_embeddings.js
+index 62788e9637..4b7a16b37d 100644
+--- a/toolkit/components/ml/tests/browser/browser_ml_static_embeddings.js
++++ b/toolkit/components/ml/tests/browser/browser_ml_static_embeddings.js
+@@ -47,9 +47,9 @@ function getMockedValues() {
+     };
+ 
+   return {
+-    "https://model-hub.mozilla.org/mozilla/static-embeddings/v1.0.0/models/minishlab/potion-retrieval-32M/tokenizer.json":
++    "":
+       tokenizer,
+-    [`https://model-hub.mozilla.org/mozilla/static-embeddings/v1.0.0/models/minishlab/potion-retrieval-32M/fp16.d${dimensions}.npy`]:
++    [``]:
+       encoding,
+   };
+ }
+diff --git a/toolkit/components/ml/tests/browser/browser_ml_utils.js b/toolkit/components/ml/tests/browser/browser_ml_utils.js
+index 602d9db3b2..9179f5aba6 100644
+--- a/toolkit/components/ml/tests/browser/browser_ml_utils.js
++++ b/toolkit/components/ml/tests/browser/browser_ml_utils.js
+@@ -459,21 +459,6 @@ add_task(async function test_multi_aggregator() {
+ add_task(async function testURLChecker() {
+   // Example of result from remote settings
+   const list = [
+-    { filter: "ALLOW", urlPrefix: "https://huggingface.co/mozilla/" },
+-    { filter: "ALLOW", urlPrefix: "https://model-hub.mozilla.org/" },
+-    {
+-      filter: "ALLOW",
+-      urlPrefix:
+-        "https://huggingface.co/typeform/distilbert-base-uncased-mnli/",
+-    },
+-    {
+-      filter: "ALLOW",
+-      urlPrefix: "https://huggingface.co/mozilla/distilvit/blob/v0.5.0/",
+-    },
+-    {
+-      filter: "DENY",
+-      urlPrefix: "https://huggingface.co/mozilla/restricted-model",
+-    },
+     {
+       filter: "ALLOW",
+       urlPrefix: "https://localhost:8080/myhub",
+@@ -484,29 +469,6 @@ add_task(async function testURLChecker() {
+ 
+   // Test cases
+   const testCases = [
+-    {
+-      url: "https://huggingface.co/mozilla/",
+-      expected: { allowed: true, rejectionType: RejectionType.NONE },
+-      description:
+-        "Allows all models and versions from Mozilla on Hugging Face",
+-    },
+-    {
+-      url: "https://huggingface.co/mozilla/distilvit/blob/v0.5.0/",
+-      expected: { allowed: true, rejectionType: RejectionType.NONE },
+-      description:
+-        "Allows a specific model and version from Mozilla on Hugging Face",
+-    },
+-    {
+-      url: "https://huggingface.co/mozilla/restricted-model",
+-      expected: { allowed: false, rejectionType: RejectionType.DENIED },
+-      description:
+-        "Denies a specific restricted model from Mozilla on Hugging Face",
+-    },
+-    {
+-      url: "https://model-hub.mozilla.org/some-model",
+-      expected: { allowed: true, rejectionType: RejectionType.NONE },
+-      description: "Allows any model from Mozilla's model hub",
+-    },
+     {
+       url: "https://my.cool.hub/",
+       expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+@@ -517,12 +479,6 @@ add_task(async function testURLChecker() {
+       expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+       description: "Denies access to a subdomain of an approved domain",
+     },
+-    {
+-      url: "https://model-hub.mozilla.org.evil.com",
+-      expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+-      description:
+-        "Denies access to URL with allowed domain as a subdomain in another domain",
+-    },
+     {
+       url: "httpsz://localhost/myhub",
+       expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+@@ -533,28 +489,12 @@ add_task(async function testURLChecker() {
+       expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+       description: "Denies access to URL with trailing dot in domain",
+     },
+-    {
+-      url: "https://user@huggingface.co/mozilla/",
+-      expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+-      description: "Denies access to URL with user info",
+-    },
+     {
+       url: "ftp://localhost/myhub/",
+       expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+       description:
+         "Denies access to URL with disallowed scheme but allowed host",
+     },
+-    {
+-      url: "https://model-hub.mozilla.org.hack/",
+-      expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+-      description: "Denies access to domain containing an allowed domain",
+-    },
+-    {
+-      url: "https:///huggingface.co/mozilla/",
+-      expected: { allowed: false, rejectionType: RejectionType.DISALLOWED },
+-      description:
+-        "Denies access to URL with triple slashes, just type correctly",
+-    },
+     {
+       url: "https://localhost:8080/myhub",
+       expected: { allowed: true, rejectionType: RejectionType.NONE },
+@@ -565,11 +505,6 @@ add_task(async function testURLChecker() {
+       expected: { allowed: true, rejectionType: RejectionType.NONE },
+       description: "Allows access to URL with HTTP scheme on localhost",
+     },
+-    {
+-      url: "https://model-hub.mozilla.org/",
+-      expected: { allowed: true, rejectionType: RejectionType.NONE },
+-      description: "Allows access to Mozilla's approved model hub URL",
+-    },
+     {
+       url: "chrome://gre/somewhere/in/the/code/base",
+       expected: { allowed: true, rejectionType: RejectionType.NONE },
+diff --git a/toolkit/mozapps/extensions/internal/ModelHubProvider.sys.mjs b/toolkit/mozapps/extensions/internal/ModelHubProvider.sys.mjs
+index 36d0e5f301..dc425b5072 100644
+--- a/toolkit/mozapps/extensions/internal/ModelHubProvider.sys.mjs
++++ b/toolkit/mozapps/extensions/internal/ModelHubProvider.sys.mjs
+@@ -75,10 +75,10 @@ export class ModelHubAddonWrapper {
+   }
+ 
+   get modelHomepageURL() {
+-    // Model card URL for models downloaded from "model-hub.mozilla.org" should point to the corresponding "https://huggingface.co" url.
++    // Model card URL for models downloaded from anywhere should point to the corresponding "https://localhost" url.
+     return `https://${this.model}/`.replace(
+-      "https://model-hub.mozilla.org/",
+-      "https://huggingface.co/"
++      /:\/\/[^//]+\//,
++      "://localhost/"
+     );
+   }
+ 
+diff --git a/toolkit/mozapps/extensions/test/xpcshell/test_ModelHubProvider.js b/toolkit/mozapps/extensions/test/xpcshell/test_ModelHubProvider.js
+index eb2a2cf35d..e5f120fd0a 100644
+--- a/toolkit/mozapps/extensions/test/xpcshell/test_ModelHubProvider.js
++++ b/toolkit/mozapps/extensions/test/xpcshell/test_ModelHubProvider.js
+@@ -77,12 +77,12 @@ add_task(
+ 
+     const mockModels = [
+       {
+-        name: "model-hub.mozilla.org/org1/model-mock-1",
++        name: "localhost/org1/model-mock-1",
+         revision: "mockRevision1",
+         engineIds: [],
+       },
+       {
+-        name: "huggingface.co/org2/model-mock-2",
++        name: "localhost/org2/model-mock-2",
+         revision: "mockRevision2",
+         engineIds: [],
+       },
+@@ -106,8 +106,8 @@ add_task(
+ 
+     const mockModelShortNames = ["model-mock-1", "model-mock-2"];
+     const mockModelsHomepageURLs = [
+-      "https://huggingface.co/org1/model-mock-1/",
+-      "https://huggingface.co/org2/model-mock-2/",
++      "https://localhost/org1/model-mock-1/",
++      "https://localhost/org2/model-mock-2/",
+     ];
+ 
+     const listModelsStub = sandbox
+@@ -363,12 +363,12 @@ add_task(
+ 
+     const mockModels = [
+       {
+-        name: "model-hub.mozilla.org/org1/model-mock-1",
++        name: "localhost/org1/model-mock-1",
+         revision: "mockRevision1",
+         engineIds: [],
+       },
+       {
+-        name: "huggingface.co/org2/model-mock-2",
++        name: "localhost/org2/model-mock-2",
+         revision: "mockRevision2",
+         engineIds: [],
+       },
+-- 
+2.52.0
+
+
+From 12b0516433fcc7dc802e8b7619827ef218327137 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Tue, 22 Jul 2025 20:46:59 +0000
+Subject: [PATCH 8/9] Ensure 'Suggest more of my tabs' feature disabled
+
+It uses the Machine Learning engine (disabled by previous patch) to
+fetch the models. We remove vendored prebuilt dependencies in the
+PKGBUILD (see removals from 'toolkit/components/ml/'), and don't build
+them either, because of potential freedom issues and complexity of
+introducing them to pacman repositories.
+---
+ browser/app/profile/firefox.js         | 2 +-
+ browser/components/preferences/main.js | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index ea864c2f82..98b3c720d9 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -1063,7 +1063,7 @@ pref("browser.tabs.hoverPreview.showThumbnails", true);
+ pref("browser.tabs.groups.enabled", true);
+ pref("browser.tabs.groups.hoverPreview.enabled", true);
+ 
+-pref("browser.tabs.groups.smart.enabled", true);
++pref("browser.tabs.groups.smart.enabled", false);
+ 
+ #ifdef NIGHTLY_BUILD
+ pref("browser.tabs.notes.enabled", true);
+diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
+index a184086f10..b1738a6b1b 100644
+--- a/browser/components/preferences/main.js
++++ b/browser/components/preferences/main.js
+@@ -1804,6 +1804,7 @@ var gMainPane = {
+     const smartTabGroupFeatureEnabled =
+       Services.prefs.getBoolPref("browser.tabs.groups.smart.enabled", false) &&
+       Services.locale.appLocaleAsBCP47.startsWith("en");
++    // Patch should fail once upstream does changes to surrounding lines
+     tabGroupSuggestionsCheckbox.hidden = !smartTabGroupFeatureEnabled;
+ 
+     // The "opening multiple tabs might slow down Firefox" warning provides
+-- 
+2.52.0
+
+
+From b3dfe918d778f2f061ee10b4bf9f64de609e2ff4 Mon Sep 17 00:00:00 2001
+From: grizzlyuser <grizzlyuser@protonmail.com>
+Date: Mon, 16 Sep 2024 01:49:27 +0200
+Subject: [PATCH 9/9] Wipe Merino hostname, disable Weather & Yelp
+
+Merino is yet another source of suggestions, which can steer users
+towards installing nonfree software and/or other information for
+practical use. In this case, suggestions can contain links to websites
+of various providers, such as weather, Yelp, etc., which can serve, for
+example, nonfree JavaScript code. So remove Merino hostname and disable
+suggestions for Weather and Yelp since Iceweasel doesn't ship any
+providers for these.
+---
+ browser/app/profile/firefox.js                | 20 +++++++++----------
+ .../browser_searchbar_ohttpSessions.js        |  2 +-
+ browser/components/urlbar/UrlbarPrefs.sys.mjs |  2 +-
+ ...browser_searchSuggestions_ohttpSessions.js |  2 +-
+ .../quicksuggest/MerinoTestUtils.sys.mjs      |  2 +-
+ .../newtab/content-src/lib/utils.jsx          |  2 +-
+ .../data/content/activity-stream.bundle.js    |  4 ++--
+ .../CardSections.test.jsx                     |  2 +-
+ .../test/unit/content-src/lib/utils.test.jsx  |  2 +-
+ .../test/unit/lib/DiscoveryStreamFeed.test.js |  6 +++---
+ docs/rust-components/topic-guides/merino.md   |  6 +++---
+ .../api/ContentRecommendationEndpointRaw.kt   |  5 +----
+ .../api/ContentRecommendationsResponse.kt     |  6 ------
+ .../xpcshell/test_searchSuggest_ohttp.js      |  4 ++--
+ .../test_searchSuggest_ohttp_fallback.js      |  2 +-
+ .../test_searchSuggestionCountTelemetry.js    |  2 +-
+ 16 files changed, 30 insertions(+), 39 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 98b3c720d9..1bbc9301e9 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -461,7 +461,7 @@ pref("browser.urlbar.weather.uiTreatment", 0);
+ 
+ // If `browser.urlbar.weather.featureGate` is true, this controls whether
+ // weather suggestions are turned on.
+-pref("browser.urlbar.suggest.weather", true);
++pref("browser.urlbar.suggest.weather", false);
+ 
+ // If `browser.urlbar.trending.featureGate` is true, this controls whether
+ // trending suggestions are turned on.
+@@ -669,7 +669,7 @@ pref("browser.urlbar.keepPanelOpenDuringImeComposition", false);
+ pref("browser.urlbar.groupLabels.enabled", true);
+ 
+ // The Merino endpoint URL, not including parameters.
+-pref("browser.urlbar.merino.endpointURL", "https://merino.services.mozilla.com/api/v1/suggest");
++pref("browser.urlbar.merino.endpointURL", "");
+ 
+ // Timeout for Merino fetches (ms).
+ pref("browser.urlbar.merino.timeoutMs", 200);
+@@ -711,7 +711,7 @@ pref("browser.urlbar.mdn.featureGate", false);
+ 
+ // If `browser.urlbar.mdn.featureGate` is true, this controls whether
+ // mdn suggestions are turned on.
+-pref("browser.urlbar.suggest.mdn", true);
++pref("browser.urlbar.suggest.mdn", false);
+ 
+ // Feature gate pref for Yelp suggestions in the urlbar.
+ pref("browser.urlbar.yelp.featureGate", false);
+@@ -733,7 +733,7 @@ pref("browser.urlbar.yelp.serviceResultDistinction", false);
+ 
+ // If `browser.urlbar.yelp.featureGate` is true, this controls whether
+ // Yelp suggestions are turned on.
+-pref("browser.urlbar.suggest.yelp", true);
++pref("browser.urlbar.suggest.yelp", false);
+ 
+ // Feature gate pref for Fakespot suggestions in the urlbar.
+ // TODO Bug 1982966: Remove this after all experiments and rollouts using it
+@@ -1879,7 +1879,7 @@ pref("browser.newtabpage.activity-stream.unifiedAds.adsFeed.enabled", false);
+ pref("browser.newtabpage.activity-stream.unifiedAds.ohttp.enabled", false);
+ 
+ // Weather widget for newtab
+-pref("browser.newtabpage.activity-stream.showWeather", true);
++pref("browser.newtabpage.activity-stream.showWeather", false);
+ pref("browser.newtabpage.activity-stream.weather.query", "");
+ pref("browser.newtabpage.activity-stream.weather.display", "simple");
+ 
+@@ -1889,10 +1889,10 @@ pref("browser.newtabpage.activity-stream.images.smart", true);
+ pref("browser.newtabpage.activity-stream.weather.locationSearchEnabled", true);
+ 
+ // List of regions that get weather by default.
+-pref("browser.newtabpage.activity-stream.discoverystream.region-weather-config", "US,CA");
++pref("browser.newtabpage.activity-stream.discoverystream.region-weather-config", "");
+ 
+ // List of locales that weather widget supports.
+-pref("browser.newtabpage.activity-stream.discoverystream.locale-weather-config", "en-US,en-GB,en-CA");
++pref("browser.newtabpage.activity-stream.discoverystream.locale-weather-config", "");
+ 
+ // Promo card visibility
+ pref("browser.newtabpage.activity-stream.discoverystream.promoCard.visible", true);
+@@ -2041,10 +2041,10 @@ pref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.
+ // List of locales for contextual ads.
+ pref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.locale-config", "en-US,en-GB,en-CA");
+ 
+-pref("browser.newtabpage.activity-stream.discoverystream.merino-provider.endpoint", "merino.services.mozilla.com");
++pref("browser.newtabpage.activity-stream.discoverystream.merino-provider.endpoint", "");
+ pref("browser.newtabpage.activity-stream.discoverystream.merino-provider.ohttp.enabled", false);
+-pref("browser.newtabpage.activity-stream.discoverystream.ohttp.relayURL", "https://mozilla-ohttp.fastly-edge.com/");
+-pref("browser.newtabpage.activity-stream.discoverystream.ohttp.configURL", "https://prod.ohttp-gateway.prod.webservices.mozgcp.net/ohttp-configs");
++pref("browser.newtabpage.activity-stream.discoverystream.ohttp.relayURL", "");
++pref("browser.newtabpage.activity-stream.discoverystream.ohttp.configURL", "");
+ 
+ // List of regions that get spocs by default.
+ pref("browser.newtabpage.activity-stream.discoverystream.region-spocs-config", "US,CA,DE,GB,FR,IT,ES");
+diff --git a/browser/components/search/test/browser/browser_searchbar_ohttpSessions.js b/browser/components/search/test/browser/browser_searchbar_ohttpSessions.js
+index 7a8cd655ca..5221070819 100644
+--- a/browser/components/search/test/browser/browser_searchbar_ohttpSessions.js
++++ b/browser/components/search/test/browser/browser_searchbar_ohttpSessions.js
+@@ -76,7 +76,7 @@ add_setup(async function () {
+             suggestions: [
+               {
+                 title: "",
+-                url: "https://merino.services.mozilla.com",
++                url: "",
+                 provider: "google_suggest",
+                 is_sponsored: false,
+                 score: 1,
+diff --git a/browser/components/urlbar/UrlbarPrefs.sys.mjs b/browser/components/urlbar/UrlbarPrefs.sys.mjs
+index 0cc0db4889..23e3df8259 100644
+--- a/browser/components/urlbar/UrlbarPrefs.sys.mjs
++++ b/browser/components/urlbar/UrlbarPrefs.sys.mjs
+@@ -205,7 +205,7 @@ const PREF_URLBAR_DEFAULTS = /** @type {PreferenceDefinition[]} */ ([
+   ["merino.clientVariants", ""],
+ 
+   // The Merino endpoint URL, not including parameters.
+-  ["merino.endpointURL", "https://merino.services.mozilla.com/api/v1/suggest"],
++  ["merino.endpointURL", ""],
+ 
+   // OHTTP config URL for Merino requests.
+   ["merino.ohttpConfigURL", ""],
+diff --git a/browser/components/urlbar/tests/browser/browser_searchSuggestions_ohttpSessions.js b/browser/components/urlbar/tests/browser/browser_searchSuggestions_ohttpSessions.js
+index 3b63cac6de..46795618c7 100644
+--- a/browser/components/urlbar/tests/browser/browser_searchSuggestions_ohttpSessions.js
++++ b/browser/components/urlbar/tests/browser/browser_searchSuggestions_ohttpSessions.js
+@@ -72,7 +72,7 @@ add_setup(async function () {
+             suggestions: [
+               {
+                 title: "",
+-                url: "https://merino.services.mozilla.com",
++                url: "",
+                 provider: "google_suggest",
+                 is_sponsored: false,
+                 score: 1,
+diff --git a/browser/components/urlbar/tests/quicksuggest/MerinoTestUtils.sys.mjs b/browser/components/urlbar/tests/quicksuggest/MerinoTestUtils.sys.mjs
+index 413500453f..be88f49be0 100644
+--- a/browser/components/urlbar/tests/quicksuggest/MerinoTestUtils.sys.mjs
++++ b/browser/components/urlbar/tests/quicksuggest/MerinoTestUtils.sys.mjs
+@@ -167,7 +167,7 @@ class _MerinoTestUtils {
+     return {
+       provider: "geolocation",
+       title: "",
+-      url: "https://merino.services.mozilla.com/",
++      url: "",
+       is_sponsored: false,
+       score: 0,
+       custom_details: {
+diff --git a/browser/extensions/newtab/content-src/lib/utils.jsx b/browser/extensions/newtab/content-src/lib/utils.jsx
+index 524fa2acd7..486b3d16a9 100644
+--- a/browser/extensions/newtab/content-src/lib/utils.jsx
++++ b/browser/extensions/newtab/content-src/lib/utils.jsx
+@@ -283,7 +283,7 @@ function selectWeatherPlacement(state) {
+ 
+   const sections =
+     state.DiscoveryStream.feeds.data[
+-      "https://merino.services.mozilla.com/api/v1/curated-recommendations"
++      ""
+     ]?.data.sections ?? [];
+   // check the following prefs to make sure weather is elligible to be placed in sections
+   // 1. The daily brieifng section must be availible and in the top position
+diff --git a/browser/extensions/newtab/data/content/activity-stream.bundle.js b/browser/extensions/newtab/data/content/activity-stream.bundle.js
+index 307b89ec10..1b1d128697 100644
+--- a/browser/extensions/newtab/data/content/activity-stream.bundle.js
++++ b/browser/extensions/newtab/data/content/activity-stream.bundle.js
+@@ -2793,7 +2793,7 @@ function selectWeatherPlacement(state) {
+   if (placementPref === "header" || !placementPref) {
+     return "header";
+   }
+-  const sections = state.DiscoveryStream.feeds.data["https://merino.services.mozilla.com/api/v1/curated-recommendations"]?.data.sections ?? [];
++  const sections = state.DiscoveryStream.feeds.data[""]?.data.sections ?? [];
+   // check the following prefs to make sure weather is elligible to be placed in sections
+   // 1. The daily brieifng section must be availible and in the top position
+   // 2. That the daily briefing section has not been blocked
+@@ -17019,4 +17019,4 @@ function renderCache(initialState) {
+ }
+ NewtabRenderUtils = __webpack_exports__;
+ /******/ })()
+-;
+\ No newline at end of file
++;
+diff --git a/browser/extensions/newtab/test/unit/content-src/components/DiscoveryStreamComponents/CardSections.test.jsx b/browser/extensions/newtab/test/unit/content-src/components/DiscoveryStreamComponents/CardSections.test.jsx
+index 199657faa2..40798c2230 100644
+--- a/browser/extensions/newtab/test/unit/content-src/components/DiscoveryStreamComponents/CardSections.test.jsx
++++ b/browser/extensions/newtab/test/unit/content-src/components/DiscoveryStreamComponents/CardSections.test.jsx
+@@ -70,7 +70,7 @@ const DEFAULT_PROPS = {
+   },
+   feed: {
+     embed_reference: null,
+-    url: "https://merino.services.mozilla.com/api/v1/curated-recommendations",
++    url: "",
+   },
+ };
+ 
+diff --git a/browser/extensions/newtab/test/unit/content-src/lib/utils.test.jsx b/browser/extensions/newtab/test/unit/content-src/lib/utils.test.jsx
+index 3820f84e98..47a73b701c 100644
+--- a/browser/extensions/newtab/test/unit/content-src/lib/utils.test.jsx
++++ b/browser/extensions/newtab/test/unit/content-src/lib/utils.test.jsx
+@@ -255,7 +255,7 @@ describe("useConfetti hook", () => {
+ describe("selectWeatherPlacement", () => {
+   // literal URL used inside the selector
+   const FEED_URL =
+-    "https://merino.services.mozilla.com/api/v1/curated-recommendations";
++    "";
+ 
+   function mockState({
+     placement,
+diff --git a/browser/extensions/newtab/test/unit/lib/DiscoveryStreamFeed.test.js b/browser/extensions/newtab/test/unit/lib/DiscoveryStreamFeed.test.js
+index b8b6f080c6..3e854e221a 100644
+--- a/browser/extensions/newtab/test/unit/lib/DiscoveryStreamFeed.test.js
++++ b/browser/extensions/newtab/test/unit/lib/DiscoveryStreamFeed.test.js
+@@ -3770,7 +3770,7 @@ describe("DiscoveryStreamFeed", () => {
+         DiscoveryStream: {
+           feeds: {
+             data: {
+-              "https://merino.services.mozilla.com/api/v1/curated-recommendations":
++              "":
+                 {
+                   data: {
+                     sections: [
+@@ -3848,7 +3848,7 @@ describe("DiscoveryStreamFeed", () => {
+         DiscoveryStream: {
+           feeds: {
+             data: {
+-              "https://merino.services.mozilla.com/api/v1/curated-recommendations":
++              "":
+                 {
+                   data: {
+                     sections: [
+@@ -3934,7 +3934,7 @@ describe("DiscoveryStreamFeed", () => {
+         DiscoveryStream: {
+           feeds: {
+             data: {
+-              "https://merino.services.mozilla.com/api/v1/curated-recommendations":
++              "":
+                 {
+                   data: {
+                     sections: [
+diff --git a/docs/rust-components/topic-guides/merino.md b/docs/rust-components/topic-guides/merino.md
+index 006e0f3f98..96abdd28c4 100644
+--- a/docs/rust-components/topic-guides/merino.md
++++ b/docs/rust-components/topic-guides/merino.md
+@@ -1,6 +1,6 @@
+ # Curated Recommendations Client
+ 
+-Fetches personalized content recommendations from the Merino Service. [Merino Curated Recommendations API Docs](https://merino.services.mozilla.com/docs#/default/curated_content_api_v1_curated_recommendations_post)
++Fetches personalized content recommendations from the Merino Service.
+ 
+ The API for the `CuratedRecommendationsClient` can be found in the Mozilla Rust components [Kotlin API Reference](https://mozilla.github.io/application-services/kotlin/kotlin-components-docs/mozilla.appservices.merino/index.html) and [Swift API Reference](https://mozilla.github.io/application-services/swift/Classes/CuratedRecommendationsClient.html).
+ 
+@@ -38,7 +38,7 @@ The `CuratedRecommendationsClient` is initialized using a `CuratedRecommendation
+ ```kotlin
+ 
+ val config = CuratedRecommendationsConfig(
+-    baseHost = "https://merino.services.mozilla.com"
++    baseHost = "https://merino.example.invalid"
+     userAgentHeader = "Mozilla/5.0"
+ )
+ 
+@@ -49,7 +49,7 @@ val client = CuratedRecommendationsClient(config)
+ ```swift
+ 
+ let config = CuratedRecommendationsConfig(
+-    baseHost: "https://merino.services.mozilla.com"
++    baseHost: "https://merino.example.invalid"
+     userAgentHeader: "Mozilla/5.0"
+ )
+ 
+diff --git a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationEndpointRaw.kt b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationEndpointRaw.kt
+index cf9a6c89af..88926666ac 100644
+--- a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationEndpointRaw.kt
++++ b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationEndpointRaw.kt
+@@ -19,7 +19,7 @@ import org.json.JSONObject
+ 
+ @VisibleForTesting
+ internal const val ENDPOINT_URL =
+-    "https://merino.services.mozilla.com/api/v1/curated-recommendations"
++    ""
+ 
+ @VisibleForTesting
+ internal const val REQUEST_BODY_LOCALE_KEY = "locale"
+@@ -37,9 +37,6 @@ internal const val REQUEST_BODY_TOPICS_KEY = "topics"
+  * Performs requests to retrieve the content recommendations from the [endpointURL] server
+  * with the provided [config].
+  *
+- * See https://merino.services.mozilla.com/docs#/default/curated_content_api_v1_curated_recommendations_post
+- * for documentation of the API endpoint.
+- *
+  * @see [newInstance] to retrieve an instance.
+  *
+  * @property client The [Client] used for interacting with the content recommendations HTTP API.
+diff --git a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationsResponse.kt b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationsResponse.kt
+index a177ae9a99..52b4ee18df 100644
+--- a/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationsResponse.kt
++++ b/mobile/android/android-components/components/service/pocket/src/main/java/mozilla/components/service/pocket/recommendations/api/ContentRecommendationsResponse.kt
+@@ -9,9 +9,6 @@ import kotlinx.serialization.Serializable
+ /**
+  * The content recommendation payload response.
+  *
+- * This should follow the response schema in
+- * https://merino.services.mozilla.com/docs#/default/curated_content_api_v1_curated_recommendations_post.
+- *
+  * @property recommendedAt A timestamp indicating when the content recommendations was recommended.
+  * @property data A list of [ContentRecommendationResponseItem]s from the response payload.
+  */
+@@ -24,9 +21,6 @@ internal data class ContentRecommendationsResponse(
+ /**
+  * A content recommendation item in the payload response.
+  *
+- * This should follow the items schema in
+- * https://merino.services.mozilla.com/docs#/default/curated_content_api_v1_curated_recommendations_post.
+- *
+  * @property corpusItemId A content identifier that corresponds uniquely to the URL.
+  * @property scheduledCorpusItemId The ID of the scheduled corpus item for this recommendation.
+  * @property url The url of the recommendation.
+diff --git a/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp.js b/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp.js
+index 8d79056332..d4f6b253b4 100644
+--- a/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp.js
++++ b/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp.js
+@@ -98,7 +98,7 @@ add_task(async function simple_remote_results_merino() {
+           suggestions: [
+             {
+               title: "",
+-              url: "https://merino.services.mozilla.com",
++              url: "",
+               provider: "google_suggest",
+               is_sponsored: false,
+               score: 1,
+@@ -278,7 +278,7 @@ add_task(async function simple_remote_results_merino_third_party() {
+           suggestions: [
+             {
+               title: "",
+-              url: "https://merino.services.mozilla.com",
++              url: "",
+               provider: "google_suggest",
+               is_sponsored: false,
+               score: 1,
+diff --git a/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp_fallback.js b/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp_fallback.js
+index 84182b6de5..a2bebfeb35 100644
+--- a/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp_fallback.js
++++ b/toolkit/components/search/tests/xpcshell/test_searchSuggest_ohttp_fallback.js
+@@ -76,7 +76,7 @@ async function do_successful_request(controller) {
+           suggestions: [
+             {
+               title: "",
+-              url: "https://merino.services.mozilla.com",
++              url: "",
+               provider: "google_suggest",
+               is_sponsored: false,
+               score: 1,
+diff --git a/toolkit/components/search/tests/xpcshell/test_searchSuggestionCountTelemetry.js b/toolkit/components/search/tests/xpcshell/test_searchSuggestionCountTelemetry.js
+index 01079fe705..e2cb0b4898 100644
+--- a/toolkit/components/search/tests/xpcshell/test_searchSuggestionCountTelemetry.js
++++ b/toolkit/components/search/tests/xpcshell/test_searchSuggestionCountTelemetry.js
+@@ -90,7 +90,7 @@ add_setup(async function () {
+           suggestions: [
+             {
+               title: "",
+-              url: "https://merino.services.mozilla.com",
++              url: "",
+               provider: "google_suggest",
+               is_sponsored: false,
+               score: 1,
+-- 
+2.52.0
+

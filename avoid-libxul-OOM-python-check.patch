@@ -1,0 +1,31 @@
+diff --git a/config/rules.mk b/config/rules.mk
+index 0d7dd71..6f41c4c 100644
+--- a/config/rules.mk
++++ b/config/rules.mk
+@@ -421,7 +421,7 @@ ifeq (clang-cl_WINNT,$(CC_TYPE)_$(OS_ARCH))
+ 	$(LINKER) -OUT:$@ -PDB:$(LINK_PDBFILE) -IMPLIB:$(basename $(@F)).lib $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(MOZ_PROGRAM_LDFLAGS) $($(notdir $@)_OBJS) $(filter %.res,$^) $(STATIC_LIBS) $(SHARED_LIBS) $(OS_LIBS)
+ else # !WINNT || !clang-cl
+ 	$(call EXPAND_CC_OR_CXX,$@) -o $@ $(COMPUTED_CXX_LDFLAGS) $($(notdir $@)_OBJS) $(filter %.res,$^) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(STATIC_LIBS) $(MOZ_PROGRAM_LDFLAGS) $(SHARED_LIBS) $(OS_LIBS)
+-	$(call py_action,check_binary $(@F),$@)
++#	$(call py_action,check_binary $(@F),$@)
+ endif # WINNT && clang-cl
+ 
+ ifdef ENABLE_STRIP
+@@ -466,7 +466,7 @@ ifeq (clang-cl_WINNT,$(CC_TYPE)_$(OS_ARCH))
+ 	$(LINKER) -out:$@ -pdb:$(LINK_PDBFILE) $($@_OBJS) $(filter %.res,$^) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(MOZ_PROGRAM_LDFLAGS) $(STATIC_LIBS) $(SHARED_LIBS) $(OS_LIBS)
+ else
+ 	$(call EXPAND_CC_OR_CXX,$@) $(COMPUTED_CXX_LDFLAGS) -o $@ $($@_OBJS) $(filter %.res,$^) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(STATIC_LIBS) $(MOZ_PROGRAM_LDFLAGS) $(SHARED_LIBS) $(OS_LIBS)
+-	$(call py_action,check_binary $(@F),$@)
++#	$(call py_action,check_binary $(@F),$@)
+ endif # WINNT && clang-cl
+ 
+ ifdef ENABLE_STRIP
+@@ -537,7 +537,7 @@ $(SHARED_LIBRARY): $(OBJS) $(call resfile,$(SHARED_LIBRARY)) $(STATIC_LIBS) $(EX
+ 	$(call BUILDSTATUS,START_SharedLib $@)
+ 	$(RM) $@
+ 	$(MKSHLIB) $(if $(filter clang-cl_WINNT,$(CC_TYPE)_$(OS_ARCH)),-IMPLIB:$(basename $(@F)).lib )$($(notdir $@)_OBJS) $(filter %.res,$^) $(RELRHACK_LDFLAGS) $(LDFLAGS) $(STATIC_LIBS) $(SHARED_LIBS) $(EXTRA_DSO_LDOPTS) $(MOZ_GLUE_LDFLAGS) $(OS_LIBS)
+-	$(call py_action,check_binary,$@)
++#	$(call py_action,check_binary,$@)
+ 
+ ifeq (clang-cl_WINNT,$(CC_TYPE)_$(OS_ARCH))
+ endif	# WINNT && !GCC

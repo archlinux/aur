@@ -1,0 +1,13 @@
+share_extensions()
+{
+  mkdir -p usr/lib/firefox/browser/extensions
+
+  if   [[ -d usr/lib/iceweasel/browser/extensions ]]
+  then mv usr/lib/iceweasel/browser/extensions/* usr/lib/firefox/browser/extensions/
+       rmdir usr/lib/iceweasel/browser/extensions
+       ln -s ../../firefox/browser/extensions usr/lib/iceweasel/browser/extensions
+  fi
+}
+
+pre_install()  { share_extensions ; }
+post_install() { share_extensions ; }
