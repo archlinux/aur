@@ -53,7 +53,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd kitty-meow
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local ver
+  ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  if [[ -z "$ver" ]]; then
+    ver="0.40.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  fi
+  echo "$ver"
 }
 
 build() {
