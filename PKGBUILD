@@ -46,8 +46,11 @@ package() {
     "$pkgdir/usr/share/applications/cash-register.desktop"
 
   # Icons (hicolor)
-  find icons/hicolor -type f -name "*.png" -exec \
-    install -Dm644 "{}" "$pkgdir/usr/share/icons/{}" \;
+  for size in 16x16 32x32 48x48 64x64 128x128 256x256; do
+  install -Dm644 \
+    icons/hicolor/$size/apps/cash-register.png \
+    "$pkgdir/usr/share/icons/hicolor/$size/apps/cash-register.png"
+done
 
   # AppStream metadata
   install -Dm644 cash-register.metainfo.xml \
