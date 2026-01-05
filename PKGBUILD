@@ -24,14 +24,14 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export SQLX_OFFLINE=true
-    cargo build --frozen --release --all-features --no-default-features
+    cargo build --frozen --release --features full
 }
 
 check() {
     cd "$_reponame-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen --features full
 }
 
 package() {
