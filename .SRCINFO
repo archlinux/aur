@@ -1,21 +1,20 @@
 pkgbase = aocl-blis
 	pkgdesc = BLAS-like Library Instantiation Software Framework, AOCL branding
-	pkgver = 5.1
-	pkgrel = 3
+	pkgver = 5.2
+	pkgrel = 1
 	url = https://github.com/amd/blis
 	arch = x86_64
 	license = custom
 	makedepends = python
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = gcc-fortran
 	depends = gcc-libs
 	provides = blas
 	provides = cblas
 	conflicts = blas
 	conflicts = cblas
-	source = aocl-blis-5.1.tar.gz::https://github.com/amd/blis/archive/5.1.tar.gz
-	source = gcc15.patch::https://github.com/flame/blis/pull/874.patch
-	sha256sums = 4ab210cea8753f4be9646a3ad8e6b42c7d19380084a66312497c97278b8c76a4
-	sha256sums = 2085c834edf94e2c17c7c2abc9f3def5b120675812900fa394665fa7e726f9f8
+	source = aocl-blis-5.2.tar.gz::https://github.com/amd/blis/archive/5.2.tar.gz
+	sha256sums = c553bd543eedc87920df9b82634ae4c02662145ed737f51fdf4c9bca5e588028
 
 pkgname = aocl-blis

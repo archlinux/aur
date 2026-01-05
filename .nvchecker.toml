@@ -1,0 +1,3 @@
+[aocl-blis]
+source = "git"
+git = "https://github.com/amd/blis.git"
