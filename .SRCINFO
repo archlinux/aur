@@ -1,6 +1,6 @@
 pkgbase = keyguard
 	pkgdesc = Keyguard is an alternative client for the Bitwarden® platform & KeePass (KDBX), created to provide the best user experience possible.
-	pkgver = 20260102.2
+	pkgver = 20260105
 	pkgrel = 1
 	url = https://github.com/AChep/keyguard-app
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = keyguard
 	makedepends = java-environment>=21
 	options = !strip
 	options = !debug
-	source = keyguard-20260102.2.tar.gz::https://github.com/AChep/keyguard-app/archive/refs/tags/r20260102.2.tar.gz
-	sha256sums = 3574d4a1caf69503b247bd269adcb7744ef055cc7f83e9e37d91526b4b7d67ca
+	source = keyguard-20260105.tar.gz::https://github.com/AChep/keyguard-app/archive/refs/tags/r20260105.tar.gz
+	sha256sums = fe4b540913e296d3de0a9835683e4ae57c9fe09459a366f926b355cae1382169
 
 pkgname = keyguard
