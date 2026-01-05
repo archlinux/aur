@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20260105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lisuml/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = manjaro-hyprland-settings
 	makedepends = coreutils
 	provides = manjaro-desktop-settings
 	conflicts = manjaro-desktop-settings
-	source = https://github.com/lisuml/manjaro-hyprland-settings/archive/3620091e36146772cd9675e8da8ef55fb05fe7d6.zip
+	source = https://github.com/lisuml/manjaro-hyprland-settings/archive/293c173687c5f666a8df3985693f617f3e81836d.zip
 	sha256sums = SKIP
 
 pkgname = manjaro-hyprland-settings
