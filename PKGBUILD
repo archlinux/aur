@@ -8,7 +8,7 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("${url}/releases/download/v${pkgver}/appname_${pkgver}_amd64.deb")
+source=("${url}/releases/download/v${pkgver}/Holocure.Buddy_${pkgver}_amd64.deb")
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
