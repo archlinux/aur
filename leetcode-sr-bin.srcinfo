@@ -1,0 +1,18 @@
+pkgbase = leetcode-sr-bin
+	pkgdesc = CLI for LeetCode Spaced Repetition Tracker (Binary)
+	pkgver = v1.0.1_next
+	pkgrel = 1
+	url = https://github.com/VinMeld/leetcode-space-repition
+	license = MIT
+	depends = glibc
+	conflicts = leetcode-sr
+	conflicts = leetcode-sr-git
+	provides = leetcode-sr
+	arch = aarch64
+	source_aarch64 = https://github.com/VinMeld/leetcode-space-repition/releases/download/v1.0.1/leetcode-sr_v1.0.1-next_linux_arm64.tar.gz
+	sha256sums_aarch64 = a0eed1ce647f6e852d4f47963528971092a5d8f4de3cbe93ce3a249fdfd2e512
+	arch = x86_64
+	source_x86_64 = https://github.com/VinMeld/leetcode-space-repition/releases/download/v1.0.1/leetcode-sr_v1.0.1-next_linux_amd64.tar.gz
+	sha256sums_x86_64 = b8c714134e9c02123d0a12a54597d40d9c11f72eb99d45fa0f8a45f51099bd59
+	
+pkgname = leetcode-sr-bin
