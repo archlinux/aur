@@ -5,7 +5,7 @@
 
 pkgname='dasel'
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
@@ -25,6 +25,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+
+  case "Z$CARCH" in
+    'Zaarch64' | 'Zx86_64' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
+    ;;
+  esac
 
   export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
