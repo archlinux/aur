@@ -1,7 +1,7 @@
 pkgbase = holocure-buddy
 	pkgdesc = A companion app for HoloCure that tracks progress and provides random character selection
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dj-piplup/holocure-buddy-tauri
 	install = holocure-buddy.install
 	arch = x86_64
@@ -18,6 +18,6 @@ pkgbase = holocure-buddy
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/dj-piplup/holocure-buddy-tauri/releases/download/v2.0.4/appname_2.0.4_amd64.deb
+	source = https://github.com/dj-piplup/holocure-buddy-tauri/releases/download/v2.0.4/Holocure.Buddy_2.0.4_amd64.deb
 
 pkgname = holocure-buddy
