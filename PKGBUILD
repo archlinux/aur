@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 # Contributor: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=cai
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Use LLM to create git commit messages."
 arch=('any')
@@ -29,7 +29,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
-  '5bc4ae0ee21ded258924b6bd22b479ff2a58ab899e9585d5c766a49c15575d3b'
+  'b0ec601a99bcfb4e60218b22dbe1d42e179887365705ded390540a1b8600ef44'
 )
 build() {
     cd "$srcdir/cai-$pkgver"
