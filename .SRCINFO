@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-inja
+	pkgdesc = A template engine for modern C++ (mingw-w64)
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://pantor.github.io/inja/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-nlohmann-json
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/pantor/inja/archive/v3.5.0.tar.gz
+	sha256sums = a5f0266673c59028eab6ceeddd8b862c70abfeb32fb7a5387c16bf46f3269ab2
+
+pkgname = mingw-w64-inja
