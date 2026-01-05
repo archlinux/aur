@@ -1,6 +1,6 @@
 pkgname=holocure-buddy
-pkgver=2.0.4-2
-pkgrel=1
+pkgver=2.0.4
+pkgrel=2
 pkgdesc="A companion app for HoloCure that tracks progress and provides random character selection"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dj-piplup/holocure-buddy-tauri"
