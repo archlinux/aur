@@ -31,6 +31,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export SQLX_OFFLINE=true
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --features full
 }
 
