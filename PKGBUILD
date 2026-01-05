@@ -2,32 +2,21 @@
 # Contributor: <francois.archlinux.org>
 
 pkgname=culmus
-pkgver=0.133
-pkgrel=3
+pkgver=0.140
+pkgrel=1
 pkgdesc="A collection of Type1 and TrueType Hebrew fonts"
 arch=('any')
 url="http://culmus.sourceforge.net"
 license=('GPL2')
-source=(
-  "http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-  "${pkgname}-0.121-fontconfig_fix.patch"
-)
-sha256sums=('c0c6873742d07544f6bacf2ad52eb9cb392974d56427938dc1dfbc8399c64d05'
-            '6ba13854700bd9cdf6b8facd920082aed367bedabe10e93bd39cfe6bf8eb76fd')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('6daed104481007752a76905000e71c0093c591c8ef3017d1b18222c277fc52e3')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # fix due to fontconfig 2.10.1 update - patch mailed to upstream
-  # see also: http://culmus.sourceforge.net/faq.html#fcwarn
-  patch culmus.conf "${srcdir}/${pkgname}-0.121-fontconfig_fix.patch"
-}
 
 package() {
   # install Type1 fonts
   install -m755 -d "${pkgdir}/usr/share/fonts/Type1"
-  install -m644 "${srcdir}/culmus-${pkgver}/"*.{afm,pfa} \
-    "${pkgdir}/usr/share/fonts/Type1"
+  #install -m644 "${srcdir}/culmus-${pkgver}/"*.{afm,pfa} \
+  #  "${pkgdir}/usr/share/fonts/Type1"
 
   # install ttf fonts
   install -m755 -d "${pkgdir}/usr/share/fonts/TTF"
