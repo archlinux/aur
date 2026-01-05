@@ -1,42 +1,67 @@
-# Maintainer: Daniel Desancic <arch at malfunc dot org>
+# Maintainer: TomHu
+# Contributor: edwloef
+# Contributor: hannut
+# Contributor: Leo_Verto
+# Contributor: tsuflux
+# Contributor: sekret
 
 pkgname=roomeqwizard-beta
-pkgver=5.19_beta9
-_pkgver=5_19_beta9
-pkgrel=3
-pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses. Beta version!"
-arch=("any")
-url="http://www.roomeqwizard.com"
-license=("custom")
-depends=("java-environment")
-DLAGENTS=("https::/usr/bin/curl -b cookies.txt  -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source=("https://www.avnirvana.com/resources/rew-linux-installer-requires-java-7-or-8.18/download?version=55"
-        "cookies.txt")
-sha512sums=("8e15369d2009d87561975cd29c1c074ba00899623a5d3dbb042d8acbdcf34d7dfd7fb77ca5603e09f4099377fb025018e80635d7a53ab1b822c96cb1693f57a9"
-            "c786d8f95142f24e6e75e3b4bebb19371c45367054edb9f82606889fe65f6e1649a0f24325caa0f49613c25d8261c1aa744c620350c3b26319fb1d7d93243288")
+pkgver=5.40.beta.112
+_pkgver=5_40_beta_112-api
+pkgrel=1
+pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
+arch=('x86_64' 'aarch64')
+url="https://www.roomeqwizard.com"
+license=('custom')
+depends=('xdg-utils' 'bash' 'glibc' 'java-runtime>=8' 'alsa-lib')
+makedepends=('java-environment' 'fontconfig' 'freetype2')
+source=(
+    "http://www.roomeqwizard.com/installers/REW_linux_no_jre_$_pkgver.sh"
+    "https://www.roomeqwizard.com/Sampledata.mdat"
+)
+sha512sums=(
+#   '921872ff4be2cd09b3ee11a7bdca8f7e838c683e450c6886530a99861b9dd877441498bf2fc671e1e0414464b78ffdc15cca7fc7ee6da01a7aa63e181e2766ad'
+    'b8225028dc65cb745f69f0e5295ede79f7c01e4c89f980e019ed8a8783bb26a199b124f01563850a1b511c0e961c380044b992f1f0f07b84607292312a40e039'
+    '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
+)
 
 package() {
-    sh "download?version=55" -q -dir "$pkgdir/usr/lib/$pkgname"
+  export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
 
-    mkdir -p "$pkgdir/usr/bin" \
-        "$pkgdir/usr/share/licenses/$pkgname" \
-        "$pkgdir/usr/share/doc/$pkgname" \
-        "$pkgdir/usr/share/applications/$pkgname"
-  
-  ln -s "/usr/lib/$pkgname/roomeqwizard" "$pkgdir/usr/bin/$pkgname"
-  mv "$pkgdir/usr/lib/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
-  mv "$pkgdir/usr/lib/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  sh REW_linux_no_jre_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"  -J-Djava.util.prefs.userRoot=$srcdir/java.uprefs -J-Djava.util.prefs.systemRoot=$srcdir/java.sprefs
+
+  mkdir -p "$pkgdir/usr/bin" \
+           "$pkgdir/usr/share/icons" \
+           "$pkgdir/usr/share/licenses/$pkgname" \
+           "$pkgdir/usr/share/doc/$pkgname" \
+           "$pkgdir/usr/share/applications/$pkgname"
+
+
+  ln -s "/usr/share/java/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  mv "$pkgdir/usr/share/java/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
+  cp -L "$pkgdir/usr/share/java/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  rm "$pkgdir/usr/share/java/$pkgname/REW.desktop"
+
+  cp "$pkgdir/usr/share/java/$pkgname/.install4j/roomeqwizard.png" "$pkgdir/usr/share/icons/$pkgname.png"
+
+  cp Sampledata.mdat "$pkgdir/usr/share/doc/$pkgname/"
 
   # repair
-  sed "s%$pkgdir%%g" -i "$pkgdir/usr/lib/$pkgname/.install4j/response.varfile"
-  sed "s%$pkgdir%%g" -i "$pkgdir/usr/lib/$pkgname/.install4j/install.prop"
-
+  sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/java/$pkgname/.install4j/response.varfile"
+  sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/java/$pkgname/.install4j/install.prop"
   sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
-  sed "s/REW/Room EQ Wizard - Beta/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+
+  sed "s/REW/Room EQ Wizard/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  echo "Icon=/usr/share/icons/$pkgname.png" >> "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+
+  # fix waterfall crash
+  # https://www.avnirvana.com/threads/rew-for-linux-waterfall-drawing-problem.2956/
+  sed "s/^-Dsun.java2d.opengl=.*$/-Dsun.java2d.opengl=True/" -i "$pkgdir/usr/share/java/$pkgname/$pkgname.vmoptions"
 
   # basic cleanup
-  rm -rf "$pkgdir/usr/lib/$pkgname/.install4j/files.log"
-  rm -rf "$pkgdir/usr/lib/$pkgname/.install4j/installation.log"
-  rm -rf "$pkgdir/usr/lib/$pkgname/.install4j/uninstall.png"
-  rm -rf "$pkgdir/usr/lib/$pkgname/uninstall"
+  rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/files.log"
+  rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/installation.log"
+  rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/uninstall.png"
+  rm -f $pkgdir/usr/share/java/$pkgname/.install4j/*.desktop
+  rm -rf "$pkgdir/usr/share/java/$pkgname/uninstall"
 }
