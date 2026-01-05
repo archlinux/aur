@@ -1,0 +1,78 @@
+#!/bin/bash
+# kitty-meow-uninstall - Remove kitty-meow config and restore backup
+
+set -e
+
+CONFIG_DIR="$HOME/.config/kitty"
+
+echo "kitty-meow configuration uninstall"
+echo "==================================="
+
+# Find backups
+BACKUPS=$(find "$HOME/.config" -maxdepth 1 -type d -name "kitty-backup-*" 2>/dev/null | sort -r)
+
+if [[ -z "$BACKUPS" ]]; then
+    echo ""
+    echo "No backups found."
+    echo ""
+    read -p "Remove kitty-meow files from $CONFIG_DIR? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -f "$CONFIG_DIR/meow.conf"
+        rm -f "$CONFIG_DIR/tab_bar.py"
+        rm -f "$CONFIG_DIR/current-theme.conf"
+        rm -f "$CONFIG_DIR/font_size.conf"
+        # Remove include line from kitty.conf
+        if [[ -f "$CONFIG_DIR/kitty.conf" ]]; then
+            sed -i '/# kitty-meow configuration/d' "$CONFIG_DIR/kitty.conf"
+            sed -i '/include meow.conf/d' "$CONFIG_DIR/kitty.conf"
+        fi
+        echo "kitty-meow files removed."
+    else
+        echo "Cancelled."
+    fi
+    exit 0
+fi
+
+echo ""
+echo "Available backups:"
+echo ""
+i=1
+for backup in $BACKUPS; do
+    echo "  $i) $(basename "$backup") ($(date -r "$backup" '+%Y-%m-%d %H:%M:%S'))"
+    ((i++))
+done
+
+echo ""
+read -p "Enter backup number to restore (or 'q' to quit): " choice
+
+if [[ "$choice" == "q" ]]; then
+    echo "Cancelled."
+    exit 0
+fi
+
+# Get the selected backup
+SELECTED=$(echo "$BACKUPS" | sed -n "${choice}p")
+
+if [[ -z "$SELECTED" || ! -d "$SELECTED" ]]; then
+    echo "Invalid selection."
+    exit 1
+fi
+
+echo ""
+echo "This will:"
+echo "  1. Remove current $CONFIG_DIR"
+echo "  2. Restore from $SELECTED"
+echo ""
+read -p "Continue? [y/N] " -n 1 -r
+echo
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf "$CONFIG_DIR"
+    mv "$SELECTED" "$CONFIG_DIR"
+    echo ""
+    echo "Restored! Your original kitty config is back at $CONFIG_DIR"
+    echo "Restart Kitty to apply."
+else
+    echo "Cancelled."
+fi

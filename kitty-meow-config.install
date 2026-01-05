@@ -1,0 +1,44 @@
+post_install() {
+    echo ""
+    echo "=========================================="
+    echo "  kitty-meow-config installed!"
+    echo "=========================================="
+    echo ""
+    echo "To install the configuration, run:"
+    echo ""
+    echo "    kitty-meow-setup"
+    echo ""
+    echo "This will:"
+    echo "  - Backup your existing kitty config (if any)"
+    echo "  - Install the kitty-meow configuration"
+    echo ""
+    echo "Features included:"
+    echo "  - Custom tab bar with +, split, and close buttons"
+    echo "  - Ctrl++/Ctrl+- to zoom (persists across restarts)"
+    echo "  - Ctrl+0 to reset zoom"
+    echo "  - Breath color theme"
+    echo ""
+    echo "To restore your original config later:"
+    echo ""
+    echo "    kitty-meow-uninstall"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "kitty-meow-config upgraded!"
+    echo ""
+    echo "Run 'kitty-meow-setup' to update your config files."
+    echo "(Your current config will be backed up first)"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "kitty-meow-config is being removed."
+    echo ""
+    echo "Note: Your kitty config files in ~/.config/kitty"
+    echo "will NOT be removed. To restore your original config,"
+    echo "run 'kitty-meow-uninstall' before removing this package."
+    echo ""
+}

@@ -1,0 +1,24 @@
+pkgbase = kitty-meow-config
+	pkgdesc = Configuration files for kitty-meow: custom tab bar, persistent zoom, and theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ekats/kitty-meow
+	install = kitty-meow-config.install
+	arch = any
+	license = MIT
+	depends = bc
+	optdepends = kitty-meow-git: kitty fork with persistent selection
+	source = tab_bar.py
+	source = meow.conf
+	source = current-theme.conf
+	source = font_size.conf
+	source = kitty-meow-setup
+	source = kitty-meow-uninstall
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kitty-meow-config

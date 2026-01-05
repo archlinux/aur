@@ -1,0 +1,97 @@
+#!/bin/bash
+# kitty-meow-setup - Install kitty-meow configuration
+# Backs up existing config before installing
+
+set -e
+
+CONFIG_DIR="$HOME/.config/kitty"
+BACKUP_DIR="$HOME/.config/kitty-backup-$(date +%Y%m%d-%H%M%S)"
+SOURCE_DIR="/usr/share/kitty-meow-config"
+
+echo "kitty-meow configuration setup"
+echo "==============================="
+
+# Check if source files exist
+if [[ ! -d "$SOURCE_DIR" ]]; then
+    echo "Error: kitty-meow-config not installed at $SOURCE_DIR"
+    echo "Install it with: yay -S kitty-meow-config"
+    exit 1
+fi
+
+# Backup existing config if it exists
+if [[ -d "$CONFIG_DIR" ]]; then
+    echo ""
+    echo "Existing kitty config found at $CONFIG_DIR"
+    echo "Backing up to: $BACKUP_DIR"
+    cp -r "$CONFIG_DIR" "$BACKUP_DIR"
+    echo "Backup complete!"
+    echo ""
+fi
+
+# Create config directory if it doesn't exist
+mkdir -p "$CONFIG_DIR"
+
+# Copy kitty-meow files
+echo "Installing kitty-meow configuration..."
+cp "$SOURCE_DIR/tab_bar.py" "$CONFIG_DIR/"
+cp "$SOURCE_DIR/current-theme.conf" "$CONFIG_DIR/"
+cp "$SOURCE_DIR/font_size.conf" "$CONFIG_DIR/"
+cp "$SOURCE_DIR/meow.conf" "$CONFIG_DIR/"
+
+# Check if kitty.conf exists and add include
+if [[ -f "$CONFIG_DIR/kitty.conf" ]]; then
+    # Check if already includes meow.conf
+    if grep -q "include meow.conf" "$CONFIG_DIR/kitty.conf"; then
+        echo "kitty.conf already includes meow.conf"
+    else
+        echo ""
+        echo "Adding 'include meow.conf' to your kitty.conf..."
+        # Add include at the top after any existing theme block
+        if grep -q "END_KITTY_THEME" "$CONFIG_DIR/kitty.conf"; then
+            # Insert after theme block
+            sed -i '/# END_KITTY_THEME/a\\n# kitty-meow configuration\ninclude meow.conf' "$CONFIG_DIR/kitty.conf"
+        else
+            # Insert at top
+            sed -i '1i# kitty-meow configuration\ninclude meow.conf\n' "$CONFIG_DIR/kitty.conf"
+        fi
+        echo "Added include statement."
+
+        # Comment out any font_size line to prevent override
+        if grep -q "^font_size" "$CONFIG_DIR/kitty.conf"; then
+            echo "Commenting out font_size in kitty.conf (using font_size.conf instead)..."
+            sed -i 's/^font_size/# font_size  # Commented by kitty-meow (using font_size.conf)/' "$CONFIG_DIR/kitty.conf"
+        fi
+    fi
+else
+    # Create minimal kitty.conf that just includes meow.conf
+    echo "Creating kitty.conf with meow.conf include..."
+    cat > "$CONFIG_DIR/kitty.conf" << 'EOF'
+# kitty-meow configuration
+# Edit meow.conf to customize, or add your settings below
+include meow.conf
+EOF
+fi
+
+echo ""
+echo "Installation complete!"
+echo ""
+echo "Files installed:"
+echo "  - $CONFIG_DIR/meow.conf (main config)"
+echo "  - $CONFIG_DIR/tab_bar.py (custom tab bar)"
+echo "  - $CONFIG_DIR/current-theme.conf (color theme)"
+echo "  - $CONFIG_DIR/font_size.conf (persistent zoom)"
+echo ""
+echo "Features:"
+echo "  - Ctrl++/Ctrl+- to zoom (persists across restarts)"
+echo "  - Ctrl+0 to reset zoom"
+echo "  - Custom tab bar with +, split, and close buttons"
+echo "  - Persistent text selection (from kitty-meow-git)"
+echo ""
+if [[ -d "$BACKUP_DIR" ]]; then
+    echo "Your original config was backed up to:"
+    echo "  $BACKUP_DIR"
+    echo ""
+    echo "To restore: kitty-meow-uninstall"
+fi
+echo ""
+echo "Restart Kitty to apply changes."
