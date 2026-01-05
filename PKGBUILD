@@ -1,9 +1,9 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=extract-artwork-git
-pkgver=0.0.3.r1.gf416f3e
+pkgver=0.0.4.r9.g1b54d17
 pkgrel=1
-pkgdesc='extract artwork from media files  - git checkout'
+pkgdesc='extract artwork from media files - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/extract-artwork'
 depends=('ffmpeg')
@@ -32,7 +32,7 @@ pkgver() {
 build() {
 	cd extract-artwork/
 
-	make
+	make VERSION="${pkgver}-${pkgrel}"
 }
 
 package() {
