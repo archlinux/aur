@@ -1,16 +1,16 @@
 # Maintainer: Storm Dragon <storm_dragon@stormux.org>
 pkgname=python-libloader
 _pkgname=libloader
-pkgver=1.3.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Quickly and easily load shared libraries from various platforms. Also includes a libloader.com module for loading com modules on Windows."
 arch=('any')
 url="https://pypi.org/project/libloader/"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('4ae8d23626ee283274276b7ed90a9d849d44183bff450d3fcaee870f9ae44c5b1bdbe632c29b8e64d7d7f4ad84d4aa4e0500ae7a23ed6708c36346609a16e674')
+sha512sums=('bc4bf9e19fef811b52d383370f890f417cb911296c1645b1b66761b9b20a3281ec157d3eb4c6926c9433fa99f962f0ae9e37c9c9f82f36553904a512f6f7d3d2')
 
 build() {
     cd "$_pkgname-$pkgver"
