@@ -1,15 +1,15 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.13.0.alpha.27.reF1nd.1
-pkgrel=2
+pkgver=1.13.0.alpha.36.reF1nd
+pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/reF1nd/sing-box/tree/reF1nd-dev'
 license=('GPL3 with name use or association addition')
 
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'mold')
 provides=("$_pkgname")
 
 source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
@@ -34,7 +34,7 @@ pkgver() {
 }
 
 
-_tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale
+_tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale,with_naive_outbound
 build(){
     cd "$_pkgname"
 
@@ -43,6 +43,8 @@ build(){
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
     export VERSION=$(go run ./cmd/internal/read_tag)
+    export CGO_ENABLED=1
+    export CGO_LDFLAGS="-fuse-ld=mold"
 
     go build \
         -v \
