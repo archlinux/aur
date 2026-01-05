@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
@@ -24,7 +24,7 @@ source=(
 sha256sums=(
         '518474f546e87723c43b80143d83a51c065a8d54333c8140da6f48bc7d9e50c1'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
-        'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
+        '8f4ae16577e17ea497daca03228ab532886b8e89482f03ca770e809909a17867'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
         '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
         '0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2'
@@ -66,6 +66,10 @@ package() {
   pushd ${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/
   patch -p0 < ${srcdir}/spack.env.sh.patch
   patch -p0 < ${srcdir}/spack.patch
+
+  mkdir -p ${pkgdir}/opt/spack/
+  mv etc ${pkgdir}/opt/spack/
+  ln -s /opt/spack/etc etc
   popd
 
   pushd ${srcdir}
@@ -86,6 +90,5 @@ package() {
   # Fix mode to match polkit.
   install -d -o root -g polkitd -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
 
-  chown spack:spack /usr/lib/python${PYTHON_VERSION}/site-packages/etc/spack/
   popd
 }

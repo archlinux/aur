@@ -8,3 +8,5 @@ d /opt/spack/var/spack/environments 0755 spack spack
 d /opt/spack/opt 0755 spack spack
 d /opt/spack/opt/spack/ 0755 spack spack
 d /opt/spack/opt/spack/indices 0755 spack spack
+d /opt/spack/etc 0755 spack spack
+d /opt/spack/etc/spack 0755 spack spack
