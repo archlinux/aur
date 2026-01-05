@@ -2,7 +2,7 @@ pkgbase = brother-dcp7190dw-printer
 	pkgdesc = Brother DCP-7190DW printer driver for Arch Linux
 	pkgver = 4.0.0
 	pkgrel = 4
-	url = https://www.brother.com/
+	url = https://support.brother.com/g/b/downloadend.aspx?c=cn&lang=zh&prod=dcp7190dw_cn&os=127&dlid=dlf105155_000&flang=4&type3=10282
 	arch = i686
 	arch = x86_64
 	license = custom

@@ -6,7 +6,7 @@ pkgver=4.0.0
 pkgrel=4  # 只增加版本号
 pkgdesc="Brother DCP-7190DW printer driver for Arch Linux"
 arch=('i686' 'x86_64')
-url="https://www.brother.com/"
+url="https://support.brother.com/g/b/downloadend.aspx?c=cn&lang=zh&prod=dcp7190dw_cn&os=127&dlid=dlf105155_000&flang=4&type3=10282"
 license=('custom')
 depends=('cups' 'ghostscript' 'libcups' 'libusb')
 makedepends=(rpmextract)
