@@ -1,7 +1,7 @@
 # Maintainer: ddmoney420 <your-email@example.com>
 
 pkgname=torrent-vpn-stack
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Cross-platform Docker Compose stack for secure torrenting via VPN"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'cronie: alternative for automated backups'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ddmoney420/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('efb998c1b2be0fba8f4a01341606e352376e4ac7fb603a14c62db33e017734fc')
+sha256sums=('dc9b62bf40fa24407706c1e8b230fe3605551d7d5ef8b22e1fcfe5dd889d52a3')
 install="${pkgname}.install"
 backup=('.env')
 
