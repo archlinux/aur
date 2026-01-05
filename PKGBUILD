@@ -4,17 +4,17 @@
 
 _pkgname=kse
 pkgname=keystore-explorer
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc='KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner'
 arch=('any')
 url='https://keystore-explorer.org'
 license=('GPL-3.0-or-later')
-depends=('java-runtime<=21')
-makedepends=('gradle' 'java-environment<=21')
+depends=('java-runtime')
+makedepends=('gradle' 'java-environment')
 conflicts=('keystore-explorer-bin' 'keystore-explorer-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kaikramer/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('704cb6eba378dce4fad93c42581a14777a0ae2e1716ad6e51b66fe307896786192c3363342003dcff3af712b9dad7c0d7659195cc0448456738cef031d079064')
+b2sums=('6ee2e51ad9b7cbf0b0c8b8e0267421e4add2118f0eadb9c9a77c68d8113baafccbf0a1825e96c6252ebbce4bb15e5e15f13a817b244f5133820e3cd37d3bb13f')
 
 build() {
   cd "${pkgname}-${pkgver}"/${_pkgname}
