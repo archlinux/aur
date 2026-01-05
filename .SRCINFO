@@ -16,6 +16,7 @@ pkgbase = harlequin
 	depends = python-platformdirs
 	depends = python-pyperclip
 	depends = python-importlib-metadata
+	depends = python-tree-sitter-sql
 	depends = python-tomli
 	depends = python-tomlkit
 	depends = python-questionary
