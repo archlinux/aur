@@ -1,0 +1,22 @@
+From 66910ae1dea2fa0494726a91f5dea9ed8aeb0133 Mon Sep 17 00:00:00 2001
+From: sukanka <su975853527@gmail.com>
+Date: Fri, 19 Dec 2025 23:28:19 +0800
+Subject: [PATCH] fix for boost 1.89
+
+---
+ cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 2c197240d90..d6869f4976e 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -299,7 +299,7 @@ if(WASM_BUILD)
+ else()
+     # @todo review this, shouldn't this be all possible header-only now?
+     # ... or rewritten using C++17 features?
+-    set(BOOST_COMPONENTS system program_options regex thread date_time iostreams)
++    set(BOOST_COMPONENTS program_options regex thread date_time iostreams)
+ endif()
+ 
+ if(USE_MMAP)

@@ -1,0 +1,33 @@
+From 4523de2188f24b5051a37139bc65a170198694db Mon Sep 17 00:00:00 2001
+From: sukanka <su975853527@gmail.com>
+Date: Fri, 19 Dec 2025 23:27:43 +0800
+Subject: [PATCH] fix rpath
+
+fix insecure rpath for python wrapper
+---
+ src/ifcwrap/CMakeLists.txt  | 4 +-
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ifcwrap/CMakeLists.txt b/src/ifcwrap/CMakeLists.txt
+index 3ecf70cf4b6..676a48342c7 100644
+--- a/src/ifcwrap/CMakeLists.txt
++++ b/src/ifcwrap/CMakeLists.txt
+@@ -135,6 +135,6 @@
+ target_link_libraries(ifcopenshell_wrapper PRIVATE ${IFCOPENSHELL_LIBRARIES} ${LIBSVGFILL})
+ endif()
+ if ((NOT WIN32) AND BUILD_SHARED_LIBS)
+-    SET_INSTALL_RPATHS(ifcopenshell_wrapper "${IFCDIRS};${OCC_LIBRARY_DIR}")
++    SET_INSTALL_RPATHS(ifcopenshell_wrapper "${OCC_LIBRARY_DIR}")
+ endif()
+ 
+ # Try to find the Python interpreter to get the site-packages
+@@ -446,8 +446,8 @@
+     endif()
+ 
+     if("${OPENCOLLADA_LIBRARY_DIR}" STREQUAL "")
+         message(STATUS "No OpenCOLLADA library directory specified")
+         find_library(OPENCOLLADA_FRAMEWORK_LIB NAMES OpenCOLLADAFramework
+-            PATHS /usr/lib64/opencollada /usr/lib/opencollada /usr/lib64 /usr/lib /usr/local/lib64 /usr/local/lib)
++            PATHS /usr/lib/opencollada /usr/lib64/opencollada /usr/lib64 /usr/lib /usr/local/lib64 /usr/local/lib)
+         get_filename_component(OPENCOLLADA_LIBRARY_DIR ${OPENCOLLADA_FRAMEWORK_LIB} PATH)
+     endif()
