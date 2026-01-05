@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Path=/usr/bin
+Exec=/usr/bin/googleballs-desktop-gtk
+Icon=googleballs-desktop-gtk
