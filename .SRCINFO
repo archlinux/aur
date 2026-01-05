@@ -1,0 +1,16 @@
+pkgbase = kth-node
+	pkgdesc = High-performance Bitcoin Cash node written in C++23
+	pkgver = 0.75.0
+	pkgrel = 1
+	url = https://kth.cash/
+	arch = x86_64
+	license = MIT
+	makedepends = conan
+	makedepends = cmake
+	makedepends = git
+	makedepends = python-pip
+	depends = gcc-libs
+	depends = glibc
+	options = !strip
+
+pkgname = kth-node

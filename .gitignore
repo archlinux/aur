@@ -1,0 +1,4 @@
+installation-test/
+src/
+pkg/
+*.pkg.tar.zst
