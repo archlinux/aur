@@ -7,30 +7,45 @@
 # Contributor: 
 # 
 pkgname='wg_tool'
-pkgdesc='Manages wireguard VPN configuration (servers and users).'
+pkgdesc='Manage wireguard VPN configurations (servers and users).'
 _gitname='wg_tool'
 
-pkgver=9.1.0
+pkgver="9.2.2"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=('GPL-2.0-or-later')
-depends=('python>=3.13' 'python-cryptography' 'py-cidr'
-         'python-qrcode' 'wireguard-tools' 'nftables'
-         'pyconcurrent' 'python-yaml'
-         'python-dnspython'
-        )
+depends=(
+    'python>=3.13' 
+    'python-cryptography' 
+    'py-cidr'
+    'python-qrcode' 
+    'wireguard-tools' 
+    'nftables'
+    'pyconcurrent' 
+    'python-yaml'
+    'python-dnspython'
+)
 optdepends=(
     'python-argcomplete: For command line option completion'
     )
 
 # To build docs uncommont sphinx/texlive
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
-             #'python-sphinx' 'texlive-latexextra' # Docs
-            )
+makedepends=(
+    'git' 
+    'uv'
+    'python-uv-build'
+    'rsync'
+    #'python-sphinx' 'texlive-latexextra' # Docs
+)
 
-_mkpkg_depends=('python>minor')
+_mkpkg_depends=(
+    'python>minor'
+    'wireguard-tools>minor'
+    'python-cryptography>minor'
+    'nftables>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -49,13 +64,18 @@ changelog="Changelog.rst"
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    cd ./Docs
-#    make latexpdf > /dev/null ; make latexpdf > /dev/null
-#    make html > /dev/null
+    #    echo "Build docs"
+    #    pdf='wg_tool.pdf'
+    #    cd ./Docs
+    #    make latexpdf >/dev/null 2>&1
+    #    make latexpdf
+    #    /usr/bin/rm -f $pdf
+    #    /usr/bin/cp _build/latex/$pdf .
+    #    /usr/bin/rm -rf _build/doctrees _build/latex
+    #    make html
 }
 
 package() {

@@ -1,9 +1,23 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 8.1.0 ➙ 9.1.0
-              : 2025-09-17 ➙ 2025-11-27
+ Tags         : 8.2.0 ➙ 9.2.2
+              : 2025-09-18 ➙ 2026-01-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-05   : 9.2.2
+              - Fix typo in Docs/conf.py
+
+ 2026-01-05   : 9.2.1
+              - **9.2.1**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working correctly on python 3.14.2
+                  * 3.14 argparse introdiced color - it can be turned of with env PYTHON_COLORS=0.
+                    The colors are not currently adjustable - is improved in python 3.15.
+ 2025-11-27   ⋯
+              - update Docs Changelogs
 
  2025-11-27   : 9.1.0
               - Bug fix for issue #19: key roll fails, as reported by @hubbleshare
@@ -36,9 +50,3 @@
                   If desired, then python-argcomplete package should be installed.
  2025-09-17   ⋯
               - update Docs Changelogs
-
- 2025-09-17   : 8.1.0
-              - Fix bug checking working directory when not in the work dir
-                Fix typo in gateway report which made handshake be dropped.
-              - update Docs/wg_tool.pdf Docs/Changelogs
-              - update Docs/wg_tool.pdf Docs/Changelogs
