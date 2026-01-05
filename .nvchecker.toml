@@ -1,4 +1,4 @@
 [route-summarization]
-source = "github"
-github = "lquidfire/route-summarization"
-use_latest_release = true
+source = "git"
+git = "https://codeberg.org/peregrinus13/route-summarization.git"
+use_latest_release = "true"

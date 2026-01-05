@@ -9,8 +9,8 @@ pkgbase = route-summarization
 	depends = glibc
 	depends = perl
 	depends = perl-net-cidr-lite
-	source = route-summarization::git+https://github.com/lquidfire/route-summarization.git#tag=0.2
+	source = route-summarization::git+https://codeberg.org/peregrinus13/route-summarization.git#tag=0.2
 	validpgpkeys = E7AAC21597965C6259108D6F471F22BDE25DD664
-	sha256sums = d8ae45d66415665cdd6e59b3ffd70ad875d301636778f9e7a5cf66fe61b21ff2
+	sha256sums = 5834066adcc2a66effe00510abc7035b3f3541a82fb0929449505b4f9c2433a8
 
 pkgname = route-summarization
