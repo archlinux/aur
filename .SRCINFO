@@ -15,6 +15,6 @@ pkgbase = mx-packageinstaller
 	depends = sudo
 	depends = socat
 	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.01.tar.gz
-	sha256sums = PLACEHOLDER_NEEDS_ACTUAL_CHECKSUM
+	sha256sums = aabe8501eb444e60bf333c404eaa754bef15af1e69cd597c058df68bde6d3b22
 
 pkgname = mx-packageinstaller

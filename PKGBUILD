@@ -10,7 +10,7 @@ license=("GPL")
 depends=("qt6-base" "qt6-network" "qt6-xml" "xdg-utils" "sudo" "socat")
 makedepends=("cmake" "ninja" "qt6-tools")
 source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.01.tar.gz")
-sha256sums=('PLACEHOLDER_NEEDS_ACTUAL_CHECKSUM')
+sha256sums=('aabe8501eb444e60bf333c404eaa754bef15af1e69cd597c058df68bde6d3b22')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
