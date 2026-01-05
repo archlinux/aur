@@ -2,7 +2,7 @@
 # Maintainer: wquintal <williamquintal95@gmail.com>
 
 pkgname='logviewer-bin'
-pkgver=0.0.6
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='CLI log client for multiple sources (Splunk, K8s, Docker, etc)'
 url='https://github.com/bascanada/logviewer'
@@ -12,10 +12,10 @@ provides=('logviewer')
 conflicts=('logviewer')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f1e009b696e40f1f45e8e47f490f8720ee17445e2e62b3e110e607b7d524e3f5')
+sha256sums_aarch64=('50455dc5bcc7136f6f1a67e54e12e0def28f728423e68d989bb642889dc971c7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e3bea37da6c13f52a21aee8fcd1e7eb6cfe8206e29e690ae1807b688d25db93d')
+sha256sums_x86_64=('4463cec92e693ad0b53b8d7d59ec7f1ba4277c55a685c51d4155c928e711683e')
 
 package() {
   # bin is simply installed to /usr/bin
