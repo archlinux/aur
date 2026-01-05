@@ -1,7 +1,7 @@
 pkgbase = fish-catppuccin-git
 	pkgdesc = Soothing pastel theme for Fish Shell
-	pkgver = r61.b909666
-	pkgrel = 1
+	pkgver = r72.9d44b41
+	pkgrel = 2
 	url = https://github.com/catppuccin/fish
 	install = catppuccin.install
 	arch = any
@@ -15,11 +15,6 @@ pkgname = fish-catppuccin-frappe-git
 	pkgdesc = Soothing pastel theme for Fish Shell -- Frappe colorscheme
 	provides = fish-catppuccin-frappe
 	conflicts = fish-catppuccin-frappe
-
-pkgname = fish-catppuccin-latte-git
-	pkgdesc = Soothing pastel theme for Fish Shell -- Latte colorscheme
-	provides = fish-catppuccin-latte
-	conflicts = fish-catppuccin-latte
 
 pkgname = fish-catppuccin-macchiato-git
 	pkgdesc = Soothing pastel theme for Fish Shell -- Macchiato colorscheme

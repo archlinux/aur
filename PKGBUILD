@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Xarth <g at lzzz dot ink>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgbase=fish-catppuccin-git
 pkgname=(
 	'fish-catppuccin-frappe-git'
-	'fish-catppuccin-latte-git'
 	'fish-catppuccin-macchiato-git'
 	'fish-catppuccin-mocha-git')
 _pkg="${pkgbase%-git}"
-pkgver=r61.b909666
-pkgrel=1
+pkgver=r72.9d44b41
+pkgrel=2
 pkgdesc="Soothing pastel theme for Fish Shell"
 arch=('any')
 url='https://github.com/catppuccin/fish'
@@ -36,14 +36,6 @@ package_fish-catppuccin-frappe-git() {
 	conflicts=("${pkgname%-git}")
 
 	_package "Catppuccin Frappe"
-}
-
-package_fish-catppuccin-latte-git() {
-	pkgdesc+=' -- Latte colorscheme'
-	provides=("${pkgname%-git}")
-	conflicts=("${pkgname%-git}")
-
-	_package "Catppuccin Latte"
 }
 
 package_fish-catppuccin-macchiato-git() {
