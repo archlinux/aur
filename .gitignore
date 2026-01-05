@@ -1,2 +1,9 @@
-*.log
-*.tar.*
+*
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!matrirc.service
+!matrirc.sysusers
+!matrirc.tmpfiles
+!PKGBUILD
+!REUSE.toml
