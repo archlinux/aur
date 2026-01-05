@@ -1,0 +1,15 @@
+pkgbase = git-credential-keepassxc-bin
+	pkgdesc = Helper that allows Git (and shell scripts) to use KeePassXC as credential store (prebuilt binary)
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/Frederick888/git-credential-keepassxc
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gcc-libs
+	provides = git-credential-keepassxc
+	conflicts = git-credential-keepassxc
+	source = git-credential-keepassxc-0.14.1.zip::https://github.com/Frederick888/git-credential-keepassxc/releases/download/v0.14.1/ubuntu-latest-full.zip
+	sha256sums = SKIP
+
+pkgname = git-credential-keepassxc-bin
