@@ -53,4 +53,7 @@ package() {
 
     # Install example config
     install -Dm644 config/hyprkvm.example.toml "$pkgdir/usr/share/doc/$pkgname/hyprkvm.example.toml"
+
+    # Install systemd user service
+    install -Dm644 contrib/systemd/hyprkvm.service "$pkgdir/usr/lib/systemd/user/hyprkvm.service"
 }
