@@ -1,6 +1,6 @@
 pkgbase = video-compare
 	pkgdesc = Split screen video comparison tool using FFmpeg and SDL2
-	pkgver = 20250928
+	pkgver = 20260105
 	pkgrel = 1
 	url = https://github.com/pixop/video-compare
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = video-compare
 	depends = ffmpeg
 	depends = sdl2
 	depends = sdl2_ttf
-	source = video-compare-20250928.tar.gz::https://github.com/pixop/video-compare/archive/20250928.tar.gz
-	sha256sums = cdcdb764868cf358ef5337f68e7bfd4526ec3efac27cc35db70c4158e3dea99f
+	source = video-compare-20260105.tar.gz::https://github.com/pixop/video-compare/archive/20260105.tar.gz
+	sha256sums = 943ca8b115a1c47de98a05d357a64439a3860b2e3df26047d7fb3d4931fd35f6
 
 pkgname = video-compare
