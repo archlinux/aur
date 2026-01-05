@@ -1,7 +1,7 @@
 pkgbase = python-pyfamsa
 	pkgdesc = Cython bindings and Python interface to FAMSA, an algorithm for ultra-scale multiple sequence alignments
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/althonos/pyfamsa
 	arch = i686
 	arch = pentium4

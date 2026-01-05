@@ -3,7 +3,7 @@
 _name=pyfamsa
 pkgname=python-${_name}
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython bindings and Python interface to FAMSA, an algorithm for ultra-scale multiple sequence alignments"
 url="https://github.com/althonos/pyfamsa"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -20,9 +20,8 @@ build() {
 }
 
 check() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
     source "${srcdir}/env/bin/activate"
@@ -33,9 +32,8 @@ check() {
 }
 
 package() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
