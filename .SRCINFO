@@ -1,13 +1,14 @@
 pkgbase = nwchem-data
 	pkgdesc = High-performance computational chemistry software (data files)
-	pkgver = 7.2.3.10
+	pkgver = 7.3.1.1
 	pkgrel = 1
 	url = https://nwchemgit.github.io
 	arch = any
 	license = custom:ECL2.0
 	license = GPL3
+	options = !debug
 	options = !strip
-	source = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem-data_7.2.3-10_all.deb
-	sha256sums = 11357740241d24e66c01e59b92e69c0f2b94a3062f89801fcf745adf99e94c15
+	source = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem-data_7.3.1-1_all.deb
+	sha256sums = a52a7c2faf019043417ffd85d25b56d19fb8df60f0db39c5a9baeae46802c58e
 
 pkgname = nwchem-data
