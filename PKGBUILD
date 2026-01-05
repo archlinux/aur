@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=autohand-cli
-_npmver=0.6.7
+_npmver=0.6.8
 
 pkgname=${_npmname}
 pkgdesc="Ultra fast coding agent that runs in your terminal"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('87aba341b3f0b5e88bdb82554a07f76740f012c5c97ce85899f33260416aca62b46b8762b02c72780850934be6b80de87d0033ae592f9ff4e7378831b6657537')
+b2sums=('567feae3e6401dbb5014574f7ee6274aac1e63090f9079ccffe60c1d31d3fd3b87929160dd36fed05c5a84369224d67bd98626b06e7eebbb6815a46349513fc8')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
