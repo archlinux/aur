@@ -7,9 +7,20 @@ pkgrel=1
 pkgdesc="SCons-like build system that uses python as a front-end language and Ninja as a building backend"
 arch=(any)
 url="http://mesonbuild.com/"
-license=('Apache')
-depends=('python' 'ninja')
-makedepends=('git' 'python-build' 'python-installer')
+license=(Apache-2.0)
+depends=(
+  bash
+  ninja
+  python
+  python-tqdm)
+makedepends=(
+  git
+  python-aiohttp
+  python-build
+  python-installer
+  python-setuptools
+  python-strictyaml
+  python-wheel)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/mesonbuild/meson'
