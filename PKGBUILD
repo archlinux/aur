@@ -12,7 +12,7 @@ license=('AGPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('215f25088ef4a6c52d18e8ee572149c880f1eabf312909e9e87faad5ffe3f00e')
 
 build() {
 	cd "${pkgname}-${pkgver}"
