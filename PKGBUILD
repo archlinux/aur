@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('git')
 makedepends=('go')
 source=("https://github.com/tfkhdyt/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dae3573367f6ac63e90c90070b592d3bcd2cc6c2b64ad7b399274f43bd0833d2')
+sha256sums=('e26033eadc48a74f97104e7b3bbc730b32dfb93e33c2e7d13723291035cc4567')
 
 
 build() {
