@@ -1,0 +1,17 @@
+pkgbase = finar-bin
+	pkgdesc = A beautiful, modern multi-platform Jellyfin client built with Flutter. Source: https://gitlab.com/Openlyst/finar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Openlyst/finar
+	arch = x86_64
+	license = AGPL3
+	depends = mpv
+	depends = gtk3
+	depends = libmpv.so
+	provides = finar
+	conflicts = finar
+	options = !strip
+	source = finar-bin-1.0.0.zip::https://gitlab.com/Openlyst/finar/-/jobs/12544240289/artifacts/raw/doudou-1.0.0-linux-x64.zip
+	sha256sums = SKIP
+
+pkgname = finar-bin
