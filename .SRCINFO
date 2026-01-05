@@ -1,0 +1,21 @@
+pkgbase = ca-racing-bin
+	pkgdesc = Top-down 2D racing game written in Python (pre-compiled binary)
+	pkgver = 0.2.0_alpha
+	pkgrel = 2
+	url = https://github.com/piotrek1372/ca-racing
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = ca-racing
+	conflicts = ca-racing
+	options = !strip
+	source = ca-racing-0.2.0-alpha-x86_64.tar.gz::https://github.com/piotrek1372/ca-racing/releases/download/v0.2.0-alpha/ca-racing-0.2.0-alpha-x86_64.tar.gz
+	source = icon.png::https://raw.githubusercontent.com/piotrek1372/ca-racing/main/assets/images/icon.png
+	source = ca-racing.desktop
+	sha256sums = c42627fc027e92a187412347f0b736912e62a191c6d104747bd8eafe5ddbfd11
+	sha256sums = a906966a264865e6e8f5567106291f2bbb2b32fac1f9b598b04837b4f969aad9
+	sha256sums = 1daadbed224442b479eb435bb7927a3c16353acbf25eff04d7348202b07cf3f3
+
+pkgname = ca-racing-bin

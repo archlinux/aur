@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CA-Racing
+Comment=Top-down 2D racing game
+Exec=ca-racing
+Icon=ca-racing
+Terminal=false
+Categories=Game;Racing;
