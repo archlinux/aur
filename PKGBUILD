@@ -1,7 +1,7 @@
 # Maintainer: fdossena <info@fdossena.com>
 
 pkgname=flogo
-pkgver=1.2.1.r242.f1e07a3
+pkgver=1.2.2.r245.1d1b611
 pkgrel=1
 pkgdesc='Create and run programs using flow charts'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
