@@ -35,9 +35,9 @@ build() {
     export GOPATH="$srcdir/go"
     cd "go/src/github.com/odeke-em/$_basename"
     go install -v \
-        -gcflags "all=-trimpath=$GOPATH" \
-        -asmflags "all=-trimpath=$GOPATH" \
-        -ldflags "-extldflags $LDFLAGS" \
+        -gcflags "all=-trimpath=${GOPATH@Q}" \
+        -asmflags "all=-trimpath=${GOPATH@Q}" \
+        -ldflags "-extldflags ${LDFLAGS@Q}" \
         ./...
 }
 
