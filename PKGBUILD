@@ -19,9 +19,15 @@ install="${pkgname}.install"
 build() {
   cd "${srcdir}/kwin-focus-helper-${pkgver}"
 
-  # Keep cargo artifacts out of the source tree layout
+  # Ensure we use the system cargo/rustc (not rustup shim), even if run as root.
+  export PATH="/usr/bin:${PATH}"
+
+  # Keep cargo artifacts out of the source tree.
   export CARGO_TARGET_DIR="${srcdir}/cargo-target"
+
+  # Makepkg debuginfo: help ensure Rust emits usable debug info.
   export RUSTFLAGS="-C debuginfo=2"
+  export CARGO_PROFILE_RELEASE_DEBUG=true
 
   make build
 }
@@ -29,6 +35,7 @@ build() {
 package() {
   cd "${srcdir}/kwin-focus-helper-${pkgver}"
 
+  export PATH="/usr/bin:${PATH}"
   export CARGO_TARGET_DIR="${srcdir}/cargo-target"
 
   make install DESTDIR="${pkgdir}" prefix=/usr
