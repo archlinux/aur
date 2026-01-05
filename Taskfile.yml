@@ -1,0 +1,32 @@
+version: "3"
+
+vars:
+  REPO_URL: "https://github.com/AmaseCocoa/alter"
+
+tasks:
+  bump-ver:
+    vars:
+      NEW_VER: '{{.VER | default ""}}'
+    preconditions:
+      - sh: '[ -n "{{.NEW_VER}}" ]'
+        msg: "Please set version: task bump-ver VER=x.y.z"
+    cmds:
+      - sed -i 's/^pkgver=.*/pkgver={{.NEW_VER}}/' PKGBUILD
+      - sed -i 's/^pkgrel=.*/pkgrel=1/' PKGBUILD
+
+      - |
+        NEW_SUMS=$(makepkg -g 2>/dev/null)
+        sed -i '/^sha256sums=/,/)/d' PKGBUILD
+        echo "$NEW_SUMS" >> PKGBUILD
+
+      - makepkg --printsrcinfo > .SRCINFO
+
+      - git add PKGBUILD .SRCINFO
+      - git commit -m "bump version to {{.NEW_VER}}"
+
+      - cmd: echo "Successfully bumped to {{.NEW_VER}} and committed."
+        silent: true
+
+  clean:
+    cmds:
+      - rm -rf src/ pkg/ *.pkg.tar.zst
