@@ -7,14 +7,14 @@ _script=main.py
 pkgname=waydroid-script-git
 _pkgname=waydroid-script
 pkgver=r186.fcb1562
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Python Script to add OpenGapps, Magisk, libhoudini translation library and libndk translation library to waydroid"
 arch=('any')
 url="https://github.com/casualsnek/$_repo_name"
 license=(GPL-3.0-only)
 makedepends=(git)
-depends=(python-requests python-tqdm python-inquirerpy dbus-python lzip sqlite waydroid python)
+depends=(python-requests python-tqdm python-inquirerpy dbus-python lzip sqlite waydroid "python>=3.14")
 optdepends=()
 provides=(waydroid-script)
 conflicts=(waydroid-script)
