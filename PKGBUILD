@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Google Drive client for the command line (development version)"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/odeke-em/$_basename"
-license=("APACHE")
+license=('Apache-2.0')
 makedepends=("git" "go>=1.9")
 source=("$_basename::git+https://github.com/odeke-em/$_basename.git#branch=master"
         'qrcode.patch')
