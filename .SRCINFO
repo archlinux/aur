@@ -1,21 +1,21 @@
 pkgbase = philipstv-gui
 	pkgdesc = GUI remote for Philips Android-powered TVs.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/bcyran/philipstv-gui
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
-	makedepends = python-poetry-dynamic-versioning
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
 	depends = philipstv
 	depends = python-ttkbootstrap
 	depends = python-appdirs
-	source = https://files.pythonhosted.org/packages/source/p/philipstv_gui/philipstv_gui-2.0.0.tar.gz
+	source = philipstv_gui-2.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/philipstv_gui/philipstv_gui-2.0.1.tar.gz
 	source = philipstv-gui.desktop
-	sha256sums = 9d500b0bc1a75aef5ef6b899ae326b4a1e445e53bc5ba6fb7ec960c480bc8280
+	sha256sums = ebdf86df5743bed4a28a2ea4feab744e693f115f5df19e5f414ebea4421faec3
 	sha256sums = 483db659aa68f977f7e0a5ddfb0abe10233779833fb698cb59da94168e707860
 
 pkgname = philipstv-gui

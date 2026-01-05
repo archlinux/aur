@@ -2,16 +2,16 @@
 
 pkgname=philipstv-gui
 _pypi_pkgname="${pkgname//-/_}"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='GUI remote for Philips Android-powered TVs.'
 url='https://github.com/bcyran/philipstv-gui'
 depends=('python' 'philipstv' 'python-ttkbootstrap' 'python-appdirs')
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-poetry-dynamic-versioning')
+makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz" 'philipstv-gui.desktop')
-sha256sums=('9d500b0bc1a75aef5ef6b899ae326b4a1e445e53bc5ba6fb7ec960c480bc8280'
+source=("${_pypi_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz" 'philipstv-gui.desktop')
+sha256sums=('ebdf86df5743bed4a28a2ea4feab744e693f115f5df19e5f414ebea4421faec3'
             '483db659aa68f977f7e0a5ddfb0abe10233779833fb698cb59da94168e707860')
 
 build() {
