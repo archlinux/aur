@@ -7,7 +7,7 @@
 
 pkgname=ninja-kitware
 pkgver=1.13.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility'
 arch=(x86_64)
 url='https://github.com/Kitware/ninja'
