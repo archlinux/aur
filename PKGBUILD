@@ -11,7 +11,7 @@ pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="MoVie revieW inspired by fastfetch"
 
-license=('MIT')
+license=('GPL-3.0')
 arch=('any')
 
 _url_pypi='https://pypi.org/project/mvw/'
