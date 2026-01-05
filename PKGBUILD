@@ -1,6 +1,6 @@
 # Maintainer: Jay Cunningham <arch at crosscompiled dot com>
 pkgname=gnome-shell-extension-astra-monitor
-pkgver=36
+pkgver=38
 pkgrel=1
 pkgdesc="Astra Monitor is a cutting-edge, fully customizable, and performance-focused system monitoring extension for GNOME's top bar"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 _file_prefix=monitor@astraext.github.io
 # https://github.com/AstraExt/astra-monitor/releases/download/v34/monitor@astraext.github.io.shell-extension.zip
 source=("$pkgname-v$pkgver.zip::$url/releases/download/v$pkgver/$_file_prefix.shell-extension.zip")
-sha256sums=('7057d6b54814f9e14ec6c3b85a3e68de98059922fffaf0bbd51fe8e55041d491')
+sha256sums=('f26eb07bbad3fc50e29682aea40342c5871615d0d8bbb65c25de352ac6e19257')
 depends=('gnome-shell')
 optdepends=('libgtop: collecting system data' 'nethogs: network I/O')
 
