@@ -1,0 +1,31 @@
+pkgbase = klayout-pex
+	pkgdesc = Parasitic Extraction (PEX) tool for KLayout
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://iic-jku.github.io/klayout-pex-website
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-allure-commons
+	checkdepends = python-csv-diff
+	makedepends = git
+	makedepends = cmake
+	makedepends = protobuf
+	makedepends = abseil-cpp
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = klayout
+	depends = python
+	depends = python-matplotlib
+	depends = python-protobuf
+	depends = python-rich
+	depends = python-rich-argparse
+	optdepends = magic: For running parasitic exraction using MAGIC
+	source = klayout-pex::git+https://github.com/iic-jku/klayout-pex#tag=v0.3.7
+	source = 0001-fix-use-locally-installed-protobuf.patch
+	b2sums = 3f8bce85a4fa88634b89013993c4cac47c154715b7099213f611debac6f6be4aeabf3bb8e916a172cdd56bbbf431e3144d35393480862ec2d25cc8eb2f6d7c2a
+	b2sums = 6adf186dd2a46c1919d6d03e380628679926901975d160f416616ae5bfb905be9a96b88cac42966611539f647a742c106cb10d237bd0f404e369a0d909ad80de
+
+pkgname = klayout-pex

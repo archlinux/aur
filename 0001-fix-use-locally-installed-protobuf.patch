@@ -1,0 +1,57 @@
+From 322abe42012716872a94030c23e1ddffdc7da7e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Mon, 5 Jan 2026 02:01:16 +0100
+Subject: [PATCH] fix: use locally installed protobuf
+
+---
+ CMakeLists.txt | 27 ++++++++-------------------
+ 1 file changed, 8 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2242b97..82fc0ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,24 +34,8 @@ endif(MSVC)
+ #_____________________________________________________________________________________________
+ 
+ # add dependencies
+-include(cmake/CPM.cmake)
+-CPMAddPackage(
+-    NAME protobuf
+-    GIT_TAG v31.0
+-    GIT_REPOSITORY "https://github.com/protocolbuffers/protobuf.git"
+-    OPTIONS
+-        "protobuf_INSTALL OFF"
+-        "protobuf_BUILD_TESTS OFF"
+-        "protobuf_BUILD_SHARED_LIBS OFF"
+-        "protobuf_BUILD_EXAMPLES OFF"
+-        "ABSL_PROPAGATE_CXX_STD ON"
+-)
+-
+-#_____________________________________________________________________________________________
+-
+-# see https://github.com/protocolbuffers/protobuf/blob/main/docs/cmake_protobuf_generate.md
+-include(${protobuf_SOURCE_DIR}/cmake/protobuf-generate.cmake)
+-set(Protobuf_INCLUDE_DIRS ${protobuf_SOURCE_DIR}/src)
++find_package(Protobuf REQUIRED)
++find_package(absl REQUIRED)
+ 
+ set(PROTOBUF_SOURCES
+     ${CMAKE_CURRENT_LIST_DIR}/protos/kpex/c/capacitance.proto
+@@ -72,7 +56,12 @@ set(PROTOBUF_SOURCES
+ 
+ add_library(kpex-protobuf OBJECT ${PROTOBUF_SOURCES})
+ 
+-target_link_libraries(kpex-protobuf PUBLIC protobuf::libprotobuf)
++target_link_libraries(kpex-protobuf PUBLIC
++	protobuf::libprotobuf
++	absl::log_internal_check_op
++	absl::log_internal_message
++	absl::status
++)
+ 
+ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/generated")
+ set(PROTOBUF_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
+-- 
+2.52.0
+
