@@ -1,6 +1,6 @@
 # Maintainer: Skylab <si.ni.cyn+aur át bk d၀t ru>
  pkgname=video-collector-client
- pkgver=22
+ pkgver=24
  pkgrel=1
  pkgdesc="Клиент для сервиса загрузки видео с видеохостингов в локальное хранилище для дальнейшего автономного просмотра"
  arch=('x86_64')

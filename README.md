@@ -4,7 +4,10 @@
 
 <br>
 
-- Обновление .SRCINFO:
+### Публикация версии
+
+- изменить версию `pkgver` в `PKGBUILD`
+- обновить `.SRCINFO`:
   ```shell
   makepkg --printsrcinfo > .SRCINFO
   ```
