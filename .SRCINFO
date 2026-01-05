@@ -1,0 +1,22 @@
+pkgbase = brother-dcp7190dw-printer
+	pkgdesc = Brother DCP-7190DW printer driver for Arch Linux
+	pkgver = 4.0.0
+	pkgrel = 4
+	url = https://www.brother.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	depends = libcups
+	depends = libusb
+	optdepends = gsfonts: for additional fonts support
+	optdepends = hplip: for HP printer support if needed alongside Brother printers
+	optdepends = cups-pdf: for PDF virtual printer support
+	optdepends = system-config-printer: for better printer management integration with desktop environments like GNOME
+	optdepends = python-pycups: required by system-config-printer for CUPS communication
+	source = https://d.brother-movie.com/driver/362/dcp7190dwpdrv-4.0.0-1.i386.rpm
+	md5sums = 7f0cb9cee416fac96b52ff25ade0280a
+
+pkgname = brother-dcp7190dw-printer
