@@ -18,11 +18,13 @@ pkgbase = klayout-pex
 	makedepends = python-poetry-core
 	depends = klayout
 	depends = python
-	depends = python-matplotlib
 	depends = python-protobuf
 	depends = python-rich
 	depends = python-rich-argparse
-	optdepends = magic: For running parasitic exraction using MAGIC
+	optdepends = python-matplotlib
+	optdepends = python-cairosvg
+	optdepends = magic: Alternative parasitic extraction backend
+	optdepends = meshlab: For previewing 3D geometries (STL) representing input to FasterCap
 	source = klayout-pex::git+https://github.com/iic-jku/klayout-pex#tag=v0.3.7
 	source = 0001-fix-use-locally-installed-protobuf.patch
 	b2sums = 3f8bce85a4fa88634b89013993c4cac47c154715b7099213f611debac6f6be4aeabf3bb8e916a172cdd56bbbf431e3144d35393480862ec2d25cc8eb2f6d7c2a
