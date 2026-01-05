@@ -1,6 +1,6 @@
 pkgbase = carapace-aws-bin
 	pkgdesc = An enriched aws completer
-	pkgver = 0.0.29
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://github.com/carapace-sh/carapace-aws
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = carapace-aws-bin
 	provides = carapace-aws
 	arch = aarch64
 	source_aarch64 = https://github.com/carapace-sh/carapace-aws/releases/download/v${pkgver}/carapace-aws_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = d6a6baf635e03cd6426b6ba380f53a0318159c31e913bf7800d0b071d58613d8
+	sha256sums_aarch64 = f9238d3df627c8251b6102ede8f92fcd53bc1a2344b2038b5392353af909179c
 	arch = i686
 	source_i686 = https://github.com/carapace-sh/carapace-aws/releases/download/v${pkgver}/carapace-aws_${pkgver}_linux_386.tar.gz
-	sha256sums_i686 = 923a533bfbb2e3d17be0300804a12e62ee3cf19cddf2fab736fb74259855a8d7
+	sha256sums_i686 = bbaa3be00f229fd7d53897d3454446256cf39768a86620a9070fa2d83380fd92
 	arch = x86_64
 	source_x86_64 = https://github.com/carapace-sh/carapace-aws/releases/download/v${pkgver}/carapace-aws_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2c8d5d2c4d09db0feeebb19a302cd03800ab5195eb63aa7801a4c5d538bf026c
+	sha256sums_x86_64 = cdd7814668766454060cd0c34404233d25416a59d17e8b348716089e3a7a30f4
 	
 pkgname = carapace-aws-bin
