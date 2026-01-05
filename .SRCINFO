@@ -1,0 +1,17 @@
+pkgbase = clock.rs-git
+	pkgdesc = A simple terminal clock written in Rust
+	pkgver = r5.1610e16
+	pkgrel = 1
+	url = https://github.com/medispis/clock.rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = clock.rs
+	conflicts = clock.rs
+	source = clock.rs::git+https://github.com/medispis/clock.rs.git
+	sha256sums = SKIP
+
+pkgname = clock.rs-git
