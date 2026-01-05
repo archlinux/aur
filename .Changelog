@@ -1,0 +1,11 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Archlinux Package Versioning](https://wiki.archlinux.org/title/Arch_package_guidelines#Package_versioning)
+
+## [4.5.5-2] - 2026-01-04
+
+### Fixed
+- Icon Name being replaced wrongly on `.desktop` file.

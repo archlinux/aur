@@ -14,7 +14,7 @@ _mirror="https://download.blender.org"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
@@ -28,7 +28,7 @@ _setvars() {
 
 build() {
   _setvars
-	sed -i "s/=blender/=blender-lts/" $_base_dir/blender.desktop
+	sed -i "s/=Exec=blender/=blender-lts/" $_base_dir/blender.desktop
 	sed -i "s/Name=Blender/Name=Blender LTS/" $_base_dir/blender.desktop
   #TODO MAKE SOME sed to .desktop to replace blender with blender-lts
 }
