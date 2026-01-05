@@ -1,17 +1,16 @@
 pkgbase = python-juliacall
 	pkgdesc = Julia and Python in seamless harmony
-	pkgver = 0.9.28
+	pkgver = 0.9.31
 	pkgrel = 1
-	url = https://pypi.org/project/juliacall/
+	url = https://github.com/JuliaPy/PythonCall.jl
 	arch = x86_64
-	license = None
+	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools
 	makedepends = python-hatchling
-        depends=python-juliapkg
-	source = https://files.pythonhosted.org/packages/8b/3b/7868cf2950693fada87a534d615db865d226272e65900ebc0fbc90ce80a2/juliacall-0.9.28.tar.gz
-	sha256sums = bf4b6f37ebc70e25979b0fc449285a6b6b066bcbbf202d027ca271319d30c5b8
+	depends = python-juliapkg
+	source = PythonCall.jl-0.9.31.tar.gz::https://github.com/JuliaPy/PythonCall.jl/archive/v0.9.31.tar.gz
+	sha512sums = 091d9cc2b60ae934938fe9ad1e5826d8ff6d51337c6c72a9e5c457b4efd82ee15f6cf52744943cb07d7694247bbaf303bac5de355674038a9d1317082288e348
 
 pkgname = python-juliacall
