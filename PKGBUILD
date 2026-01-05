@@ -1,7 +1,7 @@
 # Maintainer: Ethan M <SirEthanator@noreply.users.github.com>
 
 pkgname=cbmp-rs
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A CLI for converting cursor SVG files to PNG files.'
 url='https://github.com/SirEthanator/cbmp-rs'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=()
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7602793d7ad0508982f0fb1197da79ebc6c26dd784ee9382b0dce07d51a4db0c')
+sha256sums=('d0735d5acd288371a6a09325d4cca6f971959ed8db135327876b6e1c82c25d16')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
