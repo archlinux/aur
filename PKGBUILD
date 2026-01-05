@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=evtx
 pkgname=python-py${_base}
-pkgver=0.8.9
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Python bindings for ${_base}"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-installer maturin)
 checkdepends=(python-pytest)
 source=(py${_base}-rs-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('a7d8fe25e98ceb35730aa7a280345d7af5d2b79d07603cfc14f499b2fffdb264f2a2653e9fa5ef6ccf23c9cf0e03f003605def7babe136649e19235a2c11bf7c')
+sha512sums=('8ce8bfa9e521943eb8ea43c73ca4b24e54c480813811a653d0741d08aaa5376490d475360c3caeadadc0e9f21d529b0106d2545fc5d73dc24d75d0919ff6fc77')
 
 prepare() {
   cd py${_base}-rs-${pkgver}
