@@ -3,7 +3,7 @@
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.5.3
+pkgver=3.6
 pkgrel=1
 pkgdesc="Automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
@@ -32,7 +32,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('c5d44c0efaf8e09b987b507aa34859d95a28294a9d2655a5735d13a30529512a')
+sha256sums=('f54177b0008a9d4deee60c2ba2f8de90aaca84fa6f30b50a236df472935c788c')
 
 prepare() (
   python -m venv venv
