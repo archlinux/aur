@@ -1,27 +1,25 @@
 pkgbase = zfs-dkms-git
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 2.4.99.r2.gb6bd3228bb
+	pkgver = 2.4.99.r305.gb9b84445ea
 	pkgrel = 1
 	epoch = 2
 	url = https://zfsonlinux.org/
 	arch = any
 	groups = zfs-git
-	license = LicenseRef-CDDL
+	license = CDDL-1.0
 	makedepends = git
-	provides = ZFS-MODULE=2.4.99.r2.gb6bd3228bb
-	provides = SPL-MODULE=2.4.99.r2.gb6bd3228bb
-	provides = zfs-dkms=2.4.99.r2.gb6bd3228bb
+	provides = zfs=2.4.99.r305.gb9b84445ea
+	provides = zfs-dkms=2.4.99.r305.gb9b84445ea
+	provides = ZFS-MODULE=2.4.99.r305.gb9b84445ea
+	provides = SPL-MODULE=2.4.99.r305.gb9b84445ea
 	conflicts = zfs-dkms
 	source = git+https://github.com/openzfs/zfs.git
 	source = 0001-only-build-the-module-in-dkms.conf.patch
-	source = 0002-only-build-the-module-in-configure.ac.patch
 	sha256sums = SKIP
 	sha256sums = 3e742db489eec60dbabb52178f590b96e29b166f359fc2167e188eeabceb0921
-	sha256sums = 20704bcdc1fb9ec4ff6b0f308e994b3757e2b3cd327e3adddc432921a11af34f
 	b2sums = SKIP
 	b2sums = 62ea720676e0cbf096d8c5f3b944d77ce6f3f54f55e221f80afd00061d577b5dea177150cfc785bb91586f93e1b3eb500661b38bb4d2cba26e8929b245957ee3
-	b2sums = b14e3634bed825f7bd24ceee3435ac2673bdd13abca74647252827ffd6fc22329a7f191d8de04c85eaf43dfbcb968952e1f3af7d0b1d04563a8877e756f6dfd2
 
 pkgname = zfs-dkms-git
 	depends = dkms
-	depends = zfs-utils-git=2:2.4.99.r2.gb6bd3228bb
+	depends = zfs-utils-git=2:2.4.99.r305.gb9b84445ea
