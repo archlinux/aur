@@ -1,0 +1,5 @@
+[skyterm]
+source = "github"
+github = "craigderington/skyterm"
+use_latest_release = true
+prefix = "v"
