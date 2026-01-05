@@ -38,6 +38,7 @@ pkgbase = kitty-meow-git
 	optdepends = imagemagick: viewing images with icat
 	optdepends = python-pygments: syntax highlighting in kitty +kitten diff
 	optdepends = libcanberra: playing "bell" sound on terminal bell
+	optdepends = kitty-meow-config: custom tab bar, persistent zoom, and theme
 	provides = kitty
 	conflicts = kitty
 	conflicts = kitty-git

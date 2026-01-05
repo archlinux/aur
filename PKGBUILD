@@ -44,7 +44,8 @@ makedepends=(
 )
 optdepends=('imagemagick: viewing images with icat'
             'python-pygments: syntax highlighting in kitty +kitten diff'
-            'libcanberra: playing "bell" sound on terminal bell')
+            'libcanberra: playing "bell" sound on terminal bell'
+            'kitty-meow-config: custom tab bar, persistent zoom, and theme')
 provides=(kitty)
 conflicts=(kitty kitty-git)
 source=("git+${url}.git")
