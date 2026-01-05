@@ -1,13 +1,13 @@
 pkgbase = vlink
 	pkgdesc = A portable linker for multiple file formats including AmigaOS hunk format. A companion to the vasm assembler.
-	pkgver = 0.18
+	pkgver = 0.18a
 	pkgrel = 1
 	url = http://sun.hasenbraten.de/vlink/
 	arch = any
 	license = custom
-	source = http://phoenix.owl.de/tags/vlink0_18.tar.gz
+	source = http://phoenix.owl.de/tags/vlink0_18a.tar.gz
 	source = http://sun.hasenbraten.de/vlink/release/vlink.pdf
-	sha256sums = a40c3313ef5b0956cad8f140557b70ee88a9e96cf14bbc3276cca565fa0fdf01
-	sha256sums = e1017b057bd14aba7a4f7062cee56971dbe8a2bb4001a58dd358a11889f31a97
+	sha256sums = 8d151cdd30a4feb575a364e68810c2bc300fe1a7c074dbbee6fd1175a6c5bfae
+	sha256sums = 816c80ee3f8d0f9bab892869baa34017ce8f49962cfc2a3d5475d8adb9f8daa7
 
 pkgname = vlink

@@ -5,8 +5,8 @@
 #
 
 pkgname=vlink
-pkgver=0.18
-_pkgver="0_18"
+pkgver=0.18a
+_pkgver="0_18a"
 pkgrel=1
 pkgdesc="A portable linker for multiple file formats including AmigaOS hunk format. A companion to the vasm assembler."
 arch=('any')
@@ -16,8 +16,8 @@ depends=()
 #source=(http://sun.hasenbraten.de/vlink/release/vlink.tar.gz) # latest unversioned source url
 source=(http://phoenix.owl.de/tags/${pkgname}${_pkgver}.tar.gz 
         http://sun.hasenbraten.de/vlink/release/vlink.pdf)
-sha256sums=('a40c3313ef5b0956cad8f140557b70ee88a9e96cf14bbc3276cca565fa0fdf01'
-            'e1017b057bd14aba7a4f7062cee56971dbe8a2bb4001a58dd358a11889f31a97')
+sha256sums=('8d151cdd30a4feb575a364e68810c2bc300fe1a7c074dbbee6fd1175a6c5bfae'
+            '816c80ee3f8d0f9bab892869baa34017ce8f49962cfc2a3d5475d8adb9f8daa7')
 
 prepare()
 {
