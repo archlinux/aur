@@ -5,13 +5,11 @@ pkgbase = bbkeys
 	url = http://bbkeys.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	groups = blackbox
-	license = custom
-	depends = blackboxwm
+	license = MIT
+	depends = blackbox
 	source = https://github.com/bbidulock/bbkeys/releases/download/rel-092/bbkeys-0.9.2.tar.lz
 	source = bbkeys.desktop
 	md5sums = 485da98b03cad8e918c7766878af18fd
 	md5sums = ff91c4fec02f829820b369d5a0a4d000
 
 pkgname = bbkeys
-

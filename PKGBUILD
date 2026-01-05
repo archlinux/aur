@@ -8,13 +8,27 @@ pkgrel=1
 pkgdesc="Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop"
 arch=('i686' 'x86_64')
 url="http://bbkeys.sourceforge.net/"
-license=('custom')
-groups=('blackbox')
-depends=('blackboxwm')
+license=('MIT')
+depends=('blackbox')
 source=("https://github.com/bbidulock/$pkgname/releases/download/rel-092/$pkgname-$pkgver.tar.lz"
 	"bbkeys.desktop")
 md5sums=('485da98b03cad8e918c7766878af18fd'
          'ff91c4fec02f829820b369d5a0a4d000')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # Build with shared library
+  sed -i '/bbkeys_LDADD/d' src/Makefile.am
+
+  # Don't crash on empty lines
+  sed -i 's/file.good() && /& !line.empty() \&\& /' src/FileTokenizer.cpp
+
+  # Fix path
+  sed -i 's|~/local/blackbox-CVS|/usr|' data/bbkeysrc
+
+  autoreconf -fi
+}
 
 build() {
   cd $pkgname-$pkgver
