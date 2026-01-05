@@ -3,7 +3,7 @@
 
 pkgname=vscodium-insiders-git
 pkgver=1.107.18627.r1.g3bf7629
-pkgrel=2
+pkgrel=3
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode Insiders (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -162,8 +162,8 @@ package() {
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
 
-    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
-    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
+    ln -s /usr/share/${pkgname}/bin/codium-insiders ${pkgdir}/usr/bin/codium
+    ln -s /usr/share/${pkgname}/bin/codium-insiders ${pkgdir}/usr/bin/vscodium
 
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -D -m644 ${pkgname}-wayland.desktop ${pkgdir}/usr/share/applications/${pkgname}-wayland.desktop
