@@ -1,7 +1,7 @@
 pkgbase = roomeqwizard-beta
 	pkgdesc = A room acoustics analysis software for measuring and analysing room and loudspeaker responses
 	pkgver = 5.40.beta.112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.roomeqwizard.com
 	arch = x86_64
 	arch = aarch64

@@ -6,9 +6,10 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard-beta
+_pkgname=roomeqwizard
 pkgver=5.40.beta.112
 _pkgver=5_40_beta_112-api
-pkgrel=1
+pkgrel=2
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
 url="https://www.roomeqwizard.com"
@@ -56,7 +57,7 @@ package() {
 
   # fix waterfall crash
   # https://www.avnirvana.com/threads/rew-for-linux-waterfall-drawing-problem.2956/
-  sed "s/^-Dsun.java2d.opengl=.*$/-Dsun.java2d.opengl=True/" -i "$pkgdir/usr/share/java/$pkgname/$pkgname.vmoptions"
+  sed "s/^-Dsun.java2d.opengl=.*$/-Dsun.java2d.opengl=True/" -i "$pkgdir/usr/share/java/$pkgname/$_pkgname.vmoptions"
 
   # basic cleanup
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/files.log"
