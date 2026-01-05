@@ -1,0 +1,12 @@
+pkgbase = googleballs-desktop-gtk
+	pkgdesc = Gtk version of google balls
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/weeniemount/googleballs-app
+	arch = x86_64
+	license = WTFPL
+	depends = gtk3
+	source = googleballs-desktop-gtk-.tar.gz::https://github.com/weeniemount/googleballs-app/archive/refs/tags/1.7.0.tar.gz
+	sha256sums = 8c9fa41eba0bce1c422f6b13f6b4b0a5511870e600651408608499a7852f999f
+
+pkgname = googleballs-desktop-gtk
