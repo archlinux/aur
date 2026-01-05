@@ -1,6 +1,6 @@
 pkgbase = hyprkvm
 	pkgdesc = Hyprland-native software KVM switch for seamless keyboard/mouse sharing between Linux machines
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/hyprKVM
 	install = hyprkvm.install
@@ -17,7 +17,7 @@ pkgbase = hyprkvm
 	depends = libxkbcommon
 	depends = openssl
 	optdepends = wl-clipboard: for clipboard synchronization
-	source = git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v0.6.3
+	source = git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v0.6.4
 	sha256sums = SKIP
 
 pkgname = hyprkvm
