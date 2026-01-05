@@ -1,21 +1,21 @@
 pkgbase = znote-bin
 	pkgdesc = A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://znote.io
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron36
-	provides = znote=3.5.2
+	provides = znote=3.5.3
 	conflicts = znote
-	source = LICENSE-3.5.2.html::https://znote.io/cgu.html
+	source = LICENSE-3.5.3.html::https://znote.io/cgu.html
 	source = znote.sh
 	sha256sums = f009c52b4d8ceb103946d853f232d83d6de645765cc2d47d863cd05c4347db96
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = znote-3.5.2-aarch64.AppImage::https://github.com/alagrede/znote-app/releases/download/v3.5.2/znote-3.5.2-arm64.AppImage
-	sha256sums_aarch64 = 1696cebb99ec6664fef36d9e322b855a4c5e7d0d9e50aa8481b4038a183f49b8
-	source_x86_64 = znote-3.5.2-x86_64.AppImage::https://github.com/alagrede/znote-app/releases/download/v3.5.2/znote-3.5.2.AppImage
-	sha256sums_x86_64 = 100420bb3018904e1053a0e3f629d015444811c07c56a36bbbd548b04da66b61
+	source_aarch64 = znote-3.5.3-aarch64.AppImage::https://github.com/alagrede/znote-app/releases/download/v3.5.3/znote-3.5.3-arm64.AppImage
+	sha256sums_aarch64 = 480b0c291c6e25621aabbac38de8c6ff920af6e6416a34401fa9a6b8153fe31e
+	source_x86_64 = znote-3.5.3-x86_64.AppImage::https://github.com/alagrede/znote-app/releases/download/v3.5.3/znote-3.5.3.AppImage
+	sha256sums_x86_64 = f5be347a388152c75e7a73081af5d4de25150d96cd3b8103902ad0ddf4d04c8c
 
 pkgname = znote-bin
