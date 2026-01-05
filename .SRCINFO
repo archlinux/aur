@@ -9,4 +9,4 @@ pkgbase = scrapfetch-pkg
 	source = git+https://github.com/amodi444/scrapfetch.git
 	md5sums = SKIP
 
-pkgname = scrapfetch
+pkgname = scrapfetch-pkg
