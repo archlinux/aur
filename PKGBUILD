@@ -2,7 +2,7 @@
 
 pkgname=viu-media
 _pkgname=viu
-pkgver=3.3.5
+pkgver=3.3.7
 pkgrel=1
 pkgdesc="Viu, your browser anime experience, from the terminal. "
 arch=('x86_64')
