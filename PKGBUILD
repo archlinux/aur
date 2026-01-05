@@ -40,6 +40,7 @@ makedepends=(
   mesa
   python-setuptools
   simde
+  ttf-nerd-fonts-symbols-mono
   wayland-protocols
 )
 optdepends=('imagemagick: viewing images with icat'

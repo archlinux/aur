@@ -11,6 +11,7 @@ pkgbase = kitty-meow-git
 	makedepends = mesa
 	makedepends = python-setuptools
 	makedepends = simde
+	makedepends = ttf-nerd-fonts-symbols-mono
 	makedepends = wayland-protocols
 	depends = dbus
 	depends = fontconfig
