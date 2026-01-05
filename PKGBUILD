@@ -10,6 +10,10 @@
 ## Mozc compile option
 _bldtype=Release
 _mozc_commit=f9feca5e986ed1a874e6f86122ecc48808a57b1a
+# For pkgver
+# 2.32.5994.102(commit of fcitx branch)
+_mozc_tag_commit=6c54b5d52a3a9d949502ad8e6c2eab2c66e7f1a7
+
 _bcr_commit=f80288e2be7263c2d27c9e939df1918cee3f4c15
 _dict_to_mozc_commit=fb9f38e297c73a52b807007225b7c01c2530b0c6
 _branch=fcitx
@@ -27,7 +31,7 @@ _wil_commit=fc5dbf5
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.32.5994.102.gf9feca5e
+pkgver=2.32.5994.102.r108.gf9feca5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -87,18 +91,17 @@ pkgver() {
   # change pkgver is OK because we fixed commit
   # parse major.minor.buildid from version template, revision is fixed to 102 for Linux
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' src/data/version/mozc_version_template.bzl | tr -d ' ')
-  _mozc_commit_short=$(git log -1 --pretty=%h)
   _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$((REVISION+2))"
-  printf "%s.g%s" "${_bzr_ver}" "${_mozc_commit_short}"
+   # Ensure version numbers comply with the VCS package guidelines.
+  _commit_count=$(($(git rev-list --count ${_mozc_commit})-$(git rev-list --count ${_mozc_tag_commit})))
+  printf "%s.r%s.g%s" "${_bzr_ver}" "${_commit_count}" "$(git rev-parse --short=7 ${_mozc_commit})"
 }
 
 prepare() {
   ## Set rust/cargo home to the build source dir
   #[ -z "$CARGO_HOME" ] && export CARGO_HOME="$srcdir/build/cargo-home"
   #[ -z "$RUSTUP_HOME" ] && export RUSTUP_HOME="$srcdir/build/rustup-home"
-
   cd "$srcdir/mozc" || exit
-
   git submodule init
   git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
   git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"

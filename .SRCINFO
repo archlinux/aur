@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 2.32.5994.102
-	pkgrel = 5
+	pkgver = 2.32.5994.102.r108.gf9feca5
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -59,7 +59,7 @@ pkgname = ibus-mozc-with-jp-dict
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
-	provides = ibus-mozc=2.32.5994.102
+	provides = ibus-mozc=2.32.5994.102.r108.gf9feca5
 	conflicts = fcitx
 	conflicts = fcitx-configtool
 	conflicts = ibus-mozc
@@ -78,7 +78,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.32.5994.102
+	provides = fcitx5-mozc=2.32.5994.102.r108.gf9feca5
 	conflicts = fcitx-mozc
 	conflicts = fcitx5-mozc
 	conflicts = fcitx
@@ -92,5 +92,5 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
-	provides = emacs-mozc=2.32.5994.102
+	provides = emacs-mozc=2.32.5994.102.r108.gf9feca5
 	conflicts = emacs-mozc
