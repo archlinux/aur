@@ -1,7 +1,7 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=witr-bin
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux CLI tool that explains the causal chain behind running processes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pranshuparmar/witr"
@@ -31,5 +31,5 @@ package() {
     install -Dm755 "${_binary}" "${pkgdir}/usr/bin/witr"
 
     # Install the man page
-    install -Dm644 "witr.1" "${pkgdir}/usr/share/man/man1/witr.1"
+    install -Dm644 "witr.1-${pkgver}" "${pkgdir}/usr/share/man/man1/witr.1"
 }
