@@ -1,6 +1,6 @@
 pkgbase = simple-claude-gui-bin
 	pkgdesc = A simple GUI for Claude Code CLI - terminal interface for AI-assisted coding
-	pkgver = 1.3.29
+	pkgver = 1.3.30
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/simple-claude-gui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = simple-claude-gui-bin
 	provides = simple-claude-gui
 	conflicts = simple-claude-gui
 	options = !strip
-	source = simple-claude-gui-bin-1.3.29.AppImage::https://github.com/DonutsDelivery/simple-claude-gui/releases/download/v1.3.29/Simple-Claude-GUI-1.3.29.AppImage
+	source = simple-claude-gui-bin-1.3.30.AppImage::https://github.com/DonutsDelivery/simple-claude-gui/releases/download/v1.3.30/Simple-Claude-GUI-1.3.30.AppImage
 	sha256sums = SKIP
 
 pkgname = simple-claude-gui-bin
