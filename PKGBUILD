@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat A <swiftscythe@gmail.com>
 
 pkgname=geminicommit
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
 arch=('x86_64' 'aarch64')
