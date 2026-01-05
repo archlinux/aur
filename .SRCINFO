@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl2-compat
 	pkgdesc = An SDL2 compatibility layer that uses SDL3 behind the scenes - 32-bit
-	pkgver = 2.32.60
+	pkgver = 2.32.62
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl2-compat
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = lib32-sdl2-compat
 	depends = lib32-glibc
 	depends = lib32-sdl3
 	depends = sdl2-compat
-	provides = lib32-sdl2=2.32.60
+	provides = lib32-sdl2=2.32.62
 	conflicts = lib32-sdl2
 	replaces = lib32-sdl2
-	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.60/sdl2-compat-2.32.60.tar.gz
-	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.60/sdl2-compat-2.32.60.tar.gz.sig
+	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.62/sdl2-compat-2.32.62.tar.gz
+	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.62/sdl2-compat-2.32.62.tar.gz.sig
 	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
-	sha512sums = 3dbb86f27a7fd19c78b6b69d0d5cd2ea608077d79e58b7a9fe6dbf431e9d273a9e9d77509b0ceec6d583f74eebdbb32c4e7d29f0bd8333f5cb41714f30cdee80
+	sha512sums = 4a2643aa11f89d2c9940d33f6d6840b038099efbc8027e0af7bece042bd7791570d5785c9d2351e1124ed784c92b3613e80dba80a588c8a5aabb14cdd6382ade
 	sha512sums = SKIP
 
 pkgname = lib32-sdl2-compat
