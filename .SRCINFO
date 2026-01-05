@@ -1,7 +1,7 @@
 pkgbase = lolbin
 	pkgdesc = A cli tool for managing pastes on paste.lol
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://git.ache.one/lolbin
 	arch = any
 	license = MIT
@@ -9,10 +9,11 @@ pkgbase = lolbin
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatch
 	depends = python-requests
 	depends = python-humanize
 	depends = python-tomli
-	source = lolbin-1.0.1.tar.gz::https://ache.one/dist/lolbin-1.0.1.tar.gz
-	sha256sums = 8d327f3488641bc88452107201618b4364003e808d5703b08d0d6df903b8033e
+	source = lolbin-1.0.2.tar.gz::https://ache.one/dist/lolbin-1.0.2.tar.gz
+	sha256sums = f333c6e4792f83d9835ec34026665ca6603ef5793cd368f705219b496bde6bbd
 
 pkgname = lolbin
