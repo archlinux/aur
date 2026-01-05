@@ -1,10 +1,11 @@
-# Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
+# Maintainer:
+# Contributor: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 
 ## links
 # http://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
 # https://github.com/Floorp-Projects/Floorp-core
-# https://github.com/Floorp-Projects/Floorp-runtime
+# https://github.com/Floorp-Projects/Floorp-Runtime
 
 ## options
 : ${_build_pgo:=true}      # profile-guided optimization; ~20% better benchmarks, 3x build time
@@ -19,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=e9a595928908c2eaa65dc8af2bf31703678844c5} # daily-668
+: ${_runtime_commit:=e3d9e2992b845b3436feb4a32c75a67f00a301e4} # daily-728
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.8.3
+pkgver=12.9.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -109,12 +110,12 @@ _pkgsrc_runtime="Floorp-Runtime-$_runtime_commit"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
-  "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/$_runtime_commit.$_pkgext"
+  "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '606bfaa1a1e40ae7ef88c5f035cbf2e8ae1726493e589d45815cbd56af9d5ee8'
+  '5629cb4fa3a9f535e2fb1dc84a91c62d09405b8b26ff0bbf8f8d75e00d885c22'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
