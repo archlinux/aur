@@ -1,6 +1,6 @@
 pkgbase = helmfile-bin
 	pkgdesc = Helmfile is a declarative spec for deploying helm charts.
-	pkgver = 1.1.7
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/helmfile/helmfile
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = helmfile-bin
 	license = MIT
 	provides = helmfile
 	conflicts = helmfile
-	noextract = helmfile-bin-1.1.7.tar.gz
-	source_x86_64 = helmfile-bin-1.1.7.tar.gz::https://github.com/helmfile/helmfile/releases/download/v1.1.7/helmfile_1.1.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = e9d870f4e502b9f0850d7e0546cab8b418ff7f44ff4df0ed54cd3df8dfda189c
-	source_aarch64 = helmfile-bin-1.1.7.tar.gz::https://github.com/helmfile/helmfile/releases/download/v1.1.7/helmfile_1.1.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = e9d870f4e502b9f0850d7e0546cab8b418ff7f44ff4df0ed54cd3df8dfda189c
+	noextract = helmfile-bin-1.2.3.tar.gz
+	source_x86_64 = helmfile-bin-1.2.3.tar.gz::https://github.com/helmfile/helmfile/releases/download/v1.2.3/helmfile_1.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = e238185ff094ecf41d81f2938711569803698355c7fc6081fa047bfa27b4c55c
+	source_aarch64 = helmfile-bin-1.2.3.tar.gz::https://github.com/helmfile/helmfile/releases/download/v1.2.3/helmfile_1.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 16baf067534d4176b75cac3f3b791f5954ecba8f353ba7d7cbe0c1dd7396f819
 
 pkgname = helmfile-bin
