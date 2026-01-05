@@ -1,7 +1,7 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd
 _pkgname=sing-box
-pkgver=1.12.12
+pkgver=1.12.14
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -11,9 +11,10 @@ license=('GPL3 with name use or association addition')
 
 makedepends=('go')
 provides=("$_pkgname")
+options=('!debug')
 
 source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
-sha256sums=('02f1950da81ecd0ca362cba756c3d157f3bfd27153a07bd8427c364996fdb0bb')
+sha256sums=('ef3b4edff1231cbb44be1ce728567ce9f61eac94cb0e2d8e8413d424bc4a4c0b')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
@@ -54,7 +55,7 @@ build(){
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver-reF1nd"
 
     install -Dm644 LICENSE                            -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm755 "$_pkgname"                         -t "$pkgdir/usr/bin"
