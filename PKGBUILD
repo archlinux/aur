@@ -3,13 +3,13 @@
 
 pkgname="elementary-xfce-icons"
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Elementary icon theme with improved Xfce support'
 arch=('any')
 url="https://github.com/shimmerproject/elementary-xfce"
 license=(GPL3)
-makedepends=(gtk3 optipng)
-depends=(adwaita-icon-theme)
+makedepends=(gdk-pixbuf2 gtk-update-icon-cache librsvg optipng)
+depends=(hicolor-icon-theme)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
 sha256sums=('0be90252c4bf8e06bbca16ef376bd1d7891f3353a5145289bff8a48563568259')
 
