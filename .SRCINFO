@@ -1,7 +1,7 @@
 pkgbase = videocut
 	pkgdesc = Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter
 	pkgver = 3.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kanehekili/VideoCut
 	arch = x86_64
 	license = GPL-3.0-or-later

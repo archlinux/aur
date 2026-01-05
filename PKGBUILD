@@ -1,7 +1,7 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videocut
 pkgver=3.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter"
 url="https://github.com/kanehekili/VideoCut"
 license=('GPL-3.0-or-later')
@@ -25,7 +25,7 @@ package() {
     -exec install -Dm 644 "{}" "${pkgdir}/opt/videocut/{}" \;
   install -Dm 755 "ffmpeg/src/remux5" -t "${pkgdir}/opt/videocut/ffmpeg/bin"
 
-  install -Dm 644 "*.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 *.desktop -t "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/videocut/VideoCut.py" "${pkgdir}/usr/bin/videocut"
