@@ -1,0 +1,18 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  Opencode PTY Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/config.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"opencode-pty\"]"
+  echo "  }"
+  echo ""
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
