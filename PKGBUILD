@@ -1,7 +1,7 @@
 # Maintainer: Franco Brigiotti <fbrigio@gmail.com>
 
 pkgname=cash-register
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Cash register application with Qt6 interface"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Brigio/cash-register/archive/v$pkgver.tar.gz"
 )
 
-sha256sums=('578b65b1ac8e78b45fc2ddac97ceccd3fc22e13e2704ce562ccb06b5d35487e5')
+sha256sums=('b7b1e0100996b8b31954d1ba2db9eb912d26787b2770e75e49224eb99bc1eefd')
 
 build() {
   cd "$pkgname-$pkgver"
