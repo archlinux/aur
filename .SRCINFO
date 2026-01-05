@@ -1,7 +1,7 @@
 pkgbase = xcursor-viewer-git
 	pkgdesc = view xcursor files in list
 	pkgver = r19.6b8a95a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drizt/xcursor-viewer
 	arch = x86_64
 	license = GPL

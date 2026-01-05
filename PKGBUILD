@@ -1,7 +1,7 @@
 # Maintainer: Tom Hu <tom@bluespice.org>
 pkgname=xcursor-viewer-git
 pkgver=r19.6b8a95a
-pkgrel=1
+pkgrel=2
 pkgdesc="view xcursor files in list"
 arch=('x86_64')
 url="https://github.com/drizt/xcursor-viewer"
@@ -42,7 +42,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake --install-prefix /usr -B . -S .
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 --install-prefix /usr -B . -S .
 	make
 }
 
