@@ -1,0 +1,20 @@
+pkgbase = clipboard-manager-rs-git
+	pkgdesc = A simple clipboard manager written in Rust (git version)
+	pkgver = r48.cb5f397
+	pkgrel = 1
+	url = https://github.com/Grenish/clipboard-manager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = libxcb
+	depends = libx11
+	provides = clipboard-manager
+	conflicts = clipboard-manager
+	conflicts = clipboard-manager-git
+	source = git+https://github.com/Grenish/clipboard-manager.git
+	sha256sums = SKIP
+
+pkgname = clipboard-manager-rs-git
