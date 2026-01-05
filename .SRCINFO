@@ -8,6 +8,7 @@ pkgbase = python-sqlit-tui
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
 	depends = python-textual
 	depends = python-textual-fastdatatable-latest

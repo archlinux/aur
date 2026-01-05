@@ -27,7 +27,7 @@ optdepends=(
     'python-paramiko: SSH tunnel support'
     'python-sshtunnel: SSH tunnel support'
 )
-makedepends=('python-build' 'python-installer' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 source=("https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-${pkgver}.tar.gz")
 sha256sums=('746eed41e776810efe71e731df753a0b6fac420f67d21da77cf0a7e51122c9d1')
 
