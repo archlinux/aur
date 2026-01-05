@@ -16,13 +16,13 @@ backup=()
 options=(!debug)
 source=(
   https://github.com/rtrussell/BBCSDL/archive/${_tarball}/BBCSDL-${_tarball}.tar.gz
-  https://www.bbcbasic.net/bbcsdl/bbclinux.zip
+  https://www.bbcbasic.co.uk/bbcsdl/bbclinux.zip
 )
 
 noextract=()
 sha256sums=(
   fa6f51b730777f4f5b9fe77338c3e6d4030cf20a00656cda3af20cfdf49041ec
-  335c55a1f039b4f10742a2186bcd5f58f8a70bf860eba5a5318839194cf96030
+  08ef9b00c13a31a8b5d6e8acb52377feb742643b18b6a6f306868af1a19f23df
 )
 
 prepare() {
