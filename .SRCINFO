@@ -1,6 +1,6 @@
 pkgbase = philipstv
 	pkgdesc = CLI for controlling Philips Android-powered TVs
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/bcyran/philipstv
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = philipstv
 	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
-	makedepends = python-poetry-dynamic-versioning
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
 	depends = python-requests
 	depends = python-pydantic
 	depends = python-click
 	depends = python-appdirs
-	source = https://files.pythonhosted.org/packages/source/p/philipstv/philipstv-3.0.1.tar.gz
-	sha256sums = ddf79483daccbb8486bee4bde911c36a79eea68cb09d887867a6a1163da36769
+	source = philipstv-3.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/philipstv/philipstv-3.0.2.tar.gz
+	sha256sums = 02865a2912789759c4fefc53f6d31705ebf7a01c2db4cafdad5bde049b13d4db
 
 pkgname = philipstv
