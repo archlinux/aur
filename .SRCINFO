@@ -1,6 +1,6 @@
 pkgbase = alistral-git
 	pkgdesc = Power tools for Listenbrainz
-	pkgver = 1460.6f00f3f2
+	pkgver = 1505.a6a21cd6
 	pkgrel = 1
 	url = https://github.com/RustyNova016/Alistral
 	arch = x86_64
