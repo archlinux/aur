@@ -1,6 +1,6 @@
 pkgbase = portablemc-bin
-	pkgdesc = Lightweight cli launcher for minecraft on rust
-	pkgver = 5.0.0
+	pkgdesc = Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/mindstorm38/portablemc
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = portablemc-bin
 	depends = openssl
 	provides = portablemc
 	conflicts = portablemc
-	source = https://github.com/mindstorm38/portablemc/releases/download/v5.0.0/portablemc-5.0.0-linux-x86_64.tar.gz
-	source = https://github.com/mindstorm38/portablemc/releases/download/v5.0.0/portablemc-5.0.0-linux-x86_64.tar.gz.sig
+	source = https://github.com/mindstorm38/portablemc/releases/download/v5.0.1/portablemc-5.0.1-linux-x86_64.tar.gz
+	source = https://github.com/mindstorm38/portablemc/releases/download/v5.0.1/portablemc-5.0.1-linux-x86_64.tar.gz.sig
 	validpgpkeys = F659B0F0B84A26CAC635D72948CAEE8DC3456B2F
-	sha256sums = 88224f3d89f798fcfe97d61a6db4078262eaa9fcb5549c950801937b418e6b81
-	sha256sums = 5b2161c1ecec7cc9450847015a79b625ceb0f404bc75f3ac7117fd9c4c507c7e
+	sha256sums = 828e7537df32b1a8aeb670f5ded91af5e54f618921fb93957006c59fe7f5f569
+	sha256sums = bbc1cd9d525d0b41b68ea3124498411a79dfecc3a9ad47f2c28d04a8f3554556
 
 pkgname = portablemc-bin
