@@ -1,0 +1,16 @@
+pkgbase = python-karney
+	pkgdesc = Solves the direct and inverse geodesic problem
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pbrod/karney
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-pep517
+	depends = python
+	depends = python-numpy
+	source = https://github.com/pbrod/karney/archive/v1.1.0.tar.gz
+	sha256sums = 4a0cf4e28f614c2148ddea3bbff7758a04fa403af6fa709bf3a35a0ef11d7705
+
+pkgname = python-karney
