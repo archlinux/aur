@@ -13,10 +13,10 @@ conflicts=('leetcode-sr' 'leetcode-sr-git')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/VinMeld/leetcode-space-repition/releases/download/v${pkgver}/leetcode-sr_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('90546f379196843529aac7e3d29a77269504bb16d46d8e36a811e842abdfe22d')
+sha256sums_aarch64=('0acb5fe77870d7b29badb70d36b79dee5ae80ea0d2f3a1116c43e64e2df2a0b0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/VinMeld/leetcode-space-repition/releases/download/v${pkgver}/leetcode-sr_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('dfc7fd032d1df6b4f75fe0c8cd429fb3c272578ecc997d35bde6bb50541b5141')
+sha256sums_x86_64=('b62588bafa2e3f42093ef15f52db409e5b9a23d3f9d7d3942e00b760bc3d8879')
 
 package() {
   # bin
