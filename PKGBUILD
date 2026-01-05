@@ -3,16 +3,16 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nyacc
-pkgver=2.02.5
+pkgver=3.01.1
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('guile' 'guile-bytestructures')
+depends=('guile') 
 makedepends=('guile')
 source=("http://download-mirror.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz")
-sha256sums=('f9f062734ad5a33e91df02a5b697be031440fe75527f1ec9b81ec8c474c2d973')
+sha256sums=('67b60a3ad479eead60ccf11cbba05baa61401b2d10c757c10668830e31b03db7')
 
 build() {
   cd $pkgname-$pkgver
