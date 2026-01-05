@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.10.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -36,14 +36,11 @@ makedepends=(
   'python'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-        "https://github.com/gazebosim/${_pkgbase}/pull/2869.patch")
-sha256sums=('54e2f285df84c63f11fcb9875d8b570c621237242c5a17aa116b131d0b2262f8'
-            'e836f1adabe8f44a4e6a238b06364afe06e1a5c28c9cb137c1c88538f65ede85')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('54e2f285df84c63f11fcb9875d8b570c621237242c5a17aa116b131d0b2262f8')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
-  patch -p1 < ${srcdir}/2869.patch
 }
 
 build() {
