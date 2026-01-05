@@ -1,0 +1,18 @@
+pkgbase = wireguard-tray
+	pkgdesc = Minimal tray GUI to manage WireGuard connections on Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/artemventvent/wireguard-tray
+	install = wireguard-tray.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = wireguard-tools
+	depends = libnotify
+	source = wireguard-tray-1.0.1.tar.gz::https://github.com/artemventvent/wireguard-tray/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = aeb3197ff00b269f907e3d776c53d44bf66a2818307acd05049e7f370b9503b8
+
+pkgname = wireguard-tray
