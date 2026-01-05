@@ -1,7 +1,7 @@
 pkgbase = sdkman-bin
 	pkgdesc = The Software Development Kit Manager Command Line Interface
 	pkgver = 5.20.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sdkman.io/
 	arch = x86_64
 	arch = aarch64
@@ -10,12 +10,12 @@ pkgbase = sdkman-bin
 	provides = sdkman=5.20.0
 	conflicts = sdkman
 	source_x86_64 = sdkman-5.20.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.20.0/sdkman-cli-5.20.0.zip
-	source_x86_64 = sdkman-native-0.7.14.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.14/sdkman-cli-native-0.7.14-x86_64-unknown-linux-gnu.zip
+	source_x86_64 = sdkman-native-0.7.15.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.15/sdkman-cli-native-0.7.15-x86_64-unknown-linux-gnu.zip
 	sha256sums_x86_64 = 09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a
-	sha256sums_x86_64 = bc28c358f58a22ef90cb1f92617b2319c0ead900851b700dbd65461212756cc9
+	sha256sums_x86_64 = 96df91b5eeb06f67d36631626ed7124cc08e760aefe95828f878fe463fe67f24
 	source_aarch64 = sdkman-5.20.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.20.0/sdkman-cli-5.20.0.zip
-	source_aarch64 = sdkman-native-0.7.14.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.14/sdkman-cli-native-0.7.14-x86_64-unknown-linux-gnu.zip
+	source_aarch64 = sdkman-native-0.7.15.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.15/sdkman-cli-native-0.7.15-x86_64-unknown-linux-gnu.zip
 	sha256sums_aarch64 = 09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a
-	sha256sums_aarch64 = a591602241a4a5c4385a5cdf4205b6408b587b0015ed7c7178d31870bd612642
+	sha256sums_aarch64 = ea6daa7ca16a88f1e64ea25dab3e0d69f700b773219fd656751bf4a75e112eee
 
 pkgname = sdkman-bin
