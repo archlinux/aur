@@ -14,6 +14,9 @@ sha256sums=()
 
 # installation instructions from https://kth.cash/#content-a-executable
 build() {
+    export CC=gcc
+    export CXX=g++
+
     export CONAN_HOME="$srcdir/conan_home"
     mkdir -p "$CONAN_HOME"
 
