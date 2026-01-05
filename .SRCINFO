@@ -1,0 +1,22 @@
+pkgbase = python-tree-sitter-sql
+	pkgdesc = SQL Grammar for tree-sitter
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/DerekStride/tree-sitter-sql
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	depends = tree-sitter-sql
+	source = tree-sitter-sql-0.3.11.tar.gz::https://github.com/DerekStride/tree-sitter-sql/releases/download/v0.3.11/tree-sitter-sql-v0.3.11.tar.gz
+	source = README.md
+	sha512sums = fdcd012c99660225736deb4a1c3c6c81eb02a04c608321d7382cc3cc4760d8e2eef82a1be5a116965729d0334f1068aced7f18f65a4f864328bf883df639ad05
+	sha512sums = 4cc449c77d6ac9b464a139fb076b138c21c0ca0a6f7a17f2179f78470deae35c60d225538b7f0248b39606ed7eb32e15dcad549ccbfed925bebfc92888ff3a80
+
+pkgname = python-tree-sitter-sql
