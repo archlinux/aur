@@ -1,0 +1,31 @@
+post_install() {
+    echo "==> HyprKVM installed successfully!"
+    echo ""
+    echo "==> To start the daemon:"
+    echo "    systemctl --user enable --now hyprkvm"
+    echo ""
+    echo "==> Configuration file location:"
+    echo "    ~/.config/hyprkvm/hyprkvm.toml"
+    echo ""
+    echo "==> Example config available at:"
+    echo "    /usr/share/doc/hyprkvm/hyprkvm.example.toml"
+    echo ""
+    echo "==> For multi-machine setup, configure neighbors in hyprkvm.toml"
+    echo "    and ensure port 24850 is open between machines."
+}
+
+post_upgrade() {
+    echo "==> HyprKVM upgraded!"
+    echo "==> Restart the daemon to apply changes:"
+    echo "    systemctl --user restart hyprkvm"
+}
+
+pre_remove() {
+    # Stop the service before removal
+    if systemctl --user is-active --quiet hyprkvm 2>/dev/null; then
+        systemctl --user stop hyprkvm
+    fi
+    if systemctl --user is-enabled --quiet hyprkvm 2>/dev/null; then
+        systemctl --user disable hyprkvm
+    fi
+}

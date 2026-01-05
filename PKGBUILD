@@ -10,6 +10,7 @@ license=('MIT')
 depends=('wayland' 'libxkbcommon' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols' 'clang' 'cmake' 'perl')
 optdepends=('wl-clipboard: for clipboard synchronization')
+install=hyprkvm.install
 source=("git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
@@ -40,6 +41,9 @@ package() {
     # Install binaries
     install -Dm755 target/release/hyprkvm "$pkgdir/usr/bin/hyprkvm"
     install -Dm755 target/release/hyprkvm-ctl "$pkgdir/usr/bin/hyprkvm-ctl"
+
+    # Install systemd user service
+    install -Dm644 contrib/systemd/hyprkvm.service "$pkgdir/usr/lib/systemd/user/hyprkvm.service"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
