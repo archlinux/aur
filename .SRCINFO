@@ -1,6 +1,6 @@
 pkgbase = ugrd-git
 	pkgdesc = Minimalistic POSIX initramfs generator, designed for encrypted systems
-	pkgver = 2.0.2.r7.g2713866
+	pkgver = 2.1.0.r4.g6e136ba
 	pkgrel = 1
 	url = https://github.com/desultory/ugrd
 	arch = any
