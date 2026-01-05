@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch plus apps at cryptic.systems>
 
 pkgname=fritz-tls
-pkgver=0.26.0 # renovate: datasource=github-releases depName=tisba/fritz-tls
+pkgver=0.26.1 # renovate: datasource=github-releases depName=tisba/fritz-tls
 pkgrel=1
 pkgdesc="Automate TLS certificate installation for AVM FRITZ!Box "
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('go')
 source=(
   ${pkgname}-v${pkgver}.zip::"$url/archive/refs/tags/v${pkgver}.zip"
 )
-sha512sums=('8bd8d16629a21f470dbc490e47b80e492f421feaf25e18de8f70fe1878db7051dd8789ddab12577c8c74b9b298329367d963c91127c22b74d2cb7d7080070cc2')
-b2sums=('420b8267c383ab4242e6b645841d4968496bdd0cd934d5642278ff5892653d4944bd5749cc5ba24d91e8346c1c199e1a12dc3fc25ca8c86dd70f94a12a8a754a')
+sha512sums=('a0a2eaabd8e6c37584318ddc1386926284fe153f0736bdf141f9a36bdae4908314814ebd5f38831a20f9c31f46f7371aaf3efce37c2fcf69db10250a0ee18443')
+b2sums=('700e0d61767eda9e7d2c27e4a03d11a6db187c680dfa2bdda8508908a8299c52191b29edf9cde8081d3e6accce62c04c6890999f586882058e8f1e1929fea6bb')
 
 prepare() {
   cd ${pkgname}-${pkgver}
