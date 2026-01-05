@@ -1,6 +1,6 @@
 pkgname=collapseloader-bin
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.2.6
+pkgrel=5
 pkgdesc="GUI utility for launching Minecraft clients (binary)"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
@@ -9,7 +9,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'pipewire' 'pipewire-
 provides=('collapseloader')
 conflicts=('collapseloader-git')
 source=("collapseloader-${pkgver}_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/${pkgver}/collapseloader_${pkgver}_amd64.AppImage")
-sha256sums=('b8dd25756a3938386ea7bf5fc7e56c3eeb73f087ee4968512090c17efda44e60')
+sha256sums=('4118e1941347b0049378229bc4b7fea022638112d7483fbe81902c0958d6876a')
 noextract=("collapseloader-${pkgver}_amd64.AppImage")
 
 prepare() {
@@ -21,7 +21,6 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/squashfs-root/usr/bin/collapseloader" "${pkgdir}/usr/bin/collapseloader"
 
-    # Установка иконки (ищем в разных местах)
     if [ -f "${srcdir}/squashfs-root/.DirIcon" ]; then
         install -Dm644 "${srcdir}/squashfs-root/.DirIcon" "${pkgdir}/usr/share/pixmaps/collapseloader.png"
     elif [ -f "${srcdir}/squashfs-root/collapseloader.png" ]; then
@@ -32,7 +31,7 @@ package() {
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/collapseloader.desktop" <<EOF
 [Desktop Entry]
-Version=1.0
+Version=0.2.6
 Type=Application
 Name=CollapseLoader
 Comment=GUI utility for launching Minecraft clients
