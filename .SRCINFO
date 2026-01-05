@@ -1,7 +1,7 @@
 pkgbase = kairo
 	pkgdesc = CLI and Desktop application for smart URL routing
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aelesbao/kairo
 	arch = x86_64
 	license = Apache-2.0
