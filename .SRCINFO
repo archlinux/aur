@@ -1,6 +1,6 @@
 pkgbase = mvw
 	pkgdesc = MoVie revieW inspired by fastfetch
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/fatinul/mvw
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mvw
 	provides = mvw
 	conflicts = python-mvw
 	replaces = python-mvw
-	source = mvw-0.2.0.tar.gz::https://github.com/fatinul/mvw/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 6aae1d40105189dc33aa7c61a0aad4b9404919b417cdc45826b383a1dc5acd03
+	source = mvw-0.2.1.tar.gz::https://github.com/fatinul/mvw/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 3f39576b5d0d1329eff7068225c20a973b62199be462688083e6c34f4d6eef53
 
 pkgname = mvw
