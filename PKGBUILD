@@ -1,18 +1,23 @@
 pkgname=ayaan
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="AyaanScript+ runtime and ASPKG package manager"
 arch=('x86_64')
-url="https://aur.archlinux.org/packages/ayaan"
+url="https://github.com/ayaan511/AyaanScriptPlus"
 license=('MIT')
-depends=('glibc')
-makedepends=('cargo')
+
+makedepends=('rust' 'cargo')
+depends=('gcc-libs' 'openssl')
+
+source=("https://github.com/ayaan511/AyaanScriptPlus/releases/download/nope/ayaanscript-0.1.0.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cargo build --release
+  cd "$srcdir"
+  cargo build --release --target-dir "$srcdir/target"
 }
 
 package() {
-  install -Dm755 target/release/ayaan "$pkgdir/usr/bin/ayaan"
-  install -Dm755 target/release/aspkg "$pkgdir/usr/bin/aspkg"
+  install -Dm755 "$srcdir/target/release/ayaan" "$pkgdir/usr/bin/ayaan"
+  install -Dm755 "$srcdir/target/release/aspkg" "$pkgdir/usr/bin/aspkg"
 }

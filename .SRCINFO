@@ -1,11 +1,15 @@
 pkgbase = ayaan
 	pkgdesc = AyaanScript+ runtime and ASPKG package manager
-	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://aur.archlinux.org/packages/ayaan
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = https://github.com/ayaan511/AyaanScriptPlus
 	arch = x86_64
 	license = MIT
+	makedepends = rust
 	makedepends = cargo
-	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	source = https://github.com/ayaan511/AyaanScriptPlus/releases/download/nope/ayaanscript-0.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = ayaan
