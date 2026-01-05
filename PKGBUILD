@@ -10,11 +10,11 @@ source=("git+https://github.com/amodi444/scrapfetch.git")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/scrapfetch"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/scrapfetch"
   make DESTDIR="$pkgdir" install
 }
