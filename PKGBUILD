@@ -1,7 +1,7 @@
 # Maintainer: Miskolczi Richárd <miskolczi.richard@protonmail.com>
 pkgname=hyprland-toggle-tiling-git
-pkgver=1.1.0
-pkgrel=1.1
+pkgver=1.2
+pkgrel=1.0
 pkgdesc="A simple program to toggle tiling and floating modes for windows in the Hyprland Wayland compositor."
 arch=('x86_64')
 url="https://github.com/TypoMustakes/hyprland-toggle-tiling"
