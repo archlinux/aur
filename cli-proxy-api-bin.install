@@ -3,17 +3,27 @@ post_install() {
     echo ":: Configuration files are expected in ~/.cli-proxy-api/"
     echo "   An example config has been installed to /usr/share/doc/cli-proxy-api-bin/config.example.yaml"
     echo ""
-    echo ":: To enable the user service:"
-    echo "   systemctl --user enable --now cli-proxy-api.service"
+    echo ":: Service Management"
+    echo "   > User Level (Recommended):"
+    echo "     systemctl --user enable --now cli-proxy-api.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
 
 post_upgrade() {
-    post_install
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     systemctl --user daemon-reload"
+    echo "     systemctl --user restart cli-proxy-api.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
 
-pre_remove() {
-    # Note: We cannot stop user services for all users as we run as root during uninstall.
-    # Users will need to stop their own services or they will stop at next login/reboot.
-    echo ":: Note: You may need to stop the user service manually:"
-    echo "   systemctl --user stop cli-proxy-api.service"
+post_remove() {
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     The service file has been removed. Stop the service if running:"
+    echo "     systemctl --user stop cli-proxy-api.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
