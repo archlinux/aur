@@ -1,6 +1,6 @@
 pkgbase = ftcli
 	pkgdesc = Foundry Tools command line font editor
-	pkgver = 2.0.4
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/ftCLI/FoundryTools-CLI
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ftcli
 	depends = python-pathvalidate
 	depends = python-foundrytools
 	depends = python-rich
-	source = https://github.com/ftCLI/FoundryTools-CLI/archive/v2.0.4/FoundryTools-CLI-2.0.4.tar.gz
-	sha256sums = 8fea2e61f719593cb107d264573a4ad112ee9a91ed879445d8cff8b0d92b9436
+	source = https://github.com/ftCLI/FoundryTools-CLI/archive/v2.0.6/FoundryTools-CLI-2.0.6.tar.gz
+	sha256sums = ed900a7c0412d6943b421191af45e8ff88c608ae094ccea8f121db931766fdc5
 
 pkgname = ftcli
