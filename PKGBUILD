@@ -1,6 +1,6 @@
 pkgname=mingw-w64-glew
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
 url="http://glew.sourceforge.net/"
@@ -9,14 +9,14 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/nigels-com/glew/releases/download/glew-${pkgver}/glew-${pkgver}.tgz")
-sha256sums=('d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1')
+sha256sums=('b261a06dfc8b970e0a1974488530e58dd2390acf68acb05b45235cd6fb17a086')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd ${srcdir}/glew-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DBUILD_UTILS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build-${_arch} build/cmake/
+    ${_arch}-cmake -DBUILD_UTILS=OFF -B build-${_arch} build/cmake/
     make -C build-${_arch}
   done
 }
