@@ -1,8 +1,8 @@
 # Maintainer: Kevin Schoon <me at kevinschoon dot com>
 
 pkgname=tree-sitter-sql
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.11
+pkgrel=1
 pkgdesc="SQL grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/DerekStride/tree-sitter-sql"
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 provides=('libtree-sitter-sql')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6d56d0c307c1e64b88bd4da78a23597744093627d93ef0b0c78e7442b139877e')
+sha256sums=('1fe13cb1e50dd9da9f22aed3cb9430fc9dae05a734a6049926fc12f6d8ecd3ae')
 
 prepare() {
 	cd "$pkgname-$pkgver"

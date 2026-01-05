@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-sql
 	pkgdesc = SQL grammar for tree-sitter
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.11
+	pkgrel = 1
 	url = https://github.com/DerekStride/tree-sitter-sql
 	arch = x86_64
 	groups = tree-sitter-grammars
@@ -10,7 +10,7 @@ pkgbase = tree-sitter-sql
 	makedepends = tree-sitter-cli
 	makedepends = npm
 	provides = libtree-sitter-sql
-	source = tree-sitter-sql-0.2.0.tar.gz::https://github.com/DerekStride/tree-sitter-sql/archive/v0.2.0.tar.gz
-	sha256sums = 6d56d0c307c1e64b88bd4da78a23597744093627d93ef0b0c78e7442b139877e
+	source = tree-sitter-sql-0.3.11.tar.gz::https://github.com/DerekStride/tree-sitter-sql/archive/v0.3.11.tar.gz
+	sha256sums = 1fe13cb1e50dd9da9f22aed3cb9430fc9dae05a734a6049926fc12f6d8ecd3ae
 
 pkgname = tree-sitter-sql
