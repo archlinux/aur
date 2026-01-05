@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   'glibc'
   'python'
+  ${_gitpkgname}
 )
 makedepends=(
   'python-build'
