@@ -4,7 +4,7 @@
 # pass-file adds support to files using pass
 _pkgname=pass-file
 pkgname=$_pkgname-git
-pkgver=r7.1c7e6a0
+pkgver=r12.868e5bf
 pkgrel=1
 pkgdesc=" A pass extension that allows to add files to your password-store."
 arch=('i686' 'x86_64')
