@@ -1,0 +1,22 @@
+pkgbase = hylo-llvm-bin
+	pkgdesc = LLVM library and binaries compatible with Swift and Hylo
+	pkgver = 20251214_185311
+	pkgrel = 1
+	url = https://github.com/hylo-lang/llvm-build
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 WITH LLVM-exception
+	depends = curl
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = zstd
+	depends = ncurses
+	depends = libxml2
+	options = !debug
+	options = !strip
+	options = staticlibs
+	source = https://github.com/hylo-lang/llvm-build/releases/download/20251214-185311/llvm-20.1.6-x86_64-unknown-linux-gnu-MinSizeRel.tar.zst
+	sha256sums = 4eb3c1e9b6938244fea5aa684c088543ffbab7433c4749580394e959303ed809
+
+pkgname = hylo-llvm-bin
