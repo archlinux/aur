@@ -1,14 +1,14 @@
 pkgbase = en-croissant-bin
 	pkgdesc = The Ultimate Chess Toolkit
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
 	license = GPL-3.0
 	depends = hicolor-icon-theme
 	depends = openssl-1.1
 	depends = pango
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libsoup
 	depends = glib2

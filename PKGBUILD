@@ -3,7 +3,7 @@ _pkgname=en-croissant
 
 pkgname="${_pkgname}"-bin
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Chess Toolkit"
 arch=('x86_64')
 url="https://github.com/franciscoBSalgueiro/en-croissant"
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 conflicts=("en-croissant")
 depends=('hicolor-icon-theme' openssl-1.1
 	pango
-	webkit2gtk
+	webkit2gtk-4.1
 	gtk3
 	libsoup
 	glib2
