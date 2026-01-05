@@ -1,10 +1,10 @@
 # Maintainer: wysbd <aur@wysbd.dev>
 
 pkgname="hyprland-preview-share-picker-git"
-pkgver=0.2.0.r5.g111fd70
+pkgver=0.2.1.r0.g211b789
 pkgrel=1
 pkgdesc="An alternative share picker for hyprland with window and monitor previews"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://github.com/WhySoBad/hyprland-preview-share-picker"
 license=(MIT)
 depends=('gtk4' 'gtk4-layer-shell' 'xdg-desktop-portal-hyprland' 'hyprland')
@@ -26,14 +26,14 @@ prepare() {
     git config submodule.subprojects/lib.url "$srcdir/lib"
     git -c protocol.file.allow=always submodule update
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     cargo build --frozen --release
