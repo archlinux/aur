@@ -4,7 +4,7 @@
 # pass-type adds support to files using pass
 _pkgname=pass-type
 pkgname=$_pkgname-git
-pkgver=r20.458156d
+pkgver=r23.bb6bb0c
 pkgrel=1
 pkgdesc=" A pass extension that allows to type passwords from your password-store."
 arch=('i686' 'x86_64')
