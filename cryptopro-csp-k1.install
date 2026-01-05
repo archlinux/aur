@@ -113,11 +113,20 @@ post_install() {
     # lsb-cprocsp-capilite-64
     cpconfig -ini '\config\apppath' -add string libssp.so /opt/cprocsp/lib/amd64/libssp.so
     cpconfig -ini '\config\apppath' -add string libcapi20.so /opt/cprocsp/lib/amd64/libcapi20.so
+    cpconfig -ini '\config\apppath' -add string libusb.so libusb-1.0.so.0
     # create several local machine stores if they don't exist
     /opt/cprocsp/bin/amd64/csptest -keyset -verifycontext > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mRequest > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCache > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mRoot > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mTrust > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCA > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCryptoProTrustedStore > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mClientAuthIssuer > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mDisallowed > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mAddressBook > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mTrustedPeople > /dev/null 2>&1
     if test $? -eq 0; then
         # create several local machine stores if they don't exist
         /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
@@ -541,6 +550,7 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string librtpkcs11ecp.so librtpkcs11ecp.so
     cpconfig -ini '\config\apppath' -add string libisbc_pkcs11_main.so libisbc_pkcs11_main.so
     cpconfig -ini '\config\apppath' -add string libjcPKCS11-2.so libjcPKCS11-2.so
+    cpconfig -ini '\config\apppath' -add string libforos-pkcs11c.so libforos-pkcs11c.so
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add long Group 1
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add string DLL librdrcryptoki.so
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken\PNP cryptoki\Default' -add string pkcs11_dll librtpkcs11ecp.so
@@ -550,6 +560,9 @@ post_install() {
     cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add long Group 1
     cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add string DLL librdrcryptoki.so
     cpconfig -ini '\config\KeyDevices\cryptoki_jacarta\PNP cryptoki\Default' -add string pkcs11_dll libjcPKCS11-2.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_foros' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\cryptoki_foros' -add string DLL librdrcryptoki.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_foros\PNP cryptoki\Default' -add string pkcs11_dll libforos-pkcs11c.so
     cpconfig -ini '\config\debug' -add long cryptoki 1
 
     # cprocsp-rdr-cloud-64
@@ -561,6 +574,7 @@ post_install() {
     /sbin/ldconfig -f /etc/ld.so.conf
 
     # cprocsp-curl-64
+    /sbin/ldconfig -f /etc/ld.so.conf
     if test -f "/opt/cprocsp/sbin/amd64/cpconfig"; then
         PATH=$PATH:/opt/cprocsp/sbin/amd64
         libcurl_so_backup=`cpconfig -ini '\config\apppath\libcurl.so' -view 2> /dev/null`
@@ -575,8 +589,13 @@ post_install() {
             cpconfig -ini '\config\parameters\query_time' -delparam 2> /dev/null
             cpinstance > /dev/null 2>&1
         fi
+        krb5=`/sbin/ldconfig -p | grep libgssapi_krb5.so.2 | sed 's/.*=> //' | LANG=C sort | tail -n 1`
+        if test ! -z "$krb5"
+        then
+            cpconfig -ini '\config\apppath' -add string libgssapi_krb5.so.2 $krb5
+        fi
     fi
-    /sbin/ldconfig -f /etc/ld.so.conf
+
 
     # cprocsp-pki-cades-64
     if /opt/cprocsp/bin/amd64/ocsputil license 2>&1 | grep -q 0x8007064A &> /dev/null; then
