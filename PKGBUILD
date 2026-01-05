@@ -1,19 +1,42 @@
 # Maintainer: Piotrek2713 <piotrek.karasinski13@gmail.com>
+# Contributor: Kilo Code <ai@kilo.dev>
+
 pkgname=ca-racing
-pkgver=0.2.0
+pkgver=0.2.2_alpha
 pkgrel=1
 pkgdesc="Top-down 2D racing game written in Python"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/piotrek1372/ca-racing"
 license=('MIT')
-depends=('glibc') # PyInstaller bundles most things, but glibc is system-level
-options=('!strip') # Don't strip PyInstaller binaries, it can break them
-source=("https://github.com/piotrek1372/ca-racing/releases/tag/v${pkgver}-${pkgrel}/ca-racing_linux_amd64")
-sha256sums=('4cf21c9f30b9b6b0b7d90b00b472861ec80d701f3ad20190aff5f266a2de00c7')
+
+depends=('python-pygame' 'python-numpy' 'python-pillow')
+makedepends=('python-pip' 'python-setuptools')
+
+# Source code from GitHub release
+_urlver="${pkgver/_/-}"
+source=("$pkgname-$_urlver.tar.gz::https://github.com/piotrek1372/$pkgname/archive/refs/tags/v$_urlver.tar.gz"
+        "ca-racing.desktop"
+        "ca-racing.sh")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+build() {
+    cd "$srcdir/$pkgname-$_urlver"
+    # No build steps needed for a Python source package
+    echo "Skipping build process..."
+}
 
 package() {
-    install -Dm755 "ca-racing_linux_amd64" "$pkgdir/usr/bin/ca-racing"
-    
-    # Opcjonalnie: instalacja ikony i pliku .desktop
-    # install -Dm644 "icon.png" "$pkgdir/usr/share/pixmaps/ca-racing.png"
+    # Install the application source code
+    install -d "$pkgdir/opt/$pkgname"
+    cp -r "$srcdir/$pkgname-$_urlver/"* "$pkgdir/opt/$pkgname/"
+
+    # Install Python dependencies
+    pip install -r "$pkgdir/opt/$pkgname/requirements.txt" --target "$pkgdir/opt/$pkgname/vendor" --no-user
+
+    # Install the wrapper script
+    install -Dm755 "$srcdir/ca-racing.sh" "$pkgdir/usr/bin/$pkgname"
+
+    # Install icon and desktop file
+    install -Dm644 "$srcdir/$pkgname-$_urlver/assets/images/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$srcdir/ca-racing.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
