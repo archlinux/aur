@@ -1,8 +1,9 @@
-# Maintainer: ruxir-ig <ruchirkalokhe@gmail.com.com>
-# Contributor: unxsh (original author)
+# Maintainer: ruxir-ig <ruchirkalokhe@gmail.com>
+# Contributor: haawda <haawda@baum-lang.org>
+# Contributor: unxsh <me@unxsh.cc>
 
 pkgname=('nitch-git' 'nitch-git-nonerd')
-pkgver=0.0.0.r0
+pkgver=0.2.4.r0.g6c83449
 pkgrel=1
 pkgdesc="Incredibly fast system fetch written in Nim (git snapshot)"
 arch=('x86_64')
@@ -15,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/nitch"
-  printf "0.0.0.r%s" "$(git rev-list --count HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -29,8 +30,10 @@ build() {
 }
 
 package_nitch-git() {
-  pkgdesc="Incredibly fast system fetch written in Nim (Nerd Font icons)"
+  pkgdesc="Incredibly fast system fetch written in Nim (Nerd Font icons, git version)"
   optdepends=('nerd-fonts: for icon support')
+  provides=('nitch')
+  conflicts=('nitch')
 
   cd "$srcdir/nitch"
   install -Dm755 nitch "$pkgdir/usr/bin/nitch"
@@ -38,9 +41,9 @@ package_nitch-git() {
 }
 
 package_nitch-git-nonerd() {
-  pkgdesc="Incredibly fast system fetch written in Nim (no Nerd Font icons)"
-  conflicts=('nitch')
+  pkgdesc="Incredibly fast system fetch written in Nim (no Nerd Font icons, git version)"
   provides=('nitch')
+  conflicts=('nitch' 'nitch-git')
 
   cd "$srcdir/nitch"
   install -Dm755 nitchNoNerd "$pkgdir/usr/bin/nitch"
