@@ -25,6 +25,7 @@ pkgbase = klayout-pex
 	optdepends = python-cairosvg
 	optdepends = magic: Alternative parasitic extraction backend
 	optdepends = fastercap: Alternative parasitic extraction backend
+	optdepends = fastcap2: Alternative parasitic extraction backend
 	optdepends = meshlab: For previewing 3D geometries (STL) representing input to FasterCap
 	source = klayout-pex::git+https://github.com/iic-jku/klayout-pex#tag=v0.3.7
 	source = 0001-fix-use-locally-installed-protobuf.patch

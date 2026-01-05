@@ -34,7 +34,7 @@ optdepends=(
 	'python-cairosvg'
 	"magic: Alternative parasitic extraction backend"
 	"fastercap: Alternative parasitic extraction backend"
-	# "fastcap2: Alternative parasitic extraction backend"
+	"fastcap2: Alternative parasitic extraction backend"
 	"meshlab: For previewing 3D geometries (STL) representing input to FasterCap"
 )
 options=()
