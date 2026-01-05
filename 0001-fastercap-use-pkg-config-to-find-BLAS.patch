@@ -1,0 +1,31 @@
+From 5440caed97586e65a8a82ef2a47bb69aca96516a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Mon, 5 Jan 2026 15:55:58 +0100
+Subject: [PATCH] fastercap: use pkg-config to find BLAS
+
+---
+ CMakeLists.txt | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b9ab939..1b89246 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,12 +51,8 @@ if (APPLE)
+     endif()
+ endif()
+ 
+-find_package(BLAS REQUIRED)
+-if ("${BLAS_INCLUDE_DIRS}" STREQUAL "")
+-# fallback for CI/CD environment
+-   SET(BLAS_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/../../deps/blas/include)
+-endif()
+-message(STATUS "BLAS found, Includes: ${BLAS_INCLUDE_DIRS}")
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(BLAS REQUIRED blas)
+ include_directories(${BLAS_INCLUDE_DIRS})
+ set(EXTRA_LIBS ${EXTRA_LIBS} ${BLAS_LIBRARIES})
+ 
+-- 
+2.52.0
+
