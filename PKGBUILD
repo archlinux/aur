@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.9.3.r1.g3afef41
+pkgver=0.9.11.r1.g2032e04
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -22,6 +22,7 @@ makedepends=(
     'git'
     'yarn'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -41,8 +42,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/e2/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -50,7 +57,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -81,6 +87,7 @@ prepare() {
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname//-/.}/app/.gitconfig"
         echo app lib backend e2 | xargs -n 1 cp .yarnrc
     fi
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}/app/build"
     sh "${pkgname%-git}-brand.sh"
     cd "${srcdir}/${pkgname//-/.}/app"
@@ -96,6 +103,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/e2"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_OPTIONS="--max-old-space-size=4096" NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml

@@ -1,6 +1,6 @@
 pkgbase = mustang-git
 	pkgdesc = New full-featured desktop email, chat and video conference client.(Use system-wide electron)
-	pkgver = 0.9.3.r1.g3afef41
+	pkgver = 0.9.11.r1.g2032e04
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = mustang-git
 	makedepends = git
 	makedepends = yarn
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron32
-	provides = mustang=0.9.3
+	provides = mustang=0.9.11
 	conflicts = mustang
 	source = mustang.git::git+https://github.com/mustang-im/mustang.git
 	source = mustang.sh
