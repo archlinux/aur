@@ -1,16 +1,15 @@
 pkgbase = python-platform-utils
 	pkgdesc = Cross-platform utilities for accomplishing some tasks that the stdlib isn't equipped to provide
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/platform_utils/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/platform_utils/platform_utils-1.5.4.tar.gz
-	sha512sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/p/platform_utils/platform_utils-1.6.0.tar.gz
+	sha512sums = cd44f1ccaf720fe67d50c6c034907a596191ae185cb379765040b862187889bdc88ed048f119d8dba6022dfde55811a394c66e1353596d5cc61ac0a6ce759481
 
 pkgname = python-platform-utils
