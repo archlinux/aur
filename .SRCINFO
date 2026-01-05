@@ -1,0 +1,18 @@
+pkgbase = mousse-git
+	pkgdesc = vim for your mouse
+	pkgver = r7.6d49375
+	pkgrel = 1
+	url = https://github.com/rusmisel/mousse
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	depends = wayland
+	provides = mousse
+	conflicts = mousse
+	options = !lto
+	source = git+https://github.com/rusmisel/mousse
+	sha256sums = SKIP
+
+pkgname = mousse-git
