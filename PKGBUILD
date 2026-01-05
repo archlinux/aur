@@ -2,7 +2,7 @@
 # Maintainer: oltulu <cihanalk@gmail.com>
 
 pkgname=uyap
-pkgver=5.4.14
+pkgver=5.4.16
 pkgrel=1
 pkgdesc="UYAP Dokuman Editor, UYAP Sablon Editor"
 arch=("x86_64")
@@ -13,13 +13,13 @@ depends=("pcsclite" "java-environment<=11")
 optdepends=("akia: sign UYAP documents"
 	    "jre8: sign UYAP documents"
 	    "cups: print documents")
-source=("https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus-5-4-14-amd6403-06-20251-41-pm.zip"
+source=("https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus-5-4-16-amd6429-12-20252-41-pm.zip"
         desktop-files.patch)
-sha256sums=("a515293ee2c30b65160c61f37bd150a5b39c402432ab6c7c654a2c47bd7fb364"
+sha256sums=("2e3643111cce9d0d0c71e8300ef85d02f7591b96b43f9aabdb98564aa6bcd0a8"
             "19f36882522f236b3e48049c810079cf0ddfb21b76ad2da84e9b70550df4ac19")
 
 prepare() {
-    ar x uyap_pardus_5_4_14_amd64/uyapeditor_5.4.14_amd64.deb
+    ar x uyap_pardus_5_4_16_amd64/uyapeditor_5.4.16_amd64.deb
     tar -xf ${srcdir}/data.tar.xz -C "${srcdir}"
     patch --forward --strip=1 --input="desktop-files.patch"
 }
