@@ -6,18 +6,36 @@ _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
 pkgrel=1
 pkgdesc="Lightning Network Daemon ⚡"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
+case $CARCH in
+    'x86_64')
+        _arch='amd64'
+        ;;
+    'aarch64')
+        _arch='arm64'
+        ;;
+esac
 url="https://github.com/lightningnetwork/lnd"
 license=('MIT')
 provides=('lnd' 'lncli')
 conflicts=('lnd' 'lnd-git')
 source=(
-    "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-amd64-v$_pkgver.tar.gz"
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
+source_x86_64=(
+    "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-amd64-v$_pkgver.tar.gz"
+)
+source_aarch64=(
+    "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-arm64-v$_pkgver.tar.gz"
+)
 sha512sums=(
-    'f403f8d73e75506c536165a1c717d9fd6601d91ca29642ee714bfd99ae13010ab95b393744d000c4b34c91cab18c4292e013ab13077236744c3687fbec95e16c'
     '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
+)
+sha512sums_x86_64=(
+    'f403f8d73e75506c536165a1c717d9fd6601d91ca29642ee714bfd99ae13010ab95b393744d000c4b34c91cab18c4292e013ab13077236744c3687fbec95e16c'
+)
+sha512sums_aarch64=(
+    '9b974590dcaa8018264de847678ddbbea70c42d54327694f32efa1426e49d51cf12726c46ac8f8d1c902e09336a8c51b674ceaabf2059052139be210a5657a8e'
 )
 
 # This is a binary package, build flags do not apply
@@ -47,7 +65,7 @@ prepare() {
 
     # Check the binaries match the manifest
     cat "$manifestfile" \
-        | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
+        | grep "^[0-9a-f]\{64\}  $_pkgname-linux-$_arch-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
         | sha256sum -c -
 
     maintainers=(
@@ -101,8 +119,8 @@ prepare() {
 }
 
 package() {
-    install -Dm 755 "$srcdir/$_pkgname-linux-amd64-v$_pkgver/lncli" -t "$pkgdir/usr/bin";
-    install -Dm 755 "$srcdir/$_pkgname-linux-amd64-v$_pkgver/lnd" -t "$pkgdir/usr/bin";
+    install -Dm 755 "$srcdir/$_pkgname-linux-$_arch-v$_pkgver/lncli" -t "$pkgdir/usr/bin";
+    install -Dm 755 "$srcdir/$_pkgname-linux-$_arch-v$_pkgver/lnd" -t "$pkgdir/usr/bin";
 
     install -Dm644 "${srcdir}/$_pkgname-LICENSE-v$_pkgver" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
