@@ -10,9 +10,9 @@ provides=('witr')
 conflicts=('witr')
 
 source_x86_64=("${pkgname}-${pkgver}-amd64::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr-linux-amd64"
-               "witr.1::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr.1")
+               "witr.1-${pkgver}::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr.1")
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr-linux-arm64"
-                "witr.1::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr.1")
+                "witr.1-${pkgver}::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr.1")
 
 sha256sums_x86_64=('8a0395cdda00fb11dbd49f8d0befbba19419d5fac59ffa979edc9553d46b70ca'
                    'dc7833c47cd1db5fc6faf20fcb3cc12db750df13821f87325a58b4f6d9388189')
