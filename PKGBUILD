@@ -43,7 +43,7 @@ Keywords=jellyfin;media;video;streaming;
 EOF
 
     # Install icon
-    install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/finar.png"
+    install -Dm644 "data/finar.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/finar.png"
 
     # Create symlink in /usr/bin for PATH access
     install -d "${pkgdir}/usr/bin"
