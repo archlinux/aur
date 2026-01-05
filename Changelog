@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 8.2.0 ➙ 9.2.2
-              : 2025-09-18 ➙ 2026-01-05
+ Tags         : 9.0.1 ➙ 9.2.3
+              : 2025-10-30 ➙ 2026-01-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-05   : 9.2.3
+              - Docs - update manual build instructions for uv (including ubuntu)
+              - update Docs Changelogs
 
  2026-01-05   : 9.2.2
               - Fix typo in Docs/conf.py
@@ -43,10 +47,4 @@
                   the first time version *9.x* is used.
                   *Edit* files now use yaml format as well. Docs updated to reflect this.
  2025-09-18   ⋯
-              - update Docs Changelogs
-
- 2025-09-18   : 8.2.0
-              - Command line option completion optionally available
-                  If desired, then python-argcomplete package should be installed.
- 2025-09-17   ⋯
               - update Docs Changelogs
