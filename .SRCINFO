@@ -1,6 +1,6 @@
 pkgbase = nusmv
 	pkgdesc = A new symbolic model checker
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = http://nusmv.fbk.eu/index.html
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = nusmv
 	depends = libxml2
 	depends = libedit
 	optdepends = perl: for scripts in /usr/share/nusmv/contrib/
-	source = http://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0.tar.xz
-	sha256sums = bf5b14c4e2ca1f5e8404c8ce75825183d8f5842063cb1e58e073d92bb1234828
+	source = http://nusmv.fbk.eu/distrib/2.7.1/NuSMV-2.7.1.tar.xz
+	sha256sums = f1e11931f71d98aa9b84181eed67db584d7111100c2e967c904a31c15f823f60
 
 pkgname = nusmv
