@@ -1,7 +1,7 @@
 pkgbase = piper-voices-hu-hu
 	pkgdesc = Voices for Piper text to speech system (hu_HU)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://huggingface.co/rhasspy/piper-voices
 	arch = any
 	groups = piper-voices
