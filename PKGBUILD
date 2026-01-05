@@ -1,5 +1,5 @@
 pkgname=hpaper
-pkgver=0.6.1
+pkgver=0.7
 pkgrel=1
 pkgdesc='Advanced Wallpaper Management for Wayland'
 arch=('x86_64')
@@ -9,23 +9,18 @@ makedepends=('go')
 optdepends=('swaybg: Wallpaper utility for Wayland compositors.'
             'hyprpaper: a blazing fast wayland wallpaper utility with IPC controls.'
             'python-pywal16: Generate and change color-schemes on the fly.')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v0.6.1.tar.gz")
-sha256sums=('097a2a0afc46f03245d94e49d279596e92e6c5a500cdb31baf1d958727ceb4c0')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  rm -f showcase.gif || true
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v0.7.tar.gz")
+sha256sums=('10f8c72f2faa8b400b65da9b6c28b8bc1516ce3d21c2587cc3a3c4b79df5ecea')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  
+
   go build -o hpaper .
 }
 

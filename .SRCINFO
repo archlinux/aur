@@ -1,6 +1,6 @@
 pkgbase = hpaper
 	pkgdesc = Advanced Wallpaper Management for Wayland
-	pkgver = 0.6.1
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/Hcode00/hpaper
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hpaper
 	optdepends = swaybg: Wallpaper utility for Wayland compositors.
 	optdepends = hyprpaper: a blazing fast wayland wallpaper utility with IPC controls.
 	optdepends = python-pywal16: Generate and change color-schemes on the fly.
-	source = hpaper-0.6.1.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.6.1.tar.gz
-	sha256sums = 097a2a0afc46f03245d94e49d279596e92e6c5a500cdb31baf1d958727ceb4c0
+	source = hpaper-0.7.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.7.tar.gz
+	sha256sums = 10f8c72f2faa8b400b65da9b6c28b8bc1516ce3d21c2587cc3a3c4b79df5ecea
 
 pkgname = hpaper
