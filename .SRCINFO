@@ -5,6 +5,7 @@ pkgbase = nekobox
 	url = https://github.com/qr243vbi/nekobox
 	arch = x86_64
 	arch = aarch64
+	arch = riscv64
 	license = GPL-3.0-or-later
 	makedepends = bash
 	makedepends = gcc-libs
@@ -23,7 +24,7 @@ pkgbase = nekobox
 	makedepends = upx
 	makedepends = boost-libs
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.9.27/nekobox-unified-source-5.9.27.tar.xz
-	sha256sums = f57298624785d4076d8e7eb55e9ddc1d967d12360874907afefcbba71820d3fe
+	sha256sums = 6ea06da7f237c7c54d29ba9288ccb92ef3182eff7588f8365159f44f45213996
 
 pkgname = nekobox
 	depends = bash
