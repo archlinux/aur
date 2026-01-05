@@ -1,7 +1,7 @@
 pkgbase = lolbin
 	pkgdesc = A cli tool for managing pastes on paste.lol
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.ache.one/lolbin
 	arch = any
 	license = MIT

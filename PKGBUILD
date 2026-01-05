@@ -2,7 +2,7 @@
 
 pkgname=lolbin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool for managing pastes on paste.lol"
 arch=('any')
 url="https://git.ache.one/lolbin"
