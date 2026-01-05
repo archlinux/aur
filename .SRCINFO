@@ -1,7 +1,7 @@
 pkgbase = ca-racing-bin
 	pkgdesc = Top-down 2D racing game written in Python (pre-compiled binary)
 	pkgver = 0.2.0_alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/piotrek1372/ca-racing
 	arch = x86_64
 	license = MIT
