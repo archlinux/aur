@@ -5,9 +5,9 @@ _pkgname=nwchem
 _MPI=OpenMPI
 _mpi=${_MPI,,}
 pkgname=${_pkgname}-bin
-_pkgver=7.2.3-10
+_pkgver=7.3.1-1
 pkgver="${_pkgver//-/\.}"
-pkgrel=2
+pkgrel=1
 pkgdesc="High-performance computational chemistry software (${_MPI} build) — Debian binary build"
 arch=('x86_64')
 url='https://nwchemgit.github.io'
@@ -20,18 +20,18 @@ depends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=('!strip')
+options=('!debug' '!strip')
 source=(
   "http://httpredir.debian.org/debian/pool/main/n/${_pkgname}/${_pkgname}_${_pkgver}_all.deb"
 )
 sha256sums=(
-  'b02ec5fd9e8e31b5468c50ba780e717d8282c7e2fb21d99a76ef236e55e2523c'
+  '35dfd294816b90ffec217b9d8369240f5671d2757800e24c0ebc215539530bbc'
 )
 source_x86_64=(
   "http://httpredir.debian.org/debian/pool/main/n/${_pkgname}/${_pkgname}-${_mpi}_${_pkgver}_amd64.deb"
 )
 sha256sums_x86_64=(
-  'f2dc16b130fc10bb1784307a21cc6ff24362b30c74d82cb739eb8d8f0c0c5adc'
+  'a2b6b87b61a85611ef504486cd4a54a053a836eb2a385ba525add60ecc270097'
 )
 noextract=("${source[@]##*/}")
 

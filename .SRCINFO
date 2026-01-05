@@ -1,7 +1,7 @@
 pkgbase = nwchem-bin
 	pkgdesc = High-performance computational chemistry software (OpenMPI build) — Debian binary build
-	pkgver = 7.2.3.10
-	pkgrel = 2
+	pkgver = 7.3.1.1
+	pkgrel = 1
 	url = https://nwchemgit.github.io
 	arch = x86_64
 	license = custom:ECL2.0
@@ -14,11 +14,12 @@ pkgbase = nwchem-bin
 	depends = scalapack
 	provides = nwchem
 	conflicts = nwchem
-	noextract = nwchem_7.2.3-10_all.deb
+	noextract = nwchem_7.3.1-1_all.deb
+	options = !debug
 	options = !strip
-	source = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem_7.2.3-10_all.deb
-	sha256sums = b02ec5fd9e8e31b5468c50ba780e717d8282c7e2fb21d99a76ef236e55e2523c
-	source_x86_64 = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem-openmpi_7.2.3-10_amd64.deb
-	sha256sums_x86_64 = f2dc16b130fc10bb1784307a21cc6ff24362b30c74d82cb739eb8d8f0c0c5adc
+	source = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem_7.3.1-1_all.deb
+	sha256sums = 35dfd294816b90ffec217b9d8369240f5671d2757800e24c0ebc215539530bbc
+	source_x86_64 = http://httpredir.debian.org/debian/pool/main/n/nwchem/nwchem-openmpi_7.3.1-1_amd64.deb
+	sha256sums_x86_64 = a2b6b87b61a85611ef504486cd4a54a053a836eb2a385ba525add60ecc270097
 
 pkgname = nwchem-bin
