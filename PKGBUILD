@@ -1,4 +1,4 @@
-pkgname=scrapfetch
+pkgname=scrapfetch-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="A tool for fetching system information. Written in C for Linux."
