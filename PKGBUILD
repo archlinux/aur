@@ -18,7 +18,7 @@ source=(
 	"https://github.com/nekename/OpenDeck/releases/download/v${pkgver}/opendeck_${pkgver}_amd64.deb"
 )
 
-sha256sums=('74bdc722484028d43dda33799621b4b1778f428abf0ee8f74d5b4d2a9d89f585')
+sha256sums=('10bc750b17056086b8c5ac010eb966b3fbb87444f4c971e5d7795d63e8177621')
 
 package() {
 	bsdtar -xf "${srcdir}/opendeck_${pkgver}_amd64.deb" -C "${srcdir}"
