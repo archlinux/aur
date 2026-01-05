@@ -1,30 +1,36 @@
-# Maintainer: nontlikeuname
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com> 
+# Submitter: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.63.0rc1.r10.c2c9359d4
+pkgver=1.10.0.r79.4a9075b86
 pkgrel=1
-pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
+pkgdesc="SCons-like build system that uses python as a front-end language and Ninja as a building backend"
 arch=(any)
 url="http://mesonbuild.com/"
 license=('Apache')
 depends=('python' 'ninja')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/mesonbuild/meson'
          'arch-meson')
-md5sums=('SKIP'
-         'e1a31b2f4993cf627c640cf6795a17f5')
+b2sums=('SKIP'
+        'f1b61b7e56e1ebde3dba2ee4b5fb45ef35d6c9f27dc5631fe7dc25bd97a39672a8f96e4b2c3055580e6c6dffa48575d4fab9e6ca2e5416234ea3dc8765c30955')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd meson
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+build() {
+	cd meson
+  python -m build --wheel --no-isolation
+}
+
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir" --optimize=1
-	install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  cd meson
+  python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   for _f in data/syntax-highlighting/vim/*/*; do
     install -Dt "${pkgdir}/usr/share/vim/vimfiles/$(basename "$(dirname "$_f")")" -m644 "$_f"
   done
@@ -33,3 +39,5 @@ package() {
   # Arch packaging helper
   install -D ../arch-meson -t "${pkgdir}/usr/bin"
 }
+
+
