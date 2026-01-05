@@ -1,6 +1,6 @@
 pkgbase = steamcommunity302
 	pkgdesc = 羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动
-	pkgver = 14.0.00
+	pkgver = 14.0.01
 	pkgrel = 1
 	url = https://www.dogfight360.com/blog/18682/
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = steamcommunity302
 	backup = opt/steamcommunity302/steamcommunityCA.pem
 	backup = opt/steamcommunity302/steamcommunityCA.key
 	backup = opt/steamcommunity302/steamcommunityCA.crl
-	source_x86_64 = https://www.dogfight360.com/blog/wp-content/uploads/2025/12/steamcommunity_302_Linux_AMD64_V14.0.00.tar.gz
+	source_x86_64 = https://www.dogfight360.com/blog/wp-content/uploads/2025/12/steamcommunity_302_Linux_AMD64_V14.0.01.tar.gz
 	md5sums_x86_64 = 58088131583007c0c0bcab527bcf9b77
-	source_aarch64 = https://www.dogfight360.com/blog/wp-content/uploads/2025/12/steamcommunity_302_Linux_ARM64_V14.0.00.tar.gz
+	source_aarch64 = https://www.dogfight360.com/blog/wp-content/uploads/2025/12/steamcommunity_302_Linux_ARM64_V14.0.01.tar.gz
 	md5sums_aarch64 = fae39f91366de539289a2a01a61e89bd
 
 pkgname = steamcommunity302

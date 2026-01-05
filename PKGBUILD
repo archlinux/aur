@@ -1,6 +1,6 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 pkgname=steamcommunity302
-pkgver=14.0.00
+pkgver=14.0.01
 pkgreldate=2025/12
 pkgrel=1
 #epoch=
@@ -11,8 +11,8 @@ license=('CC-BY-NC-4.0')
 depends=('nss' 'gtk3' 'glibc' 'gcc-libs' 'zlib' 'xorg-xhost')
 source_x86_64=("https://www.dogfight360.com/blog/wp-content/uploads/${pkgreldate}/steamcommunity_302_Linux_AMD64_V${pkgver}.tar.gz")
 source_aarch64=("https://www.dogfight360.com/blog/wp-content/uploads/${pkgreldate}/steamcommunity_302_Linux_ARM64_V${pkgver}.tar.gz")
-md5sums_x86_64=('58088131583007c0c0bcab527bcf9b77')
-md5sums_aarch64=('fae39f91366de539289a2a01a61e89bd')
+md5sums_x86_64=('29c22dc38906954115d75556d9e3f303')
+md5sums_aarch64=('cc2f951d4c632cba3a615d8d26815947')
 options=(!strip)
 backup=(
   opt/steamcommunity302/S302.ini
