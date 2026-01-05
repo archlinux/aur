@@ -2,7 +2,8 @@
 # Contributor: Kilo Code <ai@kilo.dev>
 
 pkgname=ca-racing
-pkgver=0.2.3_alpha
+_app_version="$(python -c 'from src.constants import APP_VERSION; print(APP_VERSION)')"
+pkgver="${_app_version}_alpha"
 pkgrel=1
 pkgdesc="Top-down 2D racing game written in Python"
 arch=('any')
