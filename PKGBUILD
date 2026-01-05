@@ -3,10 +3,10 @@
 # Contributor: Noel Kuntze <noel.kuntze@thermi.consulting>
 pkgname=libmdbx
 pkgver=0.13.10
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the fastest compact key-value ACID database without WAL, which surpasses the legendary LMDB in terms of reliability, features and performance. At the end of 2024 MDBX was chosen by all modern Ethereum frontiers/nodes as a storage engine."
 url="https://libmdbx.dqdkfa.ru/"
-arch=('x86_64' 'i686' 'ARM' 'aarch64', 'powerpc64le')
+arch=('x86_64' 'i686' 'ARM' 'aarch64' 'powerpc64le')
 license=('Apache-2')
 depends=('glibc')
 subpackages="$pkgname-dev $pkgname-doc $pkgname-dbg"
