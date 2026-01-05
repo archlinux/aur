@@ -2,7 +2,7 @@
 # Maintainer: jidckii <jidckii@gmail.com>
 
 pkgname='kolor-keyboard-bin'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='RGB keyboard backlight based on keyboard layout'
 url='https://github.com/jidckii/kolor-keyboard'
@@ -15,7 +15,7 @@ optdepends=('plasma-desktop: for KDE Plasma layout detection')
 install=kolor-keyboard.install
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jidckii/kolor-keyboard/releases/download/v${pkgver}/kolor-keyboard_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3307bd263e56f391e5061468c4155d7b6b680f57cda564ae1d6841b12ccc504a')
+sha256sums_x86_64=('95147399a6af1377d1253e3a0a832432b6ebb6a9fa81ebd7e6f40d0687676ad9')
 
 package() {
   install -Dm755 kolor-keyboard "${pkgdir}/usr/bin/kolor-keyboard"
