@@ -1,6 +1,6 @@
 # Maintainer: Pavel Olizko <olizkopavel@proton.me>
 pkgname=mf-cli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="CLI tool for Arturia MiniFuse 1"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'libusb' 'systemd-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('de97f996da46a712ed8076164b867fcd502ab9710c83d943fb8845a8e17d178a')
+sha256sums=('fd9bb5b476e3b687bced1b1cb9a0d345823a296322eed66baf815a572e518a19')
 
 build() {
   cd "$pkgname-$pkgver"
