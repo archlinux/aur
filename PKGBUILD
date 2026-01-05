@@ -11,34 +11,23 @@ _pkgver_major=5
 _pkgver_minor=7
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=3
+pkgrel=2
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
 license=('MIT')
-depends=('java-runtime' 'bash' 'curl' 'grep' 'findutils')
+depends=('java-runtime' 'bash' 'curl')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
 # The first source is just a placeholder to avoid makepkg error.
 # The real archive is downloaded manually in prepare() with fallback support.
-source=("${pkgname}.desktop"
+source=("https://github.com/archimatetool/archi.io/releases/download/5700/Archi-Linux64-${pkgver}.tgz"
+        "${pkgname}.desktop"
         "LICENSE")
-sha1sums=('9db2f9482f32c316c97a14a3345cb417f57945c2'
+sha1sums=('d4757c33e019e8da3522aa89807634644a309c25'
+          '9db2f9482f32c316c97a14a3345cb417f57945c2'
           '99c2483de8ee9bd65693caab97d5ad16455ec835')
-
-prepare() {
-  cd "${srcdir}"
-
-  curl -s https://www.archimatetool.com/download/ \
-    | grep -oP '<a[^>]+data-track="true"[^>]+href="\K[^"]+' \
-    | grep -i "Archi-Linux64-${pkgver}.tgz" \
-    | xargs -n1 curl -L -O
-
-  # Extract the downloaded archive
-  tar --warning=no-unknown-keyword --no-xattrs -xf "Archi-Linux64-${pkgver}.tgz"
-}
-
 
 package() {
   cd "${srcdir}"
