@@ -1,7 +1,7 @@
 # Maintainer: Máté Szabó <mszabo-oss at protonmail dot com>
 pkgname=todds
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A CPU-based DDS encoder optimized for fast batch conversions with high encoding quality."
 arch=('x86_64')
 url="https://github.com/todds-encoder/todds"
@@ -15,7 +15,7 @@ sha512sums=('483ae1b8b1c5bf62b53ffb933fb15048d328a55b7ac6b1562d809c6fb48629837b6
 build() {
 	cd "$pkgname-$pkgver"
 
-	cmake -B build -DCMAKE_MAKiE_PROGRAM=make -DTODDS_UNIT_TESTS=1 -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build -DCMAKE_MAKE_PROGRAM=make -DTODDS_UNIT_TESTS=1 -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 

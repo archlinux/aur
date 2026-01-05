@@ -1,7 +1,7 @@
 pkgbase = todds
 	pkgdesc = A CPU-based DDS encoder optimized for fast batch conversions with high encoding quality.
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/todds-encoder/todds
 	arch = x86_64
 	license = MPL2
