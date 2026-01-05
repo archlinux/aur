@@ -1,8 +1,10 @@
 # Maintainer: Saurabh Kushwah <saurabhkushwahjnv@gmail.com>
 
+# Upstream PKGBUILD repository: https://github.com/Saurabh825/PKGBUILDs
+
 pkgname=dash-mpd-cli-bin
 pkgver=0.2.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Download media content from a DASH-MPEG or DASH-WebM MPD manifest "
 arch=('x86_64' 'aarch64')
 url="https://github.com/emarsden/dash-mpd-cli"
