@@ -9,7 +9,7 @@ pkgbase = pass-spell-git
 	makedepends = git
 	makedepends = sed
 	depends = pass
-	depends = nato-spell
+	depends = nato-spell-git
 	provides = pass-spell
 	conflicts = pass-spell
 	backup = etc/pass-spell/pass-spell.conf
@@ -17,4 +17,3 @@ pkgbase = pass-spell-git
 	md5sums = SKIP
 
 pkgname = pass-spell-git
-
