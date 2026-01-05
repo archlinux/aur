@@ -1,0 +1,4 @@
+[googleballs-desktop-gtk]
+source = "git"
+git = "https://github.com/weeniemount/googleballs-app.git"
+
