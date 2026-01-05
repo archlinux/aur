@@ -1,7 +1,7 @@
 pkgbase = piper-voices-minimal
 	pkgdesc = Voices for Piper text to speech system (en_US, single model)
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://huggingface.co/rhasspy/piper-voices
 	install = piper-voices-minimal.install
 	arch = any

@@ -3,7 +3,7 @@
 _pkgbase="piper-voices"
 pkgname="piper-voices-minimal"
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Voices for Piper text to speech system (en_US, single model)"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
@@ -39,7 +39,7 @@ prepare(){
   "/en/en_US/ryan/high/en_US-ryan-high.onnx"
  )
  echo "Downloading the following models: ${_models[*]}"
- git lfs install
+ git lfs install --local
  git lfs pull --include "$(IFS=,; echo "${_models[*]}")"
  
  # remove mp3 samples
