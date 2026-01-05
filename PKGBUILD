@@ -2,7 +2,7 @@
 # Maintainer: Vinay <vinaymeldrum@gmail.com>
 
 pkgname='leetcode-sr-bin'
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='CLI for LeetCode Spaced Repetition Tracker (Binary)'
 url='https://github.com/VinMeld/leetcode-space-repition'
@@ -13,10 +13,10 @@ conflicts=('leetcode-sr' 'leetcode-sr-git')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/VinMeld/leetcode-space-repition/releases/download/v${pkgver}/leetcode-sr_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('91ad2435fc78e5b85679df0bdedf8ea7f21cb258342d0f1ef72250d2b6ca6e72')
+sha256sums_aarch64=('90546f379196843529aac7e3d29a77269504bb16d46d8e36a811e842abdfe22d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/VinMeld/leetcode-space-repition/releases/download/v${pkgver}/leetcode-sr_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('e5801591324cb7fe3abe10251a9143fcd9b146c7eb7d0e6ece864fd093ab16be')
+sha256sums_x86_64=('dfc7fd032d1df6b4f75fe0c8cd429fb3c272578ecc997d35bde6bb50541b5141')
 
 package() {
   # bin
