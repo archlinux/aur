@@ -1,5 +1,5 @@
 pkgbase = simple-duplicate-finder-git
-	pkgdesc = A program to find and delete duplicates, built on Python and GTK
+	pkgdesc = A program to find and delete duplicates, built on Python and GTK.
 	pkgver = r203.g93cd923
 	pkgrel = 1
 	url = https://github.com/moltenib/simple-duplicate-finder
