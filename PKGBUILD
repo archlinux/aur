@@ -39,6 +39,11 @@ makedepends=(
   libxcb
   mesa
   python-setuptools
+  python-sphinx
+  python-sphinx-copybutton
+  python-sphinx-furo
+  python-sphinx-inline-tabs
+  python-sphinxext-opengraph
   simde
   ttf-nerd-fonts-symbols-mono
   wayland-protocols
