@@ -2,7 +2,7 @@
 # Contributor: Kilo Code <ai@kilo.dev>
 
 pkgname=ca-racing
-pkgver=0.2.2_alpha
+pkgver=0.2.3_alpha
 pkgrel=1
 pkgdesc="Top-down 2D racing game written in Python"
 arch=('any')
@@ -20,7 +20,7 @@ source=("$pkgname-$_urlver.tar.gz::https://github.com/piotrek1372/$pkgname/archi
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$_urlver"
+    cd "$srcdir/CA-Racing-$_urlver"
     # No build steps needed for a Python source package
     echo "Skipping build process..."
 }
@@ -28,7 +28,7 @@ build() {
 package() {
     # Install the application source code
     install -d "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$pkgname-$_urlver/"* "$pkgdir/opt/$pkgname/"
+    cp -r "$srcdir/CA-Racing-$_urlver/"* "$pkgdir/opt/$pkgname/"
 
     # Install Python dependencies
     pip install -r "$pkgdir/opt/$pkgname/requirements.txt" --target "$pkgdir/opt/$pkgname/vendor" --no-user
@@ -37,6 +37,6 @@ package() {
     install -Dm755 "$srcdir/ca-racing.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Install icon and desktop file
-    install -Dm644 "$srcdir/$pkgname-$_urlver/assets/images/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$srcdir/CA-Racing-$_urlver/assets/images/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$srcdir/ca-racing.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
