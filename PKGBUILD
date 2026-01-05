@@ -4,7 +4,7 @@
 # Learn programming, playing with ants and spider webs ;-) https://sgimenez.github.io/laby/
 _pkgname=laby
 pkgname=$_pkgname-git
-pkgver=r363.b29fda9
+pkgver=r366.47f9560
 pkgrel=1
 pkgdesc="Learn programming, playing with ants and spider webs"
 arch=('i686' 'x86_64')

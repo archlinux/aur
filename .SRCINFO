@@ -1,6 +1,6 @@
 pkgbase = laby-git
 	pkgdesc = Learn programming, playing with ants and spider webs
-	pkgver = r363.b29fda9
+	pkgver = r366.47f9560
 	pkgrel = 1
 	url = https://sgimenez.github.io/laby/
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = laby-git
 	md5sums = SKIP
 
 pkgname = laby-git
-
