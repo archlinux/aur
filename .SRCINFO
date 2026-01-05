@@ -1,6 +1,6 @@
 pkgbase = sing-box-ref1nd
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.12.12
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = https://github.com/reF1nd/sing-box/tree/reF1nd-dev
 	arch = i686
@@ -17,8 +17,9 @@ pkgbase = sing-box-ref1nd
 	conflicts = sing-box-alpha
 	conflicts = sing-box-beta
 	conflicts = sing-box-ref1nd-git
+	options = !debug
 	backup = etc/sing-box/config.json
-	source = sing-box-1.12.12-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v1.12.12-reF1nd.tar.gz
-	sha256sums = 02f1950da81ecd0ca362cba756c3d157f3bfd27153a07bd8427c364996fdb0bb
+	source = sing-box-1.12.14-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v1.12.14-reF1nd.tar.gz
+	sha256sums = ef3b4edff1231cbb44be1ce728567ce9f61eac94cb0e2d8e8413d424bc4a4c0b
 
 pkgname = sing-box-ref1nd
