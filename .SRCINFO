@@ -20,9 +20,9 @@ pkgbase = splayer
 	depends = libnotify
 	optdepends = http-parser: required by some Electron builds
 	optdepends = libappindicator: for system tray icon support
-	provides = splayer=3.0.0_beta.7
+	provides = splayer=3.0.0_beta.8
 	conflicts = splayer
-	noextract = splayer-3.0.0_beta.7-x64.pacman
+	noextract = splayer-3.0.0_beta.8-x64.pacman
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.8.2025/splayer-3.0.0-beta.8-x64.pacman
