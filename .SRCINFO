@@ -1,12 +1,11 @@
 pkgbase = danisrace-git
 	pkgdesc = The Libre Game Dani's Race.
-	pkgver = r4.db92590
+	pkgver = r8.2cc19be
 	pkgrel = 1
 	url = https://forg.madiator.cloud/BlenderDumbass/danisrace
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = upbge
 	depends = gtk3
 	depends = python
 	depends = python-cairo

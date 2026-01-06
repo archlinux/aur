@@ -2,13 +2,13 @@
 
 _pkgname=danisrace
 pkgname=${_pkgname}-git
-pkgver=r4.db92590
+pkgver=r8.2cc19be
 pkgrel=1
 pkgdesc="The Libre Game Dani's Race."
 arch=('x86_64')
 url="https://forg.madiator.cloud/BlenderDumbass/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('upbge' 'gtk3' 'python' 'python-cairo' 'python-gobject' 'hicolor-icon-theme')
+depends=('gtk3' 'python' 'python-cairo' 'python-gobject' 'hicolor-icon-theme')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git')
