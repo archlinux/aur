@@ -1,0 +1,12 @@
+pkgbase = gtfs-validator-gui
+	pkgdesc = Canonical GTFS Validator project for schedule (static) files. (GUI)
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://github.com/MobilityData/gtfs-validator
+	arch = any
+	license = Apache-2.0
+	depends = jdk17-temurin
+	source = https://github.com/MobilityData/gtfs-validator/releases/download/v7.1.0/gtfs-validator-7.1.0-gui.jar
+	sha256sums = 2f8a250055974a1da590ab1c48e72ac4e38481d24dee64882c40da0b2bfe4f7c
+
+pkgname = gtfs-validator-gui
