@@ -1,6 +1,6 @@
 pkgbase = ccusage-statusline-rs
 	pkgdesc = Ultra-fast Rust statusline for Claude Code with real-time usage tracking, billing blocks, and burn rate monitoring
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/ticpu/ccusage-statusline-rs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ccusage-statusline-rs
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.7.1/ccusage-statusline-rs-1.7.1.tar.xz
-	sha256sums = c7bba9e6f144d9f7884b35bc549fb9ae3b136bcaa1ecd942e62c45e0ed52973a
+	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.7.2/ccusage-statusline-rs-1.7.2.tar.xz
+	sha256sums = cc921fc5e0877054dd47e37921a9417e7d0fa938ac1c422f1ba8c1c3ad56b1e5
 
 pkgname = ccusage-statusline-rs
