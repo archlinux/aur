@@ -1,21 +1,17 @@
-# Maintainer: Sergey A <murlakatamenka@disroot.org>
+# ex-maintainer: Sergey A <murlakatamenka@disroot.org>
 
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2164
 
 pkgname=falcond
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Linux gaming performance daemon'
 arch=('x86_64')
 url='https://github.com/PikaOS-Linux/falcond'
 license=('MIT')
 makedepends=('zig>=0.14')
-optdepends=(
-  'falcond-profiles: default falcond profiles'
-  'scx-scheds: SCX CPU schedulers'
-  'power-profiles-daemon: power profiles handling'
-)
+depends=(falcond-profiles scx-scheds power-profiles-daemon)
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
