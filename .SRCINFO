@@ -1,7 +1,7 @@
 pkgbase = oxc
 	pkgdesc = A collection of JavaScript tools written in Rust
 	pkgver = 1.37.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oxc-project/oxc
 	arch = x86_64
 	license = MIT

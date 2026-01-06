@@ -3,7 +3,7 @@
 pkgbase=oxc
 pkgname=(oxlint oxfmt)
 pkgver=1.37.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of JavaScript tools written in Rust"
 arch=(x86_64)
 url="https://github.com/oxc-project/oxc"
@@ -31,10 +31,10 @@ prepare() {
 build() {
   cd "oxc-oxlint_v${pkgver}"
 
-  test -e target/release/oxlint \
-    || cargo build --frozen --release --package oxlint
+  # test -e target/release/oxlint || \
+  cargo build --frozen --release --package oxlint
 
-  test -e apps/oxfmt/dist/oxfmt.linux-x64-gnu.node && return
+  # test -e apps/oxfmt/dist/oxfmt.linux-x64-gnu.node && return
   find -name 'node_modules' -type d -exec rm -rf {} \; || true
   pnpm --filter oxfmt-app install
   pnpm --filter oxfmt-app run build
