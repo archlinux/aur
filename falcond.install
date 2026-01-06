@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "Enable falcond service:"
+  echo "systemctl enable --now falcond"
+  echo ""
+  echo "You must add your user to the falcond group in order to add/remove/edit"
+  echo "profiles and perform a full reboot:"
+  echo "sudo usermod -a -G falcond $(whoami)"
+  echo ""
+  echo "The configuration file will be generated automatically on first run "
+  echo "located at /etc/falcond/config.conf"
+  echo ""
+}

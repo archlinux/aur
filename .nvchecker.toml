@@ -1,0 +1,4 @@
+[falcond]
+source = "git"
+git = "https://github.com/PikaOS-Linux/falcond.git"
+prefix = "v"
