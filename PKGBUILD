@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.28.r69.g3f358b9b
+pkgver=2.12.28.r80.g711672e7
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('GPL-3.0-only')
@@ -22,7 +22,6 @@ _electron=electron38
 
 prepare() {
     cd "${srcdir}/Icalingua"
-    sed -i '/externals/a "bindings",' icalingua/.electron-vue/webpack.main.config.ts
     pnpm install --frozen-lockfile
 }
 pkgver(){
@@ -32,7 +31,6 @@ pkgver(){
 
 build(){
     cd "${srcdir}/Icalingua"
-    export NODE_OPTIONS=--openssl-legacy-provider
     cd icalingua
     pnpm run build:dir
 }
