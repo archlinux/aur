@@ -2,7 +2,7 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=lichtblick-bin
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
@@ -52,5 +52,5 @@ package() {
     ln -sf "$pkgdir/opt/Lichtblick/lichtblick" "$pkgdir/usr/bin/lichtblick"
 }
 
-sha256sums_x86_64=('af2ede9d46c8630cf17af81aeed6b336f7857b70ebcb479323a13df939aead38')
-sha256sums_aarch64=('\62490dc3edaa34669b3591d14b99a16490fe48ba8ff7d001219623943824c0b2')
+sha256sums_x86_64=('037a44c7b8c50b167ec1a23afcdc7a6c9a3d70f92b1c569734ec4704ff13a86b')
+sha256sums_aarch64=('\f8cc250f9cf5732bf0ac786ea602113deb40dc3310e577784c0cf1426efcc9dd')
