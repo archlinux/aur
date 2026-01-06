@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=argos-translate
 _name=argostranslate
 pkgver=1.10.0
