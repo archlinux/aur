@@ -5,7 +5,7 @@ pkgname=grafana-alloy-bin
 _pkgname=grafana-alloy
 _binaryname=alloy
 pkgdesc="OpenTelemetry Collector distribution with programmable pipelines."
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/grafana/alloy"
@@ -30,10 +30,10 @@ source_aarch64=(
     'alloy-tmpfiles.conf'
 )
 
-sha256sums_x86_64=('3b286b3ded1c2af91034c10a1dfaeb49bc50c240ea0d8907a12704192ad93067'
+sha256sums_x86_64=('e3f320821c79bb73acc94f3c25c03235c9d2272dd0da97e5330f47e8a32eb039'
                    'bd1b372bd6ef5f362858a3b6f193f697b85f5da05c46802166d1bb888a54e426'
                    '2da847dc592dabb19b3f77f3bf714348327667090040a741244cab1f6e08306c')
-sha256sums_aarch64=('d33bf0805c7d6641cfd896d1807ebb571b901ce117aeee1233c2d7a4100d2f6d'
+sha256sums_aarch64=('1cbc93959e7c4a5b720b254b8216f5a93fc6ecf72eb66a0b1db8f9ae9b69395c'
                     'bd1b372bd6ef5f362858a3b6f193f697b85f5da05c46802166d1bb888a54e426'
                     '2da847dc592dabb19b3f77f3bf714348327667090040a741244cab1f6e08306c')
 
