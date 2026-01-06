@@ -1,7 +1,7 @@
 # Maintainer: Alex Vegas <v34l at proton dot me>
 pkgname=cheminot
 pkgver=2022.01.04
-pkgrel=8
+pkgrel=9
 pkgdesc="Application de gestion d'horaire de l'ETS (license unknown)"
 arch=('x86_64' 'aarch64')
 url="https://cheminotjws.etsmtl.ca/"
@@ -12,7 +12,7 @@ source=(
     "https://www.etsmtl.ca/assets/img/ets.svg"
 )
 sha256sums=(
-    'c0a998ec111672d5fc61de69f6f252432dc575807e92b1ffa6eccff9aee088cd' 
+    'c0a998ec111672d5fc61de69f6f252432dc575807e92b1ffa6eccff9aee088cd'
     '24852c64b03d85e2987a3944882d5a5d81a1229ad0a5a1dfffd009b6c505e099'
 )
 
@@ -27,8 +27,8 @@ Exec=/usr/bin/$pkgname
 Terminal=false
 Type=Application
 Categories=Education;Utility;Application;Java
+Icon=/usr/share/pixmaps/$pkgname.svg
 EOF
-    Icon=/usr/share/pixmaps/$pkgname.svg
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOF
 #!/bin/bash
