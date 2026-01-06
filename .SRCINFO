@@ -1,0 +1,17 @@
+pkgbase = 9paste
+	pkgdesc = Clipboard transformer that automatically cleans, formats, and transforms clipboard text
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/9paste
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	provides = 9paste
+	conflicts = 9paste
+	options = !strip
+	source_x86_64 = 9paste-0.1.6-linux-x86_64.tar.gz::https://github.com/skorotkiewicz/9paste/releases/download/0.1.6/9paste-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 09cc3086ce7cc6db5b63b6de4107dd27c7c309e970059c12318e802a2b20f88c
+
+pkgname = 9paste

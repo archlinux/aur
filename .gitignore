@@ -1,0 +1,6 @@
+*.zst
+*.tar.gz
+pkg
+src
+readme.md
+update.py
