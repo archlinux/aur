@@ -1,0 +1,11 @@
+pkgbase = proton-ll-v3-bin
+	pkgdesc = Proton (low-latency fork)
+	pkgver = 10.1
+	pkgrel = 1
+	url = https://github.com/Ph42oN/proton-ll
+	arch = x86_64
+	license = BSD
+	source = https://github.com/Ph42oN/proton-ll/releases/download/10-1/proton-ll-10-1-x86_64_v3.tar.xz
+	sha256sums = 0e5706362439c0bcba902c009517eddf36cb0bc76f975fea743c3890709843a2
+
+pkgname = proton-ll-v3-bin
