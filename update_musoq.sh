@@ -9,3 +9,7 @@ wget -O README.md.3 "https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/main/
 sed -s -e '${p;g;}' ./README.md.{1,2,3} | sed -e '$d' > ./README.md
 
 rm -rf ./README.md.{1,2,3}
+
+pkgctl version upgrade
+
+updpkgsums ; makepkg --printsrcinfo > .SRCINFO
