@@ -1,9 +1,9 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgbase=oxc
-pkgname=(oxlint oxfmt oxc-language-server)
-pkgver=1.36.0
-pkgrel=2
+pkgname=(oxlint oxfmt)
+pkgver=1.37.0
+pkgrel=1
 pkgdesc="A collection of JavaScript tools written in Rust"
 arch=(x86_64)
 url="https://github.com/oxc-project/oxc"
@@ -11,8 +11,13 @@ license=('MIT')
 depends=('gcc-libs')
 options=('!lto')
 makedepends=('rust' 'cargo' 'pnpm' 'cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/oxc-project/oxc/archive/refs/tags/oxlint_v${pkgver}.tar.gz")
-sha256sums=('d8a91718bf8f1f1a01d5ef14a3141f7282453085641afa1bdf53b8ee8cd20ec4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/oxc-project/oxc/archive/refs/tags/oxlint_v${pkgver}.tar.gz"
+  oxlint.install
+)
+sha256sums=(
+  '4e1f8858ac15faef0177ff722bf70ee9b1550a97a30d5b4bef38bcec1396f802'
+  '5572432fa0cfeef8fef17dc1469e625b035171798a46930f68a2e085ceda9640'
+)
 
 prepare() {
   cd "oxc-oxlint_v${pkgver}"
@@ -26,7 +31,7 @@ prepare() {
 build() {
   cd "oxc-oxlint_v${pkgver}"
 
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --package oxlint
 
   find -name 'node_modules' -type d -exec rm -rf {} \; || true
   pnpm --filter oxfmt-app install
@@ -35,16 +40,13 @@ build() {
 
 package_oxlint() {
   pkgdesc="Oxc JavaScript linter"
+  replaces=("oxc-language-server")
+  provides=("oxlint" "oxc-language-server")
+  install="oxlint.install"
+
   cd "oxc-oxlint_v${pkgver}"
 
   install -Dm755 target/release/oxlint "$pkgdir/usr/bin/oxlint"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_oxc-language-server() {
-  pkgdesc="Oxc JavaScript linter language server"
-  cd "oxc-oxlint_v${pkgver}"
-  install -Dm755 target/release/oxc_language_server "$pkgdir/usr/bin/oxc_language_server"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -53,6 +55,7 @@ package_oxc-language-server() {
 package_oxfmt() {
   pkgdesc="Formatter for the JavaScript Oxidation Compiler"
   depends=("nodejs")
+
   cd "oxc-oxlint_v${pkgver}"
 
   install -dm755 "$pkgdir/usr/bin"

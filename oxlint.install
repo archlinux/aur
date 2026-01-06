@@ -1,0 +1,6 @@
+post_upgrade() {
+  if (("$(vercmp "$2" '1.37.0-1')" < 0)); then
+    echo 'NOTE: oxc-language-server binary has been depracted in 1.37.0'
+    echo '      to use the oxc-language-server use `oxlint --lsp` or `oxmft --lsp`'
+  fi
+}
