@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=arco
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Terminal-based virtual instrument playground with real-time synthesis and built-in sequencer'
 arch=('x86_64')
