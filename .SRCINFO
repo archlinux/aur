@@ -1,6 +1,6 @@
 pkgbase = mixbus11
 	pkgdesc = Harrison Consoles Mixbus DAW (Version 11)
-	pkgver = 11.2.14
+	pkgver = 11.2.27
 	pkgrel = 1
 	url = https://store.harrisonaudio.com/all-products/mixbus
 	install = mixbus11.install
@@ -19,9 +19,9 @@ pkgbase = mixbus11
 	optdepends = setbfree-lv2: Tonewheel organ
 	optdepends = x42-plugins-lv2: Set of plugins and utilities from the X42 Project
 	options = !strip
-	source = Mixbus-11.2.14-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.2/Mixbus-11.2.14-x86_64.tar
+	source = Mixbus-11.2.27-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.2/Mixbus-11.2.27-x86_64.tar
 	source = mixbus11.install
-	sha256sums = 3130e4103ed4499ddafddcbfc8c44b3756e61e532684dedb03561e102ba2c40e
+	sha256sums = 26e1b09ca50260c33572a8922f9d3a064b805689aeb530efc42c4990eed8d87e
 	sha256sums = b56e4663d14e856fd88ea1afb3b0bbe907bf0ebe67a6b584d17f9b1157b83abf
 
 pkgname = mixbus11

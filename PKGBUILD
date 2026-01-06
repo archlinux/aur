@@ -1,6 +1,6 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 
-# Version 11.2.14
+# Version 11.2.27
 #
 # Version 11.1.71 - New Features:
 # - Enhanced Hardware Controller Support:
@@ -28,7 +28,7 @@
 # Linux users receive core DAW functionality but not all advertised premium features.
 
 pkgname=mixbus11
-pkgver=11.2.14
+pkgver=11.2.27
 pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(
     "${pkgname}.install"
 )
 sha256sums=(
-    '3130e4103ed4499ddafddcbfc8c44b3756e61e532684dedb03561e102ba2c40e'
+    '26e1b09ca50260c33572a8922f9d3a064b805689aeb530efc42c4990eed8d87e'
     'b56e4663d14e856fd88ea1afb3b0bbe907bf0ebe67a6b584d17f9b1157b83abf'
 )
 options=('!strip')
