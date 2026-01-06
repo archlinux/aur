@@ -1,8 +1,8 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
-PKGEXT=.pkg.tar
+#PKGEXT=.pkg.tar
 pkgname=elyprismlauncher-bin
-pkgver=9.5 # upstream doesn't use a trailing .0 for releases.
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
@@ -22,10 +22,11 @@ source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/
 noextract=("ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst")
 sha256sums=('SKIP')
 
-pkgver()
-{
-	printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) && printf "\n" 
-}
+#pkgver()
+#{
+	# due to upstream changing subtle details in versioning, this doesn't work anymore. FIXME
+	# printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) && printf "\n" 
+#}
 
 package()
 {

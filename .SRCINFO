@@ -1,6 +1,6 @@
 pkgbase = elyprismlauncher-bin
 	pkgdesc = Prism Launcher fork with integrated support for Ely.by accounts (binary version)
-	pkgver = 9.5
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/ElyPrismLauncher/ElyPrismLauncher
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = elyprismlauncher-bin
 	optdepends = flite: minecraft voice narration
 	provides = elyprismlauncher
 	conflicts = elyprismlauncher
-	noextract = ElyPrismLauncher-ArchLinux-x86_64-9.5.pkg.tar.zst
-	source = https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/9.5/ElyPrismLauncher-ArchLinux-x86_64-9.5.pkg.tar.zst
+	noextract = ElyPrismLauncher-ArchLinux-x86_64-10.0.0.pkg.tar.zst
+	source = https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/10.0.0/ElyPrismLauncher-ArchLinux-x86_64-10.0.0.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = elyprismlauncher-bin
