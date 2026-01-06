@@ -5,7 +5,7 @@ _pkgname=skyterm
 pkgname=${_pkgname}
 pkgdesc="A terminal-based astronomy application"
 
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,7 +21,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('57634c60f9f6222fc56908e1141f54b8450cc7e68815889aa139896577a58ca1')
+sha256sums=('f91f17843c00aca04b1772127f3350d019c7f96de66eca61637309a763e4723d')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
