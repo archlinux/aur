@@ -1,4 +1,5 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Michell Gailing <gailing.michell at gmail dot com>
 
 pkgname="pterodactyl-wings"
 pkgver=1.12.0
