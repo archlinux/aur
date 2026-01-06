@@ -2,7 +2,7 @@
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=nagios
-pkgver=4.5.9
+pkgver=4.5.10
 pkgrel=1
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
@@ -72,8 +72,8 @@ package() {
 
 }
 
-md5sums=('dea21ad245e301fb05d3e8408499e001'
+md5sums=('fb433b195f3f5d4c1085ae39e54e349f'
          'e11fa7de430ed858269f82e179fc87ca')
-sha1sums=('894857e733bccf6127c65f4d64a4562d03f52fb0'
+sha1sums=('7537db9348f11c77160677fc5fd5df4e4bb5e4dc'
           '04008cee208226e60b099550bd9ec7dc78cb1457')
 
