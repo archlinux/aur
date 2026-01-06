@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=shotcut-bin
-pkgver=25.08.16
+pkgver=25.12.31
 pkgrel=1
 pkgdesc="A free, open source(GPLv3), cross-platform (Qt), video editor."
 arch=(x86_64)
@@ -11,13 +11,13 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-t
          'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts' 'desktop-file-utils')
 provides=('shotcut' 'shotcut-bin')
 conflicts=("shotcut" "shotcut-git")
-source=("${pkgname}-${pkgver}.txz::https://github.com/mltframework/shotcut/releases/download/v${pkgver}/shotcut-linux-x86_64-${pkgver//./}.txz")
-sha256sums=('7a5689adc9a764b7495d09e85e2e9657c8531a08785fb04dce641f8bc6fdeda3')
+source=("${pkgname}-${pkgver}.txz::https://github.com/mltframework/shotcut/releases/download/v${pkgver}/shotcut-linux-x86_64-${pkgver}.txz")
+sha256sums=('31a6d88cf2afc8399d522f1bcc70b5b7eeaa0d661ae199e98a3996e2e3bca700')
 
 package() {
   # bundle
   install -d "${pkgdir}/opt/shotcut"
-  cp -a "${srcdir}/Shotcut/Shotcut.app/"* "$pkgdir/opt/shotcut/"
+  cp -a "${srcdir}/Shotcut.app/"* "$pkgdir/opt/shotcut/"
 
   # desktop file
   install -d "$pkgdir/usr/share/applications"
