@@ -1,0 +1,5 @@
+[lazymake-bin]
+source = "github"
+github = "rshelekhov/lazymake"
+use_latest_release = true
+prefix = "v"

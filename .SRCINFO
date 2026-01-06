@@ -1,0 +1,16 @@
+pkgbase = lazymake-bin
+	pkgdesc = Modern TUI for Makefiles with interactive target selection, dependency visualization, and command safety analysis
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rshelekhov/lazymake
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazymake
+	conflicts = lazymake
+	source_x86_64 = lazymake-x86_64-0.1.0.tgz::https://github.com/rshelekhov/lazymake/releases/download/v0.1.0/lazymake_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1a85759d4b7d9c6f494a2819c940863acec0f6fa088561ff80b4f2acdde9c383
+	source_aarch64 = lazymake-aarch64-0.1.0.tgz::https://github.com/rshelekhov/lazymake/releases/download/v0.1.0/lazymake_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c0749d0710b47287a5964ae1053bd65f92751e44aa2a128a4dfc9ae0db763277
+
+pkgname = lazymake-bin
