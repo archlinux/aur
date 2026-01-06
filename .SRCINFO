@@ -1,6 +1,6 @@
 pkgbase = hamr
 	pkgdesc = Extensible launcher for Hyprland and Niri built with Quickshell
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/Stewart86/hamr
 	arch = any
