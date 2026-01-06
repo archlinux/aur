@@ -1,18 +1,21 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.4.0 ➙ HEAD
-              : 2025-06-22 ➙ 2026-01-04
+ Tags         : 4.5.0 ➙ 5.0.1
+              : 2025-06-26 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-01-04   : HEAD
+ 2026-01-06   : 5.0.1
+              - PKGBUILD small change
+ 2026-01-04   ⋯
+              - update Docs/Changelog
               - **5.0.0**
             
                 * Reorg source a little
                 * Switch python packaging from hatch to uv
                 * License GPL-2.0-or-later
 
- 2025-11-25   : 5.0.0, origin/master
+ 2025-11-25   : 5.0.0
               - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-11-25   : 4.8.0
@@ -33,6 +36,3 @@
               - Update local copy of latest run_prog() from pyconcurrent
  2025-06-22   ⋯
               - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-22   : 4.4.0
-              - Put run_cmd in its own file

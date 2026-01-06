@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver="5.0.0"
+pkgver="5.0.1"
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -73,11 +73,12 @@ build() {
     # cd ./Docs
     # make latexpdf >/dev/null 2>&1
     # make latexpdf >/dev/null
-    # pdf='dns_tools.pdf'
+    # pdf='iwinfo.pdf'
     # /usr/bin/rm -f $pdf
     # /usr/bin/cp _build/latex/$pdf .
-    # /usr/bin/rm -rf _build/doctrees _build/latex
     # make html
+    # make html
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {

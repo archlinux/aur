@@ -1,6 +1,6 @@
 pkgbase = iwinfo
 	pkgdesc = Provide wifi information about capabilities and network(s)
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/gene-git/iwinfo
 	install = iwinfo.install
@@ -15,7 +15,7 @@ pkgbase = iwinfo
 	depends = python-capng
 	depends = iwd
 	depends = glibc
-	source = git+https://github.com/gene-git/iwinfo#tag=5.0.0
+	source = git+https://github.com/gene-git/iwinfo#tag=5.0.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
