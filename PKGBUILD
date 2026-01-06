@@ -9,13 +9,14 @@
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
+  ffmpeg
   kddockwidgets
   libpcap
   libpng
@@ -38,8 +39,9 @@ makedepends=(
   ninja
 
   ## pcsx2
-  shaderc
   qt6-tools
+  shaderc
+  vulkan-headers
 
   # cubeb, no sound if not present
   alsa-lib
