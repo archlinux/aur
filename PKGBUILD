@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools to Manage dual esp systems with backup boot on alternate disk.'
 _gitname='dual-root'
 
-pkgver="3.7.0"
+pkgver="3.7.1"
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
@@ -53,15 +53,16 @@ build() {
     #
     # To build Docs - uncomment these and sphinx makedepends above
     #
-#    echo "Build docs"
-#    cd ./Docs
-#    make latexpdf >/dev/null 2>&1
-#    make latexpdf > /dev/null
-#    pdf='dual_root.pdf'
-#    /usr/bin/rm -f $pdf
-#    /usr/bin/cp _build/latex/$pdf .
-#    /usr/bin/rm -rf _build/doctrees _build/latex
-#    make html
+    # echo "Build docs"
+    # cd ./Docs
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    # pdf='dual-root.pdf'
+    # /usr/bin/rm -f $pdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # make html
+    # make html
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {

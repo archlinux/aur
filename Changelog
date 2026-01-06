@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : dual-root
- Tags         : 3.3.0 ➙ 3.7.0
-              : 2025-05-21 ➙ 2026-01-04
+ Tags         : 3.4.0 ➙ 3.7.1
+              : 2025-06-20 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 3.7.1
+              - PKGBUILD small change
+ 2026-01-04   ⋯
+              - update Docs/Changelogs
 
  2026-01-04   : 3.7.0
               - **Version 3.7.0**
@@ -26,9 +31,4 @@
  2025-06-20   : 3.4.0
               - Pull local copy of latest run_prog from pyconcurrent
  2025-05-21   ⋯
-              - update Docs/Changelogs Docs/dual-root.pdf
-
- 2025-05-21   : 3.3.0
-              - Use builtin types where possible. e.g. typing.List -> list
- 2025-05-20   ⋯
               - update Docs/Changelogs Docs/dual-root.pdf
