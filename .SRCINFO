@@ -50,10 +50,10 @@ pkgname = asf-plugin-signinwithsteam
 pkgname = asf
 	pkgdesc = Steam cards farmer.
 	depends = aspnet-runtime>=10
-	depends = dbus
 	optdepends = asf-ui: standalone web interface for ASF
 	optdepends = asf-plugin-itemsmatcher
 	optdepends = asf-plugin-mobileauthenticator
 	optdepends = asf-plugin-steamtokendumper
+	optdepends = dbus: prevent suspend while farming
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config

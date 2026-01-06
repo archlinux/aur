@@ -111,11 +111,12 @@ package_asf-plugin-signinwithsteam() {
 
 package_asf() {
     pkgdesc="Steam cards farmer."
-    depends=('aspnet-runtime>=10' 'dbus')
+    depends=('aspnet-runtime>=10')
     optdepends=('asf-ui: standalone web interface for ASF'
                 'asf-plugin-itemsmatcher'
                 'asf-plugin-mobileauthenticator'
-                'asf-plugin-steamtokendumper')
+                'asf-plugin-steamtokendumper'
+                'dbus: prevent suspend while farming')
     backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 
     cd asf/out/result
