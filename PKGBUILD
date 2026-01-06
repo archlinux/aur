@@ -2,7 +2,7 @@
 # Contributor: witt <1989161762 at qq dot com>
 
 pkgname=snipaste
-pkgver=2.11
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 source_x86_64=(
 	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-$pkgver-x86_64.AppImage"
 )
-sha256sums_x86_64=('11bd3f5e65bd5072a0811fe7572aaf63492a428b147f728894c4ba8eb29795f5')
+sha256sums_x86_64=('01a8ca993974c1ab6c99d029b7929834a77532acb9cf1cc8ec0f9dea90d7765b')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
@@ -35,6 +35,7 @@ package() {
 	ln -s "/opt/$pkgname/bin/wlhelper" "$pkgdir"/usr/bin/wlhelper
 
 	install -d "$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/squashfs-root/Snipaste.desktop" "${pkgdir}/opt/${pkgname}/share/applications/Snipaste.desktop"
 	ln -s "/opt/$pkgname/share/applications/Snipaste.desktop" "$pkgdir/usr/share/applications/Snipaste.desktop"
 
 	install -d "$pkgdir"/usr/share/icons
