@@ -7,7 +7,7 @@ pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
 license=('LicenseRef-claude-code')
-depends=('bash' 'glibc')
+depends=('bash')
 # Binary is a self-contained Bun executable with embedded JS/resources - stripping breaks it
 options=('!strip')
 optdepends=(
