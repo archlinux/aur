@@ -1,0 +1,15 @@
+pkgbase = piri-asthestarsfalll
+	pkgdesc = High-performance Niri extension tool built with Rust
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Asthestarsfalll/piri
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = niri
+	provides = piri
+	conflicts = piri-git
+	source = piri-0.1.3::https://github.com/Asthestarsfalll/piri/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 94e892c45820493a272360b2b5d3336418a3103995cea7a9cb149a286e5551aa
+
+pkgname = piri-asthestarsfalll
