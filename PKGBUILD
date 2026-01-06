@@ -4,7 +4,7 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.5.5
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('198080dbcb28906ca2d27b91ad6f798d977666a2933ab4a6e2cbc4ae25b4b36d'
+sha256sums=('87975f035c69acf2390ee9b7982ee9192a2289dc26cd81b0aec4065dc3835de0'
             'SKIP'
             'SKIP'
             'SKIP'
