@@ -1,6 +1,6 @@
 pkgname=clash-mi
 _pkgname=clashmi
-pkgver=1.0.14.181
+pkgver=1.0.15.191
 pkgrel=1
 pkgdesc="又一款 Mihomo 核心的代理工具"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("libkeybinder3"
         "gcc-libs")
 source=("https://github.com/KaringX/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.rpm"
 )
-sha256sums=("4f331a674f66ba1b8be209a43902ffc958903daeb2cdbf02671e5777e6837af1")
+sha256sums=("fae6a8d518ad206a9cc361e633d4b05073cbd8ad3a3e7855dcbde26549772ad1")
 
 prepare() {
   bsdtar -xf ${_pkgname}_${pkgver}_linux_amd64.rpm
