@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat-bin
 _pkgname=numbat
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('x86_64')
@@ -32,4 +32,4 @@ package() {
   done
 }
 
-sha256sums=('3326ca665186abd7742f33b8dcec53388aef3b308f6a28281863fed5fca6a3fa')
+sha256sums=('eb57bc9991266473d49eec6c9bf887173baf42dba30005b605ea60f77537ffb1')
