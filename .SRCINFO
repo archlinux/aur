@@ -1,0 +1,16 @@
+pkgbase = pihosts-bin
+	pkgdesc = CLI tool to manage Pi-hole DNS hosts via the v6 API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/reklis/pihosts
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = pihosts
+	conflicts = pihosts
+	source_x86_64 = pihosts-0.1.0-x86_64::https://github.com/reklis/pihosts/releases/download/v0.1.0/pihosts-linux-amd64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = pihosts-0.1.0-aarch64::https://github.com/reklis/pihosts/releases/download/v0.1.0/pihosts-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = pihosts-bin
