@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-git
 _pkgname=Handbook
-pkgver=0.25.0.r0.g08db74e
-_electronversion=38
-_nodeversion=24
+pkgver=0.26.0.r0.gc06599d
+_electronversion=39
+_nodeversion=21
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use.(Use system-wide electron)"
 arch=('any')
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'curl'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -40,8 +41,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
