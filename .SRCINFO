@@ -1,0 +1,22 @@
+pkgbase = omarchy-stt-bin
+	pkgdesc = Push-to-talk dictation system for Linux/Wayland with hotkey daemon and LLM corrections
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sebkouba/omarchy-stt
+	install = omarchy-stt-bin.install
+	arch = x86_64
+	license = MIT
+	depends = wl-clipboard
+	depends = ydotool
+	depends = ffmpeg
+	optdepends = xdg-desktop-portal: For hotkey daemon global shortcuts
+	optdepends = xdg-desktop-portal-hyprland: Hyprland integration
+	optdepends = groq-api: For LLM post-processing (API key required)
+	provides = omarchy-stt
+	conflicts = omarchy-stt
+	source = omarchy-stt-bin-0.1.0.tar.gz::https://github.com/sebkouba/omarchy-stt/releases/download/v0.1.0/omarchy-stt-0.1.0-x86_64.tar.gz
+	source = parakeet-v3-int8.tar.gz::https://blob.handy.computer/parakeet-v3-int8.tar.gz
+	sha256sums = 3acee3699c46f956f617a2ff90ea7dfefe97cb85d01dd9ebda630100d7bcc731
+	sha256sums = SKIP
+
+pkgname = omarchy-stt-bin
