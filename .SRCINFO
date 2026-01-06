@@ -14,6 +14,6 @@ pkgbase = pshash
 	provides = pshash
 	conflicts = pshash
 	source = source.tar.gz::https://github.com/thornoar/pshash/archive/refs/tags/v0.1.17.1.tar.gz
-	sha256sums = d6efa3775143ea1538b22d0698d62cd101e6fa75b07a262a86b734d036d61377
+	sha256sums = 9ffdf11864a516b35b7cf00f715409ff8259a7380fb0ab5cbfb2b2eb9be14346
 
 pkgname = pshash
