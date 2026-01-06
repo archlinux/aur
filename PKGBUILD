@@ -10,7 +10,7 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver="8.0.1"
+pkgver="8.0.2"
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
@@ -56,10 +56,14 @@ build() {
     /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    cd ./Docs
-#    make html
-#    make latexpdf
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    # pdf='mkpkg.pdf'
+    # /usr/bin/rm -f $pdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # make html
+    # make html
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {

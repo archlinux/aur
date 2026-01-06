@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.7.0 ➙ 8.0.1
-              : 2025-06-26 ➙ 2026-01-03
+ Tags         : 7.7.2 ➙ 8.0.2
+              : 2025-10-14 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 8.0.2
+              - PKGBUILD small change
+ 2026-01-03   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 8.0.1
 
  2026-01-03   : 8.0.1
               - Arch didnt pick up tag - bump and try again
@@ -24,8 +29,3 @@
               - Drop unused dependency on pydantic from Arch PKGBUILD
  2025-06-26   ⋯
               - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.0
-
- 2025-06-26   : 7.7.0
-              - run_prog: sync local copy with latest from pyconcurrent
- 2025-06-25   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.6.0
