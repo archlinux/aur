@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.4.1.r232.g00c3202
+pkgver=3.4.1.r258.g168b6f6
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ depends=('alsa-lib'
          'zlib')
 makedepends=('git' 'meson' 'cmake' 'boost')
 options=('!lto')
-source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=migration01")
+source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=migration02")
 sha256sums=('SKIP')
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
