@@ -2,8 +2,9 @@
 # Contributor: Kilo Code <ai@kilo.dev>
 
 pkgname=ca-racing
-_app_version="$(python -c 'from src.constants import APP_VERSION; print(APP_VERSION)')"
-pkgver="${_app_version}_alpha"
+_app_version="0.1.0-alpha"
+# Sanitize version for Arch (replace - with _)
+pkgver="${_app_version//-/_}"
 pkgrel=1
 pkgdesc="Top-down 2D racing game written in Python"
 arch=('any')
@@ -11,7 +12,7 @@ url="https://github.com/piotrek1372/ca-racing"
 license=('MIT')
 
 depends=('python-pygame' 'python-numpy' 'python-pillow')
-makedepends=('python-pip' 'python-setuptools')
+makedepends=('python' 'python-pip' 'python-setuptools')
 
 # Source code from GitHub release
 _urlver="${pkgver/_/-}"
