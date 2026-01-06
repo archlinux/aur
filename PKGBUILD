@@ -1,43 +1,47 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-pkgname=oblivion-desktop-git
-pkgver=2.47.0.r0.g6495a31
+# Maintainer: parhammed <parhammed@gmail.com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
+_pkgname=oblivion-desktop
+pkgname="${_pkgname}-git"
+pkgver=3.11.0.r6.g9fdf217
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
-license=("custom:${pkgname%-git}")
-_electron=electron33
+license=("custom:${_pkgname}")
+_electron=electron38
 depends=('bash' "${_electron}")
-makedepends=('asar' 'gendesk' 'git' 'npm')
+makedepends=('gendesk' 'nvm' 'npm')
 optdepends=('libappindicator-gtk3: systray and app indicator support')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}")
+provides=("${_pkgname}")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
+    cd "${_pkgname%-git}"
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${pkgname%-git}"
-    sed -i 's|../../assets|assets|' src/main/main.ts
-    sed -i "s#path.join(process.resourcesPath, 'assets')#path.join(app.getAppPath().replace('/app.asar', ''), 'assets')#" \
-        src/main/main.ts
-    sed -i 's/"devEngines"/"engines"/' package.json
+    source /usr/share/nvm/init-nvm.sh
+
+    cd "${_pkgname}"
+    
+    sed "s/process.resourcesPath/path.dirname(app.getAppPath())/" -i src/main/main.ts
+    
     gendesk -f -n \
-        --pkgname "${pkgname%-git}" \
+        --pkgname "${_pkgname}" \
         --pkgdesc "${pkgdesc}" \
         --name 'Oblivion Desktop' \
         --categories 'Utility' \
         --custom StartupWMClass='Oblivion Desktop'
-
+    
+    nvm install 22
     npm install
 }
 
 build() {
-    cd "${pkgname%-git}"
+    cd "${_pkgname}"
     npm run build
     npx electron-builder --linux --dir \
         -c.electronDist="/usr/lib/${_electron}" \
@@ -45,17 +49,17 @@ build() {
 }
 
 package() {
-    cd "${pkgname%-git}"
+    cd "${_pkgname}"
     install -d "${pkgdir}/usr/lib"
-    install -Dm644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm755 /dev/null "${pkgdir}/usr/bin/${pkgname%-git}"
-    cat >> "${pkgdir}/usr/bin/${pkgname%-git}" << EOD
+    install -Dm755 /dev/null "${pkgdir}/usr/bin/${_pkgname}"
+    cat >> "${pkgdir}/usr/bin/${_pkgname}" << EOD
 #! /usr/bin/sh
-exec $_electron /usr/lib/oblivion-desktop "\$@"
+exec $_electron /usr/lib/oblivion-desktop/app.asar "\$@"
 EOD
-    install -Dm644 assets/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
-    install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
-    asar e "release/build/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname%-git}/"
-    cp -r assets "${pkgdir}/usr/lib/${pkgname%-git}/"
+    install -Dm644 release/build/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${_pkgname}"
+    cp -r release/build/linux-unpacked/resources/assets "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 assets/icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 # vim:set ts=4 sw=4 et:
