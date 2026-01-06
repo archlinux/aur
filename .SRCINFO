@@ -9,6 +9,7 @@ pkgbase = python-withoutbg
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = python
 	depends = python-click
 	depends = python-huggingface-hub

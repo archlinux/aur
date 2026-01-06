@@ -18,7 +18,7 @@ license=('Apache-2.0')
 
 provides=("${_pypi_package}")
 depends=('python' 'python-click' 'python-huggingface-hub' 'python-numpy' 'python-onnxruntime' 'python-pillow' 'python-requests' 'python-tqdm')
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 #source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
