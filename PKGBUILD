@@ -12,7 +12,7 @@ pkgname="${_pkgname}-snapshot"
 _appid=uk.co.powdertoy.tpt
 _appvendor=powdertoy
 pkgver=391
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
 provides=("$_pkgname")
@@ -73,7 +73,7 @@ package() {
   install -Dm755 "build/${_appexe}" "${pkgdir}/usr/bin/${_appexe}"
   install -Dm644 "build/resources/powder.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
   install -Dm644 "build/resources/appdata.xml" "${pkgdir}/usr/share/metainfo/${_appid}.appdata.xml"
-  install -Dm644 "resources/save.xml" "${pkgdir}/usr/share/mime/packages/${_appvendor}-save.xml"
+  install -Dm644 "build/resources/save.xml" "${pkgdir}/usr/share/mime/packages/${_appvendor}-save.xml"
   install -Dm644 "resources/powder.man" "${pkgdir}/usr/share/man/man6/${_appexe}.6"
 
   local theme_dir="${pkgdir}/usr/share/icons/hicolor" mimetype="application-vnd.powdertoy.save"
