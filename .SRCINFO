@@ -1,7 +1,7 @@
 pkgbase = pgp-sig2dot
 	pkgdesc = OpenPGP sign party tool —— Visualize the Web of Trust
-	pkgver = 0.2.0
-	pkgrel = 1
+	pkgver = 0.4.3
+	pkgrel = 2
 	url = https://github.com/cryolitia/pgp-sig2dot
 	arch = x86_64
 	license = MIT
@@ -14,12 +14,11 @@ pkgbase = pgp-sig2dot
 	depends = glibc
 	depends = gmp
 	depends = nettle
-	depends = sqlite
 	depends = openssl
-	depends = graphviz
-	source = https://github.com/cryolitia/pgp-sig2dot/archive/refs/tags/v0.2.0.tar.gz
+	optdepends = graphviz: for generating visualizations
+	source = pgp-sig2dot-v0.4.3.tar.gz::https://github.com/cryolitia/pgp-sig2dot/archive/refs/tags/v0.4.3.tar.gz
 	source = pgp-sig2dot-graphviz
-	sha256sums = 37df21df9fa4a89f6146e55ffc8684048c034bed3b8abab53d9f4a8a27840f38
-	sha256sums = SKIP
+	sha256sums = 050c38a7ab10fbdd7e01c8638248ec262d47512e55b69352155a7a78e125badf
+	sha256sums = 75d9e150bba5c48b16ed97c83af9a6df7e12647b2c5df7dc61e51ebf67f1f2f3
 
 pkgname = pgp-sig2dot
