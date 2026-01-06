@@ -1,6 +1,6 @@
 pkgbase = transmission-cli-beta
 	pkgdesc = Fast, easy, and free BitTorrent client (BETA CLI tools)
-	pkgver = 4.1.0beta.4
+	pkgver = 4.1.0beta.5
 	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = transmission-cli-beta
 	depends = systemd
 	provides = transmission-cli
 	conflicts = transmission-cli
-	source = https://github.com/transmission/transmission/releases/download/4.1.0-beta.4/transmission-4.1.0-beta.4+rc92b42de9c.tar.xz
+	source = https://github.com/transmission/transmission/releases/download/4.1.0-beta.5/transmission-4.1.0-beta.5+r11d3fc6f5a.tar.xz
 	source = transmission-cli.sysusers
 	source = transmission-cli.tmpfiles
-	sha256sums = eeed530d668b3270d9df6a318a0714eec1b6e8348102e242fc8d697a4cfc0dec
+	sha256sums = 2ed1c1f239d4174392150407749996ccf40503bd5db14a2314bc447b7ce3b916
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
 
