@@ -10,7 +10,7 @@
 
 pkgname=js8call-improved
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Continued development of the JS8Call project"
 arch=('any')
 url="https://github.com/JS8Call-improved/JS8Call-improved/"
@@ -50,6 +50,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     install -D -m755 build/JS8Call-improved "$pkgdir/usr/bin/js8call-improved"
-    install -D -m644 icons/Unix/js8call_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/js8call_icon.png"
+    install -D -m644 icons/Unix/js8call_icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/js8call_icon.png"
     install -D -m644 js8call.desktop "$pkgdir/usr/share/applications/js8call-improved.desktop"
 }

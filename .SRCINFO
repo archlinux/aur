@@ -1,7 +1,7 @@
 pkgbase = js8call-improved
 	pkgdesc = Continued development of the JS8Call project
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JS8Call-improved/JS8Call-improved/
 	arch = any
 	license = GPL-3.0-only
