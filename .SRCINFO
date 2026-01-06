@@ -1,0 +1,20 @@
+pkgbase = open-fprintd-eh575
+	pkgdesc = Egis EH575 Fingerprint Driver and Open Fprintd Manager
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/abbhinavjayaraman/python-egistec-eh575
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-pyusb
+	depends = polkit
+	source = git+https://github.com/abbhinavjayaraman/python-egistec-eh575.git
+	sha256sums = SKIP
+
+pkgname = open-fprintd-eh575
