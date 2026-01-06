@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver="5.2.1"
+pkgver="5.2.2"
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -52,16 +52,16 @@ build() {
     /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    pdf='kea_config.pdf'
-#    cd ./Docs
-#    make latexpdf >/dev/null 2>&1
-#    make latexpdf
-#    /usr/bin/rm -f $pdf
-#    /usr/bin/cp _build/latex/$pdf .
-#    /usr/bin/rm -rf _build/doctrees _build/latex
-#    make html
-
+    # echo "Build docs"
+    # cd ./Docs
+    # pdf='kea_config.pdf'
+    # /usr/bin/rm -f $pdf
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # make html
+    # make html
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {
