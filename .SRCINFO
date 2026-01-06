@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = A tool for creating and managing a virtual network implemented in C++
-	pkgver = 6.1.4
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = candy
 	depends = spdlog
 	depends = poco
 	backup = etc/candy.cfg
-	source = candy-6.1.4.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v6.1.4.tar.gz
-	sha256sums = 88b30fd9f0cdc57c7ffa0553cb35aaf9b574256242bd4670af2592724d0ec05f
+	source = candy-6.1.5.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v6.1.5.tar.gz
+	sha256sums = 14f7640b2e150b18a168b1cafc3ace7b6460d12a2c7d3edd7e16b2c29e6edbb6
 
 pkgname = candy
