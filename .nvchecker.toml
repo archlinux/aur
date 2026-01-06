@@ -1,0 +1,5 @@
+[kairo]
+source = "github"
+github = "aelesbao/kairo"
+prefix = "v"
+use_max_release = true

@@ -1,0 +1,13 @@
+pkgbase = kairo-bin
+	pkgdesc = CLI and Desktop application for smart URL routing
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/aelesbao/kairo
+	arch = x86_64
+	license = Apache-2.0
+	provides = kairo
+	conflicts = kairo
+	source_x86_64 = https://github.com/aelesbao/kairo/releases/download/v0.3.3/kairo-0.3.3-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4a7b753e35af7fdd81d6c6051853200069f5a89ad14f3691c30e893e491021e2
+
+pkgname = kairo-bin
