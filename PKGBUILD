@@ -2,15 +2,15 @@
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=gwenhywfar-git
-pkgver=5.12.2+1+g2ffb0f3d
-pkgrel=2
+pkgver=5.14.1+14+gadc29497
+pkgrel=1
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
 url='https://www.aquamaniac.de/rdm/'
 license=(LGPL-2.1-only)
 depends=(bash gcc-libs glib2 glibc gnutls libgcrypt libgpg-error openssl)
 makedepends=(git gtk3 qt6-base)
-optdepends=('gtk3: for the GTK3 UI' 'qt6-base: for the Qt5 UI')
+optdepends=('gtk3: for the GTK3 UI' 'qt6-base: for the Qt6 UI')
 provides=(gwenhywfar)
 conflicts=(gwenhywfar)
 source=(git+https://git.aquamaniac.de/git/gwenhywfar)
@@ -57,7 +57,7 @@ build() {
   cd $_sourcedir
   GPGRT_CONFIG='/usr/bin/gpgrt-config' \
     PATH="/usr/lib/qt6:/usr/lib/qt6/bin:$PATH" \
-    ./configure --prefix=/usr --sysconfdir=/etc --enable-system-certs --with-guis="gtk3 qt5"
+    ./configure --prefix=/usr --sysconfdir=/etc --enable-system-certs --with-guis="gtk3 qt6"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
