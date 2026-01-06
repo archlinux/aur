@@ -43,7 +43,7 @@ package() {
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so.1.1 -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so -t "${pkgdir}"/usr/lib/
-    install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so.1.1 -t "${pkgdir}"/usr/lib/
+    install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so.1.2 -t "${pkgdir}"/usr/lib/
 
     for app in "powerTunerClient" "powerTunerConsole"; do
         for i in 16 22 24 32 48 64 128 256; do
