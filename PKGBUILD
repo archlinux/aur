@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-vmk-git
 pkgver=0.9.r3.ge8548b3
-pkgrel=4
+pkgrel=5
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
 url="https://github.com/thanhpy2009/VMK"
@@ -75,4 +75,6 @@ package() {
 
     install -Dm755 "$srcdir/setup.sh" \
                  "$pkgdir/usr/share/fcitx5-vmk/create_fcitx5_service.sh"
+    install -Dm444 "$srcdir/VMK/LICENSE" \
+    			"$pkgdir/usr/share/licenses/fcitx5-vmk/LICENSE"
 }
