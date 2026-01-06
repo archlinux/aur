@@ -1,6 +1,6 @@
 # Maintainer: pluttan <pluttan@example.com>
 pkgname=vol
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Universal build tool with beautiful terminal output"
 arch=('x86_64' 'aarch64')
