@@ -1,7 +1,7 @@
 pkgbase = shoko-webui
 	pkgdesc = The webui used in Shoko Server.
 	pkgver = 2.3.0.dev.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shokoanime/Shoko-WebUI
 	install = shoko-webui.install
 	arch = any
