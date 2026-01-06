@@ -1,6 +1,6 @@
 pkgbase = yapi-bin
 	pkgdesc = The API client that lives in your terminal (and your git repo)
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://yapi.run/
 	license = MIT
@@ -8,9 +8,9 @@ pkgbase = yapi-bin
 	provides = yapi
 	arch = aarch64
 	source_aarch64 = https://github.com/jamierpond/yapi/releases/download/v${pkgver}/yapi_linux_arm64.tar.gz
-	sha256sums_aarch64 = c7e3a35c885ab1f9a8c51ee4d342bd81ec0c5d924ba9685293e743f13f8f3246
+	sha256sums_aarch64 = a6652494d642aa54e7b1027d6c353971ee749badf7ea11a5e7f9cc5548657332
 	arch = x86_64
 	source_x86_64 = https://github.com/jamierpond/yapi/releases/download/v${pkgver}/yapi_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b27bc0e8a71b7ee899d8be53d7baab3bb3a628d66c3fb312a91a851614de02d
+	sha256sums_x86_64 = b7eb768d88ed7867e5843ba09c63841920390e6185131c6acac30a37d8aed2cc
 	
 pkgname = yapi-bin
