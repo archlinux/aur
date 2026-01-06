@@ -2,8 +2,14 @@ Simulate `tlp-rdw` of [TLP](https://github.com/linrunner/TLP)'s behaviour on `sy
 
 # Installation
 
-Install the AUR package ([`tlp-rdw-systemd`](https://aur.archlinux.org/packages/tlp-rdw-systemd)) on Arch (or place files equivalently on other distros) and then:
+## Arch
+Install from the AUR ([`tlp-rdw-systemd`](https://aur.archlinux.org/packages/tlp-rdw-systemd)), or clone/download & unzip the repo and `makepkg -si`.
+
+## Other linux
 ```
+#install -Dm644 tlp-rdw.path /etc/systemd/system/tlp-rdw.path
+#install -Dm644 tlp-rdw.service /etc/systemd/system/tlp-rdw.service
+#install -Dm755 tlp-rdw-simulator /usr/bin/tlp-rdw-simulator
 #systemctl enable --now tlp-rdw.path
 ```
 
