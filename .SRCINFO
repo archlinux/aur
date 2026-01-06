@@ -1,0 +1,16 @@
+pkgbase = cronic-bin
+	pkgdesc = Make cron human again - CLI tool for cron job management
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hzerrad/cronic
+	license = Apache-2.0
+	conflicts = cronic
+	provides = cronic
+	arch = aarch64
+	source_aarch64 = https://github.com/hzerrad/cronic/releases/download/v${pkgver}/cronic_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6299d1bc8e53c800fbf668c8e4c5a74dc42aae56885eb71e53ccf1e5a1170eef
+	arch = x86_64
+	source_x86_64 = https://github.com/hzerrad/cronic/releases/download/v${pkgver}/cronic_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0e67f792dab0232a40f724e882b221764928ad0cb6a0604b747d03703d094476
+	
+pkgname = cronic-bin
