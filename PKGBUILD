@@ -15,6 +15,5 @@ depends=(
 # source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 package() {
-  msg2 "Not Yet Ready"
-  exit 1
+  msg2 "Not Yet Ready" | true
 }
