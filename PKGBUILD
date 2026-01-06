@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-portable
-pkgver=1.105.3
+pkgver=1.105.4
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (portable build for old CPUs)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    '3e22edf4ae3e93fd50aa19c4ba89c1a2204ddd9a344b421a711e6eda029f906a'
+    'a9ef7691508d1928bf9cc3b49be0502ab2b35a33cb7b75ab160d2cea80619e9d'
     'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
