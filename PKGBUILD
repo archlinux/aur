@@ -1,22 +1,24 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.xyz/products/pclink"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-or-later AND LicenseRef-custom')
 depends=(
   'gtk3'
   'libayatana-appindicator'
   'libnotify'
+  'playerctl'
   'python-cryptography'
   'python-fastapi'
   'python-getmac'
   'python-gobject'
   'python-keyboard'
   'python-mss'
+  'python-multipart'
   'python-packaging'
   'python-pefile'
   'python-pillow'
@@ -28,6 +30,7 @@ depends=(
   'python-requests'
   'python-websockets'
   'python-wsproto'
+  'python-yaml'
   'uvicorn'
   'xdg-desktop-portal'
 )
@@ -47,8 +50,8 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
          "$pkgname.1")
-sha256sums=('2da0947236b36438475872652488955fb96b2e2ebcc1be46fb39c4c1567b45ca'
-            'd546c14fdba41eb64260597b1036dec6709c7c402f35f52975e0a2b973ce8ba5')
+sha256sums=('213ee394ef64e54d14c728cf125aeca1fb78348a16a80a169e5f017f64348369'
+            'a7d34dee7209e41a63e778e4de773a1b9699b170b5969d563b6eb8206eda91f9')
 
 build() {
   cd "PCLink-$pkgver"
@@ -69,4 +72,5 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$srcdir/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
