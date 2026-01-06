@@ -1,7 +1,7 @@
 pkgbase = catnap
 	pkgdesc = A minimalistic and fast system fetch written in Nim.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iinsertNameHere/catnap
 	arch = x86_64
 	arch = aarch64

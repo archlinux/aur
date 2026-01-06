@@ -1,7 +1,7 @@
 # Maintainer: soymadip_1
 pkgname=catnap
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalistic and fast system fetch written in Nim."
 arch=('x86_64' 'aarch64')
 url="https://github.com/iinsertNameHere/catnap"
