@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/speak-to-ai
 
 pkgname=speak-to-ai
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '1557701a135430150038fd2e3516d87bba493f9635ffa52a1a4d624aed11bacc'
+    '835fdf866da2afab3b6ba68695b57f338330ce0f4eb6960d06958d192cb4b64b'
     'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
 )
 
