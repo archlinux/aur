@@ -1,5 +1,5 @@
 pkgname=influxdb-cxx
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/influxdb-cxx
@@ -11,7 +11,7 @@ makedepends=(cmake boost)
 options=(staticlibs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/offa/influxdb-cxx/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('59749a9215de7e4e7af80478f1ee87d932ac255b2e9eb0343296511adf1af2213174f878d9be3b4da1475e35ba869ab5222ea81bf009cfabd96997ea253716b5')
+sha512sums=('bd21c67988fe3ffddcfe11c26c2d23954702a542f138751e78d027d98f980c5c8e969776a1697d6104a704c0dddf63130b9c1f9c9df6e8e6bcb27bf9f8303218')
 
 prepare() {
 	rm -rf build-shared build-static
