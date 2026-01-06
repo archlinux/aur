@@ -7,18 +7,15 @@ pkgname=(
 	wivrn-dashboard
 )
 pkgver=25.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
-depends=(
-	# Shared
+
+_depends_server=(
 	"gcc-libs"
 	"glibc"
-	"vulkan-icd-loader"
-
-	# Server
 	"avahi"
 	"cairo"
 	"ffmpeg"
@@ -34,11 +31,20 @@ depends=(
 	"libxcb"
 	"openssl"
 	"systemd-libs"
+	"vulkan-icd-loader"
 	"x264"
-	# Server client library (32-bit)
-	"lib32-vulkan-icd-loader"
+)
 
-	# Dashboard
+_depends_lib32_server=(
+	"lib32-gcc-libs"
+	"lib32-glibc"
+	"lib32-vulkan-icd-loader"
+	"lib32-libglvnd"
+)
+
+_depends_dashboard=(
+	"gcc-libs"
+	"glibc"
 	"hicolor-icon-theme"
 	"ki18n"
 	"kiconthemes"
@@ -49,6 +55,8 @@ depends=(
 	"qt6-base"
 	"qt6-declarative"
 )
+
+depends=(${_depends_server[@]} ${_depends_lib32_server[@]} ${_depends_dashboard[@]})
 
 makedepends=(
 	# Shared
@@ -136,6 +144,7 @@ build() {
 
 package_wivrn-server() {
 	provides=("openxr-runtime")
+	depends=(${_depends_server[@]})
 	optdepends=(
 		"opencomposite: OpenVR to OpenXR translation layer"
 		"xrizer: Another OpenVR to OpenXR translation layer"
@@ -150,6 +159,7 @@ package_wivrn-server() {
 }
 package_lib32-wivrn-server() {
 	provides=("lib32-openxr-runtime")
+	depends=(${_depends_lib32_server[@]})
 	optdepends=(
 		"lib32-xrizer: OpenVR to OpenXR translation layer"
 	)
@@ -159,6 +169,7 @@ package_lib32-wivrn-server() {
 }
 
 package_wivrn-dashboard() {
+	depends=(${_depends_dashboard[@]})
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-dashboard
 }
