@@ -1,4 +1,5 @@
-# Maintainer: Oliver Rümpelein <arch@pheerai.de>; Siegfried Krug <siegfried nospamat fg4f nospamdot de>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: Oliver Rümpelein <arch@pheerai.de>; Siegfried Krug <siegfried nospamat fg4f nospamdot de>
 # Contributor: Evan Anderson <evananderson@thelinuxman.us>
 pkgname=x32edit
 pkgver=4.3
