@@ -7,26 +7,48 @@
 # Contributor: 
 # 
 pkgname='wg-client'
-pkgdesc='Wireguard linux client (command line and gui)'
+pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=6.11.0
+pkgver="7.1.0"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
 arch=(x86_64)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 install='wg-client.install'
 
 # To build docs uncommont sphinx/texlive
-depends=('python>=3.13' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 'python-dateutil' 
-         'python-netifaces' 'libcap' 'python-pynotify' 'openssl>=3.0')
-makedepends=('git' 'python-build' 'python-wheel'  'python-installer' 'python-hatch' 'rsync'
-             #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
-            )
+depends=(
+    'python>=3.13' 
+    'python-pyqt6' 
+    'hicolor-icon-theme' 
+    'python-psutil' 
+    'python-dateutil' 
+    'python-netifaces' 
+    'pyconcurrent'
+    'libcap' 
+    'python-pynotify' 
+    'openssl>=3.0'
+    'bash'
+)
+makedepends=(
+    'git'
+    'uv'
+    'python-uv-build'
+    'rsync'
+    #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
+)
 # Used by package : mkpkg
-_mkpkg_depends=('python>minor')
+_mkpkg_depends=(
+    'python>minor'
+    'libcap>minor'
+    'openssl>minor'
+    'python-psutil>minor'
+    'python-netifaces>minor'
+    'python-pynotify>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -34,7 +56,7 @@ _mkpkg_depends=('python>minor')
 #   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
 #   Note that upstream release procedure requires every tagged release have new tag
 #
-validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C <arch@sapience.com>
 
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
@@ -46,12 +68,16 @@ prepare() {
     cd "${_gitname}"
 
     # To build Docs 
-    # uncomment these and sphinx makedepends above
-    # --------------
     # echo "Build docs"
     # cd ./Docs
+    # pdf='wg-client.pdf'
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    # /usr/bin/rm -f $pdf
+    # /usr/bin/cp _build/latex/$pdf .
+    # make html >/dev/null
     # make html
-    # make latexpdf
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 build() {
@@ -59,16 +85,27 @@ build() {
 
     echo 'Building python'
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
     echo 'Building C-code'
-    cd ./src/wg_client/fix-resolv/
+    pushd ./src/c-code/fix-resolv/ >/dev/null
     make
+    popd >/dev/null
+
+    echo 'Building Docs'
+    #    pdf='wg-client.pdf'
+    #    cd ./Docs
+    #    make latexpdf >/dev/null 2>&1
+    #    make latexpdf >/dev/null
+    #    /usr/bin/rm -f $pdf
+    #    /usr/bin/cp _build/latex/$pdf .
+    #    make html
+    #    make html
+    #    /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {
     cd "${_gitname}"
-    #cp Docs/Changelog.rst ${startdir}
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:

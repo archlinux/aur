@@ -1,36 +1,42 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 6.7.0 ➙ 6.11.0
-              : 2025-03-02 ➙ 2025-03-20
+ Tags         : 6.10.0 ➙ 7.1.0
+              : 2025-03-17 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2026-01-06   : 7.1.0
+              - Add c-code back into repo (oops)
+              - update Docs/Changelog
+
+ 2026-01-06   : 7.0.0
+              - **7.0.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Add source checks for C-code as well as python
+                * Testing to confirm all working correctly on python 3.14.2
+                * C-code (wg-fix-resolve): Use more const pointer to structs to improve security.
+                * Modern coding standards: PEP-8, PEP-257 and PEP-484 style and type annotations
+                * Use pyconcurrent module (additional dependency)
+ 2025-03-20   ⋯
+              - update Changelog and Docs/wg-client.pdf
+
  2025-03-20   : 6.11.0
-                GUI Quit button - make saure stop resolv monitor before stopping wireguard
+              - GUI Quit button - make saure stop resolv monitor before stopping wireguard
                   Wireguard will restore the correct rsolv.conf from resolv.conf.saved
                 Better Changelog format (for packaging/Changelog and Docs/Changelog.rst)
- 2025-03-17     update Changelog and Docs/wg-client.pdf
+ 2025-03-17   ⋯
+              - update Changelog and Docs/wg-client.pdf
 
  2025-03-17   : 6.10.1
-                Add Changelog to Arch package (pacman -Qc wg-client)
+              - Add Changelog to Arch package (pacman -Qc wg-client)
 
  2025-03-17   : 6.10.0
-                Change wg-fix-resolv: Ignore comments when comparing resolv.conf files.
-                  More efficient/correct when only change is a commented time stamp for
-                  example.
-                resolv monitor: Increase maximum time to wait for wireguard to start before
-                running the monitor.
-                  No reported issues with 5 seconds - no harm in being able to wait a bit
-                  longer if needed for some reason.
+              - Change wg-fix-resolv: Ignore comments when comparing resolv.conf files.
+                  More efficient/correct when only change is a commented time stamp for example.
+                resolv monitor: Increase maximum time to wait for wireguard to start before running the monitor.
+                  No reported issues with 5 seconds - no harm in being able to wait a bit longer if needed for some reason.
                 Resolv monitor log when it starts
- 2025-03-09     update Docs/Changelog.rst Docs/wg-client.pdf
-
- 2025-03-09   : 6.8.0
-                Improve readme and fix typo in help message
-                Additional self protections in kill_ssh() function
-                Tidy some code.
- 2025-03-02     update Docs/Changelog.rst Docs/wg-client.pdf
-
- 2025-03-02   : 6.7.0
-                Improve logging when ssh listener exits.
- 2025-02-27     update Docs/Changelog.rst Docs/wg-client.pdf
+ 2025-03-09   ⋯
+              - update Docs/Changelog.rst Docs/wg-client.pdf
