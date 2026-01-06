@@ -2,7 +2,7 @@
 
 pkgname=kireisakura-kit
 pkgdesc="Bash framework to create Powerful shell scripts. "
-pkgver=1.0.2
+pkgver=0.10.2
 pkgrel=1
 arch=('any')
 url="https://github.com/soymadip/${pkgname}"
@@ -16,11 +16,11 @@ depends=(
   'grep'
 )
 
-source=("${url}/releases/download/v${pkgver}/KireiSakura-Kit.tar.gz")
+source=("${url}/releases/download/${pkgver}/KireiSakura-Kit.tar.gz")
 
 package() {
 
-  msg2 "AUR packaage is not ready to install"
+  echo "NOTICE: AUR packaage is not ready to install"
 
   #shellcheck disable=SC2164,SC2154
   # cd "${srcdir}"
