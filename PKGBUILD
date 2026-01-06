@@ -5,7 +5,7 @@ readonly _pkgname=SimSIMD
 
 pkgname=simsimd
 pkgver=6.5.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Up to 200x faster dot products and similarity metrics."
 arch=('x86_64')
 url=https://github.com/ashvardanian/simsimd
@@ -19,6 +19,7 @@ build() {
     check_option check y || build_tests=ON
 
     cmake -B "$srcdir/$_pkgname-$pkgver/build/" \
+        -D CMAKE_INSTALL_PREFIX=/usr \
         -D SIMSIMD_BUILD_SHARED=ON \
         -D SIMSIMD_BUILD_TESTS=$build_tests \
         -S "$srcdir/$_pkgname-$pkgver" \
