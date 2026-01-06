@@ -1,0 +1,5 @@
+[powder-toy-snapshot]
+source = "git"
+git = "https://github.com/The-Powder-Toy/The-Powder-Toy.git"
+prefix = "snapshot-"
+include_regex = "^snapshot-.*$"
