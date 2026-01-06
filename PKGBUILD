@@ -1,6 +1,6 @@
 pkgname=hyprshell
 # x-release-please-start-version
-pkgver=4.8.2
+pkgver=4.9.2
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
@@ -10,7 +10,7 @@ provides=('hyprshell')
 url="https://github.com/h3rmt/hyprshell/"
 license=("MIT")
 makedepends=('cargo')
-depends=('hyprland' 'gtk4-layer-shell' 'gtk4' 'gcc' 'pixman' 'libadwaita')
+depends=('hyprland' 'gtk4-layer-shell' 'gtk4' 'gcc' 'pixman' 'libadwaita' 'zstd')
 source=("hyprshell-$pkgver.tar.gz::https://static.crates.io/crates/hyprshell/hyprshell-$pkgver.crate")
 
 prepare() {
@@ -27,11 +27,20 @@ build() {
 }
 
 package() {
-    install -Dm755 "hyprshell-$pkgver/target/release/hyprshell" "$pkgdir/usr/bin/hyprshell"
-    install -Dm644 "hyprshell-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/hyprshell/LICENSE"
+    install -Dm755 "hyprshell-$pkgver/target/release/hyprshell"             "$pkgdir/usr/bin/hyprshell"
+    install -Dm644 "hyprshell-$pkgver/LICENSE"                              "$pkgdir/usr/share/licenses/hyprshell/LICENSE"
+    install -Dm644 "hyprshell-$pkgver/README.md"                            "$pkgdir/usr/share/doc/hyprshell/README.md"
+    install -Dm644 "hyprshell-$pkgver/docs/CONFIGURE.md"                    "$pkgdir/usr/share/doc/hyprshell/CONFIGURE.md"
+    install -Dm644 "hyprshell-$pkgver/docs/DEBUG.md"                        "$pkgdir/usr/share/doc/hyprshell/DEBUG.md"
+	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell.service"          "$pkgdir/usr/lib/systemd/user/hyprshell.service"
+	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.png"     "$pkgdir/usr/share/pixmaps/hyprshell.png"
+	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.desktop" "$pkgdir/usr/share/applications/hyprshell-settings.desktop"
 
-    "$pkgdir/usr/bin/hyprshell" completions bash -p "$pkgdir/usr/share/bash-completion/completions"
-    "$pkgdir/usr/bin/hyprshell" completions fish -p "$pkgdir/usr/share/fish/vendor_completions.d"
-    "$pkgdir/usr/bin/hyprshell" completions zsh -p "$pkgdir/usr/share/zsh/site-functions"
+    mkdir "$pkgdir/usr/share/hyprshell"
+    tar -xvf "hyprshell-$pkgver/packaging/usr-share.tar" -C "$pkgdir/usr/share/hyprshell"
+
+    "$pkgdir/usr/bin/hyprshell" completions bash -p  "$pkgdir/usr/share/bash-completion/completions"
+    "$pkgdir/usr/bin/hyprshell" completions fish -p  "$pkgdir/usr/share/fish/vendor_completions.d"
+    "$pkgdir/usr/bin/hyprshell" completions zsh -p   "$pkgdir/usr/share/zsh/site-functions"
 }
-sha256sums=('79b729c8e1b580268437b52ff9a9fe59b31571558f5082160ea2b0521885d5a3')
+sha256sums=('60849707041964ca1341b5d98501e60c9469e80d3800dea72d26352eeda1f89a')
