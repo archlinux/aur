@@ -1,0 +1,18 @@
+pkgbase = g2-v2ray-appimage
+	pkgdesc = Advanced V2Ray/Xray GUI Client for Linux (G2)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/almezali/g-v2ray
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gobject-introspection
+	depends = v2ray
+	depends = python-qrcode
+	depends = python-pillow
+	source = G2-V2Ray-2.2-x86_64.AppImage::https://raw.githubusercontent.com/almezali/g-v2ray/main/G2-V2Ray-2.2-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = g2-v2ray-appimage
