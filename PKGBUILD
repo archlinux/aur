@@ -1,7 +1,7 @@
 # Maintainer: Marco Russo <tray-kebab-uneven@duck.com>
 # Maintainer: Matthew Johnston <warmwaffles@gmail.com>
 pkgname=expert-git
-pkgver=r846.a4112299
+pkgver=r847.f9c81da3
 pkgrel=1
 pkgdesc="Official Elixir Language Server Protocol implementation"
 arch=('x86_64')
@@ -38,5 +38,5 @@ build() {
 
 package() {
   cd "$srcdir/expert"
-  install -Dm755 ./apps/expert/burrito_out/expert_linux_amd64 "$pkgdir/usr/bin/expert"
+  install -Dm755 ./apps/expert/_build/prod/rel/plain/bin/start_expert "$pkgdir/usr/bin/expert"
 }
