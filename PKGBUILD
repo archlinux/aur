@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ optdepends=(
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca9fce6488c6e9af0da00d3c56328791d9bd9ecb06425d0a4d1ef9c0e8e99cf5')
+sha256sums=('b63f13af0b25cfc84ade18a94efb5df3f5a25ad625b34e486268354b873e59f2')
 
 prepare() {
     cd "$pkgname-$pkgver"
