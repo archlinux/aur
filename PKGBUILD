@@ -1,13 +1,13 @@
 # Maintainer: gogamlg3
 pkgname=proton-ll-v3-bin
 pkgver=10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton (low-latency fork)"
 arch=('x86_64')
 url="https://github.com/Ph42oN/proton-ll"
 license=('BSD')
 depends=()
-options=()
+options=("!strip")
 
 _pkgver=10-1
 _asset="proton-ll-${_pkgver}-x86_64_v3.tar.xz"
