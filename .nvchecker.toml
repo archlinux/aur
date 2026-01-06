@@ -1,0 +1,5 @@
+[evtx]
+source = "github"
+github = "omerbenamram/evtx"
+use_max_tag = true
+prefix = "v"
