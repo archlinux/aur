@@ -1,19 +1,19 @@
 pkgbase = mawejs-bin
 	pkgdesc = Story Editor for Plantsers.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/mkoskim/mawejs
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	makedepends = fuse2
-	depends = electron36
-	provides = mawejs=0.19.0
+	depends = electron39
+	provides = mawejs=0.20.0
 	conflicts = mawejs
-	source = mawejs-0.19.0-x86_64.AppImage::https://github.com/mkoskim/mawejs/releases/download/v0.19.0/mawejs-0.19.0.AppImage
-	source = LICENSE-0.19.0::https://raw.githubusercontent.com/mkoskim/mawejs/v0.19.0/LICENSE
+	source = mawejs-0.20.0-x86_64.AppImage::https://github.com/mkoskim/mawejs/releases/download/v0.20.0/mawejs-0.20.0.AppImage
+	source = LICENSE-0.20.0::https://raw.githubusercontent.com/mkoskim/mawejs/v0.20.0/LICENSE
 	source = mawejs.sh
-	sha256sums = bd7d97fd99da31d6c07b7005dab02adb3cafcacd7053a478a5135bae4f698a5f
+	sha256sums = 3f16946a0d93015a5f3926a8afcc893f87cc22b9c9c3ebed0ecaf518798dc580
 	sha256sums = c06aed1315c117a4f121a7b45831e3df87c51948e2aff6e105dbb94a2fcb619d
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
