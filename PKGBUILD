@@ -1,6 +1,6 @@
 # Maintainer: Sebastian K <sjkouba@gmail.com>
 pkgname=omarchy-stt-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Push-to-talk dictation system for Linux/Wayland with hotkey daemon and LLM corrections"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/omarchy-stt-${pkgver}-x86_64.tar.gz"
     "parakeet-v3-int8.tar.gz::https://blob.handy.computer/parakeet-v3-int8.tar.gz"
 )
-sha256sums=('3acee3699c46f956f617a2ff90ea7dfefe97cb85d01dd9ebda630100d7bcc731'
+sha256sums=('4e2c4ffae3c225e81acd3c15671bd2bf16bbd656faf156a220cba6c5fa816676'
             'SKIP') # Parakeet model checksum - can be updated or left as SKIP
 
 package() {
