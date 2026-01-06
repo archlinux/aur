@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.52.2
+pkgver=0.53.1
 pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -15,14 +15,17 @@ depends=('aquamarine'
          'glibc'
          'hyprcursor'
          'hyprgraphics'
+         'hyprland-guiutils'
          'hyprlang'
          'hyprutils'
+         'hyprwire'
          'libdrm'
          'libglvnd'
          'libinput'
          'libxcursor'
          'libxkbcommon'
          'mesa'
+         'muparser'
          'pango'
          'pixman'
          're2'
@@ -43,14 +46,14 @@ optdepends=('cmake: to build and install plugins using hyprpm'
             'hyprland-protocols: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm'
             'uwsm: to launch a systemd based session via hyprland-uwsm.desktop'
-            'hyprland-guiutils: Hyprland might invoke this to show some dialogs and popups if available')
+            'xdg-desktop-portal-hyprland: xdg-desktop-portal backend for hyprland')
 provides=("${pkgname%-nox}")
 conflicts=("${pkgname%-nox}")
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('6553f9fcfb77b036e1324752a4c42db85ae8ce5ab29868b8ab2561ff29cd1254'
+sha256sums=('96f63e2513bf62cf8570d12e36b69b88ad2b04e700527be5dd0c4153eead5f59'
             'SKIP')
 
 prepare() {
@@ -72,6 +75,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   cmake --install build --prefix "$pkgdir/usr"
-  rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
