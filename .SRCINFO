@@ -1,6 +1,6 @@
 pkgbase = brow6el-git
 	pkgdesc = Terminal Web Browser with Sixel Support
-	pkgver = r41.g6d8fcdf
+	pkgver = 0.2.0.r3.g2ecdac8
 	pkgrel = 1
 	url = https://codeberg.org/janantos/brow6el
 	arch = x86_64
