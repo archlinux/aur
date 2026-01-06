@@ -12,7 +12,7 @@ pkgname='netcheck'
 pkgdesc='Check network connectivity'
 _gitname='netcheck'
 
-pkgver="1.10.0"
+pkgver="1.10.1"
 pkgrel=1
 url="https://github.com/gene-git/netcheck"
 
@@ -69,18 +69,11 @@ build() {
     # /usr/bin/rm -f $pdf
     # make latexpdf >/dev/null 2>&1
     # make latexpdf >/dev/null
-    # make html
     # /usr/bin/cp _build/latex/$pdf .
+    # make html
+    # make html
     # /usr/bin/rm -rf _build/doctrees _build/latex
 
-
-    # To build Docs 
-    # uncomment these and sphinx makedepends above
-    # --------------
-    # echo "Build docs"
-    # cd ./Docs
-    # make html
-    # make latexpdf
 }
 
 package() {
