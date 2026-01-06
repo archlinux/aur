@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.4.8
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -17,8 +17,9 @@ optdepends=(
     'ydotool: keyboard simulation fallback (X11/TTY support)'
     'wl-clipboard: clipboard support'
     'libnotify: desktop notifications'
-    'pipewire: audio capture (recommended)'
-    'pulseaudio: audio capture (alternative)'
+    'pipewire: audio server (recommended)'
+    'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
+    'pulseaudio: audio server (alternative to PipeWire)'
     'vulkan-icd-loader: GPU acceleration via Vulkan (enable with: voxtype setup gpu --enable)'
 )
 provides=('voxtype')
@@ -39,9 +40,9 @@ source=(
     "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
 )
 sha256sums=(
-    '11b3f9727b03d066cfdc694a1de21698ad9e65b776c59ecbf84f44286a34db65'  # voxtype-avx2
-    '343a384cea1306333401876864eb3dba0e1931fd6a8d03b9479855d6bbedae2b'  # voxtype-avx512
-    '61b9cb995410ddb22d73263d51d797aaf486c10b100e3133dec30f3f4c86f8ed'  # voxtype-vulkan
+    '5f19e768466e45d2007c3312e47aa802f8daab269d4f9032c087b2375d49734c'  # voxtype-avx2
+    'c1cbd2d4451c50216b7f0ce0ce90a62cb7d361f426afd1cd473dbb3aa4901e2e'  # voxtype-avx512
+    '96777e61926bcdf6751ff78bdc576a193c56386118552b853210cece9067d2d5'  # voxtype-vulkan
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
     'SKIP'  # voxtype.bash
