@@ -1,7 +1,7 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=kairo
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI and Desktop application for smart URL routing"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/aelesbao/kairo"
@@ -11,9 +11,9 @@ options=()
 depends=("glibc" "gcc-libs")
 makedepends=("rust" "wayland-protocols")
 
-source_x86_64=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('ac16bb9e9af5e5f85149d4539431b836c2767a6cfd81ba2f267a8996d756666d')
+sha256sums=('ac16bb9e9af5e5f85149d4539431b836c2767a6cfd81ba2f267a8996d756666d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
