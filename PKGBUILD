@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=falcond-profiles-git
 pkgver=r20.0f87c74
-pkgrel=1
+pkgrel=2
 pkgdesc="Profiles for Falcond"
 arch=('any')
 url="https://github.com/PikaOS-Linux/falcond-profiles"
@@ -27,4 +27,8 @@ package() {
   install -Dm644 usr/share/falcond/profiles/htpc/* -t \
     "$pkgdir/usr/share/falcond/profiles/htpc/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # https://git.pika-os.com/general-packages/falcond-gui#packaging-guidelines
+  install -dm2775 "$pkgdir/usr/share/falcond/profiles/user"
+  chown root:falcond "$pkgdir/usr/share/falcond/profiles/user"
 }
