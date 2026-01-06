@@ -1,12 +1,13 @@
 pkgbase = ascii-patrol
 	pkgdesc = Terminal Moon Control clone.
-	pkgver = 1.3
+	pkgver = 1.7
 	pkgrel = 1
 	url = http://ascii-patrol.com/
 	arch = x86_64
 	license = GPL
-	source = http://ascii-patrol.com/area51/ascii-patrol-debian-x64.tgz
-	md5sums = f3ecfcff60862e5c23131876876e4db6
+	optdepends = libxi: to fix problems with no keyboard input in a few GNOME terminals
+	optdepends = curl: for highscores table support
+	source = ascii-patrol-1.7.tar.gz::https://github.com/msokalski/ascii-patrol/archive/refs/tags/1.7.tar.gz
+	sha256sums = 2e19c0816f74ce4502ed31b498ac586d4553f5a84fb55b0f003bae434004a148
 
 pkgname = ascii-patrol
-
