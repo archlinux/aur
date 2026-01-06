@@ -1,13 +1,13 @@
 pkgbase = kairo
 	pkgdesc = CLI and Desktop application for smart URL routing
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aelesbao/kairo
 	arch = x86_64
 	license = Apache-2.0
-	options = !strip
-	options = !emptydirs
-	source_x86_64 = https://github.com/aelesbao/kairo/releases/download/v0.3.3/kairo-0.3.3-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 4a7b753e35af7fdd81d6c6051853200069f5a89ad14f3691c30e893e491021e2
+	makedepends = cargo
+	makedepends = wayland-protocols
+	source_x86_64 = https://github.com/aelesbao/kairo/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums_x86_64 = ac16bb9e9af5e5f85149d4539431b836c2767a6cfd81ba2f267a8996d756666d
 
 pkgname = kairo
