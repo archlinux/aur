@@ -7,16 +7,15 @@ arch=('any')
 url="https://github.com/xsorroww/pygradientify"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/p/pygradientify/pygradientify-${pkgver}.tar.gz")
 sha256sums=('SKIP')  # optional, you can compute the real sha256
 
 build() {
-    cd "$srcdir/pygradientify-${pkgver}"
-    python setup.py build
+    return 0  # no build step needed, pip will handle it
 }
 
 package() {
     cd "$srcdir/pygradientify-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m pip install . --root="$pkgdir" --no-deps --ignore-installed
 }
