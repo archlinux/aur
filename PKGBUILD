@@ -6,7 +6,7 @@
 
 pkgname=ags
 pkgver=3.6.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
@@ -14,7 +14,7 @@ license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
 makedepends=('cmake' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v$pkgver.tar.gz")
-sha256sums=('5260824c0a813ddea3d0ee35028ac2ee26118a26b942ab680b23f1e9b9a7cbc8')
+sha256sums=('a62c12aeca8c8acc5a6ac36c77a7ebb70af4696b2a1fa0b5ca8af6b2833e8e1a')
 
 _srcdir="$pkgname-$pkgver"
 
