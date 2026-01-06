@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=falcond-gui
 pkgver=1.0.0
 pkgrel=1
