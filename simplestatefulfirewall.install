@@ -1,5 +1,5 @@
 post_install() {
-    if ps -acx | grep -q "[s]shd-session"; then
+  if ps -acx | grep -q "[s]shd-session"; then
         echo "You have ssh session and this script will brick all network on remote
 	      Script will automatically run after disconect or connect event in any existing
               Network Manager connection, at ~1m after boot,
@@ -10,17 +10,17 @@ post_install() {
 
               Run sudo pacman -R simple-stateful-firewall-git
              "
-	systemctl stop simplestatefulfirewall.timer
-	systemctl disable simplestatefulfirewall.timer
-	systemctl stop iptables
-        systemctl disable iptables
-        systemctl stop ip6tables
-        systemctl disable ip6tables
+			systemctl stop simplestatefulfirewall.timer
+	    systemctl disable simplestatefulfirewall.timer
+	    systemctl stop iptables
+      systemctl disable iptables
+      systemctl stop ip6tables
+      systemctl disable ip6tables
     else
-	systemctl enable simplestatefulfirewall.timer
+	    systemctl enable simplestatefulfirewall.timer
     	systemctl start simplestatefulfirewall.timer
 
-        echo "Script will automatically run after disconect or connect event in any existing
+      echo "Script will automatically run after disconect or connect event in any existing
               Network Manager connection, at ~1m after boot,
               and set persistent iptables rules with new sysctl settings for system and network.
               Create some problems with tools like docker, lxc, and in some vpc, developed and tested
@@ -35,23 +35,23 @@ post_install() {
 
 pre_upgrade() {
     if ps -acx | grep -q "[s]shd-session"; then
-        echo "You have ssh session and this script will brick all network on remote"
-	systemctl stop simplestatefulfirewall.timer
-	systemctl disable simplestatefulfirewall.timer
+      echo "You have ssh session and this script will brick all network on remote"
+	    systemctl stop simplestatefulfirewall.timer
+	    systemctl disable simplestatefulfirewall.timer
     fi
 }
 
 post_upgrade() {
     if ps -acx | grep -q "[s]shd-session"; then
-        echo "You have ssh session and this script will brick all network on remote
+		  echo "You have ssh session and this script will brick all network on remote
 
               Run sudo pacman -R simple-stateful-firewall
              "
-	systemctl stop simplestatefulfirewall.timer
-	systemctl disable simplestatefulfirewall.timer
+			systemctl stop simplestatefulfirewall.timer
+      systemctl disable simplestatefulfirewall.timer
     else
-	systemctl enable simplestatefulfirewall.timer
-    	systemctl start simplestatefulfirewall.timer
+      systemctl enable simplestatefulfirewall.timer
+      systemctl start simplestatefulfirewall.timer
 	echo "
              Script will automatically run after disconect or connect event in any existing
              Network Manager connection, at ~1m after boot,
@@ -70,10 +70,10 @@ pre_remove() {
      sudo systemctl disable simplestatefulfirewall.timer
      if ps -acx | grep -q "[s]shd-session"; then
         echo "You have ssh session and this script will brick all network on remote, cleanup iptables rules by self"
-	systemctl stop iptables
-        systemctl disable iptables
-        systemctl stop ip6tables
-        systemctl disable ip6tables
+	     systemctl stop iptables
+       systemctl disable iptables
+       systemctl stop ip6tables
+       systemctl disable ip6tables
 
      else
         iptables -F
