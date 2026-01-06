@@ -1,6 +1,6 @@
 pkgbase = bigedit
 	pkgdesc = A fast text editor for very large files using journaling and FUSE
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/jopdorp/bigedit
 	install = bigedit.install
@@ -10,7 +10,7 @@ pkgbase = bigedit
 	makedepends = git
 	depends = fuse3
 	depends = inotify-tools
-	source = bigedit-0.1.11.tar.gz::https://github.com/jopdorp/bigedit/archive/refs/tags/v0.1.11.tar.gz
-	sha256sums = 87d2e316539438982ea3ecc95f485ffae48f93f71f9bc54984baa76ea9972134
+	source = bigedit-0.1.12.tar.gz::https://github.com/jopdorp/bigedit/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 2dc15a0a0f03db19e181c7b64fb660c096e9dd5b7b61bac340e34d4b89ba5471
 
 pkgname = bigedit
