@@ -1,0 +1,6 @@
+[Path]
+PathChanged=/run/systemd/netif/state
+Unit=tlp-rdw.service
+
+[Install]
+WantedBy=default.target

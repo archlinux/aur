@@ -1,0 +1,9 @@
+[Unit]
+Description=tlp-rdw response to network link changes
+After=network-online.target
+
+[Service]
+Type=oneshot
+RuntimeDirectory=tlp-rdw-systemd
+RuntimeDirectoryPreserve=yes
+ExecStart=/bin/env tlp-rdw-simulator

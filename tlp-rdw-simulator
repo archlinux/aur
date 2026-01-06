@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+set -eEuo pipefail
+
+enabl_or_disabl_due_to() {
+    local change="$1" # disconnect/connect
+
+    case "$change" in
+        connect) echo disabl ;;
+        disconnect) echo enabl ;;
+        *) >&2 echo "bad arg $change"; exit 1 ;;
+    esac
+}
+
+read_conf() {
+    local change="$1" # disconnect/connect
+    local group="$2"
+
+    # match tlp-rdw param names
+    group="${group/ethernet/lan}"
+    group="${group/wlan/wifi}"
+
+    local action
+    action="$(enabl_or_disabl_due_to "$change")"
+    result="$(/usr/share/tlp/tlp-readconfs \
+        | sed -n -E "s/.*DEVICES_TO_${action^^}E_ON_${group^^}_${change^^}=\"(.*)\"/\1/p" \
+    )"
+    if [ -z "$result" ]; then
+        return 1
+    fi
+    echo "$result"
+}
+
+dispatch() {
+    local change="$1" # disconnect/connect
+    local changed_group="$2"
+
+    local action
+    action="$(enabl_or_disabl_due_to "$change")"
+
+    if conf_rfkill_groups="$(read_conf "$change" "$changed_group")"; then
+        read -ra rfkill_groups<<<"$rfkill_groups"
+        >&2 echo "configured to ${action}e groups: $(printf '%s, ' "${rfkill_groups[@]}" | sed 's/, $//')"
+    else
+        >&2 echo "nothing configured to ${action}e on $changed_group ${change}ion"
+        return 0
+    fi
+
+    # we only want to un/block rfkill types that actually exist
+    declare -A rfkill_types
+    while read -r t; do rfkill_types["$t"]=1; done < <(rfkill --json | jq -r '.rfkilldevices|unique_by(.type)[].type')
+    >&2 echo "rfkill knows groups (device types): $(printf '%s, ' "${!rfkill_types[@]}" | sed 's/, $//')"
+    local rfkill_groups
+    rfkill_groups=()
+    for t in "${conf_rfkill_groups[@]}"; do
+        [[ ${rfkill_types["$t"]} ]] && rfkill_groups+=("$t")
+    done
+
+    >&2 echo "${action}ing groups: $(printf '%s, ' "${rfkill_groups[@]}" | sed 's/, $//')"
+
+    case "$action" in
+        disabl) _block=block ;;
+        enabl) _block=unblock ;;
+        *) >&2 echo "bad action $action"; exit 1 ;;
+    esac
+    rfkill "$_block" "${rfkill_groups[@]}"
+}
+
+check_group_up() {
+    local state="$1"
+    grep --quiet --line-regexp "UP" <<<"$state"
+}
+
+mapfile -t groups < <(cat /etc/iproute2/group /usr/share/iproute2/group \
+    | uniq \
+    | sed -n 's/^[0-9].*[[:space:]]\(.*\)/\1/gp' \
+)
+>&2 echo "found ip link groups: $(printf '%s, ' "${groups[@]}" | sed 's/, $//')"
+
+for ifgroup in "${groups[@]}"; do
+    state_file="$RUNTIME_DIRECTORY/$ifgroup"; touch "$state_file"
+    prev_state="$(<"$state_file")"
+    curr_state="$(ip --json link show group "$ifgroup" | jq -r 'unique_by(.operstate)[].operstate' | tee "$state_file")"
+
+    if check_group_up "$curr_state" && ! check_group_up "$prev_state"; then
+        >&2 echo "link group $ifgroup went up"
+        dispatch connect "$ifgroup"
+    elif ! check_group_up "$curr_state" && check_group_up "$prev_state"; then
+        >&2 echo "link group $ifgroup went down"
+        dispatch disconnect "$ifgroup"
+    fi
+done
