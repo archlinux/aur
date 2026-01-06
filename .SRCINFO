@@ -1,13 +1,12 @@
 pkgbase = amethyst-player-bin
 	pkgdesc = A cross-platform music player made with Typescript.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://amethyst.pages.dev/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron36
-	depends = nodejs
 	depends = python
 	depends = python-numpy
 	depends = python-yaml
@@ -16,15 +15,15 @@ pkgbase = amethyst-player-bin
 	depends = perl
 	depends = libvips
 	depends = libpulse
-	provides = amethyst-player=2.1.7
+	provides = amethyst-player=2.1.8
 	conflicts = amethyst-player
-	source = LICENSE-2.1.7::https://raw.githubusercontent.com/Geoxor/Amethyst/v2.1.7/LICENSE
+	source = LICENSE-2.1.8::https://raw.githubusercontent.com/Geoxor/Amethyst/v2.1.8/LICENSE
 	source = amethyst-player.sh
 	sha256sums = 2f892795f62b8f7bef478575fae01c686a673766689d3b50958f8acfddacb510
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = amethyst-player-2.1.7-aarch64.deb::https://github.com/Geoxor/Amethyst/releases/download/v2.1.7/amethyst_2.1.7_arm64.deb
-	sha256sums_aarch64 = 7367bfb50f6403b4764a11ce61c7dd34e0553acbe8a06df02c21bf70fe4bc42f
-	source_x86_64 = amethyst-player-2.1.7-x86_64.deb::https://github.com/Geoxor/Amethyst/releases/download/v2.1.7/amethyst_2.1.7_amd64.deb
-	sha256sums_x86_64 = 374d30578974aaba1ad8fdfe815690b181f86fa0fc12102483b4f0f44c432258
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = amethyst-player-2.1.8-aarch64.deb::https://github.com/Geoxor/Amethyst/releases/download/v2.1.8/amethyst_2.1.8_arm64.deb
+	sha256sums_aarch64 = daae13c5038a53ef3fecf4e053e603cc09d8606ca2fd8c422c045753a25121fe
+	source_x86_64 = amethyst-player-2.1.8-x86_64.deb::https://github.com/Geoxor/Amethyst/releases/download/v2.1.8/amethyst_2.1.8_amd64.deb
+	sha256sums_x86_64 = 68a5e6b29e66eaf69205b6ebfbebb7780ef58d081b25539f6f3dece026a511ef
 
 pkgname = amethyst-player-bin

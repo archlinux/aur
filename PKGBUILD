@@ -2,7 +2,7 @@
 _pkgname=amethyst
 pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
-pkgver=2.1.7
+pkgver=2.1.8
 _electronversion=36
 pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
     'python'
     'python-numpy'
     'python-yaml'
@@ -34,9 +33,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2f892795f62b8f7bef478575fae01c686a673766689d3b50958f8acfddacb510'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('7367bfb50f6403b4764a11ce61c7dd34e0553acbe8a06df02c21bf70fe4bc42f')
-sha256sums_x86_64=('374d30578974aaba1ad8fdfe815690b181f86fa0fc12102483b4f0f44c432258')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('daae13c5038a53ef3fecf4e053e603cc09d8606ca2fd8c422c045753a25121fe')
+sha256sums_x86_64=('68a5e6b29e66eaf69205b6ebfbebb7780ef58d081b25539f6f3dece026a511ef')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_appname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -46,6 +49,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
