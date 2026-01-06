@@ -1,0 +1,54 @@
+post_install() {
+	echo "VMK (Vietnamese Micro Key) Installation Complete"
+	echo ""
+	echo "Post-installation steps:"
+	echo "1. Install and enable the uinput server service:"
+	echo "   sudo /usr/share/fcitx5-vmk/create_fcitx5_service.sh"
+	echo ""
+	echo "2. Copy sconfig template to your home directory:"
+	echo "   cp /usr/share/fcitx5-vmk/sconfig ~/sconfig"
+	echo ""
+	echo "3. Configure Fcitx5 to use VMK input method"
+	echo "   - Open Fcitx5 Configuration"
+	echo "   - Add VMK input method"
+	echo ""
+	echo "4. For KDE Wayland users:"
+	echo "   - System Settings -> Search 'Virtual Keyboard'"
+	echo "   - Select 'Fcitx 5'"
+	echo "------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+    echo "Cleaning up VMK services and users..."
+
+    SERVICE_NAME="fcitx5-vmk.service"
+    if systemctl is-active --quiet "$SERVICE_NAME"; then
+        systemctl stop "$SERVICE_NAME"
+    fi
+    if systemctl is-enabled --quiet "$SERVICE_NAME"; then
+        systemctl disable "$SERVICE_NAME"
+    fi
+    rm -f "/etc/systemd/system/$SERVICE_NAME"
+    systemctl daemon-reload
+
+    if id "uinput_proxy" &>/dev/null; then
+        userdel "uinput_proxy" 2>/dev/null || true
+        groupdel "uinput_proxy" 2>/dev/null || true
+        echo "Removed user: uinput_proxy"
+    fi
+
+    rm -f /etc/udev/rules.d/99-vmk-uinput.rules
+    # rm -f /etc/modules-load.d/uinput.conf
+
+    echo "Cleanup complete."
+}
+
+post_remove() {
+    udevadm control --reload-rules
+    udevadm trigger
+    echo "VMK has been removed."
+}

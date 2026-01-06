@@ -1,0 +1,23 @@
+pkgbase = fcitx5-vmk-git
+	pkgdesc = VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey
+	pkgver = 0.9.r3.ge8548b3
+	pkgrel = 4
+	url = https://github.com/thanhpy2009/VMK
+	install = fcitx5-vmk.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = go
+	makedepends = extra-cmake-modules
+	makedepends = fltk
+	makedepends = gcc
+	depends = fcitx5
+	depends = acl
+	provides = fcitx5-vmk
+	conflicts = fcitx5-vmk
+	source = git+https://github.com/thanhpy2009/VMK.git
+	source = setup.sh
+	sha256sums = SKIP
+	sha256sums = 5178cfee7333cd6c081b99af772df85e0b76f7708898121ac51e8679b8686dfa
+
+pkgname = fcitx5-vmk-git
