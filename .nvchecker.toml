@@ -1,0 +1,4 @@
+[python-elf_diff]
+source = "git"
+git = "https://github.com/noseglasses/elf_diff.git"
+prefix = "v"
