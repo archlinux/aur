@@ -1,6 +1,6 @@
 pkgbase = stock_quote
 	pkgdesc = python script to get stock quotes and calculate gains and losses
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/gps1539/stock_quote
 	arch = any
