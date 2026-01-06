@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="7.1.0"
+pkgver="7.1.1"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -32,6 +32,7 @@ depends=(
     'python-pynotify' 
     'openssl>=3.0'
     'bash'
+    'glibc'
 )
 makedepends=(
     'git'

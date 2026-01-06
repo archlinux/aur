@@ -1,9 +1,12 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 6.10.0 ➙ 7.1.0
+ Tags         : 6.10.1 ➙ 7.1.1, origin/master
               : 2025-03-17 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 7.1.1, origin/master
+              - update Docs/Changelog
 
  2026-01-06   : 7.1.0
               - Add c-code back into repo (oops)
@@ -31,12 +34,3 @@
 
  2025-03-17   : 6.10.1
               - Add Changelog to Arch package (pacman -Qc wg-client)
-
- 2025-03-17   : 6.10.0
-              - Change wg-fix-resolv: Ignore comments when comparing resolv.conf files.
-                  More efficient/correct when only change is a commented time stamp for example.
-                resolv monitor: Increase maximum time to wait for wireguard to start before running the monitor.
-                  No reported issues with 5 seconds - no harm in being able to wait a bit longer if needed for some reason.
-                Resolv monitor log when it starts
- 2025-03-09   ⋯
-              - update Docs/Changelog.rst Docs/wg-client.pdf
