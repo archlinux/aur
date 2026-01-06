@@ -1,0 +1,14 @@
+pkgbase = python-pygradientify
+	pkgdesc = Make terminal UI's beautiful
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/xsorroww/pygradientify
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pygradientify/pygradientify-1.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-pygradientify
