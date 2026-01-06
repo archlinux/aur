@@ -20,4 +20,5 @@ package() {
   cd "$pkgname"
   install -Dm755 $srcdir/$pkgname/.local/share/alacritty/use-theme.sh "$pkgdir/usr/bin/alacritty-use-theme/use-theme.sh"
   install -Dm755 $srcdir/$pkgname/.local/share/alacritty/selected.toml.DEFAULT "$pkgdir/usr/share/alacritty-use-theme/selected.toml.DEFAULT"
+  install -Dm644 $srcdir/$pkgname/README.md "$pkgdir/usr/share/docs/alacritty-use-theme/README.md"
 }
