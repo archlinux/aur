@@ -14,7 +14,7 @@ pkgrel=2
 _electronVersion=38
 depends=("electron${_electronVersion}" "nodejs>20" "libvips")
 optdepends=('libappindicator-gtk3: for tray icon')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 makedepends=('npm' 'git' 'rsync' 'python-setuptools' 'libxcrypt-compat' 'corepack')
 url="https://joplinapp.org/"
 license=("AGPL-3.0-or-later")
@@ -70,8 +70,12 @@ build() {
     npx gulp before-dist
     electronRoot=/usr/lib/electron${_electronVersion}/
     electronVersion="$(<${electronRoot}/version)"
+    arch_args="--x64"
+    if [[ $CARCH == "aarch64" ]]; then
+        arch_args="--arm64"
+    fi
     npx electron-builder \
-      --linux --x64 --dir=dist/ \
+      --linux "$arch_args" --dir=dist/ \
       -c.electronDist="${electronRoot}" \
       -c.electronVersion="${electronVersion}"
 }
