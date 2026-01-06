@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.5.4 ➙ 1.8.1
-              : 2025-02-26 ➙ 2026-01-04
+ Tags         : 1.6.1 ➙ 1.8.2
+              : 2025-05-02 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 1.8.2
+              - PKGBUILD small change
+ 2026-01-04   ⋯
+              - update Docs/Changelog
 
  2026-01-04   : 1.8.1
               - fix license string in pyproject.toml
@@ -28,9 +33,4 @@
                 improve reference API doc.
                 Add py.typed so type checkers like mypy can be used with the module.
  2025-02-26   ⋯
-              - update Docs/Changelog.rst Docs/lockmgr.pdf
-
- 2025-02-26   : 1.5.4
-              - PKGBUILD: Add missing makedepends on python-installer (per aur comment by @piater)
- 2024-12-31   ⋯
               - update Docs/Changelog.rst Docs/lockmgr.pdf

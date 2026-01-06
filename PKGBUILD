@@ -10,7 +10,7 @@ pkgname='lockmgr'
 pkgdesc='Python Lock Manager Class (gc)'
 _gitname='lockmgr'
 
-pkgver="1.8.1"
+pkgver="1.8.2"
 pkgrel=1
 url="https://github.com/gene-git/lockmgr"
 
@@ -57,11 +57,12 @@ build() {
     # uncomment these and sphinx makedepends above
     # --------------
     # echo "Build docs"
-    # pdf='lockmgr.pdf'
     # cd ./Docs
+    # pdf='lockmgr.pdf'
     # /usr/bin/rm -f $pdf
     # make latexpdf >/dev/null 2>&1
     # make latexpdf >/dev/null
+    # make html
     # make html
     # /usr/bin/cp _build/latex/$pdf .
     # /usr/bin/rm -rf _build/doctrees _build/latex
