@@ -3,9 +3,9 @@
 pkgname=gst-thumbnailers
 pkgver=1.0alpha.1
 pkgrel=2
-pkgdesc="A simple gstreamer thumbnailer written in Rust"
+pkgdesc="GStreamer video and audio file thumbnailer"
 arch=(x86_64)
-url="https://gitlab.gnome.org/sophie-h/$pkgname"
+url="https://gitlab.gnome.org/GNOME/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
   glib2
