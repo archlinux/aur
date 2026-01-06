@@ -7,7 +7,7 @@ pkgname=(
 #   'wxwidgets-gtk4-light'
   'wxwidgets-qt5-light'
 )
-pkgver=3.2.8.1
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
@@ -18,10 +18,12 @@ makedepends=(
   'cmake'
   'glu'
   'webkit2gtk-4.1'
+#   webkitgtk-6.0
   'gtk3'
 #  'gtk4'
   'libnotify'
   'qt5-base'
+#   'qt6-base'
   'sdl2'
   'libmspack'
   'libsecret'
@@ -51,8 +53,12 @@ makedepends=(
 )
 source=(
   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
+  cmake.diff
 )
-sha256sums=('SKIP')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 prepare() {
@@ -60,6 +66,12 @@ prepare() {
 
   git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -n # Fix undefined symbols in Qt build
   git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -n # Avoid crash with GTK3 if console program is using a GUI wxApp
+
+  #
+  patch -p1 -i "${srcdir}/cmake.diff"
+
+  # remove ongoing Qt6 build due errors in build
+  sed 's|Qt6 ||g' -i build/cmake/toolkit.cmake
 }
 
 build() {
@@ -128,11 +140,11 @@ build() {
 #     -DwxUSE_GTKPRINT=ON \
 #     -DwxUSE_DETECT_SM=ON \
 #     -DwxUSE_AUTOID_MANAGEMENT=ON
-
+#
 #   cmake --build build-gtk4
 
   msg2 "Build WxQT5"
-  cmake -S wxwidgets -B build-qt5 \
+  cmake -S wxwidgets -B build-qt \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DwxBUILD_TOOLKIT=qt \
@@ -152,7 +164,8 @@ build() {
     -DwxUSE_DETECT_SM=ON \
     -DwxUSE_AUTOID_MANAGEMENT=ON
 
-  cmake --build build-qt5
+  cmake --build build-qt
+
 }
 
 package_wxwidgets-qt5-light() {
@@ -164,7 +177,7 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
     'qt5-base'
     'sdl2'
     'gcc-libs'
-    'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
+    'wxwidgets-common-light' "libwx_baseu-${pkgver:0:3}.so" "libwx_baseu_xml-${pkgver:0:3}.so"
     'libglvnd' 'libOpenGL.so'
     'libjpeg-turbo' 'libjpeg.so'
     'libmspack' 'libmspack.so'
@@ -173,30 +186,26 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   provides=(
     'wxwidgets'
     "wxwidgets-qt5=${pkgver:0:3}"
-    'libwx_qtu_adv-3.2.so'
-    'libwx_qtu_aui-3.2.so'
-    'libwx_qtu_core-3.2.so'
-    'libwx_qtu_gl-3.2.so'
-    'libwx_qtu_html-3.2.so'
-    'libwx_qtu_propgrid-3.2.so'
-    'libwx_qtu_qa-3.2.so'
-    'libwx_qtu_ribbon-3.2.so'
-    'libwx_qtu_richtext-3.2.so'
-    'libwx_qtu_stc-3.2.so'
-    'libwx_qtu_xrc-3.2.so'
+    "libwx_qtu_adv-${pkgver:0:3}.so"
+    "libwx_qtu_aui-${pkgver:0:3}.so"
+    "libwx_qtu_core-${pkgver:0:3}.so"
+    "libwx_qtu_gl-${pkgver:0:3}.so"
+    "libwx_qtu_html-${pkgver:0:3}.so"
+    "libwx_qtu_propgrid-${pkgver:0:3}.so"
+    "libwx_qtu_qa-${pkgver:0:3}.so"
+    "libwx_qtu_ribbon-${pkgver:0:3}.so"
+    "libwx_qtu_richtext-${pkgver:0:3}.so"
+    "libwx_qtu_stc-${pkgver:0:3}.so"
+    "libwx_qtu_xrc-${pkgver:0:3}.so"
   )
   conflicts=('wxwidgets-qt5')
 
-  DESTDIR="${pkgdir}" cmake --install build-qt5
+  DESTDIR="${pkgdir}" cmake --install build-qt
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-qt"
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,Qt}
-  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsQt/"*; do
-    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsQt/')
-  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
@@ -214,7 +223,7 @@ package_wxwidgets-gtk3-light() {
     'libx11'
     'libxtst'
     'sdl2'
-    'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
+    'wxwidgets-common-light' "libwx_baseu-${pkgver:0:3}.so" "libwx_baseu_xml-${pkgver:0:3}.so"
     'libglvnd' 'libEGL.so' 'libOpenGL.so'
     'cairo'  'libcairo.so'
     'fontconfig'  'libfontconfig.so'
@@ -233,18 +242,18 @@ package_wxwidgets-gtk3-light() {
   provides=(
     'wxwidgets'
     "wxwidgets-gtk3=${pkgver:0:3}"
-    'libwx_gtk3u_adv-3.2.so'
-    'libwx_gtk3u_aui-3.2.so'
-    'libwx_gtk3u_core-3.2.so'
-    'libwx_gtk3u_gl-3.2.so'
-    'libwx_gtk3u_html-3.2.so'
-    'libwx_gtk3u_propgrid-3.2.so'
-    'libwx_gtk3u_qa-3.2.so'
-    'libwx_gtk3u_ribbon-3.2.so'
-    'libwx_gtk3u_richtext-3.2.so'
-    'libwx_gtk3u_stc-3.2.so'
-    'libwx_gtk3u_webview-3.2.so'
-    'libwx_gtk3u_xrc-3.2.so'
+    "libwx_gtk3u_adv-${pkgver:0:3}.so"
+    "libwx_gtk3u_aui-${pkgver:0:3}.so"
+    "libwx_gtk3u_core-${pkgver:0:3}.so"
+    "libwx_gtk3u_gl-${pkgver:0:3}.so"
+    "libwx_gtk3u_html-${pkgver:0:3}.so"
+    "libwx_gtk3u_propgrid-${pkgver:0:3}.so"
+    "libwx_gtk3u_qa-${pkgver:0:3}.so"
+    "libwx_gtk3u_ribbon-${pkgver:0:3}.so"
+    "libwx_gtk3u_richtext-${pkgver:0:3}.so"
+    "libwx_gtk3u_stc-${pkgver:0:3}.so"
+    "libwx_gtk3u_webview-${pkgver:0:3}.so"
+    "libwx_gtk3u_xrc-${pkgver:0:3}.so"
   )
   optdepends=('webkit2gtk-4.1: for webview support')
   conflicts=('wxwidgets-gtk3')
@@ -255,10 +264,6 @@ package_wxwidgets-gtk3-light() {
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,GTK}
-  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsGTK/"*; do
-    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsGTK/')
-  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
@@ -280,6 +285,18 @@ package_wxwidgets-gtk4-light() {
   provides=(
     'wxwidgets'
     "wxwidgets-gtk4=${pkgver:0:3}"
+    "libwx_gtk4u_adv-${pkgver:0:3}.so"
+    "libwx_gtk4u_aui-${pkgver:0:3}.so"
+    "libwx_gtk4u_core-${pkgver:0:3}.so"
+    "libwx_gtk4u_gl-${pkgver:0:3}.so"
+    "libwx_gtk4u_html-${pkgver:0:3}.so"
+    "libwx_gtk4u_propgrid-${pkgver:0:3}.so"
+    "libwx_gtk4u_qa-${pkgver:0:3}.so"
+    "libwx_gtk4u_ribbon-${pkgver:0:3}.so"
+    "libwx_gtk4u_richtext-${pkgver:0:3}.so"
+    "libwx_gtk4u_stc-${pkgver:0:3}.so"
+    "libwx_gtk4u_webview-${pkgver:0:3}.so"
+    "libwx_gtk4u_xrc-${pkgver:0:3}.so"
   )
   conflicts=('wxwidgets-gtk4')
 
@@ -289,10 +306,6 @@ package_wxwidgets-gtk4-light() {
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-4*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,GTK4}
-  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsGTK4/"*; do
-    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsGTK4/')
-  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
@@ -318,16 +331,16 @@ package_wxwidgets-common-light() {
     'wxbase'
     'wxbase-light'
     "wxwidgets-common=${pkgver:0:3}"
-    'libwx_baseu-3.2.so'
-    'libwx_baseu_net-3.2.so'
-    'libwx_baseu_xml-3.2.so'
+    "libwx_baseu-${pkgver:0:3}.so"
+    "libwx_baseu_net-${pkgver:0:3}.so"
+    "libwx_baseu_xml-${pkgver:0:3}.so"
   )
   conflicts=(
     'wxbase'
     'wxwidgets-common'
   )
 
-  DESTDIR="${pkgdir}" cmake --install build-qt5
+  DESTDIR="${pkgdir}" cmake --install build-qt
   DESTDIR="${pkgdir}" cmake --install build-gtk3
 #   DESTDIR="${pkgdir}" cmake --install build-gtk4
   DESTDIR="${pkgdir}" cmake --install build-base
@@ -337,6 +350,9 @@ package_wxwidgets-common-light() {
   rm -fr "${pkgdir}/usr/lib/"*gtk*.so*
   rm -fr "${pkgdir}/usr/lib/wx/"{config,include}/{gtk,qt}*
   rm -fr "${pkgdir}/usr/lib/wx/"3*
+
+  rm -fr "${pkgdir}/usr/lib/cmake/"*{gtk,qt}*
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets"-${pkgver:0:3}{-base,}
 
   install -Dm644 wxwidgets/wxwin.m4 -t "${pkgdir}/usr/share/aclocal"
 
