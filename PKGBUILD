@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.4.8
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -25,14 +25,15 @@ optdepends=(
     'ydotool: keyboard simulation fallback (X11/TTY support)'
     'wl-clipboard: clipboard support'
     'libnotify: desktop notifications'
-    'pipewire: audio capture (recommended)'
-    'pulseaudio: audio capture (alternative)'
+    'pipewire: audio server (recommended)'
+    'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
+    'pulseaudio: audio server (alternative to PipeWire)'
     'vulkan-icd-loader: GPU acceleration via Vulkan (enable with: voxtype setup gpu --enable)'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b63f13af0b25cfc84ade18a94efb5df3f5a25ad625b34e486268354b873e59f2')
+sha256sums=('c4d31b2e69f2d036dba5b125a25cef06b507a0818099501b9e2be04920acb1b1')
 
 prepare() {
     cd "$pkgname-$pkgver"
