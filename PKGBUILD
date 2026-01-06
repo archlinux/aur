@@ -2,7 +2,7 @@
 pkgbase="powertuner"
 pkgname="powertuner"
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The first multi-platform client-daemon tuning app for desktop and handheld devices"
 url="https://github.com/PowerTuner"
 install="powertuner.install"
