@@ -1,0 +1,11 @@
+pkgbase = user-analysis-git
+	pkgdesc = A tool to keep linux users on the live system in parity with systemd sysuser.d defaults
+	pkgver = r3.72045ce
+	pkgrel = 1
+	url = https://github.com/graysky2/user-analysis
+	arch = any
+	license = unknown
+	source = user-analysis::git+https://github.com/graysky2/user-analysis.git
+	md5sums = SKIP
+
+pkgname = user-analysis-git
