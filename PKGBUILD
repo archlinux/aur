@@ -9,10 +9,10 @@ license=('MIT')
 depends=('python')
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/p/pygradientify/pygradientify-${pkgver}.tar.gz")
-sha256sums=('SKIP')  # optional, you can compute the real sha256
+sha256sums=('SKIP')  
 
 build() {
-    return 0  # no build step needed, pip will handle it
+    return 0  
 }
 
 package() {
