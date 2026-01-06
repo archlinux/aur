@@ -1,6 +1,6 @@
 # Maintainer: Tuncay EŞSİZ <tuncayessiz9@gmail.com>
 pkgname=appimagemanager
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A powerful, user-friendly AppImage management solution for Linux"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'fuse3: Alternative FUSE implementation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tunjayoff/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d803c05b8eb955a828b8ddd9b9f9883c009630916afc71d0e6bd76326e952473')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
