@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 9.0.1 ➙ 9.2.3
-              : 2025-10-30 ➙ 2026-01-05
+ Tags         : 9.1.0 ➙ 9.2.4
+              : 2025-11-27 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 9.2.4
+              - PKGBUILD small change
+ 2026-01-05   ⋯
+              - update Docs Changelogs
 
  2026-01-05   : 9.2.3
               - Docs - update manual build instructions for uv (including ubuntu)
@@ -26,25 +31,4 @@
  2025-11-27   : 9.1.0
               - Bug fix for issue #19: key roll fails, as reported by @hubbleshare
  2025-10-30   ⋯
-              - update Docs Changelogs
-
- 2025-10-30   : 9.0.1
-              - * Add support for *IP Groups*.
-            
-                  This is helpful when managing routes for *groups* of users.
-                  By designating some peers as members of an *ip-group*, network routes can now be
-                  for specific groups. The IPs for an ip group must be a proper subnet
-                  of the VPN network.
-            
-                  An ip group is created using the *--add-ip-group <name> <subnet(s)>* option.
-            
-                  Note that since an ip group is defined by the IP subnet of the vpn network, a
-                  peer can only be a member of one group since it only has 1 IP.
-            
-                * Switch File Data from TOML to YAML format.
-            
-                  YAML is more robust than toml . Existing files are auto converted,
-                  the first time version *9.x* is used.
-                  *Edit* files now use yaml format as well. Docs updated to reflect this.
- 2025-09-18   ⋯
               - update Docs Changelogs

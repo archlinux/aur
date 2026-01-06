@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Manage wireguard VPN configurations (servers and users).'
 _gitname='wg_tool'
 
-pkgver="9.2.3"
+pkgver="9.2.4"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -76,8 +76,9 @@ build() {
     #    make latexpdf
     #    /usr/bin/rm -f $pdf
     #    /usr/bin/cp _build/latex/$pdf .
-    #    /usr/bin/rm -rf _build/doctrees _build/latex
     #    make html
+    #    make html
+    #    /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {
