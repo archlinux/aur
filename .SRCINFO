@@ -1,6 +1,6 @@
 pkgbase = pcsx2
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
@@ -35,7 +35,7 @@ pkgbase = pcsx2
 	optdepends = gstreamer: Backup sound player for RetroAchievements
 	options = !debug
 	options = lto
-	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=96284205a112ae7e74a8fffa15cb3d867cd0b32f
+	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=9aac7e8426f9edd7d43a31b2d4399b46c725ec84
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
 	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.1
 	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.7

@@ -4,11 +4,11 @@
 : ${_ver_plutovg:=1.3.1}
 : ${_ver_plutosvg:=0.0.7}
 
-: ${_commit=96284205a112ae7e74a8fffa15cb3d867cd0b32f}
+: ${_commit=9aac7e8426f9edd7d43a31b2d4399b46c725ec84}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -128,7 +128,6 @@ build() (
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_SKIP_RPATH=ON
-    -DENABLE_TESTS=$CHECKFUNC
     -Wno-dev
   )
 
@@ -143,15 +142,16 @@ build() (
   )
 
   _cmake_pcsx2=(
+    -DENABLE_TESTS=$CHECKFUNC
     -DDISABLE_ADVANCE_SIMD=ON # misnamed; enables multi-arch
     -DENABLE_SETCAP=OFF
     -DPACKAGE_MODE=ON
     -DUSE_ASAN=OFF
     -DUSE_BACKTRACE=OFF
-    -DUSE_SANITIZERS=OFF # cubeb
     -DUSE_VULKAN=ON
     -DWAYLAND_API=ON
     -DX11_API=ON
+    -DQT_NO_PRIVATE_MODULE_WARNING=ON
   )
 
   local _deps i _source _options
