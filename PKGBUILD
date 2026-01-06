@@ -6,7 +6,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
 license=('GPL3')
-sha256sums=('SKIP')
+# sha256sums=('SKIP')
 
 depends=(
   "myctl"

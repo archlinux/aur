@@ -6,6 +6,5 @@ pkgbase = mytm
 	arch = any
 	license = GPL3
 	depends = myctl
-	sha256sums = SKIP
 
 pkgname = mytm
