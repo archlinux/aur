@@ -3,6 +3,7 @@
 pkgbase=wivrn-server
 pkgname=(
 	wivrn-server
+	lib32-wivrn-server
 	wivrn-dashboard
 )
 pkgver=25.12
@@ -34,6 +35,8 @@ depends=(
 	"openssl"
 	"systemd-libs"
 	"x264"
+	# Server client library (32-bit)
+	"lib32-vulkan-icd-loader"
 
 	# Dashboard
 	"hicolor-icon-theme"
@@ -82,6 +85,7 @@ build() {
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_DASHBOARD=OFF \
 	-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
+	-DWIVRN_OPENXR_MANIFEST_ABI=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
@@ -90,6 +94,25 @@ build() {
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
 	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
+	-Wno-dev
+	# 32-bit build
+	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
+	-G Ninja \
+	-DGIT_DESC=v${pkgver} \
+	-DCMAKE_C_FLAGS="-m32" \
+	-DCMAKE_CXX_FLAGS="-m32" \
+	-DWIVRN_BUILD_CLIENT=OFF \
+	-DWIVRN_BUILD_SERVER=OFF \
+	-DWIVRN_BUILD_WIVRNCTL=OFF \
+	-DWIVRN_BUILD_SERVER_LIBRARY=ON \
+	-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
+	-DWIVRN_OPENXR_MANIFEST_ABI=ON \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DCMAKE_INSTALL_PREFIX="/usr" \
+	-DCMAKE_INSTALL_LIBDIR="lib32" \
+	-DVulkan_LIBRARY=/usr/lib32/libvulkan.so \
+	-DVulkan_INCLUDE_DIR=/usr/include \
+	-GNinja \
 	-Wno-dev
 
 	cmake -B build-dashboard . \
@@ -106,6 +129,8 @@ build() {
 	-Wno-dev
 
 	cmake --build build-server
+	cmake --build build-server-32
+
 	cmake --build build-dashboard
 }
 
@@ -123,6 +148,16 @@ package_wivrn-server() {
 	mkdir -p $pkgdir/usr/lib/environment.d
 	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
 }
+package_lib32-wivrn-server() {
+	provides=("lib32-openxr-runtime")
+	optdepends=(
+		"lib32-xrizer: OpenVR to OpenXR translation layer"
+	)
+
+	cd "WiVRn-$pkgver"
+	DESTDIR="$pkgdir" cmake --install build-server-32
+}
+
 package_wivrn-dashboard() {
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-dashboard

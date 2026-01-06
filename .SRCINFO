@@ -38,6 +38,7 @@ pkgbase = wivrn-server
 	depends = openssl
 	depends = systemd-libs
 	depends = x264
+	depends = lib32-vulkan-icd-loader
 	depends = hicolor-icon-theme
 	depends = ki18n
 	depends = kiconthemes
@@ -55,5 +56,9 @@ pkgname = wivrn-server
 	optdepends = opencomposite: OpenVR to OpenXR translation layer
 	optdepends = xrizer: Another OpenVR to OpenXR translation layer
 	provides = openxr-runtime
+
+pkgname = lib32-wivrn-server
+	optdepends = lib32-xrizer: OpenVR to OpenXR translation layer
+	provides = lib32-openxr-runtime
 
 pkgname = wivrn-dashboard
