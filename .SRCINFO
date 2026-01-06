@@ -1,6 +1,6 @@
 pkgbase = proxy-ns
 	pkgdesc = Run programs in a network namespace where all traffic go through proxy
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/OkamiW/proxy-ns
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = proxy-ns
 	makedepends = git
 	makedepends = make
 	makedepends = go
-	makedepends = scdoc
 	backup = etc/proxy-ns/config.json
-	source = git+https://github.com/OkamiW/proxy-ns#tag=v2.4.0
-	sha512sums = e046aac10b843164a2b6db21f8b4b20b41af4c0641dceec0769483433194880dc0f1ffe3924e01e50297a29d1984fa024b61efcbca41357185ce3566625adc99
+	source = git+https://github.com/OkamiW/proxy-ns#tag=v2.4.1
+	sha512sums = 9a68986512fcd3696f987033748bd3ef9e103bbdfea7d37762cb5a3644c7f3a064c202307bd551e4241aa47c16e3f0b7d7f2314cd4272be8ef5deaaaf8cda0ef
 
 pkgname = proxy-ns
