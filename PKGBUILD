@@ -4,7 +4,7 @@
 _pkgname=oblivion-desktop
 pkgname="${_pkgname}-git"
 pkgver=3.11.0.r6.g9fdf217
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
@@ -14,6 +14,10 @@ depends=('bash' "${_electron}")
 makedepends=('gendesk' 'nvm' 'npm')
 optdepends=('libappindicator-gtk3: systray and app indicator support')
 provides=("${_pkgname}")
+conflicts=(
+    "${_pkgname}"
+    "${_pkgname}-bin"
+)
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
