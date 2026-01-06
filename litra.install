@@ -1,0 +1,33 @@
+_install_udev_rules() {
+    if [[ ! -f /usr/lib/udev/rules.d/99-litra.rules ]]; then
+        cp /usr/share/litra/99-litra.rules /usr/lib/udev/rules.d/99-litra.rules
+        echo "==> Installed udev rules for Litra devices"
+    else
+        echo "==> udev rules already exist (possibly from litra-autotoggle), skipping"
+    fi
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+}
+
+_remove_udev_rules() {
+    # Only remove if litra-autotoggle is not installed
+    if ! pacman -Q litra-autotoggle &>/dev/null; then
+        rm -f /usr/lib/udev/rules.d/99-litra.rules
+        udevadm control --reload-rules 2>/dev/null || true
+        echo "==> Removed udev rules for Litra devices"
+    else
+        echo "==> Keeping udev rules (litra-autotoggle is installed)"
+    fi
+}
+
+post_install() {
+    _install_udev_rules
+}
+
+post_upgrade() {
+    _install_udev_rules
+}
+
+post_remove() {
+    _remove_udev_rules
+}
