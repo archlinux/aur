@@ -32,6 +32,7 @@ pkgbase = waytermirror-git
 	depends = ffmpeg
 	depends = libdrm
 	depends = mesa
+	depends = libpng
 	optdepends = cuda: GPU-accelerated rendering via NVIDIA CUDA
 	provides = waytermirror
 	conflicts = waytermirror

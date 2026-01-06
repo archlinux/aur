@@ -55,6 +55,9 @@ depends=(
 
     # Mesa (for GBM)
     mesa
+
+    # PNG (for PNG encoding)
+    libpng
 )
 
 makedepends=(
