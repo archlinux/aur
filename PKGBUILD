@@ -18,12 +18,12 @@ noextract=("pi-linux.tar.gz")
 makedepends=("tar")
 
 package() {
-	cd "$srcdir"
-        install -d "$pkgdir/opt/pi-coding-agent"
-        tar xCf "$pkgdir/opt/pi-coding-agent" pi-linux.tar.gz
-        install -d "$pkgdir/usr/bin"
-        ln -s ../../opt/pi-coding-agent/pi "$pkgdir/usr/bin/pi"
+    cd "$srcdir"
+    install -d "$pkgdir/opt/pi-coding-agent"
+    tar xCf "$pkgdir/opt/pi-coding-agent" pi-linux.tar.gz
+    install -d "$pkgdir/usr/bin"
+    ln -s ../../opt/pi-coding-agent/pi "$pkgdir/usr/bin/pi"
 
-	cd "$pkgdir/opt/pi-coding-agent"
-	install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
+    cd "$pkgdir/opt/pi-coding-agent"
+    install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
