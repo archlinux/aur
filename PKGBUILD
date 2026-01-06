@@ -1,6 +1,6 @@
 # Maintainer: Oliver Ford <dev.aur@ojford.com>
 pkgname=tlp-rdw-systemd
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="TLP Radio-Device-Watchdog simulated from systemd-networkd (without NetworkManager)"
 

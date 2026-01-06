@@ -21,13 +21,10 @@ read_conf() {
 
     local action
     action="$(enabl_or_disabl_due_to "$change")"
-    result="$(/usr/share/tlp/tlp-readconfs \
-        | sed -n -E "s/.*DEVICES_TO_${action^^}E_ON_${group^^}_${change^^}=\"(.*)\"/\1/p" \
-    )"
-    if [ -z "$result" ]; then
-        return 1
-    fi
-    echo "$result"
+
+    local param="DEVICES_TO_${action^^}E_ON_${group^^}_${change^^}"
+    >&2 echo "checking conf for param $param"
+    /usr/share/tlp/tlp-readconfs | sed -n -E "s/.*${param}=\"(.*)\"$/\1/p" | grep -E '\S'
 }
 
 dispatch() {
@@ -37,9 +34,9 @@ dispatch() {
     local action
     action="$(enabl_or_disabl_due_to "$change")"
 
-    if conf_rfkill_groups="$(read_conf "$change" "$changed_group")"; then
-        read -ra rfkill_groups<<<"$rfkill_groups"
-        >&2 echo "configured to ${action}e groups: $(printf '%s, ' "${rfkill_groups[@]}" | sed 's/, $//')"
+    mapfile -t conf_rfkill_groups < <(read_conf "$change" "$changed_group")
+    if [ "${#conf_rfkill_groups[@]}" -gt 0 ]; then
+        >&2 echo "configured to ${action}e groups: $(printf '%s, ' "${conf_rfkill_groups[@]}" | sed 's/, $//')"
     else
         >&2 echo "nothing configured to ${action}e on $changed_group ${change}ion"
         return 0
@@ -52,7 +49,7 @@ dispatch() {
     local rfkill_groups
     rfkill_groups=()
     for t in "${conf_rfkill_groups[@]}"; do
-        [[ ${rfkill_types["$t"]} ]] && rfkill_groups+=("$t")
+        [[ -v rfkill_types["$t"] ]] && rfkill_groups+=("$t")
     done
 
     >&2 echo "${action}ing groups: $(printf '%s, ' "${rfkill_groups[@]}" | sed 's/, $//')"

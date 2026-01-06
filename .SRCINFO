@@ -1,6 +1,6 @@
 pkgbase = tlp-rdw-systemd
 	pkgdesc = TLP Radio-Device-Watchdog simulated from systemd-networkd (without NetworkManager)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/OJFord/tlp-rdw-systemd
 	install = tlp-rdw-systemd.install
