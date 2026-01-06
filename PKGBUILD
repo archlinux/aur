@@ -9,7 +9,7 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.3.0.2"
+pkgver="6.3.1.6"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -23,7 +23,7 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
         "ASF.json"
         "NLog.config")
 validpgpkeys=('1268A81616AFDC20C55779ED6B138B4C64555AEA')
-sha256sums=('464a64df30954dd895f100a0a829df55e5977f9b12400ae9a8ab0d8e2bb8aac5'
+sha256sums=('f9dba87fee1800b0cbc99122c461b07294f5e0b2e73771b817a1404e0568099b'
             '1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
@@ -111,7 +111,7 @@ package_asf-plugin-signinwithsteam() {
 
 package_asf() {
     pkgdesc="Steam cards farmer."
-    depends=('aspnet-runtime>=10')
+    depends=('aspnet-runtime>=10' 'dbus')
     optdepends=('asf-ui: standalone web interface for ASF'
                 'asf-plugin-itemsmatcher'
                 'asf-plugin-mobileauthenticator'

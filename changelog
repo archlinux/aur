@@ -1,3 +1,14 @@
+2026-01-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.1.6-1:
+    Added Steam Winter Sale 2025 to built-in sales blacklist (@JustArchi).
+    Added support for --system-required to work also on Linux. Requires working dbus on the system (@JustArchi #3526 #3246).
+    Fixed suboptimal ASF flow when attempting to use invalidated ASF 2FA credentials, avoiding possible RateLimitExceeded in the process (@JustArchi).
+    Fixed MarketableAscending and MarketableDescending farming orders not working properly after recent Steam breaking change (@JustArchi).
+    Fixed /Api/NLog websocket endpoint not working properly with HTTP/2 (@LRFLEW #3532).
+    Small performance improvements connected with ASF 2FA tokens generation (@xPaw #3512).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.2.3.1-1:
     Improved Steam parental code recovery process (@JustArchi #3483, coded live on livestream!).
