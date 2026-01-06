@@ -16,6 +16,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/pygradientify-${pkgver}"
-    python -m pip install . --root="$pkgdir" --no-deps --ignore-installed
+    cd "$srcdir"
+    python -m pip install "pygradientify-${pkgver}.tar.gz" --root="$pkgdir" --no-deps --ignore-installed
 }
