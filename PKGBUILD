@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=polar-bin
 _pkgname=Polar
-pkgver=3.3.0
+pkgver=4.0.0
 _electronversion=13
 pkgrel=1
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing.(Prebuilt version.Use system-wide electron)"
@@ -21,12 +21,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jamaljsr/polar/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('366074149e9918e9bbc3a195e4f3c784cd77261f51684d2bfc9d75b4b5cf8d51'
+sha256sums=('2717d7504da770775f2d962e80dc522f386bbf2862321e4ddccfa50d88313197'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
