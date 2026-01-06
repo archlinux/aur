@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=workspace-v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('61caa6a70a328185a6c0017419d486b1aea88343fb455a2e9b571dab0207d08c'
+sha256sums=('813b386aa1e6d04fd4e956b26a9bcd5009d0a721f3a2fd972bece0d43b1973a3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -109,7 +109,6 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm run build:linux
 }
 package() {
