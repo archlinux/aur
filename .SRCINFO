@@ -9,6 +9,7 @@ pkgbase = wivrn-server
 	makedepends = cmake
 	makedepends = git
 	makedepends = glib2-devel
+	makedepends = ninja
 	makedepends = nlohmann-json
 	makedepends = vulkan-headers
 	makedepends = cli11

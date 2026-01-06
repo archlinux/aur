@@ -53,6 +53,7 @@ makedepends=(
 	"cmake"
 	"git"
 	"glib2-devel"
+	"ninja"
 	"nlohmann-json"
 	"vulkan-headers"
 
@@ -74,6 +75,7 @@ sha256sums=('f8490c3cd7ec28b8885539d20519f8ef6af55c1f8fc1b4b486b05639a7d8f4d5')
 build() {
 	cd "WiVRn-$pkgver"
 	cmake -B build-server . \
+	-G Ninja \
 	-DGIT_DESC=v${pkgver} \
 	-DWIVRN_BUILD_SERVER=ON \
 	-DWIVRN_BUILD_WIVRNCTL=ON \
@@ -91,6 +93,7 @@ build() {
 	-Wno-dev
 
 	cmake -B build-dashboard . \
+	-G Ninja \
 	-DGIT_DESC=v${pkgver} \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_SERVER=OFF \
