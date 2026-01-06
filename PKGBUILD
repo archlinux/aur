@@ -7,23 +7,44 @@ _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=('x86_64')
 url="https://coccoc.com"
-license=('custom')
+license=('LicenseRef-coccoc')
 depends=(
-    'ttf-liberation'
-    'alsa-lib'
-    'libcups'
-    'gtk3'
-    'nss'
-    'libxss'
-    'libxtst'
-    'xdg-utils'
-    'sh'
+	'alsa-lib'
+	'at-spi2-core'
+	'bash'
+	'cairo'
+	'dbus'
+	'expat'
+	'gcc-libs'
+	'glib2'
+	'glibc'
+	'gtk3'
+	'hicolor-icon-theme'
+	'libcups'
+	'libdrm'
+	'libx11'
+	'libxcb'
+	'libxcomposite'
+	'libxdamage'
+	'libxext'
+	'libxfixes'
+	'libxkbcommon'
+	'libxrandr'
+	'libxss'
+	'libxtst'
+	'mesa'
+	'nspr'
+	'nss'
+	'pango'
+	'qt5-base'
+	'systemd-libs'
+	'ttf-liberation'
+	'xdg-utils'
 )
 optdepends=(
+	'qt6-base: for Qt6 UI shim support'
     'pipewire: WebRTC desktop sharing under Wayland'
-    'kdialog: for file dialogs in KDE'
     'gnome-keyring: for storing passwords in GNOME keyring'
-    'libunity: for download progress on KDE'
     'kwallet: for storing passwords in KWallet'
 )
 provides=('coccoc-browser' 'coccoc')
@@ -58,4 +79,5 @@ package() {
     install -Dm644 LICENSE.html "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"
     rm -r "$pkgdir/etc/cron.daily/" "$pkgdir/opt/coccoc/browser/cron/"
+    chmod 4755 "$pkgdir/opt/coccoc/browser/chrome-sandbox"
 }
