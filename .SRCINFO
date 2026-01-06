@@ -1,8 +1,9 @@
 pkgbase = opentrack
 	pkgdesc = Head tracking software
 	pkgver = 2026.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opentrack/opentrack/
+	install = opentrack.install
 	arch = x86_64
 	license = ISC
 	makedepends = cmake
@@ -18,9 +19,11 @@ pkgbase = opentrack
 	source = opentrack.desktop
 	source = opentrack-wayland.desktop
 	source = tracker-neuralnet.patch
+	source = opentrack.install
 	sha256sums = 90f2e5dee2b3c4875dd5464008826f234ec761bb20204567e81575da961a8fda
 	sha256sums = cf717d146a89c7373ec9b393164898db6ea32790f1ce1948c90bc1d4e2f4bb98
 	sha256sums = b42816a28ecf72a66e6815810cd8565277e77a2eeb1f987e3e046b297170a279
 	sha256sums = 763f1dd8dae2bb99c0be90b477770bb315a1649342ed5160940153f7a74920ce
+	sha256sums = 6ed28561a673981dbe3fbb9739ebae890c72486081c93b8049d5744a10b610de
 
 pkgname = opentrack
