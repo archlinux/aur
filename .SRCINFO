@@ -1,7 +1,7 @@
 pkgbase = radegast-ng
 	pkgdesc = Lightweight client for connecting to Second Life and OpenSim worlds
-	pkgver = 2.47
-	pkgrel = 441
+	pkgver = 2.50
+	pkgrel = 510
 	url = http://radegast.life
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = radegast-ng
 	source = https://bitbucket.org/cinderblocks/radegast/downloads/Radegast-${pkgver}.tbz
 	source = radegast.desktop
 	source = radegast
-	sha256sums = 294dd0ec636103141c4343e73ccbaac9ca92c1a66830611efd19ff3657340036
+	sha256sums = 10c556bad205cbeccfa51c047fc9a2e2c65fde9e75cd6c9cab7239545d683a68
 	sha256sums = 8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567
 	sha256sums = 73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96
 
