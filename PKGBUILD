@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("c98f09e381b1082a87f8f8fe9e220cab2684c9094774102827094af221a73578")
+sha256sums=("fee7ee9d5063f9a1b529b2cace33b4c0fbd16cb079753e54f767873e564ce84c")
 
 
 prepare() {
