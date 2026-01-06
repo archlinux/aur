@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
