@@ -6,7 +6,7 @@
 
 pkgname=pyalpm-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.12.r2.g9f9448f
+pkgver=0.11.1.r0.g2c7917a
 pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
@@ -15,11 +15,9 @@ license=('GPL-3.0-only')
 depends=('python' 'pacman')
 makedepends=(
   'git'
-  'meson'
   'meson-python'
   'python-build'
   'python-installer'
-  'python-sphinx'
   'python-wheel'
 )
 checkdepends=('python-pytest' 'python-pytest-pacman')
@@ -30,28 +28,21 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  )
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson build $_pkgname
-  meson compile -C build
-  meson compile -C build doc
+  cd $_pkgname
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  meson install -C build --destdir "$srcdir"
-  local _site=$(python -c 'import site; print(site.getsitepackages()[0])')
-  PYTHONPATH="$srcdir/$_site" pytest -v $_pkgname/test
+  meson setup build $_pkgname
+  meson compile -C build
+  meson test -C build
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-
-  # install docs
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  rm -rf build/html/.doctrees
-  cp -rv build/html "$pkgdir/usr/share/doc/$pkgname"
+  cd $_pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
