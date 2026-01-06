@@ -3,12 +3,12 @@
 #PKGEXT=.pkg.tar
 pkgname=elyprismlauncher-bin
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/ElyPrismLauncher"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
-depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'quazip-qt6' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark')
+depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'libarchive' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'qrencode' 'qt6-wayland')
 provides=('elyprismlauncher')
 conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
