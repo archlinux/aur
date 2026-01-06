@@ -1,9 +1,22 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.0.0 ➙ 7.1.1
-              : 2025-12-20 ➙ 2025-12-22
+ Tags         : 7.0.1 ➙ 7.2.0
+              : 2025-12-20 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 7.2.0
+              - **Version 7.2.0**
+            
+                * Code Reorg
+                * Switch packaging from hatch to uv
+                * Testing to confirm all working correctly on python 3.14.2
+                * New dependency: pyconcurrent is now required instead of optional (code simplification):
+            
+                  Available on `Github <https://github.com/gene-git/pyconcurrent>`_
+                  and `AUR <https://aur.archlinux.org/packages/pyconcurrent>`_
+ 2025-12-22   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-12-22   : 7.1.1
               - Docs/conf.py: fix exclude_patterns to ignore rst files not used in pdf/html
@@ -23,18 +36,4 @@
 
  2025-12-20   : 7.0.1
               - Installer fix - license file in different directory
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-12-20   : 7.0.0
-              - Release 7.0.0
-                These are to support upcoming Letsencrypt changes.
-                 - ACME profiles
-                 - Root Certs
-                 - ca_preferred_chain option - stop using this
-                 - ca_preferred_acme_profile (default tlsserver)
-                 - Renew Timing - handle shortlived certs using original lifetime in renew decision
-                 - New config [renew_info] to control renew timing
-                 - Original lifetime now displayed by sslm-mgr and sslm-info
-                 - now licensed under GPL-2.0-or-later
- 2025-11-06   ⋯
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf

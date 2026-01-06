@@ -12,25 +12,46 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver=7.1.1
+pkgver="7.2.0"
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
 arch=(any)
 license=(GPL-2.0-or-later)
-depends=('python>=3.13' 'python-dnspython' 'python-tomli-w' 'python-cryptography>=42' 
-        'python-dateutil' 'lockmgr' 'certbot')
+depends=(
+    'python>=3.13' 
+    'python-dnspython' 
+    'python-tomli-w' 
+    'python-cryptography' 
+    'python-dateutil' 
+    'lockmgr' 
+    'certbot'
+    'pyconcurrent'
+    'bash'
+)
 optdepends=(
     'dns_tools: dnssec and dns server manager'
-    'pyconcurrent: to run external programs instead of local copy'
 )
 
 # To build docs uncommont sphinx/texlive
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync' 'git'
-             #'python-sphinx' 'texlive-latexextra' # Docs
-            )
+makedepends=(
+    'git'
+    'rsync'
+    'uv'
+    'python-uv-build'
+    #'python-sphinx' 'texlive-latexextra' # Docs
+)
 
-_mkpkg_depends=('python>minor')
+_mkpkg_depends=(
+    'python>minor'
+    'python-dnspython>minor'
+    'python-tomli-w>minor'
+    'python-cryptography>minor'
+    'python-dateutil>minor'
+    'lockmgr>minor'
+    'certbot>minor'
+    'pyconcurrent>minor'
+)
 
 #
 # Verifying Signed Tag
@@ -47,13 +68,20 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    cd ./Docs
-#    make html
-#    make latexpdf
+    echo 'Building Docs'
+    #    pdf='ssl-mgr.pdf'
+    #    cd ./Docs
+    #    make latexpdf >/dev/null 2>&1
+    #    make latexpdf >/dev/null
+    #    /usr/bin/rm -f $pdf
+    #    /usr/bin/cp _build/latex/$pdf .
+    #    make html >/dev/null
+    #    make html >/dev/null
+    #    /usr/bin/rm -rf _build/doctrees _build/latex
+
+
 }
 
 package() {
