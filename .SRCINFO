@@ -1,6 +1,6 @@
 pkgbase = autohand-cli
 	pkgdesc = Ultra fast coding agent that runs in your terminal
-	pkgver = 0.6.9
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://github.com/autohandai/code-cli
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = autohand-cli
 	depends = bash
 	provides = autohand
 	replaces = nodejs-autohand-cli
-	noextract = autohand-cli-0.6.9.tgz
+	noextract = autohand-cli-0.6.10.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = autohand-cli-0.6.9.tgz::https://registry.npmjs.org/autohand-cli/-/autohand-cli-0.6.9.tgz
-	b2sums = 63f630bb065f9d9e292180eedd6ecc50f6b996f7bb4a3b164cfbdfb106b8ac62bd3040b4fb6b24100f0223b694820bb51449082f9a488317f0300153afd7c537
+	source = autohand-cli-0.6.10.tgz::https://registry.npmjs.org/autohand-cli/-/autohand-cli-0.6.10.tgz
+	b2sums = d55f4d50e76370542e918fef7fb2048f99b75ed046ebb079928873756c501c496336d0ee61b02ab936eced66f4edecc18329d7c0fe457121c35db469d2556668
 
 pkgname = autohand-cli
