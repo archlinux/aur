@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver="2.13.0"
+pkgver="2.13.1"
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
@@ -59,12 +59,13 @@ build() {
     # uncomment these and sphinx makedepends above
     # --------------
     #  echo "Build docs"
-    #  pdf='pyconcurrent.pdf'
     #  cd ./Docs
+    #  pdf='pyconcurrent.pdf'
+    #  /usr/bin/rm -f $pdf
     #  make latexpdf >/dev/null 2>&1
     #  make latexpdf >/dev/null
     #  make html
-    #  /usr/bin/rm -f $pdf
+    #  make html
     #  /usr/bin/cp _build/latex/$pdf .
     #  /usr/bin/rm -rf _build/doctrees _build/latex autoapi
 
