@@ -3,7 +3,7 @@
 pkgname=riftbar-git
 pkgver=8fc89d4
 pkgrel=1
-pkgdesc="Async status bar for wayland written in rust (git version)"
+pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/binaryharbinger/riftbar"
 license=('GPL-3.0-only')
@@ -21,7 +21,7 @@ makedepends=('git' 'cargo' 'pkg-config')
 provides=('riftbar')
 conflicts=('riftbar')
 
-source=("git+https://github.com/binaryharbinger/riftbar.git#branch=dev")
+source=("git+https://github.com/binaryharbinger/riftbar.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
