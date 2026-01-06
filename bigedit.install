@@ -1,0 +1,40 @@
+post_install() {
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════════════╗"
+    echo "║                    BigEdit Installation Complete                  ║"
+    echo "╠══════════════════════════════════════════════════════════════════╣"
+    echo "║                                                                   ║"
+    echo "║  BigEdit includes a systemd user service that automatically      ║"
+    echo "║  mounts FUSE views for files being edited, so other programs     ║"
+    echo "║  can see your changes before they're written to disk.            ║"
+    echo "║                                                                   ║"
+    echo "║  The bigedit-watcher service is enabled by default.              ║"
+    echo "║                                                                   ║"
+    echo "║  Usage:                                                           ║"
+    echo "║    bigedit <filename>     Edit a file                             ║"
+    echo "║                                                                   ║"
+    echo "║  Keybindings:                                                     ║"
+    echo "║    Ctrl+O     Save (journal mode)                                 ║"
+    echo "║    Ctrl+J     Compact (full file rewrite)                         ║"
+    echo "║    Ctrl+T     Toggle FUSE mode                                    ║"
+    echo "║    Ctrl+X     Exit                                                ║"
+    echo "║                                                                   ║"
+    echo "╚══════════════════════════════════════════════════════════════════╝"
+    echo ""
+    
+    # Try to start the service for logged-in users
+    # This runs during package install, so we notify users
+    echo "To start the watcher service now, run:"
+    echo "  systemctl --user daemon-reload && systemctl --user start bigedit-watcher.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Stopping bigedit-watcher service for all users..."
+    # Note: Can't easily stop user services from package removal
+    echo "Users should run: systemctl --user disable --now bigedit-watcher.service"
+}
