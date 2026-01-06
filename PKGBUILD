@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=33
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/workspace-v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('679d9a247577b9b23e0b5c988700df29f954fc53189557c1c21c744df25175ad')
-sha256sums_x86_64=('04f83d1edbd2d6a6700071a0bc1d105789ba7769541251c2e609b061d1bb16f5')
+sha256sums_aarch64=('db624bd2dead232b096530c062801f8206ee88e038c8a0ee799971bf2c97bebd')
+sha256sums_x86_64=('399b31b3b29c3e18e5ea49e9f1facbad3a463441bf2a900ca42516761961946c')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/@${pkgname%-bin}desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -50,10 +50,17 @@ prepare() {
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    ln -sf "/usr/bin/gnirehtet" "${srcdir}/opt/${_pkgname}/resources/extra/linux-"*/gnirehtet/gnirehtet
-    ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-"*/scrcpy/scrcpy
-    ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-"*/scrcpy/scrcpy-server
-    ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-"*/scrcpy/adb
+    case "${CARCH}" in
+        aarch64)
+            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/adb"
+            ;;
+        x86_64)
+            ln -sf "/usr/bin/gnirehtet" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/gnirehtet/gnirehtet"
+            ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy-server"
+            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/adb"
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
