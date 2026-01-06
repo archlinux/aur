@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-transparency
 	pkgdesc = The GNOME Terminal Emulator with background transparency
-	pkgver = 3.58.0
+	pkgver = 3.58.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	changelog = package.changelog
@@ -29,11 +29,11 @@ pkgbase = gnome-terminal-transparency
 	depends = util-linux-libs
 	depends = vte3
 	optdepends = libnautilus-extension: Nautilus integration
-	provides = gnome-terminal=3.58.0
+	provides = gnome-terminal=3.58.1
 	conflicts = gnome-terminal
-	source = https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.58.0/gnome-terminal-3.58.0.tar.gz
+	source = https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.58.1/gnome-terminal-3.58.1.tar.gz
 	source = transparency.patch
-	b2sums = e58f60d79c80ed78c2e499a01d7cec266f3c070a9e101b9c179bd5eaa2d8ee08eb31f470dd59de1e474c88da57760d92c2b96f03e48527e87528672b5e079552
-	b2sums = f115709bcbb71631e3e79eb64aefbd9dff22f6c0fe05f19a47026621d8056aa1cddfd30193d60f5ce4899eb58fb14546d9d4da74d42c9fa6959eaefaedfe2496
+	b2sums = d96fb761a3f44b1c5783c8a2faa2d40a2a297d4d7c0de1d8518eeff7a0368d482095799fc3b8d51ca67bd4a7c07a32f6cfee809c137942af3b75f4dbe96f5b0f
+	b2sums = c246f80cc86a2ce1817eb67ae3506dfdc1925a19212159cc6b4ec85a1c80deecf1fc0be186925641266494c60fb5bc4ae44d67eb703a9ab54d0b4de799182ccf
 
 pkgname = gnome-terminal-transparency

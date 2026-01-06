@@ -1,4 +1,4 @@
-From 69299f009fe91f96a73a4401ae3e984a8d60ae92 Mon Sep 17 00:00:00 2001
+From 3fd08d58875dde11f6887c13769d76933d068559 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.51.0
+2.52.0
 
 
-From 388503fc816da4d1b1e8a91eea40f12954c8e560 Mon Sep 17 00:00:00 2001
+From b5a4e6b47c741e9c322a0e94ff9703050643ab81 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.51.0
+2.52.0
 
 
-From 1998dd0d2065139d5102dd57bff01cab858c4759 Mon Sep 17 00:00:00 2001
+From c32f74fb1d733bd57d925d06b076ac402532ef5a Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.51.0
+2.52.0
 
 
-From 9e1f87e2f9a5bb59994d48c0110d172f35fb856a Mon Sep 17 00:00:00 2001
+From 666371799038a745027ee38fc9ee0c79c63f3719 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -1042,10 +1042,10 @@ index d97e6102..a768fe4a 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index 6ec773a0..258c9e84 100644
+index 019421ae..e255e270 100644
 --- a/po/el.po
 +++ b/po/el.po
-@@ -2940,17 +2940,17 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
+@@ -3035,17 +3035,17 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Προεπιλεγμένο μέγεθος:"
  
@@ -1069,7 +1069,7 @@ index 6ec773a0..258c9e84 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Τρέχουσα τοπική ρύθμιση"
-@@ -2988,3 +2988,6 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
+@@ -3083,3 +3083,6 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
  
  #~ msgid "_Input Methods"
  #~ msgstr "_Μέθοδοι εισαγωγής"
@@ -1273,10 +1273,10 @@ index def9dff3..71ec9df4 100644
 +msgid "Transparent background"
 +msgstr "Atzeko plano gardena"
 diff --git a/po/fa.po b/po/fa.po
-index e3a35ae3..e4f135f8 100644
+index 2fdd0ed7..6b2fbdce 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2819,8 +2819,11 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2890,8 +2890,11 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Font:"
  #~ msgstr "_قلم:"
  
@@ -1290,7 +1290,7 @@ index e3a35ae3..e4f135f8 100644
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
-@@ -2834,8 +2837,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2905,8 +2908,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_نامحدود"
  
@@ -1301,7 +1301,7 @@ index e3a35ae3..e4f135f8 100644
  
  #~ msgid "Switch to Tab 3"
  #~ msgstr "تعویض به زبانه‌ی ۳"
-@@ -2876,5 +2879,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2947,5 +2950,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Input Methods"
  #~ msgstr "روش‌های _ورودی"
  
@@ -3124,10 +3124,10 @@ index 61153529..c366abdd 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index d692f648..4bdaac8a 100644
+index 192e0c19..b9be17d9 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
-@@ -2735,17 +2735,17 @@ msgstr "關閉視窗(_L)"
+@@ -2875,17 +2875,17 @@ msgstr "分析引數失敗：%s\n"
  #~ msgid "Default size:"
  #~ msgstr "預設大小："
  
@@ -3151,7 +3151,7 @@ index d692f648..4bdaac8a 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "目前的地區設定"
-@@ -2957,3 +2957,6 @@ msgstr "關閉視窗(_L)"
+@@ -3097,3 +3097,6 @@ msgstr "分析引數失敗：%s\n"
  
  #~ msgid "Show session management options"
  #~ msgstr "顯示作業階段管理選項"
@@ -3159,5 +3159,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.51.0
+2.52.0
 
