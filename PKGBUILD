@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=25.12.23
+pkgver=26.1.6
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b3b1777cb874e1e5546343ef1f40e29541af22735ee8b80197b4f25d90c37f96'
+sha256sums=('874833d16feb40f2e3a1e972319aa2a791fecc4b501bc178d78ba5b4fd89dfab'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
