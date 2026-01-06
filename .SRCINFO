@@ -1,0 +1,29 @@
+pkgbase = speak-to-ai
+	pkgdesc = Offline speech-to-text desktop application using Whisper
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/AshBuk/speak-to-ai
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.21
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = dbus
+	depends = alsa-utils
+	depends = libnotify
+	depends = xsel
+	depends = wl-clipboard
+	depends = xdotool
+	depends = wtype
+	optdepends = ydotool: Alternative Wayland text input (better for GNOME)
+	optdepends = ffmpeg: Alternative audio recording
+	options = !lto
+	source = speak-to-ai-1.4.2.tar.gz::https://github.com/AshBuk/speak-to-ai/archive/refs/tags/v1.4.2.tar.gz
+	source = whisper-cpp-1.8.2.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = b1df55cb6d0d89c95732e55b146c7ed9b13b28550a1080ccf5c0c3e45aeb1af6
+	sha256sums = bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077
+
+pkgname = speak-to-ai
