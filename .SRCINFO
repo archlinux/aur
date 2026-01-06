@@ -8,9 +8,9 @@ pkgbase = oxlint-bin
 	license = MIT
 	provides = oxlint
 	conflicts = oxlint
-	source_x86_64 = oxlint-bin-1.38.0-x86_64.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.38.0/oxlint-linux-x64-gnu.tar.gz
+	source_x86_64 = oxlint-linux-x64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.38.0/oxlint-linux-x64-gnu.tar.gz
 	sha256sums_x86_64 = 32c11eb02f5373ff04258d777ffd59046605b84533a0cf8932fc80b34cd18982
-	source_aarch64 = oxlint-bin-1.38.0-x86_64.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.38.0/oxlint-linux-arm64-gnu.tar.gz
+	source_aarch64 = oxlint-linux-arm64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.38.0/oxlint-linux-arm64-gnu.tar.gz
 	sha256sums_aarch64 = 1fc88c44c59afbcd6916962a1ccb0738026c68c070dfa8006e9ada16d2b771e6
 
 pkgname = oxlint-bin
