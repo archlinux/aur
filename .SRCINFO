@@ -1,6 +1,6 @@
 pkgbase = go-hass-agent
 	pkgdesc = A Home Assistant, native app for desktop/laptop devices.
-	pkgver = 14.2.2
+	pkgver = 14.3.1
 	pkgrel = 1
 	url = https://github.com/joshuar/go-hass-agent
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = go-hass-agent
 	makedepends = go
 	depends = dbus
 	depends = libcap
-	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=15410ec?signed
+	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=4fc151c?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	b2sums = 19348f254393f76b3e075bbd0d5597b98684fca616c9bcd7ca7aa225ad51a005d851d14db65a8f64590093119f73015bc3ce4c66e7a672704e256fb3d0a9035a
+	b2sums = a91738a1d34191ee263215bd610ae3debc1aed2d67cf3c9f448869e02cafc22d6b022da2822fcb82b41ab2d1683cdf3bd753f58c0c246e73561561dd8cc21b6c
 
 pkgname = go-hass-agent
