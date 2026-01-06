@@ -3,8 +3,11 @@
 # shellcheck disable=SC2034,2154
 pkgname=jre-jetbrains
 _major=25
-_build=176.4
-pkgver="${_major}b${_build}"
+_minor=0
+_patch=1
+_java_version=$_major.$_minor.$_patch
+_build=266.34
+pkgver="${_version}b${_build}"
 pkgrel=1
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
 arch=('x86_64')
@@ -15,15 +18,15 @@ replaces=(jetbrains-jre)
 conflicts=(jetbrains-jre)
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environment=$_major"
     "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major" "jetbrains-jre")
-_zipname="jbr_jcef-$_major-linux-x64-b$_build.tar.gz"
+_zipname="jbr_jcef-$_java_version-linux-x64-b$_build.tar.gz"
 install=$pkgname.install
 source=("https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('7ddb8d3dc0591c6191d29f991854a10a41a3e92bfd0cce69c498b17300e4e327cd8379f6fd2c787e4f3e124eee2a49d184971a66d6bf38971382151d24ed496a')
+b2sums=('951862ffbb2fa8a645320a98d852883ecff9b8aaea05d56409e99224fbdd4e4d2abc7700998b32855f8108ad3c81d879df5775bca7053b8a05d94291485afc14')
 
 package() {
     rm "$srcdir/$_zipname"
     find "$srcdir" -exec chmod g+r,o+r {} +
     mkdir -p "$pkgdir/usr/lib/jvm"
-    cp -a "$srcdir/jbr_jcef-$_major-linux-x64-b$_build" "$pkgdir/usr/lib/jvm/$pkgname"
+    cp -a "$srcdir/jbr_jcef-$_java_version-linux-x64-b$_build" "$pkgdir/usr/lib/jvm/$pkgname"
     ln -sf /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/$pkgname/lib/security/cacerts"
 }
