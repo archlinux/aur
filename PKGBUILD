@@ -2,7 +2,7 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=1.5.5
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
-sha256sums=('5545dc5b92e4dcfd43ac535661870632d5270ea9cdb06f95c7b35e857d878962'
+sha256sums=('fbc6c17f3de5412553d0b5365f78ffa1b6ea18acc355f00404b7aba38e5d7904'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -51,6 +51,8 @@ build() {
   -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
   -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  -DLAUNCHER_VERSION_NAME="${pkgver}" \
+  -DLAUNCHER_VERSION_CODE="AUR" \
   -Wno-dev
 
   cmake --build build
