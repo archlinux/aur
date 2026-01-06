@@ -1,6 +1,6 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata
-	pkgver = 2.2.1
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = bitbake
 	depends = python-progressbar
 	depends = python-pyinotify
 	depends = python-simplediff
-	source = https://git.openembedded.org/bitbake/snapshot/bitbake-2.2.1.tar.gz
-	sha256sums = 12eb41839071c60c60a005ffadbac13e1017a7cb4c2a38b04946471dc22bb5bc
+	source = https://git.openembedded.org/bitbake/snapshot/bitbake-yocto-5.3.tar.gz
+	sha256sums = 22754c09e296f964e7f5edfb75ead4121bdf29e3be616cb9b3ff3bb5cbc7ae81
 
 pkgname = bitbake
 	install = bitbake.install

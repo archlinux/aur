@@ -1,3 +1,4 @@
+# Mantainer: tiziodcaio <d dot bass05 at pm dot me>
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Felipe F. Tonello <eu@felipetonello.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -5,7 +6,7 @@
 
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
-pkgver=2.2.1
+pkgver=5.3
 pkgrel=1
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
@@ -14,8 +15,8 @@ arch=(any)
 depends=(python python-beautifulsoup4 python-ply python-codegen
          python-progressbar python-pyinotify python-simplediff)
 #checkdepends=(git wget)
-source=("https://git.openembedded.org/bitbake/snapshot/bitbake-${pkgver}.tar.gz")
-sha256sums=('12eb41839071c60c60a005ffadbac13e1017a7cb4c2a38b04946471dc22bb5bc')
+source=("https://git.openembedded.org/bitbake/snapshot/bitbake-yocto-${pkgver}.tar.gz")
+sha256sums=('22754c09e296f964e7f5edfb75ead4121bdf29e3be616cb9b3ff3bb5cbc7ae81')
 
 #check() {
 #    if ! git config --global --get user.name; then
@@ -43,7 +44,7 @@ package_bitbake() {
     install=bitbake.install
 
     _pythonver=$(python --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
-    cd "${pkgbase}-${pkgver}"
+    cd "${pkgbase}-yocto-${pkgver}"
 
     find . -iname "*.log" -delete
     install -d "${pkgdir}/usr/bin"
@@ -60,7 +61,7 @@ package_bitbake() {
 
 package_bitbake-vim() {
   depends=()
-    cd "${pkgbase}-${pkgver}"
+    cd "${pkgbase}-yocto-${pkgver}"
 
     install -d "${pkgdir}/usr/share"
     cp -Ra contrib/vim "${pkgdir}/usr/share"
