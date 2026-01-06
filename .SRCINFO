@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.work.deepin.gitee
 	pkgdesc = Deepin Wine 版企业微信 | Deepin-wine Wecom
-	pkgver = 4.1.20.6024spark3.1
+	pkgver = 5.0.0.6008~spark2
 	pkgrel = 2
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/
 	install = wecom.install
@@ -8,9 +8,9 @@ pkgbase = com.qq.weixin.work.deepin.gitee
 	arch = x86_64
 	license = custom
 	depends = spark-dwine-helper
-	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.swine/com.qq.weixin.work.swine_4.1.20.6024spark3.1_all.deb
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_5.0.0.6008~spark2_amd64.deb
 	source = https://gitee.com/ai-zhe-teng/archlinux/raw/master/com.qq.weixin.work.deepin/wqy-microhei.ttc
-	sha256sums = 4f81bb1be6d460e3f7490b333c0f424ddaa4b91f08b2646d2ea287f7c59808b7
+	sha256sums = a819cb384a06b28bff9e5460acf1f66767bed505f1323f67c7c22c2dc9410bcf
 	sha256sums = e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212
 
 pkgname = com.qq.weixin.work.deepin.gitee
