@@ -5,9 +5,9 @@ pkgrel=5
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
 url="https://github.com/thanhpy2009/VMK"
-license=('GPLv3')
-depends=('fcitx5' 'acl' 'fltk')
-makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc')
+license=('GPL-3.0-or-later')
+depends=('fcitx5' 'acl' 'fltk' 'bash')
+makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git')
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
 source=(
@@ -44,11 +44,13 @@ build() {
 
     cd "$srcdir/VMK/src-full"
 
-    g++ fcitx5_uinput_server.cpp -o fcitx5_vmk_server -lpthread
+    g++ fcitx5_uinput_server.cpp -o fcitx5_vmk_server ${LDFLAGS} -lpthread
 
     g++ -Os main6.cpp \
         -o sconfig \
         -lpthread \
+        ${LDFLAGS} \
+        -Wl,--as-needed \
         $(pkg-config --cflags --libs x11) \
         $(fltk-config --cflags --ldflags --use-images) \
         -static-libgcc -static-libstdc++
