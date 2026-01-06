@@ -1,6 +1,6 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland and Niri built with Quickshell'
 arch=('any')
@@ -55,6 +55,8 @@ optdepends=(
     'python-keyring: Secure session storage for Bitwarden plugin'
     'slurp: Screen region selection for screenshots'
     'wf-recorder: Screen recording'
+    'ocean-sound-theme: Modern sound effects for timer/alarm (recommended)'
+    'sound-theme-freedesktop: Fallback sound effects'
 )
 source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
