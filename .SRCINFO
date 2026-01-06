@@ -1,7 +1,7 @@
 pkgbase = interstellar-bin
 	pkgdesc = An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/interstellar-app/interstellar
 	arch = x86_64
 	arch = aarch64
