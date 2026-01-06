@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.5.0.r250.gea64612
+pkgver=0.5.0.r306.gbc3b613
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -22,10 +22,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare(){
-  # glibc changed baud consts...
-  cd ${pkgname%-git} && cargo update -p libc
-}
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic's default
