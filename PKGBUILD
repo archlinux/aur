@@ -3,11 +3,11 @@
 
 pkgname=arch-wiki-cli
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Search the arch wiki from the cli"
 arch=('any')
 url="https://github.com/deadhead420/arch-wiki"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('bash')
 optdepends=(
   'lynx: to view the wiki inside your shell'
