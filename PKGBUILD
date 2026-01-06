@@ -2,7 +2,7 @@
 
 pkgname=ascii-moon
 _pkgname=ascii_moon
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A TUI application written in Rust that displays the moon phase in ASCII art"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/rockydd/ascii_moon"
 license=('MIT')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('ac716af882ca0ace2ad251170682ffe5262b0c7de2d2376a13be58e4e70a3094')
+sha256sums=('8f785525e86cf3a1200a6c5ca716fce96d76fe7d8984799e7a8de97910e42867')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
