@@ -11,6 +11,6 @@ pkgbase = cash-register
 	depends = qt6-base
 	depends = hicolor-icon-theme
 	source = cash-register-0.3.2.tar.gz::https://github.com/Brigio/cash-register/archive/v0.3.2.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = 70e0d1844492d68cc2dfc3b3d2dce15505a71236743d9f18655a67233067221c
 
 pkgname = cash-register
