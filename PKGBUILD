@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/cli@${pkgver}.tar
 sha256sums=('eb484b97af53f84fcc8072974169e60e253980a4bfcbd42e78dc3835c280eb03')
 
 pkgver() {
-  git ls-remote --sort "version:refname" ${url}.git "cli@*" | tail -n 1 | sed -E 's/^.*cli@([0-9]+\.[0-9]+\.[0-9]+)$/\1/g'
+  git ls-remote --sort "version:refname" ${url}.git "cli@*" | grep -E 'cli@([0-9]+\.[0-9]+\.[0-9]+)$' | tail -n 1 | sed -E 's/^.*cli@([0-9]+\.[0-9]+\.[0-9]+)$/\1/g'
 }
 
 build() {
