@@ -1,6 +1,6 @@
 pkgbase = jre-jetbrains
 	pkgdesc = OpenJDK Java 25 runtime with some fixes and enhancements by JetBrains
-	pkgver = b266.34
+	pkgver = 25.0.1b266.34
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	install = jre-jetbrains.install
