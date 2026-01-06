@@ -1,0 +1,18 @@
+pkgbase = libapi-base-git
+	pkgdesc = Base objects for API libraries
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://altlinux.space/rirusha/libapi-base
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = meson
+	depends = vala
+	depends = libgee
+	depends = json-glib
+	depends = libsoup3
+	depends = gobject-introspection
+	source = libapi-base-git::git+https://altlinux.space/rirusha/libapi-base.git
+	sha256sums = SKIP
+
+pkgname = libapi-base-git
