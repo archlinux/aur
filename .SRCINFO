@@ -1,6 +1,6 @@
 pkgbase = upbge-bin
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine - binary package
-	pkgver = 0.36.1
+	pkgver = 0.50
 	pkgrel = 1
 	url = https://upbge.org/#/
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = upbge-bin
 	provides = blender
 	conflicts = upbge
 	conflicts = blender
-	source = upbge-bin::https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-linux-x86_64.tar.xz
-	sha512sums = 1e156998c09726c41c87c25cc6839a5150ca65096467a5be705a4d5cb1be001052fc0f54fe214dbbfe6b612fd646173148113ffaadf9179a17f297e6d1bdfc5e
+	source = upbge-bin::https://github.com/UPBGE/upbge/releases/download/v0.50/upbge-0.50-linux-x64.tar.xz
+	sha512sums = d549c5892f17296e53cc041b6389ed28522356469f7b9977f25ecce4b7e896197dcfb4b1e06427f0a6610424505869cdc649aef6790c9a3ac060903b00a4d41f
 
 pkgname = upbge-bin

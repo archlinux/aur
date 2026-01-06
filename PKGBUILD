@@ -2,7 +2,7 @@
 
 _pkgname=upbge
 pkgname=${_pkgname}-bin
-pkgver=0.36.1
+pkgver=0.50
 pkgrel=1
 pkgdesc='Uchronia Project Blender Game Engine fork of Blender Game Engine - binary package'
 arch=('x86_64')
@@ -25,23 +25,23 @@ optdepends=('cuda: CUDA support in Cycles'
             'makepkg-cg: Control resources during compilation')
 provides=("${_pkgname}" "blender")
 conflicts=("${_pkgname}" "blender")
-sha512sums=('1e156998c09726c41c87c25cc6839a5150ca65096467a5be705a4d5cb1be001052fc0f54fe214dbbfe6b612fd646173148113ffaadf9179a17f297e6d1bdfc5e')
-source=("${pkgname}::https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-linux-x86_64.tar.xz")
+sha512sums=('d549c5892f17296e53cc041b6389ed28522356469f7b9977f25ecce4b7e896197dcfb4b1e06427f0a6610424505869cdc649aef6790c9a3ac060903b00a4d41f')
+source=("${pkgname}::https://github.com/UPBGE/upbge/releases/download/v0.50/upbge-0.50-linux-x64.tar.xz")
 
 package() {
-  cd "upbge-${pkgver}-linux-x86_64"
+  cd "upbge-${pkgver}-linux-x64"
 
   mkdir -p ${pkgdir}/opt/upbge
   cp -R "./." ${pkgdir}/opt/upbge/
-  rm ${pkgdir}/opt/upbge/upbge.svg ${pkgdir}/opt/upbge/upbge-symbolic.svg ${pkgdir}/opt/upbge/upbge.desktop
+  rm ${pkgdir}/opt/upbge/org.upbge.UPBGE.svg ${pkgdir}/opt/upbge/org.upbge.UPBGE-symbolic.svg ${pkgdir}/opt/upbge/org.upbge.UPBGE.desktop
 
-  install -Dm 644 ./upbge.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/upbge.svg
-  install -Dm 644 ./upbge-symbolic.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/upbge-symbolic.svg
-  install -Dm 755 ./upbge.desktop ${pkgdir}/usr/share/applications/upbge.desktop
+  install -Dm 644 ./org.upbge.UPBGE.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.upbge.UPBGE.svg
+  install -Dm 644 ./org.upbge.UPBGE-symbolic.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.upbge.UPBGE-symbolic.svg
+  install -Dm 755 ./org.upbge.UPBGE.desktop ${pkgdir}/usr/share/applications/org.upbge.UPBGE.desktop
 
   mkdir -p ${pkgdir}/usr/bin
 
-  echo $'#!/bin/sh\nPYTHONPATH=/opt/upbge/3.6/python/lib/python3.10/ /opt/upbge/blenderplayer "$@"' > ${pkgdir}/opt/upbge/blenderplayer-compat
+  echo $'#!/bin/sh\nPYTHONPATH=/opt/upbge/5.0/python/lib/python3.11/ /opt/upbge/blenderplayer "$@"' > ${pkgdir}/opt/upbge/blenderplayer-compat
   chmod 755 ${pkgdir}/opt/upbge/blenderplayer-compat
 
   ln -s /opt/upbge/blender ${pkgdir}/usr/bin/blender
