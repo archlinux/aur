@@ -3,14 +3,15 @@
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 
 pkgname=doas
-pkgver=6.3p12
-pkgrel=2
-pkgdesc="A port of OpenBSD's doas (an alternative to sudo) which runs on FreeBSD, Linux, NetBSD, MidnightBSD and illumos"
+pkgver=6.3p13
+pkgrel=1
+pkgdesc="A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD"
 license=('BSD')
-url="https://github.com/slicer69/doas"
+url="https://codeberg.org/thejessesmith/doas/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=() # bash & pam are dependencies of base
 makedepends=('bison')
+options=(!lto)
 optdepends=('vi: default editor for vidoas')
 backup=('etc/doas.conf'
         'etc/pam.d/doas')
@@ -21,12 +22,12 @@ conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'doas-pam'
 	'doas.conf')
-sha256sums=('e4f37745345c12d4e0c8c03c8237791729cf047dbd7b2455f8de60e2f82ac1b0'
+sha256sums=('2cca9003856e92ec0a50b3e559b7f3132bf8293dc8302613933f8ed06c8c7fc5'
             'b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042'
             '1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   make
 }
 
@@ -35,7 +36,7 @@ package() {
   install -Dm644 "doas.conf" "${pkgdir}/etc/doas.conf"
   mkdir -p ${pkgdir}/usr/local/etc
   ln -s /etc/doas.conf ${pkgdir}/usr/local/etc/doas.conf
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   make PREFIX="/usr" DESTDIR="${pkgdir}" MANDIR="${pkgdir}/usr/share/man" install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
