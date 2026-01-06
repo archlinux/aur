@@ -6,6 +6,113 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [0.11.0 - 2026-01-03]
+
+### Breaking changes (WEVT_TEMPLATE cache)
+- The offline WEVT template cache is now a **single `.wevtcache` file** (directory + `index.jsonl` is no longer supported).
+  - `evtx_dump extract-wevt-templates --input <provider.{dll,exe,sys}> --output /tmp/wevt_cache.wevtcache --overwrite`
+  - `evtx_dump --wevt-cache /tmp/wevt_cache.wevtcache <log.evtx>`
+- `WevtCache` is now **pure in-memory** (no internal filesystem I/O). Load cache blobs at your boundary and pass an `Arc<WevtCache>` into `ParserSettings`.
+- CLI flag renames:
+  - `--wevt-cache-index` → `--wevt-cache`
+  - `apply-wevt-cache --cache-index` → `apply-wevt-cache --cache`
+
+### Fixed
+- Fix MAPS parsing for providers whose MAPS offsets are not monotonic (e.g. `wevtsvc.dll`).
+  - Parse maps deterministically (implied first map + offsets array order).
+  - Use each VMAP’s declared `size` field (no “next offset” boundary guessing / sorting).
+
+### Added
+- Git-LFS tracked DLL/EXE fixtures under `samples/dlls/` + insta snapshot tests for canonical WEVT_TEMPLATE extraction stats (validated against libfwevt via pyfwevt).
+
+**Full Changelog**: [`v0.10.0...v0.11.0`](https://github.com/omerbenamram/evtx/compare/v0.10.0...v0.11.0)
+
+## [0.10.0 - 2025-12-31]
+
+### Highlights
+- **~3× faster** JSON/XML rendering compared to `0.9.0`, powered by the new IR + streaming renderers.
+  - On `samples/security.evtx` (single-threaded): JSONL **45.4ms → 16.5ms** (~2.76×), XML **33.2ms → 11.3ms** (~2.95×).
+- **WEVT_TEMPLATE support** (optional `wevt_templates` feature): extract templates from provider binaries and use an offline cache as a fallback when EVTX embedded templates are missing/corrupt.
+- **EVTX Web**: a WebAssembly-powered viewer (see PR #252).
+
+### Breaking changes (API + behavior)
+- Removed the token-tree output API:
+  - `BinXmlOutput`, `XmlOutput`, `JsonOutput`, and `EvtxRecord::into_output(..)` were removed.
+  - Use `EvtxRecord::into_xml()`, `EvtxRecord::into_json()`, or `EvtxRecord::into_json_value()` instead.
+  - If you need structured access, use the new IR types under `evtx::model::ir`.
+- `EvtxRecord` is now IR-based:
+  - `EvtxRecord::tokens` (and `evtx::model::{deserialized, raw, xml}`) were removed/replaced.
+  - Records now carry `tree: evtx::model::ir::IrTree` (plus `binxml_offset/binxml_size`).
+- `EvtxRecordHeader::record_data_size()` now returns `Result<u32>` and can error on corrupted `data_size` values.
+- `EvtxChunk` no longer exposes the old `TemplateCache` (`template_table`); chunk parsing/rendering is now driven by the IR + template instantiation cache.
+- Timestamps switched from `chrono::DateTime<Utc>` to `jiff::Timestamp` in `EvtxRecord`, `EvtxRecordHeader`, and `SerializedEvtxRecord`.
+- Error type changes (affects `match` statements):
+  - `EvtxError::FailedToParseChunk` now carries `Box<ChunkError>`.
+  - `DeserializationError` IO variants were renamed (`UnexpectedIoError` → `IoWithContext`, `RemoveMe` → `Io`) and new WEVT/IO truncation errors were added.
+  - `ChunkError::FailedToBuildTemplateCache` was removed.
+- JSON indentation behavior changed:
+  - `ParserSettings::indent(..)` is still used for XML, but JSON output is now always **compact** in the streaming renderer. If you need pretty JSON, reformat the returned value/string yourself.
+
+### Added
+- Streaming JSON renderer + new parsing architecture (PR #267).
+- New intermediate representation (IR) for BinXML (PR #278).
+- WEVT_TEMPLATE extraction + offline cache + rendering helpers (PR #274).
+- `evtx_dump`: support reading EVTX from stdin (PR #271).
+- Re-export `RecordId` from crate root (PR #272).
+- Fix parsing when chunk header offsets are too large (PR #273).
+- Web-based viewer (WASM) (PR #252).
+
+### Fixed
+- When `validate_checksums` is disabled, fix multiple infinite-loop cases on malformed EVTX files (PR #263, #264).
+
+### Performance
+- **IR tree** replaces the old token vector (`Vec<...>`) in the hot path, dramatically reducing allocations and improving cache locality.
+- **Streaming renderers** write JSON/XML directly to a sink (no `serde_json::Value` construction on the default path).
+- **Fast UTF-16 escaping** via the new `utf16-simd` crate + `sonic-rs` writer integration.
+- **Chunk arena pooling** in the multithreaded path reduces per-chunk allocator churn.
+
+### WEVT usage (offline template cache)
+This is **optional** and requires building with the Cargo feature `wevt_templates`.
+
+- Build a cache index (JSONL) + extracted blobs:
+  - `evtx_dump extract-wevt-templates --input <provider.dll> --output-dir /tmp/wevt_cache --overwrite > /tmp/wevt_cache/index.jsonl`
+- Use the cache when dumping EVTX (fallback only when embedded templates are missing/corrupt):
+  - `evtx_dump --wevt-cache-index /tmp/wevt_cache/index.jsonl <log.evtx>`
+- Library usage:
+  - Load the index and attach it to `ParserSettings` via `ParserSettings::wevt_cache(Some(Arc::new(WevtCache::load(..)?)))`.
+
+**Full Changelog**: [`v0.9.0...v0.10.0`](https://github.com/omerbenamram/evtx/compare/v0.9.0...v0.10.0)
+
+## [0.9.0 - 2025-02-21]
+
+### Added
+- Migrated to rust edition 2024.
+
+
+## [0.8.5 - 2025-02-21]
+
+### Fixed
+- #249 - Extra Whitespace in LogonProcessName Field
+
+
+## [0.8.4 - 2024-04-04]
+
+### Fixed
+- (bugfix) Fix json output when a node with attributes has the same key several times. thanks @yardlogs
+
+
+## [0.8.2 - 2024-04-04]
+
+### Added
+- Binaries for linux and mac are now PGO optimized (should yield 10-20% performance improvement).
+
+### Changed
+- Dependencies updated to their latest versions.
+
+### Fixed
+- (bugfix) Fix off-by-6 bug in assemble.rs by @dgmcdona in https://github.com/omerbenamram/evtx/pull/238
 
 ## [0.8.1 - 2023-02-17]
 
