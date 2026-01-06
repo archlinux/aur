@@ -2,8 +2,8 @@
 
 pkgname=pinact-bin
 pkgver=3.8.0
-pkgrel=1
-pkgdesc='pinact is a CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows. pinact can also update their versions and verify version annotations.'
+pkgrel=2
+pkgdesc='CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows.'
 arch=('x86_64' 'aarch64')
 url=https://github.com/suzuki-shunsuke/pinact
 license=(MIT)
