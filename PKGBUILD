@@ -12,6 +12,7 @@ provides=("php-zmq")
 conflicts=("php-zmq")
 backup=('etc/php/conf.d/zmq.ini')
 source=("git+https://github.com/zeromq/php-zmq.git"
+  # https://github.com/zeromq/php-zmq/pull/240
   "use-zend_ce_exception-instead-of-zend_exception_get_default()-for-8.5.patch::https://github.com/zeromq/php-zmq/commit/94920ac64398901175dc4372a4297817122c52ce.patch")
 sha256sums=("SKIP"
   "05e12019e4f2f078b08cbcdeb4b421f968e419ededc24e22b8e5b838bda8e39c")
