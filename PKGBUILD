@@ -44,9 +44,7 @@ source=(
     "${zipName}::https://nightly.link/galister/${_pkgname}/actions/runs/${pkgver}/WlxOverlay-S-${branch}-${CARCH}.AppImage.zip"
 )
 
-sha256sums=(
-  'a'
-)
+sha256sums=('6c9bd315bab8dd7d664bb250abdb621dc015541d4cc105418b0dcb34ccee874c')
 
 prepare() {
   cd "${srcdir}"

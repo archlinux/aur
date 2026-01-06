@@ -23,6 +23,6 @@ pkgbase = wlx-overlay-s-actions-bin
 	conflicts = wlx-overlay-s-git
 	options = !debug
 	source = wlx-overlay-s-actions-bin-x86_64-20693204391.zip::https://nightly.link/galister/wlx-overlay-s/actions/runs/20693204391/WlxOverlay-S-main-x86_64.AppImage.zip
-	sha256sums = a
+	sha256sums = 6c9bd315bab8dd7d664bb250abdb621dc015541d4cc105418b0dcb34ccee874c
 
 pkgname = wlx-overlay-s-actions-bin
