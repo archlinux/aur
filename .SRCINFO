@@ -1,6 +1,6 @@
 pkgbase = golazo-bin
 	pkgdesc = Terminal app for keeping up with live football. Check scores, match events, and stats from major leagues without leaving your terminal
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/0xjuanma/golazo
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = golazo-bin
 	depends = glibc
 	provides = golazo
 	conflicts = golazo
-	source = LICENSE-0.11.0::https://raw.githubusercontent.com/0xjuanma/golazo/v0.11.0/LICENSE
-	source = README-0.11.0.md::https://raw.githubusercontent.com/0xjuanma/golazo/v0.11.0/README.md
+	source = LICENSE-0.12.0::https://raw.githubusercontent.com/0xjuanma/golazo/v0.12.0/LICENSE
+	source = README-0.12.0.md::https://raw.githubusercontent.com/0xjuanma/golazo/v0.12.0/README.md
 	sha256sums = 4dc0a5daa325b37f64f50f726db4dd94342dcfec49bd0fe80266a0ef59953bfa
 	sha256sums = c10673e1b0ce6aaa1391d1766e90ed39b4e9af0678754aa15732e16a3c67c10d
-	source_x86_64 = golazo-x86_64-0.11.0::https://github.com/0xjuanma/golazo/releases/download/v0.11.0/golazo-linux-amd64
-	sha256sums_x86_64 = f2ae588aa2f34b07f213f387689b005b6333e3cbfd13dde929dcb9cf37c31d7b
-	source_aarch64 = golazo-aarch64-0.11.0::https://github.com/0xjuanma/golazo/releases/download/v0.11.0/golazo-linux-arm64
-	sha256sums_aarch64 = 45d21eeb3d013aad28d81b9df1617d7e95e1c0f9f680a76f6f22647b683f4fcd
+	source_x86_64 = golazo-x86_64-0.12.0::https://github.com/0xjuanma/golazo/releases/download/v0.12.0/golazo-linux-amd64
+	sha256sums_x86_64 = b019184682ef4005d41603d9035ec7acb92dde941cc72b15ffa0d0a62ac05c84
+	source_aarch64 = golazo-aarch64-0.12.0::https://github.com/0xjuanma/golazo/releases/download/v0.12.0/golazo-linux-arm64
+	sha256sums_aarch64 = 898fac7e4db1b931f5829b80f2e9088ad84772abfd2c97ff712f6a8592cb9450
 
 pkgname = golazo-bin
