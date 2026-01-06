@@ -14,7 +14,7 @@ X-GNOME-SingleWindow=true
 SingleMainWindow=true
 Actions=nosandbox;opendir;share;quit;
 StartupWMClass=wechat
-StartupNotify=true
+StartupNotify=false
 
 [Desktop Action nosandbox]
 Name=Toggle Sandbox...
