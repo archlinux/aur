@@ -1,0 +1,318 @@
+Latest License can be found here:
+https://www.jetbrains.com/legal/docs/terms/jetbrains-junie/
+
+Below comes unedited license text as of December 6, 2026:
+
+
+
+Junie EAP Terms of Service
+
+Version 1.0, effective as of December 16, 2024
+
+Welcome to Junie!
+
+These EAP Terms of Service constitute a legally binding document, and it is important that You read them carefully.
+
+JUNIE IS A PLUGIN THAT ALLOWS YOU TO IMPROVE YOUR USE OF OTHER JETBRAINS PRODUCTS BY CONNECTING THEM TO AI SERVICES PROVIDED BY JETBRAINS DIRECTLY OR IN PARTNERSHIP WITH THIRD PARTIES.
+
+IF YOU USE JUNIE, WE WILL SEND YOUR INSTRUCTIONS AND SOME OTHER INFORMATION TO THIRD PARTIES PROVIDING SERVICES BASED ON ARTIFICIAL INTELLIGENCE OR MACHINE LEARNING IN ORDER TO OBTAIN THE CONTENT OR OTHER OUTPUT FOR YOU. YOU ARE SOLELY RESPONSIBLE FOR YOUR INPUTS AND DATA WHICH YOU DECIDE TO SHARE WITH THESE PARTIES THROUGH USE OF JUNIE AND FOR WHETHER THAT INPUTS OR DATA CONTAIN ANY SENSITIVE OR OTHERWISE PROTECTED INFORMATION.
+
+JUNIE IS STILL IN ITS EARLY STAGE AND HAS AN EXPERIMENTAL CHARACTER, AND THE OUTPUTS MIGHT NOT ALWAYS BE CORRECT. YOU ARE RESPONSIBLE FOR EVALUATING WHETHER THE OUTPUTS ARE CORRECT AND FIT FOR YOUR PURPOSES. PLEASE NOTE THE DISCLAIMERS AND LIMITATIONS OF LIABILITY BELOW IN SECTIONS 7 AND 8, AS WELL AS THE INDEMNIFICATION PROVISIONS IN SECTION 6.
+
+WITH YOUR ADMISSION TO THE EAP, YOU ARE GIVEN THE RIGHT TO ACCESS, USE, AND EVALUATE JUNIE FOR FREE WITHIN THE EAP. WE RESERVE THE RIGHT TO CHANGE THE TERMS OF THE EAP, DENY OR LIMIT ACCESS, OR END THE EAP AT ANY TIME.
+
+You understand that by accepting these Junie Terms of Service (by clicking the “I agree” or a similar button or by accessing or using Junie), You enter into a legal agreement and agree to certain legal conditions for Yourself or for the legal entity that You represent.
+
+By accepting these Junie Terms of Service, You confirm that You understand them, agree to them, and are at least 13 years of age.
+1. Introduction
+
+These Junie Terms of Service (“Terms”) describe how You can access and use Junie.
+
+Accepting these Terms creates a legal agreement between (i) JetBrains s.r.o., a company registered in the Commercial Register of the Prague Municipal Court, Section C, File 86211, ID No. 265 02 275 with its registered office at Na Hřebenech II 1718/8, Prague, 14000, Czech Republic (“JetBrains”, “We”, or “Us”) and (ii) you, either a legal entity or a natural person (“Customer” or “You”). JetBrains and Customer may each also be referred to individually as a “Party” or jointly as the “Parties”.
+
+If You accept these Terms on behalf of a legal entity, You confirm (‘represent and warrant’) that You are authorized to enter into agreements on behalf of that legal entity. If these Terms are accepted using an email address provided by a legal entity, We will regard (‘deem’) You as authorized to represent that legal entity. You must be able to enter into contracts (‘have capacity’).
+2. Definitions
+
+a) Special legal phrases
+
+There are certain phrases that have an accepted meaning for lawyers. To ensure these Terms are clear and accessible, We have included the accepted ‘legal’ phrase in parentheses after the word to show that We intend it to have the accepted ‘legal’ meaning.
+
+b) Definitions
+
+There are also words or phrases in these Terms that have a particular defined meaning. When the word or phrase is used for the first time, it is defined and capitalized. These Terms also use the following definitions:
+
+“Affiliate” means, with respect to any party, any entity that directly or indirectly, through one or more intermediaries, controls, is controlled by, or is under common control of that party. ‘Control’ for such purposes means the possession, direct or indirect, of the power to direct or affect the direction of the management and policies of a person or entity, whether through the ownership of voting securities, by contract, or otherwise. You are responsible for the compliance of Your Affiliate with these Terms.
+
+“AI Service” means an artificial intelligence or machine learning based service provided by JetBrains directly or through a partnership with a third party, which is connected by Us into the Junie.
+
+“Documentation” means the latest versions of all online Junie technical documentation available at JetBrains Website and any other relevant Junie policy available on the JetBrains Website that applies to Junie.
+
+“EAP” means any of the Early Access, Beta, Preview, and Nightly programs as referenced in the preamble of these Terms and described on the JetBrains Website or in the Documentation.
+
+“EAP Period” means a period during which You can use Junie under these Terms as determined by Us.
+
+“Input” means any instruction, source code snippet, text, or other information sent by You or Your Users through Junie to an AI Service in order to generate the Output.
+
+“JetBrains Account” means an account created by You at https://account.jetbrains.com enabling the administration of and/or access to Junie.
+
+“JetBrains Products” means any product offered by JetBrains (other than Junie) that You use based on a separate agreement with JetBrains and in which Junie can be enabled.
+
+“JetBrains Website” means the Junie product website and any other website operated by Us.
+
+“Junie” means the JetBrains service known as Junie accessible through the Junie plugin. Junie includes (a) the hosted service enabling generation of Outputs, (b) the Documentation, (c) updates to Junie, and (d) incorporated Third-Party Software.
+
+“Output” means the text or other information received as a response to the Input, which is generated by Junie.
+
+“Third-Party Software” means any third-party software program that is owned or licensed by someone other than Us.
+
+“User” means any employee, independent contractor, or other individual who obtains access to Junie from You (including, for the avoidance of doubt, Your Affiliates).
+
+“Your Data” means the source code processed in the JetBrains product with which You use Junie, information derived from the source code, and/or usage related information from the Users’ device submitted together with Input. When You send an Input to Junie, the Input may be sent together with some of Your Data selected automatically by Junie, necessary in order to understand the context in which You ask for an Output or to provide the Output.
+3. Rights and Responsibilities
+
+a) Right to use Junie
+
+You and Your Affiliates authorized by You can use Junie as long as You comply with these Terms and the Documentation. Subject to Your compliance with these Terms and the Documentation, JetBrains grants You and Your Affiliates, for the duration of these Terms, a royalty-free, non-exclusive, revocable, conditional right to use Junie as laid out in this Section and install any downloadable parts of Junie to be used solely for this purpose.
+
+JetBrains reserves the right to limit your use of Junie through quotas, rate limits, and other mechanisms published on the JetBrains Website or in the Documentation.
+
+b) Your responsibilities
+
+You are responsible for:
+
+i) Users – creating and maintaining a JetBrains Account and the permissions You grant to Your Users – including registering User accounts – and Your and Your Users’ actions and omissions while using Junie. If You become aware that any User breaches these Terms, You must notify Us and immediately revoke that User’s access to Junie;
+
+ii) Confidentiality and security – keeping Your usernames, passwords, and access tokens confidential and secure, and making sure that Your Users do the same;
+
+iii) Acceptable use – using Junie in accordance with the Documentation and the JetBrains AI Acceptable Use Policy, which is available at https://www.jetbrains.com/legal/docs/terms/jetbrains-ai/acceptable-use/ (“JetBrains AI Acceptable Use Policy”);
+
+iv) Equipment – maintaining a suitable internet connection in order to access Your JetBrains Account and Junie and to receive any deliveries (all the deliveries under these Terms will be electronic). It is also Your responsibility to have access to any hardware and any third-party software needed to run Junie, such as a connected JetBrains product and a browser with compatible data security protocols;
+
+v) Your Inputs, Outputs and Your Data – managing all Inputs that You or Your Users submit to Junie and deciding on which files containing Your Data will be accessible to Junie by submitting the Inputs (including ensuring that it is legal for You and Your Users to make these submissions). You are also responsible for all legal consequences, such as claims, damages, losses, liabilities, costs, and expenses, that result from Your Inputs. If You become aware that any of Your Inputs breach these Terms or the rights of another person (‘third party’), You must notify Us without undue delay; and
+
+vi) Compliance with laws – ensuring that You and Your Users use Junie according to all applicable laws and governmental regulations.
+
+c) Restrictions
+
+You must not, and You must make sure Your Users do not:
+
+i) Interfere – reverse-engineer, disassemble, or decompile all or part of Junie, or try to derive the source code of Junie in any way, unless applicable law allows it;
+
+ii) Steal – modify all or part of the Junie binaries, or modify, alter, tamper with, repair, or otherwise create derivative works of Junie, unless We give You express permission;
+
+iii) Transmit illegal data – use Junie to upload, store, or share, or allow others to upload, store, or share (‘transmit’), any material that is criminal, offensive, defamatory, or otherwise unlawful or a tort, or that breaches the privacy or intellectual property rights of anyone else (‘third-party’). We have (‘reserve’) the right, but not the responsibility, to reject or remove any Inputs, suspend or ban any User, or close any User account that We believe (‘in JetBrains sole discretion’) breaches these Terms, any other legal agreement with Us, or Our policies, or is otherwise illegal;
+
+iv) Facilitate unauthorized access – allow unauthorized access to Junie, unless expressly permitted by these Terms;
+
+v) Resell or distribute – resell or otherwise provide Junie or access to Junie to any third party, except if We give You express permission; and
+
+vi) Hack – utilize any procedures or tools to bypass Junie security, or utilize or allow Junie to be utilized for the purpose of hacking, tunneling, or otherwise gaining unauthorized access to any computer or system.
+
+More details are included in the JetBrains AI Acceptable Use Policy.
+4. Intellectual Property Rights and Ownership
+
+a) We own Junie
+
+We own, or have the right to use, all the proprietary and intellectual property rights to Junie. This includes all Junie -related trade secrets, copyrights, trademarks, service marks, patents, other registered or unregistered intellectual property, and system-generated data. System-generated data includes aggregate anonymized data on how Junie is used, system logs, metadata, registration and login data, and data required to provide support. These are Our rights (‘rights are reserved’) and the only rights that You have in relation to Junie are those that are necessary for You to access and use Junie in accordance with these Terms and the Documentation.
+
+b) You own Your Inputs and Your Data
+
+As between You and Us and to the extent permitted by applicable law, You own the Inputs and Your Data submitted together with Inputs to Junie and keep all proprietary rights, including intellectual property rights to them.
+
+Every time You submit an Input to Junie, You confirm that You have the right to submit the Input together with Your Data and understand that You are doing so at Your own risk, and that You are solely responsible for this step and all consequences of its use in Junie. You also indemnify Us from any liability relating to this Input and Your Data (see the ‘Indemnification’ Section).
+
+c) Your rights to use Outputs
+
+The Outputs generated for You will be considered Your Data, and We will not claim any right to, title to, or interest in them. You acknowledge that Outputs are generated as a non-exclusive response to Your work with JetBrains Products, so the same or similar Outputs can also be generated for other Junie users, based on their inputs or context of their use of JetBrains Products. You also understand that the Outputs are sometimes a result of third-party large language models and as such can be subject to third-party rights, including open-source licenses.
+
+d) Feedback
+
+You give Us the right to use, change (‘modify’), commercialize, and incorporate into Junie any of Your ideas, suggestions, recommendations, proposals, or other feedback relating to Junie. You cannot withdraw this permission after it is given (it is ‘irrevocable’) and it is perpetual. We are not required to pay a fee for this feedback (it is ‘royalty-free’), and We can transfer and give similar rights (‘sublicense’) to Your feedback to anyone else worldwide.
+
+e) Third-Party Software
+
+You understand that Junie integrates Third-Party Software and that by using Junie You might be using Third-Party Software available at: https://www.jetbrains.com/legal/third-party-software/.
+5. Access to Inputs, Your Data and Outputs
+
+a) Access control
+
+If You use Junie, Your Inputs and Outputs might be accessible to Us and visible to Your Users.
+
+You give Us permission to access Your Inputs, Your Data and Outputs for the following purposes:
+
+i) To provide You with the Junie service – We can access and utilize Your Inputs, Your Data and Outputs for the purpose of providing You with the Junie service;
+
+ii) For security reasons – We can access Your Inputs, Your Data and Outputs if We have a good reason to (‘reasonably’) believe this access is required to maintain the ongoing confidentiality, integrity, availability, performance, and resilience of Our systems and Junie; and
+
+iii) If We are legally required – We have the right to access, review, and remove all or a part of Your or Your Users’ Inputs and Outputs if We have a good reason to (‘reasonably’) believe that the Input or Outputs breach the law or these Terms. You understand that there are laws that could require Us to disclose Your Inputs, Your Data and Outputs and, if these laws apply, We are obliged to comply with them.
+
+b) Permission to handle Your Inputs and Your Data
+
+If You use Junie, You give (‘grant’) Us certain permissions (‘rights’) so that We can provide the Junie service to You. Each of these permissions takes effect immediately when Your Input together with Data is submitted to Junie. You understand that these permissions are necessary in order to use Junie and You will not receive any payment for them.
+
+You give Us permission to process your Inputs together with Your Data and to share them with the provider of the AI Service for the purpose of generating the Outputs. The list of AI Service providers is published at https://www.jetbrains.com/legal/docs/terms/jetbrains-ai/service-providers/ and can be updated by Us at any time through the publication of a new list. The providers of the AI Services are not authorized by Us to use Inputs or Your Data for their own business purposes, but the Inputs and Your Data may be monitored by them to prevent misuse or abuse of the AI Services and the Inputs and Your Data may be stored for a limited period for these purposes.
+
+c) Use of Your Inputs, Outputs and Data for Junie improvement
+For the duration of the EAP Term, You also give Us permission to host, store, alter Your Inputs, Outputs and Data in Junie, copy it to Our database, make backups, and analyze it on Our servers to understand the usage of Junie and identify opportunities for its improvement. It does not permit Us to sell or otherwise transfer ownership of Your Inputs, Outputs or Your Data to a third party, train any machine learning models that generate code, text, or another type of data from which Inputs, Your Data and Outputs could be extracted, or reveal the Inputs, Outputs or Your Data in any form to other users of Junie.
+6. Indemnification
+
+a) Indemnity
+
+If there are any claims, damages, losses, liabilities, or fees and similar expenses, including fair (‘reasonable’) attorney fees, brought against Us or the providers of AI Services connected to Junie that are related to any of the following claims (each of these is defined as a "Claim"):
+
+i) Access and use of Junie – Your or Your Users’ access or use of Junie. This includes all activities related to Your JetBrains Account and any actions taken by Your Users in relation to Junie;
+
+ii) Breach of these Terms – the breach of these Terms (including the Junie Acceptable Use Policy) by You or any of Your Users;
+
+iii) Your Inputs and Outputs – Your Inputs and Outputs or the combination of Your Inputs and Outputs with other data, infrastructure, or processes. This includes any allegation that Your Inputs and Outputs, or their use, development, design, production, advertising, or marketing, infringe upon the rights of someone else (a ‘third party’), or that You have illegally or without permission claimed someone else’s rights; or
+
+iv) Disagreements – disagreement between You, or any of Your Users, and another person; then You agree to indemnify, defend, and hold Us and Our owners, directors, employees, agents, and representatives harmless, and to indemnify, defend, and hold Our affiliates or the providers of AI Services and their owners, directors, employees, agents, and representatives harmless, from any and all Claims.
+
+then You agree to indemnify, defend, and hold Us and Our owners, directors, employees, agents, and representatives harmless, and to indemnify, defend, and hold Our affiliates or the providers of large language models and their owners, directors, employees, agents, and representatives harmless, from any and all Claims.
+
+b) Indemnity claims
+
+We will quickly (‘promptly’) let You know if someone makes a Claim. If We fail to let You know quickly, then that failure will only affect Your obligation to indemnify Us to the extent that Our failure to inform You quickly adversely affected Your ability to defend Us against the Claim. When You are defending Us against the Claim, You can choose Your own lawyer, with Our written permission. If You have Our written permission, You can resolve (‘settle’) the Claim as You decide (‘at Your discretion’). However, We can take full control of Your defense and settlement at any time.
+7. IMPORTANT – YOUR RISK AND OUR DISCLAIMERS
+
+(RISK) JUNIE AND ANY JUNIE SUPPORT IS PROVIDED ON AN ‘AS IS’ AND ‘AS AVAILABLE’ BASIS. YOU ACCESS AND USE JUNIE AT YOUR OWN RISK.
+
+(WARRANTIES & REPRESENTATIONS) EXCEPT AS EXPRESSLY SET OUT IN THESE TERMS, WE MAKE NO REPRESENTATIONS AND GIVE NO WARRANTIES IN RELATION TO JUNIE – EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. THIS INCLUDES WARRANTIES THAT JUNIE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS, AS WELL AS WARRANTIES THAT YOUR CONTENT WILL BE SECURE OR NOT OTHERWISE LOST OR DAMAGED.
+
+WE ALSO DENY (’DISCLAIM’) ALL WARRANTIES. THIS INCLUDES ANY IMPLIED WARRANTIES OF MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT AND ANY WARRANTIES ARISING OUT OF ANY COURSE OF DEALING OR USAGE OF TRADE.
+
+THIS DISCLAIMER DOES NOT APPLY TO REPRESENTATIONS AND WARRANTIES THAT CANNOT BE EXCLUDED BY LAW.
+
+(SECURITY) IT IS YOUR RESPONSIBILITY TO IMPLEMENT REASONABLE AND APPROPRIATE MEASURES TO ENSURE THE SECURITY OF YOUR ACCESS TO AND USE OF JUNIE. IF YOU BECOME AWARE OF ANY VULNERABILITIES IN JUNIE, YOU SHOULD REPORT THEM TO JETBRAINS WITHOUT UNDUE DELAY.
+8. IMPORTANT – LIMITATION OF OUR LIABILITY
+
+(TYPES OF DAMAGES) WE WILL NOT BE LIABLE TO YOU OR ANY OF YOUR USERS FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES. THIS INCLUDES DAMAGES FOR LOSS OF PROFITS, GOODWILL, OR DATA, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+(CIRCUMSTANCES OF LOSS) WE WILL NOT BE LIABLE FOR ANY COMPENSATION, REIMBURSEMENT, OR DAMAGES ARISING IN CONNECTION WITH:
+
+a) YOUR OR YOUR USERS’ INABILITY TO USE JUNIE, INCLUDING AS A RESULT OF THE CANCELLATION OF THESE TERMS;
+
+b) OUR DECISION TO NO LONGER PROVIDE JUNIE FOR BUSINESS, ECONOMIC, LEGAL, OR REGULATORY REASONS;
+
+c) YOUR HAVING MADE JUNIE AVAILABLE TO YOUR USERS;
+
+d) YOUR USE OF JUNIE BEING CONTRARY TO OR INCONSISTENT WITH THE DOCUMENTATION;
+
+e) THE COST OF PROVIDING A SUBSTITUTE FOR JUNIE;
+
+f) ANY UNANTICIPATED OR UNSCHEDULED UNAVAILABILITY OF JUNIE OR A PART OF IT FOR ANY REASON, INCLUDING AS A RESULT OF POWER OUTAGES, SYSTEM FAILURES, OR OTHER INTERRUPTIONS;
+
+g) ANY INVESTMENTS, EXPENSES, OR COMMITMENTS THAT YOU OR A MEMBER MAKE RELATING TO THESE TERMS OR YOUR ACCESS TO OR USE OF JUNIE; OR
+
+i) ANY MODIFICATION, DELETION, DESTRUCTION, DAMAGE, LOSS, OR FAILURE TO STORE ANY OF YOUR DATA CAUSED BY YOU OR YOUR USERS.
+
+(MAXIMUM LIABILITY) OUR MAXIMUM, OVERALL (‘AGGREGATE’) LIABILITY RELATING TO THESE TERMS IS LIMITED TO THE GREATER OF FIVE (5) US DOLLARS OR THE AMOUNT THAT YOU ACTUALLY PAID TO US FOR JUNIE IN THE SIX (6) MONTHS BEFORE YOU CLAIMED THAT WE WERE LIABLE. THE MAXIMUM LIABILITY APPLIES EVEN IF WE WERE ADVISED THAT LIABILITY COULD EXCEED THE MAXIMUM LIABILITY AMOUNT OR EVEN IF THE LEGAL BASIS (I.E. TORT, BREACH OF CONTRACT, EQUITY, OR A SIMILAR BASIS) FOR A REMEDY IS INVALID.
+9. Temporary Suspension
+
+We can immediately suspend Your or Your Users’ right to use all or part of Junie if We have a good reason to (‘reasonably’) believe that:
+
+i) Exceeding the usage limits - You reached or exceeded the limit of Inputs that are set by Us for Your usage of Junie (these limits may be subject to change during the EAP Period);
+
+ii) Threats – Your or Your Users’ use of Junie might adversely impact or pose a security, privacy, or legal risk to Junie or any of its parts, Us, or another person (‘third party’);
+
+iii) Breach of terms – You or Your Users breached these Terms, applicable law, Our policies, or someone else’s rights.
+
+We will make a reasonable effort to let You know of a suspension. Suspensions are temporary, but if the reasons for suspension are not resolved, We can end these Terms (see the ‘Term and Termination’ Section).
+10. Term and Termination
+
+These Terms will commence upon their acceptance, as set out in the preamble above, and will continue through the end of the applicable EAP Period determined by JetBrains.
+
+You may terminate these Terms at any time by ceasing all use of Junie, unless otherwise specified in the Documentation.
+
+We may terminate these Terms immediately at any time for convenience (including by no longer designating Junie as a part of an EAP). JetBrains may notify You of any such termination by posting the information on the JetBrains Website or by sending an email to the email address You provided.
+
+Upon expiration or termination of these Terms by You under this Section, Sections 4(d), 4(e), 6, 7, 8, and 14 of these Terms will remain in effect.
+
+For the avoidance of doubt, should You continue using the non-EAP versions of Junie after the expiration or termination of these Terms or the applicable EAP Period, the applicable terms and conditions for Junie will apply.
+11. Notices
+
+a) Notices by You
+
+If You are required under these Terms to notify Us (‘give notice’) of anything, You may do so:
+
+i) by sending an email to legal@jetbrains.com. Any time period starts on the next business day after You send the email;
+
+ii) by courier delivery of a letter marked for the attention of the ‘Legal Department’ at the physical address published on the JetBrains Website. Any time period starts five (5) business days from when You send the letter; and
+
+iii) by registered post, marked for the attention of the Legal Department at the address displayed on the JetBrains Website. Any time period starts ten (10) business days from when You send the letter.
+
+b) Notices by Us
+
+If We are required under these Terms to notify You (‘give notice’) of anything, We may do so:
+
+i) by posting the information on the JetBrains Website. Any time period starts on the day specified on the JetBrains Website;
+
+ii) by sending an email to the email address registered in Your JetBrains Account. Any time period starts on the next business day after We send the email.
+
+It is Your responsibility to check the JetBrains Website for any changes and make sure that Your email address is up to date in Our records.
+13. Export Control Laws
+
+You must comply with all applicable laws and regulations relating to export restrictive measures, economic sanctions, export controls, import regulations, and trade embargoes, including those maintained by the European Union and the United States of America (“Export Control Laws”). You confirm (‘represent and warrant’) that You are not an entity, nor are You owned, controlled, or otherwise related to a person or entity, or acting on behalf of any person or entity, that is targeted by Export Control Laws.
+
+This means that You will ensure that Junie, related services, and/or technical data is not (i) accessed, downloaded, transferred, provided, exported, or re-exported directly or indirectly in violation of Export Control Laws; or (ii) used for any purpose prohibited by Export Control Laws.
+
+You are also expected to report any concerns of non-compliance with these requirements and address any questions to ethics@jetbrains.com, compliance@jetbrains.com, or legal@jetbrains.com. In addition, You are required to cooperate with Us in Our efforts to verify Our and Your compliance with Export Control Laws.
+14. General Provisions
+
+a) These Terms and their Parties
+
+These Terms together with the order accepted by Us form the entire agreement and replace any previous agreement between You and Us in relation to its subject matter. By accepting these Terms, You agree to use and ensure that Your Users will use the Junie in accordance with the JetBrains AI Acceptable Use Policy. Except as expressly mentioned, these Terms do not apply or give rights to anyone else (‘no third-party beneficiaries’).
+
+b) Personal Data and usage statistics
+
+Any information directly or indirectly identifying an individual or other data protected under an applicable law as personal data (“Personal Data”), that We will process on Your behalf in connection with these Terms, will be processed in accordance with the Data Processing Addendum at https://www.jetbrains.com/legal/dpa/ which is a part of (‘incorporated into’) these Terms. We may also process some of Your Personal Data in connection with these Terms in our capacity as a data controller in accordance with our Privacy Notice at https://www.jetbrains.com/legal/docs/privacy/privacy/. Provision of Personal Data as Input into the Junie is prohibited.
+
+c) Governing law and disputes
+
+These terms are governed by the laws of the Czech Republic, without reference to conflict of laws principles, and specifically excluding the United Nations Convention on Contracts for the International Sale of Goods. The Parties to these terms undertake to use the best commercial efforts to amicably settle any disputes arising hereunder (“Dispute”).
+
+Should the Parties to these Terms fail to settle a Dispute amicably, the Dispute will be excluded from the jurisdiction of general courts and all such Disputes will be finally decided by the Arbitration Court attached to the Czech Chamber of Commerce and the Agricultural Chamber of the Czech Republic by three (3) arbitrators in accordance with the Rules of that Arbitration Court, and the language of the proceedings will be English.
+
+d) Force majeure
+
+We will not be responsible (‘liable’) for any delay or failure to perform any obligation under these Terms where the delay or failure results from any cause beyond Our reasonable control. This includes any ‘acts of God’, labor disputes or other industrial disturbances, systemic electrical, telecommunications, or other utility failures, public health emergencies, earthquakes, storms or other elements of nature, blockages, embargoes, riots, acts or orders of government, acts of terrorism, or war.
+
+e) Severability
+
+If a court finds that any part of, or word in, these Terms is not enforceable, that part or word will not affect the enforceability of the rest of these Terms.
+
+f) Interpretation
+
+Any heading, title, or paragraph summary is only for convenience and does not affect the interpretation of these Terms. Any instance of an inclusive word, such as ‘including’, is not comprehensive and refers to other items in that category. References to time or periods of time are determined in reference to Central European Time.
+
+g) Waiver
+
+Any waiver of Our rights under these Terms must be in writing and signed by Us.
+
+h) Changes to Terms and policies
+
+These Terms can be updated from time to time, to reflect changes in Junie and how it is offered to You. If this happens, We will update the terms on the JetBrains Website and let You know either by:
+
+i) Displaying them to You in Junie;
+
+ii) Displaying them in Your JetBrains Account; or
+
+iii) Sending the updated version to the email address used in Your JetBrains Account.
+
+Any updated Terms will start (‘come into effect’) on the date specified in the updated Terms. By continuing to use Junie after the effective date, You agree to be bound by the modified Terms.
+
+i) Relationship
+
+Your relationship with JetBrains is that of independent parties. These Terms do not create a partnership, franchise, joint venture, agency, fiduciary, employment, or any other type of relationship.
+
+j) Contract review
+
+By agreeing to these Terms, You are confirming to Us that:
+
+    You have had sufficient opportunity to read, review, and consider these Terms;
+
+    You understand the content of each paragraph of these Terms; and
+
+    You have had sufficient opportunity to seek independent professional legal advice.
+
+This means that, to the extent permitted by applicable law, any statutory provisions relating to so-called ‘form’ or ‘adhesion’ contracts do not apply to these Terms.
