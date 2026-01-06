@@ -1,7 +1,7 @@
 # Maintainer: BinaryHarbinger <halilefeesen@proton.me>
 
 pkgname=riftbar-git
-pkgver=8fc89d4
+pkgver=0.1.0.0.g2c9ef28
 pkgrel=1
 pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust (git version)"
 arch=('x86_64')
@@ -27,14 +27,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/riftbar"
 
-  if git describe --long --tags --dirty --always &>/dev/null; then
-    git describe --long --tags --dirty --always | sed 's/^v//'
-  else
-    printf "r%s.%s" \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
-  fi
+  git describe --long --tags --always \
+    | sed 's/^v//; s/-/./g'
 }
+
 
 build() {
   cd "$srcdir/riftbar"

@@ -1,6 +1,6 @@
 pkgbase = riftbar-git
 	pkgdesc = Highly customizable GTK4 bar for Wayland written in Rust (git version)
-	pkgver = 8fc89d4
+	pkgver = 0.1.0.0.g2c9ef28
 	pkgrel = 1
 	url = https://github.com/binaryharbinger/riftbar
 	arch = x86_64
