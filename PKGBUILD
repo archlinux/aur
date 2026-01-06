@@ -1,4 +1,5 @@
 # Maintainer: Narayan Lima da Silva <narayan.song@gmail.com>
+# Former Contributor: Tales Mendonça <talesam@gmail.com>
 
 pkgname=tac-writer
 pkgdesc="Academic writing assistant using the Continuous Argumentation Technique (CAT)"
