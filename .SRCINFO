@@ -31,8 +31,8 @@ pkgbase = xpipe-ptb
 	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
 	sha256sums = 36B1D6DF191ED8BD938403EBD324AFEDC79703BD2228B8FBAA5360372D06C3FF
 	source_x86_64 = xpipe-ptb-20.3-1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.3-1/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a7e4aa50d99c71e1f17304d550fcdc64c4bb84238170cbc5099f2b6b61c7791d
+	sha256sums_x86_64 = 76d6f56ecaa343136825943f17901e81135b197aeef66a46aa17052563561cef
 	source_aarch64 = xpipe-ptb-20.3-1-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/20.3-1/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = a7e4aa50d99c71e1f17304d550fcdc64c4bb84238170cbc5099f2b6b61c7791d
+	sha256sums_aarch64 = 76d6f56ecaa343136825943f17901e81135b197aeef66a46aa17052563561cef
 
 pkgname = xpipe-ptb
