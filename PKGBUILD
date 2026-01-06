@@ -2,8 +2,8 @@
 
 pkgname=snippy-snippet
 pkgver=1.0.11
-pkgrel=2
-pkgdesc='Snippet manager with rofi/wofi and fzf'
+pkgrel=3
+pkgdesc='Snippet manager with rofi (X11 / Wayland) and fzf (CLI)'
 arch=('any')
 url='https://github.com/barbUk/snippy'
 license=('GPL-3.0-or-later')
