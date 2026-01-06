@@ -10,7 +10,7 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver="1.7.0"
+pkgver="1.7.1"
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 
@@ -57,12 +57,13 @@ build() {
     # echo "Build docs"
     # pdf='pynotify.pdf'
     # cd ./Docs
+    # /usr/bin/rm -f $pdf
     # make latexpdf >/dev/null 2>&1
     # make latexpdf
-    # /usr/bin/rm -f $pdf
     # /usr/bin/cp _build/latex/$pdf .
-    # /usr/bin/rm -rf _build/doctrees _build/latex
     # make html
+    # make html
+    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 package() {
