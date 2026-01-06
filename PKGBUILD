@@ -3,7 +3,7 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -53,6 +53,7 @@ build() {
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   -DLAUNCHER_VERSION_NAME="${pkgver}" \
   -DLAUNCHER_VERSION_CODE="AUR" \
+  -DLAUNCHER_VERSIONDB_URL="https://raw.githubusercontent.com/minecraft-linux/mcpelauncher-versiondb/v1.5.x" \
   -Wno-dev
 
   cmake --build build
