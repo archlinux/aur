@@ -2,8 +2,8 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-_pkgver=4.4-stable
-pkgver=4.4
+_pkgver=26.1-beta.0
+pkgver=26.1_beta.0
 _pkgfmt=_linux_mono_
 pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
@@ -12,19 +12,11 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=('redot' 'redot-bin' "$_pkgname")
 
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 _arch='x64'
-_arch2='x86_64'
 
-if test "$CARCH" == 'i686'; then
-  _arch='x86'
-  _arch2='x86_32'
-elif test "$CARCH" == 'armv7h'; then
-  _arch='arm32'
-  _arch2='arm32'
-elif test "$CARCH" == 'aarch64'; then
+if test "$CARCH" == 'aarch64'; then
   _arch='arm64'
-  _arch2='arm64'
 fi
 
 depends=(
@@ -59,14 +51,10 @@ source=("${_pkgname}.desktop" 'icon.png' 'LICENSE.txt')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
-source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
-source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 
-sha256sums_x86_64=('d79eb93fe24f800d04b15fb93aabcec9a500e6961f6af0becb72d745580b42e2')
-sha256sums_i686=('0c0196e1b340f1df6743768a88915a5364db515913a0a7f076f02f4f9ca819d0')
-sha256sums_armv7h=('24ed7490848862d2f6fd734a5c8f5b6e66841dfb2bb1464c4e41ddfc64299a5a')
-sha256sums_aarch64=('b5cd27ed8cf2a677566c38dffcabac586dd9f3de9a289ce88f136a6f282d4935')
+sha256sums_x86_64=('3397590dc422a527f434cccd4a69e54738e0aa66ee0f830338cdfc02f090c37a')
+sha256sums_aarch64=('af7e5486084f6bac66dd09eb32a54a9001390824fbf7aa46ffd80facad8d2e98')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
@@ -80,7 +68,7 @@ package() {
   cd ${pkgdir}/opt/${_pkgname}
 
   # rename executable
-  mv redot.linuxbsd.editor.${_arch2}.mono ${_pkgname}
+  mv redot.linuxbsd.editor.${arch}.mono ${_pkgname}
 
   # back to top
   cd ${srcdir}
