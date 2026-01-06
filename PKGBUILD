@@ -2,7 +2,7 @@
 
 pkgname=python-agent-client-protocol
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python SDK for ACP clients and agents'
 arch=('x86_64')
 url='https://github.com/agentclientprotocol/python-sdk'
@@ -12,6 +12,7 @@ depends=(
     "python-pydantic"
 )
 makedepends=(
+    "python-pdm-backend"
     "python-pytest"
     "python-pytest-asyncio"
     "ruff"
