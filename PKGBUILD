@@ -11,7 +11,7 @@ url="https://github.com/Bali10050/darkly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
 
-options=(!emptydirs)
+options=(!emptydirs !debug)
 
 source=(
   "${url}/releases/download/v${pkgver}/darkly-${pkgver}-x86_64.pkg.zst"

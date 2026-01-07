@@ -24,6 +24,7 @@ pkgbase = darkly-bin
 	depends = libplasma
 	conflicts = darkly
 	options = !emptydirs
+	options = !debug
 	source = https://github.com/Bali10050/darkly/releases/download/v0.5.30/darkly-0.5.30-x86_64.pkg.zst
 	sha256sums = b562958fe52c199b4eb058bc343ffe5706bbc34f89ae709aad9d092aaa06833c
 
