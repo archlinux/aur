@@ -1,6 +1,6 @@
 pkgbase = python-drizzle
 	pkgdesc = A package for combining dithered images into a single image
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://spacetelescope-drizzle.readthedocs.io
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = python-drizzle
 	makedepends = python-sphinx-automodapi
 	makedepends = python-pytest-doctestplus
 	makedepends = graphviz
-	source = https://github.com/spacetelescope/drizzle/archive/refs/tags/2.1.1.tar.gz
-	md5sums = 6646e6fe713f3829bd34305f9e95a2e4
+	source = https://github.com/spacetelescope/drizzle/archive/refs/tags/2.2.0.tar.gz
+	md5sums = 7cd983b95e1b18b242b0fbda924f4284
 
 pkgname = python-drizzle
 	depends = python>=3.10
