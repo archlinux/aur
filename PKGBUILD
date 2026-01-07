@@ -1,7 +1,7 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-server-git
 pkgver=v5.1.0.dev.149.r0.gb5345bbc8
-pkgrel=1
+pkgrel=3
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('any')
 url="https://shokoanime.com/"
@@ -13,7 +13,8 @@ optdepends=(
   'shoko-webui: web-admin ui in latest release'
   'shoko-webui-git: web-admin ui in latest commit (should use this for best compatibility)'
 )
-conflict=('shoko-server')
+provides=('shoko-server')
+conflicts=('shoko-server')
 install=${pkgname}.install
 source=(
   "git+https://github.com/ShokoAnime/ShokoServer.git"
