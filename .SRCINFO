@@ -1,7 +1,7 @@
 pkgbase = python-inspice
 	pkgdesc = Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)
-	pkgver = 1.6.4.1
-	pkgrel = 2
+	pkgver = 1.6.4.4
+	pkgrel = 1
 	url = https://pypi.org/project/inspice
 	arch = any
 	license = AGPL-3.0-or-later
@@ -26,7 +26,7 @@ pkgbase = python-inspice
 	conflicts = python-inspice
 	options = !strip
 	options = !debug
-	source = inspice-1.6.4.1.tar.gz::https://files.pythonhosted.org/packages/source/i/inspice/inspice-1.6.4.1.tar.gz
-	sha256sums = 80b7144276d649175618d3076c2dccb82bacfa9d406068d4db9218e66bab3333
+	source = inspice-1.6.4.4.tar.gz::https://files.pythonhosted.org/packages/source/i/inspice/inspice-1.6.4.4.tar.gz
+	sha256sums = 2201ef9b0a91e290cf46ad7be35999d2c82b75b46fd4f34a73c6dba559b1a01e
 
 pkgname = python-inspice
