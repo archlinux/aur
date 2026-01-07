@@ -3,8 +3,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mnamer
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "sessioncache.patch")
 sha256sums=(
-  '1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e'
+  'af30841941c89a0281481dfb034ba18f3ff9e5fd58a403d86473f26b5f2dc491'
   '26b3cbbc09772974ff15795db9dd0a60260af1b25ab0c98597fd758c61ed2bc5')
 
 prepare() {
