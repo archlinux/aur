@@ -182,6 +182,8 @@ fi
 # We capture the chown commands so this is no longer needed.
 # This requirement made it hard for noobs with AUR helpers to install.
 _testAmandaUserGroup() {
+  local -
+  set -u
   if ! getent group "${_amandagroup}" > /dev/null ; then
     error "The amanda group must exist prior to building."
     error "Suggested command: groupadd -g ${_amandagid} ${_amandagroup}"
@@ -197,6 +199,8 @@ unset -f _testAmandaUserGroup
 
 # We can't modify .install but we can stop and force the user to fix it.
 _install_check() {
+  local -
+  set -u
   local _ckvar
   local _ckline
   for _ckvar in _amlibexec _amsecurity _amhome; do
@@ -211,6 +215,7 @@ _install_check() {
 }
 
 prepare() {
+  local -
   set -u
   cd "${_srcdir}"
   _install_check
@@ -270,11 +275,10 @@ prepare() {
       -e 's:DailySet1:@DEFAULT_CONFIG@:g' \
       -e '/^netusage/ s:8000 :80000 :g' \
     -i 'example/template.d/advanced.conf.in'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   #_testAmandaUserGroup
   cd "${_srcdir}"
@@ -285,39 +289,40 @@ build() {
   fi
   if [ ! -s 'Makefile' ]; then
     #autoreconf # 0000-fedora-patch-tirpc.patch
-    local _opts=()
+    local _conf=(
+      --prefix='/usr'
+      --sbindir='/usr/bin'
+      --libexecdir="${_amlibexec}"
+      --sysconfdir='/etc'
+      --localstatedir='/var'
+      --with-configdir="${_ametc}"
+      --with-security-file="${_amsecurity}"
+      --with-gnutar-listdir="${_amhome}/gnutar-lists"
+      --mandir='/usr/share/man'
+      --with-user="${_amandauser}"
+      --with-group="${_amandagroup}"
+      --with-ipv6
+      --with-ssh-security
+      --with-amandates="${_amhome}/amandates"
+      --with-tmpdir="/tmp/amandabackup-$$"
+    )
     if [ ! -z "${_opt_bsd}" ]; then
-      _opts+=("--with-bsd${_opt_bsd}-security")
+      _conf+=("--with-bsd${_opt_bsd}-security")
     fi
     # There are configure flags to install only the client or server, but I don't see any reason to.
     # Amanda's handling of /etc is so broken that we must specify it 3 times and fix it in package()
+    CFLAGS+=' -g -rdynamic -fcommon -std=gnu17 -Wno-implicit-int -Wno-incompatible-pointer-types'
+    CXXFLAGS+=' -g -rdynamic -fcommon -std=gnu17 -Wno-implicit-int -Wno-incompatible-pointer-types'
     MT='/usr/bin/mt-st' \
-    CFLAGS="${CFLAGS} -g -rdynamic -fcommon" \
-    CXXFLAGS="${CXXFLAGS} -g -rdynamic -fcommon" \
-    ./configure "${_opts[@]}" \
-      --prefix='/usr' \
-      --sbindir='/usr/bin' \
-      --libexecdir="${_amlibexec}" \
-      --sysconfdir='/etc' \
-      --localstatedir='/var' \
-      --with-configdir="${_ametc}" \
-      --with-security-file="${_amsecurity}" \
-      --with-gnutar-listdir="${_amhome}/gnutar-lists" \
-      --mandir='/usr/share/man' \
-      --with-user="${_amandauser}" \
-      --with-group="${_amandagroup}" \
-      --with-ipv6 \
-      --with-ssh-security \
-      --with-amandates="${_amhome}/amandates" \
-      --with-tmpdir="/tmp/amandabackup-$$"
-    ! grep -F $'/usr/var\n/usr/etc' 'config.log' || echo "{}"
+    ./configure "${_conf[@]}"
+    ! grep -F -e $'/usr/var\n/usr/etc' 'config.log' || echo "${}"
   fi
 
   nice make # not using -s helps
-  set +u
 }
 
 package() {
+  local -
   set -u
   #_testAmandaUserGroup
   cd "${_srcdir}"
@@ -723,7 +728,6 @@ EOF
 
   # Install the licence
   install -Dpm444 'COPYRIGHT' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
 }
 set +u
 
