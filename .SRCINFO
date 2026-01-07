@@ -1,5 +1,5 @@
 pkgbase = rsenv
-	pkgdesc = Environments Evolved
+	pkgdesc = Hierarchical environment management with secure vault storage
 	pkgver = 2.0.0_rc
 	pkgrel = 3
 	url = https://github.com/sysid/rs-env

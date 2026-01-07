@@ -4,7 +4,7 @@ _pkgauthor=sysid
 _pkgname=rs-env
 _appname=${_pkgname//-/}
 pkgname=${_appname}
-pkgdesc="Environments Evolved"
+pkgdesc="Hierarchical environment management with secure vault storage"
 
 pkgver=2.0.0_rc
 pkgrel=3
