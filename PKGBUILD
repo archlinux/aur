@@ -28,6 +28,7 @@ build() {
     -DEXAMPLES_INSTALL_PATH=/usr/share/sundials/examples \
     -DENABLE_SUPERLUMT=ON \
     -DSUPERLUMT_THREAD_TYPE=OPENMP \
+    -DSUNDIALS_INDEX_SIZE=32 \
     -B build .
   cmake --build build
 }
