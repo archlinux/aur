@@ -6,20 +6,25 @@
 #  *
 #  * SPDX-License-Identifier: 0BSD
 #  */
-From 3c1d094ad4cb5b0598bb2fdcdc1bc2261e1f013b Mon Sep 17 00:00:00 2001
+From 82226d2f6811c588a61895cd70cffce742664c0e Mon Sep 17 00:00:00 2001
 From: Sam Sinclair <sam@playleft.com>
-Date: Thu, 1 Jan 2026 13:53:53 +1100
+Date: Mon, 5 Jan 2026 12:30:11 +1100
 Subject: [PATCH] update wrapper for arch
 
 ---
- helium-wrapper | 58 ++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 56 insertions(+), 2 deletions(-)
+ helium-wrapper | 58 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 55 insertions(+), 3 deletions(-)
 
 diff --git a/helium-wrapper b/helium-wrapper
-index 191711c..6ccfcfd 100755
+index 191711c..67d9504 100755
 --- a/helium-wrapper
 +++ b/helium-wrapper
-@@ -5,13 +5,65 @@
+@@ -1,17 +1,69 @@
+-#!/bin/sh
++#!/usr/bin/env bash
+ # Copyright 2025 The Helium Authors
+ # You can use, redistribute, and/or modify this source code under
+ # the terms of the GPL-3.0 license that can be found in the LICENSE file.
  
  # Replace when packaging, so that we can easily determine which
  # distro the user is using if they open a bug report.

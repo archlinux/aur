@@ -9,7 +9,7 @@
 pkgbase = helium-browser-bin
 	pkgdesc = Private, fast, and honest web browser based on Chromium
 	pkgver = 0.7.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
 	arch = aarch64
@@ -40,7 +40,7 @@ pkgbase = helium-browser-bin
 	source = 0001-update-wrapper-arch.patch
 	source = 0002-align-desktop-entry.patch
 	validpgpkeys = BE677C1989D35EAB2C5F26C9351601AD01D6378E
-	sha256sums = 3232eb325d4e6ec929d4050e7c44d2976acc82678b544ae459d2da0717b49538
+	sha256sums = 2ac1e9206c715318a69adcc99c5b79d876f8a4800590c8e79de97170f8a15fc0
 	sha256sums = 1e9777e8b03cbdba142c29b30b51004492d77043f1f1ccb12f7c1f302e97a7bf
 	source_x86_64 = helium-0.7.9.1-x86_64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/0.7.9.1/helium-0.7.9.1-x86_64_linux.tar.xz
 	source_x86_64 = helium-0.7.9.1-x86_64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/0.7.9.1/helium-0.7.9.1-x86_64_linux.tar.xz.asc
