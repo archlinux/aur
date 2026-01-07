@@ -2,18 +2,18 @@
 # Maintainer: Ian Hartwig <mail at ihartwig dot me>
 # Maintainer: baguette <baguettesabot at gmail dot com>
 pkgname='photonvision-bin'
-pkgver="v2025.1.1"
-pkgrel=2
+pkgver="v2025.3.1"
+pkgrel=1
 pkgdesc="free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition"
 arch=('x86_64' 'aarch64')
 url="https://photonvision.org/"
 license=('GPL3')
-pkgurlver="v2025.1.1"
+pkgurlver="v2025.3.1"
 source=()
 noextract=("$pkgname-$pkgurlver.jar")
 source_x86_64=("$pkgname-$pkgurlver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgurlver/photonvision-$pkgurlver-linuxx64.jar")
-sha256sums_x86_64=('d8b2d874c037da6c7560851a0210904d79b5f80fa9d1694fd355718a8e6c0f70')
-sha256sums_aarch64=('d8b2d874c037da6c7560851a0210904d79b5f80fa9d1694fd355718a8e6c0f70')
+sha256sums_x86_64=('700b5df86658a3ca22b73165e262056d6504159f1a7ffbfbf33bf0bfe70b3a15')
+sha256sums_aarch64=('700b5df86658a3ca22b73165e262056d6504159f1a7ffbfbf33bf0bfe70b3a15')
 source_aarch64=("$pkgname-$pkgurlver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgurlver/photonvision-$pkgurlver-linuxarm64.jar")
 depends=('jre17-openjdk-headless' 'avahi' 'networkmanager')
 depends_x86_64=('linux-lts')
