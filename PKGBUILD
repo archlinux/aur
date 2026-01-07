@@ -1,6 +1,6 @@
 # Maintainer: Leonie Ain <me@koyu.space>
 
-pkgname=breeze-chameleon-icons
+pkgname=breeze-chameleon
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Breeze Chameleon Icons"
