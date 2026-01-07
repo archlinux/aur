@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.2.1'
+_upstreamver='0.2.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='mvw'
@@ -21,12 +21,12 @@ url="${_url_github}"
 provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
 depends=('python' 'python-rich-pixels' 'python-typer' 'python-rich' 'python-platformdirs' 'python-beautifulsoup4' 'python-requests' 'python-click' 'python-omdbapi' 'python-iterfzf')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3f39576b5d0d1329eff7068225c20a973b62199be462688083e6c34f4d6eef53')
+sha256sums=('e3f437c29196646fb80447d52827fe936100d2c1bbf66ef45e5fac4c0b7e9f7a')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
