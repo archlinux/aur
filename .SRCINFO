@@ -1,0 +1,19 @@
+pkgbase = hyprkcs-git
+	pkgdesc = A fast, minimal Hyprland keybind cheat sheet written in Rust/GTK4
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kosa12/hyprKCS
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = glibc
+	depends = gcc-libs
+	provides = hyprkcs
+	conflicts = hyprkcs
+	source = git+https://github.com/kosa12/hyprKCS.git
+	sha256sums = SKIP
+
+pkgname = hyprkcs-git
