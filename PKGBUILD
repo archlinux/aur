@@ -169,7 +169,7 @@ pkgbase="linux-$_pkgsuffix"
 _major=6.19
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc1
+_rcver=rc4
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -229,7 +229,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=7de9800e5ce45d03c797be57a3e959fc914b2adb")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=540cd8029042327a37fd2a3614f8e623cbb87a22")
 fi
 
 
@@ -257,7 +257,7 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
+    cachyos|bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
@@ -761,6 +761,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('3e03007705e94018c45aa08affce77b146dda0435fc4baf8a4646b2445c456d1416e965d4582fef7016eb30bbb308663386ddb5fb94e50923b0b59ef55694acb'
-        'b83c435e7b206a2d53cda5f265c81335c191a00471c2a025046cd61e075096706453dd938957a7b730610c2ab5d7e7452a86d34b9835123eaaaee83c2fc7d6e1'
-        '9a3e36bdcdf028b2bb83536183b44309ae901ca6f96318f7be645202ad5c51ef8fd1e373d5bde0b2ceb740665f247067683ead4489c6507e38619b73f34cb628')
+b2sums=('440ad9999cefa51b55ed85327198bae64ab5c8e24be6d5071d6a0f8a7bc80345791c9d3ac892af516ee80f1784e990307061f674f2d1dc264a3e7539921fc458'
+        '959334ff724db11c71a153dee2c4d308f70ac79f737670b720ccdc7736d2bd50e310da163cdb8430eab930cd8b4ef6eef4de85e56f7fd9a9039e912d4d9ee2aa'
+        '7fbd67e39aa118328950d91bef0aafc89bb0ec23b5111e1b1e4949f05667654b4ea221d2da6fd1e7816835949caf076e87beebbe4e582743f57dfe23b754db75'
+        '3b5cd9589b318a848af2f53aad0ea8ae56932900346ae1f884e9667f85f9bd09389726cd4902c54fcb094de278222199b079cafaec9c620ea91f47cc91c7fe3b')
