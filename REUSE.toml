@@ -17,7 +17,6 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
-    "ffmpeg-8.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
@@ -25,15 +24,6 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "torchvision-0_17_1-fix-build.patch",
-    "nppiNV12ToRGB_709CSC_8u_P2C3R_Ctx.patch"
 ]
 SPDX-FileCopyrightText = "torchvision contributors"
 SPDX-License-Identifier = "BSD-3-Clause"
-
-[[annotations]]
-path = [
-    "cuviddec.h",
-    "nvcuvid.h",
-]
-SPDX-FileCopyrightText = "DALI contributors"
-SPDX-License-Identifier = "Apache-2.0"
