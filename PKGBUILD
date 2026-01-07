@@ -72,7 +72,6 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   local _patch
-  #for _patch in "${srcdir}"/bglibs_[0-9]*.patch; do
   for _patch in "${srcdir}"/bglibs_[0-9]*.patch "${srcdir}/debian"/patches/001_ensure_use_of_usr_bin_perl.patch; do
     printf '%s\n' "Applying patch $(basename "${_patch}" ...)"
     patch -Np1 --follow-symlinks -i "${_patch}"
