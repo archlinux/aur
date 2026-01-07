@@ -2,12 +2,12 @@
 
 pkgname=breeze-chameleon
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Breeze Chameleon Icons"
 arch=('any')
 url="https://github.com/L4ki/Breeze-Chameleon-Icons"
 source=("https://github.com/L4ki/Breeze-Chameleon-Icons/archive/refs/heads/master.zip")
-sha256sums=('4b2712a0206136bf8c61d0e001d7db4779ecab256a54bc66a99e5d6e31981978')
+sha256sums=('SKIP')
 makedepends=('unzip')
 
 package() {
