@@ -10,7 +10,6 @@ pkgbase = glgpu-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	depends = vulkan-icd-loader
-	depends = sdl2
 	provides = glgpu
 	conflicts = glgpu
 	source = git+https://github.com/Gl1tchs/glgpu.git
