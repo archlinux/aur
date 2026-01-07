@@ -1,7 +1,7 @@
 pkgbase = lyricbridge
 	pkgdesc = Python + Flet lyrics tool inspired by 163MusicLyrics
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wang1zhen/lyricbridge
 	arch = any
 	license = Apache-2.0
@@ -9,7 +9,6 @@ pkgbase = lyricbridge
 	depends = python-flet
 	depends = python-requests
 	depends = python-pycryptodome
-	optdepends = python-pypinyin: optional pinyin output
 	source = lyricbridge-0.1.7.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v0.1.7.tar.gz
 	sha256sums = e0c7fccae6a08957e7d69a0ff628ecb014d3e3eb100718ba7035999a71931156
 
