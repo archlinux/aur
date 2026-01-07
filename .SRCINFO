@@ -1,0 +1,15 @@
+pkgbase = ps7_libpsospa
+	pkgdesc = Library for PicoScope 3000E series in PicoScope 7
+	pkgver = 1.0.158_0r5815
+	pkgrel = 1
+	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpsospa/
+	install = ps7_libpsospa.install
+	arch = x86_64
+	license = 0BSD
+	depends = libusb
+	conflicts = ps7b_libpsospa
+	options = !strip
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpsospa/libpsospa_1.0.158-0r5815_amd64.deb
+	md5sums = 801c1d4c865b7df3f7bb41083376fb20
+
+pkgname = ps7_libpsospa
