@@ -5,8 +5,8 @@ pkgrel=1
 pkgdesc='Suite of nonlinear differential/algebraic equation solvers (sequential version)'
 arch=(x86_64)
 url='https://computing.llnl.gov/projects/sundials'
-license=(BSD)
-depends=(suitesparse)
+license=(BSD-3-Clause)
+depends=(gcc-libs glibc suitesparse superlu_mt)
 makedepends=(cmake gcc-fortran python)
 source=(https://github.com/LLNL/sundials/archive/v$pkgver/$_pkgname-$pkgver.tar.gz)
 sha256sums=('8b5fe715009cd0f1a0ff244729c2570e3e631d3bf357495e7813b5063d4d0cf3')
@@ -26,6 +26,8 @@ build() {
     -DKLU_INCLUDE_DIR=/usr/include/suitesparse \
     -DEXAMPLES_ENABLE_C=OFF \
     -DEXAMPLES_INSTALL_PATH=/usr/share/sundials/examples \
+    -DENABLE_SUPERLUMT=ON \
+    -DSUPERLUMT_THREAD_TYPE=OPENMP \
     -B build .
   cmake --build build
 }
@@ -34,5 +36,5 @@ package() {
   cd $_pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
