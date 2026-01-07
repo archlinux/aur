@@ -1,0 +1,16 @@
+pkgbase = line-seed-en-font
+	pkgdesc = LINE Seed TW font
+	pkgver = V1.003
+	pkgrel = 1
+	url = https://seed.line.me
+	arch = any
+	license = OFL-1.1-RFN
+	source = https://seed.line.me/src/images/fonts/LINE_Seed_Sans_EN.zip
+	sha256sums = ef6483b1a0aa60c9c1f222f18a3c0e43d3c01413a3c945a5273b908f07df33e0
+	b2sums = 7b5f4ac4464974a8fdab5bb0057e98f1b582217f15d57ffff0bed1e7569aa18e1aa04c35a8531751c7431d75481a1c98750a6c456eee97c95199fd541ab7d74d
+
+pkgname = otf-line-seed-en
+	pkgdesc = LINE Seed TW font (OTF)
+
+pkgname = ttf-line-seed-en
+	pkgdesc = LINE Seed TW font (TTF)
