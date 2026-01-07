@@ -15,7 +15,12 @@ license=(GPL3)
 depends=(wl-clipboard gtk4)
 
 provides=(multicliprelay)
-conflicts=(multicliprelay)
+conflicts=(
+  multicliprelay
+  multicliprelay-git
+  multicliprelay-debug
+  multicliprelay-git-debug
+)
 
 source=("${url}/releases/download/v${pkgver}/multicliprelay-${pkgver}-x86_64-linux.tar.gz")
 sha256sums=('c0399436722df410167d42cf9fd4e3f332f29cf63a1b349456f5ce4aa677c47d')
