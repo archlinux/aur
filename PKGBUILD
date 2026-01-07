@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='1.0'
+_upstreamver='1.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='memor'
@@ -18,7 +18,7 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('121489bb9e20298bc69e0f7fc9090261fb9a66fcaf311f8adf6a46eca286c48f')
+sha256sums=('cb2fe71f1764ddb667019962779d04bad5921aad6f197077b4ebd8c3e557d7c8')
 
 
 build() {
