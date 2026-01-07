@@ -2,8 +2,8 @@
 
 _pkgbasename=openjpeg2
 pkgname="lib32-${_pkgbasename}"
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.5.4
+pkgrel=1
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver}"
 arch=('x86_64')
 license=('BSD-2-Clause' 'MIT')
@@ -22,7 +22,7 @@ depends=(
   'lib32-zlib'
 )
 source=("$_pkgbasename-$pkgver.tar.gz::https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
-sha256sums=('368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707')
+sha256sums=('a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a')
 
 prepare() {
   mkdir -p build
