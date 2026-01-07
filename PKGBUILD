@@ -1,7 +1,7 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-server-bin
-pkgver=v5.1.0
-pkgrel=1
+pkgver=5.1.0
+pkgrel=2
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('x86_64')
 url="https://shokoanime.com/"
@@ -19,7 +19,7 @@ provides=('shoko-server')
 conflicts=('shoko-server')
 install=${pkgname}.install
 source=(
-  "Shoko.CLI_Framework_any-x64-${pkgver}.zip::https://github.com/ShokoAnime/ShokoServer/releases/download/${pkgver}/Shoko.CLI_Framework_any-x64.zip"
+  "Shoko.CLI_Framework_any-x64-v${pkgver}.zip::https://github.com/ShokoAnime/ShokoServer/releases/download/v${pkgver}/Shoko.CLI_Framework_any-x64.zip"
   'shoko-server.service'
   'LICENSE'
 )
