@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v30.0
+pkgver=v30.1
 pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1760374425
+epoch=1767777558
 
 
-# Release commit for 30.0
-_commit=6cfd509e54d31b82c0db8c0a9abc21e9c1b19ee4
+# Release commit for 30.1
+_commit=a8581477fcd21abecf79db8780c6666a74d6c207
 
 
 pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.'
@@ -44,6 +44,23 @@ sha256sums=('SKIP'
             '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68')
 
 build() {
+    echo
+    echo '********************************************************************'
+    echo '********************************************************************'
+    echo
+    echo "WARNING:  Make sure you have backed up your wallet file, as a rare"
+    echo "bug in Bitcoin (and Namecoin) Core version 30+ can wipe out Berkeley"
+    echo "DB wallet files."
+    echo
+    echo "See the pinned comment in the AUR page for wallet migration"
+    echo "instructions."
+    echo
+    echo "Sleeping for 15s to give you a chance to Ctrl+C..."
+    echo
+    echo '********************************************************************'
+    echo '********************************************************************'
+    echo
+    sleep 15
     PLATFORMNAME="x86_64-pc-linux-gnu"
     [ "$CARCH" == i686 ] && PLATFORMNAME="i686-pc-linux-gnu" || true
     cd "$srcdir/namecoin-core/"
