@@ -1,21 +1,26 @@
+# Maintainer: Quentin MICHAUD <mh4ckt3mh4ckt1c4s@archlinux.org>
 # Contributor: Po-An, Yang (Antonio Yang) <yanganto at gmail.com>
 # Contributor: tee < teeaur at duck dot com >
 pkgname=wasmedge
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
-pkgdesc='WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime'
-arch=('any')
+pkgdesc='A lightweight, high-performance, and extensible WebAssembly runtime'
+arch=('x86_64')
 url='https://wasmedge.org'
 license=('Apache-2.0')
-depends=('cmake' 'boost' 'openssl' 'ninja' 'rapidjson')
-#source=("https://github.com/WasmEdge/WasmEdge/archive/${pkgver}.tar.gz")
-source=("https://github.com/WasmEdge/WasmEdge/releases/download/$pkgver/WasmEdge-$pkgver-src.tar.gz")
-sha256sums=('6a12152c1d7fd27e4f4fb6486c63e4c2f2663bb0c6be0edb287ef5796ed32610')
+makedepends=('llvm' 'lld' 'cmake' 'ninja' 'spdlog')
+depends=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/WasmEdge/WasmEdge/releases/download/$pkgver/WasmEdge-$pkgver-src.tar.gz")
+sha256sums=('fc256b8be022eb0487549cc2119c57fd12ad402e4130a05263b7aa85e2df89b9')
+
+build() {
+	cd "$pkgname"
+	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" .
+	ninja -C build
+}
 
 package() {
-  install -d "${pkgdir}/usr"
-  cd "${srcdir}/wasmedge"
-  cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" .
-  cmake --build build
-  ninja -C build install
+	cd "$pkgname"
+	ninja -C build install
 }
+
