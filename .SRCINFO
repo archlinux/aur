@@ -11,6 +11,6 @@ pkgbase = niri_window_buttons
 	depends = waybar
 	depends = gtk3
 	source = niri_window_buttons-0.3.2.tar.gz::https://github.com/adelmonte/niri_window_buttons/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = b9a0f088f9f20904d82820bd81dbb2c6153574477936b3934db41fc75e946c4b
+	sha256sums = 481803a8d65cd6c50749c1c0c2b4836eb90fbc686d6e86da191cd08300ae721f
 
 pkgname = niri_window_buttons
