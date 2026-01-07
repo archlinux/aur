@@ -1,14 +1,14 @@
 pkgbase = yayfzf
-	pkgdesc = AUR package fzf finder to search, install, remove, and manage packages using yay
-	pkgver = 1.0.4
-	pkgrel = 0
+	pkgdesc = fzf-based interface for searching, installing, removing, and managing packages using yay
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://github.com/ConnerWill/yayfzf
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = bash
 	depends = fzf
 	depends = yay
-	source = yayfzf-1.0.4.tar.gz::https://github.com/ConnerWill/yayfzf/archive/refs/tags/v1.0.4.tar.gz
+	source = yayfzf-1.0.6.tar.gz::https://github.com/ConnerWill/yayfzf/archive/refs/tags/v1.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = yayfzf
