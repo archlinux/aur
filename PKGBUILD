@@ -1,19 +1,25 @@
 # Maintainer: Zachary M <minein12@protonmail.com>
 
 pkgname=falcond-profiles
-pkgver=1.0
+pkgver=r20.0f87c74
+_pkgver=0f87c748cf34a9bcbc4351ad051bcef8cce79158
 pkgrel=1
 pkgdesc='Default falcond profiles'
 url='https://github.com/PikaOS-Linux/falcond-profiles'
 arch=(any)
 license=('MIT')
 
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz)
-sha256sums=('73301ba736340183c2ac7cef7539ad73811918afe5f7a6884f7306f26d28a44e')
+source=(git+${url}.git#commit=${_pkgver})
+sha256sums=('a658aef941b00630e6c4d39b8130fea9e7a43b0236260c753db44d73a2772fc5')
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package() {
     _pkgdir="$pkgdir/usr/share/falcond"
-    cd "$pkgname-main"
+    cd "$pkgname"
 
     install -Dm 644 LICENSE \
         -t "$pkgdir/usr/share/licenses/${pkgname}"
