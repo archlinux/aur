@@ -1,7 +1,7 @@
 # Maintainer: Kartatz <kartatz at amanoteam.com>
 pkgname=obggcc-bin
 pkgver=15.2.0
-pkgrel=20251208
+pkgrel=20260107
 pkgdesc='Linux C/C++ cross-compiler targeting older glibc versions'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AmanoTeam/obggcc'
@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/obggcc/releases/download/gcc-${pkgv
 source_aarch64=("https://github.com/AmanoTeam/obggcc/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/obggcc/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('a341dfa0644239bd8e720b88500e910a05daf96582e48001a0cf438c2262c17f')
-sha256sums_x86_64=('f1231479d394ec8965d317917ae84c4d017c2f158c7a4a93773f52d384ad569a')
-sha256sums_aarch64=('69d91c609a253a84e3d3249b34b4fac1d832741ff46030a5bbb1ac39c2b34bb2')
-sha256sums_armv7h=('6b723816d79eaea0e8614b0eccf4f799251bb40ac5966e6cf495e9be1fcdb3c9')
+sha256sums_i686=('441a86a81e8b7174703d10a9fd487866815d75898083dfedb6e79ca221d852da')
+sha256sums_x86_64=('8237336cc7c70ce093d85a93e4ae7d9dffd00c7d78354ed50337529bb099effe')
+sha256sums_aarch64=('4043fc9e7690650a46c92f42b1642ba17f9ebde38417ed2895243c758cd2c137')
+sha256sums_armv7h=('aa9be0bf4aef25b3c4d4bdfc34497473db38e63f078498e59762f33bb3dd9b82')
 
 package() {
 	
