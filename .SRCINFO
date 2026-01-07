@@ -1,12 +1,13 @@
 pkgbase = qrtr
 	pkgdesc = Userspace reference for net/qrtr in the Linux kernel
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/andersson/qrtr
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	source = qrtr-1.0.tar.gz::https://github.com/linux-msm/qrtr/archive/refs/tags/v1.0.tar.gz
-	sha256sums = dc5db4872ff0d3c43b5c6d115fadc94f393c9c8c89b4246e327853b466d6c49f
+	makedepends = meson
+	source = qrtr-1.2.tar.gz::https://github.com/linux-msm/qrtr/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 7a82bf80246fe71287b13c66c0466208822e8337fcd4aaf302eee6c5fcb48a52
 
 pkgname = qrtr
