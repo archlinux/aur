@@ -1,0 +1,16 @@
+pkgbase = line-seed-kr-font
+	pkgdesc = LINE Seed KR font
+	pkgver = 2023.09.06
+	pkgrel = 1
+	url = https://seed.line.me
+	arch = any
+	license = OFL-1.1-RFN
+	source = https://seed.line.me/src/images/fonts/LINE_Seed_Sans_KR.zip
+	sha256sums = bfc3d5f737a47be1d9fc6cc971d8f78c7b6688f327501b522071f306dcdcf3e1
+	b2sums = b318994d46bad527c2c8c6ee07a447452fea7ef5cb446487e43fce9f3de4db577b52ee6be2d4d6f7578f05776fdd2a8bae67688075b666f514bbe007759f1a8d
+
+pkgname = otf-line-seed-kr
+	pkgdesc = LINE Seed KR font (OTF)
+
+pkgname = ttf-line-seed-kr
+	pkgdesc = LINE Seed KR font (TTF)
