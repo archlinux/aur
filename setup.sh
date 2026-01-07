@@ -4,10 +4,8 @@
 # --- CẤU HÌNH ---
 if [ -n "$SUDO_USER" ]; then
     TARGET_USER="$SUDO_USER"
-elif [ -n "$DOAS_USER" ]; then
-    TARGET_USER="$DOAS_USER"
 else
-    TARGET_USER=$(logname 2>/dev/null || who am i | awk '{print $1}')
+    TARGET_USER=$(logname 2>/dev/null)
 fi
 
 if [ -z "$TARGET_USER" ] || [ "$TARGET_USER" == "root" ]; then

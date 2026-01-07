@@ -39,7 +39,7 @@ pre_remove() {
     fi
 
     rm -f /etc/udev/rules.d/99-vmk-uinput.rules
-    # rm -f /etc/modules-load.d/uinput.conf
+    rm -f /etc/modules-load.d/uinput.conf
 
     echo "Cleanup complete."
 }
