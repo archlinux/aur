@@ -15,6 +15,7 @@ depends=(
   hicolor-icon-theme
 )
 makedepends=(
+  git
   cmake
   qt6-tools
 )
