@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=lrclibfetch
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A cli for LRCLIB."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
