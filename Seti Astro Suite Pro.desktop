@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Education;
+Comment[en_US]=An astrophotography editing suite
+Comment=An astrophotography editing suite
+Exec=/opt/seti-astro-suite-pro/SetiAstroSuitePro
+GenericName[en_US]=
+GenericName=
+Icon=seti-astro-suite-pro
+MimeType=
+Name[en_US]=Seti Astro Suite Pro
+Name=Seti Astro Suite Pro
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=true
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
