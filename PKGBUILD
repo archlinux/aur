@@ -3,7 +3,7 @@
 
 _name=passwords
 pkgname=nextcloud-app-passwords
-pkgver=2025.12.10
+pkgver=2025.12.11
 _pkgver=2025.12.0
 pkgrel=1
 pkgdesc='Easy to use yet feature-rich and secure password manager for Nextcloud'
