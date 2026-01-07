@@ -1,0 +1,19 @@
+pkgbase = opencode-cursor-auth
+	pkgdesc = Cursor Auth Plugin for opencode
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://github.com/POSO-PocketSolutions/opencode-cursor-auth
+	install = opencode-cursor-auth.install
+	arch = any
+	license = ISC
+	depends = opencode
+	depends = npm
+	conflicts = opencode-cursor-auth-debug
+	options = !strip
+	options = !debug
+	source = opencode-cursor-auth-1.0.16.tar.gz::https://registry.npmjs.org/opencode-cursor-auth/-/opencode-cursor-auth-1.0.16.tgz
+	sha256sums = 91b07e997ef82a3456c8a118104d5bf1024e7a920ff924fbc0f3b51a7cdd7ae5
+
+pkgname = opencode-cursor-auth
+	depends = opencode
+	depends = cursor-cli
