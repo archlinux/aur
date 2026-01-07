@@ -1,7 +1,7 @@
 pkgbase = rpi-imager-latest
 	pkgdesc = Raspberry Pi Imager – flash images to SD cards and USB drives
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raspberrypi.com/software/
 	arch = x86_64
 	arch = aarch64
