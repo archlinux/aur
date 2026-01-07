@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=php83-apcu
-pkgver=5.1.24
+pkgver=5.1.28
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP 8.3'
@@ -11,7 +11,7 @@ license=('PHP')
 source=("https://pecl.php.net/get/apcu-${pkgver}.tgz"
 		"apcu.ini")
 backup=("etc/php83/conf.d/apcu.ini")
-sha256sums=('5c28a55b27082c69657e25b7ecf553e2cf6b74ec3fa77d6b76f4fb982e001e43'
+sha256sums=('ca9c1820810a168786f8048a4c3f8c9e3fd941407ad1553259fb2e30b5f057bf'
             '18b2d904848b185bdc7c0c6a5f7c82ec809e9ed3f137cd6d3420160f4756630f')
 
 prepare() {
