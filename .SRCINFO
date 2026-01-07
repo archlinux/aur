@@ -1,6 +1,6 @@
 pkgbase = gg-jujutsu-bin
 	pkgdesc = A GUI for the version control system Jujutsu. (binary version)
-	pkgver = 0.36.2
+	pkgver = 0.36.4
 	pkgrel = 1
 	url = https://github.com/gulbanana/gg
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = gg-jujutsu-bin
 	conflicts = gg-jujutsu
 	options = !strip
 	options = !emptydirs
-	source = gg-jujutsu-bin-0.36.2.deb::https://github.com/gulbanana/gg/releases/download/v0.36.2/gg_0.36.2_amd64.deb
-	source = gg-jujutsu-bin-0.36.2.LICENSE::https://raw.githubusercontent.com/gulbanana/gg/refs/tags/v0.36.2/LICENSE
+	source = gg-jujutsu-bin-0.36.4.deb::https://github.com/gulbanana/gg/releases/download/v0.36.4/gg_0.36.4_amd64.deb
+	source = gg-jujutsu-bin-0.36.4.LICENSE::https://raw.githubusercontent.com/gulbanana/gg/refs/tags/v0.36.4/LICENSE
 	b2sums = c2e25afb638cc5724c1afe2202caa5cac053eb86c4263f650aa3873eb29684ec6ff407e39a6ac47e72014d3c0227ed77c74bdfcefcf3d3761228c46e7c419237
 	b2sums = 1bbdb8ea81b42a8ce554f92fd57009eef6b296472f910c5542d8a445e34bb0eee0e627a74462b9f453fe9d8853bde71fdb0eea11102bb604129753de6ecc6e06
 
