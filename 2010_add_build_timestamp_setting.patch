@@ -1,0 +1,119 @@
+Description: Allow the build timestamp to be externally set
+ In order to make Ghostscript output reproducible, we need a way to
+ set the build timestamp to other values than the current time.
+ We now consistently use gp_get_realtime() instead of directly calling
+ time() or gp_get_usertime() and make gp_get_realtime() use the value
+ found in the SOURCE_DATE_EPOCH environment variable if set. Also,
+ environment timezone is fixed to UTC if SOURCE_DATE_EPOCH is used to
+ avoid variations.
+Author: Eduard Sanou <dhole@openmailbox.org>
+Author: Peter De Wachter <pdewacht@gmail.com>
+Bug-Debian: https://bugs.debian.org/794004
+Last-Update: 2015-07-30
+---
+This patch header follows DEP-3: https://dep.debian.net/deps/dep3/
+--- a/base/gp_unix.c
++++ b/base/gp_unix.c
+@@ -19,6 +19,7 @@
+ #ifdef __MINGW32__
+ #  include "windows_.h"
+ #endif
++#include "errno_.h"
+ #include "pipe_.h"
+ #include "string_.h"
+ #include "time_.h"
+@@ -148,6 +149,7 @@
+ gp_get_realtime(long *pdt)
+ {
+     struct timeval tp;
++    const char *env;
+ 
+ #if gettimeofday_no_timezone    /* older versions of SVR4 */
+     {
+@@ -167,6 +169,26 @@
+     }
+ #endif
+ 
++    env = getenv("SOURCE_DATE_EPOCH");
++    if (env) {
++        char *end;
++        long timestamp;
++
++        errno = 0;
++        timestamp = strtol(env, &end, 10);
++        if (env == end || *end || errno != 0) {
++            lprintf("Ghostscript: SOURCE_DATE_EPOCH is not a number!\n");
++            timestamp = 0;
++        }
++
++        tp.tv_sec = timestamp;
++        tp.tv_usec = 0;
++
++        /* We need to fix the environment timezone to get reproducible */
++        /* results when parsing the result of gp_get_realtime. */
++        setenv("TZ", "UTC", 1);
++    }
++
+     /* tp.tv_sec is #secs since Jan 1, 1970 */
+     pdt[0] = tp.tv_sec;
+ 
+--- a/devices/vector/gdevpdf.c
++++ b/devices/vector/gdevpdf.c
+@@ -427,6 +427,7 @@
+      */
+     {
+         struct tm tms;
++        long secs_ns[2];
+         time_t t;
+         char buf[1+2+4+2+2+2+2+2+1+2+1+2+1+1+1]; /* (D:yyyymmddhhmmssZhh'mm')\0 */
+         int timeoffset;
+@@ -438,7 +439,8 @@
+         timesign = 'Z';
+         timeoffset = 0;
+ #else
+-        time(&t);
++        gp_get_realtime(secs_ns);
++        t = secs_ns[0];
+         tms = *gmtime(&t);
+         tms.tm_isdst = -1;
+         timeoffset = (int)difftime(t, mktime(&tms)); /* tz+dst in seconds */
+--- a/devices/vector/gdevpdfe.c
++++ b/devices/vector/gdevpdfe.c
+@@ -199,6 +199,7 @@
+ {
+     /* We don't write a day time because we don't have a time zone. */
+     struct tm tms;
++    long secs_ns[2];
+     time_t t;
+     char buf1[4+1+2+1+2+1]; /* yyyy-mm-dd\0 */
+ 
+@@ -206,7 +207,8 @@
+     memset(&t, 0, sizeof(t));
+     memset(&tms, 0, sizeof(tms));
+ #else
+-    time(&t);
++    gp_get_realtime(secs_ns);
++    t = secs_ns[0];
+     tms = *localtime(&t);
+ #endif
+     gs_sprintf(buf1,
+--- a/devices/vector/gdevpsu.c
++++ b/devices/vector/gdevpsu.c
+@@ -183,6 +183,7 @@
+     fprintf(f, "%%%%Creator: %s %ld (%s)\n", gs_product, (long)gs_revision,
+             dev->dname);
+     {
++        long secs_ns[2];
+         time_t t;
+         struct tm tms;
+ 
+@@ -190,7 +191,8 @@
+         memset(&t, 0, sizeof(t));
+         memset(&tms, 0, sizeof(tms));
+ #else
+-        time(&t);
++        gp_get_realtime(secs_ns);
++        t = secs_ns[0];
+         tms = *localtime(&t);
+ #endif
+         fprintf(f, "%%%%CreationDate: %d/%02d/%02d %02d:%02d:%02d\n",

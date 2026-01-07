@@ -1,12 +1,10 @@
 pkgbase = ghostscript-git
 	pkgdesc = An interpreter for the PostScript language
-	pkgver = 9.25.r6012.g95281026d
+	pkgver = 10.07.r11385.g8bfcbc50a
 	pkgrel = 1
 	url = https://www.ghostscript.com/
-	arch = i686
 	arch = x86_64
-	license = AGPL3
-	license = custom
+	license = AGPL-3.0-or-later
 	makedepends = gtk3
 	makedepends = gnutls
 	makedepends = glu
@@ -17,21 +15,29 @@ pkgbase = ghostscript-git
 	depends = fontconfig
 	depends = zlib
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = jbig2dec
 	depends = libtiff
 	depends = lcms2
-	depends = dbus
 	depends = libpaper
 	depends = ijs
 	depends = openjpeg2
+	depends = libidn
+	depends = poppler-data
+	depends = cairo
+	depends = glibc
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = sh
+	optdepends = gtk3: needed for gsx
+	conflicts = ghostpcl
+	conflicts = ghostxps
 	source = git://git.ghostscript.com/ghostpdl.git
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = 2010_add_build_timestamp_setting.patch
+	sha512sums = SKIP
+	sha512sums = cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d
 
 pkgname = ghostscript-git
-
-pkgname = ghostxps-git
-
-pkgname = ghostpcl-git
-
+	provides = ghostscript=10.07
+	conflicts = ghostscript
