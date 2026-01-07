@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=2.0.0.alpha10.r19.g9a12f5f3
+pkgver=2.0.0.alpha10.r30.gf9d0c901
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
     git config submodule.3rdparty/nanobench.url ../nanobench
     git config submodule.3rdparty/pareto.url ../pareto
     git config submodule.3rdparty/jsoncpp.url ../jsoncpp
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {

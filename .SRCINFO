@@ -1,6 +1,6 @@
 pkgbase = ericw-tools-git
 	pkgdesc = Quake/Hexen 2 Map compiling tools
-	pkgver = 2.0.0.alpha10.r19.g9a12f5f3
+	pkgver = 2.0.0.alpha10.r30.gf9d0c901
 	pkgrel = 1
 	url = https://ericwa.github.io/ericw-tools
 	arch = x86_64
