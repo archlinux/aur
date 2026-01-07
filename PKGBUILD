@@ -24,11 +24,6 @@ sha256sums=('88ed9bb3905b296f51d4a2130292e5979643140e6710a9bb5224f5708244f01f'
 sha256sums_x86_64=('1f83821482ed2a5f79817cece8d3b48bf529f0cbaf2e23e9600fb35ada9ebf7b')
 sha256sums_aarch64=('1a011f44192bbe34e40346275b37ea62aa7ab1a2958cf16e51672611bb39c3c0')
 
-build() {
-    cd "${srcdir/}" || exit
-
-    sed -s -e '${p;g;}' ./*.md.{1,2,3} | sed -e '$d' > ./README-${pkgver}.md
-}
 
 package() {
     cd "${pkgdir}/" || exit
