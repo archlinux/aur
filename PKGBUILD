@@ -3,17 +3,17 @@
 
 pkgname=python-ffmpeg-progress-yield
 _name=${pkgname#python-}
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Run an ffmpeg command with its progress yielded."
 arch=('any')
 url="https://github.com/slhck/ffmpeg-progress-yield"
 license=('MIT')
 depends=('ffmpeg' 'python-tqdm')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-installer' 'python-build' 'python-uv-build')
 checkdepends=('ffmpeg' 'python-pytest' 'python-pytest-asyncio' 'procps-ng')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('298877dc61f8b82c1bb9162fe2f515bdabc57ced9181288bd77d1b244da619dc5c53dc7e819c5b4b51e7d5ddd59ba4d614d55c184d9b80fe7e453e1fdf6f1144')
+sha512sums=('d03dc3687839ae2111c0707b1853f8c2f93b8b9b1b93ddc637b8591822ef4e01363fe0d22170a07ccefee5f6ddfc1a7a0dded33a39841da377b96be79feed4f9')
 
 build() {
   cd ${_name}-${pkgver}
@@ -22,11 +22,13 @@ build() {
 
 check() {
   cd ${_name}-${pkgver}
-  pytest test/test.py
+  python -m venv --system-site-packages venv
+  venv/bin/python -m installer dist/*.whl
+  PATH="venv/bin:$PATH" venv/bin/python -m pytest tests
 }
 
 package() {
   cd ${_name}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
