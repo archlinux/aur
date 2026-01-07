@@ -10,7 +10,7 @@
 _pkgname="helium"
 pkgname="${_pkgname}-browser-beta-bin"
 _binaryname="helium-browser"
-pkgver=0.7.9.1
+pkgver=0.7.10.1
 pkgrel=3
 pkgdesc="Private, fast, and honest web browser based on Chromium (pre-release)"
 arch=('x86_64' 'aarch64')
@@ -39,10 +39,10 @@ source_aarch64=("${_pkgname}-${pkgver}-arm64_linux.tar.xz::https://github.com/im
 validpgpkeys=('BE677C1989D35EAB2C5F26C9351601AD01D6378E') # Helium <helium@imput.net>
 sha256sums=('ab41ebe29de90c0fd44d2059ed8a433d5cbf7f9a6e9db772abcd7db1c8c7abb5'
             '3fb34e8e3e4cfeb9c54bee353f676283e3a2409653b608f5dc502b7a4c9e1c26')
-sha256sums_x86_64=('fcd70bf1a0c0e52d33bee94a70fc33726a18f911decabefc4d9515aaff550236'
+sha256sums_x86_64=('03eff7d0632d010f01e71d5d1ff9b16c93f5852a7ac2276b4751c57a786a6f78'
                    'SKIP'
                    '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
-sha256sums_aarch64=('cef2f444ca261f31eb4e075b24183e1abac73e5b26a71d0886e2a0615816ccf0'
+sha256sums_aarch64=('de643b7b9140be033adb009f3f93f4400c718808e2b652a8149847db12b9e6d6'
                     'SKIP'
                     '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
 
