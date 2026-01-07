@@ -1,8 +1,8 @@
 # Maintainer: kylon
 pkgbase="powertuner"
 pkgname="powertuner"
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="The first multi-platform client-daemon tuning app for desktop and handheld devices"
 url="https://github.com/PowerTuner"
 install="powertuner.install"
@@ -21,7 +21,7 @@ source=(
     "https://github.com/PowerTuner/PowerTuner-releases/releases/download/${pkgver}/PowerTunerArchLinux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    '695f3ac3a37f010f705818d10839d48969ae98fc4393989ea105bd3c4aa0e091'
+    '0c496939ebcef2166d1ea62b9bdd3b856aba152157a320fed14ed8c8b18be39f'
 )
 
 prepare() {
@@ -39,7 +39,7 @@ package() {
     install -Dm755 "${baseDir}"/usr/bin/PowerTunerDaemon -t "${pkgdir}"/usr/bin/
 
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so -t "${pkgdir}"/usr/lib/
-    install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so.1.0 -t "${pkgdir}"/usr/lib/
+    install -Dm755 "${baseDir}"/usr/lib/libPWTClientCommon.so.1.1 -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTClientService.so.1.1 -t "${pkgdir}"/usr/lib/
     install -Dm755 "${baseDir}"/usr/lib/libPWTShared.so -t "${pkgdir}"/usr/lib/
