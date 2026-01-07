@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=unmake
 pkgname=${_pkgname}-bin
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A makefile linter"
@@ -21,8 +21,8 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('78981bd86affd2b1ddc11ec048f31c7beeda56c923495515434ac82aaa906df1'
-            'f9a2f761abb2c61316cc182d4fc7e183b6f9e2181fc88f395db0e44d50a6857c'
+sha256sums=('df979a709d66f426117791b5fa59a204f36e4222407e192f9ab27cae00d7b046'
+            'ef23ca49a17fca9748e89b12783fc0bfa2872e54b42d31baaf8f6b4f743a72ff'
             '57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec')
 
 BIN_FOLDER="${_pkgname}-${pkgver}/${CARCH}-unknown-linux-${_clib}"
