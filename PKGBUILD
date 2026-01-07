@@ -50,6 +50,9 @@ depends=(
     # FFMPEG (for H.264 encoding)
     ffmpeg
 
+    # H264
+    libx264
+
     # DRM (for GBM)
     libdrm
 

@@ -30,6 +30,7 @@ pkgbase = waytermirror-git
 	depends = opusfile
 	depends = libsixel
 	depends = ffmpeg
+	depends = libx264
 	depends = libdrm
 	depends = mesa
 	depends = libpng
