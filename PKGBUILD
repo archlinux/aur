@@ -1,7 +1,7 @@
 # Maintainer: Avi Tretiak <avi at babi dot uy>
 
 pkgname=kwin-effects-glass-git
-pkgver=r467.74a2247
+pkgver=r483.086741e
 pkgrel=1
 pkgdesc="Fork of Plasma 6 blur effect with force blur, rounded corners, refraction, and additional features (Wayland & X11)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(kio knotifications kcrash kglobalaccel kcmutils libepoxy)
 optdepends=("kwin-x11: for X11" "kwin: for Wayland")
 conflicts=()
 provides=("${pkgname%-git}")
-makedepends=(git extra-cmake-modules qt6-tools kwin kwin-x11)
+makedepends=(git cmake extra-cmake-modules qt6-tools kwin kwin-x11)
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -21,12 +21,18 @@ pkgver() {
 }
 
 build() {
-    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
+    local _cmake_args=(
+        -B build
+        -S "$pkgname"
+        -W no-dev
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
 
-    cmake "${_cmake_args[@]}" -B build -S "$pkgname"
-    make -C build
+    cmake "${_cmake_args[@]}"
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+    DESTDIR="${pkgdir}" cmake --install build
 }
