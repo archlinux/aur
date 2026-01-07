@@ -25,9 +25,11 @@ bump:
 
   echo "Bumping version to $latest"
   sed -i "s/pkgver=.*/pkgver=$latest/" PKGBUILD
+  sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
 
   just update-checksums
-  just commit
+
+  git commit -am "chore: bump to v$latest"
 
 update-checksums:
   #!/bin/sh
@@ -43,11 +45,9 @@ update-checksums:
   echo "Updating SRCINFO"
   makepkg --printsrcinfo > .SRCINFO
 
-commit:
-  @git commit -am "chore: nexus-cli v{{latest_version}}"
-
 install:
+  makepkg -f
   makepkg -si
 
 clean:
-  rm -rf *.tgz *.zst ./src ./pkg
+  rm -rf *.tar.gz *.tar.xz *.zst ./src ./pkg
