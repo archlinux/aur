@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -10,12 +10,14 @@ license=('custom:Agisoft EULA' 'custom')
 depends=('gcc')
 makedepends=('imagemagick')
 optdepends=('glu: mesa OpenGL lib'
-            'nvidia-utils: nvidia proprietary OpenGL lib'
-            'opencl-clover-mesa: mesa clover OpenCL runtime for GPU acceleration'
-            'opencl-rusticl-mesa: mesa rusticl OpenCL runtime for GPU acceleration'
-            'opencl-amd: AMDGPU PRO OpenCL runtime for GPU acceleration'
+            'nvidia-utils: nvidia proprietary OpenGL and Vulkan lib'
+            'opencl-mesa: mesa rusticl OpenCL runtime for GPU acceleration'
+	    'rocm-opencl-runtime: AMD ROCm OpenCL runtime for GPU acceleration'
             'cuda: nvidia CUDA runtime for GPU acceleration'
             'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration'
+	    'vulkan-icd-loader: Vulkan installable client driver loader for texture blending on GPU'
+	    'vulkan-radeon: AMD Vulkan driver for texture blending on GPU'
+	    'vulkan-intel: Intel Vulkan driver for texture blending on GPU'
             'libffi6: QT5 API support in console')
 provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
 options=('!strip')
