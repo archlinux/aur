@@ -5,6 +5,7 @@ pkgbase = noon-looks
 	url = https://github.com/PharmaRacist/Noon
 	arch = any
 	license = MIT
+	depends = noon-xp-icons
 	depends = adw-gtk-theme
 	depends = archlinux-xdg-menu
 	depends = fontconfig
