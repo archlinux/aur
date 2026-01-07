@@ -12,6 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
+validpgpkeys=('D2059131FDE2EECC7C90A549F2CB939C8AA67892')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"

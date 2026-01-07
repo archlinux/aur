@@ -14,6 +14,7 @@ pkgbase = hyprkcs-git
 	provides = hyprkcs
 	conflicts = hyprkcs
 	source = hyprkcs::git+https://github.com/kosa12/hyprKCS.git
+	validpgpkeys = D2059131FDE2EECC7C90A549F2CB939C8AA67892
 	sha256sums = SKIP
 
 pkgname = hyprkcs-git
