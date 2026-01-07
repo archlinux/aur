@@ -1,4 +1,4 @@
-# Maintainer: myuki <mioki.cinnamon650@8shield.net>
+# Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
 
 pkgname=mihomo-tui-bin
 _pkgname=mihomo-tui
