@@ -2,7 +2,7 @@
 
 _pkgname=rgrc
 pkgname=${_pkgname}-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -16,11 +16,11 @@ source_aarch64=(rgrc_${pkgver}_aarch64.tar.gz::${url}/releases/download/v${pkgve
 source_i686=(rgrc_${pkgver}_i686.tar.gz::${url}/releases/download/v${pkgver}/rgrc-i686-unknown-linux-musl.tar.gz)
 source_arm=(rgrc_${pkgver}_arm.tar.gz::${url}/releases/download/v${pkgver}/rgrc-arm-unknown-linux-musleabihf.tar.gz)
 
-sha256sums=('2029adccdf6533120ccdf956a7ed9147f6050d811b356fb76b786b7a8103c1f6')
-sha256sums_i686=('ef0137bc560d4dc1d44b6af7adc6b334cc82983772fcd115ae88b7e5a4f75c1d')
-sha256sums_x86_64=('9105537e3605831390bb78276eb7c7a0099517f84e887bb267a67d49787d0745')
-sha256sums_arm=('f18cbf41257f0a779a0744bc5d219d45f8acf5714dec089048e558962f0c9b46')
-sha256sums_aarch64=('343d0976ecce0eed460cd64bf65759cb9f1b31230d6319d07b3e901a1fbd4b02')
+sha256sums=('8a9c5a122a6a0ccc03b7429939574f3cd0ac8f0e7c9c5d582e26720582b070f0')
+sha256sums_i686=('95b4973f47c17246f9f73686cd03839dcd8fea3ca6df7606cdd2bf9250961f7f')
+sha256sums_x86_64=('43411f08f289e5f8b7eab33adf6586294f29634c129801e22997a94ada57f9de')
+sha256sums_arm=('cdfe78ff9fd66bde3b8f90e0a76dc2b19557586deb21115e6646a9e4f25e6fba')
+sha256sums_aarch64=('47d57dfe718ff4ab59b3beefb7457e8553cd236396b0d1ebc3648f2035c30477')
 
 build() {
   # Generate shell completions
