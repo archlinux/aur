@@ -1,7 +1,7 @@
 # Maintainer: Parker Young <parker at parker8283 dot net>
 
 pkgname=dolphin-memory-engine
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Dolphin emulator memory searcher"
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=()
 install="${pkgname}.install"
 source=("git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=${pkgver}"
         "0001-desktop-exec.patch")
-sha256sums=('06fcb33c6843031b50129c347eaf89fbf786b710a24ac75585f0b2fd3e1721e0'
+sha256sums=('5185e5e0aecbae079c9099ed567caab3ffcb3bdb68dfb5a1d2657a47070c505a'
             'f90dbab8b97ed03249be5ab31cdf871424550ee73e5972ebe9afa0a5ca41f9b4')
 
 prepare() {
