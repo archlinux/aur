@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Granger <nicolas.granger.m@gmail.com>
 
 pkgname=virtualbmc
-pkgver=3.0.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A virtual BMC for controlling virtual machines using IPMI commands"
 arch=('any')
