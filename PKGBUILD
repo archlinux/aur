@@ -24,7 +24,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "$srcdir/$pkgname"
-    cargo build --features libvips --locked --offline --release
+    cargo build --features libvips --locked --offline --package faircamp --release
 }
 
 package() {
@@ -46,4 +46,3 @@ prepare() {
     cd "$srcdir/$pkgname"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
-
