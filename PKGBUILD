@@ -2,7 +2,7 @@
 
 pkgname=clifm
 pkgver=1.27
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/${pkgname}"
@@ -16,8 +16,9 @@ optdepends=(
 	'atool: Archives/compression support'
 	'p7zip: ISO 9660 support'
 	'cdrtools: ISO 9660 support'
-	'fzf: fzf mode for TAB completion'
-	'smenu: smenu mode for TAB completion'
+	'fzf: fzf mode for tab completion'
+	'fnf: fnf mode for tab completion'
+	'smenu: smenu mode for tab completion'
 	'udevil: (un)mount storage devices'
 	'udisks2: (un)mount storage devices'
 	)
