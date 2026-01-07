@@ -1,0 +1,20 @@
+pkgbase = noctalia-unofficial-auth-agent-git
+	pkgdesc = Polkit authentication agent and GNOME Keyring prompter for noctalia-shell
+	pkgver = r43.fc40397
+	pkgrel = 1
+	url = https://github.com/anthonyhab/noctalia-polkit
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = polkit-qt6
+	depends = polkit
+	depends = gcr-4
+	depends = json-glib
+	provides = noctalia-unofficial-auth-agent
+	conflicts = noctalia-unofficial-auth-agent
+	source = noctalia-unofficial-auth-agent-git::git+https://github.com/anthonyhab/noctalia-unofficial-auth-agent.git
+	sha256sums = SKIP
+
+pkgname = noctalia-unofficial-auth-agent-git
