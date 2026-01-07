@@ -20,16 +20,13 @@ package() {
   cd "$srcdir/$pkgname"
 
   # Install icon theme to /usr/share/icons
-  install -dm755 "$pkgdir/usr/share/icons"
-  cp -r Windows-XP "$pkgdir/usr/share/icons/noon-xp"
+  install -dm755 "$pkgdir/usr/share/icons/noon-xp"
+
+  # Copy all contents directly
+  cp -r * "$pkgdir/usr/share/icons/noon-xp/"
 
   # Install license if it exists
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  fi
-
-  # Install README if it exists
-  if [ -f README.md ]; then
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   fi
 }
