@@ -1,6 +1,6 @@
 pkgbase = python-pygradientify
 	pkgdesc = Make terminal UI's beautiful
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = github.com/xsorroww/pygradientify
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pygradientify
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pygradientify/pygradientify-1.0.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pygradientify/pygradientify-1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-pygradientify

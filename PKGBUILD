@@ -1,6 +1,6 @@
 pkgname=python-pygradientify
 _name=pygradientify
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Make terminal UI's beautiful"
 arch=('any')
