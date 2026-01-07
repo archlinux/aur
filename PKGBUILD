@@ -2,7 +2,7 @@
 
 pkgname=lrclibfetch
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli for LRCLIB."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Aethar01/lrclibfetch"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('lrclibfetch')
 options=('!lto')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2e1b36e8241ca50586a6623ac9a347358a36ffd29237a8b09645dff1c4efc9f')
+sha256sums=('1d6a91af6f4bce73daa1b40ce13d430a43dd29bf781f1498597ea281b39f2d00')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
