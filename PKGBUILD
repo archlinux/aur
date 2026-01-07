@@ -8,7 +8,7 @@ url="https://github.com/Gl1tchs/glgpu"
 license=('MIT')
 groups=()
 
-depends=('vulkan-icd-loader' 'sdl2')
+depends=('vulkan-icd-loader')
 
 makedepends=('git' 'cmake' 'ninja' 'vulkan-headers')
 
