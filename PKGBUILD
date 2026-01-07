@@ -1,6 +1,6 @@
 pkgname=lyricbridge
 pkgver=0.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Python + Flet lyrics tool inspired by 163MusicLyrics"
 arch=('any')
 url="https://github.com/wang1zhen/lyricbridge"
@@ -13,6 +13,7 @@ depends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e0c7fccae6a08957e7d69a0ff628ecb014d3e3eb100718ba7035999a71931156')
+optdepends=('pypinyin: optional pinyin output')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
