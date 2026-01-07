@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
+source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

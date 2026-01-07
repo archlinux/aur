@@ -13,7 +13,7 @@ pkgbase = hyprkcs-git
 	depends = gcc-libs
 	provides = hyprkcs
 	conflicts = hyprkcs
-	source = git+https://github.com/kosa12/hyprKCS.git
+	source = hyprkcs::git+https://github.com/kosa12/hyprKCS.git
 	sha256sums = SKIP
 
 pkgname = hyprkcs-git
