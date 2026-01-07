@@ -8,10 +8,10 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.19
+pkgver=3.4.20
 pkgrel=1
 pkgdesc='Database manager for SQLite'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://sqlitestudio.pl'
 _git='https://github.com/pawelsalawa/sqlitestudio'
 license=('GPL-3.0-or-later AND custom')
@@ -33,7 +33,7 @@ source=(
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('9634e868e19a9a8e2603a6bfd6211ec762a3f3e8f2a2450ce05fb30ab29c0b59'
+sha256sums=('ee66a32fd326ecf1e07a3efc10ca479e212b2e14b9632dc49c1ef5c2cb76933b'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
