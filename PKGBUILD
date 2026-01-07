@@ -2,12 +2,12 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
 license=('custom:Agisoft EULA' 'custom')
-depends=('gcc')
+depends=('gcc' 'libxml2-legacy')
 makedepends=('imagemagick')
 optdepends=('glu: mesa OpenGL lib'
             'nvidia-utils: nvidia proprietary OpenGL and Vulkan lib'
@@ -17,8 +17,7 @@ optdepends=('glu: mesa OpenGL lib'
             'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration'
 	    'vulkan-icd-loader: Vulkan installable client driver loader for texture blending on GPU'
 	    'vulkan-radeon: AMD Vulkan driver for texture blending on GPU'
-	    'vulkan-intel: Intel Vulkan driver for texture blending on GPU'
-            'libffi6: QT5 API support in console')
+	    'vulkan-intel: Intel Vulkan driver for texture blending on GPU')
 provides=('agisoft-metashape')
 options=('!strip')
 install=${pkgname}.install
