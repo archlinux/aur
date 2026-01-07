@@ -5,21 +5,22 @@
 # Contributor: Morris Jobke <morris.jobke AT gmail DOT com>
 # Contributor: Boris Shomodjvarac <shomodj AT gmail DOT com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
+# Contributor: Timofey Brukhanchik <asyncbtd@gmail.com>
 pkgname=dbschema
-pkgver=9.9.3
+pkgver=10.0.2
 pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
 url='http://www.dbschema.com/'
 license=('custom')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://dbschema.com/download/dbschema_unix_${pkgver//./_}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://dbschema.com/download/dbschema_linux_${pkgver//./_}.tar.gz"
     "dbschema.desktop"
     "https://dbschema.com/img/favicon/favicon.svg"
 )
 # verify here: https://dbschema.com/download/md5sums
 md5sums=(
-    '9b3af8394fb33bd5225d3e9ec8267b1d'
+    '45b5f11010474589996aa89b9a7d6581'
     'fd70b65c057119c0290bf9f4b51be830'
     'f52f8d76f63ae513fda70b4ef53ebbc5'
 )
