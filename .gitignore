@@ -1,0 +1,4 @@
+bashhound-ce
+*.pkg.tar.zst
+pkg
+src
