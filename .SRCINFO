@@ -1,7 +1,7 @@
 pkgbase = shoko-server-git
 	pkgdesc = An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.
 	pkgver = v5.1.0.dev.149.r0.gb5345bbc8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shokoanime.com/
 	install = shoko-server-git.install
 	arch = any

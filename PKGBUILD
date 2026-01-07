@@ -1,7 +1,7 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-server-git
 pkgver=v5.1.0.dev.149.r0.gb5345bbc8
-pkgrel=3
+pkgrel=4
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('any')
 url="https://shokoanime.com/"
@@ -57,7 +57,7 @@ package() {
   # ln -s "/opt/avdump3/AVDump3CL.dll" "${pkgdir}/usr/lib/${_path_name}/AVDump/AVDump3CL.dll"
   ln -s "/usr/lib/${_path_name}/webui/index.html.emptytips" "${pkgdir}/usr/lib/${_path_name}/webui/index.html"
 
-  install -Dm644 'shoko-server.service' "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 'shoko-server.service' "${pkgdir}/usr/lib/systemd/system/shoko-server.service"
   install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_path_name}/LICENSE"
 }
 
