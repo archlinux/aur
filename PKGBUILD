@@ -1,5 +1,5 @@
-# Maintainer: Sam Day <me@samcday.com>
 # Maintainer: Super Tecno Gym <banana@grrlz.net>
+# Contributor: Sam Day <me@samcday.com>
 
 pkgname="rmtfs"
 pkgdesc="Qualcomm Remote Filesystem Service Implementation"
