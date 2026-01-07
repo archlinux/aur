@@ -39,11 +39,10 @@ package() {
   cp -r build/linux/x64/release/bundle/data \
         "$pkgdir/usr/lib/komet/"
 
-  # Desktop launcher (обращаемся на уровень выше)
-  install -Dm644 ../komet.desktop \
+  install -Dm644 komet.desktop \
     "$pkgdir/usr/share/applications/komet.desktop"
 
-  # Иконки (также на уровень выше)
-  install -Dm644 ../assets/icon/komet_512.png \
+  # Иконки
+  install -Dm644 assets/icon/komet_512.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/komet.png"
 }
