@@ -1,0 +1,11 @@
+pkgbase = breeze-chameleon-icons
+	pkgdesc = Breeze Chameleon Icons
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/L4ki/Breeze-Chameleon-Icons
+	arch = any
+	makedepends = unzip
+	source = https://github.com/L4ki/Breeze-Chameleon-Icons/archive/refs/heads/master.zip
+	sha256sums = 4b2712a0206136bf8c61d0e001d7db4779ecab256a54bc66a99e5d6e31981978
+
+pkgname = breeze-chameleon-icons

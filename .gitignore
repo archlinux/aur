@@ -1,0 +1,19 @@
+# makepkg artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Source archives
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# Log files
+*.log
+
+# Backup files
+*.backup
+*~
