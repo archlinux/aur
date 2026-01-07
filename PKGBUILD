@@ -1,6 +1,6 @@
 # Maintainer: jopdorp <jegor@jopdorp.nl>
 pkgname=bigedit
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="A fast text editor for very large files using journaling and FUSE"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse3' 'inotify-tools')
 makedepends=('cargo' 'git')
 install=bigedit.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jopdorp/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1fc9f3eca33f6d87128d7854acbfe2888a390201559840d5a5481ec1e9450cf7')
+sha256sums=('5e830b36a3ba3769980bbd22c9181a705305a950787a15fccdb8efda73ed0977')
 backup=()
 
 build() {
