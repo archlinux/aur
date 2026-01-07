@@ -1,5 +1,5 @@
 pkgname=rpi-imager-latest
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Raspberry Pi Imager – flash images to SD cards and USB drives"
 arch=(x86_64 aarch64)
@@ -8,6 +8,7 @@ license=(Apache)
 depends=(
   qt6-base
   qt6-svg
+  qt6-declarative
   qt6-tools
   libarchive
   curl
@@ -22,7 +23,7 @@ conflicts=('rpi-imager-git')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('cc3b784705ca0638eff8b9dc976eb9a02892bf5076d95b4af9f7f355a17326f6')
+sha256sums=('71143495c6a228557f763249de4da3050cf8d0f7eaadde6b5e64819699fb7f45')
 
 prepare() {
   # Patch CMakeLists.txt to force the correct version
