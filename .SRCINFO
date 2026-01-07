@@ -1,0 +1,16 @@
+pkgbase = line-seed-th-font
+	pkgdesc = LINE Seed TH font
+	pkgver = V1.003
+	pkgrel = 1
+	url = https://seed.line.me
+	arch = any
+	license = OFL-1.1-RFN
+	source = https://seed.line.me/src/images/fonts/LINE_Seed_Sans_TH.zip
+	sha256sums = 9ec666c8b0a325bb24c749cc17bee8dd76ab718a5ca78f8a22930d3d4a60778d
+	b2sums = 5b40fc04094cc2e373261d5fca06009613cf95213c8bdf22f9857d2df123521a7ac7e3c1f8875b1b2a6df75c3e5a6ca2fd41c01401af183b91fdec7c2311b972
+
+pkgname = otf-line-seed-th
+	pkgdesc = LINE Seed TH font (OTF)
+
+pkgname = ttf-line-seed-th
+	pkgdesc = LINE Seed TH font (TTF)
