@@ -1,7 +1,7 @@
 # Maintainer: Kartatz <kartatz at amanoteam.com>
 pkgname=netbsd-gcc-cross-bin
 pkgver=15.2.0
-pkgrel=20251210
+pkgrel=20260107
 pkgdesc='A GCC cross-compiler targeting NetBSD'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AmanoTeam/Dakini'
@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/Dakini/releases/download/gcc-${pkgv
 source_aarch64=("https://github.com/AmanoTeam/Dakini/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/Dakini/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('2292691cb50b9827b85dc36cb3118ad39b0655983cee6c4aeac0e9f0c7af39b0')
-sha256sums_x86_64=('a1a9f2e59a5d55b9157827706839946efbb820a92c5d5c290e20efe677313120')
-sha256sums_aarch64=('91923412322748e98bd92f0d82e96fe0dd19259d4b4ba5d7ec694d96ac9603d2')
-sha256sums_armv7h=('bdc0287aa15ca9cbe6764491653ff23081aaeaddbaf69c8af76ad47faad60b0c')
+sha256sums_i686=('6f33fbbb4deba7aaccc71c40451163646061f7722d3312ef0ded16004fb9ed76')
+sha256sums_x86_64=('d769aa424fa038b952919682af6db515090604bcda2942b529ef401ace648363')
+sha256sums_aarch64=('07e3d0033058ff1066aafaee9f43e4e4dfb6a4615691642876aa4510362d8fa6')
+sha256sums_armv7h=('9f2baad67ed9478544098de4d38a5700c893c51e8d1a77afa3c94528d2b1c07a')
 
 __alt_pkgname='dakini'
 
