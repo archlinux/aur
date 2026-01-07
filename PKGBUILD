@@ -1,7 +1,7 @@
 # Maintainer: Wren Baxter <aur [at] wren.dev>
 
 pkgname=astap-bin-qt5
-pkgver=2026.01.05
+pkgver=2026.01.06
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
@@ -9,17 +9,17 @@ conflicts=('astap-bin' )
 arch=('x86_64' 'aarch64') # no 32-bit version provided, consider building from source with the `astap` package
 url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
-gitrev=4692f50b705f0aeb47dc436bd1fc44dfc2288336
+gitrev=b2a09447007a01e440f8292d77a10bbd210ba252
 source_x86_64=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/$gitrev/astap_amd64_qt5.tar.gz"
     "backup.yml::https://github.com/wrenby/astap-backups/raw/$gitrev/.github/workflows/backup.yml"
 )
 source_aarch64=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/$gitrev/astap_aarch64_qt5.tar.gz"
     "backup.yml::https://github.com/wrenby/astap-backups/raw/$gitrev/.github/workflows/backup.yml"
 )
-md5sums_x86_64=('e9ed227bc4d0f054d36f83aedecd3eb8'
+md5sums_x86_64=('de9c2e17cb625caa910b5d8ef75d0dad'
     '80f57f756e7674ac61f2adba819e005b' # THIS HASH UPDATING IS UNUSUAL, AND SHOULD MAKE YOU DISTRUSTFUL. Inspect backup.yml for tomfoolery
 )
-md5sums_aarch64=('838cd96e3f3d4ddd86dc7ecfd1330292'
+md5sums_aarch64=('5c4d2bd1cdf63593f385a17e224a6a53'
     '80f57f756e7674ac61f2adba819e005b' # THIS HASH UPDATING IS UNUSUAL, AND SHOULD MAKE YOU DISTRUSTFUL. Inspect backup.yml for tomfoolery
 )
 
