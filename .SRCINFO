@@ -1,0 +1,18 @@
+pkgbase = mihomo-tui-git
+	pkgdesc = A TUI for Mihomo (Clash.Meta) - git version
+	pkgver = 0.2.2.r0.g6efa76f
+	pkgrel = 1
+	url = https://github.com/potoo0/mihomo-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	optdepends = mihomo: Another Clash Kernel by MetaCubeX
+	provides = mihomo-tui
+	conflicts = mihomo-tui
+	options = !lto
+	source = mihomo-tui::git+https://github.com/potoo0/mihomo-tui.git
+	sha256sums = SKIP
+
+pkgname = mihomo-tui-git
