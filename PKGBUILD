@@ -1,7 +1,7 @@
 # Maintainer: Nikhil Iyer <iyer.h.nikhil at gmail dot com>
 
 pkgname="nhost"
-pkgrel=1
+pkgrel=2
 pkgver=1.34.12
 pkgdesc="Used to set up a local development environment with Nhost. This environment will automatically track database migrations and Hasura metadata."
 arch=('x86_64')
