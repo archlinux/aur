@@ -1,0 +1,17 @@
+pkgbase = lrclibfetch
+	pkgdesc = A cli for LRCLIB.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Aethar01/lrclibfetch
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	provides = lrclibfetch
+	options = !lto
+	source = lrclibfetch-v1.0.1.tar.gz::https://github.com/Aethar01/lrclibfetch/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = c2e1b36e8241ca50586a6623ac9a347358a36ffd29237a8b09645dff1c4efc9f
+
+pkgname = lrclibfetch
