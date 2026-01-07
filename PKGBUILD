@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Wayland clipboard sync via TCP relay (prebuilt binaries)"
 arch=(x86_64)
 url="https://github.com/KasumiNova/MultiClipRelay"
-license=(MIT)
+license=(GPL3)
 
 # Runtime deps only (no Rust toolchain needed for -bin packages)
 depends=(wl-clipboard gtk4)
