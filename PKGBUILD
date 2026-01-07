@@ -35,8 +35,6 @@ build() {
 	cd "${srcdir}/" || exit
 
 	help2man "./${_pkgname}-${pkgver}" --output "MAN-${pkgver}.1" --no-info
-
-	gzip "MAN-${pkgver}.1"
 }
 
 package() {
