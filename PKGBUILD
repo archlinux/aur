@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=mages-bin
 _pkgname=mages
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Mages desktop (early testing)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('mages')
 options=('!strip')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/${pkgver}/mages-${pkgver}-x86_64.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/${pkgver}/mages-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('43392f9589e55ee6937cd1aee7ac6f827e847d5498129b043f02903171fbbe36')
-sha256sums_aarch64=('587b4226b7b3a6f439e7f36f7fa1862067a2d8c82166cc4da37696b4af4d5d97')
+sha256sums_x86_64=('a4d571b2c4ae7283ed667a6b539012e3defd4511b233bdffffe9d587370c02f5')
+sha256sums_aarch64=('8cf3dced0ac5fe6fcbc3ab5603fcc59b0060bd1b0a78ad143a848fef0e946834')
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
   "./${_pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract
