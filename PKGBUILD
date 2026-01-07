@@ -27,6 +27,12 @@ if [ "${pkgver}" = '2.42' ]; then
   )
   pkgver="${pkgver}.r201406"
 fi
+md5sums=('ed68bd653488bbe86301077e12d3265a'
+         'fcf8837a3451e24ddf424d0ac418c6c1'
+         '73ea673abe9db770392b6851a07d7a92'
+         'e7ed02a3e7346b8a11114f7a5862212f'
+         '02885d2a34784880a6d757acc79c4ecc'
+         'b69182f638184a30f0d0fcf406d4dc8a')
 sha256sums=('ecccb6afcf0008d5b31da2e9e74c448564101eb7b9bbde758a3dca1f2dc8c580'
             'f0b1acc10a35b1d3c4268ee67c2520af36044991e289d538c1cb5b7bc406d4e4'
             '07212e7e4695c34df21f73bfa0b5c1efb3e765eb070dbe074b715f1f56f31c41'
@@ -35,30 +41,31 @@ sha256sums=('ecccb6afcf0008d5b31da2e9e74c448564101eb7b9bbde758a3dca1f2dc8c580'
             '9af92c8a7a0795cbf09aa69af336c248e1b65e42a52e5334cc208543ab803159')
 
 prepare() {
+  local -
   set -u
   cd pl*${_pkgver/./}*/src/
-  sed -i -e 's:^\(#define PREFABS_DIR "\)\(".*\)$:\1/usr/share/ploticus\2:g' 'pl.h'
+  sed -e 's:^\(#define PREFABS_DIR "\)\(".*\)$:\1/usr/share/ploticus\2:g' -i 'pl.h'
   patch -Np2 -i "${srcdir}/Makefile${_pkgver}.patch"
+  sed -e '/double atof/ s:^:// :g' -i 'plg.h'
   if [ "${_pkgver}" = '2.42' ]; then
     cp -p "${srcdir}"/*.c .
   fi
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd pl*${_pkgver/./}*/src/
-  make -s -j "$(nproc)" CC='gcc -O' EXE=$pkgname
-  set +u
+  make CC='gcc -O -std=gnu17 -Wno-incompatible-pointer-types' EXE="${pkgname}"
 }
 
 package() {
+  local -
   set -u
   cd pl*${_pkgver/./}*/src/
-  install -Dpm755 $pkgname -t "${pkgdir}/usr/bin/"
+  install -Dpm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
   cd "${srcdir}"/pl2*/src/
-  install -Dpm644 '../man/man1/pl.1' -t "${pkgdir}"/usr/share/man/man1/pkgname.1
+  install -Dpm644 '../man/man1/pl.1' "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   install -Dpm644 '../prefabs'/* -t "${pkgdir}/usr/share/ploticus/"
-  set +u
 }
 set +u
