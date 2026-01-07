@@ -33,10 +33,10 @@ prepare() {
 
 build() {
   cd "$srcdir/expert"
-  just release
+  just burrito-local
 }
 
 package() {
   cd "$srcdir/expert"
-  install -Dm755 ./apps/expert/_build/prod/rel/plain/bin/start_expert "$pkgdir/usr/bin/expert"
+  install -Dm755 ./apps/expert/burrito_out/expert_linux_amd64 "$pkgdir/usr/bin/expert"
 }
