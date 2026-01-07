@@ -3,7 +3,7 @@
 pkgname=python-fmod-tookit-git
 _pkgname=fmod_toolkit
 pkgver=r2.c471d3b
-pkgrel=1
+pkgrel=3
 pkgdesc="A lightweight Python package designed to extract and export audio."
 arch=('x86_64')
 url="https://github.com/K0lb3/fmod_toolkit.git"
