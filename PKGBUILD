@@ -1,7 +1,7 @@
 # Maintainer: macinteuch <tetrasdev@protonmail.com>
 
 pkgname=binance-desktop
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="The Binance desktop application. Github releases channel"
 conflicts=('binance')
@@ -9,12 +9,11 @@ arch=('x86_64')
 url="https://www.binance.com/en/download"
 license=('unknown')
 checkdepends=('curl' 'coreutils')
-source=("${pkgname}-${pkgver}.deb::https://github.com/binance/desktop/releases/download/v${pkgver}/binance-${pkgver}-amd64-linux.deb" "binance.desktop")
-sha256sums=('1858378660ce7137e4d259da4d30e8cbea828c0d94560cb0dbdbacca36ad181e' '11e9e94fe1851062301b34c90e13763f11b4c0e7774c3b1483d64b88ebc448cb')
+source=("${pkgname}-${pkgver}.deb::https://github.com/binance/desktop/releases/download/v${pkgver}/binance-${pkgver}-amd64-linux.deb")
+sha256sums=('8b05ddbeb15f0d40e9554d27a37bb0695ac01da3f96ab5626da2d9fb8cce560c')
 
 package() {
     bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
-    install -m644 "${srcdir}/binance.desktop" "${pkgdir}/usr/share/applications/binance.desktop"
     mkdir "${pkgdir}/usr/bin"
     ln -s /opt/Binance/binance "${pkgdir}/usr/bin/binance"
 }
