@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.3.1'
+_upstreamver='0.4.4'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='dony'
@@ -16,7 +16,7 @@ depends=('python' 'python-prompt_toolkit' 'python-questionary')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('a97cc122604ac60ea092863440c0d60849f905c09fd0fc0bd477eb605ab6b43f')
+sha256sums=('a2c6451c3e653d464ae76b67bc836e4a11f5288c5a5959eec923decb362ccbb2')
 
 
 build() {
