@@ -12,10 +12,10 @@ provides=('cronkit')
 conflicts=('cronkit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_arm64.tar.gz")
-sha256sums_aarch64=('860c828d4578809102ddab3f0a35de2d82c1deccb2c9481c1e0cdff2b8620d82')
+sha256sums_aarch64=('7319d4bd94ac0369867c8df21bb0023d9407ddefc34ac72d8b8c6f323f832a2f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_amd64.tar.gz")
-sha256sums_x86_64=('5838de3b03b6026b5c7d5109d903a07be690c0b9813ee6631575f937293d49a8')
+sha256sums_x86_64=('ab748cad99914b98b4095bae0204a2e2637427009f05b21fe3a37b36e3f0a1fe')
 
 package() {
   install -Dm755 "./cronkit" "${pkgdir}/usr/bin/cronkit"
