@@ -1,7 +1,7 @@
-pkgbase = alsa-scarlett-gui-git
-	pkgdesc = GUI for the ALSA controls presented by the Scarlett2 driver, Development version
-	pkgver = 0.5.1.6.gd731
-	pkgrel = 2
+pkgbase = alsa-scarlett-gui-vocaster-git
+	pkgdesc = GUI for the ALSA controls presented by the Scarlett2 driver, Vocaster dev version
+	pkgver = 0.5.1.93.g6bf9
+	pkgrel = 1
 	url = https://github.com/geoffreybennett/alsa-scarlett-gui
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = alsa-scarlett-gui-git
 	depends = openssl
 	provides = alsa-scarlett-gui
 	conflicts = alsa-scarlett-gui
-	source = git+https://github.com/geoffreybennett/alsa-scarlett-gui.git
+	source = git+https://github.com/geoffreybennett/alsa-scarlett-gui.git#branch=vocaster
 	sha256sums = SKIP
 
-pkgname = alsa-scarlett-gui-git
+pkgname = alsa-scarlett-gui-vocaster-git

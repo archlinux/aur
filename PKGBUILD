@@ -1,8 +1,10 @@
-pkgname='alsa-scarlett-gui-git'
-_pkgname='alsa-scarlett-gui'
-pkgver=0.5.1.6.gd731
-pkgrel=2
-pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
+_origname='alsa-scarlett-gui'
+_gitbr='vocaster'
+
+pkgname="$_origname-$_gitbr-git"
+pkgver=0.5.1.93.g6bf9
+pkgrel=1
+pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Vocaster dev version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
@@ -18,32 +20,32 @@ depends=(
     'openssl'
 )
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+${url}.git")
+provides=("$_origname")
+conflicts=("$_origname")
+source=("git+${url}.git#branch=$_gitbr")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$_origname"
     git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_origname"
 
     make \
         -C src \
         PREFIX=/usr \
-        VERSION="$pkgver"
+        VERSION="$pkgver-$_gitbr-git"
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_origname"
 
     make \
         -C src \
         PREFIX="$pkgdir/usr" \
-        VERSION="$pkgver" \
+        VERSION="$pkgver-$_gitbr-git" \
         install
 
     # documentation
