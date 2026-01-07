@@ -13,7 +13,12 @@ depends=(wl-clipboard gtk4)
 makedepends=(git rust cargo)
 
 provides=(multicliprelay)
-conflicts=(multicliprelay multicliprelay-bin)
+conflicts=(
+  multicliprelay
+  multicliprelay-bin
+  multicliprelay-debug
+  multicliprelay-bin-debug
+)
 
 source=("${_pkgbase}::git+${url}.git")
 sha256sums=('SKIP')

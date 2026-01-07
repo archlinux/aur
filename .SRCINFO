@@ -13,6 +13,8 @@ pkgbase = multicliprelay-git
 	provides = multicliprelay
 	conflicts = multicliprelay
 	conflicts = multicliprelay-bin
+	conflicts = multicliprelay-debug
+	conflicts = multicliprelay-bin-debug
 	source = multicliprelay::git+https://github.com/KasumiNova/MultiClipRelay.git
 	sha256sums = SKIP
 
