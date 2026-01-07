@@ -2,14 +2,14 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname="clustershell"
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python framework for efficient cluster administration"
 arch=(any)
 url="http://cea-hpc.github.io/clustershell/"
 license=('LGPL-2.1-or-later')
 depends=('python')
 makedepends=('python' 'python-setuptools')
-optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved')
+optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved', 'bash-completion')
 backup=(etc/clustershell/{clush.conf,groups.conf,groups.d/local.cfg})
 changelog=ChangeLog
 source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
@@ -36,6 +36,11 @@ package(){
     install -p -m 0644 doc/man/man5/clush.conf.5 ${pkgdir}/usr/share/man/man5/
     install -p -m 0644 doc/man/man5/groups.conf.5 ${pkgdir}/usr/share/man/man5/
     install -D -m 0644 COPYING.LGPLv2.1 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # bash-completion
+    install -d ${pkgdir}/usr/share/bash-completion/completions/
+    install -p -m 0644 bash_completion.d/cluset ${pkgdir}/usr/share/bash-completion/completions/
+    install -p -m 0644 bash_completion.d/clush ${pkgdir}/usr/share/bash-completion/completions/
 
     local vimdatadir=/usr/share/vim/vimfiles
     cd ${srcdir}/${pkgbase}-${pkgver}
