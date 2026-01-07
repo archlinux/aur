@@ -1,7 +1,7 @@
 pkgbase = komet
 	pkgdesc = Komet — Multifunctional MAX client (Flutter desktop)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KometTeam/Komet
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = komet
 	depends = libsecret
 	depends = libepoxy
 	depends = at-spi2-core
+	options = !debug
 	source = git+https://github.com/KometTeam/Komet.git#commit=3272e81c6360e064f71a6d39f2064a96a894a727
 	sha256sums = SKIP
 
