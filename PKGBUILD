@@ -1,6 +1,6 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 pkgname=postfix-mta-sts-resolver
-pkgver=1.3.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Daemon for MTA-STS policy enforcement for postfix"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-uvloop: For faster event loop handling'
 source=("https://github.com/Snawoot/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "mta-sts-daemon.service"
         "mta-sts-daemon-sysusers.conf")
-sha256sums=('311c8e0c64367b1747404c37eccf600176066ce4d62962cc79cb9bd3f46fc8a2'
+sha256sums=('e2fa88b63812db6ad6101c287a887eb77c6bd9f2d38abc20fb8843ad32152f8d'
             'SKIP'
             'bfc1b2c171ffae6af607ffbd9e8e913452c50073b298a16f6f1cda74f74c6b9c'
             '8e7281deebdf71b4ffd63a2e265fd818459042004a36ca2e7284868cc182dcd5')
