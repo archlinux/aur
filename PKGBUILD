@@ -4,26 +4,25 @@
 pkgname=python-unicodecsv
 _name=${pkgname#python-}
 pkgdesc="Drop-in replacement for the csv module that supports unicode strings"
-pkgver=0.14.1
-pkgrel=4
+pkgver=0.14.2
+pkgrel=1
 arch=('any')
-license=('BSD')
+license=('BSD-2-Clause')
 url="https://github.com/jdunck/python-unicodecsv"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/jdunck/python-unicodecsv/master/LICENSE")
-sha256sums=('018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc'
-            'a3b3fcd3f2b3e97b4c4ffc354f719e1519dc95dc0b09d82f769538feeb7db032')
+	"$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+)
+sha256sums=('ed8a2b448575f284d042183e6a0498bb6985b5f3ced7eaeacea7f51549522688')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "$pkgname-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_name-$pkgver"
+	cd "$pkgname-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

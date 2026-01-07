@@ -1,18 +1,16 @@
 pkgbase = python-unicodecsv
 	pkgdesc = Drop-in replacement for the csv module that supports unicode strings
-	pkgver = 0.14.1
-	pkgrel = 4
+	pkgver = 0.14.2
+	pkgrel = 1
 	url = https://github.com/jdunck/python-unicodecsv
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-unicodecsv-0.14.1.tar.gz::https://files.pythonhosted.org/packages/source/u/unicodecsv/unicodecsv-0.14.1.tar.gz
-	source = https://raw.githubusercontent.com/jdunck/python-unicodecsv/master/LICENSE
-	sha256sums = 018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc
-	sha256sums = a3b3fcd3f2b3e97b4c4ffc354f719e1519dc95dc0b09d82f769538feeb7db032
+	source = python-unicodecsv-0.14.2.tar.gz::https://github.com/jdunck/python-unicodecsv/archive/refs/tags/0.14.2.tar.gz
+	sha256sums = ed8a2b448575f284d042183e6a0498bb6985b5f3ced7eaeacea7f51549522688
 
 pkgname = python-unicodecsv
