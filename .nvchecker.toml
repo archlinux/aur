@@ -1,0 +1,5 @@
+[stripe-cli-bin]
+source = "github"
+github = "stripe/stripe-cli"
+use_latest_release = true
+prefix = "v"
