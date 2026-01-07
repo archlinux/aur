@@ -26,6 +26,7 @@ post_install() {
   chown --recursive $USER: "/var/lib/${PATHNAME}" "/etc/${PATHNAME}"
   link_config
   link_log
+  link_webui
 }
 
 ## arg 1:  the new package version
