@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=talanoa-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Talanoa is a modern email client that is designed to be fast, secure, and easy to use"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libgnome-keyring')
 options=('!debug' '!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/talanoa-email/desktop-releases/releases/download/v${pkgver}/talanoa_${pkgver}_amd64.deb")
-sha224sums=('0e6057ee1686d8c2329d4ed8db2f93ff1e2edfa1760bd53db8c88511')
+sha224sums=('001e0607da7a7c59743f28ecf2d6f530b33224f6d92fae330d9c0218')
 
 package(){
     tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
