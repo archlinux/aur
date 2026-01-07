@@ -1,16 +1,18 @@
 pkgbase = sonami-bin
-	pkgdesc = A lightweight, cross-platform music player built with Tauri
-	pkgver = 0.1.1_alpha.7
+	pkgdesc = A tauri music player (Binary)
+	pkgver = 0.1.1_alpha.8
 	pkgrel = 1
 	url = https://github.com/RayZ3R0/sonami
 	arch = x86_64
-	license = AGPL-3.0
-	depends = webkit2gtk
+	license = AGPL3
+	depends = webkit2gtk-4.1
 	depends = gtk3
+	depends = openssl
+	depends = alsa-lib
 	depends = libappindicator-gtk3
 	provides = sonami
 	conflicts = sonami
-	source = https://github.com/RayZ3R0/sonami/releases/download/v0.1.1-alpha.7/sonami_0.1.1-alpha.7_amd64.deb
-	sha256sums = b1590afee7e9e7537cefcbc0ed63c20e8bc60a84695c0fd98906d7303d204fb9
+	source = sonami-bin-0.1.1_alpha.8.tar.gz::https://github.com/RayZ3R0/sonami/releases/download/v0.1.1-alpha.8/sonami_0.1.1-alpha.8_linux_x86_64.tar.gz
+	sha256sums = 6473862fdc6e3fcc03521cfb925227869286ce090d45345d5c92d51f6cbbc644
 
 pkgname = sonami-bin

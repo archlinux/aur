@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Sonami
+Comment=A modern music player built with Tauri
+Exec=sonami
+Icon=sonami
+Terminal=false
+Categories=Audio;Music;Player;AudioVideo;
+Keywords=music;player;tauri;audio;
+StartupWMClass=sonami
+X-GNOME-UsesNotifications=true
