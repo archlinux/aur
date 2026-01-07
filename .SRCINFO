@@ -1,13 +1,13 @@
 pkgbase = noon-xp-icons
 	pkgdesc = B00merang-Artwork icon theme packaged for Noon Project
-	pkgver = 1.0.0
+	pkgver = r20260107
 	pkgrel = 1
 	url = https://github.com/B00merang-Artwork/Windows-XP
 	install = noon-xp-icons.install
 	arch = any
-	license = MIT
+	license = GPL3
 	depends = gtk-update-icon-cache
-	source = noon-xp-icons-1.0.0.tar.gz::https://github.com/B00merang-Artwork/Windows-XP/archive/v1.0.0.tar.gz
+	source = noon-xp-icons::git+https://github.com/B00merang-Artwork/Windows-XP.git
 	sha256sums = SKIP
 
 pkgname = noon-xp-icons
