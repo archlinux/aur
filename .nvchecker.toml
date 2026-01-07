@@ -1,0 +1,10 @@
+[megacmd]
+source = "git"
+git = "https://github.com/meganz/MEGAcmd.git"
+
+# Only tags that end exactly with "_Linux"
+include_regex = '^.*_Linux$'
+
+# Convert e.g. "1.0.0_Linux" -> "1.0.0"
+from_pattern = '^(.*)_Linux$'
+to_pattern = '\1'
