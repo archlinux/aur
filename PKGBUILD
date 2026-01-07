@@ -1,6 +1,6 @@
 # Maintainer: ckaznable<ckaznable@gmail.com>
 pkgname=dive-ai
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="Dive is an open-source MCP Host Desktop Application that seamlessly integrates with any LLMs supporting function calling capabilities. ✨"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/dive_${pkgver}_amd64.deb")
-sha256sums_x86_64=('9e26e0dc6b26c1a7c24b2b93e0d06cfde87145238eacaa4cba1d184a6efe9345')
+sha256sums_x86_64=('8f553b0aa3bc2e3c7e328383f58dca9c8368f50b3ee2a9113a2df1d51417d4ce')
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
