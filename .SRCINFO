@@ -1,6 +1,6 @@
 pkgbase = pyghmi
 	pkgdesc = Python General Hardware Management Initiative (IPMI and others)
-	pkgver = 1.5.59
+	pkgver = 1.6.11
 	pkgrel = 1
 	url = https://opendev.org/x/pyghmi
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pyghmi
 	depends = python-dateutil>=2.8.1
 	depends = python-six>=1.10.0
 	depends = python-pbr
-	source = git+https://opendev.org/x/pyghmi#tag=1.5.59
+	source = git+https://opendev.org/x/pyghmi#tag=1.6.11
 	sha256sums = SKIP
 
 pkgname = pyghmi

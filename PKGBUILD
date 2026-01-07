@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Granger <nicolas.granger.m@gmail.com>
 
 pkgname=pyghmi
-pkgver=1.5.59
+pkgver=1.6.11
 pkgrel=1
 pkgdesc="Python General Hardware Management Initiative (IPMI and others)"
 arch=('any')
