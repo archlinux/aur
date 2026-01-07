@@ -1,7 +1,7 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=kairo
 pkgver=0.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="CLI and Desktop application for smart URL routing"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/aelesbao/kairo"
@@ -51,14 +51,13 @@ package() {
 }
 
 post_install() {
-  if which xdg-mime >/dev/null 2>&1 && "$(xdg-mime query default x-scheme-handler/https | grep -q kairo.desktop)"; then
+  if which xdg-settings >/dev/null 2>&1 && [ "$(xdg-settings check default-web-browser kairo.desktop)" = "yes" ]; then
     return
   fi
 
   cat <<EOF
 To use Kairo, you need to set it as your default URL handler:
 
-xdg-mime default kairo.desktop x-scheme-handler/http
-xdg-mime default kairo.desktop x-scheme-handler/https
+xdg-settings set default-web-browser kairo.desktop
 EOF
 }

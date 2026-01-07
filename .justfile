@@ -3,6 +3,11 @@ vercmp := require("vercmp")
 makepkg := require("makepkg")
 nvchecker := require("nvchecker")
 
+latest_version := `nvchecker -c .nvchecker.toml --logger json | jq -r '.version'`
+
+print-latest:
+  @echo "Latest version is {{latest_version}}"
+
 bump:
   #!/bin/sh
   set -e
@@ -10,7 +15,7 @@ bump:
   current="$(grep 'pkgver=' PKGBUILD | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
   echo "Current version: $current"
 
-  latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
+  latest="{{latest_version}}"
   echo "Latest version: $latest"
 
   if [ "$(vercmp "$current" "$latest")" -ne "-1" ]; then
@@ -20,9 +25,11 @@ bump:
 
   echo "Bumping version to $latest"
   sed -i "s/pkgver=.*/pkgver=$latest/" PKGBUILD
+  sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
 
   just update-checksums
-  just commit
+
+  git commit -am "chore: bump to v$latest"
 
 update-checksums:
   #!/bin/sh
@@ -38,16 +45,9 @@ update-checksums:
   echo "Updating SRCINFO"
   makepkg --printsrcinfo > .SRCINFO
 
-commit:
-  #!/bin/sh
-  set -e
-
-  latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
-  git commit -am "chore: bump to v$latest"
-
 install:
   makepkg -f
   makepkg -si
 
 clean:
-  rm -rf *.tar.xz *.zst ./src ./pkg
+  rm -rf *.tar.gz *.tar.xz *.zst ./src ./pkg
