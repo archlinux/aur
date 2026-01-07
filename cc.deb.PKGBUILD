@@ -32,7 +32,7 @@ conflicts=( 'skycoin' )
 #bsdtar -czvf skycoin-scripts.tar.gz skycoin-scripts
 source=("${_pkgname}-scripts.tar.gz")
 # "PKGBUILD.sig")
-sha256sums=('0738ce23beafc315cad3971afb9b210b0749df05e064db169aea618b5bbd5555')
+sha256sums=('4f0a38b9586d5fb4ca190b07261b5b63effe5487f8c912388fd040c60e2aa268')
 # 'SKIP')
 #https://downloads.skycoin.com/wallet/skycoin-0.27.1-gui-standalone-linux-x64.tar.gz
 #https://downloads.skycoin.com/wallet/skycoin-0.27.1-gui-standalone-linux-arm.tar.gz
@@ -49,18 +49,8 @@ source_armv6h=( ${source_aarch64[@]} )
 source_armhf=( ${source_aarch64[@]} )
 source_armel=( ${source_aarch64[@]} )
 source_arm=( ${source_aarch64[@]} )
-sha256sums_x86_64=('ba4c2354b091b3db0ac7418caab1d52988b6fd1d18a9f0d5e0ebcb3f4ef15f94')
 # 'ba4c2354b091b3db0ac7418caab1d52988b6fd1d18a9f0d5e0ebcb3f4ef15f94')
-sha256sums_aarch64=('e4bbbde43a4971d21aefec55d4fbe3173694567bc372718ce4dd7352ca0bc169')
 # 'e4bbbde43a4971d21aefec55d4fbe3173694567bc372718ce4dd7352ca0bc169'
-sha256sums_armv8=( ${sha256sums_aarch64[@]} )
-sha256sums_armv7=( ${sha256sums_aarch64[@]} )
-sha256sums_armv7h=( ${sha256sums_aarch64[@]} )
-sha256sums_armv7l=( ${sha256sums_aarch64[@]} )
-sha256sums_armv6h=( ${sha256sums_aarch64[@]} )
-sha256sums_armhf=( ${sha256sums_aarch64[@]} )
-sha256sums_armel=( ${sha256sums_aarch64[@]} )
-sha256sums_arm=( ${sha256sums_aarch64[@]} )
 
 build() {
   for i in ${_pkgarches[@]}; do
