@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='netsleuth'
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Simple utility for calculating and analyzing IP subnet values'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f39ed9aeac19e84fa3d082aee6a5ac8a707cd53d7816482d4c9aaa018b20adf5')
+sha256sums=('5617b762dea49cc4063cc64eced49d55da441bc5e6474424b69599e4cdf6a207')
 
 build() {
   cd "${pkgname}-${pkgver}"
