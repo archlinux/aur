@@ -1,0 +1,19 @@
+pkgbase = multicliprelay-git
+	pkgdesc = Wayland clipboard sync via TCP relay (git build)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/KasumiNova/MultiClipRelay
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = wl-clipboard
+	depends = gtk4
+	provides = multicliprelay
+	conflicts = multicliprelay
+	conflicts = multicliprelay-bin
+	source = multicliprelay::git+https://github.com/KasumiNova/MultiClipRelay.git
+	sha256sums = SKIP
+
+pkgname = multicliprelay-git
