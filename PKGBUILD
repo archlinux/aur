@@ -1,6 +1,6 @@
 # Maintainer: Gl1tchs <berkeumtbiricik@gmail.com>
 pkgname=glgpu-git
-pkgver=1.0.1.r2.gd3f1427
+pkgver=1.0.4.r0.g6148d22
 pkgrel=1
 pkgdesc="Low-Level, low dependency rendering interface over the Vulkan API"
 arch=('x86_64')
