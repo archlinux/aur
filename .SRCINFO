@@ -1,7 +1,7 @@
 pkgbase = nordvpn-dinit
 	pkgdesc = dinit service script for nordvpn-bin
-	pkgver = 20240301
-	pkgrel = 2
+	pkgver = 20260107
+	pkgrel = 1
 	url = https://nordvpn.com/download/linux/
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = nordvpn-dinit
 	depends = shadow
 	source = nordvpnd
 	source = nordvpnd.script
-	sha256sums = 75027a88b1ce2e928397dc6116d0b882a186faf025a08c8950fb438af246054d
+	sha256sums = 2963895954e81890bc237be05d52b3dceb0f045c6cd16f757f846840cc179f3c
 	sha256sums = 28bde36755daf407f0afe1670e8a9ca430c15b7cdd3d5411f92c5dd6670be900
 
 pkgname = nordvpn-dinit

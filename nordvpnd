@@ -2,4 +2,5 @@ type            = process
 command         = /usr/lib/dinit/nordvpnd
 smooth-recovery = true
 logfile         = /var/log/dinit/nordvpnd.log
-waits-for       = loginready
+depends-on      = network.target
+before          = login.target

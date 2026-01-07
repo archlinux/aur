@@ -1,15 +1,15 @@
 # Maintainer: BowDown097 <bowdown097 at sneed dot church>
 
 pkgname=nordvpn-dinit
-pkgver=20240301
-pkgrel=2
+pkgver=20260107
+pkgrel=1
 pkgdesc="dinit service script for nordvpn-bin"
 arch=('any')
 url="https://nordvpn.com/download/linux/"
 license=('GPL3')
 depends=('dinit' 'nordvpn-bin' 'shadow')
 source=('nordvpnd' 'nordvpnd.script')
-sha256sums=('75027a88b1ce2e928397dc6116d0b882a186faf025a08c8950fb438af246054d'
+sha256sums=('2963895954e81890bc237be05d52b3dceb0f045c6cd16f757f846840cc179f3c'
             '28bde36755daf407f0afe1670e8a9ca430c15b7cdd3d5411f92c5dd6670be900')
 
 package() {
