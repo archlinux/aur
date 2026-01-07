@@ -1,6 +1,6 @@
 # Maintainer: PharmaRacist
 pkgname=noon-xp-icons
-pkgver=r$(date +%Y%m%d)
+pkgver=r33.24e95ad
 pkgrel=1
 pkgdesc="B00merang-Artwork icon theme packaged for Noon Project"
 arch=('any')

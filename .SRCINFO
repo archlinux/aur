@@ -1,6 +1,6 @@
 pkgbase = noon-xp-icons
 	pkgdesc = B00merang-Artwork icon theme packaged for Noon Project
-	pkgver = r20260107
+	pkgver = r33.24e95ad
 	pkgrel = 1
 	url = https://github.com/B00merang-Artwork/Windows-XP
 	install = noon-xp-icons.install
