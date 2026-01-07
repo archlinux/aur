@@ -1,7 +1,7 @@
 pkgbase = alacritty-use-theme-git
 	pkgdesc = Small utility to switch the selected theme used by alacritty terminal.
-	pkgver = r14.3915a00
-	pkgrel = 1
+	pkgver = r71.fbe2119
+	pkgrel = 2
 	url = https://github.com/christophermca/alacritty-use-theme
 	arch = x86_64
 	license = GPL
