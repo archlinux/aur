@@ -1,0 +1,176 @@
+From 2ee01bf7521d6a343e51458d082b30541eb3b7f2 Mon Sep 17 00:00:00 2001
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Date: Tue, 1 Jul 2025 12:06:15 +0200
+Subject: [PATCH 2/3] storage: Try opening the slot-suffixed partition
+
+Some devices ship 2 copies of remote partitions (see e.g. #22), which
+the current code can't cope with.
+
+Add parsing of a slot suffix (via '-S', single character) and if
+passed, retry opening partition (via a partlabel) with it.
+
+Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+---
+ rmtfs.c   | 19 +++++++++++++++--
+ rmtfs.h   |  3 ++-
+ storage.c | 61 +++++++++++++++++++++++++++++++++++--------------------
+ 3 files changed, 58 insertions(+), 25 deletions(-)
+
+diff --git a/rmtfs.c b/rmtfs.c
+index 0d697b5..f48d738 100644
+--- a/rmtfs.c
++++ b/rmtfs.c
+@@ -27,6 +27,7 @@
+ 
+ static struct rmtfs_mem *rmem;
+ static sig_atomic_t sig_int_count;
++static char slot_suffix[SLOT_SUFFIX_LEN];
+ 
+ static bool dbgprintf_enabled;
+ static void dbgprintf(const char *fmt, ...)
+@@ -69,7 +70,7 @@ static void rmtfs_open(int sock, const struct qrtr_packet *pkt)
+ 		goto respond;
+ 	}
+ 
+-	rmtfd = storage_open(pkt->node, req.path);
++	rmtfd = storage_open(pkt->node, req.path, slot_suffix);
+ 	if (!rmtfd) {
+ 		qmi_result_error(&resp.result, QMI_RMTFS_ERR_INTERNAL);
+ 		goto respond;
+@@ -504,7 +505,7 @@ int main(int argc, char **argv)
+ 	int option;
+ 	const char *storage_root = NULL;
+ 
+-	while ((option = getopt(argc, argv, "o:Prsv")) != -1) {
++	while ((option = getopt(argc, argv, "oS:Prsv")) != -1) {
+ 		switch (option) {
+ 		/*
+ 		 * -o sets the directory where EFS images are stored,
+@@ -535,6 +536,20 @@ int main(int argc, char **argv)
+ 
+ 			break;
+ 
++		/* Partlabel slot suffix on A/B devices */
++		case 'S':
++			if (strnlen(optarg, 1 + 1) != 1) {
++				fprintf(stderr, "Couldn't parse slot name (too long?)\n");
++				return -1;
++			}
++
++			ret = snprintf(slot_suffix, SLOT_SUFFIX_LEN, "_%s", optarg);
++			if (ret != SLOT_SUFFIX_LEN - 1)
++				return -1;
++
++			dbgprintf("Using slot %s\n", slot_suffix);
++			break;
++
+ 		/* -v is for verbose */
+ 		case 'v':
+ 			dbgprintf_enabled = 1;
+diff --git a/rmtfs.h b/rmtfs.h
+index fa4b806..649b240 100644
+--- a/rmtfs.h
++++ b/rmtfs.h
+@@ -26,7 +26,8 @@ ssize_t rmtfs_mem_write(struct rmtfs_mem *rmem, unsigned long phys_address, cons
+ struct rmtfd;
+ 
+ int storage_init(const char *storage_root, bool read_only, bool use_partitions);
+-struct rmtfd *storage_open(unsigned node, const char *path);
++#define SLOT_SUFFIX_LEN	(2 + 1) /* "_a" or "_b", null-terminated */
++struct rmtfd *storage_open(unsigned node, const char *path, const char *slot_suffix);
+ struct rmtfd *storage_get(unsigned node, int caller_id);
+ void storage_close(struct rmtfd *rmtfd);
+ int storage_get_caller_id(const struct rmtfd *rmtfd);
+diff --git a/storage.c b/storage.c
+index 140c6bf..a1ecea2 100644
+--- a/storage.c
++++ b/storage.c
+@@ -74,16 +74,43 @@ int storage_init(const char *storage_root, bool read_only, bool use_partitions)
+ 	return 0;
+ }
+ 
+-struct rmtfd *storage_open(unsigned node, const char *path)
++static int fd_open(struct rmtfd *rmtfd, const char *fspath, const struct partition *part)
++{
++	int saved_errno;
++	int ret;
++	int fd;
++
++	if (!storage_read_only) {
++		fd = open(fspath, O_RDWR);
++		if (fd < 0) {
++			saved_errno = errno;
++			fprintf(stderr, "[storage] failed to open '%s' (requested '%s'): %s\n",
++					fspath, part->path, strerror(saved_errno));
++			return saved_errno;
++		}
++		rmtfd->fd = fd;
++		rmtfd->shadow_len = 0;
++	} else {
++		ret = storage_populate_shadow_buf(rmtfd, fspath);
++		if (ret < 0) {
++			saved_errno = errno;
++			fprintf(stderr, "[storage] failed to open '%s' (requested '%s'): %s\n",
++					fspath, part->path, strerror(saved_errno));
++			return saved_errno;
++		}
++	}
++
++	return 0;
++}
++
++struct rmtfd *storage_open(unsigned node, const char *path, const char *slot_suffix)
+ {
+ 	char *fspath;
+ 	const struct partition *part;
+ 	struct rmtfd *rmtfd = NULL;
+ 	const char *file;
+ 	size_t pathlen;
+-	int saved_errno;
+ 	int ret;
+-	int fd;
+ 	int i;
+ 
+ 	for (part = partition_table; part->path; part++) {
+@@ -119,29 +146,19 @@ found:
+ 	else
+ 		file = part->actual;
+ 
+-	pathlen = strlen(storage_dir) + strlen(file) + 2;
++	pathlen = strlen(storage_dir) + strlen(file) + 2 + strnlen(slot_suffix, SLOT_SUFFIX_LEN);
+ 	fspath = alloca(pathlen);
+ 	snprintf(fspath, pathlen, "%s/%s", storage_dir, file);
+-	if (!storage_read_only) {
+-		fd = open(fspath, O_RDWR);
+-		if (fd < 0) {
+-			saved_errno = errno;
+-			fprintf(stderr, "[storage] failed to open '%s' (requested '%s'): %s\n",
+-					fspath, part->path, strerror(saved_errno));
+-			errno = saved_errno;
++	ret = fd_open(rmtfd, fspath, part);
++	if (ret) {
++		/* Try again with the slot suffix before giving up */
++		if (!slot_suffix)
+ 			return NULL;
+-		}
+-		rmtfd->fd = fd;
+-		rmtfd->shadow_len = 0;
+-	} else {
+-		ret = storage_populate_shadow_buf(rmtfd, fspath);
+-		if (ret < 0) {
+-			saved_errno = errno;
+-			fprintf(stderr, "[storage] failed to open '%s' (requested '%s'): %s\n",
+-					fspath, part->path, strerror(saved_errno));
+-			errno = saved_errno;
++
++		snprintf(fspath, pathlen, "%s/%s%s", storage_dir, file, slot_suffix);
++		ret = fd_open(rmtfd, fspath, part);
++		if (ret)
+ 			return NULL;
+-		}
+ 	}
+ 
+ 	rmtfd->node = node;
+-- 
+2.52.0
+
