@@ -16,19 +16,6 @@ index 5ddc1d087c6..357e1c72e86 100644
 @@ -1 +1 @@
 -5.47.0
 +5.49.0
-diff --git a/src/doc/de/tutorial/tour_algebra.rst b/src/doc/de/tutorial/tour_algebra.rst
-index 84e97f773f1..c13b3a31d29 100644
---- a/src/doc/de/tutorial/tour_algebra.rst
-+++ b/src/doc/de/tutorial/tour_algebra.rst
-@@ -172,7 +172,7 @@ berechnet:
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Hier ist ein komplizierteres Beispiel. Die Verschiebung des
- Gleichgewichts einer verkoppelten Feder, die an der linken Wand
 diff --git a/src/doc/en/constructions/calculus.rst b/src/doc/en/constructions/calculus.rst
 index b6243b64dbc..fb7339ba0b1 100644
 --- a/src/doc/en/constructions/calculus.rst
@@ -42,107 +29,6 @@ index b6243b64dbc..fb7339ba0b1 100644
      sage: integrate(1/x^2, x, 1, infinity)
      1
  
-@@ -257,8 +257,7 @@ is one way to compute LT's and
-     (s, t)
-     sage: f = t^5*exp(t)*sin(t)
-     sage: L = laplace(f, t, s); L
--    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
--    720*(s - 1)/(s^2 - 2*s + 2)^4
-+    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
- 
- is another way.
- 
-diff --git a/src/doc/en/tutorial/tour_algebra.rst b/src/doc/en/tutorial/tour_algebra.rst
-index d460fa279e5..60c22d4338c 100644
---- a/src/doc/en/tutorial/tour_algebra.rst
-+++ b/src/doc/en/tutorial/tour_algebra.rst
-@@ -182,7 +182,7 @@ You can compute Laplace transforms also; the Laplace transform of
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Here is a more involved example. The displacement from equilibrium
- (respectively) for a coupled spring attached to a wall on the left
-diff --git a/src/doc/es/tutorial/tour_algebra.rst b/src/doc/es/tutorial/tour_algebra.rst
-index 42c818fe8d7..f49e498582a 100644
---- a/src/doc/es/tutorial/tour_algebra.rst
-+++ b/src/doc/es/tutorial/tour_algebra.rst
-@@ -164,7 +164,7 @@ de :math:`t^2e^t -\sin(t)` se calcula como sigue:
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Veamos un ejemplo más complicado. El desplazamiento desde el punto de equilibrio
- de dos resortes acoplados, sujetos a una pared a la izquierda
-diff --git a/src/doc/fr/tutorial/tour_algebra.rst b/src/doc/fr/tutorial/tour_algebra.rst
-index 70cbe3a1df0..e386986385a 100644
---- a/src/doc/fr/tutorial/tour_algebra.rst
-+++ b/src/doc/fr/tutorial/tour_algebra.rst
-@@ -149,7 +149,7 @@ transformée de Laplace de :math:`t^2e^t -\sin(t)` s'obtient comme suit :
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Voici un exemple plus élaboré. L'élongation à partir du point
- d'équilibre de ressorts couplés attachés à gauche à un mur
-diff --git a/src/doc/it/tutorial/tour_algebra.rst b/src/doc/it/tutorial/tour_algebra.rst
-index 4c301d7b1b2..38f0dc8a574 100644
---- a/src/doc/it/tutorial/tour_algebra.rst
-+++ b/src/doc/it/tutorial/tour_algebra.rst
-@@ -150,7 +150,7 @@ Si può anche calcolare la trasformata di Laplace; la trasformata di Laplace di
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Il successivo è un esempio più articolato. Lo scostamento dall'equilibrio
- (rispettivamente) per due molle accoppiate fissate ad un muro a sinistra
-diff --git a/src/doc/ja/tutorial/tour_algebra.rst b/src/doc/ja/tutorial/tour_algebra.rst
-index dd6e67d1030..5d14e260435 100644
---- a/src/doc/ja/tutorial/tour_algebra.rst
-+++ b/src/doc/ja/tutorial/tour_algebra.rst
-@@ -176,7 +176,7 @@ Sageを使って常微分方程式を研究することもできる． :math:`x'
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- 
- もう少し手間のかかる問題を考えてみよう．
-diff --git a/src/doc/pt/tutorial/tour_algebra.rst b/src/doc/pt/tutorial/tour_algebra.rst
-index b3c9bf54e45..c3dca33b69e 100644
---- a/src/doc/pt/tutorial/tour_algebra.rst
-+++ b/src/doc/pt/tutorial/tour_algebra.rst
-@@ -169,7 +169,7 @@ Laplace de :math:`t^2e^t -\sin(t)` é calculada da seguinte forma:
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- A seguir, um exemplo mais complicado. O deslocamento, com respeito à
- posição de equilíbrio, de duas massas presas a uma parede através de
-diff --git a/src/doc/ru/tutorial/tour_algebra.rst b/src/doc/ru/tutorial/tour_algebra.rst
-index bc0d4926f83..ad1bae1de96 100644
---- a/src/doc/ru/tutorial/tour_algebra.rst
-+++ b/src/doc/ru/tutorial/tour_algebra.rst
-@@ -166,7 +166,7 @@ Sage может использоваться для решения диффер
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- Приведем более сложный пример. Отклонение от положения равновесия для пары
- пружин, прикрепленных к стене слева,
 diff --git a/src/doc/zh/constructions/calculus.rst b/src/doc/zh/constructions/calculus.rst
 index 9f896a4658b..2b83dc19b45 100644
 --- a/src/doc/zh/constructions/calculus.rst
@@ -155,29 +41,6 @@ index 9f896a4658b..2b83dc19b45 100644
 +    ((24*k^3*w*e^(k*x) - 24*k*w^3*e^(k*x) - (k^6*w*e^(k*x) + 3*k^4*w^3*e^(k*x) + 3*k^2*w^5*e^(k*x) + w^7*e^(k*x))*x^3 + 6*(k^5*w*e^(k*x) + 2*k^3*w^3*e^(k*x) + k*w^5*e^(k*x))*x^2 - 6*(3*k^4*w*e^(k*x) + 2*k^2*w^3*e^(k*x) - w^5*e^(k*x))*x)*cos(w*x) - (6*k^4*e^(k*x) - 36*k^2*w^2*e^(k*x) + 6*w^4*e^(k*x) - (k^7*e^(k*x) + 3*k^5*w^2*e^(k*x) + 3*k^3*w^4*e^(k*x) + k*w^6*e^(k*x))*x^3 + 3*(k^6*e^(k*x) + k^4*w^2*e^(k*x) - k^2*w^4*e^(k*x) - w^6*e^(k*x))*x^2 - 6*(k^5*e^(k*x) - 2*k^3*w^2*e^(k*x) - 3*k*w^4*e^(k*x))*x)*sin(w*x))/(k^8 + 4*k^6*w^2 + 6*k^4*w^4 + 4*k^2*w^6 + w^8)
      sage: integrate(1/x^2, x, 1, infinity)
      1
- 
-@@ -241,8 +241,7 @@ Sage 还可以计算涉及极限的符号定积分。
-     (s, t)
-     sage: f = t^5*exp(t)*sin(t)
-     sage: L = laplace(f, t, s); L
--    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
--    720*(s - 1)/(s^2 - 2*s + 2)^4
-+    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
- 
- 上面是另一种方法。
- 
-diff --git a/src/doc/zh/tutorial/tour_algebra.rst b/src/doc/zh/tutorial/tour_algebra.rst
-index 592f096341f..c4d66efccb4 100644
---- a/src/doc/zh/tutorial/tour_algebra.rst
-+++ b/src/doc/zh/tutorial/tour_algebra.rst
-@@ -169,7 +169,7 @@ Sage 可以对许多函数进行微分和积分。
-     sage: t = var("t")
-     sage: f = t^2*exp(t) - sin(t)
-     sage: f.laplace(t,s)
--    -1/(s^2 + 1) + 2/(s - 1)^3
-+    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
- 
- 这里是一个更复杂的示例。左侧连接到墙上的耦合弹簧的平衡位移
  
 diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
 index 980d2569e03..03f7b6d2d88 100644
@@ -203,15 +66,6 @@ index 980d2569e03..03f7b6d2d88 100644
          1
          sage: limit(x^x, x, 0, dir='+', algorithm='fricas') # optional - fricas
          1
-@@ -1824,7 +1824,7 @@ def laplace(ex, t, s, algorithm='maxima'):
-         sage: f = exp (2*t + a) * sin(t) * t; f
-         t*e^(a + 2*t)*sin(t)
-         sage: L = laplace(f, t, s); L
--        2*(s - 2)*e^a/(s^2 - 4*s + 5)^2
-+        2*(s - 2)*e^a/(s^4 - 8*s^3 + 26*s^2 - 40*s + 25)
-         sage: inverse_laplace(L, s, t)
-         t*e^(a + 2*t)*sin(t)
- 
 diff --git a/src/sage/calculus/test_sympy.py b/src/sage/calculus/test_sympy.py
 index aa084799a10..e081e9674d9 100644
 --- a/src/sage/calculus/test_sympy.py
