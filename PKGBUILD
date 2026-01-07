@@ -2,14 +2,14 @@
 
 pkgname=pkl-bin
 _pkgname=pkl
-pkgver=0.27.0
+pkgver=0.30.2
 pkgrel=1
 pkgdesc='A configuration as code language with rich validation and tooling.'
 arch=('x86_64')
 url='https://pkl-lang.org'
 license=('Apache')
 source_x86_64=("https://github.com/apple/pkl/releases/download/${pkgver}/pkl-linux-amd64")
-sha256sums_x86_64=('e4c76b6dd02456dac8d300ea1f1c50102f6414cb947567436477cbf7c2dab3aa')
+sha256sums_x86_64=('474e5137d60a9e2320fde19a526f42c36d8e9d3b245139d59a9b8dff85283c76')
 provides=('pkl')
 conflicts=('pkl' 'pkl-git')
 
