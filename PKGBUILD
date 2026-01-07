@@ -2,8 +2,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=elyprismlauncher-bin
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.0.1
+pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/ElyPrismLauncher"
