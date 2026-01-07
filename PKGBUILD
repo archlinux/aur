@@ -1,6 +1,6 @@
 pkgname=soundcloud-dl
 pkgver=2.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
 arch=(any)
@@ -29,4 +29,7 @@ build() {
 package() {
     cd "$srcdir/scdl-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    # remove tests to avoid conflicts
+    _pyver=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    rm -rf "$pkgdir/usr/lib/python${_pyver}/site-packages/tests"
 }
