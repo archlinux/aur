@@ -29,6 +29,7 @@ prepare () {
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
+  CFLAGS+=' -std=gnu89'
   ./configure --prefix=/usr --with-pam-dir=/usr/lib/security
   make
 }
