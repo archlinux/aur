@@ -1,51 +1,34 @@
-# Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
-pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
-arch=('x86_64' 'aarch64')
+pkgdesc="Python + Flet lyrics tool inspired by 163MusicLyrics"
+arch=('any')
 url="https://github.com/wang1zhen/lyricbridge"
-license=("Apache")
+license=('Apache-2.0')
 depends=(
-  'electron'
-  'nodejs'
   'python'
-  'uvicorn'
-  'python-fastapi'
-  'python-httpx'
-  'python-pydantic'
-  'python-pydantic-settings'
-  'python-cachetools'
-  'python-dotenv'
-  'python-beautifulsoup4'
-  'python-lxml'
-  'python-dateutil'
+  'python-flet'
+  'python-requests'
+  'python-pycryptodome'
+  'python-pypinyin'
 )
-makedepends=('git')
-provides=('lyricbridge')
-conflicts=('lyricbridge-git')
-source=(
-  "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v${pkgver}.tar.gz"
-)
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2ac2302dd94ea0ce4fc8d102c3057366bb2a683bc049ec4e28ce0629221a64c1')
 
 package() {
-  cd "${srcdir}/lyricbridge-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  install -d "${pkgdir}/usr/lib/lyricbridge"
-  cp -r backend "${pkgdir}/usr/lib/lyricbridge/"
-  cp -r frontend "${pkgdir}/usr/lib/lyricbridge/"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Launcher
-  install -d "${pkgdir}/usr/bin"
-  install -m 755 packaging/arch/lyricbridge/lyricbridge.sh "${pkgdir}/usr/bin/lyricbridge"
+  install -d "$pkgdir/usr/share/$pkgname"
+  install -Dm644 app.py "$pkgdir/usr/share/$pkgname/app.py"
+  cp -r assets "$pkgdir/usr/share/$pkgname/"
+  cp -r lyricbridge "$pkgdir/usr/share/$pkgname/"
 
-  # Desktop entry
-  install -d "${pkgdir}/usr/share/applications"
-  install -m 644 packaging/arch/lyricbridge/lyricbridge.desktop "${pkgdir}/usr/share/applications/lyricbridge.desktop"
-
-  # Icon (SVG)
-  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m 644 frontend/renderer/favicon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lyricbridge.svg"
-
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'EOS'
+#!/usr/bin/env bash
+cd /usr/share/lyricbridge || exit 1
+exec /usr/bin/python app.py
+EOS
 }
