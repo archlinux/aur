@@ -12,7 +12,7 @@ pkgbase = komet
 	depends = libsecret
 	depends = libepoxy
 	depends = at-spi2-core
-	source = git+https://github.com/KometTeam/Komet.git#tag=0.4.1
+	source = git+https://github.com/KometTeam/Komet.git#commit=3272e81c6360e064f71a6d39f2064a96a894a727
 	sha256sums = SKIP
 
 pkgname = komet

@@ -17,7 +17,7 @@ makedepends=(
   'flutter'
   'git'
 )
-source=("git+https://github.com/KometTeam/Komet.git#tag=${pkgver}")
+source=("git+https://github.com/KometTeam/Komet.git#commit=3272e81c6360e064f71a6d39f2064a96a894a727")
 sha256sums=('SKIP')
 
 build() {
