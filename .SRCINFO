@@ -1,6 +1,6 @@
 pkgbase = twitter-media-downloader-bin
 	pkgdesc = A tool to download media from Twitter (pre-built binary)
-	pkgver = 1.14.2
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/mmpx12/twitter-media-downloader
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = twitter-media-downloader-bin
 	provides = twitter-media-downloader
 	conflicts = twitter-media-downloader
 	conflicts = twitter-media-downloader-git
-	source_x86_64 = https://github.com/mmpx12/twitter-media-downloader/releases/download/v1.14.2/twitter-media-downloader-v1.14.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 52c306a32db7e78a054d21c742f3b0b04baff9d5fef6fd16992929a678fb79b9
-	source_aarch64 = https://github.com/mmpx12/twitter-media-downloader/releases/download/v1.14.2/twitter-media-downloader-v1.14.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 3432adb63bd80f924ce24a092d44d2e40df33797b743356e71bd49a2a1eab45b
+	source_x86_64 = https://github.com/mmpx12/twitter-media-downloader/releases/download/v1.15.0/twitter-media-downloader-v1.15.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3c3469764a9c7d27954e944d5ae6a06324615ea2ef5a26b2f9a34c58d3262eba
+	source_aarch64 = https://github.com/mmpx12/twitter-media-downloader/releases/download/v1.15.0/twitter-media-downloader-v1.15.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = fc1db9299092b74700ee76400fc0ce5714eef262dc6e2f3944934bc1d1ca49d0
 
 pkgname = twitter-media-downloader-bin
