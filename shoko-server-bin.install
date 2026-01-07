@@ -1,0 +1,39 @@
+PKGNAME=shoko-server
+PATHNAME=shoko
+USER=shoko
+WORKING_DIR="/var/lib/${PATHNAME}/.shoko/Shoko.CLI"
+
+link_config() {
+  ln -f "${WORKING_DIR}/settings-server.json" "/etc/${PATHNAME}/settings-server.json"
+}
+link_log() {
+  ln -sf "/var/log/${PATHNAME}" "${WORKING_DIR}/logs"
+  chown $USER: "/var/log/${PATHNAME}" "${WORKING_DIR}/logs"
+}
+
+link_webui() {
+  webui_index='/usr/lib/shoko/webui/index.html.fulfil'
+  if [ -f "${webui_index}" ]; then
+    ln -sf "${webui_index}" '/usr/lib/shoko/webui/index.html'
+  fi
+}
+
+## arg 1:  the new package version
+post_install() {
+  if ! id -u ${USER} > /dev/null 2>&1; then
+    useradd --system --shell '/usr/bin/nologin' --create-home --home-dir "/var/lib/${PATHNAME}" ${USER}
+  fi
+  chown --recursive $USER: "/var/lib/${PATHNAME}" "/etc/${PATHNAME}"
+  link_config
+  link_log
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  link_config
+  link_log
+  link_webui
+}
+
+

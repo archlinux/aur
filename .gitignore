@@ -1,0 +1,5 @@
+src/
+pkg/
+ShokoServer/
+*.pkg.tar.zst
+Shoko.CLI_Framework_any-x64*.zip

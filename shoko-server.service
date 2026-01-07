@@ -1,0 +1,17 @@
+# Maintainer: vcup <me@vcup.moe>
+[Unit]
+Description=An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.
+Documentation=https://docs.shokoanime.com/
+After=network.target
+
+[Service]
+Type=simple
+User=shoko
+Group=shoko
+WorkingDirectory=/var/lib/shoko
+ExecStart=/usr/bin/shoko-server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
