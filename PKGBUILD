@@ -3,7 +3,7 @@
 _pkgauthor=IBM-Cloud
 _pkgname=redli
 pkgname=${_pkgname}-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A humane alternative to the Redis-cli and TLS"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
             '7cd318c33e82808d5f5725dde4fda22c310c2164585984772d544935aeac0144'
             '0dd6aab11eee247eacdb819b7982e0b489da95b1b937076196309fefc2d7c069')
-sha256sums_x86_64=('17c38f4db744bd970a732e78dd4c59f40f828aa31e7c41bf2020379937d5a408')
-sha256sums_aarch64=('cec8dea5f3f14ca2d09e91fffccc9b71f4a1c8a18314230902c4d2c41ad9bd42')
+sha256sums_x86_64=('ca72f3dd3aad55925e7a6c157805143cc9affa237010c305dfb5d6fd9f44294b')
+sha256sums_aarch64=('35cbcfa8bde3bd79382d96ba27d9d61957db3b6a029c90d29de317c6e904355d')
 
 
 case `uname -m` in
