@@ -1,5 +1,5 @@
 pkgbase = rsenv
-	pkgdesc = A cross-platform fuzzy Makefile task finder
+	pkgdesc = Environments Evolved
 	pkgver = 2.0.0_rc
 	pkgrel = 3
 	url = https://github.com/sysid/rs-env
@@ -9,6 +9,8 @@ pkgbase = rsenv
 	makedepends = rust
 	depends = glibc
 	depends = gcc-libs
+	depends = direnv
+	depends = sops
 	provides = rsenv
 	source = rsenv-v2.0.0-rc.3.tgz::https://github.com/sysid/rs-env/archive/v2.0.0-rc.3.tar.gz
 	sha256sums = 3c51861389e8717d653ed78850424a80c1081a14983278a1f8b878b41a426613

@@ -4,7 +4,7 @@ _pkgauthor=sysid
 _pkgname=rs-env
 _appname=${_pkgname//-/}
 pkgname=${_appname}
-pkgdesc="A cross-platform fuzzy Makefile task finder"
+pkgdesc="Environments Evolved"
 
 pkgver=2.0.0_rc
 pkgrel=3
@@ -18,7 +18,7 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('BSD-3-Clause')
 
 makedepends=('rust')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'direnv' 'sops')
 
 provides=("${_appname}")
 
