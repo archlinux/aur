@@ -1,0 +1,16 @@
+pkgbase = cronkit-bin
+	pkgdesc = Make cron human again - CLI tool for cron job management
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hzerrad/cronkit
+	license = Apache-2.0
+	conflicts = cronkit
+	provides = cronkit
+	arch = aarch64
+	source_aarch64 = https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_arm64.tar.gz
+	sha256sums_aarch64 = 860c828d4578809102ddab3f0a35de2d82c1deccb2c9481c1e0cdff2b8620d82
+	arch = x86_64
+	source_x86_64 = https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5838de3b03b6026b5c7d5109d903a07be690c0b9813ee6631575f937293d49a8
+	
+pkgname = cronkit-bin
