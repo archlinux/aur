@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Lemonade
+Comment=Lemonade Desktop Application
+Exec=lemonade-desktop %U
+Icon=lemonade-desktop
+Terminal=false
+StartupWMClass=Lemonade
