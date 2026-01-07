@@ -1,7 +1,7 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail.com>
 # Contributor: Yigid BALABAN <fyb at fybx.dev>
 pkgname=ianny-bin
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Desktop utility that helps preventing repetitive strain injuries by periodically informing the user to take breaks."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(dbus glibc gcc-libs)
 provides=(ianny)
 conflicts=(ianny)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zefr0x/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('2c8cc1dfdfcdc8e642dced18e9980e2ea878129e932c57b3b42a3e4e814e0c73')
+sha256sums=('58be3a4dd06e62009590284ed16c16f0ddc41a188362243600e2e3781aea5e00')
 
 package() {
 	cd "$CARCH-unknown-linux-gnu"
