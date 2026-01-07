@@ -1,6 +1,6 @@
 pkgbase = glgpu-git
 	pkgdesc = Low-Level, low dependency rendering interface over the Vulkan API
-	pkgver = 1.0.0.r3.g1780d65
+	pkgver = 1.0.1.r2.gd3f1427
 	pkgrel = 1
 	url = https://github.com/Gl1tchs/glgpu
 	arch = x86_64
