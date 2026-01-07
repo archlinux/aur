@@ -1,7 +1,7 @@
 # Maintainer: liv <aur@insects.institute>
 pkgname=gg-jujutsu
 
-pkgver=0.36.2
+pkgver=0.36.4
 pkgrel=1
 pkgdesc='A GUI for the version control system Jujutsu.'
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ conflicts=(
 )
 
 source=("gg::git+https://github.com/gulbanana/gg.git#tag=v${pkgver}")
-b2sums=('7d866724822ea53e263450d167a199bbeeaddbfa784bfd67e68ec88bd07a303bcd779fe27ce7d4f1c1216bf903e474f59d90c97087a6b3b563b56d121075aa98')
+b2sums=('f9b13e08d4142c42bac2b83bbb209e61fa123b1bab54a9d0329749f4d33f20310e527775bf2d91e6ff7b0ca4abec34d6d5a8267ec7a82a46d0f85fc35995f734')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
