@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Capps <cappsy at gmail dot com>
 pkgname=cosmic-ext-applet-logomenu-git
-pkgver="0.6.10"
-pkgrel=5
+pkgver="0.6.11"
+pkgrel=6
 pkgdesc="Logo Menu applet for the COSMIC™ desktop"
 arch=('x86_64')
 url="https://github.com/cappsyco/cosmic-ext-applet-logomenu"
@@ -16,6 +16,11 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/cappsyco/cosmic-ext-applet-logomenu.git')
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${pkgname%-git}"
