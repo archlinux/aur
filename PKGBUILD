@@ -1,6 +1,6 @@
 # Maintainer: vcup <me@vcup.moe>
-pkgname=shoko-server
-pkgver=v5.1.0.dev.88.r3.g50099e21f
+pkgname=shoko-server-git
+pkgver=v5.1.0.dev.149.r0.gb5345bbc8
 pkgrel=1
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('any')
@@ -9,6 +9,11 @@ license=('MIT')
 depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'rhash' 'avdump3')
 makedepends=('dotnet-sdk-8.0')
 # backup=('etc/shoko-server/config.json')
+optdepends=(
+  'shoko-webui: web-admin ui in latest release'
+  'shoko-webui-git: web-admin ui in latest commit (should use this for best compatibility)'
+)
+conflict=('shoko-server')
 install=${pkgname}.install
 source=(
   "git+https://github.com/ShokoAnime/ShokoServer.git"
@@ -39,7 +44,7 @@ build() {
     Shoko.CLI/Shoko.CLI.csproj /p:Version="${_version}" \
     /p:InformationalVersion="\"channel=${_channel},commit=${_commit},tag=${_tag},date=${_date},\""
 
-  # mv "${srcdir}/build/webui/index.html" "${srcdir}/build/webui/index.html.initial"
+  mv "${srcdir}/build/webui/index.html" "${srcdir}/build/webui/index.html.emptytips"
 }
 
 package() {
@@ -48,8 +53,8 @@ package() {
   install -d "${pkgdir}/etc/${_path_name}" "${pkgdir}/var/"{log,lib}"/${_path_name}" "${pkgdir}/usr/"{bin,lib}
   cp -r "${srcdir}/build/" "${pkgdir}/usr/lib/${_path_name}"
   ln -s "/usr/lib/${_path_name}/Shoko.CLI" "${pkgdir}/usr/bin/shoko-server"
-  ln -s "/opt/avdump3/AVDump3CL.dll" "${_working_dir}/AVDump/AVDump3CL.dll"
-  ln -s "/usr/lib/${_path_name}/webui/index.html.initial" "${pkgdir}/usr/lib/${_path_name}/webui/index.html"
+  # ln -s "/opt/avdump3/AVDump3CL.dll" "${pkgdir}/usr/lib/${_path_name}/AVDump/AVDump3CL.dll"
+  ln -s "/usr/lib/${_path_name}/webui/index.html.emptytips" "${pkgdir}/usr/lib/${_path_name}/webui/index.html"
 
   install -Dm644 'shoko-server.service' "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_path_name}/LICENSE"
