@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Alma
+Comment=A beautiful desktop application that unifies your AI experience.
+Exec=/usr/bin/alma
+Icon=/usr/share/icons/hicolor/256x256/apps/alma.png
+Categories=Utility;
+StartupWMClass=Alma
