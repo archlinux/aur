@@ -1,8 +1,8 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=ospd-openvas
-pkgver=22.7.1
-pkgrel=6
+pkgver=22.10.0
+pkgrel=1
 pkgdesc='OSP Server for openvas'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd-openvas"
@@ -16,7 +16,7 @@ backup=("etc/gvm/ospd-openvas.conf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
         gvm.sysusers)
-sha512sums=('ae7fe56a2b825efc33d9e29f2a51ab1034155ee70a5790d98f3b811a29f4b35830afabc27abd14593d74e1bcc5dac0ea1cd33ed46cc3ca459256a4b452e10552'
+sha512sums=('213b5308d92125d2d4f3441c5c46268bbe5a663eaaa9dda1e234653febedc717c1f0d715d525460f6e2c0f591dd4b260f8f0efb5774856dd8196a9683ef05196'
             'SKIP'
             '41cce63de96443788dd0209e164e0162c1a2116ba46ccf565672027778c60ce79ada6e7347edf0250a77d3e7959b3b76040da036fc59ce1cb7ba7b09ec4c93c9')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
