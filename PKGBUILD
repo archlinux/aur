@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=python-micropie
-pkgver=0.23
+pkgver=0.26
 pkgrel=1
 pkgdesc='An ultra micro ASGI web framework'
 url="https://patx.github.io/micropie/"
@@ -24,7 +24,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("git+https://github.com/patx/micropie.git#tag=v$pkgver")
-sha256sums=('5e6bec2e3b3f52cef4304ff1d60812d50cf7a2109caa254ed89cf3c4c8588c9e')
+sha256sums=('1f3c1e03502d7652223259935b359c2237376b29327f894da089d5daa0c71110')
 
 build() {
     cd "micropie"
