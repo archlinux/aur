@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay-git
 _gitname=UxPlay
-pkgver=r1341.401ae19
+pkgver=r1367.3be60fd
 pkgrel=2
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
@@ -47,5 +47,5 @@ package() {
   install -Dm 644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/uxplay/LICENSE"
 
   # install systemd service
-  install -Dm 644 "$srcdir/$_gitname/uxplay.service" "$pkgdir/etc/systemd/user/uxplay.service"
+  install -Dm 644 "$srcdir/$_gitname/uxplay.service" "$pkgdir/usr/lib/systemd/user/uxplay.service"
 }
