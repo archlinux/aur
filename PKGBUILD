@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=buttery
 pkgname=${_pkgname}-bin
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A video editor with manual motion smoothing"
@@ -20,8 +20,8 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('402e4a4a92e7fd384eaa5747a80d9a44b395007cf8ea4b75e06897043409f235'
-            '353a57cee4c80f586368db4d9a77bd7c21c11d367f36afe7ab39d6a104621238'
+sha256sums=('e0f0b465d245a6f345f7afa2c874fc9504811bc402bb178b82059563885f103d'
+            '9cc917e5374c2b0373bcadcfed4095da2c7d10578a3e6bae972a9764a08496c8'
             '57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec')
 
 case ${CARCH} in
