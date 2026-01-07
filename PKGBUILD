@@ -1,5 +1,5 @@
-# Maintainer: Sam Day <me@samcday.com>
 # Maintainer: Super Tecno Gym <banana@grrlz.net>
+# Contributor: Sam Day <me@samcday.com>
 
 pkgname="qrtr"
 pkgdesc="Userspace reference for net/qrtr in the Linux kernel"
