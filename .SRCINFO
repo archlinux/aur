@@ -1,7 +1,7 @@
 pkgbase = mihomo-tui-bin
 	pkgdesc = A TUI for Mihomo (Clash.Meta) - binary version
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/potoo0/mihomo-tui
 	arch = x86_64
 	arch = aarch64

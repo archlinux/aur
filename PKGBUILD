@@ -3,7 +3,7 @@
 pkgname=mihomo-tui-bin
 _pkgname=mihomo-tui
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for Mihomo (Clash.Meta) - binary version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/potoo0/mihomo-tui"
