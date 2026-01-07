@@ -13,7 +13,7 @@ sha256sums=('b6de5c8ebf8fa6c7c0d607f0607f522454315632ae55b70babf908b94e9602cb')
 
 build() {
   cd "$srcdir/superlu_mt-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBLA_VENDOR=Generic -DBUILD_SHARED_LIBS=ON \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBLA_VENDOR=Generic \
     -Denable_examples=OFF -Denable_tests=OFF -DPLAT="_OPENMP" -DSUPERLUMT_INSTALL_INCLUDEDIR=include .
   make
 }
