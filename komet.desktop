@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Komet
+Comment=Multifunctional MAX client
+Exec=komet
+Icon=komet
+Type=Application
+Categories=Network;Chat;
+Terminal=false

@@ -1,0 +1,18 @@
+pkgbase = komet
+	pkgdesc = Komet — Multifunctional MAX client (Flutter desktop)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/KometTeam/Komet
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter
+	makedepends = git
+	depends = gtk3
+	depends = glib2
+	depends = libsecret
+	depends = libepoxy
+	depends = at-spi2-core
+	source = git+https://github.com/KometTeam/Komet.git#tag=v0.4.1
+	sha256sums = SKIP
+
+pkgname = komet
