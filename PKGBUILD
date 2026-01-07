@@ -7,7 +7,7 @@ url="https://minecraftforge.net"
 pkgver=60.1.0
 pkgrel=1
 _minecraftver=1.21.10
-_licensever=1.21.x
+_licensever=1.21.10
 _srvpath="/opt"
 
 arch=("any")
