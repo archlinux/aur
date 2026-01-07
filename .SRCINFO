@@ -1,0 +1,12 @@
+pkgbase = framework-webhid-udev
+	pkgdesc = Udev rules to allow WebHID access to Framework Laptop 16 input modules
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://keyboard.frame.work/
+	arch = any
+	license = MIT
+	depends = systemd
+	source = framework-webhid.rules
+	sha256sums = SKIP
+
+pkgname = framework-webhid-udev
