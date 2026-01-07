@@ -1,0 +1,12 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/noon-xp
+  echo "==> Apply via System Settings > Appearance > Icons"
+}
+
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/noon-xp
+}
+
+post_remove() {
+  echo "==> Noon XP Icons removed"
+}
