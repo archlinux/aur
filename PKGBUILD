@@ -8,6 +8,7 @@ pkgdesc='Default falcond profiles'
 url='https://github.com/PikaOS-Linux/falcond-profiles'
 arch=(any)
 license=('MIT')
+depends=('git')
 
 source=(git+${url}.git#commit=${_pkgver})
 sha256sums=('a658aef941b00630e6c4d39b8130fea9e7a43b0236260c753db44d73a2772fc5')
