@@ -1,18 +1,18 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=moonbit
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A modern system cleaner built in Go with a TUI and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/moonbit"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('systemd')
 optdepends=(
     'docker: Docker cleanup support'
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c44993fee09f2ab6319a27673034ba8f1b9ad98076d67b9d70d4d2e0fab33751')
+sha256sums=('0b2a306ad2593c39101f6311b7709e38a83b7a5e4da54ab4daa84331b382de25')
 install=${pkgname}.install
 
 build() {
