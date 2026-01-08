@@ -42,3 +42,8 @@ package() {
     cd "$srcdir/$pkgname"
     make install
 }
+
+check() {
+    cd "$srcdir/$pkgname"
+    ./scripts/check.sh --tolerant
+}
