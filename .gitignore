@@ -1,0 +1,6 @@
+*.AppImage
+squashfs-root/
+src/
+pkg/
+nvchecker.toml
+nvchecker.json
