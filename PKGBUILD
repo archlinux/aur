@@ -5,6 +5,7 @@ pkgname=${_pkgname}-git
 pkgver=r181.1ed10e5
 pkgrel=1
 pkgdesc="Evolution mail tray icon, using StatusNotifierItem"
+url="https://github.com/gkatev/evolution-tray"
 arch=('any')
 license=('GPL2')
 depends=('evolution' 'libdbusmenu-glib')
