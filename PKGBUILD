@@ -5,7 +5,7 @@ _jrever='21.0.9'
 
 pkgname='zulu-jre21-fx'
 pkgver="${_zuluver}_${_jrever}"
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).'
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-with-classpath-exception')
@@ -25,7 +25,6 @@ backup=(
     "etc/$pkgname/management/jmxremote.password.template"
     "etc/$pkgname/management/management.properties"
     "etc/$pkgname/sdp/sdp.conf.template"
-
     "etc/$pkgname/security/policy/limited/default_local.policy"
     "etc/$pkgname/security/policy/limited/default_US_export.policy"
     "etc/$pkgname/security/policy/limited/exempt_local.policy"
