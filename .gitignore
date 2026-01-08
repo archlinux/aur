@@ -1,5 +1,4 @@
-# Generated Files
-*tar
-*tar*
-pkg
-src
+pkg/
+src/
+*.tar.gz
+*.zst
