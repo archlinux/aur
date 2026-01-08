@@ -22,14 +22,14 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --release --all-features
 }
 
 package() {
