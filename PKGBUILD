@@ -6,7 +6,7 @@ url="http://www.jmodelica.org/assimulo"
 arch=('x86_64')
 license=(LGPL-3.0)
 makedepends=(python-setuptools cython gcc-fortran)
-depends=(glibc python python-scipy python-numpy python-matplotlib sundials-seq superlu_mt)
+depends=(glibc python python-scipy python-numpy python-matplotlib sundials superlu_mt)
 source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
 sha256sums=('391ee8e7cd4ec768de0fcf4ba39c5ef1928f67b3f3d1391019c381322321899c')
 
