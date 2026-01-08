@@ -1,0 +1,5 @@
+[js-util-bin]
+source = "github"
+github = "5hubham5ingh/js-util"
+use_latest_release = true
+prefix = "v"
