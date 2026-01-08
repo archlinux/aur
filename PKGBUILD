@@ -1,13 +1,13 @@
 # Maintainer: LightJunction <lightjunction@outlook.com>
 pkgname=mimic-node-git
-pkgver=r5.0a5406b
+pkgver=r1.0.0
 pkgrel=1
-pkgdesc="A stealthy sing-box node manager with Reality protocol support"
-arch=('any')
+pkgdesc="A stealthy, systemless sing-box node manager (Rust implementation)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
 license=('GPL-3.0-or-later')
-depends=('sing-box' 'jq' 'curl' 'openssl' 'kmod')
-makedepends=('git')
+depends=('sing-box' 'openssl' 'kmod' 'gcc-libs')
+makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
 install='mimic-node.install'
@@ -19,10 +19,36 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/Mimic-Node"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$srcdir/Mimic-Node"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --frozen --all-features
+}
+
+check() {
+    cd "$srcdir/Mimic-Node"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --release --frozen --all-features
+}
+
 package() {
     cd "$srcdir/Mimic-Node"
 
-    # Install configuration
+    # Install Rust binary
+    install -Dm755 "target/release/mimictl" "$pkgdir/usr/bin/mimictl"
+
+    # Install Helper Script (Shell)
+    install -Dm755 "overlay/usr/bin/mimic-mount" "$pkgdir/usr/bin/mimic-mount"
+
+    # Install configuration defaults
     install -Dm644 "overlay/usr/share/mimic-node/default/config.json" "$pkgdir/usr/share/mimic-node/default/config.json"
 
     # Install systemd units
@@ -32,12 +58,8 @@ package() {
     install -Dm644 "overlay/etc/systemd/system/mimic-node-apply.service" "$pkgdir/etc/systemd/system/mimic-node-apply.service"
     install -Dm644 "overlay/etc/systemd/system/mimic-node-mount.service" "$pkgdir/etc/systemd/system/mimic-node-mount.service"
 
-    # Install sing-box drop-in to enforce overlay dependency
+    # Install systemd drop-in
     install -Dm644 "overlay/etc/systemd/system/sing-box.service.d/mimic-overlay.conf" "$pkgdir/etc/systemd/system/sing-box.service.d/mimic-overlay.conf"
-
-    # Install executables
-    install -Dm755 "overlay/usr/bin/mimictl.sh" "$pkgdir/usr/bin/mimictl"
-    install -Dm755 "overlay/usr/bin/mimic-mount" "$pkgdir/usr/bin/mimic-mount"
 
     # Install shared data
     install -Dm644 "overlay/usr/share/mimic-node/sni.txt" "$pkgdir/usr/share/mimic-node/sni.txt"
