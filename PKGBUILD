@@ -1,7 +1,7 @@
 # Maintainer: Sam Hansen <samhansen.dev@gmail.com>
 pkgname=fuzzel-rbw
-pkgver=0.1.4
-pkgrel=8
+pkgver=0.1.5
+pkgrel=9
 pkgdesc="A simple Bitwarden RBW frontend for Fuzzel"
 arch=('x86_64')
 url="https://github.com/lifeashansen/fuzzel-rbw"
@@ -15,9 +15,9 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('84d9e42a2bda339908eec9358d86246ab3c2fe0f224c869a3016fe15c5a4c707'
-	'8bfa5fddab3bc27faa0f5145dd84992adb8223b99cb593fd8773edf368fed6f0'
-	'2f9285d1b26bb1fda3fb5f710b0a68356b0969cdd5c2de2eb0236fd0193ab0fa')
+sha256sums=('3c969e0c0dec7fa143df991555da3536222d78539b37b9b325604d29ec425d1a'
+            'f476a73aaffe15b5d61e9180c435f10787ef5a923f69b59ccb8ec3384cd06c1c'
+            '51b5fd2b08b61bec0383235e1ae16c4a2d243f510fbbab25c7a757a8a982691c')
 
 package() {
 	# Install the binary
