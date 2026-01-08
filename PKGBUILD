@@ -8,6 +8,8 @@ pkgrel=1
 arch=(aarch64 x86_64)
 url="https://github.com/linux-msm/qrtr"
 license=("BSD-3-Clause")
+conflicts=("${pkgname%-git}")
+groups=(qcom-icnss-wlan)
 _srcname="${pkgname}-${pkgver}"
 source=("${_srcname}.tar.gz::https://github.com/linux-msm/qrtr/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7a82bf80246fe71287b13c66c0466208822e8337fcd4aaf302eee6c5fcb48a52')
@@ -19,7 +21,6 @@ build() {
         mkdir -p build
         meson setup build --prefix=/usr
         meson compile -C build
-
 }
 
 package() {

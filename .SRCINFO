@@ -5,8 +5,10 @@ pkgbase = qrtr
 	url = https://github.com/linux-msm/qrtr
 	arch = aarch64
 	arch = x86_64
+	groups = qcom-icnss-wlan
 	license = BSD-3-Clause
 	makedepends = meson
+	conflicts = qrtr
 	source = qrtr-1.2.tar.gz::https://github.com/linux-msm/qrtr/archive/refs/tags/v1.2.tar.gz
 	sha256sums = 7a82bf80246fe71287b13c66c0466208822e8337fcd4aaf302eee6c5fcb48a52
 
