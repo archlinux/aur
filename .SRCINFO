@@ -1,0 +1,14 @@
+pkgbase = hypertyper
+	pkgdesc = A CLI Typing Game with multiple modes, streaks, and sound effects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SyreeseOfficial/HyperTyper
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pygame
+	depends = python-colorama
+	source = https://github.com/SyreeseOfficial/HyperTyper/archive/v1.0.0.tar.gz
+	sha256sums = 72d01667424995da58bbddd2efd405944ca3e288c7a0011ba0ccf5940e183d15
+
+pkgname = hypertyper
