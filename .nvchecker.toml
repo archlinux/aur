@@ -1,0 +1,5 @@
+[jiq-ai-bin]
+source = "github"
+github = "bellicose100xp/jiq"
+use_latest_release = true
+prefix = "v"

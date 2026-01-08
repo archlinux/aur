@@ -1,0 +1,21 @@
+pkgbase = jiq-ai-bin
+	pkgdesc = Interactive JSON query tool with real-time output and AI assistant
+	pkgver = 3.10.3
+	pkgrel = 1
+	url = https://github.com/bellicose100xp/jiq
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = jq
+	provides = jiq
+	conflicts = jiq
+	conflicts = jiq-bin
+	source_x86_64 = jiq-x86_64-3.10.3.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.10.3/jiq-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 067983ee72e6efc15487aed63bd8f423ccfb2cf78836607fd03426af898b1e54
+	source_aarch64 = jiq-aarch64-3.10.3.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.10.3/jiq-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c5cd9535d36e0c91b263d64f405531ad765950bdf1ff73144a1b672023ce478e
+
+pkgname = jiq-ai-bin
