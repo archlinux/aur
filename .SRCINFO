@@ -1,6 +1,6 @@
 pkgbase = python-pyaragorn
 	pkgdesc = Cython bindings to ARAGORN, a tRNA, tmRNA and mtRNA gene finder.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/althonos/pyaragorn
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = python-pyaragorn
 	makedepends = ninja
 	makedepends = python-scikit-build-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyaragorn/pyaragorn-0.2.0.tar.gz
-	sha256sums = a47332ecb3fa498de4e500740702ecfea141912152581ddac1654aaa7399b178
+	source = https://files.pythonhosted.org/packages/source/p/pyaragorn/pyaragorn-0.3.0.tar.gz
+	sha256sums = c4ee52bb7fe6738e43980592acaaf3d4d52889a0febbb15ae78e215112cdc60a
 
 pkgname = python-pyaragorn
