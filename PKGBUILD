@@ -2,7 +2,7 @@
 
 pkgname=alma-appimage
 _pkgname=alma
-pkgver=0.0.183
+pkgver=0.0.194
 pkgrel=1
 pkgdesc="A beautiful desktop application that unifies your AI experience."
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
   # Install alma
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
-sha256sums=('4baf6298b8673b4fe6f580e919198ae49cda6716d1074d214fd474351b93ee73'
+sha256sums=('4cde0b3b3295f88d0e922431d5cc62cc71ac96fbd1045055b1f24e0a23a7106d'
             'cc72943eba33facd3e3a00f30ecac1753407255cef5e5ed508e3e9c6a8014ddc'
             '153b2379e92cf9e6f1158b5baf7d22102b100028e7e04c4ca79dd009a3e1dc00'
             'afb4bb27b8071b6de919ebcde97a1b4dd27fa1ae5451afe14e533e51e00bb402')
