@@ -1,11 +1,12 @@
 # Maintainer: A. Klitzing <aklitzing@gmail.com>
 
-pkgname=ausweisapp2
+pkgname=ausweisapp
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software application that you install on your computer to use your national identity card or your electronic residence permit for online identification"
 arch=('i686' 'x86_64' 'aarch64')
 license=('custom:EUPL1.2')
+replaces=('ausweisapp2')
 url="https://www.ausweisapp.bund.de/"
 depends=('qt6-declarative' 'qt6-svg' 'qt6-websockets' 'qt6-scxml' 'pcsclite' 'http-parser')
 makedepends=('cmake' 'qt6-tools' 'ninja' 'pkgconf')
