@@ -4,7 +4,7 @@
 pkgname=searxng-uwsgi
 _pkgname=searxng
 pkgver=r9156.3d88876
-pkgrel=1
+pkgrel=2
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=('any')
 url='https://searxng.github.io/searxng/'
