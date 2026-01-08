@@ -4,7 +4,7 @@
 
 _pkgname="netbird-ui"
 pkgname="$_pkgname"
-pkgver=0.61.2
+pkgver=0.62.1
 pkgrel=1
 pkgdesc="GUI for the Netbird client"
 url="https://github.com/netbirdio/netbird"
@@ -26,7 +26,7 @@ makedepends=(
 _pkgsrc="netbird-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('6a13cba1a1176faf6932926e04cf09916dbfd1e42a269709416eb0b8a8ee3b2a')
+sha256sums=('0e1d558a90ed955ae14de029140dc8f457d079770ec2df1419fcc1a9484deae1')
 
 build() {
   export GOPATH="${srcdir}"
