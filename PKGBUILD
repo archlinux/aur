@@ -3,7 +3,7 @@
 
 pkgname=searxng-uwsgi
 _pkgname=searxng
-pkgver=r9120.b719d55
+pkgver=r9156.3d88876
 pkgrel=1
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=('any')
@@ -23,7 +23,7 @@ source=("git+${_giturl}#branch=master"
         'settings.yml')
 b2sums=('SKIP'
         '5cf35a3ac9607af203f8bb5e396012fd9bacf90becd3fffabc2a4985f10b020baf34bc403d8658779905db8ad53be2ef482b61a2680847bc032c6a707347a256'
-        '1e0d47abdd97fc7df82a933c39ede68af384a06e48b4376d34e23cf79b17b9f51febdc563875102f5f230d1d03c5f2d1480e44ccbbd0330d754b8d6cd5e25929'
+        '0cea85bfd713b68da71da0651f80f1c2cdb9231d092684f95ca4bba572124e82f00dc8e666a45b76344f1b5dc67d216978a24850bf0a86e9a053514a1c030ed5'
         '3487c220d6c538dba60671aaaf0927746d8ede4d47f901e01542efdf74dc067ade3d3ee30b500f08d3ef00c2ceba460961e0f4329a4afc32b83e42d8761d5e41'
         '65f66920c96dfd8d68570fb48adb4f74894f188d2a71b1b9214372b43d4b34ab029404ea2eeb3709cce190276d375a2a816e5b7fc3b39210b447337c361bb8d9'
         '99bb7a7dfdab65a8844beb7dd4924601e2f9e85aacacc526a18881dc53e1fa270ff2653c5ada2ce0f92ecebac8917afa974116c09b3e61977b21d70b0f6a4d37')
