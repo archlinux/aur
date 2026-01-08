@@ -1,0 +1,3 @@
+[rip-cli]
+source = "cratesio"
+cratesio = "rip-cli"
