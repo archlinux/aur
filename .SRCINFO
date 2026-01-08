@@ -7,7 +7,7 @@ pkgbase = alacritty-use-theme-git
 	license = GPL
 	makedepends = git
 	depends = alacritty>=0.13.0
-	depends = yq
+	depends = yq-go
 	source = alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git
 	sha256sums = SKIP
 
