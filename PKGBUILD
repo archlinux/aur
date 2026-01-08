@@ -1,3 +1,5 @@
+# Maintainer: Spoorloos <mick.negenman@icloud.com>
+
 _zuluver='21.46.19'
 _jrever='21.0.9'
 
@@ -44,6 +46,5 @@ package() {
     ln -s "/usr/share/licenses/$pkgname" "$pkgdir/$_jvmdir/legal"
 
     # Link JKS keystore from ca-certificates-utils
-    rm -f "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -sf "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
 }
