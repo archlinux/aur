@@ -1,0 +1,27 @@
+post_install() {
+    echo ":: Initializes mimictl keys..."
+
+    echo "--------------------------------------------------------------------------------"
+    echo "Mimic-Node installation complete."
+    echo ""
+    echo "To finish setup, please run:"
+    echo "  sudo systemctl enable --now mimic-node-mount.service"
+    echo "  sudo mimictl gen-keys"
+    echo "  sudo mimictl sni"
+    echo "  sudo systemctl enable --now mimic-node.timer"
+    echo "  sudo systemctl enable --now mimic-node.path"
+    echo "  sudo systemctl enable --now sing-box"
+    echo ""
+    echo "To add a user:"
+    echo "  sudo mimictl add <email>"
+    echo "--------------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+    echo "--------------------------------------------------------------------------------"
+    echo "Mimic-Node upgraded."
+    echo "System is now using OverlayFS for configuration management."
+    echo "Ensure the mount service is enabled:"
+    echo "  sudo systemctl enable --now mimic-node-mount.service"
+    echo "--------------------------------------------------------------------------------"
+}
