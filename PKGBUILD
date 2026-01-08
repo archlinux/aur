@@ -9,12 +9,21 @@ url="https://support.certum.eu/en/software/${pkgname}/"
 license=("LicenseRef-${pkgname}-software-license")
 depends=("gcc-libs" "java-runtime>=23" "pcsclite")
 source=(
-	"https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/${_fullver}/SimplySignDesktop-${_fullver}-${CARCH}-prod-ubuntu.bin"
+	"https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/${_fullver}/SimplySignDesktop-${_fullver}-x86_64-prod-ubuntu.bin"
 )
 md5sums=('e1e2d2d2e28404b939b54f4d3e376495')
 
 prepare() {
-	sh "./SimplySignDesktop-${_fullver}-${CARCH}-prod-ubuntu.bin" --noexec --keep --nox11 --nochown --target "${srcdir}/${pkgname}-${pkgver}"
+	# Avoid trusting the installer; extract manually from the first gzip header.
+
+	# This is the "naive" command that calls the installer, to extract itself.
+	# sh "./SimplySignDesktop-${_fullver}-${CARCH}-prod-ubuntu.bin" --noexec --keep --nox11 --nochown --target "${srcdir}/${pkgname}-${pkgver}"
+
+	# This tells grep not to try to parse Unicode codepoints from the file, since we are doing binary operations.
+	export LANG=C
+	OFFSET=$(grep -obUaP -m 1 "\x1F\x8B" SimplySignDesktop-${_fullver}-x86_64-prod-ubuntu.bin | cut -d ':' -f 1)
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
+	tail -c +$(($OFFSET+1)) SimplySignDesktop-${_fullver}-x86_64-prod-ubuntu.bin | tar -C "${srcdir}/${pkgname}-${pkgver}" -xzf -
 }
 
 package() {
