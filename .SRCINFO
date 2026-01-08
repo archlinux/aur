@@ -4,6 +4,7 @@ pkgbase = cosmic-ext-applet-logomenu-git
 	pkgrel = 6
 	url = https://github.com/cappsyco/cosmic-ext-applet-logomenu
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
