@@ -1,5 +1,5 @@
 pkgbase = amiberry-git
-	pkgdesc = Optimized Amiga emulator for various ARM, ARM64, AMD64 and RISC-V platforms
+	pkgdesc = Optimized Amiga emulator for Linux/macOS
 	pkgver = v7.1.1.r121.gb0eff20
 	pkgrel = 1
 	url = https://github.com/BlitterStudio/amiberry
