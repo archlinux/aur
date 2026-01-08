@@ -1,7 +1,7 @@
 # Maintainer: Lotte V
 # Contributor: Lotte V
 pkgname=dataset-tools-git
-pkgver=linux.v0.0.1.r0.g07d4f2e
+pkgver=linux.v0.0.1.r25.g9f8e405
 pkgrel=1
 pkgdesc="DiffSinger dataset processing tools, including audio processing, labeling."
 arch=('x86_64')
@@ -59,14 +59,6 @@ prepare() {
     find "$_target_root" -name "build" -exec rm -rf {} +
 
     local _share="$_target_root/x64-linux/share"
-    if [ -d "$_share/qbreakpad" ]; then
-        cd "$_share"
-        ln -sf qbreakpad qBreakpad
-        cd qbreakpad
-        ln -sf qBreakpadConfig.cmake QBreakpadConfig.cmake
-        ln -sf qBreakpadConfig.cmake QBreakpad-config.cmake
-        ln -sf qBreakpadTargets.cmake QBreakpadTargets.cmake
-    fi
 
     if [ -d "$_share/fftw3" ]; then
         cd "$_share"
@@ -112,9 +104,7 @@ build() {
         -DVCPKG_INSTALLED_DIR="$_pkgsrc/src/vcpkg_installed" \
         -DVCPKG_MANIFEST_MODE=OFF \
         -DCMAKE_POLICY_DEFAULT_CMP0144=NEW \
-        -DqBreakpad_ROOT="$_vcpkg_inst/share/qbreakpad" \
         -Dfftw3_ROOT="$_vcpkg_inst/share/fftw3" \
-        -DCMAKE_PREFIX_PATH="$_vcpkg_inst/share/qbreakpad;$_vcpkg_inst/share/fftw3;/usr/lib/cmake/Qt6/"
 
     cmake --build .
 }
