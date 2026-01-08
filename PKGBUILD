@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.7.9
+pkgver=1.7.12
 _electron=electron39
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -12,18 +12,18 @@ _ghurl="https://github.com/CherryHQ/cherry-studio"
 license=('MIT')
 depends=(
     "${_electron}"
-    libvips
     imagemagick
     ripgrep
 )
 makedepends=(
     'gendesk'
     'npm'
-    'yarn'
     'jq'
     'moreutils'
     'python'
     'python-setuptools'
+    'pnpm'
+    'node-gyp'
 )
 optdepends=(
     'ollama: use local LLM server'
@@ -32,8 +32,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('feef65e3c2f7d27ed61047d5019586d6bc8bc5bde665b4df30b4ab5e94cc9ddc'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('a382085f26c78c86747f40bb9073aa110201b1c86146331bc8e45663305822af'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -52,6 +52,7 @@ prepare() {
         sponge package.json
 
     # jq '.resolutions."node-abi"="^4.12.0"' package.json | sponge package.json
+    jq 'del(.scripts.prepare)' package.json | sponge package.json
 
     #  no auto update
     sed -i package.json -e "s|electron-builder --dir|& --p never|g"
@@ -63,10 +64,10 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export TMPDIR=${srcdir}
     export npm_config_nodedir=/usr
-    ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn add node-addon-api node-gyp
-    ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn install
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+    ELECTRON_SKIP_BINARY_DOWNLOAD=1 pnpm install
     export NODE_ENV=production
-    yarn run build:unpack
+    pnpm run build:unpack
 }
 _clean() {
     cd ${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules
