@@ -5,6 +5,7 @@ pkgbase = fallout2-ce-git
 	url = https://github.com/alexbatalov/fallout2-ce
 	arch = any
 	license = custom:SUL
+	makedepends = sdl2
 	makedepends = cmake
 	makedepends = git
 	depends = sdl2

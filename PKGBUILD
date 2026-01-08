@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/alexbatalov/$_basename"
 license=('custom:SUL')
 depends=('sdl2')
-makedepends=('cmake' 'git')
+makedepends=('sdl2' 'cmake' 'git')
 source=(
     "$_basename::git+${url}.git"
 )
