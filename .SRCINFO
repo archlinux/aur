@@ -1,0 +1,15 @@
+pkgbase = arduino-router
+	pkgdesc = Arduino UNO Q router/bridge communication service
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-router
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3
+	makedepends = go
+	depends = socat
+	depends = libgpiod
+	source = arduino-router-0.5.4.tar.gz::https://github.com/arduino/arduino-router/archive/v0.5.4.tar.gz
+	sha256sums = bdcccb5c4e856a745f1e457839ac8551d3e421126f9de7bb40ac5f7a28ab12c3
+
+pkgname = arduino-router
