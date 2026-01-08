@@ -7,7 +7,7 @@ pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
 license=('LicenseRef-Stelliberty')
-depends=('gtk3' 'nss' 'openssl' 'libappindicator-gtk3' 'libdbusmenu-gtk3' 'rsync')
+depends=('gtk3' 'libkeybinder3' 'nss' 'openssl' 'libappindicator-gtk3' 'libdbusmenu-gtk3' 'rsync')
 makedepends=('libarchive' 'patchelf')
 optdepends=('xdg-utils: for xdg-open support')
 provides=("stelliberty=${pkgver}")
