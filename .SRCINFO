@@ -1,7 +1,7 @@
 pkgbase = slive
 	pkgdesc = 基于Flutter的聚合直播软件，支持多平台直播源聚合与观看。
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SlotSun/dart_simple_live
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,7 +20,7 @@ pkgbase = slive
 	depends = libva
 	depends = libxv
 	depends = patchelf
-	source = Slive.tar.gz::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.5/Slive.tar.gz
-	sha256sums = 6ae1cc82dd8dbcb375a8e7bc8db371a66a200df7a51fc84ba1adecb6452da03e
+	source = v1.8.5.tar.gz::https://github.com/SlotSun/dart_simple_live/archive/refs/tags/v1.8.5.tar.gz
+	sha256sums = SKIP
 
 pkgname = slive
