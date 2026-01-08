@@ -18,7 +18,6 @@ depends=(
   libxpm
 )
 makedepends=(
-  freetype2
   git
   vim
 )
@@ -35,7 +34,7 @@ prepare() {
   cd $pkgname
 
   # Do not strip binaries on install so we can get debuginfo
-  sed -e 's/install -s/install -p/' -i Makefile
+  sed -i 's/install -s/install -p/' Makefile
 }
 
 build() {

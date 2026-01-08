@@ -5,7 +5,6 @@ pkgbase = progman
 	url = https://github.com/jcs/progman
 	arch = x86_64
 	license = MIT
-	makedepends = freetype2
 	makedepends = git
 	makedepends = vim
 	depends = gdk-pixbuf-xlib
