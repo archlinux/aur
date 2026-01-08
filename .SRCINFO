@@ -1,6 +1,6 @@
 pkgbase = bilihud-git
 	pkgdesc = B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序
-	pkgver = 0.1.1.r7.gc0ef983
+	pkgver = 0.2.0.r7.gc0ef983
 	pkgrel = 1
 	url = https://github.com/locez/bilihud
 	arch = any
@@ -17,6 +17,9 @@ pkgbase = bilihud-git
 	depends = python-brotli
 	depends = python-browser-cookie3
 	depends = python-pure-protobuf
+	depends = python-qrcode
+	depends = python-keyring
+	depends = python-pillow
 	provides = bilihud
 	conflicts = bilihud
 	source = git+https://github.com/locez/bilihud.git
