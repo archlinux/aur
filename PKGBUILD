@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
-pkgver=r771.fce38d8
+pkgver=r810.75df7b3
 pkgrel=1
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
@@ -26,13 +26,17 @@ makedepends=(
 	"lld"
 	"python"
 )
-optdepends=(
-	"python: For running verilogae to obtain equations of compact models"
-)
 provides=("openvaf-r")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}")
-b2sums=('SKIP')
+source=(
+	"${_pkgname}::git+${url}"
+	"vacask::git+https://codeberg.org/arpadbuermen/VACASK#commit=42e5bcdec8376252023e78abe1ec141eb5498208"
+)
+b2sums=('SKIP'
+        '24ace0387ef54d8da94b551bd940aac4f25210a56605b59c55375a84ea0d8ed5cc15b6daef524c1f734a81c406e2c9547bac3b78ba6ad7d9d27a5b04a42d9f82')
+
+# lld fails to link mimalloc when LTO is enabled...
+options=(!lto)
 
 pkgver() {
 	cd "${_pkgname}"
@@ -45,6 +49,13 @@ pkgver() {
 prepare() {
 	cd "${_pkgname}"
 
+	# Add the submodule(s)
+	git submodule init
+	# VACASK - for integration tests
+	git config submodule."external/vacask".url "$srcdir/vacask"
+	# Update submodule
+	git -c protocol.file.allow=always submodule update
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -54,12 +65,26 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+
+	# We need llvm major version
+	local _llvm_ver=$(llvm-config --version)
+	cargo build --frozen --release --features "llvm${_llvm_ver%%.*}"
 }
 
 check() {
 	cd "${_pkgname}"
-	cargo test --frozen --all-features
+	# Use environment variables to control the extensiveness of the testing
+	# default is to run none of the dev nor slow tests
+	# RUN_DEV_TESTS=1 - Integration tests etc
+	# RUN_SLOW_TESTS=1 - Slow/Large compilations?
+	# ALL_TESTS=1 - Equivalent to RUN_DEV_TESTS=1 AND RUN_SLOW_TESTS
+	if [[ "${ALL_TESTS}" > 0 ]]; then
+		export RUN_DEV_TESTS=1
+		export RUN_SLOW_TESTS=1
+	fi
+	# We need llvm major version
+	local _llvm_ver=$(llvm-config --version)
+	cargo test --frozen --features "llvm${_llvm_ver%%.*}"
 }
 
 package() {
