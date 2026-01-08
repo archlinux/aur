@@ -42,7 +42,7 @@ _compile()
         -D SOCI_SHARED=ON \
         -D SOCI_SQLITE3_BUILTIN=OFF \
         -D SOCI_TESTS="$1" \
-        -D SOCI_UBSAN=ON \
+        -D SOCI_UBSAN=OFF \
         -D WITH_BOOST=ON \
         -S "${srcdir}"/"${pkgname}"-"${pkgver}"/ \
         -Wno-dev
