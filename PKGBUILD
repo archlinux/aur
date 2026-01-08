@@ -3,7 +3,7 @@
 # Previous Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=2025.09.1_401
+pkgver=2026.01.0_392
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('x86_64')
@@ -11,14 +11,16 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.6.0' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.1')
 conflictss=('rstudio-server' 'rstudio-server-git')
-sha256sums=('9a6b1ccf05a62e13bb7cab26b9ef5ba01445b58abb4a9f2c9868855e33613f1b'
+sha256sums=('1ef45afe4fff787d45e4c5e0b9bf39e1402f36f88f207506993ac552a28caad8'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
-            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
+            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
+            'bbdb7720787b2573eb78d7a5d701a4283ae640b91e613ef4294e634f51b1b92c')
 provides=("rstudio-server=${pkgver}")
 #options=(!strip)
 source=("https://download2.rstudio.org/server/jammy/amd64/rstudio-server-${pkgver/_/-}-amd64.deb"
         "rstudio-server.service"
-        "rstudio")
+        "rstudio"
+        "rstudio-server-bin.install")
 install="${pkgname}".install
 
 package() {
