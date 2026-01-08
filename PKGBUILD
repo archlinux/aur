@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Minimalist session manager and a /toolchest/ like application launcher for Unix/X11'
 arch=(x86_64)
 url='https://fastestcode.org/emwm.html'
-license=(LGPL-2.1-or-later)
+license=(MIT)
 depends=(
   bash
   emwm
@@ -38,4 +38,5 @@ package () {
   install -dm755 "$pkgdir/usr/bin"
   make PREFIX="$pkgdir/usr" RCDIR="$pkgdir/etc/X11" APPLRESDIR="$pkgdir/etc/X11/app-defaults" install
   install -Dm644 -t "$pkgdir/usr/share/xsessions" ../xmsm.desktop
+  install -Dm644 -t "$pkgdir/usr/share/licenses/emwm-utils" COPYING
 }
