@@ -1,0 +1,17 @@
+pkgbase = gitignore-downloader
+	pkgdesc = Fetch and compose GitHub .gitignore templates from the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/gitignore-downloader
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = gi
+	conflicts = gi
+	source = gitignore-downloader-1.0.0.crate::https://crates.io/api/v1/crates/gitignore-downloader/1.0.0/download
+	sha256sums = 7150d872d2fe0b3cc8772d2e6528a20e2f28bdc4feb3f97c8a8a8847e679ca72
+
+pkgname = gitignore-downloader
