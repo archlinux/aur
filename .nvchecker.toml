@@ -1,0 +1,4 @@
+[progman]
+source = "git"
+git = "https://github.com/jcs/progman.git"
+prefix = "v"
