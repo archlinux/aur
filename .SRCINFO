@@ -1,0 +1,14 @@
+pkgbase = helwan-ai-gate
+	pkgdesc = Helwan AI Gate - بوابة Electron ذكية للذكاء الاصطناعي
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/helwan-linux/helwan-ai
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	source = helwan-ai-gate::git+https://github.com/helwan-linux/helwan-ai.git#branch=main
+	md5sums = SKIP
+
+pkgname = helwan-ai-gate
