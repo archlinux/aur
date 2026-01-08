@@ -65,18 +65,33 @@ post_upgrade() {
         fi
     fi
 
+    # Restart hamr after upgrade (was stopped in pre_remove)
+    # Install scripts run as root, so we need to find logged-in users
+    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+        systemctl --machine="$user@.host" --user start hamr.service 2>/dev/null || true
+    done
+
     echo ""
-    echo "==> Hamr has been upgraded."
-    echo "==> Restart quickshell to apply changes."
+    echo "==> Hamr has been upgraded and restarted."
     echo ""
     echo "==> If hamr crashes after a Qt update, rebuild quickshell:"
     echo "      paru -S quickshell --rebuild"
     echo ""
 }
 
+pre_upgrade() {
+    # Stop hamr before files are extracted to prevent crash from file watcher
+    # Install scripts run as root, so we need to find logged-in users
+    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+        systemctl --machine="$user@.host" --user stop hamr.service 2>/dev/null || true
+    done
+}
+
 post_remove() {
     # Disable systemd service if enabled
-    systemctl --user disable hamr.service 2>/dev/null || true
+    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+        systemctl --machine="$user@.host" --user disable hamr.service 2>/dev/null || true
+    done
 
     echo ""
     echo "==> User data has been preserved. Remove manually if no longer needed:"
