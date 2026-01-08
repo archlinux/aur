@@ -1,0 +1,10 @@
+pre_remove() {
+   echo "To uninstall the package, run this script provided upstream:"
+   echo " "
+   echo " "
+   echo " "
+   echo "~/.local/bin/hubstaff/./uninstall-Hubstaff.sh"
+   echo " "
+   echo " "
+   echo " "
+}

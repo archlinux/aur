@@ -1,0 +1,13 @@
+pkgbase = hubstaff
+	pkgdesc = Employee time tracking software for employees
+	pkgver = 1.7.8
+	pkgrel = 1
+	url = https://app.hubstaff.com
+	install = uninstall.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://app.hubstaff.com/download/11100-standard-linux-1-7-8-release/sh
+	sha256sums = f10ac08eefa0d5df32c6e93ceb710d75b3c725ad9f762114ff51aed073596633
+
+pkgname = hubstaff
