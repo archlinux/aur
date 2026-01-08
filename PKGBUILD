@@ -3,7 +3,7 @@
 # Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=8.2.1
+pkgver=8.2.2
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -50,7 +50,7 @@ depends=('qt6-base'
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.deb"
   "snapgene")
-sha256sums=('c202819aaefb75ffddd28a755fe19685e92479f76fcf5722e75099a2cf4e5cc7'
+sha256sums=('978714974fa8b5fdab8d84504ffb34bfa1590113cc382c78498ac4fa720ddcd9'
   '754fdfb4131f8cb8f53560ea19362c3cc90ee14ea7cd68c353a9d3b8d132b993')
 
 prepare() {
