@@ -1,0 +1,15 @@
+pkgbase = hel-web-server
+	pkgdesc = A simple web server utility for Helwan Linux, supporting various server types like Django and Flask.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/helwan-linux/helwan-server
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pyqt5
+	depends = python-setuptools
+	depends = desktop-file-utils
+	source = hel-web-server-1.0.1.tar.gz::https://github.com/helwan-linux/helwan-server/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = hel-web-server
