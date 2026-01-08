@@ -6,8 +6,9 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=15.1.0
+pkgver=1.4.313.0
 pkgrel=1
+epoch=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/glslang'
@@ -27,15 +28,15 @@ makedepends=(
 )
 options=('staticlibs')
 source=(
-  ${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
+  "${pkgname}-${pkgver}.tar.gz::git+${url}.git#tag=vulkan-sdk-${pkgver}"
 )
 sha256sums=(
-  '4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc'
+  '1cb7900efba3481c0c1ccae14b50bac99d59bc9d9fd5d0764f36dd0dc62c2320'
 )
 
 prepare() {
   echo "Patching if needed"
-  cd ${_pkgbasename}-${pkgver}
+  cd "${_pkgbasename}"
 
 }
 
@@ -44,7 +45,7 @@ build() {
   export CXXFLAGS="-m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd ${_pkgbasename}-${pkgver}
+  cd "${_pkgbasename}"
   # we need fat LTO objects to not break consumers during linking
   export CXXFLAGS+=" -ffat-lto-objects"
   cmake \
@@ -72,13 +73,13 @@ build() {
 }
 
 check() {
-  cd "${_pkgbasename}-${pkgver}"
+  cd "${_pkgbasename}"
 
 #  ninja -Cbuild-shared test
 }
 
 package() {
-  cd "${_pkgbasename}-${pkgver}"
+  cd "${_pkgbasename}"
 
   DESTDIR="${pkgdir}" cmake --install build-static
   DESTDIR="${pkgdir}" cmake --install build-shared
