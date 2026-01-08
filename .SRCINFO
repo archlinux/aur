@@ -1,0 +1,20 @@
+pkgbase = mimic-node-git
+	pkgdesc = A stealthy sing-box node manager with Reality protocol support
+	pkgver = r5.0a5406b
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/Mimic-Node
+	install = mimic-node.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sing-box
+	depends = jq
+	depends = curl
+	depends = openssl
+	depends = kmod
+	provides = mimic-node
+	conflicts = mimic-node
+	source = git+https://github.com/LIghtJUNction/Mimic-Node.git
+	sha256sums = SKIP
+
+pkgname = mimic-node-git
