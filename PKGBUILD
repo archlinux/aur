@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 # Contributor: Laurin Neff <laurin at laurinneff dot ch>
 pkgname=satisfactory-mod-manager
-pkgver=3.0.3
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
 depends=('webkit2gtk' 'gst-plugins-good')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha512sums=('6fe7fb7ce68b0eeee86e9fca3029b9ffe341ac957ddc077357184459af93bf1fe7e6c9ea8e3b6cfaa0b81870070cdf1c3bae99e26d4c0a4a5f6b76b7e823453c'
+sha512sums=('b5bc5c493cb8596e95fffe24f363c2f9c597f25b478fe07868cc9856374a0911257b05187ae21a61a0e6f88aa68da0a257c4f848120b67b685506fd6a91f3a3e'
             '6271ba738cb17a787c33fede390aa86381e22ea3e7ffd44b7bef74f26d4a59c26bb803783ce61feec8d0eb596bd0d5bd5f2ad917fb0a684a091763d8f6ada1fe')
 
 build() {
