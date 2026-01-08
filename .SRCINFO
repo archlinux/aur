@@ -1,0 +1,16 @@
+pkgbase = hel-process
+	pkgdesc = Helwan Process Manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/helwan-linux/hel-process
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = python-psutil
+	depends = python-pyqtgraph
+	source = hel-process-1.0.tar.gz::https://github.com/helwan-linux/hel-process/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = hel-process
