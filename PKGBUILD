@@ -1,4 +1,4 @@
-# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: lucasm < luluco250 at gmail dot com >
 
 _basename=fallout2-ce
