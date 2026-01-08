@@ -10,7 +10,7 @@ _freenginx=freenginx
 _pkgbase=nginx
 pkgbase=freenginx-mainline
 pkgname=(freenginx-mainline freenginx-mainline-src)
-pkgver=1.29.2
+pkgver=1.29.4
 pkgrel=1
 arch=('x86_64')
 url='https://freenginx.org'
@@ -37,7 +37,7 @@ validpgpkeys=(
   '13C82A63B603576156E30A4EA0EA981B66B0D967' # Konstantin Pavlov <thresh@nginx.com>
 )
 
-sha512sums=('d2e224454c2335d41342d01ed3c32269b34373e2750225236dcb32a464b512bb1ae41550f9ca01a1bc8e44203a203a553a1ddaa54ce12e0929b6891ad0529ac3'
+sha512sums=('5428c050cea8cadd53a9447b1ca2231d6e53dca8ac6bec24798568cc570fa975080108a7be3334a1f33dcbf195d628bad04f73e0e96f3d75c0660a88f3fd6e16'
             'SKIP'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9')
