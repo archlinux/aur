@@ -8,9 +8,9 @@ arch=('any')
 url="https://github.com/AdisonCavani/distro-grub-themes"
 license=('GPL-3.0-only')
 provides=(
-	'distro-grub-theme-arch'
-	'grub-theme-arch'
-	'grub-theme'
+    'distro-grub-theme-arch'
+    'grub-theme-arch'
+    'grub-theme'
 )
 groups=()
 depends=('grub')
@@ -25,14 +25,14 @@ sha256sums=('e589bb946d6cd7bf6303142cf3aeeb872fef416fb36ff3e168a11bccfeae850b')
 
 
 prepare() {
-	mkdir -p ${_theme_distro}
-	bsdtar --cd "${_theme_distro}" -xf "${_tar_name}"
+    mkdir -p ${_theme_distro}
+    bsdtar --cd "${_theme_distro}" -xf "${_tar_name}"
 }
 
 # example:
 # https://github.com/archlinux/svntogit-packages/blob/packages/breeze-grub/trunk/PKGBUILD
 package() {
-	_dest="${pkgdir}"/usr/share/grub/themes/
-	install -d "${_dest}"
-	cp -r ${_theme_distro} "${_dest}"
+    _dest="${pkgdir}"/usr/share/grub/themes/
+    install -d "${_dest}"
+    cp -r ${_theme_distro} "${_dest}"
 }
