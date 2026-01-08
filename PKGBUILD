@@ -3,7 +3,7 @@
 pkgname=slive-bin
 _pkgname=slive
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="基于Flutter的聚合直播软件，支持多平台直播源聚合与观看。"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SlotSun/dart_simple_live"
@@ -22,7 +22,9 @@ package() {
     local app_id="io.github.SlotSun.Slive"
 
     install -d "${pkgdir}/opt/Slive" "${pkgdir}/usr/bin"
-    cp -a "${app_id}" data lib "${pkgdir}/opt/Slive/"
+    install -Dm755 "${app_id}" "${pkgdir}/opt/Slive/${app_id}"
+    
+    cp -a data lib "${pkgdir}/opt/Slive/"
     ln -s "/opt/Slive/${app_id}" "${pkgdir}/usr/bin/${app_id}"
 
     # 安装图标和桌面文件

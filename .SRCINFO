@@ -1,7 +1,7 @@
 pkgbase = slive-bin
 	pkgdesc = 基于Flutter的聚合直播软件，支持多平台直播源聚合与观看。
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SlotSun/dart_simple_live
 	arch = x86_64
 	arch = aarch64
