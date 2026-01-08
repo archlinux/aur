@@ -1,0 +1,5 @@
+[ceccomp]
+source = "github"
+github = "dbgbgtf1/Ceccomp"
+prefix = "v"
+use_latest_release = true
