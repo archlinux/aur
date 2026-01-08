@@ -10,15 +10,34 @@ pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-with-classpath-exception')
 depends=(
-  'java-runtime-common>=3'
-  'ca-certificates-utils'
+    'java-runtime-common>=3'
+    'ca-certificates-utils'
 )
 provides=(
-  'java-runtime=21'
-  'java-runtime-headless=21'
-  'java-runtime-openjdk=21'
-  'java-runtime-headless-openjdk=21'
-  'java-openjfx=21'
+    'java-runtime=21'
+    'java-runtime-headless=21'
+    'java-runtime-openjdk=21'
+    'java-runtime-headless-openjdk=21'
+    'java-openjfx=21'
+)
+backup=(
+    "etc/$pkgname/management/jmxremote.access"
+    "etc/$pkgname/management/jmxremote.password.template"
+    "etc/$pkgname/management/management.properties"
+    "etc/$pkgname/sdp/sdp.conf.template"
+
+    "etc/$pkgname/security/policy/limited/default_local.policy"
+    "etc/$pkgname/security/policy/limited/default_US_export.policy"
+    "etc/$pkgname/security/policy/limited/exempt_local.policy"
+    "etc/$pkgname/security/policy/unlimited/default_local.policy"
+    "etc/$pkgname/security/policy/unlimited/default_US_export.policy"
+    "etc/$pkgname/security/policy/README.txt"
+    "etc/$pkgname/security/java.policy"
+    "etc/$pkgname/security/java.security"
+    "etc/$pkgname/jaxp.properties"
+    "etc/$pkgname/logging.properties"
+    "etc/$pkgname/net.properties"
+    "etc/$pkgname/sound.properties"
 )
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_x64.tar.gz")
