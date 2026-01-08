@@ -6,8 +6,8 @@ _vendor=none
 _target_toolchain=eabi
 _target=${_target_arch}-${_vendor}-${_target_toolchain}
 _link_target=${_target_arch}-${_target_toolchain}
-_pkgver=14.2.rel1
-_pkgdate=20241210
+_pkgver=15.2.rel1
+_pkgdate=20251217
 
 _pkgname=${_pkgbase}-${_target}
 _pkgname_novendor=${_pkgbase}-${_link_target}
@@ -23,7 +23,7 @@ makedepends=(findutils)
 provides=("${_pkgname_novendor}")
 options=(!emptydirs !strip staticlibs)
 source=("https://developer.arm.com/-/media/Files/downloads/gnu/${_pkgver}/binrel/${_pkgbase}-${_pkgver}-${arch}-${_target_arch}-${_vendor}-${_target_toolchain}.tar.xz")
-sha256sums=('62a63b981fe391a9cbad7ef51b17e49aeaa3e7b0d029b36ca1e9c3b2a9b78823')
+sha256sums=('597893282ac8c6ab1a4073977f2362990184599643b4c5ee34870a8215783a16')
 
 package() {
   mkdir -p ${pkgdir}/usr
@@ -36,7 +36,7 @@ package() {
   rm -rf ${pkgdir}/usr/lib64
   rm -rf ${pkgdir}/usr/include
   rm -rf ${pkgdir}/usr/share/{doc,gcc-*,gdb,info,locale}
-  rm -rf ${pkgdir}/usr/share/man/{man5,man7}
+  rm -rf ${pkgdir}/usr/share/man/man7
   rm -rf ${pkgdir}/usr/lib/bfd-plugins
 
   cd ${pkgdir}
