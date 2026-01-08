@@ -3,7 +3,7 @@
 pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
@@ -35,7 +35,7 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    'c5c9fa18ba57e5a93662e0d126bb60e4c7d71696a7e2f1376a7c89587365af09'
+    '64a275bb6f4bfe94cee94c6526f2825c88265ae136532b0f12b653548ca58984'
 )
 options=(!debug)
 
