@@ -1,0 +1,21 @@
+pkgbase = xyce-serial-bin
+	pkgdesc = Open-source, SPICE-compatible, high-performance analog circuit simulator
+	pkgver = 7.10.0
+	pkgrel = 1
+	url = https://xyce.sandia.gov/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = tar
+	makedepends = zstd
+	depends = blas-openblas
+	depends = gcc-libs
+	depends = fftw
+	depends = suitesparse
+	optdepends = adms: Convert Verilog-A models to C++ for Xyce
+	conflicts = xyce-shylu
+	conflicts = xyce-serial
+	options = !debug
+	source = xyce_7.10.0-260108.tar.zst::https://github.com/ResRipper/Xyce-Builder/releases/download/Xyce-7.10.0-260108/xyce_serial-7.10.0.tar.zst
+	sha256sums = 4475cafa31932f57ad51e9d2a4f5f31d4c1711f87dc99cc3ee096d8dc46b5f55
+
+pkgname = xyce-serial-bin
