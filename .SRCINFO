@@ -1,0 +1,14 @@
+pkgbase = procertum-smartsign
+	pkgdesc = Creation and verification of secure electronic signatures.
+	pkgver = 9.3.4.0
+	pkgrel = 1
+	url = https://support.certum.eu/en/software/procertum-smartsign/
+	arch = x86_64
+	license = LicenseRef-procertum-smartsign-software-license
+	depends = gcc-libs
+	depends = java-runtime>=23
+	depends = pcsclite
+	source = https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/2.9.12-9.3.4.0/SimplySignDesktop-2.9.12-9.3.4.0-x86_64-prod-ubuntu.bin
+	md5sums = e1e2d2d2e28404b939b54f4d3e376495
+
+pkgname = procertum-smartsign
