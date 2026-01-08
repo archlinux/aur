@@ -1,0 +1,14 @@
+pkgbase = yt-nerddl
+	pkgdesc = Interactive YouTube downloader wrapper around yt-dlp with nice UI
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/TheAnonymousCrusher/yt-nerddl
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = ffmpeg
+	depends = yt-dlp
+	source = https://github.com/TheAnonymousCrusher/yt-nerddl/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = yt-nerddl
