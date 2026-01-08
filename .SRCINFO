@@ -1,0 +1,25 @@
+pkgbase = hel-sync
+	pkgdesc = Official synchronization utility for Helwan Linux - Zero-App philosophy.
+	pkgver = 1.1.0
+	pkgrel = 3
+	url = https://github.com/helwan-linux/hel-sync
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = python-flask
+	depends = python-qrcode
+	depends = python-pillow
+	depends = python-pyautogui
+	depends = python-cryptography
+	depends = python-pyopenssl
+	depends = xdotool
+	depends = libxtst
+	depends = libnotify
+	depends = libcanberra
+	depends = sound-theme-freedesktop
+	source = git+https://github.com/helwan-linux/hel-sync.git
+	md5sums = SKIP
+
+pkgname = hel-sync
