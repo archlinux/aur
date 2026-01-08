@@ -1,0 +1,14 @@
+pkgbase = pd-mapper
+	pkgdesc = Qualcomm IPC Router protocol
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/linux-msm/pd-mapper
+	arch = aarch64
+	arch = x86_64
+	groups = qcom-icnss-wlan
+	license = BSD-3-Clause
+	conflicts = pd-mapper
+	source = pd-mapper-1.1.tar.gz::https://github.com/linux-msm/pd-mapper/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 7654a7fb8b70b0c7670f98ad9313649abc48eabcef84dad086ed01408fd538a2
+
+pkgname = pd-mapper
