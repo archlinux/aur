@@ -1,7 +1,7 @@
 # Maintainer: Needed!
 
 pkgname=samrewritten-git
-pkgver=20250726.1.r0.ga663127
+pkgver=1.0.0.beta3.r1.g94504fa
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
@@ -27,7 +27,7 @@ build() {
 
 pkgver() {
     cd "${srcdir}/SamRewritten"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 package() {
@@ -37,4 +37,6 @@ package() {
   install -Dm644 "assets/icon_64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/samrewritten.png"
   install -Dm644 "assets/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/samrewritten.png"
   install -Dm644 "package/samrewritten.desktop" "$pkgdir/usr/share/applications/samrewritten.desktop"
+  install -Dm644 "assets/org.samrewritten.SamRewritten.gschema.xml" \
+      "$pkgdir/usr/share/glib-2.0/schemas/org.samrewritten.SamRewritten.gschema.xml"
 }
