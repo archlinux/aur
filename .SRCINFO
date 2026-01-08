@@ -1,0 +1,22 @@
+pkgbase = dupster
+	pkgdesc = Fast duplicate file finder with interactive TUI
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/karimz1/dupster
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	depends = python-textual
+	depends = python-typer
+	provides = dupster
+	conflicts = python-dupster
+	source = dupster-0.0.7.tar.gz::https://github.com/karimz1/dupster/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = d5d266f05cd3ad9a232aea5ea3fa6c4261240fc7147c9c2f113633b663945101
+
+pkgname = dupster
