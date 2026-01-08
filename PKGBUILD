@@ -2,8 +2,9 @@
 
 _pkgauthor=cesarferreira
 _pkgname=nuls
-pkgname=${_pkgname}
 _cratename=${_pkgname}
+_appname=nuls
+pkgname=${_cratename}
 pkgdesc="NuShell-inspired ls with colorful table output, human-readable sizes, and recency-aware timestamps"
 
 pkgver=0.2.0
@@ -20,8 +21,8 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname}")
-conflicts=("${_cratename}")
+provides=("${_appname}")
+conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('24fb69fbb3ca465f6e051d36c75867f9fbe3e358eedb931fcb65125e4946e08e')
@@ -36,7 +37,7 @@ build() {
 package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_cratename}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
