@@ -69,7 +69,6 @@ prepare() {
         -DCMAKE_REQUIRED_FLAGS="-c" \
         -DWITH_MRUBY=on \
         -DWITHOUT_LIBS=off \
-        -DWITH_H2OLOG=on \
         -DBUILD_SHARED_LIBS=on \
         .
 
