@@ -9,6 +9,7 @@ pkgbase = stelliberty-bin
 	makedepends = libarchive
 	makedepends = patchelf
 	depends = gtk3
+	depends = libkeybinder3
 	depends = nss
 	depends = openssl
 	depends = libappindicator-gtk3

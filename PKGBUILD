@@ -59,6 +59,9 @@ package() {
 
   chmod +x "${_install_dir}/stelliberty"
   chmod +x "${_install_dir}/data/flutter_assets/assets/service/stelliberty-service"
+  if [[ -f "${_install_dir}/data/flutter_assets/assets/clash-core/clash-core" ]]; then
+    chmod 755 "${_install_dir}/data/flutter_assets/assets/clash-core/clash-core"
+  fi
 
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/stelliberty" <<'EOF'
@@ -68,6 +71,13 @@ set -euo pipefail
 system_dir="/usr/lib/stelliberty"
 data_root="${XDG_DATA_HOME:-${HOME}/.local/share}/stelliberty"
 user_dir="${data_root}/app"
+
+ensure_exec() {
+  local file="$1"
+  if [[ -f "${file}" && ! -x "${file}" ]]; then
+    chmod 755 "${file}"
+  fi
+}
 
 version_of() {
   local file="$1"
@@ -93,6 +103,9 @@ usr_ver="$(version_of "${user_dir}/data/flutter_assets/version.json")"
 if [[ "${usr_ver:-}" != "${sys_ver:-}" ]]; then
   sync_app
 fi
+ensure_exec "${user_dir}/stelliberty"
+ensure_exec "${user_dir}/data/flutter_assets/assets/clash-core/clash-core"
+ensure_exec "${user_dir}/data/flutter_assets/assets/service/stelliberty-service"
 
 backend="${GDK_BACKEND:-}"
 if [[ -z "${backend}" ]]; then
