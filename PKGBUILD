@@ -1,5 +1,5 @@
 pkgname=yt-nerddl
-pkgver=3.1.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Interactive YouTube downloader wrapper around yt-dlp with nice UI"
 arch=('x86_64')
