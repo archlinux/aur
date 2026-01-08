@@ -2,7 +2,7 @@
 
 pkgname=nyarchassistant-git
 pkgver=0.9b.r37.g423f051
-pkgrel=1
+pkgrel=2
 pkgdesc="Nyarch Linux Assistant (NyarchAssistant Fork)"
 arch=("any")
 url="https://github.com/NyarchLinux/NyarchAssistant"
@@ -38,8 +38,12 @@ optdepends=(
 )
 
 makedepends=("git" "meson")
-source=("git+$url")
-sha256sums=('SKIP')
+dataset_url="https://github.com/NyarchLinux/Smart-Prompts/releases/download/latest/dataset.csv"
+source=(
+	"git+$url"
+	"dataset.csv::${dataset_url}"
+)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd NyarchAssistant || return
@@ -67,4 +71,5 @@ package() {
 	cd NyarchAssistant || return
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 dataset.csv "$pkgdir/usr/share/nyarchassistant/resources/dataset.csv"
 }
