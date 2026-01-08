@@ -15,6 +15,7 @@ pkgbase = fcitx5-vmk-git
 	depends = acl
 	depends = fltk
 	depends = bash
+	depends = fcitx5-bamboo
 	provides = fcitx5-vmk
 	conflicts = fcitx5-vmk
 	source = git+https://github.com/thanhpy2009/VMK.git
