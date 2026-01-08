@@ -4,7 +4,7 @@
 # Recommended package name on AUR: multicliprelay-bin
 
 pkgname=multicliprelay-bin
-pkgver=0.1.1
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Wayland clipboard sync via TCP relay (prebuilt binaries)"
 arch=(x86_64)
@@ -15,6 +15,10 @@ license=(GPL3)
 depends=(wl-clipboard gtk4)
 
 provides=(multicliprelay)
+# When users enable `OPTIONS=(debug)` in makepkg.conf, a split debug package
+# like `multicliprelay-bin-debug` may be installed alongside the main package.
+# Add cross-variant debug packages to conflicts so switching between -bin/-git
+# won't get stuck on stale debug package dependencies.
 conflicts=(
   multicliprelay
   multicliprelay-git
@@ -23,7 +27,7 @@ conflicts=(
 )
 
 source=("${url}/releases/download/v${pkgver}/multicliprelay-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('c0399436722df410167d42cf9fd4e3f332f29cf63a1b349456f5ce4aa677c47d')
+sha256sums=('8311108c771502a6e873ba7ceea2f69ec65d36cbf2e8b5719afb8d28a4530798')
 
 package() {
   local dir="multicliprelay-${pkgver}-x86_64-linux"
