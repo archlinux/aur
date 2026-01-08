@@ -1,7 +1,8 @@
 pkgbase = lib32-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (32bit)
-	pkgver = 15.1.0
+	pkgver = 1.4.335.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
 	license = BSD-3-Clause
@@ -10,12 +11,12 @@ pkgbase = lib32-glslang
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-headers
-	depends = glslang>=15.1.0
+	depends = glslang>=1.4.335.0
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-spirv-tools
 	options = staticlibs
-	source = lib32-glslang-15.1.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/15.1.0.tar.gz
-	sha256sums = 4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc
+	source = git+https://github.com/KhronosGroup/glslang.git#tag=vulkan-sdk-1.4.335.0
+	sha256sums = 262eaf3026bcc5f75b608cc1bb593a0b4f199fdf5006cfe3335e18d0407906f4
 
 pkgname = lib32-glslang
