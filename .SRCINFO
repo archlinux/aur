@@ -5,6 +5,7 @@ pkgbase = fallout2-ce-game
 	url = https://github.com/alexbatalov/fallout2-ce
 	arch = any
 	license = custom:SUL
+	makedepends = sdl2
 	makedepends = cmake
 	depends = sdl2
 	source = fallout2-ce-1.3.0.tar.gz::https://github.com/alexbatalov/fallout2-ce/archive/refs/tags/v1.3.0.tar.gz

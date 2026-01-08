@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/alexbatalov/$_basename"
 license=('custom:SUL')
 depends=('sdl2')
-makedepends=('cmake')
+makedepends=('sdl2' 'cmake')
 source=(
     "$_basename-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
