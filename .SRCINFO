@@ -1,6 +1,6 @@
 pkgbase = bisq
 	pkgdesc = Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges
-	pkgver = 1.9.21
+	pkgver = 1.9.22
 	pkgrel = 1
 	url = https://bisq.network
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = bisq
 	makedepends = jdk11-openjdk
 	makedepends = git
 	depends = jdk11-openjdk
-	source = bisq-1.9.21.tar.gz::https://github.com/bisq-network/bisq/archive/v1.9.21.tar.gz
-	source = https://github.com/bisq-network/bisq/releases/download/v1.9.21/bisq-1.9.21.tar.gz.asc
+	source = bisq-1.9.22.tar.gz::https://github.com/bisq-network/bisq/archive/v1.9.22.tar.gz
+	source = https://github.com/bisq-network/bisq/releases/download/v1.9.22/bisq-1.9.22.tar.gz.asc
 	source = bisq.desktop
 	validpgpkeys = B493319106CC3D1F252E19CBF806F422E222AA02
-	sha256sums = 1319cdb2e477e456de728e1b22dee42bc1560a2a196e5a7c5e2cfddb35507894
+	sha256sums = 0a7dbf8e01f7ce293a6b9d580f507c03b093bf7c062e8bd3a1b93334bf76b002
 	sha256sums = SKIP
 	sha256sums = c510dd6a9ee2beab74dc1988a1aa3dd9d4800eef88315712367586e1f958da4c
 
