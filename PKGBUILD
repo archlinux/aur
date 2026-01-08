@@ -4,13 +4,12 @@
 _basename=fallout2-ce
 pkgname=$_basename-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fallout 2 for modern operating systems'
 arch=('x86_64' 'i686')
 url="https://github.com/alexbatalov/$_basename"
 license=('custom:SUL')
 depends=('sdl2')
-makedepends=('git')
 options=('!debug')
 source=(
     "LICENSE-${pkgver}.md::$url/raw/refs/tags/v$pkgver/LICENSE.md"
