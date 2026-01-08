@@ -1,0 +1,22 @@
+pkgbase = momo
+	pkgdesc = Momo - Helwan Linux Diagnostics Tool (TUI + Streaming + Dynamic Disks)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/helwan-linux/momo
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = lm_sensors
+	depends = smartmontools
+	depends = hdparm
+	depends = nvme-cli
+	depends = stress-ng
+	depends = memtester
+	depends = sysbench
+	depends = fio
+	depends = iperf3
+	depends = mtr
+	source = momo::git+https://github.com/helwan-linux/momo.git
+	sha256sums = SKIP
+
+pkgname = momo
