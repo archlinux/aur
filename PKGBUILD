@@ -2,7 +2,7 @@
 
 pkgname=cherry-studio-bin
 _pkgname=cherry-studio
-pkgver=1.7.9
+pkgver=1.7.12
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers "
 arch=('x86_64')
@@ -34,7 +34,7 @@ package() {
   # Install cherry-studio-bin.sh
   install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
-sha256sums=('89232c927fa5521a86ecfe19e72aba995716e8e265b1da12ac55f183fa7e9094'
+sha256sums=('a17e2531544fe34565918f5beb081cc867ff02e72adc1df7d56bd70e8087024e'
             'fd0b11ca782c9c0de6dbf34143b7f14560b4a7020e316c58e9a5e1115551c7ee'
             '597463003798254ab97505e2374485e55262152483f717f3169da3444de60f94'
             '6aed5e7ca95679b2545540241dc9e6b055da1dfde696006a1712f90cfbfaec92')
