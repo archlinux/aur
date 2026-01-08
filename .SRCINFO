@@ -1,0 +1,12 @@
+pkgbase = lamzu-cfg-git
+	pkgdesc = Lamzu mouse configuration tool
+	pkgver = r38.b0e5424
+	pkgrel = 1
+	url = https://github.com/LeadSun/lamzu-cfg
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/LeadSun/lamzu-cfg
+	sha256sums = SKIP
+
+pkgname = lamzu-cfg-git
