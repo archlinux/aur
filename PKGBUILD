@@ -2,7 +2,7 @@
 
 pkgname=seti-astro-suite-pro-bin
 _pkgname=seti-astro-suite-pro
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 provides=("seti-astro-suite-pro=$pkgver")
 pkgdesc='Seti Astro Suite Pro is a comprehensive suite for staking and editing Astrophotography images.'
@@ -13,7 +13,7 @@ depends=('python')
 options=(!strip)
 
 source_x86_64=("setiastrosuitepro_linux.tar.xz::https://github.com/setiastro/setiastrosuitepro/releases/download/V$pkgver/setiastrosuitepro_linux.tar.xz")
-sha256sums_x86_64=('06688a8dbdc5fa25924445bbbd3259e58f7f1fbdbaf2bae663a2256d2a95a893')
+sha256sums_x86_64=('e99596abc028d715416391a5b7769967a6c4a7369ffb45c37ebf9e2ad88317ee')
 
 source=("16x16.png"
         "32x32.png"
@@ -30,12 +30,9 @@ sha256sums=('2c0817d9c2a0ca93809e2529c98ad0c533a2567284c8cc37a699e5341f1b74e5'
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
-    mkdir -p "$pkgdir"/opt/$_pkgname
     mkdir -p "$pkgdir"/usr/share/applications
     
-    install -m755 setiastrosuitepro_linux/SetiAstroSuitePro_linux_ubuntu24.04 "$pkgdir"/opt/$_pkgname/SetiAstroSuitePro
-    ln -s /opt/$_pkgname/SetiAstroSuitePro "$pkgdir"/usr/bin
-
+    install -m755 setiastrosuitepro_linux/SetiAstroSuitePro_linux_ubuntu24.04 "$pkgdir"/usr/bin/SetiAstroSuitePro
     install -m644 *.desktop "$pkgdir"/usr/share/applications/
 
     #Icons
