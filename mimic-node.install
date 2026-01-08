@@ -31,3 +31,11 @@ post_upgrade() {
     echo "  sudo systemctl enable --now mimic-node-mount.service"
     echo "--------------------------------------------------------------------------------"
 }
+
+post_remove() {
+    CARGO_TARGET_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/cargo-target"
+    if [ -d "$CARGO_TARGET_DIR" ]; then
+        echo "Cleaning up cargo target cache..."
+        rm -rf "$CARGO_TARGET_DIR"
+    fi
+}

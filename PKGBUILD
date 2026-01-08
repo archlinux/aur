@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+    export CARGO_TARGET_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/cargo-target"
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
