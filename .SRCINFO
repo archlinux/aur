@@ -7,9 +7,9 @@ pkgbase = rime-wanxiang-updater
 	arch = aarch64
 	license = MIT
 	provides = rime-wanxiang-updater
-	source_x86_64 = https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.5.9/rime-wanxiang-updater-linux-amd64
-	sha256sums_x86_64 = f3923b608e401c9508481c2dbdd9bab0c2444ee077f4d0d4f2a749db32f30404
-	source_aarch64 = https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.5.9/rime-wanxiang-updater-linux-arm64
-	sha256sums_aarch64 = 16be17ce8a992b14e84098257eecff0f6799814ef9754bd5e83a958fd9eb96c5
+	source_x86_64 = rime-wanxiang-updater-0.5.9-linux-amd64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.5.9/rime-wanxiang-updater-linux-amd64
+	sha256sums_x86_64 = c35df311783150520653d7dcf4523f9c7ceebe5a143ea068e864467e89634635
+	source_aarch64 = rime-wanxiang-updater-0.5.9-linux-arm64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.5.9/rime-wanxiang-updater-linux-arm64
+	sha256sums_aarch64 = f1e6d6accff4d234b3df6eaedbd90f05f2b44846a57baf2244d11ea6d5a8c44e
 
 pkgname = rime-wanxiang-updater
