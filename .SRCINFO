@@ -1,0 +1,23 @@
+pkgbase = rofi-xdph-git
+	pkgdesc = Use Rofi to pick what to share with XDPH
+	pkgver = 0.0.1.r2.g1755c214
+	pkgrel = 1
+	url = https://github.com/alba4k/rofi-xdph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = hyprutils
+	depends = qt6-base
+	provides = rofi-xdph
+	conflicts = rofi-xdph
+	conflicts = rofi-xdph-bin
+	source = git+https://github.com/alba4k/rofi-xdph
+	md5sums = SKIP
+
+pkgname = rofi-xdph-git
