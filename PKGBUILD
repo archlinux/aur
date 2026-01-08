@@ -12,6 +12,10 @@ license=(GPL3)
 depends=(wl-clipboard gtk4)
 makedepends=(git rust cargo)
 
+optdepends=(
+  'xclip: X11 clipboard integration (x11-sync)'
+)
+
 provides=(multicliprelay)
 conflicts=(
   multicliprelay
@@ -49,6 +53,10 @@ package() {
   install -Dm644 packaging/common/systemd/multicliprelay-relay.service    "${pkgdir}/usr/lib/systemd/user/multicliprelay-relay.service"
   install -Dm644 packaging/common/systemd/multicliprelay-wl-watch.service "${pkgdir}/usr/lib/systemd/user/multicliprelay-wl-watch.service"
   install -Dm644 packaging/common/systemd/multicliprelay-wl-apply.service "${pkgdir}/usr/lib/systemd/user/multicliprelay-wl-apply.service"
+  install -Dm644 packaging/common/systemd/multicliprelay-x11-sync.service "${pkgdir}/usr/lib/systemd/user/multicliprelay-x11-sync.service"
 
+  install -Dm644 packaging/common/systemd/multicliprelay.env.example "${pkgdir}/usr/share/doc/${_pkgbase}/multicliprelay.env.example"
   install -Dm644 packaging/common/ui.toml.example "${pkgdir}/usr/share/doc/${_pkgbase}/ui.toml.example"
+  install -Dm644 packaging/README.md "${pkgdir}/usr/share/doc/${_pkgbase}/packaging-README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgbase}/README.md"
 }

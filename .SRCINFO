@@ -10,6 +10,7 @@ pkgbase = multicliprelay-git
 	makedepends = cargo
 	depends = wl-clipboard
 	depends = gtk4
+	optdepends = xclip: X11 clipboard integration (x11-sync)
 	provides = multicliprelay
 	conflicts = multicliprelay
 	conflicts = multicliprelay-bin
