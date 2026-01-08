@@ -36,7 +36,7 @@ build() {
 package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_cratename}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "target/release/${_cratename%%-cli}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
