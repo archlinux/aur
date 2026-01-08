@@ -2,8 +2,8 @@
 
 _name=hdr-image-viewer
 pkgname="${_name}-git"
-pkgver=r23.e17681c
-pkgrel=3
+pkgver=r27.7235401
+pkgrel=1
 pkgdesc="An application for viewing HDR images with accurate color reproduction"
 arch=('x86_64')
 url='https://github.com/aaron-rust/hdr-image-viewer'
@@ -18,6 +18,8 @@ depends=(
     'ki18n'
     'unixodbc'
     'libjxl'
+    'libraw'
+    'kimageformats'
 )
 makedepends=(
     'base-devel'
@@ -44,8 +46,10 @@ pkgver() {
 
 build() {
     cmake -S "$_name" -B build \
-        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHDR_IMAGE_VIEWER_USE_BUNDLED_LIBRAW=OFF \
+        -DHDR_IMAGE_VIEWER_BUNDLE_KIMAGEFORMATS_RAW_PLUGIN=OFF \
         -Wno-dev
     cmake --build build
 }
