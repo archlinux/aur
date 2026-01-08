@@ -1,0 +1,5 @@
+[distro-grub-themes-arch]
+source = "github"
+github = "AdisonCavani/distro-grub-themes"
+use_max_tag = true
+prefix = "v"
