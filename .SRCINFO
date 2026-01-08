@@ -1,6 +1,6 @@
 pkgbase = en-croissant
 	pkgdesc = Modern chess GUI and analysis tool
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = en-croissant
 	conflicts = en-croissant-appimage
 	conflicts = en-croissant-bin
 	options = !lto
-	source = en-croissant-0.12.1.tar.gz::https://github.com/franciscoBSalgueiro/en-croissant/archive/v0.12.1.tar.gz
+	source = en-croissant-0.12.2.tar.gz::https://github.com/franciscoBSalgueiro/en-croissant/archive/v0.12.2.tar.gz
 	source = disable-updater.patch
 	source = en-croissant.desktop
-	sha512sums = d548a1c45c4788d6fc988333a66c269c6c86584f765dec5a1c8e1e5bcf8aaa5672abe7d8fcccc1d886b68864315eefd99744ef20c04c3f7f30285f6711a4c7de
+	sha512sums = f141ae53c610268569641c2a25adecd016826d352379c2f721ab7c28d8b3fcc974dba3edbcbd537bd98d2a8405861ee1fd52134176a2ff3bf9a31a8757fda511
 	sha512sums = bd9fccd3f4285e352bab841e4f09c683b63c12f86ffe7d6e2b62773578955218d56478f5b2ebee85aa5f08b3ac666a741143755ae9ae927d610fd1983a8913da
 	sha512sums = 0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023
 
