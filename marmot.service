@@ -1,0 +1,22 @@
+[Unit]
+Description=marmot-v2
+After=network.target
+
+[Service]
+Type=simple
+User=marmot
+Group=marmot
+DynamicUser=yes
+EnvironmentFile=-/etc/conf.d/marmot
+ExecStart=/usr/bin/marmot -config /etc/marmot/config.toml -log_dir /var/log/marmot
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=60
+RuntimeDirectory=marmot
+StateDirectory=marmot
+CacheDirectory=marmot
+LogsDirectory=marmot
+ConfigurationDirectory=marmot
+
+[Install]
+WantedBy=multi-user.target
