@@ -6,14 +6,13 @@ pkgrel=1
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
-license=('custom:Stelliberty')
+license=('LicenseRef-Stelliberty')
 depends=('gtk3' 'nss' 'openssl' 'libappindicator-gtk3' 'libdbusmenu-gtk3' 'rsync')
-makedepends=('libarchive')
+makedepends=('libarchive' 'patchelf')
 optdepends=('xdg-utils: for xdg-open support')
 provides=("stelliberty=${pkgver}")
 conflicts=('stelliberty')
 options=('!strip')
-install=stelliberty-bin.install
 
 _common_sources=(
   "app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v${pkgver}/linux/runner/resources/app_icon.png"
@@ -42,19 +41,31 @@ package() {
   esac
 
   local _archive="Stelliberty-v${pkgver}-linux-${_upstream_arch}.zip"
+  local _install_dir="${pkgdir}/usr/lib/stelliberty"
 
-  install -d "${pkgdir}/opt/stelliberty"
-  bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}/opt/stelliberty"
+  install -d "${_install_dir}"
+  bsdtar -xf "${srcdir}/${_archive}" -C "${_install_dir}"
 
-  chmod +x "${pkgdir}/opt/stelliberty/stelliberty"
-  chmod +x "${pkgdir}/opt/stelliberty/data/flutter_assets/assets/service/stelliberty-service"
+  while IFS= read -r -d '' _file; do
+    _rpath="$(/usr/bin/patchelf --print-rpath "${_file}" 2>/dev/null || true)"
+    if [[ -z "${_rpath}" ]]; then
+      continue
+    fi
+
+    if [[ "${_rpath}" == *"/home/runner/"* || "${_rpath}" == *"/__w/"* ]]; then
+      /usr/bin/patchelf --remove-rpath "${_file}"
+    fi
+  done < <(find "${_install_dir}" -type f -print0)
+
+  chmod +x "${_install_dir}/stelliberty"
+  chmod +x "${_install_dir}/data/flutter_assets/assets/service/stelliberty-service"
 
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/stelliberty" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 
-system_dir="/opt/stelliberty"
+system_dir="/usr/lib/stelliberty"
 data_root="${XDG_DATA_HOME:-${HOME}/.local/share}/stelliberty"
 user_dir="${data_root}/app"
 
