@@ -2,9 +2,9 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 _pkgname=amiberry-lite
 pkgname=${_pkgname}-git
-pkgver=v5.8.7.r1.g0bf7ef1
+pkgver=v5.9.1.r2.ge6bac7e
 pkgrel=1
-pkgdesc="Optimized Amiga emulator for various ARM, ARM64, AMD64 and RISC-V platforms"
+pkgdesc="Optimized Amiga emulator for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BlitterStudio/amiberry-lite"
 license=('GPL-3.0-only')
@@ -20,27 +20,14 @@ pkgver() {
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-	cd ${_pkgname}
-	cmake -B build \
-	-DCMAKE_BUILD_TYPE=Release \
-	-G Ninja \
-	-DCMAKE_INSTALL_PREFIX=/usr 
-	cmake --build build
+  cd ${_pkgname}
+  cmake -B build \
+  -DCMAKE_BUILD_TYPE=Release \
+  -G Ninja \
+  -DCMAKE_INSTALL_PREFIX=/usr 
+  cmake --build build ${MAKEFLAGS}
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install ${_pkgname}/build
-
-	# adding desktop entry
-	echo "[Desktop Entry]" > "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Type=Application" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Name=Amiberry" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Comment=An Amiga emulator for Linux" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Categories=Game;Emulator;" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Icon=/usr/share/amiberry/data/amiberry.png" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Exec=/usr/bin/${pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	echo "Terminal=false" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	chmod 644 "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
+   DESTDIR="${pkgdir}" cmake --install ${_pkgname}/build
 }
-
