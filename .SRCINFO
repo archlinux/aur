@@ -1,0 +1,22 @@
+pkgbase = python-lakeshore
+	pkgdesc = A package to connect to and interact with Lake Shore instruments.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/lakeshorecryotronics/python-driver
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyserial
+	depends = python-iso8601
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/a6/62/1076a177c6db27b5064d16d4c0812f2a62b7382eb4530cba0793974a9157/lakeshore-1.9.2-py3-none-any.whl
+	source = https://github.com/lakeshorecryotronics/python-driver/raw/refs/heads/main/setup.py
+	source = https://github.com/lakeshorecryotronics/python-driver/raw/refs/heads/main/README.md
+	sha256sums = 282f9deab5dd75b43ed65325a98ff91b48e676c1d4f57c8af2bd73d76bf9f184
+	sha256sums = 9be1db3f3ea030baf677edda4b0a2f67a291d592ec2259c7df97e5d463827a33
+	sha256sums = 7ab007d1fde04792b8f6ace9bce3102702da001f8696c99a9dc4412caafc20bd
+
+pkgname = python-lakeshore
