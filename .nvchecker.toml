@@ -1,0 +1,5 @@
+[checkmake-bin]
+source = "github"
+github = "checkmake/checkmake"
+use_latest_release = true
+prefix = "v"
