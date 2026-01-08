@@ -1,6 +1,6 @@
 pkgbase = gittop-bin
 	pkgdesc = A lightweight GitHub notifications client. Why spin up a browser just to check your GitHub notifications?
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/AmarBego/GitTop
 	install = gittop.install
@@ -11,7 +11,7 @@ pkgbase = gittop-bin
 	conflicts = gittop
 	options = !strip
 	options = !debug
-	source = gittop-0.3.0-linux-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.3.0/gittop-0.3.0-linux-x86_64.tar.gz
-	sha256sums = f06decc258c186a293cfa68b1b818806f44bccffcc0079eb62a94421199bce8f
+	source = gittop-0.4.0-linux-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.4.0/gittop-0.4.0-linux-x86_64.tar.gz
+	sha256sums = 25639a81a7c7e9644799cde087842337090234e02d4c2b60de8167bcb08743b7
 
 pkgname = gittop-bin
