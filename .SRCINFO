@@ -1,0 +1,16 @@
+pkgbase = cr16-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the cr16 (bare-metal) target
+	pkgver = 2.42
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.bz2.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha512sums = d2c6d264bbeaaaf2aad1fa3fc417c1841a5dd4a299fa47c47d15adb821c22dae733e58f19ebcfea3b0c5890ba56e4a5f92ab55128a572d585bcd5172b63f456c
+	sha512sums = SKIP
+
+pkgname = cr16-elf-binutils
