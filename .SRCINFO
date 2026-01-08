@@ -5,8 +5,10 @@ pkgbase = tqftpserv
 	url = https://github.com/linux-msm/tqftpserv
 	arch = aarch64
 	arch = x86_64
+	groups = qcom-icnss-wlan
 	license = BSD-3-Clause
 	makedepends = meson
+	conflicts = tqftpserv
 	source = tqftpserv-1.1.tar.gz::https://github.com/linux-msm/tqftpserv/archive/refs/tags/v1.1.tar.gz
 	sha256sums = a7ebf03aa19e5deabcb499836ccf7378a0cd65452232f87406790a5509421527
 
