@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=cursor-appimage
-pkgver=2.3.26
+pkgver=2.3.30
 pkgrel=1
 pkgdesc="AI-first coding environment (AppImage version)"
 arch=('x86_64')
@@ -13,12 +13,12 @@ _watch=(
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3' 'header' 'regex' 'Cursor-([0-9.]+)-x86_64.AppImage' 'pkgver'
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3' 'header' 'regex' 'location:.*production/([a-f0-9]+)/' '_commit'
 )
-_commit="bdbdd3f2cf698f583c5cdd2a6dc0f5aec4ed5f97"
+_commit="d1289018cc3fcc395487f65455e31651734308d7"
 
 source=(
   "cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
-sha512sums=('f9f34f1fa03f7eaf304d3a2f66063312d39b2791d6f2e65bc1ba7187efce7e46a7003302067a70619aee107ae71657d99578dee35ff427e6e3f397a8f32a8014')
+sha512sums=('bcab16bfe0fe79420f9cb7d42197669675769f89bedd581e151eee99dbb415e375ad2bef1af194d9878869206e8bf2715c65db76312c4c92e34e9d1ede58e3fc')
 
 prepare() {
   chmod +x "${srcdir}/cursor-${pkgver}.AppImage"
