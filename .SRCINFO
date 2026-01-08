@@ -1,6 +1,6 @@
 pkgbase = dumber-browser-bin
 	pkgdesc = A minimal keyboard-driven browser for tiling WMs
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/bnema/dumber
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = dumber-browser-bin
 	provides = dumber
 	conflicts = dumber-browser
 	conflicts = dumber-browser-git
-	source = dumber-browser-bin-0.24.0.tar.gz::https://github.com/bnema/dumber/releases/download/v0.24.0/dumber_linux_x86_64.tar.gz
-	sha256sums = aee4449530d7efd3cb459cac790fa19d9623b185151c1181cabc7ac075352dbd
+	source = dumber-browser-bin-0.25.0.tar.gz::https://github.com/bnema/dumber/releases/download/v0.25.0/dumber_linux_x86_64.tar.gz
+	sha256sums = 9162b7fc846881a497337b5a17c851594a04c295559f1724f3fd637546ce234f
 
 pkgname = dumber-browser-bin
