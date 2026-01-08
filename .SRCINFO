@@ -1,14 +1,19 @@
 pkgbase = jump-bin
 	pkgdesc = Navigate faster by learning your habits
-	pkgver = 0.50.0
+	pkgver = 0.67.0
 	pkgrel = 1
 	url = https://github.com/gsamokovarov/jump
-	install = jump.install
 	arch = x86_64
 	license = MIT
 	provides = jump
-	noextract = jump-bin-0.50.0.deb
-	source = jump-bin-0.50.0.deb::https://github.com/gsamokovarov/jump/releases/download/v0.50.0/jump_0.50.0_amd64.deb
-	md5sums = 94c5cc2e5d6acf82226f88c9797397b0
+	conflicts = jump
+	source = jump-0.67.0.1::https://raw.githubusercontent.com/gsamokovarov/jump/v0.67.0/man/jump.1
+	source = README-0.67.0.md::https://raw.githubusercontent.com/gsamokovarov/jump/v0.67.0/README.md
+	source = LICENSE-0.67.0::https://raw.githubusercontent.com/gsamokovarov/jump/v0.67.0/LICENSE.txt
+	sha256sums = a72f14659c5e955cd2bc4ceaa437cbf12e1940c7e59fbdf3790975dfc03e2e82
+	sha256sums = 8b60f1e2df3e67a895973d394d252a248886172e77646a263ebd01dee4df2f1e
+	sha256sums = b16631067cb8bcf731e7ff3da91ecb0744fbdae52db68017637aec55bfef0617
+	source_x86_64 = jump-x86_64-0.67.0::https://github.com/gsamokovarov/jump/releases/download/v0.67.0/jump_linux_amd64_binary
+	sha256sums_x86_64 = 7b2e5a82923c0e51fd2b9fb9304e2b12ba323a4b345654a35c3402f0d3c39152
 
 pkgname = jump-bin
