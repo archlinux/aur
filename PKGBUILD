@@ -4,10 +4,12 @@ url="https://github.com/mollyim/mollysocket"
 license=("AGPL-3.0")
 arch=(x86_64 aarch64)
 pkgver=1.6.0
-pkgrel=1
-makedepends=(cargo clang)
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0e6dc9c9711471156b7c52365c351f75a56b032e53209970bac733f0d9c5c3ef')
+pkgrel=2
+makedepends=(cargo clang toml-cli)
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
+	"$pkgname.service")
+sha256sums=('0e6dc9c9711471156b7c52365c351f75a56b032e53209970bac733f0d9c5c3ef'
+            'f6d64321c1031956e30f9fca51512f04aa8b40cbe56b2c5333793d505bde7185')
 options=(!lto !debug)
 backup=("etc/mollysocket/config.toml")
 
@@ -22,5 +24,9 @@ function build() {
 }
 
 function package() {
-	install -d -m755 -o root -g root $srcdir/$pkgname-$pkgver/target/release/$pkgname $pkgdir/usr/bin/$pkgname
+	toml-cli set $srcdir/$pkgname-$pkgver/config-sample.toml db /var/lib/mollysocket/mollysocket.db > $srcdir/config.toml
+	install -o root -g root -m755 -D $srcdir/$pkgname-$pkgver/target/release/$pkgname $pkgdir/usr/bin/$pkgname
+	install -o root -g root -m644 -D $srcdir/config.toml $pkgdir/etc/$pkgname/config.toml
+	install -o root -g root -m644 -D $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+        # install -o root -g root -m644 -D $srcdir/$pkgname-$pkgver/$pkgname-vapid.service $pkgdir/usr/lib/systemd/system/$pkgname-vapid.service
 }

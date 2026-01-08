@@ -1,0 +1,27 @@
+[Unit]
+Description=MollySocket
+After=network-online.target
+
+[Service]
+Type=simple
+Environment="RUST_LOG=info"
+Environment="MOLLY_CONF=/etc/mollysocket/config.toml"
+User=mollysocket
+Group=mollysocket
+DynamicUser=yes
+ExecStart=/usr/bin/mollysocket server
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=60
+RuntimeDirectory=mollysocket
+StateDirectory=mollysocket
+CacheDirectory=mollysocket
+LogsDirectory=mollysocket
+ConfigurationDirectory=mollysocket
+UMask=0007
+KillSignal=SIGINT
+Restart=on-failure
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
