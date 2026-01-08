@@ -7,7 +7,7 @@
 
 _pkgname="trilium"
 pkgname="$_pkgname-next"
-pkgver=0.101.1
+pkgver=0.101.3
 pkgrel=1
 pkgdesc="A hierarchical note taking application"
 url="https://github.com/TriliumNext/Trilium"
@@ -30,7 +30,7 @@ conflicts=("$_pkgname")
 _pkgsrc="${_pkgname^}-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('855c27aaa50be2b6be6bc5297b4839c88c99af48b0778b604899fd31ac9af07e')
+sha256sums=('cd443ef24ef493463408f6fc7273528f852ed2bedf24abf3f535627e277d4eaa')
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
