@@ -2,8 +2,9 @@
 
 _pkgauthor=cesarferreira
 _pkgname=axl
-pkgname=${_pkgname}
 _cratename=${_pkgname}
+_appname=axl
+pkgname=${_cratename}
 pkgdesc="Stack-aware developer workflow CLI"
 
 pkgver=0.1.0
@@ -20,8 +21,8 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname}")
-conflicts=("${_cratename}")
+provides=("${_appname}")
+conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('6dbe84ea71b6c82ad6ca9d21c775bd566a8fedcef545e6398130e59f637f4531')
@@ -36,7 +37,7 @@ build() {
 package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_cratename}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
