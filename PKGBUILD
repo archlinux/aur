@@ -22,6 +22,12 @@ prepare() {
 build() {
   cd "${srcdir}/SamRewritten"
   export CARGO_TARGET_DIR=target
+  
+  # Might break builds, just let cargo be in charge
+  unset CFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+
   cargo build --release --frozen
 }
 
