@@ -1,6 +1,6 @@
 pkgbase = r-ga
 	pkgdesc = Genetic Algorithms
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=GA
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-ga
 	optdepends = r-knitr
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/GA_3.2.4.tar.gz
-	sha256sums = e59f6638534e858eeac541efd774046ef3db130345999a374b6ce6dfbab081bd
+	source = https://cran.r-project.org/src/contrib/GA_3.2.5.tar.gz
+	sha256sums = fe04d36471b9f8de64ddd92fa9f3447140dfc31c93841a0e435f017c99a9d636
 
 pkgname = r-ga
