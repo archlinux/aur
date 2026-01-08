@@ -7,7 +7,7 @@
 # https://github.com/wine-staging/wine-staging
 
 pkgname="winecx-wow64"
-pkgver=25.0.1
+pkgver=25.1.1
 _pkgver="${pkgver/rc/-rc}"
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
@@ -70,7 +70,7 @@ conflicts=("winecx")
 install="wine.install"
 backup=("usr/lib/binfmt.d/wine.conf")
 
-options=(staticlibs !lto)
+options=(!lto pestrip)
 
 source=(
   "https://media.codeweavers.com/pub/crossover/source/crossover-sources-$pkgver.tar.gz"
@@ -78,7 +78,7 @@ source=(
   "wine-binfmt.conf"
   "distversion.h"
 )
-b2sums=('411cd6f468dbf0dd29d3495964c46cb1ae126bd23cf4cbfef6a85b8c0e247b5984b65e1159f133142cfb3a21eeb612f821fd26a8a47d970dfd21a01d0c66439d'
+b2sums=('51edce7fe27d2cb67d4e21be8adbf24abbec1629275611515ca9a5d177b8ff0f5c9e0432b316951be00c4bf32155c4039254e12b91b38079948dfdbf169358c1'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
         'efbb28d4cf6e60b75f269c19bb708049d85b3aaace819b6fcd4507b1f8b05bf745e7171ee57f504d89089952bc9081419669b69a8102e9bcd6d6b0f5ed9730ab')
@@ -101,7 +101,8 @@ build() {
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --enable-archs=x86_64,i386
+    --enable-archs=x86_64,i386 \
+    --enable-build-id
   make
 }
 
@@ -111,8 +112,9 @@ package() {
              libdir="${pkgdir}/opt/winecx/lib" \
              dlldir="${pkgdir}/opt/winecx/lib/wine" install
 
-    install -D -m755 "./wine" -t "${pkgdir}/usr/bin/winecx"
-    install -D -m755 "./wine" -t "${pkgdir}/usr/bin/winecx64"
+    install -d -m755 "${pkgdir}/usr/bin"
+    ln -s "${pkgdir}/opt/winecx/bin/wine" "${pkgdir}/usr/bin/winecx"
+    ln -s "${pkgdir}/opt/winecx/bin/wine64" "${pkgdir}/usr/bin/winecx64"
 
     # font aliasing settings for win32 applications
     install -d -m755 "${pkgdir}/opt/winecx/share/fontconfig/conf.default"
