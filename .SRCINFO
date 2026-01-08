@@ -1,5 +1,5 @@
 pkgbase = js-util-bin
-	pkgdesc = Run multiple commands in parallel
+	pkgdesc = A fast, lightweight, battery-included JavaScript runner built on QuickJS
 	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/5hubham5ingh/js-util

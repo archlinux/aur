@@ -4,7 +4,7 @@ _pkgauthor=5hubham5ingh
 _pkgname=js-util
 _appname=js
 pkgname=${_pkgname}-bin
-pkgdesc="Run multiple commands in parallel"
+pkgdesc="A fast, lightweight, battery-included JavaScript runner built on QuickJS"
 
 pkgver=1.24.0
 pkgrel=1
