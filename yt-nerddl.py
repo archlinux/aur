@@ -52,13 +52,22 @@ parser = argparse.ArgumentParser(
     description=desc,
     formatter_class=ColorHelpFormatter
 )
-parser.add_argument("url", help="YouTube URL")
+parser.add_argument("url", nargs="?", help="YouTube URL")
 parser.add_argument("-a", "--audio", action="store_true", help="Audio only (mp3)")
 parser.add_argument("-H", "--high", action="store_true", help="Fetch highest available quality")
 parser.add_argument("-o", "--output", help="Output directory (default: ~/Videos/Youtube)")
 parser.add_argument("-q", "--quality", action="store_true", help="Interactive quality selector")
+parser.add_argument("-v", "--version", action="store_true", help="Show version and exit")
 args = parser.parse_args()
 
+VERSION = "4.2.3"
+if args.version:
+    print(f"yt-nerddl version {VERSION}")
+    sys.exit(0)
+
+if not args.url:
+    parser.print_help()
+    sys.exit(1)
 
 TARGET_DIR = os.path.abspath(args.output) if args.output else os.path.expanduser("~/Videos/Youtube")
 os.makedirs(TARGET_DIR, exist_ok=True)
