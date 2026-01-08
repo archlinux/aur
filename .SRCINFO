@@ -1,0 +1,14 @@
+pkgbase = helfetch
+	pkgdesc = A custom system information fetcher for Helwan Linux, inspired by Neofetch/Fastfetch.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/helwan-linux/helwan-fetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	source = git+https://github.com/helwan-linux/helwan-fetch.git#branch=main
+	sha256sums = SKIP
+
+pkgname = helfetch
