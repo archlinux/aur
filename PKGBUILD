@@ -3,7 +3,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname='lets-bin'
-pkgver=0.0.57
+pkgver=0.0.58
 pkgrel=1
 pkgdesc='CLI task runner for productive developers - a better alternative to make'
 url='https://lets-cli.org/'
@@ -12,8 +12,8 @@ license=('MIT')
 provides=('lets')
 conflicts=('lets')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lets-cli/lets/releases/download/v0.0.57/lets_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('657520f4cb7f46bde2d75bbc1cac6b95c20edac55c8ebe4b68daf5a4925162be')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lets-cli/lets/releases/download/v0.0.58/lets_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ebce6a49395d6943661235087de311b469a13a0bf182a8222de3d4e4e4197e89')
 
 package() {
   install -Dm755 "./lets-bin" "${pkgdir}/usr/bin/lets"
