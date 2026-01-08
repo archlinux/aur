@@ -1,6 +1,6 @@
 # Maintainer: Jack Mahoney <jacksmahoney@gmail.com>
 pkgname=openai-codex-bin
-pkgver=0.74.0
+pkgver=0.79.0
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal (binary release)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ optdepends=(
 source_x86_64=(
     "codex-${pkgver}-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('fb881fb21f1ad461563dbf2773bcace637e3b11e9ccb038fdbd676444ecaf09c')
-sha256sums_aarch64=('58442efeae43d11e43d1ab3f83177129bdc7ad4cacf9b9a0311b0cc801c44730')
+sha256sums_x86_64=('aa4a13dadc30ea6eb26da94e7b92e01834c1c04b5cf45af81c94d6f373d2f82d')
+sha256sums_aarch64=('54063df807271fb5e44891c6475817563bf6d6acd517f9e0233c3b874e174da1')
 
 source_aarch64=(
     "codex-${pkgver}-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-aarch64-unknown-linux-gnu.tar.gz"
