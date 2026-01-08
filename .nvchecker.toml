@@ -1,0 +1,4 @@
+[libggml]
+source = "git"
+git = "https://github.com/ggml-org/ggml.git"
+prefix = "v"
