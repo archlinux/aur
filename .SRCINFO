@@ -1,0 +1,15 @@
+pkgbase = pdfcrack-git
+	pkgdesc = PDF files password cracker
+	pkgver = 0.21.1.r0.g6b340d7
+	pkgrel = 1
+	url = http://pdfcrack.sf.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = pdfcrack
+	conflicts = pdfcrack
+	source = git+https://salsa.debian.org/debian/pdfcrack.git
+	sha256sums = SKIP
+
+pkgname = pdfcrack-git
