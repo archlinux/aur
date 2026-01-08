@@ -2,7 +2,7 @@
 Categories=Education;
 Comment[en_US]=An astrophotography editing suite
 Comment=An astrophotography editing suite
-Exec=/opt/seti-astro-suite-pro/SetiAstroSuitePro
+Exec=/usr/bin/SetiAstroSuitePro
 GenericName[en_US]=
 GenericName=
 Icon=seti-astro-suite-pro

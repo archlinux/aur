@@ -3,7 +3,7 @@
 pkgname=seti-astro-suite-pro-bin
 _pkgname=seti-astro-suite-pro
 pkgver=1.6.12
-pkgrel=1
+pkgrel=2
 provides=("seti-astro-suite-pro=$pkgver")
 pkgdesc='Seti Astro Suite Pro is a comprehensive suite for staking and editing Astrophotography images.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('2c0817d9c2a0ca93809e2529c98ad0c533a2567284c8cc37a699e5341f1b74e5'
             '41e15136258dfc9af398ac260b838184017d19a79126e46b7cba4b2437c984e7'
             'f94efb65acf0441758e2cea94486617ef4a4f561e4f29c25006fa0aa9b158944'
             '10ca643fd2105a538a65b3abb831db5dba40c0dfd9a42bc203a2fa8740edec6e'
-            'dfcdd6197a17bec7df2092b292c5bc5be8d2036a29ad8af767f54b896ca82a3c')
+            '26e186f5f7c3177f6adff3dfb78bc6a569704d2e187db336263c2094a49267c2')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
