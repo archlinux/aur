@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j432w
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J432W
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=au&lang=en&prod=mfcj432w_as
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = GPL2
+	depends = cups
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf006573/mfcj432wlpr-3.0.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf006575/mfcj432wcupswrapper-3.0.0-1.i386.rpm
+	source = lpr-license.txt
+	md5sums = 2135f3e28aa0ea6fa22124d62f20efa1
+	md5sums = 5b21e59158c4566288402b68100c67d3
+	md5sums = 8dfc0b8b0a8cdea5d989257e1946e877
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j432w
