@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=XPipe PTB
-Comment=XPipe PTB (Public Test Build)
+Comment=XPipe PTB Public Test Build
 TryExec=/opt/xpipe-ptb/bin/xpiped
 Exec=/opt/xpipe-ptb/bin/xpipe open %U
 Path=/opt/xpipe-ptb
