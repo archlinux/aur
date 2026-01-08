@@ -18,7 +18,7 @@ source=('git+https://github.com/cappsyco/cosmic-ext-applet-logomenu.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
