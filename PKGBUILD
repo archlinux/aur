@@ -1,20 +1,31 @@
-# Maintainer: KillerBossOriginal
-# Contributor:
+# Maintainer: proivan1711 <ivan.lukan17113@gmail.com>
+# Contributor: KillerBossOriginal
+
 pkgname=stayfree-desktop
-pkgver=2.7.8
-pkgrel=3
-pkgdesc="Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity."
+pkgver=3.2.22
+pkgrel=1
+pkgdesc="StayFree - Analytics to help you understand and control your pc usage"
 arch=('x86_64')
-url="https://stayfreeapps.com"
+url="https://stayfreeapps.com/"
 license=('unknown')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'uuid' 'libsecret')
-optdepends=('libappindicator-gtk3')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("https://github.com/stayfree-app/desktop-releases/releases/download/v$pkgver/stayfree-linux-amd64.deb")
-sha256sums_x86_64=('76b661819324d9f4325313dc51a2b7b88fcfe4d3c03bf7666bec43d4a2b36cb3')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret')
+options=('!strip')
+
+_appimage="stayfree-linux-x86_64.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/stayfree-app/desktop-releases/releases/download/v${pkgver}/${_appimage}")
+sha256sums=('5a7057f2757430015be36bdc037b96a8922bed693786dd8e6fa17988f9e2c8a5')
+
+prepare() {
+    chmod +x "${pkgname}-${pkgver}.AppImage"
+    ./"${pkgname}-${pkgver}.AppImage" --appimage-extract
+}
+
 package() {
-  bsdtar -xf "${srcdir}/stayfree-linux-amd64.deb" -C "${srcdir}"
-  
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/stayfree"
+
+    install -Dm644 "${srcdir}/squashfs-root/stayfree-desktop.desktop" "${pkgdir}/usr/share/applications/stayfree-desktop.desktop"
+    
+    sed -i 's|Exec=AppRun|Exec=/usr/bin/stayfree|' "${pkgdir}/usr/share/applications/stayfree-desktop.desktop"
+
+    install -Dm644 "${srcdir}/squashfs-root/stayfree-desktop.png" "${pkgdir}/usr/share/pixmaps/stayfree-desktop.png"
 }
