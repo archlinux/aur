@@ -1,0 +1,13 @@
+pkgbase = adguardhome-dinit
+	pkgdesc = dinit service script for adguardhome
+	pkgver = 20260107
+	pkgrel = 1
+	url = https://github.com/AdguardTeam/AdGuardHome
+	arch = any
+	license = GPL3
+	depends = adguardhome
+	depends = dinit
+	source = adguardhome
+	sha256sums = 26cd31901e6744c574b593d4f6477e83d8ad64920eebd19b70bea82d44dba894
+
+pkgname = adguardhome-dinit

@@ -1,0 +1,6 @@
+type            = process
+command         = /usr/bin/adguardhome -w /var/lib/adguardhome
+smooth-recovery = true
+logfile         = /var/log/dinit/adguardhome.log
+depends-on      = network.target
+before          = login.target
