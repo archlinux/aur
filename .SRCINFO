@@ -1,0 +1,13 @@
+pkgbase = zimfw
+	pkgdesc = Zsh plugin manager
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://zimfw.sh
+	install = zimfw.install
+	arch = any
+	license = MIT
+	depends = zsh>=5.2
+	source = zimfw-1.20.0.zsh.gz::https://github.com/zimfw/zimfw/releases/download/v1.20.0/zimfw.zsh.gz
+	sha256sums = b948ef89a2f6fe565197e0fa898046337168c78bfcbae43601baeb9cd51f7038
+
+pkgname = zimfw
