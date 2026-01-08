@@ -7,7 +7,7 @@
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
 
 pkgname=aws-lc
-pkgver=1.66.1
+pkgver=1.66.2
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -31,7 +31,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('05f515f363efed85d0031bbd83d9c0d150d72c94d352a4e53a753872e92521218f2aa80098959f6cfd093035c8fba86bc675e035f5193aa924bc78bd71802ad9')
+b2sums=('eaffacbbd7fa04bd9d5ea09c94f83edcf89a171abe736a9b5146b381267300a34b3dc947e445365149857a77885ca97cd03faf5469c15a1365173d987aebf0a2')
 options=(!strip !lto)
 
 build() {
