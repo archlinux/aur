@@ -1,6 +1,6 @@
 pkgbase = rong
 	pkgdesc = A Material You and Base16 color generator
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/Nadim147c/rong
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rong
 	provides = rong
 	conflicts = rong-git
 	conflicts = rong-bin
-	source = https://github.com/Nadim147c/rong/archive/refs/tags/v5.0.0.tar.gz
-	sha256sums = db80ce8098a648cff37b7ae0e58ba7dfa01734647ebf8af33dc554d584c0da16
+	source = https://github.com/Nadim147c/rong/archive/refs/tags/v5.0.1.tar.gz
+	sha256sums = b25c405c9c3af464d6fe7ec08d12e5bbd433b93d89c6739c6280c6229082edf9
 
 pkgname = rong
