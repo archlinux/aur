@@ -1,7 +1,7 @@
 pkgbase = pomofocus-bin
-	pkgdesc = Pomo - Focus & Productivity Companion with Discord Integration
+	pkgdesc = Pomo - Focus & Productivity Companion for Arch Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pomofocus.online
 	arch = x86_64
 	license = ISC
@@ -9,9 +9,12 @@ pkgbase = pomofocus-bin
 	depends = libxss
 	depends = nss
 	depends = libdbusmenu-gtk3
+	depends = libasound2
 	provides = pomofocus
 	conflicts = pomofocus
 	source = https://pomofocus.online/PomoFocus-1.0.1.AppImage
+	source = https://pomofocus.online/logo.png
 	sha256sums = 006c565c5d414c6679260e15e4e902dedc80e3d1ec0ecdec0f709e4c02877522
+	sha256sums = SKIP
 
 pkgname = pomofocus-bin
