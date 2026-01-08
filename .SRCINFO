@@ -1,0 +1,24 @@
+pkgbase = openvaf-reloaded-git
+	pkgdesc = Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support
+	pkgver = r771.fce38d8
+	pkgrel = 1
+	url = https://github.com/arpadbuermen/OpenVAF
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	makedepends = python
+	depends = glibc
+	depends = gcc-libs
+	depends = llvm-libs
+	optdepends = python: For running verilogae to obtain equations of compact models
+	provides = openvaf-r
+	conflicts = openvaf-reloaded
+	source = openvaf-reloaded::git+https://github.com/arpadbuermen/OpenVAF
+	b2sums = SKIP
+
+pkgname = openvaf-reloaded-git
