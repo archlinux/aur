@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment=WeChat
 Comment[zh_CN]=微信
-Exec=env _portableConfig="com.qq.weixin" /usr/bin/portable -- %u
+Exec=env _portableConfig=com.qq.weixin /usr/bin/portable -- %u
 Icon=wechat
 Name=WeChat
 Name[zh_CN]=微信

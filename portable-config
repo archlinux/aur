@@ -24,6 +24,8 @@ bindCameras="true"
 bindPipewire="false"
 
 dbusWake="true"
+bindNetwork="true"
+qt5Compat="true"
 
 QT_QPA_PLATFORM=xcb
 IBUS_USE_PORTAL=1
