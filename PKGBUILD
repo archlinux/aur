@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=pix
-pkgver=3.4.9
+pkgver=3.4.10
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
@@ -42,7 +42,7 @@ conflicts=('pix-git')
 url='https://github.com/linuxmint/pix'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('206ccd1dd4196ec3b271f878d65787fd')
+md5sums=('574a2f372c409c4b316f595e978d2c62')
 
 prepare() {
     cd "${srcdir}"/${pkgname}-${pkgver}
