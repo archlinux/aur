@@ -28,7 +28,7 @@ makedepends=(
 )
 options=('staticlibs')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::git+${url}.git#tag=vulkan-sdk-${pkgver}"
+  "git+${url}.git#tag=vulkan-sdk-${pkgver}"
 )
 sha256sums=(
   '1cb7900efba3481c0c1ccae14b50bac99d59bc9d9fd5d0764f36dd0dc62c2320'
