@@ -1,0 +1,5 @@
+[procertum-smartsign]
+source = "htmlparser"
+url = "https://www.certum.pl/pl/software_version/pcss_linux.xml"
+xpath = "/all/configuration/latest/version"
+is_xml = true
