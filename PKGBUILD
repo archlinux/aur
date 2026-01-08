@@ -1,6 +1,6 @@
 # Maintainer: Léo Haf <leo@haf.ovh>
 pkgname=datum-gateway
-pkgver=0.4.0beta
+pkgver=0.4.1beta
 pkgrel=1
 pkgdesc="Decentralized Alternative Templates for Universal Mining"
 arch=(x86_64)
@@ -10,8 +10,8 @@ groups=(bitcoin)
 depends=('libmicrohttpd' 'libsodium' 'curl' 'jansson' 'glibc')
 makedepends=('cmake' 'git')
 backup=('etc/datum-gateway/config.json')
-source=("datum-gateway::git+https://github.com/OCEAN-xyz/datum_gateway.git#tag=v0.4.0beta?signed")
-sha256sums=('eed645c674089f9f26255d01910e74299bae1482488d486b3e9d07f3e7b13215')
+source=("datum-gateway::git+https://github.com/OCEAN-xyz/datum_gateway.git#tag=v0.4.1beta?signed")
+sha256sums=('013608f3df05877bc9c719d7bd0896eff8514a850c9198019428aac2f09154c6')
 validpgpkeys=(
 	"1A3E761F19D2CC7785C5502EA291A2C45D0C504A" # Luke Dashjr <luke@dashjr.org>
 )
