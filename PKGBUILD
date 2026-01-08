@@ -6,9 +6,7 @@
 
 
 pkgname=winecx
-pkgver=$(curl -s 'https://media.codeweavers.com/pub/crossover/source/?C=M;O=A' |
-    grep -oP 'crossover-sources-\K[0-9.]+(?=\.tar\.gz)' |
-    tail -n 1)
+pkgver=25.1.1
 pkgrel=1
 pkgdesc='CrossOver Wine'
 arch=('x86_64')
@@ -79,7 +77,7 @@ optdepends=(
     'wine-mono'
 
 )
-options=('staticlibs' '!lto')
+options=('staticlibs' '!lto' 'pestrip')
 
 
 provides=("winecx=${pkgver}" "bin32-winecx=${pkgver}" "winecx-wow64=${pkgver}")
@@ -91,11 +89,11 @@ source=("https://media.codeweavers.com/pub/crossover/source/crossover-sources-${
         '30-win32-aliases.conf'
         'winecx'
         'winecx64')
-sha256sums=('SKIP'
+sha256sums=('7cdcfcfaee8991f7958b5ccb2837c0facec6e8e681cd3ada8d2745bddbe27d13'
             '5d30dd4fa71b55ae5f3e30782a2c93ec506a6c6f65017c1a0995230ad7b39a82'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            'SKIP'
-            'SKIP')
+            '2f818f2033ed90c0a6400bbc0294354173ad5cbd63e01be44ea0e0371fabf0d1'
+            '3305dea8406ce68182db06eabf8e7626065bb8c2e3aa586b4361cbef023a4e24')
 
 
 prepare() {
@@ -129,7 +127,7 @@ build() {
         --with-gstreamer \
         --with-vulkan \
         --enable-win64
-    make -j4
+    make
     
     # build wine 32-bit
     printf '%s\n' '  -> Building wine-32...'
@@ -144,7 +142,7 @@ build() {
         --with-gstreamer \
         --with-vulkan \
         --with-wine64="${srcdir}/build-64"
-    make -j4
+    make
 }
 
 package() {
@@ -152,7 +150,7 @@ package() {
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
     printf '%s\n' '  -> Packaging wine-32...'
     cd build-32
-    make -j8 prefix="${pkgdir}/opt/winecx" \
+    make prefix="${pkgdir}/opt/winecx" \
          libdir="${pkgdir}/opt/winecx/lib32" \
          dlldir="${pkgdir}/opt/winecx/lib32/wine" \
          install
@@ -160,7 +158,7 @@ package() {
     # package wine 64-bit
     printf '%s\n' '  -> Packaging wine-64...'
     cd "${srcdir}/build-64"
-    make -j8 prefix="${pkgdir}/opt/winecx" \
+    make prefix="${pkgdir}/opt/winecx" \
          libdir="${pkgdir}/opt/winecx/lib" \
          dlldir="${pkgdir}/opt/winecx/lib/wine" \
          install

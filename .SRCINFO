@@ -1,6 +1,6 @@
 pkgbase = winecx
 	pkgdesc = CrossOver Wine
-	pkgver = 25.0.0
+	pkgver = 25.1.1
 	pkgrel = 1
 	url = https://www.codeweavers.com/crossover/
 	arch = x86_64
@@ -106,22 +106,23 @@ pkgbase = winecx
 	optdepends = lib32-v4l-utils
 	optdepends = wine-gecko
 	optdepends = wine-mono
-	provides = winecx=24.0.5
-	provides = bin32-winecx=24.0.5
-	provides = winecx-wow64=24.0.5
+	provides = winecx=25.1.1
+	provides = bin32-winecx=25.1.1
+	provides = winecx-wow64=25.1.1
 	conflicts = winecx
 	replaces = winecx
 	options = staticlibs
 	options = !lto
-	source = https://media.codeweavers.com/pub/crossover/source/crossover-sources-24.0.5.tar.gz
+	options = pestrip
+	source = https://media.codeweavers.com/pub/crossover/source/crossover-sources-25.1.1.tar.gz
 	source = distversion.h
 	source = 30-win32-aliases.conf
 	source = winecx
 	source = winecx64
-	sha256sums = SKIP
+	sha256sums = 7cdcfcfaee8991f7958b5ccb2837c0facec6e8e681cd3ada8d2745bddbe27d13
 	sha256sums = 5d30dd4fa71b55ae5f3e30782a2c93ec506a6c6f65017c1a0995230ad7b39a82
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2f818f2033ed90c0a6400bbc0294354173ad5cbd63e01be44ea0e0371fabf0d1
+	sha256sums = 3305dea8406ce68182db06eabf8e7626065bb8c2e3aa586b4361cbef023a4e24
 
 pkgname = winecx
