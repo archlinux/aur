@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mutoss
-_pkgver=0.1-13
+_pkgver=0.1-14
 pkgname=r-${_pkgname,,}
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc='Unified Multiple Testing Procedures'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b60f6fcdce44dc60c7d34c6510047f756f1442366a3566661b22aae12f4ff141')
+sha256sums=('1f4ef7bb19b5c7056be4acd759f2776b6cbfdff3da5ce51ffae15f61cda35cbf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
