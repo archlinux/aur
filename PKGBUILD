@@ -52,10 +52,10 @@ build() {
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib32" \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE="None" \
     -DCMAKE_CXX_FLAGS:STRING=-m32 \
-    -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
-    -DBUILD_SHARED_LIBS=OFF
+    -DALLOW_EXTERNAL_SPIRV_TOOLS="ON" \
+    -DBUILD_SHARED_LIBS="OFF"
   cmake --build build-static
 
   cmake \
@@ -63,22 +63,22 @@ build() {
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib32" \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE="None" \
     -DCMAKE_CXX_FLAGS:STRING=-m32 \
-    -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
-    -DBUILD_SHARED_LIBS=ON \
-    -DGLSLANG_TESTS=OFF
+    -DALLOW_EXTERNAL_SPIRV_TOOLS="ON" \
+    -DBUILD_SHARED_LIBS="ON" \
+    -DGLSLANG_TESTS="OFF"
   cmake --build build-shared
 }
 
 check() {
-  cd ${_pkgbasename}-${pkgver}
+  cd "${_pkgbasename}-${pkgver}"
 
 #  ninja -Cbuild-shared test
 }
 
 package() {
-  cd ${_pkgbasename}-${pkgver}
+  cd "${_pkgbasename}-${pkgver}"
 
   DESTDIR="${pkgdir}" cmake --install build-static
   DESTDIR="${pkgdir}" cmake --install build-shared

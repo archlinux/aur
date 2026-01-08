@@ -1,3 +1,5 @@
 [glslang]
 source = "git"
 git = "https://github.com/KhronosGroup/glslang.git"
+include_regex = 'vulkan-sdk-\d+(\.\d+)*'
+prefix = "vulkan-sdk-"
