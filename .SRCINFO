@@ -1,13 +1,15 @@
 pkgbase = rmtfs
 	pkgdesc = Qualcomm Remote Filesystem Service Implementation
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linux-msm/rmtfs
 	arch = aarch64
 	arch = x86_64
+	groups = qcom-icnss-wlan
 	license = BSD-3-Clause
 	depends = qrtr
 	depends = libudev.so
+	conflicts = rmtfs
 	source = rmtfs-1.1.1.tar.gz::https://github.com/linux-msm/rmtfs/archive/refs/tags/v1.1.1.tar.gz
 	source = udev.rules
 	source = 0001-sharedmem-Fix-build-warning-on-32-bit-arm.patch

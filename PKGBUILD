@@ -4,11 +4,13 @@
 pkgname="rmtfs"
 pkgdesc="Qualcomm Remote Filesystem Service Implementation"
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 arch=(aarch64 x86_64)
 url="https://github.com/linux-msm/rmtfs"
 license=("BSD-3-Clause")
 depends=(qrtr libudev.so)
+conflicts=("${pkgname%-git}")
+groups=(qcom-icnss-wlan)
 makedepends=()
 _srcname="${pkgname}-${pkgver}"
 source=(
