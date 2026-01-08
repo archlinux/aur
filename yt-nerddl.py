@@ -434,7 +434,7 @@ ytdl_opts["progress_hooks"].append(progress_hook)
 # run download (with ctrl+c handling)
 # -------------------------
 try:
-    sys.stdout.write(f"{BRIGHT_CYAN}Fetching from YouTube…{RESET}\n\n")
+    sys.stdout.write(f"{BRIGHT_CYAN} Fetching from YouTube…{RESET}\n\n")
     sys.stdout.flush()
     with yt_dlp.YoutubeDL(ytdl_opts) as ydl:
         info = ydl.extract_info(url)  # triggers progress_hook
@@ -471,6 +471,6 @@ print(f"{BRIGHT_CYAN}Format:{RESET}   {MODE} - {FORMAT_OUT}")
 print(f"{BRIGHT_CYAN}Quality:{RESET}  {QUALITY_LABEL}")
 print(f"{BRIGHT_CYAN}Length:{RESET}   {duration}")
 print(f"{BRIGHT_CYAN}Size:{RESET}     {final_size_mb:.1f} MB")
-print(f"\n{BRIGHT_CYAN}Time taken:{RESET} {human_time(total_elapsed)} | Avg {avg_speed:.2f} MB/s")
-print(f"{BRIGHT_GREEN}✔ Saved at:{BRIGHT_WHITE} {output_file}{RESET}\n")
+print(f"\n{BRIGHT_CYAN}󱫐 Time taken:{RESET} {human_time(total_elapsed)} | {BRIGHT_CYAN}Avg:{RESET} {avg_speed:.2f} MB/s")
+print(f"{BRIGHT_GREEN}✔ Saved at:{BRIGHT_WHITE}   {output_file}{RESET}\n")
 
