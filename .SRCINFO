@@ -1,0 +1,15 @@
+pkgbase = beads
+	pkgdesc = Git-backed issue tracking system designed for AI coding agents
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = https://github.com/steveyegge/beads
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	provides = bd
+	options = !debug
+	source = beads-0.46.0.tar.gz::https://github.com/steveyegge/beads/archive/refs/tags/v0.46.0.tar.gz
+	b2sums = c87997762459a96bf03c79ac00cb6336e1c349adfd94b8f2083261a9ae81acad01d9e6a942e7b3e6e679f140f7135abb2b61d937770d6b902f907d87bf8bd4e0
+
+pkgname = beads
