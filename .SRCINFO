@@ -1,8 +1,9 @@
 pkgbase = signal-desktop-beta
 	pkgdesc = Signal Private Messenger for Linux - Beta version.
 	pkgver = 7.85.0beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://signal.org
+	install = signal-desktop-beta.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -41,8 +42,10 @@ pkgbase = signal-desktop-beta
 	conflicts = signal-desktop-beta-bin
 	source = signal-desktop-beta-7.85.0beta1.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v7.85.0-beta.1.tar.gz
 	source = signal beta.desktop
+	source = signal-desktop-beta.sh
 	sha512sums = 7458736bcc6afc0e324a5815078fade7a44f55145bb7ddd0daf77cff8007a63d69def4a8d895f7e786bcc89ea4639b99c2c0f824fcb5c507358a07bf200a8c3e
 	sha512sums = 5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c
+	sha512sums = b3d8e56d0524711e13f5ef3770b49c5723ad3d7e50855ae578ea63f653b5e64edd7a9e68b56ba35c0240959f091195ece3580fc8550240ef40b00d0ad7fb97e8
 	makedepends_aarch64 = fpm
 
 pkgname = signal-desktop-beta
