@@ -1,12 +1,12 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname='alacritty-use-theme-git'
 pkgver=r71.fbe2119
-pkgrel=2
+pkgrel=3
 pkgdesc="Small utility to switch the selected theme used by alacritty terminal."
 arch=('x86_64')
 url="https://github.com/christophermca/alacritty-use-theme"
 license=('GPL')
-depends=('alacritty>=0.13.0')
+depends=('alacritty>=0.13.0' 'yq')
 makedepends=('git')
 source=("alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git")
 sha256sums=('SKIP')
