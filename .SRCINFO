@@ -1,6 +1,6 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 25.12.0
+	pkgver = 25.12.1
 	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = dolphin-tabopts
 	optdepends = kompare: comparing files menu action
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=25.12.0
+	provides = dolphin=25.12.1
 	conflicts = dolphin
-	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v25.12.0
+	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v25.12.1
 	source = dolphin-tabopts-7cce4b1.patch::https://invent.kde.org/xiota/dolphin/-/commit/7cce4b12e43b046104bbfc9a6da481e97f4f2f3c.patch
-	sha256sums = 083b9868d644bc2bbb4fc1a71f0872ce4fa7a1467acf2c293024f9a0b9a77a19
+	sha256sums = 2966e1b7e487833798a4f75b6f4f4ed951c457ee48a2419fdf642883f3be248b
 	sha256sums = a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121
 
 pkgname = dolphin-tabopts
