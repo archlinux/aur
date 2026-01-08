@@ -1,13 +1,13 @@
 pkgbase = python-textual-fastdatatable
 	pkgdesc = A performance-focused reimplementation of Textual's DataTable widget, with a pluggable data storage backend
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tconbeer/textual-fastdatatable
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-hatchling
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
