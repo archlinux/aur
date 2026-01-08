@@ -10,7 +10,8 @@ pkgbase = maki-cli
 	depends = glibc
 	depends = gcc-libs
 	provides = maki
-	source = maki-cli-0.1.0.crate::https://crates.io/api/v1/crates/maki-cli/0.1.0/download
+	conflicts = maki
+	source = maki-0.1.0.crate::https://crates.io/api/v1/crates/maki-cli/0.1.0/download
 	sha256sums = 2fdcd16b69b2999379ca7b1c7337cec31adbbe8fd10deae8364c7fc91502c1d2
 
 pkgname = maki-cli
