@@ -1,3 +1,5 @@
+# Mimic-Node Install Script
+
 post_install() {
     echo ":: Initializes mimictl keys..."
 

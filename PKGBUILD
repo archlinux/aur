@@ -1,4 +1,4 @@
-# Maintainer: LightJunction <lightjunction@outlook.com>
+# Maintainer: LightJunction <lightjunction.me@gmail.com>
 pkgname=mimic-node-git
 pkgver=r1.0.0
 pkgrel=2
