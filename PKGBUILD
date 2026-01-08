@@ -1,7 +1,7 @@
 # Maintainer: Syreese <syreese@example.com>
 pkgname=hypertyper
 _pkgname=HyperTyper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A CLI Typing Game with multiple modes, streaks, and sound effects"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-pygame' 'python-colorama')
 makedepends=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('72d01667424995da58bbddd2efd405944ca3e288c7a0011ba0ccf5940e183d15') # v1.0.0
+sha256sums=('SKIP') # Update with 'updpkgsums' or 'sha256sum' on the downloaded file
 
 package() {
     # GitHub archive usually extracts to RepoName-Tag
