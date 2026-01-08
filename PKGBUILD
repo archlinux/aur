@@ -1,7 +1,8 @@
-# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+# Contributor: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=freshrss
-pkgver=1.27.1
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
@@ -15,15 +16,13 @@ optdepends=('apache: Web server to run FreshRSS'
             'sqlite: Database server to run FreshRSS')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
-b2sums=('5abedc2d2b611974b14a504b3e78768ad3a4e8fde1268a038fa384364b7488f822a03d62a9a22c3ba4d2ad394139ba9dbfbae13f1b1c88df05496a344feb6a3b')
-
+b2sums=('0ea2cc56754495ac3e4c8adebfbe93a3a7f3466a7596dd60f5ebfc1f8b80c0fbe7a8644f64c15ef2f26501f88fe8a485d1d219e67c7b4b48d2202c556dcb2a79')
 
 prepare(){
   cd "${srcdir}/FreshRSS-$pkgver"
   sed -i "s!FRESHRSS_PATH . '/data'!'/var/lib/webapps/freshrss/data'!" constants.php
 
 }
-
 
 package() {
   cd "${srcdir}/FreshRSS-$pkgver"
@@ -37,7 +36,7 @@ package() {
 
 
   #new location for datadir
-  install -dm 755 "$pkgdir/var/lib/webapps/freshrss"
+  install -dm 750 "$pkgdir/var/lib/webapps/freshrss"
   mv "$pkgdir/usr/share/webapps/freshrss/data" "$pkgdir/var/lib/webapps/freshrss/data"
 }
 
