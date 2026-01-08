@@ -1,0 +1,3 @@
+[dab-cli]
+source = "cratesio"
+cratesio = "dab-cli"
