@@ -1,0 +1,17 @@
+pkgbase = gastown
+	pkgdesc = Multi-agent orchestration system for Claude Code with persistent work tracking
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/steveyegge/gastown
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	optdepends = beads: For git-backed issue tracking integration
+	optdepends = tmux: Recommended for multi-agent sessions
+	provides = gt
+	options = !debug
+	source = gastown-0.2.1.tar.gz::https://github.com/steveyegge/gastown/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = 57ce200183156f2baf67a979ee48d64ba324b98d4963a01a8423be553fcb622b6636ffce4794feb70a57dc252ed6c826207500931a79d82a7c2cd5581b23c68c
+
+pkgname = gastown
