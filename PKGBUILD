@@ -1,6 +1,6 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-git
-pkgver=0.24.0.r0.ga261e52
+pkgver=0.24.0.r38.g26237b4
 pkgrel=1
 pkgdesc="A minimal keyboard-driven browser for tiling WMs (git version)"
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
 package() {
     cd dumber
     install -Dm755 dist/dumber "${pkgdir}/usr/bin/dumber"
-    install -Dm644 dev.bnema.Dumber.desktop "${pkgdir}/usr/share/applications/dev.bnema.Dumber.desktop"
+    install -Dm644 flatpak/dev.bnema.Dumber.desktop "${pkgdir}/usr/share/applications/dev.bnema.Dumber.desktop"
     install -Dm644 assets/logo-512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/dev.bnema.Dumber.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
