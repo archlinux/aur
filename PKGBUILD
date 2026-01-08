@@ -4,7 +4,7 @@
 
 _pkgbasename=zimg
 pkgname=("lib32-$_pkgbasename")
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='Scaling, colorspace conversion, and dithering library'
 arch=(x86_64)
@@ -20,9 +20,13 @@ makedepends=(
 )
 provides=(libzimg.so)
 options=(!emptydirs)
-_tag=e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87
-source=(git+https://github.com/sekrit-twc/zimg.git#tag=${_tag})
-sha256sums=(SKIP)
+_tag=f819b14e8f39d1282400b0d9543e8ef73c1b2bbd
+source=(
+  "git+https://github.com/sekrit-twc/zimg.git#tag=${_tag}"
+  )
+sha256sums=(
+  '3799202bd28d00bcf91fa772c303bb78f028394c9d2d123f694dae27aab9bea5'
+)
 
 prepare() {
   cd ${_pkgbasename}
