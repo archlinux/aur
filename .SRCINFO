@@ -1,6 +1,6 @@
 pkgbase = slive
-	pkgdesc = Slive is a lightweight and user-friendly application for watching live streams across multiple platforms, offering a seamless watching experience with support for popular streaming services.
-	pkgver = 1.8.4
+	pkgdesc = 基于Flutter的聚合直播软件，支持多平台直播源聚合与观看。
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://github.com/SlotSun/dart_simple_live
 	arch = x86_64
@@ -10,8 +10,17 @@ pkgbase = slive
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = fvm
+	makedepends = rustup
 	depends = gtk3
-	source = git+https://github.com/SlotSun/dart_simple_live.git#tag=v1.8.4
-	sha256sums = 9c74d31b2f851a1a4bb6fa8b8bf624968baca21d1145d2b3358d8529446c0da0
+	depends = libvdpau
+	depends = libpulse
+	depends = libxss
+	depends = libarchive
+	depends = alsa-lib
+	depends = libva
+	depends = libxv
+	depends = patchelf
+	source = Slive.tar.gz::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.5/Slive.tar.gz
+	sha256sums = 6ae1cc82dd8dbcb375a8e7bc8db371a66a200df7a51fc84ba1adecb6452da03e
 
 pkgname = slive
