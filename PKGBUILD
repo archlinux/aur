@@ -2,10 +2,11 @@ _zuluver='21.46.19'
 _jrever='21.0.9'
 
 pkgname='zulu-jre21-fx'
-pkgver="$_zuluver+$_jrever"
+pkgver="${_zuluver}_${_jrever}"
 pkgrel=1
-pkgdesc='A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment with OpenJFX).'
-arch=('aarch64' 'x86_64')
+pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).'
+arch=('x86_64' 'aarch64')
+license=('GPL-2.0-with-classpath-exception')
 depends=(
   'java-runtime-common>=3'
   'ca-certificates-utils'
@@ -26,11 +27,9 @@ sha256sums_aarch64=('1c034dbdb0de3b0b96475095ca75fe676a577333f9f8cb7f849e9cde7e1
 _jvmdir="usr/lib/jvm/$pkgname"
 
 package() {
-    cd -- "$srcdir"/zulu*/
-
     # Copy main files
     install -d "$pkgdir/$_jvmdir"
-    cp -a '.' "$pkgdir/$_jvmdir"
+    cp -a "$srcdir"/zulu*/. "$pkgdir/$_jvmdir"
 
     # Conf
     install -d "$pkgdir/etc/$pkgname"
