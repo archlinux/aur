@@ -453,6 +453,12 @@ _update_defconfig() {
     scripts/config -e EDAC_AMD64 \
                    -e EDAC_IGEN6
 
+    # Google's BBRv3 TCP algo
+    scripts/config -e TCP_CONG_BBR \
+                   -e NET_SCH_FQ \
+                   --set-str DEFAULT_TCP_CONG bbr \
+                   --set-str DEFAULT_NET_SCH fq
+
     # Enable LLVM compilation
     [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
                                                 -e LTO \
@@ -683,6 +689,17 @@ _package-headers() {
     # Add symlink to build directory
     mkdir -p "${pkgdir}/usr/src"
     ln -sr "${__builddir}" "${pkgdir}/usr/src/${pkgbase}"
+
+    # Recommended config for BBRv3
+    local qdisc=$(sysctl -n net.core.default_qdisc)
+    local cong_algo=$(sysctl -n net.ipv4.tcp_congestion_control)
+
+    if [ "$qdisc" != "fq" ] || [ "$cong_algo" != "bbr" ]; then
+        _warning "It is recommended to reconfigure your TCP subsystem for BBR TCP algorithm:"
+        _info "Add the following lines to a file called: /etc/sysctl.d/99-bbr_tachyon.conf"
+        _info "net.core.default_qdisc = fq"
+        _info "net.ipv4.tcp_congestion_control = bbr"
+    fi
 }
 
 
