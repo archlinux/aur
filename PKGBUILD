@@ -4,7 +4,7 @@ _zuluver='21.46.19'
 _jrever='21.0.9'
 
 pkgname='zulu-jre21-fx'
-pkgver="${_zuluver}_${_jrever}"
+pkgver="$_jrever+$_zuluver"
 pkgrel=2
 pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).'
 arch=('x86_64' 'aarch64')
