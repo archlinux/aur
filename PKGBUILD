@@ -1,6 +1,6 @@
 pkgname=marmot
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed SQLite server with MySQL wire compatible interface"
 arch=(any)
 url="https://github.com/maxpert/marmot"
@@ -15,7 +15,7 @@ sha256sums=('8ab0d54994d74121aa0fca72fa9a3a1f8b74cb8c6107b2d282a556d1c169dde9'
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	GOARCH=amd64 GOOS=linux CGO_ENABLED=1 go build -tags sqlite_preupdate_hook -o dist/$pkgname
+	GOOS=linux CGO_ENABLED=1 go build -tags sqlite_preupdate_hook -o dist/$pkgname
 }
 
 package() {
