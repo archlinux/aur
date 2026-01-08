@@ -1,0 +1,15 @@
+pkgbase = python-asciify-them
+	pkgdesc = Allows you to turn images into ASCII art drawings
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ndrscalia/asciify-them
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-opencv
+	source = https://files.pythonhosted.org/packages/source/a/asciify_them/asciify_them-1.0.2.tar.gz
+	sha256sums = 348375d8c1a890de28e1c267b0e55ba33f85eef416d74bd4f571fd644e365d9a
+
+pkgname = python-asciify-them
