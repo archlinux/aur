@@ -1,0 +1,15 @@
+pkgbase = cmdjewel-git
+	pkgdesc = Terminal match-3 game inspired by Bejeweled - latest build from source
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://codeberg.org/pastthepixels/cmdjewel
+	arch = any
+	license = GPL-3.0-only
+	makedepends = rust>=1.92.0
+	makedepends = alsa-lib
+	makedepends = clang
+	makedepends = git
+	source = git+https://codeberg.org/pastthepixels/cmdjewel.git
+	sha256sums = SKIP
+
+pkgname = cmdjewel-git
