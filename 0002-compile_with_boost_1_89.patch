@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e08a211..9cc54b6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -142,8 +142,7 @@ else()
+     # find_package(Boost CONFIG REQUIRED filesystem)
+ 
+     # For 1.88 installed manually by user
+-    set(Boost_NO_SYSTEM_PATHS TRUE)
+-    find_package(Boost 1.88 REQUIRED COMPONENTS filesystem process system)
++    find_package(Boost REQUIRED COMPONENTS filesystem process)
+     include_directories("${Boost_INCLUDE_DIRS}")
+     set(Boost_EXTRA_LINK_DIR "${Boost_INCLUDE_DIRS}/stage/lib")
+     link_directories(${Boost_EXTRA_LINK_DIR})
+@@ -262,7 +261,6 @@ if (${SIM_PLATFORM} STREQUAL "Windows")
+     set(SIM_EXE_LIBRARIES
+             Boost::filesystem
+             Boost::process
+-            Boost::system
+             ${SuiteSparse_DIR}/lib/libklu.a
+             ${SuiteSparse_DIR}/lib/libamd.a
+             ${SuiteSparse_DIR}/lib/libcamd.a
+@@ -290,7 +288,7 @@ elseif (${SIM_PLATFORM} STREQUAL "Darwin")
+ else()
+     set(SIM_EXE_LIBRARIES
+             dl m klu amd camd colamd ccolamd btf cholmod suitesparseconfig
+-            boost_system boost_filesystem boost_process
++            boost_filesystem boost_process
+         CACHE STRING "External libraries for creating an executable."
+         FORCE
+     )

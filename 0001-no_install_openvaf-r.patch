@@ -1,0 +1,16 @@
+diff --git a/packaging.cmake b/packaging.cmake
+index 49108ba..8ad9d17 100644
+--- a/packaging.cmake
++++ b/packaging.cmake
+@@ -40,11 +40,6 @@ install(TARGETS sim
+ 	PERMISSIONS ${install_permissions_executable}
+ )
+ 
+-install(FILES ${OPENVAF_COMPILER}
+-	DESTINATION "bin"
+-	PERMISSIONS ${install_permissions_executable}
+-)
+-
+ # Device sources
+ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/devices" DESTINATION "${source_directory}"
+ 	FILE_PERMISSIONS ${install_permissions_file}
