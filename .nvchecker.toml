@@ -1,0 +1,4 @@
+[emwm]
+source = "git"
+git = "https://github.com/alx210/emwm.git"
+prefix = "v"
