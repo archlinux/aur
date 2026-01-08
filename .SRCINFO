@@ -1,11 +1,11 @@
 pkgbase = nextcloud-app-cospend
 	pkgdesc = Shared budget manager Nextcloud app
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eneiluj/cospend-nc
 	arch = any
 	groups = nextcloud-apps
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = rsync
