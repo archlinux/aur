@@ -1,17 +1,17 @@
 pkgbase = navicat-premium-lite
 	pkgdesc = Navicat Premium Lite
-	pkgver = 17.3.5
+	pkgver = 17.3.6
 	pkgrel = 2
 	url = https://www.navicat.com/products/navicat-premium-lite
 	arch = x86_64
 	arch = aarch64
 	license = proprietary
-	source_x86_64 = navicat-premium-lite-en-x86_64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage
-	source_x86_64 = navicat-premium-lite-cs-x86_64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage
+	source_x86_64 = navicat-premium-lite-en-x86_64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage
+	source_x86_64 = navicat-premium-lite-cs-x86_64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage
 	sha256sums_x86_64 = 48608ae878b3b6fdd9c56a8aa6ea92cb3942bb439f6b1438d3c2084b97ef9777
 	sha256sums_x86_64 = ed2ae37b18e46baebbb0c9ae13fc871db1fa6109861e7146e53f84ec7b4f089f
-	source_aarch64 = navicat-premium-lite-en-aarch64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-aarch64.AppImage
-	source_aarch64 = navicat-premium-lite-cs-aarch64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-aarch64.AppImage
+	source_aarch64 = navicat-premium-lite-en-aarch64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-aarch64.AppImage
+	source_aarch64 = navicat-premium-lite-cs-aarch64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-aarch64.AppImage
 	sha256sums_aarch64 = 11e180ba66ef9e177312ebd861b458989990bcb579b0b27686c32e71701292c9
 	sha256sums_aarch64 = 1e4000cc063101cafbc9902509cb163d2f7cceabd1b9840ba18d7f9e02cd51cf
 
