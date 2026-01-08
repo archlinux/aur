@@ -1,17 +1,17 @@
 # Maintainer: Zach Callear <zach@callear.org>
 
 pkgname=intellij-idea-open-eap
-_versionbase=2025.3.1
+_versionbase=2025.3.1.1
 _tagsuffix=
 _tag="idea/${_versionbase}${_tagsuffix}"
 # See build number tag having same commit hash as this tag, at
 # https://github.com/JetBrains/intellij-community/tags
-_build=253.29346.138
+_build=253.29346.240
 # Build number is before tag suffix for alphabetical version order.
 pkgver="$_versionbase.$_build$([ -n "$_tagsuffix" ] && echo -n '.'$_tagsuffix | tr - .)"
+pkgrel=1
 _jdkver=25
-pkgrel=2
-pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features, open-source, latest-tag (usually EAP) version'
+pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version'
 url='https://www.jetbrains.com/idea/'
 arch=('x86_64')
 license=('Apache-2.0')
@@ -19,6 +19,7 @@ provides=('intellij-idea-community-edition')
 conflicts=('intellij-idea-community-edition')
 backup=('usr/share/idea/bin/idea64.vmoptions')
 depends=('giflib' 'python' 'sh' 'ttf-font' 'libdbusmenu-glib' 'fontconfig' 'hicolor-icon-theme')
+# A JDK is only a make dependency because this builds the JetBrains Runtime (JBR).
 makedepends=('git' "java-environment-openjdk=${_jdkver}")
 optdepends=(
   'lldb: lldb frontend integration'
@@ -27,7 +28,7 @@ source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop
   idea.sh)
-sha256sums=('98562be3091310a6bcef39ad93422a3898367f03c0cf55026995313a17322226'
+sha256sums=('e62a3b68609beba56344c2724546ba87eada0fa6c925222c79ca4e257fb86ec5'
             '21113cafe59ce558701ca1a7934d2d1620c6d1f3e7720c8c72a2673b1e5f0ac2'
             '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f'
             'b7fc5d44d81702d36a0bf50e0e1050a5d1000907aadf7634df541f289659c2ce')
