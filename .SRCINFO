@@ -1,6 +1,6 @@
 pkgbase = turtlectl-git
 	pkgdesc = A Go CLI tool to manage and run Turtle WoW on Linux (X11/Wayland)
-	pkgver = r2.795e83c
+	pkgver = 0.1.0.r7.g2ad820a
 	pkgrel = 1
 	url = https://github.com/bnema/turtlectl
 	arch = x86_64

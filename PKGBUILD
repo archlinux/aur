@@ -1,6 +1,6 @@
 # Maintainer: Brice <b@bnema.dev>
 pkgname=turtlectl-git
-pkgver=r2.795e83c
+pkgver=0.1.0.r7.g2ad820a
 pkgrel=1
 pkgdesc='A Go CLI tool to manage and run Turtle WoW on Linux (X11/Wayland)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
