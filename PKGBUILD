@@ -1,7 +1,7 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=bilihud-git
 _pkgname=bilihud
-pkgver=0.1.1.r7.gc0ef983
+pkgver=0.2.0.r0.gIT_REV_Here
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
 arch=('any')
@@ -15,6 +15,9 @@ depends=(
     'python-brotli'
     'python-browser-cookie3' # AUR
     'python-pure-protobuf' # AUR
+    'python-qrcode'
+    'python-keyring'
+    'python-pillow'
 )
 makedepends=(
     'git'
