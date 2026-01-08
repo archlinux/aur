@@ -11,7 +11,7 @@ _proj=curl
 pkgname=curl-c-ares
 pkgver=8.18.0
 _git_tag="curl-${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
 url='https://curl.se/'
@@ -23,6 +23,7 @@ depends=('ca-certificates'
          'libidn2' 'libidn2.so'
          'libnghttp2' 'libnghttp2.so'
          'libnghttp3' 'libnghttp3.so'
+         'libngtcp2' 'libngtcp2.so'
          'libpsl' 'libpsl.so'
          'libssh2' 'libssh2.so'
          'openssl' 'libcrypto.so' 'libssl.so'
@@ -60,6 +61,8 @@ build() {
     --enable-ipv6
     --with-gssapi
     --with-libssh2
+    --with-nghttp3
+    --with-ngtcp2
     --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
   )
 
@@ -70,9 +73,9 @@ build() {
   "${srcdir}/$_proj/configure" \
     "${_configure_options[@]}" \
     --enable-versioned-symbols \
-    --with-fish-functions-dir=/usr/share/fish/vendor_completions.d/ \
+    --without-gnutls \
     --with-openssl \
-    --with-openssl-quic \
+    --with-fish-functions-dir=/usr/share/fish/vendor_completions.d/ \
     --with-zsh-functions-dir=/usr/share/zsh/site-functions/
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
