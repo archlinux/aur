@@ -5,7 +5,7 @@ pkgbase = zulu-jre21-fx
 	install = zulu-jre21-fx.install
 	arch = x86_64
 	arch = aarch64
-	license = GPL-2.0-with-classpath-exception
+	license = custom
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	provides = java-runtime=21

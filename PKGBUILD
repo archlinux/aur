@@ -8,7 +8,7 @@ pkgver="${_zuluver}_${_jrever}"
 pkgrel=2
 pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).'
 arch=('x86_64' 'aarch64')
-license=('GPL-2.0-with-classpath-exception')
+license=('custom')
 depends=(
     'java-runtime-common>=3'
     'ca-certificates-utils'
