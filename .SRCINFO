@@ -1,6 +1,6 @@
 pkgbase = libation
 	pkgdesc = A free, open-source application for downloading and managing your Audible audiobooks
-	pkgver = 13.1.0
+	pkgver = 13.1.1
 	pkgrel = 1
 	url = https://github.com/rmcrackan/Libation
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libation
 	depends = lame
 	depends = lttng-ust2.12
 	options = !strip
-	source = libation-13.1.0.tar.gz::https://github.com/rmcrackan/Libation/archive/v13.1.0.tar.gz
-	sha256sums = 904e55907eb57eb759d69eb201d356178e46fa6ce697e86fb4b4e62feefdbbd7
+	source = libation-13.1.1.tar.gz::https://github.com/rmcrackan/Libation/archive/v13.1.1.tar.gz
+	sha256sums = 8b2d42c65518072af124fe4233f4ab8f76615c14e641d18f95bf02676ccd6a70
 
 pkgname = libation
