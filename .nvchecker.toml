@@ -1,0 +1,5 @@
+[crepe-bin]
+source = "github"
+github = "brunoribeiro/crepe"
+use_latest_release = true
+prefix = "v"

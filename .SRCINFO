@@ -1,0 +1,17 @@
+pkgbase = crepe-bin
+	pkgdesc = A grep-like text search tool that highlights matches instead of filtering lines
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/brunoribeiro/crepe
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = crepe
+	conflicts = crepe
+	source = README-0.2.1.md::https://raw.githubusercontent.com/brunoribeiro/crepe/v0.2.1/README.md
+	sha256sums = 873460a0d0dee88ea6edff68e0f92b7510563649f17ea39a667972ddbbbbe83f
+	source_x86_64 = crepe-x86_64-0.2.1::https://github.com/brunoribeiro/crepe/releases/download/v0.2.1/crepe-0.2.1-linux-amd64
+	sha256sums_x86_64 = f7a7e642842ef0e65e7e17f5601551169ed95059453a5ea248b1f7e242d8cfaa
+
+pkgname = crepe-bin
