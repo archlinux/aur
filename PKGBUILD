@@ -53,6 +53,35 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+  # Universal cleanup (dev files, other OS)
+  local prune_dirs=(
+    -name '.github'
+    -o -name '.idea'
+    -o -name '.tscache'
+    -o -wholename '*/man'
+    -o -wholename '*/test'
+    -o -wholename '*/scripts'
+    -o -wholename '*/git-hooks'
+    -o -wholename '*/android-*'
+    -o -wholename '*/win32-*'
+    -o -wholename '*/darwin-*'
+  )
+
+  # Architecture specific cleanup
+  case "$CARCH" in
+    x86_64)
+      prune_dirs+=( -o -wholename '*/linux-arm*' )
+      ;;
+    aarch64)
+      prune_dirs+=( -o -wholename '*/linux-x64' -o -wholename '*/linux-arm' )
+      ;;
+    arm*)
+      prune_dirs+=( -o -wholename '*/linux-x64' -o -wholename '*/linux-arm64' )
+      ;;
+  esac
+
+  find "${pkgdir}/usr/share/webapps/${_pkgname}/node_modules" -type d \( "${prune_dirs[@]}" \) -exec rm -rvf {} +
 }
 
 sha256sums=('SKIP'
