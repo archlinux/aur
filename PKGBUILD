@@ -13,7 +13,7 @@ depends=(
   'libsoup3' 'webkit2gtk-4.1' 
 )
 source=("https://github.com/bdrazhzhov/ya-player/releases/download/v$pkgver/ya-player-v$pkgver.tar.zst")
-sha256sums=('sha256:fc71af5e2ca968188a459642a3fc3285d0cece15059875f9dcb06257688fc24a')
+sha256sums=('fc71af5e2ca968188a459642a3fc3285d0cece15059875f9dcb06257688fc24a')
 
 build() {
   patchelf --set-rpath '$ORIGIN' "$srcdir/lib/libaudio_player_gst_plugin.so"
