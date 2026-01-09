@@ -1,7 +1,7 @@
 pkgbase = eshu-installer
 	pkgdesc = AI-Driven Universal Package Installer for Linux
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 2
 	url = https://eshu-apps.com
 	arch = any
 	license = MIT

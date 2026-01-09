@@ -2,7 +2,7 @@
 # OPTION A: Provides files, user runs install script
 pkgname=eshu-installer
 pkgver=0.4.0
-pkgrel=3
+pkgrel=2
 pkgdesc="AI-Driven Universal Package Installer for Linux"
 arch=('any')
 url="https://eshu-apps.com"
