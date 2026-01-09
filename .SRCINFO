@@ -1,6 +1,6 @@
 pkgbase = llminxsolver-bin
 	pkgdesc = Megaminx Last Layer Solver with Compose Multiplatform GUI
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/Sevilze/llminxsolver-cmp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = llminxsolver-bin
 	provides = llminxsolver
 	conflicts = llminxsolver
 	options = !strip
-	source = llminxsolver-bin-1.1.1.tar.gz::https://github.com/Sevilze/llminxsolver-cmp/releases/download/v1.1.1/llminxsolver-v1.1.1-x86_64-linux.tar.gz
-	sha256sums = c1bb6f89978bca04ffa82ab6b6c6f7a13f306406ebdb464a7d2ba3230f5df5e2
+	source = llminxsolver-bin-1.2.1.tar.gz::https://github.com/Sevilze/llminxsolver-cmp/releases/download/v1.2.1/llminxsolver-v1.2.1-x86_64-linux.tar.gz
+	sha256sums = c1fd9d270143e920f3ee7f1b101363debf28963fc86ab0d41d83fdb72b9c8dcc
 
 pkgname = llminxsolver-bin

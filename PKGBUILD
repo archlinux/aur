@@ -1,6 +1,6 @@
 # Maintainer: Sevilze <sevilzcubing@gmail.com>
 pkgname=llminxsolver-bin
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Megaminx Last Layer Solver with Compose Multiplatform GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('llminxsolver')
 conflicts=('llminxsolver')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/llminxsolver-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('c1bb6f89978bca04ffa82ab6b6c6f7a13f306406ebdb464a7d2ba3230f5df5e2')
+sha256sums=('c1fd9d270143e920f3ee7f1b101363debf28963fc86ab0d41d83fdb72b9c8dcc')
 
 package() {
     cd "$srcdir"
