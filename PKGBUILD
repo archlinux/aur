@@ -3,8 +3,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-client
-_pkgname=devpi_client
-pkgver=7.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Workflow commands for Python developers"
 arch=('any')
@@ -19,18 +18,18 @@ depends=(
   'python-pkginfo'
   'python-platformdirs'
   'python-pluggy'
-  'python-py')
+)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-changelog-shortener')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3706e1ae88f13894a90ef324d0c6c01826e3992f33da0d729d6eb3ce056fcbf3')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('c143368458c3878ba7bee6a1d9b418e2e659571a3856614f58d76b8a28269d7b')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
