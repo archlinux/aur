@@ -1,13 +1,13 @@
 pkgbase = python-types-protobuf
 	pkgdesc = Typing stubs for protobuf
-	pkgver = 6.30.2.20250703
+	pkgver = 6.32.1.20251210
 	pkgrel = 1
 	url = https://pypi.org/project/types-protobuf/
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-protobuf/types_protobuf-6.30.2.20250703.tar.gz
-	sha256sums = 609a974754bbb71fa178fc641f51050395e8e1849f49d0420a6281ed8d1ddf46
+	source = https://files.pythonhosted.org/packages/source/t/types-protobuf/types_protobuf-6.32.1.20251210.tar.gz
+	sha256sums = c698bb3f020274b1a2798ae09dc773728ce3f75209a35187bd11916ebfde6763
 
 pkgname = python-types-protobuf
