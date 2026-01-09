@@ -1,15 +1,16 @@
 pkgbase = python-types-tqdm
 	pkgdesc = Typing stubs for tqdm
-	pkgver = 4.66.0.20240106
+	pkgver = 4.67.0.20250809
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/de/89/deab00a2d1aa7e5d6e415dbf5ba7a2a444ac5f194f3fd24a0ca611d6864f/types-tqdm-4.66.0.20240106.tar.gz
-	sha256sums = 7acf4aade5bad3ded76eb829783f9961b1c2187948eaa6dd1ae8644dff95a938
+	source = https://files.pythonhosted.org/packages/source/t/types_tqdm/types_tqdm-4.67.0.20250809.tar.gz
+	b2sums = f0a261cd7c0c4b3efe4e96984e9bf53c40947129ca88da56a06c0cb6631184f8a8165fee206f2000b44a50a2db3e1654b696ef5474dbc37351c4dec19a5a106c
 
 pkgname = python-types-tqdm
