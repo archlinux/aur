@@ -12,7 +12,7 @@ _idct=idct-mjpeg-mmx
 
 pkgname=projectx
 pkgver=0.91.0.08
-pkgrel=4
+pkgrel=5
 license=('GPL')
 arch=('i686' 'x86_64')
 pkgdesc="DVB demux tool for repairing and analyzing different stream types"
@@ -20,14 +20,14 @@ makedepends=('make')
 depends=('java-runtime<=11' 'java-environment' 'bash')
 url="http://sourceforge.net/projects/project-x"
 source=(https://downloads.sourceforge.net/project/project-x/project-x/ProjectX_0.91.0.00/ProjectX_0.91.0.zip
-	http://gentoo.sbriesen.de/distfiles/projectx-idctfast.tar.xz 
+	https://ftp.fau.de/gentoo/distfiles/50/projectx-idctfast.tar.xz
         IDCTFast.patch
 	projectx)
 
-md5sums=('5cf7bb227abe2c16d34e8e9c84915291'
-         '0f09819b08e6105ed6c1e4705794e9c1'
-         '5f3ceff20dd1489309465332b821b5e9'
-         'b92f5dc14576459119769c245690b8b0')
+sha256sums=('8ea38a6a9af5b5c0cf0a17429d85618804323b328a1f922db85e5af91197ad9a'
+         'd05b86b05c4924b434a6a9bb443c05d5421f6df7a2b19616a53ef1e4b4dada45'
+         '1d14666ebf1200fad3e8d0bb6a5c32d0bc23dee88be8ca4d95eb87fcb736b932'
+         '98bc74e72132c07b22bf774784247e8a761edb536bed772b68304adf27034010')
 
 
 build() {
