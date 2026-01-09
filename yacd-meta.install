@@ -1,0 +1,13 @@
+post_install() {
+  echo "yacd-meta is installed at /usr/share/yacd-meta"
+  echo "To allow mihomo to read this directory, you may need to run:"
+  echo "# systemctl edit mihomo.service"
+  echo "And add the following content:"
+  echo "[Service]"
+  echo "Environment=\"SAFE_PATHS=/usr/share/yacd-meta\""
+}
+
+post_upgrade() {
+  post_install
+}
+

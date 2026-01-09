@@ -3,11 +3,12 @@
 pkgname=yacd-meta
 _pkgname=Yacd-meta
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Clash Dashboard"
 arch=('any')
 url="https://github.com/MetaCubeX/Yacd-meta"
 license=('MIT')
+install=yacd-meta.install
 makedepends=('nodejs' 'pnpm')
 optdepends=('mihomo: Another Clash Kernel by MetaCubeX')
 provides=("${pkgname}")

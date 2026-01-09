@@ -1,8 +1,9 @@
 pkgbase = yacd-meta
 	pkgdesc = Yet Another Clash Dashboard
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/Yacd-meta
+	install = yacd-meta.install
 	arch = any
 	license = MIT
 	makedepends = nodejs
