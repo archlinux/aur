@@ -1,8 +1,8 @@
 # Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 
 pkgname=tbb-combo-native-agent
-pkgver=1.0.0.16
-pkgrel=2
+pkgver=1.0.0.18
+pkgrel=1
 pkgdesc='Taiwan Business Bank combo native agent (臺灣企銀二合一元件)'
 arch=(any)
 url='https://ebank.tbb.com.tw/'
@@ -11,7 +11,7 @@ depends=(gnutls pcsclite sh wine)
 makedepends=(p7zip gendesk perl-image-exiftool)
 source=("Install_TbbComboNativeAgentHost-$pkgver.exe"::"https://ebank.tbb.com.tw/nb3/COMPONENT/component_download?componentPath=win&trancode=ComponentDownload"
         "$pkgname")
-sha256sums=('2c8b0e8747aa36b115cfebbdfe9c3ed401003303fb3b8e87402b8b918f0460a1'
+sha256sums=('a366c73368996c05b9781c096154d1b367bb1cd36046c0b0ae550e2edd26686e'
             'd53b1fa92ef27d426a390a6d1b56a0096bdfc37a60bc9700e79c7d982796994c')
 
 prepare() {
