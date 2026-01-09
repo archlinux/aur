@@ -1,0 +1,20 @@
+pkgbase = zladxhd-installer-bin
+	pkgdesc = Automated installer for Zelda: Link's Awakening DX HD on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jslay88/zladxhd-installer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = steam: Required for Steam integration
+	optdepends = protontricks: Required for Wine prefix setup
+	optdepends = flatpak: Alternative protontricks installation method
+	provides = zladxhd-installer
+	conflicts = zladxhd-installer
+	source_x86_64 = zladxhd-installer-bin-0.1.0-x86_64.tar.gz::https://github.com/jslay88/zladxhd-installer/releases/download/v0.1.0/zladxhd-installer-linux-amd64.tar.gz
+	sha256sums_x86_64 = dd84f66d798fd67a64f8112280b5fa61be9eab82f83677a9a5f49c9cab14229f
+	source_aarch64 = zladxhd-installer-bin-0.1.0-aarch64.tar.gz::https://github.com/jslay88/zladxhd-installer/releases/download/v0.1.0/zladxhd-installer-linux-arm64.tar.gz
+	sha256sums_aarch64 = 575c5b8fd3d1e3341eadfb3ce4ec81afb74e27be427f53811a0851b6a1fefa09
+
+pkgname = zladxhd-installer-bin
