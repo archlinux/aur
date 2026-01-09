@@ -1,7 +1,7 @@
 pkgbase = wpimath
 	pkgdesc = WPILib's mathematics and controls library
-	pkgver = 2025.3.2
-	pkgrel = 2
+	pkgver = 2026.1.1
+	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = wpimath
 	depends = protobuf
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/wpilibsuite/allwpilib#tag=v2025.3.2
-	md5sums = fe401223cd4208f73bcfee35bcd14f10
+	source = git+https://github.com/wpilibsuite/allwpilib#tag=v2026.1.1
+	md5sums = 7d9c0364b77a82ce6acb4343690acbcc
 
 pkgname = wpimath
