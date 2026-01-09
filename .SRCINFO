@@ -1,0 +1,18 @@
+pkgbase = python-textual-plotext
+	pkgdesc = A Textual widget wrapper for the Plotext plotting library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Textualize/textual-plotext
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-plotext
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/t/textual-plotext/textual_plotext-1.0.1.tar.gz
+	sha256sums = 836f53a3316756609e194129a35c2875638e7958c261f541e0a794f7c98011be
+
+pkgname = python-textual-plotext
