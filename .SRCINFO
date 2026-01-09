@@ -1,0 +1,19 @@
+pkgbase = eshu-trace
+	pkgdesc = Binary search tool to find which package broke your Linux system
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/eshu-apps/eshu-trace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = timeshift: for Timeshift snapshot support
+	optdepends = snapper: for Snapper snapshot support
+	optdepends = btrfs-progs: for BTRFS snapshot support
+	optdepends = lvm2: for LVM snapshot support
+	source = eshu-trace-1.0.3.tar.gz::https://github.com/eshu-apps/eshu-trace/archive/8aa5407457f29e8f2cdce57296c7dae22e784ad3.tar.gz
+	sha256sums = f77ab171c174dc8b7a2503d7f8007e1f2071ada344d3c3fb588ab41bf73a4c0e
+
+pkgname = eshu-trace
