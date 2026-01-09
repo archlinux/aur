@@ -1,4 +1,4 @@
-# Maintainer: jslay88 <jslay@jslay.net>
+# Maintainer: jslay88
 pkgname=zladxhd-installer-git
 pkgver=r0.0000000
 pkgrel=1
