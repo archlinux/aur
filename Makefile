@@ -5,6 +5,7 @@ SHELOPTS=-euo pipefail
 
 .buildenvid: build-dev.Dockerfile
 	docker build \
+	  --pull \
 	  --network=host \
 	  -f build-dev.Dockerfile \
 	  -t archlinux-build-dev \
@@ -16,12 +17,13 @@ SHELOPTS=-euo pipefail
 BUILDENV=docker run $(BUILDENVOPTS) --rm -v $(PWD):/build -i $$(cat .buildenvid)
 
 check-upstream: BUILDENVOPTS:=-t
-check-upstream:
+check-upstream: .buildenvid
 	-$(BUILDENV) pkgctl version check
 
 update-to-upstream: BUILDENVOPTS:=-t
-update-to-upstream:
+update-to-upstream: .buildenvid
 	-$(BUILDENV) pkgctl version upgrade
+	$(MAKE) .SRCINFO
 
 
 update-checksums: PKGBUILD .buildenvid
@@ -43,7 +45,7 @@ build: PKGBUILD .buildenvid
 	makepkg --packagelist | xargs namcap
 	EOF
 
-test:
+test: .buildenvid
 	$(BUILDENV) <<EOF
 	makepkg --packagelist | xargs namcap
 	makepkg --noconfirm -i
