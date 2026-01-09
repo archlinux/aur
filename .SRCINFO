@@ -1,0 +1,15 @@
+pkgbase = turboshot
+	pkgdesc = A better screenshot tool for Wayland using grim and GTK
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JustSomeLazyFox/TurboShot
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = glibc
+	depends = gtkmm-4.0
+	depends = gtk4-layer-shell
+	source = turboshot::https://github.com/JustSomeLazyFox/TurboShot/releases/download/v1.0.0/turboshot
+	sha256sums = db2c1f2ab681168c7e155ad77d630854198054165cbfa5a9ab45d0d552c4c2fb
+
+pkgname = turboshot
