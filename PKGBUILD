@@ -16,5 +16,6 @@ package() {
     cd "${srcdir}/${pkgname}"
     install -d "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     cp -r . "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm -rf "${pkgdir}/usr/src/${_pkgname}-${pkgver}/.git"
 }
