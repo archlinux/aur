@@ -19,7 +19,6 @@ source=(
   'zigbee2mqtt.sysusers'
   'zigbee2mqtt.tmpfiles')
 backup=('etc/zigbee2mqtt/configuration.yaml')
-install='zigbee2mqtt.install'
 options=('!strip')
 
 pkgver() {
