@@ -1,7 +1,7 @@
 
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-openai-codex-auth
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="OpenAI ChatGPT OAuth Plugin for opencode"
 arch=('any')
@@ -21,7 +21,7 @@ latestver() {
 }
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10e46d8a672d6e0967988a8c77ecbfeebc37019b3d2fc821b57f115081d74d55')
+sha256sums=('0b079725a336cd2e85bd9bce89d406009ba0deda5b2100871faaa6632698d015')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
