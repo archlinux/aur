@@ -1,4 +1,4 @@
-# Maintainer: jslay88 <jslay@jslay.net>
+# Maintainer: jslay88
 pkgname=zladxhd-installer-bin
 pkgver=0.1.0
 pkgrel=1
