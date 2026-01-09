@@ -2,7 +2,7 @@
 pkgname=hyprsnipper
 pkgver=1.0.4
 pkgrel=1
-pkgdesc="A friendly snipping tool for Hyprland/Wayland (Qt/PySide6)"
+pkgdesc="A screen shot tool with behavior similar to the built in snipping tool in Windows. Designed for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JWalk9000/hyprsnipper"
 license=('GPL3')
