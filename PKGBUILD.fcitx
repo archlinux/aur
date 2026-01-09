@@ -81,9 +81,8 @@ pkgver() {
   # change pkgver is OK because we fixed commit
   # parse major.minor.buildid from version template, revision is fixed to 102 for Linux
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' src/data/version/mozc_version_template.bzl | tr -d ' ')
-  _mozc_commit_short=$(git log -1 --pretty=%h)
   _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$((REVISION+2))"
-  printf "%s.g%s" "${_bzr_ver}" "${_mozc_commit_short}"
+  printf "%s" "${_bzr_ver}"
 }
 
 prepare() {
