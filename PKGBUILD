@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='lenspect'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Lightweight security threat scanner intended to make malware detection more accessible and efficient'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dba8e37684b6008ed8ceb8a7509641b9b260695a471177ff7463ac8c4db62d97')
+sha256sums=('43509eb6964d1ced3f967a53adb60a90792163129afd9cb5d9a4dd5eb051e5f7')
 
 build() {
   cd "${pkgname}-${pkgver}"
