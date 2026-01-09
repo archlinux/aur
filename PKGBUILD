@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt
-pkgver=25.07
+pkgver=26.01
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplemented in Qt.'
 url='https://github.com/mpc-qt/mpc-qt'
@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake' 'git' 'qt6-tools')
 optdepends=('libva-intel-driver: backend for Intel cards'
             'udisks2: to detect available discs')
 source=("mpc-qt-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8103eb0eda77021a7c0d9708a4586676f7c33328705afda91da096a1b54a520a')
+sha256sums=('e9c3c258358d7221e5c246ec0cc4711a1a874bc650ecc7cad9a8021cbaaa419b')
 
 build() {
   cmake -B build -S "mpc-qt-${pkgver}" \
