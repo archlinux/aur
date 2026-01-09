@@ -1,0 +1,3 @@
+[emergency-alerts]
+source = "git"
+git = "https://github.com/leolost2605/emergency-alerts.git"

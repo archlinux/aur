@@ -1,0 +1,21 @@
+pkgbase = emergency-alerts
+	pkgdesc = A simple app that sends you emergency alerts about your locations
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/leolost2605/emergency-alerts
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = vala
+	depends = granite7
+	depends = gtk4
+	depends = json-glib
+	depends = libadwaita
+	depends = libgee
+	depends = libportal
+	depends = libshumate
+	depends = libsoup3
+	source = emergency-alerts-2.0.0.tar.gz::https://github.com/leolost2605/emergency-alerts/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 45fe052d1aed883665b916f354e10555138288d8aac9865c482e99740490db54
+
+pkgname = emergency-alerts
