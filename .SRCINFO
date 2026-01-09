@@ -1,0 +1,21 @@
+pkgbase = zladxhd-installer-git
+	pkgdesc = Automated installer for Zelda: Link's Awakening DX HD on Linux (git version)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/jslay88/zladxhd-installer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = steam: Required for Steam integration
+	optdepends = protontricks: Required for Wine prefix setup
+	optdepends = flatpak: Alternative protontricks installation method
+	provides = zladxhd-installer
+	conflicts = zladxhd-installer
+	conflicts = zladxhd-installer-bin
+	source = zladxhd-installer-git::git+https://github.com/jslay88/zladxhd-installer.git
+	sha256sums = SKIP
+
+pkgname = zladxhd-installer-git
