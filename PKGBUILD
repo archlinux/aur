@@ -4,7 +4,7 @@
 # Contributor: Bruce Zhang
 pkgname=picgo-electron
 _pkgname=PicGo
-pkgver=2.4.1
+pkgver=2.4.2
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -25,12 +25,13 @@ makedepends=(
     'git'
     'curl'
     'pnpm'
+    'jq'
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('16e719a569fd91e6ccfa7ffed8f105c76dac211d26f9378428929e9468ac950a'
+sha256sums=('0310632758841113b9c0f091df78247d27e7e8a34fbdedcc35cc0ca2371c7f95'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,8 +40,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${_pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${_pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
