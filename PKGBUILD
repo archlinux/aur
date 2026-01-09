@@ -4,7 +4,7 @@
 # Recommended package name on AUR: multicliprelay-bin
 
 pkgname=multicliprelay-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Wayland clipboard sync via TCP relay (prebuilt binaries)"
 arch=(x86_64)
@@ -27,7 +27,7 @@ conflicts=(
 )
 
 source=("${url}/releases/download/v${pkgver}/multicliprelay-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('3c4c197893e98fc7d5e76af4b5aa27a65165851b1b1809d62c0f39ab09c0f511')
+sha256sums=('7a6ba5b805f54537a42365d9f708918b9210f7c0bc9ee2d6ce53c5cb38b78d18')
 
 package() {
   local dir="multicliprelay-${pkgver}-x86_64-linux"
