@@ -1,7 +1,14 @@
-* 1.4
-** namcap: exfetch W: ELF file ('usr/bin/exfetch') lacks FULL RELRO, check LDFLAGS.
+* packaging notes
+** 1.4.1
+*** using upstream HARDENING=on build option to address FULL RELRO namcap complaint
+** 1.4
+*** namcap: exfetch W: ELF file ('usr/bin/exfetch') lacks FULL RELRO, check LDFLAGS.
 open issue for crystal lang: https://github.com/crystal-lang/crystal/issues/11046
 adressed in PR: https://codeberg.org/Izder456/exfetch/pulls/5
-** namcap: exfetch W: Unused shared library '/usr/lib/libm.so.6' by file ('usr/bin/exfetch')
+*** namcap: exfetch W: Unused shared library '/usr/lib/libm.so.6' by file ('usr/bin/exfetch')
 can be ignored, libm == math functions from libc, part of minimal basic dependencies of the crystal runtime
 https://crystal-lang.org/reference/1.17/guides/static_linking.html
+*** had to bump pkgrel after upstream fix on manpage location
+had also forgotten to update .SRCINFO
+* TODO add git commit hooks to ensure .SRCINFO is in sync with PKGBUILD
+* TODO add automated build & test
