@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Delaporte
-_pkgver=8.4.2
+_pkgver=8.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffd5897b3a8717d00964a3b349921ab5')
-b2sums=('cde1094b480f17992542516c760b1eb3e2103152691444704d0539af6d1f8946c1deeac2788c612a707c66bf18d6698f4d60c5dac197c09c6f88344383025d64')
+md5sums=('6f88c990ad50b63f1b88df093db07fcb')
+b2sums=('0f8e5016ffae3b0c2db177cab5006f1ee67df9c7b9d60eeb2d730e300c2347ff14e082d03c92fb4b7edaf468f6858ceea11ad75c739fd018f069fddda6bf12a6')
 
 build() {
   mkdir build
