@@ -1,4 +1,4 @@
-# Maintainer: Zhenxi <shawndouglasyt@gmail.com>
+# Maintainer: Zhenxi
 pkgname=doudou-bin
 pkgver=11.0.0
 pkgrel=1
