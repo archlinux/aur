@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('ab60415a6cda120fc87179fe62d7d182c154d8223b3f2a2b258f5aee4b7d97c7') # Update this with `sha256sum weeb-cli-1.0.0.tgz` after first npm publish
+sha256sums=('7bf81f637eca8a152442f41a0a5b2dfb466cdb889b19f6ace1a60e9b0786d897') # Update this with `sha256sum weeb-cli-1.0.0.tgz` after first npm publish
 
 package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
