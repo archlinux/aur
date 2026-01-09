@@ -1,6 +1,6 @@
 pkgbase = mupen64plus-video-parallel-highscore-git
 	pkgdesc = ParaLLEl-RDP with mupen64plus-highscore modifications
-	pkgver = r67.9197cd8
+	pkgver = r73.a07fcaa
 	pkgrel = 1
 	url = https://github.com/highscore-emu/parallel-rdp
 	arch = x86_64

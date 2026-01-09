@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mupen64plus-video-parallel-highscore-git
-pkgver=r67.9197cd8
+pkgver=r73.a07fcaa
 pkgrel=1
 pkgdesc="ParaLLEl-RDP with mupen64plus-highscore modifications"
 arch=('x86_64')
@@ -29,4 +29,7 @@ build() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  cd parallel-rdp
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
