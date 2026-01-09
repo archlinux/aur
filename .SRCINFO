@@ -1,0 +1,15 @@
+pkgbase = sessionrunner
+	pkgdesc = A small session runner an systemd user slice replacement for embedded systems
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/NeroReflex/sessionrunner
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	optdepends = gamescope: for game session
+	optdepends = plasma: for KDE session
+	optdepends = weston: for Weston session
+	source = https://github.com/NeroReflex/sessionrunner/archive/refs/tags/0.9.6.tar.gz
+	sha256sums = dec523c3b9dbb95cf74075a7f1a2e7f10aeacbb4fbc388a4f484d7c1b6e51f75
+
+pkgname = sessionrunner
