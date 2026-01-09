@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NhacCuaTui
+Exec=nhaccuatui
+Terminal=false
+Type=Application
+Icon=/opt/nhaccuatui/nhaccuatui-desktop.png
+StartupWMClass=NhacCuaTui
+Comment=NhacCuaTui nghe nhạc mọi lúc mọi nơi
+Categories=AudioVideo;

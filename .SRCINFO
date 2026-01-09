@@ -1,0 +1,20 @@
+pkgbase = nhaccuatui
+	pkgdesc = Nghe nhạc mọi lúc mọi nơi
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://apps.nhaccuatui.com
+	arch = x86_64
+	license = LicenseRef-Nhaccuatui
+	depends = glibc
+	depends = zlib-ng-compat
+	options = !strip
+	source = http://apps.nhaccuatui.com/download/NhacCuaTui-2.0.0.AppImage
+	source = LICENSE.electron.txt
+	source = nhaccuatui-desktop.png
+	source = nhaccuatui.desktop
+	sha256sums = 0f48960234fbf094090eb54e8574803575bf71c6eeb9dbf5ab2cbdb95b26a666
+	sha256sums = 34f6f27c26d1bb8682ebb42ae401f558228fd608455bd7c6561d5fd500b7d05b
+	sha256sums = 345769d914aa7e09db98538a9278f7fa871de8fea2bec04c2e4f0ac4a032aa70
+	sha256sums = 44166dd75c7e5b46193eb830cf97b72829e8b7c2dd58c79befcbadf95c532b72
+
+pkgname = nhaccuatui
