@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.66.1.r0.g251023be
+pkgver=3.67.2.r23.g2601083
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -27,6 +27,7 @@ makedepends=(
     'gcc'
     'curl'
     'yarn'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -47,8 +48,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -98,6 +100,7 @@ package() {
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname%-git}"
     ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-git}/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${pkgdir}/usr/lib/${pkgname%-git}/ffprobe"
     install -Dm644 "${srcdir}/${pkgname//-/.}/icon-build/app-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-git}.appdata.xml"
