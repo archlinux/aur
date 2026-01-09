@@ -1,6 +1,6 @@
 pkgbase = tqftpserv
 	pkgdesc = Trivial File Transfer Protocol server over AF_QIPCRTR
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/linux-msm/tqftpserv
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = tqftpserv
 	license = BSD-3-Clause
 	makedepends = meson
 	conflicts = tqftpserv
-	source = tqftpserv-1.1.tar.gz::https://github.com/linux-msm/tqftpserv/archive/refs/tags/v1.1.tar.gz
-	sha256sums = a7ebf03aa19e5deabcb499836ccf7378a0cd65452232f87406790a5509421527
+	source = tqftpserv-1.1.1.tar.gz::https://github.com/linux-msm/tqftpserv/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 7232cfdc76de42e20d4efa45a0206ab95513fb31c63148452d44c745a462789d
 
 pkgname = tqftpserv
