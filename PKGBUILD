@@ -1,6 +1,6 @@
 #Maintainer: theblazehen <com.theblazehen@post - reverse>
 pkgname=fractalart-git
-pkgver=r5.30330b1
+pkgver=r24.e741eb2
 pkgrel=1
 pkgdesc="Fractal art desktop wallpaper generator"
 arch=('any')

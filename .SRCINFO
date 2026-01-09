@@ -1,6 +1,6 @@
 pkgbase = fractalart-git
 	pkgdesc = Fractal art desktop wallpaper generator
-	pkgver = r5.30330b1
+	pkgver = r24.e741eb2
 	pkgrel = 1
 	url = https://github.com/TomSmeets/FractalArt
 	install = fractalart-git.install
