@@ -2,7 +2,7 @@
 
 pkgname=brrtfetch-git
 _pkgname=brrtfetch
-pkgver=r21.ebe8634
+pkgver=r22.95233c2
 pkgrel=1
 pkgdesc="Render animated GIFs as ASCII in your fetcher of choice. Written in go."
 arch=(x86_64 aarch64)

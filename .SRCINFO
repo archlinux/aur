@@ -1,6 +1,6 @@
 pkgbase = brrtfetch-git
 	pkgdesc = Render animated GIFs as ASCII in your fetcher of choice. Written in go.
-	pkgver = r21.ebe8634
+	pkgver = r22.95233c2
 	pkgrel = 1
 	url = https://github.com/ferrebarrat/brrtfetch
 	arch = x86_64
