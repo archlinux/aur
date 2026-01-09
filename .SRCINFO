@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 143.0.7499.169
+	pkgver = 143.0.7499.192
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -40,11 +40,11 @@ pkgbase = ungoogled-chromium-bin
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=143.0.7499.169
-	provides = chromedriver=143.0.7499.169
+	provides = chromium=143.0.7499.192
+	provides = chromedriver=143.0.7499.192
 	conflicts = chromium
 	conflicts = chromedriver
-	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/143.0.7499.169-1/ungoogled-chromium-143.0.7499.169-1-x86_64.pkg.tar.zst
-	sha256sums = ddd11bb39d2019d67d1eb9cd6da0d931556c2170a937273b75683b8de3be06d7
+	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/143.0.7499.192-1/ungoogled-chromium-143.0.7499.192-1-x86_64.pkg.tar.zst
+	sha256sums = b27633ca7c4d5204c115da8099fc6f5f20527e2b62955fbd15402f7565816aa8
 
 pkgname = ungoogled-chromium-bin
