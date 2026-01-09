@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=genesis-plus-gx-highscore-git
-pkgver=r1711.e36edee
+pkgver=r1794.c3be6c4
 pkgrel=1
 pkgdesc="Highscore port of Genesis Plus GX"
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('LicenseRef-custom')
 depends=(
   'flac'
   'libhighscore-git'
+  'libchdr'
   'libvorbis'
   'zlib'
 )
