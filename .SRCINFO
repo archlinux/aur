@@ -1,6 +1,6 @@
 pkgbase = logos-bin
 	pkgdesc = A Modern, Lightweight Code Editor
-	pkgver = 2026.2.1
+	pkgver = 2026.3.0
 	pkgrel = 1
 	url = https://github.com/Zixiao-System/logos
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = logos-bin
 	conflicts = logos
 	conflicts = logos-git
 	options = !strip
-	source_x86_64 = logos-bin-2026.2.1.AppImage::https://github.com/Zixiao-System/logos/releases/download/v2026.2.1/Logos-2026.2.1.AppImage
-	sha256sums_x86_64 = 39def097ef94ac1e2ac79ea8fee23e231cc3ba396cc16b0b59433e979e3fbe48
+	source_x86_64 = logos-bin-2026.3.0.AppImage::https://github.com/Zixiao-System/logos/releases/download/v2026.3.0/Logos-2026.3.0.AppImage
+	sha256sums_x86_64 = 2de7c2705feed24d8524c99ef0382c2382445d380695b8192525ee151a5a3a95
 
 pkgname = logos-bin
