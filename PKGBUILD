@@ -6,7 +6,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="Fuzzy find and kill processes from your terminal"
 
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,7 +24,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('e11bbde2f475393cf9ff7bb8620095fcd828fdf7649789a2f7bd00a5c9871128')
+sha256sums=('82cada835372931d90d437e888565ba64dd212d471d81e77d4f8ac2d73be2d2f')
 
 
 build() {
