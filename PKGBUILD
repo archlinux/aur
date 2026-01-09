@@ -3,7 +3,7 @@
 
 pkgname=openchrom-bin
 pkgver=1.6.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
