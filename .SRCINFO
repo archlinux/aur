@@ -1,7 +1,7 @@
 pkgbase = splayer
 	pkgdesc = Splayer | A minimalist music player
 	pkgver = 3.0.0_beta.8
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
 	arch = aarch64
@@ -22,8 +22,7 @@ pkgbase = splayer
 	optdepends = libappindicator: for system tray icon support
 	provides = splayer=3.0.0_beta.8
 	conflicts = splayer
-	noextract = splayer-3.0.0-beta.8-x64.pacman
-	noextract = splayer-3.0.0-beta.8-aarch64.pacman
+	noextract = splayer-3.0.0_beta.8-x64.pacman
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.8.2025/splayer-3.0.0-beta.8-x64.pacman

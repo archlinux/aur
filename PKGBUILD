@@ -1,15 +1,16 @@
 # Maintainer: miaoermua <miaoermua@gmail.com>
 # Updated for native pacman package support with multi-arch(arm64/amd64)
 
+_pkgname=splayer
 pkgname=splayer
 pkgver=3.0.0_beta.8
-pkgrel=3
+pkgrel=2
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imsyy/SPlayer"
 license=("AGPL-3.0-only")
-provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=(
   'c-ares'
   'ffmpeg'
