@@ -7,7 +7,7 @@ _electron='electron37'
 _electronpackage='electron37'
 pkgverorg='7.1.1'
 pkgver='7.1.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (binary release).'
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://$_pkgname.org"
@@ -60,6 +60,9 @@ EOF
 	# Extract the asar file from the downloaded package to the system
 	install -d -m755 "${pkgdir}/opt/$pkgname/"
 	asar e "opt/${_pkgname^}/resources/app.asar" "${pkgdir}/opt/$pkgname/"
+
+	# Fix the path of the application in the auto-start package to make it launch Ferdium instead of bare Electron which it autodetects
+	sed -i -e "s#path = arg.path;#path = '/usr/bin/${_pkgname}';#" "${pkgdir}/opt/$pkgname/node_modules/auto-launch/dist/index.js"
 
 	# Install the .desktop file from the downloaded package
 	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
