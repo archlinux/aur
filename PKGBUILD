@@ -1,6 +1,6 @@
 # Maintainer: dmnmsc
 pkgname=pywebsearch-git
-pkgver=r90.e434d8e
+pkgver=r104.b0fa591
 pkgrel=1
 pkgdesc="Customizable web search tool with aliases, !bangs and GUI (PyQt6)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-pyqt6' 'python-pybrowsers')
 provides=('pywebsearch')
 conflicts=('pywebsearch')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer')
 source=("$pkgname::git+https://github.com/dmnmsc/pywebsearch.git")
 sha256sums=('SKIP')
 
