@@ -1,6 +1,7 @@
 src
 pkg
 *.tar.zst
+*.log
 qbittorrent-net-client
 Transmission.API.RPC
 Cleanuparr
