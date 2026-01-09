@@ -1,23 +1,24 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-ipython-autotime
-pkgver=0.3.1
+_pkgname=${pkgname#python-}
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Time everything in IPython"
 arch=('any')
 url="https://github.com/cpcloud/ipython-autotime"
 license=('APACHE')
 depends=('ipython')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/26/01/ef9279afb4da30be2cccbf5525886753e35732f89ad60da1a298676dd5a1/ipython-autotime-$pkgver.tar.gz")
-sha512sums=('d4fb849689a2dfadfdd56097a109c7a1f84721eca346aa8b71ede0df1df1241a5c320b304521cdb707af568730fe79dec2f9a8c32b2ec97403499ac66e1cff98')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('1062df3b105257f515a97ff830f8603130abfba5e6dbef05aabaef521d5b2a5db8923e7418a686bf3f7e4ca8526d63f10780994486534166d9b089cf6ef5f6ab')
 
 build() {
   cd ipython-autotime-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ipython-autotime-$pkgver
-  python setup.py install --root "$pkgdir" --prefix=/usr --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

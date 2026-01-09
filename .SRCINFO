@@ -1,13 +1,17 @@
 pkgbase = python-ipython-autotime
 	pkgdesc = Time everything in IPython
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/cpcloud/ipython-autotime
 	arch = any
 	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = ipython
-	source = https://files.pythonhosted.org/packages/26/01/ef9279afb4da30be2cccbf5525886753e35732f89ad60da1a298676dd5a1/ipython-autotime-0.3.1.tar.gz
-	sha512sums = d4fb849689a2dfadfdd56097a109c7a1f84721eca346aa8b71ede0df1df1241a5c320b304521cdb707af568730fe79dec2f9a8c32b2ec97403499ac66e1cff98
+	source = https://files.pythonhosted.org/packages/source/i/ipython-autotime/ipython-autotime-0.3.2.tar.gz
+	sha512sums = 1062df3b105257f515a97ff830f8603130abfba5e6dbef05aabaef521d5b2a5db8923e7418a686bf3f7e4ca8526d63f10780994486534166d9b089cf6ef5f6ab
 
 pkgname = python-ipython-autotime
