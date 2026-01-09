@@ -1,7 +1,7 @@
-# Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
+# Maintainer: Agam Singh <agam@agamsingh.me>
 pkgname=globalplatformpro
-pkgver=20.08.12
-pkgrel=5
+pkgver=25.10.20
+pkgrel=1
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
