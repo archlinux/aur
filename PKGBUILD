@@ -4,7 +4,7 @@ pkgname=multicliprelay-git
 _pkgbase=multicliprelay
 pkgver=0
 pkgrel=1
-pkgdesc="Wayland clipboard sync via TCP relay (git build)"
+pkgdesc="Real-time Wayland/xclip clipboard sync via TCP relay (text/images/files/dirs; git build)"
 arch=(x86_64)
 url="https://github.com/KasumiNova/MultiClipRelay"
 license=(GPL3)
@@ -13,7 +13,7 @@ depends=(wl-clipboard gtk4)
 makedepends=(git rust cargo)
 
 optdepends=(
-  'xclip: X11 clipboard integration (x11-sync)'
+  'xclip: optional X11 clipboard helper (compat/testing)'
 )
 
 provides=(multicliprelay)
