@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"
-license=('custom:Adobe')
+license=('LicenseRef-proprietary')
 depends=(
     'wine'
     'wine-mono'
