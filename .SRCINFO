@@ -1,6 +1,6 @@
 pkgbase = multicliprelay-bin
 	pkgdesc = Wayland clipboard sync via TCP relay (prebuilt binaries)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/KasumiNova/MultiClipRelay
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = multicliprelay-bin
 	conflicts = multicliprelay-git
 	conflicts = multicliprelay-debug
 	conflicts = multicliprelay-git-debug
-	source = https://github.com/KasumiNova/MultiClipRelay/releases/download/v0.1.6/multicliprelay-0.1.6-x86_64-linux.tar.gz
-	sha256sums = 8311108c771502a6e873ba7ceea2f69ec65d36cbf2e8b5719afb8d28a4530798
+	source = https://github.com/KasumiNova/MultiClipRelay/releases/download/v0.1.7/multicliprelay-0.1.7-x86_64-linux.tar.gz
+	sha256sums = 3c4c197893e98fc7d5e76af4b5aa27a65165851b1b1809d62c0f39ab09c0f511
 
 pkgname = multicliprelay-bin

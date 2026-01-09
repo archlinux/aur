@@ -4,7 +4,7 @@
 # Recommended package name on AUR: multicliprelay-bin
 
 pkgname=multicliprelay-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Wayland clipboard sync via TCP relay (prebuilt binaries)"
 arch=(x86_64)
@@ -27,7 +27,7 @@ conflicts=(
 )
 
 source=("${url}/releases/download/v${pkgver}/multicliprelay-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('8311108c771502a6e873ba7ceea2f69ec65d36cbf2e8b5719afb8d28a4530798')
+sha256sums=('3c4c197893e98fc7d5e76af4b5aa27a65165851b1b1809d62c0f39ab09c0f511')
 
 package() {
   local dir="multicliprelay-${pkgver}-x86_64-linux"
@@ -48,6 +48,7 @@ package() {
   install -Dm644 "${dir}/packaging/common/systemd/multicliprelay-relay.service"    "${pkgdir}/usr/lib/systemd/user/multicliprelay-relay.service"
   install -Dm644 "${dir}/packaging/common/systemd/multicliprelay-wl-watch.service" "${pkgdir}/usr/lib/systemd/user/multicliprelay-wl-watch.service"
   install -Dm644 "${dir}/packaging/common/systemd/multicliprelay-wl-apply.service" "${pkgdir}/usr/lib/systemd/user/multicliprelay-wl-apply.service"
+  install -Dm644 "${dir}/packaging/common/systemd/multicliprelay-x11-sync.service" "${pkgdir}/usr/lib/systemd/user/multicliprelay-x11-sync.service"
 
   # Examples/docs
   install -Dm644 "${dir}/packaging/common/systemd/multicliprelay.env.example" "${pkgdir}/usr/share/doc/${pkgname}/multicliprelay.env.example"
