@@ -1,8 +1,8 @@
-# Maintainer: notscripter <grx8x0mfy@mozmail.com>
+# Maintainer: Mrinmoy <grx8x0mfy@mozmail.com>
 pkgname=tauno-serial-plotter-bin
 _pkgname=tauno-serial-plotter
-pkgver=1.19.4
-pkgrel=17
+pkgver=1.20.2
+pkgrel=1
 epoch=
 pkgdesc="Serial Plotter for Arduino and other embedded devices."
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ install=
 changelog=
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/taunoe/tauno-serial-plotter/archive/refs/tags/v${pkgver}.tar.gz)
 noextract=()
-sha256sums=(4ab6d3bcdbb7c84667409f304cfc9f6e0d5ef77b10b7bd78fce8fae07d459363)
+sha256sums=(ee125e94922a65f90c9405a2ec3463eba0f2a0666f8ed157495f0ab7651c9940)
 validpgpkeys=()
 
 prepare() {
