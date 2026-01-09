@@ -48,17 +48,17 @@ sha256sums_aarch64=('1c034dbdb0de3b0b96475095ca75fe676a577333f9f8cb7f849e9cde7e1
 _jvmdir="usr/lib/jvm/$pkgname"
 
 package() {
-    # Copy main files
+    # Install main files
     install -d "$pkgdir/$_jvmdir"
     cp -rT "$srcdir"/zulu*-linux_*/ "$pkgdir/$_jvmdir"
 
-    # Conf
+    # Install configuration files
     install -d "$pkgdir/etc/$pkgname"
     cp -rT "$pkgdir/$_jvmdir/conf" "$pkgdir/etc/$pkgname"
     rm -r "$pkgdir/$_jvmdir/conf"
     ln -s "/etc/$pkgname" "$pkgdir/$_jvmdir/conf"
 
-    # Legal
+    # Install legal files
     install -d "$pkgdir/usr/share/licenses/$pkgname"
     cp -rT "$pkgdir/$_jvmdir/legal" "$pkgdir/usr/share/licenses/$pkgname"
     rm -r "$pkgdir/$_jvmdir/legal"
