@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
 pkgname=nanomq-bin
-pkgver=0.24.7
+pkgver=0.24.8
 pkgrel=1
 pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
 url='https://nanomq.io'
@@ -20,10 +20,10 @@ source_aarch64=("${pkgver}-aarch64.rpm::https://github.com/nanomq/nanomq/release
 source_armel=("${pkgver}-armel.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armel.rpm")
 source_armv7h=("${pkgver}-armv7h.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armhf.rpm")
 sha512sums=('7b86f32e35697f0f955f3d562637c5e067ac9b6691c7b6957d9106836445ffb75690530d72c5a0613519daaff7459ffbc776b2b3210d2a727053b097c8d950ee')
-sha512sums_x86_64=('923ad446cc6964cdecdfb20f2e1338528d1dba8869d7a434561fd925412496fcdb1f3bb5f20a546d9f4bc37bc21475ebe6fca4e2b26103308f69168f20b837ff')
-sha512sums_aarch64=('ba4ddb82fd2c310edd926684bada240047b5c1d46434f7d95064112a265ef888a51db4112cad62c53780e5a5212b513e5c89fcb21929b7968c0db8017e78053f')
-sha512sums_armel=('9556c62f64be2ec3c33ef52b468a76d2fb66c87919b6bba04242902e55acb74d932e303db24a4cc393db92b8eaa020dc5504b9134317f8f899e791ea94f75d01')
-sha512sums_armv7h=('c6aa8d74a74cee3e1fd1fa4f4a210ddc830912c9d2fa12c3964c794549896810ed2713818816ecc62739ce992ac9b9728c347c3a5d03af168b982200c3be592c')
+sha512sums_x86_64=('7f329c60c3102370d673b1e130b71dada739b4896ccfde3b1c8f7ea5cf871fa02cfe8c26021f8dec0eb03d65f302735ca10cc511af83392697e50ed7ebc86cab')
+sha512sums_aarch64=('621f28add4a27b758b10d93cc8766aa82f851c279d53bdca657b50a2b1978f1415feaa5660f1f956616fc76294bcd35829b0d386fefed4229939c1f1152a2f69')
+sha512sums_armel=('04a070b560d316c7f87558ac7391f34c817eec8892929fdcb221b7817038d10a507fcfab5216f4b3a6111de4549833acf9407550550b633eb6ee93f0b18e73c5')
+sha512sums_armv7h=('a1eb01c3552c7d85f05ca70e184371b3e5f7c057433202ec67a8903bcf555d2d0f8ef065bb86730d0da93d42c52bf111945fee2b194fad14898b137a75bb8642')
 
 prepare() {
   rm -rf "${srcdir}/root"
