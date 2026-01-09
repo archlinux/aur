@@ -35,15 +35,12 @@ if [[ ! -f "$READER_EXE" ]]; then
     fi
 fi
 
-# Change to Reader directory (required for proper operation)
-READER_DIR=$(dirname "$READER_EXE")
-cd "$READER_DIR" || exit 1
-
-# Convert file arguments to Windows paths
+# Convert file arguments to Windows paths BEFORE changing directory
+# (otherwise relative paths won't be found)
 args=()
 for arg in "$@"; do
     if [[ -e "$arg" ]]; then
-        # Convert to absolute path first
+        # Convert to absolute path first (from current directory)
         abs_path=$(realpath "$arg")
         # Convert to Windows path
         win_path=$(wine winepath -w "$abs_path" 2>/dev/null)
@@ -52,6 +49,10 @@ for arg in "$@"; do
         args+=("$arg")
     fi
 done
+
+# Change to Reader directory (required for proper operation)
+READER_DIR=$(dirname "$READER_EXE")
+cd "$READER_DIR" || exit 1
 
 # Fix window type function (Wine sometimes sets wrong _NET_WM_WINDOW_TYPE)
 fix_window_type() {

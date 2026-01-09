@@ -24,6 +24,7 @@ echo ""
 # Create Wine prefix if it doesn't exist
 if [[ ! -d "$WINEPREFIX" ]]; then
     echo "[1/5] Creating Wine prefix..."
+    mkdir -p "$WINEPREFIX"
     wineboot --init
     # Wait for wineserver
     wineserver -w

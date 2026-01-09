@@ -41,8 +41,8 @@ source=(
     "acroread-dc.reg"
 )
 sha256sums=('SKIP'
-            'f575c26c1d0be77f61357ec3f8515a867130b0c764b48a4145c62920f77f6813'
-            'a301e591122a1b4a18c51e34a1367ec944b12629cbf02b887e9eb79df764774d'
+            'dd0eac95716b029d6732f8e1fc86c5bb120d8a547518ebdb4b3a36e4671a660f'
+            'b7ddd24309d14b96a099668ac71fea11850ebcedc45bee368e958e75332ea8df'
             '4c3defab70b10298b8c1f66f16a385878d62b2443320256bf3c089824884c20d'
             '6664b654c9ea47b6194ac69e0483b52ab7a2c774e58cc1314ae4216cc1fefc33')
 noextract=("AcroRdrDC${_pkgver_nodots}_${_lang}.exe")
