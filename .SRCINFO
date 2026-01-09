@@ -1,7 +1,7 @@
 pkgbase = niri-dinit-git
 	pkgdesc = Scrollable-tiling Wayland compositor, with dinit instead of systemd, from source.
 	pkgver = 25.11.r58.g10df9f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
 	arch = aarch64
