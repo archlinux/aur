@@ -3,7 +3,7 @@
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
 _debname="com.${_pkgname}_app.${_pkgname}"
-pkgver=3.0.7.r0.gd05a436
+pkgver=3.0.7.r7.g50ab944
 _nodeversion=21
 pkgrel=1
 pkgdesc="A cross-platform software for text translation.一个跨平台的划词翻译软件"
