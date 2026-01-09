@@ -16,8 +16,8 @@ provides=('zladxhd-installer')
 conflicts=('zladxhd-installer')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/jslay88/zladxhd-installer/releases/download/v${pkgver}/zladxhd-installer-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/jslay88/zladxhd-installer/releases/download/v${pkgver}/zladxhd-installer-linux-arm64.tar.gz")
-sha256sums_x86_64=('dd84f66d798fd67a64f8112280b5fa61be9eab82f83677a9a5f49c9cab14229f')
-sha256sums_aarch64=('575c5b8fd3d1e3341eadfb3ce4ec81afb74e27be427f53811a0851b6a1fefa09')
+sha256sums_x86_64=('192de41c42d1f48a186e2fe3ca2e3cd64bf20356f7c92a31a52157e1de295711')
+sha256sums_aarch64=('fc498706dd2678d1193c4f45f3a7cc5566451df8b1614bef59aae6ae7abbbacb')
 
 package() {
     cd "$srcdir"
