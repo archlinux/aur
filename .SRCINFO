@@ -1,6 +1,6 @@
 pkgbase = claude-session-export-bin
 	pkgdesc = Transform Claude Code sessions into shareable HTML documentation
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/robzolkos/claude-session-export
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = claude-session-export-bin
 	license = Apache-2.0
 	provides = claude-session-export
 	conflicts = claude-session-export
-	source_x86_64 = claude-session-export-bin-1.0.1-x86_64.tar.gz::https://github.com/robzolkos/claude-session-export/releases/download/v1.0.1/claude-session-export_1.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 425ddc5db1ba3baf539a8b3ab4371bb2c2c615a9aa7ab1e84b599f325d1e3af8
-	source_aarch64 = claude-session-export-bin-1.0.1-aarch64.tar.gz::https://github.com/robzolkos/claude-session-export/releases/download/v1.0.1/claude-session-export_1.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 100623a85f048410588b627e8732f2713b8592574bc8ecd2fe80fa389e7af595
+	source_x86_64 = claude-session-export-bin-1.1.0-x86_64.tar.gz::https://github.com/robzolkos/claude-session-export/releases/download/v1.1.0/claude-session-export_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ab58417f5d1b414a142a00a4224cde7269b2b1024cb95d1bf5a1ff71f9a913f5
+	source_aarch64 = claude-session-export-bin-1.1.0-aarch64.tar.gz::https://github.com/robzolkos/claude-session-export/releases/download/v1.1.0/claude-session-export_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 915be87001345811b13527c66110161ca71842b99bcd95a1765dd20220e80f35
 
 pkgname = claude-session-export-bin
