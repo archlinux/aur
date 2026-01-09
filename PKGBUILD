@@ -2,12 +2,12 @@
 pkgname=peel-git
 _pkgname=${pkgname%-*}
 pkgver=0.1.0r446.2659b44
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern C++ bindings for GObject-based libraries, including GTK and GStreamer"
 arch=('x86_64')
 url="https://gitlab.gnome.org/bugaevc/peel"
 license=('MIT')
-depends=('python')
+depends=('python' 'gobject-introspection')
 makedepends=('meson' 'git' 'ninja')
 provides=("peel=${pkgver}")
 source=("git+$url.git")
