@@ -1,5 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-backoff
 _name=${pkgname#python-}
 pkgver=2.2.1
