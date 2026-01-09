@@ -1,6 +1,6 @@
 pkgbase = devpi-common
 	pkgdesc = Utilities jointly used by devpi-server and devpi-client
-	pkgver = 4.0.4
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/devpi/devpi
 	changelog = CHANGELOG
@@ -14,10 +14,9 @@ pkgbase = devpi-common
 	makedepends = python-wheel
 	makedepends = python-setuptools-changelog-shortener
 	depends = python-lazy
-	depends = python-py
-	depends = python-requests
 	depends = python-packaging-legacy
-	source = https://files.pythonhosted.org/packages/source/d/devpi-common/devpi_common-4.0.4.tar.gz
-	sha256sums = 235a0a9a45c96e54c60ba6ba2f77d856cf90f1a69c1bee949887e9edc03a41cc
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-4.1.0.tar.gz
+	sha256sums = 58d7f761e3fe7fdfe449c4a6a9e2350d4ddfbeb66cb0f6d208025142943030d3
 
 pkgname = devpi-common
