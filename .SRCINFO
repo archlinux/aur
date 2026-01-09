@@ -37,7 +37,7 @@ pkgbase = niri-dinit-git
 	options = !debug
 	options = !lto
 	options = !strip
-	source = niri::git-lfs+https://github.com/YaLTeR/niri.git
+	source = niri::git-lfs+https://github.com/YaLTeR/niri.git#branch=main
 	b2sums = SKIP
 
 pkgname = niri-dinit-git
