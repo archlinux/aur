@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alicorn-git
 _pkgname='Alicorn Launcher'
-pkgver=3.0.3.r0.gcf2e857
-_electronversion=36
+pkgver=3.0.4.r3.g4efa1a6
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="A high performance custom Minecraft launcher.(Use system-wide electron)"
@@ -22,6 +22,7 @@ makedepends=(
     'git'
     'curl'
     'bun'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -41,8 +42,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -50,7 +57,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -76,11 +82,14 @@ prepare() {
         } >> bunfig.toml
         bun --config "${srcdir}/${pkgname//-/.}/bunfig.toml"
     fi
+    _ensure_local_nvm
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\"win32\", \"darwin\", //g" pack.ts
     NODE_ENV=development    bun install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     bun run dist
 }
