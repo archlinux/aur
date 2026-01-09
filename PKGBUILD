@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   'usbmuxd'
   'swift-bin'
+  'zip'
 )
 makedepends=(
   'git'
