@@ -2,7 +2,7 @@
 
 pkgname=mihomo-tui-git
 _pkgname=mihomo-tui
-pkgver=0.2.2.r0.g6efa76f
+pkgver=0.2.2.r3.gd1a5a3d
 pkgrel=1
 pkgdesc="A TUI for Mihomo (Clash.Meta) - git version"
 arch=('x86_64' 'aarch64')
@@ -25,6 +25,7 @@ prepare() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export RUSTFLAGS="${RUSTFLAGS} --cfg tokio_unstable"
+  export CARGO_HOME="$srcdir/.cargo-home"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -34,7 +35,8 @@ build() {
   export RUSTFLAGS="${RUSTFLAGS} --cfg tokio_unstable"
   export CARGO_PROFILE_RELEASE_DEBUG=true
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  export CARGO_HOME="$srcdir/.cargo-home"
+  cargo build --frozen --offline --release --all-features
 }
 
 

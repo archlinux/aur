@@ -1,6 +1,6 @@
 pkgbase = mihomo-tui-git
 	pkgdesc = A TUI for Mihomo (Clash.Meta) - git version
-	pkgver = 0.2.2.r0.g6efa76f
+	pkgver = 0.2.2.r3.gd1a5a3d
 	pkgrel = 1
 	url = https://github.com/potoo0/mihomo-tui
 	arch = x86_64
