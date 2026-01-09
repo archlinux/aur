@@ -1,6 +1,6 @@
 pkgbase = python-hdf5plugin
 	pkgdesc = Set of compression filters for h5py
-	pkgver = 5.0.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/silx-kit/hdf5plugin
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-hdf5plugin
 	makedepends = python-py-cpuinfo
 	depends = python
 	depends = python-h5py
-	source = https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-5.0.0.tar.gz
-	sha256sums = 3bcc5c4f523953fe020a220c7b1b307c62066e39fdbdcd904fa2268db80e9dbb
+	source = https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-6.0.0.tar.gz
+	sha256sums = 847ed9e96b451367a110f0ba64a3b260d38d64bbf3f25751858d3b56e094cfe0
 
 pkgname = python-hdf5plugin
