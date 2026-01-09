@@ -1,6 +1,6 @@
 # Maintainer: Matthew Phillips <matthew@matthewphillips.info>
 pkgname=chop
-pkgver=0.5.23
+pkgver=0.5.24
 pkgrel=1
 pkgdesc="Unix-philosophy CLI todo manager"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mphillips/chop/archive/v$pkgver.tar.gz")
-sha256sums=('72e50ea955fcd10f50930140a4215f37b847fdf8838b4dba55f7dc903500f64a')
+sha256sums=('9e98d645f6480efbf07bc5d9c0ba240fb4fcde8f05dd0673999f32281ba737e7')
 
 build() {
     cd "$pkgname"

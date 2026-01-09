@@ -1,6 +1,6 @@
 pkgbase = chop
 	pkgdesc = Unix-philosophy CLI todo manager
-	pkgver = 0.5.23
+	pkgver = 0.5.24
 	pkgrel = 1
 	url = https://codeberg.org/mphillips/chop
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = chop
 	license = BSD-3-Clause
 	makedepends = scdoc
 	depends = glibc
-	source = chop-0.5.23.tar.gz::https://codeberg.org/mphillips/chop/archive/v0.5.23.tar.gz
-	sha256sums = 72e50ea955fcd10f50930140a4215f37b847fdf8838b4dba55f7dc903500f64a
+	source = chop-0.5.24.tar.gz::https://codeberg.org/mphillips/chop/archive/v0.5.24.tar.gz
+	sha256sums = 9e98d645f6480efbf07bc5d9c0ba240fb4fcde8f05dd0673999f32281ba737e7
 
 pkgname = chop
