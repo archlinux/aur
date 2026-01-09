@@ -3,9 +3,9 @@ Description=zigbee2mqtt
 After=network.target
 
 [Service]
-ExecStart=node index.js
+ExecStart=/usr/bin/node index.js
 Environment=ZIGBEE2MQTT_DATA=/var/lib/zigbee2mqtt
-WorkingDirectory=/usr/lib/node_modules/zigbee2mqtt
+WorkingDirectory=/usr/share/webapps/zigbee2mqtt
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
