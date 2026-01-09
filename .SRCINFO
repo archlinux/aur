@@ -1,7 +1,7 @@
 pkgbase = tango-accesscontrol
 	pkgdesc = combined from svn/TangoAccessControl and svn/TangoAccessControl/AbstractClasses
-	pkgver = 2.21
-	pkgrel = 2
+	pkgver = 2.22
+	pkgrel = 1
 	url = https://gitlab.com/tango-controls/TangoAccessControl
 	arch = x86_64
 	arch = armv7h
@@ -13,9 +13,11 @@ pkgbase = tango-accesscontrol
 	depends = mariadb-libs
 	depends = tango-cpp
 	depends = tango-database
-	source = https://gitlab.com/tango-controls/TangoAccessControl/-/releases/TangoAccessControl-Release-2.21/downloads/TangoAccessControl-with-submodules-TangoAccessControl-Release-2.21.tar.gz
+	source = https://gitlab.com/tango-controls/TangoAccessControl/-/releases/TangoAccessControl-Release-2.22/downloads/TangoAccessControl-with-submodules-TangoAccessControl-Release-2.22.tar.gz
 	source = tango-access.service
-	sha256sums = f318d04ef9d35652b9d74ef0267039f58b7062bef61a42f2c39cd072ec365d0a
+	source = fortify.patch
+	sha256sums = ced23d8f264d52590e607bb35ac3a49efe1f59f45b9b7dfbf6b9340e1eca3653
 	sha256sums = 883e32ba0309313d0929a329d11b2843c7dee018aa71d4c316779f0888fa4c48
+	sha256sums = 688a9008bc13c0ac29222cb992c6d7336162fdbc42b01790c3eb712e258876b1
 
 pkgname = tango-accesscontrol
