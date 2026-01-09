@@ -2,7 +2,7 @@
 pkgname=simple-music
 _pkgname=SimpleMusic
 _zhsname='轻音乐'
-pkgver=0.6.9
+pkgver=0.6.10
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('728fc6292eae8995ba0336fd6d4283b98127d432f766545c10bd16a24f1e09d5'
+sha256sums=('1ef702bcc86c24363428eaf6b0965b662a2c2d7adcfc74d44a08781ae0e0431b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
