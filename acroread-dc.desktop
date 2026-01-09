@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Adobe Acrobat Reader DC
+Comment=View and print PDF documents
+GenericName=PDF Viewer
+Exec=acroread-dc %f
+Icon=acroread-dc
+Terminal=false
+Type=Application
+Categories=Office;Viewer;
+MimeType=application/pdf;application/vnd.fdf;application/vnd.adobe.xfdf;application/vnd.adobe.pdx;application/vnd.adobe.xdp+xml;
+StartupNotify=true
+StartupWMClass=AcroRd32.exe

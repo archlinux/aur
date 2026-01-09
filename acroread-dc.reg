@@ -1,0 +1,111 @@
+Windows Registry Editor Version 5.00
+
+; Disable Adobe Reader protected mode (causes issues in Wine)
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\Privileged]
+"bProtectedMode"=dword:00000000
+
+; Disable EULA popup and mark as launched
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\AdobeViewer]
+"EULA"=dword:00000001
+"Launched"=dword:00000001
+
+; Suppress upsell/free trial popups (FeatureLockDown policies)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown]
+"bAcroSuppressUpsell"=dword:00000001
+"bToggleFTE"=dword:00000001
+"bUsageMeasurement"=dword:00000000
+"bBrowser"=dword:00000000
+
+; Also set in Wow6432Node for 32-bit app compatibility
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown]
+"bAcroSuppressUpsell"=dword:00000001
+"bToggleFTE"=dword:00000001
+"bUsageMeasurement"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cServices]
+"bToggleAdobeDocumentServices"=dword:00000001
+"bToggleAdobeSign"=dword:00000001
+"bTogglePrefsSync"=dword:00000001
+"bToggleWebConnectors"=dword:00000001
+"bUpdater"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cSharePoint]
+"bDisableSharePointFeatures"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cCloud]
+"bAdobeSendPluginToggle"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cWelcomeScreen]
+"bShowWelcomeScreen"=dword:00000000
+
+; Suppress in-product messages (IPM) - helps remove promotional content
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cIPM]
+"bShowMsgAtLaunch"=dword:00000000
+"bDontShowMsgWhenViewingDoc"=dword:00000001
+"bAllowUserToChangeMsgPrefs"=dword:00000000
+
+; Disable "do not take PDF ownership" popup
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\AVAlert\cCheckbox]
+"iAppDoNotTakePDFOwnershipAtLaunchWin10"=dword:00000001
+
+; Disable welcome screen and first-time tutorial
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\FTEDialog]
+"bShowFTE"=dword:00000000
+
+; Disable in-app tutorials/coach marks
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\Annots\cAnnot]
+"bShowCoachMarks"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\IPM]
+"bShowMsgAtLaunch"=dword:00000000
+"bDontShowMsgWhenViewingDoc"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\TrustManager]
+"bEnableAlwaysOutlookAttachmentProtectedView"=dword:00000000
+
+; Disable updates, "What's New" dialog, and first launch behaviors
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\AVGeneral]
+"bCheckForUpdatesAtStartup"=dword:00000000
+"bToggleCustomization"=dword:00000000
+"bisFirstLaunch"=dword:00000000
+"bShowWhatsNewDialog"=dword:00000000
+"bExpandRHPByDefault"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\HomeWelcomeFirstMile]
+"bFirstMileCompleted"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\OOBE]
+"bEnableOOBE"=dword:00000000
+
+; Disable cloud features
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\SendMail]
+"iOption"=dword:00000000
+
+; Disable "Reopen closed PDFs" popup
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\RememberedViews]
+"iRememberView"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\SessionManagement]
+"bEnableSessionRestore"=dword:00000000
+"bPromptOnSessionRestore"=dword:00000000
+
+; Performance tweaks
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\Originals]
+"bDisplayedSplash"=dword:00000001
+"bUsageMeasured"=dword:00000001
+
+; Disable Adobe cloud/sync services (prevents CollabSync crashes)
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\Collab]
+"bAutoSync"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\WebMail\UseWebMailCaps]
+"tGmail"=dword:00000000
+"tOutlookWeb"=dword:00000000
+"tYahooMail"=dword:00000000
+
+; Disable Wine debugger (prevents winedbg popups)
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug]
+"Debugger"=""
+
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug]
+"Debugger"=""

@@ -1,0 +1,29 @@
+post_install() {
+    echo ""
+    echo "Run 'acroread-dc' to complete the installation."
+    echo ""
+    echo "The first launch will set up Wine and install Adobe Reader."
+    echo "This may take several minutes."
+    echo ""
+    echo "To change language, edit PKGBUILD (_lang variable):"
+    echo "  en_US, fr_FR, de_DE, es_ES, ja_JP, it_IT,"
+    echo "  nl_NL, pt_BR, fi_FI, da_DK, nb_NO, sv_SE"
+    echo ""
+
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "Wine prefix at ~/.local/share/acroread-dc-wine not removed."
+    echo "To remove: rm -rf ~/.local/share/acroread-dc-wine"
+    echo ""
+
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
