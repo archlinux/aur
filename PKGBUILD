@@ -2,7 +2,7 @@
 pkgname=kyverno-cli
 _pkgname=kyverno
 # renovate: datasource=github-releases depName=kyverno/kyverno
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=2
 pkgdesc='Cloud Native Policy Management'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ makedepends=('go')
 provides=("kubectl-${_pkgname}")
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('3fd8b47ffb02b0f4d9403ea1f31e51caefce2c0743aa085a98ec92ae99faa9ee6cbd8425bce0826aa7861bb618ba2586465dea270a87daa23d595004d9e23888')
-b2sums=('efee96797e7f57adbc8f3e290f6b1bc042154d502012960d8d56f114ea44eba24710b777fd902f428ff78e069bddf8b166903b52742735dfcfcdd277cd3a42df')
+sha512sums=('92d7e3f5f14fc4d3373b1ae8baa12ee91e3ba4e9426fc22b1162ab4e28ba1bc8cbe437e83977e11b26737ea8fa82e855d1d36f431f52bd970a7f3d6a280f3a99')
+b2sums=('8ae6e00266cb5187172fb45d5634f7eca6464fb7eac1dc070888c056551409952714934393859266599c8c01312d707c9aed90638338503d3f2a755d9939093d')
 
 build() {
   local _x _commit
