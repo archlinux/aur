@@ -1,34 +1,35 @@
-# Maintainer:  r1cebank <rbnk@elica.io>
+# Maintainer:  alchitry <support@alchitry.com>
+# Contributor:  r1cebank <rbnk@elica.io>
 
 pkgname=alchitry-labs-bin
 _pkgname=alchitry-labs
-pkgver=1.2.7
-pkgrel=7
+pkgver=2.0.48
+pkgrel=1
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs'
 arch=(x86_64)
 license=('custom: commercial')
-url='https://alchitry.com/pages/alchitry-labs'
+url='https://alchitry.com/alchitry-labs'
 provides=(alchitry-labs)
 conflicts=(alchitry-labs)
-depends=('java-environment>=8')
-source=("$pkgname-$pkgver.tar.gz::https://cdn.alchitry.com/labs/alchitry-labs-$pkgver-linux.tgz" "${_pkgname}.desktop" "alchitry-loader.desktop")
-sha256sums=("2d03956bdf432101f20fafa8fef11e882f33a71e110a4253c3f3f91a1f66653d"
-            "bd74a04852e5b7aa5b4764602900cadcccf7be22579a3e8090ee04a8f723c51b"
-            "65f5408ef23cad8e214a6950071edc0b99027fcbdaa726a3b3428393c570a804")
+depends=('gmp' 'alsa-lib' 'glibc' 'libxi' 'libxtst')
+
+# Prevent Arch from stripping binaries, which corrupts the bundled Tclkit
+options=('!strip')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2/releases/download/$pkgver/alchitry-labs-$pkgver-linux-amd64.tar.gz")
+sha256sums=("15e7c4ad9590f9ca8c45bf745cc23917499e46d0f285d4a86b13838f9463aebf")
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+    local _appdir="/usr/lib/alchitry/${_pkgname}"
+    mkdir -p "${pkgdir}/${_appdir}"
+    mkdir -p "${pkgdir}/usr/share"
+    mkdir -p "${pkgdir}/usr/bin"
 
-  install -dm755 "${pkgdir}/usr/share/"{applications,icons}
-  install -d "${pkgdir}/usr/bin"
-  # Copy the whole SDK
-  cp -a . "${pkgdir}/usr/share/${_pkgname}"
+    cd "$srcdir/$_pkgname-$pkgver"
 
-  install -m644 "${pkgdir}/usr/share/${_pkgname}/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-  install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -m644 "${srcdir}/alchitry-loader.desktop" "${pkgdir}/usr/share/applications/alchitry-loader.desktop"
-  chmod +x "${pkgdir}/usr/share/${_pkgname}/alchitry-labs"
-  chmod +x "${pkgdir}/usr/share/${_pkgname}/alchitry-loader"
-  ln -s "/usr/share/${_pkgname}/alchitry-labs" "${pkgdir}"/usr/bin/alchitry-labs
-  ln -s "/usr/share/${_pkgname}/alchitry-loader" "${pkgdir}"/usr/bin/alchitry-loader
+    cp -a --no-preserve=ownership share/* "${pkgdir}/usr/share/"
+    cp -a --no-preserve=ownership bin lib "${pkgdir}/${_appdir}/"
+
+    ln -s "${_appdir}/bin/alchitry" "${pkgdir}/usr/bin/alchitry"
+    ln -s "${_appdir}/bin/alchitry-labs" "${pkgdir}/usr/bin/alchitry-labs"
 }
