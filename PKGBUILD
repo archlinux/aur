@@ -2,7 +2,7 @@
 
 pkgname=opencode-pty
 _pkgname=opencode-pty
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="OpenCode plugin for interactive PTY management - run background processes, send input, read output with regex filtering"
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha256sums=('db34c27e7d3ece5b9dbd0c801e74843c44ce8a242b34047d24ebae77546386c8')
+sha256sums=('056d309bd4130082295dbbcbc2e273017ce3fdfb8a58003b57a140a79f2b89ab')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_pkgname/latest" | jq -r '.version'
