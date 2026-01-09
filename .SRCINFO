@@ -1,6 +1,6 @@
 pkgbase = melonds-highscore-git
 	pkgdesc = Highscore port of MelonDS
-	pkgver = r2662.f0015c1
+	pkgver = r2792.14b3276
 	pkgrel = 1
 	url = https://github.com/highscore-emu/melonDS
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = melonds-highscore-git
 	depends = libhighscore-git
 	provides = melonds-highscore
 	conflicts = melonds-highscore
-	options = !lto
 	source = git+https://github.com/highscore-emu/melonDS.git
 	sha256sums = SKIP
 

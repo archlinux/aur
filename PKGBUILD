@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=melonds-highscore-git
-pkgver=r2662.f0015c1
+pkgver=r2792.14b3276
 pkgrel=1
 pkgdesc="Highscore port of MelonDS"
 arch=('x86_64')
@@ -13,7 +13,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
 source=('git+https://github.com/highscore-emu/melonDS.git')
 sha256sums=('SKIP')
 
@@ -23,13 +22,19 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S melonDS \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DBUILD_QT_SDL='OFF' \
-    -DENABLE_GDBSTUB='OFF' \
-    -DBUILD_HIGHSCORE='ON' \
-    -Wno-dev
+  local cmake_options=(
+    -B build
+    -S melonDS
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_INSTALL_LIBDIR='/usr/lib'
+    -D BUILD_QT_SDL='OFF'
+    -D ENABLE_GDBSTUB='OFF'
+    -D BUILD_HIGHSCORE='ON'
+    -D ENABLE_JIT='ON'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
