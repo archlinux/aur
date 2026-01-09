@@ -1,0 +1,12 @@
+post_install() {
+    dkms add hp-wmi/1.0.0
+    dkms install hp-wmi/1.0.0
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    dkms remove hp-wmi/1.0.0 --all
+}

@@ -1,0 +1,16 @@
+pkgbase = hp-omen-gaming-wmi-dkms
+	pkgdesc = HP WMI driver for OMEN Gaming laptops, based on the hp-wmi driver in the linux kernel and code from https://github.com/ranisalt/hp-omen-linux-module, adds functionality for board 8E35 that uses nvidia cards that have a hybrid profile similar to Victus laptops and updates keyboard backlight code and thus unlocks the default TGP limit
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	depends = dkms
+	depends = linux-headers
+	source = hp-wmi.c
+	source = Makefile
+	source = dkms.conf
+	sha256sums = 698bc594f2d73a79b4bf9293885a68e668b2b556e72996a7e3b20fd3aab3e211
+	sha256sums = 9b9e71d6d7ddbd1fa2c2d02dbe7521e93098f8e16569f6f9aba1e62afe4aa297
+	sha256sums = b16a030893d665ed3aa638352e272bd99de54fcf04ffda02083040e811d0c81b
+
+pkgname = hp-omen-gaming-wmi-dkms
