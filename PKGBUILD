@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=libhighscore-git
-pkgver=r112.0b5a794
+pkgver=r157.6920d96
 pkgrel=1
 pkgdesc="A shared library for Highscore cores"
 arch=('x86_64')
@@ -28,6 +28,10 @@ pkgver() {
 build() {
   arch-meson "${pkgname%-git}" build
   meson compile -C build
+}
+
+check() {
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
