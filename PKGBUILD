@@ -1,6 +1,6 @@
 # Maintainer: Zixiao System <hwllochen@qq.com>
 pkgname=logos-bin
-pkgver=2026.3.1
+pkgver=2026.4.0
 pkgrel=1
 pkgdesc="A Modern, Lightweight Code Editor"
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=(
 )
 provides=('logos')
 conflicts=('logos' 'logos-git')
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Zixiao-System/logos/releases/download/v${pkgver}/Logos-2026.3.1.AppImage")
-sha256sums_x86_64=('534701b3e615166448369a7909ba6914cece872c88e1d1480b5064cfc4b46806')
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Zixiao-System/logos/releases/download/v${pkgver}/Logos-2026.4.0.AppImage")
+sha256sums_x86_64=('06ee9207c3970dbdbca1c2ee0397352e97e5564404068e4ef89247db36d83823')
 options=('!strip')
 
 prepare() {
