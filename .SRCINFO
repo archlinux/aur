@@ -5,7 +5,6 @@ pkgbase = repath-studio-bin
 	url = https://github.com/re-path/studio
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = fuse2
 	depends = electron39
 	provides = repath-studio=0.4.12
 	conflicts = repath-studio
