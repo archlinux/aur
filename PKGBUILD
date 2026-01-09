@@ -7,24 +7,36 @@ arch=('any')
 url="https://github.com/promptfoo/promptfoo"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 optdepends=(
     'python: for Python providers'
     'ollama: for local Ollama models'
 )
-provides=('promptfoo' 'pf')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('5bf85fba31a0ef4b3363a14d549af2ea9dc5e63c4631e6398e49cdf2dea57e10')
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
+        "${srcdir}/${pkgname}-${pkgver}.tgz"
 
-    # Fix permissions
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/cli/issues/1103 for details.
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-    # Remove package.json references to $pkgdir
-    find "${pkgdir}" -name 'package.json' -exec sed -i "s|${pkgdir}||g" {} +
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
+
+    # Remove references to pkgdir
+    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+    # Remove references to srcdir
+    local tmppackage="$(mktemp)"
+    local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
 
     # Install license
     install -Dm644 "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE" \
