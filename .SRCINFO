@@ -1,6 +1,6 @@
 pkgbase = pttr-bin
 	pkgdesc = pttr is command line software that allows you to quickly run various transformation operations on the string.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/abhimanyu003/pttr
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = pttr-bin
 	provides = pttr
 	arch = aarch64
 	source_aarch64 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_arm64.tar.gz
-	sha256sums_aarch64 = cd2a283dad0d3235845a931f04bc49863b79da9779218a97f4d06240fa0f2a90
+	sha256sums_aarch64 = fa50059190549934b9ae0ef9e50826c6074d5cc614d38a1cad9266076d77d4ad
 	arch = i686
 	source_i686 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_i386.tar.gz
-	sha256sums_i686 = 7ff567fc88a0e3cd3794122c5e0754e9b633b73c8adf401da62a624e28260871
+	sha256sums_i686 = 9d3508c0f595455a988bb11aac5497ec39f68aa11b0ea36d619f5b720ceb0005
 	arch = x86_64
 	source_x86_64 = https://github.com/abhimanyu003/pttr/releases/download/v${pkgver}/pttr_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = aaf191fecf85a7b5cfe932793006d5a1b0da66a5e509b08b369ce2101f6c4a55
+	sha256sums_x86_64 = 7444f796ed242771a52012d416c71b59a2363f5a6136d7671a1bbfec13732231
 	
 pkgname = pttr-bin
