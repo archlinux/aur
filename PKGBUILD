@@ -5,7 +5,7 @@ _pkgname=presto
 pkgname=${_pkgname}-bin
 pkgdesc="Presto is a dependency manager for PHP and drop-in-replacement for Composer"
 
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
-sha256sums=('a18277567f028ea14636a15b024b8a187d8e90aef7f19466ec03913e10a25a2b'
+sha256sums=('fc776d17dc4517972c9be767e1ec355c324867bc92bfa9b49a9403ad3770a7e6'
             '73496093fa9eb666ddd2b81bde20166ff90a4e68c61f0c7d64c67b2d9cc4022d')
-sha256sums_x86_64=('80072f4e91a9881bcf2076c670d60c2bdd010e17b122133fbc4a5eaa995b2665')
-sha256sums_aarch64=('985a4ab5b5d10f6bd07353c24bdb170c03586f4b8f84ef7bd16c676db4970832')
+sha256sums_x86_64=('b6b116665e1ad5df403713e8b586d7eeda30ce86451f07d3d4b84f7412e5bc32')
+sha256sums_aarch64=('265b43462d4048c2408095d1bb59ec3dda2009299879ba0bb6694882786f3ee5')
 
 
 package() {
