@@ -3,3 +3,5 @@
 !PKGBUILD
 !.SRCINFO
 !config
+!0001-*.patch
+!0002-*.patch
