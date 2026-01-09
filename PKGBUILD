@@ -3,7 +3,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=r2063.ce5b5b5
+pkgver=r2753.d17ce65
 pkgrel=1
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
@@ -11,25 +11,31 @@ url="https://gitlab.gnome.org/World/highscore"
 license=('GPL-3.0-or-later')
 depends=(
   'feedbackd'
+  'glycin-gtk4'
+  'gtk4'
   'hicolor-icon-theme'
   'hidapi'
+  'json-glib'
   'libadwaita'
   'libarchive'
   'libepoxy'
   'libgee'
   'libhighscore-git'
-  'libmanette'
+  'libmanette-1.so'
   'libmirage'
   'libpulse'
   'librsvg'
   'sdl2'
   'sqlite'
+  'vulkan-icd-loader'
 )
 makedepends=(
   'blueprint-compiler'
   'git'
+  'itstool'
   'meson'
   'vala'
+  'vulkan-headers'
 )
 optdepends=(
   'blastem-highscore-git: BlastEm core'
