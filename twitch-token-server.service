@@ -1,0 +1,15 @@
+[Unit]
+Description=Twitch Token Server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/twitch-token-server.conf
+ExecStart=/usr/bin/node /opt/twitch-token-server/token-server.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
