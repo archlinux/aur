@@ -1,7 +1,7 @@
 pkgname='alsa-scarlett-gui-git'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.5.1.6.gd731
-pkgrel=2
+pkgver=0.5.1.13.g292b
+pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
