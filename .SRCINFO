@@ -1,0 +1,18 @@
+pkgbase = pixel-fx-companion-app
+	pkgdesc = Receives Game ID from Pixel FX devices and publishes Discord activity status with artwork
+	pkgver = 1.9.24
+	pkgrel = 1
+	url = https://firmware.pixelfx.co/companion-app/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	depends = xdg-utils
+	source = https://firmware.pixelfx.co/companion-app/linux/Pixel%20FX%20Companion%20App-1.9.24-amd64.deb
+	sha256sums = aca986e3170abcf27a29059f02623dc0810d161fdbcc231963f684e6d27f3daa
+
+pkgname = pixel-fx-companion-app
