@@ -39,7 +39,7 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
 provides=("niri=${pkgver}")
 conflicts=("niri" "niri-git" "niri-dinit")
 options=(!debug !lto !strip)
-source=("niri::git-lfs+$url.git")
+source=("niri::git-lfs+$url.git#branch=main")
 b2sums=('SKIP')
 
 pkgver() {
