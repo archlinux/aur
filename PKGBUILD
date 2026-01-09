@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.2.2'
+_upstreamver='0.3.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='mvw'
@@ -26,7 +26,7 @@ depends=('python' 'python-rich-pixels' 'python-typer' 'python-rich' 'python-plat
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e3f437c29196646fb80447d52827fe936100d2c1bbf66ef45e5fac4c0b7e9f7a')
+sha256sums=('fa67a6876796154adfc35ac0837aae06e9e988ffbd3d075a0965db0a1e950117')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
