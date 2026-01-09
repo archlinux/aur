@@ -1,7 +1,7 @@
 pkgbase = pomofocus-bin
 	pkgdesc = Pomo - Focus & Productivity Companion for Arch Linux
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pomofocus.online
 	arch = x86_64
 	license = ISC
@@ -9,7 +9,7 @@ pkgbase = pomofocus-bin
 	depends = libxss
 	depends = nss
 	depends = libdbusmenu-gtk3
-	depends = libasound2
+	depends = alsa-lib
 	provides = pomofocus
 	conflicts = pomofocus
 	source = https://pomofocus.online/PomoFocus-1.0.1.AppImage
