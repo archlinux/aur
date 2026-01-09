@@ -1,12 +1,12 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification-git
-pkgver=r32.a4d54c7
+pkgver=r42.114a1ca
 pkgrel=1
 pkgdesc="Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log."
 arch=('any')
 url="https://gitlab.com/Zesko/btrfs-desktop-notification.git"
 license=('GPL3')
-depends=('libnotify' 'systemd')
+depends=('libnotify' 'systemd' 'bc')
 optdepends=('dunst')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -16,13 +16,13 @@ source=('git+https://gitlab.com/Zesko/btrfs-desktop-notification.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -dm 755 "usr/share/doc/${pkgname%-git}/"
-  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
-  cp -r usr etc "$pkgdir"
+	cd "$srcdir/${pkgname%-git}"
+	install -dm 755 "usr/share/doc/${pkgname%-git}/"
+	cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
+	cp -r usr etc "$pkgdir"
 }
