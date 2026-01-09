@@ -1,0 +1,16 @@
+pkgbase = peel-git
+	pkgdesc = Modern C++ bindings for GObject-based libraries, including GTK and GStreamer
+	pkgver = 0.1.0r446.2659b44
+	pkgrel = 1
+	url = https://gitlab.gnome.org/bugaevc/peel
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = ninja
+	depends = python
+	provides = peel=0.1.0r446.2659b44
+	source = git+https://gitlab.gnome.org/bugaevc/peel.git
+	sha256sums = SKIP
+
+pkgname = peel-git
