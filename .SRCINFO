@@ -1,14 +1,17 @@
 pkgbase = ruby-multi_xml
 	pkgdesc = Provides swappable XML backends utilizing LibXML, Nokogiri, Ox, or REXML.
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
-	url = https://rubygems.org/gems/multi_xml
+	url = https://github.com/sferik/multi_xml
 	arch = any
 	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rdoc
+	checkdepends = ruby-rubocop
+	makedepends = git
 	depends = ruby
-	depends = ruby-bundler
-	noextract = multi_xml-0.7.1.gem
-	source = https://rubygems.org/downloads/multi_xml-0.7.1.gem
-	sha256sums = 4fce100c68af588ff91b8ba90a0bb3f0466f06c909f21a32f4962059140ba61b
+	source = multi_xml-0.8.1::git+https://github.com/sferik/multi_xml#tag=v0.8.1
+	sha256sums = 2b5061a1119cbd4243bd1745bf3a3072a825c0e08e4e1d8622a33981589553f5
 
 pkgname = ruby-multi_xml
