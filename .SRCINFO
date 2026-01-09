@@ -1,0 +1,17 @@
+pkgbase = focusnoise-cli-git
+	pkgdesc = Focus Noise Player CLI - Ambient sounds for deep focus
+	pkgver = 1.0.0.r1.g0f2126d
+	pkgrel = 1
+	url = https://github.com/SyreeseOfficial/FocusNoiseCLI
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	depends = python-rich
+	provides = focusnoise-cli
+	conflicts = focusnoise-cli
+	source = git+https://github.com/SyreeseOfficial/FocusNoiseCLI.git
+	sha256sums = SKIP
+
+pkgname = focusnoise-cli-git
