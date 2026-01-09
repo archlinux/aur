@@ -1,0 +1,14 @@
+pkgbase = xadi
+	pkgdesc = CoreADI wrapper based on libprovision
+	pkgver = 0.0.0.6
+	pkgrel = 1
+	url = https://github.com/xtool-org/xadi
+	arch = x86_64
+	license = LGPL
+	makedepends = dub
+	makedepends = ldc
+	makedepends = git
+	source = git+https://github.com/xtool-org/xadi.git#commit=61c02708c9cb046100f500878863fd2122b0d7e3
+	b2sums = d4d08cbf53edd4f74ce577a0f33c524db85a5d9edb9e2bf7daeee53cbeb0822d14fcc3a175f670f7359dbd62010a0404f00fa14e346f8a71381f58eb02f5e597
+
+pkgname = xadi
