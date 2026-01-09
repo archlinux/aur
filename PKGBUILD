@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
@@ -12,12 +12,12 @@ provides=("zig-waybar-contrib=$pkgver")
 conflicts=('zig-waybar-contrib')
 depends=('fakeroot')
 source=(
-  "zig-waybar-contrib.zip::${url}/actions/runs/2233373/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu"
+  "zig-waybar-contrib.zip::${url}/actions/runs/2278625/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu"
   "config.waybar.jsonc::${url}/raw/branch/0.16-dev/config.waybar.jsonc"
   "LICENSE::${url}/raw/branch/0.16-dev/LICENSE"
 )
 md5sums=(
-  '9eccd5ee5c3c72bd21e5bda2cdf78000' 
+  '85a354c28f6bfdc9d7f0a9e5df1a4cc7' 
   '282a9591456c5cdeeb3a966756d27acd'
   'e82d9f97e08dad7b968fbbd80c7e67ee'
 )
