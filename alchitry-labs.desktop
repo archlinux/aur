@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Alchitry Labs
+GenericName=FGPA Development
+Comment=Alchitry Labs - The Easiest Way to Program FPGAs
+Exec=alchitry-labs
+Terminal=false
+Type=Application
+Icon=alchitry-labs
+Categories=Development;
+StartupWMClass=alchitry-labs
