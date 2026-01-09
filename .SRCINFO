@@ -10,9 +10,9 @@ pkgbase = vibe-kanban-bin
 	provides = vibe-kanban
 	conflicts = vibe-kanban
 	options = !strip
-	source = https://npm-cdn.vibekanban.com/binaries/v0.0.143-20251229180119/linux-x64/vibe-kanban.zip
+	source = https://npm-cdn.vibekanban.com/binaries/v0.0.147-20260109144551/linux-x64/vibe-kanban.zip
 	source = vibe-kanban.service
-	sha256sums = f841e2210216608ef0078296babe4d78f69e1810412ea9a89f5df957128d5569
+	sha256sums = be190285ea14f2b540d65b787fe6f965770f34577ece142738c0c151536ef7d3
 	sha256sums = 48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f
 
 pkgname = vibe-kanban-bin
