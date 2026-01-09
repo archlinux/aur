@@ -1,12 +1,12 @@
-
-# Maintainer: Rooki <aur at rooki dot xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Rooki <aur at rooki dot xyz>
 # Contributor: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=feluda
-pkgver=1.10.3
-pkgrel=4
-_commit=4b55730
+pkgver=1.11.0
+pkgrel=1
+_commit=5a2ec66
 pkgdesc='Detect license usage restrictions in your project'
 arch=('x86_64' 'aarch64')
 url="https://github.com/anistark/$pkgname"
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('1e02ac671f0ba4ab7e28a0c1bac0a6e5e1f4a5258cd20a80f57bdab74667504e')
+sha256sums=('b79b46af68f0365b2d677fee85d861ec181f36ed7989e22bd3bba9720fe11dc5')
 validpgpkeys=('40B91E0A4E89F8434EA16C9E9864F6B815BC2B00') # Kumar Aniruhda
 options=('!lto')
 
