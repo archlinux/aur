@@ -1,1 +1,7 @@
-.envrc
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+pkg/
+src/
+Mimic-Node/
+mimic-node/
