@@ -1,6 +1,6 @@
 pkgbase = pomo95-git
 	pkgdesc = Another Pomodoro application
-	pkgver = r2.fc77269
+	pkgver = r6.b7a47f9
 	pkgrel = 1
 	url = https://codeberg.org/trougnouf/pomo95
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = pomo95-git
 	depends = wayland
 	depends = libnotify
 	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
 	provides = pomo95
 	conflicts = pomo95
 	source = git+https://codeberg.org/trougnouf/pomo95.git
