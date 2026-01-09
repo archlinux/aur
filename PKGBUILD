@@ -2,7 +2,7 @@
 # Maintainer: Cristhian Flores <cristhian.flo0312@gmail.com>
 
 pkgname='vid-dl-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='CLI tool to download youtube videos in different formats'
 url='https://github.com/cristhianflo/vid-dl'
@@ -13,10 +13,10 @@ conflicts=('vid-dl')
 depends=('yt-dlp' 'ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cristhianflo/vid-dl/releases/download/v${pkgver}/vid-dl_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b57fb59e01e74da172dfb8603e54afc795e8d2375f7ad063a43971d59a7a1c94')
+sha256sums_aarch64=('9fa1270f687386b5df984b2a76a73ca208d7c1c3963b580ead9ad12834eb3671')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cristhianflo/vid-dl/releases/download/v${pkgver}/vid-dl_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('38619b83529c521a1ea84a5f8f7b2f3c713194fc70cefd39d99a2b888ed476c5')
+sha256sums_x86_64=('68725ee78be9adb8c16af262937342d54a923bdee66478d88497cdf72cc1736e')
 
 package() {
   # bin
