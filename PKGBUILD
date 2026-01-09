@@ -2,16 +2,17 @@
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
 pkgver=0.19.54
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
 url="https://unmined.net/"
-depends=()
+depends=('fontconfig' 'gcc-libs' 'glibc')
 makedepends=('zstd')
-license=('custom')
+license=('LicenseRef-unmined')
+# Upstream bundle fails to launch if stripped.
 options=('!strip' '!debug')
 source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/")
-sha256sums=('b0f3bf0fe9614058c0f94b9e6890c53672bfc560d8bd07e0dacd264e84523a8f')
+sha256sums=('93cb584f2f9bb0ce2c19f6af4a462935bb4fcd6e3784c381d3e898347d539f3f')
 
 latestver() {
     curl -fsSL "https://unmined.net/downloads/" | \
