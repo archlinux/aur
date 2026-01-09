@@ -1,6 +1,6 @@
 pkgbase = bitwarden-fuzzy
 	pkgdesc = An unoffical fuzzy finder for bitwarden.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://gitlab.com/TobbeBob123/bitwarden-fuzzy/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = bitwarden-fuzzy
 	provides = bitwarden-fuzzy
 	conflicts = bitwarden_fuzzy
 	replaces = bitwarden_fuzzy
-	source = https://gitlab.com/TobbeBob123/bitwarden-fuzzy/-/archive/1.2.2/bitwarden-fuzzy-1.2.2.tar.gz
+	source = https://gitlab.com/TobbeBob123/bitwarden-fuzzy/-/archive/1.2.3/bitwarden-fuzzy-1.2.3.tar.gz
 	sha256sums = c33eb0a7d5f09852e8ab403580aa87533af1eb4135e28c5ad7f28a32431e8e12
 
 pkgname = bitwarden-fuzzy
