@@ -1,6 +1,6 @@
 # Maintainer: Brice <b@bnema.dev>
 pkgname=turtlectl-git
-pkgver=0.1.0.r7.g2ad820a
+pkgver=0.2.0.r4.g6f4c7c0
 pkgrel=1
 pkgdesc='A Go CLI tool to manage and run Turtle WoW on Linux (X11/Wayland)'
 arch=('x86_64')
