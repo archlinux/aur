@@ -3,7 +3,7 @@
 pkgname=fortran-fpm-bin
 _name=fpm
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='A Fortran package manager and build system'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('git')
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=("${pkgname%-bin}")
 conflicts=("${_name}" "${pkgname%-bin}")
 replaces=()
 backup=()
