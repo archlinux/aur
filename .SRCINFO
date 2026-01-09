@@ -1,0 +1,15 @@
+pkgbase = eshu-shapeshifter
+	pkgdesc = Transform your Linux distro without reinstalling - migrate between distributions seamlessly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://eshu-apps.com
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = sqlite
+	source = eshu-shapeshifter-0.1.0.tar.gz::https://github.com/eshu-apps/eshu-shapeshifter/archive/v0.1.0.tar.gz
+	sha256sums = 68a327c92b2762d2e62bd156a9d0981e17517d65f8ffa7b45f843eb8472358c5
+
+pkgname = eshu-shapeshifter
