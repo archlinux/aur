@@ -2,7 +2,7 @@
 
 _pkgname=immuarch
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r152.f2603c6
+pkgver=0.0.1.r156.94ccd0e
 pkgrel=1
 pkgdesc="Immutable Archlinux setup with transactional & atomic updates"
 url="https://framagit.org/Brumaire/immuarch"
@@ -18,7 +18,9 @@ depends=(
   bash
   grep
   sed
+  mkinitcpio
 )
+
 optdepends=(
   'gzip: for backup utility'
   'openssh: for backup utility'
