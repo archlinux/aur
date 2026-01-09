@@ -1,13 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=picodrive-highscore-git
-pkgver=r2132.4955d9a
+pkgver=r2166.ef6e75d
 pkgrel=1
 pkgdesc="Highscore port of PicoDrive"
 arch=('x86_64')
 url="https://github.com/highscore-emu/picodrive"
 license=('LicenseRef-custom')
 depends=(
+  'libchdr-git'
   'libhighscore-git'
+  'libvorbis'
   'zlib'
 )
 makedepends=(
