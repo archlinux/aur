@@ -1,13 +1,14 @@
 pkgbase = passcualito
 	pkgdesc = Simple Command-Line Password Manager for Linux
-	pkgver = 0.1.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/javiorfo/passcualito
 	arch = x86_64
 	license = MIT
-	depends = rust
-	depends = cargo
-	source = passcualito-0.1.1.tar.gz::https://github.com/javiorfo/passcualito/archive/refs/tags/0.1.1.tar.gz
-	sha512sums = f789cfcfbce809ac99627ce44bba0d9b7c52c737083ab259e63cbde2a24dfba23d140553a9a4691eedc4493b037d49e0ec123891af2cade4dd77a56eef01c79c
+	makedepends = go
+	makedepends = git
+	conflicts = passcualito
+	source = passcualito::git+https://github.com/javiorfo/passcualito.git#tag=v0.1.0
+	sha512sums = f18ccb0da6b8ab0c0b2393da9a44acf5d8b88e38f1d94e6a17dde7c6040facc94dcf0c868051220f0ac9fc94ef0ee2679d04b272f8d8ac3d14eb56e56c4a495a
 
 pkgname = passcualito

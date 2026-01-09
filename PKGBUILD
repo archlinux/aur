@@ -1,23 +1,37 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=passcualito
-pkgbin=passc
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
+pkgbin=passc
 pkgdesc="Simple Command-Line Password Manager for Linux"
 arch=('x86_64')
 url="https://github.com/javiorfo/passcualito"
 license=('MIT')
-depends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('f789cfcfbce809ac99627ce44bba0d9b7c52c737083ab259e63cbde2a24dfba23d140553a9a4691eedc4493b037d49e0ec123891af2cade4dd77a56eef01c79c')
+makedepends=('go' 'git')
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+sha512sums=('f18ccb0da6b8ab0c0b2393da9a44acf5d8b88e38f1d94e6a17dde7c6040facc94dcf0c868051220f0ac9fc94ef0ee2679d04b272f8d8ac3d14eb56e56c4a495a')
+conflicts=("${pkgname}")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+    cd "$srcdir/$pkgname"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\"" \
+        -mod=readonly \
+        -modcacherw \
+        -o "bin/$pkgbin" .
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm 755 "target/release/$pkgbin" "$pkgdir/usr/bin/$pkgbin"
+    cd "$srcdir/$pkgname"
+    install -Dm755 "bin/$pkgbin" "$pkgdir/usr/bin/passc"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
