@@ -1,0 +1,23 @@
+pkgbase = xorg-discord-rpc-git
+	pkgdesc = Discord Rich Presence client for Xorg (git version)
+	pkgver = r63.15f8fa9
+	pkgrel = 1
+	url = https://github.com/thelinuxpirate/xorg-discord-rpc
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LicenseRef-Discord-Game-SDK
+	makedepends = cmake
+	makedepends = git
+	makedepends = wget
+	makedepends = unzip
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = libx11
+	provides = xorg-discord-rpc
+	conflicts = xorg-discord-rpc
+	source = git+https://github.com/thelinuxpirate/xorg-discord-rpc.git
+	source = https://dl-game-sdk.discordapp.net/2.5.6/discord_game_sdk.zip
+	sha256sums = SKIP
+	sha256sums = 426eb5fa70647d884f461c63825b63668349efb4bc68a16e70bc4a24e119b92e
+
+pkgname = xorg-discord-rpc-git
