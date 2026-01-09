@@ -1,7 +1,7 @@
 # Maintainer: matthias.brandt@elpro.com
 
 pkgname=asyncapi-cli-bin
-pkgver=2.16.10
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="AsyncAPI CLI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.asyncapi.com/tools/cli"
 license=('Apache-2.0')
 depends=('nodejs')
 source=("https://github.com/asyncapi/cli/releases/download/v${pkgver}/asyncapi.deb")
-sha256sums=('d1dae47ca0667e3e16d7c7b34c1e22e4c352674a633fb728747b468bb1baaeec')
+sha256sums=('5e54628633c441354fcf7aabb26476565411c59e3555c4fc8ce35bfb24e9d7bd')
 
 package() {
 	tar xf data.tar*
