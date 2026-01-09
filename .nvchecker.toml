@@ -1,0 +1,3 @@
+[hledger-tui]
+source = "pypi"
+pypi = "hledger-tui"
