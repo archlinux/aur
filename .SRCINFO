@@ -1,0 +1,16 @@
+pkgbase = python-types-waitress
+	pkgdesc = Typing stubs for waitress
+	pkgver = 3.0.1.20250801
+	pkgrel = 1
+	url = https://github.com/python/typeshed
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types_waitress/types_waitress-3.0.1.20250801.tar.gz
+	b2sums = e344feb22f236956060b9cf46a192c1748273245bd55528488ab569b2e24b0d1abcedc9268d746a2f07deb0b892921d5af9a11efca395268914e1047d93c59a1
+
+pkgname = python-types-waitress
