@@ -4,7 +4,7 @@
 
 pkgname=bilibili-tui-bin
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal user interface (TUI) client for Bilibili"
 url="https://github.com/MareDevi/bilibili-tui"
 license=("MIT")
@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("bilibili-tui")
 conflicts=("bilibili-tui")
 depends=("mpv" "yt-dlp")
-source=("${url}/releases/download/v${pkgver}/bilibili-tui-x86_64-unknown-linux-gnu.tar.xz")
+source=("${pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/bilibili-tui-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums=('SKIP')
 
 package() {
