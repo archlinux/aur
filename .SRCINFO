@@ -1,34 +1,30 @@
 pkgbase = keepassxc-qt6
-	pkgdesc = Cross-platform community-driven port of Keepass password manager, with Qt6 patch
-	pkgver = 2.7.10
+	pkgdesc = Cross-platform community-driven port of Keepass password manager (Qt6 fork)
+	pkgver = 2.8.0qt6.r17.81e1e89
 	pkgrel = 1
 	url = https://keepassxc.org/
 	arch = x86_64
 	license = GPL-2.0-only OR GPL-3.0-only OR LGPL-2.1-only
 	makedepends = asciidoctor
 	makedepends = cmake
+	makedepends = git
 	makedepends = qt6-tools
 	depends = argon2
 	depends = botan
 	depends = hicolor-icon-theme
 	depends = libxtst
+	depends = libusb
 	depends = minizip
 	depends = pcsclite
 	depends = qrencode
 	depends = qt6-svg
-	depends = libusb
+	depends = qt6-5compat
 	optdepends = xclip: keepassxc-cli clipboard support under X server
 	optdepends = wl-clipboard: keepassxc-cli clipboard support under Wayland
 	provides = org.freedesktop.secrets
-	provides = keepassxc=2.7.10
+	provides = keepassxc=2.8.0qt6.r17.81e1e89
 	conflicts = keepassxc
-	source = https://github.com/keepassxreboot/keepassxc/releases/download/2.7.10/keepassxc-2.7.10-src.tar.xz
-	source = https://github.com/orsonteodoro/oiledmachine-overlay/raw/f4916d8/app-admin/keepassxc/files/keepassxc-2.7.10-entryattributesmodel.patch
-	source = https://github.com/orsonteodoro/oiledmachine-overlay/raw/f4916d8/app-admin/keepassxc/files/keepassxc-2.7.10-fix-getTopLevelDomainFromUrl.patch
-	source = https://github.com/orsonteodoro/oiledmachine-overlay/raw/f4916d8/app-admin/keepassxc/files/keepassxc-2.7.10-qt6-support-v2.patch
-	sha256sums = 5ce76d6440986c24842585f019d5f3cadc166fa71fc911a4fe97b8bbc4819dfa
-	sha256sums = 4866837a05b1ee524a598d1fb803c55e9769eb3a6bad842b6283cc0d950443de
-	sha256sums = c7d83fc97cc3d7a0fb27387ef8153ac1388695ae3c8455402c333ce8a66a2d78
-	sha256sums = fefe707ce4ae0a42708980709ee987d48f8a949ee6ddce14eb1d072b9c0cf413
+	source = git+https://github.com/the-nic/keepassxc#commit=81e1e89
+	sha256sums = c81abce39dc58bbf2922449e0634006a06fc295afc01d68d126d0f48953f2446
 
 pkgname = keepassxc-qt6
