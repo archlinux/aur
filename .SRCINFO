@@ -1,6 +1,6 @@
 pkgbase = osu-tachyon
 	pkgdesc = osu!lazer unstable branch.
-	pkgver = 2025.1203.0
+	pkgver = 2026.108.0
 	pkgrel = 1
 	url = https://osu.ppy.sh
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = osu-tachyon
 	noextract = osu.AppImage
 	options = !strip
 	options = !debug
-	source = osu-tachyon-2025.1203.0.AppImage::https://github.com/ppy/osu/releases/download/2025.1203.0-tachyon/osu.AppImage
+	source = osu-tachyon-2026.108.0.AppImage::https://github.com/ppy/osu/releases/download/2026.108.0-tachyon/osu.AppImage
 	source = icon.png
 	source = https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md
 	source = osu-tachyon.desktop
