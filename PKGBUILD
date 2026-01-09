@@ -4,7 +4,7 @@
 
 pkgname=devpi-web
 _pkgname=devpi_web
-pkgver=4.2.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Web interface plugin for devpi-server"
 arch=('any')
@@ -12,39 +12,40 @@ url="https://doc.devpi.net/"
 license=('MIT')
 groups=('devpi')
 depends=(
-  'devpi-server>=5.2.0'
-  'devpi-common>=3.2.0'
+  'devpi-server'
+  'devpi-common'
   'python'
-  'python-beautifulsoup4>=4.3.2'
+  'python-attrs'
+  'python-beautifulsoup4'
   'python-chameleon'
   'python-defusedxml'
-  'python-docutils>=0.11'
-  'python-pygments>=1.6'
-  'python-pyramid>1.10'
+  'python-docutils'
+  'python-pygments'
+  'python-pyramid'
   'python-pyramid-chameleon'
-  'python-readme-renderer>=23.0'
+  'python-readme-renderer'
   'python-whoosh<3')
-makedepends=('python-setuptools')
-# checkdepends=('python-pytest-runner' 'python-pytest-cov' 'python-mock' 'python-webtest')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-changelog-shortener' 'python-wheel' )
+# checkdepends=('python-pytest')
 changelog=CHANGELOG
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('6f18d9899b283cb64759b04fa15e7b207c19c140ad96af8c359e66cfd5ac57c4')
+sha256sums=('461f94dc02985cc608a78a59606dcb2135c86a9e716b189c9c376a19f97e481f')
 
 build() {
   cd "$_pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 # check() {
-#   cd "$pkgname-$pkgver"
-#   python setup.py pytest
+#   cd "$_pkgname-$pkgver"
+#   PYTHONPATH=./ pytest -x -c /dev/null
 # }
 
 package() {
   cd "$_pkgname-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
