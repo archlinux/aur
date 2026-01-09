@@ -1,8 +1,8 @@
 # Maintainer: Chris Mounce <christophermounce@gmail.com>
 
 pkgname=decker
-pkgver=1.62
-pkgrel=2
+pkgver=1.63
+pkgrel=1
 pkgdesc="Multimedia platform for creating interactive documents"
 arch=('x86_64')
 url="http://beyondloom.com/decker/"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('xxd')
 depends=('glibc' 'hicolor-icon-theme' 'sdl2' 'sdl2_image')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('56ebca420c946fe0ac99b896e6bd4d07c0f08f4f97610897d323b5cfa1940f02')
+sha256sums=('922f6989549e3556122f9e90130944d728b4ad581837d3f3ca97120e1adae651')
 
 build() {
     cd "$srcdir/Decker-$pkgver"
