@@ -36,8 +36,8 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed -i 's|WorkingDirectory=/usr/local/s-ui/|WorkingDirectory=/usr/lib/s-ui/|' "$_pkgname".service
-  sed -i 's|ExecStart=/usr/local/s-ui/sui|ExecStart=/usr/lib/s-ui/sui|'         "$_pkgname".service
+  sed -i "s|WorkingDirectory=/usr/local/s-ui/|WorkingDirectory=/usr/lib/$_pkgname/|" "$_pkgname".service
+  sed -i "s|ExecStart=/usr/local/s-ui/sui|ExecStart=/usr/lib/$_pkgname/$_pkgname|"   "$_pkgname".service
 }
 
 build() {
