@@ -6,13 +6,17 @@
 pkgname=multicliprelay-bin
 pkgver=0.1.8
 pkgrel=1
-pkgdesc="Wayland clipboard sync via TCP relay (prebuilt binaries)"
+pkgdesc="Real-time Wayland/xclip clipboard sync via TCP relay (text/images/files/dirs; prebuilt)"
 arch=(x86_64)
 url="https://github.com/KasumiNova/MultiClipRelay"
 license=(GPL3)
 
 # Runtime deps only (no Rust toolchain needed for -bin packages)
 depends=(wl-clipboard gtk4)
+
+optdepends=(
+  'xclip: optional X11 clipboard helper (compat/testing)'
+)
 
 provides=(multicliprelay)
 # When users enable `OPTIONS=(debug)` in makepkg.conf, a split debug package

@@ -1,5 +1,5 @@
 pkgbase = multicliprelay-bin
-	pkgdesc = Wayland clipboard sync via TCP relay (prebuilt binaries)
+	pkgdesc = Real-time Wayland/xclip clipboard sync via TCP relay (text/images/files/dirs; prebuilt)
 	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/KasumiNova/MultiClipRelay
@@ -7,6 +7,7 @@ pkgbase = multicliprelay-bin
 	license = GPL3
 	depends = wl-clipboard
 	depends = gtk4
+	optdepends = xclip: optional X11 clipboard helper (compat/testing)
 	provides = multicliprelay
 	conflicts = multicliprelay
 	conflicts = multicliprelay-git
