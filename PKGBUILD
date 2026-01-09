@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=blindpaste
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="a TUI blackboard for quick note taking"
 arch=("x86_64")

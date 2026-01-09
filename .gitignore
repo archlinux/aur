@@ -1,4 +1,6 @@
-*.pkg.tar.zst
+*.bpo
 blindpaste/
+*.pkg.tar.zst
 pkg/
+rpl.sed
 src/
