@@ -1,7 +1,7 @@
 # Maintainer: adenast <aiden0@zohomail.com>
 pkgname=footfetch-git
 _pkgname=footfetch
-pkgver=1.40.0.r0.g1234567
+pkgver=1.41.7.r0.g1234567
 pkgrel=1
 pkgdesc="**CLI** utility for viewing **system information**, but with a **twist**."
 arch=('x86_64' 'aarch64')
