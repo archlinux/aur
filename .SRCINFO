@@ -1,6 +1,6 @@
 pkgbase = checkmake-bin
 	pkgdesc = Linter/analyzer for Makefiles
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/checkmake/checkmake
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = checkmake-bin
 	depends = glibc
 	provides = checkmake
 	conflicts = checkmake
-	source = LICENSE-0.3.0::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.0/LICENSE
-	source = README-0.3.0.md::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.0/README.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.1/README.md
 	sha256sums = 01090018cb293e1a5cb260fba2222468a39f1bf9a8b4c37375d1355f776ef7f9
 	sha256sums = da7303e05064c979412ab954e9e7cc9e193d731664f0edec74d814b237c59909
-	source_x86_64 = checkmake-x86_64-0.3.0::https://github.com/checkmake/checkmake/releases/download/v0.3.0/checkmake-v0.3.0.linux.amd64
-	sha256sums_x86_64 = 558e51ce92ebedb7cb1fab74d8bc3ed8a056a11d6cec70e20e208ca66eeb0ca8
-	source_aarch64 = checkmake-aarch64-0.3.0::https://github.com/checkmake/checkmake/releases/download/v0.3.0/checkmake-v0.3.0.linux.arm64
-	sha256sums_aarch64 = 44677603285afe2fc7d71183381ad949e401b1ff1523a9e94ff89253dd1b5704
+	source_x86_64 = checkmake-x86_64-0.3.1::https://github.com/checkmake/checkmake/releases/download/v0.3.1/checkmake-v0.3.1.linux.amd64
+	sha256sums_x86_64 = ad12d4e95b3edebf925c3dc8a8aefe1f7e8074c47f277eae53cea7efae9c29b2
+	source_aarch64 = checkmake-aarch64-0.3.1::https://github.com/checkmake/checkmake/releases/download/v0.3.1/checkmake-v0.3.1.linux.arm64
+	sha256sums_aarch64 = 4f818a72f4522993924338640118916da2ebec89fbeb03048e3f649e45e4b357
 
 pkgname = checkmake-bin
