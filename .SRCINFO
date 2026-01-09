@@ -1,6 +1,6 @@
 pkgbase = abacusai-bin
 	pkgdesc = A powerful desktop AI assistant with agentic browsing, listening, coding CLI and editor
-	pkgver = 1.106.25007
+	pkgver = 1.106.2105
 	pkgrel = 1
 	url = https://github.com/abacusai/deepagent-releases
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = abacusai-bin
 	conflicts = codellm
 	conflicts = codellm-bin
 	options = !debug
-	source_x86_64 = https://github.com/abacusai/deepagent-releases/releases/download/1.106.25007/AbacusAI-linux-x64-1.106.25007.tar.gz
-	sha256sums_x86_64 = e28913fd611e825261f6038a1941cb8c665af15c247bca62dbbd146b5a54c40d
-	source_aarch64 = https://github.com/abacusai/deepagent-releases/releases/download/1.106.25007/AbacusAI-linux-arm64-1.106.25007.tar.gz
-	sha256sums_aarch64 = 1a93779865082b7140ccbe65be50a8a1920f110468186b9a70e3c025bb0454b2
+	source_x86_64 = https://github.com/abacusai/deepagent-releases/releases/download/1.106.2105/AbacusAI-linux-x64-1.106.2105.tar.gz
+	sha256sums_x86_64 = 49cf5ac6522889129b3ad5bedac4396e1b463f64c2be0ceffb70ed6b90afe728
+	source_aarch64 = https://github.com/abacusai/deepagent-releases/releases/download/1.106.2105/AbacusAI-linux-arm64-1.106.2105.tar.gz
+	sha256sums_aarch64 = ffef3a74b3490c36ffd8fc37f6a26d4bbfe455108df6a752356590e07b6582b7
 
 pkgname = abacusai-bin
