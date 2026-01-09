@@ -1,6 +1,6 @@
 pkgbase = zerofs-bin
 	pkgdesc = The Filesystem That Makes S3 your Primary Storage. ZeroFS is 9P/NFS/NBD on top of S3.
-	pkgver = 0.17.3
+	pkgver = 0.23.3
 	pkgrel = 1
 	url = https://github.com/Barre/ZeroFS
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zerofs-bin
 	license = AGPLv3
 	conflicts = zerofs
 	conflicts = zerofs-git
-	source = zerofs-pgo-multiplatform-0.17.3.tar.gz::https://github.com/Barre/ZeroFS/releases/download/v0.17.3/zerofs-pgo-multiplatform.tar.gz
-	sha256sums = 46823b3454cf377c9ba0102b6e511b80a8ce05c5e9e24a06016afae5a4e1563d
+	source = zerofs-pgo-multiplatform-0.23.3.tar.gz::https://github.com/Barre/ZeroFS/releases/download/v0.23.3/zerofs-pgo-multiplatform.tar.gz
+	sha256sums = cd6b321e78e56d2d31f4ec8ec28e328a99325d329bdf8fc1ffb2e010dd0e5d60
 
 pkgname = zerofs-bin
