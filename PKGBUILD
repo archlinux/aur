@@ -9,7 +9,7 @@ license=('GPL')
 depends=('dkms' 'linux-headers')
 conflicts=('acp6x-omen-dkms-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('881bd6833d8b0d909551e23196a3b8450e607c5b47ab5ee88abc62edcfd73033')
+sha256sums=('7afc8803bef4c532fdf47aca3195e980d132834ade085a30530e5d518e423817')
 
 package() {
     cd "${pkgname}-${pkgver}"
@@ -22,4 +22,8 @@ package() {
     # 2. Install Blacklist Configuration
     install -d "${pkgdir}/etc/modprobe.d"
     install -m 644 blacklist-acp6x-omen.conf "${pkgdir}/etc/modprobe.d/blacklist-acp6x-omen.conf"
+
+    # 3. Install License
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
