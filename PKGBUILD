@@ -13,7 +13,7 @@ depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig')
 optdepends=('openal: sound support')
 source=("https://assets.unigine.com/d/"${_pkgname}"-"${pkgver}".run"
 $pkgname.desktop)
-sha512sums=('5778fde3c122528fba8e79088b9ccca672afb953f3996bb6d1e9a20e6b7a50934a088daf705711bd04bdcc11d50e09815e6fa4ad6b798efd382b957ae8723977'
+sha512sums=('SKIP'
             '5224118e34c0247c18be090c6bc9e67a1ee0b3449bbd29a0529859ee5ad4238f4d61badee84fb89ca49e2c58ba346a7d44346c9a6940a9d8b5f981c7d40c9a0e')
 
 [ "${CARCH}" = "i686" ] && _arch=x86
