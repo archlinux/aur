@@ -2,7 +2,7 @@
 
 pkgname="kontainer"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Kirigami GUI for Distrobox"
 url="https://github.com/DenysMb/Kontainer"
 license=('GPL-3.0-or-later')
@@ -24,7 +24,7 @@ makedepends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 
-_pkgsrc="denysmb.kontainer"
+_pkgsrc="kontainer"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
