@@ -1,6 +1,6 @@
 pkgbase = deno-stable-bin
 	pkgdesc = A modern JavaScript and TypeScript runtime. Latest artefact from github.
-	pkgver = 2.6.3
+	pkgver = 2.6.4
 	pkgrel = 1
 	url = https://deno.land
 	arch = x86_64
