@@ -33,7 +33,12 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -o build/subtui .
+  local _commit=$(git rev-parse --short HEAD)
+  local _tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "$pkgver")
+
+  go build \
+    -ldflags "-s -w -X main.version=${_tag} -X main.commit=${_commit}" \
+    -o build/subtui .
 }
 
 package() {
