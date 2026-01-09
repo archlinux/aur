@@ -5,7 +5,7 @@ _jrever='21.0.9'
 
 pkgname='zulu-jre21-fx'
 pkgver="$_jrever+$_zuluver"
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).'
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -38,6 +38,7 @@ backup=(
     "etc/$pkgname/net.properties"
     "etc/$pkgname/sound.properties"
 )
+options=('!strip')
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_x64.tar.gz")
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_aarch64.tar.gz")
@@ -49,20 +50,21 @@ _jvmdir="usr/lib/jvm/$pkgname"
 package() {
     # Copy main files
     install -d "$pkgdir/$_jvmdir"
-    cp -a "$srcdir"/zulu*/. "$pkgdir/$_jvmdir"
+    cp -rT "$srcdir"/zulu*-linux_*/ "$pkgdir/$_jvmdir"
 
     # Conf
     install -d "$pkgdir/etc/$pkgname"
-    cp -a "$pkgdir/$_jvmdir/conf/." "$pkgdir/etc/$pkgname"
+    cp -rT "$pkgdir/$_jvmdir/conf" "$pkgdir/etc/$pkgname"
     rm -r "$pkgdir/$_jvmdir/conf"
     ln -s "/etc/$pkgname" "$pkgdir/$_jvmdir/conf"
 
     # Legal
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    cp -a "$pkgdir/$_jvmdir/legal/." "$pkgdir/usr/share/licenses/$pkgname"
+    cp -rT "$pkgdir/$_jvmdir/legal" "$pkgdir/usr/share/licenses/$pkgname"
     rm -r "$pkgdir/$_jvmdir/legal"
     ln -s "/usr/share/licenses/$pkgname" "$pkgdir/$_jvmdir/legal"
 
     # Link JKS keystore from ca-certificates-utils
-    ln -sf "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
+    rm "$pkgdir/$_jvmdir/lib/security/cacerts"
+    ln -s '/etc/ssl/certs/java/cacerts' "$pkgdir/$_jvmdir/lib/security/cacerts"
 }
