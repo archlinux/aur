@@ -3,7 +3,7 @@
 
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
@@ -14,7 +14,7 @@ provides=("abdownloadmanager" "ab-download-manager")
 conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz")
-sha256sums=("21f62abdc50886f5b7ebc5aaa3387c3c5b99e83a29950c1014b7a311d8c0b765")
+sha256sums=("69a7a00e1d14b31d21c8f4104ee3b91324b9b0d45444c0442c5bac1d5ac290ba")
 
 package() {
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
@@ -27,7 +27,7 @@ package() {
 Name=AB Download Manager
 Comment=Manage and organize your download files better than before
 GenericName=Download Manager
-Exec=${_pkgname}
+Exec=env SKIKO_RENDER_API=SOFTWARE ${_pkgname}
 Icon=${_pkgname}
 Terminal=false
 Type=Application
