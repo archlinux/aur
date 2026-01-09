@@ -4,7 +4,7 @@
 
 _name=marimo
 pkgname=marimo
-pkgver=0.18.4
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -20,9 +20,9 @@ depends=(
     'python-pymdown-extensions>=10.15' 'python-pymdown-extensions<11'
     'python-pygments>=2.19' 'python-pygments<3'
     'python-tomlkit>=0.12.0'
-    'python-yaml>=6.0'
+    'python-yaml>=6.0.1'
     'uvicorn>=0.22.0'
-    'python-starlette>=0.35.0'
+    'python-starlette>=0.37.2'
     'python-websockets>=14.2.0'
     'python-loro>=1.5.0'
     'python-docutils>=0.16.0'
@@ -34,13 +34,23 @@ depends=(
 )
 
 optdepends=(
-    'jupyter-nbformat: Export as IPYNB'
-    'python-altair: Plotting in datasource viewer'
+    # SQL
     'python-duckdb: SQL cells support'
-    'python-google-genai: Google AI features'
-    'python-openai: AI features'
     'python-polars: SQL output back in Python'
     'python-sqlglot: SQL cells parsing'
+
+    # LSP
+    'python-lsp-server'
+    'python-lsp-ruff'
+
+    # MCP
+    'python-mcp: Model Context Protocol (MCP) support'
+    'python-pydantic'
+
+    # Others
+    'python-altair: Plotting in datasource viewer'
+    'python-openai: AI features'
+    'jupyter-nbformat: Export as IPYNB'
     'ruff: Formatting'
 )
 
@@ -53,7 +63,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('30b5d8cd8f3e9054b5f7332bf0f4d11cb608712995e4f4feed7337d118eef8ab')
+sha256sums=('4007034660bc63400762dfa7573f84ddf051bc5378c83805e84950b24f5dfb15')
 
 build() {
     cd $_name-$pkgver || exit

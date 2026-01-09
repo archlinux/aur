@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.18.4
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = marimo
 	depends = python-pygments>=2.19
 	depends = python-pygments<3
 	depends = python-tomlkit>=0.12.0
-	depends = python-yaml>=6.0
+	depends = python-yaml>=6.0.1
 	depends = uvicorn>=0.22.0
-	depends = python-starlette>=0.35.0
+	depends = python-starlette>=0.37.2
 	depends = python-websockets>=14.2.0
 	depends = python-loro>=1.5.0
 	depends = python-docutils>=0.16.0
@@ -31,16 +31,19 @@ pkgbase = marimo
 	depends = python-narwhals>=2.0.0
 	depends = python-packaging
 	depends = python-msgspec>=0.19.0
-	optdepends = jupyter-nbformat: Export as IPYNB
-	optdepends = python-altair: Plotting in datasource viewer
 	optdepends = python-duckdb: SQL cells support
-	optdepends = python-google-genai: Google AI features
-	optdepends = python-openai: AI features
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-sqlglot: SQL cells parsing
+	optdepends = python-lsp-server
+	optdepends = python-lsp-ruff
+	optdepends = python-mcp: Model Context Protocol (MCP) support
+	optdepends = python-pydantic
+	optdepends = python-altair: Plotting in datasource viewer
+	optdepends = python-openai: AI features
+	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.18.4.tar.gz
-	sha256sums = 30b5d8cd8f3e9054b5f7332bf0f4d11cb608712995e4f4feed7337d118eef8ab
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.0.tar.gz
+	sha256sums = 4007034660bc63400762dfa7573f84ddf051bc5378c83805e84950b24f5dfb15
 
 pkgname = marimo
