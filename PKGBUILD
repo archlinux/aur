@@ -8,13 +8,13 @@ pkgname=(
   $pkgbase-signal
   $pkgbase-relay
 )
-pkgver=0.62.1
+pkgver=0.62.2
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e1d558a90ed955ae14de029140dc8f457d079770ec2df1419fcc1a9484deae1')
+sha256sums=('f37b7db0a2d85886e5550cef64fb34da26e2868f5f8201671bd5673332019dc5')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
