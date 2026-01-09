@@ -1,0 +1,17 @@
+pkgbase = bilibili-tui
+	pkgdesc = A terminal user interface (TUI) client for Bilibili
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://maredevi.moe/projects/bilibili-tui
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = mpv
+	depends = yt-dlp
+	source = bilibili-tui-1.0.3.tar.gz::https://github.com/MareDevi/bilibili-tui/archive/v1.0.3.tar.gz
+	sha256sums = 728ee5e92aaaba04fd1c7e99ce6c31088c66b1e14101b086061c1fc27746b5d5
+
+pkgname = bilibili-tui
