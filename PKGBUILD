@@ -1,6 +1,6 @@
 # Maintainer: Romain Bertrand <romaintb@noreply.codeberg.org>
 pkgname=fgj
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A command-line tool for working with Forgejo instances (including Codeberg.org)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/romaintb/fgj/archive/v${pkgver}.tar.gz")
-sha256sums=('828ed1d56fb1e20c44d8b861ec1f47caf418bf51ad180afa761afd76f35298b7')
+sha256sums=('28cb0a95bc6523367a6a305dc94c63516fefb5f9536692f36277a854c045d614')
 
 prepare() {
   cd "${pkgname}"
