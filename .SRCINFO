@@ -1,0 +1,11 @@
+pkgbase = mill-global
+	pkgdesc = Mill Build Tool, global installation
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/com-lihaoyi/mill
+	arch = any
+	license = MIT
+	source = mill-1.0.6::https://raw.githubusercontent.com/com-lihaoyi/mill/refs/tags/1.0.6/mill
+	sha256sums = 64cd978c39932399edfed54291036c949ef15458c43d982a37fc34f52e5b65b7
+
+pkgname = mill-global
