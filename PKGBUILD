@@ -1,6 +1,6 @@
-# # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mgba-highscore-git
-pkgver=r8921.2e05962
+pkgver=r9068.a6d684f
 pkgrel=1
 pkgdesc="Highscore port of mGBA"
 arch=('x86_64')
@@ -26,28 +26,32 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S mgba \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_DEBUGGERS='OFF' \
-    -DUSE_EDITLINE='OFF' \
-    -DENABLE_GDB_STUB='OFF' \
-    -DUSE_ZLIB='OFF' \
-    -DUSE_MINIZIP='OFF' \
-    -DUSE_PNG='OFF' \
-    -DUSE_LIBZIP='OFF' \
-    -DUSE_SQLITE3='OFF' \
-    -DUSE_ELF='OFF' \
-    -DUSE_LUA='OFF' \
-    -DUSE_JSON_C='OFF' \
-    -DUSE_LZMA='OFF' \
-    -DUSE_DISCORD_RPC='OFF' \
-    -DENABLE_SCRIPTING='OFF' \
-    -DBUILD_QT='OFF' \
-    -DBUILD_SDL='OFF' \
-    -DBUILD_HIGHSCORE='ON' \
-    -DSKIP_LIBRARY='ON' \
-    -Wno-dev
+  local cmake_options=(
+    -B build
+    -S mgba
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D ENABLE_DEBUGGERS='OFF'
+    -D USE_EDITLINE='OFF'
+    -D ENABLE_GDB_STUB='OFF'
+    -D USE_ZLIB='OFF'
+    -D USE_MINIZIP='OFF'
+    -D USE_PNG='OFF'
+    -D USE_LIBZIP='OFF'
+    -D USE_SQLITE3='OFF'
+    -D USE_ELF='OFF'
+    -D USE_LUA='OFF'
+    -D USE_JSON_C='OFF'
+    -D USE_LZMA='OFF'
+    -D USE_DISCORD_RPC='OFF'
+    -D ENABLE_SCRIPTING='OFF'
+    -D BUILD_QT='OFF'
+    -D BUILD_SDL='OFF'
+    -D BUILD_HIGHSCORE='ON'
+    -D SKIP_LIBRARY='ON'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 

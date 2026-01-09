@@ -1,6 +1,6 @@
 pkgbase = mgba-highscore-git
 	pkgdesc = Highscore port of mGBA
-	pkgver = r8921.2e05962
+	pkgver = r9068.a6d684f
 	pkgrel = 1
 	url = https://github.com/highscore-emu/mgba
 	arch = x86_64
