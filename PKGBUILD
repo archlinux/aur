@@ -1,9 +1,9 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.8.21
+pkgver=0.8.22
 pkgrel=1
-pkgdesc="Set of bash script programs for building bootable images of Arch Linux"
+pkgdesc="Bash scripts for building Arch Linux bootable images"
 arch=('any')
 url="https://github.com/laurent85v/archuseriso"
 license=('GPL3')
@@ -18,9 +18,9 @@ optdepends=('devtools: for building ZFS packages'
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('3250a53bd72e225878ec1e6c165a4632f1d3f2d71565e404f48d579a4513913f'
+sha256sums=('66e89b5b0c8d9ff61f41c4aefddd28a60b9a56c373067a292a24d22e772ab005'
             'SKIP')
-b2sums=('e07bf405a46764a1d7898cf3680f1157f240636a33bb1eb3e82b5ee65aff44316f2847c62561b2e8f44b4d5e3a85b8aff47d8c37bf2270c0936c90643443e9e9'
+b2sums=('719f42b085cf3b5dc5b800249467c6fe7545eb896002a10b4466f28f8b346eec71bc89433b6b5d3231d0e4a1c78a08520273476c66859199154963152eb97b83'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
