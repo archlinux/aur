@@ -1,0 +1,26 @@
+pkgbase = immuarch-git
+	pkgdesc = Immutable Archlinux setup with transactional & atomic updates
+	pkgver = 0.0.1.r152.f2603c6
+	pkgrel = 1
+	url = https://framagit.org/Brumaire/immuarch
+	install = immuarch.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = util-linux
+	depends = btrfs-progs
+	depends = grub
+	depends = bash
+	depends = grep
+	depends = sed
+	optdepends = gzip: for backup utility
+	optdepends = openssh: for backup utility
+	options = emptydirs
+	backup = immuarch/immuarch-etc/env.conf
+	backup = immuarch/immuarch-etc/rw-subvolumes.conf
+	backup = immuarch/immuarch-etc/user-bind-mount-runtime.conf
+	backup = immuarch/immuarch-etc/user-fstab.conf
+	source = git+https://framagit.org/Brumaire/immuarch
+	md5sums = SKIP
+
+pkgname = immuarch-git

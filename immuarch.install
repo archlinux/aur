@@ -1,0 +1,10 @@
+post_install () {
+    echo '========================================================================='
+    echo '||                           /!\ WARNING /!\                           ||'
+    echo '========================================================================='
+    echo '||                                                                     ||'
+    echo '||   Installing this package is not enough to setup Immuarch.          ||'
+    echo '||   Please read the README at https://framagit.org/Brumaire/immuarch  ||'
+    echo '||                                                                     ||'
+    echo '========================================================================='
+}
