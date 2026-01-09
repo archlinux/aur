@@ -1,6 +1,6 @@
 pkgbase = fafarunner-bin
 	pkgdesc = Enjoy smooth gameplay, stunning graphics, and endless fun
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 0
 	url = https://github.com/fafarunner/fafarunner
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = fafarunner-bin
 	provides = fafarunner
 	conflicts = fafarunner
 	options = !debug
-	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.0/fafarunner-2.6.0-linux-amd64.deb
-	sha256sums_x86_64 = 791af7f6596d929c1defd2bcd24d2faf36e14d11c6ed10f6c6f4e5a8d6db1e23
-	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.0/fafarunner-2.6.0-linux-aarch64.deb
-	sha256sums_aarch64 = 22a3b3d0f7bc003b11690a67014fe3dde8293537092bce337aae4b2fbf284f08
+	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.1/fafarunner-2.6.1-linux-amd64.deb
+	sha256sums_x86_64 = fdcee61e40f9bcca0ca9ce735d4250601f9710934b87650656e5bda367c38c46
+	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.1/fafarunner-2.6.1-linux-aarch64.deb
+	sha256sums_aarch64 = a59311384d0a438d0d580eec85b7451d11f2eeab9ebf7072310b631a15678bf6
 
 pkgname = fafarunner-bin
