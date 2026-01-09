@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.4.11
+pkgver=0.4.12
 _electronversion=39
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation.Prebuilt version.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d04f63822b2b82a17a2bb62b9bdafd4a6c386e868256e2b1689563ff15ea8d62'
+sha256sums=('02cfb4aa84daf152f798a01ed3903a844d7cff4641b0d79c8b4836411da1d27e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
