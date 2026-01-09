@@ -19,5 +19,5 @@ post_upgrade() {
 
 pre_remove() {
     # Remove service file silently, as official Debian package does
-    /usr/bin/uninstall-service
+    /usr/bin/clash-verge-service-uninstall
 }
