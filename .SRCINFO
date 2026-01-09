@@ -1,6 +1,6 @@
 pkgbase = twitch-drops-miner-bin
 	pkgdesc = An app that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching.
-	pkgver = 20260105.200836
+	pkgver = 20260109.103453
 	pkgrel = 1
 	url = https://github.com/DevilXD/TwitchDropsMiner
 	arch = x86_64
