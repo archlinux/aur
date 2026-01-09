@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=surrealdb
 pkgname="${_pkgname}-bin"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=(${_pkgname})
 source=("$url/releases/download/v${pkgver//_/-}/LICENSE")
 source_x86_64=("$url/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
 sha256sums=('SKIP')
-sha256sums_x86_64=('a81ca6441975eaff78bd9117ab23aff0f7f27a25ece0789c73df5b601322786b')
+sha256sums_x86_64=('6ab7361f994bc238b750a59f1fadcce67cb53d4587585ec9fb7175323f433310')
 
 package() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
