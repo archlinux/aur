@@ -3,10 +3,10 @@
 # Contributor: vryali@gmail.com
 pkgname=google-chat-linux
 _pkgname='Google Chat Linux'
-pkgver=5.29.23_1
-_electronversion=29
-_nodeversion=20
-pkgrel=6
+pkgver=5.39.24_1
+_electronversion=39
+_nodeversion=22
+pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron not included.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/squalou/google-chat-linux"
@@ -22,20 +22,28 @@ makedepends=(
     'git'
     'gendesk'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('dff55f33845da6a38aef87c97d8e41fcd6194da1f548dddf02a58a74d9772732'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('0aa4d88d71ca4709bff1bbcbb21b10c1e095de2b54047f3781130ea5706026e1'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
   local NVM_DIR="${srcdir}/.nvm"
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
   nvm install "${_nodeversion}"
   nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -43,26 +51,30 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-  HOME="${srcdir}/.electron-gyp"
-  {
-    echo -e '\n'
-    #echo 'build_from_source=true'
-    echo "cache=${srcdir}/.npm_cache"
-    echo "maxsockets=10"
-  } >> .npmrc
-  if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
     {
-      echo 'registry=https://registry.npmmirror.com'
-      echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-      echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+      echo -e '\n'
+      #echo 'build_from_source=true'
+      echo "cache=${srcdir}/.npm_cache"
+      echo "maxsockets=10"
     } >> .npmrc
-    find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-  fi
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+      {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+      } >> .npmrc
+      find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+    _ensure_local_nvm
     sed -e "
       /--no-force-async-hooks-checks/d
       /ELECTRON_DISABLE_SANDBOX/d
@@ -73,6 +85,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }

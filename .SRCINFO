@@ -1,7 +1,7 @@
 pkgbase = google-chat-linux
 	pkgdesc = Unofficial electron-based desktop client for Google Chat, electron not included.(Use system-wide electron)
-	pkgver = 5.29.23_1
-	pkgrel = 6
+	pkgver = 5.39.24_1
+	pkgrel = 1
 	url = https://github.com/squalou/google-chat-linux
 	arch = any
 	license = WTFPL
@@ -10,12 +10,13 @@ pkgbase = google-chat-linux
 	makedepends = git
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron29
+	makedepends = jq
+	depends = electron39
 	depends = xdg-desktop-portal
 	conflicts = google-chat-linux
-	source = google-chat-linux-5.29.23_1::git+https://github.com/squalou/google-chat-linux#tag=5.29.23-1
+	source = google-chat-linux-5.39.24_1::git+https://github.com/squalou/google-chat-linux#tag=5.39.24-1
 	source = google-chat-linux.sh
-	sha256sums = dff55f33845da6a38aef87c97d8e41fcd6194da1f548dddf02a58a74d9772732
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 0aa4d88d71ca4709bff1bbcbb21b10c1e095de2b54047f3781130ea5706026e1
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = google-chat-linux
