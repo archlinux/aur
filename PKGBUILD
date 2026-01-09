@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -26,7 +26,7 @@ backup=(
 )
 install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('f95679eb40ca771b78fe6f8ffdd9c20ffda08b4d2d92a8cad394e96b755be1ab')
+sha256sums=('474163eb39fdac8e4c5a437d47bb106650ec703754bc7da41f66c293463cfbd3')
 
 prepare() {
   # 'KillMode=none' is a deprecated option and is not recommended for use.
