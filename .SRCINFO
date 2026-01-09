@@ -1,6 +1,6 @@
 pkgbase = eshu-installer
 	pkgdesc = AI-Driven Universal Package Installer for Linux
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://eshu-apps.com
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = eshu-installer
 	optdepends = snapper: For system snapshots (alternative)
 	optdepends = distrobox: For Ghost Mode
 	optdepends = podman: For Ghost Mode (alternative)
-	source = eshu-installer-0.4.1.tar.gz::https://github.com/eshu-apps/eshu-installer/archive/v0.4.1.tar.gz
-	sha256sums = 9967681314713120b4eb82440ded78f9727ca5bb74a3686e01fe68cf7b075e90
+	source = eshu-installer-0.4.3.tar.gz::https://github.com/eshu-apps/eshu-installer/archive/v0.4.3.tar.gz
+	sha256sums = aa3d6feab58962919f9995fcc22c53c277a322fb16ed4ddc8ff87586adca65df
 
 pkgname = eshu-installer
