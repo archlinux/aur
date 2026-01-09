@@ -3,7 +3,7 @@
 
 pkgname=acroread-dc-wine
 pkgver=25.001.20997
-pkgrel=1
+pkgrel=2
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"

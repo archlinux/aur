@@ -1,7 +1,7 @@
 pkgbase = acroread-dc-wine
 	pkgdesc = Adobe Acrobat Reader DC - PDF viewer (via Wine)
 	pkgver = 25.001.20997
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.adobe.com/products/reader.html
 	install = acroread-dc-wine.install
 	arch = x86_64
