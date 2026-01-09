@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.rc2.r57.g9996a07
+pkgver=2123.rc2.r100.g5c863db
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -57,9 +57,10 @@ source=(
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
 	"xbyak::git+https://github.com/herumi/xbyak.git"
+	"xxhash::git+https://github.com/Cyan4973/xxHash.git"
 	"zstd::git+https://github.com/facebook/zstd.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -72,6 +73,7 @@ prepare() {
 	git config submodule.dds-ktx.url ../dds-ktx
 	git config submodule.discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.dynarmic.url ../$_pkgname-dynarmic
+	git config submodule.externals/xxHash.url ../xxhash
 	git config submodule.faad2.url ../faad2
 	git config submodule.lodepng.url ../lodepng
 	git config submodule.nihstro.url ../nihstro
