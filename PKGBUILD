@@ -4,7 +4,7 @@
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
-pkgver=r139.a75456c
+pkgver=r140.cc5d095
 pkgrel=1
 epoch=
 pkgdesc='An Application Indicator showing various system parameters'
@@ -13,7 +13,7 @@ url='https://github.com/fossfreedom/indicator-sysmonitor'
 license=('GPL3')
 groups=()
 depends=('curl' 'python-gobject' 'python-psutil')
-makedepends=('git')
+makedepends=('git' 'meson')
 checkdepends=()
 optdepends=('libayatana-appindicator')
 provides=('indicator-sysmonitor')
@@ -40,7 +40,14 @@ package_indicator-sysmonitor-budgie-git() {
   provides+=('indicator-sysmonitor-budgie')
 
   cd "${_pkgbase}"
-  make DESTDIR="${pkgdir}" installbudgie
+
+  rm -rf build
+  mkdir build
+  cd build
+  meson -Dbudgie=true --prefix=/usr
+  meson install --destdir "${pkgdir}"
+  cd ..
+
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-budgie-git/LICENSE"
 
   python -m compileall -d '/' "${pkgdir}/"
@@ -54,7 +61,14 @@ package_indicator-sysmonitor-appindicator-git() {
   provides+=('indicator-sysmonitor-appindicator')
 
   cd "${_pkgbase}"
-  make DESTDIR="${pkgdir}" install
+
+  rm -rf build
+  mkdir build
+  cd build
+  meson --prefix=/usr
+  meson install --destdir "${pkgdir}"
+  cd ..
+
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-appindicator-git/LICENSE"
 
   python -m compileall -d '/' "${pkgdir}/"

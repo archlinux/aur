@@ -1,11 +1,12 @@
 pkgbase = indicator-sysmonitor-git
 	pkgdesc = An Application Indicator showing various system parameters
-	pkgver = r139.a75456c
+	pkgver = r140.cc5d095
 	pkgrel = 1
 	url = https://github.com/fossfreedom/indicator-sysmonitor
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = meson
 	depends = curl
 	depends = python-gobject
 	depends = python-psutil
