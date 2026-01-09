@@ -1,0 +1,17 @@
+pkgbase = lazybeads-git
+	pkgdesc = Terminal UI for managing beads issues, inspired by LazyGit
+	pkgver = r51.c8d1bfe
+	pkgrel = 1
+	url = https://github.com/codegangsta/lazybeads
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = beads: required for issue management
+	provides = lazybeads
+	conflicts = lazybeads
+	source = lazybeads-git::git+https://github.com/codegangsta/lazybeads.git
+	sha256sums = SKIP
+
+pkgname = lazybeads-git
