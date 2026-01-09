@@ -1,7 +1,7 @@
 pkgbase = lichtblick-bin
 	pkgdesc = Integrated visualization and diagnosis tool for robotics
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lichtblick-Suite/lichtblick
 	arch = x86_64
 	arch = aarch64
@@ -34,7 +34,7 @@ pkgbase = lichtblick-bin
 	conflicts = lichtblick
 	source_x86_64 = lichtblick-bin-1.22.1-x86_64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v1.22.1/lichtblick-1.22.1-linux-amd64.deb
 	sha256sums_x86_64 = 9a82ca16d1b42fa9e57446dc75a55e1bf66ad3afeeeda52f5da6ad59bd0c5010
-	source_aarch64 = lichtblick-bin-1.22.1- aarch64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v1.22.1/lichtblick-1.22.1-linux-arm64.deb
-	sha256sums_aarch64 = \8614ca5b4d21c6cb976459b365399c3cd422a3b3e6d675d6e38db2f4d9cb0235
+	source_aarch64 = lichtblick-bin-1.22.1-aarch64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v1.22.1/lichtblick-1.22.1-linux-arm64.deb
+	sha256sums_aarch64 = 8614ca5b4d21c6cb976459b365399c3cd422a3b3e6d675d6e38db2f4d9cb0235
 
 pkgname = lichtblick-bin
