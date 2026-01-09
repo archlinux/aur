@@ -64,12 +64,15 @@ Windows Registry Editor Version 5.00
 "bEnableAlwaysOutlookAttachmentProtectedView"=dword:00000000
 
 ; Disable updates, "What's New" dialog, and first launch behaviors
+; Enable tabbed document viewing
 [HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\AVGeneral]
 "bCheckForUpdatesAtStartup"=dword:00000000
 "bToggleCustomization"=dword:00000000
 "bisFirstLaunch"=dword:00000000
 "bShowWhatsNewDialog"=dword:00000000
 "bExpandRHPByDefault"=dword:00000000
+"bSDIMode"=dword:00000000
+"bOpenInNewWindow"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Adobe\Acrobat Reader\DC\HomeWelcomeFirstMile]
 "bFirstMileCompleted"=dword:00000001

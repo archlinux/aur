@@ -3,7 +3,7 @@
 
 pkgname=acroread-dc-wine
 pkgver=25.001.20997
-pkgrel=2
+pkgrel=3
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"
@@ -23,6 +23,7 @@ optdepends=(
     'lib32-libpulse: audio support'
     'xdotool: fix window type for proper WM integration'
     'xorg-xprop: fix window type for proper WM integration'
+    'xorg-xrandr: screen resolution detection for virtual desktop'
 )
 makedepends=('icoutils')
 install=acroread-dc-wine.install
@@ -41,10 +42,10 @@ source=(
     "acroread-dc.reg"
 )
 sha256sums=('SKIP'
-            'dd0eac95716b029d6732f8e1fc86c5bb120d8a547518ebdb4b3a36e4671a660f'
+            'cc8588d2d94b6d63131159e36268113bbb0d60c7bddb10dad529ad926d80e724'
             'b7ddd24309d14b96a099668ac71fea11850ebcedc45bee368e958e75332ea8df'
             '4c3defab70b10298b8c1f66f16a385878d62b2443320256bf3c089824884c20d'
-            '6664b654c9ea47b6194ac69e0483b52ab7a2c774e58cc1314ae4216cc1fefc33')
+            '8097af48531ecb83e65fc2aa2d092b2a485803ab6df810f21b5a2ab8ef9bd0f5')
 noextract=("AcroRdrDC${_pkgver_nodots}_${_lang}.exe")
 
 package() {

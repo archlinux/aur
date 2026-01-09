@@ -50,9 +50,8 @@ for arg in "$@"; do
     fi
 done
 
-# Change to Reader directory (required for proper operation)
+# Get Reader directory (for window type fix)
 READER_DIR=$(dirname "$READER_EXE")
-cd "$READER_DIR" || exit 1
 
 # Fix window type function (Wine sometimes sets wrong _NET_WM_WINDOW_TYPE)
 fix_window_type() {
@@ -63,9 +62,23 @@ fix_window_type() {
     done
 }
 
-# Run Adobe Reader
+# Get screen resolution for virtual desktop (required for tabs to work)
+get_screen_resolution() {
+    if command -v xrandr &>/dev/null; then
+        xrandr 2>/dev/null | grep '\*' | head -1 | awk '{print $1}'
+    elif command -v xdpyinfo &>/dev/null; then
+        xdpyinfo 2>/dev/null | grep dimensions | awk '{print $2}'
+    else
+        echo "1920x1080"
+    fi
+}
+
+RESOLUTION=$(get_screen_resolution)
+
+# Run Adobe Reader in virtual desktop mode (required for tabbed document view)
+# Without virtual desktop, tabs don't render properly under Wine
 if command -v xprop &>/dev/null && command -v xdotool &>/dev/null; then
     fix_window_type &
 fi
 
-exec wine "AcroRd32.exe" "${args[@]}"
+exec wine explorer /desktop=AcroRead,"$RESOLUTION" "$READER_EXE" "${args[@]}"
