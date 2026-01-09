@@ -1,30 +1,30 @@
-# Maintainer: Dct Mei <dctxmei@yandex.com>
+# Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
 
 pkgname=yacd-meta
 _pkgname=Yacd-meta
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 pkgdesc="Yet Another Clash Dashboard"
 arch=('any')
 url="https://github.com/MetaCubeX/Yacd-meta"
-license=('unknown')
-makedepends=('yarn')
-optdepends=('clash-meta')
-conflicts=('yacd-meta-git')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('098ed76836c41778ecb9707bf9a5c77f77eaa1d6c63300d5edeac34339cb5f87')
+license=('MIT')
+makedepends=('nodejs' 'pnpm')
+optdepends=('mihomo: Another Clash Kernel by MetaCubeX')
+provides=("${pkgname}")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0e7e72edb35b5da448d2d6a5c324e9d1d8ca354e1466692f93163208ea76a1a5')
 
 build() {
-    cd "${srcdir}"/"${_pkgname}-${pkgver}"/
-    yarn cache clean
-    yarn install
-    yarn build
+    cd "${_pkgname}-${pkgver}"
+    pnpm install --ignore-scripts
+    pnpm build
 }
 
 package() {
-    cd "${srcdir}"/"${_pkgname}-${pkgver}"/
-    #install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-    cd public/
-    find . -type d -exec install -vd "${pkgdir}"/usr/share/"${pkgname}"/{} \;
-    find . -type f -exec install -vm 644 {} "${pkgdir}"/usr/share/"${pkgname}"/{} \;
+    cd "${_pkgname}-${pkgver}"
+    # The project does not have a LICENSE file in the repository root
+    # even though package.json specifies MIT
+
+    cd public
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
 }
