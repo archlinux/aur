@@ -5,18 +5,18 @@ _jrever="21.0.9"
 
 pkgname="zulu-jre21-fx"
 pkgver="$_jrever+$_zuluver"
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included)."
 arch=("x86_64" "aarch64")
-license=("custom")
+license=("GPL-2.0-with-classpath-exception")
 depends=(
     "java-runtime-common>=3"
     "ca-certificates-utils"
 )
 provides=(
     "java-runtime=21"
-    "java-runtime-headless=21"
     "java-runtime-openjdk=21"
+    "java-runtime-headless=21"
     "java-runtime-headless-openjdk=21"
     "java-openjfx=21"
 )
@@ -54,15 +54,17 @@ package() {
 
     # Install configuration files
     install -d "$pkgdir/etc/$pkgname"
-    cp -rT "$pkgdir/$_jvmdir/conf" "$pkgdir/etc/$pkgname"
-    rm -r "$pkgdir/$_jvmdir/conf"
+    mv -T "$pkgdir/$_jvmdir/conf" "$pkgdir/etc/$pkgname"
     ln -s "/etc/$pkgname" "$pkgdir/$_jvmdir/conf"
 
     # Install legal files
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    cp -rT "$pkgdir/$_jvmdir/legal" "$pkgdir/usr/share/licenses/$pkgname"
-    rm -r "$pkgdir/$_jvmdir/legal"
+    mv -T "$pkgdir/$_jvmdir/legal" "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "/usr/share/licenses/$pkgname" "$pkgdir/$_jvmdir/legal"
+
+    # Install OpenJFX license
+    mv "$pkgdir/$_jvmdir/OPENJFX_LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/usr/share/licenses/$pkgname/OPENJFX_LICENSE" "$pkgdir/$_jvmdir/OPENJFX_LICENSE"
 
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
