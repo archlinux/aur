@@ -1,0 +1,26 @@
+pkgbase = python-meshtastic
+	pkgdesc = The Python CLI and API for talking to Meshtastic devices
+	pkgver = 2.7.6
+	pkgrel = 1
+	url = https://github.com/meshtastic/python
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-bleak
+	depends = python-packaging
+	depends = python-protobuf
+	depends = python-pypubsub
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-tabulate
+	optdepends = python-argcomplete
+	optdepends = python-pandas
+	optdepends = python-pyqrcode
+	optdepends = python-wcwidth
+	source = https://github.com/meshtastic/python/archive/refs/tags/2.7.6.tar.gz
+	b2sums = 53b8d0ee1bcebb0cf8a86d58ab9c74533a99ded21aeaa2e941dea00340ea196c5b623db631a2b9520ffdc96c1e8692a94b24e682598f215bf7e5e6427a7c28c6
+
+pkgname = python-meshtastic
