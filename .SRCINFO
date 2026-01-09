@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager-bin
 	pkgdesc = A wrapper around all package managers
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/kdeldycke/meta-package-manager
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = meta-package-manager-bin
 	provides = mpm
 	conflicts = meta-package-manager
 	options = !strip
-	source = LICENSE-6.0.1::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.1/license
-	source = README-6.0.1.md::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.1/readme.md
-	source = CHANGELOG-6.0.1.md::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.1/changelog.md
+	source = LICENSE-6.0.2::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.2/license
+	source = README-6.0.2.md::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.2/readme.md
+	source = CHANGELOG-6.0.2.md::https://raw.githubusercontent.com/kdeldycke/meta-package-manager/v6.0.2/changelog.md
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 	sha256sums = 06c5e7eacd8a033b3f466eadb73ba94290cbeb9f7064efc5016be05bbc6d6939
-	sha256sums = 1810cf892bd854362304d1571d6de76bcd54356499e78304e11b4ab317a33e27
-	source_x86_64 = mpm-6.0.1::https://github.com/kdeldycke/meta-package-manager/releases/download/v6.0.1/mpm-linux-x64.bin
-	sha256sums_x86_64 = 4ef280288751d6a2563bdddf598286efd8244c82d2a6d2c77bd9e077be428088
+	sha256sums = 94ff76be88d26cfc710f103e415b50d147b131ef84df19d8e3dc70e7fb0af0e9
+	source_x86_64 = mpm-6.0.2::https://github.com/kdeldycke/meta-package-manager/releases/download/v6.0.2/mpm-linux-x64.bin
+	sha256sums_x86_64 = e82f46165071c4d550517fc9b48b9eefeb907a362a352708b2e2d0c46470b228
 
 pkgname = meta-package-manager-bin
