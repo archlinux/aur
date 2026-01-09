@@ -1,7 +1,7 @@
 # Maintainer: Daniele <d bas dot so at poul.org>
 
 pkgname="kontainer"
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A simple Kirigami GUI for Distrobox"
 url="https://github.com/DenysMb/Kontainer"
