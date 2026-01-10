@@ -1,0 +1,15 @@
+pkgbase = python-code-minimap
+	pkgdesc = Pure Python code minimap render
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/joouha/python-code-minimap
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	source = python-code-minimap-0.1.1.tar.gz::https://github.com/joouha/python-code-minimap/archive/v0.1.1.tar.gz
+	sha256sums = b54623b9a10752ee016557bb1a63166c8015a765dfbcad0c4e496e9f0a132333
+
+pkgname = python-code-minimap
