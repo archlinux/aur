@@ -1,4 +1,4 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Stefan Husmann (https://aur.archlinux.org/account/haawda)
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
