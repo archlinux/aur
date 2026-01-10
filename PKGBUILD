@@ -1,8 +1,9 @@
 # Maintainer: Spoorloos <mick.negenman@icloud.com>
 
-_zuluver="21.46.19"
 _jrever="21.0.9"
+_zuluver="21.46.19"
 
+# Basic package settings
 pkgname="zulu-jre21-fx"
 pkgver="$_jrever+$_zuluver"
 pkgrel=3
@@ -20,51 +21,58 @@ provides=(
     "java-runtime-headless-openjdk=21"
     "java-openjfx=21"
 )
-backup=(
-    "etc/$pkgname/management/jmxremote.access"
-    "etc/$pkgname/management/jmxremote.password.template"
-    "etc/$pkgname/management/management.properties"
-    "etc/$pkgname/sdp/sdp.conf.template"
-    "etc/$pkgname/security/policy/limited/default_local.policy"
-    "etc/$pkgname/security/policy/limited/default_US_export.policy"
-    "etc/$pkgname/security/policy/limited/exempt_local.policy"
-    "etc/$pkgname/security/policy/unlimited/default_local.policy"
-    "etc/$pkgname/security/policy/unlimited/default_US_export.policy"
-    "etc/$pkgname/security/policy/README.txt"
-    "etc/$pkgname/security/java.policy"
-    "etc/$pkgname/security/java.security"
-    "etc/$pkgname/jaxp.properties"
-    "etc/$pkgname/logging.properties"
-    "etc/$pkgname/net.properties"
-    "etc/$pkgname/sound.properties"
-)
 options=("!strip")
 install="$pkgname.install"
+
+# Source URLs
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_x64.tar.gz")
-source_aarch64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_aarch64.tar.gz")
 sha256sums_x86_64=("f3acb0aea8ccd7a7293bbf580f09b9614b5c8fa7729ac1a0478f7da58cd246e5")
+source_aarch64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_aarch64.tar.gz")
 sha256sums_aarch64=("1c034dbdb0de3b0b96475095ca75fe676a577333f9f8cb7f849e9cde7e1bcd92")
 
+# Directory variables
 _jvmdir="usr/lib/jvm/$pkgname"
+_confdir="etc/$pkgname"
+_legaldir="usr/share/licenses/$pkgname"
+
+# Backup config files
+backup=(
+    "$_confdir/management/jmxremote.access"
+    "$_confdir/management/jmxremote.password.template"
+    "$_confdir/management/management.properties"
+    "$_confdir/sdp/sdp.conf.template"
+    "$_confdir/security/policy/limited/default_local.policy"
+    "$_confdir/security/policy/limited/default_US_export.policy"
+    "$_confdir/security/policy/limited/exempt_local.policy"
+    "$_confdir/security/policy/unlimited/default_local.policy"
+    "$_confdir/security/policy/unlimited/default_US_export.policy"
+    "$_confdir/security/policy/README.txt"
+    "$_confdir/security/java.policy"
+    "$_confdir/security/java.security"
+    "$_confdir/jaxp.properties"
+    "$_confdir/logging.properties"
+    "$_confdir/net.properties"
+    "$_confdir/sound.properties"
+)
 
 package() {
     # Install main files
     install -d "$pkgdir/$_jvmdir"
     cp -rT "$srcdir"/zulu*-linux_*/ "$pkgdir/$_jvmdir"
 
-    # Install configuration files
-    install -d "$pkgdir/etc/$pkgname"
-    mv -T "$pkgdir/$_jvmdir/conf" "$pkgdir/etc/$pkgname"
-    ln -s "/etc/$pkgname" "$pkgdir/$_jvmdir/conf"
+    # Move configuration files
+    install -d "$pkgdir/$_confdir"
+    mv -T "$pkgdir/$_jvmdir/conf" "$pkgdir/$_confdir"
+    ln -s "/$_confdir" "$pkgdir/$_jvmdir/conf"
 
-    # Install legal files
-    install -d "$pkgdir/usr/share/licenses/$pkgname"
-    mv -T "$pkgdir/$_jvmdir/legal" "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "/usr/share/licenses/$pkgname" "$pkgdir/$_jvmdir/legal"
+    # Move legal files
+    install -d "$pkgdir/$_legaldir"
+    mv -T "$pkgdir/$_jvmdir/legal" "$pkgdir/$_legaldir"
+    ln -s "/$_legaldir" "$pkgdir/$_jvmdir/legal"
 
-    # Install OpenJFX license
-    mv "$pkgdir/$_jvmdir/OPENJFX_LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "/usr/share/licenses/$pkgname/OPENJFX_LICENSE" "$pkgdir/$_jvmdir/OPENJFX_LICENSE"
+    # Move OpenJFX license
+    mv "$pkgdir/$_jvmdir/OPENJFX_LICENSE" "$pkgdir/$_legaldir"
+    ln -s "/$_legaldir/OPENJFX_LICENSE" "$pkgdir/$_jvmdir/OPENJFX_LICENSE"
 
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
