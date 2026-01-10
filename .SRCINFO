@@ -1,7 +1,7 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 25.09.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	changelog = anki.changelog
 	arch = x86_64
