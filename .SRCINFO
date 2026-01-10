@@ -64,6 +64,6 @@ pkgbase = mathematica
 	source = Wolfram_14.3.0_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false
 	source = remove-xdg-scripts.patch
 	sha256sums = 16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7
-	sha256sums = 20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0
+	sha256sums = ed6509dfface8e05a5fa870350516a0795a1a3bf91cd1bed0f90fa1159378350
 
 pkgname = mathematica
