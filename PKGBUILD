@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-abseil-cpp
-pkgver=20250512.1
+pkgver=20250814.1
 pkgrel=1
 arch=('any')
 pkgdesc="Collection of C++ library code designed to augment the C++ standard library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/abseil/abseil-cpp/archive/${pkgver}/abseil-cpp-${pkgver}.tar.gz")
-md5sums=('f225db90c7f3485f3bb65ab2aeae76fa')
+md5sums=('d4d3c25f78e28d61ad83e54cd1116933')
 
 build() {
     cd "${srcdir}/abseil-cpp-${pkgver}"
@@ -55,4 +55,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
