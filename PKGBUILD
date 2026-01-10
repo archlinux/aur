@@ -1,7 +1,7 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname='alacritty-use-theme-git'
-pkgver=r71.fbe2119
-pkgrel=4
+pkgver=r11.a6b7893
+pkgrel=1
 pkgdesc="Small utility to switch the selected theme used by alacritty terminal."
 arch=('x86_64')
 url="https://github.com/christophermca/alacritty-use-theme"
@@ -18,7 +18,7 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 $srcdir/$pkgname/.local/share/alacritty/use-theme.sh "$pkgdir/usr/bin/alacritty-use-theme/use-theme.sh"
-  install -Dm755 $srcdir/$pkgname/.local/share/alacritty/selected.toml.DEFAULT "$pkgdir/usr/share/alacritty-use-theme/selected.toml.DEFAULT"
+  install -Dm755 $srcdir/$pkgname/src/use-theme.sh "$pkgdir/usr/bin/alacritty-use-theme/use-theme.sh"
+  install -Dm755 $srcdir/$pkgname/src/selected.toml.DEFAULT "$pkgdir/usr/share/alacritty-use-theme/selected.toml.DEFAULT"
   install -Dm644 $srcdir/$pkgname/README.md "$pkgdir/usr/share/docs/alacritty-use-theme/README.md"
 }
