@@ -2,8 +2,8 @@
 
 _pkgbase="piper-voices"
 pkgname="piper-voices-minimal"
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Voices for Piper text to speech system (en_US, single model)"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
