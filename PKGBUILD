@@ -17,7 +17,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "utf8cpp" "vulkan-headers"
 provides=("lib${PKG_REAL_NAME}.so" "UVKBuildTool" "libUVKBuildToolLib.so")
 makedepends=("cmake" "make" "${depends}" )
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('730e53f1438b127882e720b498f6958107ceddea58b5183339f1f08b5fe7f0b8')
+sha256sums=('22d8db1517be653aa2a7c55213b3e8e045f68647c5d40226dcd00f99757531ad')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
