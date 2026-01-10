@@ -1,8 +1,9 @@
 pkgbase = piper-voices-cs-cz
 	pkgdesc = Voices for Piper text to speech system (cs_CZ)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-cs-cz.install
 	arch = any
 	groups = piper-voices
 	license = MIT
