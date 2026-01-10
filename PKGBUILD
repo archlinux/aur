@@ -2,7 +2,7 @@
 
 _pkgname=nemo-fileroller
 pkgname=nemo-engrampa
-pkgver=6.4.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Archive management plugin for Nemo using engrampa"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('nemo' 'engrampa')
 makedepends=('meson' 'samurai' 'glib2-devel')
 options=('!libtool' '!emptydirs')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('55e8fb43edde09c3ceba197a4359c1e79b1f0ea7007543d26f32532957aabd49')
+sha256sums=('ab610011ea77b00ba760fd151546f271ac92b525fcf1e4b603fbf46b85c3be30')
 
 prepare() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
