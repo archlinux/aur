@@ -1,32 +1,38 @@
-# Maintainer: emersion
+# Maintainer: metaneutrons <https://github.com/metaneutrons>
+pkgname=bups
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="USB print server for label printers"
+arch=('x86_64' 'aarch64')
+url="https://github.com/metaneutrons/bups"
+license=('GPL-3.0-or-later')
+depends=()
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/metaneutrons/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
-pkgname="bups"
-pkgver=0.8.1
-pkgrel=2
-pkgdesc="Simple GUI for Bup, a very efficient backup system."
-arch=("any")
-url="https://github.com/emersion/bups"
-license=("MIT")
-depends=("bup" "gtk3" "gobject-introspection" "python2-gobject")
-optdepends=("cifs-utils: samba filesystems support"
-            "encfs: encryption support"
-            "x11-ssh-askpass: encryption support"
-            "sshfs: ssh filesystems support"
-            "google-drive-ocamlfuse: google drive support"
-            "systemd: backup scheduling support")
-makedepends=()
-source=(
-  "https://github.com/emersion/bups/archive/v$pkgver.tar.gz")
-sha256sums=('2ae93998f8e5a2e4dc4fddf2e5662017f563c56a2a0d87b10533dd97600b35c7')
+prepare() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
 
-  bash tools/makemo.sh
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

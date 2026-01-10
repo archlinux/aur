@@ -1,22 +1,13 @@
 pkgbase = bups
-	pkgdesc = Simple GUI for Bup, a very efficient backup system.
-	pkgver = 0.8.1
-	pkgrel = 2
-	url = https://github.com/emersion/bups
-	arch = any
-	license = MIT
-	depends = bup
-	depends = gtk3
-	depends = gobject-introspection
-	depends = python2-gobject
-	optdepends = cifs-utils: samba filesystems support
-	optdepends = encfs: encryption support
-	optdepends = x11-ssh-askpass: encryption support
-	optdepends = sshfs: ssh filesystems support
-	optdepends = google-drive-ocamlfuse: google drive support
-	optdepends = systemd: backup scheduling support
-	source = https://github.com/emersion/bups/archive/v0.8.1.tar.gz
-	sha256sums = 2ae93998f8e5a2e4dc4fddf2e5662017f563c56a2a0d87b10533dd97600b35c7
+	pkgdesc = USB print server for label printers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/metaneutrons/bups
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	source = bups-0.1.0.tar.gz::https://github.com/metaneutrons/bups/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = bups
-
