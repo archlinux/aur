@@ -5,7 +5,7 @@ pkgbase = ripperx
 	url = https://codeberg.org/thothix/ripperx
 	arch = x86_64
 	arch = i686
-	license = GPL-2.0-or-later
+	license = GPL-2.0-only
 	makedepends = autoconf>=2.60
 	makedepends = automake
 	makedepends = gdk-pixbuf2
@@ -17,6 +17,7 @@ pkgbase = ripperx
 	depends = gtk2>=2.6
 	depends = libgdk_pixbuf-2.0.so
 	depends = taglib>=1.9.1
+	options = !lto
 	source = ripperx-v3.0.2.tar.gz::https://codeberg.org/thothix/ripperx/archive/3.0.2.tar.gz
 	source = ripperx_desktopfile-iconname.patch
 	sha256sums = 7461cdd3eda85ada3ed0e0059abe37c2b475e8986cd033434fde7601cacc377c

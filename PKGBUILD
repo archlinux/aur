@@ -29,7 +29,7 @@ makedepends=(
   'gettext>=0.15'
   'libtool'
 )
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::https://codeberg.org/thothix/ripperx/archive/${pkgver}.tar.gz"
   "ripperx_desktopfile-iconname.patch"
@@ -38,6 +38,7 @@ sha256sums=(
   '7461cdd3eda85ada3ed0e0059abe37c2b475e8986cd033434fde7601cacc377c'
   'b529f04f4836e49dfd118522f7969486ba8eebb132f4e03bde2ac72630566c0e'
 )
+options+=('!lto') # With LTO, running 'ripperX' fails with a Segmentation Fault.
 
 prepare() {
   cd "$pkgname"
@@ -61,7 +62,8 @@ build() {
   ./bootstrap
   ./configure \
     --prefix=/usr \
-    --enable-nls
+    --enable-nls \
+    --disable-debug
 
   make -j1
 }
@@ -78,5 +80,4 @@ package() {
 
   install -Dvm0644 -t "${pkgdir}/usr/share/doc/${pkgname}"  BUGS CHANGELOG.md FAQ README README.* TODO
   install -Dvm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
-
 }
