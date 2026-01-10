@@ -5,7 +5,7 @@
 
 pkgname=pyprime
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CPU and RAM benchmark'
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
 url='https://github.com/mbntr/PYPrime-2.x'
