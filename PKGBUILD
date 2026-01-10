@@ -5,12 +5,12 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
 license=('MIT')
-_electron=electron35
+_electron=electron39
 depends=(
   'alsa-lib'
   'docker'
