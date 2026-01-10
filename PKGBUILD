@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=firp
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A Modern Fortran Interpreter with REPL, debugger, and JIT compilation'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortranGoingOnForty/firp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('29bdc248a2105f340c921fc0190cb06acb4be839205715f116664a3aec5b84b4')
+sha256sums=('2b024de7634cd7436a364eed2a820606f65d80edff6cec23ab9def724112d3b2')
 
 prepare() {
     cd "$pkgname-$pkgver"
