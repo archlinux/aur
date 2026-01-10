@@ -1,7 +1,7 @@
 pkgbase = bashdev
 	pkgdesc = A library of reusable Bash functions for script developers.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomB19/bashdev
 	arch = any
 	license = MIT

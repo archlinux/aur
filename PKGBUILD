@@ -3,7 +3,7 @@
 # Contributor: ChatGPT by OpenAI (https://openai.com/)
 pkgname='bashdev'
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of reusable Bash functions for script developers."
 arch=('any')
 url="https://github.com/TomB19/$pkgname"
