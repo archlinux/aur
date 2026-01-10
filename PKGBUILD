@@ -29,7 +29,7 @@ source=("${_pkgname}.env"
 		"${_pkgname}.tmpfiles"
 		"${pkgname}.install")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.zst::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_${arch[0]}-unknown-linux-musl.tar.zst")
-sha256sums=('65bc3307ba4a6135c11b88d6b829081dad5dc98ff7a872314b35ebe83a5708a1'
+sha256sums=('6c06010b2ef00f498e460313e8a750da6b6f15dc5034095fa22d3f71d8163ff9'
             '4a97a5739f401ba6b2dba1baa824bc5d547a0e7fdb7bfdd0c41078a6d9dd9cd9'
             '04ad83550f915fd3d69a7748f9b0df67fe8ae80afe7c82a0db6f3a8c5f5a3880'
             '6c519dc412f2180bf2ea8b945d1ae71eae885ca0ab4986034deb840dee5ab83b'
