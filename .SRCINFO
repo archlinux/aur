@@ -1,7 +1,7 @@
 pkgbase = schildichat-desktop-git
 	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout.
 	pkgver = 1.11.112.sc.0.test.0.r547.20250917.4d4dcf1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://schildi.chat
 	arch = x86_64
 	license = Apache-2.0
