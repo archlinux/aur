@@ -6,7 +6,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/adduser adduser-debian-3.137
  WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 -General Public License, /usr/share/common-licenses/GPL, for more details.
-+General Public License, /usr/share/licenses/common/GPL2/license.txt,
++General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,
 +for more details.
  ") );
  }
@@ -19,7 +19,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/deluser adduser-debian-3.137
  WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 -General Public License, /usr/share/common-licenses/GPL, for more details.
-+General Public License, /usr/share/licenses/common/GPL2/license.txt,
++General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,
 +for more details.
  ") );
  }
@@ -32,7 +32,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/adduser.pot adduser-debia
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  
@@ -45,7 +45,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ca.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Aquest és programari lliure; podeu redistribuir-lo i/o modificar-lo sota "
@@ -55,7 +55,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ca.po adduser-debian-3.13
  "ADEQUACIÓ\n"
  "PER UN PROPÒSIT PARTICULAR.  Vegeu la Llicència Pública General GNU,\n"
 -"/usr/share/common-licenses/GPL, per obtenir-ne més detalls.\n"
-+"/usr/share/licenses/common/GPL2/license.txt, per obtenir-ne més detalls.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, per obtenir-ne més detalls.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -67,7 +67,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/cs.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Tento program je svobodný software; můžete jej šířit a/nebo upravovat\n"
@@ -77,7 +77,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/cs.po adduser-debian-3.13
  "Tento program je distribuovaný v naději, že bude užitečný, ale BEZ\n"
  "JAKÉKOLIV ZÁRUKY. Pro více podrobností si přečtěte GNU General\n"
 -"Public License v /usr/share/common-licenses/GPL.\n"
-+"Public License v /usr/share/licenses/common/GPL2/license.txt.\n"
++"Public License v /usr/share/licenses/spdx/GPL-2.0-or-later.txt.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -89,7 +89,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/da.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Dette program er fri software. Du kan redistribuere og/eller modificere\n"
@@ -101,7 +101,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/da.po adduser-debian-3.13
 -"læses i GNU General Public License. Se /usr/share/common-licenses/GPL, for\n"
 -"yderligere detaljer.\n"
 +"læses i GNU General Public License. Se\n"
-+"/usr/share/licenses/common/GPL2/license.txt, for yderligere detaljer.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, for yderligere detaljer.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -113,7 +113,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/de.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Dieses Programm ist freie Software. Sie können es unter den Bedingungen der\n"
@@ -123,7 +123,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/de.po adduser-debian-3.13
  "Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK.\n"
  "Details finden Sie in der GNU General Public License\n"
 -"(/usr/share/common-licenses/GPL).\n"
-+"(/usr/share/licenses/common/GPL2/license.txt).\n"
++"(/usr/share/licenses/spdx/GPL-2.0-or-later.txt).\n"
  
  #: ../adduser:1387
  msgid ""
@@ -135,7 +135,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/es.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Este programa es software libre. Puede redistribuirlo y/o modificarlo\n"
@@ -147,7 +147,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/es.po adduser-debian-3.13
 -"Licencia Pública General de GNU, en /usr/share/common-licenses/GPL,\n"
 -"para más detalles.\n"
 +"Licencia Pública General de GNU, en\n"
-+"/usr/share/licenses/common/GPL2/license.txt, para más detalles.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, para más detalles.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -159,7 +159,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/eu.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Programa hau software librea da; birbana eta/edo alda dezakezu\n"
@@ -172,7 +172,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/fr.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Ce programme est un logiciel libre, vous pouvez le redistribuer ou le\n"
@@ -182,7 +182,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/fr.po adduser-debian-3.13
  "COMMERCIALISABLE ou APPROPRIÉ POUR UN USAGE PRÉCIS. Pour de plus amples\n"
  "détails, merci de vous référer à la Licence Publique Générale GNU,\n"
 -"/usr/share/common-licenses/GPL.\n"
-+"/usr/share/licenses/common/GPL2/license.txt.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -194,7 +194,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/gl.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Este programa é libre; pódese redistribuír e/ou modificar segundo\n"
@@ -206,7 +206,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/gl.po adduser-debian-3.13
 -"a Licencia Xeral Pública de GNU, /usr/share/common-licenses/GPL, para máis "
 -"información.\n"
 +"a Licencia Xeral Pública de GNU,\n"
-+"/usr/share/licenses/common/GPL2/license.txt, para máis información.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, para máis información.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -218,7 +218,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/hu.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Ez a program egy szabad szoftver; a Free Software Foundation \n"
@@ -228,7 +228,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/hu.po adduser-debian-3.13
  "való alkalmazhatóságra való származtatott garanciát is beleértve.\n"
  "További részletekért lásd a GNU General Public License\n"
 -"dokumentumot vagy az /usr/share/common-licenses/GPL állományt.\n"
-+"dokumentumot vagy az /usr/share/licenses/common/GPL2/license.txt\n"
++"dokumentumot vagy az /usr/share/licenses/spdx/GPL-2.0-or-later.txt\n"
 +"állományt.\n"
  
  #: ../adduser:1387
@@ -241,7 +241,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/it.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Questo programma è software libero; è possibile ridistribuirlo e/o\n"
@@ -251,7 +251,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/it.po adduser-debian-3.13
  "APPLICABILITÀ PER UNO SCOPO PARTICOLARE. Per maggiori dettagli consultare "
  "la\n"
 -"GNU General Public License (/usr/share/common-licenses/GPL).\n"
-+"GNU General Public License (/usr/share/licenses/common/GPL2/license.txt).\n"
++"GNU General Public License (/usr/share/licenses/spdx/GPL-2.0-or-later.txt).\n"
  
  #: ../adduser:1387
  msgid ""
@@ -263,7 +263,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ja.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "This program is free software; you can redistribute it and/or modify\n"
@@ -273,7 +273,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ja.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  
  #: ../adduser:1387
@@ -286,7 +286,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ko.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  
@@ -299,7 +299,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/nb.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Dette programmet er fri programvare.  Du kan redistribuerer det og/eller\n"
@@ -309,7 +309,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/nb.po adduser-debian-3.13
  "men UTEN NOEN GARANTIER, heller ikke impliserte om SALGBARHET eller\n"
  "EGNETHET FOR NOEN SPESIELL ANVENDELSE.  Se «GNU General Public License»,\n"
 -"/usr/share/common-licenses/GPL, for flere detaljer.\n"
-+"/usr/share/licenses/common/GPL2/license.txt, for flere detaljer.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, for flere detaljer.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -321,7 +321,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/nl.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Dit programma is vrije software; u kunt het distribueren en/of veranderen\n"
@@ -331,7 +331,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/nl.po adduser-debian-3.13
  "ZONDER ENIGE GARANTIE; zelfs zonder de garantie dat\n"
  "HET WERKT of HET GESCHIKT IS VOOR EEN DOEL. Bekijk de GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, voor meer details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt, voor\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt, voor\n"
 +"meer details.\n"
  
  #: ../adduser:1387
@@ -344,7 +344,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pl.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Ten program jest darmowy; możesz go redystrybuować i/lub modyfikować\n"
@@ -355,7 +355,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pl.po adduser-debian-3.13
  "DO SPRZEDAŻY ani DO KONKRETNYCH CELÓW. Szczegóły można znaleźć w Ogólnej\n"
 -"Licencji Publicznej GNU w pliku /usr/share/common-licenses/GPL.\n"
 +"Licencji Publicznej GNU w pliku\n"
-+"/usr/share/licenses/common/GPL2/license.txt.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -367,7 +367,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pt_BR.po adduser-debian-3
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Este programa é software livre; você pode redistribuí-lo e/ou\n"
@@ -377,7 +377,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pt_BR.po adduser-debian-3
  "SEM NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE\n"
  "OU ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública\n"
 -"Geral do GNU, /usr/share/common-licenses/GPL, para mais detalhes.\n"
-+"Geral do GNU, /usr/share/licenses/common/GPL2/license.txt, para mais\n"
++"Geral do GNU, /usr/share/licenses/spdx/GPL-2.0-or-later.txt, para mais\n"
 +"detalhes.\n"
  
  #: ../adduser:1387
@@ -390,7 +390,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pt.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Este programa é software livre; você pode redistribuí-lo e/ou modifica-lo\n"
@@ -400,7 +400,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/pt.po adduser-debian-3.13
  "QUALQUER GARANTIA; mesmo sem a garantia implícita de COMERCIALIZAÇÃO OU\n"
  "ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Para mais detalhes, veja a\n"
 -"GNU General Public License em /usr/share/common-licenses/GPL.\n"
-+"GNU General Public License em /usr/share/licenses/common/GPL2/license.txt.\n"
++"GNU General Public License em /usr/share/licenses/spdx/GPL-2.0-or-later.txt.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -412,7 +412,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ru.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "This program is free software; you can redistribute it and/or modify\n"
@@ -422,7 +422,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/ru.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  
  #: ../adduser:1387
@@ -435,7 +435,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/sk.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Tento program je slobodný softvér; môžete ho šíriť a/alebo meniť\n"
@@ -448,7 +448,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/sv.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Följande text är en informell översättning som enbart tillhandahålls i\n"
@@ -459,7 +459,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/sv.po adduser-debian-3.13
  "om SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL för ytterligare "
 -"information.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt\n"
 +"för ytterligare information.\n"
  
  #: ../adduser:1387
@@ -472,7 +472,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/uk.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Ця програма - вільне програмне забезпечення; Ви можете розповсюджувати\n"
@@ -482,7 +482,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/uk.po adduser-debian-3.13
  "КОМЕРЦІЙНОЇ ПРИДАТНОСТІ чи ВІДПОВІДНОСТІ БУДЬ-ЯКОМУ ПЕВНОМУ\n"
  "ЗАСТОСУВАННЮ. Зверніться до Загальної Публічної Ліцензії GNU,\n"
 -"/usr/share/common-licenses/GPL, за подробицями.\n"
-+"/usr/share/licenses/common/GPL2/license.txt, за подробицями.\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt, за подробицями.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -494,7 +494,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/vi.po adduser-debian-3.13
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "Chương trình này là phần mềm tự do; bạn có thể phát hành lại nó\n"
@@ -506,7 +506,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/vi.po adduser-debian-3.13
 -"Xem Giấy Phép Công Cộng GNU (/usr/share/common-licenses/GPL)\n"
 -"để biết thêm chi tiết.\n"
 +"Xem Giấy Phép Công Cộng GNU\n"
-+"(/usr/share/licenses/common/GPL2/license.txt) để biết thêm chi tiết.\n"
++"(/usr/share/licenses/spdx/GPL-2.0-or-later.txt) để biết thêm chi tiết.\n"
  
  #: ../adduser:1387
  msgid ""
@@ -518,7 +518,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/zh_CN.po adduser-debian-3
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
 -"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
-+"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"General Public License, /usr/share/licenses/spdx/GPL-2.0-or-later.txt,\n"
 +"for more details.\n"
  msgstr ""
  "本程序是自由软件；您可以在自由软件基金会的GNU公共授权条款版本2，或(随您选择)"
@@ -528,7 +528,7 @@ diff '--color=auto' -rupN adduser-debian-3.137.orig/po/zh_CN.po adduser-debian-3
 -"性有隐含的保证。关于GNU公共条款详细信息请参见/usr/share/common-licenses/"
 -"GPL。\n"
 +"性有隐含的保证。关于GNU公共条款详细信息请参见"
-+"/usr/share/licenses/common/GPL2/license.txt。\n"
++"/usr/share/licenses/spdx/GPL-2.0-or-later.txt。\n"
  
  #: ../adduser:1387
  msgid ""

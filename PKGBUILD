@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
 url="https://salsa.debian.org/debian/adduser"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 
 # findutils: provides the `find` back-end command used during traversal of the
 #            skeleton user directory
@@ -45,7 +45,7 @@ source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_p
         "arch-policy.patch")
 sha256sums=('28cdbd0b393a7ce2eb018caaf8dc1c0917d0937720372dc2d2cedbf0e4d2e9c1'
             'a65b9919007d55fd5ace456276493e78a6cd2183d1277c458c74879cc2519e81'
-            '24329842e91bf863621eccb8abebcf2419019a572ea33dc61e85a8ad0b929545'
+            'fa6590b6d8d6dfab1b4da3230115c3d69fd70c7dea84e5308369819c0a5734f4'
             'e427698b1ff381bc5c6b1a696e28fdfc4aa9ffbb6a8124a4d612ded31b30e9ef')
 
 prepare() {

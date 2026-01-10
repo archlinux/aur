@@ -1,0 +1,6 @@
+[adduser-deb]
+source = "gitlab"
+host = "salsa.debian.org"
+gitlab = "debian/adduser"
+prefix = "debian/"
+use_max_tag = "true"
