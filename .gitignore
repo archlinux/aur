@@ -1,6 +1,8 @@
 *
 !PKGBUILD
 !.SRCINFO
+!*.env
+!*.conf
 !*.install
 !*.service
 !*.sysusers

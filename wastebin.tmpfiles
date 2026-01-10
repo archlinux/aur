@@ -1,0 +1,2 @@
+d /var/lib/wastebin 0750 wastebin wastebin -
+d /etc/wastebin 0755 wastebin wastebin -

@@ -1,0 +1,66 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+#post_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
+
+
+post_install() {
+    echo "Creating new 'SIGNING_KEY' and 'PASSWORD_SALT'"
+
+    KEY=$(printf "wb-%s\n" "$(head -c 48 /dev/urandom | base64 )")
+    SALT="wastebin"
+
+    echo "WASTEBIN_SIGNING_KEY=\"${KEY}\"" >> /etc/wastebin/wastebin.env
+    echo "WASTEBIN_PASSWORD_SALT=\"${SALT}\"" >> /etc/wastebin/wastebin.env
+
+    echo "
+-----------------------------------------------------------------------------
+Default Config Path: /etc/wastebin/
+Default Data Path: /var/lib/wastebin/
+Default User & Group: wastebin:wastebin
+-----------------------------------------------------------------------------
+"
+}
+
+post_remove() {
+    echo "You need to remove database and config by yourself."
+
+    echo "
+-----------------------------------------------------------------------------
+Default Config Path: /etc/wastebin/
+Default Data Path: /var/lib/wastebin/
+Default User & Group: wastebin:wastebin
+-----------------------------------------------------------------------------
+"
+}
