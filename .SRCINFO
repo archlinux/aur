@@ -1,15 +1,15 @@
 pkgbase = python-numpy-mkl-bin
 	pkgdesc = Scientific tools for Python - with Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 2.3.3
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://numpy.org
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = jq
 	depends = python-mkl-service
-	provides = python-numpy=2.3.3
+	provides = python-numpy=2.3.5
 	conflicts = python-numpy
-	source = https://repo.anaconda.com/pkgs/main/linux-64/numpy-base-2.3.3-py313h95072fd_0.tar.bz2
-	sha256sums = 64670d71436411481bbd438f68eca39cd16a8c14af0910dce6e589a32d171bda
+	source = https://repo.anaconda.com/pkgs/main/linux-64/numpy-base-2.3.5-py313h4bc27c9_0.tar.bz2
+	sha256sums = 5f0b2e879b9f1209c77b59ac3544588f837f3825a3fa69ccf4043748125f519c
 
 pkgname = python-numpy-mkl-bin
