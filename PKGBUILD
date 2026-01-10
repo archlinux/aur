@@ -14,9 +14,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/HyDE"
-  ( set -o pipefail
     printf "v25.10.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  
 }
 
 build() {
