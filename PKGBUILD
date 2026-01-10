@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="7.2.0"
+pkgver="7.3.0"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -22,8 +22,6 @@ install='wg-client.install'
 # To build docs uncommont sphinx/texlive
 depends=(
     'python>=3.13' 
-    'python-pyqt6' 
-    'hicolor-icon-theme' 
     'python-psutil' 
     'python-dateutil' 
     'pyconcurrent'
@@ -65,18 +63,6 @@ changelog="Changelog"
 
 prepare() {
     cd "${_gitname}"
-
-    # To build Docs 
-    # echo "Build docs"
-    # cd ./Docs
-    # pdf='wg-client.pdf'
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    # /usr/bin/rm -f $pdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html >/dev/null
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 build() {
@@ -105,6 +91,10 @@ build() {
 
 package() {
     cd "${_gitname}"
+    depends+=(
+        'python-pyqt6' 
+        'hicolor-icon-theme'
+    )
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:

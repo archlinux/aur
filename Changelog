@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 6.11.0 ➙ 7.2.0
-              : 2025-03-20 ➙ 2026-01-06
+ Tags         : 7.0.0 ➙ 7.3.0
+              : 2026-01-06 ➙ 2026-01-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-10   : 7.3.0
+              - Correct license in pyproject.toml
+                Arch PKGBUILD - move graphical dependencies into the package() function.
+                  Makes these runtime and build server does not need to have them installed
+ 2026-01-06   ⋯
+              - update Docs/Changelog
 
  2026-01-06   : 7.2.0
               - **Version 7.2.0**
@@ -29,11 +36,4 @@
                 * Modern coding standards: PEP-8, PEP-257 and PEP-484 style and type annotations
                 * Use pyconcurrent module (additional dependency)
  2025-03-20   ⋯
-              - update Changelog and Docs/wg-client.pdf
-
- 2025-03-20   : 6.11.0
-              - GUI Quit button - make saure stop resolv monitor before stopping wireguard
-                  Wireguard will restore the correct rsolv.conf from resolv.conf.saved
-                Better Changelog format (for packaging/Changelog and Docs/Changelog.rst)
- 2025-03-17   ⋯
               - update Changelog and Docs/wg-client.pdf
