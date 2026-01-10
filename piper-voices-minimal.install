@@ -3,9 +3,9 @@ PIPER_CONFIG=/etc/speech-dispatcher/speechd.conf
 PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
 VOICE_LINE=(
 	'GenericLanguage "en" "en_US" "utf-8"'
-	'AddVoice "en" "MALE1" "/en/en_US/ryan/high/en_US-ryan-high.onnx"'
+	'AddVoice "en" "MALE1" "en/en_US/ryan/high/en_US-ryan-high"'
 )
-DEFAULT_VOICE='DefaultVoice "/en/en_US/ryan/high/en_US-ryan-high.onnx"'
+DEFAULT_VOICE='DefaultVoice "en/en_US/ryan/high/en_US-ryan-high"'
 
 post_install() {
   # Check if the piper-generic.conf file exists
