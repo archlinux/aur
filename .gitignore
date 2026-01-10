@@ -1,2 +1,7 @@
-*.tar.*
-Tree-RB-XS-*/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
