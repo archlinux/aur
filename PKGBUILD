@@ -39,7 +39,7 @@ _package() {
   # and shouldn't be part of the package itself. Other icon packages like 'hicolor-icon-theme' and 'adwaita-icon-theme'
   # does things this way.
   # See https://gitlab.archlinux.org/archlinux/packaging/packages/gtk4/-/blob/main/gtk-update-icon-cache.hook
-  # shellcheck disable=SC2317 # Used in 'install.sh'
+  # shellcheck disable=SC2329 # Used in 'install.sh'
   gtk-update-icon-cache() {
     :
   }
