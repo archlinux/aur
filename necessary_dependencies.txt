@@ -125,8 +125,8 @@ Module: sqlalchemy
     open_webui/models/tags.py
     open_webui/models/tools.py
     open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
-    open_webui/test/util/abstract_integration_test.py
     open_webui/utils/db/access_control.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/telemetry/setup.py
@@ -245,7 +245,7 @@ Module: fastapi
     open_webui/routers/users.py
     open_webui/routers/utils.py
     open_webui/tasks.py
-    open_webui/test/util/mock_user.py
+    open_webui/tools/builtin.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
     open_webui/utils/embeddings.py
@@ -272,9 +272,12 @@ Module: fastapi.responses
     open_webui/main.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
     open_webui/routers/images.py
+    open_webui/routers/knowledge.py
     open_webui/routers/models.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -343,7 +346,53 @@ Module: open_webui.routers.retrieval
     open_webui/main.py
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
+    open_webui/tools/builtin.py
     open_webui/utils/middleware.py
+Module: sqlalchemy.orm
+  Imported in:
+    open_webui/internal/db.py
+    open_webui/main.py
+    open_webui/models/auths.py
+    open_webui/models/channels.py
+    open_webui/models/chats.py
+    open_webui/models/feedbacks.py
+    open_webui/models/files.py
+    open_webui/models/folders.py
+    open_webui/models/functions.py
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/models/memories.py
+    open_webui/models/messages.py
+    open_webui/models/models.py
+    open_webui/models/notes.py
+    open_webui/models/oauth_sessions.py
+    open_webui/models/prompts.py
+    open_webui/models/tags.py
+    open_webui/models/tools.py
+    open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/opengauss.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/models.py
+    open_webui/routers/notes.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/scim.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
+    open_webui/utils/auth.py
 Module: open_webui.internal.db
   Imported in:
     open_webui/config.py
@@ -373,10 +422,30 @@ Module: open_webui.internal.db
     open_webui/models/tags.py
     open_webui/models/tools.py
     open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/models.py
+    open_webui/routers/notes.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/scim.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
     open_webui/routers/utils.py
-    open_webui/test/apps/webui/routers/test_chats.py
-    open_webui/test/util/abstract_integration_test.py
+    open_webui/utils/auth.py
 Module: open_webui.models.functions
   Imported in:
     open_webui/functions.py
@@ -427,7 +496,7 @@ Module: open_webui.models.users
     open_webui/socket/main.py
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/apps/webui/routers/test_users.py
-    open_webui/test/util/mock_user.py
+    open_webui/tools/builtin.py
     open_webui/utils/access_control.py
     open_webui/utils/audit.py
     open_webui/utils/auth.py
@@ -451,7 +520,7 @@ Module: open_webui.models.chats
     open_webui/routers/users.py
     open_webui/routers/utils.py
     open_webui/socket/main.py
-    open_webui/test/apps/webui/routers/test_chats.py
+    open_webui/tools/builtin.py
     open_webui/utils/files.py
     open_webui/utils/middleware.py
     open_webui/utils/pdf_generator.py
@@ -463,6 +532,7 @@ Module: open_webui.config
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
     open_webui/retrieval/vector/dbs/milvus_multitenancy.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/oracle23ai.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -495,12 +565,12 @@ Module: open_webui.config
     open_webui/routers/utils.py
     open_webui/socket/main.py
     open_webui/storage/provider.py
-    open_webui/test/util/abstract_integration_test.py
     open_webui/utils/access_control.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
     open_webui/utils/task.py
+    open_webui/utils/tools.py
     open_webui/utils/webhook.py
 Module: open_webui.env
   Imported in:
@@ -516,13 +586,18 @@ Module: open_webui.env
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/models/external.py
     open_webui/retrieval/utils.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/configs.py
+    open_webui/routers/functions.py
     open_webui/routers/images.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
     open_webui/routers/retrieval.py
+    open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/socket/main.py
     open_webui/socket/utils.py
@@ -573,22 +648,28 @@ Module: open_webui.utils.access_control
     open_webui/models/prompts.py
     open_webui/models/tools.py
     open_webui/retrieval/utils.py
+    open_webui/routers/audio.py
     open_webui/routers/auths.py
     open_webui/routers/channels.py
     open_webui/routers/chats.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
+    open_webui/routers/images.py
     open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
     open_webui/routers/models.py
     open_webui/routers/notes.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/socket/main.py
+    open_webui/tools/builtin.py
     open_webui/utils/auth.py
     open_webui/utils/models.py
+    open_webui/utils/tools.py
 Module: open_webui.utils.auth
   Imported in:
     open_webui/main.py
@@ -619,7 +700,6 @@ Module: open_webui.utils.auth
     open_webui/routers/utils.py
     open_webui/socket/main.py
     open_webui/test/apps/webui/routers/test_auths.py
-    open_webui/test/util/mock_user.py
     open_webui/utils/audit.py
     open_webui/utils/oauth.py
 Module: open_webui.utils.plugin
@@ -669,6 +749,7 @@ Module: open_webui.constants
     open_webui/routers/groups.py
     open_webui/routers/images.py
     open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
     open_webui/routers/models.py
     open_webui/routers/notes.py
     open_webui/routers/ollama.py
@@ -818,28 +899,38 @@ Module: alembic
 Module: alembic.config
   Imported in:
     open_webui/config.py
-Module: cryptography.fernet
+Module: open_webui.retrieval.utils
   Imported in:
-    open_webui/models/oauth_sessions.py
-    open_webui/utils/oauth.py
-Module: authlib.oidc.core
-  Imported in:
-    open_webui/utils/oauth.py
-Module: open_webui.models.auths
-  Imported in:
-    open_webui/migrations/env.py
-    open_webui/routers/auths.py
-    open_webui/routers/users.py
-    open_webui/test/apps/webui/routers/test_auths.py
-    open_webui/utils/oauth.py
-Module: open_webui.models.oauth_sessions
-  Imported in:
-    open_webui/routers/auths.py
-    open_webui/routers/configs.py
-    open_webui/routers/tools.py
-    open_webui/routers/users.py
+    open_webui/routers/retrieval.py
+    open_webui/tools/builtin.py
     open_webui/utils/middleware.py
-    open_webui/utils/oauth.py
+Module: open_webui.routers.images
+  Imported in:
+    open_webui/tools/builtin.py
+    open_webui/utils/files.py
+    open_webui/utils/middleware.py
+Module: open_webui.routers.memories
+  Imported in:
+    open_webui/tools/builtin.py
+    open_webui/utils/middleware.py
+Module: open_webui.models.notes
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/notes.py
+    open_webui/socket/main.py
+    open_webui/tools/builtin.py
+Module: open_webui.models.channels
+  Imported in:
+    open_webui/models/messages.py
+    open_webui/models/users.py
+    open_webui/routers/channels.py
+    open_webui/routers/files.py
+    open_webui/socket/main.py
+    open_webui/tools/builtin.py
+Module: open_webui.models.messages
+  Imported in:
+    open_webui/routers/channels.py
+    open_webui/tools/builtin.py
 Module: open_webui.models.groups
   Imported in:
     open_webui/models/channels.py
@@ -859,9 +950,67 @@ Module: open_webui.models.groups
     open_webui/routers/scim.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
+    open_webui/tools/builtin.py
     open_webui/utils/access_control.py
     open_webui/utils/groups.py
     open_webui/utils/models.py
+    open_webui/utils/oauth.py
+    open_webui/utils/tools.py
+Module: dateutil.relativedelta
+  Imported in:
+    open_webui/tools/builtin.py
+Module: open_webui.models.knowledge
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
+    open_webui/tools/builtin.py
+Module: open_webui.models.files
+  Imported in:
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
+    open_webui/tools/builtin.py
+    open_webui/utils/files.py
+Module: open_webui.routers.knowledge
+  Imported in:
+    open_webui/tools/builtin.py
+Module: open_webui.retrieval.vector.factory
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/retrieval.py
+    open_webui/tools/builtin.py
+Module: cryptography.fernet
+  Imported in:
+    open_webui/models/oauth_sessions.py
+    open_webui/utils/oauth.py
+Module: authlib.oidc.core
+  Imported in:
+    open_webui/utils/oauth.py
+Module: open_webui.models.auths
+  Imported in:
+    open_webui/migrations/env.py
+    open_webui/routers/auths.py
+    open_webui/routers/users.py
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/utils/auth.py
+    open_webui/utils/oauth.py
+Module: open_webui.models.oauth_sessions
+  Imported in:
+    open_webui/routers/auths.py
+    open_webui/routers/configs.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
+    open_webui/utils/middleware.py
     open_webui/utils/oauth.py
 Module: open_webui.utils.webhook
   Imported in:
@@ -881,23 +1030,9 @@ Module: mcp.shared.auth
 Module: authlib.oauth2.rfc6749.errors
   Imported in:
     open_webui/utils/oauth.py
-Module: open_webui.routers.images
-  Imported in:
-    open_webui/utils/files.py
-    open_webui/utils/middleware.py
 Module: open_webui.storage.provider
   Imported in:
     open_webui/routers/files.py
-    open_webui/routers/knowledge.py
-    open_webui/routers/retrieval.py
-    open_webui/utils/files.py
-Module: open_webui.models.files
-  Imported in:
-    open_webui/models/groups.py
-    open_webui/models/knowledge.py
-    open_webui/retrieval/utils.py
-    open_webui/routers/files.py
-    open_webui/routers/folders.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
     open_webui/utils/files.py
@@ -918,6 +1053,9 @@ Module: open_webui.models.tools
   Imported in:
     open_webui/routers/tools.py
     open_webui/utils/plugin.py
+    open_webui/utils/tools.py
+Module: open_webui.tools.builtin
+  Imported in:
     open_webui/utils/tools.py
 Module: asgiref.typing
   Imported in:
@@ -995,16 +1133,9 @@ Module: open_webui.models.folders
 Module: open_webui.routers.tasks
   Imported in:
     open_webui/utils/middleware.py
-Module: open_webui.routers.memories
-  Imported in:
-    open_webui/utils/middleware.py
 Module: open_webui.utils.files
   Imported in:
     open_webui/routers/channels.py
-    open_webui/utils/middleware.py
-Module: open_webui.retrieval.utils
-  Imported in:
-    open_webui/routers/retrieval.py
     open_webui/utils/middleware.py
 Module: open_webui.utils.task
   Imported in:
@@ -1136,6 +1267,7 @@ Module: sqlalchemy.dialects.postgresql
     open_webui/models/models.py
     open_webui/models/notes.py
     open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/utils/db/access_control.py
 Module: anyio
@@ -1157,18 +1289,6 @@ Module: pycrdt
   Imported in:
     open_webui/socket/main.py
     open_webui/socket/utils.py
-Module: open_webui.models.channels
-  Imported in:
-    open_webui/models/messages.py
-    open_webui/models/users.py
-    open_webui/routers/channels.py
-    open_webui/routers/files.py
-    open_webui/socket/main.py
-Module: open_webui.models.notes
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/notes.py
-    open_webui/socket/main.py
 Module: boto3
   Imported in:
     open_webui/retrieval/vector/dbs/s3vector.py
@@ -1218,6 +1338,7 @@ Module: sqlalchemy.sql
     open_webui/models/chats.py
     open_webui/models/messages.py
     open_webui/models/notes.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
 Module: sqlalchemy.engine.reflection
   Imported in:
@@ -1226,27 +1347,14 @@ Module: sqlalchemy.engine.reflection
 Module: open_webui.migrations.util
   Imported in:
     open_webui/migrations/versions/7e5b5dc7342b_init.py
-Module: open_webui.routers.webui
-  Imported in:
-    open_webui/test/util/mock_user.py
 Module: pytest
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
-    open_webui/test/util/abstract_integration_test.py
     open_webui/test/util/test_redis.py
 Module: unittest.mock
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
     open_webui/test/util/test_redis.py
-Module: docker
-  Imported in:
-    open_webui/test/util/abstract_integration_test.py
-Module: pytest_docker.plugin
-  Imported in:
-    open_webui/test/util/abstract_integration_test.py
-Module: fastapi.testclient
-  Imported in:
-    open_webui/test/util/abstract_integration_test.py
 Module: moto
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
@@ -1256,6 +1364,18 @@ Module: open_webui.storage
 Module: gcp_storage_emulator.server
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
+Module: test.util.abstract_integration_test
+  Imported in:
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/apps/webui/routers/test_models.py
+    open_webui/test/apps/webui/routers/test_prompts.py
+    open_webui/test/apps/webui/routers/test_users.py
+Module: test.util.mock_user
+  Imported in:
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/apps/webui/routers/test_models.py
+    open_webui/test/apps/webui/routers/test_prompts.py
+    open_webui/test/apps/webui/routers/test_users.py
 Module: peewee
   Imported in:
     open_webui/internal/migrations/001_initial_schema.py
@@ -1313,13 +1433,10 @@ Module: peewee_migrate
 Module: sqlalchemy.ext.declarative
   Imported in:
     open_webui/internal/db.py
-Module: sqlalchemy.orm
-  Imported in:
-    open_webui/internal/db.py
-    open_webui/retrieval/vector/dbs/pgvector.py
 Module: sqlalchemy.pool
   Imported in:
     open_webui/internal/db.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
 Module: sqlalchemy.sql.type_api
   Imported in:
@@ -1347,6 +1464,7 @@ Module: playhouse.postgres_ext
 Module: sqlalchemy.dialects
   Imported in:
     open_webui/models/models.py
+    open_webui/retrieval/vector/dbs/opengauss.py
 Module: open_webui.models.tags
   Imported in:
     open_webui/models/chats.py
@@ -1372,26 +1490,12 @@ Module: open_webui.utils.headers
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
-Module: open_webui.models.knowledge
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/files.py
-    open_webui/routers/folders.py
-    open_webui/routers/knowledge.py
-    open_webui/routers/retrieval.py
 Module: black
   Imported in:
     open_webui/routers/utils.py
 Module: open_webui.utils.pdf_generator
   Imported in:
     open_webui/routers/utils.py
-Module: open_webui.retrieval.vector.factory
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/files.py
-    open_webui/routers/knowledge.py
-    open_webui/routers/memories.py
-    open_webui/routers/retrieval.py
 Module: open_webui.routers.audio
   Imported in:
     open_webui/routers/files.py
@@ -1411,15 +1515,13 @@ Module: starlette.background
   Imported in:
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
-Module: open_webui.models.messages
-  Imported in:
-    open_webui/routers/channels.py
 Module: open_webui.utils.channels
   Imported in:
     open_webui/routers/channels.py
 Module: fastapi.concurrency
   Imported in:
     open_webui/retrieval/web/utils.py
+    open_webui/routers/evaluations.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
 Module: tiktoken
@@ -1553,6 +1655,7 @@ Module: open_webui.retrieval.vector.utils
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/retrieval/vector/dbs/pinecone.py
@@ -1562,6 +1665,7 @@ Module: open_webui.retrieval.vector.utils
 Module: sentence_transformers
   Imported in:
     open_webui/retrieval/utils.py
+    open_webui/routers/evaluations.py
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.models.colbert
   Imported in:
@@ -1571,6 +1675,10 @@ Module: open_webui.retrieval.models.external
     open_webui/routers/retrieval.py
 Module: open_webui.models.feedbacks
   Imported in:
+    open_webui/routers/evaluations.py
+Module: numpy
+  Imported in:
+    open_webui/retrieval/models/colbert.py
     open_webui/routers/evaluations.py
 Module: open_webui.models.prompts
   Imported in:
@@ -1615,6 +1723,7 @@ Module: open_webui.retrieval.vector.main
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
     open_webui/retrieval/vector/dbs/milvus_multitenancy.py
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/oracle23ai.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -1643,6 +1752,9 @@ Module: open_webui.retrieval.vector.dbs.opensearch
   Imported in:
     open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.pgvector
+  Imported in:
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.opengauss
   Imported in:
     open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.elasticsearch
@@ -1683,12 +1795,15 @@ Module: opensearchpy.helpers
     open_webui/retrieval/vector/dbs/opensearch.py
 Module: pgvector.sqlalchemy
   Imported in:
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
 Module: sqlalchemy.ext.mutable
   Imported in:
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
 Module: sqlalchemy.exc
   Imported in:
+    open_webui/retrieval/vector/dbs/opengauss.py
     open_webui/retrieval/vector/dbs/pgvector.py
 Module: pymilvus
   Imported in:
@@ -1721,6 +1836,9 @@ Module: qdrant_client.models
 Module: oracledb
   Imported in:
     open_webui/retrieval/vector/dbs/oracle23ai.py
+Module: sqlalchemy.dialects.postgresql.psycopg2
+  Imported in:
+    open_webui/retrieval/vector/dbs/opengauss.py
 Module: elasticsearch
   Imported in:
     open_webui/retrieval/vector/dbs/elasticsearch.py
@@ -1760,9 +1878,6 @@ Module: langchain_core.document_loaders
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/tavily.py
-Module: numpy
-  Imported in:
-    open_webui/retrieval/models/colbert.py
 Module: colbert.infra
   Imported in:
     open_webui/retrieval/models/colbert.py
