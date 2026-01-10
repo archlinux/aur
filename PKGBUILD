@@ -1,10 +1,11 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -49,14 +50,21 @@ package() {
   # Licenses (only the MIT license is actually required here)
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE-*
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && {
+      test -d "$pkgname" || continue
+      ln -vsf "$pkgname" "$_pkgname"
+    }
+  done
 }
 
 sha256sums_aarch64=(
-  '9e72eb81d57c2773c3dcb70e60285ad5d953d4b2807514566c03dff960e1c2c5'
+  'f08fcd140d18bf15a0a85ec269506dc254903dbcdb9a6b3865b52c8be95a83c9'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  'b83dda3aceb717f55746fa5a6c248fc2fec4f672e72247244bd1c39c950722d7'
+  '5ad5968dde0b6c69751a83267d543cc82ff64862edaaa8fe3e9e5f506279d1a0'
   "${_skip[@]}"
 )
 
