@@ -1,6 +1,6 @@
 pkgbase = untitled-imgui-framework
 	pkgdesc = Cross-platform desktop application framework based on dear imgui
-	pkgver = 2.1.0.1
+	pkgver = 2.4.0.0
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledImGuiFramework
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = untitled-imgui-framework
 	depends = gcc-libs
 	depends = glibc
 	depends = pkgconf
-	depends = yaml-cpp
 	depends = utf8cpp
 	depends = vulkan-headers
 	depends = vulkan-validation-layers
@@ -29,7 +28,7 @@ pkgbase = untitled-imgui-framework
 	provides = libUntitledImGuiFramework.so
 	provides = UVKBuildTool
 	provides = libUVKBuildToolLib.so
-	source = https://github.com/MadLadSquad/UntitledImGuiFramework/releases/download/v2.1.0.1/untitled-imgui-framework-2.1.0.1.tar.xz
-	sha256sums = cac0ca45f21c78ca459b0d58ca9ee37723b988a2ca05230c588788d1d4800ba9
+	source = https://github.com/MadLadSquad/UntitledImGuiFramework/releases/download/v2.4.0.0/untitled-imgui-framework-2.4.0.0.tar.xz
+	sha256sums = 730e53f1438b127882e720b498f6958107ceddea58b5183339f1f08b5fe7f0b8
 
 pkgname = untitled-imgui-framework

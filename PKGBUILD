@@ -3,13 +3,13 @@
 PKG_REAL_NAME="UntitledImGuiFramework"
 
 pkgname=untitled-imgui-framework
-pkgver=2.1.0.1
+pkgver=2.4.0.0
 pkgrel=1
 pkgdesc="Cross-platform desktop application framework based on dear imgui"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
 arch=(x86_64 aarch64)
 license=('MIT')
-depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp" "utf8cpp" "vulkan-headers" 
+depends=("gcc-libs" "glibc" "pkgconf" "utf8cpp" "vulkan-headers" 
 	"vulkan-validation-layers" "vulkan-icd-loader" "glfw" "freetype2" "fontconfig" 
 	"untitled-dbus-utils" "untitled-cli-parser" "untitled-exec" 
 	"untitled-i18n" "untitled-open" "untitled-xdg-basedir"
@@ -17,13 +17,13 @@ depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp" "utf8cpp" "vulkan-headers"
 provides=("lib${PKG_REAL_NAME}.so" "UVKBuildTool" "libUVKBuildToolLib.so")
 makedepends=("cmake" "make" "${depends}" )
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('cac0ca45f21c78ca459b0d58ca9ee37723b988a2ca05230c588788d1d4800ba9')
+sha256sums=('730e53f1438b127882e720b498f6958107ceddea58b5183339f1f08b5fe7f0b8')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
 
 	cd $nsrcdir || exit
-	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild.cpp
+	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild/CMake.cpp
 	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/CMakeLists.txt
 	./install.sh ci || exit
 	./create-project.sh pkg --skip-compilation || exit
