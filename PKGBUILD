@@ -1,5 +1,5 @@
 pkgname=nikki-editor
-pkgver=1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Simple terminal-based text editor written in C"
 arch=('x86_64')
@@ -8,14 +8,18 @@ license=('MIT')
 depends=('glibc')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('778300d57c37de62b6ee1fd02570fdf5f1911a81e24647666b5bd0d8377392aa')
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+    cd "$pkgname-$pkgver"
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
+    cd "$pkgname-$pkgver"
+
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
+
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

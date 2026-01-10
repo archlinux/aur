@@ -1,6 +1,6 @@
 pkgbase = nikki-editor
 	pkgdesc = Simple terminal-based text editor written in C
-	pkgver = 1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/nijat19trying/nikki-editor
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nikki-editor
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = nikki-editor-1.0.tar.gz::https://github.com/nijat19trying/nikki-editor/archive/refs/tags/v1.0.tar.gz
-	sha256sums = SKIP
+	source = nikki-editor-0.2.1.tar.gz::https://github.com/nijat19trying/nikki-editor/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 778300d57c37de62b6ee1fd02570fdf5f1911a81e24647666b5bd0d8377392aa
 
 pkgname = nikki-editor
