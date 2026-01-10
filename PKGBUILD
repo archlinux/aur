@@ -9,9 +9,9 @@
 _pkgname=tapecalc
 pkgname="${_pkgname}"
 epoch=0
-pkgver=t20240110
+pkgver=t20250914
 _downloadver="${pkgver##t}" # Strip off leading `t` to get version for download URL.
-pkgrel=2
+pkgrel=1
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
@@ -46,8 +46,8 @@ source=(
 validpgpkeys=('19882D92DDA4C400C22C0D56CC2AF4472167BE03')
 
 sha256sums=(
-  '038c814e6349f29595357e05e7059f730ba4513138d11f4bcd8f3dcb3a045e8b'
-  '68bad3037e903210b54eacd611e044686c3595bfea65af94f64aec48ae725696'
+  'de5d03c7454f8b692a90625793ebc536ba51aeab8b4d71f752332fd649a7fd8e'
+  'b9e0ae220820970ca5d0301e6dd2cee6ffb80a693ea5d17b0af09f93af4b79be'
 )
 
 # Since the downloaded file extracts to directories having the version in the name, we want to get the latest one, in case we have old source lying around.
