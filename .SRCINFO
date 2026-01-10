@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-rekt-git
 	pkgdesc = Plugin for VapourSynth: rekt (GIT version)
 	pkgver = 1.0.0.r8.g37df562
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpusGang/rekt
 	arch = x86_64
 	license = MIT
