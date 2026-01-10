@@ -3,9 +3,9 @@ PIPER_CONFIG=/etc/speech-dispatcher/speechd.conf
 PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
 VOICE_LINE=(
 	'GenericLanguage "da" "da_DK" "utf-8"'
-	'AddVoice "da" "MALE1" "/da/da_DK/talesyntese/medium/da_DK-talesyntese-medium"'
+	'AddVoice "da" "MALE1" "da/da_DK/talesyntese/medium/da_DK-talesyntese-medium"'
 )
-DEFAULT_VOICE='DefaultVoice "/da/da_DK/talesyntese/medium/da_DK-talesyntese-medium"'
+DEFAULT_VOICE='DefaultVoice "da/da_DK/talesyntese/medium/da_DK-talesyntese-medium"'
 
 post_install() {
   # Check if the piper-generic.conf file exists
