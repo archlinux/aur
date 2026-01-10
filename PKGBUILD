@@ -10,7 +10,7 @@ _region="SK"
 _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
 pkgname="piper-voices-${_lang}-${_regionSmall}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Voices for Piper text to speech system ($_locale)"
 url="https://huggingface.co/rhasspy/piper-voices"
@@ -20,11 +20,12 @@ groups=("piper-voices")
 provides=("piper-voices")
 depends=("piper-voices-common")
 makedepends=("git-lfs")
+install="${pkgname}.install"
 
 prepare(){
  # needed to avoid smudge error
  rm -rf "piper-voices"
- 
+
  # download the full repo (~220MB) but keep the lfs pointers
  GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/piper-voices"
  
