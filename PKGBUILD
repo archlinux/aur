@@ -1,7 +1,7 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 # Co-Maintainer: lapsus <yakov.till@gmail.com>
 pkgname=ccusage
-pkgver=17.2.1
+pkgver=18.0.5
 pkgrel=1
 pkgdesc="A CLI tool for analyzing Claude Code token usage and costs from local JSONL files"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 options=('!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('4dccdc122e1a8a80fc3986dd420576598534f843f2480451793ccbcca20311e5')
+sha256sums=('0a8f7e8c50e4e1699e7eb0e726f95a7638d893e5c785860428d29bf4c6eb914f')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/ryoppippi/ccusage/releases/latest" |
