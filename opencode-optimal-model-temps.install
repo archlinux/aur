@@ -7,7 +7,7 @@ post_install() {
   echo "(e.g., ~/.config/opencode/config.json):"
   echo ""
   echo "  {"
-  echo "    \"plugin\": [\"opencode-optimal-model-temps\"]"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-optimal-model-temps\"]"
   echo "  }"
   echo ""
   echo "This plugin automatically sets temperature for supported models (e.g. Gemini)."
