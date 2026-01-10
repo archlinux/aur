@@ -1,4 +1,5 @@
-pkg
-src
-v*.tar.gz
-python-gdspy-*
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
