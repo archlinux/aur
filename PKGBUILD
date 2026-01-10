@@ -1,7 +1,7 @@
 # Maintainer: Samuel Q. <massnel at proton dot me>
 
 pkgname=fzur-git
-pkgver=r70.a19216e
+pkgver=r71.2216e00
 pkgrel=1
 pkgdesc="A standalone fzf AUR helper"
 arch=('any')
@@ -21,6 +21,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm 755 fzur "$pkgdir/usr/bin/fzur"
-    install -Dm 755 fzur-info "$pkgdir/usr/bin/fzur-info"
+    install -Dm 755 fzur.sh "$pkgdir/usr/bin/fzur"
+    install -Dm 755 pkg-preview.sh "$pkgdir/usr/lib/fzur/pkg-preview.sh"
+    install -Dm 755 diff-preview.sh "$pkgdir/usr/lib/fzur/diff-preview.sh"
 }
