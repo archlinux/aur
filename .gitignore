@@ -1,3 +1,7 @@
-*.tar.*
-/manpage
-/shellcheck.1.md
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
