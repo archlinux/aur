@@ -1,7 +1,7 @@
 pkgbase = python-meshcore-git
 	pkgdesc = Python library for interacting with MeshCore companion radio nodes.
 	pkgver = 2.2.1+29.r216.20251225.01e3f21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meshcore-dev/meshcore_py
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-meshcore-git
 	makedepends = python-wheel
 	depends = python>=3.10
 	depends = python-bleak
-	depends = python-pyserial-asyncio
+	depends = python-pyserial-asyncio-fast
 	depends = python-pycayennelpp
 	provides = python-meshcore=2.2.1+29.r216.20251225.01e3f21
 	provides = python-meshcore_py=2.2.1+29.r216.20251225.01e3f21
