@@ -1,7 +1,7 @@
 # Maintainer: Koeqaife <koeqaife@sharinflame.com>
 # Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou-greeter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=4
 pkgdesc="Greetd config for hypryou greeter."
 arch=('any')
