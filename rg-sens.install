@@ -1,0 +1,15 @@
+post_install() {
+    echo "==> rg-Sens installed successfully!"
+    echo ""
+    echo "    For NVIDIA GPU monitoring, ensure nvidia-utils is installed:"
+    echo "        sudo pacman -S nvidia-utils"
+    echo ""
+    echo "    For CSS Template panels with WebView support:"
+    echo "        sudo pacman -S webkit2gtk-4.1"
+    echo ""
+    echo "    Configuration is stored in: ~/.config/rg-sens/"
+}
+
+post_upgrade() {
+    post_install
+}
