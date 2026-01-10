@@ -1,2 +1,7 @@
-*.tar.*
-Test-Future-IO-Impl-*/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
