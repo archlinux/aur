@@ -1,12 +1,12 @@
 # Maintainer: Oliver Bandel <oliver _at_ first . in - berlin . de>
 
 pkgname=plio
-pkgver=2025_10_19.0
+pkgver=2026_01_10.0
 pkgrel=1
 pkgdesc='PLIO Image Viewer - the Image Viewer with many sort options'
 arch=('x86_64')
 license=('GPL3')
-depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'freeimage' 'ttf-roboto-mono')
+depends=('sdl3>=3.4.0' 'sdl3_image' 'sdl3_ttf' 'freeimage' 'ttf-roboto-mono')
 makedpends=('git')
 
 url='https://codeberg.org/klartext/plio'
