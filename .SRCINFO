@@ -1,7 +1,7 @@
 pkgbase = victoriametrics-bin
 	pkgdesc = Fast, cost-effective and scalable time series database
-	pkgver = 1.132.0
-	pkgrel = 3
+	pkgver = 1.133.0
+	pkgrel = 1
 	url = https://victoriametrics.github.io
 	install = victoriametrics.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = victoriametrics-bin
 	source = victoriametrics.default
 	sha256sums = 6622e315f00bb78e21b5d9c3d6fe5bc447c7cedb1ab2de7a3a1d4c7e951270a7
 	sha256sums = 02ab7aa9ffca4962d35db5f02d93ebad318328e3ebca11a48e1ededfd59772b0
-	source_x86_64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.132.0/victoria-metrics-linux-amd64-v1.132.0.tar.gz
-	sha256sums_x86_64 = 092dac35f73af0568884e5878930767b2d1944e86dead1442ff8436f2f661e9b
-	source_aarch64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.132.0/victoria-metrics-linux-arm64-v1.132.0.tar.gz
-	sha256sums_aarch64 = c7c59ea1b9d634ee7407dd3964a73efa6f9dfdf7319b8ebceaa7bcc7a4ccb7e0
+	source_x86_64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.133.0/victoria-metrics-linux-amd64-v1.133.0.tar.gz
+	sha256sums_x86_64 = d02db219e914a8fd69c82739dab05ceba404413dc9f5f46ae0a7d1bc07d6fb60
+	source_aarch64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.133.0/victoria-metrics-linux-arm64-v1.133.0.tar.gz
+	sha256sums_aarch64 = 7d0fc46d717bcfdd6763feb7efed83211d951f53ffeddd6d1d40f4a907438ce8
 
 pkgname = victoriametrics-bin
