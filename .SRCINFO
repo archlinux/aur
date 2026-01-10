@@ -1,7 +1,7 @@
 pkgbase = dnsdiag
 	pkgdesc = DNS Measurement, Troubleshooting and Security Auditing Toolset
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dnsdiag.org
 	arch = any
 	license = BSD-2-Clause

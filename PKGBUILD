@@ -3,7 +3,7 @@
 
 pkgname=dnsdiag
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='DNS Measurement, Troubleshooting and Security Auditing Toolset'
 arch=('any')
 url='https://dnsdiag.org'
