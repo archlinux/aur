@@ -1,8 +1,9 @@
 pkgbase = piper-voices-it-it
 	pkgdesc = Voices for Piper text to speech system (it_IT)
-	pkgver = 1.0.0
-	pkgrel = 5
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-it-it.install
 	arch = any
 	groups = piper-voices
 	license = MIT
