@@ -10,7 +10,7 @@ depends=('glibc' 'gtkmm-4.0' 'gtk4-layer-shell' 'satty' 'grim' 'gdk-pixbuf2')
 makedepends=('git')
 # https://github.com/JustSomeLazyFox/TurboShot/releases/download/v2.0.0/turboshot
 source=("turboshot::$url/releases/download/v$pkgver/turboshot")
-sha256sums=('db2c1f2ab681168c7e155ad77d630854198054165cbfa5a9ab45d0d552c4c2fb')
+sha256sums=('92b2de89c591536c10c7c1689f4a7c1143ca97cd9762761e3e8667ad0241c2fd')
 
 package() {
     # Install binary to /usr/bin
