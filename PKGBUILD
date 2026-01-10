@@ -3,13 +3,13 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
 license=(AGPL-3.0-only)
 depends=(
-    'python>=3.13'
+    'python'
     'pyqtdarktheme'
     'pyside6'
     'python-ansi2html'
@@ -63,5 +63,5 @@ package() {
 
     # Install desktop file and icon
     install -Dm755 "${srcdir}/tidal-dl-ng.desktop" "${pkgdir}/usr/share/applications/tidal-dl-ng.desktop"
-    install -Dm644 "${pkgdir}/usr/lib/python3.13/site-packages/tidal_dl_ng/ui/icon512.png" "${pkgdir}/usr/share/pixmaps/tidal-dl-ng.png"
+    install -Dm644 "${pkgdir}/usr/lib/python3.14/site-packages/tidal_dl_ng/ui/icon512.png" "${pkgdir}/usr/share/pixmaps/tidal-dl-ng.png"
 }
