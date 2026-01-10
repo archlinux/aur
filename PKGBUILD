@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kreft <email@christopherkreft.de>
 
 pkgname=check-nwc-health-git
-pkgver=12.6.r2.g6a1f759
+pkgver=12.10.1.r0.g52ca174
 pkgrel=1
 pkgdesc="Monitoring plugin for various network equipment (git version)"
 arch=('any')
@@ -34,17 +34,30 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
-  ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins
+  cd "$srcdir/GLPlugin"
+
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+
+  cd "$srcdir/$pkgname"
+  ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins --disable-standalone
   make
 }
 
 check() {
-  cd "$pkgname"
+  cd "$srcdir/GLPlugin"
+  make test
+
+  cd "$srcdir/$pkgname"
+  export PERL5LIB="$srcdir/GLPlugin/blib/lib:$srcdir/GLPlugin/blib/arch:$PERL5LIB"
   ./plugins-scripts/check_nwc_health --help > /dev/null
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/GLPlugin"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
 }
+
