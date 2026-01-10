@@ -5,7 +5,7 @@
 _name=flask-apscheduler
 pkgname=python-$_name
 pkgver=1.13.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Adds APScheduler support to Flask'
 arch=('any')
 url="https://github.com/viniciuschiele/$_name"
