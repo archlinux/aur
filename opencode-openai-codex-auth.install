@@ -7,7 +7,7 @@ post_install() {
   echo "(e.g., ~/.config/opencode/config.json):"
   echo ""
   echo "  {"
-  echo "    \"plugin\": [\"opencode-openai-codex-auth\"]"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-openai-codex-auth\"]"
   echo "  }"
   echo ""
   echo "IMPORTANT: This plugin requires a FULL configuration to work correctly"

@@ -28,4 +28,5 @@ package() {
   npm install
   mkdir -p "$pkgdir/usr/lib/opencode/plugins/$pkgname"
   cp -r . "$pkgdir/usr/lib/opencode/plugins/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
