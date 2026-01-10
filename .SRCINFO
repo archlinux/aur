@@ -1,7 +1,7 @@
 pkgbase = euporie
 	pkgdesc = Jupyter notebooks in the terminal
 	pkgver = 2.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://euporie.readthedocs.io
 	arch = any
 	license = MIT
@@ -33,6 +33,7 @@ pkgbase = euporie
 	depends = python-universal_pathlib
 	depends = python-fsspec
 	depends = python-jupytext>=1.14.0
+	depends = python-code-minimap
 	depends = python-jupyter-core
 	depends = python-ipykernel
 	depends = python-rich

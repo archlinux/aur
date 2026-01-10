@@ -3,7 +3,7 @@
 
 pkgname="euporie"
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
 url="https://${pkgname}.readthedocs.io"
@@ -19,7 +19,7 @@ depends=(
   'python-imagesize' 'python-markdown-it-py' 'python-linkify-it-py'
   'python-mdit_py_plugins' 'python-flatlatex' 'timg'
   'python-pillow>=9.0' 'python-sixelcrop' 'python-universal_pathlib'
-  'python-fsspec' 'python-jupytext>=1.14.0'
+  'python-fsspec' 'python-jupytext>=1.14.0' 'python-code-minimap'
   # from namcap
   'python-jupyter-core' 'python-ipykernel' 'python-rich' 'python-mtable'
   'python-sympy' 'python-numpy' 'python-html2text'
