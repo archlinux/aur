@@ -4,8 +4,8 @@ PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
 VOICE_LINE=(
 	'GenericLanguage "ca" "ca_ES" "utf-8"'
 	'AddVoice "ca" "FEMALE1" "ca/ca_ES/upc_ona/medium/ca_ES-upc_ona-medium"'
-	'AddVoice "ca" "FEMALE2" "/ca/ca_ES/upc_ona/x_low/ca_ES-upc_ona-x_low"'
-	'AddVoice "ca" "MALE1" "/ca/ca_ES/upc_pau/x_low/ca_ES-upc_pau-x_low"'
+	'AddVoice "ca" "FEMALE2" "ca/ca_ES/upc_ona/x_low/ca_ES-upc_ona-x_low"'
+	'AddVoice "ca" "MALE1" "ca/ca_ES/upc_pau/x_low/ca_ES-upc_pau-x_low"'
 )
 DEFAULT_VOICE='DefaultVoice "ca/ca_ES/upc_ona/medium/ca_ES-upc_ona-medium"'
 
