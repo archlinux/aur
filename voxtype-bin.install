@@ -73,9 +73,10 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.1-8:"
-    echo "      - Clean binaries: no AVX-512/GFNI instruction contamination"
-    echo "      - Fixes SIGILL crashes on Zen 3 and older CPUs"
+    echo "    New in 0.4.11:"
+    echo "      - Remote Whisper server support (offload to home server or cloud)"
+    echo "      - Cancel recording mid-transcription with 'voxtype record cancel'"
+    echo "      - Output mode override: --paste and --clipboard flags"
     echo ""
 }
 
