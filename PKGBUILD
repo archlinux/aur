@@ -5,7 +5,7 @@
 basename='rq'
 pkgname='python-rq'
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple job queues for Python"
 arch=(any)
 license=("BSD-2-Clause")
