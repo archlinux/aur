@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons <https://github.com/metaneutrons>
 pkgname=bups
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="USB print server for label printers"
 arch=('x86_64' 'aarch64')
