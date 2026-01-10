@@ -9,4 +9,3 @@ pkg/
 src/
 ensemble-chorus-git-*.src.tar.gz
 ensemble-chorus-git-*.pkg.tar.*
-.AURINFO

@@ -1,0 +1,36 @@
+diff --git a/sources/core/dsp.h b/sources/core/dsp.h
+index 661a40d..906964b 100644
+--- a/sources/core/dsp.h
++++ b/sources/core/dsp.h
+@@ -4,6 +4,7 @@
+ //          http://www.boost.org/LICENSE_1_0.txt)
+ 
+ #pragma once
++#include <cstdint>
+ #include <jsl/dynarray>
+ 
+ namespace dsp {
+diff --git a/sources/fl/main_controller.h b/sources/fl/main_controller.h
+index 19a088d..7fdaa0e 100644
+--- a/sources/fl/main_controller.h
++++ b/sources/fl/main_controller.h
+@@ -4,6 +4,7 @@
+ //          http://www.boost.org/LICENSE_1_0.txt)
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ class Message_Queue;
+ struct Basic_Message;
+diff --git a/sources/fl/widgets/Fl_Knob/Fl_Knob/Fl_Knob.H b/sources/fl/widgets/Fl_Knob/Fl_Knob/Fl_Knob.H
+index d422bfd..e33532c 100644
+--- a/sources/fl/widgets/Fl_Knob/Fl_Knob/Fl_Knob.H
++++ b/sources/fl/widgets/Fl_Knob/Fl_Knob/Fl_Knob.H
+@@ -3,6 +3,7 @@
+ #ifndef Fl_Knob_H
+ #define Fl_Knob_H
+ #include <FL/Fl.H>
++#include <FL/Fl_Group.H>
+ #include <FL/Fl_Valuator.H>
+ 
+ class Fl_Knob : public Fl_Valuator {
