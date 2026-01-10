@@ -1,26 +1,25 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.643
+pkgver=3.1.648
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
-arch=('x86_64')
-url="https://github.com/blacktop/${pkgname}"
+arch=('x86_64' 'arm64')
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 backup=("etc/${pkgname}.conf")
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}") # ?signed
-b2sums=('SKIP')
+_pkgsrc="v${pkgver}"
+source=("${_pkgsrc}::https://github.com/blacktop/ipsw/archive/refs/tags/v3.1.648.tar.gz") # ?signed
+b2sums=('8177236b1f893b84cacb5afbef126f2eaa39b8d16f17cfa36379aef048a9900a52952581dea06311fe8e03aff7f65c85440af9847eb6c093b22973e038080a25')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/ipsw-${pkgver}"
   mkdir -p "build" "completions" "manpages"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/ipsw-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -44,7 +43,7 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/ipsw-${pkgver}"
   install -vDm755 "build/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md"          "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -53,7 +52,7 @@ package() {
   install -d "${pkgdir}/usr/share/man/man1"
   find "manpages" -mindepth 1 -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/man/man1/" \;
 
-  cd "${srcdir}/${_pkgsrc}/completions"
+  cd "${srcdir}/ipsw-${pkgver}/completions"
   install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
