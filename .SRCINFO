@@ -1,7 +1,7 @@
 pkgbase = django-redis
 	pkgdesc = Full featured redis cache backend for Django
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jazzband/django-redis
 	arch = any
 	license = BSD
