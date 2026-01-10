@@ -12,11 +12,10 @@ depends=(
   'usbmuxd'
   'swift-bin'
   'zip'
+  'xadi'
 )
 makedepends=(
   'git'
-  'libplist'
-  'xadi'
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/xtool-org/$pkgname/archive/refs/tags/$pkgver.tar.gz"
