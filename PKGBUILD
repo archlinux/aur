@@ -192,11 +192,11 @@ _package() {
     "${_replacesoldkernels[@]}"
     "${_replacesoldmodules[@]}"
   )
-  replaces+=(
-    "${_replacesarchkernel[@]}"
-    "${_replacesoldkernels[@]}"
-    "${_replacesoldmodules[@]}"
-  )
+  # replaces+=(
+  #   "${_replacesarchkernel[@]}"
+  #   "${_replacesoldkernels[@]}"
+  #   "${_replacesoldmodules[@]}"
+  # )
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"

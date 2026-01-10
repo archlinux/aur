@@ -95,7 +95,7 @@ pkgname = linux-libre-hardened
 	provides = WIREGUARD-MODULE
 	provides = LINUX-ABI_VERSION=6.17.13.hardened1
 	conflicts = linux-hardened
-	replaces = linux-hardened
+	replaces = 
 
 pkgname = linux-libre-hardened-headers
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux-libre kernel
