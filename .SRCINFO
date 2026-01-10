@@ -1,7 +1,7 @@
 pkgbase = discordrp-mpris-git
 	pkgdesc = Discord Rich Presence based on mpris2 media players
 	pkgver = 0.3.3.r0.g911aa5a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FichteFoll/discordrp-mpris
 	arch = any
 	license = MIT
