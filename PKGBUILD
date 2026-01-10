@@ -1,4 +1,5 @@
-# Maintainer: jmcb <joelsgp@protonmail.com>
+# Maintainer: imcb <irismessage@protonmail.com>
+
 pkgname=twitch-python
 _name=twitch-python
 pkgver=0.0.20
@@ -7,16 +8,27 @@ pkgdesc="Object-oriented Twitch API for Python developers "
 arch=('any')
 url="https://github.com/PetterKraabol/Twitch-Python"
 license=('MIT')
-depends=('python'
-         'python-requests' 'python-rx')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-responses')
+depends=(
+  'python'
+  'python-requests'
+  'python-rx'
+  # 'python-reactivex'
+)
+makedepends=(
+  'python-setuptools'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-cov'
+  'python-responses'
+)
 optdepends=()
-provides=('python-twitch-python')
+provides=(
+  'python-twitch-python'
+)
 conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('6e09d7210b8e0abb6892767d722079eb35b14c29e770cdb4df64d569ecbaa17c')
-
 
 build() {
   cd "$_name-$pkgver"

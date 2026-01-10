@@ -1,0 +1,4 @@
+[twitch-python]
+source = "github"
+github = "PetterKraabol/Twitch-Python"
+use_latest_release = true
