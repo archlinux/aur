@@ -1,4 +1,6 @@
 src/
 pkg/
-*.tar.gz
+logs/
+tools/
+*.tar.*
 *.svg
