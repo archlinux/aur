@@ -1,13 +1,13 @@
 pkgbase = firefox-grammalecte
 	pkgdesc = Firefox Grammalecte plugin (orthographe et grammaire en langue française)
-	pkgver = 2.1.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://grammalecte.net/
 	arch = any
 	groups = office
-	license = GPL 3
-	depends = firefox>=57
-	source = firefox-grammalecte-2.1.1.xpi::https://addons.mozilla.org/firefox/downloads/file/3730860/grammalecte_fr-2.1.1.xpi
-	sha256sums = 4787e5f58b2c4d7f50f897339be020b2a78821f998ebaf397d42ba4ddbab4abd
+	license = GPL-3.0-only
+	depends = firefox>=67
+	source = firefox-grammalecte-2.3.0.xpi::https://addons.mozilla.org/firefox/downloads/file/4643560/grammalecte_fr-2.3.0.xpi
+	sha256sums = 443030004dbf62ecd5fc42f7b96872b96c9e3765f1cba4704a2a4170bb945256
 
 pkgname = firefox-grammalecte
