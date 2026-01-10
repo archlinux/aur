@@ -2,7 +2,7 @@
 
 pkgname=razer-cli
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI for configuring Razer devices."
 arch=(any)
 url="https://github.com/lolei/razer-cli"
