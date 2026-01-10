@@ -1,13 +1,12 @@
 pkgbase = elephant-dnfpackages
 	pkgdesc = dnfpackages provider for elephant
 	pkgver = 2.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = go
-	depends = dnf
 	provides = elephant-dnfpackages
 	conflicts = elephant-dnfpackages
 	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.18.0.tar.gz
