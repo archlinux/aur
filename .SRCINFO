@@ -1,35 +1,13 @@
 pkgbase = login-ng
-	pkgdesc = A greeter with addition functionalities
-	pkgver = 0.6.11
+	pkgdesc = A small session runner an systemd user slice replacement for embedded systems
+	pkgver = 0.8.8
 	pkgrel = 1
-	url = https://github.com/neroreflex/login_ng
-	arch = i686
+	url = https://github.com/NeroReflex/login_ng
 	arch = x86_64
-	arch = armv7h
+	license = GPL
 	makedepends = cargo
-	makedepends = clang
-	source = login_ng-0.6.11.tar.gz::https://github.com/neroreflex/login_ng/archive/refs/tags/0.6.11.tar.gz
-	sha256sums = d7aa434f2af8d8e79e08ccadc91b272240bbb75a33cf4902d52fdf134dcffc55
-	b2sums = 78072c4f879ec2aaa68b45b0ca6850fa0097fe733f64a6724a651c1d0378dddba79065695c2b79327c4cd40e88620af6b7989eebf7e15c44426fe55273c1016e
-
-pkgname = login_ng-cli
-	depends = pam
-	depends = greetd
 	depends = seatd
-	backup = etc/pam.d/login_ng
-	backup = etc/pam.d/login_ng-autologin
+	source = https://github.com/NeroReflex/login_ng/archive/refs/tags/0.8.8.tar.gz
+	sha256sums = SKIP
 
-pkgname = login_ng-ctl
-	backup = etc/pam.d/login_ng-ctl
-
-pkgname = pam_login_ng
-	depends = pam
-	depends = dbus
-
-pkgname = login_ng-session
-	depends = dbus
-
-pkgname = sessionexec
-	optdepends = gamescope: for game-mode
-	optdepends = steam: for game-mode steam session
-	optdepends = plasma: for desktop-mode
+pkgname = login-ng
