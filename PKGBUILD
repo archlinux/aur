@@ -32,7 +32,6 @@ options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Struct-Dumb-${pkgver}.tar.gz")
 b2sums=('267552362ec1f6e73404c2ca7e89962ae2bd3fb53187595ac17f91aec30a62b0a542c797e9c0249484fe7fad479112f5b620ad829f75a5dc1964e40fdfe36b56')
 
-
 build() {
   cd "${srcdir}/Struct-Dumb-${pkgver}"
 
