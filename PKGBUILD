@@ -1,7 +1,7 @@
 # Maintainer: Eshu Team <support@eshu-apps.com>
 # OPTION A: Provides files, user runs install script
 pkgname=eshu-installer
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="AI-Driven Universal Package Installer for Linux"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
     'podman: For Ghost Mode (alternative)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eshu-apps/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("aa3d6feab58962919f9995fcc22c53c277a322fb16ed4ddc8ff87586adca65df")
+sha256sums=("35a481808a427300c2adcc4a3894b16210f485b8563bd26a49238f30e17ab3ca")
 
 package() {
     cd "$pkgname-$pkgver"
