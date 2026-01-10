@@ -1,0 +1,8 @@
+diff -rU1 ripperx/ripperX.desktop ripperx.new/ripperX.desktop
+--- ripperx/ripperX.desktop	2026-01-05 19:27:45.000000000 +0100
++++ ripperx.new/ripperX.desktop	2026-01-10 16:38:35.720260951 +0100
+@@ -4,3 +4,3 @@
+ Exec=ripperX 
+-Icon=/usr/share/pixmaps/ripperX-icon.xpm
++Icon=ripperX
+ Terminal=false

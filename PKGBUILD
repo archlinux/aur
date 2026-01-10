@@ -1,53 +1,59 @@
-# Maintainer:  dreieck
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Stefan Husmann (https://aur.archlinux.org/account/haawda)
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=ripperx-git
-pkgver=2.8.0+11.r124.20200719.554b75f
-pkgrel=2
+pkgver=3.0.2+1.r225.20260105.a8f0701
+pkgrel=1
 pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
   'x86_64'
   'i686'
 )
-url="http://ripperx.sourceforge.net/"
+license=('GPL-2.0-only')
+#url="http://ripperx.sourceforge.net/"
+url="https://codeberg.org/thothix/ripperx"
 depends=(
   'gcc-libs'
-  'glib2'
+  'glib2>=2.6'
   'glibc'
-  'gtk2'
-  'taglib'
+  'gtk2>=2.6'
+  'libgdk_pixbuf-2.0.so'
+  'taglib>=1.9.1'
 )
-makedepends=('git')
-license=('GPL')
-source=(
-  "${pkgname%-git}::git+https://git.code.sf.net/p/ripperx/git"
-  "config.rpath_-_ripperx-stable-2.8.0" # This one is missing in the git checkout and taken from the stable release "http://downloads.sourceforge.net/project/ripperx/ripperx/2.8.0/ripperx-2.8.0.tar.bz2"
-)
-sha256sums=(
-  'SKIP'
-  '9b98b066c0c2902f32984613cb7454b73f1cb93a83422666d73b3c08731a5c80'
+makedepends=(
+  'git'
+  'autoconf>=2.60'
+  'automake'
+  'gdk-pixbuf2'
+  'gettext>=0.15'
+  'libtool'
 )
 conflicts=("ripperx")
 provides=("ripperx=${pkgver}")
+source=(
+  "${pkgname%-git}::git+https://codeberg.org/thothix/ripperx.git"
+  "ripperx_desktopfile-iconname.patch"
+)
+sha256sums=(
+  'SKIP'
+  'b529f04f4836e49dfd118522f7969486ba8eebb132f4e03bde2ac72630566c0e'
+)
+options+=('!lto') # With LTO, running 'ripperX' fails with a Segmentation Fault.
 
 prepare() {
   cd "${pkgname%-git}"
 
-  cp "${srcdir}/config.rpath_-_ripperx-stable-2.8.0" "config/config.rpath"
+  #cp "${srcdir}/config.rpath_-_ripperx-stable-2.8.0" "config/config.rpath"
 
-#   sed -i 's|Icon=.*|Icon=ripperX.xpm|g' ripperX.desktop
-#   echo "Categories=GTK;GNOME;AudioVideo;DiscBurning;" >>ripperX.desktop
-#   patch ripperX.pc.in <<EOF
-# diff -r ripperX-2.7.3/ripperX.pc.in ripperX-2.7.3.y/ripperX.pc.in
-# 3a4
-# > includedir=@includedir@
-# EOF
-#   sed -i 's/.*gtk_cpp_workaround.h.*//g' \
-#     src/config_window_handler.c \
-#     src/select_frame_handler.c \
-#     src/status_frame_handler.c
+  local _patch
+  for _patch in "${srcdir}/ripperx_desktopfile-iconname.patch"; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+
+  git log > git.log
 }
 
 pkgver() {
@@ -68,20 +74,33 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  sh ./bootstrap
-  CFLAGS+=" -fpermissive"
+  local _CFLAGSADDITIONS
+  _CFLAGSADDITIONS=" -fpermissive"
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
   export CFLAGS
+  export CXXFLAGS
 
+  ./bootstrap
   ./configure \
     --prefix=/usr \
-    --enable-nls
+    --enable-nls \
+    --disable-debug
 
-  make
+  make -j1
 }
 
 package() {
   cd "${pkgname%-git}"
+
   make DESTDIR="$pkgdir" install
-  install -Dm0644 ripperX.desktop "$pkgdir"/usr/share/applications/ripperX.desktop
-  install -Dm0644 src/xpms/ripperX-icon.xpm "$pkgdir"/usr/share/pixmaps/ripperX.xpm
+
+  install -Dvm0644 ripperX.desktop "$pkgdir"/usr/share/applications/ripperX.desktop
+  install -Dvm0644 src/xpms/ripperX-icon.xpm "$pkgdir"/usr/share/pixmaps/ripperX.xpm
+  # Symlink icon into /usr/share/icons, since ripperx package version 2.8.0-5 had it there. To not break custom desktop setups.
+  install -dvm0755 "$pkgdir"/usr/share/icons
+  ln -svr "$pkgdir"/usr/share/pixmaps/ripperX.xpm "$pkgdir"/usr/share/icons/ripperX.xpm
+
+  install -Dvm0644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}"  git.log BUGS CHANGELOG.md FAQ README README.* TODO
+  install -Dvm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
 }
