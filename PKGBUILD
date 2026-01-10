@@ -1,17 +1,17 @@
 # Maintainer: Frank Endres <frankendres@tuxfamily.org> - disabled, use first@last.fr
 
 pkgname=thunderbird-grammalecte
-pkgver=2.1.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Thunderbird Grammalecte plugin (orthographe et grammaire en langue française)"
 arch=('any')
 url="https://grammalecte.net/"
-license=('GPL 3')
+license=('GPL-3.0-only')
 groups=('office')
-depends=('thunderbird>=68')
-source=("${pkgname}-${pkgver}.xpi::https://addons.thunderbird.net/user-media/addons/_attachments/809689/grammalecte_fr_for_thunderbird-${pkgver}-tb.xpi")
+depends=('thunderbird>=78')
+source=("${pkgname}-${pkgver}.xpi::https://addons.thunderbird.net/thunderbird/downloads/file/1043463/grammalecte_fr_for_thunderbird-${pkgver}-tb.xpi")
 noextract=("${_name}-${pkgver}.xpi")
-sha256sums=('0a1420ac53e3260d72e2bb05550cb6efacc37daadc9c9cae766e0c1f48f61c31')
+sha256sums=('0caa8b843482f39576962b7b3586d3b274e0cc64f5eb0e1e299c571aed68f560')
 
 package() {
   _extension_id="French-GC-TB@grammalecte.net"
