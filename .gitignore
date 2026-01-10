@@ -1,0 +1,6 @@
+src/
+pkg/
+*.tar.gz
+*.tar.zst
+*.pkg.tar.zst
+mycelica.png
