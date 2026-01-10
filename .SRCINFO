@@ -1,6 +1,6 @@
 pkgbase = aic8800-dkms
 	pkgdesc = Kernel modules for BrosTrend AX300 WiFi 6
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://linux.brostrend.com/troubleshooting/source-code/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = aic8800-dkms
 	source = 0001-Make-CONFIG_RFTEST-n-valid.patch
 	source = 0002-Fix-DKMS-config.patch
 	source = 0003-Fix-kernel-logs.patch
-	sha512sums = ed75b617c3c3e15a640099600fc1d87f34e7a6fb0b32159439d02ae122986fc9bad679cfd27a938a3e9a9dd303e816bdb776424489acde9fe6f581f676b63ef1
+	sha512sums = ec9c36ddd97682a45f58c556917d89f0715fb594ffc454aaa8559d111d9e70a9b9c7ebb3170f9f23143d9eccea0dc979a79499b558b3205cc790aaa15af95afb
 	sha512sums = 748daf3a5590c4348919d64df26fda2102b5c638bd461ce4eebeda9030157cee30c130ede971396b11cac8a8a069dc185e2e8345f42b918cc8de600a824d7571
 	sha512sums = 4cc6102432cee0f8d2c157fc8a09c23d02f61ca1e3540b1d89bed1e31d8a4e379e1472e68e402d5fe64574c885bba9378bd025877a45fd7cbe4ebcf7f202b925
 	sha512sums = e6b2eb9b140c55587e188c6edea0887aa8d27fa4989e8f6601b39fe3604ddd62f0845be79b0069ef4afd6f851afe7d6ca423856451ae082bcf4158203dc0d2c1
