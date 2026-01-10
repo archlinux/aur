@@ -1,20 +1,21 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 _gitname=kmscon
 pkgname=kmscon-git
-pkgver=a
+pkgver=v9.2.1.r50.g68b92fd
 pkgrel=1
 epoch=2
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
 arch=(i686 x86_64)
-url='https://github.com/dvdhrm/kmscon'
+url='https://www.freedesktop.org/wiki/Software/kmscon/'
 license=('MIT')
+backup=('etc/kmscon/kmscon.conf')
 depends=(systemd libdrm mesa libegl libgles pango libxkbcommon xkeyboard-config libtsm)
-makedepends=(git libxslt docbook-xsl linux-api-headers)
+makedepends=(git meson libxslt docbook-xsl linux-api-headers)
 options=(!libtool)
 provides=(kmscon)
 conflicts=(kmscon)
-source=(git://people.freedesktop.org/~dvdhrm/kmscon)
-md5sums=(SKIP)
+source=(git+https://github.com/kmscon/kmscon.git)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -23,14 +24,13 @@ pkgver() {
 
 build() {
   cd $_gitname
-  ./autogen.sh --prefix=/usr --disable-wlterm
-  make
+  meson setup --prefix=/usr --buildtype=plain . build
+  meson compile -C build
 }
 
 package() {
   cd $_gitname
-  make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/lib/systemd/system"
-  cp COPYING "$pkgdir/usr/share/licenses/$pkgname/"
-  cp docs/kmscon{,vt@}.service "$pkgdir/usr/lib/systemd/system/"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
