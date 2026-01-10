@@ -1,7 +1,7 @@
 # Maintainer: Koeqaife
 pkgname=hypryou-git
 _pkgname="hyprland-material-you"
-pkgver=2.1.11.35.g67107ad
+pkgver=2.2.0.1.g2e2bf0d
 pkgrel=1
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
