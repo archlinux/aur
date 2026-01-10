@@ -4,7 +4,7 @@
 _libname=npyosmium
 pkgname="python-${_libname}"
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork with numpy interface - Python bindings for libosmium, the data processing library for OSM data"
 _rootdir="${_libname}-${pkgver}"
 url="https://github.com/agrenott/npyosmium"
