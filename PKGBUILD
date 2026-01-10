@@ -1,10 +1,12 @@
-# Maintainer: Stefano Facchini <stefano.facchini@gmail.com>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Stefano Facchini <stefano.facchini@gmail.com>
+
 pkgname=pinpoint
 pkgver=0.1.8
 pkgrel=2
 pkgdesc="A tool for making hackers do excellent presentations"
 arch=('i686' 'x86_64')
-url="https://live.gnome.org/Pinpoint"
+url="https://gitlab.gnome.org/Archive/pinpoint/"
 license=('LGPL2.1')
 depends=('clutter-gst' 'clutter-gtk')
 install=pinpoint.install
@@ -25,5 +27,3 @@ package() {
   install -m644 bg.jpg bowls.jpg linus.jpg "$pkgdir/usr/share/doc/$pkgname"
   install -m755 introduction.pin "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
