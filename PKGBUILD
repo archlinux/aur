@@ -10,7 +10,7 @@ _nodeversion=24         # As of 2025-05-26, the minimum version of `nodejs` is 2
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.112.sc.0.test.0.r547.20250917.4d4dcf1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
@@ -68,7 +68,7 @@ sha256sums=(
   # 'SKIP'  # matrix-react-sdk (git)
   'SKIP'  # element-web (git)
   'SKIP'  # element-desktop (git)
-  '20533d63ffadf03dbfd173e6d4f1f1048746a628db7b2a70f5bc02390e812302'  # autolaunch.patch
+  '7c876d06fd69279441069560699e6dfc91a9434b558279213ababda24e39380b'  # autolaunch.patch
   '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'  # schildichat-desktop.desktop
   '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce'  # schildichat-desktop.sh
 )
