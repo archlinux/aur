@@ -1,13 +1,13 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-source-clone
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to clone sources"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-clone.1632/"
 license=(GPL-2.0-or-later)
-depends=("obs-studio>=28" "glibc")
+depends=("obs-studio>=31.1" "glibc")
 makedepends=("cmake" "git")
 options=("debug")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
