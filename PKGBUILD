@@ -2,7 +2,7 @@
 _name="scikit-misc"
 pkgname="python-${_name}"
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
 url="https://github.com/has2k1/${_name}"

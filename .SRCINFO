@@ -1,7 +1,7 @@
 pkgbase = python-scikit-misc
 	pkgdesc = Miscellaenous tools for scientific computing
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/has2k1/scikit-misc
 	arch = x86_64
 	license = BSD-3-Clause
