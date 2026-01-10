@@ -4,7 +4,7 @@ _suffix=rc
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.4
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 epoch=12
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -129,6 +129,9 @@ prepare() {
   ## Mark log and titlebar version
   sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 
+  # Keep sentinel file functional without messing with compile flags
+  sed -i "s|#ifndef NDEBUG|#if 0|" frontend/utility/CrashHandler.cpp
+
   ## frontend: Cleanup Qt GuiPrivate linkage (https://github.com/obsproject/obs-studio/pull/12328)
   patch -Np1 -i "$srcdir/12328-Cleanup_Qt_Gui_Private_linkage.patch"
 }
@@ -136,8 +139,6 @@ prepare() {
 build() {
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_C_FLAGS="-DNDEBUG" \
-    -DCMAKE_CXX_FLAGS="-DNDEBUG" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_LIBFDK=ON \
