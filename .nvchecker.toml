@@ -1,5 +1,6 @@
 [python-numpy-mkl]
 source = "github"
 github = "numpy/numpy"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
+exclude_regex = ".*(dev|pre|a|alpha|b|beta|rc).*"

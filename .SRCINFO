@@ -1,6 +1,6 @@
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://numpy.org
 	arch = x86_64
@@ -14,12 +14,26 @@ pkgbase = python-numpy-mkl
 	makedepends = cython
 	makedepends = gcc-fortran
 	makedepends = procps-ng
+	makedepends = git
 	depends = python
 	depends = intel-oneapi-mkl
 	optdepends = python-threadpoolctl: for show_runtime() support
-	provides = python-numpy=2.4.0
+	provides = python-numpy=2.4.1
 	conflicts = python-numpy
-	source = https://github.com/numpy/numpy/releases/download/v2.4.0/numpy-2.4.0.tar.gz
-	sha512sums = ff0c53866a7a7bdb255885ea0b9a9084538a15b8ff8e30f1ee9b75e8000432d755634fe07239ee4b6ec2b9e2e5f9535c231ad8f0b89dae54a545a4c136a20f55
+	source = git+https://github.com/numpy/numpy.git?signed#tag=v2.4.1
+	source = numpy-meson::git+https://github.com/numpy/meson.git
+	source = numpy-highway::git+https://github.com/google/highway.git
+	source = numpy-x86-simd-sort::git+https://github.com/intel/x86-simd-sort
+	source = numpy-pocketfft::git+https://github.com/mreineck/pocketfft
+	source = numpy-svml::git+https://github.com/numpy/SVML.git
+	source = numpy-pythoncapi-compat::git+https://github.com/python/pythoncapi-compat
+	validpgpkeys = 53A0E5283F05E29D7129149E679F228377C5247B
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = python-numpy-mkl
