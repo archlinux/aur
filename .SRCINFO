@@ -1,7 +1,7 @@
 pkgbase = elephant-bluetooth
 	pkgdesc = bluetooth provider for elephant
 	pkgver = 2.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
