@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=8.2.63.r604.2f92ec7
+pkgver=8.3.23.r727.b177d6f
 pkgrel=1
 epoch=1
 pkgdesc="IYUU Auto Reseed Plus"
@@ -35,7 +35,7 @@ source=("${_pkgname}::git+${url}.git"
 sha256sums=('SKIP'
             '2599c5f243b573a4db2ff925e2ad75337338dc61a293b1a1c17acf3681b3d3ff'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
-            '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
+            'efeaddf04efbb601eb8e56328e9b178604af5c9fa91e16dc0a37aa9c6e7067d7')
 options=(!strip !debug)
 
 prepare() {
