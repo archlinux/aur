@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledDBusUtils"
 
 pkgname=untitled-dbus-utils
-pkgver=2.1.0.0
+pkgver=2.2.0.0
 pkgrel=1
 pkgdesc="C++ utilities for dealing with the low level DBus C API"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "dbus")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "dbus" "pkgconf")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('270c4891a04bd76ef2a3ac70c08c6a629ca9ae2a9f831804ca0f1bb4e371a57e')
+sha256sums=('2e59463ba8b0dbe75d8fdaa7640e4faf40414c740ef0ef9ad93ff6b2cc8f2a9d')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver || exit
