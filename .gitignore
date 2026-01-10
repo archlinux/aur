@@ -1,0 +1,34 @@
+tags
+# release tarballs
+*.pkg.tar.zst
+*.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.log
+
+# Build
+build/
+dist/
+
+# pipx/venv
+.venv/
+venv/
+
+# Arch package build
+*.pkg.tar.zst
+pkg/
+src/
+build/
+
+# Editor/OS
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
