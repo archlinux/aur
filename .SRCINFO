@@ -11,6 +11,7 @@ pkgbase = jdk17-graalvm-ee-bin
 	depends = java-environment-common
 	provides = java-runtime=17
 	provides = java-environment=17
+	provides = java-environment-openjdk=17
 	options = staticlibs
 	options = !debug
 	source_x86_64 = https://archive.org/download/oracle-graalvm-jdk-17/graalvm-jdk-17.0.17_linux-x64_bin.tar.gz

@@ -1,5 +1,5 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
-# Maintainer: 
+# Maintainer: w568w <w568w at outlook dot com>
 _java=17
 _java_minor=+8.1
 pkgname="jdk${_java}-graalvm-ee-bin"
@@ -14,7 +14,8 @@ depends=('java-runtime-common'
 	'java-environment-common')
 makedepends=()
 provides=("java-runtime=${_java}"
-	"java-environment=${_java}")
+	"java-environment=${_java}"
+	"java-environment-openjdk=${_java}")
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
