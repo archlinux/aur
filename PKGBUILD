@@ -184,7 +184,7 @@ _package() {
   replaces=(
   )
   provides+=(
-    "${_replacesarchkernel[@]/%/=$pkgver}"
+    # "${_replacesarchkernel[@]/%/=$pkgver}"
     "LINUX-ABI_VERSION=$pkgver"
   )
   conflicts+=(
@@ -221,7 +221,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
   provides=(
-    "${_replacesarchkernel[@]/%/-headers=$pkgver}"
+    # "${_replacesarchkernel[@]/%/-headers=$pkgver}"
   )
   conflicts=(
     "${_replacesarchkernel[@]/%/-headers}"
@@ -322,7 +322,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
   provides=(
-    "${_replacesarchkernel[@]/%/-docs=$pkgver}"
+    # "${_replacesarchkernel[@]/%/-docs=$pkgver}"
   )
   conflicts=(
     "${_replacesarchkernel[@]/%/-docs}"

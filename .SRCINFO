@@ -93,7 +93,6 @@ pkgname = linux-libre-hardened
 	provides = NTSYNC-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-hardened=6.17.13.hardened1
 	provides = LINUX-ABI_VERSION=6.17.13.hardened1
 	conflicts = linux-hardened
 	replaces = linux-hardened
@@ -101,12 +100,12 @@ pkgname = linux-libre-hardened
 pkgname = linux-libre-hardened-headers
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux-libre kernel
 	depends = pahole
-	provides = linux-hardened-headers=6.17.13.hardened1
+	provides = 
 	conflicts = linux-hardened-headers
 	replaces = linux-hardened-headers
 
 pkgname = linux-libre-hardened-docs
 	pkgdesc = Documentation for the Security-Hardened Linux-libre kernel
-	provides = linux-hardened-docs=6.17.13.hardened1
+	provides = 
 	conflicts = linux-hardened-docs
 	replaces = linux-hardened-docs
