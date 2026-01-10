@@ -1,7 +1,7 @@
 # Maintainer: galister <galister-dev at pm dot me>
 
 pkgname=wayvr
-pkgver=26.1.0
+pkgver=26.1.2
 pkgrel=1
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/wlx-team/wayvr"
