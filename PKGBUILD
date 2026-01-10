@@ -2,7 +2,7 @@
 
 pkgname=chromexup
 pkgver=0.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc='External extension updater for Chromium based browsers'
 arch=(any)
 url=https://github.com/xsmile/chromexup
