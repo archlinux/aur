@@ -1,6 +1,6 @@
 pkgbase = wlx-overlay-s-actions-bin
 	pkgdesc = OpenXR desktop overlay for Wayland compositors (GitHub Actions CI build)
-	pkgver = 20862861643
+	pkgver = 20884106569
 	pkgrel = 1
 	url = https://github.com/galister/wlx-overlay-s
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = wlx-overlay-s-actions-bin
 	conflicts = wlx-overlay-s-bin
 	conflicts = wlx-overlay-s-git
 	options = !debug
-	source = wlx-overlay-s-actions-bin-x86_64-20862861643.zip::https://nightly.link/galister/wlx-overlay-s/actions/runs/20862861643/WlxOverlay-S-main-x86_64.AppImage.zip
-	sha256sums = 39f8bf00c398f53e330a34da5a4e7b3b51d091c22974ffe840d2fbffbd8e01d6
+	source = wlx-overlay-s-actions-bin-x86_64-20884106569.zip::https://nightly.link/galister/wlx-overlay-s/actions/runs/20884106569/WlxOverlay-S-main-x86_64.AppImage.zip
+	sha256sums = 95060261a9646c3eebfa37e2fad381200616075cf903cd78b4cd9951a2bcb73d
 
 pkgname = wlx-overlay-s-actions-bin
