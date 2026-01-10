@@ -9,7 +9,6 @@ pkgbase = noctalia-shell-git
 	makedepends = git
 	depends = quickshell
 	depends = imagemagick
-	depends = gpu-screen-recorder
 	depends = brightnessctl
 	depends = ffmpeg
 	depends = qt6-multimedia

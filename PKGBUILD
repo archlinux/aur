@@ -10,7 +10,6 @@ license=('MIT')
 depends=(
   'quickshell'
   'imagemagick'
-  'gpu-screen-recorder'
   'brightnessctl'
   'ffmpeg'
   'qt6-multimedia'
