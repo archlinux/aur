@@ -1,12 +1,14 @@
 pkgbase = wastebin-bin
-	pkgdesc = wastebin is a minimal pastebin.
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgdesc = wastebin is a pastebin 📝
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/matze/wastebin
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = wastebin
-	source = wastebin-bin-3.0.0.zip::https://github.com/matze/wastebin/releases/download/3.0.0/wastebin_3.0.0_x86_64-unknown-linux-musl.zip
-	sha256sums = 73c8e11e114b2d8c732033bf8dff8b94f26ae6d8bc0acb0c0c3305cf0a9c61bc
+	conflicts = wastebin
+	source_x86_64 = wastebin-x86_64-3.4.0.tar.zst::https://github.com/matze/wastebin/releases/download/3.4.0/wastebin_3.4.0_x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = 54bc708b5d48588b6abe15099e6b94ddfc6622d854dfcd2b21b39dde26301307
 
 pkgname = wastebin-bin

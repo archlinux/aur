@@ -1,21 +1,34 @@
-pkgname=wastebin-bin
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_pkgauthor=matze
 _pkgname=wastebin
-pkgver=3.0.0
-pkgrel=2
-pkgdesc='wastebin is a minimal pastebin.'
-arch=("x86_64")
-url="https://github.com/matze/${_pkgname}"
-provides=(${_pkgname})
-license=("MIT")
-depends=()
-makedepends=()
-source=(
-    "$pkgname-$pkgver.zip::https://github.com/matze/${_pkgname}/releases/download/${pkgver}/${_pkgname}_${pkgver}_x86_64-unknown-linux-musl.zip"
-)
-sha256sums=('73c8e11e114b2d8c732033bf8dff8b94f26ae6d8bc0acb0c0c3305cf0a9c61bc')
+pkgname=${_pkgname}-bin
+pkgdesc="wastebin is a pastebin 📝"
+
+pkgver=3.4.0
+pkgrel=1
+
+arch=('x86_64')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
+
+license=('MIT')
+
+depends=('glibc')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.zst::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_${arch[0]}-unknown-linux-musl.tar.zst")
+sha256sums_x86_64=('54bc708b5d48588b6abe15099e6b94ddfc6622d854dfcd2b21b39dde26301307')
+
 
 package() {
-    install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

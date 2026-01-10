@@ -1,0 +1,4 @@
+["wastebin-bin"]
+source = "github"
+github = "matze/wastebin"
+use_latest_release = true

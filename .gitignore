@@ -1,4 +1,10 @@
-/*.zip
-/*.tar.*
-/pkg
-/src
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.service
+!*.sysusers
+!*.tmpfiles
+!.gitignore
+!.nvchecker.toml
+
