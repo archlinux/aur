@@ -1,2 +1,11 @@
-*.tar.*
-String-License-*/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!LICENSE
+!LICENSES
+!LICENSES/*
+!REUSE.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
