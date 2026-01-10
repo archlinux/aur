@@ -1,6 +1,6 @@
 # Maintainer: Aaron D. Lee <your-email@example.com>
 pkgname=stegasoo-git
-pkgver=4.2.0.r0.g3b06245
+pkgver=4.2.0.r0.g530e5de
 pkgrel=1
 pkgdesc="Secure steganography with hybrid photo + passphrase + PIN authentication"
 arch=('x86_64')
@@ -86,6 +86,7 @@ After=network.target
 [Service]
 Type=simple
 User=stegasoo
+WorkingDirectory=/opt/stegasoo/venv/lib/python3.12/site-packages/frontends/web
 Environment="PATH=/opt/stegasoo/venv/bin"
 ExecStart=/opt/stegasoo/venv/bin/gunicorn -b 127.0.0.1:5000 app:app
 Restart=on-failure
@@ -103,6 +104,7 @@ After=network.target
 [Service]
 Type=simple
 User=stegasoo
+WorkingDirectory=/opt/stegasoo/venv/lib/python3.12/site-packages/frontends/api
 Environment="PATH=/opt/stegasoo/venv/bin"
 ExecStart=/opt/stegasoo/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
 Restart=on-failure
