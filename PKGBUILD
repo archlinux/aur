@@ -16,7 +16,7 @@ source=("Advancely.zip::$url/releases/download/v${pkgver}/Advancely-v${pkgver}-L
 sha256sums=('5ff6a2e74ddfa1fec86ded6a78b291a1ce8389b65f9de8078b4c9c0d1f7b8d43'
             '82ce0179d8df83b5fb76a73f6fb9c6075d1efe4e1ff52828888cf0df07849666'
             '0bb1507a70774b586b1c40783e48653df9fd715b624196b87a106dbd347fda3c'
-            'e5f1f7ebb71d1ed333eed6dbe573a32347eecdc4212dd914628df138e7469228')
+            '9318f61c7d6a31db2f9d435e15070e7d5e21e7de56a9a3fee923b763db23dbfa')
 
 prepare() {
   echo $pkgver > version

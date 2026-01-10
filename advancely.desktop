@@ -2,7 +2,7 @@
 Version=1.0
 Name=Advancely
 Comment=A highly customizable and interactive tool to track Minecraft progress beyond just Advancements.
-Exec=Advancely
+Exec=advancely
 Icon=advancely
 Terminal=false
 Type=Application
