@@ -18,6 +18,315 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.37.2] - 2025-12-19
+
+## 🐛 Fixes
+
+- **Use native roots with rustls for HTTP requests - @dotdat PR #2936**
+- **Replaces the hardcoded plugin URL and installation path with trycmd wildcards - @DaleSeo, PR #2931**
+
+# [0.37.1] - 2025-12-16
+
+## 🐛 Fixes
+
+- **Allow rover dev --graph-ref to work without a local supergraph config - @DaleSeo, PR #2924**
+- **Handle InvalidGraphRef error gracefully instead of panicking - @DaleSeo, PR #2927**
+
+# [0.37.0] - 2025-12-01
+
+## 🚀 Features
+
+- **Enable overriding MCP version in `rover dev` - @DaleSeo, PR #2784**
+
+## 🐛 Fixes
+
+- **Remove conditional header in VSCode file from MCP template processing - @gocamille, PR #2757**
+- **Auto-configure MCP server endpoint with router's custom path- @DaleSeo, PR #2869**
+
+## 📚 Documentation
+
+- **change MCP's default port from 5000 to 8000 - @DaleSeo, PR #2749**
+
+
+# [0.36.2] - 2025-10-03
+
+## 🚀 Features
+
+- **Remove `claude_desktop_config.json` from MCP template and update "Next Steps" UX - @gocamille, #2746 fixes apollographql/rover-init-starters#84**
+
+  Updates the MCP template to be more flexible and AI-client agnostic. Removes the prescriptive `claude_desktop_config.json` file and provides more generic "Next Steps" guidance for connecting any AI client to the generated MCP server.
+
+- **Remove mcp-claude shortlink - @gocamille, #2747**
+
+  Removes the Claude Desktop-specific shortlink to align with the more flexible, AI-client agnostic approach to MCP server setup.
+
+# [0.36.1] - 2025-10-01
+
+## 🐛 Fixes
+
+- **Fix the NPM installer for some Linux distributions. #2724 by @andrewmcgivery**
+
+# [0.36.0] - 2025-09-30
+
+## 🚀 Features
+
+- **Add `--mcp` flag to `rover init` for Model Context Protocol support - [@camillelawrence](https://github.com/camillelawrence) PR [#2731](https://github.com/apollographql/rover/pull/2731)**
+  - Developers can now [add AI tooling capabilities](https://www.apollographql.com/docs/apollo-mcp-server/run) to their GraphQL projects with `rover init --mcp`. This enables two flows: creating new graphs with MCP server capabilities, or augmenting existing projects with MCP tooling.
+- **Add support for [Connectors 0.3 and Federation 2.12 preview](https://www.apollographql.com/docs/graphos/connectors/reference/preview-features)**
+
+# [0.35.0] - 2025-07-30
+
+## ❗ BREAKING ❗
+
+- **use config file for MCP server - @nicholascioli PR #2665**
+
+## 🚀 Features
+
+- **Update MCP options for rover dev - @DaleSeo PR #2661**
+- **Add schema name step to Connectors init workflow - @alyssahursh PR #2647**
+- **Allow running rover dev without --supergraph-config if you have a rover.yaml in the current directory - @dylan-apollo PR #2650**
+- **Updating output for init & renaming generated "supergraph.yaml" -> "rover.yaml" - @tayrrible PR #2651**
+- **Adds support for .env file for use with rover dev - @DMallare PR #2646**
+- **Add graph_ref to and remove federation_version from subgraph.yaml - @alyssahursh PR #2649**
+- **Hackathon improvements to supergraph.yaml - @dylan-apollo PR #2648**
+- **Adding link to studio for graph & showing each step in creation process via spinners - @tayrrible PR #2657**
+- **Generates .env file with rover init - @DMallare PR #2652**
+- **Remove use case guard clause in schema name prompt - @alyssahursh PR #2655**
+- **Set APOLLO_GRAPH_REF from rover.yaml's graph_ref - @dylan-apollo PR #2653**
+- **Adding apollo.config.yaml file for connectors projects - @tayrrible PR #2658**
+- **add a note about the need for APOLLO_KEY and APOLLO_GRAPH_REF when using router features or connect - @the-gigi-apollo PR #2677**
+- **Update Studio Client after loading .env in rover dev - @dylan-apollo PR #2654**
+- **Exposing org selector for all runs of init and changing prompt order - @tayrrible PR #2656**
+
+
+## 🛠 Maintenance
+
+- **upgrade schemars and apollo-federation-types - @DaleSeo PR #2676**
+
+# [0.34.1] - 2025-06-23
+## 🐛 Fixes
+- **Handle null subgraph schema check results - @DaleSeo PR #2639**
+
+# [0.34.0] - 2025-06-20
+## 🚀 Features
+- **Add `--mcp-collection` option for `rover dev` - @Jephuff PR #2636**
+
+# [0.33.0] - 2025-06-10
+## 🚀 Features
+- **Use the starter template's federation version as the default federation version for newly created variants via `rover init` - @sanchezdale PR #2630**
+  - Before, all graph variants created through `init` were set to default to federation 2.10. Now, `init` sets the default to the federation version defined in the selected starter template.
+  
+## 🛠 Maintenance
+- **Update rust crate to v8 - PR #2627**
+- **Update dependency `apollographql/federation-rs` to v2.11.0 - PR #2627**
+- **Configure renovate to not upgrade router major version - @pubmodmatt PR #2622**
+- **Update Apollo Router 2.x to 2.3.0 - PR #2628**
+
+## 📚 Documentation
+- **Update versioning section for accuracy - @mabuyo PR #2631**
+- **Fix MinVersion - @Meschreiber PR #2626**
+- **Update min version usage - @Meschreiber PR #2625**
+
+# [0.32.1] - 2025-06-02
+## 🐛 Fixes
+- **Log cause of introspection error - @pubmodmatt PR #2615**
+
+  Introspection failures in `rover dev` were not logging the underlying cause of the failure. This has been fixed to help with debugging introspection problems.
+
+## 🛠 Maintenance
+- **Update Apollo Router 1.x to 1.61.7 - PR #2614**
+- **Update Apollo Router 2.x to 2.2.1 - PR #2592**
+- **Remove obsolete and broken xtask docs command - @pubmodmatt PR #2619**
+- **Configure Renovate to perform only security updates - @DaleSeo PR #2613**
+- **Update `eslint` to v9.28.0 - PR #2616**
+- **Update `zip` to v4 - PR #2618**
+- **Update `rand_regex` to v0.18.1 - PR #2606**
+- **Update node docker tag to v20.19.2 - PR #2605**
+- **Update `slackapi/slack-github-action` action to v2.1.0 - PR #2584**
+- **Update `duct` to v1 - PR #2586**
+- **Update `npm` to v11 - PR #2547**
+- **Update `quay.io/pypa/manylinux2014_x86_64` docker tag to v2025 - PR #2548**
+- **Update all non-major packages >= 1.0 - PR #2546**
+
+## 📚 Documentation
+- **Update contributing to documentation - @Meschreiber PR #2600**
+- **Update links - @Meschreiber PR #2620**
+
+# [0.32.0] - 2025-05-29
+
+## 🚀 Features
+- **Use the Streamable HTTP transport for MCP - @pubmodmatt PR #2607**
+
+  `rover dev --mcp` will now use the Streamable HTTP transport instead of SSE. Specify the `--mcp-port` and/or `--mcp-address` options to `rover dev --mcp` to override the default values. The `--mcp-sse-port` and `--mcp-sse-address` options still work, but will configure the port and address for Streamable HTTP. Users should migrate to the new option names.
+
+# [0.31.3] - 2025-05-28
+## 🐛 Fixes
+- **Eliminate unnecessary warnings on rover dev startup - @pubmodmatt PR #2604**
+- **Improved error handling for graph creations through rover init - @tayrrible PR #2603**
+
+# [0.31.2] - 2025-05-22
+
+## 🐛 Fixes
+- **Composition failures on environment variables in supergraph config - @pubmodmatt PR #2601**
+
+# [0.31.1] - 2025-05-21
+
+## 🐛 Fixes
+- **MCP fixes - @pubmodmatt PR #2596**
+  - `--mcp-directory` was optional, but `rover dev` failed if it was not specified
+  - Added `--mcp-sse-address` to set the bind address for the MCP server started by `rover dev`
+  - All output from the MCP server was logged as `ERROR` or `UNKNOWN`
+  - If the Router or MCP Server process died, `rover dev` would exit but leave the other process running
+- **`rover init` will now emit the correct commands for Windows PowerShell - @sanchezdale PR #2595**
+
+## 🛠 Maintenance
+- **chore: removing init feature flag - @tayrrible PR #2597**
+
+# [0.31.0] - 2025-05-14
+
+## 🚀 Features
+
+- **Add mcp to rover dev - @Jephuff, @pubmodmatt PR #2591**
+  
+  This release adds the ability to run the [Apollo MCP Server](https://github.com/apollographql/apollo-mcp-server) in addition to the Apollo Router when running `rover dev`. Specify the `--mcp` option to start the MCP server. Additional options are provided to configure the MCP server. Use `rover dev --help` for details.
+
+# [0.30.0] - 2025-05-13
+
+## 🚀 Features
+
+- **Add support for templates in the ```rover init``` command**
+
+  This adds support for templates in the `rover init` command. You can now select a template to use when creating a new graph!
+
+### PRs Included
+
+- [#2562](https://github.com/apollographql/rover/pull/2562) - feat(init): Adds `init` flag to default features - @tayrrible
+- [#2560](https://github.com/apollographql/rover/pull/2560) - feat(rover): Makes starter file configurable during project creation - @gocamille
+- [#2559](https://github.com/apollographql/rover/pull/2559) - feat(rover): Adds `start_point_file` to specify what file to use in output - @sanchezdale
+- [#2558](https://github.com/apollographql/rover/pull/2558) - feat(rover): Displays template commands during init flow if one exists - @gocamille
+- [#2557](https://github.com/apollographql/rover/pull/2557) - feat(init): Adds template selector for "recommended libraries" option - @tayrrible
+- [#2545](https://github.com/apollographql/rover/pull/2545) - Modifies existing logic to fetch from the new github service latest released version - @sanchezdale
+- [#2542](https://github.com/apollographql/rover/pull/2542) - refactor(init): Improves authentication error handling in init command - @gocamille
+- [#2539](https://github.com/apollographql/rover/pull/2539) - refactor(init): Improves error handling for graphId step, improve and code structure of rover init - @gocamille
+- [#2567](https://github.com/apollographql/rover/pull/2567) - feat(rover): init flow - update project creation copy for accuracy - @gocamille
+- [#2568](https://github.com/apollographql/rover/pull/2568) - feat(init): Always show template selector for recommended libraries flow - @tayrrible
+- [#2570](https://github.com/apollographql/rover/pull/2570) - feat(init): Updating error message for non-empty directory - @tayrrible
+- [#2572](https://github.com/apollographql/rover/pull/2572) - Improving file display in tree mode - @sanchezdale
+- [#3573](https://github.com/apollographql/rover/pull/2573) - feat(rover)init: allow multiple commands to be printed for graph creation message - @gocamille
+- [#2575](https://github.com/apollographql/rover/pull/2575) - feat(rover): updating file display to show success and remove extra chars for now - @tayrrible
+- [#2577](https://github.com/apollographql/rover/pull/2577) - feat(auth) Using shortlinks for hyperlinks to api keys - @tayrrible
+- [#7578](https://github.com/apollographql/rover/pull/2578) - adding template doc to docs list - @sanchezdale
+- [#2579](https://github.com/apollographql/rover/pull/2579) - feat(rover)init: correctly capitalize TypeScript - @gocamille
+- [#2580](https://github.com/apollographql/rover/pull/2580) - feat(rover)init: Update Next steps section in project creation message - @gocamille
+- [#2582](https://github.com/apollographql/rover/pull/2582) - feat(init) Moving to using env var vs flag for graph ref when prompting user to run dev command - @tayrrible
+- [#2590](https://github.com/apollographql/rover/pull/2590) - feat(init): Fixing command spacing for final display message and removing extra char from file list - @tayrrible
+
+## 🐛 Fixes
+
+- [#2555](https://github.com/apollographql/rover/pull/2555) - fix(init): Properly handles default graph ID acceptance - @gocamille
+- [#2566](https://github.com/apollographql/rover/pull/2566) - fix(init): Display command in project creation message for typescript template - @gocamille
+- [#2571](https://github.com/apollographql/rover/pull/2571) - fix(init) Stripping all non-alphanumeric chars from graph id during generation and adding test - @tayrrible
+
+## 🛠 Maintenance
+
+- [#2556](https://github.com/apollographql/rover/pull/2556) - feat(init): Standardizes visual output and display messages for init command - @tayrrible
+- [#2552](https://github.com/apollographql/rover/pull/2552) - chore(all): Adds clippy::panic lint across all crates - @gocamille
+- [#2550](https://github.com/apollographql/rover/pull/2550) - chore(deps): Updates dependency apollographql/router to v1.61.5 - @renovate
+- [#2536](https://github.com/apollographql/rover/pull/2536) - feature(init): Removes init feature flag usage - @tayrrible
+- [#2553](https://github.com/apollographql/rover/pull/2553) - chore(deps): update dependency apollographql/router to v2.2.0 - @renovate 
+- [#2565](https://github.com/apollographql/rover/pull/2565) - chore(deps): update dependency apollographql/router to v1.61.6 - @renovate
+- [#2581](https://github.com/apollographql/rover/pull/2581) - update language-server to 0.4.1 - @Jephuff
+
+## 📚 Documentation
+
+- [#2551](https://github.com/apollographql/rover/pull/2551) - Adds `pq publish` into docs - @lleadbet
+- [#2549](https://github.com/apollographql/rover/pull/2549) - Updates doc about key used with graph ref - @pubmodmatt
+- [#2541](https://github.com/apollographql/rover/pull/2541) - Update `rover init` resources - @Meschreiber
+- [#2540](https://github.com/apollographql/rover/pull/2540) - Uses `actions/checkout@v4` in GitHub Actions example workflows - @DaleSeo
+- [#2569](https://github.com/apollographql/rover/pull/2569) - docs: Set the APOLLO_VCS_BRANCH environment variable in GitHub Actions - @DaleSeo
+- [#2561](https://github.com/apollographql/rover/pull/2561) - docs: rover init v.30 update - @Meschreiber
+
+# [0.29.1] - 2025-04-23
+
+## 🐛 Fixes
+- **Fix crash and improve error handling for invalid API keys - @pubmodmatt PR #2533**
+- **Increase telemetry timeout @pubmodmatt PR #2534**
+- **bugfix(init): handle errors gracefully during graph creation - @gocamille PR #2523**
+
+## 📚 Documentation
+- **docs: add graph ref environment variable info - @Meschreiber PR #2531**
+- **updating docs for new repos/marketplace listings - @Meschreiber #2529**
+- **docs: rover init update - @Meschreiber #2532**
+
+# [0.29.0] - 2025-04-22
+
+## 🚀 Features
+
+**Adding new command ```rover init```**
+
+New ```rover init``` command to help set up a new project. It walks you through creating a graph, setting up files, and getting GraphOS credentials. 
+
+More information: <insert doc link here> 
+
+### PRs Included
+
+- [#2530](https://github.com/apollographql/rover/pull/2530) - fix(init): Gracefully exit `init` flow when duplicate graph ID is provided
+- [#2528](https://github.com/apollographql/rover/pull/2528) - fix(init): Exit immediately when GraphQL Template is selected
+- [#2527](https://github.com/apollographql/rover/pull/2527) - bugfix(init) Adding check for user api key
+- [#2525](https://github.com/apollographql/rover/pull/2525) - bugfix(init): Update code snippet to run rover dev
+- [#2518](https://github.com/apollographql/rover/pull/2518) - feat(init): Updating copy for welcome menu, fixing command styles for consistency…
+- [#2517](https://github.com/apollographql/rover/pull/2517) - bugfix(init): update loading spinner and copy for rover init
+- [#2516](https://github.com/apollographql/rover/pull/2516) - hardcoding federation version for connectors
+- [#2514](https://github.com/apollographql/rover/pull/2514) - feat(init): Updating some copy for init command
+- [#2513](https://github.com/apollographql/rover/pull/2513) - locking starters repo to latest version 1d586fc21f6e66f94aae9205b7c2be0a79edb312
+- [#2511](https://github.com/apollographql/rover/pull/2511) - feat(init): set build track to fed 2.10 during graph creation
+- [#2507](https://github.com/apollographql/rover/pull/2507) - feat(init): Stylizing display messages, adding spinner, and refactoring `rover_std` library
+- [#2506](https://github.com/apollographql/rover/pull/2506) - feat(dev): Updating `dev` command's description
+- [#2505](https://github.com/apollographql/rover/pull/2505) - feat(init): adding graph creation & subgraph publish to `init`
+- [#2504](https://github.com/apollographql/rover/pull/2504) - Fixing stripping of prefix on relative path
+- [#2500](https://github.com/apollographql/rover/pull/2500) - Changing connector repository name
+- [#2499](https://github.com/apollographql/rover/pull/2499) - Adding support for graph key creation on init
+- [#2496](https://github.com/apollographql/rover/pull/2496) - feat(init): Remove retry limit when entering graph ID manually
+- [#2495](https://github.com/apollographql/rover/pull/2495) - feat(docs) Adding `configuring` slug to docs link list
+- [#2494](https://github.com/apollographql/rover/pull/2494) - feat(init): Handling branching logic for project type selection
+- [#2491](https://github.com/apollographql/rover/pull/2491) - Generating supergraph.yaml for connectors
+- [#2488](https://github.com/apollographql/rover/pull/2488) - feat(init): Adding fetch for user membership + org selection option
+- [#2487](https://github.com/apollographql/rover/pull/2487) - feat(init): Auth support for `init` command
+- [#2475](https://github.com/apollographql/rover/pull/2475) - feat(init): Add graph_id provisioning step with validation
+- [#2471](https://github.com/apollographql/rover/pull/2471) - Add clap styling
+- [#2470](https://github.com/apollographql/rover/pull/2470) - Add prompt for project name with validation for init command
+- [#2469](https://github.com/apollographql/rover/pull/2469) - Feature: Implementing `init` Command with TypeState Pattern
+- [#2466](https://github.com/apollographql/rover/pull/2466) - Separating Fetching from writing templates to support confirmation of files before writing
+- [#2462](https://github.com/apollographql/rover/pull/2462) - Adding prompt for project use case to init command
+
+## 🛠 Maintenance
+
+- [#2501](https://github.com/apollographql/rover/pull/2501) - Update CODEOWNERS - adding growth to rover-client crate  
+- [#2492](https://github.com/apollographql/rover/pull/2492) - Update CODEOWNERS  
+- [#2485](https://github.com/apollographql/rover/pull/2485) - Update CODEOWNERS: adding growth to options & tests  
+- [#2474](https://github.com/apollographql/rover/pull/2474) - Adding Growth as codeowners for init  
+- [#2464](https://github.com/apollographql/rover/pull/2464) - Fix features input on smoke tests  
+- [#2448](https://github.com/apollographql/rover/pull/2448) - Fix curl installer anonymized usage collection message 
+- [#2486](https://github.com/apollographql/rover/pull/2486) - Update crossbeam-channel dependency
+- [#2481](https://github.com/apollographql/rover/pull/2481) - chore(deps): update dependency apollographql/router to v2.1.1
+- [#2480](https://github.com/apollographql/rover/pull/2480) - Update openssl and tokio dependencies
+- [#2479](https://github.com/apollographql/rover/pull/2479) - chore(deps): update dependency apollographql/router to v1.61.2
+- [#2463](https://github.com/apollographql/rover/pull/2463) - chore(deps): update dependency apollographql/router to v1.61.1
+- [#2460](https://github.com/apollographql/rover/pull/2460) - chore(deps): update dependency apollographql/router to v2.1.0
+- [#2436](https://github.com/apollographql/rover/pull/2436) - chore(deps): update dependency gh to v2.7.0
+- [#2435](https://github.com/apollographql/rover/pull/2435) - chore(deps): update all non-major packages >= 1.0
+- [#2434](https://github.com/apollographql/rover/pull/2434) - chore(deps): pin rust crate jsonschema to =0.29.0
+
+## 📚 Documentation
+
+- [#2526](https://github.com/apollographql/rover/pull/2520) - docs: Enable init docs
+- [#2520](https://github.com/apollographql/rover/pull/2520) - docs: remove init for now
+- [#2510](https://github.com/apollographql/rover/pull/2510) - docs: Add generic env variable info
+- [#2467](https://github.com/apollographql/rover/pull/2467) - Add upgrade language to Rover Doc
+- [#2458](https://github.com/apollographql/rover/pull/2458) - docs: update broken anchor to Gitlab CI/CD section
+- [#2451](https://github.com/apollographql/rover/pull/2451) - docs: `rover init`
+
+
 # [0.28.1] - 2025-03-13
 
 ## 🐛 Fixes
