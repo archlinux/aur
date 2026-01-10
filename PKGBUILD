@@ -2,7 +2,7 @@
 # Contact me about packaging issues tho. <bjoel2@i2pmail.org>
 
 pkgname="intel-metrics-discovery-git"
-pkgver=1.14.183.r0.g1b7f810
+pkgver=1.14.184.r0.g5c14a07
 pkgrel=1
 pkgdesc="User mode library that provides access to GPU performance data"
 arch=('x86_64')
