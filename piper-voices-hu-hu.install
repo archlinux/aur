@@ -3,11 +3,11 @@ PIPER_CONFIG=/etc/speech-dispatcher/speechd.conf
 PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
 VOICE_LINE=(
 	'GenericLanguage "hu" "hu_HU" "utf-8"'
-	'AddVoice "hu" "FEMALE1" "/hu/hu_HU/anna/medium/hu_HU-anna-medium"'
-	'AddVoice "hu" "FEMALE2" "/hu/hu_HU/berta/medium/hu_HU-berta-medium"'
-	'AddVoice "hu" "MALE1" "/hu/hu_HU/imre/medium/hu_HU-imre-medium"'
+	'AddVoice "hu" "FEMALE1" "hu/hu_HU/anna/medium/hu_HU-anna-medium"'
+	'AddVoice "hu" "FEMALE2" "hu/hu_HU/berta/medium/hu_HU-berta-medium"'
+	'AddVoice "hu" "MALE1" "hu/hu_HU/imre/medium/hu_HU-imre-medium"'
 )
-DEFAULT_VOICE='DefaultVoice "/hu/hu_HU/anna/medium/hu_HU-anna-medium"'
+DEFAULT_VOICE='DefaultVoice "hu/hu_HU/anna/medium/hu_HU-anna-medium"'
 
 post_install() {
   # Check if the piper-generic.conf file exists
