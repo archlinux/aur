@@ -120,8 +120,8 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  'b5eefa519690983ef92be8cc30eaface1fc8c9f225d9d851a5c1819a52634770'  # ${_pkgname}-${pkgver}.tar.xz
-  'ddd9855272ccf9a1e09de2444d343a50d879afe445d7d143473f370ec11d472a'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  '1323014ca4054ac624dd5805c1128ba666a861ae2c3a22fba1e703df42f92844'  # ${_pkgname}-${pkgver}.tar.xz
+  'b05f0568550fdb26e94b726042771f87928090ef1aa8e9a3b61801e91e93c4ea'  # ${_pkgname}-${pkgver}.tar.xz.sig
   'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
