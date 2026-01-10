@@ -5,7 +5,7 @@
 _name=xeger
 pkgname=python-xeger-bin
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for generating random strings from a valid regular expression."
 license=('BSD')
 arch=('any')
