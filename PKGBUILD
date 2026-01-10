@@ -2,7 +2,7 @@
 
 _plug=awsmfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.4.r21.g5c6d78d
+pkgver=1.3.5.r0.gd1a797c
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: awsmfunc (GIT version)'
 arch=('x86_64')
