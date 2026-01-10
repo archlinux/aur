@@ -6,7 +6,7 @@ url="https://github.com/Amulet-Team/Amulet-Compiler-Version"
 license=("LicenseRef-Amulet-Team-License")
 arch=(any)
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 makedepends=(python-setuptools git python-wheel cmake)
 depends=(python)
 source=(
@@ -16,6 +16,7 @@ md5sums=('5d6f6c57fac11b8d963dacdbbdcb00ce')
 
 function prepare() {
 	cd "${srcdir}/Amulet-Compiler-Version"
+	git clean -fdx
 	git submodule init
 	git submodule update
 }

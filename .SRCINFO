@@ -1,7 +1,7 @@
 pkgbase = python-amulet-compiler-version
 	pkgdesc = A tiny library to allow dependencies to require the same compiler
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Amulet-Team/Amulet-Compiler-Version
 	arch = any
 	license = LicenseRef-Amulet-Team-License
