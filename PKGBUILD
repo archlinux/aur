@@ -8,7 +8,7 @@ license=('GPLv3')
 provides=('zep')
 conflicts=('zep')
 source=("https://zep.run/releases/${pkgver}/zep_x86_64-linux_${pkgver}.tar.xz")
-sha256sums=('1d4f37dd54a8f6b2b11bf038e793ed335152b65b8362426352ff7cc14271262f')
+sha256sums=('5437049f8cceb2183ea0549d49e1198bd6331077f23ebefd720d85edf206f272')
 
 package() {
     install -Dm755 "$srcdir/zep" "$pkgdir/usr/bin/zep"
