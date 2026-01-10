@@ -20,6 +20,7 @@ build() {
 package() {
     cd "Mycelica-$pkgver"
     install -Dm755 "src-tauri/target/release/mycelica" "$pkgdir/usr/bin/mycelica"
+    install -Dm755 "src-tauri/target/release/mycelica-cli" "$pkgdir/usr/bin/mycelica-cli"
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/mycelica.png"
 
     # Desktop entry
