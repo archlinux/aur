@@ -7,7 +7,7 @@ post_install() {
   echo "(e.g., ~/.config/opencode/config.json):"
   echo ""
   echo "  {"
-  echo "    \"plugin\": [\"opencode-gemini-auth\"]"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-gemini-auth\"]"
   echo "  }"
   echo ""
   echo "Then run 'opencode auth login' to authenticate."
