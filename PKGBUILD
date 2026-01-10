@@ -2,7 +2,7 @@
 # Maintainer: Guy Boldon <gb@guyboldon.com>
 
 pkgname=coolercontrold
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon."
 arch=('x86_64')
@@ -14,13 +14,14 @@ depends=(
 	'glibc'
 )
 makedepends=(
+	'rust'
 	'cargo'
-	'nodejs>=18'
-	'npm'
+	'protobuf'
 )
 optdepends=(
 	'nvidia-utils: NVIDIA GPU support'
 	'liquidctl: liquidctl driver support'
+	'lm_sensors: kernel hwmon driver support'
 )
 provides=(
 	"$pkgname"
@@ -34,17 +35,19 @@ options=(
 	!lto
 )
 source=(
-	"https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/${pkgname%d}-$pkgver.tar.gz"
+	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/coolercontrol-$pkgver.tar.gz"
+	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/$pkgname-vendor.tar.gz"
 )
 sha256sums=(
-  'f27354ae0a1e97de81ac574e03df3106d30d55d93393e86ea99abbe3af4c4ab6'
+  'eb3ae3d4ba8b260ba2650b8188ee7f525bd486901f8566c30517340ae462a9dc'
+  '3d6d35e7833b839b9095ba70fdf5747b29999c48103fdb4095d17aabe917c3fa'
 )
 
 build() {
-	cd "${srcdir}/${pkgname%d}-$pkgver/coolercontrol-ui"
-	npm ci
-	npm run build
-	cp -r dist/* "${srcdir}/${pkgname%d}-$pkgver/$pkgname/resources/app/"
+	# cd "${srcdir}/${pkgname%d}-$pkgver/coolercontrol-ui"
+	# npm ci
+	# npm run build
+	# cp -r dist/* "${srcdir}/${pkgname%d}-$pkgver/$pkgname/resources/app/"
 	cd "${srcdir}/${pkgname%d}-$pkgver/$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
