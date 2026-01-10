@@ -1,0 +1,32 @@
+#!/bin/sh
+set -e
+
+in="$1"
+size="$2"
+shift 2
+
+out_dir="."
+if [ "$#" -ge 2 ]; then
+  case "$1" in
+    -o|--output)
+      out_dir="$2"
+      ;;
+  esac
+fi
+
+base="$(basename "$in" .svg)"
+width="${size%x*}"
+height="${size#*x}"
+
+mkdir -p "$out_dir"
+
+tmp_png="$(mktemp "${TMPDIR:-/tmp}/symbolic.XXXXXX.png")"
+tmp_alpha="$(mktemp "${TMPDIR:-/tmp}/symbolic-alpha.XXXXXX.png")"
+trap 'rm "$tmp_png" "$tmp_alpha"' EXIT
+
+# Render SVG, then encode as black+alpha for symbolic PNGs.
+rsvg-convert -w "$width" -h "$height" -o "$tmp_png" "$in"
+magick "$tmp_png" -alpha extract "$tmp_alpha"
+magick -size "${width}x${height}" xc:black "$tmp_alpha" -compose CopyOpacity -composite \
+  -type TrueColorAlpha -define png:color-type=6 \
+  "$out_dir/${base}.symbolic.png"
