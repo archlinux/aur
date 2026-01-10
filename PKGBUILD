@@ -5,55 +5,78 @@
 # Contributor: Bartholian (https://aur.archlinux.org/account/Barthalion)
 
 pkgname=ripperx
-pkgver=2.8.0
-pkgrel=5
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
   'x86_64'
   'i686'
 )
-url="http://ripperx.sourceforge.net/"
+#url="http://ripperx.sourceforge.net/"
+url="https://codeberg.org/thothix/ripperx"
 depends=(
   'gcc-libs'
-  'glib2'
+  'glib2>=2.6'
   'glibc'
-  'gtk2'
-  'taglib'
+  'gtk2>=2.6'
+  'libgdk_pixbuf-2.0.so'
+  'taglib>=1.9.1'
 )
-license=('GPL')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('51ac9ec0fddef9d2e951232a60d23bcd')
+makedepends=(
+  'autoconf>=2.60'
+  'automake'
+  'gdk-pixbuf2'
+  'gettext>=0.15'
+  'libtool'
+)
+license=('GPL-2.0-or-later')
+source=(
+  "${pkgname}-v${pkgver}.tar.gz::https://codeberg.org/thothix/ripperx/archive/${pkgver}.tar.gz"
+  "ripperx_desktopfile-iconname.patch"
+)
+sha256sums=(
+  '7461cdd3eda85ada3ed0e0059abe37c2b475e8986cd033434fde7601cacc377c'
+  'b529f04f4836e49dfd118522f7969486ba8eebb132f4e03bde2ac72630566c0e'
+)
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's|Icon=.*|Icon=ripperX.xpm|g' ripperX.desktop
-  echo "Categories=GTK;GNOME;AudioVideo;DiscBurning;" >>ripperX.desktop
-  patch ripperX.pc.in <<EOF
-diff -r ripperX-2.7.3/ripperX.pc.in ripperX-2.7.3.y/ripperX.pc.in
-3a4
-> includedir=@includedir@
-EOF
-  sed -i 's/.*gtk_cpp_workaround.h.*//g' \
-    src/config_window_handler.c \
-    src/select_frame_handler.c \
-    src/status_frame_handler.c
+  cd "$pkgname"
+
+  local _patch
+  for _patch in "${srcdir}/ripperx_desktopfile-iconname.patch"; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  CFLAGS+=" -fpermissive"
+  cd "$pkgname"
+  local _CFLAGSADDITIONS
+  _CFLAGSADDITIONS=" -fpermissive"
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
   export CFLAGS
+  export CXXFLAGS
 
+  ./bootstrap
   ./configure \
     --prefix=/usr \
     --enable-nls
 
-  make
+  make -j1
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
-  install -Dm0644 ripperX.desktop "$pkgdir"/usr/share/applications/ripperX.desktop
-  install -Dm0644 src/xpms/ripperX-icon.xpm "$pkgdir"/usr/share/icons/ripperX.xpm
+
+  install -Dvm0644 ripperX.desktop "$pkgdir"/usr/share/applications/ripperX.desktop
+  install -Dvm0644 src/xpms/ripperX-icon.xpm "$pkgdir"/usr/share/pixmaps/ripperX.xpm
+  # Symlink icon into /usr/share/icons, since ripperx package version 2.8.0-5 had it there. To not break custom desktop setups.
+  install -dvm0755 "$pkgdir"/usr/share/icons
+  ln -svr "$pkgdir"/usr/share/pixmaps/ripperX.xpm "$pkgdir"/usr/share/icons/ripperX.xpm
+
+  install -Dvm0644 -t "${pkgdir}/usr/share/doc/${pkgname}"  BUGS CHANGELOG.md FAQ README README.* TODO
+  install -Dvm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
+
 }
