@@ -3,7 +3,7 @@
 _name=xeger
 pkgname=python-$_name-git
 pkgver=r40.e650ded
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for generating random strings from a valid regular expression."
 license=('BSD')
 arch=('any')
