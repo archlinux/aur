@@ -10,14 +10,14 @@ arch=('any')
 url="https://github.com/hartwork/resolve-march-native"
 license=('GPL-2.0-or-later')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('6695a4ae9188656b81364ae18e99fd53588faa9b2bb6a8010a1f7f4c56d60de7')
 
 build() {
     cd "$pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check(){
@@ -27,5 +27,5 @@ check(){
 
 package() {
     cd "$pkgname-$pkgver"
-    python setup.py install --root="${pkgdir}/" --skip-build --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
