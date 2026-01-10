@@ -12,8 +12,7 @@ groups=(
   "gpd"
 )
 pkgver=r43.20251126.49bd324
-_gpdfanspeedver="$("${startdir}"/gpdfanspeed --version)"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan hwmon speed report and speed control driver for GPD Win Mini, GPD Win Max2 and GPD Win 4 laptops. Latest git checkout. Includes a command line control utility."
 url="https://${_githost}/${_gituser}/${_gitname}"
 arch=('any')
@@ -25,31 +24,27 @@ makedepends=(
   'git'
 )
 optdepends=(
-  "bash: For 'gpdfanspeed' control utility."
+  "gpdfanspeed: For a command line control utility."
 )
 provides=(
   "${_gitname}"
   "${_gitname}-git=${pkgver}"
   "${_pkgname}"
   "GPD-FAN-DRIVER"  # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
-  "gpdfanspeed=${_gpdfanspeedver}"
 )
 conflicts=(
   "${_gitname}"
   "${_pkgname}"
-  "gpdfanspeed"
 )
 install="${_gitname}.install"
 source=(
   "${_gitname}::git+${url}.git"
   "dkms.conf.in"
-  "gpdfanspeed"
   "${install}"
 )
 sha256sums=(
   'SKIP'
   'f3f6f913c82b58f9e4811a04449a17ce88af57a0a4ba7fad05cfdbe3689b7863'  # dkms.conf.in
-  '5ef1cf4e789bee5c6c63f07f1044d7d6150dc73e39462901ff09b7a4d9cd54a0'  # gpdfanspeed
   '52b499321ed838fa91a788e7fbf118a9cbeb9367e131aa924a6fa03afd20c922'  # $install
 )
 
@@ -85,8 +80,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
-  install -Dvm755 -t "${pkgdir}/usr/bin"                        "${srcdir}/gpdfanspeed"
 
   umask 022
   install -Dvm644 -t "${pkgdir}/usr/src/${_gitname}-${pkgver}"  'gpd-fan.c' 'Makefile' "${srcdir}/dkms.conf"
