@@ -1,7 +1,7 @@
 pkgbase = dlss-updater-appimage
 	pkgdesc = Update DLSS/XeSS/FSR DLLs for games
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Recol/DLSS-Updater
 	arch = x86_64
 	license = AGPL-3.0-only
