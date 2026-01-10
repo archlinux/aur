@@ -1,0 +1,18 @@
+pkgbase = mycelica-bin
+	pkgdesc = Visual knowledge graph for connected thinking (prebuilt binaries)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Ekats/Mycelica
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	provides = mycelica
+	conflicts = mycelica
+	source = mycelica-0.8.0.tar.gz::https://github.com/Ekats/Mycelica/releases/download/v0.8.0-1/mycelica-0.8.0-linux-x86_64.tar.gz
+	source = mycelica-cli-0.8.0.tar.gz::https://github.com/Ekats/Mycelica/releases/download/v0.8.0-1/mycelica-cli-0.8.0-linux-x86_64.tar.gz
+	sha256sums = ab926874ea82dea8281ded085b61f973b779f5562d68368ff8a69bc8c554df26
+	sha256sums = c793516d9360c34050e72fc456a53ce817de0f4feb67d3185df063f551654e27
+
+pkgname = mycelica-bin
