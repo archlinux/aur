@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=waybar-module-pacman-updates-git
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc='Waybar module for Arch to show system updates available'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 options=(!lto)
 makedepends=(cargo git pacman)
 depends=(waybar pacman pacman-contrib curl openssl)
-source=("git+$url#commit=cf0c500")
+source=("git+$url#commit=e72074e")
 sha256sums=('SKIP')
 
 pkgver(){
