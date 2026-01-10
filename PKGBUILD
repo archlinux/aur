@@ -2,8 +2,8 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.91.0.7725.251218.95855a3.r1.6934322f0
-pkgrel=1
+pkgver=1.91.0.7735.260110.de7b442.r0.de7b44299
+pkgrel=2
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -43,6 +43,8 @@ pkgver() {
 
 
 prepare() {
+  # png.h & pngconf.h in the oolite-linux-dependencies submodule screw up the use of libpng 1.6.x at runtime , remove them
+  rm oolite-linux-dependencies/include/png.h oolite-linux-dependencies/include/pngconf.h
   pushd $pkgname
   git submodule init
   git config submodule.Resources/Binary.url "$srcdir"/oolite-binary-resources
@@ -56,9 +58,6 @@ prepare() {
   git config submodule.deps/Windows-deps.url "$srcdir"/oolite-windows-dependencies
   git -c protocol.file.allow=always submodule update
   popd
-# png.h & pngconf.h in 2 places screw up the use of libpng 1.6.x , remove them
-  rm oolite-linux-dependencies/include/png.h oolite-linux-dependencies/include/pngconf.h
-  rm $pkgname/deps/Linux-deps/include/png.h $pkgname/deps/Linux-deps/include/pngconf.h
 }
 
 
