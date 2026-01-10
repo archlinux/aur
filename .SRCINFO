@@ -1,0 +1,18 @@
+pkgbase = censawayapp-bin
+	pkgdesc = Censaway VPN Client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Censaway/CensawayApp
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = censaway
+	conflicts = censaway
+	options = !strip
+	options = !debug
+	source = censawayapp-bin-1.0.0::https://github.com/Censaway/CensawayApp/releases/download/v1.0.0/Censaway_v1.0.0_linux_amd64
+	sha256sums = a7b09b04f15a233aa988c2ef7264d4885a9ea260f90301afeb24680f6792b979
+
+pkgname = censawayapp-bin
