@@ -5,7 +5,7 @@ _pkgname="dlss-updater"
 _Pkgname="DLSS_Updater_Linux"
 _disname="io.github.recol.dlss-updater"
 pkgname="${_pkgname}-appimage"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Update DLSS/XeSS/FSR DLLs for games"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Recol/DLSS-Updater/releases/download/V${pkgver}/${_Pkgname}-${pkgver}-${arch}.AppImage"
 			   "https://raw.githubusercontent.com/Recol/DLSS-Updater/refs/heads/main/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('889fc459a50097c9a4246ebfad13d5a2aee672ad19dc51a66c157c249623ba90'
+sha256sums_x86_64=('d46b83578eacd0af63d4059792a452ea773ece0bf40fd603ffff6178b7f5ee66'
 				   '543fa96aec228a26be5e2db380abda94a4481522498ea442430e9a2292b64fd5')
 
 prepare() {
