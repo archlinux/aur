@@ -10,7 +10,7 @@ pkgbase = zigmir-bin
 	conflicts = zigmir
 	source_x86_64 = ${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-amd64
 	source_aarch64 = ${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-arm64
-	sha256sums_x86_64 = f3f6a9e550062f66277d1d7a055b6f14371cfc5289e7c358372f82a3fb5a25ac
-	sha256sums_aarch64 = 8f19a43bb4eab7b05ff0197937f73195c2dc9578da0009cc1373e932423b7c76
+	sha256sums_x86_64 = 481c072d589b11344cd814986c8201644bac3e6fd7d4a737417792d7a1794933
+	sha256sums_aarch64 = 3f658f29a9430b52abb24aa302ee37d0afa80f3926fc95a4d319eb7fb3e60f35
 
 pkgname = zigmir-bin
