@@ -24,8 +24,6 @@ post_install() {
 post_upgrade() {
     echo "--------------------------------------------------------------------------------"
     echo "Mimic-Node upgraded."
-    echo "IMPORTANT: mimictl now stages changes by default."
-    echo "You must run 'mimictl apply' to activate changes."
     echo ""
     echo "Ensure the mount service is enabled:"
     echo "  sudo systemctl enable --now mimic-node-mount.service"
