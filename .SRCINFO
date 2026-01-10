@@ -1,6 +1,6 @@
 pkgbase = python-ctranslate2-bin
 	pkgdesc = CTranslate2 is a C++ and Python library for efficient inference with Transformer models.
-	pkgver = 4.6.2
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://github.com/OpenNMT/CTranslate2
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = python-ctranslate2-bin
 	conflicts = ctranslate2-git
 	conflicts = python-ctranslate2-git
 	conflicts = python-ctranslate2
-	source_x86_64 = https://files.pythonhosted.org/packages/cp313/c/ctranslate2/ctranslate2-4.6.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	sha256sums_x86_64 = ac1207e1aef08bf3679f33848b96f23a4d3ea078296cee473cce6a148cd8e145
-	source_aarch64 = https://files.pythonhosted.org/packages/cp313/c/ctranslate2/ctranslate2-4.6.2-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
-	sha256sums_aarch64 = 3fb491fe14bce7fade2ad0ec43a95ab4f3542c12c0d46b3b10638e977230d4a7
+	source_x86_64 = https://files.pythonhosted.org/packages/cp313/c/ctranslate2/ctranslate2-4.6.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums_x86_64 = f08efa826707d095ade28410dca27f8d377520f3068843e00b349d5ca15cf174
+	source_aarch64 = https://files.pythonhosted.org/packages/cp313/c/ctranslate2/ctranslate2-4.6.3-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+	sha256sums_aarch64 = 6cc539ed7c3531354971c78938da50f29ac08b8dc9140bc7ac377e8344bc63e2
 
 pkgname = python-ctranslate2-bin
