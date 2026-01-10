@@ -1,7 +1,7 @@
-From 5546abbb7bb0394433c38a9f6113ae263d562e11 Mon Sep 17 00:00:00 2001
+From 848984302f3651aa06fe0e3f2e38f2f42eb26f06 Mon Sep 17 00:00:00 2001
 From: Frederik Schwan <frederik@tty42.de>
 Date: Wed, 2 Apr 2025 22:27:15 +0200
-Subject: [PATCH 1/2] add compatibility changes to allow both 64 bit and 32 bit
+Subject: [PATCH] add compatibility changes to allow both 64 bit and 32 bit
  versions of the package to be installed at the same time
 
 it might be better to use different runtime directories for different
@@ -14,7 +14,7 @@ as the default value of ipcdir should be adjusted.
  3 files changed, 13 insertions(+), 7 deletions(-)
 
 diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
-index 14ab8442..86b3ec9e 100644
+index 874a03dc..e4f82ad7 100644
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
 @@ -1,12 +1,12 @@
@@ -40,7 +40,7 @@ index 14ab8442..86b3ec9e 100644
 -Also=pcscd.socket
 +Also=pcscd@program_suffix@.socket
 diff --git a/meson.build b/meson.build
-index 4d4d2bf9..cb5eac88 100644
+index 34870db2..62a11f98 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -29,6 +29,7 @@ confgen_data = configuration_data({
@@ -51,7 +51,7 @@ index 4d4d2bf9..cb5eac88 100644
    })
  
  # tests for functions
-@@ -153,7 +154,7 @@ features += 'serialconfdir=' + get_option('serialconfdir')
+@@ -161,7 +162,7 @@ features += 'serialconfdir=' + get_option('serialconfdir')
  # generate PCSCLITE_FEATURES
  conf_data.set('PCSCLITE_FEATURES', '"' + ' '.join(features) + '"')
  
@@ -60,10 +60,10 @@ index 4d4d2bf9..cb5eac88 100644
    sources : pcscd_src,
    include_directories : incdir,
    dependencies : pcscd_dep,
-@@ -296,11 +297,11 @@ if get_option('libsystemd')
-   unit = get_option('systemdunit')
-   systemdsystemunitdir = systemd.get_variable(pkgconfig : 'systemd' + unit + 'unitdir')
-   sysusersdir = systemd.get_variable(pkgconfig : 'sysusersdir')
+@@ -299,11 +300,11 @@ configure_file(output : 'pcsclite.h',
+ configure_file(output : 'pcscd.h',
+   input : 'src/pcscd.h.in',
+   configuration : confgen_data)
 -configure_file(output : 'pcscd.socket',
 +configure_file(output : 'pcscd@0@.socket'.format(get_option('program_suffix')),
    input : 'etc/pcscd.socket.in',
@@ -88,5 +88,5 @@ index f0b58cac..9e62bcc1 100644
 +  value : '',
 +  description : 'suffix for programs')
 -- 
-2.51.0
+2.52.0
 

@@ -8,8 +8,8 @@ _pkgname=pcsclite
 pkgname=lib32-$_pkgname
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pcsclite/-/commits/main
 # https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library (32-bit)"
 arch=('x86_64')
 url='https://pcsclite.apdu.fr/'
@@ -44,8 +44,8 @@ source=(
   "systemd-unit-conflicts.diff"
   "0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch"
 )
-sha256sums=('441ca8dd35b6c8b8363cbac72b1d9a97d0e482f48ab51b9766cbab304e81305e'
-            '73831a681d3dd5f0198b9f09e2a69db5e70abe3e4c04fa242452076af1c174fd'
+sha256sums=('0347f8dbc250f465dfaf2a9c58779f47fd193fbcf73e6ef64bdc3b47bd069f7a'
+            '782db4be00202c5a8ea305bfbf6c8a6da17ccdbf370b3b79bb0c0eea3f4c6bf1'
             '207a2109c954ae75ba31e607f8da587f7053c6fe2f9e3ae17090acfb0c680b36'
             '6623cfd64ce75c3c8a4274210a437f3d192908bd3b5505f5c529c2aebd581581')
 
