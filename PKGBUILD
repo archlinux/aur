@@ -2,7 +2,7 @@
 
 _name=strawberry-graphql-django
 pkgname=python-$_name
-pkgver=0.72.0
+pkgver=0.73.1
 pkgrel=1
 pkgdesc=" Strawberry GraphQL Django extension"
 arch=('any')
@@ -23,11 +23,11 @@ optdepends=(
 makedepends=(
 	'python-build'
 	'python-installer'
-	'python-poetry-core'
+	'python-hatchling'
 	'python-setuptools'
 )
 source=(
-	"$_name-$pkgver.tar.gz::https://github.com/strawberry-graphql/strawberry-django/archive/refs/tags/v$pkgver.tar.gz"
+	"$_name-$pkgver.tar.gz::https://github.com/strawberry-graphql/strawberry-django/archive/refs/tags/$pkgver.tar.gz"
 )
 
 build() {
@@ -42,4 +42,4 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('105ee730df7d5859b89284965d5a8597fb0c98d6305cf5b55debc452519732bc')
+sha256sums=('21b24d888ee9d2b82b842297f8349bf23739205f5acd920b51c06a72af357b0b')
