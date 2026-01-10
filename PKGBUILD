@@ -2,24 +2,28 @@
 # Contributor: Henrique C. Alves <hcarvalhoalves@gmail.com>
 
 pkgname=libmatchbox
-pkgver=1.12
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Base library for Matchbox WM"
 arch=('x86_64')
 license=('LGPL')
-depends=('pango' 'libpng' 'libjpeg-turbo' 'xsettings-client' 'libxext')
+depends=('pango' 'libpng' 'libjpeg-turbo' 'libxext')
 url="https://www.yoctoproject.org/software-item/matchbox/"
 source=("https://git.yoctoproject.org/libmatchbox/snapshot/libmatchbox-${pkgver}.tar.gz")
-sha256sums=('648d7e1af82e69b79c0932ff9f85e6781584eada5da8662f70196916dd208f55')
+sha256sums=('2d0c3e827acb8f95e801168d6f7fa03497e06ff60cbfe0b8ae7c5e740295c6ac')
+
+prepare() {
+  cd $pkgname-$pkgver
+  autoreconf -fi
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./autogen.sh
-  ./configure --prefix=/usr --enable-pango --enable-jpeg --enable-xsettings
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --enable-pango --enable-jpeg
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
