@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=gittorrent
-pkgver=3.0.1
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="a CLI version control system with a CI/CD pipeline"
 arch=("x86_64")

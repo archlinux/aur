@@ -1,4 +1,7 @@
-*.pkg.tar.zst
+_gt
+
 gittorrent/
+*.pkg.tar.zst
 pkg/
+rpl.sed
 src/
