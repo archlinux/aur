@@ -1,0 +1,3 @@
+d /etc/viseron 0755 viseron viseron
+d /var/lib/viseron 0755 viseron viseron
+d /run/viseron 0755 viseron viseron

@@ -1,0 +1,102 @@
+pkgname=viseron
+pkgver=include(`.version')dnl
+pkgrel=1
+pkgdesc="Self-hosted, local only NVR with object detection"
+arch=('x86_64')
+url="https://github.com/roflcoopter/viseron"
+license=('MIT')
+depends=(
+    'ffmpeg'
+    'go2rtc'
+    'postgresql-libs'
+    'python'
+    'python-dlib'
+    'python-gobject'
+    'python-numpy'
+    'python-pillow'
+    'python-psycopg2'
+    'python-pytorch'
+    'python-requests'
+    'python-scikit-learn'
+    'python-torchvision'
+    'python-yaml'
+    'cpulimit'
+)
+optdepends=(
+    'libedgetpu: for USB Coral support'
+    'cuda: for GPU support'
+)
+makedepends=(
+    'cmake'
+    'gcc'
+    'gobject-introspection'
+    'nodejs'
+    'npm'
+    'pkgconf'
+    'python-pip'
+    'python-wheel'
+)
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/roflcoopter/viseron/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://raw.githubusercontent.com/AlexxIT/go2rtc/v1.9.9/www/video-rtc.js"
+    "viseron.service"
+    "viseron-go2rtc.service"
+    "viseron.sysusers"
+    "viseron.tmpfiles"
+    "viseron-nginx.conf"
+esyscmd(ls -1 *.patch 2>/dev/null | sed "s/^/    '/;s/$/'/")
+)
+b2sums=(x)
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  local p
+  for p in "$srcdir"/*.patch; do
+    if [ -f "$p" ]; then
+      msg2 "Applying patch: $(basename "$p")"
+      patch -Np1 -i "$p"
+    fi
+  done
+
+  sed -i 's/==/>=/' requirements.txt
+}
+
+build() {
+  export NODE_OPTIONS=--max-old-space-size=4096
+
+  cd "$pkgname-$pkgver"
+
+  pushd frontend > /dev/null
+  npm ci --legacy-peer-deps
+  cp "${srcdir}/video-rtc.js" src/components/player/liveplayer/
+
+  npm run build
+  popd
+
+  mkdir -p viseron/frontend
+  cp -r frontend/dist/* viseron/frontend/
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm644 "$srcdir/viseron.service" "$pkgdir/usr/lib/systemd/system/viseron.service"
+  install -Dm644 "$srcdir/viseron-go2rtc.service" "$pkgdir/usr/lib/systemd/system/viseron-go2rtc.service"
+  install -Dm644 "$srcdir/viseron.sysusers" "$pkgdir/usr/lib/sysusers.d/viseron.conf"
+  install -Dm644 "$srcdir/viseron.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/viseron.conf"
+  install -Dm644 "$srcdir/viseron-nginx.conf" "$pkgdir/usr/share/doc/$pkgname/nginx.conf.example"
+
+  install -d "$pkgdir/usr/lib/viseron"
+  python -m venv --system-site-packages "$pkgdir/usr/lib/viseron"
+  source "$pkgdir/usr/lib/viseron/bin/activate"
+
+  pip install --upgrade pip
+  pip install -r requirements.txt
+
+  # Viseron expects to run from its source tree.
+  cp -r manager.py viseron "$pkgdir/usr/lib/viseron/"
+
+  pip cache purge
+  find "$pkgdir/usr/lib/viseron" -type d -name "__pycache__" -exec rm -rf {} +
+}

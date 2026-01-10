@@ -1,0 +1,15 @@
+[Unit]
+Description=Go2RTC for Viseron
+After=network.target
+
+[Service]
+Type=simple
+User=viseron
+Group=viseron
+ExecStartPre=/usr/bin/touch /run/viseron/go2rtc.yaml
+ExecStartPre=/usr/bin/chown viseron:viseron /run/viseron/go2rtc.yaml
+ExecStart=/usr/bin/go2rtc -config /run/viseron/go2rtc.yaml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

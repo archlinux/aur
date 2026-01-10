@@ -1,0 +1,32 @@
+
+---
+ viseron/components/ffmpeg/stream.py    |    2 +-
+ viseron/components/gstreamer/stream.py |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/viseron/components/ffmpeg/stream.py b/viseron/components/ffmpeg/stream.py
+index 98b23e0..19b52da 100644
+--- a/viseron/components/ffmpeg/stream.py
++++ b/viseron/components/ffmpeg/stream.py
+@@ -165,7 +165,7 @@ class Stream:
+             raise RuntimeError("FFmpeg path not set")
+ 
+         try:
+-            os.symlink(path, f"/home/abc/bin/{alias}")
++            os.symlink(path, f"/var/lib/viseron/bin/{alias}")
+         except FileExistsError:
+             pass
+ 
+diff --git a/viseron/components/gstreamer/stream.py b/viseron/components/gstreamer/stream.py
+index 8a396f8..14c6b92 100644
+--- a/viseron/components/gstreamer/stream.py
++++ b/viseron/components/gstreamer/stream.py
+@@ -137,7 +137,7 @@ class Stream(FFmpegStream):
+             raise RuntimeError("GStreamer path not set")
+ 
+         try:
+-            os.symlink(path, f"/home/abc/bin/{alias}")
++            os.symlink(path, f"/var/lib/viseron/bin/{alias}")
+         except FileExistsError:
+             pass
+ 

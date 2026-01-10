@@ -1,0 +1,18 @@
+
+---
+ viseron/components/go2rtc/const.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/viseron/components/go2rtc/const.py b/viseron/components/go2rtc/const.py
+index fc16a45..28bc5f9 100644
+--- a/viseron/components/go2rtc/const.py
++++ b/viseron/components/go2rtc/const.py
+@@ -4,7 +4,7 @@ from typing import Final
+ 
+ COMPONENT: Final = "go2rtc"
+ 
+-GO2RTC_CONFIG = "/tmp/go2rtc.yaml"
++GO2RTC_CONFIG = "/run/viseron/go2rtc.yaml"
+ 
+ # CONFIG_SCHEMA constants
+ DESC_COMPONENT = (

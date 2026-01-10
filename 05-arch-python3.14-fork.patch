@@ -1,0 +1,17 @@
+
+---
+ viseron/__main__.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/viseron/__main__.py b/viseron/__main__.py
+index 8dd27c3..54282c2 100644
+--- a/viseron/__main__.py
++++ b/viseron/__main__.py
+@@ -16,6 +16,7 @@ LOGGER = logging.getLogger("viseron.main")
+ 
+ 
+ def main():
++    mp.set_start_method("fork")
+     """Start Viseron."""
+     viseron: Viseron | None = None
+     shutdown_thread: threading.Thread | None = None

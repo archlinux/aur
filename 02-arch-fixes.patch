@@ -1,0 +1,36 @@
+
+---
+ viseron/components/storage/storage_subprocess.py |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/viseron/components/storage/storage_subprocess.py b/viseron/components/storage/storage_subprocess.py
+index b9a7528..d785bef 100644
+--- a/viseron/components/storage/storage_subprocess.py
++++ b/viseron/components/storage/storage_subprocess.py
+@@ -11,6 +11,8 @@ from dataclasses import dataclass
+ from queue import Empty, Queue
+ from typing import TYPE_CHECKING, Literal
+ 
++import sys
++sys.path.insert(0, '/usr/lib/viseron')
+ import psutil
+ import setproctitle
+ from apscheduler.schedulers.background import BackgroundScheduler
+@@ -103,7 +105,7 @@ class TierCheckWorker(SubProcessWorker):
+         """Spawn subprocess."""
+         return RestartablePopen(
+             (
+-                "python3 -u viseron/components/storage/storage_subprocess.py "
++                f"{sys.executable} -u viseron/components/storage/storage_subprocess.py "
+                 f"--manager-port {self._server_port} "
+                 f"--manager-authkey {self._authkey_store.authkey} "
+                 f"--cpulimit {self._cpulimit} "
+@@ -193,7 +195,7 @@ def initializer(cpulimit: int | None) -> None:
+         ps = psutil.Process(pid)
+         ps.nice(20)
+     if pid and cpulimit is not None:
+-        command = ["cpulimit", "-l", str(cpulimit), "-p", str(pid), "-z", "-q"]
++        command = ["cpulimit", "-l", str(cpulimit), "-p", str(pid), "-z"]
+         LOGGER.debug(f"Running command: {command}")
+         RestartablePopen(
+             command,
