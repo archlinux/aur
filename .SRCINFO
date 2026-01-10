@@ -1,9 +1,10 @@
 pkgbase = yass-proxy-qt5
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.20.1
+	pkgver = 1.20.4
 	pkgrel = 1
 	url = https://github.com/hukeyue/yass
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	checkdepends = curl
 	makedepends = gcc
@@ -27,7 +28,7 @@ pkgbase = yass-proxy-qt5
 	optdepends = qt5-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/hukeyue/yass/releases/download/1.20.1/yass-1.20.1.tar.zst
-	sha256sums = a008f0539cc7eb3b842221d2a471941adec87dd99f7d514f694a1845efdbe89a
+	source = https://github.com/hukeyue/yass/releases/download/1.20.4/yass-1.20.4.tar.zst
+	sha256sums = 45088bd4037d9450fc0f4b4d83a330b4fdb1c5ef6f3e2ac14515cbf21ca19fc2
 
 pkgname = yass-proxy-qt5
