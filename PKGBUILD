@@ -3,7 +3,7 @@
 upstream_name=a2wsgi
 pkgname=python-a2wsgi
 pkgver=1.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts WSGI apps to ASGI apps or the other way around'
 arch=(any)
 url="https://github.com/abersheeran/$upstream_name"
