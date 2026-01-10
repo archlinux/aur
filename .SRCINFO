@@ -1,0 +1,18 @@
+pkgbase = mycelica
+	pkgdesc = Visual knowledge graph for connected thinking
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Ekats/Mycelica
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = npm
+	makedepends = nodejs
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	source = mycelica-0.8.0.tar.gz::https://github.com/Ekats/Mycelica/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 79a298d2b99d2dfff6065355e0367ca2d7c7d302e09ed941f1ece45bd89a5240
+
+pkgname = mycelica
