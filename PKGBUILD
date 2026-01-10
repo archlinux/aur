@@ -19,14 +19,14 @@ _curl_ver=8.17.0
 #_readline_ver=8.2
 #_libedit_ver=20250104-3.1
 
-_commit=789beadf85ca4a3eac13259aa393d359ac62208d
+_commit=9ac3578807a87858651e81a02586ceb947686e7c
 
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.2.0
 pkgrel=3
 pkgdesc='Feature packed AUR helper'
-url='https://github.com/morganamilo/paru'
+url='https://github.com/Morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
         # Pacman Static
 		git+https://aur.archlinux.org/pacman-static.git
