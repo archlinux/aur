@@ -1,7 +1,7 @@
 # Maintainer: Oliver Kahrmann <oliver.kahrmann@gmail.com>
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
-pkgver=2025.09
+pkgver=2025.12
 _pkgver=${pkgver/./-}
 pkgrel=1
 pkgdesc="Automates the installation and update of Eclipse development environments"
@@ -23,8 +23,8 @@ source_aarch64=(
     "https://download.eclipse.org/oomph/epp/$_pkgver/R/eclipse-inst-jre-linux-aarch64.tar.gz"
 )
 sha256sums=('bb24472355cdd2dff1d9af45190d5fadf989f071458ff33a19e723b66fe85d84')
-sha256sums_aarch64=('11a5278f807562c72dcfdc4b6651f2958d8057d81e601d10a852e99bdc6d54bd')
-sha256sums_x86_64=('e0447c6ca0592ba9aeecf3fec5829152ae699fb281e07f6d3875f87b8eb2311f')
+sha256sums_aarch64=('fa7e06ec1534b8214e8282b6afd0994a2a953d0c1cd4de3730249ea70aa3e2a6')
+sha256sums_x86_64=('52eef873734e18226eb69856d8c02a8965f91311c28ee9cfa5e797bab333fec2')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
