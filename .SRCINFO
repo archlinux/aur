@@ -246,7 +246,7 @@ pkgname = elephant-dnfpackages-bin
 	pkgdesc = dnfpackages provider for elephant
 	depends = glibc
 	depends = elephant-bin
-	depends = dnf
+	depends = dnf5
 	provides = elephant-dnfpackages
 	conflicts = elephant-dnfpackages
 

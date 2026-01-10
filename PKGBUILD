@@ -343,13 +343,15 @@ package_elephant-dnfpackages-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "dnf")
+    depends+=("${_pkgname}-${_pkgsuffix}" "dnf5")
 
     cd "${srcdir}/" || exit
 
     install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -dm755 "${pkgdir}/usr/bin/" && ln -sf "/usr/bin/dnf5" "${pkgdir}/usr/bin/dnf"
 }
 
 package_elephant-bitwarden-bin() {
