@@ -1,4 +1,4 @@
-# Contributor: Soumeh <soumeh@proton.me>
+# Maintainer: Soumeh <soumeh@proton.me>
 # Contributor: ttmx <aur@tteles.dev>
 pkgname=hytale-launcher
 pkgver=1.0.0
@@ -7,7 +7,7 @@ pkgdesc="Official Hytale game launcher"
 arch=('x86_64')
 url="https://hytale.com"
 license=('custom:proprietary')
-depends=('glib2' 'gtk3' 'webkit2gtk-4.1' 'libsoup3')
+depends=('glib2' 'gtk3' 'gdk-pixbuf2' 'webkit2gtk-4.1' 'libsoup3')
 makedepends=('ostree')
 source=("hytale-launcher-${pkgver}.flatpak::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak")
 sha256sums=('92139fef18d00a25963e94a849753db3c1b922a0db69c101b8aa9995da81ab67')

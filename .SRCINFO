@@ -1,0 +1,17 @@
+pkgbase = hytale-launcher
+	pkgdesc = Official Hytale game launcher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://hytale.com
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = ostree
+	depends = glib2
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	source = hytale-launcher-1.0.0.flatpak::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak
+	sha256sums = 92139fef18d00a25963e94a849753db3c1b922a0db69c101b8aa9995da81ab67
+
+pkgname = hytale-launcher
