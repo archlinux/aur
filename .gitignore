@@ -2,7 +2,6 @@
 # dev tools
 !.gitignore
 !.nvchecker.toml
-!.shellcheckrc
 !mksrcinfo
 # actual package
 !PKGBUILD
