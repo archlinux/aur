@@ -3,7 +3,7 @@
 _pkgname=advancely
 pkgname=$_pkgname-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
@@ -29,7 +29,7 @@ package() {
   install -D -m 755 "sources/Advancely" "${pkgdir}/usr/share/Advancely/Advancely"
 
   install -D -m 644 "icon.png" "${pkgdir}/usr/share/pixmaps/advancely.png"
-  install -D -m 644 "advancely.desktop" "${pkgdir}/usr/share/applications/advancely.desktop"
+  install -D -m 755 "advancely.desktop" "${pkgdir}/usr/share/applications/advancely.desktop"
 
   install -D -m 644 "version" "${pkgdir}/usr/share/Advancely/version"
 }
