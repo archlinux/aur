@@ -1,9 +1,9 @@
 # Maintainer: Jannify <Jannify at outlook dot com>
 
-pkgver=1.8.0.1
-pkgrel=2
-sha256sums=("8f3a39de6e4bbe631b3653e467c292aff57c01a320cdf446a96906357f281899"
-            "9c726e2440a7ad241bbf9f846731d28986d94aa0a0ee609ef1842992aa8fceb0")
+pkgver=1.8.1.0
+pkgrel=1
+sha256sums=('c43928fbf3c08607e189666ff1af1768567885abfce4d30483752b0cc77395be'
+            '9c726e2440a7ad241bbf9f846731d28986d94aa0a0ee609ef1842992aa8fceb0')
 _dotnet_version=9.0
 
 pkgname=nitrox
@@ -37,8 +37,6 @@ prepare() {
   fi
 
   cd "${srcdir}/Nitrox-${pkgver}"
-  # Fix for tag 1.8.0.1 being unbuildable, checkouts commit with fix
-  git checkout afc7fb780a59cd863e2e07b34303d549cc8bd910
   dotnet restore --locked-mode Nitrox.sln --runtime ${nitrox_runtime}
 }
 
@@ -98,11 +96,11 @@ package() {
   cp -r "${srcdir}/Nitrox-${pkgver}/Nitrox.Launcher/bin/Release/net${_dotnet_version}/${nitrox_runtime}/." \
     "${pkgdir}/opt/${pkgname}"
   chmod +x "${pkgdir}/opt/${pkgname}/Nitrox.Launcher"
-  chmod +x "${pkgdir}/opt/${pkgname}/NitroxServer-Subnautica"
+  chmod +x "${pkgdir}/opt/${pkgname}/Nitrox.Server.Subnautica"
 
   # Create the symbolic link
   ln -s "/opt/${pkgname}/Nitrox.Launcher" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s "/opt/${pkgname}/NitroxServer-Subnautica" "${pkgdir}/usr/bin/${pkgname}-server"
+  ln -s "/opt/${pkgname}/Nitrox.Server.Subnautica" "${pkgdir}/usr/bin/${pkgname}-server-subnautica"
 
   # install .desktop file
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
