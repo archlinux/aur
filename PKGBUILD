@@ -1,13 +1,13 @@
 pkgname=nerd-fonts-apple
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 arch=(any)
 license=("custom")
 pkgdesc="Apple font (San Francisco, NY), patched with the Nerd Fonts Patcher"
 url="https://developer.apple.com/fonts/"
 makedepends=("p7zip" "python" "parallel" "fontforge")
 conflicts=("nerd-fonts-apple" "apple-fonts" "nerd-fonts-sf-mono")
-provides=("nerd-fonts-apple")
+provides=("nerd-fonts-apple" "ttf-font-nerd")
 source=(
   "SF-Pro.${pkgver}.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
   "SF-Compact.${pkgver}.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg"
@@ -17,15 +17,12 @@ source=(
 
   "font-patcher-$pkgver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FontPatcher.zip"
 )
-sha256sums=(
-  "21c701d2e5967cf0a2747617eac02eb2e1195fdd3a755628f086aa797eff3bcf"
-  "3e5ada33a4b01fcb13c67541a3a2eab7d07ab406430bffd508fc2bfcf35c9e59"
-  "6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945"
-  "2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9"
-  "1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4"
-
-  "7825c0507457437facecad6216ade1a1bffd9f24b9f5c59e5e84958dbb31f2d6"
-)
+sha256sums=('2e4d7853988b734dc1af33b921d8d4c0e4400eac312924a0eab4b73a51fd69ae'
+            '08c34ffac2f99ec8702b4946044469f92dd88a7b1c0864e2d4b559565f8fb8e3'
+            '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
+            '2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9'
+            '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4'
+            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760')
 
 build() {
   local pwd="$(pwd)"
