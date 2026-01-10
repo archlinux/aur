@@ -3,7 +3,7 @@
 _pyname="meshcore-cli"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.3.13.r440.20251230.9447bed
+pkgver=1.3.15.r443.20260103.e34d826
 pkgrel=1
 pkgdesc="Command line interface to MeshCore node."
 arch=(
@@ -16,10 +16,12 @@ url="https://${_githost}/${_gituser}/${_pyname}"
 license=("MIT")
 depends=(
   'python>=3.10'
+  'python-bleak'
   'python-meshcore>=2.2.1'
   'python-prompt_toolkit>=3.0.50'
   'python-requests>=2.28.0'
   'python-pycryptodome>=3.23.0'
+  'python-pyserial'
 )
 makedepends=(
   'git'
