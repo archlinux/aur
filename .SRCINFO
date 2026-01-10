@@ -1,7 +1,7 @@
 pkgbase = python-newspaper4k
 	pkgdesc = A fork and continuation of the newspaper3k/newspaper package.
 	pkgver = 0.9.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andythefactory/newspaper4k
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-newspaper4k
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-poetry
+	makedepends = python-hatchling
 	depends = python-beautifulsoup4
 	depends = python-feedparser
 	depends = python-lxml
