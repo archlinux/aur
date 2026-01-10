@@ -1,6 +1,6 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=traggo-bin
-pkgver=0.7.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="self-hosted tag-based time tracking"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,9 +22,9 @@ sha256sums=('b6eeb163ecee75c7a956c3819c82abc049f3671f78941ee1166d366fd84641b0'
             '7d6a2febfd733937a290d6c7047d6f92913cfd82c8669fb1eaaec312c9c83409'
             '149b7165c6b6a2d47a3b124bafcc216b34248326c356ff59c05112afed14c90b'
             'f878e3023b0647cf026c9a4f919130a6b6b32a8f5f3c3b4a33cfde0fb56acfee')
-sha256sums_x86_64=('7b15d5145812b30a6f03aa44333b24c7c158eef9fde69bca79f417de612061e8')
-sha256sums_aarch64=('982978246cddc9c4780dc2f87125046333766a4bea1c46551bc3d267bc1e15c1')
-sha256sums_armv7h=('997c28a9a1cc3d6c91cf6fd78cb4eba3fdd5503121708866b3f50d71dcea5c86')
+sha256sums_x86_64=('3e533d2ee0ec0f0afa76dd28626ac6d7f3828e74849962e450ab0c7052b81287')
+sha256sums_aarch64=('070b1a01605524d4eefca1ce1f346720b52139b2064252a6eb5ad7fcbdfc4bda')
+sha256sums_armv7h=('af80237a36bc9edcc9fb9a8be6d78f1997e54c1583c8d8a6c03ee49517da73d3')
 
 package() {
   case "$CARCH" in
