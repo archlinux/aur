@@ -2,7 +2,7 @@
 
 pkgname=elephant-runner
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='runner provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('4fb0f74af2334d449a160a8a7a366309a8a2aab1ac967ea78a03fbf4c9653e04')
 
 build() {
     cd elephant-${pkgver}/internal/providers/runner
-    go build -buildvcs=false -buildmode=plugin -trimpath
+    go build -ldflags="-s -w" -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
