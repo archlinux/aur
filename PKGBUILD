@@ -5,8 +5,8 @@
 # Based on https://aur.archlinux.org/packages/an-anime-game-launcher-git
 pkgname="anime-games-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=2.0.0.r1.g80ddc2d
-pkgrel=2
+pkgver=2.0.0.r21.g882c473
+pkgrel=1
 pkgdesc="Universal linux launcher for anime games"
 arch=("x86_64")
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -34,7 +34,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/alpha2.//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/alpha2.//;s/-/./g;s/beta[0-9].//g'
 }
 
 prepare() {
@@ -56,11 +56,11 @@ package() {
   cd "$srcdir/${_pkgname}"
 
   install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 assets/${_pkgname}.desktop "$pkgdir/usr/share/applications/moe.launcher.${_pkgname}.desktop"
+  install -Dm644 crates/${pkgname::-4}/assets/${_pkgname}.desktop "$pkgdir/usr/share/applications/moe.launcher.${_pkgname}.desktop"
 
   sed -i "s/Exec=AppRun/Exec=${_pkgname}/;s/Icon=icon/Icon=moe.launcher.${_pkgname}/g" "$pkgdir/usr/share/applications/moe.launcher.${_pkgname}.desktop"
 
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
-  install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.${_pkgname}.png"
+  install -Dm644 "crates/${pkgname::-4}/assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.${_pkgname}.png"
   ln -s "/usr/share/icons/moe.launcher.${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 }
