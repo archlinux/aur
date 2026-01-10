@@ -9,19 +9,24 @@ url="https://hytale.com"
 license=('custom:proprietary')
 depends=('glib2' 'gtk3' 'webkit2gtk-4.1' 'libsoup3')
 makedepends=('ostree')
-source=(
-    "hytale-launcher-${pkgver}.flatpak::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
-    "flatpak-extract.sh"
-)
-sha256sums=(
-    '92139fef18d00a25963e94a849753db3c1b922a0db69c101b8aa9995da81ab67'
-    '7e7452e910b889831bc6aa384a1e5eba89c9a74379d2cd650e1b969805732746'
-)
+source=("hytale-launcher-${pkgver}.flatpak::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak")
+sha256sums=('92139fef18d00a25963e94a849753db3c1b922a0db69c101b8aa9995da81ab67')
 
 prepare() {
     cd "$srcdir"
-    chmod +x flatpak-extract.sh
-    ./flatpak-extract.sh "hytale-launcher-${pkgver}.flatpak"
+
+    INPUT_FILE=$(readlink -f "hytale-launcher-${pkgver}.flatpak")
+    ostree init --repo=repo --mode=bare-user
+    ostree static-delta apply-offline --repo=repo "$INPUT_FILE"
+
+    COMMIT_FILE=$(find "repo/objects" -name "*.commit" | head -n 1)
+    if [ -z "$COMMIT_FILE" ]; then
+        echo "Could not determine commit hash"
+        exit 1
+    fi
+
+    COMMIT_HASH="$(basename "$(dirname "$COMMIT_FILE")")$(basename "$COMMIT_FILE" .commit)"
+    ostree checkout --repo=repo -U "$COMMIT_HASH" extracted
 }
 
 package() {
