@@ -8,7 +8,18 @@ pkgdesc="A tool for making hackers do excellent presentations"
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/Archive/pinpoint/"
 license=('LGPL2.1')
-depends=('clutter-gst' 'clutter-gtk')
+depends=('clutter-gst'
+         'clutter-gtk'
+         # Implicit
+         'cairo'
+         'clutter'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gstreamer'
+         'gtk3'
+         'librsvg'
+         'pango')
 install=pinpoint.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('5a207dd1a35681b7268e6aa5ff9b2c5381f4cc63e5f2e5695997ca9d3264e8ca')
