@@ -24,12 +24,10 @@ _commit=789beadf85ca4a3eac13259aa393d359ac62208d
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
-		# aur depends
-		libalpm16.patch
         # Pacman Static
 		git+https://aur.archlinux.org/pacman-static.git
 		# Static Library
@@ -59,7 +57,6 @@ depends=()
 #replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('SKIP'
-            '304653c98c2279e6ba6b62ca1364f0803b7c9f118128e21c388a510fc4cf9ca6'
             'SKIP'
             'e8e74cdeefe5fb78b3ae6e90cd542babf788fa9480029cfcee6fd9ced42b7910'
             '12542ad7619470efd95a623174dcd4b364f2483caf708c6bee837cb53a54cb9d'
@@ -153,8 +150,6 @@ prepare() {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
-  patch -p1 -i ${srcdir}/libalpm16.patch
-  cargo update alpm alpm-utils aur-depends
   #cargo update
   cargo fetch --locked --target $TARGET
 

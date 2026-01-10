@@ -1,8 +1,0 @@
---- a/Cargo.toml	2025-12-15 17:18:53.408000000 +0900
-+++ b/Cargo.toml	2025-12-15 17:19:40.066735860 +0900
-@@ -76,3 +76,5 @@
- #alpm-utils = { path = "../alpm.rs/alpm-utils" }
- #aur-depends = { path = "../aur-depends" }
- #aur-fetch = { path = "../aur-fetch" }
-+#aur-fetch = { path = "../aur-fetch" }
-+aur-depends = { git = "https://github.com/Morganamilo/aur-depends.git", rev = "814e5200183ffc10ed87888d4c3b0f96ebb50c6c" }
