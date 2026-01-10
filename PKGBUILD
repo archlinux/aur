@@ -9,10 +9,6 @@ arch=('i686' 'x86_64')
 url="http://www.vtwm.org"
 license=('MIT')
 depends=('libxpm' 'libxmu' 'libxft' 'libxinerama' 'libxrandr' 'm4' 'xorg-fonts-misc')
-optdepends=('m4: for config file preprocessing')
-makedepends=('imake')
-backup=('usr/share/X11/vtwm/system.vtwmrc')
-options=('!makeflags')
 source=("http://sourceforge.net/projects/vtwm/files/${pkgname}-${pkgver}.tar.gz"
 	"vtwm.desktop")
 md5sums=('703cfddc08012230bbe4edb1edd1f141'
@@ -40,7 +36,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc CFLAGS="$CFLAGS -Wno-implicit-int -std=gnu11"
-  make V=0
+  make
 }
 
 package() {
