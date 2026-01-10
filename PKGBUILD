@@ -22,7 +22,7 @@ pkgver() {
 build() {
     # Build main elephant binary
     cd "${pkgname%-git}/cmd/elephant"
-    go build -buildvcs=false -x -o elephant -trimpath
+    go build -ldflags="-s -w" -buildvcs=false -x -o elephant -trimpath
 
     # Build all provider plugins
     cd ../../internal/providers
@@ -30,7 +30,7 @@ build() {
     # Build each provider
     for provider in archlinuxpkgs bitwarden dnfpackages bookmarks 1password bluetooth calc clipboard desktopapplications files menus nirisessions providerlist runner snippets symbols todo unicode websearch windows; do
         cd $provider
-        go build -buildvcs=false -buildmode=plugin -trimpath
+        go build -ldflags="-s -w" -buildvcs=false -buildmode=plugin -trimpath
         cd ..
     done
 }
