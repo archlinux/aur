@@ -3,7 +3,7 @@
 pkgname=python-curated-transformers
 _name=${pkgname#python-}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="A PyTorch library of transformer models and components"
 arch=('any')
@@ -15,14 +15,18 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
+    python-fsspec
     python-huggingface-hub
     python-pytorch
+    python-pytest
+    python-requests
+    python-typing_extensions
     # AUR
     python-catalogue
     python-curated-tokenizers
+    python-safetensors
+    python-transformers
     python-tokenizers
-    python-pytest
-    python-pytest-mypy
 )
 makedepends=(
     python-hatchling
@@ -30,6 +34,7 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools
+    python-pytest-mypy
 )
 optdepends=()
 options=('!strip' '!debug')
