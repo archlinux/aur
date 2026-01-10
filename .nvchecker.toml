@@ -1,0 +1,5 @@
+[chmod-cli-bin]
+source = "github"
+github = "Mayowa-Ojo/chmod-cli"
+use_latest_release = true
+prefix = "v"

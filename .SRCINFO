@@ -1,0 +1,20 @@
+pkgbase = chmod-cli-bin
+	pkgdesc = A simple cli tool that brings the chmod command in tui format. Generate permissions for files and directories by selecting easy to read config options and copy the result both in numeric and symbolic format.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Mayowa-Ojo/chmod-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = chmod-cli
+	conflicts = chmod-cli
+	conflicts = chmod-cli-git
+	source_x86_64 = chmod-cli-x86_64-0.2.0.tgz::https://github.com/Mayowa-Ojo/chmod-cli/releases/download/v0.2.0/chmod-cli_0.2.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fd9e2d67253e5864a949417e29ac85ba0558be2c220456f1cc01dc835088dab5
+	source_i686 = chmod-cli-i686-0.2.0.tgz::https://github.com/Mayowa-Ojo/chmod-cli/releases/download/v0.2.0/chmod-cli_0.2.0_Linux_i386.tar.gz
+	sha256sums_i686 = b565a360374533667041fbdf062647936af6a2b385d38008bf7bb8c3f9e7a77d
+	source_aarch64 = chmod-cli-aarch64-0.2.0.tgz::https://github.com/Mayowa-Ojo/chmod-cli/releases/download/v0.2.0/chmod-cli_0.2.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d157c512c99780437401a9365b47cdc9d06b4a842064d5facdc471b5dfb4cd1
+
+pkgname = chmod-cli-bin
