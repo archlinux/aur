@@ -2,10 +2,11 @@
 # Maintainer: Brian Thompson <brianrobt@pm.me>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 # Contributor: Guillaume Dolle  <dev at gdolle.com>
+# Contributor: Blair Bonnett <blair dot bonnett at gmail dot com>
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast cross-platform package manager"
 arch=(i686 x86_64)
 url="https://github.com/${_pkgname}-org/${_pkgname}"
@@ -43,6 +44,7 @@ build() {
     -D BUILD_LIBMAMBA=ON \
     -D BUILD_LIBMAMBAPY=ON \
     -D BUILD_MICROMAMBA=ON \
+    -D BUILD_LIBMAMBA_SPDLOG=ON \
     -D BUILD_SHARED=ON \
     -D CMAKE_BUILD_WITH_INSTALL_RPATH=ON
   cmake --build build --parallel "$(nproc)"
@@ -55,6 +57,7 @@ build() {
     -DBUILD_LIBMAMBAPY=ON \
     -DBUILD_MICROMAMBA=OFF \
     -DBUILD_MAMBA_PACKAGE=OFF \
+    -Dlibmamba-spdlog_DIR=$PWD/../../install/lib/cmake/libmamba-spdlog \
     -Dlibmamba_ROOT=$PWD/../../install"
   python -m build --wheel --no-isolation --skip-dependency-check
 }
