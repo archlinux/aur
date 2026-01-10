@@ -1,10 +1,11 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
@@ -12,8 +13,8 @@ url='https://github.com/naggie/dstask'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('git' 'go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('faec7a671331435ddf5be644404a62eef3b6fc0f895811b1f7c6b840e0bec234')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('afca526d049874e2609d91c0e5f186d614c684ec13b2fe517e00ec4eeb4f70da')
 
 build() {
   _commit=$(zcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
@@ -51,8 +52,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-
-  test -t 1 && set -x
 
   install -Dm0755 -t "$pkgdir/usr/bin" dstask{,-import}
   install -Dm0755 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md doc/*.md

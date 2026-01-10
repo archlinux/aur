@@ -1,6 +1,6 @@
 pkgbase = dstask
 	pkgdesc = Git-powered terminal-based todo/note manager with full markdown note for each task
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/naggie/dstask
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = dstask
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = dstask-1.0.tar.gz::https://github.com/naggie/dstask/archive/refs/tags/1.0.tar.gz
-	sha256sums = faec7a671331435ddf5be644404a62eef3b6fc0f895811b1f7c6b840e0bec234
+	source = dstask-1.0.1.tar.gz::https://github.com/naggie/dstask/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = afca526d049874e2609d91c0e5f186d614c684ec13b2fe517e00ec4eeb4f70da
 
 pkgname = dstask
