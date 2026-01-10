@@ -1,0 +1,27 @@
+pkgbase = zlaunch-git
+	pkgdesc = A fast application launcher for Linux wayland desktops built with GPUI
+	pkgver = r0.0.0
+	pkgrel = 1
+	url = https://github.com/zortax/zlaunch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = freetype2
+	depends = fontconfig
+	depends = openssl
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = vulkan-icd-loader
+	provides = zlaunch
+	conflicts = zlaunch
+	conflicts = zlaunch-bin
+	source = zlaunch-git::git+https://github.com/zortax/zlaunch.git
+	sha256sums = SKIP
+
+pkgname = zlaunch-git
