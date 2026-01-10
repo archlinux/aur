@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A tool for making hackers do excellent presentations"
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/Archive/pinpoint/"
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('clutter-gst'
          'clutter-gtk'
          # Implicit
