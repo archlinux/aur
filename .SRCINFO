@@ -1,21 +1,21 @@
 pkgbase = sqliteman
 	pkgdesc = Graphical sqlite3 browser and editor
 	pkgver = 1.2.2
-	pkgrel = 12
-	url = http://sqliteman.yarpen.cz/
+	pkgrel = 13
+	url = https://github.com/pvanek/sqliteman
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later AND LGPL-2.1-or-later
 	makedepends = cmake
+	depends = qt5-base
 	depends = qscintilla-qt5
-	source = http://downloads.sourceforge.net/sqliteman/sqliteman-1.2.2.tar.gz
+	source = https://downloads.sourceforge.net/sqliteman/sqliteman-1.2.2.tar.gz
 	source = 0001_qt5.patch
 	source = 0002_lpthread.patch
 	source = 0003_icons.patch
-	md5sums = 5ecdf710e23606e1b924f740ea69306d
-	md5sums = 8e0fadd613f819d3814c24c28287c4e4
-	md5sums = 8e24fc6b9231e7307bd6a86af8f4796a
-	md5sums = 7976cef250c2a1fd49607cd5f1cd21d2
+	sha256sums = 2229e627528ec02a9cf7aba3a65bef8999272fc25eb22112dc3f8ee583eb5dfb
+	sha256sums = 5cd44c0b5e4387758b3c485365ed97f2f766b69fff893d89767a19eda800f0ff
+	sha256sums = af99d278b6d0cda9f84487985afdb427f77edd6eff9a1a62edac906dcfd5487b
+	sha256sums = ba1aee6f1705d08a0507153e457e817bcd86ba65cce4f733b22120fc7acfb956
 
 pkgname = sqliteman
-
