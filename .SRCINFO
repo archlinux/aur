@@ -1,6 +1,6 @@
 pkgbase = witr
 	pkgdesc = A tool to determine why a process is running.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/pranshuparmar/witr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = witr
 	makedepends = git
 	provides = witr
 	conflicts = witr-bin
-	source = git+https://github.com/pranshuparmar/witr.git#tag=v0.2.1
-	sha256sums = 55814a10ab77ee56ec4b14805f4645602728ad4369d16e0002ffa037454d5b11
+	source = git+https://github.com/pranshuparmar/witr.git#tag=v0.2.2
+	sha256sums = 4a2e1559e6ba52cc63f773c75f32367fcd0d75d506843ad8a8d81f14e1389735
 
 pkgname = witr
