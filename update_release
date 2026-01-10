@@ -72,7 +72,7 @@ fi
 if [[ $DRY_RUN -eq 1 ]]; then
   echo "DRY RUN - showing proposed changes"
   echo "Would update PKGBUILD: pkgver -> $version, pkgrel -> 1, sha256sums -> $sha256"
-  echo "Would update .SRCINFO: pkgver -> $version, source -> vibing-steampunk-${version}::... , sha256sums -> $sha256"
+  echo "Would update .SRCINFO: pkgver -> $version, source -> vibing-steampunk-bin-${version}::... , sha256sums -> $sha256"
   exit 0
 fi
 
@@ -92,16 +92,23 @@ else
   exit 1
 fi
 
-# Update .SRCINFO
-if [[ -f "$SRCINFO" ]]; then
-  sed -E -i "s/^[\t ]*pkgver = .*/	pkgver = ${version}/" "$SRCINFO"
-  sed -E -i "s#^[\t ]*source = .*#	source = vibing-steampunk-${version}::https://github.com/oisee/vibing-steampunk/releases/download/v${version}/${asset_name}#" "$SRCINFO"
-  sed -E -i "s/^[\t ]*sha256sums = .*/	sha256sums = ${sha256}/" "$SRCINFO"
-  sed -E -i "s/^[\t ]*pkgrel = .*/	pkgrel = 1/" "$SRCINFO"
+# Update .SRCINFO (regenerate via makepkg if available)
+if command -v makepkg --help >/dev/null 2>&1; then
+  echo "Regenerating $SRCINFO with makepkg --printsrcinfo"
+  makepkg --printsrcinfo > "$SRCINFO"
   echo "Updated $SRCINFO"
 else
-  echo "$SRCINFO not found" >&2
-  exit 1
+  echo "makepkg not found; falling back to manual edits" >&2
+  if [[ -f "$SRCINFO" ]]; then
+    sed -E -i "s/^[\t ]*pkgver = .*/\tpkgver = ${version}/" "$SRCINFO"
+    sed -E -i "s#^[\t ]*source = .*#\tsource = vibing-steampunk-bin-${version}::https://github.com/oisee/vibing-steampunk/releases/download/v${version}/${asset_name}#" "$SRCINFO"
+    sed -E -i "s/^[\t ]*sha256sums = .*/\tsha256sums = ${sha256}/" "$SRCINFO"
+    sed -E -i "s/^[\t ]*pkgrel = .*/\tpkgrel = 1/" "$SRCINFO"
+    echo "Updated $SRCINFO (manual)"
+  else
+    echo "$SRCINFO not found" >&2
+    exit 1
+  fi
 fi
 
 # Done message
