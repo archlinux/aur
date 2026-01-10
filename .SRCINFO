@@ -1,0 +1,17 @@
+pkgbase = python-myvaillant
+	pkgdesc = Python library for the myVaillant API
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://github.com/signalkraft/myPyllant
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python-aiohttp
+	depends = python-pydantic
+	source = python-myvaillant-0.9.8.tar.gz::https://github.com/signalkraft/myPyllant/archive/refs/tags/v0.9.8.tar.gz
+	sha256sums = f892bfdbf33c598e7266006d91df1bf2a4c2e71e321048ddda2d11b517063f83
+
+pkgname = python-myvaillant
