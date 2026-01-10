@@ -6,7 +6,7 @@ _pkgname=checkmake
 pkgname=${_pkgname}-bin
 pkgdesc="Linter/analyzer for Makefiles"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,8 +28,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.linux.${_barch[1]}")
 sha256sums=('01090018cb293e1a5cb260fba2222468a39f1bf9a8b4c37375d1355f776ef7f9'
             'da7303e05064c979412ab954e9e7cc9e193d731664f0edec74d814b237c59909')
-sha256sums_x86_64=('ad12d4e95b3edebf925c3dc8a8aefe1f7e8074c47f277eae53cea7efae9c29b2')
-sha256sums_aarch64=('4f818a72f4522993924338640118916da2ebec89fbeb03048e3f649e45e4b357')
+sha256sums_x86_64=('e2effb876913f3ee2caef0ba35f6202c5e8a3cd55a077d8d2b9ce2034257b6af')
+sha256sums_aarch64=('409167c4abb99407bd232c3bbd351b8a39df57997feafde5a08bddffb0f2dcb4')
 
 
 package() {
