@@ -1,7 +1,7 @@
 # Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=trios
 pkgname=${_basename}-bin
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Starsector mod manager & toolkit."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=()
 optdepends=('starsector')
 source=("https://github.com/wispborne/TriOS/releases/download/${pkgver}/TriOS-Linux.zip"
     "${_basename}.desktop")
-sha256sums=('87313fe41e2bdfc5dd947cffdd4e0d03a4b3c16f048254c4cd337cbe8a688bb7'
-            'a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24')
+sha256sums=('fdefc0397ddfb16b66540516420b0bbb1d2b7a8c080984648b7c6973a8cc4c33'
+    'a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24')
 
 package() {
     install -Dm644 "${srcdir}/${_basename}.desktop" "${pkgdir}/usr/share/applications/${_basename}.desktop"
