@@ -1,7 +1,7 @@
 pkgbase = gita
 	pkgdesc = Command-line tool to manage multiple git repos
 	pkgver = 0.16.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nosarthur/gita
 	arch = any
 	license = MIT
