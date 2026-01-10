@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# update_release.sh - update PKGBUILD and .SRCINFO to the latest GitHub release
+# Usage: ./update_release.sh [--no-sha] [--tag TAG] [--asset NAME] [--dry-run]
+
+repo="oisee/vibing-steampunk"
+asset_name="vsp-linux-amd64"
+api="https://api.github.com/repos/$repo/releases/latest"
+PKGBUILD="PKGBUILD"
+SRCINFO=".SRCINFO"
+
+NO_SHA=0
+DRY_RUN=0
+TAG_OVERRIDE=""
+
+while [[ ${#} -gt 0 ]]; do
+  case "$1" in
+    --no-sha) NO_SHA=1; shift ;;
+    --dry-run) DRY_RUN=1; shift ;;
+    --tag) TAG_OVERRIDE="$2"; shift 2 ;;
+    --asset) asset_name="$2"; shift 2 ;;
+    -h|--help) echo "Usage: $0 [--no-sha] [--tag TAG] [--asset NAME] [--dry-run]"; exit 0 ;;
+    *) echo "Unknown arg: $1"; exit 1 ;;
+  esac
+done
+
+# Fetch release info
+if [[ -n "$TAG_OVERRIDE" ]]; then
+  tag="$TAG_OVERRIDE"
+else
+  echo "Fetching latest release from GitHub..."
+  if command -v jq >/dev/null 2>&1; then
+    json=$(curl -s "$api")
+    tag=$(printf '%s' "$json" | jq -r .tag_name)
+    asset_url=$(printf '%s' "$json" | jq -r --arg n "$asset_name" '.assets[] | select(.name==$n) | .browser_download_url')
+  else
+    json=$(curl -s "$api")
+    tag=$(printf '%s' "$json" | grep -oP '"tag_name":\s*"\K(.*?)(?=")' | head -n1)
+    asset_url=$(printf '%s' "$json" | grep -oP '"browser_download_url":\s*"\K(.*?)(?=")' | grep "$asset_name" | head -n1 || true)
+  fi
+fi
+
+if [[ -z "${tag:-}" || "${tag,,}" == "null" ]]; then
+  echo "Failed to determine latest tag (got: ${tag:-})" >&2
+  exit 1
+fi
+
+# Normalize version: strip leading 'v' if present
+version="${tag#v}"
+echo "Latest tag: $tag -> version: $version"
+
+# If asset_url empty, construct it
+if [[ -z "${asset_url:-}" ]]; then
+  asset_url="https://github.com/${repo}/releases/download/${tag}/${asset_name}"
+fi
+
+if [[ $NO_SHA -eq 0 ]]; then
+  echo "Downloading asset to compute sha256: $asset_name"
+  tmpdir=$(mktemp -d)
+  trap 'rm -rf "$tmpdir"' EXIT
+  curl -L --progress-bar -o "$tmpdir/$asset_name" "$asset_url"
+  sha256=$(sha256sum "$tmpdir/$asset_name" | awk '{print $1}')
+  echo "Computed sha256: $sha256"
+else
+  sha256="SKIP"
+  echo "Skipping sha256 computation (sha256 will be set to SKIP)"
+fi
+
+# Prepare replacements
+# PKGBUILD updates: pkgver, pkgrel reset to 1, source (keep variable expansion), sha256sums
+if [[ $DRY_RUN -eq 1 ]]; then
+  echo "DRY RUN - showing proposed changes"
+  echo "Would update PKGBUILD: pkgver -> $version, pkgrel -> 1, sha256sums -> $sha256"
+  echo "Would update .SRCINFO: pkgver -> $version, source -> vibing-steampunk-${version}::... , sha256sums -> $sha256"
+  exit 0
+fi
+
+# Update PKGBUILD
+if [[ -f "$PKGBUILD" ]]; then
+  # Set pkgver
+  sed -E -i "s/^pkgver=.*/pkgver=${version}/" "$PKGBUILD"
+  # Reset pkgrel to 1
+  sed -E -i "s/^pkgrel=.*/pkgrel=1/" "$PKGBUILD"
+  # Replace source line to keep variable-expansion style used in PKGBUILD
+  sed -E -i "s#^source=.*#source=(\"\\\${pkgname}-\\\${pkgver}::https://github.com/oisee/vibing-steampunk/releases/download/v\\\${pkgver}/${asset_name}\")#" "$PKGBUILD"
+  # Update sha256sums
+  sed -E -i "s/^sha256sums=.*/sha256sums=('${sha256}')/" "$PKGBUILD"
+  echo "Updated $PKGBUILD"
+else
+  echo "$PKGBUILD not found" >&2
+  exit 1
+fi
+
+# Update .SRCINFO
+if [[ -f "$SRCINFO" ]]; then
+  sed -E -i "s/^[\t ]*pkgver = .*/	pkgver = ${version}/" "$SRCINFO"
+  sed -E -i "s#^[\t ]*source = .*#	source = vibing-steampunk-${version}::https://github.com/oisee/vibing-steampunk/releases/download/v${version}/${asset_name}#" "$SRCINFO"
+  sed -E -i "s/^[\t ]*sha256sums = .*/	sha256sums = ${sha256}/" "$SRCINFO"
+  sed -E -i "s/^[\t ]*pkgrel = .*/	pkgrel = 1/" "$SRCINFO"
+  echo "Updated $SRCINFO"
+else
+  echo "$SRCINFO not found" >&2
+  exit 1
+fi
+
+# Done message
+echo "Done: updated to version $version"
+if [[ $NO_SHA -eq 0 ]]; then
+  echo "sha256sums set to $sha256"
+else
+  echo "sha256sums set to SKIP"
+fi
+
+echo "Tip: run 'makepkg -si' to build and install the package locally, and 'updpkgsums' if you want the helper to populate sums automatically (this script already computed sha256)."
