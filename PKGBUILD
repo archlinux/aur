@@ -4,7 +4,7 @@
 pkgname=kitty-meow-git
 pkgver=0.45.0.r1.g52e218325
 pkgrel=1
-pkgdesc="Kitty terminal fork with persistent selection fix - selections survive new output"
+pkgdesc="Kitty terminal fork with persistent selection and mouse-friendly split controls"
 arch=(x86_64)
 url="https://github.com/Ekats/kitty-meow"
 license=('GPL-3.0-only')
