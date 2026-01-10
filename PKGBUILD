@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.1.8
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
@@ -39,5 +39,5 @@ package() {
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('7b02a0a721c97eb22b10c099d0a10e36ae77f78c20ca2e0bb301fdf15fed2710'
+sha256sums=('ba48a00b37912cf1c0826c07ad39e776b11784515ca60ceab9ebcec08e76ad92'
             '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
