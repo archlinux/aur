@@ -28,7 +28,6 @@ pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
-		https://github.com/Morganamilo/paru/pull/1461.patch
 		# aur depends
 		libalpm16.patch
         # Pacman Static
@@ -60,7 +59,6 @@ depends=()
 #replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('SKIP'
-            'da9f59655b70367ca0c34e94ceca8d728166dbb895388fa977b80935760f7a2f'
             '304653c98c2279e6ba6b62ca1364f0803b7c9f118128e21c388a510fc4cf9ca6'
             'SKIP'
             'e8e74cdeefe5fb78b3ae6e90cd542babf788fa9480029cfcee6fd9ced42b7910'
@@ -155,7 +153,6 @@ prepare() {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
-  patch -p1 -i ${srcdir}/1461.patch
   patch -p1 -i ${srcdir}/libalpm16.patch
   cargo update alpm alpm-utils aur-depends
   #cargo update
