@@ -24,7 +24,7 @@ _commit=9ac3578807a87858651e81a02586ceb947686e7c
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
@@ -358,7 +358,7 @@ build () {
   # paru
   cd "$srcdir/$_pkgname"
   #if pacman -T pacman-git > /dev/null; then
-    _features+="git,"
+  #  _features+="git,"
   #fi
   if [[ $TARGET =~ musl ]]; then
     _features+="static,"
