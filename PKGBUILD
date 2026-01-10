@@ -181,8 +181,8 @@ _package() {
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
-  replaces=(
-  )
+  # replaces=(
+  # )
   provides+=(
     # "${_replacesarchkernel[@]/%/=$pkgver}"
     "LINUX-ABI_VERSION=$pkgver"
@@ -227,10 +227,10 @@ _package-headers() {
     "${_replacesarchkernel[@]/%/-headers}"
     "${_replacesoldkernels[@]/%/-headers}"
   )
-  replaces=(
-    "${_replacesarchkernel[@]/%/-headers}"
-    "${_replacesoldkernels[@]/%/-headers}"
-  )
+  # replaces=(
+  #   "${_replacesarchkernel[@]/%/-headers}"
+  #   "${_replacesoldkernels[@]/%/-headers}"
+  # )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -328,10 +328,10 @@ _package-docs() {
     "${_replacesarchkernel[@]/%/-docs}"
     "${_replacesoldkernels[@]/%/-docs}"
   )
-  replaces=(
-    "${_replacesarchkernel[@]/%/-docs}"
-    "${_replacesoldkernels[@]/%/-docs}"
-  )
+  # replaces=(
+  #   "${_replacesarchkernel[@]/%/-docs}"
+  #   "${_replacesoldkernels[@]/%/-docs}"
+  # )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
