@@ -2,7 +2,7 @@
 
 pkgname=elephant-all
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('4fb0f74af2334d449a160a8a7a366309a8a2aab1ac967ea78a03fbf4c9653e04')
 build() {
     # Build main elephant binary
     cd elephant-${pkgver}/cmd/elephant
-    go build -buildvcs=false -x -o elephant -trimpath
+    go build -ldflags="-s -w" -buildvcs=false -x -o elephant -trimpath
 
     # Build all provider plugins
     cd ../../internal/providers
@@ -25,7 +25,7 @@ build() {
     # Build each provider
     for provider in archlinuxpkgs bitwarden dnfpackages 1password bookmarks bluetooth nirisessions calc clipboard desktopapplications files menus providerlist runner snippets symbols todo unicode websearch windows; do
         cd $provider
-        go build -buildvcs=false -buildmode=plugin -trimpath
+        go build -ldflags="-s -w" -buildvcs=false -buildmode=plugin -trimpath
         cd ..
     done
 }
