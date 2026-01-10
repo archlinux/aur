@@ -1,6 +1,6 @@
 pkgbase = r-arules
 	pkgdesc = Mining Association Rules and Frequent Itemsets
-	pkgver = 1.7.11
+	pkgver = 1.7.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=arules
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-arules
 	optdepends = r-proxy
 	optdepends = r-testthat
 	optdepends = r-xml
-	source = https://cran.r-project.org/src/contrib/arules_1.7-11.tar.gz
-	sha256sums = 4794274883efdc5a6bb6423df6cae179fb1c71065cf05fc08736c83349eb995c
+	source = https://cran.r-project.org/src/contrib/arules_1.7.13.tar.gz
+	sha256sums = 4e463a634ef0ae48096886b4fe3a882eb24635c2a51dbe4154bdc54a0e2e5cba
 
 pkgname = r-arules
