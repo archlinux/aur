@@ -3,7 +3,7 @@
 
 _pkgname=hypseus-singe
 pkgname=$_pkgname-git
-pkgver=v2.11.6.r1.g8397498
+pkgver=v2.11.6a.r0.g7f34531
 pkgrel=1
 pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC."
 arch=('x86_64' 'aarch64')
