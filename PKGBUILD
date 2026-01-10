@@ -4,15 +4,16 @@
 
 pkgbase='django-redis'
 pkgname='python-django-redis'
-pkgver=5.4.0
-pkgrel=3
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Full featured redis cache backend for Django"
 arch=(any)
-license=("BSD")
+license=("BSD-3-Clause")
 url="https://github.com/jazzband/django-redis"
 makedepends=("python-build" "python-installer" "python-setuptools")
 depends=('python' 'python-redis')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('3a8f2de7fea9397ee6ea39a9ad4f7f242c1c044e498b7fca1c407f54ffcfd11a')
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
@@ -24,5 +25,3 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-sha256sums=('118569679bc9f866211b953c7a8108ff548781965554417736bd7c40d0846392')

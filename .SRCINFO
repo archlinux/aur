@@ -1,16 +1,16 @@
 pkgbase = django-redis
 	pkgdesc = Full featured redis cache backend for Django
-	pkgver = 5.4.0
-	pkgrel = 3
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://github.com/jazzband/django-redis
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
 	depends = python-redis
-	source = https://github.com/jazzband/django-redis/archive/refs/tags/5.4.0.tar.gz
-	sha256sums = 118569679bc9f866211b953c7a8108ff548781965554417736bd7c40d0846392
+	source = https://github.com/jazzband/django-redis/archive/refs/tags/6.0.0.tar.gz
+	sha256sums = 3a8f2de7fea9397ee6ea39a9ad4f7f242c1c044e498b7fca1c407f54ffcfd11a
 
 pkgname = python-django-redis
