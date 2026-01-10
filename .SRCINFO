@@ -1,7 +1,7 @@
 pkgbase = klayout-pex
 	pkgdesc = Parasitic Extraction (PEX) tool for KLayout
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iic-jku.github.io/klayout-pex-website
 	arch = x86_64
 	license = GPL-3.0-or-later

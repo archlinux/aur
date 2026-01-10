@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("x86_64")
 _git_url="https://github.com/iic-jku/klayout-pex"
