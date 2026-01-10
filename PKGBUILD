@@ -1,16 +1,17 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
+# Contributor: Kemel Zaidan <kemelzaidan@gmail.com>
+# Maintainer: Aaron Liu <a a ronliu0130@gmail.com>
 # Contributor: Jaden Peterson <jadenpeterson150@gmail.com>
 
 pkgname=aurvote-utils
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A set of utilities for managing AUR votes'
 arch=('any')
-url=https://github.com/jadenPete/aurvote-utils
+url=https://github.com/gwuen/aurvote-utils
 license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-requests')
-source=("${pkgname}-${pkgversion}.tar.gz::https://github.com/jadenPete/aurvote-utils/archive/v${pkgver}.tar.gz")
-sha256sums=('dcfe41a1e49f7780f24fc84c85cd8e765384fbf009e2d1670707b28b22d2415c')
+source=("${pkgname}-${pkgversion}.tar.gz::https://github.com/gwuen/aurvote-utils/archive/v${pkgver}.tar.gz")
+sha256sums=('fd8b6748a6d4b7176957a488431ffea6bfbe8bb656105a83a902d38b90fd74dd')
 
 package() {
 	cd "aurvote-utils-${pkgver}"
