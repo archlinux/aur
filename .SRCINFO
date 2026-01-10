@@ -1,0 +1,14 @@
+pkgbase = piper-voices-vi-vn
+	pkgdesc = Voices for Piper text to speech system (vi_VN)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-vi-vn.install
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+
+pkgname = piper-voices-vi-vn
