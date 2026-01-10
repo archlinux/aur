@@ -3,7 +3,7 @@
 
 pkgname=s-ui-git
 _pkgname=s-ui
-pkgver=1.3.7.r24.g0ef5db4
+pkgver=1.3.7.r26.gd5c6bda
 pkgrel=1
 pkgdesc='Advanced web panel, built for SagerNet/Sing-Box'
 arch=(aarch64 armv7h i686 x86_64 loong64)
@@ -23,11 +23,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!debug)
 source=(
-  "git+$url.git"
-  "git+$url-frontend.git"
+  git+"$url".git
+  git+"$url"-frontend.git
 )
-b2sums=('SKIP'
-        'SKIP')
+b2sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$_pkgname"
@@ -37,20 +39,20 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   sed -i "s|WorkingDirectory=/usr/local/s-ui/|WorkingDirectory=/usr/lib/$_pkgname/|" "$_pkgname".service
-  sed -i "s|ExecStart=/usr/local/s-ui/sui|ExecStart=/usr/lib/$_pkgname/$_pkgname|"   "$_pkgname".service
+  sed -i "s|ExecStart=/usr/local/s-ui/sui|ExecStart=/usr/lib/$_pkgname/${_pkgname/-/}|" "$_pkgname".service
 }
 
 build() {
   export TMPDIR="$srcdir"/tmp
   mkdir -p "$TMPDIR"
 
-  # Build Frontend
   echo 'Building frontend...'
   cd "$srcdir"/"$_pkgname"-frontend
   npm install
-  npm run build -- --outDir="$srcdir"/"$_pkgname"/web/html --emptyOutDir
+  npm run build
+  cd "$srcdir"
+  mv "$_pkgname"-frontend/dist "$srcdir"/"$_pkgname"/web/html
 
-  # Build Backend
   echo 'Building backend...'
   cd "$srcdir"/"$_pkgname"
   export GOCACHE="$srcdir"/go-build
@@ -70,6 +72,6 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -vDm 755 build/"$_pkgname"      "$pkgdir"/usr/lib/"$_pkgname"/"$_pkgname"
+  install -vDm 755 build/"$_pkgname" "$pkgdir"/usr/lib/"$_pkgname"/"${_pkgname/-/}"
   install -vDm 644 "$_pkgname".service -t "$pkgdir"/usr/lib/systemd/system/
 }
