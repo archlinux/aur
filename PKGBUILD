@@ -4,7 +4,7 @@
 _pkgname=brother-dcp7055w-cups
 pkgname="${_pkgname}-bin"
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS wrapper for Brother DCP-7055W printer."
 arch=(
   "i686"
@@ -18,6 +18,7 @@ depends=(
 )
 makedepends=(
   'libarchive' # For 'bsdtar'
+  'libcups'    # For 'cups-config'
   'sh'
 )
 provides=(
@@ -57,9 +58,9 @@ package() {
   install -Dvm0755 -t "${pkgdir}/opt/brother/Printers/DCP7055W/cupswrapper"  "./opt/brother/Printers/DCP7055W/cupswrapper"/{brcupsconfig4,brother_lpdwrapper_DCP7055W}
   install -Dvm0644 -t "${pkgdir}/opt/brother/Printers/DCP7055W/cupswrapper"  "./opt/brother/Printers/DCP7055W/cupswrapper"/brother-DCP-7055W-cups-en.ppd
 
-  install -dvm0755 "${pkgdir}/usr/lib/cups/filter"
-  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother_lpdwrapper_DCP7055W     "${pkgdir}/usr/lib/cups/filter"/
+  install -dvm0755 "${pkgdir}/$(cups-config --serverbin)/filter"
+  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother_lpdwrapper_DCP7055W     "${pkgdir}/$(cups-config --serverbin)/filter"/
 
-  install -dvm0755 "${pkgdir}/usr/share/cups/model/Brother"
-  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother-DCP-7055W-cups-en.ppd  "${pkgdir}/usr/share/cups/model/Brother"/
+  install -dvm0755 "${pkgdir}/$(cups-config --serverbin)/model/Brother"
+  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother-DCP-7055W-cups-en.ppd  "${pkgdir}/$(cups-config --serverbin)/model/Brother"/
 }
