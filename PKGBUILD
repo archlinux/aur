@@ -6,7 +6,7 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
-pkgver=4.21.0
+pkgver=4.21.1
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.xz")
-sha256sums=('5c2d40fa9daa34cdbbe101b1ba59d4d747b2bc3ccfc3b2ac43b0687c0fdfbfca')
+sha256sums=('bb89be7b1be431b29e765e2c632e98fb20a688e495e4ef18495bd70c1524767a')
 
 build() {
   local meson_options=(
