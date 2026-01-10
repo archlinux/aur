@@ -10,8 +10,8 @@ provides=('zigmir')
 conflicts=('zigmir')
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-arm64")
-sha256sums_x86_64=('32404d70bd90b21767d9f317071703df05ba28174e2cf80ec5a73c84312ac0c0')
-sha256sums_aarch64=('8f171db52967149d64afcbd49c6f403dacbb615522b6d7da8b76fa2fa3c7163c')
+sha256sums_x86_64=('f3f6a9e550062f66277d1d7a055b6f14371cfc5289e7c358372f82a3fb5a25ac')
+sha256sums_aarch64=('8f19a43bb4eab7b05ff0197937f73195c2dc9578da0009cc1373e932423b7c76')
 package() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}-${CARCH}"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/zigmir"
