@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!000*-*.patch
+!no-ultra-zstd.patch
+!config.armv7h
+!config.i686
+!config.x86_64
+!*.preset
