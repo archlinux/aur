@@ -1,11 +1,12 @@
 pkgbase = login-ng
 	pkgdesc = A small session runner an systemd user slice replacement for embedded systems
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeroReflex/login_ng
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = clang
 	depends = seatd
 	source = https://github.com/NeroReflex/login_ng/archive/refs/tags/0.8.8.tar.gz
 	sha256sums = SKIP
