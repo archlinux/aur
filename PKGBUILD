@@ -2,7 +2,7 @@
 pkgname=hyprkcs-git
 pkgver=1.6.1
 pkgrel=1
-pkgdesc="A fast, minimal Hyprland keybind cheat sheet written in Rust/GTK4"
+pkgdesc="A fast, minimal Hyprland keybind cheat sheet and editor written in Rust/GTK4"
 arch=('x86_64')
 url="https://github.com/kosa12/hyprKCS"
 license=('MIT')
