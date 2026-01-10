@@ -12,8 +12,6 @@ pkgbase = python-papis-scihub-git
 	depends = python
 	provides = python-papis-scihub
 	source = python-papis-scihub-git::git+https://github.com/papis/scripts.git
-	source = python-papis-scihub-git-PR62.patch::https://github.com/papis/scripts/pull/62.patch
 	sha256sums = SKIP
-	sha256sums = 5c44e77d787bfc54f473f057777369bdcf3978d9c5a62883dcabd7a015438cca
 
 pkgname = python-papis-scihub-git
