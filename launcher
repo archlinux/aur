@@ -1,0 +1,19 @@
+#!/bin/bash
+
+XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
+ADVANCELY_CONFIG_DIRECTORY="${ADVANCELY_CONFIG_DIRECTORY-${XDG_DATA_HOME}/Advancely}"
+
+if [ ! -d "${ADVANCELY_CONFIG_DIRECTORY}" ]; then
+  mkdir -p "${ADVANCELY_CONFIG_DIRECTORY}"
+  unzip /usr/share/Advancely/Advancely.zip -d "${ADVANCELY_CONFIG_DIRECTORY}"
+  rm "${ADVANCELY_CONFIG_DIRECTORY}/Advancely"
+  cat /usr/share/Advancely/version > "${ADVANCELY_CONFIG_DIRECTORY}/version"
+elif not cmp "${ADVANCELY_CONFIG_DIRECTORY}/version" "/usr/share/Advancely/version"; then
+  unzip /usr/share/Advancely/Advancely.zip -d "${ADVANCELY_CONFIG_DIRECTORY}"
+  rm "${ADVANCELY_CONFIG_DIRECTORY}/Advancely"
+  cat /usr/share/Advancely/version > "${ADVANCELY_CONFIG_DIRECTORY}/version"
+  echo "Workey"
+fi
+
+cd "${ADVANCELY_CONFIG_DIRECTORY}" || exit
+/usr/share/Advancely/Advancely
