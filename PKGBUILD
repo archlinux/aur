@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=fastcap2
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Capacitance Solver for 3D conductive geometries - including Python module"
 arch=('x86_64')
 _git_url="https://github.com/klayoutmatthias/FastCap2"

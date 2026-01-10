@@ -1,7 +1,7 @@
 pkgbase = fastcap2
 	pkgdesc = Capacitance Solver for 3D conductive geometries - including Python module
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://klayoutmatthias.github.io/FastCap2/index.html
 	arch = x86_64
 	license = LicenseRef-Custom
