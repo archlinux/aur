@@ -41,9 +41,6 @@ package() {
     install -Dm644 share/applications/com.hypixel.HytaleLauncher.desktop \
         "$pkgdir/usr/share/applications/com.hypixel.HytaleLauncher.desktop"
 
-    sed -i 's|Exec=hytale-launcher-wrapper|Exec=/usr/bin/hytale-launcher|' \
-        "$pkgdir/usr/share/applications/com.hypixel.HytaleLauncher.desktop"
-
     install -Dm644 share/metainfo/com.hypixel.HytaleLauncher.metainfo.xml \
         "$pkgdir/usr/share/metainfo/com.hypixel.HytaleLauncher.metainfo.xml"
 
