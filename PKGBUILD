@@ -3,7 +3,7 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
@@ -24,10 +24,10 @@ checkdepends=(
 	'desktop-file-utils'
 )
 source=(
-	"https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/coolercontrol-$pkgver.tar.gz"
 )
 sha256sums=(
-  'f27354ae0a1e97de81ac574e03df3106d30d55d93393e86ea99abbe3af4c4ab6'
+  'eb3ae3d4ba8b260ba2650b8188ee7f525bd486901f8566c30517340ae462a9dc'
 )
 
 build() {
@@ -39,7 +39,7 @@ build() {
 check() {
 	cd "${srcdir}/$pkgname-$pkgver"
 	desktop-file-validate "packaging/metadata/$_app_id.desktop"
-	appstream-util validate-relax "packaging/metadata/$_app_id.metainfo.xml"
+	appstream-util validate-relax --nonet "packaging/metadata/$_app_id.metainfo.xml"
 }
 
 package() {
@@ -49,10 +49,13 @@ package() {
 	cd "${srcdir}/$pkgname-$pkgver"
 	# desktop metadata
 	install -Dm644 "packaging/metadata/$_app_id.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm644 "packaging/metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-	install -Dm644 "packaging/metadata/$_app_id.png" -t "$pkgdir/usr/share/pixmaps/"
 	install -Dm644 "packaging/metadata/$_app_id.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+	install -Dm644 "packaging/metadata/$_app_id-alert.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 	install -Dm644 "packaging/metadata/${_app_id}-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+	install -Dm644 "packaging/metadata/${_app_id}-symbolic-alert.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+	install -Dm644 "packaging/metadata/$_app_id.png" -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 "packaging/metadata/$_app_id-alert.png" -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 "packaging/metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
 
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
