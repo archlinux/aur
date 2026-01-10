@@ -1,7 +1,7 @@
 pkgbase = youtube-dl-nightly
 	pkgdesc = A command-line program to download videos from YouTube.com and a few more sites
 	pkgver = 2025.11.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ytdl-org.github.io/youtube-dl
 	arch = any
 	license = Unlicense
