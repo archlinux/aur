@@ -3,27 +3,31 @@
 # Contributor: Henrique C. Alves <hcarvalhoalves@gmail.com>
 
 pkgname=matchbox-window-manager
-pkgver=1.2.2
-_commit=844f61069896fe3f549ab425d731c061028f697c
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A pretty much unique X window manager with a classic PDA management policy"
 arch=('x86_64')
 license=('GPL')
-depends=('libmatchbox' 'startup-notification' 'libpng' 'libsm' 'libxcursor')
+depends=('libmatchbox' 'startup-notification' 'libsm' 'libxcursor')
 url="http://matchbox-project.org/"
-source=("http://git.yoctoproject.org/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-${_commit}.tar.bz2")
-sha256sums=('4ac29942f1da25d5b0dc7e62b713746fe0c6596fe885bcb7c8ffa053758cc0e6')
+source=("https://git.yoctoproject.org/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
+sha256sums=('643a9dac3afbfa0d33505448cc136f2593f949b8f7d6cc1e6fddc2d1c20ea805')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i -e '/AM_GCONF_SOURCE_2/d' -e '/data\/schemas\/Makefile/d' configure.ac
+  autoreconf -fi
+}
 
 build() {
-  cd $pkgname-${_commit}
-  ./autogen.sh
+  cd $pkgname-$pkgver
   ./configure --sysconfdir=/etc --prefix=/usr \
 	--enable-startup-notification --enable-session \
 	--enable-alt-input-wins --enable-expat
-  CFLAGS=' -fcommon' make
+  make
 }
 
 package() {
-  cd $pkgname-${_commit}
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
