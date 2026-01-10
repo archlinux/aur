@@ -1,6 +1,6 @@
 --- a/Unix/Installer/WolframInstaller
 +++ b/Unix/Installer/WolframInstaller
-@@ -1985,6 +1985,8 @@
+@@ -1869,6 +1869,8 @@
  			xdgScripts="${FullTargetDirectory}/SystemFiles/Installation"
  		fi
  

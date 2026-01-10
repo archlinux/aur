@@ -90,7 +90,7 @@ source=(
     "remove-xdg-scripts.patch"
 )
 sha256sums=('178465e31cf7beca3e37ffd4cfb657be1e42accea7b0a310c6b451d75a3f68d0'
-            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0')
+            'ed6509dfface8e05a5fa870350516a0795a1a3bf91cd1bed0f90fa1159378350')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't find any source files here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -152,15 +152,17 @@ package() {
     bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
         -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
-    msg2 'Copying menu and mimetype information'
+    msg2 'Copying menu and MIME type information'
 
-    install -d "${pkgdir}"/usr/share/applications
     desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-    _fix_dekstop_file "${installdir}/SystemFiles/Installation/${desktop_file}"
 
     install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
-    install -D -m644 "${installdir}"/SystemFiles/Installation/*.directory -t "${pkgdir}"/usr/share/desktop-directories
+    install -D -m644 "${installdir}"/SystemFiles/Installation/wolfram-wolfram.directory -t "${pkgdir}"/usr/share/desktop-directories
     install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
+    rm -r "${installdir}"/SystemFiles/Installation
+
+    _fix_dekstop_file "${pkgdir}/usr/share/applications/${desktop_file}"
+    _fix_dekstop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
 
     msg2 'Copying icons'
     for i in 32 64 128; do
@@ -186,17 +188,24 @@ package() {
 }
 
 _fix_dekstop_file() {
-    # invalid version
-    sed -Ei 's|Version=2.0|Version=1.5|g' "$1"
-    # wrong path
-    sed -Ei 's|^(\s*TryExec=).*$|\1/usr/bin/WolframNB|g' "$1"
-    sed -Ei "s|^(\s*Exec=).*$|\1/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
-    # missing sections
-    cat >> "$1" <<EOF
+    # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
+    sed -Ei '/^\s*Version\s*=.*$/d' "$1"
+    # encoding is outdated
+    sed -Ei '/^\s*Encoding\s*=.*$/d' "$1"
+    # invalid MIME type: "x-scheme-handler/wolfram\+cloudobject"
+    sed -Ei '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
+    # executable path contains BUILDDIR
+    sed -Ei 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
+    sed -Ei "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
+    # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
+    if [[ "$1" = *".desktop" ]]; then
+        cat >> "$1" <<EOF
 GenericName=Mathematical Software
 Keywords=Wolfram;Mathematica;Symbolic;Computation;Programming;Simulation;Data Analysis;Visualization;Algebra;Calculus;Graphing;
-Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;
+Categories=Science;Math;ComputerScience;DataVisualization;NumericalAnalysis;ArtificialIntelligence;Physics;ParallelComputing;
 EOF
+    fi
+    # checked with desktop-file-validate
 }
 
 _fix_binary_symlinks() {
