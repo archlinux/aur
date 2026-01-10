@@ -2,7 +2,7 @@
 
 pkgname=elephant
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='general purpose datasource and executor'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('4fb0f74af2334d449a160a8a7a366309a8a2aab1ac967ea78a03fbf4c9653e04')
 
 build() {
     cd ${pkgname}-${pkgver}/cmd/elephant
-    go build -buildvcs=false -x -o elephant -trimpath
+    go build -ldflags="-s -w" -buildvcs=false -x -o elephant -trimpath
 }
 
 package() {
