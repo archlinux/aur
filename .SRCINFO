@@ -1,16 +1,16 @@
 pkgbase = cs-demo-manager-appimage
 	pkgdesc = Companion application for Counter-Strike demos.
-	pkgver = 3.17.0
+	pkgver = 3.17.1
 	pkgrel = 1
 	url = https://cs-demo-manager.com/
 	arch = any
 	license = MIT
 	optdepends = postgresql
-	noextract = CS-Demo-Manager-3.17.0.AppImage
+	noextract = CS-Demo-Manager-3.17.1.AppImage
 	options = !strip
-	source = CS-Demo-Manager-3.17.0.AppImage::https://github.com/akiver/cs-demo-manager/releases/download/v3.17.0/CS-Demo-Manager-3.17.0.AppImage
-	source = AKIVER_LICENSE::https://raw.githubusercontent.com/akiver/cs-demo-manager/refs/tags/v3.17.0/LICENSE
-	sha256sums = ffc39478b2eb4f2caec0751e9a8efeac986b45363b17dc5b8aa6d37aff3a921b
+	source = CS-Demo-Manager-3.17.1.AppImage::https://github.com/akiver/cs-demo-manager/releases/download/v3.17.1/CS-Demo-Manager-3.17.1.AppImage
+	source = AKIVER_LICENSE::https://raw.githubusercontent.com/akiver/cs-demo-manager/refs/tags/v3.17.1/LICENSE
+	sha256sums = 9ea3e55455b0ad8d73ad91a824cab841a54b3e1f53723ea6fb8de78c17b1b3ab
 	sha256sums = 13c63653c5aab89a5515ebb31b6c1dd518006cf7bd8d30e157007ab04aee1f93
 
 pkgname = cs-demo-manager-appimage
