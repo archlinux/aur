@@ -4,10 +4,10 @@ pkgbase = resolve-march-native
 	pkgrel = 1
 	url = https://github.com/hartwork/resolve-march-native
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python>=3.7
+	depends = python
 	source = resolve-march-native-5.1.0.tar.gz::https://github.com/hartwork/resolve-march-native/archive/5.1.0.tar.gz
 	sha256sums = 6695a4ae9188656b81364ae18e99fd53588faa9b2bb6a8010a1f7f4c56d60de7
 

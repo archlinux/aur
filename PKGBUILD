@@ -8,8 +8,8 @@ pkgrel=1
 pkgdesc="Tool to determine what GCC flags -march=native would resolve into"
 arch=('any')
 url="https://github.com/hartwork/resolve-march-native"
-license=('GPL')
-depends=('python>=3.7')
+license=('GPL-2.0-or-later')
+depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/${pkgname}/archive/${pkgver}.tar.gz")
