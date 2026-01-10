@@ -46,6 +46,6 @@ package() {
 
     for size in 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "share/icons/hicolor/${size}/apps/com.hypixel.HytaleLauncher.png" \
-            "$pkgdir/share/icons/hicolor/${size}/apps/com.hypixel.HytaleLauncher.png"
+            "$pkgdir/usr/share/icons/hicolor/${size}/apps/com.hypixel.HytaleLauncher.png"
     done
 }
