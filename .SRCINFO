@@ -1,0 +1,17 @@
+pkgbase = stegasoo-git
+	pkgdesc = Secure steganography with hybrid photo + passphrase + PIN authentication
+	pkgver = 4.1.7.r0.g1acb5a3
+	pkgrel = 1
+	url = https://github.com/adlee-was-taken/stegasoo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python312
+	depends = python312
+	optdepends = zbar: QR code reading from webcam/images
+	provides = stegasoo
+	conflicts = stegasoo
+	source = stegasoo-git::git+https://github.com/adlee-was-taken/stegasoo.git#branch=main
+	sha256sums = SKIP
+
+pkgname = stegasoo-git
