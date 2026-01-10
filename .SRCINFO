@@ -1,6 +1,6 @@
 pkgbase = udiskie-dmenu-git
 	pkgdesc = manage removable devices via dmenu (or rofi)
-	pkgver = 0.3.0.r10.0b538f9
+	pkgver = 0.3.0.r15.61d7642
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/fogine/udiskie-dmenu
@@ -13,6 +13,8 @@ pkgbase = udiskie-dmenu-git
 	depends = libnotify
 	optdepends = rofi: use rofi as the front-end
 	source = git+https://github.com/fogine/udiskie-dmenu.git
+	source = udiskie.desktop
 	md5sums = SKIP
+	md5sums = 45ccbe4fdfbdf3ad9a054ea391a10b3a
 
 pkgname = udiskie-dmenu-git

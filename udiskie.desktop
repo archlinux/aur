@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=udiskie-dmenu
+Name=udiskie-dmenu
+Icon=drive-harddisk-usb-symbolic
