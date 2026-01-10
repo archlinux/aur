@@ -2,11 +2,11 @@
 PIPER_CONFIG=/etc/speech-dispatcher/speechd.conf
 PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
 VOICE_LINE=(
-	'GenericLanguage "nl" "nl_BE" "utf-8"'
-	'AddVoice "nl" "FEMALE1" "nl/nl_BE/nathalie/medium/nl_BE-nathalie-medium"'
-	'AddVoice "nl" "FEMALE2" "nl/nl_BE/nathalie/x_low/nl_BE-nathalie-x_low"'
-	'AddVoice "nl" "MALE1" "nl/nl_BE/rdh/medium/nl_BE-rdh-medium"'
-	'AddVoice "nl" "MALE2" "nl/nl_BE/rdh/x_low/nl_BE-rdh-x_low"'
+	'GenericLanguage "nl-be" "nl_BE" "utf-8"'
+	'AddVoice "nl-be" "FEMALE1" "nl/nl_BE/nathalie/medium/nl_BE-nathalie-medium"'
+	'AddVoice "nl-be" "FEMALE2" "nl/nl_BE/nathalie/x_low/nl_BE-nathalie-x_low"'
+	'AddVoice "nl-be" "MALE1" "nl/nl_BE/rdh/medium/nl_BE-rdh-medium"'
+	'AddVoice "nl-be" "MALE2" "nl/nl_BE/rdh/x_low/nl_BE-rdh-x_low"'
 )
 DEFAULT_VOICE='DefaultVoice "nl/nl_BE/nathalie/medium/nl_BE-nathalie-medium"'
 
@@ -30,9 +30,9 @@ post_remove() {
   # Check if the piper-generic.conf file exists
   if [ -f $PIPER_MODULE ]; then
     # Remove the lines if they exist
-    sed -i '/^GenericLanguage "nl"/d' $PIPER_MODULE
-    sed -i '/^AddVoice "nl"/d' $PIPER_MODULE
-    sed -i '/^DefaultVoice "\/nl\//d' $PIPER_MODULE
+    sed -i '/^GenericLanguage "nl-be"/d' $PIPER_MODULE
+    sed -i '/^AddVoice "nl-be"/d' $PIPER_MODULE
+    sed -i '/^DefaultVoice "\/nl\/nl_BE\//d' $PIPER_MODULE
   fi
 }
 
@@ -40,8 +40,8 @@ post_upgrade() {
   # Check if the piper-generic.conf file exists
   if [ -f $PIPER_MODULE ]; then
     # Remove the lines if they exist
-    sed -i '/^GenericLanguage "nl"/d' $PIPER_MODULE
-    sed -i '/^AddVoice "nl"/d' $PIPER_MODULE
+    sed -i '/^GenericLanguage "nl-be"/d' $PIPER_MODULE
+    sed -i '/^AddVoice "nl-be"/d' $PIPER_MODULE
   fi
   post_install
 }
