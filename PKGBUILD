@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/frankhale/aewmpp"
 license=('GPL3')
 depends=('libxext' 'gcc-libs')
-makedepends=('git' 'clang')
-source=("$pkgname::git://github.com/frankhale/aewmpp.git")
+makedepends=('git')
+source=("$pkgname::git+https://github.com/frankhale/aewmpp.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ prepare() {
 }
 build() {
   cd $pkgname
-  make ADDITIONAL_CFLAGS= INCLUDES= LDPATH=
+  make ADDITIONAL_CFLAGS= INCLUDES= LDPATH= CC=g++
 }
 package() {
   cd $pkgname
