@@ -1,7 +1,7 @@
 pkgbase = python-aws-lambda-powertools
 	pkgdesc = A developer toolkit to implement Serverless best practices and increase velocity
 	pkgver = 3.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aws-powertools/powertools-lambda-python
 	arch = any
 	license = MIT
