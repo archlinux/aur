@@ -1,6 +1,6 @@
 # Maintainer: rownix101 <rownix101@gmail.com>
 pkgname=zigmir-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A blazing-fast Arch Linux mirror speed tester written in Zig"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('zigmir')
 conflicts=('zigmir')
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-${CARCH}::https://github.com/rownix101/zigmir/releases/download/v${pkgver}/zigmir-linux-arm64")
-sha256sums_x86_64=('c84794ee907313c4a72fadf67e4c6336e2a0a5f7120989f3cd648e6bb686d506')
-sha256sums_aarch64=('62bdd8fda2003e1884b5c66823b9dcc1b732537bee4910dd68163a56e44b4080')
+sha256sums_x86_64=('32404d70bd90b21767d9f317071703df05ba28174e2cf80ec5a73c84312ac0c0')
+sha256sums_aarch64=('8f171db52967149d64afcbd49c6f403dacbb615522b6d7da8b76fa2fa3c7163c')
 package() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}-${CARCH}"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/zigmir"
