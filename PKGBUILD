@@ -16,11 +16,11 @@ _wheel_name_x86_64=${_pkgname//-/_}-$pkgver-$_py-${_py}-manylinux_2_27_x86_64.ma
 source_x86_64=(https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel_name_x86_64)
 _wheel_name_aarch64=${_pkgname//-/_}-$pkgver-$_py-${_py}-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
 source_aarch64=(https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel_name_aarch64)
-sha256sums_x86_64=('f08efa826707d095ade28410dca27f8d377520f3068843e00b349d5ca15cf174')
-sha256sums_aarch64=('6cc539ed7c3531354971c78938da50f29ac08b8dc9140bc7ac377e8344bc63e2')
 
 _wheel_name=${_pkgname//-/_}-$pkgver-$_py-${_py}-manylinux_2_27_${arch}.manylinux_2_28_${arch}.whl
 
 package() {
-    python -m installer --destdir="$pkgdir" $_wheel_name
+    python -m installer --destdir="$pkgdir" ${_wheel_name}
 }
+sha256sums_x86_64=('f08efa826707d095ade28410dca27f8d377520f3068843e00b349d5ca15cf174')
+sha256sums_aarch64=('6cc539ed7c3531354971c78938da50f29ac08b8dc9140bc7ac377e8344bc63e2')
