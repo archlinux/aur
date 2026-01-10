@@ -1,44 +1,58 @@
-# Maintainer: catsout <outline941 at live.com>
+# Maintainer: RainyPixel <me@bobchenkov.ru>
 
 pkgname=wallpaper-engine-kde-plugin-git
-pkgver=0.5.3.r1.geca8c2b
+pkgver=0.6.0.r645.g5b85b36
 pkgrel=1
-pkgdesc="A kde wallpaper plugin integrating wallpaper engine."
-arch=("x86_64")
-url=https://github.com/catsout/wallpaper-engine-kde-plugin
-license=("GPL2")
+pkgdesc="Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)"
+arch=('x86_64')
+url="https://github.com/RainyPixel/wallpaper-engine-kde-plugin"
+license=('GPL-2.0-only')
 depends=(
-    "plasma-framework" "gst-libav" "mpv" "python-websockets" "qt5-declarative" 
-    "qt5-websockets" "qt5-webchannel" "vulkan-driver"
+    'libplasma'
+    'gst-libav'
+    'mpv'
+    'qt6-declarative'
+    'qt6-websockets'
+    'qt6-webchannel'
+    'lz4'
+    'vulkan-icd-loader'
 )
 makedepends=(
-    "vulkan-headers" "extra-cmake-modules" "git"
+    'git'
+    'cmake'
+    'ninja'
+    'extra-cmake-modules'
+    'vulkan-headers'
+    'plasma-workspace'
 )
-provides=("wallpaper-engine-kde-plugin")
-conflicts=("wallpaper-engine-kde-plugin")
-source=("git+${url}")
+optdepends=(
+    'vulkan-driver: Required for scene wallpapers'
+)
+provides=('wallpaper-engine-kde-plugin')
+conflicts=('wallpaper-engine-kde-plugin')
+source=("${pkgname}::git+https://github.com/RainyPixel/wallpaper-engine-kde-plugin.git")
 sha256sums=('SKIP')
 
-prepare(){
-    cd "${srcdir}/wallpaper-engine-kde-plugin"
-    git submodule update --init
+pkgver() {
+    cd "${pkgname}"
+    printf "0.6.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver(){
-    cd "${srcdir}/wallpaper-engine-kde-plugin"
-    git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
+
+prepare() {
+    cd "${pkgname}"
+    git submodule update --init --force --recursive
 }
-build(){
-    cd "${srcdir}/wallpaper-engine-kde-plugin"
-    mkdir build
-    cd build
-    cmake .. \
-        -DUSE_PLASMAPKG=OFF \
+
+build() {
+    cd "${pkgname}"
+    cmake -B build -S . \
+        -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
-        --install-prefix=/usr
-    make
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
-package(){
-    cd "${srcdir}/wallpaper-engine-kde-plugin"
-    cd build
-    make install DESTDIR="${pkgdir}"
+
+package() {
+    cd "${pkgname}"
+    DESTDIR="${pkgdir}" cmake --install build
 }
