@@ -1,0 +1,14 @@
+pkgbase = piper-voices-no-no
+	pkgdesc = Voices for Piper text to speech system (no_NO)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-no-no.install
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+
+pkgname = piper-voices-no-no
