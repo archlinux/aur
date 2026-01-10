@@ -150,7 +150,9 @@ prepare() {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
+  sed -i "s/version = \"2.1.0\"/version = \"2.2.0\"/" Cargo.toml 
   #cargo update
+  cargo update paru
   cargo fetch --locked --target $TARGET
 
   #depends library
