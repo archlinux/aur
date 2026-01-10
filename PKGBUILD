@@ -1,7 +1,7 @@
 pkgname=qobuz-player
 pkgver="0.6.0"
 _release_version="0.6.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
 url="https://github.com/SofusA/qobuz-player"
@@ -17,7 +17,8 @@ options=('!lto')
 prepare() {
     cd ${pkgname}-${_release_version}
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target $(rustc --print host-tuple)
+    #cargo fetch --locked --target $(rustc --print host-tuple)
+    cargo fetch --target $(rustc --print host-tuple)
     cd qobuz-player-web
     npm install
 }
