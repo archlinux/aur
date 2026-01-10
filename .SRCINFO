@@ -1,7 +1,7 @@
-pkgbase = flexbv-bin
+pkgbase = flexbv-free-bin
 	pkgdesc = Visualize and interact with boardview (.brd) files.
 	pkgver = 5.1244
-	pkgrel = 2
+	pkgrel = 1
 	url = https://pldaniels.com/flexbv5/
 	arch = x86_64
 	license = custom
@@ -13,4 +13,4 @@ pkgbase = flexbv-bin
 	sha256sums = e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e
 	sha256sums = 12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23
 
-pkgname = flexbv-bin
+pkgname = flexbv-free-bin

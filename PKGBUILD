@@ -5,9 +5,9 @@
 # Maintainer: Sokoloft <sokoloft@protonmail.com>
 #
 
-pkgname=flexbv-bin
+pkgname=flexbv-free-bin
 pkgver=5.1244
-pkgrel=2
+pkgrel=1
 pkgdesc="Visualize and interact with boardview (.brd) files."
 arch=("x86_64")
 url="https://pldaniels.com/flexbv5/"
