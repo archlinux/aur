@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.4
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -132,6 +132,9 @@ prepare() {
   ## Mark log and titlebar version
   sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 
+  # Keep sentinel file functional without messing with compile flags
+  sed -i "s|#ifndef NDEBUG|#if 0|" frontend/utility/CrashHandler.cpp
+
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 -i "$srcdir/bind_iface_eyeballed.patch"
 
@@ -145,8 +148,6 @@ prepare() {
 build() {
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_C_FLAGS="-DNDEBUG" \
-    -DCMAKE_CXX_FLAGS="-DNDEBUG" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_LIBFDK=ON \
