@@ -8,6 +8,7 @@ url="https://github.com/christophermca/alacritty-use-theme"
 license=('GPL')
 depends=('alacritty>=0.13.0' 'go-yq')
 makedepends=('git')
+provides=('alacritty-use-theme')
 source=("alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git")
 sha256sums=('SKIP')
 
