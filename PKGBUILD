@@ -1,20 +1,22 @@
-# Maintainer: prime-run <prime-run@github.com>
+# Maintainer: spaciousejar <jadhavvicky752@gmail.com>
 
 pkgname=hyde
-pkgver=1.0.0
+pkgver=v25.10.1
 pkgrel=2
-pkgdesc="project - hy reserverd de"
+pkgdesc="HyDE, your Development Environment (Container-Compatible)"
 arch=('x86_64')
 url="https://github.com/HyDE-Project/HyDE"
 license=('MIT')
 depends=()
 source=("git+https://github.com/HyDE-Project/HyDE.git")
-makedepends=('git' 'make' 'gcc')
+makedepends=('git' 'make' 'gcc' 'base-devel')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/HyDE"
-  printf "r%s.%s" "$(git log -1 --format=%cd --date=format:%Y%m%d)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    printf "v25.10.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
