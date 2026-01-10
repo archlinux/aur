@@ -6,9 +6,10 @@ url="https://github.com/Amulet-Team/Amulet-pybind11-extensions"
 license=("LicenseRef-Amulet-Team-License")
 arch=(any)
 pkgver=1.0.0.1
-pkgrel=1
+pkgrel=3
 makedepends=(python-setuptools git python-wheel python-amulet-compiler-version python-packaging python-versioneer)
-depends=(python pybind11 python-black)
+optdepends+=(python-black)
+depends=(python pybind11)
 source=(
 	"git+https://github.com/Amulet-Team/Amulet-pybind11-extensions.git#tag=${pkgver}"
 )
