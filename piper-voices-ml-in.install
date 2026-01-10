@@ -1,0 +1,46 @@
+# Define the lines to be added or removed
+PIPER_CONFIG=/etc/speech-dispatcher/speechd.conf
+PIPER_MODULE=/etc/speech-dispatcher/modules/piper-tts-generic.conf
+VOICE_LINE=(
+	'GenericLanguage "ml" "ml_IN" "utf-8"'
+	'AddVoice "ml" "MALE1" "ml/ml_IN/arjun/medium/ml_IN-arjun-medium"'
+	'AddVoice "ml" "FEMALE1" "ml/ml_IN/meera/medium/ml_IN-meera-medium"'
+)
+DEFAULT_VOICE='DefaultVoice "ml/ml_IN/arjun/medium/ml_IN-arjun-medium"'
+
+post_install() {
+  # Check if the piper-generic.conf file exists
+  if [ -f $PIPER_CONFIG ]; then
+    pkill -f speech-dispatcher || true
+    if ! grep -q '^DefaultVoice' $PIPER_MODULE; then
+        echo "$DEFAULT_VOICE" >> $PIPER_MODULE
+    fi
+    for LINE in "${VOICE_LINE[@]}"; do
+      # Add the lines only if they do not already exist
+      if ! grep -q "$LINE" $PIPER_MODULE; then
+        echo "$LINE" >> $PIPER_MODULE
+      fi
+    done
+  fi
+}
+
+post_remove() {
+  # Check if the piper-generic.conf file exists
+  if [ -f $PIPER_MODULE ]; then
+    # Remove the lines if they exist
+    sed -i '/^GenericLanguage "ml"/d' $PIPER_MODULE
+    sed -i '/^AddVoice "ml"/d' $PIPER_MODULE
+    sed -i '/^DefaultVoice "\/ml\//d' $PIPER_MODULE
+  fi
+}
+
+post_upgrade() {
+  # Check if the piper-generic.conf file exists
+  if [ -f $PIPER_MODULE ]; then
+    # Remove the lines if they exist
+    sed -i '/^GenericLanguage "ml"/d' $PIPER_MODULE
+    sed -i '/^AddVoice "ml"/d' $PIPER_MODULE
+  fi
+  post_install
+}
+
