@@ -1,0 +1,5 @@
+[guitar-tui-bin]
+source = "github"
+github = "asinglebit/guitar"
+use_latest_release = true
+prefix = "v"

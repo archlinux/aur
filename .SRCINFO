@@ -1,0 +1,22 @@
+pkgbase = guitar-tui-bin
+	pkgdesc = A terminal based git client with fast topological & chronological graph rendering
+	pkgver = 0.1.30
+	pkgrel = 1
+	url = https://github.com/asinglebit/guitar
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = git
+	provides = guitar
+	conflicts = guitar
+	source = LICENSE-0.1.30::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.30/LICENSE
+	source = README-0.1.30.md::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.30/README.md
+	sha256sums = 36874402d076b70d59c8a9db16bf8c9ca55a5b5b3cfc3906cd9fd390a679a608
+	sha256sums = f64ed64516d9080eec5135d9ca73ceef30e1dfd98e0a940290f1b08a973d2d6b
+	source_x86_64 = guitar-0.1.30::https://github.com/asinglebit/guitar/releases/download/v0.1.30/guitar-linux
+	sha256sums_x86_64 = 57555913536d3dd42a871eb1c1997bc6b910e89bb705c053f3a107bb015222ac
+
+pkgname = guitar-tui-bin
