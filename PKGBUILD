@@ -2,7 +2,7 @@
 
 _pkgname=wayvr
 pkgname="${_pkgname}-bin"
-pkgver=26.1.0
+pkgver=26.1.2
 pkgrel=1
 pkgdesc="OpenXR desktop overlay for Wayland compositors (binary release)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
     "https://github.com/wlx-team/${_pkgname}/releases/download/v${pkgver}/WayVR-v${pkgver}-${CARCH}.AppImage"
 )
 
-sha256sums=('f8e2153f0c939847e44609d4fdb5b56803f49df92495de438f237a4e3c15c5ac')
+sha256sums=('18b9e60cef27619da0be50422055e1816cbcaa15102c3c365c7912394977dbdf')
 
 prepare() {
   cd "${srcdir}"
