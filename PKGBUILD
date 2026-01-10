@@ -28,23 +28,33 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_pkgname/$_pkgname"
+  cd "$_pkgname"
+  cd "$_pkgname"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "../${_pkgname}ctl"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$_pkgname/$_pkgname"
+  cd "$_pkgname"
+  cd "$_pkgname"
+  cargo build --frozen --release --all-features
+  cd "../${_pkgname}ctl"
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$_pkgname/$_pkgname"
+  cd "$_pkgname"
+  cd "$_pkgname"
+  cargo test --frozen --all-features
+  cd "../${_pkgname}ctl"
   cargo test --frozen --all-features
 }
 
 package() {
-  cd "$_pkgname/"
+  cd "$_pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}ctl"
   cd "$_pkgname/"
   install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_pkgname.desktop"
   install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/128x128/apps/" "$_pkgname.png"
