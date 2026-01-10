@@ -4,7 +4,7 @@
 pkgname=cgsuite
 pkgver=2.2
 _pkgver=$pkgver-beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='A computer algebra system for research in combinatorial game theory'
 arch=('x86_64')
 url="https://www.cgsuite.org/"
@@ -30,6 +30,7 @@ prepare() {
 build() {
   cd $pkgname-$_pkgver
   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
   cd lib/core
   mvn package -DskipTests
   cd ../jfx-bundle

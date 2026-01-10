@@ -1,7 +1,7 @@
 pkgbase = cgsuite
 	pkgdesc = A computer algebra system for research in combinatorial game theory
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cgsuite.org/
 	arch = x86_64
 	license = GPL-3
