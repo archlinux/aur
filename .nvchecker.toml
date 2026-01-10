@@ -1,0 +1,3 @@
+[agent-cli]
+source = "pypi"
+pypi = "agent-cli"

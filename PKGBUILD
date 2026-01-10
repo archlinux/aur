@@ -1,17 +1,45 @@
-# Mainainer: Animo Solutions contact@animo.id
-pkgname="agent-cli"
-pkgver=0.3.1
-pkgrel="1"
-pkgdesc="A CLI tool for Aries written in Rust"
-arch=(x86_64)
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_upstreamver='0.45.0'
+_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
+_source_type='pypi-releases'
+_pypi_package='agent-cli'
+
+
+pkgname="${_pypi_package}"
+pkgver="${_upstreamver}"
+pkgrel=1
+pkgdesc="A suite of local AI-powered command-line tools"
+
 license=('MIT')
-depends=()
-provides=('agent-cli')
-md5sums=()
+arch=('any')
+
+_url_pypi='https://pypi.org/project/agent-cli/'
+_url_github='https://github.com/basnijholt/agent-cli'
+url="${_url_github}"
+
+provides=("${_pypi_package}")
+replaces=("python-${pkgname}")
+conflicts=("python-${pkgname}")
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-versioningit')
+depends=('bash' 'python' 'uvicorn' 'python-onnxruntime' 'python-yaml' 'python-rich' 'python-openai' 'python-pydantic' 'python-httpx' 'python-numpy' 'python-dotenv' 'agent-cli' 'python-psutil' 'python-huggingface-hub' 'python-pyperclip' 'python-google-genai' 'python-sounddevice' 'python-click' 'python-typer' 'python-fastapi' 'python-watchfiles' 'python-transformers' 'python-wyoming' 'python-pydantic-ai-slim')
+
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('945178cfe04b81d1a8c62e485895baea8ee964739a0cf3501312ea7912f3ebe8')
+
+build() {
+    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  sudo mkdir -p /usr/share/licenses/${pkgname}
-  sudo curl -L -o /usr/share/licenses/${pkgname}/LICENSE https://raw.githubusercontent.com/animo/agent-cli/main/LICENSE
-  sudo curl -L -o /usr/bin/${pkgname} https://github.com/animo/${pkgname}/releases/download/v${pkgver}/linux-x86_64-agent-cli
-  sudo chmod +x /usr/bin/${pkgname}
+    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
