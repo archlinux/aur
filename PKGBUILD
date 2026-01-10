@@ -1,6 +1,6 @@
 # Maintainer: rownix101 <rownix101@gmail.com>
 pkgname=zigmir-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A blazing-fast Arch Linux mirror speed tester written in Zig"
 arch=('x86_64' 'aarch64')
