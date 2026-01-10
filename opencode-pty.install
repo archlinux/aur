@@ -7,7 +7,7 @@ post_install() {
   echo "(e.g., ~/.config/opencode/config.json):"
   echo ""
   echo "  {"
-  echo "    \"plugin\": [\"opencode-pty\"]"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-pty\"]"
   echo "  }"
   echo ""
   echo "=========================================================================="
