@@ -3,7 +3,7 @@
 
 pkgname=coolercontrold-bin
 _pkgname="${pkgname%-bin}"
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices: daemon (binary release)"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
 optdepends=(
 	'nvidia-utils: NVIDIA GPU support'
 	'liquidctl: liquidctl driver support'
+	'lm_sensors: kernel hwmon driver support'
 )
 provides=("$_pkgname")
 conflicts=(
@@ -26,11 +27,11 @@ conflicts=(
 groups=(coolercontrol-bin)
 source=(
 	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/${_pkgname}_${pkgver}"
-	"https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/coolercontrol-$pkgver.tar.gz"
+	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/coolercontrol-$pkgver.tar.gz"
 )
 sha256sums=(
-  '4c0603f8a1a646ba22315942ab5689e7f8de1e57204612958f67e77e86dbffde'
-  'f27354ae0a1e97de81ac574e03df3106d30d55d93393e86ea99abbe3af4c4ab6'
+  '5404b9e0379edf10b4ea307b3a62bf53b4edd7456d5b68bdf6b32706948afb57'
+  'eb3ae3d4ba8b260ba2650b8188ee7f525bd486901f8566c30517340ae462a9dc'
 )
 
 check() {
