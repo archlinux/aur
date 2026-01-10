@@ -1,8 +1,8 @@
 # Maintainer: snit <snit@cock.li>
 
 pkgname="pi-im"
-pkgver=3i
-pkgrel=5
+pkgver=3.1i
+pkgrel=1
 pkgdesc='the XMPP client from hell'
 url="https://forge.sunglocto.net/sunglocto/${pkgname}"
 arch=('x86_64')
@@ -32,4 +32,4 @@ package() {
     cd "${pkgname}/"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha256sums=('c66ee58dd59fb61fd66ecda29683ebf29aa403c557c8bd81da142b9f57290f27')
+sha256sums=('902a17cd6f46afb158164253392cf452f712528391f7e78b69d1991496868b02')
