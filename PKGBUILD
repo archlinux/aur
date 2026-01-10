@@ -29,7 +29,6 @@ conflicts=(
 )
 source=(
   "https://download.brother.com/welcome/dlf005533/dcp7055wcupswrapper-${pkgver}-1.i386.deb"
-  # https://download.brother.com/welcome/dlf101125/brgenml1cupswrapper-3.1.0-1.i386.deb
 )
 sha256sums=(
   'ca096dc07c519e5335f132f74ffcd1deef8863e6600d16a2cb044d65629137dd'
@@ -59,7 +58,7 @@ package() {
   install -Dvm0644 -t "${pkgdir}/opt/brother/Printers/DCP7055W/cupswrapper"  "./opt/brother/Printers/DCP7055W/cupswrapper"/brother-DCP-7055W-cups-en.ppd
 
   install -dvm0755 "${pkgdir}/$(cups-config --serverbin)/filter"
-  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother_lpdwrapper_DCP7055W     "${pkgdir}/$(cups-config --serverbin)/filter"/
+  ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother_lpdwrapper_DCP7055W    "${pkgdir}/$(cups-config --serverbin)/filter"/
 
   install -dvm0755 "${pkgdir}/$(cups-config --serverbin)/model/Brother"
   ln -sv "/opt/brother/Printers/DCP7055W/cupswrapper"/brother-DCP-7055W-cups-en.ppd  "${pkgdir}/$(cups-config --serverbin)/model/Brother"/
