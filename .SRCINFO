@@ -1,17 +1,17 @@
 pkgbase = dlss-updater-appimage
 	pkgdesc = Update DLSS/XeSS/FSR DLLs for games
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/Recol/DLSS-Updater
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = dlss-updater-3.4.0-x86_64.AppImage
+	noextract = dlss-updater-3.5.0-x86_64.AppImage
 	options = !strip
-	source_x86_64 = dlss-updater-3.4.0-x86_64.AppImage::https://github.com/Recol/DLSS-Updater/releases/download/V3.4.0/DLSS_Updater_Linux-3.4.0-x86_64.AppImage
+	source_x86_64 = dlss-updater-3.5.0-x86_64.AppImage::https://github.com/Recol/DLSS-Updater/releases/download/V3.5.0/DLSS_Updater_Linux-3.5.0-x86_64.AppImage
 	source_x86_64 = https://raw.githubusercontent.com/Recol/DLSS-Updater/refs/heads/main/LICENSE
-	sha256sums_x86_64 = 889fc459a50097c9a4246ebfad13d5a2aee672ad19dc51a66c157c249623ba90
+	sha256sums_x86_64 = d46b83578eacd0af63d4059792a452ea773ece0bf40fd603ffff6178b7f5ee66
 	sha256sums_x86_64 = 543fa96aec228a26be5e2db380abda94a4481522498ea442430e9a2292b64fd5
 
 pkgname = dlss-updater-appimage
