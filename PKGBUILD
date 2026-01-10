@@ -5,7 +5,7 @@
 
 pkgname=python-powerline-git
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.8.3+6+ga34abe32
+pkgver=2.8.4+2+g574bb188
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
@@ -29,6 +29,12 @@ pkgver() {
 	local count=+$(git rev-list --count $(git blame powerline/version.py | grep "\s*__version__\s*=.*$base_version" | cut -d\  -f1)..HEAD)
 	local rev=$(git rev-parse --short HEAD)
 	printf '%s%s+g%s' "$base_version" "${count/+0/}" "$rev"
+}
+
+prepare() {
+	cd powerline
+	# https://github.com/powerline/powerline/pull/2271
+	git cherry-pick -n develop..6f8da88
 }
 
 build() {
