@@ -1,0 +1,14 @@
+pkgbase = piper-voices-da-dk
+	pkgdesc = Voices for Piper text to speech system (da_DK)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-da-dk.install
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+
+pkgname = piper-voices-da-dk
