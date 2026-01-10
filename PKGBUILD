@@ -19,6 +19,8 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
+install="${pkgname}.install"
+
 source=('filebrowser.service'
         'filebrowser@.service'
         'filebrowser.sysusers'
@@ -31,7 +33,7 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/downlo
 sha256sums=('1d85acca4ca9bcdb6767ff60891d6e0a4e9c324fc50bed1231e8c891eb9c4420'
             '29031d87f8294889ea33658570422406ca8c13367ae20cbcc1f98132df83ea14'
             '6246fbeac57750e146216892ed6eb1d43a995f987bb89ef12bcbfb3963f5aa2d'
-            'fd3da1de58e98185e0043070f55b46a86a78b9ebcdda949d0cd8a83e9b0b230c'
+            'ebb8acac3f1e7178a39f4cc289d1c38f8f45f4cfbb3db1fcad917d14b089a317'
             '3495234f011491a1d448af24bfe8af8018bb4c5b1a4c4ef53651fb068d9801c4'
             '4a1946819f24b20b3144360151a4dc1ed1b8e407bfb11045a74884abd6816100'
             '09d2261355578a7ca4c70062ae123d059e7d0bb6ff0ee5add2c223ffeffedd1c')
