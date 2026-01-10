@@ -1,0 +1,11 @@
+--- setup.py	2026-01-10 18:45:42.055723150 +0100
++++ setup.py	2026-01-10 18:45:26.190189664 +0100
+@@ -19,7 +19,7 @@
+     path = os.path.join(os.path.dirname(__file__), filename)
+     for line in open(path, encoding='utf-8'):
+         if line.startswith('__version__'):
+-            return ast.parse(line).body[0].value.value
++            return ast.parse(line).body[0].value.s
+ 
+ 
+ def read_readme(filename):
