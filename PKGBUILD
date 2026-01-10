@@ -8,7 +8,7 @@ pkgdesc="A lightweight, customizable window manager with a virtual desktop"
 arch=('i686' 'x86_64')
 url="http://www.vtwm.org"
 license=('MIT')
-depends=('libxpm' 'libxmu' 'libxft' 'libxinerama' 'libxrandr' 'esound' 'rplay')
+depends=('libxpm' 'libxmu' 'libxft' 'libxinerama' 'libxrandr' 'm4' 'xorg-fonts-misc')
 optdepends=('m4: for config file preprocessing')
 makedepends=('imake')
 backup=('usr/share/X11/vtwm/system.vtwmrc')
@@ -30,14 +30,16 @@ prepare() {
 	  cat contrib/nexpm/xpm.COPYRIGHT
 
   ) >COPYRIGHT
+  sed -i '/prototypes.h/a #include <time.h>' add_window.c
+  sed -i '/prototypes.h/a #include <sys/wait.h>' menus.c
+  aclocal
+  automake --foreign --add-missing
+  autoconf
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  aclocal
-  automake --foreign --add-missing
-  autoconf
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --prefix=/usr --sysconfdir=/etc CFLAGS="$CFLAGS -Wno-implicit-int -std=gnu11"
   make V=0
 }
 

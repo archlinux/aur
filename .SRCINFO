@@ -12,8 +12,8 @@ pkgbase = vtwm
 	depends = libxft
 	depends = libxinerama
 	depends = libxrandr
-	depends = esound
-	depends = rplay
+	depends = m4
+	depends = xorg-fonts-misc
 	optdepends = m4: for config file preprocessing
 	options = !makeflags
 	backup = usr/share/X11/vtwm/system.vtwmrc
@@ -23,4 +23,3 @@ pkgbase = vtwm
 	md5sums = 7b4fcabdd4cf2b3a03683c37cb0fa82b
 
 pkgname = vtwm
-
