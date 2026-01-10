@@ -60,6 +60,13 @@ package() {
     local wheel=$(ls dist/*.whl | head -1)
     "$pkgdir/opt/stegasoo/venv/bin/pip" install --no-cache-dir "${wheel}[all]"
 
+    # Fix shebangs - replace build-time paths with installed paths
+    find "$pkgdir/opt/stegasoo/venv/bin" -type f -exec \
+        sed -i "s|$pkgdir/opt/stegasoo/venv|/opt/stegasoo/venv|g" {} \;
+
+    # Fix pyvenv.cfg
+    sed -i "s|$pkgdir||g" "$pkgdir/opt/stegasoo/venv/pyvenv.cfg"
+
     # Create symlinks to /usr/bin
     install -dm755 "$pkgdir/usr/bin"
     ln -s /opt/stegasoo/venv/bin/stegasoo "$pkgdir/usr/bin/stegasoo"
