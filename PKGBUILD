@@ -4,16 +4,23 @@
 
 _hkgname=fixed-vector
 pkgname=haskell-fixed-vector
-pkgver=1.2.3.0
+#pkgver=1.2.3.0
+pkgver=2.0.0.0
 pkgrel=1
 pkgdesc="Generic vectors with statically known size."
-url="http://github.com/Shimuuar/fixed-vector"
+url="https://github.com/Shimuuar/fixed-vector"
 license=("BSD-3-Clause")
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'i686'
+  'aarch64'
+  'armv6h'
+  'armv7h'
+)
 depends=('ghc-libs' 'haskell-primitive')
-makedepends=('ghc' 'haskell-doctest' 'haskell-filemanip')
+makedepends=('ghc' 'haskell-doctest' 'haskell-filemanip' 'haskell-tasty-inspection-testing')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('6ca362abd97c29a567336260f588f66b194d6df65f7f0db71c5e33d6c8387f31')
+sha256sums=('b0fcadf1f7573cd42276875dfa663c2f6ea77d933e7ba8a9e4bcb25996b2b9fa')
 
 build() {
   cd $_hkgname-$pkgver
