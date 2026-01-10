@@ -1,7 +1,7 @@
 pkgbase = python-django-docs
 	pkgdesc = Documentation for the Django framework
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.djangoproject.com/
 	arch = any
 	license = BSD-3-Clause

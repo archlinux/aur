@@ -3,7 +3,7 @@
 
 pkgname=python-django-docs
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for the Django framework"
 arch=('any')
 url='https://docs.djangoproject.com/'
