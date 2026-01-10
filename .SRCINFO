@@ -1,0 +1,15 @@
+pkgbase = firp
+	pkgdesc = A Modern Fortran Interpreter with REPL, debugger, and JIT compilation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/firp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = firp-0.1.0.tar.gz::https://github.com/FortranGoingOnForty/firp/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 29bdc248a2105f340c921fc0190cb06acb4be839205715f116664a3aec5b84b4
+
+pkgname = firp
