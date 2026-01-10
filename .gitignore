@@ -1,2 +1,11 @@
-*.tar.*
-Test2-Tools-Command-*/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!LICENSE
+!LICENSES
+!LICENSES/*
+!REUSE.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
