@@ -7,13 +7,13 @@ pkgbase=quartus-free
 _components=(${pkgbase}-{quartus,questa,help,riscfree,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}}})
 pkgname=(${pkgbase} ${_components[@]})
 # Keep dot in _patchver
-_mainver=24.1; _patchver=.0; _buildver=1077; _litever=${_mainver}std${_patchver}.${_buildver}
+_mainver=25.1; _patchver=.0; _buildver=1129; _litever=${_mainver}std${_patchver}.${_buildver}
 pkgver=${_mainver}${_patchver}.${_buildver}
 pkgrel=1
 pkgdesc="Quartus Prime Lite design software for Intel FPGAs"
 arch=('x86_64')
 url="http://fpgasoftware.intel.com/?edition=lite"
-license=('custom')
+license=('LicenseRef-QuartusPrime')
 
 _inteldir="/opt/intelFPGA/${_mainver}"
 
@@ -30,16 +30,16 @@ source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/
 noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${_litever}.qdz") # Will extract directly to pkgdir
 # Still using SHA1 because it's given in the download site
 sha1sums=(
-    62a899e695d4ea478bc51850867cf6222d9589cf
-    3bc55724807c4792e6bc71dfe454378474b9a4a1
-    74bb418ec7f09600c2752ce863e345888a503fd0
-    60fb94c7d52fc4ca28166409210b32c2bd1c2ffd
-    439ff4f6c30826a1c78868db2e1a411e2100529a
-    176c1f54c7da0623555a02864d3eb144fe6c00d3
-    175bee73df92c219fecc8e4e90f2a67cf9f84eee
-    a361c6ab1aba00f6385fc8deb8b81045c3f9ad7c
-    f1d486d19a8fb298cb4e1d45a69c55a6de7e582c
-    32ca623f33df3ffec1b6ee585a034db6e8c36d02
+    ce0773469eacab5b7035c175484625f4ec3737d1
+    149fe1e1cf253f2929804582c6cb658bca941dd5
+    078ec6422fe6bbdceecf1a7683965a45e3e08411
+    2d457bd18bfbf32f8f4037266b6c04853caed8e8
+    d803f8a865d260f47cdb1f856c123fab5a9934bf
+    835d2b1732549294eed625b692d044135499b5e8
+    b3cc2ca1b2e1b225407968e2f380e596dff5b80d
+    a7225ec1bd36ccfd6826ea6273df5d21dd95633b
+    a3bc065b42a9d005f8d27fe45525411b49c13c43
+    8936dac1b092853f3b49a67fef22968ec10f8087
     f6d660c62a71ac650f23f1ab8ab272eef445632a
     2efb252903bed064dd1ce5ced3ba84de2d5ef280
     b69614473e3f622676dcbb7a9a91e65003b3550c
@@ -52,8 +52,8 @@ options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
 PKGEXT=".pkg.tar.zst" # ZSTD is fast enough for compression
 
 prepare() {
-    echo "Notice: Requires around 30GB of free space, of which 21GB in build dir, during package building!"
-    echo "Notice: The compressed package files also require around 10GB of free space"
+    echo "Notice: Requires around 31GB of free space, of which 23GB in build dir, during package building!"
+    echo "Notice: The compressed package files also require around 11GB of free space"
 
     chmod +x {QuartusLite,Questa,QuartusHelp,RiscFree}Setup-${_litever}-linux.run
 }
@@ -89,7 +89,7 @@ package_quartus-free-quartus() {
     rm -r "${pkgdir}${_inteldir}/riscfree"
 
     # Fix missing permissions
-    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} \;
+    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} +
 
     # Replace altera directory in integration files
     sed -i "s,@_inteldir@,${_inteldir},g" quartus.sh
@@ -99,13 +99,16 @@ package_quartus-free-quartus() {
     sed -i "s,${pkgdir},,g" "${pkgdir}${_inteldir}/quartus/sopc_builder/.sopc_builder"
 
     # Fix world writable permissions
-    find "${pkgdir}${_inteldir}/nios2eds/documents" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/nios2eds/bin" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/ip/altera/mentor_vip_ae" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/quartus/dspba" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/quartus/common/tcl" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/quartus/linux64" -perm -o+w -exec chmod go-w {} \+
-    find "${pkgdir}${_inteldir}/quartus/sopc_builder/bin/europa" -perm -o+w -exec chmod go-w {} \+
+    find "${pkgdir}${_inteldir}/nios2eds/documents" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/nios2eds/bin" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/ip/altera/mentor_vip_ae" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/quartus/dspba" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/quartus/common/tcl" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/quartus/linux64" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_inteldir}/quartus/sopc_builder/bin/europa" -perm -o+w -exec chmod go-w {} +
+
+    # Remove sticky bit from directories
+    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -121,6 +124,7 @@ package_quartus-free-questa() {
     depends=(expat fontconfig freetype2 gcc-libs gd lib32-gcc-libs lib32-glibc lib32-libxml2
              libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
     pkgdesc="Quartus Prime Lite - Questa-Intel FPGA Starter Edition"
+    license=('LicenseRef-QuestaSim')
 
     DISPLAY="" ./QuestaSetup-${_litever}-linux.run \
         --questa_edition questa_fse \
@@ -133,7 +137,13 @@ package_quartus-free-questa() {
     rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
 
     # Fix missing permissions
-    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} \;
+    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} +
+
+    # Fix world writable permissions
+    find "${pkgdir}${_inteldir}/questa_fse/intel" -perm -o+w -exec chmod go-w {} +
+
+    # Remove sticky bit from directories
+    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
 
     # Replace altera directory in integration files
     sed -i "s,@_inteldir@,${_inteldir},g" questa-fse.sh
@@ -147,7 +157,7 @@ package_quartus-free-questa() {
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${_inteldir}/questa_fse/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "${_inteldir}/questa_fse/EULA.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install integration files
     install -D -m755 questa-fse.sh "${pkgdir}/etc/profile.d/questa-fse.sh"
@@ -163,6 +173,9 @@ package_quartus-free-help() {
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
 
+    # Remove sticky bit from directories
+    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
+
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "${_inteldir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -171,11 +184,15 @@ package_quartus-free-help() {
 package_quartus-free-riscfree() {
     depends=(quartus-free-quartus)
     pkgdesc="Quartus Prime Lite - RiscFree IDE for Altera"
+    license=('LicenseRef-RiscFree')
 
     DISPLAY="" ./RiscFreeSetup-${_litever}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_inteldir}"
 
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
+
+    # Remove sticky bit from directories
+    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -190,6 +207,7 @@ package_${pkgbase}-devinfo-${_dev}() {
    pkgdesc='Quartus Prime Lite - devinfo files for ${_dev}'
    install -d \"\${pkgdir}\${_inteldir}\"
    bsdtar -xf \"${_dev}-\${_litever}.qdz\" -C \"\${pkgdir}\${_inteldir}\"
+   find \"\${pkgdir}\${_inteldir}\" -type d -exec chmod a-s {} +
 }
 "
 done
