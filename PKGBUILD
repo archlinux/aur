@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.18
-pkgver=${_major}.2
+pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 _revision=
@@ -123,10 +123,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0001-bore.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-prefer-the-previous-cpu-for-wakeup-v3.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0003-glitched-cfs.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0004-glitched-eevdf-additions.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0005-o3-optimization.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-glitched-cfs.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0003-glitched-eevdf-additions.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0004-o3-optimization.patch"
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -141,13 +140,12 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b' # kernel
             'SKIP'                                                             # kernel signature
-            'f628c47c14ed40f9af1ec026225f396644b546bab539020b02bc31334402b844' # xanmod patch
+            'f3f0544c99f8a577fff3138ff675387c5a4575b973db6687168a3f7a44e029fa' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            '85dad269d971077ef99be39ecf7afce84a936f628da1e65009ebc15717c1c036' # 0001-bore.patch
-            'c9045b9122af93688e53396576c4355ff7af305f3af7a4ac3cb6d5f3043966be' # 0002-prefer-the-previous-cpu-for-wakeup-v3.patch
-            '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0003-glitched-cfs.patch
-            '27b01429b372c00ba40bda4c9cdfaf45ec192f3a5018011bc5061ebbc28ee717' # 0004-glitched-eevdf-additions.patch
-            '88d7ad910a8dbf2158bb48bd286a0b2feb25d68c27f2f86353ef2b98abe49f4d' # 0005-o3-optimization.patch
+            '71a756cc92e92f68dc3ea9d74bb96be2a9883a36778eb3fce26da3682d3c3ed6' # 0001-bore.patch
+            '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
+            '27b01429b372c00ba40bda4c9cdfaf45ec192f3a5018011bc5061ebbc28ee717' # 0003-glitched-eevdf-additions.patch
+            '88d7ad910a8dbf2158bb48bd286a0b2feb25d68c27f2f86353ef2b98abe49f4d' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
