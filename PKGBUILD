@@ -2,7 +2,7 @@
 _name="spin"
 pkgname="python-${_name}"
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
 url="https://github.com/scientific-python/spin"
