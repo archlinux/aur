@@ -29,7 +29,7 @@ post_remove() {
     # Remove the lines if they exist
     sed -i '/^GenericLanguage "es-ar"/d' $PIPER_MODULE
     sed -i '/^AddVoice "es-ar"/d' $PIPER_MODULE
-    sed -i '/^DefaultVoice "\/es-ar\//d' $PIPER_MODULE
+    sed -i '/^DefaultVoice "\/es\/es_AR\//d' $PIPER_MODULE
   fi
 }
 
