@@ -2,7 +2,7 @@
 pkgname=kitty-meow-config
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Configuration files for kitty-meow: custom tab bar, persistent zoom, and theme"
+pkgdesc="Configuration files for kitty-meow: custom tab bar, split controls, persistent zoom, and theme"
 arch=('any')
 url="https://github.com/Ekats/kitty-meow"
 license=('MIT')
