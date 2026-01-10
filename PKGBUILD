@@ -3,11 +3,11 @@
 _pkgname=advancely
 pkgname=$_pkgname-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
-license=(GPL)
+license=(Proprietary)
 source=("Advancely.zip::$url/releases/download/v${pkgver}/Advancely-v${pkgver}-Linux.zip"
         "launcher"
         "icon.png"
