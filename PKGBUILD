@@ -3,7 +3,7 @@
 # Contributor: Nick Smallbone <nick.smallbone@gmail.com>
 
 pkgname=tofrodos
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Convert ASCII files between the MS-DOS/Windows format and the UNIX format"
@@ -12,7 +12,7 @@ license=('GPL-2.0-only')
 depends=('glibc')
 source=("https://www.thefreecountry.com/tofrodos/tofrodos-$pkgver.zip"
         "Makefile.patch")
-sha512sums=('aa80675a1277ee7575c0469be868825bffb5f938ceddb99d9c21b93b7e46793d754285f2cf6b8c8e5020c0c0596de3981f15fb2731b59539c78f82308f3644fa'
+sha512sums=('c535bfe036fb6a7f3518adc1da9fcb371e823d0315c714b224e2dcead356216aa660b92cf52e8f877d8d10756216fdae12a6c09f758ceeb09ecc14eb95cb83f1'
             '815eda271724b19800a010a189feb55696f3170e6df29cfddd81f4a9502b35fb758fe33983e5df65bb0799393c60566ea58d6c647bed0b86a402db088cfc4848')
 
 prepare() {
