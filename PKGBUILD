@@ -3,7 +3,7 @@
 pkgname=hypryou
 _pkgname="hyprland-material-you"
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
 conflicts=('hypryou-git')
@@ -20,7 +20,7 @@ depends=(
   'python-pam'
   'gtk4'
   'libgirepository'
-  'hyprland'
+  'hyprland>=0.53.0'
   'dbus'
   'dbus-glib'
   'python-pyvips'
