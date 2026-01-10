@@ -122,11 +122,9 @@ pkgname = linux-libre-lts
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-lts=6.12.64
 	provides = LINUX-ABI_VERSION=6.12.64
 	conflicts = linux-lts
 	replaces = wireguard-lts
-	replaces = linux-lts
 	optdepends_x86_64 = scx-scheds: to use sched-ext schedulers
 
 pkgname = linux-libre-lts-headers
@@ -174,9 +172,7 @@ pkgname = linux-libre-lts-headers
 	license = MIT
 	license = Zlib
 	depends = pahole
-	provides = linux-lts-headers=6.12.64
 	conflicts = linux-lts-headers
-	replaces = linux-lts-headers
 
 pkgname = linux-libre-lts-docs
 	pkgdesc = Documentation for the LTS Linux-libre kernel
@@ -195,6 +191,4 @@ pkgname = linux-libre-lts-docs
 	license = GPL-2.0-or-later OR X11
 	license = LGPL-2.1-only OR BSD-2-Clause
 	license = MIT
-	provides = linux-lts-docs=6.12.64
 	conflicts = linux-lts-docs
-	replaces = linux-lts-docs

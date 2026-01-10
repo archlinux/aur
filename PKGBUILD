@@ -239,7 +239,7 @@ _package() {
     wireguard-lts
   )
   provides+=(
-    "${_replacesarchkernel[@]/%/=$pkgver}"
+    # "${_replacesarchkernel[@]/%/=$pkgver}"
     "LINUX-ABI_VERSION=$pkgver"
   )
   conflicts+=(
@@ -247,11 +247,11 @@ _package() {
     "${_replacesoldkernels[@]}"
     "${_replacesoldmodules[@]}"
   )
-  replaces+=(
-    "${_replacesarchkernel[@]}"
-    "${_replacesoldkernels[@]}"
-    "${_replacesoldmodules[@]}"
-  )
+  # replaces+=(
+  #   "${_replacesarchkernel[@]}"
+  #   "${_replacesoldkernels[@]}"
+  #   "${_replacesoldmodules[@]}"
+  # )
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -347,17 +347,17 @@ _package-headers() {
     Zlib
   )
   depends=(pahole)
-  provides=(
-    "${_replacesarchkernel[@]/%/-headers=$pkgver}"
-  )
+  # provides=(
+  #   "${_replacesarchkernel[@]/%/-headers=$pkgver}"
+  # )
   conflicts=(
     "${_replacesarchkernel[@]/%/-headers}"
     "${_replacesoldkernels[@]/%/-headers}"
   )
-  replaces=(
-    "${_replacesarchkernel[@]/%/-headers}"
-    "${_replacesoldkernels[@]/%/-headers}"
-  )
+  # replaces=(
+  #   "${_replacesarchkernel[@]/%/-headers}"
+  #   "${_replacesoldkernels[@]/%/-headers}"
+  # )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -475,17 +475,17 @@ _package-docs() {
 
     MIT
   )
-  provides=(
-    "${_replacesarchkernel[@]/%/-docs=$pkgver}"
-  )
+  # provides=(
+  #   "${_replacesarchkernel[@]/%/-docs=$pkgver}"
+  # )
   conflicts=(
     "${_replacesarchkernel[@]/%/-docs}"
     "${_replacesoldkernels[@]/%/-docs}"
   )
-  replaces=(
-    "${_replacesarchkernel[@]/%/-docs}"
-    "${_replacesoldkernels[@]/%/-docs}"
-  )
+  # replaces=(
+  #   "${_replacesarchkernel[@]/%/-docs}"
+  #   "${_replacesoldkernels[@]/%/-docs}"
+  # )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
