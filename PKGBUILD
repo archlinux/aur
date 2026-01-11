@@ -5,7 +5,7 @@
 pkgname=dangerzone-bin
 _pkgname=dangerzone
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF"
 url="https://github.com/freedomofpress/dangerzone"
 arch=('x86_64')
@@ -20,15 +20,15 @@ pythonpath="#!/usr/bin/env python3"
 package() {
   # Create directories in advance
   install -d "${pkgdir}/usr/"
-  install -d "${pkgdir}/usr/lib/python3.13/site-packages/"
+  install -d "${pkgdir}/usr/lib/python3.14/site-packages/"
 
   # Extract data
   ar x "${_pkgname}-${pkgver}.deb"
   tar xf data.tar.xz 
 
   cp -r "${srcdir}/usr" "${pkgdir}/"
-  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone" "${pkgdir}/usr/lib/python3.13/site-packages/"
-  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-${pkgver}.egg-info" "${pkgdir}/usr/lib/python3.13/site-packages/"
+  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone" "${pkgdir}/usr/lib/python3.14/site-packages/"
+  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-${pkgver}.egg-info" "${pkgdir}/usr/lib/python3.14/site-packages/"
 
   # Remove unused directory
   rm -r "${pkgdir}/usr/lib/python3"

@@ -1,7 +1,7 @@
 pkgbase = dangerzone-bin
 	pkgdesc = Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freedomofpress/dangerzone
 	arch = x86_64
 	license = AGPL-3.0
