@@ -2,13 +2,13 @@
 
 pkgname=ferrite-bin
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64')
 url=https://github.com/OlaProeis/Ferrite
 _rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver/"
 license=('MIT')
-depends=(glibc gcc-libs openssl zlib)
+depends=(glibc gcc-libs openssl zlib hicolor-icon-theme)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
