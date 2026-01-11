@@ -37,8 +37,8 @@ build() {
 check() {
 	cd "eliot-$pkgver"
 	## test_prettyprint requires python-eliot installed at runtime; exclude it
-	## test_action fails, to investigate later
-	pytest -x --ignore eliot/tests/test_prettyprint.py --ignore eliot/tests/test_action.py --disable-warnings
+	## test_coroutines fails on python 3.14 https://github.com/itamarst/eliot/issues/518
+	pytest -x --ignore eliot/tests/test_prettyprint.py --ignore eliot/tests/test_coroutines.py --disable-warnings
 }
 
 package(){
