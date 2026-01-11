@@ -1,0 +1,17 @@
+pkgbase = cc-switch-cli-bin
+	pkgdesc = Cross-platform CLI All-in-One assistant tool for Claude Code, Codex & Gemini CLI
+	pkgver = 4.2.10
+	pkgrel = 1
+	url = https://github.com/SaladDay/cc-switch-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cc-switch
+	conflicts = cc-switch
+	conflicts = cc-switch-cli
+	source_x86_64 = cc-switch-cli-bin-4.2.10.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v4.2.10/cc-switch-cli-v4.2.10-linux-x64.tar.gz
+	sha256sums_x86_64 = 9d5eebaaaad8b88738d0ca974f51defe98684cdd9d25bed39ff35766e443e6d5
+	source_aarch64 = cc-switch-cli-bin-4.2.10.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v4.2.10/cc-switch-cli-v4.2.10-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9d5eebaaaad8b88738d0ca974f51defe98684cdd9d25bed39ff35766e443e6d5
+
+pkgname = cc-switch-cli-bin
