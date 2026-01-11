@@ -5,7 +5,7 @@ pkgname=libkeyfinder-git
 pkgdesc="Musical key detection for digital audio."
 url="https://github.com/mixxxdj/libkeyfinder"
 license=('GPL3')
-pkgver=333.4e1a502
+pkgver=2.2.8.r10.g941e517
 pkgrel=1
 
 provides=(libkeyfinder)
@@ -19,7 +19,7 @@ arch=('i686' 'x86_64')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo $(git rev-list --count main).$(git rev-parse --short main)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

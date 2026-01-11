@@ -1,6 +1,6 @@
 pkgbase = libkeyfinder-git
 	pkgdesc = Musical key detection for digital audio.
-	pkgver = 333.4e1a502
+	pkgver = 2.2.8.r10.g941e517
 	pkgrel = 1
 	url = https://github.com/mixxxdj/libkeyfinder
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = libkeyfinder-git
 	sha256sums = SKIP
 
 pkgname = libkeyfinder-git
-
