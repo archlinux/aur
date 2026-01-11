@@ -21,7 +21,7 @@ build() {
   gendesk -n --pkgname=uwm --name=UWM --pkgdesc="$pkgdesc"
 
   cd "uwm-${pkgver/_/}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr CFLAGS="$CFLAGS -std=gnu11"
   make
 }
 
