@@ -1,0 +1,11 @@
+pkgbase = ida-pro-plugin-pyclassinformer-git
+	pkgdesc = IDA Pro plugin: Yet Another RTTI Parsing IDA plugin
+	pkgver = 0.0.r41.6bcbbc3
+	pkgrel = 1
+	url = https://github.com/herosi/PyClassInformer
+	arch = any
+	license = custom
+	source = pyclassinformer::git+https://github.com/herosi/PyClassInformer.git
+	sha256sums = SKIP
+
+pkgname = ida-pro-plugin-pyclassinformer-git
