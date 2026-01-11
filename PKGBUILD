@@ -14,7 +14,7 @@ conflicts=(libkeyfinder)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 depends=('fftw')
-makedepends=('git' 'cmake')
+makedepends=('ninja' 'git' 'cmake')
 arch=('i686' 'x86_64')
 
 pkgver() {
@@ -23,14 +23,20 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-
-  # Disable building unit tests so we do not need the catch2 dep
-  cmake -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -S . -B build
+  local cmake_options=(
+    -B build
+    -G Ninja
+    -S $pkgname
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    # Disable building unit tests so we do not need the catch2 dep
+    -D BUILD_TESTING=OFF
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
 }
