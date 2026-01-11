@@ -2,12 +2,12 @@
 # Contributor:  Alois Nespor <alium at artixlinux.org>
 
 pkgname=pdfarranger-git
-pkgver=1.10.1.r1165.a38e057
-pkgrel=1
+pkgver=1.12.1.r1290.5b57e3c
+pkgrel=2
 pkgdesc="Helps merge or split pdf documents and rotate, crop and rearrange pages."
 arch=('any')
 url="https://github.com/pdfarranger/pdfarranger"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3'
     'python-gobject'
     'python-cairo'
@@ -34,14 +34,12 @@ md5sums=('SKIP')
 
 pkgver () {
     cd "$srcdir/$pkgname"
-    _SETUPPY_VERSION="$(python setup.py --version)"
-    [[ "$_SETUPPY_VERSION" = "1.10.0" ]] && _VERSION=1.10.1 || _VERSION="$_SETUPPY_VERSION"
+    _VERSION="$(python setup.py --version)"
     printf "%s.r%s.%s" "$_VERSION" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
     cd "$srcdir/$pkgname"
-    sed -i "s/1.10.0/1.10.1/" pdfarranger/pdfarranger.py setup.py
     python -m build --wheel --no-isolation
 }
 
