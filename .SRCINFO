@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (Android riscv64)
-	pkgver = 1.88.0
-	pkgrel = 2
+	pkgver = 1.89.0
+	pkgrel = 1
 	url = https://www.boost.org/
 	arch = any
 	groups = android-boost
@@ -9,6 +9,7 @@ pkgbase = android-riscv64-boost
 	makedepends = android-cmake
 	makedepends = android-riscv64-openmpi
 	depends = android-riscv64-bzip2
+	depends = android-riscv64-libiconv
 	depends = android-riscv64-icu
 	depends = android-riscv64-zlib
 	depends = android-riscv64-zstd
@@ -17,7 +18,7 @@ pkgbase = android-riscv64-boost
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-cmake.tar.xz
-	md5sums = 3edffaacd2cfe63c240ef1b99497c74f
+	source = https://github.com/boostorg/boost/releases/download/boost-1.89.0/boost-1.89.0-cmake.tar.xz
+	md5sums = 537da0e22b31b8b7185cc44fdde70458
 
 pkgname = android-riscv64-boost

@@ -4,14 +4,15 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-boost
-pkgver=1.88.0
-pkgrel=2
+pkgver=1.89.0
+pkgrel=1
 arch=('any')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android ${_android_arch})"
 url="https://www.boost.org/"
 license=('custom')
 groups=('android-boost')
 depends=("android-${_android_arch}-bzip2"
+         "android-${_android_arch}-libiconv"
          "android-${_android_arch}-icu"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-zstd")
@@ -20,7 +21,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-openmpi: for mpi support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/boostorg/boost/releases/download/boost-${pkgver}/boost-${pkgver}-cmake.tar.xz")
-md5sums=('3edffaacd2cfe63c240ef1b99497c74f')
+md5sums=('537da0e22b31b8b7185cc44fdde70458')
 
 build() {
     cd "${srcdir}/boost-${pkgver}"
