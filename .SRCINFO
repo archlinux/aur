@@ -1,0 +1,16 @@
+pkgbase = wakewhy
+	pkgdesc = A lightweight CLI tool to identify why a Linux system woke from suspend/sleep mode
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ninso112/wakewhy
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.8
+	source = wakewhy::git+https://github.com/Ninso112/wakewhy.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wakewhy
