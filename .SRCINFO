@@ -1,7 +1,7 @@
 pkgbase = python-taxi-zebra
 	pkgdesc = Zebra backend for Taxi
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liip/taxi-zebra
 	arch = any
 	license = custom
