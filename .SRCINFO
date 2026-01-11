@@ -1,7 +1,7 @@
 pkgbase = python-xlsx2csv
 	pkgdesc = XSLX to CSV converter
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dilshod/xlsx2csv
 	arch = any
 	license = MIT

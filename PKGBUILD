@@ -3,7 +3,7 @@
 pkgname=python-xlsx2csv
 _gitpkgname=xlsx2csv
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="XSLX to CSV converter"
 arch=(any)
 url="https://github.com/dilshod/xlsx2csv"
