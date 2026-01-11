@@ -3,7 +3,7 @@
 _pyname=nbclassic
 pkgname=jupyter-$_pyname
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
 url='https://jupyter.org/'
@@ -14,7 +14,6 @@ depends=(jupyter-nbconvert
          jupyter-server
          mathjax2
          python
-         python-ipython-genutils
          python-jupyter-core
          python-jupyter-server-terminals
          python-tornado
