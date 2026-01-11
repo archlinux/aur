@@ -3,13 +3,13 @@
 pkgname=opencode-pty
 _pkgname=opencode-pty
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode plugin for interactive PTY management - run background processes, send input, read output with regex filtering"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/shekohex/opencode-pty"
 license=('MIT')
 depends=('opencode')
-makedepends=('jq')
+makedepends=('npm')
 options=('!strip' '!debug')
 install=$pkgname.install
 
@@ -21,8 +21,19 @@ latestver() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/lib/opencode/plugins/$pkgname"
-    tar -xzf "$srcdir/$pkgname-$pkgver.tgz" -C "$pkgdir/usr/lib/opencode/plugins/$pkgname" --strip-components=1
+    mkdir -p "$srcdir/npm-extract"
+    tar -xzf "$srcdir/$pkgname-$pkgver.tgz" -C "$srcdir/npm-extract" --strip-components=1
 
-    install -Dm644 "$pkgdir/usr/lib/opencode/plugins/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/npm-extract"
+    npm install --omit=dev --omit=peer
+
+    case "$CARCH" in
+        x86_64) rm -f node_modules/bun-pty/rust-pty/target/release/librust_pty_arm64.so ;;
+        aarch64) rm -f node_modules/bun-pty/rust-pty/target/release/librust_pty.so ;;
+    esac
+
+    install -d "$pkgdir/usr/lib/opencode/plugins/$pkgname"
+    cp -r . "$pkgdir/usr/lib/opencode/plugins/$pkgname/"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
