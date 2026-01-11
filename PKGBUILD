@@ -8,7 +8,7 @@
 pkgname=esound
 pkgdesc='Enlightened Sound Daemon'
 pkgver=0.2.41
-pkgrel=5
+pkgrel=6
 url='https://gitlab.gnome.org/Archive/esound'
 arch=('i686' 'x86_64')
 license=('GPL-2.0-or-later AND LGPL-2.0-or-later')
@@ -19,7 +19,7 @@ provides=("esd=${pkgver}")
 conflicts=('esd')
 options=(!libtool)
 backup=('etc/esd.conf')
-source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/ESOUND_${pkgver//./_}/${pkgname}-ESOUND_${pkgver//./_}.tar.bz2"
+source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'esound-system.service'
         'esound-user.service'
         '0001-fix-replace-alsa-drain.patch'
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/ESOUND_${pkgver//./_}/${
         '0003-feat-add-nobeeps-to-the-default_options.patch'
         '0004-fix-wrong-micro-version.patch'
         '0005-revert-close-file-descriptors-after-startup.patch')
-b2sums=('db1945ee0b5514bb2d5b98e295e71bcf368124c607c7bf3b34189e36d8212da13eed819cc7aa15bf7c876677b6a48a1d1afa1312c6ab9cfb675a33e452acb13d'
+b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af519267ff1c8f4bd53604d82edbf682d07b16e98158ca39bbe8663bbaadd'
         '1b55880c8212f2e85312c632ab79f1ff36d527c7463aa16fb932f324c496a5a67d109372aff657b59812b9fabe8c5978434e078e7a91868298731ab11ea48f2d'
         'b84310149765ca3caa7b0b93298af758b0ffbb04b16c3946b3fc8e0ad4e559d7f6221a956dd30a8f01a5e60d85386431078619b683e0d6a447bc1c9363a00e27'
         '3c9865c43e8df414e7e7cb6753d88a00dc5859f4ce6272a3e668b442b6d8d4764eaf8c1bef28b5da76ebf26f34b6b30a59fb404f61eb408f0f4889d6c49b8f41'
@@ -37,25 +37,24 @@ b2sums=('db1945ee0b5514bb2d5b98e295e71bcf368124c607c7bf3b34189e36d8212da13eed819
         '43c4460a11b226d21194acc326cea6c393cd9dd67cd57cc521c7a122d662d79f41d39169dadee4fa057a4e517b3ed69da3ce7e8624c2f8821cb1d8b2de622667')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-ESOUND_${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -i "${srcdir}/0001-fix-replace-alsa-drain.patch"
   patch -i "${srcdir}/0002-fix-missing-declaration-for-clean_exit.patch"
   patch -i "${srcdir}/0003-feat-add-nobeeps-to-the-default_options.patch"
   patch -i "${srcdir}/0004-fix-wrong-micro-version.patch"
   patch -i "${srcdir}/0005-revert-close-file-descriptors-after-startup.patch"
-
-  autoreconf --install --force
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-ESOUND_${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --enable-alsa \
     --enable-ipv6 \
+    --with-audiofile \
     --without-libwrap \
     --disable-static \
     --disable-artstest
@@ -64,7 +63,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-ESOUND_${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
