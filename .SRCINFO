@@ -1,6 +1,6 @@
 pkgbase = paddlepaddle-bin
 	pkgdesc = Parallel Distributed Deep Learning
-	pkgver = 3.2.0
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://paddlepaddle.org.cn
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = paddlepaddle-bin
 	depends = python-networkx
 	depends = python-typing_extensions
 	depends = perl
-	provides = paddlepaddle=3.2.0
+	provides = paddlepaddle=3.2.2
 	conflicts = paddlepaddle
-	noextract = paddlepaddle-3.2.0-cp313-cp313-manylinux1_x86_64.whl
-	source = https://pypi.org/packages/cp313/p/paddlepaddle/paddlepaddle-3.2.0-cp313-cp313-manylinux1_x86_64.whl
-	sha256sums = fa2aecd061424350f6770a83dda079691f7224635cff276eaef4e3e17440039d
+	noextract = paddlepaddle-3.2.2-cp313-cp313-manylinux1_x86_64.whl
+	source = https://pypi.org/packages/cp313/p/paddlepaddle/paddlepaddle-3.2.2-cp313-cp313-manylinux1_x86_64.whl
+	sha256sums = c4f485596a686ea72ab0ddffc9e41178f456314a99d4538f5d181a0156a927fa
 
 pkgname = paddlepaddle-bin
