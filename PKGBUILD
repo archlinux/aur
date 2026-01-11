@@ -75,6 +75,7 @@ build() {
       -DGGML_BACKEND_DL=ON
       -DGGML_CPU_ALL_VARIANTS=ON
       -DGGML_NATIVE=OFF
+      -DGGML_ZENDNN=ON
     )
   else
     # 本地构建, 针对当前设备优化
