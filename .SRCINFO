@@ -1,6 +1,6 @@
 pkgbase = python-mixpanel
 	pkgdesc = Official Mixpanel Python library
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/mixpanel/mixpanel-python
 	arch = any
@@ -19,10 +19,11 @@ pkgbase = python-mixpanel
 	depends = python
 	depends = python-asgiref
 	depends = python-httpx
+	depends = python-json-logic
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-urllib3
-	source = mixpanel-python-5.0.0.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v5.0.0.tar.gz
-	sha512sums = c92a795dc40e58659cb1156608186eae31d957fd21cbb31de15885a8e437eca3d8d82a62f88f76e20d17720b761885e0d08347aee2abf6dc095b876bf6ef81e6
+	source = mixpanel-python-5.1.0.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v5.1.0.tar.gz
+	sha512sums = fd51bf0dab181600346d897791ce7cbb3bf196ae2d2d63b66c029693e82767aa81760fde2a2873221cc811a9efc04cf52608c9efae4fff388a9e73d79d7a938f
 
 pkgname = python-mixpanel

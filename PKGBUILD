@@ -2,7 +2,7 @@
 
 pkgname=python-mixpanel
 _gitpkgname=mixpanel-python
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Official Mixpanel Python library'
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'python'
   'python-asgiref'
   'python-httpx'
+  'python-json-logic'
   'python-pydantic'
   'python-requests'
   'python-urllib3'
@@ -36,9 +37,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'c92a795dc40e58659cb1156608186eae31d957fd21cbb31de15885a8e437eca3d8d82a62f88f76e20d17720b761885e0d08347aee2abf6dc095b876bf6ef81e6'
-)
+sha512sums=('fd51bf0dab181600346d897791ce7cbb3bf196ae2d2d63b66c029693e82767aa81760fde2a2873221cc811a9efc04cf52608c9efae4fff388a9e73d79d7a938f')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -70,7 +69,7 @@ package() {
 
   echo >&2 'Packaging the documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    README.rst
+    README.md
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     docs/build/singlehtml/{index.html,_static}
 
