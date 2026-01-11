@@ -13,7 +13,7 @@ source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
 sha1sums=('SKIP' 'SKIP')
 makedepends=(git)
-depends=(vulkan-icd-loader qt5-x11extras hicolor-icon-theme)
+depends=(vulkan-icd-loader qt6-base hicolor-icon-theme)
 conflicts=('vulkan-caps-viewer')
 provides=('vulkan-caps-viewer')
 
@@ -32,12 +32,13 @@ prepare() {
 
 build() {
   cd $srcdir/VulkanCapsViewer
-  qmake \
-    DEFINES+=X11 \
-    QMAKE_CFLAGS="$CFLAGS" \
-    QMAKE_CXXFLAGS="$CXXFLAGS" \
-    QMAKE_LFLAGS="$LDFLAGS" \
+
+  local qmake_options=(
+    DEFINES+=X11
+    CONFIG+=release
     PREFIX=/usr
+  )
+  qmake6 "${qmake_options[@]}"
   make
 }
 
