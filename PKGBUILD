@@ -5,12 +5,12 @@
 : ${RUSTUP_TOOLCHAIN:=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
-: ${_commit_rawler:=f56a4fa204134cc301e093ce102523c0ca995f76}
+: ${_commit_rawler:=8b30471149134346dbf84858b5297c9e14678e27}
 
 _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -36,8 +36,8 @@ source=(
   "$_pkgname-rawler-${_commit_rawler::7}.$_pkgext"::"https://github.com/CyberTimon/RapidRAW-DngLab/archive/${_commit_rawler}.$_pkgext"
 )
 sha256sums=(
-  'ea1ac081cf149bd8b86d6f8bb058b1ebfb08d4ee16dc61f42fa2685ff87b78f4'
-  '9f96fa24f21d75fb8465950aaa1925702472252a0fa52fded041c8142f9bd0b5'
+  '73040da8200ce72e10325c442f9bed465aada1d48c0a59ed4effcd8dafd5a0e7'
+  '92c91210c1a7654ce7f785fed288b3a87cc298a7642679d64ea1d53ef1ad5a6e'
 )
 
 prepare() {
