@@ -1,0 +1,30 @@
+From eeace59baa634ab0ee747ba40a7a96a686a9e536 Mon Sep 17 00:00:00 2001
+From: AntonMulder <mulderanton89@gmail.com>
+Date: Wed, 28 May 2025 09:11:41 +0200
+Subject: [PATCH 3/4] Fix print for FileResponse when download is saved to file
+ (#542)
+
+Co-authored-by: Anton Mulder <anton.mulder@wearespindle.com>
+---
+ src/nio/responses.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/nio/responses.py b/src/nio/responses.py
+index f3c3d32..afb2aa7 100644
+--- a/src/nio/responses.py
++++ b/src/nio/responses.py
+@@ -327,7 +327,10 @@ class FileResponse(Response):
+     filename: Optional[str] = field()
+ 
+     def __str__(self):
+-        return f"{len(self.body)} bytes, content type: {self.content_type}, filename: {self.filename}"
++        if isinstance(self.body, bytes):
++            return f"{len(self.body)} bytes, content type: {self.content_type}, filename: {self.filename}"
++        else:
++            return f"content type: {self.content_type}, location: {self.body}"
+ 
+     @classmethod
+     def from_data(
+-- 
+2.52.0
+

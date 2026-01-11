@@ -1,0 +1,52 @@
+From 37be73e987de7edbe5ec9fd2bcffc31565be0598 Mon Sep 17 00:00:00 2001
+From: Mathieu Velten <mathieu@velten.xyz>
+Date: Fri, 14 Feb 2025 20:14:45 +0100
+Subject: [PATCH 1/4] Fix get_openid_token, the endpoint needs an empty json in
+ the body (#531)
+
+---
+ src/nio/api.py                 | 4 ++--
+ src/nio/client/async_client.py | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/nio/api.py b/src/nio/api.py
+index 561254b..5c5c866 100644
+--- a/src/nio/api.py
++++ b/src/nio/api.py
+@@ -1989,7 +1989,7 @@ class Api:
+         return "POST", Api._build_path(path, query_parameters), Api.to_json(content)
+ 
+     @staticmethod
+-    def get_openid_token(access_token: str, user_id: str) -> Tuple[str, str]:
++    def get_openid_token(access_token: str, user_id: str) -> Tuple[str, str, str]:
+         """Gets an OpenID token object that the requester may supply to another service
+         to verify their identity in matrix.
+ 
+@@ -2003,7 +2003,7 @@ class Api:
+         path = ["user", user_id, "openid", "request_token"]
+         query_parameters = {"access_token": access_token}
+ 
+-        return "POST", Api._build_path(path, query_parameters)
++        return "POST", Api._build_path(path, query_parameters), Api.to_json({})
+ 
+     @staticmethod
+     def set_pushrule(
+diff --git a/src/nio/client/async_client.py b/src/nio/client/async_client.py
+index 729ecd0..60225cb 100644
+--- a/src/nio/client/async_client.py
++++ b/src/nio/client/async_client.py
+@@ -3540,9 +3540,9 @@ class AsyncClient(Client):
+             user_id (str): The user who requested the OpenID token
+         """
+ 
+-        method, path = Api.get_openid_token(self.access_token, user_id)
++        method, path, data = Api.get_openid_token(self.access_token, user_id)
+ 
+-        return await self._send(GetOpenIDTokenResponse, method, path)
++        return await self._send(GetOpenIDTokenResponse, method, path, data)
+ 
+     @logged_in_async
+     async def upload_filter(
+-- 
+2.52.0
+
