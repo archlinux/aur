@@ -1,33 +1,11 @@
-## Connection creation
-
-The connection creation / configuration dialog has been reworked to allow for a more efficient workflow. When validating a connection, the window is no longer blocked, and you can continue editing the connection or also minimize it meanwhile.
-
-## Command rework
-
-The custom command entries that you can create at `New` -> `Command` have been completely reworked. You can now create runnable commands / scripts to be run in a terminal or in the background without having to depend on creating scripts.
-
-## Remote SSH configs
-
-This update adds back support for SSH configs located on a remote system. You can now add entries from SSH config files by searching for available connections on a remote system. If any host is configured in the config file, it will be added automatically to XPipe.
-
-## Network scan
-
-The network scan has been improved. You can now also explicitly select detected systems even when there was no listening server running on them. Furthermore, the check whether an SSH server is listening has been improved as there were a few false negatives.
-
-## Updated names
-
-The names and location of SSH connections in the creation menu have been updated. There is now no longer a simple SSH connection but instead just an SSH connection.
-
-## Fixes
-
-- Fix various daemon errors on certain Linux systems where user management was done with active directory and others
-- Fix custom icons sometimes not loading properly on startup
-- Fix various performance issues when using a display scale other than 100%
-- Fix file browser icons being blurry on scaled up high dpi displays
-- Fix autoupdater on Windows not fully updating all necessary files in some circumstances
-- Fix shell environment default state not being synced via git
-- Fix website open action in the webtop container not returning and greying out entries
-- Fix terminal tracker not tracking all terminal sessions properly, leading to some inconsistencies
-- Fix WezTerm on Windows not being focused when a new tab is opened
-- Fix putty install detection for serial connections
-- Fix various typos
+- Fix SSH connections being refused after some time for OpenSSH 9.8p1+ servers for VMs due to multiple connection attempts
+- Fix for old OpenSSH clients not accepting "none" for "PKCS11Provider", causing dlopen issues on those systems
+- Fix for old OpenSSH clients not accepting -oProxyJump=none option
+- Fix SSH config identity detection not working for patterns in host entries
+- Fix hibernation behaviour setting not persisting
+- Fix category collapsed state always resetting
+- Fix connection entry index not being able to be cleared
+- Fix various NullPointers
+- Fix connection index changes not syncing properly
+- Fix HTTP API not supplying CORS headers for web-based API clients
+- Fix shell session with init scripts not launching if remote system's disk was full
