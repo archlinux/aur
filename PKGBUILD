@@ -8,7 +8,6 @@ url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('LGPL-3.0-or-later')
 source=('vulkan-caps-viewer.desktop')
-sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a')
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
 sha1sums=('SKIP' 'SKIP')
