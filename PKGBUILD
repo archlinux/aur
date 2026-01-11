@@ -9,8 +9,8 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 _pkgname=gamescope
-pkgname=${_pkgname}-git
-pkgver=3.16.4.r0.g1ab8009d
+pkgname=${_pkgname}-moonshine-git
+pkgver=3.16.17.r42.ga2d31b9
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -60,7 +60,7 @@ makedepends=(
     wayland-protocols
 )
 source=(
-    'git+https://github.com/ValveSoftware/gamescope.git'
+    'git+https://github.com/hgaiser/gamescope.git#branch=moonshine'
     'git+https://github.com/Joshua-Ashton/wlroots.git'
     'git+https://gitlab.freedesktop.org/emersion/libliftoff.git'
     'git+https://github.com/Joshua-Ashton/vkroots.git'

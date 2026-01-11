@@ -1,6 +1,6 @@
-pkgbase = gamescope-git
+pkgbase = gamescope-moonshine-git
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.16.4.r0.g1ab8009d
+	pkgver = 3.16.17.r42.ga2d31b9
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = gamescope-git
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ValveSoftware/gamescope.git
+	source = git+https://github.com/hgaiser/gamescope.git#branch=moonshine
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://github.com/Joshua-Ashton/vkroots.git
@@ -65,4 +65,4 @@ pkgbase = gamescope-git
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = gamescope-git
+pkgname = gamescope-moonshine-git
