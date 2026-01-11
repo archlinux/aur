@@ -10,7 +10,7 @@ license=('GPL2')
 source=('vulkan-caps-viewer.desktop')
 sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a')
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git"
-               "git+https://github.com/KhronosGroup/Vulkan-Headers")
+        "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
 sha1sums=('SKIP' 'SKIP')
 makedepends=(git)
 depends=(vulkan-icd-loader qt5-x11extras hicolor-icon-theme)
@@ -32,7 +32,7 @@ prepare() {
 
   git submodule init
   git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {

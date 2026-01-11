@@ -12,9 +12,8 @@ pkgbase = vulkan-caps-viewer-git
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
 	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = vulkan-caps-viewer-git
-
