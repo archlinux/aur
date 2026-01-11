@@ -2,7 +2,7 @@
 
 pkgname=socranop
 pkgver=0.4.92a5
-pkgrel=4
+pkgrel=5
 pkgdesc="Soundcraft Notepad mixer tools for Linux"
 arch=('any')
 url="https://github.com/socratools/socranop"
