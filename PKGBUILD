@@ -2,14 +2,14 @@
 # Contributor: Guillaume Duboc <guilduboc@gmail.com>
 
 pkgname=hyx
-pkgver=2024.02.29
+pkgver=2026.01.11
 pkgrel=1
 pkgdesc='A minimalistic, but powerful console hex editor'
 url='https://yx7.cc/code/'
 license=('MIT')
 depends=('glibc')
 source=("https://yx7.cc/code/hyx/hyx-${pkgver}.tar.xz")
-sha512sums=("b5c17b045d1c97106212745b1bb4c4052cfe7ac5a28ec0a2240764785410d7e68292d0ff976fbdc58172cd9433ce49b1cad89b767e09d5d6207088a6a60b4e85")
+sha512sums=("fbe392a55b8d0c6c9ec49f8067f582d8b0a418c7ed36a1015bdb262a00278ce7d7198789ec6da567386faaa51303d6f1c144921e7ff3a10c0d269fddc52de90d")
 arch=('i686' 'x86_64')
 
 build() {
