@@ -1,0 +1,5 @@
+[rip-go-bin]
+source = "github"
+github = "roniel-rhack/rip-go"
+use_latest_release = true
+prefix = "v"
