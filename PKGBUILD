@@ -3,7 +3,7 @@
 _name=fisx
 pkgname=python-${_name}
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantitative X-Ray Fluorescence Analysis Support Library"
 arch=('x86_64')
 url='https://github.com/vasole/fisx'
