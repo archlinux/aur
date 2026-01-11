@@ -1,5 +1,5 @@
 pkgname=censawayapp-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Censaway VPN Client"
 arch=('x86_64')
