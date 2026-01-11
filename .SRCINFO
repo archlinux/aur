@@ -1,0 +1,21 @@
+pkgbase = wallflower
+	pkgdesc = gui wallpaper manager for hyprland
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/WarrenWu4/wallflower
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = hyprland
+	depends = hyprpaper
+	depends = zenity
+	depends = libx11
+	depends = mesa
+	options = !debug
+	options = !strip
+	source = git+https://github.com/WarrenWu4/wallflower.git#tag=v0.0.2
+	sha256sums = SKIP
+
+pkgname = wallflower
