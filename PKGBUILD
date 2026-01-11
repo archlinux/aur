@@ -4,7 +4,7 @@ pkgname=openmodelica-bin
 _omver=1.26.0
 _debver=1
 pkgver=${_omver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete Modelica modeling and simulation environment (from Debian binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -12,7 +12,7 @@ license=('OSMC-PL')
 provides=('openmodelica' 'openmodelica-omc')
 conflicts=('openmodelica' 'openmodelica-omc' 'openmodelica-git')
 
-depends=('blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-tools' 'qt6-webengine' 'readline' 'sundials' 'suitesparse')
+depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu76' 'lapack' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
 
 optdepends=(
     'java-runtime: For Java CORBA interface'
