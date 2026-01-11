@@ -5,7 +5,7 @@
 pkgname=beet-summarize-git
 _pkgname=beet-summarize
 pkgdesc='Summarize your beets library'
-pkgver=r84.993f74b
+pkgver=r98.4d9ce21
 pkgrel=1
 url="https://github.com/steven-murray/${_pkgname}"
 arch=('any')
@@ -40,7 +40,7 @@ package()
 {
     cd ${srcdir}/${_pkgname}
     python -m installer --destdir=${pkgdir} dist/*.whl
-    rm "${pkgdir}"/usr/lib/python3.13/site-packages/beetsplug/__init__.py
-    rm "${pkgdir}"/usr/lib/python3.13/site-packages/beetsplug/__pycache__/__init__.cpython-313.opt-1.pyc
-    rm "${pkgdir}"/usr/lib/python3.13/site-packages/beetsplug/__pycache__/__init__.cpython-313.pyc
+    rm "${pkgdir}"/usr/lib/python3.14/site-packages/beetsplug/__init__.py
+    rm "${pkgdir}"/usr/lib/python3.14/site-packages/beetsplug/__pycache__/__init__.cpython-314.opt-1.pyc
+    rm "${pkgdir}"/usr/lib/python3.14/site-packages/beetsplug/__pycache__/__init__.cpython-314.pyc
 }
