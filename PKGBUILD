@@ -24,6 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   yarn --cache-folder "${srcdir}/yarn-cache" install
+  yarn --cache-folder "${srcdir}/yarn-cache" upgrade
   yarn --cache-folder "${srcdir}/yarn-cache" run build-linux-x64 #architecture is actually irrelevant, we just need the app.asar file
 }
 
