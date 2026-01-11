@@ -1,4 +1,5 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: fixeria <fixeria@osmocom.org>
 # Contributor: Ferdinand Bachmann <theferdi265@gmail.com>
 # Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
@@ -6,12 +7,12 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.25.29
+pkgver=2.26.3
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper'
          'perl-file-homedir' 'perl-timedate' 'sensible-utils')
 makedepends=(
@@ -43,27 +44,17 @@ provides=(checkbashisms)
 conflicts=(checkbashisms)
 options=('!makeflags')
 source=(
-    "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
+    "https://salsa.debian.org/debian/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
     fixes.patch
 )
-sha256sums=('e52b411ccd2eb0c6617d28f8d8c63986fb8c2555d88bf785353e6d3105a3958d'
-            'd6c57a87037b6f15c5130b6f40a909b9dc6f9414be5fd1628a1eddecfba4e4b2')
+sha512sums=('67c2cf617d434481a483fb824680eb80b4fbd860e750cb1ce1eab2ed1e48abf8dd0203d9851b7ba18d42199d12017a328fbd05aa6c826f6a886df08a2b450360'
+            '120434ab274065a7a74b3ff30f2831ae1f803efc4d2dd43fce67f03fcd91f391384a9d0c4ab045f6161f063444275ce6bbb15cf494002026361ed818e2332501')
 
 prepare(){
-    # Sometimes there is the version in the tarball, sometimes not.
-    # Ensure we always have the proper directory.
-    if [ ! -d "${pkgname}-${pkgver}" -a -d "${pkgname}" ]
-    then
-        ln -s "${pkgname}" "${pkgname}-${pkgver}"
-    fi
+    # Tarballs from salsa.debian.org have consistent structure. Finally!
+    cd "${pkgname}-v${pkgver}"
 
-    # Somehow they now have a "work" folder instead?
-    if [ ! -d "${pkgname}-${pkgver}" -a -d work ]
-    then
-        ln -s work "${pkgname}-${pkgver}"
-    fi
-
-    cd "${pkgname}-${pkgver}"
+    # Apply our Arch-relevant fixes
     patch -p1 -i "$srcdir/fixes.patch"
 
     # Ensure the local folder is recognized as a package and used appropriately.
@@ -71,12 +62,12 @@ prepare(){
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-v${pkgver}"
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-v${pkgver}"
     make DESTDIR="$pkgdir" install
 
     # Install the script manpages appropriately
