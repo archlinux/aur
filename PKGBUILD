@@ -1,7 +1,7 @@
 # Maintainer: Eshu Team <support@eshu-apps.com>
 pkgname=eshu-installer
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-Driven Universal Package Installer for Linux"
 arch=('any')
 url="https://eshu-apps.com"
@@ -15,7 +15,7 @@ optdepends=(
     'podman: For Ghost Mode (alternative)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eshu-apps/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4593e8218f5fdded7eb456f63edcc1f92ab7165d6725f652ee0758813562d9f9')
+sha256sums=('9538eea9b420bdddbf1c786a792981acff22c9dc48294337b490d04f5bf64bdf')
 
 package() {
     cd "$pkgname-$pkgver"

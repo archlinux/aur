@@ -14,6 +14,6 @@ pkgbase = eshu-installer
 	optdepends = distrobox: For Ghost Mode
 	optdepends = podman: For Ghost Mode (alternative)
 	source = eshu-installer-0.4.6.tar.gz::https://github.com/eshu-apps/eshu-installer/archive/v0.4.6.tar.gz
-	sha256sums = 4593e8218f5fdded7eb456f63edcc1f92ab7165d6725f652ee0758813562d9f9
+	sha256sums = 9538eea9b420bdddbf1c786a792981acff22c9dc48294337b490d04f5bf64bdf
 
 pkgname = eshu-installer
