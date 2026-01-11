@@ -1,0 +1,21 @@
+pkgbase = modern-colorthief-git
+	pkgdesc = A modern color thief (git version)
+	pkgver = 0.1.8.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/baseplate-admin/modern_colorthief
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = maturin
+	makedepends = cargo
+	makedepends = git
+	depends = python
+	provides = modern_colorthief
+	conflicts = modern_colorthief
+	source = git+https://github.com/baseplate-admin/modern_colorthief.git
+	sha256sums = SKIP
+
+pkgname = modern-colorthief-git
