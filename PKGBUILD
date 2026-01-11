@@ -3,7 +3,7 @@
 _pkgname=python-storage
 pkgname=python-google-cloud-storage
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
 url=https://github.com/googleapis/python-storage
