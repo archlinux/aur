@@ -4,3 +4,4 @@ src/
 hytale-launcher.zip
 
 *.tar.zst
+*.log

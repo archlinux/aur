@@ -1,3 +1,14 @@
+# ==============================================================================
+# Hytale Launcher Wrapper for Arch Linux
+#
+# Author:      [SCDevel/root@scdevel.net]
+# License:     MIT
+# Description: Post-installation/updating/uninstallation script's for the Hytale Launcher.
+#
+# Disclaimer:  This script is an unofficial community tool and is not
+#              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
+# ==============================================================================
+
 post_install() {
     echo ":: The Hytale Launcher has been installed."
     echo "   The binary will be copied to '~/.local/share/Hytale/install/release/package/launcher/current/'"
@@ -6,6 +17,10 @@ post_install() {
     echo ":: If you are using KDE Plasma and want to hide the titlebar:"
     echo "   Right-click the titlebar -> More Actions -> Configure Special Application Settings"
     echo "   Add property -> 'No titlebar and frame' -> Set to 'Force' and 'Yes'. APPLY!"
+    echo ""
+    echo ":: Legal Disclaimer:"
+    echo "   This script is an unofficial community tool and is not"
+    echo "   affiliated with, endorsed by, or owned by Hypixel Studios Canada."
 }
 
 post_upgrade() {

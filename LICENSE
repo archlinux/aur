@@ -1,0 +1,26 @@
+Hytale Launcher License Information
+-----------------------------------
+
+The Hytale Launcher binary, the "Hytale" trademark, and the included
+icon (com.hypixel.HytaleLauncher.png) are the exclusive property of
+Hypixel Studios Canada.
+
+This package ("hytale-launcher-bin") provides a community-maintained
+wrapper to facilitate the installation and execution of the launcher
+on Arch Linux. The icon is provided for the sole purpose of application
+identification within the user's desktop environment.
+
+The software contained within the Hytale Launcher is proprietary.
+By installing this package, you agree to the Hytale End User License
+Agreement (EULA) provided by the developers.
+
+Official Hytale Legal Links:
+---------------------------
+EULA:  https://hytale.com/eula
+Terms: https://hytale.com/terms-of-service
+
+-------------------------------------------------------------------------
+The packaging scripts (PKGBUILD, .install, and wrapper scripts) are
+Copyright (c) 2026 [SCDevel/root@scdevel.net] and are provided "as is"
+under the terms of the MIT License.
+-------------------------------------------------------------------------
