@@ -112,6 +112,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug]
 "Debugger"=""
-
-; Note: Virtual desktop mode is used by the launcher for proper tab support
-; The Decorated=N/Managed=N approach was tried but breaks mouse input and window resize

@@ -21,8 +21,6 @@ optdepends=(
     'lib32-libcups: 32-bit printing support'
     'lib32-gnutls: HTTPS support'
     'lib32-libpulse: audio support'
-    'xdotool: fix window type for proper WM integration'
-    'xorg-xprop: fix window type for proper WM integration'
     'xorg-xrandr: screen resolution detection for virtual desktop'
 )
 makedepends=('icoutils')
@@ -42,10 +40,10 @@ source=(
     "acroread-dc.reg"
 )
 sha256sums=('SKIP'
-            '7f8deca3b2c75266addf054daa5b01cf2c7436fe899d6513c382a3b8f7f3617b'
-            'b1d2694dfb902e68430aae72168ce8c4190289496190ba68edb30a4103bdbab6'
+            'b2a6541457c0c291bba2fc926f4f4d370243cd29eb5ca198f00d13b36c89a959'
+            '24fe45e3fe55f7b0c5365c9344d589b6617f86800a41f62cadfbe4b2cc6eb771'
             '4c3defab70b10298b8c1f66f16a385878d62b2443320256bf3c089824884c20d'
-            'f5bcf6dec867d6face49bc0ea9c7c6bc37d87c9ca443c4f26618169b22b48463')
+            '11716e061f9a96d14aa2362daebbe24242e2e4b14215e1a8d953e17cd165be3e')
 noextract=("AcroRdrDC${_pkgver_nodots}_${_lang}.exe")
 
 package() {
