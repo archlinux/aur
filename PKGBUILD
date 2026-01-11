@@ -67,6 +67,9 @@ package() {
 	install -D -m644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	cd doc/
 	install -D -m644 *.3 -t"$pkgdir/usr/share/man/man3/"
-	install -D -m644 l10n/de/*.1 -t"$pkgdir/usr/share/man/de/man1/"
-	install -D -m644 l10n/de/*.5 -t"$pkgdir/usr/share/man/de/man5/"
+	cd ../po-man
+	install -D -m644 de/*.1 -t"$pkgdir/usr/share/man/de/man1/"
+	install -D -m644 de/*.5 -t"$pkgdir/usr/share/man/de/man5/"
+	install -D -m644 es/*.1 -t"$pkgdir/usr/share/man/es/man1/"
+	install -D -m644 es/*.5 -t"$pkgdir/usr/share/man/es/man5/"
 }
