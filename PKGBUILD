@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-spikingjelly-git
-pkgver=r1782.55d05d5
+pkgver=r2247.43d7eaae
 pkgrel=1
 pkgdesc="Deep learning framework for Spiking Neural Network (SNN) based on PyTorch."
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 conflicts=('python-spikingjelly')
 provides=('python-spikingjelly')
 depends=('python-pytorch' 'python-matplotlib' 'python-numpy' 'python-tqdm' 'python-torchvision' 'python-scipy')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/fangwei123456/spikingjelly.git")
 md5sums=('SKIP')
 
@@ -20,14 +20,24 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir"/spikingjelly
+
+  cat <<EOF >> pyproject.toml
+
+[tool.setuptools]
+packages = ["spikingjelly"]
+EOF
+}
+
 build() {
   cd "$srcdir"/spikingjelly
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir"/spikingjelly
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
