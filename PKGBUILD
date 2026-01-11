@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <jasmin@example.com>
 pkgname=ccstatusline
-pkgver=2.0.9
+pkgver=2.0.23
 pkgrel=1
 pkgdesc="Highly customizable status line formatter for Claude Code CLI with Powerline support"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('c8c2878211142179288b67d8855a2944b6ca1e5dbe233fff42d9a433377c4b05')
+sha256sums=('1d116657d07b444858b039952b899275ad9b276d7fe2c9898fdb9cff30121cf1')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
