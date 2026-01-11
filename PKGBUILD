@@ -10,15 +10,20 @@ arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/dresden-elektronik/gcfflasher"
 license=(BSD-3-Clause)
 depends=(libgpiod glibc)
-makedepends=(git cmake)
+makedepends=(git cmake ninja)
 source=("gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v${pkgver}")
 sha256sums=('6b066365343e480960af7d6e0ecb43beab7b870ae1a6677597e0baadca19b078')
 
 build() {
-  cmake -B build -S "gcfflasher" -Wno-dev\
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-
+  local cmake_options=(
+    -B build
+    -G Ninja
+    -S gcfflasher
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX='/usr'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 

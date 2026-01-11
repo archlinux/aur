@@ -10,6 +10,7 @@ pkgbase = gcfflasher
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = libgpiod
 	depends = glibc
 	source = gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v4.10.0
