@@ -3,6 +3,7 @@ _pkgname=clash-nyanpasu
 pkgver=2.0.0_alpha+740cb3e
 _pkgver=2.0.0-alpha+740cb3e
 pkgrel=1
+epoch=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
