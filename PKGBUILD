@@ -2,7 +2,7 @@
 
 pkgname=wmectrl
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced window manager control"
 url="http://www.muflone.com/wmectrl"
 arch=('any')

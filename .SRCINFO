@@ -1,7 +1,7 @@
 pkgbase = wmectrl
 	pkgdesc = An enhanced window manager control
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.muflone.com/wmectrl
 	arch = any
 	license = GPL-3.0-or-later
