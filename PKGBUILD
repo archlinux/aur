@@ -1,6 +1,6 @@
 # Maintainer: Kuokuo123 <kuoyu1204@gmail.com>
 pkgname="otter-launcher"
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc"
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=('GPL-3.0')
 makedepends=(git cargo)
 options=(!debug)
 backup=("etc/otter-launcher/config.toml")
-source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.6.6.tar.gz")
-sha256sums=('bb1fce33bc791a5474fec75c101a2a1e7dee2596b15aa5368eb6351c3c7567de')
+source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.6.7.tar.gz")
+sha256sums=('dd88374592cffd93fe52abaa91c29520f6062e04b519d850b84b08b149bc069d')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -22,4 +22,5 @@ package() {
 	install -Dm644 "$pkgname-$pkgver/config_example/config.toml" "${pkgdir}/etc/$pkgname/config.toml"
 	install -Dm644 "$pkgname-$pkgver/config_example/pikachu.example" "${pkgdir}/etc/$pkgname/pikachu.example"
 	install -Dm644 "$pkgname-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    ln -s "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/ot"
 }
