@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.6.1.r361.gfdba247
+	pkgver = 2.6.1.r389.ga92906a
 	pkgrel = 1
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = geeqie-git
 	depends = gspell
 	depends = gtk3
 	depends = libarchive
-	depends = libchamplain
 	depends = libheif
 	depends = libraw
 	depends = lua

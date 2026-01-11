@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r361.gfdba247
+pkgver=2.6.1.r389.ga92906a
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -21,7 +21,6 @@ depends=(
   gspell
   gtk3
   libarchive
-  libchamplain
   libheif
   libraw
   lua
@@ -72,7 +71,11 @@ prepare() {
 }
 
 build() {
-  arch-meson "$_pkgsrc" build
+  local _meson_opts=(
+    -Dgps-map=disabled
+  )
+
+  arch-meson "${_meson_opts[@]}" "$_pkgsrc" build
   meson compile -C build
 }
 
