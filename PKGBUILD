@@ -15,7 +15,7 @@ b2sums=('27233e37e83cad7b54001efb02e3faea318de38e6a12d017773923d00b18827a4371d66
 
 build() {
   cd "$srcdir/pkl-$pkgver"
-  ./gradlew --info --stacktrace -DreleaseBuild=true pkl-cli:linuxExecutableAmd64
+  ./gradlew --info --stacktrace --no-daemon -DreleaseBuild=true pkl-cli:linuxExecutableAmd64
 }
 
 package() {
