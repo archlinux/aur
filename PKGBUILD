@@ -4,9 +4,9 @@ pkgver=4.2.1
 pkgrel=1
 pkgdesc="Manage AppImages with ease"
 arch=('x86_64' 'aarch64')
-url="https://mijorus.it/projects/gearlever/"
+url="https://gearlever.mijorus.it/"
 license=('GPL-3.0-or-later')
-depends=('7zip' 'binutils' 'dconf' 'dwarfs-bin' 'fuse2' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk4'
+depends=('7zip' 'binutils' 'dconf' 'dwarfs' 'fuse2' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk4'
 	 'hicolor-icon-theme' 'libadwaita' 'squashfs-tools' 'pango' 'python' 'python-dbus'
 	 'python-desktop-entry-lib' 'python-ftputil' 'python-gobject' 'python-pyxdg'
 	 'python-requests' 'zlib')
