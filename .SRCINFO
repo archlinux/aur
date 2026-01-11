@@ -1,7 +1,7 @@
 pkgbase = python-taurus
 	pkgdesc = A framework for scientific/industrial CLIs and GUIs
 	pkgver = 5.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/taurus-org/taurus
 	arch = any
 	license = LicenseRef-custom

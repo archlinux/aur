@@ -3,7 +3,7 @@
 _name=taurus
 pkgname="python-${_name}"
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=("any")
 url="https://gitlab.com/taurus-org/${_name}"
