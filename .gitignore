@@ -4,3 +4,7 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+
+!LICENSES/*
+!LICENSE*
+!REUSE*

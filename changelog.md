@@ -1,3 +1,53 @@
+## 0.0.377 - 2026-01-08
+
+- Large file messages now encourage incremental reading with view_range instead of discouraging all reading
+
+## 0.0.376 - 2026-01-08
+
+- Loading remote sessions using GraphQL ID or session picker
+- Task tool subagents can now process images
+- Downgrading CLI version no longer requires manually clearing downloaded packages
+- Large tool outputs are written to disk and models are encouraged to use efficient search tools
+
+## 0.0.375 - 2026-01-07
+
+- Add Ctrl+T to toggle reasoning summaries for supported models
+- Add --share and --share-gist flags for session sharing in non-interactive mode
+- File edits no longer hang when approving multiple concurrent edits
+- Responses with reasoning no longer cause duplicate assistant messages
+- Shutdown MCP servers after subagent execution completes
+- SVG files are now treated as text files instead of binary images
+- Fix 'Connection Error' issues due to subscription-based route used in chat completions
+
+## 0.0.374 - 2026-01-02
+
+- MCP server type help text displays correct options
+- Model picker shows clearer message with settings link when models are unavailable
+- Add auto-compaction at 95% token limit and `/compact` command
+- Built-in subagents for exploring and managing tasks
+- Built in `web_fetch` tool for fetching web content
+
+## 0.0.373 - 2025-12-30
+
+- Tab completion for path arguments in slash commands like `/cwd` and `/add-dir`
+- Enable Copilot Spaces tools in GitHub MCP Server
+- GitHub URL resolves correctly for GHE
+- Kill command filtering now allows commands when 'kill' appears as an argument
+- Device code authorization polling begins immediately instead of waiting for clipboard and browser
+
+## 0.0.372 - 2025-12-19
+
+- Enable disabled models directly in CLI when selecting or specifying them
+- Add `/context` command to visualize token usage
+- Add `--resume` flag to continue remote sessions locally
+- Add URL permission controls which affect common shell commands which access the web
+- Long commands no longer show duplicate intention headers when wrapping
+
+## 0.0.371 - 2025-12-18
+
+- Normal text respects terminal's default foreground color
+- Update skills help text to reference correct ~/.copilot/skills/ directory
+
 ## 0.0.370 - 2025-12-18
 
 - Disabled MCP servers are now properly ignored when using --disable-mcp-server
@@ -242,7 +292,7 @@
 
 - Removed the "Windows support is experimental" warning -- we've made some big strides in improving Windows support the last two weeks! Please continue to report any issues/feedback
 - Improved debugging by including the Copilot API request ID for model calls errors and stack traces for client errors
-- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
+- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
 - Added a prompt to approve new paths in `-p` mode. Also added `--allow-all-paths` argument that approves access to all paths.
 - Changed parsing of environment variables in MCP server configuration to treat the value of the `env` section as literal values (fixes https://github.com/github/copilot-cli/issues/26).
   Customers who have configured MCP Servers for use with the CLI will need to make a slight modification to their `~/.copilot/mcp-config.json`. For any servers they have added with an `env` section, they will need to go add a `$` to the start of the "value" pair of the key value pair of each entry in the env-block, so to have the values treated as references to environment variables.
@@ -314,7 +364,7 @@
 
 ## 0.0.334 - 2025-10-03
 
-- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
+- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
 - Added a warning when conversation context approaches ≤20% remaining of the model's limit that truncation will soon occur. At this point, we recommend you begin a new session (improves https://github.com/github/copilot-cli/issues/29)
 - Removed the on-exit usage stats from the persisted session history
 - Added the current version to startup logs to aid in bug reporting
@@ -375,3 +425,4 @@
 - Improved the error message received when using a PAT that is missing the "Copilot Requests" permission (fixes https://github.com/github/copilot-cli/issues/46 )
 - Improved the output of `/user list` to make it clearer which is the current user
 - Improved PowerShell parsing of `ForEach-Object` and detection of command name expressions (e.g.,`& $someCommand`)
+
