@@ -2,7 +2,7 @@
 # Contributor: Kilo Code <ai@kilo.dev>
 
 pkgname=ca-racing
-_app_version="0.1.0-alpha"
+_app_version="0.1.1-alpha"
 # Sanitize version for Arch (replace - with _)
 pkgver="${_app_version//-/_}"
 pkgrel=1
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/piotrek1372/ca-racing"
 license=('MIT')
 
-depends=('python-pygame' 'python-numpy' 'python-pillow')
+depends=('python-pygame' 'python-numpy' 'python-pillow' 'python-pytmx')
 makedepends=('python' 'python-pip' 'python-setuptools')
 
 # Source code from GitHub release
