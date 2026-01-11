@@ -14,6 +14,8 @@ pkgbase = intel-sgx-psw-bin
 	optdepends = boost183: required by the TDX Quote Generation Service (QGS)
 	provides = intel-sgx-psw=2.27
 	conflicts = intel-sgx-psw
+	options = !strip
+	options = !debug
 	backup = etc/aesmd.conf
 	backup = etc/mpa_registration.conf
 	backup = etc/qgs.conf

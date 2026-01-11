@@ -18,6 +18,7 @@ optdepends=(
 )
 provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
+options=(!strip !debug) # debug symbols already included from upstream, which shouldn't be stripped
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz"
        'intel-sgx-sysusers.conf')
