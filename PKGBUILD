@@ -2,7 +2,7 @@
 
 pkgname=bluewho
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Information and notification of new discovered bluetooth devices"
 url="http://www.muflone.com/bluewho"
 arch=('any')

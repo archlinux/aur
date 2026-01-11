@@ -1,7 +1,7 @@
 pkgbase = bluewho
 	pkgdesc = Information and notification of new discovered bluetooth devices
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.muflone.com/bluewho
 	arch = any
 	license = GPL3
