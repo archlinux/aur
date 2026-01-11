@@ -1,6 +1,6 @@
 pkgbase = footfetch-git
 	pkgdesc = **CLI** utility for viewing **system information**, but with a **twist**.
-	pkgver = 1.41.7.r0.g1234567
+	pkgver = 1.42.4.r0.g1234567
 	pkgrel = 1
 	url = https://github.com/adenast/footfetch
 	arch = x86_64
