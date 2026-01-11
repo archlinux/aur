@@ -23,7 +23,7 @@ pkgbase = perl-moosex-getopt
 	depends = perl-moosex-role-parameterized
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.78.tar.gz
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Getopt-0.78.tar.gz
 	md5sums = 6d0ace976fe24b98f7da3a93a4c4eb87
 
 pkgname = perl-moosex-getopt
