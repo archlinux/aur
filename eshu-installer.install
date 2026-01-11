@@ -1,0 +1,34 @@
+# This is the .install script for OPTION B
+
+post_install() {
+    echo "======================================"
+    echo "Setting up ESHU Installer..."
+    echo "======================================"
+    echo ""
+
+    # Run the install script as the user who invoked sudo
+    if [ -n "$SUDO_USER" ]; then
+        sudo -u "$SUDO_USER" bash /opt/eshu-installer/install-eshu.sh --force
+    else
+        echo "Please run the setup manually:"
+        echo "  cd /opt/eshu-installer && ./install-eshu.sh"
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Removing ESHU installation..."
+
+    if [ -n "$SUDO_USER" ]; then
+        INSTALL_DIR="/home/$SUDO_USER/.local/share/eshu"
+        BIN_FILE="/home/$SUDO_USER/.local/bin/eshu"
+
+        rm -rf "$INSTALL_DIR" 2>/dev/null
+        rm -f "$BIN_FILE" 2>/dev/null
+
+        echo "ESHU has been uninstalled from /home/$SUDO_USER/.local"
+    fi
+}
