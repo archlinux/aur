@@ -5,18 +5,18 @@
 # Author: Ondrej Čerman
 
 _pkgname=zenpower3
-pkgname=zenpower3-dkms-git
+pkgname=$_pkgname-dkms-git
 epoch=3
-pkgver=r71.41e0429
-pkgrel=1
+pkgver=r73.dc4f1e2
+pkgrel=2
 pkgdesc="A Linux kernel driver for reading temperature, voltage(SVI2), current(SVI2) and power(SVI2) for AMD Zen family CPUs, now with Zen 3 support'"
 arch=('i686' 'x86_64')
 url="https://github.com/AliEmreSenel/zenpower3"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-provides=('zenpower3' 'zenpower3-dkms')
-conflicts=('zenpower3' 'zenpower3-dkms')
+provides=('zenpower' 'zenpower-dkms' 'zenpower3' 'zenpower3-dkms' 'zenpower3-dkms-clang')
+conflicts=('zenpower' 'zenpower-dkms' 'zenpower3' 'zenpower3-dkms' 'zenpower3-dkms-clang')
 install=$_pkgname.install
 source=("git+https://github.com/AliEmreSenel/zenpower3.git"
         "$_pkgname.conf")
