@@ -5,7 +5,7 @@
 _pkgname=nut
 pkgname=nut-monitor
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
