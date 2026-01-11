@@ -3,7 +3,7 @@
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
 pkgver=49.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Default file associations for GNOME environment"
 url="https://tracker.debian.org/pkg/gnome-session"
 arch=(any)
@@ -12,7 +12,7 @@ source=("https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_$
 # Old Ubuntu source
 #_ubuntuver=0ubuntu5
 #source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
-sha256sums=('28e76b08be7624e653dbf00a045fdf3ce491b7eb72cc769c71961fe110067b9f')
+sha256sums=('064189ba960b2b4f0946da515f549fc15c42b7d497175808d09651419b2fd16f')
 makedeps=('python3')
 
 build() {
