@@ -10,7 +10,7 @@ pkgbase = python-mkl-service-bin
 	depends = intel-oneapi-mkl
 	provides = python-mkl-service=2.5.2
 	conflicts = python-mkl-service
-	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.5.2-py313hacdc0fc_0.tar.bz2
-	sha256sums = bebf72237c6e333f197cda72ee162be97e937ca74dd452435a8efc34531ff58a
+	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.5.2-py314hacdc0fc_0.tar.bz2
+	sha256sums = e0f4e8ecc1f1ab001a1d3f8c9bacd36ab48f209e1746a5885efec53e288d87c3
 
 pkgname = python-mkl-service-bin
