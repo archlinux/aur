@@ -1,6 +1,6 @@
 pkgbase = vkpeak-git
 	pkgdesc = A tool which profiles Vulkan devices to find their peak capacities. Git version.
-	pkgver = 20250531.r5.gc810bd2
+	pkgver = 20251010.r1.g98e854f
 	pkgrel = 1
 	url = https://github.com/nihui/vkpeak
 	arch = x86_64

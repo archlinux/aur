@@ -1,5 +1,5 @@
 pkgname=vkpeak-git
-pkgver=20250531.r5.gc810bd2
+pkgver=20251010.r1.g98e854f
 pkgrel=1
 pkgdesc="A tool which profiles Vulkan devices to find their peak capacities. Git version."
 arch=('x86_64')
