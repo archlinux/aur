@@ -1,7 +1,7 @@
 pkgbase = proslenkey
 	pkgdesc = A lightweight GTK4 application launcher for Wayland
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hikyae/proslenkey
 	arch = any
 	license = MIT
