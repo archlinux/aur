@@ -36,6 +36,8 @@ pkgbase = ctranslate2
 pkgname = ctranslate2
 	pkgdesc = A C++ library for efficient inference with Transformer models.
 	depends = openblas
+	depends = gcc-libs
+	depends = glibc
 	provides = libctranslate2.so=4
 
 pkgname = python-ctranslate2

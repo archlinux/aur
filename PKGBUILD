@@ -142,6 +142,9 @@ package_ctranslate2() {
   depends=(
     # 'onednn'
     'openblas'
+    # Implicit
+    'gcc-libs'
+    'glibc'
   )
 #  optdepends=('cuda')
   provides=('libctranslate2.so=4')
