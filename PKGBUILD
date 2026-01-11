@@ -4,7 +4,7 @@
 
 pkgname=cropgui-git
 _gitpkgname=cropgui
-pkgver=0.9+r1.g7eb3941
+pkgver=0.9+r2.g2464cc9
 pkgrel=1
 epoch=1
 pkgdesc='GTK GUI for lossless JPEG cropping and rotating'
