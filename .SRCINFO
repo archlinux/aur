@@ -1,0 +1,14 @@
+pkgbase = modern-colorthief
+	pkgdesc = A modern color thief
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/baseplate-admin/modern_colorthief
+	arch = x86_64
+	license = MIT
+	makedepends = python-installer
+	depends = python
+	conflicts = modern_colorthief-git
+	source = https://github.com/baseplate-admin/modern_colorthief/releases/download/0.1.9/modern_colorthief-0.1.9-pp311-pypy311_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = de28fa0934f61ec8e2f3c7f8a8bc0cb29c3df239d08c6286d54a5c959172df69
+
+pkgname = modern-colorthief
