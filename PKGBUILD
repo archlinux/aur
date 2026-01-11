@@ -6,7 +6,7 @@ pkgname=beet-summarize-git
 _pkgname=beet-summarize
 pkgdesc='Summarize your beets library'
 pkgver=r98.4d9ce21
-pkgrel=1
+pkgrel=2
 url="https://github.com/steven-murray/${_pkgname}"
 arch=('any')
 license=('LGPL-3.0-only')
@@ -14,7 +14,8 @@ makedepends=('git'
              'python-setuptools-scm'
              'python-build'
              'python-installer')
-depends=('python>=3.8'
+depends=('python>=3.14'
+         'python<3.15'
          'beets>=1.5.0')
 source=(git+${url}.git?branch=master)
 sha256sums=('SKIP')
