@@ -5,7 +5,6 @@ pkgbase = srb-id-pkcs11-git
 	url = https://github.com/ubavic/srb-id-pkcs11
 	arch = x86_64
 	license = Unlicense
-	makedepends = nss
 	makedepends = zig
 	depends = pcsclite
 	optdepends = ccid: USB Chip/Smart Card Interface Devices driver
