@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=esearch
 pkgname="${_pkgname}-electron-bin"
-pkgver=15.2.1
+pkgver=15.2.3
 pkgrel=1
 pkgdesc="Screenshot OCR search translate search for picture paste the picture on the screen screen recorder. (with system electron)"
 arch=("x86_64")
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}" "${_pkgname}-appimage" "${_pkgname}-bin")
 
 source=("${_githuburl}/releases/download/${pkgver}/eSearch-${pkgver}-linux-x64.tar.gz"
         "e-search.sh")
-sha256sums=('2b8e35d439d88d85bbf0d693e9b92d9a7ae99e3ab2fbc0d7b40dec305cf5d75a'
+sha256sums=('63f9364624c257402fe881b90a0813aa9257e4fc6b9bd7e10bf1f3d3444a95f8'
             '44e82260c571f1e7b6daa9d88240d8212365b71089bda05fab11858973f0ba83')
 
 package() {
