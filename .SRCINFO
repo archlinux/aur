@@ -1,6 +1,6 @@
 pkgbase = python-inform
 	pkgdesc = Print and logging utilities for communicating with user
-	pkgver = 1.35
+	pkgver = 1.36
 	pkgrel = 1
 	url = https://github.com/KenKundert/inform
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-inform
 	makedepends = python-flit-core
 	depends = python-six
 	depends = python-arrow
-	source = https://files.pythonhosted.org/packages/source/i/inform/inform-1.35.tar.gz
-	sha256sums = 94198fa0b35edc7582123b8c9a831dfeceecf841eb975446991595f82ed6afa0
+	source = https://files.pythonhosted.org/packages/source/i/inform/inform-1.36.tar.gz
+	sha256sums = da21a7dd0a72adcc399c2bda6d5879453a612261726ecd355534ea6fd45f314c
 
 pkgname = python-inform

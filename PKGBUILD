@@ -2,7 +2,7 @@
 
 pkgname='python-inform'
 _pkgname=${pkgname#python-}
-pkgver=1.35
+pkgver=1.36
 pkgrel=1
 pkgdesc="Print and logging utilities for communicating with user"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-flit-core)
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('94198fa0b35edc7582123b8c9a831dfeceecf841eb975446991595f82ed6afa0')
+sha256sums=('da21a7dd0a72adcc399c2bda6d5879453a612261726ecd355534ea6fd45f314c')
 
 build() {
     cd "$_pkgname-$pkgver"
