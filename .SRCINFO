@@ -1,6 +1,6 @@
 pkgbase = alacarte-git
 	pkgdesc = Menu editor for gnome. Git version.
-	pkgver = 3.56.0+0+gb0c7ca0
+	pkgver = 3.58.0+1+gcb74d87
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/alacarte
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = alacarte-git
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
-	provides = alacarte=3.56.0+0+gb0c7ca0
+	provides = alacarte=3.58.0+1+gcb74d87
 	conflicts = alacarte
 	replaces = alacarte
 	source = git+https://gitlab.gnome.org/GNOME/alacarte.git
