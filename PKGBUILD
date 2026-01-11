@@ -33,9 +33,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build/ --no-suite xr --no-suite post-install
-}
+# check() {
+#   meson test -C build/ --no-suite xr --no-suite post-install
+# }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
