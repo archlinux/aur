@@ -1,14 +1,14 @@
 pkgbase = cyme-bin
 	pkgdesc = List system USB buses and devices; a modern cross-platform lsusb
-	pkgver = 2.2.9
+	pkgver = 2.2.10
 	pkgrel = 1
 	url = https://github.com/tuna-f1sh/cyme
 	arch = x86_64
 	arch = aarch64
 	license = GPL
-	source_x86_64 = cyme-bin-2.2.9.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v2.2.9/cyme-v2.2.9-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = cf8306c593c40dcc95b1a6a1602a2702d392a19863f19202e7e26bb0e5e1a0c39a887c49cd3e917719e14164aa9ada97c86f5f77f184710da381305eb14787ab
-	source_aarch64 = cyme-bin-2.2.9.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v2.2.9/cyme-v2.2.9-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_aarch64 = 3783cd3922dd7a656241ec10c5e1345c6687675128b09e5d6583d8bbfe72df1c23a31821744721494e6655c28b1f4f08331ed9930ab5c22569e38024562aea8f
+	source_x86_64 = cyme-bin-2.2.10.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v2.2.10/cyme-v2.2.10-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = 40b1bf6eed3fa65be95962cfcd0eda3027271845b582e1f4dd9b2c75afc8900e37bdf381b5ccf1dca04708065877d136a99e496a2afb31e18e98b5166367dbf8
+	source_aarch64 = cyme-bin-2.2.10.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v2.2.10/cyme-v2.2.10-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_aarch64 = ce3f7c52511bd12bf6dab95b6b97c9cb76be43babf1bd3bc1371f373e454cb6bae09dd4226512a47a71e608dabbd67d7b951c85ac438ad2401ff658e9c4c56d6
 
 pkgname = cyme-bin
