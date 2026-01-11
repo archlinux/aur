@@ -3,7 +3,7 @@
 pkgname=python-tree-sitter-embedded-template
 _gitpkgname=tree-sitter-embedded-template
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tree-sitter grammar for embedded template languages like ERB, EJS'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-embedded-template'
