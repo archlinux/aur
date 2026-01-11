@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-dav1d
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 arch=('any')
 pkgdesc="AV1 cross-platform decoder focused on speed and correctness (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-xxhash")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz")
-md5sums=('0ab0617fd17f0aa380a71bdc4a485315')
+md5sums=('6291311566e526cf66279f7eda7a608a')
 
 build() {
     cd "${srcdir}/dav1d-${pkgver}"
@@ -37,4 +37,6 @@ package() {
     DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
