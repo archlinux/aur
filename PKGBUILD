@@ -1,20 +1,14 @@
 # Maintainer:
 # Contributor: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 
-## links
-# https://eruption-project.org/
-# https://github.com/X3n0m0rph59/eruption
-
-## options
 : ${_commit:=b0f3f80dad6ef9976b447992337c2483bbb3725a} # 0.3.6
 
-## basic info
-_pkgname='eruption'
-pkgname='eruption'
+_pkgname="eruption"
+pkgname="$_pkgname"
 pkgdesc='Realtime RGB LED Driver for Linux'
-pkgver='0.3.6'
-pkgrel='1'
-url='https://github.com/X3n0m0rph59/eruption'
+pkgver=0.3.6
+pkgrel=2
+url="https://github.com/eruption-project/eruption"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
@@ -50,6 +44,8 @@ backup=(
 
 install='eruption.install'
 
+options=('!lto')
+
 _pkgsrc="$_pkgname-$_commit"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/$_commit.$_pkgext")
@@ -60,44 +56,44 @@ _cargo_env() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  CFLAGS+=" -ffat-lto-objects"
+  local n=$(nproc)
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((n > 16 ? n : 16))
+
+  # silence lint errors
+  export RUSTFLAGS+=" -A rust_2024_compatibility"
 }
 
 prepare() {
   _cargo_env
-
   cd "$_pkgsrc"
-
-  sed '/hidapi-rs\.git/s&branch=master&branch=main&' -i Cargo.lock */Cargo.lock
-  sed '/hidapi-rs\.git/s&"master"&"main"&' -i *.toml */*.toml
-
+  sed -e '/hidapi-rs\.git/s&branch=master&branch=main&' -i Cargo.lock */Cargo.lock
+  sed -e '/hidapi-rs\.git/s&"master"&"main"&' -i *.toml */*.toml
   cargo update
 }
 
 build() {
   _cargo_env
-
   cd "$_pkgsrc"
   cargo build --release
 }
 
 package() {
   cd "$_pkgsrc"
-
-  install -Dm755 "target/release/eruption" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruptionctl" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-hwutil" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-macro" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-keymap" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-netfx" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-cmd" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-util" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-debug-tool" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-hotplug-helper" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-fx-proxy" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-audio-proxy" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-process-monitor" -t "$pkgdir/usr/bin/"
-  install -Dm755 "target/release/eruption-gui-gtk3" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruptionctl" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-hwutil" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-macro" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-keymap" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-netfx" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-cmd" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-util" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-debug-tool" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-hotplug-helper" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-fx-proxy" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-audio-proxy" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-process-monitor" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/eruption-gui-gtk3" -t "$pkgdir/usr/bin/"
 
   install -Dm644 "support/assets/eruption-gui-gtk3/eruption-gui-gtk3.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "support/assets/eruption-gui-gtk3/eruption-gui.png" -t "$pkgdir/usr/share/pixmaps/"
