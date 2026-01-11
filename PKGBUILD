@@ -4,12 +4,12 @@
 pkgname='python-cef'
 _vermajor="66"
 pkgver=66.1.r3.g5679f28
-pkgrel=5
+pkgrel=6
 pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
 url='https://github.com/cztomczak/cefpython'
 depends=('python' 'nss' 'libgl' 'libxtst' 'alsa-lib' 'gtk2' 'libxss')
-makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython' 'git')
+makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython0' 'git')
 license=('BSD-3-Clause')
 _cefstring="cef66_3.3359.1774.gd49d25f_linux64"
 _prefix="${pkgname}-${pkgver}"
@@ -18,7 +18,7 @@ source=("git+https://github.com/cztomczak/cefpython.git#commit=5679f28cec18a57a5
         "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip"
         "${pkgname}-fix-build.patch")
 sha256sums=('8f6f193593a06f66c1697a4c97fddf311e8af4d1897a31854b8f555a1c4fb9bc'
-            '8b24a91cdbcd96bbcff625dc1ddf42d624736dcd2d93061e47d9958a7fc61ced'
+            '6bcbeeecc9c6b66ba5dcf7769896643426a8abbec0c2873b20f9916e4432c5bc'
             'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b'
             '74aa087814d6f34366b0f01c95eb2d0c31dd4e9c3614f00d33436f8c733529a1')
 
@@ -54,7 +54,7 @@ prepare() {
 
 build() {
 	cd "${_dir}/build"
-	export CXXFLAGS+=" -Wno-error=template-id-cdtor"
+	export CXXFLAGS+=" -fpermissive -Wno-error=template-id-cdtor"
 	export LDFLAGS="$LDFLAGS"
 	python '../tools/build.py' "${_dirpkgver}"
 }

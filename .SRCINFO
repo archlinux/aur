@@ -1,14 +1,14 @@
 pkgbase = python-cef
 	pkgdesc = CEF python bindings (with bundled spotify-built CEF)
 	pkgver = 66.1.r3.g5679f28
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/cztomczak/cefpython
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = python-docopt
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = cython
+	makedepends = cython0
 	makedepends = git
 	depends = python
 	depends = nss
@@ -22,7 +22,7 @@ pkgbase = python-cef
 	source = https://github.com/cztomczak/cefpython/releases/download/v66-upstream/cef66_3.3359.1774.gd49d25f_linux64.zip
 	source = python-cef-fix-build.patch
 	sha256sums = 8f6f193593a06f66c1697a4c97fddf311e8af4d1897a31854b8f555a1c4fb9bc
-	sha256sums = 8b24a91cdbcd96bbcff625dc1ddf42d624736dcd2d93061e47d9958a7fc61ced
+	sha256sums = 6bcbeeecc9c6b66ba5dcf7769896643426a8abbec0c2873b20f9916e4432c5bc
 	sha256sums = a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b
 	sha256sums = 74aa087814d6f34366b0f01c95eb2d0c31dd4e9c3614f00d33436f8c733529a1
 
