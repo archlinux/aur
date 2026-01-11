@@ -14,6 +14,7 @@ url="https://opennmt.net/CTranslate2"
 license=('MIT')
 makedepends=(
   'cmake'
+  'ninja'
 #  'cuda'
 #  'cudnn'
   'git'
@@ -91,6 +92,7 @@ prepare() {
 build() {
   local cmake_options=(
     -B build
+    -G Ninja
     -S CTranslate2
     -W no-dev
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
