@@ -3,7 +3,7 @@
 pkgname=python-tree-sitter-yaml
 _gitpkgname=tree-sitter-yaml
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML Grammar for tree-sitter'
 arch=('x86_64')
 url='https://github.com/tree-sitter-grammars/tree-sitter-yaml'
