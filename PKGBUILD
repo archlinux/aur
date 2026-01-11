@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.6.6.r1.g29cf70f
+pkgver=1.7.0.r0.g9426526
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -32,6 +32,7 @@ optdepends=(
   'vkbasalt: Configure vkBasalt'
   'vulkan-tools: Vulkan preview'
   'zenergy-dkms: Display AMD CPU power'
+  'zenity: FGMod GUI'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
