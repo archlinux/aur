@@ -2,15 +2,15 @@
 # this is based off https://aur.archlinux.org/packages/xfce4-notifyd-git
 
 pkgname=xfce4-notifyd-pango-markup-git
-pkgver=0.9.7.r83.g68bcaf1
-pkgrel=1
+pkgver=0.9.7.r349.g7ac8ce1
+pkgrel=2
 pkgdesc='notification daemon for the xfce desktop - git checkout with a patch to allow notification body, summary, and button to have pango markup. based off of: https://aur.archlinux.org/packages/xfce4-notifyd-git'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://goodies.xfce.org/projects/applications/xfce4-notifyd'
 groups=('xfce4-goodies')
 depends=('libxfce4ui' 'hicolor-icon-theme' 'libnotify' 'gtk-layer-shell' 'libcanberra' 'libxfce4util' 'sqlite' 'xfconf')
-makedepends=('xfce4-dev-tools' 'exo' 'intltool' 'git' 'glib2-devel')
+makedepends=('xfce4-dev-tools' 'exo' 'intltool' 'git' 'glib2-devel' 'meson')
 conflicts=('xfce4-notifyd')
 provides=('notification-daemon' 'xfce4-notifyd')
 options=('!libtool')
@@ -45,17 +45,27 @@ prepare() {
 build() {
 	cd xfce4-notifyd/
 
-	./autogen.sh \
+	#./autogen.sh \
+	#	--prefix=/usr \
+	#	--sysconfdir=/etc \
+	#	--libexecdir=/usr/lib/xfce4 \
+	#	--localstatedir=/var \
+	#	--disable-static
+	#make
+
+	# taken from comment by kIERO on xfce4-notifyd-git
+	arch-meson build \
 		--prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib/xfce4 \
-		--localstatedir=/var \
-		--disable-static
-	make
+		-Dx11=enabled \
+		-Dwayland=enabled \
+		-Ddbus-service-dir= \
+		-Dsystemd-user-service-dir=
+	meson compile -C build
 }
 
 package() {
 	cd xfce4-notifyd/
-
-	make DESTDIR=${pkgdir} install
+	
+	meson install -C build --destdir "${pkgdir}"
+	#make DESTDIR=${pkgdir} install
 }
