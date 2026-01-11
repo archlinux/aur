@@ -1,5 +1,3 @@
-# Maintainer: Ward Segers <w@rdsegers.be>
-
 pkgname=vsco-scraper
 pkgver=0.70
 pkgrel=1
@@ -14,12 +12,11 @@ source=("https://files.pythonhosted.org/packages/16/e1/d7b731fd771054e87e90845d4
 sha512sums=("8e5256252335bd7fd4c6875ba1f627cbce6564590a9c808ca4a8ce0a4ce167353bff01b3bbf0e7bb11102efad67ebefe1029f7085b8912750aa0398588fe76bc")
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+  cd "$pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
