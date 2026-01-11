@@ -1,5 +1,5 @@
 pkgbase = 7zip-zstd-bin
-	pkgdesc = File archiver for extremely high compression
+	pkgdesc = File archiver for extremely high compression (With Zstandard support)
 	pkgver = 25.01
 	pkgrel = 1
 	url = https://github.com/mcmilk/7-Zip-zstd
