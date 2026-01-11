@@ -1,7 +1,7 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
 	pkgver = 5.65.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://techdocs.akamai.com/cloud-computing/docs/cli
 	install = linode-cli.install
 	arch = any
