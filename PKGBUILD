@@ -1,9 +1,9 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
-_pkgname=oversteer
-pkgname=${_pkgname}-git
-pkgver=0.8.3.r7.ga418ffa
-pkgrel=2
+pkgname=oversteer-git
+_pkgname=${pkgname%-git}
+pkgver=0.8.3.r26.gcf68252
+pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
 url=https://github.com/berarma/${_pkgname}
@@ -32,17 +32,20 @@ b2sums=(SKIP)
 
 pkgver() {
   cd ${_pkgname}
+
   git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd ${_pkgname}
+
   meson build --prefix=/usr
   ninja -C build
 }
 
 package() {
   cd ${_pkgname}
+
   DESTDIR="${pkgdir}" ninja -C build install
 }
 
