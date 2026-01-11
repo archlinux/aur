@@ -1,8 +1,8 @@
 # Maintainer: Lubosz Sarnecki <lubosz.sarnecki@collabora.com>
- 
+
 _realname='xrgears'
 pkgname="$_realname-git"
-pkgver=1.0.1.55.d0bee35
+pkgver=1.0.1.105.caa21e1
 pkgrel=1
 pkgdesc='An OpenXR example using Vulkan for rendering.'
 arch=('i686' 'x86_64')
