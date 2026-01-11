@@ -11,7 +11,7 @@ pkgver=0.6.3
 # a reasonable approximation for the actual release.
 _commit=56d8e566755ea059a40b396fde0af5d65b7a0af5
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Build complex rules, serialize them as JSON, and execute them in Python'
 arch=('any')
 url='https://github.com/nadirizr/json-logic-py'

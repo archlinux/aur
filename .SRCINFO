@@ -1,7 +1,7 @@
 pkgbase = python-json-logic
 	pkgdesc = Build complex rules, serialize them as JSON, and execute them in Python
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nadirizr/json-logic-py
 	arch = any
 	license = MIT
