@@ -3,7 +3,7 @@
 
 pkgname=python-pip-api
 pkgver=0.0.34
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial, importable pip API"
 url="https://github.com/di/pip-api"
 license=('Apache-2.0')
@@ -45,6 +45,13 @@ prepare() {
   # This workaround is permanent. Remove it only if upstream ever
   # removes or skips the affected test. For details, see the patch.
   patch -p1 < "${srcdir}/skip-unsupported-test.patch"
+
+  # Python 3.14 compatibility: use Constant.value, not Constant.s
+  # See also: https://docs.python.org/3/whatsnew/3.14.html#id9
+  sed -i -e 's/value\.s/value.value/g' pip_api/_parse_requirements.py
+
+  # Loosen assertions for Python 3.14 compatibility
+  sed -i -e 's+file:///+file:/+g' tests/test_parse_requirements.py
 }
 
 build() {
