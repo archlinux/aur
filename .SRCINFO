@@ -1,7 +1,7 @@
 pkgbase = python-pymodbus
 	pkgdesc = A fully featured modbus protocol stack in python
 	pkgver = 3.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymodbus-dev/pymodbus
 	arch = any
 	license = LicenseRef-Custom
