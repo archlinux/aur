@@ -1,9 +1,42 @@
 # Maintainer: Your Name <your.email@domain.com>
 pkgname=memprocfs
 providers=(memprocfs)
-pkgver=5.15
-pkgrel=2
-pkgdate='20250711'
+
+makedepends=('curl' 'jq')
+
+# 自动获取最新版本号、pkgrel 和日期
+_get_release_info() {
+    curl -s "https://api.github.com/repos/ufrisk/MemProcFS/releases/latest"
+}
+
+# 获取一次 Release 信息并缓存
+_release_info="$(_get_release_info)"
+
+# 占位符默认值（空值，由自动提取脚本填充）
+pkgver=0
+pkgrel=0
+pkgdate=0
+
+# 尝试从 Release 信息中提取，如果失败则使用占位符
+_try_extract_values() {
+    local ver=$(echo "$_release_info" | jq -r '.tag_name' 2>/dev/null | sed 's/^v//' | grep -E '^[0-9]')
+    if [ -n "$ver" ]; then
+        pkgver="$ver"
+    fi
+
+    # 获取 x86_64 Linux 包信息
+    local x64_asset=$(echo "$_release_info" | jq -r '.assets[] | select(.name | contains("linux_x64")) | .name' 2>/dev/null | head -1)
+    if [ -n "$x64_asset" ]; then
+        local rel=$(echo "$x64_asset" | grep -oP 'v\d+\.\d+\.\K\d+' | head -1)
+        local date=$(echo "$x64_asset" | grep -oP '\d{8}' | head -1)
+        if [ -n "$rel" ] && [ -n "$date" ]; then
+            pkgrel="$rel.$date"
+            pkgdate="$date"
+        fi
+    fi
+}
+
+_try_extract_values
 
 pkgdesc="MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system."
 arch=('x86_64' 'aarch64')
@@ -12,12 +45,22 @@ license=('GPL3')
 depends=('fuse' 'lz4' 'openssl' 'libusb')
 optdepends=('python: for python bindings')
 
-source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v${pkgver}/MemProcFS_files_and_binaries_v${pkgver}.${pkgrel}-linux_x64-${pkgdate}.tar.gz")
-source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v${pkgver}/MemProcFS_files_and_binaries_v${pkgver}.${pkgrel}-linux_aarch64-${pkgdate}.tar.gz")
-sha256sums_x86_64=('10bc558ca84eb49402311b8feebf51329c1b923cda62567a410c9d9c0770439e')
-sha256sums_aarch64=('6c397eedf80a8d6bada938fc5d7ccfcd8cbfd0f479495d4b6d501bbca63faa7e')
-sha512sums_x86_64=('5880e4ac06bbc8fb9c002f4f5cbdd16b30d7cd86cd3a17dbb78c54bb73841f1da8c19e987544c367385978b8750b028d787dd9d55817d4483041d7f01b79c402')
-sha512sums_aarch64=('342b6fe1858e258ec924cbe5eb0867f538a4cd6f1e9f283742c5d82acd4de8f834a7c15c9305022c3d3dc315941eb26606131ffdff2128d5be73cd9707f8fc4a')
+_get_source_url() {
+    local arch=$1
+    local pattern
+    case "$arch" in
+        x86_64) pattern="linux_x64" ;;
+        aarch64) pattern="linux_aarch64" ;;
+    esac
+    echo "$_release_info" | jq -r ".assets[] | select(.name | contains(\"$pattern\")) | .browser_download_url" | head -1
+}
+
+source_x86_64=("$(_get_source_url x86_64)")
+source_aarch64=("$(_get_source_url aarch64)")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+sha512sums_x86_64=('SKIP')
+sha512sums_aarch64=('SKIP')
 
 package() {
     cd "$srcdir"
