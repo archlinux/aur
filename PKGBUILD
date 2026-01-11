@@ -2,7 +2,7 @@
 pkgname=python-djvulibre-python
 _pkgbasename=${pkgname:7}
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface to DjVuLibre'
 license=('GPL-2.0-only')
 url='https://github.com/FriedrichFroebel/python-djvulibre'
