@@ -6,7 +6,6 @@ pkgbase = ctranslate2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = gcc14
 	makedepends = git
 	makedepends = intel-oneapi-mkl
 	makedepends = onednn

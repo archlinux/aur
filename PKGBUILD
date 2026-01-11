@@ -16,7 +16,6 @@ makedepends=(
   'cmake'
 #  'cuda'
 #  'cudnn'
-  'gcc14'
   'git'
   'intel-oneapi-mkl'
   'onednn'
@@ -82,6 +81,11 @@ prepare() {
 
   # Relax pybind11 version
   sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
+
+  # Include cstdint
+  pushd third_party/cxxopts
+  git cherry-pick -X theirs -n 63d1b65a694cfceafc20863afa75df49dfbe6b2a
+  popd
 }
 
 build() {
@@ -91,8 +95,6 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
     -D CMAKE_INSTALL_PREFIX='/usr'
-    -D CMAKE_C_COMPILER='gcc-14'
-    -D CMAKE_CXX_COMPILER='g++-14'
     -D OPENMP_RUNTIME='COMP'
     -D WITH_MKL='OFF'
     -D WITH_DNNL='OFF'
