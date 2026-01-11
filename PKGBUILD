@@ -1,13 +1,13 @@
 # Maintainer: Ascend Liu<ascendliu@qq.com>
 
 pkgname=libft4222
-pkgver=1.4.4.221
-pkgrel=2
+pkgver=1.4.4.232
+pkgrel=1
 pkgdesc="Library for FT4222HQ – USB 2.0 to Quad SPI / I2C Bridge IC"
 arch=('x86_64')
 url="https://ftdichip.com/products/ft4222h/"
 license=('custom')
-source=("https://ftdichip.com/wp-content/uploads/2025/02/libft4222-linux-1.4.4.221.zip"
+source=("https://ftdichip.com/wp-content/uploads/2025/04/libft4222-linux-1.4.4.232.zip"
     "ft4222-config.cmake.in"
     "ft4222.rules")
 sha256sums=('SKIP'
