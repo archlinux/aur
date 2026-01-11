@@ -33,7 +33,7 @@ source=(git+https://github.com/${_base}/${_base}.git?signed#tag=v${pkgver}
         ${_base}-svml::git+https://github.com/${_base}/SVML.git
         ${_base}-pythoncapi-compat::git+https://github.com/python/pythoncapi-compat)
 validpgpkeys=('53A0E5283F05E29D7129149E679F228377C5247B') # Charles Harris (Logan) <charlesr.harris@gmail.com>
-sha512sums=('SKIP'
+sha512sums=('cd6459f1087752714771b0194bf24ca6e404b8453413c2ae6afaf4d03cc34cd673eec506e8556936a455fcf2f55dee7ffa7f596b841aaa9fdc2365a3861b9a1d'
             'SKIP'
             'SKIP'
             'SKIP'
