@@ -2,7 +2,7 @@
 
 pkgname=('python-symfc')
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate symmetrized force constants"
 arch=('any')
 url="https://github.com/symfc/symfc"
