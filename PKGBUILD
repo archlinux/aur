@@ -1,7 +1,7 @@
 pkgname=python-dottorrent
 _pkgname=dottorrent
 pkgver=1.9.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/kz26/dottorrent'
 license=('MIT')
