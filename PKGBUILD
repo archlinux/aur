@@ -2,7 +2,7 @@
 
 pkgname=hancho
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple pleasant build system in Python'
 arch=('any')
 url='https://github.com/aappleby/hancho'
