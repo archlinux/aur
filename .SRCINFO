@@ -1,0 +1,23 @@
+pkgbase = python-ghlang
+	pkgdesc = Generate language statistics and visualizations from GitHub repositories or local files
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/MihaiStreames/ghlang
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-matplotlib
+	depends = python-pillow
+	depends = python-pyyaml
+	depends = python-rich
+	depends = python-typer
+	optdepends = cloc: support for local code analysis
+	source = https://files.pythonhosted.org/packages/source/g/ghlang/ghlang-2.3.4.tar.gz
+	sha256sums = 1fa875f4be0ac8410da1435df6969b14889bc655b6ea0e6723ccb6fcbcbb1162
+
+pkgname = python-ghlang
