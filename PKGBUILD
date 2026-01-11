@@ -3,7 +3,7 @@
 pkgname=python-pylink-square
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=3
+pkgrel=6
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
 # url="https://github.com/Square/pylink"
@@ -33,7 +33,7 @@ checkdepends=(
 )
 conflicts=(${pkgname} pylink)
 provides=(${pkgname} pylink)
-replaces=(${pkgname} pylink)
+replaces=(pylink)
 options=('!strip' '!debug')
 # source=($pkgname-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

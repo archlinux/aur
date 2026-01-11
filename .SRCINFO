@@ -1,7 +1,7 @@
 pkgbase = python-pylink-square
 	pkgdesc = Python interface for the SEGGER J-Link
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 6
 	url = https://pypi.org/project/pylink-square
 	arch = any
 	license = Apache-2.0
@@ -21,7 +21,6 @@ pkgbase = python-pylink-square
 	provides = pylink
 	conflicts = python-pylink-square
 	conflicts = pylink
-	replaces = python-pylink-square
 	replaces = pylink
 	options = !strip
 	options = !debug
