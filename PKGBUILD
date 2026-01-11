@@ -1,6 +1,6 @@
 # Maintainer: Chris Franzer <chris@varalys.com>
 pkgname=lore-cli-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Reasoning history for code - captures AI-assisted development sessions and links them to git commits"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ depends=('gcc-libs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/varalys/lore/releases/download/v${pkgver}/lore-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/varalys/lore/releases/download/v${pkgver}/lore-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('31e22ca1e97b5f8de58bd66d36ba6b60830e1a5e88bacd5fd5ebad87b262e46c')
-sha256sums_aarch64=('98862097b2a46849ef7e83d407e6365c34c29531b782efa72dbb1a4ad054460c')
+sha256sums_x86_64=('ac932fd6d3257717a0568e73a6667645eefb03c89dd6dcb0598a767138bed999')
+sha256sums_aarch64=('d3e1248c89e9d720cf67a825917cf2616babc26b70f9b3b0b97f1d8ef0244379')
 
 package() {
     install -Dm755 lore "${pkgdir}/usr/bin/lore"
