@@ -7,7 +7,7 @@ pkgbase = shelldock
 	arch = aarch64
 	license = MIT
 	source_x86_64 = https://github.com/OpsGuild/ShellDock/releases/download/v1.1/shelldock-linux-amd64
-	sha256sums_x86_64 = dfed77347d44cee7e737d8e40500ee93e1b1a5d4ddf00c9ee498f9bad7ea3c1a
+	sha256sums_x86_64 = 7ccc9f134eddb14a1cb26cdc63c8955212c56bc28829f20cf94e974ece004942
 	source_aarch64 = https://github.com/OpsGuild/ShellDock/releases/download/v1.1/shelldock-linux-arm64
 	sha256sums_aarch64 = SKIP
 
