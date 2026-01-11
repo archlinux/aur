@@ -24,7 +24,8 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "github-pr-26364.patch",
+    "python-3.14.patch",
     "tests-skipif-python-3.13.patch",
 ]
-SPDX-FileCopyrightText = "NumPy Developers"
+SPDX-FileCopyrightText = "NumPy Developers and Arch Linux contributors"
 SPDX-License-Identifier = "LicenseRef-custom"

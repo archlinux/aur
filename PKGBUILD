@@ -27,9 +27,11 @@ provides=("python-numpy=$pkgver")
 conflicts=('python-numpy')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz"
         'github-pr-26364.patch'
+        'python-3.14.patch'
         'tests-skipif-python-3.13.patch')
 sha512sums=('f7121ab4099fa0686f9c095d456baa4a5869d651d7b7a06385f885f329cf08f11024b5df5e7b4ee705970062a8102ec4f709512eabbfd5c9fccce4ef83b9c208'
             'ee5b380c3530b7a466433c899bff084ff27c8eb5c18aee6638a069867ffc8d8fe4b4c3ccb98800284867f975edb9755c2fd4b21ffe723956fc0117957d52ef7b'
+            '2f6067a7aafd6a8e45fdf0ffc5f96c8b65998ace2cafa776a327242a17efbc3f837a4c465b22acd2ce7b097cc23a7ef4a6a11e84e9eb2f73c4af9de4c2775d6f'
             'a5d850792fc26540735a44df6defffa814b2163a59420a72746e3ca6e9588cdd837bf4f7e4a37cbd13eb3d502808e16f5e61956066051ce0175dad1948ee2999')
 
 prepare() {
@@ -53,13 +55,17 @@ with patch_in_place('pyproject.toml') as toml:
     toml.build_system_requires.strip_constraint('meson-python')
 EOF
 
-  # Backport GitHub PR [2] for Python 3.13 compatibility
-  # [2]: https://github.com/numpy/numpy/pull/26364
+  # https://github.com/numpy/numpy/pull/26364
+  echo >&2 'Applying patch to backport Python 3.13 compatibility'
   patch -p1 < ../github-pr-26364.patch
 
-  # Patch out tests that fail due to gh-81283 [3] on Python 3.13
-  # [3]: https://github.com/python/cpython/issues/81283
+  # https://github.com/python/cpython/issues/81283
+  echo >&2 'Patching out tests failing on Python 3.13 due to gh-81283'
   patch -p1 < ../tests-skipif-python-3.13.patch
+
+  # https://github.com/numpy/numpy/commit/8df09df7365539a092c9f4534ef8b8295b679de6
+  echo >&2 'Applying patch to backport Python 3.14 compatibility'
+  patch -p1 < ../python-3.14.patch
 }
 
 build() {
