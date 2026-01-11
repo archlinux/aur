@@ -1,7 +1,8 @@
+# Maintainer: HurricanePootis
 pkgname=vst2sdk
 pkgver=2.4
 epoch=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Steinberg's VST2 SDK"
 arch=('x86_64' 'i686')
 url="http://www.steinberg.net/en/company/developers.html"
@@ -9,7 +10,7 @@ license=('LicenseRef-SteinBerge-License')
 _pkgver=3.7.11
 _date=2024-04-22
 options=(!staticlibs)
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "ninja")
 source=("https://download.steinberg.net/sdk_downloads/vst-sdk_${_pkgver}_build-10_${_date}.zip"
         "git+https://github.com/R-Tur/VST_SDK_2.4.git#commit=4610873fa433d263a5c4a68b5b8b59ffcf6ca6db"
         "git+https://github.com/sysfce2/vst-2.4-sdk.git#commit=45590c1b3266c1758e408dea790a7f7d8711d0b1")
@@ -21,7 +22,12 @@ sha512sums=('e19ff4ac0c5005b97402eddfce39e94dacd2e55f6ac8a288d5520cb48fb41dfff05
 build() {
   cd "$srcdir"
   cmake -B build \
-  -S VST_SDK_$pkgver
+  -GNinja \
+  -DCMAKE_BUILD_TYPE=None \
+  -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+  -SVST_SDK_$pkgver \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }

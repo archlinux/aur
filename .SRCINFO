@@ -1,7 +1,7 @@
 pkgbase = vst2sdk
 	pkgdesc = Steinberg's VST2 SDK
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.steinberg.net/en/company/developers.html
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = vst2sdk
 	license = LicenseRef-SteinBerge-License
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	options = !staticlibs
 	source = https://download.steinberg.net/sdk_downloads/vst-sdk_3.7.11_build-10_2024-04-22.zip
 	source = git+https://github.com/R-Tur/VST_SDK_2.4.git#commit=4610873fa433d263a5c4a68b5b8b59ffcf6ca6db
