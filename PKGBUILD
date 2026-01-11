@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-3finger
-pkgver=6.5.4
+pkgver=0.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=4
 pkgdesc='An easy to use, but flexible, Wayland compositor - Patched for 3-finger overview'
