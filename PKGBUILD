@@ -8,7 +8,7 @@ url="https://github.com/0xMewhx/0xMew-toolkit"
 license=('MIT')
 depends=('python' 'tcpdump' 'ethtool' 'macchanger' 'python-scapy' 'python-cryptography' 'nmap' 'aircrack-ng' 'wireless_tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('be5933acfc9ab120377c321eba75a2482c0a3c6750f07d51b7408d716a46f949')
 
 package() {
     cd "0xMew-toolkit-${pkgver}"

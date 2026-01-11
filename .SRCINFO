@@ -15,6 +15,6 @@ pkgbase = 0xmew-toolkit
 	depends = aircrack-ng
 	depends = wireless_tools
 	source = 0xmew-toolkit-3.6.tar.gz::https://github.com/0xMewhx/0xMew-toolkit/archive/refs/tags/v3.6.tar.gz
-	sha256sums = SKIP
+	sha256sums = be5933acfc9ab120377c321eba75a2482c0a3c6750f07d51b7408d716a46f949
 
 pkgname = 0xmew-toolkit
