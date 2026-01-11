@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
