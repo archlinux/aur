@@ -1,24 +1,19 @@
-# Maintainer: Andy Massimino <mass at gmx dot se>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andy Massimino <mass at gmx dot se>
 # Contributor: pancho horrillo <pancho at pancho dot name>
 # Contributor: Ray Hogenson <rayhogenson at gmail dot com>
+
 pkgname=par
-pkgver=1.52
-pkgrel=9
+pkgver=1.53
+pkgrel=1
 pkgdesc='Paragraph reformatter'
 url='http://www.nicemice.net/par/'
-depends=()
+depends=('glibc')
 arch=('x86_64' 'i686' 'aarch64' 'arm7h' 'arm6h' 'arm')
 license=('custom')
-source=('http://www.nicemice.net/par/Par152.tar.gz'
-	'par-1.52-i18n.4.patch')
-sha512sums=('f5a46da4b693e6a3d15ccd57e24ee9b0332ebfbcfc88da9ef0731e18932ba6f0adde7691a233264d6361e8903ff7e2263f71885a415c896dc4c45a0d05b1978e'
-	    '40af77123cbecb39c465dad9875d4e37914457da4a513c3e37634fbabedef8f839d9dff392fabc272665aa153e89d436cb87121e86fd279aae97656383914f01')
-_dirname='Par152'
-
-prepare() {
-	cd "$_dirname"
-	patch -Np1 -i "$srcdir/par-1.52-i18n.4.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::http://www.nicemice.net/par/Par-1.53.0.tar.gz")
+sha512sums=('3f8ac57fe19ebcf427b11f4d79f2c5cc9286c1439c38a53d45bd29b9219369db2798efbd0e203ac359d59ebbdd3ead1c50ae75352a1ffc568d4d3b9ad50642b1')
+_dirname='Par-1.53.0'
 
 build() {
 	cd "$_dirname"
