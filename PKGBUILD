@@ -9,90 +9,101 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 # Contributor: dada513 <dada513@protonmail.com>
 
-_pkgname=fjordlauncher
-pkgname=${_pkgname}-git
-pkgver=9.1.0.r0.g390af2df4
+pkgname=fjordlauncher-git
+_pkgname=${pkgname%-git}
+pkgver=10.0.1.1.r0.g9fcf3ce8d
 pkgrel=1
-pkgdesc="Prism Launcher fork with support for alternative auth servers"
-arch=('i686' 'x86_64' 'aarch64')
+pkgdesc='Prism Launcher fork with support for alternative auth servers'
+arch=(i686 x86_64 aarch64)
 url='https://github.com/unmojang/FjordLauncher'
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(
-  glibc
+  cmark
   gcc-libs
-  java-runtime
+  glibc
+  hicolor-icon-theme
+  java-runtime=17
+  libarchive
   libgl
+  qrencode
   qt6-base
-  qt6-5compat
-  qt6-svg
   qt6-imageformats
   qt6-networkauth
-  quazip-qt6
-  zlib
-  hicolor-icon-theme
+  qt6-svg
+  qt6-wayland
   tomlplusplus
-  cmark
+  zlib
 )
 provides=('fjordlauncher')
 conflicts=('fjordlauncher')
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode)
-optdepends=('glfw: to use system GLFW libraries'
-            'openal: to use system OpenAL libraries'
-            'visualvm: Profiling support'
-            'xorg-xrandr: for older minecraft versions'
-            'flite: minecraft voice narration')
-source=("git+https://github.com/unmojang/FjordLauncher.git"
-        {lionshead,batch,mdi}.license)
-b2sums=('SKIP'
-        'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
-        '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
-        'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
+makedepends=(
+  cmake
+  extra-cmake-modules
+  gamemode
+  git
+  jdk17-openjdk
+  scdoc
+)
+optdepends=(
+  'glfw: to use system GLFW libraries'
+  'openal: to use system OpenAL libraries'
+  'visualvm: Profiling support'
+  'xorg-xrandr: for older minecraft versions'
+  'java-runtime=8: for older minecraft versions'
+  'flite: minecraft voice narration'
+  'gamemode: to optimize gameplay'
+)
+source=(
+  'git+https://github.com/unmojang/FjordLauncher.git'
+  'git+https://github.com/PrismLauncher/libnbtplusplus.git'
+  {lionshead,batch,mdi}.license
+)
+sha256sums=('SKIP'
+            'SKIP'
+            '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770'
+            '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c'
+            '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6')
 
 pkgver() {
-  cd FjordLauncher
+  cd "FjordLauncher"
+
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd FjordLauncher
+  cd "FjordLauncher"
 
   git submodule init
-  git config submodule.libraries/cmark.active false
-  git config submodule.libraries/extra-cmake-modules.active false
-  git config submodule.libraries/filesystem.active false
-  git config submodule.libraries/quazip.active false
-  git config submodule.libraries/tomlplusplus.active false
-  git config submodule.libraries/zlib.active false
-  git submodule--helper update
+  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.flatpak/shared-modules.active false
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 
-  cmake -DCMAKE_BUILD_TYPE= \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake -S FjordLauncher -B build \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
     -DLauncher_BUILD_PLATFORM="archlinux" \
+    -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
-    -Bbuild -SFjordLauncher
+    -Wno-dev
   cmake --build build
 }
 
 check() {
-  cd build
-  ctest .
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
+  DESTDIR="${pkgdir}" cmake --install build
+
   # licenses
   install -Dm644 lionshead.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
 
-  cd build
-  DESTDIR="$pkgdir" cmake --install .
-
   mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
      "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
 }
-
-# vim:set ts=2 sw=2 et:
