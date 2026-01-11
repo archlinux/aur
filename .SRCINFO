@@ -1,7 +1,7 @@
 pkgbase = oversteer
 	pkgdesc = Graphical application to configure Logitech Wheels
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/berarma/oversteer
 	arch = any
 	license = GPL-3.0-or-later
