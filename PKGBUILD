@@ -1,6 +1,6 @@
 pkgname=deezer-downloader
 pkgver=2.11.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url='https://github.com/kmille/deezer-downloader'
 license=('MIT')
