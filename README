@@ -1,0 +1,132 @@
+GotohScan 1.3
+=============
+
+CHANGES since release 1.2:
+--------------------------
+
+Problem solved that appeared when ALL database sequences are too short to
+be aligned against query sequence. In the published release this produced a
+segmentation fault.
+
+Outline
+-------
+1.) What's this?
+2.) Installation
+3.) Example program call
+4.) Usage
+
+
+1.) What's GotohScan?
+---------------------
+
+The GotohScan program is a search tool that finds shorter sequences
+(usually genes) in large database sequences (chromosomes, genomes, ..)
+by computing all semi-global alignments.  Thus, the query sequence is
+never truncated or split into subsequences, but always mapped to the
+database over its complete length. The alignment is computed via the
+Gotoh-alignment algorithm using affine gap costs.
+
+For details on the algorithm and the programs workflow, see the
+documentation at:
+
+http://www.bioinf.uni-leipzig.de/Software/Gotohscan/
+
+2.) Installation
+----------------
+
+The GotohScan program is available under the GNU Public License at:
+
+http://www.bioinf.uni-leipzig.de/Software/Gotohscan/
+
+Download the GotohScan-X.Y.tar.gz file. (X and Y are version depended)
+Unzip it:
+
+$ tar zxvf GotohScan-X.Y.tar.gz
+
+Change to the new directory:
+
+$ cd GotohScan-X.Y/
+
+Simply type 'make' and enjoy the program:
+
+
+$ make
+
+$ ./GotohScan
+
+Calling the program without any arguments prints usage and version
+information to STDOUT.
+
+3.) Example program call
+------------------------
+
+$ ./GotohScan -d test/testdb.fa -q /test/testquery.fa -e 1e-3 -o 1 -s
+
+Computes all semi-global alignments of all sequences in
+/test/testquery.fa against all database sequences in test/testdb.fa.
+ Only alignments that show a score with an E-value of more than 1e-3
+are returned and print to STDOUT in BLAST tabular output that includes
+the resultsequences in the last column (-o 1).
+
+Additionally, the program produces one .agr file for each query
+sequence (-s). It shows the score distribution and the fitted curve
+that is necessary for the Evalue computation. This file is usefull for
+the publication of newly found genes. It can be opened using the
+xmgrace (ask Google!) program.
+
+4.) Usage
+---------
+
+         GotohScan 1.3
+         =============
+
+Usage: GotohScan [ arguments ] 
+
+arguments: [-d,--dbase FILE] [-q,--query FILE]
+           [-e NUMBER] [-p NUMBER] [-o NUMBER]
+           [-s] [--verbose 0|1] [-c,--config FILE]
+           [--split NUMBER] [-h,--help] [-v,--version]
+
+
+If no configuration file given, required arguments are:
+-d,--dbase FILE      Input database FILE in FASTA format.
+-q,--query FILE      Input query FILE in FASTA format.
+
+-c,--config FILE     Input configuration FILE.
+
+--split NUMBER       Database is splitted into NUMBER nt large subsequences. Default: 10000
+
+Options that overwrite settings in configuration file (if given)
+-e NUMBER            Set Evalue (double!). NUMBER should be < 10. Default: 1e-3
+-p NUMBER            Set percent identity of aligned sequences. NUMBER should be in [0.0,100.0]
+-s                   Print score distribution data for each query to a file. Default: unset
+                     Produces an xmgrace (.agr) file!
+-o NUMBER            Give output format. Default: 0
+                     	0 - Blast tabular output
+                     	1 - Blast tabular output + aligned sequences
+                     	2 - FASTA format. NOTE: Hit sequence only, without gaps !
+                     	3 - MAF format. NOTE: Header truncated to 30 characters!
+                     	4 - BED + aligned sequences
+                     	5 - GFF + aligned sequences
+
+--verbose 0|1        Print Warnings and Notes. Default: 0
+
+-h,--help            Show this help message.
+-v,--version         Show version information.
+
+
+Alignment parameters and all other options can
+also be set in a configuration file
+see 'settings.cfg' as an example.
+
+
+Please feel free to contact me for comments, bug-reports, etc.
+
+
+         GotohScan 1.3
+         =============
+
+Auhthor: Jana Hertel:
+         jana@bioinf.uni-leipzig.de
+
+Date:    March 5, 2009

@@ -1,7 +1,7 @@
 pkgbase = gotohscan
 	pkgdesc = Search short sequences in large database sequences by computing all semi-global alignments
 	pkgver = 2.0_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bioinf.uni-leipzig.de/Software/GotohScan
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,10 @@ pkgbase = gotohscan
 	provides = fastaALN2frequency.pl
 	provides = reformatMotif.pl
 	source = http://www.bioinf.uni-leipzig.de/Software/GotohScan/GotohScan_2.0-alpha.tar.gz
-	source = http://www.bioinf.uni-leipzig.de/Software/GotohScan/README
 	source = package.patch
-	md5sums = 6ecf4071c8ef1775e5102adb7c7603ca
-	md5sums = 0d7ed086e2aec7cbb1879f99211229f4
-	md5sums = 877991c3faeee70f5b0ce3746888bffd
+	source = README
+	sha256sums = 4ac522208067fb758181262b9f0e8d2a896b7a0af964defad3b03813cc836247
+	sha256sums = a104ef6625edcda41ea908367f84760e3c96d8e7c005c7f8167f998c20a18e9d
+	sha256sums = de73b743fdee60fcf98969fa0041ed06717f1f8f4bc3e0bdc0e75cd500ca94ce
 
 pkgname = gotohscan
-

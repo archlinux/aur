@@ -36,3 +36,43 @@ diff -ru src/GotohScan_2.0-alpha/doc/Makefile.am_orig src/GotohScan_2.0-alpha/do
 +doc_DATA = README README_1.3
  
  # End of file
+--- GotohScan_2.0-alpha/configure.ac	2011-01-04 12:29:05.000000000 +0100
++++ GotohScan_2.0-alpha/configure.ac	2026-01-11 21:59:41.672708814 +0100
+@@ -12,6 +12,8 @@
+ 
+ AM_CPPFLAGS="-g --pedantic -Wall -std=c99"
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ # Checks for programs.
+ AC_PROG_CC
+ 
+--- GotohScan_2.0-alpha/src/structs.h	2011-01-25 13:25:30.000000000 +0100
++++ GotohScan_2.0-alpha/src/structs.h	2026-01-11 22:07:46.217852581 +0100
+@@ -85,7 +85,7 @@
+   int *start;    /**< Array of start positions */
+   int size;    /**< Number of elements in the Integer array */
+   
+-} iarray;
++};
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+@@ -95,7 +95,7 @@
+   int *start;    /**< Array of start positions */
+   int size;    /**< Number of elements in the Float array */
+   
+-} farray;
++};
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+@@ -104,7 +104,7 @@
+   double *vals; /**< Array of Double */
+   int size;     /**< Number of elements in the Float array */
+   
+-} darray;
++};
+ 
+ /* -------------------------------------------------------------------------- */
+ 
