@@ -6,7 +6,7 @@ _pkgname=pylzma
 pkgname=python-$_pkgname
 pkgver=0.5.0
 _testing_data_version=210629
-pkgrel=5
+pkgrel=6
 pkgdesc='Platform independent python bindings for the LZMA compression library'
 url='https://www.joachim-bauch.de/projects/pylzma/'
 license=("LGPL-2.1-or-later")
@@ -26,9 +26,11 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   # Workaround for `-Wint-conversion` error in build.
-  #   Reported here: https://aur.archlinux.org/packages/python-pylzma#comment-998803
-  #   Fix here: https://github.com/fancycode/pylzma/issues/80
-  CFLAGS=-Wno-int-conversion python setup.py build
+  #   -Wno-int-conversion
+  #     Reported here: https://aur.archlinux.org/packages/python-pylzma#comment-998803
+  #     Fix here: https://github.com/fancycode/pylzma/issues/80
+  # Also needed -fpermissive later
+  CFLAGS="$CFLAGS -Wno-int-conversion -fpermissive" python setup.py build
 }
 
 # This package itself needs to be installed for the check to work, so I'm just going to disable it
