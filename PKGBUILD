@@ -3,7 +3,7 @@
 pkgname=python-tree-sitter-c-sharp
 _gitpkgname=tree-sitter-c-sharp
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C# grammar for tree-sitter'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-c-sharp'
