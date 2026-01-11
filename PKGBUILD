@@ -3,7 +3,7 @@
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gcfflasher
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
 arch=(x86_64 i686 armv7h aarch64)
@@ -12,7 +12,7 @@ license=(BSD-3-Clause)
 depends=(libgpiod glibc)
 makedepends=(git cmake ninja)
 source=("gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v${pkgver}")
-sha256sums=('6b066365343e480960af7d6e0ecb43beab7b870ae1a6677597e0baadca19b078')
+sha256sums=('855398e0be661549d6e824556ec42d3d761a2a71f3179068a048ab5a0aa82b64')
 
 build() {
   local cmake_options=(
