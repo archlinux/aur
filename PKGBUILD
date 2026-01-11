@@ -13,6 +13,12 @@ depends=('libxft' 'libxpm' 'libxcomposite')
 source=("https://github.com/bbidulock/wmx/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('845ee80dedb088b2522e99f86680aee6ab44e3ef4705e384e238661c7a62dfde')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # Set default terminal
+  sed -i 's/x-terminal-emulator/xterm/' Config.h
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure LIBS=-lfontconfig --prefix=/usr
