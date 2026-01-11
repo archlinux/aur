@@ -7,12 +7,13 @@ pkgdesc="Generate language statistics and visualizations from GitHub repositorie
 arch=('any')
 url="https://github.com/MihaiStreames/ghlang"
 license=('MIT')
+keywords=('github' 'statistics' 'visualization' 'programming-languages' 'cli')
 depends=(
   'python'
   'python-requests'
   'python-matplotlib'
   'python-pillow'
-  'python-pyyaml'
+  'python-yaml'
   'python-rich'
   'python-typer'
 )
