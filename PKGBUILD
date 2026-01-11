@@ -3,7 +3,7 @@
 pkgname=python-oslex
 _gitpkgname=oslex
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='OS-independent wrapper for shlex and mslex'
 arch=('any')
 url='https://github.com/petamas/oslex'
