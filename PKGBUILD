@@ -13,7 +13,7 @@ conflicts=(libkeyfinder)
 
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
-depends=('fftw')
+depends=('fftw' 'gcc-libs' 'glibc')
 makedepends=('ninja' 'git' 'cmake')
 arch=('i686' 'x86_64')
 
