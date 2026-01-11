@@ -3,7 +3,7 @@
 pkgname=python-taipan
 _gitpkgname=taipan
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='General purpose toolkit for Python'
 arch=('any')
 url='https://github.com/Xion/taipan'
