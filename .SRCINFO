@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-core
 	pkgdesc = Google Cloud API client core library
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-cloud-core
 	changelog = CHANGELOG.md
 	arch = any
