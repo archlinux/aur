@@ -2,7 +2,7 @@
 
 pkgname=watchpage
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch webpages for changes"
 url="https://www.muflone.com/watchpage"
 arch=('any')
