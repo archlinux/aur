@@ -11,7 +11,7 @@ license=(BSL-1.0)
 depends=(hidapi glibc)
 conflicts=($basename)
 provides=($basename)
-makedepends=(meson git)
+makedepends=(meson git ninja)
 
 optdepends=(
   'xr-hardware: Udev rules for accessing XR (VR and AR) hardware devices',
