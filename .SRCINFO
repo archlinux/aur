@@ -1,0 +1,19 @@
+pkgbase = python-ankipandas
+	pkgdesc = Analyze and manipulate your Anki flashcards using pandas dataframes
+	pkgver = 0.3.15
+	pkgrel = 2
+	url = https://github.com/klieret/AnkiPandas
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/a/ankipandas/ankipandas-0.3.15.tar.gz
+	sha256sums = df59245f2b705077ae6ba4c164cc9fbaf9906bd28d29c2bf89e9700ea363dfbc
+
+pkgname = python-ankipandas
