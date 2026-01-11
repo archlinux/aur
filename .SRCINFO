@@ -1,6 +1,6 @@
 pkgbase = surfshark-vpn-gui-git
 	pkgdesc = GUI client for connecting to the SurfShark VPN
-	pkgver = r31.6d8a821
+	pkgver = r38.3447432
 	pkgrel = 1
 	url = https://github.com/jakeday/SurfShark-VPN-GUI
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = surfshark-vpn-gui-git
 	depends = python
 	depends = gtk3
 	depends = python-requests
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = python-wxpython
 	provides = surfsharkvpngui
 	conflicts = surfshark-vpn-gui

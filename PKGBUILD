@@ -1,12 +1,12 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 pkgname=surfshark-vpn-gui-git
-pkgver=r31.6d8a821
+pkgver=r38.3447432
 pkgrel=1
 pkgdesc="GUI client for connecting to the SurfShark VPN"
 arch=(any)
 url="https://github.com/jakeday/SurfShark-VPN-GUI"
 license=('custom')
-depends=('python' 'gtk3' 'python-requests' 'wxgtk3' 'python-wxpython')
+depends=('python' 'gtk3' 'python-requests' 'wxwidgets-gtk3' 'python-wxpython')
 makedepends=('python-setuptools' 'git')
 provides=('surfsharkvpngui')
 conflicts=('surfshark-vpn-gui')
@@ -19,11 +19,11 @@ pkgver() {
 }
 
 build() {
-	cd $pkgname
-	python setup.py build
+  cd $pkgname
+  python setup.py build
 }
 
 package() {
-	cd $pkgname
-	python setup.py install --root="$pkgdir" --optimize=1
+  cd $pkgname
+  python setup.py install --root="$pkgdir" --optimize=1
 }
