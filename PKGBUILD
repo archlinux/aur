@@ -98,6 +98,11 @@ build() {
         )
     fi
 
+    # 允许用户自定义构建选项
+    if [[ -n "$LLAMA_BUILD_EXTRA_ARGS" ]]; then
+        msg2 "Applied custom CMake build args: $LLAMA_BUILD_EXTRA_ARGS"
+        _cmake_options+=($LLAMA_BUILD_EXTRA_ARGS)
+    fi
 
     cmake "${_cmake_options[@]}"
     cmake --build build --config Release -- -j $(nproc)
