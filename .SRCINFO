@@ -1,7 +1,7 @@
 pkgbase = python-libusb-package
 	pkgdesc = Package containing libusb so it can be installed via Python package managers
 	pkgver = 1.0.26.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyocd/libusb-package
 	arch = x86_64
 	license = Apache-2.0
@@ -18,7 +18,7 @@ pkgbase = python-libusb-package
 	depends = pyinstaller
 	provides = libusb-package
 	conflicts = libusb-package
-	source = python-libusb-package-1.0.26.3::https://github.com/pyocd/libusb-package/archive/v1.0.26.3.tar.gz
+	source = libusb-package-1.0.26.3::https://github.com/pyocd/libusb-package/archive/v1.0.26.3.tar.gz
 	sha256sums = c83823b244bb153a0bb8d1e1d86cd4553d354dd6fbfc87ed2aae8d3a3acd6df8
 
 pkgname = python-libusb-package

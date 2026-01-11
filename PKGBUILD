@@ -3,7 +3,7 @@
 pkgname=python-libusb-package
 _name=${pkgname#python-}
 pkgver=1.0.26.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Package containing libusb so it can be installed via Python package managers'
 arch=($CARCH)
 url='https://github.com/pyocd/libusb-package'
@@ -26,7 +26,7 @@ makedepends=(
   'python-tomli'
   'libusb'
 )
-source=("$pkgname-$pkgver::${url}/archive/v$pkgver.tar.gz")
+source=("$_name-$pkgver::${url}/archive/v$pkgver.tar.gz")
 sha256sums=('c83823b244bb153a0bb8d1e1d86cd4553d354dd6fbfc87ed2aae8d3a3acd6df8')
 
 build() {
