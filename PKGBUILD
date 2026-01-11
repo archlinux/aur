@@ -1,6 +1,6 @@
 # Maintainer: ewgsta <ewgst@proton.me>
 pkgname=weeb-cli
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Tarayıcı yok, reklam yok, dikkat dağıtıcı unsur yok. Sadece siz ve eşsiz bir anime izleme deneyimi."
 arch=('any')
@@ -9,7 +9,7 @@ license=('CC-BY-NC-ND-4.0')
 depends=('python' 'python-typer' 'python-rich' 'python-questionary' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d1d671ecbda8891344a8d50843d6b7b00b49d955678a2ddd51adeed2711029d7')
+sha256sums=('2965762a0e625b0defbc8a2c836b12f474f7b16184fa825745d65216f05d5844')
 
 build() {
     cd "$pkgname-$pkgver"
