@@ -1,6 +1,6 @@
 pkgname=python-giphypop
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/shaunduncan/giphypop'
 license=('MIT')

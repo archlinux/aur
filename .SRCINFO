@@ -1,7 +1,7 @@
 pkgbase = python-giphypop
 	pkgdesc = giphypop is a wrapper around the Giphy api. It aims to provide a more intuitive, pythonic way for interacting with the Giphy api
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shaunduncan/giphypop
 	arch = x86_64
 	license = MIT
