@@ -24,6 +24,10 @@ Or use the shorthand:
 makepkg -si
 ```
 
+## Updating package sums
+
+Just run `updpkgsums`
+
 ## Updating .SRCINFO
 
 After making changes to the PKGBUILD, update the `.SRCINFO` file before committing:

@@ -1,11 +1,13 @@
---- a/js8call.desktop
-+++ b/js8call.desktop
-@@ -1,6 +1,6 @@
- [Desktop Entry]
+diff --git a/JS8Call.desktop b/JS8Call.desktop
+index 5eaf7041..a1afbab9 100644
+--- a/JS8Call.desktop
++++ b/JS8Call.desktop
+@@ -2,7 +2,7 @@
  Version=1.0
--Name=js8call
-+Name=js8call-improved
+ Name=JS8Call
  Comment=Amateur Radio Weak Signal Operating
--Exec=js8call
-+Exec=js8call-improved
+-Exec=JS8Call
++Exec=js8call
  Icon=js8call_icon
+ Terminal=false
+ X-MultipleArgs=false
