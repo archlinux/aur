@@ -2,11 +2,11 @@
 
 pkgname=pixelcolor
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Get the screen pixel color"
 url="http://www.muflone.com/pixelcolor"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python-pillow')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")

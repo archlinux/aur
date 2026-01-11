@@ -1,10 +1,10 @@
 pkgbase = pixelcolor
 	pkgdesc = Get the screen pixel color
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.muflone.com/pixelcolor
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
