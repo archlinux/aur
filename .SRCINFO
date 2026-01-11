@@ -1,7 +1,7 @@
 pkgbase = python-ass-tag-analyzer
 	pkgdesc = Parse .ass tags.
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/ass-tag-analyzer/
 	arch = x86_64
 	license = MIT

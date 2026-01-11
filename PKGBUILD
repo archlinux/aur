@@ -2,7 +2,7 @@
 pkgname=python-ass-tag-analyzer
 _origpkgname=ass_tag_analyzer
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Parse .ass tags."
 arch=("x86_64")
 url='https://pypi.org/project/ass-tag-analyzer/'
