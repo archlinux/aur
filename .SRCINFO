@@ -1,0 +1,16 @@
+pkgbase = python-ntc-templates
+	pkgdesc = TextFSM templates for parsing show commands of network devices
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = https://github.com/networktocode/ntc-templates
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-textfsm
+	source = https://github.com/networktocode/ntc-templates/releases/download/v8.1.0/ntc_templates-8.1.0.tar.gz
+	sha512sums = 1b32fc87239591adaddc301d52153e298d860f57dbe8531fb07d85a2a9ed080a302b607d6fdf53e8a0fe63f5787c4b0f6a34d1ecf0f5e99d5c4ec3b841d54957
+
+pkgname = python-ntc-templates
