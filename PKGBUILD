@@ -27,7 +27,7 @@ optdepends=(
   'cloc: support for local code analysis'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
-sha256sums=('1fa875f4be0ac8410da1435df6969b14889bc655b6ea0e6723ccb6fcbcbb1162')
+sha256sums=('0c39a744e5b08a3db090dc2d7ac85622fc419f48a4a1ad39cd4d34b32786d62b')
 
 build() {
   cd "$srcdir/$_pypiname-$pkgver"
