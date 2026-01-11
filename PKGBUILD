@@ -1,27 +1,31 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: DasSkelett <dasskelett-aur@dasskelett.dev>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
 # Contributor: Will Rea <sillywilly@gmail.com>
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
-pkgbase=networkmanager
+pkgbase=networkmanager-clat
 pkgname=(
-  networkmanager
-  libnm
-  nm-cloud-setup
-  networkmanager-docs
+  networkmanager-clat
+  libnm-clat
+  nm-cloud-setup-clat
+  networkmanager-docs-clat
 )
-pkgver=1.54.3
+pkgver=1.57.1
 pkgrel=1
-pkgdesc="Network connection manager and user applications"
-url="https://networkmanager.dev/"
+commit=caea9a91a7e0aa7b7b1b1ac5edbbb45a1a202bc2
+pkgdesc="Network connection manager and user applications, with CLAT support (PR !2107)"
+url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
 makedepends=(
   audit
   bash
+  bpf # for eBPF support
   curl
+  clang # for eBPF support
   dhcpcd
   dnsmasq
   gcc-libs
@@ -64,9 +68,9 @@ checkdepends=(
   python-dbus
 )
 source=(
-  "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=${pkgver/[a-z]/-&}"
+  "git+https://gitlab.freedesktop.org/Mstrodl/NetworkManager.git#commit=${commit}"
 )
-b2sums=('5da0800e5ea38f8eda955bf854c778b93e3a17b80da8602b48e017e66e74392caf9458701f6b7a4b9de85108d30ecd89d5491bd26123925228b6788d3b6aae32')
+b2sums=('440022033c27f7cf5a2b5423cddeab01e7ab291f9475ab5019dbaff7e92e591af0122cfe09bb1ad6bcdf6c72a946a5264248550cf50ecb73e933fb84760957a7')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
@@ -94,7 +98,7 @@ build() {
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
-    -D modify_system=true
+    # -D modify_system=true
     -D selinux=false
 
     # features
@@ -135,7 +139,7 @@ _pick() {
   done
 }
 
-package_networkmanager() {
+package_networkmanager-clat() {
   depends=(
     audit
     curl
@@ -144,6 +148,7 @@ package_networkmanager() {
     glibc
     iproute2
     jansson
+    libbpf
     libmm-glib
     libndp
     libnewt
@@ -173,6 +178,8 @@ package_networkmanager() {
     'ppp: dialup connection support'
   )
   backup=(etc/NetworkManager/NetworkManager.conf)
+  provides=('networkmanager')
+  conflicts=('networkmanager')
 
   # NM wants to move to LGPL only, but there's still GPL code left
   license+=(GPL-2.0-or-later)
@@ -217,7 +224,7 @@ END
   install -d usr/lib/NetworkManager/dispatcher.d/no-wait.d
 }
 
-package_libnm() {
+package_libnm-clat() {
   pkgdesc="NetworkManager client library"
   depends=(
     gcc-libs
@@ -228,12 +235,13 @@ package_libnm() {
     systemd-libs
     util-linux-libs
   )
-  provides=(libnm.so)
+  provides=('libnm')
+  conflicts=('libnm')
 
   mv libnm/* "$pkgdir"
 }
 
-package_nm-cloud-setup() {
+package_nm-cloud-setup-clat() {
   pkgdesc="Automatically configure NetworkManager in cloud"
   depends=(
     bash
@@ -245,13 +253,17 @@ package_nm-cloud-setup() {
     libnm
     networkmanager
   )
+  provides=('nm-cloud-setup')
+  conflicts=('nm-cloud-setup')
 
   mv cloud/* "$pkgdir"
 }
 
-package_networkmanager-docs() {
+package_networkmanager-docs-clat() {
   pkgdesc+=" (API documentation)"
   depends=()
+  provides=('networkmanager-docs')
+  conflicts=('networkmanager-docs')
 
   mv docs/* "$pkgdir"
 }
