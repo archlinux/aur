@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VennDiagram
-_pkgver=1.7.3
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
-pkgver=1.7.3
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 pkgdesc='Generate High-Resolution Venn and Euler Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7c2475f7613241787e6c85bd03315e4fd88413ccbbb735959756a8c2eeb8c46')
+sha256sums=('24b9751b7a537f7eb6273f14dd845f0ca38c2f5230b619ff637a839f8489fd93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
