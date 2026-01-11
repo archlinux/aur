@@ -1,7 +1,7 @@
 pkgbase = hytale-launcher-bin
 	pkgdesc = Hytale Launcher (Native Linux, Self-Updating)
 	pkgver = 2026.01.10.ff8feba
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hytale.com
 	install = hytale-launcher.install
 	arch = x86_64
