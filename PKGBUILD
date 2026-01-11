@@ -1,4 +1,5 @@
-# Maintainer: Daniel Nikoloski <nikoloskid@pm.me>
+# Maintainer: Daniel Nikoloski <nikoloskid at pm dot me>
+# Maintainer: Damian Barabonkov <dbctl at pm dot me
 pkgname=proton-drive-sync-bin
 pkgver=0.2.1
 pkgrel=1
