@@ -4,7 +4,7 @@
 pkgname=spectacle-no-purpose
 pkgver=6.5.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='KDE screenshot capture utility, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
