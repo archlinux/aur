@@ -1,0 +1,21 @@
+pkgbase = knock-knock-git
+	pkgdesc = Application to interact with SSH doors
+	pkgver = r48.0dfa3ec
+	pkgrel = 1
+	url = https://gitlab.com/TheJackiMonster/knock-knock
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	makedepends = sh
+	depends = python3
+	depends = gtk4
+	depends = libadwaita
+	depends = openssh
+	depends = iputils
+	provides = knock-knock
+	conflicts = knock-knock
+	conflicts = knock-knock-bin
+	source = git+https://gitlab.com/TheJackiMonster/knock-knock.git
+	md5sums = SKIP
+
+pkgname = knock-knock-git
