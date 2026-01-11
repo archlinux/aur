@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-git
 pkgver=3.6.3
-pkgrel=0
+pkgrel=2
 pkgdesc="Promtail - Logshipper for Loki"
 arch=('x86_64')
 url='https://github.com/grafana/loki'
@@ -14,7 +14,8 @@ build() {
   cd "$srcdir/$pkgname"
   git fetch
   git checkout v${pkgver}
-  make PROMTAIL_JOURNAL_ENABLED=true promtail
+  sed -i "s/\(go build \$(PROMTAIL_GO_FLAGS)\)/\1 --tags=promtail_journal_enabled/g" Makefile
+  make promtail
 }
 
 package() {
