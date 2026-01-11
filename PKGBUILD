@@ -3,7 +3,7 @@
 
 pkgname=acroread-dc-wine
 pkgver=25.001.20997
-pkgrel=5
+pkgrel=6
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"
@@ -42,8 +42,8 @@ source=(
     "acroread-dc.reg"
 )
 sha256sums=('SKIP'
-            '24beb07e1a416cff1d5861eefae47a22462fe4a98a3017752037b5d54944d6ba'
-            '338653cb5ae93b909674cd9b1d73e825b1690e400418912fd709030d4c6d6ce5'
+            '7f8deca3b2c75266addf054daa5b01cf2c7436fe899d6513c382a3b8f7f3617b'
+            'b1d2694dfb902e68430aae72168ce8c4190289496190ba68edb30a4103bdbab6'
             '4c3defab70b10298b8c1f66f16a385878d62b2443320256bf3c089824884c20d'
             'f5bcf6dec867d6face49bc0ea9c7c6bc37d87c9ca443c4f26618169b22b48463')
 noextract=("AcroRdrDC${_pkgver_nodots}_${_lang}.exe")

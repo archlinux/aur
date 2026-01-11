@@ -114,6 +114,9 @@ wine reg add "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows NT\\
 # Note: Virtual desktop mode is used by the launcher for proper tab support
 # The Decorated=N/Managed=N approach was tried but breaks mouse input and window resize
 
+# Set Adobe Reader to start maximized (fills the virtual desktop)
+wine reg add "HKEY_CURRENT_USER\\Software\\Adobe\\Acrobat Reader\\DC\\AVGeneral" /v bMaximizeAtOpen /t REG_DWORD /d 1 /f 2>/dev/null || true
+
 wineserver -w
 
 echo ""

@@ -90,6 +90,7 @@ fi
 
 if [[ "$USE_VIRTUAL_DESKTOP" == "1" ]]; then
     RESOLUTION=$(get_screen_resolution)
+    # Adobe Reader starts maximized via registry setting (bMaximizeAtOpen=1)
     exec wine explorer /desktop=AcroRead,"$RESOLUTION" "$READER_EXE" "${args[@]}"
 else
     # Run without virtual desktop - tabs should work via Decorated=N, Managed=N registry settings
