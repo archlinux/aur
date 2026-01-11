@@ -1,11 +1,12 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Israel Roldan <israel.alberto.rv@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=duc-git
-pkgver=1.4.4.r9.g1d46285
+pkgver=1.5.0.rc1.r0.ga58fa4e
 pkgrel=1
-pkgdesc="collection of tools for inspecting and visualizing disk usage (git version)"
+pkgdesc="Collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64')
-url="http://duc.zevv.nl/"
+url="https://duc.zevv.nl/"
 license=('GPL2')
 depends=('cairo' 'pango' 'sqlite' 'ncurses')
 makedepends=('git')
@@ -15,24 +16,24 @@ source=("git+https://github.com/zevv/duc.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.r+' |tr - .
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   touch config.h.in
   sed -i 's+ncursesw/ncurses.h+ncurses.h+' src/duc/cmd-ui.c
 }
 
 build() {
-  cd ${pkgname%-git}
-  aclocal && autoconf && automake -a -f 
-  ./configure --prefix=/usr --with-db-backend=sqlite3 
+  cd "${pkgname%-git}"
+  aclocal && autoconf && automake -a -f
+  ./configure --prefix=/usr --with-db-backend=sqlite3
   make
 }
 
 package() {
-  cd ${pkgname%-git}
-  make DESTDIR="$pkgdir/" install
+  cd "${pkgname%-git}"
+  make DESTDIR="${pkgdir}/" install
 }
