@@ -1,0 +1,17 @@
+pkgbase = gkeys-rs-git
+	pkgdesc = G-key macro daemon for Logitech keyboards (G815, G915, G910) using hidraw
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/csutcliff/gkeys-rs
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	provides = gkeys-rs
+	conflicts = gkeys-rs
+	source = git+https://github.com/csutcliff/gkeys-rs.git
+	sha256sums = SKIP
+
+pkgname = gkeys-rs-git
