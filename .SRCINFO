@@ -1,0 +1,14 @@
+pkgbase = shelldock
+	pkgdesc = A fast, cross-platform shell command repository manager
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/OpsGuild/ShellDock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = https://github.com/OpsGuild/ShellDock/releases/download/v1.1/shelldock-linux-amd64
+	sha256sums_x86_64 = dfed77347d44cee7e737d8e40500ee93e1b1a5d4ddf00c9ee498f9bad7ea3c1a
+	source_aarch64 = https://github.com/OpsGuild/ShellDock/releases/download/v1.1/shelldock-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = shelldock
