@@ -5,8 +5,12 @@ pkgbase = whatstyle-git
 	url = https://github.com/mikr/whatstyle
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
+	depends = python-standard-cgi
 	source = git+https://github.com/mikr/whatstyle.git
 	sha256sums = SKIP
 
