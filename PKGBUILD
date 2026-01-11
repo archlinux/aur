@@ -3,7 +3,7 @@
 _name=repl
 pkgname=python-pymodbus-${_name}
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Pymodbus REPL: a REPL tool for the Pymodbus library."
 arch=("any")
 url="https://github.com/pymodbus-dev/${_name}"

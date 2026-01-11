@@ -1,7 +1,7 @@
 pkgbase = python-pymodbus-repl
 	pkgdesc = Pymodbus REPL: a REPL tool for the Pymodbus library.
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymodbus-dev/repl
 	arch = any
 	license = MIT
