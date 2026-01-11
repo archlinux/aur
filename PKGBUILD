@@ -1,6 +1,6 @@
 pkgname=zep-bin
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=5
 pkgdesc="Fast package manager for Zig (binary release)"
 arch=('x86_64')
 url="https://github.com/XerWoho/zeP"
@@ -8,7 +8,7 @@ license=('GPLv3')
 provides=('zep')
 conflicts=('zep')
 source=("https://zep.run/releases/${pkgver}/zep_x86_64-linux_${pkgver}.tar.xz")
-sha256sums=('5437049f8cceb2183ea0549d49e1198bd6331077f23ebefd720d85edf206f272')
+sha256sums=('5bb76c0441a5f08a412ca3dd65209a1714bf04adb6ec57aea13a6e924e4307fe')
 
 package() {
     install -Dm755 "$srcdir/zep" "$pkgdir/usr/bin/zep"
