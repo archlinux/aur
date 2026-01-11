@@ -2,8 +2,8 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=4.0.3.r15.g3c19c693
-pkgrel=1
+pkgver=4.0.4.r16.ge01f4a90
+pkgrel=2
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"

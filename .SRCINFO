@@ -1,7 +1,7 @@
 pkgbase = frescobaldi-git
 	pkgdesc = A LilyPond sheet music text editor.
-	pkgver = 4.0.3.r15.g3c19c693
-	pkgrel = 1
+	pkgver = 4.0.4.r16.ge01f4a90
+	pkgrel = 2
 	url = http://www.frescobaldi.org/
 	arch = any
 	license = GPL-2.0-or-later
@@ -27,7 +27,7 @@ pkgbase = frescobaldi-git
 	optdepends = portmidi: MIDI playback
 	optdepends = hyphen-lang: hyphenation patterns for desired languages
 	optdepends = python-pycups: Printing to a local CUPS server
-	provides = frescobaldi=4.0.3.r15.g3c19c693-1
+	provides = frescobaldi=4.0.4.r16.ge01f4a90-2
 	conflicts = frescobaldi
 	source = frescobaldi-git::git+https://github.com/frescobaldi/frescobaldi.git
 	md5sums = SKIP
