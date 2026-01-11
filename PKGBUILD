@@ -3,11 +3,11 @@
 _pyname=google_cloud_bigquery
 pkgname=python-google-cloud-bigquery
 pkgver=3.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google BigQuery API client library'
 arch=(any)
 url=https://github.com/googleapis/python-bigquery
-_pyurl=https://files.pythonhosted.org/packages/source
+_phurl=https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 license=(Apache-2.0)
 depends=(
   python-dateutil
@@ -38,7 +38,7 @@ optdepends=(
 )
 changelog=CHANGELOG.md
 # source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-source=(${pkgname}-${pkgver}.tar.gz::${_pyurl}/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::${_phurl}/${_pyname}-${pkgver}.tar.gz)
 b2sums=('0252b638d716f859a8499a059b400306e486dbe1f189f22618ae071f6a50f0135b66b59bda275adc3f480ad2327f5a5aa44c502aad53a1175ac20d788389ea85')
 
 build() {
@@ -47,6 +47,7 @@ build() {
   python -m build \
     --wheel \
     --no-isolation
+
   # PYTHONPATH="${PWD}" sphinx-build -b man docs/ _build
 }
 
