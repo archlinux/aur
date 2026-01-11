@@ -1,0 +1,16 @@
+pkgbase = turnaur
+	pkgdesc = A simple AUR helper written in C#
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/turnapps/turnaur
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dotnet-sdk
+	depends = pacman
+	depends = git
+	options = !strip
+	options = !debug
+	source = https://github.com/turnapps/turnaur/releases/download/1.0.0/turnaur-1.0.0.tar.gz
+	sha256sums = d32957edf3a4e71aeddc2ebf22b9f64a96d74d8d25240874df01ea8b2b34c875
+
+pkgname = turnaur
