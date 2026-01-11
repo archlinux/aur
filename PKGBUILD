@@ -4,7 +4,7 @@
 pkgname=python-pymilter
 _commit="20751ea7060741a2ce16e762daae87220f0e8a76"
 pkgver="1.0.6.${_commit:0:7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
 url="https://github.com/sdgathman/${pkgname##*-}"
