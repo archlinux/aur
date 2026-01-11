@@ -1,6 +1,6 @@
 pkgname=jasmine-wallpaper
 _upstream=jasmine-wallpaper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK3 wallpaper picker and palette generator powered by matugen and swww"
 arch=(any)
