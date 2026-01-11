@@ -1,0 +1,40 @@
+post_install() {
+    # Create stegasoo system user if it doesn't exist
+    if ! getent passwd stegasoo >/dev/null; then
+        useradd -r -s /usr/bin/nologin -d /opt/stegasoo stegasoo
+        echo "Created system user 'stegasoo'"
+    fi
+
+    # Set ownership of instance directory for Flask
+    chown -R stegasoo:stegasoo /opt/stegasoo/venv/var/app-instance 2>/dev/null || true
+
+    echo ""
+    echo "Stegasoo installed successfully!"
+    echo ""
+    echo "CLI usage:"
+    echo "  stegasoo --help"
+    echo ""
+    echo "To start the web UI:"
+    echo "  sudo systemctl start stegasoo-web"
+    echo ""
+    echo "To start the REST API:"
+    echo "  sudo systemctl start stegasoo-api"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Stop services if running
+    systemctl stop stegasoo-web 2>/dev/null || true
+    systemctl stop stegasoo-api 2>/dev/null || true
+}
+
+post_remove() {
+    # Optionally remove the stegasoo user
+    # userdel stegasoo 2>/dev/null || true
+    echo "Stegasoo removed. User 'stegasoo' was not removed."
+    echo "To remove: userdel stegasoo"
+}

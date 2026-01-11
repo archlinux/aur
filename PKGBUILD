@@ -7,24 +7,22 @@ arch=('x86_64')
 url="https://github.com/adlee-was-taken/stegasoo"
 license=('MIT')
 
-# NOTE: Requires Python 3.12 (jpegio not compatible with 3.13 yet)
+# Python 3.11-3.14 supported (uses jpeglib for modern Python compatibility)
 depends=(
-    'python312'  # AUR package - jpegio requires 3.12
+    'python>=3.11'
+    'zbar'  # QR code reading for Web UI
 )
 makedepends=(
     'git'
-    'python312'
-)
-optdepends=(
-    'zbar: QR code reading from webcam/images'
+    'python'
+    'python-build'
+    'python-hatchling'
 )
 provides=('stegasoo')
 conflicts=('stegasoo')
+install=stegasoo-git.install
 source=("${pkgname}::git+https://github.com/adlee-was-taken/stegasoo.git#branch=main")
 sha256sums=('SKIP')
-
-# Python 3.12 from AUR package
-_python="/usr/bin/python3.12"
 
 pkgver() {
     cd "$pkgname"
@@ -34,31 +32,33 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-
-    echo "Using Python: $_python ($($_python --version))"
-
-    # Bootstrap pip for python312
-    $_python -m ensurepip --user --upgrade
-
-    # Install build dependencies
-    $_python -m pip install --user build hatchling
-
-    # Build wheel
-    $_python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname"
 
+    # Detect Python version for site-packages path
+    local pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+
     # Install to /opt/stegasoo with dedicated venv
     install -dm755 "$pkgdir/opt/stegasoo"
 
     # Create fresh venv in package
-    $_python -m venv "$pkgdir/opt/stegasoo/venv"
+    python -m venv "$pkgdir/opt/stegasoo/venv"
 
     # Install the wheel with all extras
     local wheel=$(ls dist/*.whl | head -1)
     "$pkgdir/opt/stegasoo/venv/bin/pip" install --no-cache-dir "${wheel}[all]"
+
+    # Install frontends (not included in wheel)
+    local site_packages="$pkgdir/opt/stegasoo/venv/lib/python${pyver}/site-packages"
+    cp -r frontends "$site_packages/"
+
+    # Create writable directories for stegasoo user
+    install -dm755 "$pkgdir/opt/stegasoo/venv/var/app-instance"
+    install -dm755 "$site_packages/frontends/web/temp_files"
+    install -dm755 "$site_packages/frontends/api/temp_files"
 
     # Fix shebangs - replace build-time paths with installed paths
     find "$pkgdir/opt/stegasoo/venv/bin" -type f -exec \
@@ -86,7 +86,7 @@ After=network.target
 [Service]
 Type=simple
 User=stegasoo
-WorkingDirectory=/opt/stegasoo/venv/lib/python3.12/site-packages/frontends/web
+WorkingDirectory=/opt/stegasoo/venv/lib/python${pyver}/site-packages/frontends/web
 Environment="PATH=/opt/stegasoo/venv/bin"
 ExecStart=/opt/stegasoo/venv/bin/gunicorn -b 127.0.0.1:5000 app:app
 Restart=on-failure
@@ -104,7 +104,7 @@ After=network.target
 [Service]
 Type=simple
 User=stegasoo
-WorkingDirectory=/opt/stegasoo/venv/lib/python3.12/site-packages/frontends/api
+WorkingDirectory=/opt/stegasoo/venv/lib/python${pyver}/site-packages/frontends/api
 Environment="PATH=/opt/stegasoo/venv/bin"
 ExecStart=/opt/stegasoo/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
 Restart=on-failure

@@ -3,12 +3,15 @@ pkgbase = stegasoo-git
 	pkgver = 4.2.0.r0.g530e5de
 	pkgrel = 1
 	url = https://github.com/adlee-was-taken/stegasoo
+	install = stegasoo-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = python312
-	depends = python312
-	optdepends = zbar: QR code reading from webcam/images
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = zbar
 	provides = stegasoo
 	conflicts = stegasoo
 	source = stegasoo-git::git+https://github.com/adlee-was-taken/stegasoo.git#branch=main
