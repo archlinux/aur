@@ -3,7 +3,7 @@
 _name=taurus_pyqtgraph
 pkgname=python-taurus-pyqtgraph
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Taurus extension providing pyqtgraph-based widgets"
 arch=("any")
 url="https://gitlab.com/taurus-org/${_name}"

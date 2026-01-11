@@ -1,7 +1,7 @@
 pkgbase = python-taurus-pyqtgraph
 	pkgdesc = Taurus extension providing pyqtgraph-based widgets
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/taurus-org/taurus_pyqtgraph
 	arch = any
 	license = CC-BY-3.0
