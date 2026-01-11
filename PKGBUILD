@@ -14,7 +14,12 @@ depends=('openxr'
          'glibc')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'openxr' 'vim' 'glm')
+makedepends=('meson'
+             'git'
+             'glslang'
+             'vulkan-headers'
+             'glm'
+             'cmake')
 license=('MIT')
 options=('debug' '!strip')
 
