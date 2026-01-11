@@ -1,10 +1,10 @@
-# Maintainer: redponike <proton (dot) me>
+# Contributor: redponike <proton (dot) me>
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
-pkgver=0.20.2
+pkgver=0.22.9
 pkgrel=1
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=(
   python-typing_extensions
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d06c10e442c4e4e84f080ba7f41ddac1b46d7d8e4d7f80bb95f6075a06ff61fe')
+sha256sums=('ecc0518c0c9102637e711c8f46ce0ba561c3138c89aea522d4b28b84a5f47b2d')
 
 build() {
   cd "$_pkgname-$pkgver"
