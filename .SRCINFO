@@ -1,0 +1,13 @@
+pkgbase = stm
+	pkgdesc = менеджер для проекта StoryTime-SMP
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Frog1-cell/StoryTimeSMP-Manger.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = stm-1.0.0::git+https://github.com/Frog1-cell/StoryTimeSMP-Manger.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = stm
