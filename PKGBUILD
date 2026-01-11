@@ -8,7 +8,7 @@ pkgrel=2
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
-makedepends=('dpkg' 'findutils' 'patchelf')
+makedepends=()
 depends=('glibc' 'gcc-libs' 'bash')
 optdepends=(
   'protobuf-21: required for the AESM service'
@@ -25,7 +25,9 @@ b2sums=('aaa33087d8002a643f95d6699273738bdc847ea6b910e0f0ce61d42857a31f71517faaa
         '258d4bf13a00b299f72f1fe720fa1adc40201dfdb45ca2f557d9fff660c3233163e82114e2b5f5037cbb07fee82676e79c7def8bdf62b06e3d14b30ed6148761')
 
 package() {
-  find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec dpkg-deb -x {} "${pkgdir}" \;
+  # shellcheck disable=SC2016
+  find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec \
+    sh -c 'ar -p "$1" -O data.tar.zst | tar -x --zstd -C "$0"' "${pkgdir}" {} \;
 
   # required users and groups
   install -Dm644 intel-sgx-sysusers.conf -t "${pkgdir}"/usr/lib/sysusers.d/intel-sgx.conf
