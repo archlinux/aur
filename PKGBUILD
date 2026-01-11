@@ -3,7 +3,7 @@
 _name=guidata
 pkgname="python-${_name}"
 pkgver=3.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="guidata: Automatic GUI generation for easy dataset editing and display with Python"
 arch=("any")
 url="https://github.com/PlotPyStack/${_name}"
