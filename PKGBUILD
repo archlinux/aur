@@ -2,8 +2,8 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.2.0.r33.g84bd519
-pkgrel=2
+pkgver=0.2.1.r11.gca7af59
+pkgrel=1
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
 license=('GPL-3.0-only')
@@ -67,6 +67,9 @@ prepare() {
   sed -E -e 's&(CURL::libcurl)_static\b&\1&' \
     -i apps/ymir-sandbox/CMakeLists.txt \
     apps/ymir-sdl3/CMakeLists.txt
+
+  # fix type mismatch
+  sed -E -e '/m_m68kClockShift = std::min/s&4ull&uint64{4}&' -i libs/ymir-core/include/ymir/hw/scsp/scsp.hpp
 
   # find module for rtmidi
   cat > cmake/Findrtmidi.cmake << 'END'
