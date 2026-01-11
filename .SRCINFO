@@ -1,6 +1,6 @@
 pkgbase = puddletag-git
 	pkgdesc = An audio tag editor for GNU/Linux, git version
-	pkgver = 2.5.0.r21.g8a1d2ba
+	pkgver = 2.5.0.r37.gda6fd53
 	pkgrel = 1
 	url = https://github.com/puddletag/puddletag
 	arch = any
