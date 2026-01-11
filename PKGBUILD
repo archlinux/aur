@@ -7,7 +7,7 @@ pkgver=0.17.6
 # git fetch https://github.com/package-url/packageurl-python.git "v${pkgver?}" && git rev-parse FETCH_HEAD:spec
 _spec_commit=c398646bb2d642ccdd43bfbf5923cf650d69dc6a
 
-pkgrel=1
+pkgrel=2
 pkgdesc='A purl aka. Package URL parser and builder'
 arch=('any')
 url='https://github.com/package-url/packageurl-python'
