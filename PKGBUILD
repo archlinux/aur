@@ -34,13 +34,11 @@ pkgver() {
 }
 
 build() {
-  cd $_realname
   rm -rf build
-  meson build --prefix=/usr/
+  arch-meson "$_realname" build
   ninja -C build
 }
 
 package() {
-  cd $_realname
   DESTDIR="$pkgdir" ninja -C build install
 }
