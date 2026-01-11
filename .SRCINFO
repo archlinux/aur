@@ -10,6 +10,8 @@ pkgbase = gulkan-git
 	makedepends = git
 	makedepends = vulkan-headers
 	makedepends = gtk-doc
+	makedepends = libdrm
+	makedepends = wayland-protocols
 	depends = glibc
 	depends = glib2
 	depends = gdk-pixbuf2
@@ -19,9 +21,9 @@ pkgbase = gulkan-git
 	depends = shaderc
 	depends = json-glib
 	depends = libxkbcommon
-	depends = wayland
 	depends = libxcb
 	depends = xcb-util-keysyms
+	depends = wayland
 	provides = gulkan=0.16.0.r445.55721c9
 	conflicts = gulkan
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git#branch=main

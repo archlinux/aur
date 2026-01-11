@@ -7,11 +7,10 @@ pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gulkan'
-depends=('glibc' 'glib2' 'gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'libxkbcommon' 'wayland' 'libxcb' 'xcb-util-keysyms')
-# Dependencies only used for examples: 'libdrm' 'wayland-protocols' 'glfw')
+depends=('glibc' 'glib2' 'gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'libxkbcommon' 'libxcb' 'xcb-util-keysyms' 'wayland')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')
+makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc' 'libdrm' 'wayland-protocols')
 license=('MIT')
 
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git#branch=main')
