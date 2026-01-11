@@ -3,7 +3,7 @@
 _name=odsexport
 pkgname=python-"$_name"
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-native library to create ODS (Open Document Spreadsheet) documents'
 arch=(any)
 url="https://github.com/johndoe31415/$_name"
