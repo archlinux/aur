@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.5.0.r0.g0bcd268
+pkgver=0.5.1.r459.gabdfb40
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ pkgver() {
     if [[ -n "$ver" ]]; then
         echo "$ver"
     else
-        printf "0.5.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "0.5.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
 }
 
