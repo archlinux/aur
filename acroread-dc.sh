@@ -62,10 +62,15 @@ fix_window_type() {
     done
 }
 
-# Check if we should use virtual desktop mode
-# By default, we try without it first (using Decorated=N and Managed=N registry settings)
-# Set ACROREAD_VIRTUAL_DESKTOP=1 to force virtual desktop mode
-USE_VIRTUAL_DESKTOP="${ACROREAD_VIRTUAL_DESKTOP:-0}"
+# Virtual desktop mode is required for tabs and proper input handling
+# The Decorated=N/Managed=N approach shows tabs but breaks mouse input and resize
+# Set ACROREAD_NO_VIRTUAL_DESKTOP=1 to disable (not recommended)
+USE_VIRTUAL_DESKTOP="${ACROREAD_NO_VIRTUAL_DESKTOP:-0}"
+if [[ "$USE_VIRTUAL_DESKTOP" == "1" ]]; then
+    USE_VIRTUAL_DESKTOP=0
+else
+    USE_VIRTUAL_DESKTOP=1
+fi
 
 # Get screen resolution (for virtual desktop mode if enabled)
 get_screen_resolution() {

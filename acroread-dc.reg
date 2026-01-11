@@ -113,10 +113,5 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug]
 "Debugger"=""
 
-; Wine X11 Driver settings for Adobe Reader specifically
-; Setting Decorated=N and Managed=N allows Wine to render its own window chrome
-; including the tab bar (similar to virtual desktop mode but without the desktop)
-; We only apply this to AcroRd32.exe to not affect other Wine applications
-[HKEY_CURRENT_USER\Software\Wine\AppDefaults\AcroRd32.exe\X11 Driver]
-"Decorated"="N"
-"Managed"="N"
+; Note: Virtual desktop mode is used by the launcher for proper tab support
+; The Decorated=N/Managed=N approach was tried but breaks mouse input and window resize
