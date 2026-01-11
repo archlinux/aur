@@ -4,7 +4,7 @@
 
 pkgname=kamailio
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
 url="https://www.kamailio.org"
@@ -48,6 +48,12 @@ optdepends=(
   'libxml2: XML operations'
   'unixodbc: ODBC database support'
   'lksctp-tools: SCTP transport support'
+)
+
+backup=(
+  'etc/kamailio/kamailio.cfg'
+  'etc/kamailio/kamctlrc'
+  'etc/kamailio/tls.cfg'
 )
 
 source=("https://www.kamailio.org/pub/${pkgname}/latest/src/${pkgname}-${pkgver}_src.tar.gz"
