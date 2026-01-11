@@ -4,8 +4,8 @@
 _name=macholib
 pkgbase=python-macholib
 pkgname=python-macholib
-pkgver=1.16.3
-pkgrel=4
+pkgver=1.16.4
+pkgrel=2
 pkgdesc="Mach-O header analysis and editing"
 arch=('any')
 url="https://github.com/ronaldoussoren/macholib"
@@ -17,7 +17,7 @@ makedepends=(
   python-wheel
   python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('269f8aefe2686cdd22486f6c9d20a2c7034c38984886a1e235ab2285d13e7087286b8ea094704a31105c4a48b9b375a42cb2c65914c95e6a138b203310d17832')
+sha512sums=('3223ceaf9f1c6149caa84434c1478ba65ec4e950b72c3bd9ad09a593c707f7050b2d1d95f36799856dbc410122e810a93a77b00425117aa37bf3cf9a90ca188a')
 
 build() {
   cd "macholib-$pkgver"
