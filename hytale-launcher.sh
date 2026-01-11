@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# NVIDIA Sync Fix
+export __NV_DISABLE_EXPLICIT_SYNC=1
+
+# Webkit Rendering Fix
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+
+export DESKTOP_STARTUP_ID=hytale-launcher
+
 # CONSTANTS
 LAUNCHER_DIR="$HOME/.local/share/Hytale/install/release/package/launcher/current"
 SOURCE_DIR="/opt/hytale-launcher-bin"
