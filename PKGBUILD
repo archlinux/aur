@@ -3,7 +3,7 @@
 pkgname=python-submitit
 _gitpkgname=submitit
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python toolbox for submitting jobs to Slurm'
 arch=('any')
 url='https://github.com/facebookincubator/submitit'

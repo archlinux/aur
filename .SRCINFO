@@ -1,7 +1,7 @@
 pkgbase = python-submitit
 	pkgdesc = Python toolbox for submitting jobs to Slurm
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebookincubator/submitit
 	arch = any
 	license = MIT
