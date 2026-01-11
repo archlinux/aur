@@ -2,7 +2,7 @@
 
 pkgname=('python-tetra')
 _name=${pkgname#python-}
-pkgver='0.5.0'
+pkgver='0.6.10'
 pkgrel=1
 pkgdesc="Full stack component framework for Django using Alpine.js"
 license=('MIT')
@@ -13,7 +13,7 @@ depends=('python' 'python-cryptography' 'python-django' 'python-dateutil' 'pytho
 optdepends=('python-django-channels: reactive components'
             'python-daphne: reactive components')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e59b02387341b62b85c28d6a3c0535c15e8aed5d5f305fb6962a7377e290c407')
+sha256sums=('6a00b25cff4eb1aa10ea4363ab9348c3391ef96f836f552d65253702b3760b63')
 
 build() {
     cd $_name-$pkgver
