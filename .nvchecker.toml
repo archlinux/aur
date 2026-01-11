@@ -1,0 +1,6 @@
+[freemajor]
+source = "github"
+github = "linuxmao-org/FreeMajor"
+use_max_tag = true
+include_regex = '^v\d+(\.\d+)+$'
+prefix = "v"
