@@ -8,6 +8,6 @@ pkgbase = cliwt
 	makedepends = go
 	depends = glibc
 	source = cliwt-1.0.2.tar.gz::https://github.com/HenryLoM/CliWaifuTamagotchi/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = d7b937fbe6d19eda003233f13ed5578243848bb4ca00c41deb1bd21593c59dc2
+	sha256sums = 2b4e6667ca65f7d12546ef326c9bea4b5ca316587d6875397bed2e2470a1ae6e
 
 pkgname = cliwt
