@@ -1,18 +1,18 @@
 [Unit]
-Description=Matrix-WhatsApp puppeting bridge
+Description=mautrix-bluesky puppeting bridge
 After=network-online.target
 Requires=network-online.target
 
 [Service]
 Type=exec
-User=mautrix-whatsapp
-Group=mautrix-whatsapp
-WorkingDirectory=/var/lib/mautrix-whatsapp
-ExecStart=/usr/bin/mautrix-whatsapp -n -c /etc/mautrix-whatsapp/mautrix-whatsapp.yaml
+User=mautrix-bluesky
+Group=mautrix-bluesky
+WorkingDirectory=/var/lib/mautrix-bluesky
+ExecStart=/usr/bin/mautrix-bluesky -n -c /etc/mautrix-bluesky/mautrix-bluesky.yaml
 Restart=on-failure
 
-ReadWritePaths=/var/lib/mautrix-whatsapp
-ReadWritePaths=/var/log/mautrix-whatsapp
+ReadWritePaths=/var/lib/mautrix-bluesky
+ReadWritePaths=/var/log/mautrix-bluesky
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes
