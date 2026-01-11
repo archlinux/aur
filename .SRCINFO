@@ -1,7 +1,7 @@
 pkgbase = python-scikit-fmm
 	pkgdesc = The fast marching method for Python
 	pkgver = 2025.6.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scikit-fmm.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
