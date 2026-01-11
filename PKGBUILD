@@ -3,7 +3,7 @@
 _name=guiqwt
 pkgname="python-${_name}"
 pkgver=4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient 2D plotting Python library based on PythonQwt"
 arch=('x86_64')
 url="https://github.com/PlotPyStack/${_name}"

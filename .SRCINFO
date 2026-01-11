@@ -1,7 +1,7 @@
 pkgbase = python-guiqwt
 	pkgdesc = Efficient 2D plotting Python library based on PythonQwt
 	pkgver = 4.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PlotPyStack/guiqwt
 	arch = x86_64
 	license = custom:CeCILL
