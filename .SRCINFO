@@ -1,6 +1,6 @@
 pkgbase = weeb-cli
 	pkgdesc = Tarayıcı yok, reklam yok, dikkat dağıtıcı unsur yok. Sadece siz ve eşsiz bir anime izleme deneyimi.
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ewgsta/weeb-cli
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = weeb-cli
 	depends = python-rich
 	depends = python-questionary
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/w/weeb-cli/weeb-cli-0.0.1.tar.gz
-	sha256sums = 3687f7d96331bb1ac9888257a92fcb80988f42939e18d5a0d0823dce133bfc30
+	source = https://files.pythonhosted.org/packages/source/w/weeb-cli/weeb-cli-0.1.0.tar.gz
+	sha256sums = 98e8315ff8a24b41a049cf17015099a290fe6e800f7299051080b671de682a84
 
 pkgname = weeb-cli
