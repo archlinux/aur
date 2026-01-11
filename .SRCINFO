@@ -1,8 +1,9 @@
 pkgbase = hatchet
 	pkgdesc = A TUI for managing work via Fizzy and Git worktrees with automatic database cloning for Rails projects
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ryanrhughes/hatchet
+	install = hatchet.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -10,7 +11,7 @@ pkgbase = hatchet
 	depends = fizzy-cli
 	options = !debug
 	options = !strip
-	source = hatchet-1.0.1.tar.gz::https://github.com/ryanrhughes/hatchet/archive/v1.0.1.tar.gz
-	sha256sums = d8bed5f6bbbe1bf440bf61e90ca7db16784022c931d7b3713c4eaed1d4b027e8
+	source = hatchet-1.1.0.tar.gz::https://github.com/ryanrhughes/hatchet/archive/v1.1.0.tar.gz
+	sha256sums = a89e4e21993759587f0a24e53335053dbebbccfb235e352d7a9d53b932750599
 
 pkgname = hatchet
