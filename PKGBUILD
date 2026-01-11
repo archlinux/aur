@@ -1,9 +1,9 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 # Contributor: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=cai
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="Use LLM to create git commit messages."
+pkgdesc="CLI tool that generates concise git commit messages from diffs or commit history using large language models"
 arch=('any')
 url="https://github.com/thorstenfoltz/cai"
 license=('MIT')
@@ -15,7 +15,6 @@ depends=(
   python-requests
   python-typer
   python-groq
-  python-anthropic
   git
 )
 makedepends=(
@@ -29,7 +28,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
-  'f9017c89900d18d244d5041e3f36c61a0299a45c8097c071b69faa00f4bf316b'
+  '1a32e8dc7c7d24397dddf5dca845eda5a760d0df85de9cdfcab8c528380e3497'
 )
 build() {
     cd "$srcdir/cai-$pkgver"
