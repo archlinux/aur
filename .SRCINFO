@@ -1,7 +1,7 @@
 pkgbase = python-flask-silk
 	pkgdesc = Adds silk icons to your Flask application or module, or extension
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sublee/flask-silk
 	arch = x86_64
 	license = custom

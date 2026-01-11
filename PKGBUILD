@@ -1,6 +1,6 @@
 pkgname=python-flask-silk
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/sublee/flask-silk'
 license=('custom')
