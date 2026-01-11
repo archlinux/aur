@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz [at] gmail [dot] com>
 
 pkgname=vulkan-caps-viewer-git
-pkgver=3.0.351.03d0920
+pkgver=4.10.r0.g628b54f
 pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
@@ -19,12 +19,7 @@ provides=('vulkan-caps-viewer')
 
 pkgver() {
   cd $srcdir/VulkanCapsViewer
-  
-  version=$(grep "vulkanCapsViewer::version" vulkancapsviewer.cpp | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  
-  echo $version.$revision.$hash  
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
