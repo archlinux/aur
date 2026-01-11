@@ -1,0 +1,16 @@
+pkgbase = qs
+	pkgdesc = Library for encoding and decoding quadraphonic audio in QS Regular Matrix format
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/quarkquad/qs/
+	arch = any
+	license = Apache-2.0
+	makedepends = catch2
+	makedepends = cmake
+	makedepends = flac
+	makedepends = juce
+	makedepends = libvorbis
+	source = https://github.com/quarkquad/qs/archive/v0.1.1/qs-0.1.1.tar.gz
+	sha256sums = f1acf8be8f153548912acad332ae5756fd1d6a1cc396655dfd518e5fb33dace9
+
+pkgname = qs
