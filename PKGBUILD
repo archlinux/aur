@@ -167,15 +167,13 @@ package() {
     rm -f "${installdir}"/InstallErrors
 
     msg2 'Setting up WolframScript'
-    install -d "${srcdir}"/WolframScript "${pkgdir}"/usr/share
-    # shellcheck disable=SC2312 # a pipe here allows more efficient disk usage
-    bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
+    # shellcheck disable=SC2312
+    ar -p "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
         -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
     msg2 'Copying menu and MIME type information'
 
     desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-
     install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
     install -D -m644 "${installdir}"/SystemFiles/Installation/wolfram-wolfram.directory -t "${pkgdir}"/usr/share/desktop-directories
     install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
