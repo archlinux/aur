@@ -1,7 +1,7 @@
 pkgbase = python-pythonqwt
 	pkgdesc = Qt plotting widgets (pure Python reimplementation of Qwt C++ library)
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PlotPyStack/PythonQwt
 	arch = any
 	license = LicenseRef-custom
