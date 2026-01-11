@@ -1,6 +1,6 @@
 pkgbase = fabric-ai-bin
 	pkgdesc = open-source framework for augmenting humans using AI (binary release)
-	pkgver = 1.4.273
+	pkgver = 1.4.375
 	pkgrel = 1
 	url = https://github.com/danielmiessler/fabric
 	arch = x86_64
@@ -8,12 +8,9 @@ pkgbase = fabric-ai-bin
 	license = MIT
 	provides = fabric-ai
 	conflicts = fabric-ai
-	noextract = LICENSE
-	source = fabric-ai-bin-7079c9c-license::https://github.com/danielmiessler/fabric/raw/7079c9c/LICENSE
-	sha256sums = 42b554b17b8fd7ae4d6bc488f0857ae91d9179f04db3da466c2fc5425686f4f9
-	source_x86_64 = fabric-ai-bin-1.4.273-x86_64::https://github.com/danielmiessler/fabric/releases/download/v1.4.273/fabric-linux-amd64
-	sha256sums_x86_64 = 7e566d78096544ff4e4b4f5115e5c6f06e915beea28c98141bea9f4b6bc08a7e
-	source_aarch64 = fabric-ai-bin-1.4.273-aarch64::https://github.com/danielmiessler/fabric/releases/download/v1.4.273/fabric-linux-arm64
-	sha256sums_aarch64 = 5922fef692162cf0d8e550f4fb4e48301b723a69652e5265d806d4789a730c3a
+	source_x86_64 = fabric-ai-bin-1.4.375-x86_64.tar.gz::https://github.com/danielmiessler/fabric/releases/download/v1.4.375/fabric_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a1441a544025df725fc3db206d97b383a37f7c874c9a7feb12c4815274da8519
+	source_aarch64 = fabric-ai-bin-1.4.375-aarch64.tar.gz::https://github.com/danielmiessler/fabric/releases/download/v1.4.375/fabric_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f801fdfe8fd603878159d92685aa2ae2e855c65f9c3f033ba83d07178f6f16e1
 
 pkgname = fabric-ai-bin
