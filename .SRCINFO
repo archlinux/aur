@@ -1,0 +1,23 @@
+pkgbase = 7zip-zstd
+	pkgdesc = File archiver with extremely high compression ratio (With Zstandard support)
+	pkgver = 25.01
+	pkgrel = 1
+	url = https://github.com/mcmilk/7-Zip-zstd
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = LicenseRef-UnRAR
+	makedepends = uasm
+	depends = glibc
+	depends = gcc-libs
+	depends = sh
+	provides = p7zip
+	provides = 7zip
+	conflicts = p7zip
+	conflicts = 7zip
+	replaces = p7zip
+	source = https://github.com/mcmilk/7-Zip-zstd/archive/refs/tags/v25.01-v1.5.7-R4.tar.gz
+	sha256sums = 60ac3ebb8502f422f916419ba9b168cd38faef6dccaf0a36aa505d71e1fb17ed
+
+pkgname = 7zip-zstd
