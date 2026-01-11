@@ -3,7 +3,7 @@
 _pkg=pyodoo
 pkgname=python-${_pkg}
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with Odoo servers using XML-RPC"
 arch=('any')
 url="https://github.com/muflone/pyodoo"

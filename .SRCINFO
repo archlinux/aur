@@ -1,7 +1,7 @@
 pkgbase = python-pyodoo
 	pkgdesc = Interact with Odoo servers using XML-RPC
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/muflone/pyodoo
 	arch = any
 	license = GPL-3.0-or-later
