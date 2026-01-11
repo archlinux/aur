@@ -6,7 +6,7 @@
 _name=semgrep
 pkgname=${_name}-bin
 pkgver=1.147.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
@@ -32,7 +32,7 @@ noextract=("${_whl}")
 source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}"
         "fix.patch")
 sha512sums=('832a8b443a768cb08006f00575a1ba396765ad3e4fbfe6b66a91f344200d0e87d6b1beb65f78c36279d4fd73a86940cef90eb332ddad97d7d1edb9cadcf29766'
-            '71e96c8412effd474c1efc3442883de128b1f95874245001f80e98d18e7499499b3f96139e03c323946675eccb78c8c76b693a98c5895d67bfab9295a5af6e6d')
+            '1e9ef18cb9130075aac39408f2ede92956e81360358a23eda4835788ced0c654283dfc90588c54baaed9272574cf58024aac9d6f1afca51029f17ecf26844040')
 
 
 package() {

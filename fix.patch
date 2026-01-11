@@ -1,5 +1,5 @@
---- ./usr/lib/python3.13/site-packages/semgrep/tracing.py	2025-12-04 23:35:00.000000000 -0300
-+++ ./usr/lib/python3.13/site-packages/semgrep/tracing.py	2025-12-05 00:38:51.221740916 -0300
+--- ./usr/lib/python3.14/site-packages/semgrep/tracing.py	2025-12-04 23:35:00.000000000 -0300
++++ ./usr/lib/python3.14/site-packages/semgrep/tracing.py	2025-12-05 00:38:51.221740916 -0300
 @@ -35,7 +35,7 @@
  from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
  from opentelemetry.instrumentation.requests import RequestsInstrumentor
