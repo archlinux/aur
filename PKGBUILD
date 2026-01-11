@@ -20,6 +20,6 @@ package() {
 	install -dm755 $srcdir/temp
 	python -m installer --destdir="$pkgdir" *.whl
 	install -dm755 $pkgdir/etc
-	cp "$pkgdir/usr/lib/python3.13/site-packages/deezer_downloader/cli/deezer-downloader.ini.template" "$pkgdir/etc/config.ini"
+	cp "$pkgdir/usr/lib/python3.14/site-packages/deezer_downloader/cli/deezer-downloader.ini.template" "$pkgdir/etc/config.ini"
 }
 
