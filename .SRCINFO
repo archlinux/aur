@@ -8,6 +8,7 @@ pkgbase = libaegis
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	provides = libaegis
 	conflicts = libaegis
 	options = !lto
