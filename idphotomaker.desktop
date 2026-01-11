@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ID Photo Maker
+Comment=Create French Passport/ID Photos (35x45mm)
+Exec=idphotomaker
+Icon=camera-photo
+Terminal=false
+Categories=Graphics;Photography;Utility;
+StartupNotify=true
