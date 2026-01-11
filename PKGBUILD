@@ -3,7 +3,7 @@
 _system_wasm_bindgen=false
 _version=0.2.0
 _channel=nightly
-_date=2026-01-09
+_date=2026-01-11
 
 pkgbase=ruffle-nightly
 pkgname=(ruffle-nightly
@@ -29,7 +29,7 @@ else
 fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('cbbddc97c3e1dc496e34a92ba44fa11ed92adc2add1d093235227171e05c0eb8'
+sha256sums=('044b2c7629102065c1fa181256ed95d6807187fa4e3bd629f9077e7602374e80'
             'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
 options=("!lto")
 
