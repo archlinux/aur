@@ -1,0 +1,25 @@
+pkgbase = hytale-updater
+	pkgdesc = A wrapper for the Hytale Launcher that allows Linux distribution friendly packaging
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tomwmth/hytale-updater
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = webkit2gtk-4.1
+	source = hytale-updater-1.0.0.tar.gz::https://github.com/tomwmth/hytale-updater/archive/refs/tags/v1.0.0.tar.gz
+	source = com.hypixel.HytaleLauncher.desktop
+	source = 32.png
+	source = 48.png
+	source = 64.png
+	source = 128.png
+	source = 256.png
+	sha256sums = 4d9c280a05858632e5d9a173010493cd641cfec0d059e36918db362ad60fec87
+	sha256sums = 188a111648e1ba9be9753c567c3f174751bc4d471de693618fc5f8decb8e31f7
+	sha256sums = 5c099afed8e08bf631bff8a518bf44ba5c81ba7fec36c8324ba2681c542e0335
+	sha256sums = c0d61f398bc44aceb21a2c909e8d2fd268a62882eb46a870e6be7b8c528f8167
+	sha256sums = 1428fdcb1382a307e0f162de7a7bcd80a5aa1f95c10f41ae96b47c483824bc02
+	sha256sums = 1a08a95654015c021600df003ce9207bd197135e53c98265f0a01453e14de68a
+	sha256sums = 762d452d661cf4d13d0b4a4d8b8db4b803a3f5147e31b0a3023660bb0f58a83b
+
+pkgname = hytale-updater
