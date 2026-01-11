@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Jasmine Wallpaper
+Comment=Wallpaper helper for matugen and swww
+Exec=jasmine-wallpaper
+Icon=/usr/share/jasmine-wallpaper/assets/jasmine.svg
+Terminal=false
+Categories=Utility;GTK;
