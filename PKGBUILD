@@ -2,7 +2,7 @@
 
 pkgname="mumailer"
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple mailer agent and a Python library to easily interact with SMTP"
 url="http://www.muflone.com/mumailer"
 arch=('any')
