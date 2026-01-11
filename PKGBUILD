@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz at gmail dot com>
 
 pkgname=superfamiconv-git
-pkgver=0.9.2.r2.9f6bcab
+pkgver=0.11.0.r4.68e3477
 pkgrel=1
 pkgdesc='A tile graphics converter with flexible and composable command line options.'
 arch=(x86_64)
