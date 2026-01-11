@@ -3,7 +3,7 @@
 pkgname=python-taxi
 _name=taxi
 pkgver=6.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Timesheeting tool that focuses on simplicity"
 arch=('any')
 license=('custom')
