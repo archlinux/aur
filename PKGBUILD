@@ -11,7 +11,7 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('253e5789335b3abb9acb5dc307dbceabc82cac5f7bcb0cc401613d7ede794fb9')
 
 package() {
-  local srcdir="$_upstream-$pkgver"
+  local srcdir="$srcdir/$_upstream-$pkgver"
 
   install -Dm755 "$srcdir/src/jasmine.py" \
     "$pkgdir/usr/share/$pkgname/jasmine.py"
