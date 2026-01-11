@@ -2,7 +2,7 @@
 
 pkgname=ferrite-bin
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64')
 url=https://github.com/OlaProeis/Ferrite
@@ -37,7 +37,7 @@ sha256sums=('2b28781b4e62d8021f4e9f449079738d027c1485eb7fef90316b2dfe8d5b533e'
 package() {
   install -Dm0755 "${pkgname%-bin}" -t "$pkgdir/usr/bin/"
   install -Dm644 "LICENSE_$pkgver" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
-  install -Dm644 "ferrite_$pkgver.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "ferrite_$pkgver.desktop" "$pkgdir/usr/share/applications/ferrite.desktop"
   install -Dm644 "ferrite_16_$pkgver.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/ferrite.png"
   install -Dm644 "ferrite_32_$pkgver.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/ferrite.png"
   install -Dm644 "ferrite_48_$pkgver.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/ferrite.png"
