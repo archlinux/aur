@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -194,5 +194,7 @@ package() {
 
     cd "${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm -r "$pkgdir/usr/lib/python3.13/site-packages/data"
+
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    rm -r "$pkgdir/usr/lib/python$python_version/site-packages/data"
 }
