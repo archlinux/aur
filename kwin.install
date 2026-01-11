@@ -1,0 +1,12 @@
+post_install() {
+# this is executed by make install, but doesn't work since setcap can only be run as root
+  setcap CAP_SYS_NICE=+ep /usr/bin/kwin_wayland
+}
+
+post_upgrade() {
+  post_install
+
+  if [ $(vercmp "$2" "6.4.0") -le 0 ]; then
+    echo "The KWin X window manager has been split to a separate kwin-x11 package."
+  fi  
+}

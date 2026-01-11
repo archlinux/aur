@@ -87,6 +87,6 @@ pkgbase = kwin-3finger
 	sha256sums = 258443f72180cf5a8141b440bb51a714a2e67e30867736290793ce50d7bb1d70
 	sha256sums = SKIP
 	sha256sums = 4e35db494b436d2d4dc35eb467a90d93db2279561be3fc2c3f4a74a64ffa6081
-	sha256sums = SKIP
+	sha256sums = 0f33037ad1cc1e833a489912a08739099a9bc95524198e3cd222b6884d681e41
 
 pkgname = kwin-3finger
