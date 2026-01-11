@@ -7,7 +7,11 @@ pkgrel=1
 pkgdesc='An OpenXR example using Vulkan for rendering.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/monado/demos/xrgears'
-depends=('openxr' 'vulkan-icd-loader')
+depends=('openxr'
+         'vulkan-icd-loader'
+         'glib2'
+         'gcc-libs'
+         'glibc')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'openxr' 'vim' 'glm')

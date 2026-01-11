@@ -15,6 +15,9 @@ pkgbase = xrgears-git
 	makedepends = glm
 	depends = openxr
 	depends = vulkan-icd-loader
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
 	provides = xrgears=1.0.1.105.caa21e1
 	conflicts = xrgears
 	options = debug
