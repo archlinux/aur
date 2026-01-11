@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-cmocka
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 arch=('any')
 pkgdesc="Elegant unit testing framework for C with support for mock objects (Android ${_android_arch})"
 url='https://cmocka.org/'
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 source=("https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz"{,.asc})
 options=(!strip !buildflags staticlibs !emptydirs)
-md5sums=('dc23f4870eb7dfa6da065f3056e815b0'
+md5sums=('976fe5a166f9729c350119d997256d2f'
          'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 
@@ -55,4 +55,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
