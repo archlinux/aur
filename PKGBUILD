@@ -9,7 +9,7 @@ depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 provides=('censaway')
 conflicts=('censaway')
 source=("${pkgname}-${pkgver}::https://github.com/Censaway/CensawayApp/releases/download/v${pkgver}/Censaway_v${pkgver}_linux_amd64")
-sha256sums=('a7b09b04f15a233aa988c2ef7264d4885a9ea260f90301afeb24680f6792b979')
+sha256sums=('fa6c10cf4a00e51010a637e0adb11f2b03c235d647f83b1cd1a961389af925fc')
 options=('!strip' '!debug')
 
 package() {
