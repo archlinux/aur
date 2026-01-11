@@ -1,6 +1,6 @@
 pkgbase = hyprsnap
 	pkgdesc = A feature-rich Wayland screenshot utility for Linux/Hyprland. Uses slurp, grim, and rofi to capture regions, windows, or full screens with an interactive UI.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/chpock/hyprsnap
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = hyprsnap
 	depends = wl-clipboard
 	depends = satty
 	depends = pinta
-	source = hyprsnap::https://github.com/chpock/hyprsnap/releases/download/v0.0.5/hyprsnap
-	sha256sums = f7c97ace93659231483abe7e121b6ef91b033d9a57751e91eb3299d333b10715
+	source = hyprsnap::https://github.com/chpock/hyprsnap/releases/download/v0.0.6/hyprsnap
+	sha256sums = be02ce5a90feb186d869e08b11f4086ad63b97cad18505e5a760c922c3a650a4
 
 pkgname = hyprsnap
