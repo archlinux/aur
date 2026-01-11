@@ -30,14 +30,12 @@ pkgbase = spaghettikart-git
 	source = git+https://github.com/Kenix3/libultraship.git
 	source = git+https://github.com/mdqinc/SDL_GameControllerDB.git
 	source = spaghettikart-cmake-flags.patch
-	source = spaghettikart-pkg-fixes.patch
 	source = spaghettikart.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c3ddb5e596b0d17aab6cf5851558b56dd65057f406b9b2f2baac363fe82c59d2
-	sha256sums = efcb423fe0c676d4721a09e75e3c68e8d697b0d2195c814d0e53f2307f27384f
 	sha256sums = 4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e
 
 pkgname = spaghettikart-git
