@@ -1,9 +1,11 @@
-# Maintainer: melchips <truphemus dot francois at gmail dot com>
+# Maintainer: LinuxLover471 <LinuxLover471 at proton dot me>
+# Contributor: melchips <truphemus dot francois at gmail dot com>
 # Contributor: Lex Black <autumn-wind at web dot de>
-# Contributor: Olivier Duclos <olivier.duclos gmail.com>
+# Contributor: Olivier Duclos <olivier dot duclos at gmail dot com>
 
-pkgname=xcompmgr-git
-pkgver=1.1.7.r0.ge99e569
+_pkgname=xcompmgr
+pkgname=${_pkgname}-git
+pkgver=1.1.10.r3.g76c12c6
 pkgrel=1
 pkgdesc="The X Composisting Manager fresh from freedesktop.org repositories"
 arch=(i686 x86_64)
@@ -11,24 +13,24 @@ url="http://www.freedesktop.org/Software/xapps"
 license=('MIT')
 depends=('libxcomposite' 'libxdamage' 'libxrender')
 makedepends=('git' 'xorg-util-macros')
-provides=(xcompmgr)
-conflicts=(xcompmgr xcompmgr-dana)
-replaces=(xcompmgr xcompmgr-dana)
-source=("$pkgname::git+git://anongit.freedesktop.org/git/xorg/app/xcompmgr")
+provides=(${_pkgname})
+conflicts=(${_pkgname} ${_pkgname}-dana)
+replaces=(${_pkgname} ${_pkgname}-dana)
+source=("git+https://gitlab.freedesktop.org/xorg/app/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/xcompmgr\.//'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make DESTDIR=$pkgdir install
 }
