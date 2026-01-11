@@ -4,24 +4,24 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-ioncube_loader
-pkgver=12.0.5
-_phpver=8.1
+pkgver=15.0.0
+_phpver=8.3
 #_php_name="php${_phpver%.*}"
-_php_name=php
+_php_name=php-legacy
 pkgrel=1
 pkgdesc="Loader for PHP files encoded with ionCube PHP Encoder"
-arch=(i686 x86_64 aarch64)
+arch=('i686' 'x86_64' 'aarch64')
 url=http://www.ioncube.com/
-license=(CUSTOM)
+license=("LicenseRef-ioncube")
 depends=("${_php_name}")
 _conf="etc/${_php_name}/conf.d/00-ioncube_loader.ini"
 backup=("${_conf}")
 source_i686=("ioncube_loader-i686-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz")
 source_x86_64=("ioncube_loader-x86_64-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz")
 source_aarch64=("ioncube_loader-aarch64-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_aarch64.tar.gz")
-sha256sums_i686=('2fbf7255c9117b5dc3be8e506dbdddb03f26922786f61317a4423c6b0b41d32d')
-sha256sums_x86_64=('c4d6d65d19909c9029b928b19c1f982a47fb33d2c7834a6a1c9babe861ef55f6')
-sha256sums_aarch64=('bcfe4ab3ed095c74097c01d19021b12de2a6f08b626cb86b9e2bfb3770f5a40e')
+sha256sums_i686=('59b6a5a7f392d12d9f7dba36439b7c39e854b61c3dd35a6130ab953e53922dba')
+sha256sums_x86_64=('4de3d7c15a596e81abd8e605d2fcb3f70ad50a4621b877e032c178c153bc605b')
+sha256sums_aarch64=('377cf5bde36d04d2c3f9026fe4482d3e501a7990b22a468936a2f82a7b6dea87')
 
 package() {
 	cd ioncube
