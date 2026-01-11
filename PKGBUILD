@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=git-guitar
 _pkgname=guitar
-pkgver=0.1.29
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="A terminal based git client with fast topological & chronological graph rendering"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(git)
 makedepends=(cargo)
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 provides=(guitar)
-sha256sums=('6599d89a974265936c97d7192ed167c8a3a7f67b152aac1a1f22ddc41e4d2a79')
+sha256sums=('ef61bd5857c806c69217ea4275e6b999a9629eb54398306da16c896a48601bb1')
 
 prepare() {
   cd "$_pkgname-$pkgver"
