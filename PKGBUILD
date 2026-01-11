@@ -2,7 +2,7 @@
 
 pkgname=pulldocker
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc=" Watch git repositories for Docker compose configuration changes"
 url="http://www.muflone.com/pulldocker"
 arch=('any')
