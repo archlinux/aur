@@ -3,7 +3,7 @@
 
 _pkgname=amaranth
 pkgname="python-$_pkgname-git"
-pkgver=0.6.0.dev0.r72.g590cba1d
+pkgver=0.6.0.dev0.r113.g3a3bf815
 pkgrel=1
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
