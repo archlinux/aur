@@ -12,10 +12,10 @@ pkgname=mathematica
 pkgver=14.3.0
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
-pkgdesc="Computational software for mathematics, science, and engineering, with offline documentation included."
+pkgdesc='Computational software for mathematics, science, and engineering, with offline documentation included.'
 arch=('x86_64')
-url="http://www.wolfram.com/mathematica/"
-license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
+url='http://www.wolfram.com/mathematica/'
+license=('LicenseRef-WolframMathematicaLicenseAgreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'rsync' 'inetutils')
 depends=('openmp')
 optdepends=(
@@ -73,8 +73,9 @@ optdepends=(
     'tesseract'
     'zlib'
 )
+# dynamic source with the unstable signature parameter
 _source_url=$(
-    # shellcheck disable=SC2312 # a failure will be visible in `source`
+    # shellcheck disable=SC2312
     curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
     | grep -E "version=${_pkgver}\b" \
@@ -85,18 +86,18 @@ _source_url=$(
 )
 source=(
     "Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
-    "remove-xdg-scripts.patch"
+    'wolfram-remove-xdg-scripts.patch'
 )
 sha256sums=('16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7'
             'ed6509dfface8e05a5fa870350516a0795a1a3bf91cd1bed0f90fa1159378350')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
-## Also, `debug` won't find any source files here, since this is a binary distribution.
+## Also, `debug` won't be of too much help here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
 ## | Build options   | Build time | Package Size (Zstd) | Uncompressed Size |
 ## | :-------------- | ---------: | ------------------: | ----------------: |
-## | (!strip !debug) |   139.26 s |            7346 MiB |         18668 MiB |
-## | (!strip debug)  |   331.50 s |            7346 MiB |         18668 MiB |
-## | (strip !debug)  |   353.99 s |            7120 MiB |         17768 MiB |
+## | (!strip !debug) |   176.38 s |            8051 MiB |         20282 MiB |
+## | (!strip debug)  |   324.13 s |            8051 MiB |         20282 MiB |
+## | (strip !debug)  |   801.52 s |            7815 MiB |         19339 MiB |
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
@@ -108,27 +109,28 @@ options=(!strip !debug)
 ## install https://aur.archlinux.org/packages/mathematica-light.
 
 ## Package compression can be disabled if it won't be kept, but keep in mind that
-## CPU operations are much faster than disk, so campressing with the default Zstd
+## CPU operations are much faster than disk, so compressing with the default zstd
 ## options will probably be just as fast or faster than writing the whole .pkg.tar.
-## Here's a comparison on my a Gen4 NVMe SSD:
+## Here's a comparison on my machine:
 ## | PKGEXT       | Build time | Package size |
 ## | :----------- | ---------: | -----------: |
-## | .pkg.tar     |   141.29 s |    18551 MiB |
-## | .pkg.tar.zst |   139.26 s |     7346 MiB |
-## | .pkg.tar.lz4 |   143.98 s |    11657 MiB |
+## | .pkg.tar     |   173.78 s |    20341 MiB |
+## | .pkg.tar.lz4 |   175.97 s |    12932 MiB |
+## | .pkg.tar.zst |   173.85 s |     8052 MiB |
+## | .pkg.tar.xz  |   507.60 s |     7091 MiB |
 # PKGEXT='.pkg.tar'
 
 ## Here you can change the installation directory. The default is '/opt/Mathematica'.
 _installdir='/opt/Mathematica'
 
 prepare() {
-    warning "Building Mathematica takes around 26GiB of space for 'makepkg'."
+    warning "Mathematica takes around 26GiB of space for 'makepkg'."
     warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
     # shellcheck disable=SC2312 # echo won't trigger errors
     if [[ "$(echo "${srcdir}" | wc -w)" -ne 1 ]]; then
-        msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
-        msg2 "Current build directory: ${srcdir}"
+        error "ERROR: The Mathematica installer doesn't support directory names with spaces."
+        warning "Current build directory: ${srcdir}"
         exit 1
     fi
 
@@ -139,7 +141,7 @@ prepare() {
       -- \
       -noexec
 
-    patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/remove-xdg-scripts.patch
+    patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/wolfram-remove-xdg-scripts.patch
 }
 
 package() {
@@ -161,7 +163,7 @@ package() {
     rm -rf "${pkgdir}"/tmp
 
     if [[ -s "${installdir}"/InstallErrors ]]; then
-        msg2 "Review installation errors:"
+        warning 'Review installation errors:'
         cat "${installdir}"/InstallErrors
     fi
     rm -f "${installdir}"/InstallErrors
@@ -187,7 +189,7 @@ package() {
         install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
-        # shellcheck disable=SC2312 # the pipe works better with '\n'
+        # shellcheck disable=SC2312
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
             mimetype="$(basename "${mimetype}")"
             install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
@@ -207,14 +209,14 @@ package() {
 
 _fix_dekstop_file() {
     # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
-    sed -Ei '/^\s*Version\s*=.*$/d' "$1"
+    sed -E -i '/^\s*Version\s*=.*$/d' "$1"
     # encoding is outdated
-    sed -Ei '/^\s*Encoding\s*=.*$/d' "$1"
+    sed -E -i '/^\s*Encoding\s*=.*$/d' "$1"
     # invalid MIME type: "x-scheme-handler/wolfram\+cloudobject"
-    sed -Ei '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
+    sed -E -i '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
     # executable path contains BUILDDIR
-    sed -Ei 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
-    sed -Ei "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
+    sed -E -i 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
+    sed -E -i "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
     # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
     if [[ "$1" = *".desktop" ]]; then
         cat >> "$1" <<EOF
@@ -230,7 +232,7 @@ _fix_binary_symlinks() {
     msg2 'Fixing symbolic links'
     relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
 
-    ln -sf '../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript' "${installdir}/Executables/"
+    ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"
     ln -sf "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/

@@ -5,5 +5,5 @@
 !mksrcinfo
 # actual package
 !PKGBUILD
-!remove-xdg-scripts.patch
+!wolfram-remove-xdg-scripts.patch
 !.SRCINFO
