@@ -2,7 +2,7 @@
 # Contributor: csantosb <csantosb dot inventati dot org>
 
 pkgname=python-cocotb-bus
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pre-packaged testbenching tools and reusable bus interfaces for cocotb"
 arch=('any')
@@ -25,7 +25,7 @@ source=(
   "git+https://github.com/cocotb/cocotb-bus#tag=v${pkgver}"
 )
 sha256sums=(
-  'b627b536aaa2150a682869c22d8ea29588191856812adaad00e617a67f3c23cd'
+  'c8e43d5b019031f5dc21312601864051e96d4290f4aee54609bc132d5ed8eaae'
 )
 
 build() {

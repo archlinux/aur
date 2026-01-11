@@ -1,6 +1,6 @@
 pkgbase = python-cocotb-bus
 	pkgdesc = Pre-packaged testbenching tools and reusable bus interfaces for cocotb
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/cocotb/cocotb-bus/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-cocotb-bus
 	makedepends = python-wheel
 	depends = python-cocotb
 	depends = python-scapy
-	source = git+https://github.com/cocotb/cocotb-bus#tag=v0.2.1
-	sha256sums = b627b536aaa2150a682869c22d8ea29588191856812adaad00e617a67f3c23cd
+	source = git+https://github.com/cocotb/cocotb-bus#tag=v0.3.0
+	sha256sums = c8e43d5b019031f5dc21312601864051e96d4290f4aee54609bc132d5ed8eaae
 
 pkgname = python-cocotb-bus
