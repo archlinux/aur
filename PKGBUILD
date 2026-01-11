@@ -3,7 +3,7 @@
 pkgname=python-lameenc
 _gitpkgname=lameenc
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for the LAME encoding library'
 arch=('x86_64')
 url='https://github.com/chrisstaite/lameenc'
