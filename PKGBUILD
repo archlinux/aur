@@ -2,7 +2,7 @@
 # Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=pwclient
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The command-line client for the patchwork patch tracking tool'
 arch=('any')
 url="https://github.com/getpatchwork/$pkgname"

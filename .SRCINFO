@@ -1,7 +1,7 @@
 pkgbase = pwclient
 	pkgdesc = The command-line client for the patchwork patch tracking tool
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getpatchwork/pwclient
 	arch = any
 	license = GPL-2.0-or-later
