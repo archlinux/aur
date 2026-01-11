@@ -13,6 +13,7 @@ depends=(
 )
 
 makedepends=(
+  ninja
   cmake
   git
 )
@@ -33,17 +34,18 @@ prepare() {
 }
 
 build() {
-  cd build
-
-  cmake ../SuperFamiconv \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  local cmake_options=(
+    -B build
+    -G Ninja
+    -S SuperFamiconv
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX='/usr'
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C build install
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "$srcdir/SuperFamiconv/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
