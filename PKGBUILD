@@ -1,6 +1,6 @@
 # Maintainer: Ben Weeks <ben.weeks@outlook.com>
 pkgname=upowertray
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Lightweight battery tray indicator for KDE Plasma/Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'upower')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BenGWeeks/upowertray/archive/v$pkgver.tar.gz")
-sha256sums=('52ca1bc9decd1f70b9debe17c9639ad08739cd3dcbf8b7bc89e496389522ee6f')
+sha256sums=('3d906b7a3a04d869301f5246016da965348a23cee52427a14ead1225d9987863')
 
 build() {
     cd "$pkgname-$pkgver"
