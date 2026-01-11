@@ -1,0 +1,15 @@
+pkgbase = firmware-loongson-graphics-bin
+	pkgdesc = Device-specific firmware for LoongGPU
+	pkgver = 1.0.2_lnd25.1.rc1.7
+	pkgrel = 1
+	url = https://pkg.loongnix.cn
+	arch = loong64
+	license = LicenseRef-Proprietary
+	provides = firmware-loongson-graphics
+	conflicts = firmware-loongson-graphics
+	noextract = firmware-loongson-graphics_1.0.2-lnd25.1~rc1.7_loong64.deb
+	options = !strip
+	source = https://pkg.loongnix.cn/loongnix/25/pool/non-free/l/loonggpu-graphics-drivers/firmware-loongson-graphics_1.0.2-lnd25.1~rc1.7_loong64.deb
+	sha256sums = 18eef36d31ad57b79d7192958240aee23f14b34be92718db01b01fad9193bf31
+
+pkgname = firmware-loongson-graphics-bin
