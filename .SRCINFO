@@ -15,7 +15,6 @@ pkgbase = xrdesktop-git
 	depends = g3k-git
 	depends = python3
 	depends = python-gobject
-	depends = gobject-introspection-runtime
 	depends = glibc
 	depends = graphene
 	depends = glib2
