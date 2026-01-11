@@ -1,18 +1,20 @@
 pkgbase = stacer
-	pkgdesc = Ubuntu System Optimizer
-	pkgver = 1.1.0
+	pkgdesc = Linux System Optimizer and Monitoring
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/oguzhaninan/Stacer
+	url = https://stacer.quentium.fr/
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	makedepends = qt5-tools
-	makedepends = ccache
-	depends = qt5-charts
-	depends = qt5-svg
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-charts
+	depends = qt6-svg
 	depends = hicolor-icon-theme
-	source = stacer-1.1.0.tar.gz::https://github.com/oguzhaninan/Stacer/archive/v1.1.0.tar.gz
-	sha256sums = 6b4922c02017ab4b65c7853db31e24a6969051b3eb06ebd9820df897d857bd31
+	source = stacer-1.6.0.tar.gz::https://github.com/QuentiumYT/Stacer/archive/v1.6.0.tar.gz
+	sha256sums = 5aea4fe7b27a1f5d2531f9fdfc001c452b76fd80f586d7b0fd95f7b197dd0547
 
 pkgname = stacer
-
