@@ -1,15 +1,15 @@
 # Maintainer: Lubosz Sarnecki <lubosz.sarnecki@collabora.com>
 
-basename='xrdesktop'
-pkgname="$basename-git"
+_realname='xrdesktop'
+pkgname="$_realname-git"
 pkgver=0.16.0.r1348.f507535
 pkgrel=1
 pkgdesc='A library for XR interaction with classical desktop compositors.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/xrdesktop'
 depends=('g3k-git' 'python3' 'python-gobject' 'gobject-introspection-runtime' 'glibc' 'graphene' 'glib2' 'gxr-git' 'gcc-libs' 'gulkan-git' 'dconf' 'hicolor-icon-theme' 'gtk3')
-provides=("$basename="$pkgver)
-conflicts=("$basename")
+provides=("$_realname="$pkgver)
+conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers' 'pygobject-devel')
 license=('MIT')
 
@@ -23,13 +23,13 @@ ver() {
 }
 
 pkgver() {
-  cd "$basename"
+  cd "$_realname"
   printf "$(ver).r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   rm -rf build
-  arch-meson "$basename" build --libdir=lib --buildtype release -Dapi_doc=true
+  arch-meson "$_realname" build --libdir=lib --buildtype release -Dapi_doc=true
   ninja -C build
 }
 
