@@ -5,10 +5,9 @@ pkgbase = python-xecli
 	url = https://github.com/xEclipsity/xecli
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-pip
 	depends = python
-	source = https://files.pythonhosted.org/packages/a1/33/c618301c950ae701c89c07fed2b44c6ec8c9392a645daab26c3ab4e14cc7/xecli-1.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/xecli/xecli-1.0.0.tar.gz
 	sha256sums = 5022ef3cc59a4b5d0621dca4d3204a4618caa445a73ba7b62e7b61ab0f7ef52b
 
 pkgname = python-xecli
