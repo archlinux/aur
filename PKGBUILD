@@ -3,36 +3,48 @@
 
 pkgname=osrm-backend
 pkgver=6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 arch=('x86_64')
 url="https://github.com/Project-OSRM/${pkgname}"
 license=('BSD')
 depends=(
-	'boost-libs'
-	'bzip2'
-	'doxygen'
-	'expat'
-	'intel-tbb'
-	'libc++'
-	'libosmium'
-	'libxml2'
-	'libzip'
-	'lua'
-	'protozero'
+	bzip2
+	doxygen
+	expat
+	git
+	libosmium
+	libxml2
+	libzip
+	lua
+	onetbb
+	pkgconf
+	protozero
 )
+# boost-libs
+# libc++
 makedepends=(
-	'cmake'
-	'boost'
+	cmake
+	boost
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/heads/master/LICENSE.TXT")
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/heads/master/LICENSE.TXT"
+	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.patch")
 
-b2sums=('7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a')
-b2sums_x86_64=('318ad504099a93585a2ec8d39998e375519f511359fe927718638c5a4dd0221bf15f02babca9ee7f3752f08e7315393370aaf2584f813e34542ccaed08b295fe')
+b2sums=('7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a'
+	'318ad504099a93585a2ec8d39998e375519f511359fe927718638c5a4dd0221bf15f02babca9ee7f3752f08e7315393370aaf2584f813e34542ccaed08b295fe'
+	'e936ab307d55a7c6932403c2d5672e253adfb5b192284f51e20388947cbf53eaeaf62c4f621703fbe1e6ff18fd44785fc6f83abda5435497167f7022c5cbe507')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	patch -Np1 -i ../"${pkgname}-${pkgver}.patch"
+	# for p in ../*.patch; do
+	# 	patch -Np1 -i "$p"
+	# done
+}
 
 build() {
 	local cmake_options=(
@@ -42,6 +54,7 @@ build() {
 
 		# -S <path-to-source>          = Explicitly specify a source directory.
 		-S "${srcdir}/${pkgname}-${pkgver}"
+		# -D CMAKE_BUILD_TYPE=Debug
 		-D CMAKE_BUILD_TYPE=RelWithDebInfo
 		# -D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
