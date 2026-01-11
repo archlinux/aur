@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Ninso112
 pkgname=bootwhy
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A lightweight CLI tool for analyzing Linux boot performance"
 arch=('any')
-url="https://github.com/yourusername/bootwhy"
+url="https://github.com/Ninso112/bootwhy.git"
 license=('GPL3')
 depends=('python' 'systemd')
 makedepends=('python-build' 'python-installer' 'python-wheel')
