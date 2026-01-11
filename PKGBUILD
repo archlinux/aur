@@ -8,7 +8,7 @@ url="https://github.com/xo-xo-xo-xo/jasmine-wallpaper"
 license=(MIT)
 depends=(python python-gobject gtk3 matugen swww)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('253e5789335b3abb9acb5dc307dbceabc82cac5f7bcb0cc401613d7ede794fb9')
+sha256sums=('SKIP')
 
 package() {
   local srcdir="$srcdir/$_upstream-$pkgver"
@@ -17,17 +17,15 @@ package() {
     "$pkgdir/usr/share/$pkgname/jasmine.py"
   install -Dm644 "$srcdir/assets/jasmine.ttf" \
     "$pkgdir/usr/share/$pkgname/assets/jasmine.ttf"
-
   install -Dm644 "$srcdir/assets/jasmine-wallpaper.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/jasmine-wallpaper.svg"
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/jasmine-wallpaper" <<'EOF'
-#!/bin/sh
-exec python /usr/share/jasmine-wallpaper/jasmine.py "$@"
-EOF
-
   install -Dm644 "$srcdir/jasmine-wallpaper.desktop" \
     "$pkgdir/usr/share/applications/jasmine-wallpaper.desktop"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/jasmine-wallpaper" <<'EOF2'
+#!/bin/sh
+exec python /usr/share/jasmine-wallpaper/jasmine.py "$@"
+EOF2
 
   if [[ -f "$srcdir/LICENSE" ]]; then
     install -Dm644 "$srcdir/LICENSE" \
