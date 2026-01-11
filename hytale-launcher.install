@@ -1,19 +1,23 @@
 post_install() {
-    echo ">>> Hytale Launcher has been installed."
-    echo ">>> The binary will be copied to ~/.local/share/Hytale/install/release/package/launcher/current/ on the first run"
-    echo ">>> to allow for self-updating functionality."
+    echo ":: The Hytale Launcher has been installed."
+    echo "   The binary will be copied to '~/.local/share/Hytale/install/release/package/launcher/current/'"
+    echo "   on the first run to allow for self-updating functionality."
+    echo ""
+    echo ":: If you are using KDE Plasma and want to hide the titlebar:"
+    echo "   Right-click the titlebar -> More Actions -> Configure Special Application Settings"
+    echo "   Add property -> 'No titlebar and frame' -> Set to 'Force' and 'Yes'. APPLY!"
 }
 
 post_upgrade() {
     # Check if the user already has the old binary in their home
-    echo ">>> Hytale Launcher has been updated in /opt/hytale-launcher-bin"
-    echo ">>> Your local copy in ~/.local/share/Hytale/install/release/package/launcher/current/"
-    echo ">>> will not be touched if the \"current\" directory exists."
+    echo ":: Hytale Launcher has been updated in '/opt/hytale-launcher-bin'"
+    echo "   Your local copy in '~/.local/share/Hytale/install/release/package/launcher/current/'"
+    echo "   will not be touched if the 'current' directory exists."
 }
 
 post_remove() {
-    echo ">>> The Hytale Launcher has been removed from your system."
-    echo ">>> Note: The self-updated launcher and game data located in:"
-    echo ">>> ~/.local/share/Hytale/"
-    echo ">>> were NOT removed. Delete this folder manually to free up space."
+    echo ":: The Hytale Launcher has been removed from your system."
+    echo "   Note: The self-updated launcher and game data located in:"
+    echo "   '~/.local/share/Hytale/'"
+    echo "   were NOT removed. Delete this folder manually to free up space."
 }

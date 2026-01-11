@@ -3,8 +3,8 @@
 Name=Hytale Launcher
 Comment=Hytale Launcher
 Exec=/usr/bin/hytale-launcher
-Icon=hytale-launcher
+Icon=com.hypixel.HytaleLauncher
 Terminal=false
 Type=Application
 Categories=Game;
-StartupWMClass=hytale-launcher
+StartupWMClass=com.hypixel.HytaleLauncher
