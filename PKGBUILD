@@ -7,7 +7,7 @@ pkgname=(
 	wivrn-dashboard
 )
 pkgver=25.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -158,7 +158,7 @@ package_wivrn-server() {
 }
 package_lib32-wivrn-server() {
 	provides=("lib32-openxr-runtime")
-	depends=(${_depends_lib32_server[@]})
+	depends=(${_depends_lib32_server[@]} "wivrn-server=${pkgver}-${pkgrel}")
 	optdepends=(
 		"lib32-xrizer: OpenVR to OpenXR translation layer"
 	)
@@ -168,7 +168,7 @@ package_lib32-wivrn-server() {
 }
 
 package_wivrn-dashboard() {
-	depends=(${_depends_dashboard[@]})
+	depends=(${_depends_dashboard[@]} "wivrn-server=${pkgver}-${pkgrel}")
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-dashboard
 }
