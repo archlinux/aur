@@ -1,0 +1,37 @@
+pkgbase = jre21-temurin
+	pkgdesc = Temurin (OpenJDK 21 JRE binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 21.0.9.u10
+	pkgrel = 1
+	install = jre21-temurin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-with-classpath-exception
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime=21
+	provides = java-runtime-openjdk=21
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	options = !strip
+	backup = etc/jre21-temurin/security/policy/README.txt
+	backup = etc/jre21-temurin/security/policy/unlimited/default_local.policy
+	backup = etc/jre21-temurin/security/policy/unlimited/default_US_export.policy
+	backup = etc/jre21-temurin/security/policy/limited/default_local.policy
+	backup = etc/jre21-temurin/security/policy/limited/exempt_local.policy
+	backup = etc/jre21-temurin/security/policy/limited/default_US_export.policy
+	backup = etc/jre21-temurin/security/java.policy
+	backup = etc/jre21-temurin/security/java.security
+	backup = etc/jre21-temurin/sound.properties
+	backup = etc/jre21-temurin/management/management.properties
+	backup = etc/jre21-temurin/management/jmxremote.access
+	backup = etc/jre21-temurin/management/jmxremote.password.template
+	backup = etc/jre21-temurin/net.properties
+	backup = etc/jre21-temurin/jaxp.properties
+	backup = etc/jre21-temurin/sdp/sdp.conf.template
+	backup = etc/jre21-temurin/logging.properties
+	source_x86_64 = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jre_x64_linux_hotspot_21.0.9_10.tar.gz
+	sha256sums_x86_64 = aeab55d064a1a27a3744b0880b9b414077b4ed2b1790817eea3df60aec946431
+	source_aarch64 = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jre_aarch64_linux_hotspot_21.0.9_10.tar.gz
+	sha256sums_aarch64 = 1d041073c65e834bdb4da732485a54ff829859dcd1549e7992f15bd73341be29
+
+pkgname = jre21-temurin
