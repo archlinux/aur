@@ -2,7 +2,7 @@
 
 basename=openhmd
 pkgname=$basename-git
-pkgver=0.3.0.511.e64708b
+pkgver=0.3.0.514.85075b0
 pkgrel=1
 pkgdesc="Free and Open Source API and drivers for immersive technology."
 arch=(x86_64 i686)

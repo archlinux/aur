@@ -1,6 +1,6 @@
 pkgbase = openhmd-git
 	pkgdesc = Free and Open Source API and drivers for immersive technology.
-	pkgver = 0.3.0.511.e64708b
+	pkgver = 0.3.0.514.85075b0
 	pkgrel = 1
 	url = https://github.com/OpenHMD/OpenHMD
 	arch = x86_64
