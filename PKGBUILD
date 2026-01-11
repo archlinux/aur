@@ -4,7 +4,7 @@
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
 pkgname=android-sdk-platform-tools
-pkgver=36.0.0
+pkgver=36.0.2
 pkgrel=1
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=("https://dl.google.com/android/repository/platform-tools_r${pkgver}-linu
         'adb.service'
         'license.html'
         'package.xml')
-sha1sums=('ddb0cd76d952d9a1f4c8a32e4ec0e73d7a8bebb8'
+sha1sums=('3c5c54a14f51a2da59d7c4874372619a42deb94d'
           '49a40c129199844603afe71fce69c0908e062393'
           'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa'
-          '1b9c4683766a3e50166fbab499f648a8cfc3a3c1')
+          '53045ddc95fb10fe7aad86c8647601912e4e793b')
 
 package() {
   install -Dm644 "${srcdir}/adb.service" "${pkgdir}/usr/lib/systemd/system/adb.service"
