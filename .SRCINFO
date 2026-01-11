@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-language-pack
 	pkgdesc = Comprehensive collection of tree-sitter languages
-	pkgver = 0.10.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/Goldziher/tree-sitter-language-pack
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = python-tree-sitter-language-pack
 	depends = python-tree-sitter-c-sharp
 	depends = python-tree-sitter-embedded-template
 	depends = python-tree-sitter-yaml
-	source = tree-sitter-language-pack-0.10.0.tar.gz::https://github.com/Goldziher/tree-sitter-language-pack/archive/v0.10.0.tar.gz
-	sha512sums = 34b62f697b7d0738396d443a05d9da63809b4387f96c22eff7474bb935cd1f40816febffcbb6b5d3f9c4cba1d32c7bfe7be6f2e728ffb7ab342545a48586a92b
+	source = tree-sitter-language-pack-0.13.0.tar.gz::https://github.com/Goldziher/tree-sitter-language-pack/archive/v0.13.0.tar.gz
+	sha512sums = d01338ef291eb34d72e8290916c094712e2e128c3340a3fa95ee141415f0d5937d500de1a96bfcade1533bf4d70df00652a585fc3e115bcca0513454d323d086
 
 pkgname = python-tree-sitter-language-pack
