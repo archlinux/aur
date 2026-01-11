@@ -1,0 +1,26 @@
+--- src/Tests/test_programs	2026-01-11 21:14:49.004919850 +0100
++++ src/Tests/test_programs	2026-01-11 21:13:21.969305622 +0100
+@@ -156,15 +156,15 @@
+ ## ========================================
+ ## test locarnate (requires t_coffee to succeed)
+ ##
+-calltest locarnate test_results test_results/mult/tcoffee.aln -I'^CLUSTAL FORMAT for T-COFFEE Version_' \
+-         locarnate $exdir/archaea.fa
++#calltest locarnate test_results test_results/mult/tcoffee.aln -I'^CLUSTAL FORMAT for T-COFFEE Version_' \
++#         locarnate $exdir/archaea.fa
+ 
+-if [ -d "test_results" ] ; then
+-    rm -rf test_results
+-fi
+-if [ -e "input.dnd" ] ; then
+-    rm -f input.dnd
+-fi
++#if [ -d "test_results" ] ; then
++#    rm -rf test_results
++#fi
++#if [ -e "input.dnd" ] ; then
++#    rm -f input.dnd
++#fi
+ 
+ ## ========================================
+ ## test exparna_p
