@@ -2,11 +2,11 @@
 
 pkgname=gptrace
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Trace the activities of an external application"
 url="http://www.muflone.com/gptrace/"
 arch=('any')
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools')
 depends=('gtk3' 'gobject-introspection' 'python-xdg' 'python-gobject' 'python-ptrace')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
