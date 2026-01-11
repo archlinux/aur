@@ -1,6 +1,6 @@
 pkgbase = minigbs-git
 	pkgdesc = Small .gbs chiptune player for Linux.
-	pkgver = 1.4.2+0+gd880bfc
+	pkgver = 1.4.2+5+gc5ef4cb
 	pkgrel = 1
 	url = https://github.com/baines/MiniGBS
 	arch = i686
@@ -9,14 +9,14 @@ pkgbase = minigbs-git
 	makedepends = git
 	makedepends = make
 	makedepends = libx11
+	depends = glibc
 	depends = alsa-lib
 	depends = ncurses
 	optdepends = libx11: Oscilloscope
-	provides = minigbs=1.4.2+0+gd880bfc
+	provides = minigbs=1.4.2+5+gc5ef4cb
 	conflicts = minigbs
 	replaces = minigbs
 	source = git+https://github.com/baines/MiniGBS.git
 	sha256sums = SKIP
 
 pkgname = minigbs-git
-

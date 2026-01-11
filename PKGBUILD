@@ -1,13 +1,13 @@
 # Maintainer: Lubosz Sarnecki <lubosz ! gmail ! com>
 
 pkgname=minigbs-git
-pkgver=1.4.2+0+gd880bfc
+pkgver=1.4.2+5+gc5ef4cb
 pkgrel=1
 pkgdesc="Small .gbs chiptune player for Linux."
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/baines/MiniGBS"
-depends=('alsa-lib' 'ncurses')
+depends=('glibc' 'alsa-lib' 'ncurses')
 makedepends=('git' 'make' 'libx11')
 optdepends=('libx11: Oscilloscope')
 provides=("minigbs="$pkgver)
