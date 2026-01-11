@@ -2,7 +2,7 @@
 pkgname=python-mkvinfo
 _origpkgname=mkvinfo
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for probing matroska files with mkvmerge."
 arch=("x86_64")
 url='https://pypi.org/project/mkvinfo/'
