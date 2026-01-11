@@ -19,64 +19,64 @@ license=('LicenseRef-WolframMathematicaLicenseAgreement') # https://www.wolfram.
 makedepends=('curl' 'rsync' 'inetutils')
 depends=('openmp')
 optdepends=(
-    'ttf-dejavu: correct fonts for Greek characters and inline TeX'
-    ## The following list of dependencies was inferred from namcap's output.  If
-    ## you believe there is an error, please let me know.  Also feel free to
-    ## contribute description to dependencies if you know what they do.
-    'alsa-lib'
-    'atk'
-    'cairo'
-    'ffmpeg'
-    'fontconfig'
-    'gdk-pixbuf2'
-    'glib2'
-    'glu'
-    'gmime'
-    'gmp'
-    'gtk2'
-    'harfbuzz'
-    'intel-tbb'
-    'java-environment'
-    'java-runtime'
-    'leptonica'
-    'libbson'
-    'libffi'
-    'libmongoc'
-    'libogg'
-    'libpng12'
-    'libselinux'
-    'libsm'
-    'libssh2'
-    'libutil-linux'
-    'libx11'
-    'libxcomposite'
-    'libxml2'
-    'libxrandr'
-    'libxslt'
-    'libxss'
-    'libxtst'
-    'libxxf86vm'
-    'mesa-demos: for improved graphics output'
-    'ncurses'
-    'nvidia-utils'
-    'openssl-1.0'
-    'pango'
-    'pixman'
-    'portaudio'
-    'postgresql-libs'
-    'python'
-    'qt5-declarative'
-    'qt5-multimedia'
-    'qt5-webengine'
-    'qt5-xmlpatterns'
-    'r'
-    'tesseract'
-    'zlib'
+  'ttf-dejavu: correct fonts for Greek characters and inline TeX'
+  ## The following list of dependencies was inferred from namcap's output.  If
+  ## you believe there is an error, please let me know.  Also feel free to
+  ## contribute description to dependencies if you know what they do.
+  'alsa-lib'
+  'atk'
+  'cairo'
+  'ffmpeg'
+  'fontconfig'
+  'gdk-pixbuf2'
+  'glib2'
+  'glu'
+  'gmime'
+  'gmp'
+  'gtk2'
+  'harfbuzz'
+  'intel-tbb'
+  'java-environment'
+  'java-runtime'
+  'leptonica'
+  'libbson'
+  'libffi'
+  'libmongoc'
+  'libogg'
+  'libpng12'
+  'libselinux'
+  'libsm'
+  'libssh2'
+  'libutil-linux'
+  'libx11'
+  'libxcomposite'
+  'libxml2'
+  'libxrandr'
+  'libxslt'
+  'libxss'
+  'libxtst'
+  'libxxf86vm'
+  'mesa-demos: for improved graphics output'
+  'ncurses'
+  'nvidia-utils'
+  'openssl-1.0'
+  'pango'
+  'pixman'
+  'portaudio'
+  'postgresql-libs'
+  'python'
+  'qt5-declarative'
+  'qt5-multimedia'
+  'qt5-webengine'
+  'qt5-xmlpatterns'
+  'r'
+  'tesseract'
+  'zlib'
 )
 # dynamic source with the unstable signature parameter
 _source_url=$(
-    # shellcheck disable=SC2312
-    curl -s 'https://www.wolfram.com/download-center/' \
+  # shellcheck disable=SC2312
+  curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
     | grep -E "version=${_pkgver}\b" \
     | grep 'platform=Linux' \
@@ -84,10 +84,8 @@ _source_url=$(
     | sed -E 's/.*href="([^"]+)".*/\1/' \
     | uniq
 )
-source=(
-    "Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
-    'wolfram-remove-xdg-scripts.patch'
-)
+source=("Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
+        'wolfram-remove-xdg-scripts.patch')
 sha256sums=('16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7'
             'ed6509dfface8e05a5fa870350516a0795a1a3bf91cd1bed0f90fa1159378350')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
@@ -124,127 +122,127 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
-    warning "Mathematica takes around 26GiB of space for 'makepkg'."
-    warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
+  warning "Mathematica takes around 26GiB of space for 'makepkg'."
+  warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
-    # shellcheck disable=SC2312 # echo won't trigger errors
-    if [[ "$(echo "${srcdir}" | wc -w)" -ne 1 ]]; then
-        error "ERROR: The Mathematica installer doesn't support directory names with spaces."
-        warning "Current build directory: ${srcdir}"
-        exit 1
-    fi
+  # shellcheck disable=SC2312 # echo won't trigger errors
+  if [[ "$(echo "${srcdir}" | wc -w)" -ne 1 ]]; then
+    error "ERROR: The Mathematica installer doesn't support directory names with spaces."
+    warning "Current build directory: ${srcdir}"
+    exit 1
+  fi
 
-    msg2 'Extracting Mathematica installer...'
-    bash "${srcdir}/Wolfram_${pkgver}_LIN_Bndl.sh" \
-      --keep \
-      --target "${srcdir}/bundle" \
-      -- \
-      -noexec
+  msg2 'Extracting Mathematica installer...'
+  bash "${srcdir}/Wolfram_${pkgver}_LIN_Bndl.sh" \
+    --keep \
+    --target "${srcdir}/bundle" \
+    -- \
+    -noexec
 
-    patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/wolfram-remove-xdg-scripts.patch
+  patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/wolfram-remove-xdg-scripts.patch
 }
 
 package() {
-    installdir="$(realpath -m "${pkgdir}/${_installdir}")"
-    export installdir
+  installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+  export installdir
 
-    msg2 'Running Mathematica installer'
-    # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
-    bash "${srcdir}/bundle/Unix/Installer/WolframInstaller" \
-        -execdir="${pkgdir}/usr/bin" \
-        -targetdir="${installdir}" \
-        -auto
+  msg2 'Running Mathematica installer'
+  # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
+  bash "${srcdir}/bundle/Unix/Installer/WolframInstaller" \
+    -execdir="${pkgdir}/usr/bin" \
+    -targetdir="${installdir}" \
+    -auto
 
-    # Install documentation
-    bash "${srcdir}"/bundle/Unix/.bundle/Unix/Installer/MathInstaller \
-        -targetdir="${pkgdir}/tmp" \
-        -auto
-    rsync -a --remove-source-files "${pkgdir}"/tmp/Documentation/English "${installdir}"/Documentation/
-    rm -rf "${pkgdir}"/tmp
+  # Install documentation
+  bash "${srcdir}"/bundle/Unix/.bundle/Unix/Installer/MathInstaller \
+    -targetdir="${pkgdir}/tmp" \
+    -auto
+  rsync -a --remove-source-files "${pkgdir}"/tmp/Documentation/English "${installdir}"/Documentation/
+  rm -rf "${pkgdir}"/tmp
 
-    if [[ -s "${installdir}"/InstallErrors ]]; then
-        warning 'Review installation errors:'
-        cat "${installdir}"/InstallErrors
-    fi
-    rm -f "${installdir}"/InstallErrors
+  if [[ -s "${installdir}"/InstallErrors ]]; then
+    warning 'Review installation errors:'
+    cat "${installdir}"/InstallErrors
+  fi
+  rm -f "${installdir}"/InstallErrors
 
-    msg2 'Setting up WolframScript'
+  msg2 'Setting up WolframScript'
+  # shellcheck disable=SC2312
+  ar -p "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
+    -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
+
+  msg2 'Copying menu and MIME type information'
+
+  desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
+  install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
+  install -D -m644 "${installdir}"/SystemFiles/Installation/wolfram-wolfram.directory -t "${pkgdir}"/usr/share/desktop-directories
+  install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
+  rm -r "${installdir}"/SystemFiles/Installation
+
+  _fix_dekstop_file "${pkgdir}/usr/share/applications/${desktop_file}"
+  _fix_dekstop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
+
+  msg2 'Copying icons'
+  for i in 32 64 128; do
+    install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
+
     # shellcheck disable=SC2312
-    ar -p "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
-        -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
-
-    msg2 'Copying menu and MIME type information'
-
-    desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-    install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
-    install -D -m644 "${installdir}"/SystemFiles/Installation/wolfram-wolfram.directory -t "${pkgdir}"/usr/share/desktop-directories
-    install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
-    rm -r "${installdir}"/SystemFiles/Installation
-
-    _fix_dekstop_file "${pkgdir}/usr/share/applications/${desktop_file}"
-    _fix_dekstop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
-
-    msg2 'Copying icons'
-    for i in 32 64 128; do
-        install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
-
-        # shellcheck disable=SC2312
-        for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
-            mimetype="$(basename "${mimetype}")"
-            install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
-        done
+    for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
+      mimetype="$(basename "${mimetype}")"
+      install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
     done
+  done
 
-    msg2 'Copying man pages'
-    install -D -m644 "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 -t "${pkgdir}"/usr/share/man/man1
+  msg2 'Copying man pages'
+  install -D -m644 "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 -t "${pkgdir}"/usr/share/man/man1
 
-    msg2 'Copying license'
-    install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  msg2 'Copying license'
+  install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    _fix_binary_symlinks # namcap rule: symlink
-    _fix_permissions # namcap rule: permissions
+  _fix_binary_symlinks # namcap rule: symlink
+  _fix_permissions # namcap rule: permissions
 }
 
 _fix_dekstop_file() {
-    # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
-    sed -E -i '/^\s*Version\s*=.*$/d' "$1"
-    # encoding is outdated
-    sed -E -i '/^\s*Encoding\s*=.*$/d' "$1"
-    # invalid MIME type: "x-scheme-handler/wolfram\+cloudobject"
-    sed -E -i '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
-    # executable path contains BUILDDIR
-    sed -E -i 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
-    sed -E -i "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
-    # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
-    if [[ "$1" = *".desktop" ]]; then
-        cat >> "$1" <<EOF
+  # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
+  sed -E -i '/^\s*Version\s*=.*$/d' "$1"
+  # encoding is outdated
+  sed -E -i '/^\s*Encoding\s*=.*$/d' "$1"
+  # invalid MIME type: "x-scheme-handler/wolfram\+cloudobject"
+  sed -E -i '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
+  # executable path contains BUILDDIR
+  sed -E -i 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
+  sed -E -i "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
+  # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
+  if [[ "$1" = *".desktop" ]]; then
+    cat >> "$1" << EOF
 GenericName=Mathematical Software
 Keywords=Wolfram;Mathematica;Symbolic;Computation;Programming;Simulation;Data Analysis;Visualization;Algebra;Calculus;Graphing;
 Categories=Science;Math;ComputerScience;DataVisualization;NumericalAnalysis;ArtificialIntelligence;Physics;ParallelComputing;
 EOF
-    fi
-    # checked with desktop-file-validate
+  fi
+  # checked with desktop-file-validate
 }
 
 _fix_binary_symlinks() {
-    msg2 'Fixing symbolic links'
-    relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
+  msg2 'Fixing symbolic links'
+  relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
 
-    ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"
-    ln -sf "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
-    ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
+  ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"
+  ln -sf "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
 }
 
 _fix_permissions() {
-    msg2 'Fixing file permissions'
-    chmod go-w -R "${pkgdir}"/*
+  msg2 'Fixing file permissions'
+  chmod go-w -R "${pkgdir}"/*
 }
