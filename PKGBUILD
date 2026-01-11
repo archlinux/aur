@@ -2,7 +2,7 @@
 
 pkgname=python-apkinspector
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to decode and manipulate android apks"
 arch=('any')
 url="https://github.com/erev0s/apkInspector"
