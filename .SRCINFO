@@ -1,15 +1,16 @@
 pkgbase = po-debconf
 	pkgdesc = Debian manage translated Debconf templates files with gettext
 	pkgver = 1.0.22
-	pkgrel = 1
-	url = http://www.debian.org/
+	pkgrel = 2
+	url = https://www.debian.org/
 	changelog = ChangeLog
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	depends = gettext
 	depends = perl
 	depends = intltool
-	source = https://deb.debian.org/debian/pool/main/p/po-debconf/po-debconf_1.0.22_all.deb
+	source = po-debconf-1.0.22.deb::https://deb.debian.org/debian/pool/main/p/po-debconf/po-debconf_1.0.22_all.deb
 	sha256sums = e40fb5a74cb23cf5d25f49474a8092af35d855fba4a32c6f9bb4fba85d4dae68
 
 pkgname = po-debconf
