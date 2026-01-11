@@ -1,0 +1,23 @@
+pkgbase = hytale-launcher-bin
+	pkgdesc = Hytale Launcher (Native Linux, Self-Updating)
+	pkgver = 2026.01.10.ff8feba
+	pkgrel = 1
+	url = https://hytale.com
+	install = hytale-launcher.install
+	arch = x86_64
+	license = custom:proprietary
+	depends = glib2
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source = hytale-launcher.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-2026.01.10-ff8feba.zip
+	source = hytale-launcher.install
+	source = hytale-launcher.sh
+	source = hytale-launcher.png
+	source = hytale-launcher.desktop
+	sha256sums = 89897665202871d62623fa7ce1b64970622cca34554aa89921b650ab70066f20
+	sha256sums = 20dcdc016fa799ec08fcab656090f065742993ea332240360063105f44b1f27b
+	sha256sums = 257cc0a5cc69e40f6e3674b8be18e590eeaf31376e52b7f1e45b2361059a5b7f
+	sha256sums = ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106
+	sha256sums = e22d6d5ee3f627b24b4a5e65676b81008f9945cdf1fb2b7a727d238d9489246d
+
+pkgname = hytale-launcher-bin

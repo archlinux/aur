@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Hytale Launcher
+Comment=Hytale Launcher
+Exec=/usr/bin/hytale-launcher
+Icon=hytale-launcher
+Terminal=false
+Type=Application
+Categories=Game;
