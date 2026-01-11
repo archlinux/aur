@@ -1,7 +1,7 @@
 pkgbase = python-sardana
 	pkgdesc = Instrument control and data acquisition system
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sardana-org/sardana
 	arch = any
 	license = LGPL-3.0-or-later

@@ -3,7 +3,7 @@
 _name=sardana
 pkgname=python-${_name}
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Instrument control and data acquisition system"
 arch=("any")
 url="https://gitlab.com/sardana-org/${_name}"
