@@ -1,7 +1,7 @@
-# Maintainer: Ward Segers <w@rdsegers.be>
+# Contributor: Ward Segers <w@rdsegers.be>
 
 pkgname=kali-themes
-pkgver=2023.1.1
+pkgver=2025.4.5
 pkgrel=1
 pkgdesc="GTK theme included with Kali Linux"
 arch=('any')
@@ -10,16 +10,15 @@ license=('GPL3')
 options=('!strip' '!buildflags' '!makeflags')
 makedepends=('optipng' 'librsvg')
 source=("https://gitlab.com/kalilinux/packages/$pkgname/-/archive/kali/$pkgver/$pkgname-kali-$pkgver.tar.gz")
-sha512sums=('b8711b1b1726dbbbca3975446d394998186f68ee58eaeee409903902f57aa26044ef247193a92908c6bbb00b03949d276bb2ff073e974d2a1977762a6a18b680')
+sha512sums=('5cd2dbfeddc7dbafe8d9e6217863a06413858d4133f5901c73868a6845612cd5e13487c9b77a8f44791021cf7ede4ceec3f36ef13dba23c230fd7503aac278cd')
 
 build() {
-	cd "$pkgname-kali-$pkgver"
-	make
+  cd "$pkgname-kali-$pkgver"
+  make
 }
 
 package() {
-	cd "$pkgname-kali-$pkgver"
-	install -d -m755 "${pkgdir}/usr/share/"
-	cp -r "share/themes" "$pkgdir/usr/share/themes"
+  cd "$pkgname-kali-$pkgver"
+  install -d -m755 "${pkgdir}/usr/share/"
+  cp -r "share/themes" "$pkgdir/usr/share/themes"
 }
-
