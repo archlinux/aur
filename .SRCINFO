@@ -1,7 +1,7 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
 	pkgver = 32.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -41,7 +41,7 @@ pkgbase = obs-studio-liberty
 	depends = luajit
 	depends = mbedtls>=3.6.1
 	depends = pciutils
-	depends = python>=3.13
+	depends = python>=3.14
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.10.0
 	depends = qt6-svg>=6.10.0
