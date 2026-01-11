@@ -1,10 +1,10 @@
 pkgbase = gextractwinicons
 	pkgdesc = Extract cursors and icons from MS Windows compatible resource files
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.muflone.com/gextractwinicons
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = gettext
 	depends = gtk3
