@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz at gmail dot com>
 
 pkgname='whatstyle-git'
-pkgver=0.1.8.19.23c43b6
+pkgver=0.1.9.21.736d1bc
 pkgrel=1
 pkgdesc='whatstyle finds a code format style that fits given source files.'
 url='https://github.com/mikr/whatstyle'

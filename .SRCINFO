@@ -1,6 +1,6 @@
 pkgbase = whatstyle-git
 	pkgdesc = whatstyle finds a code format style that fits given source files.
-	pkgver = 0.1.8.19.23c43b6
+	pkgver = 0.1.9.21.736d1bc
 	pkgrel = 1
 	url = https://github.com/mikr/whatstyle
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = whatstyle-git
 	sha256sums = SKIP
 
 pkgname = whatstyle-git
-
