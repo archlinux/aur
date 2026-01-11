@@ -2,7 +2,7 @@
 # Contributor: lorim <lorimz@gmail.com>
 
 pkgname=lib32-libtiff4
-pkgver=4.7.1
+pkgver=3.9.7
 pkgrel=6
 pkgdesc='Library for manipulation of TIFF images'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   git+https://gitlab.com/libtiff/libtiff.git#tag=v${pkgver}
   libtiff4-soname.patch
 )
-sha256sums=('SKIP'
+sha256sums=('b4fe4a431427dcabeac32374419271fc249453748c7e21b73c63928e668c1e54'
             'e6246631f6d943715b612b4ddd2279c946ff90c9e8d755fa639e8051a6eb3488')
 
 prepare() {
