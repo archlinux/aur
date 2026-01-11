@@ -16,7 +16,7 @@ md5sums=('6b83b6db787966ea43fccea4687f8c68')
 
 build() {
   cd $pkgname-$pkgver
-  make
+  make CFLAGS="$CFLAGS -std=gnu11 "
 }
 
 package() {
