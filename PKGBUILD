@@ -12,8 +12,10 @@ depends=(
     "python-numpy"
 )
 makedepends=(
-    "python-build"
     "meson-python"
+    "python-build"
+    "python-installer"
+    "python-wheel"
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=("a3208f5f3881e40b7878d1121ba39b8d57f1bc38fb4e5f0d9d1c66a9b007e44f")
