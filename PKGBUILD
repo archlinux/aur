@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgauthor=balta2ar
 pkgname=brotab
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Control your browser's tabs from the command line"
 arch=('any')
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -15,7 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 		"json-output.patch")
-sha256sums=('d078a3ea5e0c5cc960e3ca9d0be767fa739355e096f5836b13f4c4352a58f262'
+sha256sums=('1159b201abfdd4436c1a114985e052e97db87deffebf8c92df8e8b64f3a131b5'
             '68d6c02c64afcc7da5755795ec86c33a95a7aa00c4f4b99557aaf03b70b4b64d')
 
 prepare() {
