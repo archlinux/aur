@@ -3,7 +3,7 @@
 _pyname=nbclassic
 pkgname=jupyter-$_pyname
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
 url='https://jupyter.org/'
@@ -30,8 +30,15 @@ makedepends=(bower
              yarn)
 checkdepends=(python-pytest-jupyter
               python-pytest-tornasync)
-source=(git+https://github.com/jupyter/nbclassic#tag=v$pkgver)
-sha256sums=('44fba34a96c0c029d074254cc7706d28b36f532b774857b2ad3cae04532f2ede')
+source=(git+https://github.com/jupyter/nbclassic#tag=v$pkgver
+        drop-ipython-genutils.patch)
+sha256sums=('44fba34a96c0c029d074254cc7706d28b36f532b774857b2ad3cae04532f2ede'
+            'f13fc7e757aef24f79562a81178e0a47e3b400af253f70301a4819d2b2902012')
+
+prepare() {
+  cd $_pyname
+  patch -p1 -i ../drop-ipython-genutils.patch
+}
 
 build() {
   cd $_pyname

@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbclassic
 	pkgdesc = Jupyter Notebook as a Jupyter Server Extension
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jupyter.org/
 	arch = any
 	license = BSD-3-Clause
@@ -28,6 +28,8 @@ pkgbase = jupyter-nbclassic
 	depends = python-tornado
 	depends = python-traitlets
 	source = git+https://github.com/jupyter/nbclassic#tag=v1.3.3
+	source = drop-ipython-genutils.patch
 	sha256sums = 44fba34a96c0c029d074254cc7706d28b36f532b774857b2ad3cae04532f2ede
+	sha256sums = f13fc7e757aef24f79562a81178e0a47e3b400af253f70301a4819d2b2902012
 
 pkgname = jupyter-nbclassic
