@@ -9,7 +9,7 @@ pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/dresden-elektronik/gcfflasher"
 license=(BSD-3-Clause)
-depends=(libgpiod)
+depends=(libgpiod glibc)
 makedepends=(git cmake)
 source=("gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v${pkgver}")
 sha256sums=('6b066365343e480960af7d6e0ecb43beab7b870ae1a6677597e0baadca19b078')

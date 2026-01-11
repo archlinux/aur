@@ -11,6 +11,7 @@ pkgbase = gcfflasher
 	makedepends = git
 	makedepends = cmake
 	depends = libgpiod
+	depends = glibc
 	source = gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v4.10.0
 	sha256sums = 6b066365343e480960af7d6e0ecb43beab7b870ae1a6677597e0baadca19b078
 
