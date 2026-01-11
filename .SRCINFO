@@ -1,0 +1,21 @@
+pkgbase = mautrix-twitter
+	pkgdesc = mautrix-twitter puppeting bridge
+	pkgver = 0.2511.0
+	pkgrel = 1
+	url = https://github.com/mautrix/twitter
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	depends = libolm
+	backup = etc/mautrix-twitter/mautrix-twitter.yaml
+	source = mautrix-twitter-0.2511.0.tar.gz::https://github.com/mautrix/twitter/archive/v0.2511.0.tar.gz
+	source = mautrix-twitter.sysusers
+	source = mautrix-twitter.tmpfiles
+	source = mautrix-twitter.service
+	sha256sums = 89b34b2fbed2a3b43ab97b0aa275046c912daa38dc19a058a1456a14c99e2e52
+	sha256sums = e3afd1ce8825cf6dc958bfdd566998304fa690af70b85851e0158ea656fcfd35
+	sha256sums = ec0be2a5bbfeb35912cb4972506d33cc47511537ed1dfd074472104fe91dc5a6
+	sha256sums = 87ca71cd6bef563fa1949c9ef8306faa2cfb88957cc7c5aeef72e9b2fd1903e0
+
+pkgname = mautrix-twitter

@@ -1,0 +1,37 @@
+[Unit]
+Description=mautrix-twitter puppeting bridge
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=exec
+User=mautrix-twitter
+Group=mautrix-twitter
+WorkingDirectory=/var/lib/mautrix-twitter
+ExecStart=/usr/bin/mautrix-twitter -n -c /etc/mautrix-twitter/mautrix-twitter.yaml
+Restart=on-failure
+
+ReadWritePaths=/var/lib/mautrix-twitter
+ReadWritePaths=/var/log/mautrix-twitter
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
