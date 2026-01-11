@@ -2,7 +2,7 @@
 
 _name=pymca
 pkgname=python-pymca5
-pkgver=5.9.4
+pkgver=5.9.5
 pkgrel=1
 pkgdesc="Mapping and X-Ray Fluorescence Analysis"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python-numpy python-fisx python-h5py python-matplotlib python-scipy python-pyqt5 python-opengl python-qtconsole python-pyqt5-webengine)
 makedepends=(python-setuptools python-numpy python-fisx cython python-build python-installer python-wheel python-setuptools)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/silx-kit/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("36dfc2421a1087cc65c612f3b8c5e53e43b0ef12e2830cacd3c8d0b5f7052752")
+sha256sums=("a54adfff9ae76f79e173f143138fd373ed5de17e6d4f1b226cb3a23cc417ab82")
 
 build() {
   cd "${_name}-${pkgver}"
