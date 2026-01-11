@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.14.1
+pkgver=8.18.0
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -24,16 +24,12 @@ depends=("android-${_android_arch}-brotli"
          "android-${_android_arch}-zlib")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/download/curl-${pkgver}.tar.bz2"
-        "0002-nghttp2-static.patch")
-md5sums=('bf683fcf55bed4c5bf66ca57ab99a96b'
-         '83548784e93f008c64aea899a0905a07')
+source=("${url}/download/curl-${pkgver}.tar.bz2")
+md5sums=('7dc4bafd82087e22c25fd5d5f6f97beb')
 
 prepare() {
     cd "${srcdir}/curl-${pkgver}"
     source android-env ${_android_arch}
-
-    patch -Np1 -i ../0002-nghttp2-static.patch
 
     autoreconf -vfi
 }
@@ -66,4 +62,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
