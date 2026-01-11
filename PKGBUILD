@@ -15,7 +15,7 @@ IDADIR=${IDADIR:-/opt/ida-pro}
 
 pkgver() {
 	cd "$_idaplugin"
-    echo "0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -26,5 +26,5 @@ package() {
 	install -Dm644 "$_idaplugin"/LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 
 	install -Dm644 "$_idaplugin"/README.md -t "$pkgdir"/usr/share/doc/$pkgname/
-    cp -r "$_idaplugin"/images "$pkgdir"/usr/share/doc/$pkgname/
+	cp -r "$_idaplugin"/images "$pkgdir"/usr/share/doc/$pkgname/
 }
