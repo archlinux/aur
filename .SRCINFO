@@ -1,0 +1,14 @@
+pkgbase = endcord-rpc
+	pkgdesc = Small RPC server made from endcord parts. Provides Rich Presence and game detection only.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sparklost/endcord-rpc
+	arch = any
+	license = GPL-3.0-only
+	provides = endcord-rpc
+	conflicts = endcord-rpc
+	options = !strip
+	source = endcord-rpc-1.0.0.tar.gz::https://github.com/sparklost/endcord-rpc/releases/download/1.0.0/endcord-rpc-1.0.0-linux.tar.gz
+	sha256sums = SKIP
+
+pkgname = endcord-rpc
