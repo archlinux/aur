@@ -1,0 +1,12 @@
+pkgbase = r-ankir
+	pkgdesc = R package for reading Anki flashcard databases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chrislongros/ankiR
+	arch = any
+	license = MIT
+	depends = r
+	source = r-ankir-0.1.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 13c264aade21dbfbb15f2e4279e83ce1f8fb3fd6f96f5b90defc9ef1a473df76
+
+pkgname = r-ankir
