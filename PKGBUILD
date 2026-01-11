@@ -1,7 +1,7 @@
 # Maintainer: baseplate-admin <61817579+baseplate-admin@users.noreply.github.com>
 pkgname=modern-colorthief-git
 _name=modern_colorthief
-pkgver=0.1.8.r0.g0000000
+pkgver=0.1.9.r0.g0000001
 pkgrel=1
 pkgdesc="A modern color thief (git version)"
 arch=('x86_64' 'aarch64')
@@ -40,5 +40,5 @@ build() {
 package() {
     cd "$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }

@@ -1,6 +1,6 @@
 pkgbase = modern-colorthief-git
 	pkgdesc = A modern color thief (git version)
-	pkgver = 0.1.8.r0.g0000000
+	pkgver = 0.1.9.r0.g0000001
 	pkgrel = 1
 	url = https://github.com/baseplate-admin/modern_colorthief
 	arch = x86_64
