@@ -14,6 +14,6 @@ pkgbase = clash-nyanpasu-nightly-bin
 	conflicts = clash-nyanpasu-bin
 	options = !strip
 	source = Clash.Nyanpasu_2.0.0-alpha+740cb3e_amd64.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_2.0.0-alpha+740cb3e_amd64.deb
-	sha256sums = SKIP
+	sha256sums = 7a8c39a73ddcf35e53df2cc0f44535be43491d6834da4bab1d467db5ce092682
 
 pkgname = clash-nyanpasu-nightly-bin
