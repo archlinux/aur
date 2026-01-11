@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=Bessel
-_pkgver=0.6-1
+_pkgver=0.7-0
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Computations and Approximations for Bessel Functions'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-sfsmisc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d0275d85437d5bf4bf9d10461e4d9bd1b32c948905429131101d864cec185358')
+sha256sums=('8e4e1f5530967d11390b70a72cd9208e64bb78ffb25a6819091cb851122fdb3b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
