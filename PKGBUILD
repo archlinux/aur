@@ -21,7 +21,7 @@ makedepends=('meson'
              'glm'
              'cmake')
 license=('MIT')
-options=('debug' '!strip')
+options=()
 
 source=('git+https://gitlab.freedesktop.org/monado/demos/xrgears.git')
 md5sums=('SKIP')
