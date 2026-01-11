@@ -26,6 +26,12 @@ pkgver() {
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
+prepare() {
+  cd SuperFamiconv
+  # Readd install target, upstream has reverted it (by accdent?)
+  git cherry-pick -n 2d4c6bafa6d83c2cb8aacaadac20e03644b49601
+}
+
 build() {
   cd build
 
