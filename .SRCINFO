@@ -1,0 +1,17 @@
+pkgbase = python-fsrs
+	pkgdesc = Free Spaced Repetition Scheduler - Python implementation
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://github.com/open-spaced-repetition/py-fsrs
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/f/fsrs/fsrs-6.3.0.tar.gz
+	sha256sums = 3abbafd66469ebf58d35a5d5bb693a492e1db44232e09aa8e4d731bf047cd0ae
+
+pkgname = python-fsrs
