@@ -2,11 +2,11 @@
 
 pkgname=gtransmemory
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ application to manage words and sentences translations in many memories for each language."
 url="http://www.muflone.com/gtransmemory"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools')
 depends=('gtk3' 'python-xdg' 'python-gobject' 'python-polib')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
