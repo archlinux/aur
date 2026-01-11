@@ -2,7 +2,7 @@
 
 pkgname=python-spf-engine
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SPF (Sender Policy Framework) back-end for Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/${pkgname#*-}"
