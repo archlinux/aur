@@ -15,9 +15,9 @@ source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('96923c4f116c9b4726f3abd0da6878c771fa0494631a1737b9200225e425a93f')
 
 prepare() {
-  cd "${pkgname%-*}-${pkgver}"
-  export GOPATH="${srcdir}/go"
-  go mod download -modcacherw
+    cd "${pkgname%-*}-${pkgver}"
+    export GOPATH="${srcdir}/go"
+    go mod download -modcacherw
 }
 
 build() {
