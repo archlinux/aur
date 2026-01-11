@@ -5,3 +5,6 @@ pkg
 *.tar.zst
 *.log
 *tar.gz.sha256
+*.png
+*.desktop
+LICENSE_*
