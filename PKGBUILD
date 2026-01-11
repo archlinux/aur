@@ -5,7 +5,7 @@
 
 pkgname=journal-brief
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Show interesting new systemd journal entries since last run'
 arch=('any')
 url="https://github.com/twaugh/${pkgname}"

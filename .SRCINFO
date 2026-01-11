@@ -1,7 +1,7 @@
 pkgbase = journal-brief
 	pkgdesc = Show interesting new systemd journal entries since last run
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twaugh/journal-brief
 	arch = any
 	license = GPL-2.0-only
