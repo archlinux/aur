@@ -9,13 +9,12 @@ _pypi_package='ollama-cli'
 
 pkgname="${_pypi_package}"
 pkgver="${_upstreamver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line tool that reads a text from stdin and pipes it to Ollama"
 arch=('any')
 url='https://pypi.org/project/ollama-cli/'
 license=('MIT')
 depends=('python' 'python-httpx' 'python-ollama' 'python-dm-streamvalve' 'python-dm-ollamalib')
-optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-dynamic-versioning')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('ff2d788529ea0031594b8ca6eae6a35548c9b90aec6502472ae7feedc561f34d')

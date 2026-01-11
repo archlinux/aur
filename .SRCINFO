@@ -1,7 +1,7 @@
 pkgbase = ollama-cli
 	pkgdesc = Simple command line tool that reads a text from stdin and pipes it to Ollama
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ollama-cli/
 	arch = any
 	license = MIT
