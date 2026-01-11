@@ -1,4 +1,5 @@
 # Maintainer: Evan Goode <mail@evangoo.de>
+# Contributor: Giovanni Harting <anonfunc@archlinux.org>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: seth <getchoo at tuta dot io>
@@ -10,37 +11,40 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher
-pkgver=9.4.2
+pkgver=10.0.1.1
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
-arch=('i686' 'x86_64' 'aarch64')
+arch=(x86_64)
 url='https://github.com/unmojang/FjordLauncher'
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(
   glibc
+  mesa-utils
   gcc-libs
   java-runtime
+  libarchive
   libgl
+  pciutils
+  qrencode
   qt6-base
-  qt6-5compat
-  qt6-svg
   qt6-imageformats
   qt6-networkauth
-  quazip-qt6
+  qt6-svg
   zlib
   hicolor-icon-theme
   tomlplusplus
   cmark
 )
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode)
+makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode)
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
+            'orca: minecraft screen reader'
             'flite: minecraft voice narration')
 source=("https://github.com/unmojang/FjordLauncher/releases/download/$pkgver/FjordLauncher-$pkgver.tar.gz"
         {lionshead,batch,mdi}.license)
-b2sums=('2247d63c1eab69a7cc8da1d07acbc2c0fbac31009f601f7d096757b4932ba93e454d86c1c4b164449d436217e14cb18b53901e6c16e1d6d58275f77f9f8ddb70'
+b2sums=('edc4e2644c153367cc19178419a460abcc9e452bf6c82b0e3c0aeb2f5d829151de628d4d174b3fba76d8d2af686f2ce6fe308902214422dc71071564853ad3e9'
         'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
         '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
         'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
@@ -51,9 +55,13 @@ build() {
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
   cmake -DCMAKE_BUILD_TYPE= \
+    -GNinja \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_BUILD_PLATFORM="archlinux" \
     -DLauncher_QT_VERSION_MAJOR="6" \
+    -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
     -Bbuild -S.
   cmake --build build
 }

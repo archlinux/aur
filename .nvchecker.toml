@@ -1,5 +1,4 @@
 [fjordlauncher]
 source = "github"
-github = "unmojang/FjordLauncher"
-include_regex = "\\d+\\.\\d+"
-use_latest_release = true
+git = "https://github.com/unmojang/FjordLauncher.git"
+exclude_regex = ".*pre.*"
