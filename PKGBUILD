@@ -5,7 +5,7 @@ _pkgname=pymilvus
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
 pkgver=2.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Sdk for Milvus"
 arch=('any')
 url="https://github.com/milvus-io/${_pkgname}"
@@ -17,7 +17,7 @@ b2sums=('b7bbc342269766bf10e68a970574d260a9493cc9305ee829903cf0696d7f6964afbf4e9
 
 build() {
     cd "${_pipname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {

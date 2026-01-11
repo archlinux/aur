@@ -1,7 +1,7 @@
 pkgbase = python-pymilvus
 	pkgdesc = Python Sdk for Milvus
 	pkgver = 2.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/milvus-io/pymilvus
 	arch = any
 	license = Apache-2.0
