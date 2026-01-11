@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-git
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Promtail - Logshipper for Loki"
 arch=('x86_64')
 url='https://github.com/grafana/loki'
