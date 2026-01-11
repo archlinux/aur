@@ -8,7 +8,7 @@ pkgbase = reflectcpp-git
 	arch = armv7h
 	license = MIT
 	makedepends = cmake
-	makedepends = gcc>=11.4
+	makedepends = gcc
 	makedepends = ninja
 	optdepends = libxml2: for XML serialization support
 	optdepends = yaml-cpp: for YAML serialization support

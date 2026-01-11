@@ -9,7 +9,7 @@ url="https://github.com/getml/reflect-cpp"
 license=('MIT')
 makedepends=(
   'cmake'
-  'gcc>=11.4'
+  'gcc'
   'ninja'
 )
 # reflectcpp is header-only + bundled deps, no runtime dependencies
@@ -33,12 +33,8 @@ pkgver() {
 build() {
   cd "reflect-cpp"
 
-  # Determine C++ standard support
+  # Force C++20 to avoid std::expected requirement
   local cxx_standard=20
-  gcc_version=$(gcc --version | head -n1 | grep -oP '\d+' | head -n1)
-  if [ "$gcc_version" -ge 12 ]; then
-    cxx_standard=23
-  fi
 
   cmake -B build \
     -G Ninja \
@@ -52,7 +48,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DREFLECTCPP_INSTALL=ON \
     -DREFLECTCPP_BUILD_SHARED=ON \
-    -DREFLECTCPP_USE_STD_EXPECTED=ON \
+    -DREFLECTCPP_USE_STD_EXPECTED=OFF \
     -DREFLECTCPP_USE_BUNDLED_DEPENDENCIES=ON \
     -DREFLECTCPP_USE_VCPKG=OFF \
     -DREFLECTCPP_JSON=ON \
