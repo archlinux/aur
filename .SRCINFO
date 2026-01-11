@@ -1,0 +1,16 @@
+pkgbase = ferrite-bin
+	pkgdesc = A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/OlaProeis/Ferrite
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ferrite
+	conflicts = ferrite
+	source_x86_64 = ferrite-bin-0.2.1-x86_64.tar.gz::https://github.com/OlaProeis/Ferrite/releases/download/v0.2.1/ferrite-linux-x64.tar.gz
+	source_x86_64 = LICENSE
+	sha256sums_x86_64 = 121d475e5ef5e0c0d3cfd0c940612c19bcdde200c4e75aea38b55ce1be56a75d
+	sha256sums_x86_64 = c94952dae4438b71667a129c1f7dd0e196e6d7dbf37db4525511c69536c27ac1
+
+pkgname = ferrite-bin
