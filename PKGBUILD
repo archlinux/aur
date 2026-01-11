@@ -3,7 +3,7 @@
 pkgname=moz-phab
 _gitpkgname=review
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
 url='https://github.com/mozilla-conduit/review'
