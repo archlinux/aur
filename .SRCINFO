@@ -1,0 +1,17 @@
+pkgbase = ferrite
+	pkgdesc = A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/OlaProeis/Ferrite
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	conflicts = ferrite-bin
+	options = !lto
+	source = ferrite-0.2.1.tar.gz::https://github.com/OlaProeis/Ferrite/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = f89fffd1dbb5f3a2f4349ade44897a55560af94648fadbe7c5125db3928573ef
+
+pkgname = ferrite
