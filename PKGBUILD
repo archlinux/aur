@@ -140,7 +140,6 @@ build() {
 package_ctranslate2() {
   pkgdesc="A C++ library for efficient inference with Transformer models."
   depends=(
-    'nlohmann-json'
     'onednn'
     'openblas'
   )
