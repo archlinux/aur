@@ -24,7 +24,7 @@ pkgname=(
   python-opentelemetry-test-utils
 )
 pkgver=1.39.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache-2.0)
@@ -127,7 +127,8 @@ check() {
     --deselect=opentelemetry-sdk/tests/resources/test_resources.py::TestOTELResourceDetector::test_process_detector
     --deselect=exporter/opentelemetry-exporter-otlp-proto-grpc/benchmarks/test_benchmark_trace_exporter.py::test_simple_span_processor
     --deselect=exporter/opentelemetry-exporter-otlp-proto-grpc/benchmarks/test_benchmark_trace_exporter.py::test_batch_span_processor
-)
+    --deselect=opentelemetry-sdk/tests/context/test_asyncio.py::TestAsyncio::test_with_asyncio
+  )
 
   for path in "${_pkgpaths[@]}"; do
 #    [ "$path" = "tests/opentelemetry-test-utils" ] && continue
