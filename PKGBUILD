@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-play
 pkgname=$_pkgname-git
-pkgver=0.62.r13.gcdf50b96
+pkgver=0.72.r5.gbb6896e
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
@@ -44,7 +44,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -60,20 +60,22 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DBUILD_LIBRETRO_CORE=ON \
-		-DBUILD_PLAY=OFF \
-		-DBUILD_TESTS="$CHECKFUNC" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DENABLE_AMAZON_S3=OFF \
+	local options=(
+		-D BUILD_LIBRETRO_CORE=ON
+		-D BUILD_PLAY=OFF
+		-D BUILD_TESTS="$CHECKFUNC"
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D ENABLE_AMAZON_S3=OFF
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 check() {
-	ctest --test-dir build
+	ctest --output-on-failure --test-dir build
 }
 
 package() {
@@ -81,7 +83,8 @@ package() {
 		'libbz2.so'
 		'libchdr.so'
 		'libGLEW.so'
-		'libGL.so'
+		'libGLX.so'
+		'libOpenGL.so'
 		'libxxhash.so'
 		'libz.so'
 	)
