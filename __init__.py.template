@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 """Allow Pyth to work without exposing its top-level module
 names to the global module namespace."""
 
