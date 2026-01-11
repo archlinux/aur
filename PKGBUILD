@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 
