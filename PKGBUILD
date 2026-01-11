@@ -5,7 +5,7 @@
 
 pkgname=ocrodjvu-python3-git
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="OCR for DjVu (Python 3 port)"
 arch=('i686' 'x86_64')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
