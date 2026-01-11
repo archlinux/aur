@@ -19,7 +19,9 @@ _urlver="${pkgver/_/-}"
 source=("$pkgname-$_urlver.tar.gz::https://github.com/piotrek1372/$pkgname/archive/refs/tags/v$_urlver.tar.gz"
         "ca-racing.desktop"
         "ca-racing.sh")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('207673becefcaff48e12b13e607bc38678aa0529ab92b4a057441c498ac0e895'
+            '1daadbed224442b479eb435bb7927a3c16353acbf25eff04d7348202b07cf3f3'
+            'ded2d55a2da0ccd2a3273130d3ed41c2e6d6e5b6f0e9c0d7f8cbbbf5365316d5')
 
 build() {
     cd "$srcdir/CA-Racing-$_urlver"
