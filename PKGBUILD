@@ -1,4 +1,5 @@
-# Maintainer: Callum Parsey <callum@neoninteger.au>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Callum Parsey <callum@neoninteger.au>
 # Contributor: Laszlo Papp <lpapp@kde.org>
 
 # TODO: The package is called `adduser-deb` for historical reasons. Merging it
@@ -7,7 +8,7 @@
 # `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
-pkgver=3.137
+pkgver=3.154
 pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
@@ -35,27 +36,27 @@ depends=("findutils" "perl" "shadow" "util-linux")
 optdepends=("perl-locale-gettext: needed for localised/non-English output"
             "quota-tools: needed if enabling the \`QUOTAUSER\` option in \`adduser.conf\`"
             "tar: needed for \`deluser --backup\` or if enabling the \`BACKUP*\` options in \`deluser.conf\`")
-makedepends=("po4a")
+makedepends=("dpkg" "po4a")
 
 conflicts=("adduser")
 backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "arch-finger.patch"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=('28cdbd0b393a7ce2eb018caaf8dc1c0917d0937720372dc2d2cedbf0e4d2e9c1'
-            'a65b9919007d55fd5ace456276493e78a6cd2183d1277c458c74879cc2519e81'
+sha256sums=('3cdf47e17c5e64d4e020a48338dec957ed6da36929f6e8373c46a66c0c124cd1'
             'fa6590b6d8d6dfab1b4da3230115c3d69fd70c7dea84e5308369819c0a5734f4'
-            'e427698b1ff381bc5c6b1a696e28fdfc4aa9ffbb6a8124a4d612ded31b30e9ef')
+            '0919b4dd832f49782119622159f36bfff42677aace5ec2c2dc232fe7e8705649')
 
 prepare() {
+  cd ${_pkgname}-${pkgver}
+
   # Arch's UID/GID policy differs a little from Debian's. I've included a patch
   # which issues the necessary changes to both the template configuration files
   # as well as the scripts themselves. These changes include the following:
   # * Automatically chosen system user/group IDs start at 500 instead of 100
   # * Automatically chosen regular user/group IDs end at 60000 instead of 59999
   # * The regex defining which user names are allowed has been changed to
-  #   `^[a-zA-Z0-9_][-a-zA-Z0-9_]*\$?$` to match the Arch policy of "only lower
+  #   `^[a-zA-Z0-9_][a-zA-Z0-9_-]*\$?$` to match the Arch policy of "only lower
   #   and upper case letters, digits, underscores, or dashes" and "can end with
   #   a dollar sign". All other conditions seem to be covered by additional
   #   checks in `adduser` which cannot be customised by the user.
@@ -64,7 +65,7 @@ prepare() {
   # TODO: The translated manpages also need to be updated with the new default
   # options. I've neglected this for now because all of the translations for
   # adduser.conf(5) are currently rejected by `po4a` for being incomplete.
-  patch -Np0 -d . -i arch-policy.patch
+  patch -Np1 -d . -i ../arch-policy.patch
 
   # There are two problems with the output of `{add,del}user --version`. The
   # displayed version number is `VERSION` because it is expected that the
@@ -76,54 +77,15 @@ prepare() {
   # TODO: This is actually a very large patch, because I have to change the
   # license path in every translation file. Perhaps collaborating with upstream
   # to make this customisable by the packager would be a good idea.
-  patch -Np0 -d . -i arch-license-path.patch
-  cd ${_pkgname}-${pkgver}
+  patch -Np1 -d . -i ../arch-license-path.patch
   sed -i "s/my \$version = \"DVERSION\"/my \$version = \"${pkgver}-arch${pkgrel}\"/" {add,del}user
-  cd ..
-
-  # On Arch, `chfn` comes from the `util-linux` package rather than `shadow`.
-  # Both packages have different interpretations of the GECOS/finger field in
-  # user definitions. The `shadow` or Debian version has the following format:
-  # * Full Name (`-f` argument)
-  # * Office Room Number (`-r` argument)
-  # * Work Phone Number (`-w` argument)
-  # * Home Phone Number (`-h` argument)
-  # * Other (`-o` argument)
-  # Whereas the `util-linux` or Arch version has the following format:
-  # * Full Name (`-f` argument)
-  # * Office Room Number (`-o` argument)
-  # * Office Phone Number (`-p` argument)
-  # * Home Phone Number (`-h` argument)
-  # So the differences are in the arguments which need to be passed to `chfn`,
-  # and that Arch does not have an "other" field.
-  #
-  # In the normal case (the user does not specify the `--comment` argument)
-  # there is no issue, as the script calls `chfn` with no arguments to prompt
-  # the user for the finger information. But if the `--comment` argument is
-  # specified, the script will try to call `chfn` with each of the above
-  # arguments. This will cause the script to fail once it reaches the Office
-  # Room Number field, because the `-r` flag doesn't exist.
-  #
-  # This patch resolves the issue by changing how the `--comment` argument is
-  # translated into `chfn` calls. These changes are internal and do not change
-  # the format of the arguments the user should use, i.e. a comma-separated
-  # list like `--comment "<name>,<room>,<work>,<home>"` is still correct. The
-  # user should note that there is no longer an "other" field, and if the user
-  # specifies one, e.g. `--comment "<name>,<room>,<work>,<home>,<other>"`, it
-  # will be ignored, like how the stock script ignores all additional fields.
-  patch -Np0 -d . -i arch-finger.patch
 }
 
-# Translated manpages have to be generated using `po4a`. A Makefile is provided
-# to prepare the translation files for the scripts.
+# Translated manpages have to be generated using `po4a`.
 build() {
   # Manpages
   cd ${_pkgname}-${pkgver}/doc/po4a
-  po4a --keep 95 --previous po4a.conf
-
-  # Script string translations
-  cd ../../po
-  make
+  po4a --keep 60 --previous po4a.conf
 }
 
 # TODO: Automatic testing. This is difficult for four reasons:
@@ -225,8 +187,4 @@ package() {
     local language=$([[ $file =~ \.(${all_languages// /|})\. ]] && echo ${BASH_REMATCH[0]:1:-1})
     install -Dm644 $file "${pkgdir}/usr/share/man/${language:-.}/man${file: -1:1}/${file//.${language:-.}}"
   done
-
-  # Locale/translation files
-  cd ../po
-  make DESTDIR="${pkgdir}" install
 }
