@@ -1,0 +1,24 @@
+diff -ura --color osrm-backend-6.0.0/include/server/connection.hpp osrm-backend-6.0.0.new/include/server/connection.hpp
+--- osrm-backend-6.0.0/include/server/connection.hpp	2026-01-11 11:43:12.499134702 +0800
++++ osrm-backend-6.0.0.new/include/server/connection.hpp	2026-01-11 11:34:46.223018703 +0800
+@@ -8,6 +8,7 @@
+ 
+ #include <boost/array.hpp>
+ #include <boost/asio.hpp>
++#include <boost/asio/deadline_timer.hpp>
+ #include <boost/config.hpp>
+ #include <boost/version.hpp>
+ 
+diff -ura --color osrm-backend-6.0.0/src/engine/plugins/tile.cpp osrm-backend-6.0.0.new/src/engine/plugins/tile.cpp
+--- osrm-backend-6.0.0/src/engine/plugins/tile.cpp	2026-01-11 11:43:56.420107597 +0800
++++ osrm-backend-6.0.0.new/src/engine/plugins/tile.cpp	2026-01-11 11:34:46.224606815 +0800
+@@ -10,7 +10,9 @@
+ #include <boost/geometry.hpp>
+ #include <boost/geometry/geometries/geometries.hpp>
+ #include <boost/geometry/geometries/point_xy.hpp>
++#if __has_include(<boost/geometry/multi/geometries/multi_linestring.hpp>)
+ #include <boost/geometry/multi/geometries/multi_linestring.hpp>
++#endif
+ 
+ #include <vtzero/builder.hpp>
+ #include <vtzero/geometry.hpp>
