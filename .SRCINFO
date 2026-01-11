@@ -1,6 +1,6 @@
 pkgbase = clipboard-manager-rs-git
 	pkgdesc = A simple clipboard manager written in Rust (git version)
-	pkgver = r48.cb5f397
+	pkgver = r55.31a86bf
 	pkgrel = 1
 	url = https://github.com/Grenish/clipboard-manager
 	arch = x86_64

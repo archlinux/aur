@@ -1,6 +1,6 @@
 # Maintainer: Grenish Rai <mrcoder2033d@gmail.com>
 pkgname=clipboard-manager-rs-git
-pkgver=r48.cb5f397
+pkgver=r55.31a86bf
 pkgrel=1
 pkgdesc="A simple clipboard manager written in Rust (git version)"
 arch=('x86_64')
