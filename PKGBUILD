@@ -1,10 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Thorben Günther <admin@xenrox.net>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Benjamin A. Shelton <zancarius@gmail.com>
-# Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=python-billiard
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.4
+pkgrel=1
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('x86_64')
 url="https://pypi.org/project/billiard/"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-psutil')
 source=("https://pypi.io/packages/source/b/billiard/billiard-$pkgver.tar.gz")
-sha512sums=('f67d2eff08bb8175faf3b638e7566ed6bd22643eb05b3538026618263b9978f2e72fe9cb10c51f596088c1d217e2722969125e266d17a30a4d89ac10738a4818')
+sha512sums=('f05041661da59603da5bdcb3b696d75742d4cb7998f5bbf22474e001641f5be6cf693c3b329cda3e8983cc3fe56e5cc96a1d7880eefa5b2d68cd0d4ffe231626')
 
 prepare() {
   cd billiard-$pkgver
