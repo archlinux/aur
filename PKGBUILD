@@ -3,7 +3,7 @@
 _name=scikit_fmm
 pkgname=python-scikit-fmm
 pkgver=2025.6.23
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast marching method for Python"
 arch=("any")
 url="https://scikit-fmm.readthedocs.io"
