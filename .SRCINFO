@@ -1,5 +1,5 @@
 pkgbase = xcompmgr-git
-	pkgdesc = The X Composisting Manager fresh from freedesktop.org repositories
+	pkgdesc = Composite window effect manager for X.org (git)
 	pkgver = 1.1.10.r3.g76c12c6
 	pkgrel = 1
 	url = http://www.freedesktop.org/Software/xapps
