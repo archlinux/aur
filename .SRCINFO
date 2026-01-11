@@ -1,7 +1,7 @@
 pkgbase = python-llm-openrouter
 	pkgdesc = LLM plugin for models hosted by OpenRouter
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonw/llm-openrouter
 	arch = any
 	license = Apache-2.0

@@ -3,7 +3,7 @@
 pkgname=python-llm-openrouter
 _gitpkgname=llm-openrouter
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='LLM plugin for models hosted by OpenRouter'
 arch=('any')
 url='https://github.com/simonw/llm-openrouter'
