@@ -13,7 +13,7 @@
 pkgname='getmail6'
 pkgdesc="mail retriever with support for POP3, IMAP4, SDPS; fork of getmail 5.14 modified to support python3"
 pkgver=6.19.10
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://getmail6.org/'
 license=('GPL-2.0-only')
