@@ -3,7 +3,7 @@
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
 pkgver=11.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
 url='https://github.com/CycloneDX/cyclonedx-python-lib'

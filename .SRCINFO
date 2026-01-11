@@ -1,7 +1,7 @@
 pkgbase = python-cyclonedx-lib
 	pkgdesc = Render and read CycloneDX, a lightweight BOM specification document format
 	pkgver = 11.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CycloneDX/cyclonedx-python-lib
 	arch = any
 	license = Apache-2.0
