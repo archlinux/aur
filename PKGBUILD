@@ -3,10 +3,10 @@
 
 pkgname='perl-http-body'
 pkgver='1.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="HTTP Body Parser"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-http-message')
 makedepends=()
