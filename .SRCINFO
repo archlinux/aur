@@ -8,6 +8,7 @@ pkgbase = superfamiconv-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = git
+	depends = glibc
 	depends = gcc-libs
 	provides = superfamiconv
 	conflicts = superfamiconv

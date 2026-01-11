@@ -7,16 +7,8 @@ pkgdesc='A tile graphics converter with flexible and composable command line opt
 arch=(x86_64)
 url=https://github.com/Optiroc/SuperFamiconv
 license=(MIT)
-
-depends=(
-  gcc-libs
-)
-
-makedepends=(
-  ninja
-  cmake
-  git
-)
+depends=(glibc gcc-libs)
+makedepends=(ninja cmake git)
 provides=(superfamiconv)
 conflicts=(superfamiconv)
 source=("git+https://github.com/Optiroc/SuperFamiconv.git")
