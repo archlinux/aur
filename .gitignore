@@ -4,4 +4,3 @@
 *.src.tar.gz
 src/
 pkg/
-.SRCINFO

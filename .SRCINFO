@@ -1,0 +1,17 @@
+pkgbase = diskwhy
+	pkgdesc = A lightweight CLI tool for analyzing disk usage by directory and file type
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Ninso112/diskwhy
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python>=3.7
+	source = git+https://github.com/Ninso112/diskwhy.git
+	sha256sums = SKIP
+
+pkgname = diskwhy
