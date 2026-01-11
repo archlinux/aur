@@ -6,7 +6,7 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
-pkgver=24.11.0.62
+pkgver=25.08.10.111
 pkgname=icaclient-beta
 pkgrel=1
 # arch=('x86_64' 'armv7h')
