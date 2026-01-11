@@ -12,7 +12,7 @@ provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')
 license=('MIT')
-source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git#branch=main')
+source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
 optdepends=('monado-git: The open source OpenXR runtime.')
 md5sums=('SKIP')
 
