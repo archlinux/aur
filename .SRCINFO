@@ -1,15 +1,16 @@
 pkgbase = python-odfdo
 	pkgdesc = Python3 library implementing the ISO/IEC 26300 OpenDocument Format standard.
-	pkgver = 3.13.2
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = https://github.com/jdum/odfdo
 	arch = any
-	license = custom
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/o/odfdo/odfdo-3.13.2.tar.gz
-	sha256sums = 4b5aa9ddf76c18edeb883d6f79524f4a6939bfd609c8194e231015f6e8779cf5
+	makedepends = python-uv-build
+	depends = python-lxml
+	source = https://files.pythonhosted.org/packages/source/o/odfdo/odfdo-3.19.0.tar.gz
+	sha256sums = 4c1811ce9ca52f6cc39544d9899c8da78825712341122d7a398ed7b960443ddd
 
 pkgname = python-odfdo
