@@ -1,8 +1,8 @@
 # Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
 pkgname=python-fontcollector
 _origpkgname=fontcollector
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="FontCollector for Advanced SubStation Alpha file."
 arch=("x86_64")
 url='https://pypi.org/project/FontCollector/'
@@ -24,8 +24,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/20/38/59d76260bd416b079d31a21ffe6e9857c385b910b354dc6e21d583cd4838/fontcollector-4.0.0.tar.gz")
-sha256sums=("6ee779726873a057313aeff6a5ba9ea621652e7b4571ff43c72e4f20a207a7d1")
+source=("https://files.pythonhosted.org/packages/07/74/41153e81f9f3d088710faa792146e13b53c87adbe46da186d37b39bb789a/fontcollector-4.0.1.tar.gz")
+sha256sums=("3440e1d25f7500be657dc4cadb9f46b7f159b8a587294ff37396d02d0cf00943")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
