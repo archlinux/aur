@@ -5,7 +5,7 @@
 pkgname=kwin-3finger
 pkgver=6.5.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=6
+pkgrel=7
 pkgdesc='An easy to use, but flexible, Wayland compositor - Patched for 3-finger overview'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
