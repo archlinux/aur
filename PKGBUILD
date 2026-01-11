@@ -1,6 +1,12 @@
-# Maintainer: archjo
+# Maintainer: Elven Inquisition <no.one.expects@faerie.me>
+# Contributor: Tranalogic
+# Contributor: jskier
+# Contributor: archjo
+# Contributor: napcok
+# Contributor: goetzc
+
 pkgname=ubuntu-mate-themes
-pkgver=23.04.1
+pkgver=24.10.0
 pkgrel=1
 pkgdesc="GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE."
 arch=('any')
@@ -10,7 +16,7 @@ groups=('mate-extra')
 depends=('gtk-engine-murrine')
 optdepends=("ubuntu-mate-icon-themes: The official icon themes for Ubuntu MATE.")
 source=("http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
-sha256sums=('3959a85e53087cd8893a54ddaef8fea124c5bee4d7000d418756a5919c26a036')
+sha256sums=('c4659b8dac44c1378ce652236683c1cf211feb896b50bb73b12924ffb52c8664')
 
 package() {
     tar xf data.tar.zst
