@@ -167,6 +167,10 @@ package_python-ctranslate2() {
     'python-pytorch'
     'python-setuptools'
     'python-yaml'
+    # Implicit
+    'python'
+    'gcc-libs'
+    'glibc'
   )
 #  optdepends=('python-pytorch-cuda')
 

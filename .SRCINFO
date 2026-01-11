@@ -48,3 +48,6 @@ pkgname = python-ctranslate2
 	depends = python-pytorch
 	depends = python-setuptools
 	depends = python-yaml
+	depends = python
+	depends = gcc-libs
+	depends = glibc
