@@ -3,7 +3,7 @@
 
 pkgname=konsave
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Save and apply your KDE Plasma customizations with just one command!'
 url=https://github.com/Prayag2/konsave
 depends=(
