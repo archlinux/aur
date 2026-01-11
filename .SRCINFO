@@ -1,7 +1,7 @@
 pkgbase = gsdjvu
 	pkgdesc = Very efficient way of converting PostScript and PDF documents into DjVu
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://djvu.sourceforge.net/gsdjvu.html
 	arch = i686
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = gsdjvu
 	sha1sums = 2a7198e8178b2e7dba87cb5794da515200b568f5
 
 pkgname = gsdjvu
-

@@ -4,7 +4,7 @@ pkgname=gsdjvu
 pkgver=1.10
 _gsver=9.22
 _fontsver=8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Very efficient way of converting PostScript and PDF documents into DjVu"
 arch=(i686 x86_64)
 # This program mixes GPL and CPL licensed codes, so the binaries are not redistributable.
@@ -33,6 +33,8 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
+
+    export CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
 
     echo -e 'YES\n\n' | "$srcdir/gsdjvu-$pkgver/build-gsdjvu"
 }
