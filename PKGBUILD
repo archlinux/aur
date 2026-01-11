@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=pica-comic-bin
 pkgdesc="A comic app built with Flutter, supporting multiple comic sources"
-pkgver=4.2.9
+pkgver=4.2.10
 pkgrel=1
 arch=('x86_64')
 options=(!debug)
