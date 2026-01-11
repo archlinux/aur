@@ -1,7 +1,7 @@
 pkgbase = python-callee
 	pkgdesc = Argument matchers for unittest.mock
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xion/callee
 	arch = any
 	license = BSD-3-Clause

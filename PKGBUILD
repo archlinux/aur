@@ -3,7 +3,7 @@
 pkgname=python-callee
 _gitpkgname=callee
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Argument matchers for unittest.mock'
 arch=('any')
 url='https://github.com/Xion/callee'
