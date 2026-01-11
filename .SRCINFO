@@ -1,7 +1,7 @@
 pkgbase = python-qpageview-git
 	pkgdesc = A page based document viewer widget for Qt6/PyQt6.
-	pkgver = 1.0.1.r0.g0ea1921
-	pkgrel = 1
+	pkgver = 1.0.2.r0.gd437283
+	pkgrel = 2
 	url = https://github.com/frescobaldi/qpageview
 	arch = any
 	license = GPL-3.0-or-later

@@ -1,8 +1,8 @@
 # Maintainer: Berrit Birkner <aur at bbirkner.de>
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=python-qpageview-git
-pkgver=1.0.1.r0.g0ea1921
-pkgrel=1
+pkgver=1.0.2.r0.gd437283
+pkgrel=2
 pkgdesc="A page based document viewer widget for Qt6/PyQt6."
 arch=('any')
 url="https://github.com/frescobaldi/qpageview"
