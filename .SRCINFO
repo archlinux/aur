@@ -8,6 +8,7 @@ pkgbase = 2bwm
 	license = ISC
 	makedepends = git
 	makedepends = xcb-util
+	makedepends = xorgproto
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
 	depends = xcb-util-xrm
@@ -22,4 +23,3 @@ pkgbase = 2bwm
 	md5sums = adaee5c7e455ba15e0ca9a2692464253
 
 pkgname = 2bwm
-
