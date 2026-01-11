@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
-basename=openhmd
-pkgname=$basename-git
+_basename=openhmd
+pkgname=$_basename-git
 pkgver=0.3.0.514.85075b0
 pkgrel=1
 pkgdesc="Free and Open Source API and drivers for immersive technology."
@@ -9,8 +9,8 @@ arch=(x86_64 i686)
 url="https://github.com/OpenHMD/OpenHMD"
 license=(BSL-1.0)
 depends=(hidapi glibc)
-conflicts=($basename)
-provides=($basename)
+conflicts=($_basename)
+provides=($_basename)
 makedepends=(meson git ninja)
 
 optdepends=(
@@ -19,7 +19,7 @@ optdepends=(
   'vive-udev: Udev rule for HTC Vive'
 )
 
-source=($basename::"git+https://github.com/OpenHMD/OpenHMD.git")
+source=($_basename::"git+https://github.com/OpenHMD/OpenHMD.git")
 sha256sums=("SKIP")
 
 ver() {
@@ -28,21 +28,21 @@ ver() {
 }
 
 pkgver() {
-  cd $basename
+  cd $_basename
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
   echo $(ver).$revision.$hash
 }
 
 build() {
-  cd $basename
+  cd $_basename
   rm -rf build
   arch-meson build
   ninja -C build
 }
 
 package() {
-  cd $basename
+  cd $_basename
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
