@@ -14,7 +14,7 @@ license=(LGPL-2.1-only)
 
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 depends=(
-  'python' 'python-attrs' 'python-boltons' 'python-click' 'python-click-option-group'
+  'python>=3.14' 'python-attrs' 'python-boltons' 'python-click' 'python-click-option-group'
   'python-colorama' 'python-defusedxml' 'python-glom' 'python-jsonschema' 'python-packaging'
   'python-peewee' 'python-lsp-jsonrpc' 'python-requests' 'python-rich'  'python-ruamel-yaml'
   'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-pydantic'
