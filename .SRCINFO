@@ -1,6 +1,6 @@
 pkgbase = python-fire-git
 	pkgdesc = A library for automatically generating command line interfaces
-	pkgver = 0.7.0.r15.gdba7e1d
+	pkgver = 0.7.1.r3.g716bbc2
 	pkgrel = 1
 	url = https://github.com/google/python-fire
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-fire-git
 	makedepends = python-wheel
 	depends = python
 	depends = python-termcolor
-	provides = python-fire=0.7.0.r15.gdba7e1d
+	provides = python-fire=0.7.1.r3.g716bbc2
 	conflicts = python-fire
 	source = fire::git+https://github.com/google/python-fire.git
 	sha512sums = SKIP

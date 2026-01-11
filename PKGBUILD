@@ -3,7 +3,7 @@
 
 pkgname=python-fire-git
 _gitpkgname=fire
-pkgver=0.7.0.r15.gdba7e1d
+pkgver=0.7.1.r3.g716bbc2
 pkgrel=1
 pkgdesc='A library for automatically generating command line interfaces'
 arch=('any')
