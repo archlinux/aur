@@ -1,6 +1,6 @@
 # Maintainer: Aaron D. Lee <your-email@example.com>
 pkgname=stegasoo-git
-pkgver=4.2.0.r0.g530e5de
+pkgver=4.2.0.r0.g2ebc42f
 pkgrel=1
 pkgdesc="Secure steganography with hybrid photo + passphrase + PIN authentication"
 arch=('x86_64')
