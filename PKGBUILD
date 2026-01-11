@@ -3,7 +3,7 @@
 pkgname='python-click-completion'
 _name="${pkgname#python-}"
 pkgver='0.5.2'
-pkgrel=2
+pkgrel=10
 pkgdesc='Add or enhance bash, fish, zsh and powershell completion in Click'
 arch=('any')
 url='https://github.com/click-contrib/click-completion'
@@ -21,4 +21,7 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/python-click-completion/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/python-click-completion/"
 }
