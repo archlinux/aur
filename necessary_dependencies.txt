@@ -392,7 +392,6 @@ Module: sqlalchemy.orm
     open_webui/routers/scim.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
-    open_webui/utils/auth.py
 Module: open_webui.internal.db
   Imported in:
     open_webui/config.py
@@ -445,7 +444,6 @@ Module: open_webui.internal.db
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
-    open_webui/utils/auth.py
 Module: open_webui.models.functions
   Imported in:
     open_webui/functions.py
