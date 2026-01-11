@@ -1,11 +1,12 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=better-adb-sync-git
-pkgver=r76.2d19f23
+pkgver=r91.9a226dd
 pkgrel=1
 pkgdesc='Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)'
 arch=(any)
-url=https://github.com/jb2170/better-adb-sync
+#url=https://github.com/jb2170/better-adb-sync
+url=https://github.com/jpstotz/better-adb-sync
 license=(Apache)
 depends=(android-tools android-udev python-build)
 makedepends=(git python-build python-installer python-wheel python-setuptools)
