@@ -1,0 +1,21 @@
+pkgbase = mautrix-bluesky
+	pkgdesc = mautrix-bluesky puppeting bridge
+	pkgver = 0.2510.0
+	pkgrel = 1
+	url = https://github.com/mautrix/bluesky
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	depends = libolm
+	backup = etc/mautrix-bluesky/mautrix-bluesky.yaml
+	source = mautrix-bluesky-0.2510.0.tar.gz::https://github.com/mautrix/bluesky/archive/v0.2510.0.tar.gz
+	source = mautrix-bluesky.sysusers
+	source = mautrix-bluesky.tmpfiles
+	source = mautrix-bluesky.service
+	sha256sums = 3eab28dbab8c52751affcba1f86ff854bbe9a4e4eaa86daa6e91aa6edeea3d33
+	sha256sums = 409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1
+	sha256sums = 2e5ecb77aa175c1ebce40a5ff560bb5ee26ed39b3d1f4cf6d62db2ad604050b4
+	sha256sums = 0f909a1b9170a72efc8cca5f51334b73d0e04e5346ae23b75169eaccca7574a2
+
+pkgname = mautrix-bluesky

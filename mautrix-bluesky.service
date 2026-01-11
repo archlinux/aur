@@ -1,0 +1,37 @@
+[Unit]
+Description=Matrix-WhatsApp puppeting bridge
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=exec
+User=mautrix-whatsapp
+Group=mautrix-whatsapp
+WorkingDirectory=/var/lib/mautrix-whatsapp
+ExecStart=/usr/bin/mautrix-whatsapp -n -c /etc/mautrix-whatsapp/mautrix-whatsapp.yaml
+Restart=on-failure
+
+ReadWritePaths=/var/lib/mautrix-whatsapp
+ReadWritePaths=/var/log/mautrix-whatsapp
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
