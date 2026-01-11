@@ -5,7 +5,7 @@
 pkgname=kwin-3finger
 pkgver=6.5.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=5
+pkgrel=6
 pkgdesc='An easy to use, but flexible, Wayland compositor - Patched for 3-finger overview'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -26,14 +26,11 @@ makedepends=(extra-cmake-modules kdoctools krunner plasma-wayland-protocols pyth
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/kwin/-/commit/ef450432.patch
-        kwin-3finger-overview.patch)
+        https://invent.kde.org/plasma/kwin/-/commit/ef450432.patch)
 install=kwin.install
-# Checksums: Added 'SKIP' for your local patch file
 sha256sums=('258443f72180cf5a8141b440bb51a714a2e67e30867736290793ce50d7bb1d70'
             'SKIP'
-            '4e35db494b436d2d4dc35eb467a90d93db2279561be3fc2c3f4a74a64ffa6081'
-            '0c90a03df28253a187d956353d58054bd589377ad6da24c9ce80c78256fa57c4')
+            '4e35db494b436d2d4dc35eb467a90d93db2279561be3fc2c3f4a74a64ffa6081')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'
@@ -41,10 +38,15 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'
               '1FA881591C26B276D7A5518EEAAF29B42A678C20')
 
 prepare() {
+  # Apply the upstream freeze fix (keep this!)
+  patch -d kwin-$pkgver -p1 < ef450432.patch
+
   cd kwin-$pkgver
-  # Apply patches using git (ignores whitespace errors)
-  git apply --whitespace=fix "$srcdir/ef450432.patch"
-  git apply --whitespace=fix "$srcdir/kwin-3finger-overview.patch"
+
+  # THE MAGIC FIX:
+  # Find lines setting Touchpad gestures to '4' and append a duplicate set to '3'
+  # This works for the overview, grid, and transition gestures automatically.
+  sed -i -E 's/(.*addTouchpadSwipeGesture.*), 4\);/\1, 4);\n\1, 3);/' src/plugins/overview/overvieweffect.cpp
 }
 
 build() {
