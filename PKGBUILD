@@ -61,6 +61,9 @@ depends=(
 
     # PNG (for PNG encoding)
     libpng
+
+    # meson
+    meson
 )
 
 makedepends=(
