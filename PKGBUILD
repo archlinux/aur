@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=(
   'ctranslate2'
