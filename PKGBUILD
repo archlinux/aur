@@ -11,10 +11,10 @@ pkgdesc="A small and simple window manager."
 arch=('i686' 'x86_64')
 url="http://www.nickgravgaard.com/windowlab"
 license=('GPL')
-depends=('xorg-server' 'libxft' 'libxext')
-source=("http://www.nickgravgaard.com/windowlab/${pkgname}-${pkgver}.tar"
+depends=('libxft' 'libxext')
+source=("http://ftp.slackware.com/pub/gentoo/distfiles/02/${pkgname}-${pkgver}.tar"
         'xft.patch')
-md5sums=('7fcf770b3da932ac7d252572974b0d54'
+md5sums=('346f8c187838a446b4cbb2326d035577'
          '51e5a2d48c6d5837786f2571ccc1ce72')
 
 prepare() {
