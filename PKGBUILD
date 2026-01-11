@@ -2,8 +2,8 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=2
-pkgver=master.cfa24b6
+pkgrel=1
+pkgver=master.eb015a5
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
