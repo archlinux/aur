@@ -8,7 +8,6 @@ pkgbase = ctranslate2
 	makedepends = cmake
 	makedepends = git
 	makedepends = intel-oneapi-mkl
-	makedepends = onednn
 	makedepends = openblas
 	makedepends = pybind11
 	makedepends = python-build
@@ -36,7 +35,6 @@ pkgbase = ctranslate2
 
 pkgname = ctranslate2
 	pkgdesc = A C++ library for efficient inference with Transformer models.
-	depends = onednn
 	depends = openblas
 	provides = libctranslate2.so=4
 

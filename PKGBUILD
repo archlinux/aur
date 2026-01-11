@@ -18,7 +18,7 @@ makedepends=(
 #  'cudnn'
   'git'
   'intel-oneapi-mkl'
-  'onednn'
+#   'onednn'
   'openblas'
   'pybind11'
   'python-build'
@@ -140,7 +140,7 @@ build() {
 package_ctranslate2() {
   pkgdesc="A C++ library for efficient inference with Transformer models."
   depends=(
-    'onednn'
+    # 'onednn'
     'openblas'
   )
 #  optdepends=('cuda')
