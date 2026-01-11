@@ -2,7 +2,7 @@
 
 pkgname=python-cryptg
 pkgver=0.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Cryptographic utilities for Telegram, designed to use with Telethon."
 url="https://github.com/cher-nov/cryptg"
 depends=('python')
@@ -15,6 +15,7 @@ sha256sums=('c23d0055ea730b372de29cc6ff1aaa7a23d165e2b20908e1c27cb65b9aa29f97')
 
 build() {
     cd "${srcdir}/cryptg"
+    export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
     python -m build --wheel --no-isolation
 }
 
