@@ -3,7 +3,7 @@
 pkgname=python-tree-sitter-python
 _gitpkgname=tree-sitter-python
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Grammar for tree-sitter'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-ruby'

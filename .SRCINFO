@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-python
 	pkgdesc = Python Grammar for tree-sitter
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-ruby
 	arch = x86_64
 	license = MIT
