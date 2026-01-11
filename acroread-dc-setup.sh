@@ -111,9 +111,11 @@ done
 wine reg add "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug" /v Debugger /t REG_SZ /d "" /f 2>/dev/null || true
 wine reg add "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug" /v Debugger /t REG_SZ /d "" /f 2>/dev/null || true
 
-# Configure Wine to let the window manager control windows (fixes floating issue on tiling WMs)
-wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver" /v Managed /t REG_SZ /d "Y" /f 2>/dev/null || true
-wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver" /v Decorated /t REG_SZ /d "Y" /f 2>/dev/null || true
+# Configure Wine X11 Driver for Adobe Reader specifically
+# Setting Decorated=N and Managed=N allows Wine to render its own window chrome
+# including the tab bar (similar to virtual desktop mode but without the desktop)
+wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\AcroRd32.exe\\X11 Driver" /v Managed /t REG_SZ /d "N" /f 2>/dev/null || true
+wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\AcroRd32.exe\\X11 Driver" /v Decorated /t REG_SZ /d "N" /f 2>/dev/null || true
 
 wineserver -w
 

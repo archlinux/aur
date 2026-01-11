@@ -62,7 +62,12 @@ fix_window_type() {
     done
 }
 
-# Get screen resolution for virtual desktop (required for tabs to work)
+# Check if we should use virtual desktop mode
+# By default, we try without it first (using Decorated=N and Managed=N registry settings)
+# Set ACROREAD_VIRTUAL_DESKTOP=1 to force virtual desktop mode
+USE_VIRTUAL_DESKTOP="${ACROREAD_VIRTUAL_DESKTOP:-0}"
+
+# Get screen resolution (for virtual desktop mode if enabled)
 get_screen_resolution() {
     if command -v xrandr &>/dev/null; then
         xrandr 2>/dev/null | grep '\*' | head -1 | awk '{print $1}'
@@ -73,12 +78,15 @@ get_screen_resolution() {
     fi
 }
 
-RESOLUTION=$(get_screen_resolution)
-
-# Run Adobe Reader in virtual desktop mode (required for tabbed document view)
-# Without virtual desktop, tabs don't render properly under Wine
+# Apply window type fix (for non-virtual desktop mode)
 if command -v xprop &>/dev/null && command -v xdotool &>/dev/null; then
     fix_window_type &
 fi
 
-exec wine explorer /desktop=AcroRead,"$RESOLUTION" "$READER_EXE" "${args[@]}"
+if [[ "$USE_VIRTUAL_DESKTOP" == "1" ]]; then
+    RESOLUTION=$(get_screen_resolution)
+    exec wine explorer /desktop=AcroRead,"$RESOLUTION" "$READER_EXE" "${args[@]}"
+else
+    # Run without virtual desktop - tabs should work via Decorated=N, Managed=N registry settings
+    exec wine "$READER_EXE" "${args[@]}"
+fi
