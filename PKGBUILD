@@ -2,7 +2,7 @@
 
 pkgname=ausweiskopie
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Create privacy friendly and legal copies of your Ausweisdokument'
 arch=(any)
 license=('MPL-2.0')
