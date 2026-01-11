@@ -13,7 +13,7 @@ pkgver=0.4.1
 # approximation for the actual release.
 _commit=b2a2246f343eeb3c17dd69882db3eb73b6714617
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Source separation evaluation tools for Python'
 arch=('any')
 url='https://github.com/sigsep/sigsep-mus-eval'
