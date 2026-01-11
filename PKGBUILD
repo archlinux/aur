@@ -1,13 +1,14 @@
 pkgname=('phono3py')
-pkgver=3.22.0
+pkgver=3.24.0
 pkgrel=2
 pkgdesc="A simulation package of phonon-phonon interaction related properties"
 arch=('any')
 url="https://github.com/phonopy/phono3py"
 license=('BSD')
 depends=(
-    "python-phonopy>=2.46.0"
-    "python-phonopy<2.47"
+    # "python-phonopy>=2.46.0"
+    # "python-phonopy<2.47"
+    "python-phonopy"
     "python-scipy"
 )
 makedepends=(
@@ -17,8 +18,20 @@ makedepends=(
     ninja
 )
 
-source=("git+https://github.com/phonopy/phono3py.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+
+source=(
+    "git+https://github.com/phonopy/phono3py.git#tag=v${pkgver}"
+    # "lammps.patch"
+)
+sha256sums=(
+    'SKIP'
+    # 'SKIP'
+)
+
+# prepare() {
+#     cd "$srcdir"/phono3py
+#     patch -Np1 -i "${srcdir}/lammps.patch"
+# }
 
 
 build() {
