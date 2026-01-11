@@ -3,7 +3,7 @@
 pkgname=symp
 
 # Version
-pkgver=5.2.6
+pkgver=5.2.7
 pkgrel=1
 
 # Generic
