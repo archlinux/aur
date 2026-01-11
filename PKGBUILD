@@ -12,14 +12,18 @@ sha256sums=('SKIP')
 
 package() {
   local srcdir="$srcdir/$_upstream-$pkgver"
+  local appdir="$srcdir"
+  if [[ -d "$srcdir/jasmine" ]]; then
+    appdir="$srcdir/jasmine"
+  fi
 
-  install -Dm755 "$srcdir/src/jasmine.py" \
+  install -Dm755 "$appdir/src/jasmine.py" \
     "$pkgdir/usr/share/$pkgname/jasmine.py"
-  install -Dm644 "$srcdir/assets/jasmine.ttf" \
+  install -Dm644 "$appdir/assets/jasmine.ttf" \
     "$pkgdir/usr/share/$pkgname/assets/jasmine.ttf"
-  install -Dm644 "$srcdir/assets/jasmine-wallpaper.svg" \
+  install -Dm644 "$appdir/assets/jasmine-wallpaper.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/jasmine-wallpaper.svg"
-  install -Dm644 "$srcdir/jasmine-wallpaper.desktop" \
+  install -Dm644 "$appdir/jasmine-wallpaper.desktop" \
     "$pkgdir/usr/share/applications/jasmine-wallpaper.desktop"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/jasmine-wallpaper" <<'EOF2'
