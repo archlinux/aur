@@ -4,7 +4,7 @@ _gemname=travis-gh
 _name=gh
 pkgname=ruby-$_gemname
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Layered GitHub API client'
 arch=(any)
 url='https://github.com/travis-ci/gh'
@@ -69,4 +69,5 @@ package() {
   cd "${_name}-${pkgver}"
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
