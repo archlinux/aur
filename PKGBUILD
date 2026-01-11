@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Dudek <wojtek.dudek.pl@gmail.com>
 
 pkgname=waytermirror-git
-pkgver=r290.fe91ebb
+pkgver=r311.ca32204
 pkgrel=1
 pkgdesc="Real-time Wayland screen mirroring to a terminal using Unicode braille characters, half-blocks, or ASCII. Includes bidirectional input forwarding, audio streaming (PipeWire), zooming, focus-follow, and optional NVIDIA CUDA acceleration (server-side)."
 arch=('x86_64')
@@ -103,25 +103,14 @@ build() {
 
     if $cuda; then
         echo "==> Building with CUDA support"
-        make CUDA=true
+        meson setup builddir --buildtype=release -Dnvidia_cuda=true
     else
         echo "==> Building CPU-only"
-        make CUDA=false
+        meson setup builddir --buildtype=release -Dnvidia_cuda=false
     fi
 }
 
 package() {
     cd waytermirror
-
-    install -Dm755 waytermirror_server \
-        "$pkgdir/usr/bin/waytermirror_server"
-
-    install -Dm755 waytermirror_client \
-        "$pkgdir/usr/bin/waytermirror_client"
-
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    install -Dm644 README.md \
-        "$pkgdir/usr/share/doc/$pkgname/README.md"
+    meson install -C builddir --destdir "$pkgdir"
 }
