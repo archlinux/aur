@@ -1,6 +1,6 @@
 pkgname=python-flask_autoindex
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/general03/flask-autoindex'
 license=('MIT')

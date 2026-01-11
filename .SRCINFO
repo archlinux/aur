@@ -1,7 +1,7 @@
 pkgbase = python-flask_autoindex
 	pkgdesc = A mod_autoindex for Flask
 	pkgver = 0.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/general03/flask-autoindex
 	arch = x86_64
 	license = MIT
