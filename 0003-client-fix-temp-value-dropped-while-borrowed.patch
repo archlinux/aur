@@ -1,0 +1,41 @@
+From 26d67e3f263c85b1eef85b6251267e260e63b2f6 Mon Sep 17 00:00:00 2001
+From: Thomas Lamprecht <t.lamprecht@proxmox.com>
+Date: Sun, 30 Nov 2025 20:50:44 +0100
+Subject: [PATCH] client: fix flaky temporary value dropped while borrowed
+
+I actually only saw that error in our rust-doc CI and could not really
+reproduce it anywhere else, even though I tried to closely matched the
+CI environment. Anyhow, its slightly shorter and easier to read, and
+the compiler should be able to optimize this the same way as before,
+not like it matters much in this cold-path here.
+
+Signed-off-by: Thomas Lamprecht <t.lamprecht@proxmox.com>
+---
+ pbs-client/src/pxar/extract.rs | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/pbs-client/src/pxar/extract.rs b/pbs-client/src/pxar/extract.rs
+index 0257201d..9f3f6500 100644
+--- a/pbs-client/src/pxar/extract.rs
++++ b/pbs-client/src/pxar/extract.rs
+@@ -1333,13 +1333,11 @@ where
+         }
+         .await
+         {
+-            error!(
+-                "error extracting {}: {err}",
+-                match entry.kind() {
+-                    EntryKind::GoodbyeTable => "<directory>",
+-                    _ => &entry.path().display().to_string(),
+-                },
+-            );
++            let path_display = match entry.kind() {
++                EntryKind::GoodbyeTable => "<directory>".to_string(),
++                _ => entry.path().display().to_string(),
++            };
++            error!("error extracting {path_display}: {err}");
+         }
+ 
+         if dir_level < 0 {
+-- 
+2.39.5
