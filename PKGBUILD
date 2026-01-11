@@ -2,7 +2,7 @@
 
 pkgname=asgi-webdav
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -12,13 +12,13 @@ install="${pkgname}.install"
 provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 replaces=("python-${pkgname}")
-depends=("python-aiofiles" "python-arrow" "python-asgiref" "python-asgi-middleware-static-file" "python-brotli" "python-chardet"
-         "python-click" "python-dataclass-wizard" "python-dotenv" "python-httptools" "python-uvloop" "python-xmltodict" "uvicorn")
+depends=("python-aiofiles" "python-arrow" "python-asgiref" "python-asgi-middleware-static-file" "python-chardet" "python-click"
+         "python-dataclass-wizard" "python-dotenv" "python-httptools" "python-uvloop" "python-xmltodict" "uvicorn")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=("python-httpx" "python-httpx-kerberos" "python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-requests")
 optdepends=("python-bonsai: LDAP support"
             "python-httpx: WEBHDFS support"
-            "python-httpx-kerberos: WEBHDFS with Kerberos support")
+            "python-httpx-kerberos: WEBHDFS support")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.user.service"
@@ -52,4 +52,7 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python -m installer --destdir=${pkgdir}  dist/*.whl
+
+    cd docs
+    find . -type f -exec install -Dm644 {}   "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
