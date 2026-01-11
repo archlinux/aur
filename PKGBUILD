@@ -5,8 +5,8 @@ pkgdesc="A tool which profiles Vulkan devices to find their peak capacities. Git
 arch=('x86_64')
 url="https://github.com/nihui/vkpeak"
 license=('MIT')
-source=("${pkgname}::git+https://github.com/nihui/vkpeak.git"
-        "ncnn::git+https://github.com/Tencent/ncnn.git")
+source=("git+https://github.com/nihui/vkpeak.git"
+        "git+https://github.com/Tencent/ncnn.git")
 depends=('vulkan-icd-loader' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake' 'glslang' 'ninja' 'protobuf' 'vulkan-headers')
 sha256sums=('SKIP' 'SKIP')

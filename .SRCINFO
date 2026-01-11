@@ -16,8 +16,8 @@ pkgbase = vkpeak-git
 	depends = glibc
 	provides = vkpeak
 	conflicts = vkpeak
-	source = vkpeak-git::git+https://github.com/nihui/vkpeak.git
-	source = ncnn::git+https://github.com/Tencent/ncnn.git
+	source = git+https://github.com/nihui/vkpeak.git
+	source = git+https://github.com/Tencent/ncnn.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
