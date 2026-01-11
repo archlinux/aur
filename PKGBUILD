@@ -3,7 +3,7 @@
 pkgname=('python-sourcetypes')
 _name=${pkgname#python-}
 pkgver='0.0.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Source Code Types For Inline Syntax Highlighting"
 license=('MIT')
 arch=('any')

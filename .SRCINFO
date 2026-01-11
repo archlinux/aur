@@ -1,7 +1,7 @@
 pkgbase = python-sourcetypes
 	pkgdesc = Python Source Code Types For Inline Syntax Highlighting
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/samwillis/python-inline-source/tree/main/sourcetypes
 	arch = any
 	license = MIT
