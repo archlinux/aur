@@ -21,7 +21,6 @@ pkgbase = agent-cli
 	depends = python-httpx
 	depends = python-numpy
 	depends = python-dotenv
-	depends = agent-cli
 	depends = python-psutil
 	depends = python-huggingface-hub
 	depends = python-pyperclip
