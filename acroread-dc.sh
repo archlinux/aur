@@ -38,7 +38,8 @@ args=()
 for arg in "$@"; do
     if [[ -e "$arg" ]]; then
         abs_path=$(realpath "$arg")
-        win_path=$(wine winepath -w "$abs_path" 2>/dev/null)
+        # Use forward slashes (Wine accepts both, but backslashes can cause shell issues)
+        win_path=$(wine winepath -w "$abs_path" 2>/dev/null | tr '\\' '/')
         args+=("$win_path")
     else
         args+=("$arg")
