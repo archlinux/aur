@@ -1,7 +1,7 @@
 pkgbase = ufodiff
 	pkgdesc = UFO source file diff application
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/source-foundry/ufodiff
 	arch = any
 	license = MIT
