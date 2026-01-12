@@ -8,7 +8,7 @@ pkgbase = sunflower-bin
 	makedepends = tar
 	depends = gtk3
 	depends = vte3
-	depends = python=3.14
+	depends = python>=3.14
 	depends = python-gobject
 	depends = python-chardet
 	depends = python-cairo

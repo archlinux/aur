@@ -13,7 +13,7 @@ license=('GPL3')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 makedepends=('tar')
-depends=('gtk3' 'vte3' 'python=3.14' 'python-gobject' 'python-chardet' 'python-cairo' 'librsvg')
+depends=('gtk3' 'vte3' 'python>=3.14' 'python-gobject' 'python-chardet' 'python-cairo' 'librsvg')
 optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
             'gvfs: mount-management')
