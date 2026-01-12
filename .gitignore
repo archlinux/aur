@@ -1,0 +1,11 @@
+# Build artifacts
+*.tar.gz
+*.tar.xz
+*.zip
+pkg/
+src/
+yolobox-*/
+
+# makepkg files
+*.pkg.tar.*
+*.log
