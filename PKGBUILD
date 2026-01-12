@@ -5,12 +5,13 @@
 pkgname=patchy
 pkgdesc='A CLI for generating and applying patches to git repositories'
 pkgver=0.0.27
-pkgrel=2
+pkgrel=3
 url="https://github.com/richardgill/patchy"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('bun')
 depends=('glibc' 'gcc-libs' 'icu')
+options=(!strip) # does not support stripping
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('38dd77910d24c96436ce7c417eeff9701f98e9ada2a1cb3cf92918ab0f62ed1f')
 
