@@ -1,0 +1,24 @@
+pkgbase = vidbee-bin
+	pkgdesc = Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://vidbee.org/
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron38
+	depends = ffmpeg
+	depends = yt-dlp
+	depends = deno
+	provides = vidbee=1.1.8
+	conflicts = vidbee
+	options = !emptydirs
+	options = !strip
+	source = vidbee-1.1.8.deb::https://github.com/nexmoe/VidBee/releases/download/v1.1.8/vidbee_1.1.8_amd64.deb
+	source = LICENSE-1.1.8::https://raw.githubusercontent.com/nexmoe/VidBee/v1.1.8/LICENSE
+	source = vidbee.sh
+	sha256sums = 6f531f4ee74ef415393f1ef116cdaffbba9ea9cd78d3cfe8fda5d0fce00629ae
+	sha256sums = 5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = vidbee-bin
