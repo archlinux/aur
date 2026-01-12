@@ -1,6 +1,6 @@
 pkgname=coolerdash-git
 pkgver=2.0.3.r29.g508a0ba
-pkgrel=1
+pkgrel=2
 provides=('coolerdash')
 replaces=('coolerdash')
 conflicts=('coolerdash')
