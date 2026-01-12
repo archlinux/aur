@@ -3,15 +3,15 @@
 pkgname=pine64-rkdeveloptool-git
 _pkgname=${pkgname#pine64-}
 _pkgname=${_pkgname%-git}
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.1.0.r5.g17823e9
+pkgrel=3
 pkgdesc='fastboot-like CLI tool for flashing rockchip devices, forked to support the PineNote and Quartz64 as well as other Pine64 RK devices'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/pine64-org/quartz-bsp/rkdeveloptool'
 license=('GPL2')
 provides=($_pkgname)
 conflicts=($_pkgname)
-makedepends=('git' 'scdoc' 'cmake')
+makedepends=('git' 'scdoc' 'cmake' 'sed')
 depends=('libusb')
 source=('git+https://gitlab.com/pine64-org/quartz-bsp/rkdeveloptool.git')
 sha256sums=('SKIP')
@@ -22,6 +22,9 @@ pkgver() {
 }
 
 build() {
+    # Patch minimum required CMake version
+    sed -i -e "/cmake_minimum_required/s/3.0/3.5/" "$srcdir/$_pkgname/CMakeLists.txt"
+
     cmake -B build -S "$srcdir/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
