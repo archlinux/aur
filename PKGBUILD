@@ -2,7 +2,7 @@
 
 pkgname=mailnagger
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Extensible mail notification daemon (forked from Mailnag)'
 url='https://github.com/tikank/mailnagger'
@@ -13,7 +13,7 @@ license=('GPL')
 provides=('mailnag')
 conflicts=('mailnag' 'mailnag-git')
 depends=('python-gobject' 'python-httplib2' 'python-xdg' 'python-dbus' 'python-zombie-imp' 'libnotify' 'gst-plugins-base' 'gtk3' 'gdk-pixbuf2')
-makedepends=('gettext' 'git')
+makedepends=('gettext' 'git' 'python-setuptools')
 optdepends=(
   'mailnag-goa-plugin-git: GNOME Online Accounts integration'
   'libgnome-keyring: save password storage in GNOME 3'
