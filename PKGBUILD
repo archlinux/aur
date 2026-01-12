@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zur
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="An AUR helper written in Zig"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("zig" "git")
 provides=("$pkgname")
 conflicts=("$pkgname" "$pkgname-git")
 source=("https://github.com/hspak/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("984b6733ef6b56fd2f6d7c47671dfb77d80eb2211cbbad9ce1220e9c288d9b6b")
+sha256sums=("3ef3e303262c3d6675c7f4e6bf7a0f516441f9692fd4493607875f174993b041")
 
 build() {
   cd "${pkgname}-${pkgver}"
