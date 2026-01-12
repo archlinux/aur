@@ -2,7 +2,7 @@
 # Original author: Florian Schweikert <kelvan@ist-total.org>
 
 pkgname=roundup
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A simple-to-use and install issue-tracking system with command-line, web and e-mail interfaces. Highly customisable."
 arch=('any')
@@ -11,8 +11,8 @@ license=('PSF')
 groups=()
 depends=('python')
 optdepends=('python-psycopg2: for postgresql backend')
-source=("https://files.pythonhosted.org/packages/29/b5/20e0f106edc670a46a019e1f1f0af3c46c7ba9ca45fa0a4752af78483ef7/roundup-$pkgver.tar.gz")
-sha256sums=('0f4e0f3287e877a38a531c7668308472b85cdc9665b25ba2b90daaf16848b778')
+source=("https://files.pythonhosted.org/packages/17/ad/9117015e1116aa3e3c10ff077e8dbe9e2b2cb7ffb0279b29301d3b7a2073/roundup-$pkgver.tar.gz")
+sha256sums=('24d64b8e3cdc09bf4386a92ed06a22e78d5491865982592ce6a8529b90816c02')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
