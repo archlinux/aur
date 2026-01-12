@@ -3,7 +3,7 @@
 _name=nbgitpuller
 pkgname=jupyter-$_name
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter server extension to sync a git repository one-way to a local path"
 arch=(any)
 url="https://github.com/jupyterhub/nbgitpuller"
