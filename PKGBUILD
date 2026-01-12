@@ -2,7 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 _name=quimb
 pkgname=python-$_name
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Quantum information and many-body calculations including tensor networks"
 arch=(any)
@@ -27,13 +27,19 @@ makedepends=(
     python-wheel
 )
 optdepends=(
+    "python-autograd: support for gradient-based optimizations"
+    "python-cmaes: support for Covariance Matrix Adaptation Evolution Strategy (CMA-ES)"
+    # "python-cotengrust: for tensor networks"
+    # "python-kahypar: support for hypergraphs"
     "python-matplotlib: for plotting"
     "python-mpi4py: support for solvers using MPI"
     "python-networkx: for computing distances between pairs of qubits"
+    "pyton-plotly: for plotting"
+    "python-pygraphviz: for plotting"
 )
 checkdepends=(python-pytest)
 source=($_name::git+https://github.com/jcmgray/$_name.git#tag=v$pkgver)
-b2sums=('c9a4821f32034f7fb357068d8bd89e13cc848539a9812f7d7ab51e5aff87abf86ec3014e069121db104279e49dc35a39431453c398ffc191d23a28fcc57f2c01')
+b2sums=('e267f771511e1bc7850cb411f201812af2791222d5402e7e2a12a01f536b96aabe1738c49132494d3b01c1f913e4306c7dc1a50c4b004b26ec1426ddfad5aed8')
 
 build() {
     cd $_name
@@ -42,11 +48,10 @@ build() {
 
 check() {
     cd $_name
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
-    rm -rf quimb
-    # See https://github.com/jcmgray/quimb/issues/328
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest tests -k "not test_equalize_norms"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    rm -rf $_name
+    test-env/bin/python -P -m pytest -o addopts=""
 }
 
 package() {
