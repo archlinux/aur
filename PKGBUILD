@@ -1,6 +1,6 @@
 pkgname=coolerdash-git
-pkgver=2.0.3.r29.g508a0ba
-pkgrel=2
+pkgver=pkgver=2.0.3.r0.gacdc432
+pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
 conflicts=('coolerdash')
@@ -30,9 +30,9 @@ build() {
     rm -rf coolerdash-*.pkg.* || true
 
     # Clean any previous builds if a Makefile exists
-    if [[ -f Makefile || -f GNUmakefile ]]; then
-        make clean || true
-    fi
+    #if [[ -f Makefile || -f GNUmakefile ]]; then
+    #    make clean || true
+    #fi
 
     # Build
     make || return 1
