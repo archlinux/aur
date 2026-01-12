@@ -2,7 +2,7 @@
 
 pkgname=ugrd
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic POSIX initramfs generator, designed for encrypted systems'
 arch=('any')
 url="https://github.com/desultory/ugrd"
