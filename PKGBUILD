@@ -3,7 +3,7 @@
 
 pkgname=zashboard-bin
 _pkgname=zashboard
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='A dashboard using clash api'
 arch=('any')
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/dist.zip"
         "https://raw.githubusercontent.com/Zephyruso/zashboard/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('8805c1c97d6186e882dfc43ea191040e881a85a26385af3c8ba0852cc387680e'
+sha256sums=('3134acc3e829ccdebf9fabc60f3d765824f58d62335e1d0c002ca108548f3ca8'
             'ffc390eec51f16b58506b1a42c99fe0cd9ffea1e3081aab443100fd8c20182d9')
 
 package() {
