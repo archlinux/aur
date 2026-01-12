@@ -1,7 +1,7 @@
 pkgbase = python-libparse
 	pkgdesc = Python library for parsing Liberty files
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TinyTapeout/libparse-python
 	arch = x86_64
 	license = Apache

@@ -1,7 +1,7 @@
 # Maintainer: gonsolo@gmail.com
 pkgname=python-libparse
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for parsing Liberty files"
 arch=('x86_64')
 url="https://github.com/TinyTapeout/libparse-python"
