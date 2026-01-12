@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gpgme
-pkgver=1.24.2
+pkgver=2.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="A C wrapper library for GnuPG (Android ${_android_arch})"
@@ -27,7 +27,7 @@ makedepends=("android-${_android_arch}-libgpg-error"
              'swig')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-${pkgver}.tar.bz2"{,.sig})
-md5sums=('2e0cc1df9f3da8c2a7d7c9dc33b7f0bf'
+md5sums=('73b6d337d02e1829323ef44830e92117'
          'SKIP')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
@@ -47,7 +47,7 @@ build() {
     export CXXFLAGS="${CXXFLAGS} -mno-outline-atomics"
 
     android-${_android_arch}-configure \
-        --enable-languages=cl,cpp \
+        --enable-languages=cl \
         --disable-fd-passing \
         --disable-gpgsm-test
     make $MAKEFLAGS
@@ -63,4 +63,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}/info"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
