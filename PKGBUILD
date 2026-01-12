@@ -7,7 +7,7 @@
 
 _pkgname=playonlinux4
 pkgname=${_pkgname}-git
-pkgver=r3434.00fb25b
+pkgver=r3436.a91f598
 pkgrel=1
 epoch=1
 pkgdesc="GUI for managing Windows programs under linux"
@@ -19,8 +19,10 @@ conflicts=('playonlinux')
 depends=('wine' 'imagemagick' 'xterm' 'cabextract' 'unzip' 'gnupg' 'icoutils' 'xdg-user-dirs' 
 'libxmu' 'netcat' 'wget' 'p7zip' 'python-wxpython' 'mesa-utils' 'jq' 'perl' 'python-natsort')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/PlayOnLinux/POL-POM-4.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/PlayOnLinux/POL-POM-4.git"
+		"usrlib_fix.patch")
+md5sums=('SKIP'
+         '17f56e786a661273f5e1ec978454f921')
 
 pkgver() {
   cd "$_pkgname"
@@ -33,7 +35,7 @@ package() {
         install -d "${pkgdir}/usr/share/${_pkgname}"
         install -d "${pkgdir}/usr/bin"
         cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/usr/share/"
-
+		patch $pkgdir/usr/share/playonlinux4/python/setupwindow/POL_SetupFrame.py $srcdir/usrlib_fix.patch
         echo '#!/bin/bash' > "${pkgdir}/usr/bin/${_pkgname}"
         echo "/usr/share/${_pkgname}/playonlinux \"\$@\"" >> "${pkgdir}/usr/bin/${_pkgname}"
         chmod +x "${pkgdir}/usr/bin/${_pkgname}"

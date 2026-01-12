@@ -1,0 +1,11 @@
+--- POL_SetupFrame.py	2026-01-11 15:43:16.010745845 -0500
++++ POL_SetupFrame2.py	2026-01-12 16:25:02.452905166 -0500
+@@ -33,7 +33,7 @@
+ import lib.playonlinux as playonlinux
+ 
+ lib.lng.Lang()
+-urllib.request.URLopener.version = Variables.userAgent  # Arg ...
++urllib.request.urlopen.version = Variables.userAgent # Arg ...
+ 
+ from ui.PlayOnLinuxWindow import PlayOnLinuxWindow
+ from setupwindow.Downloader import Downloader

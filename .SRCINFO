@@ -1,6 +1,6 @@
 pkgbase = playonlinux4-git
 	pkgdesc = GUI for managing Windows programs under linux
-	pkgver = r3434.00fb25b
+	pkgver = r3436.a91f598
 	pkgrel = 1
 	epoch = 1
 	url = http://www.playonlinux.com/
@@ -27,6 +27,8 @@ pkgbase = playonlinux4-git
 	provides = playonlinux
 	conflicts = playonlinux
 	source = playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git
+	source = usrlib_fix.patch
 	md5sums = SKIP
+	md5sums = 17f56e786a661273f5e1ec978454f921
 
 pkgname = playonlinux4-git
