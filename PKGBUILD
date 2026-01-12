@@ -1,14 +1,14 @@
-# Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
+# Maintainer: NorthWestWind <nw@northwestw.in>
 _pkgname=app-librescore
 pkgname=$_pkgname-appimage
-pkgver=6.0.17
+pkgver=6.0.20
 pkgrel=1
 pkgdesc="Download sheet music"
 arch=('any')
 url="https://github.com/LibreScore/app-librescore"
 license=('MIT')
 source=("${url}/releases/download/v${pkgver}/LibreScore.AppImage")
-md5sums=('97de96c9c2f3fdbe84ec3e94ab685baa')
+md5sums=('44b4c50224cac2ff8b312b277a7e4397')
 options=(!strip)
 
 prepare() {

@@ -1,12 +1,12 @@
 pkgbase = app-librescore-appimage
 	pkgdesc = Download sheet music
-	pkgver = 6.0.17
+	pkgver = 6.0.20
 	pkgrel = 1
 	url = https://github.com/LibreScore/app-librescore
 	arch = any
 	license = MIT
 	options = !strip
-	source = https://github.com/LibreScore/app-librescore/releases/download/v6.0.17/LibreScore.AppImage
-	md5sums = 97de96c9c2f3fdbe84ec3e94ab685baa
+	source = https://github.com/LibreScore/app-librescore/releases/download/v6.0.20/LibreScore.AppImage
+	md5sums = 44b4c50224cac2ff8b312b277a7e4397
 
 pkgname = app-librescore-appimage
