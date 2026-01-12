@@ -3,7 +3,7 @@
 
 pkgname=gftools
 pkgver=0.9.98
-pkgrel=1
+pkgrel=2
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
