@@ -2,7 +2,7 @@
 
 pkgname=python-pynini
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="For compiling, optimizing, and applying grammar rules"
 arch=('any')
 url="https://www.opengrm.org/twiki/bin/view/GRM/Pynini"
