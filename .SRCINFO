@@ -1,7 +1,7 @@
 pkgbase = python-elf_diff
 	pkgdesc = A tool to compare elf binaries
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noseglasses/elf_diff
 	arch = any
 	license = GPL3
