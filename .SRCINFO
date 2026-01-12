@@ -1,7 +1,7 @@
 pkgbase = python-himitsu
 	pkgdesc = Himitsu client module for python
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~apreiml/py-himitsu
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,6 @@ pkgbase = python-himitsu
 	makedepends = python-installer
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/py_himitsu/py_himitsu-0.0.10.tar.gz
-	sha256sums = 45de3188fc56011f8121bba6f43bd59ebddf8d1e2e3a24e32f2479b725ec92ce
+	sha256sums = 4c6ec77f821537128f0eca43455f40ca8d623088bdc4a367ff6915ddde1e9983
 
 pkgname = python-himitsu

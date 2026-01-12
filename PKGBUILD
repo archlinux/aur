@@ -2,7 +2,7 @@
 pkgname=python-himitsu
 _name=py-himitsu
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Himitsu client module for python'
 url='https://git.sr.ht/~apreiml/py-himitsu'
 license=(MIT)
@@ -13,7 +13,7 @@ source=(
 	https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz
 )
 sha256sums=(
-	"45de3188fc56011f8121bba6f43bd59ebddf8d1e2e3a24e32f2479b725ec92ce"
+	"4c6ec77f821537128f0eca43455f40ca8d623088bdc4a367ff6915ddde1e9983"
 )
 
 package() {
