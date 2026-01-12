@@ -4,7 +4,7 @@
 _pkgbase="prjxray"
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-tools-git" "python-$_pkgbase-git")
-pkgver=r3947.08353c97
+pkgver=r3949.c9f02d85
 pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
 url="https://github.com/SymbiFlow/prjxray"
@@ -67,6 +67,10 @@ prepare() {
   mv utils/fasm2frames.py prjxray/
   sed -E 's/(fasm2frames=)utils/\1prjxray/' -i setup.py
 
+  # fix missing header
+  sed -e '1i #include <cstdint>' -i lib/include/prjxray/memory_mapped_file.h
+
+  # submodules
   local _mods=(sanitizers-cmake googletest gflags cctz abseil-cpp yaml-cpp)
 
   git submodule init
