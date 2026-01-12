@@ -208,3 +208,6 @@ Update README.md (#33)
 Add permission for bump version (#34)
 
 
+Modify workflow trigger as pull_request_target to read secrets
+
+
