@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OrangLauncher
+Exec=/usr/bin/oranglauncher
+Icon=oranglauncher
+Terminal=false
+Categories=Game;
+Name[en_US]=oranglauncher.desktop

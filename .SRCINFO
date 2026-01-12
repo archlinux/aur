@@ -1,0 +1,20 @@
+pkgbase = oranglauncher-bin
+	pkgdesc = Orange Launcher for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://oranges.lt
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = oranglauncher
+	conflicts = oranglauncher
+	source = https://github.com/adasjusk/OrangLaunch/releases/download/1.0-Linux/launcher_x64_linux.tar.gz
+	source = oranglauncher.desktop
+	source = orange.png
+	source = LICENSE
+	sha256sums = e197c03e8cb9d5186d584fef735eb41b7258d5e3d722322d773b5d92b76de1ff
+	sha256sums = 492cc9664faf4145bd2531ad4574578c20fbff5958150f4f8c43ff6a2d66eed4
+	sha256sums = ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968
+	sha256sums = 3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa
+
+pkgname = oranglauncher-bin
