@@ -10,7 +10,7 @@ url="https://git.sr.ht/~martijnbraam/lsplug"
 license=('custom:MIT')
 depends=('python' 'hwdata')
 makedepends=(python-build python-installer python-wheel python-setuptools)
-source=("https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
+source=(${pkgname}-${pkgver}.tar.gz::"https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
 sha512sums=('6745feac03435541bb6c5acf0da45d5ed4dd4f2ab3921e33a7ba4156705b947d5f95db1f17c84079e5335575395c154d87a3fdfc7c2ff9eb85849e65662f4bf5')
 
 _dir="${pkgname}-${pkgver}"
