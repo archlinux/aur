@@ -2,7 +2,7 @@
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
 url="https://github.com/PikaOS-Linux/falcond"

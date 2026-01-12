@@ -1,12 +1,23 @@
 post_install() {
   echo ""
   echo "Enable falcond service:"
-  echo "systemctl enable --now falcond"
+  echo "systemctl enable falcond"
   echo ""
-  echo "You must add your user to the falcond group in order to add/remove/edit"
+  echo "You must add root and your user to the falcond group in order to add/remove/edit"
   echo "profiles and perform a full reboot:"
-  echo "sudo groupadd falcond"
-  echo "sudo gpasswd -a $(whoami) falcond"
+  echo "sudo mkdir -p /usr/share/falcond/profiles/user"
+  # Create falcond group if it doesn't exist
+  echo "sudo groupadd --system falcond"
+  # Set ownership and permissions
+  # make that group own /usr/share/falcond/profiles/user
+  echo "sudo chown :falcond /usr/share/falcond/profiles/user"
+  # chmod to 2775 (rwxrwsr-x) to allow group write and setgid for inheritance, 
+  # ensuring access for authorized users while maintaining security
+  echo "sudo chmod 2775 /usr/share/falcond/profiles/user"
+  # Add root to the group
+  echo "sudo usermod -aG falcond root"
+  # Add the user to the group
+  echo "sudo usermod -aG falcond $(whoami)"
   echo ""
   echo "The configuration file will be generated automatically on first run "
   echo "located at /etc/falcond/config.conf"

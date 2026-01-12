@@ -1,7 +1,7 @@
 pkgbase = falcond
 	pkgdesc = Advanced Linux gaming performance daemon
 	pkgver = 1.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/PikaOS-Linux/falcond
 	install = falcond.install
 	arch = x86_64
