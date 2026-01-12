@@ -73,10 +73,10 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.11:"
-    echo "      - Remote Whisper server support (offload to home server or cloud)"
-    echo "      - Cancel recording mid-transcription with 'voxtype record cancel'"
-    echo "      - Output mode override: --paste and --clipboard flags"
+    echo "    New in 0.4.12:"
+    echo "      - Pre-recording hook for better compositor integration"
+    echo "      - Fixed compositor submap getting stuck on short/cancelled recordings"
+    echo "      - Run 'voxtype setup compositor hyprland' to update your config"
     echo ""
 }
 
