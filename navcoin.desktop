@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=NavCoin Core
-Comment=Privacy-oriented cryptocurrency
+Comment=Privacy-oriented cryptocurrency and distributed computing platform
 Exec=navcoin-qt %U
 Icon=navcoin
 Terminal=false
 Type=Application
-Categories=Office;Finance;
+StartupNotify=true
+Categories=Crypto;Cryptocurrency;Network;Office;Finance;Qt;
