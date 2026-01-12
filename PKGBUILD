@@ -6,7 +6,7 @@ _gitver="8u472-b08"
 # Basic package settings
 pkgname="jre8-temurin"
 pkgver="${_jrever/+/.u}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Temurin (OpenJDK 8 JRE binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception")
@@ -15,10 +15,10 @@ depends=(
     "ca-certificates-utils"
 )
 provides=(
-    "java-runtime=17"
-    "java-runtime-openjdk=17"
-    "java-runtime-headless=17"
-    "java-runtime-headless-openjdk=17"
+    "java-runtime=8"
+    "java-runtime-openjdk=8"
+    "java-runtime-headless=8"
+    "java-runtime-headless-openjdk=8"
 )
 options=("!strip")
 install="$pkgname.install"
@@ -32,7 +32,6 @@ sha256sums_aarch64=("c043807ad995fb3987bc1c42b16ebf0f1b5010868c3e9d20a941236d5bb
 # Directory variables
 _jvmdir="usr/lib/jvm/$pkgname"
 _legaldir="usr/share/licenses/$pkgname"
-_mandir="usr/share/man"
 
 package() {
     # Install main files
@@ -47,8 +46,4 @@ package() {
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
-
-    # Install man pages
-    cd "$pkgdir/$_jvmdir/man"
-    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }

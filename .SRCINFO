@@ -1,17 +1,17 @@
 pkgbase = jre8-temurin
 	pkgdesc = Temurin (OpenJDK 8 JRE binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 8.0.472.u8
-	pkgrel = 2
+	pkgrel = 3
 	install = jre8-temurin.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-with-classpath-exception
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-runtime=17
-	provides = java-runtime-openjdk=17
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-openjdk=17
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
 	options = !strip
 	source_x86_64 = https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u472-b08/OpenJDK8U-jre_x64_linux_hotspot_8u472b08.tar.gz
 	sha256sums_x86_64 = 6f7fb5fd640a0fd00837344b0920cbc4b9b9284b50e66f33789e3b250446a16e
