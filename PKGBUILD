@@ -32,6 +32,7 @@ sha256sums_aarch64=("8e4c0bb2488f8abd0379b660963ed981b1e136b975f3faf562e07cce819
 _jvmdir="usr/lib/jvm/$pkgname"
 _confdir="etc/$pkgname"
 _legaldir="usr/share/licenses/$pkgname"
+_mandir="usr/share/man"
 
 # Backup config files
 backup=(
@@ -69,4 +70,8 @@ package() {
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
+
+    # Install man pages
+    cd "$pkgdir/$_jvmdir/man"
+    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }
