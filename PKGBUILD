@@ -3,7 +3,7 @@
 _pkgbase=cluster-api
 _pkgname=clusterctl
 pkgname=clusterctl-1.10
-pkgver=1.10.9
+pkgver=1.10.10
 pkgrel=1
 pkgdesc='Cluster API command line interface for version v1beta1 clusters'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://cluster-api.sigs.k8s.io/"
 license=('Apache-2.0')
 makedepends=('go')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/${_pkgbase}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('609a84d163f50aaba378f9fd39ef0cf3c3df1af2fe45aca09701be9bce2bc6f5')
+sha256sums=('2163b7c8b9d8010f40d091fb916c2e6cdcafaf1ca0e567dac5c92437bb6003fb')
 
 prepare(){
   cd "$_pkgbase-$pkgver"
