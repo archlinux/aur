@@ -1,0 +1,39 @@
+pkgbase = zulu-jre25-fx
+	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
+	pkgver = 25.0.1+25.30.17
+	pkgrel = 3
+	install = zulu-jre25-fx.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-with-classpath-exception
+	license = GPL-2.0-or-later
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime=25
+	provides = java-runtime-openjdk=25
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-openjdk=25
+	provides = java-openjfx=25
+	options = !strip
+	backup = etc/zulu-jre25-fx/security/policy/README.txt
+	backup = etc/zulu-jre25-fx/security/policy/unlimited/default_local.policy
+	backup = etc/zulu-jre25-fx/security/policy/unlimited/default_US_export.policy
+	backup = etc/zulu-jre25-fx/security/policy/limited/default_local.policy
+	backup = etc/zulu-jre25-fx/security/policy/limited/exempt_local.policy
+	backup = etc/zulu-jre25-fx/security/policy/limited/default_US_export.policy
+	backup = etc/zulu-jre25-fx/security/java.security
+	backup = etc/zulu-jre25-fx/sound.properties
+	backup = etc/zulu-jre25-fx/management/management.properties
+	backup = etc/zulu-jre25-fx/management/jmxremote.access
+	backup = etc/zulu-jre25-fx/management/jmxremote.password.template
+	backup = etc/zulu-jre25-fx/net.properties
+	backup = etc/zulu-jre25-fx/jaxp.properties
+	backup = etc/zulu-jre25-fx/sdp/sdp.conf.template
+	backup = etc/zulu-jre25-fx/logging.properties
+	backup = etc/zulu-jre25-fx/jaxp-strict.properties.template
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.30.17-ca-fx-jre25.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = cdfd97d1db106d787eaf02b30f5da26ae4b30e26856f4be1eefce3b1a786c3d8
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu25.30.17-ca-fx-jre25.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = ab63d1f912cf24f8dbde24a1dfab43a0f9810aa5b256acf34e68844e71aaa313
+
+pkgname = zulu-jre25-fx
