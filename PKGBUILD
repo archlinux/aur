@@ -3,7 +3,7 @@
 pkgname=python-textual-plotext
 _pyname=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Textual widget wrapper for the Plotext plotting library'
 arch=(any)
 url="https://github.com/Textualize/$_pyname"

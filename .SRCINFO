@@ -1,7 +1,7 @@
 pkgbase = python-textual-plotext
 	pkgdesc = A Textual widget wrapper for the Plotext plotting library
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Textualize/textual-plotext
 	arch = any
 	license = MIT
