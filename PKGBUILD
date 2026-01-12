@@ -3,7 +3,7 @@
 pkgbase=minify-html
 pkgname=(minify-html python-minify-html)
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely fast and smart HTML + JS + CSS minifier"
 arch=(x86_64)
 url="https://github.com/wilsonzlin/minify-html"

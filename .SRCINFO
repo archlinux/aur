@@ -1,7 +1,7 @@
 pkgbase = minify-html
 	pkgdesc = Extremely fast and smart HTML + JS + CSS minifier
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wilsonzlin/minify-html
 	arch = x86_64
 	license = MIT
