@@ -1,4 +1,16 @@
 #!/bin/bash
+# ==============================================================================
+# Hytale Launcher Wrapper for Arch Linux
+#
+# Author:      [SCDevel/root@scdevel.net]
+# License:     MIT
+# Description: Gathers system information for debugging purposes.
+#
+# Disclaimer:  This script is an unofficial community tool and is not
+#              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
+# ==============================================================================
+
+#!/bin/bash
 HYTALE_FOLDER="$HOME/.local/share/Hytale"
 TEMP_DEBUG="/tmp/hytale-debug-$(date +%s).txt"
 
