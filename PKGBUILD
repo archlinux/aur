@@ -14,6 +14,7 @@ depends=(
   python-jsonpickle
   python-internetarchive
   python-backoff
+  python-requests
 )
 makedepends=(
   python-build

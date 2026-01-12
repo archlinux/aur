@@ -17,6 +17,7 @@ pkgbase = python-openlibrary-client-git
 	depends = python-jsonpickle
 	depends = python-internetarchive
 	depends = python-backoff
+	depends = python-requests
 	source = git+https://github.com/internetarchive/openlibrary-client.git
 	sha512sums = SKIP
 
