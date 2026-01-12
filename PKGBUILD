@@ -4,7 +4,7 @@
 
 pkgname=remarshal
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert between CBOR, JSON, MessagePack, TOML, and YAML'
 arch=(any)
 url="https://github.com/dbohdan/$pkgname"
