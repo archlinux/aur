@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Program to recognize text on screen"
 arch=('x86_64')
 url='https://danpla.github.io/dpscreenocr'
-license=('ZLIB')
+license=('Zlib')
 install="${pkgname}.install"
 depends=('tesseract'
          'qt5-base'
