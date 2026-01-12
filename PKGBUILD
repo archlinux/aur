@@ -2,8 +2,8 @@
 pkgname=novelwriter-bin
 _pkgname=novelWriter
 pkgver=2.8.1
-_pyver=3.13
-pkgrel=1
+_pyver=3.14
+pkgrel=2
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
 arch=('x86_64')
 url="https://novelwriter.io/"

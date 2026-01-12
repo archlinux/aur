@@ -1,7 +1,7 @@
 pkgbase = novelwriter-bin
 	pkgdesc = A markdown-like document editor for writing novels.(Prebuilt version)
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://novelwriter.io/
 	arch = x86_64
 	license = GPL-3.0-only
