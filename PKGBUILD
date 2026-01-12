@@ -2,7 +2,7 @@
 pkgname=treadlate
 pkgdesc="translate adn read books. this is one of the ankor runners app"
 pkgver=v0.0.3
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/pumenis/treadlate"
 license=('MIT')
@@ -19,5 +19,5 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
     install -d ${pkgdir}/usr/share/treadlate/
-    cp * ${pkgdir}/usr/share/treadlate/
+    cp -r * ${pkgdir}/usr/share/treadlate/
 }
