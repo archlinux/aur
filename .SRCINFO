@@ -1,6 +1,6 @@
 pkgbase = tt-logger
 	pkgdesc = A flexible and performant C++ logging library for Tenstorrent projects
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-logger
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = tt-logger
 	makedepends = git
 	depends = spdlog
 	depends = fmt
-	provides = tt-logger
+	provides = tt-logger=1.1.6
 	conflicts = tt-logger
-	source = tt-logger::git+https://github.com/tenstorrent/tt-logger.git#tag=v1.1.6
-	sha256sums = 6b55f54502b4dc6348879258d00d752169c5f9a9acd48235039cf9794bb84a60
+	source = tt-logger::git+https://github.com/tenstorrent/tt-logger.git#tag=v1.1.7
+	sha256sums = b5c50bc53da2bd9392807e89b07b7b32be5227264f63dd969cb0b8629963d06f
 
 pkgname = tt-logger
