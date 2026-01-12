@@ -3,7 +3,7 @@
 pkgname=zashterminal
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features."
+pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features. "
 arch=('any')
 url="https://github.com/leoberbert/zashterminal"
 license=('GPL3')
