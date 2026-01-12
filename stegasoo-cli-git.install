@@ -1,0 +1,17 @@
+post_install() {
+    echo ""
+    echo "Stegasoo CLI installed successfully!"
+    echo ""
+    echo "Usage:"
+    echo "  stegasoo --help          # Show all commands"
+    echo "  stegasoo encode ...      # Hide data in an image"
+    echo "  stegasoo decode ...      # Extract hidden data"
+    echo "  stegasoo tools --help    # Image tools (compress, rotate, etc.)"
+    echo ""
+    echo "For web UI or REST API, install stegasoo-git instead."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
