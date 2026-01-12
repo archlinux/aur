@@ -1,7 +1,7 @@
 pkgbase = python-streamlit-aggrid
 	pkgdesc = A Streamlit component for the AG Grid JavaScript library
 	pkgver = 1.2.1.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/streamlit-aggrid
 	arch = any
 	license = MIT

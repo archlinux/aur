@@ -3,7 +3,7 @@
 _name=streamlit-aggrid
 pkgname=python-$_name
 pkgver=1.2.1.post2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Streamlit component for the AG Grid JavaScript library"
 arch=(any)
 url="https://pypi.org/project/streamlit-aggrid"
