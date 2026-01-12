@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=python-watchpoints
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python variable/object monitor similar to gdb watchpoints'
 arch=(any)
 url='https://github.com/gaogaotiantian/watchpoints'
