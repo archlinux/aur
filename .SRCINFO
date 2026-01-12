@@ -4,10 +4,20 @@ pkgbase = klit-unstable
 	pkgrel = 1
 	url = https://gitlab.com/Openlyst/klit
 	arch = x86_64
-	license = GPL3
-	makedepends = curl
-	makedepends = jq
+	license = AGPL3
+	makedepends = flutter
+	makedepends = git
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
 	depends = gtk3
+	depends = libmpv
+	depends = mpv
+	provides = klit
+	conflicts = klit
 	options = !strip
+	source = klit-unstable::git+https://gitlab.com/Openlyst/klit.git#branch=main
+	sha256sums = SKIP
 
 pkgname = klit-unstable
