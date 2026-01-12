@@ -2,8 +2,8 @@
 # Maintainer: Wijnand Modderman-Lenstra <maze [at] pyth0n [dot] org>
 
 pkgname=direwolf
-pkgver=1.8
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Dire Wolf is a software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
@@ -15,10 +15,10 @@ source=(
     'direwolf.service'
     'direwolf-kiss.service'
 )
-sha1sums=('10e14b38b17341cff5685e13734a4eb374cb10e7'
+sha1sums=('299e5df57a08acf735d37f3909fc66d9a2d56062'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
           'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
-sha256sums=('20af50f397ce492a1e42889a1e2eba54581334c0754adae8e196433998a44e3a'
+sha256sums=('89d5f7992ae1e74d8cf26ec6479dde74d1f480bde950043756e875a689d065d7'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
             '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
 
