@@ -1,7 +1,7 @@
 pkgbase = jre8-temurin
 	pkgdesc = Temurin (OpenJDK 8 JRE binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 8.0.472.u8
-	pkgrel = 1
+	pkgrel = 2
 	install = jre8-temurin.install
 	arch = x86_64
 	arch = aarch64
