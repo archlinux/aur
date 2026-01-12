@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.5.3.r0.g0bcd268
+pkgver=0.5.3.r0.g0000000
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -30,8 +30,15 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "%s.r%s.g%s" "0.5.3" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local count hash
+    if cd "$srcdir/$pkgname" 2>/dev/null; then
+        count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+        hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+    else
+        count="0"
+        hash="unknown"
+    fi
+    echo "0.5.3.r${count}.g${hash}"
 }
 
 build() {
