@@ -5,11 +5,11 @@ pkgver=2.1.27501.20250112
 pkgrel=1
 pkgdesc="A port of the ToupTek Photonics's PC software ToupLite for Linux"
 arch=('i686' 'x86_64')
-url="https://www.touptekphotonics.com/download/?dlID=2"
+url="https://www.touptekphotonics.com/download/?category=Linux"
 depends=(fontconfig dbus libglvnd libxrender freetype2)
 license=('custom')
-source_x86_64=("ToupTekToupLite.x64-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/software/ToupTekToupLite.x64.tar.bz2")
-source_i686=("ToupTekToupLite.x86-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/software/ToupTekToupLite.x86.tar.bz2")
+source_x86_64=("ToupTekToupLite.x64-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/downloads/software/ToupTekToupLite.x64.tar.bz2")
+source_i686=("ToupTekToupLite.x86-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/downloads/software/ToupTekToupLite.x86.tar.bz2")
 sha256sums_i686=('76485b2e6a6b1846373524728c9e1e2b86caf85973222e89af55193e7fb6a431')
 sha256sums_x86_64=('1de12526998b8f760d7b5040cc94fbe1c2bb0a02d0eacb6b39d5d0e413f881ad')
 options=('!strip')
