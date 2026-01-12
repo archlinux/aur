@@ -1,6 +1,5 @@
 # Maintainer: GalaxySnail <me+aur@glxys.nl>
 # Contributor: Tobias Kunze <r@rixx.de>
-# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python313
 pkgver=3.13.11
