@@ -6,7 +6,7 @@ _appname=${_pkgname//-/}
 pkgname=${_appname}
 pkgdesc="Hierarchical environment management with secure vault storage"
 
-pkgver=2.1.0
+pkgver=3.1.0
 pkgrel=1
 _appvername=v${pkgver//_/-}
 
@@ -23,7 +23,7 @@ depends=('glibc' 'gcc-libs' 'direnv' 'sops')
 provides=("${_appname}")
 
 source=("${_appname}-${_appvername}.tgz::${url}/archive/${_appvername}.tar.gz")
-sha256sums=('1b9252bc62a86afb61d6e009d19b91d92b2afe967677d19402770180ad169082')
+sha256sums=('f9c9924c9201958f631ff1b9603086689f78acad00321972c640d642db61e534')
 
 
 build() {
