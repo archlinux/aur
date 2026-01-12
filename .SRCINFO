@@ -1,7 +1,7 @@
 pkgbase = python-opentype-sanitizer
 	pkgdesc = Python wheels for the OpenType Sanitizer
 	pkgver = 9.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googlefonts/ots-python
 	arch = any
 	license = GPL-3.0-only
