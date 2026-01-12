@@ -1,7 +1,7 @@
 pkgbase = wammu-git
 	pkgdesc = A wxPython-based GUI for Gammu, a mobile phone manager.
 	pkgver = 0.44.r7151.20230207.77ae167f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wammu.eu/wammu/
 	arch = any
 	license = GPL-3.0-or-later

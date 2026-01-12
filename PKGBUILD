@@ -7,7 +7,7 @@ _pkgname=wammu
 _pythonver="3"
 pkgname="${_pkgname}-git"
 pkgver=0.44.r7151.20230207.77ae167f
-pkgrel=2
+pkgrel=3
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -25,6 +25,7 @@ makedepends=(
   'python-pybluez>=0.23'
   'python-setuptools'
   'python-wheel'
+  # 'pyinstaller'
 )
 optdepends=(
   'gnome-bluetooth: Bluetooth support'
