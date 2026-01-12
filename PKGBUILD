@@ -273,7 +273,7 @@ build() {
 
   # sacrifice cpu for memory to prevent OoM
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  ulimit -n 4096
+  ulimit -n 40960
 
   # Do 3-tier PGO
 
