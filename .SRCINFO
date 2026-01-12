@@ -1,0 +1,17 @@
+pkgbase = sudo-mcp
+	pkgdesc = MCP server for privileged command execution via sudo/pkexec
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hughesjs/sudo-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = polkit
+	depends = sudo
+	options = !strip
+	source_x86_64 = sudo-mcp-0.2.0-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.2.0/sudo-mcp-x64-v0.2.0.tar.gz
+	sha256sums_x86_64 = 03a98cb01acf69e645a97b1bc22b2a565929daef3aaa301e001c441243a12517
+	source_aarch64 = sudo-mcp-0.2.0-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.2.0/sudo-mcp-arm64-v0.2.0.tar.gz
+	sha256sums_aarch64 = 80af3303af040f9a6bfd3afe9d452f26e2bffda213137371cbe59dab7a28b14b
+
+pkgname = sudo-mcp
