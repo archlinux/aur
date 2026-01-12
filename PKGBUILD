@@ -2,7 +2,7 @@
 
 pkgname=python-standardstreams
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Standard output, standard error, and standard input stream library'
 arch=(any)
 url="https://github.com/chrissimpkins/${pkgname#python-}"

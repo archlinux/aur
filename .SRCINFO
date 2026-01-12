@@ -1,7 +1,7 @@
 pkgbase = python-standardstreams
 	pkgdesc = Standard output, standard error, and standard input stream library
 	pkgver = 0.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/chrissimpkins/standardstreams
 	arch = any
 	license = MIT
