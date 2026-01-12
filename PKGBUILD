@@ -1,14 +1,14 @@
 pkgname=walltone-git
 _pkgname=walltone
-pkgver=r40.gd20a29a
+pkgver=r158.gab5a860
 pkgrel=1
 pkgdesc="Wallpaper and theme management application"
 arch=("x86_64")
 url="https://github.com/kasper24/walltone"
 license=("GPL3")
-depends=("nss" "libsecret" "swaybg" "mpvpaper" "linux-wallpaperengine" "cage" "grim" "wayland-utils")
+depends=("nss" "libsecret" "swaybg" "mpvpaper" "linux-wallpaperengine" "cage" "grim" "ffmpeg" "steamcmd")
 makedepends=("npm" "nodejs" "git")
-source=("$pkgname::git+$url.git#branch=dev")
+source=("$pkgname::git+$url.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -34,3 +34,4 @@ package() {
     install -Dm644 "$srcdir/${pkgname}/walltone.desktop" "${pkgdir}/usr/share/applications/walltone.desktop"
     install -Dm644 "$srcdir/${pkgname}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/walltone.png"
 }
+
