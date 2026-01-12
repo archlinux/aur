@@ -1,9 +1,10 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
 pkgver=0.35.0
 pkgrel=1
-pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
+pkgdesc="Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities."
 arch=('any')
 url="https://github.com/fabiocaccamo/python-benedict"
 license=('MIT')
