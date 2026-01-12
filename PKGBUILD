@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tauview-git
 _pkgname=Tauview
-pkgver=0.0.15.r0.g0e4640a
+pkgver=0.0.16.r1.g3ffe806
 _nodeversion=20
 pkgrel=1
 pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
