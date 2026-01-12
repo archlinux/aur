@@ -3,7 +3,7 @@
 _pkgname=tidalwave
 pkgname="${_pkgname}-git"
 
-pkgver=r333.aba9037
+pkgver=r335.c1ac176
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
@@ -34,8 +34,8 @@ build() {
 package() {
     cd "$srcdir/${_pkgname}"
     install -Dm0755 "tidalwave" "$pkgdir/usr/bin/${_pkgname}"
-    install -Dm0644 "internal/icons/hicolor/256x256/apps/org.codeberg.dergs.tidalwave.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-    install -Dm0644 "internal/settings/org.codeberg.dergs.tidalwave.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
-    install -Dm0644 "build/org.codeberg.dergs.tidalwave.desktop" -t "$pkgdir/usr/share/applications"    
+    install -Dm0644 "internal/icons/hicolor/256x256/apps/dev.dergs.tidalwave.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+    install -Dm0644 "internal/settings/dev.dergs.tidalwave.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
+    install -Dm0644 "build/dev.dergs.tidalwave.desktop" -t "$pkgdir/usr/share/applications"
     glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
 }
