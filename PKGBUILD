@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gnutls
-pkgver=3.8.9
+pkgver=3.8.11
 pkgrel=1
 arch=('any')
 pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-configure'
 optdepends=("android-${_android_arch}-openssl: libgnutls-openssl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz")
-md5sums=('33f4c800c20af2983c45223a803da865')
+md5sums=('614a4f4131ee9d9c004830181bddccea')
 
 build() {
     cd "${srcdir}/gnutls-${pkgver}"
@@ -62,4 +62,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
