@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl
-pkgver=1.0.0
+pkgver=1.0.4
 _gittag="v${pkgver}"
 _gitprefix="${pkgname}-${pkgver}"
 pkgrel=1
@@ -19,22 +19,12 @@ backup=(etc/fw-fanctrl/config.json)
 options=()
 install=
 source=(
-	# Source archive
-	"${_gitprefix}.tar.gz::https://github.com/TamtamHero/fw-fanctrl/archive/refs/tags/${_gittag}.tar.gz"
-
-	# Patches
-	"https://github.com/TamtamHero/fw-fanctrl/commit/ade64de1986184764fcae0c92dc952af107c5c01.patch"
+  # Source archive
+  "${_gitprefix}.tar.gz::https://github.com/TamtamHero/fw-fanctrl/archive/refs/tags/${_gittag}.tar.gz"
 )
 noextract=()
-sha512sums=('7e45f466ccc6dd0eba75f599a3f3063352def57e754108158b258c141228964566fba8e62e04081d503ffba3abaebcf26098b7f96058ca9dcdf95fc189e2b6d4'
-            '941d627e0957fe66836ae0b84cf59c7578d8b7e6e50e36c8d159c4ecbb95ae40e5893cdee3b336acaf213968fbc722af95e6203e9556c69b61e765bf1eba2ee0')
-b2sums=('4f23e624d84b526e4b60755fc923396158ee67da787081f114e8bd0ac2c25087bb4af4b2707c7c7a0f9e5e9ffc17d07b664393d3ea14413263a4a7a1e91f305e'
-        '9d6747a7d9e11133911e883a560f66a1241d0cbdcf650c26b869b7e474c8affb856f43cef32bdca1a07259100016cd06ac83ee2fbef6ab5f719441da30533118')
-
-prepare() {
-	cd "${srcdir}/${_gitprefix}"
-	patch -Np1 -i "${srcdir}/ade64de1986184764fcae0c92dc952af107c5c01.patch"
-}
+sha512sums=('ed33709cb7d12e6b89aebbf38b2a2bbcdf4ed23f5f419c4b79eade9b14fecdf1ad9c29cdaabc5e094381cfaf8bb91c8093602a36ae4f927a3568f37a86823b4f')
+b2sums=('8628340b752f90214f8903103beed0e411efb67e7830625c130f8fd92e0be86da9cd2c0d3be732fc99dd1c04eb9754e0a0440bff7409fb6b8307a0e7fd813ba1')
 
 build() {
 	cd "${srcdir}/${_gitprefix}"
@@ -45,17 +35,23 @@ build() {
 package() {
 	cd "${srcdir}/${_gitprefix}"
 
+	cp "${srcdir}/${_gitprefix}/dist"/*.whl "${srcdir}"
+
 	# we run this install script just to have config + systemd services in place
 	./install.sh \
 		--dest-dir "${pkgdir}" \
+		--effective-installation-dir "/usr/bin" \
+		--python-prefix-dir "${pkgdir}/usr" \
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
 		--no-ectool \
 		--no-pip-install \
 		--no-pre-uninstall \
-		--no-post-install
+		--no-post-install \
+		--no-sudo
 
-	python -m installer --destdir "${pkgdir}" dist/*.whl
+	python -m installer --destdir "${pkgdir}" "${srcdir}"/*.whl
+	rm "${srcdir}"/*.whl
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
