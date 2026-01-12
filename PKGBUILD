@@ -4,7 +4,7 @@
 _name=PhiK
 pkgname=python-phik
 pkgver=0.12.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Phi_K correlation analyzer library'
 arch=(x86_64)
 url='https://github.com/kaveio/phik'
