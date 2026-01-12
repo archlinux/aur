@@ -1,6 +1,6 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.11.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Milkshiift/GoofCord
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = goofcord-bin
 	arch = x86_64
 	license = OSL-3.0
 	depends = electron39
-	provides = goofcord=1.11.4
+	provides = goofcord=2.0.0
 	conflicts = goofcord
-	source = LICENSE-1.11.4::https://raw.githubusercontent.com/Milkshiift/GoofCord/v1.11.4/LICENSE
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/Milkshiift/GoofCord/v2.0.0/LICENSE
 	source = goofcord.sh
 	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = goofcord-1.11.4-aarch64.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v1.11.4/GoofCord-1.11.4-linux-aarch64.rpm
-	sha256sums_aarch64 = 47c865f3cfea71481ce28e626483a912ded86970e2ee2fd8ed2cdd88975859da
-	source_armv7h = goofcord-1.11.4-armv7h.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v1.11.4/GoofCord-1.11.4-linux-armv7l.rpm
-	sha256sums_armv7h = 9839f51bd14033eb7ed20bdce4310a874bcf78572ccd7d2d34bc43f655160391
-	source_x86_64 = goofcord-1.11.4-x86_64.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v1.11.4/GoofCord-1.11.4-linux-x86_64.rpm
-	sha256sums_x86_64 = c8f2bf2bb519e3a60bfce41a88a7a2a2b607e9a5ce3ec466fd3b01237489d67a
+	source_aarch64 = goofcord-2.0.0-aarch64.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v2.0.0/GoofCord-2.0.0-linux-aarch64.rpm
+	sha256sums_aarch64 = a7cd54226b970205d8f62976ce4e80e5ee4d7b51933881d5dc40073c5ea33362
+	source_armv7h = goofcord-2.0.0-armv7h.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v2.0.0/GoofCord-2.0.0-linux-armv7l.rpm
+	sha256sums_armv7h = 3c90e0917b61dc3ff09e4d9b4a78e465185b7742b542beedcc5b6fc66388def5
+	source_x86_64 = goofcord-2.0.0-x86_64.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v2.0.0/GoofCord-2.0.0-linux-x86_64.rpm
+	sha256sums_x86_64 = a0c542b3b6be2e09a48446fcc7c168db20e94976f85d02787d39d57a4d729239
 
 pkgname = goofcord-bin
