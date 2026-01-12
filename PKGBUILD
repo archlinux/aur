@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nohang
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated low memory handler."
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -20,7 +20,7 @@ source=("https://github.com/hakavlad/nohang/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6415b1ffcc6f9d811ce8b1cc827a551c344c9d15f55831440183d0a0210ed1d5')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make \
     DESTDIR="$pkgdir" \
     PREFIX='/usr' \
