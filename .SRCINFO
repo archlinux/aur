@@ -1,6 +1,6 @@
 pkgbase = verus-analyzer-bin
 	pkgdesc = A Verus compiler front-end for IDEs (derived from rust-analyzer)
-	pkgver = 2025.11.18
+	pkgver = 2026.01.12
 	pkgrel = 1
 	url = https://github.com/verus-lang/verus-analyzer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = verus-analyzer-bin
 	optdepends = verus: verification support
 	provides = verus-analyzer
 	conflicts = verus-analyzer
-	source = verus-analyzer-bin-2025.11.18.gz::https://github.com/verus-lang/verus-analyzer/releases/download/2025-11-18/verus-analyzer-x86_64-unknown-linux-gnu.gz
-	sha256sums = c25b66030a746863f76517c7e35321d6df4305f0e0512cb7140e55d0ef10f96b
+	source = verus-analyzer-bin-2026.01.12.gz::https://github.com/verus-lang/verus-analyzer/releases/download/2026-01-12/verus-analyzer-x86_64-unknown-linux-gnu.gz
+	sha256sums = 4b0d22a8abf26f36baf9f482103b0876abb965f416f0b5f1145d38f082abe16c
 
 pkgname = verus-analyzer-bin
