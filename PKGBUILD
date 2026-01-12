@@ -1,4 +1,4 @@
-# Maintainer: Nickolas Gray
+# Maintainer: marrcaburgh
 pkgver=1.0
 pkgrel=1
 pkgname=godot-uid-fixer-git
