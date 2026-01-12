@@ -6,7 +6,7 @@ _buildver="8.90.0.19"
 # Basic package settings
 pkgname="zulu-jre8-fx"
 pkgver="$_jrever+$_buildver"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included)."
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception" "GPL-2.0-or-later")
@@ -33,7 +33,6 @@ sha256sums_aarch64=("95a8fa16a3037e5a1b8d7ddd2a72c385edf68638b65774f92af0a6c8ed1
 # Directory variables
 _jvmdir="usr/lib/jvm/$pkgname"
 _legaldir="usr/share/licenses/$pkgname"
-_mandir="usr/share/man"
 
 package() {
     # Install main files
@@ -52,8 +51,4 @@ package() {
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
-
-    # Install man pages
-    cd "$pkgdir/$_jvmdir/man"
-    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }

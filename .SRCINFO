@@ -1,7 +1,7 @@
 pkgbase = zulu-jre8-fx
 	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
 	pkgver = 8.0.472+8.90.0.19
-	pkgrel = 1
+	pkgrel = 2
 	install = zulu-jre8-fx.install
 	arch = x86_64
 	arch = aarch64
