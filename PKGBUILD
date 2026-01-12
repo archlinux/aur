@@ -2,7 +2,7 @@
 
 pkgname=('python-vcs2l')
 pkgver='1.1.6'
-pkgrel=1
+pkgrel=2
 pkgdesc='A version control system tool designed to make working with multiple repositories easier (python-vsctool fork)'
 arch=('any')
 url='https://github.com/ros-infrastructure/vcs2l'
@@ -15,12 +15,14 @@ conflicts=('python-vcstool')
 source=("https://github.com/ros-infrastructure/vcs2l/archive/${pkgver}.tar.gz")
 sha256sums=('d7e545b0a69e860eaed36eec9bb824935e01fa03693d6bb50e3ddeb95408f615')
 
+_pkgbase=${pkgname#python-}
+
 build() {
-    cd "${srcdir}/vcs2l-${pkgver}"
-    python setup.py build
+    cd "${srcdir}/$_pkgbase-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/vcs2l-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd "${srcdir}/$_pkgbase-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

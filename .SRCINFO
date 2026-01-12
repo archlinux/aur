@@ -1,7 +1,7 @@
 pkgbase = python-vcs2l
 	pkgdesc = A version control system tool designed to make working with multiple repositories easier (python-vsctool fork)
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-infrastructure/vcs2l
 	arch = any
 	license = Apache
