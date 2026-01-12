@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-infomaniak
 	pkgdesc = Infomaniak DNS Authenticator plugin for Certbot
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Infomaniak/certbot-dns-infomaniak
 	arch = any
 	license = Apache-2.0
