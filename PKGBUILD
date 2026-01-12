@@ -17,12 +17,12 @@ source=("navcoin.desktop"
 	"navcoin.png::https://raw.githubusercontent.com/navcoin/navcoin-core/master/share/pixmaps/navcoin128.png")
 
 # Use 'updpkgsums' to generate these automatically
-sha256sums=('1885c0577f19f819aafc56c7ea52f00a'
-	'c67b248610947e2fd11489923eed7fa0'
-	'SKIP')
+sha256sums=('eb48ac60ac2e116cc9f6f9bc3059b89cf90b29ca815bba3ce3af75330bd39372'
+            '648b4fa86e7d435814e844a57bf2b29b61a994d7bb4e36cde207e29520f7d9d2'
+            '6950b9922e570188f5a84ce38c33cfa04f14212f3bc88bc40d49eca2e37a88cc')
+sha256sums_x86_64=('ba4dffd7bd374eed5bdcc19bb4d25fac09d62ac65d8b56ffc53d30cb1264f21d')
 
 source_x86_64=("https://github.com/NAVCoin/navcoin-core/releases/download/${pkgver}/${_basename}-${pkgver}-x86_64-linux-gnu.tar.gz")
-sha256sums_x86_64=('923ec57088b9c87893112a6473919e83ec14d038287e076722d718b958c89423')
 
 package() {
 	# Binary installation
