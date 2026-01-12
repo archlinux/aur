@@ -1,7 +1,7 @@
 # Maintainer: Jasur Sadikov <jasur@sadikoff.com>
 pkgname=mud-git
 _pkgname=mud
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Multi repository git utility. Manage multiple git-repositories simultaneously."
 arch=('any')
