@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -17,12 +17,10 @@ backup=('etc/beszel-agent.conf')
 source+=(
   'beszel-agent.service'
   'beszel-agent.sysusers'
-  'beszel-agent.tmpfiles'
   'beszel-agent.conf.example'
 )
 sha256sums=('1aa27e4100bdd4f5c4679fd0ae6a79e88ed5cb6545d457c1c9cc660a38687215'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
-            '1cce5d8090440858a5b537e5e43884d51da240317f5c062559daab1f9d3d22bf'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
 sha256sums_x86_64=('ed4123ceeda41b04b741c2d29370961de12f4e29fb239fcaf5df2a0e2695d02e')
 sha256sums_aarch64=('e4897c02ca03e392ddeeb255f58e658b34e47e2b451048a1344909d5d8a21c35')
@@ -53,7 +51,6 @@ package() {
   install -Dm644 beszel-agent.service "$pkgdir/usr/lib/systemd/system/beszel-agent.service"
 
   install -Dm644 beszel-agent.sysusers "$pkgdir/usr/lib/sysusers.d/beszel-agent.conf"
-  install -Dm644 beszel-agent.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/beszel-agent.conf"
 
   install -Dm640 beszel-agent.conf.example "$pkgdir/etc/beszel-agent.conf"
   install -Dm644 beszel-agent.conf.example "$pkgdir/usr/share/doc/${pkgname}/beszel-agent.conf.example"
