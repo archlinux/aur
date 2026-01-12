@@ -1,10 +1,10 @@
 pkgbase = cgal-swig-bindings
 	pkgdesc = CGAL bindings using SWIG
-	pkgver = 5.5.2.post202303131425.r1.gd5e2662
+	pkgver = 6.0.1.post202410241521
 	pkgrel = 1
 	url = https://github.com/CGAL/cgal-swig-bindings
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cgal
 	makedepends = cmake
 	makedepends = swig
@@ -13,9 +13,8 @@ pkgbase = cgal-swig-bindings
 	makedepends = jdk-openjdk
 	makedepends = onetbb
 	makedepends = boost
-	makedepends = git
-	source = git+https://github.com/CGAL/cgal-swig-bindings.git
-	md5sums = SKIP
+	source = cgal-swig-bindings-6.0.1.post202410241521.tar.gz::https://github.com/CGAL/cgal-swig-bindings/archive/v6.0.1.post202410241521.tar.gz
+	sha512sums = 7840d88af155329b811d8d265c425816dcd76c13ddd069cb9592a7555ee3dd681ff2679697d7170dbfa6b3129c044ed63ab03d3ee934010695be35f4b213bbae
 
 pkgname = python-cgal
 	depends = python-numpy

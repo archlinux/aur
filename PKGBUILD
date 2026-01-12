@@ -2,20 +2,15 @@
 # Contributor: xantares <xantares09@hotmail.com>
 pkgbase=cgal-swig-bindings
 pkgname=(python-cgal java-cgal)
-pkgver=5.5.2.post202303131425.r1.gd5e2662
+pkgver=6.0.1.post202410241521
 pkgrel=1
 pkgdesc="CGAL bindings using SWIG"
 arch=(x86_64)
-license=(GPL3)
+license=(GPL-3.0-or-later)
 url="https://github.com/CGAL/${pkgbase}"
-makedepends=(cgal cmake swig eigen python-numpy jdk-openjdk onetbb boost git)
-source=(git+${url}.git)
-md5sums=('SKIP')
-
-pkgver() {
-  cd ${pkgbase}
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+makedepends=(cgal cmake swig eigen python-numpy jdk-openjdk onetbb boost)
+source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('7840d88af155329b811d8d265c425816dcd76c13ddd069cb9592a7555ee3dd681ff2679697d7170dbfa6b3129c044ed63ab03d3ee934010695be35f4b213bbae')
 
 build() {
   cmake \
@@ -26,8 +21,8 @@ build() {
     -DBUILD_JAVA=ON \
     -DBUILD_PYTHON=ON \
     -DBUILD_RUBY=OFF
-  cmake --build build --target all
 
+  cmake --build build --target all
   ctest -j2 -R python -E polyline_simplification_2 --output-on-failure
 }
 
