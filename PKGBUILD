@@ -2,7 +2,7 @@
 pkgname=python-ttf2web
 _name="ttf2web"
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimize fonts to only the specific glyphs needed for your text and website "
 arch=(any)
 url="https://github.com/johncf/ttf2web"

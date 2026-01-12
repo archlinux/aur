@@ -1,7 +1,7 @@
 pkgbase = python-ttf2web
 	pkgdesc = Optimize fonts to only the specific glyphs needed for your text and website
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johncf/ttf2web
 	arch = any
 	license = MIT
