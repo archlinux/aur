@@ -1,7 +1,7 @@
 pkgbase = pa-dlna-git
 	pkgdesc = Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout.
 	pkgver = 1.1+3.r448.20251004.b401cdf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/xdegaye/pa-dlna
 	arch = any
 	license = MIT
