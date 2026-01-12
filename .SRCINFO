@@ -1,6 +1,6 @@
 pkgbase = symp-git
 	pkgdesc = Populate directories with least amount of symlinks
-	pkgver = 5.2.7.r0.ge4ea780
+	pkgver = 5.2.7.r1.gc49a10e
 	pkgrel = 1
 	url = https://github.com/Dracape/SymP
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = symp-git
 	makedepends = git
 	depends = fish
 	depends = fd
-	provides = symp=5.2.7.r0.ge4ea780
+	provides = symp=5.2.7.r1.gc49a10e
 	conflicts = symp
 	source = symp-git::git+https://github.com/Dracape/SymP.git
 	b2sums = SKIP
