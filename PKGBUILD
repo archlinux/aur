@@ -1,11 +1,11 @@
 # Maintainer: Spoorloos <mick.negenman@icloud.com>
 
 _jrever="21.0.9"
-_zuluver="21.46.19"
+_buildver="21.46.19"
 
 # Basic package settings
 pkgname="zulu-jre21-fx"
-pkgver="$_jrever+$_zuluver"
+pkgver="$_jrever+$_buildver"
 pkgrel=3
 pkgdesc="An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included)."
 arch=("x86_64" "aarch64")
@@ -25,9 +25,9 @@ options=("!strip")
 install="$pkgname.install"
 
 # Source URLs
-source_x86_64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_x64.tar.gz")
+source_x86_64=("https://cdn.azul.com/zulu/bin/zulu$_buildver-ca-fx-jre$_jrever-linux_x64.tar.gz")
 sha256sums_x86_64=("f3acb0aea8ccd7a7293bbf580f09b9614b5c8fa7729ac1a0478f7da58cd246e5")
-source_aarch64=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jre$_jrever-linux_aarch64.tar.gz")
+source_aarch64=("https://cdn.azul.com/zulu/bin/zulu$_buildver-ca-fx-jre$_jrever-linux_aarch64.tar.gz")
 sha256sums_aarch64=("1c034dbdb0de3b0b96475095ca75fe676a577333f9f8cb7f849e9cde7e1bcd92")
 
 # Directory variables
