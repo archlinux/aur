@@ -1,13 +1,12 @@
 pkgbase = android-armv7a-eabi-freetype2
 	pkgdesc = Font rasterization library (Android armv7a-eabi)
 	pkgver = 2.13.3
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.freetype.org/
 	arch = any
 	groups = android-freetype2
 	license = GPL
 	makedepends = android-meson
-	makedepends = patchelf
 	depends = android-ndk
 	depends = android-armv7a-eabi-zlib
 	depends = android-armv7a-eabi-brotli
