@@ -1,0 +1,32 @@
+pkgbase = bbsync-git
+	pkgdesc = Automatic Downloads Of Your Blackboard Content (unofficial git version)
+	pkgver = r.HEAD
+	pkgrel = 1
+	url = https://github.com/sanjacob/BlackboardSync
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=64
+	makedepends = python-setuptools-scm>=8
+	depends = python>=3.10
+	depends = python-pyqt6>=6.7.1
+	depends = python-pyqt6-webengine>=6.7.0
+	depends = python-beautifulsoup4>=4.12.2
+	depends = python-pydantic>=2.1.1
+	depends = python-pathvalidate>=3.1.0
+	depends = python-dateutil
+	depends = python-appdirs
+	depends = python-lxml>=4.7.1
+	depends = python-requests>=2.25.0
+	depends = python-packaging>=23.1
+	provides = blackboardsync
+	provides = bbsync
+	conflicts = blackboardsync
+	conflicts = bbsync
+	source = bbsync-git::git+https://github.com/sanjacob/BlackboardSync.git
+	sha256sums = SKIP
+
+pkgname = bbsync-git
