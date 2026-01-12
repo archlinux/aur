@@ -31,8 +31,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.5.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Try to get version from git tags first
+    local ver
+    ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    if [[ -n "$ver" ]]; then
+        echo "$ver"
+    else
+        # Fallback: use base version + commit count + short hash
+        printf "0.5.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
