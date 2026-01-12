@@ -8,7 +8,7 @@
 _target=cr16-elf
 pkgname=$_target-gcc-git
 pkgver=16.0.0.r219731
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for cr16 (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -41,9 +41,9 @@ build() {
     --libexecdir=/usr/lib \
     --enable-languages=c,c++ \
     --enable-libgcc \
-    --disable-libstdc++-v3 \
     --disable-libssp \
     --disable-nls \
+    --disable-hosted-libstdcxx \
     --disable-shared \
     --without-headers \
     --with-newlib \
