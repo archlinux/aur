@@ -1,6 +1,6 @@
 # Maintainer: t4t5 <t4t5@hey.com>
 pkgname=hypruler
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Measure anything on your screen."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('fontconfig')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/t4t5/hypruler/archive/v$pkgver.tar.gz")
-sha256sums=('69038743f7dcef4f957e48abcc27927d54ae3ca1e3c058267a36fd07c559fdf1')
+sha256sums=('d380bd15b348b89cee7bdbb586f8b6ec4aa3141925a615b2fe78d69061487bf7')
 
 build() {
     cd "$pkgname-$pkgver"
