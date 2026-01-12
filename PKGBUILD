@@ -3,7 +3,7 @@
 _pyname=django-huey
 pkgname=python-$_pyname
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An extension for django and huey that supports multi queue management'
 arch=(any)
 url="https://github.com/gaiacoop/$_pyname"
