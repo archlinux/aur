@@ -25,4 +25,4 @@ pkgbase = rclient
 	sha256sums = eba588cee87c935dcbb8f78bea5c5eb790473e81e13abf2f2d7f62dfdd4726c8
 	sha256sums = af258dd9345943c5024efa534ebbf5cc14340741f393f36375b8f3c89ca736ab
 
-pkgname = rclient-ddnet
+pkgname = rclient
