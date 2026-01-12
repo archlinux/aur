@@ -1,6 +1,6 @@
 pkgbase = jasmine-wallpaper
 	pkgdesc = GTK wallpaper helper for matugen + swww
-	pkgver = 1.0.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/xo-xo-xo-xo/jasmine-wallpaper
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jasmine-wallpaper
 	depends = matugen
 	depends = swww
 	optdepends = python-cairo: smoother sparkle rendering
-	source = https://github.com/xo-xo-xo-xo/jasmine-wallpaper/archive/refs/tags/1.0.2.zip
-	sha256sums = 6a7a27300290cb9a652f9553476d33be800302fcb11cc8ba22f18326112324e1
+	source = https://github.com/xo-xo-xo-xo/jasmine-wallpaper/archive/refs/tags/1.0.0.zip
+	sha256sums = 54b0d35f27392a19a6012ac93ff16a3acdc62b8e98efd91d8d8b2126bc163406
 
 pkgname = jasmine-wallpaper
