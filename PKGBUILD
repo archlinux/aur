@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ninja-fuchsia-git
-pkgver=r3033.83b2a567
+pkgver=r3379.44e03391
 pkgrel=1
 pkgdesc='Small build system with a focus on speed - Fichsia version with JobServer and improved status output'
 arch=(x86_64)
@@ -11,7 +11,7 @@ conflicts=(ninja)
 license=(Apache)
 depends=(gcc-libs)
 makedepends=(python re2c git)
-_commit=83b2a5674ae232da161ce26a18ac6802ffdcbccf
+_commit=44e033912a984d4af38349205b250c71e0c51b58
 source=("$pkgname::git+$url#commit=$_commit")
 sha256sums=(SKIP)
 
@@ -26,7 +26,8 @@ pkgver () {
 
 build () {
 	cd "$pkgname"
-	python configure.py --bootstrap
+	CXXFLAGS="$CXXFLAGS -include cstdint -std=gnu++17" \
+		python configure.py --bootstrap
 }
 
 package () {
