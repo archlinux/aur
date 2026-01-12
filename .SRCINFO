@@ -1,7 +1,7 @@
 pkgbase = gammu-git
 	pkgdesc = GNU All Mobile Management Utilities. Latest git checkout.
 	pkgver = 1.42.0+301.r14406.20250131.204a3c6be
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gammu/gammu
 	arch = i686
 	arch = x86_64
