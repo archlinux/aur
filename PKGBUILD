@@ -1,6 +1,6 @@
 # Maintainer: James Hughes <james@pyrosoftsolutions.co.uk>
 pkgname=sudo-mcp
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="MCP server for privileged command execution via sudo/pkexec"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('polkit' 'sudo')
 options=('!strip')  # .NET single-file bundles are destroyed by strip
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-x64-v${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-arm64-v${pkgver}.tar.gz")
-sha256sums_x86_64=('03a98cb01acf69e645a97b1bc22b2a565929daef3aaa301e001c441243a12517')
-sha256sums_aarch64=('80af3303af040f9a6bfd3afe9d452f26e2bffda213137371cbe59dab7a28b14b')
+sha256sums_x86_64=('eb02a4cf9febad574c35e620c7c5ce1a5802dc96e22b855774f91ac289747a8c')
+sha256sums_aarch64=('f5ea329349448a3dd4fb5039eb103121f3d0e5a4db5487bf7527fcc8e44cb702')
 
 package() {
     case "$CARCH" in
