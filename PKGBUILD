@@ -3,7 +3,7 @@
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
 license=(Apache-2.0)
