@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=e3d9e2992b845b3436feb4a32c75a67f00a301e4} # daily-728
+: ${_runtime_commit:=7f733408256aa1e5fb2fc176d18eacc9aad73988} # daily-737
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.9.2
+pkgver=12.10.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -115,7 +115,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '5629cb4fa3a9f535e2fb1dc84a91c62d09405b8b26ff0bbf8f8d75e00d885c22'
+  '38ae8ed9372db49c07cd4a69e4a7df035557f3caec4870617190eeab1e6a3b10'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
