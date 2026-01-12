@@ -1,8 +1,8 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=thinkfan-ui
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A small gui app for Linux to control the fan speed and monitor temps on a ThinkPad"
 arch=('x86_64')
 url="https://github.com/zocker-160/thinkfan-ui"
