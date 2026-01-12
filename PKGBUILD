@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=python3-yamale
-pkgver=6.0.0 # renovate: datasource=github-releases depName=23andMe/Yamale
+pkgver=6.1.0 # renovate: datasource=github-releases depName=23andMe/Yamale
 pkgrel=1
 pkgdesc='A schema and validator for YAML'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('yamale' 'python-yamale')
 license=('MIT')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9ce2b95ab6770e52432cf1a02b0f610105eb8cfc32e4935e8064ff6c325f6589')
+sha256sums=('715fa04a3da0b8f69b62bc9537c2eb0573711c56e766c233c7cee74b941a5964')
 
 build() {
   cd Yamale-"$pkgver"
