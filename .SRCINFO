@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-gettext
 	pkgdesc = GNU internationalization library (Android riscv64)
-	pkgver = 0.25
+	pkgver = 0.26
 	pkgrel = 1
 	url = http://www.gnu.org/software/gettext/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = android-riscv64-gettext
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.25.tar.gz
+	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz
 	source = intl.pc
-	md5sums = 7001edf7c4c160d921f8cc5ea83968f4
+	md5sums = ee66cf742805c0027a7f3db5f2d3f7eb
 	md5sums = b0a123ec7ad1a345d0d712dae986a543
 
 pkgname = android-riscv64-gettext
