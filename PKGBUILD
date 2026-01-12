@@ -1,4 +1,4 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Jake <aur2044@jklr.org>
 
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Maks Verver <maksverver@geocities.com>
@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="A simulator for Conway's Game of Life and other cellular automata"
 arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('wxwidgets-gtk3' 'glu' 'sdl2')
 makedepends=('python-setuptools')
 optdepends=('python3: for Python scripting support')
