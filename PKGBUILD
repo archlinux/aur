@@ -1,8 +1,8 @@
 # Maintainer: Pumenis <mindia dot e at aol dot com>
 pkgname=ascetic-experiences
-pkgdesc="Ascetic Experiences Reader and Translation app"
+pkgdesc="Ascetic Experiences Reader and Translation app from russian to georgian"
 pkgver=v0.0.1
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/pumenis/ascetic-experiences"
 license=('MIT')
