@@ -1,6 +1,6 @@
 pkgbase = ripperx-git
 	pkgdesc = GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3.
-	pkgver = 3.0.2+1.r225.20260105.a8f0701
+	pkgver = 3.0.3.r227.20260111.bc0b02a
 	pkgrel = 1
 	url = https://codeberg.org/thothix/ripperx
 	arch = x86_64
@@ -18,9 +18,8 @@ pkgbase = ripperx-git
 	depends = gtk2>=2.6
 	depends = libgdk_pixbuf-2.0.so
 	depends = taglib>=1.9.1
-	provides = ripperx=3.0.2+1.r225.20260105.a8f0701
+	provides = ripperx=3.0.3.r227.20260111.bc0b02a
 	conflicts = ripperx
-	options = !lto
 	source = ripperx::git+https://codeberg.org/thothix/ripperx.git
 	source = ripperx_desktopfile-iconname.patch
 	sha256sums = SKIP

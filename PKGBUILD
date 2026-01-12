@@ -4,7 +4,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=ripperx-git
-pkgver=3.0.2+1.r225.20260105.a8f0701
+pkgver=3.0.3.r227.20260111.bc0b02a
 pkgrel=1
 pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
@@ -40,7 +40,7 @@ sha256sums=(
   'SKIP'
   'b529f04f4836e49dfd118522f7969486ba8eebb132f4e03bde2ac72630566c0e'
 )
-options+=('!lto') # With LTO, running 'ripperX' fails with a Segmentation Fault.
+#options+=('!lto') # With LTO, running 'ripperX' fails with a Segmentation Fault.
 
 prepare() {
   cd "${pkgname%-git}"
