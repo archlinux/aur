@@ -6,7 +6,7 @@ _pkgname='Google Chat Linux'
 pkgver=5.39.24_1
 _electronversion=39
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron not included.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/squalou/google-chat-linux"
@@ -94,5 +94,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
