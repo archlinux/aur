@@ -1,6 +1,6 @@
 pkgbase = g3k-git
 	pkgdesc = A 3DUI widget toolkit.
-	pkgver = 0.16.0.r1353.d237a16
+	pkgver = 0.16.0.r1357.8660d1e
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/g3k
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = g3k-git
 	depends = glib2
 	depends = glibc
 	depends = gulkan-git
-	provides = g3k=0.16.0.r1353.d237a16
+	provides = g3k=0.16.0.r1357.8660d1e
 	conflicts = g3k
 	source = git+https://gitlab.freedesktop.org/xrdesktop/g3k.git
 	md5sums = SKIP

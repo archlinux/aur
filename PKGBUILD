@@ -2,7 +2,7 @@
 
 _realname='g3k'
 pkgname="$_realname-git"
-pkgver=0.16.0.r1353.d237a16
+pkgver=0.16.0.r1357.8660d1e
 pkgrel=1
 pkgdesc='A 3DUI widget toolkit.'
 arch=('i686' 'x86_64')
