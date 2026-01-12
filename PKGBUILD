@@ -32,7 +32,7 @@ build() {
 package() {
   cd "${srcdir}/rtl-sdr/build/"
   make DESTDIR="${pkgdir}" install
-  install -D -m644 "${srcdir}/rtl-sdr/rtl-sdr.rules" \
+  install -D -m644 "${srcdir}/rtl-sdr/rtl-sdr-uaccess.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/10-rtl-sdr.rules"
 }
 
