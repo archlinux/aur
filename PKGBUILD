@@ -3,8 +3,8 @@
 pkgname=qefientrymanager-git
 _pkgname=${pkgname%-git}
 _srcname=QEFIEntryManager
-pkgver=0.4.1.r12.gebe7108
-pkgrel=1
+pkgver=0.4.1.r13.g67d51b5
+pkgrel=2
 epoch=1
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -42,6 +42,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_INSTALL_MANDIR=/usr/share/man
 		-D BUILD_CLI_UTILITY=ON
+		-D USE_PKEXEC_LAUNCHER=ON
 	)
 
 	cmake "${cmake_options[@]}"
