@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=python-himitsu
 _name=py-himitsu
-pkgver=0.0.8
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Himitsu client module for python'
 url='https://git.sr.ht/~apreiml/py-himitsu'
@@ -13,7 +13,7 @@ source=(
 	https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz
 )
 sha256sums=(
-	"82e3284be23a0f3ed24b1997bd3f9f931fe3a5844702224f67ee6817d750e580"
+	"45de3188fc56011f8121bba6f43bd59ebddf8d1e2e3a24e32f2479b725ec92ce"
 )
 
 package() {
