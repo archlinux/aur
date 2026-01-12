@@ -1,0 +1,12 @@
+pkgbase = treadlate
+	pkgdesc = translate adn read books. this is one of the ankor runners app
+	pkgver = v0.0.3
+	pkgrel = 0
+	url = https://github.com/pumenis/treadlate
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/pumenis/treadlate.git#tag=v0.0.3
+	sha256sums = c14a27df0cf905b43d59a97f9d037d2af3d8eade0987f312231f54dc5c0a2e3a
+
+pkgname = treadlate
