@@ -1,10 +1,10 @@
 pkgbase = sddm-silent-theme-git
 	pkgdesc = Highly customizable SDDM theme (git version)
-	pkgver = r20251023.ge334d92
+	pkgver = r20260103.g13b0399
 	pkgrel = 1
 	url = https://github.com/uiriansan/SilentSDDM
 	arch = any
-	license = GPL-2.0-only
+	license = GPL-3.0-only
 	makedepends = git
 	depends = sddm
 	depends = qt6-svg
