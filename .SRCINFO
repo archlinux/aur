@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-gdk-pixbuf2-bootstrap
 	pkgdesc = An image loading library (Android riscv64)
-	pkgver = 2.42.12
-	pkgrel = 2
+	pkgver = 2.44.4
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GdkPixbuf
 	arch = any
 	groups = android-gdk-pixbuf2-bootstrap
@@ -18,7 +18,7 @@ pkgbase = android-riscv64-gdk-pixbuf2-bootstrap
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.42.12/gdk-pixbuf-2.42.12.tar.bz2
-	md5sums = 8d6e95d829ade125d9cece4ad1cc6dff
+	source = https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.44.4/gdk-pixbuf-2.44.4.tar.bz2
+	md5sums = 0d1ad3666145572cbdf1153cd74c874d
 
 pkgname = android-riscv64-gdk-pixbuf2-bootstrap
