@@ -8,7 +8,7 @@ pkgbase = semgrep-bin
 	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python>=3.14
+	depends = python=3.14
 	depends = python-attrs
 	depends = python-boltons
 	depends = python-click
