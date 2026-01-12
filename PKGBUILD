@@ -2,7 +2,7 @@
 
 pkgname=annextimelog
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to track time spent on projects, backed by Git Annex'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
