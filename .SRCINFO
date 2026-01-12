@@ -1,6 +1,6 @@
 pkgbase = dpscreenocr
 	pkgdesc = Program to recognize text on screen
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://danpla.github.io/dpscreenocr
 	install = dpscreenocr.install
@@ -11,7 +11,7 @@ pkgbase = dpscreenocr
 	depends = tesseract
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = dpscreenocr-1.4.1.tar.gz::https://github.com/danpla/dpscreenocr/archive/v1.4.1.tar.gz
-	sha256sums = 392bc8554a8287e33bdaef8103d9be5dc0f44bbedae429792427a6f4b9566fbf
+	source = dpscreenocr-1.5.0.tar.gz::https://github.com/danpla/dpscreenocr/archive/v1.5.0.tar.gz
+	sha256sums = 7d3d7e04f29024d8db956118578a9b3dddc39030f3af08dbc9026cdb57c6a645
 
 pkgname = dpscreenocr

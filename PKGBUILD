@@ -1,7 +1,7 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Jake <aur2044@jklr.org>
 
 pkgname=dpscreenocr
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Program to recognize text on screen"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('tesseract'
 makedepends=('cmake'
              'qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danpla/dpscreenocr/archive/v${pkgver}.tar.gz")
-sha256sums=('392bc8554a8287e33bdaef8103d9be5dc0f44bbedae429792427a6f4b9566fbf')
+sha256sums=('7d3d7e04f29024d8db956118578a9b3dddc39030f3af08dbc9026cdb57c6a645')
 
 build() {
   cd "${pkgname}-${pkgver}"
