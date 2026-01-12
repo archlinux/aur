@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/${_pkgname}"
-    go build -ldflags="-X codeberg.org/derg/tidalwave/internal/ui.Commit" ./cmd/tidalwave
+    go build -ldflags="-X codeberg.org/derg/tidalwave/internal/ui.Commit=$(git describe --tags --long --abbrev=7 2>/dev/null || git rev-parse HEAD 2>/dev/null)" ./cmd/tidalwave
 }
 
 package() {
