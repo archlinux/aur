@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-expat
 	pkgdesc = An XML parser library (Android aarch64)
-	pkgver = 2.7.1
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://libexpat.github.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-expat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libexpat/libexpat/archive/R_2_7_1.tar.gz
-	md5sums = a4543a7f7d56d6f28153d2ca52df286f
+	source = https://github.com/libexpat/libexpat/archive/R_2_7_3.tar.gz
+	md5sums = e87e396c0062f9bb0f1b57c85f11dd0c
 
 pkgname = android-aarch64-expat
