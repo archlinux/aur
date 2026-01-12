@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colanode-git
 _pkgname=Colanode
-pkgver=0.3.8.r0.ge2460a8
-_electronversion=38
+pkgver=0.4.0.r1.g55c5536
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Open-source and local-first Slack and Notion alternative that puts you in control of your data.(Use system-wide electron)"
@@ -21,6 +21,7 @@ makedepends=(
     'git'
     'curl'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -41,8 +42,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname//-/.}/apps/desktop/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/apps/desktop/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
