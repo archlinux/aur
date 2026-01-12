@@ -1,0 +1,16 @@
+pkgbase = venus-pro-linux
+	pkgdesc = Configuration utility for UtechSmart Venus Pro MMO Mouse (Linux)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Es00bac/UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-hidapi
+	depends = hidapi
+	source = git+https://github.com/Es00bac/UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility.git#tag=v0.2.1
+	md5sums = SKIP
+
+pkgname = venus-pro-linux
