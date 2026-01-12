@@ -1,0 +1,12 @@
+pkgbase = tabby-cli
+	pkgdesc = A powerful terminal-based HTTP testing and stress testing tool with automated data generation capabilities.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nhdfr/tabby
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = go
+	source = tabby-cli-0.1.1.tar.gz::https://github.com/nhdfr/tabby/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = SKIP
+
+pkgname = tabby-cli
