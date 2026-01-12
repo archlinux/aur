@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
-url='https://github.com/jax-ml/jax/'
+url='https://github.com/jax-ml/jax'
 license=('Apache-2.0')
 groups=('jax')
 depends=(
@@ -13,43 +13,43 @@ depends=(
     'python-numpy'
     'python-scipy'
 )
-makedepends=('gcc14' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+    'clang20'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 _bazel_ver=7.4.1
 source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
         "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64"
-        'jaxlib.diff')
+        'bazelrc')
 noextract=("bazel-${_bazel_ver}-linux-x86_64")
-sha256sums=('518966801e4402667e77915c2dc7cf1a178a80e22ff253204a837f207a87fcde'
+sha256sums=('f7e5080c97c1aaffb490a17d174cb59a83dd037800d9c41d309287bebd15b0b8'
             'c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b'
             'SKIP')
 
 prepare() {
-    ln -sf $(readlink bazel-${_bazel_ver}-linux-x86_64) $srcdir/jax-jax-v${pkgver}/build
-    chmod +x $srcdir/bazel-${_bazel_ver}-linux-x86_64
+    mkdir -p {base,cache,dist,repo,sandbox}
 
-    cd $srcdir/jax-jax-v$pkgver
-    patch -p 1 -i ../jaxlib.diff
+    ln -sf "$(readlink bazel-${_bazel_ver}-linux-x86_64)" "$srcdir/bazel"
+    chmod +x $srcdir/bazel-${_bazel_ver}-linux-x86_64
 }
 
 build() {
+    cd jax-jax-v$pkgver
+
     # Override default version.
     export JAXLIB_RELEASE=$pkgver
 
-    cd $srcdir/jax-jax-v$pkgver
-    python build/build.py build \
-        --wheels=jaxlib \
-        --bazel_path="$srcdir/bazel-${_bazel_ver}-linux-x86_64" \
-        --bazel_startup_options="--output_user_root=$srcdir/bazel"\
-        --bazel_options='--action_env=JAXLIB_RELEASE' \
-        --target_cpu_features=release \
-        --use_clang=false \
-        --gcc_path=/usr/bin/gcc-14 \
-        --verbose
+    ../bazel-7.4.1-linux-x86_64 --bazelrc=../bazelrc build \
+        --repo_env=HERMETIC_PYTHON_VERSION=3.14 \
+        //jaxlib/tools:jaxlib_wheel
 }
 
 package() {
     cd jax-jax-v$pkgver
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        dist/jaxlib-$pkgver-*.whl
+        bazel-out/k8-opt/bin/jaxlib/tools/dist/jaxlib-${pkgver}*x86_64.whl
 }

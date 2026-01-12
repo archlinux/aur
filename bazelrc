@@ -1,0 +1,19 @@
+startup --output_user_root=/home/bershatsky/proj/src/aur.archlinux.org/python-jaxlib/src/base
+
+build --repository_cache=/home/bershatsky/proj/src/aur.archlinux.org/python-jaxlib/src/repo
+build --disk_cache=/home/bershatsky/proj/src/aur.archlinux.org/python-jaxlib/src/cache
+build --sandbox_base=/home/bershatsky/proj/src/aur.archlinux.org/python-jaxlib/src/sandbox
+
+build --repo_env=HERMETIC_PYTHON_VERSION=3.13
+build --verbose_failures=true
+build --config=linux_clang_local
+build --config=clang
+build --config=mkl_open_source_only
+build --config=avx_posix
+build --action_env=CLANG_COMPILER_PATH="/usr/lib/llvm20/bin/clang-20"
+build --repo_env=CC="/usr/lib/llvm20/bin/clang-20"
+build --repo_env=CXX="/usr/lib/llvm20/bin/clang++"
+build --repo_env=BAZEL_COMPILER="/usr/lib/llvm20/bin/clang-20"
+
+build --jobs=12
+build --local_resources=cpu=12
