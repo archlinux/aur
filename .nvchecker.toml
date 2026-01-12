@@ -1,3 +1,5 @@
 [patchy]
-source = "npm"
-npm = "patchy-cli"
+source = "github"
+github = "richardgill/patchy"
+use_max_release = true
+prefix = "v"

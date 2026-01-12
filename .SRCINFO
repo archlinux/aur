@@ -1,16 +1,16 @@
 pkgbase = patchy
 	pkgdesc = A CLI for generating and applying patches to git repositories
 	pkgver = 0.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/richardgill/patchy
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = npm
-	makedepends = jq
+	makedepends = bun
 	depends = glibc
-	depends = nodejs
-	noextract = patchy-0.0.27.tgz
-	source = patchy-cli-0.0.27.tgz::https://registry.npmjs.org/patchy-cli/-/patchy-cli-0.0.27.tgz
-	b2sums = 12584256270a5ec5229537b2f3a5f5f52961ac57f4b82ee27530b3a1287ccf86bf151c3f31b6b679d2bb4e22a38f8eddd14239ae3fb5f9dc1a97f20029cb1e6d
+	depends = gcc-libs
+	depends = icu
+	source = patchy-0.0.27.tgz::https://github.com/richardgill/patchy/archive/refs/tags/v0.0.27.tar.gz
+	sha256sums = 38dd77910d24c96436ce7c417eeff9701f98e9ada2a1cb3cf92918ab0f62ed1f
 
 pkgname = patchy
