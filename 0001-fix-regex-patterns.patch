@@ -1,0 +1,125 @@
+From 7a7ac373ed98407ff06a5306a7d432760efe73de Mon Sep 17 00:00:00 2001
+From: Han <han@bran>
+Date: Sat, 27 Sep 2025 22:44:44 +0200
+Subject: [PATCH 02/11] fix regex patterns
+
+---
+ dr14tmeter/audio_file_reader.py | 10 +++++-----
+ dr14tmeter/database_utils.py    |  4 ++--
+ dr14tmeter/read_metadata.py     | 18 ++++++++----------
+ 3 files changed, 15 insertions(+), 17 deletions(-)
+
+diff --git a/dr14tmeter/audio_file_reader.py b/dr14tmeter/audio_file_reader.py
+index 2d1faf6..178f8d2 100644
+--- a/dr14tmeter/audio_file_reader.py
++++ b/dr14tmeter/audio_file_reader.py
+@@ -60,8 +60,8 @@ class AudioFileReader:
+         tmp_dir = tempfile.gettempdir()
+         tmp_file = os.path.join(tmp_dir, file) + ".wav"
+ 
+-        file_name = re.sub("(\"|`)", r"\\\1", file_name)
+-        tmp_file = re.sub("(\"|`)", r"_xyz_", tmp_file)
++        file_name = re.sub(r"(\"|`)", r"\\\1", file_name)
++        tmp_file = re.sub(r"(\"|`)", r"_xyz_", tmp_file)
+ 
+         full_command = full_command + " " + \
+             self.get_cmd_options(file_name, tmp_file)
+@@ -85,8 +85,8 @@ class AudioFileReader:
+         tmp_dir = tempfile.gettempdir()
+         tmp_file = os.path.join(tmp_dir, file) + ".wav"
+ 
+-        file_name = re.sub("(\"|`|\$)", r"\\\1", file_name)
+-        tmp_file = re.sub("(\"|`|\$)", r"_xyz_", tmp_file)
++        file_name = re.sub(r"(\"|`|\\$)", r"\\\1", file_name)
++        tmp_file = re.sub(r"(\"|`|\\$)", r"_xyz_", tmp_file)
+ 
+         full_command = full_command + " " + \
+             self.get_cmd_options(file_name, tmp_file)
+@@ -133,7 +133,7 @@ class AudioFileReader:
+ 
+             sample_type = "int%d" % (target.sample_width * 8)
+ 
+-            target.Y = numpy.fromstring(X, dtype=sample_type).reshape(
++            target.Y = numpy.frombuffer(X, dtype=sample_type).reshape(
+                 nframes, target.channels)
+ 
+             wave_read.close()
+diff --git a/dr14tmeter/database_utils.py b/dr14tmeter/database_utils.py
+index 6b30251..5fb770e 100644
+--- a/dr14tmeter/database_utils.py
++++ b/dr14tmeter/database_utils.py
+@@ -62,7 +62,7 @@ def local_dr_database_configure():
+         db_path = os.path.expanduser(db_path)
+         db_path = os.path.expandvars(db_path)
+ 
+-        if re.sub("\s+", "", db_path) == "":
++        if re.sub(r"\s+", "", db_path) == "":
+             flag = False
+             db_path = os.path.split(get_db_path())[0]
+             continue
+@@ -98,7 +98,7 @@ def local_dr_database_configure():
+         coll_path = os.path.expanduser(coll_path)
+         coll_path = os.path.expandvars(coll_path)
+ 
+-        if re.sub("(\s+)", "", coll_path) in ["", "any"]:
++        if re.sub(r"(\s+)", "", coll_path) in ["", "any"]:
+             flag = False
+             coll_path = "/"
+             continue
+diff --git a/dr14tmeter/read_metadata.py b/dr14tmeter/read_metadata.py
+index 09cd997..0f74c79 100644
+--- a/dr14tmeter/read_metadata.py
++++ b/dr14tmeter/read_metadata.py
+@@ -120,7 +120,7 @@ class RetirveMetadata:
+ 
+         re_flags = (re.MULTILINE | re.IGNORECASE | re.UNICODE)
+ 
+-        pattern = "[ \t\f\v]*([\S \t\f\v]+\S).*$"
++        pattern = r"[ \t\f\v]*([\S \t\f\v]+\S).*$"
+ 
+         m = re.search(r"^\s*track\s*\:\s*(\d+).*$", data_txt, re_flags)
+         if m != None:
+@@ -201,7 +201,7 @@ class RetirveMetadata:
+             self._tracks[f_key] = None
+             raise UnreadableAudioFileException("problematic file: file_name")
+ 
+-        pattern = "[ \t\f\v]*([\S \t\f\v]+\S).*$"
++        pattern = r"[ \t\f\v]*([\S \t\f\v]+\S).*$"
+ 
+         m = re.search(r"^TAG:track=\s*(\d+).*$", format_tags, re_flags)
+         if m != None:
+@@ -294,7 +294,7 @@ class RetirveMetadata:
+         try:
+             track['disk_nr'] = config.get("format.tags", "disc")
+             track['disk_nr'] = int(
+-                re.search("(\d+)", track['disk_nr']).group(1))
++                re.search(r"(\d+)", track['disk_nr']).group(1))
+             self._disk_nr.append(track['disk'])
+         except ConfigParser.NoOptionError:
+             pass
+@@ -356,17 +356,15 @@ class RetirveMetadata:
+         fmt = re.split(",", fmt)
+ 
+         #print( fmt )
+-        track['codec'] = re.search("\s*(\w+)", fmt[0], re_flags).group(1)
+-        track['sampling_rate'] = re.search(
+-            "\s*(\d+)", fmt[1], re_flags).group(1)
+-        track['channel'] = re.search(
+-            "^\s*([\S][\s|\S]*[\S])\s*$", fmt[2], re_flags).group(1)
++        track['codec'] = re.search(r"\s*(\w+)", fmt[0], re_flags).group(1)
++        track['sampling_rate'] = re.search(r"\s*(\d+)", fmt[1], re_flags).group(1)
++        track['channel'] = re.search(r"^\s*([\S][\s|\S]*[\S])\s*$", fmt[2], re_flags).group(1)
+ 
+-        m = re.search("\((\d+) bit\)", fmt[3], re_flags)
++        m = re.search(r"\((\d+) bit\)", fmt[3], re_flags)
+         if m != None:
+             track['bit'] = m.group(1)
+         else:
+-            m = re.search("(\d+)", fmt[3], re_flags)
++            m = re.search(r"(\d+)", fmt[3], re_flags)
+             if m != None:
+                 track['bit'] = m.group(1)
+             else:
+-- 
+2.52.0
+

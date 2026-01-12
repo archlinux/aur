@@ -1,7 +1,7 @@
 pkgbase = dr14_t.meter-git
 	pkgdesc = DR14 T.meter is a command line tool for computing the Dynamic Range of your music
 	pkgver = v1.0.15.r190.g9a22d1a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simon-r/dr14_t.meter
 	arch = any
 	license = GPL3
@@ -24,6 +24,10 @@ pkgbase = dr14_t.meter-git
 	conflicts = dr14_t.meter
 	conflicts = dr14_tmeter
 	source = dr14_t.meter::git+https://github.com/simon-r/dr14_t.meter.git#branch=master
+	source = 0001-fix-regex-patterns.patch
+	source = 0002-Patch-off-by-one.patch
 	md5sums = SKIP
+	md5sums = 0a300947a83e1cf02dfdd2ca4143eb77
+	md5sums = 9baf2d853b27be8023a270752df715f9
 
 pkgname = dr14_t.meter-git

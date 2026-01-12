@@ -1,7 +1,7 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 pkgname=dr14_t.meter-git
 pkgver=v1.0.15.r190.g9a22d1a
-pkgrel=2
+pkgrel=3
 pkgdesc="DR14 T.meter is a command line tool for computing the Dynamic Range of your music"
 arch=(any)
 url="https://github.com/simon-r/dr14_t.meter"
@@ -11,9 +11,13 @@ optdepends=('python-matplotlib: plot support for python' 'python-scipy: dyn comp
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "dr14_tmeter")
-source=('dr14_t.meter::git+https://github.com/simon-r/dr14_t.meter.git#branch=master')
+source=('dr14_t.meter::git+https://github.com/simon-r/dr14_t.meter.git#branch=master'
+	'0001-fix-regex-patterns.patch'
+	'0002-Patch-off-by-one.patch')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+	 '0a300947a83e1cf02dfdd2ca4143eb77'
+	 '9baf2d853b27be8023a270752df715f9')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -22,8 +26,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    # Apply python 3.13 patch
-    git am < "../../0001-Patch-for-Python-3.13.patch"
+    # Fix regex for python 3.13+
+    patch -p1 < "$srcdir/0001-fix-regex-patterns.patch"
+    patch -p1 < "$srcdir/0002-Patch-off-by-one.patch"
     python -m build --wheel --no-isolation
 }
 

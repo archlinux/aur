@@ -1,0 +1,13 @@
+--- a/dr14tmeter/compute_dr14.py
++++ b/dr14tmeter/compute_dr14.py
+@@ -67,8 +67,8 @@ def compute_dr14(Y, Fs, duration=None, Dr_lr=None):
+     i = seg_cnt - 1
+ 
+     if curr_sam < s[0]:
+-        rms[i, :] = dr_rms(Y[curr_sam:s[0] - 1, :])
+-        peaks[i, :] = np.max(np.abs(Y[curr_sam:s[0] - 1, :]), 0)
++        rms[i, :] = dr_rms(Y[curr_sam:s[0], :])
++        peaks[i, :] = np.max(np.abs(Y[curr_sam:s[0], :]), 0)
+ 
+     peaks = np.sort(peaks, 0)
+     rms = np.sort(rms, 0)
