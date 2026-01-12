@@ -11,7 +11,7 @@ pkgver() {
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
 arch=("x86_64")
