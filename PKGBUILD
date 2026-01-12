@@ -13,6 +13,7 @@ depends=(
   'nanobind'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-scikit-build-core'
@@ -46,12 +47,19 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  python -m venv --clear --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -Pm pytest -o addopts='' tests
+}
+
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

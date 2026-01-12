@@ -6,6 +6,7 @@ pkgbase = python-pydemumble
 	arch = any
 	license = BSD-2-Clause
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-scikit-build-core
