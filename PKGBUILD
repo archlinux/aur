@@ -5,8 +5,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gdk-pixbuf2
-pkgver=2.42.12
-pkgrel=2
+pkgver=2.44.4
+pkgrel=1
 arch=('any')
 pkgdesc="An image loading library (Android ${_android_arch})"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
@@ -29,17 +29,24 @@ optdepends=(
 conflicts=("android-${_android_arch}-gdk-pixbuf2-bootstrap")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/${pkgver}/gdk-pixbuf-${pkgver}.tar.bz2")
-md5sums=('8d6e95d829ade125d9cece4ad1cc6dff')
+md5sums=('0d1ad3666145572cbdf1153cd74c874d')
 
 build() {
     cd "${srcdir}/gdk-pixbuf-${pkgver}"
     source android-env ${_android_arch}
 
+    if [[ "${ANDROID_MINIMUM_PLATFORM}" -lt 30 ]]; then
+        useAndroidDecoder=disabled
+    else
+        useAndroidDecoder=enabled
+    fi
+
     android-${_android_arch}-meson build \
         -Dbuiltin_loaders=all \
         -Dinstalled_tests=false \
         -Dman=false \
-        -Dtests=false
+        -Dtests=false \
+        -Dandroid=${useAndroidDecoder}
     ninja -C build
 }
 
@@ -51,4 +58,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
