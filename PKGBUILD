@@ -2,7 +2,7 @@
 _name=NeuralRack
 _plugin_uri="urn:brummer:${_name,,}"
 pkgname=${_name,,}-git
-pkgver=r192.819072e
+pkgver=r226.0e74768
 pkgrel=1
 pkgdesc="Neural model and impulse response file loader"
 arch=(aarch64 x86_64)
@@ -12,7 +12,8 @@ groups=(clap-plugins lv2-plugins pro-audio)
 depends=(gcc-libs glibc jack libx11 portaudio)
 makedepends=(cairo clap git libsndfile lv2 xxd)
 checkdepends=(lv2lint)
-provides=(${_name}.clap ${_name,,[R]}.lv2 ${_name,,[R]}_ui.so ${_name,,[R]}.so)
+provides=(${_name,,[R]}_ui.so ${_name,,[R]}.so ${_name,,}{,-clap,-lv2,-standalone,-vst})
+conflicts=(${_name,,}{,-clap,-lv2,-standalone,-vst})
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
