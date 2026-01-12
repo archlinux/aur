@@ -2,7 +2,7 @@
 
 pkgname=curlify
 pkgdesc='Library to convert python requests object to curl command.'
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 url='https://github.com/ofw/curlify'
 license=('MIT')
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '0d3f02e7235faf952de8ef45ef469845196d30632d5838bcd5aee217726ddd6d'
+  '7b488ff3c924dba3433a1cc74044c0942da21f0a97fa26c3138319ba640ca412'
 )
 
 build() {
