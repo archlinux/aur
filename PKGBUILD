@@ -1,4 +1,4 @@
-pkgname=seu-app-bin
+pkgname=httpclient-bin
 pkgver=0.0.1
 pkgrel=1
 arch=('x86_64')
