@@ -6,31 +6,36 @@
 _pkgname=xcompmgr
 pkgname=${_pkgname}-git
 pkgver=1.1.10.r3.g76c12c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Composite window effect manager for X.org (git)"
-arch=(i686 x86_64)
-url="http://www.freedesktop.org/Software/xapps"
+arch=(x86_64)
+url="https://xorg.freedesktop.org/"
 license=('MIT')
 depends=('libxcomposite' 'libxdamage' 'libxrender' 'libxext' 'libxfixes' 'libx11' 'glibc')
 makedepends=('git' 'xorg-util-macros')
 provides=(${_pkgname})
-conflicts=(${_pkgname} ${_pkgname}-dana)
-replaces=(${_pkgname} ${_pkgname}-dana)
+conflicts=(${_pkgname})
 source=("git+https://gitlab.freedesktop.org/xorg/app/${_pkgname}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd ${_pkgname}
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/xcompmgr\.//'
 }
 
+prepare() {
+  cd ${_pkgname}
+  autoreconf -fiv
+}
+
 build() {
-  cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr
+  cd ${_pkgname}
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR=$pkgdir install
+  cd ${_pkgname}
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/${license}"
 }
