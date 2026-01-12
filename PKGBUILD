@@ -1,77 +1,45 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-unstable
-pkgver=1.0.0 # Not the Doudou version but the aur package version
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Stream your music with ease and style (unstable/development version). Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
 url="https://gitlab.com/Openlyst/doudou"
 license=('GPL3')
 depends=('mpv' 'gtk3' 'libmpv.so')
-makedepends=('curl' 'jq')
+makedepends=('git' 'flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
 optdepends=()
 provides=()
 conflicts=()
 options=('!strip')
-source=()
-sha256sums=()
-
-_gitlab_project="Openlyst%2Fdoudou"
-_gitlab_api="https://gitlab.com/api/v4"
+source=("${pkgname}::git+https://gitlab.com/Openlyst/doudou.git#branch=main")
+sha256sums=('SKIP')
 
 pkgver() {
-    # Fetch latest version from pubspec.yaml on main branch
-    curl -sL "https://gitlab.com/Openlyst/doudou/-/raw/main/pubspec.yaml" | \
-        grep '^version:' | sed 's/version: //g' | cut -d'+' -f1 | tr -d ' '
-}
-
-_get_latest_job_id() {
-    # Get successful pipelines from main branch
-    local pipelines=$(curl -sL "${_gitlab_api}/projects/${_gitlab_project}/pipelines?status=success&ref=main&per_page=20")
-    
-    # Find pipeline with successful build_release_linux job
-    for pipeline_id in $(echo "$pipelines" | jq -r '.[].id' | head -10); do
-        local jobs=$(curl -sL "${_gitlab_api}/projects/${_gitlab_project}/pipelines/${pipeline_id}/jobs?per_page=50")
-        local job_id=$(echo "$jobs" | jq -r '.[] | select(.name=="build_release_linux" and .status=="success") | .id' | head -1)
-        
-        if [ -n "$job_id" ]; then
-            echo "$job_id"
-            return 0
-        fi
-    done
-    
-    return 1
+    cd "${srcdir}/${pkgname}"
+    # Fetch version from pubspec.yaml
+    grep '^version:' pubspec.yaml | sed 's/version: //g' | cut -d'+' -f1 | tr -d ' '
 }
 
 prepare() {
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgname}"
     
-    # Get the version
-    local version=$(pkgver)
-    echo "Detected version: $version"
+    # Get Flutter dependencies
+    flutter pub get
     
-    # Find the latest successful build job
-    echo "Finding latest successful build_release_linux job..."
-    local job_id=$(_get_latest_job_id)
+    # Generate localization files
+    flutter gen-l10n || true
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
     
-    if [ -z "$job_id" ]; then
-        echo "Error: Could not find a successful build_release_linux job"
-        return 1
-    fi
-    
-    echo "Found job ID: $job_id"
-    
-    # Download the artifact
-    local artifact_url="https://gitlab.com/Openlyst/doudou/-/jobs/${job_id}/artifacts/raw/doudou-${version}-linux-x64.zip"
-    echo "Downloading from: $artifact_url"
-    
-    curl -L -o "doudou-${version}-linux-x64.zip" "$artifact_url"
-    
-    # Extract
-    unzip -o "doudou-${version}-linux-x64.zip"
+    # Build the Linux release
+    flutter build linux --release
 }
 
 package() {
-    cd "${srcdir}/bundle"
+    cd "${srcdir}/${pkgname}/build/linux/x64/release/bundle"
 
     # Install the entire bundle to /opt/doudou-unstable (Flutter needs relative paths)
     install -d "${pkgdir}/opt/doudou-unstable"

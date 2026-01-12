@@ -5,11 +5,17 @@ pkgbase = doudou-unstable
 	url = https://gitlab.com/Openlyst/doudou
 	arch = x86_64
 	license = GPL3
-	makedepends = curl
-	makedepends = jq
+	makedepends = git
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
 	depends = mpv
 	depends = gtk3
 	depends = libmpv.so
 	options = !strip
+	source = doudou-unstable::git+https://gitlab.com/Openlyst/doudou.git#branch=main
+	sha256sums = SKIP
 
 pkgname = doudou-unstable
