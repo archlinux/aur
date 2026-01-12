@@ -1,6 +1,6 @@
 pkgbase = tile38-bin
 	pkgdesc = An in-memory geolocation data store, spatial index, and realtime geofencing server
-	pkgver = 1.36.5
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://tile38.com
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = tile38-bin
 	provides = tile38
 	conflicts = tile38
 	options = !debug
-	source_x86_64 = tile38-x86_64-1.36.5::https://github.com/tidwall/tile38/releases/download/1.36.5/tile38-1.36.5-linux-amd64.tar.gz
-	sha256sums_x86_64 = 4f54940d3bc2198023db0d5cf01e337a2a33e0c93deeef80be265b1e888ff5d2
-	source_aarch64 = tile38-aarch64-1.36.5::https://github.com/tidwall/tile38/releases/download/1.36.5/tile38-1.36.5-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5453eb1d08ce0960bc376edec5b05710e21635aedcf633c103291ade72835e5a
-	source_armv7h = tile38-armv7h-1.36.5::https://github.com/tidwall/tile38/releases/download/1.36.5/tile38-1.36.5-linux-arm.tar.gz
-	sha256sums_armv7h = d0b5a69804ea1876e7f00e6b57e989a34fa9a873b02898df2f2dfa5f8b2e2b30
+	source_x86_64 = tile38-x86_64-1.37.0::https://github.com/tidwall/tile38/releases/download/1.37.0/tile38-1.37.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 356044efef958aa14cc787e96e6add55ede6113e1bcda1c4a571a9f02c1994bb
+	source_aarch64 = tile38-aarch64-1.37.0::https://github.com/tidwall/tile38/releases/download/1.37.0/tile38-1.37.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7188b30c0128053f1e1e91556d681256682a17f1a1029fbec82921c0bd02eb8d
+	source_armv7h = tile38-armv7h-1.37.0::https://github.com/tidwall/tile38/releases/download/1.37.0/tile38-1.37.0-linux-arm.tar.gz
+	sha256sums_armv7h = 777451efe88fd3f9d8aca178dd22dd39b9f7f38edead7370a596ec316f9f701d
 
 pkgname = tile38-bin
