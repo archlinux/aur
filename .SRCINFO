@@ -1,0 +1,17 @@
+pkgbase = python-wetextprocessing
+	pkgdesc = Text Normalization & Inverse Text Normalization
+	pkgver = 1.0.4.1
+	pkgrel = 1
+	url = https://github.com/wenet-e2e/WeTextProcessing
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-flake8
+	depends = python-importlib_resources
+	depends = python-pynini
+	source = https://files.pythonhosted.org/packages/source/w/WeTextProcessing/WeTextProcessing-1.0.4.1.tar.gz
+	sha512sums = bdafa84c058beb695232abcec37a6425f9604912355bbda5fe2f591ac34ab730816efe617c2fb45d0e8a93f22340af70c02037d3a9cbe2a517d4c8bb44d9aef7
+
+pkgname = python-wetextprocessing
