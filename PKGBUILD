@@ -9,6 +9,7 @@ license=('MIT')
 depends=(
     'python>=3.10'
     'python-pyqt6'
+    'python-pyqt6-svg'
     'python-pyaudio'
     'python-numpy'
     'python-httpx'

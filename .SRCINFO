@@ -10,6 +10,7 @@ pkgbase = turbo-whisper
 	makedepends = python-hatchling
 	depends = python>=3.10
 	depends = python-pyqt6
+	depends = python-pyqt6-svg
 	depends = python-pyaudio
 	depends = python-numpy
 	depends = python-httpx
