@@ -3,7 +3,7 @@
 _pyname=vfbLib
 pkgname=python-${_pyname,,}
 pkgver=0.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for converting FontLab Studio 5 (VFB) files'
 arch=(any)
 url="https://github.com/LuasFonts/$_pyname"

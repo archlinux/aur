@@ -1,7 +1,7 @@
 pkgbase = python-vfblib
 	pkgdesc = Tools for converting FontLab Studio 5 (VFB) files
 	pkgver = 0.10.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LuasFonts/vfbLib
 	arch = any
 	license = GPL-3.0-only
