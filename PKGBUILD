@@ -14,15 +14,12 @@ depends=(
   libxdamage
   libxfixes
   libxrender
-  libxcb
-  libxau
-  libxdmcp
   glibc
 )
 source=("git+${url}#tag=v${pkgver}")
 sha512sums=('00e39237424c945888a78dcf3d2d7f6175fbec1aff2203b09f64fa9e93287bc86943d0952a1410419b365315960aa4e8521df6cd6ac76c7c17e3b75e7f81cbd8')
-conflicts=("${pkgname}")
-provides=("${pkgname}")
+conflicts=(${pkgname})
+provides=(${pkgname})
 
 build() {
   cd ${pkgname}
@@ -32,7 +29,7 @@ build() {
 package() {
   cd ${pkgname}
 
-  install -Dm755 "${pkgname}" \
+  install -Dm755 ${pkgname} \
     "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 LICENSE \
