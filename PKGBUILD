@@ -7,7 +7,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-gdbm
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 arch=('any')
 pkgdesc="GNU database library (Android ${_android_arch})"
@@ -19,7 +19,7 @@ depends=("android-${_android_arch}-gettext"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
-md5sums=('46266720c7980b75f29e3554aeaeb7a8')
+md5sums=('aaa600665bc89e2febb3c7bd90679115')
 
 prepare() {
     cd "${srcdir}/gdbm-${pkgver}"
@@ -50,4 +50,6 @@ package() {
     # create symlinks for compatibility
     install -dm755 "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/gdbm"
     ln -sf ../gdbm.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/gdbm/gdbm.h"
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
