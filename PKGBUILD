@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab-pytutor
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Python Tutor extension for JupyterLab"
 arch=(any)
 url="https://github.com/jupyterlab-contrib/jupyterlab-pytutor"
