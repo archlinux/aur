@@ -1,0 +1,28 @@
+post_install() {
+    echo ""
+    echo "=========================================="
+    echo "  Voice Input for Steam Deck installed!"
+    echo "=========================================="
+    echo ""
+    echo "Setup steps:"
+    echo ""
+    echo "1. Add your Groq API key:"
+    echo "   mkdir -p ~/.config/voice-input"
+    echo "   echo 'gsk_your_key' > ~/.config/voice-input/api_key"
+    echo ""
+    echo "2. Configure hotkey in ~/.xbindkeysrc:"
+    echo '   "voice-input-toggle"'
+    echo "       Num_Lock"
+    echo ""
+    echo "3. Start xbindkeys:"
+    echo "   xbindkeys"
+    echo ""
+    echo "4. Steam Controller: bind L4 -> Num Lock"
+    echo ""
+    echo "5. Test: voice-input test"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

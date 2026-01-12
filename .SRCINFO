@@ -1,0 +1,21 @@
+pkgbase = voice-input-steamdeck
+	pkgdesc = Push-to-talk voice transcription for Steam Deck using Groq Whisper API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shmlkv/voice-input-steamdeck
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = xdotool
+	depends = bc
+	depends = python
+	depends = pipewire-pulse
+	depends = libnotify
+	depends = xbindkeys
+	optdepends = alsa-utils: fallback audio recording with arecord
+	source = voice-input-steamdeck-1.0.0.tar.gz::https://github.com/shmlkv/voice-input-steamdeck/archive/v1.0.0.tar.gz
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+
+pkgname = voice-input-steamdeck
