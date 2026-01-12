@@ -1,8 +1,8 @@
 # Maintainer: James Hughes <james@pyrosoftsolutions.co.uk>
 pkgname=sudo-mcp
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="MCP server for privileged command execution via sudo/pkexec"
+pkgdesc="⚠️ INHERENTLY UNSAFE: MCP server allowing AI models to execute privileged commands via sudo/pkexec"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hughesjs/sudo-mcp"
 license=('MIT')
@@ -10,8 +10,8 @@ depends=('polkit' 'sudo')
 options=('!strip')  # .NET single-file bundles are destroyed by strip
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-x64-v${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-arm64-v${pkgver}.tar.gz")
-sha256sums_x86_64=('eb02a4cf9febad574c35e620c7c5ce1a5802dc96e22b855774f91ac289747a8c')
-sha256sums_aarch64=('f5ea329349448a3dd4fb5039eb103121f3d0e5a4db5487bf7527fcc8e44cb702')
+sha256sums_x86_64=('7a5a0901f5fcdc8f7f7a5cba358a9fc8897d9ed559f5ca583c7e9563bfe87c53')
+sha256sums_aarch64=('a3f7c4970f4a68344b10898844a75c582ebd8cc9fb38641ece7fbab943917b86')
 
 package() {
     case "$CARCH" in
@@ -24,7 +24,7 @@ package() {
     esac
 
     # Install binary
-    install -Dm755 sudo-mcp "$pkgdir/usr/local/bin/sudo-mcp"
+    install -Dm755 sudo-mcp "$pkgdir/usr/bin/sudo-mcp"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
