@@ -5,7 +5,7 @@
 _base=Coord
 pkgname=python-${_base,,}
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python module for handling angles and celestial coordinates."
 arch=('x86_64')
 url="https://github.com/LSSTDESC/${_base}"
@@ -33,4 +33,6 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 docs/_build/man/${_base,,}.1 -t "$pkgdir/usr/share/man/man1/"
+  install -D -m644 LICENSE \
+  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
