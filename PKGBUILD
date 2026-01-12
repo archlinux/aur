@@ -1,7 +1,7 @@
 # Maintainer: Varalys <chris@varalys.com>
 pkgname=lore-cli-bin
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Reasoning history for code - captures AI-assisted development sessions and links them to git commits"
 arch=('x86_64' 'aarch64')
 url="https://github.com/varalys/lore"
@@ -9,6 +9,7 @@ license=('Apache-2.0')
 provides=('lore-cli' 'lore')
 conflicts=('lore-cli' 'lore')
 depends=('gcc-libs')
+options=(!debug)
 install=lore-cli-bin.install
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/varalys/lore/releases/download/v${pkgver}/lore-x86_64-unknown-linux-gnu.tar.gz")

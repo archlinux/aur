@@ -1,8 +1,10 @@
+post_install() {
+    echo "==> Run 'lore init' to set up lore"
+}
+
 post_upgrade() {
     echo "==> If the lore daemon was running, restart it with:"
     echo "      systemctl --user restart lore"
-    echo "    Or:"
-    echo "      lore daemon stop && lore daemon start"
 }
 
 post_remove() {
