@@ -4,11 +4,11 @@
 
 pkgname=duc-git
 pkgver=r951.a58fa4e
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://duc.zevv.nl/"
-license=('GPL-2.0-only')
+license=('LGPL-3.0-only')
 depends=('cairo' 'pango' 'sqlite' 'ncurses' 'libx11' 'glib2' 'glibc')
 makedepends=('git')
 provides=('duc')
@@ -37,4 +37,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
