@@ -1,20 +1,21 @@
-# Maintainer: Tobias Kunze <r@rixx.de>
+# Maintainer: GalaxySnail <me+aur@glxys.nl>
+# Contributor: Tobias Kunze <r@rixx.de>
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python313
-pkgver=3.13.1
+pkgver=3.13.11
 pkgrel=1
 _pybasever=3.13
 _pymajver=3
-pkgdesc="Major release 3.13 of the Python high-level programming language"
+pkgdesc="Major release 3.13 of the Python programming language"
 arch=('i686' 'x86_64')
 license=('PSF-2.0')
 url="https://www.python.org/"
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' 'tzdata')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('9cf9427bee9e2242e3877dd0f6b641c1853ca461f39d6503ce260a59c80bf0d9')
+sha256sums=('16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
@@ -23,20 +24,20 @@ validpgpkeys=(
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
 
-  # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
+  # Ensure that we are using the system copy of various libraries (expat and libmpdec),
   # rather than copies shipped in the tarball
-  rm -rf Modules/expat
-  rm -rf Modules/zlib
-  rm -rf Modules/_ctypes/{darwin,libffi}*
-  rm -rf Modules/_decimal/libmpdec
+  rm -r Modules/expat
+  rm -r Modules/_decimal/libmpdec
+
+  # use parallel LTO
+  # https://github.com/python/cpython/pull/132258
+  sed -i 's/\(LTOFLAGS=.*\) -flto-partition=none/\1/' configure
 }
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-  ./configure ax_cv_c_float_words_bigendian=no \
-              --prefix=/usr \
+  ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
               --with-lto \
