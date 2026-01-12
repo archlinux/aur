@@ -2,7 +2,7 @@
 
 pkgname=python-lottie
 _name=${pkgname//python-}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A Python framework to work with Lottie files and Telegram animated stickers.'
 arch=(any)
@@ -23,8 +23,16 @@ optdepends=(
   python-coverage
 )
 replaces=(python-tgs)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz)
-sha512sums=('1857e626105f8e25afd18fb79ede344a66084f9028ca9a625d03a06426d84b986b036cc55e20a8a4b9bd2ea66a610ed65a68822f7a1743c3b787df51edc2588b')
+source=(
+  https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz
+  0001-Fix-webp-export-on-pillow-12.0.0-or-later.patch
+)
+sha512sums=('3c220e37898a8af30af1cf5269d7d20888d2b6cae9e5705ce42802a4ef950c7f239c25f38909926f3863a2d0f5a8e73011183f82f1dc97e21bce35c1ced76495'
+            '4088ce0226506b4b5b952033e6cf25149a79c1fb8b92856f632262a3922840e2de30126ae7b824ff32b315ec444ef2839082564e725455263ddaf849815ed52a')
+prepare() {
+	cd $srcdir/${_name}-$pkgver
+	patch -Np1 -i ../0001-Fix-webp-export-on-pillow-12.0.0-or-later.patch
+}
 
 build() {
 	cd $srcdir/${_name}-$pkgver

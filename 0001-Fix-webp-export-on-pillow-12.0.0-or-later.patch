@@ -1,0 +1,31 @@
+From c6bfad566631bc419610ac2ff1c084b541366e44 Mon Sep 17 00:00:00 2001
+From: q234rty <q23456yuiop@gmail.com>
+Date: Mon, 12 Jan 2026 20:49:20 +0800
+Subject: [PATCH] Fix webp export on pillow 12.0.0 or later
+
+The webp_anim feature check has been deprecated in
+pillow 11 and remove in pillow 12.
+
+ref https://pillow.readthedocs.io/en/stable/releasenotes/11.0.0.html#specific-webp-feature-checks
+---
+ lib/lottie/exporters/gif.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/lottie/exporters/gif.py b/lib/lottie/exporters/gif.py
+index ba222e1..1fc35df 100644
+--- a/lib/lottie/exporters/gif.py
++++ b/lib/lottie/exporters/gif.py
+@@ -74,8 +74,8 @@ def export_webp(animation, fp, dpi=96, lossless=False, quality=80, method=0, ski
+ 
+     See https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#webp
+     """
+-    if not features.check("webp_anim"):
+-        raise Exception("WebP animations not supported in this system")
++    if not features.check_module("webp"):
++        raise Exception("WebP is not supported in this system")
+ 
+     start = int(animation.in_point)
+     end = int(animation.out_point)
+-- 
+2.52.0
+
