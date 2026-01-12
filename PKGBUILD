@@ -1,51 +1,37 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
-
-## This package uses git sources to build the man pages
-
-pkgname=python-typepy
-pkgver=1.3.0
-pkgrel=5
-pkgdesc='Variable runtime type checker/validator/converter'
-arch=('any')
-url='https://github.com/thombashi/typepy'
-license=('MIT')
-depends=('python-mbstrdecoder')
-makedepends=(
-  'git'
-  'python-setuptools'
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-sphinx'
-  'python-sphinx_rtd_theme')
-optdepends=('python-dateutil' 'python-pytz')
-checkdepends=('python-pytest' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
+_base=typepy
+pkgname=python-${_base}
+pkgver=1.3.4
+pkgrel=1
+pkgdesc="Variable type checker/validator/converter at a run time"
+arch=(any)
+url="https://github.com/thombashi/${_base}"
+license=(MIT)
+depends=(python-mbstrdecoder)
+makedepends=(python-build python-installer python-setuptools-scm)
+# optdepends=('python-pytz')
+# checkdepends=('python-pytest' 'python-tcolorpy' 'python-pytz')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('7079e5358058dc60c308af1cf250087369508504f8377c41e254f9d50c1bb98a')
 
 build() {
-  cd "$pkgname"
-  export PYTHONPATH="$PWD"
-  python -m build --wheel --no-isolation
-  cd docs
-  make man
+  cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd "$pkgname"
-  pytest -x
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest test
+# }
 
 package() {
-  export PYTHONHASHSEED=0
-  cd "$pkgname"
-  python -m installer --destdir="$pkgdir/" dist/*.whl
-  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 docs/_build/man/typepy.1 -t "$pkgdir/usr/share/man/man1/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:

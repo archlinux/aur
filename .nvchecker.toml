@@ -1,0 +1,5 @@
+[python-skimpy]
+source = "github"
+github = "thombashi/typepy"
+use_latest_release = "true"
+prefix = "v"

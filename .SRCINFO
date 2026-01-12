@@ -1,26 +1,15 @@
 pkgbase = python-typepy
-	pkgdesc = Variable runtime type checker/validator/converter
-	pkgver = 1.3.0
-	pkgrel = 5
+	pkgdesc = Variable type checker/validator/converter at a run time
+	pkgver = 1.3.4
+	pkgrel = 1
 	url = https://github.com/thombashi/typepy
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-tcolorpy
-	checkdepends = python-dateutil
-	checkdepends = python-pytz
-	makedepends = git
-	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-setuptools-scm
 	depends = python-mbstrdecoder
-	optdepends = python-dateutil
-	optdepends = python-pytz
-	source = python-typepy::git+https://github.com/thombashi/typepy#tag=v1.3.0?signed
-	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = SKIP
+	source = typepy-1.3.4.tar.gz::https://github.com/thombashi/typepy/archive/v1.3.4.tar.gz
+	sha256sums = 7079e5358058dc60c308af1cf250087369508504f8377c41e254f9d50c1bb98a
 
 pkgname = python-typepy
