@@ -2,7 +2,7 @@
 
 _realname='sphvr'
 pkgname="$_realname-git"
-pkgver=0.0.1.103.830dc5a
+pkgver=0.0.1.104.417d34c
 pkgrel=1
 pkgdesc='A spherical media player using Vulkan and GStreamer.'
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = sphvr-git
 	pkgdesc = A spherical media player using Vulkan and GStreamer.
-	pkgver = 0.0.1.103.830dc5a
+	pkgver = 0.0.1.104.417d34c
 	pkgrel = 1
 	url = https://gitlab.com/lubosz/sphvr
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = sphvr-git
 	makedepends = glm
 	depends = gulkan-git
 	depends = gst-plugins-bad-libs
-	provides = sphvr=0.0.1.103.830dc5a
+	provides = sphvr=0.0.1.104.417d34c
 	conflicts = sphvr
 	source = git+https://gitlab.com/lubosz/sphvr.git
 	md5sums = SKIP
