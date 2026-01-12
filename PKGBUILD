@@ -2,9 +2,9 @@
 pkgname=gowebgtkit
 pkgdesc="Ankor applications Gui written in go"
 pkgver=v0.0.1
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/pumenis/random-access-ogb"
+url="https://github.com/pumenis/gowebgtkit"
 license=('MIT')
 depends=()
 makedepends=('git' 'go' 'zenity')
