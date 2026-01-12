@@ -4,13 +4,12 @@
 
 pkgbase=libavio
 pkgname=('python-avio')
-pkgver=3.2.6
-pkgrel=2
+pkgver=3.2.7
+pkgrel=1
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
 arch=('i686' 'x86_64')
 makedepends=('cmake'
-             'ffmpeg4.4'
              'git'
              'libavcodec.so'
              'libavformat.so'
@@ -22,9 +21,9 @@ makedepends=('cmake'
              'python-setuptools'
              'python-wheel'
              'sdl2')
-source=("git+${url}.git#commit=0fa1ccb5e7ec77199c9365e6a6e681a2570506ed"
+source=("git+${url}.git#commit=3d3c89c4722efa1cc7c05f528c296f2acba8e73e"
         'git+https://github.com/pybind/pybind11.git')
-sha256sums=('18876404d0cb7fdecb498aae9d7ad956053e981755cc198ae0268da4279b056e'
+sha256sums=('a8793e266b563c897ca84b3ee8ea4fd19ef40ab43c7115c2a6c38a1607eb3a91'
             'SKIP')
 
 prepare() {
@@ -41,7 +40,6 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${pkgbase}
-	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	python -m build --wheel --no-isolation
 }
 

@@ -1,12 +1,11 @@
 pkgbase = libavio
-	pkgver = 3.2.6
-	pkgrel = 2
+	pkgver = 3.2.7
+	pkgrel = 1
 	url = https://github.com/sr99622/libavio
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
-	makedepends = ffmpeg4.4
 	makedepends = git
 	makedepends = libavcodec.so
 	makedepends = libavformat.so
@@ -18,9 +17,9 @@ pkgbase = libavio
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = sdl2
-	source = git+https://github.com/sr99622/libavio.git#commit=0fa1ccb5e7ec77199c9365e6a6e681a2570506ed
+	source = git+https://github.com/sr99622/libavio.git#commit=3d3c89c4722efa1cc7c05f528c296f2acba8e73e
 	source = git+https://github.com/pybind/pybind11.git
-	sha256sums = 18876404d0cb7fdecb498aae9d7ad956053e981755cc198ae0268da4279b056e
+	sha256sums = a8793e266b563c897ca84b3ee8ea4fd19ef40ab43c7115c2a6c38a1607eb3a91
 	sha256sums = SKIP
 
 pkgname = python-avio
