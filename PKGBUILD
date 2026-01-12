@@ -2,7 +2,7 @@
 pkgname=docan-bin
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Docan is a universal AI chat application featuring a stunning Liquid Glass design. Connect with various AI providers and enjoy a seamless chat experience across all your devices."
+pkgdesc="Universal AI chat application."
 arch=('x86_64')
 url="https://gitlab.com/openlyst/docan"
 license=('GPL3')
