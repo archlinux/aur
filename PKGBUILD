@@ -3,7 +3,7 @@
 _pkgauthor=yhoundz
 _pkgname=parm
 pkgname=${_pkgname}-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Cross platform package installer and lifecycle manager using GitHub Releases."
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '30fb5bbb0c2f818a9e6b0d6fa5bb83560ebe7b8a0725caa26db4f538a01be171')
-sha256sums_x86_64=('6016785d90fa9bb6fcc632e3cc610c56850ba072a865f3bc0aa8782766ddbbe1')
-sha256sums_aarch64=('f045c0eb51f34ca679a51ea77d6bc0eb3e972e8c9060cad478bd3f168840bff6')
+            '3c016c4b63db8e1e25c4ee555ef9f463fed593f8bfde88cf99438cc732eedc4c')
+sha256sums_x86_64=('cc19df49786174975a56aed973277f7beeb32dcf23649392e44925655bc55cbf')
+sha256sums_aarch64=('cf0cf48200d7126dbfa2384bc99862fcd80b3dd6fd4e3b8ab1a0abb9f20d46f7')
 
 
 package() {
