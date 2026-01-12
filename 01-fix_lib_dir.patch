@@ -1,11 +1,13 @@
---- a/bin/kaitai-struct-compiler	2020-10-16 00:08:34.000000000 +0200
-+++ b//bin/kaitai-struct-compiler	2021-02-01 15:31:15.045376690 +0100
-@@ -340,7 +340,7 @@ declare -a app_commands
+diff --git a/bin/kaitai-struct-compiler b/bin/kaitai-struct-compiler
+index 1a8d7a2..cf3cb95 100755
+--- a/bin/kaitai-struct-compiler
++++ b/bin/kaitai-struct-compiler
+@@ -356,7 +356,7 @@ declare -a app_commands
  declare -r real_script_path="$(realpath "$0")"
  declare -r app_home="$(realpath "$(dirname "$real_script_path")")"
  # TODO - Check whether this is ok in cygwin...
 -declare -r lib_dir="$(realpath "${app_home}/../lib")"
 +declare -r lib_dir="/usr/share/java/kaitai-struct-compiler"
- declare -a app_mainclass=(io.kaitai.struct.JavaMain)
+ declare -a app_mainclass=('io.kaitai.struct.JavaMain')
  
  declare -r script_conf_file="${app_home}/../conf/application.ini"
