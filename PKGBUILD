@@ -5,7 +5,7 @@ _jrever="11.0.29+7"
 # Basic package settings
 pkgname="jre11-temurin"
 pkgver="${_jrever/+/.u}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Temurin (OpenJDK 11 JRE binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception")
