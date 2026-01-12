@@ -1,7 +1,7 @@
 pkgbase = himitsu-secret-service
 	pkgdesc = Himitsu secret-service implementation
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~apreiml/himitsu-secret-service
 	arch = x86_64
 	arch = aarch64

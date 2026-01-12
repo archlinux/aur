@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=himitsu-secret-service
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Himitsu secret-service implementation'
 url='https://git.sr.ht/~apreiml/himitsu-secret-service'
 license=(MIT)
