@@ -5,7 +5,7 @@ _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
 pkgver=r140.cc5d095
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='An Application Indicator showing various system parameters'
 arch=('any')
@@ -44,7 +44,7 @@ package_indicator-sysmonitor-budgie-git() {
   rm -rf build
   mkdir build
   cd build
-  meson -Dbudgie=true --prefix=/usr
+  meson -Dbudgie=true -Dfor-wayland=true --prefix=/usr
   meson install --destdir "${pkgdir}"
   cd ..
 
