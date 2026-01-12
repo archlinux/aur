@@ -1,8 +1,8 @@
 # Maintainer: Your Name <mca.christopher@gmail.com>
 pkgname='great-matcha-git'
-pkgver=r31.e2cc3ce
+pkgver=r32.126a244
 pkgrel=1
-pkgdesc="Systemd units checks if dayNight for location. Updates alacritty theme"
+pkgdesc="Systemd units checks if dayNight for location, and updates alacritty theme"
 arch=('x86_64')
 url="https://github.com/christophermca/great-matcha"
 license=('GPL')

@@ -1,6 +1,6 @@
 pkgbase = great-matcha-git
-	pkgdesc = Systemd units checks if dayNight for location. Updates alacritty theme
-	pkgver = r31.e2cc3ce
+	pkgdesc = Systemd units checks if dayNight for location, and updates alacritty theme
+	pkgver = r32.126a244
 	pkgrel = 1
 	url = https://github.com/christophermca/great-matcha
 	arch = x86_64
