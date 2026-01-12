@@ -4,8 +4,7 @@
 
 pkgname=duc-git
 pkgver=r951.a58fa4e
-epoch=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://duc.zevv.nl/"
