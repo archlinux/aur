@@ -1,6 +1,6 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
@@ -18,7 +18,7 @@ optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
 makedepends=(pkgconf cryptsetup zfs-utils json-c pam ragel)
 sha256sums=('7925467b71227ae835cc5bf5ebf0b74ea6d740738af5d13be05e0416a78f8acc'
             '8da0bc793ba9b7fb1cb784af1ed066aea478b93715f484e7fb7921184d675b84'
-            'a26a4bfe9eef806aaac2821d6502451cdd070786c84a0f47b2c032b9f07aa4a5'
+            '89c9a118cc9e448f448810c77141bb5f86f53e039bc922b07f06e64581a11aaa'
             '98bb03098ce847d009e1579b0e4ece48ad2e9e7984325e54c8b3edfc4c63fef6')
 
 # Don't use --as-needed when linking, will break pam_pivy
