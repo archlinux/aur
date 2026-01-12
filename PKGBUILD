@@ -4,7 +4,7 @@
 pkgname=python-ntfs
 _pkgname=${pkgname/thon-/-}
 pkgver=0.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Python module to manipulate NTFS junctions and hardlinks'
 arch=(any)
 url="https://github.com/sunshowers-code/$_pkgname"
