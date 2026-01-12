@@ -4,7 +4,7 @@ pkgname=cleanuparr
 pkgver=2.5.1
 _pkgver_qbittorrent=1.0.2
 _pkgver_transmission=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
 arch=(x86_64 aarch64)
 url='https://cleanuparr.github.io/Cleanuparr'
@@ -18,7 +18,7 @@ depends=(
   gcc-libs
   glibc
 )
-makedepends=(dotnet-sdk git nodejs npm)
+makedepends=(dotnet-sdk aspnet-targeting-pack git nodejs npm)
 source=(
   "git+https://github.com/${pkgname^}/${pkgname^}.git#tag=v${pkgver}"
   "git+https://github.com/${pkgname^}/qbittorrent-net-client.git"
