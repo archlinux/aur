@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Contributor: Aakash Hemadri <aakashhemadri123@gmail.com>
 # Contributor: Nicolas Narvaez <nicomix1006@gmail.com>
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
