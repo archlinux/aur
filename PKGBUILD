@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-fmt
-pkgver=11.2.0
+pkgver=8.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="Open-source formatting library for C++ (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/fmtlib/fmt/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('2f3701cada629ca455c3388d1089f5bd')
+md5sums=('7d5af964c6633ef90cd6a47be3afe6a0')
 
 build() {
     cd "${srcdir}/fmt-${pkgver}"
@@ -47,4 +47,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
