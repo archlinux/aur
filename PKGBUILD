@@ -1,8 +1,8 @@
 # Maintainers: arraen, thadah
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname="synergy3-bin"
-pkgver="3.5.0"
-pkgrel="3"
+pkgver="3.5.1"
+pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('custom:Proprietary')
@@ -20,7 +20,6 @@ prepare() {
 
   # Download landing page
   curl -L -s -o "$html_file" "https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x86_64.deb"
-
   local token
   token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "$html_file" | head -n1)
 
