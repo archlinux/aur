@@ -1,7 +1,7 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=bilihud-git
 _pkgname=bilihud
-pkgver=0.3.0.r15.g3ed48aa
+pkgver=0.3.0.r0.gIT_REV_Here
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
 arch=('any')
