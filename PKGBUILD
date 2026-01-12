@@ -11,7 +11,7 @@ optdepends=()
 provides=('docan')
 conflicts=('docan')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::httphttps://gitlab.com/Openlyst/docan/-/jobs/12674147403/artifacts/raw/dist/docan-linux-x64.zip")
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/docan/-/jobs/12674147403/artifacts/raw/dist/docan-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
