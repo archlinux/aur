@@ -1,15 +1,15 @@
 pkgbase = clustalw
 	pkgdesc = Clustal W multiple sequence alignment program, version 2.0
 	pkgver = 2.1
-	pkgrel = 4
-	url = http://www.clustal.org
+	pkgrel = 5
+	url = https://ftp.ebi.ac.uk/pub/software/clustalw2/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = glibc
 	depends = gcc-libs
 	provides = clustalw2
-	source = http://www.clustal.org/download/current/clustalw-2.1.tar.gz
+	source = https://ftp.ebi.ac.uk/pub/software/clustalw2//2.1/clustalw-2.1.tar.gz
 	md5sums = 144df8440a0ae083d5167616c8ceeb41
 
 pkgname = clustalw
