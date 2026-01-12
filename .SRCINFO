@@ -1,0 +1,19 @@
+pkgbase = python-vcs2l
+	pkgdesc = A version control system tool designed to make working with multiple repositories easier (python-vsctool fork)
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/ros-infrastructure/vcs2l
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	provides = python-vcstool
+	conflicts = python-vcstool
+	source = https://github.com/ros-infrastructure/vcs2l/archive/1.1.6.tar.gz
+	sha256sums = d7e545b0a69e860eaed36eec9bb824935e01fa03693d6bb50e3ddeb95408f615
+
+pkgname = python-vcs2l
