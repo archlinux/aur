@@ -3,7 +3,7 @@
 _upname=FoundryTools-CLI
 pkgname=ftcli
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Foundry Tools command line font editor'
 arch=(any)
 url="https://github.com/ftCLI/$_upname"
