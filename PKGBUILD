@@ -1,9 +1,10 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-fsutil
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
-pkgdesc="file-system utilities for lazy devs."
+pkgdesc="High-level file-system operations for lazy devs"
 arch=('any')
 url="https://github.com/fabiocaccamo/python-fsutil"
 license=('MIT')
@@ -16,7 +17,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3a4a430996e2c385963cd4c9fb7338d0cbeac0a74b44e95bf31ef5adffd87017')
+sha256sums=('89002c2dda97bbab53b7b5154cd757fb7dcfb0bb8e260f295a164f87cb4fc66a')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
