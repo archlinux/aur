@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=High Voltage Ring
+Comment=Level editor
+Icon=unofficial.kartkrew.HighVoltageRing
+TryExec=high-voltage-ring
+Exec=high-voltage-ring
+Categories=Development;

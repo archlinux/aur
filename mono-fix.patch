@@ -1,0 +1,10 @@
+--- Source/Plugins/BuilderModes/BuilderModesMono.csproj	2026-01-11 10:11:58.589500349 +0800
++++ Source/Plugins/BuilderModes/BuilderModesMono_Patched.csproj	2026-01-11 10:13:07.071587160 +0800
+@@ -503,6 +503,7 @@
+     <Compile Include="VisualModes\EffectPlaneCopySlope.cs" />
+     <Compile Include="VisualModes\EffectThingLineSlope.cs" />
+     <Compile Include="VisualModes\EffectThingSlope.cs" />
++    <Compile Include="VisualModes\EffectThingAnchorSlope.cs" />
+     <Compile Include="VisualModes\EffectSRB2ThingVertexSlope.cs" />
+     <Compile Include="VisualModes\EffectThingVertexSlope.cs" />
+     <Compile Include="VisualModes\EffectTransferCeilingBrightness.cs" />
