@@ -4,7 +4,7 @@ pkgname=chunker-bin
 _pkgname="${pkgname%-bin}"
 _pkgname_orig=Chunker
 _binname=chunker-electron
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='The open-source Minecraft world converter'
 arch=(x86_64)
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!debug)
 source=("https://github.com/HiveGamesOSS/Chunker/releases/download/${pkgver}/Chunker-${pkgver}-amd64-linux.deb")
-sha256sums=('d8f3a81d79198eac5ccd434569d73d9224cd118a110bec285f1469b8ef7707c5')
+sha256sums=('c663f9b49125ecfb928be7d081f7f917571ce495140bd5be486f65fd8fe821b3')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
