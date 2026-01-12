@@ -1,3 +1,26 @@
+2026.01.12, v19.1.1
+
+feature:
+- 5cc6f79d cloudcmd: @cloudcmd/stub v5.0.0
+- 024bc413 cloudcmd: fullstore v4.0.0
+- 53f6f9e7 cloudcmd: globals v17.0.0
+- 6d21c539 cloudcmd: madrun v12.1.0
+- 253389ea cloudcmd: supertape v12.0.0
+
+2025.12.31, v19.1.0
+
+feature:
+- 0ff16314 cloudcmd: redlint v5.0.0
+- 43edba8c cloudcmd: try-to-catch v4.0.0
+- 06f3b782 cloudcmd: try-catch v4.0.4
+- dfcd6557 deno config: add
+- ab20a462 server: bun support (oven-sh/bun#25674)
+
+2025.12.24, v19.0.17
+
+feature:
+- 0222d177 cloudcmd: gritty v9.0.0
+
 2025.12.05, v19.0.16
 
 feature:
