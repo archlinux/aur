@@ -1,12 +1,13 @@
 pkgbase = mailnagger
 	pkgdesc = Extensible mail notification daemon (forked from Mailnag)
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tikank/mailnagger
 	arch = any
 	license = GPL
 	makedepends = gettext
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-gobject
 	depends = python-httplib2
 	depends = python-xdg
