@@ -2,7 +2,7 @@
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 
 pkgname='pseint'
-pkgver=20230517
+pkgver=20250314
 pkgrel=1
 pkgdesc='A tool for learning programming basis with a simple spanish pseudocode.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 depends=('wxwidgets-gtk3' 'rsync')
 noextract=(creator.psz)
 source=("https://netactuate.dl.sourceforge.net/project/$pkgname/$pkgver/$pkgname-src-$pkgver.tgz")
-sha256sums=('f3373b0ad0d0f518d72c05504e282cb4fa9d0c9b11f1f7c1a29c4117354ff9e2')  # 'makepkg -g' to generate it.
+sha256sums=('1132e4931ce6ce8b95c73ce3ca1406829f049bc0a3705dd88de51db2288eb527')  # 'makepkg -g' to generate it.
 
 
 # Función 'prepare': Prepara el entorno antes de compilar el paquete.
@@ -55,7 +55,7 @@ build(){
         $srcdir/$pkgname/ps{eval,term,draw{E,3}}/Makefile
 
     # Compilar el paquete con la opción ARCH=lnx, para la arquitectura linux.
-    make ARCH=lnx
+    make ARCH=lnx -j"$(nproc)"
 }
 
 
