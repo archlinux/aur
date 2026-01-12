@@ -103,11 +103,11 @@ END
   done
 }
 
-_package_mindustryX() {
+_package_mindustryx() {
   install -Dm755 "desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
-_package_mindustryX-server() {
+_package_mindustryx-server() {
   pkgdesc+=" - server"
 
   install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
