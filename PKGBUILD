@@ -2,7 +2,7 @@
 
 pkgname=ttf-metamorphous
 pkgver=20231228
-pkgrel=1
+pkgrel=2
 pkgdesc='Metamorphous Font'
 url="https://fonts.google.com/specimen/Metamorphous"
 license=('custom:OFL')
@@ -16,4 +16,4 @@ package() {
 
 	install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('29716b2b9074bd5cf54af3a7cd661a19')
+md5sums=('a4720bee833634468c049632ca7445ef')
