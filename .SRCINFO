@@ -8,6 +8,7 @@ pkgbase = neuralrack-git
 	groups = clap-plugins
 	groups = lv2-plugins
 	groups = pro-audio
+	groups = vst-plugins
 	license = BSD-3-Clause
 	checkdepends = lv2lint
 	makedepends = cairo

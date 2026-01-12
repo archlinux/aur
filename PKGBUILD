@@ -8,8 +8,15 @@ pkgdesc="Neural model and impulse response file loader"
 arch=(aarch64 x86_64)
 url="https://github.com/brummer10/$_name"
 license=(BSD-3-Clause)
-groups=(clap-plugins lv2-plugins pro-audio)
-depends=(gcc-libs glibc jack libx11 portaudio)
+groups=(clap-plugins
+        lv2-plugins
+        pro-audio
+        vst-plugins)
+depends=(gcc-libs
+         glibc
+         jack
+         libx11
+         portaudio)
 makedepends=(cairo clap git libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 provides=(${_name,,[R]}_ui.so ${_name,,[R]}.so ${_name,,}{,-clap,-lv2,-standalone,-vst})
@@ -26,7 +33,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_name" || exit 1
   git submodule update --init --recursive
-  make CXX=g++ STRIP=:
+  make
 }
 
 check() {
