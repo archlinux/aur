@@ -8,6 +8,7 @@ pkgbase = vendor-reset-dkms-git
 	makedepends = git
 	depends = dkms
 	conflicts = vendor-reset-git
+	conflicts = vendor-reset-lowell80-dkms-git
 	source = git+https://github.com/gnif/vendor-reset.git
 	md5sums = SKIP
 

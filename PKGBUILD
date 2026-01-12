@@ -3,14 +3,14 @@
 _pkgbase=vendor-reset
 pkgname=vendor-reset-dkms-git
 pkgver=r117.084881c
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for vendor-specific hardware reset routines."
 arch=('any')
 url="https://github.com/gnif/vendor-reset"
 license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
-conflicts=('vendor-reset-git')
+conflicts=('vendor-reset-git' 'vendor-reset-lowell80-dkms-git')
 source=('git+https://github.com/gnif/vendor-reset.git')
 md5sums=('SKIP')
 
