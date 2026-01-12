@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=cleanuparr
-pkgver=2.5.0
+pkgver=2.5.1
 _pkgver_qbittorrent=1.0.2
 _pkgver_transmission=1.0.3
 pkgrel=3
@@ -28,7 +28,7 @@ source=(
   cleanuparr.tmpfiles
   cleanuparr.install
 )
-sha256sums=('f85c11a06d5d5f67bc78db024e85bec4a69f89c6fac4820b499542ec90a60383'
+sha256sums=('05213c8c4b856e8ac3eb103e469730d8f3a24af2e1e3f22c2f2c7d1ec8c24383'
             'SKIP'
             'SKIP'
             'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
@@ -79,7 +79,6 @@ build() {
   (
     cd ${pkgname^}/code/frontend
     export NG_CLI_ANALYTICS=false
-    npm install
     npm ci
     npm run build
   )
