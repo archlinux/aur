@@ -3,18 +3,25 @@
 pkgname=visualdl
 pkgdesc="Deep Learning Visualization Toolkit"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/PaddlePaddle/${pkgname}"
 license=(Apache-2.0)
 depends=(python-baidubce python-flake8 python-flask-babel python-pillow python-protobuf python-requests python-matplotlib python-pandas)
-makedepends=(shellcheck rustup npm yarn) # python-setuptools
-source=(VisualDL-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+makedepends=(shellcheck rustup npm yarn python-setuptools)
+source=(VisualDL-${pkgver}-beta.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz)
 sha512sums=('d4cb17950199467752b19a227fac1814e87b4a4ec50eb21be6a4d02cfe3b506e087d21263040b1108ec2f82a7d4bedae8c4e80f03a97ad1c2f7e2b1342f9b008')
+
+prepare() {
+  cd "VisualDL-${pkgver}"-beta
+  sed -i 's/version = "0.2.63"/version = "0.2.88"/' frontend/packages/wasm/Cargo.toml
+  sed -i "s/wasm-opt = \['-O'\]/wasm-opt = false/" frontend/packages/wasm/Cargo.toml
+}
 
 build() {
   cd "VisualDL-${pkgver}"-beta
   export RUSTUP_TOOLCHAIN=stable
+  export NODE_OPTIONS=--openssl-legacy-provider
   python setup.py build
 }
 
