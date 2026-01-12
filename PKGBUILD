@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 
 install=antimony.install
@@ -9,7 +9,7 @@ license=("Unlicense")
 url="https://github.com/kkernick/antimony"
 source=("git+https://github.com/kkernick/antimony#tag=${pkgver}")
 b2sums=("SKIP")
-depends=(findutils glibc bubblewrap libseccomp strace xdg-dbus-proxy sqlite libnotify dbus)
+depends=(findutils glibc bubblewrap libseccomp xdg-dbus-proxy sqlite dbus)
 makedepends=(git cargo pkgconf)
 arch=("any")
 
@@ -35,20 +35,26 @@ check() {
 
 package() {
   cd $srcdir/antimony
-  for binary in antimony antimony-monitor antimony-spawn; do
-    install -Dm755 "target/release/$binary" "$pkgdir/usr/bin/$binary"
+  install -Dm755 "target/release/antimony" "$pkgdir/usr/bin/antimony"
+
+  install -Dm755 "target/release/notify" "$pkgdir/usr/share/antimony/utilities/antimony-notify"
+
+  for binary in antimony-monitor antimony-spawn antimony-dumper antimony-open antimony-tracer; do
+    install -Dm755 "target/release/$binary" "$pkgdir/usr/share/antimony/utilities/$binary"
   done
 
   for profile in $(ls config/profiles); do
-	  install -Dm644 "config/profiles/$profile" "$pkgdir/usr/share/antimony/profiles/$profile"
+	  install -Dm644 "config/profiles/$profile" "$pkgdir/usr/share/antimony/config/profiles/$profile"
   done
 
   for feature in $(ls config/features); do
-	  install -Dm644 "config/features/$feature" "$pkgdir/usr/share/antimony/features/$feature"
+	  install -Dm644 "config/features/$feature" "$pkgdir/usr/share/antimony/config/features/$feature"
   done
 
-  install -Dm644 "config/default.toml" "$pkgdir/usr/share/antimony/config/default.toml"
-  install -Dm644 "config/new.toml" "$pkgdir/usr/share/antimony/config/new.toml"
+  install -Dm644 "config/default.toml" "$pkgdir/usr/share/antimony/config/profiles/default.toml"
+  install -Dm644 "config/profile.toml" "$pkgdir/usr/share/antimony/config/profile.toml"
+  install -Dm644 "config/feature.toml" "$pkgdir/usr/share/antimony/config/feature.toml"
+
 
   # Build the shell completions
   target/release/antimony_completions

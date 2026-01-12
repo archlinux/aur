@@ -1,6 +1,6 @@
 pkgbase = antimony-sandbox
 	pkgdesc = Sandbox Applications
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/kkernick/antimony
 	install = antimony.install
@@ -13,12 +13,10 @@ pkgbase = antimony-sandbox
 	depends = glibc
 	depends = bubblewrap
 	depends = libseccomp
-	depends = strace
 	depends = xdg-dbus-proxy
 	depends = sqlite
-	depends = libnotify
 	depends = dbus
-	source = git+https://github.com/kkernick/antimony#tag=3.0.0
+	source = git+https://github.com/kkernick/antimony#tag=4.0.0
 	b2sums = SKIP
 
 pkgname = antimony-sandbox
