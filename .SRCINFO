@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-fmt
 	pkgdesc = Open-source formatting library for C++ (Android aarch64)
-	pkgver = 8.0.1
+	pkgver = 12.1.0
 	pkgrel = 1
 	url = https://fmt.dev
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-fmt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/fmtlib/fmt/archive/refs/tags/8.0.1.tar.gz
-	md5sums = 7d5af964c6633ef90cd6a47be3afe6a0
+	source = https://github.com/fmtlib/fmt/archive/refs/tags/12.1.0.tar.gz
+	md5sums = 92eb6f492e4838e5f024ce5207beafc7
 
 pkgname = android-aarch64-fmt
