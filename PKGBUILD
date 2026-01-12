@@ -3,7 +3,7 @@
 pkgname=python-librouteros
 _pkgname=librouteros
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C library to communicate with network devices by MikroTik running their Linux-based operating system RouterOS."
 url="https://github.com/luqasz/librouteros"
 arch=("i686" "x86_64" "armv7h")
