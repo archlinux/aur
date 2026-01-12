@@ -9,13 +9,8 @@ pkgbase = patchy
 	makedepends = jq
 	depends = glibc
 	depends = nodejs
-	provides = patchy
 	noextract = patchy-0.0.27.tgz
-	options = !strip
-	options = emptydirs
-	options = staticlibs
-	options = zipman
-	source = patchy-0.0.27.tgz::https://registry.npmjs.org/patchy-cli/-/patchy-cli-0.0.27.tgz
+	source = patchy-cli-0.0.27.tgz::https://registry.npmjs.org/patchy-cli/-/patchy-cli-0.0.27.tgz
 	b2sums = 12584256270a5ec5229537b2f3a5f5f52961ac57f4b82ee27530b3a1287ccf86bf151c3f31b6b679d2bb4e22a38f8eddd14239ae3fb5f9dc1a97f20029cb1e6d
 
 pkgname = patchy

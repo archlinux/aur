@@ -1,26 +1,18 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=patchy-cli
-_npmver=0.0.27
-
-_appname=${_npmname%%-cli}
-
-pkgname=${_appname}
-pkgdesc="A CLI for generating and applying patches to git repositories"
-pkgver=${_npmver}
+pkgname=patchy
+pkgdesc='A CLI for generating and applying patches to git repositories'
+pkgver=0.0.27
 pkgrel=1
-arch=("x86_64")
 url="https://github.com/richardgill/patchy"
-license=("MIT")
-
-depends=("glibc" "nodejs")
-makedepends=("npm" "jq")
-provides=("${_appname}")
-
-options=(!strip emptydirs staticlibs zipman)
+arch=('x86_64')
+license=('MIT')
+makedepends=('npm' 'jq')
+depends=('glibc' 'nodejs')
 noextract=("${pkgname}-${pkgver}.tgz")
-
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+source=("patchy-cli-${pkgver}.tgz::https://registry.npmjs.org/patchy-cli/-/patchy-cli-${pkgver}.tgz")
 b2sums=('12584256270a5ec5229537b2f3a5f5f52961ac57f4b82ee27530b3a1287ccf86bf151c3f31b6b679d2bb4e22a38f8eddd14239ae3fb5f9dc1a97f20029cb1e6d')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -29,7 +21,7 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${pkgname}-${pkgver}.tgz"
+		"${srcdir}/patchy-cli-${pkgver}.tgz"
 
 	msg2 "Fix ownership of ALL FILES"
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
@@ -39,7 +31,7 @@ package() {
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
-	local pkgjson="${pkgdir}/usr/lib/node_modules/${_npmname}/package.json"
+	local pkgjson="${pkgdir}/usr/lib/node_modules/patchy-cli/package.json"
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
 	mv "${tmppackage}" "${pkgjson}"
 	chmod 644 "${pkgjson}"
@@ -53,9 +45,9 @@ package() {
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	ln -sf "/usr/lib/node_modules/patchy-cli/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	msg2 "Install LICENSE file"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/${_npmname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln -sf "/usr/lib/node_modules/patchy-cli/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
