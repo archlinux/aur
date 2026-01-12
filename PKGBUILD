@@ -1,12 +1,12 @@
 # Maintainer: Grenish Rai <mrcoder2033d@gmail.com>
 pkgname=clipboard-manager-rs-git
-pkgver=r55.31a86bf
+pkgver=r67.18f37a4
 pkgrel=1
 pkgdesc="A simple clipboard manager written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Grenish/clipboard-manager"
 license=('MIT')
-depends=('gcc-libs' 'libxcb' 'libx11')
+depends=('gcc-libs' 'libxcb' 'libx11' 'libxtst')
 makedepends=('cargo' 'rust' 'git')
 provides=("clipboard-manager")
 conflicts=("clipboard-manager" "clipboard-manager-git")
