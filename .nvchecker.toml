@@ -1,0 +1,4 @@
+[pigpio]
+source = "git"
+git = "https://github.com/joan2937/pigpio.git"
+prefix = "v"
