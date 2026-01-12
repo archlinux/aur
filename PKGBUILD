@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-code-gui
-pkgver=1.3.32
+pkgver=1.3.39
 pkgrel=1
 pkgdesc="Multi-backend AI coding assistant GUI supporting Claude Code, Gemini CLI, Codex, OpenCode, and Aider"
 arch=('x86_64')
