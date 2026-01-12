@@ -1,0 +1,17 @@
+pkgbase = worktrunk-bin
+	pkgdesc = Worktrunk is a CLI for git worktree management, designed for running AI agents in parallel.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/max-sixty/worktrunk
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = bash
+	makedepends = fish
+	makedepends = zsh
+	source_x86_64 = https://github.com/max-sixty/worktrunk/releases/download/v0.12.0/worktrunk-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 2bfb1b24b4479ae6bb53d748ad6b1080d8498d18aa51ae23dfe69473a304505e
+	source_aarch64 = https://github.com/max-sixty/worktrunk/releases/download/v0.12.0/worktrunk-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = f8ba0c890776810c6482c90c5370e2d2ed144fde9d3ad461563be3327bd65519
+
+pkgname = worktrunk-bin
