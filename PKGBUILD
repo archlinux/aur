@@ -1,7 +1,7 @@
-# Maintainer: Quentin Glidic <sardemff7@eventd.org>
+# Maintainer: Morgane Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.27.0
+pkgver=0.29.0
 _pkgdir=${pkgname}-${pkgver}
 pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
@@ -19,7 +19,7 @@ license=(
 depends=(
     'cairo>=1.12.0'
     gdk-pixbuf2
-    'glib2>=2.40.0'
+    'glib2>=2.66.0'
     glib-networking
     pango
     libsystemd
@@ -42,7 +42,7 @@ optdepends=(
     'avahi: DNS-SD support'
     'gssdp: SSDP support'
     'librsvg: SVG images support'
-    'libsoup: WebSocket support'
+    'libsoup3: WebSocket support'
 )
 options=(
     !strip
@@ -51,14 +51,14 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    986b167ab54f89b59e9263d976a166d78ff67ffde8ee15ad1dbff68a451a30c9
+    25919f1934a2c809b0dbc035a74f28b726aec50386e0c441795ecd02abcbe23e
 )
 
 build() {
     local params=(
         --prefix=/usr
         -Dsystemd=true
-        -Dintrospection=false
+        -Dgobject-introspection=false
         -Dnd-wayland=false
         -Dim=false
         -Dsound=false
