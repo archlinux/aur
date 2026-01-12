@@ -78,7 +78,6 @@ package() {
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
 
     # Install man pages
-    find "$pkgdir/$_jvmdir/man" -type f -printf '%P\n' | while read -r file; do
-        install -Dm644 "$pkgdir/$_jvmdir/man/$file" "$pkgdir/$_mandir/$file"
-    done
+    cd "$pkgdir/$_jvmdir/man"
+    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }
