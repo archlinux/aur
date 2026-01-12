@@ -37,7 +37,9 @@ build() {
 package() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    rm -rf "${pkgdir}/usr/bin/"{ag,agent}
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
