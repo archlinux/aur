@@ -1,7 +1,7 @@
 pkgbase = lore-cli-bin
 	pkgdesc = Reasoning history for code - captures AI-assisted development sessions and links them to git commits
-	pkgver = 0.1.8
-	pkgrel = 3
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://github.com/varalys/lore
 	install = lore-cli-bin.install
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = lore-cli-bin
 	conflicts = lore-cli
 	conflicts = lore
 	options = !debug
-	source_x86_64 = lore-cli-bin-0.1.8-x86_64.tar.gz::https://github.com/varalys/lore/releases/download/v0.1.8/lore-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 272143b06d8aabeaf262c914d9f67eb068f81cb245715e607cc32bb14b9c39ae
-	source_aarch64 = lore-cli-bin-0.1.8-aarch64.tar.gz::https://github.com/varalys/lore/releases/download/v0.1.8/lore-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 90228765d82448d101ff3fa2f0327453026078526f485783fa544e24f03d1ce4
+	source_x86_64 = lore-cli-bin-0.1.9-x86_64.tar.gz::https://github.com/varalys/lore/releases/download/v0.1.9/lore-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 087773a417d7396017ffe8ed8791b62fb7c4f90b080934ba29fae8eef439504f
+	source_aarch64 = lore-cli-bin-0.1.9-aarch64.tar.gz::https://github.com/varalys/lore/releases/download/v0.1.9/lore-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 19141ad73fea68e8f424a004fa79cc60f2f9655aae2b2e9ac4bf18275d8fc6e9
 
 pkgname = lore-cli-bin
