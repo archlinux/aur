@@ -1,4 +1,5 @@
-# Maintainer: Voxan <admin at hessfr dot fr>
+# Maintainer: Expresso <ernesto.soria.2912 @ gmail dot com>
+# Contributor: Voxan <admin at hessfr dot fr>
 # Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Cyra Westmere <cyra@slowest.network>
@@ -22,6 +23,7 @@ depends=(
 	dbus-glib
 	nss
 	ttf-font
+	libpulse
 )
 makedepends=(
 	cbindgen
@@ -37,6 +39,7 @@ makedepends=(
 	nasm
 	nodejs
 	python
+	python-pip
 	rust
 	unzip
 	wasi-compiler-rt
@@ -46,6 +49,7 @@ makedepends=(
 	xorg-server-xvfb
 	yasm
 	zip
+	sccache
 )
 
 optdepends=(
@@ -60,10 +64,14 @@ optdepends=(
 options=(!emptydirs !makeflags !strip)
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz"
+	"locales.tar.gz::https://github.com/BrowserWorks/l10n/archive/bce7b1e821ff7f65d914d35f09eee0379f41887d.tar.gz"
 	"$pkgname.desktop"
 )
 
 prepare () {
+	rm -rf "$pkgname-$pkgver/waterfox/browser/locales/"*
+	mv "l10n-bce7b1e821ff7f65d914d35f09eee0379f41887d/"* "$pkgname-$pkgver/waterfox/browser/locales/"
+
 	mkdir -p mozbuild
 	cd "waterfox-$pkgver"
 
@@ -85,6 +93,7 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-sccache
 
 # Branding
 ac_add_options --with-app-name=waterfox
@@ -106,6 +115,18 @@ EOT
 build () {
 	cd waterfox-$pkgver
 
+	
+    export CFLAGS="${CFLAGS/-fexceptions/}"
+    export CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+    
+    # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+    CFLAGS+=" -fno-exceptions"
+    CXXFLAGS+=" -fno-exceptions"
+
+	 # malloc_usable_size is used in various parts of the codebase
+	CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+	CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
 	export MOZ_NOSPAM=1
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
@@ -121,7 +142,9 @@ build () {
 	# suppress warnings
 	CFLAGS+=" -w"
 	CXXFLAGS+=" -w"
-#_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
+
+	_disable_pgo=y #comment this to enable building the profiled browser and using PGO
+
 	if [[ -z $_disable_pgo ]]; then
  # Do 3-tier PGO
 	echo "Building instrumented browser..."
@@ -194,18 +217,21 @@ EOT
 
 	local i theme=waterfox
 	for i in 16 22 24 32 48 64 128 256; do
-		install -Dvm644 browser/branding/$theme/default$i.png \
+		install -Dvm644 waterfox/browser/branding/default$i.png \
 			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
 	done
-	install -Dvm644 browser/branding/$theme/content/about-logo.png \
+	install -Dvm644 waterfox/browser/branding/content/about-logo.png \
 		"$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
-	install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
+	install -Dvm644 waterfox/browser/branding/content/about-logo@2x.png \
 		"$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
-	install -Dvm644 browser/branding/$theme/content/identity-icons-brand.svg \
+	install -Dvm644 waterfox/browser/themes/lepton/icons/identity-icons-brand.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
 	install -Dvm644 ../$pkgname.desktop \
 		"$pkgdir/usr/share/applications/$pkgname.desktop"
+
+	install -Dvm755 "obj-Linux-x86_64/dist/bin/waterfox" \
+    "$pkgdir/usr/lib/$pkgname/waterfox"
 
 	# Install a wrapper to avoid confusion about binary path
 	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOT
@@ -223,6 +249,8 @@ EOT
 		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
 	fi
 }
+
 #first browser package, second icon file 
-sha256sums=('146e3d8e5b5f9d4967737e5152b5baa3e96e3d2065c1124e71dbb415730eb93f'
-            '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
+sha256sums=('9c141c32d8fef0863fce37e4c8bfb9c10ed9e4067c495bbd87f416454e941255'
+            'fa87c5b01d38fddb67a7c3512acf622bc3eef2f90d2ff439cbde6d363849efd2'
+            '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286')
