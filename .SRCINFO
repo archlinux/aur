@@ -1,7 +1,7 @@
 pkgbase = jupyter-bash_kernel
 	pkgdesc = A bash kernel for Jupyter
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/takluyver/bash_kernel
 	arch = any
 	license = BSD-3-Clause

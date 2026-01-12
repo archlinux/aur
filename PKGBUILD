@@ -4,7 +4,7 @@
 _name=bash_kernel
 pkgname=jupyter-${_name}
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash kernel for Jupyter"
 arch=(any)
 url="https://github.com/takluyver/bash_kernel"
