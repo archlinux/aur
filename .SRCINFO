@@ -1,12 +1,17 @@
 pkgbase = python-untokenize
 	pkgdesc = Transforms tokens into source code
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/myint/untokenize
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	source = https://files.pythonhosted.org/packages/source/u/untokenize/untokenize-0.1.1.tar.gz
+	source = pyproject.patch::https://patch-diff.githubusercontent.com/raw/myint/untokenize/pull/7.patch
 	sha256sums = 3865dbbbb8efb4bb5eaa72f1be7f3e0be00ea8b7f125c69cbd1f5fda926f37a2
+	sha256sums = e38df1be0a4e34ab70f1994f9f863f8f572b92a767a3a959319182479cb4aeee
 
 pkgname = python-untokenize
-
