@@ -8,9 +8,9 @@ arch=('x86_64')
 license=('GPL-3.0-only')
 provides=('oxdna')
 conflicts=('oxdna')
-pkgrel=1
+pkgrel=2
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'ipython')
-makedepends=('git' 'cmake' 'gsl' 'cuda' 'gcc14' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
+makedepends=('git' 'cmake' 'gsl' 'cuda' 'gcc' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 options=(!lto)
 source=("git+https://github.com/lorenzo-rovigatti/oxDNA.git#branch=CUDA13")
 sha256sums=('SKIP')
@@ -25,8 +25,8 @@ build() {
     cmake -B build -S "oxDNA" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_C_COMPILER='gcc-14' \
-        -DCMAKE_CXX_COMPILER='g++-14' \
+        -DCMAKE_C_COMPILER='gcc' \
+        -DCMAKE_CXX_COMPILER='g++' \
         -Wno-dev \
         -DCUDA=ON \
         -DPython=ON \

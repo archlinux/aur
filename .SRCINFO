@@ -1,7 +1,7 @@
 pkgbase = oxdna-cuda-git
 	pkgdesc = DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools.
 	pkgver = 3.7.0.r73.ga9ff2844
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lorenzo-rovigatti/oxDNA
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = oxdna-cuda-git
 	makedepends = cmake
 	makedepends = gsl
 	makedepends = cuda
-	makedepends = gcc14
+	makedepends = gcc
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
