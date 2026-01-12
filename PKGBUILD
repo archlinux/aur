@@ -2,7 +2,7 @@
 
 pkgname=diffenator2
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Compare two font families, descendent of fontdiffenator'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
