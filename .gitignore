@@ -47,6 +47,7 @@ gnupg/
 .zencoder/
 .codacy/
 .codacy.*
+.zenflow/
 
 ############################
 
