@@ -4,7 +4,7 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 _pkgname="waybar"
 pkgname="$_pkgname-minimal-git"
-pkgver=0.13.0.r41.g0776e69
+pkgver=0.14.0.r144.ga02180a
 pkgrel=1
 pkgdesc="Highly customizable bar for Sway, wlroots-based, and other Wayland compositors; PKGBUILD tweaked minutely to eliminate (potentially) unnecessary dependency on gpsd."
 url='https://github.com/Alexays/Waybar'
@@ -20,7 +20,6 @@ depends=(
   'libdbusmenu-gtk3'
   'libevdev'
   'libinput'
-  'libmpdclient'
   'libnl'
   'libpulse'
   'libsigc++'
@@ -69,6 +68,9 @@ build() {
     -Dexperimental=true
     -Dgps=disabled
     -Dcava=disabled
+    -Dsystemd=disabled
+    -Dmpd=disabled
+    # -Dlibcxx=true
   )
   if ((!"${CHECKFUNC:-0}")); then
     _meson_args+=(-Dtests=disabled)
