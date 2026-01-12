@@ -8,7 +8,7 @@
 _pkgname=zenpower5
 pkgname=zenpower5-dkms-git
 epoch=5
-pkgver=r73.873bfa5
+pkgver=0.5.0.r3.g66871d8
 pkgrel=1
 pkgdesc="Linux kernel driver for AMD Zen CPU monitoring (Zen 1-5): temperature, voltage, current, and power via SVI2/RAPL. Multi-file architecture with Zen 5 (Strix Halo) support"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
