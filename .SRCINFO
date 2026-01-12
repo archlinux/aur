@@ -1,6 +1,6 @@
 pkgbase = censawayapp-bin
 	pkgdesc = Censaway VPN Client
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Censaway/CensawayApp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = censawayapp-bin
 	conflicts = censaway
 	options = !strip
 	options = !debug
-	source = censawayapp-bin-1.0.1::https://github.com/Censaway/CensawayApp/releases/download/v1.0.1/Censaway_v1.0.1_linux_amd64
-	sha256sums = fa6c10cf4a00e51010a637e0adb11f2b03c235d647f83b1cd1a961389af925fc
+	source = censawayapp-bin-1.1.0::https://github.com/Censaway/CensawayApp/releases/download/v1.1.0/Censaway_v1.1.0_linux_amd64
+	sha256sums = 38fe1e424cfdd0071eeb3d550693ae7ed84b08607f8b27dd7041e32bf1611f56
 
 pkgname = censawayapp-bin
