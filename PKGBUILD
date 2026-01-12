@@ -7,7 +7,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.2.28.ga21165a
-pkgrel=3
+pkgrel=4
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -50,6 +50,15 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 
 	git submodule update --init --recursive
+
+	# must be sequential to avoid race condition
+	git submodule foreach --recursive 'printf "%s\0" "${sm_path}" >&2' 3>&2 2>&1 1>&3 | xargs -0I{} find '{}' \( \
+	-name .git \
+	-o -name .gitignore \
+	-o -name .gitattributes \
+	-o -name .gitmodules \
+	\) -print0 >.submodules
+	xargs -0 rm -vr <.submodules
 }
 
 package() {
