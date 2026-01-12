@@ -1,6 +1,6 @@
 pkgname='click-ns3-git'
 _pkgname='click'
-pkgver=v2.0.1.r964.g9197a59
+pkgver=2.0.1.r964.g9197a59
 pkgrel=1
 pkgdesc="The Click modular router: fast modular packet processing and analysis."
 arch=('x86_64')
@@ -11,12 +11,11 @@ provides=('click-ns3')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
 source=("git+${url}.git")
-
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
