@@ -1,0 +1,18 @@
+pkgbase = python-easypaint
+	pkgdesc = Biblioteca de dibujo para Python 3 (requiere python-tk)
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://pypi.org/project/easypaint/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.8
+	depends = tk
+	source = https://files.pythonhosted.org/packages/source/e/easypaint/easypaint-1.0.7.tar.gz
+	sha256sums = fcb6de48f8a8d441ee282a4c73f720ddee5206c1e41952519538d7eab860886a
+
+pkgname = python-easypaint
