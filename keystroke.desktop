@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Keystroke
+Comment=Keystroke visualizer for Wayland compositors
+Exec=/usr/bin/keystroke %u
+Icon=keystroke
+Type=Application
+StartupWMClass=keystroke
+Categories=Utility;
+StartupNotify=true
+Terminal=false
+X-MultipleArgs=false
