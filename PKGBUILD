@@ -30,27 +30,8 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname" 2>/dev/null || cd "$pkgname" 2>/dev/null || {
-        echo "0.5.3"
-        return 0
-    }
-
-    # Try to get version from git tags first
-    if git describe --long --tags &>/dev/null; then
-        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-        return 0
-    fi
-
-    # Fallback: use base version + commit count + short hash
-    local count hash
-    count=$(git rev-list --count HEAD 2>/dev/null)
-    hash=$(git rev-parse --short HEAD 2>/dev/null)
-
-    if [[ -n "$count" && -n "$hash" ]]; then
-        echo "0.5.3.r${count}.g${hash}"
-    else
-        echo "0.5.3"
-    fi
+    cd "$srcdir/$pkgname"
+    printf "%s.r%s.g%s" "0.5.3" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
