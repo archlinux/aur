@@ -1,0 +1,23 @@
+pkgbase = zulu-jre11-fx
+	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
+	pkgver = 11.0.29+11.84.17
+	pkgrel = 1
+	install = zulu-jre11-fx.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-with-classpath-exception
+	license = GPL-2.0-or-later
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
+	provides = java-openjfx=11
+	options = !strip
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.84.17-ca-fx-jre11.0.29-linux_x64.tar.gz
+	sha256sums_x86_64 = 4e92caea31cce6b00af6a5f561b1060582b5a0afbe6b2db05cc4f72a2c55056c
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu11.84.17-ca-fx-jre11.0.29-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 1240b133f014fde8f0631ceae20534612ddb9b6fe13d2ebce20a082a6924f39d
+
+pkgname = zulu-jre11-fx
