@@ -2,7 +2,7 @@
 pkgname=python-yamlcore
 _name=yamlcore
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML 1.2 Core Schema Support for PyYAML"
 arch=('any')
 url="https://pypi.org/project/yamlcore/"

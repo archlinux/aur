@@ -1,7 +1,7 @@
 pkgbase = python-yamlcore
 	pkgdesc = YAML 1.2 Core Schema Support for PyYAML
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/yamlcore/
 	arch = any
 	license = MIT
