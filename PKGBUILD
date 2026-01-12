@@ -4,7 +4,7 @@
 _pyname=htmllistparse
 pkgname=python-htmllistparse
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Python parser for Apache/nginx-style HTML directory listing'
 url=https://github.com/gumblex/htmllisting-parser
 license=(MIT)
