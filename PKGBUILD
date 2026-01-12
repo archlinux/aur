@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=falcond-profiles-git
 pkgver=r20.0f87c74
-pkgrel=3
+pkgrel=4
 pkgdesc="Profiles for Falcond"
 arch=('any')
 url="https://github.com/PikaOS-Linux/falcond-profiles"
@@ -22,9 +22,9 @@ package() {
   install -Dm644 usr/share/falcond/system.conf -t "$pkgdir/usr/share/falcond/"
   install -Dm644 usr/share/falcond/profiles/*.conf -t \
     "$pkgdir/usr/share/falcond/profiles/"
-  install -Dm644 usr/share/falcond/profiles/handheld/* -t \
+  install -Dm644 usr/share/falcond/profiles/handheld/*.conf -t \
     "$pkgdir/usr/share/falcond/profiles/handheld/"
-  install -Dm644 usr/share/falcond/profiles/htpc/* -t \
+  install -Dm644 usr/share/falcond/profiles/htpc/*.conf -t \
     "$pkgdir/usr/share/falcond/profiles/htpc/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

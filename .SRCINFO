@@ -1,7 +1,7 @@
 pkgbase = falcond-profiles-git
 	pkgdesc = Profiles for Falcond
 	pkgver = r20.0f87c74
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PikaOS-Linux/falcond-profiles
 	arch = any
 	license = MIT
