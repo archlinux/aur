@@ -2,7 +2,7 @@
 
 pkgname=python-deal
 _pkgname=${pkgname#python-}
-pkgver=4.24.5
+pkgver=4.24.6
 pkgrel=1
 pkgdesc="Design by contract for Python. Write bug-free code. Add a few decorators, get static analysis and tests for free"
 arch=(any)
@@ -33,7 +33,7 @@ optdepends=(
   # 'python-vaa: for supporting schemes (like marshmallow) as validators'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c5e4ac4012c3ccf54d80168b3b343c96024b9d0119b7b30e93675184b721b920')
+sha256sums=('1845a53d3cac40ad2ca07d27f4476114e7add92a65f65735352b270dd7237863')
 
 _archive="$_pkgname-$pkgver"
 
