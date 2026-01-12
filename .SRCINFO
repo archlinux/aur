@@ -1,6 +1,6 @@
 pkgbase = falcond-gui
 	pkgdesc = A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.pika-os.com/general-packages/falcond-gui
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = falcond-gui
 	depends = falcond
 	depends = gtk4
 	depends = libadwaita
-	noextract = falcond-gui-1.0.0.tar.gz
-	source = falcond-gui-1.0.0.tar.gz::https://git.pika-os.com/general-packages/falcond-gui/archive/v1.0.0.tar.gz
-	sha256sums = 067aa7d0f789e8a6f5325f8b7b6439c54b28527b3632c13bbd32f8304897df81
+	noextract = falcond-gui-1.0.1.tar.gz
+	source = falcond-gui-1.0.1.tar.gz::https://git.pika-os.com/general-packages/falcond-gui/archive/v1.0.1.tar.gz
+	sha256sums = 2e153e2fd63cae328b777b609791e68d2d9c3ff586a604a9130ca2ff89ea60e3
 
 pkgname = falcond-gui
