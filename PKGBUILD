@@ -3,7 +3,7 @@
 
 pkgname=hytale-launcher-bin
 pkgver=2026.01.11.b022ef5
-pkgrel=1
+pkgrel=2
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
 url="https://hytale.com"
 license=('LicenseRef-custom')
@@ -17,7 +17,7 @@ install="hytale-launcher.install"
 _date=$(echo $pkgver | cut -d. -f1-3)
 _commit=$(echo $pkgver | cut -d. -f4)
 
-source=("hytale-launcher.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-${_date}-${_commit}.zip"
+source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-${_date}-${_commit}.zip"
         "hytale-launcher.install"
         "hytale-launcher.sh"
         "com.hypixel.HytaleLauncher.png"
@@ -25,7 +25,7 @@ source=("hytale-launcher.zip::https://launcher.hytale.com/builds/release/linux/a
         "LICENSE")
 
 # generated with: updpkgsums
-sha256sums=('22c0940d625e12661238834c0f56fd66ff160837c4a9a2c93d3c86452b2af163'
+sha256sums=('fbe201c5ad79b40fbd48db01c54d625b6283f97d753f1b9173018a7e7f0fe301'
             'a2a9076e8b0ac6ee006344d8e40cf29d21635c12052ec721dd8a7888c45339f8'
             'ff800b35b50d459717576f353a9100d1c95bcf119f610aeab2944b53a6a0cf15'
             'ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106'
