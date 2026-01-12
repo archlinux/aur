@@ -9,8 +9,11 @@ url="https://hytale.com"
 license=('LicenseRef-custom')
 arch=('x86_64')
 options=('!strip' '!debug')
-depends=('hicolor-icon-theme' 'nss' 'libsecret' 'gtk3' 'libsoup3'
-         'gdk-pixbuf2' 'glibc' 'bash' 'webkit2gtk-4.1' 'xdg-utils' 'glib2')
+provides=('hytale-launcher')
+conflicts=('hytale-launcher')
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'bash' 'xdg-utils' 'libsoup3' 'gdk-pixbuf2' 'glib2' 'glibc')
+optdepends=('jdk25-openjdk: Required to Run / Mod Hytale client/server'
+            'jre25-openjdk: Required to Run Hytale client/server')
 install="hytale-launcher.install"
 
 # We split the pkgver back into the date and commit parts for the URL
@@ -26,8 +29,8 @@ source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/bu
 
 # generated with: updpkgsums
 sha256sums=('fbe201c5ad79b40fbd48db01c54d625b6283f97d753f1b9173018a7e7f0fe301'
-            'a2a9076e8b0ac6ee006344d8e40cf29d21635c12052ec721dd8a7888c45339f8'
-            'ff800b35b50d459717576f353a9100d1c95bcf119f610aeab2944b53a6a0cf15'
+            '03f80d97980eb8a4c7b621a4b205aa2d02d6b248cec04f5f1b4d1241f4a3014b'
+            '003dc88078a1d82f309888f420ee41af05087f988e4fb5210351a57aa4e6bb8b'
             'ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106'
             '8aa7dc98faa3a094f5a2ae8c0ad1ff7a65d295b8b3705c5707ec184570d67195'
             '5782bcd7945501383cd6b589797549318cb8e494047c31944fc326ff51ae7047')
