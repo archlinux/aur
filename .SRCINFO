@@ -9,7 +9,6 @@ pkgbase = censawayapp-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	provides = censaway
-	conflicts = censaway
 	options = !strip
 	options = !debug
 	source = censawayapp-bin-1.1.0::https://github.com/Censaway/CensawayApp/releases/download/v1.1.0/Censaway_v1.1.0_linux_amd64
