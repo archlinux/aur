@@ -1,7 +1,7 @@
 pkgbase = pyinfra
 	pkgdesc = Automate infrastructure super fast at massive scale
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyinfra-dev/pyinfra
 	arch = any
 	license = MIT
@@ -20,6 +20,8 @@ pkgbase = pyinfra
 	depends = python-typeguard
 	depends = python-typing_extensions
 	source = pyinfra-3.6.tar.gz::https://github.com/pyinfra-dev/pyinfra/archive/v3.6.tar.gz
+	source = 1525_remove_dsskey.patch
 	sha256sums = f54177b0008a9d4deee60c2ba2f8de90aaca84fa6f30b50a236df472935c788c
+	sha256sums = 6e83a040153db0762e4ae632fa06b82e1af21addf6c1deed98f8f8a8c0ca49e3
 
 pkgname = pyinfra

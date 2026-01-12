@@ -4,7 +4,7 @@
 _pkgname="pyinfra"
 pkgname="$_pkgname"
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
 license=('MIT')
@@ -31,8 +31,14 @@ makedepends=(
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('f54177b0008a9d4deee60c2ba2f8de90aaca84fa6f30b50a236df472935c788c')
+source=(
+  "$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext"
+  '1525_remove_dsskey.patch'
+)
+sha256sums=(
+  'f54177b0008a9d4deee60c2ba2f8de90aaca84fa6f30b50a236df472935c788c'
+  '6e83a040153db0762e4ae632fa06b82e1af21addf6c1deed98f8f8a8c0ca49e3'
+)
 
 prepare() (
   python -m venv venv
@@ -47,6 +53,8 @@ prepare() (
   toml unset --toml-path pyproject.toml project.dynamic
   toml unset --toml-path pyproject.toml tool.hatch.version
   toml set --toml-path pyproject.toml project.version "$pkgver"
+
+  patch -Np1 -F100 -i ../1525_remove_dsskey.patch
 )
 
 build() {
