@@ -5,6 +5,7 @@ pkgbase = python-rtslib-fb
 	url = https://github.com/open-iscsi/rtslib-fb
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python
 	makedepends = python-build
 	makedepends = python-pip

@@ -9,7 +9,7 @@ url="https://github.com/open-iscsi/${_pkgname}"
 license=('Apache')
 options=()
 depends=('python' 'python-pyudev')
-makedepends=('python' 'python-build' 'python-pip' 'python-pyudev')
+makedepends=('git' 'python' 'python-build' 'python-pip' 'python-pyudev')
 provides=('python-rtslib')
 conflicts=('python-rtslib')
 source=("git+${url}.git#tag=v${pkgver}")
