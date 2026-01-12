@@ -1,0 +1,23 @@
+pkgbase = zulu-jre8-fx
+	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
+	pkgver = 8.0.472+8.90.0.19
+	pkgrel = 1
+	install = zulu-jre8-fx.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-with-classpath-exception
+	license = GPL-2.0-or-later
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	provides = java-openjfx=8
+	options = !strip
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu8.90.0.19-ca-fx-jre8.0.472-linux_x64.tar.gz
+	sha256sums_x86_64 = 46ec6cf04f3f884ee6ef6dbdeb0c58df2db58a02638c4e50af842d39c3d3fabc
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu8.90.0.19-ca-fx-jre8.0.472-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 95a8fa16a3037e5a1b8d7ddd2a72c385edf68638b65774f92af0a6c8ed16fd08
+
+pkgname = zulu-jre8-fx
