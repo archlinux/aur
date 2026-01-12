@@ -1,10 +1,10 @@
 pkgbase = file-manager-preview-git
 	pkgdesc = Modern file manager with preview support
-	pkgver = r5.a226f12
+	pkgver = r7.964ed88
 	pkgrel = 1
 	url = https://github.com/tonglingcn/file-manager
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools

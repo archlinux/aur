@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=file-manager-preview-git
-pkgver=r5.a226f12
+pkgver=r7.964ed88
 pkgrel=1
 pkgdesc="Modern file manager with preview support"
 arch=($CARCH)
 url="https://github.com/tonglingcn/file-manager"
-license=('MIT')
+license=('GPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
@@ -62,5 +62,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
-    install -vDm644 ""${srcdir}"/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 "${srcdir}/${pkgname}/debian/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
