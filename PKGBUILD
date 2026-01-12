@@ -3,7 +3,7 @@
 pkgname=python-p115dav
 _name=${pkgname#python-}
 pkgver=0.0.10.4
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="115 网盘 WebDAV 和 302 直链程序."
 arch=('any')
@@ -15,8 +15,10 @@ conflicts=(${pkgname})
 depends=(
     uvicorn
     python
+    python-rich
+    python-sqlitedict
     python-orjson
-    python-pyaml
+    python-yaml
     #AUR
     python-a2wsgi
     python-blacksheep
@@ -24,8 +26,10 @@ depends=(
     python-dictattr
     python-encode-uri
     python-httpagentparser
+    python-texttools
     python-p115client
     python-path-predicate
+    python-property
     python-posixpatht
     python-pysubs2
     python-wsgidav
@@ -35,7 +39,8 @@ makedepends=(
     python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
@@ -43,7 +48,7 @@ sha256sums=('a10772cb06519389d4bb9255a3713438f4b33ef4a8fd78236d3b8aba8e977559')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    rm -rf LICENSE
+    rm -rf LICENSE*
     python -m build --wheel --no-isolation
 }
 
