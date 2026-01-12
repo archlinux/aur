@@ -2,8 +2,8 @@
 # Contributer: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 
 pkgname=lsplug
-pkgver=4
-pkgrel=2
+pkgver=6
+pkgrel=1
 pkgdesc="Nicer version of lsusb"
 arch=('any')
 url="https://git.sr.ht/~martijnbraam/lsplug"
@@ -11,7 +11,7 @@ license=('custom:MIT')
 depends=('python' 'hwdata')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
-sha512sums=('d88472005ee4f42ef5c6f9a457fb202598625ec2c0b3fb633e80f901edf82456d93131a6628203fb843ae162a2113c3c6bc3654c1d3b0ff34736e0893363089c')
+sha512sums=('6745feac03435541bb6c5acf0da45d5ed4dd4f2ab3921e33a7ba4156705b947d5f95db1f17c84079e5335575395c154d87a3fdfc7c2ff9eb85849e65662f4bf5')
 
 _dir="${pkgname}-${pkgver}"
 
