@@ -1,0 +1,15 @@
+post_install() {
+  if ! getent group navcoin >/dev/null; then
+    groupadd --system navcoin
+  fi
+  if ! getent passwd navcoin >/dev/null; then
+    useradd --system -g navcoin -d /var/lib/navcoin -s /usr/bin/nologin navcoin
+    passwd -l navcoin >/dev/null
+  fi
+  mkdir -p /var/lib/navcoin
+  chown -R navcoin:navcoin /var/lib/navcoin
+}
+
+post_upgrade() {
+  post_install
+}

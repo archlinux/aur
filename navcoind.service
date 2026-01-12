@@ -5,14 +5,14 @@ After=network.target
 [Service]
 User=navcoin
 Group=navcoin
-WorkingDirectory=~
+WorkingDirectory=/var/lib/navcoin
 RuntimeDirectory=navcoin
 
 Type=forking
 PIDFile=/run/navcoin/navcoind.pid
 
-ExecStart=/usr/bin/navcoind --config-file /etc/navcoind.conf \
-    --detach --pidfile /run/navcoin/navcoind.pid
+ExecStart=/usr/bin/navcoind -daemon -pid=/run/navcoin/navcoind.pid
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
