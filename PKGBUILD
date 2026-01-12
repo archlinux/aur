@@ -2,7 +2,7 @@
 
 pkgname=hledger-tui
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='keyboard-driven terminal UI for viewing and analyzing your hledger financial data'
 arch=(any)
 url="https://github.com/lucabello/$pkgname"

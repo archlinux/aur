@@ -1,7 +1,7 @@
 pkgbase = hledger-tui
 	pkgdesc = keyboard-driven terminal UI for viewing and analyzing your hledger financial data
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lucabello/hledger-tui
 	arch = any
 	license = Apache-2.0
