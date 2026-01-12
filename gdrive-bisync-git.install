@@ -1,0 +1,41 @@
+post_install() {
+  echo ""
+  echo "╔═══════════════════════════╗"
+  echo "║ GDRIVE BISYNC INSTALLED   ║"
+  echo "╚═══════════════════════════╝"
+  echo ""
+  echo "To install the systemd user service:"
+  echo "  gdrive-bisync --install-service"
+  echo ""
+  echo "For setup and usage instructions, visit:"
+  echo "  https://github.com/AzPepoze/gdrive-bisync"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "╔═══════════════════════════╗"
+  echo "║ GDRIVE BISYNC UPDATED     ║"
+  echo "╚═══════════════════════════╝"
+  echo ""
+  echo "If you're using the systemd service, reinstall it:"
+  echo "  gdrive-bisync --install-service"
+  echo ""
+  echo "For more information, visit:"
+  echo "  https://github.com/AzPepoze/gdrive-bisync"
+  echo ""
+}
+
+pre_remove() {
+  echo ""
+  echo "╔═══════════════════════════╗"
+  echo "║ REMOVING GDRIVE BISYNC    ║"
+  echo "╚═══════════════════════════╝"
+  echo ""
+  echo "To uninstall the systemd service:"
+  echo "  gdrive-bisync --uninstall-service"
+  echo ""
+  echo "WARNING: Configuration files in ~/.config/gdrive-bisync/ are preserved."
+  echo "         Remove manually if needed."
+  echo ""
+}
