@@ -1,0 +1,20 @@
+pkgbase = qbz-bin
+	pkgdesc = Native Qobuz client for Linux with Hi-Fi audio support (pre-built binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vicrodh/qbz
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = libappindicator-gtk3
+	optdepends = pipewire-alsa: PipeWire audio support
+	optdepends = pipewire-pulse: PulseAudio compatibility
+	provides = qbz
+	conflicts = qbz
+	options = !strip
+	source = qbz-bin-1.0.0.tar.gz::https://github.com/vicrodh/qbz/releases/download/v1.0.0/qbz_1.0.0_amd64.tar.gz
+	sha256sums = 7803ee50d63b1759f6fbd2f62749b62990bf75bfd5ffe0709a9269dc3af0e254
+
+pkgname = qbz-bin
