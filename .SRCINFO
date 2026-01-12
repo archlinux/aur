@@ -8,7 +8,7 @@ pkgbase = plasma-wechat-toggle
 	license = MIT
 	depends = bash
 	depends = qt6-tools
-	optdepends = wechat-uos: WeChat for Linux
+	optdepends = wechat-universal-bwrap: WeChat for Linux
 	source = toggle-wechat.sh
 	sha256sums = 296cb7ce7f24fc05654e997ac09b4fd17d80c0be63b7e7ab38c23f7477eb548f
 
