@@ -1,0 +1,38 @@
+pkgbase = zulu-jre17-fx
+	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
+	pkgver = 17.0.17+17.62.17
+	pkgrel = 3
+	install = zulu-jre17-fx.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-with-classpath-exception
+	license = GPL-2.0-or-later
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	provides = java-openjfx=17
+	options = !strip
+	backup = etc/zulu-jre17-fx/security/policy/README.txt
+	backup = etc/zulu-jre17-fx/security/policy/unlimited/default_local.policy
+	backup = etc/zulu-jre17-fx/security/policy/unlimited/default_US_export.policy
+	backup = etc/zulu-jre17-fx/security/policy/limited/default_local.policy
+	backup = etc/zulu-jre17-fx/security/policy/limited/exempt_local.policy
+	backup = etc/zulu-jre17-fx/security/policy/limited/default_US_export.policy
+	backup = etc/zulu-jre17-fx/security/java.policy
+	backup = etc/zulu-jre17-fx/security/java.security
+	backup = etc/zulu-jre17-fx/sound.properties
+	backup = etc/zulu-jre17-fx/management/management.properties
+	backup = etc/zulu-jre17-fx/management/jmxremote.access
+	backup = etc/zulu-jre17-fx/management/jmxremote.password.template
+	backup = etc/zulu-jre17-fx/net.properties
+	backup = etc/zulu-jre17-fx/sdp/sdp.conf.template
+	backup = etc/zulu-jre17-fx/logging.properties
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.62.17-ca-fx-jre17.0.17-linux_x64.tar.gz
+	sha256sums_x86_64 = 5a719aaf3d65e8a76af3740d7a919c6d1bccb208672430b543a358b311d1cece
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.62.17-ca-fx-jre17.0.17-linux_aarch64.tar.gz
+	sha256sums_aarch64 = ec96b82ac3e789153aee7ce5e8f545f0e2efc39e15ed72889d4ae879056d5a56
+
+pkgname = zulu-jre17-fx
