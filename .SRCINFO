@@ -1,6 +1,6 @@
 pkgbase = ssh2incus
 	pkgdesc = SSH server for Incus instances
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://ssh2incus.com/
 	install = ssh2incus.install
@@ -11,7 +11,7 @@ pkgbase = ssh2incus
 	makedepends = just
 	optdepends = incus
 	backup = etc/default/ssh2incus
-	source = git+https://github.com/mobydeck/ssh2incus.git#tag=0.8
-	sha256sums = 7337a6d5064eb48d991677906c73e5eaf40259207b5e1dfb16fddbf8d1b9c566
+	source = git+https://github.com/mobydeck/ssh2incus.git#tag=0.9
+	sha256sums = 34314b820612cecceef04d1232484253b48c79faa1ff4f8d508b01f0bebb886c
 
 pkgname = ssh2incus
