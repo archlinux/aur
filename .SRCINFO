@@ -18,7 +18,6 @@ pkgbase = mathematica
 	depends = libx11
 	depends = libxkbcommon
 	depends = nss
-	depends = openmp
 	depends = qt6-base
 	depends = zstd
 	optdepends = qt6-wayland: Full Wayland support

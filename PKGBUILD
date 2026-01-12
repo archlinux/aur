@@ -28,7 +28,6 @@ depends=(
   'libx11'
   'libxkbcommon'
   'nss'
-  'openmp'
   'qt6-base'
   'zstd'
 )
