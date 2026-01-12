@@ -1,0 +1,18 @@
+pkgbase = stdexec-git
+	pkgdesc = Senders - A Standard Model for Asynchronous Execution in C++
+	pkgver = 25.09.r147.g970dbac
+	pkgrel = 1
+	url = https://github.com/NVIDIA/stdexec
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = pkgconf
+	provides = stdexec
+	conflicts = stdexec
+	source = stdexec-git::git+https://github.com/NVIDIA/stdexec.git
+	sha256sums = SKIP
+
+pkgname = stdexec-git
