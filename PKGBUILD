@@ -4,7 +4,7 @@
 
 pkgname=bump2version
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Version-bump your software with a single command! (bumpversion community fork)'
 provides=(bumpversion)
 conflicts=(bumpversion)
