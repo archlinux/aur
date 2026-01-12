@@ -1,7 +1,7 @@
 pkgbase = python-beziers
 	pkgdesc = Routines for extracting information from font glyphs
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simoncozens/beziers.py
 	arch = any
 	license = MIT
