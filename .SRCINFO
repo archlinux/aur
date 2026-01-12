@@ -1,0 +1,13 @@
+pkgbase = ankor
+	pkgdesc = application runner
+	pkgver = v0.0.1
+	pkgrel = 0
+	url = https://github.com/pumenis/ankor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/pumenis/ankor.git#tag=v0.0.1
+	sha256sums = 99439f9fa9ceffdb5bdd2b17cedcd63e6b1597cd5a9439d435635834eeee7296
+
+pkgname = ankor
