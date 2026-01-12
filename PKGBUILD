@@ -3,7 +3,7 @@
 
 pkgname=welle.io
 pkgver=2.7 # renovate: datasource=github-releases depName=AlbrechtL/welle.io
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy"
 arch=("x86_64")
 url="https://www.${pkgname}"
@@ -19,7 +19,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   sed -i 's/welle-io.desktop/io.welle.welle_io.desktop/' ../CMakeLists.txt
   sed -i 's/io.welle.welle_io.metainfo.xml/io.welle.welle_io.appdata.xml/' ../CMakeLists.txt
-  cmake "${srcdir}/${pkgname}-${pkgver}" -DRTLSDR=1 -DSOAPYSDR=1
+  cmake "${srcdir}/${pkgname}-${pkgver}" -DRTLSDR=1 -DSOAPYSDR=1 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
