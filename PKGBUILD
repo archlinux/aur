@@ -1,0 +1,36 @@
+# Maintainer: yumi
+
+pkgname=shvspy-bin
+pkgver=7cd553c
+pkgrel=1
+pkgdesc="SHV Spy (AppImage nightly)"
+arch=('x86_64')
+url="https://github.com/silicon-heaven/shvspy"
+license=('MIT')
+depends=('glibc' 'fuse2')
+provides=('shvspy')
+conflicts=('shvspy')
+options=(!strip)
+
+_appimage="shvspy-qt6-${pkgver}.AppImage"
+
+source=(
+  "${_appimage}::https://github.com/silicon-heaven/shvspy/releases/download/nightly/${_appimage}"
+  "shvspy.png::https://raw.githubusercontent.com/silicon-heaven/shvspy/master/shvspy/shvspy.png"
+  "shvspy.sh"
+  "shvspy.desktop"
+)
+
+sha256sums=(
+  '0dbdc654102b15473fa51db672f5b43ea6395fd362287e02eda6df4a8a963dc6'
+  '785183a3abf7d60bc1e37a4661cddcd2dbcf8451e465c83f705c6df007116fc4'
+  'a7a2e367dee84b4bd22bfc4aca237373c2a11f74bee28fdc4a327303d2b0a4c5'
+  '78fb4ff4cef729f40d6729bb8f7788868e26d41dd6d26feddbfebb7a958dcb1c'
+)
+
+package() {
+  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/shvspy.AppImage"
+  install -Dm755 "${srcdir}/shvspy.sh" "${pkgdir}/usr/bin/shvspy"
+  install -Dm644 "${srcdir}/shvspy.png" "${pkgdir}/usr/share/pixmaps/shvspy.png"
+  install -Dm644 "${srcdir}/shvspy.desktop" "${pkgdir}/usr/share/applications/shvspy.desktop"
+}
