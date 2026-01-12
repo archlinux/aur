@@ -1,7 +1,7 @@
 # Maintainer: yumi
 
 pkgname=shvspy-bin
-pkgver=7cd553c
+pkgver=442ff75
 pkgrel=1
 pkgdesc="SHV Spy (AppImage nightly)"
 arch=('x86_64')
@@ -16,17 +16,15 @@ _appimage="shvspy-qt6-${pkgver}.AppImage"
 
 source=(
   "${_appimage}::https://github.com/silicon-heaven/shvspy/releases/download/nightly/${_appimage}"
-  "shvspy.png::https://raw.githubusercontent.com/silicon-heaven/shvspy/master/shvspy/shvspy.png"
+  "shvspy.png"
   "shvspy.sh"
   "shvspy.desktop"
 )
 
-sha256sums=(
-  '0dbdc654102b15473fa51db672f5b43ea6395fd362287e02eda6df4a8a963dc6'
-  '785183a3abf7d60bc1e37a4661cddcd2dbcf8451e465c83f705c6df007116fc4'
-  'a7a2e367dee84b4bd22bfc4aca237373c2a11f74bee28fdc4a327303d2b0a4c5'
-  '78fb4ff4cef729f40d6729bb8f7788868e26d41dd6d26feddbfebb7a958dcb1c'
-)
+sha256sums=('6f17707afab593e6e318745b9a514ba4aed8cc1073e9c2bce5e9aa3bf9d37820'
+            '785183a3abf7d60bc1e37a4661cddcd2dbcf8451e465c83f705c6df007116fc4'
+            'a7a2e367dee84b4bd22bfc4aca237373c2a11f74bee28fdc4a327303d2b0a4c5'
+            '78fb4ff4cef729f40d6729bb8f7788868e26d41dd6d26feddbfebb7a958dcb1c')
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/shvspy.AppImage"
