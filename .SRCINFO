@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-hu
 	pkgdesc = Hungarian language pack for Firefox Nightly
-	pkgver = 148.0a1.20260111.214232
+	pkgver = 148.0a1.20260112.094656
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-hu
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-hu-148.0a1.20260111.214232.xpi
-	source = firefox-nightly-i18n-hu-148.0a1.20260111.214232.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-148.0a1.hu.langpack.xpi
-	sha256sums = 483b80fd0333689efc1a298b06a502f44b70c76a663d6f0c19c92916b26ea99a
+	noextract = firefox-nightly-i18n-hu-148.0a1.20260112.094656.xpi
+	source = firefox-nightly-i18n-hu-148.0a1.20260112.094656.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-148.0a1.hu.langpack.xpi
+	sha256sums = 7ac4633f0a1d64f7ace525f9db1b9598d2612508493eadad9be18523a662d20b
 
 pkgname = firefox-nightly-i18n-hu
