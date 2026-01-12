@@ -1,7 +1,7 @@
 pkgbase = python-bumpfontversion
 	pkgdesc = Bumps the version of a font source file
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simoncozens/bumpfontversion
 	arch = any
 	license = Apache-2.0
