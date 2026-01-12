@@ -3,14 +3,14 @@
 _pkgbase=vendor-reset
 pkgname=vendor-reset-lowell80-dkms-git
 pkgver=r134.9ffeb25
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for vendor-specific hardware reset routines - Updated fork"
 arch=('any')
 url="https://github.com/lowell80/vendor-reset"
 license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
-conflicts=('vendor-reset-git')
+conflicts=('vendor-reset-git' 'vendor-reset-dkms-git')
 source=('git+https://github.com/lowell80/vendor-reset.git')
 md5sums=('SKIP')
 
