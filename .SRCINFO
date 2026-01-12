@@ -1,12 +1,13 @@
 pkgbase = foomuuri-git
 	pkgdesc = Multizone bidirectional nftables firewall
-	pkgver = r413.ee8fca6
+	pkgver = r430.2bf0652
 	pkgrel = 1
 	url = https://github.com/FoobarOy/foomuuri
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = make
 	makedepends = flake8
+	makedepends = python-pylint
 	makedepends = git
 	depends = python
 	depends = python-requests

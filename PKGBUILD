@@ -2,7 +2,7 @@
 
 _pkgname=foomuuri
 pkgname=foomuuri-git
-pkgver=r413.ee8fca6
+pkgver=r430.2bf0652
 pkgrel=1
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('dbus-python: D-Bus interface for dynamic zone/interface changes'
             'python-gobject: D-Bus mainloop'
             'python-lxml: HTML/XML parsing in iplist filters'
             'python-prometheus_client: foomuuri_exporter for Prometheus metrics')
-makedepends=('make' 'flake8' 'git')
+makedepends=('make' 'flake8' 'python-pylint' 'git')
 conflicts=('foomuuri')
 provides=('foomuuri')
 source=("git+https://github.com/FoobarOy/foomuuri.git")
@@ -31,8 +31,6 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 	sed -i 's|/usr/sbin|/usr/bin|' Makefile
-	# Skip pylint in all Makefiles due to false positives with optional dbus imports in v0.30+
-	find . -name Makefile -exec sed -i '/^\tpylint /d' {} \;
 	make
 }
 
