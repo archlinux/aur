@@ -3,7 +3,7 @@ _target='compass-isolated'
 _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r19381.ge0b515baf'
+pkgver='r19486.gb8709979d'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
@@ -27,7 +27,7 @@ source=(
 b2sums=('SKIP'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        '66067db3cd9a69d9d5cf8fc7e1f0907e92a43569ff5d1aeab7e466bba8bb749e0e9e4e2ff07634c64a4b411f860d12db580507b9c0d6ba55f18bb7e6d166c212'
+        '8591a891bf20ad98f47160909e72013046d53e564fe539002460cb547f08a2e802a80c0a1bfcacd4226d46ca43de1a8395f95d1cd278e8a0d3a8086f2b11307a'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="$pkgname"
@@ -50,10 +50,8 @@ prepare() {
 	# Update overriden packages, see below for reasoning
 	## electron - ABI compatibility with the system Electron version
 	## electron-to-chromium - ensure compatibility with the Electron version set above
-	## nan - fix build with current node/kernel version
-	## ssh2 - fix build with current node/kernel version
 	## html-webpack-plugin - fix build with node>=25.1.0
-	npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
+	npm update electron electron-to-chromium html-webpack-plugin --package-lock-only
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
