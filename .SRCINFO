@@ -15,6 +15,20 @@ pkgbase = zulu-jre11-fx
 	provides = java-runtime-headless-openjdk=11
 	provides = java-openjfx=11
 	options = !strip
+	backup = etc/zulu-jre11-fx/security/policy/README.txt
+	backup = etc/zulu-jre11-fx/security/policy/unlimited/default_local.policy
+	backup = etc/zulu-jre11-fx/security/policy/unlimited/default_US_export.policy
+	backup = etc/zulu-jre11-fx/security/policy/limited/default_local.policy
+	backup = etc/zulu-jre11-fx/security/policy/limited/exempt_local.policy
+	backup = etc/zulu-jre11-fx/security/policy/limited/default_US_export.policy
+	backup = etc/zulu-jre11-fx/security/java.policy
+	backup = etc/zulu-jre11-fx/security/java.security
+	backup = etc/zulu-jre11-fx/sound.properties
+	backup = etc/zulu-jre11-fx/management/management.properties
+	backup = etc/zulu-jre11-fx/management/jmxremote.access
+	backup = etc/zulu-jre11-fx/management/jmxremote.password.template
+	backup = etc/zulu-jre11-fx/net.properties
+	backup = etc/zulu-jre11-fx/logging.properties
 	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.84.17-ca-fx-jre11.0.29-linux_x64.tar.gz
 	sha256sums_x86_64 = 4e92caea31cce6b00af6a5f561b1060582b5a0afbe6b2db05cc4f72a2c55056c
 	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu11.84.17-ca-fx-jre11.0.29-linux_aarch64.tar.gz

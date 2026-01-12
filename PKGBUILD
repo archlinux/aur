@@ -38,7 +38,20 @@ _mandir="usr/share/man"
 
 # Backup config files
 backup=(
-
+    "$_confdir/security/policy/README.txt"
+    "$_confdir/security/policy/unlimited/default_local.policy"
+    "$_confdir/security/policy/unlimited/default_US_export.policy"
+    "$_confdir/security/policy/limited/default_local.policy"
+    "$_confdir/security/policy/limited/exempt_local.policy"
+    "$_confdir/security/policy/limited/default_US_export.policy"
+    "$_confdir/security/java.policy"
+    "$_confdir/security/java.security"
+    "$_confdir/sound.properties"
+    "$_confdir/management/management.properties"
+    "$_confdir/management/jmxremote.access"
+    "$_confdir/management/jmxremote.password.template"
+    "$_confdir/net.properties"
+    "$_confdir/logging.properties"
 )
 
 package() {
