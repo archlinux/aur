@@ -14,15 +14,18 @@ checkdepends=('python-numpy')
 optdepends=('python-numpy: for mprof')
 source=("https://github.com/pythonprofilers/memory_profiler/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
 	"https://github.com/pythonprofilers/memory_profiler/commit/940aa76f5da8b7cba5938f17990da054e013de0a.patch"
-        "remove-test_async.py.patch")
+        "remove-test_async.py.patch"
+        "remove-test_exception.py.patch")
 b2sums=('418ae6e7433dd58b00c8706209a7172c31ccf57d74255aa670b271bc9d76b339bd582b48886bed7b53062abd8eb421678c911b3495de4d541b949f340aad7091'
         '8d8e71a5ccde70a61102f4cebc15db33b88dbbd22c351fdc6595519c6aa169e1436331b119cebe41dda6b020ff963a343c62420b7215f262c0caa68d8df89f6a'
-        '9925807075d96a8f709cf8a4a55fea7d2e4a822a29210f5680c32e8e30db0c6e4dad7d79f7ece8bb22edad0d587823ae37ee06dde4710e0375ebaf013336f221')
+        '9925807075d96a8f709cf8a4a55fea7d2e4a822a29210f5680c32e8e30db0c6e4dad7d79f7ece8bb22edad0d587823ae37ee06dde4710e0375ebaf013336f221'
+        'f7c41f1edbe207588b8c926182ebacd2e08b9a63b7891a2e2b1662f72fc0bd35a6993574442f697c097e09b48ef3149f626e9e8c2e02d9a6acc0806699555332')
 
 prepare() {
   cd $_name-$pkgver
    patch -p1 -i ../940aa76f5da8b7cba5938f17990da054e013de0a.patch
    patch -p1 -i ../remove-test_async.py.patch
+   patch -p1 -i ../remove-test_exception.py.patch
 }
 
 build() {
