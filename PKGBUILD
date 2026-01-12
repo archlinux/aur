@@ -2,7 +2,7 @@
 
 _pyname=pyside6_qtads
 pkgname="${_pyname//_/-}"
-pkgver=4.4.1.1
+pkgver=4.5.0.4
 pkgrel=1
 pkgdesc='PySide6 bindings to Qt Advanced Docking System'
 url='https://github.com/mborgerson/pyside6_qtads'
@@ -24,27 +24,42 @@ makedepends=(
   'python-setuptools-scm'
   'python-wheel'
 )
+checkdepends=(
+  'python-pytest'
+)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/4.4.1/Qt-Advanced-Docking-System-4.4.1.tar.gz")
-sha512sums=('b30d28b4f34546518f6bb6b725687f8a952cadfcbeddcfb93f5eaa99a5c7d24b6430583f334d488d98414dc4697fab0eb316538d9df98ce23ec21b34c329bbf3'
-            'c5a7ddeb18e86cbda32829d0fc1e8fa7f14fdc7057dff1d1fb416a29f394ca676bcc611c3d537ebf496929ea4090ca9c1b2c9d1273117022de863565cdc3a1a6')
-b2sums=('1bdae958a7bb738e820a555a3ff78e0a4257882e8f9cfe0072f733687a4df561933cb78e950bd64dc3fa47cf5ec29dfa874eae1ee401a77e9455431efcb4a9b8'
-        'f8fdc23d436f39ab9b662bc6b50d21aa9065eb43d6ab79e39f712e44b0c0f4a6e900b0b29d017708481947189120a5a470e57dad690f49d0321f88ac942c2a5a')
+        "https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/4.5.0/Qt-Advanced-Docking-System-4.5.0.tar.gz"
+        'fix-path-for-arch-build.patch')
+sha512sums=('0533d833cb35d07cc7d97772384d2c8aceb27978cb325b31a17ac40202f0c1eb5cddb3568994d66edbf48794ac24cb08866c4ac1541a5297fde0da5cc362d220'
+            'ae9345e0876a80e2f2dfa393d12176215cdcf17ed1985d2e46527d12a3abf4ea2b7796217871b562aaab9c7c876bef226de661d5e9cbdc862c8f49d57e9e8173'
+            '511bd56201800113dfc94dacf70491799082b3aa2ce61d2e5a97b3f441055a6db5d81b5437b394cd2ace126addcb02b3f9f67d1fe1ae21b96b6fc3e2857e801d')
+b2sums=('670589f5718d9bfffc249f5678fcf38a7a52f8f7fe39de6e4dd125a4ff919275a896ddb7cfb5772f6a659e4a5228900296c9c4222303a2ac6d9164ca6f270e09'
+        'fdd691ab3cd6c541bae9f23bae35e327375d3571bb2d58d4943930e371986dabe9d5e0c78dd17bc180689c71f52410ddc53d643f5c99b446aa67850c271a61e6'
+        'bc2b5504a6c48e0c00d37ad7bea7feb57b2c35adcd7a3cce26ebc6c8fe4adc063ba858df5b79cf27759e9979eab6805da718949c462e45b048b75eeffcd29218')
 
 prepare() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
   [[ -d 'Qt-Advanced-Docking-System' ]] && rmdir Qt-Advanced-Docking-System
-  ln -snf "$srcdir/Qt-Advanced-Docking-System-4.4.1" Qt-Advanced-Docking-System
-  patch -p1 -i ../../fix-path-for-arch-build.patch
+  ln -snf "${srcdir}/Qt-Advanced-Docking-System-4.5.0" Qt-Advanced-Docking-System
+  patch -p1 -i ../fix-path-for-arch-build.patch
 }
 
 build() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
   PYSIDE6_QTADS_NO_HARD_PYSIDE_REQUIREMENT=1 python -m build --wheel --no-isolation --skip-dependency-check
 }
 
+check() {
+  local site_packages
+  cd "${_pyname}-${pkgver}"
+  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+  PYTHONPATH="${PWD}/tmp_install${site_packages}" pytest -o addopts=''
+  rm -rf tmp_install
+}
+
 package() {
-  cd ${_pyname}-${pkgver}
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${_pyname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
