@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -60,7 +60,7 @@ build() {
         -DBUILD_WERROR=OFF \
         -DINSTALL_HEADERS=ON \
         -DCMAKE_BUILD_TYPE=None
-    cmake --build build -j"$(nproc)"
+    cmake --build build
 }
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
