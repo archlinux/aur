@@ -3,13 +3,14 @@
 # Contributor: Matthias Ellmer (halcyon)
 
 pkgname=duc-git
-pkgver=1.5.0.rc1.r0.ga58fa4e
-pkgrel=2
+pkgver=r951.a58fa4e
+epoch=1
+pkgrel=1
 pkgdesc="Collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://duc.zevv.nl/"
-license=('GPL2')
-depends=('cairo' 'pango' 'sqlite' 'ncurses')
+license=('GPL-2.0-only')
+depends=('cairo' 'pango' 'sqlite' 'ncurses' 'libx11' 'glib2')
 makedepends=('git')
 provides=('duc')
 conflicts=('duc')
@@ -18,12 +19,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  touch config.h.in
+  [[ ! -f config.h.in ]] && touch config.h.in
   sed -i 's+ncursesw/ncurses.h+ncurses.h+' src/duc/cmd-ui.c
 }
 
