@@ -2,7 +2,7 @@
 
 pkgname=font-line
 pkgver=3.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc='OpenType vertical metrics reporting and font line spacing adjustment tool'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
