@@ -4,7 +4,7 @@
 
 _pkgname="radare2"
 pkgname="$_pkgname-git"
-pkgver=6.0.8.r2.g1362812
+pkgver=6.0.8.r65.ge515192
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 url="https://github.com/radare/radare2"
@@ -40,11 +40,6 @@ options=('!emptydirs')
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-prepare() {
-  # fix for libuv
-  sed -e '/R_API bool r_core_session_register/i #endif\n#if 1' -i "$_pkgsrc/libr/core/rtr.c"
-}
 
 pkgver() {
   cd "$_pkgsrc"
