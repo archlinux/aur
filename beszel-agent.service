@@ -27,7 +27,7 @@ SystemCallArchitectures=native
 
 # required for smartctl & intel_gpu_top
 AmbientCapabilities=CAP_SYS_RAWIO CAP_SYS_ADMIN CAP_PERFMON
-CapabilityBoundingSet=CAP_SYS_RAWIO CAP_SYS_ADMIN
+CapabilityBoundingSet=CAP_SYS_RAWIO CAP_SYS_ADMIN CAP_PERFMON
 
 [Install]
 WantedBy=multi-user.target
