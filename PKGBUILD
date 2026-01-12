@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.5.1.r459.gabdfb40
+pkgver=0.5.3.r0.g0bcd268
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -30,14 +30,9 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname" || cd "$pkgname" || return 1
-    local ver
-    ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-    if [[ -n "$ver" ]]; then
-        echo "$ver"
-    else
-        printf "0.5.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    fi
+    cd "$pkgname"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "0.5.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -46,7 +41,7 @@ build() {
     export CARGO_HOME="$srcdir/cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
