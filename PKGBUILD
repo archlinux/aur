@@ -3,7 +3,7 @@
 
 _gemname=kaitai-struct-visualizer
 pkgname=$_gemname
-pkgver=0.7
+pkgver=0.11
 pkgrel=1
 pkgdesc='Advanced hex viewer and binary structure exploration tool (visualizer) using Kaitai Struct ksy files'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-rdoc kaitai-struct-compiler ruby-kaitai-struct)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0349d7cb1ff9dbfa0652a52554d17bb8945f3c7d')
+sha1sums=('54989ab15fad0a43422ffc3b1fc3e16b782b33cf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
