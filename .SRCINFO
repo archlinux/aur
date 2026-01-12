@@ -1,6 +1,6 @@
 pkgbase = xrdesktop-git
 	pkgdesc = A library for XR interaction with classical desktop compositors.
-	pkgver = 0.16.0.r1348.f507535
+	pkgver = 0.16.0.r1351.dbf3dba
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/xrdesktop
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = xrdesktop-git
 	depends = dconf
 	depends = hicolor-icon-theme
 	depends = gtk3
-	provides = xrdesktop=0.16.0.r1348.f507535
+	provides = xrdesktop=0.16.0.r1351.dbf3dba
 	conflicts = xrdesktop
 	source = git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git#branch=main
 	md5sums = SKIP
