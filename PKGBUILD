@@ -4,7 +4,7 @@
 _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
 pkgver=7.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python package for 3D geometry CAD/BIM/CAM'
 arch=('x86_64')
 url='https://github.com/tpaviot/pythonocc-core'
@@ -20,12 +20,11 @@ sha512sums=('SKIP')
 prepare() {
   cd $_pkgname
 
-  # Add Swig-4.3.1 support
+  # Add Swig-4.4.1 and occt 7.9.3 support
   git cherry-pick -n ec4904997fc1d218697f3b9650295ab42cf062c9
-  # opencascade 7.9.2
-  sed -i 's/OCCT_VERSION_PATCH 0/OCCT_VERSION_PATCH 2/' CMakeLists.txt
-  # swig 4.4.0
-  sed -i 's/4.3.1/4.4.0/' CMakeLists.txt
+  git cherry-pick -n a0a9351ca9fa464b3ce0fd41d54b052fa699c68e
+  git cherry-pick -n 101edee6f627b02b828e011e8e99cd56167865b2
+  git cherry-pick -n 4db85aa834730817d93421c87a2ce14be53a8ee8
 }
 
 build() {
