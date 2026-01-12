@@ -2,7 +2,7 @@ pkgbase = rofi-wifi
 	pkgdesc = Rofi plugin for managing Wi-Fi networks.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/bjn7/wifi-rs
+	url = https://github.com/bjn7/rofi-wifi
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = rofi-wifi
 	makedepends = pkgconf
 	depends = rofi
 	depends = glib2
-	source = rofi-wifi-1.0.0.tar.gz::https://github.com/bjn7/wifi-rs/archive/v1.0.0.tar.gz
+	source = rofi-wifi-1.0.0.tar.gz::https://github.com/bjn7/rofi-wifi/archive/v1.0.0.tar.gz
 	sha256sums = 7071fa68b461bee8463b2ae6ae400d0f132c5aaea675c4c6c6e52c55ddeab0c1
 
 pkgname = rofi-wifi
