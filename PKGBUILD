@@ -1,6 +1,6 @@
 # Maintainer: Ben Weeks <ben.weeks@outlook.com>
 pkgname=turbo-whisper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Voice dictation and transcription for Linux - free open source SuperWhisper alternative, speech to text (STT), voice typing, real-time, multilingual"
 arch=('any')
