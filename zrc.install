@@ -11,5 +11,5 @@ post_upgrade() {
 
 pre_remove() {
 	echo>&2 "Removing shell entry..."	
-	printf "%s" 'g/\/usr\/bin\/zrc/d' | ed -s /etc/shells
+	{ echo 'g/\/usr\/bin\/zrc/d'; echo 'w'; echo 'q'; } | ed -s /etc/shells
 }
