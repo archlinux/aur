@@ -1,7 +1,7 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=bilihud-git
 _pkgname=bilihud
-pkgver=0.2.0.r0.gIT_REV_Here
+pkgver=0.3.0.r15.g3ed48aa
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
 arch=('any')
@@ -18,12 +18,16 @@ depends=(
     'python-qrcode'
     'python-keyring'
     'python-pillow'
+    'qt6-base'
+    'qt6-wayland'
+    'layer-shell-qt'
 )
 makedepends=(
     'git'
     'python-build'
     'python-installer'
     'python-hatchling'
+    'python-hatch-build-scripts' # Needed for custom build hook
     'python-wheel'
 )
 provides=("$_pkgname")
