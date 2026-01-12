@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=open-tv
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Fast & Simple IPTV app'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'mpv' 'yt-dlp' 'libayatana-appindicator' 'librsvg' 'webkit2gtk
 makedepends=('npm' 'rust' 'dpkg')
 checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ad5be5c88596060c3be7c45bb933f5f676bdc435c63d56cb40131e4b04bd207358c18e917ff483fe38f2c3020691fa7d4665fb3c0d87cf7bb39dfdb102d23674')
+b2sums=('48f862ddaaa48517a594a10e7f3052612e967905136eff2c5f65866f984abd94e887e86ef5303b74c367982383757659e58420f4e9a3d5316d35fef790041162')
 options=('!lto')
 
 _srcdir="$pkgname-$pkgver"
@@ -27,5 +27,5 @@ build() {
 
 package() {
 	cd "$_srcdir"
-	dpkg-deb -x "src-tauri/target/release/bundle/deb/Open TV_${pkgver}_amd64.deb" "${pkgdir}"
+	dpkg-deb -x "src-tauri/target/release/bundle/deb/Fred TV_${pkgver}_amd64.deb" "${pkgdir}"
 }
