@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=ferrite
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=(cargo)
 conflicts=("$pkgname-bin")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('1b377edf6ae5743d4dac3ad16ab86701f03d84e775d43dea7996221a5f103431')
+sha256sums=('bf265777ef36d6f65b1a9f3984db7d24bef82ec76a1c4e796a1ce6a9013f5da8')
 
 prepare() {
   cd ${pkgname^}-$pkgver
