@@ -10,6 +10,7 @@ Group=spacetimedb
 RuntimeDirectory=spacetimedb
 StateDirectory=spacetimedb
 StateDirectoryMode=700
+Restart=on-failure
 
 # Additional security-related features
 NoNewPrivileges=true

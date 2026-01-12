@@ -1,7 +1,7 @@
 pkgbase = spacetimedb-bin
 	pkgdesc = A relational database and a server combined into one (bin version)
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clockworklabs/SpacetimeDB
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = spacetimedb-bin
 	source = spacetimedb.service
 	source = spacetimedb.sysusers
 	sha256sums = 2390b5cf673d351de3221ad65cf6fa02c193848f1cbbeed0dc79ab24af2c653f
-	sha256sums = eaea8602c1b2808683100112f58fa5261ba01cb621aed236bab31537560a3529
+	sha256sums = bc5673cdabd668504a1cee7bb6995a49eb4c2f7314fc18830d3d368a0c6bcc16
 	sha256sums = 2a31e8040c5177900122e8aeacb333742676b5e8f05046b53dc1f8f7ff62de60
 	source_x86_64 = spacetime-x86_64-1.11.2.tar.gz::https://github.com/clockworklabs/SpacetimeDB/releases/download/v1.11.2/spacetime-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = efcf223f9b55affec28ffbd64f79435b9b90929bdd6224bd8f14eccd4821a4c8
