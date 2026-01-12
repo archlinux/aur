@@ -6,12 +6,12 @@ _name=${pkgname#python-}
 pkgver=1.5.6
 pkgrel=2
 pkgdesc='Python library for CPIO manipulation'
-arch=('any')
+arch=(any)
 url="https://github.com/desultory/$_name"
-license=('GPL-2.0-only')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-depends=('python' 'python-zenlib')
-source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
+license=(GPL-2.0-only)
+depends=(python python-zenlib)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('1c5a51948a84b6dc3f8b5ccfc21747dda27d560e719ffe2ee41ea48c3a988945e779f7b1a422554cb198b88f20f72ebcd8b183de3306309961b2c607b2ea3e91')
 
 build() {

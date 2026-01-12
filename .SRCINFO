@@ -11,7 +11,7 @@ pkgbase = python-pycpio
 	makedepends = python-wheel
 	depends = python
 	depends = python-zenlib
-	source = python-pycpio-1.5.6::https://github.com/desultory/pycpio/archive/refs/tags/1.5.6.tar.gz
+	source = python-pycpio-1.5.6.tar.gz::https://github.com/desultory/pycpio/archive/refs/tags/1.5.6.tar.gz
 	b2sums = 1c5a51948a84b6dc3f8b5ccfc21747dda27d560e719ffe2ee41ea48c3a988945e779f7b1a422554cb198b88f20f72ebcd8b183de3306309961b2c607b2ea3e91
 
 pkgname = python-pycpio
