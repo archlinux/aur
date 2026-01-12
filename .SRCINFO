@@ -1,7 +1,7 @@
 pkgbase = zulu-jre11-fx
 	pkgdesc = An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included).
 	pkgver = 11.0.29+11.84.17
-	pkgrel = 1
+	pkgrel = 2
 	install = zulu-jre11-fx.install
 	arch = x86_64
 	arch = aarch64

@@ -6,7 +6,7 @@ _buildver="11.84.17"
 # Basic package settings
 pkgname="zulu-jre11-fx"
 pkgver="$_jrever+$_buildver"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included)."
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception" "GPL-2.0-or-later")
@@ -34,7 +34,6 @@ sha256sums_aarch64=("1240b133f014fde8f0631ceae20534612ddb9b6fe13d2ebce20a082a692
 _jvmdir="usr/lib/jvm/$pkgname"
 _confdir="etc/$pkgname"
 _legaldir="usr/share/licenses/$pkgname"
-_mandir="usr/share/man"
 
 # Backup config files
 backup=(
@@ -76,8 +75,4 @@ package() {
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
-
-    # Install man pages
-    cd "$pkgdir/$_jvmdir/man"
-    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }
