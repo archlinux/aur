@@ -1,0 +1,16 @@
+pkgbase = ascetic-experiences
+	pkgdesc = Ascetic Experiences Reader and Translation app
+	pkgver = v0.0.1
+	pkgrel = 0
+	url = https://github.com/pumenis/ascetic-experiences
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = sqlite
+	depends = ankor
+	depends = gowebgtkit
+	depends = treadlate
+	source = git+https://github.com/pumenis/ascetic-experiences.git#tag=v0.0.1
+	sha256sums = 1a72aee6531818f33188cee8724291b37b4e9c952b52dc27af55c0a96e03ea30
+
+pkgname = ascetic-experiences
