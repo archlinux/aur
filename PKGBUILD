@@ -2,7 +2,7 @@
 
 pkgname=python-word2number
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert number words, e.g. three hundred and forty two, to numbers (342)."
 arch=('any')
 url="https://github.com/akshaynagpal/w2n"

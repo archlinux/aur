@@ -1,7 +1,7 @@
 pkgbase = python-word2number
 	pkgdesc = Convert number words, e.g. three hundred and forty two, to numbers (342).
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akshaynagpal/w2n
 	arch = any
 	license = MIT
