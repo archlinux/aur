@@ -7,7 +7,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.2.28.ga21165a
-pkgrel=2
+pkgrel=3
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -34,6 +34,10 @@ install="${_pkgname}.install"
 source=("git+${url}" 'git+https://github.com/cueki/studiomdl')
 sha256sums=('SKIP' 'SKIP')
 
+pkgver() {
+	git -C "${_pkgname}" describe --tag --always | sed 's/^v//; s/-/./g'
+}
+
 prepare() {
 	gendesk -n -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "${_pkgname}" --icon "${_pkgname}" --categories 'Utility' # generate desktop entry file
 
@@ -46,10 +50,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 
 	git submodule update --init --recursive
-}
-
-pkgver() {
-	git -C "${_pkgname}" describe --tag --always | sed 's/^v//; s/-/./g'
 }
 
 package() {
