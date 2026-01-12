@@ -1,5 +1,6 @@
-# Maintainer: dakataca <🐬danieldakataca@gmail.com>
+# Maintainer: MiguVT <contacto@miguvt.com>
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
+# Contributor: dakataca <🐬danieldakataca@gmail.com>
 
 pkgname='pseint'
 pkgver=20250314
