@@ -1,7 +1,7 @@
 pkgbase = python-graphcalc
 	pkgdesc = Python package to compute graph invariants
 	pkgver = 1.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RandyRDavila/GraphCalc
 	arch = any
 	license = MIT

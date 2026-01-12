@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=python-graphcalc
 pkgver=1.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package to compute graph invariants'
 arch=(any)
 url='https://github.com/RandyRDavila/GraphCalc'
