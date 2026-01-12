@@ -1,0 +1,1517 @@
+                    COMSOL Software License Agreement 6.4
+
+CAREFULLY READ THE TERMS AND CONDITIONS BELOW AND IN ANY APPLICABLE ADDENDUM
+(HEREINAFTER, "TERMS AND CONDITIONS") BEFORE INSTALLING OR USING THE PROGRAMS
+OR DOCUMENTATION. YOUR RIGHT TO USE ANY PROGRAMS AND DOCUMENTATION IS
+CONDITIONED ON ACCEPTANCE OF, AND COMPLIANCE WITH, THESE TERMS AND
+CONDITIONS. INSTALLING OR USING THE PROGRAMS MEANS YOU HAVE ACCEPTED THE TERMS
+AND CONDITIONS. IF YOU DO NOT ACCEPT THE TERMS AND CONDITIONS, RETURN THE
+PROGRAMS AND RELATED MATERIAL UNUSED TO YOUR VENDOR FOR A REFUND OR CEASE ANY
+AND ALL ATTEMPTS TO DOWNLOAD AND INSTALL THE PROGRAMS AND DELETE ANY MATERIAL
+DOWNLOADED. ANY THIRD PARTY HIRED TO INSTALL THE PROGRAMS ON BEHALF OF THE
+PURCHASER OF A LICENSE THERETO WHO CLICKS HIS/HER ACCEPTANCE OF THESE TERMS
+AND CONDITIONS UPON INSTALLATION HEREBY REPRESENTS AND WARRANTS THAT HE/SHE IS
+AUTHORIZED BY THE PURCHASER OF THE LICENSE TO ACCEPT SUCH TERMS AND CONDITIONS
+ON THE PURCHASER'S BEHALF.
+
+1.  Definitions.  The following words and phrases shall have the definitions
+    set forth below throughout this Agreement, regardless of whether or not
+    such words or phrases are capitalized:
+
+    a. The term "Academic Prices" shall mean the price for which we sell
+    licenses to the Programs to Institutions after applying our educational
+    discount for usage of the Programs that meets the requirements of the
+    Academic Addendum to this Agreement.
+
+    b. The term "Agreement" shall mean the terms and conditions contained in
+    this document, delivered upon installation of the Programs.
+
+    c. The term "Affiliate" shall mean a legal entity having a relationship
+    with a second legal entity such that the two entities are under common
+    control.
+
+    d. The term "Application" shall mean (i) the output that is produced by
+    using the Application Builder feature of the Programs (with or without
+    modification using the COMSOL API) or (ii) the output that is produced by
+    using the COMSOL API to enable interoperability between a Model and an
+    external user interface.
+
+    e. The term "ASL" shall mean an academic server license for the Programs
+    having the rights set forth in Section 4 of the Academic Addendum.
+
+    f. The term "CKL" shall mean a class kit license for the Programs having
+    the rights set forth in Section 3 of the Academic Addendum.
+
+    g. The term "Compiled Application" shall mean the output produced by using
+    the COMSOL Compiler, including the runtime libraries supporting such
+    Applications when compiled.
+
+    h. The term "COMSOL API" shall mean the set of commands constituting the
+    Programs' application programming interface, which the Programs will
+    accept when input from a Java program, from a Visual Basic for
+    Applications program with LiveLink™ for Excel®, or from a MATLAB® program
+    with LiveLink™ for MATLAB® or LiveLink™ for Simulink®, and which enables
+    Model creation or customization of the elements of a Model or Application
+    that are exposed for end use and the addition of functionality.
+
+    i. The term "COMSOL Client License Agreement" shall mean the electronic
+    end-user license agreement from us that is displayed automatically when
+    you install the COMSOL Client software.
+
+    j. The term "COMSOL Runtime License Agreement" shall mean the electronic
+    end-user license agreement from us that is displayed automatically the
+    first time a user uses a Compiled Application.
+
+    k. The term "COMSOL Server License Agreement" shall mean the electronic
+    end-user license agreement from us that is displayed automatically when
+    you install COMSOL Server.
+
+    l. The term "Confidential Information" shall mean: (i) with respect
+    to our information and information of our suppliers, the Programs,
+    together with any other non-public information learned in connection
+    therewith that should reasonably be considered confidential under
+    the circumstances; (ii) with respect to your information, any and
+    all information and files submitted to us through the web page
+    https://secure.comsol.com/support/confidential or, in the case of
+    items subject to U.S. export control restrictions, to
+    us-export-control@us.comsol.com, that derives actual or potential
+    economic value from being kept confidential.
+
+    m. The term "Control" shall mean a relationship between one legal entity
+    and a second legal entity whereby (a) the first entity owns a majority
+    percentage of the voting shares of stock of the second entity, (b) the
+    first entity is a shareholder or member of the second entity and has the
+    right to appoint or remove a majority of the board of directors of the
+    second entity, or (c) the first entity is a shareholder or member of the
+    second entity and has the right, pursuant to agreement, to exercise or
+    direct the exercise of a majority percentage of the voting rights in the
+    second entity.
+
+    n. The term "CPU" shall mean a CPU-locked single user license for the
+    Programs having the rights set forth in Section 2(h)(ii).
+
+    o. The term "CSL" shall mean a server license for the Programs having the
+    rights set forth in Section 2(h)(iv).
+
+    p. The term "Documentation" shall mean all instruction manuals, user
+    guides, operating guides, and other reference materials, including
+    Examples, accompanying the Programs or published by us on
+    https://www.comsol.com for use with the Programs.
+
+    q. The term "Examples" shall mean samples provided by us for use with the
+    Programs, which we provide either with the Programs in the "applications"
+    and "demo" folders of the directory for your installation of the Programs
+    or through the Application Gallery at https://www.comsol.com or through
+    the Application Library Update feature of the Programs.  The term
+    "Examples" shall also be deemed to encompass those portions of the
+    Documentation describing the foregoing.
+
+    r. The term "Externally Authored Programs" shall mean software programs
+    that we have obtained from other sources and included in the Programs.
+
+    s. The term "FNL" shall mean a floating network license for the Programs
+    having the rights set forth in Section 2(h)(iii).
+
+    t. The term "Institution" shall mean a degree-granting educational
+    institution.
+
+    u. The term "Internal Operations" shall mean use of the Programs only for
+    your internal operations within the Territory and only by employees and
+    on-site independent contractors of (i) you, (ii) your Subsidiaries, (iii)
+    your Subsidiaries' Subsidiaries, (iv) your Parent, (v) your Parent's
+    Parent, or (vi) your Affiliates, and solely to the extent used for your
+    operations and for the performance of consulting or research for third
+    parties who engage you as an employee or independent contractor.  For
+    purposes of this definition, independent contractors who are remotely
+    accessing an on-site installation of the Programs, to the extent remote
+    access is permitted for the applicable license type and to the extent the
+    independent contractor is otherwise permitted to be a user by the
+    applicable license type, shall be deemed to be using the Programs on-site.
+
+    v. The term "Losses" shall mean actions, claims, demands, costs,
+    liabilities, losses, expenses (including reasonable attorneys' fees and
+    court costs, whether incurred as the result of a third party claim or a
+    claim to enforce Section 10) and other damages.
+
+    w. The term "Maintenance and Support" shall mean (a) commercially
+    reasonable efforts to provide support by telephone, hyperlink, or
+    electronic mail regarding the installation and/or use of the licensed
+    Programs and their interaction with hardware, operating environments, and
+    other software products except as set forth below, including the provision
+    of installation materials; (b) subsequent releases of the Programs free of
+    charge; (c) issuance of replacement license files to enable changes in use
+    of the Programs, including changes in hardware running the Programs, to
+    the extent permitted by the applicable license type; and (d) reasonable
+    commercial efforts to provide (i) workarounds within a reasonable time for
+    any material programming errors in the current release of the Programs
+    which are directly attributable to us, and (ii) correction of such errors
+    in the next available release, provided you provide us with sufficient
+    information to identify such errors and to ensure their elimination from
+    future releases.  Notwithstanding the foregoing, in no event shall the
+    term "Maintenance and Support" be deemed to include: (i) installation and
+    maintenance of your operating system; (ii) operating system configuration
+    and hardware support; (iii) cluster or cloud operating system
+    installation; (iv) cluster or cloud configuration and hardware support;
+    (v) the interaction of the Programs with other software programs when used
+    for cloud computing; (vi) the use of the COMSOL API; (vii) the interaction
+    of the Programs with software products in instances where our contractual
+    obligations may prohibit us from supporting that use or interaction;
+    (viii) maintaining the compatibility of the Programs with operating
+    systems or hardware systems not on the market at the time the Programs
+    were released; (ix) the use of the Programs with a license manager other
+    than the one that was delivered by us in conjunction with that version of
+    the Programs; (x) the selection of physics, mesh, solvers, or solver
+    settings, or the ordering of operations, for any Model or the design or
+    development of any Application or Physics Interface; (xi) the use of
+    Applications or Physics Interfaces by you or others; (xii) use of the
+    runtime libraries included with the Programs, (xiii) the use by your
+    sublicensees of the CSL or ASL versions of the Programs, or (xiv)
+    assistance with making Models or Applications made with older versions of
+    the Programs compatible with more recent versions of the Programs.
+
+    x. The term "Model" shall mean the output that is produced by using the
+    Model Builder feature of the Programs and/or by using the COMSOL API to
+    produce functionality that is found in the Model Builder feature of the
+    Programs.
+
+    y. The term "NSL" shall mean a named single user license for the Programs
+    having the rights set forth in Section 2(h)(i).
+
+    z. The term "Parent" shall mean a legal entity having a relationship with
+    a second legal entity such that the first entity controls the second
+    entity.
+
+    aa. The term "Permitted Objective" shall mean understanding the ideas and
+    principles which underlie any element of the Programs.
+
+    ab. The term "Physics Interface" shall mean the output that is produced by
+    using the Physics Builder feature of the Programs.
+
+    ac. The term "Programs" shall mean the COMSOL software programs that we
+    deliver to you pursuant to an accepted purchase order and all upgrades and
+    updates thereto and new versions thereof.
+
+    ad. The term "Residuals" shall mean any and all Confidential Information
+    in intangible form that may be retained in the unaided memory of a person
+    having had access to that information, including ideas, concepts,
+    know-how, or techniques that are not recognizable or traceable to a party.
+
+    ae. The term "Submissions" shall mean any and all suggestions you make to
+    us for improvements to the Programs and/or for any new product or service
+    offerings, including ideas, concepts, or other materials communicated to
+    us in connection therewith.
+
+    af. The term "Subsidiary" shall mean a legal entity having a relationship
+    with a second legal entity such that the first entity is controlled by the
+    second entity.
+
+    ag. The term "Territory" shall mean the country in which we have delivered
+    a license for the Programs or any broader geographical region that may be
+    reflected on our invoice.  For purposes of this definition, the United
+    States-Mexico-Canada Agreement ("USMCA") member countries shall be treated
+    as a single country.
+
+    ah. The term "Uninstall" shall mean completely removing the Programs from
+    any and all computers or machines on which they were installed or
+    otherwise rendering such Programs inaccessible such as by destroying a
+    hard drive on which the Programs were installed or recycling a hard drive
+    on which the Programs were installed.
+
+    ai. The term "Use" shall mean to install, run, use, operate, and perform.
+
+    aj. The terms "We", "Us", and "Our" shall mean COMSOL AB and its
+    Subsidiaries and Affiliates, as well as joint ventures in which it,
+    directly or indirectly, has an ownership interest.
+
+    ak. The terms "You" and "Your" shall mean the person or entity to whom we
+    grant a license to the Programs and who is responsible for complying with
+    the contractual obligations of this Agreement and ensuring that anyone
+    permitted access to the Programs also complies with such obligations.
+
+2.  License Grant. During the term of this Agreement, we grant to you a
+    non-exclusive, non-transferable, limited license to use the Programs,
+    Documentation, and Examples as provided herein. Certain Externally
+    Authored Programs are licensed under different terms set by the publishers
+    of such Externally Authored Programs, as set forth in the about.txt file
+    that is included with the Programs, or listed under your licensed version
+    of the Programs on https://www.comsol.com/legal/about. Any terms contained
+    or referenced in the about.txt file, or listed under your licensed version
+    of the Programs on https://www.comsol.com/legal/about, for a particular
+    Externally Authored Program shall take precedence for such Externally
+    Authored Program to the extent of any conflict between such terms and
+    these Terms and Conditions.
+
+    a. Programs. You may license an NSL, a CPU, an FNL, or a CSL version of
+    the Programs under this Agreement.  For an FNL or CSL license, your
+    license rights are for the number of concurrent users set forth on our
+    invoice or the purchase order we accept. Programs licensed under one
+    license type may not be run in integrated use with Programs licensed under
+    another license type.
+
+    b. Object Code. The license granted herein applies only to the object code
+    version of the Programs.  Licensee shall have no rights whatsoever with
+    respect to the source code for the Programs, except as expressly provided
+    otherwise in this Agreement with respect to certain of the Externally
+    Authored Programs.
+
+    c. Examples. Examples may be used as a starting point in creating your own
+    work and modified to form part of that work, in connection with authorized
+    use of the Programs.  Provided that your changes or additions to the
+    Examples are sufficiently substantial to create a derivative work, you
+    then have the right to use, modify, publish, and distribute those modified
+    Examples as part of your derivative work. You shall comply with all laws
+    applicable to your activities, and you shall disclaim all warranties on
+    behalf of us and limit our liability as set forth in this Agreement in
+    connection with your redistribution or republication of Examples or
+    modified Examples. Furthermore, notwithstanding anything to the contrary
+    herein, any Example containing a notice of third party authorship may not
+    be modified, redistributed, or republished unless there are terms
+    contained in such file expressly allowing such modification,
+    redistribution, and/or republication. Certain examples provided by us are
+    provided under different terms and conditions for use and publication.
+    Such different terms and conditions are identified via a notice in the
+    Application. Any modification, republication, or redistribution of Example
+    Applications, Example Physics Interfaces, or code Examples using the
+    COMSOL API shall comply with Section 3 of this Agreement and any terms and
+    conditions applicable to the Example.
+
+    d. Ownership.  The Programs are licensed and not sold. All right, title
+    and interest in and to the licensed Programs and Documentation, including
+    without limitation, copyrights and trade secrets, are, and shall at all
+    times remain, the exclusive property of us and/or those parties who have
+    licensed Externally Authored Programs and other programs for incorporation
+    into our Programs, and you shall have no right, therein, except the
+    expressly limited license rights granted herein.
+
+    e. Non-transferable. You may not sell, license, sublicense, rent, or
+    distribute any Program or Documentation, or make it available for use on a
+    "time sharing" basis, except that each concurrent user's rights to the CSL
+    version of the Programs may, subject to the terms and conditions set forth
+    in this Agreement, be sublicensed, in whole or in part, to one or more
+    third parties, including on a time-share basis, for the sole purpose of
+    hosting and running one or more Applications that require the Programs to
+    run. Any sublicensing of the CSL version of the Programs is conditioned
+    upon the following:
+
+      (i) You must require each sublicensee to accept the COMSOL Server End
+      User License Agreement that is displayed upon first use of the CSL.
+
+      (ii) You shall not take any steps to disable or interfere in any way
+      with the automatic delivery of the COMSOL Server End User License
+      Agreement to sublicensees to whom you provide access to the Programs or
+      of notices contained in the "About" section of any Applications you make
+      available to sublicensees of the CSL version of the Programs.
+
+      (iii) Any terms and conditions set by you or others for the use of
+      Applications you make available for use in conjunction with the Programs
+      shall not alter, amend, conflict with, or purport to terminate this
+      Agreement or the COMSOL Server End User License Agreement.
+
+      (iv) Any sublicensing of the CSL version of the Programs shall be
+      conditioned on your compliance with the then-current version of our
+      trademark guidelines, https://www.comsol.com/trademarks, when referring
+      to trademarks of ours or of any third party in connection with such
+      sublicensing.
+
+      (v) You shall not sublicense the CSL version of the Programs other than
+      to host and run Applications that you or your sublicensee is authorized
+      to run.
+
+      (vi) If you use the CSL version of the Programs to call any third party
+      software, including, but not limited to the Externally Authored
+      Programs, your use of that third party software must comply with all
+      terms and conditions of the license agreement that gives you the right
+      to use such third party software, including, without limitation, any
+      restrictions on how such third party software may be called.
+
+      Except as expressly set forth herein, you may transfer your rights
+      hereunder only in accordance with Section 16.
+
+    f. Reservation of Rights. You acknowledge that all rights with respect to
+    the licensed Programs, whether now or hereafter existing, which are not
+    expressly granted to you are reserved to us or our licensors, and any use
+    of the Programs not expressly authorized by us herein shall be deemed a
+    breach of these Terms and Conditions. Except as expressly set forth in
+    Section 3, you shall not modify or create any derivative, compilation, or
+    collective work involving the Programs. You shall take appropriate action
+    by instruction, agreement, or otherwise with any persons permitted access
+    to the Programs, so as to enable you to satisfy all your obligations under
+    the Terms and Conditions. You represent and warrant that you will use only
+    COMSOL software that has been validly licensed to you by us or our
+    authorized distributors or resellers.
+
+    g. License Subject to Payment. The license granted herein is contingent
+    upon your timely and complete payment of all amounts due and payable to
+    us.
+
+    h. Use.
+
+      (i) If you have licensed the NSL version of the Programs, they may be
+      installed and operated on up to four (4) computers designated for sole
+      use by the single licensed user designated by us as the "Named User",
+      provided the Programs are only accessible to, and operated by, the
+      "Named User" for that license and provided that the Named User may
+      concurrently use the Programs on only two (2) of those computers at any
+      given time. Any further installation of the Programs on another computer
+      shall be conditioned upon proof to our satisfaction that the Programs
+      were uninstalled from a computer on which the Programs were previously
+      installed, provided, however, that the Programs may not be transferred
+      to more than two (2) computers in any year. You may replace the Named
+      User for the license, on a temporary or permanent basis but no more than
+      two (2) times a year, provided that only one licensed user is designated
+      to us as the Named User at any given time. The NSL version of the
+      Programs may be accessed and used via a single encrypted connection
+      providing secure remote access, such as Virtual Private Network or
+      Remote Desktop Protocol (using Network Level Authentication and using
+      encryption), solely for use permitted by this Agreement. The NSL version
+      of the Programs may not be accessed or used over a network or remotely
+      by any other means, may not be accessed or used in client-server mode,
+      and may not be used for cluster or cloud computing.
+
+      (ii) If you have licensed the CPU version of the Programs, they may be
+      installed and operated on a single designated physical computer,
+      provided the Programs are only accessible to, and operated by, a single
+      licensed user at a time, said user being physically located at the
+      computer. You may replace the designated computer for the license, on a
+      temporary or permanent basis but no more than two (2) times a year,
+      provided that only one computer is designated to us at any given
+      time. Any transfer of the Programs from one computer to another shall be
+      conditioned upon proof to our satisfaction that the Programs were
+      uninstalled from the first computer, provided, however, that the
+      Programs may not be transferred to more than two (2) computers in any
+      year. The CPU version of the Programs may not be accessed or used over a
+      network or remotely or used for cluster or cloud computing.
+
+      (iii) If you have licensed the FNL version of the Programs, they may be
+      installed in a central location on a single dedicated network server or
+      on the server of a third party providing secure remote computing
+      capacity through which the Programs are made accessible for your use,
+      either on-site or remotely. You may have as many individuals using the
+      Programs at any given time as the number of concurrent users for which
+      you have purchased FNL licenses for such Programs. In no event shall use
+      of the web interface for accessing the Model Manager server
+      functionality of an FNL be deemed a concurrent use of the Programs,
+      provided that such use is confined to the Model Manager feature of the
+      Programs. If the Programs have the ability to run as client and server
+      on separate computers, the FNL version gives you the right to use the
+      Programs as client and server on separate computers. If the Programs
+      have the ability to perform cluster computing, the FNL version gives you
+      the right to have the Programs perform cluster computing. With respect
+      to network installation, the Programs may also be installed on
+      individual computers, as long as the individual installations are
+      controlled by the license manager on the network server. Any transfer of
+      the license manager for the Programs from one computer to another shall
+      be conditioned upon proof to our satisfaction that the license manager
+      was uninstalled from the first computer. The FNL version of the Programs
+      (and not the NSL or CPU versions) may be installed on the server of a
+      source of secure remote computing, which may include installation of the
+      license manager server, regardless of whether that source is owned by
+      you or a third party.  You may not provide access to the FNL version of
+      the Programs outside the Territory, except in connection with
+      installation of the Programs on the server of a source of secure remote
+      computing capacity, in which case end users accessing the Programs must
+      be restricted to the Territory.
+
+      (iv) If you have licensed the CSL version of the Programs, they may be
+      installed on an individual computer or in a central location on a single
+      dedicated network server or on the server of a third party providing
+      secure remote computing capacity through which the Programs are made
+      accessible for use permitted under this Agreement, either on-site or
+      remotely. Log-in credentials may not be shared among authorized users of
+      the CSL version of the Programs.  In no event may you use the CSL
+      version of the Programs to run more than 4 Applications at any given
+      time for each licensed concurrent user. You may use the CSL version of
+      the Programs to perform cluster computing. With respect to a network
+      installation, the Programs may also be installed on individual
+      computers, as long as the individual installations are controlled by the
+      license manager on the network server. Any transfer of the license
+      manager for the Programs from one computer to another shall be
+      conditioned upon proof to our satisfaction that the license manager was
+      uninstalled from the first computer. The CSL version of the Programs may
+      be installed, accessed, and used worldwide, subject to the terms and
+      conditions of this Agreement, including, without limitation, compliance
+      with the restrictions set forth in Section 3, but you must reside in the
+      same Territory in which the CSL license was sold. The CSL license
+      permits you to use the Programs for the sole purpose of hosting and
+      running Applications. Your use of Applications must comply with all
+      restrictions on Applications set forth in Section 3 and with any terms
+      and conditions specified by the publisher of each Application. The CSL
+      also allows you to distribute the client software licensed under the
+      COMSOL Client License Agreement to authorized users of your CSL
+      installation.  The CSL may not be used as a replacement for an NSL, CPU,
+      FNL, or CKL license for the purpose of developing Models or
+      Applications.  The CSL may not be used for hosting Applications whose
+      purpose is to load and run Models that were not originally embedded in
+      the Application when developed in the Application Builder.
+
+      (v) If the NSL, CPU, and/or FNL versions of the Programs or the CKL or
+      ASL version has been licensed by an Institution at Academic Prices (as
+      such terms are defined in the Academic Addendum to this Agreement), your
+      use of such Programs will be subject to the additional Terms and
+      Conditions in the applicable Addendum to this Agreement.
+
+      (vi) With respect to any of the foregoing licenses, you may use the
+      Programs on multicore/multiprocessor computers.
+
+      (vii) You may make a backup copy of the Programs and Documentation as
+      reasonably necessary to support the use of the Programs in accordance
+      with this Agreement.
+
+      (viii) Except with respect to the CSL and ASL version of the Programs
+      and except with respect to Compiled Applications and the Model Manager
+      feature of the Programs, you may use the Programs only for your internal
+      operations within the Territory, unless otherwise consented to by us in
+      writing.
+
+      (ix) The fees for the license granted herein are determined based upon
+      your installation and use of the Programs in the Territory. We may
+      charge you an additional fee for any installation or use of the Programs
+      in any location outside the Territory.
+
+      (x) In the event you use your installation of the Programs to access the
+      Model Manager server of a separate installation of the Programs, your
+      access to that Model Manager server shall be governed by the Terms and
+      Conditions governing your installation.
+
+      (xi) Except as expressly allowed otherwise in this Agreement, in no
+      event may the Programs be used for the purpose of developing an
+      independent software program containing functionality that is the same
+      as, substantially similar to, competitive with, and/or obviating the
+      need for functionality in the Programs, and in no event shall you
+      incorporate in any independent software program any functionality that
+      is the same as, substantially similar to, competitive with, and/or
+      obviating the need for functionality in the Programs (including prior
+      versions thereof) and that was derived through use of the Programs
+      (including prior versions thereof).
+
+    i. No Reverse Engineering. You shall not decompile, reverse engineer,
+    disassemble, isolate, separate, or otherwise attempt to derive source code
+    from any Program(s) or Documentation, except and only to the extent that
+    such activity is expressly permitted by applicable law notwithstanding
+    this limitation. All copies of Programs and Documentation shall contain
+    all copyright and proprietary notices as in the original. You shall not
+    remove, obscure, or alter copyright notices, trademark notices, or other
+    proprietary rights notices affixed to or contained within the licensed
+    Programs or Documentation.
+
+    Notwithstanding anything else set forth in these Terms and Conditions to
+    the contrary, you may reverse engineer, disassemble, isolate, separate,
+    and modify only those files specifically listed in the offer.txt file that
+    is included with the Programs, or listed under your licensed version of
+    the Programs on https://www.comsol.com/legal/offer, as eligible for such
+    activities. Upon request as set forth herein, for a period of three years
+    following your acceptance of these Terms and Conditions, we will provide
+    you with the source or object code needed to recreate any or all of only
+    those files specifically listed in the offer.txt file that is included
+    with the Programs, or listed under your licensed version of the Programs
+    on https://www.comsol.com/legal/offer, as eligible for such activities.
+    All requests pursuant to this Paragraph shall be made in writing and
+    addressed by first class mail to the address set forth in the offer.txt
+    file. We may charge a fee for sending you the code to cover our cost of
+    distribution.
+
+    If you are a licensee in the European Union:
+
+    You may decompile, disassemble or otherwise reverse engineer the Programs
+    only where any such act is necessary to create an independent program
+    which is interoperable with the Programs or with another program or to
+    observe, study, or test the functioning of the Programs solely to
+    undertake any Permitted Objective and provided that:
+
+      (i) the information necessary to achieve the Permitted Objective has not
+      already been made available or has not been provided by us within a
+      reasonable time after a written request to provide such information;
+
+      (ii) the compilation, disassembly, reverse-engineering, etc., is
+      confined to those parts of the Programs necessary to achieve the
+      Permitted Objective;
+
+      (iii) the information gained is not used for anything other than the
+      Permitted Objective and is not disclosed to any other person except as
+      may be necessary to achieve the Permitted Objective; and
+
+      (iv) the information obtained is not used to create a program(s)
+      substantially similar in its expression to any Program(s), including,
+      but not limited to, expressions of the Programs in other computer
+      languages, or for any other act restricted by copyright in the Programs.
+
+    j. License Manager.  You may only use the Programs with the license
+    manager with which the Programs were delivered, and you may not take any
+    action to interfere with or disable such license manager.  You may not
+    mechanize or automate the process of checking out or in license seats for
+    one or more Programs and/or components thereof for the purpose of
+    circumventing license management. Login credentials may not be shared
+    between users of the Programs.
+
+    k. Authentication and Validation. We may use various technologies to
+    authenticate and validate your use of the Programs and to process related
+    information in our information systems.
+
+    l. U.S. Government. If you are acquiring this license to the Programs on
+    behalf of any unit or agency of the U.S. Government, the Government shall
+    only have the rights for this Commercial Computer Software and Commercial
+    Computer Software Documentation as set forth herein in accordance with the
+    applicable Federal Acquisition Regulations for the acquisition of
+    Commercial Computer Software and Commercial Computer Software
+    Documentation. In particular, for units of the Department of Defense: the
+    Government shall have only the rights specified in the license under which
+    the Programs, as commercial computer software, and the Documentation, as
+    commercial computer software documentation, were obtained, as set forth in
+    subparagraph (a) of the Rights in Commercial Computer Software or
+    Commercial Software Documentation Clause at DFARS 227.7202-3, therefore
+    the rights set forth herein shall apply. For any other Government unit or
+    agency: The Government shall have only the rights specified in this
+    Agreement under which the Programs as commercial computer software and the
+    Documentation as commercial computer software documentation were obtained,
+    as set forth in FAR 12.212. When FAR clause 52.227-19 applies, the
+    Government's rights include those set forth in paragraph (b)(2) of that
+    clause, except that under no condition does this license extend to the
+    source code of the Programs or otherwise obligate us to modify the
+    Programs or Documentation for the Government.
+
+    Where the Programs as commercial computer software and the Documentation
+    as commercial computer software documentation are licensed to the
+    Government under a contract that includes FAR clause 52.227-19 or similar,
+    the following Notice is incorporated herein:
+
+      NOTICE-Notwithstanding this license agreement that may pertain to, or
+      accompany the delivery of, this computer software (the Programs) and
+      computer software documentation (the Documentation), the rights of the
+      government regarding its use, reproduction, and disclosure are as set
+      forth in clause 52.227-19(b)(2) of the Government Contract under which
+      it was acquired.
+
+    If you wish to send us "covered defense information", as such term is
+    defined in DFAR clause 252.204-7012, or other U.S. governmental
+    information that is restricted by law, you shall do so solely by email to:
+    us-export-control@us.comsol.com.
+
+    If you are acquiring this license pursuant to work you are doing under a
+    U.S. government contract, you agree that you will provide the government
+    with the necessary disclosures, notices, and restricted rights legends,
+    and take any other necessary steps, to ensure that the rights granted with
+    respect to the Programs are no broader than as set forth herein.
+
+    m. Trial Licenses. If you have been granted a license to a trial version
+    of any Program, i.e., to test the Program without any payment obligation,
+    you may not use the Program for any commercial, academic, or production
+    use, i.e., you may use the Program only to test the functionality of the
+    Program.  Nor may you publish any results obtained through the use of a
+    license to a trial version of the Programs.  Trial licenses shall be for
+    the license type we specify and shall last for the length of time
+    specified by us, in our sole discretion, and may be canceled at any time
+    by us, in our sole discretion. In the event we do not specify a license
+    type for a trial license, the trial license shall be deemed to be for the
+    NSL license type for the use of the Named User to whom we have issued such
+    trial license. Upon expiration of the trial period, all Programs that are
+    the subject of that trial license shall automatically become
+    disabled. Support shall be provided only for the length of time that the
+    trial license is in effect, and there shall be no other Maintenance and
+    Support provided in connection with any trial licenses. We shall have no
+    warranty obligations for trial licenses of any type. With respect to trial
+    licenses, this paragraph (m) shall prevail over any conflicting provisions
+    in this Agreement.
+
+    n. Protection and Confidentiality of Our Information. You acknowledge that
+    the Programs contain trade secrets and other valuable and confidential
+    information of ours and of licensors of information or materials to us,
+    and you shall not act, or fail to act, in any way or manner to
+    intentionally or negligently harm our or our licensors' rights in our or
+    their respective intellectual property in the Programs and
+    Documentation. You shall disclose Confidential Information of ours and our
+    licensors only on a need-to-know basis to your employees; you may not
+    disclose any Confidential Information of ours and our licensors to a third
+    party; and you shall use all reasonable care to keep the Confidential
+    Information of ours and our licensors confidential consistent with the
+    grant of your licensed rights. In no event shall the obligations set forth
+    in this Section 2(n) override any requirement imposed on any licensee
+    using the Programs by or on behalf of any state or federal government
+    within the U.S. by any public records, freedom of information, or similar
+    law providing for public access to governmental records.
+
+    o. Protection and Confidentiality of Your Information. For a period of
+    three years following your disclosure of Confidential Information to us:
+    we will disclose such Confidential Information only on a need-to-know
+    basis to our employees and contractors and not to any other person or
+    entity; we shall use such Confidential Information solely for the purposes
+    for which it is disclosed; and we shall use all reasonable care to keep
+    such Confidential Information confidential consistent with your disclosure
+    of such information to us.
+
+    p. Exceptions to Confidentiality.  The confidentiality obligation set
+    forth in Section 2(o) shall not apply to any information or materials
+    which (i) were in our possession before we received them from you; (ii)
+    are or become publicly available through no fault of ours; (iii) are
+    independently developed without reliance on the Confidential Information;
+    (iv) are received from a third party with no duty of confidentiality to
+    you; (v) are approved by you in writing for disclosure, or (vi) are made
+    available by you to a third party without any restriction on
+    disclosure. Furthermore, neither the obligations set forth in Section 2(o)
+    nor our receipt of your Confidential Information shall be construed to
+    limit us from independently developing or acquiring products or
+    technologies without the use of your Confidential Information, nor to work
+    with persons or entities that have independently developed information or
+    materials similar to such Confidential Information. You acknowledge that
+    we may be actively engaged in technical development related to the subject
+    matter of your Confidential Information. You covenant not to sue or bring
+    any action, claim, or proceeding against us, our subsidiaries or
+    affiliates, or any of our or their officers, directors, employees, or
+    contractors, based in whole or in part on the use, copying, or other
+    exploitation of any Residuals.
+
+    q. Legal Proceedings/Government Investigations.  Subject to applicable
+    data privacy laws, we may provide any and all information provided to us
+    to any party in response to a subpoena or to a judicial or administrative
+    order requiring the production of such information or to any governmental
+    authority in connection with the investigation and/or prosecution of any
+    actual or potential crime. Notwithstanding the foregoing, we will
+    undertake commercially reasonable measures to ensure that any production
+    of your Confidential Information pursuant to this Section 2(q) is done in
+    a manner that ensures the confidentiality of such Confidential Information
+    shall be protected and will undertake commercially reasonable measures to
+    give you notice reasonably in advance of any production of your
+    Confidential Information in response to a subpoena or judicial or
+    administrative order.
+
+    r. Submissions. To the extent you make any Submissions: (i) you represent
+    and warrant that, to the best of your knowledge, such Submissions do not
+    infringe any intellectual property rights of any third party; (ii) you
+    acknowledge that we may use such Submissions but are under no obligation
+    to do so; (iii) you grant to us a non-exclusive, irrevocable, world-wide
+    license to reproduce, distribute, transmit, publicly display, publicly
+    perform, modify, translate, make derivative works based on, manufacture,
+    make, market, sell, offer to sell and/or otherwise use such Submissions
+    and derivative works based thereon, in whole or in part, including,
+    without limitation, by incorporating such Submissions, in whole or in
+    part, within our Programs and/ or other programs, and occurring in or
+    through any media now existing or existing at any time in the future, and
+    to grant sublicenses to engage in the foregoing activities; (iv) you waive
+    any right or claim to additional consideration for such Submissions beyond
+    our review of your Submissions and the rights you receive under the Terms
+    and Conditions (including any claim for payment or other compensation);
+    and (v) you waive any right or claim to attribution in connection with any
+    use we may make of such Submissions. To the extent we are not
+    independently developing ideas, concepts, proposals, or other materials
+    similar to the Submission(s), we may contact you regarding any Submissions
+    for which we may want to consider seeking patent rights.
+
+    s. Future Releases. We reserve the right to change or discontinue any or
+    all of the Programs without prior notice, although any such change in, or
+    discontinuance of, a Program shall not abrogate your right to continue
+    using a previously licensed Program for the duration of the term.
+
+3.  Program Output.  You shall own unrestricted rights to all computational
+    data generated by your use of the Programs that does not reproduce
+    substantial elements of the Programs, of other programs that interface
+    with the Programs, or of Models, Physics Interfaces, or Applications that
+    we publish; provided, however, that Models, Physics Interfaces,
+    Applications, and Compiled Applications produced by the Programs are
+    subject to the following restrictions:
+
+    a. Models and Physics Interfaces.  You may use, publish, distribute, and
+    authorize others to use Models and Physics Interfaces that you create with
+    the Programs worldwide, subject to the terms and conditions of this
+    Agreement.
+
+    b. Applications.
+
+      (i) Creation.  We grant you a non-exclusive license, within the
+      Territory in which you are authorized to use the Programs, to create
+      Applications that incorporate user generated files that require one or
+      more of the Programs to run, subject to the terms and conditions set
+      forth in this Agreement.
+
+      (ii) Distribution.  We grant you a perpetual, non-exclusive, world-wide
+      license to distribute any Applications that you create or that you
+      receive a sublicense to distribute, and we grant you a fully paid,
+      perpetual, non-exclusive, world-wide license to sublicense the
+      distribution of any Applications that you create, provided that you and
+      any distributor or sublicensor of your Applications requires that such
+      Applications be used in conjunction with licensed use of those Programs
+      required by the Applications to run and subject to the terms and
+      conditions set forth in this Agreement or, with respect to use of a CSL
+      by others that you authorize, pursuant to the terms and conditions of
+      the COMSOL Server End User License Agreement, which will be presented to
+      such users upon first use.
+
+      (iii) Use.  You may use Applications in conjunction with your licensed
+      use of those Programs required by the Applications to run, subject to
+      the terms and conditions set forth in this Agreement.
+
+      (iv) Restrictions.  Applications are subject to the following
+      restrictions:
+
+        A. No Application may be marketed, distributed, or licensed for use in
+        competition with us or any of the Programs or as a general purpose
+        multiphysics simulation package.
+
+        B. You may offer your Applications under terms and conditions of your
+        choosing, provided that (a) insofar as you distribute or license your
+        Application for use by others any such terms and conditions governing
+        that redistribution or sublicensing are at least as restrictive as
+        paragraph D below, (b) no terms and conditions applicable to any
+        license for your Applications shall alter, amend, conflict with, or
+        purport to terminate this Agreement in any way, and (c) you may not
+        distribute your Application under any version of the General Public
+        License, the Lesser/Library General Public License, the Artistic
+        License, the Mozilla Public License, the Netscape Public License, the
+        Sun Community Source License, the Sun Industry Source License, the
+        Common Public License, or any other license that requires, as a
+        condition of use, modification, or distribution, that your Application
+        or other software incorporated into, derived from, or distributed with
+        your Application (i) be disclosed or distributed in source code form;
+        (ii) be licensed by the user to third parties for the purpose of
+        making and/ or distributing derivative works; or (iii) be
+        redistributable at no charge. If your Application requires third party
+        software programs to operate, then (i) you must either obtain the
+        necessary rights to distribute such third party software programs with
+        your Application or require your customers to obtain the necessary
+        rights to use such third party software programs with your
+        Application; (ii) you must obtain sufficient rights from the
+        publishers of such third party programs to permit the interaction that
+        your Application makes possible between the Programs and such third
+        party programs and to permit any publication, distribution, licensing,
+        and/or sublicensing that you undertake or authorize with respect to
+        your Application; and (iii) you must otherwise comply with the terms
+        and conditions of any license agreement governing such third party
+        programs. In no event shall you distribute your Application in
+        conjunction with any other software program, or allow your Application
+        to be used in conjunction with any other software program, where that
+        other software program is licensed under terms that alter, amend,
+        conflict with, or purport to terminate this Agreement in any way.
+
+        C. All use of our trademarks and third party trademarks in connection
+        with your Application must comply with the then-current version of our
+        trademark guidelines, https://www.comsol.com/trademarks.
+
+        D. To the extent your Application requires any or all of the CAD
+        Import Module, Design Module, LiveLink™ for SOLIDWORKS®, LiveLink™ for
+        Solid Edge®, LiveLink™ for Inventor®, LiveLink™ for AutoCAD®,
+        LiveLink™ for PTC® Creo® Parametric, LiveLink™ for Revit®, and/or
+        File Import for CATIA® V5 (the "CAD Interfacing Programs") in order to
+        run:
+
+          (1) Such Application must have a graphical user interface ("GUI").
+
+          (2) Such Application, when run in integrated use with any of the
+          Programs, must be substantially functionally identical to those
+          Programs, although substantial portions of the Programs' GUI may be
+          removed or modified.
+
+          (3) Such Application must not have as a major function
+          computer-aided design ("CAD") or be marketed as competitive to any
+          CAD product.
+
+          (4) Such Application must not be marketed as a standalone product
+          for translating input to or output from any CAD product.
+
+          (5) In the event we cease offering any of the CAD Interfacing
+          Programs required for your Application to run, your rights to
+          continue to use such Programs for interfacing with your Application
+          shall be limited to the term of the license you have purchased and
+          to the version of the third party CAD product with which such CAD
+          Interfacing Programs are compatible.
+
+          (6) No Application may be marketed, distributed, or licensed as an
+          alternative means for any third party to access the functionality of
+          any third party software program to which any of the Programs
+          interface or as a replacement for any such third party software
+          program to which any of the Programs interface.
+
+          (7) No Application may contain any application programming interface
+          functions that rename any functions of any third party software
+          program with which any of the Programs interface without adding
+          additional value.
+
+          (8) No Application may be marketed, distributed, or licensed for use
+          in violation of any applicable law. You shall be solely responsible
+          for any governmental approvals needed to market, distribute, or
+          license an Application for use in a particular industry.
+
+    c. Compiled Applications.  If your licensed Programs include the COMSOL
+    Compiler, then the following terms and conditions apply:
+
+      (i) Creation.  We grant you a non-exclusive license, within the
+      Territory in which you are authorized to use the COMSOL Compiler for the
+      sole purpose of creating Compiled Applications from Applications,
+      provided that each Compiled Application complies with the restrictions
+      applicable to Applications and subject to the terms and conditions set
+      forth in this Agreement. Compiled Applications may not be used as a
+      replacement for an NSL, CPU, FNL, or CKL license for the purpose of
+      developing Models or Applications. Compiled Applications may not be used
+      for the purpose of loading and running Models that were not originally
+      embedded in the Application when developed in the Application Builder.
+       
+      (ii) Distribution.  We grant you a perpetual, non-exclusive, world-wide
+      license to distribute any Compiled Applications that you create or that
+      you receive a sublicense to distribute, and we grant you a perpetual,
+      non-exclusive, world-wide license to sublicense the distribution of any
+      Compiled Applications that you create, subject to the terms and
+      conditions set forth in this Agreement.
+
+      (iii) Use.  You and any sublicensee of yours may use your Compiled
+      Applications on any machine or network, regardless of whether or not
+      that machine or network contains any version of the Programs, subject to
+      the terms and conditions set forth in this Agreement.
+
+      (iv) Restrictions.  Compiled Applications are subject to the following
+      restrictions:
+ 
+        A. All restrictions set forth in Section 3(b)(iv) above with respect
+        to Applications shall apply to Compiled Applications.
+
+        B. All users of the Compiled Application must be required to accept
+        the COMSOL Runtime License Agreement.
+
+        C. You shall not in any way interfere with the delivery of the COMSOL
+        Runtime License Agreement to users of the Compiled Application or of
+        notices contained in the "About" section of a Compiled Application.
+
+        D. You may add your own end-user license agreement to a Compiled
+        Application, provided that your end-user license agreement does not
+        conflict with or attempt to supersede any terms and conditions of the
+        COMSOL Runtime License Agreement.
+
+        E. You shall not distribute COMSOL runtime libraries found in a
+        Compiled Application, apart from as embedded in that Compiled
+        Application or as a download offered for the sole purpose of
+        supporting your Compiled Application.
+
+    d. Independent Development.  You acknowledge that we may be engaged in
+    independent development in the subject area of any support requests that
+    relate to any Applications or Compiled Applications created by you, used
+    by you, or distributed by you or on your behalf and that we have no
+    obligation to limit or restrict the assignment of personnel based on their
+    involvement in fulfilling any such support requests. On behalf of yourself
+    and your parent companies, subsidiaries, and affiliates, you covenant and
+    agree not to bring any legal proceeding and not to lend any assistance in
+    the bringing of any legal proceeding alleging that any independently
+    developed current or future software products that we distribute infringe
+    any intellectual property rights of yours or theirs in any Application or
+    Compiled Application that you or they have developed or any invention,
+    design, or discovery thereof.
+
+4.  License Term. Unless terminated earlier according to this Agreement, this
+    Agreement shall continue either perpetually or for a limited period, as
+    identified in a quotation we issue that you accept, in a purchase order
+    accepted by us or in our invoice. Absent any such earlier termination,
+    term licenses will end after their term, unless the then-current term
+    license fee has been previously remitted to us. You shall have the right
+    to use Programs licensed under a perpetual license indefinitely, subject
+    to the termination as well as maintenance and support provisions of this
+    Agreement.
+
+5.  Delivery. We may deliver the Programs and Documentation to you in archival
+    form on physical computer readable media or over the Internet with
+    installation materials which specify the licensed Programs.  You shall be
+    responsible for all use of your installation materials, authorized or not,
+    and you shall not disclose the archive installation materials or allow
+    them to be used except for use as expressly permitted herein.
+
+6.  Compliance with Export Laws. The Programs are subject to U.S., European
+    Union and United Kingdom export control laws or other (U.S., E.U., U.K.,
+    and non-U.S.)  governmental export and import laws and regulations
+    ("Export Laws"). Notwithstanding any other term of this Agreement or any
+    other agreement, neither you nor any third party may exercise any of your
+    rights under this Agreement in violation of any Export Law, nor may this
+    Agreement be transferred to any party where doing so would result in such
+    a violation. The terms of any limitation on the use, transfer or re-export
+    of the Programs imposed by us in any document for the purpose of export
+    control shall prevail over any of the Terms and Conditions in this
+    Agreement, but it shall be your responsibility to comply with the latest
+    Export Law. You represent and warrant that, unless authorized by the
+    government that issued the applicable Export Laws, neither you nor any
+    person or entity you permit to use the Programs under this Agreement is
+    located in or is a permanent resident of any country subject to any
+    U.S. or other embargo or any country that is specially designated by the
+    U.S. government as a "terrorist supporting" country and that neither you
+    nor any person or entity you permit to use the Programs under this
+    Agreement is on any U.S. government list of prohibited or restricted
+    parties. If, in connection with any support request, you wish to send us
+    information that can only be shared with U.S. persons under any Export
+    Laws, the only way in which you may do so is by email to:
+    us-export-control@us.comsol.com.  You understand and agree that
+    restricting any support request in this manner will limit the number of
+    support engineers available to respond to your request, which may limit
+    our ability to provide a response that is to your satisfaction. In the
+    event that you wish to include any Confidential Information in such a
+    support request to be protected in accordance with Section 2(o), you must
+    mark such email with the designation "Confidential Information" in the
+    subject line of the message. You shall be solely responsible for ensuring
+    that all files you send to us in connection with any support request
+    comply with all applicable Export Laws, including with respect to our
+    accessing those files in any locations in which we do business and by our
+    employees, regardless of nationality or residency, unless such requests
+    are submitted as set forth in this Section 6. In the event you are unable
+    to provide us with items relevant to a support request on account of
+    Export Laws, we shall undertake commercially reasonable efforts to address
+    the support request but do not guarantee our ability to do so.
+
+7.  Maintenance and Support.
+
+    a. Term for Maintenance and Support.  Unless you have purchased a term
+    license with a Maintenance and Support period expiring prior to the end of
+    the term, Maintenance and Support will terminate upon the earlier of
+    twelve (12) months or the expiration of the term. Notwithstanding the
+    foregoing, termination of the Maintenance and Support period for any one
+    Program shall terminate the period for Maintenance and Support for all
+    other Programs that require that Program in order to run, even if such
+    other Programs were purchased separately, except that installation support
+    shall be provided where we have sold a license to a Program that is to be
+    added to one or more Programs that are not on subscription for Maintenance
+    and Support. That initial period for Maintenance and Support commences on
+    the first day of the month following the month in which a purchase order
+    has been accepted. However, if, by that time, you have not yet supplied us
+    with all of the information needed for us to provide installation
+    materials, the initial period for Maintenance and Support shall commence
+    on the first day of the month following the month during which we first
+    requested the information needed to provide installation
+    materials. Notwithstanding the foregoing, there shall be no reduction in
+    the initial period for Maintenance and Support on account of any delay by
+    us in requesting the information necessary to provide installation
+    materials or any delay by us in providing installation materials following
+    receipt by us of all such information.
+
+    b. Updates and New Versions.  All updates to, and new versions of, the
+    Programs that we deliver shall be deemed to be part of the Programs that
+    are licensed pursuant to this Agreement or any successor version of this
+    Agreement displayed upon installation of such updates to and/or new
+    versions of the Programs.
+
+    c. Renewal.  Maintenance and Support may be renewed, at the then-current
+    price, as long as we offer such services. If you fail to renew Maintenance
+    and Support when due, we may charge you a fee for restarting Maintenance
+    and Support.
+
+    d. Scope.  Maintenance and Support is limited to the latest two released
+    versions of the Programs and do not include technology preview
+    functionality or prereleases such as alphas or betas, provided, however,
+    that certain updates to address programming errors, enhancements, and
+    security patches may only be available for the then most recently released
+    version of the Programs. For this purpose, separate versions are defined
+    by a change in a digit within the first decimal place within the version
+    number or a change in letters appended thereto.
+
+    e. Use of Support Materials.  Unless the support request is designated as
+    Confidential pursuant to Paragraph 2(o), you agree that any materials
+    provided by you to us in connection with a support request may be retained
+    and used by us and our contractors and licensors for the purpose of
+    correcting, developing, and testing workarounds for any programming errors
+    that such materials may evidence and for the purpose of product
+    development and improvement.
+
+
+    f. Issuance of License Files.  We shall have no obligation to issue
+    license files for the Programs if such Programs, or Programs on which they
+    depend, are no longer on subscription for Maintenance and Support, unless
+    we have sold a license to a Program that is to be added to one or more
+    Programs that are not on subscription for Maintenance and Support.  In the
+    event a new license file is required in connection with a machine change,
+    user change, or change in license type, we shall have the right to
+    condition the issuance of such license file on the provision and
+    affirmation of such information as we reasonably may request in connection
+    with such change.
+
+    g. Data Transfers.  We provide support from different locations in
+    different countries by different COMSOL entities.  Unless you have
+    restricted a case in the manner specified in Section 6, you are solely
+    responsible for determining that any data provided to us in connection
+    with our Maintenance and Support may be transferred and exported to our
+    different locations and affiliated entities in accordance with applicable
+    laws, including, without limitation, data security laws, export control
+    laws, and privacy laws, and otherwise.  To the extent you are not able to
+    provide data lawfully for a particular request for Maintenance and
+    Support, our fulfillment of that request may be limited or non-existent.
+
+
+8.  LIMITED WARRANTY.
+
+    a. We warrant: (i) that we or our licensors have the right to grant the
+    license rights hereunder; (ii) that for a period of ninety (90) days from
+    delivery ("Warranty Period") the licensed Programs shall conform in all
+    material respects to their functional specifications in the Documentation;
+    and (iii) you may receive a full refund of the initial fee paid for the
+    Programs if you terminate this Agreement within thirty (30) days of the
+    date of the delivery of the first version of the Programs that we provide
+    to you (the "Acceptance Period"). The Programs shall be deemed to be
+    "delivered" for purposes of the foregoing warranties upon commencement of
+    the initial software maintenance period as set forth in Section 7.
+    Delivery of subsequent versions of or upgrades to the Programs shall not
+    enlarge or restart the Acceptance Period or Warranty Period. IN NO EVENT
+    SHALL THE FOREGOING WARRANTY OBLIGATIONS EXTEND TO SUBLICENSEES OF THE CSL
+    OR ASL VERSIONS OF THE PROGRAMS OR TO SUBLICENSEES OF YOUR COMPILED
+    APPLICATIONS.
+
+    b. If a Program does not operate as warranted and you notify us within the
+    Warranty Period, your exclusive remedy and our sole liability shall be (i)
+    the correction or workaround of major defects within a reasonable time, or
+    (ii) if such correction or workaround prove neither satisfactory nor
+    practical, termination of the relevant license and refund of the initial
+    license fee paid to us for the Programs.
+
+    c. All requests for warranty assistance should be directed to COMSOL AB,
+    Tegnérgatan 23, SE-111 40 STOCKHOLM, Sweden. Attn: Sales & Marketing
+    Manager.
+
+    d. EXCEPT AS EXPRESSLY PROVIDED ABOVE, EXCEPT AS EXPRESSLY SPECIFIED IN
+    SECTION 10, AND EXCEPT TO THE EXTENT OTHERWISE REQUIRED BY LAW, THE
+    PROGRAMS, DOCUMENTATION, EXAMPLES, AND ALL MAINTENANCE AND SUPPORT,
+    PRE-SALES SUPPORT, PROOFS OF CONCEPT, AND ANY OTHER SERVICES OR ITEMS WE
+    MAY PROVIDE ARISING OUT OF OR RELATING TO THIS AGREEMENT ARE PROVIDED "AS
+    IS AND WITH ALL FAULTS;" AND WE AND OUR LICENSORS, DISTRIBUTORS, AND
+    RESELLERS DISCLAIM ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY OR
+    OTHERWISE, INCLUDING WITHOUT LIMITATION, WARRANTIES OF MERCHANTABILITY,
+    NON-INFRINGEMENT, DESIGN, OPERATION, LACK OF VIRUSES, ABSENCE OF ERRORS,
+    ACCURACY OR COMPLETENESS OF OUTPUT, LACK OF NEGLIGENCE, SECURITY, AND
+    FITNESS FOR A PARTICULAR PURPOSE (EVEN IF WE OR OUR LICENSORS,
+    DISTRIBUTORS OR RESELLERS HAVE BEEN INFORMED OF SUCH A PURPOSE) AND
+    WARRANTIES ARISING FROM ANY COURSE OF DEALING, USAGE, OR TRADE
+    PRACTICE. FURTHERMORE, EXCEPT TO THE EXTENT OTHERWISE REQUIRED BY LAW, IN
+    NO EVENT SHALL OUR LICENSORS BE RESPONSIBLE FOR ANY WARRANTIES UNDER THIS
+    AGREEMENT.
+
+    e. YOU ASSUME SOLE RESPONSIBILITY FOR THE SELECTION OF THE SOFTWARE TO
+    ACHIEVE YOUR INTENDED RESULTS AND FOR THE INSTALLATION OF, USE OF, INPUTS
+    YOU PROVIDE FOR, AND RESULTS OBTAINED FROM THE PROGRAMS.  YOU ASSUME SOLE
+    RESPONSIBILITY FOR THE SELECTION OF HARDWARE AND DETERMINATION OF SYSTEM
+    CONFIGURATIONS FOR USE WITH THE PROGRAMS, AND WE SHALL NOT BE RESPONSIBLE
+    FOR TESTING THE PROGRAMS FOR THE HARDWARE AND SYSTEM CONFIGURATIONS YOU
+    MAY CHOOSE. YOU ASSUME SOLE RESPONSIBILITY FOR DETERMINING YOUR RIGHT TO
+    USE AND AUTHORIZE OTHERS TO USE ANY THIRD PARTY DATA THAT YOU IMPORT FOR
+    USE WITH THE PROGRAMS.  YOU ACKNOWLEDGE AND AGREE THAT THE PROGRAMS ARE
+    NOT FAULT-TOLERANT AND ARE NOT DESIGNED, MANUFACTURED, OR INTENDED FOR USE
+    OR RESALE AS CONTROL EQUIPMENT IN HAZARDOUS ENVIRONMENTS REQUIRING
+    FAIL-SAFE PERFORMANCE IN WHICH THE FAILURE OF THE PROGRAMS COULD LEAD
+    DIRECTLY TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL OR ENVIRONMENTAL
+    DAMAGE. YOU ACKNOWLEDGE AND AGREE THAT SIMULATION SOFTWARE IS NOT A
+    SUBSTITUTE FOR SAFETY AND EFFICACY TESTING FOR ANY PRODUCT OR PROCESS
+    BEING SIMULATED, AND YOU ASSUME SOLE RESPONSIBILITY FOR SUCH SAFETY AND
+    EFFICACY TESTING.
+
+9.  Limitation Of Liability. EXCEPT TO THE EXTENT OTHERWISE REQUIRED BY LAW
+    AND EXCEPT FOR OUR INDEMNIFICATION OBLIGATIONS AS SET FORTH IN SECTION 10,
+    OUR SOLE LIABILITY OR OBLIGATION ARISING UNDER OR RELATING TO THIS
+    AGREEMENT (AND THE SOLE LIABILITY OF OUR LICENSORS, DISTRIBUTORS, AND
+    RESELLERS RELATING TO THIS AGREEMENT) IS THE REPLACEMENT OF DEFECTIVE
+    MEDIA ACCORDING TO THE LIMITED WARRANTY ABOVE. EXCEPT TO THE EXTENT
+    OTHERWISE REQUIRED BY LAW AND EXCEPT AS SET FORTH IN SECTION 10, IN NO
+    EVENT SHALL WE OR OUR LICENSORS, DISTRIBUTORS, OR RESELLERS BE LIABLE TO
+    YOU FOR ANY CONSEQUENTIAL, EXEMPLARY, SPECIAL, INCIDENTAL OR PUNITIVE
+    DAMAGES ARISING OUT OF OR RELATING TO THIS AGREEMENT, INCLUDING WITHOUT
+    LIMITATION, DAMAGES FROM THIRD PARTY CLAIMS, LOSS OF PROFITS, LOSS OF
+    DATA, INVASION OF PRIVACY, FAILURE TO MEET ANY DUTY SUCH AS GOOD FAITH OR
+    REASONABLE CARE, NEGLIGENCE, OR ANY OTHER LOSS, EVEN IF WE OR THEY HAVE
+    BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, E.G., WE ARE UNABLE TO
+    REMEDY ANY DEFECT IN THE PROGRAMS.  IN ANY EVENT, EXCEPT TO THE EXTENT
+    OTHERWISE REQUIRED BY LAW AND EXCEPT AS SET FORTH IN SECTION 10, OUR AND
+    THEIR MAXIMUM LOSS, REGARDLESS OF ANY ACT OR OMISSION OF OURS OR ANYONE
+    UNDER OUR DIRECTION OR CONTROL, SHALL NOT IN TOTAL EXCEED THE AGGREGATE
+    AMOUNT PAID TO US IN THE SIX-MONTH PERIOD PRECEDING YOUR CLAIM(S), AND FOR
+    SUCH PURPOSES, ALL CLAIMS SHALL BE AGGREGATED. FURTHERMORE, EXCEPT TO THE
+    EXTENT REQUIRED BY LAW, IN NO EVENT SHALL OUR LICENSORS BE RESPONSIBLE FOR
+    ANY DAMAGES OF ANY NATURE ARISING OUT OF OR RELATING TO THIS
+    AGREEMENT. The remedies against us and our licensors, distributors, and
+    resellers expressly provided herein are exclusive and are in lieu of any
+    other remedies at law or in equity. The fees and limitations of liability
+    and remedies for the license to the Programs reflect the allocation of
+    risk between the parties. This section is an essential element of the
+    basis of the bargain between the parties.
+
+10. Indemnification.
+
+    a. By You. You agree to indemnify, defend, and hold harmless us and our
+    parents, subsidiaries, affiliates, successors, distributors, and
+    resellers, and each of our and their officers, directors, employees and
+    representatives, against and from any and all Losses arising out of or in
+    connection with any and all third party claims relating to any use of the
+    Programs by you and any act or omission of yours or relating to
+    Applications or Compiled Applications created by you, used by you, or
+    distributed by you or on your behalf, including third party claims related
+    to your activities pursuant to this Agreement, except to the extent we
+    indemnify you as described below. If you are a governmental user in a
+    jurisdiction which limits your ability to enter into indemnification
+    agreements, then the foregoing indemnification obligation shall apply only
+    to the extent permitted by applicable law.
+
+    b. By Us. We agree to indemnify, defend, and hold harmless you, your
+    parents, subsidiaries, affiliates, and successors, and each of your and
+    their officers, directors, employees and representatives, against and
+    from, and to the extent you suffer, any Losses because the licensed
+    Programs infringe a third party's intellectual property rights.
+
+    c. Limitation.  We shall have no liability or obligation to you hereunder
+    for any infringement based upon (i) the combination of any of the licensed
+    Programs with any other software, hardware or other products not developed
+    by us, (ii) the use of other than a current, unaltered version of the
+    licensed Programs, (iii) any use of a licensed Program for other than its
+    intended purpose, (iv) modifications, improvements and derivative works of
+    the licensed Programs created by or on behalf of you, or (v) if you breach
+    this Agreement for failure to pay amount due. For the avoidance of doubt,
+    we shall have no liability or obligation to you hereunder for any
+    infringement of a third party's intellectual property rights by any goods
+    or services designed by you through use of the Programs.
+
+    d. Cooperation. In connection with any claim or action described in this
+    Section, the party seeking indemnification (i) will give the indemnifying
+    party prompt written notice of the claim, (ii) will cooperate with the
+    indemnifying party (at the indemnifying party's expense) in connection
+    with the defense and settlement of the claim, and (iii) will permit the
+    indemnifying party to control the defense and settlement of the claim,
+    provided that the indemnifying party may not settle the claim without the
+    indemnified party's prior written consent (which will not be unreasonably
+    withheld).  Further, the indemnified party (at its cost) may participate
+    in the defense and settlement of the claim. Any breach of this paragraph
+    by the indemnified party that causes prejudice to the indemnifying party
+    shall relieve the indemnifying party of its indemnification obligation.
+
+11. Third Parties. You shall notify us of third parties (and give their
+    respective names, addresses, and contact information) that have access to
+    or use the licensed Programs on your behalf. This provision shall not
+    limit your other obligations hereunder.
+
+12. Prevailing Party. If any legal action or other proceeding is brought for
+    any breach of this Agreement, the prevailing party shall be entitled to
+    recover its reasonable attorneys' fees and other costs incurred in
+    bringing such action or proceeding, in addition to any other relief to
+    which such party may be entitled, including, without limitation, any
+    interest or penalties specified in our invoice to the extent permitted by
+    applicable law.
+
+13. Taxes. You shall be liable for any taxes (except those on our net income)
+    due in connection with this Agreement.
+
+14. Termination. We may terminate this Agreement by written notice to you if
+    you breach any of the Terms and Conditions and have not cured such breach
+    within sixty (60) days (within fifteen (15) days if the breach is for
+    non-payment) thereafter. Notwithstanding the foregoing, we may terminate
+    at any time in the event you make any unauthorized use, reproduction,
+    distribution, public display, or public performance of, or preparation of
+    derivative works based on, the Programs as delivered hereunder or as
+    otherwise obtained by you. Furthermore and without limiting any other
+    remedies available to us, if you or any of your parent companies,
+    subsidiaries, or affiliates bring any legal proceeding alleging that any
+    current or future software products that we distribute infringe any
+    intellectual property rights of yours or theirs in or pertaining in whole
+    or in part to any Program output that you or they have developed or any
+    invention, design, or discovery thereof, then we shall have the right to
+    terminate, effective after thirty (30) days written notice, all licenses
+    granted to you and them. You may terminate this Agreement at any time for
+    any reason, but you shall not be entitled to any refund except for license
+    fees paid for any Programs for which the Acceptance Period has not expired
+    at the time we receive your notice of termination.
+
+15. Effect of Termination. Immediately upon termination of this Agreement for
+    any reason, (a) your rights shall cease and all rights granted herein
+    shall automatically revert to us; (b) you shall stop using the Programs
+    and Documentation; (c) you shall erase all copies of licensed Programs and
+    Documentation from your computers and deliver to us all tangible copies of
+    the Programs and Documentation; (d) you shall pay all amounts due us; and
+    (e) you shall take such acts and execute all documents we reasonably
+    request to register or effect the termination. Within five (5) business
+    days of the termination, you shall provide us with a written declaration
+    signed under penalty of perjury by you attesting to compliance with the
+    provisions of subsections (b), (c) and (d) above. Expiration or
+    termination of this Agreement shall not relieve a party of obligations
+    accrued before such event. In addition, Sections 1, 2(d), 2(i), 2(n),
+    2(o), 2(p), 2(q), 3(a), 3(b)(ii)-(iv), 3(c)(ii)-(iv), 8, 9, 10, 12, 13,
+    14, 15, 17, 19, and 20 of this Agreement shall survive termination or
+    expiration of this Agreement.
+
+16. Assignment and Transfer. We may freely assign this Agreement. Unless you
+    provide us with the identity and contact information of any prospective
+    assignee or transferee of your rights and obligations hereunder and such
+    transferee or assignee is acceptable to us, you may not assign or
+    otherwise transfer this Agreement and its rights and obligations, in whole
+    or in part, by operation of law or otherwise, and any prohibited
+    assignment or transfer shall be null and void; provided, however, that our
+    consent shall not be unreasonably delayed or withheld in the event of any
+    request for assignment or transfer where each of the following conditions
+    are satisfied: (a) you have provided us with the identity and contact
+    information of any prospective assignee or transferee of your rights and
+    obligations hereunder, (b) you have provided us with such information as
+    we may reasonably request to issue any new license files that may be
+    necessitated, (c) such assignee or transferee is not in the business of
+    selling licenses to off-the-shelf software, and (d) such assignee or
+    transferee either (i) is your successor by merger or operation of law,
+    (ii) is the purchaser of the assets of your entire business unit using the
+    Programs, (iii) is controlled by you, (iv) controls you, or (v) is under
+    common control with you. This Agreement or the relevant provisions shall
+    be binding upon, and inure to the benefit of, the successors, executors,
+    heirs, representatives, administrators and assigns of the parties hereto.
+    We may charge you an administrative fee for any permitted assignment.
+
+17. Personal Data and Privacy. Certain of your interactions with us involve
+    providing us with personal data.  For information on what personal data we
+    collect, how we process it, and how you can control the use of your
+    personal data, see https://www.comsol.com/privacy-policy. If you supply us
+    with personal data of employees or others, you are solely responsible for
+    securing their consent in accordance with applicable laws.
+
+18. Revised Terms and Conditions. New releases of the Programs may be licensed
+    under revised Terms and Conditions, and such revised Terms and Conditions
+    shall be effective upon installation thereof.
+
+19. Miscellaneous. You shall not grant any ownership right or security
+    interest in the Programs to any person. You shall comply with all laws
+    applicable to you in the jurisdiction in which you use the Programs. A
+    breach of any provision of this Agreement may only be waived in writing
+    and the waiver of such breach shall not operate or be construed as a
+    waiver of any subsequent breach. If any of the Terms and Conditions
+    should, for any reason, be held invalid or unenforceable in any respect,
+    the remainder of this Agreement shall be enforced to the full extent
+    permitted by law. A court of competent jurisdiction is hereby empowered to
+    modify the invalid or unenforceable provision to make it valid and
+    enforceable. If you purchased a license to the Programs in the Americas
+    (including the Caribbean and Canada), this Agreement shall be governed by
+    and construed in accordance with the laws of the Commonwealth of
+    Massachusetts and the United States of America, without regard to
+    conflicts of laws principles. Such licensees agree that any dispute,
+    controversy, or claim arising out or relating to this Agreement or the
+    breach, termination, or alleged invalidity thereof shall be subject to
+    exclusive jurisdiction and venue in the state and federal courts in the
+    Commonwealth of Massachusetts and consent to personal jurisdiction
+    therein.  If you purchased a license to the Programs outside the Americas,
+    this Agreement shall be governed by and construed in accordance with the
+    laws of Sweden without regard to conflicts of law principles. If you
+    purchased a license outside the Americas, any dispute, controversy or
+    claim arising out of or in connection with this Agreement, or the breach,
+    termination, or alleged invalidity thereof, shall be finally settled by
+    arbitration administered by the Arbitration Institute of the Stockholm
+    Chamber of Commerce (the "SCC"). The Rules for Expedited Arbitrations
+    shall apply to such arbitrations, unless the SCC in its discretion
+    determines, taking into account the complexity of the case, the amount in
+    dispute and other circumstances, that the Arbitration Rules shall
+    apply. In the latter case, the SCC shall also decide whether the Arbitral
+    Tribunal shall be composed of one or three arbitrators.  The Parties shall
+    keep all information, documentation, materials in whatever form disclosed
+    in the course of such arbitral proceeding confidential and they shall be
+    used solely for the purpose of those proceedings.  The seat of arbitration
+    shall be Stockholm, Sweden. The language to be used in the arbitral
+    proceedings shall be English. For all licensees, the parties agree that
+    neither the U.N.  Convention on Contracts for the International Sale of
+    Goods nor the provisions of the Uniform Computer Information Transaction
+    Act ("UCITA") as adopted or as may be adopted by any state shall apply or
+    govern this Agreement or the relationship of the parties hereto.  To the
+    extent UCITA may be deemed applicable, the parties agree to opt out of its
+    applicability pursuant to the opt out provisions contained therein. You
+    may not bring any action against us or our licensors more than two (2)
+    years after the cause of action accrued. To the extent permitted by law,
+    you hereby waive any sovereign immunity that you would otherwise be
+    entitled to assert with respect to any claim arising out of or relating to
+    these Terms and Conditions. If you are a governmental user in a
+    jurisdiction whose law restricts your ability to enter into agreements
+    regarding the terms in this Section 19, then such Section shall be
+    enforceable only to the extent permitted by applicable law; and the
+    applicable law for the governance and construction of this Agreement and
+    the applicable jurisdiction for disputes between the parties shall be
+    dictated by any such legal requirement conflicting with this Section
+    19. If you acquired the Programs outside the United States, then any local
+    laws conflicting with the selection of applicable law and jurisdiction in
+    this Section shall be given precedence over this Section. While certain
+    portions of the Programs have been obtained by us from our licensors, we
+    are solely responsible for providing licenses to the Programs, and our
+    licensors have no responsibility for providing such licenses to you, no
+    obligations with respect to maintenance or support for the Programs or for
+    addressing claims regarding the Programs, and have made no warranties
+    regarding the Programs. Our licensors are third party beneficiaries of
+    this Agreement and shall have the right to enforce its provisions. The
+    parties to this Agreement hereby confirm their desire that this Agreement,
+    and any documents relating thereto, be written solely in the English
+    language. Les parties au présent Accord confirment leur volonté que cet
+    Accord, ainsi que les documents s'y rattachant, soient rédigés uniquement
+    en langue anglaise.
+
+20. Entire Agreement. This Agreement and the applicable Addenda hereto (if
+    relevant), together with any pricing, terms of payment, identification and
+    quantification of Programs to be delivered, method and location of
+    delivery, territory, and term set forth on our invoice or order
+    acknowledgment, contain the entire understanding of the parties with
+    respect to the subject matter, and supersedes all prior, contemporaneous,
+    and subsequent proposals, agreements, representations, and
+    understandings. This Agreement may not be changed except as provided
+    herein in a writing signed by you and us. No purchase order or any other
+    standardized business form issued by you, even if such purchase order or
+    other standardized business form provides that it takes precedence over
+    any other agreement between the parties, shall be effective to contradict,
+    modify, add to or delete from the terms of this Agreement in any manner
+    whatsoever and all such terms are hereby objected to and rejected, except
+    that, if you are a governmental user in a jurisdiction where contractors
+    are legally required to comply with applicable laws in order to sell a
+    software license to that user's governmental unit or entity, then we shall
+    comply with such laws, provided that we are informed in writing of any
+    such requirements in advance, provided that such requirements do not
+    conflict with any other laws applicable to our business operations, and
+    provided further that this provision may not be used to change the nature,
+    scope, or duration of the rights you receive in the Programs, our
+    maintenance obligations, the financial terms of sale, or the rights,
+    obligations, warranties, or liabilities of our licensors. Any
+    acknowledgment, in any form, of any such purchase order or standardized
+    business form is not recognized as a subsequent writing and will not act
+    as acceptance of such terms.
+
+
+                              Academic Addendum
+
+This is an Addendum to the COMSOL Software License Agreement (the
+"Agreement"), and the Terms and Conditions of this Addendum are incorporated
+therein.  Each capitalized term used but not defined herein shall have the
+meaning ascribed to it in the Agreement.
+
+Programs licensed to Institutions at Academic Prices are subject to separate
+license provisions and are further restricted to use in connection with
+on-campus computing facilities that are used solely in support of classroom
+instruction and research activities of the Institution's students and
+faculty. The right to use the Programs licensed at Academic Prices for
+commercial, governmental, or contract work purposes is expressly
+prohibited. Academic Prices are offered by us at our sole discretion and we
+reserve the right to verify and review eligibility from time to
+time. Distribution of Applications produced pursuant to Section 3 of this
+Agreement, including for profit, shall not be considered commercial usage
+provided that such Applications are made in accordance with this Academic
+Addendum and not pursuant to any contractual obligation.
+
+1.  General Scope. In addition to the Terms and Conditions in the Agreement,
+    the provisions of this Academic Addendum apply to each Program licensed
+    under the Agreement at Academic Prices only to Institutions for NSL, CPU,
+    FNL, CKL, and ASL versions of the Programs, as defined below.
+
+2.  Academic Internal Operations. The NSL, CPU, and FNL versions of the
+    Programs purchased at Academic Prices give the Licensee the right to use
+    the software in Academic research as well as teaching at the licensed
+    Institution. Moreover, a student working on a thesis or a diploma has the
+    right to use an NSL, CPU, or FNL License purchased at Academic Prices
+    outside the Institution as long as the usage is restricted to the thesis
+    or the diploma work. If there is a conflict between the terms in this
+    Addendum and the Agreement, the Addendum provisions shall control.
+
+3.  Class Kit Option. The CKL version of the Programs may be installed and
+    used by up to 30 students and teachers for the sole purpose of teaching in
+    an ordinary course, which may be in-person or remote, provided (i) use of
+    the Programs is restricted to (a) instructional purposes of the course by
+    enrolled students meeting classroom requirements for courses offered by
+    the Institution and by teachers of such courses, (b) homework for such a
+    course, and (c) teacher preparation for such a course; (ii) all
+    non-classroom use is limited to a single designated individually owned
+    computer for each such student or teacher during the period of the
+    academic year when the applicable class is in session and solely for class
+    purposes; (iii) when a student is not enrolled in the applicable class or
+    the class ends, the student must remove all copies of the Programs from
+    his or her computer; (iv) the Programs may not be used for cluster
+    computing; and (v) the network installation and use requirements of
+    Section 5 of the Academic Addendum are followed.  Notwithstanding the
+    foregoing, any use of the CKL version of the Programs for academic
+    research, whether as part of a course or otherwise, is expressly
+    prohibited, and any use of the CKL version of the Programs not expressly
+    allowed in this Section is prohibited. The CKL does not include the Model
+    Manager feature of the Programs.
+
+4.  Academic Server License.
+
+    a. The ASL version of the Programs may be installed on an individual
+    computer or in a central location on a single dedicated network server or
+    on the server of a third party providing secure remote computing capacity
+    through which the Programs are made accessible for academic use permitted
+    under this Agreement. Log-in credentials may not be shared among
+    authorized users of the ASL version of the Programs. You may use the ASL
+    version of the Programs to perform cluster computing. With respect to a
+    network installation, the Programs may also be installed on individual
+    computers, as long as the individual installations are controlled by the
+    license manager on the network server. Any transfer of the license manager
+    for the Programs from one computer to another shall be conditioned upon
+    proof to our satisfaction that the license manager was uninstalled from
+    the first computer. The ASL license permits you to use the Programs for
+    the sole purpose of hosting and running Applications for academic
+    use. Your use of Applications must comply with all restrictions on
+    Applications set forth in Section 3 of this Agreement and with any terms
+    and conditions specified by the publisher of each Application. Unless
+    expressly stated otherwise in the Academic Addendum, the ASL version of
+    the Programs shall be subject to all restrictions applicable to the CSL
+    version of the Programs.
+
+    b. You may have up to 300 concurrent users for an ASL installation. In no
+    event may any authorized concurrent user use the ASL version of the
+    Programs to run more than 4 Applications at any given time. The ASL
+    version of the Programs may be installed, accessed, and used worldwide,
+    including remotely, subject to the terms and conditions of this Agreement,
+    including, without limitation, compliance with the restrictions set forth
+    in Section 4, but you must reside in the same territory in which the ASL
+    license was sold. Authorized users of the ASL version of the Programs
+    include students, faculty, and staff of your institution and of any other
+    academic institution, regardless of their location of access, subject to
+    the following:
+
+      (i) You must require each sublicensee to accept this Agreement.
+
+      (ii) You shall not take any steps to disable or interfere in any way
+      with the automatic delivery of this Agreement to authorized users to
+      whom you provide access to the Programs.
+
+      (iii) Any terms and conditions set by you or others for the use of
+      Applications you make available for use in conjunction with the Programs
+      shall not alter, amend, conflict with, or purport to terminate this
+      Agreement.
+
+      (iv) When referring to trademarks of ours or of any third party in
+      connection with opening an installation of the ASL version of the
+      Programs to use by students, faculty, or staff of other institutions,
+      you must comply with the then-current version of our trademark
+      guidelines, https://www.comsol.com/trademarks.
+
+      (v) You shall not authorize use of the ASL version of the Programs other
+      than to host and run Applications that you or your sublicensee is
+      authorized to run.
+
+      (vi) If you use the ASL version of the Programs to call any third party
+      software, your use of that third party software must comply with all
+      terms and conditions of the license agreement that gives you the right
+      to use such third party software, including, without limitation, any
+      restrictions on how such third party software may be called.
+
+5.  Academic Networked Installation and Use. Except with respect to license
+    files and passcodes for individual computers of CKL student users pursuant
+    to Section 3 of this Academic Addendum, the FNL and CKL versions of the
+    Programs may only be used on a network that is restricted to solely
+    on-campus use, provided, however, that users of the FNL and CKL versions
+    of the Programs may access and use such Programs via an encrypted
+    connection providing secure remote access, such as Virtual Private Network
+    or Remote Desktop Protocol (using Network Level Authentication and using
+    encryption), solely for the purposes permitted by this Academic
+    Addendum. Notwithstanding the foregoing, nothing in this Section shall
+    prohibit the installation of the FNL version of the Programs, in
+    accordance with Section 2(h)(iii) of the Agreement, or of the CKL version
+    of the Programs on the server of a third party providing secure remote
+    computing capacity. Furthermore, the NSL version of the Programs licensed
+    at academic prices may be accessed and used remotely for academic purposes
+    and subject to the restrictions on remote access to, and use of, NSL
+    licenses sold at commercial prices.
+
+6.  Class Kit Limited Rights. By selecting the CKL, the Institution and any
+    users of the CKL agree to the Terms and Conditions of the Agreement and
+    this Academic Addendum for use of the CKL for the academic use set forth
+    in Section 3 of this Academic Addendum. The Institution is responsible for
+    ensuring that the total number of students and teachers for each Program
+    in the CKL does not exceed 30. The Institution shall also be responsible
+    for, and shall assign a central administrator the task of, accurately
+    counting, controlling, and administering the use of the CKL, including
+    without limitation, restricting its use to on-campus computing facilities,
+    except as set forth in Section 5 of this Academic Addendum, and limiting
+    its use to the academic use set forth in Section 3 of this Academic
+    Addendum.
+
+7.  Academic Server License Limited Rights. By selecting the ASL, the
+    Institution and any users of the ASL agree to the Terms and Conditions of
+    the Agreement and this Academic Addendum for use of the ASL for the
+    academic use set forth in Section 4 of this Academic Addendum. The
+    Institution is responsible for ensuring that the total number of
+    authorized concurrent users of each Program in the ASL does not exceed
+    300. The Institution shall also be responsible for, and shall assign a
+    central administrator the task of, accurately counting, controlling, and
+    administering the use of the ASL, including without limitation, limiting
+    its use to the academic use set forth in Section 4 of this Academic
+    Addendum.
+
+8.  Support.  Support requests for the CKL shall be made by the teachers or
+    the central administrator of the CKL. Support requests for the ASL shall
+    be made by the central administrator of the ASL. Support cases for
+    licenses purchased at academic prices are not eligible for treatment
+    pursuant to Section 2(o) of the Agreement.
