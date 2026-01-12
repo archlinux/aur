@@ -1,8 +1,7 @@
-# Maintainer: Bet4 <0xbet4@gmail.com>
-# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
-# Contributor: Thomas Hobson <thomas@hexf.me>
+# Maintainer Chris Werner Rau <aur@cwrau.io>
+
 pkgname=python3-yamale
-pkgver=6.0.0
+pkgver=6.0.0 # renovate: datasource=github-releases depName=23andMe/Yamale
 pkgrel=1
 pkgdesc='A schema and validator for YAML'
 arch=('any')
