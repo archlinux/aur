@@ -1,6 +1,6 @@
 # Maintainer: nhdfr  <nhdfr.dev@gmail.com>
 pkgname=tabby-cli
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A powerful terminal-based HTTP testing and stress testing tool with automated data generation capabilities."
 arch=('x86_64')
