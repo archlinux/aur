@@ -1,17 +1,17 @@
 pkgbase = jre11-temurin
 	pkgdesc = Temurin (OpenJDK 11 JRE binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 11.0.29.u7
-	pkgrel = 2
+	pkgrel = 3
 	install = jre11-temurin.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-with-classpath-exception
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-runtime=17
-	provides = java-runtime-openjdk=17
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-openjdk=17
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
 	options = !strip
 	backup = etc/jre11-temurin/security/policy/README.txt
 	backup = etc/jre11-temurin/security/policy/unlimited/default_local.policy
