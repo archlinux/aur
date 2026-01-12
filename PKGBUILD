@@ -2,7 +2,7 @@
 # Maintainer: caoticofanegas<>
 _pkgname=metube
 pkgname="${_pkgname}-git"
-pkgver=r571.c6d487e
+pkgver=r604.b179535
 pkgrel=1
 pkgdesc="Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)"
 arch=("any")
@@ -34,6 +34,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}/ui"
+    npm install
     npm ci
     ./node_modules/.bin/ng build --configuration production
 }
