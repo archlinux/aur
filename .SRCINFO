@@ -1,6 +1,6 @@
 pkgbase = docan-bin
 	pkgdesc = Docan is a universal AI chat application featuring a stunning Liquid Glass design. Connect with various AI providers and enjoy a seamless chat experience across all your devices.
-	pkgver = 1.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://gitlab.com/openlyst/docan
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = docan-bin
 	provides = docan
 	conflicts = docan
 	options = !strip
-	source = docan-bin-1.0.0.zip::https://gitlab.com/Openlyst/docan/-/jobs/12347959312/artifacts/raw/dist/docan-linux-x64.zip
+	source = docan-bin-3.0.0.zip::httphttps://gitlab.com/Openlyst/docan/-/jobs/12674147403/artifacts/raw/dist/docan-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = docan-bin

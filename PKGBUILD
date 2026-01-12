@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=docan-bin
-pkgver=1.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Docan is a universal AI chat application featuring a stunning Liquid Glass design. Connect with various AI providers and enjoy a seamless chat experience across all your devices."
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('docan')
 conflicts=('docan')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/docan/-/jobs/12347959312/artifacts/raw/dist/docan-linux-x64.zip")
+source=("${pkgname}-${pkgver}.zip::httphttps://gitlab.com/Openlyst/docan/-/jobs/12674147403/artifacts/raw/dist/docan-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
