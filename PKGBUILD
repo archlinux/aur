@@ -1,41 +1,63 @@
-# Maintainer: amateurece <ethan.twardy at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sdbusplus-git
-pkgver=r598.a8a092c0
-pkgrel=3
+pkgver=r891.663b7b7
+pkgrel=2
 pkgdesc="C++ bindings for systemd dbus APIs"
 url="https://github.com/openbmc/sdbusplus"
-arch=('i686' 'x86_64' 'aarch64')
-license=('Apache')
-depends=('systemd-libs' 'python-mako' 'python-inflection' 'python-yaml')
-makedepends=('git' 'meson' 'python-setuptools')
+arch=($CARCH)
+license=('Apache-2.0')
+depends=(
+    "sh"
+    "gcc-libs"
+    "glibc"
+    "nlohmann-json"
+    "python"
+    "python-inflection"
+    "python-jsonschema"
+    "python-mako"
+    "python-yaml"
+    "systemd-libs"
+    # AUR
+    stdexec
+)
+makedepends=(
+    "boost"
+    "boost-libs"
+    "cmake"
+    "git"
+    "gtest"
+    "meson"
+    "ninja"
+    "pkgconf"
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
 source=("${pkgname}::git+https://github.com/openbmc/sdbusplus.git")
 sha256sums=('SKIP')
 
-_meson_setup() {
-    arch-meson -Dtests=disabled -Dexamples=disabled "${pkgname}" build
-}
-
-prepare() {
-    _meson_setup
-}
-
 pkgver() {
-    cd "${pkgname}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
-    _meson_setup
+    arch-meson ${pkgname} build
     meson compile -C build
 
     # Python tools
     cd "${pkgname}/tools"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     meson install -C build --destdir "$pkgdir"
     cd "${pkgname}/tools"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
