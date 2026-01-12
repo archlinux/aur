@@ -3,14 +3,17 @@
 _pkgauthor=zhboner
 _pkgname=realm
 pkgname=${_pkgname}-bin
-pkgver=2.9.2
-pkgrel=2
-_pkgvername=v${pkgver}-${pkgrel}
+pkgver=2.9.3
+pkgrel=1
+_pkgvername=v${pkgver}
 pkgdesc="A simple, high performance relay server written in rust."
+
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 provides=("${_pkgname}")
@@ -32,7 +35,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('7d232b4125b518eb4527d1933cbe20e6d87b865213b9c561faade007326fd9d3'
-            '25702b94a3f04271295ed8bc41f47d2fb06c5673eb139785d96e1bdb03a03f0d'
+            'cea03b83f51791dde30b94837411f5c4b1d6e25fb323bde4a262c42f5a9f3ced'
             '7418b370c51cbd86862e19acd0cbbe08102f76f77a0e9347029216ceeda517d0'
             '69948ec56300d0c5a9e182a9bf7804e2af1bf6439a3dabb1687356e565946d9d'
             '4868e52fc35321ec2efaa56173d6c694f62063834bb9d176458dd39d389b69d7'
@@ -43,8 +46,8 @@ sha256sums=('7d232b4125b518eb4527d1933cbe20e6d87b865213b9c561faade007326fd9d3'
             'bf121e39bc882447349e25332f4d27a47a3cb72a19451739603205cfb333bb8f'
             '4a8d9aaf9910d34085d5f57ad9077657708f6474f7979b460673a1ad3bb002e1'
             'f9c220478250e6830e6ca7fef4f82f20467f9a2ee2825a9d371f61be923cfeef')
-sha256sums_x86_64=('d0237894fc4985728d8d8ab568807b4e1f135ba29bbab4f12fc16c74b9de670c')
-sha256sums_aarch64=('a9bf3a6807277168ee136d8360c973b02cd19f269c82329c43b3fc9957626617')
+sha256sums_x86_64=('2eba86f1a1e47c1bfe9d6fd682ef8667bd05e57c3aeb0ec37806aabe2ce74a0c')
+sha256sums_aarch64=('9937daacdcdfcac9fd78d25819f2de0a5c3357c2c49e686679d812343ab8661e')
 
 
 prepare() {

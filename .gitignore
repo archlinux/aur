@@ -1,5 +1,6 @@
 *
-!*.service
+!.nvchecker.toml
 !.gitignore
+!*.service
 !PKGBUILD
 !.SRCINFO
