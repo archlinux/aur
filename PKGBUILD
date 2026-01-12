@@ -6,7 +6,7 @@ _buildver="25.30.17"
 # Basic package settings
 pkgname="zulu-jre25-fx"
 pkgver="$_jrever+$_buildver"
-pkgrel=3
+pkgrel=1
 pkgdesc="An open source, TCK-tested and certified build of OpenJDK (full-runtime environment with OpenJFX included)."
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception" "GPL-2.0-or-later")
