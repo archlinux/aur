@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=1.29.3
+pkgver=1.29.4
 pkgrel=1
 pkgdesc="The cross-platform open-source app built for handwriting.(Prebuilt version)"
 arch=(
@@ -17,8 +17,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'libsecret'
-    'gstreamer'
-    'gst-plugins-base-libs'
     'webkit2gtk-4.1'
     'libxmu'
 )
@@ -28,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('9ce1ed5b34f1de7f902c0d23b6309bb9ca1b328e2810b5343ae58f8c460ebf9f')
-sha256sums_x86_64=('4b543902488131da01470b0a3edbb7e1e80c6b9742b98678ac04e705a785d5ce')
+sha256sums_aarch64=('5840cb1f2dcefb323fa7a20786d80cb585cc2bb0b949a4ffe77fbab04be14c33')
+sha256sums_x86_64=('8b633a26b453f42a1ce3867116185ddb5defc98144e190c79ea12b452bf55397')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
