@@ -1,11 +1,12 @@
 # Maintainer: Israel Roldan <israel.alberto.rv@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Matthias Ellmer (halcyon)
 
 pkgname=duc-git
 pkgver=1.5.0.rc1.r0.ga58fa4e
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools for inspecting and visualizing disk usage (git version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://duc.zevv.nl/"
 license=('GPL2')
 depends=('cairo' 'pango' 'sqlite' 'ncurses')
