@@ -1,7 +1,7 @@
 pkgbase = gremux
 	pkgdesc = Declarative tmux session manager
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leogabac/gremux
 	arch = any
 	license = GPL2
