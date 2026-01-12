@@ -11,7 +11,7 @@ pkgver() {
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
 arch=("x86_64")
@@ -37,5 +37,4 @@ package() {
     install -Dm0644 "internal/icons/hicolor/256x256/apps/dev.dergs.tidalwave.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
     install -Dm0644 "internal/settings/dev.dergs.tidalwave.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
     install -Dm0644 "build/dev.dergs.tidalwave.desktop" -t "$pkgdir/usr/share/applications"
-    glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
 }

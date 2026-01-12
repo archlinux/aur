@@ -1,7 +1,7 @@
 pkgbase = tidalwave-git
 	pkgdesc = Unofficial native GTK4 / Adwaita music streaming client for TIDAL
 	pkgver = r335.c1ac176
-	pkgrel = 1
+	pkgrel = 3
 	url = https://codeberg.org/dergs/TidalWave
 	arch = x86_64
 	license = GPL-3.0-or-later
