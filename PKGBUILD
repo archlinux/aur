@@ -2,29 +2,27 @@
 # Contributer: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 
 pkgname=lsplug
-pkgver=5
-pkgrel=1
+pkgver=4
+pkgrel=2
 pkgdesc="Nicer version of lsusb"
 arch=('any')
 url="https://git.sr.ht/~martijnbraam/lsplug"
 license=('custom:MIT')
 depends=('python' 'hwdata')
 makedepends=(python-build python-installer python-wheel python-setuptools)
-# source=("https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
-source=("https://git.sr.ht/~martijnbraam/lsplug/archive/3ce22848fcd426bd27cc3a8d0a1592e465b826a5.tar.gz")
-sha512sums=('b91190cb234e158322e2bb24a9771a3682b52d5c0441fe46b7e7328f7c5e2d90295335cb67b54c75aeca300df836a1a111d9bcaf4a3d2666ae065f9a93a3b6d2')
+source=("https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
+sha512sums=('d88472005ee4f42ef5c6f9a457fb202598625ec2c0b3fb633e80f901edf82456d93131a6628203fb843ae162a2113c3c6bc3654c1d3b0ff34736e0893363089c')
 
-# _dir="${pkgname}-${pkgver}"
-_dir=lsplug-3ce22848fcd426bd27cc3a8d0a1592e465b826a5
+_dir="${pkgname}-${pkgver}"
 
 build() {
-cd "$srcdir/$_dir"
+cd $_dir
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-cd "$srcdir/$_dir"
+cd $_dir
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
