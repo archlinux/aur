@@ -1,0 +1,6 @@
+# Ignore build artifacts
+*.tar.gz
+*.pkg.tar.zst
+pkg/
+src/
+navcoin.png
