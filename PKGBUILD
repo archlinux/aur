@@ -1,5 +1,5 @@
 # Maintainer: Narayan Lima da Silva <narayan.song@gmail.com>
-# Former Contributor: Tales Mendonça <talesam@gmail.com>
+# Former Contributer: Tales Mendonça <talesam@gmail.com>
 
 pkgname=tac-writer
 pkgdesc="Academic writing assistant using the Continuous Argumentation Technique (CAT)"
@@ -20,7 +20,8 @@ depends=(
     'hunspell-pt-br'
     'hunspell-en_us'
     'hunspell-es_any'
-    'python-pylatex'
+    'python-pylatex-git'
+    'texlive-langportuguese'
 )
 makedepends=('gettext')
 optdepends=(
@@ -96,6 +97,14 @@ package() {
             cp -a "${srcdir}/${dir}" "${pkgdir}/"
         fi
     done
+
+    # Install symbolic icons
+    if [ -d "${srcdir}/tac-writer/icons/hicolor" ]; then
+        echo "Instalando ícones simbólicos adicionais..."
+        install -d "${pkgdir}/usr/share/icons/hicolor"
+        
+        cp -a "${srcdir}/tac-writer/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
+    fi
 
     # Install license file if present
     if [ -f "LICENSE" ]; then
