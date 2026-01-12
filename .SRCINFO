@@ -1,10 +1,10 @@
 pkgbase = vendor-reset-dkms-git
 	pkgdesc = Kernel module for vendor-specific hardware reset routines.
-	pkgver = r94.6140e2f
-	pkgrel = 1
+	pkgver = r117.084881c
+	pkgrel = 2
 	url = https://github.com/gnif/vendor-reset
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
 	conflicts = vendor-reset-git
@@ -12,4 +12,3 @@ pkgbase = vendor-reset-dkms-git
 	md5sums = SKIP
 
 pkgname = vendor-reset-dkms-git
-

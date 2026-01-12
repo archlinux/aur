@@ -1,4 +1,4 @@
-# Maintainer: zaszi <admin@zaszi.net>
+# Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
 
 _pkgbase=vendor-reset
 pkgname=vendor-reset-dkms-git
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Kernel module for vendor-specific hardware reset routines."
 arch=('any')
 url="https://github.com/gnif/vendor-reset"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
 conflicts=('vendor-reset-git')
@@ -18,8 +18,8 @@ pkgver() {
     cd "${_pkgbase}"
     (
         set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
