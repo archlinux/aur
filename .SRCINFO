@@ -1,6 +1,6 @@
 pkgbase = quickshell-allflags-git
 	pkgdesc = QtQuick based desktop shell toolkit - All features enabled (git version)
-	pkgver = r715.41828c4
+	pkgver = r722.bcc3d42
 	pkgrel = 1
 	url = https://quickshell.outfoxxed.me/
 	arch = x86_64

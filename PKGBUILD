@@ -1,6 +1,6 @@
 # Maintainer: Mohammad Qaddoumi <mqaddumi.7994kohaa@gmail.com>
 pkgname=quickshell-allflags-git
-pkgver=r715.41828c4  # This will be auto-updated
+pkgver=r722.bcc3d42  # This will be auto-updated
 pkgrel=1
 pkgdesc="QtQuick based desktop shell toolkit - All features enabled (git version)"
 arch=('x86_64')
