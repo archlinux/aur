@@ -1,0 +1,23 @@
+pkgbase = formal-desktop-bin
+	pkgdesc = The Formal Desktop app for Linux - database access control and security
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://joinformal.com
+	arch = x86_64
+	arch = aarch64
+	license = custom:proprietary
+	depends = gtk3
+	depends = glibc
+	depends = libayatana-appindicator
+	depends = libsecret
+	depends = libx11
+	provides = formal-desktop
+	provides = formal
+	conflicts = formal-desktop
+	options = !strip
+	source_x86_64 = formal-desktop-0.5.5-x86_64.deb::https://static-assets.formalcloud.net/desktop-app/linux/formal-desktop_0.5.5_amd64.deb
+	sha256sums_x86_64 = 9a37fa0eed061e87d88f0af64c798ee44edaf5c5b568e71c57ea50b70ad6b37e
+	source_aarch64 = formal-desktop-0.5.5-aarch64.deb::https://static-assets.formalcloud.net/desktop-app/linux/formal-desktop_0.5.5_arm64.deb
+	sha256sums_aarch64 = 993c6a41dd0cb8a82ca06bac4feb42da12f66d21590d31a8a944a13b42f0a82c
+
+pkgname = formal-desktop-bin
