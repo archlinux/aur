@@ -2,7 +2,7 @@
 
 pkgname=ufolint
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='UFO source file linter'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
