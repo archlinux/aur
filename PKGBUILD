@@ -13,7 +13,8 @@ license=("GPL2")
 arch=("x86_64")
 provides=("$_pkgname")
 conflicts=("$_pkgname"
-	   "$_pkgname-git")
+	   "$_pkgname-git"
+	   "$_pkgname-appimage-wayland")
 replaces=()
 depends=("ffmpeg"
          "sdl2"
