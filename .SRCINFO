@@ -1,0 +1,16 @@
+pkgbase = great-matcha-git
+	pkgdesc = Systemd units checks if dayNight for location. Updates alacritty theme
+	pkgver = r31.e2cc3ce
+	pkgrel = 1
+	url = https://github.com/christophermca/great-matcha
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = redshift
+	depends = awk
+	depends = bash
+	depends = alacritty-use-theme-git
+	source = great-matcha-git::git+https://github.com/christophermca/great-matcha.git
+	md5sums = SKIP
+
+pkgname = great-matcha-git
