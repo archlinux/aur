@@ -1,0 +1,23 @@
+pkgbase = libxml2-meson-git
+	pkgdesc = The XML C parser and toolkit of Gnome - pkgbuild tweaked to build w/ meson instead of autotools
+	pkgver = 2.15.1.r39.g4c3f00ba
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	depends = glibc
+	depends = icu
+	depends = sh
+	depends = xz
+	depends = zlib
+	provides = libxml2=2.15.1.r39.g4c3f00ba
+	provides = libxml2.so
+	conflicts = libxml2
+	source = git+https://gitlab.gnome.org/GNOME/libxml2.git
+	sha256sums = SKIP
+
+pkgname = libxml2-meson-git
