@@ -6,7 +6,7 @@ pkgdesc="A Terminal User Interface (TUI) manager for EnvyControl - Easy GPU swit
 arch=('x86_64')
 url="https://github.com/tassiovirginio/try-rs"
 license=('MIT') 
-depends=()
+depends=('envycontrol')
 source=(
   "envy-tui-v${pkgver}-linux-x86_64.tar.gz::https://github.com/tassiovirginio/envy-tui/releases/download/v${pkgver}/envy-tui-v${pkgver}-linux-x86_64.tar.gz"
 )
