@@ -12,7 +12,7 @@ index 217606942..e2bbb7dd9 100644
  function copyBundledConfig(file: ConfigFileName, dest: string) {
    log.info(`Copying bundled config ${file} to ${dest}.`);
 diff --git a/apps/studio/src/common/platform_info/mainPlatformInfo.ts b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
-index 009a8948b..a7de9a899 100644
+index 067703967..3273f0c09 100644
 --- a/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 +++ b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 @@ -52,7 +52,7 @@ export function mainPlatformInfo(): IPlatformInfo {

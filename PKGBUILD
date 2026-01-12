@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.4.12'
+pkgver='5.5.3'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only AND LicenseRef-BeekeeperStudioApplicationEULA')
-_electronpkg='electron31'
+_electronpkg='electron32'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
 provides=("$pkgname-ultimate=$pkgver")
@@ -22,12 +22,12 @@ source=(
 	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('06a2f74d56861c764e813f884eeee85cb96e1679f72fa1f94a56fb5f6f91d1ae7b8f7a5d451a26297b8c882e93cd9342c3f9838101617056e20bf0aa54768330'
+b2sums=('306a2880c8ea4e4aabc549a3982cdb3403f807c23a8fd4a3ec8b80a7c82e27cf8d8cc79cc742cad33c9f815805e52bef2a611174d0d08bf08f0ecc72d6161cb5'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
         'd48563db28f1b60f28dceaeb6a4e3864808a394b1ac9a37b1ee7a7efa09c6b271d157fc5fe9b11a1c7df309b714245607666dc568ffe3dd21e61e077a3bcd674'
-        'd6c254a87121792caed6be8619aa51d2dc362342e31bc4268d37cfb72d4e827ad3191b88c3cac25bd7edec7ef47db168dbf1e3b27176efa07d8db4c04a537a76'
+        'bd2086856e6d42964f6a29051d4d9b732f6be7706c6a181e4193e45bcd39b5613a408d4780dc5a71f44d698ece0068132d135755c5f7fe80fd1ca03cc4b30aaa'
         '258e8f585fc7f96f4964e9bddd79d7450b028611d63850934361d99e25a37eddcbf7effe3479826f1e508ae4b524870bc2a10b884c8e7bfeb6e298e30e555837'
-        'c6e79c184920f1b04f49050eaedb4d1797131b9dcea26427f8b2608e4b2c08ce97a731b725159392a4b165e29bb48ca91195e5f2cb8bf17741d8478db9637ed5'
+        '1ac5688a883c5ade4e72990901dd4a8308594b3a3864e576f6af9e0f638b532f22f0aafac246a5462b3a81e6775d054341f70aa644d12f89bb1f78365ecbc479'
         '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
         'e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd')
 
