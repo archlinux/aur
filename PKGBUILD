@@ -5,7 +5,7 @@ _jrever="11.0.29+7"
 # Basic package settings
 pkgname="jre11-temurin"
 pkgver="${_jrever/+/.u}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Temurin (OpenJDK 11 JRE binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=("x86_64" "aarch64")
 license=("GPL-2.0-with-classpath-exception")
@@ -14,10 +14,10 @@ depends=(
     "ca-certificates-utils"
 )
 provides=(
-    "java-runtime=17"
-    "java-runtime-openjdk=17"
-    "java-runtime-headless=17"
-    "java-runtime-headless-openjdk=17"
+    "java-runtime=11"
+    "java-runtime-openjdk=11"
+    "java-runtime-headless=11"
+    "java-runtime-headless-openjdk=11"
 )
 options=("!strip")
 install="$pkgname.install"
@@ -32,7 +32,6 @@ sha256sums_aarch64=("8e4c0bb2488f8abd0379b660963ed981b1e136b975f3faf562e07cce819
 _jvmdir="usr/lib/jvm/$pkgname"
 _confdir="etc/$pkgname"
 _legaldir="usr/share/licenses/$pkgname"
-_mandir="usr/share/man"
 
 # Backup config files
 backup=(
@@ -70,8 +69,4 @@ package() {
     # Link JKS keystore from ca-certificates-utils
     rm "$pkgdir/$_jvmdir/lib/security/cacerts"
     ln -s "/etc/ssl/certs/java/cacerts" "$pkgdir/$_jvmdir/lib/security/cacerts"
-
-    # Install man pages
-    cd "$pkgdir/$_jvmdir/man"
-    find "." -type f -exec install -Dm644 "{}" "$pkgdir/$_mandir/{}" \;
 }
