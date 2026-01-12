@@ -1,5 +1,5 @@
 pkgbase = azahar-appimage-wayland
-	pkgdesc = Azahar is an open-source 3DS emulator project based on Citra. (already compiled)
+	pkgdesc = Azahar is an open-source 3DS emulator project based on Citra. (already compiled, wayland version)
 	pkgver = 2123.4.1
 	pkgrel = 1
 	epoch = 1
