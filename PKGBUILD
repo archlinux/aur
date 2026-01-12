@@ -12,7 +12,7 @@ source=("https://github.com/adasjusk/OrangLaunch/releases/download/1.0-Linux/lau
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
-sha256sums=('e197c03e8cb9d5186d584fef735eb41b7258d5e3d722322d773b5d92b76de1ff' '492cc9664faf4145bd2531ad4574578c20fbff5958150f4f8c43ff6a2d66eed4' 'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968' '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
+sha256sums=('e197c03e8cb9d5186d584fef735eb41b7258d5e3d722322d773b5d92b76de1ff' '5fbe96d3f3d3d01a91693edf1544701d2da46b7f07d5d037495371e96bae8bf4' 'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968' '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
 
 package() {
     install -d "$pkgdir/usr/lib/oranglauncher"
