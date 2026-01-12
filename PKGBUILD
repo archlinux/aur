@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=python-zftools
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sagemath package to calculate zero forcing number of graphs'
 arch=('x86_64')
 url='https://github.com/alexhutman/zftools'

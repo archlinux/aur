@@ -1,7 +1,7 @@
 pkgbase = python-zftools
 	pkgdesc = Sagemath package to calculate zero forcing number of graphs
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexhutman/zftools
 	arch = x86_64
 	license = GPL-3.0-only
