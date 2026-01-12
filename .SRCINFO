@@ -1,0 +1,14 @@
+pkgbase = gowebgtkit
+	pkgdesc = Ankor applications Gui written in go
+	pkgver = v0.0.1
+	pkgrel = 0
+	url = https://github.com/pumenis/random-access-ogb
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = zenity
+	source = git+https://github.com/pumenis/gowebgtkit.git#tag=v0.0.1
+	sha256sums = f6f05752805254500e740151b9b6e5525ee5ab79a2c3c3a397aba2d03e60b96c
+
+pkgname = gowebgtkit
