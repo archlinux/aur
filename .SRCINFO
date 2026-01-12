@@ -1,16 +1,16 @@
 pkgbase = graft-bin
 	pkgdesc = Agentless deployment tool extending Docker Compose to cloud via SSH
-	pkgver = 2.2.2_beta.9
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/skssmd/graft
 	license = MIT
 	conflicts = Graft
 	provides = Graft
 	arch = aarch64
-	source_aarch64 = https://github.com/skssmd/Graft/releases/download/v2.2.2-beta.9/Graft_2.2.2-beta.9_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2cd31e4d59c106b53c9a12e79ae32097b8ea996474164cfadbf529789f2ebf9f
+	source_aarch64 = https://github.com/skssmd/Graft/releases/download/v${pkgver}/Graft_${pkgver}_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a78142e01b0a9dfbb36c433aacae6f8785f435b0652b788c29986875002d8bb
 	arch = x86_64
-	source_x86_64 = https://github.com/skssmd/Graft/releases/download/v2.2.2-beta.9/Graft_2.2.2-beta.9_Linux_amd64.tar.gz
-	sha256sums_x86_64 = e301a8820ededc7fd12843b8267c31c96446a172a3968f5806079bc49646e5fb
+	source_x86_64 = https://github.com/skssmd/Graft/releases/download/v${pkgver}/Graft_${pkgver}_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b233490fa05608c59375df48ae2198f83f4616bed15b1b2a592fa836e9ca07b
 	
 pkgname = graft-bin
