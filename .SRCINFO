@@ -1,6 +1,6 @@
 pkgbase = m3wal
 	pkgdesc = Material 3 Color Scheme Generator from Wallpaper
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/MDiaznf23/m3wal
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = m3wal
 	depends = python-pillow
 	depends = python-numpy
 	depends = feh
-	source = https://files.pythonhosted.org/packages/source/m/m3wal/m3wal-1.0.1.tar.gz
-	sha256sums = 3f0bed1ef0c3350eb66125c1218b3d9e13e0162890221b5139c52840da4b7a8e
+	source = https://files.pythonhosted.org/packages/source/m/m3wal/m3wal-1.1.1.tar.gz
+	sha256sums = 44039ccfc23e619c1df9d5c7d3d733dea69f86b98f025a54aba793397f238282
 
 pkgname = m3wal
