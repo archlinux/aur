@@ -1,7 +1,7 @@
 pkgbase = gtk-meshtastic-client
 	pkgdesc = An unofficial client for Meshtastic devices in GTK4/Libadwaita
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kop316/gtk-meshtastic-client
 	arch = any
 	license = GPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = gtk-meshtastic-client
 	depends = libadwaita
 	depends = libshumate
 	depends = python
+	depends = python-gobject
 	depends = python-meshtastic
 	depends = python-pypubsub
 	depends = python-pyqrcode

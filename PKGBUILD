@@ -1,6 +1,6 @@
 pkgname=gtk-meshtastic-client
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An unofficial client for Meshtastic devices in GTK4/Libadwaita'
 arch=(any)
 url='https://gitlab.com/kop316/gtk-meshtastic-client'
@@ -12,6 +12,7 @@ depends=(
     libadwaita
     libshumate
     python
+    python-gobject
     python-meshtastic
     python-pypubsub
     python-pyqrcode
