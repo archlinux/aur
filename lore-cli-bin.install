@@ -1,0 +1,12 @@
+post_upgrade() {
+    echo "==> If the lore daemon was running, restart it with:"
+    echo "      systemctl --user restart lore"
+    echo "    Or:"
+    echo "      lore daemon stop && lore daemon start"
+}
+
+post_remove() {
+    echo "==> To stop the lore daemon:"
+    echo "      systemctl --user stop lore"
+    echo "      systemctl --user disable lore"
+}
