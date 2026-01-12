@@ -1,6 +1,6 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
-	pkgver = 0.27.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://www.eventd.org
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = eventd
 	makedepends = docbook-xsl
 	depends = cairo>=1.12.0
 	depends = gdk-pixbuf2
-	depends = glib2>=2.40.0
+	depends = glib2>=2.66.0
 	depends = glib-networking
 	depends = pango
 	depends = libsystemd
@@ -30,10 +30,10 @@ pkgbase = eventd
 	optdepends = avahi: DNS-SD support
 	optdepends = gssdp: SSDP support
 	optdepends = librsvg: SVG images support
-	optdepends = libsoup: WebSocket support
+	optdepends = libsoup3: WebSocket support
 	options = !strip
-	source = https://www.eventd.org/download/eventd/eventd-0.27.0.tar.xz
-	sha256sums = 986b167ab54f89b59e9263d976a166d78ff67ffde8ee15ad1dbff68a451a30c9
+	source = https://www.eventd.org/download/eventd/eventd-0.29.0.tar.xz
+	sha256sums = 25919f1934a2c809b0dbc035a74f28b726aec50386e0c441795ecd02abcbe23e
 
 pkgname = eventd
 
