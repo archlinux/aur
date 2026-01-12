@@ -1,6 +1,6 @@
 pkgbase = hytale-launcher-bin
 	pkgdesc = Hytale Launcher (Native Linux, Self-Updating)
-	pkgver = 2026.01.11.e98ae09
+	pkgver = 2026.01.11.b022ef5
 	pkgrel = 1
 	url = https://hytale.com
 	install = hytale-launcher.install
@@ -19,7 +19,7 @@ pkgbase = hytale-launcher-bin
 	depends = glib2
 	options = !strip
 	options = !debug
-	source = hytale-launcher.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-2026.01.11-e98ae09.zip
+	source = hytale-launcher.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-2026.01.11-b022ef5.zip
 	source = hytale-launcher.install
 	source = hytale-launcher.sh
 	source = com.hypixel.HytaleLauncher.png

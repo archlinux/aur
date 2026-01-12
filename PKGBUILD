@@ -2,7 +2,7 @@
 # Maintainer: SCDevel <root@scdevel.net>
 
 pkgname=hytale-launcher-bin
-pkgver=2026.01.11.e98ae09
+pkgver=2026.01.11.b022ef5
 pkgrel=1
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
 url="https://hytale.com"
