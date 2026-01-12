@@ -1,7 +1,7 @@
 pkgbase = python-foundrytools
 	pkgdesc = A library to work with fonts in Python (exctracted from ftcli)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ftCLI/FoundryTools
 	arch = any
 	license = MIT
