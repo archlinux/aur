@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Alessio <alessio@linux.com>
 # Contributor: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=archivebox-git
-pkgver=0.8.5rc53.r247.c3024815
+pkgver=0.8.5rc53.r486.eaf72563
 pkgrel=1
 pkgdesc="Create a local, staticm browsable archive of websites."
 arch=('x86_64' 'i686')
 url="https://github.com/pirate/ArchiveBox/"
 #depends=('python' 'git' 'wget' 'curl' 'youtube-dl' 'chromium')
-depends=('python' 'python-abx' 'python-abx-pkg' 'python-abx-spec-abx-pkg' 'python-abx-spec-archivebox' 'python-abx-spec-config' 'python-abx-spec-django' 'python-abx-spec-searchbackend' 'python-atomicwrites' 'python-base32_crockford' 'python-benedict' 'python-click' 'python-daphne' 'python-dateparser' 'python-django' 'python-django-stubs-ext' 'python-feedparser' 'python-pluggy' 'python-pydantic' 'python-pydantic-core' 'python-pydantic-settings' 'python-python-crontab' 'python-requests' 'python-rich' 'python-rich-click' 'python-toml' 'python-urllib3' 'python-w3lib')
+depends=('python' 'python-abx-pkg' 'python-atomicwrites' 'python-base32_crockford' 'python-benedict' 'python-click' 'python-daphne' 'python-dateparser' 'python-dateutil' 'python-django' 'python-django-stubs-ext' 'python-feedparser' 'python-pydantic' 'python-pydantic-core' 'python-pydantic-settings' 'python-python-crontab' 'python-requests' 'python-rich' 'python-rich-click' 'python-toml' 'python-urllib3' 'python-w3lib')
 makedepends=('git' 'python-build' 'python-installer' 'python-pdm-backend')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
