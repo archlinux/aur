@@ -1,3 +1,2 @@
 # Path                    Mode UID    GID    Age Argument
-d /opt/beszel-agent       0755 beszel beszel -   -
 d /var/lib/beszel-agent   0755 beszel beszel -   -

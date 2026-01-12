@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -22,7 +22,7 @@ source+=(
 )
 sha256sums=('1aa27e4100bdd4f5c4679fd0ae6a79e88ed5cb6545d457c1c9cc660a38687215'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
-            '823448a308c7329431ae713ab98a5c8cea2a00528177f3d31aa3f5eb6c4a751e'
+            '1cce5d8090440858a5b537e5e43884d51da240317f5c062559daab1f9d3d22bf'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
 sha256sums_x86_64=('ed4123ceeda41b04b741c2d29370961de12f4e29fb239fcaf5df2a0e2695d02e')
 sha256sums_aarch64=('e4897c02ca03e392ddeeb255f58e658b34e47e2b451048a1344909d5d8a21c35')
@@ -43,7 +43,9 @@ package() {
 
   install -d "$pkgdir/opt/beszel-agent"
   tar -xz -C "$pkgdir/opt/beszel-agent" -f beszel-agent_linux_* --strip-components=0
+  chown -R root:root "$pkgdir/opt/beszel-agent"
   chmod 0755 "$pkgdir/opt/beszel-agent/beszel-agent"
+  install -Dm644 "$pkgdir/opt/beszel-agent/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/beszel-agent/beszel-agent "$pkgdir/usr/bin/beszel-agent"
