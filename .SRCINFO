@@ -1,0 +1,18 @@
+pkgbase = python-algoritmia
+	pkgdesc = A library of algorithms and data structures for course EI1022/MT1022 (UJI)
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://github.com/DavidLlorens/algoritmia
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.12
+	depends = python-easypaint
+	source = https://files.pythonhosted.org/packages/source/a/algoritmia/algoritmia-4.0.6.tar.gz
+	sha256sums = c38b26ef3d360e1dc0fdd667acf8189ae785d97b0da4fbddae96465952108dcf
+
+pkgname = python-algoritmia
