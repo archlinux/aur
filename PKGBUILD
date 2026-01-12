@@ -8,7 +8,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-glib2
-pkgver=2.84.3
+pkgver=2.86.3
 pkgrel=1
 arch=('any')
 pkgdesc="Low level core library (Android ${_android_arch})"
@@ -22,7 +22,7 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
-md5sums=('8f61227d9a981f435841dca7666715fe')
+md5sums=('2383dcdbf3eeb35d9ab005532fb256ba')
 
 build() {
     cd "${srcdir}/glib-${pkgver}"
@@ -63,4 +63,6 @@ package() {
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.a"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.so"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/gio-launch-desktop"
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
