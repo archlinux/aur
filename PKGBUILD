@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-: "${_fragment:=tag=v182}"
+: "${_fragment:=tag=v183}"
 
-pkgver=182
+pkgver=183
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -13,15 +13,14 @@ license=('MIT')
 makedepends=(
 	git
 	go
-	# deno
-	pnpm
+	deno
 )
 
 source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('dcc9ed2f9226a97d9e5ab297304b5cd565105010f47fb9aae034505d813e4e19'
+sha256sums=('ce600786a902afc36b12ac882405bd4656a5ee0b68cae5eaab29703e3b585ded'
             '8f247fec3e347c212006415e23260a4851ccc435ea3fe0b2c7eaed12b49c406c')
 
 pkgver() {
@@ -30,11 +29,10 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	go mod vendor
+	go mod download
 
 	cd ui
-	# deno install --npm
-	pnpm install
+	deno install --npm
 }
 
 build() {
@@ -43,7 +41,7 @@ build() {
 	local build_opts=(
 		-v
 		-trimpath
-		-mod=vendor
+		-modcacherw
 		-buildmode=pie
 		-ldflags="
 			-linkmode external
@@ -54,8 +52,7 @@ build() {
 		"
 	)
 
-	# deno task --cwd=ui build
-	pnpm -C ui run build
+	deno task --cwd=ui build
 	go build "${build_opts[@]}"
 }
 
