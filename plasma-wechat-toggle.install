@@ -1,0 +1,26 @@
+post_install() {
+    echo ""
+    echo "==> plasma-wechat-toggle 安装完成"
+    echo ""
+    echo "  使用方法: 运行 plasma-wechat-toggle 命令切换微信窗口"
+    echo ""
+    echo "  功能说明:"
+    echo "    - 无微信窗口时: 点击托盘图标打开微信"
+    echo "    - 窗口最小化或被遮挡时: 激活并显示窗口"
+    echo "    - 窗口已在前台时: 关闭窗口"
+    echo ""
+    echo "  环境要求:"
+    echo "    - KDE Plasma 6 + Wayland"
+    echo "    - 微信需在托盘运行"
+    echo ""
+    echo "  绑定快捷键:"
+    echo "    1. 打开 系统设置 -> 键盘 -> 快捷键"
+    echo "    2. 点击底部 '添加应用程序...'"
+    echo "    3. 命令填写: /usr/bin/plasma-wechat-toggle"
+    echo "    4. 点击 '添加自定义快捷键' 并按下想要的组合键 (如 Meta+W)"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
