@@ -1,15 +1,15 @@
 pkgbase = navicat17-premium-zh-cn
 	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
-	pkgver = 17.3.5
-	pkgrel = 2
+	pkgver = 17.3.6
+	pkgrel = 1
 	url = https://www.navicat.com.cn/products/navicat-premium
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	options = !strip
-	source_x86_64 = navicat17-premium-cs-x86_64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage
+	source_x86_64 = navicat17-premium-cs-x86_64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage
 	sha512sums_x86_64 = 8adf6324be2d10928256f0d7ddde46b8f79bf218031653094596028f35d0319c154f9fba5834635d69f946bfebbd495a15df7b3ac0c588f6aeee71310606d0cd
-	source_aarch64 = navicat17-premium-cs-aarch64-17.3.5.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-aarch64.AppImage
+	source_aarch64 = navicat17-premium-cs-aarch64-17.3.6.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-aarch64.AppImage
 	sha512sums_aarch64 = fb6c6cdf54f7ba4d0233830f9a0acef8e3b147ece03a00ba1078b7a733033713c7594239545fad6b649aeb2af912d99d594c19930b72cdd2ae3f52aec2e8b98a
 
 pkgname = navicat17-premium-zh-cn
