@@ -1,11 +1,11 @@
 pkgbase = sddm-silent-theme
 	pkgdesc = Highly customizable SDDM theme
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uiriansan/SilentSDDM
 	install = warning.install
 	arch = any
-	license = GPL-2.0-only
+	license = GPL-3.0-only
 	depends = sddm
 	depends = qt6-svg
 	depends = qt6-virtualkeyboard
