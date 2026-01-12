@@ -1,19 +1,24 @@
 pkgbase = buku-git
-	pkgdesc = Powerful command-line bookmark manager.
-	pkgver = 4.8.r7.gdb054e1
+	pkgdesc = Bookmark manager like a text-based mini-web
+	pkgver = 5.1.r4.ge232ac3
 	pkgrel = 1
-	url = https://github.com/jarun/Buku
+	url = https://github.com/jarun/buku
 	arch = any
 	license = GPL3
-	makedepends = make
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = git
-	depends = python>=3.9
+	depends = ca-certificates
 	depends = python-beautifulsoup4
 	depends = python-cryptography
-	depends = python-urllib3
-	depends = python-certifi
 	depends = python-html5lib
-	provides = buku=4.8
+	depends = python-urllib3
+	optdepends = wl-clipboard: to copy text in wayland
+	optdepends = xsel: to copy text in xorg
+	optdepends = xclip: to copy text in xorg
+	provides = buku=5.1
 	conflicts = buku
 	source = git+https://github.com/jarun/buku.git
 	md5sums = SKIP
