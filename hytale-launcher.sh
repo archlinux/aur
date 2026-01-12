@@ -61,3 +61,8 @@ fi
 # Switch to the directory and run it
 cd "$LAUNCHER_DIR"
 exec ./$BIN_NAME "$@"
+
+# Run Debug mode if requested
+if [ "$1" == "--debug" ]; then
+    exec "$SOURCE_DIR/hytale-debug.sh "$@"
+fi
