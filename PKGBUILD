@@ -2,8 +2,8 @@
 # Maintainer: SCDevel <root@scdevel.net>
 
 pkgname=hytale-launcher-bin
-pkgver=2026.01.11.b022ef5
-pkgrel=3
+pkgver=2026.01.12.e43ec47
+pkgrel=1
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
 url="https://hytale.com"
 license=('LicenseRef-custom')
@@ -28,9 +28,9 @@ source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/bu
         "LICENSE")
 
 # generated with: updpkgsums
-sha256sums=('fbe201c5ad79b40fbd48db01c54d625b6283f97d753f1b9173018a7e7f0fe301'
-            '03f80d97980eb8a4c7b621a4b205aa2d02d6b248cec04f5f1b4d1241f4a3014b'
-            '003dc88078a1d82f309888f420ee41af05087f988e4fb5210351a57aa4e6bb8b'
+sha256sums=('e3ff4eca14932ef7051dad5f1a9a646aca72b4b62f7ea263faa6f92fc03b76ab'
+            '478fab131e10b31197bcfd37771d1475b4617bbaca7bf8c8e31c1a49824a21e5'
+            'a18db6af83c29e19d5b79274380b0c570631979b2724e72d4c356090fab51c3f'
             'ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106'
             '8aa7dc98faa3a094f5a2ae8c0ad1ff7a65d295b8b3705c5707ec184570d67195'
             '5782bcd7945501383cd6b589797549318cb8e494047c31944fc326ff51ae7047')

@@ -10,21 +10,14 @@
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
 # ==============================================================================
 
-is_not_java25() {
-    # If the file doesn't exist/isn't executable OR the version string doesn't contain "25"
-    [[ ! -x "$1/bin/java" ]] || ! "$1/bin/java" -version 2>&1 | grep -q "version \"25"
-}
+JAVA_25="/usr/lib/jvm/java-25-openjdk"
 
-if [ -z "$JAVA_HOME" ] || is_not_java25 "$JAVA_HOME"; then
-    echo "-------------------------------------------------------"
-    echo "WARNING: JAVA_HOME is not set to Java 25."
-    echo "Hytale may fail to launch."
-    echo "Current JAVA_HOME: ${JAVA_HOME:-[EMPTY]}"
-    echo ""
-    echo "Please install 'jre25-openjdk' or 'jdk25-openjdk'."
-    echo "You may also need to set the JAVA_HOME/PATH environment"
-    echo "variables manually in your .bashrc or .zshrc."
-    echo "-------------------------------------------------------"
+if [ -x "$JAVA_25/bin/java" ]; then
+    export PATH="$JAVA_25/bin:$PATH"
+else
+    echo "Unable to find '$JAVA_25/bin/java' and will not be added to PATH."
+    echo "Please ensure that Java 25 is installed"
+    echo "and is in the PATH environment variable."
 fi
 
 # NVIDIA Sync Fix

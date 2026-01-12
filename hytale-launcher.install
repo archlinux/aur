@@ -16,8 +16,6 @@ post_install() {
     echo ""
     echo ":: Hytale requires Java 25 to run correctly."
     echo "   Please ensure you have 'jre25-openjdk' or 'jdk25-openjdk' installed."
-    echo "   You may also need to set the JAVA_HOME/PATH environment"
-    echo "   variables manually in your .bashrc or .zshrc."
     echo ""
     echo ":: If you are using KDE Plasma and want to hide the titlebar:"
     echo "   Right-click the titlebar -> More Actions -> Configure Special Application Settings"
