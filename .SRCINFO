@@ -1,7 +1,7 @@
 pkgbase = python-dvc-data
 	pkgdesc = DVC’s data management subsystem
 	pkgver = 3.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc-data
 	arch = any
 	license = Apache-2.0
