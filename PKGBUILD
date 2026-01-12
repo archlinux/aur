@@ -3,7 +3,7 @@
 
 _name='krop'
 pkgname="${_name}-git"
-pkgver=r143.2d8f7dd
+pkgver=r145.a052dc6
 pkgrel=1
 pkgdesc='Simple graphical tool to crop the pages of PDF files'
 arch=('any')

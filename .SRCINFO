@@ -1,6 +1,6 @@
 pkgbase = krop-git
 	pkgdesc = Simple graphical tool to crop the pages of PDF files
-	pkgver = r143.2d8f7dd
+	pkgver = r145.a052dc6
 	pkgrel = 1
 	url = https://github.com/arminstraub/krop
 	arch = any
