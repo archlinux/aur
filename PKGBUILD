@@ -3,11 +3,11 @@
 
 pkgname=deadbeef-plugin-vu-meter-git
 pkgver=r8.77930b4
-pkgrel=2
+pkgrel=3
 pkgdesc="Retro VU Meter Plugin for the DeaDBeeF audio player"
 url="https://github.com/cboxdoerfer/ddb_vu_meter"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('deadbeef')
 makedepends=('git' 'pkg-config' 'gtk2' 'gtk3')
 
@@ -20,14 +20,26 @@ md5sums=('SKIP'
          '3085ee0f1afd07c414827f11b62f0b6b')
 
 pkgver() {
-	cd "$_gitname"
+	cd $_gitname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd $_gitname
+	patch -p1 vumeter.c < "$srcdir/arch_vu_meter_patch"
 }
 
 build() {
 	cd $_gitname
-	patch -p1 vumeter.c < "$srcdir/arch_vu_meter_patch"
-	make
+	local _SILENCEWARNINGS _CFLAGSADDITIONS _warning
+	_SILENCEWARNINGS=(return-mismatch incompatible-pointer-types)
+	_CFLAGSADDITIONS=''
+	for _warning in "${_SILENCEWARNINGS[@]}"; do
+	  _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
+	done
+	CFLAGS+="${_CFLAGSADDITIONS}"
+	export CFLAGS
+	make -j1
 }
 
 package() {
