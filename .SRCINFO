@@ -1,6 +1,6 @@
 pkgbase = rivalcfg-tray
 	pkgdesc = A GTK-based GUI for Rivalcfg tray indicator
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ChadAPSheridan/RivalCfgGuiGTK
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rivalcfg-tray
 	depends = hidapi
 	depends = rivalcfg
 	depends = librsvg
-	source = https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v1.0.1/RivalCfgGuiGTK-1.0.1.tar.gz
-	sha256sums = cbe6455a553d6ea7fae31099a89af63965156d889b295dccab27b9f9b86f5c5b
+	source = https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v1.1.0/RivalCfgGuiGTK-1.1.0.tar.gz
+	sha256sums = 141905bfaf4f077aaced51bf54cb7b5eee37493d69dcb9b6bffad96a7903d3d4
 
 pkgname = rivalcfg-tray
