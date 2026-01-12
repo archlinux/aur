@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=6.14.1
+pkgver=6.15.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -22,12 +22,13 @@ makedepends=(
     'icoutils'
     'curl'
     'git'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9b4baeaf1856fca5a61b368ac5cd8879dd3eb9d3963c18fcf548be8ce83d6a44'
+sha256sums=('47414402d44f3a3a19fc86603d9da5e78940d7ea34fd7af526d1900d274e97f9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,8 +37,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
