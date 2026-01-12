@@ -1,16 +1,19 @@
 pkgbase = envycontrol
 	pkgdesc = CLI tool for Nvidia Optimus graphics mode switching on Linux
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bayasdev/envycontrol
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
 	depends = xorg-xrandr
 	conflicts = optimus-manager
-	source = git+https://github.com/bayasdev/envycontrol.git#tag=v3.5.2
-	sha256sums = SKIP
+	source = envycontrol::git+https://github.com/bayasdev/envycontrol#tag=v3.5.2
+	sha256sums = 82cfa1b8b462d35ee7900610069267c4a9bbb582574336f831366e02b263c500
 
 pkgname = envycontrol
