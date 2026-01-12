@@ -8,7 +8,7 @@ _gitname="python-gammu"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=3.2.4+105.r13079.20240805.b1d8dc780
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Gammu library. Latest git checkout."
 arch=(
   'i686'

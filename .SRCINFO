@@ -1,7 +1,7 @@
 pkgbase = python-gammu-git
 	pkgdesc = Python bindings for Gammu library. Latest git checkout.
 	pkgver = 3.2.4+105.r13079.20240805.b1d8dc780
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gammu/python-gammu
 	arch = i686
 	arch = x86_64
