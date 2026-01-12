@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Mouse and touchpad gestures for Plasma 6 Wayland"
 arch=('x86_64')
 url="https://github.com/taj-ny/InputActions"
@@ -20,7 +20,7 @@ source=(
   "reminder.conf"
   "rebuild-reminder.hook"
 )
-sha256sums=('d73d72ef6c862b12bcd7a33d278d7ee15bca7b2ea3c19ab62ea7b95579708e4c'
+sha256sums=('10bf1bdad24ac0ccb1593763e053951a11e7aca257541b53d33f544b56c73d76'
             '3ae59b5bea1a0100cc8da51c6a810d70bc989462f2f84beaf6a4f9a06395f62f'
             '57a1e6c7c230c9149e85db13c5dc9f76a4e49c643a03f299750ddc977b36548a'
             '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13')
