@@ -1,4 +1,4 @@
-# Maintainer: Zhenxi <shawndouglasyt@gmail.com>
+# Maintainer: Zhenxi
 pkgname=doudou-unstable
 pkgver=1.0.0
 pkgrel=1
