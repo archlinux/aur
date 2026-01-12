@@ -1,6 +1,6 @@
 pkgbase = letta-code
 	pkgdesc = The memory-first coding agent
-	pkgver = 0.12.5
+	pkgver = 0.12.6
 	pkgrel = 1
 	url = https://github.com/letta-ai/letta-code
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = letta-code
 	conflicts = letta-code-bin
 	conflicts = letta-code-git
 	options = !strip
-	source = letta-code-0.12.5.tar.gz::https://github.com/letta-ai/letta-code/archive/v0.12.5.tar.gz
-	sha256sums = 11f676f17bc01186b0b4ee05ffe8edde53ae02aa8d29ff32d482b1a72538cef8
+	source = letta-code-0.12.6.tar.gz::https://github.com/letta-ai/letta-code/archive/v0.12.6.tar.gz
+	sha256sums = 835d4163225823a962282a913ef8e9c6c1bcd333e4e6c0be8197f4d9220df472
 
 pkgname = letta-code
