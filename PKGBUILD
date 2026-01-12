@@ -12,12 +12,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nhdfr/tabby/archive/refs/ta
 b2sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/tabby-$pkgver"
+  rm -rf web
   go build -o tabby
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/tabby-$pkgver"
   install -Dm755 tabby "$pkgdir/usr/bin/tabby"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
