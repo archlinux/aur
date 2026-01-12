@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <lonecloud604@proton.me>
 pkgname=gerbil
 pkgver=1.18.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -32,9 +32,6 @@ package() {
     
     # Fix permissions on extracted files
     chmod -R 755 "${pkgdir}/opt/gerbil/"
-    
-    # Rename the main executable to lowercase
-    mv "${pkgdir}/opt/gerbil/Gerbil" "${pkgdir}/opt/gerbil/gerbil"
     
     # Create executable wrapper
     install -dm755 "${pkgdir}/usr/bin"
