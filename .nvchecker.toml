@@ -1,0 +1,5 @@
+[python-humanreadable]
+source = "github"
+github = "thombashi/humanreadable"
+use_latest_release = "true"
+prefix = "v"

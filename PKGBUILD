@@ -1,46 +1,35 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
-
-## Key is expired; import at your own risk
-## https://github.com/thombashi.gpg
-
-pkgname=python-humanreadable
-pkgver=0.1.0
-pkgrel=3
-pkgdesc='Convert from human-readable values to different unit'
-arch=('any')
-url='https://github.com/thombashi/humanreadable'
-license=('MIT')
-depends=('python-typepy')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-$pkgver.tar.gz.asc")
-sha256sums=('80f10a1575ebb140d9345a347f981dc6faa70d090885490d77f63361290b4ff7'
-            'SKIP')
-validpgpkeys=('ACEC3954F31619D7288C17B07BAC46763C91BB7A') ## Tsuyoshi Hombashi
+_base=humanreadable
+pkgname=python-${_base}
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="Convert human-readable values to other units"
+arch=(any)
+url="https://github.com/thombashi/${_base}"
+license=(MIT)
+depends=(python-typepy)
+makedepends=(python-build python-installer python-setuptools-scm)
+checkdepends=(python-pytest)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('77088a850925a0ad776698f85514d63c8cc976760f31578443958add873872c2')
 
 build() {
-  cd "humanreadable-$pkgver"
-  python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "humanreadable-$pkgver"
-  PYTHONPATH=./ pytest -x --disable-warnings
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest test
 }
 
 package() {
-  export PYTHONHASHSEED=0
-  cd "humanreadable-$pkgver"
-  python -m installer --destdir="$pkgdir/" dist/*.whl
-  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-
-  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s \
-    "$_site/humanreadable-$pkgver.dist-info/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
