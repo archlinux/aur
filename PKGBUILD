@@ -7,7 +7,7 @@ pkgver=2123.4.1
 
 pkgrel=1
 epoch=1
-pkgdesc="Azahar is an open-source 3DS emulator project based on Citra. (already compiled)"
+pkgdesc="Azahar is an open-source 3DS emulator project based on Citra. (already compiled, wayland version)"
 url="https://azahar-emu.org"
 license=("GPL2")
 arch=("x86_64")
