@@ -3,14 +3,14 @@
 
 pkgname=clustalx
 pkgver=2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Multiple alignment of nucleic acid and protein sequences"
 arch=('i686' 'x86_64')
 provides=('clustalx')
-url="http://www.clustal.org"
+url="https://ftp.ebi.ac.uk/pub/software/clustalw2/"
 license=('LGPL3')
 depends=('qt5-base')
-source=(  "$url/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=(  "$url/${pkgver}/${pkgname}-${pkgver}.tar.gz"
           "patch"
           "QT.patch")
 

@@ -1,14 +1,14 @@
 pkgbase = clustalx
 	pkgdesc = Multiple alignment of nucleic acid and protein sequences
 	pkgver = 2.1
-	pkgrel = 6
-	url = http://www.clustal.org
+	pkgrel = 7
+	url = https://ftp.ebi.ac.uk/pub/software/clustalw2/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = qt5-base
 	provides = clustalx
-	source = http://www.clustal.org/download/2.1/clustalx-2.1.tar.gz
+	source = https://ftp.ebi.ac.uk/pub/software/clustalw2//2.1/clustalx-2.1.tar.gz
 	source = patch
 	source = QT.patch
 	md5sums = 5b1f2f1cc8e939411ab0f934cafa072a
