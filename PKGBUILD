@@ -2,7 +2,7 @@
 
 _pkgname=python-mtga-helper
 pkgname=${_pkgname}-git
-pkgver=0.2.1.90.189cba2
+pkgver=0.2.1.91.d7f029e
 pkgrel=1
 pkgdesc='CLI application to parse log files from MTGA and analyse them using 17lands data'
 arch=('any')
