@@ -3,7 +3,7 @@
 _pyname=vharfbuzz
 pkgname=python-$_pyname
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A user-friendlier way to use Harfbuzz in Python'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
