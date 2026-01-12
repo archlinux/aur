@@ -41,6 +41,7 @@ package() {
   depends=("$(_pydep1)" "$(_pydep2)" "${depends[@]:1}")
   cd "$srcdir/$_pkgname"
   python -m pip install --no-deps --ignore-installed --root="$pkgdir/" dist/${_pkgname/-fb/_fb}-${pkgver}-py3-none-any.whl
+  install -D -m0644 "systemd/target.service" "$pkgdir/usr/lib/systemd/system/target.service"
 }
 
 # vim:set ts=2 sw=2 et:
