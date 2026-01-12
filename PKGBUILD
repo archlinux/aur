@@ -2,7 +2,7 @@
 
 pkgname=ygt
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical hint editor for TrueType fonts'
 arch=(any)
 url="https://github.com/psb1558/$pkgname"
