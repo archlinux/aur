@@ -1,6 +1,6 @@
 # Maintainer: Ryan Hughes <ryan@ryanrhughes.com>
 pkgname=hatchet
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A TUI for managing work via Fizzy and Git worktrees with automatic database cloning for Rails projects"
 install=hatchet.install
@@ -8,10 +8,10 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ryanrhughes/hatchet"
 license=('MIT')
 depends=('fizzy-cli')
-makedepends=('bun-bin')
+makedepends=('bun')
 options=('!debug' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ryanrhughes/hatchet/archive/v$pkgver.tar.gz")
-sha256sums=('a89e4e21993759587f0a24e53335053dbebbccfb235e352d7a9d53b932750599')
+sha256sums=('62e481ebdfab4caaee1ff03e78310379115afa5feaef6eabf7293621a306b049')
 
 build() {
     cd "$pkgname-$pkgver"
