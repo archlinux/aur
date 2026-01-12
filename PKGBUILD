@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=concessio
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Understand File Permissions"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/ronniedroid/concessio"
 license=('GPL-3.0-or-later')
 depends=(
   'gjs'
+  'gtk4'
   'libadwaita'
 )
 makedepends=(
@@ -15,7 +16,7 @@ makedepends=(
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aec0e92ee4dab3de1124a4cda97ddc5bbbdfa7ca0ea5abb41f7e46aadf44fe83')
+sha256sums=('b5f71c013520c5e0dbbc2fbec2ccc59a520bc66c93b01bd729031ebce52dd5d9')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
