@@ -1,0 +1,21 @@
+pkgbase = kabi-git
+	pkgdesc = A hint-base file explorer written in bash
+	pkgver = r14.f09fe99
+	pkgrel = 1
+	url = https://github.com/j-krolak/kabi
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = file
+	depends = fzf
+	depends = ncurses
+	depends = findutils
+	depends = awk
+	optdepends = xdg-utils: to open files with their default applications
+	source = kabi::git+https://github.com/j-krolak/kabi
+	sha256sums = SKIP
+
+pkgname = kabi-git
