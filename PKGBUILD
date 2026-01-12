@@ -1,46 +1,41 @@
-# Maintainer: Es00bac
+# Maintainer: Es00bac <es00bac@example.com>
 pkgname=venusprolinux-git
-pkgver=r1.0.0
+pkgver=0.2.1.r2.gce92f33
 pkgrel=1
-pkgdesc="Linux configuration utility for the UtechSmart Venus Pro MMO mouse"
+pkgdesc="Configuration utility for UtechSmart Venus Pro MMO Mouse (Linux) - Git Version"
 arch=('any')
 url="https://github.com/Es00bac/UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility"
 license=('MIT')
-depends=('python' 'python-hidapi' 'python-pyqt6')
-optdepends=('python-evdev: software macro playback' 'python-pyusb: magic unlock helper')
+depends=('python' 'python-pyqt6' 'python-hidapi' 'hidapi')
 makedepends=('git')
-provides=('venusprolinux')
-conflicts=('venusprolinux')
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+provides=('venus-pro-linux')
+conflicts=('venus-pro-linux')
+source=("git+https://github.com/Es00bac/UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm755 venus_gui.py "${pkgdir}/usr/share/venusprolinux/venus_gui.py"
-  install -Dm644 venus_protocol.py "${pkgdir}/usr/share/venusprolinux/venus_protocol.py"
-  install -Dm644 staging_manager.py "${pkgdir}/usr/share/venusprolinux/staging_manager.py"
-  install -Dm644 transaction_controller.py "${pkgdir}/usr/share/venusprolinux/transaction_controller.py"
-  install -Dm644 mouseimg.png "${pkgdir}/usr/share/venusprolinux/mouseimg.png"
-  install -Dm644 PROTOCOL.md "${pkgdir}/usr/share/doc/venusprolinux/PROTOCOL.md"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/venusprolinux/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install icon
-  install -Dm644 icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/venusprolinux.png"
-
-  # Install desktop entry
-  install -Dm644 venusprolinux.desktop "${pkgdir}/usr/share/applications/venusprolinux.desktop"
-
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/venusprolinux" <<'EOF'
-#!/usr/bin/env python3
-import os
-import sys
-
-os.execv(sys.executable, [sys.executable, "/usr/share/venusprolinux/venus_gui.py"] + sys.argv[1:])
-EOF
+    cd "UtechSmart-Venus-Pro-Linux-MMO-Mouse-Utility"
+    
+    # 1. Install Libs/Assets to /opt/venusprolinux
+    install -d "${pkgdir}/opt/${pkgname%-git}"
+    install -m644 venus_gui.py venus_protocol.py staging_manager.py transaction_controller.py mouseimg.png icon.png "${pkgdir}/opt/${pkgname%-git}/"
+    
+    # 2. Launcher Script
+    install -d "${pkgdir}/usr/bin"
+    echo "#!/bin/sh" > "${pkgdir}/usr/bin/${pkgname%-git}"
+    echo "exec python3 /opt/${pkgname%-git}/venus_gui.py \"\$@\"" >> "${pkgdir}/usr/bin/${pkgname%-git}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname%-git}"
+    
+    # 3. Desktop File
+    install -d "${pkgdir}/usr/share/applications"
+    install -m644 packaging/linux/venusprolinux.desktop "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    
+    # 4. Icon
+    install -d "${pkgdir}/usr/share/pixmaps"
+    install -m644 icon.png "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
