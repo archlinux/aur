@@ -1,0 +1,5 @@
+[sunflower-bin]
+source = "github"
+github = "MeanEYE/Sunflower"
+use_latest_release = true
+prefix = "v"
