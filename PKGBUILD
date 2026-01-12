@@ -1,6 +1,6 @@
 # Maintainer: Aaron D. Lee <your-email@example.com>
 pkgname=stegasoo-git
-pkgver=4.2.0.r0.g2ebc42f
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Secure steganography with hybrid photo + passphrase + PIN authentication"
 arch=('x86_64')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
-    printf "%s.r%s.g%s" "4.2.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.g%s" "4.2.1" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -98,7 +98,7 @@ EOF
 
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/stegasoo-api.service" <<EOF
 [Unit]
-Description=Stegasoo REST API
+Description=Stegasoo REST API (HTTPS)
 After=network.target
 
 [Service]
@@ -106,7 +106,11 @@ Type=simple
 User=stegasoo
 WorkingDirectory=/opt/stegasoo/venv/lib/python${pyver}/site-packages/frontends/api
 Environment="PATH=/opt/stegasoo/venv/bin"
-ExecStart=/opt/stegasoo/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Environment="HOME=/opt/stegasoo"
+# TLS enabled by default - certs auto-generated on first run
+# Use stegasoo api tls generate to pre-generate certs
+# Use stegasoo api keys create <name> to create API keys
+ExecStart=/opt/stegasoo/venv/bin/stegasoo api serve --host 127.0.0.1 --port 8000
 Restart=on-failure
 RestartSec=5
 

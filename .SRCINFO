@@ -1,6 +1,6 @@
 pkgbase = stegasoo-git
 	pkgdesc = Secure steganography with hybrid photo + passphrase + PIN authentication
-	pkgver = 4.2.0.r0.g2ebc42f
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/adlee-was-taken/stegasoo
 	install = stegasoo-git.install
