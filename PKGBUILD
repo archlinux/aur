@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gettext
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 arch=('any')
 pkgdesc="GNU internationalization library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"
         "intl.pc")
-md5sums=('7001edf7c4c160d921f8cc5ea83968f4'
+md5sums=('ee66cf742805c0027a7f3db5f2d3f7eb'
          'b0a123ec7ad1a345d0d712dae986a543')
 
 build() {
@@ -52,4 +52,6 @@ package() {
     sed -i "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/intl.pc" \
         -e "s|@PREFIX[@]|${ANDROID_PREFIX}|g" \
         -e "s|@VERSION[@]|${pkgver}|g"
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
