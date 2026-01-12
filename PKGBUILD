@@ -2,7 +2,7 @@
 
 _pkgname=openlibrary-client
 pkgname=python-${_pkgname}-git
-pkgver=0.0.17.r409.g7e45d51
+pkgver=0.0.17.r418.g7325bb8
 pkgrel=1
 pkgdesc="Python Client Library for the Archive.org OpenLibrary API"
 arch=(any)
