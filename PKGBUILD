@@ -46,8 +46,10 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
+        'git+https://github.com/NVIDIA/cutlass.git'
         'git+https://github.com/NVIDIA/cub.git')
 sha256sums=('84b45680248edeb44887278bdb879bb8abea051392208e7d251e0dcedf20b725'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,21 +62,21 @@ sha256sums=('84b45680248edeb44887278bdb879bb8abea051392208e7d251e0dcedf20b725'
 prepare() {
   cd CTranslate2
   git submodule init
-  for submodule in cxxopts thrust googletest cpu_features spdlog ruy; do
-    git config submodule.src/third_party/${submodule}.url "$srcdir/${submodule}"
+  for submodule in cxxopts thrust googletest cpu_features spdlog ruy cutlass; do
+    git config submodule."third_party/${submodule}".url "$srcdir/${submodule}"
   done
   git -c protocol.file.allow=always submodule update
 
   pushd third_party/ruy
   git submodule init
-  git config submodule.src/third_party/cpuinfo.url "$srcdir/cpuinfo"
-  git config submodule.src/third_party/googletest.url "$srcdir/googletest"
+  git config submodule."cpuinfo".url "$srcdir/cpuinfo"
+  git config submodule."googletest".url "$srcdir/googletest"
   git -c protocol.file.allow=always submodule update
   popd
 
   pushd third_party/thrust
   git submodule init
-  git config submodule.dependencies/cub.url "$srcdir/cub"
+  git config submodule."cub".url "$srcdir/cub"
   git -c protocol.file.allow=always submodule update
   popd
 
