@@ -11,15 +11,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('778300d57c37de62b6ee1fd02570fdf5f1911a81e24647666b5bd0d8377392aa')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
+    cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir" PREFIX="/usr" install
-
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
