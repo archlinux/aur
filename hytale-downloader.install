@@ -3,7 +3,7 @@
 #
 # Author:      [SCDevel/root@scdevel.net]
 # License:     MIT
-# Description: Post-installation/updating/uninstallation script's for the Hytale Launcher.
+# Description: Post-installation/updating/uninstallation script's for the Hytale Downloader.
 #
 # Disclaimer:  This script is an unofficial community tool and is not
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
@@ -12,6 +12,11 @@
 post_install() {
     echo ":: The Hytale Downloader has been installed to '/usr/bin/hytale-downloader'"
     echo ":: The Hytale 'QUICKSTART.md' has been installed to '/usr/share/doc/hytale-downloader/QUICKSTART.md'"
+    echo ""
+    echo ":: Hytale requires Java 25 to run correctly."
+    echo "   Please ensure you have 'jre25-openjdk' or 'jdk25-openjdk' installed."
+    echo "   You may also need to set the JAVA_HOME/PATH environment"
+    echo "   variables manually in your .bashrc or .zshrc."
     echo ""
     echo ":: Legal Disclaimer:"
     echo "   This script is an unofficial community tool and is not"
