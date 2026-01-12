@@ -5,7 +5,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-freetype2
 pkgver=2.13.3
-pkgrel=3
+pkgrel=1
 arch=('any')
 pkgdesc="Font rasterization library (Android ${_android_arch})"
 url='https://www.freetype.org/'
@@ -20,8 +20,7 @@ depends=("android-ndk"
 #depends+=("android-${_android_arch}-bzip2")
 provides=("android-${_android_arch}-freetype2-boostrap")
 conflicts=("android-${_android_arch}-freetype2-boostrap")
-makedepends=('android-meson'
-             'patchelf')
+makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz"{,.sig}
         '0001-Enable-table-validation-modules.patch'
@@ -66,6 +65,5 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
-    # Fix the compiler adding the full libbz2.so path instead of just the file name.
-    patchelf --replace-needed "${ANDROID_PREFIX_LIB}/libbz2.so" libbz2.so "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    install -vDm 644 LICENSE.TXT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
