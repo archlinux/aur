@@ -1,12 +1,13 @@
 pkgbase = sleipnirgroup-choreo-git
 	pkgdesc = A graphical tool for planning time-optimized trajectories for autonomous mobile robots in the FIRST Robotics Competition
-	pkgver = 2025.0.3.r74.ge9d22fa
+	pkgver = 2026.0.1.r1.gc637a6c
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Choreo
 	arch = x86_64
 	license = BSD
 	makedepends = cargo
 	makedepends = cmake
+	makedepends = git
 	makedepends = pnpm
 	depends = webkit2gtk-4.1
 	provides = sleipnirgroup-choreo

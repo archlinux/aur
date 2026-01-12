@@ -1,13 +1,13 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-choreo-git
-pkgver=2025.0.3.r74.ge9d22fa
+pkgver=2026.0.1.r1.gc637a6c
 pkgrel=1
 pkgdesc="A graphical tool for planning time-optimized trajectories for autonomous mobile robots in the FIRST Robotics Competition"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Choreo'
 depends=('webkit2gtk-4.1')
-makedepends=('cargo' 'cmake' 'pnpm')
+makedepends=('cargo' 'cmake' 'git' 'pnpm')
 license=('BSD')
 provides=('sleipnirgroup-choreo')
 conflicts=('sleipnirgroup-choreo')
@@ -23,10 +23,10 @@ prepare() {
   cd Choreo
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target $(rustc --print host-tuple)
 
   # Fix beforeBundleCommand command
-  sed -i 's!node copy-sidecar.cjs choreo-cli ./target!cp ./src-tauri/target/release/choreo-cli ./src-tauri/target/release/choreo-cli-x86_64-unknown-linux-gnu!' src-tauri/tauri.conf.json
+  sed -i "s!node copy-sidecar.cjs choreo-cli ./target!cp ./src-tauri/target/release/choreo-cli ./src-tauri/target/release/choreo-cli-$CARCH-unknown-linux-gnu!" src-tauri/tauri.conf.json
 
   # Remove unwanted bundle targets
   sed -i 's/\"appimage\", //' src-tauri/tauri.conf.json
