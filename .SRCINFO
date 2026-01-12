@@ -1,0 +1,27 @@
+pkgbase = mindustryx-git
+	pkgdesc = Optimized mindustry server&client with more API
+	pkgver = 2025.12.X25.r26.gb924012
+	pkgrel = 1
+	url = https://github.com/TinyLake/MindustryX
+	arch = any
+	license = GPL-3.0-only
+	makedepends = java-environment=17
+	makedepends = git
+	makedepends = libicns
+	depends = alsa-lib
+	source = mindustryx::git+https://github.com/TinyLake/MindustryX.git
+	sha256sums = SKIP
+
+pkgname = mindustryx-git
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	provides = mindustryx
+	conflicts = mindustryx
+
+pkgname = mindustryx-server-git
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	provides = mindustryx-server
+	conflicts = mindustryx-server
