@@ -1,12 +1,12 @@
 pkgbase = ros2-kilted-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Kilted Kaiju, base variant)
 	pkgver = 2025.07.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/ros_base/#kilted
 	arch = any
 	license = Apache-2.0
 	makedepends = python-rosinstall_generator
-	makedepends = python-vcstool
+	makedepends = python-vcs2l
 	makedepends = rust
 	depends = asio
 	depends = bullet

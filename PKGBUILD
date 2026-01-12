@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.07.28
-pkgrel=2
+pkgrel=3
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -32,7 +32,7 @@ depends=(
 )
 makedepends=(
   'python-rosinstall_generator'
-  'python-vcstool'
+  'python-vcs2l'
   'rust'
 )
 conflicts=(
@@ -78,7 +78,7 @@ prepare() {
     git -C "$srcdir/ros2/src/ros2/rosidl" apply "$srcdir/rosidl_cstdint.patch"
 
     # https://github.com/ros2/orocos_kdl_vendor/pull/39
-    git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" cherry-pick -n 98a9e0686b58fb4684c77f28c824d86765a58bb9
+    git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" cherry-pick -n d3a6fb0942138628027a0c4604e21bdb73ef500e
 
     # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
     # This is because GCC LTO is incompatible with the LLVM LTO
