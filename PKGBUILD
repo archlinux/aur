@@ -4,8 +4,8 @@
 
 pkgbase=libonvif
 pkgname=('python-libonvif')
-pkgver=3.2.7
-pkgrel=2
+pkgver=3.2.8
+pkgrel=1
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ makedepends=('cmake'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-# _prjrel=3.1.10
-source=("git+${url}.git#commit=9f74ed54342f8c5fdb2be162b9c1e6224c3bd8d2"
+# _prjrel=3.3.4
+source=("git+${url}.git#commit=60372b0c15fc1843bc3f3030a1952355e5cb5cab"
         'git+https://github.com/pybind/pybind11.git')
-sha256sums=('84f97c62b612fbf5dd3d5c8916be0a423ad785391814e987c1ac0bf8975dc58d'
+sha256sums=('42eb59cfd1d5df2a302126b8cc4fac02c23d9816c469c40f77213bc82339ab9e'
             'SKIP')
 
 prepare() {
