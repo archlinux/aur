@@ -3,7 +3,7 @@
 pkgname=symp-git
 
 # Version
-pkgver=5.2.7.r1.gc49a10e
+pkgver=5.2.8.r0.g9dee26e
 pkgrel=1
 
 # Generic
