@@ -3,7 +3,7 @@
 _upname=FoundryTools
 pkgname=python-foundrytools
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A library to work with fonts in Python (exctracted from ftcli)'
 arch=(any)
 url="https://github.com/ftCLI/$_upname"
