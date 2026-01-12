@@ -1,3 +1,4 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
@@ -10,7 +11,7 @@ license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build-tiny')
-url='http://search.mcpan.org/dist/aliased'
+url='https://metacpan.org/dist/aliased'
 source=("https://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/aliased-$pkgver.tar.gz")
 md5sums=('f7f659f689699a87115da1262eb6edc6')
 sha512sums=('65bc3f6401a0c2119105261112a3d9612abb98c874cd3409c6a1a9a0974aae902f30b6041121be6a74ee28584cf0c7ef506fe8318ab35ac550f70b4b387744f6')
