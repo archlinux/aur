@@ -1,7 +1,7 @@
 pkgbase = beyond-the-tesseract
 	pkgdesc = A text adventure game about math.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ifdb.org/viewgame?id=0u4eqnk37mohejhu
 	arch = x86_64
 	license = unknown
