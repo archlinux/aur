@@ -2,14 +2,14 @@ pkgbase = adsb-monitor
 	pkgdesc = GTK4 desktop app for monitoring adsb.im feeders
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/YOURUSERNAME/adsb-monitor
+	url = https://github.com/Belligerently/adsb-monitor
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = adsb-monitor-1.0.0.tar.gz::https://github.com/YOURUSERNAME/adsb-monitor/archive/v1.0.0.tar.gz
+	source = adsb-monitor-1.0.0.tar.gz::https://github.com/Belligerently/adsb-monitor/archive/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = adsb-monitor
