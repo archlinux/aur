@@ -9,6 +9,7 @@ pkgbase = zrc
 	makedepends = git
 	makedepends = posix
 	makedepends = gcc
+	options = !debug
 	source = git+https://github.com/Edd12321/zrc.git
 	sha256sums = SKIP
 

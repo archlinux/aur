@@ -1,4 +1,4 @@
-#!../bin/zrc
+#!/usr/bin/env zrc
 rm -rf src pkg
 if {[str $2 == "clean"]} {
 	exit 0
