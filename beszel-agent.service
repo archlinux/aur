@@ -28,8 +28,6 @@ SystemCallArchitectures=native
 # required for smartctl & intel_gpu_top
 AmbientCapabilities=CAP_SYS_RAWIO CAP_SYS_ADMIN CAP_PERFMON
 CapabilityBoundingSet=CAP_SYS_RAWIO CAP_SYS_ADMIN
-# bug workaround (https://github.com/henrygd/beszel/issues/1504)
-Environment="EXCLUDE_SMART=/dev/nvme0,/dev/nvme1,/dev/nvme2,/dev/nvme3,/dev/nvme4,/dev/nvme5,/dev/nvme6,/dev/nvme7,/dev/nvme8,/dev/nvme9"
 
 [Install]
 WantedBy=multi-user.target
