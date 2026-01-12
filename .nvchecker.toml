@@ -1,0 +1,4 @@
+[microsoft-edge-stable-bin]
+source = "regex"
+url = "https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages"
+regex = "(?s)Package: microsoft-edge-stable\\n.*?Version: ([0-9.]+)-"
