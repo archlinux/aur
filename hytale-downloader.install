@@ -1,0 +1,19 @@
+# ==============================================================================
+# Hytale Launcher Wrapper for Arch Linux
+#
+# Author:      [SCDevel/root@scdevel.net]
+# License:     MIT
+# Description: Post-installation/updating/uninstallation script's for the Hytale Launcher.
+#
+# Disclaimer:  This script is an unofficial community tool and is not
+#              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
+# ==============================================================================
+
+post_install() {
+    echo ":: The Hytale Downloader has been installed to '/usr/bin/hytale-downloader'"
+    echo ":: The Hytale 'QUICKSTART.md' has been installed to '/usr/share/doc/hytale-downloader/QUICKSTART.md'"
+    echo ""
+    echo ":: Legal Disclaimer:"
+    echo "   This script is an unofficial community tool and is not"
+    echo "   affiliated with, endorsed by, or owned by Hypixel Studios Canada."
+}

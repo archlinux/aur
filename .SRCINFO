@@ -1,0 +1,17 @@
+pkgbase = hytale-downloader-bin
+	pkgdesc = CLI tool for downloading Hytale assets
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://hytale.com
+	install = hytale-downloader.install
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = https://downloader.hytale.com/hytale-downloader.zip
+	source = LICENSE
+	sha256sums = 9878d5bd17a4654355d168f29c1434443298fdb9256e2f6ad736de9887c8d4bf
+	sha256sums = f4fb44fd9db862c2a6f8fd3e242e783c1a6a2818406b68a74bb75aa4830ad835
+
+pkgname = hytale-downloader-bin
