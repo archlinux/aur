@@ -1,6 +1,6 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname='ssh2incus-bin'
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="SSH server for Incus instances"
 arch=(
@@ -29,11 +29,11 @@ sha256sums=('73cfa1a56765ec898e5a6803bca33357179b3d447e325baf9c6a0b9621a1c804'
 source_x86_64=(
   "https://github.com/mobydeck/ssh2incus/releases/download/${pkgver}/ssh2incus-${pkgver}-linux-amd64.tar.gz"
 )
-sha256sums_x86_64=('abd3e5c3516704cccf1873bb97211dff38640de011a87ba1942a3a15cb956914')
+sha256sums_x86_64=('1a770047cbaff8e96f78fa5e02bfbe47bf363cf296d088861bcfd8311a901fd4')
 source_aarch64=(
   "https://github.com/mobydeck/ssh2incus/releases/download/${pkgver}/ssh2incus-${pkgver}-linux-arm64.tar.gz"
 )
-sha256sums_aarch64=('b0021dc2d237b7629a761e0d053a0009d73e6ada102438f715ec6795d02f1131')
+sha256sums_aarch64=('96b0f6ff547cbb32354616c71e98bc7e3b710623f95ea153212ea49ee55fbe7a')
 
 package() {
   if [[ "$CARCH" == "x86_64" ]]; then
