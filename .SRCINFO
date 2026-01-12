@@ -1,0 +1,18 @@
+pkgbase = stax
+	pkgdesc = The fastest stacked-branch workflow for Git. Interactive TUI, smart PRs, safe undo
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/cesarferreira/stax
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = libgit2
+	provides = stax
+	conflicts = stax
+	source = stax-0.8.1.crate::https://crates.io/api/v1/crates/stax/0.8.1/download
+	sha256sums = 49478d2bdc95296bf598c369d05c67389571f55d2d96d75f839247f0848469ad
+
+pkgname = stax
