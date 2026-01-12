@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab-quarto
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Quarto JupyterLab extension"
 arch=(any)
 url="https://github.com/quarto-dev/jupyterlab-quarto"
