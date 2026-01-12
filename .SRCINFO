@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-gsm
 	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (Android armv7a-eabi)
-	pkgver = 1.0.22
-	pkgrel = 2
+	pkgver = 1.0.23
+	pkgrel = 1
 	url = https://www.quut.com/gsm/
 	arch = any
 	groups = android-gsm
@@ -12,7 +12,7 @@ pkgbase = android-armv7a-eabi-gsm
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.quut.com/gsm/gsm-1.0.22.tar.gz
-	md5sums = fcca74c770a341d78ea4604418c1264b
+	source = https://www.quut.com/gsm/gsm-1.0.23.tar.gz
+	md5sums = fc625564fb388b98ac195301e75d7404
 
 pkgname = android-armv7a-eabi-gsm

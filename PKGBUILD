@@ -6,8 +6,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-gsm
-pkgver=1.0.22
-pkgrel=2
+pkgver=1.0.23
+pkgrel=1
 arch=('any')
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression (Android ${_android_arch})"
 url="https://www.quut.com/gsm/"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.quut.com/gsm/gsm-${pkgver}.tar.gz")
-md5sums=('fcca74c770a341d78ea4604418c1264b')
+md5sums=('fc625564fb388b98ac195301e75d7404')
 
 prepare() {
     cd "${srcdir}/gsm-${pkgver%.*}-pl${pkgver##*.}"
@@ -49,4 +49,6 @@ package() {
     install -v -m644 lib/libgsm.so "${pkgdir}/${ANDROID_PREFIX_LIB}/"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
