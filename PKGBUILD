@@ -20,12 +20,12 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=7f733408256aa1e5fb2fc176d18eacc9aad73988} # daily-737
+: ${_runtime_commit:=e3d9e2992b845b3436feb4a32c75a67f00a301e4} # daily-734
 
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=12.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
