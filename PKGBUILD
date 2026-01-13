@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-gdm
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Plugin for Tuner that adds GNOME Display Manager settings"
 arch=('x86_64')
 url="https://altlinux.space/alt-gnome/TunerGdm"
@@ -20,14 +20,7 @@ makedepends=(
   'vala'
 )
 source=("git+https://altlinux.space/alt-gnome/TunerGdm.git#tag=$pkgver")
-sha256sums=('e189df467704d9c8008fa5ee78813d68a52b04b00d25433b9ddff9fd5572e496')
-
-prepare() {
-  cd TunerGdm
-
-  # fix: Update to latest api
-  git cherry-pick -n e8c38debf92213bb6619f98fde33989ebef79236
-}
+sha256sums=('f2eef95822b902b110984a0df6b1f9669f87081cc1de2350b610fde58a4ff67e')
 
 build() {
   arch-meson TunerGdm build
