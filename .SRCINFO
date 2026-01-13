@@ -1,0 +1,21 @@
+pkgbase = bitwarden-systemd
+	pkgdesc = Systemd integration for Bitwarden-CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OJFord/bitwarden-systemd
+	install = bitwarden-systemd.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bitwarden-cli
+	depends = pass
+	depends = systemd
+	source = bw-login.service
+	source = bw-session.service
+	source = bw-systemd
+	source = bw-systemd-set-creds
+	sha256sums = 66a52916b0a53040c908808fae2a88a2553b90fa08d4341cb9a5b8eb23c6d2ab
+	sha256sums = f9e448fe6f3a45ff54fae913068968fe3d5de1a0750f24c4479622a76943822f
+	sha256sums = d64cf435c36eac2e9cca0b88689c246e1d8f7d4cb4227421e7fb77c996391e6a
+	sha256sums = 7aac965cf6fc1bd6e114d7dd452c99a5a3b2780e1113f57a9c65df25112ec47b
+
+pkgname = bitwarden-systemd

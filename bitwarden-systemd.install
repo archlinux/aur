@@ -1,0 +1,5 @@
+post_install() {
+    echo ':: You must now install sig key fingerprint(s) to $XDG_CONFIG_HOME/bw-systemd/.gpg-id'
+    echo ':: Run `bw-systemd-set-creds` to store encrypted Bitwarden credentials.'
+    echo ':: Finally, `systemctl enable --now /usr/lib/systemd/user/bw-{login,session}.service`'
+}
