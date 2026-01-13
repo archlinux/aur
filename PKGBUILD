@@ -12,7 +12,7 @@ provides=('gohome')
 conflicts=('gohome-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/anIcedAntFA/gohome/releases/download/v${pkgver}/gohome-${pkgver}.tar.gz")
-sha256sums=('1148916d70c3ddd3a11789aae1ced0e252d1aae089738773c7a2bed06c2bec49')
+sha256sums=('5ab577a0ea8312cc3ac55153b75c23363ea9ab4377bd2ee5309294236207bdb5')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
@@ -24,8 +24,8 @@ build() {
   go build \
   -ldflags="-s -w -linkmode=external \
   -X github.com/anIcedAntFA/gohome/internal/version.Version=${pkgver} \
-  -X github.com/anIcedAntFA/gohome/internal/version.Commit=d73f079765cf19e8cea3ee2782f434579ce8eeec \
-  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-13T08:24:59Z" \
+  -X github.com/anIcedAntFA/gohome/internal/version.Commit=1665ed478586017e3b9f8a1336a9ed014336ed5d \
+  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-13T08:32:41Z" \
   -o gohome \
   ./cmd/gohome
 }
