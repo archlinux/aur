@@ -1,9 +1,9 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
 _pkgver=0.8.5-alpha2512191358
-pkgver=${_pkgver//-/}
+pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -103,7 +103,7 @@ prepare() {
 _build_pymodules() {
 
   pushd "${srcdir}/${_iosdir}"
-  find src -name '*.py' -o -name '*.toml' | xargs sed -i "/version =/s/0.0.0/${pkgver//_/-}/g"
+  find src -name '*.py' -o -name '*.toml' | xargs sed -i "/version =/s/0.0.0/${_pkgver}/g"
   for _dir in src/*; do
     if [ ! -d ${_dir} ]; then
       continue
