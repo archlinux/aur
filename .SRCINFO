@@ -1,11 +1,12 @@
 pkgbase = katifetch
-	pkgdesc = Fast and portable system information tool with ASCII logos
+	pkgdesc = Cross-platform system information fetch tool with ASCII art
 	pkgver = 13.1
 	pkgrel = 1
 	url = https://github.com/ximimoments/katifetch
 	arch = any
 	license = MIT
-	source = https://github.com/ximimoments/katifetch/releases/download/13.1/katifetch-13.1.tar.gz
+	depends = bash
+	source = katifetch-13.1.tar.gz::https://github.com/ximimoments/katifetch/releases/download/13.1/katifetch-13.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = katifetch
