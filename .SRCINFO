@@ -1,14 +1,14 @@
 pkgbase = joystickwake
 	pkgdesc = A joystick-aware screen waker
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/forestix/joystickwake
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyudev
-	conflicts = joystickwake-git
+	conflicts = joystickwake
 	source = https://codeberg.org/forestix/joystickwake/archive/v0.5.1.tar.gz
 	sha256sums = dc92d814d6ecf604914855f08aed8fc4d53d181ac3b48c1c08374db298cb20e2
 
