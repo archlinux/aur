@@ -3,7 +3,7 @@
 pkgname=python-pybrowserstack-screenshots
 _pkgname=pybrowserstack-screenshots
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='client and api wrapper for Browserstack Screenshots, including phantomCSS support'
 arch=(any)
 url="http://github.com/cmck/$_pkgname"
