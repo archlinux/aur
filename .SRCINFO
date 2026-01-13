@@ -1,0 +1,16 @@
+pkgbase = pomodoro-tui
+	pkgdesc = Professional Pomodoro TUI with Discord and YouTube BGM support.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/hexbyte16/rust-pomo-discord
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = libdbus
+	source = pomodoro-tui-1.0.5.tar.gz::https://github.com/hexbyte16/rust-pomo-discord/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 9f7fa22e91784a41424abd59a0831f4e345c815e362d34537d94c670b5484cd5
+
+pkgname = pomodoro-tui
