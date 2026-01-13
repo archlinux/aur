@@ -19,7 +19,7 @@ lux-cli)
 replaces=()
 options=(!lto)
 source=("lx-${pkgver}_x86_64.tar.gz::${repo_url}/releases/download/v${pkgver}/lx_${pkgver}_x86_64.tar.gz")
-sha512sums=("6a856a5dc3db09fdccb3d2c662e7e8c866a5621157c59223fd5f04aec839077040bfd6c9aa4c67daf7ae392609023d61ff5c46cd2183a7b1732372e6137ff408")
+sha512sums=("ba7441f208290cd8e955e9f68ca0cc85bfeb957f42a8336ff304f52bc64378b854a77500a5715bd1b20f8c3fd6716783e267382dcc7c55152db6cb169bfc5244")
 
 package() {
 	cp -r "${srcdir}"/* "${pkgdir}"/
