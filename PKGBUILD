@@ -1,6 +1,6 @@
 # Maintainer: Chris Longros <your-email@example.com>
 pkgname=anki-snapshot
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Git-based version control for Anki collections"
 arch=('any')
@@ -12,12 +12,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/chrislongros/$pkgname/archi
 sha256sums=('SKIP')
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver/bash"
     install -Dm755 anki-snapshot "$pkgdir/usr/bin/anki-snapshot"
     install -Dm755 anki-diff "$pkgdir/usr/bin/anki-diff"
     install -Dm755 anki-log "$pkgdir/usr/bin/anki-log"
     install -Dm755 anki-search "$pkgdir/usr/bin/anki-search"
     install -Dm755 anki-restore "$pkgdir/usr/bin/anki-restore"
+    cd ..
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
