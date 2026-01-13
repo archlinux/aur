@@ -1,0 +1,25 @@
+pkgbase = vesktop-wayafknext-bin
+	pkgdesc = Vesktop with WayAFKNext plugin - Discord client with custom Vencord build (prebuilt, uses system electron)
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/Vencord/Vesktop
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	depends = electron39
+	depends = debugedit
+	optdepends = speech-dispatcher: High-level device independent layer for speech synthesis interface
+	provides = vesktop=1.6.3
+	provides = vencord-desktop=1.6.3
+	conflicts = vesktop
+	conflicts = vesktop-bin
+	conflicts = vencord-desktop
+	source = vesktop.sh
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = vesktop-1.6.3-aarch64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.6.3/vesktop-1.6.3.aarch64.rpm
+	sha256sums_aarch64 = a4535e1d2d6c56f353e1bd06690c33b40284fba5970269e4a7ac1171a15862ff
+	source_x86_64 = vesktop-1.6.3-x86_64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.6.3/vesktop-1.6.3.x86_64.rpm
+	sha256sums_x86_64 = 0ad58d3c62b1bcb83ac7676998b2c6c38dc30522eae3e53d3cae230082d14f4e
+
+pkgname = vesktop-wayafknext-bin
