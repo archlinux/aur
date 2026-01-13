@@ -4,45 +4,49 @@
 
 _pkgname=pylzma
 pkgname=python-$_pkgname
-pkgver=0.5.0
-_testing_data_version=210629
-pkgrel=6
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Platform independent python bindings for the LZMA compression library'
 url='https://www.joachim-bauch.de/projects/pylzma/'
 license=("LGPL-2.1-or-later")
 arch=(i686 x86_64)
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=($_pkgname-$pkgver.tar.gz::https://github.com/fancycode/pylzma/archive/v$pkgver.tar.gz
         # testing data
-        ux.stackexchange.com.$_testing_data_version.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
-sha256sums=('baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3'
+        https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
+sha256sums=('9ebaa893117f5579da3a81bf3315e4467d998bdd17f3d803f1f031f7d1f2b58a'
             'SKIP')
-noextract=(ux.stackexchange.com.$_testing_data_version.7z)
+noextract=(ux.stackexchange.com.7z)
 
 prepare() {
-  ln -s ../../../ux.stackexchange.com.$_testing_data_version.7z $_pkgname-$pkgver/tests/data/ux.stackexchange.com.7z
+  cd "$_pkgname-$pkgver"
+  # Create symlink for test data
+  mkdir -p tests/data
+  ln -sf "$srcdir/ux.stackexchange.com.7z" tests/data/ux.stackexchange.com.7z
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  # Workaround for `-Wint-conversion` error in build.
-  #   -Wno-int-conversion
-  #     Reported here: https://aur.archlinux.org/packages/python-pylzma#comment-998803
-  #     Fix here: https://github.com/fancycode/pylzma/issues/80
-  # Also needed -fpermissive later
-  CFLAGS="$CFLAGS -Wno-int-conversion -fpermissive" python setup.py build
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
-# This package itself needs to be installed for the check to work, so I'm just going to disable it
-# check() {
-#   cd "$srcdir/$_pkgname-$pkgver"
-#   PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-3.10" python tests/__init__.py
-# }
+check() {
+  cd "$_pkgname-$pkgver"
+  
+  # Install to a temporary directory
+  python -m installer --destdir="$srcdir/test_dir" dist/*.whl
+  
+  # Find the site-packages path within that temp directory
+  local _site_packages=$(find "$srcdir/test_dir" -name site-packages -type d -print -quit)
+  
+  # Run tests using the temp site-packages
+  PYTHONPATH="$_site_packages:$PWD" python tests/__init__.py
+}
 
 package() {
-  depends=('python')
-  conflicts=('pylzma')
-
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  # Install license
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
