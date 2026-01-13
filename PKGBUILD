@@ -4,7 +4,7 @@
 pkgname=python-grandalf
 _pkgname=${pkgname#python-}
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='graph and drawing algorithms framework'
 arch=(any)
 url="https://github.com/bdcht/$_pkgname"
