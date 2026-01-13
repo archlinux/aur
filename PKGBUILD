@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=gst-thumbnailers
-pkgver=1.0alpha.2
+pkgver=1.0alpha.3
 pkgrel=1
 pkgdesc="GStreamer video and audio file thumbnailer"
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(
 conflicts=(gstreamer-thumbnailer gst-video-thumbnailer)
 replaces=(gstreamer-thumbnailer gst-video-thumbnailer)
 source=(git+$url.git#tag=${pkgver/[a-z]/.&})
-sha256sums=('aa261ac8ee426496d096d19c3715db5add4a0de66f9eec8bd07b103eee34b35e')
+sha256sums=('7506ec91af7b891dde332cf16ed6ce678bbd4d8226b93980729c60e1cd9f0065')
 
 build() {
   arch-meson $pkgname build
