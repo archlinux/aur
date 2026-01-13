@@ -11,6 +11,7 @@ pkgbase = beekeeper-studio-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = jq
+	makedepends = python
 	depends = electron39
 	source = beekeeper-studio.git::git+https://github.com/beekeeper-studio/beekeeper-studio.git
 	source = beekeeper-studio.sh

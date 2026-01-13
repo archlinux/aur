@@ -20,6 +20,7 @@ makedepends=(
     'nvm'
     'gendesk'
     'jq'
+    'python'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
