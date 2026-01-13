@@ -3,7 +3,7 @@
 pkgname=python-json2xml
 _name=${pkgname#python-}
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Python Library to convert JSON to XML"
 arch=('any')
 url="https://json2xml.readthedocs.io/"
