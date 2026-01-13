@@ -1,19 +1,19 @@
 pkgbase = python-cxxheaderparser
 	pkgdesc = Parse C++ header files and generate a data structure representing the class
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robotpy/cxxheaderparser
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-hatch-vcs
-	depends = python-hatchling
 	source = python-cxxheaderparser-1.7.0::git+https://github.com/robotpy/cxxheaderparser#tag=1.7.0
 	sha256sums = c5614f1a8c0c355ce89d0c8572b49a317b39530b33a5f590700bf0ce749ab4bc
 	b2sums = 8cdf22fe7bcace889a3971b665e6a6f158c83dc24ead7856c5854356d6020a7b43c93f297f46e46a27a08afc43eb9c0a608d13d33da6b4907747dd90221037bc

@@ -3,19 +3,19 @@
 _pyname=cxxheaderparser
 pkgname=python-${_pyname}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse C++ header files and generate a data structure representing the class"
 arch=('any')
 url="https://github.com/robotpy/cxxheaderparser"
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-hatch-vcs'
-  'python-hatchling'
 )
 makedepends=(
   'git'
   'python-build'
+  'python-hatch-vcs'
+  'python-hatchling'
   'python-installer'
   'python-setuptools'
   'python-wheel'
