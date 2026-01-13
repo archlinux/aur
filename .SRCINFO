@@ -1,7 +1,7 @@
 pkgbase = python-gfsubsets
 	pkgdesc = Codepoint definitions for the Google Fonts subsetter
 	pkgver = 2025.11.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://pypi.org/project//gfsubsets
 	arch = any
