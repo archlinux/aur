@@ -1,6 +1,6 @@
 pkgbase = closely
 	pkgdesc = Subscribe to updates from people you follow, from any platform to any platform
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/SpriteOvO/closely
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = closely
 	license = AGPL-3.0-only
 	makedepends = cargo
 	depends = openssl
-	source = closely-0.1.23.tar.gz::https://github.com/SpriteOvO/closely/archive/refs/tags/v0.1.23.tar.gz
-	sha256sums = bcf1e1b94c61401edad024dc70cfcc2b62c1f014e2617a1891a03351bde55fd4
+	source = closely-0.1.24.tar.gz::https://github.com/SpriteOvO/closely/archive/refs/tags/v0.1.24.tar.gz
+	sha256sums = 07add8492e4c7ae211bcf92773395f499a9e41e7502f858cd05325e0c38a09a9
 
 pkgname = closely
