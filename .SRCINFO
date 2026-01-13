@@ -1,12 +1,12 @@
 pkgbase = katifetch
-	pkgdesc = Highly customizable system info tool, easier to configure than Neofetch or Fastfetch
-	pkgver = 1.3
+	pkgdesc = Cross-platform system information fetch tool with ASCII art
+	pkgver = 13.1
 	pkgrel = 1
 	url = https://github.com/ximimoments/katifetch
 	arch = any
 	license = MIT
 	depends = bash
-	source = katifetch-1.3.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/1.3.tar.gz
-	sha256sums = d109188c55be71a8f2328a5c2c3f78ebc9811f4a990e213f8734bbffedd82709
+	source = katifetch-13.1.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/13.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = katifetch
