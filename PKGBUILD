@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=packemon
-pkgver=1.8.18
+pkgver=1.8.19
 pkgrel=1
 pkgdesc="A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces. "
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ options=("strip" "buildflags")
 depends=('glibc')
 checkdepends=('iproute2')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f416284cda8080d4688b391926763fb574b234fc899483594b5bf31f283a0dad')
+sha256sums=('e0282e71fa1f6a38e05dffcff662ff37611724cc12bf2dd64909777f9041db1e')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir -p build
