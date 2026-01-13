@@ -1,6 +1,6 @@
 # Maintainer: godlyfast <godlyfast@gmail.com>
 pkgname=hyprwave-hifi
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="HyprWave Hi-Fi Edition - Enhanced MPRIS media controller for Wayland with interactive seek, player switching, and notifications"
 arch=('x86_64')
