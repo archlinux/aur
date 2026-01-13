@@ -1,7 +1,7 @@
 pkgbase = vigaphone-bin
 	pkgdesc = ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool.
 	pkgver = 1.0.2_beta
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone
 	arch = x86_64
 	groups = pro-audio
@@ -11,6 +11,6 @@ pkgbase = vigaphone-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.0.2_beta/ViGAPhoneR_linux.tar.gz
-	sha256sums = 49bc35254626fe64ecdd3b8de90ee4892cb6209e6540b0fae2568d91a46beb89
+	sha256sums = 7bfb4279a341a90eea3f06c9feaee20eb8a52fa8e8c405cf58b84705e20dafa3
 
 pkgname = vigaphone-bin
