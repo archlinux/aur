@@ -1,7 +1,7 @@
 pkgbase = python-funcy
 	pkgdesc = A fancy and practical functional tools
 	pkgver = 2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Suor/funcy
 	arch = any
 	license = BSD-3-Clause
