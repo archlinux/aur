@@ -5,7 +5,7 @@
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=147.0b5
+pkgver=148.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -19,10 +19,10 @@ optdepends=('hyphen: Hyphenation'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=("https://archive.mozilla.org/pub/thunderbird/candidates/147.0b5-candidates/build1/linux-x86_64/en-US/thunderbird-147.0b5.tar.xz"
+source=("https://archive.mozilla.org/pub/thunderbird/candidates/148.0b1-candidates/build1/linux-x86_64/en-US/thunderbird-148.0b1.tar.xz"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
-sha512sums=('618182478543ff759f7ec353b0f591c2d8fb1b2057e1c61b7db75b1ba3cfafcc8e2455147874b8edd2427b82909ab3967423d652d66384a93822cc2498211c20'
+sha512sums=('fc9957147e0be427d264a3d6c4eaf3ac38a36a0730b02a0f03832f63a42d1edec42b1f93b1af09e243f2ae7a6b9ade95c26584a50da1fa72c1eaa416b10a3797'
             'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
