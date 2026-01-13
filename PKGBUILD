@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/Bengerthelorf/bcmr/releases/download/v0.3.23/bcmr-x86_64-linux.tar.gz
 _pkgauthor=Bengerthelorf
 _pkgname=bcmr
 pkgname=${_pkgname}-bin
