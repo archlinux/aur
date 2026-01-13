@@ -6,13 +6,13 @@
 pkgname=python-mbstrdecoder
 _pkg="${pkgname#python-}"
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
 url='https://github.com/thombashi/mbstrdecoder'
 license=('MIT')
 depends=('python-chardet')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm')
 # checkdepends=(
 # 'python-pytest' 'python-pytest-runner' 'python-pytest-md-report'
 # 'python-faker')
@@ -35,9 +35,8 @@ package() {
   cd "$_pkg-$pkgver"
   python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m644 LICENSE \
+  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim: ts=2 sw=2 et:
