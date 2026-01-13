@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-freetype2
-pkgver=2.13.3
+pkgver=2.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="Font rasterization library (Android ${_android_arch})"
@@ -26,7 +26,7 @@ source=("https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${p
         '0001-Enable-table-validation-modules.patch'
         '0002-Enable-subpixel-rendering.patch'
         '0003-Enable-long-PCF-family-names.patch')
-md5sums=('f3b4432c4212064c00500e1ad63fbc64'
+md5sums=('78c7d7450fb7d0999ccd029f84094340'
          'SKIP'
          'edae0c9068cd60c4edde79e89534726e'
          '699b3c133ce7006e0e3f2a2f84982acb'
