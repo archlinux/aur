@@ -1,7 +1,7 @@
 # Maintainer: Benjamim Gois <benjamim dot gois at gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
-pkgver=1.7.0
+pkgver=1.7.0.r1.gf1aa2cc
 pkgrel=1
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
