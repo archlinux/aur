@@ -1,13 +1,17 @@
-commit c9282b73f3d09daff23a2603addd94605596ebe7
-Author: Robert Schiele <rschiele@gmail.com>
-Date:   Thu May 8 19:16:46 2025 +0200
-
-    remove forcing GDK_BACKEND to x11
-    
-    It seems the problems on Wayland from the past are removed meanwhile.
-
+diff --git a/deps/+GLEW/GLEW.cmake b/deps/+GLEW/GLEW.cmake
+index c2db9117b..280caec26 100644
+--- a/deps/+GLEW/GLEW.cmake
++++ b/deps/+GLEW/GLEW.cmake
+@@ -5,4 +5,5 @@ add_cmake_project(
+   SOURCE_SUBDIR build/cmake
+   CMAKE_ARGS
+     -DBUILD_UTILS=OFF
+-)
+\ No newline at end of file
++    -DGLEW_EGL=ON
++)
 diff --git a/src/CLI/GuiParams.cpp b/src/CLI/GuiParams.cpp
-index f44b91651f..41b42ff368 100644
+index f44b91651..41b42ff36 100644
 --- a/src/CLI/GuiParams.cpp
 +++ b/src/CLI/GuiParams.cpp
 @@ -107,9 +107,8 @@ int start_gui_with_params(GUI::GUI_InitParams& params)
@@ -30,7 +34,7 @@ index f44b91651f..41b42ff368 100644
 \ No newline at end of file
 +#endif // SLIC3R_GUI
 diff --git a/src/CLI/Setup.cpp b/src/CLI/Setup.cpp
-index 82e03d466d..95acdf3477 100644
+index 82e03d466..95acdf347 100644
 --- a/src/CLI/Setup.cpp
 +++ b/src/CLI/Setup.cpp
 @@ -212,11 +212,6 @@ static bool setup_common()

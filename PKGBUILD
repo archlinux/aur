@@ -5,13 +5,13 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
-         'expat' 'glew' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
+         'expat' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
          'wxwidgets-gtk3' 'z3' 'zlib')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
@@ -32,7 +32,7 @@ sha256sums=('4f2d8d30561047a82f63ec23eb530f996b08d599c0d9ecbaebaeb44aa4a1c849'
             'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223'
             '75d240f20ac5a9da8a780500dd9756af8c6d13edddaf25ff99673d42eabf3d7a'
             '730fe9b67d69dffd8f02ba92e13263cd002cc597204d8b718deeb76ff25f43c7'
-            '7f7c27900ea9f7d944cd9ce26ee87b17c582bec6dad7d7e52967d28be0dd8708')
+            'ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
@@ -74,7 +74,7 @@ build() {
       -G Ninja \
       -S PrusaSlicer-version_${pkgver/_/-}/deps \
       -B deps_${pkgver} \
-      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \
