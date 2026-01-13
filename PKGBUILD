@@ -1,7 +1,7 @@
 # Maintainer: Bram Oosterlynck <bram.oosterlynck@gmail.com>
 pkgname=python-can-i-charge
 gitname=can-i-charge
-pkgver=0.6.11
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A CLI to fetch the status of charging stations "
 arch=('any')
