@@ -92,6 +92,10 @@ build() {
         export CFLAGS="${CFLAGS//-flto=auto/}"
         export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
         export LDFLAGS="${LDFLAGS//-flto=auto/}"
+        # LLD cannot link GCC LTO objects; force ld.bfd when LTO is enabled.
+        if ld --version 2>/dev/null | head -n 1 | grep -q "LLD"; then
+            export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+        fi
         export AR=gcc-ar
         export RANLIB=gcc-ranlib
         export NM=gcc-nm
