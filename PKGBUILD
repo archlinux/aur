@@ -4,7 +4,7 @@
 _pyname=orderedset
 pkgname=python-$_pyname
 pkgver=2.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='An ordered set implementation in cython'
 arch=(x86_64)
 url=https://github.com/simonpercivall/$_pyname
