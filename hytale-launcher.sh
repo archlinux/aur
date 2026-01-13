@@ -10,16 +10,6 @@
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
 # ==============================================================================
 
-JAVA_25="/usr/lib/jvm/java-25-openjdk"
-
-if [ -x "$JAVA_25/bin/java" ]; then
-    export PATH="$JAVA_25/bin:$PATH"
-else
-    echo "Unable to find '$JAVA_25/bin/java' and will not be added to PATH."
-    echo "Please ensure that Java 25 is installed"
-    echo "and is in the PATH environment variable."
-fi
-
 # NVIDIA Sync Fix
 export __NV_DISABLE_EXPLICIT_SYNC=1
 
@@ -60,9 +50,10 @@ fi
 
 # Switch to the directory and run it
 cd "$LAUNCHER_DIR"
-exec ./$BIN_NAME "$@"
 
-# Run Debug mode if requested
+
 if [ "$1" == "--debug" ]; then
-    exec "$SOURCE_DIR/hytale-debug.sh "$@"
+    "./$BIN_NAME" "$@" 2>&1 | "$SOURCE_DIR/hytale-debug.sh" "$@"
+else
+    exec "./$BIN_NAME" "$@" "$@"
 fi
