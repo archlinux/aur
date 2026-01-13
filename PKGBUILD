@@ -4,7 +4,7 @@
 _pyname=pygtrie
 pkgname=python-$_pyname
 pkgver=2.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Python library implementing a trie data structure'
 arch=(any)
 url="https://github.com/google/$_pyname"
