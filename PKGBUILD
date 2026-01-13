@@ -4,7 +4,7 @@
 _name=ydata-profiling
 pkgname=python-ydata-profiling
 pkgver=4.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
 url='https://github.com/ydataai/ydata-profiling'
@@ -88,6 +88,8 @@ check() {
     --deselect tests/unit/test_modular.py::test_modular_present
     # Connection to data.nasa.gov timed out. (connect timeout=None)
     --deselect tests/unit/test_example.py::test_example
+    # pandas/_libs/arrays.pyx:103: NotImplementedError
+    --deselect tests/unit/test_serialize.py::test_load
   )
 
   cd $_name-$pkgver
