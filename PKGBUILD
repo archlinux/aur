@@ -21,6 +21,7 @@ makedepends=(
     'gendesk'
     'curl'
     'git'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
@@ -35,8 +36,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -76,6 +78,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx webpack
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"

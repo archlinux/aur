@@ -10,6 +10,7 @@ pkgbase = jlivertool
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = git
+	makedepends = jq
 	depends = electron35
 	provides = jlivertool
 	conflicts = jlivertool
