@@ -3,13 +3,13 @@
 _pkgname=csv-diff
 pkgname=python-${_pkgname}
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for viewing the difference between two CSV, TSV or JSON files.'
 arch=('any')
 url=''https://pypi.org/project/csv-diff/
 license=('Apache')
 depends=('python' 'python-dictdiffer' 'python-click')
-makedepends=('python-setuptools' 'python-pip' 'python-pytest-runner')
+makedepends=('python-setuptools' 'python-pytest-runner')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/simonw/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "setup-exclude-tests.patch")
