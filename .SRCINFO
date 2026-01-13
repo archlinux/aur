@@ -1,6 +1,6 @@
 pkgbase = sidef-git
 	pkgdesc = A modern object-oriented programming language (-git version).
-	pkgver = 25.12.r57.gaaa94d03
+	pkgver = 26.01.r0.gb3f6a200
 	pkgrel = 1
 	url = https://github.com/trizen/sidef
 	arch = any
