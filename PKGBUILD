@@ -3,7 +3,7 @@
 # Contributor: Dario Ostuni <dario.ostuni@gmail.com>
 _base=or-tools
 pkgname=python-${_base}
-pkgver=9.14
+pkgver=9.15
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -19,7 +19,7 @@ optdepends=('cplex: CPLEX solver support'
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   pybind11_protobuf.patch)
-b2sums=('c7b234c0e8f56640ddf99efb62e12034fb6826ec176ecbfce596cc79036d6048a65800edc8bddc5f85515aa1f6f55804e4d59f912904354240ece3ee8154630f'
+b2sums=('1bd94a29b2f490c8b172fe4e54360f5ef4cdc918e73bb48ac39deee19b5911b2304433fa4520f90a62cba63208117badd00fd51fa5881d75be38189f3804c16b'
         '0d097b8e13ec5b9143c4195a5fe4d331a60bfe9fb3f82762c89a7769f356ccb34b5a4a371baf3eabb1232b87a9f31e294794547983b18513103a5cb0684c399b')
 
 prepare() {
