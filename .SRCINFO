@@ -1,0 +1,14 @@
+pkgbase = dynamic-drpc-hyprland-git
+	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland windows
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrkirill046/discord-dynamic-status-hyprland
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/mrkirill046/discord-dynamic-status-hyprland.git
+	sha256sums = SKIP
+
+pkgname = dynamic-drpc-hyprland-git
