@@ -1,9 +1,9 @@
 # Maintainer: devlinman <dev.linman.tech@gmail.com>
 
 pkgname=whatsit-git
-pkgver=2.0.0.r1.g34a7dba
-pkgrel=1
-pkgdesc="Lightweight native Qt6 WhatsApp Web client"
+pkgver=3.0.1.r1.g0c8842a
+pkgrel=2
+pkgdesc="Lightweight (KDE) native Qt6 WhatsApp Web client"
 arch=('x86_64')
 url="https://github.com/devlinman/whatsit"
 license=('MIT')
@@ -11,6 +11,10 @@ license=('MIT')
 depends=(
   'qt6-base'
   'qt6-webengine'
+  'extra-cmake-modules'
+  'kwidgetsaddons'
+  'kstatusnotifieritem'
+  'kiconthemes'
 )
 
 makedepends=('cmake' 'git' 'vulkan-headers')
