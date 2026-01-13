@@ -9,7 +9,7 @@ url="https://opencode.ai"
 license=('MIT')
 provides=('opencode-desktop')
 conflicts=('opencode-desktop')
-depends=('gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-theme' 'gst-plugins-good')
+depends=('gtk3' 'webkit2gtk-4.1' 'hicolor-icon-theme' 'gst-plugins-good')
 options=('!strip' '!debug')
 
 latestver() {
@@ -17,23 +17,18 @@ latestver() {
     jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
-source_x86_64=(
-  "opencode-linux-x64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-linux-x64.tar.gz"
-  "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/dev/LICENSE"
-)
-sha256sums_x86_64=('9d40850a0bfc836d84e2fea0074ff42e5b8bf0dc3259d53dd4f17296c87cc417'
-                   '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_aarch64=('5f468dc996e72a81a636f63c5df057a4a3ff24ecef95fab99f93fb12defb09a0'
-                    '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
+case "$CARCH" in
+  x86_64)   _debarch="amd64" ;;
+  aarch64)  _debarch="arm64" ;;
+esac
 
-source_aarch64=(
-  "opencode-linux-arm64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-linux-arm64.tar.gz"
-  "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/dev/LICENSE"
-)
+source=("opencode-desktop-linux-${_debarch}.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-${_debarch}.deb"
+        "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
+sha256sums=('586b447fb8e060db2b5ef041aff7000a4ea1eff58a0802564ac68d7d524ade98'
+            '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -a "${srcdir}/opencode" "${pkgdir}/usr/bin/"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  bsdtar -xf "${srcdir}/opencode-desktop-linux-${_debarch}.deb" -C "${srcdir}" data.tar.gz control.tar.gz
+  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
