@@ -1,0 +1,59 @@
+--- a/libusb/hidapi_thread_pthread.h
++++ a/libusb/hidapi_thread_pthread.h
+@@ -29,15 +29,17 @@
+ /* Barrier implementation because Android/Bionic don't have pthread_barrier.
+    This implementation came from Brent Priddy and was posted on
+    StackOverflow. It is used with his permission. */
++#define pthr_barrier_t hidapi_pthread_barrier_t
++
+ typedef int pthread_barrierattr_t;
+-typedef struct pthread_barrier {
++typedef struct hidapi_pthread_barrier_t {
+     pthread_mutex_t mutex;
+     pthread_cond_t cond;
+     int count;
+     int trip_count;
+-} pthread_barrier_t;
++} hidapi_pthread_barrier_t;
+ 
+-static int pthread_barrier_init(pthread_barrier_t *barrier, const pthread_barrierattr_t *attr, unsigned int count)
++static int pthread_barrier_init(pthr_barrier_t *barrier, const pthread_barrierattr_t *attr, unsigned int count)
+ {
+ 	if(count == 0) {
+ 		errno = EINVAL;
+@@ -57,14 +59,14 @@
+ 	return 0;
+ }
+ 
+-static int pthread_barrier_destroy(pthread_barrier_t *barrier)
++static int pthread_barrier_destroy(pthr_barrier_t *barrier)
+ {
+ 	pthread_cond_destroy(&barrier->cond);
+ 	pthread_mutex_destroy(&barrier->mutex);
+ 	return 0;
+ }
+ 
+-static int pthread_barrier_wait(pthread_barrier_t *barrier)
++static int pthread_barrier_wait(pthr_barrier_t *barrier)
+ {
+ 	pthread_mutex_lock(&barrier->mutex);
+ 	++(barrier->count);
+@@ -80,7 +82,8 @@
+ 		return 0;
+ 	}
+ }
+-
++#else
++	#define pthr_barrier_t pthread_barrier_t
+ #endif
+ 
+ #define HIDAPI_THREAD_TIMED_OUT	ETIMEDOUT
+@@ -92,7 +95,7 @@
+ 	pthread_t thread;
+ 	pthread_mutex_t mutex; /* Protects input_reports */
+ 	pthread_cond_t condition;
+-	pthread_barrier_t barrier; /* Ensures correct startup sequence */
++	pthr_barrier_t barrier; /* Ensures correct startup sequence */
+ 
+ } hidapi_thread_state;
+ 
