@@ -39,12 +39,11 @@ if [ "${_compiler}" = "clang" ]; then
   _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
 
-# Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
-# Possible values: config_x86-64-v1 / config_x86-64-v2 (default) / config_x86-64-v3
-# This will be overwritten by selecting any option in microarchitecture script
-# Source files: https://gitlab.com/xanmod/linux/-/tree/6.12/CONFIGS/xanmod/gcc?ref_type=heads
+# Since 6.18 only 1 real time config is shipped with this package.
+# Be careful. Selecting any option in microarchitecture script could break rt
+# Source files: https://gitlab.com/xanmod/linux/-/tree/6.18-rt/CONFIGS/x86_64?ref_type=heads
 if [ -z ${_config+x} ]; then
-  _config=config_x86-64-v2
+  _config=config-rt
 fi
 
 # Compress modules with ZSTD (to save disk space)
