@@ -1,7 +1,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -10,13 +10,11 @@ depends=(dgop
          quickshell
          accountsservice)
 optdepends=('cava: Audio visualizer'
-            'cliphist: Clipboard history functionality'
             'i2c-tools: External monitor brightness control'
             'matugen: Dynamic wallpaper-based theming'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
-            'qt6ct: Qt6 application theming'
-            'wl-clipboard: Copy functionality for PIDs and other elements')
+            'qt6ct: Qt6 application theming')
 provides=(dms-shell)
 conflicts=(dms-shell-git dms-shell)
 
@@ -41,14 +39,14 @@ sha256sums_x86_64=('bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4
                    '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                    '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                    '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                   '0e435f84ae5e6b5ef80d9c47dbfd508e91e5bac51ee84618a2944277cfa726c5'
+                   '76b944d0ccb9b1bc453efdfd499993935074e647f1405e9839942c5c5b57b480'
                    '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
                    '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d')
 sha256sums_aarch64=('bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4821a'
                     '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                     '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                     '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                    'bb1737ec381d26005f0152ef5b454d0cd1242c57dee10448993682232f349c4a'
+                    'b8c2c6e9a409caae08f325d528f7fd80054be55f250c956a3ddf8f5d7cabec95'
                     '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
                     '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d')
 
