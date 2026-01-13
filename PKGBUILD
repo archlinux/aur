@@ -5,8 +5,8 @@
 
 pkgname=mp-sonivoxeas
 _pkgname=multiplatform-sonivoxeas
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Multiplatform Sonivox EAS for Qt"
 arch=(x86_64)
 url="https://github.com/pedrolcl/${_pkgname}"
@@ -14,13 +14,12 @@ license=('GPL3')
 depends=(drumstick qt6-multimedia sonivox)
 makedepends=(cmake)
 source=("https://github.com/pedrolcl/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91cfb33602c833d366b3e51bf00d15bd69d719d397a20a1109aeff2f6422e0e8')
+sha256sums=('8ceccdf8037caa9cdde4c5bb3802aca6da2f284de7f09e438f49123b7e2c667c')
 
 build() {
   cmake -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_QT=6
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
 }
