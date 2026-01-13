@@ -3,7 +3,7 @@
 pkgname=mbake
 _pkgname=${pkgname#m}
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python-based Makefile formatter and linter'
 arch=(any)
 license=(MIT)
