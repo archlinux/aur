@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=aurynk
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Wirelessly connect, manage and control your Android devices"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IshuSinghSE/aurynk/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fc15f07f7261f360459289c7bd3abf35cebd6cbca7f4195361fee6bcb864f29')
+sha256sums=('e273a85b2fcdc2bfe897b0ff53ff47a00792b086cb3d40b94e597a6c7239c349')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
