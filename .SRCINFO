@@ -1,7 +1,7 @@
 pkgbase = python-whatever
 	pkgdesc = Easy way to make anonymous functions by partial application of operators
 	pkgver = 0.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Suor/whatever
 	arch = any
 	license = BSD-3-Clause
