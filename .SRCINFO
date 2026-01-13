@@ -6,7 +6,6 @@ pkgbase = dynamic-drpc-hyprland-bin
 	install = dynamic-drpc-hyprland-bin.install
 	arch = x86_64
 	license = MIT
-	depends = libc
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/mrkirill046/discord-dynamic-status-hyprland/releases/download/v1.0.0/discord-dynamic-status-hyprland
