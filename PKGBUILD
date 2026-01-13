@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.104
+pkgver=0.8.131
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -44,7 +44,7 @@ install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('e43bc1cc204a7bb4272fe6b737ae3d9fd8b32008991abbbcc4b04c9d41621114d390afdda6079a785d14cf2f414ba40bbb053242a06a060822f72423a896920d')
+b2sums=('29bc40d926980a8a085b46b0657d488ae8614ccb7de64d281e4cebc53ae65348b69b68986ff5e1685c804702641f6c5a4bd58a312f5a21dab06e3181ba61dc54')
 
 prepare() {
 	cd $pkgname
@@ -80,6 +80,7 @@ package() {
 		'libgobject-2.0.so'
 		'libgtk-3.so'
 		'libpcap.so'
+		'libusb-1.0.so'
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
