@@ -1,0 +1,20 @@
+post_install() {
+    echo "-----"
+    echo
+    echo "To get started, you must include lacy in your shell config."
+    echo "You can find more about why this is required in the docs."
+    echo
+    echo "If you don't know what shell you are using, run:"
+    echo "  $ echo \$SHELL"
+    echo
+    echo "ZSH:"
+    echo "  $ echo 'eval \"\$(lacy init zsh)\"' >> ~/.zshrc"
+    echo
+    echo "Bash:"
+    echo "  $ echo 'eval \"\$(lacy init bash)\"' >> ~/.bashrc"
+    echo
+    echo "Fish:"
+    echo "  $ echo 'lacy init fish | source' >> ~/.config/fish/config.fish"
+    echo
+    echo "-----"
+}

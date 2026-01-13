@@ -1,0 +1,14 @@
+pkgbase = lacy
+	pkgdesc = Fast magical cd alternative for lacy terminal navigators
+	pkgver = v0.6.0
+	pkgrel = 1
+	url = https://github.com/timothebot/lacy
+	install = lacy.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/timothebot/lacy#tag=v0.6.0
+	md5sums = SKIP
+
+pkgname = lacy
