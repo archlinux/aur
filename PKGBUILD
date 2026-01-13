@@ -3,7 +3,7 @@
 
 pkgname=markdown2ctags
 pkgver=0.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Generate ctags-compatible tags files for Markdown documents'
 arch=(any)
 license=(BSD-3-Clause)
