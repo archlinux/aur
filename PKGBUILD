@@ -4,7 +4,7 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh-genders
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc='Parallel Distributed Shell with Genders Database support'
 url='https://github.com/chaos/pdsh'
@@ -17,7 +17,7 @@ source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${p
         patch)
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('75ef15347848fff43f8d6ff9c4424fe05c7dd2cdba029139901f861a05093cfe'
+sha256sums=('a661095ce51dd5fb05e398cf5d0e1d63157123958441f6d3512bcf1a7d25c517'
             'd68600178b2d404dcd0719147263bc8caae0bdde5347ceee46164da9e890a424')
 
 build() {
