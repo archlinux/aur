@@ -2,7 +2,7 @@
 
 pkgname=set-unicoderange
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='automatically set OpenType OS/2 table Unicode range bit flags in fonts '
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
