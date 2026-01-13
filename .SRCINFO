@@ -10,7 +10,8 @@ pkgbase = pomodoro-tui
 	depends = yt-dlp
 	depends = ffmpeg
 	depends = libdbus
+	depends = alsa-lib
 	source = pomodoro-tui-1.0.7.tar.gz::https://github.com/hexbyte16/rust-pomo-discord/archive/refs/tags/v1.0.7.tar.gz
-	sha256sums = 802a0f2efe2c39d40f4e2760ff95870e266527e4f66c55bf262de238d5204493
+	sha256sums = تأكد_من_الchecksum_الصحيح
 
 pkgname = pomodoro-tui

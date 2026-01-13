@@ -6,13 +6,13 @@ pkgdesc="Professional Pomodoro TUI with Discord and YouTube BGM support."
 arch=('x86_64')
 url="https://github.com/hexbyte16/rust-pomo-discord"
 license=('MIT')
-depends=('yt-dlp' 'ffmpeg' 'libdbus')
+depends=('yt-dlp' 'ffmpeg' 'libdbus' 'alsa-lib')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('802a0f2efe2c39d40f4e2760ff95870e266527e4f66c55bf262de238d5204493')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hexbyte16/rust-pomo-discord/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('تأكد_من_الchecksum_الصحيح')
 
 prepare() {
-  cd "rust-pomo-discord-$pkgver" # تأكد أن هذا يطابق اسم المجلد داخل ملف الـ tar.gz
+  cd "rust-pomo-discord-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -23,11 +23,8 @@ build() {
 
 package() {
   cd "rust-pomo-discord-$pkgver"
-  # لاحظ هنا غيرنا rust-pomo-discord إلى pomodoro-tui-discord
   install -Dm755 "target/release/pomodoro-tui-discord" "$pkgdir/usr/bin/pomodoro-tui"
-  
   ln -s /usr/bin/pomodoro-tui "$pkgdir/usr/bin/pomo"
-
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
