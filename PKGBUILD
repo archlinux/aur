@@ -1,15 +1,15 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
-pkgver=r150.3a90fe0
-pkgrel=2
+pkgver=r464.c2ab5a6
+pkgrel=3
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
-url="https://github.com/Prayag2/drawy"
+url="https://invent.kde.org/graphics/drawy"
 license=('GPL-3.0-only')
-depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs')
+depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'zstd')
 makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers')
 provides=('drawy' 'drawy-debug')
-source=('drawy-git::git+https://github.com/Prayag2/drawy')
+source=('drawy-git::git+https://invent.kde.org/graphics/drawy')
 sha256sums=("SKIP")
 
 pkgver() {
@@ -25,7 +25,12 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -Dm755 "./build/drawy" "$pkgdir/usr/bin/drawy"
-	install -Dm644 "./deploy/appimage/AppDir/usr/share/applications/drawy.desktop" "$pkgdir/usr/share/applications/drawy.desktop"
-	install -Dm644 "./deploy/appimage/AppDir/usr/share/icons/hicolor/256x256/apps/drawy.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/drawy.png"
+	install -Dm755 "./build/bin/drawy" "$pkgdir/usr/bin/drawy"
+	install -Dm644 "./src/data/org.kde.drawy.desktop" "$pkgdir/usr/share/applications/drawy.desktop"
+	install -Dm644 "./src/icons/16-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/drawy.png"
+	install -Dm644 "./src/icons/32-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/drawy.png"
+	install -Dm644 "./src/icons/48-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/drawy.png"
+	install -Dm644 "./src/icons/32-mimetypes-application-x-drawy.png" "$pkgdir/usr/share/icons/hicolor/32x32/mimetypes/application-x-drawy.png"
+	install -Dm644 "./src/icons/64-mimetypes-application-x-drawy.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/application-x-drawy.png"
+	install -Dm644 "./src/icons/sc-apps-drawy.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/drawy.svg"
 }

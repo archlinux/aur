@@ -1,8 +1,8 @@
 pkgbase = drawy-git
 	pkgdesc = an infinite whiteboard tool
-	pkgver = r150.3a90fe0
-	pkgrel = 2
-	url = https://github.com/Prayag2/drawy
+	pkgver = r464.c2ab5a6
+	pkgrel = 3
+	url = https://invent.kde.org/graphics/drawy
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
@@ -14,9 +14,10 @@ pkgbase = drawy-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = gcc-libs
+	depends = zstd
 	provides = drawy
 	provides = drawy-debug
-	source = drawy-git::git+https://github.com/Prayag2/drawy
+	source = drawy-git::git+https://invent.kde.org/graphics/drawy
 	sha256sums = SKIP
 
 pkgname = drawy-git
