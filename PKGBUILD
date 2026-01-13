@@ -10,9 +10,9 @@ depends=('android-tools' 'glibc')
 source=("$pkgname-Linux-$pkgver::https://github.com/Djkawada/ADB-Gripper/releases/download/v$pkgver/ADB-Gripper-Linux"
         "https://raw.githubusercontent.com/Djkawada/ADB-Gripper/v$pkgver/mon_icone.ico"
         "adb-gripper.desktop")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('aec95bbfde519ab4a21ba40b5ee41f41c4c2f01b5025746088e664e9faf0adfb'
+            '0679ad4bca855bc8e627a2cd58a77cf7d58e6d3b44c6619ce874dc06968aa9a2'
+            '80dc54740692d5692dd0c6b72d8ebb2d5d4640278d3c445c49dcd975f13d81a7')
 
 package() {
     # Install the binary
