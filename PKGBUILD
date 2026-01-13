@@ -5,7 +5,7 @@
 
 pkgname='git-remote-gcrypt'
 pkgver='1.5'
-pkgrel=3
+pkgrel=4
 pkgdesc='A git remote helper for GPG-encrypted remotes.'
 arch=(any)
 url='https://spwhitton.name/tech/code/git-remote-gcrypt/'
@@ -23,10 +23,10 @@ optdepends=(
     'rclone: rclone backend support'
     'rsync: rsync backend support'
 )
-source=("https://git.spwhitton.name/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a0b8359eccdd5d63eaa3b06b7a24aea813d7f1e8bf99536bdd60bc7f18dca03')
+source=("git+https://git.spwhitton.name/git-remote-gcrypt#tag=${pkgver}")
+sha256sums=('1d4ea10547f3948902e030d1f40687746ad02ef13534efcf2a9daaa9a7747c1b')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     DESTDIR="$pkgdir/" prefix="/usr" ./install.sh
 }

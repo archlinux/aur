@@ -1,7 +1,7 @@
 pkgbase = git-remote-gcrypt
 	pkgdesc = A git remote helper for GPG-encrypted remotes.
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://spwhitton.name/tech/code/git-remote-gcrypt/
 	arch = any
 	license = GPL-2.0-or-later OR GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = git-remote-gcrypt
 	optdepends = curl: sftp backend support
 	optdepends = rclone: rclone backend support
 	optdepends = rsync: rsync backend support
-	source = https://git.spwhitton.name/git-remote-gcrypt/snapshot/git-remote-gcrypt-1.5.tar.gz
-	sha256sums = 0a0b8359eccdd5d63eaa3b06b7a24aea813d7f1e8bf99536bdd60bc7f18dca03
+	source = git+https://git.spwhitton.name/git-remote-gcrypt#tag=1.5
+	sha256sums = 1d4ea10547f3948902e030d1f40687746ad02ef13534efcf2a9daaa9a7747c1b
 
 pkgname = git-remote-gcrypt
