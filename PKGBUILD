@@ -2,7 +2,7 @@
 _pkgname=niri-wselector
 pkgname=$_pkgname-git
 pkgver=r10.1eff068
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick hack to use fuzzel to select windows and workspaces in niri."
 arch=(any)
 url="https://github.com/kassick/niri-wselector"
