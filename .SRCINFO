@@ -1,7 +1,7 @@
 pkgbase = python-compreffor
 	pkgdesc = A CFF table suroutinizer for FontTools
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/compreffor
 	arch = x86_64
 	license = Apache-2.0
