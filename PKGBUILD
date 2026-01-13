@@ -3,7 +3,7 @@
 # Contributor: PancakeTAS <???>
 
 pkgname=lsfg-vk-git
-pkgver=v2.0.0.dev.r0.2a13914
+pkgver=v2.0.0.dev.r14.e1f89cc
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('x86_64')
@@ -33,6 +33,14 @@ install=lsfg-vk.install
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
+
+	# NOTE: this moves the tag to the first commit with 2.0.0-dev
+	git tag -d "v2.0.0-dev" 2>/dev/null >/dev/null
+	git -c user.name='PancakeTAS' \
+		-c user.email='pancake@mgnet.work' \
+		tag "v2.0.0-dev" '2a13914b55e7ce71f5522513fde277a2affb5a1f' \
+			-m "original 2.0.0-dev tag location" \
+		2>/dev/null >/dev/null
 
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
