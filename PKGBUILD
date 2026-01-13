@@ -1,12 +1,14 @@
-# Maintainer: Andrew Rabert <ar@nullsum.net>
+# Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
+# Contributor Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player
 pkgver=1.12.0
 pkgrel=5
-pkgdesc='Jellyfin Desktop Client'
+pkgdesc='Jellyfin Desktop Client - Legacy'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/jellyfin/jellyfin-media-player'
+conflicts=('jellyfin-desktop')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git' 'python')
 source=("https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v${pkgver}.tar.gz"

@@ -1,11 +1,12 @@
 pkgbase = jellyfin-media-player
-	pkgdesc = Jellyfin Desktop Client
+	pkgdesc = Jellyfin Desktop Client - Legacy
 	pkgver = 1.12.0
 	pkgrel = 5
 	url = https://github.com/jellyfin/jellyfin-media-player
 	arch = i686
 	arch = x86_64
 	license = GPL
+	conflicts = jellyfin-desktop
 	makedepends = cmake
 	makedepends = git
 	makedepends = python
