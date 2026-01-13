@@ -3,7 +3,7 @@
 _pkgauthor=dlvhdr
 _pkgname=gh-dash
 pkgname=${_pkgname}-bin
-pkgver=4.20.1
+pkgver=4.21.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A beautiful CLI dashboard extension for GitHub to display pull requests and issues with filters you care about"
@@ -23,9 +23,9 @@ source_i686=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgv
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux-${_barch[2]}")
 sha256sums=('04451e7f458d16694db2292c0da48139f2787fb68e0784a1021a462e7a2cc342'
             'a4bc215dda95d9106ca388c045602ab5e6f67cea00d88eb123c7e7817ce246d9')
-sha256sums_x86_64=('76cd2c2b628a18a9c633bb1b0cf48b84bfac76c932620084a9ae146d9f802b6c')
-sha256sums_i686=('b4424c0818b1e735f9f4d04725db70fe3dec1b297d0277798d086076e3fce102')
-sha256sums_aarch64=('b24bf1943b5c8d7205fb9eab52500fcec441b09d90fadc8d12311c63206ee1bc')
+sha256sums_x86_64=('4e7bed9c68d2fafb1ce453f4fe6ab51bea27601ee3c62a60b1d4b3800d5ab770')
+sha256sums_i686=('7f1711b967188430260b7d89bf2301a2e162bc64f71c3326613fe5f888cf1ae7')
+sha256sums_aarch64=('4222459aae72cadfcee31d9f2a393e554157b829b33cd8b4ecbee92958f530ee')
 
 
 package() {
