@@ -1,5 +1,5 @@
 # Maintainer: marrcaburgh
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgname=godot-uid-fixer-git
 pkgdesc='A program designed to fix the UID error in godot engine. (only does current directory)'
