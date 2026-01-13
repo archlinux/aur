@@ -29,4 +29,4 @@ path = [
     "use-system-juce.patch",
 ]
 SPDX-FileCopyrightText = "ob-xd contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-or-later"
