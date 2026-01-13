@@ -1,7 +1,7 @@
 pkgbase = gst-thumbnailers
 	pkgdesc = GStreamer video and audio file thumbnailer
-	pkgver = 1.0alpha.1
-	pkgrel = 2
+	pkgver = 1.0alpha.2
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gst-thumbnailers
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = gst-thumbnailers
 	conflicts = gst-video-thumbnailer
 	replaces = gstreamer-thumbnailer
 	replaces = gst-video-thumbnailer
-	source = git+https://gitlab.gnome.org/GNOME/gst-thumbnailers.git#tag=1.0.alpha.1
-	sha256sums = e636c79e03d09e3a661ee530a97055be08d983993c2c7c99ff390b45cf1a1f61
+	source = git+https://gitlab.gnome.org/GNOME/gst-thumbnailers.git#tag=1.0.alpha.2
+	sha256sums = aa261ac8ee426496d096d19c3715db5add4a0de66f9eec8bd07b103eee34b35e
 
 pkgname = gst-thumbnailers
