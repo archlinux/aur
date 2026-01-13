@@ -1,27 +1,28 @@
 # Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
 
 pkgname=joystickwake
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
-url="https://github.com/foresto/joystickwake"
+url='https://codeberg.org/forestix/joystickwake'
 makedepends=('python-setuptools')
 depends=('python' 'python-pyudev')
 conflicts=('joystickwake-git')
 license=('MIT')
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
-  setup.patch
 )
 sha256sums=(
-  708bf42bafec18218f26065de29d0931b78c5d52a0716ff7fbb47b98b593fb54
-  1b773952714c57280c17ebaaa36947c1faa1af48c640ba1040dfff77f25a293e
+  dc92d814d6ecf604914855f08aed8fc4d53d181ac3b48c1c08374db298cb20e2
 )
 
 package() {
+  # The source archive extracts to joystickwake, but we want
+  # a versioned directory name to avoid potential conflicts
+  rm -rf "${srcdir}/${pkgname}-${pkgver}"
+  mv "${srcdir}/joystickwake" "${srcdir}/${pkgname}-${pkgver}"
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -R < "${srcdir}/setup.patch"
   python setup.py install --root="${pkgdir}" --optimize=1
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
