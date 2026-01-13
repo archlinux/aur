@@ -2,7 +2,7 @@
 
 pkgname=u2o
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='USFM to OSIS bible format converter'
 arch=(any)
 url=https://github.com/adyeths/u2o
