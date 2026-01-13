@@ -1,7 +1,7 @@
 pkgbase = perl-set-object
 	pkgdesc = Set of Objects (smalltalkish: IdentitySet)
-	pkgver = 1.42
-	pkgrel = 2
+	pkgver = 1.43
+	pkgrel = 1
 	url = https://metacpan.org/pod/Set::Object
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = perl-set-object
 	depends = glibc
 	options = !emptydirs
 	options = purge
-	source = http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-1.42.tar.gz
-	md5sums = 31875a6d0e0abaf08fbba47f0936bfaf
+	source = http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-1.43.tar.gz
+	md5sums = b6f13f4ff2f452d6d513774e917c92df
 
 pkgname = perl-set-object
