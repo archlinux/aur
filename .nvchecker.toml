@@ -1,6 +1,2 @@
 [plasma-login-manager]
-source = 'gitlab'
-gitlab = 'plasma/plasma-login-manager'
-host = 'invent.kde.org'
-use_max_tag = true
-prefix = 'v'
+source = 'manual'
