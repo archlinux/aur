@@ -1,7 +1,7 @@
 pkgname=qobuz-player
-pkgver="0.6.0"
-_release_version="0.6.0"
-pkgrel=2
+pkgver="0.6.1"
+_release_version="0.6.1"
+pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
 url="https://github.com/SofusA/qobuz-player"
@@ -11,15 +11,14 @@ depends=(alsa-lib)
 makedepends=(cargo nodejs npm)
 optdepends=('ttf-font-nerd: glyph support') 
 source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${_release_version}.tar.gz")
-sha256sums=('591c65689a74e31b6434adfbc2fffdca4629d01a4039b0a3c6cfa4c9a4563964')
+sha256sums=('45b2ad3fe5b32be5dcae2b0cc6e775d4b718b5f687e13d9433f7982d4f1e7fb0')
 options=('!lto')
 
 prepare() {
     cd ${pkgname}-${_release_version}
     export RUSTUP_TOOLCHAIN=stable
-    #cargo fetch --locked --target $(rustc --print host-tuple)
-    cargo fetch --target $(rustc --print host-tuple)
-    cd qobuz-player-web
+    cargo fetch --locked --target $(rustc --print host-tuple)
+     cd qobuz-player-web
     npm install
 }
 
