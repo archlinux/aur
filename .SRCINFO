@@ -1,6 +1,6 @@
 pkgbase = r-warp
 	pkgdesc = Group Dates
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=warp
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-warp
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/warp_0.2.2.tar.gz
-	md5sums = 08d0e42dd087393d819f45b63ea00b21
-	b2sums = 6bd6f6a336e1a13aeca10e856de95fe830bfe571c2fd18fd6349d074ddb20d76b5e3bc15c408a7ff053e5fe1f88ee88f6d713900fa94b0a9724aa9b8542c5276
+	source = https://cran.r-project.org/src/contrib/warp_0.2.3.tar.gz
+	md5sums = b5603af0a2d1b62511f85f5574c747a8
+	b2sums = c171fea1dbcdbec2c071a50770ad8eb6054ce86c43279630ddf11c6f3e89adf351563d0ccd15935ce83007b60cab775975a64cb7d2c258d0597c12e832a9a528
 
 pkgname = r-warp
