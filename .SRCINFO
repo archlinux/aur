@@ -1,6 +1,6 @@
 pkgbase = fava
 	pkgdesc = Web interface for beancount
-	pkgver = 1.30.8
+	pkgver = 1.30.10
 	pkgrel = 1
 	url = https://github.com/beancount/fava
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = fava
 	depends = python-ply
 	depends = python-simplejson
 	depends = python-watchfiles
-	noextract = fava-1.30.8-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/source/f/fava/fava-1.30.8.tar.gz
-	b2sums = 6f52408a6a7c9d91593559d5190626e4633a91641181af1d51005ce4c2a659ee871c537dfb667054081c422f595f603b746dbdf10907ac8c62dfc17b0997210d
+	noextract = fava-1.30.10-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/source/f/fava/fava-1.30.10.tar.gz
+	b2sums = d662632f16cf4299aea63b9947ea3795f6e98cf0bceb34cd009ebfe51682d2d00376d8aa8d94931ee641618e4ab572a4a116a94d79cd872814df8f305da42929
 
 pkgname = fava
