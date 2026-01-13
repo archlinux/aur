@@ -3,7 +3,7 @@
 
 pkgname=runa-bin
 _name=runa
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/runa-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/runa-linux-aarch64.tar.gz")
 sha256sums=('18f0dc4cd8fadfc12ef6e05373ad5baf634cbc857ffe6076c65f8147c77d48de')
-sha256sums_x86_64=('f6247c98abbd03d8f34bf556fc436ac4d50f36709fc0697d71784ff76b8e224a')
-sha256sums_aarch64=('ba60688e0a33ceef6e8e9e0b4fe79758df2f0ad725f120abe5414a74fbb173b6')
+sha256sums_x86_64=('baa2e4ee3e48db648fd45cf41b8df21f1fc37e41711c504f253b6a9399aeab24')
+sha256sums_aarch64=('f7eb646af2b12ea0c8baf3f7e5f49acd60318192b10ded8323434c6176f13e92')
 
 package() {
     install -Dm755 rn -t "$pkgdir/usr/bin/"
