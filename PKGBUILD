@@ -1,61 +1,36 @@
-# Maintainer: FlekGeKei <FlekGeKei@outlook.com>
+# Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
 pkgname=elyprismlauncher
-pkgver=8.4
+pkgver=10.0.2
 pkgrel=1
-pkgdesc="This fork of Prism Launcher replaces legacy Mojang accounts with Ely.by accounts. This is not endorsed by Prism Launcher or Ely.by."
-arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/Octol1ttle/ElyPrismLauncher"
-license=('GPL3')
-depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'tomlplusplus' 'cmark')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
+pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
+arch=('x86_64')
+url="https://github.com/ElyPrismLauncher/ElyPrismLauncher"
+license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
+depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'libarchive' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'qrencode' 'qt6-wayland')
+provides=('elyprismlauncher')
+conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
-            'java-runtime=8: for older minecraft versions')
-conflicts=('prismlauncher')
-provides=('prismlauncher')
-if [[ ${pkgrel} > 1 ]]; then
-  source=("https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/${pkgver}-${pkgrel}/PrismLauncher-${pkgver}-${pkgrel}.tar.gz")
-else
-  source=("https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
-fi
-sha256sums=('1b70923daa5659118a45f178af900d4e120aa946c661c7a02b375a3b0e5ae47c')
+            'java-runtime=8: support for Minecraft versions < 1.17'
+            'flite: minecraft voice narration'
+)
+source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/${pkgver}/ElyPrismLauncher-${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-build() {
-  if [[ ${pkgrel} > 1 ]]; then
-    cd "PrismLauncher-${pkgver}-${pkgrel}"
-  else
-    cd "PrismLauncher-${pkgver}"
-  fi
-
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
-
-  cmake -DCMAKE_BUILD_TYPE= \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLauncher_BUILD_PLATFORM="archlinux" \
-    -DLauncher_QT_VERSION_MAJOR="6" \
-    -Bbuild -S. \
-    -DLauncher_DRM="OFF"
-  cmake --build build
+build()
+{
+	#tar -xvf ElyPrismLauncher-${pkgver}.tar.gz --strip-components=1
+	# Force SSSE3 CPU extensions maximum for better compatibility. A Minecraft launcher won't benefit much, if at all from these.
+	cd ElyPrismLauncher-${pkgver}
+	cmake -DCMAKE_INSTALL_PREFIX=/usr --preset linux -DCMAKE_CXX_FLAGS="-march=x86-64 -mtune=generic -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4 -mno-sse4a -mno-sse4.1 -mno-sse4.2 -mno-sse5 -mno-popcnt -mno-abm"
+	cmake --build build --config Release -j$(nproc)
 }
 
-check() {
-  if [[ ${pkgrel} > 1 ]]; then
-    cd "PrismLauncher-${pkgver}-${pkgrel}/build"
-  else
-    cd "PrismLauncher-${pkgver}/build"
-  fi
-  ctest .
+package()
+{
+	cd ElyPrismLauncher-${pkgver}
+	DESTDIR="${pkgdir}" cmake --install build --config Release
 }
-
-package() {
-  if [[ ${pkgrel} > 1 ]]; then
-    cd "PrismLauncher-${pkgver}-${pkgrel}/build"
-  else
-    cd "PrismLauncher-${pkgver}/build"
-  fi
-  DESTDIR="${pkgdir}" cmake --install .
-}
-
