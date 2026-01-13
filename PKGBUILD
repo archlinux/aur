@@ -1,7 +1,7 @@
 pkgname=moonveil
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Moonveil Hyprland dotfiles (home-based, ML4W-style)"
+pkgdesc="Moonveil Hyprland dotfiles"
 arch=('any')
 url="https://github.com/notcandy001/Moonveil"
 license=('MIT')

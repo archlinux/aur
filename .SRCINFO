@@ -1,5 +1,5 @@
 pkgbase = moonveil
-	pkgdesc = Moonveil Hyprland dotfiles (home-based, ML4W-style)
+	pkgdesc = Moonveil Hyprland dotfiles
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/notcandy001/Moonveil
