@@ -2,7 +2,7 @@
 
 pkgname=ofxstatement-revolut
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A plugin for ofxstatement to convert CSV-formatted Revolut exports to OFX format.'
 arch=('any')
 url="https://github.com/mlaitinen/ofxstatement-revolut"
