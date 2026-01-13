@@ -45,6 +45,8 @@ depends=(
 	'python-packaging'
 	'python-importlib-metadata'
 	'python-pydantic'
+	'python-pyparsing'
+	'python-pyrsistent'
 	'python-python-multipart>=0.0.9'
 	'python-systemd'
 	'systemd'
@@ -54,8 +56,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
-	'python-poetry-core'
-	'python-setuptools-rust'
+	'python-maturin'
 )
 checkdepends=(
 	'python-pip'
@@ -88,6 +89,8 @@ optdepends=(
 
 source=(
 	"$_pkgname::git+https://github.com/element-hq/synapse.git#branch=master"
+	'matrix-synapse-fix-worker-test-race.patch'
+	'matrix-synapse-fix-prometheus-client.patch'
         'generic_worker.yaml.example'
         'synapse.service'
         'synapse.target'
@@ -98,6 +101,8 @@ source=(
 )
 
 sha256sums=('SKIP'
+            '751d0cb122b3c17cb4a2142461ac99bbaec798f1e4b357dd41ec4041e5623d35'
+            '1be6f003004c720bfaf2f2589315127b20e1be4df87ebb1a260e622825064c90'
             'f67334856609997eac26939d77cfc520e78e98d3755543ab730d83a0f362a35e'
             '74af0bc2f57e5ced1a44f2438922d420cbb7defedae784cac02ef125f276a2ed'
             '408527271e1250beb20531f140b91201ed464e42f7eb3f47f02967a2ac23a661'
@@ -128,10 +133,10 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	# allow any poetry-core to be used
-	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
-	# allow any setuptools_rust to be used
-	sed -r 's/setuptools_rust>=([0-9.]+),<=([0-9.]+)/setuptools_rust>=\1/' -i pyproject.toml
+
+	git apply -3 "$srcdir/matrix-synapse-fix-worker-test-race.patch"
+	# fix incompatibility with prometheus-client==0.24.0
+	git apply -3 "$srcdir/matrix-synapse-fix-prometheus-client.patch"
 
 	# _Disable_ cross-toolchain LTO because we are using different toolchains
 	# for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
@@ -148,14 +153,13 @@ build() {
 
 check() {
 	cd $_pkgname
-	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 	python -m venv --system-site-packages test-env
 	test-env/bin/python -m installer dist/*.whl
-	pushd build/lib.linux-$CARCH-cpython-${python_version}
-	ln -sv ../../tests .
-	PYTHONPATH="$PWD" PATH="../../test-env/bin:$PATH" ../../test-env/bin/python -m twisted.trial -j$(nproc) tests
-	rm -r tests _trial_temp
-	popd
+	local site_packages=$(test-env/bin/python -c "import site; print(site.getsitepackages()[0])")
+	mkdir test-dir
+	cd test-dir
+	ln -sv "$site_packages/synapse" ../tests -t .
+	PYTHONPATH="$PWD" PATH="../test-env/bin:$PATH" ../test-env/bin/python -m twisted.trial -j$(nproc) tests
 }
 
 package() {

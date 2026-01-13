@@ -1,0 +1,23 @@
+diff --git a/synapse/metrics/_types.py b/synapse/metrics/_types.py
+index cbfe71446e..657a77fb5a 100644
+--- a/synapse/metrics/_types.py
++++ b/synapse/metrics/_types.py
+@@ -25,14 +25,7 @@ from typing import Iterable
+
+ from prometheus_client import Metric
+
+-try:
+-    from prometheus_client.registry import Collector
+-except ImportError:
+-    # prometheus_client.Collector is new as of prometheus 0.14. We redefine it here
+-    # for compatibility with earlier versions.
+-    class _Collector(ABC):
+-        @abstractmethod
+-        def collect(self) -> Iterable[Metric]:
+-            pass
+-
+-    Collector = _Collector  # type: ignore
++class Collector(ABC):
++    @abstractmethod
++    def collect(self) -> Iterable[Metric]:
++        pass
