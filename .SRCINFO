@@ -1,0 +1,14 @@
+pkgbase = nekoweb-cli-bin
+	pkgdesc = CLI for Nekoweb
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/meganekkogekirabu/nekoweb-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	source_x86_64 = https://github.com/meganekkogekirabu/nekoweb-cli/releases/download/v0.1.0/neko-v0.1.0-amd64-linux
+	sha256sums_x86_64 = ba6ade51e912e120e3e353545291487aa9147e852800ab0cec06f57c69cd232d
+	source_aarch64 = https://github.com/meganekkogekirabu/nekoweb-cli/releases/download/v0.1.0/neko-v0.1.0-aarch64-linux
+	sha256sums_aarch64 = 5a16ff3a97cf43fb36963e4f4b5b8c594a1ec9d9ab9ff5a92188cd7e63358c5e
+
+pkgname = nekoweb-cli-bin
