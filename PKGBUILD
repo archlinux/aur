@@ -2,7 +2,7 @@
 
 pkgname=dehinter
 pkgver=4.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A tool for the removal of TrueType instruction sets (hints) in fonts'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
