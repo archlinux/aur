@@ -3,7 +3,7 @@
 pkgname=python-quiffen
 _pkgname=${pkgname#python-}
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Quiffen is a Python package for parsing QIF (Quicken Interchange Format) files.'
 arch=('any')
 url="https://github.com/isaacharrisholt/quiffen"

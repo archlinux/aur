@@ -1,7 +1,7 @@
 pkgbase = python-quiffen
 	pkgdesc = Quiffen is a Python package for parsing QIF (Quicken Interchange Format) files.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isaacharrisholt/quiffen
 	arch = any
 	license = MIT
