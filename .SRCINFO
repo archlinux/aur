@@ -1,7 +1,7 @@
 pkgbase = python-gflanguages
 	pkgdesc = API for evaluating language support in the Google Fonts collection
 	pkgver = 0.7.7
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/googlefonts/gflanguages
 	arch = any
