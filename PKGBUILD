@@ -3,7 +3,7 @@
 _name=pantable
 pkgname=python-$_name
 pkgver=0.14.2
-pkgrel=6
+pkgrel=7
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=(any)
 url="https://github.com/ickc/$_name"
