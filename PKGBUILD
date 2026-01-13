@@ -5,8 +5,8 @@
 # Contributor: Mikata Riko <sanbikappa at qq dot com>
 
 pkgname=xp-pen-tablet
-pkgver=4.0.7
-pkgrel=250117
+pkgver=4.0.13
+pkgrel=251226
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('custom')
 source=("XPPenLinux${pkgver}-${pkgrel}.deb::https://www.xp-pen.com/download/file.html?id=3665&pid=1211&ext=deb")
 install=${pkgname}.install
 
-sha512sums=('3e56cac17a58fff8b9bb55fe0a2ed961391d3679181dac4aafc4c3da998d4b0ebc9523d1ebc010f2d3065833d61787204c1b040cc613c192871eb34c80f5a2af')
+sha512sums=('03bd071184f327adce3618b703b1e65338c2c83b5d8242e81c2f0184f6eafa1f1740441b9b88cd7f728f4f83e980ab0f1b28ff28274757fa61a601a028854205')
 
 prepare() {
     tar -xf data.tar.xz
