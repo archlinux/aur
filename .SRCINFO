@@ -1,0 +1,16 @@
+pkgbase = vusi
+	pkgdesc = ECDSA signature vulnerability analysis library and CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oritwoen/vusi
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/oritwoen/vusi.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = vusi
