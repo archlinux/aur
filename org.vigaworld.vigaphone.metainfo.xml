@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 ViGAWorld -->
+<component type="desktop">
+ <id>org.vigaworld.vigaphone</id>
+ <metadata_license>CC0-1.0</metadata_license>
+<project_license>Proprietary; Personal License</project_license>
+ <name>ViGAPhone</name>
+ <summary>ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool.</summary>
+ <description>
+  <p>ViGAPhone is a realistic physical modelling synthesis program for Linux or Windows computers, optionally used with a MIDI keyboard. It is designed for performing musicians, professional tuners, and occasional hobbyists.</p>
+ </description>
+ <launchable type="desktop-id">org.vigaworld.vigaphone.desktop</launchable>
+ <provides>
+  <binary>vigaphone</binary>
+ </provides>
+ <screenshots>
+  <screenshot type="default">
+   <image>https://vigaworld.com/vigaphone/images/accorder-EN.png</image>
+   <caption>ViGAPhone high precision any instrument and piano electronic tuner</caption>
+  </screenshot>
+  <screenshot>
+   <image>https://vigaworld.com/vigaphone/images/inharmonicite.png</image>
+   <caption>ViGAPhone piano's inharmonicity acquisition</caption>
+  </screenshot>
+  <screenshot>
+   <image>https://vigaworld.com/vigaphone/images/captureTimbreAnalyse.png</image>
+   <caption>ViGAPhone piano's timbre acquisition and modeling</caption>
+  </screenshot>
+ </screenshots>
+ <keywords>
+  <keyword>Audio</keyword>
+  <keyword>Music</keyword>
+  <keyword>MIDI</keyword>
+  <keyword>ALSA</keyword>
+  <keyword>JACK</keyword>
+  <keyword>Synthesizer</keyword>
+ </keywords>
+ <url type="homepage">https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone</url>
+ <developer_name>Ing Vincent GACOUGNOLLE</developer_name>
+ <update_contact>contactnotcopythis@vigaworld.com</update_contact>
+ <url type="license">https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone?tab=License-1-ov-file</url>
+ <releases>
+  <release version="1.0.0" date="2026-01-11" urgency="low" />
+ </releases>
+ <content_rating type="oars-1.0"/>
+</component>

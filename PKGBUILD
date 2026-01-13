@@ -2,7 +2,8 @@ pkgname=vigaphone-bin
 pkgver=1.0.2_beta
 pkgrel=1
 options=('!strip' '!debug')
-pkgdesc="ViGAPhone is a MIDI synthesizer, audio‑analysis, and instrument‑tuning tool."
+groups=('pro-audio')
+pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
 arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
@@ -33,6 +34,9 @@ package() {
 
     # MIME type
     install -Dm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
+
+	# long Description
+	install -Dm644 "$srcdir/org.vigaworld.vigaphone.metainfo.xml" "$pkgdir/usr/share/metainfo/org.vigaworld.vigaphone.metainfo.xml"
 
     # Données utilisateur
     install -d "$pkgdir/usr/share/vigaphone"
