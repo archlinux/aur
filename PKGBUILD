@@ -1,7 +1,7 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=bcachefs-kernel-dkms-git
 _pkgname=bcachefs-kernel
-pkgver=20260107.r1.gd520a9790
+pkgver=20260113.r1.g8bbabb8bb
 pkgrel=1
 pkgdesc="Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure"
 arch=('x86_64')
@@ -9,17 +9,16 @@ url="https://github.com/koverstreet/bcachefs"
 license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
+optdepends=('bcachefs-tools: userspace utilities for bcachefs filesystem')
 # 兼容性声明：防止与其他 bcachefs 驱动包冲突
 provides=('bcachefs-dkms' 'bcachefs-dkms-git')
 conflicts=('bcachefs-dkms' 'bcachefs-dkms-git' 'bcachefs-git' 'bcachefs-source-git')
 source=(
     "dkms.conf.in"
     "Makefile.dkms"
-    "fix-reconcile-goto.patch"
 )
 sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
-            'ad66094a544f86e2ac89180aee35e1bdd8c8941e51812e1553b0e0c8b0c487aa'
-            '16b640a7717efb22943e6e82442cf8ffe996e7aaea35b850b60e8e46a32628fb')
+            'ad66094a544f86e2ac89180aee35e1bdd8c8941e51812e1553b0e0c8b0c487aa')
 
 pkgver() {
     # 防止第一次运行时目录不存在报错
@@ -35,8 +34,8 @@ pkgver() {
             "$(git rev-list --count "$ref")" \
             "$(git rev-parse --short "$ref")"
     else
-        # 初始占位符
-        printf "2025.12.09.r0.g0000000"
+        # 初始占位符（首次构建时目录不存在）
+        printf "0.0.0.r0.g0000000"
     fi
 }
 
@@ -96,9 +95,6 @@ EOF
     if [ -d "$_repo_dir/include" ]; then
         cp -r "$_repo_dir/include" "$srcdir/build/"
     fi
-
-    msg2 "Applying clang goto cleanup fix..."
-    patch -p1 -d "$srcdir/build" -i "$srcdir/fix-reconcile-goto.patch"
 
     install -m644 "$srcdir/dkms.conf.in" "$srcdir/build/dkms.conf"
     install -m644 "$srcdir/Makefile.dkms" "$srcdir/build/Makefile"
