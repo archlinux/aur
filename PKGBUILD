@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=translationcore-bin
 _pkgname=translationCore
-pkgver=3.6.10
-_subver=MAX-c3947fe
+pkgver=3.7.0
+_subver=MAX-c16e207
 _electronversion=25
 pkgrel=1
 pkgdesc="An open source platform for checking and managing Bible translation projects.(Prebuilt version.Use system-wide electron)"
@@ -25,9 +25,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2e803bc22c01da1d7144e47f25d4c56db7bdc5a3c99ab1fd76e4f8e075f8d9f7')
-sha256sums_x86_64=('0245a33fd29cbaedab8d09db67d211098cf33b2812f389c0b050f2b70455e0e3')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('fdf9a10cecd75b062c365c50ae1ba1c36fb7d43a8660ebf6b54e6d99cfaf437b')
+sha256sums_x86_64=('9d9bc9682cf8d3f185004be24a4c21be99f762b45b290214de29d98de411e6db')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
@@ -37,6 +41,7 @@ prepare() {
         s/@options@//
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${_pkgname}/${pkgname%-bin}/g
         s/unfoldingword-${pkgname%-bin}/${pkgname%-bin}/g
