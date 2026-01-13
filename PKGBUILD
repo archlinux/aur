@@ -4,7 +4,7 @@
 pkgbase='pyocclient'
 pkgname='python-pyocclient'
 pkgver='0.6'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Python client library for ownCloud'
 arch=('x86_64' 'aarch64')
 url="https://github.com/owncloud/${pkgbase}"

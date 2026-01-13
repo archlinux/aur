@@ -1,7 +1,7 @@
 pkgbase = pyocclient
 	pkgdesc = Python client library for ownCloud
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/owncloud/pyocclient
 	arch = x86_64
 	arch = aarch64
