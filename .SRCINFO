@@ -1,6 +1,6 @@
 pkgbase = roon-mpris-multizone-git
 	pkgdesc = Multi-zone MPRIS bridge for Roon - control all zones via media keys
-	pkgver = r24.gdc9bac4
+	pkgver = r25.gf35c795
 	pkgrel = 1
 	url = https://github.com/godlyfast/roon-mpris
 	arch = any
