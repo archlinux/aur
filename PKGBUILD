@@ -6,11 +6,12 @@ _pkgowner=wlx-team
 pkgname="${_pkgname}-actions-bin"
 branch=main
 pkgver=20954286114
-pkgrel=2
+pkgrel=3
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR, CI build)"
 arch=('x86_64')
 url="https://github.com/${_pkgowner}/${_pkgname}"
 license=('GPL')
+replaces=("wlx-overlay-s")
 options=('!debug')
 
 provides=(
