@@ -1,0 +1,5 @@
+[mp3rgain-bin]
+source = "github"
+github = "M-Igashi/mp3rgain"
+use_latest_release = true
+prefix = "v"

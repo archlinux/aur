@@ -1,0 +1,19 @@
+pkgbase = mp3rgain-bin
+	pkgdesc = Lossless MP3 volume adjustment - A modern 'mp3gain' replacement
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/M-Igashi/mp3rgain
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = mp3rgain
+	conflicts = mp3rgain
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.1.0/LICENSE
+	source = README-1.1.0.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.1.0/README.md
+	sha256sums = 45f62ea4b8704c36e13c62bdafb15076fc8bf618b9722496534193700a7f61bc
+	sha256sums = 8b7384e16123e665f25073b3bb98f0f2f729a31d3ed7128188abd8566f50b892
+	source_x86_64 = mp3rgain-x86_64-1.1.0.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v1.1.0/mp3rgain-v1.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e4a48e253bbc2b1550bb0db79caffd64e11d319d4fe188c542b1bcd480f9e1c8
+
+pkgname = mp3rgain-bin
