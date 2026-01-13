@@ -1,6 +1,6 @@
 pkgbase = swap-os-git
 	pkgdesc = A tool to enable seemless swap between different OS
-	pkgver = v2.0.0.r10.g884a724
+	pkgver = 2.0.0.r2.ge8b06f9
 	pkgrel = 1
 	url = https://github.com/CWZMorro/swap-OS
 	arch = any
