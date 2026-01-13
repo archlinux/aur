@@ -1,7 +1,7 @@
 pkgbase = python-fontaine
 	pkgdesc = Font analysis tool for determining character/glyph support
 	pkgver = 1.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/googlefonts/pyfontaine
 	arch = any
 	license = GPL-3.0-only
