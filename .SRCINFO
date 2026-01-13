@@ -1,11 +1,11 @@
 pkgbase = httpclient-bin
-	pkgver = 1.0.32
+	pkgver = 1.0.33
 	pkgrel = 1
 	arch = x86_64
 	depends = libnss3
 	depends = at-spi2-core
 	depends = libasound2
-	source = https://github.com/FPKZ/HTTPClient/releases/download/v1.0.32/HTTPClient-1.0.32-linux.deb
-	sha256sums = 6a5fe025069b23cdf4be190ecaf91569c5286c99fbc68919df260901ab632805
+	source = https://github.com/FPKZ/HTTPClient/releases/download/v1.0.33/HTTPClient-1.0.33-linux.deb
+	sha256sums = c1191263e6e0fd31068addabb7d83af23e7fa0a6b3adb7e6bdee5afdaea6447e
 
 pkgname = httpclient-bin
