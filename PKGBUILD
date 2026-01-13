@@ -7,7 +7,7 @@ _android_arch=x86
 pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
-pkgver=11.2.1
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (Android ${_android_arch})"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('d286c7ba7d7a4c1c59a5579dbcec1a1d')
+md5sums=('5963b551544636df7ea5daddbcf70340')
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
@@ -64,6 +64,8 @@ package_android-x86-harfbuzz() {
     mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}"/libharfbuzz-icu* "hb-icu/${ANDROID_PREFIX_LIB}"
     mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/harfbuzz-icu.pc" "hb-icu/${ANDROID_PREFIX_LIB}/pkgconfig"
     mv -vf "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/harfbuzz/hb-icu.h" "hb-icu/${ANDROID_PREFIX_INCLUDE}/harfbuzz"
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package_android-x86-harfbuzz-icu() {
@@ -73,4 +75,6 @@ package_android-x86-harfbuzz-icu() {
 
     mkdir -p "${pkgdir}/${ANDROID_PREFIX}"
     mv -vf "${srcdir}/harfbuzz-${pkgver}/hb-icu/${ANDROID_PREFIX}"/* "${pkgdir}/${ANDROID_PREFIX}"
- }
+
+    install -vDm 644 "${srcdir}/harfbuzz-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
