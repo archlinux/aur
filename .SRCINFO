@@ -1,0 +1,35 @@
+pkgbase = elyprismlauncher
+	pkgdesc = Prism Launcher fork with integrated support for Ely.by accounts
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = https://github.com/ElyPrismLauncher/ElyPrismLauncher
+	arch = x86_64
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1
+	depends = java-runtime=17
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = qt6-networkauth
+	depends = libarchive
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = tomlplusplus
+	depends = cmark
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qrencode
+	depends = qt6-wayland
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = flite: minecraft voice narration
+	provides = elyprismlauncher
+	conflicts = elyprismlauncher
+	source = https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/10.0.2/ElyPrismLauncher-10.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = elyprismlauncher
