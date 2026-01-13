@@ -1,0 +1,10 @@
+pkgbase = lynxfetch
+	pkgdesc = Super fast, versatile, and customizable command-line fetcher.
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = cargo
+	source = https://gitlab.com/lynxfetch/lynxfetch/-/archive/1.1.0/lynxfetch-1.1.0.tar.gz
+	sha512sums = 341c31abaead79100c22e1c002d681bfce05f02358ef46cf0e4083323f1038fdb0d10c9591aab203d2f85cb05bc3b6e30169d87d8906c4da082d807f1e7f2a63
+
+pkgname = lynxfetch

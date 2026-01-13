@@ -1,0 +1,5 @@
+# Removing non essentails to git ignore
+
+/.idea
+/{src,pkg,*.{gz,zst,xz,bz2,zip,rar,tar,7z,deb,rpm,tgz,exe,lzh,lz4,ar,apk,xbps,run}}
+
