@@ -18,6 +18,12 @@ TimeoutStopSec=5
 
 EnvironmentFile=-/etc/default/%p
 User=onionbalance
+Group=onionbalance
+DynamicUser=yes
+RuntimeDirectory=onionbalance
+LogsDirectory=onionbalance
+ConfigurationDirectory=onionbalance
+
 PermissionsStartOnly=true
 Restart=on-abnormal
 RestartSec=2s

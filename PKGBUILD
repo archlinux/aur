@@ -9,7 +9,7 @@ url='https://github.com/torproject/onionbalance'
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	'onionbalance.service')
 sha256sums=('797a30fa8900ec96d4e94e1f486717abc1a8cfd3f062084443e5c954e980cd2f'
-            '692680a774e30b55b29340b40566d477722ff4e1576c234fe09d13cad021e46f')
+            'e255bdbd277617e2b6a3681256a28691ac8cae5b358be72a41ba20f8cff39401')
 backup=('etc/onionbalance')
 
 build() {
@@ -20,5 +20,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -D -m0400 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+  install -D -m0644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 }
