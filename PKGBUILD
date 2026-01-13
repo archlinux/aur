@@ -3,7 +3,7 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ optdepends=('cuda')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e59e7bc53709b41a7c9d3f18f2bdeb8b2aaaffcc498b0b9c0b49b20425f121ac')
+sha256sums=('590492c90552959b3df6f601eb733135064bf2d9e53c516adcf6845a4e545662')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
