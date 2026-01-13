@@ -2,7 +2,7 @@
 pkgname=python-barcode-git
 _pkgname=python_barcode
 pkgver=v0.16.1.r18.g85acbda
-pkgrel=1
+pkgrel=2
 pkgdesc="Create standard barcodes with Python. No external modules needed. (git version)"
 arch=('any')
 license=('MIT')
