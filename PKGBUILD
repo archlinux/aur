@@ -1,7 +1,7 @@
 # Maintainer: Tymur Smyr <godlyfast@gmail.com>
 
 pkgname=roon-mpris-multizone-git
-pkgver=r24.gdc9bac4
+pkgver=r28.g85b8834
 pkgrel=1
 pkgdesc="Multi-zone MPRIS bridge for Roon - control all zones via media keys"
 arch=('any')
