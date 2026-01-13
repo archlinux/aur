@@ -1,8 +1,8 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=beszel-agent-bin
-pkgver=0.18.1
-pkgrel=4
+pkgver=0.18.2
+pkgrel=1
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -22,14 +22,14 @@ source+=(
 sha256sums=('5224235a819c4463ac7d7c468972fbb5ce73a0aaa6737a297ba8ef9395befbfd'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
-sha256sums_x86_64=('ed4123ceeda41b04b741c2d29370961de12f4e29fb239fcaf5df2a0e2695d02e')
-sha256sums_aarch64=('e4897c02ca03e392ddeeb255f58e658b34e47e2b451048a1344909d5d8a21c35')
-sha256sums_armv7h=('566db4fb48d369101c7472bd9c0cd804d868ae91b570a85c2a93503f42a44081')
-sha256sums_armv6h=('566db4fb48d369101c7472bd9c0cd804d868ae91b570a85c2a93503f42a44081')
-sha256sums_mips64=('f3c4d875eceae2de58835a1453d61a7a44185753e5304dcb9cc7056fefe5c4c3')
-sha256sums_riscv64=('af8bb25cc7c3de35abf2f86f4fbf1aa7cf8a0f5faad435700cdc06341ef385fb')
+sha256sums_x86_64=('65b8a5e84caef7c6583acc169d8054b95fc7745e661293742364051cd9c3c81d')
+sha256sums_aarch64=('55f6cc67601553f5213a4c5db5b57747abfc2b1c2415a42835072ec128e4b1da')
+sha256sums_armv7h=('9927aac272967bc49fa5be206c3e7f549ccc559e68ee4461d83722f8eb0d1c85')
+sha256sums_armv6h=('9927aac272967bc49fa5be206c3e7f549ccc559e68ee4461d83722f8eb0d1c85')
+sha256sums_mips64=('d46876c43cea5dc814d6bebe8ee5c9630964201d477e5bba82b8f00c37a99076')
+sha256sums_riscv64=('23ef6a874e188c6718d8373af13b44deb625b338fe199f96692c433dfe4951e6')
 
-source_x86_64=("beszel-agent_linux_amd64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64.tar.gz")
+source_x86_64=("beszel-agent_linux_amd64_glibc-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64_glibc.tar.gz")
 source_aarch64=("beszel-agent_linux_arm64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
 source_armv7h=("beszel-agent_linux_arm-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm.tar.gz")
 source_armv6h=("${source_armv7h[@]}")
