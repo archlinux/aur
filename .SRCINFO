@@ -12,6 +12,6 @@ pkgbase = gohome
 	provides = gohome
 	
 	source = https://github.com/anIcedAntFA/gohome/releases/download/v${pkgver}/gohome-${pkgver}.tar.gz
-	sha256sums = 7cfbfc4ccac84c124c41ebf20e62ca7017deaa359752878a9949a7b7d538b4cd
+	sha256sums = f6645aa73c1768a442778f41f555b8d57e24927f03d859aeec9c4d5912fa2cc9
 	
 pkgname = gohome
