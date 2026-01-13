@@ -3,7 +3,7 @@
 
 _pkgname=injector
 pkgname=python-${_pkgname}
-pkgver=0.22.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Python dependency injection framework, inspired by Guice."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 provides=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/python-injector/injector/refs/heads/master/COPYING")
-sha256sums=('79b2d4a0874c75d3aa735f11c5b32b89d9542711ca07071161882c5e9cc15ed6'
+sha256sums=('e85a75d1516cff2f03170f3fd1219f56acb25c9a05e307819ae0dcde3dad3d3f'
             '567278bc23fa55244f132af7164aa684940c75fa35b19c395899422cb92613ba')
 
 build() {
