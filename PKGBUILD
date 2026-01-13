@@ -22,5 +22,6 @@ build() {
 }
 
 package() {
-  cp -a $srcdir/discord-dynamic-status-hyprland/target/release/discord-dynamic-status-hyprland "${pkgdir}"
+    install -Dm755 "$srcdir/discord-dynamic-status-hyprland/target/release/discord-dynamic-status-hyprland" "$pkgdir/usr/bin/dynamic-drpc-hyprland"
 }
+
