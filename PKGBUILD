@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=1.1.8
+pkgver=1.1.10
 _electronversion=38
 pkgrel=1
 pkgdesc="Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6f531f4ee74ef415393f1ef116cdaffbba9ea9cd78d3cfe8fda5d0fce00629ae'
+sha256sums=('482fe04850d0e6710b4b758dc37081b3754371ced94faa05a55f5cfb61e95120'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
