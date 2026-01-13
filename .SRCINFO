@@ -1,7 +1,7 @@
 pkgbase = open-tv-bin
 	pkgdesc = Fast and powerful IPTV app
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fredolx/open-tv
 	arch = x86_64
 	license = GPL2

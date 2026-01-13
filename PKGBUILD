@@ -2,7 +2,7 @@
 
 pkgname=open-tv-bin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and powerful IPTV app'
 arch=('x86_64')
 url='https://github.com/fredolx/open-tv'
@@ -22,7 +22,7 @@ source=(
 sha512sums=('a0b45fffcd0e062ef22a546f646fc63c3c0d565471d50e749e863c575abb3cf0bcace6d1ef13bb46331b9ea52a3ceb39959a3984b8f420f2e159e69868ad8b57')
 
 prepare() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/"
+    bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}/"
 }
 
 package() {
