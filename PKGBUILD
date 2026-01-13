@@ -2,7 +2,7 @@
 
 pkgname=slice
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc='GUI app to generate custom static fonts from variable fonts'
 arch=(any)
 url="https://github.com/source-foundry/${pkgname^}"

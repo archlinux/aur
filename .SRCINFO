@@ -1,7 +1,7 @@
 pkgbase = slice
 	pkgdesc = GUI app to generate custom static fonts from variable fonts
 	pkgver = 0.7.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/source-foundry/Slice
 	arch = any
 	license = GPL-3.0-only
