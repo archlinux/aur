@@ -1,7 +1,7 @@
 # Maintainer: Gustyx <gustiadityamuzaky08@gmail.com>
 pkgname=aura-terminal-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, transparent terminal emulator built with Compose Multiplatform (Rust Backend)"
 arch=('x86_64')
 url="https://github.com/Gustyx-Power/AURA-Terminal"
@@ -18,19 +18,30 @@ prepare() {
 }
 
 package() {
+    echo "Extracting data..."
     bsdtar -xf "data.tar.xz" -C "${pkgdir}"
+
     chmod -R 755 "${pkgdir}/opt/aura-terminal"
 
     mkdir -p "${pkgdir}/usr/bin"
     ln -s "/opt/aura-terminal/bin/AURA-Terminal" "${pkgdir}/usr/bin/aura-terminal"
 
-    # Install the icon to /usr/share/pixmaps
-    install -Dm644 "${pkgdir}/opt/aura-terminal/lib/AURA-Terminal.png" "${pkgdir}/usr/share/pixmaps/aura-terminal.png"
+    mkdir -p "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${pkgdir}/opt/aura-terminal/lib/"*.png "${pkgdir}/usr/share/pixmaps/aura-terminal.png"
 
-    # Install the desktop file to /usr/share/applications
-    # Note: Using 'aura-terminal.desktop' to match standard naming conventions
-    install -Dm644 "${pkgdir}/opt/aura-terminal/lib/AURA-Terminal.desktop" "${pkgdir}/usr/share/applications/aura-terminal.desktop"
+    mkdir -p "${pkgdir}/usr/share/applications"
 
-    # Fix Icon path in .desktop file to use the system icon name 'aura-terminal'
-    sed -i 's|Icon=.*|Icon=aura-terminal|g' "${pkgdir}/usr/share/applications/aura-terminal.desktop"
+    cat > "${pkgdir}/usr/share/applications/aura-terminal.desktop" <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Aura Terminal
+Comment=A modern, transparent terminal emulator
+Exec=/usr/bin/aura-terminal
+Icon=aura-terminal
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupWMClass=aura-terminal-bin-MainKt
+EOF
+
 }
