@@ -4,13 +4,13 @@ pkgname=xylib
 pkgver=1.6
 _tag="v1.6"
 _devel="wojdyr"
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable C++ library for reading files that contain x-y data
 from powder diffraction, spectroscopy or other experimental methods."
 url="http://xylib.sourceforge.net/"
 arch=('x86_64')
 license=('GPL')
-depends=("wxgtk3")
+depends=("wxwidgets-gtk3")
 makedepends=('boost>=1.46.1')
 options=('!libtool')
 source=("https://github.com/$_devel/$pkgname/releases/download/$_tag/$pkgname-$pkgver.tar.bz2")
