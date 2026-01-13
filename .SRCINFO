@@ -1,0 +1,17 @@
+pkgbase = bcmr-bin
+	pkgdesc = cp with progress bar
+	pkgver = 0.3.23
+	pkgrel = 1
+	url = https://github.com/Bengerthelorf/bcmr
+	arch = x86_64
+	license = MIT
+	provides = bcmr
+	conflicts = bcmr
+	source = LICENSE-0.3.23::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.3.23/LICENSE
+	source = README-0.3.23.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.3.23/README.md
+	sha256sums = 1a1600e7355b11cc1e69a6a361269e3c9a64f73d6c0b5958fe48f4861053bfd7
+	sha256sums = 2a0da400ebb421c5b6f9a0df9a849a00beca33be89a527d83cc30c7bca19727c
+	source_x86_64 = bcmr-x86_64-0.3.23.tgz::https://github.com/Bengerthelorf/bcmr/releases/download/v0.3.23/bcmr-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 95dc696fe8d51cff84ae6225de5adb80871ff9983ead2f5bbac4da6169046c23
+
+pkgname = bcmr-bin

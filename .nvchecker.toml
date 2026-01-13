@@ -1,0 +1,5 @@
+[bcmr-bin]
+source = "github"
+github = "Bengerthelorf/bcmr"
+use_latest_release = true
+prefix = "v"
