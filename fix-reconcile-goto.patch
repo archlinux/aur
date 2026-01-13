@@ -1,0 +1,26 @@
+diff --git a/fs/bcachefs/data/reconcile.c b/fs/bcachefs/data/reconcile.c
+index 1c6f2a1..c3f558b 100644
+--- a/fs/bcachefs/data/reconcile.c
++++ b/fs/bcachefs/data/reconcile.c
+@@ -1896,16 +1896,16 @@ static CLOSURE_CALLBACK(do_reconcile_phys_thread)
+ 	struct btree_trans *trans = ctxt.trans;
+ 
+ 	CLASS(darray_reconcile_work, work)();
+-	darray_make_room(&work, REBALANCE_WORK_BUF_NR);
+-	if (!work.size) {
+-		bch_err(c, "%s: unable to allocate memory", __func__);
+-		goto out;
+-	}
+-
+ 	CLASS(per_snapshot_io_opts, snapshot_io_opts)(c);
+ 
+ 	struct wb_maybe_flush last_flushed __cleanup(wb_maybe_flush_exit);
+ 	wb_maybe_flush_init(&last_flushed);
++
++	darray_make_room(&work, REBALANCE_WORK_BUF_NR);
++	if (!work.size) {
++		bch_err(c, "%s: unable to allocate memory", __func__);
++		goto out;
++	}
+ 
+ 	struct bbpos work_pos = BBPOS(thr->btree, POS(thr->dev, 0));
