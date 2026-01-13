@@ -12,16 +12,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix Flatpak save file in home directory (make a warning)
 - Save unit file in run
 - Search (simple) the logs
-- Search dependencies
 - Options on description menu
 - Show interface on properties list
 - Can create unit' Drop-Ins
+
+## [2.11.1] - 2026-01-12
+
+### Added
+
+- Find in text can constrain on whole word
+
+### Changed
+
+- Find in text feature handle text update optimizations (e.g. for the journal)
 
 ## [2.11.0] - 2026-01-10
 
 ### Added
 
-- Find text feature on the Unit's Description, File, Dependencies and Journal
+- Find in text feature on the Unit's Description, File, Dependencies and Journal
 
 ### Fixed
 
