@@ -1,7 +1,7 @@
 pkgbase = python-cstruct
 	pkgdesc = C-style structs for Python
-	pkgver = 6.1
-	pkgrel = 0
+	pkgver = 6.2
+	pkgrel = 1
 	url = https://github.com/andreax79/python-cstruct
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-cstruct
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-cstruct-6.1.tar.gz::https://github.com/andreax79/python-cstruct/archive/v6.1.tar.gz
-	sha256sums = 3c4f70a8adfaca32542af481bdd58e10b5224d8dc34340e018b940b8b730c060
+	source = python-cstruct-6.2.tar.gz::https://github.com/andreax79/python-cstruct/archive/v6.2.tar.gz
+	sha256sums = 39388883c1722ba1c1cbefa4b2625d7964e6ecec5348c91f3fb8fd97b1b84501
 
 pkgname = python-cstruct
