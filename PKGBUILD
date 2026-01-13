@@ -1,18 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="obsidian-cli"
-pkgver=0.1.9
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
 arch=('aarch64' 'x86_64')
-url="https://yakitrak.github.io/obsidian-cli-docs"
-_url="https://github.com/Yakitrak/${pkgname}"
+#url="https://yakitrak.github.io/obsidian-cli-docs"
+url="https://github.com/Yakitrak/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f789e89e215414f517b2a54d49b060e33ee45d11427e92f298f32b5dd616fd86')
+source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('10adbecd9692e92e58119cc41ac375b9ad9b6c628ce957be11fcad959ce6f2a4')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
