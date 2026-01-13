@@ -1,7 +1,7 @@
 pkgbase = python-trie
 	pkgdesc = Python library which implements the Ethereum Trie structure.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/py-trie
 	arch = any
 	license = MIT
