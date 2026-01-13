@@ -2,7 +2,7 @@
 
 pkgname=fdiff
 pkgver=3.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='An OpenType table diff tool for fonts based on the fontTools TTX format'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
