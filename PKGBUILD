@@ -2,7 +2,7 @@
 pkgname=prismlauncher-zlib-compat-git
 _pkgname=PrismLauncher
 pkgver=10.0.0.pre1.r154.gc2fc0a3 # 这里的默认值会被 pkgver() 自动覆盖
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher (Git) bundled with vanilla zlib. Fixes 'invalid outputs' on CachyOS/zlib-ng systems."
 arch=('x86_64')
 url="https://prismlauncher.org/"
