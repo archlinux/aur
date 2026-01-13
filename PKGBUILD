@@ -1,6 +1,6 @@
 pkgname=onionbalance
 pkgver=0.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Onionbalance'
 arch=('any')
 license=('GPL-3.0')
