@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apiflow-bin
 _pkgname=Apiflow
-pkgver=0.9.0
-_electronversion=36
+pkgver=0.9.2
+_electronversion=32
 pkgrel=1
 pkgdesc="A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -22,12 +22,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/trueleaf/apiflow/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/app-linux-v${pkgver}-arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/app-linux-v${pkgver}.AppImage")
-sha256sums=('dec165c0eb7d0f94e1dc6e4a5ef94e02581b37743fdc42c56116b984e41113f8'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
+sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('11f3d2e09dcb38447ef5658350e903d1ba11eb6f33bdc002a2457f7184d747de')
-sha256sums_x86_64=('40e7ad61ca5cfded19045b8908528ed178955dfd330e6e69f5994653a5b2dc4d')
+sha256sums_aarch64=('b56cbc477eee2e433c64308da3f06cdd61b1fbeb5526b3a98b156181c59444fb')
+sha256sums_x86_64=('b0fa7173eec7b8104ad01751f3c9af49bc08bcccd65a28ae89a7391da84ea758')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -49,7 +49,7 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    #find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
+    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
     rm -rf \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/"{mac,linux/{arm,ia32}} \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/"{mac,linux/{arm,ia32,loong64,riscv64}}}
@@ -57,13 +57,13 @@ prepare() {
         aarch64)
             rm -rf \
                 "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64" \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/x64"
+                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/"{arm,ia32,loong64,riscv64,x64}
             ln -sf "/usr/bin/7za" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64/7za"
             ;;
         x86_64)
             rm -rf \
                 "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64" \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/arm64"
+                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/"{arm,arm64,ia32,loong64,riscv64}
             ln -sf "/usr/bin/7za" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
             ;;
     esac
