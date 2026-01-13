@@ -3,7 +3,7 @@
 _pyname=plum
 pkgname=python-${_pyname,,}
 pkgver=0.8.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Pack/Unpack Memory'
 arch=(any)
 url="https://$_pyname-py.readthedocs.io/en/latest/"
