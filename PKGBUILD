@@ -1,7 +1,7 @@
 # Maintainer: Gustyx <gustiadityamuzaky08@gmail.com>
 pkgname=aura-terminal-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, transparent terminal emulator built with Compose Multiplatform (Rust Backend)"
 arch=('x86_64')
 url="https://github.com/Gustyx-Power/AURA-Terminal.git"
@@ -14,7 +14,7 @@ conflicts=('aura-terminal')
 source=("https://github.com/Gustyx-Power/AURA-Terminal/releases/download/v1.0.0/aura-terminal_1.0.0-1_amd64.deb")
 
 # GANTI KODE DI BAWAH INI DENGAN SHA256 DARI FILE .DEB KAMU
-sha256sums=('sha256:1087702defaaf8255fe41da8992d2e59ccbecddc6e1435e0422ac7c9ec6ffbe8')
+sha256sums=('1087702defaaf8255fe41da8992d2e59ccbecddc6e1435e0422ac7c9ec6ffbe8')
 
 prepare() {
     # Kita ekstrak file .deb yang didownload dari GitHub
