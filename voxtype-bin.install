@@ -73,10 +73,10 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.12:"
-    echo "      - Pre-recording hook for better compositor integration"
-    echo "      - Fixed compositor submap getting stuck on short/cancelled recordings"
-    echo "      - Run 'voxtype setup compositor hyprland' to update your config"
+    echo "    New in 0.4.13:"
+    echo "      - GPU isolation mode for hybrid graphics laptops"
+    echo "      - Lets dGPU sleep between transcriptions, saving battery"
+    echo "      - Enable with: gpu_isolation = true in [whisper] section"
     echo ""
 }
 
