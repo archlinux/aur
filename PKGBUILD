@@ -2,7 +2,7 @@
 
 pkgname=fowl
 pkgver=25.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Forward over Wormhole: streams over magic-wormhole Dilation connections'
 arch=(any)
 url="https://pypi.org/project/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = fowl
 	pkgdesc = Forward over Wormhole: streams over magic-wormhole Dilation connections
 	pkgver = 25.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/fowl
 	arch = any
 	license = MIT
