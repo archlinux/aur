@@ -1,0 +1,15 @@
+pkgbase = swhid-rs-git
+	pkgdesc = Reference implementation of the Software Hash Identifier (SWHID) standard - ISO 18670
+	pkgver = c8a9c24
+	pkgrel = 1
+	url = https://github.com/swhid/swhid-rs
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = libssh2
+	conflicts = swhid-rs
+	conflicts = swhid
+	source = git+https://github.com/swhid/swhid-rs
+	sha256sums = SKIP
+
+pkgname = swhid-rs-git
