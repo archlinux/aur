@@ -1,0 +1,36 @@
+
+# HG changeset patch
+# User Alex Hochheiden <ahochheiden@mozilla.com>
+# Date 1760506957 0
+# Node ID 5fcff175718cd308bc6d6f2996de14eb8a93e2a2
+# Parent  ee3d3f6039da36a2e7428cd8e0a04305de511679
+Bug 1993797 - Fix AST parsing in DecoratorVisitor for Python 3.14 r=firefox-build-system-reviewers,glandium
+
+This is necessary due to the `ast.Str` removal in 3.14.
+
+Differential Revision: https://phabricator.services.mozilla.com/D268646
+
+
+diff --git a/python/mach/mach/command_util.py b/python/mach/mach/command_util.py
+--- a/python/mach/mach/command_util.py
++++ b/python/mach/mach/command_util.py
+@@ -302,17 +302,17 @@ class DecoratorVisitor(ast.NodeVisitor):
+             for name, arg in zip(["command", "subcommand"], decorator.args):
+                 kwarg_dict[name] = arg.value
+ 
+             for keyword in decorator.keywords:
+                 if keyword.arg not in relevant_kwargs:
+                     # We only care about these 3 kwargs, so we can safely skip the rest
+                     continue
+ 
+-                kwarg_dict[keyword.arg] = getattr(keyword.value, "s", "")
++                kwarg_dict[keyword.arg] = keyword.value.value
+ 
+             command = kwarg_dict.pop("command")
+             self.results.setdefault(command, {})
+ 
+             sub_command = kwarg_dict.pop("subcommand", None)
+             virtualenv_name = kwarg_dict.pop("virtualenv_name", None)
+ 
+             if sub_command:
+

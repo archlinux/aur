@@ -1,0 +1,69 @@
+
+# HG changeset patch
+# User Alex Hochheiden <ahochheiden@mozilla.com>
+# Date 1761071214 0
+# Node ID b68b1f93a6e31188486458f32fbe37811257604f
+# Parent  05f3a58efd9ab2ba64517a959bf9483650f58dbe
+Bug 1993797 - Remove invalid `action="store_true"` from positional arguments in `dispatcher.py` r=firefox-build-system-reviewers,sergesanspaille
+
+In Python 3.14, positional arguments cannot have `action="store_true"`. It seems these were only used
+for help text anyway, and not parsed, so removing this fixes it for Python 3.14 without changing the
+behavior, while maintaining backwards compatibility with Python 3.9.
+
+Differential Revision: https://phabricator.services.mozilla.com/D269410
+
+
+diff --git a/python/mach/mach/dispatcher.py b/python/mach/mach/dispatcher.py
+--- a/python/mach/mach/dispatcher.py
++++ b/python/mach/mach/dispatcher.py
+@@ -284,26 +284,24 @@ class CommandAction(argparse.Action):
+                         disabled_commands.append(disabled_command)
+                         continue
+ 
+                 if group is None:
+                     title, description, _priority = r.categories[category]
+                     group = parser.add_argument_group(title, description)
+ 
+                 description = handler.description
+-                group.add_argument(command, help=description, action="store_true")
++                group.add_argument(command, help=description)
+ 
+         if disabled_commands and "disabled" in r.categories:
+             title, description, _priority = r.categories["disabled"]
+             group = parser.add_argument_group(title, description)
+             if verbose:
+                 for c in disabled_commands:
+-                    group.add_argument(
+-                        c["command"], help=c["description"], action="store_true"
+-                    )
++                    group.add_argument(c["command"], help=c["description"])
+ 
+         parser.print_help()
+ 
+     def _populate_command_group(self, parser, handler, group):
+         extra_groups = {}
+         for group_name in handler.argument_group_names:
+             group_full_name = "Command Arguments for " + group_name
+             extra_groups[group_name] = parser.add_argument_group(group_full_name)
+@@ -400,19 +398,17 @@ class CommandAction(argparse.Action):
+         def by_name(item):
+             return item[1].subcommand
+ 
+         subhandlers = handler.subcommand_handlers.items()
+         for subcommand, subhandler in sorted(
+             subhandlers,
+             key=by_decl_order if handler.order == "declaration" else by_name,
+         ):
+-            group.add_argument(
+-                subcommand, help=subhandler.description, action="store_true"
+-            )
++            group.add_argument(subcommand, help=subhandler.description)
+ 
+         if handler.docstring:
+             parser.description = format_docstring(handler.docstring)
+ 
+         c_parser = self._get_command_arguments_help(handler)
+ 
+         parser.formatter_class = argparse.RawDescriptionHelpFormatter
+ 
+
