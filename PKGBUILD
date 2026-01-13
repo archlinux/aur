@@ -1,6 +1,6 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=python-randfacts
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Python module used to generate random facts"
 arch=('any')
@@ -9,14 +9,14 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('005c0a5534d98fce60c65d9577a512668060a2fd65b8c6a5a94d97f5b336a5084f9bb4ba8cd17582862a211f38045f3688cbc27462e2a0bd6497965c5f1c3ddc')
+sha512sums=('2888cc2ba64f846e576afda80ab1d6d07215660dc3b119847f89beff9d8071554c19d81b3f52701241c8660328d677334bfc0193e8cf97d5295c4dcdbc7e7388')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$_name-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
