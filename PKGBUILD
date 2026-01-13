@@ -1,0 +1,49 @@
+pkgname=vigaphone-bin
+pkgver=1.0.2_beta
+pkgrel=1
+options=('!strip' '!debug')
+pkgdesc="ViGAPhone is a MIDI synthesizer, audio‑analysis, and instrument‑tuning tool."
+arch=('x86_64')
+url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
+license=('custom')
+depends=('glibc')
+makedepends=('rsync')
+#
+source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux.tar.gz")
+# test local
+# source=("lastViGAPhoneR_linux.tar.gz")
+sha256sums=('49bc35254626fe64ecdd3b8de90ee4892cb6209e6540b0fae2568d91a46beb89')  # à remplacer
+
+package() {
+    cd "$srcdir/ViGAPhoneR"
+
+    # Binaire
+    install -Dm755 "ViGAPhone" "$pkgdir/usr/bin/vigaphone"
+
+    # Licence
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Desktop entry
+    # Ajout de la ligne Exec= dans le .desktop
+    sed -i '/^\[Desktop Entry\]/a Exec=sh -c "vigaphone %f"' $srcdir/ViGAPhoneR/installOnLinuxUser/ViGAPhone.desktop
+    install -Dm644 installOnLinuxUser/ViGAPhone.desktop "$pkgdir/usr/share/applications/vigaphone.desktop"
+
+    # Icône
+    install -Dm644 installOnLinuxUser/vigaphone256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
+
+    # MIME type
+    install -Dm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
+
+    # Données utilisateur
+    install -d "$pkgdir/usr/share/vigaphone"
+    #- cp -r configuration Instrument midi wav wavCapture run.vigaphone.tsv "$pkgdir/usr/share/vigaphone/"
+    cp -a ./ "$pkgdir/usr/share/vigaphone/"
+
+
+    # Locales
+    for lang in locale/*; do
+        langname=$(basename "$lang")
+        install -Dm644 "$lang/LC_MESSAGES/ViGAPhone.mo" "$pkgdir/usr/share/locale/$langname/LC_MESSAGES/ViGAPhone.mo"
+    done
+}
+
