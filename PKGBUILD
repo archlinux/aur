@@ -1,21 +1,23 @@
 # Maintainer: Vladislav Litvinov <vlad@sek1.ro>
 pkgname=libbasen
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="c++ encoding/decoding from arbitrary base"
 arch=('any')
 url="https://github.com/vSEK1RO/libbasen"
-license=('LGPL-3.0-or-later')
+license=('LGPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('82ce7c424205b91118720b956f30ab211e7af2ebc50ba00f40ff3004f213cccf')
-makedepends=('argparse')
+sha256sums=('efdf0413eeba77358e81acfc0ca6df6d513e8379540fc278a57494295564c6e7')
+makedepends=('argparse' 'meson')
 
 build() {
     cd "$pkgname-$pkgver"
-    make -j $(nproc) SHARED=
+    meson setup build --buildtype=release --prefix=/usr
+    cd build
+    meson compile
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make i USRDIR=$pkgdir/usr
+    cd "$pkgname-$pkgver/build"
+    DESTDIR="$pkgdir" meson install
 }
