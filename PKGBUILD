@@ -7,8 +7,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-hidapi
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 arch=('any')
 pkgdesc="Simple library for communicating with USB and Bluetooth HID devices (Android ${_android_arch})"
 url='https://github.com/libusb/hidapi'
@@ -21,8 +21,16 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libusb")
 optdepends=("android-${_android_arch}-libusb: for hidapi-libusb")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libusb/hidapi/archive/hidapi-${pkgver}.tar.gz")
-md5sums=('d65a951df6f566f90bbeb4414caf2c1e')
+source=("https://github.com/libusb/hidapi/archive/hidapi-${pkgver}.tar.gz"
+        '0001-android-pthread-barrier.patch')
+md5sums=('0a91bba20cc9b6717341a723132238f3'
+         'f4bdaa804c01b031cd3499c49494c843')
+
+prepare() {
+    cd "${srcdir}/hidapi-hidapi-${pkgver}"
+
+    patch -Np1 -i ../0001-android-pthread-barrier.patch
+}
 
 build() {
     cd "${srcdir}/hidapi-hidapi-${pkgver}"
@@ -55,4 +63,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

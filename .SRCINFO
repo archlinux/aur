@@ -1,7 +1,7 @@
 pkgbase = android-x86-hidapi
 	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices (Android x86)
-	pkgver = 0.14.0
-	pkgrel = 3
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://github.com/libusb/hidapi
 	arch = any
 	groups = android-hidapi
@@ -16,7 +16,9 @@ pkgbase = android-x86-hidapi
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libusb/hidapi/archive/hidapi-0.14.0.tar.gz
-	md5sums = d65a951df6f566f90bbeb4414caf2c1e
+	source = https://github.com/libusb/hidapi/archive/hidapi-0.15.0.tar.gz
+	source = 0001-android-pthread-barrier.patch
+	md5sums = 0a91bba20cc9b6717341a723132238f3
+	md5sums = f4bdaa804c01b031cd3499c49494c843
 
 pkgname = android-x86-hidapi
