@@ -21,11 +21,11 @@ repos:
   - id: mixed-line-ending
   - id: trailing-whitespace
   repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
 - hooks:
   - id: gitleaks
   repo: https://github.com/gitleaks/gitleaks
-  rev: v8.24.0
+  rev: v8.30.0
 - hooks:
   - id: srcinfo-fixer
   - id: verify-srcinfo-checksums
