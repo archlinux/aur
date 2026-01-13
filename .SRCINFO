@@ -1,7 +1,7 @@
 pkgbase = python-ckzg
 	pkgdesc = A minimal implementation of the Polynomial Commitments API for EIP-4844 and EIP-7594, written in C.
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/c-kzg-4844
 	arch = x86_64
 	license = MIT
