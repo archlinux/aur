@@ -7,7 +7,9 @@ readonly DOKKU_LIB_ROOT="${DOKKU_LIB_PATH:-/var/lib/dokku}"
 readonly DOKKU_LOGS_DIR="${DOKKU_LOGS_DIR:-/var/log/dokku}"
 
 call-sshcommand() {
-  if [[ -x /usr/bin/sshcommand ]]; then
+  if [[ -x /usr/local/bin/sshcommand ]]; then
+    /usr/local/bin/sshcommand "$@"
+  elif [[ -x /usr/bin/sshcommand ]]; then
     /usr/bin/sshcommand "$@"
   else
     echo "Unable to find sshcommand binary" 1>&2
@@ -99,11 +101,36 @@ setup-sshcommand() {
   fi
 }
 
+setup-docker-live-restore() {
+  live_restore="$(docker info --format '{{ .LiveRestoreEnabled }}' || true)"
+  if [ "$live_restore" = "true" ]; then
+    echo "Docker live-restore is already enabled"
+    return
+  fi
+
+  echo "Enabling docker live-restore"
+  if [[ ! -f /etc/docker/daemon.json ]]; then
+    mkdir -p /etc/docker
+    echo "{}" >/etc/docker/daemon.json
+  fi
+
+  config="$(jq '. + {"live-restore": true}' /etc/docker/daemon.json)"
+  echo "$config" >/etc/docker/daemon.json
+  if command -v systemctl &>/dev/null; then
+    if ! systemctl reload docker; then
+      echo "Unable to reload docker, please reload manually" 1>&2
+    fi
+  else
+    echo "Unable to reload docker, please reload manually" 1>&2
+  fi
+}
+
 post_install() {
   setup-user
   setup-storage
   setup-plugins
   setup-sshcommand
+  setup-docker-live-restore
 
   echo "
     If using virtualhost routing is desired (eg. my-app => my-app.dokku.me), set a global domain for your server:

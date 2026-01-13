@@ -1,0 +1,8 @@
+--- a/go.work	2026-01-10 14:50:01.000000000 +0100
++++ b/go.work	2026-01-13 18:11:55.823005592 +0100
+@@ -21,4 +21,5 @@
+	./plugins/scheduler
+	./plugins/scheduler-docker-local
+	./plugins/scheduler-k3s
++	./plugins/storage
+ )
