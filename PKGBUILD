@@ -16,6 +16,7 @@ source=(
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/katifetch-${pkgver}/katifetch.sh" \
-    "$pkgdir/usr/bin/katifetch"
+  cd "$srcdir/katifetch-13.1/katifetch-main"
+
+  install -Dm755 katifetch.sh "$pkgdir/usr/bin/katifetch"
 }
