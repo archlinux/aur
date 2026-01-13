@@ -15,7 +15,7 @@ provides=(rpcs3)
 conflicts=(rpcs3)
 
 source=("${url}/releases/download/build-${_commit}/rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 prepare() {
   chmod 755 rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage
