@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=rime-wanxiang-updater
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="Rime 万象输入法自动更新工具 - 支持词库、方案、模型的自动检测和更新"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=()
 source_x86_64=("${pkgname}-${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/${pkgname}-linux-arm64")
 
-sha256sums_x86_64=('adb0a6e44205e799b594584bdea8779ce4b18869c5eb3d7f2bf0846aa271481b')
-sha256sums_aarch64=('e88708c2ae6715bb0346a9a2fc1e3f694d59a2b3d78b43f30028824eaa972f4e')
+sha256sums_x86_64=('1809f7d66c3fd26ed23c12635a3c6773297bb765107e3bb16d4b98dc1e9995b9')
+sha256sums_aarch64=('ee666a0459938303a8c5f28a34581f761f09374769b7d47a74e9bd6e998870c5')
 
 package() {
     # 根据架构选择对应的二进制文件
