@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create unit' Drop-Ins
 
+## [2.11.3] - 2026-01-13
+
+### Added
+
+- Toggle display total summary option in the unit list popup menu
+
+### Fixed
+
+- Improve Spacing in Top-Bottom Layout [Issue 31](https://github.com/plrigaux/sysd-manager/issues/31)
+
 ## [2.11.2] - 2026-01-13
 
 ### Fixed
