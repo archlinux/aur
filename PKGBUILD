@@ -3,7 +3,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=move
-_cranver=4.2.6
+_cranver=4.2.7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ license=(GPL3)
 depends=('r>=3.5.0' 'r-geosphere>=1.4.3' r-sp 'r-raster>=3.6.14' r-httr r-memoise r-terra r-xml2 r-rcpp)
 optdepends=(r-adehabitathr r-adehabitatlt r-markdown r-rmarkdown r-circular r-ggmap r-mapproj r-maptools r-testthat r-knitr r-ggplot2 r-leaflet r-lubridate r-ctmm r-amt r-bcpa r-embc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('22b0c4f953d7ee1def53520c7a8a1316bdc28f60663ec75b0d85970914e1ad171812c508bc959042fb381257c8a4fac080cf816ae014d212163cc7dc3dde35ec')
+sha512sums=('833683a9515dada39d6cb02ef20cc6bfed265ba508371772fae9bb1ec1fc34d3438e5301ebdeb2bd89c1f71fb85d45dd6aca84a5b2ccc1291addf118f4bdf385')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
