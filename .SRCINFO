@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.7.15
+	pkgver = 5.7.17
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -23,8 +23,8 @@ pkgbase = cellframe-node
 	replaces = cellframe-node-debug
 	options = !debug
 	options = !strip
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=f362e25b53cf980078d330284ed49e3f4fd82e5f
-	source = https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.6-py3-none-any.whl
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=ed892831c93fbb71cc9ec5e21245ef82f453b51e
+	source = https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.11-py3-none-any.whl
 	source = https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
 	source = cellframe-node.logrotate
 	source = cellframe-node.service
@@ -32,7 +32,7 @@ pkgbase = cellframe-node
 	source = cellframe-node-tmpfiles.conf
 	source = cellframe-node-sysusers.conf
 	sha256sums = SKIP
-	sha256sums = 4930420b4921791b0d14c1e5ce1630c79a9dc3114a89d0f7d4327b611028ff29
+	sha256sums = aa4d7955f11237b26fc33de444547b3125f07cae957c489c5baacbf3e67ccd14
 	sha256sums = d2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3
 	sha256sums = 5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd
 	sha256sums = 50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901
