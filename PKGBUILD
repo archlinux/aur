@@ -2,7 +2,7 @@
 pkgname=ricochlime-bin
 _pkgname=Ricochlime
 _appname="com.adilhanney.${pkgname%-bin}"
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="A game where you attack the advancing slimes with your ricocheting projectiles.(Prebuilt version)"
 arch=(
@@ -17,9 +17,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'opus'
-    'libogg'
-    'flac'
 )
 source=(
     "${pkgname%-bin}.sh"
@@ -27,7 +24,7 @@ source=(
 #source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_x86_64=('bfb14a39e6de9064d8f56274e0ccaff502c4f27f1eaf2362ef16f26ce4de8c41')
+sha256sums_x86_64=('238680985cba474eb5bc8d8f66d785056c95c23ab822932043e1665dbb76edd0')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
