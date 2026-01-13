@@ -13,16 +13,13 @@ license=('GPL')
 depends=('glibc' 'openssh' 'readline' 'genders')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${pkgver}.tar.gz"
-        patch)
+source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${pkgver}.tar.gz")
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('a661095ce51dd5fb05e398cf5d0e1d63157123958441f6d3512bcf1a7d25c517'
-            'd68600178b2d404dcd0719147263bc8caae0bdde5347ceee46164da9e890a424')
+sha256sums=('a661095ce51dd5fb05e398cf5d0e1d63157123958441f6d3512bcf1a7d25c517')
 
 build() {
   cd "${srcdir}/pdsh-${pkgver}"
-  patch -Np1 < ../patch
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --infodir=/usr/share/info \
