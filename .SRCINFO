@@ -1,0 +1,23 @@
+pkgbase = gamevox-git
+	pkgdesc = A smart screen reader for Linux gaming (Wayland/Hyprland) with local neural TTS.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Djkawada/GameReader
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = tesseract
+	depends = tesseract-data-fra
+	depends = grim
+	depends = slurp
+	depends = libpulse
+	depends = libevdev
+	optdepends = piper-tts: for local neural voice (recommended, installed manually or via script)
+	provides = gamevox
+	conflicts = gamevox
+	source = git+https://github.com/Djkawada/GameReader.git
+	md5sums = SKIP
+
+pkgname = gamevox-git
