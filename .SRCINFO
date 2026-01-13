@@ -1,7 +1,7 @@
 pkgbase = pascube
 	pkgdesc = A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/benjamimgois/pascube
 	arch = x86_64
 	license = GPL-2.0-or-later
