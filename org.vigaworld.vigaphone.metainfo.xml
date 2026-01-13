@@ -14,6 +14,7 @@
  <provides>
   <binary>vigaphone</binary>
  </provides>
+<icon type="remote">https://vigaworld.com/vigaphone/images/ViGAPhone-logo_128.png</icon>
  <screenshots>
   <screenshot type="default">
    <image>https://vigaworld.com/vigaphone/images/accorder-EN.png</image>
