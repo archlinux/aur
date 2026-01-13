@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.0.2_beta
-pkgrel=6
+pkgrel=7
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
@@ -11,9 +11,8 @@ depends=('glibc')
 makedepends=('rsync')
 #
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux.tar.gz")
-# test local
-# source=("lastViGAPhoneR_linux.tar.gz")
-sha256sums=('7bfb4279a341a90eea3f06c9feaee20eb8a52fa8e8c405cf58b84705e20dafa3')  # à remplacer
+# test local source=("lastViGAPhoneR_linux.tar.gz")
+sha256sums=('5368e2decfe8ce9beda4797d0376ffb38d91937d19f02ce8f75607d8130de403')  # à remplacer
 
 package() {
     cd "$srcdir/ViGAPhoneR"
@@ -38,8 +37,8 @@ package() {
     # MIME type
     install -Dm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
 
-	# long Description
-	install -Dm644 "$srcdir/org.vigaworld.vigaphone.metainfo.xml" "$pkgdir/usr/share/metainfo/org.vigaworld.vigaphone.metainfo.xml"
+	# metainfo & long Description
+	install -Dm644 "installOnLinuxUser/org.vigaworld.vigaphone.metainfo.xml" "$pkgdir/usr/share/metainfo/org.vigaworld.vigaphone.metainfo.xml"
 
     # Données utilisateur
     install -d "$pkgdir/usr/share/vigaphone"
