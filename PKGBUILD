@@ -23,10 +23,9 @@ build() {
 
 package() {
   cd "rust-pomo-discord-$pkgver"
-  # هنا نقوم بتنصيب الملف وتغيير اسمه إلى pomodoro-tui ليكون هو الأمر المستخدم
-  install -Dm755 "target/release/rust-pomo-discord" "$pkgdir/usr/bin/pomodoro-tui"
+  # لاحظ هنا غيرنا rust-pomo-discord إلى pomodoro-tui-discord
+  install -Dm755 "target/release/pomodoro-tui-discord" "$pkgdir/usr/bin/pomodoro-tui"
   
-  # اختصار إضافي لسهولة الاستخدام (pomo)
   ln -s /usr/bin/pomodoro-tui "$pkgdir/usr/bin/pomo"
 
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
