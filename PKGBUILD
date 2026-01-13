@@ -2,7 +2,7 @@
 
 pkgname=fastcompmgr
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="An early Compton-based compositor for X11 focused on performance."
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/${pkgname}"
