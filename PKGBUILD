@@ -1,5 +1,5 @@
 pkgname=moonveil
-pkgver=1.0.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Moonveil Hyprland dotfiles (home-based, ML4W-style)"
 arch=('any')

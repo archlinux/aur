@@ -1,6 +1,6 @@
 pkgbase = moonveil
 	pkgdesc = Moonveil Hyprland dotfiles (home-based, ML4W-style)
-	pkgver = 1.0.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/notcandy001/Moonveil
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = moonveil
 	depends = noto-fonts-emoji
 	optdepends = eza: modern ls replacement
 	optdepends = bibata-cursor-theme: modern cursor theme
-	source = https://github.com/notcandy001/Moonveil/archive/refs/tags/v1.0.3.tar.gz
+	source = https://github.com/notcandy001/Moonveil/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = moonveil
