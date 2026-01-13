@@ -1,7 +1,7 @@
 pkgbase = python-django-htmx
 	pkgdesc = Extensions for using Django with htmx
 	pkgver = 1.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adamchainz/django-htmx
 	arch = any
 	license = MIT
