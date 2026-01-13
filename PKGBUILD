@@ -4,7 +4,7 @@
 _name=pcpp
 pkgname=python-$_name
 pkgver=1.30
-pkgrel=6
+pkgrel=7
 pkgdesc='A C99 preprocessor with partial preprocessing capabilities writen in Python'
 arch=(any)
 url="https://github.com/ned14/$_name"
