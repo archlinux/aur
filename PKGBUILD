@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=browservice
-pkgver=0.9.11.0
+pkgver=0.9.12.1
 pkgrel=1
 pkgdesc='Browse the modern web on historical browsers - source build'
 url='https://github.com/ttalvitie/browservice'
@@ -14,14 +14,15 @@ source=("https://github.com/ttalvitie/browservice/archive/refs/tags/v$pkgver.zip
 	"https://github.com/ttalvitie/browservice/releases/download/v$pkgver/patched_cef_x86_64.tar.bz2"
        "setup_cef.sh")
 noextract=('patched_cef_x86_64.tar.bz2')
-sha256sums=('87104f6d560377c83fabf522ed8608b43189f9e1f9fc1204a311a142144f55c5'
-	    'bd1d4803ea6061a2072edfe91b8b2948515533147cb06ad7bd6763b2211c7fdd'
+sha256sums=('3a838a43b73c924870df6abe684f24ceb6ab270ce3c19752c8bbe20f4402162a'
+	    '0ea078d5d8a1d1f0fcacee6d8d5eddb5e8fef2cdf3abf432c923568912beb4e1'
 	   'e21f43dbcb8e05c309843c949b8557a8c3d56818ffc96cfc51db36ac0f367610')
 
 build() {
     cd $srcdir/browservice-$pkgver/
     cp ../setup_cef.sh .
     ./setup_cef.sh ../patched_cef_x86_64.tar.bz2
+    sed -i '5i\#include <cstdint>' viceplugins/retrojsvice/src/jpeg.hpp
     make -j5 release
 }
  
