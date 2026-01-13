@@ -1,7 +1,7 @@
 pkgname=dause
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator. DAUSE includes integrated media visualization and a robust parallel tab system."
+pkgdesc="Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator. DAUSE includes a virtual keyboard, media visualization and a robust parallel tab system."
 arch=('x86_64')
 url="https://github.com/moyhatake/Dause"
 license=('GPL3')
@@ -9,8 +9,8 @@ depends=('qt6-multimedia' 'qt6-base' 'qtermwidget' 'fftw' 'ffmpeg')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moyhatake/Dause/archive/refs/tags/v${pkgver}.tar.gz"
         "dause.desktop")
-sha256sums=('6986571ade22cf92fbc7da4d8962e5bd32fd49072ee9f3a8d677b54deb844546'
-            '753a2f8e2f6d62766ef3bf0cfd41509a336624ca8994a1d784e580fe462372c9')
+sha256sums=('7c05b6820147a0ce4147284ed07e49d3fa8b1a71b564a9138afe0443b073a819'
+            'd511fb664be148dbd52b77037b4367cf97a12d36b8add9064975946005b9da12')
 
 build() {
     cmake -B build -S "Dause-${pkgver}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr

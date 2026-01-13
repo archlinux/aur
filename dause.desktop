@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Dause
-Comment=Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator.
+Comment=Digital Amplified User System Environment is a retro-futuristic, minimalist terminal emulator. DAUSE includes a virtual keyboard, media visualization and a robust parallel tab system.
 Exec=Dause
 Icon=dause
 Terminal=false
