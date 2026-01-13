@@ -1,7 +1,7 @@
 pkgbase = aura-terminal-bin
 	pkgdesc = A modern, transparent terminal emulator built with Compose Multiplatform (Rust Backend)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Gustyx-Power/AURA-Terminal
 	arch = x86_64
 	license = GPL3
