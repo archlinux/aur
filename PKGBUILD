@@ -11,7 +11,7 @@ license=(MIT)
 # maybe revert back to openssl-1.1 or internal openssl
 # https://github.com/nodejs/node/issues/47852
 depends=(openssl zlib icu libuv c-ares brotli libnghttp2) # http-parser v8)
-makedepends=(git python procps-ng)
+makedepends=(python procps-ng)
 optdepends=('npm: nodejs package manager')
 options=(!lto)
 provides=("nodejs=$pkgver")
