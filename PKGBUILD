@@ -2,12 +2,13 @@
 
 pkgname=elyprismlauncher
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/ElyPrismLauncher"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
-depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'libarchive' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'qrencode' 'qt6-wayland')
+depends=(glibc mesa-utils gcc-libs java-runtime libarchive libgl pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
+makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode)
 provides=('elyprismlauncher')
 conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
@@ -22,10 +23,8 @@ sha256sums=('SKIP')
 
 build()
 {
-	#tar -xvf ElyPrismLauncher-${pkgver}.tar.gz --strip-components=1
-	# Force SSSE3 CPU extensions maximum for better compatibility. A Minecraft launcher won't benefit much, if at all from these.
 	cd ElyPrismLauncher-${pkgver}
-	cmake -DCMAKE_INSTALL_PREFIX=/usr --preset linux -DCMAKE_CXX_FLAGS="-march=x86-64 -mtune=generic -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4 -mno-sse4a -mno-sse4.1 -mno-sse4.2 -mno-sse5 -mno-popcnt -mno-abm"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr --preset linux
 	cmake --build build --config Release -j$(nproc)
 }
 
