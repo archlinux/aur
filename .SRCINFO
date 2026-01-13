@@ -12,7 +12,6 @@ pkgbase = klit-unstable
 	makedepends = ninja
 	makedepends = pkg-config
 	depends = gtk3
-	depends = libmpv
 	depends = mpv
 	provides = klit
 	conflicts = klit

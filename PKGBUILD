@@ -8,7 +8,6 @@ url="https://gitlab.com/Openlyst/klit"
 license=('AGPL3')
 depends=(
     'gtk3'
-    'libmpv'
     'mpv'
 )
 makedepends=(
