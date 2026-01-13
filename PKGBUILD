@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.5.3.r28.ga821600
+pkgver=5.5.3.r36.g9f0c5a9
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -21,6 +21,7 @@ makedepends=(
     'gendesk'
     'jq'
     'python'
+    'ruby'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -84,26 +85,32 @@ prepare() {
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
+    NODE_ENV=development    yarn add -W -D node-gyp
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    cd "${srcdir}/${pkgname%-git}.git/apps/studio"
+    find ./ -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git/apps/studio"
+    cd "${srcdir}/${pkgname%-git}.git/"
     _ensure_local_nvm
+    NODE_ENV=production     yarn run lib:build
+    cd "${srcdir}/${pkgname%-git}.git/apps/studio"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-config.js
-
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/{app.asar.unpacked,public,vendor,demo.db} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/{app.asar.unpacked,public,vendor,demo.db} \
+        "${pkgdir}/usr/lib/${pkgname%-git}"
     icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/studio/public/icons/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/studio/default.config.ini" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
