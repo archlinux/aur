@@ -12,9 +12,9 @@ provides=('gohome')
 conflicts=('gohome-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/anIcedAntFA/gohome/releases/download/v${pkgver}/gohome-${pkgver}.tar.gz")
-sha256sums=('5ab577a0ea8312cc3ac55153b75c23363ea9ab4377bd2ee5309294236207bdb5')
+sha256sums=('7cfbfc4ccac84c124c41ebf20e62ca7017deaa359752878a9949a7b7d538b4cd')
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir"
   export CGO_ENABLED=0
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -24,13 +24,13 @@ build() {
   go build \
   -ldflags="-s -w -linkmode=external \
   -X github.com/anIcedAntFA/gohome/internal/version.Version=${pkgver} \
-  -X github.com/anIcedAntFA/gohome/internal/version.Commit=1665ed478586017e3b9f8a1336a9ed014336ed5d \
-  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-13T08:32:41Z" \
+  -X github.com/anIcedAntFA/gohome/internal/version.Commit=2e28c213b2566e7712880358b122a678fbe82dfe \
+  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-13T08:55:01Z" \
   -o gohome \
   ./cmd/gohome
 }
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir"
   install -Dm755 gohome "${pkgdir}/usr/bin/gohome"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
