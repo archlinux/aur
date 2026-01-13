@@ -1,6 +1,6 @@
 pkgname=dotctl
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="dotctl - simple dotfiles control utility"
 arch=("x86_64")
 options=(!strip)
