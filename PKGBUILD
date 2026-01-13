@@ -3,7 +3,7 @@
 _pyname=huey
 pkgname=python-$_pyname
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='huey, a little task queue'
 arch=(any)
 url="https://github.com/coleifer/$_pyname"
