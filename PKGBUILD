@@ -3,7 +3,7 @@
 pkgname=python-flatten-dict
 _pyname=${pkgname#python-}
 pkgver=0.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A flexible utility for flattening and unflattening dict-like objects in Python'
 arch=(any)
 license=(Apache-2.0)
