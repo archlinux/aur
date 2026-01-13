@@ -24,7 +24,7 @@ _commit=9ac3578807a87858651e81a02586ceb947686e7c
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
@@ -48,6 +48,7 @@ source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
 		#https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
 		#https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
 		#krb5.patch
+        https://github.com/Morganamilo/paru/pull/1498.patch
 )
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
@@ -70,7 +71,8 @@ sha256sums=('SKIP'
             'd9ec76cbe34db98eec3539fe2c899d26b0c837cb3eb466a56b0f109cabf658f7'
             '9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53'
             '07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d'
-            'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32')
+            'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32'
+            'a160cd7dea1c57909ae455e6a820f17f0ad58a654ef3d6396d779e53302ce52d')
 #options=('lto')
 
 # Use musl toolchain
@@ -150,9 +152,11 @@ prepare() {
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
-  sed -i "s/version = \"2.1.0\"/version = \"2.2.0\"/" Cargo.toml 
-  #cargo update
-  cargo update paru
+  #sed -i "s/version = \"2.1.0\"/version = \"2.2.0\"/" Cargo.toml 
+  #sed -i "s/edition = \"2021\"/edition = \"2024\"/" Cargo.toml 
+  patch -p1 -i ${srcdir}/1498.patch
+  cargo update
+  #cargo update paru
   cargo fetch --locked --target $TARGET
 
   #depends library
