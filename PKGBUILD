@@ -12,7 +12,7 @@ pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('custom')
-source=("XPPenLinux${pkgver}-${pkgrel}.deb::https://www.xp-pen.com/download/file.html?id=3665&pid=1211&ext=deb")
+source=("XPPenLinux${pkgver}-${pkgrel}.deb::https://download01.xp-pen.com/file/2026/01/XPPenLinux${pkgver}-${pkgrel}.deb")
 install=${pkgname}.install
 
 sha512sums=('03bd071184f327adce3618b703b1e65338c2c83b5d8242e81c2f0184f6eafa1f1740441b9b88cd7f728f4f83e980ab0f1b28ff28274757fa61a601a028854205')
