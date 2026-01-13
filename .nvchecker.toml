@@ -1,0 +1,5 @@
+[headroom-bin]
+source = "github"
+github = "M-Igashi/headroom"
+use_latest_release = true
+prefix = "v"
