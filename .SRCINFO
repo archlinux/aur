@@ -1,6 +1,6 @@
 pkgbase = lazyworktree-bin
 	pkgdesc = lazyworktree - A TUI tool to manage git worktrees
-	pkgver = 1.21.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/chmouel/lazyworktree
 	license = Apache 2.0
@@ -13,9 +13,9 @@ pkgbase = lazyworktree-bin
 	provides = lazyworktree
 	arch = aarch64
 	source_aarch64 = https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 18bc9752a798d14a1baccc5411c52b762fdac6976ae0b78c6c83487367608cda
+	sha256sums_aarch64 = 9c2a131d913e495bda646ac44da20e4f119e1f1c81f7626804eda1481b152534
 	arch = x86_64
 	source_x86_64 = https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0cf657063fa7dc08ba48306a5f7247b23c89e8ed7fa8a8700bf0522e336fb6b0
+	sha256sums_x86_64 = 321537b236e3492ab71295bb85ed51e16f059568e6f7bd276197db47b572e107
 	
 pkgname = lazyworktree-bin
