@@ -2,7 +2,7 @@
 
 pkgname=open-tv
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast & Simple IPTV app'
 arch=('x86_64')
 url='https://github.com/Fredolx/open-tv'
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'mpv' 'yt-dlp' 'libayatana-appindicator' 'librsvg' 'webkit2gtk
 makedepends=('npm' 'rust' 'dpkg')
 checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('48f862ddaaa48517a594a10e7f3052612e967905136eff2c5f65866f984abd94e887e86ef5303b74c367982383757659e58420f4e9a3d5316d35fef790041162')
+b2sums=('abd56a48a4f57f0831566efcaa16aeaa9c5060f7d5c4da3eb10a5cf04015b408fc664ee12cd20573467f43e511c90cb3a0efc1aa1a18baf5cefe9e195b834ebd')
 options=('!lto')
 
 _srcdir="$pkgname-$pkgver"
