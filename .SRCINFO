@@ -1,6 +1,6 @@
 pkgbase = slick-bin
 	pkgdesc = A CI-ready shell language syntax checker
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/mcandre/slick
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = slick-bin
 	license = BSD-2-Clause
 	conflicts = slick
 	conflicts = slick-git
-	source = slick-0.0.18.tgz::https://github.com/mcandre/slick/releases/download/v0.0.18/slick-0.0.18.tgz
-	source = README-0.0.18.md::https://raw.githubusercontent.com/mcandre/slick/v0.0.18/README.md
-	source = LICENSE-0.0.18::https://raw.githubusercontent.com/mcandre/slick/v0.0.18/LICENSE.md
-	sha256sums = b7d5c2116788f277249a3edafe51d769cd1e344c5a922a1ae3a5d55b9ebc6647
-	sha256sums = bbfd5987134a3df4dbf6c63d0184154a9c8c861f88abc98594e60587f4525d2a
+	source = slick-0.0.19.tgz::https://github.com/mcandre/slick/releases/download/v0.0.19/slick-0.0.19.tgz
+	source = README-0.0.19.md::https://raw.githubusercontent.com/mcandre/slick/v0.0.19/README.md
+	source = LICENSE-0.0.19::https://raw.githubusercontent.com/mcandre/slick/v0.0.19/LICENSE.md
+	sha256sums = 466108f47b1762f6a499356170897209ad9e41b6139c69d87cb56706b5b6b1ac
+	sha256sums = 443876cff0161cd8a25a12608630a8ac658054f6ff37f15eafe73fcdb0fd7f20
 	sha256sums = 209f2bba163b033a6911ed879497d720a64095962f5b38dac2c476674d328269
 
 pkgname = slick-bin
