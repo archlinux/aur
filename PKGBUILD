@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.13.r34.g02e537d
+pkgver=2.2.13.r72.ge3a230d
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -15,10 +15,11 @@ depends=(
   'lm_sensors'
   'mesa-utils'
   'pciutils'
-  'qt5-base'
+  'qt6-base'
   'sysbench'
   'udisks2'
   'usbutils'
+  'vulkan-icd-loader'
   'vulkan-tools'
   'xdg-utils'
 )
@@ -51,6 +52,7 @@ build() {
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
+    -DHARDINFO2_QT6='1' \
     -Wno-dev
   cmake --build build
 }
