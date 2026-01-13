@@ -1,0 +1,16 @@
+pkgbase = alacritty-toggle-theme-on-darkmode-git
+	pkgdesc = Changes alacritty theme when user changes the Gnome theme to 'prefer dark style'
+	pkgver = r32.126a244
+	pkgrel = 1
+	url = https://github.com/christophermca/great-matcha
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = redshift
+	depends = awk
+	depends = bash
+	depends = alacritty-use-theme-git
+	source = alacritty-toggle-theme-on-darkmode-git::git+https://github.com/christophermca/great-matcha.git
+	md5sums = SKIP
+
+pkgname = alacritty-toggle-theme-on-darkmode-git
