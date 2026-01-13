@@ -1,7 +1,7 @@
 # Maintainer: Stewart Wong <siwei.wong@gmail.com>
 pkgname=hamr
 # Version is injected by CI from VERSION file during release
-pkgver=0.17.9
+pkgver=0.17.10
 pkgrel=1
 pkgdesc='Extensible launcher for Hyprland and Niri built with Quickshell'
 arch=('any')
