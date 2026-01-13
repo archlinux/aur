@@ -1,6 +1,6 @@
 pkgbase = gozen-git
 	pkgdesc = A minimalistic video editor (git)
-	pkgver = 20250926
+	pkgver = 20260113
 	pkgrel = 1
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = gozen-git
 	makedepends = unzip
 	makedepends = wget
 	makedepends = ffmpeg>=6.1
-	makedepends = yasm
 	depends = ffmpeg>=6.1
 	optdepends = x264: for H.264 encoding support via FFmpeg
 	optdepends = x265: for H.265/HEVC encoding support via FFmpeg
@@ -21,10 +20,10 @@ pkgbase = gozen-git
 	conflicts = gozen-bin
 	options = !debug
 	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git
-	source = godot-editor-4.5-stable.zip::https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
-	source = godot-templates-4.5-stable.tpz::https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_export_templates.tpz
+	source = godot-editor-4.5.1-stable.zip::https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+	source = godot-templates-4.5.1-stable.tpz::https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
 	sha256sums = SKIP
-	sha256sums = c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba
-	sha256sums = 375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gozen-git

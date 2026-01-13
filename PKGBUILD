@@ -1,10 +1,10 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.5-stable"
+_godot_version="4.5.1-stable"
 
 pkgname=gozen-git
-pkgver=20250926
+pkgver=20260113
 pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
@@ -21,7 +21,6 @@ makedepends=(
     'unzip'
     'wget'
     'ffmpeg>=6.1'
-    'yasm'
 )
 depends=(
     'ffmpeg>=6.1'
@@ -35,6 +34,9 @@ source=(
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
@@ -50,13 +52,9 @@ prepare() {
 	
 	# Set version in project.godot.
 	local commit_hash="$(git rev-parse --short HEAD)"
-
 	msg "Git build for hash: ${commit_hash}..."
 	sed -i "s|^config/version\s*=.*|config/version=\"${commit_hash}-git\"|" src/project.godot
-	
-	# Fix the gozen.gdextension file for system FFmpeg build.
-	sed -i '/\[dependencies\]/,$d' "src/gozen.gdextension"
-	
+
 	# Prepare Godot export templates directory structure.
     if [ ! -d ~/.local/share/godot/export_templates/${_godot_version/-/.} ]; then
 		msg "Preparing Godot export templates ..."
@@ -79,7 +77,7 @@ build() {
 	
 	# Compile GDE GoZen
 	msg "Compiling GDExtension GoZen..."
-	cd libs
+	cd core
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_debug use_system=yes
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_release use_system=yes
 	cd ..
@@ -129,6 +127,3 @@ package() {
 	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
 	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
 }
-sha256sums=('SKIP'
-            'c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba'
-            '375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53')
