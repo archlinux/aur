@@ -7,7 +7,7 @@
 # Contributor: maus25 <mirko378@gmail.com>
 
 pkgname=gnome-shell-pomodoro
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
@@ -16,20 +16,20 @@ license=('GPL3')
 depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
 makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('31c0ad477dc4f22e3c4fa284b51a415faa2e807f91aa580798b07f90973b7271')
+sha256sums=('0da09c19080d29576d1b665ec4038ab803efb7badd651fcd441e7ad65c3cfd04')
 
 prepare() {
-  cd "$srcdir/gnome-pomodoro-$pkgver"
+  cd "$srcdir/focus-timer-$pkgver"
 }
 
 build() {
-  cd "$srcdir/gnome-pomodoro-$pkgver"
+  cd "$srcdir/focus-timer-$pkgver"
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd "$srcdir/gnome-pomodoro-$pkgver"
+  cd "$srcdir/focus-timer-$pkgver"
   meson install -C build --destdir "$pkgdir"
 }
 
