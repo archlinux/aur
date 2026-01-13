@@ -1,6 +1,6 @@
 pkgbase = pystand
 	pkgdesc = Install Python Versions From The Python-Build-Standalone Project
-	pkgver = 2.24
+	pkgver = 2.25
 	pkgrel = 1
 	url = https://github.com/bulletmark/pystand
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = pystand
 	depends = python-zstandard
 	depends = python-certifi
 	depends = python-filelock
-	source = pystand-2.24.tar.gz::https://github.com/bulletmark/pystand/archive/2.24.tar.gz
-	sha1sums = 34b5fd32068e368eb8121c85654302860a4fe51e
+	source = pystand-2.25.tar.gz::https://github.com/bulletmark/pystand/archive/2.25.tar.gz
+	sha1sums = cf8ee7de8ff46421e06deb165db8bd51b99ee993
 
 pkgname = pystand
