@@ -1,0 +1,60 @@
+<HTML><TITLE>Readseq Usage</TITLE><BODY><PRE>
+
+  Read & reformat biosequences, Java command-line version
+  Usage: java -cp readseq.jar run [options] input-file(s)
+  For more details: java -cp readseq.jar help more
+
+  Options
+    -a[ll]              select All sequences
+    -c[aselower]        change to lower case
+    -C[ASEUPPER]        change to UPPER CASE
+    -ch[ecksum]         calculate & print checksum of sequences
+    -degap[=-]          remove gap symbols
+    -f[ormat=]#         Format number for output,  or
+    -f[ormat=]Name      Format name for output
+          see Formats   list below for names and numbers
+    -inform[at]=#       input format number,  or
+    -inform[at]=Name    input format name.  Assume input data is this format
+    -i[tem=2,3,4]       select Item number(s) from several
+    -l[ist]             List sequences only
+    -o[utput=]out.seq   redirect Output
+    -p[ipe]             Pipe (command line, < stdin, > stdout)
+    -r[everse]          reverse-complement of input sequence
+    -t[ranslate=]io     translate input symbol [i] to output symbol [o]
+                        use several -tio to translate several symbols
+    -v[erbose]          Verbose progress
+		-compare=1          Compare to sequence files, reporting differences
+		
+   Documentation and Feature Table extraction:
+    -feat[ures]=exon,CDS...   extract sequence of selected features
+    -nofeat[ures]=repeat_region,intron... remove sequence of selected features 
+    -field=AC,ID...      include selected document fields in output
+    -nofield=COMMENT,... remove selected document fields from output 
+    
+    -extract=1000..9999  * extract all features, sequence from given base range
+    -subrange=-1000..10  * extract subrange of sequence for feature locations
+    -subrange=1..end      
+    -subrange=end-10..end+99  
+    -pair=1              * combine features (fff,gff) and sequence files to one output
+    -unpair=1            * split features,sequence from one input to two files
+                             
+   Pretty format options:
+    -wid[th]=#            sequence line width
+    -tab=#                left indent
+    -col[space]=#         column space within sequence line on output
+    -gap[count]           count gap chars in sequence numbers
+    -nameleft, -nameright[=#]   name on left/right side [=max width]
+    -nametop              name at top/bottom
+    -numleft, -numright   seq index on left/right side
+    -numtop, -numbot      index on top/bottom
+    -match[=.]            use match base for 2..n species
+    -inter[line=#]        blank line(s) between sequence blocks
+
+This program requires a Java runtime (java or jre) program, version 1.1.x, 1.2 or later
+The leading '-' on option is optional if '=' is present.  All non-options
+(no leading '-' or embedded '=') are used as input file names.
+These options and call format are compatible with the classic readseq (v.1992)
+* New experimental feature handling options, may not yet work as desired.
+To test readeq, use: java -cp readseq.jar test
+  
+</PRE></BODY></HTML>

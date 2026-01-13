@@ -1,0 +1,892 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML>
+<HEAD>
+  <TITLE>Readseq Extended Help</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<H1><A ID="Readseq_Extended_Help" NAme="Readseq_Extended_Help">Readseq Extended Help</A></H1>
+
+<!--index-->
+<UL>
+	<LI><A HREF="#History">History</A></LI>
+	<LI><A HREF="#General_reformatting_options">General reformatting options</A></LI>
+	<LI><A HREF="#Graphic_User_interface_options">Graphic User Interface options</A></LI>
+	<LI><A HREF="#Command_line_options">Command Line Interface options</A></LI>
+	<LI><A HREF="#Common_Gateway_Interface_options">Common Gateway Interface options</A></LI>
+	<LI><A HREF="#Feature_handling">Feature handling</A></LI>
+	<LI><A HREF="#Biosequence_Formats">Biosequence Formats</A></LI>
+	<LI><A HREF="#Known_Formats">Known Formats</A></LI>
+	<LI><A HREF="#Feature_Table-only_Formats">Feature Table-only Formats</A></LI>
+	<LI><A HREF="#Other_Formats">Other Formats</A></LI>
+	<LI><A HREF="#Efficiency_and_Limitations">Efficiency and Limitations</A></LI>
+	<LI><A HREF="#Programming_with_Readseq">Programming with Readseq</A></LI>
+	<LI><A HREF="#Source_code">Source code</A></LI>
+	<LI><A HREF="#Availability">Availability</A></LI>
+	<LI><A HREF="#How_to_compile_with_Metrowerks_Codewarrior">How to compile with Metrowerks Codewarrior</A></LI>
+	<LI><A HREF="#How_to_compile_with_Sun_javac">How to compile with Sun javac</A></LI>
+	<LI><A HREF="#Release_notes">Release notes</A></LI>
+	<LI><A HREF="#Et_cetera">Et cetera</A></LI>
+</UL>
+<!--/index-->
+
+
+<H2><A ID="History" NAme="History">History</A></H2>
+
+Readseq was written originally around 1989 a component of a
+sequence analysis program, in Pascal, but when I added a small,
+simple command-line interface, it took on a life of its own as a
+conversion program for bioinformatics.  It's main contribution 
+to bioinformatics is it takes on the job of guessing what your
+input biosequence data format is, and converting it to what your
+software knows how to handle.
+<p> 
+It was converted to a C program in early 1990's and after an
+update in 1993, remained as is for several years, as I wrote
+around it and moved thru C++ then on to Java as a primary
+bioinformatics language. During this time, I'd wanted often to
+teach readseq to handle sequence documentation; the original
+ignored all but a few fields of information other than sequence
+data.   In late 1990's my sequence analysis program SeqPup was in
+its Java incarnation and needed this, especially handling of
+feature annotations, locating genes, introns and such in a
+sequence.
+<p>
+After slowly updating readseq from a haphazard C program to an
+object oriented structure in Java, I pulled it back out of its
+parent source to become again a stand-alone program for format
+conversion.  This release version 2, first available in 1999,
+continues support for the "classic" C version, in that it
+supports the same command-line options, but has extensions for
+sequence documentation, feature table and other additions, plus
+new sequence format conversions, and a lot of bug fixing.  This
+java version is also more efficient, working faster than the
+compiled C classic version.  It still isn't efficient enough to
+handle large sequences (genome sized or full GenBank/EMBL data
+release files).
+
+<p>
+In its current Java incarnation, interfacing Readseq with
+other languages is done mainly through command-line calls to the
+main program. If your programs are in Perl, you may want to use
+the <A HREF="http://bioperl.org/">bioperl.org</A> collection with
+its SeqIO package.
+<p> 
+
+<B>PUBLIC DOMAIN NOTICE:</B><BR>
+This software is freely available to the public for use. The
+author, Don Gilbert, of Readseq and the Java package
+'iubio.readseq' does not place any restriction on its use or
+reproduction. Developers are encourged to incorporate parts in
+their programs. I would appreciate being cited in any work or
+product based on this material. This software is provided without
+warranty of any kind.
+    
+<p> 
+-- Don Gilbert
+<BR>software@bio.indiana.edu, May 2001
+<BR>Bioinformatics group, 
+Biology Department &amp; Cntr. Genomics &amp; Bioinformatics, 
+<BR>Indiana University, Bloomington, Indiana
+
+<hr><p>
+
+<H2><A ID="General_reformatting_options" NAme="General_reformatting_options">General reformatting options</A></H2>
+
+<H3><A ID="Graphic_User_interface_options" NAme="Graphic_User_interface_options">Graphic User Interface options</A></H3>
+
+This version includes a graphic user interface for those who prefer not
+to learn the many command line options, or who's workstation lacks a 
+command-line interface (which probably includes most but the hardy bioinformaticians :).
+<p>
+
+The call format 'java -cp readseq.jar app' starts this simple graphic
+user interface, based on Java Swing.  For MacOS, see the ReadseqApp driver
+program which does the equivalent to this commandline call.
+The menu options in this 'app' interface cover the equivalent of the command line
+options (see below).  
+<p>
+The steps to use this are 
+<OL TYPE="a">
+  <LI> open sequence files or URLs, </LI>
+  <LI> select output file, </LI>
+  <LI> select an output format from the Output format popup menu, </LI>
+  <LI> select any output options such as feature restrictions,</LI>
+  <LI> process files</LI>
+</OL>
+Progress of the processing is listed in the Message window.
+<P>
+
+<B>File menu: </B>
+<DL COMPACT>
+<DT>About Readseq...<DD> - display some help documentation. 
+<DT>Open sequence files...<DD> - open sequence files from selector dialog;  
+<DT>Open URLs to sequence... <DD> - open sequence data from Internet URL (http://, and probably ftp:// work)
+<DT>Save as... <DD> - Select output file for converted sequences
+<DT>Clear list of open sequences<DD> - This removes any opened files from list to process.
+   Files are not converted until 'Process' is chosen, but you can add any number of files
+   to process with the 'Open' command before hand.
+<DT>Process selected files<DD> - Convert 'Open' sequences to selected format, saving to 'Save' file
+
+</DL>
+
+<B>Options menu: </B>
+<DL COMPACT>
+<DT>List sequences only<DD> 
+<DT>Verbose progress report<DD> 
+<DT>Calculate checksum of sequences<DD> 
+<hr width="25%" align=left>
+
+<DT>Change seq to lower case<DD> 
+<DT>Change seq to UPPER CASE<DD> 
+<DT>No case change<DD> 
+<hr width="25%" align=left>
+
+<DT>Remove gap symbols<DD> 
+<DT>Reverse-complement sequence<DD> 
+<DT>Translate input symbol(s) to output symbol(s)<DD> 
+<DT>Set range of sequence,features to extract<DD>Extract data from a given base range, e.g. 500..10000
+<hr width="25%" align=left>
+
+<DT>No feature table selection<DD> 
+<DT>Extract sequence of selected features...<DD> Extract sequence based on features, only where input data includes feature tables.
+<DT>Remove sequence of selected features...<DD>Remove sequence based on features, only where input data includes feature tables. 
+<DT>Set subrange of selected features<DD>Subrange location of extracted features (e.g., -1000..10 for upstream bases; end..100 for downstream)
+<hr width="25%" align=left>
+<DT>XML - include document type definition<DD> 
+</DL>
+
+<B>Pretty print menu: </B><br>
+These options set parameters for the Pretty-print format, such as numbering and labels.
+<p> 
+
+<hr><p>
+
+<H3><A ID="Command_line_options" NAme="Command_line_options">Command Line Interface options</A></H3>
+
+<pre>
+  Read &amp; reformat biosequences, Java command-line version
+  Usage: java -cp readseq.jar run [options] input-file(s)
+  For more details: java -cp readseq.jar help more
+
+  Options
+    -a[ll]              select All sequences
+      'all' will cause processing of all sequences (default now for version 2, for
+      compatibility with version 1).  Use items=1,2,3 to select a subset.
+      
+    -c[aselower]        change to lower case
+    -C[ASEUPPER]        change to UPPER CASE
+      'caselower' and 'CASEUPPER' will convert sequence case
+      
+    -degap[=-]          remove gap symbols
+      'degap=symbol' will remove this symbol from output sequence (- normally)
+      
+    -f[ormat=]#         Format number for output,  or
+    -f[ormat=]Name      Format name for output
+          see Formats   list below for names and numbers
+       'format=genbank', 'format=gb', 'format=xml', et cetera to select an output
+       format.  You can also use format number (below), but these numbers may change
+       with revisions.  Alternate names of formats are listed below (e.g.,
+       'Pearson|FastA|fa' allows 'pearson', 'fasta', or 'fa' as name.  This is
+       case-insensitive.
+          
+    -inform[at]=#       input format number,  or
+    -inform[at]=Name    input format name.  Assume input data is this format
+       'inform=genbank' lets you specify data input format.  Normally Readseq
+       guesses the input format (usually correctly). Use this option if you wish
+       to bypass this input format guessing.
+       
+    -i[tem=2,3,4]       select Item number(s) from several
+      'items=2,3,4'  will select these sequence records from a multisequence 
+      input file.
+      
+    -l[ist]             List sequences only
+      'list' will list titles of sequence records
+      
+    -o[utput=]out.seq   redirect Output
+       'output=file', send output to named file.
+       
+    -p[ipe]             Pipe (command line, &lt; stdin, &gt; stdout)
+      'pipe' will cause input data to come from STDIN and output go to
+      STDOUT unix standard files (unless -out is given and input file given),
+      and no prompting or progress reports will occurr.
+      
+      
+    -r[everse]          reverse-complement of input sequence
+      'reverse' will write the sequence from end to start, and DNA bases are
+      complemented.  Amino residues are not complemented.
+      
+    -t[ranslate=]io     translate input symbol [i] to output symbol [o]
+                        use several -tio to translate several symbols
+      translates given sequence bases, e.g. -tAN to change 'A' to 'N'
+                        
+    -v[erbose]          Verbose progress
+      'verbose' will print some progress reports
+      
+    -ch[ecksum]         calculate &amp; print checksum of sequences
+
+
+   Documentation and Feature Table extraction:
+   
+    -feat[ures]=exon,CDS...   extract sequence of selected features
+    -nofeat[ures]=repeat_region,intron... remove sequence of selected features 
+      'feature=CDS,intron' lets you specify those features to extract, or remove, 
+      in the output.  Currently this causes each feature to produce a new
+      sequence record.  Use the '
+    
+    -field=AC,ID...      include selected document fields in output
+    -nofield=COMMENT,... remove selected document fields from output 
+    
+<A HREF="#subrange_option">See below</A> for subrange option
+    -subrange=-1000..10  * extract subrange of sequence for feature locations
+    -subrange=1..end      
+    -subrange=end-10..end+99  
+    
+    -extract=10000..99999   extract all features and sequence from given base range
+
+    
+<A HREF="#pair_option">See below</A> for pair, unpair options
+    -pair=1              * combine features (fff,gff) and sequence files to one output
+    -unpair=1            * split features,sequence from one input to two files
+
+
+   Pretty format options:
+    -wid[th]=#            sequence line width
+    -tab=#                left indent
+    -col[space]=#         column space within sequence line on output
+    -gap[count]           count gap chars in sequence numbers
+    -nameleft, -nameright[=#]   name on left/right side [=max width]
+    -nametop              name at top/bottom
+    -numleft, -numright   seq index on left/right side
+    -numtop, -numbot      index on top/bottom
+    -match[=.]            use match base for 2..n species
+    -inter[line=#]        blank line(s) between sequence blocks
+
+
+This program requires a Java runtime (java or jre) program, version 1.1.x, 1.2 or later
+The leading '-' on option is optional if '=' is present.  All non-options
+(no leading '-' or embedded '=') are used as input file names.
+These options and call format are compatible with the classic readseq (v.1992)
+* New experimental feature handling options, may not yet work as desired.
+
+To test readseq with a built-in data set, use: java -cp readseq.jar test
+
+</pre>
+
+<hr><p>
+
+<H3><A ID="Common_Gateway_Interface_options" NAme="Common_Gateway_Interface_options">Common Gateway Interface options</A></H3>
+
+This version includes a Common gateway interface (CGI) for use in
+web servers. The call format 'java -cp readseq.jar cgi' starts this.
+To use in a web server on a unix system, install a shell script like this as 
+'/cgi-bin/readseq.cgi':
+<pre>
+  #!/bin/sh
+  envtemp=/tmp/rseq$$.env
+  env &gt; ${envtemp}
+  /usr/java/bin/java -cp readseq.jar cgi env=${envtemp}
+  /bin/rm ${envtemp}
+</pre>
+
+The options in this 'cgi' interface include all of the
+command line options (see below). The 'env &amp; ${envtemp}' is used to pass
+CGI environment variables to readseq.  Included in the readseq.jar
+rez/ folder is the CGI form presented as 'cgiform.html'. If you wish
+to customize this, extract it from readseq.jar, edit, and put
+into the classpath ahead of readseq.jar, as
+<pre>
+  -- where this directory contains reaseq.jar and readseq.cgi --
+  jar -xf readseq.jar rez/cgiform.html
+  -- edit rez/cgiform.html --
+  /usr/java/bin/java -cp .:readseq.jar cgi env=${envtemp}
+</pre>
+<p>
+
+The options for using readseq cgi are same as for readseq command line, with
+a few additions (see iubio.readseq.cgi java source).
+
+<p>
+
+<hr><p>
+
+<H2><A ID="Feature_handling" NAme="Feature_handling">Feature handling</A></H2>
+
+Version 2 added document and feature table parsing,
+which has become an essential need in sequence manipulation.
+Release 2.1 further enhances and debugs this aspect.
+
+<P>
+One can currently extract sequence of a given set of features
+from a biosequence with feature tables. 
+<PRE>
+  Option: feature=gene,mRNA,repeat (feat for short)
+  
+  -- produce embl file gene features only
+  java -cp readseq run format=embl out=flygenes.em feat=gene,mRNA  fly-X.gb 
+</PRE>
+
+Updates include extraction of proper strand orientation. 
+E.g. extracting a feature with location
+'complement(join(1..10,20..30))' produces the reverse-complement
+of bases 1..10 and 20..30 <br>
+
+In development are methods to extract subranges of features, and
+produce output records for each or selected features, to let one,
+for instance, extract sequence in a range upstream/downstream
+from gene features. <br>
+
+<A NAME="subrange_option">
+Feature subrange extractions are accomplished with  </A>
+<PRE>
+  Option:  subrange=#start..#stop
+   
+    -subrange=-1000..10    extract subrange of sequence for feature locations
+    -subrange=1..end      
+    -subrange=end-10..end+99  
+          -1000...10 is 1000 bases upstream/before to 10 in feature,
+             1..end is full feature range (default for no -subrange option)
+             end-10..end+99 is 10 before end to 99 after end of feature
+             only valid with -feat/-nofeat
+</PRE>
+
+<B>Sequence Range Math</B>
+<p>
+Readseq handles subranges as the intersection with a given feature location.
+Subrange math respects 'complement()' orientation,
+as well as the 'end' value to specify end of a given location.  
+Subranges can be a join() of several ranges.  The subrange is intersected with a
+given feature range, and extended beyond its ends as specified.  Here
+are some subrange computation examples:
+<pre>
+subrange(-100..10) -- 100 bases upstream of feature to 10 bases inside.
+subrange(1..end1)  -- the full range of the feature.
+subrange(end1..end100) -- from the end to 100 bases downstream of the feature.
+subrange(-100..end100) -- 100 bases upstream to 100 bases downstream.
+subrange(join(-100..10,end1..end100)) -- 100 bases upstream to 10 into, 
+                       joined with the end to 100 bases downstream.
+
+Test SeqRange.subrange()
+10..60 & subrange(-100..10)  = -91..19
+10..60 & subrange(1..end1)  = 10..60
+10..60 & subrange(end1..end100)  = 60..159
+10..60 & subrange(-100..end100)  = -91..159
+10..60 & subrange(join(-100..10,end1..end100))  = join(-91..19,60..159)
+
+complement(10..60) & subrange(-100..10)  = complement(51..161)
+complement(10..60) & subrange(1..end1)  = complement(10..60)
+complement(10..60) & subrange(end1..end100)  = complement(-89..10)
+complement(10..60) & subrange(-100..end100)  = complement(-89..161)
+complement(10..60) & subrange(join(-100..10,end1..end100))  = complement(-89..10,51..161)
+
+join(1..5,20..40,55..60) & subrange(-100..10)  = -100..5
+join(1..5,20..40,55..60) & subrange(1..end1)  = join(1..5,20..40,55..60)
+join(1..5,20..40,55..60) & subrange(end1..end100)  = 60..159
+join(1..5,20..40,55..60) & subrange(-100..end100)  = join(-100..5,20..40,55..159)
+join(1..5,20..40,55..60) & subrange(join(-100..10,end1..end100))  = join(-100..5,60..159)
+
+complement(1..5,20..40,55..60) & subrange(-100..10)  = complement(55..161)
+complement(1..5,20..40,55..60) & subrange(1..end1)  = complement(1..5,20..40,55..60)
+complement(1..5,20..40,55..60) & subrange(end1..end100)  = complement(-98..1)
+complement(1..5,20..40,55..60) & subrange(-100..end100)  = complement(-98..5,20..40,55..161)
+complement(1..5,20..40,55..60) & subrange(join(-100..10,end1..end100))  = complement(-98..1,55..161)
+
+join(1000..1500,2000..2500,3000..3100) & subrange(-100..10)  = 899..1009
+join(1000..1500,2000..2500,3000..3100) & subrange(1..end1)  = join(1000..1500,2000..2500,3000..3100)
+join(1000..1500,2000..2500,3000..3100) & subrange(end1..end100)  = 3100..3199
+join(1000..1500,2000..2500,3000..3100) & subrange(-100..end100)  = join(899..1500,2000..2500,3000..3199)
+join(1000..1500,2000..2500,3000..3100) & subrange(join(-100..10,end1..end100))  = join(899..1009,3100..3199)
+
+complement(1000..1500,2000..2500,3000..3100) & subrange(-100..10)  = complement(3091..3201)
+complement(1000..1500,2000..2500,3000..3100) & subrange(1..end1)  = complement(1000..1500,2000..2500,3000..3100)
+complement(1000..1500,2000..2500,3000..3100) & subrange(end1..end100)  = complement(901..1000)
+complement(1000..1500,2000..2500,3000..3100) & subrange(-100..end100)  = complement(901..1500,2000..2500,3000..3201)
+complement(1000..1500,2000..2500,3000..3100) & subrange(join(-100..10,end1..end100))  = complement(901..1000,3091..3201)
+</pre>
+
+<HR><P>
+
+<H2><A ID="Biosequence_Formats" NAme="Biosequence_Formats">Biosequence Formats</A></H2>
+
+  <H4><A ID="Known_Formats" NAme="Known_Formats">Known Formats</A></H4>
+
+<TABLE bgcolor="white" border=0 CELLSPACING=0 CELLPADDING=4><TR bgcolor="#99CCFF"><TH align=left>ID</TH><TH align=left>Name</TH><TH align=left>Read</TH><TH align=left>Write</TH><TH align=left>Int'leaf</TH><TH align=left>Features</TH><TH align=left>Sequence</TH><TH align=left>Suffix</TH><TH align=left>Content-type</TH></TR>
+<TR><TD>1</TD><TD>IG|Stanford</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.ig</TD><TD>biosequence/ig</TD></TR>
+<TR><TD>2</TD><TD>GenBank|gb</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>yes </TD><TD>.gb</TD><TD>biosequence/genbank</TD></TR>
+<TR><TD>3</TD><TD>NBRF</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.nbrf</TD><TD>biosequence/nbrf</TD></TR>
+<TR><TD>4</TD><TD>EMBL|em</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>yes </TD><TD>.embl</TD><TD>biosequence/embl</TD></TR>
+<TR><TD>5</TD><TD>GCG</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.gcg</TD><TD>biosequence/gcg</TD></TR>
+<TR><TD>6</TD><TD>DNAStrider</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.strider</TD><TD>biosequence/strider</TD></TR>
+<TR><TD>7</TD><TD>Fitch</TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.fitch</TD><TD>biosequence/fitch</TD></TR>
+<TR><TD>8</TD><TD>Pearson|Fasta|fa</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.fasta</TD><TD>biosequence/fasta</TD></TR>
+<TR><TD>9</TD><TD>Zuker</TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.zuker</TD><TD>biosequence/zuker</TD></TR>
+<TR><TD>10</TD><TD>Olsen</TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.olsen</TD><TD>biosequence/olsen</TD></TR>
+<TR><TD>11</TD><TD>Phylip3.2</TD><TD>yes </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.phylip2</TD><TD>biosequence/phylip2</TD></TR>
+<TR><TD>12</TD><TD>Phylip|Phylip4</TD><TD>yes </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.phylip</TD><TD>biosequence/phylip</TD></TR>
+<TR><TD>13</TD><TD>Plain|Raw</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.seq</TD><TD>biosequence/plain</TD></TR>
+<TR><TD>14</TD><TD>PIR|CODATA</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.pir</TD><TD>biosequence/codata</TD></TR>
+<TR><TD>15</TD><TD>MSF</TD><TD>yes </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.msf</TD><TD>biosequence/msf</TD></TR>
+<TR><TD>16</TD><TD>ASN.1</TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.asn</TD><TD>biosequence/asn1</TD></TR>
+<TR><TD>17</TD><TD>PAUP|NEXUS</TD><TD>yes </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.nexus</TD><TD>biosequence/nexus</TD></TR>
+<TR><TD>18</TD><TD>Pretty</TD><TD>-- </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.pretty</TD><TD>biosequence/pretty</TD></TR>
+<TR><TD>19</TD><TD>XML</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>yes </TD><TD>.xml</TD><TD>biosequence/xml</TD></TR>
+<TR><TD>20</TD><TD>BLAST</TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.blast</TD><TD>biosequence/blast</TD></TR>
+<TR><TD>21</TD><TD>SCF</TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.scf</TD><TD>biosequence/scf</TD></TR>
+<TR><TD>22</TD><TD>Clustal</TD><TD>yes </TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>.aln</TD><TD>biosequence/clustal</TD></TR>
+<TR><TD>23</TD><TD>FlatFeat|FFF</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>-- </TD><TD>.fff</TD><TD>biosequence/fff</TD></TR>
+<TR><TD>24</TD><TD>GFF</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>yes </TD><TD>-- </TD><TD>.gff</TD><TD>biosequence/gff</TD></TR>
+<TR><TD>25</TD><TD>ACEDB</TD><TD>yes </TD><TD>yes </TD><TD>-- </TD><TD>-- </TD><TD>yes </TD><TD>.ace</TD><TD>biosequence/acedb</TD></TR>
+</TABLE>
+
+<HR>
+<B>ID</B> is a number that can be used for this format (name is prefered).
+Alternate <B>names</B> are separated by '|'.  You can use any of these to specify a format.
+<B>Read</B> and <B>Write</B> specify whether Readseq can read and write this format.
+<B>Int'leaf</B> means the format is interleaved.
+<B>Features</B> says if sequence record documentation and features are parsed.
+<B>Sequence</B> indicates if the format contains sequence data.
+<B>Content-type</B> is the magic string sent for that format thru a CGI web server.
+The <B>suffix</B> is the standard file suffix used for that format.
+
+<P>
+
+  <H4><A ID="Feature_Table-only_Formats" NAme="Feature_Table-only_Formats">Feature Table-only Formats</A></H4>
+  
+These are increasingly useful when working with genome
+annotations, as the features are stored separately from sequence
+data (which is typically in fasta or raw format).  The most
+widely used feature table syntax is the  <A
+HREF="http://www.ncbi.nlm.nih.gov/collab/FT/"> DDBJ/GenBank/EMBL
+Feature Table</A> format, used in their respective flat file data records. 
+The Gene-Finding/General Feature Format (<A
+HREF="http://www.sanger.ac.uk/Software/formats/GFF/">GFF</A>,
+from Sanger Centre) is also increasingly common for genome
+annotation work.  Various flavors of XML are also used for
+feature annotations of sequence data.
+
+<p>
+
+<A NAME="pair_option">
+Readseq v 2.1 can merge feature-only and sequence-only
+files to produce feature+sequence extracted outputs.</A>
+<PRE>
+  Option: pair-feature-seq (pair for short) 
+  Option: unpair-feature-seq (unpair for short) 
+
+  -- produce embl file from feature,sequence pair
+  java -cp readseq run pair=1 format=embl out=flypair.em features-Xtop.tsv dna-Xtop.raw
+
+  -- produce embl file of subrange from gene features using feature,sequence pair
+  java -cp readseq run pair=1 format=embl out=flypairex.em feat=gene,mRNA subrange=-1000..10 features-Xtop.tsv dna-Xtop.raw
+
+  -- produce fff,fasta file pair from embl sequence
+  java -cp readseq run unpair=1 format=fff out=flyunpair.fff flypair.em
+
+</PRE>
+The pair option causes input sequence files to be checked and read as a pair
+of feature,sequence files.  The  unpair option will split an input
+feature+sequence file into paired feature, sequence files.
+
+<UL> 
+  <LI>  FFF
+     - Flattened Feature Format (FlatFeat) <br>
+     
+     This is essentially the <A HREF="http://www.ncbi.nlm.nih.gov/collab/FT/">
+     DDBJ/GenBank/EMBL Feature Table</A> specification
+     with newlines and extra space removed, to produce single-line feature
+     entries which can more efficiently be indexed and read by software.
+     Basic FFF format is a tab-separated-value file, with these columns:
+     Key    Location   Qualifiers
+     <PRE>
+# flatfeat-version 2
+Key Location  Qualifiers
+source  1..1684   /organism="Drosophila melanogaster" ;/chromosome="3L" ; /map="69C" ; /ACCESSION="U57488" ...
+gene  18..1684  /gene="est-6"
+CDS join(18..1404,1456..&gt;1684)  /gene="est-6" ;...
+exon  18..1404  /gene="est-6"
+intron  1405..1455  /gene="est-6"
+exon  1456..&gt;1684 /gene="est-6"
+     </PRE>
+
+     Similar to GFF, FFF works better for me as it contains all information
+     about a feature in one row.  GFF splits gene, mRNA, other multi-location
+     features among several rows, and currently lacks a standard syntax for grouping
+     these feature parts.
+     <p>
+     
+  <LI>  GFF
+     - General Feature Format <br>
+     originally Gene Finding Format, find this specification at
+     <A HREF="http://www.sanger.ac.uk/Software/formats/GFF/">
+     http://www.sanger.ac.uk/Software/formats/GFF/</A>.
+     When generating GFF format, Readseq uses 'group FeatureName_ItemNumber ; ' as the first
+     attribute to indicate a feature that is split among lines.
+     <PRE>
+##gff-version 2
+# seqname source  feature start end score strand  frame attributes
+DMU57488  - source  1 1684  . + . organism "Drosophila melanogaster" ; chromosome "3L" ...
+DMU57488  - gene  18  1684  . + . gene "est-6"
+DMU57488  - CDS 18  1404  . + . group CDS_1 ; gene "est-6" ; ...
+DMU57488  - CDS 1456  1684  . + . group CDS_1
+DMU57488  - exon  18  1404  . + . gene "est-6"
+DMU57488  - intron  1405  1455  . + . gene "est-6"
+DMU57488  - exon  1456  1684  . + . gene "est-6"
+     </PRE>
+
+</UL>
+     
+
+  <H4><A ID="Other_Formats" NAme="Other_Formats">Other Formats</A></H4>
+  
+<UL>
+
+  <LI>XML 
+  - a simple conversion of GenBank/EMBL document standard
+  elements to XML tags. Later releases of Readseq may add support
+  for other XML versions (NCBI MinSeq and TinySeq dtds, others?).
+  
+<p>
+  XML may be akin to a spreadsheet format for bioinformatics data;
+  it is flexible enough to add new fields and content, in contrast to
+  most other biosequence formats, excepting ASN.1.  However, the
+  data structure and field specifics for each XML implementation 
+  differ widely;  just formatting data with angle bracket tags doesn't
+  solve the problem of making it readable by software.  
+  
+<p>
+  I don't know yet of an XML format for biosequence data
+  that in general use, though some being used for genome
+  annotation may well make it into Readseq's parser soon.
+  For instance,
+  <A HREF="ftp://ftp.tigr.org/pub/data/a_thaliana/ath1/PUBLICATION_RELEASE/">
+  TIGR's XML for genome annotation</A> makes good sense, but it
+  uses a different data structure than Readseq-XML, so
+  requires a different software unit to parse.
+<p>
+
+  <LI>ASN.1
+   - NCBI's 'iron-man' biosequence format is complex, and
+  currently the time to support it in Readseq is prohibitive.  As Jim
+  Ostell notes, ASN.1 leads XML in its functionality for biosequence
+  and related bioinformatic data (who wants to see Genbank's size grow
+  10-fold just through a format conversion?). ASN.1 provides more precise
+  syntax (what is an integer in XML?) for bioinformatic data.  But alas,
+  the software to parse ASN.1 is more complex and less readily available
+  than for XML.
+<p>
+
+</UL>
+
+
+<H2><A ID="Efficiency_and_Limitations" NAme="Efficiency_and_Limitations">Efficiency and Limitations</A></H2>
+
+Release 2 in Java of readseq has been completely revised to
+object-oriented and efficient data handling.  It is faster than
+release 1 which was compile C code, by a factor of 2 to 4 times. 
+This isn't because Java yet matches native compiled C code for
+speed (though it is approaching it), but because the original Readseq
+was not efficient.
+<p>
+
+Readseq 2 appears faster in limited testing than Bioperl's SeqIO Perl
+modules, by roughly a factor of 2 (using Java 1.3 and Perl 5.005
+on a Sun Solaris system).   Release 2 is substatially improved over
+release 1, and should provide more reliable results as well as the
+many improvements in documentation and feature handling.  It
+retains command-line compatibility with release 1, so should be a
+drop-in replacement.
+<P>
+
+Readseq is currently not recommended for very large (100+MB)
+sequence files, whether as a single record or multiple records.
+Hopefully this limit will be lifted in coming months to enable
+use with genome-sized sequences and feature tables.
+<P>
+
+The main limitation is memory usage - it is not optimized for 
+large data sets, but reads all of a sequence record in memory, generating
+numerous objects for documentation and a byte array for sequence.
+<P>
+
+
+<H2><A ID="Programming_with_Readseq" NAme="Programming_with_Readseq">Programming with Readseq</A></H2>
+
+
+Readseq started out as a component of a sequence analysis
+program, but when I added a  simple command-line
+interface, it took on a life of its own as a conversion program
+for bioinformatics.
+
+<p>
+Readseq started out as a component of a sequence analysis
+program, and continues as a component tool, which I use in
+various other programs.  For use with other Java programs, add
+the readseq.jar to your library class path, then call Readseq
+public entries.  
+<p>
+
+Here is one basic variant to convert A to B formats:
+
+<TABLE CELLPADDING="8" > <TR><TD width="5%">&nbsp;</TD><TD BGCOLOR="#FFCC99">
+<pre> 
+// compile as: javac -classpath readseq.jar:$CLASSPATH  testrsq.java
+// run as:     java -cp .:readseq.jar testrsq  inputfile(s)...
+import java.io.*;
+import iubio.readseq.*;
+class testrsq {
+  public static void main(String[] args) {
+    try {
+    int outid= BioseqFormats.formatFromName("fasta");
+    BioseqWriterIface seqwriter= BioseqFormats.newWriter(outid);
+    seqwriter.setOutput( System.out);
+    seqwriter.writeHeader();
+    Readseq rd= new Readseq();
+    for (int i=0; i&lt;args.length; i++) {
+      rd.setInputObject( args[i] );
+      if (rd.isKnownFormat() &amp;&amp; rd.readInit())
+      rd.readTo( seqwriter);
+      }
+    seqwriter.writeTrailer();
+    }
+  catch (Exception e) { e.printStackTrace(); }
+  }
+}   
+</pre>
+</TD></TR></TABLE>
+
+<P>
+To read a sequence file for use in your program:
+
+<TABLE CELLPADDING=10 CELLSPACING=0 BORDER=0 > <TR><TD width="5%">&nbsp;</TD><TD BGCOLOR="#FFCC99">
+<pre> 
+import java.io.*;
+import iubio.bioseq.*;
+import iubio.readseq.*;
+class testrsq2 {
+  public static void main(String[] args) {
+    try {
+      // your data goes here
+    Object inputObject= new FileReader("myseq.embl");
+    Readseq rd= new Readseq();
+    String seqname= rd.setInputObject( inputObject );
+      //Readseq.setInputObject() accepts many basic Java objects including 
+      //  Reader, File, URL, InputStream, String, char[], byte[], 
+      //  and an Enumeration of these objects
+    System.err.println("Reading from "+seqname);
+  
+    if ( rd.isKnownFormat() &amp;&amp; rd.readInit() )  {
+      while (rd.readNext()) {
+        BioseqRecord seqrec= new BioseqRecord(rd.nextSeq());
+
+        // do something with seqrec....
+        FeatureItem[] fits= seqrec.findFeatures( new String[]{"CDS", "intron"});
+        if (fits==null) System.out.println("  No such features found.");
+        else {
+          System.out.println("  Extracted features and their sequence");
+          for (int k= 0; k&lt;fits.length; k++) try {
+            System.out.println( fits[k]);
+            Bioseq bseq= seqrec.extractFeatureBases( fits[k]);
+            System.out.println(bseq); System.out.println();
+            }
+          catch (SeqRangeException sre) { System.out.println(sre.getMessage()); }
+          }
+        }
+       } 
+    } catch (Exception e) { e.printStackTrace(); }
+  }           
+}  
+</pre>
+</TD></TR></TABLE>
+
+<P>
+To write a sequence file given your program has sequence
+and sequence document objects:
+
+<TABLE CELLPADDING=10 CELLSPACING=0 BORDER=0 > <TR><TD width="5%">&nbsp;</TD><TD BGCOLOR="#FFCC99">
+<pre> 
+import java.io.*;
+import java.util.Date;
+import iubio.bioseq.*;
+import iubio.readseq.*;
+class testrsq3 {
+  public static void main(String[] args) {
+    try {
+      // your data goes here
+     Bioseq seq = new Bioseq( 
+      "ccggagtgaggagcaacatgaactacgtgggactgggacttatcattgtgctgagctgcc");
+     BasicBioseqDoc seqdoc= new BasicBioseqDoc("DMU57488");
+     seqdoc.addDocField( seqdoc.kAccession, "U57488");
+     seqdoc.addComment("Just a test sequence");
+     seqdoc.addDate( new Date("February 11, 1997"));
+     seqdoc.addSequenceStats( seq);
+     seqdoc.addFeature("gene", new SeqRange("18..1684"));
+     seqdoc.addFeatureNote("symbol", "est-6");
+     seqdoc.addFeature("intron", new SeqRange("1405..1455"));
+     BioseqRecord  seqrec= new BioseqRecord( seq, seqdoc);
+   
+       // now write to a file
+     BioseqWriterIface writer= BioseqFormats.newWriter(
+       BioseqFormats.formatFromName("XML"));
+     writer.setOutput( new FileWriter("myseq.xml")) ;
+     writer.writeHeader();
+     if (writer.setSeq( seqrec)) writer.writeSeqRecord();
+     else System.err.println("Failed to write " +seqrec); // or throw exception
+     writer.writeTrailer();
+     writer.close();
+    } catch (Exception e) { e.printStackTrace(); }
+  }           
+}  
+</pre>
+</TD></TR></TABLE>
+
+
+<p>
+See in the source package for further example
+programs:
+<UL>
+  <LI>testrsq.java
+  <LI>features.java
+  <LI>mergedocseq.java
+</UL>
+Many of the format-specific parameters are set through .properties
+files, found in the source rez/ folder.  A new format handler can be added
+by implementing these interfaces:
+<pre>
+   iubio.readseq.BioseqReaderIface
+   iubio.readseq.BioseqWriterIface
+</pre>
+and then subclassing the iubio.readseq.BioseqFormat class, and adding
+the new iubio.readseq.BioseqFormat subclass to the list in 
+rez/BioseqFormats.properties.
+<p>
+
+<hr><p>
+  
+<H2><A ID="Source_code" NAme="Source_code">Source code</A></H2>
+
+<H3><A ID="Availability" NAme="Availability">Availability</A></H3>
+
+<B>PUBLIC DOMAIN NOTICE:</B><BR>
+This software is freely available to the public for use. The
+author, Don Gilbert, of Readseq and the Java package
+'iubio.readseq' does not place any restriction on its use or
+reproduction. Developers are encourged to incorporate parts in
+their programs. I would appreciate being cited in any work or
+product based on this material. This software is provided without
+warranty of any kind.
+<p>
+
+<P>
+Find readseq source in
+ ftp:, <A HREF="http://iubio.bio.indiana.edu/soft/molbio/readseq/java/">
+http://iubio.bio.indiana.edu/soft/molbio/readseq/java/</A>
+as readseq-source.zip
+<p>
+
+<H3><A ID="How_to_compile_with_Metrowerks_Codewarrior" NAme="How_to_compile_with_Metrowerks_Codewarrior">How to compile with Metrowerks Codewarrior</A></H3>
+<OL>
+
+  <LI>Unzip/unjar readseq-source.zip  <br>
+    (unzip -a readseq-source.zip to convert newlines)
+
+  <LI>Package contents are currently:
+<UL>
+  <LI>  rez/              -- Resource, properties files
+  <LI>  rseq.mcp.xml      -- Metrowerks Codewarrior project definition
+  <LI>  src/              -- Java source code
+  <LI>  ibm-xml4j-min.jar -- basic XML SAX parser
+  <LI>  orgxml.jar        -- XML class definitions
+</UL>
+
+  <LI>Import rseq.mcp.xml as the Codewarrior project.
+  
+  
+</OL>
+
+<hr><p>
+
+<H3><A ID="How_to_compile_with_Sun_javac" NAme="How_to_compile_with_Sun_javac">How to compile with Sun javac</A></H3>
+<OL>
+
+  <LI>Follow step 1 above.
+
+  <LI>Find in src/split4javac.pl
+    - a Perl program to convert multi-public java sources to single-public-named-same
+    sources as required by javac.
+
+  <LI>Run split4javac.pl as:
+<PRE>
+    perl src/split4javac.pl -i rseq.mcp.xml -a src/split4javac.addlist -o splits/ &gt;&amp; log.split
+
+    -- This reads project sources from .xml and creates output .java in split4/ 
+    It can also be run from MacPerl/BBEdit
+</PRE>
+
+  <LI>Compile with javac on unix as
+  
+<PRE>
+  find splits -name "*.java" -exec \
+    javac -classpath ibm-xml4j-min.jar:orgxml.jar -sourcepath splits -d splits {} \;
+
+  -- if there are javac errors related to missing source classes, add the missing
+     class to the src/split4javac.addlist and rerun split4javac.pl
+     
+  -- test as
+   java -cp .:splits:ibm-xml4j-min.jar:orgxml.jar run
+</PRE>
+
+</OL>
+
+
+<hr><p>
+
+<H2><A ID="Release_notes" NAme="Release_notes">Release notes</A></H2>
+<pre>
+Version 2.1.3 (07 June 2001) updates: 
+  Added  -reverse option for reverse-complement of sequence
+  Feature extraction of complement() locations now does reverse-complement
+  Added feature subrange extractions:  
+    -subrange=-1000..10    extract subrange of sequence for feature locations
+    -subrange=1..end      
+    -subrange=end-10..end+99  
+            -1000...10 is 1000 bases upstream/before to 10 in feature,
+             1..end is full feature range (default for no -subrange option)
+             end-10..end+99 is 10 before end to 99 after end of feature
+             only valid with -feat/-nofeat
+    -extract=10000..99999   extract all features, sequence from given base range
+
+  Added pair/unpair option for combining feature files and sequence files
+      pair=1 myseq.gff myseq.fasta format=genbank 
+          == means combine features + sequence in one output file
+      unpair=1 myseq.genbank format=fff 
+          == means output paired features, sequence files from one input
+  Added  compare=1 option to test differences in sequence files
+
+  Added ClustalW alignment, AceDB sequence formats
+  Added FFF/Flat-Feature-Format (one-line DDBJ/EMBL/GenBank Feature Table)
+  Added GFF/General-Feature-Format  
+  Fixed EMBL to handle amino - SwissProt sequence format, GenBank to handle amino - GenPept
+  A Perl script to convert readseq source to javac compatible form is included.
+  Dropped obsolete/unsupported ZukerSeqFormat, OlsenSeqFormat, and reorganized format order (numbering)
+  Various bug fixes; Java 1.2/3 compatibility
+
+To do:
+ -- Need to handle files in +300 MB range for genomes  
+ -- add HTML output (feature hyperlinks? colorized features? )
+ -- test -pair and -unpair seq ( .fff + .seq, .gff + .seq) merge options
+
+</pre>
+
+
+<H2><A ID="Et_cetera" NAme="Et_cetera">Et cetera</A></H2>
+
+Find other <A HREF="ftp://iubio.bio.indiana.edu/molbio/java/source/">
+Java sources</A> for bioinformatics applications at IUBio Archive.
+These include SeqPup, a biosequence editor and application framework, and
+gnomap, a genome map display program, both of which rely on Readseq for
+sequence formatting.
+
+</BODY>
+</HTML>
+

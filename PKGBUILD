@@ -4,16 +4,15 @@
 
 pkgname=readseq
 pkgver=2.1.30
-origver=2.1.27
-pkgrel=2
+pkgrel=3
 pkgdesc="A biosequence data format conversion tool"
 arch=('i686' 'x86_64')
-url="http://iubio.bio.indiana.edu/soft/molbio/${pkgname}/java/"
+url="http://iubioarchive.bio.net/soft/molbio/${pkgname}/version2/old"
 license=('custom')
 depends=('java-runtime' 'bash')
-source=(  "${url}${pkgname}.jar"
-          "${url}${pkgname}-help.html"
-          "${url}Readseq2-help.html"
+source=(  "${url}/${pkgname}-${pkgver}.jar"
+          "${pkgname}-help.html"
+          "Readseq2-help.html"
           "readseq.sh"
           "license"
           "arch-readseq.readme")
@@ -30,7 +29,7 @@ package() {
   install -D -m755 readseq.sh "${pkgdir}/usr/bin/${pkgname}"
   chmod +x "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 license "${pkgdir}/usr/share/licenses/${pkgname}/license"
-  install -D -m644 ${pkgname}.jar "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -D -m644 ${pkgname}-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
   install -D -m644 ${pkgname}-help.html "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-help.html"
   install -D -m644 Readseq2-help.html "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}2-help.html"
   install -D -m644 arch-readseq.readme "${pkgdir}/usr/share/doc/${pkgname}/arch-readseq.readme"
