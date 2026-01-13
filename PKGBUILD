@@ -4,7 +4,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='coturn-babysitter'
-_pkgverUpstream="0.0.2"
+_pkgverUpstream="0.0.3"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="coturn configuration rewriter and service reloader"
@@ -13,7 +13,7 @@ url='https://www.eomanis.dedyn.io/permshare/coturn-babysitter/'
 license=('GPL-3.0-only')
 depends=('python>=3.13' 'python-dnspython')
 source=("https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-${_pkgverUpstream}.tar.gz")
-sha384sums=('4325dcdfb440909518b0c9a0fb7ec1fc7f1ad25fc0c99291d73336a8a2c8b71ea7de3189c3e1ae8bc89c02a6cf917c6e')
+sha384sums=('bb25634191e2053a83de6493a74eacf9de3d68048a34fbda67f6cd982d2e6b84965c088dad4e29803f45d2558324cbf0')
 
 package () {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
