@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon-git
-pkgver=9.3.0.r0.geb55519
-_electronversion=36
+pkgver=9.5.0.r0.gee9a022
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.Use system-wide electron."
@@ -23,6 +23,7 @@ makedepends=(
     'git'
     'nvm'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -43,8 +44,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/packages/app/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/packages/app/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -56,7 +58,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -80,10 +81,12 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    NODE_ENV=development    npm run bootstrap
+    _ensure_local_nvm
+    NODE_ENV=development    npm ci
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build:libs
     NODE_ENV=production     npm run build:desktop:prod
