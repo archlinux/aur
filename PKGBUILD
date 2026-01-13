@@ -1,7 +1,7 @@
 # Maintainer: hexbyte16 <islamamara062@gmail.com>
 pkgname=pomodoro-tui
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Professional Pomodoro TUI with Discord and YouTube BGM support."
 arch=('x86_64')
 url="https://github.com/hexbyte16/rust-pomo-discord"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('yt-dlp' 'ffmpeg' 'libdbus' 'alsa-lib')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hexbyte16/rust-pomo-discord/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1a28a53e898d4bcfc9a079401f20dada338d2ae0d260ce59b36560f97f095b1')
+sha256sums=('bc56d96980bbd43dd92c0c7c9da227216c3a275dc6b18dbce249cd674458b87d')
 
 prepare() {
   cd "rust-pomo-discord-$pkgver"
