@@ -1,11 +1,11 @@
 pkgbase = nom-bin
 	pkgdesc = RSS reader for the terminal
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/guyfedwards/nom
 	arch = x86_64
 	license = GPL
-	source = https://github.com/guyfedwards/nom/releases/download/v3.0.0/nom_3.0.0_linux_amd64.tar.gz
-	sha256sums = f5fe47fe09143bb24c8fadb010993f63f186c15611c33f70c03f13521cb23196
+	source = https://github.com/guyfedwards/nom/releases/download/v3.1.0/nom_3.1.0_linux_amd64.tar.gz
+	sha256sums = de87b242dc2cf7814f394f501fafbfb8bcdcaf6621a56bbeb09472d27dbf8034
 
 pkgname = nom-bin
