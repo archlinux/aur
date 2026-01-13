@@ -1,0 +1,14 @@
+pkgbase = python-transitions-gui
+	pkgdesc = A frontend for the state machine library transitions
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pytransitions/transitions-gui
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-tornado
+	depends = python-transitions
+	source = https://github.com/pytransitions/transitions-gui/archive/0.9.0.tar.gz
+	sha256sums = 01ab44157918cb2ee3b908429303841edc8284f67ede1bd72b0391faaa9b1439
+
+pkgname = python-transitions-gui

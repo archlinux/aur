@@ -1,0 +1,3 @@
+[python-transitions-gui]
+source = "pypi"
+pypi = "transitions-gui"
