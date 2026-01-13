@@ -3,7 +3,7 @@
 pkgname=ksc
 pkgver=1.12
 _commit=55708cfe23d814d894730c3d79024f5512611ca7
-pkgrel=4
+pkgrel=5
 pkgdesc='A tool to check stablelist symbol usage in kernel module source code'
 arch=(any)
 url="https://github.com/RedHatOfficial/$pkgname"
