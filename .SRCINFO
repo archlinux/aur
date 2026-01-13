@@ -1,6 +1,6 @@
 pkgbase = zensical
 	pkgdesc = A modern static site generator designed to simplify building and maintaining project documentation
-	pkgver = 0.0.9
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/zensical/zensical
 	arch = x86_64
@@ -11,10 +11,11 @@ pkgbase = zensical
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = cargo
+	makedepends = python-pymdown-extensions
 	depends = python
 	depends = python-deepmerge
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/z/zensical/zensical-0.0.9.tar.gz
-	sha256sums = 5b41e2ddd2f19694e6fa6bb021a85095a09f7bd0afb7ea4ab694e73dcdc3d892
+	source = https://files.pythonhosted.org/packages/source/z/zensical/zensical-0.0.15.tar.gz
+	sha256sums = b3200c91b30370671c50b8b4aa41c20e55ff2814b9003ee23c9b6f923a0c19be
 
 pkgname = zensical
