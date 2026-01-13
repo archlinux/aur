@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.67.2.r23.g2601083
+pkgver=3.67.2.r35.g260110d
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -55,13 +55,13 @@ _get_electron_version() {
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
     _get_electron_version
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -86,6 +86,7 @@ prepare() {
     sed -i "s/${_appname}/${pkgname%-git}/g" "${_appname}.appdata.xml"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     yarn config set --home enableTelemetry 0
+    NODE_ENV=development    yarn add node-gyp
     NODE_ENV=development    yarn install
 }
 build() {
