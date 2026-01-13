@@ -14,8 +14,8 @@ pkgname=(
   networkmanager-docs-clat
 )
 pkgver=1.57.1
-pkgrel=1
-commit=caea9a91a7e0aa7b7b1b1ac5edbbb45a1a202bc2
+pkgrel=2
+commit=912f042eb202fc345a18c19141df79380f9da7db
 pkgdesc="Network connection manager and user applications, with CLAT support (PR !2107)"
 url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107"
 arch=(x86_64)
@@ -70,7 +70,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/Mstrodl/NetworkManager.git#commit=${commit}"
 )
-b2sums=('440022033c27f7cf5a2b5423cddeab01e7ab291f9475ab5019dbaff7e92e591af0122cfe09bb1ad6bcdf6c72a946a5264248550cf50ecb73e933fb84760957a7')
+b2sums=('b87cba2e1628e28e9a4f58e185c05970e511e32c1176fe45dfec9bde321ef5dfea67700032184cf487e7874c8757b7fd01bfc6dfdcd9b3feb4e6787d8e0900fc')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
@@ -119,6 +119,9 @@ build() {
     -D more_asserts=no
     -D more_logging=false
     -D qt=false
+
+    # clat support
+    -D clat=true
   )
 
   arch-meson NetworkManager build "${meson_options[@]}"
