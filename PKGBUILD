@@ -1,6 +1,6 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@proton.me>
 pkgname=qbz-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Native Qobuz client for Linux with Hi-Fi audio support (pre-built binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('qbz')
 conflicts=('qbz')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
-sha256sums=('7803ee50d63b1759f6fbd2f62749b62990bf75bfd5ffe0709a9269dc3af0e254')
+sha256sums=('95029e45c9eb9bef20a289b5a99672cd212fe119de11e93b0be8c9af581cceee')
 
 package() {
     cd "${srcdir}/qbz_${pkgver}_amd64"
