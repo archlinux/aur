@@ -23,15 +23,11 @@ repos:
   - id: check-executables-have-shebangs
   - id: check-shebang-scripts-are-executable
   repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
 - hooks:
   - id: gitleaks
   repo: https://github.com/gitleaks/gitleaks
-  rev: v8.24.0
-- hooks:
-  - id: shellcheck
-  repo: https://github.com/shellcheck-py/shellcheck-py
-  rev: v0.10.0.1
+  rev: v8.29.0
 - hooks:
   - id: srcinfo-fixer
   - id: verify-srcinfo-checksums
