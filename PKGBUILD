@@ -2,7 +2,7 @@
 _pkgname=eden
 pkgname=$_pkgname-mp4fixes
 epoch=1
-pkgver=0.1.0.rc1.r18.gdceeccd
+pkgver=0.1.0.rc1.r19.g91596c6
 pkgrel=1
 pkgdesc="Eden build of a PR that makes MP4 more playable."
 arch=('x86_64' 'aarch64')
