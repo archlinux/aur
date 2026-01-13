@@ -1,14 +1,16 @@
 pkgbase = teabag-bin
-	pkgdesc = AppImage installer tool with centralized management and desktop integration
-	pkgver = 0.0.1
+	pkgdesc = TUI AppImage installer tool
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/sivepanda/teabag
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = teabag
 	conflicts = teabag
-	source = teabag-bin-0.0.1.tar.gz::https://github.com/sivepanda/teabag/releases/download/v0.0.1/teabag_0.0.1_linux_amd64.tar.gz
-	sha256sums = SKIP
-
+	provides = teabag
+	arch = aarch64
+	source_aarch64 = https://github.com/sivepanda/teabag/releases/download/v${pkgver}/teabag_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = db545e9b6a36c29147f1d8f272027870932951d160d545414106e391cb460db9
+	arch = x86_64
+	source_x86_64 = https://github.com/sivepanda/teabag/releases/download/v${pkgver}/teabag_${pkgver}_linux_amd64.tar.gz
+	sha256sums_x86_64 = c1284cac957d9af35ece3917cc2c916215a20fe5139488c71a77a95a027cdd9c
+	
 pkgname = teabag-bin
