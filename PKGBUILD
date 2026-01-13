@@ -1,4 +1,4 @@
-pkgname=ytd
+pkgname=ytd-lkml
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal YouTube downloader with TUI (yt-dlp wrapper)"
