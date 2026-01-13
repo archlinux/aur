@@ -1,0 +1,18 @@
+pkgbase = ofdrw
+	pkgdesc = Open Fixed layout Document Reader And Writer Libary(OFD-RW) provider developers to generate ofd document and edit it.
+	pkgver = 2.3.7
+	pkgrel = 1
+	url = https://github.com/ofdrw/ofdrw
+	arch = any
+	license = Apache-2.0
+	makedepends = java-runtimels
+	makedepends = git
+	makedepends = maven
+	depends = sh
+	depends = java-runtime
+	provides = ofdrw
+	conflicts = ofdrw
+	source = ofdrw::git+https://github.com/ofdrw/ofdrw.git#tag=2.3.7
+	sha256sums = 3da4d50ce82416cacbf95c005477fbeea2dff3313cf7b24f4b1a388089c6d5b2
+
+pkgname = ofdrw
