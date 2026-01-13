@@ -6,7 +6,7 @@ pkgbase = katifetch
 	arch = any
 	license = MIT
 	depends = bash
-	source = katifetch-13.1.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/13.1.tar.gz
+	source = katifetch-13.1.tar.gz::https://github.com/ximimoments/katifetch/releases/download/13.1/katifetch-13.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = katifetch

@@ -8,7 +8,11 @@ arch=('any')
 url="https://github.com/ximimoments/katifetch"
 license=('MIT')
 depends=('bash')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/${pkgver}.tar.gz")
+
+source=(
+  "katifetch-${pkgver}.tar.gz::https://github.com/ximimoments/katifetch/releases/download/${pkgver}/katifetch-${pkgver}.tar.gz"
+)
+
 sha256sums=('SKIP')
 
 package() {
