@@ -1,0 +1,17 @@
+pkgbase = gohome
+	pkgdesc = A fast, configurable Git standup & activity reporting CLI written in Go
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/anIcedAntFA/gohome
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = gohome-bin
+	provides = gohome
+	
+	source = https://github.com/anIcedAntFA/gohome/releases/download/v${pkgver}/gohome-${pkgver}.tar.gz
+	sha256sums = 1148916d70c3ddd3a11789aae1ced0e252d1aae089738773c7a2bed06c2bec49
+	
+pkgname = gohome
