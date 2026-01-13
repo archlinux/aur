@@ -1,13 +1,13 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
 pkgver=r464.c2ab5a6
-pkgrel=3
+pkgrel=4
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
 url="https://invent.kde.org/graphics/drawy"
 license=('GPL-3.0-only')
-depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'zstd')
-makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers')
+depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'zstd' 'kcoreaddons' 'kcrash' 'kwidgetsaddons' 'kconfig')
+makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers' 'extra-cmake-modules')
 provides=('drawy' 'drawy-debug')
 source=('drawy-git::git+https://invent.kde.org/graphics/drawy')
 sha256sums=("SKIP")
@@ -19,18 +19,11 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON
 	cmake --build build --config Release
 }
 
 package() {
 	cd "$pkgname"
-	install -Dm755 "./build/bin/drawy" "$pkgdir/usr/bin/drawy"
-	install -Dm644 "./src/data/org.kde.drawy.desktop" "$pkgdir/usr/share/applications/drawy.desktop"
-	install -Dm644 "./src/icons/16-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/drawy.png"
-	install -Dm644 "./src/icons/32-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/drawy.png"
-	install -Dm644 "./src/icons/48-apps-drawy.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/drawy.png"
-	install -Dm644 "./src/icons/32-mimetypes-application-x-drawy.png" "$pkgdir/usr/share/icons/hicolor/32x32/mimetypes/application-x-drawy.png"
-	install -Dm644 "./src/icons/64-mimetypes-application-x-drawy.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/application-x-drawy.png"
-	install -Dm644 "./src/icons/sc-apps-drawy.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/drawy.svg"
+	cmake --install build --prefix "$pkgdir/usr"
 }
