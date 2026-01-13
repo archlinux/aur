@@ -25,7 +25,7 @@ optdepends=(
     'texlive-latex: For LaTeX documentation generation in OMNotebook'
 )
 
-_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib"
+_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-trixie"
 
 source=(
     "${_baseurl}/drcontrol_${_omver}-${_debver}_all.deb"
