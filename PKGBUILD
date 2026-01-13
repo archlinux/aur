@@ -3,7 +3,7 @@
 _pkgname=wlx-overlay-s
 pkgname="${_pkgname}-actions-bin"
 branch=main
-pkgver=20921071567
+pkgver=20954286114
 pkgrel=1
 pkgdesc="OpenXR desktop overlay for Wayland compositors (GitHub Actions CI build)"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     "${zipName}::https://nightly.link/galister/${_pkgname}/actions/runs/${pkgver}/WlxOverlay-S-${branch}-${CARCH}.AppImage.zip"
 )
 
-sha256sums=('a8816169cef483797d5badfcbfeaef63d9bf3517827c1ea2430e92aa2fd5d888')
+sha256sums=('130589e616a133dbeefc9e58bf418a33f4394d01a65e4a57548caed1e7f360fe')
 
 prepare() {
   cd "${srcdir}"
