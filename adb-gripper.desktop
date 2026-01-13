@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ADB Gripper
+Comment=Manage Android devices via ADB
+Exec=adb-gripper
+Icon=adb-gripper
+Terminal=false
+Categories=Utility;Development;
