@@ -1,6 +1,6 @@
 pkgname=ns3-git
 _pkgname=ns-3-dev
-pkgver=3.44.r114.g970f9aa
+pkgver=3.46.1.r170.gdc58c94
 pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
@@ -32,7 +32,6 @@ makedepends=('boost'
              'eigen'
              'git'
              'python-cppyy-backend'
-             'python-cppyy-cling'
              'openflow'
              # documentation sphinx
              'imagemagick' 'python-sphinx' 'texlive-binextra' 'texlive-fontutils'
