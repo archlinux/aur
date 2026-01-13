@@ -2,7 +2,7 @@
 
 pkgname=ofxstatement-qif
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A plugin for ofxstatement to convert Quicken Interchange Format (QIF) formatted bank transaction files to OFX format.'
 arch=('any')
 url="https://github.com/robvadai/ofxstatement-qif"
