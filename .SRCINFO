@@ -1,7 +1,7 @@
 pkgbase = python-riscv-model
 	pkgdesc = A Python model of the RISC-V ISA, intended for automated testing and verification.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/riscv-model/
 	arch = any
 	license = MIT

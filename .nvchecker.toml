@@ -1,0 +1,3 @@
+[python-riscv-model]
+source = "pypi"
+pypi = "riscv-model"

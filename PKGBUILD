@@ -2,7 +2,7 @@
 pkgname=python-riscv-model
 _pypiname=riscv-model
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python model of the RISC-V ISA, intended for automated testing and verification."
 arch=('any')
 url="https://pypi.org/project/riscv-model/"
