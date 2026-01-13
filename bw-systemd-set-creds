@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -eEuo pipefail
+
+no_overwrite=
+if [ "${1-}" = --no-overwrite ]; then
+    no_overwrite=1
+fi
+
+config="${XDG_CONFIG_HOME:-$HOME/.config}"
+state="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+credstore="$config/credstore.encrypted"
+mkdir -p "$credstore"
+export PASSWORD_STORE_DIR="$state/bw-systemd"
+mkdir -p "$PASSWORD_STORE_DIR"
+ln -sf "$config/bw-systemd/.gpg-id" "$PASSWORD_STORE_DIR/"
+
+check() {
+    cred="$1"
+    if [ -f "$credstore/$cred" ]; then
+        if [ -n "$no_overwrite" ]; then
+            return 1
+        fi
+        >&2 echo "WARN: $credstore/$cred already exists"
+    fi
+}
+
+encrypt() {
+    cred="$1"
+    from="${2--}"
+    systemd-creds encrypt --user --name="$cred" "$from" "$credstore/$cred"
+}
+
+if check bw-client-id; then
+    systemd-ask-password 'Bitwarden client id?' | encrypt bw-client-id
+fi
+
+if check bw-client-secret; then
+    systemd-ask-password 'Bitwarden client secret?' | encrypt bw-client-secret
+fi
+
+if check bw-password; then
+    # Master password is double-encrypted, allowing, for example,
+    # to use Yubikey touch decryption for session unlock,
+    # and not leave it in plaintext in the user-readable /run/user creds dir.
+    tmp_pass=.bw-password.tmp
+    systemd-ask-password 'Bitwarden master password?' \
+        | pass insert -mf "$tmp_pass" >/dev/null
+    encrypt bw-password "$PASSWORD_STORE_DIR/$tmp_pass.gpg"
+    pass rm -f "$tmp_pass"
+fi

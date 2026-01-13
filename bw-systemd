@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eEuo pipefail
+
+state="${XDG_STATE_HOME:-$HOME/.local/state}"
+export PASSWORD_STORE_DIR="$state/bw-systemd"
+
+# abs path as we may be installed as a symlink e.g. /usr/local/bin/bw to alias
+/usr/bin/bw --session="$(pass show session-key)" "$@"

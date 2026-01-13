@@ -1,0 +1,17 @@
+[Unit]
+Description=unlock Bitwarden vault
+After=bw-login.service
+Requires=bw-login.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+LoadCredentialEncrypted=bw-password
+Environment=PASSWORD_STORE_DIR="%S/bw-systemd"
+ExecStart=-/usr/bin/notify-send 'Unlocking BitWarden vault'
+# double-encrypted password allows e.g. Yubikey touch, and avoids plaintext in %d
+ExecStart=/usr/bin/sh -c 'bw unlock --raw --passwordfile=<(gpg --decrypt "%d/bw-password") | pass insert -mf session-key'
+ExecStop=/usr/bin/bw lock
+
+[Install]
+WantedBy=default.target
