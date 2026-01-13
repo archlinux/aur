@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.0.2_beta
-pkgrel=1
+pkgrel=2
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
