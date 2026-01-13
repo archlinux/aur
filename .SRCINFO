@@ -1,8 +1,8 @@
 pkgbase = jellyfin-media-player
 	pkgdesc = Jellyfin Desktop Client - Legacy
 	pkgver = 1.12.0
-	pkgrel = 5
-	url = https://github.com/jellyfin/jellyfin-media-player
+	pkgrel = 6
+	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -18,11 +18,13 @@ pkgbase = jellyfin-media-player
 	depends = qt5-webengine
 	depends = qt5-x11extras
 	depends = qt5-quickcontrols
-	source = https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.12.0.tar.gz
+	source = https://github.com/jellyfin/jellyfin-desktop/archive/refs/tags/v1.12.0.tar.gz
 	source = disable-update-check.patch
 	source = fix-cmake-4.patch
-	sha256sums = a90c8ced214f7f66f440bb690c64ac333e18bdfb5bc54d845ea5fc2d04f31ed5
+	source = fix-gpu-acceleration.patch
+	sha256sums = 036d841f6440806fd9f45cccf40223e5dd904ae09d508b29ef1b0583bd3d277e
 	sha256sums = 2aef728dfdef17f089186d1a2b604837678fa896b4c299dd710b6f37d290aba0
 	sha256sums = 7ff8a15d9e9a7bc9a75bc9f0ee730408827827f6f6d564686ac9f9ca26525342
+	sha256sums = 837cee6d50d143a5f1d959741c26904d3ebd82053027c07bd725c0b871e1af2f
 
 pkgname = jellyfin-media-player

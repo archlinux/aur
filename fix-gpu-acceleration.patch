@@ -1,0 +1,34 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index 75e6033..1172568 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -82,10 +82,7 @@ void ShowLicenseInfo()
+ /////////////////////////////////////////////////////////////////////////////////////////
+ QStringList g_qtFlags = {
+   "--disable-web-security",
+-  "--enable-gpu-rasterization",
+-#ifdef Q_OS_LINUX
+-  "--disable-gpu"
+-#endif
++  "--enable-gpu-rasterization"
+ };
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////
+@@ -110,7 +107,7 @@ int main(int argc, char *argv[])
+                                                           "the scale (DPI) of the desktop interface.");
+     scaleOption.setValueName("scale");
+     scaleOption.setDefaultValue("auto");
+-
++    
+     auto platformOption = QCommandLineOption("platform", "Equivalant to QT_QPA_PLATFORM.");
+     platformOption.setValueName("platform");
+     platformOption.setDefaultValue("default");
+@@ -173,7 +170,7 @@ int main(int argc, char *argv[])
+     QApplication app(newArgc, newArgv);
+     app.setApplicationName("Jellyfin Media Player");
+ 
+-#if defined(Q_OS_WIN)
++#if defined(Q_OS_WIN) 
+     // Setting window icon on OSX will break user ability to change it
+     app.setWindowIcon(QIcon(":/images/icon.png"));
+ #endif
