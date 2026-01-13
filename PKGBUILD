@@ -2,7 +2,7 @@
 # Contributor: Karol Babioch <karol@babioch.de>
 
 pkgname=dnsdiag
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=2
 pkgdesc='DNS Measurement, Troubleshooting and Security Auditing Toolset'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('290fb855fb5f72fda3a2ebac0fc01044948ccc912b939d5db7131fd692867fec')
+sha256sums=('36fb9af8a863d13114c41b40f03df96ad0e48c8076cbb3d0d3364c5781c296e6')
 
 build() {
   cd "$pkgname-$pkgver"
