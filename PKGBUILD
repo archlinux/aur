@@ -1,6 +1,6 @@
 # Maintainer: Sato Ki <satoki at em dot advant dot click>
 pkgname=qfinderpro-bin
-pkgver=7.13.0.1014
+pkgver=7.13.2.1308
 pkgrel=1
 pkgdesc="Quickly find and easily access all of the QNAP NAS on the same LAN."
 url="https://www.qnap.com/en/utilities/essentials"
@@ -28,7 +28,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  '47bab0e8a85aee8f00cd73c943b1a24e8fd221adf511a78223859579a5e15365'
+  '948234653b427d133fb46ad23d8447bb44647853321946e80db2a5b72a93c8b4'
   'bd3ceb78a908b42ca6d7a6d520216a4fb265edc59d7cde517b66095aeb50869b'
 )
 
