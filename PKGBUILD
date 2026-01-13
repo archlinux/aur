@@ -3,13 +3,14 @@
 _name=joystickwake
 pkgname="${_name}-git"
 pkgver=v0.5.1.r0.gc410127
-pkgrel=1
+pkgrel=2
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
 url='https://codeberg.org/forestix/joystickwake'
 makedepends=('python-setuptools' 'python-docutils')
 depends=('python' 'python-pyudev')
-conflicts=('joystickwake-git')
+conflicts=('joystickwake')
+provides=('joystickwake')
 license=('MIT')
 source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
