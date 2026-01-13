@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.5'
+_upstreamver='1.5.3'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='ytfetcher'
@@ -17,7 +17,7 @@ depends=('yt-dlp' 'python' 'python-youtube-transcript-api' 'python-fake-useragen
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('fba32e4b0ee7594c294465a1d6e1f293903cea2b3be67c2ad62e4010b35295ea')
+sha256sums=('e00e67e6c4259c79dda538014f983c33efa84aee9cb8b8fe10cd442d695743fb')
 
 
 build() {
