@@ -1,6 +1,6 @@
 pkgbase = picgo-electron
 	pkgdesc = A simple & beautiful tool for pictures uploading built by electron-vue.(Use system-wide electron)
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/Molunerfinn/PicGo
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = picgo-electron
 	depends = electron38
 	conflicts = picgo
 	conflicts = picgo-electron
-	source = picgo-electron-2.4.2.tar.gz::https://github.com/Molunerfinn/PicGo/archive/refs/tags/v2.4.2.tar.gz
+	source = picgo-electron-2.4.3.tar.gz::https://github.com/Molunerfinn/PicGo/archive/refs/tags/v2.4.3.tar.gz
 	source = picgo-electron.sh
-	sha256sums = 0310632758841113b9c0f091df78247d27e7e8a34fbdedcc35cc0ca2371c7f95
+	sha256sums = e54d304d29680d006b7e0e6cd1984e920839a141b4a86e1fc071e8130ce57bf2
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = picgo-electron

@@ -4,7 +4,7 @@
 # Contributor: Bruce Zhang
 pkgname=picgo-electron
 _pkgname=PicGo
-pkgver=2.4.2
+pkgver=2.4.3
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('0310632758841113b9c0f091df78247d27e7e8a34fbdedcc35cc0ca2371c7f95'
+sha256sums=('e54d304d29680d006b7e0e6cd1984e920839a141b4a86e1fc071e8130ce57bf2'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
