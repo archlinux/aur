@@ -3,7 +3,7 @@
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -19,6 +19,12 @@ makedepends=(python-{build,installer,wheel}
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('8f36ba550dcf64040f92eda1ca8d0a78ee7dafae10f53a6a2c22347485ff5115')
+
+prepare() {
+	cd "$_archive"
+	# bad clamping
+	sed -i -e '/setuptools_scm/d' setup.py
+}
 
 build() {
 	cd "$_archive"

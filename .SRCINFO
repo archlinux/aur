@@ -1,7 +1,7 @@
 pkgbase = python-glyphsets
 	pkgdesc = an API with data about glyph sets for many different scripts and languages
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googlefonts/glyphsets
 	arch = any
 	license = Apache-2.0
