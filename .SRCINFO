@@ -1,6 +1,6 @@
 pkgbase = rumdl
 	pkgdesc = Markdown Linter and Formatter written in Rust
-	pkgver = 0.0.215
+	pkgver = 0.0.216
 	pkgrel = 1
 	url = https://github.com/rvben/rumdl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rumdl
 	depends = gcc-libs
 	conflicts = rumdl-bin
 	options = !lto
-	source = rumdl-0.0.215.tar.gz::https://github.com/rvben/rumdl/archive/refs/tags/v0.0.215.tar.gz
-	sha256sums = c81258159635deebf946cafa0e8aedb9263b838a69040121e082c7c5e1fa9b1a
+	source = rumdl-0.0.216.tar.gz::https://github.com/rvben/rumdl/archive/refs/tags/v0.0.216.tar.gz
+	sha256sums = fd84c8a6c9cbb9e1899e0d2ba6fe543f8ddb12915b5774906fba99c8b370d231
 
 pkgname = rumdl
