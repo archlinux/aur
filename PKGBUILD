@@ -1,6 +1,6 @@
 pkgname=arch-os-manager
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
@@ -17,7 +17,7 @@ optdepends=(
 	'downgrade: Add support for donwgrade system packages'
 )
 source=("https://github.com/murkl/arch-os-manager/releases/download/$pkgver/arch-os" "https://raw.githubusercontent.com/murkl/arch-os-manager/refs/heads/main/docs/logo.svg" "arch-os.desktop")
-sha256sums=('20b3c07c5053678683ca99b42f927896920a770a836e361506394904cf8af529' 'SKIP' 'SKIP')
+sha256sums=('caa400c7f2af8be662334299a0397989e96310266551a16a069ccf4209b1b264' 'SKIP' 'SKIP')
 
 package() {
 	install -Dm755 "$srcdir/arch-os" "$pkgdir/usr/bin/arch-os"
