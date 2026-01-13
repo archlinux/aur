@@ -2,7 +2,7 @@
 
 pkgname=latex-flatten
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Make the file structure of your LaTeX project boring and flat'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
