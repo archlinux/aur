@@ -1,7 +1,7 @@
 pkgbase = python-django-braces
 	pkgdesc = Mixins to add easy functionality to Django class-based views, forms, and models
 	pkgver = 1.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brack3t/django-braces
 	arch = any
 	license = BSD-3-Clause
