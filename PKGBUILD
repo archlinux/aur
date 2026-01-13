@@ -17,7 +17,7 @@ source=("navcoin.desktop"
 	"navcoin.png::https://raw.githubusercontent.com/navcoin/navcoin-core/master/share/pixmaps/navcoin128.png")
 
 # Use 'updpkgsums' to generate these automatically
-sha256sums=('eb48ac60ac2e116cc9f6f9bc3059b89cf90b29ca815bba3ce3af75330bd39372'
+sha256sums=('92fe8424797b28ab1983d0ec3513a8220581e24f0804a1a6afe048e0de2afad0'
             '648b4fa86e7d435814e844a57bf2b29b61a994d7bb4e36cde207e29520f7d9d2'
             '6950b9922e570188f5a84ce38c33cfa04f14212f3bc88bc40d49eca2e37a88cc')
 sha256sums_x86_64=('ba4dffd7bd374eed5bdcc19bb4d25fac09d62ac65d8b56ffc53d30cb1264f21d')
