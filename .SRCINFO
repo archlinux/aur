@@ -1,6 +1,6 @@
 pkgbase = python-dony
 	pkgdesc = A lightweight Python command runner
-	pkgver = 0.4.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/dony/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-dony
 	depends = python
 	depends = python-prompt_toolkit
 	depends = python-questionary
-	source = https://files.pythonhosted.org/packages/source/d/dony/dony-0.4.4.tar.gz
-	sha256sums = a2c6451c3e653d464ae76b67bc836e4a11f5288c5a5959eec923decb362ccbb2
+	source = https://files.pythonhosted.org/packages/source/d/dony/dony-0.6.0.tar.gz
+	sha256sums = 410f759a12693f7b1db43b3818ee2d1bc33c6c4e66b07ef2988bb9a994260347
 
 pkgname = python-dony
