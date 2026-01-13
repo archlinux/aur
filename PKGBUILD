@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <jasmin@example.com>
 pkgname=kimaki
-pkgver=0.4.26
+pkgver=0.4.31
 pkgrel=1
 pkgdesc="Discord bot - Iron Man's Jarvis for coding agents with OpenCode integration"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('44fc7e674954c36aebf1a8a3073a4dbcbcde336379826640289eecdc9e9c4054')
+sha256sums=('e8b047ef9aa8eef28e9c31168ecda5e39b98a92bb34ea1400208a5bab8661a7f')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
