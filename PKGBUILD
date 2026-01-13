@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.0.2_beta
-pkgrel=3
+pkgrel=4
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
@@ -33,7 +33,7 @@ package() {
     install -Dm644 installOnLinuxUser/vigaphone256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
 
     # Icône package manager
-    install -Dm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
+    install -Dm644 installOnLinuxUser/vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/vigaphone.svg"
 
     # MIME type
     install -Dm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
