@@ -1,10 +1,10 @@
 # Maintainer: Joe Pizzimenti <joe.pizzimenti2@gmail.com>
 
 pkgname=openmodelica-bin
-_omver=1.26.0
+_omver=1.26.1
 _debver=1
 pkgver=${_omver}
-pkgrel=2
+pkgrel=1
 pkgdesc="A complete Modelica modeling and simulation environment (from Debian binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -12,7 +12,7 @@ license=('OSMC-PL')
 provides=('openmodelica' 'openmodelica-omc')
 conflicts=('openmodelica' 'openmodelica-omc' 'openmodelica-git')
 
-depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu76' 'lapack' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
+depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'icu76' 'lapack' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
 
 optdepends=(
     'java-runtime: For Java CORBA interface'
@@ -25,7 +25,7 @@ optdepends=(
     'texlive-latex: For LaTeX documentation generation in OMNotebook'
 )
 
-_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-trixie"
+_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib"
 
 source=(
     "${_baseurl}/drcontrol_${_omver}-${_debver}_all.deb"
@@ -48,24 +48,24 @@ source=(
     "${_baseurl}/openmodelica_${_omver}-${_debver}_amd64.deb"
 )
 
-sha256sums=('d7e3b48965cca96e7fa3b3b845f214fe4aa2fd5113b7a8f306dc2f83e80c6527'
-            '3a7a5c8e1d5c1c72e589bc2a7c01212e734120622cfeff38b728e9d89b9f3c6e'
-            '0a9fb912f16a58d9647eecc9f4fc9eb01a39601f50ba2ed17498d1ffa52a27b5'
-            '4c037c57dca753d3fcb14a0278027d281f93ddce5cefec2ead63f1d32e73a2b0'
-            'bb87b3d5778d6d7b1e34c6ef24c8d3742398bb3d6606cd789fef37dad9057f33'
-            '93e39428e31767667a577f866cb1f2a8165b78f41d3e5dc7ea1b3719446f25eb'
-            'ce7cd9045dd1b72c1c6513299f3f80254591ad8e625c6b5e47a873aeb706498b'
-            'e043552b92fe4c0e7c0df6af8d796b5a51348d5466eab0109095fcc690eb73a3'
-            '302d16a3eee13a23d57ef8e275650eb1f0a1ec072cc512600d973b1278bb3c1b'
-            '82ae138917746eaf9f97901cd4ab072b668a16d180b8b7823786ec90c4da3d99'
-            'f6afa47a366286873c8a0e1b5398197a2764a676434b38dfe979dc1e68a655e3'
-            'a1dd9007a3f5fb6060be02213690262a94979f7206ee9c0d4cf01b941cfcf46a'
-            '3a84435ee759625be440c1211d8cbd41580746a7f354d9c95795263be2a629bc'
-            '62cd0404d940fb2b5f8f9adde00be478d2c11e711979f2eb5fdd8aa7cd1336db'
-            '747dec95ee25ec6ceec30eb12cd655e096d880e1cfad685ddb20fb9409b7c313'
-            'b4c4c0a8e5a80c20742f60a8b60399218b71d1863bbd699f3f756ef97d0780c1'
-            '88af437e8ab1ce723421f19f3ba613a13a8dc4fc999373f48486f720d97ed1b4'
-            'd85293398a929b3e133440aa88eed95ea45b1e332659a3a1ac1f06e52793fcd0')
+sha256sums=('2e710188a4e9fdc8be08194ff3b4baf41a2176f790b814918c16d1769d67cb13'
+            'd7219e1c3aee92a5f6bf5cd8aa843b2d3484e6ff02c36907c9b6754bb8a7b637'
+            '831e0e8e47eaebbbb91b5c4f431b8a5427783609d26d43ac4c3941712eafa17a'
+            'eef97f21a7f2e6163f38cee0ee3321165773b4a5d795d223299e25e7ab055027'
+            '3c7eb39e6d59bd27695224bf6f0d98d9557c9cf1c66e169ed90054670dd1f4a0'
+            '65bda764e01a7f5b675a5e1167f93411a1194237ef68031d72aad2aa3c2d944e'
+            '9096c2df7ef2d0343976d21541822e7d019863ffc55225f926a19b4496637b7f'
+            '0394c9bd13d211dfb6131f6a49ab90d265e6297138fdf1ff56a64026c50a548d'
+            '7978adf3e965488bcf158d62cfd26f03dde5eb2e12123004b3237baba6a67d8a'
+            'c1a4eddc642e2176bdbd1708db61e37d351abd46343778bd5a7093e36af7df35'
+            '3d48e0c6e1478fa9ce5a5c8974e0503c4c65ac2a87608bc4004529ff92d3f408'
+            '8a1a8ed38f4b385014beadf3d0c2ec228ee32a4fb2465843662745bff6762abf'
+            '916cb86a58d9cdd8bbb71bf9b5d00b8e9f4b11d5b18a37b239a60c15fccce795'
+            '4ec96460dc0b2967e73e9478c74f190edda3928166c534f8185664e646bcf717'
+            'a8ed9598071d14bc691c25b9a9c8d9c19f0daaa551534da7f60841fe0b687dc3'
+            '8e61f4c81e2761bb7349f68fbfbd3a3748b788e1f90e2521d682f8a91278d787'
+            'ca8fbef396ce74d691685a0641f92b0fe3d7be4575613060bd15ccc3b0deacc4'
+            'deacef8c6de921333580f99f7e87a9df648dda64bf7ffbe07be8ad6991e3219a')
 
 package() {
     for deb in "${source[@]}"; do
