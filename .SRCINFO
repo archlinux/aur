@@ -1,7 +1,7 @@
 pkgbase = paru-static
 	pkgdesc = Feature packed AUR helper
 	pkgver = 2.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Morganamilo/paru
 	arch = i686
 	arch = pentium4
@@ -40,6 +40,7 @@ pkgbase = paru-static
 	source = e2fsprogs-1.47.3.tar.gz::https://github.com/tytso/e2fsprogs/archive/refs/tags/v1.47.3.tar.gz
 	source = nghttp3-1.13.1.tar.gz::https://github.com/ngtcp2/nghttp3/releases/download/v1.13.1/nghttp3-1.13.1.tar.gz
 	source = libpsl-0.21.5.tar.gz::https://github.com/rockdaboot/libpsl/archive/refs/tags/0.21.5.tar.gz
+	source = https://github.com/Morganamilo/paru/pull/1498.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e8e74cdeefe5fb78b3ae6e90cd542babf788fa9480029cfcee6fd9ced42b7910
@@ -55,5 +56,6 @@ pkgbase = paru-static
 	sha256sums = 9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53
 	sha256sums = 07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d
 	sha256sums = d6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32
+	sha256sums = a160cd7dea1c57909ae455e6a820f17f0ad58a654ef3d6396d779e53302ce52d
 
 pkgname = paru-static
