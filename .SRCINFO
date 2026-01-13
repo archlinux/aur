@@ -1,6 +1,6 @@
 pkgbase = gozen
 	pkgdesc = A minimalistic video editor
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = gozen
 	conflicts = gozen-git
 	conflicts = gozen-bin
 	options = !debug
-	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v0.4.1-alpha
+	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v0.5.0-alpha
 	source = godot-editor-4.5-stable.zip::https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
 	source = godot-templates-4.5-stable.tpz::https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_export_templates.tpz
-	sha256sums = d8d0b4c4e08fb41b16afc928da218e1726ac887801e5134a95098a3ae03ddb44
+	sha256sums = 6917a7a621001afc1e555b044ae54404d4a38f038a1bc3618be87e2b7509f433
 	sha256sums = c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba
 	sha256sums = 375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53
 

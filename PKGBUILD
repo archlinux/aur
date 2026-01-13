@@ -4,7 +4,7 @@ _gitname="GoZen"
 _godot_version="4.5-stable"
 
 pkgname=gozen
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
-sha256sums=('d8d0b4c4e08fb41b16afc928da218e1726ac887801e5134a95098a3ae03ddb44'
+sha256sums=('6917a7a621001afc1e555b044ae54404d4a38f038a1bc3618be87e2b7509f433'
             'c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba'
             '375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53')
 
@@ -73,7 +73,7 @@ build() {
 	
 	# Compile GDE GoZen
 	msg "Compiling GDExtension GoZen..."
-	cd libs
+	cd core
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_debug use_system=yes
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_release use_system=yes
 	cd ..
