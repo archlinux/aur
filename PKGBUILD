@@ -1,14 +1,15 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=alejandra
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Uncompromising Nix Code Formatter"
 url="https://github.com/kamadorueda/alejandra"
 license=('Unlicense')
 makedepends=('rust' 'cargo')
 depends=()
+options=(!lto)
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://github.com/kamadorueda/alejandra/archive/refs/tags/${pkgver}.tar.gz")
+source=("alejandra-${pkgver}.tar.gz::https://github.com/kamadorueda/alejandra/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('f3f9989c3fb6a56e2050bf5329692fae32a2b54be7c0652aa394afe4660ebb74')
 
 prepare() {

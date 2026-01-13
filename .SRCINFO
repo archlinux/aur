@@ -1,7 +1,7 @@
 pkgbase = alejandra
 	pkgdesc = The Uncompromising Nix Code Formatter
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kamadorueda/alejandra
 	arch = x86_64
 	arch = armv6h
@@ -10,7 +10,8 @@ pkgbase = alejandra
 	license = Unlicense
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/kamadorueda/alejandra/archive/refs/tags/4.0.0.tar.gz
+	options = !lto
+	source = alejandra-4.0.0.tar.gz::https://github.com/kamadorueda/alejandra/archive/refs/tags/4.0.0.tar.gz
 	sha256sums = f3f9989c3fb6a56e2050bf5329692fae32a2b54be7c0652aa394afe4660ebb74
 
 pkgname = alejandra
