@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/shaankhosla/repeater/releases/download/v0.0.26/repeater-x86_64-unknown-linux-gnu.tar.xz
 _pkgauthor=shaankhosla
 _pkgname=repeater
 pkgname=${_pkgname}-bin
