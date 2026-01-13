@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=blindpaste
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="a TUI blackboard for quick note taking"
 arch=("x86_64")
@@ -23,12 +23,11 @@ sha256sums=(
 build()
 {
   cd "$pkgname"
-  gcc $CFLAGS -o "$pkgname" blindpaste.c blindparse.c
+  make
 }
 
 package()
 {
   cd "$pkgname"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="$pkgdir" install
 }

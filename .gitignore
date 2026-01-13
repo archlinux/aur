@@ -1,4 +1,5 @@
 *.bpo
+
 blindpaste/
 *.pkg.tar.zst
 pkg/

@@ -1,6 +1,6 @@
 pkgbase = blindpaste
 	pkgdesc = a TUI blackboard for quick note taking
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://projectgrid.net/portfolio/blindpaste
 	install = advice.install
