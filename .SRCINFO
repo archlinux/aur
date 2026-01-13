@@ -1,0 +1,14 @@
+pkgbase = ytd
+	pkgdesc = Terminal YouTube downloader with TUI (yt-dlp wrapper)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/tharidul/ytd
+	arch = any
+	license = MIT
+	depends = yt-dlp
+	depends = ffmpeg
+	optdepends = gum: interactive TUI
+	source = https://raw.githubusercontent.com/tharidul/ytd/v0.2.1/ytd
+	sha256sums = SKIP
+
+pkgname = ytd
