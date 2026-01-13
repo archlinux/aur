@@ -8,6 +8,7 @@ pkgbase = dotctl
 	makedepends = python-pipx
 	makedepends = patchelf
 	depends = python
+	options = !strip
 	source = dotctl-0.1.0.tar.gz::https://github.com/xZepyx/dotctl/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 

@@ -3,6 +3,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="dotctl - simple dotfiles control utility"
 arch=("x86_64")
+options=(!strip)
 url="https://github.com/xZepyx/dotctl"
 license=("MIT")
 depends=("python")
@@ -19,13 +20,11 @@ build() {
 
     nuitka \
         --onefile \
-        --standalone \
         --assume-yes-for-downloads \
         dotctl.py
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/src"
-
-    install -Dm755 dotctl.bin "$pkgdir/usr/bin/dotctl"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/src/dotctl.bin" \
+        "$pkgdir/usr/bin/dotctl"
 }
