@@ -1,7 +1,7 @@
 # Maintainer: Bram Oosterlynck <bram.oosterlynck@gmail.com>
 pkgname=python-shellrecharge
 gitname=python-shellrecharge
-pkgver=0.1.22
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Python 3 package to retrieve public and private EV charger data from Shell Recharge "
 arch=('any')
