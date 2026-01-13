@@ -2,7 +2,7 @@
 # Maintainer: sivepanda
 
 pkgname='teabag-bin'
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='TUI AppImage installer tool'
 url='https://github.com/sivepanda/teabag'
@@ -12,10 +12,10 @@ provides=('teabag')
 conflicts=('teabag')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sivepanda/teabag/releases/download/v${pkgver}/teabag_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('db545e9b6a36c29147f1d8f272027870932951d160d545414106e391cb460db9')
+sha256sums_aarch64=('03ed0221ddaf49a685ab080763e359c9e86db97e8d9e79f766c17fa2e892169f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sivepanda/teabag/releases/download/v${pkgver}/teabag_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c1284cac957d9af35ece3917cc2c916215a20fe5139488c71a77a95a027cdd9c')
+sha256sums_x86_64=('9bd9a4ccdc3f8e435558e0d01f447e9b6abe26984145b48f47ce61791513a687')
 
 package() {
   install -Dm755 "./teabag" "${pkgdir}/usr/bin/teabag"
