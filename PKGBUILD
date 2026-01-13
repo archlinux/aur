@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _name=azure-functions-core-tools
 pkgname=$_name-bin
-pkgver=4.5.0 # renovate: datasource=github-tags depName=Azure/azure-functions-core-tools
+pkgver=4.6.0 # renovate: datasource=github-tags depName=Azure/azure-functions-core-tools
 pkgrel=1
 pkgdesc="Command line tools for Azure Functions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=($_name)
 optdepends=('dotnet-runtime: to install extensions') # https://github.com/Azure/azure-functions-core-tools/issues/367
 options=('staticlibs')
 source=("https://github.com/Azure/${_name}/releases/download/${pkgver}/Azure.Functions.Cli.linux-x64.${pkgver}.zip")
-b2sums=('1d8259c4673dd5f2ef2a42553f7843138bf4a1b7a128a4a87dacb657cfe1b4b6a1a170bcc65e5c6ed16cba4957bc55e20e8c185fb7bcc0cdc08c2afdff0c72a4')
+b2sums=('2015b34dce22c1cee4d29f641d1a546e8258c207763ab14fd5f14c52085724e8fdfe447aeae63a49d8173ea98b6f6f715631bbd14de8f3da7acb7a6835015a81')
 
 package() {
 	install -dm 755 "${pkgdir}/usr/lib/${_name}/"
