@@ -3,7 +3,7 @@
 _pipname=pancritic
 pkgname=python-$_pipname
 pkgver=0.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc='CriticMarkdup parser with optional pandoc backend'
 arch=(any)
 url="https://github.com/ickc/$_pipname"
