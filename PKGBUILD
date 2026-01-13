@@ -11,6 +11,7 @@ arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
 license=("GPL-3.0-or-later")
 depends=("glibc" "gcc-libs" "omniorb" "mariadb-libs" "tango-cpp" "tango-database")
+makedepends=("cmake")
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${_pkgver}/downloads/${_pkgname}-with-submodules-${_pkgver}.tar.gz"
   tango-access.service
