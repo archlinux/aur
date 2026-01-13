@@ -1,7 +1,7 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=prismlauncher-zlib-compat-git
 _pkgname=PrismLauncher
-pkgver=8.0.r2827.gbc68192 # 这里的默认值会被 pkgver() 自动覆盖
+pkgver=10.0.0.pre1.r154.gc2fc0a3 # 这里的默认值会被 pkgver() 自动覆盖
 pkgrel=1
 pkgdesc="Prism Launcher (Git) bundled with vanilla zlib. Fixes 'invalid outputs' on CachyOS/zlib-ng systems."
 arch=('x86_64')
@@ -56,10 +56,25 @@ build() {
     msg2 "Building vanilla zlib for compatibility..."
     cd "$srcdir/zlib"
     git clean -dfx
-    # -fPIC is required for shared libraries
-    CFLAGS="$CFLAGS -fPIC" ./configure --prefix="$srcdir/zlib_build"
-    make
-    make install
+    # Build zlib in subshell to avoid polluting environment
+    (
+        export CFLAGS="-O2 -fPIC"
+        export LDFLAGS=""
+        ./configure --prefix="$srcdir/zlib_build"
+        # Fix: Remove NO_STRERROR and NO_vsnprintf flags that break errno.h inclusion
+        sed -i 's/-DNO_STRERROR//g; s/-DNO_vsnprintf//g' Makefile
+        # Build only static and shared libs, skip test programs
+        make libz.a libz.so libz.so.1 libz.so.1.3.1.1-motley 2>/dev/null || make libz.a
+        # Create shared lib manually if needed
+        if [ ! -f libz.so ]; then
+            gcc -shared -o libz.so.1 -Wl,-soname,libz.so.1 *.o
+            ln -sf libz.so.1 libz.so
+        fi
+        mkdir -p "$srcdir/zlib_build/lib"
+        cp -a libz.* "$srcdir/zlib_build/lib/" 2>/dev/null || true
+        mkdir -p "$srcdir/zlib_build/include"
+        cp zlib.h zconf.h "$srcdir/zlib_build/include/"
+    )
 
     # --- 2. Build Prism Launcher ---
     msg2 "Building Prism Launcher..."
@@ -69,9 +84,24 @@ build() {
     export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
     
+    # Let CMake drive IPO/LTO to avoid link failures from partial -flto flags.
+    # We only enable LTO if the user/toolchain requests it via -flto.
+    local _enable_lto=OFF
+    if [[ "${CFLAGS} ${CXXFLAGS} ${LDFLAGS} ${LTOFLAGS}" == *-flto* ]]; then
+        _enable_lto=ON
+        export CFLAGS="${CFLAGS//-flto=auto/}"
+        export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+        export LDFLAGS="${LDFLAGS//-flto=auto/}"
+        export AR=gcc-ar
+        export RANLIB=gcc-ranlib
+        export NM=gcc-nm
+    fi
+    
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DENABLE_LTO="${_enable_lto}" \
+        -DBUILD_TESTING=OFF \
         -DLauncher_BUILD_PLATFORM="Archlinux/CachyOS" \
         -DLauncher_QT_VERSION_MAJOR="6" \
         -DJAVA_HOME="$JAVA_HOME" \
