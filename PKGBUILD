@@ -2,9 +2,9 @@
 _pkgname=eden
 pkgname=$_pkgname-mp4fixes
 epoch=1
-pkgver=0.1.0.rc1.r19.g91596c6
+pkgver=0.1.0.rc1.r26.gecd01e1
 pkgrel=1
-pkgdesc="Eden build of a PR that makes MP4 more playable."
+pkgdesc="Eden build of a PR that partially fixes shadow boxes in MP4."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
@@ -19,43 +19,40 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
- }
+}
 build() {
-	cd "$srcdir"/eden
-	git fetch origin pull/3246/head:pr-3246
-	git checkout pr-3246
-	cd ..
-	cmake -B build -S $_pkgname -GNinja \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=None \
-		-DUSE_DISCORD_PRESENCE=ON \
-		-DYUZU_ENABLE_LTO=OFF \
-		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_BUNDLED_SDL2=OFF \
-		-DYUZU_USE_EXTERNAL_SDL2=OFF \
-		-DYUZU_USE_BUNDLED_QT=OFF \
-		-DENABLE_QT_TRANSLATION=ON \
-		-DYUZU_USE_QT_MULTIMEDIA=ON \
-		-DYUZU_USE_QT_WEB_ENGINE=ON \
-		-DTITLE_BAR_FORMAT_RUNNING="eden | mp4fixes {}" \
-		-DTITLE_BAR_FORMAT_IDLE="eden mp4fixes {}" \
-		-DYUZU_TESTS=OFF \
-		-DDYNARMIC_TESTS=OFF \
-		-DBUILD_TESTING=OFF \
-		-DYUZU_USE_FASTER_LD=OFF \
-		-Wno-dev
-	cmake --build build
+  cd "$srcdir"/eden
+  git fetch origin pull/3246/head:pr-3300
+  git checkout pr-3300
+  cd ..
+  cmake -B build -S $_pkgname -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DUSE_DISCORD_PRESENCE=ON \
+    -DYUZU_ENABLE_LTO=OFF \
+    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+    -DYUZU_USE_BUNDLED_SDL2=OFF \
+    -DYUZU_USE_EXTERNAL_SDL2=OFF \
+    -DYUZU_USE_BUNDLED_QT=OFF \
+    -DENABLE_QT_TRANSLATION=ON \
+    -DYUZU_USE_QT_MULTIMEDIA=ON \
+    -DYUZU_USE_QT_WEB_ENGINE=ON \
+    -DTITLE_BAR_FORMAT_RUNNING="eden | mp4fixes {}" \
+    -DTITLE_BAR_FORMAT_IDLE="eden mp4fixes {}" \
+    -DYUZU_TESTS=OFF \
+    -DDYNARMIC_TESTS=OFF \
+    -DBUILD_TESTING=OFF \
+    -DYUZU_USE_FASTER_LD=OFF \
+    -Wno-dev
+  cmake --build build
 }
 package() {
-	cd "$srcdir"
-	DESTDIR="$pkgdir/" cmake --install build
-	install -Dm644 "$srcdir/$_pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
-	sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
-	cd "$srcdir/$_pkgname/LICENSES"
-	for file in *.txt;
-	do
-		install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
-	done
+  cd "$srcdir"
+  DESTDIR="$pkgdir/" cmake --install build
+  install -Dm644 "$srcdir/$_pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
+  sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
+  cd "$srcdir/$_pkgname/LICENSES"
+  for file in *.txt; do
+    install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
 }
-
-
