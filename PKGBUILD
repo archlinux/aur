@@ -2,7 +2,7 @@
 pkgver=1.3
 pkgrel=2
 pkgname=godot-uid-fixer-git
-pkgdesc='A program designed to fix the UID error in godot engine. (only does current directory)'
+pkgdesc='A program designed to fix the UID error in godot engine.'
 arch=('x86_64')
 makedepends=('git' 'gcc')
 source=("git+https://github.com/marrcaburgh/godot-uid-fixer.git")
