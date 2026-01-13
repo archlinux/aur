@@ -32,6 +32,9 @@ package() {
     # Icône
     install -Dm644 installOnLinuxUser/vigaphone256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
 
+    # Icône package manager
+    install -Dm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
+
     # MIME type
     install -Dm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
 
