@@ -1,7 +1,7 @@
 pkgbase = git-withme
 	pkgdesc = Encrypted, peer-to-peer Git for two+ people
 	pkgver = 25.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/git-withme
 	arch = any
 	license = MIT

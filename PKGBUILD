@@ -2,7 +2,7 @@
 
 pkgname=git-withme
 pkgver=25.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Encrypted, peer-to-peer Git for two+ people'
 arch=(any)
 url="https://pypi.org/project/$pkgname"
