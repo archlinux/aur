@@ -18,7 +18,7 @@ TimeoutStopSec=5
 
 EnvironmentFile=-/etc/default/%p
 User=onionbalance
-Group=onionbalance
+Group=root
 DynamicUser=yes
 RuntimeDirectory=onionbalance
 LogsDirectory=onionbalance

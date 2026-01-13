@@ -1,6 +1,6 @@
 pkgname=onionbalance
 pkgver=0.2.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Onionbalance'
 arch=('any')
 license=('GPL-3.0')
@@ -9,7 +9,7 @@ url='https://github.com/torproject/onionbalance'
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	'onionbalance.service')
 sha256sums=('797a30fa8900ec96d4e94e1f486717abc1a8cfd3f062084443e5c954e980cd2f'
-            'e255bdbd277617e2b6a3681256a28691ac8cae5b358be72a41ba20f8cff39401')
+            '49fd1850c3c54c213580f15ec602f818394d8fc736c5120972b8da58f294050f')
 backup=('etc/onionbalance')
 
 build() {
