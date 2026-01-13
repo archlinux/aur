@@ -1,7 +1,7 @@
 # Maintainer: William Varmus <0@willvar.tw>
 
 pkgname=aurpick
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Easily install any version of AUR packages — current, historical, or newer."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git' 'fzf' 'base-devel')
 optdepends=('downgrade: for official repository packages')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/willvar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('778cacc458a35cb5a0c790c53e8b99c2ad2e557f546362c366b5d5eee48a8000')
+sha256sums=('3d214599d5465cfb8d703a7880907c2c9dcd0906812098b6bfb2fc5b175e146e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
