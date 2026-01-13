@@ -1,0 +1,21 @@
+pkgbase = ctags-lsp
+	pkgdesc = LSP implementation using universal-ctags as backend
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/netmute/ctags-lsp
+	arch = x86_64
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	optdepends = gcc: gcc backend support
+	optdepends = clang: clang backend support
+	optdepends = zig: zig backend support
+	provides = ctags-lsp
+	conflicts = ctags
+	source = ctags-lsp-0.10.2.tar.gz::https://github.com/netmute/ctags-lsp/archive/refs/tags/v0.10.2.tar.gz
+	sha256sums = 8ec3fdcaca155811ad9b532c6e7b5366d2f0e52d4d673c97652c9f8af8a156b8
+
+pkgname = ctags-lsp
