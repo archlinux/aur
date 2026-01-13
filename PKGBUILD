@@ -13,5 +13,6 @@ source_x86_64=("${url}/releases/download/v${pkgver}/discord-dynamic-status-hyprl
 sha256sums_x86_64=('eb95a01b560523ae6b003e59d4d19d37a8188eda5624a534a9843058b5c23158')
 
 package() {
-  tar -xvf data.tar.gz -C "${pkgdir}"
+    install -Dm755 "discord-dynamic-status-hyprland" "$pkgdir/usr/bin/dynamic-drpc-hyprland"
 }
+
