@@ -1,5 +1,3 @@
-branch_local := main
-branch_remote := master
 remote := aur
 
 upstream := https://github.com/home-assistant/core.git
@@ -10,7 +8,7 @@ update_check = git ls-remote --tags --refs $(upstream) | grep -Po '.*refs/tags/\
 default: update_version .SRCINFO
 
 upload: commit
-	git push $(remote) $(branch_local):$(branch_remote)
+	git push $(remote)
 
 commit: VERSION = $(shell cat .version)
 commit: .SRCINFO
