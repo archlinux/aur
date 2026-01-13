@@ -1,6 +1,6 @@
 pkgbase = riftbar-bin
 	pkgdesc = Highly customizable GTK4 bar for Wayland written in Rust
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/BinaryHarbinger/riftbar
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = riftbar-bin
 	conflicts = riftbar
 	conflicts = riftbar-git
 	conflicts = riftbar-git-debug
-	source = riftbar::https://github.com/BinaryHarbinger/riftbar/releases/download/v0.1.1/riftbar-x86_64
-	source = LICENSE::https://raw.githubusercontent.com/BinaryHarbinger/riftbar/v0.1.1/LICENSE
-	source = README.md::https://raw.githubusercontent.com/BinaryHarbinger/riftbar/v0.1.1/README.md
-	sha256sums = 8a5933c0b6f88f04749d8b525f133d7f97a6e2f15e28350b47575ff66e8fbc49
+	source = riftbar::https://github.com/BinaryHarbinger/riftbar/releases/download/v0.1.2/riftbar-x86_64
+	source = LICENSE::https://raw.githubusercontent.com/BinaryHarbinger/riftbar/v0.1.2/LICENSE
+	source = README.md::https://raw.githubusercontent.com/BinaryHarbinger/riftbar/v0.1.2/README.md
+	sha256sums = 3a2c56c4296346cd5cf08271ccea405680afe13a5801dcbd842ab3ce3599e129
 	sha256sums = SKIP
 	sha256sums = SKIP
 
