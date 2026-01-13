@@ -1,0 +1,15 @@
+pkgbase = dynamic-drpc-hyprland-bin
+	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland windows
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrkirill046/discord-dynamic-status-hyprland
+	install = dynamic-drpc-hyprland-bin.install
+	arch = x86_64
+	license = MIT
+	depends = libc
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/mrkirill046/discord-dynamic-status-hyprland/releases/download/v1.0.0/discord-dynamic-status-hyprland
+	sha256sums_x86_64 = eb95a01b560523ae6b003e59d4d19d37a8188eda5624a534a9843058b5c23158
+
+pkgname = dynamic-drpc-hyprland-bin
