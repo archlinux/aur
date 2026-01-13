@@ -1,17 +1,17 @@
 pkgbase = ricochlime-bin
 	pkgdesc = A game where you attack the advancing slimes with your ricocheting projectiles.(Prebuilt version)
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://ricochlime.adil.hanney.org/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = gtk3
 	depends = gdk-pixbuf2
-	provides = ricochlime=1.12.2
+	provides = ricochlime=1.12.3
 	conflicts = ricochlime
 	source = ricochlime.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_x86_64 = ricochlime-1.12.2-x86_64.AppImage::https://github.com/adil192/ricochlime/releases/download/v1.12.2/Ricochlime-1.12.2-x86_64.AppImage
-	sha256sums_x86_64 = 238680985cba474eb5bc8d8f66d785056c95c23ab822932043e1665dbb76edd0
+	source_x86_64 = ricochlime-1.12.3-x86_64.AppImage::https://github.com/adil192/ricochlime/releases/download/v1.12.3/Ricochlime-1.12.3-x86_64.AppImage
+	sha256sums_x86_64 = bf793ce4079181d3c6b88430481b80154b88af7b96f5d4bf4a87e1a86adfceaa
 
 pkgname = ricochlime-bin
