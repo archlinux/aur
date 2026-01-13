@@ -4,7 +4,7 @@
 pkgname=python-funcy
 pkgver=2.0
 _commit=13fac0037c109a9e4649fc8ee343be17647f7407
-pkgrel=7
+pkgrel=8
 pkgdesc='A fancy and practical functional tools'
 arch=(any)
 license=(BSD-3-Clause)
