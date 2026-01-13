@@ -39,5 +39,5 @@ package() {
     "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 LICENSE \
-    "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
