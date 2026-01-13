@@ -1,8 +1,7 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
-#PKGEXT=.pkg.tar
 pkgname=elyprismlauncher-bin
-pkgver=10.0.1
+pkgver=10.0.2
 pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
@@ -18,21 +17,26 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/${pkgver}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst")
-noextract=("ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst")
+source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/${pkgver}/ElyPrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
+noextract=("ElyPrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
 sha256sums=('SKIP')
-
-#pkgver()
-#{
-	# due to upstream changing subtle details in versioning, this doesn't work anymore. FIXME
-	# printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) && printf "\n" 
-#}
 
 package()
 {
-	mkdir ${pkgdir}/usr
-	cd ${pkgdir}/usr
-	tar -xvf ${srcdir}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst --strip-components=1
+	install -d "${pkgdir}/usr"
+	tar -C "${pkgdir}/usr" -xvf ElyPrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz
+	
+	# We must now remove the bundled libraries and the portable flag.
+	rm -rf "${pkgdir}"/usr/manifest.txt
+	rm -rf "${pkgdir}"/usr/portable.txt
+	rm -rf "${pkgdir}"/usr/bin/xdg-open
+	rm -rf "${pkgdir}"/usr/lib
+	rm -rf "${pkgdir}"/usr/share/X11
+	rm -rf "${pkgdir}"/usr/share/glib-2.0
+	rm -rf "${pkgdir}"/usr/share/libthai
+	# NOTE: Qt6 is still statically linked unfortunately.
+	
 	mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
 		"${pkgdir}/usr/share/mime/packages/elyprismlauncher-modrinth-mrpack-mime.xml"
+	chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
