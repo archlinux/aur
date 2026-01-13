@@ -1,6 +1,6 @@
 pkgbase = fwci-bin
 	pkgdesc = CLI Tooling for FirmwareCI - binary distribution
-	pkgver = 0.14.9
+	pkgver = 0.14.10
 	pkgrel = 1
 	url = https://firmware-ci.com/
 	depends = git
@@ -8,9 +8,9 @@ pkgbase = fwci-bin
 	provides = fwci-cli
 	arch = aarch64
 	source_aarch64 = https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-arm64.tar.gz
-	sha256sums_aarch64 = 3ae0b9c77c0d025041cff3401c2dddf3846fbdaaec74d8d4069e4df72a8cf6c7
+	sha256sums_aarch64 = 2ace6b4d94d163d69bb253710942ae878f10254cb2a423ecf73bf26fc30a63d2
 	arch = x86_64
 	source_x86_64 = https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-amd64.tar.gz
-	sha256sums_x86_64 = 06fddbf511b70988aee9f70eeadcfbd4a905d5babf70204fc20eee980adef6c2
+	sha256sums_x86_64 = 50e11c82e579f089e77db4b9b30be86c1e8c0142ed80495a2b324a234c39f1af
 	
 pkgname = fwci-bin
