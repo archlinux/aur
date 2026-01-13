@@ -47,5 +47,5 @@ Icon=/opt/$pkgname/$pkgname.png
 Type=Application
 Categories=Game
 EOF
-    install -Dm0644 "$srcdir/$pkgname.png" "$pkgdir/opt/$pkgname/pkgname.png"
+    install -Dm0644 "$srcdir/$pkgname.png" "$pkgdir/opt/$pkgname/$pkgname.png"
 }
