@@ -1,7 +1,7 @@
 # Maintainer: gonsolo@gmail.com
 pkgname=yowasp-runtime
 pkgver=1.78
-pkgrel=1
+pkgrel=2
 pkgdesc="YOWASP runtime environment for executing WebAssembly modules"
 arch=('any')
 url="https://pypi.org/project/yowasp-runtime/"

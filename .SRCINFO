@@ -1,7 +1,7 @@
 pkgbase = yowasp-runtime
 	pkgdesc = YOWASP runtime environment for executing WebAssembly modules
 	pkgver = 1.78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/yowasp-runtime/
 	arch = any
 	license = MIT
