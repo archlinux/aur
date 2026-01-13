@@ -1,6 +1,6 @@
 pkgbase = guitar-tui-bin
 	pkgdesc = A terminal based git client with fast topological & chronological graph rendering
-	pkgver = 0.1.36
+	pkgver = 0.1.39
 	pkgrel = 1
 	url = https://github.com/asinglebit/guitar
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = guitar-tui-bin
 	depends = git
 	provides = guitar
 	conflicts = guitar
-	source = LICENSE-0.1.36::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.36/LICENSE
-	source = README-0.1.36.md::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.36/README.md
+	source = LICENSE-0.1.39::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.39/LICENSE
+	source = README-0.1.39.md::https://raw.githubusercontent.com/asinglebit/guitar/v0.1.39/README.md
 	sha256sums = 36874402d076b70d59c8a9db16bf8c9ca55a5b5b3cfc3906cd9fd390a679a608
-	sha256sums = 40a1a6d4cacf4fa83b928216244e1b0a869e034acababfb269c109b75e259d79
-	source_x86_64 = guitar-0.1.36::https://github.com/asinglebit/guitar/releases/download/v0.1.36/guitar-linux
-	sha256sums_x86_64 = 01dd3b0606d9623219f33a28aae801d7425345a19ea53fd63bfb6642c3d929b6
+	sha256sums = f37fd448332e5175a0045a65450a2779a3a557713b5fd036c79a28a1f0a3e502
+	source_x86_64 = guitar-0.1.39::https://github.com/asinglebit/guitar/releases/download/v0.1.39/guitar-linux
+	sha256sums_x86_64 = 9d6c84661a37166e59e37b164b0df72b615ed666f406a5d5371194696016fb83
 
 pkgname = guitar-tui-bin
