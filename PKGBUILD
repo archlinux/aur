@@ -3,7 +3,7 @@
 _pyname=django-braces
 pkgname=python-$_pyname
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mixins to add easy functionality to Django class-based views, forms, and models'
 arch=(any)
 url="https://github.com/brack3t/$_pyname"
