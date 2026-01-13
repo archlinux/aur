@@ -1,22 +1,21 @@
 pkgbase = panwriter-bin
 	pkgdesc = Markdown editor with pandoc integration and paginated preview.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://panwriter.com/
 	install = panwriter.install
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = fuse2
 	makedepends = asar
-	depends = electron34
-	provides = panwriter=0.8.9
+	depends = electron39
+	provides = panwriter=0.8.10
 	conflicts = panwriter
 	source = panwriter.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = panwriter-0.8.9-aarch64.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.9/PanWriter-0.8.9-arm64.AppImage
-	sha256sums_aarch64 = b99c67142aef17952f143fc4eda247a8a8f2b49799796484bb65eb287e528d49
-	source_x86_64 = panwriter-0.8.9-x86_64.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.9/PanWriter-0.8.9.AppImage
-	sha256sums_x86_64 = a2b4257c00ba75d139adf5152c712a15e3e88120d2a559330447c9aed0e6ce4c
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = panwriter-0.8.10-aarch64.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.10/PanWriter-0.8.10-arm64.AppImage
+	sha256sums_aarch64 = 60c23f7759ffaab210f2b51f3e81cd943cf29bf6deb1865cf9d74e2859bd2fbb
+	source_x86_64 = panwriter-0.8.10-x86_64.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.10/PanWriter-0.8.10.AppImage
+	sha256sums_x86_64 = 993a889f169423dfceca71c719d87486baeb070494bc55295c9fa8d5420ae941
 
 pkgname = panwriter-bin
