@@ -1,12 +1,12 @@
 pkgbase = lib32-nvidia-580xx-utils
-	pkgver = 580.119.02
+	pkgver = 580.126.09
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/580.119.02/NVIDIA-Linux-x86_64-580.119.02.run
-	sha512sums = b773deaa58823d3907488527507df6831959c1b8215ad34e1fdf7025d318d9ca7610d0b103252252c4e4097ec97d4224f99a3e9701327dc15eadc66e906af250
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/580.126.09/NVIDIA-Linux-x86_64-580.126.09.run
+	sha512sums = d5c41131304b29d55d0caf8cd84c95b454d81e68d7b23ca893504c63d84dd78726e2dbd7f076b7f12be518e641d110d131ac178336d61a00bcc81b7a1890799d
 
 pkgname = lib32-nvidia-580xx-utils
 	pkgdesc = NVIDIA drivers utilities (32-bit) (580xx)
@@ -17,7 +17,7 @@ pkgname = lib32-nvidia-580xx-utils
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
-	provides = lib32-nvidia-utils=580.119.02
+	provides = lib32-nvidia-utils=580.126.09
 	conflicts = lib32-nvidia-libgl
 	conflicts = lib32-nvidia-utils
 	replaces = lib32-nvidia-libgl
@@ -28,5 +28,5 @@ pkgname = lib32-opencl-nvidia-580xx
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-driver
-	provides = lib32-opencl-nvidia=580.119.02
+	provides = lib32-opencl-nvidia=580.126.09
 	conflicts = lib32-opencl-nvidia
