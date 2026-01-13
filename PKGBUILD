@@ -2,7 +2,7 @@
 pkgname=qbz-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Native Qobuz client for Linux with Hi-Fi audio support (pre-built binary)"
+pkgdesc="Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting"
 arch=('x86_64')
 url="https://github.com/vicrodh/qbz"
 license=('MIT')
@@ -26,7 +26,10 @@ package() {
     # Install desktop file
     install -Dm644 "qbz.desktop" "${pkgdir}/usr/share/applications/qbz.desktop"
 
-    # Install icons
-    install -Dm644 "icons/hicolor/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/qbz.png"
-    install -Dm644 "icons/hicolor/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qbz.png"
+    # Install icons (freedesktop hicolor structure)
+    install -Dm644 "icons/hicolor/32x32/apps/qbz.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/qbz.png"
+    install -Dm644 "icons/hicolor/48x48/apps/qbz.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/qbz.png"
+    install -Dm644 "icons/hicolor/64x64/apps/qbz.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/qbz.png"
+    install -Dm644 "icons/hicolor/128x128/apps/qbz.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qbz.png"
+    install -Dm644 "icons/hicolor/256x256/apps/qbz.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qbz.png"
 }

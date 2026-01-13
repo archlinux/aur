@@ -1,5 +1,5 @@
 pkgbase = qbz-bin
-	pkgdesc = Native Qobuz client for Linux with Hi-Fi audio support (pre-built binary)
+	pkgdesc = Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/vicrodh/qbz
