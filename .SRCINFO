@@ -1,12 +1,15 @@
 pkgbase = onionbalance
 	pkgdesc = Onionbalance
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/torproject/onionbalance
 	arch = any
 	license = GPL-3.0
 	depends = tor
 	depends = python-setuptools
+	depends = python-yaml
+	depends = python-cryptography
+	depends = python-stem
 	source = https://github.com/torproject/onionbalance/archive/refs/tags/0.2.4.tar.gz
 	sha256sums = 797a30fa8900ec96d4e94e1f486717abc1a8cfd3f062084443e5c954e980cd2f
 
