@@ -1,8 +1,8 @@
-pkgbase = tidalwave-git
+pkgbase = tonearm-git
 	pkgdesc = Unofficial native GTK4 / Adwaita music streaming client for TIDAL
 	pkgver = r335.c1ac176
 	pkgrel = 3
-	url = https://codeberg.org/dergs/TidalWave
+	url = https://codeberg.org/dergs/Tonearm
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -12,9 +12,9 @@ pkgbase = tidalwave-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
-	provides = tidalwave=r335.c1ac176
-	conflicts = tidalwave
-	source = tidalwave::git+https://codeberg.org/dergs/TidalWave.git
+	provides = tonearm=r335.c1ac176
+	conflicts = tonearm
+	source = tonearm::git+https://codeberg.org/dergs/Tonearm.git
 	sha256sums = SKIP
 
-pkgname = tidalwave-git
+pkgname = tonearm-git

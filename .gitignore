@@ -1,5 +1,5 @@
 .direnv/
 pkg
 src
-tidalwave
-tidalwave-*
+tonearm
+tonearm-*
