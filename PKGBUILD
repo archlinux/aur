@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi
 pkgname=doudou-bin
-pkgver=11.0.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12655232642/artifacts/raw/doudou-11.0.0-linux-x64.zip")
+source=("${pkgname}-${pkgver}.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-45/doudou-12.0.0-2026-01-13-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
