@@ -1,7 +1,7 @@
 pkgbase = python-eth-keyfile
 	pkgdesc = Tools for handling the encrypted keyfile format used to store private keys.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/eth-keyfile
 	arch = any
 	license = MIT

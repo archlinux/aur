@@ -3,7 +3,7 @@
 _name=eth-keyfile
 pkgname=python-${_name}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for handling the encrypted keyfile format used to store private keys."
 arch=(any)
 url="https://github.com/ethereum/${_name}"
@@ -18,10 +18,9 @@ sha512sums=('8e3d89ac5576113e189a01cd09975d7e3b0bcb4ab171eca34e2bd305633ced6f1aa
 
 prepare() {
   cd $_name
-  git config --global protocol.file.allow always
   git submodule init fixtures
   git config submodule.fixtures.url ../tests
-  git submodule update fixtures
+  git -c protocol.file.allow=always submodule update fixtures
 }
 
 build() {
