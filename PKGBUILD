@@ -7,19 +7,21 @@
 # Contributor: Vardyr <vardyr.al at insocada dot com>
 
 pkgname=woof
-pkgver=20220202
+pkgver=0.5
+_commit=91079007dc2f2ec72178739685392dfe734d450d
 pkgrel=1
 pkgdesc='ad-hoc single file webserver; Web Offer One File'
 arch=('any')
 url="http://www.home.unix-ag.org/simon/$pkgname.html"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python3')
-source=(https://github.com/simon-budig/woof/archive/refs/tags/${pkgname}-${pkgver}.tar.gz)
-b2sums=('2fff6fc05b5986787c09df4318ba0fbd20f3c33fd31fa5c054c31fd6131d37c08b9a9a5482a647d7b9b6d26565f85376bad11a638c3cc9c5c13321383c41d880')
+makedepends=('git')
+source=(git+https://codeberg.org/nomis/woof.git#commit=${_commit})
+b2sums=('ff77a9b3864bdcfb644329e9ee203e92ec32ff5e59c6bd5acafa0ba1dd3ba2169964df1b2f042989a883e0720cb8f7bfcee9d41d5be97eb3d3a00d596b475635')
 
 
 package() {
-    cd "$pkgname-$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
