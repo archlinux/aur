@@ -23,7 +23,10 @@ pkgbase = spritz-wine-bin
 	depends = libxrandr
 	depends = systemd-libs
 	depends = wayland
+	depends = base-devel
 	source = https://github.com/NelloKudo/spritz-wine-aur/releases/download/spritz-wine-tkg-11.0-1/spritz-wine-tkg-staging-wow64-11.0-1-x86_64.tar.xz
+	source = winestart.c
 	sha256sums = 3ba964d9738f1fce1468f77c8f2de50f5f6645e877185d45e52484f723608f90
+	sha256sums = ebe0fd2eb64c01c561fd9cba40f3488f2c8df3fbf60c819915491a7cad0bd237
 
 pkgname = spritz-wine-bin
