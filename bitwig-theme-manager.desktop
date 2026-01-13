@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bitwig Theme Manager
+Comment=Manage and edit Bitwig Studio themes
+Exec=bitwig-theme-manager
+Icon=bitwig-theme-manager
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;
+Keywords=bitwig;theme;music;daw;
