@@ -1,7 +1,7 @@
 # Maintainer: hexbyte16 <islamamara062@gmail.com>
 pkgname=pomodoro-tui
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional Pomodoro TUI with Discord and YouTube BGM support."
 arch=('x86_64')
 url="https://github.com/hexbyte16/rust-pomo-discord"
