@@ -1,7 +1,7 @@
 pkgbase = python-xgridfit
 	pkgdesc = an XML-based language for hinting TrueType fonts inspired my XSLT
 	pkgver = 3.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/psb1558/xgridfit-3
 	arch = any
 	license = Apache-2.0
