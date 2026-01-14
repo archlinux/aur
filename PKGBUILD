@@ -1,12 +1,12 @@
 # Maintainer: FT <worldoptimizer@gmail.com>
 pkgname=acp6x-omen-dkms
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched AMD Yellow Carp Audio Driver for HP OMEN 16 (Fixes Board ID 15E2 Rev 62 AMD Microphone Array)"
 arch=('x86_64')
 url="https://github.com/nevetscar/acp6x-omen-dkms"
 license=('GPL')
-depends=('dkms' 'linux-headers')
+depends=('dkms')
 conflicts=('acp6x-omen-dkms-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7afc8803bef4c532fdf47aca3195e980d132834ade085a30530e5d518e423817')
