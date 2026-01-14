@@ -12,7 +12,7 @@ pkgdesc='Interactive terminal UI for browsing and viewing files on rclone remote
 arch=('any')
 url="https://github.com/ConnerWill/${pkgname}"
 license=('GPL-3.0-or-later')
-depends=('bash' 'fzf' 'yay')
+depends=('bash' 'fzf' 'rclone')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
