@@ -2,7 +2,7 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.18.1.r36.gf825234a1
+pkgver=2.18.1.r57.g645fae05a
 pkgrel=1
 _electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
 depends=($_electron)
-makedepends=(git pnpm npm yq)
+makedepends=(git pnpm npm)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 source=(git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git)
@@ -26,9 +26,6 @@ prepare() {
 
   # updating the desktop file
   sed -i -e "s/Exec=heroic-run /Exec=heroic /" "flatpak/com.heroicgameslauncher.hgl.desktop"
-  
-  # overriding node-abi
-  jq '.pnpm.overrides = {"node-abi": "latest"} + (.pnpm.overrides // {})' package.json > package.json.tmp && mv package.json.tmp package.json
 }
 
 build() {
@@ -39,17 +36,17 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/usr/lib/heroic"
+  install -d "${pkgdir}/opt/heroic"
   install -d "${pkgdir}/usr/bin"
 
   # removing arm64 binaries
   rm -rf ./$_pkgname/dist/linux-unpacked/resources/app.asar.unpacked/build/bin/arm64/
   
   # copying libs
-  cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/usr/lib/heroic/"
+  cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/opt/heroic/"
 
   # executable
-  ln -sf "/usr/lib/heroic/heroic" "${pkgdir}/usr/bin/heroic"
+  ln -sf "/opt/heroic/heroic" "${pkgdir}/usr/bin/heroic"
 
   # icon
   install -Dm644 ./$_pkgname/flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
