@@ -7,7 +7,7 @@ pkgbase = rclonefzf
 	license = GPL-3.0-or-later
 	depends = bash
 	depends = fzf
-	depends = yay
+	depends = rclone
 	source = rclonefzf-1.0.0.tar.gz::https://github.com/ConnerWill/rclonefzf/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
