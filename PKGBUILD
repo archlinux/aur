@@ -2,25 +2,25 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=wsjtx-bin
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
-arch=(i686 x86_64 armv7h)
+arch=(x86_64 armv7 aarch64)
 url="https://wsjt.sourceforge.io/wsjtx.html"
 license=("GPL-3")
-depends=(qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
+depends=(qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw boost-libs=1.74.0)
 provides=(wsjtx)
 conflicts=(wsjtx)
 
 if [ "$CARCH" == "x86_64" ]; then
     debfile="wsjtx_${pkgver}_amd64.deb"
-    sha256sums=(f7825425496ba4e6d4018ab65f5f3e07d619a9da29b751e753c72912bcdd511c)
+    sha256sums=(a2a2f7aa1e4a26fc17755df117356ce3452514629c86c69b420313cde0d0cd94)
 elif [ "$CARCH" == "armv7" ]; then
-    debfile="wsjtx_${pkgver}_armhf.deb"
-    sha256sums=(ace10090d45c4954796658a963dbd4f92a1174a9ab2657d347e73e15f9126593)
-elif [ "$CARCH" == "armv8" ]; then
-    rpmfile="wsjtx_${pkgver}_arm64.deb"
-    sha256sums=(c46b0ea1f26ebc0d3e8e295ad36dee2bb594c56db17d83426e2448298c7bb00c)
+    debfile="wsjtx-${pkgver}_armhf.deb"
+    sha256sums=(a2c21feb473459193b9c0b63a50cb96d165e33cb66d80a6657bca960736d4fbd)
+elif [ "$CARCH" == "aarch64" ]; then
+    debfile="wsjtx-${pkgver}_arm64.deb"
+    sha256sums=(f2d744cdc9cecd681d7551d44cac664206bed6601c6f1ba1cfad65184353bb95)
 fi
 
 source=("https://sourceforge.net/projects/wsjt/files/wsjtx-$pkgver/${debfile}")
