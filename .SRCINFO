@@ -1,6 +1,6 @@
 pkgbase = jq-lite
 	pkgdesc = Lightweight jq-like JSON query engine in Perl
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 1
 	url = https://metacpan.org/release/JQ-Lite
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jq-lite
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SH/SHINGO/JQ-Lite-2.15.tar.gz
-	sha256sums = 3db43a198e5ee661d1c442b3e62d35d2a7be654a967a3316c2875e6f5dc1dbf8
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHINGO/JQ-Lite-2.16.tar.gz
+	sha256sums = c35dbc8f8675385981e50683f03177465c19b9a843a721dc835df86e44816869
 
 pkgname = jq-lite
