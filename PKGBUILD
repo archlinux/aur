@@ -1,12 +1,11 @@
 # Maintainer: Duru Can Celasun <can[at]dcc[dot]im>
-# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=146.0.1
+pkgver=147.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -18,7 +17,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg4.4
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -87,24 +86,27 @@ source=(
   $_pkgname.desktop
   org.mozilla.$_pkgname.metainfo.xml
   0001-remove-nvidia-blocklist.patch
+  0002-Install-under-remoting-name.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('e9678a0e8473923953e1dc312c37919068623b6aa20adade16266049258191eb'
+sha256sums=('222d8e63754f1e5b1789cb928d7f973e0168819c492bb0eb402b1d472e4fd9fe'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'a0a236be070594f576b670a0988449b7bc1eaf5b94ba2ca15807e484c794d4dc'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
-            '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85')
-b2sums=('808e1205697d2cd12c4ec4a21c59e6ab11f6fffef3031a848ca5823aaa1d507edaffd514e9471d9916bfb4ede645d4c5b03c1e6b0b638b22ce533998fa033bbf'
+            '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
+            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
+b2sums=('8d5e474bc37d7bedd20953a6c519129fa1d56912ef1ffd06582c8db9128e714239173c954b6f5f13a1fe7740d7391c770c684562108f7fd79900d0bf56c4e12e'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '6b7638446d4c262363af460382204e6d82138a5a22009969b198b7c4f58f9d9951330869a37e393885293733746d8790cd71e42f4e81004d533beed9e97816a7'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
-        'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778')
+        'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778'
+        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -119,6 +121,9 @@ prepare() {
   msg2 "Patching Nvidia blocklist"
   patch -Np1 -i ../0001-remove-nvidia-blocklist.patch
 
+  # Make different channels installable in parallel
+  patch -Np1 -i ../0002-Install-under-remoting-name.patch
+
   echo -n "$_google_api_key" >google-api-key
 
   cat >../mozconfig <<END
@@ -132,7 +137,6 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-install-strip
-ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
@@ -169,9 +173,6 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
-
-  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
-  export RUST_MIN_STACK=16777216
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
