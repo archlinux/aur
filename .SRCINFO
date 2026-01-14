@@ -1,0 +1,15 @@
+pkgbase = vitals
+	pkgdesc = CLI system usage visualizer for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AngelJumbo/vitals
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = vitals
+	source = https://github.com/AngelJumbo/vitals/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 89e996e9d1b52619b1884cd33e1387f1f7c75766433b21652aaa5bcc173e26d5
+
+pkgname = vitals

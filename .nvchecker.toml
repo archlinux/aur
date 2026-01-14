@@ -1,0 +1,5 @@
+[vitals]
+source = "github"
+github = "AngelJumbo/vitals"
+use_latest_release = true
+prefix = "v"
