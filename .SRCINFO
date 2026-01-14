@@ -1,0 +1,18 @@
+pkgbase = tqsl
+	pkgdesc = ARRL LoTW Trusted QSL (TQSL) software
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = https://www.arrl.org/tqsl-download
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = openssl
+	depends = sqlite
+	depends = expat
+	depends = zlib
+	depends = curl
+	depends = wxwidgets-gtk3
+	source = https://www.arrl.org/tqsl/tqsl-2.8.2.tar.gz
+	sha512sums = 853763110ca4ec3ffd5e3cbd3e3be264acf772a88e977db6fa8ad02a86dac85e70193edfc6f89c690cd8959bc6c1fc31ad400ecbae83ca039cb751a7750501d8
+
+pkgname = tqsl
