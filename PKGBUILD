@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.3.7
+pkgver=4.3.8
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -25,12 +25,13 @@ makedepends=(
 	'xz'
 	'curl'
 	'git'
+	'jq'
 )
 source=(
 	"${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('2bdedee94dd53bedfa0f8243d7473a2fd160eb671582ddcd680aa70e9ab90645'
+sha256sums=('ca78f8463fb5ab2e97ea71df62802ccbf61d39f1ffebdadc9acd74478e76bcdc'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,8 +40,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
