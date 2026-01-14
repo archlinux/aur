@@ -1,7 +1,7 @@
 pkgbase = stepmania
 	pkgdesc = Advanced rhythm game. Designed for both home and arcade use.
 	pkgver = 5.1.0.b2.r627.d55acb1ba2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.stepmania.com/
 	arch = x86_64
 	license = MIT AND CC-BY-NC-4.0
@@ -33,12 +33,16 @@ pkgbase = stepmania
 	source = stepmania-3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch::https://github.com/stepmania/stepmania/commit/3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch
 	source = stepmania-e0d2a5182dcd855e181fffa086273460c553c7ff.patch::https://github.com/stepmania/stepmania/commit/e0d2a5182dcd855e181fffa086273460c553c7ff.patch
 	source = ffmpeg-7.patch
+	source = ffmpeg-8.patch
+	source = libtom-use-pkgconfig.patch
 	source = ffmpeg-remove-asm-requirement.patch
 	source = stepmania.sh
 	sha256sums = 7d0e0d4b13f780fc6181561b257d9cd8a3ef73df513f4b8f36743acebb63a130
 	sha256sums = fe3c77293d65b654c91d419ba7421feb2ad2da8e4561fadc5f02b3bd0f791634
 	sha256sums = b04bc15cbe85a41117220fadbadce5aa0893582fa8d720697ee6b864f7f0c093
 	sha256sums = f6406a9daa61f53a530402965cfc9533f9836d558026b0fc5627db05f8cde068
+	sha256sums = f6dd2f33ff89c56728df15d808a7853c27c82aad774ff63e231983906656619c
+	sha256sums = 490c8a8eb89e637ddfdaefec4d6212e8607d94580ae99d8069b26559d0ecdbe5
 	sha256sums = ae8d9911eaf7680d7f05a5bafa98588a1582f9b7713a295a66603a2ca8b5addf
 	sha256sums = e2caeb91fccaba9502273fba875355b516e821e6754b2238a20cb7c31f3c4a60
 

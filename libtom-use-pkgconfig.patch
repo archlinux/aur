@@ -1,0 +1,47 @@
+diff --git a/extern/CMakeProject-tomcrypt.cmake b/extern/CMakeProject-tomcrypt.cmake
+index cced8bbe11..3c5a9cc4d0 100644
+--- a/extern/CMakeProject-tomcrypt.cmake
++++ b/extern/CMakeProject-tomcrypt.cmake
+@@ -1,5 +1,6 @@
+ if(WITH_SYSTEM_TOMCRYPT)
+-  find_library(TOMCRYPT_LIBRARY tomcrypt)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(TOMCRYPT REQUIRED libtomcrypt IMPORTED_TARGET GLOBAL)
+ else()
+   set(TOMDIR "${SM_SRC_DIR}/libtomcrypt")
+ 
+diff --git a/extern/CMakeProject-tommath.cmake b/extern/CMakeProject-tommath.cmake
+index 953b7b0b81..5a36fd3abe 100644
+--- a/extern/CMakeProject-tommath.cmake
++++ b/extern/CMakeProject-tommath.cmake
+@@ -1,8 +1,6 @@
+ if(WITH_SYSTEM_TOMMATH)
+-  find_library(TOMMATH_LIBRARY tommath)
+-  if(TOMMATH_LIBRARY MATCHES "TOMMATH_LIBRARY-NOTFOUND")
+-    message(FATAL_ERROR "Need tommath.")
+-  endif()
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(TOMMATH REQUIRED libtommath IMPORTED_TARGET GLOBAL)
+ else()
+   set(TOMDIR "${SM_SRC_DIR}/libtommath")
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0feb8ed722..6a9d82cae6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -451,13 +457,13 @@ else()
+ endif()
+ 
+ if(WITH_SYSTEM_TOMCRYPT)
+-  list(APPEND SMDATA_LINK_LIB ${TOMCRYPT_LIBRARY})
++  list(APPEND SMDATA_LINK_LIB PkgConfig::TOMCRYPT)
+ else()
+   list(APPEND SMDATA_LINK_LIB "tomcrypt")
+ endif()
+ 
+ if(WITH_SYSTEM_TOMMATH)
+-  list(APPEND SMDATA_LINK_LIB ${TOMMATH_LIBRARY})
++  list(APPEND SMDATA_LINK_LIB PkgConfig::TOMMATH)
+ else()
+   list(APPEND SMDATA_LINK_LIB "tommath")
+ endif()

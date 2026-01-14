@@ -1,0 +1,35 @@
+diff --git a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+index 935ddf324b..cd6239e254 100644
+--- a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
++++ b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+@@ -506,7 +506,7 @@ RString MovieDecoder_FFMpeg::OpenCodec()
+ 
+ 	ASSERT( m_pStream != nullptr );
+ 	if( m_pStreamCodec->codec )
+-		avcodec::avcodec_close( m_pStreamCodec );
++		avcodec::avcodec_free_context( &m_pStreamCodec );
+ 
+ 	avcodec::AVCodec *pCodec = avcodec::avcodec_find_decoder( m_pStreamCodec->codec_id );
+ 	if( pCodec == nullptr )
+@@ -535,7 +535,7 @@ void MovieDecoder_FFMpeg::Close()
+ {
+ 	if( m_pStream && m_pStreamCodec->codec )
+ 	{
+-		avcodec::avcodec_close( m_pStreamCodec );
++		avcodec::avcodec_free_context( &m_pStreamCodec );
+ 		m_pStream = nullptr;
+ 	}
+ 
+diff --git a/src/arch/MovieTexture/MovieTexture_FFMpeg.h b/src/arch/MovieTexture/MovieTexture_FFMpeg.h
+index c092b765fc..6279f267fa 100644
+--- a/src/arch/MovieTexture/MovieTexture_FFMpeg.h
++++ b/src/arch/MovieTexture/MovieTexture_FFMpeg.h
+@@ -32,7 +32,7 @@ namespace avcodec
+ };
+ 
+ #define STEPMANIA_FFMPEG_BUFFER_SIZE 4096
+-static const int sws_flags = SWS_BICUBIC; // XXX: Reasonable default?
++static const int sws_flags = avcodec::SWS_BICUBIC; // XXX: Reasonable default?
+ 
+ class MovieTexture_FFMpeg: public MovieTexture_Generic
+ {
