@@ -4,7 +4,7 @@
 _pkgname=magic-wormhole.rs
 pkgname=wormhole-rs
 pkgver=0.7.6
-pkgrel=0
+pkgrel=1
 pkgdesc='Rust implementation of Magic Wormhole, with new features and enhancements'
 arch=(x86_64)
 url="https://github.com/magic-wormhole/$_pkgname"
@@ -35,7 +35,8 @@ build() {
 package() {
   cd "$_archive"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EUPL-1.2" LICENSE
+  install -Dm644 wormhole.1 "$pkgdir/usr/share/man/man1/wormhole-rs.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EUPL-1.2"
 
   install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions/" "completions/bash/$pkgname"
   install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions/" "completions/zsh/_$pkgname"
