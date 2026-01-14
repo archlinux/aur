@@ -1,16 +1,155 @@
-From 038ded144ae02d4b6cc090fe405ad2871400e846 Mon Sep 17 00:00:00 2001
-From: Denis Benato <denis.benato@linux.dev>
-Date: Wed, 17 Dec 2025 02:08:08 +0100
-Subject: [PATCH 2/2] platform/x86: asus-armoury: add keyboard control firmware
- attributes
 
----
- drivers/platform/x86/asus-armoury.c        | 253 +++++++++++++++++++++
+
+Hi all,
+
+I was recently reading through the asusctl issue tracker and I found
+out that some users have been having troubles with the keyboard RGB control
+that was working before since the creation of asus-armoury and subequent
+deprecation of old sysfs attributes.
+
+This patch series aims to re-introduce those attributes in asus-armoury
+so that userspace tools can still control keyboard RGB lighting
+without having to rely on deprecated asus-wmi attributes.
+
+In addition to that, since disabling OOBE is essential for controlling
+LEDs on some models and it was incorrectly tied to deprecated attributes,
+this patch series also fixes sending OOBE at probe time.
+
+Link: https://gitlab.com/asus-linux/asusctl/-/issues/619
+
+Regards,
+Denis
+
+Changelog:
+- v1
+  - Initial submission
+- v2
+  - asus-armoury: drivers should be silent on success
+  - asus-armoury: make better use of __free annotation
+
+Denis Benato (3):
+  platform/x86: asus-wmi: explicitly mark more code with
+    CONFIG_ASUS_WMI_DEPRECATED_ATTRS
+  platform/x86: asus-wmi: fix sending OOBE at probe
+  platform/x86: asus-armoury: add keyboard control firmware attributes
+
+ drivers/platform/x86/asus-armoury.c        | 256 +++++++++++++++++++++
+ drivers/platform/x86/asus-wmi.c            |  13 +-
  include/linux/platform_data/x86/asus-wmi.h |  15 ++
- 2 files changed, 268 insertions(+)
+ 3 files changed, 283 insertions(+), 1 deletion(-)
+
+-- 
+2.52.0
+
+
+
+Be more explicit in code that will be excluded when compiling
+with CONFIG_ASUS_WMI_DEPRECATED_ATTRS disabled.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 4aec7ec69250..a49447eff4f4 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -302,7 +302,11 @@ struct asus_wmi {
+ 	u32 nv_temp_target;
+ 
+ 	u32 kbd_rgb_dev;
++
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ 	bool kbd_rgb_state_available;
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
++
+ 	bool oobe_state_available;
+ 
+ 	u8 throttle_thermal_policy_mode;
+@@ -1060,6 +1064,7 @@ static const struct attribute_group kbd_rgb_mode_group = {
+ };
+ 
+ /* TUF Laptop Keyboard RGB State **********************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t kbd_rgb_state_store(struct device *dev,
+ 				 struct device_attribute *attr,
+ 				 const char *buf, size_t count)
+@@ -1106,6 +1111,8 @@ static const struct attribute_group kbd_rgb_state_group = {
+ 	.attrs = kbd_rgb_state_attrs,
+ };
+ 
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
++
+ static const struct attribute_group *kbd_rgb_mode_groups[] = {
+ 	NULL,
+ 	NULL,
+@@ -1861,8 +1868,11 @@ static int asus_wmi_led_init(struct asus_wmi *asus)
+ 
+ 	if (asus->kbd_rgb_dev)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_mode_group;
++
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ 	if (asus->kbd_rgb_state_available)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_state_group;
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ 	asus->led_workqueue = create_singlethread_workqueue("led_workqueue");
+ 	if (!asus->led_workqueue)
+-- 
+2.52.0
+
+
+
+Disabling oobe is an important step to be able to fully control
+the hardware in TUF laptops that supports this feature,
+but the command has been incorrectly tied to deprecated
+attributes: restore sending the OOBE exit command.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index a49447eff4f4..8dfdde7877a8 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -4899,7 +4899,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+-	asus->oobe_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_OOBE);
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
+@@ -4912,6 +4911,8 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
+ #endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
++	asus->oobe_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_OOBE);
++
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY;
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO))
+-- 
+2.52.0
+
+
+
+Implement keyboard status attributes in asus-armoury after
+deprecating those attribute(s) in asus-wmi to avoid losing
+the ability to control LEDs status.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+Tested-by: Merthan Karakaş <m3rthn.k@gmail.com>
+---
+ drivers/platform/x86/asus-armoury.c        | 256 +++++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |  15 ++
+ 2 files changed, 271 insertions(+)
 
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
-index 9c1a9ad42bc4..7de8243a820f 100644
+index 9c1a9ad42bc4..1e5bfca77b49 100644
 --- a/drivers/platform/x86/asus-armoury.c
 +++ b/drivers/platform/x86/asus-armoury.c
 @@ -76,10 +76,22 @@ struct rog_tunables {
@@ -214,7 +353,7 @@ index 9c1a9ad42bc4..7de8243a820f 100644
  static ssize_t gpu_mux_mode_current_value_store(struct kobject *kobj,
  						struct kobj_attribute *attr,
  						const char *buf, size_t count)
-@@ -867,6 +1043,30 @@ static bool has_valid_limit(const char *name, const struct power_limits *limits)
+@@ -867,6 +1043,33 @@ static bool has_valid_limit(const char *name, const struct power_limits *limits)
  	return limit_value > 0;
  }
  
@@ -222,30 +361,33 @@ index 9c1a9ad42bc4..7de8243a820f 100644
 +{
 +	int err;
 +	u32 kbd_status;
-+	struct asus_armoury_kbd_status *kbd_state __free(kfree) = NULL;
 +
 +	err = armoury_get_devstate(NULL, &kbd_status, ASUS_WMI_DEVID_TUF_RGB_STATE);
 +	if (err) {
-+		pr_err("ACPI does not support keyboard power control: %d\n", err);
++		pr_debug("ACPI does not support keyboard power control: %d\n", err);
 +		return ERR_PTR(-ENODEV);
 +	}
 +
-+	pr_info("Detected keyboard backlight support\n");
-+
-+	kbd_state = kzalloc(sizeof(*kbd_state), GFP_KERNEL);
++	struct asus_armoury_kbd_status *kbd_state __free(kfree) =
++		kzalloc(sizeof(*kbd_state), GFP_KERNEL);
 +	if (!kbd_state)
 +		return ERR_PTR(-ENODEV);
 +
-+	// by default all states are disabled
++	/*
++	 * By default leds are off for all states (to spare power)
++	 * except for when laptop is awake, where leds color and
++	 * brightness are controllable by userspace.
++	 */
 +	memset(kbd_state, 0, sizeof(*kbd_state));
++	kbd_state->awake = true;
 +
-+	return no_free_ptr(kbd_state);
++	return_ptr(kbd_state);
 +}
 +
  static int asus_fw_attr_add(void)
  {
  	const struct rog_tunables *const ac_rog_tunables =
-@@ -926,6 +1126,51 @@ static int asus_fw_attr_add(void)
+@@ -926,6 +1129,51 @@ static int asus_fw_attr_add(void)
  		}
  	}
  
@@ -297,7 +439,7 @@ index 9c1a9ad42bc4..7de8243a820f 100644
  	for (i = 0; i < ARRAY_SIZE(armoury_attr_groups); i++) {
  		if (!armoury_has_devstate(armoury_attr_groups[i].wmi_devid))
  			continue;
-@@ -965,6 +1210,14 @@ static int asus_fw_attr_add(void)
+@@ -965,6 +1213,14 @@ static int asus_fw_attr_add(void)
  	}
  	if (asus_armoury.gpu_mux_dev_id)
  		sysfs_remove_group(&asus_armoury.fw_attr_kset->kobj, &gpu_mux_mode_attr_group);

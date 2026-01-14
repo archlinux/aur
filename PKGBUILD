@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.18.1.arch1
-pkgrel=2
+pkgver=6.18.5.arch1
+pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/asus-linux/linux-g14"
 _url='https://github.com/archlinux/linux'
@@ -55,13 +55,20 @@ source=(
   0001-platform-x86-asus-armoury-Fix-error-code-in-mini_led.patch
   0002-platform-x86-asus-armoury-fix-mini-led-mode-show.patch
   0003-platform-x86-asus-armoury-add-support-for-FA507UV.patch
+  0003-platform-x86-asus-armoury-add-support-for-FA608UM.patch
+	0003-platform-x86-asus-armoury-add-support-for-G615LR.patch
+	0003-platform-x86-asus-armoury-add-support-for-G835LW.patch
+	0003-platform-x86-asus-armoury-add-support-for-GA403WR.patch
+	0003-platform-x86-asus-armoury-add-support-for-GU605CR.patch
+	0003-0-3-asus-armoury-add-support-for-GV302XV-FA401UV-FA617XT.patch
   0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
+  0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch
 
-  PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
-  PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling-id1-id2-pr_err.patch
+  # PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
+  # PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling-id1-id2-pr_err.patch
 
-  0001-platform-x86-asus-wmi-fix-initializing-TUFs-keyboard.patch
-  0002-platform-x86-asus-armoury-add-keyboard-control-firmw.patch
+  # 0001-platform-x86-asus-wmi-fix-initializing-TUFs-keyboard.patch
+  # 0002-platform-x86-asus-armoury-add-keyboard-control-firmw.patch
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
   PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
@@ -88,11 +95,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('d0a78bf3f0d12aaa10af3b5adcaed5bc767b5b78705e5ef885d5e930b72e25d5'
+sha256sums=('189d1f409cef8d0d234210e04595172df392f8cb297e14b447ed95720e2fd940'
             'SKIP'
-            'e0de7a4ccf2636993b2f49081399efaa63c0bf1c0db5cf1cbbdd6f8bfbede241'
+            'e1b9e56a90ce3eb5d60bf9cd76161b4cc6b2926cd61657c197f5f97c3adfcd89'
             'SKIP'
-            'd0ce1ee11ca0bc6a817c3c17a2651076409bd9fd6c0ab9e744aae2131ab654ce'
+            '53876f5a6cc1efc1cbfa671517db86177c02a4ddeafc8ae8fbbec5e1aeec66b6'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
@@ -106,11 +113,14 @@ sha256sums=('d0a78bf3f0d12aaa10af3b5adcaed5bc767b5b78705e5ef885d5e930b72e25d5'
             'f2e7f0f5bf499236f6e457e13270d7a907d00daf74111e6369b6e6c20fb6b9d0'
             'b837555c1dd960d448bea5099134fa9a1d6868f98851c65800caabf5356006c6'
             '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
+            'b4e41f9f48c8a716b31e6ae965d1c3dbecd7a32fc67281871158906d321133df'
+            '5035263712a54e05bc332ab74fa7339aed5926b1fa0194b794686d51fffd3adc'
+            '0e63648a64219f26911cfbb4582d679783d93f3aa9ff4e07682228a3d7336740'
+            '86faa46521c7281cd229cbcd78e04a8df2dc9087074255430810aeaffcea00a7'
+            '5da11e4b347640baaebf9af8bb164188dc4c3ae937485108a24d9764e0d693a9'
+            '3caa20406c8436a8429f70341c8c0410ffa77dd13a0a051718e70204ddbe0589'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
-            '93f054d3a81ae4c32c92ea92e86ed6d1a250cb3d40a14ec5f01c532eb0a694b0'
-            'c22b5c3575b2e8f20836c9ed4b504c98346da5840a7197d224f0c66ca5a8cf92'
-            '03be0cba7c3e9a1f19e3303d603e4c64b34e893c13dacac5c3be952ff2351f00'
-            '97414fb47bb35c88921ff2f86712dfe0c2d95320fc46825d7ed2a501d8466bd6'
+            '5e4c3877608a79142078e35301d6c97f91219705bd91ecd3dfa01fef9a324651'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
