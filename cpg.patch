@@ -1,0 +1,1107 @@
+--- cpgarro.c	2026-01-13 09:41:27.973381238 +0100
++++ cpgarro.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgarro_();
+-
++extern void pgarro_(float *x1, float *y1, float *x2, float *y2);
+ void cpgarro(float x1, float y1, float x2, float y2)
+ {
+   pgarro_(&x1, &y1, &x2, &y2);
+--- cpgask.c	2026-01-13 09:41:27.973411338 +0100
++++ cpgask.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgask_();
+-
++extern void pgask_(Logical *flag);
+ void cpgask(Logical flag)
+ {
+   int l_flag = flag ? 1:0;
+--- cpgaxis.c	2026-01-13 09:41:27.973444048 +0100
++++ cpgaxis.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgaxis_();
+-
++extern void pgaxis_(const char *opt, float *x1, float *y1, float *x2, float *y2, float *v1, float *v2, float *step, int *nsub, float *dmajl, float *dmajr, float *fmin, float *disp, float *orient, int len_opt);
+ void cpgaxis(const char *opt, float x1, float y1, float x2, float y2, float v1, float v2, float step, int nsub, float dmajl, float dmajr, float fmin, float disp, float orient)
+ {
+   int len_opt = strlen(opt);
+--- cpgband.c	2026-01-13 09:41:27.973511608 +0100
++++ cpgband.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern int pgband_();
+-
++extern int pgband_(int *mode, int *posn, float *xref, float *yref, float *x, float *y, char *ch_scalar, int len_ch_scalar);
+ int cpgband(int mode, int posn, float xref, float yref, float *x, float *y, char *ch_scalar)
+ {
+   int len_ch_scalar = 1;
+--- cpgbbuf.c	2026-01-13 09:41:27.973552428 +0100
++++ cpgbbuf.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgbbuf_();
+-
+ void cpgbbuf(void)
+ {
+   pgbbuf_();
+--- cpgbeg.c	2026-01-13 09:41:27.973616988 +0100
++++ cpgbeg.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern int pgbeg_();
+-
++extern int pgbeg_(int *unit, const char *file, int *nxsub, int *nysub, int len_file);
+ int cpgbeg(int unit, const char *file, int nxsub, int nysub)
+ {
+   int len_file = strlen(file);
+--- cpgbin.c	2026-01-13 09:41:27.973667028 +0100
++++ cpgbin.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgbin_();
+-
++extern void pgbin_(int *nbin, const float *x, const float *data, Logical *center);
+ void cpgbin(int nbin, const float *x, const float *data, Logical center)
+ {
+   int l_center = center ? 1:0;
+--- cpgbox.c	2026-01-13 09:41:27.973709338 +0100
++++ cpgbox.c	2026-01-13 09:28:00.422137951 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgbox_();
+-
++extern void pgbox_(const char *xopt, float *xtick, int *nxsub, const char *yopt, float *ytick, int *nysub, int len_xopt, int len_yopt);
+ void cpgbox(const char *xopt, float xtick, int nxsub, const char *yopt, float ytick, int nysub)
+ {
+   int len_xopt = strlen(xopt);
+--- cpgcirc.c	2026-01-13 09:41:27.973782228 +0100
++++ cpgcirc.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgcirc_();
+-
++extern void pgcirc_(float *xcent, float *ycent, float *radius);
+ void cpgcirc(float xcent, float ycent, float radius)
+ {
+   pgcirc_(&xcent, &ycent, &radius);
+--- cpgclos.c	2026-01-13 09:41:27.973828868 +0100
++++ cpgclos.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgclos_();
+-
+ void cpgclos(void)
+ {
+   pgclos_();
+--- cpgconb.c	2026-01-13 09:41:27.973905378 +0100
++++ cpgconb.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgconb_();
+-
++extern void pgconb_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, const float *c, int *nc, const float *tr, float *blank);
+ void cpgconb(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, const float *c, int nc, const float *tr, float blank)
+ {
+   pgconb_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, (float *)c, &nc, (float *)tr, &blank);
+--- cpgconf.c	2026-01-13 09:41:27.973953528 +0100
++++ cpgconf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgconf_();
+-
++extern void pgconf_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *c1, float *c2, const float *tr);
+ void cpgconf(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, float c1, float c2, const float *tr)
+ {
+   pgconf_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, &c1, &c2, (float *)tr);
+--- cpgconl.c	2026-01-13 09:41:27.974003198 +0100
++++ cpgconl.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgconl_();
+-
++extern void pgconl_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *c, const float *tr, const char *label, int *val, int *min, int len_label);
+ void cpgconl(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, float c, const float *tr, const char *label, int intval, int minint)
+ {
+   int len_label = strlen(label);
+--- cpgcons.c	2026-01-13 09:41:27.974048418 +0100
++++ cpgcons.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgcons_();
+-
++extern void pgcons_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, const float *c, int *nc, const float *tr);
+ void cpgcons(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, const float *c, int nc, const float *tr)
+ {
+   pgcons_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, (float *)c, &nc, (float *)tr);
+--- cpgcont.c	2026-01-13 09:41:27.974093788 +0100
++++ cpgcont.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgcont_();
+-
++extern void pgcont_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, const float *c, int *nc, const float *tr);
+ void cpgcont(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, const float *c, int nc, const float *tr)
+ {
+   pgcont_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, (float *)c, &nc, (float *)tr);
+--- cpgctab.c	2026-01-13 09:41:27.974156318 +0100
++++ cpgctab.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgctab_();
+-
++extern void pgctab_(const float *l, const float *r, const float *g, const float *b, int *nc, float *contra, float *bright);
+ void cpgctab(const float *l, const float *r, const float *g, const float *b, int nc, float contra, float bright)
+ {
+   pgctab_((float *)l, (float *)r, (float *)g, (float *)b, &nc, &contra, &bright);
+--- cpgcurs.c	2026-01-13 09:41:27.974203068 +0100
++++ cpgcurs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern int pgcurs_();
+-
++extern int pgcurs_(float *x, float *y, char *ch_scalar, int len_ch_scalar);
+ int cpgcurs(float *x, float *y, char *ch_scalar)
+ {
+   int len_ch_scalar = 1;
+--- cpgdraw.c	2026-01-13 09:41:27.974238378 +0100
++++ cpgdraw.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgdraw_();
+-
++extern void pgdraw_(float *x, float *y);
+ void cpgdraw(float x, float y)
+ {
+   pgdraw_(&x, &y);
+--- cpgebuf.c	2026-01-13 09:41:27.974273617 +0100
++++ cpgebuf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgebuf_();
+-
+ void cpgebuf(void)
+ {
+   pgebuf_();
+--- cpgend.c	2026-01-13 09:41:27.974307577 +0100
++++ cpgend.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgend_();
+-
+ void cpgend(void)
+ {
+   pgend_();
+--- cpgenv.c	2026-01-13 09:41:27.974345737 +0100
++++ cpgenv.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgenv_();
+-
++extern void pgenv_(float *xmin, float *xmax, float *ymin, float *ymax, int *just, int *axis);
+ void cpgenv(float xmin, float xmax, float ymin, float ymax, int just, int axis)
+ {
+   pgenv_(&xmin, &xmax, &ymin, &ymax, &just, &axis);
+--- cpgeras.c	2026-01-13 09:41:27.974384567 +0100
++++ cpgeras.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgeras_();
+-
+ void cpgeras(void)
+ {
+   pgeras_();
+--- cpgerr1.c	2026-01-13 09:41:27.974422307 +0100
++++ cpgerr1.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgerr1_();
+-
++extern void pgerr1_(int *dir, float *x, float *y, float *e, float *t);
+ void cpgerr1(int dir, float x, float y, float e, float t)
+ {
+   pgerr1_(&dir, &x, &y, &e, &t);
+--- cpgerrb.c	2026-01-13 09:41:27.974452457 +0100
++++ cpgerrb.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgerrb_();
+-
++extern void pgerrb_(int *dir, int *n, const float *x, const float *y, const float *e, float *t);
+ void cpgerrb(int dir, int n, const float *x, const float *y, const float *e, float t)
+ {
+   pgerrb_(&dir, &n, (float *)x, (float *)y, (float *)e, &t);
+--- cpgerrx.c	2026-01-13 09:41:27.974476087 +0100
++++ cpgerrx.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgerrx_();
+-
++extern void pgerrx_(int *n, const float *x1, const float *x2, const float *y, float *t);
+ void cpgerrx(int n, const float *x1, const float *x2, const float *y, float t)
+ {
+   pgerrx_(&n, (float *)x1, (float *)x2, (float *)y, &t);
+--- cpgerry.c	2026-01-13 09:41:27.974498747 +0100
++++ cpgerry.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgerry_();
+-
++extern void pgerry_(int *n, const float *x, const float *y1, const float *y2, float *t);
+ void cpgerry(int n, const float *x, const float *y1, const float *y2, float t)
+ {
+   pgerry_(&n, (float *)x, (float *)y1, (float *)y2, &t);
+--- cpgetxt.c	2026-01-13 09:41:27.974521417 +0100
++++ cpgetxt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgetxt_();
+-
+ void cpgetxt(void)
+ {
+   pgetxt_();
+--- cpggray.c	2026-01-13 09:41:27.974566157 +0100
++++ cpggray.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pggray_();
+-
++extern void pggray_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *fg, float *bg, const float *tr);
+ void cpggray(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, float fg, float bg, const float *tr)
+ {
+   pggray_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, &fg, &bg, (float *)tr);
+--- cpghi2d.c	2026-01-13 09:41:27.974603917 +0100
++++ cpghi2d.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pghi2d_();
+-
++extern void pghi2d_(const float *data, int *nxv, int *nyv, int *ix1, int *ix2, int *iy1, int *iy2, const float *x, int *ioff, float *bias, Logical *center, float *ylims);
+ void cpghi2d(const float *data, int nxv, int nyv, int ix1, int ix2, int iy1, int iy2, const float *x, int ioff, float bias, Logical center, float *ylims)
+ {
+   int l_center = center ? 1:0;
+--- cpghist.c	2026-01-13 09:41:27.974639427 +0100
++++ cpghist.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pghist_();
+-
++extern void pghist_(int *n, const float *data, float *datmin, float *datmax, int *nbin, int *pgflag);
+ void cpghist(int n, const float *data, float datmin, float datmax, int nbin, int pgflag)
+ {
+   pghist_(&n, (float *)data, &datmin, &datmax, &nbin, &pgflag);
+--- cpgiden.c	2026-01-13 09:41:27.974673777 +0100
++++ cpgiden.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgiden_();
+-
+ void cpgiden(void)
+ {
+   pgiden_();
+--- cpgimag.c	2026-01-13 09:41:27.974698347 +0100
++++ cpgimag.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgimag_();
+-
++extern void pgimag_(const float *a, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *a1, float *a2, const float *tr);
+ void cpgimag(const float *a, int idim, int jdim, int i1, int i2, int j1, int j2, float a1, float a2, const float *tr)
+ {
+   pgimag_((float *)a, &idim, &jdim, &i1, &i2, &j1, &j2, &a1, &a2, (float *)tr);
+--- cpglab.c	2026-01-13 09:41:27.974727807 +0100
++++ cpglab.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pglab_();
+-
++extern void pglab_(const char *xlbl, const char *ylbl, const char *toplbl, int len_xlbl, int len_ylbl, int len_toplbl);
+ void cpglab(const char *xlbl, const char *ylbl, const char *toplbl)
+ {
+   int len_xlbl = strlen(xlbl);
+--- cpglcur.c	2026-01-13 09:41:27.974749257 +0100
++++ cpglcur.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pglcur_();
+-
++extern void pglcur_(int *maxpt, int *npt, float *x, float *y);
+ void cpglcur(int maxpt, int *npt, float *x, float *y)
+ {
+   pglcur_(&maxpt, npt, x, y);
+--- cpgldev.c	2026-01-13 09:41:27.974774507 +0100
++++ cpgldev.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgldev_();
+-
+ void cpgldev(void)
+ {
+   pgldev_();
+--- cpglen.c	2026-01-13 09:41:27.974798677 +0100
++++ cpglen.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pglen_();
+-
++extern void pglen_(int *units, const char *string, float *xl, float *yl, int len_string);
+ void cpglen(int units, const char *string, float *xl, float *yl)
+ {
+   int len_string = strlen(string);
+--- cpgline.c	2026-01-13 09:41:27.974820727 +0100
++++ cpgline.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgline_();
+-
++extern void pgline_(int *n, const float *xpts, const float *ypts);
+ void cpgline(int n, const float *xpts, const float *ypts)
+ {
+   pgline_(&n, (float *)xpts, (float *)ypts);
+--- cpgmove.c	2026-01-13 09:41:27.974846457 +0100
++++ cpgmove.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgmove_();
+-
++extern void pgmove_(float *x, float *y);
+ void cpgmove(float x, float y)
+ {
+   pgmove_(&x, &y);
+--- cpgmtxt.c	2026-01-13 09:41:27.974869137 +0100
++++ cpgmtxt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgmtxt_();
+-
++extern void pgmtxt_(const char *side, float *disp, float *coord, float *fjust, const char *text, int len_side, int len_text);
+ void cpgmtxt(const char *side, float disp, float coord, float fjust, const char *text)
+ {
+   int len_side = strlen(side);
+--- cpgncur.c	2026-01-13 09:41:27.974893897 +0100
++++ cpgncur.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgncur_();
+-
++extern void pgncur_(int *maxpt, int *npt, float *x, float *y, int *symbol);
+ void cpgncur(int maxpt, int *npt, float *x, float *y, int symbol)
+ {
+   pgncur_(&maxpt, npt, x, y, &symbol);
+--- cpgnumb.c	2026-01-13 09:41:27.974932247 +0100
++++ cpgnumb.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgnumb_();
+-
++extern void pgnumb_(int *mm, int *pp, int *form, char *string, int *string_length, int len_string);
+ void cpgnumb(int mm, int pp, int form, char *string, int *string_length)
+ {
+   int len_string = --(*string_length);
+--- cpgolin.c	2026-01-13 09:41:27.974961177 +0100
++++ cpgolin.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgolin_();
+-
++extern void pgolin_(int *maxpt, int *npt, float *x, float *y, int *symbol);
+ void cpgolin(int maxpt, int *npt, float *x, float *y, int symbol)
+ {
+   pgolin_(&maxpt, npt, x, y, &symbol);
+--- cpgopen.c	2026-01-13 09:41:27.974987357 +0100
++++ cpgopen.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern int pgopen_();
+-
++extern int pgopen_(const char *device, int len_device);
+ int cpgopen(const char *device)
+ {
+   int len_device = strlen(device);
+--- cpgpage.c	2026-01-13 09:41:27.975016947 +0100
++++ cpgpage.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgpage_();
+-
+ void cpgpage(void)
+ {
+   pgpage_();
+--- cpgpanl.c	2026-01-13 09:41:27.975039477 +0100
++++ cpgpanl.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpanl_();
+-
++extern void pgpanl_(int *nxc, int *nyc);
+ void cpgpanl(int nxc, int nyc)
+ {
+   pgpanl_(&nxc, &nyc);
+--- cpgpap.c	2026-01-13 09:41:27.975062367 +0100
++++ cpgpap.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpap_();
+-
++extern void pgpap_(float *width, float *aspect);
+ void cpgpap(float width, float aspect)
+ {
+   pgpap_(&width, &aspect);
+--- cpgpixl.c	2026-01-13 09:41:27.975089227 +0100
++++ cpgpixl.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpixl_();
+-
++extern void pgpixl_(const int *ia, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *x1, float *x2, float *y1, float *y2);
+ void cpgpixl(const int *ia, int idim, int jdim, int i1, int i2, int j1, int j2, float x1, float x2, float y1, float y2)
+ {
+   pgpixl_((int *)ia, &idim, &jdim, &i1, &i2, &j1, &j2, &x1, &x2, &y1, &y2);
+--- cpgpnts.c	2026-01-13 09:41:27.975112227 +0100
++++ cpgpnts.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpnts_();
+-
++extern void pgpnts_(int *n, const float *x, const float *y, const int *symbol, int *ns);
+ void cpgpnts(int n, const float *x, const float *y, const int *symbol, int ns)
+ {
+   pgpnts_(&n, (float *)x, (float *)y, (int *)symbol, &ns);
+--- cpgpoly.c	2026-01-13 09:41:27.975133747 +0100
++++ cpgpoly.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpoly_();
+-
++extern void pgpoly_(int *n, const float *xpts, const float *ypts);
+ void cpgpoly(int n, const float *xpts, const float *ypts)
+ {
+   pgpoly_(&n, (float *)xpts, (float *)ypts);
+--- cpgpt1.c	2026-01-13 09:41:27.975179137 +0100
++++ cpgpt1.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpt1_();
+-
++extern void pgpt1_(float *xpt, float *ypt, int *symbol);
+ void cpgpt1(float xpt, float ypt, int symbol)
+ {
+   pgpt1_(&xpt, &ypt, &symbol);
+--- cpgpt.c	2026-01-13 09:41:27.975157477 +0100
++++ cpgpt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgpt_();
+-
++extern void pgpt_(int *n, const float *xpts, const float *ypts, int *symbol);
+ void cpgpt(int n, const float *xpts, const float *ypts, int symbol)
+ {
+   pgpt_(&n, (float *)xpts, (float *)ypts, &symbol);
+--- cpgptxt.c	2026-01-13 09:41:27.975201817 +0100
++++ cpgptxt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgptxt_();
+-
++extern void pgptxt_(float *x, float *y, float *angle, float *fjust, const char *text, int len_text);
+ void cpgptxt(float x, float y, float angle, float fjust, const char *text)
+ {
+   int len_text = strlen(text);
+--- cpgqah.c	2026-01-13 09:41:27.975225837 +0100
++++ cpgqah.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqah_();
+-
++extern void pgqah_(int *fs, float *angle, float *barb);
+ void cpgqah(int *fs, float *angle, float *barb)
+ {
+   pgqah_(fs, angle, barb);
+--- cpgqcf.c	2026-01-13 09:41:27.975245777 +0100
++++ cpgqcf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqcf_();
+-
++extern void pgqcf_(int *font);
+ void cpgqcf(int *font)
+ {
+   pgqcf_(font);
+--- cpgqch.c	2026-01-13 09:41:27.975267407 +0100
++++ cpgqch.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqch_();
+-
++extern void pgqch_(float *size);
+ void cpgqch(float *size)
+ {
+   pgqch_(size);
+--- cpgqci.c	2026-01-13 09:41:27.975288237 +0100
++++ cpgqci.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqci_();
+-
++extern void pgqci_(int *ci);
+ void cpgqci(int *ci)
+ {
+   pgqci_(ci);
+--- cpgqcir.c	2026-01-13 09:41:27.975308497 +0100
++++ cpgqcir.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqcir_();
+-
++extern void pgqcir_(int *icilo, int *icihi);
+ void cpgqcir(int *icilo, int *icihi)
+ {
+   pgqcir_(icilo, icihi);
+--- cpgqclp.c	2026-01-13 09:41:27.975328667 +0100
++++ cpgqclp.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqclp_();
+-
++extern void pgqclp_(int *state);
+ void cpgqclp(int *state)
+ {
+   pgqclp_(state);
+--- cpgqcol.c	2026-01-13 09:41:27.975348697 +0100
++++ cpgqcol.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqcol_();
+-
++extern void pgqcol_(int *ci1, int *ci2);
+ void cpgqcol(int *ci1, int *ci2)
+ {
+   pgqcol_(ci1, ci2);
+--- cpgqcr.c	2026-01-13 09:41:27.975371067 +0100
++++ cpgqcr.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqcr_();
+-
++extern void pgqcr_(int *ci, float *cr, float *cg, float *cb);
+ void cpgqcr(int ci, float *cr, float *cg, float *cb)
+ {
+   pgqcr_(&ci, cr, cg, cb);
+--- cpgqcs.c	2026-01-13 09:41:27.975392497 +0100
++++ cpgqcs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqcs_();
+-
++extern void pgqcs_(int *units, float *xch, float *ych);
+ void cpgqcs(int units, float *xch, float *ych)
+ {
+   pgqcs_(&units, xch, ych);
+--- cpgqdt.c	2026-01-13 09:41:27.975425377 +0100
++++ cpgqdt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgqdt_();
+-
++extern void pgqdt_(int *n, char *type, int *type_length, char *descr, int *descr_length, int *inter, int len_type, int len_descr);
+ void cpgqdt(int n, char *type, int *type_length, char *descr, int *descr_length, int *inter)
+ {
+   int len_type = --(*type_length);
+--- cpgqfs.c	2026-01-13 09:41:27.975446907 +0100
++++ cpgqfs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqfs_();
+-
++extern void pgqfs_(int *fs);
+ void cpgqfs(int *fs)
+ {
+   pgqfs_(fs);
+--- cpgqhs.c	2026-01-13 09:41:27.975469477 +0100
++++ cpgqhs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqhs_();
+-
++extern void pgqhs_(float *angle, float *sepn, float *phase);
+ void cpgqhs(float *angle, float *sepn, float *phase)
+ {
+   pgqhs_(angle, sepn, phase);
+--- cpgqid.c	2026-01-13 09:41:27.975490137 +0100
++++ cpgqid.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqid_();
+-
++extern void pgqid_(int *id);
+ void cpgqid(int *id)
+ {
+   pgqid_(id);
+--- cpgqinf.c	2026-01-13 09:41:27.975514946 +0100
++++ cpgqinf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgqinf_();
+-
++extern void pgqinf_(const char *item, char *value, int *value_length, int len_item, int len_value);
+ void cpgqinf(const char *item, char *value, int *value_length)
+ {
+   int len_item = strlen(item);
+--- cpgqitf.c	2026-01-13 09:41:27.975540406 +0100
++++ cpgqitf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqitf_();
+-
++extern void pgqitf_(int *itf);
+ void cpgqitf(int *itf)
+ {
+   pgqitf_(itf);
+--- cpgqls.c	2026-01-13 09:41:27.975564326 +0100
++++ cpgqls.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqls_();
+-
++extern void pgqls_(int *ls);
+ void cpgqls(int *ls)
+ {
+   pgqls_(ls);
+--- cpgqlw.c	2026-01-13 09:41:27.975594066 +0100
++++ cpgqlw.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqlw_();
+-
++extern void pgqlw_(int *lw);
+ void cpgqlw(int *lw)
+ {
+   pgqlw_(lw);
+--- cpgqndt.c	2026-01-13 09:41:27.975617206 +0100
++++ cpgqndt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqndt_();
+-
++extern void pgqndt_(int *n);
+ void cpgqndt(int *n)
+ {
+   pgqndt_(n);
+--- cpgqpos.c	2026-01-13 09:41:27.975638046 +0100
++++ cpgqpos.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqpos_();
+-
++extern void pgqpos_(float *x, float *y);
+ void cpgqpos(float *x, float *y)
+ {
+   pgqpos_(x, y);
+--- cpgqtbg.c	2026-01-13 09:41:27.975658446 +0100
++++ cpgqtbg.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqtbg_();
+-
++extern void pgqtbg_(int *tbci);
+ void cpgqtbg(int *tbci)
+ {
+   pgqtbg_(tbci);
+--- cpgqtxt.c	2026-01-13 09:41:27.975684076 +0100
++++ cpgqtxt.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgqtxt_();
+-
++extern void pgqtxt_(float *x, float *y, float *angle, float *fjust, const char *text, float *xbox, float *ybox, int len_text);
+ void cpgqtxt(float x, float y, float angle, float fjust, const char *text, float *xbox, float *ybox)
+ {
+   int len_text = strlen(text);
+--- cpgqvp.c	2026-01-13 09:41:27.975709396 +0100
++++ cpgqvp.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqvp_();
+-
++extern void pgqvp_(int *units, float *x1, float *x2, float *y1, float *y2);
+ void cpgqvp(int units, float *x1, float *x2, float *y1, float *y2)
+ {
+   pgqvp_(&units, x1, x2, y1, y2);
+--- cpgqvsz.c	2026-01-13 09:41:27.975734356 +0100
++++ cpgqvsz.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqvsz_();
+-
++extern void pgqvsz_(int *units, float *x1, float *x2, float *y1, float *y2);
+ void cpgqvsz(int units, float *x1, float *x2, float *y1, float *y2)
+ {
+   pgqvsz_(&units, x1, x2, y1, y2);
+--- cpgqwin.c	2026-01-13 09:41:27.975756836 +0100
++++ cpgqwin.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgqwin_();
+-
++extern void pgqwin_(float *x1, float *x2, float *y1, float *y2);
+ void cpgqwin(float *x1, float *x2, float *y1, float *y2)
+ {
+   pgqwin_(x1, x2, y1, y2);
+--- cpgrect.c	2026-01-13 09:41:27.975780286 +0100
++++ cpgrect.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgrect_();
+-
++extern void pgrect_(float *x1, float *x2, float *y1, float *y2);
+ void cpgrect(float x1, float x2, float y1, float y2)
+ {
+   pgrect_(&x1, &x2, &y1, &y2);
+--- cpgrnd.c	2026-01-13 09:41:27.975803466 +0100
++++ cpgrnd.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern float pgrnd_();
+-
++extern float pgrnd_(float *x, int *nsub);
+ float cpgrnd(float x, int *nsub)
+ {
+   float r_value;
+--- cpgrnge.c	2026-01-13 09:41:27.975827726 +0100
++++ cpgrnge.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgrnge_();
+-
++extern void pgrnge_(float *x1, float *x2, float *xlo, float *xhi);
+ void cpgrnge(float x1, float x2, float *xlo, float *xhi)
+ {
+   pgrnge_(&x1, &x2, xlo, xhi);
+--- cpgsah.c	2026-01-13 09:41:27.975850996 +0100
++++ cpgsah.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsah_();
+-
++extern void pgsah_(int *fs, float *angle, float *barb);
+ void cpgsah(int fs, float angle, float barb)
+ {
+   pgsah_(&fs, &angle, &barb);
+--- cpgsave.c	2026-01-13 09:41:27.975873666 +0100
++++ cpgsave.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgsave_();
+-
+ void cpgsave(void)
+ {
+   pgsave_();
+--- cpgscf.c	2026-01-13 09:41:27.975915366 +0100
++++ cpgscf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgscf_();
+-
++extern void pgscf_(int *font);
+ void cpgscf(int font)
+ {
+   pgscf_(&font);
+--- cpgsch.c	2026-01-13 09:41:27.975935716 +0100
++++ cpgsch.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsch_();
+-
++extern void pgsch_(float *size);
+ void cpgsch(float size)
+ {
+   pgsch_(&size);
+--- cpgsci.c	2026-01-13 09:41:27.975957506 +0100
++++ cpgsci.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsci_();
+-
++extern void pgsci_(int *ci);
+ void cpgsci(int ci)
+ {
+   pgsci_(&ci);
+--- cpgscir.c	2026-01-13 09:41:27.975980616 +0100
++++ cpgscir.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgscir_();
+-
++extern void pgscir_(int *icilo, int *icihi);
+ void cpgscir(int icilo, int icihi)
+ {
+   pgscir_(&icilo, &icihi);
+--- cpgsclp.c	2026-01-13 09:41:27.976003576 +0100
++++ cpgsclp.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsclp_();
+-
++extern void pgsclp_(int *state);
+ void cpgsclp(int state)
+ {
+   pgsclp_(&state);
+--- cpgscr.c	2026-01-13 09:41:27.976025776 +0100
++++ cpgscr.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgscr_();
+-
++extern void pgscr_(int *ci, float *cr, float *cg, float *cb);
+ void cpgscr(int ci, float cr, float cg, float cb)
+ {
+   pgscr_(&ci, &cr, &cg, &cb);
+--- cpgscrl.c	2026-01-13 09:41:27.976048636 +0100
++++ cpgscrl.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgscrl_();
+-
++extern void pgscrl_(float *dx, float *dy);
+ void cpgscrl(float dx, float dy)
+ {
+   pgscrl_(&dx, &dy);
+--- cpgscrn.c	2026-01-13 09:41:27.976075156 +0100
++++ cpgscrn.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgscrn_();
+-
++extern void pgscrn_(int *ci, const char *name, int *ier, int len_name);
+ void cpgscrn(int ci, const char *name, int *ier)
+ {
+   int len_name = strlen(name);
+--- cpgsfs.c	2026-01-13 09:41:27.976099766 +0100
++++ cpgsfs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsfs_();
+-
++extern void pgsfs_(int *fs);
+ void cpgsfs(int fs)
+ {
+   pgsfs_(&fs);
+--- cpgshls.c	2026-01-13 09:41:27.976121816 +0100
++++ cpgshls.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgshls_();
+-
++extern void pgshls_(int *ci, float *ch, float *cl, float *cs);
+ void cpgshls(int ci, float ch, float cl, float cs)
+ {
+   pgshls_(&ci, &ch, &cl, &cs);
+--- cpgshs.c	2026-01-13 09:41:27.976145316 +0100
++++ cpgshs.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgshs_();
+-
++extern void pgshs_(float *angle, float *sepn, float *phase);
+ void cpgshs(float angle, float sepn, float phase)
+ {
+   pgshs_(&angle, &sepn, &phase);
+--- cpgsitf.c	2026-01-13 09:41:27.976167326 +0100
++++ cpgsitf.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsitf_();
+-
++extern void pgsitf_(int *itf);
+ void cpgsitf(int itf)
+ {
+   pgsitf_(&itf);
+--- cpgslct.c	2026-01-13 09:41:27.976189036 +0100
++++ cpgslct.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgslct_();
+-
++extern void pgslct_(int *id);
+ void cpgslct(int id)
+ {
+   pgslct_(&id);
+--- cpgsls.c	2026-01-13 09:41:27.976212846 +0100
++++ cpgsls.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsls_();
+-
++extern void pgsls_(int *ls);
+ void cpgsls(int ls)
+ {
+   pgsls_(&ls);
+--- cpgslw.c	2026-01-13 09:41:27.976234386 +0100
++++ cpgslw.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgslw_();
+-
++extern void pgslw_(int *lw);
+ void cpgslw(int lw)
+ {
+   pgslw_(&lw);
+--- cpgstbg.c	2026-01-13 09:41:27.976257526 +0100
++++ cpgstbg.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgstbg_();
+-
++extern void pgstbg_(int *tbci);
+ void cpgstbg(int tbci)
+ {
+   pgstbg_(&tbci);
+--- cpgsubp.c	2026-01-13 09:41:27.976284896 +0100
++++ cpgsubp.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsubp_();
+-
++extern void pgsubp_(int *nxsub, int *nysub);
+ void cpgsubp(int nxsub, int nysub)
+ {
+   pgsubp_(&nxsub, &nysub);
+--- cpgsvp.c	2026-01-13 09:41:27.976310356 +0100
++++ cpgsvp.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgsvp_();
+-
++extern void pgsvp_(float *xleft, float *xright, float *ybot, float *ytop);
+ void cpgsvp(float xleft, float xright, float ybot, float ytop)
+ {
+   pgsvp_(&xleft, &xright, &ybot, &ytop);
+--- cpgswin.c	2026-01-13 09:41:27.976335666 +0100
++++ cpgswin.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgswin_();
+-
++extern void pgswin_(float *x1, float *x2, float *y1, float *y2);
+ void cpgswin(float x1, float x2, float y1, float y2)
+ {
+   pgswin_(&x1, &x2, &y1, &y2);
+--- cpgtbox.c	2026-01-13 09:41:27.976359616 +0100
++++ cpgtbox.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgtbox_();
+-
++extern void pgtbox_(const char *xopt, float *xtick, int *nxsub, const char *yopt, float *ytick, int *nysub, int len_xopt, int len_yopt);
+ void cpgtbox(const char *xopt, float xtick, int nxsub, const char *yopt, float ytick, int nysub)
+ {
+   int len_xopt = strlen(xopt);
+--- cpgtext.c	2026-01-13 09:41:27.976431296 +0100
++++ cpgtext.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgtext_();
+-
++extern void pgtext_(float *x, float *y, const char *text, int len_text);
+ void cpgtext(float x, float y, const char *text)
+ {
+   int len_text = strlen(text);
+--- cpgtick.c	2026-01-13 09:41:27.976458816 +0100
++++ cpgtick.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgtick_();
+-
++extern void pgtick_(float *x1, float *y1, float *x2, float *y2, float *v, float *tikl, float *tikr, float *disp, float *orient, const char *str, int len_str);
+ void cpgtick(float x1, float y1, float x2, float y2, float v, float tikl, float tikr, float disp, float orient, const char *str)
+ {
+   int len_str = strlen(str);
+--- cpgunsa.c	2026-01-13 09:41:27.975891616 +0100
++++ cpgunsa.c	2026-01-13 09:28:00.422369666 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgunsa_();
+-
+ void cpgunsa(void)
+ {
+   pgunsa_();
+--- cpgupdt.c	2026-01-13 09:41:27.976485606 +0100
++++ cpgupdt.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgupdt_();
+-
+ void cpgupdt(void)
+ {
+   pgupdt_();
+--- cpgvect.c	2026-01-13 09:41:27.976513346 +0100
++++ cpgvect.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgvect_();
+-
++extern void pgvect_(const float *a, const float *b, int *idim, int *jdim, int *i1, int *i2, int *j1, int *j2, float *c, int *nc, const float *tr, float *blank);
+ void cpgvect(const float *a, const float *b, int idim, int jdim, int i1, int i2, int j1, int j2, float c, int nc, const float *tr, float blank)
+ {
+   pgvect_((float *)a, (float *)b, &idim, &jdim, &i1, &i2, &j1, &j2, &c, &nc, (float *)tr, &blank);
+--- cpgvsiz.c	2026-01-13 09:41:27.976540236 +0100
++++ cpgvsiz.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgvsiz_();
+-
++extern void pgvsiz_(float *xleft, float *xright, float *ybot, float *ytop);
+ void cpgvsiz(float xleft, float xright, float ybot, float ytop)
+ {
+   pgvsiz_(&xleft, &xright, &ybot, &ytop);
+--- cpgvstd.c	2026-01-13 09:41:27.976563056 +0100
++++ cpgvstd.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+ extern void pgvstd_();
+-
+ void cpgvstd(void)
+ {
+   pgvstd_();
+--- cpgwedg.c	2026-01-13 09:41:27.976603736 +0100
++++ cpgwedg.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,7 +1,6 @@
+ #include "cpgplot.h"
+ #include <string.h>
+-extern void pgwedg_();
+-
++extern void pgwedg_(const char *side, float *disp, float *width, float *fg, float *bg, const char *label, int len_side, int len_label);
+ void cpgwedg(const char *side, float disp, float width, float fg, float bg, const char *label)
+ {
+   int len_side = strlen(side);
+--- cpgwnad.c	2026-01-13 09:41:27.976636836 +0100
++++ cpgwnad.c	2026-01-13 09:28:00.423369663 +0100
+@@ -1,6 +1,5 @@
+ #include "cpgplot.h"
+-extern void pgwnad_();
+-
++extern void pgwnad_(float *x1, float *x2, float *y1, float *y2);
+ void cpgwnad(float x1, float x2, float y1, float y2)
+ {
+   pgwnad_(&x1, &x2, &y1, &y2);
