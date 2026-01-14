@@ -1,0 +1,14 @@
+pkgbase = ppd-cpu-boost
+	pkgdesc = Systemd service to synchronize CPU Turbo Boost state with power-profiles-daemon.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/quinsaiz/ppd-cpu-boost
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = power-profiles-daemon
+	source = ppd-cpu-boost-1.0.0.tar.gz::https://github.com/quinsaiz/ppd-cpu-boost/archive/1.0.0.tar.gz
+	sha256sums = 17c72469462f854f0a94da2e874957a7be15866e44e4f64ce089d6c75110aa59
+
+pkgname = ppd-cpu-boost
