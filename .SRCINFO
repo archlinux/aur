@@ -1,0 +1,18 @@
+pkgbase = davinci-resolve-checker-git
+	pkgdesc = Check your system configuration and hardware for ability to successfully run DaVinci Resolve
+	pkgver = 5.2.8
+	pkgrel = 1
+	url = https://github.com/Ashark/davinci-resolve-checker
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = expac
+	depends = mesa-utils
+	depends = python-distro
+	depends = clinfo
+	depends = python-pylspci
+	conflicts = davinci-resolve-checker
+	source = git+https://github.com/Ashark/davinci-resolve-checker.git
+	sha256sums = SKIP
+
+pkgname = davinci-resolve-checker-git

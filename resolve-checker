@@ -1,0 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2026 villamorrd <villamorrd@students.nu-moa.edu.ph>
+ *
+ * SPDX-License-Identifier: 0BSD
+ */
+#! /bin/sh
+
+python3 /opt/davinci-resolve-checker/davinci-resolve-checker.py
