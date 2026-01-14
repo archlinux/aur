@@ -2,7 +2,7 @@
 
 pkgname=biu-tauri-bin
 _pkgname=biu
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A cross-platform desktop music player based on Bilibili API (Tauri Version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 # You can generate this with 'updpkgsums' or 'sha256sum Biu_1.8.0_amd64.deb'
-sha256sums=('bf9759daabde336028f591da6c1254d2ea0231d716bb7261e4311fb9f9ce1446')
+sha256sums=('f631a8a7113fd3c46e309289f48d0d8ec7505cd917bebdd2d08fff5c307c3f57')
 
 package() {
     bsdtar -xf "${pkgname}-${pkgver}.deb" -C "$srcdir"

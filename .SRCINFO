@@ -1,6 +1,6 @@
 pkgbase = biu-tauri-bin
 	pkgdesc = A cross-platform desktop music player based on Bilibili API (Tauri Version)
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/WMsans/biu-tauri
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = biu-tauri-bin
 	conflicts = biu-bin
 	options = !strip
 	options = !debug
-	source = biu-tauri-bin-1.11.0.deb::https://github.com/WMsans/biu-tauri/releases/download/v1.11.0/Biu_1.11.0_amd64.deb
-	sha256sums = bf9759daabde336028f591da6c1254d2ea0231d716bb7261e4311fb9f9ce1446
+	source = biu-tauri-bin-1.12.0.deb::https://github.com/WMsans/biu-tauri/releases/download/v1.12.0/Biu_1.12.0_amd64.deb
+	sha256sums = f631a8a7113fd3c46e309289f48d0d8ec7505cd917bebdd2d08fff5c307c3f57
 
 pkgname = biu-tauri-bin
