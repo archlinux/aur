@@ -7,7 +7,6 @@ pkgbase = hp-omen-gaming-wmi-dkms
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	depends = linux-headers
 	source = git+https://github.com/nevetscar/hp-omen-gaming-wmi-dkms.git
 	sha256sums = SKIP
 
