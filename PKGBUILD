@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 conflicts=('mdns-browser')
 source_x86_64=("https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v$pkgver/mdns-browser_${pkgver}_amd64.deb")
-sha256sums_x86_64=('b74c48df1e7194c8b7e7c4d0bd87c9a3b00246d0dac155d360429daeb193d50e')
+sha256sums_x86_64=('998b26c7c9788ddb983c5c1b30d860e1f8abfab792d3195c11edb3097f564b41')
 package() {
     tar -xz -f data.tar.gz -C "${pkgdir}"
     # Explicitly strip only the binary; !strip in options prevents makepkg's auto-strip phase which also generates 
