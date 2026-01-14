@@ -6,36 +6,23 @@
 
 _android_arch=x86-64
 
-pkgbase=android-${_android_arch}-fftw
-pkgname=("android-${_android_arch}-fftw"
-         "android-${_android_arch}-fftw-openmpi")
+pkgname=android-${_android_arch}-fftw
 pkgver=3.3.10
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (Android ${_android_arch})"
 url="http://www.fftw.org/"
 license=('GPL-2.0-or-later')
 groups=('android-fftw')
-makedepends=('android-cmake'
-             "android-${_android_arch}-openmpi")
+depends=('android-ndk')
+makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://www.fftw.org/fftw-$pkgver.tar.gz")
+source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
 md5sums=('8ccbf6a5ea78a16dbc3e1306e234cc5c')
 _build_types=(single double long-double)
 # Android's clang does not support quad precision
 # _build_types+=(quad)
 _soname=3.6.10
-
-_pick() {
-    local p="$1" f d; shift
-
-    for f; do
-        d="$srcdir/$p/${f#$pkgdir/}"
-        mkdir -p "$(dirname "$d")"
-        mv "$f" "$d"
-        rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-    done
-}
 
 prepare() {
     cd "${srcdir}/fftw-${pkgver}"
@@ -60,6 +47,7 @@ build() {
         -S . \
         -B build \
         -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DBUILD_TESTS=OFF \
         -DDISABLE_FORTRAN=ON \
         -DENABLE_OPENMP=ON \
@@ -73,13 +61,8 @@ build() {
     # fix broken IMPORTED_LOCATION: https://github.com/FFTW/fftw3/issues/130#issuecomment-1030280157
     sed -i "s|\(IMPORTED_LOCATION_NONE\).*|\1 \"${ANDROID_PREFIX_LIB}/libfftw3.so.3\"|g" build/FFTW3LibraryDepends.cmake
 
-    export MPICC=${CC}
-
     # use upstream default CFLAGS while keeping our -march/-mtune
     export CFLAGS="${CFLAGS} -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
-
-    # riscv64
-    # ../../../../simd-support/simd-neon.h:../../../../simd-support/simd-neon.h47::472::2 : error: error: "compiling simd-neon.h requires -mfpu=neon or equivalent""compiling simd-neon.h requires -mfpu=neon or equivalent"
 
     for precision in "${_build_types[@]}"; do
         mkdir -p build-${precision} && pushd build-${precision}
@@ -107,7 +90,7 @@ build() {
                     configure_options="${configure_options} --enable-long-double"
                     ;;
                 quad)
-                    configure_options="${configure_options} --disable-mpi --enable-quad-precision"
+                    configure_options="${configure_options} --enable-quad-precision"
                     ;;
             esac
 
@@ -136,9 +119,8 @@ build() {
                 --disable-doc \
                 --disable-fortran \
                 --enable-threads \
-                --enable-mpi \
                 --enable-openmp \
-                MPILIBS="-Wl,-rpath -Wl,${ANDROID_PREFIX_LIB} -Wl,--enable-new-dtags -lmpi" \
+                --disable-mpi \
                 ${configure_options}
             # fix overlinking because of libtool
             sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -147,10 +129,7 @@ build() {
     done
 }
 
-package_android-x86-64-fftw() {
-    depends=('android-ndk')
-    optdepends=("android-${_android_arch}-fftw-openmpi: for OpenMPI integration")
-
+package() {
     cd "${srcdir}/fftw-${pkgver}"
     source android-env ${_android_arch}
 
@@ -163,18 +142,8 @@ package_android-x86-64-fftw() {
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
-    _pick fftw-openmpi "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"/fftw3-mpi.h
-    _pick fftw-openmpi "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"/fftw3{,l}-mpi.f03
-    _pick fftw-openmpi "${pkgdir}/${ANDROID_PREFIX_LIB}"/libfftw3{,f,l}_mpi.{a,so}
-
     # install missing FFTW3LibraryDepends.cmake
     install -vDm 644 build/FFTW3LibraryDepends.cmake -t "${pkgdir}/${ANDROID_PREFIX_LIB}/cmake/fftw3/"
-}
 
-package_android-x86-64-fftw-openmpi() {
-    pkgdesc+=" - OpenMPI libraries (Android ${_android_arch})"
-    depends=("android-${_android_arch}-fftw"
-             "android-${_android_arch}-openmpi")
-
-    mv -v "${srcdir}/fftw-openmpi"/* "${pkgdir}"
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
