@@ -4,13 +4,13 @@
 
 pkgname=('libvhdi-git')
 pkgver=r197.eb3fce1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to access the Virtual Hard Disk (VHD) image format"
 arch=('x86_64')
 url="https://github.com/libyal/libvhdi"
 license=('LGPL3')
 depends=('python' 'fuse')
-makedepends=('gcc' 'git' 'automake' 'autoconf' 'gettext' 'libtool' 'pkg-config')
+makedepends=('gcc' 'git' 'automake' 'autoconf' 'gettext' 'libtool' 'pkg-config' 'make')
 provides=('libvhdi' 'python3-libvhdi' 'vhditools' 'vhdiinfo' 'vhdimount')
 
 source=("${pkgname}::git+https://github.com/libyal/libvhdi.git")
