@@ -1,7 +1,7 @@
 # Maintainer: Shantanu Baddar <shantanubaddar2006@gmail.com>
 
 pkgname=hyprwave
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A sleek music control bar for Wayland compositors with MPRIS integration"
 arch=('x86_64')
