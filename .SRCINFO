@@ -1,7 +1,7 @@
 pkgbase = asus-5606-fan-state-git
-	pkgdesc = Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606
-	pkgver = r39.5cf10a9
-	pkgrel = 2
+	pkgdesc = Set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606
+	pkgver = r42.787f6b3
+	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/asus-5606-fan-state
 	install = asus-5606-fan-state.install
 	arch = any
