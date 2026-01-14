@@ -1,0 +1,19 @@
+pkgbase = morse-git
+	pkgdesc = Learn Morse Code and High Speed Telegraphy.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/teacond/Morse
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = alsa-lib
+	source = git+https://www.github.com/teacond/Morse.git
+	sha256sums = SKIP
+
+pkgname = morse-git
