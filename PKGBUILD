@@ -34,7 +34,7 @@ pkgname=comsol-multiphysics
 _installername=COMSOL64_lnx
 pkgver=6.4.0.293
 _pkgver_major=6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research'
 arch=('x86_64')
 url='https://www.comsol.com/comsol-multiphysics'
@@ -249,7 +249,7 @@ package()
     install -Dm644 "${srcdir}/applications/comsol-multiphysics-$_pkgver_major.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
 
     install -Dm755 -d "${pkgdir}${_installdir}"
-    cp -rv "$srcdir/install" "${pkgdir}${_installdir}"
+    cp -rv "$srcdir/install"/* "${pkgdir}${_installdir}/"
 
     # Install bin symlinks
     mkdir -p "${pkgdir}/usr/local/bin"
