@@ -1,16 +1,14 @@
 pkgbase = nifticlib
 	pkgdesc = Collection of i/o routines for the nifti1 neuroimage data format
-	pkgver = 2.0.0
-	pkgrel = 2
-	url = https://nifti.nimh.nih.gov/
-	arch = any
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/NIFTI-Imaging/nifti_clib
+	arch = x86_64
 	license = custom:public domain
 	makedepends = cmake
-	provides = nifticlib
-	source = http://downloads.sourceforge.net/project/niftilib/nifticlib/nifticlib_2_0_0/nifticlib-2.0.0.tar.gz
-	source = https://raw.githubusercontent.com/daducci/COMMIT/master/extras/CMake/FindNIFTI.cmake
-	md5sums = 425a711f8f92fb1e1f088cbc55bea53a
-	md5sums = 0bc60d46f415d9e622e16c9463cd1ef6
+	makedepends = help2man
+	depends = zlib
+	source = https://github.com/NIFTI-Imaging/nifti_clib/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = fe6cb1076974df01844f3f4dab1aa844953b3bc1d679126c652975158573d03d
 
 pkgname = nifticlib
-
