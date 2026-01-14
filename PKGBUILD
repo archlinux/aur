@@ -1,14 +1,14 @@
 # Maintainer: 0xMew <hacker@localhost>
 pkgname=0xmew-toolkit
-pkgver=3.5
-pkgrel=1
+pkgver=3.6
+pkgrel=2
 pkgdesc="Advanced Network Attack Toolkit by 0xMew (ARP Spoof, Kill, SNI Spy)"
 arch=('any')
 url="https://github.com/0xMewhx/0xMew-toolkit"
 license=('MIT')
 depends=('python' 'tcpdump' 'ethtool' 'macchanger' 'python-scapy' 'python-cryptography' 'nmap' 'aircrack-ng' 'wireless_tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3b310c1836957ba0d7c9e257b2dff73a6451a8dc178da3bbebfb8d9522b9fc04')
 
 package() {
     cd "0xMew-toolkit-${pkgver}"

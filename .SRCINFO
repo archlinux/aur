@@ -1,7 +1,7 @@
 pkgbase = 0xmew-toolkit
 	pkgdesc = Advanced Network Attack Toolkit by 0xMew (ARP Spoof, Kill, SNI Spy)
-	pkgver = 3.5
-	pkgrel = 1
+	pkgver = 3.6
+	pkgrel = 2
 	url = https://github.com/0xMewhx/0xMew-toolkit
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = 0xmew-toolkit
 	depends = nmap
 	depends = aircrack-ng
 	depends = wireless_tools
-	source = 0xmew-toolkit-3.5.tar.gz::https://github.com/0xMewhx/0xMew-toolkit/archive/refs/tags/v3.5.tar.gz
-	sha256sums = SKIP
+	source = 0xmew-toolkit-3.6.tar.gz::https://github.com/0xMewhx/0xMew-toolkit/archive/refs/tags/v3.6.tar.gz
+	sha256sums = 3b310c1836957ba0d7c9e257b2dff73a6451a8dc178da3bbebfb8d9522b9fc04
 
 pkgname = 0xmew-toolkit
