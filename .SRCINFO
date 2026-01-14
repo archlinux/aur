@@ -12,7 +12,7 @@ pkgbase = seanime-git
 	makedepends = go>=1.25.1
 	makedepends = gcc-libs
 	makedepends = glibc
-	makedepends = electron36
+	makedepends = electron39
 	source = git+https://github.com/5rahim/seanime.git
 	source = seanime-denshi.desktop
 	source = seanime-denshi.sh.in
