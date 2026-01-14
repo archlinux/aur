@@ -29,5 +29,5 @@ build()
 package()
 {
   cd "$pkgname"
-  make LICENSE="LICENSE.0BSD" DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
