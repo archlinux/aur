@@ -1,13 +1,15 @@
-# Maintainer: Benjamin Bukowski <b at bkwsk dot de>
+# Maintainer: Nico <d3sox at protonmail dot com>
+# Contributor: Benjamin Bukowski <b at bkwsk dot de>
+
 pkgname=krunner-firefox-git
-pkgver=r108.9a58497
-pkgrel=1
+pkgver=r140.462a302
+pkgrel=2
 pkgdesc="Launch Firefox profiles from Krunner and your normal launcher."
 arch=('x86_64')
 url="https://github.com/alex1701c/krunner-firefox"
 license=('GPL3')
 depends=('firefox')
-makedepends=('cmake' 'extra-cmake-modules' 'kcmutils5')
+makedepends=('cmake' 'extra-cmake-modules' 'kcmutils')
 optdepends=('proxychains-ng: Launch specific profiles over a proxy')
 source=("$pkgname::git+https://github.com/alex1701c/krunner-firefox.git" 'private_browsing_firefox.svg')
 sha256sums=('SKIP'
@@ -19,10 +21,16 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${pkgname}" \
-		    -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTING=OFF
+    local _cmake_args=(
+	-B build
+	-S "$pkgname"
+	-W no-dev
+	-D CMAKE_BUILD_TYPE=Release
+	-D BUILD_WITH_QT6=ON
+	-D BUILD_TESTING=OFF
+    )
 
+    cmake "${_cmake_args[@]}"
     cmake --build build
 }
 

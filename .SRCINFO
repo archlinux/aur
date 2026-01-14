@@ -1,13 +1,13 @@
 pkgbase = krunner-firefox-git
 	pkgdesc = Launch Firefox profiles from Krunner and your normal launcher.
-	pkgver = r108.9a58497
-	pkgrel = 1
+	pkgver = r140.462a302
+	pkgrel = 2
 	url = https://github.com/alex1701c/krunner-firefox
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kcmutils5
+	makedepends = kcmutils
 	depends = firefox
 	optdepends = proxychains-ng: Launch specific profiles over a proxy
 	source = krunner-firefox-git::git+https://github.com/alex1701c/krunner-firefox.git
