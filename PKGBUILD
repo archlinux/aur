@@ -3,7 +3,7 @@
 _pkgauthor=dlvhdr
 _pkgname=diffnav
 pkgname=${_pkgname}-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A git diff pager based on delta but with a file tree, à la Github."
 arch=('x86_64' 'i686' 'aarch64')
@@ -21,10 +21,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 sha256sums=('de036f76c1af8b3d425bbaa2e06863e0cc9b909ccad8aa671cb13647c3872f4b'
-            '181962758e02b937f01d9cdc3ac51ac63e616632c1da6aacce3bf0a9e563596f')
-sha256sums_x86_64=('6706262aefa0af0f70370411d7ad8daa197cb2c4647d337763a098700fd0f1c9')
-sha256sums_i686=('8ed2f589ff4f40f3529200f8ffcdb6327767e928ba25b59a37249cbef50d9fdd')
-sha256sums_aarch64=('94f6eeebf48d43186d8f02a75a5f5ceeb205afa01f70234899a46a49864a9dcb')
+            '93970ed4a7ed3324a4d31d447a47135066e931eb572f378af2d1610d4a8201c8')
+sha256sums_x86_64=('3d2e53b8fc054e6f04983006181c81d9b9feaa909d73988d6a2d225969e5a3df')
+sha256sums_i686=('5a3c7333c08fe34bb92c391b6eb6f796ae98f984034fd0695412f7db24e50d3c')
+sha256sums_aarch64=('7c444097f128a67ec751eabcff9740c29321434a59183c87f21947193470f678')
 
 package() {
   cd "$srcdir/"
