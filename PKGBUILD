@@ -20,7 +20,7 @@ sha512sums=('73bf054122fc6a0372deee3f0613f3432bc59c6a55e30277a9e202de325af1150b8
             '6f6f20b017191f452081051a279eda28ad938bf1a46ffa29377fcd4c059240f52e070a95a6facff10115e672c69971b122df1c739361364741779b30c46f408c')
 build() {
     git clone --recurse-submodules -b stable https://activitypub.software/TransFem-org/Sharkey.git
-    cd "$pkgname"
+    cd "Sharkey"
     pnpm install --frozen-lockfile
     pnpm run build
 }
