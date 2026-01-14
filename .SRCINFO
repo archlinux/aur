@@ -1,0 +1,17 @@
+pkgbase = hei-datahub
+	pkgdesc = Lightweight local data hub with TUI for managing datasets
+	pkgver = 0.62.0
+	pkgrel = 1
+	url = https://github.com/0xpix/Hei-DataHub
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = HeiDataHub-0.62.0-x86_64.AppImage::https://github.com/0xpix/Hei-DataHub/releases/download/0.62.0/HeiDataHub-0.62.0-x86_64.AppImage
+	source = hei-datahub.desktop
+	source = hei-datahub.png::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/assets/png/icon_1024.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hei-datahub

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Hei-DataHub
+GenericName=Data Hub
+Comment=Lightweight local data hub with TUI for managing datasets
+Exec=hei-datahub
+Icon=hei-datahub
+Terminal=true
+Categories=Utility;Development;Database;
+Keywords=data;catalog;metadata;tui;datahub;
+StartupNotify=false
