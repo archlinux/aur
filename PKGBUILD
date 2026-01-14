@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.15.1.r1.g3cde64f
-_electronversion=33
+pkgver=1.17.0.r0.g5e47852
+_electronversion=39
 _nodeversion=20
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client.(Use system-wide electron)"
@@ -23,13 +23,14 @@ makedepends=(
     'nvm'
     'curl'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -42,8 +43,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -51,7 +58,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -67,17 +73,17 @@ prepare() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     sed -i "s/, 'create-rpm-installer'//g" app/build/Gruntfile.js
     sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    git submodule update --depth=1 --init --recursive
-    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm ci
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     NODE_ENV=production     npm run build
     sed "s/${_pkgname}.desktop/${pkgname%-git}.desktop/g" -i app/dist/"${pkgname%-git}".appdata.xml
 }
