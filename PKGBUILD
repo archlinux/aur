@@ -21,7 +21,7 @@ options=(!strip)
 _exe="$pkgname-$pkgver-$CARCH"
 
 source=("${_src}/raw/${pkgver}/README.md"
-		"${_src}/raw/${pkgver}/LICENSE.md")
+	"${_src}/raw/${pkgver}/LICENSE.md")
 source_x86_64=("${_exe}::${_src}/releases/download/${pkgver}/Noco-linux-x64")
 sha256sums=('bdf1e65297068f863d5082a820c41b60180f61786a133d10d753b6abecd652df'
             '4f051606c68addfcc5eedd2898192e9dc11063f2895ebb407349adc487dbfc84')
@@ -35,5 +35,5 @@ package() {
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
