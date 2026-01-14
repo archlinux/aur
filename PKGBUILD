@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Vulkan spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
@@ -24,7 +24,7 @@ makedepends=(
 provides=("pascube")
 conflicts=("pascube-git")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a16f483c4288261f2972236cd46e1d418eb0b92a36e7b472446d2845cbf646c2')
+sha256sums=('6aa5477de37adff8af37fbc61047fda370372c74fb32d3eeae91ce23d9fe7497')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -78,19 +78,14 @@ package() {
   BIN_PATH="$(< .built_binary_path)"
   [[ -x "${BIN_PATH}" ]] || { echo "Error: built binary not executable: ${BIN_PATH}"; exit 1; }
 
-  # Install the real binary under /usr/lib/pascube/bin
-  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname}/bin/${pkgname}"
+  # Install binary directly to /usr/bin (no wrapper needed)
+  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install assets into /usr/lib/pascube/assets
-  # We assume 'assets' is a directory in the build root
-  cp -a assets "${pkgdir}/usr/lib/${pkgname}/"
-
-  # Wrapper: force X11 via xcb
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
-#!/bin/sh
-export QT_QPA_PLATFORM=xcb
-exec /usr/lib/pascube/bin/pascube "$@"
-EOF
+  # Install assets into /usr/share/pascube/assets
+  # The app looks for assets at: <exe_dir>/../share/pascube/assets
+  # When exe is in /usr/bin, this resolves to /usr/share/pascube/assets
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a assets "${pkgdir}/usr/share/${pkgname}/"
 
   # Create and install desktop file
   cat <<EOF2 > pascube.desktop
