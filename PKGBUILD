@@ -2,7 +2,7 @@
 
 pkgname=sharkey
 pkgver=2025.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A Sharkish microblogging platform'
 url='https://activitypub.software/TransFem-org/Sharkey'
 license=('AGPL')
@@ -11,6 +11,7 @@ depends=(npm pnpm postgresql valkey ffmpeg python pango)
 provides=("$pkgname")
 backup=('var/lib/sharkey/Sharkey/.config/default.yml')
 install=sharkey.install
+options=(!strip)
 source=('sharkey.sysusers'
         'sharkey.tmpfiles'
         'sharkey.service'
