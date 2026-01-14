@@ -3,7 +3,7 @@
 
 # You need to provide the online installer manually from https://www.comsol.com/product-download and your license file. Place them in this directory together with this PKGBUILD.
 # This PKGBUILD runs the installer inside a container, and then extracts the needed files, allowing for a clean system install without the need for root priveleges during installation.
-# Note: you may need to use a corporate VPN for your license to be valid. Failing to do so can result in an error during installation.
+# Note: you may need to use a corporate VPN for your license to be valid. Failing to do so can result in an error during installation such as 'FlexNet Licensing error:-15,570.  System Error: 115 "Operation now in progress"'.
 # The build step uses excessive amount of memory, so you may not want to use /tmp as $BUILDDIR for this package. You can easily run out of memory if you do. I know 32 GB of RAM is not enough to install from tmpfs. You set $BUILDDIR to somewhere on your disk.
 
 # Alternate instructions for creating a tarball manually (if all else fails) courtesy of Haionan Chen:
@@ -33,7 +33,8 @@
 pkgname=comsol-multiphysics
 _installername=COMSOL64_lnx
 pkgver=6.4.0.293
-pkgrel=1
+_pkgver_major=6.4
+pkgrel=2
 pkgdesc='A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research'
 arch=('x86_64')
 url='https://www.comsol.com/comsol-multiphysics'
@@ -41,6 +42,7 @@ license=('LicenseRef-Comsol')
 depends=(base base-devel)
 optdepends=(
     'matlab: LiveLink™ for MATLAB®'
+    'tcsh: Required for interoperability with MATLAB®'
     'cuda: NVIDIA CUDA® Toolkit'
 )
 makedepends=(
@@ -160,13 +162,18 @@ EOF
     sed -i "s/showgui =.*\$/showgui = 0/g" "$_installername/setupconfig.ini"
     sed -i "s/autofinish =.*\$/autofinish = always/g" "$_installername/setupconfig.ini"
     sed -i "s#license =.*\$#license = $_license#g" "$_installername/setupconfig.ini"
- 
+
+    _tcsh=
+    if command -v csh; then
+        _tcsh='tcsh'
+    fi
+
     # Prepare dockerfile
     cat > "Dockerfile" << EOF
 FROM archlinux:latest
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S --needed --noconfirm base base-devel unzip
+RUN pacman -S --needed --noconfirm base base-devel unzip $_tcsh
 RUN chmod +x /root/comsol/setup
 RUN /root/comsol/setup -s /root/comsol/setupconfig.ini
 EOF
@@ -178,23 +185,57 @@ EOF
 build()
 {
     cd "${srcdir}"
-    
-    echo 'Building inside rootless container'
-    podman build \
-        --network=host \
-        --device=/dev/net/tun \
-        --add-host=$(_hostof fastly.mirror.pkgbuild.com) \
-        --add-host=$(_hostof geo.mirror.pkgbuild.com) \
-        --add-host=$(_hostof archlinux.org) \
-        --add-host=$(_hostof "$_license_server") \
-        --add-host=$(_hostof nonusdownload.comsol.com) \
-        --add-host=$(_hostof update.comsol.com) \
-        --add-host=$(_hostof comsol.com) \
-        -v "$_license_file":"$_license_mnt":ro \
-        -v "$srcdir/applications":/usr/share/applications:rw \
-        -v "$srcdir/install":"$_installdir":rw \
-        -v "$srcdir/$_installername":"/root/comsol":rw \
-        -t install_comsol .
+  
+    if test -f log.txt \
+        && grep -q 'Installation complete' log.txt \
+        && grep -q '0 ERRORS' log.txt \
+        && grep -q '0 FATAL ERRORS' log.txt \
+    ; then
+        echo "Already built"
+    else
+        echo "" > log.txt
+
+        podman rmi --ignore localhost/install_comsol:latest
+
+        echo 'Building inside rootless container'
+        podman build \
+            --network=host \
+            --device=/dev/net/tun \
+            --add-host=$(_hostof fastly.mirror.pkgbuild.com) \
+            --add-host=$(_hostof geo.mirror.pkgbuild.com) \
+            --add-host=$(_hostof archlinux.org) \
+            --add-host=$(_hostof "$_license_server") \
+            --add-host=$(_hostof nonusdownload.comsol.com) \
+            --add-host=$(_hostof update.comsol.com) \
+            --add-host=$(_hostof comsol.com) \
+            -v "$_license_file":"$_license_mnt":ro \
+            -v "$srcdir/applications":/usr/share/applications:rw \
+            -v "$srcdir/install":"$_installdir":rw \
+            -v "$srcdir/$_installername":"/root/comsol":rw \
+            --force-rm=true \
+            --rm=true \
+            -t install_comsol . \
+            2> /dev/null \
+            | while read -r _line; do 
+                echo "[container] $_line"
+                echo "$_line" >> log.txt
+            done
+        podman rmi --ignore localhost/install_comsol:latest
+
+        # For some reason the install script always returns an error code, so i have to handle errors manually
+        if ! grep -q 'Installation complete' log.txt; then
+            echo "Installation did not complete successfully"
+            exit 1
+        fi
+        if ! grep -q '0 ERRORS' log.txt; then
+            echo "Installation failed with errors"
+            exit 1
+        fi
+        if ! grep -q '0 FATAL ERRORS' log.txt; then
+            echo "Installation failed with fatal errors"
+            exit 1
+        fi
+    fi
 }
 
 package()
@@ -205,9 +246,12 @@ package()
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install desktop entry
-    install -Dm644 "${srcdir}/applications/comsol-multiphysics*.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
+    install -Dm644 "${srcdir}/applications/comsol-multiphysics-$_pkgver_major.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
 
-    mkdir -p "${pkgdir}/${_installdir}"
-    cp -r "$srcdir/install" "${pkgdir}/${_installdir}"
-    ln -sv "/usr/local/bin/comsol" "${pkgdir}/${_installdir}/bin/comsol"
+    install -Dm755 -d "${pkgdir}${_installdir}"
+    cp -rv "$srcdir/install" "${pkgdir}${_installdir}"
+
+    # Install bin symlinks
+    mkdir -p "${pkgdir}/usr/local/bin"
+    ln -fsv "${_installdir}/bin/comsol" "${pkgdir}/usr/local/bin/comsol"
 }
