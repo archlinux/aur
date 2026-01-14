@@ -14,6 +14,7 @@ license=('unknown')
 depends=('openrc' 'adguardhome')
 provides=('init-adguardhome')
 conflicts=('init-adguardhome')
+backup=('etc/conf.d/adguardhome')
 source=("adguardhome.confd::${_gitlab_api_path}adguardhome.confd/raw?ref=${_commit}"
         "adguardhome.initd::${_gitlab_api_path}adguardhome.initd/raw?ref=${_commit}"
         'adguardhome.sysusers'
