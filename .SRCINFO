@@ -1,0 +1,17 @@
+pkgbase = csctl-bin
+	pkgdesc = csctl
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/SovereignCloudStack/csctl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = csctl
+	conflicts = csctl-git
+	conflicts = csctl
+	source_x86_64 = csctl-x86_64.tar.gz::https://github.com/SovereignCloudStack/csctl/releases/download/v0.0.5/csctl_0.0.5_linux_amd64.tar.gz
+	sha512sums_x86_64 = e64897c7e9f2f34c976e4c68a51964804d061335b0dcd6357d467e2e38463a639003955287731b14b9880ffa4dac29631c50f02bf7596ab43036bdae21bc5753
+	source_aarch64 = csctl-aarch64.tar.gz::https://github.com/SovereignCloudStack/csctl/releases/download/v0.0.5/csctl_0.0.5_linux_arm64.tar.gz
+	sha512sums_aarch64 = 5c2a7a9b000a227bec1c7edfc366822dfbcb9e27720fbc11a11dc97ab3f12420af06e3782d7bc508eba4aae418db35b80268ddc5a55ff4a473c3e2df6a57ad02
+
+pkgname = csctl-bin
