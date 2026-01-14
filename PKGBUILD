@@ -7,22 +7,21 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-pocl
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 arch=('any')
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (Android ${_android_arch})"
 url="http://portablecl.org/"
 license=('GPL')
 groups=('android-pocl')
-depends=("android-${_android_arch}-hwloc"
-         "android-${_android_arch}-opencl-icd-loader")
+depends=("android-${_android_arch}-opencl-icd-loader")
 makedepends=('android-cmake'
              "android-${_android_arch}-opencl-headers"
              "android-${_android_arch}-ocl-icd"
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/pocl/pocl/archive/v${pkgver}.tar.gz")
-md5sums=('befc20fc6bbf42c892dbc3a075155480')
+md5sums=('a75343c97b172f64ec4b4eb910184fba')
 
 prepare() {
     cd "${srcdir}/pocl-${pkgver}"
@@ -50,6 +49,7 @@ build() {
         -DENABLE_LLVM=OFF \
         -DENABLE_TESTS=OFF \
         -DENABLE_POCLCC=OFF \
+        -DENABLE_HWLOC=OFF \
         -DHOST_DEVICE_BUILD_HASH=x86_64-linux-gnu \
         -DOCL_ICD_LIBRARIES="${ANDROID_PREFIX_LIB}/libOpenCL.so" \
         -DPOCL_INSTALL_ICD_VENDORDIR="${ANDROID_PREFIX_ETC}/OpenCL/vendors"
@@ -77,6 +77,7 @@ build() {
         -DENABLE_LLVM=OFF \
         -DENABLE_TESTS=OFF \
         -DENABLE_POCLCC=OFF \
+        -DENABLE_HWLOC=OFF \
         -DHOST_DEVICE_BUILD_HASH=x86_64-linux-gnu \
         -DOCL_ICD_LIBRARIES="${ANDROID_PREFIX_LIB}/libOpenCL.a" \
         -DPOCL_INSTALL_ICD_VENDORDIR="${ANDROID_PREFIX_ETC}/OpenCL/vendors"
@@ -94,4 +95,6 @@ package() {
     rmdir "${pkgdir}/${ANDROID_PREFIX_LIB}/static"
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
