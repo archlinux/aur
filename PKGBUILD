@@ -2,7 +2,7 @@
 _pkgname="asus-5606-fan-state"
 pkgname="${_pkgname}-git"
 pkgver=r39.5cf10a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
 arch=('any')
 url="https://github.com/ThatOneCalculator/${_pkgname}"
@@ -10,6 +10,11 @@ license=('MIT')
 makedepends=('cargo' 'git' 'pkg-config')
 optdepends=('dbus: sending dbus signal')
 provides=("${_pkgname}")
+conflicts=(
+    "${_pkgname}"
+    "${_pkgname}-git"
+    "${_pkgname}-bin"
+)
 source=("git+$url.git")
 noextract=()
 sha256sums=('SKIP')
