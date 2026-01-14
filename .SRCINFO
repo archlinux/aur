@@ -1,7 +1,7 @@
 pkgbase = photoqt-bin
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface (binary release)
 	pkgver = 5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://photoqt.org/
 	install = photoqt.install
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = photoqt-bin
 	provides = photoqt-bin-debug
 	conflicts = photoqt
 	conflicts = photoqt-debug
-	source = https://photoqt.org/downloads/bin/photoqt-5.0.tar.gz
-	sha256sums = 28b426fc79188c441bdcc7c64ba19fb22e9b3a3bed658f4eb7d57331593b18c5
+	source = https://photoqt.org/downloads/bin/photoqt-5.0.0.1.tar.gz
+	sha256sums = 358b149a43bae87f36ffb1aea35f789008c078d746ad0e6b8640e99e6302b0f0
 
 pkgname = photoqt-bin
