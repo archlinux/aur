@@ -1,0 +1,16 @@
+pkgbase = ruarch
+	pkgdesc = A simple AUR helper written in Ruby
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mochacinno-dev/rua
+	arch = any
+	license = GNU GPLv3
+	makedepends = git
+	depends = ruby
+	depends = git
+	depends = base-devel
+	depends = pacman
+	source = git+https://github.com/mochacinno-dev/rua.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = ruarch
