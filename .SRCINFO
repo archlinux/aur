@@ -1,0 +1,16 @@
+pkgbase = python-emoji-country-flag
+	pkgdesc = En/Decode unicode country flags emoji
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/cvzi/flag
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/emoji_country_flag/emoji_country_flag-2.1.0.tar.gz
+	sha256sums = 3b4df6a9d9961ab7716090689c2e96405baff68e46849ab2704335d904589f2a
+
+pkgname = python-emoji-country-flag
