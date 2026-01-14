@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-bin
 	pkgdesc = Raw image converter forked from RawTherapee with ease of use in mind
-	pkgver = 1.25.12
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://github.com/artpixls/ART
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = art-rawconverter-bin
 	conflicts = art-rawconverter
 	options = !strip
 	options = !debug
-	source = art-rawconverter-1.25.12.tar.xz::https://github.com/artpixls/ART/releases/download/1.25.12/ART-1.25.12-linux64.tar.xz
-	sha256sums = a3024227ee52934de7e0c45ef64e5a64eeb79f2b8f0c8b2af5a0a3ae3e1a1620
+	source = art-rawconverter-1.26.1.tar.xz::https://github.com/artpixls/ART/releases/download/1.26.1/ART-1.26.1-linux64.tar.xz
+	sha256sums = fa55c8679fc6ae6c90ef8309538516437e39ec4713b562f6a28e87a2106e9222
 
 pkgname = art-rawconverter-bin

@@ -4,7 +4,7 @@
 
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.25.12
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://github.com/artpixls/ART"
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 _pkgsrc="ART-$pkgver-linux64"
 _pkgext="tar.xz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('a3024227ee52934de7e0c45ef64e5a64eeb79f2b8f0c8b2af5a0a3ae3e1a1620')
+sha256sums=('fa55c8679fc6ae6c90ef8309538516437e39ec4713b562f6a28e87a2106e9222')
 
 prepare() {
   cat "$_pkgsrc/share/applications/ART.desktop" \
@@ -36,16 +36,16 @@ prepare() {
 
 package() {
   # main files
-  install -dm755 "$pkgdir/$_install_path"
-  cp --reflink=auto -r "$_pkgsrc" "$pkgdir/$_install_path/$_pkgname"
+  mkdir -pm755 "$pkgdir/$_install_path"
+  cp -r "$_pkgsrc" "$pkgdir/$_install_path/$_pkgname"
 
   # symlinks
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/$_install_path/$_pkgname/ART" "$pkgdir/usr/bin/art"
-  ln -srf "$pkgdir/$_install_path/$_pkgname/ART-cli" "$pkgdir/usr/bin/art-cli"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf "/$_install_path/$_pkgname/ART" "$pkgdir/usr/bin/art"
+  ln -sf "/$_install_path/$_pkgname/ART-cli" "$pkgdir/usr/bin/art-cli"
 
-  install -dm755 "$pkgdir/usr/share/man/man1"
-  ln -srf "$pkgdir/$_install_path/$_pkgname/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
+  mkdir -pm755 "$pkgdir/usr/share/man/man1"
+  ln -sf "/$_install_path/$_pkgname/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
 
   # icon
   install -Dm644 "$srcdir/$_pkgsrc/share/icons/hicolor/256x256/apps/ART.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
