@@ -1,7 +1,7 @@
 pkgbase = libvhdi-git
 	pkgdesc = Library and tools to access the Virtual Hard Disk (VHD) image format
-	pkgver = r142.58c6aa2
-	pkgrel = 2
+	pkgver = r197.eb3fce1
+	pkgrel = 1
 	url = https://github.com/libyal/libvhdi
 	arch = x86_64
 	license = LGPL3
@@ -12,14 +12,14 @@ pkgbase = libvhdi-git
 	makedepends = gettext
 	makedepends = libtool
 	makedepends = pkg-config
-	depends = python2
 	depends = python
 	depends = fuse
 	provides = libvhdi
-	provides = python2-libvhdi
 	provides = python3-libvhdi
-	source = libvhdi-git::git://github.com/libyal/libvhdi.git
+	provides = vhditools
+	provides = vhdiinfo
+	provides = vhdimount
+	source = libvhdi-git::git+https://github.com/libyal/libvhdi.git
 	md5sums = SKIP
 
 pkgname = libvhdi-git
-
