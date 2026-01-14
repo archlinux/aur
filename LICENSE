@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2021 Carl Joshua Quines and Evan Chen
+Copyright (c) 2021 Evan Chen and CJ Quines
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
