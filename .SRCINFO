@@ -1,0 +1,46 @@
+pkgbase = python-easyofd
+	pkgdesc = Easy operate OFD
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/renoyuan/easyofd
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-reportlab
+	makedepends = python-xmltodict
+	makedepends = python-loguru
+	makedepends = python-fonttools
+	makedepends = python-pymupdf
+	makedepends = python-pyasn1
+	makedepends = python-pillow
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pyqt6
+	makedepends = imagemagick
+	makedepends = nuitka
+	source = python-easyofd::git+https://github.com/renoyuan/easyofd.git#tag=v0.5.1
+	sha512sums = c56f26484a38dde007382ae0ce01fa0ca1ebc4cfb045a0ed574fc3e89c1b457930b6786190aa32cdd7dd07c3bdbed2d2ac9e655c3415afaa7fd3f1cbdf40d1aa
+
+pkgname = python-easyofd
+	arch = any
+	depends = python
+	depends = python-reportlab
+	depends = python-xmltodict
+	depends = python-loguru
+	depends = python-fonttools
+	depends = python-pymupdf
+	depends = python-pyasn1
+	depends = python-pillow
+	optdepends = tesseract-data-chi_sim: OCR data (chi_sim)
+
+pkgname = easyofd
+	pkgdesc = Easy operate OFD - GUI
+	arch = x86_64
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	options = !lto
