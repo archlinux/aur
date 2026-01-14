@@ -1,10 +1,11 @@
 # Contributor: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 # Contributor: Julien Morin <morin.jul@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Cees Bassa <cbassa [at] mailbox [dt] org>
 
 pkgname=pgplot
 pkgver=5.2.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Fortran- or C-callable, device-independent graphics package for making simple scientific graphs."
 url="http://www.astro.caltech.edu/~tjp/pgplot/"
 license=('custom')
@@ -13,8 +14,8 @@ arch=('i686' 'x86_64')
 makedepends=('gcc-fortran')
 depends=('libpng' 'libx11')
 changelog=ChangeLog
-source=(ftp://ftp.astro.caltech.edu/pub/pgplot/${pkgname}522.tar.gz pndriv.c.patch)
-md5sums=('e8a6e8d0d5ef9d1709dfb567724525ae' '25535f059b2e39ea44f93c24a41abacd')
+source=(ftp://ftp.astro.caltech.edu/pub/pgplot/${pkgname}522.tar.gz pndriv.c.patch cpg.patch)
+md5sums=('e8a6e8d0d5ef9d1709dfb567724525ae' '25535f059b2e39ea44f93c24a41abacd' '0d684a97460aa944f514bd2eaa84058d')
 
 build() {
   cd $srcdir/$pkgname
@@ -33,6 +34,7 @@ build() {
 
   ./makemake . linux g77_gcc
   sed -i 's=pndriv.o : ./png.h ./pngconf.h ./zlib.h ./zconf.h=#pndriv.o : ./png.h ./pngconf.h ./zlib.h ./zconf.h=' makefile
+  sed -i "902a\\$(printf '\t')patch -p0 -i ${srcdir}/cpg.patch" makefile
   make FCOMPL=gfortran SHARED_LIB_LIBS="-lpng -lz -lX11" all cpg || return 1
 }
 
