@@ -48,7 +48,7 @@ source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
 		#https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
 		#https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
 		#krb5.patch
-        https://github.com/Morganamilo/paru/pull/1498.patch
+		rust_2024_edition.patch
 )
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
@@ -154,7 +154,7 @@ prepare() {
   rustup target add $TARGET
   #sed -i "s/version = \"2.1.0\"/version = \"2.2.0\"/" Cargo.toml 
   #sed -i "s/edition = \"2021\"/edition = \"2024\"/" Cargo.toml 
-  patch -p1 -i ${srcdir}/1498.patch
+  patch -p1 -i ${srcdir}/rust_2024_edition.patch
   cargo update
   #cargo update paru
   cargo fetch --locked --target $TARGET
