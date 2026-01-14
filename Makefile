@@ -2,6 +2,9 @@
 .DEFAULT_GOAL := help
 .PHONY: help download_source update_hashes update_srcinfo update_all
 
+makepkg_install: pkgbuild ## Build and install Arch package using PKGBUILD (PKGBUILD must exist)
+	makepkg -si
+
 update_hashes: ## download the source and update the checksums in PKGBUILD for all sources using
 	updpkgsums
 
@@ -9,7 +12,7 @@ update_srcinfo: update_hashes ## Regenerate .SRCINFO from PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
 pkgbuild: ## Build Arch package using PKGBUILD (PKGBUILD must exist)
-	make update_hash_srcinfo
+	make update_srcinfo
 	makepkg -f
 
 clean_build: ## Remove build, dist, *.egg-info, pkg, and src directories

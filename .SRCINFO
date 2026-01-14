@@ -11,6 +11,8 @@ pkgbase = arch-check
 	makedepends = python-setuptools
 	depends = python
 	source = arch_check-0.3.0.tar.gz::https://github.com/kidpixo/arch_check/archive/refs/tags/v0.3.0.tar.gz
+	source = LICENSE
 	sha256sums = 85d62596bcb27463c3ab4238039b6808d8d75bb747911245527e8fc725b90eba
+	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 
 pkgname = arch-check
