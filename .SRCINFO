@@ -1,6 +1,6 @@
 pkgbase = klit-bin
 	pkgdesc = The successor to BaoBao. A modern, privacy-focused client for the e621 community. Built with user experience and data protection as top priorities.
-	pkgver = 5.0.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://gitlab.com/Openlyst/klit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = klit-bin
 	provides = klit
 	conflicts = klit
 	options = !strip
-	source = klit-bin-5.0.0.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-25/klit-5.0.0-2026-01-12-linux-x64.zip
+	source = klit-bin-6.0.0.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-49/klit-6.0.0-2026-01-14-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = klit-bin

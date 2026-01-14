@@ -1,6 +1,6 @@
 # Maintainer: Zhenxi
 pkgname=klit-bin
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="The successor to BaoBao. A modern, privacy-focused client for the e621 community. Built with user experience and data protection as top priorities."
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('klit')
 conflicts=('klit')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-25/klit-5.0.0-2026-01-12-linux-x64.zip")
+source=("${pkgname}-${pkgver}.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-49/klit-6.0.0-2026-01-14-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
