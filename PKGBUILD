@@ -2,9 +2,9 @@
 
 pkgname=sonic-win
 _pkgname=kwin-x11
-pkgver=6.5.4
+pkgver=6.5.5
 _pkgver=$pkgver
-_pkgtag=6.5.4
+_pkgtag=$pkgver
 pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
@@ -72,13 +72,12 @@ makedepends=(extra-cmake-modules
              python
              wayland-protocols)
 groups=(sonic-de)
-provides=($_pkgname $_pkgname-sonic)
-conflicts=($_pkgname $_pkgname-sonic)
-replaces=($_pkgname-sonic)
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("git+${url}.git#tag=${_pkgtag}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('523e7a736a30e64021040cf1f637b880df8695161692346f27520a475554df2e')
+sha256sums=('a77fb21faf11240af95160365f67f20538add7b77599da6d025150b4841898c8')
 
 build() {
   cmake -B build -S $pkgname \
