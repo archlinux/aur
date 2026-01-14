@@ -28,9 +28,9 @@ source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/bu
         "LICENSE")
 
 # generated with: updpkgsums
-sha256sums=('65784c6639da1ec5738e7c8d71392d410c9dd8051a35f9236a7f173ff4b74f11'
-            '478fab131e10b31197bcfd37771d1475b4617bbaca7bf8c8e31c1a49824a21e5'
-            'c1fda280366b40891089be904f065fdab9fad9e588348c09f5e07337feb97a15'
+sha256sums=('b9c139f9368456ccc63712ea269ef8780ced81cd6bd3606d949f177677dc56f5'
+            'c1e7000c3965bf556f41e799f6a75952fa4b557e6658fe0f32082e048ea5b2cf'
+            '2ba7b91df1898298c21a44bf48c2cdcecf56663bd58e32c30f2bff47db6aaadb'
             'ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106'
             '8aa7dc98faa3a094f5a2ae8c0ad1ff7a65d295b8b3705c5707ec184570d67195'
             '5782bcd7945501383cd6b589797549318cb8e494047c31944fc326ff51ae7047')
@@ -38,7 +38,6 @@ sha256sums=('65784c6639da1ec5738e7c8d71392d410c9dd8051a35f9236a7f173ff4b74f11'
 package() {
     install -Dm755 "${srcdir}/hytale-launcher" "${pkgdir}/opt/${pkgname}/hytale-launcher"
     install -Dm755 "${srcdir}/hytale-launcher.sh" "${pkgdir}/usr/bin/hytale-launcher"
-    install -Dm755 "${srcdir}/hytale-debug.sh" "${pkgdir}/opt/${pkgname}/hytale-debug.sh"
 
     install -Dm644 "${srcdir}/com.hypixel.HytaleLauncher.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.hypixel.HytaleLauncher.png"
     install -Dm644 "${srcdir}/com.hypixel.HytaleLauncher.desktop" "${pkgdir}/usr/share/applications/com.hypixel.HytaleLauncher.desktop"
