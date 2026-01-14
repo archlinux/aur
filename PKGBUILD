@@ -14,7 +14,7 @@ source=("rataplay::${url}/releases/download/v${pkgver}/rataplay"
         "README.md::${url}/raw/v${pkgver}/README.md")
 
 # Use 'updpkgsums' to generate these, or keep 'SKIP' for personal use
-sha256sums=('e45aac90048fb6ce9a46bf8b05948eecee8366455e310ff632ffa20f5d9862f6'
+sha256sums=('bc97bd909f3dfea23efa98c99124429a32ebb9221fb4910dbe7f3d1363d01302'
             'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052'
             '03b9c92889b5156994bbd3bd4ad1f70cf766a417ed8138f105642d938a5c9c5d')
 
