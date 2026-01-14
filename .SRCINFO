@@ -1,14 +1,12 @@
 pkgbase = aic8800d80-dkms
 	pkgdesc = Kernel modules for WIFI AX900 8800d80 / Tenda
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/shenmintao/aic8800d80
 	arch = x86_64
 	license = GPLv2
 	depends = dkms
 	source = git+https://github.com/shenmintao/aic8800d80.git
-	source = dkms.conf
 	sha512sums = SKIP
-	sha512sums = c79d9e53131687454bb0dc603b5611fe20feb036b6147330920aaf795bf90794066c93c2665fab516c32a63cf8e4e76a05e9894b0453a762301d2d9399bcc9d9
 
 pkgname = aic8800d80-dkms
