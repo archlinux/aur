@@ -2,7 +2,7 @@
 
 _pkgname=foreman
 pkgname=foreman-bin
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc='Toolchain manager for Roblox projects'
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/foreman-linux-arm64.zip")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/foreman-linux-x86_64.zip")
-b2sums_aarch64=('065c0698ecee67689608cea59892b05487a950605ffb2aaf56cae44ede7732913adb0bf57659f9a2e5731368c1a59d03a6bfb695d76c38903394b850c09888dc')
-b2sums_x86_64=('eb7659adb075d79747b492e97e5dc00a71dd3d3b408f257b50036da66bd0bcd769696d2464d1ca79c3213d747c290eeca558b1f60bb12fa5cde87cb87536c532')
+b2sums_aarch64=('e7fc278d543b560fb219bd0cfe3e6c9b6b168f5f7d4a088edbd551c13eaac0dd5de199d9fa5780559824cb1a98adff59168f79a5d2a7ac11c477218361e22dc0')
+b2sums_x86_64=('a632d82266320401d2e29342aa4e0b693a17907f1d7f7a7b266f55f3a5648a69c6a446ad1580d02fdecd749821f994489fade06382cd44a968e18e94afb4cf0a')
 
 prepare() {
     unzip -q -o -j "${_pkgname}-${pkgver}-${CARCH}.zip"

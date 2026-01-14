@@ -1,6 +1,6 @@
 pkgbase = foreman-bin
 	pkgdesc = Toolchain manager for Roblox projects
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/Roblox/foreman
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = foreman-bin
 	makedepends = unzip
 	depends = gcc-libs
 	depends = glibc
-	provides = foreman=1.6.4
+	provides = foreman=1.6.5
 	conflicts = foreman
-	source_aarch64 = foreman-1.6.4-aarch64.zip::https://github.com/Roblox/foreman/releases/download/v1.6.4/foreman-linux-arm64.zip
-	b2sums_aarch64 = 065c0698ecee67689608cea59892b05487a950605ffb2aaf56cae44ede7732913adb0bf57659f9a2e5731368c1a59d03a6bfb695d76c38903394b850c09888dc
-	source_x86_64 = foreman-1.6.4-x86_64.zip::https://github.com/Roblox/foreman/releases/download/v1.6.4/foreman-linux-x86_64.zip
-	b2sums_x86_64 = eb7659adb075d79747b492e97e5dc00a71dd3d3b408f257b50036da66bd0bcd769696d2464d1ca79c3213d747c290eeca558b1f60bb12fa5cde87cb87536c532
+	source_aarch64 = foreman-1.6.5-aarch64.zip::https://github.com/Roblox/foreman/releases/download/v1.6.5/foreman-linux-arm64.zip
+	b2sums_aarch64 = e7fc278d543b560fb219bd0cfe3e6c9b6b168f5f7d4a088edbd551c13eaac0dd5de199d9fa5780559824cb1a98adff59168f79a5d2a7ac11c477218361e22dc0
+	source_x86_64 = foreman-1.6.5-x86_64.zip::https://github.com/Roblox/foreman/releases/download/v1.6.5/foreman-linux-x86_64.zip
+	b2sums_x86_64 = a632d82266320401d2e29342aa4e0b693a17907f1d7f7a7b266f55f3a5648a69c6a446ad1580d02fdecd749821f994489fade06382cd44a968e18e94afb4cf0a
 
 pkgname = foreman-bin
