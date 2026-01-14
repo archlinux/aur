@@ -7,8 +7,6 @@ arch=('x86_64')
 url="https://github.com/mojahid8238/Rataplay"
 license=('GPL3')
 depends=('glibc' 'gcc-libs' 'openssl' 'mpv' 'yt-dlp')
-provides=('rataplay')
-conflicts=('rataplay')
 
 # We fetch the binary, license, and readme directly from the release/repo
 source=("rataplay::${url}/releases/download/v${pkgver}/rataplay"
