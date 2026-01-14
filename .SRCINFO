@@ -1,0 +1,17 @@
+pkgbase = rclonefzf-git
+	pkgdesc = Interactive terminal UI for browsing and viewing files on rclone remotes using fzf
+	pkgver = 1.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/ConnerWill/rclonefzf
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = fzf
+	depends = yay
+	provides = rclonefzf
+	conflicts = rclonefzf
+	source = git+https://github.com/ConnerWill/rclonefzf.git
+	sha256sums = SKIP
+
+pkgname = rclonefzf-git
