@@ -1,0 +1,20 @@
+pkgbase = kischvidimer-git
+	pkgdesc = KiCad schematic HTML viewer generator
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.com/dnschneid/kischvidimer
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-fonttools
+	provides = kischvidimer
+	conflicts = kischvidimer
+	source = git+https://gitlab.com/dnschneid/kischvidimer.git
+	sha256sums = SKIP
+
+pkgname = kischvidimer-git
