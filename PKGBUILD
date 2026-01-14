@@ -12,7 +12,7 @@
 
 pkgname=gitkraken-standalone
 pkgrel=1
-pkgver=11.7.0
+pkgver=11.8.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client. Serverless version (requires license file)."
 url="https://help.gitkraken.com/gitkraken-desktop/serverless/"
 provides=('gitkraken')
@@ -31,7 +31,7 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-sha256sums=('57caa832a7dceb1013d51a22a1494f9b36d756f8c52d9e6915351afc76217daf'
+sha256sums=('cf7aa80b9be9875d5a09ec19f93089f8aaeb9a630c7f9b14fcf73c18b8d6dd7c'
             '078fa2cdf6826d956bf73387fb2ef147b1aca5f4a7a3cb4be8c71e6105fc9c6c'
             '5b7b39b331bc32a606e1e79c695df4519c9b220225be00fb34ef368c3af319a6'
             '6e6c6ac37287e1ec5d5266689a49d18899488be901b21f5cb9749f545453626f')
