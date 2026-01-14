@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=procertum-cardmanager
-pkgver=2.2.12
-pkgrel=3
+pkgver=2.2.15
+pkgrel=1
 epoch=
 pkgdesc="Management of certificate profiles installed on the cryptoCertum card."
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=()
 source=(
 	"https://files.certum.eu/software/proCertumCardManager/Linux-Ubuntu/${pkgver}/proCertumCardManager-${pkgver}-${CARCH}-ubuntu.bin"
 )
-md5sums=('00febe8bc2dd86ef8bb7e70e50b102e0')
+md5sums=('e0e61b4c702133940c0c297e58e94a01')
 
 prepare() {
 	sh "./proCertumCardManager-${pkgver}-${CARCH}-ubuntu.bin" --noexec --keep --nox11 --nochown --target "${srcdir}/${pkgname}-${pkgver}"
