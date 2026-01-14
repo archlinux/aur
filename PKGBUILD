@@ -4,7 +4,7 @@
 pkgname=python-praktikum
 _name=${pkgname#python-}
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for the beginners' lab courses in physics at RWTH Aachen University"
 arch=('any')
 url="https://pypi.org/project/praktikum/"
@@ -23,4 +23,6 @@ build() {
 package() {
 	cd "$srcdir/$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -D -m644 LICENSE \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
