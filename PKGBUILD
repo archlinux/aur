@@ -2,7 +2,7 @@
 
 pkgname=sharkey
 pkgver=2025.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sharkish microblogging platform'
 url='https://activitypub.software/TransFem-org/Sharkey'
 license=('AGPL')
