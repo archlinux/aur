@@ -9,6 +9,7 @@ pkgbase = python-application
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.13
 	depends = python-zope-interface
 	provides = python3-application

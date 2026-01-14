@@ -9,7 +9,7 @@ pkgdesc="Basic building blocks for Python applications"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-application"
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=(
   'python>=3.13'
   'python-zope-interface'
