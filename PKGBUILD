@@ -1,6 +1,6 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@proton.me>
 pkgname=qbz-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('qbz')
 conflicts=('qbz')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
-sha256sums=('e09bab4161012165167d949783ff03d21afb882226323cccbc0a4386b611c6af')
+sha256sums=('c788eb916fc4ee627a8886b8e3649df8302e2422c249e512a7a722dc23ce213e')
 
 package() {
     cd "${srcdir}/qbz_${pkgver}_amd64"

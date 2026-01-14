@@ -1,6 +1,6 @@
 pkgbase = qbz-bin
 	pkgdesc = Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/vicrodh/qbz
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = qbz-bin
 	provides = qbz
 	conflicts = qbz
 	options = !strip
-	source = qbz-bin-1.1.1.tar.gz::https://github.com/vicrodh/qbz/releases/download/v1.1.1/qbz_1.1.1_amd64.tar.gz
-	sha256sums = e09bab4161012165167d949783ff03d21afb882226323cccbc0a4386b611c6af
+	source = qbz-bin-1.1.2.tar.gz::https://github.com/vicrodh/qbz/releases/download/v1.1.2/qbz_1.1.2_amd64.tar.gz
+	sha256sums = c788eb916fc4ee627a8886b8e3649df8302e2422c249e512a7a722dc23ce213e
 
 pkgname = qbz-bin
