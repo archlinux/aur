@@ -1,7 +1,7 @@
 pkgbase = imppg
 	pkgdesc = ImPPG (Image Post-Processor)
-	pkgver = 1.9.1
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://greatattractor.github.io/imppg/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = imppg
 	makedepends = glew
 	makedepends = freeimage
 	makedepends = boost
-	source = https://github.com/GreatAttractor/imppg/archive/refs/tags/v1.9.1-beta.tar.gz
-	sha256sums = e63df6e5a12027208f2da4a6b62c5bebfedd8e1b627ac81cd21069fb06e62335
+	source = https://github.com/GreatAttractor/imppg/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 59d2d1729452996ecdca6e4eaa4332c3291afe84f4b1bd7b60e2cfaae6691b89
 
 pkgname = imppg
