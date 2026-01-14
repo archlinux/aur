@@ -11,7 +11,7 @@ provides=()
 source=(
 	"https://files.certum.eu/software/proCertumDiagnostic/Linux-Ubuntu/${pkgver}/proCertumDiagnostic-${pkgver}-${CARCH}-ubuntu.bin"
 )
-md5sums=('2b8ea61ebe05fe4fa268f568cbbff465')
+md5sums=('718562fe782059775344d046ac0f9f1b')
 
 prepare() {
 	sh "./proCertumDiagnostic-${pkgver}-${CARCH}-ubuntu.bin" --noexec --keep --nox11 --nochown --target "${srcdir}/${pkgname}-${pkgver}"
