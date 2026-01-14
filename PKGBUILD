@@ -4,7 +4,7 @@
 
 pkgname=albert
 pkgver=33.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -14,7 +14,13 @@ makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
 optdepends=('libarchive: documentation plugin'
             'libqalculate: calculator plugin'
             'python: python extension')
-source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz")
+source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz"
+        "python-ast-fix.patch::https://github.com/albertlauncher/albert-plugin-python/commit/53047ecdf8b153d3ea6eba218a7b0e16ec72bd9a.patch")
+
+prepare() {
+  cd "$srcdir/albert/plugins/python"
+  patch -p1 -i "$srcdir/python-ast-fix.patch"
+}
 
 build() {
   mkdir -p build
@@ -65,4 +71,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('1463684cf6b020f7f161819742da4f27c37fb0d636b6b4676adac477a7d20845cd092d1adc92fb624ac09ce5f7dd1638b027da5b5ce61995aa2f314bc7e3c2f3')
+sha512sums=('1463684cf6b020f7f161819742da4f27c37fb0d636b6b4676adac477a7d20845cd092d1adc92fb624ac09ce5f7dd1638b027da5b5ce61995aa2f314bc7e3c2f3'
+            'd507b6cc28d482dab1f3c56409d87c727bd044217b19f6c48ccbcdd0cc55c0f665c4b9379446c51bd014d6e3ef2fedb6e57f247fbd64e53ade9cb1c29ac13464')
