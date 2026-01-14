@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.12.0
-pkgver=0.12.0.r2752.gfd1c26a373
+pkgver=0.12.0.r2774.g1c258787d7
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -116,7 +116,7 @@ prepare() {
     tar xf "${srcdir}/tree-sitter-lua.tar.gz" -C $ts_lua_hash --strip-components=1
     tar xf "${srcdir}/tree-sitter-vim.tar.gz" -C $ts_vim_hash --strip-components=1
     tar xf "${srcdir}/tree-sitter-vimdoc.tar.gz" -C $ts_vimdoc_hash --strip-components=1
-    tar xf "${srcdir}/tree-sitter-query.tar.gz" -C $ts_query_hash --strip-components=1
+    tar xf "${srcdir}/tree-sitter-query.tar.gz" -C $ts_query_hash
 
     mkdir -p "${srcdir}/zig-global-cache"
 }
@@ -147,7 +147,6 @@ package() {
     install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
     install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
 
-    ln -s /usr/lib/tree_sitter "${pkgdir}"/usr/share/nvim/runtime/parser
     # shellcheck disable=SC2164
     popd >/dev/null
 
