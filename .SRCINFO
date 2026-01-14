@@ -1,6 +1,6 @@
 pkgbase = hmcl-new
 	pkgdesc = An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)
-	pkgver = 3.7.6
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/HMCL-dev/HMCL
 	arch = any
@@ -14,15 +14,13 @@ pkgbase = hmcl-new
 	conflicts = hmcl
 	source = hmcl.desktop
 	source = hmcl-launch-script
-	source = https://github.com/HMCL-dev/HMCL/raw/v3.7.6/HMCL/image/hmcl.png
-	source = HMCL-v3.7.6.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/v3.7.6.tar.gz
+	source = HMCL-v3.9.1.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/v3.9.1.tar.gz
 	source = 0001-Target-Java-21.patch
 	source = 0002-Cleanup.patch
 	sha256sums = b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef
 	sha256sums = 4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95
-	sha256sums = d4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a
-	sha256sums = cacfed34b3afabfde7361182ac41cb5e11875223ac16eb542d2977dfc1713d19
-	sha256sums = 71c0bed8026c12c8cbd955df2104d0aae2be9831acfa64fdc9b0198bbd9d1b5c
-	sha256sums = f8726411f783a5529c0403ec37aa797253f42e76ace8ccf2ccfc0a83bdc13b27
+	sha256sums = db5ffc9561a892334f1d182dd55582441f25078e075e09509a7af1889365cf66
+	sha256sums = da5dfed0387ae2ad64f02a7a0940b65256b7244e8b05330aa7bc5e03b7730b54
+	sha256sums = 7acd3bc5bc6ab3888955e36279aa6186825b45fee5dea7f9a19f39989e32bd6d
 
 pkgname = hmcl-new

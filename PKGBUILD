@@ -5,8 +5,8 @@
 
 pkgname=hmcl-new
 _pkgname=HMCL
-_ver=3.7
-_build=6
+_ver=3.9
+_build=1
 _pkgver=v$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
@@ -20,16 +20,14 @@ provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
   'hmcl-launch-script'
-  "${url}/raw/${_pkgver}/HMCL/image/hmcl.png"
   "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
   "0001-Target-Java-21.patch"
   "0002-Cleanup.patch")
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
-  'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-  'cacfed34b3afabfde7361182ac41cb5e11875223ac16eb542d2977dfc1713d19'
-  '71c0bed8026c12c8cbd955df2104d0aae2be9831acfa64fdc9b0198bbd9d1b5c'
-  'f8726411f783a5529c0403ec37aa797253f42e76ace8ccf2ccfc0a83bdc13b27')
+  'db5ffc9561a892334f1d182dd55582441f25078e075e09509a7af1889365cf66'
+  'da5dfed0387ae2ad64f02a7a0940b65256b7244e8b05330aa7bc5e03b7730b54'
+  '7acd3bc5bc6ab3888955e36279aa6186825b45fee5dea7f9a19f39989e32bd6d')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -62,6 +60,6 @@ package() {
   install -Dm755 'hmcl-launch-script' "$pkgdir/usr/bin/$pkgname"
   install -Dm644 'hmcl.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$_pkgname-$pkgver/HMCL/build/libs/$_pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm644 'hmcl.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 "$_pkgname-$pkgver/HMCL/image/hmcl.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
   install -Dm644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
