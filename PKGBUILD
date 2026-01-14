@@ -2,8 +2,8 @@
 _pkgname="asus-5606-fan-state"
 pkgname="${_pkgname}"
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
+pkgrel=3
+pkgdesc="Set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
 arch=('any')
 url="https://github.com/ThatOneCalculator/${_pkgname}"
 license=('MIT')
