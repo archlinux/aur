@@ -2,7 +2,7 @@
 pkgname=stackzy-bin
 _pkgname=Stackzy
 pkgver=1.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
