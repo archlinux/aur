@@ -1,5 +1,5 @@
 pkgname=morse-git
-pkgver=1.0.0
+pkgver=1.0.0.r6.2ff7c31
 pkgrel=1
 pkgdesc="Learn Morse Code and High Speed Telegraphy."
 arch=('x86_64' 'aarch64')

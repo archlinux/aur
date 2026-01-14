@@ -1,6 +1,6 @@
 pkgbase = morse-git
 	pkgdesc = Learn Morse Code and High Speed Telegraphy.
-	pkgver = 1.0.0
+	pkgver = 1.0.0.r6.2ff7c31
 	pkgrel = 1
 	url = https://github.com/teacond/Morse
 	arch = x86_64
