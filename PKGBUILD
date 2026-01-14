@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 package()
 {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/glaunch
   install -Dm755 main.py "${pkgdir}/usr/bin/glaunch"
 }
 
