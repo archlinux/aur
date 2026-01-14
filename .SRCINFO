@@ -1,7 +1,7 @@
 pkgbase = python-dvc-objects
 	pkgdesc = DVC objects
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc-objects
 	arch = any
 	license = Apache-2.0

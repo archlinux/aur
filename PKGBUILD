@@ -3,7 +3,7 @@
 pkgname=python-dvc-objects
 _pkgname=${pkgname#python-}
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='DVC objects'
 arch=(any)
 license=(Apache-2.0)
