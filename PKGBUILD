@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="spin"
 pkgname="python-${_name}"
-pkgver=0.15
-pkgrel=2
+pkgver=0.16
+pkgrel=1
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
 url="https://github.com/scientific-python/spin"
@@ -24,7 +24,7 @@ optdepends=(
   "python-pytest: For running the unit-tests"
 )
 source=("${_name}::git+${url}#tag=v${pkgver}")
-b2sums=('dbfe9700bfa9365ce67bb42a40ad405b52e321d46f864c0639112f2761cfa1115385c97e3e5d897bbfa0840eb8baf0019f87728a57882c37add9bcefa6fd8b8e')
+b2sums=('d4b07988c6a0692800ab5f7025aa0945982c5311c622711708c43446dbcd10c6e31bc5c66a86745ed5938ac778e287fea8e49a6b1575c213fd81863830d59e75')
 
 build() {
   cd "${_name}"
