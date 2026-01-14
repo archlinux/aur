@@ -32,7 +32,6 @@ post_upgrade() {
 pre_remove() {
     echo "🗑️ Performing pre remove actions..."
     stop_application
-    run_as_user rog-perf-tuner -u &>> /dev/null
 }
 
 post_remove() {
