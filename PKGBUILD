@@ -2,7 +2,7 @@
 
 pkgname=ofdrw
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Fixed layout Document Reader And Writer Libary(OFD-RW) provider developers to generate ofd document and edit it."
 arch=(any)
 url="https://github.com/ofdrw/ofdrw"
@@ -12,7 +12,7 @@ depends=(
     java-runtime
 )
 makedepends=(
-    java-runtimels 
+    java-runtime
     git
     maven
 )
@@ -43,12 +43,12 @@ package() {
 
     find . -name "*.jar" -path "*/target/*" -print0 | while IFS= read -r -d '' jar_file; do
         local base_name=$(basename "$jar_file" | sed "s/-[0-9].*\.jar/\.jar/")
-        
+
         echo "Install: $base_name"
         install -Dm644 "$jar_file" "$pkgdir/usr/share/java/$pkgname/$base_name"
     done
 
-    install -Dm0755 /dev/stdin "$pkgdir/etc/profile.d/ofdrw.sh" << EOF
+    install -Dm0755 /dev/stdin "$pkgdir/etc/profile.d/ofdrw.sh" <<EOF
 #!/bin/sh
 # OFDRW environment variable
 export OFDRW_HOME="/usr/share/java/ofdrw"
