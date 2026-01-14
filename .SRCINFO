@@ -1,0 +1,12 @@
+pkgbase = powermon
+	pkgdesc = Battery power draw attribution utility
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://sr.ht/~rafket/powermon
+	arch = x86_64
+	license = 0BSD
+	depends = ncurses
+	source = https://git.sr.ht/~rafket/powermon/archive/0.0.2.tar.gz
+	sha256sums = fbabb141b7982ec4e1da2df27de0bab850c177324ec6d1f79542a41bd701a0fd
+
+pkgname = powermon
