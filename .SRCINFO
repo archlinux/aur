@@ -19,6 +19,7 @@ pkgbase = knighttime-git
 	depends = qt6-base
 	depends = qt6-positioning
 	provides = libKNightTime.so
+	provides = knighttime
 	conflicts = knighttime
 	source = knighttime-git::git+https://invent.kde.org/plasma/knighttime.git
 	md5sums = SKIP

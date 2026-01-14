@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('LGPL-2.1-or-later')
 makedepends=('git' 'cmake' 'gtest')
 conflicts=('knighttime')
-provides=('libKNightTime.so')
+provides=('libKNightTime.so' 'knighttime')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
 
