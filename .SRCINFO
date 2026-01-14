@@ -1,0 +1,15 @@
+pkgbase = keylightc-git
+	pkgdesc = Daemon for Framework laptops to handle keyboard backlight controls
+	pkgver = r94.6336fee
+	pkgrel = 1
+	url = https://gitlab.com/mamarley/keylightc
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = keylightc
+	conflicts = keylightc
+	source = git+https://gitlab.com/mamarley/keylightc.git
+	sha256sums = SKIP
+
+pkgname = keylightc-git
