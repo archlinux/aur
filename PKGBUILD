@@ -1,14 +1,14 @@
 # Maintainer: Bruce Zhang
 pkgname=plasma-ions-china-git
-pkgver=r74.d3d1e73
+pkgver=r117.9ecdb47
 pkgrel=1
 pkgdesc="A collection of plasma weather ions for Chinese users. "
 arch=('x86_64')
 url="https://github.com/arenekosreal/plasma-ions-china"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('qt6-base')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'gettext')
-optdepends=('plasma-workspace<6.5' 'kdeplasma-addons>=6.5')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'gettext' 'plasma-workspace' 'kdeplasma-addons>=6.5')
+optdepends=()
 provides=('plasma-ions-china')
 conflicts=('plasma-ions-china')
 source=('plasma-ions-china::git+https://github.com/arenekosreal/plasma-ions-china.git')
@@ -22,11 +22,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/plasma-ions-china"
-	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DPlasmaWeather_ROOT="$srcdir/plasma-ions-china"
 	cmake --build  build
 }
 
 package() {
 	cd "$srcdir/plasma-ions-china"
-	cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }

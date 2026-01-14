@@ -1,17 +1,17 @@
 pkgbase = plasma-ions-china-git
 	pkgdesc = A collection of plasma weather ions for Chinese users.
-	pkgver = r74.d3d1e73
+	pkgver = r117.9ecdb47
 	pkgrel = 1
 	url = https://github.com/arenekosreal/plasma-ions-china
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = gettext
+	makedepends = plasma-workspace
+	makedepends = kdeplasma-addons>=6.5
 	depends = qt6-base
-	optdepends = plasma-workspace<6.5
-	optdepends = kdeplasma-addons>=6.5
 	provides = plasma-ions-china
 	conflicts = plasma-ions-china
 	source = plasma-ions-china::git+https://github.com/arenekosreal/plasma-ions-china.git
