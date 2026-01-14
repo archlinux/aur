@@ -1,13 +1,13 @@
-#Maintainer: Shakakibara <aryan.1843@disroot.org>
+# Maintainer: Shakakibara <aryan.1843@disroot.org>
 
 pkgname='codetantra-sea'
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
 url='https://www.codetantra.com'
 license=('custom')
-depends=('alsa-lib' 'nss' 'at-spi2-atk' 'cups' 'gtk3')
+depends=('alsa-lib' 'nss' 'at-spi2-atk' 'gtk3')
 options=('!strip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -15,7 +15,6 @@ source=("https://github.com/ct-code/sea/releases/download/v${pkgver}/${pkgname}_
         "sea.sh")
 sha256sums=('1b8a56bb7bf740f58f9277dd84acb59010790ed64a22fab64fd8eff28f6d0b27'
             '1b1da4bc2ba74572ca909bf48fd635e0113ca410a678210c0b2ce59b61267810')
-options=('!strip' '!debug')
 
 package() {
       # Extract
