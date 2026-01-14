@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5fa1bef76aad6ea1d2e9e3e3d91e44d67c5bcb7233547efd382a62fd50cd0c19')
+sha256sums=('2f9a29a1fc17242bf65317cf4acf5edba997bb28aebfc3c0c4c8fe050ab08484')
 
 build() {
     cd "$pkgname-$pkgver"

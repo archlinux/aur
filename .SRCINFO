@@ -1,6 +1,6 @@
 pkgbase = hyprwave
 	pkgdesc = A sleek music control bar for Wayland compositors with MPRIS integration
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/shantanubaddar/hyprwave
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hyprwave
 	makedepends = gcc
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = hyprwave-0.5.tar.gz::https://github.com/shantanubaddar/hyprwave/archive/refs/tags/v0.5.tar.gz
-	sha256sums = 5fa1bef76aad6ea1d2e9e3e3d91e44d67c5bcb7233547efd382a62fd50cd0c19
+	source = hyprwave-0.6.tar.gz::https://github.com/shantanubaddar/hyprwave/archive/refs/tags/v0.6.tar.gz
+	sha256sums = 2f9a29a1fc17242bf65317cf4acf5edba997bb28aebfc3c0c4c8fe050ab08484
 
 pkgname = hyprwave
