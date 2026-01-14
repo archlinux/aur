@@ -1,6 +1,6 @@
 pkgbase = python-trame-common
 	pkgdesc = Dependency less classes and functions for trame
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-common
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-trame-common
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
-	source = trame-common-1.1.0.tar.gz::https://github.com/Kitware/trame-common/archive/v1.1.0.tar.gz
-	sha512sums = 560fcadfd8cda1a709b78c9fc563c91d4c4b1a3136677fe4b217787ebc7ac3cba8646a68159cabb67ee02df406668321e7efd6ad400ec550fb4ebe1881744afa
+	source = trame-common-1.1.1.tar.gz::https://github.com/Kitware/trame-common/archive/v1.1.1.tar.gz
+	sha512sums = f64f2a1007721900fee8b9023399743eeaeefaaba56aa60f7676b84b913b1de925f11d6d3a39917cfcbf40fbc2931a716b2947bbc600a3ea257d664b4427b2b1
 
 pkgname = python-trame-common
