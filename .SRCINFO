@@ -1,11 +1,11 @@
 pkgbase = procertum-diagnostic
 	pkgdesc = Diagnostic tool for proCertum cards.
-	pkgver = 1.3.9
-	pkgrel = 2
+	pkgver = 1.3.10
+	pkgrel = 1
 	url = https://www.support.certum.eu/en/cert-offer-card-manager/
 	arch = x86_64
 	license = unknown
-	source = https://files.certum.eu/software/proCertumDiagnostic/Linux-Ubuntu/1.3.9/proCertumDiagnostic-1.3.9-x86_64-ubuntu.bin
+	source = https://files.certum.eu/software/proCertumDiagnostic/Linux-Ubuntu/1.3.10/proCertumDiagnostic-1.3.10-x86_64-ubuntu.bin
 	md5sums = 2b8ea61ebe05fe4fa268f568cbbff465
 
 pkgname = procertum-diagnostic

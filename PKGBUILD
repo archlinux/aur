@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=procertum-diagnostic
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 epoch=
 pkgdesc="Diagnostic tool for proCertum cards."
 arch=(x86_64)
