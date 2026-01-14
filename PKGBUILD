@@ -1,4 +1,4 @@
-# Maintainer: Sasha Marie te Rehorst <votre-email@exemple.com>
+# Maintainer: Sasha Marie te Rehorst <sasha.marieterehorst@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=xdg-desktop-portal-kde-git
