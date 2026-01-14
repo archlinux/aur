@@ -5,7 +5,7 @@ _pkgname=bcmr
 pkgname=${_pkgname}-bin
 pkgdesc="cp with progress bar"
 
-pkgver=0.3.23
+pkgver=0.3.24
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-linux.tar.gz")
 sha256sums=('1a1600e7355b11cc1e69a6a361269e3c9a64f73d6c0b5958fe48f4861053bfd7'
-            '2a0da400ebb421c5b6f9a0df9a849a00beca33be89a527d83cc30c7bca19727c')
-sha256sums_x86_64=('95dc696fe8d51cff84ae6225de5adb80871ff9983ead2f5bbac4da6169046c23')
+            '5ca4a33ce0466665b1efa652f6748b053ce4bc531df635e9534477f0d919e6bb')
+sha256sums_x86_64=('93ecba5cfe1b7599862ac67c4f4e7d7019061191d69894a7d56802f48adb0639')
 
 
 package() {
