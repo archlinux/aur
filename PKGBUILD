@@ -23,6 +23,9 @@ makedepends=(
 checkdepends=(
   'python-pytest'
 )
+optdepends=(
+  'python-pcpp'
+)
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
 sha256sums=('c5614f1a8c0c355ce89d0c8572b49a317b39530b33a5f590700bf0ce749ab4bc')
 b2sums=('8cdf22fe7bcace889a3971b665e6a6f158c83dc24ead7856c5854356d6020a7b43c93f297f46e46a27a08afc43eb9c0a608d13d33da6b4907747dd90221037bc')
