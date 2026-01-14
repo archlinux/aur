@@ -1,6 +1,6 @@
 pkgbase = crt-bin
 	pkgdesc = GPU-accelerated terminal emulator with CSS theming and visual effects
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/colliery-io/crt
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = crt-bin
 	provides = crt
 	conflicts = crt
 	conflicts = crt-git
-	source_x86_64 = crt-0.0.9-linux-x86_64.tar.gz::https://github.com/colliery-io/crt/releases/download/v0.0.9/crt-0.0.9-linux-x86_64.tar.gz
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = crt-0.0.9-linux-aarch64.tar.gz::https://github.com/colliery-io/crt/releases/download/v0.0.9/crt-0.0.9-linux-aarch64.tar.gz
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = crt-0.0.10-linux-x86_64.tar.gz::https://github.com/colliery-io/crt/releases/download/v0.0.10/crt-0.0.10-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a739c7228440b23df819faee53463239a6e28f8360089b2557f2939b02e0a663
+	source_aarch64 = crt-0.0.10-linux-aarch64.tar.gz::https://github.com/colliery-io/crt/releases/download/v0.0.10/crt-0.0.10-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 565c2f9fce1689f2203b0060da1313a4a44f5c23999b546d96723eee7673b67b
 
 pkgname = crt-bin
