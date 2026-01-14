@@ -1,0 +1,27 @@
+pkgbase = qprompt-git
+	pkgdesc = Teleprompter software for video creators (git version)
+	pkgver = 2.0.0.rflatpak.0.gef9e038
+	pkgrel = 1
+	url = https://qprompt.app/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = qt6-shadertools
+	makedepends = qt6-tools
+	makedepends = kirigami
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kirigami
+	optdepends = qt6-wayland: Wayland platform support
+	provides = qprompt
+	conflicts = qprompt
+	options = !lto
+	source = git+https://github.com/Cuperino/QPrompt-Teleprompter.git
+	b2sums = SKIP
+
+pkgname = qprompt-git
