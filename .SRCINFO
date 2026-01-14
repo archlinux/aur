@@ -9,8 +9,8 @@ pkgbase = adguardhome-openrc
 	depends = adguardhome
 	provides = init-adguardhome
 	conflicts = init-adguardhome
-	source = https://gitlab.alpinelinux.org/alpine/aports/-/raw/3be504af77e6a5c639dc6111a4624d2f40f8991f/testing/adguardhome/adguardhome.confd
-	source = https://gitlab.alpinelinux.org/alpine/aports/-/raw/3be504af77e6a5c639dc6111a4624d2f40f8991f/testing/adguardhome/adguardhome.initd
+	source = https://gitlab.alpinelinux.org/api/v4/projects/1/repository/files/testing%2Fadguardhome%2Fadguardhome.confd/raw?ref=3be504af77e6a5c639dc6111a4624d2f40f8991f
+	source = https://gitlab.alpinelinux.org/api/v4/projects/1/repository/files/testing%2Fadguardhome%2Fadguardhome.initd/raw?ref=3be504af77e6a5c639dc6111a4624d2f40f8991f
 	source = adguardhome.sysusers
 	source = adguardhome.tmpfiles
 	sha256sums = 2e8de4fe94c4a98e015ab5087670e3a9d406623ef518c57575c7240ded91540d
