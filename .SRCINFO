@@ -1,0 +1,17 @@
+pkgbase = python-fancymaps
+	pkgdesc = Colormap collection from various (creative) sources
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://github.com/alcubierre-drive/fancymaps
+	arch = any
+	license = GPLv3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	source = git+https://github.com/alcubierre-drive/fancymaps.git
+	sha512sums = SKIP
+
+pkgname = python-fancymaps
