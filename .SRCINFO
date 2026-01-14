@@ -1,19 +1,16 @@
 pkgbase = cmake-language-server
 	pkgdesc = Python based cmake language server
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pdm
-	makedepends = python-pdm-pep517
+	makedepends = python-pdm-backend
 	depends = python-pygls
-	depends = python-pyparsing
 	depends = cmake-format
 	depends = cmake
-	depends = python-pdm-backend
 	source = cmake-language-server-0.1.11.tar.gz::https://github.com/regen100/cmake-language-server/archive/v0.1.11.tar.gz
 	sha256sums = 67c0ae4749d367f5f3c79f969ae1355f6dac6c287ac9bbfb2e2adcfbe57f7013
 
