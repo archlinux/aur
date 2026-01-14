@@ -1,15 +1,15 @@
 pkgbase = storcli
 	pkgdesc = CLI program for LSI MegaRAID cards
-	pkgver = 007.3503.0000.0000
+	pkgver = 007.3603.0000.0000
 	pkgrel = 1
 	url = https://www.broadcom.com/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = libarchive
-	source = https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p36/STORCLI_SAS3.5_P36.zip
+	source = https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p37/STORCLI_SAS3.5_P37.zip
 	source = https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p28/STORCLI_SAS3.5_P28.zip
-	sha256sums = 1af26f7b7b78fa9e538d81fc490a2d8851c124e04ee7554b88f688d48b9ea7fb
+	sha256sums = aa864c1055eb1488368593f72c0d064177fc53bd5857e4ac126a2b5a1784b754
 	sha256sums = c15ef2d5b66f1d5988aa2bc318c49025f248d69058533e02a8f0acc86681cc85
 
 pkgname = storcli
