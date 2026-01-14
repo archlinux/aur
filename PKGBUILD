@@ -5,7 +5,7 @@
 # Contributor: rabyte <rabyte__gmail>
 
 pkgname=tintin
-pkgver=2.02.51
+pkgver=2.02.60
 pkgrel=1
 pkgdesc="A console-based MUD client"
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,18 +14,17 @@ license=('GPL3')
 depends=('zlib' 'pcre' 'gnutls')
 options=('strip')
 source=(https://github.com/scandum/tintin/releases/download/$pkgver/tintin-$pkgver.tar.gz)
-sha512sums=('b93cd98b93cbe16f26a6aa1eca76a7b6dec8a33745caaf8bae1894191d5b2e4646caefcae02578b2a0254a025b7626ea012b8891f4ebabc423fdda3a15a8bfc7')
+sha512sums=('ee7a9115f67a0cd1d948e39aa16ef79f5e183b3dc2f6688245d94f2abf24211859824b2b4c7b171a9d6b4e13b73e8b3fa8264e68d2e5c18b9545ffadc29c906a')
 
 build() {
   cd $srcdir/tt/src
   sh configure --prefix=/usr --enable-big5
   make
-
 }
 
 package() {
   cd $srcdir/tt/src
   install -m755 -D tt++ $pkgdir/usr/bin/tt++
   ln -sf tt++ $pkgdir/usr/bin/tintin
-
 }
+
