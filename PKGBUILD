@@ -10,7 +10,7 @@ pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.4.2
 secp256k1ver=0.20.9
 electrum_locale_commit=89ce57ff1fa0fbd0135888014c854c142753a166
-pkgrel=2
+pkgrel=3
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -105,7 +105,7 @@ build() {
 check() {
   cd "Electron-Cash-${pkgver}"
 
-  tox -e py313 -- --ignore-glob='*regtest*'
+  tox -e py314 -- --ignore-glob='*regtest*'
 }
 
 package() {
