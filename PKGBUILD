@@ -5,7 +5,7 @@
 
 pkgname=libsodium-static
 _pkgname=libsodium
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (static library)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('custom:ISC')
 depends=()
 optdepends=('libsodium: headers and pkg-config files')
 source=(https://download.libsodium.org/libsodium/releases/$_pkgname-$pkgver.tar.gz)
-sha512sums=('7ea165f3c1b1609790e30a16348b9dfdc5731302da00c07c65e125c8ab115c75419a5631876973600f8a4b560ca2c8267001770b68f2eb3eebc9ba095d312702')
+sha512sums=('ee8cc2f3f5707b172bf75d8c04afbd5f0c83c6f94dbab3f988f07aab716d96f1662556a59e09b3d83c3bd5c22f59327ad95937bf499d523c86146f4df830f777')
 options=('staticlibs')
 
 build() {
