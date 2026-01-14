@@ -1,20 +1,19 @@
 pkgbase = xdg-desktop-portal-kde-git
 	pkgdesc = A backend implementation for xdg-desktop-portal that is using Qt/KDE.
-	pkgver = 20190109.011ae60
+	pkgver = 20260114.4a3e0765
 	pkgrel = 1
 	url = https://github.com/KDE/xdg-desktop-portal-kde
 	install = install
 	arch = x86_64
-	license = GPL
-	makedepends = cmake
+	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = plasma-wayland-protocols
+	makedepends = wayland-protocols
 	depends = xdg-desktop-portal
 	provides = xdg-desktop-portal-impl
 	provides = xdg-desktop-portal-kde
 	conflicts = xdg-desktop-portal-kde
-	source = git://github.com/KDE/xdg-desktop-portal-kde.git
+	source = git+https://github.com/KDE/xdg-desktop-portal-kde.git
 	sha1sums = SKIP
 
 pkgname = xdg-desktop-portal-kde-git
-
