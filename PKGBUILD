@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=blindpaste
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="a TUI blackboard for quick note taking"
 arch=("x86_64")
@@ -29,5 +29,5 @@ build()
 package()
 {
   cd "$pkgname"
-  make DESTDIR="$pkgdir" install
+  make LICENSE="LICENSE.0BSD" DESTDIR="$pkgdir" install
 }
