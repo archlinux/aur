@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-hwdata
 	pkgdesc = hardware identification databases (Android armv7a-eabi)
-	pkgver = 0.397
+	pkgver = 0.402
 	pkgrel = 1
 	url = https://github.com/vcrhonek/hwdata
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = android-armv7a-eabi-hwdata
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.397.tar.gz
+	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.402.tar.gz
 	validpgpkeys = 3C40194FB79138CE0F78FD4919C2F062574F5403
-	md5sums = 77a9fd660cb7dce93fefb57ecfb364af
+	md5sums = 51ff7515170ca5d8b73549c505534a68
 
 pkgname = android-armv7a-eabi-hwdata

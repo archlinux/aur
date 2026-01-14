@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-hwdata
-pkgver=0.397
+pkgver=0.402
 pkgrel=1
 arch=('any')
 pkgdesc="hardware identification databases (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/vcrhonek/hwdata/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('77a9fd660cb7dce93fefb57ecfb364af')
+md5sums=('51ff7515170ca5d8b73549c505534a68')
 validpgpkeys=('3C40194FB79138CE0F78FD4919C2F062574F5403') # Vitezslav Crhonek
 
 build() {
@@ -35,4 +35,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
