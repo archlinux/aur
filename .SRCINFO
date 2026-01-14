@@ -1,7 +1,7 @@
 pkgbase = statmake
 	pkgdesc = Dump, merge and compile Visual TrueType data in UFO3 with FontTools
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/daltonmaag/statmake
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = statmake
 	depends = python-cattrs
 	depends = python-fonttools
 	depends = python-fs
-	source = https://files.pythonhosted.org/packages/source/s/statmake/statmake-2.0.0.tar.gz
-	sha256sums = 591b2218256ca12b06e4168392cd01531b8952bf444bcbd46a97302968856ca9
+	source = https://files.pythonhosted.org/packages/source/s/statmake/statmake-2.0.1.tar.gz
+	sha256sums = 21704ec64107c797d6cc6cd74deb5c8a60061054fdc9eaa1274211e83c78db3d
 
 pkgname = statmake
