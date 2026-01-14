@@ -1,6 +1,6 @@
 # Maintainer: Tássio Virgínio <tassiovirginio@gmail.com>
 pkgname=envy-tui-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Terminal User Interface (TUI) manager for EnvyControl - Easy GPU switching for Nvidia Optimus laptops under Linux."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('envycontrol')
 source=(
   "envy-tui-v${pkgver}-linux-x86_64.tar.gz::https://github.com/tassiovirginio/envy-tui/releases/download/v${pkgver}/envy-tui-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('51fbb38b36c494d5d09f884740edd6026dc846cb63d8372fac454f93ad5b1829')
+sha256sums=('d418a455b96c8b73d9f993ba272272e72729a6f6e82d0e00eb25abc2fb7826f1')
 
 
 package() {
