@@ -1,6 +1,6 @@
 pkgbase = kdenlive-git
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)
-	pkgver = 25.11.70.r22889
+	pkgver = 26.03.70.r23250
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = kdenlive-git
 	depends = python
 	depends = imath
 	depends = opentimelineio
-	depends = kddockwidgets-qt6
+	depends = kddockwidgets
 	depends = python-requests
 	depends = python-pillow
 	depends = python-omegaconf
