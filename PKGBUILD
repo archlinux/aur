@@ -1,6 +1,6 @@
 # Maintainer: Philip Zingmark philip.zingmark@gmail.com
 pkgname=kubemerger-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A daemon that finds and merges kubeconfigs inta a single kubeconfig"
 arch=('any')
@@ -48,4 +48,3 @@ post_remove() {
   rm -f "$pkgdir/usr/local/bin/kubemergerd"
   rm -f "$pkgdir/usr/lib/systemd/user/kubemergerd.service"
 }
-

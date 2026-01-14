@@ -1,6 +1,6 @@
 pkgbase = kubemerger-git
 	pkgdesc = A daemon that finds and merges kubeconfigs inta a single kubeconfig
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Phillezi/kubemerger
 	arch = any
