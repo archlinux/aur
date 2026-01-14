@@ -2,7 +2,7 @@
 
 pkgname=lacy
 pkgver=v0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast magical cd alternative for lacy terminal navigators"
 arch=(any)
 url="https://github.com/timothebot/lacy"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  cargo build -r --frozen
+  cargo build -r --locked
 }
 
 package() {

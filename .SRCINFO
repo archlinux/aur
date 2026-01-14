@@ -1,7 +1,7 @@
 pkgbase = lacy
 	pkgdesc = Fast magical cd alternative for lacy terminal navigators
 	pkgver = v0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timothebot/lacy
 	install = lacy.install
 	arch = any
