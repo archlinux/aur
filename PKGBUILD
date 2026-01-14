@@ -1,7 +1,7 @@
 # Maintainer: YaBoiMax <51027149+YaBoiMax@users.noreply.github.com>
 
 pkgname=glaunch-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 pkgdesc="A script you can set as a launch command in steam to apply a config."
