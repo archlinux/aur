@@ -15,7 +15,7 @@ provides=('qbz')
 conflicts=('qbz')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
-sha256sums=('2bc059289c1d2c17b6ce798a978a18181be103e0adcc42bd435186c9af364d78')
+sha256sums=('ca2050d0bfc509309a1e5d868a43a49eb280964e919785dba8afca9e8a17df10')
 
 package() {
     cd "${srcdir}/qbz_${pkgver}_amd64"
