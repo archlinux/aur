@@ -11,10 +11,14 @@ depends=(python librime python-platformdirs python-wcwidth)
 makedepends=(python-installer)
 optdepends=(ptpython python-prompt_toolkit python-ptpython python-pynvim python-colorama)
 license=(GPL3)
-_py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")' || echo 313)"
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.whl")
-sha256sums=('546448ce2a8772e45ca92e86ed88d25db1c0387eaa6bd51d2483ff16a84c9817')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
+sha256sums=('70428c99911d97aa477ca57d6c0615a0866d6d184387db11bb1699df77d80cd5')
+
+build() {
+	cd "$srcdir/pyrime-$pkgver" || return 1
+	uv build --wheel
+}
 
 package() {
-	python -minstaller -d"$pkgdir" ./*.whl
+	python -minstaller -d"$pkgdir" "$srcdir/pyrime-$pkgver/dist"/*.whl
 }
