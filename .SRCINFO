@@ -1,13 +1,13 @@
 pkgbase = hledger-bin
 	pkgdesc = Easy-to-use command-line/curses/web plaintext accounting tool
 	pkgver = 1.51.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hledger.org
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = asciinema: hledger demo support
-	source = hledger-1.51.2.tar.gz::https://github.com/simonmichael/hledger/releases/download/1.51.2/hledger-linux-x64.tar.gz
-	sha256sums = dce9e5ec775ab220803e5d360d14d459b84dd928a6d77d0ec27783586083f66e
+	source = hledger-1.51.2.1.tar.gz::https://github.com/simonmichael/hledger/releases/download/1.51.2/hledger-linux-x64.tar.gz
+	sha256sums = 2912ce944c96704c180e9b17c637050b7b3da1164a0b447c2429e8f676205d21
 
 pkgname = hledger-bin
 	pkgdesc = Command-line interface for the hledger accounting system
