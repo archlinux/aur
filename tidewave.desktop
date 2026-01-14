@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tidewave
+Comment=Coding agent for full-stack web app development
+Exec=tidewave
+Icon=tidewave
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=Tidewave
