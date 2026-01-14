@@ -1,18 +1,50 @@
-# Maintainer: Aria Vesta <dev@ariavesta.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributo: Aria Vesta <dev@ariavesta.com>
+
 pkgname=kubelogin
-pkgver=1.35.2
+pkgver=1.36.1
 pkgrel=1
 pkgdesc="Kubectl plugin for Kubernetes OpenID Connect authentication (oidc-login)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/int128/kubelogin"
-license=('Apache')
-depends=('kubectl' 'glibc')
-source_x86_64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_amd64.zip)
-source_aarch64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_arm64.zip)
-sha256sums_x86_64=('40ccbc12a9d47ad6416ac111cbc895ed01d3cf2cad33454f1d3a035d6c21135a')
-sha256sums_aarch64=('0410dde72f2c3dc83c05ca9325d41e104831d68a083ecb4e81f785ce967653f6')
+license=('Apache-2.0')
+depends=(
+    'glibc'
+    'kubectl'
+)
+makedepends=(
+    'git'
+    'go'
+)
+source=("git+https://github.com/int128/kubelogin#tag=v${pkgver}")
+sha256sums=('bd05e3dec2dcc6f29b13416b1c3fd89e1dfaa325687f34b81ffed1c2f25afe13')
+
+prepare() {
+    cd kubelogin
+
+    go mod download -modcacherw
+}
+
+build() {
+    cd kubelogin
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-linkmode=external \"-extldflags=${LDFLAGS}\"" \
+        .
+}
 
 package() {
-    install ${srcdir}/kubelogin -Dm755 "${pkgdir}/usr/bin/kubelogin"
-    ln -sf "/usr/bin/kubelogin" "${pkgdir}/usr/bin/kubectl-oidc_login"
+    cd kubelogin
+
+    install -Dm755 kubelogin -t "${pkgdir}/usr/bin"
+    ln -sf kubelogin "${pkgdir}/usr/bin/kubectl-oidc_login"
 }
