@@ -1,7 +1,7 @@
 pkgbase = python-pysilfont
 	pkgdesc = Python-based font utilities collection and framework
 	pkgver = 1.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/silnrsi/pysilfont
 	arch = any
 	license = MIT
