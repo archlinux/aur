@@ -1,7 +1,7 @@
 pkgbase = legcord-git
 	pkgdesc = Legcord dev build using the system electron. Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight
 	pkgver = r1612.b78c779
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Legcord/Legcord
 	install = notes.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = legcord-git
 	license = custom:OSL-3.0
 	makedepends = git
 	makedepends = nodejs
-	makedepends = yarn-pnpm-corepack
+	makedepends = pnpm
 	depends = electron
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
