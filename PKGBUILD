@@ -4,8 +4,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-highway
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 arch=('any')
 pkgdesc="A C++ library that provides portable SIMD/vector intrinsics (Android ${_android_arch})"
 url='https://github.com/google/highway/'
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/highway/archive/${pkgver}/highway-${pkgver}.tar.gz")
-sha256sums=('7e0be78b8318e8bdbf6fa545d2ecb4c90f947df03f7aadc42c1967f019e63343')
+md5sums=('6c913a4c4ba849a3306d45318f66078d')
 
 build() {
     cd "${srcdir}/highway-${pkgver}"
@@ -51,4 +51,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
