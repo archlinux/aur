@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
 pkgver=2.2.0
-pkgrel=4
-_pythonver=3.13
+pkgrel=5
+_pythonver=3.14
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/sezanzeb/input-remapper/"
