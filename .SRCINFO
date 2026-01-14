@@ -1,11 +1,11 @@
 pkgbase = intel-ethernet-700series
 	pkgdesc = NVM Update Utility for Intel® Ethernet Network Adapter 700 Series
-	pkgver = 9.55
+	pkgver = 9.56
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/download/18635
 	arch = x86_64
 	license = Custom
-	source = https://downloadmirror.intel.com/864008/700Series_NVMUpdatePackage_v9_55_Linux.tar.gz
-	sha256sums = 9ed3b039cad9857b498264deb7198eda030d534258ef2dca01bcc9824b350ef9
+	source = https://downloadmirror.intel.com/871967/700Series_NVMUpdatePackage_v9_56_Linux.tar.gz
+	sha256sums = 6af4b9da55121de57491a4314a9740ae0dae15fce01921bee2bc05702cc0b6a0
 
 pkgname = intel-ethernet-700series
