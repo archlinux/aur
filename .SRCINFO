@@ -1,6 +1,6 @@
 pkgbase = stayfree-desktop
 	pkgdesc = StayFree - Analytics to help you understand and control your pc usage
-	pkgver = 3.2.22
+	pkgver = 3.2.27
 	pkgrel = 1
 	url = https://stayfreeapps.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = stayfree-desktop
 	depends = at-spi2-core
 	depends = libsecret
 	options = !strip
-	source = stayfree-desktop-3.2.22.AppImage::https://github.com/stayfree-app/desktop-releases/releases/download/v3.2.22/stayfree-linux-x86_64.AppImage
-	sha256sums = 5a7057f2757430015be36bdc037b96a8922bed693786dd8e6fa17988f9e2c8a5
+	source = stayfree-desktop-3.2.27.AppImage::https://github.com/stayfree-app/desktop-releases/releases/download/v3.2.27/stayfree-linux-x86_64.AppImage
+	sha256sums = e6878363f9ea048c2ae8ab30cb8b562ee988d03650459a7c3b9c98b2f35d9740
 
 pkgname = stayfree-desktop
