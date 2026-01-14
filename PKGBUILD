@@ -10,6 +10,11 @@ makedepends=('meson' 'rust' 'cargo' 'git')
 source=('git+https://www.github.com/teacond/Morse.git')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/Morse"
+  printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
   cd "$srcdir/Morse"
   export CARGO_HOME="$srcdir/cargo-home"
