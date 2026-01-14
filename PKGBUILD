@@ -3,7 +3,7 @@
 # Contributer: Harrison <contact@htv04.com>
 
 pkgname=funkin
-pkgver=0.7.5
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
