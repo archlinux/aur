@@ -1,0 +1,13 @@
+pkgbase = shgit-bin
+	pkgdesc = A shell-based git client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0byte-coding/shgit
+	arch = x86_64
+	license = MIT
+	provides = shgit
+	conflicts = shgit
+	source = shgit-bin-0.1.0.tar.gz::https://github.com/0byte-coding/shgit/releases/download/v0.1.0/shgit-x86_64-linux-gnu.tar.gz
+	sha256sums = 2a3d48d57862a8f7e2c7531413e7bef1f3f51075c35bc40107525d6b4f63ae2a
+
+pkgname = shgit-bin
