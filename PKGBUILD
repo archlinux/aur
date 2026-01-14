@@ -1,5 +1,5 @@
 pkgname=tabular-bin
-pkgver=0.5.28
+pkgver=0.5.31
 pkgrel=1
 pkgdesc="SQL and NoSQL database client (binary release)"
 arch=('x86_64' 'aarch64')
