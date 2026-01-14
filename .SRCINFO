@@ -1,0 +1,22 @@
+pkgbase = ghk-bin
+	pkgdesc = GitHub helper — push code with ease.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/bymehul/ghk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = ghk
+	conflicts = ghk
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/bymehul/ghk/v1.0.3/LICENSE
+	source = README-1.0.3.md::https://raw.githubusercontent.com/bymehul/ghk/v1.0.3/README.md
+	sha256sums = 4a0fe0a8540c8618d99d198f19fd7c907e889a225aa6e7ddd5e8d054f8d64243
+	sha256sums = 0f4f57e85e04d12e979edc9456f17fa90fdb1d115d810b53c4dad5666d61d33b
+	source_x86_64 = ghk-x86_64-1.0.3::https://github.com/bymehul/ghk/releases/download/v1.0.3/ghk-linux-x86_64
+	sha256sums_x86_64 = 8084174f87ee5c77e3520e2d73ad1392b8654b5d509a3a0a8ee3692c2e38d219
+	source_aarch64 = ghk-aarch64-1.0.3::https://github.com/bymehul/ghk/releases/download/v1.0.3/ghk-linux-aarch64
+	sha256sums_aarch64 = a212aa3124c1ba9439347c1f14538e996296f5c8613ba22c3bae3c685cc5208c
+
+pkgname = ghk-bin
