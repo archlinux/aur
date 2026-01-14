@@ -2,7 +2,7 @@
 _pkgname=frhelper
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=11.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Authoritative French dictionary software, an essential tool for French learners.(Prebuilt version)法语助手,权威的法语词典软件,法语学习者必备的工具."
 arch=('x86_64')
 url="https://www.eudic.net/v4/fr/app/frhelper"
@@ -61,11 +61,12 @@ depends=(
     'libcaca'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://www.eudic.net/download/${_pkgname}.deb?v=${pkgver//./-}"
+    "${pkgname%-bin}-${pkgver}.deb::https://www.eudic.net/download/${_pkgname}.deb"
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c12c477048571d64eb8651ec470bfc1b3b738b591cfce0322eeadbe921a86917'
+sha256sums=('ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c'
+            'c12c477048571d64eb8651ec470bfc1b3b738b591cfce0322eeadbe921a86917'
             '07aefce5b6c9dce4fec424cfb3d1c2456680d6936e62651484253a031c921db9')
 prepare() {
     sed -i -e "
