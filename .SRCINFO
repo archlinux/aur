@@ -1,7 +1,7 @@
 pkgbase = redhat-fonts
 	pkgdesc = Red Hat Typeface fonts
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.redhat.com
 	arch = any
 	license = OFL-1.1-RFN AND CC-BY-SA-4.0
