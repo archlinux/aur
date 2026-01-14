@@ -13,6 +13,7 @@ pkgbase = comsol-multiphysics
 	depends = base
 	depends = base-devel
 	optdepends = matlab: LiveLink™ for MATLAB®
+	optdepends = tcsh: Required for interoperability with MATLAB®
 	optdepends = cuda: NVIDIA CUDA® Toolkit
 	source = file://COMSOL64_lnx.zip
 	source = file://LICENSE
