@@ -1,5 +1,5 @@
-pkgver=3.9.0.313
-sha256sums=("cc10eb65e835c870a65ea1e738e43c1e7f3e55b64b11af61643bf618bef4c731"
+pkgver=3.10.0.318
+sha256sums=("d878af8a6c9ee9a9feb9fc9b69f53f7baf042163967dcd3dca49c3087ffda3ba"
             "b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d"
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 _pkgname=hmcl-dev
@@ -10,7 +10,7 @@ url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
 arch=('any')
 depends=('java-runtime')
-source=("http://mirrors.cloud.tencent.com/nexus/repository/maven-public/org/glavo/hmcl/hmcl-dev/$pkgver/hmcl-dev-$pkgver.jar"
+source=("https://hmcl.glavo.site/download/HMCL-$pkgver.jar"
         "start.sh"
         "hmcl-dev.desktop")
 noextract=("hmcl-dev-$pkgver.jar"
@@ -19,7 +19,7 @@ noextract=("hmcl-dev-$pkgver.jar"
 
 package(){
     des="$pkgdir/opt/hmcl-dev"
-    jn="hmcl-dev-$pkgver.jar"
+    jn="HMCL-$pkgver.jar"
 
     install -d $des -m 777
     install -d $pkgdir/usr/share/applications

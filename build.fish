@@ -13,9 +13,9 @@ if [ $ver = $pkgver ]
 end
 
 # 生成 PKGBUILD
-curl "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/org/glavo/hmcl/hmcl-dev/$ver/hmcl-dev-$ver.jar" -O
+curl -L "https://hmcl.glavo.site/download/HMCL-$ver.jar" -O
 echo pkgver=$ver >PKGBUILD
-set sha (sha256sum hmcl-dev-$ver.jar | cut -d ' ' -f 1 | tr -d '\n')
+set sha (sha256sum HMCL-$ver.jar | cut -d ' ' -f 1 | tr -d '\n')
 echo "sha256sums=(\"$sha\"" >>PKGBUILD
 cat PKGBUILD.part1 >>PKGBUILD
 

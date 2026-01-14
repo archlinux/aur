@@ -1,18 +1,18 @@
 pkgbase = hmcl-dev-bin
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular
-	pkgver = 3.9.0.313
+	pkgver = 3.10.0.318
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	noextract = hmcl-dev-3.9.0.313.jar
+	noextract = hmcl-dev-3.10.0.318.jar
 	noextract = start.sh
 	noextract = hmcl-dev.desktop
-	source = http://mirrors.cloud.tencent.com/nexus/repository/maven-public/org/glavo/hmcl/hmcl-dev/3.9.0.313/hmcl-dev-3.9.0.313.jar
+	source = https://hmcl.glavo.site/download/HMCL-3.10.0.318.jar
 	source = start.sh
 	source = hmcl-dev.desktop
-	sha256sums = cc10eb65e835c870a65ea1e738e43c1e7f3e55b64b11af61643bf618bef4c731
+	sha256sums = d878af8a6c9ee9a9feb9fc9b69f53f7baf042163967dcd3dca49c3087ffda3ba
 	sha256sums = b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d
 	sha256sums = 65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d
 
