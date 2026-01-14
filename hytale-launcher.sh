@@ -24,19 +24,27 @@ else
 fi
 
 # IPV6 Check
-if ! command -v ip &> /dev/null; then
-    echo "WARN: 'ip' command not found. Unable to check network status."
-elif [[ $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 1 ]]; then
-    echo "****************************************************"
-    echo "WARNING: IPv6 is DISABLED in your kernel settings!"
-    echo "****************************************************"
-elif ! ip -6 addr show | grep -q "scope global"; then
-    echo "****************************************************"
-    echo "WARNING: IPv6 is enabled, but no GLOBAL address found."
-    echo "You may only have local connectivity."
-    echo "****************************************************"
+if [[ -f /proc/sys/net/ipv6/conf/all/disable_ipv6 ]]; then
+    if [[ $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 1 ]]; then
+        echo "****************************************************"
+        echo "WARNING: IPv6 is DISABLED in your kernel settings!"
+        echo "****************************************************"
+    fi
 else
-    echo "[OK] IPv6 is enabled and has a global address."
+    echo "WARN: Could not find IPv6 kernel settings file."
+fi
+
+if ! command -v ip &> /dev/null; then
+    echo "WARN: 'ip' command not found. Unable to check network interface status."
+else
+    if ! ip -6 addr show | grep -q "scope global"; then
+        echo "****************************************************"
+        echo "WARNING: IPv6 is enabled, but no GLOBAL address found."
+        echo "You may only have local connectivity."
+        echo "****************************************************"
+    else
+        echo "[OK] IPv6 is enabled and has a global address."
+    fi
 fi
 
 # NVIDIA Sync Fix
