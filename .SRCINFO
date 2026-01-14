@@ -1,6 +1,6 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/4gray/iptvnator
 	arch = aarch64
@@ -9,17 +9,17 @@ pkgbase = iptvnator-electron-bin
 	license = MIT
 	depends = electron39
 	depends = mpv
-	provides = iptvnator=0.17.1
+	provides = iptvnator=0.18.0
 	conflicts = iptvnator
-	source = LICENSE-0.17.1.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.17.1/LICENSE.md
+	source = LICENSE-0.18.0.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.18.0/LICENSE.md
 	source = iptvnator-electron.sh
 	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = iptvnator-electron-0.17.1-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.17.1/iptvnator-0.17.1-linux-arm64.deb
-	sha256sums_aarch64 = 7f1aad5278fae2aeceaac0b1a414285ecded620ddc05089aa8ede48cfdb155ea
-	source_armv7h = iptvnator-electron-0.17.1-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.17.1/iptvnator-0.17.1-linux-armv7l.deb
-	sha256sums_armv7h = b87850d469f4f74e1b90f2df58038a0eb9c58b7380d87661d22f61d31b3d49e5
-	source_x86_64 = iptvnator-electron-0.17.1-x86_64.deb::https://github.com/4gray/iptvnator/releases/download/v0.17.1/iptvnator-0.17.1-linux-amd64.deb
-	sha256sums_x86_64 = fadc7515255e275d91aaef540a6814a59c5cf6ead84ace95ad3ba06791ed5599
+	source_aarch64 = iptvnator-electron-0.18.0-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.18.0/iptvnator-0.18.0-linux-arm64.deb
+	sha256sums_aarch64 = 5ce575cb548ac85a3e8cc6c89eb8f8f5764c8bc64c75fcca731008c868717ce3
+	source_armv7h = iptvnator-electron-0.18.0-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.18.0/iptvnator-0.18.0-linux-armv7l.deb
+	sha256sums_armv7h = fc56c2ba3a25b33d6db1611d425ab016cf1d404e29be0d22ecc1919a42a1c2e0
+	source_x86_64 = iptvnator-electron-0.18.0-x86_64.deb::https://github.com/4gray/iptvnator/releases/download/v0.18.0/iptvnator-0.18.0-linux-amd64.deb
+	sha256sums_x86_64 = c2b4fc04551af77848ce47760e2129e66c8407883db9488e24d33171f670c918
 
 pkgname = iptvnator-electron-bin
