@@ -24,10 +24,6 @@ sha256sums=(
     'SKIP'
 )
 
-prepare() {
-    ls -l "$srcdir"
-}
-
 package() {
     mkdir -p "$pkgdir/opt/davinci-resolve-checker"
 	cp -r davinci-resolve-checker "$pkgdir/opt"
