@@ -4,7 +4,7 @@
 # Contributor: Juan Francisco Miranda <jfmiranda at gmail dot com>
 
 pkgname=postman-bin
-pkgver=11.80.0
+pkgver=11.80.2
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -20,8 +20,8 @@ source_x86_64=("postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download
 source_aarch64=("postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64")
 
 sha256sums=('d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_x86_64=('c51b77ede2a19c6dbb9698946a5fd2073b2b7f19753e62c4cf1db9fe67dfbe57')
-sha256sums_aarch64=('3bd5a2c0e6bb58db659f48e8996611b6869c1f1228d4e6bacf52270d897a157d')
+sha256sums_x86_64=('e2ddd31af271efc60b12e53c98e70557ed1b648c8d877e392366f7153ded388a')
+sha256sums_aarch64=('d1620f6b66ee66a99ea369612aabaca26a68c4b851c6a4399e840560d79e3de0')
 
 package() {
   install -dm755 "${pkgdir}/opt/"
