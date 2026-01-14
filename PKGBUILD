@@ -1,4 +1,5 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Technochips <thetechnochips at protonmail dot com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=chocolate-doom
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
