@@ -1,0 +1,5 @@
+[jn-bin]
+source = "github"
+github = "joereynolds/jn"
+use_latest_release = true
+prefix = "v"
