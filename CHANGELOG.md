@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create unit' Drop-Ins
 
+## [2.11.4] - 2026-01-14
+
+### Added
+
+- Menu item to toggle Show Line Numbers on unit file panel.
+
 ## [2.11.3] - 2026-01-13
 
 ### Added
