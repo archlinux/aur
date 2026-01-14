@@ -1,6 +1,6 @@
 pkgbase = markterm
 	pkgdesc = A terminal markdown renderer.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/ralsina/markterm
 	install = install
@@ -10,7 +10,7 @@ pkgbase = markterm
 	makedepends = crystal
 	makedepends = shards
 	optdepends = timg: image support
-	source = markterm-0.6.2.tar.gz::https://github.com/ralsina/markterm/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 97af688de494d599e064cba50ab2f68cd2c18897dfe3d5032aad54d782fa694b
+	source = markterm-0.6.3.tar.gz::https://github.com/ralsina/markterm/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = 4489b324ee36737d7af283437a6f38a81505d2d62cb2d25330b29d7f4e13365f
 
 pkgname = markterm
