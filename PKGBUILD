@@ -1,6 +1,6 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=m8c
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A UI for the M8 and M8 Headless portable music DAWs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/laamaa/m8c/archive/refs/tags/v${pkgver}.tar.gz"
         "system-gamecontrollerdb.patch")
-sha256sums=('74f51cf42a44b4636c05f4e72dcd7af65139ee15a8e09fad745e4e838de08933'
+sha256sums=('1fa5773a376e7b7ed5c65dcda5126d8e9933b1dbbaa95019e1afb025f5b6977a'
             '9bba2faf9512779b2a4e2ab022b7ed437e12490c332e2333707470a21f481589')
 
 prepare() {
