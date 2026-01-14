@@ -1,16 +1,16 @@
 pkgbase = hugin-messenger-bin
 	pkgdesc = The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://hugin.chat/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron30
-	provides = hugin-messenger=1.1.1
+	provides = hugin-messenger=1.1.2
 	conflicts = hugin-messenger
-	source = hugin-messenger-1.1.1.deb::https://github.com/kryptokrona/hugin-desktop/releases/download/1.1.1/hugin-messenger_1.1.1_amd64.deb
+	source = hugin-messenger-1.1.2.deb::https://github.com/kryptokrona/hugin-desktop/releases/download/1.1.2/hugin-messenger_1.1.2_amd64.deb
 	source = hugin-messenger.sh
-	sha256sums = 9f93d62c0c177648096c156c7b242a06fb33596f6637ab1293ff195804f25ba1
+	sha256sums = 60e70171c94e21e6ed21f055d945306277b25e8bf5c43f526c18d1565a99ddc1
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = hugin-messenger-bin
