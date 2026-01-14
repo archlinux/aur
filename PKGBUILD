@@ -3,7 +3,7 @@
 
 pkgname=sphinxcontrib-adadomain
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds Ada domain support to Sphinx."
 
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-sphinx)
 makedepends=(python-setuptools)
 
 source=($url/archive/refs/heads/master.zip)
-sha256sums=(eee7e9e080ef9df2958166c234b38fa9336e035e2e8baa9239a7b216946272ac)
+sha256sums=(b214093cdc78e8d426e217aab5e576c033f99549457c14cfc0b9bbb49e5ce4cb)
 
 
 package()
