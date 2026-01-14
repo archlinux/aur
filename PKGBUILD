@@ -24,7 +24,7 @@ esac
 
 source=("opencode-desktop-linux-${_debarch}.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-${_debarch}.deb"
         "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
-sha256sums=('586b447fb8e060db2b5ef041aff7000a4ea1eff58a0802564ac68d7d524ade98'
+sha256sums=('dcc198ec13bc7feb7fb085f966072e0a6d820a38e2c7af518489d8b7db040b9e'
             '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
 
 package() {
