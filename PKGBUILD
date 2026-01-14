@@ -1,18 +1,30 @@
 pkgname=vigaphone-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
 arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
-depends=('glibc')
-makedepends=('rsync')
 #
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux.tar.gz")
 # test local source=("lastViGAPhoneR_linux.tar.gz")
 sha256sums=('f16a2077a269c0c65995cd045ef64164df6210536c374e0d5e2f278d72244225')
+
+depends=(
+    'alsa-lib'
+    'pipewire-jack'
+    'libx11'
+    'mesa'
+    'freetype2'
+    'fontconfig'
+)
+optdepends=(
+    'jack'
+)
+
+makedepends=('rsync')
 
 package() {
     cd "$srcdir/ViGAPhoneR"
