@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI physical modelling synthesizer, audio‑analysis, and instrument‑tuning tool."
@@ -14,14 +14,11 @@ sha256sums=('f16a2077a269c0c65995cd045ef64164df6210536c374e0d5e2f278d72244225')
 
 depends=(
     'alsa-lib'
-    'pipewire-jack'
+    'jack'
     'libx11'
     'mesa'
     'freetype2'
     'fontconfig'
-)
-optdepends=(
-    'jack'
 )
 
 makedepends=('rsync')
