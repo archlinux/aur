@@ -1,0 +1,22 @@
+pkgbase = rustledger
+	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting
+	pkgver = 1.0.0_rc.18
+	pkgrel = 1
+	url = https://github.com/rustledger/rustledger
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	provides = rledger-check
+	provides = rledger-format
+	provides = rledger-query
+	provides = rledger-report
+	provides = rledger-doctor
+	provides = rledger-extract
+	provides = rledger-price
+	conflicts = rustledger-bin
+	source = rustledger-1.0.0_rc.18.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v1.0.0-rc.18.tar.gz
+	sha256sums = a86c1f37534eb45bde44c8f777909d55dbc6c4f0eef67512e9b35c267cd99c29
+
+pkgname = rustledger
