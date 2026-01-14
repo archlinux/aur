@@ -1,6 +1,6 @@
 # Maintainer: Paul Harvey <hed-phsuarnaba@smu.edu.ph>
 pkgname=hyprsettings-git
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Configurator for Hyprland (alpha, development version, git snapshot)"
 arch=('x86_64')
