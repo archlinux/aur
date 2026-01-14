@@ -1,0 +1,10 @@
+pkgbase = steamos-session-select
+	pkgdesc = Allows to exit from `gamescope -- steam -steamos3`
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/steam-for-linux/issues/11241
+	arch = any
+	source = steamos-session-select
+	sha256sums = 7790da237d36868ff396b0c32b5c461bf7987212c5df7b3e95913d8ee3d37f37
+
+pkgname = steamos-session-select
