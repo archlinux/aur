@@ -28,7 +28,7 @@ pkgbase = wayvr-actions-bin
 	conflicts = wayvr-git
 	replaces = wlx-overlay-s
 	options = !debug
-	source = wayvr-actions-bin-x86_64-20987321396.zip::https://nightly.link/wlx-team/wayvr/actions/runs/20987321396/{WayVR}-main-x86_64.AppImage.zip
+	source = wayvr-actions-bin-x86_64-20987321396.zip::https://nightly.link/wlx-team/wayvr/actions/runs/20987321396/WayVR-main-x86_64.AppImage.zip
 	sha256sums = 8747ecba5a6c21a98c9c96f86794badd9f3782b7b016896cee6e3cb5bf1171fb
 
 pkgname = wayvr-actions-bin

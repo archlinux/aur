@@ -46,7 +46,7 @@ depends=(
 
 zipName="${pkgname}-${CARCH}-${pkgver}.zip"
 source=(
-    "${zipName}::https://nightly.link/${_pkgowner}/${_pkgname}/actions/runs/${pkgver}/{$_appimageprefix}-${branch}-${CARCH}.AppImage.zip"
+    "${zipName}::https://nightly.link/${_pkgowner}/${_pkgname}/actions/runs/${pkgver}/${_appimageprefix}-${branch}-${CARCH}.AppImage.zip"
 )
 
 sha256sums=('8747ecba5a6c21a98c9c96f86794badd9f3782b7b016896cee6e3cb5bf1171fb')
