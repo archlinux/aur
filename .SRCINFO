@@ -1,0 +1,18 @@
+pkgbase = nexus-client-git
+	pkgdesc = Cross-platform BBS client with chat, file transfers, and news support (git version)
+	pkgver = r420.2a9a524
+	pkgrel = 1
+	url = https://github.com/zquestz/nexus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	provides = nexus-client
+	conflicts = nexus-client
+	options = !lto
+	source = nexus-client-git::git+https://github.com/zquestz/nexus.git
+	sha256sums = SKIP
+
+pkgname = nexus-client-git
