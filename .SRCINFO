@@ -1,7 +1,7 @@
 pkgbase = godot-uid-fixer-git
 	pkgdesc = A program designed to fix the UID error in godot engine.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	makedepends = git
 	makedepends = gcc
