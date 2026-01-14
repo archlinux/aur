@@ -6,10 +6,10 @@ pkgbase = alacritty-toggle-theme-on-darkmode-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = redshift
 	depends = awk
 	depends = bash
 	depends = alacritty-use-theme-git
+	provides = color-mode.service
 	source = alacritty-toggle-theme-on-darkmode-git::git+https://github.com/christophermca/great-matcha.git
 	md5sums = SKIP
 
