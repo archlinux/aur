@@ -1,6 +1,6 @@
 # Maintainer: Your Name <mca.christopher@gmail.com>
 pkgname="alacritty-toggle-theme-on-darkmode-git"
-pkgver=r32.126a244
+pkgver=r33.4933cf9
 pkgrel=1
 pkgdesc="Changes alacritty theme when user changes the Gnome theme to 'prefer dark style'"
 arch=('x86_64')
@@ -21,10 +21,10 @@ package() {
   cd "$pkgname"
 
   # systemd units
-  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/color-mode.service "$pkgdir/usr/lib/systemd/user/color-mode.service"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/alacritty-listen-to-colorscheme.service "$pkgdir/usr/lib/systemd/user/alacritty-listen-to-colorscheme.service"
 
   #toggle-mode-on-dbus-signal
-  install -Dm755 $srcdir/$pkgname/app/home/.local/alacritty/bin/toggle-mode-on-signal.sh "$pkgdir/usr/bin/$pkgname/toggle-mode-on-signal.sh"
+  install -Dm755 $srcdir/$pkgname/app/home/.local/alacritty-use-theme/bin/toggle-mode-on-signal.sh "$pkgdir/usr/bin/alacritty-use-theme/toggle-mode-on-signal.sh"
 
 }
 
