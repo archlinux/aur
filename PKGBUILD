@@ -1,18 +1,19 @@
-# Maintainer: haxibami <contact at haxibami dot net>
+# Contributor: haxibami <contact at haxibami dot net>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=qdrant
-pkgver=1.14.1
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
 url="https://github.com/qdrant/qdrant"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
-  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('e029eeeb4dc303d531fd5d553b7351f50de97c27732a939f4bee9815580edc02')
+sha256sums=('38acd9ad284c8446e82d1d00037d08afa9c347e674a1ed023d62206df6432cb4')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
