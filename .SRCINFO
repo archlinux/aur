@@ -1,6 +1,6 @@
 pkgbase = legionaura
 	pkgdesc = RGB keyboard lighting controller for Lenovo LOQ, Legion, and IdeaPad Gaming laptops (CLI + Qt GUI)
-	pkgver = 1.1.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/nivedck/LegionAura
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = legionaura
 	provides = lenovo-loq
 	conflicts = legion
 	conflicts = legion-rgb
-	source = https://github.com/nivedck/LegionAura/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/nivedck/LegionAura/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = e4b62b46fa9a76f3d99bd5a3b2cab3e85cbd5b70634041a711faec6ec8b5050c
 
 pkgname = legionaura
