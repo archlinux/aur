@@ -1,0 +1,7 @@
+src
+pkg
+diceware-git/
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
