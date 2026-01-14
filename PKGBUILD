@@ -3,8 +3,8 @@
 # Contributor: Gordon Chan <gc@gondro.xyz>
 
 pkgname=ttf-shanggu
-pkgver=1.022
-pkgrel=2
+pkgver=1.027
+pkgrel=1
 pkgdesc="Calligraphic CJK font based on Source-Han-Sans in static TTF format"
 arch=('any')
 url="https://github.com/GuiWonder/Shanggu"
@@ -15,12 +15,11 @@ source=("${url}/releases/download/${pkgver}/ShangguMonoOTCs.7z"
         "${url}/releases/download/${pkgver}/ShangguSerifOTCs.7z"
         "${url}/releases/download/${pkgver}/ShangguRoundTTCs.7z"
         "70-shanggu.conf")
-md5sums=('37f18903015c118dcd7bf41a4a8584ea'
-         'f5ba508a66ccd4656b4509917768ef7e'
-         'c33470bae4ec7c57e5562c06ccce0686'
-         '03e65b79ec3e7ebb4be9d25745eb3795'
-         'e8888de3a28b75eea861166464b99b42')
-
+md5sums=('b42a0db15bbd338cfec5b8075ead01fd'
+			'a02cf6e76f1d452d6ef351b73ea92d38'
+			'6c68d435c8592a4af277d1b682a3d056'
+			'34647bb63d2ebd0fabeac224e614d293'
+			'e8888de3a28b75eea861166464b99b42')
 package() {
     install -Dm644 *.ttc -t "${pkgdir}/usr/share/fonts/shanggu/"
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
