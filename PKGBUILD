@@ -7,7 +7,7 @@
 
 pkgname=libopenshot
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -20,7 +20,9 @@ depends=(
   libmagick
   opencv
   python
+  resvg
   qt5-base
+  qt6-base
   qt5-multimedia
   qt5-svg
 )
