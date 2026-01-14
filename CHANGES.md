@@ -1,5 +1,61 @@
 # Release Notes
 
+## 2.80.0
+
+This release adds the `pex3 scie create` tool for creating scies from existing PEX files. This
+works for PEXes created by Pex 2.1.25 (released on January 21st, 2021) and newer.
+
+* Add a `pex3 scie create` command. (#3070)
+
+## 2.79.0
+
+This release adds the `CPython[free-threaded]` alias for `CPython+t` and the `CPython[gil]` alias
+for `CPython-t` when writing interpreter constraints.
+
+* Add `CPython[{free-threaded,gil}]` aliases for `CPython{+,-}t`. (#3068)
+
+## 2.78.0
+
+This release adds support for the `CPython+t` implementation name in interpreter constraints to
+allow constraining selected interpreters to CPython interpreters built with free-threading support.
+The existing `CPython` implementation selects from either classic GIL enabled `CPython` interpreters
+or CPython free-threaded interpreters as was the case previously. The `CPython-t` implementation
+name can be used to require classic GIL-only CPython interpreters.
+-
+* Support `CPython+t` in ICs to select free-threaded CPython. (#3067)
+
+## 2.77.3
+
+This release updates vendored Pip's vendored certifi's cacert.pem to that from certifi 2026.1.4.
+
+* Update vendored Pip's CA cert bundle. (#3065)
+
+## 2.77.2
+
+This release fixes venv creation from PEXes to avoid declaring false collisions in `__init__.py`
+files when the venv uses Python 3.9 or greater.
+
+* Compare ASTs of colliding venv `__init__.py`. (#3063)
+
+## 2.77.1
+
+This release fixes a very old bug where the Pex PEX (or any other PEX created with
+`--no-strip-pex-env`) would, in fact, strip `PEX_PYTHON` and `PEX_PYTHON_PATH`.
+
+* Fix `PEX_PYTHON{,_PATH}` stripping on Pex re-exec. (#3062)
+
+## 2.77.0
+
+This release has no fixes or new features per-se, but just changes the set of distributions that
+Pex releases to PyPI. Previously Pex released an sdist and a universal (`py2.py3-none-any`) `.whl`.
+Pex now releases two wheels in addition to the sdist. The `py3.py312-none-any.whl` targets
+Python>=3.12 and has un-needed vendored libraries elided making it bith a smaller `.whl` and less
+prone to false-positive security scan issues since unused vendored code is now omitted. The other
+wheel carries the same contents as prior and supports creating PEXes for Python 2.7 and
+Python>=3.5,<3.12.
+
+* Split Pex `.whl` into two `.whl`s. (#3057)
+
 ## 2.76.1
 
 This release fixes bootstrapping of Pips specified via `--pip-version` to respect Pex Pip
