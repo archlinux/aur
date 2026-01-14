@@ -1,6 +1,6 @@
 pkgbase = foundryvtt-cli
 	pkgdesc = The official Foundry VTT CLI
-	pkgver = 3.0.0
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/foundryvtt/foundryvtt-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = foundryvtt-cli
 	depends = nodejs
 	provides = fvtt
 	options = !strip
-	source = https://github.com/foundryvtt/foundryvtt-cli/archive/refs/tags/3.0.0.zip
-	sha256sums = 56fba68518a1922c51be27b12bcaf881c596830d313b6d27989a93d30fa2ed2c
+	source = https://github.com/foundryvtt/foundryvtt-cli/archive/refs/tags/3.0.3.zip
+	sha256sums = df7367354b21eab3a67aca34dcd6b791b5167a76ff351c9a9b66252033d6d433
 
 pkgname = foundryvtt-cli
