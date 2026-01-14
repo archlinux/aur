@@ -11,8 +11,8 @@ sha256sums=('SKIP')
 build() {
     binname=godot-uid-fixer
     echo "Build ${pkgname}..."
+    cd $binname
     cmake .
-    cd build
     make
 }
 
