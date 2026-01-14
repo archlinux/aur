@@ -2,7 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 _name=quimb
 pkgname=python-$_name
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Quantum information and many-body calculations including tensor networks"
 arch=(any)
@@ -39,7 +39,7 @@ optdepends=(
 )
 checkdepends=(python-pytest)
 source=($_name::git+https://github.com/jcmgray/$_name.git#tag=v$pkgver)
-b2sums=('e267f771511e1bc7850cb411f201812af2791222d5402e7e2a12a01f536b96aabe1738c49132494d3b01c1f913e4306c7dc1a50c4b004b26ec1426ddfad5aed8')
+b2sums=('83de4f6c191bd208086126e66818d736753487cb3a5af474aeb7a9c89cc35a168eb57b620f7f368930e65e871bfc909b69720e8c92d8e33b4d00c053c8b6e736')
 
 build() {
     cd $_name
