@@ -1,0 +1,25 @@
+pkgbase = gixy-next
+	pkgdesc = Nginx configuration static analyzer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gixy.io
+	arch = any
+	license = MPL-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = crossplane
+	depends = python-configargparse
+	depends = python-jinja
+	depends = python-tldextract
+	optdepends = python-requests: ReDoS checks via external API
+	conflicts = gixy
+	conflicts = gixy-git
+	conflicts = gixy-ng
+	conflicts = gixy-ng-git
+	source = https://files.pythonhosted.org/packages/source/g/gixy-next/gixy_next-0.1.2.tar.gz
+	b2sums = 75ca5bbb769eed82839a5d2a39720301f7ea925580c94efcfbe8c1fce9779943db8814c417d87ffe335112946d69a6d51ac8a2aac81e008c38b915758dbb8d7f
+
+pkgname = gixy-next
