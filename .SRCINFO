@@ -1,17 +1,16 @@
 pkgbase = eaglergrab-bin
 	pkgdesc = Eaglercraft Launcher(Prebuilt version.Use system-wide electron).
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://stoppedwumm.github.io/eaglerGrab/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = fuse2
-	depends = electron37
-	provides = eaglergrab=1.4.0
+	depends = electron39
+	provides = eaglergrab=1.4.1
 	conflicts = eaglergrab
-	source = eaglergrab-1.4.0-x86_64.AppImage::https://github.com/Stoppedwumm-Studios/eaglerGrab/releases/download/v1.4.0/release-linux.AppImage
+	source = eaglergrab-1.4.1-x86_64.AppImage::https://github.com/Stoppedwumm-Studios/eaglerGrab/releases/download/v1.4.1/release-linux.AppImage
 	source = eaglergrab.sh
-	sha256sums = 866e61f871bf7dd9c30b4dccfd4006be72663704a9dbefb2a1228c427ff7e62d
+	sha256sums = ef2248479a616c4d20258ad275860c767fcb776207dbed68012c069751658be5
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = eaglergrab-bin
