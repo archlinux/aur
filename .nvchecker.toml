@@ -1,0 +1,5 @@
+[csvi-bin]
+source = "github"
+github = "hymkor/csvi"
+use_latest_release = true
+prefix = "v"
