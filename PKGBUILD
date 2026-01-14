@@ -2,7 +2,7 @@
 
 pkgname=librewolf-extension-duckduckgo-privacy-essentials
 _id="jid1-ZAdIEUB7XOzOJw@jetpack"
-pkgver=2025.12.14
+pkgver=2026.1.12
 pkgrel=1
 pkgdesc="Actively protects your data in your current browser"
 arch=('any')
@@ -13,8 +13,8 @@ checkdepends=('jq')
 groups=('librewolf-addons')
 source=("${_id}.xpi::https://github.com/duckduckgo/duckduckgo-privacy-extension/releases/download/${pkgver}/duckduckgo_privacy_essentials-${pkgver}.zip")
 noextract=("${_id}.xpi")
-sha256sums=('30a757523e81d553b7225d61f1e7307042f2ac2b2647fab62851e1d44e5cf19f')
-b2sums=('10f88a226b35140fcb05e4f8ddebcebd511b8b5aad3f9fdb7b5282bea5b1f5b6b726f04f867a8360a3ff2692d4d23259e68b7403c477773f5070ac48e2249242')
+sha256sums=('e04d67abe61c154eb0119e7b746c9671f71ad6978c3e5526cba8444de5bb41e7')
+b2sums=('a4c8c9cfd3267ec80489ef059b3e6f5b1d20b4bb5fb2bcae1f765dff27a495ec5ab874e3c94c98236b0ad777ce2d9c7be85fb7b91f4e5b4aedb3fbd56feeb528')
 
 check() {
   bsdtar xOf ${_id}.xpi manifest.json|jq --arg v ${pkgver} -e '.version==$v'
