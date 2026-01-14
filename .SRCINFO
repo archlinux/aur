@@ -1,5 +1,5 @@
 pkgbase = glaunch-git
-	pkgdesc = A script you can set as a launch command in steam to apply a config
+	pkgdesc = A script you can set as a launch command in steam to apply a config.
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/YaBoiMax/glaunch
