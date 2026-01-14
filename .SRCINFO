@@ -1,12 +1,12 @@
 pkgbase = ifrextractor-rs
 	pkgdesc = Rust utility to extract UEFI IFR data found in a binary file into human-readable text.
-	pkgver = 1.5.1
-	pkgrel = 3
-	url = https://github.com/BoringBoredom/UEFI-Editor
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/LongSoft/IFRExtractor-RS
 	arch = any
 	license = BSD-2-Clause
 	makedepends = rust
-	source = https://github.com/LongSoft/IFRExtractor-RS/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = 82b8602d255af935fb6debcbcb75384618efd2e10c0cadcada74cc679509121e
+	source = https://github.com/LongSoft/IFRExtractor-RS/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = ac69856138d1bf07698afff9d6d0f5873167bd56c6e460546869b14a16516c7d
 
 pkgname = ifrextractor-rs
