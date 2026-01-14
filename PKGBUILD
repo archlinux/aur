@@ -4,7 +4,7 @@ pkgname=gitfourchette-bin
 _pkgname=gitfourchette
 
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 
 pkgdesc="The comfortable Qt-based Git GUI"

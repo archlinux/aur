@@ -1,7 +1,7 @@
 pkgbase = gitfourchette-bin
 	pkgdesc = The comfortable Qt-based Git GUI
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jorio/gitfourchette
 	arch = x86_64
 	arch = aarch64
