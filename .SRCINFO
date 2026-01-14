@@ -1,7 +1,7 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://git.linux-gaming.ru/Boria138/PortProtonQt
 	arch = any
 	license = GPL-3.0
@@ -9,8 +9,8 @@ pkgbase = portprotonqt
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-numpy
 	depends = python-requests
+	depends = python-libarchive-c
 	depends = python-babel
 	depends = python-evdev
 	depends = python-pyudev
@@ -30,7 +30,7 @@ pkgbase = portprotonqt
 	depends = unzip
 	depends = curl
 	depends = unrar
-	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.9
-	sha256sums = ef803b9e7e92ec56f42d880ac21c33b1d2719a862a84069ae13a56fe5766fa7a
+	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.10
+	sha256sums = e6ca70da4b028cce85e1477063cf84e1a5bd16f4be14aad607fa7b2c4fc0a7fa
 
 pkgname = portprotonqt
