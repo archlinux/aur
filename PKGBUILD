@@ -2,11 +2,11 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin)
-pkgver=0.13.5
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
-arch=('x86_64')
-_barch=('amd64')
+arch=('x86_64' 'aarch64')
+_barch=('amd64' 'arm64')
 url='https://github.com/ollama/ollama'
 _urlraw="https://raw.githubusercontent.com/ollama/ollama/v${pkgver}"
 license=('MIT')
@@ -19,19 +19,21 @@ optdepends=("ollama-cuda: NVIDIA GPU Support")
 backup=('etc/ollama.conf')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("ollama-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[0]}.tgz"
-               "ollama.conf"
-               "ollama.service"
-               "sysusers.conf"
-               "tmpfiles.d")
+        "README-${pkgver}.md::${_urlraw}/README.md"
+        "ollama.conf"
+        "ollama.service"
+        "sysusers.conf"
+        "tmpfiles.d")
+source_x86_64=("ollama-${arch[0]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[0]}.tar.zst")
+source_aarch64=("ollama-${arch[1]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[1]}.tar.zst")
 sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
-            '3c3ca1e22d8ffd12ceccedea8d74436d1da647aadf02a7eabd5eb4e618b2264b')
-sha256sums_x86_64=('41fb93ff8be35e4d2d22bafd1c42b487efb15b766076d976766bd1ee4db3f8e2'
-                   '2503546a6d26559bce06ba6c61100026d85864b4c49bd6e4c80c596c5d22e197'
-                   '24871ffd940212e04e9bd3c334cfd4e3c4e845b374c5d0ed369fd32496b05fdb'
-                   '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
-                   '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
+            '3c3ca1e22d8ffd12ceccedea8d74436d1da647aadf02a7eabd5eb4e618b2264b'
+            '2503546a6d26559bce06ba6c61100026d85864b4c49bd6e4c80c596c5d22e197'
+            '24871ffd940212e04e9bd3c334cfd4e3c4e845b374c5d0ed369fd32496b05fdb'
+            '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
+            '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
+sha256sums_x86_64=('b41bd671353e2152d703666ea98b37c97427703d7e4356ed7da5c8d70bebbc56')
+sha256sums_aarch64=('bdff6e1b679027b15e5b4028601b499b7a69507bd13047f2badde043e6305408')
 
 
 package_ollama-bin() {
