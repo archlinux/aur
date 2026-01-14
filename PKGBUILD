@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.29.2
+pkgver=1.29.4
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -11,7 +11,8 @@ license=("LGPL-2.1-only")
 groups=()
 _electron=electron37
 depends=("$_electron")
-makedepends=(git pnpm "java-environment>=11")
+# BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 69
+makedepends=(git pnpm "java-environment>=11" "java-environment<25")
 checkdepends=()
 # FTB App will download Adoptium for itself and Minecraft, althrough system Java can be used for Minecraft too.
 optdepends=("java-runtime: Playing Minecraft with system Java.")
@@ -27,7 +28,7 @@ source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=('39a735b7049f6b3ddafb9bf795218527be52bcb98dc875b7c505dc25999015e9'
+sha256sums=('a09c1995d6bb0456e8e91c07271912c4f971eae9b512e0e27ecc5cbd4bb8409a'
             'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
             '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
