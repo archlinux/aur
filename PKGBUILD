@@ -1,5 +1,5 @@
 pkgname=coolerdash-git
-pkgver=2.0.4.r0.g271401e
+pkgver=2.0.5.1.r0.g1d15747
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -10,9 +10,9 @@ url="https://github.com/damachine/coolerdash"
 license=('MIT')
 depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
-backup=('etc/coolercontrol/plugins/coolerdash/config.ini')
+backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=271401e77ae78409dfd1d69ca83d0a28c924d4c6
+_commit=1d15747247b41b5e26a01f33bda99be88b6ec78d
 source=("git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
@@ -59,20 +59,21 @@ package() {
     install -Dm644 "${srcdir}/coolerdash/VERSION" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/VERSION"
     install -Dm644 "${srcdir}/coolerdash/LICENSE" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/LICENSE"
     install -Dm644 "${srcdir}/coolerdash/CHANGELOG.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/CHANGELOG.md"
-    install -Dm644 "${srcdir}/coolerdash/etc/coolerdash/config.ini" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.ini"
+    install -Dm666 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
+    install -Dm644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/ui/index.html" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/index.html"
+    install -Dm644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/ui/cc-plugin-lib.js" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/cc-plugin-lib.js"
     install -Dm644 "${srcdir}/coolerdash/images/shutdown.png" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/shutdown.png"
     install -Dm644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/manifest.toml" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
-    install -Dm644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/ui.html" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui.html"
-    
+
     # Substitute VERSION placeholder in manifest.toml
     sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
-    
+
     # Manual page
     install -Dm644 "${srcdir}/coolerdash/man/coolerdash.1" "${pkgdir}/usr/share/man/man1/coolerdash.1"
-    
+
     # Desktop shortcut for settings UI
-    install -Dm644 "${srcdir}/coolerdash/etc/applications/coolerdash-settings.desktop" "${pkgdir}/usr/share/applications/coolerdash-settings.desktop"
-    
+    install -Dm644 "${srcdir}/coolerdash/etc/applications/coolerdash.desktop" "${pkgdir}/usr/share/applications/coolerdash.desktop"
+
     # Application icon
     install -Dm644 "${srcdir}/coolerdash/etc/icons/coolerdash.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/coolerdash.svg"
 }
