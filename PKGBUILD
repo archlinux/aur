@@ -5,7 +5,7 @@
 
 pkgname=dvc
 pkgver=3.66.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
 license=(Apache-2.0)
