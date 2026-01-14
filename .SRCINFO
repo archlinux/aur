@@ -1,0 +1,16 @@
+pkgbase = evercal
+	pkgdesc = M3 Expressive Calendar
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/snes19xx/EverCal
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libappindicator-gtk3
+	options = !strip
+	source = evercal-2.0.tar.gz::https://github.com/snes19xx/EverCal/releases/download/2.0a%2Fb/installer.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/snes19xx/EverCal/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = evercal
