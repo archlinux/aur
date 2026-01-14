@@ -3,7 +3,7 @@ _pkgname='devtoys'
 pkgname="${_pkgname}-bin"
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=2.0.8.0
+pkgver=2.0.9.0
 pkgrel=2
 scdir=${_pkgname}
 _pkgver="${pkgver//_/-}"
@@ -22,8 +22,8 @@ source=(${_pkgname}.desktop)
 source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/DevToys-app/DevToys/releases/download/v${pkgver}/devtoys_linux_x64.deb")
 source_aarch64=("${_pkgname}-${pkgver}_arm.deb::https://github.com/DevToys-app/DevToys/releases/download/v${pkgver}/devtoys_linux_arm.deb")
 sha256sums=('11524218a41acda2d8e8de301dd485de3a99929ea108333635af7389eafc2e7c')
-sha256sums_x86_64=('8fe24a5ba261a285f564c273aeac14daeb6df0e9ab8d440b26501d2877e60807')
-sha256sums_aarch64=('b41c524bcd60cd8ac482eddbc5fad13fbaeba6c1251acd6e7730df9c2d80d2bf')
+sha256sums_x86_64=('36dd2896b77d8a25747b3bc7f7d50c85d606de4ca68641a12121b86a97452bf5')
+sha256sums_aarch64=('55b12b0108105d1e66215353fbba540a550611e5a950e4de40f36a772282404b')
 
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
