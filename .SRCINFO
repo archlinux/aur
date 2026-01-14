@@ -1,14 +1,14 @@
 pkgbase = uncloud
 	pkgdesc = A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨
-	pkgver = 0.15.1
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/psviderski/uncloud
 	arch = x86_64
 	license = Apache-2.0
 	provides = uncloud
 	conflicts = uncloud
 	options = !lto
-	source = https://github.com/psviderski/uncloud/releases/download/v0.15.1/uncloud_linux_amd64.tar.gz
+	source = https://github.com/psviderski/uncloud/releases/download/v0.16.0/uncloud_linux_amd64.tar.gz
 	sha256sums = SKIP
 
 pkgname = uncloud
