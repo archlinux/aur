@@ -1,3 +1,25 @@
+## [0.2.5] - 2025-01-14
+
+### Bug Fixes & Improvements
+- Resolved an issue where certain options were not displayed and empty enums were rendered incorrectly in the UI.
+- Fixed a bug where output placeholders were not expanded correctly, resulting in invalid or incomplete output paths.
+- Improved the FFmpeg command parser to correctly handle edge cases and complex argument combinations.
+- Fixed a packaging issue where the Linux .desktop file was missing the application category, ensuring the app now appears correctly in desktop menus for Debian-based distributions.
+
+### New Features
+- A new help tab that provides in-app documentation for all major elements of the application.
+
+### Breaking Changes
+- rename Linux binary from `FFStudio` to `ffstudio`
+
+### What's Changed
+- Feature/help by @Draver93 in #9
+- Fixed: missing options, empty enums representation by @Draver93 in #10
+- Fixed: output placeholder faild to expand by @Draver93 in #11
+- Bugfix/ffmpeg cmd parser by @Draver93 in #12
+
+This update improves usability and stability with the addition of the Help tab and several important bug fixes, making the application easier to use and more reliable.
+
 ## [0.2.4] - 2025-10-29
 
 ### Bug Fixes & Improvements

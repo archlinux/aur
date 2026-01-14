@@ -1,7 +1,7 @@
 # Maintainer: Harsh Narayan Jha <harshnj dot proton dot me>
 
 pkgname=ffstudio-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Node-based FFmpeg frontend"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('ffstudio')
 conflicts=('ffstudio')
 options=(!debug)
 source=("${url}/releases/download/v${pkgver}/FFStudio_${pkgver}_amd64.deb")
-sha256sums=('ebab262617bf87a4e1ddbabbbc61f6d68d652f204b4095f040ca4a7002a24ae8')
+sha256sums=('6fe743fc48ff4d383bafdbc9ef2d0cb89d53ecf76b201c15bd09e6022e912927')
 _pkgdesktop="FFStudio.desktop"
 
 
@@ -30,5 +30,5 @@ package() {
 
   # Binary
   install -dm755 "${pkgdir}/usr/bin"
-  install -m755 "${srcdir}/usr/bin/FFStudio" "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/usr/bin/ffstudio" "${pkgdir}/usr/bin"
 }
