@@ -5,6 +5,7 @@ _pkgname=hp-wmi
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="HP WMI driver for OMEN Gaming laptops (unlocked TGP and board 8E35 support)"
+url="https://github.com/nevetscar/hp-omen-gaming-wmi-dkms"
 arch=('any')
 license=('GPL2')
 depends=('dkms' 'linux-headers')
