@@ -2,7 +2,7 @@
 
 pkgname=sharkey
 pkgver=2025.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A Sharkish microblogging platform'
 url='https://activitypub.software/TransFem-org/Sharkey'
 license=('AGPL')
@@ -25,7 +25,7 @@ build() {
     pnpm run build
 }
 package() {
-    cd "$pkgname"
+    cd "Sharkey"
 
     install -dm 740 "${pkgdir}/var/lib/sharkey/Sharkey"
     install -Dm 644 "${srcdir}/sharkey.service" "${pkgdir}/usr/lib/systemd/system/sharkey.service"
