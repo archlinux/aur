@@ -1,6 +1,6 @@
 pkgbase = harp
 	pkgdesc = Data harmonization toolset for scientific earth observation data
-	pkgver = 1.28.1
+	pkgver = 1.30
 	pkgrel = 1
 	url = https://github.com/stcorp/harp
 	arch = x86_64
@@ -11,6 +11,6 @@ pkgbase = harp
 	depends = r
 	depends = stc-coda
 	provides = harp
-	source = https://github.com/stcorp/harp/releases/download/1.29/harp-1.29.tar.gz
-	md5sums = 6780cfeaf8b9deef0f99d189ad41d5ce
+	source = https://github.com/stcorp/harp/releases/download/1.30/harp-1.30.tar.gz
+	md5sums = 4453985bf0f0b6e9e95beea3f1661381
 pkgname = harp
