@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.13.3.r1.gd1e24a3
+pkgver=0.14.r0.g45aece4
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
   'openssl'
   'python-dbus'
   'python-gobject'
+  'python-nautilus'
   'python-pygit2'
   'python-secretstorage'
 )
@@ -31,7 +32,6 @@ checkdepends=(
 optdepends=(
   'nemo-python: Nemo plugin'
   'python-caja: Caja plugin'
-  'python-nautilus: Nautilus plugin'
   'thunarx-python: Thunar plugin'
   'seahorse: sign commits'
 )
@@ -42,7 +42,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
