@@ -1,0 +1,4 @@
+[dlss-updater]
+source = "git"
+git = "https://github.com/Recol/DLSS-Updater.git"
+prefix = "V"
