@@ -10,6 +10,35 @@
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
 # ==============================================================================
 
+# Time Sync Check
+if ! command -v timedatectl &> /dev/null; then
+    echo "WARN: 'timedatectl' command not found. Unable to check system clock synchronization."
+elif timedatectl status | grep -qi "System clock synchronized: yes"; then
+    echo "[OK] System clock is synchronized."
+else
+    echo "****************************************************"
+    echo "WARNING: System clock is NOT synchronized!"
+    echo "This may cause authentication errors in Hytale."
+    echo "Run: sudo timedatectl set-ntp true"
+    echo "****************************************************"
+fi
+
+# IPV6 Check
+if ! command -v ip &> /dev/null; then
+    echo "WARN: 'ip' command not found. Unable to check network status."
+elif [[ $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 1 ]]; then
+    echo "****************************************************"
+    echo "WARNING: IPv6 is DISABLED in your kernel settings!"
+    echo "****************************************************"
+elif ! ip -6 addr show | grep -q "scope global"; then
+    echo "****************************************************"
+    echo "WARNING: IPv6 is enabled, but no GLOBAL address found."
+    echo "You may only have local connectivity."
+    echo "****************************************************"
+else
+    echo "[OK] IPv6 is enabled and has a global address."
+fi
+
 # NVIDIA Sync Fix
 export __NV_DISABLE_EXPLICIT_SYNC=1
 
@@ -50,10 +79,4 @@ fi
 
 # Switch to the directory and run it
 cd "$LAUNCHER_DIR"
-
-
-if [ "$1" == "--debug" ]; then
-    "./$BIN_NAME" "$@" 2>&1 | "$SOURCE_DIR/hytale-debug.sh" "$@"
-else
-    exec "./$BIN_NAME" "$@" "$@"
-fi
+exec "./$BIN_NAME" "$@"
