@@ -17,9 +17,9 @@ source=(
     "hei-datahub.png::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/assets/png/icon_1024.png"
 )
 sha256sums=(
-    'SKIP'  # Updated automatically by CI
-    'SKIP'  # Local file
-    'SKIP'  # Icon from repo
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 package() {
