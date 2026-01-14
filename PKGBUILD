@@ -2,7 +2,7 @@
 
 pkgname=chocolate-doom
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="http://www.chocolate-doom.org/"
@@ -18,10 +18,8 @@ conflicts=(chocolate-common
            chocolate-hexen
            chocolate-strife)
 replaces=(${conflicts[@]})
-source=(https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz
-        0001-man-docgen-Use-raw-string-literals-for-regular-expre.patch)
-b2sums=('4e311985e1c20d2d5bf0cc6ef3e860c78a0d1e413ca398800bcdcf86f43727e48f1306e7e9c8878e3313e9ca2e7ba3d48eddd220ef5def06230caf32fe0890fb'
-        '32382739724d1fead2c25af21821193326f2f85af8138005a3dccfd9fc65057430ce26063526472ff3d72aa2cd7cac044544859c5aff3fae66a4d76dc96f1c08')
+source=(https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz)
+b2sums=('df95d149eb33dd2f0cec53e4d1cb854941a9cbedd5e4ecc7b88022a358729734bce68f5c015ab6ef1929825976d1be1d1da200aa57383fa7ff776c7a8064385e')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
