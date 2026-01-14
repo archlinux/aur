@@ -3,15 +3,16 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r2604.0a7cf16
+pkgver=r2718.7843ed8
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
-# we use this insted of g0orx because it contains
-# a lot of fixes and it is currently developed
 url='https://github.com/dl1ycf/pihpsdr'
 license=('GPL2')
-depends=('fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib')
+# we use the internal 'libspecbleach'
+# since pihpsdr requires the git version and I don't want
+# to maintain it in aur
+depends=('fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib' 'rnnoise')
 makedepends=('git')
 buildflags=()
 provides=("${_pkgname}")
@@ -24,8 +25,7 @@ source=(
 )
 sha512sums=('SKIP'
             '88c32a4329c92230cd31431b1cea4754cf578cc28eea134eada34dc739e0243146e1045dcd2d0f8ee94dd84bcd1ff6cd5bac79f56acfa42c41cceb1201b17a7e'
-            # probably the manual is uploaded every time he does a change
-            'SKIP')
+            '51ade79cec6a98f568714612c2f5b7216986f03a9a75910daa486c9d4ff9180d2d5a88042f9e7798843fd7dde9f5342880f0ee1b6338667a72e2f35f6146aaea')
 
 pkgver() {
     cd "$_pkgname"
@@ -38,13 +38,16 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
+  export CFLAGS="${CFLAGS} -D_GNU_SOURCE -march=native -O3"
   make \
     GPIO= \
     MIDI=ON \
     SATURN=ON \
     SOAPYSDR=ON \
-    AUDIO=PULSE
+    USBOZY=OFF \
+    STEMLAB=ON \
+    AUDIO=PULSE \
+    NR34LIB=OFF
 }
 
 package() {
