@@ -1,5 +1,5 @@
 pkgname=moonveil
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Moonveil Hyprland dotfiles"
 arch=('any')
@@ -7,6 +7,7 @@ url="https://github.com/notcandy001/Moonveil"
 license=('MIT')
 
 depends=(
+  git 	
   hyprland
   waybar
   rofi
