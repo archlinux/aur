@@ -1,0 +1,16 @@
+pkgbase = python-seapie
+	pkgdesc = A breakpoint should just mean >>>
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/hirsimaki-markus/seapie
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = seapie-4.0.0.tgz::https://github.com/hirsimaki-markus/seapie/archive/4.0.0.tar.gz
+	sha256sums = f8f395833dd3ee1c4be9d525432a429295a3583f57136b9b0cdf1a6d7d1ec425
+
+pkgname = python-seapie
