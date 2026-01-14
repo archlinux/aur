@@ -1,6 +1,6 @@
 pkgbase = bwa-mem2-git
 	pkgdesc = The next version of Burrows-Wheeler Aligner MEM algorithm
-	pkgver = r183.d43752d
+	pkgver = r241.97978f9
 	pkgrel = 1
 	url = https://github.com/bwa-mem2/bwa-mem2
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = bwa-mem2-git
 	license = custom
 	depends = gcc-libs
 	depends = zlib
-	source = git+https://github.com/bwa-mem2/bwa-mem2
-	source = git+https://github.com/intel/safestringlib.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://github.com/bwa-mem2/bwa-mem2#commit=97978f950c3aa240a168bb688908b6a3e1e7644e
+	source = git+https://github.com/intel/safestringlib#commit=245c4b8cff1d2e7338b7f3a82828fc8e72b29549
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = bwa-mem2-git
-
