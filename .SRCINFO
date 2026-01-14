@@ -1,6 +1,6 @@
 pkgbase = declarch
-	pkgdesc = A declarative package management for Arch base Linux, inspired by Nix workflow.
-	pkgver = 0.3.0
+	pkgdesc = A declarative package manager for Linux (supports AUR, Flatpak, Soar)
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nixval/declarch
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = declarch
 	depends = pacman
 	depends = git
 	optdepends = paru: AUR backend for syncing
+	optdepends = yay: Alternative AUR helper
 	optdepends = flatpak: For managing Flatpak applications
-	source = declarch-0.3.0.tar.gz::https://github.com/nixval/declarch/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 198afca6090e35c8b0010868ec6fe983b534cfbf71935a487f93af7341a89068
+	source = declarch-0.4.0.tar.gz::https://github.com/nixval/declarch/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 361e77cc94c126af05916a452ca2d17a38adc755f820e591ea2fc8a658770293
 
 pkgname = declarch
