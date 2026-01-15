@@ -19,7 +19,7 @@ pkgbase = coolerdash-git
 	conflicts = coolerdash
 	replaces = coolerdash
 	backup = etc/coolercontrol/plugins/coolerdash/config.json
-	source = git+https://github.com/damachine/coolerdash.git#commit=3ca8366f6f645a5c6b8d4287c990bb70beedb1e6
+	source = git+https://github.com/damachine/coolerdash.git#commit=59bb6e0c4521452e0265a8a99855cd0a577d0850
 	sha256sums = SKIP
 
 pkgname = coolerdash-git
