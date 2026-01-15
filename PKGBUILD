@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.14.0
+pkgver=4.14.2
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -24,7 +24,7 @@ source=(
     "wazuh-certs-tool.sh"
 )
 
-sha512sums=('eb970b5eebf77377e2ec46972e93532a6570632a10d5caaadcc39ca041a823e2ca6594ed8a217937fe921d5504d67008a9d99ac143d48580cbe12706f40e3546'
+sha512sums=('8e14b9720f82a9b1fed981b5845ad59788031ad387ecb2d138ff3e0387f0ee57f6c63f9f68f9afaba8ccaf69712bef850b3de211294dd8614e39267240b7805f'
             'e38bc65e55f51d639c9521090ab0370f8b1fc33fdcba4ec7eab49d0f065b4c744a215dd2380b2c6d57803bba4b865dcd2f82ec0ba67bad8831cbc531e957dae9'
             'f6383d5a839ba740ccf9c3c17ea3a9c996a1469f7ab77c3ad6023c4e9398162d309ef7ddb299320f9b5f321ecb70a3b7b6e247fc754ef6d90c87cbb0312c40e2')
 
