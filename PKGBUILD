@@ -3,15 +3,16 @@
 # NOTES from the packager:
 # 1.) Inital work is done on SONAMES since v1.57.0.
 #     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
-# 2.) Three binaries are installed into /usr/bin/aws-lc so that 'openssl' does not interfere
-#     with the binary from the package 'openssl'. Check with 'which openssl'.
+# 2.) This package installs to /usr/lib/boringssl and /usr/include/boringssl
+#     to avoid conflicts with system OpenSSL. To build software against BoringSSL,
+#     specify the library and include paths explicitly during configuration.
 
 pkgname=aws-lc
 pkgver=1.66.2
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
-license=('MIT' 'ISC' 'Apache-2.0' 'LicenseRef-SSLeay-License')
+license=('MIT' 'ISC' 'Apache-2.0' 'OpenSSL')
 options=()
 depends=(
   'glibc'
@@ -58,8 +59,8 @@ build() {
 	  -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
 	  -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
 	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+          -DCMAKE_C_FLAGS="$CFLAGS" \
+          -DCMAKE_CXX_FLAGS="$CXXFLAGS"
 
     ninja -C build -j $(nproc)
 }
