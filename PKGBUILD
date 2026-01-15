@@ -11,6 +11,7 @@ groups=(kf6-git)
 depends=(kirigami-git kiconthemes-git)
 makedepends=(extra-cmake-modules-git)
 conflicts=(qqc2-desktop-style)
+provides=(qqc2-desktop-style)
 source=("git+https://invent.kde.org/frameworks/qqc2-desktop-style.git")
 sha256sums=('SKIP')
 
