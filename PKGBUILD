@@ -14,7 +14,6 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/hpm"
-    # لا حاجة لعملية build حقيقية
     :
 }
 
@@ -33,4 +32,3 @@ PYTHONPATH=/usr/lib/hpm python3 /usr/lib/hpm/main.py "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/hpm"
 }
-

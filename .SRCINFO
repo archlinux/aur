@@ -1,0 +1,18 @@
+pkgbase = hpm
+	pkgdesc = Helwan Package Manager - a simple package manager frontend for Arch Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/helwan-linux/hpm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-rich
+	depends = python-typer
+	depends = python
+	depends = sudo
+	depends = pacman
+	provides = hpm
+	source = git+https://github.com/helwan-linux/hpm.git
+	md5sums = SKIP
+
+pkgname = hpm
