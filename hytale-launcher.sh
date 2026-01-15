@@ -10,6 +10,11 @@
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
 # ==============================================================================
 
+# temporary fix for nautilus crash
+if ! command -v nautilus &> /dev/null; then
+    export PATH="/opt/hytale-launcher-bin/nautilus-fix:$PATH"
+fi
+
 # Time Sync Check
 if ! command -v timedatectl &> /dev/null; then
     echo "WARN: 'timedatectl' command not found. Unable to check system clock synchronization."
