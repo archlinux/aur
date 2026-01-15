@@ -11,7 +11,7 @@ pkgbase = python-usfm2osis-git
 	provides = python-usfm2osis
 	conflicts = python-usfm2osis
 	options = !emptydirs
-	source = git+https://github.com/chrislit/usfm2osis.git#branch=master
+	source = python-usfm2osis-git::git+https://github.com/chrislit/usfm2osis.git#branch=master
 	sha256sums = SKIP
 
 pkgname = python-usfm2osis-git

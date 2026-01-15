@@ -14,22 +14,22 @@ depends=(python)
 options=(!emptydirs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git#branch=$_branch")
+source=("$pkgname::git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pypiname"
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_pypiname"
+    cd "$pkgname"
     mv usfm2osis/scripts/*py usfm2osis/
     sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
     python setup.py build
 }
 
 package() {
-    cd "$_pypiname"
+    cd "$pkgname"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
