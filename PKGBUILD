@@ -6,7 +6,7 @@ pkgdesc="A Python library to compute continuous cartograms"
 url="https://python-cartogram.readthedocs.io/"
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("GPL-3.0-or-later")
