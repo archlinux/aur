@@ -1,8 +1,8 @@
 pkgbase = ampere-git
 	pkgdesc = Ampere – a simple desktop audio player
-	pkgver = Release.0.gfe658f5
+	pkgver = 0.1.10.r17.g4f5b20b
 	pkgrel = 1
-	url = https://github.com/hent83722/ampere-audio-player
+	url = https://example.com/ampere
 	arch = any
 	license = MIT
 	makedepends = git
@@ -12,10 +12,10 @@ pkgbase = ampere-git
 	depends = python
 	depends = pyside6
 	depends = python-mutagen
-	depends = vlc
+	depends = python-vlc
 	provides = ampere
 	conflicts = ampere
-	source = ampere::git+https://github.com/hent83722/ampere-audio-player.git
+	source = ampere::git+file:///home/henri/ampere-git/ampere-git
 	sha256sums = SKIP
 
 pkgname = ampere-git
