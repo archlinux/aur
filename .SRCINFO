@@ -1,7 +1,7 @@
 pkgbase = tonearm-git
 	pkgdesc = Unofficial native GTK4 / Adwaita music streaming client for TIDAL
 	pkgver = r365.035669a
-	pkgrel = 3
+	pkgrel = 1
 	url = https://codeberg.org/dergs/Tonearm
 	arch = x86_64
 	license = GPL-3.0-or-later
