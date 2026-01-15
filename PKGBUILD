@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=seqtui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gcc-libs glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("$url/archive/v$pkgver/SeqTUI-$pkgver.tar.gz")
-b2sums=('64922fb62caa12f4003a37c2a59b51c4f9c503b900d9e90e3edb7e679b7901349eaecfafa5078c9866a1c145d78f4dbb9cad748638926235080d20d7d4e3059e')
+b2sums=('84517c623d8a274d4c0c9794d4a81c1c8761dcbad4abf04b133c3b1fae6e49d84dd6d75e1f4be0483b6f50b72bf88417e24401bedad85b8c19ec23cf31411c44')
 
 prepare() {
     cd SeqTUI-$pkgver
