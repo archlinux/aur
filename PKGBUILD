@@ -3,7 +3,7 @@
 pkgname=libadalang
 pkgdesc="A high performance semantic engine for the Ada programming language."
 pkgver=26.0w
-pkgrel=1
+pkgrel=2
 epoch=2
 
 url=https://github.com/AdaCore/libadalang
@@ -47,6 +47,12 @@ build()
 
 package()
 {
+  python_version=$(python - <<'EOF'
+import sys
+print(f"{sys.version_info.major}.{sys.version_info.minor}")
+EOF
+)
+
   cd $srcdir/libadalang-26.0w-20250417-16134-src
 
   python -m langkit.scripts.lkm install \
@@ -77,7 +83,7 @@ package()
   python setup.py install --root=$pkgdir --optimize=1 --skip-build
 
   mv $pkgdir/usr/python/libadalang \
-     $pkgdir/usr/lib/python3.13/site-packages
+     $pkgdir/usr/lib/python$python_version/site-packages
 
   rm -fr $pkgdir/usr/python
   
