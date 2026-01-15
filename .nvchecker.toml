@@ -1,0 +1,5 @@
+[surge-bin]
+source = "github"
+github = "junaid2005p/surge"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = surge-bin
+	pkgdesc = An open-source terminal (TUI) download manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/junaid2005p/surge
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = surge
+	conflicts = surge
+	source_x86_64 = surge-x86_64-0.1.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.0/surge_0.1.0-SNAPSHOT-b332004_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5a3bb0e1d9208bab5bc4b711a5f2a5713863e8ed0c0443c559e7b08da0ca0a72
+	source_i686 = surge-i686-0.1.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.0/surge_0.1.0-SNAPSHOT-b332004_linux_386.tar.gz
+	sha256sums_i686 = 97505ac6226386cdd531ac96330c511746405974d2d10e8a8354cae3d360689f
+	source_aarch64 = surge-aarch64-0.1.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.0/surge_0.1.0-SNAPSHOT-b332004_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7f954625c4bf8ddcf50c250c6f012339d01de47da29d4e4096071f323fa7f250
+
+pkgname = surge-bin
