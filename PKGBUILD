@@ -3,7 +3,7 @@
 _pkgbase=chordpro
 pkgname=${_pkgbase}-gui
 pkgver=6.090.1
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-${pkgver}
 _alienwxrel=0.71
 _alienwxver=0.72
@@ -54,7 +54,7 @@ sha256sums=('6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f'
             'bafd4528d4b36251e64dea072ebd5d7ffa31b94ed68d3df37b7d3c4baee2ba1e'
             '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
-            '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
+            '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
 
 build() {
     cd "${srcdir}/${_pkgdownload}"
