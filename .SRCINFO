@@ -1,7 +1,7 @@
 pkgbase = openarena-quake3e
 	pkgdesc = A Community-Produced Deathmatch FPS Based on GPL idTech3 Technology (Quake3e Engine)
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openarena.ws/
 	arch = x86_64
 	arch = aarch64

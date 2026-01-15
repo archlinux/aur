@@ -4,7 +4,7 @@
 
 pkgname='openarena-quake3e'
 pkgver='0.8.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Community-Produced Deathmatch FPS Based on GPL idTech3 Technology (Quake3e Engine)'
 arch=('x86_64' 'aarch64')
 url='http://openarena.ws/'
@@ -12,7 +12,7 @@ license=('GPL')
 provides=('openarena')
 conflicts=('openarena')
 depends=('quake3e-git')
-source=(openarena-{pkgver}.zip::https://sourceforge.net/projects/oarena/files/openarena-{pkgver}.zip/download
+source=(openarena-${pkgver}.zip::https://sourceforge.net/projects/oarena/files/openarena-${pkgver}.zip/download
         'openarena'
         'openarena-server'
         'openarena.png'
