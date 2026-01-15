@@ -1,6 +1,6 @@
 pkgbase = gitlab-ci-local
 	pkgdesc = Run gitlab pipelines locally as shell executor or docker executor
-	pkgver = 4.63.0
+	pkgver = 4.64.1
 	pkgrel = 1
 	url = https://github.com/firecow/gitlab-ci-local
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gitlab-ci-local
 	makedepends = python
 	depends = nodejs
 	depends = rsync
-	noextract = gitlab-ci-local-4.63.0.tgz
-	source = https://registry.npmjs.org/gitlab-ci-local/-/gitlab-ci-local-4.63.0.tgz
-	sha256sums = 31cd2228f3d998c9dca76417248a15709de98cb2357662472d49ab5f6251c90c
+	noextract = gitlab-ci-local-4.64.1.tgz
+	source = https://registry.npmjs.org/gitlab-ci-local/-/gitlab-ci-local-4.64.1.tgz
+	sha256sums = 6443d9d17c93580b51616ddd93ecaaa8edafcce0deee96e404c583a2694794b8
 
 pkgname = gitlab-ci-local
