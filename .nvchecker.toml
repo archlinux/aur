@@ -1,3 +1,5 @@
 [samrewritten]
-source = "git"
-git = "https://github.com/PaulCombal/SamRewritten.git"
+source = "github"
+github = "PaulCombal/SamRewritten"
+use_latest_release = true
+prefix = "v"
