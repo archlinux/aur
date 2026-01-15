@@ -1,5 +1,6 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
-pkgname=pandora_launcher
+pkgname=pandora-launcher
+_pkgname=pandora_launcher
 pkgver=2.5.0
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
@@ -49,7 +50,7 @@ build() {
 package() {
   install -d "$pkgdir/usr/"{bin,share/{pixmaps,applications}}
 
-  install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname/target/$(rustc --print host-tuple)/release/$pkgname"
+  install -Dm755 "$pkgname/target/$(rustc --print host-tuple)/release/$_pkgname" "$pkgdir/usr/bin/$pkgname"
   install "$pkgname/package/icon_256x256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
