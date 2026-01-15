@@ -2,7 +2,7 @@
 
 pkgname=fastcompmgr
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="An early Compton-based compositor for X11 focused on performance."
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/${pkgname}"
@@ -32,6 +32,6 @@ package() {
   install -Dm755 ${pkgname} \
     "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 LICENSE \
+  install -Dm644 LICENSE -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
