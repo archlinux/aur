@@ -2,6 +2,7 @@
 pkgname=alethea
 pkgver=0.1.0
 pkgrel=1
+url="https://github.com/arpan-pramanik"
 pkgdesc="Agentic Digital Forensics Tool"
 arch=('any')
 license=('MIT')

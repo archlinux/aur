@@ -2,6 +2,7 @@ pkgbase = alethea
 	pkgdesc = Agentic Digital Forensics Tool
 	pkgver = 0.1.0
 	pkgrel = 1
+	url = "https://github.com/arpan-pramanik"
 	arch = any
 	license = MIT
 	makedepends = python-build
