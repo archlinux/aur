@@ -3,7 +3,7 @@
 pkgname=python-opcua-widgets
 _name=${pkgname#python-}
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OPC-UA Widgets"
 depends=('python' 'python-opcua-asyncio' 'python-pyqt5')
 arch=('any')

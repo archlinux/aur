@@ -1,7 +1,7 @@
 pkgbase = python-opcua-widgets
 	pkgdesc = OPC-UA Widgets
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FreeOpcUa/opcua-widgets
 	arch = any
 	license = GPL-3.0-only
