@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
@@ -17,18 +17,21 @@ latestver() {
     jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
-case "$CARCH" in
-  x86_64)   _debarch="amd64" ;;
-  aarch64)  _debarch="arm64" ;;
-esac
-
-source=("opencode-desktop-linux-${_debarch}.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-${_debarch}.deb"
-        "LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
-sha256sums=('2d4534a56e564aebe8a689205e5a9eb96937ed93186a9613719e6583b57a5cf7'
-            '625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
+source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
+source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
+source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-arm64.deb")
+sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
+sha256sums_x86_64=('2d4534a56e564aebe8a689205e5a9eb96937ed93186a9613719e6583b57a5cf7')
+sha256sums_aarch64=('b755ac12032a6951bbea6afa261086eb09d4a2a0d9b228b787ff9e43bff07c1d')
 
 package() {
-  bsdtar -xf "${srcdir}/opencode-desktop-linux-${_debarch}.deb" -C "${srcdir}" data.tar.gz control.tar.gz
+  local debfile
+  case "$CARCH" in
+    x86_64) debfile="opencode-desktop-${pkgver}-linux-amd64.deb" ;;
+    aarch64) debfile="opencode-desktop-${pkgver}-linux-arm64.deb" ;;
+  esac
+
+  bsdtar -xf "${srcdir}/${debfile}" -C "${srcdir}" data.tar.gz control.tar.gz
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
