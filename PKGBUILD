@@ -3,7 +3,7 @@
 # Contributor: Jacob Alexander <haata at kiibohd com>
 
 pkgname=('germinate' 'python-germinate')
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc='Expand dependencies in a list of seed packages'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://tracker.debian.org/pkg/germinate"
 license=('GPL')
 makedepends=('python-setuptools' 'python-apt')
 source=("$pkgname-$pkgver.tar.xz::https://deb.debian.org/debian/pool/main/g/$pkgname/${pkgname}_$pkgver.tar.xz")
-sha256sums=('979b24b2a7b8f338690e1eb2a569b4786d5e83e2922d2980a82eafbd8bc8fb29')
+sha256sums=('48011df52404477048f4220a47cce47b14d892be1cbbce2522603dbae88ab872')
 
 prepare() {
 	cd germinate-$pkgver
