@@ -1,0 +1,16 @@
+pkgbase = rowheel
+	pkgdesc = Racing wheel + force feedback support in Roblox
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chedsapp/rowheel
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = systemd-libs
+	depends = libxkbcommon
+	depends = libxcb
+	depends = mesa
+	source = rowheel-0.1.0.tar.gz::https://github.com/chedsapp/rowheel/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 47724fdc102667bf43d3276a936f6ebf84b00693e632ef56ff9b88546641140a
+
+pkgname = rowheel
