@@ -1,6 +1,6 @@
 # Credits: Based on work by Outfoxxed and PR contributions by the Quickshell community (PR #351).
 
-pkgname=noon-qs
+pkgname=noon-qs-web
 _pkgname=quickshell
 pkgver=0.2.1.r351.g$(date +%Y%m%d)
 pkgrel=1

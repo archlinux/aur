@@ -1,4 +1,4 @@
-pkgbase = noon-qs
+pkgbase = noon-qs-web
 	pkgdesc = Flexible toolkit for making desktop shells with QtQuick (PR #351 WebView support) for Noon Project
 	pkgver = 0.2.1.r351.g20260115
 	pkgrel = 1
@@ -36,4 +36,4 @@ pkgbase = noon-qs
 	source = quickshell::git+https://github.com/quickshell-mirror/quickshell.git#branch=master
 	sha256sums = SKIP
 
-pkgname = noon-qs
+pkgname = noon-qs-web
