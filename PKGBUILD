@@ -4,8 +4,9 @@
 # Contributor: Ianis Vasilev: ianis@ivasilev.net
 
 pkgname=ocrodjvu-python3-git
-pkgver=0.14
-pkgrel=3.314
+_pkgbasename='ocrodjvu'
+pkgver=0.14+25.r1436.1425cf9
+pkgrel=1.314
 pkgdesc="OCR for DjVu (Python 3 port)"
 arch=('i686' 'x86_64')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
@@ -23,6 +24,26 @@ optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'ocropy: OCR system')
 source=(git+https://github.com/FriedrichFroebel/ocrodjvu)
 sha512sums=('SKIP')
+
+_fullsrcdir() {
+  echo "$srcdir/$_pkgbasename"
+}
+
+# Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
+pkgver() {
+    cd "$(_fullsrcdir)"
+
+    _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+    _rev="$(git rev-list --count HEAD)"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}.r${_rev}.${_hash}"
+    fi
+}
 
 build() {
     cd "$srcdir/ocrodjvu"
