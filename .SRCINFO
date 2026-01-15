@@ -14,7 +14,7 @@ pkgbase = fastcompmgr
 	depends = glibc
 	provides = fastcompmgr
 	conflicts = fastcompmgr
-	source = git+https://github.com/tycho-kirchner/fastcompmgr#tag=v0.5
-	sha512sums = 00e39237424c945888a78dcf3d2d7f6175fbec1aff2203b09f64fa9e93287bc86943d0952a1410419b365315960aa4e8521df6cd6ac76c7c17e3b75e7f81cbd8
+	source = fastcompmgr-0.5.tar.gz::https://github.com/tycho-kirchner/fastcompmgr/archive/refs/tags/v0.5.tar.gz
+	sha512sums = e067915c832540fdc63ea0ddccb0ca104e9566290925242a9ce3dc84935d10dfa20733aa666aff498319135e2ecf6d2ea1ea20ca40547c1a869d208e14cf0bde
 
 pkgname = fastcompmgr
