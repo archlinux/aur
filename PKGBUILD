@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-imath
-pkgver=3.1.12
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (Android ${_android_arch})"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-boost")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/AcademySoftwareFoundation/Imath/archive/v${pkgver}/imath-${pkgver}.tar.gz")
-md5sums=('2262c2f1f2915695eb38523e632c31ea')
+md5sums=('e29f25ce926ac53d8e0a52197299f61b')
 
 build() {
     cd "${srcdir}/Imath-${pkgver}"
@@ -45,4 +45,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
