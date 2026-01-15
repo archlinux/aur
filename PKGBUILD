@@ -2,11 +2,11 @@
 
 pkgname=ampere-git
 _pkgname=ampere
-pkgver=0.1.11.r17.g4f5b20b
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Ampere – a simple desktop audio player"
 arch=('any')
-url="https://example.com/ampere"
+url="https://your-host/your-user/ampere-audio-player"
 license=('MIT')
 depends=(
   'python'
@@ -22,7 +22,9 @@ makedepends=(
 )
 provides=('ampere')
 conflicts=('ampere')
-source=("${_pkgname}::git+file://${PWD}")
+source=(
+  "${_pkgname}::git+${url}.git"
+)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +32,7 @@ pkgver() {
   if git describe --tags --long &>/dev/null; then
     git describe --tags --long | sed 's/^v//;s/-/./g'
   else
-    printf "0.1.10.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.g%s" "0.1.11" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
@@ -42,5 +44,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-.
 }
