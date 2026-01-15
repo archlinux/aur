@@ -1,0 +1,27 @@
+pkgbase = windowpet-git
+	pkgdesc = WindowPet desktop overlay application (Git Version)
+	pkgver = r101.aba8d3a
+	pkgrel = 1
+	url = https://github.com/SeakMengs/WindowPet
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = rustup
+	makedepends = rust
+	makedepends = cargo
+	depends = sfml2
+	depends = libx11
+	depends = libxrandr
+	depends = nodejs
+	depends = yarn
+	provides = windowpet
+	conflicts = windowpet
+	source = git+https://github.com/SeakMengs/WindowPet.git
+	source = https://raw.githubusercontent.com/MeIsGaming/windowpet-pkgbuild/refs/heads/main/windowpet.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = windowpet-git
