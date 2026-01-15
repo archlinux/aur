@@ -1,7 +1,7 @@
 # Maintainer: AzPepoze <azpepoze@gmail.com>
 pkgname=linux-wallpaperengine-gui-git
 _pkgname=linux-wallpaperengine-gui
-pkgver=r117.a1ae206
+pkgver=r1.0000000
 pkgrel=1
 pkgdesc="GUI for linux-wallpaperengine using Electron"
 arch=('x86_64')
@@ -57,10 +57,10 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    local _build_dir="dist/linux-unpacked" 
+    local _dist_dir="dist/linux-unpacked" 
 
     install -d "$pkgdir/opt/$_pkgname"
-    cp -r "$_build_dir/"* "$pkgdir/opt/$_pkgname/"
+    cp -r "$_dist_dir/"* "$pkgdir/opt/$_pkgname/"
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
@@ -77,7 +77,7 @@ Type=Application
 Categories=Utility;
 EOF
 
-    if [ -f "build/frontend/icon.png" ]; then
-        install -Dm644 "build/frontend/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    if [ -f "$_dist_dir/resources/icon.png" ]; then
+        install -Dm644 "$_dist_dir/resources/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     fi
 }
