@@ -1,7 +1,7 @@
 pkgbase = xcompmgr-git
 	pkgdesc = Composite window effect manager for X.org (git)
 	pkgver = 1.1.10.r3.g76c12c6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = xcompmgr-git
 	depends = libxext
 	depends = libxfixes
 	depends = libx11
-	depends = glibc
 	provides = xcompmgr
 	conflicts = xcompmgr
 	source = git+https://gitlab.freedesktop.org/xorg/app/xcompmgr.git
