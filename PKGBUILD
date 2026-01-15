@@ -18,17 +18,26 @@ options=(!lto)
 provides=('h2o' 'libh2o')
 conflicts=('libh2o')
 
+prepare() {
+  cd "$srcdir/$pkgname-${pkgver/_/-}"
+  # set CMake minimal version to 3.15 to set CMP0039 to new
+  sed -i 's/VERSION 2.8.11/VERSION 3.15/g' CMakeLists.txt
+
+  sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
+
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DWITH_MRUBY=off \
+    .
+}
+
 build() {
   cd "$srcdir/$pkgname-${pkgver/_/-}"
 
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DWITH_BUNDLED_SSL=off \
-    -DWITH_MRUBY=off \
-    .
-  make
-  make libh2o
+  cmake --build . -j
 }
 
 package() {
@@ -38,5 +47,5 @@ package() {
   install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 "$srcdir/h2o.service" "$pkgdir/usr/lib/systemd/system/h2o.service"
   install -Dm 644 examples/h2o/h2o.conf "$pkgdir/etc/h2o.conf"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install .
 }
