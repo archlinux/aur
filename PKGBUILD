@@ -1,9 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-sphinx-togglebutton
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Toggle page content and collapse admonitions in Sphinx"
 arch=('any')
@@ -11,9 +13,9 @@ url="https://sphinx-togglebutton.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
 #checkdepends=('python-sphinx' 'python-wheel')
-checkdepends=('python-nose' 'python-docutils')
+checkdepends=('python-nose' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bee9c0ef2f3c888085000efcad2d63b7')
+md5sums=('86fe9ac8d8ff13b9a5dfdc6b5a58630f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
