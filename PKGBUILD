@@ -2,7 +2,7 @@
 
 pkgname=pipewire-xdg-autostart
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="XDG Autostart for pipewire, pipewire-pulse and wireplumber"
 arch=('any')
 depends=(
@@ -15,7 +15,7 @@ source=(
     'pipewire-xdg-autostart.desktop'
 )
 sha256sums=(
-    '03c1f478814af07cf1f45a77ef01e71d1602b3d3c0f63615cfd3af9bfe9ccfd6'
+    'f2b98451a14fb79aee67ee934b83afa215c8bf34f78145521f689b2586ae0c8c'
     'b366c2abbcd080a3285fb3bb2f03044ef2cfe63af71420da684a6b48d0cfdbd3'
 )
 
