@@ -2,7 +2,7 @@
 
 pkgname=asyncapi-cli-bin
 pkgver=5.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="AsyncAPI CLI"
 arch=('x86_64')
 url="https://www.asyncapi.com/tools/cli"
@@ -14,6 +14,7 @@ options=(!debug)
 
 package() {
 	mkdir -p "${pkgdir}/opt/asyncapi/cli"
+	chmod 777 -R asyncapi/node_modules/@asyncapi/generator/node_modules/
 	cp -pR asyncapi/* "${pkgdir}/opt/asyncapi/cli" 
 
 	# Create symlink
