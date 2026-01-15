@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.12.0
-pkgver=0.12.0.r2774.g1c258787d7
+pkgver=0.12.0.r2793.g6082b7f850
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -40,7 +40,7 @@ optdepends=(
 provides=("neovim=${_nvim_version}" 'vim-plugin-runtime')
 conflicts=('neovim' 'neovim-git')
 source=(
-    'git+https://github.com/p00f/neovim#branch=push-nwlkmnvmmlrt'
+    'git+https://github.com/neovim/neovim.git'
     'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/fcf8ccc0e7f59cdb04364df41431ae5ea1f1f9a2.tar.gz'
     'https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz'
     nvimdoc{,.hook}
