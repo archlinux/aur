@@ -1,7 +1,7 @@
 # Maintainer: AzPepoze <azpepoze@gmail.com>
 pkgname=linux-wallpaperengine-gui-git
 _pkgname=linux-wallpaperengine-gui
-pkgver=r1.0000000
+pkgver=r117.a1ae206
 pkgrel=1
 pkgdesc="GUI for linux-wallpaperengine using Electron"
 arch=('x86_64')
@@ -21,7 +21,23 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
+    
+    # Create local cache directories
     mkdir -p "$srcdir/electron-cache"
+    mkdir -p "$srcdir/go-build"
+    mkdir -p "$srcdir/go/pkg/mod"
+
+    # Set Go Environment explicitly
+    export GOPATH="$srcdir/go"
+    export GOCACHE="$srcdir/go-build"
+    export GOMODCACHE="$srcdir/go/pkg/mod"
+    
+    if [ -d "src/backend" ]; then
+        msg2 "Entering src/backend to download Go modules..."
+        pushd "src/backend"
+        go mod download -x
+        popd
+    fi
 }
 
 build() {
@@ -30,9 +46,10 @@ build() {
     # Set local caches for Electron and Go to avoid using global user directories
     export ELECTRON_CACHE="$srcdir/electron-cache"
     export ELECTRON_BUILDER_CACHE="$srcdir/electron-cache"
+    
     export GOPATH="$srcdir/go"
     export GOCACHE="$srcdir/go-build"
-    export GOMODCACHE="$GOPATH/pkg/mod"
+    export GOMODCACHE="$srcdir/go/pkg/mod"
     
     npm install --verbose
     npm run build
