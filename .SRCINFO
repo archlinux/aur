@@ -1,0 +1,26 @@
+pkgbase = yati-bin
+	pkgdesc = Lightweight desktop app for team visibility and alignment
+	pkgver = 0.1.0_rc7
+	pkgrel = 1
+	url = https://github.com/fluree/yati
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = yati
+	conflicts = yati
+	conflicts = yati-git
+	options = !strip
+	options = !debug
+	source = yati-bin-0.1.0_rc7.deb::https://github.com/fluree/yati/releases/download/v0.1.0-rc7/yati_0.1.0-rc7_amd64.deb
+	sha256sums = c71874edde5066f08d3c63cf1e912cc575a8dbc9fe7ee5b1c4d701f64961d40f
+
+pkgname = yati-bin
