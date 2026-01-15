@@ -1,0 +1,14 @@
+pkgbase = cmdfy
+	pkgdesc = A command-line tool that translates natural language requests into executable shell commands
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kesavan-vaisakh/cmdfy
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = cmdfy
+	source = https://github.com/kesavan-vaisakh/cmdfy/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = cmdfy
