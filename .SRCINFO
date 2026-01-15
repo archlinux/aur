@@ -10,7 +10,7 @@ pkgbase = kanshi-git
 	makedepends = ninja
 	depends = wayland
 	depends = libscfg-git
-	depends = vali
+	depends = vail-git
 	provides = kanshi=1.8.0
 	conflicts = kanshi
 	source = kanshi::git+https://gitlab.freedesktop.org/emersion/kanshi.git

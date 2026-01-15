@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://gitlab.freedesktop.org/emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('wayland' 'libscfg-git' 'vali')
+depends=('wayland' 'libscfg-git' 'vail-git')
 makedepends=('git' 'meson' 'ninja')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
