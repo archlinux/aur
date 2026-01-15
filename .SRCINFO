@@ -1,12 +1,14 @@
 pkgbase = cec-toolbox-git
 	pkgdesc = Adjust your Moza Racing gear settings
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lawstorant/cec-toolbox
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = v4l-utils
+	depends = python
+	depends = python-evdev
 	provides = cec-toolbox
 	source = git+https://github.com/Lawstorant/cec-toolbox
 	sha256sums = SKIP

@@ -3,13 +3,15 @@ _reponame=cec-toolbox
 pkgname=$_reponame-git
 provides=($_reponame)
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/$_reponame"
 license=('GPL3')
 depends=(
 	v4l-utils
+	python
+	python-evdev
 )
 makedepends=(
   git
