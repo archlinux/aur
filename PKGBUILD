@@ -6,7 +6,7 @@
 pkgname=langkit
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 pkgver=26.0w
-pkgrel=2
+pkgrel=3
 epoch=1
 
 url=https://github.com/AdaCore/langkit
@@ -80,6 +80,12 @@ build()
 
 package()
 {
+    python_version=$(python - <<'EOF'
+import sys
+print(f"{sys.version_info.major}.{sys.version_info.minor}")
+EOF
+)
+          
     cd $srcdir/langkit-26.0w-20250417-16252-src
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -97,8 +103,8 @@ package()
            --disable-all-mains
 
 
-    mv $pkgdir/usr/python/liblktlang            \
-       $pkgdir/usr/lib/python3.14/site-packages
+    mv $pkgdir/usr/python/liblktlang                     \
+       $pkgdir/usr/lib/python$python_version/site-packages
        
     rm -fr $pkgdir/usr/python
 
