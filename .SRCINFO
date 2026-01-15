@@ -1,6 +1,6 @@
 pkgbase = ez-tree-bin
 	pkgdesc = EZ Tree – Procedural tree generator (Electron AppImage)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/sinfulbobcat/ez-tree_electron_aur
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ez-tree-bin
 	depends = fuse2
 	provides = ez-tree
 	conflicts = ez-tree
-	source = ez-tree.AppImage::https://github.com/sinfulbobcat/ez-tree_electron_aur/releases/download/1.0.0/EZTree-1.0.0.AppImage
+	source = ez-tree.AppImage::https://github.com/sinfulbobcat/ez-tree_electron_aur/releases/download/1.0.1/EZTree-1.0.0.AppImage
 	source = ez-tree.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
