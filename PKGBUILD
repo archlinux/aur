@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=homebox-bin
-pkgver=0.21.0
+pkgver=0.22.3
 pkgrel=1
 pkgdesc='Inventory and organization system built for the Home User'
 url='https://github.com/sysadminsmedia/homebox'
@@ -19,11 +19,11 @@ source_riscv64=("$url/releases/download/v$pkgver/homebox_Linux_riscv64.tar.gz")
 source_x86_64=("$url/releases/download/v$pkgver/homebox_Linux_x86_64.tar.gz")
 
 sha256sums=('bb759217a883f50712f98bbf2527136061a082ea5fd2c9db211ee15c98cb7150')
-sha256sums_aarch64=('01e00bc15892f533870afee54770c59efde6df8e7463ab5d6ad70660a4f19823')
-sha256sums_armv6h=('9c03d968af5047beceb1e47014b023dc3f249de30b5a9342b1f0d755d22348bd')
-sha256sums_i686=('b40e92a6afe1a7015d165b0ce81313b892657c7e9a85de4875fc5cf8dac5ef7c')
-sha256sums_riscv64=('94149901d23a5a5e43c7cad4ef086d05fa39d619c104f3c06d3a9b5f3a0ff76e')
-sha256sums_x86_64=('84bc710fb45c1ce8e122fc11ca4ba0b4d4f1d2c6ad125b703c87980890b681bd')
+sha256sums_aarch64=('3626a9a0325bd46d26b60d6fe9add51ceac7ce870c04f1a558e43fe499dd53b1')
+sha256sums_armv6h=('adec8e3b7a647968dd034f53120c253b8b6c5c38b4d5cb5d2796348da5544908')
+sha256sums_i686=('7691f34d71e6e3935f986696bddbb86ad212f47f7ab0090fb54293cf0f14e10d')
+sha256sums_riscv64=('8f73b0cac5719b39c531d436b8b05e88803b55c5f475b1248cea8d8c234a7d35')
+sha256sums_x86_64=('f04d8b0ae7cc31fd006bd414e9ff0f00ba6bd053b5047b220c8b8b414456ab37')
 
 package() {
   install -Dm755 homebox -t "$pkgdir/usr/bin/"
