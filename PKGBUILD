@@ -2,7 +2,7 @@
 pkgname=python-types-fpdf2
 _pkgbasename=${pkgname:7}
 pkgver=2.8.4.20251031
-pkgrel=1
+pkgrel=1.314
 pkgdesc='Typing stubs for fpdf2'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"

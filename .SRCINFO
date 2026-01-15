@@ -1,7 +1,7 @@
 pkgbase = python-types-fpdf2
 	pkgdesc = Typing stubs for fpdf2
 	pkgver = 2.8.4.20251031
-	pkgrel = 1
+	pkgrel = 1.314
 	url = https://pypi.org/project/types-fpdf2/
 	arch = any
 	license = Apache-2.0
