@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.6.0.r0.g0000000
+pkgver=0.6.1.r0.g0000000
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ pkgver() {
         count="0"
         hash="unknown"
     fi
-    echo "0.6.0.r${count}.g${hash}"
+    echo "0.6.1.r${count}.g${hash}"
 }
 
 build() {
@@ -74,10 +74,16 @@ package() {
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.html"
     install -Dm644 "examples/art_nouveau_panel.css" \
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.css"
+    install -Dm644 "examples/steampunk_panel.html" \
+        "$pkgdir/usr/share/rg-sens/examples/steampunk_panel.html"
+    install -Dm644 "examples/steampunk_panel.css" \
+        "$pkgdir/usr/share/rg-sens/examples/steampunk_panel.css"
     install -Dm644 "examples/css_template_example.html" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.html"
     install -Dm644 "examples/css_template_example.css" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.css"
+    install -Dm644 "examples/rg-sens-gauges.js" \
+        "$pkgdir/usr/share/rg-sens/examples/rg-sens-gauges.js"
 
     # Install documentation
     install -d "$pkgdir/usr/share/doc/rg-sens"
