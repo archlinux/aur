@@ -1,7 +1,7 @@
 pkgbase = chordpro-cli
 	pkgdesc = A lyrics and chords formatting program (CLI)
 	pkgver = 6.090.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chordpro.org/
 	arch = x86_64
 	license = Artistic-2.0

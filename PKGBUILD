@@ -3,7 +3,7 @@
 _pkgbase=chordpro
 pkgname=${_pkgbase}-cli
 pkgver=6.090.1
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-${pkgver}
 pkgdesc="A lyrics and chords formatting program (CLI)"
 arch=('x86_64')
