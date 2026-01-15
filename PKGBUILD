@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <donutsdelivery@users.noreply.github.com>
 pkgname=localbooru-donut
-pkgver=0.1.96
+pkgver=0.1.98
 pkgrel=1
 pkgdesc="Local image library with automatic AI tagging"
 arch=('x86_64')
