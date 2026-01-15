@@ -6,7 +6,7 @@
 pkgname=gnatstudio
 pkgdesc='GNAT Programming Studio for Ada.'
 pkgver=26.0w
-pkgrel=1
+pkgrel=2
 epoch=1
 
 arch=(i686 x86_64)
@@ -64,6 +64,12 @@ prepare()
 
 build() 
 {
+    python_version=$(python - <<'EOF'
+import sys
+print(f"{sys.version_info.major}.{sys.version_info.minor}")
+EOF
+)
+
    cd $srcdir/gnatstudio-26.0w-20250417-16207-src
 
    export OS=unix
@@ -88,7 +94,7 @@ build()
         BUILD=Production         \
         PRJ_BUILD=Release        \
         LIBRARY_TYPE=relocatable \
-        GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.13 -gargs"
+        GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython$python_version -gargs"
  
    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
    #  
