@@ -1,7 +1,7 @@
 # Maintainer: Akuma-real
 
 pkgname=stelliberty-bin
-pkgver=1.2.039
+pkgver=1.2.050
 pkgrel=1
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ noextract=("Stelliberty-v${pkgver}-linux-x64.zip" "Stelliberty-v${pkgver}-linux-
 sha256sums=('fa89e84a3090b5a566b0ddf4d8e11adec3785b66d660746774fb6197173bf9d8'
             'ca2f07aef3208f38d47eee1bdc163b2699362432e050e0127b744163d6dc9eca'
             'b21d09c9d4fd0ca810f4a2657d36fff9a8a8602499315552fbc8a60bc68e6e53')
-sha256sums_x86_64=('ec2b1d0fb9004c2eddfb57148b8721abb5625a2a900124ebebece9bc1b808d37')
-sha256sums_aarch64=('ece8762d81434ea764f2b2c35b0639bbce8379705a8b1d88ee5873e61890258f')
+sha256sums_x86_64=('ed81d1e1c9c332d708ea4b9e53ba666f86d6b196aa9776dbff126f0be78d937a')
+sha256sums_aarch64=('cd20108a54fb4c7ff45f38a107c105a5f32649362e1f2ef2b50c77be4bd13765')
 
 package() {
   local _upstream_arch
