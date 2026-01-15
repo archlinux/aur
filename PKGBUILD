@@ -6,7 +6,7 @@ pkgdesc="A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
 url="https://pyrosm.readthedocs.io/"
 
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("MIT")
