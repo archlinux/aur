@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whisper.cpp
-pkgver=1.8.2 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgver=1.8.3 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenBLAS + Vulkan optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -45,4 +45,4 @@ package() {
 }
 
 sha256sums=('bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
+  '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')

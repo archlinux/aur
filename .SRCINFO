@@ -1,6 +1,6 @@
 pkgbase = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OpenBLAS + Vulkan optimizations)
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = whisper.cpp
 	makedepends = git
 	depends = libggml-git
 	depends = sdl2-compat
-	source = whisper.cpp-1.8.2.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.8.2.tar.gz
+	source = whisper.cpp-1.8.3.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.8.3.tar.gz
 	source = disable-deprecated.patch
 	sha256sums = bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077
 	sha256sums = 5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad
