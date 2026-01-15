@@ -16,16 +16,16 @@ makedepends=(git
 options=(!emptydirs)
 provides=("${pkgname%-cw-git}")
 conflicts=("${pkgname%-cw-git}")
-source=("git+https://github.com/alerque/$_pypiname.git#branch=$_branch")
+source=("$pkgname::git+https://github.com/alerque/$_pypiname.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pypiname"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$_pypiname"
+	cd "$pkgname"
 	mv usfm2osis/scripts/*py usfm2osis/
 	sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
 	sed -i -e '/__main__/s/^.*$/def main(args=None):/g' usfm2osis/usfm2osis.py
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-	cd "$_pypiname"
+	cd "$pkgname"
 	python -m installer -d "$pkgdir" dist/*.whl
 }

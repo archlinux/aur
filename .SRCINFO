@@ -14,7 +14,7 @@ pkgbase = python-usfm2osis-cw-git
 	provides = python-usfm2osis
 	conflicts = python-usfm2osis
 	options = !emptydirs
-	source = git+https://github.com/alerque/usfm2osis.git#branch=module-tools-sync
+	source = python-usfm2osis-cw-git::git+https://github.com/alerque/usfm2osis.git#branch=module-tools-sync
 	sha256sums = SKIP
 
 pkgname = python-usfm2osis-cw-git
