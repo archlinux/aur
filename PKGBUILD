@@ -2,13 +2,13 @@
 
 pkgname=koito
 _pkgname=Koito
-pkgver=0.0.14
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz'
 arch=('x86_64')
 url='https://koito.io/'
 license=('MIT')
-depends=('libvips')
+depends=('libvips' 'libheif' 'imagemagick' 'openslide' 'poppler-glib')
 install=koito.install
 optdepends=('postgresql: database storage backend')
 backup=('etc/koito.env')
@@ -18,9 +18,9 @@ source=(
   "koito.service"
   "koito.env"
 )
-sha256sums=('78df9cc7ff7ff4a30615d154c774b6fb611892e061d4e271ee55de26e58f42ce'
-  '512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb'
-  'e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d')
+sha256sums=('0ec37398a51045596bfe82bb683f2d2a3383d098242e7c060583008dcd682e31'
+            '512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb'
+            'e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
