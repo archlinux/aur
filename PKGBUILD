@@ -1,9 +1,9 @@
-# Maintainer: Damglador <vse.stopchanskyi@gmail.com>
+# Maintainer: Damglador <damglador@gmail.com>
 
 _pkgname=steam-update-inhibit-sleep
 pkgname=$_pkgname-git
 pkgver=r16.3dab6bc
-pkgrel=1
+pkgrel=2
 pkgdesc="Don't worry about system suspending when Steam installs stuff"
 arch=('any')
 url="https://github.com/Damglador/steam-update-inhibit-sleep.git"
