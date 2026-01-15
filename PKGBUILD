@@ -2,7 +2,7 @@
 pkgname=python-pytest-image-diff
 _pkgbasename=${pkgname:7}
 pkgver=0.0.14
-pkgrel=2
+pkgrel=2.314
 pkgdesc='pytest helps for compare images and regression'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"

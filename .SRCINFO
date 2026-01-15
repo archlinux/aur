@@ -1,7 +1,7 @@
 pkgbase = python-pytest-image-diff
 	pkgdesc = pytest helps for compare images and regression
 	pkgver = 0.0.14
-	pkgrel = 2
+	pkgrel = 2.314
 	url = https://pypi.org/project/pytest-image-diff/
 	arch = any
 	license = MIT
