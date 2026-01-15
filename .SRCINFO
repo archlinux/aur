@@ -1,7 +1,7 @@
 pkgbase = python-doi
 	pkgdesc = Python package to work with Document Object Identifier (doi).
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/python-doi
 	arch = any
 	license = GPL-3.0-or-later
