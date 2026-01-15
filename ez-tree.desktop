@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EZ Tree
+Comment=Procedural Tree Generator
+Exec=ez-tree
+Icon=application-x-executable
+Terminal=false
+Categories=Graphics;3DGraphics;
