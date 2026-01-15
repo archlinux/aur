@@ -1,7 +1,7 @@
 pkgbase = python-qrcode-artistic
 	pkgdesc = Artistic (Micro) QR Code plugin for Segno
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/heuer/qrcode-artistic/
 	arch = any
 	license = BSD-3-Clause

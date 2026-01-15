@@ -6,7 +6,7 @@ pkgdesc="Artistic (Micro) QR Code plugin for Segno"
 url="https://github.com/heuer/qrcode-artistic/"
 
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("BSD-3-Clause")
