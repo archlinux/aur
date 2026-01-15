@@ -1,0 +1,14 @@
+pkgbase = scmd-bin
+	pkgdesc = AI Intelligence for your terminal. Local-first, free
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/sunboylabs/scmd
+	arch = x86_64
+	license = MIT
+	depends = llama.cpp
+	provides = scmd
+	conflicts = scmd
+	source_x86_64 = scmd-x86_64-0.5.1.tgz::https://github.com/sunboylabs/scmd/releases/download/v0.5.1/scmd_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 489b65d59e261c9f040b4fb0a1af367bd9e2de26cc8bbcfd1d09a334dde3ec97
+
+pkgname = scmd-bin

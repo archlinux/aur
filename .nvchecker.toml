@@ -1,0 +1,5 @@
+[scmd-bin]
+source = "github"
+github = "sunboylabs/scmd"
+use_latest_release = true
+prefix = "v"
