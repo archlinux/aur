@@ -7,7 +7,7 @@ pkgdesc="Typing stubs for waitress"
 url="https://github.com/python/typeshed"
 
 pkgver=3.0.1.20250801
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("Apache-2.0")
