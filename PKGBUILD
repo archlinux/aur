@@ -8,7 +8,7 @@
 pkgname=boringssl-git
 _pkgname=boringssl
 pkgver=0.20251124.0.174.gb648431a6e
-pkgrel=1
+pkgrel=2
 pkgdesc="BoringSSL is a fork of OpenSSL that is designed to meet Google's needs"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://boringssl.googlesource.com/boringssl"
@@ -17,12 +17,8 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake' 'go' 'perl' 'ninja' 'patchelf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(
-    'git+https://boringssl.googlesource.com/boringssl'
-    'boringssl.pc'
-)
-b2sums=('SKIP'
-        '299c46ea68a252e9dd33e789689255a740e69a2165ecf43158d4a159f04859bb6192cdaeb35cb77ed1435316fce55d5559c392cd7512b374d39de3c898b388ae')
+source=('git+https://boringssl.googlesource.com/boringssl')
+b2sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -89,7 +85,19 @@ package() {
     find "$pkgdir/usr/lib/$_pkgname" -type f -name "*.so" -exec \
         patchelf --set-rpath '$ORIGIN' {} +
 
-    # Install pkg-config file so other apps can find this BoringSSL
-    install -Dm644 "$srcdir/$_pkgname.pc" "${pkgdir}/usr/lib/pkgconfig/"
+    # Generate pkg-config file so other apps can find this BoringSSL
+    install -d "$pkgdir/usr/lib/pkgconfig"
+    cat <<EOF >"$pkgdir/usr/lib/pkgconfig/boringssl.pc"
+prefix=/usr
+exec_prefix=\${prefix}
+libdir=\${prefix}/lib/$_pkgname
+includedir=\${prefix}/include/$_pkgname
+
+Name: BoringSSL
+Description: BoringSSL is a fork of OpenSSL that is designed to meet Google's needs.
+Version: ${pkgver}
+Libs: -L\${libdir} -lssl -lcrypto
+Cflags: -I\${includedir}
+EOF
 }
 
