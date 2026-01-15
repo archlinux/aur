@@ -5,51 +5,59 @@ _pkgname=FreeTube
 _electron=electron
 pkgver=0.23.12.beta.r9678.fa84298
 pkgrel=1
-pkgdesc='A private YouTube client - built from latest git, with the system electron (unsupported).'
+pkgdesc='A private YouTube client - built from latest git, using the system electron.'
 arch=('x86_64')
 url="https://freetubeapp.io"
 license=('AGPL-3.0-or-later')
-depends=($_electron)
+
+# Added explicit dependencies to satisfy namcap and ensure runtime stability
+depends=($_electron 'alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'libnm')
 makedepends=('git' 'yarn')
-provides=("${pkgname%-electron-git}")
-conflicts=("${pkgname%-electron-git}")
+provides=("freetube")
+conflicts=("freetube" "freetube-bin" "freetube-git")
 source=(git+https://github.com/FreeTubeApp/FreeTube
-       freetube.desktop)
-sha256sums=("SKIP" 
+        freetube.desktop)
+sha256sums=("SKIP"
             "496fc67b30fa66e8eff1e551121e5bb7ae0253bfb804b3a902d4e7bd3cdcbc26")
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "%s.r%s.%s" "$(git tag --sort=committerdate | tail -1 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$_pkgname"
+  # Generate version based on the latest tag, commit count, and short hash
+  printf "%s.r%s.%s" "$(git tag --sort=committerdate | tail -1 | sed 's/^v//;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  sed -i "5i electronDist: '/usr/lib/$_electron'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
-  sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
+  cd "$_pkgname"
+
+  # Inject system electron path into the build configuration
+  sed -i "5i electronDist: '/usr/lib/$_electron'," "_scripts/ebuilder.config.mjs"
+
+  # Configure the builder to create a directory output instead of a compressed installer
+  sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "_scripts/build.mjs"
 }
 
 build() {
-  cd $_pkgname
+  cd "$_pkgname"
   yarn install
   yarn run build
 }
 
 package() {
-  install -d "${pkgdir}/usr/lib/freetube"
+  cd "$_pkgname"
+
+  # Create necessary directory structure
+  install -d "${pkgdir}/opt/freetube"
   install -d "${pkgdir}/usr/bin"
 
-  # copying libs
-  cp -R "./$_pkgname/build/linux-unpacked/." "${pkgdir}/usr/lib/freetube/"
+  # Install the app.asar bundle
+  cp -R "build/linux-unpacked/resources/app.asar" "${pkgdir}/opt/freetube/"
 
-  # executable
-  ln -s "/usr/lib/freetube/freetube" "${pkgdir}/usr/bin/freetube"
-  
-  # license
-  install -Dm644 "./$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/freetube/LICENSE"
+  # Create the launcher script using the system electron
+  printf "#!/bin/sh\nexec %s /opt/freetube/app.asar \"\$@\"\n" "$_electron" > "${pkgdir}/usr/bin/freetube"
+  chmod 755 "${pkgdir}/usr/bin/freetube"
 
-  # icon
-  install -Dm644 "./$_pkgname/_icons/icon.svg" "${pkgdir}/usr/share/pixmaps/freetube.svg"
-  
-  # desktop file
-  install -Dm644 "./freetube.desktop" "${pkgdir}/usr/share/applications/freetube.desktop"
+  # Install license, icon, and desktop entry
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "_icons/icon.svg" "${pkgdir}/usr/share/pixmaps/freetube.svg"
+  install -Dm644 "${srcdir}/freetube.desktop" "${pkgdir}/usr/share/applications/freetube.desktop"
 }
