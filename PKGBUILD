@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r2718.7843ed8
+pkgver=r2719.702b67d
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,8 @@ source=(
 )
 sha512sums=('SKIP'
             '88c32a4329c92230cd31431b1cea4754cf578cc28eea134eada34dc739e0243146e1045dcd2d0f8ee94dd84bcd1ff6cd5bac79f56acfa42c41cceb1201b17a7e'
-            '51ade79cec6a98f568714612c2f5b7216986f03a9a75910daa486c9d4ff9180d2d5a88042f9e7798843fd7dde9f5342880f0ee1b6338667a72e2f35f6146aaea')
+            # probably the manual is uploaded every time he does a change
+            'SKIP')
 
 pkgver() {
     cd "$_pkgname"
