@@ -1,10 +1,9 @@
 pkgbase = pycharm
 	pkgdesc = The only Python IDE you need. Bundled with the official JetBrains Runtime (JBR)
-	pkgver = 2025.3.1
+	pkgver = 2025.3.1.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
-	arch = x86_64_v3
 	arch = aarch64
 	license = custom
 	makedepends = python-setuptools
@@ -37,11 +36,9 @@ pkgbase = pycharm
 	source = ltedit.desktop
 	sha256sums = 444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7
 	sha256sums = 944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101
-	source_x86_64 = https://download-cf.jetbrains.com/python/pycharm-2025.3.1.tar.gz
-	sha256sums_x86_64 = 933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391
-	source_x86_64_v3 = https://download-cf.jetbrains.com/python/pycharm-2025.3.1.tar.gz
-	sha256sums_x86_64_v3 = 933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391
-	source_aarch64 = https://download-cf.jetbrains.com/python/pycharm-2025.3.1-aarch64.tar.gz
-	sha256sums_aarch64 = 2b6f5a430132773ea7caf3046f7763ea7a031dbfab6e1be72bdc86f3cc7a758b
+	source_x86_64 = https://download-cf.jetbrains.com/python/pycharm-2025.3.1.1.tar.gz
+	sha256sums_x86_64 = de54121e9a8d7ffc9a3b22167ae8588ad23ffe606e246fec7efad631d26fb44b
+	source_aarch64 = https://download-cf.jetbrains.com/python/pycharm-2025.3.1.1-aarch64.tar.gz
+	sha256sums_aarch64 = b66dbef249458f2321a8fb38b87d787d3634768583500b2b5bd81e854e5b18a8
 
 pkgname = pycharm

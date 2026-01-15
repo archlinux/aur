@@ -4,13 +4,13 @@
 # Contributor: Andrew Shark
 
 pkgname=pycharm
-pkgver=2025.3.1
+pkgver=2025.3.1.1
 pkgrel=1
 provides=("pycharm")
 replaces=("pycharm-professional")
 conflicts=('pycharm-professional' 'pycharm-community-edition')
 pkgdesc="The only Python IDE you need. Bundled with the official JetBrains Runtime (JBR)"
-arch=('x86_64' 'x86_64_v3' 'aarch64')
+arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
 license=('custom')
 options=('!strip')
@@ -29,13 +29,11 @@ depends=(
 )
 source=("pycharm.desktop" "ltedit.desktop")
 source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
-source_x86_64_v3=($source_x86_64)
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums=('444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7'
             '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
-sha256sums_x86_64=('933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391')
-sha256sums_x86_64_v3=('933fd42d7cc2a76ad4ba23f9112294e4df013fa4c3362435a1e3368051c07391')
-sha256sums_aarch64=('2b6f5a430132773ea7caf3046f7763ea7a031dbfab6e1be72bdc86f3cc7a758b')
+sha256sums_x86_64=('de54121e9a8d7ffc9a3b22167ae8588ad23ffe606e246fec7efad631d26fb44b')
+sha256sums_aarch64=('b66dbef249458f2321a8fb38b87d787d3634768583500b2b5bd81e854e5b18a8')
 makedepends=('python-setuptools' 'cython')
 optdepends=(
     'ipython: For enhanced interactive Python shell inside Pycharm'
