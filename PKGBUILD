@@ -1,4 +1,5 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
+# Reference: https://gitlab.manjaro.org/packages/extra/heroic-games-launcher
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
