@@ -1,6 +1,6 @@
 pkgbase = rmpc-git
 	pkgdesc = A beautiful and configurable TUI client for MPD
-	pkgver = 0.10.0.r31.g7bbedb9
+	pkgver = 0.10.0.r52.ge53695b
 	pkgrel = 1
 	url = https://rmpc.mierak.dev/
 	arch = x86_64

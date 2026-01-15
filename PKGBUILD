@@ -1,7 +1,7 @@
 # Maintainer: MieraK <mrkpwnz@gmail.com>
 pkgname=rmpc-git
 _pkgname=rmpc
-pkgver=0.10.0.r31.g7bbedb9
+pkgver=0.10.0.r52.ge53695b
 pkgrel=1
 pkgdesc='A beautiful and configurable TUI client for MPD'
 url='https://rmpc.mierak.dev/'
@@ -56,4 +56,5 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    install -Dm644 "assets/rmpc.desktop" -t "$pkgdir/usr/share/applications/"
 }
