@@ -1,5 +1,5 @@
 pkgname=coolerdash-git
-pkgver=2.0.5.8.r0.g16ea406
+pkgver=2.1.0.r0.g4ea838b
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -12,7 +12,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=16ea406cb036809a48af19a0b6490a88569d8c5d
+_commit=4ea838bcc038ecbe60d46c664b40f935a0d5d65c
 source=("git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
