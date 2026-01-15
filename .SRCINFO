@@ -1,6 +1,6 @@
 pkgbase = python-fancymaps
 	pkgdesc = Colormap collection from various (creative) sources
-	pkgver = 0.1.22
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/alcubierre-drive/fancymaps
 	arch = any
