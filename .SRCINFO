@@ -1,6 +1,6 @@
 pkgbase = ncine-git
 	pkgdesc = A cross-platform 2D game engine
-	pkgver = r524.a2a94ce
+	pkgver = r533.0887405
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
