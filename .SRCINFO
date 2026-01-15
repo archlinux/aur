@@ -1,7 +1,7 @@
 pkgbase = dpsprep-git
 	pkgdesc = A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers
-	pkgver = 2.3.1
-	pkgrel = 2
+	pkgver = 2.3.1.r0.g879253d
+	pkgrel = 1.314
 	url = https://github.com/kcroker/dpsprep
 	arch = any
 	license = GPL-3.0-only
@@ -25,7 +25,7 @@ pkgbase = dpsprep-git
 	depends = python-fpdf2
 	depends = python-pdfrw
 	optdepends = ocrmypdf: Optional OCR and advanced PDF optimization
-	provides = dpsprep=2.3.1
+	provides = dpsprep=2.3.1.r0.g879253d
 	conflicts = dpsprep
 	source = git+https://github.com/kcroker/dpsprep.git
 	md5sums = SKIP
