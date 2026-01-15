@@ -3,9 +3,9 @@
 # Contributor: rzhli <tayuebuliuhen@gmail.com>
 
 pkgname='ftnn-desktop'
-pkgver='16.0.14508'
+pkgver='16.1.14608'
 pkgrel=1
-pkgdesc="FTNN富途牛牛桌面版"
+pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
 url="https://www.futunn.com/"
 license=('unknown')
