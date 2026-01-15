@@ -1,0 +1,22 @@
+post_install() {
+    echo "========================================================================"
+    echo "  华硕天选 Air 2025 (FA401KM) DSDT 修复包已安装。"
+    echo ""
+    echo "  【重要步骤】"
+    echo "  为了应用修复，您需要修改 mkinitcpio 配置并重建内核。"
+    echo "  我已经为您准备了一个自动化脚本，请运行："
+    echo ""
+    echo "    sudo fa401km-fix-enable"
+    echo ""
+    echo "  运行完毕后重启即可。"
+    echo "========================================================================"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "注意：您可能需要手动从 /etc/mkinitcpio.conf 中移除 'acpi_override' hook"
+    echo "并运行 'sudo mkinitcpio -P' 来彻底清除更改。"
+}
