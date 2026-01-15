@@ -2,7 +2,7 @@
 
 pkgname=drawbot-skia
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python package implementing a subset of the DrawBot API using Skia as a backend'
 arch=(any)
 url="https://github.com/justvanrossum/$pkgname"
