@@ -1,6 +1,6 @@
 pkgbase = wallpaperengine-gui
 	pkgdesc = GUI for linux-wallpaperengine
-	pkgver = 1.1.5
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/MikiDevLog/wallpaperengine-gui
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wallpaperengine-gui
 	provides = wallpaperengine-gui
 	conflicts = wallpaperengine-gui
 	replaces = wallpaperengine-gui
-	source = wallpaperengine-gui-1.1.5.tar.gz::https://github.com/MikiDevLog/wallpaperengine-gui/archive/refs/tags/v1.1.5.tar.gz
-	sha256sums = 20b17b7641d3e468c9f6e5d276e7a493f8e6c0427b22f1ac8d0c2b8cab9754cf
+	source = wallpaperengine-gui-1.1.8.tar.gz::https://github.com/MikiDevLog/wallpaperengine-gui/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = 5de19415b0c9e242e92ae9d71fad1331a00d3861c4c5d128f1b884e58e65889f
 
 pkgname = wallpaperengine-gui
