@@ -1,35 +1,30 @@
 pkgbase = xorg-xinit-git
 	pkgdesc = X.Org initialisation program
-	pkgver = 1.4.1.r1.g4f54d18
-	pkgrel = 2
-	url = http://xorg.freedesktop.org/
-	arch = i686
+	pkgver = 1.4.4.r0.g583a939
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
 	arch = x86_64
-	license = custom
+	license = X11-distribute-modifications-variant
+	license = MIT-open-group
 	makedepends = git
 	makedepends = xorg-util-macros
 	depends = libx11
 	depends = xorg-xauth
 	depends = xorg-xrdb
 	depends = xorg-xmodmap
-	depends = inetutils
+	depends = sh
+	depends = glibc
 	optdepends = xorg-twm
 	optdepends = xterm
-	provides = xorg-xinit=1.4.1-2
+	provides = xorg-xinit=1.4.4.r0.g583a939
 	conflicts = xorg-xinit
-	options = !emptydirs
 	backup = etc/X11/xinit/xserverrc
 	backup = etc/X11/xinit/xinitrc
-	source = xorg-xinit-git::git://anongit.freedesktop.org/git/xorg/app/xinit
+	source = xorg-xinit-git::git+https://gitlab.freedesktop.org/xorg/app/xinit.git
 	source = 06_move_serverauthfile_into_tmp.diff
-	source = fs25361.patch
-	source = fs46369.patch
 	source = xserverrc
-	sha256sums = SKIP
-	sha256sums = a5c6ced5822bbb3145e0f30a4b12995782ca6d80ff2d927851ec91b5e41212cb
-	sha256sums = 7cd5941b962542117fada9bbb80f76db99eee14fa951d1a4a09e0f386fcef562
-	sha256sums = 6e2c44b997e604db167f00168e8b6c68257be50447d7a80856b4aa910f52351e
-	sha256sums = 5e87bff928c143d9db9966048f6530e83e9e9a1cac09ce4c25f8aabc08611b6f
+	sha512sums = SKIP
+	sha512sums = 54c8497d11e9f3b85704511f2dd9fceca4efeab10a6384f922e69a35850d4191511ce20fe020cf4301e0e9655831d86f5390e19f357e11a3a29a9e18ab69d92e
+	sha512sums = f86d96d76bcb340021e7904925f0029f8662e4dfc32489198b3a8695dca069da496539e2287249c763fe9c4d8d5d591fd18fe49a0bee822cbbd0eb712efbb89b
 
 pkgname = xorg-xinit-git
-
