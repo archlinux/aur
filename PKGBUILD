@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=143.0.7499.192
+pkgver=144.0.7559.59
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
         chromium-141-cssstylesheet-iwyu.patch)
-sha256sums=('01b2db3c4b89b96b3b18e889b7ef583ca243dd90d27f46c3c0115d298618501c'
+sha256sums=('8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
@@ -74,7 +74,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            '8241c2cffa1e843f2dea8e9ffe8087b7283f4dd2b0e9191c328586be7c1a9727')
+            '083adc19e6cb0e835f251e8dba06d3187fe56875e79358c738d872acb20cbfa3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
