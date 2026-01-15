@@ -1,19 +1,20 @@
-# Maintainer: inori <github.com/inoriy>
+# Maintainer: Camila 'Mocha' Rose
 pkgname=astra
-pkgver=2.9.3
-pkgrel=3
-pkgdesc="VC/PM identifiers for bash"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A simple AUR helper written in Ruby"
+arch=('any')
+url="https://git.gay/mochacinno-dev/astra"
+license=('GNU GPLv3')
+depends=('ruby' 'git' 'base-devel' 'pacman')
+makedepends=('git')
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
-url="https://github.com/inoriy/astra"
-license=("GPL-3.0")
+package() {
+    cd "$srcdir/astra"
+    # Install the main executable
+    install -Dm755 astra "$pkgdir/usr/bin/astra"
 
-source=("https://github.com/inoriy/astra/archive/v$pkgver-$pkgrel.tar.gz")
-md5sums=('169ac58b8546b61c17c915dc5e309ea8')
-
-arch=("any")
-depends=("glibc" "perl")
-
-package(){
-	cd "$pkgname-$pkgver-$pkgrel"
-	make ROOT="$pkgdir" VERSION="$pkgver-$pkgrel"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/astra/README.md"
 }

@@ -1,14 +1,16 @@
 pkgbase = astra
-	pkgdesc = VC/PM identifiers for bash
-	pkgver = 2.9.3
-	pkgrel = 3
-	url = https://github.com/inoriy/astra
+	pkgdesc = A simple AUR helper written in Ruby
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.gay/mochacinno-dev/astra
 	arch = any
-	license = GPL-3.0
-	depends = glibc
-	depends = perl
-	source = https://github.com/inoriy/astra/archive/v2.9.3-3.tar.gz
-	md5sums = 169ac58b8546b61c17c915dc5e309ea8
+	license = GNU GPLv3
+	makedepends = git
+	depends = ruby
+	depends = git
+	depends = base-devel
+	depends = pacman
+	source = git+https://git.gay/mochacinno-dev/astra.git#tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = astra
-
