@@ -1,0 +1,34 @@
+pkgbase = alethea
+	pkgdesc = Agentic AI-powered Digital Forensics & Legal Evidence Platform
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/username/alethea
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = python-pip
+	depends = python-typer
+	depends = python-rich
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = ollama
+	optdepends = blackarch-forensic: Complete BlackArch forensic toolkit
+	optdepends = sleuthkit: Disk forensics (fls, mmls, mactime)
+	optdepends = volatility3: Memory forensics
+	optdepends = nmap: Network scanning
+	optdepends = wireshark-cli: Network packet analysis
+	optdepends = tcpdump: Packet capture
+	optdepends = binwalk: Firmware analysis
+	optdepends = foremost: File carving
+	optdepends = bulk-extractor: Extract features from disk images
+	optdepends = sherlock: Username OSINT
+	optdepends = holehe: Email OSINT
+	optdepends = maigret: Multi-platform username search
+	source = alethea-0.1.0.tar.gz::https://github.com/username/alethea/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = alethea
