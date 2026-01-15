@@ -4,7 +4,7 @@ _pkgname="asset-ripper"
 _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
-pkgver=1.3.6
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ depends=('gcc-libs' 'dbus' 'glibc' 'webkit2gtk-4.1')
 
 source=("https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/LICENSE.md"
 	"https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/Media/Images/LogoReimagined/LogoReimaginedTransparent.png")
-source_x86_64=("$_pkgname-x86_64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_x64.zip")
-source_aarch64=("$_pkgname-aarch64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_arm64.zip")
+source_x86_64=("$_pkgname-x86_64.tar.gz::$url/releases/download/$pkgver/AssetRipper_linux_x64.zip")
+source_aarch64=("$_pkgname-aarch64.tar.gz::$url/releases/download/$pkgver/AssetRipper_linux_arm64.zip")
 
 sha256sums=('SKIP'
             'SKIP')
@@ -52,3 +52,7 @@ Comment=GUI asset ripper
 Categories=Game;Development;
 EOF
 }
+sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
+            '223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757')
+sha256sums_x86_64=('1393c64a0902c48c74ec3e85bc95321e253696f90ecfe3c8b845c9ae7b0fc61a')
+sha256sums_aarch64=('cba4e842696a6c28de5fcb50ce38bbcacceb9236ca00384d602d9fb8f3f6db4d')
