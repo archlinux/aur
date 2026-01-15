@@ -2,39 +2,28 @@
 _target='compass'
 _edition=''
 pkgname="mongodb-$_target"
-_pkgver='1.48.2'
+_pkgver='1.49.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron37'
-depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release')
-if [[ "$_target" =~ -beta$ ]]; then
-	depends+=('nodejs>=22.21.1')
-else
-	depends+=('nodejs>=22.15.1')
-fi
+depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=22.21.1')
 makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
-	'ignore-fix-ts-errors.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
-	'fix-local-storage.diff'
 	'update-dependencies.diff'
-	'update-dependencies-beta.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('9f9c2c4ef8b50cfdba40c9d4135888e728d367620dfa8df372e23aa5669874dbe1b70d68d6c2bb14a3dce12edf40c2864dec315eda251569117e61f0ec8831d0'
-        'd392a97281780657529841933474b370f0ae9df9a063aa95a7c90ae43f82baacbef3840e2a3eabd0848d84dc19665cc6f7ea5a2311f1dc2eda9d03eff9be2eea'
+b2sums=('f66e78ff7ea6ef4de2aac347b92967ad89a724a0c2739c19c56505e4be77a7bc8c74fc32c651dfd9b5dc0b29b07d3f3f46c021c0616cf10e66873451564bbf49'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        '17d17d30bda15430b3a8fe15207ab41dc6820461aad52df07bf7b7a0ecc342c5605bdf57673aab24f8a136560b6cad30b059fadb2f2e271cacda6a2b903daa40'
-        'a3c850d924e3f55e1319dd5c2fceb02ca07220a4a95e77847b53a2321e0268741fb0c62a712af99e10a5c50de3e5ee5af272d3465e9556510fdc46abe8edab9d'
         'f93f21dc20ce9608f4685c4d5f16329a455a7c56c78f4254cf7d0b28e4fe52a5ef405e15de2f8cfbb140361c53d3f4399c0e50c152583255d0ab921e5be62c34'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
@@ -43,11 +32,6 @@ _sourcedirectory="compass-$_pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	if [[ ! "$_target" =~ -beta$ ]]; then
-		# Ignore/fix IconButton TS errors
-		patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
-	fi
-
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
 
@@ -55,16 +39,7 @@ prepare() {
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
 	# Set npm overrides for various dependencies
-	if [[ "$_target" =~ -beta$ ]]; then
-		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
-	else
-		patch --forward -p1 < "$srcdir/update-dependencies.diff"
-	fi
-
-	if [[ ! "$_target" =~ -beta$ ]]; then
-		# Fix broken build with node=>25.1.0 due to localStorage behavior changes (https://github.com/nodejs/node/pull/60351)
-		patch --forward -p1 < "$srcdir/fix-local-storage.diff"
-	fi
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
@@ -72,14 +47,8 @@ prepare() {
 	# Update overriden packages, see below for reasoning
 	## electron - ABI compatibility with the system Electron version
 	## electron-to-chromium - ensure compatibility with the Electron version set above
-	## nan - fix build with current node/kernel version (non-beta only)
-	## ssh2 - fix build with current node/kernel version (non-beta only)
 	## html-webpack-plugin - fix build with node>=25.1.0
-	if [[ "$_target" =~ -beta$ ]]; then
-		npm update electron electron-to-chromium html-webpack-plugin --package-lock-only
-	else
-		npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
-	fi
+	npm update electron electron-to-chromium html-webpack-plugin --package-lock-only
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
