@@ -6,7 +6,7 @@ pkgdesc="A Python library for making geographic flat-top hexagon grids"
 url="https://github.com/mrcagney/geohexgrid"
 
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")

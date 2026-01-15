@@ -1,7 +1,7 @@
 pkgbase = python-geohexgrid
 	pkgdesc = A Python library for making geographic flat-top hexagon grids
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrcagney/geohexgrid
 	arch = any
 	license = MIT
