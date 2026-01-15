@@ -2,7 +2,7 @@
 # Contributor: PY Chuang <pychuang@pm.me>
 # Contributor: Arjun Nemani <nemaniarjun@gmail.com>
 pkgname=textlint
-pkgver=15.4.1
+pkgver=15.5.0
 pkgrel=1
 pkgdesc="The pluggable natural language linter for text and markdown."
 arch=(any)
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("nodejs")
 makedepends=("npm")
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha1sums=('53d963b46b463b8c36661f832f9d4a26ba2cf7c7')
+sha1sums=('4570ed2296c2ff0964ed053e16f35a4c1e1bb0a7')
 
 package() {
 
