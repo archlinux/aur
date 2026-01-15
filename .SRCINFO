@@ -12,8 +12,6 @@ pkgbase = fastcompmgr
 	depends = libxfixes
 	depends = libxrender
 	depends = glibc
-	provides = fastcompmgr
-	conflicts = fastcompmgr
 	source = fastcompmgr-0.5.tar.gz::https://github.com/tycho-kirchner/fastcompmgr/archive/refs/tags/v0.5.tar.gz
 	sha512sums = e067915c832540fdc63ea0ddccb0ca104e9566290925242a9ce3dc84935d10dfa20733aa666aff498319135e2ecf6d2ea1ea20ca40547c1a869d208e14cf0bde
 
