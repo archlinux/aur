@@ -25,7 +25,7 @@ pkgbase = dpsprep-git
 	depends = python-fpdf2
 	depends = python-pdfrw
 	optdepends = ocrmypdf: Optional OCR and advanced PDF optimization
-	provides = dpsprep=2.3.1.r0.g879253d
+	provides = dpsprep
 	conflicts = dpsprep
 	source = git+https://github.com/kcroker/dpsprep.git
 	md5sums = SKIP

@@ -7,7 +7,7 @@ pkgdesc='A DjVu to PDF converter with a focus on small output size and the abili
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
-provides=("$_pkgbasename=$pkgver")
+provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 checkdepends=(python ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
 makedepends=(git python-build python-installer python-wheel python-poetry)
