@@ -1,0 +1,5 @@
+[dotstate-bin]
+source = "github"
+github = "serkanyersen/dotstate"
+use_latest_release = true
+prefix = "v"
