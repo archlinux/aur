@@ -6,7 +6,7 @@ pkgver=0.1.11
 pkgrel=1
 pkgdesc="Ampere – a simple desktop audio player"
 arch=('any')
-url="https://your-host/your-user/ampere-audio-player"
+url="https://github.com/henri/ampere-audio-player"
 license=('MIT')
 depends=(
   'python'
