@@ -9,10 +9,6 @@ url="https://github.com/khcrysalis/PlumeImpactor"
 arch=("x86_64")
 license=("MIT")
 depends=("fuse3" "hicolor-icon-theme" "usbmuxd")
-optdepends=(
-    "usbmuxd2-git: alternative usbmuxd implementation (AUR)"
-    "usbmuxd-git: git version of usbmuxd (AUR)"
-)
 options=("!strip" "!debug")
 
 _appimage="Impactor-linux-x86_64.AppImage"
