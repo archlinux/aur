@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 _base=fancymaps
 pkgname=python-${_base}
-pkgver=0.1.22
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Colormap collection from various (creative) sources"
 url="https://github.com/alcubierre-drive/${_base}"
