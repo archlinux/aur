@@ -2,7 +2,7 @@
 
 pkgbase="plumeimpactor"
 pkgname="plumeimpactor-appimage"
-pkgver="1.3.0"
+pkgver="1.4.1"
 pkgrel=1
 pkgdesc="Sideloading tool for iOS devices"
 url="https://github.com/khcrysalis/PlumeImpactor"
@@ -14,7 +14,7 @@ options=("!strip" "!debug")
 _appimage="Impactor-linux-x86_64.AppImage"
 source=("$_appimage::$url/releases/download/v$pkgver/$_appimage"
         "LICENSE::https://raw.githubusercontent.com/khcrysalis/PlumeImpactor/main/LICENSE")
-sha256sums=('072e802e3c1e73d631d003582ce8eef516109a7f51f5aaa75f913dc99d2847bc'
+sha256sums=('47247b365947169a67f48622ada358847b97fc0c8580d650e2996b4b77f093a3'
             '6e91aca9b6eacf944ae628db34a60253d917b7ddb411c4748ab6e5105ffe5a3e')
 
 prepare() {
@@ -33,11 +33,11 @@ package() {
     ln -s "/opt/$pkgname/$_appimage" "$pkgdir/usr/bin/plumeimpactor"
 
     # Install desktop file
-    install -Dm644 "$srcdir/squashfs-root/usr/share/applications/Impactor.desktop" \
+    install -Dm644 "$srcdir/squashfs-root/usr/share/applications/dev.khcrysalis.PlumeImpactor.desktop" \
         "$pkgdir/usr/share/applications/plumeimpactor.desktop"
 
     # Install icons
-    for path in "$srcdir"/squashfs-root/usr/share/icons/hicolor/*/apps/Impactor.*; do
+    for path in "$srcdir"/squashfs-root/usr/share/icons/hicolor/*/apps/dev.khcrysalis.PlumeImpactor.*; do
         install -Dm644 "$path" "$pkgdir/${path#$srcdir/squashfs-root/}"
     done
 
