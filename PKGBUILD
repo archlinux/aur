@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-remotecontrollers-git
-pkgver=5.26.90.r308.g3bbb4f9
+pkgver=5.26.90.r350.g7fcc683
 pkgrel=1
 pkgdesc='Translate various input device events into keyboard and pointer events'
 arch=(x86_64)
