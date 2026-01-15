@@ -1,0 +1,19 @@
+pkgbase = python-skill-security-scan
+	pkgdesc = 🔍 Security Scanning Tool for Claude Skills - Protect Your Development Environment
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/skill-security-scan
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-polib
+	depends = python-yaml
+	source = skill_security_scan-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/s/skill_security_scan/skill_security_scan-1.0.0.tar.gz
+	sha256sums = b927e9d6c435e6452a7b8772fdeac797ae16ada903c8a5bdbc3a2860679bab73
+
+pkgname = python-skill-security-scan
