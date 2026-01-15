@@ -1,7 +1,7 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=traggo-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="self-hosted tag-based time tracking"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/traggo/server"
@@ -33,8 +33,10 @@ package() {
    "armv7h") _binary="arm-7";;
    *) echo "Unsupported architecture" && exit 1;;
   esac
-  install -Dm755 traggo "$pkgdir"/usr/bin/traggo
-  install -Dm644 "server.ini"      "${pkgdir}/etc/traggo/server.ini"
+
+  install -dm750                   "${pkgdir}/etc/traggo/"
+  install -Dm640 "server.ini"      "${pkgdir}/etc/traggo/server.ini"
+  install -Dm755 "traggo"          "${pkgdir}/usr/bin/traggo"
   install -Dm644 "traggo.service"  "${pkgdir}/usr/lib/systemd/system/traggo.service"
   install -Dm644 "traggo.sysusers" "${pkgdir}/usr/lib/sysusers.d/traggo.conf"
   install -Dm644 "traggo.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/traggo.conf"
