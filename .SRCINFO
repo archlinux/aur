@@ -1,7 +1,7 @@
 pkgbase = wpaperd-git
 	pkgdesc = Wallpaper daemon for Wayland.
-	pkgver = r279.0e23789
-	pkgrel = 1
+	pkgver = r400.7a0fbc9
+	pkgrel = 2
 	url = https://github.com/danyspin97/wpaperd
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = wpaperd-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libglvnd
+	depends = libffi
 	provides = wpaperd
 	conflicts = wpaperd
 	options = !debug

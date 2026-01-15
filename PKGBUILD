@@ -2,13 +2,13 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth [at] gmail [dot] com>
 
 pkgname=wpaperd-git
-pkgver=r279.0e23789
-pkgrel=1
+pkgver=r400.7a0fbc9
+pkgrel=2
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
 url='https://github.com/danyspin97/wpaperd'
 license=('GPL-3.0-only')
-depends=('wayland' 'gcc-libs' 'glibc' 'libglvnd')
+depends=('wayland' 'gcc-libs' 'glibc' 'libglvnd' 'libffi')
 makedepends=('cargo' 'scdoc' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
