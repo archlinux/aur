@@ -12,6 +12,7 @@ _pkgvername=v${pkgver}
 arch=('x86_64')
 _barch=('amd64')
 
+_site="https://scmd.site"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
