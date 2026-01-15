@@ -1,5 +1,5 @@
 pkgname=moonveil
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Moonveil Hyprland dotfiles"
 arch=('any')
