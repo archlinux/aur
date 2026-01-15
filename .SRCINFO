@@ -1,15 +1,15 @@
 pkgbase = geant4-incldata
 	pkgdesc = Data files for proton and neutron density profiles in INCL
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4-incldata.install
 	arch = any
 	license = GPL
-	optdepends = geant4>=11.3
-	source = https://cern.ch/geant4-data/datasets/G4INCL.1.2.tar.gz
+	optdepends = geant4>=11.4
+	source = https://cern.ch/geant4-data/datasets/G4INCL.1.3.tar.gz
 	source = geant4-incldata.install
-	sha256sums = f880b16073ee0a92d7494f3276a6d52d4de1d3677a0d4c7c58700396ed0e1a7e
+	sha256sums = e4b3dbe52acef53536454e22443091212843821bd23628eed846d299599f3bf9
 	sha256sums = 744614e9b6a3f9bbac15172ac3a1198e85dfab0fd5a1d6ce49d02fc23fab5f40
 
 pkgname = geant4-incldata
