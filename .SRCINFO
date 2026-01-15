@@ -1,0 +1,20 @@
+pkgbase = hidapi-hotplug-git
+	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices with hotplug support
+	pkgver = r690.b460ad7
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/hidapi-hotplug
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	license = custom
+	makedepends = cmake
+	makedepends = libusb
+	depends = systemd-libs
+	optdepends = libusb: for hidapi-hotplug-libusb
+	provides = hidapi-hotplug
+	provides = libhidapi-hotplug-hidraw.so
+	provides = libhidapi-hotplug-libusb.so
+	source = git+https://gitlab.com/OpenRGBDevelopers/hidapi-hotplug.git
+	sha512sums = SKIP
+
+pkgname = hidapi-hotplug-git
