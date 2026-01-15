@@ -1,5 +1,3 @@
-# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
-
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,gcc-ada,gcc-d}-snapshot)
 pkgver=15.1.0
@@ -87,7 +85,7 @@ build() {
     --with-build-config=bootstrap-lto
     --with-linker-hash-style=gnu
     --with-system-zlib
-    --with-isl-include=${srcdir}/gcc-${_pkgver}/isl/include
+    --with-isl-include=../gcc/isl/include
     --enable-__cxa_atexit
     --enable-cet=auto
     --enable-checking=release
@@ -114,7 +112,7 @@ build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  ${srcdir}/gcc/configure \
+  ../gcc/configure \
     --enable-languages=ada,c,c++,d,lto \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"

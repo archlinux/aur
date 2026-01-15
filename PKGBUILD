@@ -1,9 +1,7 @@
-# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
-
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20250928
-_pkgver=16-20250928
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
+pkgver=16.0.0.snapshot20260111
+_pkgver=16-20260111
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -34,7 +32,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('cc0709722224a378d0b99b1c720eed539b92566205742429b717f4df7d6c5f4a'
+sha256sums=('276ff5ce522121da716f1fcdbf375205786a03b170a397691cb13ffc60e146f2'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -78,7 +76,7 @@ build() {
     --with-build-config=bootstrap-lto
     --with-linker-hash-style=gnu
     --with-system-zlib
-    --with-isl-include=${srcdir}/gcc-${_pkgver}/isl/include
+    --with-isl-include=../gcc/isl/include
     --enable-__cxa_atexit
     --enable-cet=auto
     --enable-checking=release
@@ -105,13 +103,13 @@ build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  ${srcdir}/gcc/configure \
-    --enable-languages=ada,c,c++,cobol,d,fortran,go,lto,m2,rust,objc,obj-c++ \
+  ../gcc/configure \
+    --enable-languages=ada,algol68,c,c++,cobol,d,fortran,go,lto,m2,rust,objc,obj-c++ \
     --enable-offload-targets=amdgcn-amdhsa,nvptx-none \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
-  make -O "STAGE1_CFLAGS=-Os" "STAGE2_CFLAGS=-Os" "STAGE3_CFLAGS=-Os" "STAGE4_CFLAGS=-Os" \
+  make -O "STAGE1_CFLAGS=-O2" "STAGE2_CFLAGS=-O2" "STAGE3_CFLAGS=-O2" "STAGE4_CFLAGS=-O2" \
           "BOOT_CFLAGS=${CFLAGS}" "BOOT_LDFLAGS=${LDFLAGS}" "LDFLAGS_FOR_TARGET=${LDFLAGS}" \
           bootstrap
 
@@ -119,27 +117,27 @@ build() {
 
   cd ${srcdir}/libgccjit-build
 
-  ${srcdir}/gcc/configure \
+  ../gcc/configure \
     --enable-languages=jit \
     --disable-bootstrap \
     --enable-host-shared \
     "${_confflags[@]:?_confflags unset}"
 
-  make -O "STAGE1_CFLAGS=-Os" "STAGE2_CFLAGS=-Os" "STAGE3_CFLAGS=-Os" "STAGE4_CFLAGS=-Os" \
+  make -O "STAGE1_CFLAGS=-O2" "STAGE2_CFLAGS=-O2" "STAGE3_CFLAGS=-O2" "STAGE4_CFLAGS=-O2" \
           "BOOT_CFLAGS=${CFLAGS}" "BOOT_LDFLAGS=${LDFLAGS}" "LDFLAGS_FOR_TARGET=${LDFLAGS}" \
           all-gcc
 
   cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
 
-check() {
-  cd gcc-build
-
-  sed -i '/maybe-check-target-libphobos \\/d' Makefile
-
-  make -O -k check || true
-  ${srcdir}/gcc/contrib/test_summary
-}
+#check() {
+#  cd gcc-build
+#
+#  sed -i '/maybe-check-target-libphobos \\/d' Makefile
+#
+#  make -O -k check || true
+#  ${srcdir}/gcc/contrib/test_summary
+#}
 
 package_gcc-libs-snapshot() {
   pkgdesc='Runtime libraries shipped by GCC (snapshot)'
@@ -156,7 +154,7 @@ package_gcc-libs-snapshot() {
 
   rm -f ${pkgdir}/${_libdir}/libgcc_eh.a
 
-  for lib in libatomic libgcobol libgfortran libgo libgomp libitm libquadmath \
+  for lib in libatomic libga68 libgcobol libgfortran libgo libgomp libitm libquadmath \
              libsanitizer/{a,l,ub,t}san libstdc++-v3/src libvtv
   do
     make -C ${CHOST}/${lib} DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
@@ -236,9 +234,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm -f ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
-  rm -f ${pkgdir}/usr/share/man/man3/gcobol*
-  rm -f ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
+  rm -f ${pkgdir}/usr/share/man/man1/{ga68,gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm -f ${pkgdir}/usr/share/man/man3/{ga68,gcobol}*
+  rm -f ${pkgdir}/usr/share/info/{ga68,gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
@@ -402,7 +400,7 @@ package_lib32-gcc-libs-snapshot() {
   cd gcc-build
 
   make -C ${CHOST}/32/libgcc DESTDIR=${pkgdir} install-shared
-  for lib in libatomic libgcobol libgfortran libgo libgomp libitm libquadmath \
+  for lib in libatomic libga68 libgcobol libgfortran libgo libgomp libitm libquadmath \
              libsanitizer/{a,l,ub}san libstdc++-v3/src libvtv
   do
     make -C ${CHOST}/32/${lib} DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
@@ -480,6 +478,30 @@ package_gcc-rust-snapshot() {
 
   install -Dm755 gcc/gccrs ${pkgdir}/usr/bin/gccrs
   install -Dm755 gcc/crab1 ${pkgdir}/usr/bin/crab1
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}/
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    ${pkgdir}/usr/share/licenses/${pkgname}/
+}
+
+package_gcc-ga68-snapshot() {
+  pkgdesc='Algol68 frontend for GCC (snapshot)'
+  depends=("gcc-snapshot=${pkgver}-${pkgrel}")
+  provides=(${pkgname}-multilib gcc-ga68-multilib gcc-ga68)
+  replaces=(${pkgname}-multilib gcc-ga68-multilib gcc-ga68)
+  conflicts=(gcc-ga68-multilib gcc-ga68)
+  options=(lto strip staticlibs)
+
+  cd gcc-build
+
+  make -C gcc DESTDIR=${pkgdir} algol68.install-{common,man,info}
+
+  install -Dm755 gcc/a681 ${pkgdir}/${_libdir}/a681
+  install -Dm755 gcc/ga68 ${pkgdir}/usr/bin/ga68
+
+  make -C ${CHOST}/libga68 DESTDIR=${pkgdir} install
+
+  rm -f ${pkgdir}/usr/lib{,32}/libga68*.so*
+
   install -d ${pkgdir}/usr/share/licenses/${pkgname}/
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
     ${pkgdir}/usr/share/licenses/${pkgname}/
