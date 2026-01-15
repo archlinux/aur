@@ -3,17 +3,17 @@ pkgname=geant4-channelingdata
 _varname='G4CHANNELINGDATA'
 _dataname='G4CHANNELING'
 _foldername='G4CHANNELING'
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Data files for the simulations of channeling trajectories"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=11.3')
+optdepends=('geant4>=11.4')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('203e3c69984ca09acd181a1d31a9b0efafad4bc12e6c608f0b05e695120d67f2'
+sha256sums=('662159288644e07b79d7fe091efbebba52b59546b3dc6f5d285b976ad12f2d06'
             '95eb203bf7fdc6ad6e90527445ccfd139fe4ad9a1fa62452a46c3f5a005976c0')
 
 ## Remove this if you want to keep an even smaller package
