@@ -1,0 +1,22 @@
+diff --unified --recursive --text a/tests/test_download_photos_id.py b/tests/test_download_photos_id.py
+--- a/tests/test_download_photos_id.py	2025-09-02 02:53:56.000000000 +0200
++++ b/tests/test_download_photos_id.py	2026-01-16 00:09:05.698383778 +0100
+@@ -889,6 +889,7 @@
+             self.assertIn("All photos and videos have been downloaded", result.output)
+             assert result.exit_code == 0
+ 
++    @pytest.mark.skip(reason="success depends on timezone")
+     @pytest.mark.skipif(sys.platform == "win32", reason="does not run on windows")
+     @pytest.mark.skipif(sys.platform == "darwin", reason="does not run on mac")
+     def test_creation_date_without_century_name_id7(self) -> None:
+diff --unified --recursive --text a/tests/test_download_photos.py b/tests/test_download_photos.py
+--- a/tests/test_download_photos.py	2025-09-02 02:53:56.000000000 +0200
++++ b/tests/test_download_photos.py	2026-01-16 00:08:49.645022585 +0100
+@@ -950,6 +950,7 @@
+             self.assertIn("All photos and videos have been downloaded", result.output)
+             assert result.exit_code == 0
+ 
++    @pytest.mark.skip(reason="success depends on timezone")
+     @pytest.mark.skipif(sys.platform == "win32", reason="does not run on windows")
+     @pytest.mark.skipif(sys.platform == "darwin", reason="does not run on mac")
+     def test_creation_date_without_century(self) -> None:

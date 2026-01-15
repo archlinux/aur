@@ -1,7 +1,7 @@
 pkgbase = icloudpd
 	pkgdesc = A command-line tool to download photos and videos from iCloud.
 	pkgver = 1.32.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icloud-photos-downloader.github.io/icloud_photos_downloader/
 	arch = any
 	license = MIT
@@ -41,7 +41,9 @@ pkgbase = icloudpd
 	depends = python-waitress
 	source = icloudpd-1.32.2.tar.gz::https://github.com/icloud_photos_downloader/icloud_photos_downloader/archive/refs/tags/v1.32.2.tar.gz
 	source = icloudpd-skip-interactive-tests.patch
+	source = icloudpd-skip-timezone-dependent-tests.patch
 	b2sums = bd6a2f321d022d974d69845051157a1b2018c96a6606ee82e3508383281227977d1d1f590b613145b46626af708282c663ce050312ab20443500bc0129d8c356
 	b2sums = ec7c3ef99d328e761aacfabd6c33b9a4ebff5af33f5e5e28a101e302cc83cac8dddf0f1a08be5491a0ccb0cd8953d6a80ece360278abf5cdb055880d8d34ff32
+	b2sums = 09b4b56e14707c61b0cebf798bebec6df312836fe886404ab80de3ebe58c8dc5918dfdeef0a1dc21e908e6b644178ecca4dee82afa82700416e5f10410e59d6e
 
 pkgname = icloudpd
