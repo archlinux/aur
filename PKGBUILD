@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=ncinvaders-git
-pkgver=r37.bf05560
+pkgver=r46.0378c9b
 pkgrel=1
 pkgdesc="A simplified version of Space Invaders made with the nCine"
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ build() {
         -DCMAKE_PREFIX_PATH=/usr/lib/cmake/nCine\
         -DNCPROJECT_BUILD_ANDROID=OFF\
         -DNCPROJECT_STRIP_BINARIES=ON\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
