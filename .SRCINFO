@@ -1,16 +1,20 @@
 pkgbase = echomind
 	pkgdesc = AI-powered CLI tool with multiple provider support, streaming, and interactive mode
-	pkgver = 0.3.0
-	pkgrel = 1
+	pkgver = 0.3.2
+	pkgrel = 2
 	url = https://github.com/thepinak503/echomind
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = clang
 	depends = openssl
 	depends = gcc-libs
 	optdepends = jq: for JSON output formatting
 	provides = echomind
 	conflicts = echomind-git
+	source = https://github.com/thepinak503/echomind/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = echomind

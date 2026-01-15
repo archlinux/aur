@@ -1,13 +1,13 @@
 # Maintainer: Pinak Dhabu <thepinak503@duck.com>
 pkgname=echomind
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered CLI tool with multiple provider support, streaming, and interactive mode"
 arch=('x86_64' 'aarch64')
 url="https://github.com/thepinak503/echomind"
 license=('MIT')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'clang')
 optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
@@ -16,7 +16,9 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  cargo build --release --locked
+  export CC=clang
+  export CXX=clang++
+  cargo build --release
 }
 
 package() {
