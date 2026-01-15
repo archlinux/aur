@@ -3,7 +3,7 @@
 pkgbase=hqdfm-wine
 pkgname=hqdfm-wine
 pkgver=4.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Wine 华秋 DFM 是一款高效的 PCB 设计软件，一键分析设计隐患，提供优化方案，输出 Gerber、BOM、坐标文件，让设计和制造更简单。"
 arch=('x86_64')
 url="https://dfm.elecfans.com"
@@ -102,7 +102,7 @@ EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" <<EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
-export WINEARCH=win64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=wow64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 export WINEDLLOVERRIDES="mscoree,mshtml=,winemenubuilder.exe=d"
 
 if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
