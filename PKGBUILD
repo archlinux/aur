@@ -3,7 +3,7 @@
 _pkgname=fastcompmgr
 pkgname=${_pkgname}-dev
 pkgver=0.5.r18.gc9b8c3b
-pkgrel=1
+pkgrel=2
 pkgdesc="An early Compton-based compositor for X11 focused on performance. (dev branch)"
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/${_pkgname}"
@@ -35,7 +35,7 @@ package() {
   cd ${_pkgname}
 
   install -Dm755 ${_pkgname} -t \
-    "${pkgdir}/usr/bin/${_pkgname}"
+    "${pkgdir}/usr/bin/"
 
   install -Dm644 ${_pkgname}.1 -t \
     "${pkgdir}/usr/share/man/man1/"
