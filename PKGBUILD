@@ -1,11 +1,12 @@
+# Maintainer: vadik likholeov <vadikas@gmail.com> 
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
-pkgname=kanshi-git
-pkgver=1.5.1.r6.g0602cd3
+pkgname=kanshi-git     
+pkgver=1.8.0.r3.g87c6736
 pkgrel=1
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
-url="https://git.sr.ht/~emersion/kanshi"
+url="https://gitlab.freedesktop.org/emersion/kanshi"
 license=('MIT')
 groups=()
 depends=('wayland' 'libvarlink' 'libscfg-git')
@@ -17,7 +18,7 @@ backup=()
 options=()
 install=
 source=(
-    'kanshi::git+https://git.sr.ht/~emersion/kanshi'
+    'kanshi::git+https://gitlab.freedesktop.org/emersion/kanshi.git'
     'kanshi.service'
 )
 noextract=()
