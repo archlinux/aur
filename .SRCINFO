@@ -1,6 +1,6 @@
 pkgbase = nctracer-git
 	pkgdesc = An ImGui front-end to the pmTracer library made with the nCine
-	pkgver = r33.64e6bc8
+	pkgver = r43.7657f5a
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686

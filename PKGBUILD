@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=nctracer-git
-pkgver=r35.089dde7
+pkgver=r43.7657f5a
 pkgrel=1
 pkgdesc="An ImGui front-end to the pmTracer library made with the nCine"
 arch=('i686' 'x86_64')
@@ -44,7 +44,8 @@ build() {
         -DNCINE_WITH_WEBP=OFF\
         -DNCINE_WITH_AUDIO=OFF\
         -DNCINE_WITH_SCRIPTING_API=OFF\
-        -DNCINE_BUILD_TESTS=OFF
+        -DNCINE_BUILD_TESTS=OFF\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON
   make -C nCine-build
 
   mkdir -p build && cd build
@@ -55,6 +56,7 @@ build() {
         -DPMTRACER_ROOT=$PWD/../pmTracer\
         -DNCPROJECT_BUILD_ANDROID=OFF\
         -DNCPROJECT_STRIP_BINARIES=ON\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
