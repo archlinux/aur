@@ -3,7 +3,7 @@
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Cross-platform IPTV player application with support for M3U/M3U8 playlists, EPG, favorites, TV archive and more."
 arch=('x86_64')
@@ -26,17 +26,26 @@ depends=(
   'libnotify'
   'libappindicator-gtk3'
 )
+
 provides=('iptvnator')
 conflicts=('iptvnator')
 options=(!strip)
+
 source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
-sha256sums=('25f57c4829310777c5441ca47b2f563bf31000d0a3b007308d58807031ae10f9')
+sha256sums=('872dcb0f9316af50166460c471624720dff8ddb2067770faf99f070fcd9cdd60')
 
 package() {
   bsdtar -xf "${srcdir}/iptvnator-${pkgver}.pacman" -C "${pkgdir}"
-  install -Dm644 "${srcdir}/opt/IPTVnator/LICENSE.electron.txt" \
+
+  # Provide a stable CLI entry point regardless of upstream install-script behavior
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/IPTVnator/iptvnator" "${pkgdir}/usr/bin/iptvnator"
+
+  # License
+  install -Dm644 "${pkgdir}/opt/IPTVnator/LICENSE.electron.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+  # Remove upstream pacman metadata files from the repack
   rm -f "${pkgdir}/.INSTALL" \
         "${pkgdir}/.MTREE" \
         "${pkgdir}/.PKGINFO"
