@@ -6,7 +6,7 @@ pkgdesc="Tools for the extraction of OpenStreetMap street network data "
 url="http://udst.github.io/osmnet/"
 
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("AGPL-3.0-only")
