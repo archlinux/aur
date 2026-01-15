@@ -6,7 +6,7 @@ pkgdesc="An alternative to Google's Python Protobuf library."
 url="https://github.com/appnexus/pyrobuf"
 
 pkgver=0.9.3
-pkgrel=10
+pkgrel=11
 
 arch=("x86_64")
 license=("Apache-2.0")
