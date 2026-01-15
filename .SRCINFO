@@ -1,7 +1,7 @@
 pkgbase = hledger-tui
 	pkgdesc = keyboard-driven terminal UI for viewing and analyzing your hledger financial data
-	pkgver = 0.0.3
-	pkgrel = 2
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://github.com/lucabello/hledger-tui
 	arch = any
 	license = Apache-2.0
@@ -15,7 +15,7 @@ pkgbase = hledger-tui
 	depends = python-textual
 	depends = python-textual-plotext
 	depends = python-typer
-	source = https://files.pythonhosted.org/packages/source/h/hledger-tui/hledger_tui-0.0.3.tar.gz
-	sha256sums = eb255842a85a1f444988689b2b68a02fc53ca3513d86668f3c6af95353b03aa3
+	source = https://files.pythonhosted.org/packages/source/h/hledger-tui/hledger_tui-0.0.4.tar.gz
+	sha256sums = 474104b7fcda313ed17c931621d3a0e70d6714c76b860894565cadddb839362a
 
 pkgname = hledger-tui

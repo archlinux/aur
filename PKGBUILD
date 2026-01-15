@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=hledger-tui
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='keyboard-driven terminal UI for viewing and analyzing your hledger financial data'
 arch=(any)
 url="https://github.com/lucabello/$pkgname"
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-uv-build)
 _archive="${pkgname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('eb255842a85a1f444988689b2b68a02fc53ca3513d86668f3c6af95353b03aa3')
+sha256sums=('474104b7fcda313ed17c931621d3a0e70d6714c76b860894565cadddb839362a')
 
 build () {
 	cd "$_archive"
