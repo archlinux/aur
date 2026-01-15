@@ -4,7 +4,7 @@
 pkgname=python-restfly
 _pkg="${pkgname#python-}"
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RESTfly API Library Framework'
 license=('MIT')
 arch=('any')
@@ -31,7 +31,6 @@ package() {
 	cd "$_pkg-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dvm644 "docs/_build/man/$_pkg.1" -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -D -m644 LICENSE \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
