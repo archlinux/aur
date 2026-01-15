@@ -1,6 +1,6 @@
 # Maintainer: Bobee <bogdan.mosteanu@hey.com>
 pkgname=mounty
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Linux GTK4 application for managing network shares with fstab integration"
 arch=('any')
