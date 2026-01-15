@@ -1,7 +1,5 @@
-# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
-
 pkgname=zig-git
-pkgver=0.15.0.r769.g4d7980645961
+pkgver=0.16.0.r2193.gfc517bd01c8c
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
@@ -10,13 +8,11 @@ license=('MIT')
 options=('!lto')
 conflicts=(zig)
 provides=("zig=${pkgver%%.r*}")
-depends=("clang>=20" icu libffi libxml2 "lld>=20" "llvm-libs>=20" ncurses xz zlib zstd)
-makedepends=(cmake "llvm>=20")
+depends=("clang>=21" icu libffi libxml2 "lld>=21" "llvm-libs>=21" ncurses xz zlib zstd)
+makedepends=(cmake "llvm>=21")
 checkdepends=(lib32-glibc)
-source=("git+https://github.com/ziglang/zig.git#branch=master"
-        "skip-localhost-test.patch")
-sha256sums=('SKIP'
-            'eeb5f0f72035c52bf558ffc77a171a3ddf93eac7d663ef0c82826007763717a8')
+source=("git+https://codeberg.org/ziglang/zig.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
   cd zig
@@ -30,8 +26,6 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/zig
-
-  patch -Np1 -i ${srcdir}/skip-localhost-test.patch
 
   mkdir -p build
 }
