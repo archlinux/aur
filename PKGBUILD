@@ -1,7 +1,7 @@
 pkgname=python-pytest-random-order
 _pkgname=pytest_random_order
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Randomise the order in which pytest tests are run with some control over the randomness"
 arch=(any)
 url="https://github.com/jbasko/pytest-random-order"
@@ -19,4 +19,6 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
