@@ -2,9 +2,9 @@
 
 pkgname=noon-qs-web
 _pkgname=quickshell
-pkgver=0.2.1.r351.g$(date +%Y%m%d)
+pkgver=0.2.1.r351
 pkgrel=1
-pkgdesc="Flexible toolkit for making desktop shells with QtQuick (PR #351 WebView support) for Noon Project"
+pkgdesc="Flexible toolkit for making desktop shells with QtQuick (PR #351 WebView support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/quickshell-mirror/quickshell"
 license=('LGPL3')

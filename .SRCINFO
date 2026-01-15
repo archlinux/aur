@@ -1,6 +1,6 @@
 pkgbase = noon-qs-web
-	pkgdesc = Flexible toolkit for making desktop shells with QtQuick (PR #351 WebView support) for Noon Project
-	pkgver = 0.2.1.r351.g20260115
+	pkgdesc = Flexible toolkit for making desktop shells with QtQuick (PR #351 WebView support)
+	pkgver = 0.2.1.r351
 	pkgrel = 1
 	url = https://github.com/quickshell-mirror/quickshell
 	arch = x86_64
