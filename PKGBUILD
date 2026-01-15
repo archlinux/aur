@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname="ingress2gateway"
 # renovate: datasource=github-releases depName=kubernetes-sigs/ingress2gateway
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="translate Ingress and provider-specific resources (CRDs) to Gateway API resources."
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7c511e4c309b62d01ce2128643922637f0ca77524bab2c4c6811bebbb43ff119')
-b2sums=('2a58b3d5420df79a934da803dfc7e558e839dc2eefddaa3ef1912be8df751b7967b5c42745fab2a9f97bc5afb7e8e98257b9fa94cda399c71da5954e2af6a3fc')
+sha256sums=('6afffb36873af934f1499d68ea73d432bb711a3025e8f3f5ab330162798ce871')
+b2sums=('07bc4af899f0146fb64690fc523089a70cc071bde7b901f5a7783ed3c2c8deaed3b948f49d5661b8eedf6399122b6ee88472353ba94cc2be13be4c978e5ac21a')
 
 build() {
   local _x _commit
