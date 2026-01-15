@@ -5,8 +5,8 @@
 
 _name=semgrep
 pkgname=${_name}-bin
-pkgver=1.147.0
-pkgrel=2
+pkgver=1.148.0
+pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
@@ -24,14 +24,14 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
 
-_b2sum="c5d920ad508af6759b61952c2f3209a39c494d7c396cf2dfe24f7029b59dd517"
+_b2sum="8a36812667ac811f5abacc3eebb0e6a9396d0b0ab16be0a56c96a43a23fceba4"
 _whl="semgrep-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_${CARCH}.manylinux2014_${CARCH}.whl"
 
 options=('!strip')
 noextract=("${_whl}")
 source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}"
         "fix.patch")
-sha512sums=('832a8b443a768cb08006f00575a1ba396765ad3e4fbfe6b66a91f344200d0e87d6b1beb65f78c36279d4fd73a86940cef90eb332ddad97d7d1edb9cadcf29766'
+sha512sums=('386331befd609afb9eb6601da7970dce1a10bd188281dcde5f98489230852d9d392933bf652ae802775bba8a8cba1d42231d5969eb44e03157ad8bdd98af5dca'
             '1e9ef18cb9130075aac39408f2ede92956e81360358a23eda4835788ced0c654283dfc90588c54baaed9272574cf58024aac9d6f1afca51029f17ecf26844040')
 
 

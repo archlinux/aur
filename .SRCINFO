@@ -1,7 +1,7 @@
 pkgbase = semgrep-bin
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code.
-	pkgver = 1.147.0
-	pkgrel = 2
+	pkgver = 1.148.0
+	pkgrel = 1
 	url = https://github.com/returntocorp/semgrep
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -37,11 +37,11 @@ pkgbase = semgrep-bin
 	depends = python-fastmcp
 	optdepends = jsonnet: experimental jsonnet support
 	provides = semgrep
-	noextract = semgrep-1.147.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
+	noextract = semgrep-1.148.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
 	options = !strip
-	source = https://files.pythonhosted.org/packages/c5/d9/20ad508af6759b61952c2f3209a39c494d7c396cf2dfe24f7029b59dd517/semgrep-1.147.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/8a/36/812667ac811f5abacc3eebb0e6a9396d0b0ab16be0a56c96a43a23fceba4/semgrep-1.148.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
 	source = fix.patch
-	sha512sums = 832a8b443a768cb08006f00575a1ba396765ad3e4fbfe6b66a91f344200d0e87d6b1beb65f78c36279d4fd73a86940cef90eb332ddad97d7d1edb9cadcf29766
+	sha512sums = 386331befd609afb9eb6601da7970dce1a10bd188281dcde5f98489230852d9d392933bf652ae802775bba8a8cba1d42231d5969eb44e03157ad8bdd98af5dca
 	sha512sums = 1e9ef18cb9130075aac39408f2ede92956e81360358a23eda4835788ced0c654283dfc90588c54baaed9272574cf58024aac9d6f1afca51029f17ecf26844040
 
 pkgname = semgrep-bin
