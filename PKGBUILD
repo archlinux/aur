@@ -1,25 +1,22 @@
 # Maintainer: Evan Sosenko <razorx@evansosenko.com>
 pkgname=worktrunk-bin
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Worktrunk is a CLI for git worktree management, designed for running AI agents in parallel."
 arch=('x86_64' 'aarch64')
 url="https://github.com/max-sixty/worktrunk"
 license=('MIT OR Apache-2.0')
-makedepends=('bash' 'fish' 'zsh')
 source_x86_64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('2bfb1b24b4479ae6bb53d748ad6b1080d8498d18aa51ae23dfe69473a304505e')
-sha256sums_aarch64=('f8ba0c890776810c6482c90c5370e2d2ed144fde9d3ad461563be3327bd65519')
+sha256sums_x86_64=('fbf05703ac12891f2a43cc04ed0e5dda3d199f9e2ec62bd470c211bfb7c9a2e0')
+sha256sums_aarch64=('c9d928f2b532149b67b9da0c4d2f41cb3a65a076ae642841ba17335d974aed5a')
 
 build() {
-  mkdir -p home
-  touch "home/.zshrc"
-  echo "autoload -Uz compinit\ncompinit" > "home/.zshrc"
-  touch "home/.bashrc"
-  mkdir -p "home/.local/share/bash-completion/completions/"
-  mkdir -p "home/.config/fish/conf.d/"
-  mkdir -p "home/.config/fish/completions/"
+  mkdir -p "home/.config/fish/conf.d/" \
+    "home/.config/fish/conf.d/" \
+    "home/.config/fish/completions/" \
+    "home/.config/fish/functions/"
+
   HOME="${srcdir}/home" \
     ZDOTDIR="${srcdir}/home" \
     XDG_CONFIG_HOME="${srcdir}/home/.config" \
