@@ -1,15 +1,15 @@
 pkgbase = responsively-bin
 	pkgdesc = A modified web browser that helps in responsive web development. A web developer's must have dev-tool
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://responsively.app
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = gendesk
 	provides = responsively
-	noextract = responsively-bin-1.17.0.AppImage
+	noextract = responsively-bin-1.17.1.AppImage
 	options = !strip
-	source_x86_64 = responsively-bin-1.17.0.AppImage::https://github.com/responsively-org/responsively-app-releases/releases/download/v1.17.0/ResponsivelyApp-1.17.0.AppImage
-	sha256sums_x86_64 = fc6523dad8dd005eab7c2c0ee3dca134f563c0e41acd7e485f705285c7793580
+	source_x86_64 = responsively-bin-1.17.1.AppImage::https://github.com/responsively-org/responsively-app-releases/releases/download/v1.17.1/ResponsivelyApp-1.17.1.AppImage
+	sha256sums_x86_64 = 1a21f05923ff890f403a8b0ea2beaf5282abff3b5b4df15b8f2b441c98cda33e
 
 pkgname = responsively-bin
