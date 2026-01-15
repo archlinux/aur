@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.09
+pkgver=9.10
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'gcc' 'cargo-c')
 source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
         ldflags-adjustments.patch)
-sha256sums=('332d30f530094eba7e20cdc95b05054e0d2e2149b64db964a7995a3042ae31a5'
+sha256sums=('fed322713387327357980098316fb519f9ce96cbc8d5f629b45fd2ea7d0b5ae3'
             'SKIP'
             '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5')
 
