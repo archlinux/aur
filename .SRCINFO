@@ -1,6 +1,6 @@
 pkgbase = nctiledviewer-git
 	pkgdesc = A viewer for Tiled maps made with the nCine
-	pkgver = r13.1027c4a
+	pkgver = r22.0c09088
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686

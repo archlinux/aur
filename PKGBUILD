@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=nctiledviewer-git
-pkgver=r13.1027c4a
+pkgver=r22.0c09088
 pkgrel=1
 pkgdesc="A viewer for Tiled maps made with the nCine"
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ build() {
         -DCMAKE_PREFIX_PATH=/usr/lib/cmake/nCine\
         -DNCPROJECT_BUILD_ANDROID=OFF\
         -DNCPROJECT_STRIP_BINARIES=ON\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
