@@ -1,0 +1,172 @@
+From 3ef9dad32dd27afdae9b0e25c8a41671f22cb0e2 Mon Sep 17 00:00:00 2001
+From: Findlay Feng <i@fengch.me>
+Date: Thu, 15 Jan 2026 09:46:37 +0800
+Subject: [PATCH] fix: import mock
+
+---
+ tests/unit/protocols/test_swd.py            | 6 +++++-
+ tests/unit/test_decorators.py               | 6 +++++-
+ tests/unit/test_jlink.py                    | 6 +++++-
+ tests/unit/test_jlock.py                    | 6 +++++-
+ tests/unit/test_library.py                  | 6 +++++-
+ tests/unit/test_main.py                     | 6 +++++-
+ tests/unit/test_util.py                     | 6 +++++-
+ tests/unit/unlockers/test_unlock.py         | 6 +++++-
+ tests/unit/unlockers/test_unlock_kinetis.py | 6 +++++-
+ 9 files changed, 45 insertions(+), 9 deletions(-)
+
+diff --git a/tests/unit/protocols/test_swd.py b/tests/unit/protocols/test_swd.py
+index 03652f6..184a7aa 100644
+--- a/tests/unit/protocols/test_swd.py
++++ b/tests/unit/protocols/test_swd.py
+@@ -15,7 +15,11 @@
+ import pylink.protocols.swd as swd
+ import pylink.util
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import unittest
+
+diff --git a/tests/unit/test_decorators.py b/tests/unit/test_decorators.py
+index ba2096b..b5821fc 100644
+--- a/tests/unit/test_decorators.py
++++ b/tests/unit/test_decorators.py
+@@ -14,7 +14,11 @@
+
+ import pylink.decorators as decorators
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import threading
+ import unittest
+diff --git a/tests/unit/test_jlink.py b/tests/unit/test_jlink.py
+index 7220d65..cc70002 100644
+--- a/tests/unit/test_jlink.py
++++ b/tests/unit/test_jlink.py
+@@ -20,7 +20,11 @@ import pylink.structs as structs
+ import pylink.unlockers.unlock_kinetis as unlock_kinetis
+ import pylink.util as util
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ try:
+     import StringIO
+diff --git a/tests/unit/test_jlock.py b/tests/unit/test_jlock.py
+index 7913b86..27bd043 100644
+--- a/tests/unit/test_jlock.py
++++ b/tests/unit/test_jlock.py
+@@ -14,7 +14,11 @@
+
+ import pylink.jlock as jlock
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import errno
+ import os
+diff --git a/tests/unit/test_library.py b/tests/unit/test_library.py
+index e9f1757..41a7c4b 100644
+--- a/tests/unit/test_library.py
++++ b/tests/unit/test_library.py
+@@ -16,7 +16,11 @@ from platform import platform
+ import pylink.library as library
+ import pylink.util as util
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import unittest
+
+diff --git a/tests/unit/test_main.py b/tests/unit/test_main.py
+index 9b50396..6540c2a 100644
+--- a/tests/unit/test_main.py
++++ b/tests/unit/test_main.py
+@@ -16,7 +16,11 @@ import pylink
+ import pylink.__main__ as main
+
+ import logging
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ try:
+     import StringIO
+diff --git a/tests/unit/test_util.py b/tests/unit/test_util.py
+index c60d6da..e26f2c9 100644
+--- a/tests/unit/test_util.py
++++ b/tests/unit/test_util.py
+@@ -15,7 +15,11 @@
+ import pylink.enums as enums
+ import pylink.util as util
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ try:
+     import StringIO
+diff --git a/tests/unit/unlockers/test_unlock.py b/tests/unit/unlockers/test_unlock.py
+index e625745..68ecea2 100644
+--- a/tests/unit/unlockers/test_unlock.py
++++ b/tests/unit/unlockers/test_unlock.py
+@@ -14,7 +14,11 @@
+
+ import pylink.unlockers as unlock
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import unittest
+
+diff --git a/tests/unit/unlockers/test_unlock_kinetis.py b/tests/unit/unlockers/test_unlock_kinetis.py
+index e1c0738..e4fec2b 100644
+--- a/tests/unit/unlockers/test_unlock_kinetis.py
++++ b/tests/unit/unlockers/test_unlock_kinetis.py
+@@ -16,7 +16,11 @@ import pylink.enums as enums
+ import pylink.protocols.swd as swd
+ import pylink.unlockers as unlock
+
+-import mock
++import sys
++if sys.version_info < (3,3):
++    import mock
++else:
++    import unittest.mock as mock
+
+ import unittest
+
+--
+2.52.0

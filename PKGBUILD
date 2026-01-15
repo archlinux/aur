@@ -3,7 +3,7 @@
 pkgname=python-pylink-square
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=6
+pkgrel=8
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
 # url="https://github.com/Square/pylink"
@@ -36,8 +36,15 @@ provides=(${pkgname} pylink)
 replaces=(pylink)
 options=('!strip' '!debug')
 # source=($pkgname-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz)
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('cd4994326924f1f3e875af0d9af1cead5a016140b00d80262090965836eac6f6218fb8f04f82f0a3866e86cfc77e596993dc2413bba50362ac934fdb899470f5')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+  "0001-fix-import-mock.patch")
+sha512sums=('cd4994326924f1f3e875af0d9af1cead5a016140b00d80262090965836eac6f6218fb8f04f82f0a3866e86cfc77e596993dc2413bba50362ac934fdb899470f5'
+            'b61584eccd29d9087bf668377cd4220b0c45d00039b46bcfa1454b244a36eecaa3f5643f31adbc4c575ebe815fb119bbb92a4b926a918647bb03f0adbd49c64b')
+
+prepare() {
+  cd $_name-$pkgver
+  patch -Np1 -i ../*.patch
+}
 
 build() {
   cd $_name-$pkgver
