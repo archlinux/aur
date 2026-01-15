@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r453.9cb83c4
+pkgver=r542.bfd4785
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
@@ -22,7 +22,6 @@ optdepends=(
 	'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
 	'snap-pac: triggers Snapper to create snapshots during system updates.'
 	'rsync: Alternative method for restoring snapshots.'
-	'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
 	'xxhash: Fast hashing utility for deduplication with shorter hashes.'
 )
