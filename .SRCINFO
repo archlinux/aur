@@ -8,10 +8,6 @@ pkgbase = asus-fa401km-acpi-fix
 	license = unknown
 	depends = mkinitcpio
 	source = dsdt.aml::https://gist.githubusercontent.com/HiFiPhile/324c330b204ef038ef8b3ff2aff7bb6c/raw/791afbad504a61e28738a6ad147f08471d1a583a/dsdt.aml
-	source = acpi_override
-	source = enable-fix.sh
 	sha256sums = 71794b35aa86d3a1accc54eb8cbf93f27454386ce53551d2c579daafa9519905
-	sha256sums = 8650e21e4e96c9da7f83b267e6f057ce06cc28dfe0b6491735fef8b096e102ad
-	sha256sums = e3e80198630e9ff644651c53bd2d891f4fd8d5b8e3e3d41c4857db9d1df349ff
 
 pkgname = asus-fa401km-acpi-fix

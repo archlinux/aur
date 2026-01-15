@@ -2,13 +2,27 @@ post_install() {
     echo "========================================================================"
     echo "  华硕天选 Air 2025 (FA401KM) DSDT 修复包已安装。"
     echo ""
-    echo "  【重要步骤】"
-    echo "  为了应用修复，您需要修改 mkinitcpio 配置并重建内核。"
-    echo "  我已经为您准备了一个自动化脚本，请运行："
+    echo "  正在自动应用修复..."
     echo ""
-    echo "    sudo fa401km-fix-enable"
+
+    DROPIN_FILE="/etc/mkinitcpio.conf.d/acpi.conf"
+    HOOK_NAME="acpi_override"
+
+    # 检查 drop-in 文件是否已经存在
+    if [ -f "$DROPIN_FILE" ]; then
+        echo "drop-in 配置 $DROPIN_FILE 已存在，跳过创建。"
+    else
+        echo "正在创建 drop-in 配置文件 $DROPIN_FILE..."
+        echo "HOOKS+=(acpi_override)" > "$DROPIN_FILE"
+        echo "drop-in 配置创建完成。"
+    fi
+
+    echo "正在重建 initramfs..."
+    mkinitcpio -P
+
     echo ""
-    echo "  运行完毕后重启即可。"
+    echo "  修复完成！请重启电脑以生效。"
+    echo "  启动时间应该会从 1分钟缩短到 15秒左右。"
     echo "========================================================================"
 }
 
@@ -17,6 +31,14 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "注意：您可能需要手动从 /etc/mkinitcpio.conf 中移除 'acpi_override' hook"
-    echo "并运行 'sudo mkinitcpio -P' 来彻底清除更改。"
+    DROPIN_FILE="/etc/mkinitcpio.conf.d/acpi.conf"
+    if [ -f "$DROPIN_FILE" ]; then
+        echo "正在移除 drop-in 配置文件 $DROPIN_FILE..."
+        rm "$DROPIN_FILE"
+        echo "正在重建 initramfs..."
+        mkinitcpio -P
+        echo "清理完成。"
+    else
+        echo "未找到 drop-in 配置文件，无需清理。"
+    fi
 }
