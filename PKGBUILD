@@ -1,6 +1,6 @@
 # Maintainer: Arpan <arpanpramanikk@gmail.com>
 pkgname=alethea
-pkgver=1.5.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Agentic Digital Forensics Tool"
 arch=('any')

@@ -1,8 +1,7 @@
 pkgbase = alethea
-	pkgdesc = Agentic AI-powered Digital Forensics & Legal Evidence Platform
+	pkgdesc = Agentic Digital Forensics Tool
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/username/alethea
 	arch = any
 	license = MIT
 	makedepends = python-build
