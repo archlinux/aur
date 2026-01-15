@@ -1,7 +1,7 @@
 pkgbase = python-imgdiff
 	pkgdesc = Compare two images side-by-side
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 2.314
 	url = https://pypi.org/project/imgdiff/
 	arch = any
 	license = MIT

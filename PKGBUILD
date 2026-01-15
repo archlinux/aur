@@ -2,7 +2,7 @@
 pkgname=python-imgdiff
 _pkgbasename=${pkgname:7}
 pkgver=1.8.0
-pkgrel=2
+pkgrel=2.314
 pkgdesc='Compare two images side-by-side'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"
