@@ -2,7 +2,7 @@
 
 _pkgname=quickshell
 pkgname="$_pkgname-git"
-pkgver=0.1.0.r1.g0fb809b
+pkgver=0.2.0.r1.g783b971
 pkgrel=1
 pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
@@ -20,6 +20,7 @@ depends=(
   'libdrm'
   'mesa'
   'google-breakpad'
+	'polkit'
 )
 makedepends=(
   'spirv-tools'
