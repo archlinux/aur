@@ -1,7 +1,7 @@
 pkgbase = fastcompmgr
 	pkgdesc = An early Compton-based compositor for X11 focused on performance.
 	pkgver = 0.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/tycho-kirchner/fastcompmgr
 	arch = x86_64
 	license = MIT
