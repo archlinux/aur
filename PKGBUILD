@@ -10,7 +10,7 @@ groups=()
 depends=(qt6-base alsa-lib)
 makedepends=(git)
 optdepends=(
-	'us144mkii: us144mkii ALSA driver (it will be merged on Linux 6.18)'
+	'us144mkii: us144mkii ALSA driver (it is merged on Linux 6.18)'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
