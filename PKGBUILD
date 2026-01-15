@@ -1,6 +1,6 @@
 # Maintainer: Víctor Pont <victor at pont dot cat>
 pkgname=spotiflac-bin
-pkgver=7.0.5
+pkgver=7.0.6
 pkgrel=1
 pkgdesc="Get Spotify tracks in true FLAC from Tidal, Qobuz & Amazon Music"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('LicenseRef-unknown')
 depends=('webkit2gtk-4.1')
 options=('!strip')
 source=("$pkgname-$pkgver.AppImage::https://github.com/afkarxyz/SpotiFLAC/releases/download/v$pkgver/SpotiFLAC.AppImage")
-sha256sums=('9321146ac6cdb1d9013d11c667176757c18090cbcc16453c73ac70ea79968356')
+sha256sums=('cb6ede418362fb2b1271a3b298f3c9016f76b8a0084102ce49dc32ecb683e54e')
 
 prepare() {
     chmod +x "$pkgname-$pkgver.AppImage"
