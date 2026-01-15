@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libavif
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 pkgdesc="Library for encoding and decoding .avif files (Android ${_android_arch})"
@@ -17,12 +17,17 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-libjpeg"
          "android-${_android_arch}-libyuv")
+
+if [ "${_android_arch}" != riscv64 ]; then
+    depends+=("android-${_android_arch}-rav1e")
+fi
+
 makedepends=('android-cmake'
              "android-${_android_arch}-gdk-pixbuf2"
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/archive/v${pkgver}/libavif-${pkgver}.tar.gz")
-md5sums=('042743746b899c94b84749b852ccc018')
+md5sums=('e180551c0989f7e096a4440b89d6282d')
 
 build() {
     cd "${srcdir}/libavif-${pkgver}"
@@ -107,4 +112,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name "*.so" -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
