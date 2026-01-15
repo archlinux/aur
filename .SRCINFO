@@ -1,7 +1,7 @@
 pkgbase = asyncapi-cli-bin
 	pkgdesc = AsyncAPI CLI
 	pkgver = 5.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.asyncapi.com/tools/cli
 	arch = x86_64
 	license = Apache-2.0
