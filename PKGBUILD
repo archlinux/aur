@@ -9,7 +9,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=js8call-improved
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Continued development of the JS8Call project"
 arch=('any')
@@ -29,7 +29,7 @@ depends=(
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::https://github.com/js8call-improved/js8call-improved/archive/refs/tags/release/$pkgver.tar.gz
         js8call-desktop.patch)
-sha1sums=('01ed7619154a80abb1f01cae1b234903a3cda0f2'
+sha1sums=('a3ebe04fc89ada9fca66565f10743e585f3d26cf'
           '0a89b3ae8beaddabf0575b99139d78efdeca27ca')
 # As of 2.5.0 js8call-improved is the official upstream of js8call
 # https://github.com/JS8Call-improved/JS8Call-improved/issues/115#issuecomment-3706458851
