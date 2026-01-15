@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=spookyghost-git
-pkgver=r83.0f37165
+pkgver=r87.78d1359
 pkgrel=1
 pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
@@ -37,13 +37,14 @@ build() {
   cmake -S nCine -B nCine-build\
         -DCMAKE_BUILD_TYPE=Release\
         -DNCINE_DYNAMIC_LIBRARY=OFF\
-        -DIMGUI_VERSION_TAG=v1.91.9b-docking\
+        -DIMGUI_VERSION_TAG=v1.92.5-docking\
         -DNCINE_PREFERRED_BACKEND=SDL2\
         -DNCINE_WITH_THREADS=OFF\
         -DNCINE_WITH_WEBP=OFF\
         -DNCINE_WITH_AUDIO=OFF\
         -DNCINE_WITH_SCRIPTING_API=OFF\
-        -DNCINE_BUILD_TESTS=OFF
+        -DNCINE_BUILD_TESTS=OFF\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON
   make -C nCine-build
 
   mkdir -p build && cd build
@@ -55,6 +56,7 @@ build() {
         -DNCPROJECT_STRIP_BINARIES=ON\
         -DNCPROJECT_DATA_DIR_DIST=ON\
         -DCMAKE_INSTALL_PREFIX=/usr\
+        -DCMAKE_SKIP_INSTALL_RPATH=ON\
         -DCUSTOM_ITCHIO_BUILD=OFF
   make
 }
