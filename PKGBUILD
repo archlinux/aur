@@ -2,7 +2,7 @@
 
 _pkgbase=chordpro
 pkgname=${_pkgbase}-cli
-pkgver=6.090.0
+pkgver=6.090.1
 pkgrel=1
 _pkgdownload=App-Music-ChordPro-${pkgver}
 pkgdesc="A lyrics and chords formatting program (CLI)"
@@ -28,22 +28,21 @@ depends=(
     'perl-data-printer>=0.001001'           # Data::Printer (AUR)
     'perl-object-pad>=0.818'                # Object::Pad (AUR)
     'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
-    #'perl-harfbuzz-shaper>=0.026'          # HarfBuzz::Shaper (not found on AUR)
 )
 makedepends=('cpanminus')
 optdepends=(
-    'perl-template-toolkit>=3.010: Only used by the LaTeX backend'
-    'perl-latex-encode>=0.092.0: Only used by the LaTeX backend'
+    'perl-template-toolkit>=3.010: LaTeX backend'
+    'perl-latex-encode>=0.092.0: LaTeX backend'
     'lilypond: Embed LilyPond music writing format'
 )
 provides=(chordpro)
 conflicts=(chordpro)
 source=(
     "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
-    "chordpro.sh"
+    "${_pkgbase}.sh"
 )
-sha256sums=('57c5e656f523bbb8250faedf3e5a138f2c5ada9daffa518e0bf05587c592140f'
-            '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
+sha256sums=('6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f'
+            '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
 
 build() {
     cd "${srcdir}/${_pkgdownload}"
@@ -79,9 +78,15 @@ package() {
     install -Dm755 "${srcdir}/chordpro.sh" "${pkgdir}/usr/bin/chordpro"
     sed -i "s|/bin/true|/opt/${_pkgbase}/bin/chordpro|" "${pkgdir}/usr/bin/chordpro"
 
-    # install man page
+    # install application man page
     gzip -n -f "${srcdir}/man/man1/chordpro.1p"
     install -Dm644 "${srcdir}/man/man1/chordpro.1p.gz" "${pkgdir}/usr/share/man/man1p/chordpro.1p.gz"
+
+    # install module man pages
+    for cmd in ChordPro ChordPro::A2Crd; do
+        gzip -n -f "${srcdir}/man/man3/${cmd}.3pm"
+        install -Dm644 "${srcdir}/man/man3/${cmd}.3pm.gz" "${pkgdir}/usr/share/man/man3p/${cmd}.3pm.gz"
+    done
 
     # install license
     install -Dm644 "${srcdir}/${_pkgdownload}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
