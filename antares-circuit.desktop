@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=Antares Circuit
+GenericName=Digital Circuit Builder
+Comment=Digital circuit learning platform
+Icon=antares-circuit
+Exec=/usr/bin/antares-circuit
+Categories=Development;Education;Electronics;

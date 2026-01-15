@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+*.log
+*.jar
+src
+pkg
+
