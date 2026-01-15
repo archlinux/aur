@@ -1,7 +1,7 @@
 # Maintainer:  bipin kumar <kbipinkumar@pm.me>
 
 pkgname=pplacer
-pkgver=1.1.alpha20
+pkgver=1.1.alpha21
 pkgrel=1
 pkgdesc="Phylogenetic placement and downstream analysis"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=("${pkgname}::git+https://github.com/matsen/pplacer.git#tag=v${pkgver}"
         "mcl::git+https://github.com/fhcrc/mcl.git#commit=${_mcl_commit}"
         )
 
-sha256sums=('3e5422b358d3ef11869e7043f8273fd3a8425de6941c7c7865f97fb6b3387c59'
+sha256sums=('78138393bdabc4e821d4895866ad4a758834ad557a720c063d18949762c79733'
             'e416c1c4ba6c1ef5f1fb78b401eb9d9060d61fab5fa294d7d6734f785e7dc556')
 
 prepare() {
