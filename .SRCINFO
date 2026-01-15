@@ -22,8 +22,8 @@ pkgbase = mihomo-party-bin
 	source = mihomo-party.sh
 	sha256sums = 242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48
 	source_x86_64 = mihomo-party-1.9.0-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.0/clash-party-linux-1.9.0-amd64.deb
-	sha256sums_x86_64 = 00b0026f01fd8281fd8da40ef5cbb8d1ddeadf1b9841146b85cc6407f9869a49
+	sha256sums_x86_64 = 15cb0b44a75513e82385f00c6b80288deaa4a34f89f95a60a2c95143f813f8d4
 	source_aarch64 = mihomo-party-1.9.0-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.0/clash-party-linux-1.9.0-arm64.deb
-	sha256sums_aarch64 = 725238aa321d6569e05f168cd4994390fa46eeca83d573f55fc6c0a2650ed1de
+	sha256sums_aarch64 = 7de46decaead5978d0ae07eae786f5f7e53a9841f6a94c428a86aca85b8e16df
 
 pkgname = mihomo-party-bin

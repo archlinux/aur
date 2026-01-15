@@ -15,8 +15,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/clash-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/clash-party-linux-${pkgver}-arm64.deb")
 sha256sums=('242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48')
-sha256sums_x86_64=("00b0026f01fd8281fd8da40ef5cbb8d1ddeadf1b9841146b85cc6407f9869a49")
-sha256sums_aarch64=("725238aa321d6569e05f168cd4994390fa46eeca83d573f55fc6c0a2650ed1de")
+sha256sums_x86_64=("15cb0b44a75513e82385f00c6b80288deaa4a34f89f95a60a2c95143f813f8d4")
+sha256sums_aarch64=("7de46decaead5978d0ae07eae786f5f7e53a9841f6a94c428a86aca85b8e16df")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
