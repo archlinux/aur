@@ -1,7 +1,7 @@
 pkgbase = codebuddy-cli
 	pkgdesc = 腾讯AI编程助手 CodeBuddy CLI 工具 (@tencent-ai/codebuddy-code)
 	pkgver = 2.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = copilot.tencent.com
 	arch = any
 	license = unknown

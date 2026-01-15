@@ -1,7 +1,7 @@
 # Maintainer: Wimpy <vvinn.py[AT]gmail.com>
 pkgname=codebuddy-cli
 pkgver=2.34.0 
-pkgrel=1
+pkgrel=2
 pkgdesc="腾讯AI编程助手 CodeBuddy CLI 工具 (@tencent-ai/codebuddy-code)"
 arch=('any')
 url="copilot.tencent.com"
@@ -36,6 +36,5 @@ package() {
   cp -r . "$pkgdir/usr/lib/node_modules/@tencent-ai/codebuddy-code"
 
   mkdir -p "$pkgdir/usr/bin/"
-  ln -s /usr/lib/node_modules/@tencent-ai/codebuddy-code/bin/tcb "$pkgdir/usr/bin/tcb"
   ln -s /usr/lib/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy "$pkgdir/usr/bin/codebuddy"
 }
