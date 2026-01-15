@@ -1,0 +1,5 @@
+[qo-bin]
+source = "github"
+github = "kiki-ki/go-qo"
+use_latest_release = true
+prefix = "v"
