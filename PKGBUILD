@@ -3,7 +3,7 @@
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git     
 pkgver=1.8.0.r3.g87c6736
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/emersion/kanshi"
