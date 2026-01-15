@@ -1,19 +1,28 @@
-# Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
+# Maintainer: Edmund Lodewijks <edmund AT proteamail.com>
+# Contributor: Vincent Bernardoff <vb AT luminar.eu.org>
+
+# Note: This package installs to /usr/lib/boringssl and /usr/include/boringssl
+# to avoid conflicts with system OpenSSL. To build software against BoringSSL,
+# specify the library and include paths explicitly during configuration.
+
 pkgname=boringssl-git
-pkgver=fips.20170615.1031.g548c27646
+_pkgname=boringssl
+pkgver=0.20251124.0.174.gb648431a6e
 pkgrel=1
 pkgdesc="BoringSSL is a fork of OpenSSL that is designed to meet Google's needs"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://boringssl.googlesource.com/boringssl"
-license=('MIT')
-depends=()
-makedepends=('git' 'cmake' 'go' 'perl' 'ninja')
+license=('Apache-2.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cmake' 'go' 'perl' 'ninja' 'patchelf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
-source=('git+https://boringssl.googlesource.com/boringssl')
-noextract=()
-md5sums=('SKIP')
+source=(
+    'git+https://boringssl.googlesource.com/boringssl'
+    'boringssl.pc'
+)
+b2sums=('SKIP'
+        '299c46ea68a252e9dd33e789689255a740e69a2165ecf43158d4a159f04859bb6192cdaeb35cb77ed1435316fce55d5559c392cd7512b374d39de3c898b388ae')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -24,7 +33,17 @@ prepare() {
     cd "$srcdir/${pkgname%-git}"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=1 -GNinja ..
+    cmake \
+        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib/$_pkgname \
+        -DCMAKE_INSTALL_BINDIR=bin/$_pkgname \
+        -DCMAKE_INSTALL_INCLUDEDIR=include/$_pkgname \
+        -DCMAKE_INSTALL_RPATH='$ORIGIN/../lib/boringssl' \
+        -DBUILD_SHARED_LIBS=1 \
+        -GNinja ..
 }
 
 build() {
@@ -38,22 +57,39 @@ check() {
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$_pkgname"
+
+    # Documentation
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     for i in *.md ; do
-        install -Dm644 $i "$pkgdir/usr/share/doc/$pkgname/$i"
+        install -Dm644 "$i" "$pkgdir/usr/share/doc/$_pkgname/$i"
     done
-    install -d "$pkgdir/usr/lib"
 
-    # install -Dm644 build/crypto/libcrypto.a "$pkgdir/usr/lib/crypto/libcrypto.a"
-    install -Dm755 build/crypto/libcrypto.so "$pkgdir/usr/lib/crypto/libcrypto.so"
+    # Libraries - all under /usr/lib/boringssl/
+    install -Dm755 build/libcrypto.so "$pkgdir/usr/lib/$_pkgname/libcrypto.so"
+    install -Dm755 build/libssl.so "$pkgdir/usr/lib/$_pkgname/libssl.so"
+    install -Dm755 build/libdecrepit.so "$pkgdir/usr/lib/$_pkgname/libdecrepit.so"
+    install -Dm755 build/libpki.so "$pkgdir/usr/lib/$_pkgname/libpki.so"
+    install -Dm755 build/libboringssl_gtest.so "$pkgdir/usr/lib/$_pkgname/libboringssl_gtest.so"
 
-    # install -Dm644 build/ssl/libssl.a "$pkgdir/usr/lib/ssl/libssl.a"
-    install -Dm755 build/ssl/libssl.so "$pkgdir/usr/lib/ssl/libssl.so"
+    # Headers - under /usr/include/boringssl/
+    # BoringSSL uses include/openssl subdirectory for compatibility
+    install -d "$pkgdir/usr/include/$_pkgname"
+    cp -r include/openssl "$pkgdir/usr/include/$_pkgname/"
 
-    # install -Dm644 build/decrepit/libdecrepit.a "$pkgdir/usr/lib/decrepit/libdecrepit.a"
-    install -Dm755 build/decrepit/libdecrepit.so "$pkgdir/usr/lib/decrepit/libdecrepit.so"
+    # Binary - under /usr/bin/boringssl/
+    install -Dm755 build/bssl "$pkgdir/usr/bin/$_pkgname/bssl"
 
-    # install -Dm644 build/libboringssl_gtest.a "$pkgdir/usr/lib/libboringssl_gtest.a"
-    install -Dm755 build/libboringssl_gtest.so "$pkgdir/usr/lib/libboringssl_gtest.so"
+    echo "Fixing RPATHs with $ORIGIN..."
+
+    # Fix the binary
+    patchelf --set-rpath '$ORIGIN/../../lib/boringssl' "$pkgdir/usr/bin/$_pkgname/bssl"
+
+    # Fix the libraries
+    find "$pkgdir/usr/lib/$_pkgname" -type f -name "*.so" -exec \
+        patchelf --set-rpath '$ORIGIN' {} +
+
+    # Install pkg-config file so other apps can find this BoringSSL
+    install -Dm644 "$srcdir/$_pkgname.pc" "${pkgdir}/usr/lib/pkgconfig/"
 }
+

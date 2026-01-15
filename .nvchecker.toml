@@ -1,0 +1,6 @@
+[boringssl-git]
+source = "git"
+git = "https://boringssl.googlesource.com/boringssl.git"
+branch = "main"
+use_commit = true
+

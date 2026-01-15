@@ -1,0 +1,11 @@
+# boringssl.pc — pkg-config file for BoringSSL
+prefix=/usr
+exec_prefix=\${prefix}
+libdir=\${prefix}/lib/$_pkgname
+includedir=\${prefix}/include/$_pkgname
+
+Name: BoringSSL
+Description: BoringSSL is a fork of OpenSSL that is designed to meet Google's needs.
+Version: ${pkgver}
+Libs: -L\${libdir} -lssl -lcrypto
+Cflags: -I\${includedir}
