@@ -1,6 +1,6 @@
 pkgbase = hyprsettings-git
 	pkgdesc = Configurator for Hyprland (alpha, development version, git snapshot)
-	pkgver = 0.7.0
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/acropolis914/hyprsettings
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = hyprsettings-git
 	depends = python-rich
 	depends = webkit2gtk
 	depends = python-packaging
+	depends = python-flask
+	depends = python-dotenv
 	provides = hyprsettings
 	conflicts = hyprsettings
 	source = hyprsettings-git::git+https://github.com/acropolis914/hyprsettings.git
