@@ -37,10 +37,9 @@ pkgname=(
   linux-firmware-radeon
   linux-firmware-realtek
 )
-pkgver=20251125
-pkgrel=2
+pkgver=20260110
+pkgrel=1
 pkgdesc="Firmware files for Linux"
-pkgdesc+=' (without firmware compression for linux<5.19)'
 url="https://gitlab.com/kernel-firmware/linux-firmware"
 license=(LicenseRef-WHENCE)
 arch=(any)
@@ -55,11 +54,12 @@ options=(
   !strip
 )
 source=("git+$url.git?signed#tag=${pkgver}")
-b2sums=('690a2580d5f4fc8bafb1664c2ae39818a152a2dcdc34f345f8a1abe69ef473769da4556e80dfb50bbba05bc6a0b4186f2577b52020d1ad1bc1f4bcd1ae048453')
+b2sums=('d4239691cc875a80df29bb8ffa90d76be80d4848febd6c673be8812fefe02db57b3f6941d9a557fa5c7ba1a27bd0b54ed6a524a3c140f0133fffe12fa6d27800')
 validpgpkeys=(
   4CDE8575E547BF835FE15807A31B6BD72486CFD6 # Josh Boyer <jwboyer@fedoraproject.org>
 )
 
+pkgdesc+=' (without firmware compression for linux<5.19)'
 _pkgbase="${pkgbase}"
 pkgbase+='-uncompressed'
 _pkgname=("${pkgname[@]}")
@@ -67,6 +67,7 @@ pkgname=("${pkgname[@]/%/-uncompressed}")
 _compression='install'
 #_compression='install-xz' # slow build
 _fn_copy() {
+  local -
   set -u
   local _bo='{'
   local _f="$(declare -f "$1")"
@@ -107,21 +108,15 @@ _fn_copy() {
     _f="${_f/ replaces=/ #replaces=}"
     _f="${_f/${_bo} /${_bo} ${_c1}}"
     local _f1="${_f%${_lf}${_bc}*}"
-    local _f2="${_lf}}${_f##*${_bc}}"
+    local _f2="${_lf}${_bc}${_f##*${_bc}}"
     _f="${_f1}${_c2}${_f2}"
     #printf '%s\n' "${_fo}" "${_f}" > "ffg$1"
     eval "${_f}"
     unset -f "$1"
   fi
-  set +u
 }
 
 _backports=(
-  # https://gitlab.freedesktop.org/drm/amd/-/issues/4738
-  c092c7487eb7c3d58697f490ff605bc38f4cc947
-
-  # https://gitlab.freedesktop.org/drm/amd/-/issues/4737
-  baf6c2f67a247eba7f298ed74bc471de43ad632d
 )
 
 _reverts=(
