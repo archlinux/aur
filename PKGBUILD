@@ -1,7 +1,7 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.9.36
+pkgver=5.9.37
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("1527874d07adfc1dd3d431c478494225d7028c26e2ea912dc05b0e727c78ad02")
+sha256sums=("ebf4f82cdf3ec9e1cc3df14b1068d974a6422cad13f05fad64d0f311d7843c18")
 
 
 prepare() {
@@ -60,7 +60,12 @@ package_nekobox() {
 
     echo '#!/bin/bash -x' > "nekobox.sh"
     echo 'exec /usr/lib/NekoBox/nekobox -appdata "$@"' >> "nekobox.sh"
+
+    echo '#!/bin/bash -x' > "sing-box.sh"
+    echo 'exec /usr/lib/NekoBox/nekobox_core sing-box "$@"' >> "sing-box.sh"
+
     install -Dm755 "nekobox.sh" "${pkgdir}/usr/bin/nekobox"
+    install -Dm755 "sing-box.sh" "${pkgdir}/usr/bin/sing-box"
     install -Dm644 "nekobox.desktop" -t "${pkgdir}/usr/share/applications"
 
     cd "nekobox-unified-source-${pkgver}"
