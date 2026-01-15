@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://${pkgname}.org"
 license=(BSD-3-Clause)
 depends=(clang kokkos zlib ncurses xeus-zmq)
-makedepends=(llvm cmake cppzmq zstd-static)
+makedepends=(llvm cmake cppzmq zstd)
 checkdepends=()
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
@@ -26,7 +26,8 @@ build() {
     -DWITH_RUNTIME_LIBRARY=yes \
     -DWITH_XEUS=yes \
     -DWITH_KOKKOS=yes \
-    -DWITH_ZLIB=yes
+    -DWITH_ZLIB=yes \
+    -DWITH_ZSTD=yes
 
   cmake --build build --target all
 }
