@@ -1,10 +1,9 @@
-# Maintainer: Arpan <arpan@example.com>
+# Maintainer: Arpan <arpanpramanikk@gmail.com>
 pkgname=alethea
-pkgver=0.1.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="Agentic AI-powered Digital Forensics & Legal Evidence Platform"
+pkgdesc="Agentic Digital Forensics Tool"
 arch=('any')
-url="https://github.com/username/alethea"
 license=('MIT')
 depends=(
     'python>=3.11'
@@ -57,7 +56,7 @@ package() {
 post_install() {
     echo ""
     echo "=============================================="
-    echo "  Alethea - Digital Forensics Platform"
+    echo "  Alethea - Digital Forensics Tool"
     echo "=============================================="
     echo ""
     echo "To get started:"
