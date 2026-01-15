@@ -4,7 +4,7 @@ pkgbase='python-conllu'
 pkgname=('python-conllu')
 _module='conllu'
 pkgver='6.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="CoNLL-U Parser parses a CoNLL-U formatted string into a nested python dictionary"
 url="https://github.com/EmilStenstrom/conllu/"
 depends=('python')
@@ -23,4 +23,6 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE \
+        "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

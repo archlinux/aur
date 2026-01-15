@@ -1,7 +1,7 @@
 pkgbase = python-conllu
 	pkgdesc = CoNLL-U Parser parses a CoNLL-U formatted string into a nested python dictionary
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EmilStenstrom/conllu/
 	arch = any
 	license = MIT
