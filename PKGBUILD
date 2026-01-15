@@ -32,6 +32,9 @@ package() {
   install -Dm755 ${pkgname} \
     "${pkgdir}/usr/bin/${pkgname}"
 
+  install -Dm644 ${pkgname}.1 -t \
+    "${pkgdir}/usr/share/man/man1/"
+
   install -Dm644 LICENSE -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
