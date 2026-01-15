@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/AzPepoze/linux-wallpaperengine-gui"
 license=('MIT')
 depends=('linux-wallpaperengine' 'gtk3' 'nss' 'libxss' 'alsa-lib')
-makedepends=('git' 'npm' 'python') 
+makedepends=('git' 'npm' 'go' 'python') 
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+${url}.git")
@@ -26,8 +26,13 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
+    
+    # Set local caches for Electron and Go to avoid using global user directories
     export ELECTRON_CACHE="$srcdir/electron-cache"
     export ELECTRON_BUILDER_CACHE="$srcdir/electron-cache"
+    export GOPATH="$srcdir/go"
+    export GOCACHE="$srcdir/go-build"
+    export GOMODCACHE="$GOPATH/pkg/mod"
     
     npm install --verbose
     npm run build
@@ -55,7 +60,7 @@ Type=Application
 Categories=Utility;
 EOF
 
-    if [ -f "build/icon.png" ]; then
-        install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    if [ -f "build/frontend/icon.png" ]; then
+        install -Dm644 "build/frontend/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     fi
 }

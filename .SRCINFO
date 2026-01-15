@@ -7,6 +7,7 @@ pkgbase = linux-wallpaperengine-gui-git
 	license = MIT
 	makedepends = git
 	makedepends = npm
+	makedepends = go
 	makedepends = python
 	depends = linux-wallpaperengine
 	depends = gtk3
