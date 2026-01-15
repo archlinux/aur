@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-spikingjelly-git
-pkgver=r2247.43d7eaae
+pkgver=r2253.75272ed9
 pkgrel=1
 pkgdesc="Deep learning framework for Spiking Neural Network (SNN) based on PyTorch."
 arch=('any')
@@ -18,16 +18,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir"/spikingjelly
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir"/spikingjelly
-
-  cat <<EOF >> pyproject.toml
-
-[tool.setuptools]
-packages = ["spikingjelly"]
-EOF
 }
 
 build() {
