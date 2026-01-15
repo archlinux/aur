@@ -2,7 +2,7 @@
 
 pkgname=ampere-git
 _pkgname=ampere
-pkgver=0.1.10.r17.g4f5b20b
+pkgver=0.1.11.r17.g4f5b20b
 pkgrel=1
 pkgdesc="Ampere – a simple desktop audio player"
 arch=('any')
@@ -30,7 +30,7 @@ pkgver() {
   if git describe --tags --long &>/dev/null; then
     git describe --tags --long | sed 's/^v//;s/-/./g'
   else
-    printf "%s.r%s.g%s" "${pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.10.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
