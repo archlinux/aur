@@ -2,7 +2,7 @@
 pkgname=python-diffimg
 _pkgbasename=${pkgname:7}
 pkgver=0.3.0
-pkgrel=4
+pkgrel=4.314
 pkgdesc='Get the % difference in images + generate a diff image'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"

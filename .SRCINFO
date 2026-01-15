@@ -1,7 +1,7 @@
 pkgbase = python-diffimg
 	pkgdesc = Get the % difference in images + generate a diff image
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 4.314
 	url = https://pypi.org/project/diffimg/
 	arch = any
 	license = MIT
