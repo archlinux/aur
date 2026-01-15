@@ -8,7 +8,7 @@ pkgdesc="Typing stubs for tqdm"
 url="https://github.com/python/typeshed"
 
 pkgver=4.67.0.20250809
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("Apache-2.0")

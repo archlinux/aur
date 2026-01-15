@@ -1,7 +1,7 @@
 pkgbase = python-types-tqdm
 	pkgdesc = Typing stubs for tqdm
 	pkgver = 4.67.0.20250809
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache-2.0
