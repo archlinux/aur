@@ -1,7 +1,7 @@
 pkgbase = python-agent-client-protocol
 	pkgdesc = Python SDK for ACP clients and agents
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/agentclientprotocol/python-sdk
 	arch = x86_64
 	license = Apache-2.0
@@ -10,7 +10,6 @@ pkgbase = python-agent-client-protocol
 	makedepends = python-pytest-asyncio
 	makedepends = ruff
 	makedepends = python-dotenv
-	makedepends = prek
 	depends = python
 	depends = python-pydantic
 	source = git+https://github.com/agentclientprotocol/python-sdk.git#tag=0.7.1
