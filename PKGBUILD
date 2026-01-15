@@ -2,8 +2,8 @@
 
 _pkgname=fastcompmgr
 pkgname=${_pkgname}-dev
-pkgver=0.5.r16.gf3e63ff
-pkgrel=2
+pkgver=0.5.r18.gc9b8c3b
+pkgrel=1
 pkgdesc="An early Compton-based compositor for X11 focused on performance. (dev branch)"
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   libxdamage
   libxfixes
   libxrender
-  glibc
 )
 source=("git+${url}#branch=dev")
 sha512sums=('SKIP')
@@ -35,9 +34,12 @@ build() {
 package() {
   cd ${_pkgname}
 
-  install -Dm755 ${_pkgname} \
+  install -Dm755 ${_pkgname} -t \
     "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 LICENSE \
-    "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -Dm644 ${_pkgname}.1 -t \
+    "${pkgdir}/usr/share/man/man1/"
+
+  install -Dm644 LICENSE -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
