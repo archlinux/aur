@@ -3,7 +3,7 @@
 _pyname=blackrenderer
 pkgname=python-$_pyname
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='a Python-based renderer for OpenType COLR fonts, with multiple backends'
 arch=(any)
 url=https://github.com/BlackFoundryCom/black-renderer
