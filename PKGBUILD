@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     # arch-meson automatically sets prefix and other options
-    arch-meson --buildtype=release "${srcdir}/build" "${srcdir}/${pkgname%-git}"
+    arch-meson --buildtype=release -Dipc=disabled -Dman-pages=disabled "${srcdir}/build" "${srcdir}/${pkgname%-git}"
     # compile
     meson compile -C "${srcdir}/build" -j 0 --verbose
 }
