@@ -3,7 +3,7 @@
 # Contributor: Henri Häkkinen <henuxd@gmail.com>
 
 pkgname=pidgin-mini
-pkgver=2.14.13
+pkgver=2.14.14
 pkgrel=1
 pkgdesc="A minimal version of Pidgin for sane XMPP / IRC users"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('pidgin' 'libpurple')
 options=('!libtool')
 install=pidgin.install
 source=(https://downloads.sourceforge.net/pidgin/pidgin-${pkgver}.tar.bz2)
-sha256sums=('120049dc8e17e09a2a7d256aff2191ff8491abb840c8c7eb319a161e2df16ba8')
+sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356')
 
 build() {
   cd "$srcdir/pidgin-$pkgver"
