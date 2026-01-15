@@ -1,7 +1,7 @@
 # Maintainer: MeIsGaming <info@meisgaming.net>
 pkgname=windowpet-git
 pkgver=r101.aba8d3a
-pkgrel=1
+pkgrel=1.1
 pkgdesc="WindowPet desktop overlay application (Git Version)"
 arch=('x86_64')
 url="https://github.com/SeakMengs/WindowPet"
