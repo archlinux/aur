@@ -1,0 +1,18 @@
+pkgbase = cpx
+	pkgdesc = Cargo-like CLI for C++, compatible with CMake (vcpkg), Bazel and Meson
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/ozacod/cpx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = cmake
+	depends = vcpkg
+	depends = bazel
+	depends = meson
+	source = git+https://github.com/ozacod/cpx#tag=v1.3.5
+	sha512sums = a347c6e6e1e1f125faade3b13e2b63e49324d8fa7533323115053398f469918f9d8306ca1383e93dafe8e69a5506022ecfd26d588f5ad31a4cc4eee25fa5aa2f
+
+pkgname = cpx

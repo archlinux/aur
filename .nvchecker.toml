@@ -1,0 +1,4 @@
+[cpx]
+source = "git"
+git = "https://github.com/ozacod/cpx.git"
+prefix = "v"
