@@ -3,7 +3,7 @@
 _name='uri-ssh_git'
 pkgname="ruby-uri-ssh_git"
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Parse and build git repository url via ssh protocol.'
 arch=('any')
 url="https://github.com/packsaddle/${pkgname}"
@@ -77,4 +77,6 @@ package() {
   cd "${pkgname}"
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
+  install -D -m644 LICENSE.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }

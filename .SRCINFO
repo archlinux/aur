@@ -1,7 +1,7 @@
 pkgbase = ruby-uri-ssh_git
 	pkgdesc = Parse and build git repository url via ssh protocol.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/packsaddle/ruby-uri-ssh_git
 	arch = any
 	license = MIT
