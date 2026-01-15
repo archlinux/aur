@@ -4,7 +4,7 @@
 
 _pkgname=swayimg
 pkgname=${_pkgname}-git
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 pkgdesc='Image viewer for Wayland'
 arch=('x86_64')
