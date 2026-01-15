@@ -1,7 +1,7 @@
 pkgbase = python-types-mock
 	pkgdesc = Typing stubs for mock
 	pkgver = 5.2.0.20250924
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache-2.0

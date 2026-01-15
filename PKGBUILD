@@ -7,7 +7,7 @@ pkgdesc="Typing stubs for mock"
 url="https://github.com/python/typeshed"
 
 pkgver=5.2.0.20250924
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("Apache-2.0")
