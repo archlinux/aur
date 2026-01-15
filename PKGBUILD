@@ -11,8 +11,8 @@ options=('!emptydirs')
 depends=('perl-moose>=0.94' 'perl-aliased>=0.30' 'perl-namespace-autoclean>=0')
 makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-checkdeps>=0.002' 'perl-test-fatal>=0')
-url='http://search.cpan.org/dist/MooseX-LazyRequire'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-LazyRequire-$pkgver.tar.gz")
+url='https://metacpan.org/dist/MooseX-LazyRequire'
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-LazyRequire-$pkgver.tar.gz")
 md5sums=('89f708cadb6b524340b01e47c3c44969')
 sha512sums=('aec29204be8f023a63fa9e313ac5fa5374c985517eca5a022b4b518495b4158a71b49f36819e954a8f03cf35dd0fb5a183904797e022beeb1a35de7a5532cc14')
 _distdir="MooseX-LazyRequire-$pkgver"
