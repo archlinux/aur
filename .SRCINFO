@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync
 	pkgdesc = The tool syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = 1.19.2
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -19,12 +19,11 @@ pkgbase = limine-snapper-sync
 	optdepends = limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.
 	optdepends = snap-pac: triggers Snapper to create snapshots during system updates.
 	optdepends = rsync: Alternative method for restoring snapshots.
-	optdepends = journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.
 	optdepends = b3sum: Fast Blake3 hash function to prevent duplication.
 	optdepends = xxhash: Fast hashing utility for deduplication with shorter hashes.
 	conflicts = limine-snapper-sync-git
 	backup = etc/limine-snapper-sync.conf
-	source = limine-snapper-sync-1.19.2.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.19.2/limine-snapper-sync-1.19.2.tar.gz
-	sha256sums = b055bcd6dbb979df9f570e629145009aeb632b6fef4891d7a49d3c0cf6d4da01
+	source = limine-snapper-sync-1.20.0.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.20.0/limine-snapper-sync-1.20.0.tar.gz
+	sha256sums = 462c667bf71538158c3fac79a87ffae6477f8ac00fe89e32cc6e5e9f7b96b621
 
 pkgname = limine-snapper-sync
