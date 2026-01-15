@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=8890
-_version=1.0.8890
+_tag=8987
+_version=1.0.8987
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -28,4 +28,4 @@ package() {
 	cd "$srcdir/$pkgname"
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf
 }
-sha256sums=('8df4659dd115725e8a5a551ee0c80698117b5cc6f50cada8006eee908f5b6c29')
+sha256sums=('0554f01eada0a6674eba10885767d1977844d82b68d44b81d690d705dac284a8')
