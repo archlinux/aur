@@ -16,7 +16,7 @@ pkgbase = noon-apps
 	depends = qalculate-qt
 	depends = systemsettings
 	depends = vlc
-	depends = quickshell
+	depends = noon-qs-web
 	depends = wf-recorder
 
 pkgname = noon-apps

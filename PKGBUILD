@@ -19,7 +19,7 @@ depends=(
     'qalculate-qt'
     'systemsettings'
     'vlc'
-    'quickshell'
+    'noon-qs-web'
     'wf-recorder'
 )
 
