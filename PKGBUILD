@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=ntpd-rs-git
-pkgver=r2907.gdbca7d1a
+pkgver=r2915.gfb27e0c2
 pkgrel=1
 pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support, written in Rust.'
 url='https://github.com/pendulum-project/ntpd-rs'
