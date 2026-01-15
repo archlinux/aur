@@ -2,7 +2,7 @@
 # Contributor: Tássio Virgínio <tassiovirginio@gmail.com>
 
 pkgname=envy-tui
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A Terminal User Interface (TUI) manager for EnvyControl"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('envycontrol')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f5ece0ff3a438026d296ba1ab2f807d1a491bbc7c14ca235770bb10ebc8633e3')
+sha256sums=('e72cf0213f3e5a88d3ee07a917bc0137c912aef529b10d92af40dda6a0c261b5')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
