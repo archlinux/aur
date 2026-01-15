@@ -1,0 +1,12 @@
+pkgbase = python-fastboot-log-parser
+	pkgdesc = A parser for Fastboot logs
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/fastboot-log-parser/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/f/fastboot-log-parser/fastboot_log_parser-0.1.1.tar.gz
+	sha256sums = c52cb51cc76f83b194754d8d08c25332d07a20e440cda55cff3c16b4fc59fc82
+
+pkgname = python-fastboot-log-parser
