@@ -2,7 +2,7 @@
 
 _pkgname=seafobj
 pkgname=python-$_pkgname
-pkgver=13.0.12
+pkgver=13.0.15
 pkgrel=1
 pkgdesc="Python library for accessing seafile data model"
 arch=('any')
@@ -23,8 +23,8 @@ makedepends=('python-build'
 source=("${url}/archive/v${pkgver}-server.tar.gz"
         "pyproject.toml")
 
-sha256sums=('5781e7bf25c2c12bbd91aa0ba0a38304d68c1cc30d6e78cb374dc1f4193576bb'
-            'a50284c990ade0afcffdfc345b1a56ea811fd7ee90aad11c78718278e509e306')
+sha256sums=('7d74dd82835fc267498ffd3f01285ceeb6ccbd061c7e1306cd1d24020b019982'
+            'b37bd9d68e1c5a7cf4e4195a602637c09e54958e0934e31b359071d19bf4c514')
 
 prepare() {
   ln -sfT "$srcdir/pyproject.toml" "$srcdir/${_pkgname}-${pkgver}-server/pyproject.toml"
