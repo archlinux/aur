@@ -9,6 +9,7 @@ pkgbase = kanshi-menu
 	depends = kanshi
 	depends = fzf
 	depends = libnotify
+	depends = xdg-terminal-exec
 	optdepends = waybar: for waybar integration
 	source = kanshi-menu.sh
 	source = waybar.include

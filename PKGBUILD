@@ -1,7 +1,7 @@
 # Maintainer: vadik likholetov <vadikas@gmail.com>
 pkgname=kanshi-menu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple menu to switch kanshi profiles using fzf, with waybar integration"
 arch=('any')
 url="https://github.com/vadika/kanshi-menu"
