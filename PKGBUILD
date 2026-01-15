@@ -1,7 +1,7 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=6.6.0
+pkgver=6.6.4
 _pkgver=zena
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
@@ -13,7 +13,7 @@ depends=(
     'devhelp'
 )
 source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
-sha256sums=('a3147efaa642be111a182b917144e6a5031a588c1c808dfffc18fee6e73d3269')
+sha256sums=('7328a44bc98cc98e0d8eb21ca969a164338234452be4cab4ff02a05f98ee7671')
 
 package() {
     tar xf "${srcdir}/data.tar.xz"
