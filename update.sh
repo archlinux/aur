@@ -63,8 +63,9 @@ if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
 fi
 function pkgver() {
   cd "tmp/mozc" || exit
-  source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
-  printf "%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
+  source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' src/data/version/mozc_version_template.bzl | tr -d ' ')
+  _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$((REVISION+2))"
+  printf "%s" "${_bzr_ver}"
 }
 function pkgrel() {
     FLAG=$1
