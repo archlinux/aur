@@ -2,8 +2,8 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git     
-pkgver=1.8.0.r3.g87c6736
-pkgrel=2
+pkgver=1.8.0.r1.g02e8601
+pkgrel=3
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/emersion/kanshi"
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 source=(
-    'kanshi::git+https://gitlab.freedesktop.org/emersion/kanshi.git'
+    'kanshi::git+https://gitlab.freedesktop.org/emersion/kanshi.git#commit=02e8601705caf9c583e5240541929d6af2de640f'
     'kanshi.service'
 )
 noextract=()
