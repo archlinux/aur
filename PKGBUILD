@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
-pkgver=142.0.7444.230
+pkgver=143.0.7499.184
 pkgrel=1
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -9,40 +9,40 @@ arch=('x86_64')
 url="https://coccoc.com"
 license=('LicenseRef-coccoc')
 depends=(
-	'alsa-lib'
-	'at-spi2-core'
-	'bash'
-	'cairo'
-	'dbus'
-	'expat'
-	'gcc-libs'
-	'glib2'
-	'glibc'
-	'gtk3'
-	'hicolor-icon-theme'
-	'libcups'
-	'libdrm'
-	'libx11'
-	'libxcb'
-	'libxcomposite'
-	'libxdamage'
-	'libxext'
-	'libxfixes'
-	'libxkbcommon'
-	'libxrandr'
-	'libxss'
-	'libxtst'
-	'mesa'
-	'nspr'
-	'nss'
-	'pango'
-	'qt5-base'
-	'systemd-libs'
-	'ttf-liberation'
-	'xdg-utils'
+    'alsa-lib'
+    'at-spi2-core'
+    'bash'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'libxss'
+    'libxtst'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+    'qt5-base'
+    'systemd-libs'
+    'ttf-liberation'
+    'xdg-utils'
 )
 optdepends=(
-	'qt6-base: for Qt6 UI shim support'
+    'qt6-base: for Qt6 UI shim support'
     'pipewire: WebRTC desktop sharing under Wayland'
     'gnome-keyring: for storing passwords in GNOME keyring'
     'kwallet: for storing passwords in KWallet'
@@ -58,24 +58,24 @@ source=(
     "LICENSE.html"
 )
 sha256sums=(
-    'bd697ad32ffc80db5b0a5d764487c7dc9632e371432b9fe29959851d6a5d45de'
+    '04247ced3a030226e515eccee1faa2f3209b1e1995c5445ccb78c896b142ad6e'
     'fae326b92e97b28dafc9e1ed3958486bb0455cb5cebe3cad3484f92bde30b804'
     '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
-
+    
     # Launcher
     install -m755 coccoc-browser-stable "$pkgdir/usr/bin/coccoc-browser-stable"
-
+    
     local icon_sizes=(16 24 32 48 64 128 256)
     for size in "${icon_sizes[@]}"; do
         install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_${size}.png" \
         "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
         rm "$pkgdir/opt/coccoc/browser/product_logo_${size}.png"
     done
-
+    
     install -Dm644 LICENSE.html "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"
     rm -r "$pkgdir/etc/cron.daily/" "$pkgdir/opt/coccoc/browser/cron/"
