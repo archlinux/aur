@@ -8,11 +8,9 @@ pkgbase = kanshi-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = scdoc
-	makedepends = wlroots>=0.7
 	depends = wayland
-	depends = libvarlink
 	depends = libscfg-git
+	depends = vali
 	provides = kanshi=1.8.0
 	conflicts = kanshi
 	source = kanshi::git+https://gitlab.freedesktop.org/emersion/kanshi.git
