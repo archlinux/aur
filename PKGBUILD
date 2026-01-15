@@ -2,7 +2,7 @@
 
 pkgname=trivalent-bin
 pkgver=144.0.7559.59
-pkgrel=3
+pkgrel=4
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
 url="https://github.com/secureblue/Trivalent"
@@ -26,8 +26,7 @@ sha256sums=('51acf3d809f46f624a351fb8cab0ecb9956ee5cdf962198d532f080d784b16b1'
 
 prepare() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
-	# i dont see the cause of this, temporary fix
-	sed -i 's/set -oue pipefail/set -ou pipefail/' "${srcdir}/usr/lib/trivalent/trivalent.sh"
+	sed -i 's/\[0-9\].so/[0-9]-arch[0-9].[0-9].so/' "${srcdir}/etc/trivalent/trivalent.conf"
 }
 
 package() {
