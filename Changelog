@@ -1,3 +1,2 @@
-2.38.4-1 [2026-01-07]
-- [Desktop][Experiment] Updated the phishing detection ML model to v25.7.1 for improved accuracy.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 143.0.7499.193.
+2.39.0-1 [2026-01-14]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 144.0.7559.85.
