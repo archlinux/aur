@@ -2,8 +2,8 @@
 
 _pkgbase=chordpro
 pkgname=${_pkgbase}-gui
-pkgver=6.090.0
-pkgrel=2
+pkgver=6.090.1
+pkgrel=1
 _pkgdownload=App-Music-ChordPro-${pkgver}
 _alienwxrel=0.71
 _alienwxver=0.72
@@ -33,12 +33,11 @@ depends=(
     'perl-data-printer>=0.001001'           # Data::Printer (AUR)
     'perl-object-pad>=0.818'                # Object::Pad (AUR)
     'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
-    #'perl-harfbuzz-shaper>=0.026'          # HarfBuzz::Shaper (not found on AUR)
 )
 makedepends=('cpanminus')
 optdepends=(
-    'perl-template-toolkit>=3.010: Only used by the LaTeX backend'
-    'perl-latex-encode>=0.092.0: Only used by the LaTeX backend'
+    'perl-template-toolkit>=3.010: LaTeX backend'
+    'perl-latex-encode>=0.092.0: LaTeX backend'
     'lilypond: Embed LilyPond music writing format'
 )
 provides=(chordpro)
@@ -48,14 +47,14 @@ source=(
     "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
     "https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R${_alienwxrel}/Alien-wxWidgets-${_alienwxver}.tar.gz"
     "https://github.com/sciurius/wxPerl/releases/download/R${_wxver}/Wx-${_wxver}.tar.gz"
-    "chordpro.install"
-    "chordpro.sh"
+    "${_pkgbase}.install"
+    "${_pkgbase}.sh"
 )
-sha256sums=('57c5e656f523bbb8250faedf3e5a138f2c5ada9daffa518e0bf05587c592140f'
+sha256sums=('6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f'
             'bafd4528d4b36251e64dea072ebd5d7ffa31b94ed68d3df37b7d3c4baee2ba1e'
             '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
-            '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
+            '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
 
 build() {
     cd "${srcdir}/${_pkgdownload}"
@@ -65,7 +64,7 @@ build() {
     export PERL_MB_OPT="--install_base ${srcdir}"
     export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
 
-    # use Alien-wxWidgets and wxPerl from source
+    # install Alien-wxWidgets and wxPerl locally
     cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Alien-wxWidgets-0.72.tar.gz"
     cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Wx-${_wxver}.tar.gz"
 
@@ -82,7 +81,7 @@ check() {
     export PERL_LOCAL_LIB_ROOT="${srcdir}"
     export PERL_MB_OPT="--install_base ${srcdir}"
     export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
-    make test
+    make all test
 }
 
 package() {
@@ -98,9 +97,15 @@ package() {
         install -Dm755 "${srcdir}/chordpro.sh" "${pkgdir}/usr/bin/${cmd}"
         sed -i "s|/bin/true|/opt/${_pkgbase}/bin/${cmd}|" "${pkgdir}/usr/bin/${cmd}"
 
-        # install man page
+        # install application man pages
         gzip -n -f "${srcdir}/man/man1/${cmd}.1p"
         install -Dm644 "${srcdir}/man/man1/${cmd}.1p.gz" "${pkgdir}/usr/share/man/man1p/${cmd}.1p.gz"
+    done
+
+    # install module man pages
+    for cmd in ChordPro ChordPro::A2Crd ChordPro::Wx; do
+        gzip -n -f "${srcdir}/man/man3/${cmd}.3pm"
+        install -Dm644 "${srcdir}/man/man3/${cmd}.3pm.gz" "${pkgdir}/usr/share/man/man3p/${cmd}.3pm.gz"
     done
 
     # install desktop file
