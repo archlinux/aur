@@ -3,8 +3,8 @@
 
 pkgname=python-dict2xml
 _pkgname=${pkgname#python-}
-pkgver=1.7.7
-pkgrel=3
+pkgver=1.7.8
+pkgrel=1
 pkgdesc="Small utility to convert a python dictionary into an XML string"
 arch=('any')
 url="https://github.com/delfick/${pkgname}"
@@ -19,8 +19,8 @@ checkdepends=(
     'python-pytest'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ae47873a584921430d3b74f0f63db98b59f6cafc038b14619c65e83cf717608f')
-b2sums=('9956e30eaa379209320f3e155549788dbe9cd156167dfec175a9a8e38d161fa2b5492508fb23861896dd716edb2f5bd98895f63e12e06f9c99eca09bfc01bd31')
+sha256sums=('6638da9ad32b0f8be8336d16e0f36a9c3821145e34ed3ef4889822a9b980fb28')
+b2sums=('c9d2d0455c8f94991dbd8b9b62e482fbc84171fba57cac25ce14501f6a8e49d49277830bb33adb6346643f04c1e35ebd50912189d0105303b6efb7fdb392adf1')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}" || exit
