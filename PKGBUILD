@@ -8,7 +8,7 @@ pkgdesc="Monitor telemetry data on an AIO liquid cooler with an integrated LCD d
 arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
-depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-roboto')
+depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
@@ -30,9 +30,9 @@ build() {
     rm -rf coolerdash-*.pkg.* || true
 
     # Clean any previous builds if a Makefile exists
-    #if [[ -f Makefile || -f GNUmakefile ]]; then
-    #    make clean || true
-    #fi
+    if [[ -f Makefile || -f GNUmakefile ]]; then
+        make clean || true
+    fi
 
     # Build
     make || return 1

@@ -14,7 +14,6 @@ pkgbase = coolerdash-git
 	depends = coolercontrol
 	depends = jansson
 	depends = libcurl-gnutls
-	depends = libinih
 	depends = ttf-roboto
 	provides = coolerdash
 	conflicts = coolerdash
