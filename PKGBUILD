@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("8a7b192143e1ca647d2cdf647b4d4e2330b7bcac53840ee87db2acd755a85879"
+sha256sums=("55f60a529165109af0524a0bd1a6bbdce56b8a789f5c5c2faa96040c3cb230fd"
 "242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48")
 options=('!lto')
 
