@@ -24,7 +24,7 @@ _commit=9ac3578807a87858651e81a02586ceb947686e7c
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
