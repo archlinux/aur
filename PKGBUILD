@@ -6,7 +6,7 @@ _pkgname="shijima-qt"
 pkgname='shijima-qt-bin'
 pkgver='0.2.0alpha1'
 _pkgver='0.2.0-alpha1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=(x86_64 aarch64)
 url='https://github.com/pixelomer/Shijima-Qt'
@@ -22,7 +22,7 @@ conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=(
 	"$_pkgname.ico::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/tags/v${_pkgver}/$_pkgname.ico"
-	"LICENSE::$url/blob/v${_pkgver}/LICENSE"
+	"LICENSE::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/tags/v${_pkgver}/LICENSE"
 )
 source_x86_64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-x86_64.zip")
 source_aarch64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-arm64.zip")
@@ -69,5 +69,9 @@ EOF
 }
 sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
             'e743c5fd018acf578cee3a2599cf6837653988a22ee1c5b5325291bbd42348df')
+sha256sums_x86_64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
+sha256sums_aarch64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
+sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 sha256sums_x86_64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
 sha256sums_aarch64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
