@@ -11,8 +11,6 @@ pkgbase = pdsh
 	optdepends = perl: required by the dshbak utility
 	options = libtool
 	source = https://github.com/chaos/pdsh/releases/download/pdsh-2.36/pdsh-2.36.tar.gz
-	source = patch
 	md5sums = 1785e2d111f88d4099e1352fe375ad88
-	md5sums = 37b9f71157abe8f04083565837f69ac6
 
 pkgname = pdsh
