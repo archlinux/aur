@@ -1,7 +1,7 @@
 pkgbase = python-types-pytz
 	pkgdesc = Typing stubs for pytz
 	pkgver = 2025.2.0.20251108
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache-2.0

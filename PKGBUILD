@@ -8,7 +8,7 @@ pkgdesc="Typing stubs for pytz"
 url="https://github.com/python/typeshed"
 
 pkgver=2025.2.0.20251108
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("Apache-2.0")
