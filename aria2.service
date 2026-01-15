@@ -7,7 +7,7 @@ Wants=network-online.target
 Type=simple
 ExecStartPre=-/usr/lib/aria2cd/update-tracker aria2.conf
 # Arguments here will override config file.
-ExecStart=/usr/bin/aria2c --daemon=false
+ExecStart=/usr/bin/aria2c --daemon=false --enable-rpc=true
 # Paths
 ProtectProc=noaccess
 # Capabilities

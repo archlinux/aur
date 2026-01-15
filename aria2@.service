@@ -9,7 +9,7 @@ Type=simple
 # Update tracker
 ExecStartPre=-+/usr/lib/aria2cd/update-tracker %E/aria2cd/%i.conf
 # Arguments here will override config file.
-ExecStart=/usr/bin/aria2c --conf-path=%E/aria2cd/%i.conf --daemon=false
+ExecStart=/usr/bin/aria2c --conf-path=%E/aria2cd/%i.conf --daemon=false --enable-rpc=true
 # Paths
 ProtectProc=noaccess
 # User/Group Identity
