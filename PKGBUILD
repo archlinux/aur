@@ -72,7 +72,7 @@ sha256sums=('SKIP'
             '9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53'
             '07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d'
             'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32'
-            '6a6af80fd980ab2bfe48c4281cd0de19721d0e760e19b7ae0c29bd880b679040')
+            '94441bb276bce401c43dd571d9c6a652e25e2ba352cf3c3198c179a64077e473')
 #options=('lto')
 
 # Use musl toolchain
@@ -81,8 +81,7 @@ export CXX=musl-g++  # For libs with C++ code (e.g., libxml2, krb5)
 export LDFLAGS="-static $LDFLAGS"
 
 # to enable func64 interface in musl for 64-bit file system functions
-export CFLAGS+=' -D_LARGEFILE64_SOURCE'
-export CXXFLAGS+=' -D_LARGEFILE64_SOURCE'
+export CPPFLAGS+=' -D_LARGEFILE64_SOURCE'
 
 # https://www.openwall.com/lists/musl/2014/11/05/3
 # fstack-protector and musl do not get along but only on i686
@@ -93,8 +92,6 @@ if [[ $CARCH = i686 || $CARCH = pentium4 || $CARCH = i486 ]]; then
   export CFLAGS="${CFLAGS/-fstack-protector-strong/}"
   export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
 fi
-
-export LD=ld.lld
 
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
@@ -131,9 +128,9 @@ set_env_var() {
   TMPDIR=${srcdir}/tmp
   export PKG_CONFIG_PATH="$TMPDIR"/usr/lib/pkgconfig:/usr/lib/pacman/lib/pkgconfig:"$PKG_CONFIG_PATH"
   export PATH="$TMPDIR"/usr/bin:"$PATH"
-  export CFLAGS="$CFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
-  export CXXFLAGS="$CXXFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
+  export CPPFLAGS="$CPPFLAGS -I"$TMPDIR"/usr/include -I/usr/lib/pacman/include"
   export LDFLAGS="$LDFLAGS -L"$TMPDIR"/usr/lib -L/usr/lib/pacman/lib"
+  export LD=ld.lld
 }
 checkver() {
   test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
