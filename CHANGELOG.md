@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create unit' Drop-Ins
 
+## [2.11.5] - 2026-01-15
+
+### Fix
+
+- Show line number menu option sync with preference.
+
 ## [2.11.4] - 2026-01-14
 
 ### Added
