@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=cloudcmd
-_npmver=19.1.3
+_npmver=19.1.4
 
 pkgname=${_npmname}
 pkgdesc="Cloud Commander file manager for the web with console and editor."
@@ -22,7 +22,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('e48a22a4663718bacf3384f5bb998110b6206a0bba4190b4318a682c171e22c3326da042c50e5608a16fe62e88ee05eeb2f79365b6c7c8adbc07cf8614fc3201')
+b2sums=('a8b45565da07a473f043f8c317d5c4f9ff43819f22bba732f4360b2f91bbf1a6a01ae0607359da2cfbb021c6777fbf93fd4a59eec4c203e40176e89548c7afd5')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
