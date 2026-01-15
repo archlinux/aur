@@ -14,6 +14,8 @@ pkgbase = litra-autotoggle
 	makedepends = git
 	depends = hidapi
 	source = litra-autotoggle::git+https://github.com/timrogers/litra-autotoggle.git#commit=92d1e45300ec46bdc9455dee1cfea3adf7ef12ab
-	sha256sums = SKIP
+	source = litra-autotoggle.service::https://raw.githubusercontent.com/timrogers/litra-autotoggle/92d1e45300ec46bdc9455dee1cfea3adf7ef12ab/litra-autotoggle.service
+	sha256sums = 6545c28e6c76baf35edf1b177584940d578ae4760a4f6cd974d214c10ab6d291
+	sha256sums = 4a0ed4c8ccbd3449ba47a63c26da7c4e2964872aa674fa162c32f4127037a299
 
 pkgname = litra-autotoggle
