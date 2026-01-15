@@ -1,7 +1,7 @@
 pkgbase = kanshi-git
 	pkgdesc = Dynamic output configuration for Wayland WMs
 	pkgver = 1.8.0.r1.g02e8601
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/emersion/kanshi
 	arch = x86_64
 	license = MIT

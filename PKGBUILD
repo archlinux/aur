@@ -3,7 +3,7 @@
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git     
 pkgver=1.8.0.r1.g02e8601
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/emersion/kanshi"
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     # arch-meson automatically sets prefix and other options
-    arch-meson --buildtype=release -Dipc=disabled -Dman-pages=disabled "${srcdir}/build" "${srcdir}/${pkgname%-git}"
+    arch-meson --buildtype=release -Dman-pages=disabled "${srcdir}/build" "${srcdir}/${pkgname%-git}"
     # compile
     meson compile -C "${srcdir}/build" -j 0 --verbose
 }
