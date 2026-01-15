@@ -4,7 +4,7 @@
 
 set -u
 pkgname='bytecode-viewer'
-pkgver='2.13.1'
+pkgver='2.13.2'
 pkgrel='1'
 pkgdesc='A Java decompiler, editor, debugger, and more'
 url='https://bytecodeviewer.com'
@@ -19,21 +19,21 @@ source=(
   'bytecodeviewer.desktop'
 )
 noextract=("${source[0]##*/}")
-md5sums=('6db62ecce7c00f43668a7ce3ecb4072e'
+md5sums=('31611d3efad1d89a31c3227362bd4d6f'
          '86f6d2d12561d7098343954b5e73f0c3'
          'a3d3b9e14f92bdd44febe05d9981a685'
          'bb4cf22a28611b6b3a684ad1d0567c08')
-sha256sums=('f71c457c369e34a9724985ff3b393ccfafeabc3155b87daa1bdbc42635b7fe79'
+sha256sums=('2e23ead17825711bfbf25ffbc6c6af32ca89b057a8e7ccb856cc096ed7f83516'
             'fd1d7b95daaff6221904e76663fdb629ac15fe3737add0016729afeb07a19acd'
             '380fbc2d958fc5e0c3f7c05b21de83e3d7e956b00ab476439f893f1d10a61a3e'
             '24a537c7e5e727457007d75b49d731ae41ad2d355a806553a52cc111f80ecd53')
 
 package() {
+  local -
   set -u
   install -Dpm755 'bytecodeviewer' -t "${pkgdir}/usr/bin/"
   install -Dpm644 "Bytecode-Viewer-${pkgver}.jar" "${pkgdir}/usr/share/java/bytecodeviewer/bytecodeviewer.jar"
   install -Dpm644 'bytecodeviewer.desktop' -t "${pkgdir}/usr/share/applications/"
   install -Dpm644 'bytecodeviewer.png' -t "${pkgdir}/usr/share/pixmaps/"
-  set +u
 }
 set +u
