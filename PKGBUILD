@@ -2,7 +2,7 @@
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>, Alexander F. Rødseth <xyproto@archlinux.org>, and Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=openttd-jgrpp
-pkgver=0.68.2
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="Engine for running Transport Tycoon Deluxe with JGR's patch pack"
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=(!debug)
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-$pkgver.tar.gz")
-b2sums=('085a7124cde3317fa70ab2f9a597283ba9994b225e9b16d8579929876e8c9fe780d4d539f2e22e9887e0e1330a9b4115751d15c8ca6f47c8996b739e83ec724d')
+b2sums=('f1c3775ab2be738deacad12e7949f77dee7f3b25c87cd514a91188d8b5b658cfcdb3350ee44debd4aa12017f35a984bb39b162d2a8387f30cc201c06817acb79')
 
 _dirname=OpenTTD-patches-jgrpp
 
