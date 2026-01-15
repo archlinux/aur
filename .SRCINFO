@@ -1,6 +1,6 @@
 pkgbase = perl-harfbuzz-shaper
 	pkgdesc = Use HarfBuzz for text shaping
-	pkgver = 0.031
+	pkgver = 0.032
 	pkgrel = 3
 	url = https://metacpan.org/pod/HarfBuzz::Shaper
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = perl-harfbuzz-shaper
 	depends = perl-text-layout
 	depends = harfbuzz
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/J/JV/JV/HarfBuzz-Shaper-0.031.tar.gz
-	sha512sums = 02bb1e55a725999d002ef9a204504f4aca3c375cf1a08278ad30518de2a977a857f176de36bbc172ffc950ba3bdfc156f1d1728795588f2be5c3c6dd8d0abd26
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/HarfBuzz-Shaper-0.032.tar.gz
+	sha512sums = 4e7be5855da2cd3f86a3a5969015e572df238994ee07cc5fcde3edfaa44a71e852019d0fe3c7a83058038c864435af42047897d8f0a003b8614eef6479da43b1
 
 pkgname = perl-harfbuzz-shaper
