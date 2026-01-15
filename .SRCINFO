@@ -1,6 +1,6 @@
 pkgbase = lfortran
 	pkgdesc = Modern interactive LLVM-based Fortran compiler
-	pkgver = 0.58.0
+	pkgver = 0.59.0
 	pkgrel = 1
 	url = https://lfortran.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lfortran
 	depends = zlib
 	depends = ncurses
 	depends = xeus-zmq
-	source = lfortran-0.58.0.tar.gz::https://github.com/lfortran/lfortran/archive/v0.58.0.tar.gz
-	sha512sums = 9d382b06e27ec6d7b6c8710767ca20ea108c633163e690e031824450030d4e63ae5141b71880379ed97fc2f9b99576570de38c63e1fd02848ce471106a177c54
+	source = lfortran-0.59.0.tar.gz::https://github.com/lfortran/lfortran/archive/v0.59.0.tar.gz
+	sha512sums = 275fe8baeb4783cb70d5d6f98da7904785c9a2dd5c86444788c034b6465b47f79e3a153cfa49a41478398669028e55cff91ed0854149df17ce9a9f06404294b9
 
 pkgname = lfortran
