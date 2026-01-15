@@ -2,7 +2,7 @@
 
 pkgname=python-prometheus-flask-exporter
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Prometheus exporter for Flask applications'
 arch=('x86_64')
 url='https://github.com/rycus86/prometheus_flask_exporter'
@@ -24,4 +24,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

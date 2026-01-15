@@ -1,7 +1,7 @@
 pkgbase = python-prometheus-flask-exporter
 	pkgdesc = Prometheus exporter for Flask applications
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rycus86/prometheus_flask_exporter
 	arch = x86_64
 	license = MIT
