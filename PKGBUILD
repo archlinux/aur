@@ -2,14 +2,15 @@
 
 pkgname=scribus-unstable
 _pkgname=scribus
-pkgver=1.7.1
-pkgrel=1
+pkgver=1.7.2
+pkgrel=2
 pkgdesc="A desktop publishing program - Unstable branch 1.7.x"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
 depends=(	boost-libs
 			cairo
+			collada-dom
 			fontconfig
 			freetype2
 			graphicsmagick
@@ -49,7 +50,7 @@ optdepends=()
 conflicts=('scribus')
 provides=('scribus')
 source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('b5bf788989279ee7c6e7bda88ce8276ef93b00272248881ec166795b13ae41b0'
+sha256sums=('9d8e11cc6bac2cd96c5539efbd719222ff7f70e1c185972880d9fb3051e138d0'
             'SKIP')
 validpgpkeys=(5086B8D68E70FDDF4C40045AEF7B95E7F60166DA  # Peter Linnell <plinnell@scribus.net>
               757F5E9B13DD648887AD50092D47C099E782504E  # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
@@ -80,7 +81,7 @@ package() {
   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
   install -Dm644 scribus.desktop "${pkgdir}"/usr/share/applications/scribus.desktop
   install -d "${pkgdir}"/usr/share/pixmaps
-  ln -s /usr/share/scribus/icons/1_7_1/scribus-icon.svg "${pkgdir}"/usr/share/pixmaps/scribus.svg
+  ln -s /usr/share/scribus/icons/1_7_0/scribus-icon.svg "${pkgdir}"/usr/share/pixmaps/scribus.svg
 
   rm -rf "${pkgdir}/usr/share/scribus/dicts/hyph"
   ln -sf /usr/share/hyphen "${pkgdir}/usr/share/scribus/dicts/hyph"
