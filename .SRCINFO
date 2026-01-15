@@ -1,6 +1,6 @@
 pkgbase = coolerdash-git
 	pkgdesc = Monitor telemetry data on an AIO liquid cooler with an integrated LCD display
-	pkgver = 2.0.5.7.r7.g59bb6e0
+	pkgver = 2.0.5.9.r0.g560b4ed
 	pkgrel = 1
 	url = https://github.com/damachine/coolerdash
 	install = coolerdash.install
@@ -19,7 +19,7 @@ pkgbase = coolerdash-git
 	conflicts = coolerdash
 	replaces = coolerdash
 	backup = etc/coolercontrol/plugins/coolerdash/config.json
-	source = git+https://github.com/damachine/coolerdash.git#commit=59bb6e0c4521452e0265a8a99855cd0a577d0850
+	source = git+https://github.com/damachine/coolerdash.git#commit=560b4ed23d57c7b45a2111f234cf2dbb0592e804
 	sha256sums = SKIP
 
 pkgname = coolerdash-git
