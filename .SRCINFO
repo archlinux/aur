@@ -1,6 +1,6 @@
 pkgbase = textlint-plugin-typst
 	pkgdesc = Textlint plugin to lint Typst
-	pkgver = 1.3.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/textlint/textlint-plugin-typst
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = textlint-plugin-typst
 	makedepends = npm
 	depends = nodejs
 	depends = textlint
-	source = https://registry.npmjs.org/textlint-plugin-typst/-/textlint-plugin-typst-1.3.0.tgz
-	sha256sums = 2210e015ccc0cd8ebcc44e15cd42ea1a4a59752edc132be8242c261406d9187d
+	source = https://registry.npmjs.org/textlint-plugin-typst/-/textlint-plugin-typst-1.4.1.tgz
+	sha256sums = 4591d616cc3c0d8e8425765d59e57daa2d256ead6d868cb2d37e1a91b0b9573c
 
 pkgname = textlint-plugin-typst
