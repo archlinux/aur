@@ -12,7 +12,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=d79d644537ca197794560d4f4de5c1a000ef5477
+_commit=b95c1704ff707bdc1c68b883182bc86ce6d7d94a
 source=("git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
