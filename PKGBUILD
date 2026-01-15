@@ -5,7 +5,7 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-boost
 pkgver=1.89.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android ${_android_arch})"
 url="https://www.boost.org/"
@@ -16,9 +16,7 @@ depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-icu"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-zstd")
-makedepends=('android-cmake'
-             "android-${_android_arch}-openmpi")
-optdepends=("android-${_android_arch}-openmpi: for mpi support")
+makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/boostorg/boost/releases/download/boost-${pkgver}/boost-${pkgver}-cmake.tar.xz")
 md5sums=('537da0e22b31b8b7185cc44fdde70458')
@@ -33,7 +31,7 @@ build() {
         -S . \
         -B build-shared \
         -DBUILD_SHARED_LIBS=ON \
-        -DBOOST_ENABLE_MPI=ON \
+        -DBOOST_ENABLE_MPI=OFF \
         -DBOOST_IOSTREAMS_ENABLE_BZIP2=ON \
         -DBOOST_IOSTREAMS_ENABLE_LZMA=ON \
         -DBOOST_IOSTREAMS_ENABLE_ZLIB=ON \
@@ -54,9 +52,6 @@ build() {
         -DICU_DATA_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicudata.so" \
         -DICU_I18N_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicui18n.so" \
         -DICU_UC_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicuuc.so" \
-        -DMPI_C_HEADER_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DMPI_CXX_HEADER_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DMPI_mpi_LIBRARY="${ANDROID_PREFIX_LIB}/libmpi.so" \
         -DCMAKE_CXX_FLAGS="-DBOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS -DBOOST_STACKTRACE_LIBCXX_RUNTIME_MAY_CAUSE_MEMORY_LEAK" \
         -Wno-dev \
         ${extra_options}
@@ -87,9 +82,6 @@ build() {
         -DICU_DATA_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicudata.a" \
         -DICU_I18N_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicui18n.a" \
         -DICU_UC_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libicuuc.a" \
-        -DMPI_C_HEADER_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DMPI_CXX_HEADER_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DMPI_mpi_LIBRARY="${ANDROID_PREFIX_LIB}/libmpi.a" \
         -DCMAKE_CXX_FLAGS="-DBOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS -DBOOST_STACKTRACE_LIBCXX_RUNTIME_MAY_CAUSE_MEMORY_LEAK" \
         -Wno-dev \
         ${extra_options}
