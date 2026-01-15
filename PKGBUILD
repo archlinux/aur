@@ -1,11 +1,11 @@
 pkgname=xfce4-systemload-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.0.r70.g13247aa
+pkgver=1.4.0.r78.g73320c8
 pkgrel=1
 pkgdesc='System load plugin for the Xfce panel'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='http://goodies.xfce.org/projects/panel-plugins/xfce4-systemload-plugin'
+url='https://docs.xfce.org/panel-plugins/xfce4-systemload-plugin/start'
 groups=('xfce4-goodies')
 depends=('xfce4-panel' 'upower')
 conflicts=('xfce4-systemload-plugin')
