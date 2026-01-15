@@ -35,6 +35,6 @@ package() {
 
   install -Dm755 "src-tauri/target/release/window_pet" "$pkgdir/usr/bin/windowpet"
 
-  install -Dm644 "$srcdir/windowpet.desktop" "$pkgdir/usr/share/applications/windowpet.desktop"
+  install -Dm644 "windowpet.desktop" "$pkgdir/usr/share/applications/windowpet.desktop"
 
 }
