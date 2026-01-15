@@ -1,7 +1,7 @@
 pkgbase = windowpet-git
 	pkgdesc = WindowPet desktop overlay application (Git Version)
 	pkgver = r101.aba8d3a
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/SeakMengs/WindowPet
 	arch = x86_64
 	license = MIT
