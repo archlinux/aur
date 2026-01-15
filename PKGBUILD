@@ -5,8 +5,8 @@
 # Contributor: Jacob Alexander      haata at kiibohd dot com
 
 pkgname="python-apt"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Python interface to libapt-pkg"
 arch=('x86_64')
 _url="https://salsa.debian.org/apt-team/${pkgname}/-/archive"
@@ -20,7 +20,7 @@ source=(
   "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 sha512sums=(
-  307bc9ae5606931adef18373e0e68ac1a7a8e5915ac102d445e1ef1e26a5c38895e6b90defd66c093734482cfbe808251ef9b0dadf7c391f3eccaa6b4919041c
+  f76d625b422069889f932b9353f2a536d36fb14fd83a73dc2923a78f39936f47e347cf1ea456c64137079ea990a13655248fc780beac93629c1b1999721f492f
   )
 
 build() {
