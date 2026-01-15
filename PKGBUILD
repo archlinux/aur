@@ -2,7 +2,7 @@
 
 pkgname=ampere-git
 _pkgname=ampere
-pkgver=0.1.11
+pkgver=0.1.11-1
 pkgrel=1
 pkgdesc="Ampere – a simple desktop audio player"
 arch=('any')
