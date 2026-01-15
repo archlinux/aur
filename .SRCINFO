@@ -2,7 +2,7 @@
 
 pkgbase = geant4
 	pkgdesc = A simulation toolkit for particle physics interactions.
-	pkgver = 11.3.2
+	pkgver = 11.4.0
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4.install
@@ -39,9 +39,10 @@ pkgbase = geant4
 	optdepends = geant4-urrptdata: Particle Tables for the treatment of low-energy neutrons in the Unresolved Resonance Region (URR)
 	conflicts = geant4_devel
 	options = !emptydirs
-	source = http://geant4-data.web.cern.ch/releases/geant4-v11.3.2.tar.gz
+	options = !debug
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.4.0.tar.gz
 	source = geant4.install
-	sha256sums = 892aedd7425262a50ac3d3c7117d81c0c0da4b408c6880dbaf5478b9301e488c
+	sha256sums = ad64c96b8b3d7125e746bb97f5f55779ed594681a6a5d63c27025e7c9cef58fa
 	sha256sums = 0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058
 
 pkgname = geant4
