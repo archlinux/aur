@@ -1,12 +1,12 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 # Note: This package will not build correctly if it has already been installed.
-#       Use 'sudo pacman -Rsc langkit' before building.
+#       Use 'sudo pacman -Rc langkit' before building.
 
 pkgname=langkit
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 pkgver=26.0w
-pkgrel=1
+pkgrel=2
 epoch=1
 
 url=https://github.com/AdaCore/langkit
@@ -98,7 +98,7 @@ package()
 
 
     mv $pkgdir/usr/python/liblktlang            \
-       $pkgdir/usr/lib/python3.13/site-packages
+       $pkgdir/usr/lib/python3.14/site-packages
        
     rm -fr $pkgdir/usr/python
 
