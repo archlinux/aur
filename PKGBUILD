@@ -1,7 +1,7 @@
 # Maintainer: CWZMorro <cwzmorro@gmail.com>
 pkgname=swap-os-git
 _pkgname=swap-OS
-pkgver=2.0.0.r3.g3a7f050
+pkgver=2.0.0.r7.gee823c8
 pkgrel=1
 pkgdesc="A tool to enable seemless swap between different OS"
 arch=('any')
