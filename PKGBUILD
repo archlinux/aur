@@ -62,7 +62,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-
+  install -Dm755 build/test/testcontroller "$pkgdir/usr/bin/testcontroller"
   install -Dm644 SDL3-${pkgver}/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
