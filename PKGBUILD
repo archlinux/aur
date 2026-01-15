@@ -1,8 +1,8 @@
 # Maintainer: Don <theblackdonatello@gmail.com>
 
 pkgname=dcli-arch-git
-pkgver=0.1.0.r99.571cb85
-pkgrel=1
+pkgver=0.1.0.r105.06057ec
+pkgrel=2
 pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by NixOS"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
