@@ -1,6 +1,6 @@
 # Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 pkgname=lazycat-terminal
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A high-performance terminal emulator with tabs, splits and transparent background"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
     'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a394767939c2c1ba0d3ea880ce536c75d1ff28e563a080a6d19bf40909fa8165')
+sha256sums=('7533fbd59e1c947e1d8d664a7102f9b5d2631381d7adb120ca049a71c683b754')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -28,14 +28,8 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install binary
-    install -Dm755 build/lazycat-terminal "$pkgdir/usr/bin/lazycat-terminal"
-
-    # Install desktop file
-    install -Dm644 lazycat-terminal.desktop "$pkgdir/usr/share/applications/lazycat-terminal.desktop"
-
-    # Fix Exec path in desktop file
-    sed -i 's|Exec=.*|Exec=/usr/bin/lazycat-terminal|' "$pkgdir/usr/share/applications/lazycat-terminal.desktop"
+    # Install binary and desktop file via meson
+    meson install -C build --destdir "$pkgdir"
 
     # Install icons
     install -Dm644 icons/lazycat-terminal.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lazycat-terminal.svg"
