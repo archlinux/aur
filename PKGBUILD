@@ -3,19 +3,22 @@
 _gemname=wisper
 pkgname=ruby-$_gemname
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A micro library providing Ruby objects with Publish-Subscribe capabilities'
 arch=(any)
 url='https://github.com/krisleech/wisper'
 license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem LICENSE)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('4f8966659966059f4b190d02b3135352b28c9646')
+sha1sums=('4f8966659966059f4b190d02b3135352b28c9646' '1632e1c2bfe1caf6daefce75687140d16b26fe68')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  # from readme
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
