@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.3.1.r0.g879253d
+pkgver=2.3.1.r133.879253d
 pkgrel=1.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
@@ -19,14 +19,23 @@ source=("git+https://github.com/kcroker/dpsprep.git")
 md5sums=('SKIP')
 
 _fullsrcdir() {
-  echo "$srcdir/$_pkgbasename"
+    echo "$srcdir/$_pkgbasename"
 }
 
+# Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
 pkgver() {
     cd "$(_fullsrcdir)"
-    # Copied from https://wiki.archlinux.org/title/VCS_package_guidelines
-    # but modified to also remove the "v" prefix
-    git describe --long --tags --abbrev=7 | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^v//'
+
+    _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+    _rev="$(git rev-list --count HEAD)"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}.r${_rev}.${_hash}"
+    fi
 }
 
 check() {
