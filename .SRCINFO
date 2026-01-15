@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-icu
 	pkgdesc = International Components for Unicode library (Android aarch64)
-	pkgver = 77.1
-	pkgrel = 3
+	pkgver = 78.2
+	pkgrel = 1
 	url = https://icu.unicode.org/
 	arch = any
 	groups = android-icu
@@ -14,7 +14,7 @@ pkgbase = android-aarch64-icu
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz
-	md5sums = bc0132b4c43db8455d2446c3bae58898
+	source = https://github.com/unicode-org/icu/releases/download/release-78.2/icu4c-78.2-sources.tgz
+	md5sums = 2bf8db43ccdc837e402ac773f17c7cf8
 
 pkgname = android-aarch64-icu
