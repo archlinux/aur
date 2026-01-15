@@ -1,12 +1,12 @@
-# Maintainer: Furdox <furdox at furdox dot tk>
+# Maintainer: KittyKot
 pkgname=brawlcrate-wine-bin
 pkgver=0.42h1
-pkgrel=5
+pkgrel=6
 pkgdesc="An updated fork of BrawlBox (uses Wine)"
 arch=('x86_64')
 url="https://github.com/soopercool101/BrawlCrate"
 license=('lgpl3')
-depends=('wine' 'winetricks' 'xorg-server' 'lib32-gnutls')
+depends=('wine' 'winetricks' 'lib32-gnutls')
 source=("https://github.com/soopercool101/BrawlCrate/releases/download/v${pkgver}/BrawlCrate.v${pkgver}.x86.exe"
         "https://github.com/soopercool101/BrawlCrate/raw/master/LICENSE" "BrawlCrate256.png" "BrawlCrate128.png" "BrawlCrate64.png" "BrawlCrate48.png" "BrawlCrate32.png")
 sha256sums=('49196339e461a87008cdf10ff55b264e98980cf2736b41bacf7c154a07d594d5'
@@ -26,7 +26,7 @@ prepare() {
 
     # Setup the Wine prefix if not already done
     if [ ! -d "${_wineprefix}/drive_c" ]; then
-        WINEARCH=win32 WINEPREFIX="${_wineprefix}" wineboot --init
+        WINEARCH=wow64 WINEPREFIX="${_wineprefix}" wineboot --init
     fi
 }
 
@@ -42,7 +42,7 @@ package() {
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/brawlcrate" <<EOF
 #!/bin/bash
 export WINEPREFIX="${_wineprefix}"
-export WINEARCH=win32
+export WINEARCH=wow64
 cd /opt/brawlcrate
 wine BrawlCrate.exe "\$@"
 EOF
