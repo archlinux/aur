@@ -1,7 +1,7 @@
 # Maintainer: Needed!
 
 pkgname=samrewritten-git
-pkgver=1.0.0.beta3.r1.g94504fa
+pkgver=1.2.0.r0.g95cda4f
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "${srcdir}/SamRewritten"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {

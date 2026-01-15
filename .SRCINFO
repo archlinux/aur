@@ -1,6 +1,6 @@
 pkgbase = samrewritten-git
 	pkgdesc = Unlock achievements and stats on Steam, and more!
-	pkgver = 1.0.0.beta3.r1.g94504fa
+	pkgver = 1.2.0.r0.g95cda4f
 	pkgrel = 1
 	url = https://github.com/PaulCombal/SamRewritten
 	arch = x86_64
