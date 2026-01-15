@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-marshalparser
 _name=${pkgname#python-}
-pkgver=0.4.0 
+pkgver=0.5.0 
 pkgrel=1
 pkgdesc='Parser for byte-cache .pyc files'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d1b15012106cf1fb025e98c7df2d5d394c26e9c39bb713da4e98265b0f285b47')
+sha256sums=('63ca116b5fe06160a093fb6d86dfc934dfd3ce1b365f7f1415eb014c18cdac7a')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
