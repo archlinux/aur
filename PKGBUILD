@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libass
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 arch=('any')
 pkgdesc="A portable library for SSA/ASS subtitles rendering (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-configure'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libass/libass/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('bc419d8ba51f23790eb423e88d3fbe6e')
+md5sums=('aa3658659089a0df5f7cfcde8a8b01ee')
 validpgpkeys=(
     '5458C3100671F252B0F4C7708079D18C21AAAAFF' # Oleg Oshmyan (Chortos-2) <chortos@inbox.lv>
     '5EE63F2A71BF132CFE3567E1DFFE615F2824C720' # Oneric <oneric@oneric.de>
@@ -52,4 +52,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
