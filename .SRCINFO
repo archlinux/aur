@@ -29,8 +29,8 @@ pkgbase = mihomo-party-electron-bin
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 87fddbcd4a4cc7bda22ec4cadff0040e54395bb13184ee4688b58788c1fa7180
 	source_x86_64 = mihomo-party-1.9.0-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.0/clash-party-linux-1.9.0-amd64.deb
-	sha256sums_x86_64 = c10372c75f130a6b5206a22a0b159f3ff71f2ede79b03624c3d7f314d1588950
+	sha256sums_x86_64 = 0df73c348b1480bd2552c5459a11099e89d4da2a3a2f148a55fa564abaa143f1
 	source_aarch64 = mihomo-party-1.9.0-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.0/clash-party-linux-1.9.0-arm64.deb
-	sha256sums_aarch64 = 32153dcfb207df24a28c886d5518247578dae5e6abd140afe6c14dcc6509f1b3
+	sha256sums_aarch64 = abbfef9b0d65ab2b0f3f2e4db7a4e342d8f75ed4b29a6661e6d2d29e715158d5
 
 pkgname = mihomo-party-electron-bin
