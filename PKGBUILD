@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-alsa-lib
-pkgver=1.2.15.1
+pkgver=1.2.15.2
 pkgrel=1
 arch=('any')
 pkgdesc="An alternative implementation of Linux sound support (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-alsa-topology-conf"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/files/pub/lib/alsa-lib-${pkgver}.tar.bz2"{,.sig})
-md5sums=('9798f99fd408b009c80509fe6b508a52'
+md5sums=('67717c678ff2d297368b67353449e13b'
          'SKIP')
 validpgpkeys=('F04DF50737AC1A884C4B3D718380596DA6E59C91') # ALSA Release Team (Package Signing Key v1) <release@alsa-project.org>
 
