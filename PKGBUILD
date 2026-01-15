@@ -2,7 +2,7 @@
 
 _pyname=google_cloud_monitoring
 pkgname=python-google-cloud-monitoring
-pkgver=2.28.0
+pkgver=2.29.0
 pkgrel=1
 pkgdesc='Google Cloud Monitoring API client library'
 url=https://github.com/googleapis/google-cloud-python
@@ -23,7 +23,7 @@ makedepends=(
 )
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-b2sums=('87c0b03f97a489d980124f7cb4561b9f3ee6262abbb6da60c179ff6e7a9b9a6b0739ee735e1deac328db5aab29809431766d451f788120948356100aec0b0ec6')
+b2sums=('1ddc79ca74a635a67156027124bd68d845e118a0da7c16226265ba32c853ae0b6db2d619e687fb628d46056a4c8cb85819e5c6ed51ec18f00f7a80bc24f50b9a')
 
 build() {
   cd ${_pyname}-${pkgver}

@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-monitoring
 	pkgdesc = Google Cloud Monitoring API client library
-	pkgver = 2.28.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-google-cloud-monitoring
 	depends = python-google-auth
 	depends = python-proto-plus
 	depends = python-protobuf
-	source = python-google-cloud-monitoring-2.28.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google_cloud_monitoring/google_cloud_monitoring-2.28.0.tar.gz
-	b2sums = 87c0b03f97a489d980124f7cb4561b9f3ee6262abbb6da60c179ff6e7a9b9a6b0739ee735e1deac328db5aab29809431766d451f788120948356100aec0b0ec6
+	source = python-google-cloud-monitoring-2.29.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google_cloud_monitoring/google_cloud_monitoring-2.29.0.tar.gz
+	b2sums = 1ddc79ca74a635a67156027124bd68d845e118a0da7c16226265ba32c853ae0b6db2d619e687fb628d46056a4c8cb85819e5c6ed51ec18f00f7a80bc24f50b9a
 
 pkgname = python-google-cloud-monitoring
