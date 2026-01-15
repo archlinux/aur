@@ -1,7 +1,7 @@
 # Maintainer: Pierre <votre_email@exemple.com>
 pkgname=gamevox-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A smart screen reader for Linux gaming (Wayland/Hyprland) with local neural TTS."
 arch=('any')
 url="https://github.com/Djkawada/GameReader"
