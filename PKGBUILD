@@ -6,17 +6,20 @@
 pkgname='coturn-babysitter'
 _pkgverUpstream="0.0.3"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="coturn configuration rewriter and service reloader"
 arch=('any')
 url='https://www.eomanis.dedyn.io/permshare/coturn-babysitter/'
 license=('GPL-3.0-only')
 depends=('python>=3.13' 'python-dnspython')
-source=("https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-${_pkgverUpstream}.tar.gz")
-sha384sums=('bb25634191e2053a83de6493a74eacf9de3d68048a34fbda67f6cd982d2e6b84965c088dad4e29803f45d2558324cbf0')
+source=("https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-${_pkgverUpstream}.tar.gz"
+        "https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-${_pkgverUpstream}.tar.gz.asc")
+sha384sums=('bb25634191e2053a83de6493a74eacf9de3d68048a34fbda67f6cd982d2e6b84965c088dad4e29803f45d2558324cbf0'
+            'SKIP')
+validpgpkeys=('F57637E9E5C28F91EE64277B603EEF8FE0A99498') # eomanis <eomanis at web dot de>
 
 package () {
-    local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
+	local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
 
 	# Create a bunch of directories
 	install --mode=u=rwx,go=rx --directory \
@@ -34,5 +37,5 @@ package () {
 		"${srcRootDir}/systemd/coturn-babysitter.service" \
 		"${srcRootDir}/systemd/coturn-babysitter.timer"
 	install --mode=u=rw,go=r --target-directory="${pkgdir}/usr/lib/systemd/system/coturn-babysitter.d" -- \
-	    "${srcRootDir}/systemd/custom.conf.example"
+		"${srcRootDir}/systemd/custom.conf.example"
 }

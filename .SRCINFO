@@ -1,13 +1,16 @@
 pkgbase = coturn-babysitter
 	pkgdesc = coturn configuration rewriter and service reloader
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eomanis.dedyn.io/permshare/coturn-babysitter/
 	arch = any
 	license = GPL-3.0-only
 	depends = python>=3.13
 	depends = python-dnspython
 	source = https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-0.0.3.tar.gz
+	source = https://www.eomanis.dedyn.io/permshare/coturn-babysitter/coturn-babysitter-0.0.3.tar.gz.asc
+	validpgpkeys = F57637E9E5C28F91EE64277B603EEF8FE0A99498
 	sha384sums = bb25634191e2053a83de6493a74eacf9de3d68048a34fbda67f6cd982d2e6b84965c088dad4e29803f45d2558324cbf0
+	sha384sums = SKIP
 
 pkgname = coturn-babysitter
