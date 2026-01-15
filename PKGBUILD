@@ -2,7 +2,7 @@
 pkgname=python-unicodeit
 _pkgbasename=${pkgname:7}
 pkgver=0.7.5
-pkgrel=4
+pkgrel=4.314
 pkgdesc="Converts LaTeX tags to unicode"
 license=('MIT')
 url='https://github.com/svenkreiss/unicodeit'

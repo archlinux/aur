@@ -1,7 +1,7 @@
 pkgbase = python-unicodeit
 	pkgdesc = Converts LaTeX tags to unicode
 	pkgver = 0.7.5
-	pkgrel = 4
+	pkgrel = 4.314
 	url = https://github.com/svenkreiss/unicodeit
 	arch = any
 	license = MIT
