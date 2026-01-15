@@ -3,7 +3,7 @@
 _pkgname=tonearm
 pkgname="${_pkgname}-git"
 
-pkgver=r335.c1ac176
+pkgver=r365.035669a
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
@@ -35,6 +35,8 @@ package() {
     cd "$srcdir/${_pkgname}"
     install -Dm0755 "tonearm" "$pkgdir/usr/bin/${_pkgname}"
     install -Dm0644 "internal/icons/hicolor/256x256/apps/dev.dergs.tonearm.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+    install -Dm0644 "internal/icons/hicolor/scalable/apps/dev.dergs.tonearm.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+    install -Dm0644 "internal/icons/hicolor/symbolic/apps/dev.dergs.tonearm-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
     install -Dm0644 "internal/settings/dev.dergs.tonearm.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
     install -Dm0644 "build/dev.dergs.tonearm.desktop" -t "$pkgdir/usr/share/applications"
 }
