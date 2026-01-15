@@ -1,0 +1,20 @@
+pkgbase = python-boolshit
+	pkgdesc = Maybe is the new True. Or False.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hirsimaki-markus/boolshit
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/boolshit/boolshit-1.0.0.tar.gz
+	source = README-1.0.0.md::https://raw.githubusercontent.com/hirsimaki-markus/boolshit/main/readme.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/hirsimaki-markus/boolshit/main/unlicense
+	sha256sums = 73206243e412c18c88bb23ffef886cb814fba93363073fbd10e92d563b5da46a
+	sha256sums = 15f82faec0f768ff39c929ed698b03ee7fec2c796b4101442347294c259c03a5
+	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
+
+pkgname = python-boolshit
