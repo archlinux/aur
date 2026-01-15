@@ -3,9 +3,9 @@
 
 pkgname=briar-desktop-bin
 _pkgname=briar-desktop
-pkgver=0.6.4.beta
+pkgver=0.6.5.beta
 pkgrel=1
-_bin_ver=0.6.4
+_bin_ver=0.6.5
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 
@@ -28,7 +28,7 @@ source=(
 noextract=("${_pkgname}-linux-${_bin_ver}-${_build_type}.jar")
 
 sha256sums=(
-	"4bb3badb94966e08b889bcbbe907b7efb3468b0e2bf7e56a81087c91c94ac0ca"
+	"2b8075b6873d1ea610d60096aaa97d1c2cc1a127c1164b42411fe5a224f31c7a"
 	"95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923"
 	"965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669"
 	"3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6"
@@ -37,7 +37,7 @@ sha256sums=(
 	"2a3e508279c2a440372bf73da2c4acf56a9b7a0bcad886a74863f5a723413a93"
 	"a00d60b7aa59fb573c2e42f8bb4c23eb7038c91ea5ced47ebf9d537e3f3925cf"
 	"ac7f0dc86bce256dc80fbee7c65705b6dc9cdbd8f0ad942f0535f82b65ef2f83"
-	"72c026f6ae1069e12195b725be294e9e30baa5b7cb48b991737fde600022956e"
+	"74eeeacd5f964f45ff77b4a869b35b720899d514bc1f1b9b1e29078ef8f7066f"
 )
 
 package() {
