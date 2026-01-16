@@ -1,9 +1,9 @@
-# Maintainer: Hei-DataHub <noreply@example.com>
+# Maintainer: 0xpix
 # AUR package for Hei-DataHub
 # Installs the AppImage system-wide with desktop integration
 
 pkgname=hei-datahub
-pkgver=0.62.0
+pkgver=0.64.0-beta
 pkgrel=1
 pkgdesc="Lightweight local data hub with TUI for managing datasets"
 arch=('x86_64')
