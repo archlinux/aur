@@ -1,7 +1,7 @@
 pkgbase = duc
-	pkgdesc = A library and suite of tools for inspecting disk usage.
+	pkgdesc = A library and suite of tools for inspecting disk usage
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://duc.zevv.nl/
 	arch = i686
 	arch = x86_64
