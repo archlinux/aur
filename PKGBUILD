@@ -1,42 +1,27 @@
-# Maintainer: Evan Sosenko <razorx@evansosenko.com>
+# Maintainer: Maximilian Roos <m@maxroos.com>
 pkgname=worktrunk-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
-pkgdesc="Worktrunk is a CLI for git worktree management, designed for running AI agents in parallel."
+pkgdesc="CLI for git worktree management, designed for running AI agents in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/max-sixty/worktrunk"
 license=('MIT OR Apache-2.0')
-source_x86_64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-x86_64-unknown-linux-musl.tar.xz")
-source_aarch64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('2c1bda57baa55dee4099f834ccd0487a1da7710742355f8f3cf70087d6c707f6')
-sha256sums_aarch64=('c8272f3e19632d18dcfd6955a60ddb03d954b26fed14d74f66bfecf40902fac2')
-
-build() {
-  mkdir -p "home/.config/fish/conf.d/" \
-    "home/.config/fish/conf.d/" \
-    "home/.config/fish/completions/" \
-    "home/.config/fish/functions/"
-
-  HOME="${srcdir}/home" \
-    ZDOTDIR="${srcdir}/home" \
-    XDG_CONFIG_HOME="${srcdir}/home/.config" \
-    XDG_DATA_HOME="${srcdir}/home/.local/share" \
-    "./worktrunk-$CARCH-unknown-linux-musl/wt" config shell install -y
-}
+provides=('worktrunk')
+conflicts=('worktrunk')
+source_x86_64=("https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-aarch64-unknown-linux-musl.tar.xz")
+sha256sums_x86_64=('b98914ad472d24d6ffe09b427e5f31874df1704f3acddde713bdc69b42475226')
+sha256sums_aarch64=('d4db2f2bede9fefb2016c1c420d35e0f8acfd288d9310ce178290070ecf29f70')
 
 package() {
-  cd "./worktrunk-$CARCH-unknown-linux-musl"
-  install -Dm755 "./wt" "${pkgdir}/usr/bin/wt"
+  cd "worktrunk-$CARCH-unknown-linux-musl"
+  install -Dm755 wt "$pkgdir/usr/bin/wt"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  mkdir -p "${pkgdir}/usr/share/licenses/worktrunk/"
-  install -Dm644 ./LICENSE* "${pkgdir}/usr/share/licenses/worktrunk/"
-
-  # TODO: How to install bash completions?
-  # install -Dm644 ./home/bash "${pkgdir}/usr/share/bash-completion/completions/wt.bash"
-
-  # TODO: How to install zsh completions?
-  # install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_wt"
-
-  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "../home/.config/fish/completions/wt.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/wt.fish"
+  # Fish completions
+  # TODO: a bit hacky, but short enough that copy & paste is OK for the moment
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/wt.fish" <<'EOF'
+# worktrunk completions for fish
+complete --keep-order --exclusive --command wt --arguments "(test -n \"\$WORKTRUNK_BIN\"; or set -l WORKTRUNK_BIN (type -P wt 2>/dev/null); and COMPLETE=fish \$WORKTRUNK_BIN -- (commandline --current-process --tokenize --cut-at-cursor) (commandline --current-token))"
+EOF
 }
