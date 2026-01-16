@@ -2,9 +2,9 @@
 # Contributor: MSOB7YY <namida.coo@gmail.com>
 
 pkgname=namida-bin
-pkgver=5.6.5
-_buildnumber=260114196
-pkgrel=4
+pkgver=5.6.6
+_buildnumber=260116135
+pkgrel=1
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
@@ -62,9 +62,22 @@ package() {
   install -Dm644 "share/applications/namida.desktop" \
     "${pkgdir}/usr/share/applications/namida.desktop"
 
+  # install metainfo
+  install -Dm644 "share/metainfo/namida.metainfo.xml" \
+    "${pkgdir}/usr/share/metainfo/namida.metainfo.xml"
+
   # install icons
-  install -Dm644 "share/pixmaps/namida.png" \
+  install -Dm644 "share/icons/namida.png" \
     "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/namida.png"
+
+  install -Dm644 "share/icons/namida_512.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/namida.png"
+
+  install -Dm644 "share/icons/namida_128.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/namida.png"
+
+  install -Dm644 "share/icons/namida_256.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/namida.png"
   
   # symlink to bin
   install -dm755 "${pkgdir}/usr/bin"
