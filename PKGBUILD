@@ -1,8 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=spigot-calc
-pkgver=20240909
-_commit=f158e08
+pkgver=20260114
+_commit=ed81b83
 pkgrel=1
 pkgdesc='a command-line exact real calculator'
 arch=(i686 x86_64 aarch64)
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/spigot-$pkgver.$_commit.tar.gz"
   spigot.bash
 )
-sha256sums=('f2b7b8b9b0e0b138dcfd6ac4eb46fa79706b1842522894c45ddfd731d27bf673'
+sha256sums=('40a1bcfc52d6c581ae67b2a1456ec9f28b959789a00faf487cd06b4585576e67'
             '6b1c50b816fdec961142e3a8fedffe160248bda463092708e812459909715781')
 
 build() {

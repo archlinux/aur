@@ -1,6 +1,6 @@
 pkgbase = spigot-calc
 	pkgdesc = a command-line exact real calculator
-	pkgver = 20240909
+	pkgver = 20260114
 	pkgrel = 1
 	url = https://www.chiark.greenend.org.uk/~sgtatham/spigot
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = spigot-calc
 	depends = gcc-libs
 	provides = spigot
 	conflicts = spigot
-	source = spigot-calc-20240909.tar.gz::https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot-20240909.f158e08.tar.gz
+	source = spigot-calc-20260114.tar.gz::https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot-20260114.ed81b83.tar.gz
 	source = spigot.bash
-	sha256sums = f2b7b8b9b0e0b138dcfd6ac4eb46fa79706b1842522894c45ddfd731d27bf673
+	sha256sums = 40a1bcfc52d6c581ae67b2a1456ec9f28b959789a00faf487cd06b4585576e67
 	sha256sums = 6b1c50b816fdec961142e3a8fedffe160248bda463092708e812459909715781
 
 pkgname = spigot-calc
