@@ -4,12 +4,12 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc="A CLI tool written in Zig that displays random albums in the terminal"
 arch=('x86_64')
-url="https://github.com/StuffedRat46810/albumfetch-zig"
+url="https://github.com/StuffedRat46810/albumfetch"
 license=('MIT')
 depends=('glibc')
 makedepends=('zig')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('44f4110431d7efb8bccc4efc8fb0d26c8367049a154bceb1af9b5079aafc6264')
+sha256sums=('c65508e70704ed4533a819f963588fd85bced82d5b815e0acf4301abf8d948d5')
 
 build() {
   cd "${pkgname}-${pkgver}"
