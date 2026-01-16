@@ -1,0 +1,49 @@
+post_install() {
+    # Create Udev Rule
+    echo Creating udev rule...
+    sudo mkdir -p /etc/udev/rules.d/
+    sudo tee /etc/udev/rules.d/99-linuxmix.rules > /dev/null <<EOF
+    KERNEL=="hidraw*", ATTRS{idVendor}=="$ss_vendor_id", MODE="0640", GROUP="audio"
+EOF
+
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+
+    # Create Service Unit File
+    echo Creating service unit file...
+    sudo mkdir -p /usr/lib/systemd/user/
+    sudo tee /usr/lib/systemd/user/linuxmix.service > /dev/null <<EOF
+    [Unit]
+    Description=Service to split SteelSeries headphone audio tracks programmatically
+    ConditionUser=!root
+
+    [Service]
+    ExecStart=/usr/bin/linuxmix
+    Restart=always
+
+    [Install]
+    WantedBy=default.target
+EOF
+
+    # Refresh Systemd
+    echo Reloading systemd daemon for real users...
+    for U in $(ls /home); do
+	    systemctl -M "$U@.host" --user daemon-reload
+    done
+}
+
+post_remove() {
+    # Delete Udev Rule
+    echo Removing udev rule...
+    sudo rm /etc/udev/rules.d/99-linuxmix.rules
+
+    # Delete Service Unit File
+    echo Deleting service unit file...
+    sudo rm /usr/lib/systemd/user/linuxmix.service
+
+    # Refresh Systemd
+    echo Reloading systemd daemon for real users...
+    for U in $(ls /home); do
+	    systemctl -M "$U@.host" --user daemon-reload
+    done
+}
