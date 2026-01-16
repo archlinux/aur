@@ -1,0 +1,21 @@
+pkgbase = deadlock-server-picker
+	pkgdesc = A native Linux tool to block/unblock Deadlock game server relays using iptables
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/shibne/DeadlockServerPicker-linux
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = iptables
+	optdepends = nftables: alternative firewall backend (modern replacement for iptables)
+	optdepends = bash-completion: for bash shell completions
+	optdepends = fish: for fish shell completions
+	source = deadlock-server-picker-1.2.0.tar.gz::https://github.com/shibne/DeadlockServerPicker-linux/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = deadlock-server-picker
