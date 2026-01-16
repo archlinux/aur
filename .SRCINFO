@@ -10,6 +10,7 @@ pkgbase = hyprkcs-git
 	makedepends = pkgconf
 	depends = gtk4
 	depends = libadwaita
+	depends = gtk4-layer-shell
 	depends = glibc
 	depends = gcc-libs
 	provides = hyprkcs
