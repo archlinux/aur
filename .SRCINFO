@@ -1,0 +1,25 @@
+pkgbase = terminal-ai
+	pkgdesc = Unopinionated AI for the Shell. A lightweight AI CLI for scripts, pipelines, and automation, with a universal client for MCP, A2A, and other AI protocols.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/dwmkerr/terminal-ai
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	depends = bash
+	depends = python
+	depends = libx11
+	provides = terminal-ai
+	replaces = nodejs-terminal-ai
+	noextract = terminal-ai-0.14.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = terminal-ai-0.14.0.tgz::https://registry.npmjs.org/@dwmkerr/terminal-ai/-/terminal-ai-0.14.0.tgz
+	b2sums = c8bc3ff775149a305eb0d1435ab723e05d4910bf1650cf999dd0c162b0951f3ee73206241e5959878b97153d3a297ccff7ecb8c6b58037581c75ca8609d50e33
+
+pkgname = terminal-ai

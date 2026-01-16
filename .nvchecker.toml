@@ -1,0 +1,3 @@
+[terminal-ai]
+source = "npm"
+npm = "@dwmkerr/terminal-ai"
