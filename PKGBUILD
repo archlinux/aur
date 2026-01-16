@@ -3,7 +3,7 @@
 
 _pkgname=wuwa-downloader
 pkgname="$_pkgname-git"
-pkgver=0.2.0.r14.gc1ef7f1
+pkgver=0.2.1.r0.g2223c44
 pkgrel=1
 pkgdesc='Rust-powered Wuthering Waves downloader with multi-CDN support, checksum verification, and real-time progress tracking.'
 url='https://github.com/yuhkix/wuwa-downloader'
@@ -11,8 +11,9 @@ arch=('x86_64')
 license=('MIT')
 provides=('wuwa-downloader')
 conflicts=('wuwa-downloader')
-depends=('openssl')
+depends=()
 makedepends=('cargo')
+options=('!lto')
 
 source=('git+https://github.com/yuhkix/wuwa-downloader.git')
 sha256sums=('SKIP')
