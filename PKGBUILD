@@ -2,7 +2,7 @@
 
 pkgname=mintcommon
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Python modules and utilities for Linux Mint tools"
 arch=('any')
 url="https://github.com/linuxmint/mintcommon"
@@ -18,7 +18,7 @@ package() {
   # Install the estructure of usr/
   mkdir --verbose -p  "${pkgdir}/usr"
   cp --verbose -r usr/* "${pkgdir}/usr/"
-  mv --verbose "${pkgdir}/usr/lib/python3" "${pkgdir}/usr/lib/python3.13"
+  mv --verbose "${pkgdir}/usr/lib/python3" "${pkgdir}/usr/lib/python3.14"
 
   
   # Install the aditionals

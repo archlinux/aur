@@ -1,7 +1,7 @@
 pkgbase = mintcommon
 	pkgdesc = Common Python modules and utilities for Linux Mint tools
 	pkgver = 2.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/mintcommon
 	arch = any
 	license = GPL-3.0
