@@ -1,7 +1,7 @@
 # Maintainer: Lukas Spies <lukas (at) photoqt _dot_ org>
 
 pkgname=photoqt-extensions
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="Extensions for PhotoQt image viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('photoqt-extensions-debug')
 depends=('exiv2' 'imagemagick')
 makedepends=('cmake' 'qt6-tools')
 source=(https://photoqt.org/downloads/extensions/$pkgname-$pkgver.tar.gz)
-sha256sums=('7ceb4dd095167ee3e082a84b7478e13d5fe7fd07f9735a9d563825e290a99774')
+sha256sums=('3d03546a304bd494e49aaac8748b73decac0bd19ebf8d66e049fb599af25d541')
 install="photoqt-extensions.install"
 
 # NOTE
