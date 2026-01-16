@@ -4,7 +4,7 @@
 pkgname=namida-bin
 pkgver=5.6.5
 _buildnumber=260114196
-pkgrel=2
+pkgrel=3
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
@@ -14,15 +14,13 @@ provides=(namida)
 conflicts=(namida)
 makedepends=()
 source=("namida-v${pkgver}-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/${pkgver}-beta%2B${_buildnumber}/namida-v${pkgver}-beta.linux.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a823f5de252f70327c8a9531efa387c2fab19b4e1e19aa6aa22baae5ee29acaf')
 
 package() {
   cd "${srcdir}"
   
   # install namida
-  if [ -f "namida" ]; then
-    install -Dm755 "namida" "${pkgdir}/opt/namida/namida"
-  fi
+  install -Dm755 "namida" "${pkgdir}/opt/namida/namida"
   
   # install /bin
   if [ -d "bin" ]; then
@@ -61,16 +59,12 @@ package() {
   fi
   
   # install desktop file
-  if [ -f "share/applications/namida.desktop" ]; then
-    install -Dm644 "share/applications/namida.desktop" \
-      "${pkgdir}/usr/share/applications/namida.desktop"
-  fi
-  
-  # install icon
-  if [ -f "share/pixmaps/namida.png" ]; then
-    install -Dm644 "share/pixmaps/namida.png" \
+  install -Dm644 "share/applications/namida.desktop" \
+    "${pkgdir}/usr/share/applications/namida.desktop"
+
+  # install icons
+  install -Dm644 "share/pixmaps/namida.png" \
       "${pkgdir}/usr/share/pixmaps/namida.png"
-  fi
   
   # symlink to bin
   install -dm755 "${pkgdir}/usr/bin"
