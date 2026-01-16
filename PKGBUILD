@@ -4,7 +4,7 @@
 
 
 pkgrel=1
-pkgver=0.9.7
+pkgver=0.9.8
 _name="ureminder"
 pkgname="$_name"
 pkgdesc='Reminds to upgrade Arch Linux by desktop-messages, shows Arch Linux News and keeps package mirrors and cache healthy'
