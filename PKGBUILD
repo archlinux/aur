@@ -1,9 +1,10 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
-# Maintainer: Elia s. <elia.defcon7@gmail.com>
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Elia s. <elia.defcon7@gmail.com>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pencil-git
-pkgver=3.0.3.r167.g043ca48
+pkgver=3.1.1.r30.g5a81278
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool"
 arch=('i686' 'x86_64')
