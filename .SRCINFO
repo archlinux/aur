@@ -1,0 +1,21 @@
+pkgbase = balatro-mod-manager-bin
+	pkgdesc = A mod manager for Balatro - easily install and manage mods for the popular roguelike deckbuilding game
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/skyline69/balatro-mod-manager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = discord: Discord Rich Presence support
+	provides = balatro-mod-manager
+	provides = bmm
+	conflicts = balatro-mod-manager
+	conflicts = bmm
+	options = !strip
+	options = !debug
+	source = balatro-mod-manager-0.3.6.deb::https://github.com/skyline69/balatro-mod-manager/releases/download/v0.3.6/Balatro.Mod.Manager_0.3.6_amd64.deb
+	sha256sums = a9930bc92253fdc7e2f7141f08581344284b75187ad2bb259c31ae26561e179b
+
+pkgname = balatro-mod-manager-bin
