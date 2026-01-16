@@ -4,7 +4,7 @@
 pkgname=namida-bin
 pkgver=5.6.6
 _buildnumber=260116135
-pkgrel=1
+pkgrel=2
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
