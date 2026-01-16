@@ -13,8 +13,7 @@ sha256sums=('c65508e70704ed4533a819f963588fd85bced82d5b815e0acf4301abf8d948d5')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  # Building as ReleaseSafe as recommended in your README
-  zig build -Doptimize=ReleaseSafe --prefix /usr
+  zig build -Doptimize=ReleaseSafe
 }
 
 package() {
