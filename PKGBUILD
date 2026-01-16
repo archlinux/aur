@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.6.1.r0.g0000000
+pkgver=0.6.2.r0.g0000000
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ pkgver() {
         count="0"
         hash="unknown"
     fi
-    echo "0.6.1.r${count}.g${hash}"
+    echo "0.6.2.r${count}.g${hash}"
 }
 
 build() {
