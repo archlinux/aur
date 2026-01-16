@@ -112,7 +112,6 @@ check() {
 	PATH="$PWD/target/release:$PATH"
 	cargo test \
 		--frozen \
-		--release \
 		"${_test_features[@]/#/--features=}" \
 		-- \
 		"${_test_skips[@]/#/--skip=}" \
