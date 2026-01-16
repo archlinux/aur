@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r72382.8c8961171c4
+pkgver=r74110.488fd52039a
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -30,6 +30,7 @@ depends=(
   qt6-tools
   qt6-wayland
   sdl3
+  simdjson
   sqlite
   ttf-liberation
   woff2
