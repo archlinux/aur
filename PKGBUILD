@@ -3,7 +3,7 @@
 pkgbase=wyc
 pkgname=wyc
 pkgver=7
-pkgrel=5
+pkgrel=7
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
@@ -30,7 +30,7 @@ source=(
     "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
 sha256sums=('54ddf2a5a299b31307de14ab80c67a71e7d04d0a74a2dbf7a6d5e5f437c493b4'
-            '58a01c4fd5108f359d8d1a4ce7052e935e0ee6faff6c7b58991835a7e10b59bd'
+            '6f88b845cfe875e6316a1679934a541548e23adf1947b41e73de376761ceee8b'
             '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
             'a26b4a1ce6f1e59b5a9e0eb87880e5fb8e1472ad302c749a954d1d923a0e941a'
