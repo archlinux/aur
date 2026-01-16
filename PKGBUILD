@@ -1,5 +1,5 @@
 pkgname=kangaroo
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Pollard's Kangaroo ECDLP solver for secp256k1 using Vulkan/Metal/DX12 compute"
 arch=('x86_64')
@@ -19,12 +19,12 @@ prepare() {
 build() {
   cd "$pkgname"
   export CFLAGS+=" -ffat-lto-objects"
-  cargo build --release --locked --offline
+  cargo build --release --locked --offline --all-features
 }
 
 check() {
   cd "$pkgname"
-  cargo test --locked --offline
+  cargo test --locked --offline --all-features
 }
 
 package() {
