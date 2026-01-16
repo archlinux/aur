@@ -21,7 +21,7 @@ pkgver="${_basever}.${_patchlevel}"
 pkgrel='1'
 pkgdesc='The GNU Bourne Again shell'
 arch=('x86_64')
-url='http://www.gnu.org/software/bash/bash.html'
+url='https://www.gnu.org/software/bash/bash.html'
 license=('GPL')
 #groups=('base')
 depends=('glibc' 'ncurses')
@@ -123,6 +123,7 @@ sha256sums=('d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb'
             '4fec236f3fbd3d0c47b893fdfa9122142a474f6ef66c20ffb6c0f4864dd591b6')
 
 prepare() {
+  local -
   set -u
   cd "${_srcdir}"
 
@@ -146,10 +147,10 @@ prepare() {
       -i 'expr.c'
     true sed -e '/evalexp/ s:intmax_t:int_fast32_t:g' -i 'externs.h'
   fi
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_srcdir}"
 
@@ -166,7 +167,7 @@ build() {
       CFLAGS="${CFLAGS//-march=x86-64/-march=i686}"
       LDFLAGS+=' -m32'
     fi
-    CFLAGS+=' -Wno-implicit-function-declaration'
+    CFLAGS+=' -Wno-implicit-function-declaration -std=gnu89'
     local _cfg=(
       --prefix='/usr'
       --with-curses
@@ -194,19 +195,18 @@ build() {
   fi
   set -x
   make -s "${_mflags[@]}"
-  set +x
-  set +u
 }
 
 check() {
+  local -
   set -u
   if [ "${_opt_sig}" -ne 0 ]; then
     make -j1 -C "${_srcdir}" check
   fi
-  set +u
 }
 
 package() {
+  local -
   set -u
 
   cd "${_srcdir}"
@@ -227,6 +227,5 @@ package() {
     install -Dpm644 'dot.bash_profile' "${pkgdir}/etc/skel/.bash_profile"
     install -Dpm644 'dot.bash_logout' "${pkgdir}/etc/skel/.bash_logout"
   fi
-  set +u
 }
 set +u
