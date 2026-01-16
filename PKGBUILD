@@ -3,18 +3,17 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-xml-feed'
-pkgver='0.65'
+pkgver='1.0.0'
 pkgrel='1'
 pkgdesc="Syndication feed parser and auto-discovery"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
-depends=('perl-class-errorhandler' 'perl-feed-find' 'perl-datetime-format-flexible' 'perl-datetime-format-natural' 'perl-datetime-format-mail' 'perl-datetime-format-w3cdtf' 'perl-html-parser' 'perl-libwww' 'perl-uri-fetch' 'perl-xml-atom>=0.38' 'perl-xml-libxml>=1.66' 'perl-xml-rss>=1.47')
-makedepends=()
+depends=('perl-datetime-format-iso8601' 'perl-class-errorhandler' 'perl-feed-find' 'perl-datetime-format-flexible' 'perl-datetime-format-natural' 'perl-datetime-format-mail' 'perl-datetime-format-w3cdtf' 'perl-html-parser' 'perl-libwww' 'perl-uri-fetch' 'perl-xml-atom>=0.38' 'perl-xml-libxml>=1.66' 'perl-xml-rss>=1.47')
+makedepends=('perl-test-hasversion' 'perl-test-pod-coverage' 'perl-test-pod')
 url='http://search.cpan.org/dist/XML-Feed'
-source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-${pkgver}.tar.gz")
-sha256sums=('98baeba339610d82d020bd400f81380bd33ae7d90a21df250b6f5180a78e230b')
-_distdir="XML-Feed-${pkgver}"
+source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-v${pkgver}.tar.gz")
+_distdir="XML-Feed-v${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -48,3 +47,4 @@ package() {
 # sh-basic-offset: 2
 # End:
 # vim:set ts=2 sw=2 et:
+sha256sums=('80d093ffbcaaeaa71f437758d010d7e748ec76d1f3e30e742354572cb725b1cc')
