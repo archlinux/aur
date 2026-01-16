@@ -5,7 +5,7 @@
 
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
-pkgver=r1940.c1ee441
+pkgver=r1941.6606669
 pkgrel=2
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
@@ -33,12 +33,11 @@ depends=(
 )
 makedepends=(
     'extra-cmake-modules'
-    'cmake'
     'git'
     'qt6-tools'
 )
 source=(
-    git+https://invent.kde.org/plasma/plasma-login-manager
+    git+https://invent.kde.org/plasma/plasma-login-manager.git/
 )
 b2sums=('SKIP')
 provides=(display-manager)
@@ -47,7 +46,6 @@ backup=(
     'usr/lib/pam.d/plasmalogin'
     'usr/lib/pam.d/plasmalogin-autologin'
     'usr/lib/pam.d/plasmalogin-greeter'
-    'usr/lib/plasma-login/defaults.conf'
     'usr/share/plasmalogin/scripts/wayland-session'
     'usr/share/plasmalogin/scripts/Xsession'
     'usr/share/plasmalogin/scripts/Xsetup'
@@ -65,9 +63,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DINSTALL_PAM_CONFIGURATION=arch \
-        -DSESSION_COMMAND=/usr/share/plasmalogin/scripts/Xsession \
-        -DWAYLAND_SESSION_COMMAND=/usr/share/plasmalogin/scripts/wayland-session \
-        -DBUILD_TESTING=OFF \
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=plasmalogin_org.freedesktop.DisplayManager.conf \
         -Wno-dev
@@ -78,34 +73,6 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    # Create directory for default configuration
-    install -dm755 "$pkgdir/usr/lib/plasma-login"
-
-    "$pkgdir"/usr/bin/plasmalogin --example-config > "$pkgdir"/usr/lib/plasma-login/defaults.conf
-
-    # Set correct PATH in /usr/lib/plasma-login/defaults.conf
-    sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/plasma-login/defaults.conf
-
-    # Append missing critical settings (based on SDDM configuration on Arch Linux)
-    # Add to [General] section
-    sed -i '/^\[General\]/a DisplayServer=wayland' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[General\]/a HaltCommand=/usr/bin/systemctl poweroff' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[General\]/a RebootCommand=/usr/bin/systemctl reboot' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[General\]/a Numlock=none' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-
-    # Add to [Wayland] section  
-    sed -i '/^\[Wayland\]/a CompositorCommand=kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[Wayland\]/a EnableHiDPI=true' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[Wayland\]/a SessionCommand=/usr/share/plasmalogin/scripts/wayland-session' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[Wayland\]/a SessionDir=/usr/share/wayland-sessions' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-
-    # Add to [X11] section
-    sed -i '/^\[X11\]/a DisplayCommand=/usr/share/plasmalogin/scripts/Xsetup' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[X11\]/a DisplayStopCommand=/usr/share/plasmalogin/scripts/Xstop' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[X11\]/a SessionCommand=/usr/share/plasmalogin/scripts/Xsession' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-    sed -i '/^\[X11\]/a SessionDir=/usr/share/xsessions' "$pkgdir"/usr/lib/plasma-login/defaults.conf
-
-    # Install license files (note the $_pkgname subdirectory)
     install -Dm644 "$srcdir/$_pkgname"/LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"/
     install -Dm644 "$srcdir/$_pkgname"/LICENSE.CC-BY-3.0 -t "$pkgdir"/usr/share/licenses/"$pkgname"/
 
