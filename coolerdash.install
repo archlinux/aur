@@ -65,8 +65,14 @@ post_install() {
     # Ensure plugin directory files have correct permissions
     if [ -d /etc/coolercontrol/plugins/coolerdash ]; then
         chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
-        chmod 644 /etc/coolercontrol/plugins/coolerdash/* 2>/dev/null || true
-        chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.md 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/VERSION 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/LICENSE 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.toml 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.png 2>/dev/null || true
+        chmod 666 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/ui 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/ui/* 2>/dev/null || true
         echo "Plugin directory permissions configured"
     fi
 
@@ -94,8 +100,14 @@ post_upgrade() {
     # Ensure plugin directory files have correct permissions after upgrade
     if [ -d /etc/coolercontrol/plugins/coolerdash ]; then
         chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
-        chmod 644 /etc/coolercontrol/plugins/coolerdash/* 2>/dev/null || true
-        chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.md 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/VERSION 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/LICENSE 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.toml 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.png 2>/dev/null || true
+        chmod 666 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/ui 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/ui/* 2>/dev/null || true
         echo "Plugin directory permissions configured"
     fi
 
