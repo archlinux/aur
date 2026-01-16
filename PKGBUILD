@@ -1,14 +1,15 @@
 # Maintainer: Birbwell <jmbirdwell.us@gmail.com>
 
 pkgname=linuxmix-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
 
 pkgdesc="Implements SteelSeries' ChatMix feature in Linux."
 
-sources=("linuxmix::git+https://codeberg.org/Birbwell/linuxmix")
+source=("linuxmix::git+https://codeberg.org/Birbwell/linuxmix")
+sha256sums=(SKIP)
 
 depends=(pipewire-pulse)
 makedepends=(cargo)
