@@ -1,7 +1,7 @@
 pkgbase = klar
 	pkgdesc = Minimalist OSD that shows visual indicators for brightness, audio, and power events
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isaksamsten/klar
 	arch = any
 	license = MIT
