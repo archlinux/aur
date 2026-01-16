@@ -1,6 +1,6 @@
 pkgbase = ccstudio
 	pkgdesc = Texas Instruments Code Composer Studio IDE
-	pkgver = 20.3.0.00014
+	pkgver = 20.4.0.00013
 	pkgrel = 1
 	url = http://www.ti.com/tool/ccstudio
 	install = ccstudio.install
@@ -23,12 +23,12 @@ pkgbase = ccstudio
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.3.0/CCS_20.3.0.00014_linux.zip
+	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.4.0/CCS_20.4.0.00013_linux.zip
 	source = LICENSE
 	source = 61-msp430uif.rules
 	source = 71-sd-permissions.rules
-	sha256sums = eb36576473a1e245efc6157869dbd361980c6e32a2f91da8eaadde8aa7db9909
-	sha256sums = adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076
+	sha256sums = 80910ef3c5027ce9345add406b4a2e54f27fe6044aa5b81068eb2761c11c8e49
+	sha256sums = ceea993bfef31bda1cf57c63d8d4be770fbf1ba7a6c9ec425e55c3a39a1862e1
 	sha256sums = 97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db
 	sha256sums = ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a
 

@@ -4,8 +4,8 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=20.3.0
-_bldver=00014
+_semver=20.4.0
+_bldver=00013
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -28,8 +28,8 @@ source=(
 )
 
 sha256sums=(
-    'eb36576473a1e245efc6157869dbd361980c6e32a2f91da8eaadde8aa7db9909'
-    'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
+    '80910ef3c5027ce9345add406b4a2e54f27fe6044aa5b81068eb2761c11c8e49'
+    'ceea993bfef31bda1cf57c63d8d4be770fbf1ba7a6c9ec425e55c3a39a1862e1'
     '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
     'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a'
 )
@@ -65,10 +65,10 @@ build() {
 package() {
     # correct the files that refer to the srcdir because the setup didn't run under fakeroot
     sed -i "s#$srcdir/$_installdir##g" "$srcdir/$_installpath/$_desktop"
-    find $srcdir/$_installpath/ccs/install_scripts/uninstall_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/install_scripts/install_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
+    find $srcdir/$_installpath/ccs/install_scripts/uninstall_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
+    find $srcdir/$_installpath/ccs/install_scripts/install_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
+    find $srcdir/$_installpath/ccs/eclipse/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
+    find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
 
     install -D -m0644 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
 
@@ -79,7 +79,7 @@ package() {
     # its working directory, we can't leave it owned by root, so we use a group.
     chmod -R g+rw $pkgdir/$_destdir/$pkgname
     chmod -R a+r $pkgdir/$_destdir/$pkgname # fixes permission issues
-    find $pkgdir/$_destdir/$pkgname -type d -print0 | xargs -0 chmod g+x 
+    find $pkgdir/$_destdir/$pkgname -type d -print0 | xargs -0 chmod g+x
 
     # Extract path to executable from .desktop
     mkdir -p $pkgdir/usr/bin
