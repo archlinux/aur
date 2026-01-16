@@ -7,7 +7,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.32.0.r41.gd364bc2
+pkgver=2.32.0.r123.g2ce4763
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -17,6 +17,7 @@ arch=('x86_64')
 depends=(
   'hicolor-icon-theme'
   'libsecret'
+  'polkit'
   'qt6-5compat'
   'qt6-declarative'
   'qt6-networkauth'
@@ -43,7 +44,7 @@ optdepends=(
 
 options=('!lto')
 
-provides=("$_pkgname=${pkgver%%.g*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -52,16 +53,11 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgsrc"
-  git rm -f '3rdparty/adjust-android-sdk'
-  git rm -f '3rdparty/adjust-ios-sdk'
-  git rm -f '3rdparty/wireguard-apple'
+  git rm -r '3rdparty/wireguard-apple'
   git submodule update --init --recursive --depth=1
 
   cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Fix for Qt 6.10
-  sed -E -e '/\bCore\b/i GuiPrivate QmlPrivate' -i CMakeLists.txt
 }
 
 pkgver() {
