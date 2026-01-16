@@ -1,0 +1,16 @@
+pkgbase = ekphos-git
+	pkgdesc = A lightweight, fast, terminal-based markdown research tool inspired by Obsidian
+	pkgver = 0.5.0.r102.gf04e6cf
+	pkgrel = 1
+	url = https://github.com/hanebox/ekphos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = ekphos=0.5.0.r102.gf04e6cf
+	conflicts = ekphos
+	source = ekphos::git+https://github.com/hanebox/ekphos.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ekphos-git
