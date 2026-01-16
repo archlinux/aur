@@ -2,7 +2,7 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=nocb
-pkgver=1.1.5
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="x11 clipboard manager with compression and fts"
 arch=('x86_64')
@@ -10,13 +10,9 @@ url="https://github.com/rotkonetworks/nocb"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-source=("git+${url}.git#branch=master")
+install=nocb.install
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd "$pkgname"
-	git describe --tags | sed 's/^v//;s/-/./g'
-}
 
 prepare() {
 	cd "$pkgname"

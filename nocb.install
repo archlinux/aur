@@ -1,0 +1,24 @@
+post_install() {
+    echo "==> to enable nocb clipboard daemon for your user:"
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user enable --now nocb.service"
+}
+
+post_upgrade() {
+    echo "==> restarting nocb service..."
+    if systemctl --user is-active nocb.service >/dev/null 2>&1; then
+        systemctl --user daemon-reload
+        systemctl --user restart nocb.service
+    fi
+}
+
+pre_remove() {
+    echo "==> stopping nocb service..."
+    systemctl --user stop nocb.service 2>/dev/null || true
+    systemctl --user disable nocb.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl --user daemon-reload 2>/dev/null || true
+    echo "==> nocb removed. clipboard history retained in ~/.cache/nocb"
+}
