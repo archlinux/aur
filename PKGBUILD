@@ -1,7 +1,7 @@
 # Maintainer: Sven Nobis <aur@sven.to>
 
 pkgname=gardenlogin-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='gardenlogin is kubectl credential plugin for Gardener K8s shoot cluster admin authentication.'
 url='https://github.com/gardener/gardenlogin'
@@ -10,7 +10,7 @@ arch=('x86_64')
 provides=('gardenlogin')
 conflicts=('gardenlogin')
 source=("gardenlogin::${url}/releases/download/v${pkgver}/gardenlogin_linux_amd64")
-sha256sums=('f5ad55e523570cac47ab52b41a4d5d276ad9cdef3c82b05a67ad20536a2694f2')
+sha256sums=('bb8dad63a648e771cb012fc35e207c570b4ec2f9378fcbe01a48251236e3c45e')
 
 build() {
     # shell completion
