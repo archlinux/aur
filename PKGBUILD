@@ -88,12 +88,6 @@ build() {
 }
 
 check() {
-	local _test_features=(
-		radicle/test
-		radicle-node/test
-		radicle-crypto/test
-		radicle-protocol/test
-	)
 	local _test_skips=(
 		# flaky test
 		rad_clone_partial_fail
@@ -112,7 +106,6 @@ check() {
 	PATH="$PWD/target/release:$PATH"
 	cargo test \
 		--frozen \
-		"${_test_features[@]/#/--features=}" \
 		-- \
 		"${_test_skips[@]/#/--skip=}" \
 		# EOL
