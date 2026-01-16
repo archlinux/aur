@@ -14,7 +14,7 @@ source=(
   "arch-update-manager-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/arch-update-manager-${pkgver}-x86_64.tar.gz"
   "${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('38c241ff823a10f0119474cb44eaa4aedaad984d88af439dcda45317ab2bc82d'
+sha256sums=('d735f4a573e4fc800bc660e9368a4ff8c73a2222deac797ba29855fd8a90e904'
             '84590c16e0dfb81643946899375aa3f8f0bd2a4cd3a158bff0137be60b4d7d05')
 
 package() {
