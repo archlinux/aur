@@ -12,7 +12,7 @@ conflicts=('gardenctl')
 source=(
     "gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v${pkgver}/gardenctl_v2_linux_amd64"
     "gardenctl-profile.sh")
-sha256sums=('8552532041d44080534c5f421ad111bef9aa45b2da3c4db51857c1b852f2aef9'
+sha256sums=('3627837835ecba58f50555f9429d52e4f9964da913913eb9db95a945ef5d578b'
             '1001ebb1a3066132794d914e18a17938c3d06a86e043d1c62bfc62efa5ee4893')
 
 build() {
