@@ -9,12 +9,12 @@ _help() {
 
 配置管理:
 1. 交互式配置 (推荐):
-   sudo wangyunchuan-generate-token-config <实例名称>
-   示例: sudo wangyunchuan-generate-token-config ssh
+   sudo wyc-generate-token-config <实例名称>
+   示例: sudo wyc-generate-token-config ssh
 
 2. 命令行直接设置 token:
-   sudo wangyunchuan-generate-token-config <实例名称> <token>
-   示例: sudo wangyunchuan-generate-token-config ssh token1234abcd5678
+   sudo wyc-generate-token-config <实例名称> <token>
+   示例: sudo wyc-generate-token-config ssh token1234abcd5678
 
 3. 服务管理:
    启动服务:    sudo systemctl start wangyunchuan@<实例名称>
@@ -41,12 +41,12 @@ WangYunChuan Usage Instructions
 
 Configuration Management:
 1. Interactive configuration (Recommended):
-   sudo wangyunchuan-generate-token-config <instance-name>
-   Example: sudo wangyunchuan-generate-token-config ssh
+   sudo wyc-generate-token-config <instance-name>
+   Example: sudo wyc-generate-token-config ssh
 
 2. Set token directly via command line:
-   sudo wangyunchuan-generate-token-config <instance-name> <token>
-   Example: sudo wangyunchuan-generate-token-config ssh token1234abcd5678
+   sudo wyc-generate-token-config <instance-name> <token>
+   Example: sudo wyc-generate-token-config ssh token1234abcd5678
 
 3. Service Management:
    Start service:  sudo systemctl start wangyunchuan@<instance-name>
