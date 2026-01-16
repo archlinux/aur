@@ -1,0 +1,4 @@
+[quartzlauncher]
+source = "git"
+git = "https://github.com/MiguVerse/QuartzLauncher.git"
+exclude_regex = ".*pre.*"
