@@ -1,0 +1,7 @@
+# AUR build files
+/gotube-*/
+/pkg/
+/src/
+/gotube-*.tar.gz
+/*.pkg.tar.zst
+/*.log
