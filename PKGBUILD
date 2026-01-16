@@ -2,8 +2,8 @@
 
 pkgbase=wyc
 pkgname=wyc
-pkgver=3.0
-pkgrel=11
+pkgver=7
+pkgrel=3
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
@@ -21,6 +21,7 @@ install=${pkgname}.install
 source=(
     "wangyunchuan@.service"
     "wyc-generate-token-config"
+    "wangyunchuan-wrapper"
     "wangyunchuan.tmpfiles"
     "wangyunchuan.sysusers"
     "${pkgname}.install"
@@ -29,8 +30,9 @@ source=(
     "${pkgname}-x86_64-${pkgver}::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app"
     "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
-sha256sums=('85a62a6ce26aa180759004ac2b4fc9e2e2a7555250d7506a8ab3bad4aeeb90d1'
-            'd5ef7e9f68fad164fbfbd04935ebcdd6034e21d5b258381c5489ff6d6bba4d27'
+sha256sums=('330aa7ea0f6d4cc8e6b07ca49feae05c1ceb83b6ca258aac3a197f6c8977168c'
+            '6ba8f83e0c60f887f254241eabd761c2cbf07f0bca29506c90636545f43d749f'
+            '08a4e554a4e9d68ddb30aa06960bafd3d06293a6c155908c8f850b456bff0dfa'
             '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
             '191dbb445f2d9f4cf0461ca09cb4458e2070d5011e5b0b5a8153789feb8f9892'
@@ -51,6 +53,7 @@ package() {
     fi
 
     install -vDm755 ${srcdir}/wyc-generate-token-config -t ${pkgdir}/usr/bin/
+    install -vDm755 ${srcdir}/wangyunchuan-wrapper -t ${pkgdir}/usr/bin/
     install -vDm644 ${srcdir}/wangyunchuan@.service -t ${pkgdir}/usr/lib/systemd/system/
     install -vdm755 ${pkgdir}/etc/wangyunchuan \
         ${pkgdir}/var/log/wangyunchuan

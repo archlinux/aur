@@ -1,3 +1,6 @@
+[Install]
+WantedBy=multi-user.target
+
 [Unit]
 Description=WangYunChuan Service for instance %i
 Documentation=https://wangyunchuan.com
@@ -11,22 +14,15 @@ Type=simple
 User=wangyunchuan
 Group=wangyunchuan
 WorkingDirectory=/var/lib/wangyunchuan
-EnvironmentFile=-/etc/wangyunchuan/token_%i
-
-ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
-
-StandardOutput=append:/var/log/wangyunchuan/output_%i.log
-StandardError=append:/var/log/wangyunchuan/error_%i.log
+ExecStart=/usr/bin/wangyunchuan-wrapper %i
 SyslogIdentifier=wangyunchuan-%i
 
-# 安全设置
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 
-# 重启策略
 Restart=always
 RestartSec=30s
 
