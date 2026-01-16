@@ -14,7 +14,7 @@ sha256sums=('7d2a7af72b610797ab26e68b608c9e75fa9a8f868dc05977642a58467b016f09')
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  go build -trimpath -buildmode=pie -mod=readonly -modcacherw -o "$pkgname" main.go
+  go build -trimpath -buildmode=pie -mod=readonly -modcacherw -o "$pkgname" .
 }
 
 package() {
