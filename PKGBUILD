@@ -1,6 +1,6 @@
 # Maintainer: iiTzDante <https://github.com/iiTzDante>
 pkgname=gomusic
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="Fast terminal UI for downloading music from YouTube with automatic MP3 conversion"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('chromium: for YouTube scraping'
             'google-chrome: for YouTube scraping')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16fa847f6a71f7ba8061811191a002a855d76c4a09afb17e71dff82cf035dbac')
+sha256sums=('873c4f03a6b4e25101f8e2fac36cb8d999ea86a29e07431ff651f37e41b932ce')
 
 build() {
   cd "$pkgname-$pkgver"
