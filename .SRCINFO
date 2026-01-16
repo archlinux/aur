@@ -1,7 +1,7 @@
 pkgbase = lichen-audio
 	pkgdesc = Multi-headphone audio router for Linux - route audio to multiple headphones and mix microphones
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxberggren/lichen
 	arch = any
 	license = MIT

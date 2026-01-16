@@ -1,7 +1,7 @@
 # Maintainer: Max Berggren <max@maxberggren.se>
 pkgname=lichen-audio
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-headphone audio router for Linux - route audio to multiple headphones and mix microphones"
 arch=('any')
 url="https://github.com/maxberggren/lichen"
@@ -18,13 +18,13 @@ package() {
     cd "$srcdir/lichen-$pkgver"
 
     # Install main application files
-    install -dm755 "$pkgdir/usr/share/$pkgname"
-    install -Dm755 lichen.js "$pkgdir/usr/share/$pkgname/lichen.js"
+    install -dm755 "$pkgdir/usr/share/lichen"
+    install -Dm755 lichen.js "$pkgdir/usr/share/lichen/lichen.js"
 
     # Install module directories
-    cp -r app "$pkgdir/usr/share/$pkgname/"
-    cp -r audio "$pkgdir/usr/share/$pkgname/"
-    cp -r ui "$pkgdir/usr/share/$pkgname/"
+    cp -r app "$pkgdir/usr/share/lichen/"
+    cp -r audio "$pkgdir/usr/share/lichen/"
+    cp -r ui "$pkgdir/usr/share/lichen/"
 
     # Install desktop entry
     install -Dm644 lichen.desktop "$pkgdir/usr/share/applications/lichen.desktop"
