@@ -1,34 +1,38 @@
 # Contributor: Loui Chang <louipc [dot.] ist [at@] gmail.com>
 # Contributor: aksr <aksr at t-com dot me>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: aksr <aksr at t-com dot me>
 
 pkgname=jove-git
-pkgver=4.17.4.6
+pkgver=4.17.5.5
 pkgrel=1
 epoch=1
-pkgdesc=" Emacs-like editor without Lisp from github"
-url="https://github.com/jonmacs/jove/"
-license=('custom')
+pkgdesc='An Emacs-like editor without Lisp'
+url='https://github.com/jonmacs/jove/'
+license=('LicenseRef-JoveCustomLicense')
 arch=('i686' 'x86_64')
 depends=('termcap' 'glibc')
-provides=('jove')
-conflicts=('jove')
-source=("git+$url")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 options=('!buildflags')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.+'| tr - .
+	cd $srcdir/$pkgname
+	git describe --tags | sed 's+-+.+'| tr - .
 }
 
 build() {
-  cd ${pkgname%-git}
-  ./jmake.sh 
+	cd $srcdir/$pkgname
+	export CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
+	./jmake.sh
 }
 
 package() {
-  cd ${pkgname%-git}
-  ./jmake.sh DESTDIR="$pkgdir"/usr install
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd $srcdir/$pkgname
+	export CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
+	./jmake.sh JOVEHOME=/usr DESTDIR="$pkgdir" JMANDIR=/usr/share/man/man1 install
+	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+	chmod o-w "$pkgdir"/var/lib/jove/preserve
 }
