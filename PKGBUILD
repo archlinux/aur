@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'sqlite' 'zstd')
 provides=('mycelica')
 conflicts=('mycelica')
-source=("Mycelica_${pkgver}_linux_amd64.tar.gz::https://github.com/Ekats/Mycelica/releases/download/v${_tag}/Mycelica_${pkgver}_linux_amd64.tar.gz"
+source=("mycelica-${pkgver}-linux-x86_64.tar.gz::https://github.com/Ekats/Mycelica/releases/download/v${_tag}/mycelica-${pkgver}-linux-x86_64.tar.gz"
         "mycelica.png::https://raw.githubusercontent.com/Ekats/Mycelica/v${_tag}/src-tauri/icons/128x128.png")
 sha256sums=('SKIP'
             'SKIP')
