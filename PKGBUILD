@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-tv-remote
 _app_id="io.github.erenseymen.$pkgname"
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 _scrcpy_ver=3.3.4
 pkgdesc="A GTK-based remote control for Android TV devices"
@@ -25,7 +25,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('716dcf1623001173364234852ecf7aee53d546b749fa3522d45d797a576c1e9a')
+sha256sums=('20b37518108005004a43f4047d9c436fb32090b9a6aedbdb28328bbb07f95032')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -35,7 +35,7 @@ prepare() {
 
   # Fix icon location
   sed -i "s|../../../data/icons/material|/usr/share/${_app_id}/icons/material|g" \
-    src/gnome_adb_tv_remote/ui/remote_panel.py
+    src/gnome_adb_tv_remote/ui/ui_utils.py
 
   # Match scrcpy-server version with system scrcpy package version
   sed -i "s/3.1/"${_scrcpy_ver}"/g" \
