@@ -1,11 +1,11 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-cef-git
-pkgver=0.r96.deb14dd
+pkgver=0.r98.f3c8008
 pkgrel=1
 license=('GPL-2.0-only')
 pkgdesc="Experimental rewrite of Jellyfin Desktop built on CEF"
 arch=('x86_64')
-url="https://github.com/andrewrabert/jellyfin-desktop-cef"
+url="https://github.com/jellyfin-labs/jellyfin-desktop-cef"
 depends=(
     # CEF
     'alsa-lib'
