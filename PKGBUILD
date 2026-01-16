@@ -1,5 +1,5 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.177.g6c4cef3
+pkgver=0.2.263.g2b938e1
 pkgrel=1
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
@@ -96,6 +96,10 @@ package() {
   install -d "$appdir/ui"
   install -m644 src/ui/*.py "$appdir/ui/"
 
+  # realtime package
+  install -d "$appdir/realtime"
+  install -m644 src/realtime/*.py "$appdir/realtime/"
+
   # memory package (optional feature)
   install -d "$appdir/memory"
   install -m644 src/memory/*.py "$appdir/memory/"
@@ -104,6 +108,8 @@ package() {
   install -m644 src/"icon.png" "$appdir/icon.png"
   install -d "$appdir/preview"
   install -m644 src/preview/*.wav "$appdir/preview/"
+  install -d "$appdir/xai_preview"
+  install -m644 src/xai_preview/*.wav "$appdir/xai_preview/"
 
   # Launcher script in /usr/bin
   install -d "$pkgdir/usr/bin"
@@ -136,5 +142,4 @@ EOF
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 
