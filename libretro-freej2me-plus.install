@@ -1,5 +1,5 @@
 post_install() {
-	echo "To ensure that RetroArch can recognize freej2me-plus, you need to copy /usr/share/java/freej2me-plus/freej2me-lr.jar to the ${HOME}/.config/retroarch/system directory."
+	echo "To ensure that RetroArch can recognize freej2me-plus, you need to copy /usr/share/java/freej2me-plus/freej2me-lr.jar to the ~/.config/retroarch/system directory."
 	echo "$ cp /usr/share/java/freej2me-plus/freej2me-lr.jar ~/.config/retroarch/system/"
 }
 

@@ -3,14 +3,14 @@
 
 pkgbase='freej2me-plus-git'
 pkgname=("freej2me-plus-git" "libretro-freej2me-plus-git")
-pkgver=1.51.r1173.79a4030c
+pkgver=1.52.r1181.331ee719
 pkgrel=1
 pkgdesc='A free J2ME emulator with libretro, awt frontends.'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/TASEmulators/freej2me-plus'
 license=('GPL-3.0-only' 'custom')
-depends=('java-runtime' 'sh')
-makedepends=('git' 'ant' 'java-environment')
+depends=('java-runtime<16' 'sh')
+makedepends=('git' 'ant' 'jdk11-openjdk')
 source=("git+${url}" 'freej2me-plus.sh' 'freej2me-plus.desktop')
 md5sums=('SKIP'
          'c63d23b3eee3f177363a19bf0b256ec9'
@@ -24,12 +24,15 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
+
+  export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
   ant
   cd src/libretro
   make
 }
 
 package_freej2me-plus-git() {
+  arch=('any')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   cd "${srcdir}/${pkgbase%-git}"
@@ -42,9 +45,8 @@ package_freej2me-plus-git() {
 }
 
 package_libretro-freej2me-plus-git() {
-  arch=('x86_64')
   pkgdesc="A free J2ME emulator with libretro, awt frontends. (Libretro core)"
-  depends=('java-runtime')
+  depends=('java-runtime' 'glibc')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   install=libretro-freej2me-plus.install
