@@ -1,7 +1,7 @@
 pkgbase = vgmstream-cli-bin
 	pkgdesc = A command line tool for decoding streamed (prerecorded) video game audio.
 	pkgver = r2055
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vgmstream/vgmstream
 	arch = x86_64
 	license = ISC
