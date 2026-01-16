@@ -1,5 +1,5 @@
 pkgbase = cecli
-	pkgdesc = AI pair programming in your terminal - dwash96 fork with MCP support
+	pkgdesc = AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support
 	pkgver = 0.95.11
 	pkgrel = 1
 	url = https://github.com/dwash96/cecli
