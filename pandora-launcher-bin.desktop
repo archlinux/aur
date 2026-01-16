@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pandora Launcher
+Exec=/usr/bin/pandora-launcher
+Terminal=false
+Type=Application
+Icon=pandora-launcher
+StartupWMClass=PandoraLauncher
+Comment=Pandora is a modern Minecraft launcher that balances ease-of-use with powerful instance management features.
+Categories=Game;ActionGame;AdventureGame;Simulation
