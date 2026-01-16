@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Categories=Game;
-Name=Vintage Story
+Name=Vintage Story (unstable)
 Comment=Uncompromising wilderness survival sandbox game (unstable)
 Icon=vintagestory-unstable
 Exec=/usr/bin/vintagestory-unstable
