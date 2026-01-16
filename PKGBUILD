@@ -1,5 +1,5 @@
 pkgname=vusi
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="ECDSA signature vulnerability analysis library and CLI"
 arch=('x86_64')
