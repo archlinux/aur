@@ -5,8 +5,8 @@ _name=${pkgname#python-}
 pkgdesc="A Python library to compute continuous cartograms"
 url="https://python-cartogram.readthedocs.io/"
 
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 
 arch=("any")
 license=("GPL-3.0-or-later")
@@ -33,7 +33,7 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("f3af4c6bb00c7a63c079d2caa128e20ab9c0d8beacc23513dd502208cb58ec431fcc59cd17e41f5be14a5332d88eb4dde1e69e31a1edbcbc0fa9bd71979576cb")
+b2sums=("065c30ac4ff6ac893da47e5add166d98a981a590cfe0b1031f34a25c9092511c5b256c18998a9f4402f4b60564277e7bf601f990bda889b83fe5ac57f0eda435")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
