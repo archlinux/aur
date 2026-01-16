@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+opt
+pkg
+src
+mi-create

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Mi-Create
+Exec=/usr/bin/mi-create %F
+Icon=MiCreate
+Type=Application

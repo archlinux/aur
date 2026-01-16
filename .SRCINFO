@@ -1,0 +1,25 @@
+pkgbase = mi-create-git
+	pkgdesc = Unofficial watchface creator for Xiaomi wearables ~2021 and above
+	pkgver = v1.1.1.r7.gd7aa9e6
+	pkgrel = 1
+	url = https://github.com/ooflet/Mi-Create
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-pyqt6
+	depends = python-qscintilla-qt6
+	depends = python-beautifulsoup4
+	depends = python-pillow
+	depends = python-lxml
+	depends = python-xmltodict
+	depends = python-requests
+	provides = mi-create
+	conflicts = mi-create
+	source = mi-create::git+https://github.com/ooflet/Mi-Create.git#branch=next
+	source = mi-create.sh
+	source = mi-create.desktop
+	sha256sums = SKIP
+	sha256sums = 13098248c0056ffcc5930088bee4d55b72f730d8dbf65de79399816fbfa8163d
+	sha256sums = c08eb2c9655796c5b8db829c8c7fae3c1a94dca7851e0b5a2e5e212490684a4f
+
+pkgname = mi-create-git
