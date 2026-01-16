@@ -1,2 +1,3 @@
 #!/bin/sh
-python3 /opt/mi-create/src/main.py $@
+
+exec python3 /opt/mi-create/src/main.py "$@"
