@@ -4,8 +4,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-brotli
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Brotli compression library (Android ${_android_arch})"
 arch=('any')
 url='https://github.com/google/brotli.git'
@@ -15,10 +15,10 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake')
 source=("https://github.com/google/brotli/archive/v${pkgver}.tar.gz")
-md5sums=('3a6a3dba82a3604792d3cb0bd41bca60')
+md5sums=('8fbfae9a5ecbc278ae7f761ecb6d1285')
 
 build() {
-    cd "$srcdir/brotli-${pkgver}"
+    cd "${srcdir}/brotli-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-cmake \
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/brotli-${pkgver}"
+    cd "${srcdir}/brotli-${pkgver}"
     source android-env ${_android_arch}
 
     make -C build-shared DESTDIR="${pkgdir}" install
@@ -49,4 +49,6 @@ package() {
     for file in "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig"/*.pc; do
         sed -i 's| -R${libdir}||g' "$file"
     done
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
