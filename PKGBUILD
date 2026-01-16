@@ -44,7 +44,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '7cfc9cf871c0e6f2fa592befe9c5737dc27f5343f1e4ecf0a61bb2ae27c284c5'
+    '4a30d15aa72557dea89307470cfc470b39a5c62663f186aab967688157ae8825'
     '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
 )
 
@@ -85,13 +85,15 @@ build() {
     cp build/whisper.cpp/include/whisper.h lib/
     cp build/whisper.cpp/ggml/include/*.h lib/ 2>/dev/null || :
     cp build/whisper.cpp/build/ggml/src/libggml*.so* lib/ 2>/dev/null || :
+    # Copy Vulkan backend library from subdirectory
+    cp build/whisper.cpp/build/ggml/src/ggml-vulkan/libggml-vulkan.so* lib/ 2>/dev/null || :
 
     # Build Go binary with systray support
     export CGO_ENABLED=1
     export C_INCLUDE_PATH="${PWD}/lib"
     export LIBRARY_PATH="${PWD}/lib"
     export CGO_CFLAGS="-I${PWD}/lib"
-    export CGO_LDFLAGS="-L${PWD}/lib -lwhisper -lggml -lggml-cpu"
+    export CGO_LDFLAGS="-L${PWD}/lib -lwhisper -lggml -lggml-cpu -lggml-vulkan"
     export LD_LIBRARY_PATH="${PWD}/lib"
 
     go build -v \
@@ -115,9 +117,27 @@ package() {
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Bundled whisper libraries (private prefix to avoid conflicts)
+    # Install only versioned .so files and create symlinks to avoid duplicating large binaries
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -a lib/libwhisper.so* "${pkgdir}/usr/lib/${pkgname}/"
-    cp -a lib/libggml*.so* "${pkgdir}/usr/lib/${pkgname}/" 2>/dev/null || :
+
+    for lib in lib/libwhisper.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu.so lib/libggml-vulkan.so; do
+        [[ ! -f "$lib" ]] && continue
+        base=$(basename "$lib" .so)
+        # Find the fully versioned file (e.g., libwhisper.so.1.8.3)
+        versioned=$(find lib -maxdepth 1 -name "${base}.so.*.*" -type f 2>/dev/null | head -1)
+        if [[ -n "$versioned" ]]; then
+            # Install the versioned library
+            install -Dm755 "$versioned" "${pkgdir}/usr/lib/${pkgname}/"
+            versioned_name=$(basename "$versioned")
+            # Create symlinks: libfoo.so -> libfoo.so.X -> libfoo.so.X.Y.Z
+            major=$(echo "$versioned_name" | sed -E 's/.*\.so\.([0-9]+).*/\1/')
+            ln -sf "$versioned_name" "${pkgdir}/usr/lib/${pkgname}/${base}.so.${major}"
+            ln -sf "${base}.so.${major}" "${pkgdir}/usr/lib/${pkgname}/${base}.so"
+        else
+            # No versioned file, just install as-is
+            install -Dm755 "$lib" "${pkgdir}/usr/lib/${pkgname}/"
+        fi
+    done
 
     # Desktop entry
     install -Dm644 io.github.ashbuk.speak-to-ai.desktop \
