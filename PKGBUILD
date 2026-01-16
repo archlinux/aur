@@ -2,7 +2,7 @@
 pkgname=mycelica
 pkgver=0.8.3
 pkgrel=1
-_tag=0.8.3
+_tag=0.8.3-1
 pkgdesc="Visual knowledge graph for connected thinking"
 arch=('x86_64')
 url="https://github.com/Ekats/Mycelica"
