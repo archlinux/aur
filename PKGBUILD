@@ -4,7 +4,7 @@
 # PKGBUILD variables.
 pkgname=brightness-xrandr
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line tool that changes the brightness using the xrandr command.'
 arch=(any)
 url='https://github.com/airvzxf/archlinux-brightness-xrandr'
@@ -13,9 +13,6 @@ depends=(
   'bash'
   'xorg-xrandr'
   'bc'
-  #'coreutils'
-  #'grep'
-  #'sed'
 )
 source=('archlinux-brightness-xrandr-1.0.6.tar.gz::https://github.com/airvzxf/archlinux-brightness-xrandr/archive/refs/tags/v1.0.6.tar.gz')
 md5sums=('07d2622e460d944e3021c021d7ff1d63')
