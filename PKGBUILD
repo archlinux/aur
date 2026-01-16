@@ -1,6 +1,7 @@
-# Maintainer : SinfulBobcat<bobcatsinful+aur@gmail.com>
+# Maintainer: SinfulBobcat <bobcatsinful+aur@gmail.com>
+
 pkgname=ez-tree
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="EZ Tree – Procedural Tree Generator"
 arch=('x86_64')
@@ -15,6 +16,7 @@ depends=(
 )
 
 makedepends=(
+  'nodejs'
   'npm'
   'git'
 )
@@ -25,31 +27,35 @@ source=(
   "ez-tree.png"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 build() {
   cd "$srcdir/ez-tree"
+
   npm ci
-  npm run build:linux
+  npx electron-builder --linux dir
 }
 
 package() {
-  cd "$srcdir/ez-tree"
-
-  # Install the prebuilt Electron app
   install -d "$pkgdir/usr/lib/ez-tree"
-  cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/ez-tree"
+  install -d "$pkgdir/usr/bin"
 
-  # Launcher (THIS IS THE CRITICAL FIX)
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/ez-tree" <<'EOF'
-#!/bin/sh
-exec /usr/lib/ez-tree/ez-tree "$@"
-EOF
+  cp -r "$srcdir/ez-tree/dist/linux-unpacked/"* "$pkgdir/usr/lib/ez-tree/"
 
-  # Desktop + icon
+  chmod +x "$pkgdir/usr/lib/ez-tree/ez-tree"
+
+  ln -s /usr/lib/ez-tree/ez-tree "$pkgdir/usr/bin/ez-tree"
+
+  # Desktop entry
   install -Dm644 "$srcdir/ez-tree.desktop" \
     "$pkgdir/usr/share/applications/ez-tree.desktop"
 
+  # Icon
   install -Dm644 "$srcdir/ez-tree.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/ez-tree.png"
 }
+

@@ -1,17 +1,18 @@
 pkgbase = ez-tree
 	pkgdesc = EZ Tree – Procedural Tree Generator
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/sinfulbobcat/ez-tree
 	arch = x86_64
 	license = MIT
+	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
 	depends = gtk3
 	depends = libnotify
 	depends = libxss
 	depends = nss
-	source = git+https://github.com/sinfulbobcat/ez-tree.git#tag=v1.0.2
+	source = git+https://github.com/sinfulbobcat/ez-tree.git#tag=v1.0.3
 	source = ez-tree.desktop
 	source = ez-tree.png
 	sha256sums = SKIP

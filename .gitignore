@@ -1,0 +1,26 @@
+# makepkg build directories
+pkg/
+src/
+ez-tree/
+
+# built packages
+*.pkg.tar.*
+*.log
+
+# pacman & makepkg temp files
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# editor junk
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# node / electron junk (just in case)
+node_modules/
+dist/
+
