@@ -1,7 +1,7 @@
 pkgbase = paperless-ngx-venv
 	pkgdesc = paperless-ngx: scan, index and archive all your physical documents
 	pkgver = 2.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.paperless-ngx.com/
 	install = paperless.install
 	arch = x86_64
