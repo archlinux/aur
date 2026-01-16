@@ -24,9 +24,9 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="140.6.0"
-_commit="f4e50b9a4d5384ce2e860133bf0beaaccbf19b46" # 140.6.0
-_ffsum="6c35c9ab507521033c8fd49f1b4c85ee158f33ed36f5781a663f116c3d604dc9"
+_icver="140.7.0"
+_commit="c211e9c18a24310266543cb3c90256ef2660815c" # 140.7.0
+_ffsum="608a739071726f30236f7100ec5e30e1b8ec342d4e91e715948c287909cb1529"
 
 ## package
 _pkgname="icecat"
