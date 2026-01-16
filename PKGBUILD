@@ -2,11 +2,12 @@
 
 # shellcheck disable=SC2164
 
-_pkgname=valve-parsers
-
-pkgname="python-${_pkgname}-git"
+_pkgver=v1.1.0
 pkgver=1.1.0
 pkgrel=1
+
+_pkgname=valve-parsers
+pkgname="python-${_pkgname}"
 
 pkgdesc='Some parsers for Valve game files - written in python.'
 arch=('x86_64')
@@ -16,19 +17,8 @@ license=('MIT')
 depends=('python>=3.8')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}")
-
-source=("git+${url}")
-sha256sums=('SKIP')
-
-pkgver() {
-	python -c "$(printf '%s\n' \
-		'import sys, pathlib' \
-		'try: import tomllib as toml' \
-		'except ModuleNotFoundError: import tomli as toml' \
-		'print(toml.loads(pathlib.Path(f"{sys.argv[1]}/pyproject.toml").read_text(encoding="utf-8")).get("project",{}).get("version"))')" "${_pkgname}"
-}
+source=("git+${url}#tag=${_pkgver}")
+sha256sums=('e02e3d4907814d1e7fbeda6eecf26f7dd9aaa8ef4e4a609272858e5e362e6f44')
 
 prepare() {
 	git -C "${_pkgname}" clean -dfx # Clean out old wheels etc.

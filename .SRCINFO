@@ -1,4 +1,4 @@
-pkgbase = python-valve-parsers-git
+pkgbase = python-valve-parsers
 	pkgdesc = Some parsers for Valve game files - written in python.
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -10,9 +10,7 @@ pkgbase = python-valve-parsers-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python>=3.8
-	provides = python-valve-parsers=1.1.0
-	conflicts = python-valve-parsers
-	source = git+https://github.com/cueki/valve-parsers
-	sha256sums = SKIP
+	source = git+https://github.com/cueki/valve-parsers#tag=v1.1.0
+	sha256sums = e02e3d4907814d1e7fbeda6eecf26f7dd9aaa8ef4e4a609272858e5e362e6f44
 
-pkgname = python-valve-parsers-git
+pkgname = python-valve-parsers
