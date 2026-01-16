@@ -1,22 +1,23 @@
-# Maintainer: SZanko, szanko at protonmail dot com
-# Ex-Maintainer: Marat "Morion" Talipov <morion.self@gmail.com>
+# Maintainer: MiguVT <contacto@miguvt.com>
+# Contributor: SZanko, szanko at protonmail dot com
+# Contributor: Marat "Morion" Talipov <morion.self@gmail.com>
 # Contributor: rostov <imn@pochta.ru>
 
 pkgname=projectlibre
-pkgver=1.9.3
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
 replaces=('project-libre')
 url="http://www.projectlibre.org"
 license=('CPAL')
-depends=('java-runtime')
-source=("https://netcologne.dl.sourceforge.net/project/projectlibre/ProjectLibre/${pkgver}/projectlibre-${pkgver}.tar.gz"
+depends=('jre21-openjdk')
+source=("https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/${pkgver}/projectlibre-${pkgver}.tar.gz"
         "projectlibre.png"
         "projectlibre.desktop"
         "projectlibre.patch"
         "projectlibre.xml")
-md5sums=('00ba2b6f674fbdf781b04830c8d8a973'
+md5sums=('3eede07564f8b46a826264bc8f3f0d0b'
          'cbeee50a6324b473c17899616f3effbd'
          'e93fab66e95915aaf9ef204d914b6e9f'
          '0bc5fff49aa9b7161aef58661cb22d98'
