@@ -7,7 +7,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.2.42.g03c18b2
-pkgrel=4
+pkgrel=5
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -31,6 +31,7 @@ optdepends=(
 )
 
 provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 
 install="${_pkgname}.install"
 
