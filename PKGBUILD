@@ -1,5 +1,5 @@
 # Maintainer: tsuniko <cuzimmrdna@gamil.com>
-pkgname=fetch-osu-bin
+pkgname=osu-fetch-bin
 pkgver=1.0
 pkgrel=1
 pkgdesc="fastfetch-like stats printing for osu!"
