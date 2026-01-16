@@ -1,7 +1,7 @@
 pkgbase = lunarvim-git
 	pkgdesc = An IDE layer for Neovim with sane defaults
 	pkgver = 1.4.0.r5.gaa51c20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LunarVim/LunarVim
 	arch = any
 	license = GPL-3.0-only
@@ -19,10 +19,10 @@ pkgbase = lunarvim-git
 	optdepends = ripgrep: optional dependencies for telescope.nvim
 	optdepends = lazygit: enables <leader>gg to launch lazygit for intergrated and enhanced Git experience while in lvim
 	source = lunarvim::git+https://github.com/LunarVim/LunarVim.git
-	source = nvim-treesitter::git+https://github.com/nvim-treesitter/nvim-treesitter.git
+	source = nvim-treesitter::git+https://github.com/nvim-treesitter/nvim-treesitter.git#tag=v0.10.0
 	source = langs.lua
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b4a7931c690c2f2326398fede61e87a19686f065d9b7c32664a885cbbb3f827d
 	sha256sums = 165e39c90fb14aa220b7e0c8082e6b95109f4302acede816ef572f9b5f951ff7
 
 pkgname = lunarvim-git

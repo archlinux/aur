@@ -5,7 +5,7 @@
 _pkgname="lunarvim"
 pkgname="$_pkgname-git"
 pkgver=1.4.0.r5.gaa51c20
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDE layer for Neovim with sane defaults"
 url="https://github.com/LunarVim/LunarVim"
 license=('GPL-3.0-only')
@@ -34,12 +34,12 @@ optdepends=(
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  "nvim-treesitter"::"git+https://github.com/nvim-treesitter/nvim-treesitter.git"
+  "nvim-treesitter"::"git+https://github.com/nvim-treesitter/nvim-treesitter.git#tag=v0.10.0"
   'langs.lua'
 )
 sha256sums=(
   'SKIP'
-  'SKIP'
+  'b4a7931c690c2f2326398fede61e87a19686f065d9b7c32664a885cbbb3f827d'
   '165e39c90fb14aa220b7e0c8082e6b95109f4302acede816ef572f9b5f951ff7'
 )
 
