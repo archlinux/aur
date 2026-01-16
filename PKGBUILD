@@ -2,15 +2,17 @@
 
 pkgname=senpai-git
 _pkgname=senpai
-pkgver=0.3.0.r1.gea86a2e
-pkgrel=2
+pkgver=0.4.1.r31.gd893048
+pkgrel=1
 pkgdesc='A modern terminal IRC client'
-url=https://git.sr.ht/~delthas/senpai/
 arch=(x86_64 aarch64)
+url=https://git.sr.ht/~delthas/senpai/
 license=('ISC')
+depends=('glibc')
+makedepends=('git' 'go' 'scdoc')
+options=('!lto')
 replaces=("senpai-irc-git")
 conflicts=("senpai")
-makedepends=('git' 'go' 'scdoc')
 source=(
 	"${_pkgname}::git+https://git.sr.ht/~delthas/senpai"
 )
@@ -29,21 +31,32 @@ prepare () {
 build () {
 	cd "${srcdir}/${_pkgname}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		\"-ldflags=-compressdwarf=false -linkmode external\" \
+		-trimpath"
+	export GOPATH="${srcdir}"
+
+	printf "GOFLAGS: %s\n" "${GOFLAGS}";
 	go build ./cmd/senpai
-	make doc/senpai.1
-	make doc/senpai.5
+	make doc/senpai.{1,5}
 }
 
-package () {
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/man/man1"
-	mkdir -p "${pkgdir}/usr/share/man/man5"
-	cp "${srcdir}/${_pkgname}/senpai" "${pkgdir}/usr/bin/senpai"
-	cp "${srcdir}/${_pkgname}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
-	cp "${srcdir}/${_pkgname}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  go test -v ./...
 }
 
+package() {
+  cd "${srcdir}/${_pkgname}"
+
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+
+  # license
+  install -vDm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
+}
