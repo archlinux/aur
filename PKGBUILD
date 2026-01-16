@@ -1,13 +1,13 @@
 pkgbase=smallstep
 pkgname=('smallstep-ca' 'smallstep-cli')
-pkgrel=1
+pkgrel=2
 pkgver=0.29.0
 pkgdesc='smallstep'
 url='https://github.com/smallstep'
 license=('Apache-2.0')
 arch=(x86_64 aarch64)
 
-makedepends=('go')
+makedepends=('go' 'pcsclite')
 
 source=("${pkgbase}-ca-${pkgver}.tar.gz::https://github.com/smallstep/certificates/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgbase}-cli-${pkgver}.tar.gz::https://github.com/smallstep/cli/archive/refs/tags/v${pkgver}.tar.gz"
@@ -28,6 +28,7 @@ build() {
 }
 
 package_smallstep-ca() {
+depends=('pcsclite')
 	install -D -m 755 -o root -g root $srcdir/step-ca $pkgdir/usr/bin/step-ca
 	install -D -m 644 -o root -g root $srcdir/step-ca.service $pkgdir/usr/lib/systemd/system/step-ca.service
 }
