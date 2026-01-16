@@ -4,7 +4,7 @@
 # PKGBUILD variables.
 pkgname=battery-discharging
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line tool that makes a sound whenever the computer battery is not connected to electrical power.'
 arch=(any)
 url='https://github.com/airvzxf/archlinux-battery-discharging'
