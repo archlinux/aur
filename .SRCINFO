@@ -1,11 +1,13 @@
 pkgbase = ttf-metamorphous
 	pkgdesc = Metamorphous Font
 	pkgver = 20231228
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/Metamorphous
 	arch = any
-	license = custom:OFL
-	source = ttf-metamorphous-20231228-2::https://fonts.google.com/download?family=Metamorphous
-	md5sums = a4720bee833634468c049632ca7445ef
+	license = OFL-1.1-RFN
+	source = https://github.com/google/fonts/raw/ea42b7c32f18e96539fafbe3e04f0133332df032/ofl/metamorphous/Metamorphous-Regular.ttf
+	source = https://github.com/google/fonts/raw/ea42b7c32f18e96539fafbe3e04f0133332df032/ofl/metamorphous/OFL.txt
+	sha256sums = 55939a5664e06807e87fa4af64f52039ead12f002dda8317393fdce2f7ff57fe
+	sha256sums = 4fece81b541808b40293b0cd3f5b1990274e1100e1c20455dc2987cd96639d3f
 
 pkgname = ttf-metamorphous
