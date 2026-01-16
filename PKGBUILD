@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppThread
-_pkgver=2.2.0
+_pkgver=2.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('715d9aacca458116f569a3304ebf504e')
-b2sums=('75bc7c4ca365f1e4b23eccb49b95be4fa37a254b3e962b22c9cbb5bc6d9ca1ae7b7032b95ff81f332a9c0ff968de5163a3792f533706c5684bf9cf410b9c376a')
+md5sums=('4eb0b8368eb1f87bd57a22a52f7c3e99')
+b2sums=('278c20c7fc023ee184a0f5c2a8b8a01291067bcdc22cd5da9269453b46698f50506d4c55ed16e4f0a408e9fd427d33f8be10a1f1328ad2377c906e39c25de006')
 
 build() {
   mkdir build
