@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='wayback-machine-archiver'
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Submit web pages to the Wayback Machine for archiving'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a8347cc9ba306e7be1f92283e8801a1db9427aeb2ec7b51f8a0e9728e9cf8e65')
+sha256sums=('1e4c64786c3955949fd54608ac54383628ab181ddaed22cc044136dd989dfbf3')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -30,7 +30,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
