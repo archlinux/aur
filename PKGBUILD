@@ -2,7 +2,7 @@
 # Contributor: rern <rernrern@gmail.com>
 
 pkgname=python-smbus2
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A drop-in replacement for smbus-cffi/smbus-python'
 url="https://github.com/kplindegaard/smbus2"
@@ -11,7 +11,7 @@ arch=(any)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://github.com/kplindegaard/smbus2/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3bdbe5e724280ea2cbd2efd84a9dfe47df46c0121945e4543f996e86323c351b')
+sha256sums=('a602790a98c21ac4de9afd49d3d771e942c39257a7e670f807516248ec7a5e7b')
 
 package() {
 	cd "$srcdir/smbus2-$pkgver"
