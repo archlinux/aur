@@ -1,0 +1,20 @@
+pkgbase = sysdupd-git
+	pkgdesc = a sleek libadwaita system update manager for soren's rig
+	pkgver = r1.v5
+	pkgrel = 1
+	url = https://virex.lol
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = libadwaita
+	depends = libportal-gtk4
+	depends = libayatana-appindicator3
+	provides = sysdupd
+	conflicts = sysdupd
+	source = sysdupd::git+https://github.com/hnpf/sysdupd.git
+	sha256sums = SKIP
+
+pkgname = sysdupd-git
