@@ -56,9 +56,9 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.12:"
-    echo "      - Pre-recording hook for better compositor integration"
-    echo "      - Fixed compositor submap getting stuck on short/cancelled recordings"
-    echo "      - Run 'voxtype setup compositor hyprland' to update your config"
+    echo "    New in 0.4.15:"
+    echo "      - Context window optimization for faster short transcriptions"
+    echo "      - Single-instance safeguard prevents duplicate daemons"
+    echo "      - Consolidated delay options: type_delay_ms, pre_type_delay_ms"
     echo ""
 }
