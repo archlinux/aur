@@ -4,7 +4,7 @@ pkgname=thorvg-git
 pkgbase=thorvg-git
 _pkgname=thorvg
 pkgver=r4271.1a43240ec
-pkgrel=1
+pkgrel=3
 pkgdesc="lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 url="https://www.thorvg.org/"
 arch=($CARCH)
@@ -30,9 +30,8 @@ prepare() {
       -Dsavers=all \
       -Dbindings="capi" \
       -Dtools=all \
+      -Dengines=sw,gl \
       --reconfigure
-#      -Dengines=all \ autodetected even if meson_build write default:sw???
-
 }
 
 build() {
