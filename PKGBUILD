@@ -1,11 +1,11 @@
-# Maintainer: a821
+# Maintainer: a821 mail de
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Marcin Kulik <m@kulik.com>
 
 pkgname=asciinema-git
-pkgver=3.0.0rc.3.r26.g2728a10
-pkgrel=2
+pkgver=3.1.0.r0.gdabc40c
+pkgrel=1
 pkgdesc="Record and share your terminal sessions"
 arch=('x86_64')
 url="https://github.com/asciinema/asciinema"
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
-options=(!lto !debug)
+options=(!lto)
 
 pkgver() {
   cd $pkgname
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
