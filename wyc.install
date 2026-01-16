@@ -4,67 +4,41 @@ pre_install() {
 
 _help() {
     cat << 'EOF'
-网云穿 (WangYunChuan) 使用说明
-================================
+网云穿 (WangYunChuan) 服务管理帮助
+=====================================
 
-配置管理:
-1. 交互式配置 (推荐):
-   sudo wyc-generate-token-config <实例名称>
-   示例: sudo wyc-generate-token-config ssh
+基本使用:
+1. 添加服务实例:
+   wycctl add <实例名> <token>
+   示例: wycctl add web DfmLQ6eDSZ2MXepk
 
-2. 命令行直接设置 token:
-   sudo wyc-generate-token-config <实例名称> <token>
-   示例: sudo wyc-generate-token-config ssh token1234abcd5678
+2. 服务管理命令:
+   启动:    wycctl start <实例名>
+   停止:    wycctl stop <实例名>
+   重启:    wycctl restart <实例名>
+   状态:    wycctl status <实例名>
 
-3. 服务管理:
-   启动服务:    sudo systemctl start wangyunchuan@<实例名称>
-   开机自启:    sudo systemctl enable wangyunchuan@<实例名称>
-   查看状态:    sudo systemctl status wangyunchuan@<实例名称>
-   查看日志:    sudo journalctl -u wangyunchuan@<实例名称> -f
-   停止服务:    sudo systemctl stop wangyunchuan@<实例名称>
+3. 实例管理:
+   查看所有实例: wycctl list
+   删除实例:     wycctl remove <实例名>
+   查看日志路径: wycctl logpath <实例名>
 
-4. 实例命名建议:
-   - ssh: SSH 隧道服务
-   - web: Web 服务穿透  
-   - db: 数据库隧道
-   - api: API 服务穿透
+4. 服务日志查看:
+   - 实时日志: sudo journalctl -u wangyunchuan@<实例名> -f
+   - 文件日志: tail -f /var/log/wangyunchuan/<日志前缀>/YYYY-MM-DD.log
 
-配置文件位置: /etc/wangyunchuan/token_<实例名称>
+5. 常用实例命名:
+   web    - 网站服务
+   ssh    - SSH远程访问
+   mysql  - 数据库访问
+   nas    - 网络存储
+   api    - API服务
+
+配置文件: /etc/wangyunchuan/<实例名>_token
+日志目录: /var/log/wangyunchuan/<token前8位>/
 
 优惠码: oi0bhf
-================================
-EOF
-
-    cat << 'EOF'
-WangYunChuan Usage Instructions
-================================
-
-Configuration Management:
-1. Interactive configuration (Recommended):
-   sudo wyc-generate-token-config <instance-name>
-   Example: sudo wyc-generate-token-config ssh
-
-2. Set token directly via command line:
-   sudo wyc-generate-token-config <instance-name> <token>
-   Example: sudo wyc-generate-token-config ssh token1234abcd5678
-
-3. Service Management:
-   Start service:  sudo systemctl start wangyunchuan@<instance-name>
-   Enable at boot: sudo systemctl enable wangyunchuan@<instance-name>
-   Check status:   sudo systemctl status wangyunchuan@<instance-name>
-   View logs:      sudo journalctl -u wangyunchuan@<instance-name> -f
-   Stop service:   sudo systemctl stop wangyunchuan@<instance-name>
-
-4. Instance naming suggestions:
-   - ssh: SSH tunnel service
-   - web: Web service penetration
-   - db: Database tunnel
-   - api: API service penetration
-
-Config file location: /etc/wangyunchuan/token_<instance-name>
-
-Coupon code: oi0bhf
-================================
+=====================================
 EOF
 }
 

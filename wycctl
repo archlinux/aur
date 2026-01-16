@@ -1,0 +1,114 @@
+#!/bin/bash
+# /usr/local/bin/wycctl
+
+usage() {
+    echo "用法: wycctl <command> [instance]"
+    echo "命令:"
+    echo "  start <instance>   启动指定实例"
+    echo "  stop <instance>    停止指定实例"
+    echo "  restart <instance> 重启指定实例"
+    echo "  status <instance>  查看实例状态"
+    echo "  list               列出所有实例"
+    echo "  add <instance> <token> 添加新实例"
+    echo "  remove <instance>  移除实例"
+}
+
+add_instance() {
+    local instance=$1
+    local token=$2
+
+    if [[ -z "$instance" || -z "$token" ]]; then
+        echo "错误: 需要提供实例名和token"
+        exit 1
+    fi
+
+    # 提取token前8位作为日志前缀
+    local log_prefix="${token:0:8}"
+
+    # 创建token文件（直接放在/etc/wangyunchuan/目录下）
+    cat >"/etc/wangyunchuan/${instance}_token" <<EOF
+WYC_TOKEN=${token}
+WYCLOG_PREFIX=${log_prefix}
+INSTANCE=${instance}
+EOF
+
+    chmod 640 "/etc/wangyunchuan/${instance}_token"
+
+    # 创建日志目录（使用token前8位）
+    mkdir -p "/var/log/wangyunchuan/${log_prefix}"
+    chown wangyunchuan:wangyunchuan "/var/log/wangyunchuan/${log_prefix}"
+
+    echo "已添加实例: $instance"
+    echo "日志目录: /var/log/wangyunchuan/${log_prefix}"
+    systemctl daemon-reload
+}
+
+remove_instance() {
+    local instance=$1
+
+    # 先读取token文件获取日志前缀
+    if [[ -f "/etc/wangyunchuan/${instance}_token" ]]; then
+        source "/etc/wangyunchuan/${instance}_token"
+        local log_prefix="$WYCLOG_PREFIX"
+    fi
+
+    systemctl stop "wangyunchuan@${instance}.service" 2>/dev/null
+    systemctl disable "wangyunchuan@${instance}.service" 2>/dev/null
+
+    rm -f "/etc/wangyunchuan/${instance}_token"
+
+    # 删除对应的日志目录
+    if [[ -n "$log_prefix" ]]; then
+        rm -rf "/var/log/wangyunchuan/${log_prefix}"
+    fi
+
+    systemctl daemon-reload
+    echo "已移除实例: $instance"
+}
+
+list_instances() {
+    echo "已配置的实例:"
+    for token_file in /etc/wangyunchuan/*_token; do
+        if [[ -f "$token_file" ]]; then
+            instance=$(basename "$token_file" "_token")
+            source "$token_file"
+            echo "  - $instance (日志前缀: $WYCLOG_PREFIX)"
+        fi
+    done
+}
+
+show_log_path() {
+    local instance=$1
+    if [[ -f "/etc/wangyunchuan/${instance}_token" ]]; then
+        source "/etc/wangyunchuan/${instance}_token"
+        echo "实例 $instance 的日志目录: /var/log/wangyunchuan/${WYCLOG_PREFIX}/"
+    else
+        echo "实例 $instance 不存在"
+    fi
+}
+
+case "$1" in
+start | stop | restart | status)
+    if [[ -z "$2" ]]; then
+        echo "错误: 需要指定实例名"
+        exit 1
+    fi
+    systemctl "$1" "wangyunchuan@$2.service"
+    ;;
+list)
+    list_instances
+    ;;
+add)
+    add_instance "$2" "$3"
+    ;;
+remove)
+    remove_instance "$2"
+    ;;
+logpath)
+    show_log_path "$2"
+    ;;
+*)
+    usage
+    exit 1
+    ;;
+esac

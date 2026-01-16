@@ -1,6 +1,3 @@
-[Install]
-WantedBy=multi-user.target
-
 [Unit]
 Description=WangYunChuan Service for instance %i
 Documentation=https://wangyunchuan.com
@@ -13,18 +10,24 @@ StartLimitBurst=5
 Type=simple
 User=wangyunchuan
 Group=wangyunchuan
-WorkingDirectory=/var/lib/wangyunchuan
-ExecStart=/usr/bin/wangyunchuan-wrapper %i
-SyslogIdentifier=wangyunchuan-%i
+Environment=WYC_INSTANCE=%i
+EnvironmentFile=/etc/wangyunchuan/%i_token
 
-NoNewPrivileges=true
-PrivateTmp=true
+NoNewPrivileges=yes
+PrivateTmp=yes
 ProtectSystem=strict
-ProtectHome=true
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ProtectHome=yes
+ReadWritePaths=/var/log/wangyunchuan/%WYCLOG_PREFIX%
 
+ExecStartPre=/bin/bash -c 'mkdir -p /var/log/wangyunchuan/${WYCLOG_PREFIX} && chown wangyunchuan:wangyunchuan /var/log/wangyunchuan/${WYCLOG_PREFIX}'
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/wyc -token ${WYC_TOKEN}
 Restart=always
-RestartSec=30s
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=wangyunchuan-%i
 
 [Install]
 WantedBy=multi-user.target
