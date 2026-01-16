@@ -2,7 +2,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=pyupgrade
-pkgver=3.19.1
+pkgver=3.21.2
 pkgrel=1
 pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python python-tokenize-rt)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('393bf5343e1ca004474d3a0d3e7866fe9a5a9d0a346a375451130c925b9b0a11808e629340d0a1ca69da772ea30f161629974b80cfcbd6e0a3cb086694bb9432')
+b2sums=('73753913d1f6493d271214b567b374ab0d4cd32cc4f385746fd8ce58157adfd4ce195184d25cd79efbc23186d8825e92d7cce6ac19c81ab9f7e27b897dd6710c')
 
 build() {
     cd $pkgname-$pkgver
