@@ -1,6 +1,6 @@
 pkgbase = gotube
 	pkgdesc = A beautiful terminal UI for downloading YouTube videos with HD support
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/iiTzDante/gotube
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gotube
 	license = MIT
 	makedepends = go
 	depends = ffmpeg
-	source = gotube-1.0.4.tar.gz::https://github.com/iiTzDante/gotube/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = d6339ae6f895e2c6c64cac1e426fc65c0d02fe11f463e3f42344a26d421663bf
+	source = gotube-1.0.5.tar.gz::https://github.com/iiTzDante/gotube/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 3962ec492f8f71fff520cbcab98176bb5f9a35f204ccfce08969e5b9c6d37c49
 
 pkgname = gotube

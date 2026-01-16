@@ -1,6 +1,6 @@
 # Maintainer: iiTzDante <https://github.com/iiTzDante>
 pkgname=gotube
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A beautiful terminal UI for downloading YouTube videos with HD support"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('ffmpeg')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d6339ae6f895e2c6c64cac1e426fc65c0d02fe11f463e3f42344a26d421663bf')
+sha256sums=('3962ec492f8f71fff520cbcab98176bb5f9a35f204ccfce08969e5b9c6d37c49')
 
 build() {
   cd "$pkgname-$pkgver"
