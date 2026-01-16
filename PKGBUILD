@@ -33,5 +33,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm755 "target/release/hyprKCS" "$pkgdir/usr/bin/hyprKCS"
+    install -Dm755 "target/release/hyprKCS" "$pkgdir/usr/bin/hyprkcs"
 }
