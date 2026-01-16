@@ -1,10 +1,10 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10694_068e2997f
+pkgver=r10950_88dfd2ee2
 pkgrel=1
 pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://art.pixls.us"
+url="https://artraweditor.github.io/"
 license=('GPL-3.0-only')
 depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'mimalloc' 'openmp' 'openexr' 'ctl')
 options=(!debug !lto)

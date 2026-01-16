@@ -1,8 +1,8 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources
-	pkgver = r10694_068e2997f
+	pkgver = r10950_88dfd2ee2
 	pkgrel = 1
-	url = https://art.pixls.us
+	url = https://artraweditor.github.io/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
