@@ -1,0 +1,23 @@
+pkgbase = inventory-md
+	pkgdesc = A flexible markdown-based inventory management system
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/tobixen/inventory-md
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-pillow
+	optdepends = python-fastapi: API server and chat functionality
+	optdepends = python-uvicorn: API server
+	optdepends = python-anthropic: Claude AI chat integration
+	optdepends = python-pyzbar: Barcode scanning
+	optdepends = python-easyocr: OCR text extraction
+	source = inventory-md-0.3.2.tar.gz::https://github.com/tobixen/inventory-md/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 7c32ccba98736678f58760fe906090ea57603b85be7b552256538b29eeeb4d0b
+
+pkgname = inventory-md
