@@ -1,6 +1,6 @@
 pkgbase = fizzy-cli
 	pkgdesc = CLI for managing Fizzy boards, cards, and tasks
-	pkgver = 2.0.13
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/robzolkos/fizzy-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fizzy-cli
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = fizzy-cli-2.0.13.tar.gz::https://github.com/robzolkos/fizzy-cli/archive/v2.0.13.tar.gz
-	sha256sums = 61ffc3c673ff3b1f424967830618a7152cdaba8f0291d0c27b7c1bd533398ede
+	source = fizzy-cli-2.1.0.tar.gz::https://github.com/robzolkos/fizzy-cli/archive/v2.1.0.tar.gz
+	sha256sums = 166a18819a8f25211f6d1a75f3d872c1dedd1844e38f44b3b1a7fcd2a9105e54
 
 pkgname = fizzy-cli
