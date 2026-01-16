@@ -8,7 +8,7 @@
 
 _pkgname="flycast"
 pkgname="$_pkgname-git"
-pkgver=2.5.r205.g5bce763
+pkgver=2.6.r2.gf3ea74f
 pkgrel=2
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -21,6 +21,7 @@ depends=(
   'hicolor-icon-theme'
   'libao'
   'libcdio'
+  'libjuice'
   'libpulse'
   'libzip'
   'miniupnpc'
@@ -55,6 +56,7 @@ prepare() {
   git rm -r core/deps/breakpad
   git rm -r core/deps/glslang
   git rm -r core/deps/googletest
+  git rm -r core/deps/libjuice
   git rm -r core/deps/oboe
   git submodule update --init --depth=1
 
@@ -66,9 +68,10 @@ prepare() {
     core/rend/vulkan/vmallocator.h \
     core/rend/vulkan/vulkan_context.cpp
 
-  # fix missing headers
-  sed -e '1i #include <cstddef>' -i core/network/miniupnp.cpp
-  sed -e '1i #include <set>' -i core/rend/vulkan/vulkan_context.cpp
+  # use system libjuice
+  sed -E -e 's&(LibJuice)Static&\1&' \
+    -e '/add_subdirectory/s&^.*libjuice.*$&find_package(LibJuice)&' \
+    -i CMakeLists.txt
 }
 
 pkgver() {
@@ -123,6 +126,6 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  # unwanted
-  rm -rf "$pkgdir"/usr/{include,lib,share/pixmaps}
+  echo "Removing unwanted files..."
+  rm -rfv "$pkgdir"/usr/{include,lib,share/pixmaps}
 }
