@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=caffeine-applet-git
-pkgver=r2.2c2f58a
+pkgver=r12.78706c2
 pkgrel=1
 pkgdesc="A simple COSMIC applet that prevents your system from going idle by creating a systemd-inhibit lock session."
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=('cosmic-applets')
 makedepends=(
   'cargo'
   'git'
+  'just'
 )
 source=('git+https://github.com/codevardhan/caffeine-applet.git')
 sha256sums=('SKIP')
@@ -28,15 +29,12 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  just build-release --frozen
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
-  install -Dm644 "assets/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 assets/coffee-full.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+  just rootdir="$pkgdir" install
+
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
