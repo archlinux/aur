@@ -17,11 +17,11 @@ ExecStartPre=/bin/mkdir -p /var/log/wangyunchuan/%i
 ExecStartPre=/bin/chown wangyunchuan:wangyunchuan /var/log/wangyunchuan/%i
 ExecStartPre=/bin/chmod 755 /var/log/wangyunchuan/%i
 
-ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
-
-StandardOutput=append:/var/log/wangyunchuan/%i/$(date +%%Y-%%m-%%d).log
-StandardError=append:/var/log/wangyunchuan/%i/$(date +%%Y-%%m-%%d).log
+StandardOutput=append:/var/log/wangyunchuan/%i/output.log
+StandardError=append:/var/log/wangyunchuan/%i/error.log
 SyslogIdentifier=wangyunchuan-%i
+
+ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
 
 # 安全设置
 NoNewPrivileges=true
