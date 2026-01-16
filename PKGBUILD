@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-lcms2
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (Android ${_android_arch})"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('android-ndk'
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz")
-md5sums=('9f44275ee8ac122817e94fdc50ecce13')
+md5sums=('bf1dcc205fe3889897ed16e2913b3197')
 
 prepare() {
     cd "${srcdir}/lcms2-${pkgver}"
@@ -43,4 +43,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
