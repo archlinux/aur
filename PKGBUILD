@@ -83,11 +83,20 @@ sha512sums=('7e5cc104a7c4ff471a2c7dd704ebbece26ba4558031c8eb3ee8474639d24ce63add
 export RUSTUP_TOOLCHAIN=stable
 
 pkgver() {
-  cd "${srcdir}/mozc" || exit
+  cd "${srcdir}/mozc/src" || exit
   # change pkgver is OK because we fixed commit
   # parse major.minor.buildid from version template, revision is fixed to 102 for Linux
-  source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' src/data/version/mozc_version_template.bzl | tr -d ' ')
-  _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$((REVISION+2))"
+
+  # https://github.com/google/mozc/discussions/1429
+  # REVISION in mozc_version_template.bzl is no longer used by Bazel builds.
+  # REVISION will be probably removed once GYP builds are completely removed.
+  # 
+  # bazel build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
+  # bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
+  # source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' bazel-bin/base/mozc_version.txt)
+  # _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$REVISION"
+  source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' data/version/mozc_version_template.bzl | tr -d ' ')
+  _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.102"
   printf "%s" "${_bzr_ver}"
 }
 
@@ -130,21 +139,11 @@ prepare() {
   TARGETS=$(rustc -vV | sed -n 's|^host: \([^-]*-[^-]*-[^-]*\)-gnu$|\1|p'); TARGETS=$(rustup target list --installed | grep "$TARGETS"); : "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1)}" "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1)}"
   : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   #[ -z "$TARGET" ] && TARGET=$(rustc -vV | sed -n 's/host: //p')
-  echo $RUSTC
   unset RUSTC
-  CC_=$CC
-  CFLAGS_=$CFLAGS
-  unset CC
   : "${CC:=$(command -v clang || command -v gcc)}"
-  export CC
-  unset CFLAGS
-  expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
-  echo $CC
-  echo $CFLAGS
-  export CFLAGS
-  CC="$CC" CFLAGS="$CFLAGS" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
-  export CC=$CC_
-  export CFLAGS=$CFLAGS_
+  # warning of cc-rs
+  expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
+  CC="$CC" CFLAGS="$CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
