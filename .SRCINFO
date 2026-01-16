@@ -1,0 +1,19 @@
+pkgbase = rendercv-bin
+	pkgdesc = Binary version of renderCV. A CV/resume generator for academics and engineers, YAML to PDF
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/rendercv/rendercv/
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = glibc
+	provides = rendercv
+	conflicts = rendercv
+	options = !strip
+	options = !emptydirs
+	source = rendercv-linux-x86_64.zip::https://github.com/rendercv/rendercv/releases/download/v2.6/rendercv-linux-x86_64.zip
+	source = LICENSE::https://raw.githubusercontent.com/rendercv/rendercv/main/LICENSE
+	sha256sums = be1254f82696f94b08c6678eb1a5b88dff9594f367e613037c6a23a3741974ad
+	sha256sums = 9b7a082e203987b6df516af8b055e8ccaacbdf5522724e5e82a62f07ccc0b812
+
+pkgname = rendercv-bin
