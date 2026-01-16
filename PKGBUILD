@@ -1,6 +1,6 @@
 # Maintainer: <mmoya at mmoya dot org>
 pkgname=furtherance-bin
-pkgver=25.3.0
+pkgver=26.1.1
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/unobserved-io/Furtherance"
 license=('GPL-3.0')
 source=("https://github.com/unobserved-io/Furtherance/releases/download/${pkgver}/furtherance-${pkgver}-amd64.deb")
 options=('!debug')
-sha256sums=("120d698fcc751ff7cec907f8d11bfa3db2bebf00376d3ede6c708724272a1b24")
+sha256sums=('9a12924d9ad82926f670adcfe7f38536c0aeb7c06bb90b2902eacdf50637cd64')
 
 package() {
     ar x "furtherance-${pkgver}-amd64.deb"
