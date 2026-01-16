@@ -1,6 +1,6 @@
 pkgbase = mousse-git
 	pkgdesc = vim for your mouse
-	pkgver = r7.6d49375
+	pkgver = r9.569ccbf
 	pkgrel = 1
 	url = https://github.com/rusmisel/mousse
 	arch = x86_64

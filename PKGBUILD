@@ -2,7 +2,7 @@
 
 pkgname=mousse-git
 _pkgname="${pkgname%-git}"
-pkgver=r7.6d49375
+pkgver=r9.569ccbf
 pkgrel=1
 pkgdesc='vim for your mouse'
 arch=(x86_64)
@@ -34,4 +34,5 @@ package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 }
