@@ -54,19 +54,19 @@ check() {
 package() {
     # Plugin-mode installation: Everything in /etc/coolercontrol/plugins/coolerdash/
     install -dm755 "${pkgdir}/etc/coolercontrol/plugins/coolerdash"
-    install -Dm755 "${srcdir}/coolerdash/bin/coolerdash" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/coolerdash"
-    install -Dm644 "${srcdir}/coolerdash/README.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/README.md"
-    install -Dm644 "${srcdir}/coolerdash/VERSION" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/VERSION"
-    install -Dm644 "${srcdir}/coolerdash/LICENSE" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/LICENSE"
-    install -Dm644 "${srcdir}/coolerdash/CHANGELOG.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/CHANGELOG.md"
-    install -Dm666 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
+    install -m755 "${srcdir}/coolerdash/bin/coolerdash" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/coolerdash"
+    install -m644 "${srcdir}/coolerdash/README.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/README.md"
+    install -m644 "${srcdir}/coolerdash/VERSION" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/VERSION"
+    install -m644 "${srcdir}/coolerdash/LICENSE" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/LICENSE"
+    install -m644 "${srcdir}/coolerdash/CHANGELOG.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/CHANGELOG.md"
+    install -m666 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
 
     # Create ui directory first with correct permissions
     install -dm755 "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui"
     install -m644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/ui/index.html" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/index.html"
     install -m644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/ui/cc-plugin-lib.js" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/cc-plugin-lib.js"
-    install -Dm644 "${srcdir}/coolerdash/images/shutdown.png" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/shutdown.png"
-    install -Dm644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/manifest.toml" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
+    install -m644 "${srcdir}/coolerdash/images/shutdown.png" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/shutdown.png"
+    install -m644 "${srcdir}/coolerdash/etc/coolercontrol/plugins/coolerdash/manifest.toml" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
 
     # Substitute VERSION placeholder in manifest.toml
     sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
