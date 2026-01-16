@@ -1,0 +1,5 @@
+#Type   Path                            Mode    User           Group         Age     Argument
+d       /var/lib/wangyunchuan           0755    wangyunchuan   wangyunchuan   -       -
+d       /var/log/wangyunchuan           0755    wangyunchuan   wangyunchuan   -       -
+d       /etc/wangyunchuan               0755    wangyunchuan   wangyunchuan   -       -
+

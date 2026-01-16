@@ -1,25 +1,47 @@
 #!/bin/bash
-INSTANCE=$1
-CONFIG_DIR="/etc/wyc"
-CONFIG_FILE="${CONFIG_DIR}/token_${INSTANCE}"
 
-# 确保配置目录存在
-sudo mkdir -p "$CONFIG_DIR"
+set -euo pipefail
 
-# 使用文件锁避免并发写入冲突
-exec 99>"${CONFIG_FILE}.lock"
-flock -n 99 || exit 1
+main() {
+    local instance="${1:?实例名称未指定}"
+    local token="${2:-}"
+    local config_file="/etc/wangyunchuan/token_$instance"
+    local lock_file="/etc/wangyunchuan/.lock_$instance"
+    
+    # 创建目录
+    mkdir -p "/etc/wangyunchuan"
+    
+    # 文件锁
+    exec 9>"$lock_file"
+    flock -n 9 || { echo "错误: 配置正在被其他进程使用"; exit 1; }
+    
+    # 获取令牌
+    if [[ -z "$token" ]]; then
+        read -rsp "请输入实例 '$instance' 的令牌: " token
+        echo
+    fi
+    
+    # 验证令牌
+    [[ "$token" =~ ^[a-zA-Z0-9]{16}$ ]] || {
+        echo "错误: 令牌必须为16位字母数字组合"
+        exit 1
+    }
+    
+    # 写入配置
+    echo "WYC_TOKEN=$token" > "$config_file"
+    chmod 600 "$config_file"
+    
+    echo "✅ 配置已保存: $config_file"
+    echo "📋 实例: $instance"
+    echo "🔐 令牌: ${token:0:8}..."
+}
 
-# 写入/读取 Token（无需 sudo，通过文件权限控制）
-if [ ! -f "$CONFIG_FILE" ]; then
-    read -sp "请输入实例 ${INSTANCE} 的 Token: " TOKEN
-    echo "WYC_TOKEN=$TOKEN" > "$CONFIG_FILE"
-else
-    TOKEN=$(cat "$CONFIG_FILE")
+# 参数检查
+if [[ $# -lt 1 ]]; then
+    echo "用法: $0 <实例名称> [令牌]"
+    echo "示例: $0 ssh"
+    echo "       $0 web gS2oWgd7b4R1GPi4"
+    exit 1
 fi
 
-# 输出日志到 Systemd 日志
-echo "[$(date)] 实例 ${INSTANCE} Token: ${TOKEN}" >&2
-
-# 设置环境变量（可选）
-echo "WYC_TOKEN=${TOKEN}" >&2
+main "$@"

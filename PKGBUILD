@@ -3,7 +3,7 @@
 pkgbase=wyc
 pkgname=wyc
 pkgver=3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
@@ -16,24 +16,24 @@ makedepends=(libarchive)
 provides=(${pkgname} ${pkgname}-bin)
 conflicts=(${pkgname} ${pkgname}-bin)
 replaces=()
-# backup=(etc/wyc/)
+# backup=(etc/wangyunchuan/)
 install=${pkgname}.install
 source=(
-    "${pkgname}@.service"
+    "wangyunchuan@.service"
     "wyc-generate-token-config"
-    "${pkgname}.tmpfiles"
-    "${pkgname}.sysusers"
+    "wangyunchuan.tmpfiles"
+    "wangyunchuan.sysusers"
     "${pkgname}.install"
-    #     "LICENSE::https://xiaomy.net/agreement"
+    #     "LICENSE::https://wangyunchuan.com/agreement"
     "LICENSE.txt"
     "${pkgname}-x86_64-${pkgver}::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app"
     "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
-sha256sums=('5514409e682dc06dc1161156b54ab53cd948673ef6776ed73f57930cea8c0475'
-            'a97150926add15686b59d7aceda85b8cfae64aede84ccd31c97bc72dc4df3288'
-            '0e944ff4a0982059d9e4828b120b81b1d61de53fb6fa73fc95562396aba87c71'
-            '083cb2c4067200d8d428802678ed5a1a417c7474b07fdd81719c7509d326863a'
-            '53c8f4da34ac71de834d7d0768c13ec043d22f4cd6a1c5da61fc910a39a3ecee'
+sha256sums=('315a5cdf5c00370de16dbe3da456edb63655fa450d993b09c4ddb57e6e8f327d'
+            'd5ef7e9f68fad164fbfbd04935ebcdd6034e21d5b258381c5489ff6d6bba4d27'
+            '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
+            '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
+            '5d7b9a5112062a734ed43259c11f16505f4ef506ea3ae5185110f01d7156b34b'
             '3f3715937f9e3ae47d4deac0faef7b9072df4048083410454c6dc561688e5824'
             '00529da711eb6b2cc1a1c25dcbcae6307088059aad427383bd38d138f13029ab'
             'a53ad0268f50ed19f996de00d40977b3bd9c070cefeb8d23568ea16b61d43309')
@@ -51,10 +51,10 @@ package() {
     fi
 
     install -vDm755 ${srcdir}/wyc-generate-token-config -t ${pkgdir}/usr/bin/
-    install -vDm644 ${srcdir}/${pkgname}@.service -t ${pkgdir}/usr/lib/systemd/system/
-    install -vdm755 ${pkgdir}/etc/${pkgname} \
-        ${pkgdir}/var/log/${pkgname}
-    install -Dvm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dvm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -vDm644 ${srcdir}/wangyunchuan@.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -vdm755 ${pkgdir}/etc/wangyunchuan \
+        ${pkgdir}/var/log/wangyunchuan
+    install -Dvm644 "${srcdir}/wangyunchuan.sysusers" "${pkgdir}/usr/lib/sysusers.d/wangyunchuan.conf"
+    install -Dvm644 "${srcdir}/wangyunchuan.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/wangyunchuan.conf"
     install -vDm644 ${srcdir}/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

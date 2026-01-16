@@ -3,14 +3,69 @@ pre_install() {
 }
 
 _help() {
-    echo -e "使用 sudo wyc-generate-token-config  %i 创建 /etc/wyc/token_%i 配置文件。"
-    echo -e "Use sudo wyc-generate-token-config %i to create the/etc/wyc/token_%i configuration file."
-    echo -e "启用 wyc 的服务: sudo systemctl enable --now wyc@%i"
-    echo -e "Enable the service with: sudo systemctl enable --now wyc@%i"
-    echo -e "%i 以实际输入内容代替，如: 1、ssh、http 等"
-    echo -e "%i is replaced with actual input content, such as: 1, ssh, http, etc."
-    echo -e "优惠码: oi0bhf"
-    echo -e "coupon code: oi0bhf"
+    cat << 'EOF'
+网云穿 (WangYunChuan) 使用说明
+================================
+
+配置管理:
+1. 交互式配置 (推荐):
+   sudo wangyunchuan-generate-token-config <实例名称>
+   示例: sudo wangyunchuan-generate-token-config ssh
+
+2. 命令行直接设置 token:
+   sudo wangyunchuan-generate-token-config <实例名称> <token>
+   示例: sudo wangyunchuan-generate-token-config ssh token1234abcd5678
+
+3. 服务管理:
+   启动服务:    sudo systemctl start wangyunchuan@<实例名称>
+   开机自启:    sudo systemctl enable wangyunchuan@<实例名称>
+   查看状态:    sudo systemctl status wangyunchuan@<实例名称>
+   查看日志:    sudo journalctl -u wangyunchuan@<实例名称> -f
+   停止服务:    sudo systemctl stop wangyunchuan@<实例名称>
+
+4. 实例命名建议:
+   - ssh: SSH 隧道服务
+   - web: Web 服务穿透  
+   - db: 数据库隧道
+   - api: API 服务穿透
+
+配置文件位置: /etc/wangyunchuan/token_<实例名称>
+
+优惠码: oi0bhf
+================================
+EOF
+
+    cat << 'EOF'
+WangYunChuan Usage Instructions
+================================
+
+Configuration Management:
+1. Interactive configuration (Recommended):
+   sudo wangyunchuan-generate-token-config <instance-name>
+   Example: sudo wangyunchuan-generate-token-config ssh
+
+2. Set token directly via command line:
+   sudo wangyunchuan-generate-token-config <instance-name> <token>
+   Example: sudo wangyunchuan-generate-token-config ssh token1234abcd5678
+
+3. Service Management:
+   Start service:  sudo systemctl start wangyunchuan@<instance-name>
+   Enable at boot: sudo systemctl enable wangyunchuan@<instance-name>
+   Check status:   sudo systemctl status wangyunchuan@<instance-name>
+   View logs:      sudo journalctl -u wangyunchuan@<instance-name> -f
+   Stop service:   sudo systemctl stop wangyunchuan@<instance-name>
+
+4. Instance naming suggestions:
+   - ssh: SSH tunnel service
+   - web: Web service penetration
+   - db: Database tunnel
+   - api: API service penetration
+
+Config file location: /etc/wangyunchuan/token_<instance-name>
+
+Coupon code: oi0bhf
+================================
+EOF
 }
 
 post_install() {

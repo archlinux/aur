@@ -1,0 +1,34 @@
+[Unit]
+Description=WangYunChuan Service for instance %i
+Documentation=https://wangyunchuan.com
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=wangyunchuan
+Group=wangyunchuan
+WorkingDirectory=/var/lib/wangyunchuan
+
+EnvironmentFile=-/etc/wangyunchuan/token_%i
+ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
+
+StandardOutput=append:/var/log/wangyunchuan/%i/$(date +%%Y-%%m-%%d).log
+StandardError=append:/var/log/wangyunchuan/%i/$(date +%%Y-%%m-%%d).log
+SyslogIdentifier=wangyunchuan-%i
+
+# 安全设置
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# 重启策略
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
