@@ -1,0 +1,14 @@
+pkgbase = forgejo-cli
+	pkgdesc = CLI application for interacting with Forgejo
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://codeberg.org/forgejo-contrib/forgejo-cli
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = openssl
+	options = !lto
+	source = forgejo-cli-0.4.0.tar.gz::https://codeberg.org/forgejo-contrib/forgejo-cli/archive/v0.4.0.tar.gz
+	sha256sums = 3dd84c58c8c5d5fc22b8456d9a4f35323e0386547743c6b24295a3dbc6a56fb7
+
+pkgname = forgejo-cli
