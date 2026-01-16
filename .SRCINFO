@@ -1,14 +1,28 @@
 pkgbase = godot-next-bin
 	pkgdesc = Godot Engine Next - Prebuilt binary from GitHub
-	pkgver = 4.6beta2
+	pkgver = 4.6beta3
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/godotengine/godot-builds/releases/download/4.6-beta2/Godot_v4.6-beta2_linux.x86_64.zip
+	noextract = Godot_v4.6-beta3_linux.x86_64.zip
+	noextract = Godot_v4.6-beta3_mono_linux_x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.6-beta3/Godot_v4.6-beta3_linux.x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.6-beta3/Godot_v4.6-beta3_mono_linux_x86_64.zip
 	source = godot-next.desktop
+	source = godot-next-mono.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = godot-next-bin
+	pkgdesc = Godot Engine Next - Prebuilt binary from GitHub
+	provides = godot-next=4.6beta3
+	conflicts = godot-next
+
+pkgname = godot-next-mono-bin
+	pkgdesc = Godot Engine Next (Mono) - Prebuilt binary from GitHub
+	provides = godot-next-mono=4.6beta3
+	conflicts = godot-next-mono

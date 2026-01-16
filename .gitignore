@@ -3,5 +3,6 @@
 !/.gitignore
 !/.SRCINFO
 !/godot-next.desktop
+!/godot-next-mono.desktop
 !/PKGBUILD
 !/PKGBUILD.template
