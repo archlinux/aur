@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc='Command-line tool that makes a sound whenever the computer battery is not connected to electrical power.'
 arch=(any)
 url='https://github.com/airvzxf/archlinux-battery-discharging'
-license=(GPL-3.0-or-later)
+license=('GPL-3.0-or-later')
 depends=(
   'bash'
   'alsa-utils'
