@@ -1,0 +1,24 @@
+pkgbase = mcp-agent-mail
+	pkgdesc = Coordinated multi-agent messaging and coordination MCP server
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Dicklesworthstone/mcp_agent_mail
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-httpx
+	depends = python-typer
+	depends = python-uvicorn
+	depends = python-rich
+	depends = python-sqlalchemy
+	conflicts = mcp-agent-mail-git
+	options = !debug
+	source = https://github.com/Dicklesworthstone/mcp_agent_mail/releases/download/v0.3.0/mcp_agent_mail-0.3.0.tar.gz
+	source = mcp-agent-mail
+	b2sums = 92eaa28f1466b573c9a6915328ee99afc8589779592c7ce7eba11db6cf6605324b4cfffd57d23c4541b9bfa71382ff9da031c7adc93873b3f6704d08aea82800
+	b2sums = 2f45be2db15497129a6bd5f58470d45c4dd0b42d86606aa1882d13f86564e9dc4b65e656d913ff7b7295ea2a703bdc74f5e6f4ed40c8bc42a92ba646be1773c5
+
+pkgname = mcp-agent-mail
