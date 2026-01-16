@@ -41,11 +41,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         "ungoogled-chromium-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-138-nodejs-version-check.patch
-        chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
-        chromium-141-cssstylesheet-iwyu.patch
         # ungoogled-chromium-xdg patches
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
@@ -53,11 +51,9 @@ sha256sums=('8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179'
             '083adc19e6cb0e835f251e8dba06d3187fe56875e79358c738d872acb20cbfa3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
-            '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374'
-            'de5c873564b09713b65dd9e6a0b9049d7b3cf8f881436f36e1c091824b63e876'
             '2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
 
@@ -133,11 +129,6 @@ prepare() {
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-138-nodejs-version-check.patch
-  patch -Np1 -i ../chromium-141-cssstylesheet-iwyu.patch
-
-  # Fixes from NixOS
-  patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
-
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
