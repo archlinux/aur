@@ -2,7 +2,7 @@
 # Contributor: Cravix < dr dot neemous at gmail dot com >
 
 pkgname=limnoria
-pkgver=2025.7.18
+pkgver=2025.11.2
 pkgrel=1
 pkgdesc="A robust, full-featured and user/programmer-friendly Python IRC bot"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
 'python-dateutil: enable fancy time string parsing in the Time plugin'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('897bbe39b38577489069ef3f998db3b6deece24b8abad5f786e1cdee33f77071')
+sha256sums=('72f969d5c7ec74df25bfc845bda1d5eafb56109d02254066375c82831ae1322f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver" || exit 1
