@@ -42,15 +42,6 @@ source=(
 b2sums=('SKIP')
 provides=(display-manager)
 conflicts=(plasma-login-manager)
-backup=(
-    'usr/lib/pam.d/plasmalogin'
-    'usr/lib/pam.d/plasmalogin-autologin'
-    'usr/lib/pam.d/plasmalogin-greeter'
-    'usr/share/plasmalogin/scripts/wayland-session'
-    'usr/share/plasmalogin/scripts/Xsession'
-    'usr/share/plasmalogin/scripts/Xsetup'
-    'usr/share/plasmalogin/scripts/Xstop'
-)
 install=plasmalogin.install
 
 pkgver() {

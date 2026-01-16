@@ -4,19 +4,7 @@ post_install() {
     echo "    sudo systemctl disable sddm (or your current display manager)"
     echo "    sudo systemctl enable plasmalogin"
     echo "    sudo reboot"
-}
-
-post_upgrade() {
-    # Fix permissions on existing directory (from old installs with wrong perms)
-    if [ -d /var/lib/plasmalogin ]; then
-        chmod 1770 /var/lib/plasmalogin
-        chown plasmalogin:plasmalogin /var/lib/plasmalogin
-    fi
-
-    # Clean up old systemd override directory if it exists
-    if [ -d /etc/systemd/system/plasmalogin.service.d ]; then
-        rm -rf /etc/systemd/system/plasmalogin.service.d
-    fi
+    echo ""
 }
 
 pre_remove() {
