@@ -1,6 +1,6 @@
 # Maintainer: djwarf
 pkgname=switchcalc
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Complete calculator with Standard, Scientific, Programmer, and Date modes"
 arch=('x86_64')
