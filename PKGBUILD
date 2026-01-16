@@ -1,7 +1,7 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname='logitech-k650-fix'
-pkgver='0.9.2'
-pkgrel=2
+pkgver='0.9.3'
+pkgrel=1
 pkgdesc='Fix(insert key) Logitech K650 keyboard.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/bokic/logitech-k650-fix'
@@ -14,7 +14,7 @@ source=(
 )
 
 sha512sums=(
-    '829a24836e480f5853601259d7af4ce697b60414fc7c5f0c4cd597302ed51c18193d140d98a4ed59c1b2a1522072938619b32d3a8d37c700e3daa1fcfd4bd791'
+    '04e6114ea87f37f5abf79a789e9ae1c6308cd89d326686fcc26cdb8a15afe3f90d2f2aa90199e32942a24b7cdce40e54e9de6f732e79723a66b85ac86e1f64d3'
 )
 
 build() {
