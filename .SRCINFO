@@ -1,0 +1,25 @@
+pkgbase = rg-sens
+	pkgdesc = A fast, customizable system monitoring dashboard for Linux
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/hilgardt-collab/rg-Sens
+	install = rg-sens.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = nvidia-utils: NVIDIA GPU monitoring support
+	optdepends = webkit2gtk-4.1: CSS Template panel with WebView support
+	provides = rg-sens
+	conflicts = rg-sens-git
+	source = rg-sens-0.6.3.tar.gz::https://github.com/hilgardt-collab/rg-Sens/archive/v0.6.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = rg-sens
