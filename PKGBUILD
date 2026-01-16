@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=switchcal
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK4 calendar application with Google Calendar sync"
 arch=('x86_64')
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 switchcal "$pkgdir/usr/bin/switchcal"
+    install -Dm644 switchcal.desktop "$pkgdir/usr/share/applications/switchcal.desktop"
 }
