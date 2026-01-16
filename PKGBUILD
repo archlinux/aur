@@ -2,7 +2,7 @@
 
 _pkgname="jiratui"
 pkgname="${_pkgname}-git"
-pkgver=1.3.0.r0.g31341b6
+pkgver=1.6.2.r0.gfc97e1d
 pkgrel=1
 pkgdesc="A Textual User Interface for interacting with Atlassian Jira from your shell"
 arch=('any')
@@ -18,17 +18,15 @@ makedepends=(
 depends=(
 	'python>=3.10' 
 	'python-click>=8.2.1' 
-	'python-httpx>=0.28.1' 
-  'python-pydantic-settings>=2.10.1' 
-	'python-json-logger>=3.3.0' 
-  'python-textual>=6.1.0' 
-	'python-yaml>=6.0.2' 
-	'python-magic>=0.4.27'
-	'python-textual-image>=0.8.2'
 	'python-gitpython>=3.1.45'
-	'python-linkify-it-py'
-	'python-xdg-base-dirs'
-	'python-dateutil'
+	'python-httpx>=0.28.1' 
+	'python-pydantic-settings>=2.11.0' 
+	'python-dateutil>=2.9.0'
+	'python-json-logger>=3.3.0' 
+	'python-magic>=0.4.27'
+	'python-textual>=6.4.0' 
+	'python-textual-image>=0.8.2'
+	'python-xdg-base-dirs>=6.0.2'
 )
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
