@@ -1,19 +1,19 @@
 # Maintainer: iamzhz <iamzhz at foxmail dot com> and wuziqian211
 pkgname=tchmaterial-parser
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="国家中小学智慧教育平台 电子课本下载工具，帮助您从智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
 arch=('x86_64')
 url="https://github.com/happycola233/tchMaterial-parser"
 license=('MIT')
-depends=('python' 'tk' 'python-psutil' 'python-requests' 'python-pyperclip' 'python-setuptools')
+depends=('python' 'tk' 'python-psutil' 'python-requests' 'python-pyperclip' 'python-setuptools' 'python-pypdf')
 source=(
         "v$pkgver.tar.gz::https://github.com/happycola233/tchMaterial-parser/archive/refs/tags/v$pkgver.tar.gz"
         "tchMaterial-parser.desktop"
         "setup.py"
 )
 sha256sums=(
-        '9c4539d8c9511e6baab23215386c9e8919d44fa27c3c1b66bbe68ebbcc12bdbc'
+        '6a7a5c030aa3a307fd1589aa15e843dd12382ce1cf4abb902bf9fbcecba31734'
         'SKIP'
         'SKIP'
 )
