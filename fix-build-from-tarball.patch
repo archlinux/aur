@@ -1,0 +1,29 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 79e0965..3ac71c6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -36,11 +36,13 @@ help = { file = "requirements/requirements-help.in" }
+ playwright = { file = "requirements/requirements-playwright.in" }
+ tui = { file = "requirements/requirements-tui.in" }
+ 
+-[tool.setuptools]
+-include-package-data = true
+-
+ [tool.setuptools.packages.find]
+-include = ["cecli*"]
++where = ["."]
++include = ["cecli", "cecli.*"]
++
++[tool.setuptools.package-data]
++"*" = ["*.scm"]
++"aider.resources" = ["*"]
+ 
+ [build-system]
+ requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
+@@ -52,4 +54,4 @@ local_scheme = "no-local-version"
+ 
+ [tool.codespell]
+ skip = "*.svg,Gemfile.lock,tests/fixtures/*,cecli/website/assets/*"
+-write-changes = true
+\ No newline at end of file
++write-changes = true

@@ -1,0 +1,255 @@
+diff --git a/cecli/help.py b/cecli/help.py
+index 50466d0..ba507ff 100755
+--- a/cecli/help.py
++++ b/cecli/help.py
+@@ -15,12 +15,10 @@ warnings.simplefilter("ignore", category=FutureWarning)
+ 
+ 
+ async def install_help_extra(io):
+-    pip_install_cmd = ["cecli[help]", "--extra-index-url", "https://download.pytorch.org/whl/cpu"]
+-    res = await utils.check_pip_install_extra(
++    res = await utils.check_aur_package(
+         io,
+         "llama_index.embeddings.huggingface",
+-        "To use interactive /help you need to install the help extras",
+-        pip_install_cmd,
++        "python-llama-index-embeddings-huggingface",
+     )
+     return res
+ 
+diff --git a/cecli/models.py b/cecli/models.py
+index 4241023..f210eee 100644
+--- a/cecli/models.py
++++ b/cecli/models.py
+@@ -22,7 +22,7 @@ from cecli.helpers.model_providers import ModelProviderManager
+ from cecli.helpers.requests import model_request_parser
+ from cecli.llm import litellm
+ from cecli.sendchat import sanity_check_messages
+-from cecli.utils import check_pip_install_extra
++from cecli.utils import check_archlinux_package, check_aur_package
+ 
+ RETRY_TIMEOUT = 60
+ COPY_PASTE_PREFIX = "cp:"
+@@ -1120,16 +1120,9 @@ async def check_for_dependencies(io, model_name):
+         model_name: The name of the model to check dependencies for
+     """
+     if model_name.startswith("bedrock/"):
+-        await check_pip_install_extra(
+-            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
+-        )
++        await check_archlinux_package(io, "boto3", "python-boto3")
+     elif model_name.startswith("vertex_ai/"):
+-        await check_pip_install_extra(
+-            io,
+-            "google.cloud.aiplatform",
+-            "Google Vertex AI models require the google-cloud-aiplatform package.",
+-            ["google-cloud-aiplatform"],
+-        )
++        await check_aur_package(io, "google.cloud.aiplatform", "python-aiplatform") 
+ 
+ 
+ def get_chat_model_names():
+diff --git a/cecli/scrape.py b/cecli/scrape.py
+index 2e16c90..22963ec 100755
+--- a/cecli/scrape.py
++++ b/cecli/scrape.py
+@@ -34,7 +34,7 @@ async def check_chromium():
+ 
+         try:
+             async with async_playwright() as p:
+-                browser = await p.chromium.launch()
++                browser = await p.chromium.launch(executable_path="/usr/bin/chromium")
+                 await browser.close()
+                 has_chromium = True
+         except Exception as e:
+@@ -50,38 +50,30 @@ async def install_playwright(io):
+ 
+     if has_playwright and has_chromium:
+         return True
+-
+-    pip_cmd = utils.get_pip_install(["cecli[playwright]"])
+-    chromium_cmd = "-m playwright install --with-deps chromium"
+-    chromium_cmd = [sys.executable] + chromium_cmd.split()
+-
+-    cmds = ""
++    
++    packages = []
+     if not has_playwright:
+-        cmds += " ".join(pip_cmd) + "\n"
++        packages.append("python-playright")
+     if not has_chromium:
+-        cmds += " ".join(chromium_cmd) + "\n"
++        packages.append("chromium")
++    pacman_cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", *packages]
++   
++    text = f"""For the best web scraping, run pacman as follows:
+ 
+-    text = f"""For the best web scraping, install Playwright:
+-
+-{cmds}
++{" ".join(pacman_cmd)}
+ See {urls.enable_playwright} for more info.
+ """
+ 
+     io.tool_output(text)
+-    if not await io.confirm_ask("Install playwright?", default="y"):
++    if not io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
+         return
+-
+-    if not has_playwright:
+-        success, output = utils.run_install(pip_cmd)
++    
++    if packages:
++        success, output = utils.run_install(pacman_cmd)
+         if not success:
+             io.tool_error(output)
+             return
+ 
+-    success, output = utils.run_install(chromium_cmd)
+-    if not success:
+-        io.tool_error(output)
+-        return
+-
+     return True
+ 
+ 
+@@ -159,7 +151,7 @@ class Scraper:
+ 
+         async with async_playwright() as p:
+             try:
+-                browser = await p.chromium.launch()
++                browser = await p.chromium.launch(executable_path="/usr/bin/chromium")
+             except Exception as e:
+                 self.playwright_available = False
+                 self.print_error(str(e))
+diff --git a/cecli/utils.py b/cecli/utils.py
+index c0f8adf..f0753bb 100644
+--- a/cecli/utils.py
++++ b/cecli/utils.py
+@@ -285,31 +285,10 @@ def split_chat_history_markdown(text, include_tool=False):
+     return messages
+ 
+ 
+-def get_pip_install(args):
+-    cmd = [
+-        sys.executable,
+-        "-m",
+-        "pip",
+-        "install",
+-        "--upgrade",
+-        "--upgrade-strategy",
+-        "only-if-needed",
+-    ]
+-    cmd += args
+-    return cmd
+-
+-
+ def run_install(cmd):
+     print()
+     print("Installing:", printable_shell_command(cmd))
+ 
+-    # First ensure pip is available
+-    ensurepip_cmd = [sys.executable, "-m", "ensurepip", "--upgrade"]
+-    try:
+-        subprocess.run(ensurepip_cmd, capture_output=True, check=False)
+-    except Exception:
+-        pass  # Continue even if ensurepip fails
+-
+     try:
+         output = []
+         process = subprocess.Popen(
+@@ -384,7 +363,7 @@ def touch_file(fname):
+         return False
+ 
+ 
+-async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
++async def check_aur_package(io, module, aur_package):
+     if module:
+         try:
+             __import__(module)
+@@ -392,20 +371,24 @@ async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_upda
+         except (ImportError, ModuleNotFoundError, RuntimeError):
+             pass
+ 
+-    cmd = get_pip_install(pip_install_cmd)
++    io.tool_error(f"""
++    This feature requires the following package from the AUR:
+ 
+-    if prompt:
+-        io.tool_warning(prompt)
++        {aur_package}
++""")
+ 
+-    if self_update and platform.system() == "Windows":
+-        io.tool_output("Run this command to update:")
+-        print()
+-        print(printable_shell_command(cmd))  # plain print so it doesn't line-wrap
+-        return
++async def check_archlinux_package(io, module, archlinux_package):
++    if module:
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError):
++            pass
++
++    cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", archlinux_package]
++    io.tool_warning("Using this feature requires a package to be installed.")
+ 
+-    if not await io.confirm_ask(
+-        "Run pip install?", default="y", subject=printable_shell_command(cmd)
+-    ):
++    if not io.confirm_ask("Run pacman?", default="y", subject=printable_shell_command(cmd)):
+         return
+ 
+     success, output = run_install(cmd)
+diff --git a/cecli/versioncheck.py b/cecli/versioncheck.py
+index 3cf2ae4..1e29278 100644
+--- a/cecli/versioncheck.py
++++ b/cecli/versioncheck.py
+@@ -1,5 +1,4 @@
+ import os
+-import sys
+ import time
+ from pathlib import Path
+ 
+@@ -17,12 +16,10 @@ async def install_from_main_branch(io):
+     """
+     Install the latest version of cecli from the main branch of the GitHub repository.
+     """
+-    return await utils.check_pip_install_extra(
++    return await utils.check_aur_package(
+         io,
+         None,
+-        "Install the development version of cecli from the main branch?",
+-        ["git+https://github.com/dwash96/aider-ce.git"],
+-        self_update=True,
++        "cecli-git",
+     )
+ 
+ 
+@@ -34,18 +31,12 @@ async def install_upgrade(io, latest_version=None):
+         new_ver_text = f"Newer cecli version v{latest_version} is available."
+     else:
+         new_ver_text = "Install latest version of cecli?"
+-    docker_image = os.environ.get("CECLI_DOCKER_IMAGE")
+-    if docker_image:
+-        text = f"\n{new_ver_text} To upgrade, run:\n\n    docker pull {docker_image}\n"
+-        io.tool_warning(text)
+-        return True
+-    success = await utils.check_pip_install_extra(
+-        io, None, new_ver_text, ["cecli"], self_update=True
+-    )
+-    if success:
+-        io.tool_output("Re-run cecli to use new version.")
+-        sys.exit()
+-    return
++
++    text = f"""
++{new_ver_text} To upgrade, use the latest version available on the AUR.
++"""
++    io.tool_warning(text)
++    return True
+ 
+ 
+ async def check_version(io, just_check=False, verbose=False):
