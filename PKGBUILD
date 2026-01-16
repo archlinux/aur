@@ -3,13 +3,13 @@
 
 pkgname="euporie"
 pkgver=2.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
 url="https://${pkgname}.readthedocs.io"
 _url="https://github.com/joouha/${pkgname}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-pathlib-abc')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' )
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 depends=(
   # from pyproject.toml
@@ -24,7 +24,9 @@ depends=(
   'python-jupyter-core' 'python-ipykernel' 'python-rich' 'python-mtable'
   'python-sympy' 'python-numpy' 'python-html2text'
   'python-magic' 'python-matplotlib' 'python-cairosvg' 'python-aiohttp'
-  'python-ziamath' 'python-chafapy' 'python-teimpy' 'python-pylatexenc')
+  'python-ziamath' 'python-chafapy' 'python-teimpy' 'python-pylatexenc'
+  'python-pathlib-abc'
+)
 optdepends=('python-asyncssh: for Euporie hub support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
