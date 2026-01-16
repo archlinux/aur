@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@example.com>
 pkgname=animepahe-dl
-pkgver=5.5.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="A Python-based tool to download anime from AnimePahe, featuring both a Command-Line Interface (CLI) and a Graphical User Interface (GUI)."
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   'python-questionary'
 )
 makedepends=('python-setuptools' 'python-build')
-source=("git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v5.5.0")
+source=("git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v5.8.0")
 sha256sums=('SKIP')
 
 build() {
@@ -34,4 +34,12 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   python -m pip install --root="${pkgdir}" --no-deps --ignore-installed .
+
+  # Install desktop entry
+  install -Dm644 "${srcdir}/${pkgname}/animepahe-dl.desktop" \
+    "${pkgdir}/usr/share/applications/animepahe-dl.desktop"
+
+  # Install icon (SVG)
+  install -Dm644 "${srcdir}/${pkgname}/icon.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/animepahe-dl.svg"
 }
