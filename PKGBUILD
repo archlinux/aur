@@ -4,18 +4,15 @@
 # PKGBUILD variables.
 pkgname=optional-packages
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool that finds all the optional packages of the packages that were pointed by you. It can install the packages.'
-arch=(x86_64)
+arch=('any')
 url='https://github.com/airvzxf/archlinux-optional-packages'
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(
-  bash
-  pacman
-  grep
-  sed
-  coreutils
-  sudo
+  'bash'
+  'pacman'
+  'sudo'
 )
 source=('archlinux-optional-packages-1.0.4.tar.gz::https://github.com/airvzxf/archlinux-optional-packages/archive/refs/tags/v1.0.4.tar.gz')
 md5sums=('bb41edc2d9a60bbb3aa0009c2c998d9c')
