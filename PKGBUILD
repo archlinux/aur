@@ -8,8 +8,8 @@ url="https://github.com/max-sixty/worktrunk"
 license=('MIT OR Apache-2.0')
 source_x86_64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("https://github.com/max-sixty/worktrunk/releases/download/v$pkgver/worktrunk-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('fbf05703ac12891f2a43cc04ed0e5dda3d199f9e2ec62bd470c211bfb7c9a2e0')
-sha256sums_aarch64=('c9d928f2b532149b67b9da0c4d2f41cb3a65a076ae642841ba17335d974aed5a')
+sha256sums_x86_64=('b039d788aef109bb6ee48c6c1cc996497e5d90de9c201b21bb17e4091e51abea')
+sha256sums_aarch64=('933b1c63751b47f0e97d6a7050c7eedeb47f5cc42387d44e29f87a2ec0032478')
 
 build() {
   mkdir -p "home/.config/fish/conf.d/" \
