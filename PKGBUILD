@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=7.1.1
+pkgver=8.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
@@ -84,7 +84,7 @@ optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('26f2bd7d20c6c616f31d7130c88d7250'
+md5sums=('b4e86cef7b3333034977ae9df391896d'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -245,4 +245,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING.GPLv3 -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
