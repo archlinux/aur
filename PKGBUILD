@@ -3,7 +3,7 @@
 pkgbase=python-gwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.26.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('any')
@@ -20,7 +20,12 @@ checkdepends=('python-pytest-doctestplus'
               'python-asdf_wcs_schemas')
 #             'python-typeguard'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1fb9de3de6557d6340823f94bf4af0fc')
+md5sums=('815e7b562e6cfa17d9f6b9ce13f604c2')
+
+get_pyinfo() {
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -44,4 +49,5 @@ package_python-gwcs() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r ${pkgdir}/$(get_pyinfo site)/docs
 }
