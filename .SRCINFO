@@ -1,0 +1,19 @@
+pkgbase = smallstep
+	pkgdesc = smallstep
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://github.com/smallstep
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	source = smallstep-ca-0.29.0.tar.gz::https://github.com/smallstep/certificates/archive/refs/tags/v0.29.0.tar.gz
+	source = smallstep-cli-0.29.0.tar.gz::https://github.com/smallstep/cli/archive/refs/tags/v0.29.0.tar.gz
+	source = step-ca.service
+	sha256sums = 85855b044d9eb846932af963c06ab1bf41cc4a2c38f500bc3dabd8a3fbd36b40
+	sha256sums = 6dbdec708ed4b52914113925e2fd1af53ca7484a2affa2dfb93749adec524c0e
+	sha256sums = 61cc97068b78d1ceb46f54143903a005f049c035bb701586e94068584b1cc4ec
+
+pkgname = smallstep-ca
+
+pkgname = smallstep-cli
