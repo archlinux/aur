@@ -1,8 +1,8 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 pkgname=raptor-cos
 _pkgname=raptor
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Vertically-scrolling shoot 'em up from 1994"
 arch=('x86_64')
 url="https://github.com/skynettx/raptor"
@@ -20,11 +20,11 @@ makedepends=(
   )
 source=(
   ${pkgname}-${pkgver}.tgz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "ftp://ftp.3drealms.com/share/1rap12.zip"
+  "https://archive.org/download/RaptorCallOfTheShadows/1rap12.zip"
   'raptor-cos.desktop'
   'raptor-cos.sh'
   )
-sha256sums=('14ef26b8f2dfb3654e84c3867c331bdb13988de127b60a52199b0547f27f23dc'
+sha256sums=('ef4a46d4cbad25ce19dab0d2ae86bc84f3c8dda6211bfbeeedb26d2d77578e0c'
             '7d6b062dcdc76d9ea02d8d71af14e5043223581d792f6ead4eb1316fd0351552'
             '1efd7607fb6a09f318699ac29bc07e2237a433cb7863c265c9a4913ee10e0e5f'
             'c3f99f4289e7723f662ad34c88577ac92bb5d15325847bbaf31558927ff9c7b8')
