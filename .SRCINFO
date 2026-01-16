@@ -17,7 +17,7 @@ pkgbase = arch-update-manager-bin
 	conflicts = arch-update-manager
 	source = arch-update-manager-1.4.1-x86_64.tar.gz::https://github.com/destbg/arch-update-manager/releases/download/1.4.1/arch-update-manager-1.4.1-x86_64.tar.gz
 	source = arch-update-manager-1.4.1.tar.gz::https://github.com/destbg/arch-update-manager/archive/refs/tags/1.4.1.tar.gz
-	sha256sums = 2c872b7d07286ab64c3e7a91aed838c3622286f36f3592a995162a79a86fb72f
+	sha256sums = 38c241ff823a10f0119474cb44eaa4aedaad984d88af439dcda45317ab2bc82d
 	sha256sums = 84590c16e0dfb81643946899375aa3f8f0bd2a4cd3a158bff0137be60b4d7d05
 
 pkgname = arch-update-manager-bin
