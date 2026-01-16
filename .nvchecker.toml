@@ -1,0 +1,4 @@
+[iacs]
+source = "regex"
+url = "https://public.dhe.ibm.com/as400/products/clientaccess/solutions/updates/CurrentVersion.txt"
+regex = "v(\\d+\\.\\d+\\.\\d+\\.\\d+)"
