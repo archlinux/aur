@@ -1,0 +1,26 @@
+pkgbase = python-easy-llama
+	pkgdesc = Python package wrapping llama.cpp for on-device LLM inference
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = https://github.com/hirsimaki-markus/easy-llama
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pydantic
+	depends = python-fastapi
+	depends = python-tqdm
+	depends = uvicorn
+	depends = python-jinja
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/e/easy_llama/easy_llama-0.2.14.tar.gz
+	source = README-0.2.14.md::https://github.com/ddh0/easy-llama/readme.md
+	source = LICENSE-0.2.14::https://github.com/ddh0/easy-llama/unlicense
+	sha256sums = e159f5dd82882237fa96c8260a594486cb9387191fc13d36c70f435fe352a09e
+	sha256sums = 15f82faec0f768ff39c929ed698b03ee7fec2c796b4101442347294c259c03a5
+	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
+
+pkgname = python-easy-llama
