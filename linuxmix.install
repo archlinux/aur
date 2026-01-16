@@ -45,7 +45,12 @@ post_remove() {
     # Refresh Systemd
     echo Reloading systemd daemon for real users...
     for U in $(ls /home); do
-	    systemctl -M "$U@.host" disable --now linuxmix
+        # Clean-up audio sinks
+        sudo -u $U pactl unload-module module-loopback
+        sudo -u $U pw-cli destroy Game
+        sudo -u $U pw-cli destroy Chat
+
+	    systemctl -M "$U@.host" --user disable --now linuxmix
 	    systemctl -M "$U@.host" --user daemon-reload
     done
 }
