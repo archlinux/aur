@@ -163,11 +163,6 @@ prepare() {
 
   ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-
-  # Generate missing header
-  python3 build/util/lastchange.py -m DAWN_COMMIT_HASH \
-    -s third_party/dawn --revision gpu/webgpu/DAWN_VERSION \
-    --header gpu/webgpu/dawn_commit_hash.h
 }
 
 build() {
