@@ -29,6 +29,7 @@ EOF
     echo Reloading systemd daemon for real users...
     for U in $(ls /home); do
 	    systemctl -M "$U@.host" --user daemon-reload
+	    systemctl -M "$U@.host" --user enable --now linuxmix
     done
 }
 
@@ -44,6 +45,7 @@ post_remove() {
     # Refresh Systemd
     echo Reloading systemd daemon for real users...
     for U in $(ls /home); do
+	    systemctl -M "$U@.host" disable --now linuxmix
 	    systemctl -M "$U@.host" --user daemon-reload
     done
 }
