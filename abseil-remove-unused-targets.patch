@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2025-11-19 22:40:05.000000000 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2025-12-07 12:43:32.410412858 +0100
+--- third_party/abseil-cpp/BUILD.gn	2026-01-07 01:50:30.000000000 +0100
++++ third_party/abseil-cpp/BUILD.gn	2026-01-16 22:38:25.036291859 +0100
 @@ -57,8 +57,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -12,7 +12,15 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/base:no_destructor",
      "//third_party/abseil-cpp/absl/base:nullability",
      "//third_party/abseil-cpp/absl/base:prefetch",
-@@ -80,13 +78,9 @@
+@@ -67,7 +65,6 @@
+     "//third_party/abseil-cpp/absl/container:fixed_array",
+     "//third_party/abseil-cpp/absl/container:flat_hash_map",
+     "//third_party/abseil-cpp/absl/container:flat_hash_set",
+-    "//third_party/abseil-cpp/absl/container:hash_container_defaults",
+     "//third_party/abseil-cpp/absl/container:inlined_vector",
+     "//third_party/abseil-cpp/absl/container:node_hash_map",
+     "//third_party/abseil-cpp/absl/container:node_hash_set",
+@@ -81,13 +78,9 @@
      "//third_party/abseil-cpp/absl/hash",
      "//third_party/abseil-cpp/absl/log:absl_check",
      "//third_party/abseil-cpp/absl/log:absl_log",
@@ -26,7 +34,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/memory",
      "//third_party/abseil-cpp/absl/meta:type_traits",
      "//third_party/abseil-cpp/absl/numeric:bits",
-@@ -97,7 +91,6 @@
+@@ -98,7 +91,6 @@
      "//third_party/abseil-cpp/absl/status",
      "//third_party/abseil-cpp/absl/status:statusor",
      "//third_party/abseil-cpp/absl/strings",
@@ -34,7 +42,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/strings:cord",
      "//third_party/abseil-cpp/absl/strings:has_ostream_operator",
      "//third_party/abseil-cpp/absl/strings:str_format",
-@@ -113,14 +106,11 @@
+@@ -114,14 +106,11 @@
    # Dependencies that preferably shouldn't be public in chromium.
    public_deps += [
      # public in abseil, but deprecated in chromium, yet used.
@@ -49,16 +57,16 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
    ]
  
    if (is_component_build) {
-@@ -133,7 +123,7 @@
+@@ -134,7 +123,7 @@
  # Abseil testing utilities should only be included in test binaries.
- component("test_support") {
+ source_set("test_support") {
    testonly = true
 -  public_deps = [ "//third_party/abseil-cpp/absl/hash:hash_testing" ]
 +  public_deps = []
    deps = [ ":absl" ]
  }
  
-@@ -175,7 +165,6 @@
+@@ -176,7 +165,6 @@
      # the flag registration mechanism is problematic in component builds.
      "//third_party/abseil-cpp/absl/flags:config",
      "//third_party/abseil-cpp/absl/flags:flag",
@@ -66,7 +74,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/flags:parse",
      "//third_party/abseil-cpp/absl/flags:reflection",
      "//third_party/abseil-cpp/absl/flags:usage",
-@@ -253,21 +242,10 @@
+@@ -254,21 +242,10 @@
        deps = [
          "absl/algorithm:algorithm_test",
          "absl/algorithm:container_test",
@@ -88,7 +96,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/cleanup:cleanup_test",
          "absl/container:common_policy_traits_test",
          "absl/container:fixed_array_test",
-@@ -275,21 +253,15 @@
+@@ -276,21 +253,15 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -110,7 +118,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -313,7 +285,6 @@
+@@ -314,7 +285,6 @@
          "absl/log:vlog_is_on_test",
          "absl/log/internal:fnmatch_test",
          "absl/log/internal:stderr_log_sink_test",
@@ -118,7 +126,15 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/memory:memory_test",
          "absl/meta:type_traits_test",
          "absl/numeric:int128_test",
-@@ -334,12 +305,9 @@
+@@ -326,7 +296,6 @@
+         "absl/status:status_matchers_test",
+         "absl/status:status_test",
+         "absl/status:statusor_test",
+-        "absl/strings:append_and_overwrite_test",
+         "absl/strings:ascii_test",
+         "absl/strings:char_formatting_test",
+         "absl/strings:charset_test",
+@@ -336,12 +305,9 @@
          "absl/strings:cord_rep_btree_reader_test",
          "absl/strings:cord_rep_btree_test",
          "absl/strings:cord_rep_crc_test",
@@ -131,7 +147,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:cordz_test",
          "absl/strings:cordz_update_scope_test",
          "absl/strings:cordz_update_tracker_test",
-@@ -347,8 +315,6 @@
+@@ -349,8 +315,6 @@
          "absl/strings:has_absl_stringify_test",
          "absl/strings:has_ostream_operator_test",
          "absl/strings:match_test",
@@ -140,7 +156,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:str_format_arg_test",
          "absl/strings:str_format_bind_test",
          "absl/strings:str_format_checker_test",
-@@ -359,11 +325,7 @@
+@@ -361,11 +325,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
@@ -152,8 +168,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
          "absl/types:span_test",
---- third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-11-19 22:40:05.000000000 +0100
-+++ third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-12-07 12:43:32.421806501 +0100
+--- third_party/abseil-cpp/absl/profiling/BUILD.gn	2026-01-07 01:50:30.000000000 +0100
++++ third_party/abseil-cpp/absl/profiling/BUILD.gn	2026-01-16 22:38:25.047600645 +0100
 @@ -70,7 +70,6 @@
    deps = [
      "//third_party/abseil-cpp/absl/base",
@@ -162,7 +178,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/container:btree",
      "//third_party/abseil-cpp/absl/container:flat_hash_map",
      "//third_party/abseil-cpp/absl/strings",
-@@ -84,7 +83,6 @@
+@@ -85,7 +84,6 @@
    deps = [
      ":profile_builder",
      "//third_party/abseil-cpp/absl/base:config",
@@ -170,8 +186,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/status:statusor",
      "//third_party/abseil-cpp/absl/strings",
      "//third_party/abseil-cpp/absl/strings:string_view",
---- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-11-19 22:40:05.000000000 +0100
-+++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-12-07 12:43:32.482784199 +0100
+--- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2026-01-07 01:50:30.000000000 +0100
++++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2026-01-16 22:38:25.111694260 +0100
 @@ -18,7 +18,6 @@
    public = [ "distribution_caller.h" ]
    deps = [

@@ -4,13 +4,14 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=143.0.7499.192
+pkgver=144.0.7559.59
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
 _system_clang=1
+# ninja: error: '../../third_party/libc++/src/include/string', needed by 'obj/third_party/protobuf/protoc_cpp/enum.o', missing and no known rule to make it
 _system_stdlib=
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -20,7 +21,6 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git' 'compiler-rt')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
-        chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -31,8 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch
 )
-sha256sums=('01b2db3c4b89b96b3b18e889b7ef583ca243dd90d27f46c3c0115d298618501c'
-            '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
+sha256sums=('8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -197,9 +196,6 @@ prepare() {
 
   # Upstream fixes
 
-  # Fixes from NixOS
-  patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
-
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
     patch -Np1 -i ../compiler-rt-adjust-paths.patch
@@ -240,6 +236,11 @@ prepare() {
 
     # To link to rust libraries we need to compile with prebuilt clang
     ./tools/clang/scripts/update.py
+  else
+    # To use correct libadler2 lib
+    # See also: https://github.com/ungoogled-software/ungoogled-chromium/pull/3598
+    sed -i 's/rustc_nightly_capability = use_chromium_rust_toolchain/rustc_nightly_capability = true/' \
+      build/config/rust.gni
   fi
 
   # Remove bundled libraries for which we will use the system copies; this
