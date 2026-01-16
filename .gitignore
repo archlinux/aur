@@ -1,0 +1,7 @@
+# AUR build files
+/goviz-*/
+/pkg/
+/src/
+/goviz-*.tar.gz
+/*.pkg.tar.zst
+/*.log
