@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname=1oom
-pkgver=1.11
+pkgver=1.11.7
 pkgrel=1
 pkgdesc="1oom is a Master of Orion (1993) game engine recreation."
 arch=(x86_64)
@@ -12,7 +12,7 @@ source=(  "${pkgname}-${pkgver}.tar.gz::https://github.com/1oom-fork/${pkgname}/
           'Master_of_Orion_cover.png'
           '1oom.desktop'
           '1oom_classic_sdl2.sh' )
-md5sums=('44325ca2194734c651aef2efef66d1e4'
+md5sums=('a25fc726c8ae280201503607f02a5496'
          '49248e72b7ddc5209cca2c1c61099d85'
          'ccac2feb67cecfc30b8156edf106b7ca'
          '41b52627b2d52b477adcbc2a9a627b37')
