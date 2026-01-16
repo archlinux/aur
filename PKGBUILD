@@ -2,15 +2,15 @@
 
 pkgname=elephant-all-git
 pkgver=r405.bfd423d
-pkgrel=10
+pkgrel=11
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('libqalculate' 'wl-clipboard' 'imagemagick' 'fd' 'wtype' 'sqlite3' 'jq')
 makedepends=('go' 'git')
-conflicts=('elephant' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
-provides=('elephant' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
+conflicts=('elephant' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
+provides=('elephant' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 source=("${pkgname%-git}::git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 
@@ -28,7 +28,7 @@ build() {
     cd ../../internal/providers
 
     # Build each provider
-    for provider in archlinuxpkgs bitwarden dnfpackages bookmarks 1password bluetooth calc clipboard desktopapplications files menus nirisessions providerlist runner snippets symbols todo unicode websearch windows; do
+    for provider in archlinuxpkgs bitwarden dnfpackages bookmarks 1password bluetooth calc clipboard desktopapplications files menus nirisessions niriactions providerlist runner snippets symbols todo unicode websearch windows; do
         cd $provider
         go build -ldflags="-s -w" -buildvcs=false -buildmode=plugin -trimpath
         cd ..
@@ -42,7 +42,7 @@ package() {
 
     # Install all provider plugins
     cd ../../internal/providers
-    for provider in archlinuxpkgs bitwarden dnfpackages 1password bookmarks bluetooth calc clipboard desktopapplications files menus nirisessions providerlist runner snippets symbols todo unicode websearch windows; do
+    for provider in archlinuxpkgs bitwarden dnfpackages 1password bookmarks bluetooth calc clipboard desktopapplications files menus nirisessions niriactions providerlist runner snippets symbols todo unicode websearch windows; do
         install -Dm 755 $provider/$provider.so -t "${pkgdir}/usr/lib/elephant"
     done
 
