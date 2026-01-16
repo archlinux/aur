@@ -1,16 +1,15 @@
 # Maintainer : René Wagner <rwagner at rw-net dot de>
 
 pkgname='perl-feed-find'
-pkgver='0.12'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="Perl interface for libcurl"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
-depends=('perl-test-lwp-useragent' 'perl')
+depends=('perl-test-lwp-useragent' 'perl' 'perl-module-install' 'perl-class-errorhandler')
 url='https://metacpan.org/pod/Feed::Find'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/Feed-Find-${pkgver}.tar.gz")
-sha256sums=('e5ac20bdfd728426edb9328ebd501f70bbd575ec3fd2c57aec4910ddb78a9146')
 _distdir="Feed-Find-${pkgver}"
 
 build() {
@@ -39,3 +38,4 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+sha256sums=('39143f7e28ec3866fb124144a8c8d37ba6279029e9d33b521a00620ddfad8d07')
