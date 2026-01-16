@@ -1,6 +1,6 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=ferretdb
-pkgver=2.1.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="FerretDB is a proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ source=("ferretdb::git+https://github.com/FerretDB/FerretDB.git?signed#tag=v$pkg
         'ferretdb.target'
         'ferretdb.sysusers'
         'ferretdb.tmpfiles')
-sha256sums=('9cc1884c586e8c59bd771bed4cf7a77266fc300eee2674ab0fecc352eed0da56'
+sha256sums=('78d758529a3942b06603193c86bb671f4f68c86762aa27b5fc6fea880328e0e4'
             'b3516e8f231a47a1a3db6da17eca95cecb2d7853851b41680bba7b8eb6c2c651'
             '8bcca7a750e30b46ec3da089515563d214f6b79ee910ff5567e30857e96cb163'
             'deee0ed48bbf015aa230f9cf87764217ddd039dfec19172518db3db902cdda22'
