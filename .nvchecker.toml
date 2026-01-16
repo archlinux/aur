@@ -1,0 +1,5 @@
+[bazel-remote]
+source = 'github'
+github = 'buchgr/bazel-remote'
+use_max_tag = true
+prefix = 'v'
