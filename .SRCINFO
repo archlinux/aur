@@ -1,7 +1,7 @@
 pkgbase = python-pygad
 	pkgdesc = A Python 3 Library for Building the Genetic Algorithm and Training Machine Learning Algorithms
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahmedfgad/GeneticAlgorithmPython
 	arch = any
 	license = BSD
