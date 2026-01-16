@@ -1,6 +1,6 @@
 pkgbase = mycelica
 	pkgdesc = Visual knowledge graph for connected thinking
-	pkgver = 0.8.0.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/Ekats/Mycelica
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = mycelica
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = openssl
-	source = mycelica-0.8.0.1.tar.gz::https://github.com/Ekats/Mycelica/archive/refs/tags/v0.8.0-1.tar.gz
-	sha256sums = 6ce6d266b9ccb28af073acf2ea0c5069436eacdea4173a6d0b45bd79cdaa97d6
+	depends = sqlite
+	depends = zstd
+	source = mycelica-0.8.3.tar.gz::https://github.com/Ekats/Mycelica/archive/refs/tags/v0.8.3.tar.gz
+	sha256sums = SKIP
 
 pkgname = mycelica
