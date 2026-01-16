@@ -2,7 +2,7 @@
 # Co-Maintainer: Cp Dong <cp-dong at outlook dot com>
 
 pkgname=apple-fonts
-pkgver=7.0.3
+pkgver=7.0.4
 pkgrel=1
 pkgdesc='Fonts for Apple platforms, including San Francisco and New York typefaces'
 arch=(any)
@@ -16,10 +16,10 @@ source=("SF-Pro-${pkgver}.dmg::${_baseurl}SF-Pro.dmg"
         "SF-Compact-${pkgver}.dmg::${_baseurl}SF-Compact.dmg"
         "SF-Mono-${pkgver}.dmg::${_baseurl}SF-Mono.dmg"
         "NY-${pkgver}.dmg::${_baseurl}NY.dmg")
-sha256sums=('2e4d7853988b734dc1af33b921d8d4c0e4400eac312924a0eab4b73a51fd69ae'
-            '08c34ffac2f99ec8702b4946044469f92dd88a7b1c0864e2d4b559565f8fb8e3'
-            '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
-            '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4')
+sha256sums=('bbb70b6c84442d234551ad8e5bf640808bbabdb98affc9175ea53def1a6103ed'
+            '99c30cfdc6e6380e7293221bef86e277dbd4eb0ca5f2757092f91df9594e770a'
+	    '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
+	    '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4')
 noextract=("${source[@]##*/}")
 
 prepare() {

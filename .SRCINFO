@@ -1,6 +1,6 @@
 pkgbase = apple-fonts
 	pkgdesc = Fonts for Apple platforms, including San Francisco and New York typefaces
-	pkgver = 7.0.3
+	pkgver = 7.0.4
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = apple-fonts
 	noextract = SF-Compact.dmg
 	noextract = SF-Mono.dmg
 	noextract = NY.dmg
-	source = SF-Pro-7.0.3.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
-	source = SF-Compact-7.0.3.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg
-	source = SF-Mono-7.0.3.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
-	source = NY-7.0.3.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg
-	sha256sums = 2e4d7853988b734dc1af33b921d8d4c0e4400eac312924a0eab4b73a51fd69ae
-	sha256sums = 08c34ffac2f99ec8702b4946044469f92dd88a7b1c0864e2d4b559565f8fb8e3
+	source = SF-Pro-7.0.4.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
+	source = SF-Compact-7.0.4.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg
+	source = SF-Mono-7.0.4.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
+	source = NY-7.0.4.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg
+	sha256sums = bbb70b6c84442d234551ad8e5bf640808bbabdb98affc9175ea53def1a6103ed
+	sha256sums = 99c30cfdc6e6380e7293221bef86e277dbd4eb0ca5f2757092f91df9594e770a
 	sha256sums = 6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945
 	sha256sums = 1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4
 
