@@ -6,8 +6,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-rav1e
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 arch=('any')
 pkgdesc="An AV1 encoder focused on speed and safety (Android ${_android_arch})"
 url="https://github.com/xiph/rav1e/"
@@ -18,11 +18,11 @@ makedepends=('android-rust'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/xiph/rav1e/archive/refs/tags/v${pkgver}.tar.gz"
         "Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock")
-md5sums=('2e48f60bea23049a750f0721e30cdd54'
-         '3c8e14548d37d9fd0efad829bb979e76')
+md5sums=('7885b14bf77f7739550685dccefb3c6a'
+         '63514dfe6659a0461927637aca6e576b')
 
 prepare() {
-    cd "${srcdir}/rav1e-$pkgver"
+    cd "${srcdir}/rav1e-${pkgver}"
     source android-rust-env ${_android_arch}
     android_rust_prepare
 
@@ -33,23 +33,27 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/rav1e-$pkgver"
+    cd "${srcdir}/rav1e-${pkgver}"
     source android-rust-env ${_android_arch}
 
+    export CARGO_BUILD_JOBS=$(nproc)
     android_cargo_cbuild \
         --no-default-features \
-        --features asm,threading,signal_support \
+        --features threading,signal_support \
         --manifest-path Cargo.toml
 }
 
 package() {
-    cd "${srcdir}/rav1e-$pkgver"
+    cd "${srcdir}/rav1e-${pkgver}"
     source android-rust-env ${_android_arch}
 
+    export CARGO_BUILD_JOBS=$(nproc)
     android_cargo_cinstall \
         --destdir "${pkgdir}" \
-        --features asm,threading,signal_support \
+        --features threading,signal_support \
         --no-default-features
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
