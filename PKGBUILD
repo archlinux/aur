@@ -96,7 +96,6 @@ check() {
 	unset "${!GIT_@}"
 	cargo test \
 		--frozen \
-		--release \
 		--all-features \
 		# EOL
 	)
