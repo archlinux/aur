@@ -1,32 +1,40 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Sasha Marie te Rehorst <sasha.marieterehorst@gmail.com>
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami-addons-git
-pkgver=0.3.r0.g917a0fa
+_pkgname=kirigami-addons
+pkgver=1.11.0.r6.ge4c4e0c
 pkgrel=1
-pkgdesc="Add-ons for the Kirigami framework"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+pkgdesc="Add-ons for the Kirigami framework (Git version)"
+arch=(x86_64)
 url="https://invent.kde.org/libraries/kirigami-addons"
-license=(GPL3)
-depends=('ki18n' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules')
-provides=(kirigami-addons)
+license=(GPL-2.0-or-later LGPL-2.1-or-later)
+depends=(gcc-libs glibc kcolorscheme kconfig kcoreaddons kcrash kglobalaccel kguiaddons ki18n kiconthemes kirigami kitemmodels ksvg qt6-base qt6-declarative qt6-multimedia sonnet)
+makedepends=(git extra-cmake-modules)
 conflicts=(kirigami-addons)
-source=("git+${url}.git")
+provides=(kirigami-addons)
+source=("git+https://invent.kde.org/libraries/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
-  )
+  cd "$_pkgname"
+  local _ver
+  _ver="$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  if [ -z "$_ver" ]; then
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  else
+    echo "$_ver"
+  fi
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
-  cmake --build build --config RelWithDebInfo
+  cmake -B build -S $_pkgname \
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
+  DESTDIR="$pkgdir" cmake --install build
 }
