@@ -12,16 +12,13 @@ User=wangyunchuan
 Group=wangyunchuan
 WorkingDirectory=/var/lib/wangyunchuan
 EnvironmentFile=-/etc/wangyunchuan/token_%i
+ExecStartPre=/usr/bin/install -d -o wangyunchuan -g wangyunchuan -m 755 /var/log/wangyunchuan/%i
 
-ExecStartPre=/bin/mkdir -p /var/log/wangyunchuan/%i
-ExecStartPre=/bin/chown wangyunchuan:wangyunchuan /var/log/wangyunchuan/%i
-ExecStartPre=/bin/chmod 755 /var/log/wangyunchuan/%i
+ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
 
 StandardOutput=append:/var/log/wangyunchuan/%i/output.log
 StandardError=append:/var/log/wangyunchuan/%i/error.log
 SyslogIdentifier=wangyunchuan-%i
-
-ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
 
 # 安全设置
 NoNewPrivileges=true
