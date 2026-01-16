@@ -4,7 +4,7 @@
 
 _name=marimo
 pkgname=marimo
-pkgver=0.19.2
+pkgver=0.19.4
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -34,22 +34,22 @@ depends=(
 )
 
 optdepends=(
+    # LSP
+    'python-lsp-server: LSP server'
+    'python-lsp-ruff: LSP server'
+
+    # Sandbox (marimo edit --sandbox DIRECTORY)
+    'python-pyzmq: IPC communication for sandbox kernels'
+    'uv: Sandbox management'
+
     # SQL
     'python-duckdb: SQL cells support'
     'python-polars: SQL output back in Python'
     'python-sqlglot: SQL cells parsing'
 
-    # LSP
-    'python-lsp-server'
-    'python-lsp-ruff'
-
-    # MCP
-    'python-mcp: Model Context Protocol (MCP) support'
-    'python-pydantic'
-
     # Others
     'python-altair: Plotting in datasource viewer'
-    'python-openai: AI features'
+    'python-pydantic-ai-slim: AI features'
     'jupyter-nbformat: Export as IPYNB'
     'ruff: Formatting'
 )
@@ -63,7 +63,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e734b9f6f49943b052be27260befdf48b0f6c627d22fa81259ca48b303df4de6')
+sha256sums=('eec3b765c3fd98d63e2017c56a024e779a6923cb56e7682e78876d4fe49409b7')
 
 build() {
     cd $_name-$pkgver || exit

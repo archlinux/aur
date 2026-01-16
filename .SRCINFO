@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.19.2
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -31,19 +31,19 @@ pkgbase = marimo
 	depends = python-narwhals>=2.0.0
 	depends = python-packaging
 	depends = python-msgspec>=0.19.0
+	optdepends = python-lsp-server: LSP server
+	optdepends = python-lsp-ruff: LSP server
+	optdepends = python-pyzmq: IPC communication for sandbox kernels
+	optdepends = uv: Sandbox management
 	optdepends = python-duckdb: SQL cells support
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-sqlglot: SQL cells parsing
-	optdepends = python-lsp-server
-	optdepends = python-lsp-ruff
-	optdepends = python-mcp: Model Context Protocol (MCP) support
-	optdepends = python-pydantic
 	optdepends = python-altair: Plotting in datasource viewer
-	optdepends = python-openai: AI features
+	optdepends = python-pydantic-ai-slim: AI features
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.2.tar.gz
-	sha256sums = e734b9f6f49943b052be27260befdf48b0f6c627d22fa81259ca48b303df4de6
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.4.tar.gz
+	sha256sums = eec3b765c3fd98d63e2017c56a024e779a6923cb56e7682e78876d4fe49409b7
 
 pkgname = marimo
