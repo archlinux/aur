@@ -1,6 +1,6 @@
 pkgbase = sudo-mcp
 	pkgdesc = ⚠️ INHERENTLY UNSAFE: MCP server allowing AI models to execute privileged commands via sudo/pkexec
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/hughesjs/sudo-mcp
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = sudo-mcp
 	depends = polkit
 	depends = sudo
 	options = !strip
-	source_x86_64 = sudo-mcp-0.3.3-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.3.3/sudo-mcp-x64-v0.3.3.tar.gz
-	sha256sums_x86_64 = 2899a1200d0edb36487d19bda26ee2e8c80b6029aa80af9d6eb50f712526c9a8
-	source_aarch64 = sudo-mcp-0.3.3-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.3.3/sudo-mcp-arm64-v0.3.3.tar.gz
-	sha256sums_aarch64 = f5562cfed7fa148b0b12fab96a9febb6a84c0c8f3b2108664ed5424a5da63eac
+	source_x86_64 = sudo-mcp-0.3.4-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.3.4/sudo-mcp-x64-v0.3.4.tar.gz
+	sha256sums_x86_64 = b9cd048be8b090fca2eebe24b36c31456c4b36169c8eaf373f14b5910a648cb5
+	source_aarch64 = sudo-mcp-0.3.4-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v0.3.4/sudo-mcp-arm64-v0.3.4.tar.gz
+	sha256sums_aarch64 = 9553e5667c5bef83be96d9c68e5ef9165e3748ec9978ece8c657f27fe1905c5d
 
 pkgname = sudo-mcp
