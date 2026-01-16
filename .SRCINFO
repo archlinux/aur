@@ -1,0 +1,16 @@
+pkgbase = flavorcli
+	pkgdesc = FlavorCLI is a fully-featured implementation of the Flavortown API, allowing for easier and streamlined interaction with HackClub's Flavortown.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lordseriouspig/flavorcli
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	makedepends = zip
+	depends = glibc
+	source = https://github.com/lordseriouspig/flavorcli/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = flavorcli
