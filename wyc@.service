@@ -9,7 +9,7 @@ User=wycuser
 Group=wycuser
 WorkingDirectory=/var/lib/wyc
 EnvironmentFile=-/etc/wyc/token_%i
-ExecStart=/usr/bin/wyc -token=${WYC_TOKEN}
+ExecStart=/usr/bin/wyc -token=${WYC_TOKEN} -run
 PrivateTmp=true
 Restart=always
 RestartSec=30s

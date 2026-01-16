@@ -1,8 +1,8 @@
 pkgbase = wyc
 	pkgdesc = 网云穿最便捷的端口映射
-	pkgver = 2.65.4
-	pkgrel = 12
-	url = https://xiaomy.net/
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://wangyunchuan.com
 	install = wyc.install
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
@@ -20,15 +20,15 @@ pkgbase = wyc
 	source = wyc.sysusers
 	source = wyc.install
 	source = LICENSE.txt
-	source = wyc-x86_64-2.65.4::https://down.xiaomy.net/linux/wyc_linux_64
-	source = wyc-aarch64-2.65.4::https://down.xiaomy.net/linux/wyc_linux_arm
-	sha256sums = ed6b21cf2324f01f0ca5b17588cae54f2c2ba8df570006234c0a9e7f2fff78a4
+	source = wyc-x86_64-3.0::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app
+	source = wyc-aarch64-3.0::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app
+	sha256sums = 5514409e682dc06dc1161156b54ab53cd948673ef6776ed73f57930cea8c0475
 	sha256sums = a97150926add15686b59d7aceda85b8cfae64aede84ccd31c97bc72dc4df3288
 	sha256sums = 0e944ff4a0982059d9e4828b120b81b1d61de53fb6fa73fc95562396aba87c71
 	sha256sums = 083cb2c4067200d8d428802678ed5a1a417c7474b07fdd81719c7509d326863a
 	sha256sums = 53c8f4da34ac71de834d7d0768c13ec043d22f4cd6a1c5da61fc910a39a3ecee
 	sha256sums = 3f3715937f9e3ae47d4deac0faef7b9072df4048083410454c6dc561688e5824
-	sha256sums = c299049774e59ee7a12645a461f571ace0f1b09dcca1b2707a49475ef0d18694
-	sha256sums = f161bc9c3d2cf3a7b12ba2c8b6a981e33cb2bd87b1b816b83cc14190c82290fa
+	sha256sums = 00529da711eb6b2cc1a1c25dcbcae6307088059aad427383bd38d138f13029ab
+	sha256sums = a53ad0268f50ed19f996de00d40977b3bd9c070cefeb8d23568ea16b61d43309
 
 pkgname = wyc
