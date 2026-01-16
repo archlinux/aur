@@ -3,7 +3,7 @@
 _pkgauthor=savoirfairelinux
 _pkgname=cqfd
 pkgname=${_pkgname}-bin
-pkgver=5.7.2
+pkgver=5.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Run commands with the same user and directory inside a docker container"
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${pkgver}.tzst::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.zst")
-sha256sums=('aac58a48f51463593dc96c527e4a1c79d39ede4231297e64474430fd0086b042')
+sha256sums=('c81a1daa137c412e1023e5b977bff12b170f611527723fe4ef6406fd7aa57b5f')
 
 noextract=("${_pkgname}-${pkgver}.tzst")
 

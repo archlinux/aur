@@ -1,6 +1,6 @@
 pkgbase = cqfd-bin
 	pkgdesc = Run commands with the same user and directory inside a docker container
-	pkgver = 5.7.2
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://github.com/savoirfairelinux/cqfd
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = cqfd-bin
 	depends = bash
 	provides = cqfd
 	conflicts = cqfd
-	noextract = cqfd-5.7.2.tzst
-	source = cqfd-5.7.2.tzst::https://github.com/savoirfairelinux/cqfd/releases/download/v5.7.2/cqfd-5.7.2-1-any.pkg.tar.zst
-	sha256sums = aac58a48f51463593dc96c527e4a1c79d39ede4231297e64474430fd0086b042
+	noextract = cqfd-5.8.0.tzst
+	source = cqfd-5.8.0.tzst::https://github.com/savoirfairelinux/cqfd/releases/download/v5.8.0/cqfd-5.8.0-1-any.pkg.tar.zst
+	sha256sums = c81a1daa137c412e1023e5b977bff12b170f611527723fe4ef6406fd7aa57b5f
 
 pkgname = cqfd-bin
