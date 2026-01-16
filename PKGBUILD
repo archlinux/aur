@@ -1,8 +1,8 @@
 # Maintainer: nyoravim <nora@bedafamily.com>
 
 pkgname=libnyoravim-git
-pkgver=1.0.5
-pkgrel=6
+pkgver=1.0.6
+pkgrel=7
 pkgdesc="Personal C utility library."
 arch=("any")
 url="https://github.com/nyoravim/libnyoravim"
@@ -25,7 +25,7 @@ build() {
 
     cmake . -B build \
         -G "Unix Makefiles" \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DNV_BUILD_TESTS=OFF
