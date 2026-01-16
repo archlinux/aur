@@ -31,5 +31,5 @@ build() {
 
 package() {
     cd linuxmix
-    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/linuxmix"
 }
