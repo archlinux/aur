@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   'xapp-symbolic-icons'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4f1cd0d1dc7c79140d3a7b0c589d8acf91315c72428f56e37fadf0618286e32d')
+sha256sums=('14834bca23a8b961c84c478cf9068f92cc6a5bb3a02fa2f2db9b37d348536931')
 
 prepare() {
   cd "$pkgname-$pkgver"
