@@ -1,0 +1,17 @@
+pkgbase = sysdupd
+	pkgdesc = A simple libadwaita system update checker and notifier
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hnpf/sysdupd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = libadwaita
+	depends = libportal-gtk4
+	depends = libayatana-appindicator
+	source = https://github.com/hnpf/sysdupd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8209dad2b7a6cac0661e5bab8c8476764825f0c55117e48f1e92607e5fbf004a
+
+pkgname = sysdupd
