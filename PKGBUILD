@@ -4,7 +4,7 @@
 # PKGBUILD variables.
 pkgname=battery-discharging
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Command-line tool that makes a sound whenever the computer battery is not connected to electrical power.'
 arch=(any)
 url='https://github.com/airvzxf/archlinux-battery-discharging'
@@ -12,9 +12,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'bash'
   'alsa-utils'
-  #'coreutils'
-  #'grep'
-  #'util-linux'
 )
 source=('archlinux-battery-discharging-1.0.3.tar.gz::https://github.com/airvzxf/archlinux-battery-discharging/archive/refs/tags/v1.0.3.tar.gz')
 md5sums=('27cee12c7f07bee6eb815dc4e867b0f4')
