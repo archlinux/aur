@@ -22,5 +22,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "$pkgname" "$pkgdir/usr/bin/music"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
