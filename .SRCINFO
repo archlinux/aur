@@ -1,6 +1,6 @@
 pkgbase = partup
 	pkgdesc = System initialization program formatting and writing flash devices
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/phytec/partup
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = partup
 	depends = squashfs-tools
 	depends = tar
 	depends = util-linux
-	source = https://github.com/phytec/partup/releases/download/v3.0.0/partup-3.0.0.tar.gz
-	sha256sums = 88d58599d2d78639579599a34810f5347c4363e42b24a86e9250fdeb882afb36
+	source = https://github.com/phytec/partup/releases/download/v3.0.1/partup-3.0.1.tar.gz
+	sha256sums = ce24e51d98ae46681e5293cee2617058ad2ae8bfb7d65fb0bbbc1d1499e60ffe
 
 pkgname = partup
