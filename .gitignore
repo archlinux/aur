@@ -1,0 +1,14 @@
+# Ignore the resulting packed binaries
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Ignore makepkg working directories
+pkg/
+src/
+
+# Ignore the specific directory of the cloned source code
+duc/
+
+# Ignore namcap log files
+namcap.log
