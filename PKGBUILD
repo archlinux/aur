@@ -1,6 +1,4 @@
 # Maintainer: 0xpix
-# AUR package for Hei-DataHub
-# Installs the AppImage system-wide with desktop integration
 
 pkgname=hei-datahub
 pkgver=0.64.0-beta
@@ -11,43 +9,37 @@ url="https://github.com/0xpix/Hei-DataHub"
 license=('MIT')
 depends=('fuse2')
 options=('!strip')
+
 source=(
-    "HeiDataHub-${pkgver}-x86_64.AppImage::https://github.com/0xpix/Hei-DataHub/releases/download/${pkgver}/HeiDataHub-${pkgver}-x86_64.AppImage"
-    "hei-datahub.desktop"
-    "hei-datahub.png::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/assets/png/icon_1024.png"
+  "HeiDataHub-${pkgver}-x86_64.AppImage::https://github.com/0xpix/Hei-DataHub/releases/download/${pkgver}/HeiDataHub-${pkgver}-x86_64.AppImage"
+  "hei-datahub.desktop"
+  "hei-datahub.png::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/assets/png/icon_1024.png"
+  "LICENSE::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/LICENSE"
 )
+
 sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
+  'SKIP'
+  'PUT_DESKTOP_SHA256'
+  'PUT_ICON_SHA256'
+  'PUT_LICENSE_SHA256'
 )
 
 package() {
-    # Create directories
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/share/applications"
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    # Install AppImage
-    install -Dm755 "HeiDataHub-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/HeiDataHub.AppImage"
+  install -Dm755 "HeiDataHub-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/HeiDataHub.AppImage"
 
-    # Create wrapper script
-    cat > "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
+  cat > "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
 #!/bin/bash
-# Wrapper script for Hei-DataHub AppImage
 exec /opt/hei-datahub/HeiDataHub.AppImage "$@"
 EOF
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-    # Install desktop entry
-    install -Dm644 "hei-datahub.desktop" "${pkgdir}/usr/share/applications/hei-datahub.desktop"
-
-    # Install icon
-    install -Dm644 "hei-datahub.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/hei-datahub.png"
-
-    # Install license (fetch from upstream)
-    curl -sL "https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/LICENSE" \
-        > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "hei-datahub.desktop" "${pkgdir}/usr/share/applications/hei-datahub.desktop"
+  install -Dm644 "hei-datahub.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/hei-datahub.png"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
