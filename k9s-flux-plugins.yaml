@@ -40,3 +40,32 @@ plugins:
       - |
         flux -n $NAMESPACE suspend source git $NAME
         flux -n $NAMESPACE resume source git $NAME
+        flux -n $NAMESPACE reconcile source git $NAME
+  flux-imagerepo-reconcile:
+    shortCut: r
+    confirm: false
+    description: Reconcile Flux imagerepository
+    scopes:
+      - imagerepository
+    background: true
+    command: bash
+    args:
+      - -c
+      - |
+        flux -n $NAMESPACE suspend image repository $NAME
+        flux -n $NAMESPACE resume image repository $NAME
+        flux -n $NAMESPACE reconcile image repository $NAME
+  flux-imagepolicy-reconcile:
+    shortCut: r
+    confirm: false
+    description: Reconcile Flux imagepolicy
+    scopes:
+      - imagepolicy
+    background: true
+    command: bash
+    args:
+      - -c
+      - |
+        flux -n $NAMESPACE suspend image policy $NAME
+        flux -n $NAMESPACE resume image policy $NAME
+        flux -n $NAMESPACE reconcile image policy $NAME
