@@ -3,7 +3,7 @@
 
 _app_name=grist-desktop
 pkgname="${_app_name}-bin"
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/gristlabs/${_app_name
         "grist128.png"
         "grist192.png"
         "grist512.png")
-sha512sums=('10746fe90e7b6649fa507e9aa9b48784f595179b350d869129dee48ce3bc97e6acc3629a998a6aaa9903ed55a204665914f1eb29f94fed4093b457ed2785cf43'
+sha512sums=('1deaf93d1fd2fdf26141cb92ee5a91bc13cdbee19e42f5c33670432c56631d7e4a9f8f44f8aabc6ff434f5767c4a7be8269d895f8eb3ff65ae64c39ef2c700e5'
             '9ba082a4d41a7aba98f9fd62a6960142f48d1c4793035b5bd013604420d49f926e17b6931d4caf8a34a97be151cbbf0a781bf1341311352516e61d17b5027e16'
             'cadb1529099f5e3d7d4c5236fcb18a8ffe8eeb0f3045b50fa321789c262d8e4edd6b8db56b899e8327350020b5ccd703b709172290f04544e7dfdc697784d37b'
             'd90b965e4426d04e6df6fb8374a66f9b8c30b8429ed0dbbf1a366403d1fe8be872e08e9ccdfff07b0c633df2218e83c86b93fb53ab4f4157540ca31c9a092e00'
