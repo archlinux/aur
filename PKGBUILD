@@ -2,7 +2,7 @@
 
 pkgname=linuxmix-git
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
 
@@ -20,15 +20,18 @@ install=linuxmix.install
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    cd linuxmix
     cargo fetch --locked --target host-tuple
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    cd linuxmix
     cargo build --release --frozen --all-features
 }
 
 package() {
+    cd linuxmix
     install -Dm0755 -t "$pkgdir/usr/bin" "target/release/linuxmix"
 }
