@@ -1,7 +1,7 @@
 pkgbase = airshipper
 	pkgdesc = The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/veloren/airshipper
 	install = airshipper.install
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = airshipper
 	optdepends = pipewire-alsa: audio support on pipewire
 	noextract = airshipper.desktop
 	noextract = veloren.png
-	source = airshipper-0.17.0::https://gitlab.com/veloren/airshipper/-/jobs/artifacts/v0.17.0/download?job=linux-x86_64
+	source = airshipper-0.17.0::https://gitlab.com/veloren/airshipper/-/jobs/12663790930/artifacts/download
 	source = airshipper.desktop
 	source = airshipper.install
 	source = veloren.png
-	sha512sums = 38e9e04a3fc9224ab273312a3cea5fe40e25fb5c65d613500c36805edc284c358bc73ba2f1d3ba9ed1784093a197f949227b6c92cd7128b0937b1d9dcbc9cc24
+	sha512sums = e976d59305c8222ad994822397ac2dadb29271f513066eb478a3d7b9c660ea24aa976cbba694bd66476ab76021f616176899f37b87dbda9004fee9f67010b414
 	sha512sums = 4937c26f412c07946ccadacb5a6951e5f42af46b5e44e05a38a6628c09c2a1dbaf98ceec846f5487632a06f38fb8d7453928315ab952908b606716d7370ce606
 	sha512sums = ce561587113480c8485892983eed16aca6979afa024cc8e7842fd349896696e3bee825ca0214cbdcc8fb972f432957a172df9adc7daa8bf2a7bc2b2828c09928
 	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
