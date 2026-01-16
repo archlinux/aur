@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie (yochananmarqos) <mark.wagie@proton.me>
 
 pkgname=xapp-symbolic-icons-git
-pkgver=1.0.7+0
+pkgver=1.0.9+0
 pkgrel=1
 pkgdesc="A set of symbolic icons for GTK applications and projects (git)"
 arch=('any')
