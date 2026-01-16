@@ -1,0 +1,15 @@
+pkgbase = r-perry
+	pkgdesc = Resampling-Based Prediction Error Estimation for Regression Models
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=perry
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r>=3.1.0
+	depends = r-ggplot2
+	source = https://cran.r-project.org/src/contrib/perry_0.3.1.tar.gz
+	b2sums = dd465954d38db061d6f37fa8ad25dc1a2489ade691ba82178ad2e03cd963e017eaf9c8a0257e28b2b68e6c5526c2319d084225e3a18efe72d46605e0b04577f7
+
+pkgname = r-perry
