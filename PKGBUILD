@@ -7,7 +7,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.2.42.g03c18b2
-pkgrel=2
+pkgrel=3
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -29,6 +29,8 @@ optdepends=(
 	'python-rich: pretty printing logs'
 	'wine: running studiomdl'
 )
+
+provides=('casual-pre-loader')
 
 install="${_pkgname}.install"
 
