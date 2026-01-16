@@ -1,3 +1,33 @@
+2026.01.16, v19.1.5
+
+feature:
+- 450f1461 client: improve testability
+- d979e949 server: env: migrate to ESM
+
+2026.01.15, v19.1.4
+
+feature:
+- 6e778a35 client: sort: migrate to ESM
+- e27ef51d client: sort: migrate to ESM
+- 917f5851 client: load-module: migrate to ESM
+- 9950caca client: get-json-from-file-table: migrate to ESM
+
+2026.01.15, v19.1.3
+
+feature:
+- f903c5c9 cloudcmd: multi-rename v3.0.0
+
+2026.01.14, v19.1.2
+
+fix:
+- 9e2c5ac6 client: edit-names: group rename not renaming (#453)
+- f0dcbe94 client: key: config
+
+feature:
+- 6856207d server: env -> env.parse
+- dc99417c client: key: get rid of mock-require
+- 4bb7d704 client: modules: view: get rid of mock-require
+
 2026.01.12, v19.1.1
 
 feature:
