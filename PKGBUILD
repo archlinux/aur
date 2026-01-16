@@ -1,7 +1,7 @@
 # Maintainer: Reverier-Xu <reverier.xu@outlook.com>
 
 pkgname=wsrx-appimage
-pkgver=0.5.14
+pkgver=0.5.15
 pkgrel=1
 pkgdesc="WebSocket Reflector X"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgoriginalname}")
 conflicts=("${_pkgoriginalname}-git")
 # https://github.com/XDSEC/WebSocketReflectorX/releases/download/0.4.3/WebSocketReflectorX-0.4.3-linux-gnu-x86_64.AppImage
 source=("https://github.com/XDSEC/WebSocketReflectorX/releases/download/${pkgver}/${_pkgfile}")
-sha256sums=('61284e780f66cbfef38f67d39f702101f3f545fe877bf3440bb242b2a0979d69')
+sha256sums=('e680500f3e275b1ce12a96cf347c7d88fec73a3a9d456343456fd37246b0b948')
 
 _installdir="/opt/${_pkgoriginalname}"
 
