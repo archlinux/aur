@@ -1,3 +1,4 @@
+# Maintainer: FreehuntX freehuntx at web dot de
 pkgbase=godot-next-bin
 pkgname=('godot-next-bin' 'godot-next-mono-bin')
 pkgver=4.6beta3
@@ -46,7 +47,7 @@ package_godot-next-mono-bin() {
     bsdtar -xf "${_filename_mono}" -C "$pkgdir/opt/godot-next-mono"
     
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/godot-next-mono/Godot_v${_pkgver_url}_mono_linux.x86_64" "$pkgdir/usr/bin/godot-next-mono"
+    ln -s "/opt/godot-next-mono/Godot_v${_pkgver_url}_mono_linux_x86_64/Godot_v${_pkgver_url}_mono_linux.x86_64" "$pkgdir/usr/bin/godot-next-mono"
 
     install -Dm644 "$srcdir/godot-next-mono.desktop" "$pkgdir/usr/share/applications/godot-next-mono.desktop"
 }
