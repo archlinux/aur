@@ -73,10 +73,10 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.13:"
-    echo "      - GPU isolation mode for hybrid graphics laptops"
-    echo "      - Lets dGPU sleep between transcriptions, saving battery"
-    echo "      - Enable with: gpu_isolation = true in [whisper] section"
+    echo "    New in 0.4.15:"
+    echo "      - Context window optimization for faster short transcriptions"
+    echo "      - Single-instance safeguard prevents duplicate daemons"
+    echo "      - Consolidated delay options: type_delay_ms, pre_type_delay_ms"
     echo ""
 }
 
