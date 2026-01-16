@@ -1,7 +1,7 @@
 # Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
 # Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-git
-pkgver=r1856.0e5b339
+pkgver=r2195.3702cc0
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -16,7 +16,6 @@ depends=(
   "glibc"
   "libarchive"
   "libbsd"
-  "libdrm"
   "libgl"
   "libnotify"
   "libpipewire"
@@ -27,7 +26,6 @@ depends=(
   "openssl"
   "systemd-libs"
   "vulkan-icd-loader"
-  "wayland"
   "x264"
 )
 
@@ -42,6 +40,8 @@ makedepends=(
   "libxrandr"
   "nlohmann-json"
   "vulkan-headers"
+  "ninja"
+  "qcoro"
 )
 
 optdepends=(
@@ -65,12 +65,13 @@ pkgver() {
 build() {
   cd "$srcdir/WiVRn"
   cmake -B build-server . \
+    -G Ninja \
     -DGIT_DESC=v${pkgver} \
     -DWIVRN_BUILD_SERVER=ON \
     -DWIVRN_BUILD_WIVRNCTL=ON \
     -DWIVRN_BUILD_CLIENT=OFF \
     -DWIVRN_BUILD_DASHBOARD=OFF \
-    -DWIVRN_OPENXR_MANIFEST_TYPE=filename \
+    -DWIVRN_OPENXR_MANIFEST_TYPE=relative \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DWIVRN_USE_VAAPI=ON \
@@ -90,7 +91,4 @@ package() {
 
   mkdir -p $pkgdir/usr/lib/environment.d
   echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 >$pkgdir/usr/lib/environment.d/wivrn.conf
-  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/wivrn.conf" <<EOF
-/usr/lib/wivrn
-EOF
 }
