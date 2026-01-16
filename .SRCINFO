@@ -1,0 +1,18 @@
+pkgbase = hyprlog
+	pkgdesc = Hyprland focus/activity logger
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/gusjengis/hyprlog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = hyprland
+	options = !strip
+	options = !debug
+	source_x86_64 = hyprlog-v0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/gusjengis/hyprlog/releases/download/v0.1.1/hyprlog-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0aa43be856d997d68867576c23e9bdd46adf773ebe62495ace8ec6d38590555f
+	source_aarch64 = hyprlog-v0.1.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gusjengis/hyprlog/releases/download/v0.1.1/hyprlog-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 99a73c67970031a2861f85a1c7ed3a0b87de0c52ce79b379a0c428ade322fc14
+
+pkgname = hyprlog
