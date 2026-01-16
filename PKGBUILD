@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-tv-remote
 _app_id="io.github.erenseymen.$pkgname"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 _scrcpy_ver=3.3.4
 pkgdesc="A GTK-based remote control for Android TV devices"
@@ -25,7 +25,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67333b42df5fa436393d11335c39f53fbad3c6a25378f5c09c1d582b7f4b0cd9')
+sha256sums=('ba26d00da62b1813cabcfb8bb3edfe63e7537146fb7f59ba53a675e97bc9270a')
 
 prepare() {
   cd "$pkgname-$pkgver"

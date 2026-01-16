@@ -1,6 +1,6 @@
 pkgbase = android-tv-remote
 	pkgdesc = A GTK-based remote control for Android TV devices
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/erenseymen/android-tv-remote
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-tv-remote
 	depends = python-pyasn1
 	depends = python-rsa
 	depends = scrcpy
-	source = android-tv-remote-1.1.1.tar.gz::https://github.com/erenseymen/android-tv-remote/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 67333b42df5fa436393d11335c39f53fbad3c6a25378f5c09c1d582b7f4b0cd9
+	source = android-tv-remote-1.1.2.tar.gz::https://github.com/erenseymen/android-tv-remote/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = ba26d00da62b1813cabcfb8bb3edfe63e7537146fb7f59ba53a675e97bc9270a
 
 pkgname = android-tv-remote
