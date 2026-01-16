@@ -1,14 +1,14 @@
 # Maintainer: Wimpy <vvinn.py[AT]gmail.com>
 pkgname=codebuddy-cli
-pkgver=2.34.0 
-pkgrel=3
+pkgver=2.36.0
+pkgrel=1
 pkgdesc="腾讯AI编程助手 CodeBuddy CLI 工具 (@tencent-ai/codebuddy-code)"
 arch=('any')
 url="copilot.tencent.com"
 license=('unknown')
 depends=('nodejs' 'npm')
-provides=('tcb' 'codebuddy')
-conflicts=('tcb' 'codebuddy')
+provides=('codebuddy')
+conflicts=('codebuddy')
 source=()
 sha256sums=()
 
