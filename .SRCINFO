@@ -1,6 +1,6 @@
 pkgbase = mp3rgain-bin
 	pkgdesc = Lossless MP3 volume adjustment - A modern 'mp3gain' replacement
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/M-Igashi/mp3rgain
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mp3rgain-bin
 	depends = gcc-libs
 	provides = mp3rgain
 	conflicts = mp3rgain
-	source = LICENSE-1.3.2::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.3.2/LICENSE
-	source = README-1.3.2.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.3.2/README.md
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.4.0/LICENSE
+	source = README-1.4.0.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.4.0/README.md
 	sha256sums = 8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135
 	sha256sums = 6abba954f7d081c38487f70d4d7d888fca8e3b33189c45a47d4086e61e70d0d3
-	source_x86_64 = mp3rgain-x86_64-1.3.2.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v1.3.2/mp3rgain-v1.3.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e72ec2a5688e862fb309561120a55696126e8d7a3cffebec9a743264d9193b56
+	source_x86_64 = mp3rgain-x86_64-1.4.0.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v1.4.0/mp3rgain-v1.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6c9386048bb33b5da56b853717315c0eb98390d38a65879f1d736f6f717ccb93
 
 pkgname = mp3rgain-bin
