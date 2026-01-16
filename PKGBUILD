@@ -285,6 +285,8 @@ package() {
     -e 's/@@MENUNAME@@/Chromium/g' \
     -e 's/@@PACKAGE@@/chromium/g' \
     -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
+    -e 's|@@URI_SCHEME@@|x-scheme-handler/chromium;|g' \
+    -e 's/@@EXTRA_DESKTOP_ENTRIES@@//g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
