@@ -1,5 +1,5 @@
 pkgname=mingw-w64-openal
-pkgver=1.24.3
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja')
 options=('!debug' '!strip' '!buildflags' 'staticlibs')
 source=("https://openal-soft.org/openal-releases/openal-soft-${pkgver}.tar.bz2")
-sha256sums=('cb5e6197a1c0da0edcf2a81024953cc8fa8545c3b9474e48c852af709d587892')
+sha256sums=('f671087c9043b1e92cd0b125af6f43663249d3c02bc6d580d774a47a91050e0e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,20 +17,21 @@ build() {
   for _arch in ${_architectures}; do
     BUILD_OPTS=("-DCMAKE_INSTALL_PREFIX=/usr/${_arch}"
       '-DCMAKE_BUILD_TYPE=Release'
+      '-DALSOFT_ENABLE_MODULES=OFF'
       '-DALSOFT_EXAMPLES=OFF'
+      '-DALSOFT_TESTS=OFF'
       '-DALSOFT_UTILS=OFF')
 
     ${_arch}-cmake -S openal-soft-${pkgver} -B build/${_arch}-static -G Ninja \
       -DBUILD_SHARED_LIBS=OFF \
       -DLIBTYPE=STATIC \
       ${BUILD_OPTS[@]}
+    cmake --build build/${_arch}-static
 
     ${_arch}-cmake -S openal-soft-${pkgver} -B build/${_arch} -G Ninja \
       -DBUILD_SHARED_LIBS=ON \
       -DLIBTYPE=SHARED \
       ${BUILD_OPTS[@]}
-
-    cmake --build build/${_arch}-static
     cmake --build build/${_arch}
   done
 }
