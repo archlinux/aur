@@ -1,0 +1,17 @@
+pkgbase = r-robusthd
+	pkgdesc = Robust Methods for High-Dimensional Data
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=robustHD
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r>=3.1.0
+	depends = r-ggplot2
+	depends = r-perry
+	depends = r-robustbase
+	source = https://cran.r-project.org/src/contrib/robustHD_0.8.3.tar.gz
+	b2sums = fab7607b5e50adf03604031f2c3ca260c7c895778492cc638689cf131ec36be407b66c80072ad2cfe375aef91f4cda91c82bc11bebda84f8456207fb16dcff15
+
+pkgname = r-robusthd
