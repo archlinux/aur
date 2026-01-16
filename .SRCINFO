@@ -1,6 +1,6 @@
 pkgbase = rg-sens-git
 	pkgdesc = A fast, customizable system monitoring dashboard for Linux (git version)
-	pkgver = 0.6.2.r0.g0000000
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/hilgardt-collab/rg-Sens
 	install = rg-sens.install
