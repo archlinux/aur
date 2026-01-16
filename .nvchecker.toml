@@ -1,4 +1,5 @@
 [plasma-login-manager-git]
-source = "github"
-github = "KDE/plasma-login-manager/"
-use_max_tag = "true"
+source = "git"
+git = "https://invent.kde.org/plasma/plasma-login-manager.git"
+branch = "master"
+use_commit = true

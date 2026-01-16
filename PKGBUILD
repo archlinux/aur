@@ -5,42 +5,44 @@
 
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
-pkgver=r1883.d8a3065
-pkgrel=5
+pkgver=r1940.c1ee441
+pkgrel=2
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
 license=('CC-BY-3.0 AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-only OR GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later')
 depends=(
-    kpackage
-    layer-shell-qt
-    qt6-declarative
-    libplasma
-    kdbusaddons
-    kio
-    kconfig
-    kwindowsystem
-    kirigami
-    plasma-workspace
-    kcoreaddons
-    qt6-base
-    kservice
-    kauth
-    kcmutils
-    ki18n
-    libxau # Hard dependency upstream
+    'kpackage'
+    'layer-shell-qt'
+    'qt6-declarative'
+    'libplasma'
+    'kdbusaddons'
+    'kio'
+    'kconfig'
+    'kwindowsystem'
+    'kirigami'
+    'plasma-workspace'
+    'libplasma>=6.5.90'
+    'kcoreaddons'
+    'qt6-base'
+    'kservice'
+    'kauth'
+    'kcmutils'
+    'ki18n'
+    'libxau' # Hard dependency upstream
 )
 makedepends=(
-    extra-cmake-modules
-    cmake
-    git
-    qt6-tools
+    'extra-cmake-modules'
+    'cmake'
+    'git'
+    'qt6-tools'
 )
 source=(
     git+https://invent.kde.org/plasma/plasma-login-manager
 )
 b2sums=('SKIP')
 provides=(display-manager)
+conflicts=(plasma-login-manager)
 backup=(
     'usr/lib/pam.d/plasmalogin'
     'usr/lib/pam.d/plasmalogin-autologin'
