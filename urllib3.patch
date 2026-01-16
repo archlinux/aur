@@ -1,0 +1,13 @@
+diff --git a/python/setupwindow/POL_SetupFrame.py b/python/setupwindow/POL_SetupFrame.py
+index 33d73d38..525cea76 100755
+--- a/python/setupwindow/POL_SetupFrame.py
++++ b/python/setupwindow/POL_SetupFrame.py
+@@ -33,7 +33,7 @@ import lib.lng
+ import lib.playonlinux as playonlinux
+
+ lib.lng.Lang()
+-urllib.request.URLopener.version = Variables.userAgent  # Arg ...
++urllib.request.urlopen.version = Variables.userAgent  # Arg ...
+
+ from ui.PlayOnLinuxWindow import PlayOnLinuxWindow
+ from setupwindow.Downloader import Downloader

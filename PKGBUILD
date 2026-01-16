@@ -6,18 +6,18 @@
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=playonlinux
-pkgver=4.4.r47.g10f7853
-pkgrel=2
+pkgver=4.4.r54.ga91f598
+pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
 url="https://www.playonlinux.com/"
 license=('GPL')
 depends=('wine' 'imagemagick' 'xterm' 'python-wxpython' 'cabextract' 'unzip' 'mesa-utils' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which python-pipe)
+         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which python-standard-pipes)
 makedepends=(git)
 #source=(https://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PlayOnLinux/POL-POM-4/archive/refs/tags/4.4.tar.gz"
-source=("playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git#commit=10f7853c84f456f19289c22fe19a9a99f94d9dda"
+source=("playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git"
         PlayOnLinuxUrlHandler.desktop)
 options=(!strip)
 sha256sums=('SKIP'
@@ -35,6 +35,11 @@ build() {
 
   #make PREFIX=/usr
   #make DESTDIR="${pkgdir}" install
+}
+
+prepare() {
+    cd "${srcdir}/playonlinux4"
+    patch -Np1 -i ../../urllib3.patch
 }
 
 package() {
