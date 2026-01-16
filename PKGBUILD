@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('a50aabc449af7896195b0f5caa47328508b213d8979b13583199232757ca4e68')
+sha256sums=('8c742ca0d2c31facb9522d69e93302b980d81915f08726020ad67039fde442cd')
 #validpgpkeys=()
 
 build() {
