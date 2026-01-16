@@ -1,54 +1,55 @@
 pkgbase = perl-catalyst-runtime
 	pkgdesc = The Catalyst Framework Runtime
 	pkgver = 5.90132
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Catalyst-Runtime
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-fatal>=0
-	depends = perl-cgi-simple>=0
-	depends = perl-cgi-struct>=0
+	checkdepends = perl-test-fatal
+	depends = perl-cgi-simple
+	depends = perl-cgi-struct
 	depends = perl-class-c3-adopt-next>=0.07
 	depends = perl-class-load>=0.12
-	depends = perl-data-dump>=0
-	depends = perl-data-optlist>=0
-	depends = perl-html-parser>=0
+	depends = perl-data-dump
+	depends = perl-data-optlist
+	depends = perl-html-parser
 	depends = perl-http-body>=1.22
-	depends = perl-http-message>=0
-	depends = perl-hash-multivalue>=0
+	depends = perl-http-message
+	depends = perl-hash-multivalue
 	depends = perl-json-maybexs>=1.000000
-	depends = perl-mro-compat>=0
-	depends = perl-module-pluggable>=0
+	depends = perl-mro-compat
+	depends = perl-module-pluggable
 	depends = perl-moose>=2.1400
 	depends = perl-moosex-emulate-class-accessor-fast>=0.00903
 	depends = perl-moosex-getopt>=0.48
-	depends = perl-moosex-methodattributes>=0
+	depends = perl-moosex-methodattributes
 	depends = perl-path-class>=0.09
-	depends = perl-perlio-utf8-strict>=0
+	depends = perl-perlio-utf8-strict
 	depends = perl-plack>=0.9991
 	depends = perl-plack-middleware-fixmissingbodyinredirect>=0.09
 	depends = perl-plack-middleware-methodoverride>=0.12
 	depends = perl-plack-middleware-removeredundantbody>=0.03
 	depends = perl-plack-middleware-reverseproxy>=0.04
-	depends = perl-plack-test-externalserver>=0
-	depends = perl-safe-isa>=0
-	depends = perl-stream-buffered>=0
+	depends = perl-plack-test-externalserver
+	depends = perl-safe-isa
+	depends = perl-stream-buffered
 	depends = perl-string-rewriteprefix>=0.004
-	depends = perl-sub-exporter>=0
-	depends = perl-task-weaken>=0
+	depends = perl-sub-exporter
+	depends = perl-task-weaken
 	depends = perl-text-simpletable>=0.03
 	depends = perl-tree-simple>=1.15
-	depends = perl-tree-simple-visitorfactory>=0
+	depends = perl-tree-simple-visitorfactory
 	depends = perl-try-tiny>=0.17
 	depends = perl-uri>=1.65
-	depends = perl-uri-ws>=0.03
-	depends = perl-libwww>=0
+	depends = perl-libwww
 	depends = perl-namespace-clean>=0.23
 	depends = perl>=5.8.3
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90132.tar.gz
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90132.tar.gz
 	md5sums = ce3b03cc998fcef45d5a0bd49d923caf
 	sha512sums = 773875f0607179b5c0a929fe0a49d635613bb9f4924111b2a22617cdc63675947a378a0acad5c54c91133b345e817e0ce305c5aa35b53950308b9f3c6bf50519
+	b2sums = 9e928d456425bf104e3766975d706593583be3dc190f84744e484067d24bc5c69513b84e0a75a2f9c76f85628777da8526928869ee7fa07e19c237531eab020c
 
 pkgname = perl-catalyst-runtime
