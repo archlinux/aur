@@ -1,11 +1,12 @@
-pkgbase = osu-fetch-bin
+pkgbase = fetch-osu-bin
 	pkgdesc = fastfetch-like stats printing for osu!
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://codeberg.org/tsuniko/osufetch.git
+	url = https://codeberg.org/tsuniko/osufetch
 	arch = x86_64
 	license = 0BSD
-	source = osufetch-bin-1.0::https://codeberg.org/tsuniko/osufetch/releases/download/v1.0/osufetch
+	conflicts = osufetch-bin
+	source = fetch-osu-bin-1.0::https://codeberg.org/tsuniko/osufetch/releases/download/v1.0/osufetch
 	sha256sums = c00d841a0d7cbc6d11098e735d231ce4c8f9e53d652b87245c77911a1852fd66
 
-pkgname = osufetch-bin
+pkgname = fetch-osu-bin
