@@ -3,7 +3,7 @@
 _pkgauthor=thomasschafer
 _pkgname=scooter
 pkgname=${_pkgname}-bin
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="An interactive find and replace in the terminal"
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('af818a9cb6e45a1317662644ec51a15b2f2cba198796b7b39db317766d206863'
-            '1adf833687ac93486985ed24a8c4313b9f77df0c9f491d4c0c88c434f5c42241')
-sha256sums_x86_64=('79df3137444b616dda5788c72a40a4635b40117f4be55e093b9c22619a2fad32')
-sha256sums_aarch64=('0cd561defc1400c3eecf5c7cb71bcc87568290ccfe4171d068dabc126a7f437a')
+            'c8bab667b4b12e508a1139fb498dd9ae82e13abbae29d5b0ac86be3185a30980')
+sha256sums_x86_64=('53bef1f01507c9743e59d2d6ae326180f313f60ab99ed68e3f7753b1d9aa6f2a')
+sha256sums_aarch64=('1b7736552f0c22ef82edfee388d705e0a401a4bb11de69107c907635795f17cc')
 
 
 package() {
