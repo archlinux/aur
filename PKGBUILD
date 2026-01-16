@@ -2,7 +2,7 @@
 
 _pkgname='mi-create'
 pkgname="$_pkgname-git"
-# pkgver=v1.1.r72.gb8d30a6
+pkgver=v1.1.r72.gb8d30a6
 pkgrel=1
 pkgdesc="Unofficial watchface creator for Xiaomi wearables ~2021 and above"
 arch=('x86_64')
