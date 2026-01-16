@@ -1,6 +1,6 @@
 pkgbase = goviz
 	pkgdesc = A real-time terminal-based audio visualizer written in Go
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/iiTzDante/goviz
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goviz
 	license = MIT
 	makedepends = go
 	depends = alsa-lib
-	source = goviz-1.0.0.tar.gz::https://github.com/iiTzDante/goviz/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 043534b45fcd2cfe219369b539a91a118f897f1b5b3e967e70004910b48cb4ed
+	source = goviz-1.0.1.tar.gz::https://github.com/iiTzDante/goviz/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 7d2a7af72b610797ab26e68b608c9e75fa9a8f868dc05977642a58467b016f09
 
 pkgname = goviz

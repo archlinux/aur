@@ -1,6 +1,6 @@
 # Maintainer: iiTzDante <https://github.com/iiTzDante>
 pkgname=goviz
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A real-time terminal-based audio visualizer written in Go"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('043534b45fcd2cfe219369b539a91a118f897f1b5b3e967e70004910b48cb4ed')
+sha256sums=('7d2a7af72b610797ab26e68b608c9e75fa9a8f868dc05977642a58467b016f09')
 
 build() {
   cd "$pkgname-$pkgver"
