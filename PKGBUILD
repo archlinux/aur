@@ -1,6 +1,6 @@
 # Maintainer: Evan Sosenko <razorx@evansosenko.com>
 pkgname=worktrunk-bin
-pkgver=0.14.0
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Worktrunk is a CLI for git worktree management, designed for running AI agents in parallel."
 arch=('x86_64' 'aarch64')
