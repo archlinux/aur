@@ -3,7 +3,7 @@
 # Contributor: Angelo Verlain  <hey@vixalien.com>
 
 pkgname=supabase-bin
-pkgver=2.67.1
+pkgver=2.72.7
 pkgrel=1
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
@@ -16,8 +16,8 @@ conflicts=(supabase)
 source_x86_64=("supabase-$pkgver-x86_64.tar.gz::$_url/releases/download/v$pkgver/supabase_linux_amd64.tar.gz")
 source_aarch64=("supabase-$pkgver-aarch64.tar.gz::$_url/releases/download/v$pkgver/supabase_linux_arm64.tar.gz")
 
-sha256sums_x86_64=("7326f45a3354b6e44d948e4c6500ea9813247268887403ddfe9691ac2033f80e")
-sha256sums_aarch64=("a8ff29cf0acfda38f1da39bfd860f239dc4cee7bd91cac332380f62a88e438c5")
+sha256sums_x86_64=("4f345f54e9d29075131d3ec8862b03cc7854815b506926455897fc74e05e3f8a")
+sha256sums_aarch64=("9f88fa92392c4523e9be09967726a00c73763e5506e7c7c8b96d81258f83eefb")
 
 prepare() {
   cd "$srcdir"
