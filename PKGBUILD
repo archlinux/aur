@@ -2,7 +2,7 @@
 
 _name=langgraph-checkpoint-sqlite
 pkgname=python-$_name
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Library with a SQLite implementation of LangGraph checkpoint saver."
 arch=('any')
@@ -12,7 +12,12 @@ depends=('python' 'python-langgraph-checkpoint' 'python-aiosqlite' 'python-sqlit
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-rerunfailures')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('c6580138e6abfd2ade7ea49186c664d47ef28dc44538674fa47e50a8a5f8af83')
+sha256sums=('a34961c035944af0ee7af416f8f26fec25059b10387a69dcb13fc6cc59c30a25')
+
+prepare() {
+  cd "$srcdir"/${_name//-/_}-$pkgver
+  sed -i '/if not self.conn.is_alive():/{N;d;}' langgraph/checkpoint/sqlite/aio.py
+}
 
 build() {
     cd "$srcdir"/${_name//-/_}-$pkgver
@@ -23,6 +28,7 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
+    -p "no:flaky"
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
