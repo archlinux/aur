@@ -1,0 +1,7 @@
+# AUR build files
+/gomusic-*/
+/pkg/
+/src/
+/gomusic-*.tar.gz
+/*.pkg.tar.zst
+/*.log
