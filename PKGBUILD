@@ -1,13 +1,13 @@
 # Maintainer: Kosa Matyas <kosa03matyas@gmail.com>
 pkgname=hyprkcs-git
-pkgver=1.12.6
+pkgver=1.12.7
 pkgrel=1
 pkgdesc="A fast, minimal Hyprland keybind cheat sheet and editor written in Rust/GTK4"
 arch=('x86_64')
 url="https://github.com/kosa12/hyprKCS"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'glibc' 'gcc-libs')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'pkgconf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git")
