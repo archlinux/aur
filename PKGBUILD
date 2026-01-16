@@ -2,16 +2,16 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=runa
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"
-license=('MIT')
+license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8dac5baeafaab5c7240dd18f56b012d82cd140065c43846bb74ae0cd3edfdfb6')
+sha256sums=('e3b1bdf9b234b758ebf9c40077d26cd4aab5a75ebd28aa96c8475b32bce58d48')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -35,6 +35,7 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 target/release/rn -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 docs/configuration.md -t "$pkgdir/usr/share/docs/$pkgname/"
+    install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 docs/configuration.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
