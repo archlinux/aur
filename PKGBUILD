@@ -41,7 +41,7 @@ package() {
 
   # install icons
   for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
-    install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$size/apps" "icons/$size/org.photoqt.PhotoQt.png"
+    install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$size/apps" "icons/$size/apps/org.photoqt.PhotoQt.png"
   done
 
 }
