@@ -1,6 +1,6 @@
 pkgbase = nomacs
 	pkgdesc = A Qt image viewer
-	pkgver = 3.21.1
+	pkgver = 3.22.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/nomacs/nomacs
@@ -22,7 +22,7 @@ pkgbase = nomacs
 	depends = quazip-qt6
 	optdepends = qt6-imageformats: support additional image formats
 	optdepends = kimageformats: support QOI (Quite OK Image Format)
-	source = git+https://github.com/nomacs/nomacs.git#tag=3.21.1
-	b2sums = beb4af1e5a08104cf860f19f156962668ece3f7ec284e7c2d92761a500de26378cb3d5467ad23245b306150b077b61335e9833a17098eea0ee4fb09e48481820
+	source = git+https://github.com/nomacs/nomacs.git#tag=3.22.0
+	b2sums = d70c2147d2de758e5ff7a5652c17bb9ec6c42756ba52df2601e505139b035a53f30812659a60df378a66f0ab5c9a1449f7a14e797de1937ea39bad6d4bb93e0c
 
 pkgname = nomacs
