@@ -1,7 +1,7 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videocut
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter"
 url="https://github.com/kanehekili/VideoCut"
 license=('GPL-3.0-or-later')
@@ -17,7 +17,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm 644 *.py -t "${pkgdir}/opt/videocut"
+  install -Dm 644 "*.py" -t "${pkgdir}/opt/videocut"
   rm ${pkgdir}/opt/videocut/FFMPEGTests.py
   install -Dm 755 VideoCut.py -t "${pkgdir}/opt/videocut"
   install -Dm 755 EasyPlayer.py -t "${pkgdir}/opt/videocut"
