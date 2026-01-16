@@ -1,6 +1,6 @@
 pkgbase = rustfs
 	pkgdesc = High-performance distributed object storage for MinIO alternative.
-	pkgver = 1.0.0_alpha.79
+	pkgver = 1.0.0_alpha.80
 	pkgrel = 1
 	url = https://rustfs.com/en/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rustfs
 	depends = gcc-libs
 	depends = bzip2
 	options = !lto
-	source = rustfs-1.0.0-alpha.79.tar.gz::https://github.com/rustfs/rustfs/archive/refs/tags/1.0.0-alpha.79.tar.gz
+	source = rustfs-1.0.0-alpha.80.tar.gz::https://github.com/rustfs/rustfs/archive/refs/tags/1.0.0-alpha.80.tar.gz
 	source = console-0.0.12.tar.gz::https://github.com/rustfs/console/archive/refs/tags/v0.0.12.tar.gz
-	sha256sums = 1e8bcd61a0f8b7d08b671672bede5fd70a5cb1f09f957248f543460b455b4b69
+	sha256sums = 256d7b7f39fc1805bb8cf4003a4080e17e9fbfa4deb509e8f65ee048fb22f8ce
 	sha256sums = 97da67edd2d95941922010d5d0c18d30f42954ff557d683cfd386dc8829de7e7
 
 pkgname = rustfs
