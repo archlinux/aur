@@ -1,6 +1,6 @@
 pkgbase = deadlock-server-picker
 	pkgdesc = A native Linux tool to block/unblock Deadlock game server relays using iptables
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/shibne/DeadlockServerPicker-linux
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = deadlock-server-picker
 	optdepends = nftables: alternative firewall backend (modern replacement for iptables)
 	optdepends = bash-completion: for bash shell completions
 	optdepends = fish: for fish shell completions
-	source = deadlock-server-picker-1.2.0.tar.gz::https://github.com/shibne/DeadlockServerPicker-linux/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = SKIP
+	source = deadlock-server-picker-1.3.0.tar.gz::https://github.com/shibne/DeadlockServerPicker-linux/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = e1119152baf8803ec6abdf679e4f34ca2d8c6a5744275d4d252b0d3fc47bd36e
 
 pkgname = deadlock-server-picker
