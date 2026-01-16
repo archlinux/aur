@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <imlonghao@archlinuxcn.org>
 
 pkgname=statik
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Embed files into a Go executable"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ makedepends=("go")
 provides=('statik')
 conflicts=('statik')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('0fc7f0476b98ce25d2ad5fbfe1127ef5d0bd85007c77ed933853a6ac9d3dc10f989489a58e7def2cd01df6528294bf47273aaa4f6c0ac4cbcdf182f263f5a555')
+b2sums=('4e3e3364c4130f701f71898ffa947907526bae8f641299df8fd6a73073e1b58def97f51f0d0b99074a04d2354d0e3a5a1af6ebdaa9a4e17aa6a4087fa74f393e')
 
 build() {
   cd ${pkgname}-${pkgver}
