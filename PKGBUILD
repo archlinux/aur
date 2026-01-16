@@ -1,9 +1,10 @@
 pkgname=enumctl-bin
 pkgver=2026.01.14
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for enum"
 arch=('x86_64' 'aarch64')
 url="https://enum.co/"
+keywords=('enum' 'cli' 'command-line' 'enumctl')
 license=('custom')
 depends=('glibc')
 
