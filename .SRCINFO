@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-hwdata
 	pkgdesc = hardware identification databases (Android riscv64)
-	pkgver = 0.402
+	pkgver = 0.403
 	pkgrel = 1
 	url = https://github.com/vcrhonek/hwdata
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = android-riscv64-hwdata
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.402.tar.gz
+	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.403.tar.gz
 	validpgpkeys = 3C40194FB79138CE0F78FD4919C2F062574F5403
-	md5sums = 51ff7515170ca5d8b73549c505534a68
+	md5sums = 19c2aa3f46cd7fe25804e0a40d81d853
 
 pkgname = android-riscv64-hwdata
