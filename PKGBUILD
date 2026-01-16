@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/speak-to-ai
 
 pkgname=speak-to-ai
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
@@ -24,24 +24,28 @@ depends=(
 optdepends=(
     'ydotool: Alternative Wayland text input (better for GNOME)'
     'ffmpeg: Alternative audio recording'
+    'vulkan-icd-loader: GPU acceleration via Vulkan (falls back to CPU if unavailable)'
 )
 makedepends=(
     'go>=1.21'
     'gcc'
     'cmake'
     'git'
+    # Vulkan SDK for GPU acceleration
+    'vulkan-headers'
+    'shaderc'
 )
 options=('!lto')
 # Whisper.cpp version (pinned for reproducibility)
-_whisper_version=1.8.2
+_whisper_version=1.8.3
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AshBuk/speak-to-ai/archive/refs/tags/v${pkgver}.tar.gz"
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'f143a62b3844f5b781e9c90d4ef5c63ccf70c93e8b3577a2cf84f092bb4ab746'
-    'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
+    '2beb6df967c45c0f871d87c491f9cd444341fea280460921a2c9e9088ec99c49'
+    '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
 )
 
 prepare() {
@@ -70,7 +74,8 @@ build() {
         -DGGML_AVX=ON \
         -DGGML_AVX2=ON \
         -DGGML_FMA=ON \
-        -DGGML_F16C=ON
+        -DGGML_F16C=ON \
+        -DGGML_VULKAN=ON
     cmake --build build --parallel
     popd
 
