@@ -1,6 +1,6 @@
 pkgbase = libmtp-git
 	pkgdesc = Library implementation of the Media Transfer Protocol
-	pkgver = 1.1.22.r76.gdb70734
+	pkgver = 1.1.22.r161.g8c97970
 	pkgrel = 1
 	url = https://libmtp.sourceforge.net/
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = libmtp-git
 	depends = glibc
 	depends = libgcrypt
 	depends = libusb
-	provides = libmtp=1.1.22.r76.gdb70734
+	provides = libmtp=1.1.22.r161.g8c97970
+	provides = libmtp.so
 	conflicts = libmtp
 	options = staticlibs
 	source = git+https://github.com/libmtp/libmtp.git

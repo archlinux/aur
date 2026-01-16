@@ -5,7 +5,7 @@
 # Contributor: John Karahalis <john.karahalis@gmail.com>
 
 pkgname=libmtp-git
-pkgver=1.1.22.r76.gdb70734
+pkgver=1.1.22.r161.g8c97970
 pkgrel=1
 pkgdesc="Library implementation of the Media Transfer Protocol"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://libmtp.sourceforge.net/"
 license=('LGPL-2.1-or-later')
 depends=('glibc' 'libgcrypt' 'libusb')
 makedepends=('git' 'doxygen')
-provides=("libmtp=$pkgver")
+provides=("libmtp=$pkgver" 'libmtp.so')
 conflicts=('libmtp')
 options=('staticlibs')
 source=("git+https://github.com/libmtp/libmtp.git")
@@ -24,7 +24,7 @@ pkgver() {
   cd "libmtp"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -32,7 +32,8 @@ pkgver() {
 build() {
   cd "libmtp"
 
-  yes n | NOCONFIGURE=1 ./autogen.sh
+  autoreconf -fi
+  yes y | NOCONFIGURE=1 ./autogen.sh
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr"
