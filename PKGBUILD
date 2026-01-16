@@ -1,7 +1,7 @@
 # Maintainer: Dominik Stanisław Suchora <hexderm@gmail.com>
 
 pkgname='torge'
-pkgver=1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A shell script for searching for links on torrent sites'
 arch=('any')
