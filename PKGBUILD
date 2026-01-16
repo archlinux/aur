@@ -1,10 +1,10 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.25.12
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mind)"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://art.pixls.us/"
+url="https://artraweditor.github.io/"
 license=('GPL-3.0-only')
 options=(!debug !lto)
 depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'mimalloc' 'openmp' 'openexr' 'ctl')
@@ -35,4 +35,4 @@ package() {
 	cd "$srcdir/${pkgname}_build"
 	make DESTDIR="$pkgdir/" install
 }
-sha256sums=('2d883dfe4abaedfc5d88ee804ecd14892050925cef883f61fa120e9538303d48')
+sha256sums=('c879bc697af4a472f6df93ab59d965ffbf562af5e86f6b230bce2a1496d0d493')
