@@ -22,6 +22,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
