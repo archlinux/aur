@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -40,9 +40,9 @@ source=(
     "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
 )
 sha256sums=(
-    'fb24859e9c0583042b2870d70e932cb4966ba21ebd1672e89bc117822cb05d08'  # voxtype-avx2
-    'b6f0fdffb84bc47ef62f51ad71fe3763a6431d2d4b1ddf4e7014607f58b89a4b'  # voxtype-avx512
-    'c8e491d8d47089e22c4cc1ab445d85c41d455a9d3fd021e0084e2825fa0906b8'  # voxtype-vulkan
+    'c9e35399a1f14ee9e6f391809299df616365c15301a2fb40a1484fb0e8b39689'  # voxtype-avx2
+    '297bb1e0b2b8efa1a02c30aeeb0c8cb206df3dd2b3a1ea86008fed4e6f310fb2'  # voxtype-avx512
+    '8c05d5258e5dfb8ffc84cdeb04c26ab435d6a61dae3fec3dd469e08a244f6d27'  # voxtype-vulkan
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
     'SKIP'  # voxtype.bash
