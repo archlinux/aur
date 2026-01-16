@@ -1,7 +1,7 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 # Upstream contact: silx at esrf dot fr
 pkgname=python-pyfai
-pkgver=2025.03
+pkgver=2025.12.1
 pkgrel=1
 pkgdesc="Fast Azimuthal Integration in Python."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-silx: for additional functionality, like pyFAI-calib2')
 makedepends=('cython' 'meson-python' 'python-build' 'python-installer'
              'python-wheel')
 source=("https://github.com/silx-kit/pyFAI/archive/v${pkgver}.tar.gz")
-sha256sums=('ee5b9d459969611c0cf0bca4292a0e0edc69c5cf1277ba9e1f939c15ca21e6d8')
+sha256sums=('d079d47d2458e6d22707442014e374ed5f5739f8f8251df8af621fd87d0bec15')
 
 build() {
     cd "pyFAI-${pkgver}"
