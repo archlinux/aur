@@ -1,3 +1,4 @@
+# maintainer: soren <hnpf>
 pkgname=sysdupd
 pkgver=0.1.0
 pkgrel=1
