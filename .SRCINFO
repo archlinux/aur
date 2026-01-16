@@ -7,9 +7,9 @@ pkgbase = openchrom-bin
 	license = EPL-2.0
 	depends = org.freedesktop.secrets
 	depends = webkit2gtk
-	provides = openchrom=1.6.0-1
+	provides = openchrom=1.6.1-1
 	conflicts = openchrom
-	noextract = openchrom_linux.x86_64_1.6.0.tar.gz
+	noextract = openchrom_linux.x86_64_1.6.1.tar.gz
 	options = !strip
 	source = https://products.lablicate.com/openchrom/1.6.1/openchrom_linux.x86_64_1.6.1.tar.gz
 	source = openchrom.desktop
