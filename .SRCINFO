@@ -1,6 +1,6 @@
 pkgbase = arch-update-manager-bin
 	pkgdesc = A Linux Mint inspired GTK4-based update manager for Arch Linux (prebuilt binary)
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/destbg/arch-update-manager
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = arch-update-manager-bin
 	optdepends = yay: AUR helper support
 	provides = arch-update-manager
 	conflicts = arch-update-manager
-	source = arch-update-manager-1.4.2-x86_64.tar.gz::https://github.com/destbg/arch-update-manager/releases/download/1.4.2/arch-update-manager-1.4.2-x86_64.tar.gz
-	source = arch-update-manager-1.4.2.tar.gz::https://github.com/destbg/arch-update-manager/archive/refs/tags/1.4.2.tar.gz
-	sha256sums = 86025eba73262d6e92a580f4935696a842325d529d07d15ff90fff4ff3dbc16a
-	sha256sums = b904d16e464bbd34e6005d32c18f6862200a013beedb3e25b9b9549938a26077
+	source = arch-update-manager-1.5.0-x86_64.tar.gz::https://github.com/destbg/arch-update-manager/releases/download/1.5.0/arch-update-manager-1.5.0-x86_64.tar.gz
+	source = arch-update-manager-1.5.0.tar.gz::https://github.com/destbg/arch-update-manager/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = a53ae179be638696c85e53618cf1c622b8d8167f2a4a763161c2862a93a62ad2
+	sha256sums = 41cde217e3babba61be4b4789f1eae89796a735ea5b34f42a93667561cc8bf03
 
 pkgname = arch-update-manager-bin
