@@ -10,9 +10,9 @@ url='https://add0n.com/stylus.html'
 license=('GPL-3.0-only')
 depends=('firefox')
 _source_file_id=4661054
-source=('styl-us.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/styl_us-${pkgver}.xpi")
+source=('styl-us.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/styl_us-${pkgver}_qtD9vir.xpi")
 noextract=('styl-us.xpi')
-sha256sums=('f479caf673b2f1b1f821d16f5c341a52433542930a9a2597c81f0798b4ecaa32')
+sha256sums=('fed97d9b8cb8793d1b1f95c95abfaf7660377c0ba71d49ec48ffd3d676f66af1')
 
 package() {
   install -Dm644 'styl-us.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}.xpi"
