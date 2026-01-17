@@ -2,7 +2,7 @@
 
 pkgname=roboclaw-studio-git
 pkgver=0.1.0.r2.gec5ea8b
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio"
 arch=('x86_64')
 url="https://github.com/lazytatzv/motion_studio"
@@ -20,15 +20,15 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   pnpm install --frozen-lockfile
-  pnpm tauri build --bundles none
+  pnpm tauri build --bundles deb
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  install -Dm755 src-tauri/target/release/motion_studio \
-    "$pkgdir/usr/bin/roboclaw-studio"
+  bsdtar -xf src-tauri/target/release/bundle/deb/roboclaw-studio_*.deb -C "$pkgdir"
 
+  # Override desktop entry (optional)
   install -Dm644 packaging/aur/motion-studio.desktop \
     "$pkgdir/usr/share/applications/roboclaw-studio.desktop"
 
