@@ -1,7 +1,7 @@
 # Maintainer: Pablo Leazeta <prflr88@gmail.com>
 
 pkgname=mintsysadm
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="System Administration tool for Linux Mint (boot menu configuration and more)"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('git' 'mintcommon')
 optdepends=('grub: Grub bootloader configuration')
 provides=('mintsysadm-git')
 conflicts=('mintsysadm-git')
-source=("${pkgname}::git+https://github.com/linuxmint/${pkgname}.git#commit=b4b41e2341a9f3c6fd2e944d741a863b9b9fbaa3")
-sha256sums=('383d4e24d79e153a36d670a770cf062a348f1cf6743f1ed4821590ab5d8b4edd')
+source=("${pkgname}::git+https://github.com/linuxmint/${pkgname}.git#commit=7fc64d86a1f46ef512da69e633f8bbb174170c4a")
+sha256sums=('c03136d6be2cce2c52ae7b91815878874d5a05207bd90a805fc41212e3616da5')
 
 prepare() {
 cd "${srcdir}/${pkgname}/usr/lib/linuxmint/mintsysadm"
