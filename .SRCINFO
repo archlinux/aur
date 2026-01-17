@@ -1,0 +1,21 @@
+pkgbase = python-uefi-firmware
+	pkgdesc = Parse BIOS/Intel ME/UEFI firmware related structures.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/theopolis/uefi-firmware-parser
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = cython
+	depends = python
+	depends = glibc
+	source = uefi-firmware-parser-1.12.tar.gz::https://github.com/theopolis/uefi-firmware-parser/archive/v1.12.tar.gz
+	source = fix-setup.patch
+	b2sums = e68cfa8b128f0a094f89275a21da23333ab02d604e07875ec1146c8de829364a2b573582c69f06224a792b96ba1da69c78d2cc67a70632806bf3b7621e0110c2
+	b2sums = 3bfe9d2e8ac0e825dbca8619bd88ed8d3b875e35b7de43bbe42dffa00122ea589d1cf9864071e02544f1b848e3442a60427372867de7de6a54ff66c88b19d6f6
+
+pkgname = python-uefi-firmware

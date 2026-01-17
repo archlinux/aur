@@ -1,0 +1,28 @@
+diff --git a/setup.cfg b/setup.cfg
+index 5aef279..ddb7da9 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,2 +1,2 @@
+ [metadata]
+-description-file = README.rst
++description_file = README.rst
+diff --git a/setup.py b/setup.py
+index 49c3db8..313f3b5 100755
+--- a/setup.py
++++ b/setup.py
+@@ -69,7 +69,6 @@ setup(
+     url='https://github.com/theopolis/uefi-firmware-parser',
+     license='BSD',
+     packages=find_packages(exclude=('tests', 'docs')),
+-    test_suite="tests",
+     cmdclass={
+         "lint": LintCommand,
+     },
+@@ -93,7 +92,6 @@ setup(
+         'Development Status :: 4 - Beta',
+         'Intended Audience :: System Administrators',
+         'Topic :: Security',
+-        'License :: OSI Approved :: BSD License',
+         'Programming Language :: Python :: 3',
+     ],
+     keywords="security uefi firmware parsing bios",
