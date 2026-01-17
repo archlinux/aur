@@ -1,0 +1,14 @@
+pkgbase = mt7902-firmware-git
+	pkgdesc = Firmware files for MediaTek MT7902 WiFi 6E and Bluetooth chipset
+	pkgver = r204.7e6d6e3
+	pkgrel = 1
+	url = https://github.com/AnmiTaliDev/mt7902-firmware-git
+	arch = any
+	license = custom
+	makedepends = git
+	provides = mt7902-firmware
+	conflicts = mt7902-firmware
+	source = git+https://github.com/OnlineLearningTutorials/mt7902_temp.git
+	sha256sums = SKIP
+
+pkgname = mt7902-firmware-git
