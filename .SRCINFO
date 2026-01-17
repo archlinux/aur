@@ -1,0 +1,13 @@
+pkgbase = cnijlfpfilter-bin
+	pkgdesc = IJ Printer Driver Ver.10.22 (binary)
+	pkgver = 10.22
+	pkgrel = 1
+	url = https://www.usa.canon.com/content/canon/en/search.html?q=cnijlfpfilter-10.22-1-rpm.tar.gz&r=support
+	arch = x86_64
+	arch = aarch64
+	arch = mips64el
+	depends = cups
+	source = https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAxMjUzOTAy
+	sha256sums = f1524dc6007f2f9633f5ab0f2d9ebe50a3571847501dd9205f164773e3b0497e
+
+pkgname = cnijlfpfilter-bin
