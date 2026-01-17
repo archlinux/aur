@@ -17,6 +17,7 @@ pkgbase = inventory-md
 	optdepends = python-anthropic: Claude AI chat integration
 	optdepends = python-pyzbar: Barcode scanning
 	optdepends = python-easyocr: OCR text extraction
+	backup = etc/inventory-system/example.conf
 	source = inventory-md-0.3.2.tar.gz::https://github.com/tobixen/inventory-md/archive/refs/tags/v0.3.2.tar.gz
 	sha256sums = 7c32ccba98736678f58760fe906090ea57603b85be7b552256538b29eeeb4d0b
 
