@@ -1,6 +1,6 @@
 pkgbase = trzsz
 	pkgdesc = Simple file transfer tools, similar to lrzsz (rz/sz), and compatible with tmux.
-	pkgver = 1.1.8
+	pkgver = 1.2.0
 	pkgrel = 1
 	epoch = 0
 	url = https://trzsz.github.io/
@@ -8,11 +8,11 @@ pkgbase = trzsz
 	arch = i686
 	arch = aarch64
 	license = MIT
-	makedepends = go>=1.20.3
+	makedepends = go>=1.25.3
 	provides = trz
 	provides = tsz
 	provides = trzsz
-	source = https://github.com/trzsz/trzsz-go/archive/refs/tags/v1.1.8.tar.gz
-	md5sums = e102a86fe45b3ceda295e6f5c5685162
+	source = https://github.com/trzsz/trzsz-go/archive/refs/tags/v1.2.0.tar.gz
+	md5sums = f7fa197d4ff5ff74978107a26d17ac90
 
 pkgname = trzsz
