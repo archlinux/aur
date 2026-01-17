@@ -7,8 +7,8 @@
 
 pkgname=boringssl-git
 _pkgname=boringssl
-pkgver=0.20251124.0.174.gb648431a6e
-pkgrel=2
+pkgver=0.20251124.0.183.gdf08c3a55a
+pkgrel=1
 pkgdesc="BoringSSL is a fork of OpenSSL that is designed to meet Google's needs"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://boringssl.googlesource.com/boringssl"
@@ -27,12 +27,15 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
+
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=array-bounds"
+
     mkdir -p build
     cd build
     cmake \
         -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
         -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib/$_pkgname \
         -DCMAKE_INSTALL_BINDIR=bin/$_pkgname \
@@ -61,19 +64,19 @@ package() {
         install -Dm644 "$i" "$pkgdir/usr/share/doc/$_pkgname/$i"
     done
 
-    # Libraries - all under /usr/lib/boringssl/
+    # Libraries: Put them all under /usr/lib/boringssl/
     install -Dm755 build/libcrypto.so "$pkgdir/usr/lib/$_pkgname/libcrypto.so"
     install -Dm755 build/libssl.so "$pkgdir/usr/lib/$_pkgname/libssl.so"
     install -Dm755 build/libdecrepit.so "$pkgdir/usr/lib/$_pkgname/libdecrepit.so"
     install -Dm755 build/libpki.so "$pkgdir/usr/lib/$_pkgname/libpki.so"
     install -Dm755 build/libboringssl_gtest.so "$pkgdir/usr/lib/$_pkgname/libboringssl_gtest.so"
 
-    # Headers - under /usr/include/boringssl/
+    # Headers: Put them under /usr/include/boringssl/
     # BoringSSL uses include/openssl subdirectory for compatibility
     install -d "$pkgdir/usr/include/$_pkgname"
     cp -r include/openssl "$pkgdir/usr/include/$_pkgname/"
 
-    # Binary - under /usr/bin/boringssl/
+    # Binary: Put it under /usr/bin/boringssl/
     install -Dm755 build/bssl "$pkgdir/usr/bin/$_pkgname/bssl"
 
     echo "Fixing RPATHs with $ORIGIN..."
