@@ -41,7 +41,7 @@ prepare() {
 
 build() {
 	cd "endcord"
-	uv run build.py --lite
+	uv run build.py --lite --nuitka --clang
 	
 	# remove python 3.13
 	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
