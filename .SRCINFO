@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-typing
 	pkgdesc = Definitions not in the standard typing module that are needed for type annotation of CircuitPython code
 	pkgver = 1.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Typing
 	arch = any
 	license = MIT

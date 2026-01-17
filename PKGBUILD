@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-typing
 _pypi_pkgname=adafruit_circuitpython_typing
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Definitions not in the standard typing module that are needed for type annotation of CircuitPython code"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_Typing"
