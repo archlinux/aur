@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-libgcrypt
 	pkgdesc = General purpose cryptographic library based on the code from GnuPG (Android riscv64)
-	pkgver = 1.11.0
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://www.gnupg.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = android-riscv64-libgcrypt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.0.tar.bz2
-	md5sums = 321c4975cfd6a496f0530b65a673f9a4
+	source = https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.2.tar.bz2
+	md5sums = 84ce2ad07794b987fe6341b63cf5f537
 
 pkgname = android-riscv64-libgcrypt
