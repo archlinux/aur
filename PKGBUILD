@@ -1,6 +1,6 @@
 # Maintainer: daonm <daobilionusd@gmail.com>
 pkgname=gopac
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A warm Gruvbox TUI for pacman and AUR"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('gopac')
 conflicts=('gopac-git' 'gopac-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4cc6d2973aef6a64d0111e61a042a18055ed9400489098a046efe63801de6e80')
+sha256sums=('e835ebf32992c401428e3361ea9610d8e84d40ca79cf7e9ea9ab953318f1e5b1')
 
 build() {
   cd "$pkgname-$pkgver"
