@@ -1,0 +1,19 @@
+# See <https://www.freedesktop.org/software/systemd/man/latest/systemd.dnssd.html>
+[Service]
+# Do not change the service type. This will break discoverability.
+Type=_radicle-node._tcp
+
+# Recommendation for "Instance Name"
+# (see RFC 6763, Sec. 4.1.1, <https://datatracker.ietf.org/doc/html/rfc6763#section-4.1.1>):
+# Something that identifies your node, maybe it's alias, but could be something else.
+Name=%H
+
+# If your node is configured to listen on a different port, please change.
+Port=8776
+
+# To communicate your node's public key, please set
+# a TXT record with the contents:
+#
+#   "nid=<public key of your node>"
+#
+#TxtText="nid=z6…"

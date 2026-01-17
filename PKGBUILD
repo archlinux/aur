@@ -22,10 +22,16 @@ makedepends=(
 )
 source=(
 	"heartwood::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git"
-	"systemd.patch"
+	"radicle-node.system."{service,socket}
+	"radicle-node.user."{service,socket}
+	"radicle-node.dnssd"
 )
 b2sums=('SKIP'
-        '02a9d5d6a3dbcdb2f2192bf9ffa28569fcf1e95fa9a43bbbc98bc26aa9e3a7d32cb0fa84d89a560c4c9431f8a027b34d57bd10071c0b02f4b9ce5a4bd465edd1')
+        '14d3033ff232682b35d3f3a94436b86ad57f3be767e4681c18d1a8a4435968c31e0c36b5b617734035e75be144c99db7447be70741430962c614f0c17a59fecd'
+        'ef60f99e65177accd1b34447dab134ad26b576050ff15c9bfd6483bacaef801106a6ff5694383b7446b366818b1545c6506ccd6d1b153532b99b15361ddd8e41'
+        '18ade1de3d3195e8b4cfcb0c479d2f597b53cbb83bde559d69abd34587c8c45371c12e242621c92607c3202f2f4ee3fb21b462fc5150939f50744cc045baccff'
+        '46872e0bd50bbf1528321de5522a9af95227fe43f7880db50968cfd1572a719bd55b874f56f55cd5d4e653565504799d1e54ac16cabe29f65a08089985fdaa27'
+        '0276bce489e05115e7a63454aa0fa508d7bffba2add4249d1fcd449137104bc75882f5ff06077216fec5cbede5f2a1f8699e82bbc3fda3bf3b2354dfcf5dd0ac')
 
 pkgver() {
 	cd heartwood
@@ -34,9 +40,6 @@ pkgver() {
 
 prepare() {
 	cd heartwood
-
-	# sanitize provided systemd units
-	git apply -3 "$srcdir/systemd.patch"
 
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
@@ -138,14 +141,16 @@ package_radicle-node-git() {
 		target/dist/man/radicle-node.1 \
 		-t "$pkgdir/usr/share/man/man1"
 
+	for _t in service socket; do
+		install -Dm644 \
+			"$srcdir/radicle-node.system.$_t" \
+			"$pkgdir/usr/lib/systemd/system/radicle-node.$_t"
+		install -Dm644 \
+			"$srcdir/radicle-node.user.$_t" \
+			"$pkgdir/usr/lib/systemd/user/radicle-node.$_t"
+	done
 	install -Dm644 \
-		systemd/system/* \
-		-t "$pkgdir/usr/lib/systemd/system"
-	install -Dm644 \
-		systemd/user/* \
-		-t "$pkgdir/usr/lib/systemd/user"
-	install -Dm644 \
-		systemd/dnssd/* \
+		"$srcdir/radicle-node.dnssd" \
 		-t "$pkgdir/usr/share/doc/$pkgname/systemd"
 
 	install -Dm644 \
