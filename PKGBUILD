@@ -2,7 +2,7 @@
 # Maintainer: Esaias Westberg <esaias@westbergs.se>
 
 pkgname='gridlock-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A powerful TMUX session manager and automator'
 url='https://github.com/esaiaswestberg/gridlock'
@@ -13,16 +13,16 @@ conflicts=('gridlock')
 depends=('tmux')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/esaiaswestberg/gridlock/releases/download/v${pkgver}/gridlock_linux_arm64.tar.gz")
-sha256sums_aarch64=('849f2d15817df4ed3e9b60dd41fe94e3cc04e22018b71d6663a717a783195e6a')
+sha256sums_aarch64=('7545508b066924359b6f13f1b587fda3c0bc7892e8f509dbda2c9bcee4daf87f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/esaiaswestberg/gridlock/releases/download/v${pkgver}/gridlock_linux_armv7.tar.gz")
-sha256sums_armv7h=('77278d7d2d5a98706b3ce93a02474e962a8ae4872ee8edad5cd8995f4b1a314e')
+sha256sums_armv7h=('b34e8b70f8c848f57a7945930585e5678c1690270745cfb83b3a1e1e44785715')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/esaiaswestberg/gridlock/releases/download/v${pkgver}/gridlock_linux_386.tar.gz")
-sha256sums_i686=('b512f192fe030577906f11b1e48202abc781e6bbadb779a95435e4d88da4a0ab')
+sha256sums_i686=('f6285e93455693977240ef61d5805eb72abebf0d9217559635eb9004b727e8bc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/esaiaswestberg/gridlock/releases/download/v${pkgver}/gridlock_linux_amd64.tar.gz")
-sha256sums_x86_64=('99951b7f727db23b15155643ff7062683df47708e24ec96ed8ab8d659e1cb631')
+sha256sums_x86_64=('04ec83103434d8284c705c35e72fdb4ca511bb9dc48e20687523e4e70c1dfa24')
 
 package() {
   # bin
