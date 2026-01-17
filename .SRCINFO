@@ -1,0 +1,20 @@
+pkgbase = mt7902-bluetooth-dkms-git
+	pkgdesc = DKMS Bluetooth driver for MediaTek MT7902 chipset
+	pkgver = r204.7e6d6e3
+	pkgrel = 1
+	url = https://github.com/AnmiTaliDev/mt7902-bluetooth-dkms-git
+	install = mt7902-bluetooth-dkms-git.install
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = mt7902-bluetooth-dkms
+	conflicts = mt7902-bluetooth-dkms
+	source = git+https://github.com/OnlineLearningTutorials/mt7902_temp.git
+	source = dkms.conf
+	source = Makefile.dkms
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mt7902-bluetooth-dkms-git

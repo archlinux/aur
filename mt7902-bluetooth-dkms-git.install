@@ -1,0 +1,35 @@
+post_install() {
+    dkms add -m mt7902-bluetooth -v "$1" 2>/dev/null || true
+    dkms build -m mt7902-bluetooth -v "$1" 2>/dev/null || true
+    dkms install -m mt7902-bluetooth -v "$1" 2>/dev/null || true
+
+    echo ""
+    echo "==> MT7902 Bluetooth driver has been installed via DKMS."
+    echo "==> To enable the driver, run:"
+    echo "    sudo rmmod btusb btmtk 2>/dev/null || true"
+    echo "    sudo modprobe btmtk"
+    echo "    sudo modprobe btusb"
+    echo ""
+    echo "==> Note: Make sure mt7902-firmware-git package is installed"
+    echo "==> for the firmware files."
+    echo ""
+}
+
+pre_upgrade() {
+    pre_remove "$2"
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+pre_remove() {
+    dkms remove -m mt7902-bluetooth -v "$1" --all 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "==> MT7902 Bluetooth driver has been removed."
+    echo "==> You may need to reboot or reload the original btusb/btmtk modules."
+    echo ""
+}
