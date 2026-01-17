@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-dht
 _pypi_pkgname=adafruit_circuitpython_dht
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="CircuitPython support for DHT11 and DHT22 type temperature/humidity devices"
 arch=('armv6h' 'armv7h')
 url="https://github.com/adafruit/Adafruit_CircuitPython_DHT"
