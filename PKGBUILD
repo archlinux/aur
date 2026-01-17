@@ -4,7 +4,7 @@ pkgname=cleanuparr
 pkgver=2.5.1
 _pkgver_qbittorrent=1.0.2
 _pkgver_transmission=1.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
 arch=(x86_64 aarch64)
 url='https://cleanuparr.github.io/Cleanuparr'
@@ -17,7 +17,6 @@ install=cleanuparr.install
 depends=(
   gcc-libs
   glibc
-  aspnet-runtime
 )
 makedepends=(dotnet-sdk aspnet-targeting-pack git nodejs npm)
 source=(
@@ -66,7 +65,7 @@ build() {
   # Build and publish Cleanuparr
   dotnet publish ${pkgname^}/code/backend/${pkgname^}.Api/${pkgname^}.Api.csproj \
     --framework ${_framework} \
-    --no-self-contained \
+    --self-contained \
     --configuration Release \
     --runtime linux-$_CARCH \
     -o "$_artifacts" \
@@ -98,4 +97,6 @@ package() {
 
   # Copy Cleanuparr
   cp -dr "$_artifacts"/* "${pkgdir}/usr/lib/$pkgname/"
+  # Strip
+  strip "${pkgdir}/usr/lib/$pkgname/libe_sqlite3.so"
 }

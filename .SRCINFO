@@ -1,7 +1,7 @@
 pkgbase = cleanuparr
 	pkgdesc = Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.
 	pkgver = 2.5.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://cleanuparr.github.io/Cleanuparr
 	install = cleanuparr.install
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = cleanuparr
 	makedepends = npm
 	depends = gcc-libs
 	depends = glibc
-	depends = aspnet-runtime
 	provides = cleanuparr
 	conflicts = cleanuparr-bin
 	options = !debug
