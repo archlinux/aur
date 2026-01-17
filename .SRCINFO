@@ -1,16 +1,16 @@
 pkgbase = tssh
-	pkgdesc = Simple ssh client with trzsz ( trz / tsz ) support.
-	pkgver = 0.1.23
+	pkgdesc = Alternative ssh client with additional features to meet your needs.
+	pkgver = 0.1.24
 	pkgrel = 1
 	epoch = 0
-	url = https://trzsz.github.io/
+	url = https://trzsz.github.io/ssh
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.25.3
 	provides = tssh
-	source = https://github.com/trzsz/trzsz-ssh/archive/refs/tags/v0.1.23.tar.gz
-	md5sums = dc0036c0059a0925529322e6d23b2304
+	source = https://github.com/trzsz/trzsz-ssh/archive/refs/tags/v0.1.24.tar.gz
+	md5sums = f461be6f9840c5718d1df4ce048a112b
 
 pkgname = tssh
