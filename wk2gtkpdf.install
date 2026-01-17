@@ -1,0 +1,42 @@
+pre_install() {
+  
+  echo "INSTALL WGTKPRINTER++: Setting necessary permissions for xvfb" | systemd-cat -t wk2gtkpdf -p info
+
+  getent group xvfb &>/dev/null || groupadd -r xvfb
+  getent passwd xvfb &>/dev/null || useradd -r -g xvfb -s /bin/false xvfb
+
+  getent group video | grep xvfb &>/dev/null || usermod -aG video xvfb
+  getent group xvfb | grep -q "$SUDO_USER" || usermod -aG xvfb "$SUDO_USER"
+
+
+  
+}
+
+pre_upgrade() {
+  pre_install "$1"
+}
+
+
+pre_remove() {
+    systemctl stop xvfb.service
+}
+
+
+post_install() {
+  # Check for active X11 or Wayland sessions
+  if loginctl list-sessions --no-legend | grep -q "seat"; then
+      loginctl list-sessions --no-legend | while read session user _; do
+          case $(loginctl show-session "$session" -p Type --value) in
+              x11|wayland)
+                  echo "Desktop session detected, not enabling xvfb.service."
+                  exit 0
+                  ;;
+          esac
+      done
+  fi
+
+  # Enable service only if no desktop session found
+  systemctl enable xvfb.service >/dev/null 2>&1 || true
+
+  echo "To ensure high availability on headless systems, $SUDO_USER has been added to the xvfb group for passwordless service control. The xvfb service is enabled by default in systemd and will restart automatically if manually stopped. Add other users to the xvfb group if they require high availability."
+}

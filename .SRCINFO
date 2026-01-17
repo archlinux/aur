@@ -1,0 +1,16 @@
+pkgbase = wkgtk-html2pdf
+	pkgdesc = wk2gtkpdf cpp library and command line interface
+	pkgver = 0.0.10
+	pkgrel = 0
+	url = https://github.com/Timh1970/wkgtk-html2pdf
+	install = wk2gtkpdf.install
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = systemd
+	depends = xorg-server-xvfb
+	conflicts = libicprint
+	source = wkgtk-html2pdf-0.0.10.tar.gz::https://github.com/Timh1970/wkgtk-html2pdf/archive/v0.0.10.tar.gz
+	sha256sums = a9b840a1aca075362c570d1e69f772893b62de5f5976426adc8e8f610701b1dd
+
+pkgname = wkgtk-html2pdf
