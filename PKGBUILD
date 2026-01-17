@@ -8,7 +8,7 @@ arch=('x86_64')
 url=https://github.com/OlaProeis/Ferrite
 _rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver/"
 license=('MIT')
-depends=(glibc gcc-libs openssl zlib hicolor-icon-theme)
+depends=(glibc gcc-libs zlib hicolor-icon-theme fontconfig)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
