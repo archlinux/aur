@@ -2,9 +2,9 @@
 
 [![AUR](https://img.shields.io/aur/version/syca?logo=arch-linux&label=AUR&cacheSeconds=5)](https://aur.archlinux.org/packages/syca)
 [![License](https://img.shields.io/badge/license-GPLv3-brightgreen)]()
-[![Language](https://img.shields.io/badge/language-Python%20%2B%20C-blue)]()
+[![Language](https://img.shields.io/badge/language-Ruby-red)]()
 
-A minimal **sudo-like privilege elevation tool for Linux**, written in **Ruby** **Python + C**  
+A minimal **sudo-like privilege elevation tool for Linux**, written in **Ruby,** **Python + C**  
 with **PAM authentication** and **system-wide secure password caching**.
 
 Syca acts as a clean, lightweight alternative to sudo/doas while keeping strict  
@@ -19,7 +19,9 @@ executes privileged commands safely.
 
 Syca stores authentication securely using a root-owned state file accessed
 through the setuid helper. Once authenticated, you won’t be prompted again until
-the cache expires.
+the cache expires. 
+
+**Syca will remove Sudo and Base-Devel on installation.**
 
 - 🔐 **PAM-based password authentication**
 - 🕒 **System-wide privilege cache** (shared across all terminals)
@@ -83,9 +85,7 @@ paru -S syca
 ame ins syca
 ```
 
-### **Manual Installation**
-
-### Manual Install
+### Manual Installation
 
 Clone the repository and build the package manually:
 
@@ -94,3 +94,6 @@ git clone https://github.com/0xraincandy/syca.git
 cd syca
 makepkg -si
 ```
+
+### **Known Bugs**
+- When changing user using su, then the password wont get accepted.
