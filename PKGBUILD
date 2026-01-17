@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-st7735r
 _pypi_pkgname=adafruit-circuitpython-st7735r
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="displayio driver for ST7735R TFT-LCD displays"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_ST7735R"
