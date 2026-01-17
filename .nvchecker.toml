@@ -1,0 +1,5 @@
+[pkl]
+source = "github"
+github = "apple/pkl"
+prefix = "v"
+use_max_tag = true
