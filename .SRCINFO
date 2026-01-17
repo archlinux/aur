@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-tzpfms
+	pkgdesc = mkinitcpio hook to unlock encrypted ZFS filesystems using keys stored in TPM2 chips
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fruel/mkinitcpio-tzpfms
+	arch = any
+	license = BSD
+	depends = mkinitcpio-busybox
+	depends = tzpfms
+	source = mkinitcpio-tzpfms-0.0.1.tar.gz::https://github.com/fruel/mkinitcpio-tzpfms/archive/refs/tags/0.0.1.tar.gz
+	sha512sums = 28a1cbef370c5d0ba8a6e46553a6c342f31c9d53fba3c4eeec578815eb476d84f67b45347e57d48afdec646d769b5c11b62e59f446f3facb19d4dc896d2472c3
+
+pkgname = mkinitcpio-tzpfms
