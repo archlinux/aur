@@ -5,7 +5,7 @@
 _dotnet_ver=9.0
 pkgname=imewlconverter
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/studyzy/${pkgname}"
@@ -14,18 +14,17 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=("${pkgname}"{-bin,-cli})
 depends=("dotnet-runtime-${_dotnet_ver}")
-makedepends=("dotnet-sdk-${_dotnet_ver}")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3b6ef96f5725ef5a065adb8ed0cb8b6f45895bcf1dbb41f6a99b89d0b7a4adce')
+makedepends=("dotnet-sdk-${_dotnet_ver}" "git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('256a428d24b22d9b70f43c09f59d7160ad4f2a362c2ad553f47e026dade95c4e')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    sed -i -E "s|<Version>.+</Version>|<Version>${pkgver}</Version>|" src/ImeWlConverterCmd/ImeWlConverterCmd.csproj
+    cd "${pkgname}"
     sed -i "s|dotnet ImeWlConverterCmd.dll|${pkgname}|g" src/ImeWlConverterCmd/Program.cs
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     dotnet publish "src/ImeWlConverterCmd" \
         --configuration Release \
         --framework "net${_dotnet_ver}" \
@@ -39,7 +38,7 @@ build() {
 package() {
     local _binary="/usr/lib/${pkgname}/ImeWlConverterCmd"
 
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     install -Dm644 README.md *.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 builddir/*      -t "${pkgdir}/usr/lib/${pkgname}"
     install -dm755                    "${pkgdir}/usr/bin"
