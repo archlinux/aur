@@ -4,7 +4,7 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.8.3.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
@@ -22,13 +22,11 @@ source=(
 	"gamemaker-data.xml"
 	"icon.png"
 	)
-sha256sums=(
-    'e793d4c8f6abb631ec20a727e709a1959f10a2a4a1af0a8d58b6aab774d4e264'
-    'feb2961625d3a959c3c5e06a1dc57451f4baf14e71fa09585f77fb78ba0dd251'
-    'b117db1939eaf99652da0617f82e6994e0e69ac45d993e504fb766793f2d7773'
-	'SKIP'
-	'SKIP'
-	)
+sha256sums=('e793d4c8f6abb631ec20a727e709a1959f10a2a4a1af0a8d58b6aab774d4e264'
+            'feb2961625d3a959c3c5e06a1dc57451f4baf14e71fa09585f77fb78ba0dd251'
+            'b117db1939eaf99652da0617f82e6994e0e69ac45d993e504fb766793f2d7773'
+            '64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e'
+            '4f501b7495960a291dfaa3a5c7b87b529170c47447c365d2407d1d317d97c51f')
 
 noextract=("${_pkgname}-${pkgver}.zip")
 
