@@ -1,6 +1,6 @@
 pkgbase = reframe
 	pkgdesc = DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://reframe.alynx.one/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = reframe
 	depends = glibc
 	optdepends = neatvnc: experimental neatvnc implementation
 	backup = etc/reframe/example.conf
-	source = git+https://github.com/AlynxZhou/reframe.git#tag=v1.6.1
+	source = git+https://github.com/AlynxZhou/reframe.git#tag=v1.7.0
 	source = git+https://github.com/AlynxZhou/mvmath.git#commit=612ee51db46491c692cd320fc148740607d76dbf
 	sha512sums = SKIP
 	sha512sums = SKIP
