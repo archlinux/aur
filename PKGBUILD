@@ -3,7 +3,7 @@
 _pkgname=tonearm
 pkgname="${_pkgname}-git"
 
-pkgver=r365.035669a
+pkgver=r373.5c63b23
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
