@@ -1,0 +1,23 @@
+pkgbase = desktop-gremlin-git
+	pkgdesc = A desktop pet/gremlin
+	pkgver = r107.e9b118e
+	pkgrel = 1
+	url = https://github.com/iluvgirlswithglasses/linux-desktop-gremlin
+	arch = x86_64
+	license = MIT
+	depends = pyside6
+	depends = qt6-base
+	optdepends = picom: tiling x11 wm support
+	optdepends = xorg-xwayland: wayland support
+	provides = desktop-gremlin
+	conflicts = desktop-gremlin
+	source = git+https://github.com/iluvgirlswithglasses/linux-desktop-gremlin.git
+	source = desktop-gremlin.sh
+	source = gremlin-picker.sh
+	source = gremlin-picker.desktop
+	sha256sums = SKIP
+	sha256sums = 5cd5703070f5a49edc6822ffea7188ee6f78dc137321f02111cfad592baef38f
+	sha256sums = 34da1a6a26430295d6e8f7ba95797f62fa0dfdfecb38d52a76210230283c73b7
+	sha256sums = 6ee18aeea7141286b2636d4a2064d38ffda9b517e21c5fc28a1ca84c16024c61
+
+pkgname = desktop-gremlin-git

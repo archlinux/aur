@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gremlin Picker
+Comment=Pick your favorite gremlin
+Exec=/usr/bin/gremlin-picker
+Icon=/opt/desktop-gremlin/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;
