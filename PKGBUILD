@@ -2,13 +2,16 @@
 # Contributer: Tomasz Zok <tomasz dot zok at gmail dot com>
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
-pkgver=1.10.1
-pkgrel=3
+pkgver=1.11
+pkgrel=1
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
 url="https://www.cgl.ucsf.edu/chimerax/"
 license=(custom)
-depends=(libffi6 libxcrypt-compat)
+depends=(
+# libffi6
+# libxcrypt-compat
+)
 makedepends=(ostree)
 options=(!strip)
 source=(LICENSE chimerax.desktop)
@@ -24,6 +27,7 @@ extract() {
 	# extract flatpak bundle, ref: https://github.com/flatpak/flatpak/issues/126#issuecomment-227068860
 	ostree init --repo=repo --mode=bare-user
 	ostree static-delta apply-offline --repo=repo ${_file}
+	rm -r outdir
 	ostree checkout --repo=repo -U $(basename $(echo repo/objects/*/*.commit | cut -d/ -f3- --output-delimiter= ) .commit) outdir
 	mv "outdir/files" "${srcdir}/${pkgname}-${pkgver}"
 }
@@ -32,6 +36,10 @@ prepare() {
 	if [ -f ../"${_file}" ]; then
 		echo "${_file}" found in local folder! Preparing...
 		ln -s ../"${_file}" "${srcdir}/"
+		extract
+		return
+	elif [ -f ${srcdir}/"${_file}" ]; then
+		echo "${_file}" found in ${srcdir}! Preparing...
 		extract
 		return
 	fi
