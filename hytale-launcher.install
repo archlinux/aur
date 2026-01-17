@@ -11,7 +11,7 @@
 
 post_install() {
     echo ":: The Hytale Launcher has been installed."
-    echo "   The binary will be copied to '~/.local/share/Hytale/install/release/package/launcher/current/'"
+    echo "   The binary will be copied to '~/.local/share/hytale-launcher/bin/'"
     echo "   on the first run to allow for self-updating functionality."
     echo ""
     echo ":: IPV6 and System Clock Synchronization are required for Hytale."
@@ -29,13 +29,15 @@ post_install() {
 post_upgrade() {
     # Check if the user already has the old binary in their home
     echo ":: Hytale Launcher has been updated in '/opt/hytale-launcher-bin'"
-    echo "   Your local copy in '~/.local/share/Hytale/install/release/package/launcher/current/'"
-    echo "   will not be touched if the 'current' directory exists."
+    echo "   Your local copy in '~/.local/share/hytale-launcher/bin/'"
+    echo "   will not be touched if the 'bin' directory exists."
 }
 
 post_remove() {
     echo ":: The Hytale Launcher has been removed from your system."
-    echo "   Note: The self-updated launcher and game data located in:"
+    echo "   Note: The self-updated launcher located at:
+    echo "   '~/.local/share/hytale-launcher/bin/'"
+    echo "   and game data in:"
     echo "   '~/.local/share/Hytale/'"
-    echo "   were NOT removed. Delete this folder manually to free up space."
+    echo "   were NOT removed. Delete these folders manually to free up space."
 }

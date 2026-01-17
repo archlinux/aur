@@ -61,7 +61,7 @@ export WEBKIT_DISABLE_DMABUF_RENDERER=1
 export DESKTOP_STARTUP_ID=com.hypixel.HytaleLauncher
 
 # CONSTANTS
-DEFAULT_DIR="$HOME/.local/share/Hytale/install/release/package/launcher/current"
+DEFAULT_DIR="$HOME/.local/share/hytale-launcher/bin"
 LAUNCHER_DIR="$DEFAULT_DIR"
 SOURCE_DIR="/opt/hytale-launcher-bin"
 BIN_NAME="hytale-launcher"
