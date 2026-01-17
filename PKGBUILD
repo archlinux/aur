@@ -3,7 +3,7 @@
 pkgname=python-daphne
 _pypi_pkgname=daphne
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP, HTTP2 and WebSocket protocol server for ASGI, and developed to power Django Channels"
 arch=(any)
 url="https://github.com/django/daphne"
