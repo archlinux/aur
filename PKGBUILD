@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster-git
-pkgver=r1524.9a9c737
+pkgver=r1534.a51e215
 pkgrel=1
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures, development version"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://sgsaenger.github.io/vipster"
 license=('GPL3')
 groups=()
 depends=('qt6-base' 'python')
-makedepends=('cmake' 'git' 'catch2-v2' 'pybind11' 'fmt' 'cli11' 'nlohmann-json')
+makedepends=('cmake' 'git' 'catch2' 'pybind11' 'fmt' 'cli11' 'nlohmann-json')
 conflicts=('vipster')
 source=("git+https://github.com/sgsaenger/vipster"
         "git+https://github.com/codeplea/tinyexpr")
