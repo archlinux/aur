@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libgcrypt
-pkgver=1.11.0
+pkgver=1.11.2
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (Android ${_android_arch})"
@@ -15,7 +15,7 @@ makedepends=("android-configure")
 options=(!strip !buildflags staticlibs !emptydirs)
 # https://www.gnupg.org/download/integrity_check.html
 source=("https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2")
-md5sums=('321c4975cfd6a496f0530b65a673f9a4')
+md5sums=('84ce2ad07794b987fe6341b63cf5f537')
 
 prepare() {
     cd "$srcdir/libgcrypt-${pkgver}"
@@ -55,4 +55,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
