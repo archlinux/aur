@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-extras
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of mkinitcpio hooks for busybox based initramfs'
 arch=('any')
 url='https://gitlab.com/allddd/mkinitcpio-extras'
@@ -12,6 +12,11 @@ optdepends=(
     'mkinitcpio-nfs-utils: required for netconf'
     'dropbear: required for dropbear'
     'tinyssh: required for tinyssh'
+)
+provides=(
+    'mkinitcpio-netconf'
+    'mkinitcpio-dropbear'
+    'mkinitcpio-tinyssh'
 )
 conflicts=(
     'mkinitcpio-netconf'
@@ -23,7 +28,8 @@ sha256sums=('7f541506eb07cb5d85e30da5a33e24ff59e21e7b9154624c23f884e3c6057aaf')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
-    for NAME in $(find * -type d); do
+    for NAME in */; do
+        NAME=${NAME%/}
         install -Dm644 "./${NAME}/${NAME}_hook" "${pkgdir}/usr/lib/initcpio/hooks/${NAME}"
         install -Dm644 "./${NAME}/${NAME}_install" "${pkgdir}/usr/lib/initcpio/install/${NAME}"
     done
