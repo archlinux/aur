@@ -1,0 +1,5 @@
+[dotr-bin]
+source = "github"
+github = "uroybd/DotR"
+use_latest_release = true
+prefix = "v"
