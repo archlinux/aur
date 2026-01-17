@@ -55,7 +55,12 @@ package() {
 
     # Install bundled ComfyUI to /usr/share/switchgen/vendor/
     install -dm755 "$pkgdir/usr/share/switchgen/vendor"
-    cp -r vendor/ComfyUI "$pkgdir/usr/share/switchgen/vendor/"
+
+    # Remove .git file (submodule reference not needed at runtime)
+    rm -f vendor/ComfyUI/.git
+
+    # Copy ComfyUI with error checking
+    cp -a vendor/ComfyUI "$pkgdir/usr/share/switchgen/vendor/" || exit 1
 
     # Install desktop file and docs
     install -Dm644 switchgen.desktop "$pkgdir/usr/share/applications/switchgen.desktop"
