@@ -2,20 +2,20 @@
 # Contributor: Miro Bezjak <bezjak.miro at gmail dot com>
 
 pkgname=hunspell-hr
-pkgver=2.1.20240828
+pkgver=2.1-20251229
 pkgrel=1
 pkgdesc="Croatian dictionary for Hunspell"
 arch=("any")
 url="https://github.com/krunose/hunspell-hr"
 license=("LGPL-2.0-or-later" "LicenseRef-SISSL")
 optdepends=("hunspell:	the spell checking libraries and apps")
-_pkgver_tag="2.1-20240828"
+_pkgver_tag="2.1-20251229"
 source=(
   "hunspell-hr-${pkgver}.zip::https://github.com/krunose/hunspell-hr/archive/refs/tags/v${_pkgver_tag}.zip"
   "SISSL.txt::https://raw.githubusercontent.com/spdx/license-list-data/main/text/SISSL.txt"
 )
 md5sums=(
-  "883ac6a89b027ed5cb776824319c2bac"
+  "cebadaddc3aa1ce88b06c80ba28d7c10"
   "SKIP"
 )
 
