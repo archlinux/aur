@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fluent Lyrics
+Comment=A lyrics viewer supporting various sources
+Icon=fluent-lyrics
+Exec=/usr/bin/fluent-lyrics %U
+Terminal=false
+Categories=AudioVideo;Music;Player;
+Keywords=Lyrics;FluentLyrics;Music;
+StartupNotify=true

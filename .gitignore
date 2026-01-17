@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fluent-lyrics.sh
+!fluent_lyrics.desktop
+!fluent-lyrics.png
