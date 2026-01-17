@@ -1,0 +1,5 @@
+[python-uefi-firmware]
+source = "github"
+github = "theopolis/uefi-firmware-parser"
+prefix = "v"
+use_latest_release = true
