@@ -7,8 +7,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libbluray
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 arch=('any')
 pkgdesc="Library to access Blu-Ray disks for video playback (Android ${_android_arch})"
 url='https://www.videolan.org/developers/libbluray.html'
@@ -16,43 +16,31 @@ license=('LGPL2.1')
 groups=('android-libbluray')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-freetype2"
-         "android-${_android_arch}-libxml2")
-makedepends=('android-configure')
+         "android-${_android_arch}-libxml2"
+         "android-${_android_arch}-libudfread")
+makedepends=('android-meson'
+             'ninja')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://code.videolan.org/videolan/libbluray/-/archive/${pkgver}/libbluray-${pkgver}.tar.bz2"
-        'https://code.videolan.org/videolan/libudfread/-/archive/master/libudfread-master.tar.bz2')
-md5sums=('8fa45abe567c1da2a6a936fcb584c51d'
-         'SKIP')
-
-prepare() {
-    cd "${srcdir}/libbluray-${pkgver}"
-
-    autoreconf -fiv
-
-    rm -rvf contrib/libudfread
-    ln -s ../../libudfread-master contrib/libudfread
-}
+source=("https://code.videolan.org/videolan/libbluray/-/archive/${pkgver}/libbluray-${pkgver}.tar.bz2")
+md5sums=('e34fadf9160147c218679526e52aebef')
 
 build() {
     cd "${srcdir}/libbluray-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure \
-        --enable-examples=no \
-        --disable-bdjava-jar \
-        --disable-doxygen-doc \
-        --disable-doxygen-dot \
-        --disable-doxygen-html \
-        --disable-doxygen-ps \
-        --disable-doxygen-pdf
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build \
+        -Denable_tools=false \
+        -Dbdj_jar=disabled
+    ninja -C build all
 }
 
 package() {
     cd "${srcdir}/libbluray-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
