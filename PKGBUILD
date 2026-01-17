@@ -1,7 +1,7 @@
 pkgname=thextech-bin
 _pkgname=TheXtech-bin
 pkgver=1.3.7.2
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i386=1
@@ -13,10 +13,10 @@ provides=("thextech=${pkgver}");
 license=('GPL')
 depends=('sdl2')
 makedepends=('unzip')
-sha256sums_i386=('3b5dfc869b60d7fde25a325a65fa49037163052438a80dad9337baca7f848dae')
-sha256sums_i686=('3b5dfc869b60d7fde25a325a65fa49037163052438a80dad9337baca7f848dae')
-sha256sums_x86_64=('ea06e0a6b08a1f01bdb4abd6d8eedfcb8b6cc7ccf695b15a064d224389c45540')
-sha256sums_aarch64=('da966a7f4fe9e6307c79c761ac83f447e7b7094bdc9f833826108c372e247d43')
+sha256sums_i386=('c40f5c7e94b4e8f6d408d7c755408b2a794e74b33a3feb3bf93d6f4406242be8')
+sha256sums_i686=('c40f5c7e94b4e8f6d408d7c755408b2a794e74b33a3feb3bf93d6f4406242be8')
+sha256sums_x86_64=('e7f5fd8490a0ed90bb2862bb736539ba76ca492483b68e0545cb306ce327b54f')
+sha256sums_aarch64=('bb28c8e36c1b1e99aeddf1d8a403431405b300b2f1f3a916122f9d573302282d')
 source_x86_64=("https://github.com/Wohlstand/TheXTech/releases/download/v$pkgver/thextech-plain-runtime-v$pkgver-linux-generic-u20.04-amd64.tar.gz")
 source_aarch64=("https://github.com/TheXTech/TheXTech/releases/download/v$pkgver/thextech-plain-runtime-v$pkgver-linux-generic-u20.04-aarch64.tar.gz")
 source_i386=("https://github.com/Wohlstand/TheXTech/releases/download/v$pkgver/thextech-plain-runtime-v$pkgver-linux-generic-u16.04-i386.tar.gz")
