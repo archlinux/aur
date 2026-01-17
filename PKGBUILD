@@ -2,7 +2,7 @@
 pkgname=embellish-git
 pkgver=0.6.0.r0.g8ee3126
 pkgrel=1
-pkgdesc="User-friendly GUI application to install Nerd Fonts (development version)"
+pkgdesc="User-friendly GUI application to install Nerd Fonts"
 arch=('x86_64')
 url="https://github.com/getnf/embellish"
 license=('GPL-3.0-only')
