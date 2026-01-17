@@ -44,7 +44,7 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=24.0.0
+pkgver=25.0.1
 pkgmajor=${pkgver%%.*}
 pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
@@ -59,7 +59,7 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0004-sqlspam.patch"
         "0005-httpd.patch")
 
-md5sums=('acd0d5eaa5c6046d1d833e0f55d195c8'
+md5sums=('bf54c39b4f323ff0408790489bb5f5f7'
          '419b0c64af750aa3e8ea668edf464d3e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
