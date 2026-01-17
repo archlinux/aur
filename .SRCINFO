@@ -1,7 +1,7 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitwuzla.github.io
 	arch = x86_64
 	license = MIT
@@ -43,9 +43,3 @@ pkgbase = bitwuzla
 	b2sums = af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda
 
 pkgname = bitwuzla
-
-pkgname = bitwuzla-docs
-	pkgdesc = Documentation for the Bitwuzla SMT solver
-	arch = any
-	depends = 
-	provides = 
