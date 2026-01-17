@@ -12,6 +12,6 @@ pkgbase = llminxsolver-bin
 	conflicts = llminxsolver
 	options = !strip
 	source = llminxsolver-bin-1.3.0.tar.gz::https://github.com/Sevilze/llminxsolver-cmp/releases/download/v1.3.0/llminxsolver-v1.3.0-x86_64-linux.tar.gz
-	sha256sums = 4ebaa3d618db7f4ad985b28107fb42d4a9779538c35fb53fdae115eba1cef605
+	sha256sums = b0cdbda0301a92f48114534196ba9dfd9a4fd4516655694e5a86ba49ab389476
 
 pkgname = llminxsolver-bin
