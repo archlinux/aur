@@ -1,0 +1,16 @@
+pkgbase = find-active-git
+	pkgdesc = A simple cli that enables muscle memory workspace switching in hyprland
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/snewman-aa/find-active
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = find-active
+	conflicts = find-active
+	source = find-active::git+https://github.com/snewman-aa/find-active.git
+	sha256sums = SKIP
+
+pkgname = find-active-git
