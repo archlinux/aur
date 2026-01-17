@@ -1,0 +1,456 @@
+#!/usr/bin/env bash
+
+THEMES_PER_PAGE=9
+GRUB_CONFIG="/etc/default/grub"
+GRUB_THEMES_DIR="/usr/share/grub/themes"
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+CYAN='\033[1;36m'
+MAGENTA='\033[1;35m'
+BOLD='\033[1m'
+DIM='\033[2m'
+NC='\033[0m'
+
+show_logo() {
+    echo -e "${CYAN}${BOLD}"
+    cat <<'EOF'
+               ██████╗ ██████╗ ████████╗██╗  ██╗
+               ██╔══██╗██╔══██╗╚══██╔══╝╚██╗██╔╝
+               ██████╔╝██████╔╝   ██║    ╚███╔╝ 
+               ██╔═══╝ ██╔══██╗   ██║    ██╔██╗ 
+               ██║     ██║  ██║   ██║   ██╔╝ ██╗
+               ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
+          ,--,                                         
+        ,---.'|                                        
+        |   | :                                        
+        :   | |                ,---,                   
+        |   ' :              ,---.'|                   
+        ;   ; '              |   | :     .--.--.       
+        '   | |__   ,--.--.  :   : :    /  /    '      
+        |   | :.'| /       \ :     |,-.|  :  /`./      
+        '   :    ;.--.  .-. ||   : '  ||  :  ;_        
+        |   |  ./  \__\/: . .|   |  / : \  \    `.     
+        ;   : ;    ," .--.; |'   : |: |  `----.   \    
+        |   ,/    /  /  ,.  ||   | '/ : /  /`--'  /__  
+        '---'    ;  :   .'   \   :    |'--'.     /  .\ 
+                |  ,     .-./    \  /   `--'---'\  ; | 
+                 `--`---'   `-'----'             `--"  
+EOF
+    echo -e "${NC}"
+    echo -e "${DIM}${CYAN}            ═══════════════════════════════════════${NC}"
+    echo -e "${MAGENTA}${BOLD}                          GRUB Mutator${NC}"
+    echo -e "${DIM}${CYAN}            ═══════════════════════════════════════${NC}"
+    echo ""
+}
+
+get_installed_themes() {
+    if [ ! -d "$GRUB_THEMES_DIR" ]; then
+        echo -e "${RED}Директория $GRUB_THEMES_DIR не найдена${NC}"
+        return 1
+    fi
+    
+    themes=("default")
+    while IFS= read -r theme; do
+        themes+=("$theme")
+    done < <(find "$GRUB_THEMES_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+}
+
+get_current_theme() {
+    current_theme="default"
+    if [ -f "$GRUB_CONFIG" ]; then
+        local theme_path=$(grep "^GRUB_THEME=" "$GRUB_CONFIG" 2>/dev/null | cut -d'"' -f2)
+        if [ -n "$theme_path" ]; then
+            current_theme=$(echo "$theme_path" | sed 's|/theme\.txt$||' | xargs basename)
+        fi
+    fi
+}
+
+show_page() {
+    local page=$1
+    local start_idx=$((page * THEMES_PER_PAGE))
+    local end_idx=$((start_idx + THEMES_PER_PAGE))
+    local total_pages=$(( (${#themes[@]} + THEMES_PER_PAGE - 1) / THEMES_PER_PAGE ))
+    
+    clear
+    show_logo
+    
+    echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${CYAN}║${NC}  ${BOLD}Активная тема:${NC} ${GREEN}${BOLD}$current_theme${NC}$(printf '%*s' $((45 - ${#current_theme})) '')${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC}  ${DIM}Страница ${MAGENTA}${BOLD}$((page + 1))${NC}${DIM}/${MAGENTA}${BOLD}$total_pages${NC}$(printf '%*s' 48 '')${CYAN}║${NC}"
+    echo -e "${CYAN}╠══════════════════════════════════════════════════════════════╣${NC}"
+    echo ""
+    
+    local display_num=1
+    for i in $(seq $start_idx $((end_idx - 1))); do
+        if [ $i -lt ${#themes[@]} ]; then
+            local theme="${themes[$i]}"
+            local display_name="$theme"
+            [ "$theme" = "default" ] && display_name="◈ Без темы"
+            
+            if [ "$theme" = "$current_theme" ]; then
+                echo -e "   ${GREEN}${BOLD}[$display_num]${NC} ${GREEN}●${NC} ${BOLD}$display_name${NC} ${YELLOW}✓${NC}"
+            else
+                echo -e "   ${CYAN}[$display_num]${NC} ${DIM}○${NC} $display_name"
+            fi
+            ((display_num++))
+        fi
+    done
+    
+    echo ""
+    echo -e "${CYAN}╠══════════════════════════════════════════════════════════════╣${NC}"
+    
+    if [ $total_pages -gt 1 ]; then
+        echo -e "${CYAN}║${NC}  ${YELLOW}[\`]${NC} ${DIM}←${NC} Предыдущая  ${YELLOW}[-]${NC} ${DIM}→${NC} Следующая$(printf '%*s' 27 '')${CYAN}║${NC}"
+    fi
+    
+    echo -e "${CYAN}║${NC}  ${BLUE}[I/Ш]${NC} Установить темы  ${MAGENTA}[R/К]${NC} Перезагрузка$(printf '%*s' 19 '')${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC}  ${RED}[U/Г]${NC} Удалить все темы  ${RED}[Q/Й]${NC} Выход$(printf '%*s' 25 '')${CYAN}║${NC}"
+    echo -e "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+}
+
+apply_theme() {
+    local theme_name=$1
+    
+    if [ "$theme_name" = "default" ]; then
+        echo ""
+        echo -e "${MAGENTA}${BOLD}⚙${NC}  Сброс на стандартную тему"
+        echo -e "${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        
+        sudo sed -i '/^GRUB_THEME=/d' "$GRUB_CONFIG"
+        
+        echo -e "${YELLOW}⟳${NC} Обновление конфигурации GRUB..."
+        sudo grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
+        
+        echo ""
+        echo -e "${GREEN}${BOLD}✓${NC} Стандартная тема применена!"
+        echo -e "${YELLOW}⚠${NC}  ${DIM}Перезагрузите систему для применения изменений.${NC}"
+        echo ""
+        sleep 1.5
+        return 0
+    fi
+    
+    local theme_path="$GRUB_THEMES_DIR/$theme_name/theme.txt"
+    
+    if [ ! -f "$theme_path" ]; then
+        echo -e "${RED}${BOLD}✗${NC} Файл темы не найден: ${DIM}$theme_path${NC}"
+        sleep 1.5
+        return 1
+    fi
+    
+    echo ""
+    echo -e "${MAGENTA}${BOLD}⚙${NC}  Применение темы: ${CYAN}${BOLD}$theme_name${NC}"
+    echo -e "${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    
+    sudo cp "$GRUB_CONFIG" "$GRUB_CONFIG.backup.$(date +%s)" 2>/dev/null || true
+    
+    if grep -q "^GRUB_THEME=" "$GRUB_CONFIG"; then
+        sudo sed -i "s|^GRUB_THEME=.*|GRUB_THEME=\"$theme_path\"|" "$GRUB_CONFIG"
+    else
+        echo "GRUB_THEME=\"$theme_path\"" | sudo tee -a "$GRUB_CONFIG" > /dev/null
+    fi
+    
+    echo -e "${YELLOW}⟳${NC} Обновление конфигурации GRUB..."
+    sudo grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
+    
+    echo ""
+    echo -e "${GREEN}${BOLD}✓${NC} Тема ${CYAN}${BOLD}'$theme_name'${NC} успешно применена!"
+    echo -e "${YELLOW}⚠${NC}  ${DIM}Перезагрузите систему для применения изменений.${NC}"
+    echo ""
+    sleep 1.5
+}
+
+install_menu() {
+    while true; do
+        clear
+        show_logo
+        
+        echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}"
+        echo -e "${CYAN}║${NC}  ${MAGENTA}${BOLD}УСТАНОВКА ТЕМ GRUB${NC}$(printf '%*s' 42 '')${CYAN}║${NC}"
+        echo -e "${CYAN}╠══════════════════════════════════════════════════════════════╣${NC}"
+        echo ""
+        echo -e "   ${GREEN}${BOLD}[1]${NC} ${YELLOW}★${NC} Универсальная коллекция"
+        echo -e "   ${GREEN}${BOLD}[2]${NC} ${MAGENTA}◆${NC} Тёмная сторона силы ${DIM}(желательно)${NC}"
+        echo ""
+        echo -e "   ${CYAN}${BOLD}[3]${NC} Полная коллекция ${DIM}(4K максимум)${NC}"
+        echo -e "   ${CYAN}${BOLD}[4]${NC} Полная коллекция ${DIM}(2K качество)${NC}"
+        echo -e "   ${CYAN}${BOLD}[5]${NC} Полная коллекция ${DIM}(1080p стандарт)${NC}"
+        echo ""
+        echo -e "   ${BLUE}${BOLD}[6]${NC} Широкоформатные темы ${DIM}(Ultrawide 2K)${NC}"
+        echo -e "   ${BLUE}${BOLD}[7]${NC} Широкоформатные темы ${DIM}(Ultrawide 1K)${NC}"
+        echo ""
+        echo -e "   ${RED}${BOLD}[8]${NC} ${DIM}...говорят, установить всё — плохая идея...${NC}"
+        echo ""
+        echo -e "${CYAN}╠══════════════════════════════════════════════════════════════╣${NC}"
+        echo -e "${CYAN}║${NC}  ${RED}[Q/Й]${NC} Назад$(printf '%*s' 49 '')${CYAN}║${NC}"
+        echo -e "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}"
+        echo ""
+        echo -ne "${BOLD}Выбор: ${NC}"
+        
+        IFS= read -rsn1 choice
+        while read -r -t 0; do read -r -t 0.01; done
+        
+        case $choice in
+            q|Q|й|Й)
+                return
+                ;;
+            1)
+                echo ""
+                echo -e "${YELLOW}Установка универсальной коллекции...${NC}"
+                sudo pacman -S dracula-grub-theme-git catppuccin-mocha-grub-theme-git grub-theme-vimix-color-1080p-git grub-theme-whitesur-color-1080p-git grub-theme-tela-color-1080p-git grub-theme-stylish-color-1080p-git
+                sleep 2
+                ;;
+            2)
+                echo ""
+                echo -e "${MAGENTA}Установка Dracula и Catppuccin коллекции...${NC}"
+                sudo pacman -S dracula-grub-theme-git catppuccin-frappe-grub-theme-git catppuccin-latte-grub-theme-git catppuccin-macchiato-grub-theme-git catppuccin-mocha-grub-theme-git
+                sleep 2
+                ;;
+            3)
+                echo ""
+                echo -e "${CYAN}Установка полной коллекции 4K...${NC}"
+                sudo pacman -S grub-theme-stylish-color-4k-git grub-theme-stylish-white-4k-git grub-theme-stylish-whitesur-4k-git grub-theme-tela-color-4k-git grub-theme-tela-white-4k-git grub-theme-tela-whitesur-4k-git grub-theme-vimix-color-4k-git grub-theme-vimix-white-4k-git grub-theme-vimix-whitesur-4k-git grub-theme-whitesur-color-4k-git grub-theme-whitesur-white-4k-git grub-theme-whitesur-whitesur-4k-git
+                sleep 2
+                ;;
+            4)
+                echo ""
+                echo -e "${CYAN}Установка полной коллекции 2K...${NC}"
+                sudo pacman -S grub-theme-stylish-color-2k-git grub-theme-stylish-white-2k-git grub-theme-stylish-whitesur-2k-git grub-theme-tela-color-2k-git grub-theme-tela-white-2k-git grub-theme-tela-whitesur-2k-git grub-theme-vimix-color-2k-git grub-theme-vimix-white-2k-git grub-theme-vimix-whitesur-2k-git grub-theme-whitesur-color-2k-git grub-theme-whitesur-white-2k-git grub-theme-whitesur-whitesur-2k-git
+                sleep 2
+                ;;
+            5)
+                echo ""
+                echo -e "${CYAN}Установка полной коллекции 1080p...${NC}"
+                sudo pacman -S grub-theme-vimix grub-theme-stylish-color-1080p-git grub-theme-stylish-white-1080p-git grub-theme-stylish-whitesur-1080p-git grub-theme-tela-color-1080p-git grub-theme-tela-white-1080p-git grub-theme-tela-whitesur-1080p-git grub-theme-vimix-color-1080p-git grub-theme-vimix-white-1080p-git grub-theme-vimix-whitesur-1080p-git grub-theme-whitesur-color-1080p-git grub-theme-whitesur-white-1080p-git grub-theme-whitesur-whitesur-1080p-git
+                sleep 2
+                ;;
+            6)
+                echo ""
+                echo -e "${BLUE}Установка Ultrawide 2K коллекции...${NC}"
+                sudo pacman -S grub-theme-stylish-color-ultrawide2k-git grub-theme-stylish-white-ultrawide2k-git grub-theme-stylish-whitesur-ultrawide2k-git grub-theme-tela-color-ultrawide2k-git grub-theme-tela-white-ultrawide2k-git grub-theme-tela-whitesur-ultrawide2k-git grub-theme-vimix-color-ultrawide2k-git grub-theme-vimix-white-ultrawide2k-git grub-theme-vimix-whitesur-ultrawide2k-git
+                sleep 2
+                ;;
+            7)
+                echo ""
+                echo -e "${BLUE}Установка Ultrawide 1K коллекции...${NC}"
+                sudo pacman -S grub-theme-stylish-color-ultrawide-git grub-theme-stylish-white-ultrawide-git grub-theme-stylish-whitesur-ultrawide-git grub-theme-tela-color-ultrawide-git grub-theme-tela-white-ultrawide-git grub-theme-tela-whitesur-ultrawide-git grub-theme-vimix-color-ultrawide-git grub-theme-vimix-white-ultrawide-git grub-theme-vimix-whitesur-ultrawide-git
+                sleep 2
+                ;;
+            8)
+                echo ""
+                echo -e "${RED}${BOLD}⚠ Серьёзное предупреждение ⚠${NC}"
+                echo ""
+                echo -e "${DIM}Журнал безопасности, запись #347:${NC}"
+                echo -e "${YELLOW}Установка всех доступных тем GRUB...${NC}"
+                echo -e "${RED}Может потребоваться значительное место на диске.${NC}"
+                echo ""
+                echo -ne "${BOLD}Введите '0' для подтверждения (1/5): ${NC}"
+                IFS= read -rsn1 conf1
+                while read -r -t 0; do read -r -t 0.01; done
+                
+                if [ "$conf1" != "0" ]; then
+                    echo -e "${CYAN}Операция отменена.${NC}"
+                    sleep 1
+                    continue
+                fi
+                
+                echo ""
+                echo -e "${DIM}Техническое примечание:${NC}"
+                echo -e "${RED}Переполнение диска может привести к сбою загрузки.${NC}"
+                echo -ne "${BOLD}Введите '1' для подтверждения (2/5): ${NC}"
+                IFS= read -rsn1 conf2
+                while read -r -t 0; do read -r -t 0.01; done
+                
+                if [ "$conf2" != "1" ]; then
+                    echo -e "${CYAN}Операция отменена.${NC}"
+                    sleep 1
+                    continue
+                fi
+                
+                echo ""
+                echo -e "${DIM}Статистика установки:${NC}"
+                echo -e "${RED}Процесс может занять продолжительное время.${NC}"
+                echo -ne "${BOLD}Введите '2' для подтверждения (3/5): ${NC}"
+                IFS= read -rsn1 conf3
+                while read -r -t 0; do read -r -t 0.01; done
+                
+                if [ "$conf3" != "2" ]; then
+                    echo -e "${CYAN}Операция отменена.${NC}"
+                    sleep 1
+                    continue
+                fi
+                
+                echo ""
+                echo -e "${DIM}Предфинальная проверка:${NC}"
+                echo -e "${RED}Убедитесь, что у вас есть минимум 500MB свободного места.${NC}"
+                echo -ne "${BOLD}Введите '3' для подтверждения (4/5): ${NC}"
+                IFS= read -rsn1 conf4
+                while read -r -t 0; do read -r -t 0.01; done
+                
+                if [ "$conf4" != "3" ]; then
+                    echo -e "${CYAN}Операция отменена.${NC}"
+                    sleep 1
+                    continue
+                fi
+                
+                echo ""
+                echo -e "${RED}${BOLD}ФИНАЛЬНОЕ ПОДТВЕРЖДЕНИЕ${NC}"
+                echo -e "${DIM}...но если очень хочется, то можно...${NC}"
+                echo ""
+                echo -ne "${BOLD}Введите 'да, я подтверждаю это' или 'yes, i confirm this' (5/5): ${NC}"
+                read -r final_conf
+                
+                if [ "$final_conf" != "да, я подтверждаю это" ] && [ "$final_conf" != "yes, i confirm this" ]; then
+                    echo -e "${CYAN}Мудрое решение.${NC}"
+                    sleep 1
+                    continue
+                fi
+                
+                echo ""
+                echo -e "${YELLOW}Установка всех тем GRUB...${NC}"
+                sudo pacman -S $(pacman -Ssq grub-theme)
+                sleep 2
+                ;;
+        esac
+    done
+}
+
+reboot_system() {
+    local r_count=0
+    
+    echo ""
+    echo -e "${YELLOW}${BOLD}⚠ ПЕРЕЗАГРУЗКА СИСТЕМЫ ⚠${NC}"
+    echo -e "${DIM}Нажмите 'R' два раза для подтверждения${NC}"
+    echo ""
+    
+    while [ $r_count -lt 2 ]; do
+        echo -ne "${BOLD}Подтверждение ($(($r_count + 1))/2): ${NC}"
+        IFS= read -rsn1 conf
+        while read -r -t 0; do read -r -t 0.01; done
+        
+        if [ "$conf" = "r" ] || [ "$conf" = "R" ] || [ "$conf" = "к" ] || [ "$conf" = "К" ]; then
+            ((r_count++))
+            echo -e "${GREEN}✓${NC}"
+        else
+            echo -e "${RED}✗${NC}"
+            echo -e "${CYAN}Перезагрузка отменена.${NC}"
+            sleep 1
+            return
+        fi
+    done
+    
+    echo ""
+    echo -e "${GREEN}Перезагрузка системы...${NC}"
+    sleep 1
+    sudo reboot
+}
+
+uninstall_all_themes() {
+    echo ""
+    echo -e "${RED}${BOLD}⚠ УДАЛЕНИЕ ВСЕХ ТЕМ ⚠${NC}"
+    echo -e "${DIM}Нажмите 'U' для подтверждения${NC}"
+    echo ""
+    
+    echo -ne "${BOLD}Подтверждение: ${NC}"
+    IFS= read -rsn1 conf
+    while read -r -t 0; do read -r -t 0.01; done
+    
+    if [ "$conf" = "u" ] || [ "$conf" = "U" ] || [ "$conf" = "г" ] || [ "$conf" = "Г" ]; then
+        echo -e "${GREEN}✓${NC}"
+    else
+        echo -e "${RED}✗${NC}"
+        echo -e "${CYAN}Удаление отменено.${NC}"
+        sleep 1
+        return
+    fi
+    
+    echo ""
+    echo -e "${YELLOW}Удаление всех тем GRUB...${NC}"
+    sudo pacman -Rns $(pacman -Qq | grep grub-theme) --noconfirm 2>/dev/null || true
+    sudo sed -i '/^GRUB_THEME=/d' "$GRUB_CONFIG"
+    sudo grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
+    echo ""
+    echo -e "${GREEN}${BOLD}✓${NC} Все темы удалены!"
+    echo ""
+    sleep 1.5
+}
+
+main() {
+    if [ "$EUID" -eq 0 ]; then
+        echo -e "${RED}Не запускайте скрипт с правами root напрямую!${NC}"
+        echo -e "${YELLOW}Скрипт сам запросит sudo когда потребуется.${NC}"
+        exit 1
+    fi
+    
+    get_installed_themes || exit 1
+    get_current_theme
+    
+    local current_page=0
+    local total_pages=$(( (${#themes[@]} + THEMES_PER_PAGE - 1) / THEMES_PER_PAGE ))
+    
+    while true; do
+        show_page $current_page
+        
+        IFS= read -rsn1 choice
+        while read -r -t 0; do read -r -t 0.01; done
+        
+        case $choice in
+            q|Q|й|Й)
+                clear
+                echo -e "${CYAN}Выход из программы...${NC}"
+                exit 0
+                ;;
+            i|I|ш|Ш)
+                install_menu
+                get_installed_themes
+                get_current_theme
+                current_page=0
+                total_pages=$(( (${#themes[@]} + THEMES_PER_PAGE - 1) / THEMES_PER_PAGE ))
+                ;;
+            r|R|к|К)
+                reboot_system
+                ;;
+            u|U|г|Г)
+                uninstall_all_themes
+                get_installed_themes
+                get_current_theme
+                current_page=0
+                total_pages=$(( (${#themes[@]} + THEMES_PER_PAGE - 1) / THEMES_PER_PAGE ))
+                ;;
+            '`'|'~')
+                if [ $current_page -gt 0 ]; then
+                    ((current_page--))
+                fi
+                ;;
+            '-'|'_')
+                if [ $((current_page + 1)) -lt $total_pages ]; then
+                    ((current_page++))
+                fi
+                ;;
+            [1-9])
+                local num=$((choice))
+                local start_idx=$((current_page * THEMES_PER_PAGE))
+                local theme_idx=$((start_idx + num - 1))
+                
+                if [ $theme_idx -lt ${#themes[@]} ]; then
+                    apply_theme "${themes[$theme_idx]}"
+                    get_current_theme
+                fi
+                ;;
+            0)
+                local start_idx=$((current_page * THEMES_PER_PAGE))
+                local theme_idx=$((start_idx + 9))
+                
+                if [ $theme_idx -lt ${#themes[@]} ]; then
+                    apply_theme "${themes[$theme_idx]}"
+                    get_current_theme
+                fi
+                ;;
+        esac
+    done
+}
+
+main
