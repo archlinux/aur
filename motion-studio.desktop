@@ -3,6 +3,5 @@ Type=Application
 Name=RoboClaw Studio (Unofficial)
 Comment=Basicmicro RoboClaw Motion Studio for Linux
 Exec=roboclaw-studio
-Icon=roboclaw-studio
 Terminal=false
 Categories=Utility;
