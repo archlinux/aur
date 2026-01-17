@@ -6,7 +6,7 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=2.4.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -58,7 +58,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
     'highway'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
-		"backup.service.ts.patch"
+		"postgres-path.patch"   # replace Debian's location of postgres with Arch's
         "base-images::git+https://github.com/immich-app/base-images"
         "${pkgbase}-server.service"
         "${pkgbase}.sysusers"
@@ -74,7 +74,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin2Codes.txt'
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
 sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
-            '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
+            '00ae69ddab320aaf4e426f8372f22415c6486968f006fd12b9bd8cdeca8a8664'
             'SKIP'
             'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
@@ -88,8 +88,11 @@ sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
 
 prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
-    patch -p1 < ${srcdir}/backup.service.ts.patch  # replace Debian's location of postgres with Arch's
+    patch -p1 < ${srcdir}/postgres-path.patch
     imgdate=$(grep ^'FROM ghcr.io/immich-app/base-server-prod' server/Dockerfile | cut -d: -f2 | cut -d@ -f1)
+
+    cd web
+    pnpm add 'three@^0.179.0'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
 
     cd "${srcdir}/base-images"
     git checkout "$imgdate"
@@ -110,16 +113,15 @@ build() {
     SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm exec nest build --type-check
 
 	cd -
-    pnpm --filter immich --frozen-lockfile build
-
+    SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile build
     SHARP_FORCE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
 	#* prevent OOM
-	if [[ $(grep MemTotal /proc/meminfo | awk '{print $2}') > $(expr 5 \* 1024 \* 1024) ]]; then
+	if [[ $(grep MemTotal /proc/meminfo | awk '{print $2}') -gt $((5 * 1024 * 1024)) ]]; then
 		export NODE_OPTIONS=--max-old-space-size=4096
 	fi
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile --force install
+	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
     pnpm --filter @immich/sdk --filter immich-web build
 
     # build CLI
