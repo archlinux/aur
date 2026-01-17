@@ -1,10 +1,11 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Contributor: SecByShresth <ShresthPaul133@gmail.com>
 
 pkgname=python-pyinstrument
 _name="${pkgname#python-}"
-pkgver=5.0.0
+pkgver=5.1.2
 pkgrel=2
 pkgdesc="Call stack profiler for Python"
 arch=('x86_64' 'aarch64')
@@ -13,7 +14,7 @@ license=('BSD-3-Clause')
 depends=('ipython' 'python>=3.7' 'python-django' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('144f98eb3086667ece461f66324bf1cc1ee0475b399ab3f9ded8449cc76b7c90')
+sha256sums=('af149d672da9493fa37334a1cc68f7b80c3e6cb9fd99b9e426c447db5c650bf0')
 
 build() {
 	cd "$_name-$pkgver"
