@@ -1,11 +1,12 @@
 [Desktop Entry]
-Name=ImageViewer
-GenericName=Image Viewer
-Categories=Graphics;Viewer;RasterGraphics;VectorGraphics;2DGraphics;Photography;Qt;
-Comment=Simple, cross-platform image viewer
+Categories=Qt;Graphics;Viewer;RasterGraphics;VectorGraphics;2DGraphics;Photography;
 Exec=ImageViewer %F
 Icon=ImageViewer
-Terminal=false
-MimeType=inode/directory;image/avif;image/gif;image/heif;image/jpeg;image/jxl;image/png;image/bmp;image/x-eps;image/x-icns;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/tiff;image/x-psd;image/x-webp;image/webp;image/x-tga;image/x-xcf;image/openraster;image/svg+xml;image/svg+xml-compressed;
-InitialPreference=9
+StartupNotify=true
 Type=Application
+Terminal=false
+MimeType=application/x-navi-animation;image/bmp;image/gif;image/x-icns;image/jpeg;image/png;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-quicktime;image/svg+xml;image/x-tga;image/tiff;image/vnd.microsoft.icon;image/vnd.zbrush.pcx;image/x-pcx;image/x-win-bitmap;image/wmf;image/x-wmf;image/x-xbitmap;image/x-xpixmap;
+Name=Image Viewer
+GenericName=Image Viewer
+Comment=Simple, cross-platform image viewer
+InitialPreference=9
