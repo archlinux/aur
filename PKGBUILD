@@ -1,7 +1,7 @@
 # Maintainer: hev <git@hev.cc>
 
 pkgname=sockstun
-pkgver=2.13.0
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="A high-performance and low-overhead tunnel over socks5 proxy (tun2socks)."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/heiher/hev-socks5-tunnel.git#tag=${p
         'sockstun.yml')
 sha256sums=('SKIP'
             'b86c79a0e890cc7b9007f1dadb7a5b7c74d78e6fbcb03390a0299aaf176eb6c2'
-            '3af0a120f958cbb6cdb79507028d3ade94f93cbb20bda74f52620ecc3a0c3e58')
+            '34b8d23c26092182498a330ea0894f1bd8be6d8c05896c97f44a9f39477a005c')
 
 prepare() {
   cd $pkgname
