@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/desktop-gremlin/runner.sh "$@"
+exec /opt/desktop-gremlin/run.sh "$@"

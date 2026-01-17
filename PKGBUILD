@@ -1,7 +1,7 @@
 # Maintainer: Toadtoad <kingdomkeepersguy@gmail.com>
 pkgname=desktop-gremlin-git
 pkgver=r107.e9b118e
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop pet/gremlin"
 arch=('x86_64')
 url="https://github.com/iluvgirlswithglasses/linux-desktop-gremlin"
@@ -21,7 +21,7 @@ source=(
 
 sha256sums=(
   "SKIP"
-  "5cd5703070f5a49edc6822ffea7188ee6f78dc137321f02111cfad592baef38f"
+  "9a337c95eb41979c67ea8450eaad36e0863a63c5d345d4178f67e88957588757"
   "34da1a6a26430295d6e8f7ba95797f62fa0dfdfecb38d52a76210230283c73b7"
   "6ee18aeea7141286b2636d4a2064d38ffda9b517e21c5fc28a1ca84c16024c61"
 )
