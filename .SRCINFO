@@ -1,0 +1,21 @@
+pkgbase = python-pkb-client-git
+	pkgdesc = Unofficial client for the Porkbun API
+	pkgver = r270.bd8d4cc
+	pkgrel = 1
+	url = https://github.com/infinityofspace/pkb_client
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python-requests
+	depends = python-responses
+	depends = python-dnspython
+	provides = python-pkb-client
+	conflicts = python-pkb-client
+	source = python-pkb-client-git::git+https://github.com/infinityofspace/pkb_client.git
+	b2sums = SKIP
+
+pkgname = python-pkb-client-git
