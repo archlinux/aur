@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libcdio
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 arch=('any')
 pkgdesc="GNU Compact Disc Input and Control Library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libcdio/libcdio/archive/refs/tags/${pkgver}.tar.gz"
         '0001-Disable-version-script.patch')
-md5sums=('4d8b34da5132738d3341378c301dbf3e'
+md5sums=('004fcb1b2afff4d529535f2a0d01dd0e'
          '525e9b67c213cdd524837c70401712d2')
 validpgpkeys=('DAA63BC2582034A02B923D521A8DE5008275EC21') # R. Bernstein
 
@@ -97,4 +97,6 @@ package() {
 
     sed -e "/define CDIO_LIBCDIO_SOURCE_PATH/s|.*|/* #undef CDIO_LIBCDIO_SOURCE_PATH */|" \
         -i "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/cdio/cdio_config.h"
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
