@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=cargo-xwin
-pkgver=0.20.2
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Cross compile Cargo project to Windows MSVC target with ease"
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('a546417cf5e191c5a691cb808b04bfb8ac20dcf5258f25a4cc578b2ff4ea826a1cdf60c2113ed7eb147d11acc7651b049fb6df161f61908bf08b143b2ecddf5e')
+b2sums=('4226885a16a954fb26b0d23a7d61a40ae0a815d3914e9d38124898185ee849f6f14ba6513d558e40ca2e7293e3bdabaf00f2413d205476c6c8282b3476b33442')
 # see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 
