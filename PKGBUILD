@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
 pkgver=1.8.2
-pkgrel=6
+pkgrel=7
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   '69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab'
-  '5873ba480dcf1729494af0499611f4389cabc69e3862b491141a03a05dc4ec3b'
+  '1a6c1e058714e80740e6caf8f73be2cd646c994d7abea0988005b1f777d3533e'
   '240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
 )
 
