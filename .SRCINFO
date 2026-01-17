@@ -1,6 +1,6 @@
 pkgbase = wendy-agent
 	pkgdesc = Wendy Agent - Runs on target devices for remote debugging and deployment
-	pkgver = 2026.01.17_222231
+	pkgver = 2026.01.17_223618
 	pkgrel = 1
 	url = https://wendy.sh
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = wendy-agent
 	provides = wendy-agent
 	conflicts = wendy-agent-git
 	backup = etc/wendy-agent/config.yaml
-	source_x86_64 = wendy-agent-2026.01.17-222231-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-222231/wendy-agent-linux-static-musl-x86_64-2026.01.17-222231.tar.gz
-	sha256sums_x86_64 = 45d5fcec727446cc92cb82787fa259ecccfdf9a1f32be20e499e64dbdb0d3bb3
-	source_aarch64 = wendy-agent-2026.01.17-222231-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-222231/wendy-agent-linux-static-musl-aarch64-2026.01.17-222231.tar.gz
-	sha256sums_aarch64 = d4296fab0eeda78292740a18fb9f4b986fa0561dbed2b09564fe306abdbea6fa
+	source_x86_64 = wendy-agent-2026.01.17-223618-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-223618/wendy-agent-linux-static-musl-x86_64-2026.01.17-223618.tar.gz
+	sha256sums_x86_64 = 65522972c144b0da90d265ecc58a6171cebdbd450c7c5519f8aba9a42708c9ed
+	source_aarch64 = wendy-agent-2026.01.17-223618-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-223618/wendy-agent-linux-static-musl-aarch64-2026.01.17-223618.tar.gz
+	sha256sums_aarch64 = 5e9ff33304007da254a09536666a6f0ab0bb5ba9b7735a2c21642c65c7280c05
 
 pkgname = wendy-agent
