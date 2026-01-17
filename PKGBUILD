@@ -2,7 +2,7 @@
 # Contributor: KillerBossOriginal
 
 pkgname=stayfree-desktop
-pkgver=3.2.27
+pkgver=3.2.28
 pkgrel=1
 pkgdesc="StayFree - Analytics to help you understand and control your pc usage"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 
 _appimage="stayfree-linux-x86_64.AppImage"
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/stayfree-app/desktop-releases/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('e6878363f9ea048c2ae8ab30cb8b562ee988d03650459a7c3b9c98b2f35d9740')
+sha256sums=('4b89e453c32ffbc3fc8bf75e2c254b16f332f005ea01beb16a808f8094d52f5e')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
