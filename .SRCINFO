@@ -1,6 +1,6 @@
 pkgbase = python-tika
 	pkgdesc = Apache Tika Python library
-	pkgver = 2.6.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://github.com/chrismattmann/tika-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tika
 	depends = python
 	depends = python-requests
 	depends = python-pyaml
-	source = git+https://github.com/chrismattmann/tika-python#tag=2.6.0
-	sha256sums = SKIP
+	source = git+https://github.com/chrismattmann/tika-python#tag=3.1.0
+	sha256sums = 6de9ed2bbe62c3af1880337a74fbd8a1170ceff8a553f6761f5a14dcb1f3f354
 
 pkgname = python-tika
