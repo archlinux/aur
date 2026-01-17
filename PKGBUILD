@@ -11,7 +11,7 @@ pkgver() {
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
 arch=("x86_64")
@@ -34,7 +34,7 @@ build() {
 package() {
     cd "$srcdir/${_pkgname}"
     install -Dm0755 "tonearm" "$pkgdir/usr/bin/${_pkgname}"
-    install -Dm0644 "internal/icons/hicolor/256x256/apps/dev.dergs.Tonearm.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+    install -Dm0644 "internal/icons/hicolor/128x128/apps/dev.dergs.Tonearm.png" -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
     install -Dm0644 "internal/icons/hicolor/scalable/apps/dev.dergs.Tonearm.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
     install -Dm0644 "internal/icons/hicolor/symbolic/apps/dev.dergs.Tonearm-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
     install -Dm0644 "internal/settings/dev.dergs.Tonearm.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
