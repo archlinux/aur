@@ -11,7 +11,7 @@ optdepends=('chromium: browser backend' 'google-chrome: browser backend' 'brave-
 provides=('reels')
 conflicts=('reels')
 source=("https://github.com/njyeung/reels/releases/download/v${pkgver}/reels-linux-amd64")
-sha256sums=('fac5323ffc599589def7366dceb1a74d82fbbaf527a4ca72aa5a2ad6a3768ce2')
+sha256sums=('cabf1246585731bc71cd9a3d27d343513a7c16feccc49b599b12b0cb3fb29e58')
 
 package() {
     install -Dm755 "$srcdir/reels-linux-amd64" "$pkgdir/usr/bin/reels"
