@@ -1,6 +1,6 @@
 # Maintainer: Aaron Liu <aaronliu0130 @gmail.com>
 pkgname=font-patcher
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Official patcher to turn any font into a nerd font by adding many useful glyphs'
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('fontforge' 'python')
 source=("${pkgname}-${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/FontPatcher.zip"
 	'font-patcher.sh')
-sha256sums=('ce4284e7d1a8816d29bb3a358e33a44e55804792e7925ed0022ba1b3ab1a9d34'
-            '3c2b2c743c6ce715f1b3f66d9b1c6219c48899523e7cf9356a330adaac6e1009')
+sha256sums=('a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
+            '60e69b755022ad4770973587061f89a2de0ac33b102c8175409825175dde80e0')
 
 package() {
 	install -Dm755 font-patcher.sh "$pkgdir/usr/bin/font-patcher"
