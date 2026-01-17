@@ -1,7 +1,7 @@
 # Maintainer: thephoenix <ezrakhuzadi@gmail.com>
 pkgname=prismlauncher-offline
 pkgver=9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Prism Launcher fork with offline account support enabled (built from source)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
@@ -12,10 +12,8 @@ provides=('prismlauncher-offline')
 conflicts=('prismlauncher')
 source=("git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
         "git+https://github.com/PrismLauncher/libnbtplusplus.git"
-        "git+https://github.com/gulrak/filesystem.git"
-        "qfile-open-checks.patch")
+        "git+https://github.com/gulrak/filesystem.git")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -23,6 +21,7 @@ prepare() {
     cd "${srcdir}/PrismLauncher-Cracked"
 
     # Copy git submodules into place
+    mkdir -p libraries/libnbtplusplus libraries/filesystem
     cp -r "${srcdir}/libnbtplusplus/"* libraries/libnbtplusplus/
     cp -r "${srcdir}/filesystem/"* libraries/filesystem/
 
@@ -30,7 +29,6 @@ prepare() {
     sed -i 's/-target 7 -source 7/-target 8 -source 8/g' libraries/javacheck/CMakeLists.txt
     sed -i 's/-target 7 -source 7/-target 8 -source 8/g' libraries/launcher/CMakeLists.txt
 
-    patch -p1 -i "${srcdir}/qfile-open-checks.patch"
 }
 
 build() {
