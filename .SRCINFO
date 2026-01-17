@@ -8,6 +8,7 @@ pkgbase = mt7902-bluetooth-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
+	depends = mt7902-firmware-git
 	provides = mt7902-bluetooth-dkms
 	conflicts = mt7902-bluetooth-dkms
 	source = git+https://github.com/OnlineLearningTutorials/mt7902_temp.git
