@@ -1,0 +1,21 @@
+pkgbase = dodo-bin
+	pkgdesc = A fast and configurable PDF reader built with Qt and MuPDF
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/dheerajshenoy/dodo
+	arch = x86_64
+	license = AGPL-3.0
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	provides = dodo
+	conflicts = dodo
+	source = LICENSE-0.5.6::https://raw.githubusercontent.com/dheerajshenoy/dodo/v0.5.6/LICENSE
+	source = README-0.5.6.md::https://raw.githubusercontent.com/dheerajshenoy/dodo/v0.5.6/README.md
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	sha256sums = 692cfd1e9361fe43a14a666077dce75169362f34ccfefb23d796b9d7d9c0ae1a
+	source_x86_64 = dodo-x86_64-0.5.6.deb::https://github.com/dheerajshenoy/dodo/releases/download/v0.5.6/dodo_0.5.6_amd64.deb
+	sha256sums_x86_64 = ca63bdd5a88ffa746624ad7e059e9ea3b6ac82bd9a37c72a2e47d561e1455c2f
+
+pkgname = dodo-bin

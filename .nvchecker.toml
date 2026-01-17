@@ -1,0 +1,5 @@
+[dodo-bin]
+source = "github"
+github = "dheerajshenoy/dodo"
+use_latest_release = true
+prefix = "v"
