@@ -3,7 +3,7 @@
 pkgbase=dms-shell
 _pkg1=DankMaterialShell
 pkgname=($pkgbase $pkgbase-hyprland $pkgbase-niri)
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
@@ -25,7 +25,7 @@ optdepends=('brightnessctl: Laptop display brightness control'
 makedepends=(go)
 _archive="$_pkg1-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f2c81bc4f9aafb02e5b8afec317ec20c771b17842be239151556e2d40c505503')
+sha256sums=('ce3d098441db44c835437f810e042c55aca97752bf2244d3d50ac83caf79b337')
 
 build() {
 	cd "$_archive/core"
