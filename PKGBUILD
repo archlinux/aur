@@ -3,7 +3,7 @@
 _pkgauthor=sammcj
 _pkgname=ingest
 pkgname=${_pkgname}-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Parse files and websites to clipboard or a file for ingestions by AI / LLMs"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}")
 sha256sums=('2624502660e8f7965bb276ea8c83586e6302b4e32f2b6d4d5249953e35caf610'
             '8c815f53264c117a388bd5d7975505cb6690ab1abbd21daea184dfcb31d08b59')
-sha256sums_x86_64=('cb50836b7a0fdda06b0f341672cecfab8db99dae66212e04b9634bc967526e39')
+sha256sums_x86_64=('2076c93ef5547d9225d172e53c6757feb38769732935a4d96a8893318605b041')
 
 
 

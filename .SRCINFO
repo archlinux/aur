@@ -1,6 +1,6 @@
 pkgbase = ingest-bin
 	pkgdesc = Parse files and websites to clipboard or a file for ingestions by AI / LLMs
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/sammcj/ingest
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = ingest-bin
 	depends = ollama
 	provides = ingest
 	conflicts = ingest
-	source = LICENSE-0.15.2::https://raw.githubusercontent.com/sammcj/ingest/v0.15.2/LICENSE
-	source = README-0.15.2.md::https://raw.githubusercontent.com/sammcj/ingest/v0.15.2/README.md
+	source = LICENSE-0.15.3::https://raw.githubusercontent.com/sammcj/ingest/v0.15.3/LICENSE
+	source = README-0.15.3.md::https://raw.githubusercontent.com/sammcj/ingest/v0.15.3/README.md
 	sha256sums = 2624502660e8f7965bb276ea8c83586e6302b4e32f2b6d4d5249953e35caf610
 	sha256sums = 8c815f53264c117a388bd5d7975505cb6690ab1abbd21daea184dfcb31d08b59
-	source_x86_64 = ingest-0.15.2-x86_64::https://github.com/sammcj/ingest/releases/download/v0.15.2/ingest-linux-amd64
-	sha256sums_x86_64 = cb50836b7a0fdda06b0f341672cecfab8db99dae66212e04b9634bc967526e39
+	source_x86_64 = ingest-0.15.3-x86_64::https://github.com/sammcj/ingest/releases/download/v0.15.3/ingest-linux-amd64
+	sha256sums_x86_64 = 2076c93ef5547d9225d172e53c6757feb38769732935a4d96a8893318605b041
 
 pkgname = ingest-bin
