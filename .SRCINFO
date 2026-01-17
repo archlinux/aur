@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-hexagon-alt-gruvbox
+	pkgdesc = Gruvbox recolorization of one of the hexagon plymouth themes
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/otaj/plymouth-theme-hexagon-alt-gruvbox
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = https://github.com/otaj/plymouth-theme-hexagon-alt-gruvbox/archive/refs/tags/0.0.2.zip
+	sha256sums = ed0d5974aa37e10b80226a4fffae283a9f1ed1c45bbb88b5ac5de1903e5e2a19
+
+pkgname = plymouth-theme-hexagon-alt-gruvbox
