@@ -1,7 +1,7 @@
 pkgbase = python-django-admin-logs
 	pkgdesc = Allows you to either view the django admin log entries from within the admin interface, or to disable them entirely
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/radwon/django-admin-logs
 	arch = any
 	license = MIT
