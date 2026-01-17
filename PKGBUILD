@@ -1,16 +1,16 @@
-# Maintainer: mdao <https://github.com/mdao>
+# Maintainer: daonm <https://github.com/the-daonm>
 pkgname=gopac
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="A warm, beautiful TUI for Arch Linux package management"
 arch=('x86_64' 'aarch64')
-url="https://github.com/mdao/gopac"
+url="https://github.com/the-daonm/gopac"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('yay: AUR helper' 'paru: AUR helper')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1db028287af503aa80df8a49261b69768bba7335c0364f75e569e8b4e39b2a23')
+sha256sums=('991758a8b6ad828069cea8819afb7a2c7539a006a903eb708e9f3d79497059fd')
 
 build() {
   cd "$pkgname-$pkgver"
