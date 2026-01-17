@@ -8,8 +8,8 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=21.1.3
-_pkg_suffix=
+_pkgver=22.1.0
+_pkg_suffix=rc1
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -29,7 +29,7 @@ pkgdesc="Up to date official clang releases installed at /opt/clang/latest to av
 
 # stable
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${_pkgver_dash_suffix}.tar.gz")
-sha512sums=('aa83c1a2040fe943de553bf9b44dcf59776c14660c09bd12dcecea799a0269419ee836f00533e36fa44887e048e2bc55685135456bdf15c18a05ae257f634a70')
+sha512sums=('45c11632c16e9fd609cf948eb629d3c0df19ef7d42d0a5a8547e3137630ce2749fe2a9a6135e22dd306800a4fd761843b6a712933ce89fc02cdcd9a67454bb2d')
 install=clang.install
 static_build=false
 build_with_gcc=false
@@ -44,15 +44,6 @@ shared_library_build_options=" \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
 
-enable_all_projects_minus_libc="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
-# real  19m27.622s
-# user  580m58.766s
-# sys  16m27.477s
-enable_all_projects="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
-# real	14m10.929s
-# user	415m46.818s
-# sys	11m2.048s
-enable_all_projects_core="-DLLVM_ENABLE_PROJECTS=bolt;clang;lld"
 # both modules and thinlto barf with gcc
 # -DLLVM_ENABLE_MODULES=ON now barfs when compiling with clang 18, complaining about missing symbols
 build_with_clang_options=" \
@@ -62,23 +53,7 @@ build_with_clang_options=" \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_CXX_STANDARD=20 \
-			${enable_all_projects} \
 	"
-
-additional_build_options=""
-
-if ! $static_build; then
-	additional_build_options="${additional_build_options} ${shared_library_build_options}"
-fi
-
-if $build_with_gcc; then
-	# libc extricated since it did not build with gcc 13 on last attempt; if it builds for you, let me know
-	additional_build_options="${additional_build_options} \
-		${enable_all_projects_minus_libc} \
-	"
-else
-	additional_build_options="${additional_build_options} ${build_with_clang_options}"
-fi
 
 _prepare_install_script() {
 	cp ${startdir}/.clang.install ${startdir}/clang.install
@@ -103,19 +78,19 @@ build() {
 
 	# we now support makepkg's CFLAGS; be warned that -Os does not successfully build
     cmake   -B _build \
-            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
+            -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
-            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
-            -DLLVM_ENABLE_LIBCXX=ON \
             -DCMAKE_BUILD_TYPE=MinSizeRel \
-			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \
-			-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}" \
+      			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \
+			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}" \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
-            -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-			${additional_build_options} \
+            ${build_with_clang_options} \
+            ${shared_library_build_options} \
+            -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly;bolt" \
+            -DLLVM_ENABLE_RUNTIMES="compiler-rt;libc;libclc;libcxx;libcxxabi;libunwind;openmp" \
             ${srcdir}/llvm-project-llvmorg-${_pkgver_dash_suffix}/llvm | tee ${pkgname}-configure.log
-	time ninja -C _build | tee ${pkgname}-build.log
+	  time ninja -C _build | tee ${pkgname}-build.log
 	)
 	#perf record -e cycles:u -j any,u -- ninja -C _build
 }
