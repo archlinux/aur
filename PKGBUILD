@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.4.15
-pkgrel=2
+pkgver=0.4.16
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -22,6 +22,7 @@ makedepends=(
 )
 optdepends=(
     'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
+    'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
     'ydotool: keyboard simulation fallback (X11/TTY support)'
     'wl-clipboard: clipboard support'
     'libnotify: desktop notifications'
@@ -33,7 +34,7 @@ optdepends=(
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3f92a2c5ec9e727c0c26525f2486d5d3537243a93aa3e941cf74e1abac4f922')
+sha256sums=('aecd499e99deaffc9a3161ab20e181c903f8f935ee9db2049bda261f16aa00c7')
 
 prepare() {
     cd "$pkgname-$pkgver"
