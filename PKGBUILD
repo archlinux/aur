@@ -3,7 +3,7 @@
 _pkgauthor=rqlite
 _pkgname=rqlite
 pkgname=${_pkgname}-bin
-pkgver=9.3.14
+pkgver=9.3.15
 pkgrel=1
 pkgdesc="A lightweight, distributed relational database, which uses SQLite as its storage engine"
 
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
 sha256sums=('eebaac1ed2a0deece5e8ea39c679bd2c8813aa8da3ec95cdda953b95ce349629'
-            '3622e4aac34246ac123be4d055abc5614fdafffa06952d27cd73cf19dde83b71')
-sha256sums_x86_64=('fc27ef83852ea6e51bd7926602f3e2868f3f41a7d7b4a6212c67bb156a136804')
+            'ad8da7d9bad2ae7171e143274ad4cd432147306a1fb9abc9fcd0d9f105931b38')
+sha256sums_x86_64=('05087081e65b555dde7b73b0561b983749184d1bb89f06f66726e04fcf06eacf')
 
 
 package() {
