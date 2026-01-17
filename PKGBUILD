@@ -6,8 +6,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libdatrie
-pkgver=0.2.13
-pkgrel=3
+pkgver=0.2.14
+pkgrel=1
 arch=('any')
 pkgdesc="Double-array trie library (Android ${_android_arch})"
 url='https://linux.thai.net/projects/datrie'
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-${pkgver}.tar.xz")
-md5sums=('e26b5aa008b5f3588ab38d2dce9e9325')
+md5sums=('338d7b0c3e70967fc62d8f52e8bffe0b')
 
 build() {
     cd "${srcdir}/libdatrie-${pkgver}"
@@ -36,4 +36,6 @@ package() {
     make DESTDIR="${pkgdir}" install-pkgconfigDATA
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
