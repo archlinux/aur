@@ -1,11 +1,11 @@
 pkgname=syca
-pkgver=1.6
-pkgrel=4
-pkgdesc="Minimal sudo‑like privilege elevation tool for Linux"
+pkgver=1.7
+pkgrel=1
+pkgdesc="Alternative to base-devel with syca as sudo-like elevation tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syca"
 license=('GPL')
-depends=('ruby' 'python-pam' 'fakeroot' 'autoconf' 'automake' 'bison' 'debugedit' 'flex' 'm4' 'patch' 'pkgconf' 'texinfo' 'binutils' 'file' 'findutils' 'gawk' 'gcc' 'gettext' 'grep' 'groff' 'gzip' 'libtool' 'make' 'patch' 'sed' 'which')
+depends=('ruby' 'python-pam' 'archlinux-keyring' 'autoconf' 'automake' 'bison' 'debugedit' 'flex' 'm4' 'patch' 'pkgconf' 'texinfo' 'binutils' 'file' 'findutils' 'gawk' 'gcc' 'gettext' 'grep' 'groff' 'gzip' 'libtool' 'make' 'patch' 'sed' 'which' 'fakeroot')
 source=('syca' 'syca-helper.c' 'syca-pam-auth.py' 'syca.pam')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 conflicts=('sudo' 'base-devel')
