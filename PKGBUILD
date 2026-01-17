@@ -1,33 +1,42 @@
 # Maintainer: Will Reed <wreed@disroot.org>
 
 pkgname=confidant
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Dotfile management tool designed to be simple (but powerful), fast and easy to use"
 arch=('x86_64')
 url="https://wreedb.github.io/confidant"
 license=('GPL-3.0-or-later')
-source=("https://codeberg.org/wreedb/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.source.tar.gz")
-b2sums=('3597825edfde42fee38c86650521568ee01872371d3bd53cf25f58e630aec7fdd75de33f0302450de61ae7e841b91948cec3b3b2de2a08e484cbeb37b7ca0a33')
+source=("https://codeberg.org/wreedb/confidant/releases/download/v${pkgver}/confidant-${pkgver}.source.tar.gz")
+b2sums=('607c3b909263d517b08e125fa848e3a85adec8cca1c92e9ef2d2ee9b420be09f7196a1bf053f6e08fecce39aac878a091f6b9fdab9af0c02c0c6228d6d025677')
 depends=(libucl gcc-libs glibc)
-makedepends=(meson scdoc gettext)
-
-_srcdir="${pkgname}-${pkgver}"
+makedepends=(meson scdoc gettext libucl)
 
 prepare() {
-    meson subprojects download lyra --sourcedir ${_srcdir}
-    arch-meson ${_srcdir} ${_srcdir}/build -D build-tests=true
+    cd ${pkgname}-${pkgver}
+    meson subprojects download lyra
+    meson setup .build \
+        --strip \
+        --buildtype=release \
+        --prefix=/usr \
+        --libexecdir=lib \
+        --sbindir=bin \
+        --sysconfdir=/etc \
+        -D build-tests=true
 }
 
 build() {
-    meson compile -C ${_srcdir}/build
+    cd ${pkgname}-${pkgver}
+    meson compile -C .build
 }
 
 check() {
-    meson test -C ${_srcdir}/build
+    cd ${pkgname}-${pkgver}
+    meson test -C .build
 }
 
 package() {
-    meson install -C ${_srcdir}/build --destdir ${pkgdir}
-    install -m 0644 ${_srcdir}/LICENSE.md -Dt ${pkgdir}/usr/share/licenses/${pkgname}
+    cd ${pkgname}-${pkgver}
+    meson install -C .build --destdir ${pkgdir}
 }
+
