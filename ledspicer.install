@@ -1,0 +1,40 @@
+# ledspicer.install - Arch Linux install hooks
+
+post_install() {
+	echo "==> Reloading udev rules..."
+	udevadm control --reload-rules 2>/dev/null || true
+	udevadm trigger 2>/dev/null || true
+
+	echo "==> Refreshing library cache..."
+	ldconfig 2>/dev/null || true
+
+	echo ""
+	echo "==> LEDSpicer installed successfully!"
+	echo ""
+	echo "Next steps:"
+	echo "  1. Install device plugin(s) for your hardware:"
+	echo "     pacman -S ledspicer-nanoled ledspicer-pacled64 ..."
+	echo "  2. Edit configuration: /etc/ledspicer.conf"
+	echo "  3. Start the daemon:   systemctl start ledspicerd"
+	echo "  4. Enable at boot:     systemctl enable ledspicerd"
+	echo ""
+	echo "Documentation: https://github.com/meduzapat/LEDSpicer/wiki"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	echo "==> Stopping ledspicerd service..."
+	systemctl stop ledspicerd 2>/dev/null || true
+	systemctl disable ledspicerd 2>/dev/null || true
+}
+
+post_remove() {
+	echo "==> Reloading udev rules..."
+	udevadm control --reload-rules 2>/dev/null || true
+
+	echo "==> Refreshing library cache..."
+	ldconfig 2>/dev/null || true
+}
