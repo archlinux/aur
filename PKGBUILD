@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=bongo-cat
-pkgver=0.7.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="BongoCat 是一个可爱地互动桌面宠物应用，让你的桌面充满乐趣！"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64=(
   "${pkgname%-bin}-${pkgver}_arm64.deb::${url}/releases/download/v${pkgver}/BongoCat_${pkgver}_arm64.deb"
 )
 sha256sums=('1a164304cda4e01afc74bed12c93ef7d366958bf596d66477e63d315e42a23ce')
-sha256sums_x86_64=('bad686d5c1735cf69b057bfe246803a476eb9d839ade9e51edf851da6c4a2890')
-sha256sums_aarch64=('95a8f8de4345fa5c19c0e88d5e6fc8c19062e034dba250ccceb2cddbb2a0dae6')
+sha256sums_x86_64=('4aaf7ca925d43a92c5605dc6bbdbd8396e52d8aa62a60a53063b8b756a9ecc87')
+sha256sums_aarch64=('990cf13116e4576dd844b93f2a82eceb1c938d425856b2c12f81c8509f684b9e')
 
 build() {
   mkdir -p "build/";
