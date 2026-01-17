@@ -6,27 +6,23 @@ pkgdesc="A high-performance terminal image browser written in C, based on the Ch
 arch=('x86_64' 'aarch64')
 url="https://github.com/zouyonghe/PixelTerm-C"
 license=('LGPL-3.0-or-later')
-depends=('chafa' 'glib2' 'gdk-pixbuf2')
+depends=('chafa' 'glib2' 'gdk-pixbuf2' 'ffmpeg')
 makedepends=('pkgconf')
 provides=('pixelterm-c')
 options=('!debug' '!strip')
-source_x86_64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-amd64-linux")
-source_aarch64=("pixelterm-${pkgver}::${url}/releases/download/v${pkgver}/pixelterm-arm64-linux")
-source=("pixelterm.bash-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/bash/pixelterm"
-        "pixelterm.zsh-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/zsh/_pixelterm"
-        "pixelterm.fish-${pkgver}::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/main/completions/fish/pixelterm.fish")
-noextract=()
-md5sums_x86_64=('a6b1e46f0914fa259814c95525300ac0')
-md5sums_aarch64=('4de76ef3fbf430b1495beea05ccb929b')
-md5sums=('7ecbbc3392e547d0eed7c7938a23196d' 'eddbb991fa8a64fa58220a5712fb5309' '51cc6fcfe67b9682169172cee44ca385')
+source=("pixelterm-c-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('169c8d1cbcf472b2f4d4c9ef85bd7ee4eb23c3483ebfec4a5dedbdec47e1e7a4')
 
-prepare() {
-  find "${srcdir}" -maxdepth 1 -type f -name 'pixelterm-*' ! -name "pixelterm-${pkgver}" -delete
+build() {
+  cd "${srcdir}/PixelTerm-C-${pkgver}"
+  make
 }
 
 package() {
-  install -Dm755 "${srcdir}/pixelterm-${pkgver}" "${pkgdir}/usr/bin/pixelterm"
-  install -Dm644 "${srcdir}/pixelterm.bash-${pkgver}" "${pkgdir}/usr/share/bash-completion/completions/pixelterm"
-  install -Dm644 "${srcdir}/pixelterm.zsh-${pkgver}" "${pkgdir}/usr/share/zsh/site-functions/_pixelterm"
-  install -Dm644 "${srcdir}/pixelterm.fish-${pkgver}" "${pkgdir}/usr/share/fish/vendor_completions.d/pixelterm.fish"
+  cd "${srcdir}/PixelTerm-C-${pkgver}"
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  install -Dm644 completions/bash/pixelterm "${pkgdir}/usr/share/bash-completion/completions/pixelterm"
+  install -Dm644 completions/zsh/_pixelterm "${pkgdir}/usr/share/zsh/site-functions/_pixelterm"
+  install -Dm644 completions/fish/pixelterm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/pixelterm.fish"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
