@@ -1,6 +1,6 @@
 pkgbase = ttf-iosevka-low
 	pkgdesc = Custom build of Iosevka with lower line height (1.1 rem)
-	pkgver = 33.2.7
+	pkgver = 34.0.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ttf-iosevka-low
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = ttfautohint
-	source = ttf-iosevka-low-33.2.7.zip::https://github.com/be5invis/Iosevka/archive/refs/tags/v33.2.7.tar.gz
+	source = ttf-iosevka-low-34.0.0.zip::https://github.com/be5invis/Iosevka/archive/refs/tags/v34.0.0.tar.gz
 	source = private-build-plans.toml
-	sha256sums = ce176e4d7b7c0ac49210911af3c5216cf65113ca15082d9ec89110ed6cb7b62f
+	sha256sums = 2c84ca7e7d2789797811cc14b1aa81551a12bbd91abd26d44b531bf95a6ecef4
 	sha256sums = 2490dffd783e88ffd57689cb0f39eccfc58d916a757bbf0222aa1dfd9f121770
 
 pkgname = ttf-iosevka-low
