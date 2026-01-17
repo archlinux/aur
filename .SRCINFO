@@ -1,6 +1,6 @@
 pkgbase = kodi-nfo-generator
 	pkgdesc = Simple Python-based command-line tool to generate .nfo files for movies and TV series used by Kodi.
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/fracpete/kodi-nfo-generator
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = kodi-nfo-generator
 	makedepends = python-setuptools
 	makedepends = python-beautifulsoup4
 	depends = python
-	source = https://github.com/fracpete/kodi-nfo-generator/releases/download/v0.0.18/kodi_nfo_generator-0.0.18.tar.gz
-	sha256sums = d092141dba411eb2d30e526644d111861cf4a3a6af927d9f55d58db36bbec1fe
+	source = https://github.com/fracpete/kodi-nfo-generator/releases/download/v0.0.19/kodi_nfo_generator-0.0.19.tar.gz
+	sha256sums = af0c06e2ee6cd460e2305e398fd480f67ae9727bab38eadde446e31f2d8e193a
 
 pkgname = kodi-nfo-generator
