@@ -1,6 +1,6 @@
 pkgbase = netbird
 	pkgver = 0.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbird.io
 	arch = i686
 	arch = pentium4
@@ -41,3 +41,16 @@ pkgname = netbird-relay
 	license = AGPL-3.0-only
 	depends = glibc
 	backup = etc/default/netbird-relay
+
+pkgname = netbird-ui
+	pkgdesc = GUI for the Netbird client
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxxf86vm
+	depends = netbird

@@ -7,9 +7,10 @@ pkgname=(
   $pkgbase-management
   $pkgbase-signal
   $pkgbase-relay
+  $pkgbase-ui
 )
 pkgver=0.63.0
-pkgrel=1
+pkgrel=2
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 makedepends=('go')
@@ -29,7 +30,7 @@ build() {
   go build \
     -o build \
     -ldflags "-s -w -linkmode=external -X github.com/netbirdio/$pkgname/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
-    ./client ./signal ./management ./relay
+    ./client ./signal ./management ./relay ./client/ui
 
   # relay does not support completions
   for bin in client signal management; do
@@ -69,6 +70,30 @@ package_netbird() {
   cd release_files/systemd/
   install -Dm644 env "$pkgdir/etc/default/$pkgname"
   install -Dm644 netbird@.service -t "$pkgdir/usr/lib/systemd/system/"
+}
+
+package_netbird-ui() {
+  license=('BSD-3-Clause')
+  pkgdesc='GUI for the Netbird client'
+  depends=(
+    glibc
+    libglvnd
+    libx11
+    libxcursor
+    libxi
+    libxinerama
+    libxrandr
+    libxxf86vm
+    netbird
+  )
+
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm755 build/ui "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cd client/ui
+  install -Dm644 assets/netbird.png "$pkgdir/usr/share/pixmaps/netbird.png"
+  install -Dm644 build/netbird.desktop "$pkgdir/usr/share/applications/netbird.desktop"
 }
 
 package_netbird-management() {
