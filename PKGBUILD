@@ -2,7 +2,7 @@
 
 pkgname=roboclaw-studio-git
 pkgver=0.1.0.r2.gec5ea8b
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio"
 arch=('x86_64')
 url="https://github.com/lazytatzv/motion_studio"
@@ -20,10 +20,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   pnpm install --frozen-lockfile
-  pnpm build
-
-  cd src-tauri
-  cargo build --release --locked
+  pnpm tauri build --bundles none
 }
 
 package() {
