@@ -18,14 +18,8 @@ path = [
     "*.desktop",
     "*.hook",
     ".gitignore",
-]
-SPDX-FileCopyrightText = "Arch Linux contributors"
-SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
     "fix-cmake.patch",
     "fix-pyproject.patch",
 ]
-SPDX-FileCopyrightText = "python-pyxdia contributors"
+SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
