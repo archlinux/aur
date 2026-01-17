@@ -1,0 +1,22 @@
+pkgbase = vpin-studio-client-bin
+	pkgdesc = Client to connect to Vpin Studio servers, an open source pinball cabinet manager
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/syd711/vpin-studio
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	makedepends = cmake
+	depends = zulu11-fx-bin
+	source = vpin-studio-client-bin-4.6.0.zip::https://github.com/syd711/vpin-studio/releases/download/4.6.0/VPin-Studio-Client-linux-x64.zip
+	source = vpin-studio-client.desktop
+	source = vpin-studio.png
+	source = launcher.sh
+	source = license.txt
+	sha256sums = 6977d33d6fe93f005dd6360872e82e8326317a29e894a0a3c656b2a4734a9aad
+	sha256sums = da677687ce26ee9c7da8c9282254f73a2756174047d6683357f3d9b2045aef89
+	sha256sums = 2561ca46d2104ca5bed1e52df71520b51b10e2467b436a5dc50a5a9b46edb879
+	sha256sums = 233136d6c651522ffa4ae591493916a1c8507d673e4d95204d86f31667901c5e
+	sha256sums = b69ce1302dc90df90637db38163ee1becbe556b316a52c0eaaf7f82cd6fbe765
+
+pkgname = vpin-studio-client-bin

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VPin Studio Client
+Keywords=game pinball vpin;
+Icon=vpin-studio
+Exec=/opt/vpin-studio-client-bin/launcher.sh
+Terminal=false
+Categories=Game;
+Comment=An open source pinball cabinet manager
