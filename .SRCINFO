@@ -14,7 +14,6 @@ pkgbase = uutils-coreutils-git
 	provides = coreutils
 	conflicts = uutils-coreutils
 	conflicts = coreutils
-	options = zipman
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
 	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
 	b2sums = SKIP

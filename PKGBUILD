@@ -12,7 +12,6 @@ arch=('x86_64')
 depends=(gcc-libs glibc oniguruma)
 makedepends=(git rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
-options=(zipman)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
