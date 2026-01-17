@@ -1,17 +1,17 @@
 pkgbase = thorium-browser-bin
 	pkgdesc = Chromium fork focused on high performance and security
-	pkgver = 138.0.7204.193
+	pkgver = 138.0.7204.300
 	pkgrel = 1
-	url = https://github.com/Alex313031/Thorium
+	url = https://github.com/Alex313031/thorium
 	install = thorium-browser.install
 	arch = x86_64
 	license = BSD-3-Clause
-	noextract = thorium-browser_138.0.7204.193_BETA_1.deb
+	noextract = thorium-browser_138.0.7204.300_SSE3.deb
 	options = !emptydirs
 	options = !strip
 	options = !debug
-	source = https://github.com/Alex313031/Thorium/releases/download/M138Beta1/thorium-browser_138.0.7204.193_BETA_1.deb
-	sha256sums = 01658c59de246806bb15dd75c4787bdf440ebfa70dc7401e20c6dc7656a51148
+	source = https://github.com/Alex313031/thorium/releases/download/M138.0.7204.300/thorium-browser_138.0.7204.300_SSE3.deb
+	sha256sums = 24ec07b74fb2f920fdca16b909f917131bcc6d2cec873546a92e5269ac838b58
 
 pkgname = thorium-browser-bin
 	depends = alsa-lib

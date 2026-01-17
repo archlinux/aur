@@ -5,10 +5,10 @@
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgbase="$pkgname"
-pkgver=138.0.7204.193
+pkgver=138.0.7204.300
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
-url="https://github.com/Alex313031/Thorium"
+url="https://github.com/Alex313031/thorium"
 license=('BSD-3-Clause')
 arch=('x86_64')
 
@@ -16,15 +16,15 @@ options=('!emptydirs' '!strip' '!debug')
 
 install="$_pkgname.install"
 
-_dl_url="$url/releases/download/M138Beta1"
-_dl_filename="${_pkgname}_${pkgver}_BETA_1.deb"
+_dl_url="$url/releases/download/M${pkgver}"
+_dl_filename="${_pkgname}_${pkgver}_SSE3.deb"
 noextract+=("$_dl_filename")
 
 source=("$_dl_url/$_dl_filename")
-sha256sums=('01658c59de246806bb15dd75c4787bdf440ebfa70dc7401e20c6dc7656a51148')
+sha256sums=('24ec07b74fb2f920fdca16b909f917131bcc6d2cec873546a92e5269ac838b58')
 
 prepare() {
-  install -Dvm644 /dev/stdin "$_pkgname.sh" << END
+  install -Dm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
@@ -102,11 +102,8 @@ package() {
     -i "$pkgdir/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
 
   # Icons
-  for i in 16 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir/opt/$_pkgname/product_logo_${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
-
+  install -Dm644 "$pkgdir/opt/$_pkgname/product_logo_256.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
   install -Dm644 "$pkgdir/opt/$_pkgname/thorium_shell.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png"
 
