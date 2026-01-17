@@ -56,6 +56,7 @@ usage() {
 		  -x --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
 		                                       "rpc" - AUR HTTP RPC API, "pkgbuild" - source path PKGBUILD.
 		  -d --download-only                   download the source from AUR and stop.
+		     --git-connection                  how to connect to aur git. "https", "ssh". ("https")
 		  -G --git-opts [OPTS]..               opts to give in to git operations. ("")
 		  -M --makepkg-opts [OPTS]..           opts to give in to makepkg installs. ("-sirc")
 		     --overwrite-existing              overwrite eventually existing sources.
@@ -161,7 +162,7 @@ print_error() {
 			;;
 		52 )
 			echo "[-] Unknown search criteria: \"${SEARCH_CRITERIA}\"." >&2
-			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers." >&2
+			echo "[i] Possible options are: ${SEARCH_CRITERIA_VALUES[*]}." >&2
 			;;
 		53 )
 			echo "[-] Unknown error while parsing options." >&2
@@ -202,18 +203,18 @@ print_error() {
 			;;
 		65 )
 			echo "[-] Unknown sort-by value: \"${SORT_BY}\"." >&2
-			echo "[i] Possible options are: firstsubmitted, lastmodified, votes, popularity." >&2
+			echo "[i] Possible options are: ${SORT_BY_VALUES[*]}." >&2
 			;;
 		66 )
 			echo "[-] Unknown order-by value: \"${ORDER_BY}\"." >&2
-			echo "[i] Possible options are: ascending, descending." >&2
+			echo "[i] Possible options are: ${ORDER_BY_VALUES[*]}." >&2
 			;;
 		67 )
 			echo "[-] Could not pull repository: \"${SELECTED_PACKAGE}\"." >&2
 			;;
 		68 )
 			echo "[-] Unknown comparison criteria: \"${COMPARISON_CRITERIA}\"." >&2
-			echo "[i] Possible options are: pkgbuild, rpc." >&2
+			echo "[i] Possible options are: ${COMPARISON_CRITERIA_VALUES[*]}." >&2
 			;;
 		70 )
 			echo "[-] Could not find PKGBUILD for \"${SELECTED_PACKAGE}\" with comparison criteria \"pkgbuild\"." >&2
@@ -231,8 +232,8 @@ print_error() {
 			echo "[-] Could not establish a connection to the AUR RPC HTTP API." >&2
 			;;
 		75 )
-			echo "[-] Unknown output: \"${OUTPUT}\"." >&2
-			echo "[i] Possible options are: formatted, json-lines, json." >&2
+			echo "[-] Unknown output value: \"${OUTPUT}\"." >&2
+			echo "[i] Possible options are: ${OUTPUT_VALUES[*]}." >&2
 			;;
 		76 )
 			local TEMP_PACKAGES
@@ -240,8 +241,8 @@ print_error() {
 			echo "[!] Could not find ${TEMP_PACKAGES}." >&2
 			;;
 		77 )
-			echo "[!] The suggest operation can not output json." >&2
-			echo "[i] Possible options are: formatted, json-lines." >&2
+			echo "[!] Unknown suggest output value: \"${OUTPUT}\"." >&2
+			echo "[i] Possible options are: ${OUTPUT_SUGGEST_VALUES[*]}." >&2
 			;;
 		78 )
 			echo "[!] \"${CFG_VAR}\" config value has stacked values. Discarding." >&2
@@ -251,6 +252,10 @@ print_error() {
 			;;
 		80 )
 			echo "[-] Your kernel has been upgraded recently. Please reboot." >&2
+			;;
+		81 )
+			echo "[-] Unknown git-connection value: \"${GIT_CONNECTION}\"." >&2
+			echo "[i] Possible options are: ${GIT_CONNECTION_VALUES[*]}" >&2
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}." >&2
@@ -266,6 +271,7 @@ generate_config_json() {
 	cat <<- EOF | jq -cr
 		{
 		  "ALL": false,
+		  "GIT_CONNECTION": "https",
 		  "BLOCK_OVERWRITE": false,
 		  "CLEAN_OPERATION": false,
 		  "CLEANUP": false,
@@ -401,11 +407,6 @@ launch_sanity_checks() {
 		exit 57
 	fi
 
-	if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
-		print_error 68
-		exit 68
-	fi
-
 	case "${SORT_BY}" in
 		firstsubmitted )
 			SORT_BY="FirstSubmitted"
@@ -425,9 +426,24 @@ launch_sanity_checks() {
 			;;
 	esac
 
+	if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
+		print_error 68
+		exit 68
+	fi
+
+	if [[ ! "${GIT_CONNECTION_VALUES[*]}" =~ ${GIT_CONNECTION} ]]; then
+		print_error 81
+		exit 81
+	fi
+
 	if [[ ! "${ORDER_BY_VALUES[*]}" =~ ${ORDER_BY} ]]; then
 		print_error 66
 		exit 66
+	fi
+
+	if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
+		print_error 52
+		exit 52
 	fi
 
 	case "${CURRENT_OPERATION}" in
@@ -446,11 +462,6 @@ launch_sanity_checks() {
 		* )
 			;;
 	esac
-
-	if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
-		print_error 52
-		exit 52
-	fi
 
 	case "${VERBOSITY}" in
 		0 )
@@ -588,7 +599,7 @@ load_explicit_opts() {
 
 	LONGOPTS=''
 	LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,version,wipe-existing'
-	LONGOPTS+=',comparison-criteria:,config:,curl-opts:,executable-name:,git-opts:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
+	LONGOPTS+=',comparison-criteria:,config:,curl-opts:,executable-name:,git-connection:,git-opts:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
 	OPTIONS=''
 	OPTIONS+='adfhvV'
 	OPTIONS+='e:G:c:C:M:o:p:R:t:x:'
@@ -643,6 +654,10 @@ load_explicit_opts() {
 			-f|--force )
 				FORCE=true
 				shift
+				;;
+			--git-connection )
+				GIT_CONNECTION="${2}"
+				shift 2
 				;;
 			-G|--git-opts )
 				GIT_OPTS=()
@@ -824,12 +839,25 @@ compare_versions() {
 }
 
 clone_git_repo() {
+	local GIT_URL
 	local TARGET_PACKAGE="${1}"
 	if ! pushd "${SOURCE_PATH}" 1> /dev/null; then
 		print_error 63
 		exit 63
 	fi
-	git "${GIT_OPTS[@]}" clone "https://aur.archlinux.org/${TARGET_PACKAGE}.git"
+	case "${GIT_CONNECTION}" in
+		https )
+			GIT_URL="https://aur.archlinux.org/${TARGET_PACKAGE}.git"
+			;;
+		ssh )
+			GIT_URL="ssh://aur@aur.archlinux.org/${TARGET_PACKAGE}.git"
+			;;
+		* )
+			print_error 81
+			exit 81
+			;;
+	esac
+	git "${GIT_OPTS[@]}" clone "${GIT_URL}"
 	if [[ -z $(ls "${SOURCE_PATH}"/"${TARGET_PACKAGE}") ]]; then
 		if ! popd 1> /dev/null; then
 			print_error 64
@@ -1249,9 +1277,9 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.7-2"
-INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
-	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "CONFIG" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
+INTERNAL_VERSION="1.0.7-4"
+INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
+	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
 	"PARALLEL" "PERSISTENT_PATH" "SEARCH_CRITERIA" "SEARCH_RESULTS" "SORT_BY" "SOURCE_PATH" "TMP_PATH" \
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")
@@ -1259,9 +1287,9 @@ INTERNAL_ARRAYS=("CURL_OPTS" "GIT_OPTS" "MAKEPKG_OPTS" "REMOVE_OPTS")
 POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest")
 GENERAL_OPTIONS=("-a" "--all" "-c" "--config" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity" "-v" "--version")
 INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" \
-	"--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
+	"--git-connection" "--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
-UPDATE_OPTIONS=("--block-overwrite" "-x" "--comparison-criteria" "-C" "--curl-opts" "--keep-sources" \
+UPDATE_OPTIONS=("--block-overwrite" "-x" "--comparison-criteria" "-C" "--curl-opts" "--git-connection" "--keep-sources" \
 	"--keep-failed-sources" "-M" "--makepkg-opts")
 SEARCH_OPTIONS=("-C" "--curl-opts" "--maintained" "--no-out-of-date" "--no-mark-installed" "--no-mark-update" \
 	"-p" "--parallel" "--search-results" "--search-criteria" "--sort-by" "--order-by" "-o" "--output")
@@ -1269,6 +1297,7 @@ SUGGEST_OPTIONS=("-C" "--curl-opts" "--search-results" "--order-by" "-o" "--outp
 COMPLETION_OPTIONS=("-e" "--executable-name")
 LIST_OPTIONS=("--no-mark-update" "-p" "--parallel" "--no-mark-installed")
 AVAILABLE_COMPLETIONS=("bash")
+GIT_CONNECTION_VALUES=("https" "ssh")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
 OUTPUT_VALUES=("formatted" "json" "json-lines")
 OUTPUT_SUGGEST_VALUES=("formatted" "json-lines")
