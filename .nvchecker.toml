@@ -1,0 +1,4 @@
+[python-ws4py]
+source = "github"
+github = "Lawouach/WebSocket-for-Python"
+use_latest_release = true

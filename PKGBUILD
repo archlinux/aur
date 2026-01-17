@@ -1,4 +1,5 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: ValHue <vhuelamo at gmail dot com>
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
