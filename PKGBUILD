@@ -2,35 +2,22 @@
 pkgname=wkgtk-html2pdf
 pkgver=0.0.10
 pkgrel=0
-epoch=
-pkgdesc="wk2gtkpdf cpp library and command line interface"
+pkgdesc="C++ Library with CLI tool to convert HTML to PDF, A modern replacement for wkhtmltopdf"
 arch=(x86_64)
 url="https://github.com/Timh1970/wkgtk-html2pdf"
 license=('MIT')
-groups=()
 depends=(webkit2gtk-4.1 systemd xorg-server-xvfb)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
 conflicts=(libicprint)
-replaces=()
-backup=()
-options=()
 install=wk2gtkpdf.install
-changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Timh1970/wkgtk-html2pdf/archive/v${pkgver}.tar.gz")
-noextract=()
 sha256sums=('a9b840a1aca075362c570d1e69f772893b62de5f5976426adc8e8f610701b1dd')
 
 
 
 build() {
 
-# Build the library
 	make -C ${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf
 
-# Build the command line interface
 	USER_LIBDIR="-L${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf -lwk2gtkpdf"
 	USER_INCDIR="-I${srcdir}/${pkgname}-${pkgver}/src"
 	make USER_LIBDIR="$USER_LIBDIR" USER_INCDIR="$USER_INCDIR" -C ${srcdir}/${pkgname}-${pkgver}/src/cli
