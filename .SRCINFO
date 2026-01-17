@@ -1,0 +1,21 @@
+pkgbase = goxray-git
+	pkgdesc = Desktop Xray VPN client for macOS and Linux
+	pkgver = v0.0.9.r0.g66ce4ce
+	pkgrel = 1
+	url = https://github.com/goxray/desktop
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = xray
+	provides = goxray
+	conflicts = goxray
+	source = git+https://github.com/goxray/desktop.git
+	source = goxray.install
+	source = goxray.service
+	sha256sums = SKIP
+	sha256sums = 4ef4bc3a56cc52dcd3e65b19a39edf2b9abe0ef7c262a93d33838b47641862c1
+	sha256sums = 57ba9c93e31ac3ae6ca4103675d8fefece4373298de480cef0827af65b191597
+
+pkgname = goxray-git
