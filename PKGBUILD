@@ -1,6 +1,6 @@
 pkgname=python-sentence-stream
 _pkgname=sentence-stream
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Small sentence splitter for text streams"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(python python-regex)
 makedepends=(git python-setuptools python-build python-installer python-wheel)
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("git+https://github.com/OHF-Voice/$_pkgname.git#tag=v$pkgver")
-sha256sums=('c28b1129a756bc2246e7bc051114bd49796eafdd436a4b18917ad209d2ffef1d')
+sha256sums=('61037186d78e042c4cb27dd0d6142e78e2ef54374435f4b9f0cd559a74bf2339')
 
 build() {
   cd ${_pkgname}
