@@ -7,33 +7,34 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libdvdcss
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Portable abstraction library for DVD decryption (Android ${_android_arch})"
 url="https://www.videolan.org/developers/libdvdcss.html"
 arch=('any')
 license=('GPL')
 depends=('android-ndk')
-makedepends=('android-configure')
+makedepends=('android-meson'
+             'ninja')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://download.videolan.org/pub/libdvdcss/${pkgver}/libdvdcss-${pkgver}.tar.bz2")
-md5sums=('e98239a88af9b2204f9b9d987c2bc71a')
+source=("https://code.videolan.org/videolan/libdvdcss/-/archive/${pkgver}/libdvdcss-${pkgver}.tar.bz2")
+md5sums=('5ff8b0240506b96d04f1a0cf04ab77d1')
 
 build() {
     cd "${srcdir}/libdvdcss-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure \
-        --disable-doc
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build
+    ninja -C build all
 }
 
 package() {
     cd "${srcdir}/libdvdcss-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="${pkgdir}" install
-    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
