@@ -12,7 +12,7 @@ install="${pkgname}.install"
 provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 replaces=("python-${pkgname}")
-depends=("python-aiofiles" "python-arrow" "python-asgiref" "python-asgi-middleware-static-file" "python-chardet" "python-click"
+depends=("python-aiofiles" "python-asgiref" "python-asgi-middleware-static-file" "python-chardet" "python-click"
          "python-dataclass-wizard" "python-dotenv" "python-httptools" "python-uvloop" "python-xmltodict" "uvicorn")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=("python-httpx" "python-httpx-kerberos" "python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-pytest-mock" "python-requests")

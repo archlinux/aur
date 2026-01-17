@@ -19,7 +19,6 @@ pkgbase = asgi-webdav
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-aiofiles
-	depends = python-arrow
 	depends = python-asgiref
 	depends = python-asgi-middleware-static-file
 	depends = python-chardet
