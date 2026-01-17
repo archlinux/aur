@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-adw
 	pkgdesc = A backend implementation for xdg-desktop-portal using Libadwaita
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/PrincParshia/xdg-desktop-portal-adw
 	arch = x86_64

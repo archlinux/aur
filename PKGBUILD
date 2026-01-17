@@ -1,7 +1,7 @@
 # Maintainer: PrincParshia <princparshia@gmail.com>
 
 pkgname=xdg-desktop-portal-adw
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal using Libadwaita"
 arch=(x86_64)
