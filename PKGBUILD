@@ -3,7 +3,7 @@
 _pkgname="azahar"
 pkgname="$_pkgname-appimage-wayland"
 
-pkgver=2123.4.1
+pkgver=2124
 
 pkgrel=1
 epoch=1
@@ -23,7 +23,7 @@ depends=("ffmpeg"
 _source_main() {
   _appimage="$_pkgname-wayland.AppImage"
   source=("https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname-wayland.AppImage")
-  sha256sums=('9079d0e3284c31d4250ad2f9a6c9e2f72e368f84fd6d067cd03842dfa83b9e04')
+  sha256sums=('f7dfed60b1fb52be4b2d6f837747f42855302fcbcda2d85784f066eb60d14512')
 }
 
 options=("!strip")

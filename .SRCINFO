@@ -1,6 +1,6 @@
 pkgbase = azahar-appimage-wayland
 	pkgdesc = Azahar is an open-source 3DS emulator project based on Citra. (already compiled, wayland version)
-	pkgver = 2123.4.1
+	pkgver = 2124
 	pkgrel = 1
 	epoch = 1
 	url = https://azahar-emu.org
@@ -14,7 +14,7 @@ pkgbase = azahar-appimage-wayland
 	conflicts = azahar-git
 	conflicts = azahar-appimage
 	options = !strip
-	source = https://github.com/azahar-emu/azahar/releases/download/2123.4.1/azahar-wayland.AppImage
-	sha256sums = 9079d0e3284c31d4250ad2f9a6c9e2f72e368f84fd6d067cd03842dfa83b9e04
+	source = https://github.com/azahar-emu/azahar/releases/download/2124/azahar-wayland.AppImage
+	sha256sums = f7dfed60b1fb52be4b2d6f837747f42855302fcbcda2d85784f066eb60d14512
 
 pkgname = azahar-appimage-wayland
