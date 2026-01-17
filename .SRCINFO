@@ -1,0 +1,17 @@
+pkgbase = python-json-five
+	pkgdesc = JSON5 parsing with round-trip editing support
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/json-five/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-regex
+	depends = python-sly
+	source = https://files.pythonhosted.org/packages/1a/b1/3f9e2feb61fc7d78fa6cf584477416e75ea9c9b4796a62ace787539c9a04/json_five-1.1.2.tar.gz
+	sha256sums = 1c5b1bae6039bc44632d009b32338d4b59ab765c596d96577b52cc3dadc936e2
+
+pkgname = python-json-five
