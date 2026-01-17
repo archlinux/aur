@@ -1,7 +1,8 @@
-# Maintainer: Piotr Sarna <piotr@sarna.dev>
+# Maintainer: Guru <anjanaya@gmail.com>
+# Contributor: Piotr Sarna <piotr@sarna.dev>
 
 pkgname=redpanda-bin
-pkgver=23.3.4
+pkgver=25.3.5
 pkgrel=1
 pkgdesc='Redpanda is a streaming platform for mission critical workloads (binary package)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +13,8 @@ conflicts=('redpanda-git' 'redpanda')
 replaces=('redpanda-git' 'redpanda')
 source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://github.com/redpanda-data/redpanda/releases/download/v${pkgver}/rpk-linux-amd64.zip)
 source_aarch64=(${pkgname}-${pkgver}-aarch64.zip::https://github.com/redpanda-data/redpanda/releases/download/v${pkgver}/rpk-linux-arm64.zip)
-sha256sums_x86_64=('96fef6352defd454aa78991c1ab037e98ac4950f6e9beb31fb0359b036c9fdc2')
-sha256sums_aarch64=('b45f7102ff089d66277d9495ccd9a54e21d5d5c28aa9fa2fd0db2a3fc3bd98a3')
+sha256sums_x86_64=('a9428650d89b72e49298ae8dc2178e3606bda09840596d73e099dc74ba9891ed')
+sha256sums_aarch64=('dc7ea0553ce600ebbb01dbc8c66588f79a4611502ea9e0e1032b8869b8b2cef9')
 noextract=(${pkgname}-${pkgver}-x86_64.zip ${pkgname}-${pkgver}-aarch64.zip)
 
 prepare() {
