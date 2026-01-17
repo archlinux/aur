@@ -23,6 +23,8 @@ depends=(
     'python-einops'
     'python-transformers'
     'python-safetensors'
+    'python-psutil'
+    'python-requests'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'git')
 provides=('switchgen')
@@ -47,7 +49,15 @@ build() {
 
 package() {
     cd "$pkgname"
+
+    # Install Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Install bundled ComfyUI to /usr/share/switchgen/vendor/
+    install -dm755 "$pkgdir/usr/share/switchgen/vendor"
+    cp -r vendor/ComfyUI "$pkgdir/usr/share/switchgen/vendor/"
+
+    # Install desktop file and docs
     install -Dm644 switchgen.desktop "$pkgdir/usr/share/applications/switchgen.desktop"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE" 2>/dev/null || true
