@@ -1,7 +1,7 @@
 # Maintainer: kamiduki <kamiduki_0@outlook.com>
 
 pkgname=udiskr
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Lightweight alternative to udiskie'
 url=https://github.com/uriib/udiskr
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(udisks2)
 optdepends=('xdg-utils: open directory')
 makedepends=(cargo-nightly)
-sha256sums=('f6c0b620bb6df03a313b5fb119a733045c2ffff73b2d8afa09de27bcbe1cc4c7')
+sha256sums=('da8b5b030c122791ce5f23def660b5dc01665ce8d684d9e58ffbb21af322df49')
 
 prepare() {
   cd $pkgname-$pkgver
