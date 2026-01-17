@@ -26,7 +26,7 @@ depends=(
     'python-psutil'
     'python-requests'
 )
-makedepends=('python-build' 'python-installer' 'python-hatchling' 'git')
+makedepends=('python-build' 'python-installer' 'python-hatchling' 'git' 'rsync')
 provides=('switchgen')
 conflicts=('switchgen')
 source=("${pkgname}::git+${url}.git")
@@ -56,11 +56,8 @@ package() {
     # Install bundled ComfyUI to /usr/share/switchgen/vendor/
     install -dm755 "$pkgdir/usr/share/switchgen/vendor"
 
-    # Remove .git file (submodule reference not needed at runtime)
-    rm -f vendor/ComfyUI/.git
-
-    # Copy ComfyUI with error checking
-    cp -a vendor/ComfyUI "$pkgdir/usr/share/switchgen/vendor/" || exit 1
+    # Copy ComfyUI using rsync (more reliable in fakeroot)
+    rsync -a --exclude='.git' vendor/ComfyUI "$pkgdir/usr/share/switchgen/vendor/" || exit 1
 
     # Install desktop file and docs
     install -Dm644 switchgen.desktop "$pkgdir/usr/share/applications/switchgen.desktop"

@@ -9,6 +9,7 @@ pkgbase = switchgen-git
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = git
+	makedepends = rsync
 	depends = python>=3.10
 	depends = python-gobject
 	depends = gtk4
