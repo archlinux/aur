@@ -10,7 +10,7 @@ license=('CC-BY-NC-ND-4.0')
 depends=('python' 'python-typer' 'python-rich' 'python-questionary' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/ewgsta/weeb-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca80a55eb71130289043c4a4e848d5c903b70b2715be7a220d4f248c4f1947af')
+sha256sums=('e89669e726f486a6ffea0b5ea47095d6936a62cc2e7c8b05d11b3c9cbe6930ec')
 
 build() {
     cd "${_name}-$pkgver"
