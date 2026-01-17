@@ -1,7 +1,7 @@
 From e8baeb7367372e19b78887fa92034a247f658ab3 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Tue, 24 Dec 2024 12:03:33 +0800
-Subject: [PATCH 2/5] add 3.13 as supported controller version
+Subject: [PATCH 2/8] add 3.13 as supported controller version
 
 ---
  test/lib/ansible_test/_data/requirements/ansible-test.txt | 2 +-

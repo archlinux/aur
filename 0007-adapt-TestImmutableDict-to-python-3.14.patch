@@ -1,0 +1,25 @@
+From 1e7bc6098946d3f103ad95f9dfa41c9b12c5e54d Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Sat, 17 Jan 2026 20:55:11 +0800
+Subject: [PATCH 7/8] adapt TestImmutableDict to python 3.14
+
+---
+ test/units/module_utils/common/test_collections.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/units/module_utils/common/test_collections.py b/test/units/module_utils/common/test_collections.py
+index 8424502e07..bf6a6b42a8 100644
+--- a/test/units/module_utils/common/test_collections.py
++++ b/test/units/module_utils/common/test_collections.py
+@@ -146,7 +146,7 @@ class TestImmutableDict:
+         # ImmutableDict is unhashable when one of its values is unhashable
+         imdict = ImmutableDict({u'café': u'くらとみ', 1: [1, 2]})
+ 
+-        expected_reason = r"^unhashable type: 'list'$"
++        expected_reason = r"unhashable type: 'list'"
+ 
+         with pytest.raises(TypeError, match=expected_reason):
+             hash(imdict)
+-- 
+2.52.0
+

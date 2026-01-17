@@ -1,0 +1,23 @@
+From d1fdf274cfcd056065fd671e5b573d47134a8011 Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Sat, 17 Jan 2026 21:00:24 +0800
+Subject: [PATCH 8/8] adapt test_check_required_arguments_no_params to python
+ 3.14
+
+---
+ .../common/validation/test_check_required_arguments.py          | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/units/module_utils/common/validation/test_check_required_arguments.py b/test/units/module_utils/common/validation/test_check_required_arguments.py
+index eb3d52e2fc..f736b06c3f 100644
+--- a/test/units/module_utils/common/validation/test_check_required_arguments.py
++++ b/test/units/module_utils/common/validation/test_check_required_arguments.py
+@@ -85,4 +85,4 @@ def test_check_required_arguments_missing_none():
+ def test_check_required_arguments_no_params(arguments_terms):
+     with pytest.raises(TypeError) as te:
+         check_required_arguments(arguments_terms, None)
+-    assert "'NoneType' is not iterable" in to_native(te.value)
++    assert "'NoneType' is not a container or iterable" in to_native(te.value)
+-- 
+2.52.0
+

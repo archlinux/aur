@@ -1,7 +1,7 @@
 From c5700dcdbfe4ecc6a93e61c50d885b3f9b845f76 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Tue, 5 Nov 2024 12:42:12 +0800
-Subject: [PATCH 1/5] do not pin resolvelib
+Subject: [PATCH 1/8] do not pin resolvelib
 
 See 016b7f71b10539c90ddbb3246f19f9cbf0e65428.
 ---

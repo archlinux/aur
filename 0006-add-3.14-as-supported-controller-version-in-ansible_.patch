@@ -1,0 +1,36 @@
+From 9572af73d936e495fa212c67f50a1e556e8101d4 Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Mon, 12 Jan 2026 21:47:58 +0800
+Subject: [PATCH 6/8] add 3.14 as supported controller version in ansible_test
+
+---
+ test/lib/ansible_test/_internal/coverage_util.py       | 2 +-
+ test/lib/ansible_test/_util/target/common/constants.py | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/lib/ansible_test/_internal/coverage_util.py b/test/lib/ansible_test/_internal/coverage_util.py
+index f437110cc1..24242c6d66 100644
+--- a/test/lib/ansible_test/_internal/coverage_util.py
++++ b/test/lib/ansible_test/_internal/coverage_util.py
+@@ -69,7 +69,7 @@ class CoverageVersion:
+ 
+ COVERAGE_VERSIONS = (
+     # IMPORTANT: Keep this in sync with the ansible-test.txt requirements file.
+-    CoverageVersion('7.3.2', 7, (3, 8), (3, 13)),
++    CoverageVersion('7.3.2', 7, (3, 8), (3, 14)),
+     CoverageVersion('6.5.0', 7, (3, 7), (3, 7)),
+     CoverageVersion('4.5.4', 0, (2, 6), (3, 6)),
+ )
+diff --git a/test/lib/ansible_test/_util/target/common/constants.py b/test/lib/ansible_test/_util/target/common/constants.py
+index db81f6b135..76d4a9a2eb 100644
+--- a/test/lib/ansible_test/_util/target/common/constants.py
++++ b/test/lib/ansible_test/_util/target/common/constants.py
+@@ -18,4 +18,5 @@ CONTROLLER_PYTHON_VERSIONS = (
+     '3.11',
+     '3.12',
+     '3.13',
++    '3.14',
+ )
+-- 
+2.52.0
+
