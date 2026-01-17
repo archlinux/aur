@@ -2,7 +2,7 @@
 
 pkgname=roboclaw-studio-git
 pkgver=0.1.0.r2.gec5ea8b
-pkgrel=5
+pkgrel=6
 pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio"
 arch=('x86_64')
 url="https://github.com/lazytatzv/motion_studio"
@@ -39,6 +39,11 @@ package() {
 
   # Cleanup deb container artifacts
   rm -f "$pkgdir"/control.tar.* "$pkgdir"/data.tar.* "$pkgdir"/debian-binary
+
+  # Provide a stable binary name
+  if [ -x "$pkgdir/usr/bin/motion_studio" ]; then
+    ln -sfn motion_studio "$pkgdir/usr/bin/roboclaw-studio"
+  fi
 
   # Override desktop entry (optional)
   install -Dm644 packaging/aur/motion-studio.desktop \
