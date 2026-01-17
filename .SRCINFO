@@ -1,10 +1,10 @@
 pkgbase = python-cairo-git
 	pkgdesc = Python bindings for the cairo graphics library
-	pkgver = 1.26.1.r1.g176a1a6
+	pkgver = 1.29.0.r1.g792dce1
 	pkgrel = 1
 	url = https://github.com/pygobject/pycairo
 	arch = x86_64
-	license = LGPL-2.1-only
+	license = LGPL-2.1-only OR MPL-1.1
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = meson
@@ -12,7 +12,7 @@ pkgbase = python-cairo-git
 	makedepends = python-sphinx_rtd_theme
 	depends = cairo
 	depends = python
-	provides = python-cairo=1.26.1
+	provides = python-cairo=1.29.0
 	conflicts = python-cairo
 	source = python-cairo::git+https://github.com/pygobject/pycairo.git
 	sha256sums = SKIP

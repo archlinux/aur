@@ -1,12 +1,12 @@
-# Maintainer:
+# Maintainer: a821 (nospam) mail de
 
 _pkgname="python-cairo"
 pkgname="$_pkgname-git"
-pkgver=1.26.1.r1.g176a1a6
+pkgver=1.29.0.r1.g792dce1
 pkgrel=1
 pkgdesc="Python bindings for the cairo graphics library"
 url="https://github.com/pygobject/pycairo"
-license=('LGPL-2.1-only')
+license=('LGPL-2.1-only OR MPL-1.1')
 arch=('x86_64')
 
 depends=(
