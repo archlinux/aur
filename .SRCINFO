@@ -1,0 +1,19 @@
+pkgbase = android-x86-64-libudfread
+	pkgdesc = UDF reader. (Android x86-64)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/libudfread
+	arch = any
+	groups = android-libudfread
+	license = LGPL2.1
+	makedepends = android-meson
+	makedepends = ninja
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://code.videolan.org/videolan/libudfread/-/archive/1.2.0/libudfread-1.2.0.tar.bz2
+	md5sums = a0636a576209d47ada44960c922cfa5d
+
+pkgname = android-x86-64-libudfread
