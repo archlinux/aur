@@ -7,8 +7,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libcap-ng
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 arch=('any')
 pkgdesc="A library for Linux that makes using posix capabilities easy (Android ${_android_arch})"
 url='https://people.redhat.com/sgrubb/libcap-ng/'
@@ -21,7 +21,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}/libcap-ng-${pkgver}.tar.gz"
         '0001-Disable-fsetlocking.patch')
-md5sums=('8635fae2b1ead2381a9630d00e8f80b7'
+md5sums=('abc6ba14f5b96041abe8e41c59aed7ed'
          '2ecb9b10f198c5222237864ab215d217')
 
 prepare() {
@@ -56,4 +56,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
