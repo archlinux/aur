@@ -1,7 +1,7 @@
 # Maintainer: kesefon <aur@froggo.garden>
 pkgname=ucp3-gui
 pkgver='1.0.14'
-pkgrel=0
+pkgrel=1
 pkgdesc='GUI for Unofficial Crusader Patch 3'
 url="https://github.com/UnofficialCrusaderPatch/UCP3-GUI"
 arch=('x86_64')
@@ -18,7 +18,8 @@ build() {
     npm ci
     export WEBKIT_DISABLE_COMPOSITING_MODE=1
     export NO_STRIP=true
-    WEBKIT_DISABLE_COMPOSITING_MODE=1 NO_STRIP=true npm run tauri build -- -b deb
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+    npm run tauri build -- -b deb
 }
 
 package() {
