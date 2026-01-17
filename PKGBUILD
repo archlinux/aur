@@ -4,7 +4,7 @@ pkgname=otf-garamond-math
 pkgver=20220103
 pkgrel=1
 pkgdesc='Garamond-Math is an open type math font matching EB Garamond.'
-url="https://https://ctan.org/pkg/garamond-math"
+url="https://ctan.org/pkg/garamond-math"
 license=('OFL-1.1')
 arch=(any)
 
