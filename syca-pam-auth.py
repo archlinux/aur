@@ -1,36 +1,35 @@
 #!/usr/bin/env python3
+import os
 import sys
 import termios
 import tty
 import pam
-import os
 
 def masked_input(prompt="[syca] password: "):
-    sys.stdout.write(prompt)
-    sys.stdout.flush()
-    password = ""
-    fd = sys.stdin.fileno()
+    # Open the terminal directly
+    fd = os.open("/dev/tty", os.O_RDWR)
     old = termios.tcgetattr(fd)
+    password = ""
     try:
         tty.setcbreak(fd)
+        os.write(fd, prompt.encode())
         while True:
-            ch = sys.stdin.read(1)
-            if ch in ("\n", "\r"):
+            ch = os.read(fd, 1)
+            if ch in (b"\n", b"\r"):
                 break
-            if ch == "\x03":
+            if ch == b"\x03":  # Ctrl-C
                 raise KeyboardInterrupt
-            if ch == "\x7f":
+            if ch == b"\x7f":  # Backspace
                 if password:
                     password = password[:-1]
-                    sys.stdout.write("\b \b")
-                    sys.stdout.flush()
+                    os.write(fd, b"\b \b")
             else:
-                password += ch
-                sys.stdout.write("*")
-                sys.stdout.flush()
+                password += ch.decode("utf-8")
+                os.write(fd, b"*")
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
-    print()
+        os.close(fd)
+    os.write(sys.stdout.fileno(), b"\n")
     return password
 
 try:
@@ -41,5 +40,4 @@ try:
     else:
         sys.exit(1)
 except KeyboardInterrupt:
-    # Exit silently; Ruby will handle "[syca] Command cancelled by user."
     sys.exit(1)

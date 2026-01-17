@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'etc'
 require 'fileutils'
 require 'optparse'
@@ -10,8 +11,11 @@ CACHE_FILE  = File.join(CACHE_DIR, "timestamp")
 CONFIG_FILE = File.join(CACHE_DIR, "config")
 HELPER      = "/usr/lib/syca-helper"
 PAM_HELPER  = "/usr/lib/syca-pam-auth.py"
+
+# Default passwordless duration (minutes)
 DEFAULT_MINUTES = 3
 
+# Ensure user is in wheel group
 def ensure_wheel_member
   wheel_gid = Etc.getgrnam('wheel').gid rescue nil
   if wheel_gid.nil?
@@ -24,50 +28,68 @@ def ensure_wheel_member
   end
 end
 
+# Load passwordless duration from config
 def load_config
-  File.exist?(CONFIG_FILE) ? (Integer(File.read(CONFIG_FILE).strip) rescue DEFAULT_MINUTES) : DEFAULT_MINUTES
+  if File.exist?(CONFIG_FILE)
+    Integer(File.read(CONFIG_FILE).strip) rescue DEFAULT_MINUTES
+  else
+    DEFAULT_MINUTES
+  end
 end
 
+# Save passwordless duration
 def save_config(minutes)
   FileUtils.mkdir_p(CACHE_DIR)
   File.write(CONFIG_FILE, minutes.to_s)
 end
 
+# Save current timestamp
 def save_timestamp
   FileUtils.mkdir_p(CACHE_DIR)
   File.write(CACHE_FILE, Time.now.to_i.to_s)
 end
 
+# Load cached timestamp
 def load_timestamp
-  File.exist?(CACHE_FILE) ? (Integer(File.read(CACHE_FILE).strip) rescue nil) : nil
+  if File.exist?(CACHE_FILE)
+    Integer(File.read(CACHE_FILE).strip) rescue nil
+  else
+    nil
+  end
 end
 
+# Clear timestamp cache
 def clear_cache
   File.delete(CACHE_FILE) if File.exist?(CACHE_FILE)
 end
 
+# Disable passwordless mode
 def disable_cache
   clear_cache
   File.delete(CONFIG_FILE) if File.exist?(CONFIG_FILE)
   puts "[syca] Passwordless mode disabled."
 end
 
+# Check if cache is still valid
 def cache_valid?
   ts = load_timestamp
   return false if ts.nil? || !File.exist?(CONFIG_FILE)
   (Time.now.to_i - ts) < load_config * 60
 end
 
+# Seconds left in passwordless mode
 def seconds_left
   ts = load_timestamp
   return 0 if ts.nil? || !File.exist?(CONFIG_FILE)
   [(load_config * 60 - (Time.now.to_i - ts)), 0].max
 end
 
+# Run PAM authentication once
 def pam_authenticate_once
   system(PAM_HELPER)
 end
 
+# Loop until authentication succeeds
 def pam_authenticate_loop
   loop do
     return true if pam_authenticate_once
@@ -75,31 +97,10 @@ def pam_authenticate_loop
   end
 end
 
-def run_command(cmd)
-  begin
-    if cache_valid?
-      success = system(HELPER, *cmd)
-    elsif File.exist?(CONFIG_FILE)
-      if pam_authenticate_loop
-        success = system(HELPER, *cmd)
-        save_timestamp if success
-      else
-        success = false
-      end
-    else
-      pam_authenticate_loop
-      success = system(HELPER, *cmd)
-    end
-    success
-  rescue Interrupt
-    puts "\n[syca] Command cancelled by user."
-    false
-  end
-end
-
+# Enable passwordless mode
 def enable_cache(minutes)
   save_config(minutes)
-  puts "[syca] Enable passwordless mode for #{minutes} minutes"
+  puts "[syca] Enabling passwordless mode for #{minutes} minutes..."
   if pam_authenticate_loop
     save_timestamp
     puts "[syca] Passwordless mode enabled for #{minutes} minutes."
@@ -108,18 +109,38 @@ def enable_cache(minutes)
   end
 end
 
-# --- CLI ---
+# Run requested command (pipe-safe)
+def run_command(cmd)
+  begin
+    if cache_valid? || (File.exist?(CONFIG_FILE) && pam_authenticate_loop) || (!File.exist?(CONFIG_FILE) && pam_authenticate_loop)
+      save_timestamp if !cache_valid?
+      pid = Process.spawn(HELPER, *cmd, in: STDIN, out: STDOUT, err: STDERR)
+      Process.wait(pid)
+      return $?.success?
+    else
+      false
+    end
+  rescue Interrupt
+    puts "\n[syca] Command cancelled by user."
+    false
+  end
+end
+
+# --- Main script ---
+
 ensure_wheel_member
 
 options = {}
+
 parser = OptionParser.new do |o|
   o.on("--enable N", Integer) { |v| options[:enable] = v }
-  o.on("--disable") { options[:disable] = true }
-  o.on("--status") { options[:status] = true }
+  o.on("--disable")          { options[:disable] = true }
+  o.on("--status")           { options[:status] = true }
 end
 
 parser.order! rescue nil
 
+# Handle flags
 if options[:enable]
   enable_cache(options[:enable])
   exit
@@ -139,9 +160,11 @@ if options[:status]
   exit
 end
 
+# No command provided
 if ARGV.empty?
   puts "Usage: syca <command>"
   exit
 end
 
-exit(run_command(ARGV))
+# Run requested command
+exit(run_command(ARGV) ? 0 : 1)
