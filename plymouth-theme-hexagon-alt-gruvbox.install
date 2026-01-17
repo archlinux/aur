@@ -1,5 +1,7 @@
 post_install() {
-	echo -e "  In order to use the theme, replace the `Theme` line in /etc/plymouth/plymouthd.conf to this:"
+    echo -e "  In order to use the theme, replace the "Theme" line in /etc/plymouth/plymouthd.conf to this:"
     echo -e "  Theme=hexagon-alt-gruvbox" 
-	echo -e "  Don't forget to regenerate intiramfs (`mkinitcpio -P`)"
+    echo -e ""
+    echo -e "  Don't forget to regenerate intiramfs:"
+    echo -e "  # mkinitcpio -P"
 }
