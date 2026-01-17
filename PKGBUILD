@@ -1,7 +1,7 @@
 # Maintainer: NihilDigit <starse.nd233@gmail.com>
 
 pkgname=waybar-ai-usage
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Monitor Claude Code and OpenAI Codex CLI usage in Waybar'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("waybar-ai-usage-${pkgver}.tar.gz::https://api.github.com/repos/NihilDigit/waybar-ai-usage/tarball/refs/tags/v${pkgver}")
-sha256sums=('9552b84fcad4ef871b51c6d0bda4ae8bb31397209cf91072690e9ff0559708ed')
+sha256sums=('ec74aace27c889f692bb514edfbf10f3aab9ba85f5fecdac6d87bb61b56b6cb7')
 
 _srcdir() {
   find "${srcdir}" -maxdepth 1 -type d -name "NihilDigit-waybar-ai-usage-*" | head -n 1
