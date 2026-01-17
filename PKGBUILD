@@ -15,12 +15,12 @@ sha256sums=('ba1d7cd082edd1a31d8d572f0c7eb1fea60878552cef9094bef5f634ef900008')
 
 build() {
   cd "${srcdir}/PixelTerm-C-${pkgver}"
-  make
+  make VERSION="${pkgver}"
 }
 
 package() {
   cd "${srcdir}/PixelTerm-C-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  make VERSION="${pkgver}" DESTDIR="${pkgdir}" PREFIX=/usr install
   install -Dm644 completions/bash/pixelterm "${pkgdir}/usr/share/bash-completion/completions/pixelterm"
   install -Dm644 completions/zsh/_pixelterm "${pkgdir}/usr/share/zsh/site-functions/_pixelterm"
   install -Dm644 completions/fish/pixelterm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/pixelterm.fish"
