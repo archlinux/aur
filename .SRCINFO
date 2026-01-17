@@ -8,6 +8,7 @@ pkgbase = vectorchord-immich-bin
 	depends = postgresql>=18
 	depends = pgvector
 	provides = vectorchord=0.5.3
+	conflicts = vectorchord
 	source = https://github.com/tensorchord/VectorChord/releases/download/0.5.3/postgresql-18-vchord_0.5.3_x86_64-linux-gnu.zip
 	source = LICENSE.md::https://github.com/tensorchord/VectorChord/raw/refs/tags/0.5.3/LICENSE
 	source = https://github.com/tensorchord/VectorChord/raw/refs/tags/0.5.3/licenses/LICENSE.ELv2

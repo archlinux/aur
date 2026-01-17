@@ -10,6 +10,7 @@ url="https://github.com/tensorchord/VectorChord"
 license=('AGPL-3.0-ONLY OR Elastic-2.0')
 depends=('postgresql>=18' 'pgvector')
 provides=("vectorchord=$pkgver")
+conflicts=("vectorchord")
 source=("${url}/releases/download/${pkgver}/postgresql-18-vchord_${pkgver}_${arch}-linux-gnu.zip"
 	"LICENSE.md::${url}/raw/refs/tags/${pkgver}/LICENSE"
 	"${url}/raw/refs/tags/${pkgver}/licenses/LICENSE.ELv2")
