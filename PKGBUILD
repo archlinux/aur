@@ -3,7 +3,7 @@
 # Certificate installed at /usr/share/adguard-cli/
 
 pkgname=adguard-cli-bin
-pkgver=1.0.16
+pkgver=1.2.32
 _pkgstatus=release
 pkgrel=2
 pkgdesc='Surf the Web ad-free and safely. Shields up'
@@ -16,20 +16,20 @@ _file2="certutil"
 _full_name="${_file}-${pkgver}-linux-${arch}"
 
 source=(
-	"https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}-${_pkgstatus}/${_full_name}.tar.gz"
+  "https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}-${_pkgstatus}/${_full_name}.tar.gz"
 )
-sha256sums=('4486ac312793f4b8781b30bb312b48c1bd4c19eace244d2f59fa9fe3511f5c91')
+sha256sums=('1eda847d1325612a5379343be23f47d9786673f81b1ae0cd439fc1464eefbb26')
 
 package() {
-    cd "${srcdir}/${_full_name}"
-    install -D "${_file}" "${pkgdir}/usr/share/${_file}/${_file}"
-    install -D "${_file1}" "${pkgdir}/usr/share/${_file}/${_file1}"
-    install -D "${_file2}" "${pkgdir}/usr/share/${_file}/${_file2}"
-    install -D "bash-completion.sh" "${pkgdir}/usr/share/bash-completion/completions/${_file}.sh"
-    install -D "install_cert.sh" "${pkgdir}/usr/share/${_file}/install-cert.sh"
-    install -D "defaults.zip" "${pkgdir}/usr/share/${_file}/defaults.zip"
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s /usr/share/${_file}/${_file} "${pkgdir}/usr/bin/${_file}"
-    ln -s /usr/share/${_file}/${_file1} "${pkgdir}/usr/bin/${_file1}"
-    ln -s /usr/share/${_file}/${_file2} "${pkgdir}/usr/bin/adguard-${_file2}"
+  cd "${srcdir}/${_full_name}"
+  install -D "${_file}" "${pkgdir}/usr/share/${_file}/${_file}"
+  install -D "${_file1}" "${pkgdir}/usr/share/${_file}/${_file1}"
+  install -D "${_file2}" "${pkgdir}/usr/share/${_file}/${_file2}"
+  install -D "bash-completion.sh" "${pkgdir}/usr/share/bash-completion/completions/${_file}.sh"
+  install -D "install_cert.sh" "${pkgdir}/usr/share/${_file}/install-cert.sh"
+  install -D "defaults.zip" "${pkgdir}/usr/share/${_file}/defaults.zip"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /usr/share/${_file}/${_file} "${pkgdir}/usr/bin/${_file}"
+  ln -s /usr/share/${_file}/${_file1} "${pkgdir}/usr/bin/${_file1}"
+  ln -s /usr/share/${_file}/${_file2} "${pkgdir}/usr/bin/adguard-${_file2}"
 }
