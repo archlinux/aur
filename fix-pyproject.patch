@@ -1,0 +1,23 @@
+diff --git a/pyxdia/pyproject.toml b/pyxdia/pyproject.toml
+index 134f192..d3f490b 100644
+--- a/pyxdia/pyproject.toml
++++ b/pyxdia/pyproject.toml
+@@ -4,7 +4,7 @@ description = "Extract useful program information from PDB files"
+ dynamic = [ "version" ]
+ readme = { file = "README.md", content-type = "text/markdown" }
+ requires-python = ">=3.10"
+-license = { file = "LICENSE.txt" }
++license = 'MIT AND LGPL-2.1-only'
+ classifiers = [
+     "Programming Language :: Python",
+     "Programming Language :: Python :: 3",
+@@ -20,5 +20,8 @@ dependencies = []
+ Homepage = "https://github.com/mborgerson/xdia"
+ 
+ [tool.setuptools]
+-packages = ["pyxdia"]
++packages = ["pyxdia", "pyxdia.bin"]
+ dynamic = { version = { attr = "pyxdia.__version__.__version__" } }
++
++[tool.setuptools.package-data]
++bin = ["*"]

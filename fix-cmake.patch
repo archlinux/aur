@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dee094a..052248c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,9 +3,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+ 
+ project(xdia)
+ 
+-set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+-set(BUILD_SHARED_LIBS OFF)
+-set(CMAKE_EXE_LINKER_FLAGS "-static -Wl,-z,common-page-size=65536,-z,max-page-size=65536")
++# Arch does not package icu static libs
++set(BUILD_SHARED_LIBS ON)
+ 
+ find_package(ICU REQUIRED COMPONENTS uc)
+ 

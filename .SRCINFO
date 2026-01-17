@@ -1,0 +1,26 @@
+pkgbase = python-pyxdia
+	pkgdesc = Utility to extract useful program info from a PDB file in an easily parsed format.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mborgerson/xdia
+	arch = x86_64
+	license = MIT AND LGPL-2.1-only
+	checkdepends = python-pytest
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glibc
+	depends = icu
+	depends = python
+	source = xdia.tar.gz::https://github.com/mborgerson/xdia/archive/v0.1.0.tar.gz
+	source = xdia.zip::https://github.com/mborgerson/xdia/releases/download/v0.1.0/xdia.zip
+	source = fix-cmake.patch
+	source = fix-pyproject.patch
+	b2sums = 41741a2946b16dad9899f59ccf4b4b23eda90f325771ad0a5257480c3aa275d70b46fcad5d5ec6b3b09543259aae78006a241186293805e66bf33134c34bdd3e
+	b2sums = 51cb11eec07b592dee31340c2e68aec7e04df467d1f0037163af8a6083031b75d8682a1216c1989eda7700d808af78dab03ad4882a4fe2e2df40fe953835ffaa
+	b2sums = 1f276e302b748d6964f9664b9098a2b7857196b364059197cfbe4d26849a0ac72eb2228d7111a1e27febacb34e5ee9a77c5379d070b2937e6852d036c84833f1
+	b2sums = 5ee60a95721982fb6439fd7ef95d4916b1571b1cc8a9b384d3a383236c7377105e2177e4d00038de0fbe808b501088370b62bdd4f225a15887f5b234ca335cfa
+
+pkgname = python-pyxdia
