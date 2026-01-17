@@ -1,9 +1,10 @@
+# New Maintainer: SecByShresth <Shresthpaul133@gmail.com>
 # Maintainer: Harriet O'Brien <harrietobrien@protonmail.com>
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
-pkgver=2.29.0
+pkgver=2.36.3
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -44,7 +45,7 @@ optdepends=(
   'python-tensorflow-probability: for graph transpilation compilation via JAX'
 )
 source=("${url}/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('41189ee434509c70a33a741c088cb6ec1b067c9c8240bf294e2f70ad7f5dd4c1')
+sha256sums=('0ea323f262270e18876784e85de6abd2b6fff618c8a47073146398b99dbf5e6c')
 
 build() {
   cd "$srcdir/$_pkgname-rel-$pkgver"
