@@ -1,6 +1,6 @@
 pkgbase = getparty
 	pkgdesc = HTTP download manager with multi-parts
-	pkgver = 1.25.2
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/vbauerster/getparty.git
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = getparty
 	depends = glibc
 	provides = getparty
 	conflicts = getparty-bin
-	source = getparty::git+https://github.com/vbauerster/getparty.git#tag=v1.25.2
-	b2sums = 2fa969d9afe063ea8d8cde86502f1e0b5e9136360f2482e3c29f1aad03a1e96271d15de1d01b426a22d3acc278efcaa3216ace1aad65634210fa4bd78b72bbdf
+	source = getparty::git+https://github.com/vbauerster/getparty.git#tag=v1.26.0
+	b2sums = 6fdd32b09669e9906250156b44a0adc45cbcbd4a3e0cacca8912da7f3cef76916f332318b696464ac62a68786a3be7301aaf4aebb95b9c4e4728aaa34620f3ca
 
 pkgname = getparty
