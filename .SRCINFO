@@ -1,6 +1,6 @@
 pkgbase = libint2
 	pkgdesc = A high-performance library for computing Gaussian integrals in quantum mechanics
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/evaleev/libint
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = libint2
 	makedepends = pybind11
 	depends = boost
 	options = !buildflags
-	source = libint2-2.11.1.tar.gz::https://github.com/evaleev/libint/archive/v2.11.1.tar.gz
+	source = libint2-2.12.0.tar.gz::https://github.com/evaleev/libint/archive/v2.12.0.tar.gz
 	source = cmake.patch
-	sha256sums = 58ab0f893d94cbed3ab35a6c26ec5e4d8541c59889407a6d30c50b8ea415bdf3
-	sha256sums = 6b118d7a098ad8dae0fcee798a03343080192bd9995236655d347d5a3ca6ab78
+	sha256sums = 732988a1ea95eb4eae91bcb2b2a718d95dc5caca41533746fc4111532d55ae74
+	sha256sums = ec642f0ce40ed833e3c2b70575b7fdfdb4b5858a99cbe80a174c38500cc0396c
 
 pkgname = libint2
