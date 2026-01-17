@@ -2,7 +2,7 @@
 
 pkgname=lib32-cjson
 pkgver=1.7.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultralightweight JSON parser in ANSI C (32-bit)"
 arch=(x86_64)
 license=("MIT")
