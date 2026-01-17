@@ -1,6 +1,6 @@
 pkgbase = python-appdaemon
 	pkgdesc = Python Apps for Home Automation
-	pkgver = 4.5.12
+	pkgver = 4.5.13
 	pkgrel = 1
 	url = https://github.com/AppDaemon/appdaemon
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-appdaemon
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-yaml
-	source = python-appdaemon-4.5.12.tar.gz::https://github.com/AppDaemon/appdaemon/archive/4.5.12.tar.gz
-	sha256sums = c0d5321012e4721f41ce19f00694d5a68b520cf572d3dd62c5d0ecb3af4f775a
+	source = python-appdaemon-4.5.13.tar.gz::https://github.com/AppDaemon/appdaemon/archive/4.5.13.tar.gz
+	sha256sums = 81e0a0fee9d7e2f22d1975b14009a6db659ace992f3bef6ba074d1eccf4ec637
 
 pkgname = python-appdaemon
