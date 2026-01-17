@@ -1,23 +1,30 @@
 #!/usr/bin/env ruby
 
-# Update pkgver in PKGBUILD before running this
+src_info = File.readlines ".SRCINFO", chomp: true
+current = src_info.grep(/pkgver = /).first.split(" = ").last
+repo = src_info.grep(/url = /).first.split("https://github.com/").last
+last_tag = `curl -Ls https://api.github.com/repos/#{repo}/tags?per_page=1 | jq -r '.[0].name'`.delete "^0-9."
 
-# version = `sed -En 's/pkgver=([[:digit:].]+)/\\1/p' PKGBUILD`.chomp
-version = File.readlines("PKGBUILD", chomp: true).grep(/pkgver=/).first.split("=").last
+if Gem::Version.new(last_tag) > Gem::Version.new(current)
+  # Get checksums from this version
+  latest_checksums = `curl -Ls https://github.com/#{repo}/releases/download/v#{last_tag}/checksums.txt`.lines chomp: true
 
-# Get checksums from this version
-latest_checksums = `curl -Ls https://github.com/jesseduffield/lazydocker/releases/download/v#{version}/checksums.txt`.lines(chomp: true)
+  # Update checksums in PKGBUILD
+  {
+    arm64: "sha256sums_aarch64",
+    armv7: "sha256sums_armv7h",
+    x86: "sha256sums_i686",
+    x86_64: "sha256sums_x86_64"
+  }.each do |arch, id|
+    sum = latest_checksums.grep(%r{(\w+)\s+lazydocker_.+Linux_#{arch}.tar.+}).first.scan(/\A(\w+).+/).flatten.first
+    `sed -Ei "/#{id}=/s/'[[:xdigit:]]+'/'#{sum}'/" PKGBUILD`
+  end
 
-# Update checksums in PKGBUILD
-{
-  arm64: "sha256sums_aarch64",
-  armv7: "sha256sums_armv7h",
-  x86: "sha256sums_i686",
-  x86_64: "sha256sums_x86_64"
-}.each do |arch, id|
-  sum = latest_checksums.grep(%r{(\w+)\s+lazydocker_.+Linux_#{arch}.tar.+}).first.scan(/\A(\w+).+/).flatten.first
-  `sed -Ei "/#{id}=/s/'[[:xdigit:]]+'/'#{sum}'/" PKGBUILD`
+  # Update package version in PKGBUILD
+  `sed -Ei "/pkgver=/s/[[:digit:].]+/#{last_tag}/" PKGBUILD`
+
+  # Then don’t forget this !
+  system "makepkg --printsrcinfo > .SRCINFO"
+else
+  puts "Nothing to do !"
 end
-
-# Then don’t forget this !
-system "makepkg --printsrcinfo > .SRCINFO"
