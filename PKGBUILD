@@ -6,7 +6,7 @@
 
 pkgname=chromium
 pkgver=144.0.7559.59
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
