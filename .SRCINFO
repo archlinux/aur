@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-framebuf
 	pkgdesc = CircuitPython frambuf module, based on the Python frambuf module
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adafruit/Adafruit_CircuitPython_framebuf
 	arch = any
 	license = MIT

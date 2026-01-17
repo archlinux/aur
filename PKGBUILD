@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-framebuf
 _pypi_pkgname=adafruit-circuitpython-framebuf
 pkgver=1.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="CircuitPython frambuf module, based on the Python frambuf module"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_framebuf"
