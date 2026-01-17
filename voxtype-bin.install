@@ -73,10 +73,10 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.15:"
-    echo "      - Context window optimization for faster short transcriptions"
-    echo "      - Single-instance safeguard prevents duplicate daemons"
-    echo "      - Consolidated delay options: type_delay_ms, pre_type_delay_ms"
+    echo "    New in 0.4.16:"
+    echo "      - New dotool output driver with keyboard layout support"
+    echo "      - Better KDE Plasma and GNOME Wayland compatibility"
+    echo "      - Output fallback chain: wtype -> dotool -> ydotool -> clipboard"
     echo ""
 }
 

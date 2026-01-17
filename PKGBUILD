@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.4.15
-pkgrel=2
+pkgver=0.4.16
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -14,6 +14,7 @@ depends=(
 )
 optdepends=(
     'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
+    'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
     'ydotool: keyboard simulation fallback (X11/TTY support)'
     'wl-clipboard: clipboard support'
     'libnotify: desktop notifications'
@@ -40,9 +41,9 @@ source=(
     "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
 )
 sha256sums=(
-    'c9e35399a1f14ee9e6f391809299df616365c15301a2fb40a1484fb0e8b39689'  # voxtype-avx2
-    '297bb1e0b2b8efa1a02c30aeeb0c8cb206df3dd2b3a1ea86008fed4e6f310fb2'  # voxtype-avx512
-    '8c05d5258e5dfb8ffc84cdeb04c26ab435d6a61dae3fec3dd469e08a244f6d27'  # voxtype-vulkan
+    '44b5c00586a96136b20f754863ae0d3676b95363154139b5751bf3a4c52d6718'  # voxtype-avx2
+    'c94339d68b92c47ddb93b795d87d3df1498413e8d4283143f2b5cdb68202910c'  # voxtype-avx512
+    '2f48d7404368b12ab5c8203b886ef2e9bf8717b5ca83d4d75511b02cf4c40bae'  # voxtype-vulkan
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
     'SKIP'  # voxtype.bash
