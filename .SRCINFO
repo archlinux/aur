@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-patcher
 	pkgdesc = A Patcher for LiteLoaderQQNT
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LiteLoaderQQNT/LiteLoaderQQNT
 	install = liteloader-qqnt-patcher.install
 	arch = any
