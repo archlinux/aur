@@ -1,7 +1,7 @@
 pkgbase = dbcsr
 	pkgdesc = Distributed Block Compressed Sparse Row matrix library
-	pkgver = 2.8.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://github.com/cp2k/dbcsr
 	arch = x86_64
 	license = GPL-2.0-only
@@ -15,9 +15,7 @@ pkgbase = dbcsr
 	depends = lapack
 	depends = openmpi
 	options = !lto
-	source = dbcsr-2.8.0.tar.gz::https://github.com/cp2k/dbcsr/archive/refs/tags/v2.8.0.tar.gz
-	source = cmake.patch
-	sha256sums = 470470338fb840776fbe6991e718699d879936d2f7a3f60af4df0aaaa99ca258
-	sha256sums = af12e55b6cbdd504379349a88c499e4ceac53bd8eb907133aaa95b8a97da85be
+	source = dbcsr-2.9.1.tar.gz::https://github.com/cp2k/dbcsr/archive/refs/tags/v2.9.1.tar.gz
+	sha256sums = 5cc9e9f41cf58697374baf7a45326e26860a755aecf22a7c9333152ec09fe7bd
 
 pkgname = dbcsr
