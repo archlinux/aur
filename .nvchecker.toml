@@ -1,0 +1,6 @@
+[plasma-wayland-protocols]
+source = 'gitlab'
+gitlab = 'libraries/plasma-wayland-protocols'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
