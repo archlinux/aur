@@ -1,0 +1,13 @@
+[Unit]
+Description=GoXRay: Desktop VPN client for XRay
+WantedBy=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/goxray
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=graphical-session.target
