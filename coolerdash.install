@@ -79,7 +79,7 @@ post_install() {
 
     # Create systemd drop-in for startup delay (allow shutdown.png to display)
     mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
-    printf "[Service]\nExecStartPre=/bin/sleep 10\nExecStopPre=/bin/sleep 5\nExecStop=/bin/sleep 5\nTimeoutStopSec=5\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
 
@@ -115,7 +115,7 @@ post_upgrade() {
 
     # Create systemd drop-in for startup delay (allow shutdown.png to display)
     mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
-    printf "[Service]\nExecStartPre=/bin/sleep 10\nExecStopPre=/bin/sleep 5\nExecStop=/bin/sleep 5\nTimeoutStopSec=5\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
 
