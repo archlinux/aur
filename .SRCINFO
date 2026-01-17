@@ -1,0 +1,15 @@
+pkgbase = dynocsv-bin
+	pkgdesc = Exports DynamoDB table into CSV
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/zshamrock/dynocsv
+	arch = x86_64
+	license = MIT
+	provides = dynocsv
+	conflicts = dynocsv
+	source = dynocsv-bin-1.1.4.tar.gz::https://github.com/zshamrock/dynocsv/archive/v1.1.4.tar.gz
+	source = dynocsv-bin-1.1.4-dynocsv::https://github.com/zshamrock/dynocsv/releases/download/v1.1.4/dynocsv
+	sha256sums = d1bf8ef2ad8b2c99385ddea2fa933b2fe7514df39f961f1b42abf9a199ab4bba
+	sha256sums = 85f26284eb3ec0dffe089639449eec8ada893b95c6150bfdfd183b9ad00b0e62
+
+pkgname = dynocsv-bin
