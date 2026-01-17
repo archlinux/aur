@@ -1,42 +1,49 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Hossam Mostafa <hossamdash2@gmail.com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=dotbot
-pkgver=1.21.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
-arch=(any)
+arch=('any')
 url="https://github.com/anishathalye/dotbot"
-license=(MIT)
+license=('MIT')
 depends=(
-  python
-  python-yaml
+  'python'
+  'python-yaml'
 )
 makedepends=(
-  git
-  python-build
-  python-hatchling
-  python-installer
-  python-wheel
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
 )
-checkdepends=(python-pytest)
+checkdepends=('python-pytest')
+
+# Using git source because the test suite (test_shim.py) requires git metadata
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('57a6a11098f2303e0142d3acf7bb344d1efedee61c20cf229f34ddf05a9b1265')
+sha256sums=('bb7d56b2a66f407d017274506ea1b920fb5279a4fd45aaa1bcbc28b400c4df87')
+
+_archive="$pkgname"
 
 build() {
-  cd "$pkgname"
+  cd "$_archive"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname"
-  rm -rf test-env
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  cd "$_archive"
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_archive"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$_archive"
 }
