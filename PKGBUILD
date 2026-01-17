@@ -5,13 +5,15 @@
 
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
-pkgver=r1941.6606669
-pkgrel=2
+pkgver=r1942.b44d3ef
+pkgrel=1
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
 license=('CC-BY-3.0 AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-only OR GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later')
 depends=(
+    'sh'
+    'systemd-libs'
     'kpackage'
     'layer-shell-qt'
     'qt6-declarative'
@@ -51,12 +53,8 @@ pkgver() {
 
 build() {
     cmake -B build -S $_pkgname \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DINSTALL_PAM_CONFIGURATION=arch \
-        -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
-        -DDBUS_CONFIG_FILENAME=plasmalogin_org.freedesktop.DisplayManager.conf \
-        -Wno-dev
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DDBUS_CONFIG_FILENAME=plasmalogin_org.freedesktop.DisplayManager.conf
 
     cmake --build build
 }
