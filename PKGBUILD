@@ -78,7 +78,6 @@ build() {
 
 	# we now support makepkg's CFLAGS; be warned that -Os does not successfully build
     cmake   -B _build \
-            -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
             -DCMAKE_BUILD_TYPE=MinSizeRel \
       			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \
