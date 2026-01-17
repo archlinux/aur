@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('gopac')
 conflicts=('gopac-git' 'gopac-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e835ebf32992c401428e3361ea9610d8e84d40ca79cf7e9ea9ab953318f1e5b1')
+sha256sums=('ff39f63d356b94a48e2195bd8d76b8a0855c1bd11a1a859cb3ed7453f09f0ba9')
 
 build() {
   cd "$pkgname-$pkgver"
