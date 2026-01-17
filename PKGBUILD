@@ -23,8 +23,7 @@ source_x86_64=(
 	"${url}/releases/download/v${pkgver}/portablemc-${pkgver}-linux-x86_64.tar.gz.sig")
 source_aarch64=(
   "${url}/releases/download/v${pkgver}/portablemc-${pkgver}-linux-aarch64.tar.gz"
-	"${url}/releases/download/v${pkgver}/portablemc-${pkgver}-linux-aarch64.tar.gz.sig"
-)
+	"${url}/releases/download/v${pkgver}/portablemc-${pkgver}-linux-aarch64.tar.gz.sig")
 
 sha256sums_x86_64=(
   '828e7537df32b1a8aeb670f5ded91af5e54f618921fb93957006c59fe7f5f569'
@@ -35,10 +34,11 @@ sha256sums_aarch64=(
 
 package() {
   cd "portablemc-${pkgver}-linux-${CARCH}"
-  install -dm 755 "${pkgdir}/usr/bin"
-  install -dm 755 "${pkgdir}/usr/share/man/man1"
-  install -Dm755 portablemc "${pkgdir}/usr/bin/portablemc"
-  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  
+  install -vDm755 -t "${pkgdir}/usr/bin/" portablemc
+  install -vDm644 -t "${pkgdir}/usr/share/doc/portablemc/" README
+  install -vDm644 -t "${pkgdir}/usr/share/licenses/portablemc/" LICENSE
+
+  install -vdm755 "${pkgdir}/usr/share/man/man1"
   "${pkgdir}/usr/bin/portablemc" gen man "${pkgdir}/usr/share/man/man1"
 }
