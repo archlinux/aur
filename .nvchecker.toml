@@ -1,0 +1,4 @@
+[axe-bin]
+source = "github"
+github = "jacek-kurlit/axe"
+use_latest_release = true

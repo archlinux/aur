@@ -1,0 +1,19 @@
+pkgbase = axe-bin
+	pkgdesc = Argument execute is xargs alternative that supports arguments ordering
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jacek-kurlit/axe
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = axe
+	conflicts = axe
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/jacek-kurlit/axe/0.3.0/LICENSE
+	source = README-0.3.0.md::https://raw.githubusercontent.com/jacek-kurlit/axe/0.3.0/README.md
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = 8a1bd194bc8ad5e586b3903950b43f41e11993973330936e55c5febbf592b735
+	source_x86_64 = axe-x86_64-0.3.0.tgz::https://github.com/jacek-kurlit/axe/releases/download/0.3.0/axe-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = de36d898fee81ed99027675f2796daf5f84a51089df226b60df211e5b14419c5
+
+pkgname = axe-bin
