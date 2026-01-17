@@ -1,6 +1,6 @@
 pkgbase = meowrch-tools
 	pkgdesc = Performance optimization tools and scripts for Meowrch distribution
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/meowrch/meowrch-tools
 	install = meowrch-tools.install
@@ -23,7 +23,7 @@ pkgbase = meowrch-tools
 	optdepends = power-profiles-daemon: for power profile management
 	optdepends = less: for migration file preview
 	optdepends = sudo: for system updates
-	source = https://github.com/meowrch/meowrch-tools/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = a3dc05937917ce63fa8be88ebe5fcc67dfeea83726eb9dbf672c471309ae342b
+	source = https://github.com/meowrch/meowrch-tools/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 9fe6072115169b2d125309753fd7eab65e0854f3962c7c942d1fb7cf161953ef
 
 pkgname = meowrch-tools
