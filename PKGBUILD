@@ -1,7 +1,7 @@
 pkgbase=prtx-mutator
 pkgname=('prtx-mutator' 'prtx-mutator-ru')
 pkgver=1.0
-pkgrel=2
+pkgrel=1
 arch=('any')
 depends=('bash' 'grub')
 
