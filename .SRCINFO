@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libdovi
 	pkgdesc = Library to read and write Dolby Vision metadata (Android x86-64)
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-libdovi
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.3.1.tar.gz
-	md5sums = 47ea97db5c7875175b035b34de9d224c
+	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.3.2.tar.gz
+	md5sums = 7586c4ff125ddc112bda475cf330cf6e
 
 pkgname = android-x86-64-libdovi
