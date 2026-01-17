@@ -1,6 +1,6 @@
 pkgbase = shgit-bin
 	pkgdesc = A shell-based git client
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/0byte-coding/shgit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = shgit-bin
 	depends = git
 	provides = shgit
 	conflicts = shgit
-	source = shgit-bin-0.1.2.tar.gz::https://github.com/0byte-coding/shgit/releases/download/v0.1.2/shgit-x86_64-linux-gnu.tar.gz
-	sha256sums = c81a1cbf0303caa8a75ae1781b44b976a109454a99e2b662979917115cb00cd5
+	source = shgit-bin-0.1.3.tar.gz::https://github.com/0byte-coding/shgit/releases/download/v0.1.3/shgit-x86_64-linux-gnu.tar.gz
+	sha256sums = 62f3ab4e681be1119a17c0d6feaa2276243c0132a6def77ff32990e9dff47802
 
 pkgname = shgit-bin
