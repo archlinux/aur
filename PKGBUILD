@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/otaj/plymouth-theme-hexagon-alt-gruvbox"
 license=('GPL')
 depends=('plymouth')
-
+install="${pkgname}.install"
 source=("${url}/archive/refs/tags/${pkgver}.zip")
 sha256sums=('ed0d5974aa37e10b80226a4fffae283a9f1ed1c45bbb88b5ac5de1903e5e2a19')
 

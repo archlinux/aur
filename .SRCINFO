@@ -3,6 +3,7 @@ pkgbase = plymouth-theme-hexagon-alt-gruvbox
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/otaj/plymouth-theme-hexagon-alt-gruvbox
+	install = plymouth-theme-hexagon-alt-gruvbox.install
 	arch = any
 	license = GPL
 	depends = plymouth
