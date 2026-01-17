@@ -40,5 +40,5 @@ package() {
   install -vDm644 -t "${pkgdir}/usr/share/licenses/portablemc/" LICENSE
 
   install -vdm755 "${pkgdir}/usr/share/man/man1"
-  "${pkgdir}/usr/bin/portablemc" gen man "${pkgdir}/usr/share/man/man1"
+  ./portablemc gen man "${pkgdir}/usr/share/man/man1"
 }
