@@ -1,7 +1,7 @@
 pkgbase = fluent-lyrics-bin
 	pkgdesc = Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kobe-koto/FluentLyrics
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = fluent-lyrics-bin
 	depends = libepoxy
 	depends = at-spi2-core
 	depends = json-glib
+	depends = glycin
 	provides = fluent-lyrics
 	conflicts = fluent-lyrics
 	source = fluent-lyrics-bin-0.0.4.zip::https://github.com/kobe-koto/FluentLyrics/releases/download/v0.0.4/fluent_lyrics-0.0.4-linux.zip
