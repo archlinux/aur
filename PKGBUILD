@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-git
-pkgver=1.2.0
+pkgver=1.2.0.r2.g4f48307
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -26,12 +26,28 @@ pkgver() {
 
 prepare() {
 	cd endcord
+	export UV_NO_CACHE=1
+	
+	# setup python 3.13
+	if uv python list --only-installed | grep -q '3.13'; then
+        echo "Python 3.13 is already installed"
+        PY_ALREADY_INSTALLED=true
+    else
+        uv python install 3.13
+        PY_ALREADY_INSTALLED=false
+    fi
+    
 	uv sync --all-groups
 }
 
 build() {
 	cd endcord
 	uv run build.py --nuitka --clang
+	
+	# remove python 3.13
+	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
+        uv python uninstall 3.13  # Or exact version from 'uv python list'
+    fi
 }
 
 package() {
