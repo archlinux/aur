@@ -1,6 +1,6 @@
 pkgbase = yutovo
 	pkgdesc = Arbitrary precision graphical WYSIWYG calculator inside a text editor
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://yutovo.com
 	arch = x86_64
@@ -19,20 +19,20 @@ pkgbase = yutovo
 	depends = gcc-libs
 	depends = libpng
 	source = spdlog::git+https://github.com/gabime/spdlog.git#commit=6fa36017cfd5731d617e1a934f0e5ea9c4445b13
-	source = yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#commit=e013fbe859f0bdb1ee895e39f8a27f74bbf4e46b
+	source = yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#commit=d81ca0d8cb1ef46b7d2586d5509691a35479c8d1
 	source = boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip
 	source = libgmp::https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz
 	source = libmpfr::https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz
-	source = yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=e8e6b2bfdda3b55c39418f3b97eb2f54c3119499
+	source = yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=c0a460ab2f12ff139f4db58635e469bf5e59bb64
 	source = rapidjson::git+https://github.com/Tencent/rapidjson.git#commit=f54b0e47a08782a6131cc3d60f94d038fa6e0a51
-	source = yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=6a24ca8eb84cfa9bad122374ae26daea925ab2cd
+	source = yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=a480e9df389d29a791e0137a809ca1007b8497e6
 	source = mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz
 	source = libharu::git+https://github.com/libharu/libharu.git#commit=0c598becaadaef8e3d12b883f9fc2864a118c12d
 	source = stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h
 	source = stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h
-	source = yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=b4da8111b1cac201bde3d41297c154fbad984099
-	source = yutovo-server::git+https://github.com/denprog/yutovo-server.git#commit=22f2fb096e04967dd13df70a79eea6d765a6a1a2
-	source = yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=011f9a26c42daae4c37a0eb44bfc2b3f8e69dee3
+	source = yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=a4ab21f12c4db606d6508da85f17dc1dcef8b701
+	source = yutovo-server::git+https://github.com/denprog/yutovo-server.git#commit=03d829f03c7058c8e39dc9c2ace38c117c036037
+	source = yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=7bfc061fdcc8c3de52a27c8590a7be3485663d1a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
