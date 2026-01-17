@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=asgi-webdav
-pkgver=1.6.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -15,7 +15,7 @@ replaces=("python-${pkgname}")
 depends=("python-aiofiles" "python-arrow" "python-asgiref" "python-asgi-middleware-static-file" "python-chardet" "python-click"
          "python-dataclass-wizard" "python-dotenv" "python-httptools" "python-uvloop" "python-xmltodict" "uvicorn")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=("python-httpx" "python-httpx-kerberos" "python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-requests")
+checkdepends=("python-httpx" "python-httpx-kerberos" "python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-pytest-mock" "python-requests")
 optdepends=("python-bonsai: LDAP support"
             "python-httpx: WEBHDFS support"
             "python-httpx-kerberos: WEBHDFS support")
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "config.json")
-sha256sums=('3a3d23043d86ec6741b49a6402f628c52e2d4aa36021553ab3cb459f83377d4a'
+sha256sums=('bde8164543e227d09709447cffda5ba1b0fedc70d0ea05efcea9fe0d3a1f95e7'
             '1bdbea265d5d0749bc7bbb95d308ade863c75e33b13bd59e43eab18d38c2880e'
             '59e04c680dfce93154a618c25bc868a8c44e0c5482cbf2c18319b82b86b50e1a'
             'd230496ce61436b709d34078273df5e4b6036eab316b5c9f54f5d261a5c61ea8'
