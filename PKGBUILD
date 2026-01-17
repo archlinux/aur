@@ -1,27 +1,26 @@
-# Maintainer: daonm <daobilionusd@gmail.com>
+# Maintainer: mdao <https://github.com/mdao>
 pkgname=gopac
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A warm Gruvbox TUI for pacman and AUR"
-arch=('x86_64')
-options=('!debug')
-url="https://github.com/the-daonm/gopac"
+pkgdesc="A warm, beautiful TUI for Arch Linux package management"
+arch=('x86_64' 'aarch64')
+url="https://github.com/mdao/gopac"
 license=('MIT')
-depends=('pacman')
-makedepends=('go')
-provides=('gopac')
-conflicts=('gopac-git' 'gopac-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('06d2fff230d081cca32e6ebe8f419f5a841fd6d433d74cfc37425ee2343ca7e5')
+depends=('glibc')
+makedepends=('go' 'git')
+optdepends=('yay: AUR helper' 'paru: AUR helper')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('1db028287af503aa80df8a49261b69768bba7335c0364f75e569e8b4e39b2a23')
 
 build() {
   cd "$pkgname-$pkgver"
   export CGO_ENABLED=0
-  go build -ldflags "-X main.version=${pkgver}" -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-w -s" -o gopac .
+  go build -trimpath -ldflags "-s -w -X main.version=v${pkgver}" -o gopac .
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 gopac "$pkgdir/usr/bin/gopac"
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
   install -Dm644 completions/gopac.fish "$pkgdir/usr/share/fish/vendor_completions.d/gopac.fish"
 }
