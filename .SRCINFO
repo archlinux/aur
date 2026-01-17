@@ -1,7 +1,7 @@
 pkgbase = desktop-gremlin-git
 	pkgdesc = A desktop pet/gremlin
 	pkgver = r107.e9b118e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iluvgirlswithglasses/linux-desktop-gremlin
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Toadtoad <kingdomkeepersguy@gmail.com>
 pkgname=desktop-gremlin-git
 pkgver=r107.e9b118e
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop pet/gremlin"
 arch=('x86_64')
 url="https://github.com/iluvgirlswithglasses/linux-desktop-gremlin"
@@ -35,7 +35,9 @@ package() {
   install -dm755 "${srcdir}/linux-desktop-gremlin" "${pkgdir}/opt/desktop-gremlin"
   cp -rf "${srcdir}/linux-desktop-gremlin/." "${pkgdir}/opt/desktop-gremlin/"
   rm -rf "${pkgdir}/opt/desktop-gremlin/.git"
-  install -Dm666 "${srcdir}/linux-desktop-gremlin/config.json" "${pkgdir}/opt/desktop-gremlin/config.json"
+  install -Dm666 "${srcdir}/linux-desktop-gremlin/config.json" "${pkgdir}/etc/desktop-gremlin/config.json"
+  rm -f "${pkgdir}/opt/desktop-gremlin/config.json"
+  ln -s /etc/desktop-gremlin/config.json "${pkgdir}/opt/desktop-gremlin/config.json"
   install -Dm755 "${srcdir}/desktop-gremlin.sh" "${pkgdir}/usr/bin/desktop-gremlin"
   install -Dm755 "${srcdir}/gremlin-picker.sh" "${pkgdir}/usr/bin/gremlin-picker"
   install -Dm644 "${srcdir}/linux-desktop-gremlin/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE"
