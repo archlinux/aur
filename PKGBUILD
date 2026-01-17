@@ -1,9 +1,9 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-_pkgver=0.8.5-alpha2512191358
+_pkgver=0.8.5-alpha2601161257
 pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -67,20 +67,26 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/IfcOpenShell/svgfill.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "001-skip-install-python-package-only-install-wrapper.patch::${_patch_url_prefix}/c6657803.patch"
-  "002-add-shared-libs.patch::${_patch_url_prefix}/053480f.patch"
-  "003-fix-rpath.patch::${_patch_url_prefix}/4523de21.patch"
-  "004-fix-boost189.patch::${_patch_url_prefix}/66910ae1.patch"
+  "001-skip-install-python-wrapper.patch::${_patch_url_prefix}/131886eba8.patch"
+  "002-add-shared-libs.patch::${_patch_url_prefix}/3ef4a0c7ee3.patch"
+  "003-fix-rpath.patch::${_patch_url_prefix}/6829c886.patch"
+  "004-fix-boost189.patch::${_patch_url_prefix}/3d798653c1add80a69ce3df066bb3379ac4c46a4.patch"
+  "005-fix-ifcsverchok-setup.patch::${_patch_url_prefix}/a1063ca1882cc5c82837c008612ccc526dcb2d75.patch"
+  "006-use-spdx-license.patch::${_patch_url_prefix}/45d2002a4528f6d277bec5b33500306324e8aac3.patch"
+  "007-fix-ld-eror.patch::${_patch_url_prefix}/b1f338eb552a15cb2182ff0c57d2b7575d35237b.patch"
 
 )
-sha256sums=('8ce8f965d346a8eb94a9727541274a0d96ed8ab7c7a329afd3697e244a04c7e1'
+sha256sums=('89b5719dce50a0c6fe901d8de12f72af4116ea86d2b453156922ddeec08e3426'
   'SKIP'
   'SKIP'
   'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-  '522021a51b08a944dfed0d72cc0eed8e90db864ab264344d7bafd7627efa773a'
-  '41912eafef9d9224e01a204393d1481f84dab6131cce1bfcb731eb691e82487e'
-  '664b047d42e063185d2412321eec7bbebd6c2918fe7ec79361cb0aa0c50877c4'
-  'd3b4e1abb442fb748b217d753c580969a380a29a92e0a6a557cae77da94793f9')
+  'bc52b10c8c9d663a55cba178bb05436474a611542db38fdfcaea029858631591'
+  '1cd9c0f1ee71d3c87e8303470dfffc5eb16c06557d355a3b6197bfecbe48fcf2'
+  '74f27ee26ecf97d226eff74530f43740a69fd8a4e0a98a66dc526c0344ff2655'
+  'f8ab9e5e3facf4b69c900d6b83e89819e58ed6d3fc717ce9aac0e989321f7104'
+  '8604ab0b3621549d798cb539acf9d3847e9c83fbd841ef9dc236ff818515c477'
+  '366723f3aa34e8785f1b78385a65438a409fc6bf7061be6a6b07dbc809b70575'
+  'b8e89b033c3af68ece5116e9b1a007584cccd904ad17bfdcafca12467ddf1cf2')
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
 
@@ -110,6 +116,7 @@ _build_pymodules() {
     fi
     pushd ${_dir}
     if [ -f pyproject.toml ] || [ -f setup.py ]; then
+      echo "Building python module in ${_dir}"
       python -m build --wheel --no-isolation
     fi
     popd
@@ -134,6 +141,8 @@ build() {
     -DGMP_INCLUDE_DIR=/usr/include
     -DMPFR_INCLUDE_DIR=/usr/include
     -DJSON_INCLUDE_DIR=/usr/include
+    # We do not use OpenCOLLADA but we have to include opencascade in  cmake INCLUDE_DIRECTORIES
+    -DOPENCOLLADA_INCLUDE_DIRS=/usr/include/opencascade
     -DSWIG_EXECUTABLE="/usr/bin/swig"
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=None
