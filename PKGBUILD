@@ -1,16 +1,16 @@
 # Maintainer: Pablo Lezaeta <prflr88 (arro'a) gmail puntocom>
 
 pkgname=mintcommon
-pkgver=2.4.9
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Common Python modules and utilities for Linux Mint tools"
 arch=('any')
 url="https://github.com/linuxmint/mintcommon"
 license=('GPL-3.0')
 depends=('python')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/linuxmint/${pkgname}.git#commit=ec304f3422aabf84a69141d36e95a3eb55b300f7")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/linuxmint/${pkgname}.git#commit=21c4ea8fc6c13a57eba3b7323c2d6d15b52e7f0b")
+sha256sums=('a2feeecd99621c3cd023b7b51d435a84bf085a802823d74c97eb5349755425a8')
 
 package() {
   cd "${srcdir}/${pkgname}"
