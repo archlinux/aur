@@ -3,7 +3,7 @@
 pkgname=python-kinet2pcb
 _name=${pkgname#python-}
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Convert KiCad netlist into a PCBNEW .kicad_pcb file."
 arch=('any')
@@ -16,12 +16,15 @@ depends=(
     kicad
     python
     python-kinparse
-    python-hierplace)
-makedepends=(python-build
+    python-hierplace
+)
+makedepends=(
+    python-build
     python-installer
     python-wheel
     python-setuptools
-    python-pytest-runner)
+    python-pytest-runner
+)
 options=('!emptydirs' '!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
