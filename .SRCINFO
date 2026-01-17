@@ -1,7 +1,7 @@
 pkgbase = python-ws4py
 	pkgdesc = WebSocket client and server library for Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lawouach/WebSocket-for-Python
 	arch = any
 	license = BSD
