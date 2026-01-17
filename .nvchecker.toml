@@ -1,0 +1,7 @@
+[wine]
+source = "git"
+git = "https://gitlab.winehq.org/wine/wine.git"
+use_max_tag = true
+include_regex = '^wine-[0-9]+\.[0-9]+(-rc[0-9]+)?$'
+from_pattern = '^wine-'
+to_pattern = ''
