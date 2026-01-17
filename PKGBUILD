@@ -1,6 +1,6 @@
 # Maintainer: sunplan
 pkgname=nndownload
-pkgver=1.19
+pkgver=1.19.2
 pkgrel=1
 pkgdesc='Download and process links from Niconico (nicovideo.jp)'
 arch=('any')
@@ -22,7 +22,7 @@ depends=('python'
 makedepends=('python-setuptools'
              'dos2unix')
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$pkgname-$pkgver-py3-none-any.whl")
-sha256sums=('6830d465c5e26d48e213554d9dc16f15f5972ba121b11a2f73de3f35a2cbd904')
+sha256sums=('538c9b2cb1fa1077a2852dc96316860b979a8887f2b4ada2d86d35bc39fdffa5')
 
 package() {
 	python -m installer --destdir="$pkgdir" $pkgname-$pkgver-py3-none-any.whl
