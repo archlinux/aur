@@ -1,5 +1,5 @@
 pkgbase = wkgtk-html2pdf
-	pkgdesc = wk2gtkpdf cpp library and command line interface
+	pkgdesc = C++ Library with CLI tool to convert HTML to PDF, A modern replacement for wkhtmltopdf
 	pkgver = 0.0.10
 	pkgrel = 0
 	url = https://github.com/Timh1970/wkgtk-html2pdf
