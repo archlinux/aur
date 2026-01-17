@@ -1,0 +1,18 @@
+pkgbase = tzpfms
+	pkgdesc = TPM-based encryption keys for ZFS datasets
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://git.sr.ht/~nabijaczleweli/tzpfms
+	arch = x86_64
+	license = 0BSD
+	license = MIT
+	makedepends = shellcheck
+	depends = tpm2-tss
+	depends = zfs-utils
+	depends = openssl
+	source = tzpfms-0.4.1.tar.gz::https://git.sr.ht/~nabijaczleweli/tzpfms/archive/v0.4.1.tar.gz
+	source = disable-tpm1x.patch
+	sha512sums = 9de6611c4d481655369f35c5908e113f61455018dbec46f09a264b72be43e3afd7e1c556e67118e41a5e96afd59830714e43442404e9cad2c3dcf689e2a52277
+	sha512sums = bda908409aca8ba646132d9024c0a8f30fb9ae68623cd1cfbc7926294f71ae4e3244238c14113abb75b33dce4bc612fd26f858faebb31e4ea555f9948182c119
+
+pkgname = tzpfms
