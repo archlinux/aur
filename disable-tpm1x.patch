@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 67ba809..8a1f0ec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -46,6 +46,13 @@ ifneq (,$(shell command -v msgfmt))
+ 	LOCALES := $(wildcard po/*.po)
+ endif
+ 
++ifdef DISABLE_TPM1X
++LDLIBS := $(filter-out -ltspi,$(LDLIBS))
++BINARY_SOURCES := $(filter-out $(foreach S,$(BINARY_SOURCES),$(if $(findstring tpm1x,$S),$S)),$(BINARY_SOURCES))
++COMMON_SOURCES := $(filter-out $(foreach S,$(COMMON_SOURCES),$(if $(findstring tpm1x,$S),$S)),$(COMMON_SOURCES))
++MANPAGE_HEADERS := $(filter-out $(foreach S,$(MANPAGE_HEADERS),$(if $(findstring tpm1x,$S),$S)),$(MANPAGE_HEADERS))
++MANPAGE_SOURCES := $(filter-out $(foreach S,$(MANPAGE_SOURCES),$(if $(findstring tpm1x,$S),$S)),$(MANPAGE_SOURCES))
++endif
+ 
+ ifdef TZPFMS_PASSPHRASE_HELPER
+ CPPFLAGS += -DTZPFMS_PASSPHRASE_HELPER='$(TZPFMS_PASSPHRASE_HELPER)'
