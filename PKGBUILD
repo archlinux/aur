@@ -7,10 +7,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/iiTzDante/gomusic"
 license=('MIT')
 depends=('ffmpeg' 'alsa-lib')
-optdepends=()
+optdepends=('chromium: for YouTube scraping'
+            'google-chrome: for YouTube scraping')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f92442138cfa570bad45df96298cf7b534e2d030d0ddb593207a87d8cb8b6ef9')
 
 build() {
   cd "$pkgname-$pkgver"
