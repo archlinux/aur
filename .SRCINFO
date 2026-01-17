@@ -1,7 +1,7 @@
 pkgbase = cpx
 	pkgdesc = Cargo-like CLI for C++, compatible with CMake (vcpkg), Bazel and Meson
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ozacod/cpx
 	arch = x86_64
 	arch = aarch64
