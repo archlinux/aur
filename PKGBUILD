@@ -1,10 +1,10 @@
 pkgname=cmdcreate
-pkgver=0.9.9
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL-2.0-only')
-depends=('curl' 'nano')
+depends=('curl' 'nano' 'openssl')
 makedepends=('cargo' 'git' 'rust')
 pkgdesc="Allows you to create custom commands for your custom scripts"
 source=("git+https://github.com/owen-debiasio/cmdcreate.git#tag=v$pkgver")
