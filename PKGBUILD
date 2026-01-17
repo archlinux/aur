@@ -1,7 +1,7 @@
 # Maintainer: PrincParshia <princparshia@gmail.com>
 
 pkgname=xdg-desktop-portal-adw
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal using Libadwaita"
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
 	cd "$srcdir/xdg-desktop-portal-adw"
 	meson setup build --prefix=/usr
-    meson compile -C build
+	meson compile -C build
 }
 
 package() {
