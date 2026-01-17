@@ -1,19 +1,22 @@
-# Maintainer: daonm <daobilionusd@gmail.com>
+# Maintainer: mdao <https://github.com/mdao>
 pkgname=gopac-bin
-_pkgname=gopac
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A warm Gruvbox TUI for pacman and AUR (Binary)"
+pkgdesc="A warm, beautiful TUI for Arch Linux package management (Binary)"
 arch=('x86_64')
-options=('!debug')
-url="https://github.com/the-daonm/gopac"
+url="https://github.com/mdao/gopac"
 license=('MIT')
-depends=('pacman')
 provides=('gopac')
-conflicts=('gopac' 'gopac-git')
-source=("gopac::$url/releases/download/v$pkgver/gopac" "gopac.fish::$url/releases/download/v$pkgver/gopac.fish")
-sha256sums=('8ecea276ff565e931aee513a33731d84ba12f15b08f6b9e2d04da4c752fc2824' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
+conflicts=('gopac')
+depends=('glibc')
+optdepends=('yay: AUR helper' 'paru: AUR helper')
+source=("gopac::${url}/releases/download/v${pkgver}/gopac"
+        "LICENCE::${url}/releases/download/v${pkgver}/LICENCE"
+        "gopac.fish::${url}/releases/download/v${pkgver}/gopac.fish")
+sha256sums=('a8f6bb66dd893d8e5c2ed7b8ce7436cc0f718f884de1cb840f02f8fb9eaa81bd' '7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
 
 package() {
   install -Dm755 gopac "$pkgdir/usr/bin/gopac"
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+  install -Dm644 gopac.fish "$pkgdir/usr/share/fish/vendor_completions.d/gopac.fish"
 }
