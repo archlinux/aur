@@ -10,11 +10,20 @@ pkgname=(
   $pkgbase-ui
 )
 pkgver=0.63.0
-pkgrel=2
+pkgrel=3
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+_ui_depends=(
+  libglvnd
+  libx11
+  libxcursor
+  libxi
+  libxinerama
+  libxrandr
+  libxxf86vm
+)
+makedepends=('go' "${_ui_depends[@]}")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('36b2962a5cd560b44221f1eaac3fa93fbd7411ff838af9b9cdf806f5ce210cbd')
 
 prepare() {
@@ -29,7 +38,7 @@ build() {
 
   go build \
     -o build \
-    -ldflags "-s -w -linkmode=external -X github.com/netbirdio/$pkgname/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
+    -ldflags "-s -w -linkmode=external -X github.com/netbirdio/netbird/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
     ./client ./signal ./management ./relay ./client/ui
 
   # relay does not support completions
@@ -50,6 +59,12 @@ check() {
   [[ "$(./signal --version)" == "$pkgbase-signal version $pkgver" ]]
 }
 
+_completions() {
+  install -Dm644 "build/$1.bash" "$pkgdir/usr/share/bash-completion/completions/$2"
+  install -Dm644 "build/$1.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$2.fish"
+  install -Dm644 "build/$1.zsh" "$pkgdir/usr/share/zsh/site-functions/_$2"
+}
+
 package_netbird() {
   license=('BSD-3-Clause')
   backup=(etc/default/$pkgname)
@@ -63,9 +78,7 @@ package_netbird() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 build/client "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 build/client.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 build/client.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  install -Dm644 build/client.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  _completions client "$pkgname"
 
   cd release_files/systemd/
   install -Dm644 env "$pkgdir/etc/default/$pkgname"
@@ -77,14 +90,8 @@ package_netbird-ui() {
   pkgdesc='GUI for the Netbird client'
   depends=(
     glibc
-    libglvnd
-    libx11
-    libxcursor
-    libxi
-    libxinerama
-    libxrandr
-    libxxf86vm
     netbird
+    "${_ui_depends[@]}"
   )
 
   cd "$srcdir/$pkgbase-$pkgver"
@@ -108,9 +115,7 @@ package_netbird-management() {
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm755 build/management "$pkgdir/usr/bin/$pkgbase-mgmt"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 build/management.bash "$pkgdir/usr/share/bash-completion/completions/$pkgbase-mgmt"
-  install -Dm644 build/management.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgbase-mgmt.fish"
-  install -Dm644 build/management.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgbase-mgmt"
+  _completions management "$pkgbase-mgmt"
 
   cd release_files/systemd/
   install -Dm644 env "$pkgdir/etc/default/$pkgname"
@@ -126,9 +131,7 @@ package_netbird-signal() {
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm755 build/signal "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 build/signal.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 build/signal.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  install -Dm644 build/signal.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  _completions signal "$pkgname"
 
   cd release_files/systemd/
   install -Dm644 env "$pkgdir/etc/default/$pkgname"
