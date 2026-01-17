@@ -1,17 +1,19 @@
 # Maintainer: Simon Pintarelli <simon.pintarelli@cscs.ch>
+# Contributor: Anton Kudelin <kudelin at proton dot me>
+
 pkgname=costa
 _pkgname=COSTA
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc="Communication-optimal shuffle and transpose algorithms."
 arch=(x86_64 aarch64)
 url="https://github.com/eth-cscs/COSTA"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(openmpi gcc-libs glibc scalapack)
 makedepends=(cmake)
 provides=(costa)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('e87bc37aad14ac0c5922237be5d5390145c9ac6aef0350ed17d86cb2d994e67c')
+sha256sums=('2155af3696cd0db1d18f9da7325de6fbcd87833c5b9e62445229e17151f7fd0b')
 
 prepare() {
   mkdir -p "$srcdir/build"
