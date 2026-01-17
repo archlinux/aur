@@ -1,6 +1,6 @@
 pkgbase = cosma
 	pkgdesc = Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm
-	pkgver = 2.6.6
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/eth-cscs/COSMA
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cosma
 	depends = cblas
 	depends = costa
 	options = !buildflags
-	source = cosma-2.6.6.tar.gz::https://github.com/eth-cscs/COSMA/archive/refs/tags/v2.6.6.tar.gz
-	sha256sums = 1604be101e77192fbcc5551236bc87888d336e402f5409bbdd9dea900401cc37
+	source = cosma-2.7.0.tar.gz::https://github.com/eth-cscs/COSMA/archive/refs/tags/v2.7.0.tar.gz
+	sha256sums = f4775d18379539d7bb5053bff8acb4e13d6ed31a9677f498d9099a7500488789
 
 pkgname = cosma
