@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=r1.g038a08b
+pkgver=0.5.0.r487.g038a08b
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -20,7 +20,7 @@ source=("${pkgname%-git}::git+${url}.git"
 b2sums=('SKIP' 'SKIP')
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --match='[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # Packaging guideline cause double build.
@@ -30,9 +30,9 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic
 package(){
   cd ${pkgname%-git}
   unset optdepends
-  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n LOCALES=n
-  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname sum shred shuf factor"
-  #make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
+  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
+  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #"sum shred shuf factor"
+  make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   cp -r ../share "$pkgdir"/usr && cd "$pkgdir"/usr/share
   rm -r bash-completion elvish
