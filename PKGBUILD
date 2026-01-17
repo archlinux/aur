@@ -1,7 +1,7 @@
 # Maintainer: daonm <daobilionusd@gmail.com>
 pkgname=gopac-bin
 _pkgname=gopac
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A warm Gruvbox TUI for pacman and AUR (Binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('pacman')
 provides=('gopac')
 conflicts=('gopac' 'gopac-git')
 source=("gopac::$url/releases/download/v$pkgver/gopac")
-sha256sums=('310eb33b2d96a88994e888d9d5e4c1bd0f58e683bbd9eb5573617baff4d8de38')
+sha256sums=('ffac37fbab604cbd2461cdc6701700c9c5c7f8f815b9e53c069a477689592291' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
 
 package() {
   install -Dm755 gopac "$pkgdir/usr/bin/gopac"
