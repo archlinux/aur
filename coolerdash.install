@@ -79,7 +79,7 @@ post_install() {
 
     # Create systemd drop-in for startup delay (allow shutdown.png to display)
     mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
-    printf "[Service]\nExecStartPre=/bin/sleep 10\nExecStopPre=/bin/sleep 10\nExecStop=/bin/sleep 10\nTimeoutStopSec=10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
 
@@ -115,7 +115,185 @@ post_upgrade() {
 
     # Create systemd drop-in for startup delay (allow shutdown.png to display)
     mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
-    printf "[Service]\nExecStartPre=/bin/sleep 10\nExecStopPre=/bin/sleep 10\nExecStop=/bin/sleep 10\nTimeoutStopSec=10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
+
+    # Reload systemd manager configuration
+    systemctl daemon-reload
+
+    # Restart CoolerDash to pick up the updated plugin
+    if systemctl list-unit-files cc-plugin-coolerdash.service >/dev/null 2>&1; then
+        echo "Restarting CoolerDash service to load updated plugin..."
+        systemctl restart cc-plugin-coolerdash.service || echo "Note: CoolerDash service restart failed. Please restart manually."
+    fi
+
+    echo "================================================================"
+    echo "CoolerDash has been upgraded successfully!"
+    echo "================================================================"
+}
+
+pre_remove() {
+    # Stop and disable service before uninstallation
+    if systemctl is-active --quiet coolerdash.service || systemctl is-enabled --quiet coolerdash.service; then
+        echo "Stopping coolerdash service..."
+        systemctl stop coolerdash.service
+        echo "Disabling coolerdash service (CoolerControl plugin mode preferred)..."
+        systemctl disable coolerdash.service
+    fi
+
+    # Remove systemd drop-in directory
+    if [ -d /etc/systemd/system/cc-plugin-coolerdash.service.d ]; then
+        echo "Removing systemd drop-in directory..."
+        rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
+    fi
+
+    # Remove all installed users, files and directories
+    if id -u coolerdash &>/dev/null; then
+        userdel -rf coolerdash || true
+    fi
+
+    # Remove old systemd service file if it exists (migration from standalone to plugin mode)
+    if [ -f /etc/systemd/system/coolerdash.service ]; then
+        echo "Removing deprecated systemd service file..."
+        rm -f /etc/systemd/system/coolerdash.service
+    fi
+    rm -f /usr/share/man/man1/coolerdash.1
+    rm -f /usr/share/applications/coolerdash-settings.desktop
+    rm -f /bin/coolerdash
+    rm -f /usr/bin/coolerdash
+    rm -rf /opt/coolerdash
+    rm -rf /etc/coolerdash
+
+    systemctl daemon-reload
+
+    # Restart CoolerControl to remove the plugin
+    if systemctl list-unit-files coolercontrold.service >/dev/null 2>&1; then
+        echo "Restarting CoolerControl service to unload plugin..."
+        systemctl restart coolercontrold.service || echo "Note: CoolerControl service restart failed. Please restart manually."
+    fi
+    echo "================================================================"
+    echo "CoolerDash and all related files have been removed."
+    echo "================================================================"
+}
+# -----------------------------------------------------------------------------
+# Created by: damachin3 (damachine3 at proton dot me)
+# Website: https://github.com/damachine/coolerdash
+# -----------------------------------------------------------------------------
+pre_install() {
+    echo "Checking for legacy files and performing migration cleanup..." 2>/dev/null
+    # Stop and disable service before install or update to prevent conflicts with plugin mode
+    if systemctl list-unit-files coolerdash.service 2>/dev/null || systemctl list-unit-files coolerdash.service 2>/dev/null; then
+        echo "Stopping coolerdash service..." 2>/dev/null
+        systemctl stop coolerdash.service 2>/dev/null
+        echo "Disabling coolerdash service (CoolerControl plugin mode preferred)..." 2>/dev/null
+        systemctl disable coolerdash.service 2>/dev/null
+    fi
+
+    # Remove old systemd service file if it exists (migration from standalone to plugin mode)
+    if [ -f /etc/systemd/system/coolerdash.service ]; then
+        echo "Removing deprecated systemd service file..." 2>/dev/null
+        rm -f /etc/systemd/system/coolerdash.service 2>/dev/null
+    fi
+
+    # Remove legacy installation directories if they exist
+    if [ -d /opt/coolerdash ]; then
+        echo "Removing legacy installation: /opt/coolerdash/" 2>/dev/null
+        rm -rf /opt/coolerdash 2>/dev/null
+    fi
+
+    # Remove legacy config directory if it exists
+    if [ -d /etc/coolerdash ]; then
+        echo "Removing legacy config: /etc/coolerdash/" 2>/dev/null
+        rm -rf /etc/coolerdash 2>/dev/null
+    fi
+
+    # Remove legacy config.ini and ui.html if they exist in plugin directory
+    if [ -f /etc/coolercontrol/plugins/coolerdash/config.ini ]; then
+        echo "Removing legacy config.ini..." 2>/dev/null
+        rm -f /etc/coolercontrol/plugins/coolerdash/config.ini 2>/dev/null
+    fi
+    if [ -f /etc/coolercontrol/plugins/coolerdash/ui.html ]; then
+        echo "Removing legacy ui.html..." 2>/dev/null
+        rm -f /etc/coolercontrol/plugins/coolerdash/ui.html 2>/dev/null
+    fi
+    if [ -f /usr/share/applications/coolerdash-settings.desktop ]; then
+        echo "Removing legacy coolerdash-settings.desktop..." 2>/dev/null
+        rm -f /usr/share/applications/coolerdash-settings.desktop 2>/dev/null
+    fi
+
+    # Remove legacy user if it exists
+    if id -u coolerdash &>/dev/null; then
+        echo "Removing legacy coolerdash user..." 2>/dev/null
+        userdel -rf coolerdash 2>/dev/null || true
+    fi
+
+    # Remove legacy symlinks in /bin/ and /usr/bin/ if they exist (migration from standalone)
+    if [ -L /bin/coolerdash ] || [ -f /bin/coolerdash ]; then
+        echo "Removing legacy symlink: /bin/coolerdash"
+        rm -f /bin/coolerdash
+    fi
+    if [ -L /usr/bin/coolerdash ] || [ -f /usr/bin/coolerdash ]; then
+        echo "Removing legacy symlink: /usr/bin/coolerdash"
+        rm -f /usr/bin/coolerdash
+    fi
+}
+
+post_install() {
+    # Ensure plugin directory files have correct permissions
+    if [ -d /etc/coolercontrol/plugins/coolerdash ]; then
+        chmod 755 /etc/coolercontrol/plugins/coolerdash 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.md 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/VERSION 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/LICENSE 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.toml 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.png 2>/dev/null || true
+        chmod 666 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/ui 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/ui/* 2>/dev/null || true
+        echo "Plugin directory permissions configured"
+    fi
+
+    # Create systemd drop-in for startup delay (allow shutdown.png to display)
+    mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
+    echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
+
+    # Reload systemd manager configuration
+    systemctl daemon-reload
+
+    # Restart CoolerControl to pick up the new plugin
+    if systemctl list-unit-files coolercontrold.service >/dev/null 2>&1; then
+        echo "Restarting CoolerControl service to load new plugin..."
+        systemctl restart coolercontrold.service || echo "Note: CoolerControl service restart failed. Please restart manually."
+    fi
+
+    echo "================================================================"
+    echo "CoolerDash has been installed successfully!"
+    echo "================================================================"
+}
+
+post_upgrade() {
+    # Ensure plugin directory files have correct permissions after upgrade
+    if [ -d /etc/coolercontrol/plugins/coolerdash ]; then
+        chmod 755 /etc/coolercontrol/plugins/coolerdash 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/coolerdash 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.md 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/VERSION 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/LICENSE 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.toml 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/*.png 2>/dev/null || true
+        chmod 666 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+        chmod 755 /etc/coolercontrol/plugins/coolerdash/ui 2>/dev/null || true
+        chmod 644 /etc/coolercontrol/plugins/coolerdash/ui/* 2>/dev/null || true
+        echo "Plugin directory permissions configured"
+    fi
+
+    # Create systemd drop-in for startup delay (allow shutdown.png to display)
+    mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
+    printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     chmod 644 /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf
     echo "Systemd drop-in created: 10s startup/shutdown delay for shutdown.png display"
 
