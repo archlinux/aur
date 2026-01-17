@@ -1,17 +1,18 @@
 pkgbase = android-aarch64-libdvdcss
 	pkgdesc = Portable abstraction library for DVD decryption (Android aarch64)
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.videolan.org/developers/libdvdcss.html
 	arch = any
 	license = GPL
-	makedepends = android-configure
+	makedepends = android-meson
+	makedepends = ninja
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.videolan.org/pub/libdvdcss/1.4.3/libdvdcss-1.4.3.tar.bz2
-	md5sums = e98239a88af9b2204f9b9d987c2bc71a
+	source = https://code.videolan.org/videolan/libdvdcss/-/archive/1.5.0/libdvdcss-1.5.0.tar.bz2
+	md5sums = 5ff8b0240506b96d04f1a0cf04ab77d1
 
 pkgname = android-aarch64-libdvdcss
