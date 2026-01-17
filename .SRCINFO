@@ -1,7 +1,7 @@
 pkgbase = roboclaw-studio-git
 	pkgdesc = Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio
 	pkgver = 0.1.0.r2.gec5ea8b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lazytatzv/motion_studio
 	arch = x86_64
 	license = MIT
