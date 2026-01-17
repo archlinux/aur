@@ -326,6 +326,7 @@ aurx_completion() {
 				        local LIST_OPTIONS="${LIST_OPTIONS[*]}"
 				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
 				        local COMPARISON_CRITERIA_VALUES="${COMPARISON_CRITERIA_VALUES[*]}"
+				        local GIT_CONNECTION_VALUES="${GIT_CONNECTION_VALUES[*]}"
 				        local OUTPUT_VALUES="${OUTPUT_VALUES[*]}"
 				        local OUTPUT_SUGGEST_VALUES="${OUTPUT_SUGGEST_VALUES[*]}"
 				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
@@ -353,6 +354,8 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--git-connection" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${GIT_CONNECTION_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " search " ]]; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " suggest " ]]; then
@@ -1277,7 +1280,7 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.7-4"
+INTERNAL_VERSION="1.0.7-5"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
