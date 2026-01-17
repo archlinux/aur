@@ -1,0 +1,5 @@
+[python-pyxdia]
+source = "github"
+github = "mborgerson/xdia"
+prefix = "v"
+use_latest_release = true
