@@ -8,9 +8,9 @@
 _pkgbase=wireshark
 pkgbase=wireshark-oqs
 pkgname=(wireshark-oqs-cli wireshark-oqs-qt)
-pkgver=4.6.2
-pkgrel=2
-_pkgver_oqs=0.11.0-rc1
+pkgver=4.6.3
+pkgrel=1
+_pkgver_oqs=0.11.0
 _commit_oqs_demos=29d4dccbd547a62e8ba77d3fef1af5d6f8625d60
 pkgdesc='Network traffic and protocol analyzer/sniffer'
 url='https://www.wireshark.org/'
@@ -71,13 +71,13 @@ checkdepends=(
 options=('!emptydirs')
 source=(
   git+https://gitlab.com/wireshark/wireshark.git#tag=v${pkgver}
-  git+https://github.com/open-quantum-safe/oqs-provider.git#tag=$_pkgver_oqs
+  git+https://github.com/open-quantum-safe/oqs-provider.git#tag=refs/tags/$_pkgver_oqs
   https://raw.githubusercontent.com/open-quantum-safe/oqs-demos/$_commit_oqs_demos/wireshark/qsc_template.jinja2
   https://raw.githubusercontent.com/open-quantum-safe/oqs-demos/$_commit_oqs_demos/wireshark/generate_qsc_header.py
   wireshark.sysusers
 )
-b2sums=('c4ae77c8298b381e2b97a92bf096a1e8e2f6b9a013f3d75b58e5680494eff869bb7acd83aeda81a6a7ed350f2347abbf5abead6e3bc40ab39c079a492c522f6a'
-        '5d072ade012bbcf1e52fcf229e9df69439eaf44cf16820ae7ec88323e363514c7d687e9d58aad0dc101146926fbb644907ef765c5e26aa454970a0f493d552d6'
+b2sums=('06360cd4307169e57852e75f533aa703aab495f154428749fb149ce6b59b12b5d824d51d22a273c8c40d4f297411d0d45d3f85d2d2c40511c5f78d481563eea8'
+        'df5b81c3c4852de30878d4ea2fa0d9cec6d64a7527bd82523e1196d2df3952c05981d334f7472a369ab52f240f0321fb95130320de030d6c5846133fc49c76de'
         '8061cdb5ddce084be6566b57bf21f9281ff9cb7ffd986c1968d60e46624afb1a6e9aff02bf0cf065a89b868bc6ab5ceb5c222c1a7913d06db79ee778593a2997'
         '15e4cfa9626dc6f4b0dff7096f7610791ba9b186fa21855a5203bbeb03c27afbe86e876f3dd0a7f7b6f79cb221c896beec344de0701b6ecd86ad40f318bf9019'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
