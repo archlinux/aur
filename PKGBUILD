@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r96208.f1e5c2bb797
+pkgver=r97065.9347fc857fb
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -22,6 +22,7 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  sed -i "s|TARGETS SQLite3::SQLite3|TARGETS SQLite::SQLite3|g" ThirdParty/sqlite/CMakeLists.txt
 }
 
 build() {
