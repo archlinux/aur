@@ -12,7 +12,7 @@ depends=('pacman')
 provides=('gopac')
 conflicts=('gopac' 'gopac-git')
 source=("gopac::$url/releases/download/v$pkgver/gopac")
-sha256sums=('ffac37fbab604cbd2461cdc6701700c9c5c7f8f815b9e53c069a477689592291' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
+sha256sums=('bda053f6c765ac9f7ca6d82fd74125eca329728e89013aac49da0f8118497b1b' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
 
 package() {
   install -Dm755 gopac "$pkgdir/usr/bin/gopac"
