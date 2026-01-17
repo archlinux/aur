@@ -2,7 +2,7 @@
 
 pkgname=portablemc-bin
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
 arch=(x86_64 aarch64)
 url='https://github.com/mindstorm38/portablemc'
@@ -10,7 +10,6 @@ license=('Apache-2.0')
 depends=(
   gcc-libs
   glibc
-  libxcb
   openssl
 )
 
