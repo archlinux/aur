@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=3.0.4
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -38,7 +38,7 @@ optdepends=(
 )
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('53dc66cea1ea6d9f23277690869858a8cca9f58299ab1ac18fed2b8b0f389730'
+sha256sums=('17c545f43ca543979dcafdfeb4921240ba3673d1464ec4c2f592733af12ad578'
             'SKIP')
 
 prepare() {
@@ -57,7 +57,6 @@ build() {
     -D Protobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
     -D BUILD_DEPRECATED_CLI=ON \
     -D PLUGIN_FEDERATED=ON \
-    -D USE_CXX14_IF_AVAILABLE=ON \
     -D USE_OPENMP=ON \
     -D USE_PARQUET=ON \
     -G Ninja \
@@ -79,7 +78,7 @@ check() {
   source test-env/bin/activate
   python -m installer python-package/dist/*.whl
 
-  python -m pytest -v tests/python -k 'not test_training'
+  python -m pytest -v tests/python -k 'not test_custom_multiclass_objective'
 
   deactivate
 }
