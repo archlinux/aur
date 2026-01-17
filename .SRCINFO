@@ -1,6 +1,6 @@
 pkgbase = framework-tool-tui
 	pkgdesc = TUI for controlling and monitoring Framework Computers hardware built in Rust
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/grouzen/framework-tool-tui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = framework-tool-tui
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = framework-tool-tui-0.7.2.tar.gz::https://github.com/grouzen/framework-tool-tui/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = a7da9130bf143d9ad128032a289db7250282f37dc94458a34668d4e9196447b2
+	source = framework-tool-tui-0.7.3.tar.gz::https://github.com/grouzen/framework-tool-tui/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 4309200cede8c2c2c19f163fa27b44bb89a839f00ed761798278157b15b89024
 
 pkgname = framework-tool-tui
