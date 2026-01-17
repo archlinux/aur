@@ -14,11 +14,13 @@ makedepends=('git' 'cargo' 'asciidoctor' 'pnpm')
 source=(
 	"radicle-explorer::git+https://$_node/${_rid#rad:}.git"
 	"radicle-explorer.config.json"
-	"systemd.patch"
+	"radicle-httpd.system.service"
+	"radicle-httpd.user.service"
 )
 b2sums=('SKIP'
         'd29bf8a4344d407cdc19cce3d6d8ef2f28e97454c07978301ef1009a995ba8f352ad706b7230f33d290d7b055d8a8c80c80164625463adc4e0b1191b1c4573f2'
-        '9e45139fee702f2d43852b6257ec9629df67cdffa4d1bc4c269dd7b1041070167704c3bee3a3eecf90d30647e9823dec837768798472990ea45cba576d0d55fd')
+        '3171cadeeb285a5baa9eebef8383ba4963c618db540a2480e60f08c4639c8f8fd18e8c435bfdd0f704cc3dcafb81fa91e97c1e5825d0144a62b3e3a5b32ef295'
+        '75b438724669793478e4bfed2745c4e9c97e25f24863eabe2c0f7bbb72571bc6f572bc07092576678162a7c7cf1f861e2046a69f11bb1408597e1e98bbd5e2b6')
 
 pkgver() {
 	cd radicle-explorer
@@ -50,9 +52,6 @@ EOF
 	pnpm install --shamefully-hoist
 
 	cd radicle-httpd
-
-	# sanitize provided systemd units
-	git apply -3 "$srcdir/systemd.patch"
 
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
@@ -147,11 +146,11 @@ package_radicle-httpd-git() {
 		-t "$pkgdir/usr/share/man/man1"
 
 	install -Dm644 \
-		systemd/system/* \
-		-t "$pkgdir/usr/lib/systemd/system"
+		"$srcdir/radicle-httpd.system.service" \
+		"$pkgdir/usr/lib/systemd/system/radicle-httpd.service"
 	install -Dm644 \
-		systemd/user/* \
-		-t "$pkgdir/usr/lib/systemd/user"
+		"$srcdir/radicle-httpd.user.service" \
+		"$pkgdir/usr/lib/systemd/user/radicle-httpd.service"
 
 	install -Dm644 \
 		LICENSE-APACHE \
