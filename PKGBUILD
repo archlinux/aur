@@ -11,11 +11,12 @@ pkgdesc='PlayStation 3 Emulator'
 arch=('x86_64')
 url=https://github.com/RPCS3/rpcs3-binaries-linux
 license=('GPL-2.0-only')
+makedepends=(patchelf)
 provides=(rpcs3)
 conflicts=(rpcs3)
 
 source=("${url}/releases/download/build-${_commit}/rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage")
-b2sums=('SKIP')
+b2sums=('4a8ba2aa79cfd0e4ae753d67a7f978e4038b4fbeda29565ca87ce0885db8dd22dc4c1a27eaf60affc6c48b9b3f232b0298f2945fef3d05fd7147ed224b9dbf8f')
 
 prepare() {
   chmod 755 rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage
@@ -29,6 +30,7 @@ package_rpcs3-bin() {
   cd AppDir
   # mv large files to save disk space
   install -d "$pkgdir"/usr/bin && mv usr/bin/rpcs3 -t "$pkgdir"/usr/bin
+  patchelf --debug "$pkgdir"/usr/bin/rpcs3 --replace-needed libGLEW.so.2.2 libGLEW.so
   install -Dm644 usr/share/applications/rpcs3.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 usr/share/icons/hicolor/scalable/apps/rpcs3.svg -t "$pkgdir"/usr/share/pixmaps
   install -Dm644 usr/share/metainfo/rpcs3.metainfo.xml -t "$pkgdir"/usr/share/metainfo
