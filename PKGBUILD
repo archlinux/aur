@@ -3,7 +3,7 @@
 # Contributor: rzhli <tayuebuliuhen@gmail.com>
 
 pkgname='ftnn-desktop'
-pkgver='16.1.14608'
+pkgver='16.1.14618'
 pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
