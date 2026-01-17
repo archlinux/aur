@@ -1,0 +1,21 @@
+pkgbase = emu10k1-ossis-dkms
+	pkgdesc = Creative emu10k1 driver with new features and bug fixes from ossilator
+	pkgver = 6.13
+	pkgrel = 1
+	url = https://github.com/ossilator/linux
+	arch = any
+	license = GPL2
+	depends = dkms
+	depends = linux-headers
+	source = git+https://github.com/ossilator/linux.git#branch=ossis-emu10k1-6.13
+	source = dkms.conf
+	source = emu10k1.conf
+	source = Makefile
+	source = emumixer.c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = emu10k1-ossis-dkms
