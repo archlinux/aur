@@ -7,36 +7,35 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libdvdread
-pkgver=6.1.3
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Library for reading DVD video disks (Android ${_android_arch})"
 arch=('any')
 url='https://www.videolan.org/developers/libdvdnav.html'
 license=('GPL-2.0-or-later')
 depends=('android-ndk')
-makedepends=('android-configure')
+makedepends=('android-meson'
+             'ninja')
 optdepends=("android-${_android_arch}-libdvdcss: Decoding encrypted DVDs")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://download.videolan.org/pub/videolan/libdvdread/${pkgver}/libdvdread-${pkgver}.tar.bz2"{,.asc})
-md5sums=('3c58d1624a71a16ff40f55dbaca82523'
-         'SKIP')
-validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key (2015)
+source=("https://code.videolan.org/videolan/libdvdread/-/archive/${pkgver}/libdvdread-${pkgver}.tar.bz2")
+md5sums=('120e9ead9f59e2031d05e6a61ffea8ec')
 
 build() {
     cd "${srcdir}/libdvdread-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure \
-        --disable-apidoc
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build
+    ninja -C build all
 }
 
 package() {
     cd "${srcdir}/libdvdread-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
