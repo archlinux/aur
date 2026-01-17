@@ -10,7 +10,7 @@ depends=('alsa-lib')
 provides=('waves')
 conflicts=('waves')
 source=("https://github.com/llehouerou/waves/releases/download/v$pkgver/waves_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('5b05fc3189e3c8ff697aebe26c61f97ad11d024b2b1e333d1fa88ec8e42fbc4d')
+sha256sums=('a00a22bd0aecb20e3846e6fe214d6652991059c37270a9dfc2d97538c217e95d')
 
 package() {
     install -Dm755 waves "$pkgdir/usr/bin/waves"
