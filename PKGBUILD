@@ -1,6 +1,6 @@
 pkgname=oranglauncher-bin
-pkgver=1.0.0
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
 url="https://oranges.lt"
@@ -8,11 +8,11 @@ license=('MIT')
 depends=(glibc)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/adasjusk/OrangLaunch/releases/download/1.0-Linux/launcher_x64_linux.tar.gz"
+source=("https://github.com/adasjusk/OrangLaunch/releases/download/2.0-Linux/launcher_x64_linux.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
-sha256sums=('e197c03e8cb9d5186d584fef735eb41b7258d5e3d722322d773b5d92b76de1ff' '5fbe96d3f3d3d01a91693edf1544701d2da46b7f07d5d037495371e96bae8bf4' 'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968' '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
+sha256sums=('732800fd88af6c6ab5ffae9610e73c865d74237a119b03f87cf89aca616fca4b' '8ce3b336dbf9739d9bd5fc0278b19f10c7539e23f05f399e288b2d267ec4e78a' 'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968' '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
 
 package() {
     install -d "$pkgdir/usr/lib/oranglauncher"
