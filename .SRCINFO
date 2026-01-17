@@ -1,5 +1,5 @@
 pkgbase = aur-sync-vote
-	pkgdesc = Automates voting on installed and uninstalled AUR packages
+	pkgdesc = Syncing votes with the currently installed AUR packages
 	pkgver = 0.2.2
 	pkgrel = 3
 	url = https://github.com/acaibowlz/aur-sync-vote

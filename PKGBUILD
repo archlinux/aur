@@ -2,7 +2,7 @@
 pkgname=aur-sync-vote
 pkgver=0.2.2
 pkgrel=3
-pkgdesc="Automates voting on installed and uninstalled AUR packages"
+pkgdesc="Syncing votes with the currently installed AUR packages"
 arch=('any')
 url="https://github.com/acaibowlz/aur-sync-vote"
 license=('MIT')
