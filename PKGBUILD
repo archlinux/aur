@@ -2,6 +2,7 @@
 
 pkgbase=rpcs3-bin
 pkgname=(rpcs3-{bin,appimage})
+pkgname=(rpcs3-appimage) # patchelf does not help...
 _api=https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest
 _commit=$(curl -s $_api | grep -oP 'tag_name": "build-\K\w{40}')
 _pkgver=$(curl -s $_api | grep -oP '"name": "\K0[^"]+')
@@ -11,7 +12,7 @@ pkgdesc='PlayStation 3 Emulator'
 arch=('x86_64')
 url=https://github.com/RPCS3/rpcs3-binaries-linux
 license=('GPL-2.0-only')
-makedepends=(patchelf)
+#makedepends=(patchelf)
 provides=(rpcs3)
 conflicts=(rpcs3)
 
@@ -30,7 +31,11 @@ package_rpcs3-bin() {
   cd AppDir
   # mv large files to save disk space
   install -d "$pkgdir"/usr/bin && mv usr/bin/rpcs3 -t "$pkgdir"/usr/bin
-  patchelf --debug "$pkgdir"/usr/bin/rpcs3 --replace-needed libGLEW.so.2.2 libGLEW.so
+  patchelf "$pkgdir"/usr/bin/rpcs3 \
+    --replace-needed libGLEW.so{.2.2,}  \
+    --replace-needed libopencv_photo.so{.412,} \
+	--replace-needed libopencv_imgproc.so{.412,} \
+	--replace-needed libopencv_core.so{.412,}
   install -Dm644 usr/share/applications/rpcs3.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 usr/share/icons/hicolor/scalable/apps/rpcs3.svg -t "$pkgdir"/usr/share/pixmaps
   install -Dm644 usr/share/metainfo/rpcs3.metainfo.xml -t "$pkgdir"/usr/share/metainfo
