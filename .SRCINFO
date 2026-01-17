@@ -1,7 +1,7 @@
 pkgbase = python-genio-tools
 	pkgdesc = Tools for flashing boards using MediaTek Genio SoCs
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/genio-tools
 	arch = any
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = python-genio-tools
 	depends = python-packaging
 	depends = python-pyudev
 	depends = python-pyusb
+	depends = python-fastboot-log-parser
 	depends = python-genio-bootrom
 	depends = python-gpiod
 	depends = python-pyftdi

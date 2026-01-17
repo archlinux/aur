@@ -3,7 +3,7 @@
 pkgname=python-genio-tools
 _name=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Tools for flashing boards using MediaTek Genio SoCs"
 arch=('any')
@@ -16,6 +16,7 @@ _pydeps=(
     pyudev
     pyusb
 
+    fastboot-log-parser
     genio-bootrom
     gpiod
     pyftdi)
