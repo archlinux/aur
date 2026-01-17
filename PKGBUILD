@@ -12,12 +12,12 @@ makedepends=('go')
 provides=('gopac')
 conflicts=('gopac-git' 'gopac-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2fc89253f1a522405f8d73629b9a92e5b195d7f24590cb882c79c4e1b28a610a')
+sha256sums=('06d2fff230d081cca32e6ebe8f419f5a841fd6d433d74cfc37425ee2343ca7e5')
 
 build() {
   cd "$pkgname-$pkgver"
   export CGO_ENABLED=0
-  go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-w -s" -o gopac .
+  go build -ldflags "-X main.version=${pkgver}" -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-w -s" -o gopac .
 }
 
 package() {
