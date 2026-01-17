@@ -2,9 +2,9 @@
 # Contributer: maz-1 <ohmygod19993@gmail.com>
 # Contributer: plokid <910576949@qq.com>
 
-_dotnet_ver=8.0
+_dotnet_ver=9.0
 pkgname=imewlconverter
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ replaces=("${pkgname}"{-bin,-cli})
 depends=("dotnet-runtime-${_dotnet_ver}")
 makedepends=("dotnet-sdk-${_dotnet_ver}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('03b14e3af1180c57f215f835b9101bcdb0a01cd0e2241b68c77dced1bd45597b')
+sha256sums=('3b6ef96f5725ef5a065adb8ed0cb8b6f45895bcf1dbb41f6a99b89d0b7a4adce')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
