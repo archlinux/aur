@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/chrislongros/r-fsrs"
 license=('MIT')
 depends=('r' 'r-r6' 'r-jsonlite')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'pandoc' 'r-knitr' 'r-rmarkdown')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrislongros/r-fsrs/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
