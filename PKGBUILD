@@ -7,13 +7,13 @@ arch=('x86_64')
 url="https://github.com/chrislongros/r-fsrs"
 license=('MIT')
 depends=('r' 'r-r6' 'r-jsonlite')
-makedepends=('rust' 'cargo' 'pandoc' 'r-knitr' 'r-rmarkdown')
+makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrislongros/r-fsrs/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
     cd "r-fsrs-$pkgver"
-    R CMD build .
+    R CMD build --no-build-vignettes .
 }
 
 package() {
