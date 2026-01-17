@@ -1,7 +1,7 @@
 # Maintainer: Shantanu Baddar <shantanubaddar2006@gmail.com>
 
 pkgname=hyprwave
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A sleek music control bar for Wayland compositors with MPRIS integration"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a46d1a9f6fb4db9c77678fcc28ffefadc8f89bf1874c6664ca5b6eb3629dc5e')
+sha256sums=('c556b3518a7ea893c6495aab95a96a2b579ee2388f51dc21d9df5ff4422423e9')
 
 build() {
     cd "$pkgname-$pkgver"
