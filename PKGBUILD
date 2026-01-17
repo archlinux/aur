@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=elpa
-pkgver=2025.01.001
+pkgver=2025.06.002
 _pkgver=${pkgver}
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(LGPL-3.0-only)
 depends=(blas-openblas scalapack python-numpy python-mpi4py)
 makedepends=(gcc-fortran cython vim)
 source=($url/software/tarball-archive/Releases/$pkgver/$pkgname-$_pkgver.tar.gz)
-sha256sums=('3ef0c6aed9a3e05db6efafe6e14d66eb88b2a1354d61e765b7cde0d3d5f3951e')
+sha256sums=('de3180c06e2b0dbb56939e84ad1a5fd1684465bd38ad2196792d0f4028937fda')
 options=(!makeflags !buildflags)
 
 prepare() {
