@@ -2,7 +2,7 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=fastmatch
-_pkgver=1.1-6
+_pkgver=1.1-8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('69ecb45abf03a50ed3cfb30da1fad8db')
-b2sums=('3a7ff4a260f4d324fffc042ce5c3d0af4a5c3e66f52bd6f515b409d042391f3820d35e99f5cf3e64fb5c40ea1ebb94d01af9c61d01e39ef1aa71412273c1c100')
+md5sums=('001c87a7061d0e33363fef194e1bb950')
+b2sums=('23d652002dccd7cd51662f1b8f471bcdcd2d81e8d93cffb24681b164ffd042d187ed201c6cd4d00e1cdd301fef26dd269fc30abb8906918c180baff5578d7e63')
 
 build() {
   mkdir build
