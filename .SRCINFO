@@ -1,6 +1,6 @@
 pkgbase = gomusic
 	pkgdesc = Fast terminal UI for downloading music from YouTube with automatic MP3 conversion
-	pkgver = 1.0.31
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/iiTzDante/gomusic
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gomusic
 	makedepends = go
 	depends = ffmpeg
 	depends = alsa-lib
-	source = gomusic-1.0.31.tar.gz::https://github.com/iiTzDante/gomusic/archive/refs/tags/v1.0.31.tar.gz
-	sha256sums = 9786649247ed7136738e68597c25cdc30febd9636bb1e949d23e453d1fdd5d76
+	source = gomusic-1.1.0.tar.gz::https://github.com/iiTzDante/gomusic/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = gomusic
