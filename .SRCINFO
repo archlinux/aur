@@ -1,6 +1,6 @@
 pkgbase = flymd
 	pkgdesc = A 7MB high-performance Markdown note tool
-	pkgver = 1.1.6
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/flyhunterl/flymd
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = flymd
 	depends = gtk3
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	source = flymd-1.1.6.tar.gz::https://github.com/flyhunterl/flymd/archive/refs/tags/v1.1.6.tar.gz
-	sha256sums = f93b5f761bbc2f8729f8894a008de6bf6f00abca98c049c331ad69284963558b
+	source = flymd-1.2.1.tar.gz::https://github.com/flyhunterl/flymd/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 5617e5a8b03f127735fb6c6f074f57d3a0dae5a6e622f906230a2736570d362e
 
 pkgname = flymd
