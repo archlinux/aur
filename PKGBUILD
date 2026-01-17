@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('gopac')
 conflicts=('gopac-git' 'gopac-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff39f63d356b94a48e2195bd8d76b8a0855c1bd11a1a859cb3ed7453f09f0ba9')
+sha256sums=('2fc89253f1a522405f8d73629b9a92e5b195d7f24590cb882c79c4e1b28a610a')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -23,4 +23,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 gopac "$pkgdir/usr/bin/gopac"
+  install -Dm644 completions/gopac.fish "$pkgdir/usr/share/fish/vendor_completions.d/gopac.fish"
 }
