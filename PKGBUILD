@@ -14,11 +14,13 @@ makedepends=('git' 'cargo' 'asciidoctor' 'pnpm')
 source=(
 	"radicle-explorer::git+https://$_node/${_rid#rad:}.git"
 	"radicle-explorer.config.json"
+	"radicle-explorer.nginx.conf"
 	"radicle-httpd.system.service"
 	"radicle-httpd.user.service"
 )
 b2sums=('SKIP'
         'd29bf8a4344d407cdc19cce3d6d8ef2f28e97454c07978301ef1009a995ba8f352ad706b7230f33d290d7b055d8a8c80c80164625463adc4e0b1191b1c4573f2'
+        '5735a8bae977e1fde93a294de1a7f738542f8c4d12d8efeed940c0a8f79f05a59c70101cf9faaa7207f034915e2ac189b0e4af7f0285610dbd9ecc0305d2601c'
         '3171cadeeb285a5baa9eebef8383ba4963c618db540a2480e60f08c4639c8f8fd18e8c435bfdd0f704cc3dcafb81fa91e97c1e5825d0144a62b3e3a5b32ef295'
         '75b438724669793478e4bfed2745c4e9c97e25f24863eabe2c0f7bbb72571bc6f572bc07092576678162a7c7cf1f861e2046a69f11bb1408597e1e98bbd5e2b6')
 
@@ -151,6 +153,9 @@ package_radicle-httpd-git() {
 	install -Dm644 \
 		"$srcdir/radicle-httpd.user.service" \
 		"$pkgdir/usr/lib/systemd/user/radicle-httpd.service"
+	install -Dm644 \
+		"$srcdir/radicle-explorer.nginx.conf" \
+		"$pkgdir/usr/share/doc/$pkgname/nginx/radicle-explorer.conf"
 
 	install -Dm644 \
 		LICENSE-APACHE \
