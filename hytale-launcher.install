@@ -35,7 +35,7 @@ post_upgrade() {
 
 post_remove() {
     echo ":: The Hytale Launcher has been removed from your system."
-    echo "   Note: The self-updated launcher located at:
+    echo "   Note: The self-updated launcher located at:"
     echo "   '~/.local/share/hytale-launcher/bin/'"
     echo "   and game data in:"
     echo "   '~/.local/share/Hytale/'"

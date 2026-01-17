@@ -30,7 +30,7 @@ source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/bu
 
 # generated with: updpkgsums
 sha256sums=('6db310634bfae63a13b779c5eff8372def30b5619c9e91e959627f9e6d754577'
-            'dabe40cfda4e250b887cd387487f3d43305ecc372297246a1814be6fedc4e110'
+            'f246c2f1f035129e6f68a332b0f0cd6d6c8a4cc0d8ba3f97f607a1e8ab8e78e4'
             '86f7bed645ef32cb4e2dedbfcd4482f8e7fa88a80668c542528318f943a79c98'
             '4ba4ac60ef66d32e4bb243e3bfa0ffc59322d6a88262a398198a0b2c6e365a52'
             'ed125c07488c20211119668cd09f73eff4f36fa017f78c1d331388c5af507106'
