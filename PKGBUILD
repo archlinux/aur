@@ -24,11 +24,13 @@ source=(
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
     "0003-client-fix-temp-value-dropped-while-borrowed.patch"
+    "0004-update-proxmox-fuse-rs-dependency-to-2.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -52,6 +54,7 @@ prepare() {
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
   _apply 0002-docs-drop-all-but-client-man-pages.patch
   _apply 0003-client-fix-temp-value-dropped-while-borrowed.patch
+  _apply 0004-update-proxmox-fuse-rs-dependency-to-2.patch
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"

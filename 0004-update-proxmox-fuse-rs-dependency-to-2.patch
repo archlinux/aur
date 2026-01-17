@@ -1,0 +1,39 @@
+From 19464cc891e626de7546d7902adae4adde1cd80a Mon Sep 17 00:00:00 2001
+From: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Date: Thu, 15 Jan 2026 12:40:30 +0100
+Subject: [PATCH 1/1] update proxmox-fuse-rs dependency to 2
+
+Signed-off-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
+---
+ Cargo.toml     | 2 +-
+ debian/control | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 1aa57ae5..49548ecc 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -62,7 +62,7 @@ proxmox-borrow = "1"
+ proxmox-compression = "1.0.1"
+ proxmox-config-digest = "1"
+ proxmox-daemon = "1"
+-proxmox-fuse = "1"
++proxmox-fuse = "2"
+ proxmox-http = { version = "1.0.2", features = [ "client", "http-helpers", "websocket" ] } # see below
+ proxmox-human-byte = "1"
+ proxmox-io = "1.0.1" # tools and client use "tokio" feature
+diff --git a/debian/control b/debian/control
+index df831f07..bc03e099 100644
+--- a/debian/control
++++ b/debian/control
+@@ -73,7 +73,7 @@ Build-Depends: debhelper (>= 12~),
+                librust-proxmox-compression-1+default-dev (>= 1.0.1-~~),
+                librust-proxmox-config-digest-1+default-dev,
+                librust-proxmox-daemon-1+default-dev,
+-               librust-proxmox-fuse-1+default-dev,
++               librust-proxmox-fuse-2+default-dev,
+                librust-proxmox-http-1+body-dev (>= 1.0.2-~~),
+                librust-proxmox-http-1+client-dev (>= 1.0.2-~~),
+                librust-proxmox-http-1+client-trait-dev (>= 1.0.2-~~),
+-- 
+2.39.5
