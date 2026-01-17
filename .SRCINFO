@@ -12,6 +12,7 @@ pkgbase = tonearm-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
+	depends = libadwaita
 	provides = tonearm=r365.035669a
 	conflicts = tonearm
 	source = tonearm::git+https://codeberg.org/dergs/Tonearm.git
