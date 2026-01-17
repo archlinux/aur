@@ -1,8 +1,8 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite-git
-pkgver=1.2.0
+pkgver=1.2.0.r2.g4f48307
 pkgrel=1
-pkgdesc="Feature rich Discord TUI client. Lite version without ASCII media support."
+pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
 arch=('any')
 url="https://github.com/sparklost/endcord"
 license=('GPL-3.0-only')
@@ -26,12 +26,27 @@ pkgver() {
 
 prepare() {
 	cd "endcord"
+	
+	# setup python 3.13
+	if uv python list --only-installed | grep -q '3.13'; then
+        echo "Python 3.13 is already installed"
+        PY_ALREADY_INSTALLED=true
+    else
+        uv python install 3.13
+        PY_ALREADY_INSTALLED=false
+    fi
+	
 	uv sync --all-groups
 }
 
 build() {
 	cd "endcord"
-	uv run build.py --lite --nuitka --clang
+	uv run build.py --lite
+	
+	# remove python 3.13
+	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
+        uv python uninstall 3.13  # Or exact version from 'uv python list'
+    fi
 }
 
 package() {
