@@ -2,7 +2,7 @@
 
 pkgname=python-fitsio
 _pkgname=fitsio
-pkgver=1.2.6
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="A python package for FITS input/output wrapping cfitsio"
@@ -11,7 +11,7 @@ url="https://github.com/esheldon/fitsio"
 license=('GPL')
 groups=()
 depends=('python' 'python-numpy')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel 'python-setuptools-scm>=8')
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=(https://github.com/esheldon/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz)
-sha1sums=('12a516a38e2ddab633c29905829c2f4d2edf1005')
+sha1sums=('13f8ac969dd54b260edecbf2438a8113dca413f8')
 noextract=()
 
 
