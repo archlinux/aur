@@ -1,6 +1,6 @@
 pkgbase = edor
 	pkgdesc = CUI text editor
-	pkgver = 1.85
+	pkgver = 1.86
 	pkgrel = 0
 	url = https://github.com/colin-i/edor
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = edor
 	makedepends = ncurses
 	makedepends = bc
 	depends = ncurses
-	source = edor-1.85-0.tar.gz::https://github.com/colin-i/edor/archive/edor-1.85-0.tar.gz
-	sha256sums = 71e90f04e0efd674b5bf5de6d1ca6305baddc508ec89a7a74cfe0727a7183455
+	source = edor-1.86-0.tar.gz::https://github.com/colin-i/edor/archive/edor-1.86-0.tar.gz
+	sha256sums = 4e37e73c89e37a61676d226aecf98052fdcc375bf3fe0f06bb77f7f840307180
 
 pkgname = edor
