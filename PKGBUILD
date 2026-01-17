@@ -1,54 +1,74 @@
+# Maintainer: italoghost <eduprodive at posteo dot me>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
-
-pkgbase=rpcs3-bin
-pkgname=(rpcs3-{bin,appimage})
-pkgname=(rpcs3-appimage) # patchelf does not help...
-_api=https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest
-_commit=$(curl -s $_api | grep -oP 'tag_name": "build-\K\w{40}')
-_pkgver=$(curl -s $_api | grep -oP '"name": "\K0[^"]+')
-pkgver=${_pkgver/-/_}
+pkgname=rpcs3-bin
+_pkgname=rpcs3
+pkgver=0.0.39.18705
 pkgrel=1
-pkgdesc='PlayStation 3 Emulator'
+pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
-url=https://github.com/RPCS3/rpcs3-binaries-linux
+url='https://rpcs3.net/'
 license=('GPL-2.0-only')
-#makedepends=(patchelf)
-provides=(rpcs3)
-conflicts=(rpcs3)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+options=('!strip' '!zipman')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'zlib'
+  'bash'
+  'libx11'
+  'libxcb'
+  'vulkan-icd-loader'
+  'libglvnd'
+  'alsa-lib'
+  'fontconfig'
+  'freetype2'
+)
+makedepends=('curl')
 
-source=("${url}/releases/download/build-${_commit}/rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage")
-b2sums=('4a8ba2aa79cfd0e4ae753d67a7f978e4038b4fbeda29565ca87ce0885db8dd22dc4c1a27eaf60affc6c48b9b3f232b0298f2945fef3d05fd7147ed224b9dbf8f')
+# Source the GitHub API to trigger the build, the actual AppImage is fetched in prepare()
+source=("${_pkgname}::https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest")
+sha256sums=('SKIP')
+
+pkgver() {
+    # Cleanly fetch the latest tag name from GitHub API and format it
+    curl -s "https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest" | \
+    grep -oP '"name": "\K0[^"]+' | sed 's/-/./g'
+}
 
 prepare() {
-  chmod 755 rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage
-  ./rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage --appimage-extract 2> /dev/null
+    # Dynamically find the download URL for the AppImage asset
+    _appimage_url=$(curl -s "https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest" | \
+                    awk -F'"' '/browser_download_url.*rpcs3.*AppImage/ {print $4}')
+
+    msg2 "Downloading the actual AppImage..."
+    curl -L "$_appimage_url" -o "${srcdir}/rpcs3.AppImage"
+    chmod +x "${srcdir}/rpcs3.AppImage"
 }
 
-package_rpcs3-bin() {
-  depends=( alsa-lib curl gcc-libs glibc libxkbcommon libx11 sdl3 systemd-libs libevdev libglvnd vulkan-icd-loader zlib
-   glu glew openal opencv qt6-{base,multimedia,svg} )
+build() {
+    cd "${srcdir}"
+    # Extracting AppImage content into squashfs-root
+    ./rpcs3.AppImage --appimage-extract
 
-  cd AppDir
-  # mv large files to save disk space
-  install -d "$pkgdir"/usr/bin && mv usr/bin/rpcs3 -t "$pkgdir"/usr/bin
-  patchelf "$pkgdir"/usr/bin/rpcs3 \
-    --replace-needed libGLEW.so{.2.2,}  \
-    --replace-needed libopencv_photo.so{.412,} \
-	--replace-needed libopencv_imgproc.so{.412,} \
-	--replace-needed libopencv_core.so{.412,}
-  install -Dm644 usr/share/applications/rpcs3.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 usr/share/icons/hicolor/scalable/apps/rpcs3.svg -t "$pkgdir"/usr/share/pixmaps
-  install -Dm644 usr/share/metainfo/rpcs3.metainfo.xml -t "$pkgdir"/usr/share/metainfo
-  rm -rf usr/share/rpcs3/test 
-  mv usr/share/rpcs3 -t "$pkgdir"/usr/share
+    # Patch AppRun to point to the fixed installation directory in /opt
+    sed -i "s|this_dir=\"\$(readlink -f \"\$(dirname \"\$0\")\")\"|this_dir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
 }
 
-package_rpcs3-appimage() {
-  options=(!strip)
-  install -d "$pkgdir"/usr/bin && mv $(readlink rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage) "$pkgdir"/usr/bin/rpcs3
+package() {
+    # Core directories
+    install -dm755 "$pkgdir/opt/${_pkgname}"
+    cp -rp "$srcdir"/squashfs-root/* "$pkgdir/opt/${_pkgname}/"
 
-  cd AppDir
-  install -Dm644 usr/share/applications/rpcs3.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 usr/share/icons/hicolor/scalable/apps/rpcs3.svg -t "$pkgdir"/usr/share/pixmaps
-  install -Dm644 usr/share/metainfo/rpcs3.metainfo.xml -t "$pkgdir"/usr/share/metainfo
+    # Symlink the launcher to /usr/bin
+    install -dm755 "$pkgdir/usr/bin"
+    ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/${_pkgname}"
+
+    # Install Icon, Desktop and Metainfo
+    install -Dm644 "$srcdir/squashfs-root/${_pkgname}.svg" "$pkgdir/usr/share/pixmaps/${_pkgname}.svg"
+    install -Dm644 "$srcdir/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "$srcdir/squashfs-root/usr/share/metainfo/${_pkgname}.metainfo.xml" "$pkgdir/usr/share/metainfo/${_pkgname}.metainfo.xml"
+
+    # Permissions
+    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
