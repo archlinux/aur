@@ -1,7 +1,7 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 _pkgname=Pixelorama
 pkgname=pixelorama-bin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor, made with the Godot Engine"
 arch=('i686' 'x86_64')
@@ -19,11 +19,11 @@ source_i686=("$_pkgname-$pkgver-32bit.tar.gz::https://github.com/Orama-Interacti
 source_x86_64=("$_pkgname-$pkgver-64bit.tar.gz::https://github.com/Orama-Interactive/$_pkgname/releases/download/v$pkgver/$_pkgname-Linux-64bit.tar.gz")
 sha256sums=('184a59fbb665f1b9e8b2bc0d8e969903c1554cf9cbc729d68d02e846682e6419'
             '4fcf324e7c1eb8277bd9368047c0f9368ff1a32d3aba14d6b7d6459efcf7054f'
-            '07ddbfc064a4b1f3f3576965c2e469e0cfe795f6acc1ef5d6cb7594f00690230'
+            '2829bfcc450bc362cd6186a403e631be088b79371a35443fd00750a73e31d90a'
             '357d058e56a4286dea412ed4694a9b95336405387a3fee3ad9f10019de9dc753'
             '07ddf85025568856f9b92fb7193589dd055c749c563aa9b2d4e943eb53ef61f9')
-sha256sums_i686=('23254ddf5d981798d8385e1184d2bc2eea0de4f1eae7f29404dd080525b05b50')
-sha256sums_x86_64=('c918398bb05b834645b466ebaa02b231a544cd25f11de98a6e952fa5ae8e7fde')
+sha256sums_i686=('81c4db88e8f260ccf616219fbcb443c9cd0180174001fa0528b01366dc5d85fc')
+sha256sums_x86_64=('6eabd0f74b734b1444656bc9a0fd0114540804225469ae80ecca320878387e3b')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
