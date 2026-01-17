@@ -1,6 +1,6 @@
 pkgbase = histui
 	pkgdesc = Notification history browser and daemon for Linux desktops
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/jmylchreest/histui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = histui
 	provides = histui
 	provides = histuid
 	conflicts = histui-bin
-	source = histui-0.0.7.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v0.0.7.tar.gz
-	sha256sums = 328fcfcaa7a90045edcdbf502b1d853bd4678f2261abf31f37f918246225b059
+	source = histui-0.0.8.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v0.0.8.tar.gz
+	sha256sums = d2e19dfe722c5beadfdf70047686fc3f9766e48ac2313ea31185a71e497158d1
 
 pkgname = histui
