@@ -1,0 +1,62 @@
+
+# HG changeset patch
+# User Jan-Erik Rediger <jrediger@mozilla.com>
+# Date 1756256998 0
+# Node ID d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10
+# Parent  3f3cecb96480b861cfb31c2f1c0cba0da92e98ef
+Bug 1983736 - Patch jsonschema to work with Python 3.14+ r=mach-reviewers,ahal,ahochheiden
+
+Differential Revision: https://phabricator.services.mozilla.com/D262335
+
+
+diff --git a/python/mozbuild/mozbuild/vendor/vendor_python.py b/python/mozbuild/mozbuild/vendor/vendor_python.py
+--- a/python/mozbuild/mozbuild/vendor/vendor_python.py
++++ b/python/mozbuild/mozbuild/vendor/vendor_python.py
+@@ -35,16 +35,20 @@ EXCLUDED_PACKAGES = {
+     "pyproject.toml",
+     "requirements.txt",
+     # The ansicon package contains DLLs and we don't want to arbitrarily vendor
+     # them since they could be unsafe. This module should rarely be used in practice
+     # (it's a fallback for old versions of windows). We've intentionally vendored a
+     # modified 'dummy' version of it so that the dependency checks still succeed, but
+     # if it ever is attempted to be used, it will fail gracefully.
+     "ansicon",
++    # jsonschema 4.17.3 is incompatible with Python 3.14+,
++    # but later versions use a dependency with Rust components, which we thus can't vendor.
++    # For now we apply the minimal patch to jsonschema to make it work again.
++    "jsonschema",
+ }
+ 
+ 
+ class VendorPython(MozbuildObject):
+     def __init__(self, *args, **kwargs):
+         super().__init__(*args, virtualenv_name="vendor", **kwargs)
+         self.removed = []
+         self.added = []
+diff --git a/third_party/python/jsonschema/jsonschema/validators.py b/third_party/python/jsonschema/jsonschema/validators.py
+--- a/third_party/python/jsonschema/jsonschema/validators.py
++++ b/third_party/python/jsonschema/jsonschema/validators.py
+@@ -870,18 +870,21 @@ class RefResolver:
+ 
+     @lru_cache()  # noqa: B019
+     def _find_in_subschemas(self, url):
+         subschemas = self._get_subschemas_cache()["$id"]
+         if not subschemas:
+             return None
+         uri, fragment = urldefrag(url)
+         for subschema in subschemas:
++            id = subschema["$id"]
++            if not isinstance(id, str):
++                continue
+             target_uri = self._urljoin_cache(
+-                self.resolution_scope, subschema["$id"],
++                self.resolution_scope, id,
+             )
+             if target_uri.rstrip("/") == uri.rstrip("/"):
+                 if fragment:
+                     subschema = self.resolve_fragment(subschema, fragment)
+                 self.store[url] = subschema
+                 return url, subschema
+         return None
+ 
+

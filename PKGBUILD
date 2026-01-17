@@ -126,10 +126,20 @@ _pkgext="tar.gz"
 source=(
   "$_pkgsrc_gnuzilla"::"git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=$_commit"
   "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
+  5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
+  23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
+  b68b1f93a6e31188486458f32fbe37811257604f.patch
+  d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
+  dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
 )
 sha256sums=(
   'SKIP'
   "$_ffsum"
+  '10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49'
+  '6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852'
+  '7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de'
+  '25c9af8395f4816b0874728d1f32b43b702a0ba2daa340da4945eb7c8ed74fe2'
+  '37dbe762d88613d8d556dad53988fc45c7b3aa8947b4322e92ee5c9a763cbc2c'
 )
 
 _make_icecat() (
@@ -331,6 +341,13 @@ build() (
   _prepare_icecat
 
   cd "$_pkgsrc"
+
+  # fix for python 3.14
+  patch -Np1 -i ../5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
+  patch -Np1 -i ../23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
+  patch -Np1 -i ../b68b1f93a6e31188486458f32fbe37811257604f.patch
+  patch -Np1 -i ../d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
+  patch -Np1 -i ../dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
 
   export RUSTUP_TOOLCHAIN=stable
 
