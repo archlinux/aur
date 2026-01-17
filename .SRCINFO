@@ -35,6 +35,7 @@ pkgbase = asgi-webdav
 	provides = python-asgi-webdav
 	conflicts = python-asgi-webdav
 	replaces = python-asgi-webdav
+	backup = etc/asgi-webdav/asgi-webdav.env
 	backup = etc/asgi-webdav/config.json
 	source = asgi-webdav-2.0.0.tar.gz::https://github.com/rexzhang/asgi-webdav/archive/refs/tags/v2.0.0.tar.gz
 	source = asgi-webdav.service

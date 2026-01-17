@@ -7,7 +7,7 @@ pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, m
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
 license=('MIT')
-backup=("etc/${pkgname}/config.json")
+backup=("etc/${pkgname}/"{${pkgname}.env,config.json})
 install="${pkgname}.install"
 provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
@@ -48,6 +48,7 @@ package() {
     install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "config.json"             "${pkgdir}/etc/${pkgname}/config.json"
+    echo "TZ=Europe/London"                > "${pkgdir}/etc/${pkgname}/${pkgname}.env"
 
     cd "${pkgname}-${pkgver}"
     install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
