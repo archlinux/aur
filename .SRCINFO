@@ -1,6 +1,6 @@
 pkgbase = python-gnureadline
 	pkgdesc = The standard Python readline extension statically linked against the GNU readline library.
-	pkgver = 8.2.13
+	pkgver = 8.3.3
 	pkgrel = 1
 	url = https://pypi.org/project/gnureadline/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-gnureadline
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/g/gnureadline/gnureadline-8.2.13.tar.gz
-	sha256sums = c9b9e1e7ba99a80bb50c12027d6ce692574f77a65bf57bc97041cf81c0f49bd1
+	source = https://files.pythonhosted.org/packages/source/g/gnureadline/gnureadline-8.3.3.tar.gz
+	sha256sums = 0972392bd2f31244e2d981178246fe8b729c8766454fdaeb275946ac47b7e9fd
 
 pkgname = python-gnureadline
