@@ -5,7 +5,7 @@
 _electron=electron39
 _node=24
 pkgname=joplin-beta
-pkgver=3.5.9
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
@@ -16,17 +16,17 @@ makedepends=(
 	"git" "yarn" "npm" "python" "python-setuptools" "rsync" "jq" "moreutils" "nvm"
 )
 conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
-source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
+source=("$pkgname::git+https://github.com/laurent22/joplin.git#tag=v${pkgver}"
         "joplin.desktop"
         "joplin-desktop.sh")
-sha256sums=('a49c7ee86100261d3751dd8a4ec1442021b8f80ba208ed93a664242b94a54d47'
+sha256sums=('a015990938da6d84750f7e301a4c95abf9bd39281f1dbc6d9ee0276432a1cb32'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
             'bfa32ec8c64d9a81b0b288640d1ccbaf8a2ad5bc86226a0760f05f0077932b0a')
 
 prepare() {
 	sed -i "s|@electron@|${_electron}|" joplin-desktop.sh
 
-	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
+	cd "${srcdir}/${pkgname}/packages/app-desktop"
 
 	set -o pipefail
 	# Disable the after build script since the AppImage is not being built
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/joplin-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 
 	export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 	export YARN_ENABLE_INLINE_BUILDS=1
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/linux-unpacked/resources"
+	cd "${srcdir}/${pkgname}/packages/app-desktop/dist/linux-unpacked/resources"
 
 	install -dm0755 "${pkgdir}/usr/lib/joplin"
 	find . -type d -exec install -d {,"${pkgdir}/usr/lib/joplin/"}{} \;
