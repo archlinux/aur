@@ -1,0 +1,22 @@
+pkgbase = embellish-git
+	pkgdesc = User-friendly GUI application to install Nerd Fonts (development version)
+	pkgver = 0.6.0.r0.g8ee3126
+	pkgrel = 1
+	url = https://github.com/getnf/embellish
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = typescript
+	makedepends = git
+	depends = gjs
+	depends = libadwaita
+	depends = gtk4
+	depends = appstream
+	provides = embellish
+	conflicts = embellish
+	source = git+https://github.com/getnf/embellish.git
+	sha256sums = SKIP
+
+pkgname = embellish-git
