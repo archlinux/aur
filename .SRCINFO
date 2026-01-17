@@ -1,7 +1,7 @@
 pkgbase = fluent-lyrics-bin
 	pkgdesc = Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kobe-koto/FluentLyrics
 	arch = x86_64
 	license = AGPL-3.0-only

@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=fluent-lyrics-bin
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/kobe-koto/FluentLyrics"
@@ -33,7 +33,6 @@ package() {
   install -m755 "$srcdir/fluent_lyrics" "$pkgdir/usr/lib/fluent-lyrics/fluent_lyrics"
 
   install -Dm755 "$srcdir/fluent-lyrics.sh" "$pkgdir/usr/bin/fluent-lyrics"
-  install -Dm644 "$srcdir/fluent-lyrics.png" "$pkgdir/usr/share/pixmaps/fluent-lyrics.png"
   install -Dm644 "$srcdir/fluent-lyrics.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/fluent-lyrics.png"
   install -Dm644 "$srcdir/fluent_lyrics.desktop" "$pkgdir/usr/share/applications/fluent-lyrics.desktop"
 }
