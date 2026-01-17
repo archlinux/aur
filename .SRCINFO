@@ -1,6 +1,6 @@
 pkgbase = gomusic
 	pkgdesc = Fast terminal UI for downloading music from YouTube with automatic MP3 conversion
-	pkgver = 1.0.29
+	pkgver = 1.0.30
 	pkgrel = 1
 	url = https://github.com/iiTzDante/gomusic
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gomusic
 	depends = alsa-lib
 	optdepends = chromium: for YouTube scraping
 	optdepends = google-chrome: for YouTube scraping
-	source = gomusic-1.0.29.tar.gz::https://github.com/iiTzDante/gomusic/archive/refs/tags/v1.0.29.tar.gz
-	sha256sums = e33d82fb7ac3deb2ad278bcd22f670460f6f314133653d15181df5810dfb955a
+	source = gomusic-1.0.30.tar.gz::https://github.com/iiTzDante/gomusic/archive/refs/tags/v1.0.30.tar.gz
+	sha256sums = 694fe80182a54a4890a0c5950dd64dbb8ac6cd62bcb02a57fd9e72655da9c5d3
 
 pkgname = gomusic
