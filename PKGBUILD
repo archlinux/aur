@@ -3,7 +3,7 @@
 pkgname=python-adafruit-blinka-displayio
 _pypi_pkgname=adafruit_blinka_displayio
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="displayio for Blinka"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/adafruit/Adafruit_Blinka"
