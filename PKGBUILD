@@ -21,5 +21,5 @@ build() {
 
 package() {
 	cd "$srcdir/xdg-desktop-portal-adw"
-	meson install -C build
+	sudo meson install -C build
 }
