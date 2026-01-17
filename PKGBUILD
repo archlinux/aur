@@ -2,7 +2,7 @@
 
 pkgname=python-msmart-ng
 _reponame=midea-msmart
-pkgver=2025.11.0
+pkgver=2025.12.0
 pkgrel=1
 pkgdesc="Client for interacting with Help Scout's API"
 url="https://github.com/mill1000/midea-msmart"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-httpx' 'python-pycryptodome')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mill1000/midea-msmart/archive/${pkgver}.tar.gz")
-sha256sums=('1d174a8553afe3671cb8e46694b842bb9c7a3e2b6b91c2f5f374dacd2383f728')
+sha256sums=('de5d3a7f54c5c28dd69e27f937376fa898260d85b07928121f10232f00c68ea9')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
