@@ -63,6 +63,10 @@ package() {
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.html"
     install -Dm644 "examples/art_nouveau_panel.css" \
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.css"
+    install -Dm644 "examples/art_nouveau_panel_responsive.html" \
+        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.html"
+    install -Dm644 "examples/art_nouveau_panel_responsive.css" \
+        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.css"
     install -Dm644 "examples/css_template_example.html" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.html"
     install -Dm644 "examples/css_template_example.css" \
