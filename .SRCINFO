@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-panel-colorizer
 	pkgdesc = Latte-Dock and WM status bar customization features for the KDE Plasma panels
-	pkgver = 6.3.0
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-panel-colorizer
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = plasma6-applets-panel-colorizer
 	depends = python
 	depends = python-dbus
 	optdepends = spectacle: take preset preview support
-	source = plasma-panel-colorizer-6.3.0.tar.gz::https://github.com/luisbocanegra/plasma-panel-colorizer/archive/v6.3.0/plasma-panel-colorizer-6.3.0.tar.gz
-	sha256sums = 0bbf1d5f6ed6d39cfc57a8e5b7c0e6900c43f65c110f31a3def94eaecc429658
+	source = plasma-panel-colorizer-6.4.0.tar.gz::https://github.com/luisbocanegra/plasma-panel-colorizer/archive/v6.4.0/plasma-panel-colorizer-6.4.0.tar.gz
+	sha256sums = a01fc01f4fa9bfeb29b13a40250324b7ae4a7843e8e2c59a0e40a29396c43c8d
 
 pkgname = plasma6-applets-panel-colorizer
