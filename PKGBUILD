@@ -6,10 +6,10 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-alpha.5
+_pkgver=13.0.0-alpha.7
 
 pkgname=${_pkgname}-alpha-bin
-pkgver=${_pkgver//-/_}
+pkgver="${_pkgver/-/_}"
 pkgrel=1
 epoch=1
 pkgdesc="Floorp fork built with custom branding and settings - testing version for the upcoming FireDragon 13"
@@ -51,8 +51,8 @@ source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garud
 source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v"$_pkgver"/downloads/firedragon.linux-arm64.tar.xz)
 b2sums=('a042cac06a3c2f424df86298775b9441ef6e1d181c065349c2c33740c15da57ee16c7114d84f006603e13e232891a3c635df630b22926ebca4a252204a2db281'
         '77fb65365470533628c12389cfc210b4ac7cb37ef6fb946d10c4a5514b652e4969f63097a76e1e94ac53146b954a17ce84ebd61c73f7b07ac9b65446c6ff6b09')
-b2sums_x86_64=('04271b51c383093cf3575d4c6f2e9b8424e53db6dee2d2dfd01d0144068282632b3100fafbd80c2a275fcf5dfb2e66782a32197478231861847ea9df226ec9ce')
-b2sums_aarch64=('83c63b930295b244e4a0df70318e8e94c369008eedbfef49e9272e4fe0eb824cdda06bab31574291ccaac1a6dda097a67019537a64331bcb97ff1e4a34097ff5')
+b2sums_x86_64=('f1d4d3947bc953e315d17cc4e4b717d0b91fd5c9d1d19482608793e1faee8b49646d5c5e216eceb7724ab54cf912781c0e917a6eaae03b1573e02ed1258ea29f')
+b2sums_aarch64=('0796c8cac36d6d5532fbfc1ae5e383691b19d715bc302e1ebf7e98370eca8a457814ff42459df93e9d8bb1d0ca303ccd75a0a4db7484817595967721c9e23778')
 
 
 package() {
