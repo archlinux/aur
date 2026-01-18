@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-charm
+	pkgdesc = Thailand national fonts: TH-Charm-of-AU
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-ProfDrSrisakdi Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/05-TH-Charm-of-AU.zip
+	sha256sums = b2e97fa8fa100b085c2b29af9d4fba3f2076aafbe6f86d080a670b0c2ffe0d97
+	b2sums = e82beb65bed1b28db0e2e7baced6b9391a432a8e6e90b59d3fd8d7befa09e0760e753a25b47b13bc0ac0218ded023424d7b6c81969ba7e8d2f7b8cb02f7304ea
+
+pkgname = ttf-sipa-charm
