@@ -1,0 +1,27 @@
+pkgbase = jellyfin-desktop-cef-libcef-bin
+	pkgdesc = CEF SDK for jellyfin-desktop-cef
+	pkgver = 143.0.14
+	pkgrel = 1
+	url = https://bitbucket.org/chromiumembedded/cef
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = cairo
+	depends = libcups
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = nss
+	depends = nspr
+	depends = pango
+	provides = jellyfin-desktop-cef-libcef
+	options = !debug
+	options = !strip
+	source = https://cef-builds.spotifycdn.com/cef_binary_143.0.14+gdd46a37+chromium-143.0.7499.193_linux64_minimal.tar.bz2
+	sha256sums = 04f94018e1cec48920a57fb2307503c72fb19361578325dfd44c7d5226e7edc3
+
+pkgname = jellyfin-desktop-cef-libcef-bin
