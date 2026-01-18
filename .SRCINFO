@@ -1,11 +1,14 @@
 pkgbase = mullvad-vpn-runit
-	pkgdesc = Runit init service for Mullvad Desktop App
-	pkgver = 20221106
+	pkgdesc = runit service files for Mullvad VPN daemon
+	pkgver = 20260118
 	pkgrel = 1
-	url = https://gitlab.eientei.org/klee/mullvad-vpn-runit
+	url = https://mullvad.net
 	arch = any
-	license = AGPL3
+	license = GPL-3.0-or-later
+	depends = runit
+	depends = mullvad-vpn
+	provides = mullvad-vpn-service
 	source = mullvad-daemon.run
-	sha512sums = c4d1bcf264fa2c7d4f90d85b5258b0df6d58ab76f523ab577c089f6ffe7b2b89074fbb8cb5719e80e030d427c373468f3ec42a7c82cabef22c157febcbb638de
+	sha256sums = 8e13213326ba67ed3059b4ac3603fdb09fc38ca2c795ac06337e6c7e5a6e860b
 
 pkgname = mullvad-vpn-runit

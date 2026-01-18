@@ -1,20 +1,19 @@
-# Maintainer: klee <klee at fedora dot email>
+# Maintainer: Kristofers Solo <dev at kristofers dot xyz>
 
 _basename=mullvad-vpn
 _svname=mullvad-daemon
 pkgname=${_basename}-runit
-pkgver=20221106
+pkgver=20260118
 pkgrel=1
-pkgdesc="Runit init service for Mullvad Desktop App"
-arch=('any')
-url="https://gitlab.eientei.org/klee/mullvad-vpn-runit"
-license=('AGPL3')
-conflicts=()
+pkgdesc="runit service files for Mullvad VPN daemon"
+arch=("any")
+url="https://mullvad.net"
+license=("GPL-3.0-or-later")
+depends=("runit" "mullvad-vpn")
+provides=("mullvad-vpn-service")
 source=("${_svname}.run")
-sha512sums=('c4d1bcf264fa2c7d4f90d85b5258b0df6d58ab76f523ab577c089f6ffe7b2b89074fbb8cb5719e80e030d427c373468f3ec42a7c82cabef22c157febcbb638de')
+sha256sums=("8e13213326ba67ed3059b4ac3603fdb09fc38ca2c795ac06337e6c7e5a6e860b")
 
 package() {
-  for x in run ; do
-    install -Dm755 "$srcdir/${_svname}.${x}" "$pkgdir/etc/runit/sv/${_svname}/${x}"
-  done
+    install -Dm755 "$srcdir/${_svname}.run" "$pkgdir/etc/runit/sv/${_svname}/run"
 }
