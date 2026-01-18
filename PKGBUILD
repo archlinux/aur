@@ -2,22 +2,20 @@
 pkgname=tsql-git
 _pkgname="${pkgname%-git}"
 pkgver=0.2.0.r66.g4518df8
-pkgrel=1
-pkgdesc="A modern PostgreSQL manager TUI"
+pkgrel=2
+pkgdesc='A modern PostgreSQL manager TUI'
 arch=(x86_64 aarch64)
-url="https://github.com/fcoury/tsql"
+url='https://github.com/fcoury/tsql'
 license=('MIT')
-# depends=('tree-sitter==0.24.7')
 makedepends=(cargo tree-sitter)
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 source=("$_pkgname::git+$url.git#branch=master")
 sha256sums=('SKIP')
-# validpgpkeys=()
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,7 +33,9 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    cd "$_pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
 }
 
