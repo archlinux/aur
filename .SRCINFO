@@ -1,0 +1,17 @@
+pkgbase = git-guitar-git
+	pkgdesc = A terminal based git client with fast topological & chronological graph rendering - Built form the main bransh
+	pkgver = 0.1.39
+	pkgrel = 1
+	url = https://github.com/asinglebit/guitar
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = git
+	provides = guitar=0.1.39
+	conflicts = git-guitar
+	source = guitar::git+https://github.com/asinglebit/guitar.git#branch=main
+	sha256sums = SKIP
+
+pkgname = git-guitar-git
