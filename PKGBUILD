@@ -1,5 +1,5 @@
 pkgname=moonveil
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Moonveil Hyprland dotfiles"
 arch=('any')
@@ -27,6 +27,8 @@ depends=(
   ttf-jetbrains-mono-nerd
   noto-fonts
   noto-fonts-emoji
+  python-pywal16
+  python-watchdog
 )
 
 optdepends=(
