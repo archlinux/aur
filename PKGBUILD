@@ -5,7 +5,7 @@ pkgname=cli-proxy-api-bin
 _pkgname=cli-proxy-api
 _repouser="router-for-me"
 _reponame="CLIProxyAPI"
-pkgver=6.7.7
+pkgver=6.7.8
 pkgrel=1
 pkgdesc="Proxy server providing OpenAI/Gemini/Claude compatible API interfaces (Binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!strip')
 
 install=cli-proxy-api-bin.install
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/${_repouser}/${_reponame}/releases/download/v${pkgver}/${_reponame}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0102417a4a13d53397fabae586e5aad64505a2068a620492c51a566fb54a6c48')
-sha256sums_aarch64=('c06c499df830621a7e8397b069a52b36c0f81cbe01a67001b6e15bb3078a5507')
+sha256sums_x86_64=('193592638bb15d9f45a21c0306f0bde272ed6c7d79754d290317ce6ff8e2cc44')
+sha256sums_aarch64=('431aeb9cc95d1461295e1648b0f3c588f78e1110ea8dcae933d5ad01add4c79f')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_repouser}/${_reponame}/releases/download/v${pkgver}/${_reponame}_${pkgver}_linux_arm64.tar.gz")
 
