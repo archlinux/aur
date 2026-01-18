@@ -15,12 +15,13 @@ post_install() {
 }
 
 post_upgrade() {
+    post_install
     # Now let us reload Clash Verge service automatically.
     if systemctl is-active --quiet clash-verge-service.service; then
         systemctl restart clash-verge-service.service
     fi
 
-    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev.'
+    note "After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev.\n\n升级 Clash Verge Rev 后，建议重启 Clash Verge Rev。\n\n==============================\n\n新的构建对服务 IPC 权限进一步限制引入了破坏性变更，需要先在旧版本卸载 TUN 服务后再安装新版本。\n\n已经安装的用户可在终端卸载服务再安装。\n\nsudo clash-verge-service-uninstall\nsudo clash-verge-service-install\n\nThe new build introduces breaking changes with stricter IPC permission restrictions for services. Users must first uninstall the TUN service from the old version before installing the new one.\n\nExisting users can uninstall and then reinstall the service via terminal:\n\nsudo clash-verge-service-uninstall\nsudo clash-verge-service-install"
 }
 
 pre_remove() {
