@@ -1,5 +1,3 @@
-# Maintainer: ohfp/lsf <lsf at pfho dot net>
-
 # run pgo build or not; with X(vfb) or wayland
 : ${_build_profiled:=true}
 : ${_build_profiled_xvfb:=false}
@@ -13,7 +11,7 @@ _ffsrcver=136.0.4
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
-pkgdesc="Librewolf fork with increased customizability"
+pkgdesc="Librewolf fork with increased customizability and security"
 url="https://codeberg.org/konform-browser/source"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
