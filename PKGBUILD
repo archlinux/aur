@@ -17,12 +17,12 @@
 #                                            
 pkgname=anytype-electron-bin
 pkgver=0.53.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=(electron37 bash libsecret hicolor-icon-theme)
+depends=(electron38 bash libsecret hicolor-icon-theme)
 makedepends=('asar')
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
