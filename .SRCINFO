@@ -1,50 +1,42 @@
 pkgbase = grpc-gateway-bin
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
-	pkgver = 2.27.3
+	pkgver = 2.27.4
 	pkgrel = 1
 	url = https://grpc-ecosystem.github.io/grpc-gateway/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	source = grpc-gateway-2.27.3-README.md::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.3/README.md
-	source = grpc-gateway-2.27.3-LICENSE::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.3/LICENSE
+	source = grpc-gateway-2.27.4-README.md::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.4/README.md
+	source = grpc-gateway-2.27.4-LICENSE::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.4/LICENSE
 	sha256sums = 3a68931f95da4152197b851116679f0d2bebe901835a9534bbe822f8a53d1d2e
 	sha256sums = a15b1d1b168954c92ff7fb1620382418f7c72f4f4d251ee791d1098ad68ab0c4
-	source_aarch64 = protoc-gen-grpc-gateway-2.27.3-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.3/protoc-gen-grpc-gateway-v2.27.3-linux-arm64
-	source_aarch64 = protoc-gen-openapiv2-2.27.3-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.3/protoc-gen-openapiv2-v2.27.3-linux-arm64
-	sha256sums_aarch64 = ad7d733f1f22eab9c7a9f7bef83e52bbddc8e18ef364ed880ec0e6840e31f9b4
-	sha256sums_aarch64 = deccf6fcba742797e18fad899ace3cbc8922bc10d2ab743e30b164762f3d671a
-	source_x86_64 = protoc-gen-grpc-gateway-2.27.3-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.3/protoc-gen-grpc-gateway-v2.27.3-linux-x86_64
-	source_x86_64 = protoc-gen-openapiv2-2.27.3-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.3/protoc-gen-openapiv2-v2.27.3-linux-x86_64
-	sha256sums_x86_64 = 282226318aca5208df68f66a5b13461c00ab9792290f3c2d7b465bc5c41f1d8f
-	sha256sums_x86_64 = e733a8978d6b60eacb0429af0a6ec24f4a8cf05e98ad7a3735b51fd8cee71452
-
-pkgname = grpc-gateway-bin
-	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (meta)
-	arch = any
-	depends = protoc-gen-grpc-gateway-bin=2.27.3
-	depends = protoc-gen-openapiv2-bin=2.27.3
-	provides = grpc-gateway=2.27.3
-	conflicts = grpc-gateway
+	source_aarch64 = protoc-gen-grpc-gateway-2.27.4-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-grpc-gateway-v2.27.4-linux-arm64
+	source_aarch64 = protoc-gen-openapiv2-2.27.4-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-openapiv2-v2.27.4-linux-arm64
+	sha256sums_aarch64 = 06fb0fad3554be46c0c8ed15fc399930ecd71baed10205568722a47c2578d2fb
+	sha256sums_aarch64 = 16d54a3ca95b9ab5352f8229c50f45b2e69340bc35422ea2bcf638bd49c91a68
+	source_x86_64 = protoc-gen-grpc-gateway-2.27.4-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-grpc-gateway-v2.27.4-linux-x86_64
+	source_x86_64 = protoc-gen-openapiv2-2.27.4-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-openapiv2-v2.27.4-linux-x86_64
+	sha256sums_x86_64 = d09d18d149781eb580378192966fd1f3614d58a728f63f2877998c53976ecc51
+	sha256sums_x86_64 = 3f53f0839d0476baac232e58ee74361b17967342a48ed1b43e896218b215ea5d
 
 pkgname = grpc-gateway-common-bin
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common files)
 	arch = any
-	provides = grpc-gateway-common=2.27.3
+	provides = grpc-gateway-common=2.27.4
 	conflicts = grpc-gateway-common
 
 pkgname = protoc-gen-grpc-gateway-bin
-	depends = grpc-gateway-common=2.27.3
+	depends = grpc-gateway-common>=2.27.4
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-grpc-gateway=2.27.3
+	provides = protoc-gen-grpc-gateway=2.27.4
 	conflicts = protoc-gen-grpc-gateway
 
 pkgname = protoc-gen-openapiv2-bin
-	depends = grpc-gateway-common=2.27.3
+	depends = grpc-gateway-common>=2.27.4
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-openapiv2=2.27.3
+	provides = protoc-gen-openapiv2=2.27.4
 	conflicts = protoc-gen-openapiv2
