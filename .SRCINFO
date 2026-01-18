@@ -1,0 +1,22 @@
+pkgbase = python-aiobtclientrpc
+	pkgdesc = Asynchronous low-level communication with BitTorrent clients
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://codeberg.org/plotski/aiobtclientrpc
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-async-timeout
+	depends = python-httpx
+	depends = python-httpx-socks
+	depends = python-python-socks
+	depends = python-rencode
+	source = git+https://codeberg.org/plotski/aiobtclientrpc#tag=v5.0.1
+	sha512sums = e74538c0e56483a908c34d3480874bee14838d3c7e327f81aeef5b9c82c981b7cd1e3c75fb5007e6465ede5599602ded7300603864441db9792dced63f3d5400
+
+pkgname = python-aiobtclientrpc
