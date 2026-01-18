@@ -2,7 +2,7 @@
 # Created mostly for personal usage, and therefore maintained as such, but on the AUR for a few friends.
 
 pkgname=dedupe-dir
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Dedupes directories of your choosing once a week.'
 arch=('any')
