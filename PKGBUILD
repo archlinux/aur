@@ -3,7 +3,7 @@
 
 pkgname='python-contextily'
 _name=contextily
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Context geo-tiles in Python'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   'python-xyzservices'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('ff921ab39f5f2fecc1d6228702c238d46e5ebb8bae571f3cd332db766a37772cb4560711217b2af21ad6d89f13ddef1518762dff74fe63ca7cee109aa0bede81')
+b2sums=('107ee5107e6d62805b10288f7de85922a4a5372b6c8b1150a7b5e4a97b6a989a65df23230f57b0e1ecc2606d0596dddea52c1433bdc3cefdd523e2dca25f30b0')
 
 build() {
     cd $_name-$pkgver
@@ -33,4 +33,6 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
