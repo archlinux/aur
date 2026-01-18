@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Markus Meissner <coder@safemailbox.de>
 
 pkgname=asus-fan-dkms-git 
 pkgver=0.9.1.r103.g3cb81f1
-pkgrel=1
+pkgrel=2
 _realname=asus-fan
 _modname=asus_fan
 pkgdesc="Kernel module allowing to control (both) fan inside various ASUS laptops"
 arch=('i686' 'x86_64')
-url="http://github.com/daringer/asus-fan"
+url="https://github.com/daringer/asus-fan"
 md5sums=('SKIP')
 license=('GPL')
 depends=('dkms')

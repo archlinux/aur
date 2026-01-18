@@ -1,8 +1,8 @@
 pkgbase = asus-fan-dkms-git
 	pkgdesc = Kernel module allowing to control (both) fan inside various ASUS laptops
 	pkgver = 0.9.1.r103.g3cb81f1
-	pkgrel = 1
-	url = http://github.com/daringer/asus-fan
+	pkgrel = 2
+	url = https://github.com/daringer/asus-fan
 	install = asus-fan-dkms-git.install
 	arch = i686
 	arch = x86_64
