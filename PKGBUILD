@@ -1,17 +1,16 @@
-# Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi.net>
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: KokaKiwi <kokakiwi+aur [at] kokakiwi.net>
 
 pkgname=php-luasandbox
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc='PHP extension that provides a sandboxed environment to run Lua scripts in'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.mediawiki.org/wiki/LuaSandbox'
 license=('MIT')
 depends=('php' 'lua51')
 backup=('etc/php/conf.d/luasandbox.ini')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wikimedia/mediawiki-php-luasandbox/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f75cda3675f57c6ee38e78cf8c215963ad36bdb86128ce76aa0f6281a6967adb')
-b2sums=('9e1ea045fbf1401cd12e8519b3e2f527878c39f870b7cdfe48145bcc085d2d7b2d8b74ec216f09dc534b52745f55806277aa1c2fe51d7293ec887f74ce45bb6a')
 
 build() {
   cd "mediawiki-php-luasandbox-$pkgver"
@@ -39,3 +38,4 @@ package() {
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
+sha256sums=('b373705508fa3fe5a6f09c05c223b7c281dd29069b34b4f0e57ca30301ab01d8')
