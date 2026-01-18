@@ -1,6 +1,6 @@
 pkgbase = ferronweb
 	pkgdesc = Ferron web server
-	pkgver = 2.3.2
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://ferron.sh
 	install = ferron.install
@@ -15,7 +15,7 @@ pkgbase = ferronweb
 	provides = ferron
 	conflicts = ferron
 	backup = etc/ferron.kdl
-	source = https://dl.ferron.sh/2.3.2/ferron-2.3.2-x86_64-unknown-linux-gnu.zip
-	sha256sums = 0b2d80655de4792614e8cffc28f577b17333c8da576b6e000fa003adac5235ab
+	source = https://dl.ferron.sh/2.4.1/ferron-2.4.1-x86_64-unknown-linux-gnu.zip
+	sha256sums = c9f62a40639c6412e70ee2d86ddbad90d86ae2278d72e72f90dc25cb38144870
 
 pkgname = ferronweb
