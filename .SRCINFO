@@ -1,21 +1,27 @@
 pkgbase = slint-cpp
-	pkgdesc = Declarative GUI toolkit to build native user interfaces for Rust, C++, or JavaScript apps
+	pkgdesc = Declarative GUI toolkit to build native user interfaces for C++ apps
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slint-ui/slint/
 	arch = x86_64
-	license = GPL-3.0-or-later
-	makedepends = cmake>=3.21
-	makedepends = rust>=1.82
+	license = GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	depends = fontconfig
 	depends = freetype2
-	depends = libglvnd
+	depends = gcc-libs
+	depends = glibc
 	depends = libx11
-	depends = mesa
+	depends = libxcb
+	depends = libxkbcommon
 	depends = wayland
-	options = strip
-	source = https://github.com/slint-ui/slint/archive/refs/tags/v1.12.1.tar.gz
-	source = disable-jemalloc.patch
+	optdepends = libgl: for Skia OpenGL renderer backend
+	optdepends = vulkan-icd-loader: for Skia Vulkan renderer backend
+	provides = slint-compiler
+	source = https://github.com/slint-ui/slint/archive/v1.12.1/slint-1.12.1.tar.gz
+	source = 010-slint-remove-jemalloc.patch
 	sha256sums = 730137be333130739c3531f2755186019db72f0f61e71ce9bb6f153963471941
-	sha256sums = 108901131ae5b76ae8fa0fe7676d3904c351553eb35d6fe548721459e5ee97f3
+	sha256sums = 87e5533214c7c4b94c38e626cab1f44d507d52cfbc810acf53acb22793097080
 
 pkgname = slint-cpp

@@ -1,0 +1,246 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -165,7 +165,6 @@ rayon = { version = "1.10.0", default-features = false }
+ raw-window-handle-06 = { package = "raw-window-handle", version = "0.6", features = ["alloc"] }
+ unicode-segmentation = { version = "1.12.0" }
+ glow = { version = "0.16" }
+-tikv-jemallocator = { version = "0.6" }
+ wgpu-24 = { package = "wgpu", version = "24", default-features = false }
+ 
+ [profile.release]
+--- a/api/cpp/CMakeLists.txt
++++ b/api/cpp/CMakeLists.txt
+@@ -152,10 +152,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+     if (SLINT_FEATURE_SDF_FONTS)
+         list(APPEND slint_compiler_features "sdf-fonts")
+     endif()
+-    # Enable jemalloc, except when cross-compiling. (#7463)
+-    if(NOT CMAKE_CROSSCOMPILING)
+-        list(APPEND slint_compiler_features "jemalloc")
+-    endif()
+     set_property(
+         TARGET slint-compiler
+         PROPERTY CORROSION_FEATURES
+--- a/api/cpp/lib.rs
++++ b/api/cpp/lib.rs
+@@ -3,7 +3,7 @@
+ 
+ /*! This crate just expose the function used by the C++ integration */
+ 
+-#![no_std]
++
+ extern crate alloc;
+ #[cfg(feature = "std")]
+ extern crate std;
+--- a/demos/energy-monitor/src/main.rs
++++ b/demos/energy-monitor/src/main.rs
+@@ -1,6 +1,6 @@
+ // Copyright © SixtyFPS GmbH <info@slint.dev>
+ // SPDX-License-Identifier: MIT
+-#![no_std]
++
+ #![cfg_attr(all(feature = "mcu-board-support", not(feature = "simulator")), no_main)]
+ 
+ #[cfg(feature = "mcu-board-support")]
+--- a/demos/printerdemo_mcu/main.rs
++++ b/demos/printerdemo_mcu/main.rs
+@@ -1,7 +1,7 @@
+ // Copyright © SixtyFPS GmbH <info@slint.dev>
+ // SPDX-License-Identifier: MIT
+ 
+-#![no_std]
++
+ #![cfg_attr(not(feature = "simulator"), no_main)]
+ 
+ extern crate alloc;
+--- a/examples/mcu-board-support/lib.rs
++++ b/examples/mcu-board-support/lib.rs
+@@ -5,7 +5,7 @@
+ 
+ #![doc = include_str!("README.md")]
+ #![doc(html_logo_url = "https://slint.dev/logo/slint-logo-square-light.svg")]
+-#![no_std]
++
+ 
+ extern crate alloc;
+ 
+--- a/examples/mcu-board-support/pico2_st7789/rp_pico2.rs
++++ b/examples/mcu-board-support/pico2_st7789/rp_pico2.rs
+@@ -49,7 +49,7 @@
+ ///
+ /// # Examples
+ /// ```ignore
+-/// #![no_std]
++/// 
+ /// #![no_main]
+ /// use rp_pico::entry;
+ /// #[entry]
+--- a/examples/mcu-embassy/slint_generated/src/lib.rs
++++ b/examples/mcu-embassy/slint_generated/src/lib.rs
+@@ -1,6 +1,6 @@
+ // Copyright © 2025 David Haig
+ // SPDX-License-Identifier: MIT
+ 
+-#![no_std]
++
+ 
+ slint::include_modules!();
+--- a/examples/mcu-embassy/src/bin/ui_mcu.rs
++++ b/examples/mcu-embassy/src/bin/ui_mcu.rs
+@@ -7,7 +7,7 @@
+ // turn the grey circle next to "Hardware User Button" blue.
+ // The hello world button demonstrates animations. More details in the readme.
+ 
+-#![no_std]
++
+ #![no_main]
+ #![macro_use]
+ 
+--- a/examples/uefi-demo/main.rs
++++ b/examples/uefi-demo/main.rs
+@@ -2,7 +2,7 @@
+ // SPDX-License-Identifier: MIT
+ 
+ #![no_main]
+-#![no_std]
++
+ #![cfg(target_os = "uefi")]
+ 
+ extern crate alloc;
+--- a/helper_crates/const-field-offset/src/lib.rs
++++ b/helper_crates/const-field-offset/src/lib.rs
+@@ -8,7 +8,7 @@
+ 
+ The [`FieldOffset`] type is re-exported from the `field-offset` crate.
+ */
+-#![no_std]
++
+ 
+ #[cfg(test)]
+ extern crate alloc;
+--- a/helper_crates/vtable/src/lib.rs
++++ b/helper_crates/vtable/src/lib.rs
+@@ -56,7 +56,7 @@ fn make_noise(&self, intensity: i32) -> i32 {
+ */
+ 
+ #![warn(missing_docs)]
+-#![no_std]
++
+ extern crate alloc;
+ 
+ #[doc(no_inline)]
+--- a/helper_crates/vtable/tests/test_vtable.rs
++++ b/helper_crates/vtable/tests/test_vtable.rs
+@@ -1,7 +1,7 @@
+ // Copyright © SixtyFPS GmbH <info@slint.dev>
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+-#![no_std]
++
+ extern crate alloc;
+ use crate::alloc::borrow::ToOwned;
+ use alloc::boxed::Box;
+--- a/internal/core/lib.rs
++++ b/internal/core/lib.rs
+@@ -6,7 +6,7 @@
+ #![doc = include_str!("README.md")]
+ #![doc(html_logo_url = "https://slint.dev/logo/slint-logo-square-light.svg")]
+ #![deny(unsafe_code)]
+-#![no_std]
++
+ 
+ extern crate alloc;
+ #[cfg(feature = "std")]
+--- a/tools/compiler/Cargo.toml
++++ b/tools/compiler/Cargo.toml
+@@ -19,11 +19,10 @@ path = "main.rs"
+ 
+ [features]
+ software-renderer = ["i-slint-compiler/software-renderer"]
+-jemalloc = ["dep:tikv-jemallocator"]
+ sdf-fonts = ["i-slint-compiler/sdf-fonts"]
+ 
+ # Keep defaults in sync with defaults applied in api/cpp/CMakeLists.txt for slint-compiler
+-default = ["software-renderer", "jemalloc"]
++default = ["software-renderer", ]
+ 
+ [dependencies]
+ i-slint-compiler = { workspace = true, features = ["default", "display-diagnostics", "bundle-translations", "cpp", "rust"] }
+@@ -34,4 +33,3 @@ spin_on = { workspace = true }
+ itertools = { workspace = true }
+ 
+ [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+-tikv-jemallocator = { workspace = true, optional = true }
+--- a/tools/compiler/main.rs
++++ b/tools/compiler/main.rs
+@@ -7,18 +7,6 @@
+ use itertools::Itertools;
+ use std::io::{BufWriter, Write};
+ 
+-#[cfg(all(
+-    feature = "jemalloc",
+-    not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux")))
+-))]
+-use tikv_jemallocator::Jemalloc;
+-
+-#[cfg(all(
+-    feature = "jemalloc",
+-    not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux")))
+-))]
+-#[global_allocator]
+-static GLOBAL: Jemalloc = Jemalloc;
+ 
+ #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+ enum Embedding {
+--- a/tools/lsp/Cargo.toml
++++ b/tools/lsp/Cargo.toml
+@@ -106,7 +106,6 @@ slint-interpreter = { workspace = true, features = ["compat-1-2", "internal", "i
+ nucleo-matcher = "0.3.1"
+ 
+ [target.'cfg(not(any(target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+-tikv-jemallocator = { workspace = true }
+ 
+ [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ clap = { workspace = true }
+--- a/tools/lsp/main.rs
++++ b/tools/lsp/main.rs
+@@ -45,15 +45,12 @@
+     target_arch = "wasm32",
+     all(target_arch = "aarch64", target_os = "linux")
+ )))]
+-use tikv_jemallocator::Jemalloc;
+ 
+ #[cfg(not(any(
+     target_os = "windows",
+     target_arch = "wasm32",
+     all(target_arch = "aarch64", target_os = "linux")
+ )))]
+-#[global_allocator]
+-static GLOBAL: Jemalloc = Jemalloc;
+ 
+ #[derive(Clone, clap::Parser)]
+ #[command(author, version, about, long_about = None)]
+--- a/tools/viewer/Cargo.toml
++++ b/tools/viewer/Cargo.toml
+@@ -69,7 +69,6 @@ serde_json = { workspace = true }
+ smol_str = { workspace = true }
+ 
+ [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+-tikv-jemallocator = { workspace = true }
+ 
+ [[bin]]
+ name = "slint-viewer"
+--- a/tools/viewer/main.rs
++++ b/tools/viewer/main.rs
+@@ -16,11 +16,8 @@
+ use std::sync::{Arc, Mutex};
+ 
+ #[cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))]
+-use tikv_jemallocator::Jemalloc;
+ 
+ #[cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))]
+-#[global_allocator]
+-static GLOBAL: Jemalloc = Jemalloc;
+ 
+ struct Error(Box<dyn std::error::Error>);
+ impl std::fmt::Debug for Error {
