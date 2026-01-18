@@ -8,6 +8,6 @@ pkgbase = ntopng-data
 	depends = ntopng
 	options = !strip
 	source = https://packages.ntop.org/apt/trixie/all/ntopng-data_6.7.251208_all.deb
-	sha512sums = 306aee6796c70327e31e44db5b8a946aff3b3db6c4ef0adf78ffb73e1ca094096426d0882f1241cd204b65039fbfa8ed88a89f8bd871dc2c4a38d39f1e6b0731
+	sha512sums = SKIP
 
 pkgname = ntopng-data
