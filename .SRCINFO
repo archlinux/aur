@@ -1,0 +1,20 @@
+pkgbase = ultrakiss
+	pkgdesc = Full featured IDE for creating, editing and viewing online KiSS sets
+	pkgver = 4.2
+	pkgrel = 1
+	url = https://github.com/kisekae/UltraKiss
+	arch = any
+	groups = ultrakiss
+	license = GPL-3.0
+	makedepends = java-environment=17
+	depends = java-runtime=17
+	depends = hicolor-icon-theme
+	depends = jre17-openjdk
+	source = ultrakiss-4.2.sh::https://github.com/kisekae/ultrakiss/releases/download/V4.2/ultrakiss_unix_4_2.sh
+	source = ultrakiss.desktop
+	md5sums = b44378910dcd256374ee4117276b1916
+	md5sums = 44d52d0f26c5f86a2a7da0d8c7d6073a
+	sha256sums = 6673304c75703ea607eff995d775b198dfac4c4d204a0e7f4a134dfca77213a1
+	sha256sums = 0e83c09fcd6911e42a01b9f1ac570b5629b18f58e257c9316276427d574e9f87
+
+pkgname = ultrakiss

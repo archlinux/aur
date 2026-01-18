@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UltraKiss
+GenericName=UltraKiss
+Type=Application
+Comment=Full featured IDE for creating, editing and viewing online KiSS sets
+Exec=ultrakiss %U
+Icon=ultrakiss
+Categories=Games;Multimedia;
+StartupWMClass=install4j-Kisekae-Kisekae
