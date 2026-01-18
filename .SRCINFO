@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libheif
 	pkgdesc = An HEIF and AVIF file format decoder and encoder (Android aarch64)
-	pkgver = 1.19.7
-	pkgrel = 2
+	pkgver = 1.21.1
+	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = any
 	groups = android-libheif
@@ -13,7 +13,6 @@ pkgbase = android-aarch64-libheif
 	makedepends = android-aarch64-libjpeg
 	makedepends = android-aarch64-libpng
 	makedepends = android-aarch64-svt-av1
-	makedepends = doxygen
 	makedepends = android-aarch64-rav1e
 	depends = android-aarch64-aom
 	depends = android-aarch64-libde265
@@ -30,7 +29,7 @@ pkgbase = android-aarch64-libheif
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/strukturag/libheif/releases/download/v1.19.7/libheif-1.19.7.tar.gz
-	md5sums = cbb49df3d35360d228bac47f4287f2b8
+	source = https://github.com/strukturag/libheif/releases/download/v1.21.1/libheif-1.21.1.tar.gz
+	md5sums = 39a92af58d3e00c693a6e164f38a016c
 
 pkgname = android-aarch64-libheif
