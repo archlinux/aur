@@ -1,6 +1,6 @@
 # Maintainer: Sandwich <sandwich dot archworks dot co>
 pkgname=mautrix-gmessages
-pkgver=0.6.5
+pkgver=0.2601.0
 pkgrel=0
 pkgdesc="A Matrix-gmessages puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   mautrix-gmessages.service
 )
 backup=("etc/${pkgname}/mautrix-gmessages.yaml")
-sha256sums=('27604debeb7daf1570281ef8613ca7edbd4677168a11d007f0f2059e2cf60b02'
+sha256sums=('e2ef939b8e2dcd1b57a03f236d885d815ffe008e889b01f1ae4c747a7484a5ca'
             '1aa66286775fc52505626b875849dadbb690102bf4e55e5845528552943bb8d4'
             '7774eac143695fa0e69f580c82b8299212ff69d3a0122f7127d1d593bd159ab7'
             'b13396e0ce5509cb2a9c071e93eddcf5f61182251a39884aaaa2917ee76efd3e')
