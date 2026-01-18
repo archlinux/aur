@@ -2,7 +2,7 @@
 
 _pkgname="aaaaxy"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.321
+pkgver=1.6.332
 pkgrel=1
 pkgdesc="A nonlinear puzzle platformer taking place in impossible spaces"
 arch=(
@@ -33,17 +33,17 @@ source=(
   "${_pkgsrc}-io.github.divverent.${_pkgname}.metainfo.xml::${_url}/raw/refs/tags/v${pkgver}/io.github.divverent.${_pkgname}.metainfo.xml"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.zip"
+  "${_url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.zip"
 )
 sha256sums=('98775b1b9cb0ff5bd34ea320e9010e6a5d460e47eb7fae5d7a3fec5a5d9a9365'
             'd2a371c16ac7ac38030d0aa5bddaad1e2365ab56950c32c88e6915c44114fe4b'
             'dc0e53a341b9d5656f0f0e0ce69d9f99dc5f2c74fe51eb79d5348a41d26b1028'
-            '0d3e1cc0854addd08a884e93beb759383ac249caaf0986d27f8ef0dd071ff32b')
-sha256sums_x86_64=('6fa3a9d615a43265ed55b2234f25088b3f36bd92b9ccf4c3b01894b17779d043')
+            'fe1ca374370905b747d8a4dd6c645fe02667573653039aa251b5d71a2ec39034')
+sha256sums_x86_64=('b3d87108cfb65e1e2ebeed3868fd2d2c6562e3021805579567c267bec7ae0546')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}-linux"* "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm755 "${_pkgname}-linux-amd64" "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm644 "${_pkgsrc}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
