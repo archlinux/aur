@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('tiny3d-n64-git' 'tiny3d-n64-gltf-importer-git')
-pkgver=r136.662a099
+pkgver=r250.63aebea
 pkgrel=1
 url="https://github.com/HailToDodongo/tiny3d"
 arch=('x86_64')
@@ -18,6 +18,10 @@ pkgver() {
 
 build(){
   cd tiny3d
+
+  # Always clean to make sure that we build against installed version of libdragon
+  make clean
+
   CFLAGS="" CXXFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
   N64_INST=/usr make -C tools/gltf_importer
 }
@@ -44,7 +48,7 @@ package_tiny3d-n64-gltf-importer-git() {
   options=()
   provides=('tiny3d-n64-gltf-importer')
   conflicts=('tiny3d-n64-gltf-importer')
-  arch=('i686' 'x86_64')
+  arch=('x86_64')
   depends=('gcc-libs')
 
   cd tiny3d

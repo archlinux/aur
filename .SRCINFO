@@ -1,5 +1,5 @@
 pkgbase = tiny3d-n64-git
-	pkgver = r136.662a099
+	pkgver = r250.63aebea
 	pkgrel = 1
 	url = https://github.com/HailToDodongo/tiny3d
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgname = tiny3d-n64-git
 
 pkgname = tiny3d-n64-gltf-importer-git
 	pkgdesc = glTF model importer for the N64 and Tiny3D library
-	arch = i686
 	arch = x86_64
 	depends = gcc-libs
 	provides = tiny3d-n64-gltf-importer
