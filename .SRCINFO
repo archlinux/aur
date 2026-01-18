@@ -1,6 +1,6 @@
 pkgbase = hypr-bucket
 	pkgdesc = Lightweight and customizable application launcher for Hyprland
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Time-0N/hypr-bucket
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hypr-bucket
 	optdepends = kitty: Terminal for terminal applications
 	optdepends = alacritty: Alternative terminal
 	optdepends = wezterm: Alternative terminal
-	source = hypr-bucket-1.1.0.tar.gz::https://github.com/Time-0N/hypr-bucket/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 14ad82b006be2038cf7a9d79eefecd9c6ec46b782f194174706476cb5aa0aaed
+	source = hypr-bucket-1.1.1.tar.gz::https://github.com/Time-0N/hypr-bucket/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 5b96daf22d21d6d212f43057beb74573ec2051496d52e1060b5f244f00afefac
 
 pkgname = hypr-bucket
