@@ -1,38 +1,44 @@
-# Maintainer: Maksymilian Jopek <maks.aur@jopek.eu>
+# Maintainer: Théo Rozier <contact@theorozier.fr>
+
 pkgname=portablemc
-pkgver=4.4.1
+pkgver=5.0.1
 pkgrel=1
-pkgdesc='An easy-to-use Python CLI Minecraft launcher'
-arch=('any')
+pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
+arch=(x86_64 aarch64)
 url='https://github.com/mindstorm38/portablemc'
-license=('GPL3-only')
-depends=('python')
-provides=('portablemc')
-
-source=(
-  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/20/a1/10817cf435787f2e6d20c71e9fa578304bf9b66ee283334e5255f47a09ca/portablemc-4.4.1.tar.gz"
-  'portablemc'
+license=('Apache-2.0')
+depends=(
+  gcc-libs
+  glibc
+  openssl
+)
+makedepends=(
+  rust
 )
 
-sha256sums=(
-  'f142173b8777dab2e78ad92df110d919bedc4a009b648d5351c4b7be5e8fc1e4'
-  '65df24d73666d5a7f5eaac5beb48132b4f5cf0022878c3468afe7711cd275f45'
-)
+# For building, the CFLAGS has caused issues with linking the project...
+options=('!lto' '!buildflags')
 
-prepare() {
-  sed -Ei 's/(LAUNCHER_VERSION.*".*)"/\1 (AUR)"/' "$pkgname-$pkgver/portablemc/__init__.py"
-}         
+source=("portablemc-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('859a9e870443c1b3f709b0257149073169e9651937e14ead2ada51d18778c33d')
+
+build() {
+  cd "portablemc-${pkgver}"
+  cargo xtask dist
+}
+
+check() {
+  cd "portablemc-${pkgver}"
+  cargo test --release --locked
+}
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/portablemc"
-  cp -r "$pkgname-$pkgver/portablemc" "$pkgdir/usr/lib/portablemc"
-  install -m 755 -DT portablemc "$pkgdir/usr/bin/portablemc"
+  cd "portablemc-${pkgver}/dist/portablemc-${pkgver}-linux-${CARCH}"
+  
+  install -vDm755 -t "${pkgdir}/usr/bin/" portablemc
+  install -vDm644 -t "${pkgdir}/usr/share/doc/portablemc/" README
+  install -vDm644 -t "${pkgdir}/usr/share/licenses/portablemc/" LICENSE
 
-  # BashCompletionDirectory
-  bcpd='usr/share/bash-completion/completions'
-  # ZshCompletionDirectory
-  zcpd='usr/share/zsh/site-functions'
-  cd "$pkgdir/usr/lib/portablemc"
-  [ -d "/$bcpd" ] && { mkdir -p "$pkgdir/$bcpd" && python -m portablemc show completion bash > "$pkgdir/$bcpd/portablemc"; }
-  [ -d "/$zcpd" ] && { mkdir -p "$pkgdir/$zcpd" && python -m portablemc show completion zsh > "$pkgdir/$zcpd/_portablemc"; }
+  install -vdm755 "${pkgdir}/usr/share/man/man1"
+  ./portablemc gen man "${pkgdir}/usr/share/man/man1"
 }
