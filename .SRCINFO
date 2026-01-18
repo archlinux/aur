@@ -1,0 +1,25 @@
+pkgbase = markus-bin
+	pkgdesc = A local WYSIWYG Markdown editor built with Electron, React, and ProseMirror
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/erkkimon/markus-the-editor
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libsecret
+	depends = libappindicator-gtk3
+	optdepends = libnotify: for desktop notifications
+	provides = markus
+	provides = markus-the-editor
+	conflicts = markus
+	conflicts = markus-the-editor
+	options = !strip
+	options = !debug
+	source = Markus-0.1.0.AppImage::https://github.com/erkkimon/markus-the-editor/releases/download/v0.1.0/Markus-0.1.0.AppImage
+	sha256sums = 31cab01800dcc4d74f461efebb5574cbeb024dd1db8abc5f0c5a4c9733b808f4
+
+pkgname = markus-bin
