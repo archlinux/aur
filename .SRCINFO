@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libidn2
 	pkgdesc = A free software implementation of IDNA2008 (Android aarch64)
-	pkgver = 2.3.7
-	pkgrel = 2
+	pkgver = 2.3.8
+	pkgrel = 1
 	url = http://www.gnu.org/software/libidn
 	arch = any
 	groups = android-libidn2
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-libidn2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/pub/gnu/libidn/libidn2-2.3.7.tar.gz
-	md5sums = de2818c7dea718a4f264f463f595596b
+	source = https://ftp.gnu.org/pub/gnu/libidn/libidn2-2.3.8.tar.gz
+	md5sums = a8e113e040d57a523684e141970eea7a
 
 pkgname = android-aarch64-libidn2
