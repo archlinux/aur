@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
-pkgver=2.2.0
+_app_id=io.github.flattool.Ignition
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
@@ -8,29 +9,35 @@ url="https://github.com/flattool/ignition"
 license=('GPL-3.0-or-later')
 depends=(
   'gjs'
+  'gtk4'
   'libadwaita'
 )
 makedepends=(
   'blueprint-compiler'
   'git'
+  'jasmine-gjs'
   'meson'
   'typescript'
 )
 source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
-        'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git'
-        'ignore-deprecations.patch')
-sha256sums=('569b408d26762e8f0d37c8c0e2091fd02d7dd08dbf0acf12d0f5f5fff785cb49'
+        'git+https://github.com/flattool/gir-ts-types.git'
+        'git+https://github.com/flattool/gobjectify.git'
+        "${_app_id}.sh")
+sha256sums=('629c3174abf18ad04c6daed90267a727c2a254ada274203497e658fa1d669672'
             'SKIP'
-            'bdcd8cc89daf461e422093f8e47d083d3971de6e5a28d0c455f9aded40a855f6')
+            'SKIP'
+            '17c12dc131eedf1337c3fdfb516f737a0f15f79d3addf1c6897fa245cb1e9de4')
 
 prepare() {
   cd ignition
   git submodule init
-  git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
+  git config submodule.gi-types.url "$srcdir/gir-ts-types"
+  git config submodule.src/gobjectify.url "$srcdir/gobjectify"
   git -c protocol.file.allow=always submodule update
 
-  # error TS5107: Option 'moduleResolution=node10' is deprecated and will stop functioning in TypeScript 7.0
-  patch -Np1 -i ../ignore-deprecations.patch
+  # install files in /usr/share/ignition/ not /usr/bin/
+  sed -i "s/install_dir: get_option('bindir')/install_dir: pkgdatadir/g" \
+    src/meson.build tests/meson.build
 }
 
 build() {
@@ -45,5 +52,6 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  ln -s /usr/bin/io.github.flattool.Ignition "$pkgdir/usr/bin/ignition"
+  install -Dm755 "$srcdir/${_app_id}.sh" "$pkgdir/usr/bin/${_app_id}"
+  ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/ignition"
 }
