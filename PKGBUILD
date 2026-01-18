@@ -2,7 +2,7 @@
 pkgname="alacritty-use-theme-git"
 pkgver=r18.ffd401b
 pkgrel=1
-pkgdesc="Small utility to switch the selected theme used by alacritty terminal."
+pkgdesc="::Rolling release:: A Small utility to switch the selected theme used by alacritty terminal."
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme"
 license=('GPL-1.0-or-later')
