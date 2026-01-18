@@ -21,7 +21,7 @@ makedepends=(
 )
 optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
-    'webkit2gtk-4.1: CSS Template panel with WebView support'
+    'webkitgtk-6.0: CSS Template panel with WebView support'
 )
 install=rg-sens.install
 provides=('rg-sens')
@@ -30,15 +30,13 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    local count hash
-    if cd "$srcdir/$pkgname" 2>/dev/null; then
-        count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
-        hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-    else
-        count="0"
-        hash="unknown"
-    fi
-    echo "0.6.2.r${count}.g${hash}"
+    cd "$srcdir/$pkgname"
+    # Extract version from Cargo.toml and append git info
+    local ver count hash
+    ver=$(grep -m1 '^version' Cargo.toml | sed 's/.*"\(.*\)"/\1/')
+    count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+    hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+    echo "${ver}.r${count}.g${hash}"
 }
 
 build() {
