@@ -1,16 +1,20 @@
-# Maintainer: Kristofers Solo <dev@kristofers.xyz>
-_pkgname="tuxedo-control-center"
+# Maintainer: Kristofers Solo <dev at kristofers dot xyz>
+
+_pkgname=tuxedo-control-center
+_svname=tccd
 pkgname="${_pkgname}-runit"
-pkgver=1.0.3
+pkgver=20260118
 pkgrel=1
-pkgdesc="runit service for TUXEDO Control Center "
+pkgdesc="runit service for TUXEDO Control Center"
 arch=("x86_64")
-url="https://aur.archlinux.org/packages/tuxedo-control-center-runit"
-license=("GPL")
+url="https://github.com/tuxedocomputers/tuxedo-control-center"
+license=("GPL-3.0-or-later")
 depends=("runit" "tuxedo-control-center-bin")
-source=("tccd.run")
-sha256sums=("d3be7c0c237d928b63c6a35ff667ac9c36078162a6db4f329ae212181f80bc9f")
+source=("${_svname}.run" "${_svname}.finish")
+sha256sums=("d5d89733cb42db73ad8f13bcf0d84a0a0ed3eab89e5577b89450c08690c85022"
+    "aaaa021aeb8a99a126db5b696536b1b30c750ec21d85887c062f3ebbdbf443f5")
 
 package() {
-	install -Dm755 ./tccd.run "${pkgdir}/etc/runit/sv/tccd/run"
+    install -Dm755 "$srcdir/${_svname}.run" "${pkgdir}/etc/runit/sv/tccd/run"
+    install -Dm755 "$srcdir/${_svname}.finish" "${pkgdir}/etc/runit/sv/tccd/finish"
 }

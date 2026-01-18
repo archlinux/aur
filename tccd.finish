@@ -1,0 +1,2 @@
+#!/bin/sh
+/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd --stop
