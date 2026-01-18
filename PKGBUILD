@@ -4,7 +4,7 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=1.2.2
+pkgver=2.0.0
 _ver=v$pkgver
 pkgrel=1
 pkgdesc="Handle documents like quotes and invoices in your small business."
@@ -12,20 +12,17 @@ arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL-2.0-only')
 depends=(
-	'qt5-base' 'qt5-svg' 'grantlee' 'kcontacts5' 'ki18n5' 'ctemplate'
+	'qt6-base' 'qt6-svg' 'kcontacts' 'ki18n' 'ktexttemplate' 'akonadi-contacts'
 )
 optdepends=(
-	'python-reportlab: default PDF generator'
-	'python-pypdf2: default PDF generator'
-	'python-weasyprint: alternative PDF generator'
+	'python-weasyprint: default PDF generator'
+	'python-pypdf: alternative PDF generator'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
-  "0002-optional-akonadi-contact.patch"
 )
-sha256sums=('a1b556d89fb42853e0c085dd47d19546f9dfd70a0f58e161cc56fa4d5555190e'
-            '6220650c3d34cb71d1b9df476aaa3f8e8041b118440c158352a4114a55e9e679')
+sha256sums=('8da453c62a54ad67c711a295a4d562cf856a95253eade1701e0945a83da28571')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,7 +31,6 @@ prepare() {
   do
           case "$s" in
                   (*.patch)
-			  echo $s
                           patch -p1 < "${srcdir}/${s}"
           esac
   done
