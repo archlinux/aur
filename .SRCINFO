@@ -9,10 +9,10 @@ pkgbase = plasma-screencastborder-effect
 	makedepends = qt6-tools
 	depends = kwin-screencast-api
 	depends = qt6-base
-	depends = kf6-kconfig
-	depends = kf6-kcoreaddons
-	depends = kf6-ki18n
-	depends = kf6-kcmutils
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kcmutils
 	source = plasma-screencastborder-effect-1.0.0.tar.gz::https://github.com/jkolo/plasma-screencastborder-effect/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
