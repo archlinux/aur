@@ -4,15 +4,17 @@ pkgbase=slint
 pkgname=(
     'nodejs-slint'
     'python-slint'
+    'slint-cpp'
     'slint-tools')
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
 arch=('x86_64')
 url='https://github.com/slint-ui/slint/'
 makedepends=(
     'cargo'
+    'cmake'
     'fontconfig'
     'freetype2'
     'git'
@@ -49,6 +51,23 @@ build() {
     export RUSTUP_TOOLCHAIN='stable'
     export SLINT_NO_QT='1'
     local _features='backend-winit,gettext,renderer-femtovg,renderer-skia,renderer-skia-opengl,renderer-skia-vulkan,renderer-software'
+    
+    # c++
+    printf '%s\n' '  -> building slint-cpp...'
+    cmake -S "${pkgbase}-${pkgver}" -B build-cpp \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DSLINT_FEATURE_BACKEND_QT:BOOL='OFF' \
+        -DSLINT_FEATURE_BACKEND_WINIT:BOOL='ON' \
+        -DSLINT_FEATURE_GETTEXT:BOOL='ON' \
+        -DSLINT_FEATURE_LIVE_PREVIEW:BOOL='ON' \
+        -DSLINT_FEATURE_RENDERER_FEMTOVG:BOOL='ON' \
+        -DSLINT_FEATURE_RENDERER_SKIA:BOOL='ON' \
+        -DSLINT_FEATURE_RENDERER_SKIA_OPENGL:BOOL='ON' \
+        -DSLINT_FEATURE_RENDERER_SKIA_VULKAN:BOOL='ON' \
+        -DSLINT_FEATURE_RENDERER_SOFTWARE:BOOL='ON'
+    cmake --build build-cpp
     
     # tools
     printf '%s\n' '  -> building tools...'
@@ -136,6 +155,27 @@ package_python-slint() {
     _install_licenses "$pkgdir" "$pkgname"
 }
 
+package_slint-cpp() {
+    pkgdesc="${pkgdesc} for C++ apps"
+    depends=(
+        'fontconfig'
+        'freetype2'
+        'gcc-libs'
+        'glibc'
+        'libx11'
+        'libxcb'
+        'libxkbcommon'
+        'wayland')
+    optdepends=(
+        'libgl: for Skia OpenGL renderer backend'
+        'vulkan-icd-loader: for Skia Vulkan renderer backend')
+    provides=(
+        'slint-compiler')
+    
+    DESTDIR="$pkgdir" cmake --install build-cpp
+    _install_licenses "$pkgdir" "$pkgname"
+}
+
 package_slint-tools() {
     pkgdesc='Tools for the Slint GUI toolkit (lsp, tr-extractor, updater and viewer)'
     depends=(
@@ -166,6 +206,7 @@ package_slint-tools() {
     
     find cargo-target/release -maxdepth 1 -type f \
         -name '*.so*' \
+        ! -name 'libslint_cpp.so*' \
         ! -name 'libslint_node.so*' \
         ! -name 'libslint_python.so*' \
         -exec cp -dr --no-preserve='ownership' {} "${pkgdir}/usr/lib/" \;
