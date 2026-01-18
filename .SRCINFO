@@ -1,0 +1,16 @@
+pkgbase = fnpack-bin
+	pkgdesc = 飞牛 fnOS 应用打包工具
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://developer.fnnas.com/docs/cli/fnpack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fnpack
+	conflicts = fnpack
+	source_x86_64 = https://static2.fnnas.com/fnpack/fnpack-1.2.0-linux-amd64
+	sha256sums_x86_64 = 523227c950a589ab3af327cf91c45511154265487bf723b29da9cfa2e0dc9d5a
+	source_aarch64 = https://static2.fnnas.com/fnpack/fnpack-1.2.0-linux-arm64
+	sha256sums_aarch64 = 33a76a7c685832b8de1adff3a6362c384bf367988d819e98bcf85569bb219d30
+	
+pkgname = fnpack-bin
