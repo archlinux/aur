@@ -1,0 +1,15 @@
+pkgbase = hytale-rpc-rs-bin
+	pkgdesc = Discord Rich Presence for Hytale - written in Rust (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MopigamesYT/hytale-rpc-rs
+	arch = x86_64
+	license = GPL3
+	depends = dbus
+	provides = hytale-rpc-rs
+	conflicts = hytale-rpc-rs
+	conflicts = hytale-rpc-rs-git
+	source = hytale-rpc-rs-bin-1.0.0::https://github.com/MopigamesYT/hytale-rpc-rs/releases/download/v1.0.0/hytale-rpc-linux-x86_64
+	sha256sums = SKIP
+
+pkgname = hytale-rpc-rs-bin
