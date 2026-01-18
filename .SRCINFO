@@ -9,7 +9,8 @@ pkgbase = alacritty-use-theme-git
 	depends = alacritty>=0.13.0
 	depends = go-yq
 	provides = alacritty-use-theme
-	source = alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git
+	conflicts = alacritty-use-theme
+	source = alacritty-use-theme-git-git::https://github.com/christophermca/alacritty-use-theme
 	sha256sums = SKIP
 
 pkgname = alacritty-use-theme-git

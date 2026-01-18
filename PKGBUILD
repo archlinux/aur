@@ -9,7 +9,8 @@ license=('GPL-1.0-or-later')
 depends=('alacritty>=0.13.0' 'go-yq')
 makedepends=('git')
 provides=('alacritty-use-theme')
-source=("alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git")
+conflicts=('alacritty-use-theme')
+source=("$pkgname-git::https://github.com/christophermca/alacritty-use-theme")
 sha256sums=('SKIP')
 
 pkgver() {
