@@ -1,0 +1,14 @@
+pkgbase = ocaml-unionfind
+	pkgdesc = OCaml implementations of the union-find data structure
+	pkgver = 20250818
+	pkgrel = 1
+	url = https://gitlab.inria.fr/fpottier/unionfind
+	arch = x86_64
+	license = LGPL-2.0-only WITH OCaml-LGPL-linking-exception
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	source = ocaml-unionfind-20250818.tar.gz::https://gitlab.inria.fr/fpottier/unionfind/-/archive/20250818/unionfind-20250818.tar.gz
+	b2sums = 13106d26f9be64426aca84fafa5a4dabd9b7f9a318e6d0ef566aab9b505706f2a3d19b1966edea32ad0e89299df895007a93ecdea0327bb0d72edf47002ac0a0
+
+pkgname = ocaml-unionfind
