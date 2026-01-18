@@ -18,13 +18,13 @@ With Musoq, just write a query.
 # Follow instructions in [CLI repository](https://github.com/Puchaczov/Musoq.CLI)
 
 # Generate some GUIDs
-Musoq run "select NewId() from #system.range(1, 5)"
+Musoq run "select NewId() from system.range(1, 5)"
 
 # Find your largest files  
-Musoq run "select Name, Length from #os.files('/home/user', true) where Length > 1000000 order by Length desc take 10"
+Musoq run "select Name, Length from os.files('/home/user', true) where Length > 1000000 order by Length desc take 10"
 
 # Check git commits this month
-Musoq run "select Count(1) from #git.repository('.') r cross apply r.Commits c where c.CommittedWhen > '2024-11-01'"
+Musoq run "select Count(1) from git.repository('.') r cross apply r.Commits c where c.CommittedWhen > '2024-11-01'"
 ```
 
 ## Why SQL for Scripting?
@@ -37,7 +37,7 @@ find . -name "*.js" -exec wc -l {} \; | awk '{sum+=$1} END {print sum}'
 **Write this:**
 ```sql
 select Sum(Length(f.GetFileContent())) as TotalLines 
-from #os.files('.', true) f 
+from os.files('.', true) f 
 where f.Extension = '.js'
 ```
 
@@ -50,7 +50,7 @@ import os, subprocess, re
 **Write this:**
 ```sql
 select f.Name, f.Directory 
-from #os.files('/project', true) f 
+from os.files('/project', true) f 
 where f.GetFileContent() rlike 'TODO.*urgent'
 ```
 
@@ -71,23 +71,23 @@ Just run `desc` on schema or computed table
 
 ```sql
 -- what tables does this schema has?
-desc #schema 
+desc schema 
 
 -- what constructors are available from this particular table?
-desc #schema.table
+desc schema.table
 
 -- what columns does this table has?
-desc #schema.table(param1, param2, ..., paramN)
+desc schema.table(param1, param2, ..., paramN)
 ```
 
 ```sql
 -- what functions are available within that data source?
-desc functions #schema
+desc functions schema
 ```
 
 ## What You Can Query
 
-### Git Repository Queries (`#git`)
+### Git Repository Queries (`git`)
 
 #### List Recent Commits
 Query commit history with author information.
@@ -98,7 +98,7 @@ select
     c.MessageShort,
     c.Author,
     c.CommittedWhen
-from #git.repository('./repo') r 
+from git.repository('./repo') r 
 cross apply r.Commits c
 ```
 
@@ -110,7 +110,7 @@ select
     c.Sha,
     c.Author,
     c.Message
-from #git.commits('./repo') c
+from git.commits('./repo') c
 where c.Author = 'john.doe'
 ```
 
@@ -122,7 +122,7 @@ select
     b.FriendlyName,
     b.IsRemote,
     b.Tip.Sha
-from #git.branches('./repo') b
+from git.branches('./repo') b
 ```
 
 #### Compare Branches
@@ -132,7 +132,7 @@ Find differences between two branches.
 select 
     Difference.Path,
     Difference.ChangeKind
-from #git.repository('./repo') repository 
+from git.repository('./repo') repository 
 cross apply repository.DifferenceBetween(
     repository.BranchFrom('main'), 
     repository.BranchFrom('feature/my-feature')
@@ -148,7 +148,7 @@ select
     t.Message,
     t.IsAnnotated,
     t.Commit.Sha
-from #git.tags('./repo') t
+from git.tags('./repo') t
 ```
 
 #### Track File History
@@ -160,7 +160,7 @@ select
     h.Author,
     h.FilePath,
     h.ChangeType
-from #git.filehistory('./repo', 'README.md') h
+from git.filehistory('./repo', 'README.md') h
 ```
 
 #### Analyze Branch-Specific Commits
@@ -172,7 +172,7 @@ with BranchInfo as (
         c.Sha as CommitSha,
         c.Message as CommitMessage,
         c.Author as CommitAuthor
-    from #git.repository('./repo') r 
+    from git.repository('./repo') r 
     cross apply r.SearchForBranches('feature/my-feature') b
     cross apply b.GetBranchSpecificCommits(r.Self, b.Self, true) c
 )
@@ -186,7 +186,7 @@ Analyze commit relationships for merge analysis.
 select 
     c.Sha, 
     p.Sha as ParentSha
-from #git.commits('./repo') c 
+from git.commits('./repo') c 
 cross apply c.Parents as p
 ```
 
@@ -202,39 +202,39 @@ with PhotosDescription as (
     select 
         f.Name as Name, 
         l.AskImage('this is the photo of my little child I want you to describe. Be conscise, use only single statement.', f.Base64File()) as Description 
-    from #os.files('/some/folder/with/photos', false) f 
-    cross apply #ollama.llm('llama3.2-vision:11b-instruct-q4_K_M') l
+    from os.files('/some/folder/with/photos', false) f 
+    cross apply ollama.llm('llama3.2-vision:11b-instruct-q4_K_M') l
 )
 select
     p.Name,
     p.Description,
     l.LlmPerform('this is the description of the photo I want you generate hashtags for. It comes from my child photo album. Return only hashtags separated with comma (#something, #somethingElse). Comma is very important to separate hashtags. Dont forget about it. No description or explanation.', p.Description) as HashTags
-from PhotosDescription p cross apply #openai.gpt('gpt-4o', 4096, 0.0) l
+from PhotosDescription p cross apply openai.gpt('gpt-4o', 4096, 0.0) l
 ```
 
 ### Structured extraction from unstructured data
 Pass image of receipt, receive shop, product name and price.
 
-```
+```sql
 --image passed to stdin by command: ./Musoq.exe image encode "D:/Some/Receipt.jpg"
 
-select s.Shop, s.ProductName, s.Price from #stdin.LlmExtractFromImage() s
+select s.Shop, s.ProductName, s.Price from stdin.LlmExtractFromImage() s
 ```
 
 Same story but this time we are expecting specific types
-```
+```sql
 table Receipt {
     Shop 'System.String',
     ProductName 'System.String',
     Price 'System.Decimal'
 };
-couple #stdin.LlmExtractFromImage() with table Receipt as SourceOfReceipts;
+couple stdin.LlmExtractFromImage() with table Receipt as SourceOfReceipts;
 select s.Shop, s.ProductName, s.Price from SourceOfReceipts('OpenAi', 'gpt-4o') s
 ```
 
 ---
 
-### C# Code Analysis (`#csharp`)
+### C# Code Analysis (`csharp`)
 
 #### List All Classes in Solution
 Find all classes across a C# solution with their metrics.
@@ -246,7 +246,7 @@ select
     c.MethodsCount,
     c.PropertiesCount,
     c.LinesOfCode
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.Documents d 
 cross apply d.Classes c
@@ -261,7 +261,7 @@ select
     t.IsClass,
     t.IsInterface,
     t.IsEnum
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.Types t
 ```
@@ -275,7 +275,7 @@ select
     m.Name as MethodName,
     m.CyclomaticComplexity,
     m.LinesOfCode
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.GetClassesByNames('MyClass') c
 cross apply c.Methods m
 where m.CyclomaticComplexity > 5
@@ -291,7 +291,7 @@ select
     m.IsEmpty,
     m.StatementsCount,
     m.BodyContainsOnlyTrivia
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.Documents d 
 cross apply d.Classes c
@@ -310,7 +310,7 @@ select
     p.HasGetter,
     p.HasSetter,
     p.HasInitSetter
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.Documents d 
 cross apply d.Classes c
@@ -328,7 +328,7 @@ select
     rd.StartColumn,
     rd.EndLine,
     rd.EndColumn
-from #csharp.solution('./MySolution.sln') s
+from csharp.solution('./MySolution.sln') s
 cross apply s.GetClassesByNames('MyClass') c
 cross apply s.FindReferences(c.Self) rd
 cross apply rd.ReferencedClasses r
@@ -345,7 +345,7 @@ select
     i.BaseInterfaces,
     i.Methods,
     i.Properties
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects pr 
 cross apply pr.Documents d 
 cross apply d.Interfaces i
@@ -360,7 +360,7 @@ select
     e.FullName,
     e.Namespace,
     e.Members
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects pr 
 cross apply pr.Documents d 
 cross apply d.Enums e
@@ -373,7 +373,7 @@ List all project-to-project references.
 select
     p.Name as ProjectName,
     ref.Name as ReferencedProject
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.ProjectReferences ref
 ```
@@ -387,7 +387,7 @@ select
     lib.Name as LibraryName,
     lib.Version,
     lib.Location
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.LibraryReferences lib
 ```
@@ -403,7 +403,7 @@ select
     np.License,
     np.Authors,
     np.IsTransitive
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.GetNugetPackages(false) np
 ```
@@ -416,7 +416,7 @@ select
     c.Name,
     a.Name as AttributeName,
     a.ConstructorArguments
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects pr 
 cross apply pr.Documents d 
 cross apply d.Classes c
@@ -435,7 +435,7 @@ select
     p.IsParams,
     p.IsRef,
     p.IsOut
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects pr 
 cross apply pr.Documents d 
 cross apply d.Classes c
@@ -453,7 +453,7 @@ select
     c.FieldsCount,
     c.LackOfCohesion,
     c.InheritanceDepth
-from #csharp.solution('./MySolution.sln') s 
+from csharp.solution('./MySolution.sln') s 
 cross apply s.Projects p 
 cross apply p.Documents d 
 cross apply d.Classes c
@@ -472,14 +472,14 @@ with GitRepos as (
     select 
         dir.Parent.Name as RepoName,
         dir.FullName as GitPath
-    from #os.directories('./projects', true) dir
+    from os.directories('./projects', true) dir
     where dir.Name = '.git'
 )
 select 
     r.RepoName,
     Count(c.Sha) as CommitCount
 from GitRepos r 
-cross apply #git.repository(r.GitPath) repo 
+cross apply git.repository(r.GitPath) repo 
 cross apply repo.Commits c
 group by r.RepoName
 order by CommitCount desc
@@ -491,11 +491,11 @@ Compare directories using file hashes to detect modifications.
 ```sql
 with SourceFiles as (
     select GetRelativePath('./source') as RelPath, Sha256File() as Hash 
-    from #os.files('./source', true)
+    from os.files('./source', true)
 ), 
 TargetFiles as (
     select GetRelativePath('./target') as RelPath, Sha256File() as Hash 
-    from #os.files('./target', true)
+    from os.files('./target', true)
 )
 select 
     s.RelPath,
@@ -506,7 +506,7 @@ inner join TargetFiles t on s.RelPath = t.RelPath
 
 ---
 
-### File System Queries (`#os`)
+### File System Queries (`os`)
 
 #### List Files with Size Information
 Find all files in a directory with their sizes formatted in human-readable format.
@@ -515,7 +515,7 @@ Find all files in a directory with their sizes formatted in human-readable forma
 select 
     Name, 
     ToDecimal(Length) / 1024 as SizeInKB
-from #os.files('./directory', true)
+from os.files('./directory', true)
 where Extension = '.txt'
 ```
 
@@ -526,7 +526,7 @@ Compute cryptographic hashes for file integrity verification.
 select 
     Name, 
     Sha256File() as Hash
-from #os.files('./directory', false)
+from os.files('./directory', false)
 where Extension = '.dll'
 ```
 
@@ -538,13 +538,13 @@ select
     SourceFileRelative,
     DestinationFileRelative,
     State
-from #os.dirscompare('./source', './destination')
+from os.dirscompare('./source', './destination')
 where State <> 'TheSame'
 ```
 
 ---
 
-### CSV/Separated Values (`#separatedvalues`)
+### CSV/Separated Values (`separatedvalues`)
 
 #### Basic CSV Query with Aggregation
 Analyze banking transactions and calculate monthly income/outcome.
@@ -555,7 +555,7 @@ select
     SumIncome(ToDecimal(Money)) as Income,
     SumOutcome(ToDecimal(Money)) as Outcome,
     SumIncome(ToDecimal(Money)) + SumOutcome(ToDecimal(Money)) as Balance
-from #separatedvalues.comma('./transactions.csv', true, 0)
+from separatedvalues.comma('./transactions.csv', true, 0)
 group by ExtractFromDate(OperationDate, 'month')
 ```
 
@@ -568,8 +568,8 @@ select
     persons.Surname, 
     grades.Subject, 
     grades.Grade
-from #separatedvalues.comma('./Persons.csv', true, 0) persons 
-inner join #separatedvalues.comma('./Gradebook.csv', true, 0) grades 
+from separatedvalues.comma('./Persons.csv', true, 0) persons 
+inner join separatedvalues.comma('./Gradebook.csv', true, 0) grades 
     on persons.Id = grades.PersonId
 ```
 
@@ -582,14 +582,14 @@ table Employees {
    Name 'System.String',
    Salary 'System.Decimal'
 };
-couple #separatedvalues.comma with table Employees as SourceOfEmployees;
+couple separatedvalues.comma with table Employees as SourceOfEmployees;
 select Id, Name, Salary from SourceOfEmployees('./employees.csv', true, 0)
 where Salary > 50000
 ```
 
 ---
 
-### JSON Queries (`#json`)
+### JSON Queries (`json`)
 
 #### Query JSON Array
 Extract data from a JSON file using a schema definition.
@@ -599,13 +599,13 @@ select
     Name, 
     Age, 
     Length(Books) as BookCount
-from #json.file('./data.json', './data.schema.json')
+from json.file('./data.json', './data.schema.json')
 where Age > 18
 ```
 
 ---
 
-### Archive Queries (`#archives`)
+### Archive Queries (`archives`)
 
 #### List Archive Contents
 Read contents of ZIP or TAR archives and extract text content.
@@ -615,13 +615,13 @@ select
     Key as FileName, 
     IsDirectory,
     (case when IsDirectory = false then GetTextContent() else '' end) as Content
-from #archives.file('./archive.zip')
+from archives.file('./archive.zip')
 where Key like '%.txt'
 ```
 
 ---
 
-### Time Queries (`#time`)
+### Time Queries (`time`)
 
 #### Generate Date Range
 Create a sequence of dates for reporting or analysis.
@@ -632,7 +632,7 @@ select
     Month, 
     Year, 
     DayOfWeek
-from #time.interval('2024-01-01 00:00:00', '2024-12-31 00:00:00', 'days')
+from time.interval('2024-01-01 00:00:00', '2024-12-31 00:00:00', 'days')
 ```
 
 #### Filter Weekend Days
@@ -640,20 +640,20 @@ Find only weekend days (Saturday=6, Sunday=0 in DayOfWeek).
 
 ```sql
 select Day, DayOfWeek
-from #time.interval('2024-01-01 00:00:00', '2024-01-31 00:00:00', 'days')
+from time.interval('2024-01-01 00:00:00', '2024-01-31 00:00:00', 'days')
 where DayOfWeek = 0 or DayOfWeek = 6
 ```
 
 ---
 
-### System Utilities (`#system`)
+### System Utilities (`system`)
 
 #### Number Range Generation
 Generate a sequence of numbers for various purposes.
 
 ```sql
 select Value 
-from #system.range(1, 100)
+from system.range(1, 100)
 where Value % 2 = 0
 ```
 
@@ -665,7 +665,7 @@ select
     2 + 2 as Sum,
     10 * 5 as Product,
     ToDecimal(7) / 3 as Division
-from #system.dual()
+from system.dual()
 ```
 
 ---
