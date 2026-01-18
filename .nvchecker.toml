@@ -1,0 +1,4 @@
+[python-countryguess]
+source = "git"
+git = "https://codeberg.org/plotski/countryguess.git"
+prefix = "v"
