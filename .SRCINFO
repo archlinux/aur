@@ -1,13 +1,14 @@
 pkgbase = koala-clash-bin
 	pkgdesc = Fork of Clash Verge Rev | A Clash Meta GUI based on Tauri
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coolcoala/clash-verge-rev-lite
 	install = koala-clash-bin.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
+	depends = webkit2gtk-4.1
 	depends = webkitgtk-6.0
 	depends = gtk3
 	depends = libayatana-appindicator
