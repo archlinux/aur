@@ -60,13 +60,9 @@ _cef_version='143.0.14+gdd46a37+chromium-143.0.7499.193'
 source=(
     "git+${url}.git"
     "https://cef-builds.spotifycdn.com/cef_binary_${_cef_version}_linux64_minimal.tar.bz2"
-    'jellyfin-desktop-cef.desktop'
-    'jellyfin-desktop-cef.svg'
 )
 sha256sums=('SKIP'
-            '04f94018e1cec48920a57fb2307503c72fb19361578325dfd44c7d5226e7edc3'
-            'd77e234748e8d8dadab9b8813f2ccf7290ce724bb43f4b7e5df7904eae84d0b1'
-            'b6744d5c9f2df2dabb3ff8f01260b8dbfcb6e0e22ccccd26a936adef61132dff')
+            '04f94018e1cec48920a57fb2307503c72fb19361578325dfd44c7d5226e7edc3')
 options=(!debug)
 
 pkgver() {
@@ -169,11 +165,11 @@ package() {
     ln -s /opt/jellyfin-desktop-cef/jellyfin-desktop-cef "$pkgdir/usr/bin/jellyfin-desktop-cef"
 
     # Icon
-    install -Dm644 "$srcdir/jellyfin-desktop-cef.svg" \
+    install -Dm644 resources/linux/jellyfin-desktop-cef.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/jellyfin-desktop-cef.svg"
 
     # Desktop entry
-    install -Dm644 "$srcdir/jellyfin-desktop-cef.desktop" \
+    install -Dm644 resources/linux/jellyfin-desktop-cef.desktop \
         "$pkgdir/usr/share/applications/jellyfin-desktop-cef.desktop"
 
     # License

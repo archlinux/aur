@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-cef-git
 	pkgdesc = Experimental rewrite of Jellyfin Desktop built on CEF
-	pkgver = 0.r96.deb14dd
+	pkgver = 0.r98.f3c8008
 	pkgrel = 1
 	url = https://github.com/jellyfin-labs/jellyfin-desktop-cef
 	arch = x86_64
@@ -49,11 +49,7 @@ pkgbase = jellyfin-desktop-cef-git
 	options = !debug
 	source = git+https://github.com/jellyfin-labs/jellyfin-desktop-cef.git
 	source = https://cef-builds.spotifycdn.com/cef_binary_143.0.14+gdd46a37+chromium-143.0.7499.193_linux64_minimal.tar.bz2
-	source = jellyfin-desktop-cef.desktop
-	source = jellyfin-desktop-cef.svg
 	sha256sums = SKIP
 	sha256sums = 04f94018e1cec48920a57fb2307503c72fb19361578325dfd44c7d5226e7edc3
-	sha256sums = d77e234748e8d8dadab9b8813f2ccf7290ce724bb43f4b7e5df7904eae84d0b1
-	sha256sums = b6744d5c9f2df2dabb3ff8f01260b8dbfcb6e0e22ccccd26a936adef61132dff
 
 pkgname = jellyfin-desktop-cef-git
