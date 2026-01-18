@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-srisakdi
+	pkgdesc = Thailand national fonts: TH-Srisakdi
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-ProfDrSrisakdi Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/03-TH-Srisakdi.zip
+	sha256sums = 3ae07e27d0f4eba6d04664f234dc257e0b842d901bd38aba9ea815c2f88d18db
+	b2sums = 631ba04b9de3e40759a72961e86dca08314d5122acdbcbaaa42923074470dde35a3fc1b4b53c14dbbce7507170023199431e54edd7d32ee58867317c4248bd05
+
+pkgname = ttf-sipa-srisakdi
