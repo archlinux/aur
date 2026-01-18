@@ -3,7 +3,7 @@
 
 pkgname=ttf-twcns-fonts
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20250718
+pkgver=20260111
 pkgrel=1
 arch=('any')
 url='https://data.gov.tw/dataset/5961'
@@ -12,8 +12,8 @@ source=('https://www.cns11643.gov.tw/opendata/Fonts_Sung.zip'
         'https://www.cns11643.gov.tw/opendata/Fonts_Kai.zip'
         '46-twcns.conf' '66-twcns.conf'
         '政府資料開放授權條款-第一版' 'OGDL-1.0' 'COPYRIGHT')
-sha256sums=('0bc3dc65c01791575c4846f6c4827bcb878f7a665a517515c48b702bcb05a72c'
-            '32501a9210b47724ae3e1b7945206dd37837b5b3300b83694611627401a6be83'
+sha256sums=('7e51ee9870009f6d6a8e0aee841dd4d711f6baaff72fb9a9c24f7ed310013253'
+            '9a234972a277de1a581df13620ceb277d44dc3a456cd1eada24931d696d0d86f'
             'c5f5178b7a54d64ed7602baf92f05a90dfc881cbf6f2fbe0487919efb83a04f9'
             '001c0395c97ba4a95db3f1a390263bf5abe9df989085052e6112c1718534b93f'
             '5752216377a7b59433b2cc83164be2f93533446e72953a1d4769ceddd1349a00'
@@ -24,8 +24,7 @@ sha256sums=('0bc3dc65c01791575c4846f6c4827bcb878f7a665a517515c48b702bcb05a72c'
 package_ttf-twcns-fonts() {
     msg 'Installing the fonts'
     install -dm755 "${pkgdir}"/usr/share/fonts/TTF
-    mv -v TW-Sung* "${pkgdir}"/usr/share/fonts/TTF/
-    mv -v TW-Kai* "${pkgdir}"/usr/share/fonts/TTF/
+    mv -v TW-* "${pkgdir}"/usr/share/fonts/TTF/
     msg 'Installing configuration'
     install -dm755 "${pkgdir}"/usr/share/fontconfig/conf.default
     install -Dm644 "${srcdir}"/46-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/46-twcns.conf
@@ -38,3 +37,5 @@ package_ttf-twcns-fonts() {
     install -Dm644 "${srcdir}"/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
     # TODO: proper OFL-1.1 license
 }
+
+# vim:set sw=2 sts=-1 et:
