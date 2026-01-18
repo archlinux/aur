@@ -1,7 +1,7 @@
 pkgbase = neuralrack
-	pkgdesc = A Neural Model and Impulse Response File loader
+	pkgdesc = A neural model and impulse response file loader
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgname = neuralrack
 	depends = neuralrack-vst
 
 pkgname = neuralrack-clap
-	pkgdesc = A Neural Model and Impulse Response File loader – CLAP
+	pkgdesc = A neural model and impulse response file loader – CLAP
 	groups = pro-audio
 	groups = clap-plugins
 	depends = glibc
@@ -42,7 +42,7 @@ pkgname = neuralrack-clap
 	optdepends = clap-host: for loading the CLAP plugin
 
 pkgname = neuralrack-lv2
-	pkgdesc = A Neural Model and Impulse Response File loader – LV2
+	pkgdesc = A neural model and impulse response file loader – LV2
 	groups = pro-audio
 	groups = lv2-plugins
 	depends = glibc
@@ -53,7 +53,7 @@ pkgname = neuralrack-lv2
 	optdepends = lv2-host: for loading the LV2 plugin
 
 pkgname = neuralrack-standalone
-	pkgdesc = A Neural Model and Impulse Response File loader – JACK standalone
+	pkgdesc = A neural model and impulse response file loader – JACK standalone
 	depends = glibc
 	depends = gcc-libs
 	depends = libx11
@@ -64,7 +64,7 @@ pkgname = neuralrack-standalone
 	depends = libsndfile.so
 
 pkgname = neuralrack-vst
-	pkgdesc = A Neural Model and Impulse Response File loader – VST2
+	pkgdesc = A neural model and impulse response file loader – VST2
 	groups = pro-audio
 	groups = vst-plugins
 	depends = glibc

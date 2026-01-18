@@ -1,4 +1,4 @@
 pkg/
 src/
-NeuralRack-*.tar.xz
-neuralrack-*.pkg.tar.*
+*.tar.*
+*.zip

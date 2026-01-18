@@ -5,8 +5,8 @@ _name=NeuralRack
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst})
 pkgver=0.3.0
-pkgrel=1
-pkgdesc='A Neural Model and Impulse Response File loader'
+pkgrel=2
+pkgdesc='A neural model and impulse response file loader'
 arch=(aarch64 x86_64)
 url="https://github.com/brummer10/$_name"
 license=(BSD-3-Clause)
@@ -80,7 +80,7 @@ package_neuralrack-clap() {
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
-  install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_neuralrack-lv2() {
@@ -91,7 +91,7 @@ package_neuralrack-lv2() {
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
-  install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_neuralrack-standalone() {
@@ -100,7 +100,7 @@ package_neuralrack-standalone() {
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
-  install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_neuralrack-vst() {
@@ -111,5 +111,5 @@ package_neuralrack-vst() {
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
-  install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
