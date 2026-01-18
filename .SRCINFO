@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-chakra
+	pkgdesc = Thailand national fonts: TH-Chakra-Petch
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-DIP_SIPA Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/10-TH-Chakra-Petch.zip
+	sha256sums = 7507b3b81ae36460057e325fa7b4a467a0003bb855b57ec84a8ac5efe71cc9c5
+	b2sums = 4a3e517954af1ac740170f57e0a2b7ff2820b7265b084febed03f8dc626070f7e5885a02dd972cf59ef9f4581d188b6bd77fd788620025c4490c4c428817f290
+
+pkgname = ttf-sipa-chakra
