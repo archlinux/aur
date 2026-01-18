@@ -1,0 +1,5 @@
+[clipse-bin]
+source = "github"
+github = "savedra1/clipse"
+use_latest_release = true
+prefix = "v"
