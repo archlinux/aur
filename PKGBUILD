@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=beads
-pkgver=0.47.2
+pkgver=0.48.0
 pkgrel=1
 pkgdesc='Git-backed issue tracking system designed for AI coding agents'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('git')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/steveyegge/beads/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('81576ce7049df72b85bdf8e295b7f6a53290313980c745e660a099fba6b57b440ff5e1cced262773b8276c71f83776469ebe4a9a30a1a8de3d43aef8dcaa5a68')
+b2sums=('98a5c950e0d487350b36e69a610a6acf9d22affc6262154eb54ecb9f4d21d5dc8a177b57745c9d97bfb2a2937e53fdbd8aceb2f3a8ae7a1d710fa843be1a9258')
 
 build() {
   cd "$pkgname-$pkgver"
