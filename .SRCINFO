@@ -1,0 +1,13 @@
+pkgbase = go-idle-bin
+	pkgdesc = TUI application to manage your dependencies
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/fuad-daoud/go-idle
+	license = MIT
+	conflicts = go-idle
+	provides = go-idle
+	arch = x86_64
+	source_x86_64 = https://github.com/fuad-daoud/go-idle/releases/download/v${pkgver}/go-idle-linux-amd64.tar.gz
+	sha256sums_x86_64 = 925a760ad389bf1cf1898afcb88c7bcf7b0edc0b1cbb70a75dd85e071da22d6f
+	
+pkgname = go-idle-bin
