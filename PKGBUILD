@@ -1,13 +1,13 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=bikexperience
-pkgver=5.7.0
-pkgrel=3
+pkgver=6.0.2
+pkgrel=1
 pkgdesc="Software for outdoor training planning and gpx-track-management"
 arch=('any')
 url="https://www.bikexperience.de/"
 license=('GPL')
-depends=('java-runtime>=7' 'unzip')
+depends=('java-runtime>=23' 'unzip')
 optdepends=('rxtx: for serial connection with bike computers')
 source=(
 "https://www.bikexperience.de/download/bXp-${pkgver}-common-install.zip"
@@ -15,7 +15,7 @@ source=(
 "bikeXperience")
 
 md5sums=(
-'22f3d5a0eb8ebe326a62413bae223c6e'
+'1d5115042858bb8a9b1fc1eb07405806'
 'd56366efca3c206e2ba319bd7bd92b65'
 '606fa88e3b6040d0eb6963203e5cff2b')
                 
