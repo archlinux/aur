@@ -2,7 +2,7 @@
 
 _name=ormsgpack
 pkgname=python-$_name
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Fast, correct Python msgpack library supporting dataclasses, datetimes, and numpy."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'glibc' 'gcc-libs')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-msgpack' 'python-numpy' 'python-pendulum' 'python-pydantic' 'python-pytest' 'python-dateutil' 'python-pytz' 'python-tzdata')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('eafeffec299a776a621cce0ef3e58aeeb62ccae555084f8678a71a1cbfcd8585')
+sha256sums=('28e4d519320aa050a6efb2ada742c48816215929c9fb7c2c4beca9a16295d004')
 
 build() {
   cd "$srcdir"/$_name-$pkgver
@@ -22,6 +22,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
