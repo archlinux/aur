@@ -2,7 +2,7 @@
 
 _name="lxst"
 pkgname="python-${_name}"
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Lightweight Extensible Signal Transport for Reticulum"
 arch=(
@@ -22,7 +22,6 @@ depends=(
   'python-numpy>=2.3.4'
   'python-pycodec2>=4.1.0'
   'python-rns>=1.0.4'
-  'python-soundcard>=0.4.5'
 )
 makedepends=(
   'python-installer'
@@ -32,7 +31,7 @@ optdepends=(
   'python-pyaudio: for playing AudioSegments (second preference)'
   'python-ffpyplayer: for playing AudioSegments (third preference)'
   'python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter'
-  'python-cffi: filter acceleration'
+  'python-cffi>=2.0.0: filter acceleration'
 )
 source=(
   "https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name//-/_}-${pkgver}-py3-none-any.whl"
@@ -40,7 +39,7 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
-sha256sums=('24b39ce21db538b168b80567ecc8d7dbf002e5a86c328aa8571304126d57c79a')
+sha256sums=('49b3c03e93c18e13c83ad04c39fba386da174ac649b91124c695a4cafaf78f58')
 
 package() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
