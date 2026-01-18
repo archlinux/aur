@@ -23,6 +23,7 @@ build() {
 
 package() {
   cd "${srcdir}/kumir2/build"
-  make DESTDIR="$pkgdir/" install  
+  make DESTDIR="$pkgdir/" install
+  sed -i -e 's/kumir2-classic/env QT_QPA_PLATFORM=xcb kumir2-classic/g' "$pkgdir/usr/share/applications/kumir2-classic.desktop"
   mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib" | true
 }
