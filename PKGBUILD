@@ -7,7 +7,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.2.42.g03c18b2
-pkgrel=6
+pkgrel=7
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 	'python-pygithub>=2.8.1' 'python-pygithub<3'
 	'python-pyqt6>=6.8' 'python-pyqt6<7'
 	'python-requests>=2.32' 'python-requests<3'
-	'python-valve-parsers-git>=1.0.7'
+	'python-valve-parsers>=1.0.7'
 )
 makedepends=('git' 'gendesk' 'sed')
 optdepends=(
