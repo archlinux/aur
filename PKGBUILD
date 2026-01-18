@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.23.3
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -12,13 +12,17 @@ depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydan
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
-source=("$_name::git+$url.git#tag=v$pkgver")
-sha256sums=('1d22b10618dac69cb4868824c8a01b1dda3ebf4121dfdec69d79d99a76dff3d8')
+source=("$_name::git+$url.git#tag=v$pkgver"
+        "https://github.com/modelcontextprotocol/python-sdk/pull/1834.patch")
+sha256sums=('08c376069011439d6fa0928267ce45eddc127aed40b59367ab2dc54c602bdcaa'
+            '34fb50d1543e374a1c6de07011b5484c08a93f3f7e3d38eca44e25b5e4ac06a6')
 
 prepare(){
   cd "$srcdir"/$_name
   git clean -fdx
-  sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
+  # Fix compatibility with Python 3.14
+  patch -Np1 -i ../1834.patch
+  sed -i 's/timeout=20/timeout=60/' tests/client/test_config.py # Increate time limit
 }
 
 build() {
@@ -30,6 +34,7 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
+    -p 'no:benchmark'
   )
   cd "$srcdir"/$_name
   python -m venv --system-site-packages test-env
