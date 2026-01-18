@@ -18,17 +18,35 @@ pkgbase = ledspicer
 	sha256sums = 53303d3a9e30860540187e09c87ef6c7c647d46fec2877b00eb7ee65da92b255
 
 pkgname = ledspicer
+	pkgdesc = LED controller daemon for arcade cabinets and RGB lighting
 	depends = tinyxml2>=6.0
 	depends = libusb>=1.0.22
 	depends = libpulse>=0.9
 	depends = alsa-lib>=0.2
 
 pkgname = ledspicer-nanoled
+	pkgdesc = LEDSpicer plugin for Ultimarc NanoLed
+
 pkgname = ledspicer-pacdrive
+	pkgdesc = LEDSpicer plugin for Ultimarc PacDrive
+
 pkgname = ledspicer-pacled64
+	pkgdesc = LEDSpicer plugin for Ultimarc PacLed64
+
 pkgname = ledspicer-ultimateio
+	pkgdesc = LEDSpicer plugin for Ultimarc Ultimate I/O
+
 pkgname = ledspicer-ledwiz32
+	pkgdesc = LEDSpicer plugin for Groovy Game Gear LedWiz32
+
 pkgname = ledspicer-howler
+	pkgdesc = LEDSpicer plugin for WolfWareTech Howler
+
 pkgname = ledspicer-adalight
+	pkgdesc = LEDSpicer plugin for Adalight serial LEDs
+
 pkgname = ledspicer-raspberrypi
+	pkgdesc = LEDSpicer plugin for Raspberry Pi GPIO
+
 pkgname = ledspicer-dev
+	pkgdesc = LEDSpicer development headers
