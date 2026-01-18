@@ -1,4 +1,5 @@
-# Maintainer: Parmjot Singh <parmjotsinghrobot at gmail dot com>
+# Maintainer: Totchi Lagawi <chatnoir420 at gmx dot com>
+# Former maintainer: Parmjot Singh <parmjotsinghrobot at gmail dot com>
 pkgname=way-shell
 pkgver=0.0.10
 pkgrel=1
