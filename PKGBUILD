@@ -5,7 +5,7 @@ _pkgname=guitar
 pkgname=${_pkgname}-tui-bin
 pkgdesc="A terminal based git client with fast topological & chronological graph rendering"
 
-pkgver=0.1.43
+pkgver=0.1.44
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,7 +25,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux")
 sha256sums=('36874402d076b70d59c8a9db16bf8c9ca55a5b5b3cfc3906cd9fd390a679a608'
             'f37fd448332e5175a0045a65450a2779a3a557713b5fd036c79a28a1f0a3e502')
-sha256sums_x86_64=('f265518e8e46809a0e291fcf403850effd3569fbf073e21f9154619400a7a9c1')
+sha256sums_x86_64=('0793b4219c195d8edf4eab87f1510cd1b37b5e3a65b2cb4aaaf80a7b33bbe434')
 
 
 package() {
