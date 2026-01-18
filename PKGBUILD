@@ -13,9 +13,9 @@ makedepends=('java-environment=17')
 source=("$pkgname-$pkgver.sh::https://github.com/kisekae/${pkgname}/releases/download/V${pkgver}/${pkgname}_unix_${pkgver//./_}.sh"
 		"ultrakiss.desktop")
 md5sums=('b44378910dcd256374ee4117276b1916'
-         '44d52d0f26c5f86a2a7da0d8c7d6073a')
+         '56412a57be924d961c2bc053d2a57353')
 sha256sums=('6673304c75703ea607eff995d775b198dfac4c4d204a0e7f4a134dfca77213a1'
-            '0e83c09fcd6911e42a01b9f1ac570b5629b18f58e257c9316276427d574e9f87')
+            '443d64cda97901bd96fd68af7a7ae15a41574c77827d726656a0a837138f2617')
 
 package() {
 	sh "${srcdir}/${pkgname}-${pkgver}.sh" -q \
@@ -24,7 +24,7 @@ package() {
         -overwrite
 
 	install -d "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/${pkgname}/UltraKiss_${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/UltraKiss_${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -d "${pkgdir}/usr/share/pixmaps"
 	cp "${pkgdir}/opt/${pkgname}/.install4j/UltraKiss_${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"

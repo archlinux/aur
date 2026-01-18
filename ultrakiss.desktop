@@ -1,8 +1,10 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=UltraKiss
 GenericName=UltraKiss
 Type=Application
 Comment=Full featured IDE for creating, editing and viewing online KiSS sets
+Path=/opt/ultrakiss/
 Exec=ultrakiss %U
 Icon=ultrakiss
 Categories=Games;Multimedia;
