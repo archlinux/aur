@@ -1,0 +1,5 @@
+[backhand-bin]
+source = "github"
+github = "wcampbell0x2a/backhand"
+use_latest_release = true
+prefix = "v"
