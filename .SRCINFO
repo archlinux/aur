@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-charmonman
+	pkgdesc = Thailand national fonts: TH-Charmonman
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-ProfDrSrisakdi Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/01-TH-Charmonman.zip
+	sha256sums = c72053c7cdcd7252b84ca031b3f05086e18a8a192cab5014603f221639c9dd09
+	b2sums = 06b9f95dc8aa951b919f9b4a97f74263d75db5c19f944eeb69b2e658df093e8a288f20350b019910786d2938b1707d5a469b11275d59b91ad846647862ffd178
+
+pkgname = ttf-sipa-charmonman
