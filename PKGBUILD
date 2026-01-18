@@ -117,10 +117,7 @@ build() {
     SHARP_FORCE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
-	#* prevent OOM
-	if [[ $(grep MemTotal /proc/meminfo | awk '{print $2}') -gt $((5 * 1024 * 1024)) ]]; then
-		export NODE_OPTIONS=--max-old-space-size=4096
-	fi
+	export NODE_OPTIONS=--max-old-space-size=4096  # prevent OOM
 	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
     pnpm --filter @immich/sdk --filter immich-web build
 
