@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-sarabun
+	pkgdesc = Thailand national fonts: TH-Sarabun-PSK
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-DIP_SIPA Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/07-TH-Sarabun-PSK.zip
+	sha256sums = fd7b1596364ab8ae11f50e8abb71eb1189b0aa6275e71c8e25b0187578a26cae
+	b2sums = a73fb001a0414601609813ffb8dee6dbffe0606e3f0e3290f3e3dba1d48cbf029bc50a5066bb4ede609d169411cf441496db63c7760f6e2f2565aea1d33b3c04
+
+pkgname = ttf-sipa-sarabun
