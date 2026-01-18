@@ -8,7 +8,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libmicrohttpd
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('any')
 pkgdesc="a small C library that is supposed to make it easy to run an HTTP server as part of another application. (Android ${_android_arch})"
@@ -18,8 +18,8 @@ depends=("android-${_android_arch}-gnutls")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-${pkgver}.tar.gz"{,.sig})
-sha256sums=('a89e09fc9b4de34dde19f4fcb4faaa1ce10299b9908db1132bbfa1de47882b94'
-            'SKIP')
+md5sums=('b0e9dbe52637437d21ee22525c404416'
+         'SKIP')
 validpgpkeys=('EA812DBEFA5A7EF17DA8F2C1460A317C3326D2AE'  # Evgeny Grin (Karlson2k) <k2k@yandex.ru>
               'D8423BCB326C7907033929C7939E6BE1E29FC3CC') # Christian Grothoff <christian.grothoff@bfh.ch>
 
@@ -47,4 +47,6 @@ package() {
     make DESTDIR="$pkgdir" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
