@@ -3,7 +3,7 @@
 # Contributor: Antoine Pierlot-Garcin <antoine@bokbox.com>
 
 pkgname="debsig-verify"
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc="Debian package signature verification tool"
 arch=(
@@ -15,13 +15,16 @@ arch=(
   'riscv64'
   'x86_64'
 )
-url="https://manpages.debian.org/unstable/debsig-verify/debsig-verify.1.en.html"
+url="https://manpages.debian.org/unstable/debsig-verify/debsig-verify.1"
 _url="https://git.dpkg.org/git/dpkg/debsig-verify.git"
-license=('GPL-2.0-or-later')
+license=(
+  'GPL-2.0-or-later'
+)
 depends=(
   'dpkg>=1.22'
   'expat'
   'glibc'
+  'gnupg'
   'libmd'
 )
 makedepends=(
@@ -31,9 +34,13 @@ options=(
   'emptydirs'
 )
 _pkgsrc="${pkgname}"
-source=("${_pkgsrc}::git+${_url}#tag=${pkgver}?signed")
-sha256sums=('d61a9bc8973cd4e18910b8c1d2058449509f27b1178e9919f79ecd6d6a52d88a')
-validpgpkeys=('4F3E74F436050C10F5696574B972BF3EA4AE57A3') # Guillem Jover <guillem@debian.org>
+source=(
+  "${_pkgsrc}::git+${_url}#tag=${pkgver}?signed"
+)
+sha256sums=('3e0280f9c3f639d083fc00852daeab26a4c745d10cbd845594614170c72574b8')
+validpgpkeys=(
+  '4F3E74F436050C10F5696574B972BF3EA4AE57A3' # Guillem Jover <guillem@debian.org>
+)
 
 build() {
   local configure_options=(
