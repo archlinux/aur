@@ -1,6 +1,6 @@
 # Maintainer: prankstr <https://github.com/prankstr>
 pkgname=vibepanel-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings"
 arch=('x86_64')
@@ -10,9 +10,10 @@ depends=('gtk4' 'gtk4-layer-shell' 'libpulse' 'upower' 'networkmanager' 'bluez')
 optdepends=('power-profiles-daemon: power profile switching in battery popover')
 provides=('vibepanel')
 conflicts=('vibepanel' 'vibepanel-git')
+options=(!debug)
 source=("vibepanel-${pkgver}::https://github.com/prankstr/vibepanel/releases/download/v${pkgver}/vibepanel-x86_64-unknown-linux-gnu"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/prankstr/vibepanel/v${pkgver}/LICENSE")
-sha256sums=('57411ab8925a330806c585cabd1911df0024adba620812100bbf19fd3e521f96'
+sha256sums=('82c426ffb7477303bd7fc24599ed7bebba46a2859abf7566d5c1bfdb38ca1aaf'
             'bd1e1e78cb74074a2d09d2a4e87675991cdfb45c90dd4746728d8daeb480f9ac')
 
 package() {
