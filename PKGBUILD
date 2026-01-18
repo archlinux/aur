@@ -2,7 +2,7 @@
 
 _name=fastuuid
 pkgname=python-$_name
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Python bindings to Rust's UUID library."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'glibc' 'gcc-libs')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-hypothesis' 'python-pytest' 'python-pytest-benchmark' 'python-pytest' 'python-uuid7')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d0bd4e5b35aad2826403f4411937c89e7c88857b1513fe10f696544c03e9bd8e')
+sha256sums=('178947fc2f995b38497a74172adee64fdeb8b7ec18f2a5934d037641ba265d26')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
@@ -22,11 +22,12 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
 }
 
 package() {

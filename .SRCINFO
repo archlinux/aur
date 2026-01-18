@@ -1,6 +1,6 @@
 pkgbase = python-fastuuid
 	pkgdesc = Python bindings to Rust's UUID library.
-	pkgver = 0.12.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/fastuuid/fastuuid
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-fastuuid
 	depends = python
 	depends = glibc
 	depends = gcc-libs
-	source = https://files.pythonhosted.org/packages/source/f/fastuuid/fastuuid-0.12.0.tar.gz
-	sha256sums = d0bd4e5b35aad2826403f4411937c89e7c88857b1513fe10f696544c03e9bd8e
+	source = https://files.pythonhosted.org/packages/source/f/fastuuid/fastuuid-0.14.0.tar.gz
+	sha256sums = 178947fc2f995b38497a74172adee64fdeb8b7ec18f2a5934d037641ba265d26
 
 pkgname = python-fastuuid
