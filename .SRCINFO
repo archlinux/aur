@@ -1,0 +1,23 @@
+pkgbase = whis-cli-bin
+	pkgdesc = Voice-to-text CLI for terminal users
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/frankdierolf/whis
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libpulse: PulseAudio device enumeration
+	optdepends = vulkan-icd-loader: Local transcription with GPU acceleration
+	provides = whis-cli
+	provides = whis
+	conflicts = whis-cli
+	conflicts = whis
+	source_x86_64 = whis-cli-bin-0.7.1.tar.gz::https://github.com/frankdierolf/whis/releases/download/v0.7.1/whis-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	source_aarch64 = whis-cli-bin-0.7.1.tar.gz::https://github.com/frankdierolf/whis/releases/download/v0.7.1/whis-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = whis-cli-bin
