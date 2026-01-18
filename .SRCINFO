@@ -1,0 +1,15 @@
+pkgbase = nicecode-tool
+	pkgdesc = NiceCode API configuration tool for Claude, CodeX, and Gemini CLI tools
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/icepie/nicecode-tools
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs>=18.12.0
+	noextract = nicecode-tool-1.3.4.tgz
+	source = https://registry.npmjs.org/nicecode-tool/-/nicecode-tool-1.3.4.tgz
+	sha256sums = f1a2bfd6c0e09ccc216d0c562e5a5215ade0bba209e0fd78d83b4bd59f8fc8b0
+
+pkgname = nicecode-tool
