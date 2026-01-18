@@ -2,7 +2,7 @@
 pkgname=ekphos-git
 _pkgname="${pkgname%-git}"
 pkgver=0.5.0.r102.gf04e6cf
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight, fast, terminal-based markdown research tool inspired by Obsidian'
 arch=(x86_64 aarch64)
 url='https://github.com/hanebox/ekphos'
@@ -36,5 +36,7 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
 }
 
