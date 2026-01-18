@@ -4,18 +4,17 @@
 # Contributor: Dario Pellegrini <pellegrini.dario at gmail dd0f5c4e.diffot com>
 _projectname='imapclient'
 pkgname="python-$_projectname"
-pkgver='3.0.1'
-pkgrel='2'
+pkgver='3.1.0'
+pkgrel='1'
 pkgdesc='Easy-to-use, Pythonic and complete IMAP client library'
 arch=('any')
 url="https://github.com/mjs/$_projectname"
 license=('BSD-3-Clause')
-depends=('python>=3.7.0')
+depends=('python>=3.8.0')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
-# $pkgrel added to make sure our cached source file doesn't get used, as the previous pkgrel used a different upstream archive
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('aff08b392cb15d00d66833c7fba1147202ef37ff5f0ad9fb2c6e79daf67126cea00caaacfa6945b53f2e31b7d1525f4043aaacc94b34e695e26cf35b90f25259')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('a8c929affe8572f65bb6dafefc48ba064f1bb12230da7ada9d7af338ecc3834a6216509c59aeccad7faf47dd167dfc0b383b81988091b6578580a2fa8e3d5b15')
 
 _sourcedirectory="$_projectname-$pkgver"
 
