@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=diamond
-pkgver=2.1.18
+pkgver=2.1.19
 pkgrel=1
 pkgdesc="High performance sequence aligner for protein and translated DNA searches with big sequence data. https://doi.org/10.1038/s41592-021-01101-x"
 arch=('x86_64')
@@ -12,14 +12,11 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'zlib' 'zstd' 'glibc' 'sqlite')
 makedepends=('cmake' 'mold')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bbuchfink/diamond/archive/v$pkgver.tar.gz"
-        "fix_nil_value_linkage.patch")
-sha256sums=('aeae3a5f20bc8770b08ae14e563c8e86f26886b238492b43cd91218ebe891f46'
-            '94bc0e2510df7ec4cee25228b193044d614d760f74e9a73f8d4c69b9c971285b')
+        )
+sha256sums=('245436374e4f0f025465a686963852492a0d036a58f01185b7ec9eed145cc347')
 
 prepare() {
     cd $pkgname-$pkgver
-    # fix undefined symbol error due to ODR violation
-    patch -p1 < "$srcdir/fix_nil_value_linkage.patch"
     # set correct documentation link.
     sed -i 's|http://www.diamondsearch.org|https://github.com/bbuchfink/diamond/|g' src/basic/config.cpp
     sed -i 's|http://www.diamondsearch.org|https://github.com/bbuchfink/diamond/wiki/3.-Command-line-options|g' src/util/command_line_parser.cpp
