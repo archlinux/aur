@@ -13,9 +13,9 @@ makedepends=('java-environment=17')
 source=("$pkgname-$pkgver.sh::https://github.com/kisekae/${pkgname}/releases/download/V${pkgver}/${pkgname}_unix_${pkgver//./_}.sh"
 		"ultrakiss.desktop")
 md5sums=('b44378910dcd256374ee4117276b1916'
-         '41d4e9cf1e88785ca44bf2831f8924b2')
+         '486a3c20a3cba0e344a0f794d7afea94')
 sha256sums=('6673304c75703ea607eff995d775b198dfac4c4d204a0e7f4a134dfca77213a1'
-            '18186b2c4d6db37edabaf83616ef99a05ada3db63a482907a333c6f46811dc93')
+            'a7850eda7f44532e3446dbf01c20b4d98b63ce6bd5e3cfefa00113438774d45a')
 
 package() {
 	sh "${srcdir}/${pkgname}-${pkgver}.sh" -q \
