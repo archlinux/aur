@@ -5,7 +5,7 @@ pkgbase = vampire-bin
 	url = https://vprover.github.io/
 	arch = x86_64
 	license = custom:Vampire Software Licence Agreement
-	source = https://github.com/vprover/vampire/releases/download/v5.0.1/vampire-Linux-X64.zip
+	source = vampire-bin-5.0.1.zip::https://github.com/vprover/vampire/releases/download/v5.0.1/vampire-Linux-X64.zip
 	sha256sums = 79f2864d2dd45d0afc7068594123ca389378bfbd188ebcead446ba299d3bd3c5
 
 pkgname = vampire-bin
