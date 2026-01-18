@@ -1,3 +1,56 @@
+## 0.0.384 - 2026-01-16
+
+- Add `&` prefix shortcut for delegating prompts to run in background (equivalent to `/delegate`)
+- Tab completion cycles correctly based on typed prefix, not completed text
+- Allow users to configure the reasoning effort for gpt models
+- MCP servers now start correctly for custom agents
+- Shell commands now display error output when they fail
+- Fixed bug causing model call failures after compaction in some scenarios
+
+## 0.0.383 - 2026-01-15
+
+- Login flow respects OAuth slow_down interval and includes debug logging
+- Custom agent discovery now follows symbolic links to agent definition files
+- Add additional prompting for custom agent delegation
+- Add `/cd` as an alias for `/cwd` command
+- Files created by the CLI are available for @-mention
+- Enable extended thinking for Anthropic Claude models
+- Screen reader mode shows static text instead of animated spinners during login
+- Selecting 'approve for session' now auto-approves pending parallel permission requests of the same type
+- Reasoning view setting persists across sessions
+- Provide clearer error messages when repository is not found or access is denied
+- Inject repo memories in the prompt and add memory storage tool to remember facts across sessions
+- Show delay time when Copilot reads shell output with a delay
+- Support proxy URLs without scheme (e.g., localhost:9999)
+
+## 0.0.382 - 2026-01-14
+
+- Add support for GPT-5.2-Codex model
+- Add `--config-dir` flag to override default configuration directory location
+
+## 0.0.381 - 2026-01-13
+
+- Add --allow-all and --yolo flags to enable all permissions at once
+- Ghost text and tab completion show correct alias when typing slash commands like '/q' for '/quit'
+- Add `/new` as an alias for `/clear` command
+- Shell mode history navigation now filters by prefix - typing `!git` and pressing up arrow cycles only through previous git commands
+
+## 0.0.380 - 2026-01-13
+
+- Retrieving models handles network errors from firewalled routes gracefully, raises errors appropriately
+- Bash command text aligns with output in timeline events
+- Large output hints now suggest appropriate tools for different content types including JSON
+- The `--agent` flag now works in interactive mode
+- Provide inline feedback when rejecting tool permission requests so agents don't have to stop due to denying permissions
+- web-fetch tool now rejects file:// URLs and suggests using view tool instead
+- Terminal escape sequences no longer appear as text input
+- Auto-compaction runs in background without blocking the conversation.
+- Abort signals now propagate to sub-agents, allowing task cancellation to stop all nested agent work
+- Custom agent tool aliasing for the task tool
+- Allow reading files >10MB when using view_range parameter
+- Sessions with large conversation history load faster on startup
+- Send messages while Copilot is thinking to steer or queue
+
 ## 0.0.377 - 2026-01-08
 
 - Large file messages now encourage incremental reading with view_range instead of discouraging all reading
@@ -292,7 +345,7 @@
 
 - Removed the "Windows support is experimental" warning -- we've made some big strides in improving Windows support the last two weeks! Please continue to report any issues/feedback
 - Improved debugging by including the Copilot API request ID for model calls errors and stack traces for client errors
-- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
+- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
 - Added a prompt to approve new paths in `-p` mode. Also added `--allow-all-paths` argument that approves access to all paths.
 - Changed parsing of environment variables in MCP server configuration to treat the value of the `env` section as literal values (fixes https://github.com/github/copilot-cli/issues/26).
   Customers who have configured MCP Servers for use with the CLI will need to make a slight modification to their `~/.copilot/mcp-config.json`. For any servers they have added with an `env` section, they will need to go add a `$` to the start of the "value" pair of the key value pair of each entry in the env-block, so to have the values treated as references to environment variables.
@@ -364,7 +417,7 @@
 
 ## 0.0.334 - 2025-10-03
 
-- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
+- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
 - Added a warning when conversation context approaches ≤20% remaining of the model's limit that truncation will soon occur. At this point, we recommend you begin a new session (improves https://github.com/github/copilot-cli/issues/29)
 - Removed the on-exit usage stats from the persisted session history
 - Added the current version to startup logs to aid in bug reporting
@@ -425,4 +478,3 @@
 - Improved the error message received when using a PAT that is missing the "Copilot Requests" permission (fixes https://github.com/github/copilot-cli/issues/46 )
 - Improved the output of `/user list` to make it clearer which is the current user
 - Improved PowerShell parsing of `ForEach-Object` and detection of command name expressions (e.g.,`& $someCommand`)
-
