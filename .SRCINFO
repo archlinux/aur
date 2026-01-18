@@ -1,0 +1,19 @@
+pkgbase = hyprism-git
+	pkgdesc = A multiplatform Hytale launcher with mod manager
+	pkgver = r92.c8ee552
+	pkgrel = 1
+	url = https://github.com/yyyumeniku/HyPrism
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = hyprism
+	conflicts = hyprism
+	conflicts = hyprism-bin
+	source = hyprism-git::git+https://github.com/yyyumeniku/HyPrism.git
+	sha256sums = SKIP
+
+pkgname = hyprism-git
