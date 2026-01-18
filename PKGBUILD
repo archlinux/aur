@@ -23,7 +23,7 @@ optdepends=(
   'wezterm: Alternative terminal'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Time-0N/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4bfb636ae47aa078b41d26c85929a810955def5814ee92f8c03ab475875ee5a8')
 
 build() {
   cd "$pkgname-$pkgver"
