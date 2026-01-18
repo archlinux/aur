@@ -9,8 +9,9 @@ After = network-online.target
 User = asgi-webdav
 Group = asgi-webdav
 Restart = on-failure
+EnvironmentFile = /etc/asgi-webdav/asgi-webdav.env
 WorkingDirectory = /var/lib/asgi-webdav
-ExecStart = /usr/bin/asgi-webdav --host 0.0.0.0 --port 8000 --config "/etc/asgi-webdav/config.json"
+ExecStart = /usr/bin/asgi-webdav --host $WEBDAV_HOST --port $WEBDAV_PORT --config "/etc/asgi-webdav/config.json"
 TimeoutStopSec = 10
 
 [Install]

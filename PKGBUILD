@@ -20,13 +20,15 @@ optdepends=("python-bonsai: LDAP support"
             "python-httpx: WEBHDFS support"
             "python-httpx-kerberos: WEBHDFS support")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "config.json")
 sha256sums=('bde8164543e227d09709447cffda5ba1b0fedc70d0ea05efcea9fe0d3a1f95e7'
-            '1bdbea265d5d0749bc7bbb95d308ade863c75e33b13bd59e43eab18d38c2880e'
+            '323b0abc7b6e632f63ccf0fe65e36b6d3c16e1d12e778a3d77d6e26df35e6660'
+            '86299b5dfcbb28da4f9703213e3754d44a67fafb93e0da034d6457267a702dfe'
             '59e04c680dfce93154a618c25bc868a8c44e0c5482cbf2c18319b82b86b50e1a'
             'd230496ce61436b709d34078273df5e4b6036eab316b5c9f54f5d261a5c61ea8'
             'a1bc83acb2b0429b4aef7b1bda3a5c0b19312ef4b6680040cc81b34e233e469c'
@@ -47,8 +49,8 @@ package() {
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.env"          "${pkgdir}/etc/${pkgname}/${pkgname}.env"
     install -Dm644 "config.json"             "${pkgdir}/etc/${pkgname}/config.json"
-    echo "TZ=Europe/London"                > "${pkgdir}/etc/${pkgname}/${pkgname}.env"
 
     cd "${pkgname}-${pkgver}"
     install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
