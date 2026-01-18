@@ -9,7 +9,7 @@
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
-pkgver=12.1.2.23578
+pkgver=12.1.2.24722
 pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 #arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ options=('!emptydirs')
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
 _get_source_url() {
-    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw_542488_$1.deb"
+    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw_612408_$1.deb"
     local uri="${furl#https://wps-linux-personal.wpscdn.cn}"
     local secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
     local timestamp10=$(date '+%s')
