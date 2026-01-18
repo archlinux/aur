@@ -1,4 +1,4 @@
-pkgbase = fey-git
+pkgbase = fey
 	pkgdesc = A high-performance, minimalistic Wayland image viewer with GIF and physics support
 	pkgver = 1.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = fey-git
 	source = fey::git+https://github.com/SykikXO/fey.git#tag=v1.0
 	sha256sums = 748e6fc884a75e0b691df999ead9936f9f7848d74befa14d8fc3b458dc8daddc
 
-pkgname = fey-git
+pkgname = fey
