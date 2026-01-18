@@ -1,0 +1,21 @@
+pkgbase = devpod-community-appimage
+	pkgdesc = Codespaces but open-source, client-only, and unopinionated - community fork (AppImage version)
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/skevetter/devpod
+	arch = x86_64
+	license = MPL-2.0
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = devpod
+	provides = devpod-cli
+	conflicts = devpod
+	conflicts = devpod-bin
+	conflicts = devpod-cli-bin
+	noextract = devpod-0.9.3-x86_64.AppImage
+	options = !strip
+	source_x86_64 = devpod-0.9.3-x86_64.AppImage::https://github.com/skevetter/devpod/releases/download/v0.9.3/DevPod_linux_amd64.AppImage
+	sha256sums_x86_64 = 34511ede3560e993e797a9af9e78f65dcc3fedb7bef8d511acf4a49e490771ff
+
+pkgname = devpod-community-appimage
