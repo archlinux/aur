@@ -11,7 +11,7 @@
 _bldtype=Release
 _mozc_commit=02c2c7d9733ef46eb60a208f2c7877a5d3a1f16c
 _bcr_commit=36c2e1552b0f07d188e614138ae7ffb34bf83abb
-_dict_to_mozc_commit=fb9f38e297c73a52b807007225b7c01c2530b0c6
+_dict_to_mozc_commit=cad5cefbb541f4184547241fd35905eb8ba8a81c
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20251022
@@ -67,7 +67,7 @@ sha512sums=('2a2f9840a981dddc9d9cc42647435b1b88999a7cb1a96c7f1f7cac5c2f9a8cd06a0
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            'd359ab1e82d68dc9d96a1a38bd58d5df7a5bc5084b04171f09d82fef086af542d65f14dc4775fb0ab4bd9f49034f2901928004b433cff53c6411c4986d17c447'
+            '3758e8a1a6085acd78bbff721601aafa37bdaabcc681223c66848e6e381aaf1a54e3e731fd937b008582bc621d6a3174392cd3155e666197e090a4169c861dfd'
             'c93441657d787c3fc8635f65c190368d94216df6167596b315b78d02fd4abd14c85895c09d2e40d639b3808105ffd1901110aff6e9b8beaad4f609513caaec36'
             'eda980d6065dee5cd571370d12599358c0e8559dd797e86b07a345dbadabc1f1c26c6d2bdddc02cfe56f0c310180b21df3d8a479e28ff5ca2f2e0ac2e6b60d42'
             'd819e284447e52dcf0c721dc8ac267c43e93f93d02949263d91dc496804a33e966943c473dccfe8ee85ce21657ddb08d56dcec0d8e0a49f6eddc5a80929ced63'
@@ -136,7 +136,7 @@ prepare() {
   #[ -z "$TARGET" ] && TARGET=$(rustc -vV | sed -n 's/host: //p')
   unset RUSTC
   : "${CC:=$(command -v clang || command -v gcc)}"
-  # warning of cc-rs
+  # warning of mimalloc-rust-sys@1.7.9-source
   expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
   CC="$CC" CFLAGS="$CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
