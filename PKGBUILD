@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -30,13 +30,20 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    # Extract version from Cargo.toml and append git info
-    local ver count hash
-    ver=$(grep -m1 '^version' Cargo.toml | sed 's/.*"\(.*\)"/\1/')
-    count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
-    hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-    echo "${ver}.r${count}.g${hash}"
+    cd "$srcdir/$pkgname" || cd "$pkgname" || return 1
+    # Try to get version from git tags first
+    local ver
+    ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    if [[ -n "$ver" ]]; then
+        echo "$ver"
+    else
+        # Fallback: use Cargo.toml version + commit count + short hash
+        local base count hash
+        base=$(grep -m1 '^version' Cargo.toml | sed 's/.*"\(.*\)"/\1/')
+        count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+        hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+        echo "${base}.r${count}.g${hash}"
+    fi
 }
 
 build() {
