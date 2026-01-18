@@ -1,15 +1,16 @@
-pkgbase = alacritty-use-theme-git
+pkgbase = alacritty-use-theme
 	pkgdesc = Small utility to switch the selected theme used by alacritty terminal.
-	pkgver = r15.a32c3b1
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/christophermca/alacritty-use-theme
+	url = https://github.com/alacritty-use-theme/alacritty-use-theme
 	arch = x86_64
 	license = GPL-1.0-or-later
 	makedepends = git
 	depends = alacritty>=0.13.0
 	depends = go-yq
 	provides = alacritty-use-theme
-	source = alacritty-use-theme-git::git+https://github.com/christophermca/alacritty-use-theme.git
-	sha256sums = SKIP
+	conflicts = alacritty-use-theme-git
+	source = alacritty-use-theme-1.0.0::http://github.com/alacritty-use-theme/alacritty-use-theme/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 097237b43055f918631b5fe5a6aafd8778b4c801363da10942610241633f4dc7
 
-pkgname = alacritty-use-theme-git
+pkgname = alacritty-use-theme
