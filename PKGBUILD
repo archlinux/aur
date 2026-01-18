@@ -1,7 +1,7 @@
 # Maintainer: Andrés González <aur.andres at pm dot me>
 
 pkgname=some-sass-language-server
-pkgver=2.1.1
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Sass LSP with improved code suggestions, documentation and code navigation for SCSS."
 url="https://github.com/wkillerud/some-sass"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('cd1407f5a425983b2df6f33491b4defebfbd64fc2c8a888660a7ecb83e219df7')
+sha256sums=('1bb79cec928d758cc4b12dcb06258ad71ace7f6320a827bdc490bd0e3c4eaa39')
 
 prepare() {
   tar xf "$pkgname-$pkgver.tgz" package/LICENSE
