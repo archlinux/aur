@@ -1,15 +1,14 @@
 pkgbase = python-certbot-dns-netcup
 	pkgdesc = netcup DNS Authenticator plugin for Certbot
-	pkgver = 1.4.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/coldfix/certbot-dns-netcup
 	arch = any
 	license = Apache
-	makedepends = python
+	makedepends = python>=3.7
 	makedepends = python-setuptools
-	depends = certbot>=0.31.0
-	depends = dns-lexicon>=3.2.3
-	source = https://github.com/coldfix/certbot-dns-netcup/archive/refs/tags/v1.4.4.tar.gz
-	sha256sums = 2340df80618b6edf282a3a050e4aa0d0e3a6912070a8c1dbbee55e2bac0e1340
+	depends = certbot>=2.7
+	source = https://github.com/coldfix/certbot-dns-netcup/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = facdca0895aac5c6d0f687658b6f291e6f714623dc75d11d1f9e4986a451bdf8
 
 pkgname = python-certbot-dns-netcup
