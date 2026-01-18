@@ -6,6 +6,7 @@ pkgbase = python-technical
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = python-mock
+	checkdepends = python-pip-audit
 	checkdepends = python-pytest
 	checkdepends = python-syrupy
 	makedepends = python-build

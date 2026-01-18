@@ -16,7 +16,7 @@ url="https://github.com/freqtrade/${_pkgname}"
 license=("GPL-3.0-or-later")
 depends=("python" "python-matplotlib" "python-numpy" "python-pandas" "python-scipy" "python-ta-lib")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
-checkdepends=("python-mock" "python-pytest" "python-syrupy")
+checkdepends=("python-mock" "python-pip-audit" "python-pytest" "python-syrupy")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("6c1382210cbf6765b08f709570145ef77b7c89ec8a4d5d0d220f521fb2dfb71ffe03c0a021bf8fe7694db24b640cb72b69eda1b76ab454837409275c5addc456")
 
