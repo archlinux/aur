@@ -1,0 +1,14 @@
+pkgbase = ttf-monolisa-font
+	pkgdesc = MonoLisa TrueType font, must own the fonts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.monolisa.dev/
+	install = monolisa-font.install
+	arch = any
+	license = FaceType - EULA
+	depends = fontconfig
+	depends = ttf-nerd-fonts-symbols
+	source = monolisa-fonts.tar.gz
+	sha256sums = SKIP
+
+pkgname = ttf-monolisa-font
