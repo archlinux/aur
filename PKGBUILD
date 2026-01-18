@@ -3,7 +3,7 @@ pkgname=ec-su_axb35-dkms-git
 _pkgname=${pkgname%-dkms-git}
 pkgdesc='Linux driver for the embedded controller on the Sixunited AXB35-02 board.'
 pkgver=r27.8325346
-pkgrel=1
+pkgrel=2
 url='https://github.com/cmetz/ec-su_axb35-linux'
 arch=('x86_64')
 license=('GPL-2.0')
@@ -14,10 +14,10 @@ source=(
   'ec-su_axb35.conf'
 )
 sha256sums=('SKIP'
-            'db6909e523b2129ff4b62cf568cf58f9699677a69f3d960f99e2257ea23e6809'
+            'fa3fa22c411357764edf7ddea135c53eb718b4cb17e7a48444539dac8b700429'
             '9f150b355e218e1f59af8a72b5052bfaa94ad405d1d95d43f9e16952c0f83455')
 depends=('dkms' 'bc')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'sed')
 optdepends=('netdata: for a monitoring dashboard')
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
