@@ -8,6 +8,8 @@ pkgbase = nicecode-tool
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=18.12.0
+	provides = nicecode-tool
+	provides = nicecode
 	noextract = nicecode-tool-1.3.4.tgz
 	source = https://registry.npmjs.org/nicecode-tool/-/nicecode-tool-1.3.4.tgz
 	sha256sums = f1a2bfd6c0e09ccc216d0c562e5a5215ade0bba209e0fd78d83b4bd59f8fc8b0

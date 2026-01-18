@@ -2,10 +2,11 @@
 
 pkgname=nicecode-tool
 pkgver=1.3.4
-pkgrel=1
+pkgrel=3
 pkgdesc="NiceCode API configuration tool for Claude, CodeX, and Gemini CLI tools"
 arch=('any')
 url="https://github.com/icepie/nicecode-tools"
+provides=('nicecode-tool' 'nicecode')
 license=('MIT')
 depends=('nodejs>=18.12.0')
 makedepends=('npm' 'jq')
