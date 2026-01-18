@@ -4,7 +4,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=litellm
-pkgver=1.80.17
+pkgver=1.81.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
@@ -70,7 +70,7 @@ optdepends=('python-anyio: proxy'
             'python-mlflow: mlflow')
 provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('514ae407e488bccbe0c33a280ed88495d6f079c1dbfe745eb374d898c94b0ac3')
+sha256sums=('f890fa2a89f85b29f57a72365ac784f4abebda5a15a76454c6c8ce1eecc5a2e5')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

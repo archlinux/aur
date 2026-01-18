@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.80.17
+	pkgver = 1.81.0
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = any
@@ -83,7 +83,7 @@ pkgbase = litellm
 	optdepends = python-semantic-router: semantic-router
 	optdepends = python-mlflow: mlflow
 	provides = python-litellm
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.80.17.tar.gz
-	sha256sums = 514ae407e488bccbe0c33a280ed88495d6f079c1dbfe745eb374d898c94b0ac3
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.81.0.tar.gz
+	sha256sums = f890fa2a89f85b29f57a72365ac784f4abebda5a15a76454c6c8ce1eecc5a2e5
 
 pkgname = litellm
