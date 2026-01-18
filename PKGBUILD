@@ -125,15 +125,9 @@ source=(
   "${__pkgname}.desktop"
   "default192x192.png"
 )
-sha256sums=(
-	"SKIP"
-	"SKIP"
-	"SKIP"
-)
-
-# TODO: Signed tagged releases
-validpgpkeys=()
-
+sha256sums=('23a3528861c6301df7937859c2b9cda6f3c4625d4c9cca9bc3e2507724ba8813'
+            '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
+            'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b')
 
 prepare() {
   _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
