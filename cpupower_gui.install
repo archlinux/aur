@@ -1,0 +1,16 @@
+post_install() {
+	# enable daemons
+	echo ":: Enabling cpupower-gui-helper service"
+	systemctl enable cpupower-gui-helper.service
+	systemctl enable cpupower-gui.service
+}
+
+post_upgrade() {
+	echo ":: Enabling cpupower-gui-helper service"
+	systemctl enable cpupower-gui-helper.service
+	systemctl enable cpupower-gui.service
+}
+pre_remove() {
+	systemctl disable cpupower-gui-helper.service
+	systemctl disable cpupower-gui.service
+}
