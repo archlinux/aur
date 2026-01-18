@@ -1,5 +1,5 @@
-pkgbase = kwin-screencastborder
-	pkgdesc = KWin with D-Bus API for screencast stream introspection - An easy to use, but flexible, Wayland compositor
+pkgbase = kwin-screencast-api
+	pkgdesc = KWin with D-Bus API for screencast stream introspection
 	pkgver = 6.5.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
@@ -87,4 +87,4 @@ pkgbase = kwin-screencastborder
 	sha256sums = SKIP
 	sha256sums = 552aca84b36a206ff76583bb619760e14483a4d2bf1bb6d175ad32cbcdf64843
 
-pkgname = kwin-screencastborder
+pkgname = kwin-screencast-api

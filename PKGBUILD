@@ -4,11 +4,11 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kwin-screencastborder
+pkgname=kwin-screencast-api
 pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='KWin with D-Bus API for screencast stream introspection - An easy to use, but flexible, Wayland compositor'
+pkgdesc='KWin with D-Bus API for screencast stream introspection'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
