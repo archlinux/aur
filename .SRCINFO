@@ -1,13 +1,19 @@
 pkgbase = tsql-bin
-	pkgdesc = A modern PostgreSQL manager TUI
+	pkgdesc = A modern PostgreSQL manager TUI - Binary build
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcoury/tsql
 	arch = x86_64
 	license = MIT
 	provides = tsql=0.4.0
 	conflicts = tsql
 	source = tsql-0.4.0.tar.gz::https://github.com/fcoury/tsql/releases/download/v0.4.0/tsql-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/fcoury/tsql/refs/tags/v0.4.0/LICENSE
+	source = tsql-0.4.0.tar.gz.asc
+	source = LICENSE.asc
 	sha256sums = 054d3272ff8b43b79944333c59f5e3028fc35340572c048a554518db56637ae6
+	sha256sums = 279556e0ab3736896f0f313053d9a84b49743ae476a36a3724c31f1d7d853e20
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tsql-bin
