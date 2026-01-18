@@ -1,16 +1,18 @@
 # Maintainer: magnap <echo "bXJvazRhQGdtYWlsLmNvbQo=" | base64 -d>
-pkgname=cyan-skillfish-governor-tt
-pkgver=0.1.6
+variant=-smu
+pkgname=cyan-skillfish-governor$variant
+pkgver=0.2.0_smu
+tag=v${pkgver}
 pkgrel=1
 pkgdesc="GPU governor for the AMD Cyan Skillfish APU"
 arch=('x86_64')
-url="https://github.com/filippor/cyan-skillfish-governor/tree/tt"
+url="https://github.com/filippor/cyan-skillfish-governor/tree/smu"
 license=('MIT')
 depends=('libdrm')
 makedepends=('cargo')
 backup=("etc/$pkgname/config.toml")
-source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('af9af1f7c873c51ffd84bfbf73ef0aa23e8e41c3cec80ccf2d904567e26bdb4756bd113dc150645f6a3b264661e4e7675ffd98806f32d1483bbf572db02956cb')
+source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/${tag}.tar.gz")
+b2sums=('b71b132dcc5b49cdb9a5747299536a62617eca3761277e025f798662af764695cc3f86c786e552212f08b00a5327d29d457337f26c49a8dd919a45067a1f91d6')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -27,8 +29,8 @@ build() {
 
 package() {
     cd "cyan-skillfish-governor-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/cyan-skillfish-governor"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cyan-skillfish-governor/LICENSE"
-    install -Dm644 default-config.toml "$pkgdir/etc/cyan-skillfish-governor/config.toml"
-    install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "cyan-skillfish-governor.service"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/cyan-skillfish-governor${variant}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cyan-skillfish-governor${variant}/LICENSE"
+    install -Dm644 default-config.toml "$pkgdir/etc/cyan-skillfish-governor${variant}/config.toml"
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "cyan-skillfish-governor${variant}.service"
 }
