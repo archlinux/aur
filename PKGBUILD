@@ -12,7 +12,6 @@ _repo='https://github.com/langchain-ai/langgraph'
 depends=('python' 'python-langgraph-checkpoint' 'python-langchain-core')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-langgraph' 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-syrupy' 'python-psycopg')
-/archive/refs/tags/prebuilt==1.0.6.tar.gz
 source=("$_repo/archive/refs/tags/${_name//langgraph-/}==$pkgver.tar.gz")
 sha256sums=('d5899d4ee1eb76735cfebfa7b5d69a55d72f19ed6f70676f8b5eb974a17ec012')
 
