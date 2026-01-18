@@ -1,0 +1,53 @@
+pkgbase = ungoogled-chromium-widevine-bin
+	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
+	pkgver = 143.0.7499.192
+	pkgrel = 1
+	url = https://github.com/ungoogled-software/ungoogled-chromium
+	arch = x86_64
+	license = BSD
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = xdg-utils
+	depends = libxss
+	depends = libcups
+	depends = libgcrypt
+	depends = ttf-liberation
+	depends = systemd
+	depends = dbus
+	depends = libpulse
+	depends = pciutils
+	depends = libva
+	depends = libffi
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = fontconfig
+	depends = brotli
+	depends = libjpeg-turbo
+	depends = icu
+	depends = flac
+	depends = libxml2
+	depends = libwebp
+	depends = minizip
+	depends = opus
+	depends = libxslt
+	depends = harfbuzz
+	depends = libpng
+	depends = freetype2
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = kdialog: support for native dialogs in Plasma
+	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
+	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
+	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	optdepends = upower: Battery Status API support
+	provides = chromium=143.0.7499.192
+	provides = chromedriver=143.0.7499.192
+	conflicts = chromium
+	conflicts = chromedriver
+	noextract = google-chrome-stable_143.0.7499.192-1_amd64.deb
+	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/143.0.7499.192-1/ungoogled-chromium-143.0.7499.192-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_143.0.7499.192-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_143.0.7499.192-1_amd64.deb
+	sha256sums = b27633ca7c4d5204c115da8099fc6f5f20527e2b62955fbd15402f7565816aa8
+	sha256sums = 6484c286dc8089f0eb41d124b96e3ef4c4cb0ff289dc0f8698e1f1b851fbc834
+
+pkgname = ungoogled-chromium-widevine-bin
