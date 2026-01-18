@@ -21,7 +21,7 @@ provides=('jubby')
 conflicts=('jubby')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/jubby_${pkgver}_amd64.deb")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('710c78661c399c7a275f73128e4a4e5cedb336671feaf5f56f9362bef6e2f484')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}/"
