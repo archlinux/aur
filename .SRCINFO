@@ -1,0 +1,21 @@
+pkgbase = mc-server-manager-systemd
+	pkgdesc = Systemd service manager for Minecraft servers with screen support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arcticzomb/mc-server-manager-systemd
+	install = mc-server-manager-systemd.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = systemd
+	depends = screen
+	depends = java-runtime
+	optdepends = java-runtime-headless: headless Java runtime for servers
+	backup = usr/lib/systemd/system/minecraft@.service
+	source = minecraft@.service::https://raw.githubusercontent.com/Arcticzomb/mc-server-manager-systemd/main/minecraft@.service
+	source = README.md::https://raw.githubusercontent.com/Arcticzomb/mc-server-manager-systemd/main/README.md
+	source = LICENSE::https://raw.githubusercontent.com/Arcticzomb/mc-server-manager-systemd/main/LICENSE
+	sha256sums = e2d799c000adb830f24d945879a87a62e18b1e06f989bdbb0bdc11cf3fb94a83
+	sha256sums = a500e23343193dc4a9a2bd52256f0d61d489d6bd517100b00fda4f54dc01e39b
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = mc-server-manager-systemd

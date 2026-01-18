@@ -1,0 +1,65 @@
+post_install() {
+    # Create minecraft user if it doesn't exist
+    if ! id -u minecraft &>/dev/null; then
+        useradd -r -m -d /home/minecraft -s /bin/bash minecraft
+        echo "==> Created 'minecraft' system user with home at /home/minecraft"
+    fi
+    
+    # Create servers directory
+    if [ ! -d /opt/minecraft-servers ]; then
+        mkdir -p /opt/minecraft-servers
+        chown minecraft:minecraft /opt/minecraft-servers
+        chmod 755 /opt/minecraft-servers
+        echo "==> Created /opt/minecraft-servers directory"
+    fi
+    
+    # Reload systemd
+    systemctl daemon-reload
+    
+    cat << EOF
+
+==> Minecraft Server Manager installed successfully!
+
+EOF
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    
+    cat << EOF
+
+==> Systemd configuration reloaded
+
+If you have running servers, consider restarting them to apply any changes:
+  sudo systemctl restart 'minecraft@*'
+
+EOF
+}
+
+pre_remove() {
+    # Stop all minecraft services
+    ACTIVE=$(systemctl list-units --type=service --state=active --no-legend 'minecraft@*.service' | awk '{print $1}')
+    if [ -n "$ACTIVE" ]; then
+        echo "==> Stopping active Minecraft servers..."
+        systemctl stop 'minecraft@*.service' 2>/dev/null || true
+    fi
+}
+
+post_remove() {
+    systemctl daemon-reload
+    
+    cat << EOF
+
+==> Minecraft Server Manager removed
+
+NOTE: The following were NOT removed:
+  - minecraft user (/home/minecraft)
+  - Server data (/opt/minecraft-servers)
+
+To completely remove everything:
+  sudo systemctl stop 'minecraft@*'
+  sudo userdel -r minecraft
+  sudo rm -rf /opt/minecraft-servers
+
+EOF
+}
