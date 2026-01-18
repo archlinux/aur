@@ -16,9 +16,7 @@ pkgbase = rataplay
 	options = !debug
 	source = rataplay::https://github.com/mojahid8238/Rataplay/releases/download/v1.1.0/rataplay
 	source = LICENSE::https://github.com/mojahid8238/Rataplay/raw/v1.1.0/LICENSE
-	source = README.md::https://github.com/mojahid8238/Rataplay/raw/v1.1.0/README.md
 	sha256sums = 64418a1878fce938bcf00968ad3dea54453eda91dffdaa01fd0241caf3806c4a
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
-	sha256sums = 03b9c92889b5156994bbd3bd4ad1f70cf766a417ed8138f105642d938a5c9c5d
 
 pkgname = rataplay
