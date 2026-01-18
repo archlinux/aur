@@ -1,13 +1,13 @@
 pkgbase = albumfetch
 	pkgdesc = A CLI tool written in Zig that displays random albums in the terminal
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/StuffedRat46810/albumfetch
 	arch = x86_64
 	license = MIT
 	makedepends = zig
 	depends = glibc
-	source = albumfetch-0.1.1.tar.gz::https://github.com/StuffedRat46810/albumfetch/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c65508e70704ed4533a819f963588fd85bced82d5b815e0acf4301abf8d948d5
+	source = albumfetch-0.1.2.tar.gz::https://github.com/StuffedRat46810/albumfetch/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = e374bca86ac534b8ed2191bc639cee8e2872ad4b0c4c9b8aec7b53aeae9fb165
 
 pkgname = albumfetch

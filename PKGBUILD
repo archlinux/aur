@@ -1,6 +1,6 @@
 # Maintainer: Alon Levy <alon@moranoa.com>
 pkgname=albumfetch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A CLI tool written in Zig that displays random albums in the terminal"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('zig')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c65508e70704ed4533a819f963588fd85bced82d5b815e0acf4301abf8d948d5')
+sha256sums=('e374bca86ac534b8ed2191bc639cee8e2872ad4b0c4c9b8aec7b53aeae9fb165')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
