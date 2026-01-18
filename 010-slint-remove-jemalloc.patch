@@ -1,16 +1,16 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -165,7 +165,6 @@ rayon = { version = "1.10.0", default-features = false }
+@@ -170,7 +169,6 @@ rayon = { version = "1.10.0", default-features = false }
  raw-window-handle-06 = { package = "raw-window-handle", version = "0.6", features = ["alloc"] }
  unicode-segmentation = { version = "1.12.0" }
  glow = { version = "0.16" }
 -tikv-jemallocator = { version = "0.6" }
- wgpu-24 = { package = "wgpu", version = "24", default-features = false }
- 
- [profile.release]
+ wgpu-26 = { package = "wgpu", version = "26", default-features = false }
+ wgpu-27 = { package = "wgpu", version = "27", default-features = false }
+ input = { version = "0.9.0", default-features = false }
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -152,10 +152,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -153,10 +153,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()

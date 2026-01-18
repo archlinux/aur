@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=slint-cpp
-pkgver=1.12.1
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces for C++ apps'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
 arch=('x86_64')
@@ -27,8 +27,8 @@ provides=(
     'slint-compiler')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('730137be333130739c3531f2755186019db72f0f61e71ce9bb6f153963471941'
-            '87e5533214c7c4b94c38e626cab1f44d507d52cfbc810acf53acb22793097080')
+sha256sums=('009dba754f0bdb42f56381b960dc9169568bcdecc588096b70ccccd2771ffff1'
+            'fcb40b0b3395785debab59d4d4c09ee8ded180e013de563aab3585f2358aaceb')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="slint-${pkgver}/Cargo.toml"
@@ -48,6 +48,7 @@ build() {
         -DSLINT_FEATURE_BACKEND_QT:BOOL='OFF' \
         -DSLINT_FEATURE_BACKEND_WINIT:BOOL='ON' \
         -DSLINT_FEATURE_GETTEXT:BOOL='ON' \
+        -DSLINT_FEATURE_LIVE_PREVIEW:BOOL='ON' \
         -DSLINT_FEATURE_RENDERER_FEMTOVG:BOOL='ON' \
         -DSLINT_FEATURE_RENDERER_SKIA:BOOL='ON' \
         -DSLINT_FEATURE_RENDERER_SKIA_OPENGL:BOOL='ON' \
