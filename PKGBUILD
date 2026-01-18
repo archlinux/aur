@@ -5,10 +5,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencastborder
-pkgver=6.5.3
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='KWin with Screencast Border Indicator effect - An easy to use, but flexible, Wayland compositor'
+pkgdesc='KWin with D-Bus API for screencast stream introspection - An easy to use, but flexible, Wayland compositor'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
@@ -82,11 +82,11 @@ makedepends=(extra-cmake-modules
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
-        add-screencastborder-effect.patch)
+        screencast-dbus-api.patch)
 install=kwin.install
-sha256sums=('90eaf74d7733a591e5f9170b59a49ee0e3684de954ab756fef0421c035149f71'
+sha256sums=('fbad845044231174ca7aad45572d1713d1b6f65289d94cac24776a103f051e46'
             'SKIP'
-            'da3973719112197938951fc1456194a00e3a09452a9857e072a44f8277847124')
+            '552aca84b36a206ff76583bb619760e14483a4d2bf1bb6d175ad32cbcdf64843')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -95,7 +95,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 
 prepare() {
   cd kwin-$pkgver
-  patch -Np1 -i ../add-screencastborder-effect.patch
+  patch -Np1 -i ../screencast-dbus-api.patch
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = kwin-screencastborder
-	pkgdesc = KWin with Screencast Border Indicator effect - An easy to use, but flexible, Wayland compositor
-	pkgver = 6.5.3
+	pkgdesc = KWin with D-Bus API for screencast stream introspection - An easy to use, but flexible, Wayland compositor
+	pkgver = 6.5.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
@@ -73,18 +73,18 @@ pkgbase = kwin-screencastborder
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = plasma-keyboard: virtual keyboard
-	provides = kwin=6.5.3
+	provides = kwin=6.5.5
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/6.5.3/kwin-6.5.3.tar.xz
-	source = https://download.kde.org/stable/plasma/6.5.3/kwin-6.5.3.tar.xz.sig
-	source = add-screencastborder-effect.patch
+	source = https://download.kde.org/stable/plasma/6.5.5/kwin-6.5.5.tar.xz
+	source = https://download.kde.org/stable/plasma/6.5.5/kwin-6.5.5.tar.xz.sig
+	source = screencast-dbus-api.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 90eaf74d7733a591e5f9170b59a49ee0e3684de954ab756fef0421c035149f71
+	sha256sums = fbad845044231174ca7aad45572d1713d1b6f65289d94cac24776a103f051e46
 	sha256sums = SKIP
-	sha256sums = da3973719112197938951fc1456194a00e3a09452a9857e072a44f8277847124
+	sha256sums = 552aca84b36a206ff76583bb619760e14483a4d2bf1bb6d175ad32cbcdf64843
 
 pkgname = kwin-screencastborder

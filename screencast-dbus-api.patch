@@ -1,0 +1,3460 @@
+From 29e46750f653e6013594aa46b9e3cac49bde61a7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
+Date: Fri, 14 Nov 2025 21:50:53 +0100
+Subject: [PATCH] plugins/screencast: Add D-Bus API for stream introspection
+ and consumer tracking
+
+Adds a D-Bus ObjectManager interface exposing active screencast streams
+with real-time metadata including consumer application detection via
+PipeWire graph traversal. Enables external applications to query which
+screens/windows are being recorded and by which application.
+
+Key features:
+- D-Bus API on session bus (org.kde.KWin.ScreenCast)
+- Per-stream objects with type-specific interfaces (Window/Output/Region)
+- Asynchronous PipeWire consumer detection
+- Comprehensive input validation and DoS protection
+- Shared validation constants for security
+
+API documentation included in DBUS_API.md with examples.
+---
+ src/plugins/screencast/CMakeLists.txt         |  57 +-
+ src/plugins/screencast/DBUS_API.md            | 379 ++++++++++
+ src/plugins/screencast/metadata_plugin.json   |   5 +
+ .../org.kde.KWin.ScreenCast.Output.xml        |  32 +
+ .../org.kde.KWin.ScreenCast.Region.xml        |  32 +
+ .../org.kde.KWin.ScreenCast.Window.xml        |  47 ++
+ .../screencast/org.kde.KWin.ScreenCast.xml    |  36 +
+ .../screencast/outputscreencastsource.cpp     |  31 +
+ .../screencast/outputscreencastsource.h       |  32 +
+ .../screencast/pipewireConsumertracker.cpp    | 695 ++++++++++++++++++
+ .../screencast/pipewireConsumertracker.h      | 158 ++++
+ .../screencast/regionscreencastsource.cpp     |  16 +-
+ .../screencast/regionscreencastsource.h       |  49 +-
+ .../screencast_validation_constants.h         |  40 +
+ .../screencast/screencastdbus_utils.cpp       | 170 +++++
+ src/plugins/screencast/screencastdbus_utils.h |  71 ++
+ .../screencast/screencastdbusinterface.cpp    | 392 ++++++++++
+ .../screencast/screencastdbusinterface.h      |  65 ++
+ src/plugins/screencast/screencastmanager.cpp  |  36 +-
+ src/plugins/screencast/screencastmanager.h    |  18 +
+ src/plugins/screencast/screencastsource.h     |  16 +
+ src/plugins/screencast/screencaststream.cpp   | 187 ++++-
+ src/plugins/screencast/screencaststream.h     |  86 ++-
+ src/plugins/screencast/screencasttypes.h      |  26 +
+ .../screencast/windowscreencastsource.cpp     |  96 ++-
+ .../screencast/windowscreencastsource.h       |  38 +
+ 26 files changed, 2776 insertions(+), 34 deletions(-)
+ create mode 100644 src/plugins/screencast/DBUS_API.md
+ create mode 100644 src/plugins/screencast/metadata_plugin.json
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.xml
+ create mode 100644 src/plugins/screencast/pipewireConsumertracker.cpp
+ create mode 100644 src/plugins/screencast/pipewireConsumertracker.h
+ create mode 100644 src/plugins/screencast/screencast_validation_constants.h
+ create mode 100644 src/plugins/screencast/screencastdbus_utils.cpp
+ create mode 100644 src/plugins/screencast/screencastdbus_utils.h
+ create mode 100644 src/plugins/screencast/screencastdbusinterface.cpp
+ create mode 100644 src/plugins/screencast/screencastdbusinterface.h
+ create mode 100644 src/plugins/screencast/screencasttypes.h
+
+diff --git a/src/plugins/screencast/CMakeLists.txt b/src/plugins/screencast/CMakeLists.txt
+index 4c119d3349..068aa59713 100644
+--- a/src/plugins/screencast/CMakeLists.txt
++++ b/src/plugins/screencast/CMakeLists.txt
+@@ -1,10 +1,45 @@
+-kcoreaddons_add_plugin(screencast INSTALL_NAMESPACE "kwin/plugins")
+-target_sources(screencast PRIVATE
+-    main.cpp
++# Generate D-Bus adaptors from XML
++qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
++    org.kde.KWin.ScreenCast.xml
++    screencaststream.h
++    KWin::ScreenCastStream
++    screencastadaptor
++    ScreenCastAdaptor
++)
++
++qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
++    org.kde.KWin.ScreenCast.Window.xml
++    screencaststream.h
++    KWin::ScreenCastStream
++    windowstreamadaptor
++    WindowStreamAdaptor
++)
++
++qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
++    org.kde.KWin.ScreenCast.Output.xml
++    screencaststream.h
++    KWin::ScreenCastStream
++    outputstreamadaptor
++    OutputStreamAdaptor
++)
++
++qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
++    org.kde.KWin.ScreenCast.Region.xml
++    screencaststream.h
++    KWin::ScreenCastStream
++    regionstreamadaptor
++    RegionStreamAdaptor
++)
++
++# Common library for shared code
++add_library(screencast_common STATIC
++    ${SCREENCAST_DBUS_ADAPTORS}
+     outputscreencastsource.cpp
++    pipewireConsumertracker.cpp
+     pipewirecore.cpp
+     regionscreencastsource.cpp
+     screencastbuffer.cpp
++    screencastdbus_utils.cpp
+     screencastlayer.cpp
+     screencastmanager.cpp
+     screencastsource.cpp
+@@ -12,11 +47,23 @@ target_sources(screencast PRIVATE
+     windowscreencastsource.cpp
+ )
+ 
+-ecm_qt_declare_logging_category(screencast
++# Make the static library position-independent for linking into shared modules
++set_property(TARGET screencast_common PROPERTY POSITION_INDEPENDENT_CODE ON)
++
++ecm_qt_declare_logging_category(screencast_common
+     HEADER kwinscreencast_logging.h
+     IDENTIFIER KWIN_SCREENCAST
+     CATEGORY_NAME kwin_screencast
+     DEFAULT_SEVERITY Warning
+ )
+ 
+-target_link_libraries(screencast kwin KF6::I18n PkgConfig::PipeWire Libdrm::Libdrm)
++target_link_libraries(screencast_common PUBLIC kwin KF6::ConfigGui KF6::I18n KF6::DBusAddons PkgConfig::PipeWire Libdrm::Libdrm)
++
++# Screencast Plugin (PipeWire streaming)
++kcoreaddons_add_plugin(screencast INSTALL_NAMESPACE "kwin/plugins")
++target_sources(screencast PRIVATE
++    main.cpp
++    screencastdbusinterface.cpp
++)
++
++target_link_libraries(screencast PRIVATE screencast_common Qt::DBus)
+diff --git a/src/plugins/screencast/DBUS_API.md b/src/plugins/screencast/DBUS_API.md
+new file mode 100644
+index 0000000000..e811756821
+--- /dev/null
++++ b/src/plugins/screencast/DBUS_API.md
+@@ -0,0 +1,379 @@
++# KWin Screencast DBus API
++
++## Overview
++
++KWin exposes active screencast streams via DBus using the ObjectManager pattern. This allows third-party applications to monitor which screens, windows, or regions are being recorded, and by which application.
++
++## Use Cases
++
++- **Recording indicators**: Show visual indicators when screen recording is active
++- **Privacy tools**: Alert users when sensitive windows are being captured
++- **System monitoring**: Track which applications are consuming screen capture resources
++- **Integration**: Build custom UI for managing active recordings
++
++## DBus Service Details
++
++| Property | Value |
++|----------|-------|
++| **Bus** | Session bus |
++| **Service** | `org.kde.KWin` |
++| **Root Path** | `/org/kde/KWin/ScreenCast` |
++| **Root Interface** | `org.freedesktop.DBus.ObjectManager` |
++
++## Stream Objects
++
++Each active screencast stream is exposed as a DBus object with the path:
++
++```
++/org/kde/KWin/ScreenCast/node_<pipewire_node_id>
++```
++
++For example: `/org/kde/KWin/ScreenCast/node_42`
++
++## Interfaces
++
++### Common Interface: `org.kde.KWin.ScreenCast`
++
++Present on all stream objects, regardless of type.
++
++| Property | Type | Description |
++|----------|------|-------------|
++| `Identifier` | `s` (string) | PipeWire node ID as string |
++| `Type` | `s` (string) | Stream type: `"window"`, `"output"`, or `"region"` |
++| `State` | `i` (int) | Stream state (0=idle, 1=paused, 2=streaming) |
++| `ConsumerApp` | `s` (string) | Name of consuming application (e.g., `"obs"`, `"firefox"`) |
++| `ConsumerPID` | `u` (uint32) | Process ID of consumer application (0 if unknown) |
++
++**Note:** `ConsumerApp` and `ConsumerPID` may initially be empty when a stream is created. Listen for the `PropertiesChanged` signal to get updates when the consumer connects.
++
++### Window Stream: `org.kde.KWin.ScreenCast.Window`
++
++Additional interface for window screencasts (when `Type` is `"window"`).
++
++| Property | Type | Description |
++|----------|------|-------------|
++| `WindowId` | `s` (string) | Window UUID |
++| `WindowClass` | `s` (string) | X11 resource class |
++| `ResourceName` | `s` (string) | X11 resource name |
++| `Caption` | `s` (string) | Window title |
++| `X` | `d` (double) | Window X position |
++| `Y` | `d` (double) | Window Y position |
++| `Width` | `i` (int) | Window width in pixels |
++| `Height` | `i` (int) | Window height in pixels |
++
++**Note:** Window geometry (`X`, `Y`, `Width`, `Height`) may initially be `0` or invalid. Wait for `PropertiesChanged` signal before relying on geometry values.
++
++### Output Stream: `org.kde.KWin.ScreenCast.Output`
++
++Additional interface for full-screen/monitor screencasts (when `Type` is `"output"`).
++
++| Property | Type | Description |
++|----------|------|-------------|
++| `OutputName` | `s` (string) | Name of the output (e.g., `"HDMI-1"`) |
++| `X` | `d` (double) | Output X position |
++| `Y` | `d` (double) | Output Y position |
++| `Width` | `i` (int) | Output width in pixels |
++| `Height` | `i` (int) | Output height in pixels |
++
++### Region Stream: `org.kde.KWin.ScreenCast.Region`
++
++Additional interface for region screencasts (when `Type` is `"region"`).
++
++| Property | Type | Description |
++|----------|------|-------------|
++| `X` | `d` (double) | Region X position |
++| `Y` | `d` (double) | Region Y position |
++| `Width` | `i` (int) | Region width in pixels |
++| `Height` | `i` (int) | Region height in pixels |
++| `Scale` | `d` (double) | Scale factor |
++
++## Signals
++
++### `InterfacesAdded`
++
++Emitted when a new screencast stream is created.
++
++**Signature:** `oa{sa{sv}}`
++- `objectPath` (QDBusObjectPath): Path to the new stream object
++- `interfacesAndProperties` (QVariantMap): Map of interface names to their properties
++
++### `InterfacesRemoved`
++
++Emitted when a screencast stream ends.
++
++**Signature:** `oas`
++- `objectPath` (QDBusObjectPath): Path to the removed stream object
++- `interfaces` (QStringList): List of interface names that were removed
++
++### `PropertiesChanged`
++
++Standard DBus property change notification (per-object signal on `org.freedesktop.DBus.Properties`).
++
++**Important Properties to Monitor:**
++- `ConsumerApp` / `ConsumerPID`: Emitted when consumer connects (asynchronous)
++- Window geometry (`X`, `Y`, `Width`, `Height`): Emitted when window is moved/resized
++
++## Example Code
++
++### Python (PyQt6)
++
++```python
++from PyQt6.QtCore import QCoreApplication
++from PyQt6.QtDBus import QDBusConnection, QDBusInterface, QDBusReply
++
++def list_active_screencasts():
++    """List all active screencast streams."""
++    bus = QDBusConnection.sessionBus()
++    iface = QDBusInterface(
++        "org.kde.KWin",
++        "/org/kde/KWin/ScreenCast",
++        "org.freedesktop.DBus.ObjectManager",
++        bus
++    )
++
++    reply = iface.call("GetManagedObjects")
++    if reply.type() == QDBusReply.Error:
++        print(f"Error: {reply.error().message()}")
++        return
++
++    objects = reply.arguments()[0]
++
++    for path, interfaces in objects.items():
++        print(f"\nStream: {path}")
++
++        # Common properties
++        common = interfaces.get("org.kde.KWin.ScreenCast", {})
++        print(f"  Type: {common.get('Type')}")
++        print(f"  Consumer: {common.get('ConsumerApp')} (PID: {common.get('ConsumerPID')})")
++        print(f"  State: {common.get('State')}")
++
++        # Type-specific properties
++        stream_type = common.get('Type')
++        if stream_type == 'window':
++            window = interfaces.get("org.kde.KWin.ScreenCast.Window", {})
++            print(f"  Window: {window.get('Caption')}")
++            print(f"  Geometry: {window.get('X')}, {window.get('Y')} - {window.get('Width')}x{window.get('Height')}")
++        elif stream_type == 'output':
++            output = interfaces.get("org.kde.KWin.ScreenCast.Output", {})
++            print(f"  Output: {output.get('OutputName')}")
++        elif stream_type == 'region':
++            region = interfaces.get("org.kde.KWin.ScreenCast.Region", {})
++            print(f"  Region: {region.get('X')}, {region.get('Y')} - {region.get('Width')}x{region.get('Height')}")
++
++if __name__ == "__main__":
++    app = QCoreApplication([])
++    list_active_screencasts()
++```
++
++### Python (GDBus)
++
++```python
++from gi.repository import GLib, Gio
++
++def on_interfaces_added(connection, sender, path, interface, signal, params, user_data):
++    """Called when a new screencast stream is created."""
++    object_path, interfaces_and_properties = params
++
++    print(f"New screencast stream: {object_path}")
++
++    # Get common properties
++    common = interfaces_and_properties.get('org.kde.KWin.ScreenCast', {})
++    print(f"  Type: {common.get('Type')}")
++    print(f"  Consumer: {common.get('ConsumerApp')}")
++
++def on_interfaces_removed(connection, sender, path, interface, signal, params, user_data):
++    """Called when a screencast stream ends."""
++    object_path, interfaces = params
++    print(f"Screencast ended: {object_path}")
++
++def monitor_screencasts():
++    """Monitor screencast streams in real-time."""
++    bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
++
++    # Subscribe to InterfacesAdded
++    bus.signal_subscribe(
++        'org.kde.KWin',
++        'org.freedesktop.DBus.ObjectManager',
++        'InterfacesAdded',
++        '/org/kde/KWin/ScreenCast',
++        None,
++        Gio.DBusSignalFlags.NONE,
++        on_interfaces_added,
++        None
++    )
++
++    # Subscribe to InterfacesRemoved
++    bus.signal_subscribe(
++        'org.kde.KWin',
++        'org.freedesktop.DBus.ObjectManager',
++        'InterfacesRemoved',
++        '/org/kde/KWin/ScreenCast',
++        None,
++        Gio.DBusSignalFlags.NONE,
++        on_interfaces_removed,
++        None
++    )
++
++    print("Monitoring screencasts. Press Ctrl+C to exit.")
++
++    # Run event loop
++    loop = GLib.MainLoop()
++    try:
++        loop.run()
++    except KeyboardInterrupt:
++        pass
++
++if __name__ == "__main__":
++    monitor_screencasts()
++```
++
++### C++ (Qt)
++
++```cpp
++#include <QCoreApplication>
++#include <QDBusConnection>
++#include <QDBusInterface>
++#include <QDBusReply>
++#include <QDebug>
++
++void listActiveScreencasts()
++{
++    QDBusInterface iface(
++        QStringLiteral("org.kde.KWin"),
++        QStringLiteral("/org/kde/KWin/ScreenCast"),
++        QStringLiteral("org.freedesktop.DBus.ObjectManager"),
++        QDBusConnection::sessionBus()
++    );
++
++    QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("GetManagedObjects"));
++    if (!reply.isValid()) {
++        qWarning() << "Error:" << reply.error().message();
++        return;
++    }
++
++    QVariantMap objects = reply.value();
++
++    for (auto it = objects.constBegin(); it != objects.constEnd(); ++it) {
++        const QString path = it.key();
++        const QVariantMap interfaces = it.value().toMap();
++
++        qDebug() << "Stream:" << path;
++
++        // Common properties
++        QVariantMap common = interfaces.value(QStringLiteral("org.kde.KWin.ScreenCast")).toMap();
++        qDebug() << "  Type:" << common.value(QStringLiteral("Type")).toString();
++        qDebug() << "  Consumer:" << common.value(QStringLiteral("ConsumerApp")).toString();
++        qDebug() << "  State:" << common.value(QStringLiteral("State")).toInt();
++
++        // Type-specific properties
++        QString type = common.value(QStringLiteral("Type")).toString();
++        if (type == QLatin1String("window")) {
++            QVariantMap window = interfaces.value(QStringLiteral("org.kde.KWin.ScreenCast.Window")).toMap();
++            qDebug() << "  Window:" << window.value(QStringLiteral("Caption")).toString();
++        } else if (type == QLatin1String("output")) {
++            QVariantMap output = interfaces.value(QStringLiteral("org.kde.KWin.ScreenCast.Output")).toMap();
++            qDebug() << "  Output:" << output.value(QStringLiteral("OutputName")).toString();
++        }
++    }
++}
++
++int main(int argc, char *argv[])
++{
++    QCoreApplication app(argc, argv);
++    listActiveScreencasts();
++    return 0;
++}
++```
++
++### Bash (qdbus)
++
++```bash
++#!/bin/bash
++
++# List all active screencasts
++qdbus org.kde.KWin /org/kde/KWin/ScreenCast org.freedesktop.DBus.ObjectManager.GetManagedObjects | grep -E "node_|Type|ConsumerApp"
++
++# Monitor for new screencasts
++dbus-monitor --session "type='signal',sender='org.kde.KWin',path='/org/kde/KWin/ScreenCast',interface='org.freedesktop.DBus.ObjectManager',member='InterfacesAdded'"
++```
++
++## Security Considerations
++
++### Privacy
++
++The screencast DBus interface exposes:
++- Window titles and positions
++- Which applications are being recorded
++- PID of recording applications
++
++This information is **read-only** and limited to the **session bus** (same user), but could be considered sensitive in multi-user scenarios.
++
++### Authorization
++
++- Screencast streams are created via **xdg-desktop-portal**, which handles user authorization
++- The DBus interface only exposes **already-authorized** streams
++- No additional authorization is required to read stream metadata
++- All introspection attempts are logged for audit purposes
++
++### Best Practices
++
++1. **Don't rely on immediate data**: Consumer info is populated asynchronously
++2. **Handle missing geometry**: Window geometry may be invalid initially
++3. **Subscribe to signals**: Use `PropertiesChanged` for real-time updates
++4. **Handle disconnections**: KWin restart will remove all stream objects
++5. **Validate data**: Check for null/empty values before using properties
++
++## Troubleshooting
++
++### No streams visible
++
++- Ensure KWin is running with Wayland backend
++- Check that a screencast is actually active (e.g., via OBS, Firefox screen sharing)
++- Verify DBus connection: `qdbus org.kde.KWin /org/kde/KWin/ScreenCast`
++
++### Empty ConsumerApp/ConsumerPID
++
++This is **normal** - consumer detection is asynchronous and takes 10-500ms:
++- Subscribe to `PropertiesChanged` signal
++- Poll periodically (not recommended)
++- Accept that some streams may never identify their consumer
++
++### Window geometry is 0x0
++
++This is **normal** for newly created window streams:
++- Subscribe to `PropertiesChanged` on `org.kde.KWin.ScreenCast.Window`
++- Wait for first geometry update (usually < 100ms)
++- Consider using window `WindowId` to track the window independently
++
++### Stream disappears immediately
++
++Streams are removed when:
++- User stops screen sharing
++- Recording application disconnects
++- KWin restarts
++- Window is closed (for window streams)
++
++## API Stability
++
++This API is **stable** and follows KDE's compatibility guarantees:
++- Property names and types will not change
++- New properties may be added in future versions
++- Signals will maintain backward compatibility
++- Interface names are stable
++
++## Version History
++
++- **KWin 6.6** (2025): Initial DBus interface implementation
++
++## Related Documentation
++
++- [xdg-desktop-portal ScreenCast API](https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.ScreenCast)
++- [PipeWire documentation](https://docs.pipewire.org/)
++- [KWin Development Guide](https://develop.kde.org/docs/plasma/kwin/)
++
++## Support
++
++For issues or questions:
++- KDE Bug Tracker: https://bugs.kde.org/
++- KDE Forums: https://discuss.kde.org/
++- IRC: #kde-devel on Libera.Chat
+diff --git a/src/plugins/screencast/metadata_plugin.json b/src/plugins/screencast/metadata_plugin.json
+new file mode 100644
+index 0000000000..aa304f4093
+--- /dev/null
++++ b/src/plugins/screencast/metadata_plugin.json
+@@ -0,0 +1,5 @@
++{
++    "KPlugin": {
++        "EnabledByDefault": true
++    }
++}
+diff --git a/src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml b/src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml
+new file mode 100644
+index 0000000000..b37a1b2a4f
+--- /dev/null
++++ b/src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml
+@@ -0,0 +1,32 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
++"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<node>
++  <interface name="org.kde.KWin.ScreenCast.Output">
++    <annotation name="org.gtk.GDBus.DocString" value="Additional interface for output/monitor screencast streams (Type='output')"/>
++
++    <property name="OutputName" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Name of the output device (e.g., 'HDMI-1', 'eDP-1', 'DP-2')"/>
++    </property>
++
++    <property name="X" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Output X position in global screen coordinates"/>
++    </property>
++
++    <property name="Y" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Output Y position in global screen coordinates"/>
++    </property>
++
++    <property name="Width" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Output width in pixels. Updated when output resolution changes."/>
++    </property>
++
++    <property name="Height" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Output height in pixels. Updated when output resolution changes."/>
++    </property>
++  </interface>
++</node>
+diff --git a/src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml b/src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml
+new file mode 100644
+index 0000000000..c662b8d5b4
+--- /dev/null
++++ b/src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml
+@@ -0,0 +1,32 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
++"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<node>
++  <interface name="org.kde.KWin.ScreenCast.Region">
++    <annotation name="org.gtk.GDBus.DocString" value="Additional interface for rectangular region screencast streams (Type='region')"/>
++
++    <property name="X" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Region X position in global screen coordinates"/>
++    </property>
++
++    <property name="Y" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Region Y position in global screen coordinates"/>
++    </property>
++
++    <property name="Width" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Region width in pixels"/>
++    </property>
++
++    <property name="Height" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Region height in pixels"/>
++    </property>
++
++    <property name="Scale" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Scale factor applied to the region (typically 1.0 for non-HiDPI, 2.0 for HiDPI displays)"/>
++    </property>
++  </interface>
++</node>
+diff --git a/src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml b/src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml
+new file mode 100644
+index 0000000000..338a6d8c51
+--- /dev/null
++++ b/src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml
+@@ -0,0 +1,47 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
++"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<node>
++  <interface name="org.kde.KWin.ScreenCast.Window">
++    <annotation name="org.gtk.GDBus.DocString" value="Additional interface for window screencast streams (Type='window')"/>
++
++    <property name="WindowId" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window UUID as string. Can be used with KWin's window management APIs."/>
++    </property>
++
++    <property name="WindowClass" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false"/>
++      <annotation name="org.gtk.GDBus.DocString" value="X11 resource class of the window (WM_CLASS property)"/>
++    </property>
++
++    <property name="ResourceName" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false"/>
++      <annotation name="org.gtk.GDBus.DocString" value="X11 resource name of the window (WM_CLASS property)"/>
++    </property>
++
++    <property name="Caption" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window title/caption. Updated when window title changes."/>
++    </property>
++
++    <property name="X" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window X position in screen coordinates. May be 0 initially - wait for PropertiesChanged signal."/>
++    </property>
++
++    <property name="Y" type="d" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window Y position in screen coordinates. May be 0 initially - wait for PropertiesChanged signal."/>
++    </property>
++
++    <property name="Width" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window width in pixels. May be 0 initially - wait for PropertiesChanged signal."/>
++    </property>
++
++    <property name="Height" type="i" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Window height in pixels. May be 0 initially - wait for PropertiesChanged signal."/>
++    </property>
++  </interface>
++</node>
+diff --git a/src/plugins/screencast/org.kde.KWin.ScreenCast.xml b/src/plugins/screencast/org.kde.KWin.ScreenCast.xml
+new file mode 100644
+index 0000000000..cff4868e6b
+--- /dev/null
++++ b/src/plugins/screencast/org.kde.KWin.ScreenCast.xml
+@@ -0,0 +1,36 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
++"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<node>
++  <interface name="org.kde.KWin.ScreenCast">
++    <annotation name="org.gtk.GDBus.DocString" value="Common interface present on all screencast stream objects"/>
++
++    <property name="Identifier" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="PipeWire node ID as string"/>
++    </property>
++
++    <property name="Type" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Stream type: 'window', 'output', or 'region'"/>
++    </property>
++
++    <property name="State" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Stream state: 'idle', 'paused', or 'streaming'"/>
++    </property>
++
++    <property name="ConsumerApp" type="s" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Name of the application consuming this stream (e.g., 'obs', 'firefox'). May be empty if consumer is unknown or not yet connected. Updated asynchronously."/>
++    </property>
++
++    <property name="ConsumerPID" type="u" access="read">
++      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
++      <annotation name="org.gtk.GDBus.DocString" value="Process ID of the consumer application. Zero if unknown or not yet connected. Updated asynchronously when consumer connects."/>
++    </property>
++
++    <method name="Stop">
++      <annotation name="org.gtk.GDBus.DocString" value="Stop this screencast stream. Terminates the PipeWire stream and removes the D-Bus object."/>
++    </method>
++  </interface>
++</node>
+diff --git a/src/plugins/screencast/outputscreencastsource.cpp b/src/plugins/screencast/outputscreencastsource.cpp
+index 0ccddd1df4..3317d61355 100644
+--- a/src/plugins/screencast/outputscreencastsource.cpp
++++ b/src/plugins/screencast/outputscreencastsource.cpp
+@@ -34,6 +34,7 @@ OutputScreenCastSource::OutputScreenCastSource(Output *output, QObject *parent)
+ {
+     updateView();
+     connect(output, &Output::changed, this, &OutputScreenCastSource::updateView);
++    connect(output, &Output::geometryChanged, this, &OutputScreenCastSource::geometryChanged);
+     // prevent the layer from scheduling frames on the actual output
+     m_layer->setRenderLoop(nullptr);
+     // always hide the cursor from the primary view
+@@ -152,12 +153,42 @@ QRectF OutputScreenCastSource::mapFromGlobal(const QRectF &rect) const
+     return m_output->mapFromGlobal(rect);
+ }
+ 
++QRect OutputScreenCastSource::rect() const
++{
++    return m_output->geometry();
++}
++
+ void OutputScreenCastSource::updateView()
+ {
+     m_sceneView->setViewport(m_output->geometryF());
+     m_sceneView->setScale(m_output->scale());
+ }
+ 
++QString OutputScreenCastSource::OutputName() const
++{
++    return m_output ? m_output->name() : QString();
++}
++
++double OutputScreenCastSource::X() const
++{
++    return m_output ? m_output->geometryF().x() : 0.0;
++}
++
++double OutputScreenCastSource::Y() const
++{
++    return m_output ? m_output->geometryF().y() : 0.0;
++}
++
++int OutputScreenCastSource::Width() const
++{
++    return m_output ? m_output->geometry().width() : 0;
++}
++
++int OutputScreenCastSource::Height() const
++{
++    return m_output ? m_output->geometry().height() : 0;
++}
++
+ } // namespace KWin
+ 
+ #include "moc_outputscreencastsource.cpp"
+diff --git a/src/plugins/screencast/outputscreencastsource.h b/src/plugins/screencast/outputscreencastsource.h
+index f481edf25c..0c4664352b 100644
+--- a/src/plugins/screencast/outputscreencastsource.h
++++ b/src/plugins/screencast/outputscreencastsource.h
+@@ -23,11 +23,20 @@ class ScreencastLayer;
+ class OutputScreenCastSource : public ScreenCastSource
+ {
+     Q_OBJECT
++    Q_PROPERTY(QString OutputName READ OutputName)
++    Q_PROPERTY(double X READ X NOTIFY geometryChanged)
++    Q_PROPERTY(double Y READ Y NOTIFY geometryChanged)
++    Q_PROPERTY(int Width READ Width NOTIFY geometryChanged)
++    Q_PROPERTY(int Height READ Height NOTIFY geometryChanged)
+ 
+ public:
+     explicit OutputScreenCastSource(Output *output, QObject *parent = nullptr);
+     ~OutputScreenCastSource() override;
+ 
++    ScreenCastSourceType type() const override
++    {
++        return ScreenCastSourceType::Output;
++    }
+     uint refreshRate() const override;
+     QSize textureSize() const override;
+     qreal devicePixelRatio() const override;
+@@ -46,6 +55,29 @@ public:
+     QPointF mapFromGlobal(const QPointF &point) const override;
+     QRectF mapFromGlobal(const QRectF &rect) const override;
+ 
++    QRect rect() const override;
++
++    QString dbusInterfaceName() const override
++    {
++        return QStringLiteral("org.kde.KWin.ScreenCast.Output");
++    }
++
++    // D-Bus interface helper
++    Output *output() const
++    {
++        return m_output;
++    }
++
++    // D-Bus properties (capitalized for XML mapping)
++    QString OutputName() const;
++    double X() const;
++    double Y() const;
++    int Width() const;
++    int Height() const;
++
++Q_SIGNALS:
++    void geometryChanged();
++
+ private:
+     void updateView();
+     QPointer<Output> m_output;
+diff --git a/src/plugins/screencast/pipewireConsumertracker.cpp b/src/plugins/screencast/pipewireConsumertracker.cpp
+new file mode 100644
+index 0000000000..22f768504c
+--- /dev/null
++++ b/src/plugins/screencast/pipewireConsumertracker.cpp
+@@ -0,0 +1,695 @@
++/*
++    SPDX-FileCopyrightText: 2024 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include "pipewireConsumertracker.h"
++
++#include "kwinscreencast_logging.h"
++
++#include <QVariantMap>
++
++#include <pipewire/keys.h>
++
++#include <cstring>
++
++namespace KWin
++{
++
++// Helper: Convert spa_dict to QVariantMap (spa_dict is temporary, must copy)
++// Validates UTF-8 encoding to prevent crashes from malformed PipeWire data
++static QVariantMap spaDictToMap(const spa_dict *dict)
++{
++    QVariantMap map;
++    if (!dict) {
++        return map;
++    }
++
++    for (uint32_t i = 0; i < dict->n_items; ++i) {
++        const spa_dict_item &item = dict->items[i];
++        if (!item.key || !item.value) {
++            continue;
++        }
++
++        // Validate UTF-8 encoding for both key and value
++        // fromUtf8() with QStringDecoder::Flag::Stateless will replace invalid sequences
++        QString key = QString::fromUtf8(item.key);
++        QString value = QString::fromUtf8(item.value);
++
++        // Check if conversion produced valid strings (fromUtf8 returns replacement chars for invalid data)
++        if (!key.isEmpty() && !value.isEmpty()) {
++            map[key] = value;
++        }
++    }
++    return map;
++}
++
++struct NodeListenerData
++{
++    PipeWireConsumerTracker *tracker;
++    pw_node *proxy;
++    spa_hook listener;
++    uint32_t nodeId;
++};
++
++struct ClientListenerData
++{
++    PipeWireConsumerTracker *tracker;
++    pw_client *proxy;
++    spa_hook listener;
++    uint32_t clientId;
++};
++
++PipeWireConsumerTracker::PipeWireConsumerTracker(pw_core *core, uint32_t nodeId, QObject *parent)
++    : QObject(parent)
++    , m_core(core)
++    , m_nodeId(nodeId)
++{
++    setupRegistry();
++}
++
++PipeWireConsumerTracker::~PipeWireConsumerTracker()
++{
++    // Cleanup all client listeners (mutex protected)
++    {
++        QMutexLocker lock(&m_clientListenersMutex);
++        for (auto &[clientId, listenerData] : m_clientListeners) {
++            if (listenerData && listenerData->proxy) {
++                spa_hook_remove(&listenerData->listener);
++                pw_proxy_destroy(reinterpret_cast<pw_proxy *>(listenerData->proxy));
++            }
++        }
++        m_clientListeners.clear();
++    }
++
++    cleanupRegistry();
++}
++
++void PipeWireConsumerTracker::setupRegistry()
++{
++    if (!m_core) {
++        qCWarning(KWIN_SCREENCAST) << "Cannot setup registry: no PipeWire core";
++        return;
++    }
++
++    m_registry = pw_core_get_registry(m_core, PW_VERSION_REGISTRY, 0);
++    if (!m_registry) {
++        qCWarning(KWIN_SCREENCAST) << "Failed to get PipeWire registry";
++        return;
++    }
++
++    static const pw_registry_events registryEvents = {
++        .version = PW_VERSION_REGISTRY_EVENTS,
++        .global = [](void *data, uint32_t id, uint32_t permissions, const char *type,
++                     uint32_t version, const spa_dict *props) {
++        auto tracker = static_cast<PipeWireConsumerTracker *>(data);
++        tracker->onRegistryGlobal(id, permissions, type, version, props);
++    },
++        .global_remove = [](void *data, uint32_t id) {
++        auto tracker = static_cast<PipeWireConsumerTracker *>(data);
++        tracker->onRegistryGlobalRemove(id);
++    }};
++
++    pw_registry_add_listener(m_registry, &m_registryListener, &registryEvents, this);
++    qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Registry listener setup complete for node" << m_nodeId;
++}
++
++void PipeWireConsumerTracker::cleanupRegistry()
++{
++    // Cleanup all node listeners (mutex protected)
++    {
++        QMutexLocker locker(&m_nodeListenersMutex);
++        for (auto &pair : m_nodeListeners) {
++            spa_hook_remove(&pair.second->listener);
++            pw_proxy_destroy(reinterpret_cast<pw_proxy *>(pair.second->proxy));
++        }
++        m_nodeListeners.clear();
++    }
++
++    m_allLinks.clear();
++    m_clientNodes.clear();
++    m_visitedNodes.clear();
++
++    if (m_registry) {
++        spa_hook_remove(&m_registryListener);
++        pw_proxy_destroy(reinterpret_cast<pw_proxy *>(m_registry));
++        m_registry = nullptr;
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Registry cleaned up";
++    }
++}
++
++void PipeWireConsumerTracker::onRegistryGlobal(uint32_t id, uint32_t permissions,
++                                               const char *type, uint32_t version,
++                                               const spa_dict *props)
++{
++    Q_UNUSED(permissions);
++    Q_UNUSED(version);
++
++    // Copy data from PipeWire thread to avoid race conditions
++    QString typeStr = QString::fromUtf8(type);
++    QVariantMap propsMap = spaDictToMap(props);
++
++    // Dispatch to Qt thread for thread-safe processing
++    QMetaObject::invokeMethod(this, [this, id, typeStr, propsMap]() {
++        handleRegistryGlobal(id, typeStr, propsMap);
++    }, Qt::QueuedConnection);
++}
++
++void PipeWireConsumerTracker::handleRegistryGlobal(uint32_t id, QString type, QVariantMap props)
++{
++    // This runs in Qt thread - thread-safe
++    if (type == QString::fromUtf8(PW_TYPE_INTERFACE_Link)) {
++        // Cache ALL links for later graph traversal
++        QString inputNodeStr = props.value(QString::fromUtf8(PW_KEY_LINK_INPUT_NODE)).toString();
++        QString outputNodeStr = props.value(QString::fromUtf8(PW_KEY_LINK_OUTPUT_NODE)).toString();
++
++        if (!inputNodeStr.isEmpty() && !outputNodeStr.isEmpty()) {
++            bool okInput, okOutput;
++            uint32_t inputNode = inputNodeStr.toUInt(&okInput);
++            uint32_t outputNode = outputNodeStr.toUInt(&okOutput);
++
++            if (okInput && okOutput) {
++                m_allLinks[id] = LinkInfo{inputNode, outputNode};
++
++                qCDebug(KWIN_SCREENCAST) << "Cached link:" << id
++                                         << "output=" << outputNode
++                                         << "input=" << inputNode;
++            }
++        }
++
++        checkLinkForConsumer(id, props);
++    } else if (type == QString::fromUtf8(PW_TYPE_INTERFACE_Node)) {
++        // Cache node properties for when we need them
++        QString nodeIdStr = props.value(QString::fromUtf8(PW_KEY_OBJECT_ID)).toString();
++        if (!nodeIdStr.isEmpty()) {
++            bool ok;
++            uint32_t nodeId = nodeIdStr.toUInt(&ok);
++            if (!ok) {
++                qCWarning(KWIN_SCREENCAST) << "Invalid node ID string:" << nodeIdStr;
++                return;
++            }
++            // Check if this is a node we're looking for
++            if (m_links.values().contains(nodeId)) {
++                queryNodeProperties(nodeId);
++            }
++        }
++    } else if (type == QString::fromUtf8(PW_TYPE_INTERFACE_Client)) {
++        // Cache client info - clients always have app name and PID
++        QString appName = props.value(QString::fromUtf8(PW_KEY_APP_NAME)).toString();
++        QString appBinary = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_BINARY)).toString();
++
++        // Try multiple PID property names (different PipeWire versions use different keys)
++        QString pidStr = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_ID)).toString();
++        if (pidStr.isEmpty()) {
++            pidStr = props.value(QStringLiteral("application.process.id")).toString();
++        }
++        if (pidStr.isEmpty()) {
++            pidStr = props.value(QStringLiteral("pipewire.sec.pid")).toString();
++        }
++
++        if (!appName.isEmpty() || !appBinary.isEmpty()) {
++            ClientInfo clientInfo;
++            clientInfo.appName = appName;
++            clientInfo.appBinary = appBinary;
++
++            if (!pidStr.isEmpty()) {
++                bool ok;
++                quint32 pid = pidStr.toUInt(&ok);
++                // Validate PID: must be non-zero and within reasonable bounds (2^22)
++                // PID 0 is invalid (kernel process), and PIDs > 4194304 are unrealistic
++                if (!ok || pid == 0 || pid > 4194304) {
++                    qCWarning(KWIN_SCREENCAST) << "Invalid PID for client:" << pidStr;
++                    clientInfo.pid = 0;
++                } else {
++                    clientInfo.pid = pid;
++                }
++            }
++
++            m_clientNodes[id] = clientInfo;
++            qCDebug(KWIN_SCREENCAST) << "Cached client:" << id
++                                     << "app=" << (appName.isEmpty() ? appBinary : appName)
++                                     << "pid=" << clientInfo.pid;
++        }
++    }
++}
++
++void PipeWireConsumerTracker::onRegistryGlobalRemove(uint32_t id)
++{
++    // Dispatch to Qt thread for thread-safe processing
++    QMetaObject::invokeMethod(this, [this, id]() {
++        handleRegistryGlobalRemove(id);
++    }, Qt::QueuedConnection);
++}
++
++void PipeWireConsumerTracker::handleRegistryGlobalRemove(uint32_t id)
++{
++    // This runs in Qt thread - thread-safe
++    // Handle link removal
++    if (m_links.contains(id)) {
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Link removed:" << id;
++        m_links.remove(id);
++        m_allLinks.remove(id);
++
++        // Consumer disconnected
++        if (m_links.isEmpty()) {
++            m_consumerApp.clear();
++            m_consumerPID = 0;
++            Q_EMIT consumerDisconnected();
++        }
++    }
++
++    // Handle client removal
++    if (m_clientNodes.contains(id)) {
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Client removed:" << id;
++        m_clientNodes.remove(id);
++    }
++
++    // Handle node listener removal
++    auto it = m_nodeListeners.find(id);
++    if (it != m_nodeListeners.end()) {
++        auto data = std::move(it->second);
++        m_nodeListeners.erase(it);
++        spa_hook_remove(&data->listener);
++        pw_proxy_destroy(reinterpret_cast<pw_proxy *>(data->proxy));
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Node listener removed for node" << id;
++    }
++}
++
++void PipeWireConsumerTracker::checkLinkForConsumer(uint32_t linkId, const QVariantMap &props)
++{
++    if (props.isEmpty() || m_nodeId == 0) {
++        return;
++    }
++
++    // Check if this link connects TO our stream node
++    QString outputNodeStr = props.value(QString::fromUtf8(PW_KEY_LINK_OUTPUT_NODE)).toString();
++    if (outputNodeStr.isEmpty()) {
++        return;
++    }
++
++    bool ok;
++    uint32_t outputNodeId = outputNodeStr.toUInt(&ok);
++    if (!ok) {
++        qCWarning(KWIN_SCREENCAST) << "Invalid output node ID string:" << outputNodeStr;
++        return;
++    }
++    if (outputNodeId != m_nodeId) {
++        return; // Not our stream
++    }
++
++    // This link connects to us! Get the consumer node ID
++    QString inputNodeStr = props.value(QString::fromUtf8(PW_KEY_LINK_INPUT_NODE)).toString();
++    if (inputNodeStr.isEmpty()) {
++        return;
++    }
++
++    uint32_t consumerNodeId = inputNodeStr.toUInt(&ok);
++    if (!ok) {
++        qCWarning(KWIN_SCREENCAST) << "Invalid input node ID string:" << inputNodeStr;
++        return;
++    }
++    m_links[linkId] = consumerNodeId;
++
++    qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Link detected:"
++                             << "id=" << linkId
++                             << "output_node=" << outputNodeId
++                             << "input_node=" << consumerNodeId;
++
++    // Query the consumer node properties
++    queryNodeProperties(consumerNodeId);
++}
++
++void PipeWireConsumerTracker::queryNodeProperties(uint32_t nodeId)
++{
++    // We need to bind to the node to get its properties
++    // This requires creating a proxy and listening for info events
++    auto nodeProxy = static_cast<pw_node *>(
++        pw_registry_bind(m_registry, nodeId, PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, 0));
++
++    if (!nodeProxy) {
++        qCWarning(KWIN_SCREENCAST) << "Failed to bind to consumer node" << nodeId;
++        return;
++    }
++
++    auto listenerData = std::make_unique<NodeListenerData>(NodeListenerData{this, nodeProxy, {}, nodeId});
++    NodeListenerData *listenerDataPtr = nullptr;
++
++    // Track the listener for cleanup (mutex protected)
++    {
++        QMutexLocker locker(&m_nodeListenersMutex);
++        // Avoid duplicate queries
++        if (m_nodeListeners.count(nodeId) > 0) {
++            pw_proxy_destroy(reinterpret_cast<pw_proxy *>(nodeProxy));
++            return;
++        }
++        m_nodeListeners[nodeId] = std::move(listenerData);
++        listenerDataPtr = m_nodeListeners[nodeId].get();
++    }
++
++    static const pw_node_events nodeEvents = {
++        .version = PW_VERSION_NODE_EVENTS,
++        .info = [](void *data, const pw_node_info *info) {
++        auto *ld = static_cast<NodeListenerData *>(data);
++
++        if (!info || !info->props) {
++            return;
++        }
++
++        // Copy props from PipeWire thread to avoid race conditions
++        QVariantMap propsMap = spaDictToMap(info->props);
++        uint32_t nodeId = ld->nodeId;
++        QPointer<PipeWireConsumerTracker> tracker = ld->tracker;
++
++        // Dispatch to Qt thread for thread-safe processing
++        QMetaObject::invokeMethod(ld->tracker, [tracker, nodeId, propsMap]() {
++            if (!tracker) {
++                qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker was destroyed before node info processing";
++                return;
++            }
++            tracker->handleNodeInfo(nodeId, propsMap);
++        }, Qt::QueuedConnection);
++    }};
++
++    // Add listener outside mutex to avoid deadlock (PipeWire may call callback immediately)
++    pw_node_add_listener(nodeProxy, &listenerDataPtr->listener, &nodeEvents, listenerDataPtr);
++}
++
++void PipeWireConsumerTracker::queryClientProperties(uint32_t clientId)
++{
++    // Bind to the client to get its CURRENT properties (not cached)
++    // This is critical because portal updates client properties after initial registration
++    auto clientProxy = static_cast<pw_client *>(
++        pw_registry_bind(m_registry, clientId, PW_TYPE_INTERFACE_Client, PW_VERSION_CLIENT, 0));
++
++    if (!clientProxy) {
++        qCWarning(KWIN_SCREENCAST) << "Failed to bind to client" << clientId;
++        // Fallback: use cached data if available
++        if (m_clientNodes.contains(clientId)) {
++            const ClientInfo &clientInfo = m_clientNodes[clientId];
++            QString app = clientInfo.appName.isEmpty() ? clientInfo.appBinary : clientInfo.appName;
++            m_consumerApp = app;
++            m_consumerPID = clientInfo.pid;
++            qCDebug(KWIN_SCREENCAST) << "Using cached client info (bind failed):" << app << "pid=" << clientInfo.pid;
++            Q_EMIT consumerConnected(app, clientInfo.pid);
++        } else {
++            Q_EMIT consumerConnected(QString(), 0);
++        }
++        return;
++    }
++
++    auto listenerData = std::make_unique<ClientListenerData>(ClientListenerData{this, clientProxy, {}, clientId});
++    ClientListenerData *listenerDataPtr = nullptr;
++
++    // Track the listener for cleanup (mutex protected)
++    {
++        QMutexLocker locker(&m_clientListenersMutex);
++        // Avoid duplicate queries
++        if (m_clientListeners.count(clientId) > 0) {
++            pw_proxy_destroy(reinterpret_cast<pw_proxy *>(clientProxy));
++            return;
++        }
++        m_clientListeners[clientId] = std::move(listenerData);
++        listenerDataPtr = m_clientListeners[clientId].get();
++    }
++
++    static const pw_client_events clientEvents = {
++        .version = PW_VERSION_CLIENT_EVENTS,
++        .info = [](void *data, const pw_client_info *info) {
++        auto *ld = static_cast<ClientListenerData *>(data);
++
++        if (!info || !info->props) {
++            return;
++        }
++
++        // Copy props from PipeWire thread to avoid race conditions
++        QVariantMap propsMap = spaDictToMap(info->props);
++        uint32_t clientId = ld->clientId;
++        QPointer<PipeWireConsumerTracker> tracker = ld->tracker;
++
++        // Dispatch to Qt thread for thread-safe processing
++        QMetaObject::invokeMethod(ld->tracker, [tracker, clientId, propsMap]() {
++            if (!tracker) {
++                qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker was destroyed before client info processing";
++                return;
++            }
++            tracker->handleClientInfo(clientId, propsMap);
++        }, Qt::QueuedConnection);
++    }};
++
++    // Add listener outside mutex to avoid deadlock (PipeWire may call callback immediately)
++    pw_client_add_listener(clientProxy, &listenerDataPtr->listener, &clientEvents, listenerDataPtr);
++}
++
++PipeWireConsumerTracker::NodeProperties PipeWireConsumerTracker::extractNodeProperties(const QVariantMap &props)
++{
++    NodeProperties result;
++
++    // Extract application info
++    result.appName = props.value(QString::fromUtf8(PW_KEY_APP_NAME)).toString();
++    result.appBinary = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_BINARY)).toString();
++    QString appPIDStr = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_ID)).toString();
++
++    // Parse and validate PID
++    if (!appPIDStr.isEmpty()) {
++        bool ok;
++        quint32 pid = appPIDStr.toUInt(&ok);
++        // Validate PID: must be non-zero and within reasonable bounds (2^22)
++        if (!ok || pid == 0 || pid > 4194304) {
++            qCWarning(KWIN_SCREENCAST) << "Invalid PID:" << appPIDStr;
++            result.pid = 0;
++        } else {
++            result.pid = pid;
++        }
++    }
++
++    // Extract client.id
++    QString clientIdStr = props.value(QString::fromUtf8(PW_KEY_CLIENT_ID)).toString();
++    if (!clientIdStr.isEmpty()) {
++        bool ok;
++        result.clientId = clientIdStr.toUInt(&ok);
++        if (!ok) {
++            qCWarning(KWIN_SCREENCAST) << "Invalid client.id string:" << clientIdStr;
++            result.clientId = 0;
++        }
++    }
++
++    return result;
++}
++
++QString PipeWireConsumerTracker::determineConsumerApp(const QString &appName, const QString &appBinary)
++{
++    if (!appName.isEmpty()) {
++        return appName;
++    }
++    return appBinary;
++}
++
++void PipeWireConsumerTracker::emitConsumerFound(const QString &consumerApp, quint32 pid)
++{
++    m_consumerApp = consumerApp;
++    m_consumerPID = pid;
++
++    qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Consumer detected (node properties):"
++                             << "app=" << consumerApp << "pid=" << pid;
++
++    Q_EMIT consumerConnected(consumerApp, pid);
++}
++
++void PipeWireConsumerTracker::searchDownstreamForConsumer(uint32_t nodeId)
++{
++    qCDebug(KWIN_SCREENCAST) << "Node" << nodeId
++                             << "has no app properties, searching downstream for consumer";
++
++    qCDebug(KWIN_SCREENCAST) << "  -> m_allLinks count:" << m_allLinks.size() << "keys:" << m_allLinks.keys();
++    qCDebug(KWIN_SCREENCAST) << "  -> m_clientNodes keys:" << m_clientNodes.keys();
++
++    m_visitedNodes.clear(); // Reset for new search
++    m_visitedNodes.insert(nodeId); // Mark current as visited
++    m_searchTimer.start(); // Start timeout tracking for graph traversal
++    followLinksDownstream(nodeId, 0);
++
++    // If still nothing found, emit with empty values
++    if (m_consumerApp.isEmpty()) {
++        qCDebug(KWIN_SCREENCAST) << "Could not find consumer app after downstream search";
++        m_consumerApp = QString();
++        m_consumerPID = 0;
++        Q_EMIT consumerConnected(QString(), 0);
++    }
++}
++
++void PipeWireConsumerTracker::cleanupNodeListener(uint32_t nodeId)
++{
++    // Cleanup this specific listener immediately to prevent race conditions
++    // handleNodeInfo is already running in Qt thread (queued from PipeWire callback),
++    // so we can safely remove the listener synchronously here.
++    QMutexLocker locker(&m_nodeListenersMutex);
++    auto it = m_nodeListeners.find(nodeId);
++    if (it != m_nodeListeners.end()) {
++        // Remove hook immediately to prevent PipeWire from calling callbacks
++        // This MUST be done synchronously before PipeWire can invoke another callback
++        spa_hook_remove(&it->second->listener);
++
++        // Defer proxy destruction to avoid potential issues with PipeWire cleanup order
++        // The proxy itself can be safely destroyed later in the event loop
++        pw_node *proxy = it->second->proxy;
++        QMetaObject::invokeMethod(this, [proxy]() {
++            pw_proxy_destroy(reinterpret_cast<pw_proxy *>(proxy));
++        }, Qt::QueuedConnection);
++
++        // Remove from map
++        m_nodeListeners.erase(it);
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Node listener cleanup complete for node" << nodeId;
++    }
++}
++
++void PipeWireConsumerTracker::handleNodeInfo(uint32_t nodeId, QVariantMap props)
++{
++    // This runs in Qt thread - thread-safe
++    // Extract and parse all node properties
++    NodeProperties nodeProps = extractNodeProperties(props);
++
++    // Debug: log all node properties for troubleshooting
++    qCDebug(KWIN_SCREENCAST) << "Node" << nodeId << "properties:" << props;
++    qCDebug(KWIN_SCREENCAST) << "  -> clientId:" << nodeProps.clientId
++                             << "appName:" << nodeProps.appName
++                             << "appBinary:" << nodeProps.appBinary;
++
++    QString consumerApp = determineConsumerApp(nodeProps.appName, nodeProps.appBinary);
++
++    if (!consumerApp.isEmpty()) {
++        // Found app info directly in node properties - use it
++        emitConsumerFound(consumerApp, nodeProps.pid);
++    } else if (nodeProps.clientId != 0) {
++        // Node belongs to a Client - query CURRENT properties (not cached)
++        // This handles portal property updates: portal changes client properties
++        // from "xdg-desktop-portal" to the real app name after authentication
++        qCDebug(KWIN_SCREENCAST) << "Node" << nodeId << "has client.id" << nodeProps.clientId
++                                 << "- querying current client properties";
++        queryClientProperties(nodeProps.clientId);
++    } else {
++        // No app info on this node - try following links downstream to find consumer
++        searchDownstreamForConsumer(nodeId);
++    }
++
++    // Cleanup this specific listener immediately to prevent race conditions
++    cleanupNodeListener(nodeId);
++}
++
++void PipeWireConsumerTracker::handleClientInfo(uint32_t clientId, QVariantMap props)
++{
++    // This runs in Qt thread - thread-safe
++    // Extract CURRENT application info from client (handles portal property updates)
++    QString appName = props.value(QString::fromUtf8(PW_KEY_APP_NAME)).toString();
++    QString appBinary = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_BINARY)).toString();
++
++    // Try multiple PID property names (different PipeWire versions use different keys)
++    QString pidStr = props.value(QString::fromUtf8(PW_KEY_APP_PROCESS_ID)).toString();
++    if (pidStr.isEmpty()) {
++        pidStr = props.value(QStringLiteral("application.process.id")).toString();
++    }
++    if (pidStr.isEmpty()) {
++        pidStr = props.value(QStringLiteral("pipewire.sec.pid")).toString();
++    }
++
++    QString consumerApp;
++    if (!appName.isEmpty()) {
++        consumerApp = appName;
++    } else if (!appBinary.isEmpty()) {
++        consumerApp = appBinary;
++    }
++
++    quint32 pid = 0;
++    if (!pidStr.isEmpty()) {
++        bool ok;
++        pid = pidStr.toUInt(&ok);
++        // Validate PID: must be non-zero and within reasonable bounds (2^22)
++        if (!ok || pid == 0 || pid > 4194304) {
++            qCWarning(KWIN_SCREENCAST) << "Invalid PID:" << pidStr;
++            pid = 0;
++        }
++    }
++
++    qCDebug(KWIN_SCREENCAST) << "Client" << clientId << "CURRENT properties (queried, not cached):"
++                             << "app=" << consumerApp << "pid=" << pid;
++
++    if (!consumerApp.isEmpty()) {
++        m_consumerApp = consumerApp;
++        m_consumerPID = pid;
++
++        qCDebug(KWIN_SCREENCAST) << "PipeWireConsumerTracker: Consumer detected (queried client):"
++                                 << "app=" << consumerApp << "pid=" << pid;
++
++        Q_EMIT consumerConnected(consumerApp, pid);
++    } else {
++        qCDebug(KWIN_SCREENCAST) << "Client" << clientId << "has no app info, emitting empty consumer";
++        Q_EMIT consumerConnected(QString(), 0);
++    }
++
++    // Cleanup this client listener immediately
++    {
++        QMutexLocker lock(&m_clientListenersMutex);
++        m_clientListeners.erase(clientId);
++    }
++}
++
++void PipeWireConsumerTracker::followLinksDownstream(uint32_t nodeId, int depth)
++{
++    // Prevent infinite recursion and timeout
++    // MAX_DEPTH = 5: Typical PipeWire filter chains (e.g., stream -> adapter -> filter -> client)
++    // rarely exceed 5 nodes. This protects against pathological graphs while allowing
++    // reasonable real-world topologies.
++    const int MAX_DEPTH = 5;
++    // SEARCH_TIMEOUT_MS = 200ms: Prevents hanging on complex/malicious PipeWire graphs
++    // Real-world searches typically complete in <10ms. Reduced from 500ms to minimize
++    // potential lag during stream setup.
++    const qint64 SEARCH_TIMEOUT_MS = 200;
++
++    if (depth >= MAX_DEPTH) {
++        qCDebug(KWIN_SCREENCAST) << "Max depth" << MAX_DEPTH << "reached in downstream search";
++        return;
++    }
++
++    if (m_searchTimer.isValid() && m_searchTimer.elapsed() > SEARCH_TIMEOUT_MS) {
++        qCWarning(KWIN_SCREENCAST) << "Graph traversal timeout after" << m_searchTimer.elapsed()
++                                   << "ms (limit:" << SEARCH_TIMEOUT_MS << "ms)";
++        return;
++    }
++
++    qCDebug(KWIN_SCREENCAST) << "Searching downstream from node" << nodeId << "depth" << depth;
++
++    // Find all links where this node is the OUTPUT (source)
++    // We want to follow forward to INPUT (destination) nodes - towards the consumer
++    for (auto it = m_allLinks.constBegin(); it != m_allLinks.constEnd(); ++it) {
++        const LinkInfo &link = it.value();
++
++        if (link.outputNode == nodeId) {
++            // Found a link flowing out from our node
++            uint32_t downstreamNode = link.inputNode;
++
++            // Avoid cycles
++            if (m_visitedNodes.contains(downstreamNode)) {
++                qCDebug(KWIN_SCREENCAST) << "Node" << downstreamNode << "already visited, skipping";
++                continue;
++            }
++            m_visitedNodes.insert(downstreamNode);
++
++            qCDebug(KWIN_SCREENCAST) << "Following link" << it.key()
++                                     << "to downstream node" << downstreamNode;
++
++            // Query this downstream node's properties
++            queryNodeProperties(downstreamNode);
++
++            // If we still don't have app info, recurse further downstream
++            if (m_consumerApp.isEmpty()) {
++                followLinksDownstream(downstreamNode, depth + 1);
++            } else {
++                // Found it! Stop searching
++                qCDebug(KWIN_SCREENCAST) << "Found consumer via downstream search:"
++                                         << m_consumerApp;
++                return;
++            }
++        }
++    }
++}
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/pipewireConsumertracker.h b/src/plugins/screencast/pipewireConsumertracker.h
+new file mode 100644
+index 0000000000..38c5559f8d
+--- /dev/null
++++ b/src/plugins/screencast/pipewireConsumertracker.h
+@@ -0,0 +1,158 @@
++/*
++    SPDX-FileCopyrightText: 2024 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include <QElapsedTimer>
++#include <QHash>
++#include <QMutex>
++#include <QObject>
++#include <QPointer>
++#include <QSet>
++#include <QString>
++
++#include <memory>
++#include <unordered_map>
++
++#include <pipewire/pipewire.h>
++#include <spa/utils/hook.h>
++
++namespace KWin
++{
++
++struct NodeListenerData;
++struct ClientListenerData;
++
++/**
++ * @brief Tracks PipeWire consumer applications for screencast streams
++ *
++ * Monitors the PipeWire graph to detect which application is consuming
++ * a screencast stream (e.g., "obs", "floorp", "firefox"). Uses PipeWire
++ * registry to watch for Link objects connecting the stream's output node
++ * to a consumer's input node, then queries the consumer node properties
++ * to extract application name and PID.
++ */
++class PipeWireConsumerTracker : public QObject
++{
++    Q_OBJECT
++    Q_DISABLE_COPY(PipeWireConsumerTracker)
++
++public:
++    /**
++     * @brief Construct a new PipeWire Consumer Tracker
++     * @param core PipeWire core object (must remain valid for tracker lifetime)
++     * @param nodeId PipeWire node ID of the screencast stream to track
++     * @param parent QObject parent
++     */
++    explicit PipeWireConsumerTracker(pw_core *core, uint32_t nodeId, QObject *parent = nullptr);
++    ~PipeWireConsumerTracker() noexcept override;
++
++    /**
++     * @brief Get the consumer application name
++     * @return Application name (e.g., "obs", "floorp") or empty if no consumer
++     */
++    QString consumerApp() const
++    {
++        return m_consumerApp;
++    }
++
++    /**
++     * @brief Get the consumer process ID
++     * @return PID of the consumer process, or 0 if no consumer
++     */
++    quint32 consumerPID() const
++    {
++        return m_consumerPID;
++    }
++
++    /**
++     * @brief Check if a consumer is connected
++     * @return true if a consumer is currently connected
++     */
++    bool hasConsumer() const
++    {
++        return m_consumerPID != 0;
++    }
++
++Q_SIGNALS:
++    /**
++     * @brief Emitted when a consumer application connects
++     * @param appName Name of the consumer application
++     * @param pid PID of the consumer process
++     */
++    void consumerConnected(const QString &appName, quint32 pid);
++
++    /**
++     * @brief Emitted when the consumer disconnects
++     */
++    void consumerDisconnected();
++
++private:
++    struct LinkInfo
++    {
++        uint32_t inputNode; // Destination
++        uint32_t outputNode; // Source
++    };
++
++    struct ClientInfo
++    {
++        QString appName; // PW_KEY_APP_NAME
++        QString appBinary; // PW_KEY_APP_PROCESS_BINARY
++        quint32 pid = 0; // PW_KEY_APP_PROCESS_ID
++    };
++
++    void setupRegistry();
++    void cleanupRegistry();
++
++    void onRegistryGlobal(uint32_t id, uint32_t permissions, const char *type,
++                          uint32_t version, const spa_dict *props);
++    void onRegistryGlobalRemove(uint32_t id);
++
++    // Qt thread-safe methods (called via invokeMethod from PipeWire thread)
++    void handleRegistryGlobal(uint32_t id, QString type, QVariantMap props);
++    void handleRegistryGlobalRemove(uint32_t id);
++    void handleNodeInfo(uint32_t nodeId, QVariantMap props);
++
++    void checkLinkForConsumer(uint32_t linkId, const QVariantMap &props);
++    void queryNodeProperties(uint32_t nodeId);
++    void queryClientProperties(uint32_t clientId);
++    void handleClientInfo(uint32_t clientId, QVariantMap props);
++    void followLinksDownstream(uint32_t nodeId, int depth = 0);
++
++    // Helper methods for handleNodeInfo() to improve readability
++    struct NodeProperties
++    {
++        QString appName;
++        QString appBinary;
++        quint32 pid = 0;
++        uint32_t clientId = 0;
++    };
++    NodeProperties extractNodeProperties(const QVariantMap &props);
++    QString determineConsumerApp(const QString &appName, const QString &appBinary);
++    void emitConsumerFound(const QString &consumerApp, quint32 pid);
++    void searchDownstreamForConsumer(uint32_t nodeId);
++    void cleanupNodeListener(uint32_t nodeId);
++
++    pw_core *m_core;
++    uint32_t m_nodeId;
++
++    pw_registry *m_registry = nullptr;
++    spa_hook m_registryListener;
++
++    QString m_consumerApp;
++    quint32 m_consumerPID = 0;
++
++    QHash<uint32_t, ClientInfo> m_clientNodes; // client_id -> ClientInfo (cached client info)
++    QHash<uint32_t, uint32_t> m_links; // link_id -> consumer_node_id
++    QHash<uint32_t, LinkInfo> m_allLinks; // link_id -> LinkInfo (for graph traversal)
++    QSet<uint32_t> m_visitedNodes; // Prevent cycles in graph traversal
++    std::unordered_map<uint32_t, std::unique_ptr<NodeListenerData>> m_nodeListeners; // node_id -> listener data
++    std::unordered_map<uint32_t, std::unique_ptr<ClientListenerData>> m_clientListeners; // client_id -> listener data
++    QMutex m_nodeListenersMutex; // Protects m_nodeListeners from concurrent access
++    QMutex m_clientListenersMutex; // Protects m_clientListeners from concurrent access
++    QElapsedTimer m_searchTimer; // Tracks time spent in graph traversal to prevent timeout
++};
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/regionscreencastsource.cpp b/src/plugins/screencast/regionscreencastsource.cpp
+index 28bfc80683..0d431afb17 100644
+--- a/src/plugins/screencast/regionscreencastsource.cpp
++++ b/src/plugins/screencast/regionscreencastsource.cpp
+@@ -24,7 +24,7 @@
+ namespace KWin
+ {
+ 
+-RegionScreenCastSource::RegionScreenCastSource(const QRect &region, qreal scale, QObject *parent)
++RegionScreenCastSource::RegionScreenCastSource(const QRectF &region, qreal scale, QObject *parent)
+     : ScreenCastSource(parent)
+     , m_region(region)
+     , m_scale(scale)
+@@ -51,7 +51,7 @@ RegionScreenCastSource::~RegionScreenCastSource()
+ 
+ QSize RegionScreenCastSource::textureSize() const
+ {
+-    return m_region.size() * m_scale;
++    return (m_region.size() * m_scale).toSize();
+ }
+ 
+ qreal RegionScreenCastSource::devicePixelRatio() const
+@@ -114,7 +114,7 @@ uint RegionScreenCastSource::refreshRate() const
+     uint ret = 0;
+     const auto allOutputs = workspace()->outputs();
+     for (auto output : allOutputs) {
+-        if (output->geometry().intersects(m_region)) {
++        if (output->geometry().intersects(m_region.toRect())) {
+             ret = std::max<uint>(ret, output->refreshRate());
+         }
+     }
+@@ -123,10 +123,7 @@ uint RegionScreenCastSource::refreshRate() const
+ 
+ void RegionScreenCastSource::close()
+ {
+-    if (!m_closed) {
+-        m_closed = true;
+-        Q_EMIT closed();
+-    }
++    Q_EMIT closed();
+ }
+ 
+ void RegionScreenCastSource::pause()
+@@ -169,6 +166,11 @@ QRectF RegionScreenCastSource::mapFromGlobal(const QRectF &rect) const
+     return rect.translated(-m_region.topLeft());
+ }
+ 
++QRect RegionScreenCastSource::rect() const
++{
++    return m_region.toRect();
++}
++
+ } // namespace KWin
+ 
+ #include "moc_regionscreencastsource.cpp"
+diff --git a/src/plugins/screencast/regionscreencastsource.h b/src/plugins/screencast/regionscreencastsource.h
+index ccf2a02898..4d635ec43e 100644
+--- a/src/plugins/screencast/regionscreencastsource.h
++++ b/src/plugins/screencast/regionscreencastsource.h
+@@ -23,11 +23,20 @@ class ItemTreeView;
+ class RegionScreenCastSource : public ScreenCastSource
+ {
+     Q_OBJECT
++    Q_PROPERTY(double X READ X CONSTANT)
++    Q_PROPERTY(double Y READ Y CONSTANT)
++    Q_PROPERTY(int Width READ Width CONSTANT)
++    Q_PROPERTY(int Height READ Height CONSTANT)
++    Q_PROPERTY(double Scale READ Scale CONSTANT)
+ 
+ public:
+-    explicit RegionScreenCastSource(const QRect &region, qreal scale, QObject *parent = nullptr);
++    explicit RegionScreenCastSource(const QRectF &region, qreal scale, QObject *parent = nullptr);
+     ~RegionScreenCastSource() override;
+ 
++    ScreenCastSourceType type() const override
++    {
++        return ScreenCastSourceType::Region;
++    }
+     quint32 drmFormat() const override;
+     QSize textureSize() const override;
+     qreal devicePixelRatio() const override;
+@@ -47,11 +56,45 @@ public:
+     QPointF mapFromGlobal(const QPointF &point) const override;
+     QRectF mapFromGlobal(const QRectF &rect) const override;
+ 
++    QRect rect() const override;
++
++    QString dbusInterfaceName() const override
++    {
++        return QStringLiteral("org.kde.KWin.ScreenCast.Region");
++    }
++
++    // D-Bus interface helper
++    qreal scale() const
++    {
++        return m_scale;
++    }
++
++    // D-Bus properties (capitalized for XML mapping)
++    double X() const
++    {
++        return m_region.x();
++    }
++    double Y() const
++    {
++        return m_region.y();
++    }
++    int Width() const
++    {
++        return m_region.width();
++    }
++    int Height() const
++    {
++        return m_region.height();
++    }
++    double Scale() const
++    {
++        return m_scale;
++    }
++
+ private:
+-    const QRect m_region;
++    const QRectF m_region;
+     const qreal m_scale;
+     std::chrono::nanoseconds m_last{0};
+-    bool m_closed = false;
+     bool m_active = false;
+ 
+     std::unique_ptr<ScreencastLayer> m_layer;
+diff --git a/src/plugins/screencast/screencast_validation_constants.h b/src/plugins/screencast/screencast_validation_constants.h
+new file mode 100644
+index 0000000000..7652803d6f
+--- /dev/null
++++ b/src/plugins/screencast/screencast_validation_constants.h
+@@ -0,0 +1,40 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include <cstdint>
++
++namespace KWin
++{
++
++/**
++ * Validation constants for D-Bus data from untrusted sources
++ *
++ * These limits prevent integer overflow, DoS attacks, and other security issues
++ * when processing geometry and process ID data from D-Bus interfaces.
++ *
++ * Usage:
++ * - Screen coordinates: MIN_COORDINATE_16BIT to MAX_COORDINATE_16BIT
++ * - Dimensions (width/height): 1 to MAX_DIMENSION
++ * - Process IDs: 0 < pid <= MAX_PID
++ */
++
++// Screen coordinate bounds (16-bit signed integer range)
++// Reasonable for typical multi-monitor setups including negative coordinates
++constexpr int MIN_COORDINATE_16BIT = -32768;
++constexpr int MAX_COORDINATE_16BIT = 32767;
++
++// Maximum dimension (width or height) for screencasts
++// Supports up to 16K resolution (15360x8640) with safety margin
++// Prevents DoS attacks via huge memory allocations
++constexpr int MAX_DIMENSION = 16384;
++
++// Maximum reasonable process ID
++// Linux kernel typically uses much lower values, 2^22 is generous upper bound
++// PID 0 is kernel process (invalid for user processes)
++constexpr uint32_t MAX_PID = 4194304; // 2^22
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/screencastdbus_utils.cpp b/src/plugins/screencast/screencastdbus_utils.cpp
+new file mode 100644
+index 0000000000..6c58865de4
+--- /dev/null
++++ b/src/plugins/screencast/screencastdbus_utils.cpp
+@@ -0,0 +1,170 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include "screencastdbus_utils.h"
++#include "kwinscreencast_logging.h"
++#include "outputscreencastsource.h"
++#include "regionscreencastsource.h"
++#include "screencast_validation_constants.h"
++#include "screencaststream.h"
++#include "screencasttypes.h"
++#include "windowscreencastsource.h"
++
++#include "core/output.h"
++#include "window.h"
++
++namespace KWin
++{
++
++namespace ScreenCastDBusUtils
++{
++
++QRect extractGeometryFromProperties(const QVariantMap &props)
++{
++    // Extract geometry properties with validation
++    bool xOk, yOk, widthOk, heightOk;
++    double x = props.value(QStringLiteral("X")).toDouble(&xOk);
++    double y = props.value(QStringLiteral("Y")).toDouble(&yOk);
++    int width = props.value(QStringLiteral("Width")).toInt(&widthOk);
++    int height = props.value(QStringLiteral("Height")).toInt(&heightOk);
++
++    if (!xOk || !yOk || !widthOk || !heightOk) {
++        qCWarning(KWIN_SCREENCAST) << "Failed to extract geometry from properties: conversion failed";
++        return QRect(); // Invalid rect
++    }
++
++    // Validate coordinate ranges to prevent integer overflow
++    // X/Y coordinates should fit in 16-bit signed int range (typical screen coordinates)
++    if (x < MIN_COORDINATE_16BIT || x > MAX_COORDINATE_16BIT || y < MIN_COORDINATE_16BIT || y > MAX_COORDINATE_16BIT) {
++        qCWarning(KWIN_SCREENCAST) << "Invalid geometry: coordinates out of range"
++                                   << "X:" << x << "Y:" << y
++                                   << "(valid range:" << MIN_COORDINATE_16BIT << "to" << MAX_COORDINATE_16BIT << ")";
++        return QRect();
++    }
++
++    // Validate dimension ranges to prevent security issues
++    if (width <= 0 || height <= 0) {
++        qCWarning(KWIN_SCREENCAST) << "Invalid geometry: non-positive dimensions" << width << "x" << height;
++        return QRect();
++    }
++
++    // Sanity check: geometry shouldn't be larger than 16K resolution
++    // This prevents potential DoS attacks via huge memory allocations
++    if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
++        qCWarning(KWIN_SCREENCAST) << "Invalid geometry: dimensions too large" << width << "x" << height
++                                   << "(max:" << MAX_DIMENSION << ")";
++        return QRect();
++    }
++
++    return QRect(qRound(x), qRound(y), width, height);
++}
++
++QVariantMap extractCommonStreamProperties(ScreenCastStream *stream)
++{
++    if (!stream) {
++        return QVariantMap();
++    }
++
++    QVariantMap props;
++    props[QStringLiteral("Identifier")] = QString::number(stream->nodeId());
++    props[QStringLiteral("State")] = stream->streamState();
++    props[QStringLiteral("ConsumerApp")] = stream->consumerApp();
++    props[QStringLiteral("ConsumerPID")] = stream->consumerPID();
++    props[QStringLiteral("Type")] = stream->Type();
++
++    return props;
++}
++
++QVariantMap extractWindowProperties(WindowScreenCastSource *source)
++{
++    QVariantMap props;
++
++    if (!source) {
++        return props;
++    }
++
++    Window *window = source->window();
++    if (!window) {
++        return props;
++    }
++
++    props[QStringLiteral("WindowId")] = window->internalId().toString();
++    props[QStringLiteral("WindowClass")] = window->resourceClass();
++    props[QStringLiteral("ResourceName")] = window->resourceName();
++    props[QStringLiteral("Caption")] = window->caption();
++
++    return props;
++}
++
++QVariantMap extractOutputProperties(OutputScreenCastSource *source)
++{
++    QVariantMap props;
++
++    if (!source) {
++        return props;
++    }
++
++    Output *output = source->output();
++    if (!output) {
++        return props;
++    }
++
++    props[QStringLiteral("OutputName")] = output->name();
++    props[QStringLiteral("X")] = source->X();
++    props[QStringLiteral("Y")] = source->Y();
++    props[QStringLiteral("Width")] = source->Width();
++    props[QStringLiteral("Height")] = source->Height();
++
++    return props;
++}
++
++QVariantMap extractRegionProperties(RegionScreenCastSource *source)
++{
++    QVariantMap props;
++
++    if (!source) {
++        return props;
++    }
++
++    props[QStringLiteral("X")] = source->X();
++    props[QStringLiteral("Y")] = source->Y();
++    props[QStringLiteral("Width")] = source->Width();
++    props[QStringLiteral("Height")] = source->Height();
++    props[QStringLiteral("Scale")] = source->Scale();
++
++    return props;
++}
++
++QVariantMap extractAllStreamProperties(ScreenCastStream *stream)
++{
++    QVariantMap interfaces;
++
++    if (!stream) {
++        return interfaces;
++    }
++
++    // Common interface properties
++    interfaces[QStringLiteral("org.kde.KWin.ScreenCast")] = extractCommonStreamProperties(stream);
++
++    // Type-specific interface properties
++    ScreenCastSource *source = stream->source();
++    if (!source) {
++        return interfaces;
++    }
++
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Window")] = extractWindowProperties(windowSource);
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Output")] = extractOutputProperties(outputSource);
++    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Region")] = extractRegionProperties(regionSource);
++    }
++
++    return interfaces;
++}
++
++} // namespace ScreenCastDBusUtils
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/screencastdbus_utils.h b/src/plugins/screencast/screencastdbus_utils.h
+new file mode 100644
+index 0000000000..4eb3e1f185
+--- /dev/null
++++ b/src/plugins/screencast/screencastdbus_utils.h
+@@ -0,0 +1,71 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include <QRect>
++#include <QString>
++#include <QVariantMap>
++
++namespace KWin
++{
++
++class ScreenCastStream;
++class ScreenCastSource;
++class WindowScreenCastSource;
++class OutputScreenCastSource;
++class RegionScreenCastSource;
++
++namespace ScreenCastDBusUtils
++{
++
++/**
++ * @brief Extract geometry (x, y, width, height) from D-Bus property map
++ * @param props QVariantMap containing geometry properties
++ * @return QRect with extracted geometry, or invalid QRect if extraction fails
++ *
++ * This utility function eliminates duplication of geometry extraction logic
++ * that appears in multiple places (screencastbordereffect.cpp, screencastdbusinterface.cpp).
++ */
++QRect extractGeometryFromProperties(const QVariantMap &props);
++
++/**
++ * @brief Extract common stream properties for D-Bus interface
++ * @param stream The screencast stream
++ * @return QVariantMap with common properties (Identifier, Type, State, ConsumerApp, ConsumerPID)
++ */
++QVariantMap extractCommonStreamProperties(ScreenCastStream *stream);
++
++/**
++ * @brief Extract window-specific properties for D-Bus interface
++ * @param source The window screencast source
++ * @return QVariantMap with window properties (x, y, width, height)
++ */
++QVariantMap extractWindowProperties(WindowScreenCastSource *source);
++
++/**
++ * @brief Extract output-specific properties for D-Bus interface
++ * @param source The output screencast source
++ * @return QVariantMap with output properties (x, y, width, height)
++ */
++QVariantMap extractOutputProperties(OutputScreenCastSource *source);
++
++/**
++ * @brief Extract region-specific properties for D-Bus interface
++ * @param source The region screencast source
++ * @return QVariantMap with region properties (x, y, width, height)
++ */
++QVariantMap extractRegionProperties(RegionScreenCastSource *source);
++
++/**
++ * @brief Extract all properties for a screencast stream based on its source type
++ * @param stream The screencast stream
++ * @return QVariantMap with all relevant properties
++ */
++QVariantMap extractAllStreamProperties(ScreenCastStream *stream);
++
++} // namespace ScreenCastDBusUtils
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/screencastdbusinterface.cpp b/src/plugins/screencast/screencastdbusinterface.cpp
+new file mode 100644
+index 0000000000..c0f5f61cf9
+--- /dev/null
++++ b/src/plugins/screencast/screencastdbusinterface.cpp
+@@ -0,0 +1,392 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include "screencastdbusinterface.h"
++#include "kwinscreencast_logging.h"
++#include "outputscreencastsource.h"
++#include "regionscreencastsource.h"
++#include "screencastdbus_utils.h"
++#include "screencastmanager.h"
++#include "screencastsource.h"
++#include "screencaststream.h"
++#include "windowscreencastsource.h"
++
++// Generated D-Bus adaptors
++#include "outputstreamadaptor.h"
++#include "regionstreamadaptor.h"
++#include "screencastadaptor.h"
++#include "windowstreamadaptor.h"
++
++#include "core/output.h"
++#include "window.h"
++
++#include <QDBusConnection>
++#include <QDBusConnectionInterface>
++#include <QDBusContext>
++#include <QDBusMessage>
++#include <QElapsedTimer>
++#include <QSet>
++
++namespace KWin
++{
++
++namespace
++{
++// Security: Rate limiting to prevent introspection spam
++// Allows 100 calls per second per service - enough for legitimate use, prevents DoS
++constexpr int RATE_LIMIT_CALLS_PER_SECOND = 100;
++constexpr qint64 RATE_LIMIT_WINDOW_MS = 1000;
++
++struct RateLimitInfo
++{
++    QElapsedTimer windowStart;
++    int callCount = 0;
++};
++} // anonymous namespace
++
++ScreencastDBusInterface::ScreencastDBusInterface(ScreencastManager *manager)
++    : QObject(manager)
++    , m_manager(manager)
++{
++    qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: Constructor called";
++
++    // Register on D-Bus at root path
++    bool registered = QDBusConnection::sessionBus().registerObject(
++        QStringLiteral("/org/kde/KWin/ScreenCast"),
++        QStringLiteral("org.freedesktop.DBus.ObjectManager"),
++        this,
++        QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals);
++
++    qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: ObjectManager registered:" << registered;
++
++    // Connect to stream lifecycle
++    connect(manager, &ScreencastManager::streamAdded,
++            this, &ScreencastDBusInterface::onStreamAdded);
++    connect(manager, &ScreencastManager::streamRemoved,
++            this, &ScreencastDBusInterface::onStreamRemoved);
++
++    qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: Connected to manager signals";
++}
++
++ScreencastDBusInterface::~ScreencastDBusInterface()
++{
++    // Unregister all stream objects
++    for (const QDBusObjectPath &path : m_streamPaths.values()) {
++        QDBusConnection::sessionBus().unregisterObject(path.path());
++    }
++
++    QDBusConnection::sessionBus().unregisterObject(
++        QStringLiteral("/org/kde/KWin/ScreenCast"));
++}
++
++QString ScreencastDBusInterface::streamObjectPath(ScreenCastStream *stream) const
++{
++    if (!stream) {
++        return QString();
++    }
++    return QStringLiteral("/org/kde/KWin/ScreenCast/node_%1").arg(stream->nodeId());
++}
++
++QStringList ScreencastDBusInterface::streamInterfaceNames(ScreenCastStream *stream) const
++{
++    QStringList interfaces;
++    interfaces << QStringLiteral("org.kde.KWin.ScreenCast");
++
++    ScreenCastSource *source = stream->source();
++    if (source) {
++        // Use polymorphic dbusInterfaceName() instead of qobject_cast cascade
++        // This follows Open/Closed Principle - new source types don't require changes here
++        interfaces << source->dbusInterfaceName();
++    }
++
++    return interfaces;
++}
++
++QVariantMap ScreencastDBusInterface::streamInterfaces(ScreenCastStream *stream) const
++{
++    // Delegate to utility function to eliminate duplication
++    return ScreenCastDBusUtils::extractAllStreamProperties(stream);
++}
++
++bool ScreencastDBusInterface::validateCaller()
++{
++    // Security Model:
++    // - Screencast streams are already authorized via xdg-desktop-portal before creation
++    // - This interface exposes read-only metadata about authorized streams
++    // - Access is limited to session bus (same user session)
++    // - We log calls for auditability but don't block legitimate introspection
++    // - Rate limiting prevents introspection spam attacks
++    //
++    // Privacy considerations:
++    // - Exposed data: window titles, positions, consumer app/PID
++    // - This information is already available via other session APIs
++    // - Blocking would break ObjectManager standard pattern
++    //
++    // Future: Consider PolicyKit integration if more fine-grained control is needed
++
++    if (!calledFromDBus()) {
++        // Internal call, always allowed
++        return true;
++    }
++
++    QString callerService = message().service();
++    qCInfo(KWIN_SCREENCAST) << "D-Bus introspection requested by:" << callerService;
++
++    // Verify caller is on session bus (should always be true, but verify)
++    if (callerService.isEmpty()) {
++        qCWarning(KWIN_SCREENCAST) << "D-Bus call from unknown/invalid service";
++        return false;
++    }
++
++    // Rate limiting: Prevent introspection spam (DoS attack vector)
++    auto &rateLimit = m_rateLimitTracking[callerService];
++
++    // Initialize timer if this is first call from this service
++    if (!rateLimit.first.isValid()) {
++        rateLimit.first.start();
++        rateLimit.second = 1;
++        return true;
++    }
++
++    qint64 elapsed = rateLimit.first.elapsed();
++
++    // Reset window if elapsed time exceeds rate limit window
++    if (elapsed >= RATE_LIMIT_WINDOW_MS) {
++        rateLimit.first.restart();
++        rateLimit.second = 1;
++        return true;
++    }
++
++    // Increment call count and check limit
++    rateLimit.second++;
++    if (rateLimit.second > RATE_LIMIT_CALLS_PER_SECOND) {
++        qCWarning(KWIN_SCREENCAST) << "Rate limit exceeded for service:" << callerService
++                                   << "(" << rateLimit.second << "calls in" << elapsed << "ms)";
++        return false;
++    }
++
++    return true;
++}
++
++QVariantMap ScreencastDBusInterface::GetManagedObjects()
++{
++    // Validate and log the caller for security auditing
++    if (!validateCaller()) {
++        sendErrorReply(QDBusError::AccessDenied,
++                       QStringLiteral("Access denied to screencast introspection"));
++        return QVariantMap();
++    }
++
++    qCDebug(KWIN_SCREENCAST) << "D-Bus: GetManagedObjects() called";
++
++    QVariantMap objects;
++    const QList<ScreenCastStream *> streams = m_manager->activeStreams();
++
++    for (ScreenCastStream *stream : streams) {
++        QString path = streamObjectPath(stream);
++        if (!path.isEmpty()) {
++            objects[path] = streamInterfaces(stream);
++        }
++    }
++
++    qCDebug(KWIN_SCREENCAST) << "D-Bus: Returning" << objects.size() << "managed objects";
++    return objects;
++}
++
++void ScreencastDBusInterface::onStreamAdded(ScreenCastStream *stream)
++{
++    qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: onStreamAdded called for stream:" << stream;
++
++    if (!stream || !stream->source()) {
++        qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: Stream has no source, returning";
++        return;
++    }
++
++    // Wait for stream to be ready (have node ID)
++    // Use QPointer to prevent use-after-free if stream is deleted before lambda executes
++    QPointer<ScreenCastStream> streamPtr(stream);
++    connect(stream, &ScreenCastStream::ready, this, [this, streamPtr](quint32 nodeId) {
++        Q_UNUSED(nodeId);
++
++        // Check if stream still exists
++        if (!streamPtr) {
++            qCDebug(KWIN_SCREENCAST) << "Stream was deleted before ready signal";
++            return;
++        }
++
++        ScreenCastStream *stream = streamPtr.data();
++        QString path = streamObjectPath(stream);
++        if (path.isEmpty()) {
++            qCWarning(KWIN_SCREENCAST) << "Failed to generate path for stream";
++            return;
++        }
++
++        // Store stream path
++        QDBusObjectPath objectPath(path);
++        m_streamPaths[stream] = objectPath;
++
++        // Create and track adaptors
++        m_streamAdaptors[stream] = createStreamAdaptors(stream);
++
++        // Register stream on D-Bus
++        registerStreamOnDBus(path, stream);
++
++        // Connect all property change signals
++        connectStreamPropertySignals(stream, path);
++    }, Qt::SingleShotConnection);
++}
++
++void ScreencastDBusInterface::onStreamRemoved(ScreenCastStream *stream)
++{
++    qCDebug(KWIN_SCREENCAST) << "ScreencastDBusInterface: onStreamRemoved called for stream:" << stream;
++
++    if (!m_streamPaths.contains(stream)) {
++        return;
++    }
++
++    QDBusObjectPath objectPath = m_streamPaths.take(stream);
++    m_streamsAnnouncedOnDBus.remove(stream);
++    QStringList interfaces = streamInterfaceNames(stream);
++
++    // Remove adaptor tracking - adaptors will be automatically deleted by Qt
++    // since stream is their parent (QObject parent-child relationship)
++    if (m_streamAdaptors.contains(stream)) {
++        int count = m_streamAdaptors.take(stream).size();
++        qCDebug(KWIN_SCREENCAST) << "Removed tracking for" << count << "adaptors (Qt will auto-delete)";
++    }
++
++    // Unregister object
++    QDBusConnection::sessionBus().unregisterObject(objectPath.path());
++
++    // Emit InterfacesRemoved signal
++    Q_EMIT InterfacesRemoved(objectPath, interfaces);
++
++    qCDebug(KWIN_SCREENCAST) << "InterfacesRemoved emitted for" << objectPath.path();
++}
++
++QList<QObject *> ScreencastDBusInterface::createStreamAdaptors(ScreenCastStream *stream)
++{
++    QList<QObject *> adaptors;
++    adaptors.append(new ScreenCastAdaptor(stream));
++
++    ScreenCastSource *source = stream->source();
++    // Defensive nullptr check before creating type-specific adaptors
++    if (source && qobject_cast<WindowScreenCastSource *>(source)) {
++        adaptors.append(new WindowStreamAdaptor(stream));
++    } else if (source && qobject_cast<OutputScreenCastSource *>(source)) {
++        adaptors.append(new OutputStreamAdaptor(stream));
++    } else if (source && qobject_cast<RegionScreenCastSource *>(source)) {
++        adaptors.append(new RegionStreamAdaptor(stream));
++    }
++
++    return adaptors;
++}
++
++bool ScreencastDBusInterface::registerStreamOnDBus(const QString &path, ScreenCastStream *stream)
++{
++    bool registered = QDBusConnection::sessionBus().registerObject(
++        path,
++        stream,
++        QDBusConnection::ExportAdaptors);
++
++    qCDebug(KWIN_SCREENCAST) << "Registered stream at" << path << ":" << registered;
++    return registered;
++}
++
++void ScreencastDBusInterface::connectStreamPropertySignals(ScreenCastStream *stream, const QString &path)
++{
++    // Use QPointer for safety even though Qt auto-disconnects when sender is destroyed
++    QPointer<ScreenCastStream> streamPtr(stream);
++
++    // Connect consumer change signals
++    connect(stream, &ScreenCastStream::consumerConnected, this, [this, streamPtr, path]() {
++        if (!streamPtr)
++            return;
++        ScreenCastStream *stream = streamPtr.data();
++
++        // Only emit PropertiesChanged if stream was already announced
++        if (!m_streamsAnnouncedOnDBus.contains(stream)) {
++            return; // Will be handled by emitInterfacesAdded
++        }
++
++        QVariantMap changedProps;
++        changedProps[QStringLiteral("ConsumerApp")] = stream->ConsumerApp();
++        changedProps[QStringLiteral("ConsumerPID")] = stream->ConsumerPID();
++
++        QDBusMessage signal = QDBusMessage::createSignal(
++            path,
++            QStringLiteral("org.freedesktop.DBus.Properties"),
++            QStringLiteral("PropertiesChanged"));
++        signal << QStringLiteral("org.kde.KWin.ScreenCast") << changedProps << QStringList();
++        QDBusConnection::sessionBus().send(signal);
++    });
++
++    // Connect state change signals
++    connect(stream, &ScreenCastStream::stateChanged, this, [this, streamPtr, path]() {
++        if (!streamPtr)
++            return;
++        ScreenCastStream *stream = streamPtr.data();
++
++        QVariantMap changedProps;
++        changedProps[QStringLiteral("State")] = stream->State();
++
++        QDBusMessage signal = QDBusMessage::createSignal(
++            path,
++            QStringLiteral("org.freedesktop.DBus.Properties"),
++            QStringLiteral("PropertiesChanged"));
++        signal << QStringLiteral("org.kde.KWin.ScreenCast") << changedProps << QStringList();
++        QDBusConnection::sessionBus().send(signal);
++    });
++
++    // Connect geometry changes for windows
++    ScreenCastSource *source = stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        QPointer<WindowScreenCastSource> windowSourcePtr(windowSource);
++        connect(windowSource, &WindowScreenCastSource::rectChanged, this, [this, windowSourcePtr, path]() {
++            if (!windowSourcePtr)
++                return;
++
++            QVariantMap changedProps;
++            changedProps[QStringLiteral("X")] = windowSourcePtr->X();
++            changedProps[QStringLiteral("Y")] = windowSourcePtr->Y();
++            changedProps[QStringLiteral("Width")] = windowSourcePtr->Width();
++            changedProps[QStringLiteral("Height")] = windowSourcePtr->Height();
++
++            QDBusMessage signal = QDBusMessage::createSignal(
++                path,
++                QStringLiteral("org.freedesktop.DBus.Properties"),
++                QStringLiteral("PropertiesChanged"));
++            signal << QStringLiteral("org.kde.KWin.ScreenCast.Window") << changedProps << QStringList();
++            QDBusConnection::sessionBus().send(signal);
++
++            qCDebug(KWIN_SCREENCAST) << "Window geometry PropertyChanged emitted for" << path;
++        });
++    }
++
++    // Emit InterfacesAdded when consumer connects
++    QDBusObjectPath objectPath(path);
++    connect(stream, &ScreenCastStream::consumerConnected, this, [this, streamPtr, objectPath, path]() {
++        if (!streamPtr)
++            return;
++        ScreenCastStream *stream = streamPtr.data();
++
++        // Only emit once
++        if (m_streamsAnnouncedOnDBus.contains(stream)) {
++            return;
++        }
++
++        QVariantMap interfaces = streamInterfaces(stream);
++        Q_EMIT InterfacesAdded(objectPath, interfaces);
++        m_streamsAnnouncedOnDBus.insert(stream);
++
++        qCDebug(KWIN_SCREENCAST) << "InterfacesAdded emitted for" << path
++                                 << "ConsumerPID:" << stream->ConsumerPID()
++                                 << "ConsumerApp:" << stream->ConsumerApp();
++    });
++}
++
++} // namespace KWin
++
++#include "moc_screencastdbusinterface.cpp"
+diff --git a/src/plugins/screencast/screencastdbusinterface.h b/src/plugins/screencast/screencastdbusinterface.h
+new file mode 100644
+index 0000000000..b40f027c81
+--- /dev/null
++++ b/src/plugins/screencast/screencastdbusinterface.h
+@@ -0,0 +1,65 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include <QDBusContext>
++#include <QDBusObjectPath>
++#include <QElapsedTimer>
++#include <QObject>
++
++namespace KWin
++{
++
++class ScreencastManager;
++class ScreenCastStream;
++
++/**
++ * Implements org.freedesktop.DBus.ObjectManager for screencasts
++ * Root path: /org/kde/KWin/ScreenCast
++ * Per-stream objects: /org/kde/KWin/ScreenCast/node_<pipewire_node_id>
++ */
++class ScreencastDBusInterface : public QObject, protected QDBusContext
++{
++    Q_OBJECT
++    Q_DISABLE_COPY(ScreencastDBusInterface)
++    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.DBus.ObjectManager")
++
++public:
++    explicit ScreencastDBusInterface(ScreencastManager *manager);
++    ~ScreencastDBusInterface() noexcept override;
++
++public Q_SLOTS:
++    // ObjectManager method
++    QVariantMap GetManagedObjects();
++
++Q_SIGNALS:
++    // ObjectManager signals
++    void InterfacesAdded(const QDBusObjectPath &objectPath, const QVariantMap &interfacesAndProperties);
++    void InterfacesRemoved(const QDBusObjectPath &objectPath, const QStringList &interfaces);
++
++private Q_SLOTS:
++    void onStreamAdded(ScreenCastStream *stream);
++    void onStreamRemoved(ScreenCastStream *stream);
++
++private:
++    QString streamObjectPath(ScreenCastStream *stream) const;
++    QVariantMap streamInterfaces(ScreenCastStream *stream) const;
++    QStringList streamInterfaceNames(ScreenCastStream *stream) const;
++    bool validateCaller();
++
++    // Helper methods for onStreamAdded refactoring
++    QList<QObject *> createStreamAdaptors(ScreenCastStream *stream);
++    bool registerStreamOnDBus(const QString &path, ScreenCastStream *stream);
++    void connectStreamPropertySignals(ScreenCastStream *stream, const QString &path);
++
++    ScreencastManager *m_manager;
++    QHash<ScreenCastStream *, QDBusObjectPath> m_streamPaths;
++    QSet<ScreenCastStream *> m_streamsAnnouncedOnDBus;
++    QHash<ScreenCastStream *, QList<QObject *>> m_streamAdaptors; // Track adaptors for explicit cleanup
++    QHash<QString, QPair<QElapsedTimer, int>> m_rateLimitTracking; // Service name -> (window start, call count)
++};
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/screencastmanager.cpp b/src/plugins/screencast/screencastmanager.cpp
+index 18bea6944a..547dc49eb6 100644
+--- a/src/plugins/screencast/screencastmanager.cpp
++++ b/src/plugins/screencast/screencastmanager.cpp
+@@ -12,6 +12,7 @@
+ #include "outputscreencastsource.h"
+ #include "pipewirecore.h"
+ #include "regionscreencastsource.h"
++#include "screencastdbusinterface.h"
+ #include "screencaststream.h"
+ #include "wayland/display.h"
+ #include "wayland/output.h"
+@@ -26,7 +27,9 @@ namespace KWin
+ {
+ 
+ ScreencastManager::ScreencastManager()
+-    : m_screencast(new ScreencastV1Interface(waylandServer()->display(), this))
++    : Plugin()
++    , m_screencast(new ScreencastV1Interface(waylandServer()->display(), this))
++    , m_dbusInterface(new ScreencastDBusInterface(this))
+ {
+     getPipewireConnection();
+ 
+@@ -36,6 +39,10 @@ ScreencastManager::ScreencastManager()
+     connect(m_screencast, &ScreencastV1Interface::regionScreencastRequested, this, &ScreencastManager::streamRegion);
+ }
+ 
++ScreencastManager::~ScreencastManager()
++{
++}
++
+ void ScreencastManager::streamWindow(ScreencastStreamV1Interface *waylandStream,
+                                      const QString &winid,
+                                      ScreencastV1Interface::CursorMode mode)
+@@ -112,7 +119,7 @@ static qreal devicePixelRatioForRegion(const QRect &region)
+ void ScreencastManager::streamRegion(ScreencastStreamV1Interface *waylandStream, const QRect &geometry, qreal scale, ScreencastV1Interface::CursorMode mode)
+ {
+     if (!geometry.isValid()) {
+-        waylandStream->sendFailed(i18n("Invalid region"));
++        waylandStream->sendFailed(i18nc("@info:error", "Invalid region"));
+         return;
+     }
+ 
+@@ -131,8 +138,9 @@ void ScreencastManager::streamRegion(ScreencastStreamV1Interface *waylandStream,
+ void ScreencastManager::integrateStreams(ScreencastStreamV1Interface *waylandStream, ScreenCastStream *stream)
+ {
+     connect(waylandStream, &ScreencastStreamV1Interface::finished, stream, &ScreenCastStream::close);
+-    connect(stream, &ScreenCastStream::closed, waylandStream, [stream, waylandStream] {
++    connect(stream, &ScreenCastStream::closed, this, [this, stream, waylandStream] {
+         waylandStream->sendClosed();
++        onStreamClosed(stream);
+         stream->deleteLater();
+     });
+     connect(stream, &ScreenCastStream::ready, stream, [waylandStream](uint nodeid) {
+@@ -141,6 +149,28 @@ void ScreencastManager::integrateStreams(ScreencastStreamV1Interface *waylandStr
+     if (!stream->init()) {
+         waylandStream->sendFailed(stream->error());
+         delete stream;
++    } else {
++        registerActiveStream(stream);
++    }
++}
++
++void ScreencastManager::onStreamClosed(ScreenCastStream *stream)
++{
++    unregisterActiveStream(stream);
++}
++
++void ScreencastManager::registerActiveStream(ScreenCastStream *stream)
++{
++    if (!m_activeStreams.contains(stream)) {
++        m_activeStreams.append(stream);
++        Q_EMIT streamAdded(stream);
++    }
++}
++
++void ScreencastManager::unregisterActiveStream(ScreenCastStream *stream)
++{
++    if (m_activeStreams.removeAll(stream) > 0) {
++        Q_EMIT streamRemoved(stream);
+     }
+ }
+ 
+diff --git a/src/plugins/screencast/screencastmanager.h b/src/plugins/screencast/screencastmanager.h
+index 1f1506f477..32836434d5 100644
+--- a/src/plugins/screencast/screencastmanager.h
++++ b/src/plugins/screencast/screencastmanager.h
+@@ -17,6 +17,7 @@ namespace KWin
+ class Output;
+ class ScreenCastStream;
+ class PipeWireCore;
++class ScreencastDBusInterface;
+ 
+ class ScreencastManager : public Plugin
+ {
+@@ -24,6 +25,18 @@ class ScreencastManager : public Plugin
+ 
+ public:
+     explicit ScreencastManager();
++    ~ScreencastManager() override;
++
++    // Internal API for ScreencastDBusInterface (not for external plugins)
++    // External plugins (like ScreencastBorderEffect) should use the DBus interface instead
++    QList<ScreenCastStream *> activeStreams() const
++    {
++        return m_activeStreams;
++    }
++
++Q_SIGNALS:
++    void streamAdded(ScreenCastStream *stream);
++    void streamRemoved(ScreenCastStream *stream);
+ 
+ private:
+     void streamWindow(ScreencastStreamV1Interface *stream,
+@@ -46,11 +59,16 @@ private:
+                       ScreencastV1Interface::CursorMode mode);
+ 
+     void integrateStreams(ScreencastStreamV1Interface *waylandStream, ScreenCastStream *stream);
++    void onStreamClosed(ScreenCastStream *stream);
++    void registerActiveStream(ScreenCastStream *stream);
++    void unregisterActiveStream(ScreenCastStream *stream);
+ 
+     std::shared_ptr<PipeWireCore> getPipewireConnection();
+ 
+     ScreencastV1Interface *m_screencast;
+     std::shared_ptr<PipeWireCore> m_pipewireConnectionCache;
++    QList<ScreenCastStream *> m_activeStreams;
++    ScreencastDBusInterface *m_dbusInterface;
+ };
+ 
+ } // namespace KWin
+diff --git a/src/plugins/screencast/screencastsource.h b/src/plugins/screencast/screencastsource.h
+index 49e3821695..58a41636f7 100644
+--- a/src/plugins/screencast/screencastsource.h
++++ b/src/plugins/screencast/screencastsource.h
+@@ -17,6 +17,12 @@ class Cursor;
+ class GLFramebuffer;
+ class GLTexture;
+ 
++enum class ScreenCastSourceType {
++    Window,
++    Output,
++    Region
++};
++
+ class ScreenCastSource : public QObject
+ {
+     Q_OBJECT
+@@ -24,6 +30,7 @@ class ScreenCastSource : public QObject
+ public:
+     explicit ScreenCastSource(QObject *parent = nullptr);
+ 
++    virtual ScreenCastSourceType type() const = 0;
+     virtual uint refreshRate() const = 0;
+     virtual quint32 drmFormat() const = 0;
+     virtual QSize textureSize() const = 0;
+@@ -42,9 +49,18 @@ public:
+     virtual QPointF mapFromGlobal(const QPointF &point) const = 0;
+     virtual QRectF mapFromGlobal(const QRectF &rect) const = 0;
+ 
++    virtual QRect rect() const = 0;
++
++    /**
++     * @brief Returns the D-Bus interface name for this source type
++     * @return D-Bus interface name (e.g., "org.kde.KWin.ScreenCast.Window")
++     */
++    virtual QString dbusInterfaceName() const = 0;
++
+ Q_SIGNALS:
+     void frame();
+     void closed();
++    void rectChanged();
+ };
+ 
+ } // namespace KWin
+diff --git a/src/plugins/screencast/screencaststream.cpp b/src/plugins/screencast/screencaststream.cpp
+index 15f0d2d4e9..d198c5c8e8 100644
+--- a/src/plugins/screencast/screencaststream.cpp
++++ b/src/plugins/screencast/screencaststream.cpp
+@@ -3,7 +3,7 @@
+     SPDX-FileCopyrightText: 2020 Aleix Pol Gonzalez <aleixpol@kde.org>
+     SPDX-FileContributor: Jan Grulich <jgrulich@redhat.com>
+ 
+-    SPDX-License-Identifier: LGPL-2.0-or-later
++    SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ 
+ #include "screencaststream.h"
+@@ -19,11 +19,15 @@
+ #include "opengl/glplatform.h"
+ #include "opengl/gltexture.h"
+ #include "opengl/glutils.h"
++#include "outputscreencastsource.h"
++#include "pipewireConsumertracker.h"
+ #include "pipewirecore.h"
++#include "regionscreencastsource.h"
+ #include "scene/workspacescene.h"
+ #include "screencastbuffer.h"
+ #include "screencastsource.h"
+ #include "utils/drm_format_helper.h"
++#include "windowscreencastsource.h"
+ 
+ #include <KLocalizedString>
+ 
+@@ -37,6 +41,25 @@
+ namespace KWin
+ {
+ 
++// Template helper to eliminate delegate method duplication
++// Tries each source type and calls the corresponding method, returning defaultValue if no match
++template<typename Ret>
++static Ret delegateToSource(const std::unique_ptr<ScreenCastSource> &source,
++                            Ret (WindowScreenCastSource::*windowMethod)() const,
++                            Ret (RegionScreenCastSource::*regionMethod)() const,
++                            Ret (OutputScreenCastSource::*outputMethod)() const,
++                            Ret defaultValue)
++{
++    if (auto *ws = qobject_cast<WindowScreenCastSource *>(source.get())) {
++        return (ws->*windowMethod)();
++    } else if (auto *rs = qobject_cast<RegionScreenCastSource *>(source.get())) {
++        return (rs->*regionMethod)();
++    } else if (auto *os = qobject_cast<OutputScreenCastSource *>(source.get())) {
++        return (os->*outputMethod)();
++    }
++    return defaultValue;
++}
++
+ static const struct
+ {
+     uint32_t drmFormat;
+@@ -122,31 +145,54 @@ void ScreenCastStream::onStreamStateChanged(pw_stream_state old, pw_stream_state
+     switch (state) {
+     case PW_STREAM_STATE_ERROR:
+         qCWarning(KWIN_SCREENCAST) << objectName() << "Stream error: " << error_message;
++        Q_EMIT stateChanged(QStringLiteral("inactive"));
+         break;
+     case PW_STREAM_STATE_PAUSED:
+         if (nodeId() == 0 && m_pwStream) {
+             m_pwNodeId = pw_stream_get_node_id(m_pwStream);
+             Q_EMIT ready(nodeId());
++
++            // Setup consumer tracker when we have node ID
++            if (!m_consumerTracker) {
++                m_consumerTracker = std::make_unique<PipeWireConsumerTracker>(
++                    m_pwCore->pwCore, m_pwNodeId, this);
++                connect(m_consumerTracker.get(), &PipeWireConsumerTracker::consumerConnected,
++                        this, &ScreenCastStream::consumerConnected);
++                connect(m_consumerTracker.get(), &PipeWireConsumerTracker::consumerDisconnected,
++                        this, [this]() {
++                    Q_EMIT consumerConnected(QString(), 0);
++                });
++            }
+         }
+         m_pendingFrame.stop();
+         m_pendingContents = Contents();
+         m_source->pause();
++        Q_EMIT stateChanged(QStringLiteral("paused"));
+         break;
+     case PW_STREAM_STATE_STREAMING:
+         m_lastSent.reset();
+         m_source->resume();
++        Q_EMIT stateChanged(QStringLiteral("active"));
+         break;
+     case PW_STREAM_STATE_CONNECTING:
+         break;
+     case PW_STREAM_STATE_UNCONNECTED:
+         close();
++        Q_EMIT stateChanged(QStringLiteral("inactive"));
+         break;
+     }
+ }
+ 
++// PipeWire cursor metadata constants
++// CURSOR_BPP = 4 bytes per pixel (RGBA8888 format)
+ #define CURSOR_BPP 4
++// Calculate size needed for cursor metadata including bitmap data
+ #define CURSOR_META_SIZE(w, h) (sizeof(struct spa_meta_cursor) + sizeof(struct spa_meta_bitmap) + w * h * CURSOR_BPP)
+-static const int videoDamageRegionCount = 16;
++
++// Maximum number of damage regions to report to PipeWire client
++// 16 is a reasonable balance between granularity and metadata size
++// More regions = more precise damage reporting but larger metadata overhead
++static constexpr int videoDamageRegionCount = 16;
+ 
+ void ScreenCastStream::newStreamParams()
+ {
+@@ -329,6 +375,7 @@ ScreenCastStream::ScreenCastStream(ScreenCastSource *source, std::shared_ptr<Pip
+         scheduleRecord(Content::Video);
+     });
+     connect(source, &ScreenCastSource::closed, this, &ScreenCastStream::close);
++    // rectChanged updates now handled in screencastborder effect via D-Bus signals
+ 
+     m_pwStreamEvents.version = PW_VERSION_STREAM_EVENTS;
+     m_pwStreamEvents.add_buffer = [](void *data, struct pw_buffer *buffer) {
+@@ -364,6 +411,134 @@ ScreenCastStream::~ScreenCastStream()
+     }
+ }
+ 
++QString ScreenCastStream::streamState() const
++{
++    if (!m_pwStream) {
++        return QStringLiteral("inactive");
++    }
++
++    pw_stream_state state = pw_stream_get_state(m_pwStream, nullptr);
++    switch (state) {
++    case PW_STREAM_STATE_STREAMING:
++        return QStringLiteral("active");
++    case PW_STREAM_STATE_PAUSED:
++        return QStringLiteral("paused");
++    default:
++        return QStringLiteral("inactive");
++    }
++}
++
++QString ScreenCastStream::Type() const
++{
++    if (!m_source) {
++        return QString();
++    }
++
++    if (qobject_cast<WindowScreenCastSource *>(m_source.get())) {
++        return QStringLiteral("window");
++    } else if (qobject_cast<OutputScreenCastSource *>(m_source.get())) {
++        return QStringLiteral("output");
++    } else if (qobject_cast<RegionScreenCastSource *>(m_source.get())) {
++        return QStringLiteral("region");
++    }
++    return QString();
++}
++
++QString ScreenCastStream::consumerApp() const
++{
++    return m_consumerTracker ? m_consumerTracker->consumerApp() : QString();
++}
++
++quint32 ScreenCastStream::consumerPID() const
++{
++    return m_consumerTracker ? m_consumerTracker->consumerPID() : 0;
++}
++
++// D-Bus Window/Region/Output interface property delegates
++QString ScreenCastStream::WindowId() const
++{
++    if (auto *ws = qobject_cast<WindowScreenCastSource *>(m_source.get())) {
++        return ws->WindowId();
++    }
++    return QString();
++}
++
++QString ScreenCastStream::WindowClass() const
++{
++    if (auto *ws = qobject_cast<WindowScreenCastSource *>(m_source.get())) {
++        return ws->WindowClass();
++    }
++    return QString();
++}
++
++QString ScreenCastStream::ResourceName() const
++{
++    if (auto *ws = qobject_cast<WindowScreenCastSource *>(m_source.get())) {
++        return ws->ResourceName();
++    }
++    return QString();
++}
++
++QString ScreenCastStream::Caption() const
++{
++    if (auto *ws = qobject_cast<WindowScreenCastSource *>(m_source.get())) {
++        return ws->Caption();
++    }
++    return QString();
++}
++
++double ScreenCastStream::X() const
++{
++    return delegateToSource<double>(m_source,
++                                    &WindowScreenCastSource::X,
++                                    &RegionScreenCastSource::X,
++                                    &OutputScreenCastSource::X,
++                                    0.0);
++}
++
++double ScreenCastStream::Y() const
++{
++    return delegateToSource<double>(m_source,
++                                    &WindowScreenCastSource::Y,
++                                    &RegionScreenCastSource::Y,
++                                    &OutputScreenCastSource::Y,
++                                    0.0);
++}
++
++int ScreenCastStream::Width() const
++{
++    return delegateToSource<int>(m_source,
++                                 &WindowScreenCastSource::Width,
++                                 &RegionScreenCastSource::Width,
++                                 &OutputScreenCastSource::Width,
++                                 0);
++}
++
++int ScreenCastStream::Height() const
++{
++    return delegateToSource<int>(m_source,
++                                 &WindowScreenCastSource::Height,
++                                 &RegionScreenCastSource::Height,
++                                 &OutputScreenCastSource::Height,
++                                 0);
++}
++
++double ScreenCastStream::Scale() const
++{
++    if (auto *rs = qobject_cast<RegionScreenCastSource *>(m_source.get())) {
++        return rs->Scale();
++    }
++    return 1.0;
++}
++
++QString ScreenCastStream::OutputName() const
++{
++    if (auto *os = qobject_cast<OutputScreenCastSource *>(m_source.get())) {
++        return os->OutputName();
++    }
++    return QString();
++}
++
+ bool ScreenCastStream::init()
+ {
+     if (!m_pwCore->m_error.isEmpty()) {
+@@ -373,7 +548,7 @@ bool ScreenCastStream::init()
+ 
+     EglBackend *backend = qobject_cast<EglBackend *>(Compositor::self()->backend());
+     if (!backend) {
+-        m_error = i18n("OpenGL compositing is required for screencasting");
++        m_error = i18nc("@info:error", "OpenGL compositing is required for screencasting");
+         return false;
+     }
+ 
+@@ -381,7 +556,7 @@ bool ScreenCastStream::init()
+ 
+     if (!createStream()) {
+         qCWarning(KWIN_SCREENCAST) << objectName() << "Failed to create PipeWire stream";
+-        m_error = i18n("Failed to create PipeWire stream");
++        m_error = i18nc("@info:error", "Failed to create PipeWire stream");
+         return false;
+     }
+ 
+@@ -397,7 +572,7 @@ uint ScreenCastStream::framerate()
+     return 0;
+ }
+ 
+-uint ScreenCastStream::nodeId()
++uint ScreenCastStream::nodeId() const
+ {
+     return m_pwNodeId;
+ }
+@@ -871,6 +1046,8 @@ void ScreenCastStream::setCursorMode(ScreencastV1Interface::CursorMode mode)
+     m_cursor.mode = mode;
+ }
+ 
++// updateRegion() removed - UI updates now handled in screencastborder effect
++
+ std::optional<ScreenCastDmaBufTextureParams> ScreenCastStream::testCreateDmaBuf(const QSize &size, quint32 format, const QList<uint64_t> &modifiers)
+ {
+     EglBackend *backend = qobject_cast<EglBackend *>(Compositor::self()->backend());
+diff --git a/src/plugins/screencast/screencaststream.h b/src/plugins/screencast/screencaststream.h
+index c69c5fcc73..84fff4c657 100644
+--- a/src/plugins/screencast/screencaststream.h
++++ b/src/plugins/screencast/screencaststream.h
+@@ -3,7 +3,7 @@
+     SPDX-FileCopyrightText: 2020 Aleix Pol Gonzalez <aleixpol@kde.org>
+     SPDX-FileContributor: Jan Grulich <jgrulich@redhat.com>
+ 
+-    SPDX-License-Identifier: LGPL-2.0-or-later
++    SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ 
+ #pragma once
+@@ -23,11 +23,13 @@
+ #include <spa/param/format-utils.h>
+ #include <spa/param/props.h>
+ #include <spa/param/video/format-utils.h>
++#include <spa/utils/hook.h>
+ 
+ namespace KWin
+ {
+ 
+ class Cursor;
++class Item;
+ class PipeWireCore;
+ class ScreenCastBuffer;
+ class ScreenCastSource;
+@@ -45,6 +47,30 @@ struct ScreenCastDmaBufTextureParams
+ class KWIN_EXPORT ScreenCastStream : public QObject
+ {
+     Q_OBJECT
++    Q_PROPERTY(QString Identifier READ Identifier)
++    Q_PROPERTY(QString Type READ Type)
++    Q_PROPERTY(QString State READ State NOTIFY stateChanged)
++    Q_PROPERTY(QString ConsumerApp READ ConsumerApp NOTIFY consumerConnected)
++    Q_PROPERTY(uint ConsumerPID READ ConsumerPID NOTIFY consumerConnected)
++
++    // Window-specific properties
++    Q_PROPERTY(QString WindowId READ WindowId)
++    Q_PROPERTY(QString WindowClass READ WindowClass)
++    Q_PROPERTY(QString ResourceName READ ResourceName)
++    Q_PROPERTY(QString Caption READ Caption)
++
++    // Common geometry properties (Window/Region/Output)
++    Q_PROPERTY(double X READ X)
++    Q_PROPERTY(double Y READ Y)
++    Q_PROPERTY(int Width READ Width)
++    Q_PROPERTY(int Height READ Height)
++
++    // Region-specific properties
++    Q_PROPERTY(double Scale READ Scale)
++
++    // Output-specific properties
++    Q_PROPERTY(QString OutputName READ OutputName)
++
+ public:
+     explicit ScreenCastStream(ScreenCastSource *source, std::shared_ptr<PipeWireCore> pwCore, QObject *parent);
+     ~ScreenCastStream();
+@@ -59,7 +85,7 @@ public:
+ 
+     bool init();
+     uint framerate();
+-    uint nodeId();
++    uint nodeId() const;
+     QString error() const
+     {
+         return m_error;
+@@ -71,12 +97,65 @@ public:
+ 
+     void setCursorMode(ScreencastV1Interface::CursorMode mode);
+ 
++    // D-Bus interface helpers
++    ScreenCastSource *source() const
++    {
++        return m_source.get();
++    }
++    QString Identifier() const
++    {
++        return QString::number(nodeId());
++    }
++    QString Type() const;
++    QString State() const
++    {
++        return streamState();
++    }
++    QString ConsumerApp() const
++    {
++        return consumerApp();
++    }
++    uint ConsumerPID() const
++    {
++        return consumerPID();
++    }
++    QString consumerApp() const;
++    quint32 consumerPID() const;
++    QString streamState() const;
++
++    // D-Bus Window/Region/Output interface properties (delegate to source)
++    // Window properties
++    QString WindowId() const;
++    QString WindowClass() const;
++    QString ResourceName() const;
++    QString Caption() const;
++
++    // Common geometry properties (Window/Region/Output)
++    double X() const;
++    double Y() const;
++    int Width() const;
++    int Height() const;
++
++    // Region properties
++    double Scale() const;
++
++    // Output properties
++    QString OutputName() const;
++
++    // D-Bus methods
++    void Stop()
++    {
++        close();
++    }
++
+ public Q_SLOTS:
+     void invalidateCursor();
+ 
+ Q_SIGNALS:
+     void ready(quint32 nodeId);
+     void closed();
++    void consumerConnected(const QString &appName, quint32 pid);
++    void stateChanged(const QString &state);
+ 
+ private:
+     void onStreamParamChanged(uint32_t id, const struct spa_pod *format);
+@@ -140,6 +219,9 @@ private:
+ 
+     QList<ScreenCastBuffer *> m_allBuffers;
+     DamageJournal m_damageJournal;
++
++    // Consumer tracking
++    std::unique_ptr<class PipeWireConsumerTracker> m_consumerTracker;
+ };
+ 
+ } // namespace KWin
+diff --git a/src/plugins/screencast/screencasttypes.h b/src/plugins/screencast/screencasttypes.h
+new file mode 100644
+index 0000000000..8a4ec0b3ca
+--- /dev/null
++++ b/src/plugins/screencast/screencasttypes.h
+@@ -0,0 +1,26 @@
++/*
++    SPDX-FileCopyrightText: 2025 KDE Contributors
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include <QLatin1String>
++
++namespace KWin
++{
++
++/**
++ * @brief Constants for screencast source types
++ *
++ * These constants are used throughout the screencast system to identify
++ * the type of source being captured (window, output/monitor, or custom region).
++ */
++namespace ScreenCastTypes
++{
++constexpr QLatin1String Window("window");
++constexpr QLatin1String Output("output");
++constexpr QLatin1String Region("region");
++} // namespace ScreenCastTypes
++
++} // namespace KWin
+diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
+index 63d52e6ec6..417ef02cf7 100644
+--- a/src/plugins/screencast/windowscreencastsource.cpp
++++ b/src/plugins/screencast/windowscreencastsource.cpp
+@@ -32,7 +32,9 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window, QObject *parent)
+     add(window);
+ 
+     connect(workspace(), &Workspace::windowAdded, this, [this](Window *window) {
+-        if (window->isPopupWindow() && m_windows.contains(window->transientFor())) {
++        // Validate transientFor() before checking if it's in our window list
++        Window *parent = window->transientFor();
++        if (window->isPopupWindow() && parent && m_windows.contains(parent)) {
+             add(window);
+             if (m_active) {
+                 Q_EMIT frame();
+@@ -76,12 +78,14 @@ void WindowScreenCastSource::watch(Window *window)
+ {
+     window->refOffscreenRendering();
+     connect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
++    connect(window, &Window::frameGeometryChanged, this, &WindowScreenCastSource::rectChanged);
+ }
+ 
+ void WindowScreenCastSource::unwatch(Window *window)
+ {
+     window->unrefOffscreenRendering();
+     disconnect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
++    disconnect(window, &Window::frameGeometryChanged, this, &WindowScreenCastSource::rectChanged);
+ }
+ 
+ quint32 WindowScreenCastSource::drmFormat() const
+@@ -91,11 +95,17 @@ quint32 WindowScreenCastSource::drmFormat() const
+ 
+ QSize WindowScreenCastSource::textureSize() const
+ {
++    if (m_windows.isEmpty() || !m_windows[0]) {
++        return QSize();
++    }
+     return (boundingRect().size() * m_windows[0]->targetScale()).toSize();
+ }
+ 
+ qreal WindowScreenCastSource::devicePixelRatio() const
+ {
++    if (m_windows.isEmpty() || !m_windows[0]) {
++        return 1.0;
++    }
+     return m_windows[0]->targetScale();
+ }
+ 
+@@ -128,8 +138,11 @@ QRegion WindowScreenCastSource::render(GLFramebuffer *target, const QRegion &buf
+     scene->renderer()->beginFrame(renderTarget, viewport);
+     glClearColor(0.0, 0.0, 0.0, 0.0);
+     glClear(GL_COLOR_BUFFER_BIT);
+-    for (const auto &window : m_windows) {
+-        scene->renderer()->renderItem(renderTarget, viewport, window->windowItem(), Scene::PAINT_WINDOW_TRANSFORMED, infiniteRegion(), WindowPaintData{}, {}, {});
++    for (const auto &windowPtr : m_windows) {
++        // QPointer may be null if window was deleted
++        if (windowPtr) {
++            scene->renderer()->renderItem(renderTarget, viewport, windowPtr->windowItem(), Scene::PAINT_WINDOW_TRANSFORMED, infiniteRegion(), WindowPaintData{}, {}, {});
++        }
+     }
+     if (m_renderCursor && scene->cursorItem()->isVisible()) {
+         scene->renderer()->renderItem(renderTarget, viewport, scene->cursorItem(), 0, infiniteRegion(), WindowPaintData{}, {}, {});
+@@ -140,11 +153,17 @@ QRegion WindowScreenCastSource::render(GLFramebuffer *target, const QRegion &buf
+ 
+ std::chrono::nanoseconds WindowScreenCastSource::clock() const
+ {
++    if (m_windows.isEmpty() || !m_windows[0]) {
++        return std::chrono::nanoseconds::zero();
++    }
+     return m_windows[0]->output()->renderLoop()->lastPresentationTimestamp();
+ }
+ 
+ uint WindowScreenCastSource::refreshRate() const
+ {
++    if (m_windows.isEmpty() || !m_windows[0]) {
++        return 60000; // Default 60Hz
++    }
+     return m_windows[0]->output()->refreshRate();
+ }
+ 
+@@ -154,8 +173,10 @@ void WindowScreenCastSource::pause()
+         return;
+     }
+ 
+-    for (const auto &window : std::as_const(m_windows)) {
+-        unwatch(window);
++    for (const auto &windowPtr : std::as_const(m_windows)) {
++        if (windowPtr) {
++            unwatch(windowPtr);
++        }
+     }
+     m_active = false;
+ }
+@@ -166,8 +187,10 @@ void WindowScreenCastSource::resume()
+         return;
+     }
+ 
+-    for (const auto &window : std::as_const(m_windows)) {
+-        watch(window);
++    for (const auto &windowPtr : std::as_const(m_windows)) {
++        if (windowPtr) {
++            watch(windowPtr);
++        }
+     }
+     Q_EMIT frame();
+ 
+@@ -200,12 +223,67 @@ QRectF WindowScreenCastSource::mapFromGlobal(const QRectF &rect) const
+ QRectF WindowScreenCastSource::boundingRect() const
+ {
+     QRectF boundingRect;
+-    for (const auto &window : m_windows) {
+-        boundingRect = boundingRect.united(window->frameGeometry());
++    for (const auto &windowPtr : m_windows) {
++        if (windowPtr) {
++            boundingRect = boundingRect.united(windowPtr->frameGeometry());
++        }
+     }
+     return boundingRect;
+ }
+ 
++QRect WindowScreenCastSource::rect() const
++{
++    return boundingRect().toRect();
++}
++
++QString WindowScreenCastSource::WindowId() const
++{
++    Window *w = window();
++    return w ? w->internalId().toString() : QString();
++}
++
++QString WindowScreenCastSource::WindowClass() const
++{
++    Window *w = window();
++    return w ? w->resourceClass() : QString();
++}
++
++QString WindowScreenCastSource::ResourceName() const
++{
++    Window *w = window();
++    return w ? w->resourceName() : QString();
++}
++
++QString WindowScreenCastSource::Caption() const
++{
++    Window *w = window();
++    return w ? w->caption() : QString();
++}
++
++double WindowScreenCastSource::X() const
++{
++    Window *w = window();
++    return w ? w->frameGeometry().x() : 0.0;
++}
++
++double WindowScreenCastSource::Y() const
++{
++    Window *w = window();
++    return w ? w->frameGeometry().y() : 0.0;
++}
++
++int WindowScreenCastSource::Width() const
++{
++    Window *w = window();
++    return w ? w->frameGeometry().width() : 0;
++}
++
++int WindowScreenCastSource::Height() const
++{
++    Window *w = window();
++    return w ? w->frameGeometry().height() : 0;
++}
++
+ } // namespace KWin
+ 
+ #include "moc_windowscreencastsource.cpp"
+diff --git a/src/plugins/screencast/windowscreencastsource.h b/src/plugins/screencast/windowscreencastsource.h
+index a16a0a7536..73c13d4c77 100644
+--- a/src/plugins/screencast/windowscreencastsource.h
++++ b/src/plugins/screencast/windowscreencastsource.h
+@@ -18,11 +18,23 @@ namespace KWin
+ class WindowScreenCastSource : public ScreenCastSource
+ {
+     Q_OBJECT
++    Q_PROPERTY(QString WindowId READ WindowId)
++    Q_PROPERTY(QString WindowClass READ WindowClass)
++    Q_PROPERTY(QString ResourceName READ ResourceName)
++    Q_PROPERTY(QString Caption READ Caption)
++    Q_PROPERTY(double X READ X NOTIFY rectChanged)
++    Q_PROPERTY(double Y READ Y NOTIFY rectChanged)
++    Q_PROPERTY(int Width READ Width NOTIFY rectChanged)
++    Q_PROPERTY(int Height READ Height NOTIFY rectChanged)
+ 
+ public:
+     explicit WindowScreenCastSource(Window *window, QObject *parent = nullptr);
+     ~WindowScreenCastSource() override;
+ 
++    ScreenCastSourceType type() const override
++    {
++        return ScreenCastSourceType::Window;
++    }
+     quint32 drmFormat() const override;
+     QSize textureSize() const override;
+     qreal devicePixelRatio() const override;
+@@ -41,6 +53,32 @@ public:
+     QPointF mapFromGlobal(const QPointF &point) const override;
+     QRectF mapFromGlobal(const QRectF &rect) const override;
+ 
++    QRect rect() const override;
++
++    QString dbusInterfaceName() const override
++    {
++        return QStringLiteral("org.kde.KWin.ScreenCast.Window");
++    }
++
++    // D-Bus interface helper
++    Window *window() const
++    {
++        return m_windows.isEmpty() ? nullptr : m_windows.first();
++    }
++
++    // D-Bus properties (capitalized for XML mapping)
++    QString WindowId() const;
++    QString WindowClass() const;
++    QString ResourceName() const;
++    QString Caption() const;
++    double X() const;
++    double Y() const;
++    int Width() const;
++    int Height() const;
++
++Q_SIGNALS:
++    void rectChanged();
++
+ private:
+     void add(Window *window);
+     void watch(Window *window);
+-- 
+2.52.0
+
