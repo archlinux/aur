@@ -1,22 +1,23 @@
 # Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=vapoursynth-plugin-mlrt-ext-models-artcnn
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: mlrt (external models for ArtCNN)"
 arch=('any')
 url='https://github.com/Artoriuz/ArtCNN'
 license=('MIT')
 depends=('vapoursynth' 'vapoursynth-plugin-mlrt')
-source=("https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.4.1.zip")
-sha256sums=('0f7e10bd7cc7a16d4d7fd41553ca707f1b997c4cc5f20b9bb13a820e92f6d1bd')
+source=("https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.5.0.tar.gz")
+sha256sums=('00c31295fe7c89f4819129518c19196cea4d24976a555de713ab4049faeb9066')
 
 package() {
-  cd "ArtCNN-${pkgver}"
+	cd "ArtCNN-${pkgver}"
 
-  for i in $(ls GLSL); do install -Dm644 "GLSL/${i}" "${pkgdir}/usr/lib/vapoursynth/models/ArtCNN/${i}"; done
-  for i in $(ls ONNX); do install -Dm644 "ONNX/${i}" "${pkgdir}/usr/lib/vapoursynth/models/ArtCNN/${i}"; done
+	for i in GLSL/*.glsl; do install -Dm644 "${i}" "${pkgdir}/usr/lib/vapoursynth/models/ArtCNN/$(basename "${i}")"; done
+	for i in ONNX/Experiments/*.onnx; do install -Dm644 "${i}" "${pkgdir}/usr/lib/vapoursynth/models/ArtCNN/$(basename "${i}")"; done
+	for i in ONNX/*.onnx; do install -Dm644 "${i}" "${pkgdir}/usr/lib/vapoursynth/models/ArtCNN/$(basename "${i}")"; done
 
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/vapoursynth/tools/mlrt-ext-models-artcnn/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/vapoursynth/tools/mlrt-ext-models-artcnn/README.md"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
