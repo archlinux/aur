@@ -1,0 +1,18 @@
+pkgbase = job-scheduler
+	pkgdesc = Graphical job scheduling utility for cron
+	pkgver = 26.01
+	pkgrel = 1
+	url = https://mxlinux.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = polkit
+	depends = cronie
+	source = https://github.com/MX-Linux/job-scheduler/archive/refs/tags/26.01.tar.gz
+	sha256sums = accd0a9d711c52364106d015cc9823ef3eafac474e911d103cf2b56d079f218e
+
+pkgname = job-scheduler
