@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scratchmark
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Organized markdown editor"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cebfa3cfe3d9676294569072485aceb152cbaea32a9c1f66c12e07aae3b0998f')
+sha256sums=('c5a3fc52b94a3056685f904a8722ca7a5f7dabfe8a9b1859c05494004a104ab6')
 
 prepare() {
   cd "$pkgname-$pkgver"
