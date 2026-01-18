@@ -1,0 +1,12 @@
+pkgbase = quadlet-lsp
+	pkgdesc = Language Server Protocol for Podman Quadlets
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/onlyati/quadlet-lsp
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/onlyati/quadlet-lsp/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 5fff1980616738df6c71fd265455234fc86edf8d30b9b0af8827c1721afa2a6d
+
+pkgname = quadlet-lsp
