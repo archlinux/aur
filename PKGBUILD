@@ -1,31 +1,22 @@
-# Maintainer:  Ilya Terentyev <bacondropped at gmail dot com>
+# Maintainer: Jaël Champagne Gareau <gareau_jael@hotmail.com>
+# Contributor: Ilya Terentyev <bacondropped at gmail dot com>
 pkgname=lolremez-git
-pkgver=0.3.r5.g5ff460f
-pkgrel=2
+pkgver=0.7.r31.g23e063c
+pkgrel=1
 pkgdesc="Polynomial Approximations using the Remez Algorithm by Sam Hocevar"
 arch=("i686" "x86_64")
 url="https://github.com/samhocevar/lolremez"
-license=("unknown")
+license=("WTFPL")
 makedepends=("git" "autoconf" "automake")
 depends=()
 conflicts=()
-source=(
-  "lolremez::git+https://github.com/samhocevar/lolremez"
-  "v0.3-submodule-abs-url.patch")
-sha1sums=(
-  "SKIP"
-  "90d5b8250bb957347dfb46a34b85c1e383b62cd2")
+source=("lolremez::git+https://github.com/samhocevar/lolremez")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/lolremez"
 
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
-}
-
-prepare() {
-  cd "$srcdir/lolremez"
-
-  patch -Np1 < "$srcdir/v0.3-submodule-abs-url.patch"
 }
 
 build() {
