@@ -1,6 +1,6 @@
 pkgbase = anki-snapshot
 	pkgdesc = Git-based version control for Anki collections
-	pkgver = 1.1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/chrislongros/anki-snapshot
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = anki-snapshot
 	depends = sqlite
 	depends = perl
 	optdepends = anki: Anki flashcard application
-	source = anki-snapshot-1.1.0.tar.gz::https://github.com/chrislongros/anki-snapshot/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	source = anki-snapshot-1.2.tar.gz::https://github.com/chrislongros/anki-snapshot/archive/refs/tags/v1.2.tar.gz
+	sha256sums = b2c0ce2809791faa8a044b7fd9e340a1c3c31c5bfc7898b80b5f840628df8803
 
 pkgname = anki-snapshot
