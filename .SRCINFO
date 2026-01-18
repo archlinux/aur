@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-krub
+	pkgdesc = Thailand national fonts: TH-Krub
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-DIP_SIPA Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/02-TH-Krub.zip
+	sha256sums = c13417e852a9ca65c1e8f6c14bc3335d13ed8233618f72f51f49c4a6d539eedf
+	b2sums = 8981bd4a15de068c95608c2b4c473903ddaf530149eb93a26efd90b0eea1016fe818a356ee12308033813ee1d3d99321d73e20552f339340fd4e77b1928e5ebc
+
+pkgname = ttf-sipa-krub
