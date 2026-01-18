@@ -8,7 +8,6 @@ RefuseManualStop=no
 [Timer]
 OnCalendar=Sat 20:00
 Persistent=true
-RandomizedDelaySec=7200
 Unit=dedupe.service
 
 [Install]
