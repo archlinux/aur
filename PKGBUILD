@@ -1,17 +1,30 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.2.14
+pkgver=1.2.19
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('go>=1.19')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go>=1.19'
+)
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7cc30a88c396019b32cdcc6bad12a9a0401fdf3c9dbc57297e5734b22e055027')
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('04e84f790dad95b90699bc241f854aa14819575c46b517fc5ccfd140f7fbceb1')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
