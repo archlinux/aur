@@ -18,7 +18,7 @@ if [[ "$CARCH" == "aarch64" || "$CARCH" == "armv7h" ]]; then
 	pkgname+=('ledspicer-raspberrypi')
 fi
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,7 +34,7 @@ makedepends=(
 	'alsa-lib>=0.2'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('53303d3a9e30860540187e09c87ef6c7c647d46fec2877b00eb7ee65da92b255')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 # Add pigpio for ARM builds
 if [[ "$CARCH" == "aarch64" || "$CARCH" == "armv7h" ]]; then
