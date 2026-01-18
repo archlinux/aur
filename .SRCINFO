@@ -1,0 +1,23 @@
+pkgbase = certbot-dns-porkbun-git
+	pkgdesc = Plugin for certbot to obtain certificates using a DNS TXT record for Porkbun domains
+	pkgver = r263.3439926
+	pkgrel = 1
+	url = https://github.com/infinityofspace/certbot_dns_porkbun
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = certbot>=1.18.0
+	depends = python-dnspython
+	depends = python-pkb-client-git
+	depends = python-requests
+	depends = python-tldextract
+	provides = certbot-dns-porkbun
+	conflicts = certbot-dns-porkbun
+	source = certbot-dns-porkbun-git::git+https://github.com/infinityofspace/certbot_dns_porkbun.git
+	b2sums = SKIP
+
+pkgname = certbot-dns-porkbun-git
