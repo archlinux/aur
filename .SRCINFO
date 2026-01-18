@@ -1,13 +1,13 @@
 pkgbase = ntopng-data
 	pkgdesc = Web-based traffic monitoring
-	pkgver = 6.7.251208
+	pkgver = 6.7.260117
 	pkgrel = 1
 	url = Geolocation databases for ntopng and other ntop software packaged from https://db-ip.com
 	arch = any
 	license = GPL3
 	depends = ntopng
 	options = !strip
-	source = https://packages.ntop.org/apt/trixie/all/ntopng-data_6.7.251208_all.deb
+	source = https://packages.ntop.org/apt/trixie/all/ntopng-data_6.7.260117_all.deb
 	sha512sums = SKIP
 
 pkgname = ntopng-data

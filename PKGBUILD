@@ -3,7 +3,7 @@
 pkgname="ntopng-data"
 # to update visit https://packages.ntop.org/apt/trixie/all/ and keep track of the latest pkgver, date and build
 _pkgverAmd=6.7
-_dateAmd=251208
+_dateAmd=260117
 # updated automatically
 pkgver="$_pkgverAmd.$_dateAmd"
 pkgrel=1
