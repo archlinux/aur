@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libheif-bootstrap
-pkgver=1.19.8
+pkgver=1.21.1
 pkgrel=1
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
@@ -17,8 +17,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-gdk-pixbuf2"
              "android-${_android_arch}-libjpeg"
              "android-${_android_arch}-libpng"
-             "android-${_android_arch}-svt-av1"
-             'doxygen')
+             "android-${_android_arch}-svt-av1")
 
 # riscv64 target is not properly supported by rust so disable the rav1e
 # dependency in that architecture for now
@@ -44,7 +43,7 @@ provides=("android-${_android_arch}-libheif")
 conflicts=("android-${_android_arch}-libheif")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-md5sums=('91d2d2f0ffda76180eebe30ee6e9709d')
+md5sums=('39a92af58d3e00c693a6e164f38a016c')
 
 build() {
     cd "${srcdir}/libheif-${pkgver}"
@@ -137,4 +136,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
