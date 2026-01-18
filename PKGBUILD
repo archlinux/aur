@@ -1,7 +1,7 @@
 # Maintainer: Edmund Lodewijks <echo "==gCt92YuwWah1WYlR3byBHQ4VnbpxGajJXY" | rev | base64 -d>
 
 pkgname=oniux
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Kernel-level Tor isolation for any Linux app'
 url='https://gitlab.torproject.org/tpo/core/oniux/'
@@ -18,7 +18,7 @@ makedepends=(
 arch=('x86_64') # I don't know if it builds on other archs, happy to add if so.
 source=("${url}-/archive/v${pkgver}/oniux-v${pkgver}.tar.gz"
 	"Cargo.lock")
-b2sums=('e9a127d60530dc841b930489e8d5b5d4813831d768aa3409c5cb3fbfa9924e33873345a9d40a8cba10df892ef59a662b53a9977ccc2f0b8c3314fd11c14902f0'
+b2sums=('4078a8b811d6b8c3fd0f8866c863dd129d211e5bae46413c098b851f944cea4022691ab87ded6ef9ae7ff2ddc421f849ff19d3fc2b4b7f222597a01907590325'
         '3e6dc054b9da68c22d06adb9abb9b6ffcf15a72612d15e04b33e9e13a638d1b13b49a616e815a444c940360acb0a6b54573a457d943e77a5dbfdde3a2a849afd')
 
 prepare() {
