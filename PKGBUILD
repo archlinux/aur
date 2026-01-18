@@ -4,7 +4,7 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.8.3.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
@@ -48,4 +48,6 @@ package(){
 	install -Dm644 icon.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png
 	# Install MIME type
 	install -Dm644 gamemaker-data.xml "$pkgdir"/usr/share/mime/packages/gamemaker-data.xml
+	# Add a directory required for running font import script (has to be writable)
+	install -dm777 "$pkgdir/opt/${_pkgname}/Packager"
 }
