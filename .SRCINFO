@@ -1,16 +1,16 @@
 pkgbase = relational
 	pkgdesc = Educational tool for relational algebra
-	pkgver = 3.0
-	pkgrel = 2
-	url = http://ltworf.github.io/relational/
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://ltworf.codeberg.page/relational/
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = mypy
 	makedepends = python-setuptools
-	depends = python-pyqt5
+	depends = python-pyqt6
+	depends = python-termcolor
 	depends = python-typedload
-	depends = python-xtermcolor
-	source = relational-3.0.tar.gz::https://github.com/ltworf/relational/archive/3.0.tar.gz
-	sha256sums = 3b0242f24f512f388625f1766381d1e53b5ceec078764035498b268c828eb72e
+	source = relational-3.4.tar.gz::https://codeberg.org/ltworf/relational/releases/download/3.4/3.4.orig.tar.gz
+	sha256sums = 46635613c82f18862283f4517009c55762a75ec40386618989c588f9dbba8556
 
 pkgname = relational

@@ -1,29 +1,29 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor:
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=relational
-pkgver=3.0
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="Educational tool for relational algebra"
 arch=('any')
-url="http://ltworf.github.io/relational/"
-license=('GPL3')
-depends=('python-pyqt5' 'python-typedload' 'python-xtermcolor')
+url="https://ltworf.codeberg.page/relational/"
+license=('GPL-3.0-or-later')
+depends=('python-pyqt6' 'python-termcolor' 'python-typedload')
 makedepends=('python-setuptools')
 checkdepends=('mypy')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ltworf/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3b0242f24f512f388625f1766381d1e53b5ceec078764035498b268c828eb72e')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/ltworf/relational/releases/download/$pkgver/$pkgname_$pkgver.orig.tar.gz")
+sha256sums=('46635613c82f18862283f4517009c55762a75ec40386618989c588f9dbba8556')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make test mypy
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  make -C "$pkgname" DESTDIR="$pkgdir" install
 }
