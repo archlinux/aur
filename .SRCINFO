@@ -1,6 +1,6 @@
 pkgbase = repeater-bin
 	pkgdesc = Spaced repetition, in your terminal
-	pkgver = 0.0.26
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/shaankhosla/repeater
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = repeater-bin
 	depends = gcc-libs
 	provides = repeater
 	conflicts = repeater
-	source_x86_64 = repeater-x86_64-0.0.26.txz::https://github.com/shaankhosla/repeater/releases/download/v0.0.26/repeater-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = d090c51ced7bdbedcc4503ab336d1f0a4ecfe6a2027a24753fa79d88d384d932
-	source_aarch64 = repeater-aarch64-0.0.26.txz::https://github.com/shaankhosla/repeater/releases/download/v0.0.26/repeater-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 2718407936a954152f24569bc6f80f3e3a8b3144d7f6334b5c534a8eef00cfe4
+	source_x86_64 = repeater-x86_64-0.1.0.txz::https://github.com/shaankhosla/repeater/releases/download/v0.1.0/repeater-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 669cd7982d2c4a72682505df5ddf1cc39edc1a62b52656f864efe8264addcf16
+	source_aarch64 = repeater-aarch64-0.1.0.txz::https://github.com/shaankhosla/repeater/releases/download/v0.1.0/repeater-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ab672e603afa96b9c323e59c4b92c1c79a6e581279c02b958a79d40df6858704
 
 pkgname = repeater-bin
