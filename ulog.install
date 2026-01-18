@@ -1,0 +1,21 @@
+post_install() {
+    /usr/bin/ulog-genconfig
+    systemctl daemon-reload
+    echo ""
+    echo "ulog installed."
+    echo "Enable with: systemctl enable --now ulog.service ulog-rollover.timer ulog-genconfig.path"
+    echo "Config: /etc/ulog.conf (changes auto-applied)"
+    echo ""
+}
+
+post_upgrade() {
+    /usr/bin/ulog-genconfig
+    systemctl daemon-reload
+}
+
+post_remove() {
+    rm -f /etc/udev/rules.d/99-ulog.rules
+    rm -f /usr/lib/systemd/system/ulog.service
+    udevadm control --reload-rules
+    systemctl daemon-reload
+}
