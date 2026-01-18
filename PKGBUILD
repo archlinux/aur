@@ -3,13 +3,13 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='9.0.7'
+pkgver='9.0.10'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
 url="https://github.com/domainaware/$pkgname"
 license=('Apache-2.0')
-depends=('python>=3.9.0' 'python<3.14.0' 'python-azure-core' 'python-azure-identity>=1.8.0' 'python-azure-monitor-ingestion>=1.0.0' 'python-boto3>=1.16.63' 'python-dateutil' 'python-dnspython>=2.0.0' 'python-elasticsearch7.13' 'python-elasticsearch-dsl7>=7.4.0' 'python-expiringdict>=1.1.4' 'python-geoip2>=3.0.0' 'python-google-api-python-client>=2.35.0' 'python-google-auth-oauthlib>=0.4.6' 'python-google-auth>=2.3.3' 'python-imapclient>=2.1.0' 'python-kafka-ng>=2.2.2' 'python-lxml>=4.4.0' 'mailparser' 'python-mailsuite>=1.11.0' 'python-msgraph-core0.2>=0.2.2' 'python-opensearch>=2.4.2' 'python-publicsuffixlist>=0.10.0' 'python-pygelf>=0.4.2' 'python-requests>=2.22.0' 'python-tqdm>=4.31.1' 'python-urllib3>=1.25.7' 'python-xmltodict>=0.12.0')
+depends=('python>=3.9.0' 'python-azure-core' 'python-azure-identity>=1.8.0' 'python-azure-monitor-ingestion>=1.0.0' 'python-boto3>=1.16.63' 'python-dateutil' 'python-dnspython>=2.0.0' 'python-elasticsearch7.13' 'python-elasticsearch-dsl7>=7.4.0' 'python-expiringdict>=1.1.4' 'python-geoip2>=3.0.0' 'python-google-api-python-client>=2.35.0' 'python-google-auth-oauthlib>=0.4.6' 'python-google-auth>=2.3.3' 'python-imapclient>=2.1.0' 'python-kafka-ng>=2.2.2' 'python-lxml>=4.4.0' 'mailparser' 'python-mailsuite>=1.11.2' 'python-msgraph-core0.2>=0.2.2' 'python-opensearch>=2.4.2' 'python-publicsuffixlist>=0.10.0' 'python-pygelf>=0.4.2' 'python-requests>=2.22.0' 'python-tqdm>=4.31.1' 'python-urllib3>=1.25.7' 'python-xmltodict>=0.12.0')
 makedepends=('python-build' 'python-hatchling>=1.27.0' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 optdepends=(
@@ -21,7 +21,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'run-tests-offline.diff'
 )
-b2sums=('10d37c8be363ea193007bd82eb6e31ec91edaa7254446b71e7d6ac38a667272b44988949ff4d08f467916bc843907965d576f3bd201171e31a123cca20eb1455'
+b2sums=('3b90a5fd04c4ea482178d0586e7824242e4386966f948fdc74080273157d448789754f0e0b01ef96ce1c1cdcd22514aa556f30382fec62405408b8b66ca087d0'
         'ab75ba1048a73305aede8bb9c490a1c63d666a03cd808d32b7ffc92be39ef70e7f47ab26f34e5ce499b9b425376ca3eb801175f8c80c7ae296e643aee05f84c9')
 
 _sourcedirectory="$pkgname-$pkgver"
