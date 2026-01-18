@@ -1,16 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_sdk=9.0
+_sdk=10.0
 _Name="SS14.Launcher"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Space Station 14 launcher"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://spacestation14.com"
 _url="https://github.com/space-wizards/${_Name}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   "dotnet-runtime-${_sdk}"
 )
@@ -24,10 +29,12 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-all.zip::${_url}/releases/download/v${pkgver}/${_Name}_Linux.zip"
-        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/Readme.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE.txt"
-        "${_pkgname}.svg::https://github.com/space-wizards/asset-dump/raw/refs/heads/master/icon.svg")
+source=(
+  "${_pkgsrc}-all.zip::${_url}/releases/download/v${pkgver}/${_Name}_Linux.zip"
+  "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/Readme.md"
+  "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE.txt"
+  "${_pkgname}.svg::https://github.com/space-wizards/asset-dump/raw/refs/heads/master/icon.svg"
+)
 sha256sums=('f11280cef408d35fb1d33032bfd3d42bafd88c9d48f1231c8be607638d00b1a2'
             'a4fe3a4ff1dcddaf4ce428f91a068bada67090a4f670730fb29f828c4a8a6f71'
             '0fbcce2a4bb551dab1e360febc2b26c5abbad45e91c4d7b78203735e6b8e807e'

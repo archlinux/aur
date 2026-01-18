@@ -1,13 +1,13 @@
 pkgbase = ss14.launcher-bin
 	pkgdesc = Space Station 14 launcher
 	pkgver = 0.36.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spacestation14.com
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = dotnet-runtime-9.0
+	depends = dotnet-runtime-10.0
 	provides = ss14.launcher
 	conflicts = ss14.launcher
 	source = ss14.launcher-0.36.1-all.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.36.1/SS14.Launcher_Linux.zip
