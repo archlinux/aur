@@ -4,7 +4,7 @@
 _basename="powershell"
 _pkgname="${_basename}-preview"
 pkgname="${_pkgname}-bin"
-pkgver=7.6.0preview5
+pkgver=7.6.0preview6
 _pkgver="${pkgver//preview/-preview.}"
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
@@ -50,9 +50,9 @@ noextract=(
   "${source_armv7h[@]##*/}"
   "${source_x86_64[@]##*/}"
 )
-sha256sums_aarch64=('1c6035915493cbbb862b9c672f87dbd08acd13e638c38ce393dec4e3bf99a51e')
-sha256sums_armv7h=('1ecb77ec12170fa3f12e012f0c6a76a6027e8fcf31bcba6a148c9e65a55bbe52')
-sha256sums_x86_64=('ec5ef3f98c2a63efcd38d93076c0f99c63700abe49839699c907491589997adc')
+sha256sums_aarch64=('292944b549d013a887a6a6ba289b88b3c2dc37368f8c8c4acff4576cdb221102')
+sha256sums_armv7h=('7cdb4fae883b76f5a8c1d0696952ec0935d52ef1935225db34a6b0963769465c')
+sha256sums_x86_64=('12d895f6451c4bc950562e34845c5a9c8b634783b74b04c1d7d555662eddeb6a')
 
 package() {
   local source_carch="source_${CARCH}[0]"
