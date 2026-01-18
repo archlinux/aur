@@ -1,7 +1,7 @@
 pkgbase = python-curl-cffi
 	pkgdesc = Python binding for curl-impersonate fork via cffi
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lexiforest/curl_cffi
 	arch = x86_64
 	license = MIT

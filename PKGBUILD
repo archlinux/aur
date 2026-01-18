@@ -1,10 +1,9 @@
-# Maintainer: Neurognostic <neurognostic@astranetics.com>
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=python-curl-cffi
 _name=curl_cffi
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python binding for curl-impersonate fork via cffi"
 arch=(x86_64)
 url="https://github.com/lexiforest/$_name"
@@ -41,7 +40,7 @@ prepare() {
 
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --no-isolation
+  CI=1 python -m build --wheel --no-isolation
 }
 
 package() {
