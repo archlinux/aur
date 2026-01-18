@@ -1,6 +1,6 @@
 # Maintainer: tsuniko <cuzimmrdna@gamil.com>
 pkgname=osu-fetch-bin
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="fastfetch-like stats printing for osu!"
 arch=('x86_64')
