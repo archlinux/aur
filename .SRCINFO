@@ -1,7 +1,7 @@
 pkgbase = python-spandrel
 	pkgdesc = Library for loading and running pre-trained PyTorch models
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chaiNNer-org/spandrel
 	arch = any
 	license = MIT

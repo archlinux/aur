@@ -3,7 +3,7 @@
 pkgname=python-spandrel
 _pkgname=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for loading and running pre-trained PyTorch models"
 arch=('any')
 url='https://github.com/chaiNNer-org/spandrel'
@@ -30,7 +30,7 @@ build() {
 
 check() {
 	cd "$_pkgname-$pkgver"
-	PYTHONPATH=$PWD/src python -c 'import spandrel'
+	PYTHONPATH="$PWD/libs/spandrel/build/lib" python -c 'import spandrel'
 }
 
 package() {
