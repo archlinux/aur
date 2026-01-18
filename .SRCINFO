@@ -1,7 +1,7 @@
 pkgbase = devpod-community-bin
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - community fork (prebuilt .deb version)
-	pkgver = 0.9.3
-	pkgrel = 3
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = https://github.com/skevetter/devpod
 	arch = x86_64
 	license = MPL-2.0
@@ -22,7 +22,7 @@ pkgbase = devpod-community-bin
 	conflicts = devpod-bin
 	conflicts = devpod-cli-bin
 	options = !strip
-	source = devpod-community-bin-0.9.3.deb::https://github.com/skevetter/devpod/releases/download/v0.9.3/DevPod_linux_amd64.deb
-	sha256sums = a2154cca50ba8caa710005fabaf6999e2680120c2c2ecf39a5d58d0dcb274d07
+	source = devpod-community-bin-0.9.4.deb::https://github.com/skevetter/devpod/releases/download/v0.9.4/DevPod_linux_amd64.deb
+	sha256sums = b596d81c16b0484f3be47e62d04549b4bd3a3c9d76415cb991e7a2fbd35c09c2
 
 pkgname = devpod-community-bin
