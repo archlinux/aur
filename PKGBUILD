@@ -1,7 +1,7 @@
 # Maintainer: Toadtoad <kingdomkeepersguy@gmail.com>
 pkgname=desktop-gremlin-git
-pkgver=r107.e9b118e
-pkgrel=3
+pkgver=r109.01b1f0a
+pkgrel=1
 pkgdesc="A desktop pet/gremlin"
 arch=('x86_64')
 url="https://github.com/iluvgirlswithglasses/linux-desktop-gremlin"
@@ -11,6 +11,7 @@ depends=('pyside6' 'qt6-base')
 optdepends=('picom: tiling x11 wm support' 'xorg-xwayland: wayland support')
 provides=('desktop-gremlin')
 conflicts=('desktop-gremlin')
+backup=('etc/desktop-gremlin/config.json')
 
 source=(
   "git+https://github.com/iluvgirlswithglasses/linux-desktop-gremlin.git"
