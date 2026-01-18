@@ -1,7 +1,7 @@
 # Maintainer: SykikXO <xo.sykik@gmail.com>
 pkgname=fey
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, minimalistic Wayland image viewer with GIF and physics support"
 arch=('x86_64')
 url="https://github.com/SykikXO/fey"
@@ -10,8 +10,8 @@ depends=('cairo' 'wayland' 'exiv2' 'imlib2')
 makedepends=('git' 'wayland-protocols')
 provides=('fey')
 conflicts=('fey')
-source=("fey::git+https://github.com/SykikXO/fey.git#commit=26265b833bd2b179cf1ac4b9eba658a552e18892")
-sha256sums=('ae903c72fbb1c91425b9990b98e20d0af6c540e0667e2f5bf7e50763f43f9331')
+source=("fey::git+https://github.com/SykikXO/fey.git#commit=971744f6a02db86be555fe0fe4da601ce3547bfa")
+sha256sums=('SKIP')
 
 build() {
   cd "fey"
