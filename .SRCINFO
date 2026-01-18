@@ -1,0 +1,19 @@
+pkgbase = python-pyimgbox
+	pkgdesc = API for uploading images to imgbox.com
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://codeberg.org/plotski/pyimgbox
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-beautifulsoup4
+	source = git+https://codeberg.org/plotski/pyimgbox#tag=v1.0.7
+	sha512sums = 86669d2fd6d699f770c52423e30b529b6611241ab3a55c3193ac1024009dc710d202bf9fa860a08f07794c562805d5082d8172570b5eb82615e50ce1baffb0b0
+
+pkgname = python-pyimgbox

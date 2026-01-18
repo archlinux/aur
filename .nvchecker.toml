@@ -1,0 +1,4 @@
+[python-pyimgbox]
+source = "git"
+git = "https://codeberg.org/plotski/pyimgbox.git"
+prefix = "v"
