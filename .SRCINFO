@@ -1,7 +1,7 @@
 pkgbase = ladybird
 	pkgdesc = Truly independent web browser
 	pkgver = 20260105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
 	license = BSD-2-Clause
@@ -10,7 +10,6 @@ pkgbase = ladybird
 	makedepends = cmake
 	makedepends = git
 	makedepends = libtool
-	makedepends = linux-headers
 	makedepends = make
 	makedepends = nasm
 	makedepends = ninja
