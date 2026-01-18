@@ -1,7 +1,7 @@
 pkgbase = ignition-startup
 	pkgdesc = Manage startup apps and scripts
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flattool/ignition
 	arch = any
 	license = GPL-3.0-or-later
@@ -16,10 +16,8 @@ pkgbase = ignition-startup
 	source = git+https://github.com/flattool/ignition.git#tag=2.3.0
 	source = git+https://github.com/flattool/gir-ts-types.git
 	source = git+https://github.com/flattool/gobjectify.git
-	source = io.github.flattool.Ignition.sh
 	sha256sums = 629c3174abf18ad04c6daed90267a727c2a254ada274203497e658fa1d669672
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 17c12dc131eedf1337c3fdfb516f737a0f15f79d3addf1c6897fa245cb1e9de4
 
 pkgname = ignition-startup

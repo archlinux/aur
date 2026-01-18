@@ -2,7 +2,7 @@
 pkgname=ignition-startup
 _app_id=io.github.flattool.Ignition
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
 url="https://github.com/flattool/ignition"
@@ -21,12 +21,10 @@ makedepends=(
 )
 source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
         'git+https://github.com/flattool/gir-ts-types.git'
-        'git+https://github.com/flattool/gobjectify.git'
-        "${_app_id}.sh")
+        'git+https://github.com/flattool/gobjectify.git')
 sha256sums=('629c3174abf18ad04c6daed90267a727c2a254ada274203497e658fa1d669672'
             'SKIP'
-            'SKIP'
-            '17c12dc131eedf1337c3fdfb516f737a0f15f79d3addf1c6897fa245cb1e9de4')
+            'SKIP')
 
 prepare() {
   cd ignition
@@ -35,9 +33,8 @@ prepare() {
   git config submodule.src/gobjectify.url "$srcdir/gobjectify"
   git -c protocol.file.allow=always submodule update
 
-  # install files in /usr/share/ignition/ not /usr/bin/
-  sed -i "s/install_dir: get_option('bindir')/install_dir: pkgdatadir/g" \
-    src/meson.build tests/meson.build
+  # Move src/ and test/ output files to pkgdatadir instead of bin
+  git cherry-pick -n 562a045eab0a1eb0674be6b3c5604a721eb52d84
 }
 
 build() {
@@ -52,6 +49,5 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  install -Dm755 "$srcdir/${_app_id}.sh" "$pkgdir/usr/bin/${_app_id}"
-  ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/ignition"
+  ln -s /usr/bin/io.github.flattool.Ignition "$pkgdir/usr/bin/ignition"
 }
