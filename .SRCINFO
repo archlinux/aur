@@ -1,13 +1,13 @@
 pkgbase = projectctr-makerom-bin
 	pkgdesc = Creates CTR cxi/cfa/cci/cia files
-	pkgver = 0.18.4
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/3DSGuy/Project_CTR/
 	arch = x86_64
 	license = unknown
 	provides = projectctr-makerom
 	conflicts = projectctr-makerom
-	source = projectctr-makerom-bin-0.18.4.zip::https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.18.4/makerom-v0.18.4-ubuntu_x86_64.zip
-	sha256sums = dd596854718c195c6e3229286be485b122921715555af8ae5cf8e9a465d9f970
+	source = projectctr-makerom-bin-0.19.0.zip::https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.19.0/makerom-v0.19.0-ubuntu_x86_64.zip
+	sha256sums = 287b809dec064e0ad597e3d272c49ecb7eed41693d5ee6fef9d8a8aa24c2497e
 
 pkgname = projectctr-makerom-bin
