@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=moor
 pkgname=${_pkgname}-bin
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'aarch64')
@@ -25,11 +25,11 @@ source_i686=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgv
 source_aarch64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[2]}")
 sha256sums=('816fde7bdec651174d75623e1cfe29ecb91e28b23d99976a14fce40985e3ce11'
             'f5f073e5c2be82c3e2cb7e0b67a5a72c7f563f08bf7e45da3ed05b8c1358d45c'
-            '413ed05afeae998deefc44972ede53c25f3d1b1fbd81667a716f7d307b3578ee'
+            '1adebc5dc8fe7dc9ee5b6f3f141bdf49c24cbdd85feec0110b1799e6f4f104f2'
             '663fec717c38f524c8e5c707ea17bd5d6ac92433f1487ade5f0e6fdebfee1358')
-sha256sums_x86_64=('7267debf9581dbdcdf4a038da5f8ee29287c25addaad6c7f713ca65d7677be96')
-sha256sums_i686=('7267debf9581dbdcdf4a038da5f8ee29287c25addaad6c7f713ca65d7677be96')
-sha256sums_aarch64=('7267debf9581dbdcdf4a038da5f8ee29287c25addaad6c7f713ca65d7677be96')
+sha256sums_x86_64=('0ce84c84469d3f82a48419bc0dc2e8fb69dca7218e50646418f380caafd11348')
+sha256sums_i686=('0ce84c84469d3f82a48419bc0dc2e8fb69dca7218e50646418f380caafd11348')
+sha256sums_aarch64=('0ce84c84469d3f82a48419bc0dc2e8fb69dca7218e50646418f380caafd11348')
 
 
 package() {
