@@ -1,7 +1,7 @@
 # Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 
 _pkgname=devpod
-_pkgver=0.9.3
+_pkgver=0.9.4
 _image_url="https://github.com/skevetter/devpod/releases/download/v${_pkgver}/DevPod_linux_amd64.AppImage"
 
 pkgname="${_pkgname}-community-appimage"
@@ -20,7 +20,7 @@ provides=("devpod" "devpod-cli")
 conflicts=("devpod" "devpod-bin" "devpod-cli-bin")
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url}")
-sha256sums_x86_64=('34511ede3560e993e797a9af9e78f65dcc3fedb7bef8d511acf4a49e490771ff')
+sha256sums_x86_64=('bf9cefa17bbee688ea91627e801b3ead6fcd3a95233b37ca0ef416812f59895f')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
