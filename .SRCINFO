@@ -1,6 +1,6 @@
 pkgbase = savedesktop
 	pkgdesc = Saves your Linux desktop environment configuration
-	pkgver = 3.8.1
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://vikdevelop.github.io/SaveDesktop
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = savedesktop
 	depends = libadwaita
 	depends = python-dbus
 	depends = python-gobject
-	source = git+https://github.com/vikdevelop/SaveDesktop.git#tag=3.8.1
-	sha256sums = 9f077494c37e73f1d79164e08e8cba5781410dd17c24a7a09cc4ec3c271bd8e3
+	source = git+https://github.com/vikdevelop/SaveDesktop.git#tag=3.9
+	sha256sums = 1543c467d1839cebdccefe946078c353fbd6ffc7d22d1a003b36f1ba18f3361d
 
 pkgname = savedesktop
