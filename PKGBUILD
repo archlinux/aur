@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libnl
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Library for applications dealing with netlink sockets (Android ${_android_arch})"
@@ -15,10 +15,8 @@ groups=('android-libnl')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz"{,.sig})
-md5sums=('0a5eb82b494c411931a47638cb0dba51'
-         'SKIP')
-validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728') # Thomas Haller
+source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz")
+md5sums=('f9112ca215807fe65eecd583d8f180cc')
 
 prepare() {
     cd "${srcdir}/libnl-${pkgver}"
@@ -46,4 +44,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
