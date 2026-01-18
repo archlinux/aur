@@ -6,29 +6,36 @@ _binname=(
 )
 pkgbase="grpc-gateway"
 pkgname=(
-  "${pkgbase}"
   "${pkgbase}-common"
   "${_binname[@]}"
 )
-pkgver=2.27.3
+pkgver=2.27.4
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://grpc-ecosystem.github.io/grpc-gateway/"
-_url="https://github.com/grpc-ecosystem/${pkgname}"
-license=('BSD-3-Clause')
+_url="https://github.com/grpc-ecosystem/${pkgbase}"
+license=(
+  'BSD-3-Clause'
+)
 makedepends=(
   'go'
 )
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9717bae2d2f783d73f165d57a1f70327abf21629198527b2be09efe43f5ba167')
+_pkgsrc="${pkgbase}-${pkgver}"
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('027772ae8cd5064dcc0cc1feec68e9a89a97409a2c3df798148b03c7dba3f7a9')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
+  go mod verify
   chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build"
@@ -54,14 +61,6 @@ check() {
   go test ./...
 }
 
-package_grpc-gateway() {
-  pkgdesc+=" (meta)"
-  arch=('any')
-  depends=(
-    "${_binname[@]/%/"=${pkgver}"}"
-  )
-}
-
 package_grpc-gateway-common() {
   pkgdesc+=" (common files)"
   arch=('any')
@@ -75,7 +74,7 @@ for _name in "${_binname[@]}"; do
   eval "
 package_${_name}() {
   depends+=(
-    '${pkgbase}-common=${pkgver}'
+    '${pkgbase}-common>=${pkgver}'
     'glibc'
     'protobuf'
     'protoc-gen-go'
@@ -84,5 +83,9 @@ package_${_name}() {
   
   cd \"\${srcdir}/${_pkgsrc}\"
   install -vDm755 'build/${_name}' \"\${pkgdir}/usr/bin/${_name}\"
+
+  install -vd \"\${pkgdir}/usr/share/doc\" \"\${pkgdir}/usr/share/licenses\"
+  ln -vsf '${pkgbase}' \"\${pkgdir}/usr/share/doc/${_name}\"
+  ln -vsf '${pkgbase}' \"\${pkgdir}/usr/share/licenses/${_name}\"
 }"
 done

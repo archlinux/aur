@@ -1,34 +1,28 @@
 pkgbase = grpc-gateway
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
-	pkgver = 2.27.3
+	pkgver = 2.27.4
 	pkgrel = 1
 	url = https://grpc-ecosystem.github.io/grpc-gateway/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
-	source = grpc-gateway-2.27.3.tar.gz::https://github.com/grpc-ecosystem/grpc-gateway/archive/refs/tags/v2.27.3.tar.gz
-	sha256sums = 9717bae2d2f783d73f165d57a1f70327abf21629198527b2be09efe43f5ba167
-
-pkgname = grpc-gateway
-	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (meta)
-	arch = any
-	depends = protoc-gen-grpc-gateway=2.27.3
-	depends = protoc-gen-openapiv2=2.27.3
+	source = grpc-gateway-2.27.4.tar.gz::https://github.com/grpc-ecosystem/grpc-gateway/archive/refs/tags/v2.27.4.tar.gz
+	sha256sums = 027772ae8cd5064dcc0cc1feec68e9a89a97409a2c3df798148b03c7dba3f7a9
 
 pkgname = grpc-gateway-common
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common files)
 	arch = any
 
 pkgname = protoc-gen-grpc-gateway
-	depends = grpc-gateway-common=2.27.3
+	depends = grpc-gateway-common>=2.27.4
 	depends = glibc
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
 
 pkgname = protoc-gen-openapiv2
-	depends = grpc-gateway-common=2.27.3
+	depends = grpc-gateway-common>=2.27.4
 	depends = glibc
 	depends = protobuf
 	depends = protoc-gen-go
