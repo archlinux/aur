@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
@@ -16,22 +16,8 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/SpartanJ/efsw.git"
 	"git+https://github.com/p-ranav/indicators.git"
 	"git+https://github.com/Tencent/rapidjson.git"
-	"git+https://github.com/craftablescience/bufferstream.git"
-	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
-	"git+https://github.com/Tessil/hat-trie.git"
-	"git+https://github.com/webmproject/libwebp.git"
-	"git+https://github.com/richgel999/miniz.git"
-	"git+https://github.com/craftablescience/minizip-ng.git"
-	"git+https://github.com/phoboslab/qoi.git"
 	)
 sha256sums=('e3bd7b5188f3be7db4f58c611208e965f1aaf39358c31b6166be56c6e3727e8d'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,14 +36,6 @@ prepare() {
 	git config submodule.cmake/helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
 
-	cd "$srcdir/$pkgname/ext/sourcepp"
-	git submodule init
-	for submodule in {bufferstream,cryptopp,hat-trie,libwebp,miniz,minizip-ng,qoi};
-	do
-		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
-	done
-	git -c protocol.file.allow=always submodule update
-
 	cd "$srcdir/$pkgname/ext/discord"
 	git submodule init
 	git config submodule.thirdparty/rapidjson.url "$srcdir/rapidjson"
@@ -70,7 +48,6 @@ build() {
 	-GNinja \
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DZLIBNG_ENABLE_TESTS=OFF \
 	-DMARETF_BUILD_INSTALLER=ON \
 	-DCPACK_GENERATOR=RPM \
 	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
