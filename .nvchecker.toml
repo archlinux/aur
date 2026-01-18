@@ -1,0 +1,4 @@
+[anytype-electron-bin]
+source = 'jq'
+url = 'https://publish-releases.anytype.io/api/v1/latestRelease'
+filter = '.DesktopLatestVersion'
