@@ -1,0 +1,12 @@
+diff --git a/airrohr-flasher.spec b/airrohr-flasher.spec
+--- a/airrohr-flasher.spec
++++ b/airrohr-flasher.spec
+@@ -27,7 +27,7 @@ a = Analysis(['airrohr-flasher.py'],
+              hiddenimports=['PyQt5.sip'],
+              hookspath=[],
+              runtime_hooks=[],
+-             excludes=[],
++             excludes=['PyQt6', 'PySide6'],
+              win_no_prefer_redirects=False,
+              win_private_assemblies=False,
+              cipher=block_cipher)

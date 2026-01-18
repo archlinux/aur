@@ -1,9 +1,10 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: 2tefan <me@2tefan.eu>
 
 _pkgname=airrohr-firmware-flasher
 pkgname=$_pkgname-git
 pkgver=0.3.3.r77.g654bf12
-pkgrel=1
+pkgrel=2
 pkgdesc="Airrohr firmware flasher tool for Sensor.Community"
 arch=('x86_64')
 url="https://github.com/opendata-stuttgart/airrohr-firmware-flasher"
@@ -13,7 +14,7 @@ depends=(
     'zlib'
 )
 makedepends=( # Creates one big BLOB using PyInstaller
-    'esptool'
+    'esptool3.2'
     'git'
     'pyinstaller'
     'python'
@@ -35,9 +36,11 @@ makedepends=( # Creates one big BLOB using PyInstaller
 source=(
     "git+https://github.com/opendata-stuttgart/airrohr-firmware-flasher.git"
     "0000-remove-python-NotSupportedError-import.patch"
+    "0001-exclude-pyqt6.patch"
 )
 b2sums=('SKIP'
-        '868b62f78c5ef68c4099d08975b6dd909f8e44758d6df0e54d01255a7c59f5ca0156a9fb750ea3467c303e1ca5704236ec1ef69011eb2454b48b5746e0a7df42')
+        '868b62f78c5ef68c4099d08975b6dd909f8e44758d6df0e54d01255a7c59f5ca0156a9fb750ea3467c303e1ca5704236ec1ef69011eb2454b48b5746e0a7df42'
+        'e507fa09e4b67d08c796bd4d21a2ee3c697eceb3bbb7979a1312f49eee7ef91a09f43f9437d00e80fae11f7b950e9c6f6090bda685ef3b9314e67b4aa09587f2')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -47,6 +50,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
     patch --forward --strip=1 --input=../0000-remove-python-NotSupportedError-import.patch
+    patch --forward --strip=1 --input=../0001-exclude-pyqt6.patch
 }
 
 

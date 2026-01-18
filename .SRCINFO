@@ -1,11 +1,11 @@
 pkgbase = airrohr-firmware-flasher-git
 	pkgdesc = Airrohr firmware flasher tool for Sensor.Community
 	pkgver = 0.3.3.r77.g654bf12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opendata-stuttgart/airrohr-firmware-flasher
 	arch = x86_64
 	license = MIT
-	makedepends = esptool
+	makedepends = esptool3.2
 	makedepends = git
 	makedepends = pyinstaller
 	makedepends = python
@@ -27,7 +27,9 @@ pkgbase = airrohr-firmware-flasher-git
 	depends = zlib
 	source = git+https://github.com/opendata-stuttgart/airrohr-firmware-flasher.git
 	source = 0000-remove-python-NotSupportedError-import.patch
+	source = 0001-exclude-pyqt6.patch
 	b2sums = SKIP
 	b2sums = 868b62f78c5ef68c4099d08975b6dd909f8e44758d6df0e54d01255a7c59f5ca0156a9fb750ea3467c303e1ca5704236ec1ef69011eb2454b48b5746e0a7df42
+	b2sums = e507fa09e4b67d08c796bd4d21a2ee3c697eceb3bbb7979a1312f49eee7ef91a09f43f9437d00e80fae11f7b950e9c6f6090bda685ef3b9314e67b4aa09587f2
 
 pkgname = airrohr-firmware-flasher-git
