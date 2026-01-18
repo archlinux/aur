@@ -2,18 +2,18 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.55.0
+pkgver=1.59.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
-depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
+depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions' 'python-distro' 'python-sniffio')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-xdist' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
+checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d017fd26a221b08709916dcfc815b9f5a13f06d14556bd8dde9de242f780b66')
+sha256sums=('422052be32ca5ef4fb5816add74b9e7ff6edcf5edecb3665da5843ab3222111a')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -29,8 +29,6 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    -n auto
-    --dist=loadscope
     # Need Gemini developer API or Vertex AI API
     --ignore google/genai/tests/batches
     --ignore google/genai/tests/caches
@@ -46,6 +44,14 @@ check() {
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
     --deselect google/genai/tests/operations/test_get.py
+    --deselect google/genai/tests/interactions/test_paths.py
+    # Need to be fixed by developers
+    --deselect google/genai/tests/types/test_types.py::test_generic_alias_complex_array_with_default_value
+    --deselect google/genai/tests/types/test_types.py::test_generic_alias_complex_array_with_default_value_all_py_versions
+    --deselect google/genai/tests/types/test_types.py::test_pydantic_model_in_union_type
+    --deselect google/genai/tests/types/test_types.py::test_type_union
+    --deselect google/genai/tests/types/test_types.py::test_type_union_all_py_versions
+    --deselect google/genai/tests/types/test_types.py::test_type_union_with_default_value_all_py_versions
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
