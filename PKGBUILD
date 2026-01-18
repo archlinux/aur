@@ -44,7 +44,7 @@ provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('845e873de96bfa9a6075c420cd1613262e7b6935fe65840f0955fe6bf2d20028'
+sha256sums=('b421af3ca7e70eadde0376a0c88426f3bae427ee1c7358f138ac53eba5968f1f'
             'e872c4be3939a350ad2a14c44e4900fea7e389aba38404d8f27ef6d577252f7d')
 noextract=('Pacsea')
 
