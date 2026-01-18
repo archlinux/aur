@@ -3,7 +3,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libjpeg-turbo
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 arch=('any')
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (Android ${_android_arch})"
@@ -16,8 +16,8 @@ makedepends=('android-cmake'
              'yasm')
 provides=("android-${_android_arch}-libjpeg")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('4cc83d985db61e64bfa352388bb447ec')
+source=("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('6a03c55732045630e051f20ba7ece465')
 
 build() {
     cd "${srcdir}/libjpeg-turbo-${pkgver}"
@@ -39,4 +39,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
