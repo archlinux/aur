@@ -1,0 +1,4 @@
+[python-aiobtclientapi]
+source = "git"
+git = "https://codeberg.org/plotski/aiobtclientapi.git"
+prefix = "v"
