@@ -1,28 +1,33 @@
 # Maintainer: Mojahid <mojahid8238@gmail.com>
 pkgname=rataplay
-pkgver=0.1.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A high-performance Rust TUI for searching, playing and downloading videos (Binary Release)"
-arch=('x86_64')
+pkgdesc="A high-performance Rust TUI for YouTube playback and management using yt-dlp and mpv"
+arch=('x86_64' 'aarch64')
 url="https://github.com/mojahid8238/Rataplay"
 license=('GPL3')
 depends=('glibc' 'gcc-libs' 'openssl' 'mpv' 'yt-dlp')
+makedepends=('cargo' 'git')
+provides=('rataplay')
+conflicts=('rataplay-git')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('26a996f00d1da3d2bcc18838b21c9ddf41527fe11e4262a501ad2abc462c08db')
 
-# We fetch the binary, license, and readme directly from the release/repo
-source=("rataplay::${url}/releases/download/v${pkgver}/rataplay"
-        "LICENSE::${url}/raw/v${pkgver}/LICENSE"
-        "README.md::${url}/raw/v${pkgver}/README.md")
+prepare() {
+  cd "$pkgname"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
-# Use 'updpkgsums' to generate these, or keep 'SKIP' for personal use
-sha256sums=('bc97bd909f3dfea23efa98c99124429a32ebb9221fb4910dbe7f3d1363d01302'
-            'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052'
-            '03b9c92889b5156994bbd3bd4ad1f70cf766a417ed8138f105642d938a5c9c5d')
+build() {
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
 
 package() {
-  # Install the binary
-  install -Dm755 "${srcdir}/rataplay" "${pkgdir}/usr/bin/rataplay"
-  
-  # Install docs and license
-  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/rataplay/README.md"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/rataplay/LICENSE"
+  cd "$pkgname"
+  install -Dm755 "target/release/rataplay" "$pkgdir/usr/bin/rataplay"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
