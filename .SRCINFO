@@ -1,0 +1,26 @@
+pkgbase = hyprlink-git
+	pkgdesc = Remote control server for Linux with Android client (uinput, Wayland, Hyprland)
+	pkgver = r13.082c956
+	pkgrel = 1
+	url = https://github.com/Monekx/HyprLink
+	install = hyprlink.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = wl-clipboard
+	depends = playerctl
+	depends = libnotify
+	provides = hyprlink
+	conflicts = hyprlink
+	source = git+https://github.com/Monekx/HyprLink.git
+	source = hyprlink.service
+	source = 99-hyprlink.rules
+	source = hyprlink.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hyprlink-git

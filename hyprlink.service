@@ -1,0 +1,13 @@
+[Unit]
+Description=HyprLink Remote Control Server
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hyprlink --mode serve --port 8080
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,17 @@
+post_install() {
+  udevadm control --reload-rules && udevadm trigger
+
+  echo "-----------------------------------------------------------------------"
+  echo "1. Добавьте своего пользователя в группу uinput для работы мыши:"
+  echo "   sudo usermod -aG uinput \$USER"
+  echo ""
+  echo "2. Перезайдите в систему (Logout / Login)."
+  echo ""
+  echo "3. Включите сервис для автозапуска:"
+  echo "   systemctl --user enable --now hyprlink.service"
+  echo "-----------------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
