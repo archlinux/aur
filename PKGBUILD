@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=experimental.2025.01.27
+pkgver=experimental.2026.01.18
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -13,7 +13,10 @@ arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses' 'gettext')
-makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git' 'libbacktrace-git' 'qt5-base')
+makedepends=(
+  'sdl2_image' 'sdl2_ttf' 'sdl2_mixer'
+  'freetype2' 'git' 'libbacktrace-git' 'qt5-base'
+  'transifex-cli')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
@@ -51,6 +54,10 @@ build() {
   export CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized"
 
   export CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}"
+
+  tx-cli pull --force --all
+  ./lang/discard_invalid_po.sh
+  ./lang/update_stats.sh
 
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 BACKTRACE=1 LIBBACKTRACE=1
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 BACKTRACE=1 LIBBACKTRACE=1
@@ -93,6 +100,7 @@ package() {
   # Languages
   pushd lang/mo
   for i in *; do
+    [ "x$i" != 'xplaceholder' ] || continue
     install -d "${pkgdir}/usr/share/locale/${i}/LC_MESSAGES"
     cp "${i}/LC_MESSAGES/cataclysm-dda.mo" "${pkgdir}/usr/share/locale/${i}/LC_MESSAGES"
   done

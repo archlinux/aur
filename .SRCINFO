@@ -1,6 +1,6 @@
 pkgbase = cataclysm-dda-git
 	pkgdesc = A post-apocalyptic roguelike.
-	pkgver = experimental.2025.01.27
+	pkgver = experimental.2026.01.18
 	pkgrel = 1
 	url = https://cataclysmdda.org/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = cataclysm-dda-git
 	makedepends = git
 	makedepends = libbacktrace-git
 	makedepends = qt5-base
+	makedepends = transifex-cli
 	depends = ncurses
 	depends = gettext
 	optdepends = sdl2_image: for tiles
