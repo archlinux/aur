@@ -1,0 +1,5 @@
+[otf-seshat]
+source = 'htmlparser'
+url = 'https://dotcolon.net/fonts/seshat/'
+xpath = "/html/body/main/div/aside//small[starts-with(text(), 'Version ')]"
+prefix = 'Version '

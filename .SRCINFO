@@ -1,0 +1,11 @@
+pkgbase = otf-seshat
+	pkgdesc = Roman serif body font by dot-colon that resembles Optima
+	pkgver = 0.100
+	pkgrel = 1
+	url = https://dotcolon.net/fonts/seshat/
+	arch = any
+	license = CC0-1.0
+	source = otf-seshat-0.100.zip::https://dotcolon.net/files/fonts/seshat_0100.zip
+	sha256sums = cad99de1e6755f1720c63b6fd37f23b87f3284ae8728271b62e48d9420c1140f
+
+pkgname = otf-seshat
