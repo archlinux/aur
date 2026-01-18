@@ -1,13 +1,13 @@
 # Maintainer: Yang Mingtian <i@skylee.xyz>
 pkgname=vampire-bin
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='A theorem prover for first-order logic'
 arch=('x86_64')
 url='https://vprover.github.io/'
 license=('custom:Vampire Software Licence Agreement')
-source=("https://github.com/vprover/vampire/releases/download/v5.0.0/vampire-Linux-X64.zip")
-sha256sums=('46154f788996c1f1881c5c7120abf3dbb569b42f6bfed3c7d5331b1be3e97b18')
+source=("https://github.com/vprover/vampire/releases/download/v5.0.1/vampire-Linux-X64.zip")
+sha256sums=('79f2864d2dd45d0afc7068594123ca389378bfbd188ebcead446ba299d3bd3c5')
 
 package() {
 	install -D "vampire" -t "${pkgdir}/usr/bin/"
