@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -22,23 +22,22 @@ optdepends=(
   'ufw: Firewall Management'
 )
 options=(!debug)
-install=$pkgname.install
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('2dbd9b75846da2cf3b58a217400d5fd516a24dff7ed3006f7a709e901f0d9dfcc12be51dc92c208d5a9e3ae7337eb0b021cef9c9c447e99d6311aa78bcca1b1d')
+source=(
+  $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+  ${pkgname:1}-updategeo.{service,timer}
+)
+b2sums=('1ad561ba64bd5988364ad7c87e85be64ef381f1cdb0ab1ca8a8ad48763c31222f5deed43f8d367e8ba7d8b52297c1e9c1fb67c2cd972a0df8be85785243550a2'
+        'a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
+        '4d810eceb97b57c2b1cfecb2edf394e758510b36e8d9b32015ba3920db14bf24d1a33a25ce3544149cc35eaa71abca75ed4473a04089bc16266ac5db22bd2a2f')
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i 's|:=/usr/local|:=/usr/lib|'                                                        ${pkgname:1}.sh
-  sed -i 's|:=/etc|:=/usr/lib|'                                                              ${pkgname:1}.sh
+  sed -i 's|:=/usr/local|:=/usr/lib|;s|:=/etc|:=/usr/lib|'                                   ${pkgname:1}.sh
   sed -i 's|&& legacy_version\( 0\)\?|\&\& echo "Please use AUR helper for this function"|g' ${pkgname:1}.sh
   sed -i 's|&& uninstall\( 0\)\?|\&\& echo "Please use AUR helper for this function"|g'      ${pkgname:1}.sh
   sed -i 's|&& update_menu|\&\& echo "Please use AUR helper for this function"|'             ${pkgname:1}.sh
   sed -i 's|&& update 0$|\&\& echo "Please use AUR helper for this function"|'               ${pkgname:1}.sh
   sed -i 's|&& update$|\&\& echo "Please use AUR helper for this function"|'                 ${pkgname:1}.sh
-
-  sed -i 's|EnvironmentFile=-/etc/default/x-ui|EnvironmentFile=-/etc/x-ui/x-ui.env|'         ${pkgname:1}.service.debian
-  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|'              ${pkgname:1}.service.debian
-  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'                    ${pkgname:1}.service.debian
 }
 
 build() {
@@ -56,7 +55,8 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -vDm 755 ${pkgname:1}.sh             "$pkgdir"/usr/bin/${pkgname:1}
-  install -vDm 755 build/$pkgname              "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
-  install -vDm 644 ${pkgname:1}.service.debian "$pkgdir"/usr/lib/systemd/system/${pkgname:1}.service
+  install -vDm 755 ${pkgname:1}.sh                              "$pkgdir"/usr/bin/${pkgname:1}
+  install -vDm 755 build/$pkgname                               "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
+  install -vDm 644 ${pkgname:1}.service.arch                    "$pkgdir"/usr/lib/systemd/system/${pkgname:1}.service
+  install -vDm 644 ../${pkgname:1}-updategeo.{service,timer} -t "$pkgdir"/usr/lib/systemd/system/
 }

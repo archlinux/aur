@@ -1,8 +1,0 @@
-post_install() {
-  echo "===> Please read https://github.com/MHSanaei/3x-ui/wiki/Configuration#updating-geofiles"
-  echo "     You need to update your geo files for normal work!"
-}
-
-post_upgrade() {
-  post_install
-}
