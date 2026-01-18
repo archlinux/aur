@@ -5,9 +5,9 @@ pkgver=0.1.3+f03b02f
 pkgrel=1
 pkgdesc="A Simple, Pure & Fluent Music Player based on Electron"
 arch=("i686" "x86_64" "aarch64")
-url="https://github.com/Simsv-Software/SimMusic2024-Linux"
+url="https://github.com/SimMusic/SimMusic2024-Linux"
 license=("GPL-3.0-or-later")
-source=("SimMusic.sh" "SimMusic.desktop" "git+https://github.com/Simsv-Software/SimMusic2024-Linux.git")
+source=("SimMusic.sh" "SimMusic.desktop" "git+https://github.com/SimMusic/SimMusic2024-Linux.git")
 sha256sums=("c06d69abca6e96eed88cd3288b000639804160877483d36a9b8a730123db3e85"
             "01f11abfe5c69c5131f78f2fec66862a4faedd9b44ce533ef2ffd5380586ba4d"
             "SKIP")
