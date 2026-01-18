@@ -6,12 +6,7 @@ pkgrel=1
 pkgdesc='A static site generator for audio producers'
 arch=('x86_64')
 license=('AGPL3')
-# TODO: Dependency on openslide and poppler-glib is unclear,
-#       technically these are optional dependencies of libvips
-#       and faircamp does not require them either (no TIFF or SVG/PDF
-#       related operations with libvips), but at least two people have
-#       reported runtime errors related to libvips without them.
-depends=('ffmpeg' 'libvips>=8.13.3' 'openslide' 'opus' 'poppler-glib')
+depends=('ffmpeg' 'opus')
 makedepends=('cargo' 'cmake' 'git')
 url='https://simonrepp.com/faircamp'
 conflicts=('faircamp')
@@ -24,7 +19,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "$srcdir/$pkgname"
-    cargo build --features libvips --locked --offline --package faircamp --release
+    cargo build --locked --offline --package faircamp --release
 }
 
 package() {
