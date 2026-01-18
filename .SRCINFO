@@ -1,0 +1,16 @@
+pkgbase = yap-bin
+	pkgdesc = A simple, human-readable wrapper for yay
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/michaelmassoni/yap
+	arch = x86_64
+	license = GPL3
+	depends = yay
+	provides = yap
+	conflicts = yap
+	source_x86_64 = https://github.com/michaelmassoni/yap/releases/download/v1.0.0/yap-linux-amd64
+	source_x86_64 = https://raw.githubusercontent.com/michaelmassoni/yap/main/LICENSE
+	sha256sums_x86_64 = 49f36e212b1d20531f82b72192a912c4b2451fd87df9feb9e5132a78e5e4c503
+	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = yap-bin
