@@ -2,7 +2,7 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=speedynote-bin
-_tagname='0.12.2'
+_tagname='1.0.0'
 pkgver=${_tagname//-/.}
 pkgrel=1
 pkgdesc="A simple note app with good performance and PDF import support"
@@ -14,8 +14,8 @@ provides=('speedynote')
 conflicts=('speedynote' 'speedynote-git')
 source=("$pkgname-$pkgver.deb::https://github.com/alpha-liu-01/SpeedyNote/releases/download/v$_tagname/speedynote_${_tagname}-1_amd64.deb"
         "LICENSE-$_tagname::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v$_tagname/LICENSE")
-sha256sums=('ef90a607af559ca70c40cbb3c5e3da5a47cb71038fb8932a53a59dbeff4fd771'
-            '36273406b3d0ea68274d369dcf48167a3cef8660beddb30f5dfbee9ba75a45d7')
+sha256sums=('82606c31a2e1a13826352af871d536ba3348be09c645f3969df26ae10beec2d7'
+            'b3fac2b0946e0676aaef25f841b1be51df3331289301520e9a0bf23da9f93f01')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
