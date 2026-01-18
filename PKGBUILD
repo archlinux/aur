@@ -1,20 +1,19 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
 
-_pkgorg=gitlab.com/mipimipi
+_pkgorg=codeberg.org/mipi
 pkgname=repman-git
 _pkgname=repman
-pkgver=0.7.12
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories for Arch Linux packages"
 arch=(
   aarch64
   x86_64
 )
-url="https://$_pkgorg/$_pkgname"
 license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
+md5sums=('SKIP')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
-md5sums=(SKIP)
 provides=(repman)
 conflicts=(repman)
 backup=("etc/repman.conf")
@@ -46,19 +45,22 @@ options=(
 )
 
 pkgver() {
-  cd "$srcdir/$_pkgname" || return
-  ( set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname" || return
+  (
+    set -o pipefail
+    git describe --tags --long 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' |
+      tr -d '\n' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"    
   )
 }
 
 build() {
-  cd "$srcdir/$_pkgname" || return
+  cd "$_pkgname" || return
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname" || return
+  cd "$_pkgname" || return
   make DESTDIR="$pkgdir" install
 }
