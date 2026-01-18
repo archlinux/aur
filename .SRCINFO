@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-kodchasan
+	pkgdesc = Thailand national fonts: TH-Kodchasan
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-DIP_SIPA Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/06-TH-Kodchasal.zip
+	sha256sums = 80c9a0eb44d226334c38c4a200cb069adebd60168fb728cbf295c1847b364ab8
+	b2sums = c183eff2e002c5e51265a64adc876d136df526ed2f08952d3eacadc794957c081bf9972709d82cb958dfd8821e5bcff5e8b70611bb417a2cea9c18f6e40c7335
+
+pkgname = ttf-sipa-kodchasan
