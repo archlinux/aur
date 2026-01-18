@@ -3,23 +3,42 @@
 
 _pkgname="usacloud"
 pkgname="${_pkgname}-bin"
-pkgver=1.19.3
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/sacloud/${_pkgname}"
-license=('Apache-2.0')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(
+  'Apache-2.0'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64.zip")
-source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm.zip")
-source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386.zip")
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64.zip")
-sha256sums_aarch64=('3c65759404093557b52e3038584223fefefbd20bfaf0eed36c77f5ce24c65aad')
-sha256sums_armv7h=('29afdd17a829b66f8f28bb7306fbf61b308961beb923f9ca51bfd3c095a9f9f9')
-sha256sums_i686=('b7ec0a3f25ca86ed99d575d6f3d031282ca4a764a15e3f2d8382fdc581106ded')
-sha256sums_x86_64=('0a0d80a7edafe8406bc2abd4a35938035c3def1925c3aef14412afe57559bf35')
+source_aarch64=(
+  "${_pkgsrc}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64.zip"
+)
+source_armv7h=(
+  "${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm.zip"
+)
+source_i686=(
+  "${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386.zip"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64.zip"
+)
+sha256sums_aarch64=('d699772b4ea6f8477e253d77c9a9c9b40ecc3994d71926a812edece3f3d34694')
+sha256sums_armv7h=('24aa148c87051d00896036e7116f6f05d56cabd09087f7567a0d19293147f8f2')
+sha256sums_i686=('c20d9be593a206f8d69d2073cb9efb81f889d3429640a2b79b41b836979a3316')
+sha256sums_x86_64=('f651d16663d904db7bfd8815a9b1b00a896764804fc0a6865a2f33b315bc5a1b')
 
 prepare() {
   cd "${srcdir}"
