@@ -1,12 +1,12 @@
 # Maintainer: Your Name <mca.christopher@gmail.com>
 pkgname="alacritty-toggle-theme-on-darkmode-git"
-pkgver=r33.4933cf9
-pkgrel=1
+pkgver=r36.fd57f0c
+pkgrel=2
 pkgdesc="Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray"
 arch=('x86_64')
 url="https://github.com/christophermca/great-matcha"
 license=('GPL-1.0-or-later')
-depends=('bash' 'awk' 'alacritty-use-theme-git')
+depends=('bash' 'awk' 'alacritty-use-theme')
 makedepends=('git')
 provides=('alacritty-listen-to-colorscheme.service')
 source=("$pkgname::git+https://github.com/christophermca/great-matcha.git")
@@ -25,6 +25,10 @@ package() {
 
   # toggle-mode-on-dbus-signal
   install -Dm755 $srcdir/$pkgname/app/home/.local/alacritty-use-theme/bin/toggle-mode-on-signal.sh "$pkgdir/usr/bin/alacritty-use-theme/toggle-mode-on-signal.sh"
+
+  # documentation
+
+  install -Dm644 $srcdir/$pkgname/docs/alacritty-toggle-theme-on-darkmode.md "$pkgdir/usr/share/docs/$pkgname/README.md"
 }
 
 post_install() {
