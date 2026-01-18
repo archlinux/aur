@@ -3,7 +3,7 @@
 _name=scoring-matrices
 _module=${_name/-/_}
 pkgname=python-${_name}
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Dependency free, Cython-compatible scoring matrices to use with biological sequences."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=("MIT")
 depends=('python')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_module-$pkgver.tar.gz")
-sha256sums=(9f2c1508d477d7aafaacad4575a4137eaaed5f72d92ba5a7233a013b5beb0655)
+sha256sums=(b7c97ca2ac8c11143a7d0c278916d9bc78e6ea953fee8f40692aba14253646f4)
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
