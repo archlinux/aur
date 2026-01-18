@@ -1,0 +1,18 @@
+pkgbase = pcurses-git
+	pkgdesc = A curses package management tool using libalpm (git version, patched fork with security fixes)
+	pkgver = 5.r185.57c52f7
+	pkgrel = 1
+	url = https://github.com/ajiepangestu/pcurses
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	depends = ncurses
+	depends = pacman
+	provides = pcurses
+	conflicts = pcurses
+	source = git+https://github.com/ajiepangestu/pcurses.git
+	sha512sums = SKIP
+
+pkgname = pcurses-git
