@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libnl
 	pkgdesc = Library for applications dealing with netlink sockets (Android x86-64)
-	pkgver = 3.11.0
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://github.com/thom311/libnl/
 	arch = any
@@ -12,10 +12,7 @@ pkgbase = android-x86-64-libnl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/thom311/libnl/releases/download/libnl3_11_0/libnl-3.11.0.tar.gz
-	source = https://github.com/thom311/libnl/releases/download/libnl3_11_0/libnl-3.11.0.tar.gz.sig
-	validpgpkeys = 49EA7C670E0850E7419514F629C2366E4DFC5728
-	md5sums = 0a5eb82b494c411931a47638cb0dba51
-	md5sums = SKIP
+	source = https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz
+	md5sums = f9112ca215807fe65eecd583d8f180cc
 
 pkgname = android-x86-64-libnl
