@@ -1,4 +1,4 @@
-# Maintainer: Chris Longros <your-email@example.com>
+# Maintainer: Chris Longros <chris.longros@gmail.com>
 pkgname=anki-snapshot
 pkgver=1.2
 pkgrel=1
