@@ -1,7 +1,7 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-astc-encoder-py-git
-pkgver=r53.a0d704a
+pkgver=r61.eb3822f
 pkgrel=1
 pkgdesc="A Python binding of astc-encoder."
 arch=('x86_64')
@@ -11,6 +11,8 @@ provides=('python-astc-encoder-py')
 conflicts=('python-astc-encoder-py')
 depends=(
   'python'
+  'python-archspec'
+  'python-imagehash'
   'python-archspec'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
