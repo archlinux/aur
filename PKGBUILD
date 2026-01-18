@@ -1,18 +1,17 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
 
-_pkgorg=gitlab.com/mipimipi
+_pkgorg=codeberg.org/mipi
 pkgname=repman
-pkgver=0.7.12
+pkgver=v0.7.14
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories for Arch Linux packages"
 arch=(
   aarch64
   x86_64
 )
-url="https://$_pkgorg/$pkgname"
 license=(GPL3)
-source=("https://${_pkgorg}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b8f3bbdff98e97358cecc108967a20ee0010e1008a41099b45b02b197a1d7d35')
+source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('fbc3a3beda180c4665a247be8d7d786ff0db27cbac792d34c8bf632dd8922c8f')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 conflicts=(repman-git)
 backup=("etc/repman.conf")
@@ -32,23 +31,23 @@ optdepends=(
   "google-cloud-cli: support of Google Cloud Platform"
 )
 makedepends=(
+  asciidoctor
   bash
   cargo
   clang
   git
   make
-  asciidoctor
 )
 options=(
   !debug
 )
 
 build() {
-  cd "${pkgname}-v${pkgver}" || return
+  cd "${pkgname}" || return
   make
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}" || return
+  cd "${pkgname}" || return
   make DESTDIR="$pkgdir" install
 }
