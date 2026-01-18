@@ -1,11 +1,70 @@
+## Enhancements
+* The source code integration now supports Python ([#4726](https://github.com/grafana/pyroscope/pull/4726), [#4732](https://github.com/grafana/pyroscope/pull/4732), [#4730](https://github.com/grafana/pyroscope/pull/4730))
+* Implement comprehensive profile size limits across ingestion endpoints ([#4734](https://github.com/grafana/pyroscope/pull/4734))
+* Update golang version to 1.24.12 ([#4760](https://github.com/grafana/pyroscope/pull/4760))
+* Set a maximum ingestion body size by default ([#4761](https://github.com/grafana/pyroscope/pull/4761))
+* Update OpenTelemetry dependencies, `proto=v1.9.0` `profiles=v0.2.0` ([#4731](https://github.com/grafana/pyroscope/pull/4731))
+* Enforce maxNodes optionally on SelectMergeProfile through limits in v2 ([#4723](https://github.com/grafana/pyroscope/pull/4723))
+* Add benchmarks for timeseries query performance with exemplars ([#4665](https://github.com/grafana/pyroscope/pull/4665))
+
+## Fixes
+* Fix exemplar value calculation for split profiles ([#4753](https://github.com/grafana/pyroscope/pull/4753))
+* Relative matching for source code mapping ([#4754](https://github.com/grafana/pyroscope/pull/4754))
+* VCS Service: Failed file lookup should be 404 instead of 500 ([#4759](https://github.com/grafana/pyroscope/pull/4759))
+* Remove unintended double base64 encoding in vcs service ([#4703](https://github.com/grafana/pyroscope/pull/4703))
+* Frontend: Bump `qs` to address CVE-2025-15284 ([#4724](https://github.com/grafana/pyroscope/pull/4724))
+* Frontend: Bump `sweetalert2` to address GHSA-457r-cqc8-9vj9, GHSA-8jh9-wqpf-q52c and GHSA-pg98-6v7f-2xfv ([#4727](https://github.com/grafana/pyroscope/pull/4727))
+* Frontend: Bump `@remix-run/router` and `react-router` to address CVE-2026-22029 and CVE-2025-68470 ([#4763](https://github.com/grafana/pyroscope/pull/4763))
+
+## Documentation
+* Rename GitHub integration to source code integration ([#4755](https://github.com/grafana/pyroscope/pull/4755))
+* Update source code integration docs to include Java and Python support ([#4651](https://github.com/grafana/pyroscope/pull/4651))
+* Fix inline link in eBPF docs ([#4733](https://github.com/grafana/pyroscope/pull/4733))
+
 ## Changelog
-* f27f585b01018bcb24300b16da4845b9201126a2 Pyroscope 1.17.1 release (#4748)
-* 6730264aa0ca7c01c37641c9115999d010620ea7 Update goreleaser and use it to push weekly builds (#4719)
-* 9f652453df29cb63d878f7836a22aa1214b7248f [release/v1.17] backport docs updates (#4711)
-* 767ee745872ae38ca358485056efa2ef521f1f24 chore: Publish Github releases immediately during release process (#4720)
-* e55ecb59b72df71ea6aef595d61def58280e7023 docs: add missing CVE reference in v1.17 release notes (#4715)
-* 8ebbbc27a24b7299ffd988b5c002b615270b9193 fix: Re-enable defaults for /render `from` and `until` parameters (#4745) (#4747)
-* 5b051e1b463ed533aeb157f826b089d42f42eb43 fix: pass `$IMAGE_TAG` directly to Goreleaser (#4749) (#4750)
+* e542ef3a68b3bdef255087370c90ab3aa751cfc3 Add release notes for v1.18
+* a6dcad6eaadc0ca37f1651d6008f35a957de717e Fixing inline link (#4733)
+* 4523fd14aa2341479d577bdc53f242c4a22353a5 Implement comprehensive profile size limits across ingestion endpoints (#4734)
+* f7611c2db2d6d55269804f63e79115e1df103722 Partially revert function name modification from `pyspy`-based profiles (#4757)
+* 1d28675dfb491da2ae336f193af1b78183227b0b Remove function name modification from `pyspy`-based profiles (#4730)
+* ef09e77ee0baf4bee9401bf461bc8bdf0e5231b9 Rename GitHub integration to source code integration (#4755)
+* 2155e94cb52f2be0975f866d3408755cca32bfca Update golang version to 1.24.12 (#4760)
+* e2dbb9c83fb873dc604f753ec992c2d8c4f8bac9 Update goreleaser and use it to push weekly builds (#4719)
+* fb3b8c6548181805b1000985ba8eb5bb5e9434c1 chore(deps): bump axios (#4764)
+* 6fdc8e6bf40b36706bbc1b4676ad923a597e3f4f chore(deps): bump sinatra (#4518)
+* b80dcbeb3f4ed15011c9ae395beeb1bce7498e86 chore(deps): update a few frontend packages flagged for vulnerabilities (#4724)
+* 7f21353a391f672ab05e69961767c3f55b913572 chore(deps): update dependency eslint-plugin-jsdoc to v53 (#4744)
+* 8390f63df7fcdeaf5ae3db094592261aa59391a2 chore(deps): update helm release alloy to v1.5.1 (#4740)
+* 60bd48959bbfb2ae59baf5013a11b1bb4f40434b chore(deps): update helm release k8s-monitoring to v3.7.1 (#4741)
+* c55e2fd64ba1ae5cda0e2f261acf4f9e5a539855 chore(examples): update examples (#4698)
+* 413c0516b631444b2e40d64cee8048e2a2f52d64 chore(exampless,.NET) update Pyroscope.Opentelemetry dependency, fix dynamic labels (#4722)
+* 976a49e128f65438087909b1ec27fa3ab234f542 chore(release): do not run on weekly tags, pass correct release tag explicitly (#4709)
+* 681d7ae6903148c57fab49a796efafc1833ad7d5 chore: Do not run update examples cron on forks (#4718)
+* 50a65830a26023f2dc538f338460e82ee938ec92 chore: Enforce max nodes in v2 query-frontend (#4723)
+* 9c5cbb3781e8ac4e11bf5de05b9750e1a9f2d3bb chore: Fix overlapping test names (#4728)
+* 420116c7e5a20a11cfe1a5bd17e368d720782195 chore: Frontend update sweetalert2 (#4727)
+* 5b6c9f7623faee453d29909035c5f5f1c317e4c4 chore: Publish Github releases immediately during release process (#4720)
+* 08ce6f85e15b4e17426685a63797a8a582bf53fc chore: Set a maximum ingestion body size by default (#4761)
+* b3ca09101f7d62b25cb212ab7a2a6451fc96f1d7 chore: Update OpenTelemetry dependencies proto=v1.9.0 profiles=v0.2.0 (#4731)
+* 68da980bd6d66e2e97d2cb2895d50c5f2138fb0d chore: Update helm chart and release notes for v1.17 (#4702)
+* ef3d7099dc7edc9ddb3caddb4d886599ca24b18f chore: add resources to provide guidance to coding agents (#4725)
+* ffd02327bf77644503ff3743a1d70e0ca419c494 chore: bump react router (#4763)
+* 8d26bca4d0fa182ddd06adce183efede28516573 chore: fix regression in main (#4738)
+* 8813f7900873f4fe36d6040431a530f949320d42 docs: Fix code blocks code generation (#4693)
+* 24cf6cff9ea866664c86e5147beb9c5a8d33f54a docs: Update profiling docs to include Java and Python support (#4651)
+* 68796810232c35bc74a93e318e1c0abe7857731a docs: add missing CVE reference in v1.17 release notes (#4715)
+* 904fd1000a47966bd1f0160bbcd848ddfd2d20ad docs: add warning for patching older release versions (#4714)
+* 1ef64603218e3d9fe8425c7c13b3365000a8bd7f docs: update release notes for v1.17, v1.16.x & v1.15.x (#4710)
+* d702139038a2604c5edc63272a4b0ba636bc5c20 docs: updates the list of contributors in README (#4721)
+* e4c0f76d744f7da033cf532dbc3f1785cc6fef25 feat: Add support for Python source code integration (#4726)
+* 4fe7a80f3316c59d6239af2df9e080f967eac446 fix: Failed file lookup should be 404 instead of 500 (#4759)
+* b378d7fcd4cacf66198f4f45bf02e9b9a231e696 fix: Properly map local file paths for Python source code integration (#4732)
+* 01542cfe3d768609ae18beb3f30e5c3e1e19ec3b fix: Re-enable defaults for /render `from` and `until` parameters (#4745)
+* d971a5b2ff78bf694e1b6825a6334fdca65c6179 fix: Relative matching for source code mapping (#4754)
+* 6f184616a1b483595211369a16b0d8f6441b27d8 fix: Remove unintended double base64 encoding in vcs service (#4703)
+* bdfc8ca69a574a6e5acc4a07d3fdcc553e4f1bd1 fix: pass `$IMAGE_TAG` directly to Goreleaser (#4749)
+* 989af26e189feeebee676e9b42416da557e61a04 fix: sum exemplar values from same profile ID and timestamp across splits (#4753)
+* 0a5b09a421de037c99f226090980691a45675d27 perf: Add benchmarks for timeseries query (exemplars) performance (#4665)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -20,7 +79,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull docker.io/grafana/pyroscope:1.17.1
+  docker pull docker.io/grafana/pyroscope:1.18.0
 ```
 
 
