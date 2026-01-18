@@ -9,7 +9,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.13.0.dev31+g0e76dbc4
+pkgver=0.13.1.dev31+g0e76dbc46.d20260118
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
@@ -55,7 +55,7 @@ options=(!emptydirs)
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --long --abbrev=8 | sed -E 's/^v([0-9.]+)-([0-9]+)-g(.+)$/\1.dev\2+g\3/'
+  python -m setuptools_scm
 }
 
 prepare() {
@@ -66,7 +66,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
   make -C doc man PYTHONPATH="${PWD}"
 }
 
