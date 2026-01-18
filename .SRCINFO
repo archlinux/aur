@@ -1,0 +1,11 @@
+pkgbase = otf-route159
+	pkgdesc = Sans-serif font by dot-colon optimized for on-screen readability
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://dotcolon.net/fonts/route159/
+	arch = any
+	license = OFL-1.1
+	source = otf-route159-1.10.zip::https://dotcolon.net/files/fonts/route159_110.zip
+	sha256sums = d0cfa7fa94ec2698095ece7f754ef4cc8ceb303d44057f894318ad663d71bbe5
+
+pkgname = otf-route159
