@@ -1,0 +1,36 @@
+pkgbase = upsies
+	pkgdesc = Media metadata aggregator
+	pkgver = 2026.01.03
+	pkgrel = 1
+	url = https://codeberg.org/plotski/upsies
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiobtclientapi
+	depends = python-async-lru
+	depends = python-beautifulsoup4
+	depends = python-countryguess
+	depends = python-guessit
+	depends = python-httpx
+	depends = python-langcodes
+	depends = python-natsort
+	depends = python-packaging
+	depends = python-prompt_toolkit
+	depends = python-pydantic
+	depends = python-pyimgbox
+	depends = python-pyparsebluray
+	depends = python-pyxdg
+	depends = python-term-image
+	depends = python-torf
+	depends = python-unidecode
+	depends = mediainfo
+	depends = oxipng
+	source = git+https://codeberg.org/plotski/upsies#tag=v2026.01.03
+	sha512sums = 6be837108067b3c6f4f8c19fd1402852f969381b9ae63df3910873e93151a092dd69f1339c988ded4d6ada5b2f016800756d34ff3ef4410fa9a73609dba6b0e5
+
+pkgname = upsies

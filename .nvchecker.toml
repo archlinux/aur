@@ -1,0 +1,4 @@
+[upsies]
+source = "git"
+git = "https://codeberg.org/plotski/upsies.git"
+prefix = "v"
