@@ -1,0 +1,12 @@
+pkgbase = no-attention-span-git
+	pkgdesc = No Attention Span -- Automatically Open/Close TikTok during a long build
+	pkgver = r5.faa6493
+	pkgrel = 1
+	url = https://github.com/xgames123/nas
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = no-attention-span-git::git+https://github.com/xgames123/nas.git
+	md5sums = SKIP
+
+pkgname = no-attention-span-git
