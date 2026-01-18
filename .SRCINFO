@@ -6,6 +6,7 @@ pkgbase = nbxplorer
 	arch = x86_64
 	license = MIT
 	depends = aspnet-runtime
+	depends = aspnet-targeting-pack
 	depends = bash
 	depends = bitcoin-daemon
 	depends = dotnet-sdk
