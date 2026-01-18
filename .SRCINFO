@@ -1,0 +1,11 @@
+pkgbase = otf-medio
+	pkgdesc = Elegant serif font by dot-colon inspired by Didot and Bodoni
+	pkgver = 0.200
+	pkgrel = 1
+	url = https://dotcolon.net/fonts/medio/
+	arch = any
+	license = CC0-1.0
+	source = otf-medio-0.200.zip::https://dotcolon.net/files/fonts/medio_0200.zip
+	sha256sums = 1597610c7fa4f16d9863ed88c0607c665c11273079c9d28b9c898f619fbff094
+
+pkgname = otf-medio
