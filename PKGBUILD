@@ -39,7 +39,12 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd radicle-desktop
-	git describe --long --tags | sed -r 's#releases/##; s/^v//; s/-rc\./rc/; s/[^-]*-g/r&/; s/-/./g'
+
+	# this project does not use git tags for versioning; sunrise by hand
+	local version commit
+	version="$(jq -r '.version' crates/radicle-tauri/tauri.conf.json)"
+	commit="$(git log -1 --format=%H -G '"version"' -- crates/radicle-tauri/tauri.conf.json)"
+	printf "%s.r%s.g%s\n" "$version" "$(git rev-list --count "$commit..")" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
