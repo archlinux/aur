@@ -8,8 +8,8 @@ _pkgname=Vesktop
 _appname=vencord-desktop
 pkgver=1.6.3
 _electronversion=39
-pkgrel=1
-pkgdesc="Vesktop with WayAFKNext plugin - Discord client with custom Vencord build (prebuilt, uses system electron)"
+pkgrel=2
+pkgdesc="Vesktop with WayAFKNext plugin for Wayland idle detection (Hyprland, Sway, etc)"
 arch=(
     'aarch64'
     'x86_64'

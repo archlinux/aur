@@ -1,7 +1,7 @@
 pkgbase = vesktop-wayafknext-bin
-	pkgdesc = Vesktop with WayAFKNext plugin - Discord client with custom Vencord build (prebuilt, uses system electron)
+	pkgdesc = Vesktop with WayAFKNext plugin for Wayland idle detection (Hyprland, Sway, etc)
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vencord/Vesktop
 	arch = aarch64
 	arch = x86_64
