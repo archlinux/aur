@@ -1,0 +1,17 @@
+pkgbase = python-countryguess
+	pkgdesc = Fuzzy lookup of country information
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://codeberg.org/plotski/countryguess
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://codeberg.org/plotski/countryguess#tag=v0.4.9
+	sha512sums = 21fd37e955e9f4d0ede559c6ea897e186a1478aaa6cbdd5574842f520653c9d4e7dca49f4ad24789923cc5382a0ce568d57e952154f3b759f3307a707618614b
+
+pkgname = python-countryguess
