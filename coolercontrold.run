@@ -1,0 +1,3 @@
+#!/bin/sh
+
+CC_LOG=INFO exec /usr/bin/coolercontrold 2>&1

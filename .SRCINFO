@@ -1,0 +1,15 @@
+pkgbase = coolercontrold-runit
+	pkgdesc = Runit service script for coolercontrold.
+	pkgver = 20260118
+	pkgrel = 1
+	url = https://gitlab.com/coolercontrol/coolercontrol
+	arch = any
+	license = GPL-3.0-or-later
+	depends = coolercontrold
+	depends = runit
+	source = coolercontrold.run
+	source = coolercontrold.log.run
+	sha256sums = e05796e6a1e863340c45cc8827ffbded3e9c0ee17f32aa5f99484ecf4b141466
+	sha256sums = 35dac3e83f142ff34ecdc5f907735f086371099ff4ca9dea2b7873095cb2ccd9
+
+pkgname = coolercontrold-runit
