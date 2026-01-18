@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
@@ -61,7 +61,7 @@ pkgbase = vcvrack
 	sha256sums = d932eb4a698a968e40261d395ef4513ef0493f3797c3e49198c86bf9cda3b0fb
 	sha256sums = 9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7
 	sha256sums = f030e6253b075efb9d3347599b5ce5df404c68a673f1a4fc7589d141cfb06a38
-	sha256sums = 256c1b66caf5cee7744b8f6b392dccea670d7cf0f243607e83330e7f6282f0c8
+	sha256sums = 1f1a9e8c83b921f101433fa213c7f2d1425ad1db2e7c607734884fedbeab85b7
 	sha256sums = a00a568bc582aa18b053987c31437585779e03b85b246157325624782cc5b829
 	sha256sums = 5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096
 	sha256sums = 50387308a3e93c35c26686c6268e6d6e0a4e4a959c62f7d57b0e02cfeb0de814

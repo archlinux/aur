@@ -1,8 +1,19 @@
 diff --git a/src/window/Window.cpp b/src/window/Window.cpp
-index d4eeca06..6621950d 100644
+index 4d67e8d2..23e79df9 100644
 --- a/src/window/Window.cpp
 +++ b/src/window/Window.cpp
-@@ -674,24 +674,31 @@ int Window::getMods() {
+@@ -331,8 +331,9 @@ Window::Window() {
+ 	// Set up GLEW
+ 	glewExperimental = GL_TRUE;
+ 	err = glewInit();
+-	if (err != GLEW_OK) {
++	if (err != GLEW_OK && glfwGetPlatform() != GLFW_PLATFORM_WAYLAND) {
+ 		osdialog_message(OSDIALOG_ERROR, OSDIALOG_OK, "Could not initialize GLEW. Does your graphics card support OpenGL 2.0 or greater? If so, make sure you have the latest graphics drivers installed.");
++		WARN("glewInit failed: %s", glewGetErrorString(err));
+ 		throw Exception("Could not initialize GLEW");
+ 	}
+ 
+@@ -682,24 +683,31 @@ int Window::getMods() {
  	int mods = 0;
  #if defined ARCH_LIN
  	// On Linux X11, get mods directly from X11 display, to support X11 key remapping
@@ -52,7 +63,7 @@ index d4eeca06..6621950d 100644
  	// Use GLFW key codes on other OS's
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
  		mods |= GLFW_MOD_SHIFT;
-@@ -701,7 +708,6 @@ int Window::getMods() {
+@@ -709,7 +717,6 @@ int Window::getMods() {
  		mods |= GLFW_MOD_ALT;
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SUPER) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SUPER) == GLFW_PRESS)
  		mods |= GLFW_MOD_SUPER;

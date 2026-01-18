@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -55,7 +55,7 @@ sha256sums=('e949a2e0a6d748c1ef038619506cd37c855828b4172f976c68c71ed23325c3ac'
             'd932eb4a698a968e40261d395ef4513ef0493f3797c3e49198c86bf9cda3b0fb'
             '9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7'
             'f030e6253b075efb9d3347599b5ce5df404c68a673f1a4fc7589d141cfb06a38'
-            '256c1b66caf5cee7744b8f6b392dccea670d7cf0f243607e83330e7f6282f0c8'
+            '1f1a9e8c83b921f101433fa213c7f2d1425ad1db2e7c607734884fedbeab85b7'
             'a00a568bc582aa18b053987c31437585779e03b85b246157325624782cc5b829'
             '5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096'
             '50387308a3e93c35c26686c6268e6d6e0a4e4a959c62f7d57b0e02cfeb0de814'
@@ -81,7 +81,7 @@ prepare() {
   patch -p1 -i ../plugins.patch
   # set proper window manager class
   patch -p1 -i ../wmclass.patch
-  # fix for wayland
+  # fixes for wayland
   patch -p1 -i ../wayland.patch
 }
 
