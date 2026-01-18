@@ -1,2 +1,5 @@
 [opencommit]
-source = "npm"
+source = "git"
+git = "https://github.com/di-sukharev/opencommit.git"
+use_max_tag = true
+prefix = "v"
