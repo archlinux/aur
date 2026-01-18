@@ -41,10 +41,16 @@ pkgver() {
 	cd radicle-desktop
 
 	# this project does not use git tags for versioning; sunrise by hand
-	local version commit
+	local version tag count rev
 	version="$(jq -r '.version' crates/radicle-tauri/tauri.conf.json)"
-	commit="$(git log -1 --format=%H -G '"version"' -- crates/radicle-tauri/tauri.conf.json)"
-	printf "%s.r%s.g%s\n" "$version" "$(git rev-list --count "$commit..")" "$(git rev-parse --short HEAD)"
+	tag="$(git log -1 --format=%H -G '"version"' -- crates/radicle-tauri/tauri.conf.json)"
+	count="$(git rev-list --count "$tag..")"
+	rev="$(git rev-parse --short HEAD)"
+	if (( count > 0 )); then
+		printf "%s.r%s.g%s\n" "$version" "$count" "$rev"
+	else
+		printf "%s\n" "$version"
+	fi
 }
 
 prepare() {
