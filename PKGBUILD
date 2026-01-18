@@ -3,7 +3,7 @@
 _name=livekit-api
 pkgname=python-$_name
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Server API for LiveKit.'
 arch=('any')
 url='https://github.com/livekit/python-sdks/tree/main/livekit-api'
@@ -25,7 +25,7 @@ check() {
     --disable-warnings
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
-  PYTHONPATH=$PWD/${_name//-api/} pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
