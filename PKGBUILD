@@ -1,11 +1,11 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('greetd' 'kitty' 'hyprland' 'gslapper')
 optdepends=(
     'swww: Legacy wallpaper support (fallback)'
@@ -14,7 +14,7 @@ makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('f6d1d5f123b7d9d13ed8119350b2f1643e15a07f423c7132722c0a3d4fb1935a')
+sha256sums=('2dbb2ada7066ccc262f2a61dd3525bf93f7249408b7b566657214728dab52a26')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/hyprland-greeter-config.conf' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-hyprland.install
