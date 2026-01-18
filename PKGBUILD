@@ -4,7 +4,7 @@
 # based on gbdk package
 
 pkgname=gbdk-2020
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="An updated version of Game Boy Development Kit"
 url="https://github.com/gbdk-2020/gbdk-2020"
@@ -14,13 +14,13 @@ makedepends=('git')
 depends=('sdcc')
 conflicts=('gbdk' 'lcc')
 source=("https://github.com/gbdk-2020/gbdk-2020/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ef2ebe17a38f797578429f820bbb02fd12145e5b7c521b4bbff4579beff48e7c')
+sha256sums=('aa080fd871f81e92533caf9a6fb72c4efd9ff3c2a6cedb7aa936f5aa0e220598')
 options=('!strip')
 
 package() {
   make -C ${pkgname}-${pkgver} gbdk-build gbdk-support-install gbdk-lib-install \
     TARGETDIR=/usr/share/${pkgname}/ BINDIR=/usr/bin/ SDCCDIR=/usr/ \
-    PORTS='sm83 z80' PLATFORMS='gb ap duck gg sms msxdos' # can NES be supported now with sdcc 4.5.0?
+    PORTS='sm83 z80' PLATFORMS='gb ap duck gg sms msxdos nes'
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 
   mv ${pkgname}-${pkgver}/build/gbdk ${pkgdir}/usr/share/${pkgname}
