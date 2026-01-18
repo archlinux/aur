@@ -1,17 +1,18 @@
-# Maintainer: Rocket Aaron <i at rocka dot me>
+# Maintainer: Aaron Liu <aaronliu0130📧gmail.com>
+# Contributor: Rocket Aaron <i at rocka dot me>
 
-pkgname=ttf-blobmoji
-_tagname='15.1-beta1'
-pkgver="${_tagname//-/}"
+pkgname=ttf-blobmoji2
+pkgver=17r1
 pkgrel=1
-pkgdesc='Noto Emoji with extended Blob support'
+pkgdesc='Fork and continuation of Noto Emoji 7.0, known for its blob/gumdrop-like faces (installed as "Noto Color Emoji")'
 arch=(any)
-url='https://github.com/C1710/blobmoji'
+url='https://github.com/DavidBerdik/blobmoji2'
 license=('OFL-1.1')
-provides=(emoji-font)
-source=("https://github.com/C1710/blobmoji/releases/download/v${_tagname}/Blobmoji.ttf")
-sha256sums=('61b588efe9960443a89de442feeab863744dea9dd169cba08c66762eb4d6952b')
+provides=(emoji-font noto-fonts-emoji-blob=17 noto-fonts-emoji)
+conflicts=(noto-fonts-emoji)
+source=("${url}/releases/download/blobmoji-${pkgver}/NotoColorEmoji.ttf")
+sha256sums=('ffc75f156f65027d61ea976b7ef6327641403913c89812371a3d064fd15c67f2')
 
 package() {
-  install -Dm644 Blobmoji.ttf "$pkgdir"/usr/share/fonts/TTF/Blobmoji.ttf
+  install -Dm644 NotoColorEmoji.ttf "$pkgdir"/usr/share/fonts/noto/NotoColorEmoji.ttf
 }
