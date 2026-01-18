@@ -3,7 +3,7 @@
 pkgname=python-rollbar
 _name=rollbar
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy and powerful exception tracking with rollbar"
 arch=(any)
 url="https://rollbar.com/docs/notifier/pyrollbar/"
@@ -21,4 +21,6 @@ build() {
 package() {
   cd "$srcdir/$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
