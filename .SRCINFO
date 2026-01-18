@@ -1,15 +1,16 @@
 pkgbase = ptui
 	pkgdesc = Picture TUI
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/narbs/ptui
 	arch = x86_64
 	license = MIT
 	depends = chafa
 	depends = imagemagick
+	depends = jp2a
 	provides = ptui
 	conflicts = ptui
-	source = https://github.com/narbs/ptui/releases/download/v2.0.0/ptui-2.0.0-x86_64.tar.gz
-	sha256sums = 48200e4566c89e6eea27e3677a2e3d32350fdca7a23ceaf601e65f9f5cbcaf14
+	source = https://github.com/narbs/ptui/releases/download/v2.1.0/ptui-2.1.0-x86_64.tar.gz
+	sha256sums = dbd1b8b4335a1c2e50fc214389102ab79603af623cb5569784b70d56cd1793b4
 
 pkgname = ptui-bin
