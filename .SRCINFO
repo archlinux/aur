@@ -1,7 +1,7 @@
 pkgbase = roboclaw-studio-git
-	pkgdesc = Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio
+	pkgdesc = Unofficial Linux GUI for Basicmicro RoboClaw motor controllers, inspired by Motion Studio. Features motor control, telemetry, simulation, and frequency response analysis.
 	pkgver = 0.1.0.r2.gec5ea8b
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/lazytatzv/motion_studio
 	arch = x86_64
 	license = MIT

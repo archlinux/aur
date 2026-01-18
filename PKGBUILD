@@ -2,8 +2,8 @@
 
 pkgname=roboclaw-studio-git
 pkgver=0.1.0.r2.gec5ea8b
-pkgrel=8
-pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw Motion Studio"
+pkgrel=9
+pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw motor controllers, inspired by Motion Studio. Features motor control, telemetry, simulation, and frequency response analysis."
 arch=('x86_64')
 url="https://github.com/lazytatzv/motion_studio"
 license=('MIT')
