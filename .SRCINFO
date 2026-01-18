@@ -1,0 +1,15 @@
+pkgbase = ps4-pkg-tools-git
+	pkgdesc = Stand-alone PS4 PKG extraction tool
+	pkgver = r2914.e7c40358
+	pkgrel = 1
+	url = https://github.com/xXJSONDeruloXx/ps4-pkg-tools
+	arch = x86_64
+	license = GPLv2
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = qt6-base
+	source = git+https://github.com/xXJSONDeruloXx/ps4-pkg-tools.git
+	md5sums = SKIP
+
+pkgname = ps4-pkg-tools-git

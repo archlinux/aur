@@ -1,0 +1,4 @@
+**/pkg
+**/src
+ps4-pkg-tools
+*.tar.zst
