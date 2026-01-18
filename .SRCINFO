@@ -1,5 +1,5 @@
 pkgbase = why2
-	pkgdesc = Lightweight, fast, secure, and easy to use encryption system.
+	pkgdesc = Lightweight, fast and secure chat application powered by WHY2 encryption
 	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://git.satan.red/ENGO150/WHY2.git
