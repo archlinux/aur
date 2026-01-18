@@ -41,7 +41,7 @@ options=(
   !debug
   !strip
 )
-_srcname=linux-torvalds
+_srcname=linux-lawstorant
 source=(
   "$_srcname::git+https://github.com/Lawstorant/linux"
   config         # the main kernel config file
@@ -82,22 +82,6 @@ prepare() {
 
   if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
     [[ -f "$_userremote" ]] && source "$_userremote" || source "../${_userremote##*/}"
-  fi
-  if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
-    REMOTE_PREFIX=${source[0]##${_srcname}::git+}
-    REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
-    REMOTE_URL=${REMOTE_PREFIX}${REMOTE}
-    echo
-    echo "================================================================================"
-    echo "Build script detected custom variables \$REMOTE and \$COMMIT are being used:"
-    echo "REMOTE_PREFIX: $REMOTE_PREFIX"
-    echo "REMOTE_TIP   : $REMOTE"
-    echo "COMMIT       : $COMMIT"
-    echo "================================================================================"
-    echo
-    echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
-    git fetch -t ${REMOTE_URL} ${COMMIT}
-    git checkout -f FETCH_HEAD
   fi
 
   echo "Setting version..."
