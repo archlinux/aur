@@ -1,6 +1,6 @@
 pkgbase = asm-processor
 	pkgdesc = Pre-process .c files and post-process .o files to enable embedding MIPS assembly into IDO-compiled C
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/simonlindholm/asm-processor
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = asm-processor
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = asm-processor-1.0.0.tar.gz::https://github.com/simonlindholm/asm-processor/archive/refs/tags/1.0.0.tar.gz
-	b2sums = ae023e78341875ec24f3b5e3bbaa17354480892a4ed452759507120c731e6c8811599dd046562da1194add2609dd1b1d3640f97304a31ee5f36c5affa504200b
+	source = asm-processor-1.0.1.tar.gz::https://github.com/simonlindholm/asm-processor/archive/refs/tags/1.0.1.tar.gz
+	b2sums = 9f1427e046e60dcda29679af0ccf1b9cabcb06db0e28eacbffc45f4f6a55aba785883b3d8b1295cbf41305ddbd81cdd6ef0bb7856369a048eb7260bd534ac86d
 
 pkgname = asm-processor
