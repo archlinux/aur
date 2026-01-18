@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname=sing-box-extended
-_pkgver="1.12.12-extended-1.4.2"
+_pkgver="1.12.17-extended-1.5.2"
 pkgver="${_pkgver//-/\~}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=("LicenseRef-${pkgname}")
 makedepends=('go')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v$_pkgver.tar.gz"
         "sing-box.rules")
-sha256sums=('9c86b5d7b6c739f5ff86f4ab8f7db4818dc883229c3e78e9a9fa71f2f1140cef'
+sha256sums=('b77ce9da1b0b328d52e80209009f9524b631acab8bbd778971851dabce76e251'
             '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
 conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" "$pkgname-bin" )
 depends=("glibc")
