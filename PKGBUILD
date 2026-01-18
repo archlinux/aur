@@ -2,14 +2,18 @@
 
 _pkgname="m8c"
 pkgname="${_pkgname}-bin"
-pkgver=2.2.0+323
+pkgver=2.2.3+355
 _pkgver_tag="${pkgver%+*}"
 _pkgver_build="${pkgver##*+}"
 pkgrel=1
 pkgdesc="A UI for the M8 and M8 Headless portable music DAWs"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/laamaa/${_pkgname}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'glibc'
   'libserialport'
@@ -26,14 +30,18 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgname}-${_pkgver_tag}-AUDIOGUIDE.md::${url}/raw/refs/tags/v${_pkgver_tag}/AUDIOGUIDE.md"
-        "${_pkgname}-${_pkgver_tag}-README.md::${url}/raw/refs/tags/v${_pkgver_tag}/README.md"
-        "${_pkgname}-${_pkgver_tag}-LICENSE::${url}/raw/refs/tags/v${_pkgver_tag}/LICENSE")
-source_x86_64=("${_pkgname}-${_pkgver_tag}-x86_64.AppImage.zip::${url}/releases/download/v${_pkgver_tag}/${_pkgname}-v${_pkgver_tag}-linux-x86_64.AppImage.zip")
+source=(
+  "${_pkgname}-${_pkgver_tag}-AUDIOGUIDE.md::${url}/raw/refs/tags/v${_pkgver_tag}/AUDIOGUIDE.md"
+  "${_pkgname}-${_pkgver_tag}-README.md::${url}/raw/refs/tags/v${_pkgver_tag}/README.md"
+  "${_pkgname}-${_pkgver_tag}-LICENSE::${url}/raw/refs/tags/v${_pkgver_tag}/LICENSE"
+)
+source_x86_64=(
+  "${_pkgname}-${_pkgver_tag}-x86_64.AppImage.zip::${url}/releases/download/v${_pkgver_tag}/${_pkgname}-v${_pkgver_tag}-linux-x86_64.AppImage.zip"
+)
 sha256sums=('f30c3ff6bcf5e230375664dc6286bd39a3e66c925975ba9e0ddbc366c0ec6652'
-            '3fdbc136a178a9f2bf5a57f13994b17d080d5a1eee31d360ccf981e89ef64187'
+            '61f5d7282a39c43e75d034818cf25decdd27a008b82e96d8a87efce3c9e03ccd'
             '5c62289a8358388d0e7e459e8ece240c9b3c4af5915539c60e0fe65c76bac6b8')
-sha256sums_x86_64=('e18b40b58df7ee000f815493b64eafa2a25d083febf8b8445fe2e6426af0e6c8')
+sha256sums_x86_64=('23c049957092dab992d884c10eabddff2d03f77dcaccccf4523cde6c81756726')
 
 pkgver() {
   local filename build_number
@@ -73,6 +81,7 @@ package() {
   cd "usr/bin"
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
 
-  install -vd "${pkgdir}/usr/bin"
+  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/share/${_pkgname}"
   ln -vsf "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -vsf "/usr/lib/${_pkgname}/gamecontrollerdb.txt" "${pkgdir}/usr/share/${_pkgname}/gamecontrollerdb.txt"
 }
