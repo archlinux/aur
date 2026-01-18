@@ -1,6 +1,6 @@
 pkgbase = creality-print-bin
 	pkgdesc = 3D slicer for Creality printers
-	pkgver = 6.3.0.3420
+	pkgver = 7.0.0.4127
 	pkgrel = 2
 	epoch = 1
 	url = https://www.creality.com
@@ -39,15 +39,15 @@ pkgbase = creality-print-bin
 	depends = zstd
 	optdepends = python
 	optdepends = slicer-udev: 3D printer connection rules
-	provides = creality-print=6.3.0
+	provides = creality-print=7.0.0
 	conflicts = creality-print
 	source = creality-print.sh
-	source = creality-print-6.3.0-README.md::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.3.0/README.md
-	source = creality-print-6.3.0-LICENSE.txt::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.3.0/LICENSE.txt
+	source = creality-print-7.0.0-README.md::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v7.0.0/README.md
+	source = creality-print-7.0.0-LICENSE.txt::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v7.0.0/LICENSE.txt
 	sha256sums = 11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1
 	sha256sums = a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884
 	sha256sums = 5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b
-	source_x86_64 = creality-print-6.3.0.3420-x86_64.AppImage::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v6.3.0/CrealityPrint_Ubuntu2404-V6.3.0.3420-x86_64-Release.AppImage
-	sha256sums_x86_64 = 93ef28e94890935498e535918b59ff5a5a1b647ac8f43ea5310c99a2dad7a3f2
+	source_x86_64 = creality-print-7.0.0.4127-x86_64.AppImage::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v7.0.0/CrealityPrint-V7.0.0.4127-x86_64-Release.AppImage
+	sha256sums_x86_64 = 277a154a9ea6479aa69bdccd705413a8af80d170094a6558cc2de129640e8ebe
 
 pkgname = creality-print-bin

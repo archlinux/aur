@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=6.3.0.3420
+pkgver=7.0.0.4127
 _pkgver="${pkgver%.*}"
 pkgrel=2
 epoch=1
@@ -11,7 +11,9 @@ pkgdesc="3D slicer for Creality printers"
 arch=('x86_64')
 url="https://www.creality.com"
 _url="https://github.com/CrealityOfficial/${_Name}"
-license=('AGPL-3.0-only')
+license=(
+  'AGPL-3.0-only'
+)
 depends=(
   'at-spi2-core'
   'bzip2'
@@ -58,14 +60,18 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgname}.sh"
-        "${_pkgname}-${_pkgver}-README.md::${_url}/raw/refs/tags/v${_pkgver}/README.md"
-        "${_pkgname}-${_pkgver}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt")
-source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver}/${_Name}_Ubuntu2404-V${pkgver}-x86_64-Release.AppImage")
+source=(
+  "${_pkgname}.sh"
+  "${_pkgname}-${_pkgver}-README.md::${_url}/raw/refs/tags/v${_pkgver}/README.md"
+  "${_pkgname}-${_pkgver}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver}/${_Name}-V${pkgver}-x86_64-Release.AppImage"
+)
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             'a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('93ef28e94890935498e535918b59ff5a5a1b647ac8f43ea5310c99a2dad7a3f2')
+sha256sums_x86_64=('277a154a9ea6479aa69bdccd705413a8af80d170094a6558cc2de129640e8ebe')
 
 prepare() {
   cd "${srcdir}"
