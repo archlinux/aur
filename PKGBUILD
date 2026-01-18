@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="lightning"
-declare -r _tag="37c102c47e8e70c67d62e3a13e1ede35e040d0d5"
+declare -r _tag="daa3b06b95deb3aac717bca501e0c19aba9c3858"
 
 pkgname="core-lightning"
 pkgver="25.12.1"
@@ -31,7 +31,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/rustyrussell/lnprototest.git"
     "git+https://github.com/valyala/gheap.git"
     "git+https://github.com/zserge/jsmn.git")
-sha512sums=("7ae665f09de702d923997fc043a700cba7ea7cded37ab81001987ff981da0e2e1ec5398902db1ab526bb37bab123fd9553436c63b39973fa401c3523530dbc40"
+sha512sums=("4d1b140b143f59ccab3cbeedeace216e743863c74a75a458fdd4f3c9a0397f68cad5eb1517eb0b1b2d200e89f29c224fb9e21beabeda02ff42a5246fec59a200"
     "SKIP"
     "SKIP"
     "SKIP"
