@@ -1,0 +1,27 @@
+pkgbase = jellyfin-desktop-cef-libmpv-git
+	pkgdesc = libmpv for jellyfin-desktop-cef
+	pkgver = beb34bf90c
+	pkgrel = 1
+	url = https://mpv.io
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = python-docutils
+	makedepends = pacman-contrib
+	makedepends = vulkan-headers
+	makedepends = wayland-protocols
+	depends = ffmpeg
+	depends = libplacebo
+	depends = libass
+	depends = wayland
+	depends = libxkbcommon
+	provides = jellyfin-desktop-cef-libmpv
+	options = !emptydirs
+	source = git+https://github.com/andrewrabert/mpv#branch=libmpv-vulkan-gpu-next
+	source = find-deps.py
+	sha256sums = SKIP
+	sha256sums = 1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b
+
+pkgname = jellyfin-desktop-cef-libmpv-git
+	depends = 
