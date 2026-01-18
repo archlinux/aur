@@ -1,7 +1,7 @@
 # Maintainer: Ezozbek Rasulov <arch@ezozbek.dev>
 pkgname=bleur
-pkgver=0.0.4
-pkgrel=3
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="That buddy that will get everything ready for you"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/bleur-org/bleur"
@@ -12,7 +12,7 @@ options=(!lto)
 source=(
    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('aa91cc7352c0f185ce9d334ca32d6b3c0647fd3480552af8ca148576be579b09')
+sha256sums=('982e9a811175fdabf0e06c4ecff0bb70d74223af160f9c28cdcb12c5ad6c5524')
 
 export RUSTUP_TOOLCHAIN=stable
 

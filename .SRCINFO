@@ -1,7 +1,7 @@
 pkgbase = bleur
 	pkgdesc = That buddy that will get everything ready for you
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	url = https://github.com/bleur-org/bleur
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = bleur
 	depends = zstd
 	depends = xz
 	options = !lto
-	source = bleur-0.0.4.tar.gz::https://github.com/bleur-org/bleur/archive/refs/tags/v0.0.4.tar.gz
+	source = bleur-0.0.5.tar.gz::https://github.com/bleur-org/bleur/archive/refs/tags/v0.0.5.tar.gz
 	sha256sums = aa91cc7352c0f185ce9d334ca32d6b3c0647fd3480552af8ca148576be579b09
 
 pkgname = bleur
