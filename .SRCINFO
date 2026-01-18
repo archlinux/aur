@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-offline
 	pkgdesc = Prism Launcher fork with offline account support enabled (built from source)
-	pkgver = 9.4
-	pkgrel = 4
+	pkgver = 10.0.2
+	pkgrel = 1
 	url = https://github.com/Diegiwg/PrismLauncher-Cracked
 	arch = x86_64
 	arch = i686
@@ -22,9 +22,12 @@ pkgbase = prismlauncher-offline
 	depends = quazip-qt6
 	depends = tomlplusplus
 	depends = cmark
+	depends = gamemode
+	depends = libarchive
+	depends = qrencode
 	provides = prismlauncher-offline
 	conflicts = prismlauncher
-	source = git+https://github.com/Diegiwg/PrismLauncher-Cracked.git
+	source = git+https://github.com/Diegiwg/PrismLauncher-Cracked.git#tag=10.0.2
 	source = git+https://github.com/PrismLauncher/libnbtplusplus.git
 	source = git+https://github.com/gulrak/filesystem.git
 	sha256sums = SKIP

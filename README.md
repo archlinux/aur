@@ -43,12 +43,16 @@ makepkg -si
 - qt6-base
 - qt6-5compat
 - qt6-svg
+- qt6-networkauth
 - qt6-imageformats
 - java-runtime
 - zlib
 - quazip-qt6
 - tomlplusplus
 - cmark
+- gamemode
+- libarchive
+- qrencode
 
 ### Build Dependencies
 - git

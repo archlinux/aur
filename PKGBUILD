@@ -1,16 +1,16 @@
 # Maintainer: thephoenix <ezrakhuzadi@gmail.com>
 pkgname=prismlauncher-offline
-pkgver=9.4
-pkgrel=4
+pkgver=10.0.2
+pkgrel=1
 pkgdesc="Prism Launcher fork with offline account support enabled (built from source)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
 license=('GPL3')
-depends=('qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-networkauth' 'qt6-imageformats' 'java-runtime' 'zlib' 'quazip-qt6' 'tomlplusplus' 'cmark')
+depends=('qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-networkauth' 'qt6-imageformats' 'java-runtime' 'zlib' 'quazip-qt6' 'tomlplusplus' 'cmark' 'gamemode' 'libarchive' 'qrencode')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'java-environment>=8')
 provides=('prismlauncher-offline')
 conflicts=('prismlauncher')
-source=("git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
+source=("git+https://github.com/Diegiwg/PrismLauncher-Cracked.git#tag=${pkgver}"
         "git+https://github.com/PrismLauncher/libnbtplusplus.git"
         "git+https://github.com/gulrak/filesystem.git")
 sha256sums=('SKIP'
