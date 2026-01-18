@@ -1,22 +1,17 @@
-# Maintainer: SykikXO <sykik@example.com>
+# Maintainer: SykikXO <xo.sykik@gmail.com>
 pkgname=fey-git
-pkgver=0.1.0.r0.g0000000
+pkgver=1.0
 pkgrel=1
 pkgdesc="A high-performance, minimalistic Wayland image viewer with GIF and physics support"
 arch=('x86_64')
 url="https://github.com/SykikXO/fey"
 license=('MIT')
-depends=('cairo' 'wayland' 'exiv2')
+depends=('cairo' 'wayland' 'exiv2' 'imlib2')
 makedepends=('git' 'wayland-protocols')
 provides=('fey')
 conflicts=('fey')
-source=("fey::git+https://github.com/SykikXO/fey.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "fey"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("fey::git+https://github.com/SykikXO/fey.git#tag=v1.0")
+sha256sums=('748e6fc884a75e0b691df999ead9936f9f7848d74befa14d8fc3b458dc8daddc')
 
 build() {
   cd "fey"

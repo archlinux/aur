@@ -1,6 +1,6 @@
 pkgbase = fey-git
 	pkgdesc = A high-performance, minimalistic Wayland image viewer with GIF and physics support
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/SykikXO/fey
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = fey-git
 	depends = cairo
 	depends = wayland
 	depends = exiv2
+	depends = imlib2
 	provides = fey
 	conflicts = fey
-	source = fey::git+https://github.com/SykikXO/fey.git
-	md5sums = SKIP
+	source = fey::git+https://github.com/SykikXO/fey.git#tag=v1.0
+	sha256sums = 748e6fc884a75e0b691df999ead9936f9f7848d74befa14d8fc3b458dc8daddc
 
 pkgname = fey-git
