@@ -1,0 +1,11 @@
+pkgbase = otf-nacelle
+	pkgdesc = Neo-grotesque sans-serif font by dot-colon that refines the design of Aileron
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://dotcolon.net/fonts/nacelle/
+	arch = any
+	license = OFL-1.1
+	source = otf-nacelle-1.00.zip::https://dotcolon.net/files/fonts/nacelle_100.zip
+	sha256sums = 4e21fc1e22b15c4e1a7c520cf48ec5d47a5803beee21ac7edc0b205c340a4065
+
+pkgname = otf-nacelle

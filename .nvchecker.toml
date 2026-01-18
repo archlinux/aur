@@ -1,0 +1,6 @@
+[otf-nacelle]
+source = 'htmlparser'
+url = 'https://dotcolon.net/fonts/nacelle/'
+#xpath = "/html/body/main//a[starts-with(@href, '/files/fonts/nacelle_') and contains(@href, '.zip')]/@href"
+xpath = "/html/body/main/div/aside//small[starts-with(text(), 'Version ')]"
+prefix = 'Version '
