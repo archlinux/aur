@@ -1,7 +1,7 @@
 # Maintainer: Yang Mingtian <i@skylee.xyz>
 pkgname=vampire-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A theorem prover for first-order logic'
 arch=('x86_64')
 url='https://vprover.github.io/'

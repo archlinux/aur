@@ -1,7 +1,7 @@
 pkgbase = vampire-bin
 	pkgdesc = A theorem prover for first-order logic
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vprover.github.io/
 	arch = x86_64
 	license = custom:Vampire Software Licence Agreement
