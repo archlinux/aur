@@ -1,7 +1,7 @@
 # Maintainer: svturnring <svturnring@icloud.com>
 pkgname=wpoverlay
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable Wayland wallpaper overlay with theme support using GTK4"
 arch=('any')
 url="https://github.com/svturnring/wpoverlay"
@@ -11,7 +11,7 @@ depends=('python' 'python-gobject' 'gtk4' 'gtk4-layer-shell')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/svturnring/wpoverlay/archive/refs/tags/v$pkgver.tar.gz")
 
 package() {
-    cd "${startdir}"
+    cd "$srcdir/wpoverlay-$pkgver"
 
     # Install the main script
     install -Dm755 "src/wpoverlay.sh" "${pkgdir}/usr/bin/wpoverlay"

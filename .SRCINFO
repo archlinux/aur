@@ -1,7 +1,7 @@
 pkgbase = wpoverlay
 	pkgdesc = Configurable Wayland wallpaper overlay with theme support using GTK4
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svturnring/wpoverlay
 	arch = any
 	license = MIT
