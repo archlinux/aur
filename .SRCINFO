@@ -1,6 +1,6 @@
 pkgbase = coulr
 	pkgdesc = Color box to help developers and designers
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Huluti/Coulr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = coulr
 	depends = python-gobject
 	depends = libadwaita
 	depends = libportal-gtk4
-	source = git+https://github.com/Huluti/Coulr.git#tag=2.1.0
-	sha256sums = SKIP
+	source = https://github.com/Huluti/Coulr/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 76b688f26dc588a2b146109f5da29873e70e3a73f1f0d12bc22ed15a2c830f9a
 
 pkgname = coulr
