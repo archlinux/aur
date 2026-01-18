@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc="Minimal TUI Pomodoro timer with task list"
 arch=('x86_64')
 url="https://github.com/RanXom/pomoru"
+keywords=('pomodoro' 'tui' 'terminal' 'productivity' 'todo' 'rust')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
