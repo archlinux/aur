@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-lawstorant-git
-pkgver=6.18.rc1.r104.98ac9cc4b445
+pkgver=6.18.6.r17.1834061e103f
 pkgrel=1
 pkgdesc='Linux with curent work from Lawstorant'
 url='https://github.com/Lawstorant/linux#branch=vrr-fixing'
@@ -43,7 +43,7 @@ options=(
 )
 _srcname=linux-lawstorant
 source=(
-  "$_srcname::git+https://github.com/Lawstorant/linux"
+  "$_srcname::git+https://github.com/Lawstorant/linux#branch=vrr-fixing"
   config         # the main kernel config file
   config.extra   # additional configs
   config.user    # user custom config
