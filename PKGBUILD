@@ -4,8 +4,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libidn2
-pkgver=2.3.7
-pkgrel=2
+pkgver=2.3.8
+pkgrel=1
 arch=('any')
 pkgdesc="A free software implementation of IDNA2008 (Android ${_android_arch})"
 url="http://www.gnu.org/software/libidn"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-libunistring")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/pub/gnu/libidn/libidn2-${pkgver}.tar.gz")
-md5sums=('de2818c7dea718a4f264f463f595596b')
+md5sums=('a8e113e040d57a523684e141970eea7a')
 
 build() {
     cd "${srcdir}/libidn2-${pkgver}"
@@ -50,4 +50,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
