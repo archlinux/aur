@@ -1,4 +1,0 @@
-post_install() {
-	xdg-icon-resource forceupdate
-	update-desktop-database -q
-}
