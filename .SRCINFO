@@ -1,0 +1,13 @@
+pkgbase = ttf-sipa-niramit
+	pkgdesc = Thailand national fonts: TH-Niramit-AS
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.f0nt.com/release/13-free-fonts-from-sipa/
+	arch = any
+	groups = ttf-sipa-fonts
+	license = LicenseRef-DIP_SIPA Font License Agreement
+	source = https://www.f0nt.com/?dl_name=sipafonts/04-TH-Niramit-AS.zip
+	sha256sums = 4bc5f6ef6a736dd572fdb5ec2d0e6e893a2ded8960d57fbd0c2490af13c940b5
+	b2sums = 739bc1f213204f554a282f14820d0c9f0b361b7e143898301b688e5867e74ea7402feb1ca5db18045c4d0379cb76339ea613b3e52dfb9fbebbfdd107f9ce4bc8
+
+pkgname = ttf-sipa-niramit
