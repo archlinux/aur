@@ -8,6 +8,7 @@ url="https://github.com/mojahid8238/Rataplay"
 license=('GPL3')
 depends=('glibc' 'gcc-libs' 'openssl' 'mpv' 'yt-dlp')
 provides=('rataplay')
+options=('!strip' '!debug')
 conflicts=('rataplay-git')
 
 # Fetching the pre-compiled binary and metadata files
