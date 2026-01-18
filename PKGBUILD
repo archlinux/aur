@@ -10,8 +10,8 @@ depends=('cairo' 'wayland' 'exiv2' 'imlib2')
 makedepends=('git' 'wayland-protocols')
 provides=('fey')
 conflicts=('fey')
-source=("fey::git+https://github.com/SykikXO/fey.git#tag=v1.0")
-sha256sums=('748e6fc884a75e0b691df999ead9936f9f7848d74befa14d8fc3b458dc8daddc')
+source=("fey::git+https://github.com/SykikXO/fey.git#commit=26265b833bd2b179cf1ac4b9eba658a552e18892")
+sha256sums=('ae903c72fbb1c91425b9990b98e20d0af6c540e0667e2f5bf7e50763f43f9331')
 
 build() {
   cd "fey"
