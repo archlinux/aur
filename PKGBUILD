@@ -1,4 +1,5 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 _projectname='monolith'
 pkgname="ocaml-$_projectname"
 pkgver='20250922'

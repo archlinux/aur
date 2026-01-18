@@ -1,0 +1,3 @@
+[ocaml-monolith]
+source = "git"
+git = "https://gitlab.inria.fr/fpottier/monolith.git"
