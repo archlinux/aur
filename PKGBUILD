@@ -6,8 +6,8 @@
 # Contributor: Steve Sansom <snsansom@gmail.com>
 
 pkgname=units
-pkgver=2.24
-pkgrel=2
+pkgver=2.25
+pkgrel=1
 pkgdesc="converts between different units"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://www.gnu.org/software/units/units.html"
@@ -24,7 +24,7 @@ validpgpkeys=(
 source=(https://ftp.gnu.org/gnu/units/$pkgname-$pkgver.tar.gz{,.sig}
         'units_currency.timer'
         'units_currency.service')
-sha256sums=('1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
+sha256sums=('36edf43ac00b4d6304baea91387e65ab05118bf65c921f73d3b08828e5a6ec0b'
             'SKIP'
             'c1cb48a6157c850a0b7ecbf4387b82820d6e42f4a2c7ff0eb9de293bad6b128f'
             '52e8cd68110e797e3ee3737f06200505225039b18f3f9b87ae38b6c539c9ccb2')
@@ -32,9 +32,7 @@ sha256sums=('1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
 build() {
   cd "$pkgname-$pkgver"
 
-  # gcc15 compatibility fix
-  CFLAGS="$CFLAGS -std=gnu17" \
-    ./configure --prefix=/usr --datadir=/usr/share --sharedstatedir=/var/lib
+  ./configure --prefix=/usr --datadir=/usr/share --sharedstatedir=/var/lib
 
   # /usr/bin/pager seems to be a Debian-ism; it is not provided by any of the
   # packages shipped with Arch Linux. Replace it with less, which, according to
