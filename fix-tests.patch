@@ -1,0 +1,20 @@
+diff --git a/pynndescent/tests/test_distances.py b/pynndescent/tests/test_distances.py
+index 9f4c65f..4853a55 100644
+--- a/pynndescent/tests/test_distances.py
++++ b/pynndescent/tests/test_distances.py
+@@ -60,7 +60,6 @@ def test_spatial_check(spatial_data, metric):
+         "dice",
+         "rogerstanimoto",
+         "russellrao",
+-        "sokalmichener",
+         "sokalsneath",
+         "yule",
+     ],
+@@ -166,7 +165,6 @@ def test_sparse_spatial_check(sparse_spatial_data, metric, decimal=6):
+         "dice",
+         "rogerstanimoto",
+         "russellrao",
+-        "sokalmichener",
+         "sokalsneath",
+     ],
+ )

@@ -1,7 +1,7 @@
 pkgbase = python-pynndescent
 	pkgdesc = Simple fast approximate nearest neighbor search
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lmcinnes/pynndescent
 	arch = any
 	license = BSD-2-Clause
@@ -17,6 +17,8 @@ pkgbase = python-pynndescent
 	depends = python-scikit-learn
 	depends = python-scipy
 	source = https://pypi.io/packages/source/p/pynndescent/pynndescent-0.6.0.tar.gz
+	source = fix-tests.patch
 	sha256sums = 7ffde0fb5b400741e055a9f7d377e3702e02250616834231f6c209e39aac24f5
+	sha256sums = b98f2852179daecb9b2e67bf88d9b355b3ca003a9fc75769e9264bd0bcabbb9a
 
 pkgname = python-pynndescent
