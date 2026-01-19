@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-viewer-git
 _app_id=org.codeberg.bhh32.CosmicViewer
-pkgver=r34.c010c76
+pkgver=r48.22e4928
 pkgrel=1
 pkgdesc="An image viewer for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,10 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'cmake'
   'desktop-file-utils'
   'git'
+  'nasm'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -38,6 +40,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release

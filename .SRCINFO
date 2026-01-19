@@ -1,14 +1,16 @@
 pkgbase = cosmic-viewer-git
 	pkgdesc = An image viewer for the COSMIC desktop environment.
-	pkgver = r34.c010c76
+	pkgver = r48.22e4928
 	pkgrel = 1
 	url = https://codeberg.org/bhh32/cosmic-viewer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = cmake
 	makedepends = desktop-file-utils
 	makedepends = git
+	makedepends = nasm
 	depends = hicolor-icon-theme
 	depends = libxkbcommon
 	provides = cosmic-viewer
