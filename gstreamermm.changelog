@@ -1,3 +1,7 @@
+2026-01-19 Zen Wen <zen.8841@gmail.com>
+  * gstreamermm 1.10.0-3
+  * fix prepare script
+
 2024-09-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* gstreamermm 1.10.0-2
 	* dropped to AUR

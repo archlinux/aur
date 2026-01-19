@@ -1,7 +1,7 @@
 pkgbase = gstreamermm
 	pkgdesc = C++ interface for GStreamer
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gstreamer.freedesktop.org/bindings/cplusplus.html
 	changelog = gstreamermm.changelog
 	arch = x86_64
