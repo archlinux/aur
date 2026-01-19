@@ -2,9 +2,9 @@
 # Contributor: Bruce Zhang
 pkgname=sqlark-bin
 _pkgname=SQLark
-pkgver=3.8
+pkgver=3.8.1
 _electronversion=32
-pkgrel=2
+pkgrel=1
 pkgdesc="SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis."
 arch=(
 	'aarch64'
@@ -18,11 +18,16 @@ depends=(
     "electron${_electronversion}"
 	'python'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/911014/${_pkgname}_V${pkgver}_linux_arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/911014/${_pkgname}_V${pkgver}_linux_x86_64.rpm")
-sha256sums_aarch64=('ae19612a672160a49e5869c6fc6c47cf2afb24cbc75605c6051f0bc1367921c2')
-sha256sums_x86_64=('bc037a0733219c7762b7d89b3e605ccf157b31b2a25811e2b8944e88a16747f9')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/961002/${_pkgname}_V${pkgver}_linux_arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/961002/${_pkgname}_V${pkgver}_linux_x86_64.rpm")
+sha256sums_aarch64=('72782e5051bc5f737918a03152e5d1555db69a6c9f62a304467fb6ccf9229771')
+sha256sums_x86_64=('ea34d196c0e06aa6f18504026fb7f60c57e76a894e32b6adb1c625d0971abb6b')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+	_get_electron_version
 	sed -i "s/Exec=\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 	_file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
 		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
