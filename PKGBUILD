@@ -7,6 +7,7 @@ pkgdesc="E2EE Terminal Chat Client (radiochat)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sricharanandra/radiochat-tui"
 license=('MIT')
+options=('!lto')
 depends=('gcc-libs' 'libxcb') # libxcb is needed for clipboard support
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
