@@ -1,11 +1,12 @@
 # Maintainer: Youcef NAFA <youcef.nafa at gmail>
+# Adapted from aider-chat AUR package by Auerhuhn (AlphaJack)
 
 pkgbase=cecli
 pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.95.11
+pkgver=0.96.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -84,7 +85,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('b76e4e4be5eb71a9bcb7397bec8ef52baf9a2872722cecad9b620ff0862b25f5b3a17ca7628cc55cf697e748b9a131658eab722014c2dd176bdd66cfcb31a5d4'
+sha512sums=('cf2f8c6fce79425977f8e936096f12be8a4cdf547cddedcb3984ffb7c92d172e5f69f76a15fd20b4020bab77df66ded28ee068415f7a4e3c746affafa37064dd'
             'f0bb7869b9809c24372b2648726bbb1efbbcf11bcefc31f6fca15dde022d1c18afa9806eb4a3881d3035c54717ae941e3aa87f1044684fcc4ff0b3c32cb93588'
             'c1a3c9bb98f68656eba5ed62e0c46f0ebad679f5d19c220b9c22017c43436946506e96cf3a1b2b593be5a37ad791fdd61c04212c7674152ea786b725fd99dcfa')
 
