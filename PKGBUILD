@@ -1,6 +1,6 @@
 # Maintainer: Laoyou2333 <laoyou2333 at confidesk dot com>
 pkgname=astral-bin
-pkgver=2.5.91
+pkgver=2.6.9997
 pkgrel=1
 pkgdesc="Astral is a modern cross-platform web application built on EasyTier, designed to simplify the creation and management of P2P network connections and virtual private networks."
 arch=('x86_64')
