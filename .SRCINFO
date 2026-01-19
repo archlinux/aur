@@ -1,16 +1,16 @@
 pkgbase = adb-gripper
 	pkgdesc = A simple and modern GUI application to manage Android devices via ADB
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Djkawada/ADB-Gripper
 	arch = x86_64
 	license = GPL3
 	depends = android-tools
 	depends = glibc
-	source = adb-gripper-Linux-1.0.3::https://github.com/Djkawada/ADB-Gripper/releases/download/v1.0.3/ADB-Gripper-Linux
-	source = https://raw.githubusercontent.com/Djkawada/ADB-Gripper/v1.0.3/mon_icone.ico
+	source = adb-gripper-Linux-1.0.4::https://github.com/Djkawada/ADB-Gripper/releases/download/v1.0.4/ADB-Gripper-Linux
+	source = https://raw.githubusercontent.com/Djkawada/ADB-Gripper/v1.0.4/mon_icone.ico
 	source = adb-gripper.desktop
-	sha256sums = fd6d6bc23f1f2f92587185a35edd6d27a2be0fc64f9c0f6faf1c85a6d96fcc1f
+	sha256sums = b5e4a5078b4c644ab36959fd6c062187658551da19e4ffc91ec54e9796c110c4
 	sha256sums = 0679ad4bca855bc8e627a2cd58a77cf7d58e6d3b44c6619ce874dc06968aa9a2
 	sha256sums = 80dc54740692d5692dd0c6b72d8ebb2d5d4640278d3c445c49dcd975f13d81a7
 
