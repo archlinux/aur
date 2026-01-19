@@ -1,0 +1,8 @@
+pkgbase = testaur
+	pkgdesc = Test package
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+
+pkgname = testaur
