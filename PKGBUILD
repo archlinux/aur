@@ -3,7 +3,7 @@
 pkgbase="plumeimpactor"
 pkgname="plumeimpactor-appimage"
 pkgver="2.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Sideloading tool for iOS devices"
 url="https://github.com/khcrysalis/PlumeImpactor"
 arch=("x86_64")
