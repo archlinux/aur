@@ -1,36 +1,38 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
 pkgver=2.0.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Web client for Yandex Music with support for themes and addons"
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
-depends=('glibc')
-source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/Next-Music-${pkgver}/Next-Music-${pkgver}.AppImage")
-sha256sums=('SKIP')  # Замените на реальный SHA256 для стабильности
+depends=('glibc' 'gtk3' 'alsa-lib')
+
+source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/Next-Music-${pkgver}/next-music-client_${pkgver}_amd64.deb")
+sha256sums=('SKIP')
 
 package() {
-    # Создаём все необходимые каталоги заранее
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-    mkdir -p "$pkgdir/usr/share/applications"
+  cd "${srcdir}"
 
-    # Устанавливаем AppImage в /usr/bin
-    install -Dm755 "$srcdir/Next-Music-${pkgver}.AppImage" "$pkgdir/usr/bin/next-music"
+  # Распаковка deb
+  ar x "next-music-client_${pkgver}_amd64.deb"
+  tar -xf data.tar.*
 
-    # Копируем AppImage как иконку (можно заменить на png, если есть)
-    install -Dm644 "$srcdir/Next-Music-${pkgver}.AppImage" "$pkgdir/usr/share/icons/hicolor/256x256/apps/next-music.png"
+  # Установка файлов
+  [[ -d usr ]] && cp -r usr "${pkgdir}/"
+  [[ -d opt ]] && cp -r opt "${pkgdir}/"
 
-    # Desktop-файл для меню приложений
-    cat > "$pkgdir/usr/share/applications/next-music.desktop" <<EOF
-[Desktop Entry]
-Name=Next Music
-Comment=Web client for Yandex Music with support for themes and addons
-Exec=/usr/bin/next-music
-Icon=next-music
-Type=Application
-Categories=Audio;Music;
-Terminal=false
-EOF
+  # 🔍 Ищем основной бинарь (Electron)
+  BIN=$(find "${pkgdir}/opt" -type f -executable | head -n 1)
+
+  if [[ -z "$BIN" ]]; then
+    echo "❌ Executable binary not found in /opt"
+    exit 1
+  fi
+
+  echo "✅ Found binary: $BIN"
+
+  # Симлинк как в deb
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "${BIN#/pkgdir}" "${pkgdir}/usr/bin/next-music-client"
 }
