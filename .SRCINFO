@@ -1,5 +1,5 @@
 pkgbase = ghostship-git
-	pkgdesc = A yet another definitive port of Mario Kart 64 made by HarbourMasters team
+	pkgdesc = A yet another definitive port of Super Mario 64 coming out of Harbour Masters
 	pkgver = 1.0.0.r14.gdf7e9119
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/Ghostship
