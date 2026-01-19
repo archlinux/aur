@@ -1,22 +1,18 @@
 # Maintainer: Maki <maki@hotmilk.space>
 
 pkgname=ttf-old-timey-mono
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A clean monospace typeface based on Reproducing Typewriter which was available as early as 1906."
 arch=("any")
-url="https://webonastick.com/fonts/old-timey-mono"
+url="https://github.com/dse/old-timey-mono-font"
 license=("OFL")
-source=(
-	"https://github.com/user-attachments/files/20030127/OldTimeyMono-0.9.1.zip"
-)
-sha256sums=(
-	"5f12a25e31d2aab27724700fec6b4a73586bea423c83c46229c423ee4850a797"
-)
+source=("https://github.com/dse/old-timey-mono-font/releases/download/$pkgver/OldTimeyMono-$pkgver.zip")
+sha256sums=('0798fb8167d9155f05f725b33b82c38362e0779d1fbba40fd0e88be4bde54e26')
 
 package() {
-	install -Dm644 OldTimeyMono-0.9.1/*.ttf -t "$pkgdir/usr/share/fonts/TTF/"
-	install -Dm644 OldTimeyMono-0.9.1/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 OldTimeyMono-$pkgver/*.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+	install -Dm644 OldTimeyMono-$pkgver/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 	cd "$pkgdir/usr/share/licenses/$pkgname"
-	mv LICENSE.md OFL.md
+	mv LICENSE.md LICENSE
 }
