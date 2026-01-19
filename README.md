@@ -18,13 +18,13 @@
 
 4. **Publish**:
    ```bash
-   git add PKGBUILD .SRCINFO
+   git add .
    git commit -m "Update to version 0.3.5"
    git push
    ```
 
 ## Fix Packaging Only (e.g., 0.3.4-1 -> 0.3.4-2)
-*Use this if the app version hasn't changed, but you need to fix the PKGBUILD (e.g., dependencies, install script).*
+*Use this if the app version hasn't changed, but you need to fix the PKGBUILD.*
 
 1. **Increment Release**: Edit `PKGBUILD`:
    - Keep `pkgver` as is.
@@ -37,7 +37,7 @@
 
 3. **Publish**:
    ```bash
-   git add PKGBUILD .SRCINFO
+   git add .
    git commit -m "Fix PKGBUILD issues"
    git push
    ```

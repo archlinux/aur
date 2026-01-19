@@ -1,7 +1,7 @@
 # Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=modiva-launcher-bin
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Modiva launcher"
 arch=('x86_64')
 url="https://modiva-launcher.xyz"
