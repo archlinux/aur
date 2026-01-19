@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
 pkgver=2.4.r12.gdab46e3
