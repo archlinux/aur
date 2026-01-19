@@ -1,6 +1,6 @@
 pkgbase = pgremapper
 	pkgdesc = CLI tool for manipulating Ceph's upmap exception table
-	pkgver = 95.268522c
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/digitalocean/pgremapper
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = pgremapper
 	license = Apache 2.0
 	makedepends = go
 	makedepends = git
-	source = pgremapper::git+https://github.com/digitalocean/pgremapper
-	sha256sums = SKIP
+	depends = ceph
+	source = https://github.com/digitalocean/pgremapper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c43e5e13bdb204012816dca6219ba37c470a7cb959e2b4536a400dcb4c70f8d4
 
 pkgname = pgremapper
