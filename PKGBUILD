@@ -6,25 +6,26 @@
 ## and takes well over an hour and large amounts of disk space
 
 pkgname=python-pyminiracer
-_name=mini_racer
-pkgver=0.12.4
-pkgrel=2
+_name=mini-racer
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Minimal, modern embedded V8 for Python'
 arch=('x86_64')
 url="https://github.com/bpcreech/PyMiniRacer"
 license=('ISC')
 depends=(python python-typing_extensions)
 makedepends=(python-installer)
-source=("$url/releases/download/v$pkgver/$_name-$pkgver-py3-none-manylinux_2_31_x86_64.whl")
-noextract=("$_name-$pkgver-py2.py3-none-manylinux1_x86_64.whl")
-sha256sums=('69a1c44d02a9069b881684cef15a2d747fe0743df29eadc881fda7002aae5fd2')
+_py=py3
+_glibc=2_27
+source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-none-manylinux_${_glibc}_x86_64.whl")
+sha256sums=('b53c95d86b0093bad8066aa6adff6babb718998c7f376f83597174ac8570773f')
 
 package() {
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" $_name-$pkgver-py3-none-manylinux_2_31_x86_64.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" ${_name//-/_}-$pkgver-$_py-none-manylinux_${_glibc}_x86_64.whl
 	local _site
         _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \
-		"$_site/$_name-$pkgver.dist-info/licenses/LICENSE" \
+		"$_site/${_name//-/_}-$pkgver.dist-info/licenses/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/"
 }
