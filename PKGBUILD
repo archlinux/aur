@@ -2,15 +2,15 @@
 pkgname=xboxdrv-blitz
 _pkgname=Blitz
 pkgver=0.1.0
-pkgrel=2  # Changed from 1 to 2
+pkgrel=1
 pkgdesc="A modern GUI for xboxdrv to configure game controllers"
 arch=('x86_64')
-url="https://github.com/TheToxicSideOfMe/Blitz"
+url="https://github.com/TheToxicSideOfMe/xboxdrv-blitz"
 license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'xboxdrv' 'polkit')
 makedepends=('rust' 'cargo' 'nodejs' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4427e80ddda6fa93c28a161a30b742f15383060953d580568744d5abb85546a')
+sha256sums=('11bfacf23477d9ff360bc6dd836ca8a3fc1a2dc6bd0b2195f57dbc77269df2b4')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -22,9 +22,8 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   
-  # The binary is actually called "blitz", not "xboxdrv-blitz"
   install -Dm755 \
-    src-tauri/target/release/blitz \
+    src-tauri/target/release/xboxdrv-blitz \
     "$pkgdir/usr/bin/xboxdrv-blitz"
 
   install -Dm644 \
@@ -36,7 +35,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/xboxdrv-blitz.png"
 
   install -Dm644 \
-    blitz.desktop \
+    xboxdrv-blitz.desktop \
     "$pkgdir/usr/share/applications/xboxdrv-blitz.desktop"
   
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

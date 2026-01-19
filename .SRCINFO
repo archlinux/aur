@@ -1,8 +1,8 @@
 pkgbase = xboxdrv-blitz
 	pkgdesc = A modern GUI for xboxdrv to configure game controllers
 	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://github.com/TheToxicSideOfMe/Blitz
+	pkgrel = 1
+	url = https://github.com/TheToxicSideOfMe/xboxdrv-blitz
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -14,7 +14,7 @@ pkgbase = xboxdrv-blitz
 	depends = libappindicator-gtk3
 	depends = xboxdrv
 	depends = polkit
-	source = xboxdrv-blitz-0.1.0.tar.gz::https://github.com/TheToxicSideOfMe/Blitz/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e4427e80ddda6fa93c28a161a30b742f15383060953d580568744d5abb85546a
+	source = xboxdrv-blitz-0.1.0.tar.gz::https://github.com/TheToxicSideOfMe/xboxdrv-blitz/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 11bfacf23477d9ff360bc6dd836ca8a3fc1a2dc6bd0b2195f57dbc77269df2b4
 
 pkgname = xboxdrv-blitz
