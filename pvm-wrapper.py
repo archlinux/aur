@@ -19,6 +19,7 @@ if len(sys.argv) == 2 and sys.argv[1] == "update":
     LOADER.write_text(fetch(LOADER_URL))
     LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
     print("PVM Loader updated.")
+    sys.exit(0)
 if not LOADER.exists():
     LOADER.write_text(fetch(LOADER_URL))
 if not LOADER_VERSION.exists():
