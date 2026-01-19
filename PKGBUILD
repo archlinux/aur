@@ -1,14 +1,14 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-cef-git
-pkgver=0.r114.f4d73e6
+pkgver=0.r124.506ba96
 pkgrel=1
 license=('GPL-2.0-only')
 pkgdesc="Experimental rewrite of Jellyfin Desktop built on CEF"
 arch=('x86_64')
 url="https://github.com/jellyfin-labs/jellyfin-desktop-cef"
 depends=(
-    'jellyfin-desktop-cef-libcef'
-    'jellyfin-desktop-cef-libmpv'
+    'jellyfin-desktop-cef-libcef-bin'
+    'jellyfin-desktop-cef-libmpv-git'
     'sdl3'
     'systemd-libs'
 )
