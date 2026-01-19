@@ -1,12 +1,12 @@
 pkgname=uaspl
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Utilidad Automatizada para la Seguridad y Protección en Linux"
 arch=('any')
 url="https://github.com/KevinCrrl/UASPL"
 license=('GPL3 and MIT')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=("2f72ef00b7de099627a7b2119b4bf0ae23f87f3412ff538b51ee9a11a745a52ae21053d098d749b63817e0d01c0655c81d36e2c404800fd0841f0a5ca4a7d572")
+sha512sums=("19ca197ff9cdd9dafefd1e5199c0ad932fd18ad7d4c2e192118fe706c5a99485e9deb9852f638f1d09f200b587149cb5aff6cb7b5ea8aa899dc59514860437d1")
 conflicts=('uaspl-bin')
 depends=(
     'python'

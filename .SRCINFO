@@ -1,7 +1,7 @@
 pkgbase = uaspl
 	pkgdesc = Utilidad Automatizada para la Seguridad y Protección en Linux
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/KevinCrrl/UASPL
 	arch = any
 	license = GPL3 and MIT
@@ -18,7 +18,7 @@ pkgbase = uaspl
 	depends = ufw
 	depends = systemd
 	conflicts = uaspl-bin
-	source = https://github.com/KevinCrrl/UASPL/archive/refs/tags/2.0.0/2.0.0.tar.gz
-	sha512sums = 2f72ef00b7de099627a7b2119b4bf0ae23f87f3412ff538b51ee9a11a745a52ae21053d098d749b63817e0d01c0655c81d36e2c404800fd0841f0a5ca4a7d572
+	source = https://github.com/KevinCrrl/UASPL/archive/refs/tags/2.1.0/2.1.0.tar.gz
+	sha512sums = 19ca197ff9cdd9dafefd1e5199c0ad932fd18ad7d4c2e192118fe706c5a99485e9deb9852f638f1d09f200b587149cb5aff6cb7b5ea8aa899dc59514860437d1
 
 pkgname = uaspl
