@@ -3,7 +3,7 @@
 pkgbase=wyc
 pkgname=wyc
 pkgver=7
-pkgrel=9
+pkgrel=11
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
@@ -29,8 +29,8 @@ source=(
     "${pkgname}-x86_64-${pkgver}::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app"
     "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
-sha256sums=('4f5bb3311e4b0eb3b64cd022feb6ebaebf4b886e1b01ba3e6965aa9d03f8e236'
-            '6f88b845cfe875e6316a1679934a541548e23adf1947b41e73de376761ceee8b'
+sha256sums=('ec40de24101f03afc09808e539e4eae1f29a3846680e8f3647bfb0a87e5e529d'
+            'ab15fbfce14852b21e5fc3bab9a0ddd125a9bd1dab67efa11bd6ee761af299d5'
             '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
             'a26b4a1ce6f1e59b5a9e0eb87880e5fb8e1472ad302c749a954d1d923a0e941a'

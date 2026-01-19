@@ -81,6 +81,9 @@ add_instance() {
     local log_prefix="${token:0:8}"
     local token_file="/etc/wangyunchuan/${instance}_token"
 
+    # 确保基础环境
+    fix_permissions
+
     # 创建token文件
     cat >"$token_file" <<EOF
 WYC_TOKEN=${token}
@@ -231,8 +234,27 @@ remove | del)
     remove_instance "$2"
     ;;
 start)
-    systemctl start "wangyunchuan@$2"
-    systemctl status "wangyunchuan@$2" --no-pager
+    local instance="$2"
+    if [[ -z "$instance" ]]; then
+        echo "错误: 需要提供实例名" >&2
+        exit 1
+    fi
+    
+    # 启动前检查和准备环境
+    local token_file="/etc/wangyunchuan/${instance}_token"
+    if [[ -f "$token_file" ]]; then
+        source "$token_file"
+        local log_dir="/var/log/wangyunchuan/$WYCLOG_PREFIX"
+        if [[ ! -d "$log_dir" ]]; then
+            echo "准备日志目录: $log_dir"
+            mkdir -p "$log_dir"
+            chown wangyunchuan:wangyunchuan "$log_dir"
+            chmod 755 "$log_dir"
+        fi
+    fi
+    
+    systemctl start "wangyunchuan@$instance"
+    systemctl status "wangyunchuan@$instance" --no-pager
     ;;
 stop)
     systemctl stop "wangyunchuan@$2"

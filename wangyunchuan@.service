@@ -17,10 +17,8 @@ NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectSystem=strict
 ProtectHome=yes
-ReadWritePaths=/var/log/wangyunchuan/%WYCLOG_PREFIX%
+ReadWritePaths=/var/log/wangyunchuan/${WYCLOG_PREFIX}
 
-ExecStartPre=/bin/bash -c 'mkdir -p /var/log/wangyunchuan/${WYCLOG_PREFIX} && chown wangyunchuan:wangyunchuan /var/log/wangyunchuan/${WYCLOG_PREFIX}'
-ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/wyc -token ${WYC_TOKEN} -run
 Restart=always
 RestartSec=10
