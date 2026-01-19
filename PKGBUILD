@@ -7,7 +7,7 @@ pkgdesc="free runtime environment for java applications"
 #arch=('i686' 'x86_64' 'aarch64')
 arch=('x86_64' 'aarch64')
 url="https://www.willuhn.de/products/jameica/"
-license=("GPL2")
+license=("GPL-2-only")
 depends=('java-runtime>=10' 'gtk3')
 optdepends=('java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)')
 makedepends=('unzip')
