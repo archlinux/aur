@@ -26,6 +26,7 @@ build() {
 package() {
   cd "$srcdir/bubblefetch"
   install -Dm755 bubblefetch "$pkgdir/usr/bin/bubblefetch"
+  ln -s bubblefetch "$pkgdir/usr/bin/bf"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 config.example.yaml "$pkgdir/usr/share/bubblefetch/config.example.yaml"
   install -d "$pkgdir/usr/share/bubblefetch/themes"
