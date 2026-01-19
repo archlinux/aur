@@ -2,13 +2,13 @@
 
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-migx-runtime-git
-pkgver=725.467e4fc
+pkgver=786.83b0180
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (MIGraphX runtime)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('GPL-3.0-only')
-depends=('vapoursynth' 'opencl-amd-dev')
+depends=('vapoursynth' 'migraphx')
 makedepends=('git' 'ninja' 'cmake' 'jq')
 optdepends=()
 provides=("vapoursynth-plugin-${_plug}")
