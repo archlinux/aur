@@ -1,16 +1,17 @@
-# Maintainer: Hendrik Schick <hendrik at hndrkk dot me>
+# Maintainer: Yiğit Salar <yigit dot salar7 at gmail dot com>
+# Contributor: Hendrik Schick <hendrik at hndrkk dot me>
 # Contributor: Sam Guymer <sam at guymer dot me>
 
 _jdkname=zulu-11
 pkgname="${_jdkname}-bin"
 _java_ver=11
-_zulu_build=11.76.21-ca
-pkgver=11.0.25
-pkgrel=1
+_zulu_build=11.84.17-ca
+pkgver=11.0.29
+pkgrel=7
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/products/zulu-community/'
-license=('custom')
+license=('GPL-2.0-or-later')
 depends=(
   'java-environment-common>=3'
   'java-runtime-common>=3'
@@ -27,8 +28,8 @@ provides=(
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('7ae5d196916dc4e8b84e4c5b48fd16f45f83e94eac35a22f019194896c210de1')
-sha256sums_x86_64=('fabe2091d43604d3ae248a7d96e6cfb9ed37eaf980b225730b7b18289b3f6eaf')
+sha256sums_aarch64=('5a225a0fe0a92bc6c04c8c5aeb03c697c6fd114465829f23e494a2ad44fa1cc0')
+sha256sums_x86_64=('681b2e4bf7fedf4d20666fc2a954b83ff5675ccfb916c867267d29c85c2ee310')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
