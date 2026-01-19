@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtpms
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 arch=('any')
 pkgdesc="Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-openssl")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/stefanberger/libtpms/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('05c5c0aec50f4afe7de0724d3bf7eb2e')
+md5sums=('3c9a244d72738578166c7ed91141fab1')
 
 prepare() {
     cd "${srcdir}/libtpms-${pkgver}"
@@ -43,4 +43,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
