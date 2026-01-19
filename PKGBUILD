@@ -16,7 +16,7 @@ options=('!debug' '!lto')
 build() {
   cd "WHY2"
   cargo build --release
-  cargo build --bin why2-server --features server --release
+  cargo build --bin why2-server --no-default-features --features server --release
 }
 
 package() {
