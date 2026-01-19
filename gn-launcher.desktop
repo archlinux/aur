@@ -1,0 +1,29 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=gn-launcher %f
+Terminal=false
+Icon=gn-launcher
+Categories=Utility
+MimeType=application/x-desktop;
+
+Name=Create Launcher
+Name[ru]=Создать кнопку запуска
+#Name[ru]=Создание ярлыков
+Name[be]=Стварыць кнопку запуску
+Name[de]=Starter erstellen
+Name[es]=Crear lanzador
+Name[fr]=Créer un lanceur
+Name[it]=Crea lanciatore
+Name[pl]=Utwórz aktywator
+Name[uk]=Створити кнопку запуску
+
+Comment=Create new desktop files
+Comment[ru]=Создание ярлыков (desktop-файлов)
+Comment[be]=Стварэнне ярлыкоў (desktop-файлаў)
+Comment[de]=Neue Desktop-Dateien erstellen
+Comment[es]=Crear nuevos archivos desktop
+Comment[fr]=Créer de nouveaux fichiers desktop
+Comment[it]=Crea nuovi file desktop
+Comment[pl]=Tworzenie nowych plików desktop
+Comment[uk]=Створення нових desktop-файлів
