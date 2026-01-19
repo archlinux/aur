@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/geri1701/pw-duck"
 license=('MIT')
 depends=('pipewire')
-makedepends=('git' 'cargo' 'rust')
+makedepends=('git' 'cargo' 'rust' 'clang' 'llvm')
 provides=('pw-duck')
 conflicts=('pw-duck')
 
