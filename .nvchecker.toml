@@ -1,6 +1,6 @@
 [cargo-mutants]
 source = "github"
 github = "sourcefrog/cargo-mutants"
-prefix = "v"
+prefix = "cargo-mutants-v"
 use_max_tag = true
-include_regex = 'v\d+\.\d+\.\d+'
+include_regex = 'cargo-mutants-v\d+\.\d+\.\d+'
