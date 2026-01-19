@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lzmusic-bin
 _pkgname='LZ Music'
-pkgver=2.0.0
-_electronversion=38
+pkgver=2.1.0
+_electronversion=40
 pkgrel=1
 pkgdesc="Bilibili API-based music player.(Prebuilt version.Use system-wide electron)基于 Bilibili API 的音乐播放器 "
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ada2a0b85098ddeee8fb6af3a2009710401e0b184d9823b726fd7f30d355ea8'
+sha256sums=('1b68a8b49255c54a27b9c9cacde064c2162a8e95c3a10e6d7235e8fce75c6283'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
