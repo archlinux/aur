@@ -1,14 +1,15 @@
-# Maintainer: James Liu <contact@no-bull.sh>
+# Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs-git
 pkgver=0.1.r144.g4d67057
-pkgrel=1
+pkgrel=2
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
 url='https://github.com/james7132/reflector-rs'
 license=('GPL-2.0-or-later')
 provides=('reflector')
 conflicts=('reflector')
+depends=('openssl')
 makedepends=('cargo' 'git' 'rust')
 backup=('etc/xdg/reflector/reflector.conf')
 source=("git+$url.git")
@@ -40,7 +41,7 @@ package() {
 
   # Install binary
   install -Dm755 "target/$CARCH-unknown-linux-gnu/release/reflector" \
-    "$pkgdir/usr/bin/$pkgname"
+    "$pkgdir/usr/bin/reflector"
 
   # Install systemd service and timer
   install -Dm644 "dist/reflector.service" \
