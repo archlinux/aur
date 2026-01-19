@@ -1,0 +1,14 @@
+pkgbase = python-pdbfixer
+	pkgdesc = fixing problems in Protein Data Bank files in preparation for simulating them.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/openmm/pdbfixer
+	arch = any
+	license = MIT
+	depends = openmm
+	depends = python-numpy
+	optdepends = python-legacy-cgi
+	source = https://github.com/openmm/pdbfixer/archive/refs/tags/v1.12.tar.gz
+	sha256sums = a5c0b05dfaf2cdcad3b8ffc9ee1e6a955628aade0dda653da04d4a12ba4fe3ec
+
+pkgname = python-pdbfixer
