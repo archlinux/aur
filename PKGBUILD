@@ -1,31 +1,32 @@
-# Maintainer: Konstantin Rannev <konstantin.rannev@gmail.com>
+# Maintainer: Konstantin Rannev <konstantin d0t rannev at gmail d0t com>
 # Contributor: Ash <xash at riseup d0t net>
 # Contributor: PancakeTAS <???>
 
 pkgname=lsfg-vk-git
-pkgver=v2.0.0.dev.r14.e1f89cc
+pkgver=2.0.0.dev.r15.14904b9
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
-license=('GPLv3-or-later')
+license=('GPL-3.0-or-later')
 depends=(
-	'glibc'
 	'gcc-libs'
 	'vulkan-icd-loader'
 	'libglvnd'
 	'qt6-base'
 	'qt6-declarative'
+	'hicolor-icon-theme'
 )
 makedepends=(
 	'clang'
 	'llvm'
 	'cmake'
 	'ninja'
+	'git'
 	'pkgconf'
 	'vulkan-headers'
 )
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/PancakeTAS/lsfg-vk#branch=develop')
 sha256sums=('SKIP')
@@ -42,7 +43,7 @@ pkgver() {
 			-m "original 2.0.0-dev tag location" \
 		2>/dev/null >/dev/null
 
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
