@@ -2,13 +2,13 @@
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-git
 pkgver=1.2.3.r3.g363deea
-pkgrel=3
+pkgrel=4
 depends=('pam')
 makedepends=('git')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (last git commit)"
 arch=('any')
 url="https://github.com/javalsai/lidm"
-license=('GPL')
+license=('GPL-3.0-only')
 provides=('lidm')
 conflicts=('lidm')
 source=("lidm::git+https://github.com/javalsai/lidm")
