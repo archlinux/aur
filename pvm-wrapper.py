@@ -15,9 +15,14 @@ def fetch(url: str) -> str:
     with urlopen(url) as r:
         return r.read().decode("utf-8")
 
-# Always fetch latest at runtime
-LOADER.write_text(fetch(LOADER_URL))
-LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
+if sys.argv[1] == "update":
+    LOADER.write_text(fetch(LOADER_URL))
+    LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
+
+if not LOADER.exists():
+    LOADER.write_text(fetch(LOADER_URL))
+if not LOADER_VERSION.exists():
+    LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
 
 # Run the actual loader
 os.execv(
