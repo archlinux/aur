@@ -2,18 +2,18 @@
 
 pkgname=dochint
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A macro processor for authoring HTML documents.'
 
 arch=(any)
 url='https://marianicolae.com/software/dochint/'
 license=('Apache-2.0 OR CC-BY-4.0')
 
-depends=(python)
+depends=(python
+         python-latex2mathml
+         python-pybtex)
 makedepends=(python-build
              python-installer
-             python-latex2mathml
-             python-pybtex
              python-setuptools)
 
 source=("https://marianicolae.com/files/software/${pkgname}-v${pkgver}.tar.gz")
