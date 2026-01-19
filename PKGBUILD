@@ -130,8 +130,8 @@ check() {
       "$(python -c 'import platform; print(
         ".".join(platform.python_version_tuple()[:2])
         )')"
-  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-  python -m pytest -p pytest_cov -p papis_testing
+  python -m pytest --disable-plugin-autoload \
+    -p pytest_cov -p papis_testing
 }
 
 package() {
