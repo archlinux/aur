@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Roos <m@maxroos.com>
 # Maintained at: https://github.com/max-sixty/worktrunk/blob/main/.github/aur/PKGBUILD
 pkgname=worktrunk-bin
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="CLI for git worktree management, designed for running AI agents in parallel"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('worktrunk')
 conflicts=('worktrunk')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('21806e0ca45aa90ab6734fe42e75f360df273cbf8d299e1ed668a017ce3b3c2a')
-sha256sums_aarch64=('21806e0ca45aa90ab6734fe42e75f360df273cbf8d299e1ed668a017ce3b3c2a')
+sha256sums_x86_64=('68ee2e5d52bd1c3ba80b76a6014ede6e523a5a4bad8516a54206bdf033febede')
+sha256sums_aarch64=('68ee2e5d52bd1c3ba80b76a6014ede6e523a5a4bad8516a54206bdf033febede')
 
 package() {
   cd "worktrunk-$CARCH-unknown-linux-musl"
