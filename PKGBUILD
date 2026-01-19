@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
