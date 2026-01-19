@@ -1,3 +1,15 @@
+diff --git a/MANIFEST.in b/MANIFEST.in
+index 09cfe02..d99428e 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -23,3 +23,7 @@ recursive-exclude cecli/website/assets *
+ recursive-exclude cecli/website *.js
+ recursive-exclude cecli/website *.html
+ recursive-exclude cecli/website *.yml
++recursive-exclude cecli/resources *.yml
++recursive-exclude cecli/resources *.json
++recursive-include cecli/prompts *.yml
++recursive-include cecli/tui *.tcss
 diff --git a/cecli/help.py b/cecli/help.py
 index 50466d0..ba507ff 100755
 --- a/cecli/help.py
