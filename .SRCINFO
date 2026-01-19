@@ -1,7 +1,7 @@
 pkgbase = seafile-client-appimage
 	pkgdesc = Seafile client AppImage
 	pkgver = 9.0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.seafile.com/
 	arch = x86_64
 	license = Apache-2.0

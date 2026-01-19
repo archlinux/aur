@@ -1,7 +1,7 @@
 # Maintainer: SomeAspy <amb@aspy.dev>
 pkgname=seafile-client-appimage
 pkgver=9.0.16
-pkgrel=1
+pkgrel=3
 pkgdesc="Seafile client AppImage"
 arch=('x86_64')
 url="https://www.seafile.com/"
