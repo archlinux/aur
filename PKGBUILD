@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boca-git
-pkgver=1.0.7.r42.g93625f3
+pkgver=1.0.7.r58.gd98a487
 pkgrel=1
 epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
@@ -29,9 +29,6 @@ pkgver() {
 prepare() {
   cd BoCA
   find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
-
-  sed -i 's/FOLDERS += coreaudioconnect/#FOLDERS += coreaudioconnect/g' \
-    components/encoder/Makefile
 }
 
 build() {
