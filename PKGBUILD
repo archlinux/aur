@@ -1,7 +1,7 @@
 # Maintainer: voldardard <voldardard@example.com>
 pkgname=mkv2cast
 pkgver=1.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Smart MKV to Chromecast-compatible converter with hardware acceleration"
 arch=('any')
 url="https://github.com/voldardard/mkv2cast"

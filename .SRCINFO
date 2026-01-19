@@ -1,7 +1,7 @@
 pkgbase = mkv2cast
 	pkgdesc = Smart MKV to Chromecast-compatible converter with hardware acceleration
 	pkgver = 1.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/voldardard/mkv2cast
 	arch = any
 	license = GPL3
