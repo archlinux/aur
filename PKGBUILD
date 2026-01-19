@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libtiff
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 arch=('any')
 pkgdesc="Library for manipulation of TIFF images (Android ${_android_arch})"
@@ -20,7 +20,7 @@ depends=("android-${_android_arch}-jbigkit"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-md5sums=('3a0fa4a270a4a192b08913f88d0cfbdd')
+md5sums=('f1044dd3b4466cc53464210148e08146')
 
 build() {
     cd "${srcdir}/tiff-${pkgver}"
@@ -47,4 +47,6 @@ package() {
     cp libtiff/tif_config.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.a
+
+    install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
