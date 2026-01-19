@@ -3,8 +3,8 @@
 
 _name=pytest-html
 pkgname=python-pytest-html
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Plugin for generating HTML reports for pytest results"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-html"
@@ -35,17 +35,9 @@ optdepends=(
 )
 source=(
   $_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
-  $_name-cc5e0194.patch::$url/commit/cc5e0194aa70997ef627e18b875d75e46ccfa130.patch
 )
-sha512sums=('c0cbb342d67ed222130907e43f9ab5ea792865598304d8de9b9da6d1d021a39c78468e79a7806b6a847384c555f060eb0236a905db29a92075e6b8682f12c838'
-            '32a8feebbb3eef6e0297043c8ad9dfd65b2c60ba95fc0922f86be3a944a188afedad33832dbd997c6eaf9a2593b5d6b8a54b77b2815da44e8961809ad098435e')
-b2sums=('5ee18a3ff4ca4156519f15d89796d3bbb88628bd954441d590e0756699ddbf40e657b50733600af349bbcbee8b5e4b97797e8cecc26b8191214c7c8b17c5cc01'
-        'c194512bcb947fdeae33102d11e6d22bf07906d99aa3c5fec28aa5f7e3c171e633342bd396ebe50aa5cd7f4db49a3e947c17a4b7dbfd52f9f3e8de8e8673649c')
-
-prepare() {
-  cd $_name-$pkgver
-  patch -p1 < ../$_name-cc5e0194.patch
-}
+sha512sums=('3c54c3f7303477473fbf17f80cd1b071195a9df11cf483fd64da18921d3e34aa4a97dea37a3af4fc2ed6b87d347bb3046daaacb5e9d7033f9823e287085b93a3')
+b2sums=('d44cebd7c8a9c320063701bd37193149f0c903c42266af8172cab42f140e42188a37367ec802aac1e2cb025a05661777480cff59d944df1fda4c350f4a8c4518')
 
 build() {
   cd $_name-$pkgver
