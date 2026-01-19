@@ -3,7 +3,7 @@ pkgname=qoder-bin
 _pkgname=Qoder
 pkgver=0.2.29
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com/"
@@ -53,8 +53,8 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c46645ae1d2dd36e71d7b304177c4a35292da94dd31a9051bc29646f29716b4b'
-            '4f2f0ac9255a1a2a82c84b448ac6830c8bfa12216b1d262766559e48abd6ae7c'
+sha256sums=('67f65fbcefc017914bb36d490b5ce85b078d4a4270337415899b63ec384ccb45'
+            'a58c9876174e1f7e31b3ae7aac08bd5992eaf738e94ed55567a3d076c4890fbd'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 _get_electron_version() {
