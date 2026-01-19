@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/pw-duck"
-  cargo build --release --frozen
+  cargo build --release --locked
 }
 
 package() {
