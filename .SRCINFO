@@ -1,5 +1,5 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 3.33.6079.2
+	pkgver = 3.33.6079.102
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=02c2c7d9733ef46eb60a208f2c7877a5d3a1f16c
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=36c2e1552b0f07d188e614138ae7ffb34bf83abb
+	source = git+https://github.com/fcitx/mozc.git#commit=acc6b84270d43998ec418004cae99c72e22eecd1
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=3001281d555f4166e2035f2971b862b03575d1a2
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=987c57f3
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=52eb8108
@@ -24,7 +24,7 @@ pkgbase = mozc-with-jp-dict
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
 	source = git+https://github.com/protocolbuffers/protobuf.git#commit=4fbd1111a
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf5
-	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=29dfaae08cda925835da5f1cc63793ea627e793c
+	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=cad5cefbb541f4184547241fd35905eb8ba8a81c
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20251022/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20251022/core_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20251022/notcore_lex.zip
@@ -34,8 +34,8 @@ pkgbase = mozc-with-jp-dict
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = 2a2f9840a981dddc9d9cc42647435b1b88999a7cb1a96c7f1f7cac5c2f9a8cd06a0928376008a426b2c552f603857b3de9a466fe60bf9b17ea69bdccd8379a43
-	sha512sums = 908183c2319d4f23c9f91b00316922722c3a1b76d8bc2bcdf825e8ce3d409992bd59c86b86aef79442f9401b7a07309140d444678859a5fe2f6c21b56e1a2703
+	sha512sums = 1003346e87b2e4dcc1a0b8e984ab3fe79bb21204fe954a38e01ddb004547aa005bcc685593a6a751d1ecce9972fca2977d2da41c787169739472e68355ac8321
+	sha512sums = bcc112bd6280707ea56406d1d8efba4fb56f39eae41c1d0e587b4d5811dabf2513a9f3887ecbe0b11554f36c25afdc2a924d4b23a69bdd52469e08ed1431441e
 	sha512sums = f471c70ee7ad3951bafd80540d07ba32622946095b1696c6bb44d8131944d88a4d75c1077a6a5ca2fe122ad284cf76303e3c3432e5f253558977997d42e5e05d
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767
@@ -43,7 +43,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2
 	sha512sums = 0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb
 	sha512sums = 504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1
-	sha512sums = f54765eafb9833801c9f8ff4afe021a3df1ef1856fbf1beffdf5eadc23df209802985ced5fe9fc2adbc24abd6d659ebefb5858a777f4d99093c5451f589e3efd
+	sha512sums = 3758e8a1a6085acd78bbff721601aafa37bdaabcc681223c66848e6e381aaf1a54e3e731fd937b008582bc621d6a3174392cd3155e666197e090a4169c861dfd
 	sha512sums = c93441657d787c3fc8635f65c190368d94216df6167596b315b78d02fd4abd14c85895c09d2e40d639b3808105ffd1901110aff6e9b8beaad4f609513caaec36
 	sha512sums = eda980d6065dee5cd571370d12599358c0e8559dd797e86b07a345dbadabc1f1c26c6d2bdddc02cfe56f0c310180b21df3d8a479e28ff5ca2f2e0ac2e6b60d42
 	sha512sums = d819e284447e52dcf0c721dc8ac267c43e93f93d02949263d91dc496804a33e966943c473dccfe8ee85ce21657ddb08d56dcec0d8e0a49f6eddc5a80929ced63
@@ -59,7 +59,7 @@ pkgname = ibus-mozc-with-jp-dict
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
-	provides = ibus-mozc=3.33.6079.2
+	provides = ibus-mozc=3.33.6079.102
 	conflicts = fcitx
 	conflicts = fcitx-configtool
 	conflicts = ibus-mozc
@@ -78,7 +78,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=3.33.6079.2
+	provides = fcitx5-mozc=3.33.6079.102
 	conflicts = fcitx-mozc
 	conflicts = fcitx5-mozc
 	conflicts = fcitx
@@ -92,5 +92,5 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
-	provides = emacs-mozc=3.33.6079.2
+	provides = emacs-mozc=3.33.6079.102
 	conflicts = emacs-mozc
