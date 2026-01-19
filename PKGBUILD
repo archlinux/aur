@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=smooth-git
-pkgver=0.9.10.r41.g8804ddf
+pkgver=0.9.10.r49.g3bda449
 pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   'libxml2'
 )
 makedepends=('git')
-provides=("${pkgname%-git}" 'libsmooth-0.9.so=0')
+provides=("${pkgname%-git}" 'libsmooth-0.9.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/enzo1982/smooth.git')
 sha256sums=('SKIP')
