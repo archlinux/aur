@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
@@ -91,6 +91,12 @@ misc {
     background_color = rgb(000000)
     # Suppress watchdog warning - greetd doesn't pass fd properly to start-hyprland
     disable_watchdog_warning = true
+}
+
+# Suppress annoying update/donation popups
+ecosystem {
+    no_update_news = true
+    no_donation_nag = true
 }
 
 # Input configuration
