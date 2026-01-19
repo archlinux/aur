@@ -2,7 +2,7 @@
 pkgname=modiva-launcher-bin
 pkgver=0.3.4
 pkgrel=1
-pkgdesc="The official launcher for Modiva"
+pkgdesc="The official Modiva launcher"
 arch=('x86_64')
 url="https://modiva-launcher.xyz"
 license=('proprietary')
