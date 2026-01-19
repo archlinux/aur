@@ -4,6 +4,7 @@ pkgbase = sdl3_mixer-git
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_mixer
 	arch = x86_64
+	arch = aarch64
 	license = zlib
 	makedepends = fluidsynth
 	makedepends = git
