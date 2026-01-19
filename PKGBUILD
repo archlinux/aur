@@ -2,7 +2,7 @@
 pkgname=xboxdrv-blitz
 _pkgname=Blitz
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2  # Changed from 1 to 2
 pkgdesc="A modern GUI for xboxdrv to configure game controllers"
 arch=('x86_64')
 url="https://github.com/TheToxicSideOfMe/Blitz"
@@ -25,9 +25,8 @@ package() {
   # The binary is actually called "blitz", not "xboxdrv-blitz"
   install -Dm755 \
     src-tauri/target/release/blitz \
-    "$pkgdir/usr/bin/xboxdrv-blitz"  # Install it AS xboxdrv-blitz
-  
-  # Rest stays the same...
+    "$pkgdir/usr/bin/xboxdrv-blitz"
+
   install -Dm644 \
     src-tauri/icons/32x32.png \
     "$pkgdir/usr/share/icons/hicolor/32x32/apps/xboxdrv-blitz.png"

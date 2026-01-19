@@ -1,7 +1,7 @@
 pkgbase = xboxdrv-blitz
 	pkgdesc = A modern GUI for xboxdrv to configure game controllers
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheToxicSideOfMe/Blitz
 	arch = x86_64
 	license = MIT
