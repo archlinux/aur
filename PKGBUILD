@@ -1,19 +1,19 @@
 # Maintainer: Cyrille Pontvieux <cyrille@enialis.net>
 pkgname=python-ezchlog
 _pkgname=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Easy git branch friendly changelogs"
 arch=('any')
-url="https://gitlab.com/jrdasm/ezchlog"
+url="https://gitlab.com/snake_coders/ezchlog"
 license=('MIT')
 depends=('python>=3.11')
 # depends=('python>=3.10' 'python-tomli')
 makedepends=('uv' 'python-installer')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://gitlab.com/jrdasm/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('dcc7b791740444fd282b8cc098ac0a7120702ba5eeb1fb4c9b08be2aeef38746')
+source=("https://gitlab.com/snake_coders/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
+sha256sums=('c6ad8cabc74f12f6a808018f329f0dd4491f8e76b1009bbca310c4d9b5407e98')
 
 build() {
   cd "$_pkgname-v$pkgver"
