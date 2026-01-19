@@ -1,11 +1,13 @@
 # Maintainer: voldardard <voldardard@example.com>
 pkgname=mkv2cast
-pkgver=1.1.1
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Smart MKV to Chromecast-compatible converter with hardware acceleration"
 arch=('any')
 url="https://github.com/voldardard/mkv2cast"
 license=('GPL3')
+provides=('python-mkv2cast')
+conflicts=('python-mkv2cast')
 depends=('python>=3.8' 'ffmpeg')
 optdepends=(
     'python-rich: Beautiful progress UI with colors and animations'
@@ -38,6 +40,8 @@ package() {
     # Systemd user units
     install -Dm644 systemd/mkv2cast-cleanup.service "$pkgdir/usr/lib/systemd/user/mkv2cast-cleanup.service"
     install -Dm644 systemd/mkv2cast-cleanup.timer "$pkgdir/usr/lib/systemd/user/mkv2cast-cleanup.timer"
+    install -Dm644 systemd/mkv2cast-watch.service "$pkgdir/usr/lib/systemd/user/mkv2cast-watch.service"
+    install -Dm644 systemd/mkv2cast-watch.timer "$pkgdir/usr/lib/systemd/user/mkv2cast-watch.timer"
     
     # Systemd system units (optional, for root cleanup)
     install -Dm644 systemd/mkv2cast-cleanup-system.service "$pkgdir/usr/lib/systemd/system/mkv2cast-cleanup-system.service"
