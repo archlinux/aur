@@ -1,6 +1,6 @@
 pkgbase = sing-box-bin
 	pkgdesc = The universal proxy platform (binary version)
-	pkgver = 1.12.16
+	pkgver = 1.12.17
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-box
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = sing-box-bin
 	sha256sums = 927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405
 	sha256sums = 77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71
 	sha256sums = 44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6
-	source_x86_64 = sing-box-1.12.16-linux-amd64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.16/sing-box-1.12.16-linux-amd64.tar.gz
-	sha256sums_x86_64 = e9840d290a80f356b6a6ca9b886149bf1f5d9b06c8ad2d779647cceb346bf23b
-	source_armv7h = sing-box-1.12.16-linux-armv7.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.16/sing-box-1.12.16-linux-armv7.tar.gz
-	sha256sums_armv7h = 985a4b8288e9bd43ccaef54df9818d3af66f5193dd0db83a18aa575f465c8c1e
-	source_aarch64 = sing-box-1.12.16-linux-arm64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.16/sing-box-1.12.16-linux-arm64.tar.gz
-	sha256sums_aarch64 = eef09abc3decefcea27bd5d51307002f3c87c41ae197aec5b07fc79acf7042c4
+	source_x86_64 = sing-box-1.12.17-linux-amd64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.17/sing-box-1.12.17-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5c6cc2e753afb34a6f38802697c8040bdf6a7f3694ea67db861c1e093754f898
+	source_armv7h = sing-box-1.12.17-linux-armv7.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.17/sing-box-1.12.17-linux-armv7.tar.gz
+	sha256sums_armv7h = a0524ab2324a9817981dba2f22754d2caa513356462e1295639d6dcfc02c6da5
+	source_aarch64 = sing-box-1.12.17-linux-arm64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.12.17/sing-box-1.12.17-linux-arm64.tar.gz
+	sha256sums_aarch64 = 10fc1a95b34ec6cdd897f298ee6e7af34e2c2eab5648fc7e76d3a7ea4e2eaf41
 
 pkgname = sing-box-bin
