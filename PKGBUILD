@@ -6,8 +6,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libthai
-pkgver=0.1.29
-pkgrel=2
+pkgver=0.1.30
+pkgrel=1
 arch=('any')
 pkgdesc="Thai language support library (Android ${_android_arch})"
 url='https://linux.thai.net/projects/libthai'
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-libdatrie")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://linux.thai.net/pub/thailinux/software/libthai/libthai-${pkgver}.tar.xz")
-md5sums=('c1fe8255d2bdfc5ea4f68dd9aff8b7f1')
+md5sums=('3090d537da8c77749b8de7e968204264')
 
 build() {
     cd "${srcdir}/libthai-${pkgver}"
@@ -35,4 +35,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
