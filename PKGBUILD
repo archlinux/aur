@@ -1,23 +1,24 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Zen Wen <zen.8841@gmail.com>
 
 pkgname=subtitleeditor
-pkgver=0.54.0
-pkgrel=5
-pkgdesc="A GTK+3 tool to edit subtitles for GNU/Linux/*BSD"
+pkgver=0.55.0
+pkgrel=1
+pkgdesc="A GTK+3 tool to create or edit subtitles for GNU/Linux/*BSD"
 arch=('x86_64')
-url="https://kitone.github.io/subtitleeditor/"
+url="https://subtitleeditor.github.io/subtitleeditor/"
 license=('GPL3')
 depends=('desktop-file-utils' 'enchant' 'gst-plugins-base' 'gstreamermm' 'gst-libav'
-         'gtkmm3' 'hicolor-icon-theme' 'libsigc++' 'libxml++2.6' 'xdg-utils')
+  'gtkmm3' 'hicolor-icon-theme' 'libsigc++' 'libxml++2.6' 'xdg-utils')
 makedepends=('intltool')
 changelog=$pkgname.changelog
-source=(https://github.com/kitone/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('aa9c539f3a0984deef257339e2b9f5c8728b8245113695cf6d42459f011aa2ab')
-
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/subtitleeditor/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('1bfcd00efb1d0aeae55ac32129d5007a29697cd32351a52306675eabfda7dbb1')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
-# enchant-2 naming change
+  ./autogen.sh
+  # enchant-2 naming change
   sed -i 's/enchant >=/enchant-2 >=/' configure
 }
 
@@ -29,11 +30,11 @@ build() {
   make
 }
 
-package () {
+package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   make DESTDIR="${pkgdir}" install
 
-# https://github.com/kitone/subtitleeditor/commit/9294c84248c3628a355b3a95feeb42e28b7bfe5a
-  mv "${pkgdir}"/usr/share/appdata/ "${pkgdir}"/usr/share/metainfo/
+  # https://github.com/kitone/subtitleeditor/commit/9294c84248c3628a355b3a95feeb42e28b7bfe5a
+  # mv "${pkgdir}"/usr/share/appdata/ "${pkgdir}"/usr/share/metainfo/
 }

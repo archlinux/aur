@@ -1,3 +1,7 @@
+2026-01-19 Zen Wen <zen.8841@gmail.com>
+    * subtitleeditor 0.55.0-1
+    * source moving to https://github.com/subtitleeditor/subtitleeditor
+
 2024-09-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* subtitleeditor 0.54.0-6 path for metainfo files changed
 

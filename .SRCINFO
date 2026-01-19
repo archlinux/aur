@@ -1,8 +1,8 @@
 pkgbase = subtitleeditor
-	pkgdesc = A GTK+3 tool to edit subtitles for GNU/Linux/*BSD
-	pkgver = 0.54.0
-	pkgrel = 5
-	url = https://kitone.github.io/subtitleeditor/
+	pkgdesc = A GTK+3 tool to create or edit subtitles for GNU/Linux/*BSD
+	pkgver = 0.55.0
+	pkgrel = 1
+	url = https://subtitleeditor.github.io/subtitleeditor/
 	changelog = subtitleeditor.changelog
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = subtitleeditor
 	depends = libsigc++
 	depends = libxml++2.6
 	depends = xdg-utils
-	source = https://github.com/kitone/subtitleeditor/releases/download/0.54.0/subtitleeditor-0.54.0.tar.gz
-	sha256sums = aa9c539f3a0984deef257339e2b9f5c8728b8245113695cf6d42459f011aa2ab
+	source = subtitleeditor-0.55.0.tar.gz::https://github.com/subtitleeditor/subtitleeditor/archive/refs/tags/0.55.0.tar.gz
+	sha256sums = 1bfcd00efb1d0aeae55ac32129d5007a29697cd32351a52306675eabfda7dbb1
 
 pkgname = subtitleeditor
