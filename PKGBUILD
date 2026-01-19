@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-license=('GPL3')
+license=('LGPL-3.0-only' 'GPL-3.0-only' 'Apache-2.0')
 depends=('libestr' 'liblogging' 'librelp' 'libfastjson')
 makedepends=('postgresql-libs>=8.4.1' 'libmariadbclient' 'net-snmp' 'gnutls'
 	     'python-docutils' 'libestr' 'liblogging' 'librelp' 'libfastjson' 'bison' 'flex')
