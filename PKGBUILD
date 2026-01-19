@@ -8,8 +8,6 @@ url="https://github.com/ozacod/cpx"
 license=(MIT)
 depends=(cmake vcpkg bazel meson)
 makedepends=(git go)
-optdepends=()
-options=()
 source=("git+$url#tag=v$pkgver")
 sha512sums=('a347c6e6e1e1f125faade3b13e2b63e49324d8fa7533323115053398f469918f9d8306ca1383e93dafe8e69a5506022ecfd26d588f5ad31a4cc4eee25fa5aa2f')
 
