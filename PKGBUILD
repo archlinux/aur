@@ -1,6 +1,6 @@
 # Maintainer: Yuki Okushi <huyuumi.dev@gmail.com>
 pkgname=pinact
-pkgver=3.4.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="CLI to pin GitHub Actions and Reusable Workflows to full hashes"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,13 @@ url="https://github.com/suzuki-shunsuke/pinact"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2b47c1d6fee9b41a58e21d1d9452fae7434134637472e80e499490079922f389')
+sha256sums=('38450696aa0636fd99bb3167826def0dd701447ba25e155fb33adb14238502e3')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"
+  go mod download
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
