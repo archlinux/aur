@@ -2,15 +2,21 @@
 
 pkgname=rockchip-mpp
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP)'
 arch=('x86_64')
-url='https://github.com/rockchip-linux/mpp/'
+# https://github.com/HermanChen/mpp/issues/71
+# https://github.com/HermanChen/mpp/issues/73
+#url='https://github.com/rockchip-linux/mpp/'
+url='https://github.com/HermanChen/mpp/'
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake')
-source=("https://github.com/rockchip-linux/mpp/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+depends=(
+    'gcc-libs'
+    'glibc')
+makedepends=(
+    'cmake')
+source=("https://github.com/HermanChen/mpp/archive/${pkgver}/${pkgname}-HermanChen-${pkgver}.tar.gz")
 sha256sums=('e97f67e0d2e028ef444099443b6e77efea9f7db83edcbf080f539a44c1c2d36c')
 
 build() {

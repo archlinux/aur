@@ -1,16 +1,16 @@
 pkgbase = rockchip-mpp
 	pkgdesc = Rockchip Media Process Platform (MPP)
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/rockchip-linux/mpp/
+	url = https://github.com/HermanChen/mpp/
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/rockchip-linux/mpp/archive/1.0.11/rockchip-mpp-1.0.11.tar.gz
+	source = https://github.com/HermanChen/mpp/archive/1.0.11/rockchip-mpp-HermanChen-1.0.11.tar.gz
 	sha256sums = e97f67e0d2e028ef444099443b6e77efea9f7db83edcbf080f539a44c1c2d36c
 
 pkgname = rockchip-mpp
