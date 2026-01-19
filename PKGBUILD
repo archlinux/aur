@@ -2,7 +2,7 @@
 
 pkgname=authselect
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to select system authentication and identity sources from a list of supported profiles."
 arch=('i686' 'x86_64')
 url="https://github.com/authselect/authselect"
@@ -12,7 +12,7 @@ provides=('authconfig')
 conflicts=('authconfig')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('196397f9fa1a900a930e635dfefd2ce8c1df1658844af81c4bfd60c64a3fe5bd')
+sha256sums=('c4f6dd3a487b1851bca7e841ed68296f2c92f5c01c64cf98199d6f2d7e3d69b2')
 
 _srcdir="${pkgname}-${pkgver}"
 
