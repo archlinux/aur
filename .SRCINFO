@@ -12,6 +12,7 @@ pkgbase = radiochat-tui-git
 	depends = libxcb
 	provides = radiochat
 	conflicts = radiochat
+	options = !lto
 	source = git+https://github.com/sricharanandra/radiochat-tui.git
 	sha256sums = SKIP
 
