@@ -7,6 +7,7 @@ pkgbase = mautrix-instagram
 	arch = any
 	license = AGPLv3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-sqlalchemy
 	depends = python-alembic
 	depends = python-ruamel-yaml

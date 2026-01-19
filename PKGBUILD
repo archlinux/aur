@@ -1,4 +1,3 @@
-
 pkgname=mautrix-instagram
 pkgver=0.3.1
 pkgrel=3
@@ -8,7 +7,7 @@ license=('AGPL-3.0')
 depends=(python-sqlalchemy python-alembic python-ruamel-yaml python-magic python-commonmark
   python-aiohttp python-mautrix python-attrs python-paho-mqtt python-yarl
   python-asyncpg python-pycryptodome)
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=(
   'python-prometheus_client: prometheus metrics'
   'python-psycopg2: postgres'
