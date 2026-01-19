@@ -2,12 +2,12 @@
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
 pkgver=1.2.3
-pkgrel=3
+pkgrel=4
 depends=('libpam.so')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
 url="https://github.com/javalsai/lidm"
-license=('GPL')
+license=('GPL-3.0-only')
 provides=('lidm')
 conflicts=('lidm')
 source=(
