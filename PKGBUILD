@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 
 pkgname=roboclaw-studio-git
-pkgver=0.1.0.r56.g1332bc1
+pkgver=0.2.1.r56.g1332bc1
 pkgrel=1
 pkgdesc="Unofficial Linux GUI for Basicmicro RoboClaw motor controllers, inspired by Motion Studio. Features motor control, telemetry, simulation, and frequency response analysis."
 arch=('x86_64')
