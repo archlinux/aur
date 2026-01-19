@@ -10,7 +10,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libssh
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 arch=('any')
 pkgdesc="Library for accessing ssh client services through C libraries (Android ${_android_arch})"
@@ -20,13 +20,12 @@ groups=('android-libssh')
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl")
 makedepends=('android-cmake'
-             'doxygen'
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.libssh.org/files/${pkgver%.*}/libssh-${pkgver}.tar.xz"
         '0001-Fix-static-lib.patch'
         '0002-Disable-getifaddrs.patch')
-md5sums=('7e9afb4cf63abbcd8bc448124dfdf3fa'
+md5sums=('b55bad6ad6fd6b1e191fbb495adcfe40'
          '66588a420aac9c580c31018a5b1c78cf'
          '063230102f24f4bcb8aea86575e00def')
 
@@ -90,4 +89,6 @@ package(){
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
