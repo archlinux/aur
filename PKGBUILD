@@ -3,7 +3,7 @@
 # Contributor: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl-git
-pkgver=5.7.6.r280.gdb0fa304a
+pkgver=5.8.4.r548.gbfc4f6bb0
 pkgrel=1
 pkgdesc='Lightweight, portable, C-language-based SSL/TLS library'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("${pkgname%-git}")
 
 pkgver() {
   cd wolfssl
-  git describe --long --tags | sed 's/^v//;s/-stable//;s/-/.r/;s/-/./g'
+  git describe --long --tags --match='v*' | sed 's/^v//;s/-stable//;s/-/.r/;s/-/./g'
 }
 
 build() {
