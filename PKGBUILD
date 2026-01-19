@@ -13,13 +13,13 @@ depends=('ecryptfs-utils' 'sudo'  'ghostscript')
 md5sums=('de81aae3ecc57e0fbd5bb877e5245072')
 
 build() {
-	cd "$pkgname$pkgver/build"
+	cd "xffm4/build"
   cmake ..
 	make
 }
 
 package() {
-	cd "$pkgname$pkgver/build"
+	cd "xffm4/build"
   make install DESTDIR="${pkgdir}"
   ln -sf "${pkgdir}/usr/local/bin/xffm4" "${pkgdir}/usr/local/bin/xfgetpass4"
 }
