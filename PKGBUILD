@@ -2,7 +2,7 @@
 pkgname=why2
 pkgver=1.4.2
 pkgrel=1
-pkgdesc="Lightweight, fast and secure chat application powered by WHY2 encryption"
+pkgdesc="Lightweight, fast and secure chat application powered by WHY2 encryption."
 arch=('x86_64' 'aarch64')
 url="https://git.satan.red/ENGO150/WHY2.git"
 license=('GPL-3.0-only')
@@ -15,7 +15,7 @@ options=('!debug' '!lto')
 
 build() {
   cd "WHY2"
-  cargo build --features client --release
+  cargo build --release
   cargo build --bin why2-server --features server --release
 }
 
