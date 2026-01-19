@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=2025.1.4
-_libgit2ver=1.8.0
+_pkgname='Mogan STEM'
+pkgver=2026.1.1
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
@@ -13,41 +13,43 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gawk'
+    'python-pillow'
     'freetype2'
-    'libpng'
-    'qt5-svg'
-    'qt5-base'
     'python'
-    'mimalloc'
-)
-makedepends=(
-    'cmake'
-    'gcc'
+    'fontconfig'
+    'libglvnd'
+    'libx11'
 )
 options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-ubuntu22.04.deb"
-    "libgit2-${_libgit2ver}.tar.gz::${_libgit2url}/archive/refs/tags/v${_libgit2ver}.tar.gz"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('505664494df9c1fb8f435212f2624c1825ffabfae5ed7cb560b0238cdffc3778'
-            '9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4')
-build() {
+sha256sums=('851940c076c0d8a0f7a61047673de6e91cad451d193c862ee51b8ab0ccc949cd'
+            'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}stem/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    cd "${srcdir}/libgit2-${_libgit2ver}"
-    local cmake_options=(
-        -B build
-        -D CMAKE_BUILD_TYPE=None
-        -D REGEX_BACKEND=pcre2
-        -D USE_HTTP_PARSER=llhttp
-        -D USE_SSH=ON
-        -W no-dev
-    )
-    cmake "${cmake_options[@]}"
-    cmake --build build --verbose
+    sed -i -e "
+        s/Exec=\/opt\/${pkgname%-bin}-stem\/bin\/${pkgname%-bin}stem/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/opt/${pkgname%-bin}-stem/share/applications/${_pkgname// /}.desktop"
 }
 package() {
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
-    install -Dm644 "${srcdir}/libgit2-${_libgit2ver}/build/libgit2.so.1.8.0" "${pkgdir}/usr/lib/libgit2.so.1.8"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/share"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}-stem/"{bin,lib,plugins,translations} \
+        "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}-stem/share/"{doc,"${pkgname%-bin}"lab} \
+        "${pkgdir}/usr/lib/${pkgname%-bin}/share"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}-stem/share/icons/hicolor/256x256/apps/${pkgname%-bin}-stem.png" \
+            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}-stem/share/icons/hicolor/512x512/apps/${_pkgname// /}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}-stem/share/applications/${_pkgname// /}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
