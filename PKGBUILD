@@ -4,14 +4,13 @@ pkgbase=python-sphinx_design
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A sphinx extension for designing beautiful, screen-size responsive web components"
 arch=('any')
 url="https://sphinx-design.readthedocs.io"
 license=('MIT')
 makedepends=('python-flit-core'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-myst-parser')  # sphinx required by myst-parser
@@ -21,7 +20,7 @@ checkdepends=('python-pytest-regressions')  # myst-parser already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pname}/${_pname}-${pkgver}.tar.gz")
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/executablebooks/sphinx-design/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile')
-md5sums=('99841868d97ee1709cd34487e5896733'
+md5sums=('112414c04ace035ff86ab4ea9629df24'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
