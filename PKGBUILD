@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-git
 _pkgname=Fishing-Funds
-pkgver=8.6.0.r0.ge5ed0db
-_electronversion=38
+pkgver=8.8.0.r0.ga0096e8
+_electronversion=40
 _nodeversion=24
 pkgrel=1
 pkgdesc="Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
@@ -22,6 +22,7 @@ makedepends=(
     'curl'
     'git'
     'pnpm'
+    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -42,8 +43,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
