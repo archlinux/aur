@@ -2,7 +2,7 @@
 # Maintainer: ngockhoi96 <ngockhoi96.dev@gmail.com>
 
 pkgname='gohome'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A fast, configurable Git standup & activity reporting CLI written in Go'
 url='https://github.com/anIcedAntFA/gohome'
@@ -12,7 +12,7 @@ provides=('gohome')
 conflicts=('gohome-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/anIcedAntFA/gohome/releases/download/v${pkgver}/gohome-${pkgver}.tar.gz")
-sha256sums=('bbc1693cbe309bcc0a25254b0fdf5c079c4cb9ce190a2bad78876a4302e96cf9')
+sha256sums=('d7efc5981aa4938420f2344bbe441895ba052334d74734c6e7243d981f1cac57')
 build() {
   cd "$srcdir"
   export CGO_ENABLED=0
@@ -24,8 +24,8 @@ build() {
   go build \
   -ldflags="-s -w \
   -X github.com/anIcedAntFA/gohome/internal/version.Version=${pkgver} \
-  -X github.com/anIcedAntFA/gohome/internal/version.Commit=d5773c144693e121e4e7092a948b3397a4ec362a \
-  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-15T07:30:01Z" \
+  -X github.com/anIcedAntFA/gohome/internal/version.Commit=88a1f5fac12ae59f098627889ba534072854a238 \
+  -X github.com/anIcedAntFA/gohome/internal/version.Date=2026-01-19T12:00:43Z" \
   -o gohome \
   ./cmd/gohome
 }
