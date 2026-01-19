@@ -1,6 +1,6 @@
 pkgbase = mkv2cast
 	pkgdesc = Smart MKV to Chromecast-compatible converter with hardware acceleration
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/voldardard/mkv2cast
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mkv2cast
 	optdepends = libnotify: Desktop notifications via notify-send
 	provides = python-mkv2cast
 	conflicts = python-mkv2cast
-	source = mkv2cast-1.2.6.tar.gz::https://github.com/voldardard/mkv2cast/archive/v1.2.6.tar.gz
+	source = mkv2cast-1.2.7.tar.gz::https://github.com/voldardard/mkv2cast/archive/v1.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = mkv2cast
