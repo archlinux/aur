@@ -2,7 +2,7 @@
 
 pkgbase=oxc
 pkgname=(oxlint oxfmt)
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="A collection of JavaScript tools written in Rust"
 arch=(x86_64)
@@ -15,17 +15,15 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/oxc-project/oxc/archive/ref
   oxlint.install
 )
 sha256sums=(
-  '9e5ec2a5c78edb624d74446ede0c767423e851fa88cdc7981db054bd4997e7cd'
+  'c6b0fce80b10c5c999198885d5d7ad711a4295054ec758be82bb69b5409f62c5'
   '287cbed847b3fdf8bc5fcc7d35f7437121bbec2a7b6ac998137385bfabc03861'
 )
 
 prepare() {
   cd "oxc-oxlint_v${pkgver}"
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
