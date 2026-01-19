@@ -1,7 +1,7 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Web client for Yandex Music with support for themes and addons"
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
