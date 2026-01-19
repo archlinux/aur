@@ -1,0 +1,17 @@
+pkgbase = dwmblocks-fast-git
+	pkgdesc = dwmblocks-fast is a modular status bar for window managers (fork of dwmblocks)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/iakobvs/dwmblocks-fast
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = make
+	depends = cuda
+	depends = alsa-lib
+	depends = libx11
+	optdepends = dwm: print to the dwm status bar
+	source = git+https://github.com/iakobvs/dwmblocks-fast
+	sha256sums = SKIP
+
+pkgname = dwmblocks-fast-git
