@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 2.24.8
+	pkgver = 2.27.10
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -16,24 +16,24 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core-2_2.24.8+20344_amd64.deb
-	noextract = intel-igc-core-devel_2.24.8+20344_amd64.deb
-	noextract = intel-igc-opencl-2_2.24.8+20344_amd64.deb
-	noextract = intel-igc-opencl-devel_2.24.8+20344_amd64.deb
+	noextract = intel-igc-core-2_2.27.10+20617_amd64.deb
+	noextract = intel-igc-core-devel_2.27.10+20617_amd64.deb
+	noextract = intel-igc-opencl-2_2.27.10+20617_amd64.deb
+	noextract = intel-igc-opencl-devel_2.27.10+20617_amd64.deb
 	options = !debug
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.24.8/intel-igc-core-2_2.24.8+20344_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.24.8/intel-igc-core-devel_2.24.8+20344_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.24.8/intel-igc-opencl-2_2.24.8+20344_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.24.8/intel-igc-opencl-devel_2.24.8+20344_amd64.deb
-	source = git+https://github.com/intel/opencl-clang.git#commit=4157bbe686dbe2a464b317c74f56b6601d5f3be3
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.27.10/intel-igc-core-2_2.27.10+20617_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.27.10/intel-igc-core-devel_2.27.10+20617_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.27.10/intel-igc-opencl-2_2.27.10+20617_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.27.10/intel-igc-opencl-devel_2.27.10+20617_amd64.deb
+	source = git+https://github.com/intel/opencl-clang.git#commit=6ab2da341420eba7d022a85a5190c46133347719
 	source = LICENSE
-	sha256sums = a701b03553f42111e6790cfd1bf9bdf7e7c2106b2489083892be338b51688ed7
-	sha256sums = 22e9193938272035cbe03e238c8e24224518a1de72d1c1b65f6d3a6c832ab20e
-	sha256sums = 670d3c8d0073b90ef5cc9f10d42b4bc86c08985aa5f7617b81006d7598d543c7
-	sha256sums = 6301d75589b8053ae0c2d95a6bdded87cac531a58d16caa3fc31de324a9ae57f
-	sha256sums = c69aaec482bffa20560882b6b901ca7a62fe402ab9ec6375e5f7323eaf2356ec
+	sha256sums = d3136f5986f89740d208b2ec5c6d76aae993f7a063f1a5103cce17acd371c207
+	sha256sums = cd8790b09a191c2989e0c4846350841406d82ae6a1a5ebba00cb6c6a42faba01
+	sha256sums = 23165c3f5109604626fa5e83b91a91d67e9f662ddeaa5797591cdc0d2a200768
+	sha256sums = fb30290945555515d93e404533640e18f6d2525635c997e0bc1da91a0468a08e
+	sha256sums = 317f8e11edcb3cc7a065ccb866a2609afa4fd5673fe9a6514b397d576bf9a5cb
 	sha256sums = 72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716
 
 pkgname = intel-graphics-compiler-bin
