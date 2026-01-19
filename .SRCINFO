@@ -1,17 +1,8 @@
 pkgbase = 98kalculator-git
-	pkgdesc = A modern calculator for Linux with Wayland/Qt6 support
-	pkgver = 1.0.0.r1
-	pkgrel = 1
-	url = https://github.com/VinoFFR/98kalculator
-	arch = x86_64
-	license = MIT
-	makedepends = git
-	makedepends = pyinstaller
-	depends = python
-	depends = python-pyqt6
-	provides = 98kalculator
-	conflicts = 98kalculator
-	source = git+https://github.com/VinoFFR/98kalculator.git
-	md5sums = SKIP
+	pkgdesc = Obsolete package — removed from the AUR
+	pkgver = 0
+	pkgrel = 0
+	arch = any
+	license = custom
 
 pkgname = 98kalculator-git
