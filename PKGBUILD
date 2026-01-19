@@ -1,6 +1,6 @@
 # Maintainer: cihan shibne123@gmail.com
 pkgname=deadlock-server-picker
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A native Linux tool to block/unblock Deadlock game server relays using iptables"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'fish: for fish shell completions'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a3643bcab49f9dbdf0858f948389bbb0eacc8b29d48196fffea8234889c67bfe')
+sha256sums=('ff8649ad00a9a94f1842e14d6434786f033b7c430c9bbfd5e1c036bd40ad012b')
 
 build() {
     cd "${srcdir}/DeadlockServerPicker-linux-${pkgver}"
