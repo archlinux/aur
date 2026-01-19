@@ -10,7 +10,6 @@ pkgbase = aw-watcher-media-player
 	depends = activitywatch
 	depends = dbus
 	depends = openssl
-	conflicts = aw-watcher-media-player
 	source = git+https://github.com/2e3s/aw-watcher-media-player#tag=v1.1.1
 	sha512sums = 6091cb80435aca17b1fa05582afe877a3d49480a8d195f866a33c6d64167777db8c503483fcc27aa15e5e649101ae480b02c42f170c6b6189aca27dd392e56ce
 
