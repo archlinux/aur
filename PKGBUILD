@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libtool
-pkgver=2.5.4
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A generic library support script (Android ${_android_arch})"
 arch=('any')
@@ -19,10 +19,10 @@ provides=("android-${_android_arch}-libltdl=${pkgver}")
 conflicts=("android-${_android_arch}-libltdl")
 replaces=("android-${_android_arch}-libltdl")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://ftpmirror.gnu.org/libtool/libtool-${pkgver}.tar.xz"
+source=("https://github.com/autotools-mirror/libtool/archive/refs/tags/v${pkgver}.tar.gz"
         "gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz"
         "gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz")
-md5sums=('22e0a29df8af5fdde276ea3a7d351d30'
+md5sums=('7b3332a9ebd13b2765dbc412d329435c'
          'SKIP'
          'SKIP')
 
@@ -60,4 +60,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
