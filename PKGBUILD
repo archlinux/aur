@@ -19,7 +19,10 @@ build() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	pytest
+	rm -rf test-env
+	python -m venv --system-site-packages test-env
+	test-env/bin/python -m installer dist/*.whl
+	test-env/bin/python -P -m pytest -o addopts=""
 }
 
 package() {
