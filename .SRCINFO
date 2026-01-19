@@ -1,6 +1,6 @@
 pkgbase = oxfmt-bin
 	pkgdesc = A Prettier-compatible code formatter.
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://oxc.rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = oxfmt-bin
 	license = MIT
 	provides = oxfmt
 	conflicts = oxfmt
-	source_x86_64 = oxfmt-linux-x64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.39.0/oxfmt-linux-x64-gnu.tar.gz
-	sha256sums_x86_64 = 6094fd61e9d823ebee4384f23e9a5944c3633e44d98b52fe10dcc59fa45fd442
-	source_aarch64 = oxfmt-linux-arm64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.39.0/oxfmt-linux-arm64-gnu.tar.gz
-	sha256sums_aarch64 = fa1c685400e3b7f503d5702fe31d9e6cf49559d94ee32bd09326d6a3be9860e9
+	source_x86_64 = oxfmt-linux-x64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.40.0/oxfmt-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = 25d501c0a1e4dcc1db23b5f9b6d51147aeae2daf56d4bc6e06096fb1f353ee33
+	source_aarch64 = oxfmt-linux-arm64-gnu.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.40.0/oxfmt-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = 564be9d8d878901a8315dd3d6ede9593e2dfbfc6ec2793adc69d5a014a1a899e
 
 pkgname = oxfmt-bin
