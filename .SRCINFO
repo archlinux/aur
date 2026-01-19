@@ -1,15 +1,15 @@
 pkgbase = gr-framework-js
 	pkgdesc = A universal framework for cross-platform visualization applications.
-	pkgver = 0.73.19
+	pkgver = 0.73.20
 	pkgrel = 1
 	url = https://gr-framework.org
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python
-	source = https://github.com/sciapp/gr/archive/v0.73.19.tar.gz
+	source = https://github.com/sciapp/gr/archive/v0.73.20.tar.gz
 	source = https://github.com/emscripten-core/emsdk/archive/refs/tags/1.40.1.tar.gz
-	sha256sums = 70dc02ca46230d1a5b7e63a8054f1c740cbbfa819e398c1d305d71668e31c1f4
+	sha256sums = d26c2051f483eab1c2eeefc8ec28eaa1fb06d43957848a8af6fe18c550638d29
 	sha256sums = 81f620f17d81c18ab84c69ddfcabe813b2bf4250d69729b961ad57101a16c218
 
 pkgname = gr-framework-js
