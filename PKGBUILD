@@ -8,6 +8,7 @@ url="https://github.com/rolschewsky/certbot-dns-hetzner-cloud"
 license=("MIT")
 depends=("certbot" "python-tldextract" "python-hcloud")
 checkdepends=("python-pytest")
+makedepends=("python-setuptools-scm" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('489b480eb535258b3a240540818cd0f28ed571135aaaee76453a3a1ca0e1eeb0')
 
