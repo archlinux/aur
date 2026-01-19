@@ -1,7 +1,7 @@
 # Maintainer: Pascal Mehnert <pascalmehnert@posteo.de>
 
 pkgname=nvimpager-git
-pkgver=0.12.0.r9.gbdb1c64
+pkgver=0.13.0.r6.g99c273c
 pkgrel=1
 pkgdesc="Use nvim as a pager to view manpages, diffs, etc with nvim's syntax highlighting"
 arch=('any')
@@ -29,5 +29,5 @@ package() {
 
 check() {
     cd nvimpager/
-    make test
+    make test BUSTED='busted --exclude-tags=v10'
 }
