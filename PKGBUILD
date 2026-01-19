@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grist-desktop
 _pkgname='Grist Desktop'
-pkgver=0.3.7
+pkgver=0.3.8
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -23,6 +23,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
+    'jq'
 )
 options=(
     '!strip'
@@ -31,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('eb59d9e21c46857474ca493b5ee8ea1223950476924ef71898848f17545bc6c5'
+sha256sums=('9db49a9cc98fe2c5fba95afba64f39ce87d21c58f47d4fc6dd839a9f131cf97f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -40,8 +41,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/ext/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/ext/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
