@@ -1,6 +1,6 @@
 pkgbase = arf-git
 	pkgdesc = An experimental standalone fzf AUR helper
-	pkgver = r79.d3d4b95
+	pkgver = r80.2608469
 	pkgrel = 1
 	url = https://github.com/Samq64/arf
 	arch = any
