@@ -1,0 +1,6 @@
+*.tar.*
+*.changelog
+*/
+equicord/
+webcord/
+webcord-equicord.changelog
