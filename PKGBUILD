@@ -1,8 +1,8 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 pkgname="sleepy-launcher-git"
-_pkgname="${pkgname%-git}"
+_pkgname="${pkgname%}"
 pkgver=1.6.1.r0.gd1ab543
-pkgrel=2
+pkgrel=3
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=("x86_64")
 url="https://github.com/an-anime-team/sleepy-launcher"
@@ -29,7 +29,8 @@ source=(
   "sleepy-launcher.desktop"
 )
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'a039b4bdbc28710d8784c84e2da16785')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
