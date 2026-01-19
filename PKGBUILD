@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.1.7
+pkgver=2.2.0
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('78aa7b62efec3c2ca904c7abbcdaab4e02d5fb3079b90ac6b5c7fc41a2265e6d'
+sha256sums=('ea5baf5ee65ed259db7292246c536691fd1f6c993635066a9c609e3449d95386'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -91,7 +91,7 @@ prepare() {
         s/logo\.icns/logo\.png/g
         s/AppImage/dir/g
         s/deb/dir/g
-    " desktop/electron-builder.js
+    " desktop/electron-builder.config.js
     case "${CARCH}" in
         aarch64)
             ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-arm64/scrcpy/scrcpy
