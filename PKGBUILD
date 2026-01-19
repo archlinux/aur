@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.124.r0.ge8b69b6
+pkgver=0.8.132.r8407.g8c7de72
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -44,7 +44,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {

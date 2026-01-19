@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.8.124.r0.ge8b69b6
+	pkgver = 0.8.132.r8407.g8c7de72
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
