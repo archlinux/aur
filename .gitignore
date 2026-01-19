@@ -14,6 +14,7 @@
 *.sig
 *.deb
 *.AppImage
+*.part
 
 pkg/
 src/

@@ -1,6 +1,6 @@
 # Maintainer: SomeAspy <amb@aspy.dev>
 pkgname=seafile-client-appimage
-pkgver=9.0.15
+pkgver=9.0.16
 pkgrel=1
 pkgdesc="Seafile client AppImage"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip')
 
 _appimage="Seafile-${CARCH}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://sos-ch-dk-2.exo.io/seafile-downloads/${_appimage}")
-sha256sums_x86_64=('7b2501999c166322c9b55deebb5ad1a5ee8d383bdc636678347c14d56652f38a')
+sha256sums_x86_64=('f98a8364eb31fe022d96347ad70fdfc1fb9ce918245a71fa0a61d4709a17b288')
 
 conflicts=(
     "seafile-client"
