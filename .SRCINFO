@@ -1,0 +1,18 @@
+pkgbase = ttl-bin
+	pkgdesc = Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo lookup, ECMP detection, and MPLS label parsing
+	pkgver = 0.12.8
+	pkgrel = 1
+	url = https://github.com/lance0/ttl
+	install = ttl-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = ttl
+	conflicts = ttl
+	source_x86_64 = ttl-bin-0.12.8-x86_64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.12.8/ttl-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = af5eab0a43d2d6fe34e79a6633adfac3686d349656056eaef0632477e0e253c0
+	source_aarch64 = ttl-bin-0.12.8-aarch64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.12.8/ttl-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 185875eceee9cfe8c304c8e6810828f17d419690eab110bda072ce778a3c5578
+
+pkgname = ttl-bin

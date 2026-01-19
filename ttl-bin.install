@@ -1,0 +1,9 @@
+post_install() {
+    setcap cap_net_raw+ep /usr/bin/ttl
+    echo "==> Shell completions installed to system paths."
+    echo "    Restart your shell or source your shell's config to enable completions."
+}
+
+post_upgrade() {
+    post_install
+}
