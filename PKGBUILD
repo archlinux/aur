@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openmarch-bin
 _pkgname=OpenMarch
-pkgver=0.0.19
-_electronversion=29
+pkgver=0.0.20
+_electronversion=40
 pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_x86_64.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('4d697998130563511ec31b34faf3a6391ac9d0a473094c4386960dd8ad32a481')
-sha256sums_x86_64=('1cd838275ff1515980be2c0dd7d103bf08430f7c57409e779ccaa45ab34b8d39')
+sha256sums_aarch64=('4c223418407152477f40d01320ec1b9feb9a7dae914527fe2f349e64de9527f6')
+sha256sums_x86_64=('5b3221227616f799c8b6940644afbb3dbabdc45fec3f8982ebc0446f3899609c')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
