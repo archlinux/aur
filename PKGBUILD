@@ -123,8 +123,8 @@ check() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
 
-  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-  python -m pytest -p pytest_cov -p papis_testing \
+  python -m pytest --disable-plugin-autoload \
+    -p pytest_cov -p papis_testing \
       papis tests
 }
 
