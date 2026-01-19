@@ -1,6 +1,6 @@
 # Maintainer: wedow <wedow@users.noreply.github.com>
 pkgname=ticket
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minimal ticket tracking in bash"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'coreutils' 'findutils' 'gawk')
 optdepends=('ripgrep: faster searching' 'jq: query command')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wedow/ticket/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e57149196ba9fe23c277e8165a2410912e1c5408dd8659765e8827321471c944')
+sha256sums=('63f8591a432d65ef87843fcd5e720a397865534bdbdc8d6724e8f70ce681a63b')
 
 package() {
     cd "$pkgname-$pkgver"
