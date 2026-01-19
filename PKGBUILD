@@ -27,8 +27,8 @@ _wil_commit=fc5dbf5
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=3.33.6079.102
-pkgrel=1
+pkgver=3.33.6079.2
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -87,9 +87,8 @@ pkgver() {
   # https://github.com/google/mozc/discussions/1429
   # REVISION in mozc_version_template.bzl is no longer used by Bazel builds.
   # REVISION will be probably removed once GYP builds are completely removed.
-  # future: stable_channel 
-  # bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
-  bazel build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
+  bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
+  #bazel build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' bazel-bin/base/mozc_version.txt)
    _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$REVISION"
   printf "%s" "${_bzr_ver}"
@@ -185,6 +184,7 @@ build() {
 
   ../scripts/build_fcitx5_bazel \
       --config release_build \
+      --config stable_channel \
       --registry="file://${srcdir}/bcr" \
       $(echo "${CFLAGS}"|xargs -n1 echo "--copt"|grep -v _FORTIFY_SOURCE) \
       $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt"|grep -v _FORTIFY_SOURCE) \
