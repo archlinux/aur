@@ -1,6 +1,6 @@
 # Maintainer: Manos G. <seventh dot fret at protonmail dot com>
 pkgname=meerk40t-git
-pkgver=0.9.8930.r20018.8c31bf754
+pkgver=0.9.9000.r20075.9ce6219c8
 pkgrel=1
 pkgdesc="Hackable Laser software for K40 / GRBL / Fibre Lasers"
 arch=("any")
