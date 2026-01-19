@@ -1,11 +1,12 @@
 # SPDX-FileCopyrightText: 2012 Kjell M. Myksvoll
+# SPDX-FileCopyrightText: 2025 Arch Linux contributors
 # SPDX-FileComment: Relicensing requested on 2025-07-26 by Claudia Pellegrino <aur ät cpellegrino.de> via email
 # SPDX-FileComment: Relicensing confirmed on 2025-08-25 by Kjell M. Myksvoll via email
 # SPDX-License-Identifier: 0BSD
 
 # DYMO LabelManager PNP
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0922", ATTRS{idProduct}=="1001", \
-RUN+="/usr/sbin/usb_modeswitch -c /etc/usb_modeswitch.d/dymo-labelmanager-pnp.conf"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0922", ATTRS{idProduct}=="1002", MODE="0660", GROUP="plugdev"
-#
-#SUBSYSTEM=="hidraw", ACTION=="add", ATTRS{idVendor}=="0922", ATTRS{idProduct}=="1001", GROUP="plugdev"
+RUN+="/usr/sbin/usb_modeswitch -c /etc/usb_modeswitch.d/dymo-labelmanager-pnp.conf", MODE="0660", TAG+="uaccess"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0922", ATTRS{idProduct}=="1002", MODE="0660", TAG+="uaccess"
+
+#SUBSYSTEM=="hidraw", ACTION=="add", ATTRS{idVendor}=="0922", ATTRS{idProduct}=="1001", MODE="0660", TAG+="uaccess"
