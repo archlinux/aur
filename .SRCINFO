@@ -1,9 +1,10 @@
 pkgbase = sdl3_ttf-git
 	pkgdesc = Support for TrueType font files with Simple Directmedia Layer (Version 3)
-	pkgver = 3.1.0.r7.g3d7b6ef
+	pkgver = 3.2.0.r87.g3d2a01e
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_ttf
 	arch = x86_64
+	arch = aarch64
 	license = Zlib
 	makedepends = cmake
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = sdl3_ttf-git
 	depends = sdl3
 	depends = freetype2
 	depends = harfbuzz
-	provides = sdl3_ttf=3.1.0.r7
+	provides = sdl3_ttf=3.2.0.r87
 	provides = libSDL3_ttf.so
 	conflicts = sdl3_ttf
 	source = SDL_ttf::git+https://github.com/libsdl-org/SDL_ttf.git

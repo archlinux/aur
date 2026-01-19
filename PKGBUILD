@@ -3,12 +3,12 @@
 
 _pkgname="sdl3_ttf"
 pkgname="$_pkgname-git"
-pkgver=3.1.0.r7.g3d7b6ef
+pkgver=3.2.0.r87.g3d2a01e
 pkgrel=1
 pkgdesc="Support for TrueType font files with Simple Directmedia Layer (Version 3)"
 url="https://github.com/libsdl-org/SDL_ttf"
 license=('Zlib')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 
 depends=(
   'sdl3'
