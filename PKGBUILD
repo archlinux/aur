@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jammer-bin
 _pkgname=Jammer
-pkgver=3.51
+pkgver=3.52
 pkgrel=1
 pkgdesc="Play songs in cli with youtube and soundcloud support.(Prebuilt version)"
 arch=('x86_64')
@@ -14,9 +14,6 @@ depends=(
     'libxtst'
     'libxinerama'
 )
-makedepends=(
-    'fuse2'
-)
 options=(
     '!strip'
 )
@@ -25,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jooapa/jammer/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('87174374dc9a50599a47e5176d7feb742b9c24ad5379bdf27538b8d4aaa41cd7'
+sha256sums=('cbc75ae281a3f66af8ce5b0f28a3919dae3158563b355175a766aba60ad07788'
             '551f3173ed7196d0ffc218873820c270171c788602b03b05c0c17929ea9d993e'
             '6731a288a4110a682e80c898ff52bb4d3ff5f5849dcc3b7f6814279391d12ba4')
 prepare() {
@@ -35,6 +32,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ]; then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
