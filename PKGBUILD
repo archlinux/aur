@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libopenmpt
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 arch=('any')
 pkgdesc="A library to render tracker music to a PCM audio stream (Android ${_android_arch})"
@@ -20,7 +20,7 @@ depends=("android-${_android_arch}-flac"
 makedepends=('autoconf-archive')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-${pkgver}+release.autotools.tar.gz")
-md5sums=('db1bcc462e7b9ffd3c0f5cacb47382b0')
+md5sums=('a3f42cf1d47da78d9ed17e6f6723df32')
 
 prepare() {
     cd "${srcdir}/libopenmpt-${pkgver}+release.autotools"
@@ -54,4 +54,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
