@@ -16,10 +16,7 @@ depends=(
     'webkit2gtk-4.1'
     'gtk3'
 )
-source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/gcclinux/Easyeditor/${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh"
-)
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/gcclinux/Easyeditor/${pkgver}/LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489'

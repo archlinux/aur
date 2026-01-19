@@ -11,7 +11,6 @@ pkgbase = easyeditor-bin
 	provides = easyeditor=1.6.0
 	conflicts = easyeditor
 	source = LICENSE-1.6.0::https://raw.githubusercontent.com/gcclinux/Easyeditor/1.6.0/LICENSE
-	source = easyeditor.sh
 	sha256sums = 2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 	source_aarch64 = easyeditor-1.6.0-aarch64.rpm::https://github.com/gcclinux/Easyeditor/releases/download/1.6.0/easyeditor-1.6.0-1.aarch64.rpm
