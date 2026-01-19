@@ -1,0 +1,17 @@
+pkgbase = wine-nvidia-libs-git
+	pkgdesc = SveSop's NVIDIA CUDA/NVAPI/NVENC/NVML/OptiX Wine modules (git build; system-wide 64-bit only)
+	pkgver = 1.0.0.r383.gdfbdbfa
+	pkgrel = 1
+	url = https://github.com/SveSop/nvidia-libs
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = mingw-w64-gcc
+	depends = wine
+	depends = nvidia-utils
+	source = git+https://github.com/SveSop/nvidia-libs.git#commit=dfbdbfa
+	sha256sums = SKIP
+
+pkgname = wine-nvidia-libs-git
