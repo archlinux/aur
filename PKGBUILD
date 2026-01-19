@@ -6,7 +6,7 @@ pkgname="${_pkgname}-bin"
 pkgdesc="Advanced N64 TASing emulator"
 
 pkgver=1.3.0_11
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
@@ -24,7 +24,7 @@ source=(
 	"https://raw.githubusercontent.com/mupen64/mupen64-rr-lua/7826e9c6eda1abb24339a2b3d226edb1b670aaef/view/icons/mupen64.ico"
 	"${_pkgname}"
 )
-md5sums=("e86e42efac5e245b87e9a1223fcbef02" "a22a06af7e7b9a325b18445f0154d74a" "4e65241b1fdfc1b7dfb6c901843c5cc7")
+md5sums=("e86e42efac5e245b87e9a1223fcbef02" "a22a06af7e7b9a325b18445f0154d74a" "ea1bda425ee12ac95fa777736b0cdae7")
 
 install="${_pkgname}.install"
 

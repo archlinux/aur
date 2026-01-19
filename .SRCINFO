@@ -1,7 +1,7 @@
 pkgbase = mupen64-rr-lua-bin
 	pkgdesc = Advanced N64 TASing emulator
 	pkgver = 1.3.0_11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mupen64.com
 	install = mupen64-rr-lua.install
 	arch = any
@@ -16,6 +16,6 @@ pkgbase = mupen64-rr-lua-bin
 	source = mupen64-rr-lua
 	md5sums = e86e42efac5e245b87e9a1223fcbef02
 	md5sums = a22a06af7e7b9a325b18445f0154d74a
-	md5sums = 4e65241b1fdfc1b7dfb6c901843c5cc7
+	md5sums = ea1bda425ee12ac95fa777736b0cdae7
 
 pkgname = mupen64-rr-lua-bin
