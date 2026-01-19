@@ -1,0 +1,11 @@
+--- Build/Compilers/RingRacers/gdcc.cfg.old	2026-01-10 15:00:11.747441996 +0800
++++ Build/Compilers/RingRacers/gdcc.cfg	2026-01-19 08:18:18.915198008 +0800
+@@ -8,7 +8,7 @@
+ 	ringracers_gdcc
+ 	{
+ 		interface = "AccCompiler";
+-		program = "gdcc-acc.exe";
++		program = "gdcc-acc";
+ 		zcommon = "rrcommon.acs";
+ 		zdefs = "rrdefs.acs";
+ 		zspecial = "rrspecial.acs";
