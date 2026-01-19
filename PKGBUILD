@@ -1,6 +1,6 @@
 # Maintainer: Joaquim Madureira <joca at jocadbz dot xyz>
 pkgname=tinywiibackupmanager-bin
-pkgver=4.9.22
+pkgver=4.9.23
 pkgrel=1
 pkgdesc="A tiny game backup and homebrew app manager for the Wii"
 arch=('x86_64' 'aarch64')
@@ -14,16 +14,16 @@ source_x86_64=(
     "TinyWiiBackupManager-${pkgver}-linux-x86_64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v${pkgver}/TinyWiiBackupManager-v${pkgver}-linux-x86_64.AppImage"
 )
 source_aarch64=(
-    "TinyWiiBackupManager-${pkgver}-linux-aarch64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v${pkgver}/TinyWiiBackupManager-v${pkgver}-linux-aarch64.AppImage"
+    "TinyWiiBackupManager-${pkgver}-linux-aarch64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v${pkgver}/TinyWiiBackupManager-v${pkgver}-linux-arm64.AppImage"
 )
 
 noextract=(
     "TinyWiiBackupManager-${pkgver}-linux-x86_64.AppImage"
-    "TinyWiiBackupManager-${pkgver}-linux-aarch64.AppImage"
+    "TinyWiiBackupManager-${pkgver}-linux-arm64.AppImage"
 )
 
-sha256sums_x86_64=('dd4f6b529b74e8b4f5ab8a8fee601ab6801641bdc4a40806c2645968e9367263')
-sha256sums_aarch64=('8fec8804afc34e57e2e5bc5e829823de2bae5224c35e9985ddf68b7b9c6f1393')
+sha256sums_x86_64=('1c2be5aedb1963aef62e8b54849bd34bf78105b26cb47042401f36e83b731213')
+sha256sums_aarch64=('414e9c83ce55283b93d825aed23e30887fda10bafe8348c94bb51720031b61b6')
 
 package() {
     cd "$srcdir"
