@@ -2,7 +2,7 @@
 
 pkgname=libnyoravim-git
 pkgver=1.0.8
-pkgrel=9
+pkgrel=10
 pkgdesc="Personal C utility library."
 arch=("any")
 url="https://github.com/nyoravim/libnyoravim"
@@ -27,6 +27,7 @@ build() {
         -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_C_COMPILER=$(which clang) \
         -DBUILD_SHARED_LIBS=ON \
         -DNV_BUILD_TESTS=OFF
 
