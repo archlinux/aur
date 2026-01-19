@@ -24,7 +24,7 @@ pkgbase = nekobox
 	makedepends = upx
 	makedepends = boost-libs
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.10.2/nekobox-unified-source-5.10.2.tar.xz
-	sha256sums = ac7b158601336bd41118b19575f537a445f61e9410531f30ae519f25a5acadf7
+	sha256sums = 4366fdca2a43aa1b6875168bd2586e8bf606984132aa8f2391a88a93be84e951
 
 pkgname = nekobox
 	depends = bash
