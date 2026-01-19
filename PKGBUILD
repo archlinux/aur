@@ -1,15 +1,16 @@
-# Maintainer: Sam Guymer <sam at guymer dot me>
+# Maintainer: Yiğit Salar <yigit dot salar7 at gmail dot com>
+# Contributor: Sam Guymer <sam at guymer dot me>
 
 _jdkname=zulu-8
 pkgname="${_jdkname}-bin"
 _java_ver=8
-_zulu_build=8.80.0.17-ca
-pkgver=8.0.422
+_zulu_build=8.90.0.19-ca
+pkgver=8.0.472
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/products/zulu-community/'
-license=('custom')
+license=('GPL-2.0-or-later')
 depends=(
   'java-environment-common' 'java-runtime-common' 'ca-certificates-utils'
   # not 100% sure if all of these dependencies are needed
@@ -29,8 +30,8 @@ provides=(
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('0b979b5ad280c8a7b13ae11fe32335cb9b50676202c5110e6f0bccadccf94d71')
-sha256sums_x86_64=('60dc6734e16f4dcd12de3b78177511122db5f7a5bbc12066c2278d265eea6a6a')
+sha256sums_aarch64=('c372fb26480c052537125013cb0ba7336c404e5190ea8f6e2de247b676432a67')
+sha256sums_x86_64=('6f9e3fa773829ac2553411fb0cdeb394980627c47c9ab8f8892d4b917b70e2dd')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
