@@ -1,6 +1,6 @@
 pkgbase = aurutils-extra-git
 	pkgdesc = carlsmedstad’s custom aurutils scripts
-	pkgver = r86.c175268
+	pkgver = r88.71bebbd
 	pkgrel = 1
 	url = https://github.com/carlsmedstad/aurutils-extra
 	arch = any

@@ -1,12 +1,12 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
-_pkgname=aurutils-extra
-pkgname=$_pkgname-git
-pkgver=r86.c175268
+pkgname=aurutils-extra-git
+_pkgname=${pkgname%-git}
+pkgver=r88.71bebbd
 pkgrel=1
 pkgdesc="carlsmedstad’s custom aurutils scripts"
 arch=('any')
-url="https://github.com/carlsmedstad/$_pkgname"
+url="https://github.com/carlsmedstad/aurutils-extra"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -18,11 +18,6 @@ sha256sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-	cd $_pkgname
-	sed -i 's/PROGNM =/PROGNM ?=/' Makefile
 }
 
 package() {
