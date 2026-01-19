@@ -1,13 +1,18 @@
 pkgbase = python-rst2ansi
-	pkgdesc = Module rendering RST (reStructuredText) to strings suitable for a terminal.
-	pkgver = 0.1.5
-	pkgrel = 3
+	pkgdesc = Render RST (reStructuredText) to ANSI strings suitable for display in a terminal
+	pkgver = 0.1.5+r4+g3728e16
+	pkgrel = 1
 	url = https://github.com/Snaipe/python-rst2ansi
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/rst2ansi/rst2ansi-0.1.5.tar.gz
-	sha256sums = 1b17fb9a628d40f57933ad1a3aa952346444be069469508e73e95060da33fe6f
+	depends = python-docutils
+	source = git+https://github.com/Snaipe/python-rst2ansi.git#commit=3728e16f8b8b1dc338e5df90ba2c4a93ee054b3f
+	sha256sums = c1c6a2f404bf0eea8f2c952f4302aea89ad193bbf8b9f4399d51c45856091296
 
 pkgname = python-rst2ansi

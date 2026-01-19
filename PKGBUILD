@@ -1,35 +1,47 @@
-# Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Kyle Manna <kyle[at]kylemanna[d0t]com>
 
 pkgname=python-rst2ansi
 _pkgname=rst2ansi
-pkgver=0.1.5
-pkgrel=3
-pkgdesc='Module rendering RST (reStructuredText) to strings suitable for a terminal.'
+pkgver=0.1.5+r4+g3728e16
+pkgrel=1
+pkgdesc='Render RST (reStructuredText) to ANSI strings suitable for display in a terminal'
 arch=(any)
 url='https://github.com/Snaipe/python-rst2ansi'
 license=('MIT')
-depends=('python'
-         'python-setuptools'
-        )
+depends=(
+  'python'
+  'python-docutils'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+)
+# Pick essential fixes since 0.1.5:
+# 3728e16 Fix buffer overflow in TIOCGWINSZ ioctl call for Python 3.14+
+# 81758ed Fix issue #16 [DeprecationWarning: The docutils.utils.error_reporting module is deprecated and will be removed]
+# c6f390b api: fix AttributeError on decode when feeding unicode strings in python3
+# 1b1b963 Fix name error
+_commit=3728e16f8b8b1dc338e5df90ba2c4a93ee054b3f
+source=("git+https://github.com/Snaipe/python-rst2ansi.git#commit=${_commit}")
+sha256sums=('c1c6a2f404bf0eea8f2c952f4302aea89ad193bbf8b9f4399d51c45856091296')
 
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1b17fb9a628d40f57933ad1a3aa952346444be069469508e73e95060da33fe6f')
+pkgver() {
+  cd python-rst2ansi
+  git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-
-  python setup.py build
+  cd python-rst2ansi
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd python-rst2ansi
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  python setup.py install --root=${pkgdir} --optimize=1
-
-  # Not included in PyPi package, but available from Github
-  #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-   # https://wiki.archlinux.org/index.php/Python_package_guidelines
-   local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-   rm -rf "${pkgdir}${site_packages}/test"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
