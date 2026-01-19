@@ -18,7 +18,7 @@ def fetch(url: str) -> str:
 if sys.argv[1] == "update":
     LOADER.write_text(fetch(LOADER_URL))
     LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
-
+    print("PVM Loader updated.")
 if not LOADER.exists():
     LOADER.write_text(fetch(LOADER_URL))
 if not LOADER_VERSION.exists():
