@@ -1,6 +1,6 @@
 # Maintainer: godlyfast <godlyfast@gmail.com>
 pkgname=hyprwave-hifi
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="HyprWave Hi-Fi Edition - Enhanced MPRIS media controller for Wayland with interactive seek, player switching, and notifications"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('gcc' 'pkgconf')
 provides=('hyprwave')
 conflicts=('hyprwave' 'hyprwave-hifi-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godlyfast/hyprwave-hifi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6afcf85beb1705656aff125154974feb6049760487e279c84b7b483d7151d18b')
+sha256sums=('759d7808c4767363446d47b46c8103c77a31d995e86d9338f016dea959cfb673')
 
 build() {
     cd "hyprwave-hifi-$pkgver"
