@@ -1,0 +1,8 @@
+post_install() {
+  echo ":: To start gopherbook, run: systemctl --user enable --now gopherbook.service"
+  echo ":: Configuration is located at /etc/gopherbook/gopherbook.conf"
+}
+
+post_upgrade() {
+  post_install
+}

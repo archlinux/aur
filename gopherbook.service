@@ -1,0 +1,13 @@
+[Unit]
+Description=Gopherbook Comic Library Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sh -c 'if [ -f "$HOME/.config/gopherbook/gopherbook.conf" ]; then echo "Using user config"; elif [ -f "/etc/gopherbook/gopherbook.conf" ]; then echo "Using system config"; fi'
+ExecStart=/bin/sh -c 'if [ -f "$HOME/.config/gopherbook/gopherbook.conf" ]; then set -a; . "$HOME/.config/gopherbook/gopherbook.conf"; set +a; fi; if [ -f "/etc/gopherbook/gopherbook.conf" ] && [ ! -f "$HOME/.config/gopherbook/gopherbook.conf" ]; then set -a; . /etc/gopherbook/gopherbook.conf; set +a; fi; exec /usr/bin/gopherbook'
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

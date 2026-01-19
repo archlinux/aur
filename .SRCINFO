@@ -1,0 +1,23 @@
+pkgbase = gopherbook
+	pkgdesc = Web-based comic book library manager for CBZ/CBT files
+	pkgver = 1.2.000
+	pkgrel = 1
+	url = https://codeberg.org/riomoo/gopherbook
+	install = gopherbook.install
+	arch = x86_64
+	license = PIL
+	makedepends = go>=1.25.2
+	makedepends = git
+	depends = glibc
+	options = !debug
+	options = !strip
+	source = gopherbook::git+https://codeberg.org/riomoo/gopherbook#branch=main
+	source = gopherbook.service
+	source = gopherbook.conf
+	source = gopherbook.install
+	sha256sums = SKIP
+	sha256sums = 98f3a7f4851504e92d9a2c94fc2295f6fc640199d91d6e8a5ac4ec5c22800962
+	sha256sums = 49f7059e97849be55063dfb7fbba39a04580f7371a95b2339bc63bfdf93875e7
+	sha256sums = 07c888c0b7a66feddd1b151d5313b39b3f3a50555ae06a7495ca37458e404cd5
+
+pkgname = gopherbook
