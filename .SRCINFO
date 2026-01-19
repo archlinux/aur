@@ -1,0 +1,14 @@
+pkgbase = mokii
+	pkgdesc = A modern, colorful ls replacement written in C++23 with Unicode icons and git integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MochiiLinux/Mokii
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	source = mokii-0.1.0.tar.gz::https://github.com/MochiiLinux/Mokii/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mokii
