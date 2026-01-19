@@ -1,8 +1,7 @@
-# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
-# Contributor: jacekpoz <jacekpoz@cock.li>
-# Contributor: n3oney <neo@neoney.dev>
+# Maintainer: purple <Discord: ypurpl> (https://github.com/ypurpl)
+# Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
-# this is SpacingBat3's webcord-git package modified - if I'm violating any licenses in any way please contact me
+# this is Freso's webcord-vencord-git package modified with enough changes to work. Contact me on Discord if there's any issues.
 
 ### SCRIPT METADATA ###
 
