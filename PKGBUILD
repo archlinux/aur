@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=diffnav
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A git diff pager based on delta but with a file tree, à la Github."
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('otf-commit-mono-nerd: icon support in the terminal')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2503e10c6c49f0926a33b78373ded5aea7c35b911ccf18d80df3c6d461e7d36f')
+sha256sums=('501b5b283a23c9e58788c4dc1c384c27760dd20d82e801256e7ede86f39240af')
 prepare(){
     cd "$pkgname-$pkgver"
     mkdir -p build
