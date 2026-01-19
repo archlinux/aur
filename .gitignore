@@ -1,0 +1,7 @@
+*.AppImage
+*.tar.gz
+*.tar.xz
+*.tar.zst
+src/
+pkg/
+modiva-launcher-bin-*/
