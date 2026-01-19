@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=polylabelr
-_pkgver=0.3.0
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Find the Pole of Inaccessibility (Visual Center) of a Polygon'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c91066f540a900f34c4a31009b997bdd33a75335692e5d7a8fa60bd6015b9f3')
+sha256sums=('8a3c55682a30ef78a18d0c55f29320e73bd7e9b046dff8a06d26e90d691d3cd6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
