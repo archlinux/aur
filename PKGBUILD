@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=1.0.19
+pkgver=1.0.20
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -23,12 +23,13 @@ makedepends=(
     'git'
     'wget'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8144c175e770014c485a3a197f2ec475012c7c9ac553a3d279fa6bfb583aee24'
+sha256sums=('942af7657c39d3df473efcd9433021c1c9607a55db34018edea78ace549d87fd'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -37,8 +38,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
