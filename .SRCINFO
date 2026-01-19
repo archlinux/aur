@@ -1,7 +1,7 @@
 pkgbase = neuralrack
 	pkgdesc = A neural model and impulse response file loader
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = neuralrack
 	depends = glibc
 	depends = gcc-libs
 	depends = libx11
-	source = https://github.com/brummer10/NeuralRack/releases/download/v0.3.0/NeuralRack-v0.3.0-src.tar.xz
-	sha256sums = 5a6ae5b074c2acb33869d61d3aebc1754edb7133f3019a59cde67804ccf0b3d1
+	source = https://github.com/brummer10/NeuralRack/releases/download/v0.3.1/NeuralRack-v0.3.1-src.tar.xz
+	sha256sums = d1c491531274e4bf0cbccfc43298b6b2b6980fbb0d3538eac015edb606d481d5
 
 pkgname = neuralrack
 	arch = any
