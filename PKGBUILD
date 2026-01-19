@@ -45,8 +45,8 @@ build() {
 check() {
     cd "${srcdir}/${_src_folder}"
 
-    export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-    python -m pytest -p pytest_cov -p recording
+    python -m pytest --disable-plugin-autoload \
+      -p pytest_cov -p recording
 }
 
 package() {
