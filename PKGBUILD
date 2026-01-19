@@ -2,7 +2,7 @@
 pkgname="alacritty-use-theme-with-gnome-darkmode-git"
 pkgver=r38.b78482c
 pkgrel=1
-pkgdesc="Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray"
+pkgdesc="::Rolling release:: Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray"
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode"
 license=('GPL-1.0-or-later')
