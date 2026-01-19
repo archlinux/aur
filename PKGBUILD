@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
-pkgver=1.4.2
-pkgrel=3
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -40,24 +40,16 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://github.com/labelle-org/labelle/archive/v${pkgver}.tar.gz"
         "91-dymo-labelmanager-pnp.rules"
         "dymo-labelmanager-pnp.conf"
-        "github-pr-137.patch"
 )
-sha512sums=('4d66e2fc3c9946479dc338475875d65953d6ecb4f740d8f4b2989cd95f29ba52e8fc59cd78b38861a18d9b31f83dcba4119589ea496d3978980cc1d19b4c71fd'
+sha512sums=('9f1370e5c9667eda7bb92c97ab52d622ac05e7383b499206ea3e4cbe8ae2f6e00626ee21f9093cd54c4d56c40ebd8219c90f99f16f812e5ad2509e6a0698d3a0'
             '3768fdfc8345d909cac837fc6582c3f064695a211c9150f6dd2e3a2b846c4265efd5ac24c629c68dfa6ac7421604c448d47e4fb0966a68773107502cc7f6f183'
-            '1cd7294374617035e0f3614f2a2914647879fa58cf3da0d7c5705697e30961161cb21e10b45fa2bd417c5487b585cc7bdfec1ee863fa73a3f47ddd553702fe8d'
-            'a9504c6d245edbc79c63a1b994343fa63db5f4144ceb5c46bcc6376b59acb74190d03c192f2e8acf13f1612ce7ed280143e41a662530003b54fc3bcf2f5f4f23')
+            '1cd7294374617035e0f3614f2a2914647879fa58cf3da0d7c5705697e30961161cb21e10b45fa2bd417c5487b585cc7bdfec1ee863fa73a3f47ddd553702fe8d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
     # Unpin dependency range
     sed -i -E -e 's/"(hatchling|hatch-vcs) [^"]+"/"\1"/g' pyproject.toml
-
-    # Remove this patch once the upstream author has merged PR #137 and
-    # included it in a stable release.
-    # See also: https://github.com/labelle-org/labelle/pull/137
-    echo >&2 'Applying patch to match the latest API of the barcode library'
-    patch -p1 < ../github-pr-137.patch
 }
 
 build() {
