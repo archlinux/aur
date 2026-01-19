@@ -1,6 +1,6 @@
 pkgbase = seanime
 	pkgdesc = A self-hosted server that seamlessly integrates with your local anime collection with anilist integration.
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/5rahim/seanime
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = seanime
 	makedepends = nodejs
 	depends = systemd
 	conflicts = seanime-bin
-	source = https://github.com/5rahim/seanime/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = 6eb376403f7557f527ae18c5ed2f9b443d1ae88c605777519288c1cf452618e3
+	source = https://github.com/5rahim/seanime/archive/refs/tags/v3.3.1.tar.gz
+	sha256sums = fcc76c01f27d2588e3a1190970a2011bb85af8b28063771c6ff2065b7cfd015c
 
 pkgname = seanime
