@@ -1,0 +1,18 @@
+pkgbase = modiva-launcher-bin
+	pkgdesc = The official launcher for Modiva
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://modiva-launcher.xyz
+	arch = x86_64
+	license = proprietary
+	depends = zlib
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = modiva-launcher
+	conflicts = modiva-launcher
+	options = !strip
+	source = modiva-launcher-0.3.4.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v0.3.4/Modiva.Launcher_0.3.4_amd64.AppImage
+	sha256sums = 1d5fd5303e3ca923c8803416a4801138053b6dd3c648540c936860b6c7d6eb05
+
+pkgname = modiva-launcher-bin
