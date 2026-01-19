@@ -2,7 +2,7 @@
 
 pkgname=mokii
 _pkgname=Mokii
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A modern, colorful ls replacement written in C++23 with Unicode icons and git integration"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'ninja')
 options=(!debug)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/MochiiLinux/Mokii/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('985b939644c26a05b216c3209d04cd0c088ec7217131cd647526f75a6a361241')
+sha256sums=('d62ff5815116f2124ebf5903ad0f201386562c7cd52457565a0f1e7da95ec06c')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
