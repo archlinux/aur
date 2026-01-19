@@ -1,0 +1,18 @@
+pkgbase = alacritty-use-theme-with-gnome-darkmode
+	pkgdesc = Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode
+	arch = x86_64
+	license = GPL-1.0-or-later
+	makedepends = git
+	depends = bash
+	depends = awk
+	depends = alacritty-use-theme
+	provides = alacritty-listen-to-colorscheme.service
+	conflicts = alacritty-use-theme-with-gnome-darkmode-git
+	replaces = alacritty-toggle-theme-on-darkmode-git
+	source = alacritty-use-theme-with-gnome-darkmode-1.0.0::https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 82f06b515064f2bb89e63bcf33c1fe433dc2b266905a9d1eaeeceb092eed1f3d
+
+pkgname = alacritty-use-theme-with-gnome-darkmode
