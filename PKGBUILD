@@ -16,8 +16,8 @@ install=etr.install
 source_aarch64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 source_x86_64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 
-sha256sums_aarch64=('96e070befd56820c4e5520bddecd5862c96767babb02398fae05d7ea3c1c94f2')
-sha256sums_x86_64=('8c6ad6d46aad52bd18278e6356be69ff08165b033dcff47434430db349d2b756')
+sha256sums_aarch64=('da398f1813023b4a52408e002e13fe3b8954570d8597e2f2ffb171bda5ea7d6c')
+sha256sums_x86_64=('fe00dafa435d83c072d210b623a2e6ef5a0acf676460943f7aaae89acd9b9cd3')
 
 options=(!debug)
 
