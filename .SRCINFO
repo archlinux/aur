@@ -1,6 +1,6 @@
 pkgbase = virtnbdbackup
 	pkgdesc = Backup utility for Libvirt / qemu / kvm
-	pkgver = 2.40
+	pkgver = 2.44
 	pkgrel = 1
 	url = https://github.com/abbbi/virtnbdbackup
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = virtnbdbackup
 	depends = python-paramiko
 	depends = python-lz4
 	depends = libnbd
-	source = https://github.com/abbbi/virtnbdbackup/releases/download/v2.40/virtnbdbackup-2.40.tar.gz
-	sha256sums = 779546b84221aae9638014955d2e98dc333d2bc44317e75bbee7e19cecb8ba93
+	source = https://github.com/abbbi/virtnbdbackup/releases/download/v2.44/virtnbdbackup-2.44.tar.gz
+	sha256sums = 680551320f9e151f74b61e42fdfde852779642df64411e46ca7d77f4037afec8
 
 pkgname = virtnbdbackup

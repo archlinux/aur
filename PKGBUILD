@@ -1,5 +1,5 @@
 pkgname=virtnbdbackup
-pkgver=2.40
+pkgver=2.44
 pkgrel=1
 pkgdesc="Backup utility for Libvirt / qemu / kvm"
 url="https://github.com/abbbi/virtnbdbackup"
@@ -21,4 +21,4 @@ package() {
 }
 
 
-sha256sums=('779546b84221aae9638014955d2e98dc333d2bc44317e75bbee7e19cecb8ba93')
+sha256sums=('680551320f9e151f74b61e42fdfde852779642df64411e46ca7d77f4037afec8')
