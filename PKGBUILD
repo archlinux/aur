@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Waegeneire <sebastien@waegeneire.com>
 
 pkgname=oxlint-bin
-pkgver=1.40.0
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack."
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ _binary_aarch64="oxlint-linux-arm64-gnu"
 source_x86_64=("${_binary_x86_64}.tar.gz::${_github_url}/${_binary_x86_64}.tar.gz")
 source_aarch64=("${_binary_aarch64}.tar.gz::${_github_url}/${_binary_aarch64}.tar.gz")
 
-sha256sums_x86_64=('2b6ff01e4badc7fe742a9886db2f9fc71e7091dea315359dce237b703b10ebd0')
-sha256sums_aarch64=('634fc9e2e8e9d2b0b9c9a738312b489d07cdebdb401d0f6bca9eceac0a8599f5')
+sha256sums_x86_64=('96b0e6d216dfaca265c84c6d99f40656badd7ef0daeea1f16954b493391e8212')
+sha256sums_aarch64=('8e70d81e28219cd279efdbd1efd466986180dfe32152b10b00c6e85315eb0d4a')
 
 package() {
     local _binary_var="_binary_${CARCH}"
