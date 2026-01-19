@@ -1,6 +1,6 @@
 # Maintainer: kesefon <aur@froggo.garden>
 pkgname=ucp3-gui
-pkgver='1.0.14'
+pkgver='1.0.15'
 pkgrel=1
 pkgdesc='GUI for Unofficial Crusader Patch 3'
 url="https://github.com/UnofficialCrusaderPatch/UCP3-GUI"
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('rust' 'nodejs' 'npm' 'git' 'patchelf')
 conflicts=()
 source=("git+https://github.com/UnofficialCrusaderPatch/UCP3-GUI#tag=v$pkgver")
-sha256sums=('4da6c5fcd638eda43446766e87d873267b0cfcf7adc3085b3f469adea4e671cc')
+sha256sums=('6224be32466aeb054cfbe289a17ebca414256a73166f640a65e9cd93bac6698a')
 
 build() {
     cd "$srcdir/UCP3-GUI"

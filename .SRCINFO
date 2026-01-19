@@ -1,6 +1,6 @@
 pkgbase = ucp3-gui
 	pkgdesc = GUI for Unofficial Crusader Patch 3
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://github.com/UnofficialCrusaderPatch/UCP3-GUI
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = ucp3-gui
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk
-	source = git+https://github.com/UnofficialCrusaderPatch/UCP3-GUI#tag=v1.0.14
-	sha256sums = 4da6c5fcd638eda43446766e87d873267b0cfcf7adc3085b3f469adea4e671cc
+	source = git+https://github.com/UnofficialCrusaderPatch/UCP3-GUI#tag=v1.0.15
+	sha256sums = 6224be32466aeb054cfbe289a17ebca414256a73166f640a65e9cd93bac6698a
 
 pkgname = ucp3-gui
