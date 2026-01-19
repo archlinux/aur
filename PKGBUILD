@@ -52,6 +52,7 @@ _depends=(
   'python-watchfiles'
   'python-yaml'
   'python-pytokens'
+  'python-truststore'
 )
 makedepends=(
   'jekyll'
