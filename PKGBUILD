@@ -1,11 +1,12 @@
 pkgname=myrient
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Bulk downloader and extractor for ROM archive directories"
 arch=('x86_64')
 url="https://github.com/cruzisonfire/myrient"
 license=('GPL3')
-depends=('qt6-base')
+depends=('qt6-base' 'aria2' 'wget' 'unzip' 'p7zip')
+optdepends=('unrar: RAR archive extraction support')
 makedepends=('git' 'qt6-tools')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -26,6 +27,9 @@ package() {
 
   # Install GUI binary
   install -Dm755 myrient-qt "$pkgdir/usr/bin/myrient-gui"
+
+  # Install CLI script
+  install -Dm755 myrient "$pkgdir/usr/bin/myrient"
 
   # Install .desktop launcher
   install -Dm644 "$srcdir/myrient.desktop" "$pkgdir/usr/share/applications/myrient.desktop"
