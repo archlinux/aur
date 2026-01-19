@@ -52,13 +52,13 @@ build() {
 
     # CMake does not respect ASFLAGs set in /etc/makepkg.conf, so we have to set CMAKE_ASM_FLAGS here.
     cmake -B build \
-	  -GNinja \
-	  -DCMAKE_BUILD_TYPE=RelWithAssert \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
-	  -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
-	  -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
-	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
+          -GNinja \
+          -DCMAKE_BUILD_TYPE=RelWithAsserts \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
+          -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
+          -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
+          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
           -DCMAKE_C_FLAGS="$CFLAGS" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS"
 
@@ -77,10 +77,31 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
 
     # Clean up installation
-    mkdir -p "$pkgdir/usr/lib/pkgconfig/$pkgname"
-    mv $pkgdir/usr/lib/$pkgname/pkgconfig/* "$pkgdir/usr/lib/pkgconfig/$pkgname/"
+    mkdir -p "$pkgdir/usr/lib/pkgconfig"
+
+    # Rename with explicit mapping for clarity
+    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/openssl.pc" ]; then
+        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/openssl.pc" \
+          "$pkgdir/usr/lib/pkgconfig/aws-lc.pc"
+    fi
+
+    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/libssl.pc" ]; then
+        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/libssl.pc" \
+          "$pkgdir/usr/lib/pkgconfig/aws-lc-libssl.pc"
+    fi
+
+    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/libcrypto.pc" ]; then
+        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/libcrypto.pc" \
+          "$pkgdir/usr/lib/pkgconfig/aws-lc-libcrypto.pc"
+    fi
+
     rm -rf "$pkgdir/usr/lib/$pkgname/pkgconfig"
-    rm -rf "$pkgdir/usr/lib/$pkgname/ssl"
+
+    # Fix internal references in the pkg-config files
+    sed -i 's/^Requires: libssl libcrypto/Requires: aws-lc-libssl aws-lc-libcrypto/' \
+        "$pkgdir/usr/lib/pkgconfig/aws-lc.pc" 2>/dev/null || true
+    sed -i 's/^Requires\.private: libcrypto/Requires.private: aws-lc-libcrypto/' \
+        "$pkgdir/usr/lib/pkgconfig/aws-lc-libssl.pc" 2>/dev/null || true
 
     # Documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
