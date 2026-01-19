@@ -1,14 +1,14 @@
 # Maintainer: Cyrille Pontvieux <cyrille@enialis.net>
 pkgname=ezchlog
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Easy git branch friendly changelogs"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://gitlab.com/jrdasm/ezchlog"
+url="https://gitlab.com/snake_coders/ezchlog"
 license=('MIT')
 makedepends=('cargo')
-source=("https://gitlab.com/jrdasm/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('dcc7b791740444fd282b8cc098ac0a7120702ba5eeb1fb4c9b08be2aeef38746')
+source=("https://gitlab.com/snake_coders/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('c6ad8cabc74f12f6a808018f329f0dd4491f8e76b1009bbca310c4d9b5407e98')
 
 build() {
   cd "$pkgname-v$pkgver"
