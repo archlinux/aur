@@ -18,4 +18,5 @@ sha256sums=('a5c0b05dfaf2cdcad3b8ffc9ee1e6a955628aade0dda653da04d4a12ba4fe3ec')
 package() {
     cd $srcdir/pdbfixer-${pkgver}
     python3 setup.py install --prefix ${pkgdir}/usr
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
