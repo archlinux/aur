@@ -14,6 +14,8 @@ pkgbase = pw-duck-git
 	depends = pipewire
 	provides = pw-duck
 	conflicts = pw-duck
+	options = !lto
+	options = !strip
 	source = git+https://github.com/geri1701/pw-duck.git
 	sha256sums = SKIP
 
