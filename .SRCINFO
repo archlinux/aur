@@ -1,0 +1,18 @@
+pkgbase = myrient
+	pkgdesc = Bulk downloader and extractor for ROM archive directories
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cruzisonfire/myrient
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	depends = qt6-base
+	source = myrient-1.0.0.tar.gz::https://github.com/cruzisonfire/myrient/archive/refs/tags/v1.0.0.tar.gz
+	source = myrient.desktop
+	source = myrient.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = myrient

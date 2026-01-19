@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Myrient
+Comment=Bulk downloader and extractor for ROM archive directories
+Exec=myrient-gui
+Icon=myrient
+Terminal=false
+Type=Application
+Categories=Utility;Game;
