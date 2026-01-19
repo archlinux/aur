@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  export SYSTEM_DEPS_LIBSPA_BUILD_INTERNAL=1
+  export SYSTEM_DEPS_LIBSPA_BUILD_INTERNAL=always
   cd "$srcdir/pw-duck"
   cargo build --release --locked
 }
