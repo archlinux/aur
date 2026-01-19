@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockery-bin
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang.(Prebuilt version)'
 arch=(
@@ -20,8 +20,8 @@ optdepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('451222d68e8f713d6396e30f20a33793f00d0eaaff76d51c53e1581d14641e42')
-sha256sums_x86_64=('59dde9d8e3e14f38c4b1483e2c56c8bebd8a9164b59159ffcb8f4cedf8cf7e3f')
+sha256sums_aarch64=('44eb65661902138f4e498dfe43fdf075cf0e588542410e6675ebd135e07512ef')
+sha256sums_x86_64=('d9134523a936c0955dfbe529298ee6503a2c22bb7fbd8ae67302c2db58642b83')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
