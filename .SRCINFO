@@ -1,7 +1,7 @@
 pkgbase = seafile-client-appimage
 	pkgdesc = Seafile client AppImage
 	pkgver = 9.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.seafile.com/
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,6 @@ pkgbase = seafile-client-appimage
 	conflicts = seafile
 	options = !strip
 	source_x86_64 = Seafile-x86_64-9.0.16.AppImage::https://sos-ch-dk-2.exo.io/seafile-downloads/Seafile-x86_64-9.0.16.AppImage
-	sha256sums_x86_64 = 7b2501999c166322c9b55deebb5ad1a5ee8d383bdc636678347c14d56652f38a
+	sha256sums_x86_64 = f98a8364eb31fe022d96347ad70fdfc1fb9ce918245a71fa0a61d4709a17b288
 
 pkgname = seafile-client-appimage
