@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-liburing
-pkgver=2.9
+pkgver=2.13
 pkgrel=1
 arch=('any')
 pkgdesc="Linux-native io_uring I/O access library (Android ${_android_arch})"
@@ -15,17 +15,15 @@ license=('(GPL-2.0-only WITH Linux-syscall-note) OR MIT'
          'MIT')
 groups=('android-liburing')
 depends=('android-ndk')
-makedepends=('android-configure')
+makedepends=('android-configure'
+             'patchelf')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz"
-        '0001-Fix-libs-install.patch')
-md5sums=('50cbca5567878abaeb6824909b647422'
-         '8134d4faf929451e20da833737788284')
+source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz")
+md5sums=('21d7689dea164fd797c177ee61bdafe1')
 
 prepare() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
 
-    patch -Np1 -i ../0001-Fix-libs-install.patch
     sed -i 's|\$(QUIET_CC)||g' src/Makefile
 }
 
@@ -53,7 +51,25 @@ package() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C "${PWD}/src" DESTDIR="${pkgdir}" ENABLE_SHARED=1 install
+    install -Dm644 -t "${pkgdir}/${ANDROID_PREFIX_LIB}/" src/lib*.a
+    install -Dm755 -t "${pkgdir}/${ANDROID_PREFIX_LIB}/" src/lib*.so.*
+    mkdir -p "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"
+    cp -rvf src/include/* "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
+
+    # Fix shared libraries
+    for lib in "${pkgdir}/${ANDROID_PREFIX_LIB}"/lib*.so.*; do
+        # Get the base name
+        base_name="${lib%.so.*}.so"
+        simple_name="$(basename "$base_name")"
+
+        # Change the file name
+        mv -vf "$lib" "$base_name"
+
+        # Fix the soname and the rpath
+        patchelf --set-soname "$simple_name" "$base_name"
+        patchelf --set-rpath '$ORIGIN' "$base_name"
+    done
+
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
@@ -67,4 +83,6 @@ package() {
                -e "s%@VERSION@%${pkgver}%g" \
                "${pcFile}"
     done
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
