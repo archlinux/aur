@@ -4,8 +4,5 @@ Z /etc/pufferpanel - pufferpanel pufferpanel
 d /var/log/pufferpanel 0755 pufferpanel pufferpanel
 Z /var/log/pufferpanel - pufferpanel pufferpanel
 
-d /var/www/pufferpanel 0755 pufferpanel pufferpanel
-Z /var/www/pufferpanel - pufferpanel pufferpanel
-
 d /var/lib/pufferpanel 0755 pufferpanel pufferpanel
 Z /var/lib/pufferpanel - pufferpanel pufferpanel

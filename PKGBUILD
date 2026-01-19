@@ -2,7 +2,7 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=2.7.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64' 'aarch64')
@@ -15,25 +15,22 @@ optdepends=('nginx: TLS support'
 			'docker: Container support'
                         'sqlite: Database support')
 depends=()
-source_aarch64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_linux_arm64.zip)
-source_x86_64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_linux_amd64.zip)
-source=(https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/systemd/servicefiles/pufferpanel.service
-               https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/config.linux.json)
-b2sums=('ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141'
-        '0281c464b61c7a869d0f2844d18b30728a97cd66504b3ced5cded26d4ed826f3dd340ce063d0a8f1877500782be19d586e04a8e79a9ca6ae465dbd67114d5e9f')
-b2sums_x86_64=('03c40ef788ba5f62e05988ea6e5ac4ece63e7e6ed7f811f74e04458ff2b268224a8ba20bd0376174d45e09fbdfcabbb64d2b8df56b3365d37088ecc93437777e')
-b2sums_aarch64=('d24d058d4b7a46be6a6587bdfcfc2cd7c9f020c94f7a15ceca3f6060962b5e0639de334a2e09a10432a611c14a6d59c77015b53c1c418dc2126ae2ea2d9526c5')
+source_aarch64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_arm64.deb)
+source_x86_64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_amd64.deb)
+b2sums_x86_64=('1f3404364d686be7af904ef8661a780bad0c3697084d6b34777311aaf2e23d5eda5e39cf896c0a68f884f874e1f37d1b5904d56cf34b31d59fdeb57f4fc46487')
+b2sums_aarch64=('6f35ba5989b0a00508be3724b2d140c9c011bc87a577291afbab1547fa48172724538be6deea23602b8c9139236b110e97c4b9502f1542a4d86a263775d672da')
 package() {
+  pwd
+  ls -lah ${srcdir}
+  tar -xJf control.tar.xz
+  tar -xJf data.tar.xz
+  ls -lah ${srcdir}
+
   export pkg=pufferpanel
-  mkdir -p ${pkgdir}/var/www/${pkg}/
-  mkdir -p ${pkgdir}/var/lib/${pkg}/
-  mkdir -p ${pkgdir}/var/log/${pkg}/
-  mkdir -p ${pkgdir}/etc/${pkg}/
-  cp -R --no-preserve=ownership ${srcdir}/www/* "${pkgdir}/var/www/${pkg}"
-  cp -R --no-preserve=ownership "${srcdir}/email/" "${pkgdir}/etc/${pkg}/"
-  install -D -m 755 "${srcdir}/${pkg}" "${pkgdir}/usr/bin/${pkg}" 
-  install -D -m 644 "${srcdir}/config.linux.json" "${pkgdir}/etc/${pkg}/config.json" 
-  install -D -m 644 "${srcdir}/pufferpanel.service" "${pkgdir}/usr/lib/systemd/system/pufferpanel.service" 
+  install -D -m 755 "${srcdir}/etc/pufferpanel/config.json" "${pkgdir}/etc/pufferpanel/config.json"
+  install -D -m 755 "${srcdir}/lib/systemd/system/pufferpanel.service" "${pkgdir}/usr/lib/systemd/system/pufferpanel.service"
+  install -D -m 755 "${srcdir}/usr/sbin/pufferpanel" "${pkgdir}/usr/bin/pufferpanel"
+  mkdir -p ${pkgdir}/var/lib/${pkg}/binaries ${pkgdir}/var/log/${pkg}
   install -D -m 644 "${srcdir}/../pufferpanel.sysusers" "${pkgdir}/usr/lib/sysusers.d/pufferpanel.conf"
   install -D -m 644 "${srcdir}/../pufferpanel.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/pufferpanel.conf"
 }
