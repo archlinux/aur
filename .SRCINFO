@@ -10,6 +10,6 @@ pkgbase = mokii-bin
 	conflicts = mokii
 	options = !debug
 	source = https://github.com/MochiiLinux/Mokii/releases/download/v0.1.7/Mokii-v0.1.7.tar.gz
-	sha256sums = fedbe741fbf33421da0c2001a18c386d80bac1771e00a51d8dd35ffb6c6c815f
+	sha256sums = sha256:fedbe741fbf33421da0c2001a18c386d80bac1771e00a51d8dd35ffb6c6c815f
 
 pkgname = mokii-bin

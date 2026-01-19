@@ -12,7 +12,7 @@ provides=('mokii')
 conflicts=('mokii')
 options=(!debug)
 source=("https://github.com/MochiiLinux/Mokii/releases/download/v${pkgver}/Mokii-v${pkgver}.tar.gz")
-sha256sums=('fedbe741fbf33421da0c2001a18c386d80bac1771e00a51d8dd35ffb6c6c815f')
+sha256sums=('sha256:fedbe741fbf33421da0c2001a18c386d80bac1771e00a51d8dd35ffb6c6c815f')
 
 package() {
   install -Dm755 "${srcdir}/Mokii-v${pkgver}/mokii" "${pkgdir}/usr/bin/mokii"
