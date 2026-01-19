@@ -5,7 +5,7 @@ pkgbase = jameica
 	url = https://www.willuhn.de/products/jameica/
 	arch = x86_64
 	arch = aarch64
-	license = GPL-2-only
+	license = GPL-2.0-only
 	makedepends = unzip
 	depends = java-runtime>=10
 	depends = gtk3
