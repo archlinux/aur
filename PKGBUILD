@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot com>
 
 pkgname=fnox
-pkgver=1.7.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Manage secrets with encryption or cloud providers - or both'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/fnox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('359449f43698806a94f380566c0341de73ccd72bfa0dfdb8b5587174b51ffeb3')
-b2sums=('63a41024699943383ea435b8fa10a27efe77512cf2355b2a85d0a99634aa93c84e9f9a94b6c38fdf263aca8c5d82e1d81fa0b233c109ce1d0e75eb00495e120d')
+sha256sums=('60e69aad2f0501c7702564a3c91ef91038d9a174bb4acb7047dcd0025792bb0c')
+b2sums=('b5c7e1f0246565bfa91d04585600297b616308798520c030ca0b1c4f74be969c837e51d8b001fe8b1175c76585d9032dcc345755d51c88c34c62f69ed36f0647')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
@@ -19,7 +19,7 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
