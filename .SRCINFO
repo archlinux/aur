@@ -7,7 +7,7 @@ pkgbase = hibiscus
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	license = GPL-2-only
+	license = GPL-2.0-only
 	makedepends = unzip
 	depends = java-runtime>=1.5
 	depends = jameica>=2.8
