@@ -8,6 +8,7 @@ pkgbase = reflector-rs-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = rust
+	makedepends = gzip
 	depends = openssl
 	provides = reflector
 	conflicts = reflector
