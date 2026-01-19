@@ -1,0 +1,7 @@
+# makepkg build dirs
+src/
+pkg/
+
+# built packages
+*.pkg.tar.*
+*.tar.gz
