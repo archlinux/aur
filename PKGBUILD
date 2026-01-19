@@ -2,7 +2,7 @@
 
 _zig=0.15
 pkgname="zigdown"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Parse and render Markdown-like content to the terminal, to HTML, or inside Neovim"
 arch=(
@@ -27,6 +27,7 @@ _zigdepends=(
   "treez-980316cb4fd0da6075a6a8f86bd1a3927bf68ad3.tar.gz::https://github.com/JacobCrabill/treez/archive/980316cb4fd0da6075a6a8f86bd1a3927bf68ad3.tar.gz"
   "known-folders-ab5cf5feb936fa3b72c95d3ad0c0c67791937ba1.tar.gz::https://github.com/ziglibs/known-folders/archive/ab5cf5feb936fa3b72c95d3ad0c0c67791937ba1.tar.gz"
   "ziglua-011758bab2c2b5a4b6e678e33a8dbb24570d4394.tar.gz::https://github.com/JacobCrabill/ziglua/archive/011758bab2c2b5a4b6e678e33a8dbb24570d4394.tar.gz"
+  "LuaJIT-c525bcb9024510cad9e170e12b6209aedb330f83.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/c525bcb9024510cad9e170e12b6209aedb330f83.tar.gz"
   "tree-sitter-bash-49c31006d8307dcb12bc5770f35b6d5b9e2be68e.tar.gz::https://github.com/tree-sitter/tree-sitter-bash/archive/49c31006d8307dcb12bc5770f35b6d5b9e2be68e.tar.gz"
   "tree-sitter-c-e8841a6a9431b7365ac9055688429e1deb8db90f.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/e8841a6a9431b7365ac9055688429e1deb8db90f.tar.gz"
   "tree-sitter-cmake-fe48221d4d9842d916d66b5e71ab3c6307ec28b3.tar.gz::https://github.com/uyha/tree-sitter-cmake/archive/fe48221d4d9842d916d66b5e71ab3c6307ec28b3.tar.gz"
@@ -52,13 +53,14 @@ source=(
 noextract=(
   "${_zigdepends[@]%%::*}"
 )
-b2sums=('20016975354d819bdaf75fd817b435e768179fda349afd0a3c7b5ad86876ba1dbfacfb3b036c14fd8182110b540cc46833df89c28d86db716fba753015300a1f'
+b2sums=('ac5ba5d88ff16bae9a155489d331c0a94825870ed0bc4427bf4b108ff3d2c8b239e267fcef314ea0390ce7aba05634728a4b28fd1ab5f1cb6689a923e10914c8'
         'e284162579422c325cc118a086c710da09966042157bdcc9205218386c17ea73dcc715177edd84ff8c817129d1114c584b967a8f834a115602ca2c771313f2c6'
         '20789d0ef34be86a9f6dcff82daa7f54d4aeabce275c259164f4df00606f3e2121b5efdad120fef686536343ebf3030d60238607a0ebea3948db45f60b601b73'
         'd144d903717301988b0bd20b98b35578e2354195972a1bbe30ac3d717b2a939e6c664dfc19fda769f2a96337d20d3e3a39bfa6a7cc57e4895b7547cc0594d1b2'
         '432f48b4146796c13102ac89850a2950b318638284ae78491fa4be9b7a9cc8952431efb771d8dca68a6e5d22801f1df6e6b109e6220dd9cc843fb5d863272b14'
         'e8e5d85be28341f6ba431a6a913803172c322711fd8ae9c5ba3937b6ed6ccc3ca1a4775b27ad91796a3359ec2af58fec28b9533cf74bfe01bffb6f912f89c36e'
         'd6903bba3152f1de6ae48fb8a58c6c27b46ca115c0e1e9955135bc905ebffc3338b627e4797d03360cfac74cd4c4e3b618751f108f9eab5f1c1a1b6848ed1891'
+        '9f56100e6cef2814a5f62df900a05e9f267c47f3f1e9ff4786537c293806cf077759a42937141845ce5d9712d3586a09f3cd618dbda45d0273281570c14af4e4'
         '755e11add7d7612859e2db884a3be17efda00a46865e4ef0802f2f447bd37ade56bf674430a28b4b968ee553cb32c2094c00b2c5ef11477fddac47eebfa42f1d'
         '7374e40adf1aab40823016c8b12d7553f9f2f67949cd2a5fa6478469920bf99803b041de9f360a3a4167517fb85e0b767be7a4a67c876ddbbb2fda7635c9d94c'
         '644ac76af8c4f621f23841d51ac88da134735e05e9475c0f8aa1b867f97398f6bfd21cd687c2869034bea87e9bc573667c73f162a5ee786cd68d8dacf0e44ec8'
@@ -75,8 +77,8 @@ b2sums=('20016975354d819bdaf75fd817b435e768179fda349afd0a3c7b5ad86876ba1dbfacfb3
 
 prepare() {
   cd "${srcdir}"
-  for dep in "${_zigdepends[@]}"; do
-    zig fetch --global-cache-dir "zig-global-cache" "${dep%%::*}"
+  for _zigdepend in "${_zigdepends[@]}"; do
+    zig fetch --global-cache-dir "zig-global-cache" "${_zigdepend%%::*}"
   done
 }
 
