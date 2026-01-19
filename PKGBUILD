@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: DanCodes <dan@dancodes.online>
+# Maintainer: DanCodes <dan@dancodes.online>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=parrot
 pkgver=1.0.6
 pkgrel=3
