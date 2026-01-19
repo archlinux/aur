@@ -1,6 +1,6 @@
 # 
 pkgname=sdn
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple directory navigator"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://git.janouch.name/p/sdn/"
 license=('custom:0BSD')
 depends=('ncurses' 'acl')
 makedepends=('cmake' 'pkg-config')
-source=("$pkgname-$pkgver.tar.gz::https://git.janouch.name/p/sdn/archive/v1.0.0.tar.gz")
-sha256sums=('f1121627a865b20cb4bf944e3f112f9c0412374829fed634ca4b677b5c0979f7')
+source=("$pkgname-$pkgver.tar.gz::https://git.janouch.name/p/sdn/archive/v${pkgver}.tar.gz")
+sha256sums=('a50b0ccab6b1f18fa330fda8c0484e6ed6af22711ca681ea7fa0363fa79cf25a')
 
 build() {
     rm -rf "$pkgname"/build
