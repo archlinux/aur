@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MetaElite (Proton)
+GenericName=Role playing environment for stories in Elite Dangerous. Runs in ED's Proton prefix
+Icon=metaelite-proton
+Exec=/opt/metaelite-proton/metaelite-proton
+Categories=Games
+Terminal=false

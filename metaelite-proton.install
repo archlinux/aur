@@ -1,0 +1,8 @@
+# General hints applicable to everyone
+post_upgrade() {
+    echo -e "\n\033[1;33m=== METAELITE (PROTON) REMINDERS =====================================\033[0m"
+    echo -e "\033[1;37mLAUNCH ORDER:\033[0m"
+    echo "    Always launch Elite Dangerous via Steam *BEFORE* launching MetaElite."
+    echo "    (Steam may block the game from starting if MetaElite is already running)."
+    echo -e "\033[1;33m========================================================================\033[0m\n"
+}
