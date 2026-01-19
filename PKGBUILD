@@ -1,4 +1,4 @@
-# Maintainer: Nunya <nunya@example.com>
+# Maintainer: Nunya <119450941+9nunya@users.noreply.github.com>
 pkgname=rtl8851be-bt-foxconn-dkms
 pkgver=1.0
 pkgrel=1
