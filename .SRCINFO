@@ -1,7 +1,7 @@
 pkgbase = python-yaucl
 	pkgdesc = yet another user config library...
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djetelina/yaucl
 	arch = any
 	license = MIT

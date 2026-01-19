@@ -2,7 +2,7 @@
 # namcap: ignore deps
 pkgname=python-yaucl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="yet another user config library..."
 arch=('any')
 url="https://github.com/djetelina/yaucl"

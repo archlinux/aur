@@ -20,10 +20,6 @@ check:
   echo "Checking $pkgfile"; \
   namcap PKGBUILD "$pkgfile" \
     | grep -v "Dependency python-" \
-    | grep -v "site-packages" \
-    | grep -v "ELF files outside" \
-    | grep -v "Dependency included" \
-    | grep -v "uninstalled dependency" \
     || true
 
 clean:
