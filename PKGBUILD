@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Cross-platform terminal IDE, file manager and virtual terminal"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/termide/termide/archive/$pkgver.tar.gz")
-sha256sums=('e9d2c689b2d0d8871ab6831fca448e753339201a56f26d331b1264a0f6207f58')
+sha256sums=('f3dea52bdaea34f8400bdaeee7008291663b7b2b24e4894cb1b9e6cf18d5f61e')
 
 prepare() {
     cd "$pkgname-$pkgver"
