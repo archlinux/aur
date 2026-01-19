@@ -1,6 +1,6 @@
 pkgbase = mokii-bin
 	pkgdesc = A modern, colorful ls replacement written in C++23 with Unicode icons and git integration
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/MochiiLinux/Mokii
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mokii-bin
 	provides = mokii
 	conflicts = mokii
 	options = !debug
-	source = https://github.com/MochiiLinux/Mokii/releases/download/v0.1.2/mokii-v0.1.2-x86_64.tar.gz
-	sha256sums = a0feb5152eca650a242e3173b7b19b02f15aee1eb0226b9bea9644033e77147a
+	source = https://github.com/MochiiLinux/Mokii/releases/download/v0.1.3/mokii-v0.1.3-x86_64.tar.gz
+	sha256sums = 226ba946477374ac35f018dcbacaab90e2745cdc1516b7b8b202b901e1ca8790
 
 pkgname = mokii-bin

@@ -1,7 +1,7 @@
 # Maintainer: 0x0D <0xOD@proton.me>
 
 pkgname=mokii-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A modern, colorful ls replacement written in C++23 with Unicode icons and git integration"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('mokii')
 conflicts=('mokii')
 options=(!debug)
 source=("https://github.com/MochiiLinux/Mokii/releases/download/v${pkgver}/mokii-v${pkgver}-${arch}.tar.gz")
-sha256sums=('a0feb5152eca650a242e3173b7b19b02f15aee1eb0226b9bea9644033e77147a')
+sha256sums=('226ba946477374ac35f018dcbacaab90e2745cdc1516b7b8b202b901e1ca8790')
 
 package() {
   install -Dm755 "${srcdir}/mokii" "${pkgdir}/usr/bin/mokii"
