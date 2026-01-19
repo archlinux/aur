@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.17.0
+pkgver=1.17.1
 _electronversion=39
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
@@ -15,12 +15,13 @@ depends=(
     "electron${_electronversion}"
     'krb5'
     'db5.3'
+    'tidy'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10fdc4562994d69368634f36cecad82c8caa55d0de6d6c7b21c109878ea3abdd'
+sha256sums=('f3b49f707f956caf0929cc34fbdc592a31b6e50ff5ca1e09bc2d8592a70388ee'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -32,7 +33,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=x11 --password-store=\"gnome-libsecret\"/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
