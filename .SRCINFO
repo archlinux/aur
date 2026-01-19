@@ -14,7 +14,6 @@ pkgbase = open-fprintd-eh575
 	depends = python-pyusb
 	depends = polkit
 	depends = dbus
-	provides = fprintd
 	conflicts = open-fprintd-git
 	source = git+https://github.com/abbhinavjayaraman/python-egistec-eh575.git
 	sha256sums = SKIP

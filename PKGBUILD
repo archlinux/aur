@@ -8,7 +8,6 @@ url="https://github.com/abbhinavjayaraman/python-egistec-eh575"
 license=('MIT')
 depends=('python' 'python-dbus' 'python-gobject' 'python-numpy' 'python-opencv' 'python-pyusb' 'polkit' 'dbus')
 makedepends=('git')
-provides=('fprintd')
 conflicts=('open-fprintd-git') 
 source=("git+https://github.com/abbhinavjayaraman/python-egistec-eh575.git")
 sha256sums=('SKIP')
