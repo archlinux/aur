@@ -1,0 +1,14 @@
+pkgbase = pvm-git
+	pkgdesc = PVM loader script (always latest from GitHub)
+	pkgver = 0.1.0.r20260119
+	pkgrel = 1
+	url = https://github.com/f1nnsauce/pvm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	source = pvm-wrapper.py
+	sha256sums = SKIP
+
+pkgname = pvm-git
