@@ -10,6 +10,7 @@ pkgbase = pw-duck-git
 	makedepends = rust
 	makedepends = clang
 	makedepends = pkgconf
+	makedepends = pipewire
 	depends = pipewire
 	provides = pw-duck
 	conflicts = pw-duck

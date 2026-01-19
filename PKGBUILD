@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/geri1701/pw-duck"
 license=('MIT')
 depends=('pipewire')
-makedepends=('git' 'cargo' 'rust' 'clang' 'pkgconf')
+makedepends=('git' 'cargo' 'rust' 'clang' 'pkgconf' 'pipewire')
 provides=('pw-duck')
 conflicts=('pw-duck')
 
@@ -22,7 +22,6 @@ pkgver() {
 }
 
 build() {
-  export SYSTEM_DEPS_LIBSPA_BUILD_INTERNAL=always
   cd "$srcdir/pw-duck"
   cargo build --release --locked
 }
