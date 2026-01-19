@@ -1,6 +1,6 @@
 # Maintainer: Mjoyufull
 pkgname=kaleidux-git
-pkgver=0.0.1.kneecap.r23.2c9ff2e
+pkgver=0.0.1.kneecap.r29.ff47503
 pkgrel=1
 pkgdesc="High-performance, hardware-accelerated wallpaper daemon for Linux with 50+ smooth GLSL transitions"
 arch=('x86_64')
@@ -19,7 +19,8 @@ depends=(
   'libxcb'
   'vulkan-icd-loader'
   'gcc-libs'
-  'libglvnd' 
+  'libglvnd'
+  'jemalloc'
 )
 makedepends=(
   'git'
@@ -31,6 +32,8 @@ makedepends=(
   'gcc'
   'python'
   'wayland-protocols'
+  'make'
+  'autoconf'
 )
 provides=('kaleidux')
 conflicts=('kaleidux')
@@ -62,6 +65,10 @@ build() {
   
   # Remap source paths to prevent $srcdir references in binary
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
+  
+  # Use system jemalloc library instead of building from source
+  # This fixes linker errors in clean chroot environments
+  export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
   
   cargo build --locked --release --all-features
 }
