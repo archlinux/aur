@@ -1,4 +1,4 @@
-# Maintainer: Diramix 39developer@diram1x.ru
+# Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
 pkgver=2.0.0
 pkgrel=1
@@ -8,13 +8,18 @@ url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
 depends=('glibc')
 source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/Next-Music-${pkgver}/Next-Music-${pkgver}.AppImage")
-sha256sums=('SKIP')
+sha256sums=('SKIP')  # Замените на реальный SHA256 для стабильности
 
 package() {
+    # Создаём все необходимые каталоги заранее
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+    mkdir -p "$pkgdir/usr/share/applications"
+
     # Устанавливаем AppImage в /usr/bin
     install -Dm755 "$srcdir/Next-Music-${pkgver}.AppImage" "$pkgdir/usr/bin/next-music"
 
-    # Создаём папку для иконок и десктоп файла
+    # Копируем AppImage как иконку (можно заменить на png, если есть)
     install -Dm644 "$srcdir/Next-Music-${pkgver}.AppImage" "$pkgdir/usr/share/icons/hicolor/256x256/apps/next-music.png"
 
     # Desktop-файл для меню приложений
