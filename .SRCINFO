@@ -1,6 +1,6 @@
 pkgbase = bashhound-ce-git
 	pkgdesc = Active Directory data collector for BloodHound written in Bash
-	pkgver = r36.955b96f
+	pkgver = r39.2e35bd5
 	pkgrel = 1
 	url = https://github.com/0xbbuddha/BashHound-CE
 	arch = any
