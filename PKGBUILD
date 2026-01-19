@@ -8,8 +8,8 @@
 
 _commit=2e62ee29c98ef70e9f1749884557229fd255a8e5
 pkgname=h2o-git
-pkgver=2.2.0.8494
-pkgrel=2
+pkgver=2.2.0.r8494.g2e62ee2
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -36,8 +36,7 @@ conflicts=('h2o' 'libh2o')
 
 pkgver() {
     cd "$srcdir/h2o"
-    #git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-/./g'
-    git describe --tags --abbrev=0 | sed 's/^v//;s/-/.g/;s/-/./g'
+    git describe --long --abbrev=7 --tags | sed 's/^v\([^-]*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/'
 }
 
 prepare() {
