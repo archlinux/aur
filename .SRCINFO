@@ -1,12 +1,13 @@
 pkgbase = tomat-bin
 	pkgdesc = A Pomodoro timer for status bars
 	pkgver = 2.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jolars/tomat
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = alsa-lib
+	depends = gcc-libs
 	provides = tomat
 	conflicts = tomat
 	source_x86_64 = https://github.com/jolars/tomat/releases/download/v2.8.0/tomat-x86_64-unknown-linux-gnu.tar.gz
