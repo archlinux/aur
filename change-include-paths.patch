@@ -1,0 +1,28 @@
+diff --git a/Src/cxxextensions.c b/Src/cxxextensions.c
+index 28a8e1d..cfab556 100644
+--- a/Src/cxxextensions.c
++++ b/Src/cxxextensions.c
+@@ -37,7 +37,7 @@
+ #include "CXX/WrapPython.h"
+ 
+ #if PY_MAJOR_VERSION == 2
+-#include "Src/Python2/cxxextensions.c"
++#include "Python2/cxxextensions.c"
+ #else
+-#include "Src/Python3/cxxextensions.c"
++#include "Python3/cxxextensions.c"
+ #endif
+diff --git a/Src/cxxsupport.cxx b/Src/cxxsupport.cxx
+index 1f2fb43..946e60d 100644
+--- a/Src/cxxsupport.cxx
++++ b/Src/cxxsupport.cxx
+@@ -37,7 +37,7 @@
+ #include "CXX/WrapPython.h"
+ 
+ #if PY_MAJOR_VERSION == 2
+-#include "Src/Python2/cxxsupport.cxx"
++#include "Python2/cxxsupport.cxx"
+ #else
+-#include "Src/Python3/cxxsupport.cxx"
++#include "Python3/cxxsupport.cxx"
+ #endif

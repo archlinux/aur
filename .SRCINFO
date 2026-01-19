@@ -1,16 +1,18 @@
 pkgbase = python-pycxx
 	pkgdesc = Write Python extensions in C++
-	pkgver = 7.1.8
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://cxx.sourceforge.net
 	arch = any
-	license = LicenseRef-custom
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://downloads.sourceforge.net/cxx/pycxx-7.1.8.tar.gz
-	sha256sums = 4b91e1e1141c23fbd5039df635c4bb6e75632168548f56b83ce177193c0c98c6
+	source = https://downloads.sourceforge.net/cxx/pycxx-7.2.0.tar.gz
+	source = change-include-paths.patch
+	sha256sums = 4140ca17c39e7f3d8c9a426d12126a037a27dc148e50d3f98f0d334513fcbbb2
+	sha256sums = 8ed381d9542265fcfbac2a50398edf49d44ac4fb59bf6b2455e45fa427fd7d42
 
 pkgname = python-pycxx

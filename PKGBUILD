@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-pycxx
 _name=${pkgname#python-}
-pkgver=7.1.8
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Write Python extensions in C++"
 arch=('any')
 url="https://cxx.sourceforge.net"
-license=('LicenseRef-custom')
+license=('BSD-3-Clause')
 depends=('python')
 makedepends=(
   'python-build'
@@ -14,15 +14,17 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("https://downloads.sourceforge.net/cxx/$_name-$pkgver.tar.gz")
-sha256sums=('4b91e1e1141c23fbd5039df635c4bb6e75632168548f56b83ce177193c0c98c6')
+source=("https://downloads.sourceforge.net/cxx/$_name-$pkgver.tar.gz"
+        'change-include-paths.patch')
+sha256sums=('4140ca17c39e7f3d8c9a426d12126a037a27dc148e50d3f98f0d334513fcbbb2'
+            '8ed381d9542265fcfbac2a50398edf49d44ac4fb59bf6b2455e45fa427fd7d42')
 
 prepare() {
   cd "$_name-$pkgver"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   # Remove unnecessary 'Src/' directory from include path in sources
-  sed -e "/^#include/s:Src/::" -i Src/*.{c,cxx}
+  patch -Np1 -i ../change-include-paths.patch
 
 # Write pkg-config PyCXX.pc file
 cat > "$srcdir/PyCXX.pc" <<EOF
