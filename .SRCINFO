@@ -1,0 +1,16 @@
+pkgbase = kb-layout-daemon-git
+	pkgdesc = Auto-switch keyboard layout based on which physical keyboard is used (KDE/Linux)
+	pkgver = 0.1.0.r0.gba28b4b
+	pkgrel = 1
+	url = https://github.com/aydiler/kb-layout-daemon
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = kb-layout-daemon
+	conflicts = kb-layout-daemon
+	source = git+https://github.com/aydiler/kb-layout-daemon.git
+	sha256sums = SKIP
+
+pkgname = kb-layout-daemon-git
