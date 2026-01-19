@@ -1,4 +1,4 @@
-# Maintainer: David Cohen <dacohen@pm.me>
+# Maintainer: Tomasz Pakuła <forest10pl(at)gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # This PKGBUILD script and the config file are based on official Arch's linux package
