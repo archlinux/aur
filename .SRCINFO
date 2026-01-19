@@ -1,5 +1,5 @@
 pkgbase = python-easypaint
-	pkgdesc = Biblioteca de dibujo para Python 3 (requiere python-tk)
+	pkgdesc = Biblioteca de dibujo para Python 3
 	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://pypi.org/project/easypaint/

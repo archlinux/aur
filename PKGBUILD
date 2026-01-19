@@ -2,7 +2,7 @@
 pkgname=python-easypaint
 pkgver=1.0.7
 pkgrel=1
-pkgdesc="Biblioteca de dibujo para Python 3 (requiere python-tk)"
+pkgdesc="Biblioteca de dibujo para Python 3"
 arch=('any')
 url="https://pypi.org/project/easypaint/"
 license=('AGPL-3.0-or-later')
