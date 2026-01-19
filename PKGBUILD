@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=8.8.1.r2.g70dc006
-_electronversion=39
+pkgver=8.8.3.r6.ga6ee10b
+_electronversion=40
 _nodeversion=22
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Use system-wide electron)"
