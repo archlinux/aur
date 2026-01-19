@@ -1,7 +1,7 @@
 pkgbase = gnome-desktop-item-edit-bin
 	pkgdesc = Old gnome desktop item edit
 	pkgver = 3.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archive.archlinux.org
 	arch = x86_64
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later

@@ -2,7 +2,7 @@
 
 pkgname=gnome-desktop-item-edit-bin
 pkgver=3.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Old gnome desktop item edit"
 arch=('x86_64')
 url="https://archive.archlinux.org"
@@ -28,7 +28,7 @@ sha256sums=(
     )
 
 package() {
-    install -D -m0644 gn-launcher.desktop "${pkgdir}"/usr/share/application/gn-launcher.desktop
+    install -D -m0644 gn-launcher.desktop "${pkgdir}"/usr/share/applications/gn-launcher.desktop
     install -D -m0644 gn-launcher-create.desktop "${pkgdir}"/etc/skel/Desktop/gn-launcher-create.desktop
     install -D -m0644 mate-panel-launcher.svg "${pkgdir}"/usr/share/pixmaps/gn-launcher.svg
 
