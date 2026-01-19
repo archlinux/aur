@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tssh-bin
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="Simple ssh client with trzsz ( trz / tsz ) support."
 arch=(
@@ -18,10 +18,10 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/trzsz/trzsz-ssh/v$
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_aarch64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_i386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('0c8c228332827bb61388bdb01091d731f72823571761be20d24e9812e06282fb')
-sha256sums_aarch64=('f461d9f65f1cbfed0b0c0fd6c92e765c60a8c71d3529eb64fd315d6d81aa4136')
-sha256sums_i686=('e807cd2d2ac07dc0f72307f91ba5cce0c5fcc5870acb3339713d0dcaf66ac6de')
-sha256sums_x86_64=('f2049a174c6e2ba1b6bc0451985c5207f204c04d30339f9714425d58b296cb20')
+sha256sums=('fd6a46d903e2a0a2ca996372c4cd844110a4ca435ecdd339324655ee0aafc67e')
+sha256sums_aarch64=('c068f89b4051d7a0e87ddbb6fa6798e2d21d9acd71760cf3304997bb5a0b6554')
+sha256sums_i686=('a006bc3c453a17cdad7731c510f07c9b35167b4a5986ec9c98bada10d8ae0ea4')
+sha256sums_x86_64=('bf2d1395e97feef3a09669a4cb7156c52f631843c273fdbf31ed50e94937c953')
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}_${pkgver}_"*/"${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
