@@ -1,0 +1,12 @@
+post_install() {
+    /usr/bin/linuwu-sense-setup.sh
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Remove module from all kernels
+    dkms remove -m linuwu-sense -v 1.0.0 --all >/dev/null 2>&1 || true
+}

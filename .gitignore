@@ -1,0 +1,20 @@
+# Makepkg temporary directories
+pkg/
+src/
+
+# Built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+
+# Signatures
+*.sig
+
+# Log files
+*.log
+
+# Linuwu-Sense build artifacts
+Linuwu-Sense
+
+# IDE directories
+.vscode
