@@ -1,0 +1,13 @@
+pkgbase = dred
+	pkgdesc = Fast, ultra-lightweight graphical text editor
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://dred.io/
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = gtk3
+	source = https://github.com/mackron/dred/archive/refs/tags/0.4.3.tar.gz
+	sha256sums = 6a0fc9b70d1c539e14921bba0ae24cc54de5637733f11f2e117bd8c9e9b92e7f
+
+pkgname = dred
