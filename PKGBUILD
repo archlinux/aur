@@ -2,7 +2,7 @@
 # Contributor: Conni2461 <Simon-Hauser@outlook.de>
 _base=klepto
 pkgname=python-${_base}
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="persistent caching to memory, disk, or database"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('python-jsonpickle: for serializers support'
   'python-h5py: for support dictionary-style interface to a hdf5 file'
   'python-pandas: for dataframe support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('b62f5da23825722c76136203e14f16a76450a5e39198128b38e05086f448d75001bae357df2653717adacf472b8285474b1a5897af280c1373ed4ea60da23398')
+sha512sums=('609516a6a0d9eeefb3d6a004ac19e3c57e3ba1e1f83b2a5d9f7423e70288c8e5e7628dc7048747f19091283ff83eb5fd0f2d096e1c03aba21e7b47314e463465')
 
 build() {
   cd ${_base}-${pkgver}
