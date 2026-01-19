@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libpng
-pkgver=1.6.50
+pkgver=1.6.53
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics (Android ${_android_arch})"
 arch=('any')
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-zlib")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-${pkgver}.tar.xz")
-md5sums=('e583e61455c4f40d565d85c0e9a2fbf9')
+md5sums=('0d95e8af31991e976811bbf55f693d2d')
 
 build() {
     cd "${srcdir}/libpng-${pkgver}"
@@ -39,4 +39,6 @@ package () {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
