@@ -2,7 +2,7 @@
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -32,11 +32,9 @@ makedepends=(
     'python-setuptools-scm'
 )
 checkdepends=(
-    'at-spi2-core'
     'python-pytest'
     'python-pytest-image-diff'
     'python-pytest-qt'
-    'xorg-server-xvfb'
 )
 source=(
         "${pkgname}-${pkgver}.tar.gz::https://github.com/labelle-org/labelle/archive/v${pkgver}.tar.gz"
@@ -54,9 +52,6 @@ prepare() {
 
     # Unpin dependency range
     sed -i -E -e 's/"(hatchling|hatch-vcs) [^"]+"/"\1"/g' pyproject.toml
-
-    # Remove flaky assertion, which only works reliably on CI with no printer attached
-    sed -i -e '/"No supported devices found"/d' src/labelle/gui/tests/test_gui.py
 
     # Remove this patch once the upstream author has merged PR #137 and
     # included it in a stable release.
@@ -78,9 +73,13 @@ check() {
     python -m installer --destdir=tmp_install dist/*.whl
 
     echo >&2 'Running unit tests'
+    # The `test_main_window` test passes just fine in a clean chroot
+    # or on systems with no label printer attached.
+    # However, in practice, many users build their packages on
+    # machines with printers attached, which fails the assertion,
+    # so the test causes more hassle in the long run than it’s worth.
     PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
-        dbus-run-session xvfb-run -s '-nolisten local' \
-        pytest src
+        pytest src -k 'not test_main_window'
 }
 
 package() {
