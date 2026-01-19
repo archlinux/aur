@@ -1,13 +1,13 @@
 pkgbase = vend
 	pkgdesc = A simple Common Lisp dependency manager.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/fosskers/vend
 	arch = x86_64
 	license = MPL-2.0
 	depends = ecl
 	options = !strip
-	source = https://github.com/fosskers/vend/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 6bde05d7ba312cfb2e2c7f862e2128089dda476649d930f57c8f60238c0a48aa
+	source = https://github.com/fosskers/vend/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = a6ec2198b8375d08fb0b96e2428b9044e5050316079a49f06621b3855707f2f2
 
 pkgname = vend
