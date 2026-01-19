@@ -17,7 +17,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pesde-pkg/pesde/archive/ref
 sha256sums=('6b2f8af189875e28197c3157acee57342d8dd12416c47c064a002b8b17539448')
 
 prepare() {
-  ls
   cd "$pkgname-$pkgver-registry.$_regver"
   cargo fetch --locked --target host-tuple
 }
