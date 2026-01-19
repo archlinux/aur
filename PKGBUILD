@@ -4,7 +4,7 @@
 _name='snapsync'
 pkgname="ruby-snapsync"
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='tool to automate backing up snapper snapshots to other medias'
 arch=('any')
 url="https://github.com/Eximius/${_name}"
@@ -78,4 +78,5 @@ package() {
   cd "${_name}"
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
