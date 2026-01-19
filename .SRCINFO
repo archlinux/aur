@@ -1,6 +1,6 @@
 pkgbase = gnucash-select
 	pkgdesc = GnuCash File Selector
-	pkgver = 2.7.1
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-select
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnucash-select
 	depends = python>=3.8
 	depends = python-platformdirs
 	depends = python-argparse-from-file
-	source = gnucash-select-2.7.1.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.7.1.tar.gz
-	md5sums = 3f8e5d0f8eedc16ed415eecc94fc8417
+	source = gnucash-select-2.8.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.8.tar.gz
+	md5sums = f4e0a3ce2776ba3cd0f3521b7d47a2a3
 
 pkgname = gnucash-select
