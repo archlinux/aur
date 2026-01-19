@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
 _app_id=io.github.flattool.Ignition
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
 url="https://github.com/flattool/ignition"
@@ -22,7 +22,7 @@ makedepends=(
 source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
         'git+https://github.com/flattool/gir-ts-types.git'
         'git+https://github.com/flattool/gobjectify.git')
-sha256sums=('629c3174abf18ad04c6daed90267a727c2a254ada274203497e658fa1d669672'
+sha256sums=('7eb4894b43ce5b976c07b44e0ce54f24b7c92bae1b684fdaecfb164e1b9d7d8b'
             'SKIP'
             'SKIP')
 
@@ -32,9 +32,6 @@ prepare() {
   git config submodule.gi-types.url "$srcdir/gir-ts-types"
   git config submodule.src/gobjectify.url "$srcdir/gobjectify"
   git -c protocol.file.allow=always submodule update
-
-  # Move src/ and test/ output files to pkgdatadir instead of bin
-  git cherry-pick -n 562a045eab0a1eb0674be6b3c5604a721eb52d84
 }
 
 build() {
