@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HyPrism
+Comment=Hytale Launcher
+Exec=/usr/bin/hyprism
+Icon=hyprism
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=HyPrism
