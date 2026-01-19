@@ -6,13 +6,14 @@ pkgbase = lsfg-vk-bin
 	install = lsfg-vk.install
 	arch = x86_64
 	license = MIT
+	makedepends = tar
 	depends = vulkan-icd-loader
-	depends = bash
-	depends = gcc-libs
 	depends = gtk4
 	depends = libadwaita
-	provides = lsfg-vk
+	depends = hicolor-icon-theme
+	provides = lsfg-vk=1.0.0
 	conflicts = lsfg-vk
+	noextract = lsfg-vk-1.0.0..tar.zst
 	options = !strip
 	source = https://github.com/PancakeTAS/lsfg-vk/releases/download/v1.0.0/lsfg-vk-1.0.0..tar.zst
 	source = LICENSE
