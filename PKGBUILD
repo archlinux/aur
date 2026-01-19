@@ -2,7 +2,7 @@
 _appname=noi
 pkgname="${_appname}-desktop-bin"
 _pkgname=Noi
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=39
 pkgrel=1
 pkgdesc="Power Your World with AI - Explore, Extend, Empower.(Prebuilt version)"
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('3dae652b18a1d16bbc68f51ea28ba032c1a4efa36f93518998581661fb11dd1a')
+sha256sums=('b564638b3af8858d787bd511da902a27221946276d693bf4401fceec910b48da')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
