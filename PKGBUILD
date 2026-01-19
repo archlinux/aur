@@ -28,6 +28,7 @@ sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd'
 prepare() {
   cd "$pkgbase-$pkgver"
 
+  # The imghdr module was removed in Python 3.13, use magic instead
   # https://github.com/autokey/autokey/issues/961
   patch -Np1 -i ../imghdr.patch
 }
@@ -38,9 +39,9 @@ build() {
 
   # remove shebang from python libraries
   for lib in $(find lib/autokey/ -name "*.py"); do
-    sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
-    touch -r $lib $lib.new &&
-    mv $lib.new $lib
+    sed '/\/usr\/bin\/env/d' "${lib}" > "${lib}.new" &&
+    touch -r "${lib}" "${lib}.new" &&
+    mv "${lib}.new" "${lib}"
   done
 }
 
