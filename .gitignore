@@ -1,11 +1,11 @@
-# Source and package folders
+# Source and package directories
 src/
 pkg/
 
 # Archives
 *.zip
-*.7z
 *.tar.gz
+*.7z
 
 # Icon files
 *.ico

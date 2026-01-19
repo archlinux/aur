@@ -1,19 +1,10 @@
 #!/bin/bash
 
-# set the prefix for Wine
-export WINEPREFIX="$HOME/.mupen64-rr-lua"
+if [ ! -d "$HOME"/.mupen64-rr-lua ]; then
+    mkdir -p "$HOME"/.mupen64-rr-lua
 
-# check if the emulator's user directory has been initialized
-if [ ! -d "$WINEPREFIX" ]; then
-    # create the directory for the wine prefix
-    mkdir -p "$WINEPREFIX" || exit 1
-
-    # initiaize the wine prefix
-    wineboot -i || exit 1
-
-    # install the required dependencies using winetricks
-    #winetricks -q dxvk || exit 1
+    ln -s /usr/share/mupen64-rr-lua/mupen64.exe "$HOME"/.mupen64-rr-lua/mupen64.exe
+    ln -s /usr/share/mupen64-rr-lua/plugin "$HOME"/.mupen64-rr-lua/plugin
 fi
 
-# run the emulator
-WINEDEBUG=-all wine /opt/mupen64-rr-lua/mupen64-120-sse2.exe "$@"
+WINEDEBUG=-all wine "$HOME"/.mupen64-rr-lua/mupen64.exe "$@"

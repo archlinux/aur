@@ -1,0 +1,5 @@
+post_install() {
+    echo "Mupen64-rr-lua requires write permissions to the plugins directory in order to function properly."
+    echo "Please ensure that you are in the 'games' group before trying to run Mupen64-rr-lua."
+    echo "In order to add yourself to the 'games' group, run \`usermod -aG games <username>\` and re-login for changes to apply."
+}
