@@ -1,6 +1,6 @@
 pkgbase = findbugs-contrib
 	pkgdesc = A FindBugs/SpotBugs plugin for doing static code analysis for java code bases
-	pkgver = 7.7.3
+	pkgver = 7.7.4
 	pkgrel = 1
 	url = https://github.com/mebigfatguy/fb-contrib
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = findbugs-contrib
 	depends = java-runtime
 	provides = findbugs-contrib
 	conflicts = findbugs-contrib
-	source = findbugs-contrib-7.7.3.jar::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/fb-contrib/fb-contrib/7.7.3/fb-contrib-7.7.3.jar
-	source = findbugs-contrib-7.7.3.sb.jar::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/sb-contrib/sb-contrib/7.7.3/sb-contrib-7.7.3.jar
-	sha256sums = f97f9d3cc5166b1d9745342d23f3d97fe353dfe426d6c3d31fb315d784f92b06
-	sha256sums = f79648031ff7cc1b1dd53af82c945a25675396a7e2ed05eb83cfce27a88d52fd
+	source = findbugs-contrib-7.7.4.jar::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/fb-contrib/fb-contrib/7.7.4/fb-contrib-7.7.4.jar
+	source = findbugs-contrib-7.7.4.sb.jar::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/sb-contrib/sb-contrib/7.7.4/sb-contrib-7.7.4.jar
+	sha256sums = c2c147bc12e9a4c32ad3e940d8a63e7ac1c9da5bb7e800a3a8b9f118e4d67ef2
+	sha256sums = 78c7106ec5f7a4fda676d39a3dc1ec38c6b542addfc8f5f871bdfdf0cdad43ee
 
 pkgname = findbugs-contrib
