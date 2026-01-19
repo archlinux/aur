@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=3.9.4
-_electronversion=39
+pkgver=4.0.0
+_electronversion=40
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db2af504a9f56c71a02daaec809db2cbfe15c9741d81191a2314f7b0d2b80d56'
-            'e20a981e48a83690985362aa066edec95e13a4bd30d76b170b3bd5a4132f6ee4'
+sha256sums=('c63e04af37105e21a00f30ee7b8c0a47a66925dbfd881b9bf3f1f99cfda3d162'
+            '941d106f44f0c5acd2173dfe5531b43a49e7e64f62472dfef4f7711a990a558d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
