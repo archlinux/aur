@@ -22,10 +22,12 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   
+  # The binary is actually called "blitz", not "xboxdrv-blitz"
   install -Dm755 \
-    src-tauri/target/release/xboxdrv-blitz \
-    "$pkgdir/usr/bin/xboxdrv-blitz"
-
+    src-tauri/target/release/blitz \
+    "$pkgdir/usr/bin/xboxdrv-blitz"  # Install it AS xboxdrv-blitz
+  
+  # Rest stays the same...
   install -Dm644 \
     src-tauri/icons/32x32.png \
     "$pkgdir/usr/share/icons/hicolor/32x32/apps/xboxdrv-blitz.png"
