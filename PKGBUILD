@@ -26,7 +26,7 @@ package() {
     install -Dm644 completions/_tomat "$pkgdir/usr/share/zsh/site-functions/_tomat"
 
     # Systemd user service
-    install -Dm644 systemd.service "$pkgdir/usr/lib/systemd/user/tomat.service"
+    install -Dm644 tomat.service "$pkgdir/usr/lib/systemd/user/tomat.service"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
