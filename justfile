@@ -19,6 +19,7 @@ check:
   fi; \
   echo "Checking $pkgfile"; \
   namcap PKGBUILD "$pkgfile" \
+    grep -v "needed ('python-linkify" \
     || true
 
 clean:

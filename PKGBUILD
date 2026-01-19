@@ -2,7 +2,7 @@
 # namcap: ignore deps
 pkgname=tofuref
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI for the OpenTofu provider registry"
 arch=('any')
 url="https://github.com/djetelina/tofuref"
@@ -19,6 +19,7 @@ depends=(
   'python-frontmatter'
   'python-anyio'
   'python-rich'
+  'python-linkify-it-py'
 )
 makedepends=(
   'python-build'
