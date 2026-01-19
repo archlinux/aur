@@ -2,7 +2,7 @@
 
 pkgname=freeimagere-git
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 provides=('libFreeImageRE.so')
 conflicts=('freeimage')
 pkgdesc="Fork of freeimage (library project for developers who would like to support popular graphics image formats)"
