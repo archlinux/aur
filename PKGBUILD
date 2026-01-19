@@ -5,7 +5,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.23.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('openscenegraph' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps' 'flake8' 'autop
 makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock' 'python-setuptools' 'python-build' 'eigen' 'jdk-openjdk' 'maven' 'git' 'python-pip')
 source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz")
 
-sha256sums=('016c506d8bd5d0b6f8e2229ac5dbb9e948535a041559cdd2ff6b616293ac21a8')
+sha256sums=('db9dbc5249905bbbff6b6afc2a405f644dd218265c4381d13f3afcadf4e4c943')
 
 prepare() {
     # example tests still fails
@@ -43,7 +43,7 @@ package_sumo() {
 
     cd ${pkgbase}-${pkgver}
     install -Dm644 data/logo/sumo-128x138.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
-    install -Dm644 build_config/package/${pkgbase}.desktop -t ${pkgdir}/usr/share/applications/
+    install -Dm644 build_config/package/*.desktop -t ${pkgdir}/usr/share/applications/
     install -Dm644 build_config/package/*sh -t ${pkgdir}/etc/profile.d/
 }
 
