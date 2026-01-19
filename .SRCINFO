@@ -1,7 +1,7 @@
 pkgbase = cpx-bin
 	pkgdesc = Cargo-like CLI for C++, compatible with CMake (vcpkg), Bazel and Meson
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ozacod/cpx
 	arch = x86_64
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = cpx-bin
 	depends = vcpkg
 	depends = bazel
 	depends = meson
-	source = cpx-bin-LICENSE::https://github.com/ozacod/cpx/blob/v1.3.5/LICENSE
+	source = cpx-bin-LICENSE::https://raw.githubusercontent.com/ozacod/cpx/refs/heads/v1.3.5/LICENSE
 	sha512sums = 6675525fa2afc7fba564d5de6a971ac0f0956ddc2b802779a95c27d783ee1ca350f93850f1ae8de5cdf4ecf31873d56fa9b8197a101307c1a071fb5b379c8c8d
-	source_x86_64 = cpx-bin-1.3.5::https://github.com/ozacod/cpx/releases/download/v1.3.5/cpx-linux-amd64
-	sha512sums_x86_64 = 734341a9c40fdbd75c8704341bfde6b2a70d66638f246e824cc9ac4fa1782838491676ee92edea7e9113a14cce78474b4121d87334881a3ce98c2586bd1ed483
-	source_aarch64 = cpx-bin-1.3.5::https://github.com/ozacod/cpx/releases/download/v1.3.5/cpx-linux-arm64
+	source_x86_64 = cpx-bin-1.3.5-x86_64::https://github.com/ozacod/cpx/releases/download/v1.3.5/cpx-linux-amd64
+	sha512sums_x86_64 = 43ab9607a7eb7a36657cfa8abf29dfc215e08fec1faa6ad745994ffc4d5b1af36d671213cb100e76fee7a9d5a690148e7c11acec6eee610a817be4334d3d0f62
+	source_aarch64 = cpx-bin-1.3.5-aarch64::https://github.com/ozacod/cpx/releases/download/v1.3.5/cpx-linux-arm64
 	sha512sums_aarch64 = 734341a9c40fdbd75c8704341bfde6b2a70d66638f246e824cc9ac4fa1782838491676ee92edea7e9113a14cce78474b4121d87334881a3ce98c2586bd1ed483
 
 pkgname = cpx-bin
