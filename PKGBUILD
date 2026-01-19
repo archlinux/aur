@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trzsz-bin
-pkgver=1.1.8
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The go version of trzsz, makes all terminals that support local shell to support trzsz ( trz / tsz ).(Prebuilt version)"
 arch=(
@@ -19,11 +19,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv7.rpm")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_i386.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.rpm")
-sha256sums=('217dc855e352e15b989c68acd856903e4d4b8b40d84956c7acf7d37c09495199')
-sha256sums_aarch64=('ef3eca00e7292cfdea5163d86233c666983cc3bdade40ad4779529fb5a6f986a')
-sha256sums_armv7h=('aace5fbefbec3a086a1c670d71c9d521595c33a832fe8db8e64fe16c6c44e016')
-sha256sums_i686=('fcdf231badc6efa420742bd9e418265e9fb60442f5df675cd54bc3b5c5721572')
-sha256sums_x86_64=('42486e81b46dc15de6054aadf65d532948b5a8a5e362cc66e0ae7c3e2f4248b6')
+sha256sums=('30fbfa725e8534e0f14891463caa18acf797242ed834801b74d2fdb8476b7eda')
+sha256sums_aarch64=('1357409bbed43b9eb2f756bb4e7d980044b0956e33e04edb06ba757d65989797')
+sha256sums_armv7h=('8a1c1f61cf40c5d717db14f73b6f0ff1249ecde323e37d1409046b661fe7d1cf')
+sha256sums_i686=('f6d1d142c8afa0c476c312c3bfc304017d6bf15ff2cf50fa9d685fa583559331')
+sha256sums_x86_64=('d6b1aae1c2804f2f44fdd0308c2ea8d1a47f39675e0a29178834abaf910fcec5')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
