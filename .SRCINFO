@@ -1,18 +1,18 @@
 pkgbase = batch-explorer-bin
 	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications.(Prebuilt version)
-	pkgver = 2.22.0_stable.1076
-	pkgrel = 2
+	pkgver = 2.23.0_stable.1210
+	pkgrel = 1
 	url = https://azure.github.io/BatchExplorer/
 	arch = x86_64
 	license = MIT
 	depends = electron29
-	provides = batch-explorer=2.22.0_stable.1076
+	provides = batch-explorer=2.23.0_stable.1210
 	conflicts = batch-explorer
 	options = !strip
 	options = !emptydirs
-	source = batch-explorer-2.22.0_stable.1076.rpm::https://github.com/Azure/BatchExplorer/releases/download/v2.22.0-stable.1076/batch-explorer-2.22.0-stable.1076.x86_64.rpm
-	source = LICENSE-2.22.0_stable.1076::https://raw.githubusercontent.com/Azure/BatchExplorer/v2.22.0-stable.1076/LICENSE
-	sha256sums = 9e506a62ebed74142f60bfc9da5a6af8f5c40412467570f6e06ee5b27543fbf1
+	source = batch-explorer-2.23.0_stable.1210.rpm::https://github.com/Azure/BatchExplorer/releases/download/v2.23.0-stable.1210/batch-explorer-2.23.0-stable.1210.x86_64.rpm
+	source = LICENSE-2.23.0_stable.1210::https://raw.githubusercontent.com/Azure/BatchExplorer/v2.23.0-stable.1210/LICENSE
+	sha256sums = b2091cb18c8e365cc47034af36d42414c5be1ac2fe99d96d8809e8dec132d4e6
 	sha256sums = 0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0
 
 pkgname = batch-explorer-bin

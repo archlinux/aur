@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=batch-explorer-bin
 _pkgname=BatchExplorer
-pkgver=2.22.0_stable.1076
+pkgver=2.23.0_stable.1210
 _electronversion=29
-pkgrel=2
+pkgrel=1
 pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications.(Prebuilt version)"
 arch=('x86_64')
 url="https://azure.github.io/BatchExplorer/"
@@ -22,9 +22,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Azure/BatchExplorer/v${pkgver//_/-}/LICENSE"
 )
-sha256sums=('9e506a62ebed74142f60bfc9da5a6af8f5c40412467570f6e06ee5b27543fbf1'
+sha256sums=('b2091cb18c8e365cc47034af36d42414c5be1ac2fe99d96d8809e8dec132d4e6'
             '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
 		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
