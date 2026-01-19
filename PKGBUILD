@@ -1,15 +1,15 @@
 # Maintainer: Josh Elias <josh at daemontech dot tools>
 pkgname=gurren
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="A fast, terminal-based SSH tunnel manager with TUI and background daemon"
+pkgdesc="A fast, terminal-based SSH tunnel manager with TUI and background service"
 arch=('x86_64')
 url="https://github.com/JoshElias/gurren"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JoshElias/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('033b0873894f235411162e997d4ceb8b344535c427a7ff5ffc7d7e4617bfac9f')
+sha256sums=('c5800f8169509e6cd25529f04c89d7fa2e0231a6043e6cc1bd2c4e61659cb177')
 
 build() {
     cd "$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = gurren
-	pkgdesc = A fast, terminal-based SSH tunnel manager with TUI and background daemon
-	pkgver = 0.1.0
+	pkgdesc = A fast, terminal-based SSH tunnel manager with TUI and background service
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/JoshElias/gurren
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gurren-0.1.0.tar.gz::https://github.com/JoshElias/gurren/archive/v0.1.0.tar.gz
-	sha256sums = 033b0873894f235411162e997d4ceb8b344535c427a7ff5ffc7d7e4617bfac9f
+	source = gurren-0.1.1.tar.gz::https://github.com/JoshElias/gurren/archive/v0.1.1.tar.gz
+	sha256sums = c5800f8169509e6cd25529f04c89d7fa2e0231a6043e6cc1bd2c4e61659cb177
 
 pkgname = gurren
