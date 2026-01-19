@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: RadioactiveRadio <barraiser59@gmail.com>
 pkgname=blue-recorder-git
 _app_id=sa.sy.bluerecorder
