@@ -2,7 +2,7 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sdl3
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64')
 url="https://www.libsdl.org"
