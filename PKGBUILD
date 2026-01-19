@@ -4,7 +4,7 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=8
+pkgrel=9
 
 arch=(any)
 
@@ -14,53 +14,51 @@ license=("LicenseRef-OsakaSimulator")
 depends=(wine winetricks)
 makedepends=(gendesk icoutils)
 
-source=("file://Osaka Simulator FINAL (standalone).zip" "LICENSE.osakasimulator" "osaka-simulator" "tsu_han.cfg")
-md5sums=("69c5e729bd4acc28320afbcc863b454a" "8dbaaafc4d661ff2eed17a2e3d32ca77" "8af04a78b75b73656908f722d6cbce19" "7b644ee8fdf4d1b8213115bef3a1b90c")
+source=("file://Osaka Simulator FINAL (standalone).zip" "${pkgname}" tsu_han.cfg "LICENSE.${pkgname}")
+md5sums=("69c5e729bd4acc28320afbcc863b454a" "0d89ef4c37848f5d3ee2a0daeb114856" "7b644ee8fdf4d1b8213115bef3a1b90c" "8dbaaafc4d661ff2eed17a2e3d32ca77")
 
-DLAGENTS=("file::/usr/bin/echo Could not find %u. Please download it to `$(pwd)` in order to build the package.")
+DLAGENTS=("file::/usr/bin/echo Could not find %u. Please copy it to $(pwd) in order to build package.")
 
 prepare() {
-	# extract the icon out of the executable
-	wrestool -x -n 128 "Osaka Simulator FINAL/tsu_han.exe" -o OsakaSimulator.ico
+	# extract icon out of executable
+	wrestool -x -n 128 "Osaka Simulator FINAL/tsu_han.exe" -o "${pkgname}.ico"
 
-	# get the highest quality PNG from the icon file
-	icotool -x OsakaSimulator.ico -i 3 -o OsakaSimulator.png
+	# get highest quality PNG from icon file
+	icotool -x "${pkgname}.ico" -i 3 -o "${pkgname}.png"
 
 	# generate a .desktop file
 	gendesk -f -n \
 		--pkgname "Ayumu Kasuga's Mail Order Life" \
 		--pkgdesc "${pkgdesc}" \
-		--exec osaka-simulator \
-		--icon osaka-simulator.png \
+		--exec "${pkgname}" \
+		--icon "${pkgname}.png" \
 		--categories "Game;Simulation"
 }
 
 package() {
-	# move to the source directory
+	# move to source directory
 	cd "Osaka Simulator FINAL"
 
-	# delete the bundled-in save file and configuration file
-	rm -f tsu_han.dat
-	rm -f tsu_han.cfg
+	# delete leftover save, config and log files
+	rm tsu_han.dat tsu_han.cfg init.log
 
-	# copy the game's files
-	find . -type d -exec install -Dm755 -ggames -d "${pkgdir}/opt/osaka-simulator/{}" \;
+	# copy osaka simulator files
 	find . -type f \
-		-not -name "tsu_han.exe" \
-		-exec install -Dm644 -ggames {} "${pkgdir}/opt/osaka-simulator/{}" \;
+		-not -name tsu_han.exe \
+		-exec install -Dm644 "{}" "${pkgdir}/usr/share/${pkgname}/{}" \;
 
-	install -Dm755 tsu_han.exe "${pkgdir}/opt/osaka-simulator/tsu_han.exe"
+	install -Dm755 tsu_han.exe "${pkgdir}/usr/share/${pkgname}/tsu_han.exe"
 
-	# copy the package's configuration file
-	install -Dm644 ../tsu_han.cfg "${pkgdir}/opt/osaka-simulator/tsu_han.cfg"
+	# copy package's configuration file
+	install -Dm644 ../tsu_han.cfg "${pkgdir}/usr/share/${pkgname}/tsu_han.cfg"
 
-	# copy the executable script
-	install -Dm755 ../osaka-simulator "${pkgdir}/usr/bin/osaka-simulator"
+	# copy executable script
+	install -Dm755 ../"${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	# copy the extracted icon and the generated .desktop file
-	install -Dm644 ../OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/osaka-simulator.png"
-	install -Dm644 ../"Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
+	# copy extracted icon and generated .desktop file
+	install -Dm644 ../"${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm644 ../"Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	# copy the license
-	install -Dm644 ../LICENSE.osakasimulator "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
+	# copy license
+	install -Dm644 ../"LICENSE.${pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

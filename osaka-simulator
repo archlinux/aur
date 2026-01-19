@@ -1,22 +1,20 @@
 #!/bin/bash
 
-# set environment variables for wine
-export WINEARCH=win32 WINEPREFIX="$HOME/.osaka-simulator"
+export WINEPREFIX="$HOME"/.osaka-simulator/wine
 
-# check if the game's user directory has been initialized
-if [ ! -d "$HOME/.osaka-simulator" ]; then
-    # create the directory for the wine prefix
-    mkdir -p "$HOME/.osaka-simulator" || exit 1
+if [ ! -d "$HOME"/.osaka-simulator ]; then
+    mkdir -p "$HOME"/.osaka-simulator/wine
 
-    # initiaize the wine prefix
-    wineboot -i || exit 1
+    wineboot -u
+    winetricks -q dx8vb dmime dmsynth dmusic dsound dswave
 
-    # install the required dependencies using winetricks
-    winetricks -q dmime dmsynth dmusic dsound dswave dx8vb || exit 1
+    ln -s /usr/share/osaka-simulator/animation "$HOME"/.osaka-simulator/animation
+    ln -s /usr/share/osaka-simulator/clipper "$HOME"/.osaka-simulator/clipper
+    ln -s /usr/share/osaka-simulator/model "$HOME"/.osaka-simulator/model
+    ln -s /usr/share/osaka-simulator/sound "$HOME"/.osaka-simulator/sound
+
+    ln -s /usr/share/osaka-simulator/tsu_han.exe "$HOME"/.osaka-simulator/tsu_han.exe
+    cp /usr/share/osaka-simulator/tsu_han.cfg "$HOME"/.osaka-simulator/tsu_han.cfg
 fi
 
-# move into the game's directory
-cd /opt/osaka-simulator || exit 1
-
-# run the game
-WINEDEBUG=-all wine /opt/osaka-simulator/tsu_han.exe "$@"
+cd "$HOME"/.osaka-simulator && WINEDEBUG=-all LANG=ja_JP.utf8 wine "$HOME"/.osaka-simulator/tsu_han.exe "$@"
