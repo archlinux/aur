@@ -1,6 +1,6 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.6.2.r5.gf673a75
+pkgver=0.6.2.r14.gd0e355f
 pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-    install -Dm644 "$srcdir/$pkgname/wleave.desktop" "$pkgdir/usr/share/applications/wleave.desktop"
+    install -Dm644 "$srcdir/$pkgname/sh.natty.Wleave.desktop" "$pkgdir/usr/share/applications/sh.natty.Wleave.desktop"
 
     install -Dm755 "$srcdir/$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
