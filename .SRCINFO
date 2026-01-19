@@ -1,5 +1,5 @@
 pkgbase = pvm-git
-	pkgdesc = PVM loader script (always latest from GitHub)
+	pkgdesc = Loader for PVM, a Turing-Complete programming language
 	pkgver = 0.1.0.r20260119
 	pkgrel = 1
 	url = https://github.com/f1nnsauce/pvm

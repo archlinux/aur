@@ -2,7 +2,7 @@
 pkgname=pvm-git
 pkgver=0.1.0.r20260119
 pkgrel=1
-pkgdesc="PVM loader script (always latest from GitHub)"
+pkgdesc="Loader for PVM, a Turing-Complete programming language"
 arch=('any')
 url="https://github.com/f1nnsauce/pvm"
 license=('MIT')
