@@ -1,6 +1,6 @@
 pkgbase = live-photo-conv
 	pkgdesc = A cross-platform tool to process live photos of Google Android
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/live-photo-conv
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = live-photo-conv
 	optdepends = libheif: Support to save photos as .heif, .heic, and .avif with GStreamer and GdkPixbuf backend
 	optdepends = libjxl: Support to save photos as .jxl with GStreamer and GdkPixbuf backend
 	optdepends = webp-pixbuf-loader: Support to save photos as .webp with GStreamer and GdkPixbuf backend
-	source = git+https://github.com/wszqkzqk/live-photo-conv.git#tag=0.4.4
-	sha256sums = dd1c3bf55a97331464302f06f255beb1ffcc1f0d1f75fbaf0976f7eb12a43caa
+	source = git+https://github.com/wszqkzqk/live-photo-conv.git#tag=0.4.5
+	sha256sums = f25776ccb63395f4393dcb64ee63fa74326f92ec0271a48447f158949205d75a
 
 pkgname = live-photo-conv
