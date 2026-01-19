@@ -6,10 +6,14 @@ pkgdesc="PipeWire audio ducking utility (git)"
 arch=('x86_64')
 url="https://github.com/geri1701/pw-duck"
 license=('MIT')
+
 depends=('pipewire')
 makedepends=('git' 'cargo' 'rust' 'clang' 'pkgconf' 'pipewire')
+
 provides=('pw-duck')
 conflicts=('pw-duck')
+
+options=(!lto !strip)
 
 source=("git+https://github.com/geri1701/pw-duck.git")
 sha256sums=('SKIP')
