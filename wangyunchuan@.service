@@ -15,7 +15,7 @@ EnvironmentFile=/etc/wangyunchuan/%i_token
 
 NoNewPrivileges=yes
 PrivateTmp=yes
-ProtectSystem=strict
+ProtectSystem=yes
 ProtectHome=yes
 ReadWritePaths=/var/log/wangyunchuan/${WYCLOG_PREFIX}
 
