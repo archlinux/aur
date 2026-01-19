@@ -1,18 +1,18 @@
 pkgbase = resource-hacker
-	pkgdesc = A resource editor for 32/64-bit Windows applications
+	pkgdesc = A freeware resource compiler & decompiler for Windows applications
 	pkgver = 5.2.8
-	pkgrel = 2
-	url = http://www.angusj.com/resourcehacker
+	pkgrel = 3
+	url = https://www.angusj.com/resourcehacker
 	arch = any
 	license = LicenseRef-ResourceHacker
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = wine
-	source = resource-hacker-5.2.8.zip::http://www.angusj.com/resourcehacker/resource_hacker.zip
+	source = resource-hacker-5.2.8.zip::https://www.angusj.com/resourcehacker/resource_hacker.zip
 	source = resource-hacker
-	source = LICENSE.resourcehacker
+	source = LICENSE.resource-hacker
 	md5sums = 5049d2d44a5b378c6dd92524b902c4e7
-	md5sums = e0cee5d95899e83a2e1b1571bbb98be6
-	md5sums = f686b88c5279285dfa50e4e5a54a538c
+	md5sums = 01748cf604897644bb6bdb410cffba19
+	md5sums = 74ac74cfc24b7b4561f3be670c63da24
 
 pkgname = resource-hacker
