@@ -15,7 +15,7 @@ def fetch(url: str) -> str:
     with urlopen(url) as r:
         return r.read().decode("utf-8")
 
-if sys.argv[1] == "update":
+if len(sys.argv) == 2 and sys.argv[1] == "update":
     LOADER.write_text(fetch(LOADER_URL))
     LOADER_VERSION.write_text(fetch(LOADER_VERSION_URL))
     print("PVM Loader updated.")

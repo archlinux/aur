@@ -1,7 +1,7 @@
 # Maintainer: Finn <f1nnsauce.business@proton.me>
 pkgname=pvm-git
 pkgver=0.1.0.r20260119
-pkgrel=2
+pkgrel=3
 pkgdesc="Loader for PVM, a Turing-Complete programming language"
 arch=('any')
 url="https://github.com/f1nnsauce/pvm"
