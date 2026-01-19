@@ -4,8 +4,8 @@
 
 pkgname=atlas-bin
 pkgdesc="A modern tool for managing database schemas"
-pkgver=0.38.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=3
 binary=atlas
 arch=("x86_64")
 makedepends=("go")
@@ -17,8 +17,8 @@ url="https://github.com/ariga/${binary}"
 
 source_x86_64=("https://release.ariga.io/atlas/${binary}-community-linux-amd64-v${pkgver}")
 
-sha256sums_x86_64=('9185c30c5c164b7ad415826c5ef5a5e7806ebc1e2f942c334aaad489c03c99f6')
-b2sums_x86_64=('4d6c46e1bdfa7a1215ddcff19963a491858a1a10a5c998c395fc4674115f9f55197729a2222e31b70f50ec94e42274c241dca9a8e4c437a025a3a00a79cea650')
+sha256sums_x86_64=('9933f9a75cad6962ba0cf39813ecc2b1454aa35e952e4bcc36ee714c921ac860')
+b2sums_x86_64=('1f41c0a93de22d80d49ee620dc57da8c90bee3cf3bb4d81994cbdb4e01d23915e96c109d88e2196646f86aac42e242d019c21a909689637e00c2ded6ddef0a42')
 
 package() {
     install -Dm755 "${srcdir}/${binary}-community-linux-amd64-v${pkgver}" "${pkgdir}/usr/bin/${binary}"
