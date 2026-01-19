@@ -13,7 +13,8 @@ url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
 arch=(x86_64)
 # ts-node required for CLI
-makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
+# not having npm in a clean chroot prevents installation of dependencies like sharp and bcrypt. still figuring out
+makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise' npm)
 
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
@@ -43,7 +44,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
     # need to ensure this matches sharp depend version
     # because otherwise a local copy will be built
     # breaking heif conversion
-    'libvips>=8.17.2'
+    'libvips>=8.17.3'
     'openslide'
     'poppler-glib'
     'imagemagick'

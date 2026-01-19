@@ -10,6 +10,7 @@ pkgbase = immich
 	makedepends = jq
 	makedepends = ts-node
 	makedepends = mise
+	makedepends = npm
 	depends = valkey
 	depends = postgresql>=14
 	depends = nodejs>=20
@@ -32,7 +33,7 @@ pkgbase = immich
 	depends = liblqr
 	depends = libtool
 	depends = jellyfin-ffmpeg
-	depends = libvips>=8.17.2
+	depends = libvips>=8.17.3
 	depends = openslide
 	depends = poppler-glib
 	depends = imagemagick
