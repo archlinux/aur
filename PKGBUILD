@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 provides=('reflector')
 conflicts=('reflector')
 depends=('openssl')
-makedepends=('cargo' 'git' 'rust')
+makedepends=('cargo' 'git' 'rust' 'gzip')
 backup=('etc/xdg/reflector/reflector.conf')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -34,6 +34,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
+  gzip man/reflector.1
 }
 
 package() {
@@ -54,8 +55,8 @@ package() {
     "$pkgdir/etc/xdg/reflector/reflector.conf"
 
   # Install man page
-  install -Dm644 "man/reflector.1" "usr/share/man/man1/reflector.1"
+  install -Dm644 "man/reflector.1.gz" "$pkgdir/usr/share/man/man1/reflector.1.gz"
 
   # Install license
-  install -Dm644 LICENSE "usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
