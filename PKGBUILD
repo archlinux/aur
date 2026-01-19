@@ -2,7 +2,7 @@
 pkgname=jan-bin
 _pkgname=Jan
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version)"
 arch=('x86_64')
 url="https://jan.ai/"
@@ -31,6 +31,7 @@ prepare() {
     sed -i -e "
         s/Categories=/Categories=Utility/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Exec=${_pkgname}/Exec=WEBKIT_DISABLE_COMPOSITING_MODE=1 ${_pkgname}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
