@@ -1,0 +1,14 @@
+pkgbase = rtl8851be-bt-foxconn-dkms
+	pkgdesc = Patched btusb driver for Realtek RTL8851BE/RTL8852BE (0489:e112) Bluetooth
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/9nunya/rtl8852be-bt-0489-e112-driver
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	source = git+https://github.com/9nunya/rtl8852be-bt-0489-e112-driver.git
+	sha256sums = SKIP
+
+pkgname = rtl8851be-bt-foxconn-dkms
