@@ -22,14 +22,14 @@ pkgname = kratos
 
 pkgname = protoc-gen-go-errors
 	pkgdesc = Protobuf plugin that generates error codes and RPC error helpers
-	url = https://go-kratos.dev/tree/main/cmd/protoc-gen-go-errors
+	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-errors
 	depends = glibc
 	depends = protobuf
 	depends = protoc-gen-go
 
 pkgname = protoc-gen-go-http
 	pkgdesc = Protobuf plugin that generates RPC service templates for HTTP APIs
-	url = https://go-kratos.dev/tree/main/cmd/protoc-gen-go-http
+	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-http
 	depends = glibc
 	depends = protobuf
 	depends = protoc-gen-go

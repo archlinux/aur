@@ -9,10 +9,14 @@ pkgname=(
 pkgver=2.9.1
 pkgrel=1
 pkgdesc="Your ultimate Go microservices framework for the cloud-native era"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://go-kratos.dev"
 _url="https://github.com/go-kratos/${pkgbase}"
-license=('MIT')
+license=(
+  'MIT'
+)
 makedepends=(
   'go'
 )
@@ -20,7 +24,9 @@ checkdepends=(
   'git'
 )
 _pkgsrc="${_url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
 sha256sums=('6bd9f0c3cec292143452f02f476314939e2a939b3c8db2a3597a7ef44be272bb')
 
 prepare() {
@@ -30,6 +36,7 @@ prepare() {
   for _name in "${pkgname[@]}"; do
     pushd "cmd/${_name}" >/dev/null
     go mod download -modcacherw -x
+    go mod verify
     popd >/dev/null
   done
 
@@ -92,7 +99,7 @@ package_kratos() {
 
 package_protoc-gen-go-errors() {
   pkgdesc="Protobuf plugin that generates error codes and RPC error helpers"
-  url+="/tree/main/cmd/${pkgname}"
+  url="${_url}/tree/main/cmd/${pkgname}"
   depends=(
     'glibc'
     'protobuf'
@@ -106,7 +113,7 @@ package_protoc-gen-go-errors() {
 
 package_protoc-gen-go-http() {
   pkgdesc="Protobuf plugin that generates RPC service templates for HTTP APIs"
-  url+="/tree/main/cmd/${pkgname}"
+  url="${_url}/tree/main/cmd/${pkgname}"
   depends=(
     'glibc'
     'protobuf'
