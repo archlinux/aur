@@ -6,7 +6,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-librsvg
-pkgver=2.59.2
+pkgver=2.61.3
 pkgrel=1
 arch=('any')
 pkgdesc="SVG rendering library (Android ${_android_arch})"
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              'android-rust')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/${pkgver}/librsvg-${pkgver}.tar.bz2")
-md5sums=('f899eab00948aea436debd1e392db1ba')
+md5sums=('657ad5b49f91564b77f99a9458ade171')
 
 prepare() {
     cd "${srcdir}/librsvg-${pkgver}"
@@ -32,11 +32,7 @@ prepare() {
     android_rust_prepare
 }
 
-# Use LTO
-export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-
-# Use debug
-export CARGO_PROFILE_RELEASE_DEBUG=2
+export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$(nproc)
 
 build() {
     cd "${srcdir}/librsvg-${pkgver}"
@@ -46,6 +42,7 @@ build() {
         -D triplet=${RUST_TARGET} \
         -D introspection=disabled \
         -D pixbuf-loader=disabled \
+        -D rsvg-convert=disabled \
         -D docs=disabled \
         -D tests=false
     ninja -C build
@@ -60,4 +57,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/"{doc,man}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING.LIB -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
