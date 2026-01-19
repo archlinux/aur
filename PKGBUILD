@@ -2,7 +2,7 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 pkgname=coredns
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
 conflicts=('coredns-bin')
@@ -39,7 +39,7 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  # export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "coredns-$pkgver"
