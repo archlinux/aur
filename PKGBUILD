@@ -2,8 +2,8 @@
 
 pkgname=python-curl-cffi
 _name=curl_cffi
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Python binding for curl-impersonate fork via cffi"
 arch=(x86_64)
 url="https://github.com/lexiforest/$_name"
@@ -30,8 +30,8 @@ makedepends=(
   unzip
 )
 options=(!debug)
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('90135e4c782ae3e40da2d66366cbc5921834d016a206e9f4f64998282c783f11a33ee9a283b45c4dc7811bece318b202a3461c2d76873425c2976b0d6a13da77')
+source=($url/archive/v$pkgver/$_name-$pkgver.tar.gz)
+b2sums=('4bc337255dbfa270ca0bd8cf4756d1859b8950744de943dc757459d6109847331c3e9a3e42b9bda28574af455eeb1b8473de6b8b4edcd0a1b7167f3dea920479')
 
 prepare() {
   cd $_name-$pkgver
