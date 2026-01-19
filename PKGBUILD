@@ -2,11 +2,14 @@
 _appname='khiops visualization'
 pkgname="${_appname// /-}-bin"
 _pkgname='khiops Visualization'
-pkgver=11.4.0
+pkgver=11.4.1
 _electronversion=39
 pkgrel=1
 pkgdesc="The Electron application that encapsulates Khiops Visualization.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/KhiopsML/kv-electron"
 license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
@@ -18,13 +21,15 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/KhiopsML/kv-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('12239d8281fe007b7a2bba5013098dad2b1521d1b80594681e13b098ac7aa676'
-            '21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+sha256sums=('21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('2160f9f2d1d3dea2c45bf30712344f3246370f8b7de94c6a216a6bc0ee945b65')
+sha256sums_x86_64=('12bb9dec69277c445d937fc19084462df803e1bfd97da2c5f558f0a3043b9138')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_appname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"

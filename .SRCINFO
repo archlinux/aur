@@ -1,19 +1,22 @@
 pkgbase = khiops-visualization-bin
 	pkgdesc = The Electron application that encapsulates Khiops Visualization.(Prebuilt version.Use system-wide electron)
-	pkgver = 11.4.0
+	pkgver = 11.4.1
 	pkgrel = 1
 	url = https://github.com/KhiopsML/kv-electron
+	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron39
-	provides = khiops-visualization=11.4.0
+	provides = khiops-visualization=11.4.1
 	conflicts = khiops-visualization
 	options = !emptydirs
-	source = khiops-visualization-11.4.0.rpm::https://github.com/KhiopsML/kv-electron/releases/download/v11.4.0/khiops-visualization-11.4.0.x86_64.rpm
-	source = LICENSE-11.4.0::https://raw.githubusercontent.com/KhiopsML/kv-electron/v11.4.0/LICENSE
+	source = LICENSE-11.4.1::https://raw.githubusercontent.com/KhiopsML/kv-electron/v11.4.1/LICENSE
 	source = khiops-visualization.sh
-	sha256sums = 12239d8281fe007b7a2bba5013098dad2b1521d1b80594681e13b098ac7aa676
 	sha256sums = 21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = khiops-visualization-11.4.1-aarch64.rpm::https://github.com/KhiopsML/kv-electron/releases/download/v11.4.1/khiops-visualization-11.4.1.aarch64.rpm
+	sha256sums_aarch64 = 2160f9f2d1d3dea2c45bf30712344f3246370f8b7de94c6a216a6bc0ee945b65
+	source_x86_64 = khiops-visualization-11.4.1-x86_64.rpm::https://github.com/KhiopsML/kv-electron/releases/download/v11.4.1/khiops-visualization-11.4.1.x86_64.rpm
+	sha256sums_x86_64 = 12bb9dec69277c445d937fc19084462df803e1bfd97da2c5f558f0a3043b9138
 
 pkgname = khiops-visualization-bin
