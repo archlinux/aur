@@ -1,7 +1,7 @@
 pkgbase = intel-graphics-compiler-legacy
 	pkgdesc = Intel Graphics Compiler for OpenCL (legacy platforms)
 	pkgver = 1.0.17537.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT

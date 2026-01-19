@@ -9,7 +9,7 @@ _spirv_tools_ver=2023.6.rc1
 _spirv_headers_commit=1c6bb2743599e6eb6f37b2969acc0aef812e32e3
 _spirv_llvm_commit=065a94408d01bacf2ee86443f56cfaa64fda1534
 _opencl_clang_commit=470cf0018e1ef6fc92eda1356f5f31f7da452abc
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Compiler for OpenCL (legacy platforms)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
@@ -55,7 +55,8 @@ prepare() {
     
     # llvm: fix build with gcc 15
     # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
-    EMAIL='builduser@archlinux.org' \
+    export GIT_COMMITTER_NAME='builduser'
+    export GIT_COMMITTER_EMAIL='builduser@archlinux.org'
     git -C llvm-project cherry-pick 7e44305041d96b064c197216b931ae3917a34ac1
     
     patch -d "intel-graphics-compiler-igc-${pkgver}" -Np1 -i "${srcdir}/010-intel-graphics-compiler-disable-werror.patch"
@@ -74,7 +75,9 @@ build() {
     
     CXXFLAGS+=" -isystem${srcdir}/SPIRV-LLVM-Translator/include"
     
-    EMAIL='builduser@archlinux.org' \
+    export GIT_COMMITTER_NAME='builduser'
+    export GIT_COMMITTER_EMAIL='builduser@archlinux.org'
+    
     cmake -B build -S "intel-graphics-compiler-igc-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCCLANG_FROM_SYSTEM:BOOL='OFF' \
