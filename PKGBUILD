@@ -1,7 +1,7 @@
 # Maintainer: bill <beakless dot bill AT gmail DOT com>
 
 pkgname=freeimagere-git
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 provides=('libFreeImageRE.so')
 conflicts=('freeimage')
@@ -24,8 +24,6 @@ pkgver() {
   echo "${pkgver_maj}.${pkgver_min}"
 }
 build() {
-  # reported upstream, wrong version referenced
-  sed -e '65s%libheif\.so\.1\.19\.7%libheif.so.1.20.2%' -i "${pkgname}/cmake/dependency.heif.cmake"
   local cmake_options=(
     -B build
     -S "${pkgname}"
