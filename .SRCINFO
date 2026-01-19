@@ -1,14 +1,14 @@
 pkgbase = zigenity
 	pkgdesc = Display graphical dialog boxes from shell scripts (like zenity but written in zig)
-	pkgver = 0.6.0
-	pkgrel = 2
-	url = https://github.com/r4gus/zigenity
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://codeberg.org/r4gus/zigenity
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.15.0
 	makedepends = zig<0.16.0
-	source = zigenity-0.6.0.tar.gz::https://github.com/r4gus/zigenity/archive/refs/tags/0.6.0.tar.gz
-	b2sums = f04d23ab432830e02adc25315ef16b246ada3f86a6217da718667bd340e9e07d97f9e03854a5c8557c5539267811652507536099a8ca574a4aacb46790f69488
+	source = zigenity.tar.gz::https://codeberg.org/r4gus/zigenity/archive/0.7.1.tar.gz
+	b2sums = 3e694f96d2002b6f9aac4e3b6eff47b57485d76152402c6f8e3c8f3b15b8aa4a5de484fc8dbf729ca94a5609502cfa4ed58af34e3b0555286c0478261c19500d
 
 pkgname = zigenity
