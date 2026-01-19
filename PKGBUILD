@@ -15,7 +15,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
          'wxwidgets-gtk3' 'z3' 'zlib')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
-             'cereal' 'cgal' 'eigen3' 'nlohmann-json')
+             'cereal' 'cgal' 'eigen3' 'nlohmann-json' 'glad')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${pkgname}-${pkgver/_/-}.tar.gz
         fixes_boost.patch
@@ -24,7 +24,8 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${p
         integrate_occtwrapper.patch
         boost-1.88.patch
         boost-1.89.patch
-        allow_wayland.patch)
+        allow_wayland.patch
+        use_glad.patch)
 sha256sums=('4f2d8d30561047a82f63ec23eb530f996b08d599c0d9ecbaebaeb44aa4a1c849'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
@@ -32,7 +33,8 @@ sha256sums=('4f2d8d30561047a82f63ec23eb530f996b08d599c0d9ecbaebaeb44aa4a1c849'
             'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223'
             '75d240f20ac5a9da8a780500dd9756af8c6d13edddaf25ff99673d42eabf3d7a'
             '730fe9b67d69dffd8f02ba92e13263cd002cc597204d8b718deeb76ff25f43c7'
-            'ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06')
+            'ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06'
+            'de93af123efed90721784d5665e95eb4a757349e039caf009cd45db2ed3d81d6')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
@@ -52,6 +54,19 @@ prepare() {
   patch -Np1 -i "${srcdir}"/boost-1.88.patch
   patch -Np1 -i "${srcdir}"/boost-1.89.patch
   patch -Np1 -i "${srcdir}"/allow_wayland.patch
+  # The following patch implements the idea found in
+  # https://github.com/prusa3d/PrusaSlicer/pull/14440 but implements it by
+  # generating the glad sources on the fly instead of checking them in and
+  # providing some glue code to use them with the glew interface.  Those
+  # measures make the patch much smaller and easier to maintain.  In addition
+  # they assure that potential security fixes or other bug fixes propagate to
+  # the generated sources in out package.
+  patch -Np1 -i "${srcdir}"/use_glad.patch
+  # Generate glad sources
+  # The set of extensions was empirically determined by starting with no
+  # extensions and iteratively adding those that caused the build to fail.
+  glad --api='gl:compatibility' --extensions='GL_ARB_compatibility,GL_ARB_framebuffer_object,GL_EXT_framebuffer_blit,GL_EXT_framebuffer_multisample,GL_EXT_framebuffer_object,GL_EXT_texture_compression_s3tc,GL_EXT_texture_filter_anisotropic,GL_KHR_debug' --out-path glad c --loader
+
   # Do some minimal branding to indicate that user is running the official
   # Arch Linux package version and to direct them to the proper bug reporting
   # guidelines.
@@ -79,7 +94,7 @@ build() {
       -G Ninja \
       -S PrusaSlicer-version_${pkgver/_/-}/deps \
       -B deps_${pkgver} \
-      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \

@@ -1,0 +1,100 @@
+commit 60c47650afc145229aa2d645e27b1aca74b56e20
+Author: Robert Schiele <rschiele@gmail.com>
+Date:   Thu Jan 22 09:52:36 2026 +0100
+
+    use glad
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2c1fb0043..d837c8457b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -480,7 +480,10 @@ if (SLIC3R_STATIC AND NOT SLIC3R_STATIC_EXCLUDE_GLEW)
+     set(GLEW_VERBOSE ON)
+ endif()
+ 
+-find_package(GLEW REQUIRED)
++add_library(glad_gl STATIC ${CMAKE_CURRENT_SOURCE_DIR}/glad/src/gl.c)
++target_include_directories(glad_gl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/glad/include)
++add_library(GLAD::GL ALIAS glad_gl)
++add_library(GLEW::GLEW ALIAS glad_gl)
+ 
+ # Find the Cereal serialization library
+ find_package(cereal REQUIRED)
+diff --git a/glad/include/GL/glew.h b/glad/include/GL/glew.h
+new file mode 100644
+index 0000000000..dc522fa27d
+--- /dev/null
++++ b/glad/include/GL/glew.h
+@@ -0,0 +1,14 @@
++#ifndef GLEW_STUB
++#define GLEW_STUB
++#include "../glad/gl.h"
++#define GLEW_EXT_texture_filter_anisotropic GLAD_GL_EXT_texture_filter_anisotropic
++#define GLEW_ARB_compatibility GLAD_GL_ARB_compatibility
++#define GLEW_EXT_texture_compression_s3tc GLAD_GL_EXT_texture_compression_s3tc
++#define GLEW_ARB_framebuffer_object GLAD_GL_ARB_framebuffer_object
++#define GLEW_EXT_framebuffer_object GLAD_GL_EXT_framebuffer_object
++#define GLEW_KHR_debug GLAD_GL_KHR_debug
++#define GLEW_OK 0
++static unsigned char glewExperimental __attribute__((unused));
++static inline unsigned int __attribute__((unused)) glewInit() { return gladLoaderLoadGL() == 0; }
++static inline const char* __attribute__((unused)) glewGetErrorString(unsigned int) { return "glad loader failed"; }
++#endif
+diff --git a/src/libvgcode/CMakeLists.txt b/src/libvgcode/CMakeLists.txt
+index fe3f0da07f..983c06ce54 100644
+--- a/src/libvgcode/CMakeLists.txt
++++ b/src/libvgcode/CMakeLists.txt
+@@ -1,21 +1,6 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(libvgcode)
+ 
+-# glad library
+-if (EMSCRIPTEN OR SLIC3R_OPENGL_ES)
+-    set(GLAD_SOURCES
+-        glad/include/glad/gles2.h
+-        glad/include/KHR/khrplatform.h
+-        glad/src/gles2.c
+-    )
+-else ()
+-    set(GLAD_SOURCES
+-        glad/include/glad/gl.h
+-        glad/include/KHR/khrplatform.h
+-        glad/src/gl.c
+-    )
+-endif ()
+-
+ set(LIBVGCODE_SOURCES
+ 	# API
+ 	include/ColorPrint.hpp
+@@ -59,7 +44,6 @@ set(LIBVGCODE_SOURCES
+ 	src/ViewerImpl.cpp
+ 	src/ViewRange.hpp
+ 	src/ViewRange.cpp
+-	${GLAD_SOURCES}
+ )
+ 
+ add_library(libvgcode STATIC ${LIBVGCODE_SOURCES})
+@@ -76,5 +60,4 @@ if (WIN32)
+     endforeach()
+ endif ()
+ 
+-# glad includes
+-include_directories(glad/include)
+\ No newline at end of file
++target_link_libraries(libvgcode GLAD::GL)
+diff --git a/src/libvgcode/src/OpenGLUtils.hpp b/src/libvgcode/src/OpenGLUtils.hpp
+index ad7b370aa2..9b28f11e5e 100644
+--- a/src/libvgcode/src/OpenGLUtils.hpp
++++ b/src/libvgcode/src/OpenGLUtils.hpp
+@@ -7,9 +7,9 @@
+ 
+ // OpenGL loader
+ #ifdef ENABLE_OPENGL_ES
+-#include "../glad/include/glad/gles2.h"
++#include <glad/gles2.h>
+ #else
+-#include "../glad/include/glad/gl.h"
++#include <glad/gl.h>
+ #endif // ENABLE_OPENGL_ES
+ 
+ #include <string>
