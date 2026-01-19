@@ -1,0 +1,14 @@
+pkgbase = pesde
+	pkgdesc = A package manager for the Luau programming language supporting multiple runtimes including Roblox and Lune
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/pesde-pkg/pesde
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = pesde-0.7.2.tar.gz::https://github.com/pesde-pkg/pesde/archive/refs/tags/v0.7.2+registry.0.2.3.tar.gz
+	sha256sums = 6b2f8af189875e28197c3157acee57342d8dd12416c47c064a002b8b17539448
+
+pkgname = pesde
