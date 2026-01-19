@@ -13,11 +13,9 @@ Group=wangyunchuan
 Environment=WYC_INSTANCE=%i
 EnvironmentFile=/etc/wangyunchuan/%i_token
 
-NoNewPrivileges=yes
 PrivateTmp=yes
-ProtectSystem=yes
+ProtectSystem=no
 ProtectHome=yes
-ReadWritePaths=/var/log/wangyunchuan/${WYCLOG_PREFIX}
 
 ExecStart=/usr/bin/wyc -token ${WYC_TOKEN} -run
 Restart=always
