@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libtasn1
-pkgver=4.20.0
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS (Android ${_android_arch})"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://ftp.gnu.org/gnu/libtasn1/libtasn1-${pkgver}.tar.gz")
-md5sums=('930f71d788cf37505a0327c1b84741be')
+md5sums=('2ee1d9f3aa66f1e308c46a283aa9a8c2')
 
 prepare() {
     source android-env ${_android_arch}
@@ -42,4 +42,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
