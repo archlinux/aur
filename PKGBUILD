@@ -1,8 +1,8 @@
 # Maintainer: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=rvx-builder
-pkgver=3.18.7
-pkgrel=2
+pkgver=3.18.10
+pkgrel=1
 pkgdesc="A NodeJS ReVanced Extended Builder"
 arch=("x86_64")
 url="https://github.com/inotia00/rvx-builder"
@@ -20,7 +20,7 @@ source=(
   "rvx-builder.png"
 )
 noextract=("${pkgname}-${pkgver}.tar,gz")
-sha256sums=('949b9edd89a0a29a777d9b42ddd15814e17a16a9e3068dfcf09825cb650d1cd2'
+sha256sums=('4a8a2870cb035629539d2d502bed9845eeb7815dd31ec737667422e7cbb4e48e'
             '303b1f039d4f384b1f5c7e3fbc831d1321676f79b043f83824e48f166a10235a'
             'ec881952d60744851d5827b1fa28f129db498656cff73357f819e301811861af'
             '2b4943f5ada85a5dfb73d8e28d3d14e0f7f4eaa4f4072feca02e3a9b54500406')
