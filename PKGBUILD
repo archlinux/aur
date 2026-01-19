@@ -1,7 +1,7 @@
 # Maintainer: Clément Vicart <clem.vicart@gmail.com>
 pkgname=dofus-launcher
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dofus setup and launcher"
 arch=('x86_64')
 url="https://www.dofus.com/en/mmorpg/download"
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://launcher.cdn.ankama.com/installe
 	"LICENSE"
 	"zaap.desktop.patch"
 	"dofus-launcher.sh")
-sha256sums=("756a4163ff1c9504f5ea520f511fb2df8e8cc11b073d4d0ce22aff13d06aa701"
+sha256sums=("892e13ddd96e53b042b3b5c53a1cc2c22afdd200e94e01e146ce67fd15eb9d46"
 	"25faf31f7f6b1707380ae13772cf02d52e92863d4eca10b38f0beabf960df564"
 	"4f8ae8f15f3cab577f6046a19eb86a17da11ff56eb0456e377deb7606cbeba3c"
 	"9b8f372d62fb6b1913f7b3d31ec7ced8b26ef1a5c5dfc49e5a9a022685ce6c28")
