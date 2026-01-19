@@ -1,5 +1,5 @@
 pkgname=aur-check-updates
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="A very basic CLI app for checking updates from AUR"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,11 +10,11 @@ makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('39641a1824fa6e647c71e07552a68833c1131ad46fb7af68b3332dda719c8c9e')
+sha256sums=('96bbf2fa0482902d677008b0aa0029532eadd542196501fac7d1787b333ded57')
 
 prepare() {
     cd "${_snapshot}"
-    cargo fetch --locked --target "$(rustc --print host-tuple)"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
