@@ -1,4 +1,4 @@
-# Maintainer: Konstantin Rannev <konstantin.rannev@gmail.com>
+# Maintainer: Konstantin Rannev <konstantin d0t rannev at gmail d0t com>
 
 pkgname=netduke32
 pkgver=1.2.1
@@ -44,8 +44,7 @@ package() {
   cd "$srcdir/${pkgname}"
 
   # install binaries, license, icon and desktop files
-  install -d "$pkgdir"/usr/bin
-  install -m755 netduke32 "$pkgdir"/usr/bin/netduke32
+  install -Dm755 netduke32 "$pkgdir"/usr/bin/netduke32
   install -Dm644 ../${pkgname}.png "$pkgdir"/usr/share/pixmaps/${pkgname}.png
   install -Dm644 ../${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
 }
