@@ -3,7 +3,7 @@
 @@ -58,6 +58,5 @@
  explicit_bzero (void *s, size_t len)
  {
-   memset (s, 0, len);
--  OBSERVE_MEM (s, len);
+   s = memset (s, 0, len);
+-  asm volatile ("" : : "g" (s) : "memory");
  }
  #endif

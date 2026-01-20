@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libxcrypt
-pkgver=4.4.38
+pkgver=4.5.2
 pkgrel=1
 arch=('any')
 pkgdesc="Modern library for one-way hashing of passwords (Android ${_android_arch})"
@@ -16,9 +16,9 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/download/v${pkgver}/libxcrypt-${pkgver}.tar.xz"{,.asc}
         '0001-Remove-OBSERVE_MEM.patch')
-md5sums=('1796a5d20098e9dd9e3f576803c83000'
+md5sums=('25e888919ddcd153a07daa95224fa436'
          'SKIP'
-         '207f77073cf8152f2eac5c0b63ace245')
+         '23f565873455e10371dcea9c40a2a37c')
 validpgpkeys=('678CE3FEE430311596DB8C16F52E98007594C21D') # Björn 'besser82' Esser
 
 prepare() {
@@ -51,4 +51,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING.LIB -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
