@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".gitignore",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "2026 HurricanePootis <hurricanepootis@protonmail.com>"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-SDL-1.2.15-no-default-backing-store.patch",
+    "0002-x11-Bypass-SetGammaRamp-when-changing-gamma.patch",
+    "0003-sdl-1.2.14-fix-mouse-clicking.patch",
+    "0004-sdl-1.2.14-disable-mmx.patch",
+]
+SPDX-FileCopyrightText = "sdl contributors"
+SPDX-License-Identifier = "LGPL-2.1-only"
