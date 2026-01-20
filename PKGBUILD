@@ -1,12 +1,12 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r11151.31e1f7ceff
+pkgver=r11156.cacedc9636
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/crosvm/crosvm"
 depends=('gcc-libs' 'libcap' 'dtc')
-makedepends=('git' 'rustup' 'rust-bindgen' 'wayland-protocols')
+makedepends=('git' 'rustup' 'rust-bindgen' 'wayland' 'wayland-protocols')
 conflicts=('crosvm')
 provides=('crosvm')
 options=(!lto !debug)
