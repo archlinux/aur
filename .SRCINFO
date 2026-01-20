@@ -1,6 +1,6 @@
 pkgbase = waechter-git
 	pkgdesc = Traffic shaping and monitoring for GNU/Linux
-	pkgver = r620.fe4afd1
+	pkgver = r621.fe4afd1
 	pkgrel = 1
 	url = https://github.com/univrsal/waechter
 	arch = x86_64
