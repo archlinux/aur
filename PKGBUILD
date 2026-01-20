@@ -1,7 +1,7 @@
 # Maintainer: rsahwe <rsahwe@gmx.net>
 pkgname=evcolors
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Ev color themes'
 arch=('any')
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 source=('evcolors.theme' 'starship.toml')
 validpgpkeys=()
 sha256sums=('d0a2f1649a5998381df25d8a5c14ca2f2ecfcb6db538affc92095cb5aa1ddc44'
-            '391f49afc19b9f235181949f6b27e4a4857bb6e62deb82ccd388d91fd738c603')
+            '3fdb64d2b1bd48d48b290f460f9879ddf48bf742a734eee96395e2b8efd240ee')
 
 check() {
 	: # TODO: FIGURE OUT CHECK
