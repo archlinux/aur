@@ -1,14 +1,15 @@
-# Maintainer: DROO <droo@axol.io>
+# Maintainer: Hydepwns <hydepwns@proton.me>
 pkgname=phos
-pkgver=0.4.8
+pkgver=0.4.10
 pkgrel=1
-pkgdesc="High-performance universal log colorizer with 98 built-in programs"
+pkgdesc='Universal log colorizer with 99+ program support'
 arch=('x86_64' 'aarch64')
-url="https://github.com/Hydepwns/phos"
+url='https://github.com/Hydepwns/phos'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Hydepwns/phos/archive/v$pkgver.tar.gz")
-sha256sums=('7cb9ff69210ca79a320ba3f0febd3d068c5718ab8077c78775da7c159e47cc44')
+depends=('gcc-libs')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Hydepwns/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('061d9815c3f2dca8131151fd0d057cb4c676aa6aa3831ee5a791a3cb3d5e2696')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -20,13 +21,14 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --all-features
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen
 }
 
 package() {
