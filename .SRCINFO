@@ -1,0 +1,15 @@
+pkgbase = asklink-bin
+	pkgdesc = Asklink Remote
+	pkgver = 4.0.33.0
+	pkgrel = 1
+	url = https://www.asklink.com
+	arch = x86_64
+	arch = aarch64
+	license = commercial
+	depends = pulseaudio
+	depends = libxtst
+	optdepends = libdrm
+	source = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-x86_64.deb
+	sha256sums = SKIP
+
+pkgname = asklink-bin
