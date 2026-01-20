@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
 license=('0BSD')
 makedepends=('cargo' 'git')
-depends=('gcc-libs' 'glibc' 'lua54')
+depends=('gcc-libs' 'glibc' 'lua')
 optdepends=(
     'fzf: for interactive TUI features'
     'paru: AUR helper support'
