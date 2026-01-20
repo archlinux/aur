@@ -1,0 +1,28 @@
+msg_blue() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+note() {
+    printf "${BLUE}==>${ALL_OFF}${YELLOW} NOTE:${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+YELLOW="${BOLD}$(tput setaf 3)"
+
+post_install() {
+    note "You need to make a config for qtengine before installing."
+    echo '    The default config file can be found in /etc/qtengine/config.example.json'
+    echo '    Copy it to ~/.config/qtengine/config.json and modify accordingly.'
+    echo '    Then, set the environment variable `QT_QPA_PLATFORMTHEME` to `qtengine` to use qtengine.'
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+#post_remove() {
+#
+#}

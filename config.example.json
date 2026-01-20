@@ -1,0 +1,22 @@
+{
+  "theme": {
+    "colorScheme": "/etc/qtengine/BreezeDark.colors",
+    "iconTheme": "breeze-dark",
+    "style": "breeze",
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 11,
+      "weight": -1
+    },
+    "fontFixed": {
+      "family": "DejaVu Sans Mono",
+      "size": 11,
+      "weight": -1
+    }
+  },
+  "misc": {
+    "menusHaveIcons": true,
+    "singleClickActivate": false,
+    "shortcutsForContextMenus": true
+  }
+}
