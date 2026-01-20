@@ -2,7 +2,7 @@
 # Maintainer: Jesse Codling <codling@umich.edu>
 # Contributor: EntropicEffect <william.grunow93@gmail.com>
 pkgname=fftw-amd
-_ver=5.1
+_ver=5.2
 _fftw=3.3.10
 pkgver=${_fftw}amd${_ver}
 pkgrel=1
@@ -43,7 +43,7 @@ makedepends=(
 source=(
 	"https://github.com/amd/amd-fftw/archive/refs/tags/${_ver}.tar.gz"
 )
-sha512sums=('4c65aa035883aecfd04b116c690c562dc77f9965638aa1768750ec2b58c0b9addf938f93ba573dae9956f9a34e481d43943927b6441b023e5349219829e6efce')
+sha512sums=('647bada5392238f2503309c0a249acb080dc00f80d40d39c1232b86e3cd3ea9e56e43b6e16fa51ec8f56bf88e0e1a6b19257677dda629c4783ed983610bc4c2e')
 
 prepare() {
 	rm -r "${pkgname}-${pkgver}" || true
