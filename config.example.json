@@ -1,6 +1,6 @@
 {
   "theme": {
-    "colorScheme": "/etc/qtengine/BreezeDark.colors",
+    "colorScheme": "/usr/share/color-schemes/BreezeDark.colors",
     "iconTheme": "breeze-dark",
     "style": "breeze",
     "font": {
