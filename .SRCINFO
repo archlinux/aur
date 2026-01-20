@@ -1,0 +1,12 @@
+pkgbase = lidm-dinit
+	pkgdesc = A fully colorful customizable TUI display manager made in C. (dinit service files)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/javalsai/lidm
+	arch = any
+	license = GPL-3.0-only
+	provides = lidm-service
+	source = lidm-dinit-1.2.3-dinit::https://raw.githubusercontent.com/javalsai/lidm/v1.2.3/assets/services/dinit
+	sha256sums = 185cd76c1d29ddc73cf96be999f13278a427bb80aa9169f25f30673ad2de3770
+
+pkgname = lidm-dinit
