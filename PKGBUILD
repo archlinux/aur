@@ -6,7 +6,7 @@ pkgbase=lib32-openal
 pkgname=(
   lib32-openal
 )
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 url="https://github.com/kcat/openal-soft"
@@ -29,7 +29,7 @@ makedepends=(
   ninja
 )
 source=("git+https://github.com/kcat/openal-soft#tag=$pkgver")
-b2sums=('3dff86afc1e8950b82adf27f723166a986699d881ba5cff3069a63f6aecf44a539b38295e59507d13666c4dc52a808c05de2ce1898d54d44348ba80a9e8adbb4')
+b2sums=('6a4e4b7e21a05add5517ef59ea7fe6cb4b7aeed232166bce6f7654b61d45601297b8cbc768be304c5bc59bd8db8a610ee2296425576e1d4f0f220666588c8e95')
 
 prepare() {
   cd openal-soft
