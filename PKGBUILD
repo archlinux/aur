@@ -1,6 +1,6 @@
 # Maintainer: Gotar <gotar@users.noreply.github.com>
 pkgname=wallpicker
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging"
 arch=('any')
