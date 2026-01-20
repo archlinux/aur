@@ -1,7 +1,7 @@
 pkgbase = qtengine-git
 	pkgdesc = QT Platform Theme made easy
 	pkgver = r14.gdd5c09f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kossLAN/qtengine
 	install = qtengine.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = qtengine-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = extra-cmake-modules
 	depends = kcolorscheme
 	depends = kconfig
 	depends = kiconthemes

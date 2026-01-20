@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname-git"
 pkgver=r14.gdd5c09f
-pkgrel=1
+pkgrel=2
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -22,6 +22,7 @@ makedepends=(
   cmake
   git
   ninja
+  extra-cmake-modules
 )
 provides=("$_pkgname")
 conflicts=(
