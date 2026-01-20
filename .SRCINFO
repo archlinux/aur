@@ -1,0 +1,15 @@
+pkgbase = syntax-downloader
+	pkgdesc = Universal video/audio social media downloader with CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Syntax-Community/syntax-downloader.git
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = go
+	source = https://github.com/Syntax-Community/syntax-downloader/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 02a6b1ca5dd922c43b7e2c7e3f8cd141b748994edf396509eba3cb922ac6e568
+
+pkgname = syntax-downloader
