@@ -2,7 +2,7 @@
 
 pkgname=xr-video-player-git
 pkgver=r110.d3fb486
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual reality video player for Linux. Fork of vr-video-player by dec05eba'
 arch=('x86_64')
 url="https://codeberg.org/yoshino/xr-video-player"
@@ -11,7 +11,7 @@ depends=(
   'glm'
   'libepoxy'
   'glib2'
-  'sdl2'
+  'sdl2-compat'
   'openxr'
   'wayland'
   'pipewire'
