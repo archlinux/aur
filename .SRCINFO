@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 25.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = bareos
 	source = 0003-version.patch
 	source = 0004-sqlspam.patch
 	source = 0005-httpd.patch
-	md5sums = 2fbe17cfde27aa5f8a877c37dfbcdf79
-	md5sums = 419b0c64af750aa3e8ea668edf464d3e
-	md5sums = 5bf1233d94dfecc9060746bfb39b9d2b
-	md5sums = ca4c929a2462cafaead8d0b49e3cebed
-	md5sums = a6a260808e46c20b1c22aa2efebc3fe1
+	b2sums = e2926ca032e3d0c688e75af7cc5ed379072197481fff7b493fd2bc9eba7d53600ccbfc4cb3069295e0dcdf7ad64f8a102a92a5e766a8a77d452620eba02a3b6f
+	b2sums = f6c1b565ab42a7c1f826565f643926eeaac487b10c33444db8b4cbc71fdcd37d95399cc43116b4ab6ac1bb8db5216f17c07fad5e7649cb3676cf4735e734ac82
+	b2sums = a01b0e2d9c426fa8cadf2afad4135b14ded7fb9c7e5e030de0347b6f60fa1516955feb334bd900d569f038e4febdda9d55397f1555b31dfdc1ba466a6dd08455
+	b2sums = 4959909c9771adb7e72c0d6760e91b62e139fd83a67ef6c48ebf1c37caafe539c31a9ae79ab1e38efd7d3b11d60ad4a363b4992601cb04ab3a2e51e90745a67d
+	b2sums = a1e0355ee7f2c276fd26eef57fe16dc95e39c4fb26968d0bc7dbca96479c35736b1042ea2d74b3ee20d5da2243e26fea7f4593670943bd9378f6a52753f4fb4f
 
 pkgname = bareos-bconsole
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Admin Tool (CLI)
@@ -95,6 +95,18 @@ pkgname = bareos-database-tools
 	depends = openssl
 	depends = jansson
 
+pkgname = bareos-devel
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Devel headers
+	arch = any
+
+pkgname = bareos-director
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Director daemon
+	install = bareos-director.install
+	depends = bareos-common=25.0.1
+	depends = openssl
+	depends = bash
+	depends = jansson
+
 pkgname = bareos-director-python-plugins-common
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the common files for the python 2 and python 3 director plugins
 	arch = any
@@ -110,13 +122,16 @@ pkgname = bareos-director-python3-plugin
 	depends = lzo
 	conflicts = bareos-director-python-plugin
 
-pkgname = bareos-director
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Director daemon
-	install = bareos-director.install
+pkgname = bareos-filedaemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - File daemon
+	install = bareos-filedaemon.install
+	groups = bareos
+	groups = bareos-client
 	depends = bareos-common=25.0.1
-	depends = openssl
-	depends = bash
 	depends = jansson
+	depends = zlib
+	depends = gcc-libs
+	depends = xxhash
 
 pkgname = bareos-filedaemon-glusterfs-plugin
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - GlusterFS plugin for Bareos File daemon
@@ -169,16 +184,15 @@ pkgname = bareos-filedaemon-python3-plugin
 	depends = jansson
 	conflicts = bareos-filedaemon-python-plugin
 
-pkgname = bareos-filedaemon
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - File daemon
-	install = bareos-filedaemon.install
-	groups = bareos
-	groups = bareos-client
+pkgname = bareos-storage
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Storage daemon
+	install = bareos-storage.install
 	depends = bareos-common=25.0.1
-	depends = jansson
 	depends = zlib
-	depends = gcc-libs
-	depends = xxhash
+	depends = lzo
+	depends = jansson
+	depends = openssl
+	depends = libcap
 
 pkgname = bareos-storage-droplet
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Droplet support for storage daemon
@@ -224,16 +238,6 @@ pkgname = bareos-storage-tape
 	depends = lzo
 	depends = mtx
 	backup = etc/bareos/mtx-changer.conf
-
-pkgname = bareos-storage
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Storage daemon
-	install = bareos-storage.install
-	depends = bareos-common=25.0.1
-	depends = zlib
-	depends = lzo
-	depends = jansson
-	depends = openssl
-	depends = libcap
 
 pkgname = bareos-tools
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild, bregex)
@@ -282,10 +286,6 @@ pkgname = bareos-webui-nginx
 	depends = php-fpm
 	depends = php-pgsql
 	backup = etc/nginx/bareos-webui.conf
-
-pkgname = bareos-devel
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Devel headers
-	arch = any
 
 pkgname = python-bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python module to access a backup system.

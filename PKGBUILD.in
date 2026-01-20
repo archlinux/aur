@@ -1,65 +1,67 @@
 pkgbase='bareos'
 
 pkgname=(
-    "bareos-bconsole"
-    "bareos-common"
-    "bareos-contrib-director-python-plugins"
-    "bareos-contrib-filedaemon-python-plugins"
-    "bareos-contrib-tools"
-    "bareos-database-common"
-    "bareos-database-postgresql"
-    "bareos-database-tools"
-    "bareos-devel"
-    "bareos-director"
-    "bareos-director-python-plugins-common"
-    "bareos-director-python3-plugin"
-    "bareos-filedaemon"
-    "bareos-filedaemon-glusterfs-plugin"
-    "bareos-filedaemon-ldap-python-plugin"
-    "bareos-filedaemon-libcloud-python-plugin"
-    "bareos-filedaemon-mariabackup-python-plugin"
-    "bareos-filedaemon-percona-xtrabackup-python-plugin"
-    "bareos-filedaemon-postgresql-python-plugin"
-    "bareos-filedaemon-python-plugins-common"
-    "bareos-filedaemon-python3-plugin"
-    "bareos-storage"
-    "bareos-storage-droplet"
-    "bareos-storage-fifo"
-    "bareos-storage-glusterfs"
-    "bareos-storage-python-plugins-common"
-    "bareos-storage-python3-plugin"
-    "bareos-storage-tape"
-    "bareos-tools"
-    "bareos-traymonitor"
-    "bareos-vmware-plugin"
-    "bareos-webui"
-    "bareos-webui-apache"
-    "bareos-webui-nginx"
-    "python-bareos"
+    'bareos-bconsole'
+    'bareos-common'
+    'bareos-contrib-director-python-plugins'
+    'bareos-contrib-filedaemon-python-plugins'
+    'bareos-contrib-tools'
+    'bareos-database-common'
+    'bareos-database-postgresql'
+    'bareos-database-tools'
+    'bareos-devel'
+    'bareos-director'
+    'bareos-director-python-plugins-common'
+    'bareos-director-python3-plugin'
+    'bareos-filedaemon'
+    'bareos-filedaemon-glusterfs-plugin'
+    'bareos-filedaemon-ldap-python-plugin'
+    'bareos-filedaemon-libcloud-python-plugin'
+    'bareos-filedaemon-mariabackup-python-plugin'
+    'bareos-filedaemon-percona-xtrabackup-python-plugin'
+    'bareos-filedaemon-postgresql-python-plugin'
+    'bareos-filedaemon-python-plugins-common'
+    'bareos-filedaemon-python3-plugin'
+    'bareos-storage'
+    'bareos-storage-droplet'
+    'bareos-storage-fifo'
+    'bareos-storage-glusterfs'
+    'bareos-storage-python-plugins-common'
+    'bareos-storage-python3-plugin'
+    'bareos-storage-tape'
+    'bareos-tools'
+    'bareos-traymonitor'
+    'bareos-vmware-plugin'
+    'bareos-webui'
+    'bareos-webui-apache'
+    'bareos-webui-nginx'
+    'python-bareos'
 )
 
-pkgver="25.0.1"
+pkgver="include(`.version')"
 pkgmajor=${pkgver%%.*}
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
-pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
-url="http://www.bareos.org"
+pkgdesc='Bareos - Backup Archiving Recovery Open Sourced'
+url='http://www.bareos.org'
 license=('AGPL3')
 makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql' 'python' 'python-setuptools' 'python-build' 'python-installer' 'rpcsvc-proto' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=(
-    "bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz"
-    "0001-distver.patch"
-    "0003-version.patch"
-    "0004-sqlspam.patch"
-    "0005-httpd.patch"
+    'bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz'
+    '0001-distver.patch'
+    '0003-version.patch'
+    '0004-sqlspam.patch'
+    '0005-httpd.patch'
 )
 
-b2sums=('e2926ca032e3d0c688e75af7cc5ed379072197481fff7b493fd2bc9eba7d53600ccbfc4cb3069295e0dcdf7ad64f8a102a92a5e766a8a77d452620eba02a3b6f'
-        'f6c1b565ab42a7c1f826565f643926eeaac487b10c33444db8b4cbc71fdcd37d95399cc43116b4ab6ac1bb8db5216f17c07fad5e7649cb3676cf4735e734ac82'
-        'a01b0e2d9c426fa8cadf2afad4135b14ded7fb9c7e5e030de0347b6f60fa1516955feb334bd900d569f038e4febdda9d55397f1555b31dfdc1ba466a6dd08455'
-        '4959909c9771adb7e72c0d6760e91b62e139fd83a67ef6c48ebf1c37caafe539c31a9ae79ab1e38efd7d3b11d60ad4a363b4992601cb04ab3a2e51e90745a67d'
-        'a1e0355ee7f2c276fd26eef57fe16dc95e39c4fb26968d0bc7dbca96479c35736b1042ea2d74b3ee20d5da2243e26fea7f4593670943bd9378f6a52753f4fb4f')
+b2sums=(
+    'x'
+    'x'
+    'x'
+    'x'
+    'x'
+)
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
