@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=('perl-ipc-run')
 url='https://metacpan.org/dist/Module-Signature'
-source=('https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-0.93.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-$pkgver.tar.gz")
 md5sums=('4ff16085d07556549d96905c006cc218')
-_distdir="Module-Signature-0.93"
+_distdir="Module-Signature-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
