@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: icepie <icepie.dev@gmail.com>
 pkgname=gnome-randr-rust
 pkgver=0.1.1
