@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ciwiki/"
 license=('GPL')
 depends=('bash' 'glibc')
-source=(https://sourceforge.net/projects/ciwiki/files/ciwiki-3.0.5.tar.gz)
+source=(https://sourceforge.net/projects/ciwiki/files/ciwiki-$pkgver.tar.gz)
 md5sums=('ab12779f45dd58054db0c66a24b157b9')
 
 build() {
