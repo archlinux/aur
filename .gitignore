@@ -1,0 +1,11 @@
+# AUR package build artifacts
+src/
+pkg/
+*.tar.zst
+*.tar.gz
+*.tar.xz
+*.pkg.tar*
+*.log
+
+# makepkg lock file
+.BUILDLOCK
