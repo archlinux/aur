@@ -2,11 +2,11 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_bootloadersver=25.11.27
+_bootloadersver=26.1.16
 
 pkgname=penguins-eggs
-pkgver=26.1.15
-pkgrel=1
+pkgver=26.1.20
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -126,5 +126,5 @@ package() {
 }
 
 # updpkgsums
-sha256sums=('53dad1d3b3e49954326379fb5f0373db6163c413ab5ee7f4a9792e2d1a247d7b'
-            '52493affd4f19afdc4c1d8001e9498772416c1ccc034ae845b8f1381a0182cc5')
+sha256sums=('6565e24fb11a4c5f0e89b177bb53bd294c4c941ac1cde5174f58beb6a48c0d59'
+            'ec50a56a513e40c4b1f731452d08b9cd82ddd8c70a4d94ef502c80a1fa4ea504')
