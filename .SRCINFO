@@ -8,6 +8,7 @@ pkgbase = plumeimpactor-git
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang
+	makedepends = cmake
 	makedepends = pkgconf
 	depends = gtk3
 	depends = libpng
@@ -21,6 +22,7 @@ pkgbase = plumeimpactor-git
 	depends = libimobiledevice
 	provides = plumeimpactor
 	conflicts = plumeimpactor
+	options = !lto
 	source = git+https://github.com/khcrysalis/Impactor.git
 	sha256sums = SKIP
 

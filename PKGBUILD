@@ -7,11 +7,12 @@ arch=('x86_64')
 url="https://github.com/khcrysalis/Impactor"
 license=('MIT')
 depends=('gtk3' 'libpng' 'libjpeg-turbo' 'mesa' 'glu' 'libxkbcommon' 'expat' 'libtiff' 'usbmuxd' 'libimobiledevice')
-makedepends=('git' 'cargo' 'clang' 'pkgconf')
+makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf')
 provides=('plumeimpactor')
 conflicts=('plumeimpactor')
 source=('git+https://github.com/khcrysalis/Impactor.git')
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "$srcdir/Impactor"
