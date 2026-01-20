@@ -1,0 +1,16 @@
+post_install() {
+/usr/share/deb-pkg-files/flex-designer/postinst install 2> /dev/null
+/usr/share/deb-pkg-files/flex-designer/postinst configure 2> /dev/null
+}
+
+post_upgrade() {
+/usr/share/deb-pkg-files/flex-designer/postinst upgrade 2> /dev/null
+}
+
+post_remove() {
+
+	# Delete the link to the binary
+	else
+	    rm -f '/usr/bin/flex-designer'
+	fi
+}
