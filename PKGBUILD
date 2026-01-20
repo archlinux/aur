@@ -1,4 +1,5 @@
 # Maintainer: Keith Scroggs <very amused at pm dot me>
+# Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=otf-font-awesome-pro
 provides=('ttf-font-awesome')
 replaces=('ttf-font-awesome')
