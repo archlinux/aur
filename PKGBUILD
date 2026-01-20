@@ -13,7 +13,7 @@ sha256sums=('983e138f2b15feaf6fadc0e811d8adb0fd7e60f497fe3f08d0931a484401c5c6')
 
 build() {
     cd "$pkgname-$pkgver"
-    zig build -Doptimize=ReleaseFast
+    zig build -Drelease=true
 }
 
 check() {
