@@ -3,7 +3,7 @@
 pkgname=python-ticktick-py
 _reponame=ticktick-py
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Unofficial API library for interacting with TickTick.com"
 url="https://github.com/lazeroffmichael/ticktick-py"
 arch=(any)
