@@ -1,7 +1,7 @@
 pkgbase = openanime-bin
-	pkgdesc = Resmi olmayan OpenAnime Linux istemcisi - WebGPU/Vulkan destekli
+	pkgdesc = Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuanapi/OpenAnime-Linux-Desktop-App
 	arch = x86_64
 	license = MIT
