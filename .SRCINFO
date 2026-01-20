@@ -1,7 +1,7 @@
 pkgbase = qtengine-git
 	pkgdesc = QT Platform Theme made easy
-	pkgver = r14.gdd5c09f
-	pkgrel = 2
+	pkgver = r20.g53747cb
+	pkgrel = 1
 	url = https://github.com/kossLAN/qtengine
 	install = qtengine.install
 	arch = x86_64
@@ -28,6 +28,6 @@ pkgbase = qtengine-git
 	sha256sums = SKIP
 	sha256sums = 09d0382680e23e736c862e35a1b9742f511ff0e34bd28c967f896a9fb986d14b
 	sha256sums = ccae3193b07605f9ab123c57539692da2e8c4b4f9a70bbac0be5525ccabe855d
-	sha256sums = aca694131d7adf7b28ebbc866adbba0e0d3a6a4f636432ebdf4d8eddd8e9d7eb
+	sha256sums = 55fe34d51caca8bf74dfcca518f1f17d8d181ff0cd0947046d0cb6705f850fd8
 
 pkgname = qtengine-git
