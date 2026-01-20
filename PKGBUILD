@@ -1,6 +1,6 @@
 # Maintainer: Frank Dierolf <frank_dierolf@web.de>
 pkgname=whis-cli-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Voice-to-text CLI for terminal users"
 arch=('x86_64' 'aarch64')
