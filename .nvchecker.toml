@@ -1,5 +1,5 @@
 [openfoam-com]
 source = "gitlab"
-gitlab = "openfoam/openfoam"
+gitlab = "openfoam/core/openfoam"
 use_max_tag = "true"
 prefix = "OpenFOAM-"
