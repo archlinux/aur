@@ -2,7 +2,7 @@
 
 pkgname=phub-cli
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based video browser inspired by ani-cli, streaming directly from pornhub.com"
 arch=('x86_64')
 url="https://github.com/curtosis-org/phub-cli"
@@ -18,11 +18,18 @@ package() {
     # Main binary
     install -Dm755 phub-cli "$pkgdir/usr/bin/phub-cli"
 
-    # Modules
+    # Install modules
     install -d "$pkgdir/usr/share/phub-cli"
     cp -r modules "$pkgdir/usr/share/phub-cli/"
 
-    # License (optional but recommended)
+    # Patch DIR path inside phub-cli to system location
+    sed -i 's|^DIR=.*|DIR="/usr/share/phub-cli"|' "$pkgdir/usr/bin/phub-cli"
+
+    # Permissions
+    chmod +x "$pkgdir/usr/share/phub-cli/modules/"*.sh
+    chmod +x "$pkgdir/usr/share/phub-cli/modules/"*.py
+
+    # License
     if [[ -f LICENSE ]]; then
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
