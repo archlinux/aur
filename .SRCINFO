@@ -1,6 +1,6 @@
 pkgbase = grove-bin
 	pkgdesc = A fast, intuitive Git worktree management CLI that makes Git worktrees as simple as switching branches
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sQVe/grove
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = grove-bin
 	license = MIT
 	provides = grove
 	conflicts = grove
-	source = README-1.3.0.md::https://raw.githubusercontent.com/sQVe/grove/v1.3.0/README.md
+	source = README-1.4.0.md::https://raw.githubusercontent.com/sQVe/grove/v1.4.0/README.md
 	sha256sums = c12d86828aac1d17771124582616a45eddb0db206a318af1748dcb4e3f865151
-	source_x86_64 = grove-x86_64-1.3.0.tgz::https://github.com/sQVe/grove/releases/download/v1.3.0/grove_1.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2b6932d2474bfb2d8cce39e2d6c716795de1ea8c0d1fd5294d5ba390c077edaa
-	source_aarch64 = grove-aarch64-1.3.0.tgz::https://github.com/sQVe/grove/releases/download/v1.3.0/grove_1.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = c2729e98dcf5efb653cd778699998817402b3dc9f6e9c3c3fb4ba369af53d6ff
+	source_x86_64 = grove-x86_64-1.4.0.tgz::https://github.com/sQVe/grove/releases/download/v1.4.0/grove_1.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 639cac05e26df10cbf2b8f85071f4862aa446aac02d5c5a0c6672a73e097c523
+	source_aarch64 = grove-aarch64-1.4.0.tgz::https://github.com/sQVe/grove/releases/download/v1.4.0/grove_1.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1921f87930efc38a01e909cfa7532ff70b57ae374d26337a72a744049bc112ef
 
 pkgname = grove-bin
