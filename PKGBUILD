@@ -13,10 +13,10 @@ optdepends=(
   'libpulse: PulseAudio device enumeration'
   'vulkan-icd-loader: Local transcription with GPU acceleration'
 )
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-cli-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-cli-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')  # Replace with actual checksum
-sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5') # Replace with actual checksum
+source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('434c6f6d4487d7adc978e7c66b0c4c44aee861e4469b10682b56bb51734e0aef')
+sha256sums_aarch64=('7a4e01ea3f0abf24f1dc8fe1733df2539def98e388132991d11f1518007249ce')
 
 package() {
   install -Dm755 whis "${pkgdir}/usr/bin/whis"
