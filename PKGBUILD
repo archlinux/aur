@@ -3,8 +3,8 @@
 name=happ-desktop
 pkgname=happ-desktop
 url="https://github.com/Happ-proxy/happ-desktop"
-pkgver=1.2.6
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core."
 arch=('x86_64')
 license=('custom')
