@@ -1,7 +1,7 @@
 pkgbase = reflector-rs-git
 	pkgdesc = Retrieve and filter the latest Arch Linux mirror list (Rust implementation)
-	pkgver = 0.1.r144.g4d67057
-	pkgrel = 2
+	pkgver = 1.0.0.1.ga4e04e2
+	pkgrel = 1
 	url = https://github.com/james7132/reflector-rs
 	arch = x86_64
 	license = GPL-2.0-or-later
