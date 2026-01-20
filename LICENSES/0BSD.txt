@@ -1,1 +1,1 @@
-/home/james/.local/src/dwmblocks-fast-aur/LICENSES/../LICENSE
+../LICENSE
