@@ -1,0 +1,17 @@
+pkgbase = luffy-bin
+	pkgdesc = Watch movies and series from your commandline
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/DemonKingSwarn/luffy
+	arch = x86_64
+	license = GPL3
+	depends = mpv
+	depends = fzf
+	depends = yt-dlp
+	depends = chafa
+	depends = libsixel
+	provides = luffy
+	source = https://github.com/DemonKingSwarn/luffy/releases/download/1.0.5/luffy
+	sha256sums = SKIP
+
+pkgname = luffy-bin
