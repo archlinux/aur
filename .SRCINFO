@@ -1,0 +1,23 @@
+pkgbase = stoat-desktop-git
+	pkgdesc = Stoat for Desktop.(Use system-wide electron)
+	pkgver = 1.1.12.r2.gdad885a
+	pkgrel = 1
+	url = https://stoat.chat/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron38
+	provides = stoat-desktop=1.1.12
+	conflicts = stoat-desktop
+	source = stoat-desktop.git::git+https://github.com/stoatchat/for-desktop.git
+	source = stoat-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = stoat-desktop-git
