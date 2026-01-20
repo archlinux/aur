@@ -2,7 +2,7 @@
 # Contributor: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
 # Contributor: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
-pkgver=2.1.19
+pkgver=2.1.20
 pkgrel=1
 pkgdesc='all-in-one encrypted productivity app (unofficial, not supported by upstream)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LicenseRef-proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://github.com/lunatask/lunatask/releases/download/v${pkgver}/${_file})
-sha512sums=('a8c2d5da30762a897d9d6a4b72c7a14ca167e320e6afdb9a4476f29f2cd8ee150d2a2094f044cc732c01b4d18c10ce6752207eff18f08d15b2f340720d598222')
+sha512sums=('4d4f41830bc5707dc518ed660e2de3da05562203c3232b3461cf199e0e005d5f7cea199b19913bfea42f30074703f3cbdc68f985d19cded73838e8e7c6ecf4ab')
 
 options+=('!strip')
 
