@@ -1,0 +1,11 @@
+--- a/package.json
++++ b/package.json
+@@ -93,7 +93,7 @@
+   ],
+   "scripts": {
+     "build": "node install/build.js",
+-    "install": "node install/check.js || npm run build",
++    "install": "node install/check.js || pnpm run build",
+     "clean": "rm -rf src/build/ .nyc_output/ coverage/ test/fixtures/output.*",
+     "test": "npm run lint && npm run test-unit",
+     "lint": "npm run lint-cpp && npm run lint-js && npm run lint-types",

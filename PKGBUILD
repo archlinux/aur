@@ -13,8 +13,7 @@ url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
 arch=(x86_64)
 # ts-node required for CLI
-# not having npm in a clean chroot prevents installation of dependencies like sharp and bcrypt. still figuring out
-makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise' npm)
+makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
@@ -23,7 +22,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise' npm)
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<1'  # server/src/constants.ts
+    'vectorchord>=0.3' #'vectorchord<1'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
@@ -60,7 +59,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 		"postgres-path.patch"   # replace Debian's location of postgres with Arch's
-        "base-images::git+https://github.com/immich-app/base-images"
+		"sharp.patch"  # patch sharp to use pnpm instead of npm in install script
         "${pkgbase}-server.service"
         "${pkgbase}.sysusers"
         "${pkgbase}.tmpfiles"
@@ -76,7 +75,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
 sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
             '00ae69ddab320aaf4e426f8372f22415c6486968f006fd12b9bd8cdeca8a8664'
-            'SKIP'
+            'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
             'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
@@ -90,48 +89,52 @@ sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
 prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
     patch -p1 < ${srcdir}/postgres-path.patch
-    imgdate=$(grep ^'FROM ghcr.io/immich-app/base-server-prod' server/Dockerfile | cut -d: -f2 | cut -d@ -f1)
+    rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
+
+	# Patches to avoid calling npm in package scripts
+	pnpm fetch --ignore-scripts  # First, get node_modules folder to patch into
+	pnpm install --filter immich --frozen-lockfile --offline  # sometimes pnpm fetch doesn't give us the node_modules folder
+	sharp_dir="$(pnpm patch sharp | sed -n '3p' | sed 's/^[[:space:]]*//')"
+	cd "$sharp_dir"
+	patch -p1 < ${srcdir}/sharp.patch
+	cd "$srcdir/${pkgbase}-${pkgver}"
+	pnpm patch-commit "$sharp_dir"  # Second, this runs the scripts
 
     cd web
     pnpm add 'three@^0.179.0'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
 
-    cd "${srcdir}/base-images"
-    git checkout "$imgdate"
+	cd server
+	rm ../mise.toml  # otherwise asks to trust in mise build steps, interrupting unattended builds
 }
 
 # instructions adapted from relevant Dockerfile-s
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-    pnpm fetch
 
 	# build server
-	pnpm install --filter immich --frozen-lockfile --offline  # node-modules folders are missing without this
-
 	## add a flag to pnpm --filter immich build to make swagger plugin work
 	## see https://docs.nestjs.com/openapi/cli-plugin#swc-builder
 	## (immich itself is a monorepo but immich-server isn't)
 	cd server
-    SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm exec nest build --type-check
+    pnpm exec nest build --type-check
 
-	cd -
+	cd ../
     SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile build
-    SHARP_FORCE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
+    pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
 	export NODE_OPTIONS=--max-old-space-size=4096  # prevent OOM
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
+	pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
     pnpm --filter @immich/sdk --filter immich-web build
 
     # build CLI
     pnpm install --filter @immich/cli --frozen-lockfile
-    rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
     pnpm --filter @immich/cli build
     pnpm --filter @immich/cli --prod --no-optional deploy output/cli-pruned
 
     # build plugins
     cd plugins
     export MISE_TRUSTED_CONFIG_PATHS="${srcdir}/${pkgbase}-${pkgver}/plugins/mise.toml"
-    rm ../mise.toml  # otherwise asks to trust those, interrupting unattended builds
     mise install  # --cd plugins just does the cd for you
     mise run build
 }
@@ -186,17 +189,11 @@ package_immich-server() {
     install -Dm644 immich.conf "${pkgdir}/etc/immich.conf"
     install -Dm644 nginx.immich.conf "${pkgdir}/usr/share/doc/immich/examples/nginx.conf"
 
-    # generate lock file (from base-images)
-    # TODO this lock file is used to determine versions for ffmpeg, libheif and others
-    # it will not reflect the arch installed versions but only other option is to have
-    # it generated dynamically on server start - do we need to do this?
-    cd "${srcdir}/base-images/server"
-    jq -s '.' packages/*.json > /tmp/packages.json
-    jq -s '.' sources/*.json > /tmp/sources.json
-    jq -n --slurpfile sources /tmp/sources.json --slurpfile packages /tmp/packages.json \
-    	'{sources: $sources[0], packages: $packages[0]}' \
-     	> "${pkgdir}/usr/lib/immich/build/build-lock.json" && \
-      	chmod 644 "${pkgdir}/usr/lib/immich/build/build-lock.json"
+    # create empty lock file
+    # usually used to determine versions at server/src/repositories/server-info.repository.ts,
+    # but it will not reflect the arch installed versions, and if the file is empty
+    # it just detects the right versions from the environment
+    # echo '{}' > "${pkgdir}/usr/lib/immich/build/build-lock.json"
 
     # install server management scripts; immich-admin doesn't work
     install -Dm755 "${pkgdir}/usr/lib/immich/app/server/bin/immich-healthcheck" "${pkgdir}/usr/bin/immich-healthcheck"

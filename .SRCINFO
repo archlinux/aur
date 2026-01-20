@@ -10,12 +10,10 @@ pkgbase = immich
 	makedepends = jq
 	makedepends = ts-node
 	makedepends = mise
-	makedepends = npm
 	depends = valkey
 	depends = postgresql>=14
 	depends = nodejs>=20
 	depends = vectorchord>=0.3
-	depends = vectorchord<1
 	depends = zlib
 	depends = glib2
 	depends = expat
@@ -45,7 +43,7 @@ pkgbase = immich
 	depends = highway
 	source = immich-2.4.1.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.4.1.tar.gz
 	source = postgres-path.patch
-	source = base-images::git+https://github.com/immich-app/base-images
+	source = sharp.patch
 	source = immich-server.service
 	source = immich.sysusers
 	source = immich.tmpfiles
@@ -57,7 +55,7 @@ pkgbase = immich
 	source = https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson
 	sha256sums = 885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5
 	sha256sums = 00ae69ddab320aaf4e426f8372f22415c6486968f006fd12b9bd8cdeca8a8664
-	sha256sums = SKIP
+	sha256sums = e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164
 	sha256sums = f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833
 	sha256sums = 01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e
 	sha256sums = 4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900
