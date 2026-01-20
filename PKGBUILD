@@ -3,7 +3,7 @@
 pkgname="ntopng-data"
 # to update visit https://packages.ntop.org/apt/trixie/all/ and keep track of the latest pkgver, date and build
 _pkgverAmd=6.7
-_dateAmd=260117
+_dateAmd=260120
 # updated automatically
 pkgver="$_pkgverAmd.$_dateAmd"
 pkgrel=1
@@ -24,9 +24,12 @@ sha512sums=("SKIP")
 options=("!strip")
 
 pkgver(){
-  curl -s https://packages.ntop.org/apt/trixie/all/ |
-    grep -Eo '>ntopng-data_([0-9.]+)_all.deb' |
-    grep -Eo '[0-9]+\.[0-9]+\.[0-9]+'
+  _pkgver="$(
+    curl -s https://packages.ntop.org/apt/trixie/all/ |\
+    grep -Eo '>ntopng-data_([0-9.]+)_all.deb' |\
+    grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
+  _dateAmd="$(echo $_pkgver | grep -Eo '\.[0-9]{6}$' | grep -Eo '[0-9]{6}')"
+  echo $_pkgver;
 }
 
 prepare(){
