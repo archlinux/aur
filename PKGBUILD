@@ -13,6 +13,7 @@ depends=(
 	'libimobiledevice>=1.4.0'
 	'libtatsu>=1.0.5'
 	'libimobiledevice-glue'
+	'libirecovery'
 	'libplist'
 	'usbmuxd'
 	'libusbmuxd'
@@ -54,6 +55,7 @@ sha256sums=('be831b20d02aacd71809ebe9ca71e438de682736bd0918dd5e41d72c0683862b'
 
 prepare() {
 	cd "${_srcname}/"
+	git cherry-pick -n dd9a6a7577e75b5897fda714b2d4019b8814f748
 	git rm lib/win-ifuse
 
 	git submodule init
@@ -74,7 +76,7 @@ build() {
 		-D CMAKE_BUILD_TYPE=None
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D PACKAGE_MANAGER_MANAGED=ON
-		-D ENABLE_RECOVERY_DEVICE_SUPPORT=OFF
+		-D ENABLE_RECOVERY_DEVICE_SUPPORT=ON
 		-D NO_MARCH_NATIVE=ON
 	)
 

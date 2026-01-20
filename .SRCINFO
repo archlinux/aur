@@ -13,6 +13,7 @@ pkgbase = idescriptor
 	depends = libimobiledevice>=1.4.0
 	depends = libtatsu>=1.0.5
 	depends = libimobiledevice-glue
+	depends = libirecovery
 	depends = libplist
 	depends = usbmuxd
 	depends = libusbmuxd
