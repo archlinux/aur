@@ -1,0 +1,4 @@
+[visual-studio-code-cli-bin]
+source = "github"
+github = "microsoft/vscode"
+use_latest_release = true
