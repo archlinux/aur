@@ -1,4 +1,4 @@
-# Maintainer: Patrick Griffis <tingping@tingping.se>
+# Maintainer: Patrick Griffis <aur.ashes627@passmail.net>
 
 pkgname=python-fastboot-log-parser
 _name=${pkgname#python-}
