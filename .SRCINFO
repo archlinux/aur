@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-xfce-ask-git
 	pkgdesc = XFCE panel plugin: quick one-off questions to OpenAI-compatible chat endpoints
-	pkgver = 0.0.0.r0.g0000000
+	pkgver = c3f77bf
 	pkgrel = 1
 	url = https://github.com/rabfulton/xfce-ask
 	arch = x86_64
