@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaterm-bin
 _pkgname=Chaterm
-pkgver=0.8.1
+pkgver=0.8.2
 _electronversion=30
 pkgrel=1
 pkgdesc="A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Prebuilt version,use system-wide electron)"
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 makedepends=(
     'asar'
@@ -21,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('733040048d0decd03f90df14407813167acfb38607c6b88128445c9bd3defa6b'
+sha256sums=('32227957f26c8b24bdb665e1e6691d0a710e4fc23a2dddd15e8d4c868a3c3c0b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -40,7 +41,11 @@ prepare() {
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    find "${srcdir}/app.asar.unpacked/node_modules" -type d \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "win32-*" -o -name "linux-arm64" \) \
+        -exec rm -rf {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "win32-*" -o -name "linux-arm64" \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
