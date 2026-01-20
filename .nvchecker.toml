@@ -1,0 +1,4 @@
+[nginx-mainline-mod-modsecurity]
+source = "git"
+git = "https://github.com/SpiderLabs/ModSecurity-nginx.git"
+prefix = "v"

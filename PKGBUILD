@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-modsecurity
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
@@ -15,7 +15,7 @@ source=(https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/v$pkgv
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
               '190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
               'F126692E9BA86B3958E73ED2F2FC4E45883BCBA4') # Martin Vierula
-sha256sums=('ae811c7208ac029cb7a99d6f63e03d3971797607517187f47620df39c1f78add'
+sha256sums=('6bdc7570911be884c1e43aaf85046137f9fde0cfa0dd4a55b853c81c45a13313'
             'SKIP')
 
 prepare() {
