@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -21,7 +21,7 @@ makedepends=(
 optdepends=('docker: To use docker as a container runtime' 'podman-compose: To use podman as a container runtime')
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver" "winboat.install")
-sha256sums=('ce08f785b68df3e77607ee3390abb1a0a585dc55ba4ac5501f236ceb710ad6ca'
+sha256sums=('11051ae91c399ccc75ef69910d4e8a526f6cc50210f9c70525829d5017715cce'
             '28a16c9651a8283793d4ed0f8a8358ada22a467cd1a1a4ed091eb6a9674da41d')
 prepare(){
 cd "$pkgname"
