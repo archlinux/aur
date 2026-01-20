@@ -1,13 +1,17 @@
 pkgbase = obs-branch-output
-	pkgdesc = This is an OBS Studio plugin that allows to live stream and/or recording for each source individually.
-	pkgver = 0.9.14
+	pkgdesc = OBS Studio plugin: Branch Output filter (per-source/scene streaming & recording)
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/OPENSPHERE-Inc/branch-output
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = cmake
-	depends = obs-studio>=30.1.0
-	source = obs-branch-output-0.9.14.tar.gz::https://github.com/OPENSPHERE-Inc/branch-output/archive/refs/tags/0.9.14.tar.gz
-	sha256sums = 853dfc13d2fee942ba130799c8a5bfe3e8787181eb2e58b1f7c89d2459f55883
+	makedepends = ninja
+	makedepends = git
+	makedepends = gcc
+	depends = obs-studio
+	source = obs-branch-output-1.0.7.tar.gz::https://github.com/OPENSPHERE-Inc/branch-output/archive/refs/tags/1.0.7.tar.gz
+	sha512sums = de8966d8f2cbef19dd4590dcb69db6009ba54fe14608f7966976d0280b9ef280930b451f4f9930da4f335b36aff55b5193e9b803371947d3bdfaac8705d89eba
 
 pkgname = obs-branch-output
