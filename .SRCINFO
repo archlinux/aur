@@ -1,0 +1,18 @@
+pkgbase = dailydash
+	pkgdesc = Terminal-based Head-Up Display for focus-driven developers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SyreeseOfficial/DailyDash
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rich
+	depends = python-psutil
+	depends = python-requests
+	depends = python-pygame
+	depends = python-plyer
+	optdepends = libnotify: Desktop notifications on Linux
+	source = https://github.com/SyreeseOfficial/DailyDash/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0840c4340d122edc34ba75a3b45aaba3b44eba3b19ba9e3b3e3e882627f5c85d
+
+pkgname = dailydash
