@@ -1,6 +1,6 @@
 # Maintainer: Michał Piasecki <mpiasecki720@protonmail.com>
 pkgname=rimworld-workshop-downloader
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A tool to manage Rimworld mod updates from Steam Workshop"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = rimworld-workshop-downloader
 	pkgdesc = A tool to manage Rimworld mod updates from Steam Workshop
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/xtul9/rimworld-workshop-downloader
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = rimworld-workshop-downloader
 	depends = curl
 	depends = libayatana-appindicator
 	depends = steamcmd
-	noextract = rimworld-workshop-downloader-0.6.0-1-x86_64.pkg.tar.zst
+	noextract = rimworld-workshop-downloader-0.6.1-1-x86_64.pkg.tar.zst
 	options = !debug
-	source = rimworld-workshop-downloader-0.6.0-1-x86_64.pkg.tar.zst::https://github.com/xtul9/rimworld-workshop-downloader/releases/download/v0.6.0/rimworld-workshop-downloader-0.6.0-1-x86_64.pkg.tar.zst
+	source = rimworld-workshop-downloader-0.6.1-1-x86_64.pkg.tar.zst::https://github.com/xtul9/rimworld-workshop-downloader/releases/download/v0.6.1/rimworld-workshop-downloader-0.6.1-1-x86_64.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = rimworld-workshop-downloader
