@@ -1,0 +1,15 @@
+pkgbase = reflector-rs-bin
+	pkgdesc = Retrieve and filter the latest Arch Linux mirror list (Rust implementation)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/james7132/reflector-rs
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = openssl
+	provides = reflector
+	conflicts = reflector
+	backup = etc/xdg/reflector/reflector.conf
+	source = reflector-rs-bin-1.0.0.tar.xz::https://github.com/james7132/reflector-rs/releases/download/v1.0.0/reflector-rs-v1.0.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = adec0e955a6b1b49a4baed38472df29a6de919f20619120b37e3b007db49f0d2
+
+pkgname = reflector-rs-bin
