@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot com>
 
 pkgname=pitchfork
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Daemons with DX'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/pitchfork/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9ea38ffa9f3eed7a41f333c65b978fff8511197578018864d7fa061a67f81cad')
-b2sums=('1b61d8dcb73d3f7eab507291fcc171e52e809c3e58c7ebdb795896676b6fc411ba788f41e5523f61f931d1e645898c22fbaa4d90af9f0cfbe80bd24366e2f18b')
+sha256sums=('06ad6b7e0cd16284a1aa95bd3cc8f3833ecab7fdea6327ed0890539b605fe17d')
+b2sums=('84bea4ca1c6a38561884697a62ce6f0a52dbbd2853793c7a95c52f1083b72ebe19af89e562265e954957ad1044aef266faf8a25bcccc6644ea468a65789b0765')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
