@@ -3,8 +3,8 @@
 # Contributor: mnussbaum <michaelnussbaum08@gmail.com>
 pkgname=ruby-reverse_markdown
 _name=${pkgname#ruby-}
-pkgver=3.0.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Ruby gem to convert html into markdown"
 arch=('any')
 url="https://github.com/xijo/reverse_markdown"
@@ -14,7 +14,7 @@ makedepends=('rubygems')
 #checkdepends=('ruby-rake')
 options=('!emptydirs')
 source=("${_name}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4cbc8d31165f1c53f3ebee0dd830b08987e3ff7e792c6cf9998a970c5cd5b4b9')
+sha256sums=('925dc0a4064d62ce23e1bb3d4153c28e56eed91601c05a24590cca9101659dc2')
 
 prepare() {
   cd "${_name}-$pkgver"
