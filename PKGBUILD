@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 
 url="https://www.asklink.com"
 license=('commercial')
-depends=('pulseaudio'
+depends=('pulse-native-provider'
     'libxtst'
 )
 optdepends=('libdrm'

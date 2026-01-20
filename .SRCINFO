@@ -6,9 +6,10 @@ pkgbase = asklink-bin
 	arch = x86_64
 	arch = aarch64
 	license = commercial
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = libxtst
 	optdepends = libdrm
+	optdepends = alsa-lib
 	source = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-x86_64.deb
 	sha256sums = SKIP
 
