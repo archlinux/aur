@@ -6,12 +6,12 @@
 _pkgname=xcompmgr
 pkgname=${_pkgname}-git
 pkgver=1.1.10.r3.g76c12c6
-pkgrel=4
+pkgrel=5
 pkgdesc="Composite window effect manager for X.org (git)"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 license=('MIT')
-depends=('libxcomposite' 'libxdamage' 'libxrender' 'libxext' 'libxfixes' 'libx11')
+depends=('libxcomposite' 'libxdamage' 'libxrender' 'libxext' 'libxfixes' 'libx11' 'glibc')
 makedepends=('git' 'xorg-util-macros')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
