@@ -1,6 +1,6 @@
 pkgbase = waechter-git
 	pkgdesc = Traffic shaping and monitoring for GNU/Linux
-	pkgver = r508.dcb8f85
+	pkgver = r620.fe4afd1
 	pkgrel = 1
 	url = https://github.com/univrsal/waechter
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = waechter-git
 	depends = libxinerama
 	depends = libxcursor
 	depends = libxi
+	depends = curl
+	depends = libwebsockets
 	provides = waechter
 	conflicts = waechter
 	source = git+https://github.com/univrsal/waechter.git
