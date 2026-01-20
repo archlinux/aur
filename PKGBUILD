@@ -10,7 +10,7 @@ license=('MIT')
 depends=('playerctl')
 makedepends=('go' 'git')
 provides=('goplaying')
-conflicts=('goplaying')
+conflicts=('goplaying' 'goplaying-bin')
 source=("git+https://github.com/justinmdickey/goplaying.git")
 md5sums=('SKIP')
 

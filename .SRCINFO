@@ -10,6 +10,7 @@ pkgbase = goplaying-git
 	depends = playerctl
 	provides = goplaying
 	conflicts = goplaying
+	conflicts = goplaying-bin
 	source = git+https://github.com/justinmdickey/goplaying.git
 	md5sums = SKIP
 
