@@ -1,6 +1,6 @@
 # Maintainer: Gotar <gotar@users.noreply.github.com>
 pkgname=wallpicker
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging"
 arch=('any')
@@ -19,8 +19,8 @@ depends=(
 )
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 optdepends=('awww: Animated wallpaper transitions'
-            'waifu2x-ncnn-vulkan: AI upscaling for local wallpapers'
-            'python-pytorch: Required for AI image tagging (install clip-anytorch via pip)')
+             'waifu2x-ncnn-vulkan: AI upscaling for local wallpapers'
+             'python-pytorch: Required for AI image tagging (install clip-anytorch via pip)')
 source=("${pkgname}::git+https://github.com/gotar/WallPicker.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -68,7 +68,7 @@ post_install() {
   echo ""
   echo "Optional features:"
   echo "  • AI Image Tagging:"
-  echo "      pip install --user clip-anytorch"
+  echo "      python3 -m pip install --user clip-anytorch  # Install with system Python"
   echo "      Edit ~/.config/wallpicker/config.json: \"tagger_enabled\": true"
   echo ""
   echo "  • AI Upscaling:"
