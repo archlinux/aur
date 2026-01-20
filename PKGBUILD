@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=iamb
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='A Matrix client for Vim addicts'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('76b0fb1f4f1fa8683a6ec235dec5d129358c130ee98a70f8f099cbccee847666318aa082791f2e8dbce5232a5bcfd3a37f34230db5ab60ad478fa6f0cd7b3eaa')
+sha512sums=('a9dba4db9172b3e3ea7ea26a678c65ba39f8521ba9f9010104b7629460b499aa319c696a447b1c039cfae8af34ff090a887bcbdd15765c370f01632e3d6a82b3')
 options=('!lto')
 
 prepare() {
