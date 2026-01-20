@@ -4,7 +4,7 @@
 pkgname=xfce4-artwork
 pkgver=0.1.1a_git20110420
 _debian_pkgver=0.1.1a~git+20110420
-pkgrel=6
+pkgrel=7
 pkgdesc="Backdrops for the Xfce4 desktop"
 arch=('any')
 url="https://goodies.xfce.org/projects/artwork/xfce4-artwork"

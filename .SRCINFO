@@ -1,7 +1,7 @@
 pkgbase = xfce4-artwork
 	pkgdesc = Backdrops for the Xfce4 desktop
 	pkgver = 0.1.1a_git20110420
-	pkgrel = 6
+	pkgrel = 7
 	url = https://goodies.xfce.org/projects/artwork/xfce4-artwork
 	arch = any
 	groups = xfce4-goodies
