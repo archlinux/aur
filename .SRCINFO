@@ -1,7 +1,7 @@
 pkgbase = wallpicker
 	pkgdesc = Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging
 	pkgver = 2.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gotar/WallPicker
 	arch = any
 	license = MIT

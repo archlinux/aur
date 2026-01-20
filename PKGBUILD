@@ -1,7 +1,7 @@
 # Maintainer: Gotar <gotar@users.noreply.github.com>
 pkgname=wallpicker
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging"
 arch=('any')
 url="https://github.com/gotar/WallPicker"
@@ -44,6 +44,9 @@ package() {
   # Install CSS stylesheet
   install -Dm644 data/style.css "${pkgdir}/usr/share/wallpicker/style.css"
 
+  # Install default config
+  install -Dm644 data/config.json "${pkgdir}/usr/share/wallpicker/config.json"
+
   # Install documentation
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
@@ -53,14 +56,24 @@ package() {
 }
 
 post_install() {
+  # Copy default config if user doesn't have one
+  if [ ! -f "$HOME/.config/wallpicker/config.json" ]; then
+    mkdir -p "$HOME/.config/wallpicker"
+    cp /usr/share/wallpicker/config.json "$HOME/.config/wallpicker/config.json"
+    echo "==> Created default config at ~/.config/wallpicker/config.json"
+  fi
+
   echo ""
-  echo "==> To enable AI image tagging:"
-  echo "    1. Install: pip install --user clip-anytorch"
-  echo "    2. Edit config: ~/.config/wallpicker/config.json"
-  echo "       Add: \"tagger_enabled\": true"
+  echo "==> WallPicker installed successfully!"
   echo ""
-  echo "    Or run: wallpicker (generates default config on first launch)"
-  echo "    Then manually edit the config file to enable tagging."
+  echo "Optional features:"
+  echo "  • AI Image Tagging:"
+  echo "      pip install --user clip-anytorch"
+  echo "      Edit ~/.config/wallpicker/config.json: \"tagger_enabled\": true"
+  echo ""
+  echo "  • AI Upscaling:"
+  echo "      Install waifu2x-ncnn-vulkan"
+  echo "      Edit ~/.config/wallpicker/config.json: \"upscaler_enabled\": true"
   echo ""
 }
 
