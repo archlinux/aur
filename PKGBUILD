@@ -34,7 +34,7 @@ pkgname=comsol-multiphysics
 _installername=COMSOL64_lnx
 pkgver=6.4.0.293
 _pkgver_major=6.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research'
 arch=('x86_64')
 url='https://www.comsol.com/comsol-multiphysics'
@@ -102,7 +102,7 @@ prepare()
     done
 
     _vpn_interface=$(ip addr show | grep -o 'tun[0-9]*' | head -1)
-    if [[ -n "$_vpn_interface" ]]; then
+    if [[ ! -n "$_vpn_interface" ]]; then
         echo "Warning: you may need to connect to a corporate VPN in order to activate your product license."
     fi
 

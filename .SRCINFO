@@ -1,7 +1,7 @@
 pkgbase = comsol-multiphysics
 	pkgdesc = A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research
 	pkgver = 6.4.0.293
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.comsol.com/comsol-multiphysics
 	arch = x86_64
 	license = LicenseRef-Comsol
