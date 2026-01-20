@@ -1,21 +1,21 @@
 pkgbase = lsfg-vk-bin
 	pkgdesc = Lossless Scaling Frame Generation on Linux
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PancakeTAS/lsfg-vk
 	install = lsfg-vk.install
 	arch = x86_64
-	license = MIT
-	makedepends = tar
+	license = GPL-3.0-or-later
 	depends = vulkan-icd-loader
+	depends = gcc-libs
 	depends = gtk4
 	depends = libadwaita
 	depends = hicolor-icon-theme
 	provides = lsfg-vk=1.0.0
 	conflicts = lsfg-vk
-	noextract = lsfg-vk-1.0.0..tar.zst
+	noextract = lsfg-vk-1.0.0.x86_64.tar.zst
 	options = !strip
-	source = https://github.com/PancakeTAS/lsfg-vk/releases/download/v1.0.0/lsfg-vk-1.0.0..tar.zst
+	source = https://github.com/PancakeTAS/lsfg-vk/releases/download/v1.0.0/lsfg-vk-1.0.0.x86_64.tar.zst
 	source = LICENSE
 	sha256sums = 7e31d6f39da271fbc50ae8a1b092cb874bc6664765d5b7359d38970057f5fcff
 	sha256sums = 81fd6d483875f1d1520fa327f2139eda0bae28106863953ec57171d60a356b2f
