@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.3.2.r251.g6d60cc65cf
+pkgver=3.4.0.r96.g5c15d74394
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ optdepends=('lib32-alsa-lib: ALSA audio driver'
 	    'lib32-sndio: MIDI audio driver'
 	    'lib32-libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL.git")
-provides=("lib32-sdl3")
+provides=("lib32-sdl3=${pkgver%.r*}")
 conflicts=("lib32-sdl3")
 sha512sums=('SKIP')
 
@@ -41,6 +41,8 @@ build() {
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
 	-D SDL_STATIC=OFF \
+	-D SDL_TESTS=OFF \
+	-D SDL_TEST_LIBRARY=OFF \
 	-D SDL_RPATH=OFF
 	cmake --build build
 }
