@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=fastexcel
 pkgname=python-${_name}
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="A fast excel reader for Rust and Python"
 arch=(x86_64)
 url=https://github.com/ToucanToco/fastexcel
@@ -29,7 +29,7 @@ checkdepends=(
     python-xlrd
 )
 source=($_name::git+https://github.com/ToucanToco/fastexcel#tag=v$pkgver)
-b2sums=('600e5459a8f01c4e4d34f4c0f2f0f1e5d463908e5cf86d81e652b89bc70ffc64f79a35625014e7cf0ab75ab00ac5200bd1d258b52b9b643952a93381fb1377fb')
+b2sums=('4c23cb16cba532f3cbaa048f39ee46d5121be1ea4f51343aae9acb0c737285bd7e903badf605de9fbadf7a7f55a84120cc1119b30704f93f3181663fa7855d7a')
 
 build() {
     cd $_name
