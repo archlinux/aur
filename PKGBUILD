@@ -12,6 +12,7 @@ depends=('pulseaudio'
     'libxtst'
 )
 optdepends=('libdrm'
+    'alsa-lib'
 )
 source=("https://dl.asklink.com/linux/${pkgver}/AskLink-${pkgver}-${CARCH}.deb"
 )
