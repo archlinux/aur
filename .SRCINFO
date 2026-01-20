@@ -1,6 +1,6 @@
 pkgbase = pie
 	pkgdesc = The PHP Installer for Extensions
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/php/pie
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = pie
 	makedepends = php-box
 	depends = php
 	depends = git
-	source = pie-1.3.5::git+https://github.com/php/pie#tag=1.3.5?signed
+	source = pie-1.3.6::git+https://github.com/php/pie#tag=1.3.6?signed
 	validpgpkeys = 9DF6EF8E20B7258D38940D789FC9ACAF5F2D9B75
-	b2sums = e667942e036a0977bc1826632ff0fda8f9e52d772c4f03df39e93b89b0f5a2eb08c0a3620ff668636f1504eb49830dc0573e0bebb4df7767d56f68d4dc58f544
+	b2sums = da6e2f67f9588262d740b497179407ae1824a27a2c39ba5e0146bc7d07824eea985deb4afe39b7239c92d6f50d6d4dd7fd51a1f5ead62c35e0151e941b3c4786
 
 pkgname = pie
