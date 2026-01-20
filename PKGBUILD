@@ -2,13 +2,13 @@
 pkgname=python-unyt
 _module_name=unyt
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package for handling numpy arrays with units."
 arch=(any)
 url="https://pypi.org/project/unyt/"
 license=('BSD')
 depends=('python-numpy' 'python-sympy')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel' 'python-packaging' 'python-setuptools')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel' 'python-packaging' 'python-setuptools' 'python-flit-core')
 checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/u/${_module_name}/${_module_name}-${pkgver}.tar.gz")
