@@ -7,7 +7,7 @@ User=kibana
 Group=kibana
 Environment="NODE_ENV=production"
 Environment="NODE_OPTIONS=--max-old-space-size=512 --no-warnings --max-http-header-size=65536"
-ExecStart=/usr/bin/node /usr/share/kibana/src/cli/dist --config=/etc/kibana/kibana.yml
+ExecStart=/usr/share/kibana/bin/kibana --config=/etc/kibana/kibana.yml
 PrivateTmp=true
 NoNewPrivileges=true
 Restart=always
