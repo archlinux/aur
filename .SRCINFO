@@ -1,6 +1,6 @@
 pkgbase = neodlp
 	pkgdesc = Cross-platform Video/Audio Downloader Desktop App with Modern UI and Browser Integration
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/neosubhamoy/neodlp
 	install = neodlp.install
@@ -21,9 +21,9 @@ pkgbase = neodlp
 	depends = ffmpeg
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = NeoDLP_0.3.4_amd64_linux.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.3.4/NeoDLP_0.3.4_amd64_linux.deb
+	source_x86_64 = NeoDLP_0.4.0_amd64_linux.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.0/NeoDLP_0.4.0_amd64.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = NeoDLP_0.3.4_arm64_linux.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.3.4/NeoDLP_0.3.4_arm64_linux.deb
+	source_aarch64 = NeoDLP_0.4.0_arm64_linux.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.0/NeoDLP_0.4.0_arm64.deb
 	sha256sums_aarch64 = SKIP
 
 pkgname = neodlp
