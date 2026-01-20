@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=HyLauncher
+Comment=Unofficial Hytale Launcher for free to play gamers
+Exec=hylauncher
+Icon=hylauncher
+Categories=Game;
+Terminal=false
+StartupNotify=true
