@@ -5,7 +5,7 @@
 pkgname=python-airtable-wrapper
 _pkgname=pyairtable
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Airtable Client Wrapper"
 arch=("any")
 url="https://github.com/gtalarico/$_pkgname"
@@ -25,4 +25,6 @@ build() {
 package() {
     cd "$_pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -D -m644 LICENSE \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
