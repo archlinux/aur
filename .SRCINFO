@@ -1,19 +1,18 @@
-
 pkgbase = reels-bin
-        pkgdesc = TUI Instagram Reels viewer
-        pkgver = 1.1.1
-        pkgrel = 1
-        url = https://github.com/njyeung/reels
-        arch = x86_64
-        license = MIT
-        depends = ffmpeg
-        depends = alsa-lib
-        optdepends = chromium: browser backend
-        optdepends = google-chrome: browser backend
-        optdepends = brave-bin: browser backend
-        provides = reels
-        conflicts = reels
-        source = https://github.com/njyeung/reels/releases/download/v1.1.1/reels-linux-amd64
-        sha256sums = 311e2205f708fe5d2aa312be370ffc74fe4b34ddaa24d118b0331309f95a4a8b
+	pkgdesc = TUI Instagram Reels viewer
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/njyeung/reels
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = alsa-lib
+	optdepends = chromium: browser backend
+	optdepends = google-chrome: browser backend
+	optdepends = brave-bin: browser backend
+	provides = reels
+	conflicts = reels
+	source = https://github.com/njyeung/reels/releases/download/v1.1.2/reels-linux-amd64
+	sha256sums = 65050860487603ccfd0968ee8e2a8ee6e4f4850c97e2515db907fec37ed4f56c
 
 pkgname = reels-bin
