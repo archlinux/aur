@@ -5,7 +5,7 @@
 
 pkgname=splix
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('x86_64')
 url="https://openprinting.github.io/splix/"
