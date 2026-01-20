@@ -1,7 +1,7 @@
 # Maintainer: this.ven <https://this.ven.uber.space>
 pkgname=bielebridge
 pkgver=v0.0.7+20250305
-pkgrel=1
+pkgrel=2
 pkgdesc="Challenging 2D bridge construction game"
 arch=(x86_64)
 url="https://bielebridge.net"
