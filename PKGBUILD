@@ -5,7 +5,7 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Usable, fast, simple HTTP 1.1 for Ruby'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ruby-logger')
 makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('e02c7bbfa2ae625b91de98334db953a18c1616cd87b6615b28e3f48ada0b738a5b8962ab058ad2e49a40ffbf345cd7fa1ba0b43107b1eb77c91c9cc4d6d433de')
+b2sums=('b0e0418a628dad0f75b1f7dec0a8d95b35b0c827f2abbc43fb8ab04efb6a1f55739975b6b2bc8374a7008cdefdd9609ba0e352ed9eb8c5c9b5cd0ead91556d39')
 
 pkgver() {
   cd "$pkgname"
