@@ -1,0 +1,3 @@
+u whisparr-eros - "Whisparr Eros Daemon" /var/lib/whisparr-eros
+g media    -
+m whisparr-eros media

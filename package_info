@@ -1,0 +1,5 @@
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[whisparr-eros](https://aur.archlinux.org/packages/whisparr-eros/)
+UpdateMethod=External
+UpdateMethodMessage=flag [whisparr-eros](https://aur.archlinux.org/packages/whisparr-eros/) [out-of-date](https://aur.archlinux.org/pkgbase/whisparr-eros/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
+Branch=eros

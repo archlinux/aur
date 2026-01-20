@@ -1,0 +1,6 @@
+[whisparr-eros]
+source = "git"
+git = "https://github.com/Whisparr/Whisparr-Eros.git"
+prefix = "v"
+from_pattern = "(\\d+\\.\\d+\\.\\d+)-release(\\.\\d+)"
+to_pattern = "\\1\\2"

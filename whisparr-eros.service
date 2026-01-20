@@ -1,0 +1,70 @@
+# Be sure to use `systemctl edit whisparr-eros` to modify this service with an
+# override.conf because direct changes will be overwritten by package updates.
+#
+# A user per service with shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# UMask=002
+#
+# If your media directory is in /home (it shouldn't be)
+# You will need to have an override like:
+# [Service]
+# PrivateUsers=false
+# ProtectHome=false
+#
+# When running whisparr in LXC:
+# [Service]
+# PrivateUsers=false
+
+[Unit]
+Description=Whisparr Eros Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=whisparr-eros
+Group=media
+UMask=002
+Environment=XDG_DATA_HOME=/var/lib/whisparr-eros
+ExecStart=/usr/lib/whisparr-eros/bin/Whisparr -nobrowser -data=/var/lib/whisparr-eros
+KillMode=process
+PIDFile=/run/whisparr-eros/whisparr.pid
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=20
+SyslogIdentifier=whisparr-eros
+ConfigurationDirectory=whisparr-eros
+RuntimeDirectory=whisparr-eros
+StateDirectory=whisparr-eros
+WorkingDirectory=/var/lib/whisparr-eros
+
+# Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+SocketBindAllow=ipv4:tcp
+SocketBindAllow=ipv6:tcp
+SocketBindDeny=any
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+
+[Install]
+WantedBy=multi-user.target
