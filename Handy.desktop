@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=A free, open source, and extensible speech-to-text application that works completely offline.
+Exec=handy
+StartupWMClass=handy
+Icon=handy
+Name=Handy
+Terminal=false
+Type=Application
