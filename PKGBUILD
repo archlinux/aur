@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname"
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -31,13 +31,9 @@ conflicts=(
 )
 source=(
     "${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeDark.colors"
-    "https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeLight.colors"
     "config.example.json"
 )
 sha256sums=('87d93bfa7eefc8fe3b652bc4dd7c82358e4f5d6e7f9bc123e76f4f63c02fbfcc'
-            '09d0382680e23e736c862e35a1b9742f511ff0e34bd28c967f896a9fb986d14b'
-            'ccae3193b07605f9ab123c57539692da2e8c4b4f9a70bbac0be5525ccabe855d'
             'e6816d7a46a0c16c5916d0624bfb722c0d0eb16b9830bd54db242975ff5c95c9')
 install="$_pkgname.install"
 
