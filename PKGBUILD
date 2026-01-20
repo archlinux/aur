@@ -10,9 +10,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Sub-Delete'
-source=('https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/Sub-Delete-1.00003.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/Sub-Delete-$pkgver.tar.gz")
 md5sums=('3fcb8711ab4f7bf4fc6b7da6eb507e34')
-_distdir="Sub-Delete-1.00003"
+_distdir="Sub-Delete-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
