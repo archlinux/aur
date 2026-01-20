@@ -1,7 +1,7 @@
 # Maintainer: Sricharan <sricharanandra7@gmail.com>
 pkgname=radiochat-tui-git
 _pkgname=radiochat
-pkgver=r1.09a79e9  # This is a placeholder; makepkg updates it automatically
+pkgver=r26.4dd6cd8  # This is a placeholder; makepkg updates it automatically
 pkgrel=1
 pkgdesc="E2EE Terminal Chat Client (radiochat)"
 arch=('x86_64' 'aarch64')
