@@ -7,7 +7,20 @@ pkgdesc="Traffic shaping and monitoring for GNU/Linux"
 arch=('x86_64')
 url="https://github.com/univrsal/waechter"
 license=('BSD-3-Clause' 'GPL-3.0-or-later')
-depends=('systemd' 'bpf' 'libbpf' 'libxkbcommon' 'libgl' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'libcurl-compat' 'libwebsockets')
+depends=(
+    'systemd'
+    'bpf'
+    'libbpf'
+    'libxkbcommon'
+    'libgl'
+    'libx11'
+    'libxrandr'
+    'libxinerama'
+    'libxcursor'
+    'libxi'
+    'curl'
+    'libwebsockets'
+)
 makedepends=('git' 'cmake' 'clang' 'gcc')
 
 provides=('waechter')
