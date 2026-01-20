@@ -1,7 +1,8 @@
 # Maintainer: mithrel <imithrellas@gmail.com>
 
 # This is a -git style PKGBUILD meant for AUR packaging.
-# It builds ginkgo-cli and installs the user service + man pages.
+# It builds ginkgo-cli, ginkgo-lsp(language server for tag completion in code editors)
+# and installs the user service + man pages.
 
 pkgname=ginkgo-cli
 pkgver=0.3.0
@@ -23,6 +24,7 @@ sha256sums=('f7534f7711183c48be2834a8bef82708455fdb535123fc81df79ab6782de6a2f')
 build() {
   cd "$srcdir/GinkGo-$pkgver"
   export CGO_ENABLED=0
+  go build -trimpath -ldflags "-s -w" -o build/ginkgo-lsp ./cmd/ginkgo-lsp
   go build -trimpath -ldflags "-s -w" -o build/ginkgo-cli ./cmd/ginkgo-cli
 }
 
@@ -31,6 +33,7 @@ package() {
 
   # Install binaries (ginkgod is a symlink to ginkgo-cli).
   install -Dm755 build/ginkgo-cli "$pkgdir/usr/bin/ginkgo-cli"
+  install -Dm755 build/ginkgo-lsp "$pkgdir/usr/bin/ginkgo-lsp"
   ln -sf ginkgo-cli "$pkgdir/usr/bin/ginkgod"
 
   # Install man pages (pre-generated in docs/man).
