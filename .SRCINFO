@@ -1,7 +1,7 @@
 pkgbase = otf-font-awesome-pro
 	pkgdesc = The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://fontawesome.com
 	arch = any
 	license = custom:Font Awesome Pro License
@@ -10,6 +10,6 @@ pkgbase = otf-font-awesome-pro
 	makedepends = python-fonttools
 	makedepends = python-brotli
 	provides = ttf-font-awesome
-	replaces = ttf-font-awesome
+	conflicts = ttf-font-awesome-pro
 
 pkgname = otf-font-awesome-pro

@@ -2,9 +2,9 @@
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=otf-font-awesome-pro
 provides=('ttf-font-awesome')
-replaces=('ttf-font-awesome')
+conflicts=('ttf-font-awesome-pro')
 pkgver=7.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!'
 arch=('any')
 url='https://fontawesome.com'
