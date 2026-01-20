@@ -2,13 +2,14 @@
 
 pkgname=fastcompmgr
 pkgver=0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="An early Compton-based compositor for X11 focused on performance."
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/${pkgname}"
 license=('MIT')
 makedepends=('git')
 depends=(
+  glibc
   libx11
   libxcomposite
   libxdamage
