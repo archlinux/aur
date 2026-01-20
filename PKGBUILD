@@ -1,7 +1,7 @@
 pkgbase='python-python-iso639'
 pkgname=('python-python-iso639')
-_src_folder='iso639-2025.11.16'
 pkgver='2025.11.16'
+_src_folder="iso639-$pkgver"
 pkgrel=1
 pkgdesc="Look-up utilities for ISO 639 language codes and names"
 url="https://github.com/jacksonllee/iso639"
