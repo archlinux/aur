@@ -2,7 +2,7 @@
 
 pkgname="xffm"
 pkgver="4_20_3"
-pkgrel=3
+pkgrel=4
 license=('GPL3')
 pkgdesc="Advanced filemanager for i3 window manager."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://xffm.sourceforge.net/"
 source=("https://sourceforge.net/projects/xffm/files/xffm%2B/$pkgname$pkgver-$pkgrel.bz2")
 makedepends=('cmake' 'pkgconfig' 'libzip' 'readline' 'librsvg' 'libmagick' 'gtk4')
 depends=('ecryptfs-utils' 'sudo'  'ghostscript')
-md5sums=('de81aae3ecc57e0fbd5bb877e5245072')
+md5sums=('9cd55ea86cf01c9dd0c9605351f984e3')
 
 build() {
 	cd "xffm4/build"
