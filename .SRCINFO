@@ -1,0 +1,21 @@
+pkgbase = infra-bin
+	pkgdesc = Authentication and access management to servers, clusters, and databases
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/infrahq/infra
+	arch = x86_64
+	arch = aarch64
+	license = custom:Elastic-2.0
+	depends = glibc
+	depends = gcc-libs
+	optdepends = openssh: for SSH server access management
+	optdepends = kubectl: for Kubernetes cluster access
+	optdepends = postgresql: for database backend
+	provides = infra
+	conflicts = infra
+	source_x86_64 = https://github.com/infrahq/infra/releases/download/v0.21.0/infra_0.21.0_amd64.deb
+	sha256sums_x86_64 = e3779e63df57c07c0ad136c1a1435cd9d30ce0ae9a41248c18bf0b6f67d404b1
+	source_aarch64 = https://github.com/infrahq/infra/releases/download/v0.21.0/infra_0.21.0_arm64.deb
+	sha256sums_aarch64 = 15f53213739d0fe59bf2e86c0a6fb2d205a2532915ab2e9a20271c245ae3c224
+
+pkgname = infra-bin
