@@ -3,13 +3,13 @@
 
 pkgname=naps2
 pkgver=8.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
 url="https://www.naps2.com"
 license=("GPL-2.0-or-later")
 depends=("sane" "gtk3")
-makedepends=("dotnet-sdk>=8.0.0" "dpkg" "ttf-liberation" "noto-fonts" "noto-fonts-cjk")
+makedepends=("dotnet-sdk-9.0" "dpkg" "ttf-liberation" "noto-fonts" "noto-fonts-cjk")
 optdepends=(
     "sane-airscan: airscan support"
 )

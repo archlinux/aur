@@ -1,12 +1,12 @@
 pkgbase = naps2
 	pkgdesc = NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible.
 	pkgver = 8.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.naps2.com
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = dotnet-sdk>=8.0.0
+	makedepends = dotnet-sdk-9.0
 	makedepends = dpkg
 	makedepends = ttf-liberation
 	makedepends = noto-fonts
