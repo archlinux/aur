@@ -1,13 +1,14 @@
 pkgname=rset
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="Remote Staging Execution Tool"
 url="https://github.com/eradman/rset"
 license=(custom:ISC-style)
 arch=(x86_64)
+depends=(curl)
 makedepends=(git make)
 source=("git+https://github.com/eradman/rset#tag=$pkgver")
-sha256sums=('b519d2aef7e27cd5525508d5798a70f4c36e10f67796a6c8cb6a09f4b3afc00b')
+sha256sums=('d6ce727847fd1d217397707dbb5255fea0fa8814a4a74a4041471c53d0a78fd8')
 
 build() {
 	cd $pkgname
