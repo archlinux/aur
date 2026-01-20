@@ -1,3 +1,5 @@
 *.tar*
 *.log
-*/
+src/
+pkg/
+lightmaputil/
