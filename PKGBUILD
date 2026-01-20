@@ -22,7 +22,8 @@ pkgdesc="Operating environment for the new internet. Anytype is a next generatio
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=(electron38 bash libsecret hicolor-icon-theme)
+_electron_dep=electron38
+depends=("$_electron_dep" bash libsecret hicolor-icon-theme)
 makedepends=('asar')
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
@@ -46,6 +47,6 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/opt/Anytype/anytype" <<-EOF
 	#! /bin/sh
-	exec electron38 --gtk-version=3 /opt/Anytype/resources/app.asar "\$@"
+	exec $_electron_dep --gtk-version=3 /opt/Anytype/resources/app.asar "\$@"
 	EOF
 }
