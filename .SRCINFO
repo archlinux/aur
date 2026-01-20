@@ -1,0 +1,18 @@
+pkgbase = graphest-appimage
+	pkgdesc = A faithful graphing calculator
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/unageek/graphest
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	noextract = graphest-1.8.2.AppImage
+	options = !strip
+	source_x86_64 = graphest-1.8.2.AppImage::https://github.com/Firestar-Reimu/graphest-Appimage/releases/download/v1.8.2/graphest-1.8.2.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/unageek/graphest/v1.8.2/LICENSE
+	sha256sums_x86_64 = 0ae01f2b795a097cc50ab613f91ed505b4582cc89acc777e2b603396fe759569
+	sha256sums_x86_64 = 80f8a633221a660d368fa5f4acb388f788b2cff599d91b5027147e005f4e0f78
+
+pkgname = graphest-appimage
