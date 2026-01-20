@@ -7,8 +7,8 @@ pkgname=(
   processing
   processing-examples
 )
-pkgver=4.4.10
-_build=1310
+pkgver=4.5.1
+_build=1312
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -20,7 +20,7 @@ options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
 	    'disable_update_check.patch'
 	    'no_jdk_download.patch')
-sha256sums=('e121c282ccb2ad5734404da6afcaa2c25bdbf1a17eed03e8ffee8f1799be995c'
+sha256sums=('af23b7b74479440191caef39b4a5090e95382d52c06b1d443197d8694e703164'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
 
@@ -43,7 +43,7 @@ prepare() {
   patch "$pkgbase/app/build.gradle.kts" < no_jdk_download.patch
 
   # Disable update check in default preferences
-  patch "$pkgbase/build/shared/lib/defaults.txt" < disable_update_check.patch
+  patch $pkgname/app/src/main/resources/defaults.txt < disable_update_check.patch
 
   # Pass version number to build process
   echo "version=$pkgver" > "$pkgbase/gradle.properties"
