@@ -12,13 +12,13 @@ provides=('Muxly')
 conflicts=('Muxly')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9a2969fffc835e6835e3a09bd3fdb0bc00eda8527da0012377d43976b1d6476e')
+sha256sums_aarch64=('4ecfbf19c26b0c744a348f0eb1f22bfc0b38e7c36455ab322f5216cce1df1e57')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_i386.tar.gz")
-sha256sums_i686=('796b4e61ce7d2282af98a18b90e2d97983e871fbfe8d4906e752e6fba4133de9')
+sha256sums_i686=('e47d06e0c7736ad16309fcca5316902dd3787cfd2cc7391a9c57aa019d98cc17')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('917dd53c2c393b62df466219e20cb342bb7d0849b16612c2c10fe507e970cc0f')
+sha256sums_x86_64=('fc428897efa3c91498888cde183720d52cfc1de5d9657a8284711ef35fbf91d7')
 
 package() {
   install -Dm755 "./Muxly" "${pkgdir}/usr/bin/Muxly"
