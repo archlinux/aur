@@ -1,0 +1,20 @@
+pkgbase = python-libbbf
+	pkgdesc = Bound Book Format (BBF) Tools & Python Bindings
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ef1500/libbbf-python
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = pybind11
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = xxhash
+	depends = python
+	provides = python-libbbf=0.3.0
+	conflicts = python-libbbf-bin
+	conflicts = python-libbbf-git
+	source = https://github.com/ef1500/libbbf-python/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 06f01a2c190ff836597036a3ec3758069d63ee679d59592dc4d1c63decd377e7
+
+pkgname = python-libbbf
