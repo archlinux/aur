@@ -1,6 +1,6 @@
 pkgbase = dotstate-bin
 	pkgdesc = A modern, secure, and user-friendly dotfile manager
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/serkanyersen/dotstate
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = dotstate-bin
 	license = MIT
 	provides = dotstate
 	conflicts = dotstate
-	source = LICENSE-0.2.9::https://raw.githubusercontent.com/serkanyersen/dotstate/v0.2.9/LICENSE
-	source = README-0.2.9.md::https://raw.githubusercontent.com/serkanyersen/dotstate/v0.2.9/README.md
+	source = LICENSE-0.2.10::https://raw.githubusercontent.com/serkanyersen/dotstate/v0.2.10/LICENSE
+	source = README-0.2.10.md::https://raw.githubusercontent.com/serkanyersen/dotstate/v0.2.10/README.md
 	sha256sums = 7efa2e24bd29cabcff7c83ee7695a8a53701d94974a4284537be6f4f1b0020a0
 	sha256sums = cfd4a57ed510c26491abb8425eed78dca73bf17245fca6cc48102150b88bd725
-	source_x86_64 = dotstate-x86_64-0.2.9.tgz::https://github.com/serkanyersen/dotstate/releases/download/v0.2.9/dotstate-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = d9d311012b8162072b7a22e1c8e096c9398fbd0b059f6f177330abb328b120f7
-	source_aarch64 = dotstate-aarch64-0.2.9.tgz::https://github.com/serkanyersen/dotstate/releases/download/v0.2.9/dotstate-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = a3de8575442b5ac88d07d770f2f792f01987d4b3266733507e64049bf00b7a38
+	source_x86_64 = dotstate-x86_64-0.2.10.tgz::https://github.com/serkanyersen/dotstate/releases/download/v0.2.10/dotstate-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 2f716d4086bec7d6511fba71b9ea303b4bc32c7a1f83d0c011a5b554f38ae313
+	source_aarch64 = dotstate-aarch64-0.2.10.tgz::https://github.com/serkanyersen/dotstate/releases/download/v0.2.10/dotstate-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 4cb40a99d90c43c321b741b335c86cc6bb4efa9f9e329f5f379c4ead1061575a
 
 pkgname = dotstate-bin
