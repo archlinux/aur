@@ -1,7 +1,4 @@
-*.tar.*
-src/
-pkg/
-LICENSE*
-cache/
-*.tgz.*
-*.tgz
+*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
