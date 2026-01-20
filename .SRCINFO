@@ -1,17 +1,18 @@
 pkgbase = gnome-shell-extension-arch-update-git
-	pkgdesc = Convenient indicator for Arch Linux updates in GNOME Shell
-	pkgver = 33+1+ge9de0e4
+	pkgdesc = Update indicator for ArchLinux and GNOME Shell
+	pkgver = 65.r2.g24598cd
 	pkgrel = 1
-	url = https://github.com/RaphaelRochet/arch-update
+	url = https://codeberg.org/RaphaelRochet/arch-update
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = jq
 	depends = gnome-shell
+	depends = pacman-contrib
+	depends = xdg-utils
 	provides = gnome-shell-extension-arch-update
 	conflicts = gnome-shell-extension-arch-update
-	source = gnome-shell-extension-arch-update-git::git+https://github.com/RaphaelRochet/arch-update.git
+	source = git+https://codeberg.org/RaphaelRochet/arch-update.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-arch-update-git
-
