@@ -1,7 +1,7 @@
 pkgbase = adguard-cli-bin
 	pkgdesc = Surf the Web ad-free and safely. Shields up
 	pkgver = 1.2.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://adguard.com/
 	arch = x86_64
 	source = https://github.com/AdguardTeam/AdGuardCLI/releases/download/v1.2.32-release/adguard-cli-1.2.32-linux-x86_64.tar.gz
