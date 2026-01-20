@@ -6,7 +6,7 @@
 #shellcheck disable=2148,2034,2154,2164
 
 pkgname=rclonefzf
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Interactive terminal UI for browsing and viewing files on rclone remotes using fzf'
 arch=('any')
