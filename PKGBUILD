@@ -9,6 +9,7 @@ url="https://github.com/justinmdickey/goplaying"
 license=('MIT')
 depends=('playerctl')
 makedepends=('go' 'git')
+options=(!debug)
 provides=('goplaying')
 conflicts=('goplaying' 'goplaying-bin')
 source=("git+https://github.com/justinmdickey/goplaying.git")

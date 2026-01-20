@@ -11,6 +11,7 @@ pkgbase = goplaying-git
 	provides = goplaying
 	conflicts = goplaying
 	conflicts = goplaying-bin
+	options = !debug
 	source = git+https://github.com/justinmdickey/goplaying.git
 	md5sums = SKIP
 
