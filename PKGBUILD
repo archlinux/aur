@@ -1,12 +1,12 @@
 pkgname=morse-git
-pkgver=1.0.0.r6.2ff7c31
+pkgver=1.0.0.r46.3b47b68
 pkgrel=1
 pkgdesc="Learn Morse Code and High Speed Telegraphy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/teacond/Morse"
 license=('GPL3')
 depends=('gtk4' 'libadwaita' 'alsa-lib')
-makedepends=('meson' 'rust' 'cargo' 'git')
+makedepends=('meson' 'rust' 'blueprint-compiler' 'git')
 source=('git+https://www.github.com/teacond/Morse.git')
 sha256sums=('SKIP')
 
