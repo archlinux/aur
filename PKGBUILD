@@ -2,18 +2,18 @@
 
 pkgname=python-evalidate
 # https://github.com/yaroslaff/evalidate/releases
-pkgver=2.1.0
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Safe and fast evaluation of untrusted user-supplied python expressions'
 arch=(any)
 url='https://github.com/yaroslaff/evalidate'
 # https://github.com/yaroslaff/evalidate/blob/v2.0.2/setup.py#L19
 license=(MIT)
-depends=(python python-faker python-requests)
+depends=(python python-faker)
 makedepends=(git python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('70312b6aceccfc8dd12b582933a9045bc6332574eb58dc9ae17aa03c6ab75179')
+sha256sums=('e427c17b5023058e6b4349bd451ae9d2fa2b53dbd3681f6d026e90b79269959a')
 
 build() {
   cd evalidate
