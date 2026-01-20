@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode"
 license=('GPL-1.0-or-later')
 depends=('bash' 'awk' 'alacritty-use-theme')
-makedepends=('git')
 provides=('alacritty-listen-to-colorscheme.service')
 conflicts=('alacritty-use-theme-with-gnome-darkmode-git')
 replaces=('alacritty-toggle-theme-on-darkmode-git')

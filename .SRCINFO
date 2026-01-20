@@ -5,7 +5,6 @@ pkgbase = alacritty-use-theme-with-gnome-darkmode
 	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode
 	arch = x86_64
 	license = GPL-1.0-or-later
-	makedepends = git
 	depends = bash
 	depends = awk
 	depends = alacritty-use-theme
