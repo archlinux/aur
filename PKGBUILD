@@ -1,8 +1,8 @@
 # Maintainer: Birbwell <jmbirdwell.us@gmail.com>
 
 pkgname=linuxmix-git
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
 
