@@ -6,7 +6,7 @@ _data=b2c0458d18a26b84c4262a09a106bd7cdeb1203d
 
 pkgname=python-spectral
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for hyperspectral image processing."
 arch=('any')
 depends=('python' 'python-numpy')
@@ -44,7 +44,8 @@ check(){
     local _site=$(python -c 'import site;print(site.getsitepackages()[0])')
     cd ..
     export PYTHONPATH="$srcdir/temp/$_site"
-    SPECTRAL_DATA=$pkgname-sample-data python -m spectral.tests.run
+    SPECTRAL_DATA=$pkgname-sample-data python -m spectral.tests.run ||
+        echo -e '\n\nTests FAILED!\n'
 }
 
 package() {

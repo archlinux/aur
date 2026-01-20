@@ -1,7 +1,7 @@
 pkgbase = python-spectral
 	pkgdesc = A Python module for hyperspectral image processing.
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spectralpython.net/
 	arch = any
 	license = MIT
