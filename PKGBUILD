@@ -32,7 +32,7 @@ prepare() {
   cd ${pkgbase}-${pkgver}
 
   # remove nodejs strict version requirements
-  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i src/setup_node_env/node_version_validator.js
+  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i node_modules/@kbn/setup-node-env/node_version_validator.js
 
   # set default quiet mode for systemd, cli option forces specified values
   sed -r 's|#(logging.quiet:) false|\1 true|' -i config/kibana.yml
