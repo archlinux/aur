@@ -1,6 +1,6 @@
 pkgbase = php-protobuf
 	pkgdesc = Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.
-	pkgver = 4.33.1
+	pkgver = 4.33.4
 	pkgrel = 1
 	url = https://pecl.php.net/package/protobuf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = php-protobuf
 	depends = php
 	depends = protobuf
 	backup = etc/php/conf.d/protobuf.ini
-	source = http://pecl.php.net/get/protobuf-4.33.1.tgz
-	sha256sums = a7cb88ade340f654d78f8050d7915ce915e51b0accb859caa7bc37b9f3ea9f2f
+	source = https://pecl.php.net/get/protobuf-4.33.4.tgz
+	sha256sums = 27923749e28804937998fa884f8354a929bd9389d80f5ab5a90379dda5e1f8ee
 
 pkgname = php-protobuf
