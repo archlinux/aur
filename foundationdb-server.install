@@ -1,16 +1,12 @@
+# Define the service name globally for consistency
+SERVICE_NAME="foundationdb.service"
+FDB_USER="foundationdb"
+FDB_GROUP="foundationdb"
+
 post_install() {
     CLUSTER_FILE="/etc/foundationdb/fdb.cluster"
-    FDB_USER="foundationdb"
-    FDB_GROUP="foundationdb"
 
-    # 1. Create the configuration directory if missing
-    if [ ! -d "/etc/foundationdb" ]; then
-        echo "Creating configuration directory: /etc/foundationdb"
-        mkdir -p "/etc/foundationdb"
-    fi
-
-    # 2. Ensure the foundationdb user/group exists
-    # (Note: In Arch, it is better to use systemd-sysusers, but this is a fallback)
+    # 1. Create User & Group
     if ! getent group "$FDB_GROUP" >/dev/null; then
         groupadd -r "$FDB_GROUP"
     fi
@@ -18,52 +14,95 @@ post_install() {
         useradd -r -g "$FDB_GROUP" -d /var/lib/foundationdb -s /usr/bin/nologin "$FDB_USER"
     fi
 
-    # 3. Create the cluster file if it doesn't exist
+    # 2. Create Persistent Directories (Config & Data)
+    if [ ! -d "/etc/foundationdb" ]; then
+        mkdir -p "/etc/foundationdb"
+    fi
+    if [ ! -d "/var/lib/foundationdb" ]; then
+        mkdir -p "/var/lib/foundationdb"
+    fi
+
+    # 3. Create Runtime Directory (Critical for PID file)
+    if [ ! -d "/var/run/foundationdb" ]; then
+        mkdir -p "/var/run/foundationdb"
+    fi
+
+    # 4. Create Cluster File if missing
     if [ ! -f "$CLUSTER_FILE" ]; then
         echo "Creating new cluster file: $CLUSTER_FILE"
         description=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
         random_str=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
-
         echo "$description:$random_str@127.0.0.1:4500" >"$CLUSTER_FILE"
-
-        # Now safe to chown because we ensured user and file exist
         chown "$FDB_USER:$FDB_GROUP" "$CLUSTER_FILE"
         chmod 0664 "$CLUSTER_FILE"
         NEWDB=1
     fi
 
-    # 4. Correct directory permissions for the folder itself
+    # 5. Enforce Permissions (Recursive)
+    # This ensures everything is owned by foundationdb before starting
     chown -R "$FDB_USER:$FDB_GROUP" /etc/foundationdb
+    chown -R "$FDB_USER:$FDB_GROUP" /var/lib/foundationdb
+    chown -R "$FDB_USER:$FDB_GROUP" /var/run/foundationdb
 
-    # 5. Initialize the DB only if we created a new one AND the binary exists
+    # 6. Start Service
+    if [ -x /usr/bin/systemctl ]; then
+        echo "Reloading systemd..."
+        systemctl daemon-reload
+
+        echo "Enabling and starting $SERVICE_NAME..."
+        systemctl enable --now "$SERVICE_NAME" || echo "WARNING: Failed to start $SERVICE_NAME"
+    fi
+
+    # 7. Initialize Database (Only for fresh installs)
     if [ "$NEWDB" == "1" ]; then
         if [ -x /usr/bin/fdbcli ]; then
-            echo "Configuring new single-node database..."
-            # Wait a moment for the service to potentially start if this is running live
-            sleep 2
-            /usr/bin/fdbcli --exec "configure new single memory" || echo "WARNING: Automatic configuration failed."
-        else
-            echo "WARNING: /usr/bin/fdbcli not found. Skipping database initialization."
+            echo "Waiting for FDB to start..."
+            sleep 5
+            if systemctl is-active --quiet "$SERVICE_NAME"; then
+                echo "Configuring new single-node database..."
+                /usr/bin/fdbcli --exec "configure new single memory" || echo "WARNING: Automatic configuration failed. Run 'configure new single memory' manually."
+            else
+                echo "WARNING: Service is not running. Skipping initialization."
+            fi
         fi
     fi
 }
 
-post_upgrade() {
-  # Reload systemd daemon in case service file changed
-  systemctl daemon-reload
-  echo "---"
-  echo "FoundationDB server has been upgraded."
-  echo "To restart the service with the new version, run:"
-  echo "  sudo systemctl restart foundationdb.service"
-  echo "---"
+pre_upgrade() {
+    # Stop the service safely before binaries are replaced
+    if [ -x /usr/bin/systemctl ]; then
+        systemctl stop "$SERVICE_NAME" || true
+    fi
 }
 
-pre_upgrade() {
-  # Stop service before upgrade
-  systemctl stop foundationdb.service || :
+post_upgrade() {
+    # 1. Re-enforce permissions
+    # (Important in case the user messed them up or directories changed)
+    chown -R "$FDB_USER:$FDB_GROUP" /etc/foundationdb
+    chown -R "$FDB_USER:$FDB_GROUP" /var/lib/foundationdb
+
+    # 2. Re-create PID dir if it was lost (since /var/run is temporary)
+    if [ ! -d "/var/run/foundationdb" ]; then
+        mkdir -p "/var/run/foundationdb"
+        chown "$FDB_USER:$FDB_GROUP" "/var/run/foundationdb"
+    fi
+
+    # 3. Handle Systemd
+    if [ -x /usr/bin/systemctl ]; then
+        systemctl daemon-reload
+    fi
+
+    echo "---"
+    echo "FoundationDB server has been upgraded."
+    echo "To restart the service with the new version, run:"
+    echo "  sudo systemctl restart $SERVICE_NAME"
+    echo "---"
 }
 
 pre_remove() {
-  # Stop service before removal
-  systemctl stop foundationdb.service || :
+    # Stop service before removal
+    if [ -x /usr/bin/systemctl ]; then
+        systemctl stop "$SERVICE_NAME" || true
+        systemctl disable "$SERVICE_NAME" || true
+    fi
 }
