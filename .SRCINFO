@@ -8,6 +8,7 @@ pkgbase = plumeimpactor
 	depends = fuse3
 	depends = hicolor-icon-theme
 	depends = usbmuxd
+	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
 	source = Impactor-linux-x86_64.AppImage::https://github.com/khcrysalis/PlumeImpactor/releases/download/v2.0.0/Impactor-linux-x86_64.AppImage

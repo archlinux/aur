@@ -8,7 +8,7 @@ pkgdesc="Sideloading tool for iOS devices"
 url="https://github.com/khcrysalis/PlumeImpactor"
 arch=("x86_64")
 license=("MIT")
-depends=("fuse3" "hicolor-icon-theme" "usbmuxd")
+depends=("fuse3" "hicolor-icon-theme" "usbmuxd" "libayatana-appindicator")
 options=("!strip" "!debug")
 
 _appimage="Impactor-linux-x86_64.AppImage"
